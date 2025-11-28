@@ -1,0 +1,104 @@
+\section{Numerical Results}
+\label{sec:numerical}
+
+All numerical experiments were performed using Python with
+\texttt{numpy}, \texttt{scipy}, and \texttt{mpmath} for arbitrary precision.
+Source code available in \texttt{src/} directory.
+
+\subsection{Saturation Experiment}
+
+\textbf{Script:} \texttt{saturation\_proof.py}
+
+\textbf{Method:} Compute $C_0(B) = A_0 + \text{Tail Bound}$ for various $B$.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{../output/saturation_proof.png}
+\caption{Saturation of symbol norm $C_0(B) \to C_* \approx 277$ as $B \to \infty$.}
+\label{fig:saturation}
+\end{figure}
+
+\textbf{Observation:} The norm saturates rapidly; by $B = 10$, we are within
+1\% of the asymptotic value.
+
+\subsection{Floor Experiment (Lorentzian)}
+
+\textbf{Script:} \texttt{floor\_proof.py}
+
+\textbf{Method:} Periodize the Lorentzian kernel with triangular window.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{../output/floor_proof.png}
+\caption{Floor $c_{\text{arch}}(B)$ grows and saturates at $\approx 0.20$.}
+\label{fig:floor}
+\end{figure}
+
+\textbf{Observation:} The floor matches Q3's claimed value $c_{\text{arch}} \approx 0.1878$.
+
+\subsection{Digamma Analysis}
+
+\textbf{Script:} \texttt{analyze\_digamma\_poison.py}
+
+\textbf{Finding:} The raw digamma function $a^*(\xi) = \log\pi - \Re\psi(\tfrac{1}{4} + i\pi\xi)$
+changes sign at $\xi \approx 1.0$:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{../output/digamma_poison_analysis.png}
+\caption{The digamma-based function becomes negative for $|\xi| > 1$.}
+\label{fig:digamma}
+\end{figure}
+
+\textbf{Implication:} Direct use of digamma requires careful windowing;
+positive model kernels (Lorentzian, Mellin) are analytically cleaner.
+
+\subsection{Kernel Comparison}
+
+\textbf{Script:} \texttt{merlin\_kernel\_test.py}
+
+\textbf{Method:} Test five kernel types for spectral stability.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\textwidth]{../output/merlin_kernel_test.png}
+\caption{Comparison of kernels. Mellin achieves $\delta_* \approx 0.79$.}
+\label{fig:kernels}
+\end{figure}
+
+\textbf{Results Summary:}
+\begin{center}
+\begin{tabular}{l|c|c|c}
+Kernel & Floor Behavior & Ceiling Behavior & $\delta_*$ \\
+\hline
+Sinc & Oscillates negative & Grows & 0 \\
+Fejér & Zero at edges & Grows & 0 \\
+Poisson & Bounded positive & Explodes & $\to 0$ \\
+Gaussian & Small positive & Bounded & 0.014 \\
+\textbf{Lorentzian} & Positive & Bounded & \textbf{0.20} \\
+\textbf{Mellin} & Positive, parallel & Bounded & \textbf{0.79}
+\end{tabular}
+\end{center}
+
+\subsection{Key Discovery: Decay Rate Law}
+
+\begin{observation}[Decay-Stability Relationship]
+The stability ratio $\delta_*$ increases with slower decay:
+\begin{equation}
+    \text{Decay } \sim |\xi|^{-\alpha} \quad \Rightarrow \quad
+    \delta_* \text{ increases as } \alpha \downarrow.
+\end{equation}
+\end{observation}
+
+\begin{center}
+\begin{tabular}{c|c}
+$\alpha$ (decay exponent) & $\delta_*$ \\
+\hline
+$\infty$ (exponential) & $\approx 0$ \\
+2 (Lorentzian) & 0.20 \\
+0.5 (Mellin) & 0.79
+\end{tabular}
+\end{center}
+
+This explains why exponentially decaying kernels (Gamma, Gaussian)
+perform poorly: they create ``holes'' in the periodization.

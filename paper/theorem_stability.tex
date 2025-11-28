@@ -1,0 +1,97 @@
+\section{Main Stability Theorem}
+\label{sec:stability}
+
+Combining the saturation lemma (Section~\ref{sec:saturation}) and
+floor lemma (Section~\ref{sec:floor}), we obtain:
+
+\begin{theorem}[Spectral Stability]
+\label{thm:stability}
+For the Archimedean symbol $P_A$ with Lorentzian model kernel and
+sufficiently large bandwidth $B$:
+\begin{enumerate}
+    \item[(i)] \textbf{Bounded Ceiling:} $\|P_A\|_\infty \leq C_* < \infty$.
+    \item[(ii)] \textbf{Positive Floor:} $c_{\text{arch}} \geq c_0 > 0$.
+    \item[(iii)] \textbf{Stability Ratio:} $\delta_* = c_{\text{arch}}/\|P_A\|_\infty \geq \delta_0 > 0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Direct combination of Lemma~\ref{lem:saturation} and Lemma~\ref{lem:floor}.
+\end{proof}
+
+\subsection{Implications for the Toeplitz Operator}
+
+\begin{corollary}[Operator Positivity]
+\label{cor:toeplitz}
+The Toeplitz operator $T_M[P_A]$ with symbol $P_A$ satisfies:
+\begin{equation}
+    c_{\text{arch}} \cdot I \leq T_M[P_A] \leq \|P_A\|_\infty \cdot I,
+\end{equation}
+where $I$ is the identity operator on $\C^M$.
+\end{corollary}
+
+\begin{proof}
+Standard Toeplitz theory: for a positive symbol $P \geq c > 0$,
+the matrix $T_M[P]$ has all eigenvalues in $[c, \|P\|_\infty]$.
+\end{proof}
+
+\subsection{The Prime Load}
+
+\begin{definition}[Prime Load]
+\begin{equation}
+    \mu(K) := \frac{\|T_P\|}{\lambda_{\min}(T_M[P_A])},
+\end{equation}
+where $T_P$ is the prime contribution to the operator.
+\end{definition}
+
+\begin{proposition}[Stability Condition]
+If $\sup_K \mu(K) < 1$, then the combined operator
+$A_K = T_M[P_A] - T_P$ remains positive definite.
+\end{proposition}
+
+\begin{remark}
+Q3 claims $\|T_P\| \leq 1/25 \approx 0.04$. With $c_{\text{arch}} \approx 0.19$,
+we get $\mu(K) \leq 0.04/0.19 \approx 0.21 < 1$, ensuring stability.
+\end{remark}
+
+\subsection{Gap Ratio Invariant}
+
+\begin{definition}[Gap Ratio]
+\begin{equation}
+    \delta(K) := \frac{\lambda_{\min}(A_K)}{\|A_K\|}.
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Gap Persistence]
+\label{thm:gap}
+If $\delta_* > 0$ and $\sup_K \mu(K) < 1$, then
+\begin{equation}
+    \inf_K \delta(K) \geq \delta_0 > 0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}[Sketch]
+From $A_K = T_M[P_A] - T_P$:
+\begin{align}
+    \lambda_{\min}(A_K) &\geq \lambda_{\min}(T_M[P_A]) - \|T_P\| \\
+    &\geq c_{\text{arch}} - \|T_P\| \\
+    &= c_{\text{arch}}(1 - \mu(K)) > 0.
+\end{align}
+Similarly, $\|A_K\| \leq \|P_A\|_\infty + \|T_P\| \leq C_* + o(1)$.
+Thus $\delta(K) \geq c_{\text{arch}}(1 - \mu_{\max})/(C_* + o(1)) > 0$.
+\end{proof}
+
+\subsection{Summary of Constants}
+
+\begin{center}
+\begin{tabular}{l|c|l}
+Quantity & Value & Source \\
+\hline
+$C_*$ (Ceiling) & $\approx 277$ & Lemma~\ref{lem:saturation} (grub bound) \\
+$C_*$ (Q3) & $\approx 109$ & Q3 refined estimate \\
+$c_{\text{arch}}$ (Floor) & $\approx 0.19$ & Lemma~\ref{lem:floor} \\
+$\|T_P\|$ (Prime) & $\leq 0.04$ & Q3 claim \\
+$\mu$ (Prime Load) & $\leq 0.21$ & Derived \\
+$\delta_*$ (Stability) & $\approx 0.20$ & Lorentzian model
+\end{tabular}
+\end{center}

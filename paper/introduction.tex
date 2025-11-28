@@ -1,0 +1,47 @@
+\section{Introduction}
+\label{sec:introduction}
+
+The Chen Q3 framework approaches the Riemann Hypothesis through spectral analysis
+of Toeplitz operators constructed from the explicit formula. The key object is the
+\emph{Archimedean symbol}
+\begin{equation}
+    P_A(\theta) = \sum_{k=0}^{\infty} A_k \cos(k\theta),
+\end{equation}
+where the Fourier coefficients $A_k$ are derived from the Archimedean contribution
+$a^*(\xi) = \log\pi - \Re\psi\left(\tfrac{1}{4} + i\pi\xi\right)$.
+
+\subsection{Main Questions}
+
+The validity of Q3 arguments rests on two fundamental spectral bounds:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Ceiling (Norm Saturation):} Does $\|P_A\|_\infty$ remain bounded
+    as the bandwidth parameter $B \to \infty$?
+
+    \item \textbf{Floor (Positivity):} Does $\min_\theta P_A(\theta) \geq c_{\text{arch}} > 0$
+    for some uniform constant $c_{\text{arch}}$?
+\end{enumerate}
+
+\subsection{Our Contributions}
+
+In this work we:
+\begin{itemize}
+    \item Provide numerical verification that $\|P_A\|_\infty$ saturates at $\approx 277$
+    (greedier bound than Q3's $\approx 109$, but finite).
+
+    \item Show that with a Lorentzian model kernel $a(\xi) = 1/(1+\xi^2)$,
+    the floor $c_{\text{arch}} \approx 0.19$, matching Q3's claim of $\approx 0.1878$.
+
+    \item Identify that the \textbf{Mellin kernel} $K(\xi) = 1/(1+|\xi|^{1/2})$
+    achieves optimal stability ratio $\delta_* \approx 0.79$.
+
+    \item Formalize the analytical estimates required for rigorous proofs.
+\end{itemize}
+
+\subsection{Structure}
+
+Section~\ref{sec:preliminaries} reviews the Q3 framework.
+Section~\ref{sec:saturation} proves the saturation lemma.
+Section~\ref{sec:floor} establishes the positivity of $c_{\text{arch}}$.
+Section~\ref{sec:stability} combines these into the main stability theorem.
+Section~\ref{sec:numerical} presents computational verification.

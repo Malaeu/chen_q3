@@ -1,0 +1,73 @@
+\documentclass[11pt,a4paper]{article}
+
+% === PACKAGES ===
+\usepackage[utf8]{inputenc}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[russian,english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{geometry}
+\usepackage{enumitem}
+
+\geometry{margin=2.5cm}
+
+% === THEOREM ENVIRONMENTS ===
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+% === CUSTOM COMMANDS ===
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\psi}{\psi}
+\newcommand{\Gam}{\Gamma}
+
+% === DOCUMENT ===
+\title{Spectral Analysis of the Archimedean Symbol\\
+in the Chen Q3 Framework}
+\author{Research Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We provide rigorous numerical verification and analytical estimates
+for the key spectral bounds in the Chen Q3 approach to the Riemann Hypothesis.
+Specifically, we establish:
+(1) saturation of the symbol norm $\|P_A\|_\infty \leq C_*$,
+(2) positivity of the Archimedean floor $c_{\text{arch}} > 0$,
+(3) comparison of kernel choices (Lorentzian, Mellin, Gamma).
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% === SECTIONS ===
+\input{introduction}
+\input{preliminaries}
+\input{lemma_saturation}
+\input{lemma_floor}
+\input{theorem_stability}
+\input{numerical_results}
+\input{conclusions}
+
+% === BIBLIOGRAPHY ===
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

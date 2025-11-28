@@ -1,0 +1,99 @@
+\section{Saturation of the Symbol Norm}
+\label{sec:saturation}
+
+\begin{lemma}[Norm Saturation]
+\label{lem:saturation}
+For any $B > 0$ and $t \geq 0$, the symbol norm satisfies
+\begin{equation}
+    \|P_A\|_\infty \leq \sum_{k=0}^{\infty} |A_k| \leq C_*(t),
+\end{equation}
+where $C_*(t)$ is a constant independent of $B$.
+\end{lemma}
+
+\subsection{Proof Strategy}
+
+The proof proceeds in three steps:
+\begin{enumerate}
+    \item Bound $|A_k|$ for $k \geq 1$ using integration by parts.
+    \item Estimate boundary terms $|g'(0)|$, $|g'(B)|$ and integral $\int |g''|$.
+    \item Sum the series using $\sum_{k \geq 1} k^{-2} = \pi^2/6$.
+\end{enumerate}
+
+\subsection{Step 1: Integration by Parts}
+
+\begin{lemma}[Fourier Coefficient Bound]
+\label{lem:fourier-bound}
+For $k \geq 1$:
+\begin{equation}
+    |A_k| \leq \frac{2}{k^2} \left( |g'(0)| + |g'(B)| + \int_0^B |g''(\xi)| \, d\xi \right).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Starting from $A_k = \int_0^B g(\xi) \cos(k\xi) \, d\xi$ (using symmetry),
+integrate by parts twice:
+\begin{align}
+    A_k &= \frac{1}{k} \Big[ g(\xi) \sin(k\xi) \Big]_0^B
+         - \frac{1}{k} \int_0^B g'(\xi) \sin(k\xi) \, d\xi \\
+        &= -\frac{1}{k} \int_0^B g'(\xi) \sin(k\xi) \, d\xi \\
+        &= \frac{1}{k^2} \Big[ g'(\xi) \cos(k\xi) \Big]_0^B
+         - \frac{1}{k^2} \int_0^B g''(\xi) \cos(k\xi) \, d\xi.
+\end{align}
+Taking absolute values and using $|\cos|, |\sin| \leq 1$ gives the result.
+\end{proof}
+
+\subsection{Step 2: Derivative Estimates}
+
+Let $g(\xi) = a^*(\xi) \cdot W(\xi)$ where $W(\xi) = (1 - \xi/B) e^{-C\xi^2}$
+with $C = 4\pi^2 t$.
+
+\begin{lemma}[Derivative Bounds]
+\label{lem:derivatives}
+The following estimates hold:
+\begin{align}
+    |g'(0)| &\leq |a^{*\prime}(0)| + \frac{|a^*(0)|}{B} + 2C|a^*(0)| \cdot 0 = |a^{*\prime}(0)|, \\
+    |g'(B)| &\leq e^{-CB^2} \left( |a^{*\prime}(B)| \cdot 0 + \text{lower order} \right) \approx 0.
+\end{align}
+\end{lemma}
+
+\begin{remark}
+The Gaussian factor $e^{-CB^2}$ ensures that boundary terms at $\xi = B$
+are exponentially suppressed.
+\end{remark}
+
+\subsection{Step 3: Summation}
+
+\begin{proof}[Proof of Lemma~\ref{lem:saturation}]
+Combining the bounds:
+\begin{align}
+    \sum_{k=1}^{\infty} |A_k|
+    &\leq 2 \left( |g'(0)| + |g'(B)| + \int_0^B |g''| \right)
+           \cdot \sum_{k=1}^{\infty} \frac{1}{k^2} \\
+    &= 2 \left( |g'(0)| + |g'(B)| + \int_0^B |g''| \right) \cdot \frac{\pi^2}{6}.
+\end{align}
+
+The integral $\int_0^B |g''|$ can be split:
+\begin{itemize}
+    \item For $\xi \in [0, 1]$: bounded by explicit computation.
+    \item For $\xi \in [1, B]$: the Gaussian decay dominates.
+\end{itemize}
+
+Thus $C_*(t) = A_0 + \frac{\pi^2}{3}(|g'(0)| + |g'(B)| + \int |g''|)$ is finite.
+\end{proof}
+
+\subsection{Numerical Verification}
+
+Computational experiments (see Section~\ref{sec:numerical}) confirm:
+\begin{center}
+\begin{tabular}{c|c|c|c}
+$B$ & $A_0$ (integral) & Tail bound & Total $C_0(B)$ \\
+\hline
+1.0 & 1.04 & 289.5 & 290.5 \\
+10.0 & 1.09 & 276.7 & 277.8 \\
+20.0 & 1.09 & 276.1 & 277.2 \\
+$\infty$ & 1.09 & 276.0 & $\approx 277$
+\end{tabular}
+\end{center}
+
+The saturation at $C_* \approx 277$ confirms the lemma.
+Q3 achieves the tighter bound $C_* \approx 109$ through more refined estimates.

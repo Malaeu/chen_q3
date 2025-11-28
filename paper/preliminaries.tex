@@ -1,0 +1,80 @@
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+\subsection{The Archimedean Contribution}
+
+The explicit formula for $\zeta(s)$ contains an Archimedean term arising from
+the Gamma factor $\Gamma(s/2)$. Its contribution to the symbol is:
+\begin{equation}
+    a^*(\xi) = \log\pi - \Re\psi\left(\tfrac{1}{4} + i\pi\xi\right),
+\end{equation}
+where $\psi(z) = \Gamma'(z)/\Gamma(z)$ is the digamma function.
+
+\begin{remark}[Asymptotic Behavior]
+For large $|\xi|$:
+\begin{equation}
+    \psi\left(\tfrac{1}{4} + i\pi\xi\right) = \log(\pi|\xi|) + O(|\xi|^{-2}).
+\end{equation}
+Thus $a^*(\xi) \to -\infty$ as $|\xi| \to \infty$, but slowly (logarithmically).
+\end{remark}
+
+\subsection{The Smoothing Window}
+
+To control convergence, we introduce a window function:
+\begin{equation}
+    \Phi_{B,t}(\xi) = \left(1 - \frac{|\xi|}{B}\right)_+ \cdot e^{-4\pi^2 t \xi^2},
+\end{equation}
+where $(x)_+ = \max(0, x)$ denotes the positive part.
+
+\begin{itemize}
+    \item The linear factor $(1 - |\xi|/B)_+$ provides compact support on $[-B, B]$.
+    \item The Gaussian $e^{-4\pi^2 t \xi^2}$ ensures rapid decay of derivatives.
+    \item Parameter $t \geq 0$ controls the smoothing strength.
+\end{itemize}
+
+\subsection{Fourier Coefficients}
+
+The Archimedean symbol has Fourier expansion:
+\begin{equation}
+    P_A(\theta) = \sum_{k=0}^{\infty} A_k \cos(k\theta),
+\end{equation}
+where
+\begin{equation}
+    A_k = \int_{-B}^{B} g(\xi) \cos(k\xi) \, d\xi, \quad
+    g(\xi) = a^*(\xi) \cdot \Phi_{B,t}(\xi).
+\end{equation}
+
+\subsection{Key Quantities}
+
+\begin{definition}[Norm and Floor]
+\begin{align}
+    \|P_A\|_\infty &= \max_{\theta \in [-\pi, \pi]} |P_A(\theta)|, \\
+    c_{\text{arch}} &= \min_{\theta \in [-\pi, \pi]} P_A(\theta).
+\end{align}
+\end{definition}
+
+\begin{definition}[Stability Ratio]
+\begin{equation}
+    \delta_* = \frac{c_{\text{arch}}}{\|P_A\|_\infty}.
+\end{equation}
+The ratio $\delta_* > 0$ ensures that $P_A$ is bounded away from zero
+relative to its maximum.
+\end{definition}
+
+\subsection{Model Kernels}
+
+For analytical tractability, we consider model kernels:
+
+\begin{enumerate}
+    \item \textbf{Lorentzian:} $a(\xi) = \dfrac{1}{1 + \xi^2}$
+    \quad (decay $\sim |\xi|^{-2}$)
+
+    \item \textbf{Mellin:} $a(\xi) = \dfrac{1}{1 + |\xi|^{1/2}}$
+    \quad (decay $\sim |\xi|^{-1/2}$)
+
+    \item \textbf{Gamma:} $a(\xi) = |\Gamma(\tfrac{1}{4} + i\pi\xi)|^2$
+    \quad (exponential decay)
+\end{enumerate}
+
+The Lorentzian captures the essential $O(|\xi|^{-2})$ tail behavior of the
+digamma function while remaining positive, making it suitable for rigorous estimates.
