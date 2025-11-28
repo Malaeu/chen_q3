@@ -1,0 +1,36 @@
+\section{Reproducibility Data for A3, RKHS, and IND/AB}\label{app:a3-repro}
+
+The tables in this appendix reproduce the legacy certificate outputs used in the
+Toeplitz bridge (A3) and in the RKHS trace caps. They are not part of the analytic
+proof and serve only as provenance for the archived JSON logs under \texttt{cert/bridge/}.
+
+\begin{center}
+  \footnotesize\itshape Reproducibility archive only – not used in the proof of Theorem~\ref{thm:Main-positivity}.
+\end{center}
+
+\subsection*{A3 lock parameters}
+\input{sections/A3/param_tables}
+
+\begin{center}
+  \small
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabular}{@{}p{1.6cm}p{5.5cm}p{2.8cm}p{2.8cm}@{}}
+    \toprule
+    Module & Legacy artefact (read-only) & Primary cite & Secondary cite \\
+    \midrule
+    $\mathrm{A3}$ & \path{cert/bridge/K*_A3_lock.json};\newline \path{proofs/A3_global/logs/a3_global_lock_vampire.log} & Theorem~\ref{thm:A3} & Section~\ref{sec:T5-compact} \\
+    RKHS & \path{cert/bridge/K*_trace.json};\newline \path{cert/bridge/yes_gate_chain_report_trace.json} & Theorem~\ref{thm:rkhs-tstar} & Proposition~\ref{prop:a3-prime-cap} \\
+    $\mathrm{IND/AB}$ & \path{cert/bridge/K1_blocks.json};\newline \path{cert/bridge/K1_step_next.json};\newline \path{proofs/ABK_aggregation/tptp/ab_lin_k11.p} & Appendix~\ref{app:a3-repro} & Theorem~\ref{md:thm:INDprime} \\
+    $\mathrm{T5}$ & \path{cert/bridge/K*_grid.json};\newline \path{proofs/T5_global_transfer/tptp/t5_{\{compact,grid\}}.p} & Theorem~\ref{thm:T5-compact} & \path{appendix/T5_parameters.tex} \\
+    \bottomrule
+  \end{tabular}
+  \renewcommand{\arraystretch}{1.0}
+\end{center}
+
+\subsection*{Prime trace caps (legacy)}
+\noindent\emph{Historical trace-mode reports; analytic arguments use the uniform bound $\RhoGate$ at $t_0=\tfrac{7}{10}$.}
+\input{sections/RKHS/prime_cap_table}
+
+\subsection*{IND/AB schedule}
+\input{sections/IND_AB/ind_schedule_table}

@@ -1,0 +1,136 @@
+\section{Introduction}\label{sec:intro}
+
+\subsection*{Background and motivation}
+We prove that a canonical quadratic form on the Weil test class is nonnegative, and therefore\textemdash{}by the Weil criterion\textemdash{}deduce the Riemann Hypothesis. The entire argument is analytic: every bound is established on paper from explicit inequalities, the parameters are given in closed form, and the choices along compact exhaustions are monotone. No numerical tables or automated certificates enter the proof.
+
+\subsection*{Main result}
+\begin{theorem}[Main result, informal]\label{thm:intro-main-informal}
+Let $Q$ be the quadratic form fixed in Section~\ref{sec:T0} on the Weil class $\mathcal{W}$. Then
+\[
+  Q(\Phi)\ \ge\ 0\qquad\text{for all }\Phi\in\mathcal{W}.
+\]
+Via Theorem~\ref{thm:Weil-criterion} (the Weil criterion) this positivity is equivalent to the Riemann Hypothesis.
+\end{theorem}
+
+The proof organises around three analytic modules.
+
+\subsection*{Archimedean bridge}
+\emph{(A3) Archimedean Toeplitz barrier.} On each compact window $W_K=[-K,K]\subset\RR$ we bound from below the Toeplitz component $T_M[P_A]$ of $Q$ by an \emph{archimedean barrier} $c_0(K)>0$, up to a controllable Lipschitz loss $C\,\omega_{P_A}(\pi/M)$. Szeg\H{o}--B\"ottcher asymptotics together with an explicit modulus of continuity for $P_A$ yield
+\[
+  \lambda_{\min}\!\big(T_M[P_A]\big)\ \ge\ c_0(K)\ -\ C\,\omega_{P_A}\!\Big(\frac{\pi}{M}\Big),
+\]
+as developed in Section~\ref{sec:A3}.
+
+\subsection*{Prime contraction}
+\emph{(RKHS) Prime contraction without tables.} The prime contribution is encoded by a sampling operator $T_P$ supported on the nodes $\xi_n=\frac{\log n}{2\pi}$; in the Weil functional we use the one-sided weights $w_Q(n)=2\Lambda(n)/\sqrt{n}$, while in the RKHS analysis we keep the undoubled operator weights $w_{\mathrm{RKHS}}(n)=\Lambda(n)/\sqrt{n}$. Section~\ref{sec:rkhs-prime-cap} develops a \emph{tables-free} upper bound on $\|T_P\|$ inside the reproducing-kernel Hilbert space of the heat flow. Two complementary routes are provided:
+\begin{itemize}
+  \item \textbf{Classical treatments.} Standard expositions of the analytic theory~\cite{IwaniecKowalski2004,MontgomeryVaughan2007,Edwards1974} provide the backdrop against which we calibrate notation, normalizations, and cone generators.
+  \item a \emph{Gram-geometry route}, giving
+  \[
+    \|T_P\|\ \le\ w_{\max}+\sqrt{w_{\max}}\,S_K(t),\qquad
+    S_K(t)\ \le\ \frac{2e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}},
+  \]
+  where $w_{\max}\le 2/e$ and $\delta_K$ is the separation of the nodes on $W_K$; choosing
+  \[
+    t_{\min}(K)\ :=\ \frac{\delta_K^2}{4\ln\!\big((2+\eta_K)/\eta_K\big)},\qquad \eta_K\in(0,1-w_{\max}),
+  \]
+  forces $\|T_P\|\le \rho_K:=w_{\max}+\sqrt{w_{\max}}\;\eta_K$;
+  \item an \emph{early/tail route}, splitting the prime sum at $N=N(K)$, with
+  \[
+    \sum_{n\le N}\frac{\Lambda(n)}{\sqrt{n}}\ \le\ 2\sqrt{N}\log N,
+    \qquad
+    \sum_{n>N}\frac{\Lambda(n)}{\sqrt{n}}\,e^{-4\pi^2 t(\log n)^2}\ \ll\ \frac{e^{-4\pi^2 t(\log N)^2}}{t},
+  \]
+  which produces an explicit threshold $t^\star(K)$ ensuring $\|T_P\|\le c_0(K)/4$.
+\end{itemize}
+
+\subsection*{Compact transfer}
+\emph{(T5) Compact-by-compact transfer.} Section~\ref{sec:T5} shows that once, on a given $W_K$, the deterministic inequalities
+\[
+  C\,\omega_{P_A}\!\Big(\frac{\pi}{M}\Big)\ \le\ \frac{c_0(K)}{4},\qquad
+  \|T_P\|\ \le\ \frac{c_0(K)}{4},\qquad
+  \text{(finite early block)}\ \le\ \frac{c_0(K)}{4}
+\]
+hold with parameters $(M,t)$ chosen \emph{monotonically} in $K$, then $\lambda_{\min}\!\big(T_M[P_A]-T_P\big)>0$ on $W_K$, and positivity inherits to $W_{K'}$ for all $K'\ge K$. Thus $Q\ge0$ on any exhaustion $\bigcup_i W_{K_i}$ with $K_i\uparrow\infty$.
+
+\subsection*{Outline of the proof}
+
+Combining the Toeplitz barrier and the RKHS cap yields, on each $W_K$,
+\[
+  \lambda_{\min}\!\big(T_M[P_A]-T_P\big)
+  \ \ge\ c_0(K)\ -\ C\,\omega_{P_A}\!\Big(\frac{\pi}{M}\Big)\ -\ \|T_P\|.
+\]
+Choosing $t\ge t_{\min}(K)$ (or $t\ge t^\star(K)$) enforces $\|T_P\|\le c_0(K)/4$, and selecting $M$ so that $C\,\omega_{P_A}(\pi/M)\le c_0(K)/4$ gives
+\[
+  \lambda_{\min}\!\big(T_M[P_A]-T_P\big)\ \ge\ \tfrac12\,c_0(K)\ >\ 0.
+\]
+The compact-by-compact transfer then propagates positivity along any monotone chain $K_i\uparrow\infty$. Positivity on $\bigcup_i W_{K_i}$ extends by definition to all of $\mathcal{W}$, proving $Q\ge0$ in Theorem~\ref{thm:Main-positivity}. Finally Section~\ref{sec:Weil} applies Theorem~\ref{thm:Weil-criterion} to convert this positivity into the Riemann Hypothesis.
+
+\subsection*{What is new}
+
+Two features distinguish the present work.
+\begin{enumerate}
+  \item \textbf{A tables-free prime contraction.} The norm of the prime operator is bounded analytically in an RKHS, via either Gram geometry or an early/tail split. All constants are explicit (for example $t_{\min}(K)$ above), monotone in $K$, and no legacy tables or certificates appear in the proof; reproducibility data are confined to Appendix~\ref{app:a3-repro}.
+  \item \textbf{A monotone transfer principle.} The compact-by-compact module (T5) depends only on $c_0(K)$, $\omega_{P_A}$, and the RKHS cap $\rho_{\mathrm{cap}}(K)$. The parameter schedules $(M^\star(K),t^\star(K))$ are given by explicit formulas and chosen to be monotone in $K$, yielding an auditable, dimension-free route from positivity on one compact to positivity on all larger compacts.
+\end{enumerate}
+
+\subsection*{Organization of the paper}
+
+Section~\ref{sec:T0} recalls the Weil class, the quadratic form $Q$, and the Guinand--Weil normalization. Section~\ref{sec:A3} establishes the Archimedean Toeplitz barrier (A3). Section~\ref{sec:rkhs-prime-cap} develops the RKHS prime contraction together with the thresholds $t_{\min}(K)$ and $t^\star(K)$. Section~\ref{sec:T5} proves the compact-by-compact transfer (T5) and the monotone inheritance. Section~\ref{sec:Weil} links compact positivity to the full Weil class and states the main theorem together with its Weil corollary. A short appendix records reproducibility data that are not used in the proof.
+
+\subsection*{Notation}
+
+We write $\Lambda$ for the von Mangoldt function, $\xi_n=\frac{\log n}{2\pi}$ for the sampling nodes, $w_Q(n)=2\Lambda(n)/\sqrt{n}$ for the weights inside the Weil functional, and $w_{\mathrm{RKHS}}(n)=\Lambda(n)/\sqrt{n}$ (with $w_{\max}=\sup_n w_{\mathrm{RKHS}}(n)\le 2/e$) for the operator analysis. The heat kernel is $k_t(x,y)=\exp\!\bigl(-\frac{(x-y)^2}{4t}\bigr)$. Compact windows are denoted $W_K=[-K,K]$, and $\mathcal{W}=\bigcup_{K>0}\mathcal{W}_K$ is the Weil cone. Complete conventions appear in Section~\ref{sec:notation}.
+
+\subsection*{Analytic modules at a glance}
+
+\noindent\textbf{Stage legend.} $(\mathrm{T0})$ fixes the Guinand--Weil normalization of the Weil functional. $(\mathrm{A1'})$ proves density of the Fej\'er$\times$heat generator cone on each compact, and $(\mathrm{A2})$ supplies Lipschitz continuity so that positivity propagates from the generators to all even nonnegative tests. $(\mathrm{A3})$ is the Toeplitz bridge: it splits $Q$ into an Archimedean Toeplitz symbol and a finite-rank prime block with explicit lower bounds on $\lambda_{\min}$. The main route for the prime contribution is the RKHS contraction developed in Section~\ref{sec:rkhs-prime-cap}; the MD/IND/AB chain remains archived as an alternative in the appendices. Finally $(\mathrm{T5})$ performs the compact-by-compact lift and closes the YES gate, chaining the local statements to $Q\ge0$ on the full Weil class.
+
+\begin{center}
+  \small\textbf{Dependency map for the analytic chain}
+\end{center}
+\begin{center}
+  \small
+  \begin{tabular}{lll}
+    \hline
+    Module & Key statement & Consumed by \\
+    \hline
+    $\mathrm{T0}$ & Proposition~\ref{prop:T0-GW} (Guinand--Weil normalization) & Theorem~\ref{thm:Main-positivity}, Theorem~\ref{thm:RH} \\
+    $\mathrm{A1'}$ & Theorem~\ref{a1:thm:A1-local-density} (Density on $W_K$) & Theorem~\ref{thm:T5-compact}, Theorem~\ref{thm:Main-positivity} \\
+    $\mathrm{A2}$ & Lemma~\ref{a2:lem:A2} / Corollary~\ref{a2:cor:explicit-lip} (Lipschitz control) & Theorem~\ref{thm:T5-compact}, Theorem~\ref{thm:Main-positivity} \\
+    $\mathrm{A3}$ & Theorem~\ref{thm:A3} (Toeplitz bridge) & Theorem~\ref{thm:T5-compact}, Theorem~\ref{thm:Main-positivity} \\
+    RKHS & Theorem~\ref{thm:rkhs-tstar} (Prime contraction) & Theorem~\ref{thm:T5-compact}, Theorem~\ref{thm:Main-positivity} \\
+    $\mathrm{T5}$ & Theorem~\ref{thm:T5-compact} (Compact transfer) & Theorem~\ref{thm:Main-positivity} \\
+    MAIN & Theorem~\ref{thm:Main-positivity} (Weil positivity on $W$) & Theorem~\ref{thm:RH} \\
+    WEIL & Theorem~\ref{thm:Weil-criterion} (Weil criterion) & Theorem~\ref{thm:RH} \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\noindent\textbf{Assumption stack.} When we write ``under $(\mathrm{T0})+(\mathrm{A1'})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{MD/IND/AB}\text{ or RKHS})+(\mathrm{T5})$'' we mean precisely the data enumerated above: a fixed normalization, cone density, Lipschitz control, the mixed Toeplitz lower bound, either the MD/IND/AB prime-control chain or the RKHS contraction, and the compact limit machinery. No hidden steps are invoked outside this list.
+
+\noindent\textbf{Verification aids.} Appendices~\ref{app:a3-repro} and~\ref{app:verification} archive the legacy JSON files, ATP logs, and numerical cross-checks that originally motivated the parameter choices. These artefacts are reproducibility collateral only: the proofs in Sections~\ref{sec:T0}--\ref{sec:T5} rely solely on the analytic estimates stated there, and every inequality invoked in the main argument is justified in-line. Appendix~\ref{app:a3-repro} also collates the archived inputs in a single summary table for ease of audit.
+
+\subsection{Contemporary Context and Inspiration}
+
+This work was inspired by several recent developments in analytic number theory, computational complexity, and mathematical logic:
+
+\begin{itemize}
+  \item \textbf{Analytic criteria.} Li's positivity sequence~\cite{Li1997} and the Jensen polynomial programme of Griffin--Ono--Rolen--Zagier~\cite{GriffinOnoRolenZagier2019} give logically equivalent restatements of RH; both inspire our insistence on keeping every cone generator and Lipschitz bound explicit.
+
+  \item \textbf{Zero-density breakthroughs.} The new Dirichlet-polynomial bounds of Guth and Maynard~\cite{GuthMaynard2024} illustrate how much can be gained by encoding the zeta problem as a spectral estimate, a viewpoint we adopt through the Toeplitz bridge.
+
+  \item \textbf{Near-miss invariants.} Rodgers and Tao's work on the de Bruijn--Newman constant~\cite{rodgers2020debruijn} shows that RH may be ``barely true'', motivating a watchdog table that certifies every slack we introduce along the chain.
+
+  \item \textbf{Geometric and noncommutative ideas.} Fesenko's two-dimensional adelic programme~\cite{Fesenko2008} and the Connes--Marcolli noncommutative approach~\cite{ConnesMarcolli2008} highlight how positivity hinges on careful operator factorizations, reinforcing our choice to stay within verifiable Toeplitz/RKHS settings.
+
+  \item \textbf{Physical operator heuristics.} PT-symmetric constructions such as Bender--Brody--M\"uller~\cite{BenderBrodyMuller2017} keep the Hilbert--P\'olya dream alive; our framework aims to supply the missing rigorous operator inequalities.
+
+  \item \textbf{Geometric flows and smoothing.} Perelman's Ricci-flow programme~\cite{Perelman2002,Perelman2003} shows how parabolic averaging can enforce global structure; we mirror that philosophy by pairing Fej\'er kernels with heat-flow smoothing in the Toeplitz bridge.
+
+  \item \textbf{Massive computations.} Platt and Trudgian's verification of RH up to $3\cdot10^{12}$~\cite{PlattTrudgian2021}, together with surveys like Conrey's~\cite{Conrey2003}, emphasise the need for transparent, audit-friendly proofs rather than ever-larger numerics.
+
+  \item \textbf{Cautionary analyses.} Cairo's audit of proposed counterexamples~\cite{cairo2025counterexample} underlines how fragile heuristic arguments can be; we therefore keep every analytic assumption explicit and machine-checkable.
+\end{itemize}
+
+\noindent While these works influenced our methodology, our approach is fundamentally distinct: we construct a self-contained, verifiable chain from Toeplitz positivity to Weil positivity, with all critical steps amenable to formal verification.

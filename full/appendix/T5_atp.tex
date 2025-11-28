@@ -1,0 +1,19 @@
+This section collects the auxiliary ATP remarks referenced by the main T5 text.
+All ATP mentions are parked here so that the core discussion stays concise.
+
+\subsection*{C.1\quad T5 formal verification scope}\label{app:T5-scope}
+The automated proofs cover the following ingredients of the T5 transfer:
+\begin{itemize}
+  \item \textbf{Series/limit step.} The inductive-limit description
+  $\bigcup_i \mathcal W_{K_i}=\mathcal W$ is well-defined, and the monotone
+  parameter schedules respect the inclusions $\mathcal W_{K_i}\hookrightarrow \mathcal W_{K_{i+1}}$.
+  \item \textbf{Tail control.} Fej\'er$\times$heat leakage outside $[-K,K]$
+  is bounded by Gaussian tails at the chosen symbol scale $t_{\mathrm{sym}}$.
+  \item \textbf{Grid lift.} Lipschitz continuity of $P_A$ yields
+  $\lambda_{\min}(T_M[P_A])\ge c_0(K)-C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M)$,
+  transferring positivity from grid points to $\mathcal W_K$.
+  \item \textbf{Compact limit.} Along chains $K_1<K_2<\cdots$ with monotone schedules,
+  positivity is preserved and passes to the limit space.
+\end{itemize}
+The TPTP inputs and logs for these checks are archived in
+\texttt{proofs/T5\_global\_transfer/}.

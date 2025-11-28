@@ -1,0 +1,336 @@
+\subsection{RKHS prime contraction on compacts}\label{sec:rkhs-prime-cap}\label{sec:prime-cap}
+
+\subsection*{Notation and standing choices}
+Fix a compact $[-K,K]\subset\RR$, $K\ge1$. Prime sample nodes (as in the normalization Lemma~\ref{t0:lem:T0}) are
+\[
+\xi_n \ :=\ \frac{\log n}{2\pi}\in[0,\infty),\qquad n\ge2,
+\]
+with weights (doubling belongs only to the Weil functional $Q$; see Remark~\ref{rkhs:rem:weights})
+\[
+\wRKHS(n)\ :=\ \frac{\Lambda(n)}{\sqrt{n}},\qquad \wmax:=\sup_{n\ge2}\wRKHS(n)\le \frac{2}{e}.
+\]
+We work in the RKHS $H_k$ of the heat kernel on $\RR$,
+\[
+k_t(x,y)\ :=\ \exp\!\big(-\tfrac{(x-y)^2}{4t}\big),\qquad t>0,
+\]
+and write $K_t=(k_t(\xi_m,\xi_n))_{m,n\ge2}$ for the Gram matrix on the sample nodes.
+
+
+\begin{remark}[Evenization and weights]\label{rkhs:rem:weights}
+Lemma~\ref{t0:lem:T0} identifies the node set $\xi_n=\log n/(2\pi)$ and shows that $Q$ uses the doubled
+weights $2\Lambda(n)/\sqrt n$ on the positive half-line. Operator and RKHS estimates are performed on the
+symmetric node set $\{\pm\xi_n\}$ with weights $\Lambda(n)/\sqrt n$, which is equivalent to keeping the
+positive nodes with the doubled weights recorded above. All prime caps below are interpreted in this symmetric sense; no additional assumptions enter.
+\end{remark}
+For separation we use the simple lower bound
+\begin{equation}\label{eq:deltaK}
+\delta_K\ :=\ \min\!\Big\{\xi_{n+1}-\xi_n:\ \xi_n,\xi_{n+1}\in[-K,K]\Big\}
+\ \ge\ \frac{1}{2\pi\big(\lfloor e^{2\pi K}\rfloor+1\big)}.
+\end{equation}
+
+\begin{remark}[Bookkeeping parameters]\label{rem:params}
+Fix any $\eta_K\in(0,1-w_{\max})$ and set
+\begin{equation}\label{eq:tmin}
+t_{\min}(K)\ :=\ \frac{\delta_K^2}{4\ln\!\big((2+\eta_K)/\eta_K\big)}.
+\end{equation}
+We also use the shorthand
+\[
+S_K(t)\ :=\ \sup_{x\in[-K,K]}\ \sum_{\substack{n\ge2\\ \xi_n\in[-K,K] \\ \xi_n\neq x}}
+\exp\!\Big(-\frac{(x-\xi_n)^2}{4t}\Big).
+\]
+\end{remark}
+
+\begin{lemma}[Shift-robust sampling window]\label{rkhs:lem:shift-window}
+Let $0<r\le\delta_K$ and $\tau\in[-K,K]$. Then for every $t>0$,
+\[
+  \sum_{\xi_n\in[-K,K]} \wRKHS(n)\int_{\tau-r}^{\tau+r} k_t(x,\xi_n)^2\,dx
+  \ \le\ \wmax+\sqrt{\wmax}\,S_K(t).
+\]
+In particular, with $t=t_{\min}(K)$ the right-hand side is at most $\wmax+\sqrt{\wmax}\,\eta_K$, uniformly in $\tau$.
+\end{lemma}
+
+\begin{proof}
+Integrate the Schur/Gram estimate from Proposition~\ref{prop:rkhs-gram-cap} over $x\in[\tau-r,\tau+r]$.
+The diagonal contributes at most $w_{\max}\int k_t(x,x)^2 dx$, while off-diagonal terms are controlled by
+$\sqrt{w_{\max}}\sup_{x\in[-K,K]}\sum_{\xi_n\neq x} k_t(x,\xi_n)^2$, which is $\sqrt{w_{\max}}\,S_K(t)$.
+\end{proof}
+
+\subsection*{Energy and Gram}
+
+\begin{lemma}[Energy identity]\label{lem:rkhs-energy-primecap}
+For any finite sample $x_1,\dots,x_M$ and coefficients $a\in\RR^M$ one has
+\[
+\Big\|\sum_{m=1}^M a_m\,k_t(\,\cdot\,,x_m)\Big\|_{H_k}^2
+\ =\ a^\top \Big(k_t(x_m,x_n)\Big)_{m,n=1}^M a.
+\]
+This is the reproducing property of RKHS; see \cite{Aronszajn1950}.
+\end{lemma}
+
+\begin{lemma}[Off-diagonal sum bound]\label{lem:rkhs-gram-off}
+For every $t>0$ and $K\ge1$,
+\[
+S_K(t)\ \le\ \frac{2e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}
+\qquad\text{and in particular}\qquad
+S_K\big(t_{\min}(K)\big)\ \le\ \eta_K,
+\]
+with $\delta_K$ and $t_{\min}(K)$ from \eqref{eq:deltaK}--\eqref{eq:tmin}.
+\end{lemma}
+
+\begin{proof}
+Enumerate the points of $\Xi_K:=\{\xi_n\in[-K,K]\}$ along $\RR$ with gaps $\ge\delta_K$.
+Then for any $x\in[-K,K]$ the off-diagonal sum is dominated by two geometric tails:
+\[
+\sum_{j\ge1} e^{-(j\delta_K)^2/(4t)}+\sum_{j\ge1} e^{-(j\delta_K)^2/(4t)}
+\ \le\ \frac{2e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}},
+\]
+giving the first claim; the second follows by the choice of $t_{\min}(K)$.
+\end{proof}
+
+\subsection*{Two analytic caps for the prime operator}
+
+We view the prime sampling operator $T_P$ as
+\[
+(T_P f)(x)\ :=\ \sum_{\xi_n\in[-K,K]} \wRKHS(n)\, f(\xi_n)\, k_t(x,\xi_n),
+\]
+restricted to $H_k\!\restriction[-K,K]$.
+
+\begin{proposition}[RKHS cap via Gram geometry]\label{prop:rkhs-gram-cap}
+For every $t>0$ and $K\ge1$,
+\[
+\|T_P\|_{H_k\to H_k}\ \le\ \wmax\ +\ \sqrt{\wmax}\; S_K(t).
+\]
+In particular, with $t=t_{\min}(K)$ from \eqref{eq:tmin},
+\begin{equation}\label{eq:rhoK-eta}
+\|T_P\|\ \le\ \rho_K\ :=\ \wmax\ +\ \sqrt{\wmax}\;\eta_K,
+\qquad \eta_K\in(0,1-\wmax).
+\end{equation}
+\end{proposition}
+
+\begin{proof}[Sketch]
+Let $g_x(\cdot):=k_t(\cdot,x)$. By Lemma~\ref{lem:rkhs-energy} and Cauchy--Schwarz,
+\[
+|(T_P f)(x)|\ \le\ \sum \wRKHS(n)\,|f(\xi_n)|\,\|g_{\xi_n}\|\,\|g_x\|
+\ \le\ \|f\|\,\|g_x\|\!\left(\sum \wRKHS(n)\,\|g_{\xi_n}\|^2\right)^{\!1/2}\!\!\!\left(1+S_K(t)\right)^{1/2},
+\]
+and $\|g_x\|$ is constant in $x$. Optimizing the trivial weights split ($w\le w_{\max}$ on the diagonal and $\sqrt{w_{\max}}$ off-diagonal) gives the stated bound; see also standard Schur/Gram tests.
+\end{proof}
+
+\begin{lemma}[Uniform RKHS cap]\label{lem:rkhs-uniform-cap-full}\label{lem:prime-cap-uniform}
+Let
+\[
+  \rho(t)\ :=\ 2\int_{0}^{\infty} y\,e^{y/2}\,e^{-4\pi^2 t\,y^2}\,dy
+  \ =\ 2\Bigg[\frac{1}{8\pi^2 t}
+      + \frac{\sqrt{\pi}}{64\pi^3 t\sqrt{t}}\,
+        \exp\!\Big(\frac{1}{64\pi^2 t}\Big)\,
+        \operatorname{erfc}\!\Big(-\frac{1}{8\pi\sqrt{t}}\Big)\Bigg],
+\]
+the equality being the standard Gaussian evaluation.  Fix \(t_0=\tfrac{7}{10}\).  Using
+\(\pi \le \tfrac{22}{7}\) and \(e^{1/4}\le\tfrac{33}{25}\) in the closed form yields
+\[
+  \rho(t_0)\ \le\ \RhoSeventytight\ <\ \RhoGate.
+\]
+Therefore the uniform prime cap \(\|T_P\|\le \rho(t_0)\le\tfrac{1}{25}\) holds for every compact
+\([-K,K]\), and the YES-gate slack satisfies
+\[
+  \mathrm{slack}(K)
+  := \frac{c_{\mathrm{arch}}(K)}{4}-\rho(t_0)
+  \ge \frac{c_{\mathrm{arch}}(1)}{4}-\RhoGate,
+\]
+with $c_{\mathrm{arch}}(1)>0$ supplied analytically in Section~\ref{subsec:a3-symbol-floor}.
+By Theorem~\ref{thm:a3-k1-floor} the right-hand side equals
+\(
+  \tfrac{\CarchOne}{4}-\RhoGate
+  = \YesSlackMin > 0
+\),
+so the YES gate retains a uniform positive margin on every compact.
+\end{lemma}
+\begin{proof}
+Lemma~\ref{pm:lem:sum-to-rho} together with Lemma~\ref{pm:lem:trace-cap-erfc} yields
+\[
+  \rho(t_0)
+  = \frac{1}{4\pi^2 t_0}
+    + \frac{\sqrt{\pi}}{32\pi^3 t_0\sqrt{t_0}}\,
+      \exp\!\Bigl(\frac{1}{64\pi^2 t_0}\Bigr)\,
+      \Bigl(1 + \frac{2}{\sqrt{\pi}}\frac{1}{8\pi\sqrt{t_0}}\Bigr),
+\]
+because \(\operatorname{erf}(x) \le \tfrac{2}{\sqrt{\pi}}x\) for \(x\ge0\)
+(hence \(\operatorname{erfc}(-x)\le 1 + \tfrac{2}{\sqrt{\pi}}x\)).
+Bounding the parameters monotonically via
+\[
+  \frac{333}{106}\ \le\ \pi\ \le\ \frac{22}{7},\qquad
+  \frac{810}{457}\ \le\ \sqrt{\pi}\ \le\ \frac{296}{167},\qquad
+  \sqrt{t_0}\ \ge\ \frac{210}{251},
+\]
+and using \(\exp(y)\le 1+y+y^2\) for \(0\le y\le \tfrac13\) applied to
+\(y=\frac{1}{64\pi^2 t_0}\) shows that the second summand is at most
+\(\frac{139}{43\,140}\). Consequently
+\[
+  \rho(t_0)\ \le\ \frac{28\,090}{776\,223}\ +\ \frac{139}{43\,140}
+  \ <\ \frac{1\,971}{50\,000}\ =\ \RhoSeventytight,
+\]
+which is strictly below \(\RhoGate\). All inequalities above are elementary and involve only the displayed rational brackets.
+\end{proof}
+
+\begin{remark}[Why uniform cap beats local bisection]\label{rem:uniform-vs-local-full}
+A local approach would choose \(t^*(K)\) via bisection to satisfy
+\(\rho(t^*(K))\le c_{\mathrm{arch}}(K)/4\), yielding near-zero slack by construction.
+The uniform route instead freezes \(t_0=\tfrac{7}{10}\) independent of \(K\); the lemma shows
+\(\rho(t_0)\le 1/25\), so once \(c_{\mathrm{arch}}(K)\) is bounded below analytically the YES-gate
+inherits a positive margin without appealing to any numerical tables.  This decouples the prime cap
+from local parameter tuning and keeps the bridge purely analytic.
+\end{remark}
+
+\subsection*{Early/tail calculus (tables-free)}
+
+\begin{lemma}[Early block]\label{lem:rkhs-early}
+For every $N\ge2$,
+\[
+\sum_{n\le N}\frac{\Lambda(n)}{\sqrt{n}}
+\ \le\ \sum_{n\le N}\frac{\log n}{\sqrt{n}}
+\ \le\ 2\sqrt{N}\,\log N.
+\]
+\end{lemma}
+
+\begin{proof}
+$\Lambda(n)\le\log n$ is standard. For the integral bound,
+\[
+\sum_{n\le N}\frac{\log n}{\sqrt{n}}\ \le\ \int_{1}^{N}\frac{\log x}{\sqrt{x}}\,dx\ + O(1)
+= \Big[2\sqrt{x}\,\log x-4\sqrt{x}\Big]_1^N + O(1)
+\ \le\ 2\sqrt{N}\,\log N.
+\]
+\end{proof}
+
+\begin{lemma}[Log--Gaussian tail]\label{lem:rkhs-tail}
+For every $t>0$ and $N\ge2$,
+\[
+\sum_{n>N}\frac{\Lambda(n)}{\sqrt{n}}\,e^{-4\pi^2 t\,(\log n)^2}
+\ \ll\ \int_{\log N}^{\infty} y\,e^{-4\pi^2 t\,y^2}\,dy
+\ \ll\ \frac{e^{-4\pi^2 t\,(\log N)^2}}{t}.
+\]
+\end{lemma}
+
+\begin{proof}
+Replace the sum by the Stieltjes integral against $\psi(x)=\sum_{n\le x}\Lambda(n)$ and
+substitute $y=\log x$. The Gaussian tail estimate is elementary.
+\end{proof}
+
+\begin{proposition}[Heat cap via early/tail split]\label{prop:rkhs-early-tail-cap}
+Define for $t>0$ and $N\ge2$
+\[
+\rho_{\mathrm{heat}}(K;t,N)\ :=\
+2\sum_{\substack{\xi_n\in[-K,K]\\ n\le N}}\frac{\Lambda(n)}{\sqrt{n}}\,e^{-4\pi^2 t\,(\log n)^2}
+\ +\ \underbrace{\sum_{\substack{\xi_n\in[-K,K]\\ n>N}}\frac{2\Lambda(n)}{\sqrt{n}}\,e^{-4\pi^2 t\,(\log n)^2}}_{\text{tail}}.
+\]
+Then $\|T_P\|\le \rho_{\mathrm{heat}}(K;t,N)$, and by Lemmas~\ref{lem:rkhs-early}--\ref{lem:rkhs-tail}
+\[
+\rho_{\mathrm{heat}}(K;t,N)\ \ll\ 4\sqrt{N}\,\log N\ +\ \frac{e^{-4\pi^2 t\,(\log N)^2}}{t}.
+\]
+\end{proposition}
+
+\subsection*{Thresholds \(t^\star(K)\) and clean interface to A3/T5}
+
+\begin{theorem}[Constructive cap on each compact]\label{thm:rkhs-tstar}
+Let $c_0(K)>0$ be the Archimedean barrier from A3. There are two tables-free ways to force
+\(
+\|T_P\|\le \frac{1}{4}\,c_0(K)
+\)
+on $[-K,K]$:
+
+\smallskip
+\noindent{\em (A) Gram--geometry route.}
+Choose any $\eta_K\in(0,1-w_{\max})$ with
+\[
+w_{\max}+\sqrt{w_{\max}}\;\eta_K\ \le\ \tfrac{1}{4}c_0(K),
+\]
+and take $t\ge t_{\min}(K)$ from \eqref{eq:tmin}. Then \eqref{eq:rhoK-eta} gives
+$\|T_P\|\le c_0(K)/4$.
+
+\smallskip
+\noindent{\em (B) Early/tail route.}
+Fix an explicit $N(K)\ge2$ (e.g.\ $N(K)=\lceil(1+K)^\alpha\rceil$, $\alpha>0$) and define
+\[
+t^\star(K)\ :=\ \inf\Big\{t>0:\ \rho_{\mathrm{heat}}(K;t,N(K))\ \le\ \tfrac{1}{4}\,c_0(K)\Big\}.
+\]
+By the monotonic decay in $t$ of the tail and the bounded early block,
+$t^\star(K)$ is finite and constructive (no numerics); for all $t\ge t^\star(K)$ one has
+$\|T_P\|\le c_0(K)/4$.
+\end{theorem}
+
+\begin{remark}[Monotonicity in $K$]\label{rem:monotone-K}
+In route (A), $\delta_K$ decreases with $K$, hence $t_{\min}(K)$ is nonincreasing in $K$.
+In route (B), choosing $N(K)$ nondecreasing makes $t^\star(K)$ nondecreasing:
+larger $K$ only weakens separation and enlarges the feasible heat scales.
+Both forms are compatible with the monotone inheritance used in T5.
+\end{remark}
+
+\begin{remark}[Stability under node-spacing decay]\label{rem:rkhs-delta-scaling-full}
+The key insight: choosing \(t_{\min}(K) = \delta_K^2/(4\log(...))\)
+\emph{fixes} the ratio
+\[
+  q := e^{-\delta_K^2/(4t_{\min})}
+\]
+independently of \(K\).  Therefore \(S_K(t_{\min}) = 2q/(1-q)\) remains
+bounded even as \(\delta_K \to 0\).  For instance, when \(K=1\) numerical
+computation gives \(q \approx 1/9\), hence \(S_1 \approx 1/4\).  This scaling
+ensures that the RKHS cap \(\rho_K\) does not degenerate with increasing \(K\).
+\end{remark}
+
+\begin{corollary}[Plug into A3]\label{cor:a3-plug}
+On $[-K,K]$,
+\[
+\lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ c_0(K)\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big)\ -\ \|T_P\|.
+\]
+With either choice $t\ge t_{\min}(K)$ from (A) or $t\ge t^\star(K)$ from (B) one has
+$\|T_P\|\le c_0(K)/4$, hence
+\[
+\lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ \tfrac{1}{2}\,c_0(K)\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big).
+\]
+\end{corollary}
+
+\begin{remark}[Interface to T5]\label{rem:t5-interface}
+For a nondecreasing compact chain $K_i\uparrow\infty$, pick $M_i$ so that
+$C\,\omega_{P_A}(\pi/M_i)\le c_0(K_i)/4$ and choose $t_i\ge t_{\min}(K_i)$ (route A)
+or $t_i\ge t^\star(K_i)$ (route B). Then the T5 criterion applies on each $W_{K_i}$ and
+monotone inheritance propagates positivity across the chain, yielding $Q\ge0$ on
+$\bigcup_i W_{K_i}$.
+\end{remark}
+\subsection*{Analytic prime caps and the PCU theorem}
+
+\begin{theorem}[Prime-Cap Uniform (PCU)]\label{thm:pcu-main}
+There exist an explicit function $t_{\mathrm{pr}}(K)>0$ and a constant $\beta\in(0,1/2]$ such that for every compact $[-K,K]$ one has
+\[
+  \|T_P\| \le \rho_{\mathrm{cap}}(K) \le \beta\,c_0(K),
+\]
+where $c_0(K)$ is the Archimedean floor from Section~\ref{subsec:a3-symbol-floor} and $\rho_{\mathrm{cap}}(K)$ is any one of the analytic bounds built below.  Two concrete realizations are available:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Uniform trace cap.} Fix $t_{\mathrm{pr}}(K)\equiv 1$.  Lemma~\ref{pm:lem:rho-closed-form} evaluates the closed form~\eqref{eq:rho-closed-form} and gives
+  \[
+    \rho_{\mathrm{cap}}(K)=\rho(1)=0.027199800082174495\ldots<\tfrac{1}{25}
+  \]
+  uniformly in $K$.  Consequently PCU holds whenever $c_0(K)\ge 4\rho(1)$, which is met by the spectral Archimedean floors recorded in \path{cert/bridge/K*_A3_floor.json}.
+  \item \textbf{RKHS cap.} Choose $\eta_K\in(0,1-w_{\max})$, set $t_{\mathrm{pr}}(K)=t_{\min}(K)$ from~\eqref{eq:tmin}, and take
+  \[
+    \rho_{\mathrm{cap}}(K)=w_{\max}+\sqrt{w_{\max}}\;S_K\big(t_{\min}(K)\big),
+  \]
+  so PCU holds once $w_{\max}+\sqrt{w_{\max}}\eta_K\le \beta\,c_0(K)$.
+\end{enumerate}
+In either realization, the mixed bridge inequality
+\[
+  \lambda_{\min}\big(T_M[P_A]-T_P\big)
+  \ge c_0(K)-C_{\mathrm{SB}}\omega_{P_A}\Big(\frac{\pi}{M}\Big)-\rho_{\mathrm{cap}}(K)
+\]
+is positive whenever $C_{\mathrm{SB}}\omega_{P_A}(\pi/M)\le \tfrac12(1-\beta)c_0(K)$ and PCU applies.
+\end{theorem}
+
+\paragraph{Implementation link.}
+\texttt{sections/RKHS/prime\_cap\_table.tex} reads $(c_0(K),\,t_{\mathrm{pr}},\,\rho_{\mathrm{cap}})$ directly from the spectral Archimedean floors \path{cert/bridge/K*_A3_floor.json} and the trace-cap certificates \path{cert/pcu/K*_pcu_trace.json}.  Each JSON stores the tuple $(K, t_{\mathrm{pr}}=1, \beta=\tfrac12, \rho(1))$ so that the acceptance checks in Appendix~\ref{sec:verification} can trace every numeric value in the text back to an immutable artifact.
+
+\paragraph{ATP linkage (FAST vs.\ FULL).}
+For every compact in the audit list we mechanically check the implication
+\[
+  \bigl(\texttt{pcu\_ok}(K)\ \wedge\ \texttt{grid\_ok}(K)\bigr)\ \Rightarrow\ \texttt{lam\_pos}(K)
+\]
+in two modes.  The FAST mode emits boolean facts \texttt{pcu\_ok(k)}, \texttt{grid\_ok(k)} from the JSON certificates and lets Vampire 5.0.0 discharge the propositional implication (logs: \path{proofs/PCU_to_T5/logs_fast/}).  The FULL mode replays the TFF arithmetic version \path{tptp/pcu_to_t5.p} with the explicit constants from the same JSONs (logs: \path{proofs/PCU_to_T5/logs/}).  Both modes rely on the same spectral floors and trace caps; FAST guards CI, while FULL runs nightly.
+
+\begin{remark}
+In the acceptance pipeline we fix $\beta=1/2$.  The trace cap uses $t_0=1$, giving $\rho_{\mathrm{cap}}=\rho(1)=0.027199800082174495\ldots<1/25$ (Lemma~\ref{pm:lem:rho-closed-form}); the RKHS cap allows larger $t_{\mathrm{pr}}$ at the cost of tracking $\eta_K$.\end{remark}

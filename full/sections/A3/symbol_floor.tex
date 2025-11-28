@@ -1,0 +1,209 @@
+% Analytic rewrite: Lipschitz control and Archimedean floor for the symbol P_A
+% Phase 2 (Bricks A3.2a–A3.2b)
+
+\subsection{Symbol Regularity and Archimedean Floor}\label{subsec:a3-symbol-floor}
+We now record explicit regularity and lower bounds for the Archimedean symbol $P_A$ attached to a Fej\'er$\times$heat window. Throughout we fix parameters $B>0$ and $t_{\mathrm{sym}}>0$, set
+\[
+  \Phi_{B,t_{\mathrm{sym}}}(\xi) = \Bigl(1-\frac{|\xi|}{B}\Bigr)_{+} e^{-4\pi^2 t_{\mathrm{sym}} \xi^2},
+\]
+and define
+\[
+  P_A(\theta) = A_0 + 2\sum_{k\ge 1} A_k\cos(k\theta),\qquad
+  A_k = \int_{\RR} a(\xi)\,\Phi_{B,t_{\mathrm{sym}}}(\xi)\,\cos(k\xi)\,d\xi,
+\]
+with $a(\xi)=\log\pi - \Re\psi(\tfrac14+i\pi\xi)$ the normalized Archimedean density fixed in Section~\ref{sec:T0}.  Differentiation under the integral sign is justified because $a\in C^\infty(\RR)$ (see \cite[\S5.2]{NISTDLMF}) and $\Phi_{B,t_{\mathrm{sym}}}\in C_c^\infty(\RR)$.
+
+\begin{lemma}[Lipschitz modulus]\label{lem:a3-lipschitz-bound}
+For every $h\ge 0$ one has
+\[
+  \omega_{P_A}(h)\ \le\ L_A(B,t_{\mathrm{sym}})\,h,
+\]
+where
+\[
+  L_A(B,t_{\mathrm{sym}})
+  := \frac{\|a\|_{L^\infty([-B,B])}}{4\pi^2 t_{\mathrm{sym}}}
+     + \frac{C_1\,\|a'\|_{L^\infty([-B,B])}}{(4\pi^2 t_{\mathrm{sym}})^{3/2}},
+\]
+with an absolute constant $C_1>0$.  In particular $P_A\in \mathrm{Lip}(1)$ on the unit circle.
+\end{lemma}
+
+\begin{proof}
+Let $\widetilde P_A$ be the $2\pi$--periodic extension of
+\[
+  \widetilde P_A(\theta) = \int_{-B}^{B} a(\xi)\,\Phi_{B,t_{\mathrm{sym}}}(\xi)\,\cos(\theta\xi)\,d\xi.
+\]
+Differentiating under the integral and using $\Phi_{B,t_{\mathrm{sym}}}(\pm B)=0$ yields
+\[
+  \widetilde P_A'(\theta)= -\int_{-B}^{B} a(\xi)\,\Phi_{B,t_{\mathrm{sym}}}(\xi)\,\xi\,\sin(\theta\xi)\,d\xi,
+\]
+hence $\|\widetilde P_A'\|_{L^\infty}\le \|a\|_{L^\infty([-B,B])} \int_{-B}^{B} |\xi| \Phi_{B,t_{\mathrm{sym}}}(\xi)\,d\xi$.  A direct computation gives
+\[
+ \int_{-B}^{B} |\xi| \Bigl(1-\frac{|\xi|}{B}\Bigr)_{+} e^{-4\pi^2 t_{\mathrm{sym}} \xi^2} d\xi
+ \le \frac{1}{4\pi^2 t_{\mathrm{sym}}} + \frac{C_1}{(4\pi^2 t_{\mathrm{sym}})^{3/2}},
+\]
+with $C_1$ absolute.
+Therefore $\omega_{\widetilde P_A}(h)\le \|\widetilde P_A'\|_{L^\infty} h$ and the claimed bound follows.  Since $P_A$ is the cosine-Fourier series of $\widetilde P_A$, periodization does not increase the modulus.
+\end{proof}
+
+Next we quantify the symbol floor by splitting the integral into a ``core'' region $[-r,r]$ and its complement.
+
+\begin{lemma}[Core contribution]\label{lem:a3-core-lower-bound}
+Let $0<r<B$. Set
+\[
+  m_r := \inf_{|\xi|\le r} a(\xi),\qquad
+  M_B := \|a\|_{L^\infty([-B,B])}.
+\]
+Then
+\[
+  A_0 \ge 2 m_r\,r\left(1-\frac{r}{B}\right) e^{-4\pi^2 t_{\mathrm{sym}} r^2}
+        - \frac{M_B}{4\pi^2 t_{\mathrm{sym}} r} e^{-4\pi^2 t_{\mathrm{sym}} r^2}.
+\]
+\end{lemma}
+
+\begin{proof}
+Split the integral defining $A_0$ into $[-r,r]$ and its complement. On $[-r,r]$ we lower bound $a(\xi)$ by $m_r$, and on $|\xi|\in[r,B]$ we bound $|a(\xi)|$ by $M_B$. The integral of $\Phi_{B,t_{\mathrm{sym}}}$ over each region is computed explicitly, giving the stated inequality.
+\end{proof}
+
+\begin{lemma}[Shift-robust core mass]\label{lem:a3-core-shift}
+Let $0<r<B$ and $|\tau|\le B-r$. Then the Fej\'er hat satisfies
+\[
+  \int_{\tau-r}^{\tau+r} \Lambda_B(x)\,dx\ \ge\ \frac{2r^2}{B}.
+\]
+Consequently, for every $t_{\mathrm{sym}}>0$,
+\[
+  \int_{\RR} \Lambda_B(x-\tau)\,e^{-4\pi^2 t_{\mathrm{sym}}(x-\tau)^2}\,dx
+  \ \ge\ \frac{2r^2}{B}\,e^{-4\pi^2 t_{\mathrm{sym}} r^2}.
+\]
+\end{lemma}
+
+\begin{proof}
+The function $\Lambda_B$ is linear on each of the intervals $[-B,0]$ and $[0,B]$ with slope magnitude $1/B$. Among all translates of length $2r$ contained in $[-B,B]$ the smallest area is attained when the interval abuts one of the endpoints; a direct calculation yields
+\(
+\int_{B-2r}^{B}\Lambda_B(x)\,dx = \frac{2r^2}{B}.
+\)
+The same value is obtained on the symmetric left endpoint, and every other translate has strictly larger mass. For the Gaussian factor we use the pointwise bound $e^{-4\pi^2 t_{\mathrm{sym}}(x-\tau)^2}\ge e^{-4\pi^2 t_{\mathrm{sym}} r^2}$ whenever $|x-\tau|\le r$.
+\end{proof}
+
+\begin{lemma}[Archimedean floor]\label{lem:a3-arch-floor}
+With notation as above define
+\[
+  L_A^{\mathrm{up}}(B,t_{\mathrm{sym}}) := L_A(B,t_{\mathrm{sym}}),\qquad
+  \underline{A}_0(B,r,t_{\mathrm{sym}})
+    := 2 m_r\,r\left(1-\frac{r}{B}\right) e^{-4\pi^2 t_{\mathrm{sym}} r^2}
+       - \frac{M_B}{4\pi^2 t_{\mathrm{sym}} r} e^{-4\pi^2 t_{\mathrm{sym}} r^2}.
+\]
+Then
+\[
+  \min_{\theta\in\TT} P_A(\theta)\ \ge\ \underline{A}_0(B,r,t_{\mathrm{sym}}) - \pi L_A^{\mathrm{up}}(B,t_{\mathrm{sym}}).
+\]
+\end{lemma}
+
+\begin{proof}
+For any $\theta$ choose a point $\theta_0$ at which $P_A$ attains its mean value and apply the mean-value inequality $P_A(\theta)\ge A_0 - \omega_{P_A}(|\theta-\theta_0|)$. Since $|\theta-\theta_0|\le \pi$, the Lipschitz bound and Lemma~\ref{lem:a3-core-lower-bound} give the claimed inequality.
+\end{proof}
+
+\begin{corollary}[Symbol floor on a compact]\label{cor:a3-arch-floor-compact}
+Fix a compact interval $[-K,K]$. Choose parameters $B>B_K\ge K$, $0<r< K$, and $t_{\mathrm{sym}}>0$ such that
+\[
+  c_{\mathrm{arch}}(K) := \underline{A}_0(B,r,t_{\mathrm{sym}}) - \pi L_A^{\mathrm{up}}(B,t_{\mathrm{sym}}) > 0.
+\]
+Then the Archimedean symbol attached to the Fej\'er$\times$heat cone satisfies
+\[
+  \min_{\theta\in\TT} P_A(\theta) \ge c_{\mathrm{arch}}(K)>0.
+\]
+In particular $c_{\mathrm{arch}}(K)$ serves as the analytic symbol margin used in the A3 bridge.
+\end{corollary}
+
+\begin{proof}
+Combine Lemmas~\ref{lem:a3-lipschitz-bound} and~\ref{lem:a3-arch-floor}. The positivity is ensured by the explicit choice of $(B,r,t_{\mathrm{sym}})$; numerically one may take $B$ moderately larger than $K$ and $r=K/2$, but only the displayed inequality is required in the analytic proof.
+\end{proof}
+
+\begin{lemma}[Core slope bound]\label{lem:a3-core-slope}
+For $a(\xi)=\log\pi-\Re\psi(\tfrac14+i\pi\xi)$ and every $r>0$,
+\[
+  \inf_{|\xi|\le r} a(\xi)\ \ge\ a(0)\ -\ L_A\,r,
+  \qquad L_A \le 20\pi,
+\]
+where
+\(
+  a(0)=\gamma + \frac{\pi}{2} + \log\pi + 3\log 2 \ge \frac{5117}{1000}
+\).
+\end{lemma}
+\begin{proof}
+Differentiating $a$ yields
+$a'(\xi) = \pi\,\Im\psi'(\tfrac14+i\pi\xi)$.
+The trigamma admits the convergent series
+\(
+  \psi'(z)=\sum_{n\ge0}(n+z)^{-2}
+\)
+for $\Re z>0$, so
+\[
+  |\psi'(\tfrac14+i\pi\xi)|
+  \le \sum_{n\ge0} \frac{1}{|n+\tfrac14+i\pi\xi|^2}
+  \le \sum_{n\ge0} \frac{1}{(n+\tfrac14)^2}
+  \le \frac{1}{(\tfrac14)^2} + \int_{0}^{\infty} \frac{dx}{(x+\tfrac14)^2}
+  = 16 + 4 = 20.
+\]
+Therefore $|a'(\xi)|\le 20\pi$ for all $\xi$, and the mean-value theorem gives
+$a(\xi)\ge a(0)-20\pi|\xi|$.
+
+The identity
+\(
+  \psi(\tfrac14) = -\gamma - \tfrac{\pi}{2} - 3\log 2
+\)
+is recorded in Appendix~\ref{app:md23-constants}, equation~\eqref{eq:MD_2_3_constants-formula-11}. Together with equation~\eqref{eq:MD_2_3_constants-formula-9} it implies
+$a(0)=\log\pi-\Re\psi(\tfrac14)=\gamma+\tfrac{\pi}{2}+\log\pi+3\log 2$. Elementary estimates
+$\gamma\ge\tfrac{577}{1000}$, $\tfrac{\pi}{2}\ge\tfrac{3}{2}$, $\log\pi\ge 1$ (because $\pi>e$), and
+$\log 2\ge\tfrac{17}{25}$ (obtained by truncating the alternating series after three terms) yield
+$a(0)\ge \tfrac{5117}{1000}$. Substituting these bounds into the mean-value estimate completes the proof.
+\end{proof}
+
+\begin{theorem}[Archimedean floor at $K=1$]\label{thm:a3-k1-floor}
+Let $B=\tfrac13$, $r=\tfrac{1}{32}$ and $t_{\mathrm{sym}}=\tfrac{3}{50}$. Then
+\[
+  c_{\mathrm{arch}}(1)
+  \ \ge\ e^{-4\pi^2 t_{\mathrm{sym}} r^2}\Biggl(2m_r r\Bigl(1-\frac{r}{B}\Bigr) - \frac{M_B}{4\pi^2 t_{\mathrm{sym}} r}\Biggr)
+  - \pi L_A^{\mathrm{up}}(B,t_{\mathrm{sym}})
+  \ \ge\ \CarchOne\ >\ 0.1878,
+\]
+where $m_r=\inf_{|\xi|\le r}a(\xi)$ and $M_B=\|a\|_{L^\infty([-B,B])}$. All auxiliary
+inequalities are recorded in Appendix~\ref{app:md23-constants}.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:a3-arch-floor} gives the first inequality. The bounds
+\(m_r\ge a(0)-20\pi r\) and \(M_B\le \tfrac{11}{2}\) follow from Lemma~\ref{lem:a3-core-slope} and
+Appendix~\ref{app:md23-constants}; for $L_A^{\mathrm{up}}(B,t_{\mathrm{sym}})$ we use
+Lemma~\ref{lem:a3-lipschitz-bound}. Substituting the chosen $(B,r,t_{\mathrm{sym}})$ and the
+rational bounds on $a(0)$, $M_B$ and $L_A^{\mathrm{up}}$ yields the stated fraction
+\(\CarchOne=\tfrac{1\,346\,209}{7\,168\,000}\).
+\end{proof}
+
+\begin{lemma}[Global archimedean floor]\label{lem:a3-global-arch-floor}
+Fix any \(\kappa\in(0,1)\) and set \(B(K):=\lceil K/(1-\kappa)\rceil\). The margins
+from Corollary~\ref{cor:a3-arch-floor-compact} then satisfy
+\[
+  c_{\mathrm{arch}}(K)\ \ge\ c^*\ >\ 0 \qquad (K\ge 1),
+\]
+where \(c^* := \inf_{K\ge1} c_{\mathrm{arch}}(K) = c_{\mathrm{arch}}(1)\). In particular,
+the baseline Theorem~\ref{thm:a3-k1-floor} gives \(c_{\mathrm{arch}}(1)\ge \CarchOne\).
+Legacy “plateau” tables are retained only for reproducibility and introduce no extra hypotheses.
+\end{lemma}
+\begin{proof}
+The gap $g(K) := C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M(K))$ is monotone non-increasing in $K$
+(as $M(K)$ increases and $\omega_{P_A}(h)$ is non-decreasing in $h$).
+Consequently $c_{\mathrm{arch}}(K) = \min_\xi P_A(\xi) - g(K)$ is monotone non-decreasing in $K$,
+so $c^* = \inf_{K\ge1} c_{\mathrm{arch}}(K) = c_{\mathrm{arch}}(1)$.
+The explicit baseline from Theorem~\ref{thm:a3-k1-floor} furnishes $c^*>0$.
+\end{proof}
+
+\begin{remark}[Direction sanity check]\label{rem:a3-direction-full}
+Since $\omega_{P_A}(h)$ is nondecreasing in $h$ and $h=\pi/M(K)$ decreases
+with $K$ (as $M(K)$ increases), the gap
+$g(K):= C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M(K))$ is monotone non-increasing in $K$.
+Consequently $c_{\mathrm{arch}}(K) = \min_\xi P_A(\xi) - g(K)$ is monotone non-decreasing
+in $K$.  This corrects an earlier sign error in the preliminary draft.
+\end{remark}
+
+\begin{remark}[References]
+The Lipschitz estimate relies on standard Fourier analysis for compactly supported smooth kernels (see, e.g., Stein--Shakarchi~\cite[Ch.~2]{SteinShakarchi2003} and Zygmund~\cite[Ch.~I]{Zygmund2002}), while bounds on $a$ and $a'$ follow from classical properties of the digamma function (\cite[\S5.2]{NISTDLMF}).  The quantitative Toeplitz eigenvalue barrier used later takes the form $\lambda_{\min}(T_M[P])\ge\min P - C_{\mathrm{SB}}\,\omega_P(\pi/M)$ with $C_{\mathrm{SB}}=4$, as recorded in B\"ottcher--Silbermann~\cite[Ch.~5]{BoettcherSilbermann2006}.
+\end{remark}

@@ -1,0 +1,165 @@
+% Toeplitz--symbol bridge (A3) --- quantitative formulation
+\SeeAlso{Lemmas~\ref{lem:a3.bv-to-lip}--\ref{lem:a3.cap-combine}, Local positivity Lemma~\ref{lem:local-positivity}, trace-cap Lemma~\ref{lem:trace-cap-bound}.}
+
+Throughout this section $a$ denotes the Archimedean density after Fej\'er$\times$heat smoothing on $[-B,B]$, and $\Kern$ is a fixed even $C^1$ mollifier with $\int_{\TT}\Kern=1$.  Write $\Kt(\theta)=t^{-1}\Kern(\theta/t)$ and set
+\[
+  \Pa(\theta) = (a * K_{t_{\mathrm{sym}}})(\theta).
+\]
+The arguments below sit inside the classical Toeplitz framework of Szeg\H{o} and B\"ottcher~\cite{Szego1952,Bottcher1907,GrenanderSzego1958,BoettcherSilbermann2006}, with convolution and Fourier bounds calibrated against standard real-analytic estimates~\cite{SteinShakarchi2003,Zygmund2002}.
+The following chain of lemmas replaces all “A3 assume …” statements by explicit estimates.  An analytic proof of the Rayleigh identification is recorded in \S\ref{subsec:a3-rayleigh}, while symbol regularity and Archimedean floors are collected in \S\ref{subsec:a3-symbol-floor}.
+
+\begin{lemma}[BV $\Rightarrow$ Lipschitz under convolution]\label{lem:a3.bv-to-lip}
+Let $a\in\BV(\TT)$ with periodic extension.  For every $t>0$ the smoothed profile $a_t := a*K_t$ satisfies
+\[
+  \|a_t\|_{L^\infty}\le \|a\|_{L^\infty},\qquad 
+  \|a_t'\|_{L^\infty}\le \frac{\|K'\|_{L^1}}{t}\,\TV(a),\qquad
+  \Lip(a_t)\le \frac{\|K'\|_{L^1}}{t}\,\TV(a).
+\]
+In particular $\Pa\in\Lip(1)$ with the same bound at $t=t_{\mathrm{sym}}$.
+\end{lemma}
+
+\begin{proof}
+Standard convolution estimates~\cite{SteinShakarchi2003,Zygmund2002} yield $\|a*K_t\|_\infty\le \|a\|_\infty$.  Since $(a*K_t)'=a*K_t'$, the variation identity $\|Da\|(\TT)=\TV(a)$ implies $\|(a*K_t)'\|_\infty\le \TV(a)\|K_t'\|_{L^1}=\TV(a)\|K'\|_{L^1}/t$, giving the desired Lipschitz control. 
+\end{proof}
+
+\begin{remark}[Two-scale architecture]\label{rem:two-scales}
+The Toeplitz bridge and the prime contraction employ two independent smoothing parameters.
+\begin{itemize}
+  \item On the \emph{symbol side}, $t_{\mathrm{sym}}(K)$ enters the Fej\'er$\times$heat
+  convolution that produces $P_A$; together with the bandwidth $B(K)$ it controls the
+  modulus $\omega_{P_A}(\pi/M)$ in the Szeg\H{o}--B\"ottcher bridge.
+  \item On the \emph{RKHS side}, $t_{\mathrm{rkhs}}(K)$ is the heat scale in the Gaussian kernel
+  used to bound $\|T_P\|$ via Gram geometry; we typically take $t_{\mathrm{rkhs}}(K)=t_{\min}(K)$
+  obtained from the node spacing $\delta_K$.
+\end{itemize}
+The Fej\'er$\times$heat tests are built with $t_{\mathrm{sym}}$, whereas the RKHS analysis uses
+$t_{\mathrm{rkhs}}$; no coupling between the two scales is needed.
+\end{remark}
+
+\begin{lemma}[Uniform bounds for the smoothed symbol]\label{lem:a3.sup-bounds}
+Under the assumptions of Lemma~\ref{lem:a3.bv-to-lip},
+\[
+  \|\Pa\|_{L^\infty}\le \|a\|_{L^\infty},\qquad 
+  \|\Pa'\|_{L^\infty}\le \frac{\|K'\|_{L^1}}{t_{\mathrm{sym}}}\,\TV(a),\qquad
+  \om_{\Pa}(h)\le \frac{\|K'\|_{L^1}}{t_{\mathrm{sym}}}\,\TV(a)\,h.
+\]
+\end{lemma}
+\phantomsection\label{a3:lem:A3_arch_C1_bounds}
+
+\begin{proof}
+Immediate from Lemma~\ref{lem:a3.bv-to-lip}.
+\end{proof}
+
+\begin{lemma}[Two-scale selection and preservation of the Arch floor]\label{lem:a3.two-scale}
+Assume $\Pa=a*K_{t_{\mathrm{sym}}}$ with $a\in\BV(\TT)$ and let $\Gamma\subset \TT$ be the arc coming from the trace-cap hypothesis.  There exists $t_{\mathrm{sym}}>0$ small enough such that $\min_{\theta\in \Gamma}\Pa(\theta) \ge \tfrac12 \min_{\theta\in\Gamma} a(\theta)=:c_{0,\Gamma}>0$.  Moreover, for any $t_{\mathrm{rkhs}}\ge t_{\mathrm{sym}}$ the RKHS kernel associated to $t_{\mathrm{rkhs}}$ enjoys a uniform floor $c_0(K_{t_{\mathrm{rkhs}}})\ge c_\ast>0$ independent of the Toeplitz size.
+\end{lemma}
+\phantomsection\label{a3:lem:A3_dini_SB}
+
+\begin{proof}
+Since $a*K_t\to a$ uniformly as $t\to0$, small $t_{\mathrm{sym}}$ preserves the positive floor on $\Gamma$.  The RKHS floor follows from the explicit Gram estimates used in the trace-cap bound (see Lemma~\ref{lem:trace-cap-bound}); choosing $t_{\mathrm{rkhs}}\ge t_{\mathrm{sym}}$ keeps the same positivity budget.
+\end{proof}
+
+\begin{lemma}[Lipschitz symbol with positive floor implies A3 prerequisites]\label{lem:a3.lip-floor}
+Let $\Pa\in\Lip(1)$ with $\min_{\TT}\Pa\ge \czero>0$.  Then the Toeplitz operator $\TPA$ satisfies
+\[
+  \TPA \succeq \czero\,I,\qquad \|\TPA\|_{\op}\le \|\Pa\|_{L^\infty}.
+\]
+In particular, once $\rhok\ge \|\Pa\|_{L^\infty}$ the A3-lock positivity and boundedness hypotheses hold.
+\end{lemma}
+
+\begin{proof}
+For any $f$ with $\|f\|_2=1$ we have $\ip{\TPA f}{f}=\int_{\TT}\Pa(\theta)|f(\theta)|^2\,d\theta\ge \czero$, hence $\TPA\succeq \czero I$.  The $\|\Pa\|_{\infty}$ bound is immediate from the Rayleigh quotient; see, e.g., the spectral calculus in~\cite{HornJohnson2013,Varga2004}.
+\end{proof}
+
+\begin{lemma}[Combining with the trace-cap]\label{lem:a3.cap-combine}
+Suppose $\Pa$ is constructed as above and the RKHS/trace-cap estimate
+\[
+  \|\TPA\|_{\op}\le \rhok
+\]
+holds for $(B,t_{\mathrm{rkhs}})$ (Lemma~\ref{lem:trace-cap-bound}).  Then $\TPA$ simultaneously satisfies the positivity floor and the operator-norm bound required by A3-lock.
+\end{lemma}
+
+\begin{proof}
+Apply Lemmas~\ref{lem:a3.two-scale} and \ref{lem:a3.lip-floor}, together with the stated trace-cap inequality.
+\end{proof}
+
+\paragraph{Collected analytic constants and path choice.}
+For a fixed compact $[-K,K]$ define $c_{\mathrm{arch}}(K)$, $L_A(B,t_{\mathrm{sym}})$ and $M_0(K)$ as in Corollary~\ref{cor:a3-arch-floor-compact} and Corollary~\ref{cor:a3-omega-fejer}.  Throughout the bridge we adopt the RKHS contraction route and set
+\[
+  \rho_K := \rho\bigl(t_{\mathrm{rkhs}}^\star(K)\bigr),\qquad
+  t_{\mathrm{rkhs}}^\star(K) := \frac{1}{8\pi^2}\left(\frac12 + \frac{4e^{1/4}}{c_{\mathrm{arch}}(K)}\right),
+\]
+so that Proposition~\ref{prop:a3-prime-cap} guarantees $\|T_P\|\le \rho_K \le c_{\mathrm{arch}}(K)/4$ for every $t_{\mathrm{rkhs}}\ge t_{\mathrm{rkhs}}^\star(K)$.  (The MD/IND alternative is archived separately and not used in this track.)
+
+\begin{lemma}[Constructive parameter recipe]\label{lem:a3-constructive-schedule}
+Fix the parameter $\kappa\in(0,1)$ used in Lemma~\ref{lem:a3-global-arch-floor}. There exists $r_0\in(0,1)$ such that $m_{r_0}>0$ (for example $r_0=\tfrac{1}{16}$ because $a(0)=\log\pi-\Re\psi(\tfrac14)>0$). For each $K>0$ set
+\[
+  B(K):=\Bigl\lceil \frac{K}{1-\kappa}\Bigr\rceil,\qquad
+  r(K):=\min\Bigl\{\frac{K}{2},\,r_0\Bigr\},
+\]
+and define
+\[
+  A_K := 2m_{r(K)}\,r(K)\Bigl(1-\frac{r(K)}{B(K)}\Bigr),\qquad
+  B_{K}^{(1)} := \frac{M_{B(K)}}{4\pi^2 r(K)},\qquad
+  D_K := \pi\,\|K'\|_{L^1(\TT)}\,\TV(a).
+\]
+For $\theta>0$ put
+\[
+  F_K(\theta)\ :=\ e^{-4\pi^2\theta}\Bigl(A_K-\frac{B_{K}^{(1)}}{\theta}\Bigr)\ -\ \frac{D_K}{\theta}.
+\]
+Let $\theta_1(K):=\max\{1,\,2B_{K}^{(1)}/A_K\}$ and denote by $\theta_2(K)$ the smallest positive solution of $\frac{4D_K}{A_K}=\theta\,e^{-4\pi^2\theta}$ (exists because $\max_{\theta>0}\theta e^{-4\pi^2\theta}=\tfrac{1}{4\pi^2 e}$).  Set
+\[
+  \theta^\star(K):=\max\{\theta_1(K),\theta_2(K)\},\qquad
+  t_{\mathrm{sym}}(K):=\frac{\theta^\star(K)}{r(K)^2},
+\]
+and
+\[
+  c_{\mathrm{arch}}(K) := \underline{A}_0\bigl(B(K),r(K),t_{\mathrm{sym}}(K)\bigr)
+  - \pi L_A\bigl(B(K),t_{\mathrm{sym}}(K)\bigr).
+\]
+Finally define
+\[
+  M_0(K):=\Biggl\lceil \frac{2\pi\,C_{\mathrm{SB}}\,L_A\bigl(B(K),t_{\mathrm{sym}}(K)\bigr)}{c_{\mathrm{arch}}(K)} \Biggr\rceil,
+  \qquad
+  t_{\mathrm{rkhs}}^\star(K):=\frac{1}{8\pi^2}\left(\frac12 + \frac{4e^{1/4}}{c_{\mathrm{arch}}(K)}\right).
+\]
+Then $c_{\mathrm{arch}}(K)>0$, and the triple $\bigl(B(K),t_{\mathrm{sym}}(K),t_{\mathrm{rkhs}}^\star(K)\bigr)$ satisfies \textnormal{(A3.1)}–\textnormal{(A3.3)}.
+\end{lemma}
+
+\begin{proof}
+Lemma~\ref{lem:a3-core-lower-bound} gives
+\[
+  \underline{A}_0(B,r,t_{\mathrm{sym}})
+  = e^{-4\pi^2 t_{\mathrm{sym}} r^2}
+    \Bigl(2m_r r\bigl(1-\tfrac{r}{B}\bigr) - \frac{M_B}{4\pi^2 t_{\mathrm{sym}} r}\Bigr),
+\]
+so the condition $\theta\ge\theta_1(K)$ (with $\theta=t_{\mathrm{sym}}r(K)^2$) makes the expression in parentheses $\ge A_K/2$.  Lemma~\ref{lem:a3-lipschitz-bound} supplies the Lipschitz estimate.  At $\theta=\theta_2(K)$ we balance exponential and polynomial terms so that $e^{-4\pi^2\theta}\frac{A_K}{2}\ge \frac{2D_K}{\theta}$; hence at $\theta^\star=\max\{\theta_1,\theta_2\}$ we have $F_K(\theta^\star)\ge \frac{A_K}{4}e^{-4\pi^2\theta^\star}$.  Consequently $c_{\mathrm{arch}}(K)\ge \tfrac14 A_K e^{-4\pi^2\theta^\star(K)}>0$ (all quantities $M_B,\TV(a)$ finite on $[-B,B]$; $m_r>0$ for small $r$ by continuity of $a$ and explicit digamma properties), establishing \textnormal{(A3.1)}.  Proposition~\ref{prop:a3-m0} with $C_{\mathrm{SB}}=4$ yields \textnormal{(A3.2)}, and Proposition~\ref{prop:a3-prime-cap} provides the stated $t_{\mathrm{rkhs}}^\star(K)$ satisfying \textnormal{(A3.3)}.  The bounds on $m_r$ and $M_B$ used above follow from the digamma inequalities recalled in Section~\ref{sec:T0} and Appendix~\ref{app:md23-constants}.
+\end{proof}
+
+\paragraph{A3 input summary.}
+\begin{enumerate}[label=(A3.\arabic*)]
+  \item \emph{Arch symbol margin.} Corollary~\ref{cor:a3-arch-floor-compact} and Corollary~\ref{cor:a3-omega-fejer} provide an explicit floor $c_{\mathrm{arch}}(K)>0$ and modulus bound $L_A(B,t_{\mathrm{sym}})$ for the Fej\'er$\times$heat symbol $P_A$.
+  \item \emph{Prime cap.} Proposition~\ref{prop:a3-prime-cap} supplies $t_{\mathrm{rkhs}}^\star(K)$ such that every $t_{\mathrm{rkhs}}\ge t_{\mathrm{rkhs}}^\star(K)$ satisfies $\rho(t_{\mathrm{rkhs}})\le c_{\mathrm{arch}}(K)/4$ and hence $\|T_P\|\le c_{\mathrm{arch}}(K)/4$.
+  \item \emph{Discretisation threshold.} Proposition~\ref{prop:a3-m0} furnishes $M_0(K)$ such that $T_M[P_A]$ keeps half of the Arch margin for every $M\ge M_0(K)$.
+\end{enumerate}
+
+For each compact $W_K$ we therefore work with the explicit arc $\Gamma_K\subset\TT$ on which $P_A(\theta)\ge c_{\mathrm{arch}}(K)$: the data points $(\Gamma_K,\min_{\Gamma_K}P_A,\omega_{P_A}(\pi/M))$ and the corresponding Fej\'er$\times$heat parameters are archived in the JSON files \path{cert/bridge/K*_A3_floor.json}. This makes the identity
+\[
+  c_{\mathrm{arch}}(K)\ =\ \min_{\theta\in\Gamma_K} P_A(\theta)
+\]
+fully explicit for every $K$ and ties the analytic constants in (A3.1)--(A3.3) to the reproducibility pack cited in Appendix~\ref{app:verification}.
+
+\begin{theorem}[A3 bridge inequality]\label{thm:A3}
+Let $K>0$ and let $(B,t_{\mathrm{sym}},t_{\mathrm{rkhs}})$ satisfy \textnormal{(A3.1)}–\textnormal{(A3.3)}; in particular one may use the schedule produced in Lemma~\ref{lem:a3-constructive-schedule}. Then for every $M\ge M_0(K)$,
+\[
+  \lambda_{\min}\!\bigl(T_M[P_A]-T_P\bigr)\ \ge\ \frac{c_{\mathrm{arch}}(K)}{4}\ > 0,
+\]
+and the associated Fej\'er$\times$heat test functions satisfy
+\[
+  Q(\Phi_{B,t})\ \ge\ 0.
+\]
+\end{theorem}
+
+\begin{proof}
+Items \textnormal{(A3.1)}–\textnormal{(A3.3)} supply the hypotheses of Theorem~\ref{thm:a3-mixed-margin} with $c_0(K)=c_{\mathrm{arch}}(K)$.  The theorem therefore yields the stated operator inequality.  Lemma~\ref{lem:a3-model-space} combined with Theorem~\ref{thm:a3-rayleigh-identification} converts the matrix margin into $Q(\Phi_{B,t})\ge0$.
+\end{proof}

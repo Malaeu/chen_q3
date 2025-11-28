@@ -1,0 +1,48 @@
+% Formal Arch bounds: explicit L_A(B,t) and A0 lower bound, no float
+\section*{Formal Arch bounds (symbol side)}
+
+\begin{lemma}[Explicit Lipschitz modulus, recalled]\label{lem:a3.lipschitz-explicit}
+Assume $a\in C^1([-B,B])$ with $\|a\|_\infty\le A_0$ and $\|a'\|_\infty\le A_1$. Define
+\begin{equation}\label{eq:Arch_bounds_formal-formula-2}
+ \widetilde P_A(\theta)=\int_{-B}^{B} a(\xi)\,(1-|\xi|/B)_+\,e^{-4\pi^2 t\xi^2}\,\cos(\xi\theta)\,d\xi,\quad t>0.
+\end{equation}
+Then $\widetilde P_A\in\mathrm{Lip}(1)$ with
+\begin{equation}\label{eq:Arch_bounds_formal-omega}
+ \omega_{\widetilde P_A}(h)\le L_A(B,t)\,h,\qquad L_A(B,t)\ \le\ \frac{A_0}{4\pi^2 t}\ +\ \frac{C\,A_1}{(4\pi^2 t)^{3/2}}\,.
+\end{equation}
+Consequently, the $2\pi$-periodization $P_A$ obeys $\omega_{P_A}\le\omega_{\widetilde P_A}$.
+\end{lemma}
+
+\begin{proposition}[Mean minus modulus]\label{a3:prop:A0-minus-LA}
+Let $A_0=\int_{-B}^{B} a(\xi)\,(1-|\xi|/B)_+\,e^{-4\pi^2 t\xi^2}\,d\xi$. If $P_A\in\mathrm{Lip}(1)$ with modulus $\omega_{P_A}(h)\le L_A h$, then
+\begin{equation}\label{eq:Arch_bounds_formal-formula-1}
+ \min_{\theta\in\TT} P_A(\theta)\ \ge\ A_0\ -\ \pi\,L_A.
+\end{equation}
+\end{proposition}
+
+\begin{lemma}[Core/off-core lower bound for $A_0$]\label{a3:lem:A0-core-offcore}
+Fix $r\in(0,B)$. Suppose there is $m_r>0$ such that $a(\xi)\ge m_r$ for $|\xi|\le r$. Then
+\begin{equation}\label{eq:Arch_bounds_formal-formula}
+ A_0\ \ge\ m_r\,\underbrace{\int_{-r}^{r} (1-|\xi|/B)\,e^{-4\pi^2 t\xi^2}\,d\xi}_{\text{core mass}}\ -\ \underbrace{\int_{|\xi|>r} |a(\xi)|\,(1-|\xi|/B)_+\,e^{-4\pi^2 t\xi^2}\,d\xi}_{\text{off-core tail}}\,.
+\end{equation}
+Moreover, the core mass admits the explicit lower bound
+\begin{equation}\label{eq:Arch_bounds_formal-formula-6}
+ \int_{-r}^{r} (1-|\xi|/B)\,e^{-4\pi^2 t\xi^2}\,d\xi\ \ge\ 2\,r\,\Big(1-\frac{r}{B}\Big)\,\exp\!\big(-4\pi^2 t r^2\big),
+\end{equation}
+and the off-core tail obeys
+\begin{equation}\label{eq:Arch_bounds_formal-formula-5}
+ \int_{|\xi|>r} (1-|\xi|/B)_+\,e^{-4\pi^2 t\xi^2}\,d\xi\ \le\ 2\int_{r}^{\infty} e^{-4\pi^2 t\xi^2}\,d\xi\ \le\ \frac{1}{4\pi^2 t\,r}\,e^{-4\pi^2 t r^2}.
+\end{equation}
+Thus, if $\|a\|_\infty\le A_0$ then
+\begin{equation}\label{eq:Arch_bounds_formal-formula-4}
+ A_0\ \ge\ 2 m_r\,r\Big(1-\frac{r}{B}\Big) e^{-4\pi^2 t r^2}\ -\ A_0\,\frac{1}{4\pi^2 t\,r}\,e^{-4\pi^2 t r^2}.
+\end{equation}
+Optimizing $r$ within $(0,B)$ yields an explicit positive lower bound $A_{0,\mathrm{lo}}(B,t)$ whenever $m_r$ is known.
+\end{lemma}
+
+\paragraph{Usage.}
+Combine Lemma~\ref{lem:a3.lipschitz-explicit} (with $A_0\ge0$ and $A_1\ge0$ explicit) and Lemma~\ref{a3:lem:A0-core-offcore} to obtain $L_A(B,t)$ and $A_{0,\mathrm{lo}}(B,t)$. Then Proposition~\ref{a3:prop:A0-minus-LA} gives
+\begin{equation}\label{eq:Arch_bounds_formal-formula-3}
+ \min P_A\ \ge\ A_{0,\mathrm{lo}}(B,t)\ -\ \pi\,L_A(B,t),
+\end{equation}
+which is the symbol margin $c_0(K)$ used in A3--Lock. All inequalities are analytic and require no floating point.

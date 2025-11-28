@@ -1,0 +1,70 @@
+\subsection{RKHS Core}\label{sec:rkhs-core}
+
+Our RKHS setup follows the classical foundation laid by Aronszajn~\cite{Aronszajn1950} and the modern expositions of Berlinet--Thomas-Agnan and Paulsen--Raghupathi~\cite{BerlinetThomasAgnan2004,PaulsenRaghupathi2016,Berlinet2004,Paulsen2016}.
+
+Let $(\mathcal X,\mu)$ be a measure space and let $k\colon \mathcal X\times\mathcal X\to \RR$ be a positive definite kernel with reproducing kernel Hilbert space $(\mathcal H_k,\langle\cdot,\cdot\rangle_{\mathcal H_k})$. Denote by $T_k\colon L^2(\mu)\to L^2(\mu)$ the integral operator
+\[
+  (T_k f)(x)\ :=\ \int_{\mathcal X} k(x,y)\,f(y)\,d\mu(y).
+\]
+If $\mathcal X$ is represented discretely by nodes $\{x_i\}_{i=1}^N$ we write $K=[k(x_i,x_j)]_{i,j=1}^N$ for the Gram matrix.
+
+\begin{lemma}[Energy identity]\label{lem:rkhs-energy}
+For $f\in\mathcal H_k$ supported on the closure of $\mathrm{span}\{k(\cdot,x)\colon x\in\mathcal X\}$ one has
+\[
+  \|f\|_{\mathcal H_k}^2\ =\ \langle f,\,T_k^\dagger f\rangle_{L^2(\mu)},
+\]
+where $T_k^\dagger$ is the pseudoinverse on the image of $T_k$. In particular, if $f(x)=\sum_{i=1}^N a_i\,k(x,x_i)$ for a finite sample, then
+\[
+  \|f\|_{\mathcal H_k}^2\ =\ a^\top K a.
+\]
+\end{lemma}
+
+\begin{lemma}[Spectral floor for Gram matrices]\label{lem:gram-min-eig-lb}
+Assume the diagonal of $K$ obeys $k(x_i,x_i)\ge \czero$ and the off-diagonal mass satisfies
+\[
+  \sum_{j\neq i} \bigl|k(x_i,x_j)\bigr| \;\le\; \rhok
+  \qquad\text{for every } i\in\{1,\dots,N\}.
+\]
+Then
+\[
+  \lammin(K) \;\ge\; \czero - \rhok.
+\]
+\end{lemma}
+
+\begin{proof}
+Gershgorin's circle theorem states that every eigenvalue $\lambda$ of $K$ belongs to at least one disc
+\[
+  D_i \ =\ \Bigl\{ z\in\CC : \bigl|z-k(x_i,x_i)\bigr| \le \sum_{j\neq i} |k(x_i,x_j)| \Bigr\}.
+\]
+The hypothesis guarantees $\inf D_i \ge \czero-\rhok$, hence every eigenvalue lies in $[\czero-\rhok,\infty)$.
+\end{proof}
+
+\begin{proposition}[Operator sandwich]\label{prop:operator-sandwich}
+Let $T_k$ be positive on $\mathcal H_k$ with spectral bottom at least $\czero$, and suppose a discretisation or truncation $K$ satisfies the off-diagonal bound of Lemma~\ref{lem:gram-min-eig-lb}. For $f=\sum_i a_i k(\cdot,x_i)$ we have
+\[
+  \|f\|_{L^2(\mu)}^2 \;\le\; \frac{1}{\czero-\rhok}\,\|f\|_{\mathcal H_k}^2,
+  \qquad
+  \lammin(K) \;\ge\; \czero-\rhok.
+\]
+In particular, whenever $\rhok\le \czero/2$ the bridge margin $\tfrac12(\czero-\rhok)$ of Theorem~\ref{thm:A3} is available.
+\end{proposition}
+\phantomsection\label{a3:lem:weyl_rayleigh_diff}
+
+\begin{proof}
+Lemma~\ref{lem:gram-min-eig-lb} yields the spectral bound. Any $g=\sum_i a_i k(\cdot,x_i)$ satisfies $g^\top K g = \|g\|_{\mathcal H_k}^2$ by Lemma~\ref{lem:rkhs-energy}. Since $K\succeq (\czero-\rhok) I$, Rayleigh quotients yield $\|g\|_{L^2(\mu)}^2 \le (\czero-\rhok)^{-1}\|g\|_{\mathcal H_k}^2$.
+\end{proof}
+
+These statements provide the structural ingredients cited in Assumption~(A3.1) and in the proof of Theorem~\ref{thm:A3}: the diagonal floor produces $\czero$, the RKHS contraction supplies $\rhok$, and Lemma~\ref{lem:gram-min-eig-lb} transfers the margin to the finite Toeplitz block.
+
+\begin{lemma}[Rayleigh sampling identification]\label{lem:rkhs-rayleigh-sampling-id}
+For any Fej\'er$\times$heat window $\Phi$ with Dirichlet sampling polynomial $p(\theta)=\sum_{k\in\ZZ}\widehat\Phi(k)e^{ik\theta}$, one has
+\[
+  \big\langle (T_M[P_A]-T_P)p,\,p\big\rangle_{L^2(\TT)}
+  \;=\; \frac{1}{2\pi}\,Q(\Phi)
+\]
+whenever $M$ is large enough that the Dirichlet coefficients of $\Phi$ lie in the span $\{|k_\tau\rangle\}$. In particular the operator inequality for $T_M[P_A]-T_P$ transfers directly to the Weil functional $Q$.
+\end{lemma}
+
+\begin{remark}[Finite support and the threshold $M$]
+A Fej\'er window of bandwidth $B$ has Fourier support contained in $\{|k|\le B\}$, and the subsequent heat factor $e^{-t k^2}$ only rescales these coefficients. Thus the Dirichlet polynomial $p$ is already finite, and it suffices to choose $M\ge B$ to meet the span condition used in Lemma~\ref{lem:rkhs-rayleigh-sampling-id}. The detailed identification is spelt out in Lemma~\ref{lem:a3-model-space}.
+\end{remark}

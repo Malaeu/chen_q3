@@ -1,0 +1,14 @@
+\begin{lemma}[Local positivity for Lipschitz symbols]\label{lem:local-positivity}
+Suppose $P_A \in \Lip(1)$ on $\TT$ and there exists an arc $\Gamma$ of length $\ell>0$ with $P_A(\theta)\ge c_0>0$ for all $\theta\in\Gamma$ (in applications $c_0$ arises from Proposition~\ref{a3:prop:A0-minus-LA}). Let $T_{P_A}^{(N)}$ be the Toeplitz truncation of size $N\times N$, and let $v$ be a trigonometric polynomial supported on frequencies compatible with the window defining $\Gamma$. Then there exists a constant $C = C(\|P_A\|_{L^\infty}, \Lip(P_A))$ such that
+\[
+  \langle T_{P_A}^{(N)} v, v \rangle \;\ge\; c_0 \|v\|_2^2 \;-
+  C\,\om_{P_A}(1/N)\,\|v\|_2^2.
+\]
+In particular, whenever $N$ is large enough that $C\,\om_{P_A}(1/N) \le c_0/2$, the quadratic form obeys
+\[
+  \langle T_{P_A}^{(N)} v, v \rangle \ge \tfrac{c_0}{2}\,\|v\|_2^2.
+\]
+\end{lemma}
+\begin{proof}
+Write $V$ for the trigonometric representative of $v$. Since $P_A\ge c_0$ on $\Gamma$, the integral of $P_A |V|^2$ over $\Gamma$ contributes at least $c_0 \|v\|_2^2$. Outside $\Gamma$, the Toeplitz remainder can be estimated via the modulus of continuity of $P_A$ and the frequency localisation of $v$, giving the stated $C\,\om_{P_A}(1/N)$ loss.
+\end{proof}

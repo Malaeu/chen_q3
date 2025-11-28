@@ -1,0 +1,54 @@
+\refstepcounter{table}\label{tab:T5-grid-lip}
+\begin{center}
+  \small\textbf{Table \thetable: Grid spacing, Lipschitz losses, and residual margins for T5 transfer (legacy bridge certificates).}
+\end{center}
+\begin{center}
+  \small
+  \begin{tabular}{rrrrrrrl}
+    \toprule
+    $K$ & $c_0(K)$ & $m_{\mathrm{grid}}=\tfrac{1}{2}c_0$ & $\Delta_K$ & $L_Q(K)$ & $L_Q\Delta_K$ & $m_{\mathrm{full}}$ & Source \\
+    \midrule
+    1 & 0.898623847 & 0.449312 & $9.1506\times 10^{-6}$ & $8.0996\times 10^{2}$ & 0.007412 & 0.441900 & \texttt{cert/bridge/K1\_grid.json} \\
+    2 & 0.902866849 & 0.451433 & $5.1302\times 10^{-8}$ & $4.5283\times 10^{4}$ & 0.002323 & 0.449110 & \texttt{cert/bridge/K2\_grid.json} \\
+    3 & 0.904368197 & 0.452184 & $6.0993\times 10^{-10}$ & $1.6704\times 10^{6}$ & 0.001019 & 0.451165 & \texttt{cert/bridge/K3\_grid.json} \\
+    4 & 0.905066004 & 0.452533 & $9.9331\times 10^{-12}$ & $5.3067\times 10^{7}$ & 0.000527 & 0.452006 & \texttt{cert/bridge/K4\_grid.json} \\
+    6 & 0.905675120 & 0.452838 & $4.4542\times 10^{-15}$ & $4.3854\times 10^{10}$ & 0.000195 & 0.452642 & \texttt{cert/bridge/K6\_grid.json} \\
+    8 & 0.905926192 & 0.452963 & $3.0784\times 10^{-18}$ & $3.1750\times 10^{13}$ & 0.000098 & 0.452865 & \texttt{cert/bridge/K8\_grid.json} \\
+    10 & 0.906053375 & 0.453027 & $2.8799\times 10^{-21}$ & $2.1428\times 10^{16}$ & 0.000062 & 0.452965 & \texttt{cert/bridge/K10\_grid.json} \\
+    12 & 0.906126551 & 0.453063 & $2.5348\times 10^{-24}$ & $1.3845\times 10^{19}$ & 0.000035 & 0.453028 & \texttt{cert/bridge/K12\_grid.json} \\
+    16 & 0.906203168 & 0.453102 & $2.6777\times 10^{-30}$ & $5.3295\times 10^{24}$ & 0.000014 & 0.453087 & \texttt{cert/bridge/K16\_grid.json} \\
+    20 & 0.906240367 & 0.453120 & $3.9217\times 10^{-36}$ & $1.9180\times 10^{30}$ & 0.000008 & 0.453113 & \texttt{cert/bridge/K20\_grid.json} \\
+    24 & 0.906261191 & 0.453131 & $7.0881\times 10^{-42}$ & $6.6178\times 10^{35}$ & 0.000005 & 0.453126 & \texttt{cert/bridge/K24\_grid.json} \\
+    28 & 0.906274010 & 0.453137 & $1.4790\times 10^{-47}$ & $2.2182\times 10^{41}$ & 0.000003 & 0.453134 & \texttt{cert/bridge/K28\_grid.json} \\
+    32 & 0.906282458 & 0.453141 & $3.4150\times 10^{-53}$ & $7.2798\times 10^{46}$ & 0.000002 & 0.453139 & \texttt{cert/bridge/K32\_grid.json} \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  \small\textbf{Tail and grid activation budgets recorded by the bridge run catalogue.}
+\end{center}
+\begin{center}
+  \small
+  \begin{tabular}{rrrrrl}
+    \toprule
+    $K$ & $Q_{\mathrm{margin}}$ & $\varepsilon_{\mathrm{grid}}$ & $\varepsilon_{\mathrm{tail}}$ & $t_{\mathrm{sym}}$ & Source \\
+    \midrule
+    1 & 0.294463 & 0.195849 & 0.006799 & 0.030000 & \texttt{cert/bridge/brc\_summary.json} \\
+    2 & 0.265716 & 0.176730 & 0.006725 & 0.013333 & \texttt{cert/bridge/brc\_summary.json} \\
+    3 & 0.255655 & 0.170038 & 0.006698 & 0.007500 & \texttt{cert/bridge/brc\_summary.json} \\
+    4 & 0.250998 & 0.166941 & 0.006685 & 0.004800 & \texttt{cert/bridge/brc\_summary.json} \\
+    6 & 0.246943 & 0.164244 & 0.006674 & 0.002449 & \texttt{cert/bridge/brc\_summary.json} \\
+    8 & 0.245274 & 0.163134 & 0.006670 & 0.001481 & \texttt{cert/bridge/brc\_summary.json} \\
+    10 & 0.244429 & 0.162572 & 0.006667 & 0.000992 & \texttt{cert/bridge/brc\_summary.json} \\
+    12 & 0.243944 & 0.162249 & 0.006666 & 0.000710 & \texttt{cert/bridge/brc\_summary.json} \\
+    16 & 0.243435 & 0.161910 & 0.006665 & 0.000415 & \texttt{cert/bridge/brc\_summary.json} \\
+    20 & 0.243188 & 0.161746 & 0.006664 & 0.000272 & \texttt{cert/bridge/brc\_summary.json} \\
+    24 & 0.243050 & 0.161654 & 0.006664 & 0.000192 & \texttt{cert/bridge/brc\_summary.json} \\
+    28 & 0.242965 & 0.161598 & 0.006663 & 0.000143 & \texttt{cert/bridge/brc\_summary.json} \\
+    32 & 0.242909 & 0.161561 & 0.006663 & 0.000110 & \texttt{cert/bridge/brc\_summary.json} \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\par\smallskip
+\noindent\emph{Notes.} All numerical fields in Table~\ref{tab:T5-grid-lip} are read from \texttt{c0}, \texttt{Delta\_actual}, and \texttt{L\_Q} in the listed JSON files, with $m_{\mathrm{full}}=m_{\mathrm{grid}}-L_Q\Delta_K$ verified by Vampire in \texttt{proofs/T5\_global\_transfer/tptp/t5\_grid.p} (log: \texttt{proofs/T5\_global\_transfer/logs/t5\_grid\_vampire.log}). Tail and activation budgets use the \texttt{Q\_margin}, \texttt{eps\_grid\_F}, \texttt{eps\_tail\_F}, and \texttt{t\_sym} entries in \texttt{cert/bridge/brc\_summary.json}; the derived tail margin $m_{\mathrm{tail}}:=Q_{\mathrm{margin}}-\varepsilon_{\mathrm{grid}}$ satisfies $\varepsilon_{\mathrm{tail}}\le 0.1\,m_{\mathrm{tail}}$, matching the hypotheses discharged in \texttt{proofs/T5\_global\_transfer/tptp/t5\_tail.p} (log: \texttt{proofs/T5\_global\_transfer/logs/t5\_tail\_vampire.log}) and the series budget encoded in \texttt{t5\_series.p} (log: \texttt{t5\_series\_vampire.log}). The inductive-limit threshold is checked in \texttt{t5\_compact.p} (log: \texttt{t5\_compact\_vampire.log}).

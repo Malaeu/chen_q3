@@ -1,0 +1,39 @@
+% Appendix table: illustrative constants for MD_{2,3} (not part of logic)
+\subsection{Illustrative constants for MD$_{2,3}$}
+The table below summarizes indicative bounds entering the sufficient condition
+\( m_r\,\rho_t(r)\,\tfrac{r^2}{B}\ -\ 2\,(4\pi t)^{-1/2}\,N_{B,r}\ \ge \tfrac{\log 2}{\sqrt 2}+\tfrac{\log 3}{\sqrt 3} \)\, for sample parameters within the base interval \(B\in[B_3,B_4)\). Values are computed from the explicit inequalities in \texttt{MD\_2\_3\_constants.tex} and serve communication only (QA); they are not part of the proof.
+
+\medskip
+\begin{center}
+\begin{tabular}{c c c c c c c}
+\hline
+$B$ & $r$ & $t$ & lower $m_r$ & upper $N_{B,r}$ & $\rho_t(r)\,\tfrac{r^2}{B}$ & $(4\pi t)^{-1/2}N_{B,r}$ \\
+\hline
+0.210 & 0.10 & $4.0\cdot10^{-1}$ & 0.557 & 1.101 & $7.93\cdot10^{-3}$ & 0.492 \\
+0.210 & 0.08 & $2.5\cdot10^{-1}$ & 0.683 & 1.084 & $6.25\cdot10^{-3}$ & 0.611 \\
+0.208 & 0.10 & $4.0\cdot10^{-1}$ & 0.557 & 1.093 & $8.00\cdot10^{-3}$ & 0.487 \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+Values computed from the explicit expressions in \texttt{MD\_2\_3\_constants.tex} using conservative universal constants $C_0=1.5$ and $C_1=2.0$ (digamma bound for $m_r$ and logarithmic tail bound for $N_{B,r}$), together with the Gaussian terms $\rho_t(r)$ and $(4\pi t)^{-1/2}$.
+
+\medskip
+\subsection{RKHS contraction (conservative parameters)}
+For convenience we also list two conservative parameter choices for the RKHS contraction used in the operator form of MD. Here $K:=B/r$, $\delta_K\ge (4\pi e^{2\pi K})^{-1}$, we pick $\eta_K\in(0,1)$ and set $t_{\min}(K)=\delta_K^2/\big(4\ln((2+\eta_K)/\eta_K)\big)$. This ensures $S_K(t_{\min})\le \eta_K$ and
+$\rho_K\le w_{\max}+\sqrt{w_{\max}}\,\eta_K$ with $w_{\max}\le 2/e$.
+
+\begin{center}
+\begin{tabular}{c c c c c c}
+\hline
+$B$ & $r$ & $K=B/r$ & $\eta_K$ & $t_{\min}(K)$ & $\rho_K$ upper bound \\
+\hline
+0.210 & 0.08 & $\approx 2.625$ & 0.20 & from $\delta_K$ & $\dfrac{2}{e}+\sqrt{\tfrac{2}{e}}\cdot 0.20\ \approx\ 0.9084$ \\
+0.210 & 0.10 & $\approx 2.10$  & 0.15 & from $\delta_K$ & $\dfrac{2}{e}+\sqrt{\tfrac{2}{e}}\cdot 0.15\ \approx\ 0.8645$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+These rows are intentionally conservative: reviewers may re-evaluate $\delta_K$ and $t_{\min}(K)$ for tighter bounds; feasibility ($\rho_K<1$) is already clear from the upper bounds.

@@ -1,0 +1,49 @@
+% T5 lemmas: inductive limit and transfer of positivity
+\subsection{T5: Inductive Limit over Compacts}
+Let $\mathcal W_K=C^+_{\mathrm{even}}([-K,K])$ with the uniform norm and let $\mathcal W=\bigcup_{K>0}\mathcal W_K$ carry the inductive limit topology.
+
+\begin{lemma}[Nested dictionaries yield $\mathcal W$]\label{t5:lem:T5-dicts}
+For each $K>0$ let $\mathcal G_K\subset\mathcal C_K$ be a finite dictionary as in Theorem~\ref{a1:thm:A1-local-density}, constructed over a shift grid with step $\Delta(K)$ and two heat scales $t_{\min}(K),t_{\max}(K)$. If $K_i\nearrow\infty$ and $\Delta(K_{i+1})$ divides $\Delta(K_i)$ so that $\mathcal G_{K_i}\subset\mathcal G_{K_{i+1}}$, then
+\begin{equation}\label{eq:T5_compact_limit_lemmas-formula}
+\bigcup\limits_i \overline{\mathrm{cone}(\mathcal G_{K_i})}^{\,\|\cdot\|_\infty}\ =\ \bigcup\limits_i \mathcal W_{K_i}\ =:\ \mathcal W.
+\end{equation}
+\end{lemma}
+\begin{proof}
+By Theorem~A1$'$ each $\overline{\mathrm{cone}(\mathcal G_{K_i})}$ is dense in $\mathcal W_{K_i}$, and nestedness yields the union identity.
+\end{proof}
+
+\begin{theorem}[Transfer of positivity to the Weil class]\label{t5:thm:T5-transfer}\label{lem:T5-transfer}
+Assume $Q\ge0$ on $\mathcal W_{K_i}$ for every $i$, where $Q$ is continuous on each $\mathcal W_{K_i}$ (Lemma~\ref{a2:lem:A2}). Then $Q\ge0$ on $\mathcal W$ in the inductive limit topology. With the normalization of Lemma~\ref{t0:lem:T0} and the bridge of Theorem~\ref{thm:A3}, this identifies the positivity domain with the Weil cone $\mathcal W$ used throughout Sections~\ref{sec:scope}--\ref{sec:Weil}.
+\end{theorem}
+\begin{proof}
+Given $\Phi\in\mathcal W$, choose $i$ with $\mathrm{supp}\,\Phi\subset[-K_i,K_i]$. Then $\Phi\in\mathcal W_{K_i}$ and $Q(\Phi)\ge0$ by hypothesis. Continuity on each $\mathcal W_{K_i}$ and Lemma~\ref{t5:lem:T5-dicts} pass the result to the closure and thus to $\mathcal W$.
+\end{proof}
+
+\begin{lemma}[Grid-lift by Lipschitz margin]\label{lem:t5-grid-lip}
+Let $Q$ be Lipschitz on $W_K$ with constant $L_Q(K)$ (\textup{A2}). Suppose there exists a uniform grid $\{\tau_j\}$ in $[-K,K]$ of step $\Delta>0$ such that
+\[
+  \min_j Q(\tau_j)\ \ge\ c_0(K)\ > 0
+\]
+and $\Delta\le c_0(K)/(4L_Q(K))$. Then $\min_{\tau\in[-K,K]} Q(\tau)\ge \tfrac12\,c_0(K)$.
+\end{lemma}
+\begin{proof}
+Fix $\tau\in[-K,K]$ and let $\tau_\ast$ be the nearest grid point, so $|\tau-\tau_\ast|\le \Delta/2$. By Lipschitz continuity,
+\[
+  Q(\tau)\ \ge\ Q(\tau_\ast) - L_Q(K)\,|\tau-\tau_\ast|\ \ge\ c_0(K) - L_Q(K)\,\frac{\Delta}{2}
+  \ \ge\ c_0(K) - \frac{c_0(K)}{8}\ \ge\ \tfrac12\,c_0(K).
+\]
+The last step uses $\Delta\le c_0/(4L_Q)$ twice (once for $\Delta/2$ and a slack factor); any constant $<1/2$ suffices after rescaling.\qedhere
+\end{proof}
+\begin{lemma}[Monotone inheritance across $K$]\label{t5:lem:T5-inheritance}
+Fix an increasing chain $K_0<K_1<\cdots$ and choose the monotone schedules
+$t_{\mathrm{rkhs}}(K_i):=t^{\star}_{\mathrm{T5}}(K_i)$ and $M_i:=M^{\star}(K_i)$ from \eqref{eq:T5-tstar}--\eqref{eq:T5-Mstar}. Then
+\begin{equation}\label{eq:t5_compact_limit_lemmas-L33-042e1eb1}
+  \lambda_{\min}\big(T_{M_i}[P_A]-T_P\big)
+  \ \ge\ \tfrac12\,c_0^{\ast}(K_i)
+  \quad\text{on }\mathcal W_{K_i},
+\end{equation}
+and the property propagates from $K_i$ to $K_{i+1}$.
+\end{lemma}
+\begin{proof}
+Lemma~\ref{lem:T5p-grid} with $M_i=M^{\star}(K_i)$ and $t=t^{\star}_{\mathrm{T5}}(K_i)$ gives the lower bound. Since $K\mapsto c_0^{\ast}(K)$ is decreasing and $K\mapsto t^{\star}_{\mathrm{T5}}(K), M^{\star}(K)$ are nondecreasing, the same estimate applies at $K_{i+1}$, so the chain inherits positivity.
+\end{proof}

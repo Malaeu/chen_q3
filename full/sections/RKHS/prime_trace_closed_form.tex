@@ -1,0 +1,48 @@
+\begin{lemma}[Closed-form upper bound for the prime trace]\label{pm:lem:rho-closed-form}
+For $t>0$ one has
+\begin{equation}\label{eq:Prime_trace_closed_form-formula-1}
+  \rho(t)\ \le\ 2\int_0^{\infty} y\,e^{y/2}\,e^{-4\pi^2 t\,y^2}\,dy.
+\end{equation}
+With $a=4\pi^2 t$ and $b=\tfrac12$ this implies
+\begin{equation}\label{eq:rho-closed-form}
+  \rho(t)\ \le\ \frac{1}{4\pi^2 t}\ +\ \frac{\sqrt\pi}{2\,(4\pi^2 t)^{3/2}}\,\exp\!\Big(\,\frac{1}{16\pi^2 t}\,\Big).
+\end{equation}
+In particular, at $t=1$ this yields the unconditional bound $\rho(1)<\tfrac{1}{25}$, hence $\|T_P\|\le \rho(1)<\tfrac{1}{25}$ for all compacts.
+\end{lemma}
+\begin{proof}[Sketch]
+The display \eqref{eq:Prime_trace_closed_form-formula-1} is Lemma~\ref{pm:lem:sum-to-rho}. Complete the square: $\int_0^{\infty} y\,e^{-a y^2 + b y}\,dy$ admits the identity
+\(
+  e^{\frac{b^2}{4a}}\,\frac{b\sqrt\pi}{4a^{3/2}}\,\bigl(1+\operatorname{erf}(\tfrac{b}{2\sqrt a})\bigr)\ +\ \frac{1}{2a}.
+\)
+Using $1+\operatorname{erf}(x)\le2$ gives the upper bound \eqref{eq:rho-closed-form}. Plug $a=4\pi^2 t$, $b=\tfrac12$ and simplify.
+\end{proof}
+
+\begin{lemma}[Shift-robust trace cap --- enhanced]\label{lem:shift-trace-cap}
+Fix $K>0$. For any $B>0$, $t>0$, and $|\tau|\le K$, the symmetrized prime sampling operator
+satisfies
+\begin{equation}\label{eq:Prime_trace_closed_form-formula}
+\|T_P[\Phi_{B,t,\tau}]\|_{L^2\to L^2}\ \le\ \mathrm{tr}\,T_P
+= 2\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,e^{-4\pi^2 t\,(\log n/(2\pi)-\tau)^2}
+\ \le\ e^{\pi K}\Big(\rho(t)+2\pi K\,\sigma(t)\Big),
+\end{equation}
+where
+\begin{equation}\label{eq:Prime_trace_closed_form-formula-3}
+\rho(t):=2\int_0^\infty y\,e^{y/2}e^{-4\pi^2 t\,y^2}\,dy,\qquad
+\sigma(t):=2\int_0^\infty e^{y/2}e^{-4\pi^2 t\,y^2}\,dy
+\ \le\ \frac{\sqrt{\pi}}{\pi\sqrt{t}}\exp\!\Big(\frac{1}{64\pi^2 t}\Big).
+\end{equation}
+In particular, for each $K$ there exists $t_K>0$ with $e^{\pi K}(\rho(t_K)+2\pi K\,\sigma(t_K))<1$,
+and then $I-T^{\mathrm{sym}}_P[\Phi_{B,t_K,\tau}]\succeq (1-\theta_K)I$ uniformly in $B>0$, $|\tau|\le K$,
+where $\theta_K:=e^{\pi K}(\rho(t_K)+2\pi K\,\sigma(t_K))\in(0,1)$.
+\end{lemma}
+\begin{proof}
+Start with $\|T_P\|\le \mathrm{tr}\,T_P$ (PSD, finite rank on compacts).
+Bound the sum by an integral of the positive integrand and apply the change $x=e^{y+c}$ with $c=2\pi\tau$:
+\begin{equation}\label{eq:Prime_trace_closed_form-formula-2}
+\int_1^\infty \frac{\log x}{\sqrt x}\,e^{-4\pi^2 t(\log x-c)^2}\,dx
+= e^{c/2}\!\int_0^\infty (y+c)\,e^{y/2}e^{-4\pi^2 t\,y^2}\,dy.
+\end{equation}
+Splitting gives $e^{c/2}\big(\tfrac12\rho(t)+\tfrac{c}{2}\sigma(t)\big)$; doubling for $\pm\xi_n$ and using $|c|\le 2\pi K$
+yields the stated bound. The estimate for $\sigma(t)$ follows from the closed form for $\int_0^\infty e^{-ay^2+by}\,dy$
+with $a=4\pi^2 t$, $b=\tfrac12$, using $1+\mathrm{erf}(\cdot)\le 2$.
+\end{proof}

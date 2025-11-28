@@ -1,0 +1,22 @@
+% Amplitude closure without D3
+\section*{Amplitude closure without D3}
+
+\begin{proposition}[AB($K$) supplied by A3]\label{prop:AB-closure-K}
+Lemmas~\ref{lem:local-positivity}, \ref{lem:a3.bv-to-lip}, \ref{lem:a3.cap-combine}, and \ref{lem:a3.two-scale} ensure the AB($K$) conditions with constants depending only on $(K,\czero,\rhok)$.
+\end{proposition}
+
+\begin{proof}
+The Lipschitz floor $\min P_A\ge \czero(K)$ gives (i), while the trace-cap and the two-scale parameters yield (ii) and (iii).
+\end{proof}
+
+\begin{theorem}[Amplitude gate without explicit D3 assumptions]\label{thm:amp-noD3}
+Under A2/A3, Proposition~\ref{prop:AB-closure-K} and Corollary~\ref{cor:D3-lock} imply
+\[
+  \big\langle (T_M[P_A]-T_P)f,f\big\rangle\ \ge\ \Bigl(\frac{\czero(K)}{2}-\rhok\Bigr)\,\|f\|_2^2
+\]
+for every $f$ supported in $[-K,K]$. In particular, if $\rhok<\czero(K)/2$ the mixed lower bound is positive; with T5 this yields $Q\ge0$ on the Weil class and \WeilImpRH.
+\end{theorem}
+
+\begin{proof}
+Insert the AB($K$) bounds into Theorem~\ref{thm:A3} and use Corollary~\ref{cor:D3-lock} to control the prime term.
+\end{proof}

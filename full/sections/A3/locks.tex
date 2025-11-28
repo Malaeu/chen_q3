@@ -1,0 +1,22 @@
+\subsection{A3 locking summary}\label{a3:sec:locks}
+
+We record how the local ingredients assembled in \S\ref{sec:A3} feed the global lock:
+
+\begin{itemize}
+  \item Lemma~\ref{lem:a3.cap-combine} supplies the bounded-overlap control on caps.
+  \item Lemma~\ref{lem:a3.two-scale} keeps the Arch floor under two-scale smoothing.
+  \item Lemma~\ref{lem:trace-cap-bound} (powered by Theorem~\ref{thm:rkhs-tstar}) gives the $L^2$ trace bound on the RKHS slice.
+  \item Theorem~\ref{thm:a3-mixed-margin} combines the symbol barrier with the RKHS prime cap from Proposition~\ref{prop:a3-prime-cap} and the Frobenius guard of Corollary~\ref{cor:toeplitz-frob}.
+\end{itemize}
+
+\begin{corollary}[Lock]\label{cor:D3-lock}
+Under the hypotheses of Lemmas~\ref{lem:a3.cap-combine}, \ref{lem:a3.two-scale} and \ref{lem:trace-cap-bound} the A3 lock closes with a constant depending only on the overlap bound and the trace constant.
+\end{corollary}
+\phantomsection\label{a3:cor:A3_lock_formal}
+
+\begin{proof}
+Lemma~\ref{lem:a3.cap-combine} gives almost orthogonality, Lemma~\ref{lem:a3.two-scale}
+controls interactions between scales, Lemma~\ref{lem:trace-cap-bound} closes the trace on the slice,
+and Theorem~\ref{thm:a3-mixed-margin} supplies the quantitative margin with the certified parameters.
+Summing the contributions yields the stated lock.
+\end{proof}

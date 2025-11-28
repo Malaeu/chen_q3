@@ -1,0 +1,54 @@
+\begin{remark}[Nodes are not dense on compacts]
+On $[-K,K]$ the active set $\{\alpha_n=\tfrac{\log n}{2\pi}\}$ is finite: $n\le N(K)=\lfloor e^{2\pi K}\rfloor$. The minimal gap satisfies
+\[
+  \delta_K = \min_{1\le n<N(K)} (\alpha_{n+1}-\alpha_n) = \frac{1}{2\pi}\min_{1\le n<N(K)}\log\Bigl(1+\frac1n\Bigr)
+  \ge \frac{1}{2\pi (N(K)+1)} > 0.
+\]
+\end{remark}
+
+\begin{remark}[Weight upper bound]
+For $w(n)=\Lambda(n)/\sqrt n$ we have $w(n)\le \log n/\sqrt n \le 2/e<3/4<1$. Thus $w_{\max}<1$ on every compact (numerically, $2/e\approx0.7358$).
+\end{remark}
+
+\begin{remark}[Finite Gram matrices]
+The Gram matrix $G$ of $\{k_{\alpha_n}\}$ on $[-K,K]$ is finite dimensional and satisfies $\|T_P\|=\|W^{1/2}GW^{1/2}\|$.
+\end{remark}
+
+\begin{remark}[Existence of $t_{\min}$]
+As $t\downarrow0$, $S_K(t)=\tfrac{2e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}\downarrow0$. Hence for any $\eta_K>0$ there exists
+\[
+  t_{\min}(K)=\frac{\delta_K^2}{4\,\ln\!\bigl((2+\eta_K)/\eta_K\bigr)} \quad\text{with}\quad S_K(t_{\min})\le \eta_K.
+\]
+\end{remark}
+
+\begin{remark}[Dictionary density]
+We assert $\varepsilon$-density of the cone $\mathcal C_K$ by a finite dictionary $\mathcal G_K$ at fixed $K$, not global density by a fixed finite set; cf. Theorem~A1$'$ and the T5 transfer.
+\end{remark}
+
+\begin{remark}[Activity intervals]
+Setting $I_n=[B_n,B_{n+1})$ with $B_n=\tfrac{\log n}{2\pi}$, crossing $I_n\to I_{n+1}$ introduces the single new node $\alpha_{n+1}$ used in the one-prime induction.
+\end{remark}
+
+\begin{remark}[Weil topology]
+Write $\mathcal W=\bigcup_K \mathcal W_K$ with the inductive-limit topology. Since $Q$ is continuous on each $\mathcal W_K$ (Lemma~\ref{a2:lem:A2}), it is continuous on $\mathcal W$; see Theorem~\ref{t5:thm:T5-transfer}.
+\end{remark}
+
+\begin{remark}[Link to zeta zeros]
+The connection to zeros of the Riemann zeta function is handled in Section~\ref{sec:Weil} via the classical Weil criterion.
+\end{remark}
+
+\begin{remark}[Example at $K=1$]
+Taking $N(1)=\lfloor e^{2\pi}\rfloor$, one has $\delta_1\ge 1/(2\pi(N(1)+1))$. Choosing $t_{\min}(1)$ from the formula above with a concrete $\eta_1\in(0,1)$ yields $S_1(t_{\min})$ and ensures $\rho_1=w_{\max}+\sqrt{w_{\max}} S_1(t_{\min})<1$. PSD of the small dictionary $\mathcal G_1$ can be checked for $M\in\{10,20,40\}$ directly.
+\end{remark}
+
+\begin{remark}[Role of the Fej\'er factor]
+The Fej\'er factor localizes to compacts and contributes to the BV/Lipschitz regularity of the symbol; the heat factor provides smoothing and Gaussian-in-log tails. Their product preserves positivity and supplies the regularity required for A3 and the RKHS bounds.
+\end{remark}
+
+\begin{remark}[What we do not assume]
+We do not model the problem via a selfadjoint operator with pure point spectrum on a Paley--Wiener space; on the Fourier side, multiplication by $\xi$ has absolutely continuous spectrum. We do not use rigged eigenfunctions such as $e^{i\gamma \tau}$ as elements of the Hilbert space. We do not infer Weyl asymptotics from heat traces, and we do not impose determinant identities equivalent to RH.
+\end{remark}
+
+\begin{remark}[Proof skeleton]
+The proof skeleton is Toeplitz $+$ RKHS $+$ Weil: (i) A3 handles the Archimedean symbol $P_A\in\mathrm{Lip}(1)$ and keeps primes as a finite-rank operator; (ii) RKHS yields a strict contraction on each compact $[-K,K]$; (iii) T5 transfers positivity to the inductive limit; (iv) the Weil criterion concludes RH.
+\end{remark}

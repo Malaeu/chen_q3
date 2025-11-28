@@ -1,0 +1,84 @@
+% Explicit constants for MD_{2,3}
+\subsection{Explicit Constants for MD$_{2,3}$}\label{app:md23-constants}
+We collect analytic bounds sufficient to verify the base interval MD$_{2,3}$ without numerics in the main text. Numerical certification (interval arithmetic) may be delegated to the reproducibility appendix.
+
+\subsection{Lower bound for $m_r$}
+Define $a(\xi)=\log\pi-\Re\psi(\tfrac14+i\pi\xi)$. For $r\in(0,1]$ set
+\begin{equation}\label{eq:MD_2_3_constants-formula-11}
+m_r\ :=\ \inf_{|\xi|\le r} a(\xi)\ =\ \log\pi-\sup_{|\xi|\le r}\Re\psi\Big(\tfrac14+i\pi\xi\Big).
+\end{equation}
+Using the integral representation (for $\Re z>0$)
+\begin{equation}\label{eq:MD_2_3_constants-formula-12}
+\psi(z)=\log z-\int_0^{\infty} \Big(\frac{1}{t}-\frac{1}{1-e^{-t}}\Big) e^{-zt}\,dt,
+\end{equation}
+we obtain, after taking real parts at $z=\tfrac14+i\pi\xi$, the bound
+\begin{equation}\label{eq:MD_2_3_constants-formula-10}
+\Re\psi\Big(\tfrac14+i\pi\xi\Big)\ \le\ \log\sqrt{\tfrac{1}{16}+\pi^2\xi^2}\ +\ C_0,\qquad C_0:=\int_0^{\infty}\Big|\frac{1}{t}-\frac{1}{1-e^{-t}}\Big| e^{-t/4}\,dt.
+\end{equation}
+Hence
+\begin{equation}\label{eq:MD_2_3_constants-formula-9}
+m_r\ \ge\ \log\pi-\log\sqrt{\tfrac{1}{16}+\pi^2 r^2}-C_0\ =\ \tfrac12\log\Big(\frac{\pi^2}{\tfrac{1}{16}+\pi^2 r^2}\Big)-C_0.
+\end{equation}
+This gives an explicit (computable) lower bound $m_r\downarrow 0$ as $r\downarrow0$.
+
+\subsection{Upper bound for $N_{B,r}$}
+Let $N_{B,r}=\int_{[-B,B]\setminus[-r,r]} |a(\xi)|\,d\xi$. For $|\xi|\ge r$ and $r\in(0,1]$ we use the asymptotic
+\begin{equation}\label{eq:MD_2_3_constants-formula-8}
+\Re\psi\Big(\tfrac14+i\pi\xi\Big)=\log(\pi|\xi|)+O\Big(\frac{1}{1+|\xi|}\Big),
+\end{equation}
+whence $|a(\xi)|\le \big|\log\pi-\log(\pi|\xi|)\big|+C_1 \le \log^+\!\frac{1}{|\xi|}+C_1$ for a universal $C_1$. Therefore
+\begin{equation}\label{eq:MD_2_3_constants-formula-7}
+N_{B,r}\ \le\ \int_{[-B,-r]\cup[r,B]} \big(\log^+\!\tfrac{1}{|\xi|}+C_1\big)\,d\xi\ \le\ 2\Big( r\log\tfrac{1}{r}+r + (B-r)C_1\Big).
+\end{equation}
+In particular, for fixed $B$ and small $r$ one has $N_{B,r}=O\big(r\log\tfrac{1}{r}\big)$.
+
+\subsection{Core mass via $\rho_t(r)$ and Fej\'er area}
+For any $|\tau|\le B$ and $r\in(0,B)$,
+\begin{equation}\label{eq:MD_2_3_constants-formula-6}
+ \int_{-r}^{r}\!\Lambda_B(\xi-\tau)\,\rho_t(\xi-\tau)\,d\xi\ \ge\ \rho_t(r)\int_{\tau-r}^{\tau+r}\!\Lambda_B(x)\,dx\ \ge\ \rho_t(r)\,\frac{r^2}{2B},
+\end{equation}
+with the last inequality minimizing the Fej\'er area over intervals of length $2r$ in $[-B,B]$. The symmetric term in $\Phi_{B,t,\tau}$ contributes another $\rho_t(r)\,\frac{r^2}{2B}$, hence a total core mass lower bound $\rho_t(r)\,\frac{r^2}{B}$.
+
+\subsection{Sufficient criterion (reprise)}
+Combining the bounds gives the sufficient condition for MD$_{2,3}$ on $[B_3,B_4)$:
+\begin{equation}\label{eq:MD_2_3_constants-formula-5}
+\boxed{\ m_r\,\rho_t(r)\,\frac{r^2}{B}\ -\ 2\,(4\pi t)^{-1/2}\,N_{B,r}\ \ge\ \frac{\log 2}{\sqrt 2}+\frac{\log 3}{\sqrt 3}\, }
+\end{equation}
+with $m_r, N_{B,r}$ as above and $\rho_t(r)=(4\pi t)^{-1/2} e^{-(2\pi)^2 r^2/t}$. One may additionally fix $t\ge 1/\pi$ to ensure $\Phi_{B,t,\tau}(\xi_n)\le1$ on the prime side.
+
+\subsection{RKHS auxiliary bounds for the operator form}
+
+We record three elementary ingredients used by the RKHS contraction in the MD module.
+
+\begin{lemma}[Effective weight cap]\label{md:lem:weight-cap}
+For the even weighting $w(n)=\Lambda(n)/\sqrt{n}$ one has
+\begin{equation}\label{eq:MD_2_3_constants-formula-1}
+\sup_{x\ge 2}\frac{\log x}{\sqrt{x}}\;=\;\frac{2}{e}\;<\;\frac{3}{4}\;<\;1,\qquad\text{hence}\qquad w_{\max}\le \frac{2}{e}< \frac{3}{4}.
+\end{equation}
+(Rational bound: $2/e\approx 0.7358\ldots < 3/4 = 0.75$, ensuring all subsequent constraints with $w_{\max}$ use explicit rational inequalities.)
+\end{lemma}
+
+\begin{lemma}[Log-node gap on a compact]\label{md:lem:gap-compact}
+Let $\alpha_n=\dfrac{\log n}{2\pi}$ and fix $K\ge 1$. Then the minimal active gap on $[-K,K]$ satisfies
+\begin{equation}\label{eq:MD_2_3_constants-formula-4}
+\delta_K\;:=\;\min\{\alpha_{n+1}-\alpha_n:\ \alpha_n,\alpha_{n+1}\in[-K,K]\}\ \ge\ \frac{1}{4\pi\,e^{2\pi K}}\,.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For $n\ge1$, by convexity of $\log$ we have $\log(n+1)-\log n \ge \dfrac{1}{n+1}$. Hence
+\begin{equation}\label{eq:MD_2_3_constants-formula-3}
+\alpha_{n+1}-\alpha_n\;=\;\frac{\log(n+1)-\log n}{2\pi}\;\ge\;\frac{1}{2\pi(n+1)}\,.
+\end{equation}
+On $[-K,K]$ one has $n+1\le \lfloor e^{2\pi K}\rfloor+1\le 2 e^{2\pi K}$ for $K\ge1$, so $\alpha_{n+1}-\alpha_n\ge (4\pi e^{2\pi K})^{-1}$. Taking the minimum over active indices yields the claim.
+\end{proof}
+
+\begin{proposition}[RKHS contraction parameter]\label{md:prop:rkhs-contraction}
+With $S_K(t):=\dfrac{2e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}$ and any $\eta_K\in(0,1)$ define
+\begin{equation}\label{eq:MD_2_3_constants-formula}
+t_{\min}(K)=\frac{\delta_K^2}{4\ln\!\big(\tfrac{2+\eta_K}{\eta_K}\big)}\,.
+\end{equation}
+Then $S_K(t_{\min})\le \eta_K$ and the de Branges/RKHS contraction holds:
+\begin{equation}\label{eq:MD_2_3_constants-formula-2}
+\|T_P\|_{\mathcal H_K}\ \le\ w_{\max}+\sqrt{w_{\max}}\,S_K(t_{\min})\ \le\ w_{\max}+\sqrt{w_{\max}}\,\eta_K\,.
+\end{equation}
+\end{proposition}

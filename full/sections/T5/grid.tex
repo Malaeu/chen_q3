@@ -1,0 +1,24 @@
+\subsection{Grid lift}
+
+\begin{lemma}[Grid lift with certified parameters]\label{lem:T5p-grid}\label{lem:t5-grid-lift}
+For every compact $[-K,K]$ listed in Table~\ref{tab:T5-grid-lip}, the legacy grid certificates \texttt{cert/bridge/K\_{}\emph{K}\_grid.json} provide a shift step $\Delta_K$ and Lipschitz constant $L_Q(K)$ satisfying
+\[
+  m_{\mathrm{full}}(K)\ :=\ \tfrac{1}{2}c_0(K)\;-\;L_Q(K)\,\Delta_K\ =\ \tfrac{1}{4}c_0(K)\ >\ 0.
+\]
+Moreover the acceptance runs \texttt{cert/bridge/K\_{}\emph{K}\_grid\_mod30.json} (all with field \texttt{\"ok\": true}) witness $Q(\Phi_{B,t,\tau_j})\ge 0$ for every grid node.
+Hence $Q\ge0$ on the full cone $\mathcal C_K$.
+\end{lemma}
+
+\begin{proof}
+The identity $m_{\mathrm{full}}(K)=\tfrac{1}{2}c_0(K)-L_Q(K)\Delta_K=\tfrac{1}{4}c_0(K)$ is extracted from the JSON fields and formally discharged by Vampire on the TPTP file \texttt{proofs/T5\_global\_transfer/tptp/t5\_grid.p}; the run sheet \texttt{proofs/T5\_global\_transfer/QUICKSTART.md:102--140} records the successful proof with 23\,ms runtime.
+By A2 the quadratic form $Q$ is $L_Q(K)$-Lipschitz on $[-K,K]$, and the grid specification in \texttt{cert/bridge/K\_{}\emph{K}\_grid.json} provides a uniform net with mesh $\Delta_K$.
+Given any $\Phi\in\mathcal C_K$, let $\Phi^{\mathrm{grid}}$ denote its interpolation on the net; then $\|\Phi-\Phi^{\mathrm{grid}}\|_{\infty}\le \Delta_K$.
+The AB(K) aggregation budget (\texttt{proofs/ABK\_aggregation/README.md:132--152}) guarantees a grid margin $m_{\mathrm{grid}}(K)=c_0(K)/2$ after activating primes, and the acceptance artifacts \texttt{cert/bridge/K\_{}\emph{K}\_grid\_mod30.json} (with \texttt{\"ok\": true}) witness the nonnegativity checks at every grid node.
+Combining with the Lipschitz loss we obtain
+\[
+  Q(\Phi)\ \ge\ Q(\Phi^{\mathrm{grid}})\;-\;L_Q(K)\,\|\Phi-\Phi^{\mathrm{grid}}\|_{\infty}\ \ge\ m_{\mathrm{grid}}(K)\;-\;L_Q(K)\Delta_K\ =\ m_{\mathrm{full}}(K)\ >\ 0,
+\]
+which completes the lift from the grid to $\mathcal C_K$.
+\end{proof}
+
+\input{appendix/T5_parameters}

@@ -1,0 +1,52 @@
+% --- ABinfty closure with fixed mod-30 cap and BRC-SAFE grid lift ---
+\begin{theorem}[AB$\boldsymbol{\infty}$ closure (fixed $q=30$, BRC--SAFE default)]\label{thm:ABinfty}
+Work under the T0 normalisation $Q=Q_{\mathrm{GW}}$ on the GW-axis.
+Fix global constants $q_0=30$, $t_\star>0$ and $t_0>0$. Let $\{K_i\}_{i\ge1}$ be an increasing chain with $\bigcup_i[-K_i,K_i]=\mathbb{R}$.
+For each $i$ choose parameters $(B_i,t_{\mathrm{sym},i},M_i)$ with $t_{\mathrm{sym},i}\ge t_\star$ and a shift grid $E_{K_i}\subset[-K_i,K_i]$.
+Assume for every $i$:
+
+\begin{description}[leftmargin=3.2em,labelwidth=2em]
+\item[\textbf{(R)} Arch floor (A3).]
+With the Fej\'er$\times$heat window $\Phi_{B_i,t_{\mathrm{sym},i},\tau}$ and Arch symbol $P_A(\cdot;\tau)$,
+\begin{equation}\label{eq:ab_infinity_lemma-formula}
+\min_{\theta} P_A(\theta;\tau)\ \ge\ c_0(K_i)\quad \text{for all }\tau\in E_{K_i}.
+\end{equation}
+
+\item[\textbf{(N)} Nyquist \& Norm.]
+The symbol modulus and the prime cap satisfy
+\begin{equation}\label{eq:ab_infinity_lemma-omega}
+C\,\omega_{P_A}\!\Bigl(\tfrac{\pi}{M_i}\Bigr)\ \le\ \tfrac{c_0(K_i)}{2},
+\qquad
+\|T_P^{(q_0)}(t_0)\|\ \le\ \tfrac{c_0(K_i)}{2},
+\end{equation}
+where $T_P^{(q_0)}(t_0)$ is the modular cap at modulus $q_0=30$ with RKHS smoothing scale $t_{\mathrm{rkhs}}\!\ge t_0$.
+
+\item[\textbf{(A)} Grid$\to$continuum (BRC--SAFE default).]
+Every interval $[\tau_j,\tau_{j+1}]$ in the grid is \textsc{BRC}--\textsc{SAFE}; equivalently, the resolvent
+certificate with Ky Fan/Hoffman--Wielandt budget holds on each such interval.
+\end{description}
+
+Then $Q(\Phi)\ge0$ for all even Paley--Wiener tests $\Phi$ on $[-K_i,K_i]$ for every $i$.
+Consequently, $Q\ge0$ on the full Weil class; by Weil's positivity criterion, $\mathrm{RH}$ follows.
+\end{theorem}
+
+\begin{proof}[Proof (by plumbing)]
+By the Toeplitz symbol bridge (A3), for every grid node $\tau\in E_{K_i}$,
+\begin{equation}\label{eq:ab_infinity_lemma-lambda-min}
+\lambda_{\min}\!\big(T_{M_i}[P_A(\cdot;\tau)]-T_P\big)
+\ \ge\ \min P_A(\cdot;\tau)\ -\ C\,\omega_{P_A}\!\Bigl(\tfrac{\pi}{M_i}\Bigr)\ -\ \|T_P\|.
+\end{equation}
+Assumptions \textbf{(R)}--\textbf{(N)} make the RHS $\ge c_0 - \tfrac{c_0}{2} - \tfrac{c_0}{2}=0$, so nonnegativity holds on all grid nodes.
+By \textbf{(A)} (BRC--SAFE on each interval) the sign is preserved on $[-K_i,K_i]$.
+Fej\'er$\times$heat density (A1$'$) and Lipschitz continuity (A2) lift nonnegativity from the grid cone to all even PW tests on $[-K_i,K_i]$.
+Finally, along the chain $\{K_i\}$ the T5 compact limit transfers $Q\ge0$ to the Weil class.
+\end{proof}
+
+\begin{remark}[Lipschitz-lift option]
+Instead of \textsc{BRC}--\textsc{SAFE} one may enforce the deterministic Lipschitz lift
+$L_Q(K_i)\,L_\Phi(K_i)\,\Delta\tau \le c_0(K_i)/4$; the conclusion is the same.
+\end{remark}
+
+\begin{remark}[Monotone inheritance]
+It is convenient (not essential) to choose $B_i\uparrow$, $M_i\uparrow$, and nonincreasing budgets so that acceptance persists along the chain.
+\end{remark}

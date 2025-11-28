@@ -1,0 +1,93 @@
+% Lemma A2 --- Continuity/Lipschitz of Q on Compacts
+
+\begin{lemma}[Local finiteness of the prime sampler]\label{lem:Q-local-finite}
+Fix $K>0$. For every even $\Phi\in C_c(\mathbb{R})$ with $\operatorname{supp}\Phi\subset[-K,K]$, the prime part of $Q$,
+\[
+\sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}\,\Phi(\xi_n),\qquad \xi_n:=\frac{\log n}{2\pi},
+\]
+is a finite sum: only finitely many terms are non-zero.
+\end{lemma}
+\begin{proof}
+Under the T0 normalization (Section~\ref{sec:notation}) prime nodes sit at $\xi_n=\log n/(2\pi)$ and
+\[
+Q(\Phi)=\int_{\mathbb R} a^\ast(\xi)\Phi(\xi)\,d\xi\;-\;\sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}\,\Phi(\xi_n),\qquad
+a^\ast(\xi)=2\pi\bigl(\log\pi-\Re\psi(\tfrac14+i\pi\xi)\bigr).
+\]
+If $\operatorname{supp}\Phi\subset[-K,K]$, then $\Phi(\xi_n)=0$ whenever $|\xi_n|>K$. The inequality $|\xi_n|\le K$ is equivalent to $n\le\lfloor e^{2\pi K}\rfloor$, so only finitely many indices contribute to the sum. In particular the active nodes in $[-K,K]$ have a positive minimum spacing
+\[
+\delta_K:=\min_{m\ne n}\bigl|\xi_m-\xi_n\bigr|\ \ge\ \frac{1}{2\pi(\lfloor e^{2\pi K}\rfloor+1)}\,,
+\]
+which records the lack of accumulation points, although this bound is not needed for finiteness.
+\end{proof}
+
+\begin{corollary}[Lipschitz continuity on a compact window]\label{cor:A2-Lip}
+Let $\Phi_1,\Phi_2\in C_c([-K,K])$ be even. Then
+\[
+|Q(\Phi_1)-Q(\Phi_2)|\ \le\ 
+\bigl\|a^\ast\bigr\|_{L^\infty([-K,K])}\,2K\,\|\Phi_1-\Phi_2\|_\infty
+\;+\;\Bigl(\sum_{\xi_n\in[-K,K]}\frac{2\Lambda(n)}{\sqrt n}\Bigr)\,\|\Phi_1-\Phi_2\|_\infty.
+\]
+In particular $Q$ is Lipschitz on $C_c([-K,K])$ with the stated explicit constant.
+\end{corollary}
+\begin{proof}
+The Archimedean term is continuous in $\Phi$ in $L^1([-K,K])$ because $a^\ast$ is bounded on the compact, while the prime term is a finite sum of point evaluations by Lemma~\ref{lem:Q-local-finite}. The bound follows by estimating each piece separately.
+\end{proof}
+
+\begin{lemma}[A2]\label{a2:lem:A2}
+Fix a compact $K=[-R,R]$. For even nonnegative $\Phi$ supported in $K$ define
+\begin{equation}\label{eq:A2_continuity_Q-q-functional}
+Q(\Phi) := \int_{-R}^{R} a(\xi)\,\Phi(\xi)\,d\xi\ -\ \sum_{\xi_n\in K} \wQ(n)\, \Phi(\xi_n),
+\end{equation}
+where $a(\xi)=\log\pi-\Re\psi\big(\tfrac14+i\pi\xi\big)$ and $w(p^m)=\tfrac{2\log p}{p^{m/2}}$ (doubled from evenization: $2\Lambda(n)/\sqrt n$ at positive nodes $\equiv$ $\Lambda(n)/\sqrt n$ at $\pm$ nodes for even tests), $\xi_n=\tfrac{\log n}{2\pi}$. Then $Q$ is Lipschitz on $C^+_{\mathrm{even}}(K)$ in $\|\cdot\|_\infty$:
+\begin{equation}\label{eq:A2_continuity_Q-q-functional-2}
+|Q(\Phi_1)-Q(\Phi_2)| \le \Big(\|a\|_{L^1(K)} + \sum_{\xi_n\in K} |w(n)|\Big)\, \|\Phi_1-\Phi_2\|_\infty.
+\end{equation}
+If a construction uses Fej\'er$\times$heat with small leakage outside $K$, then after a cutoff $n\le N$ the tail satisfies
+\begin{equation}\label{eq:A2_continuity_Q-formula-4}
+\mathrm{Tail}(t;N)\ :=\ \sum_{\xi_n\notin K,\ n>N} \wQ(n)\,\Phi(\xi_n)\ \ll\ \frac{e^{-t (\log N)^2}}{t},\qquad (t\downarrow 0),
+\end{equation}
+with an absolute implied constant.
+\end{lemma}
+\begin{remark}
+Throughout this section the shorthand $\wQ(n)=2\Lambda(n)/\sqrt n$ denotes the evenized weights used in the Weil functional $Q$. In RKHS or operator bounds (Sections~\ref{sec:rkhs-prime-cap}--\ref{sec:A3}) we instead use the undoubled weights $\wRKHS(n)=\Lambda(n)/\sqrt n$, so that $\wmax:=\sup_n \wRKHS(n)\le 2/e$.
+\end{remark}
+\begin{proof}
+The Lipschitz bound follows from Lemma~\ref{lem:Q-local-finite}. Indeed,
+\begin{equation}\label{eq:A2_continuity_Q-formula-3}
+\Big|\int_{-R}^{R} a(\xi)(\Phi_1-\Phi_2)(\xi)\,d\xi\Big|\le \|a\|_{L^1(K)}\,\|\Phi_1-\Phi_2\|_\infty,
+\end{equation}
+and since $\{\xi_n\in K\}$ is finite ($n\le e^{2\pi R}$),
+\begin{equation}\label{eq:A2_continuity_Q-formula-2}
+\Big|\sum_{\xi_n\in K} \wQ(n)\,(\Phi_1-\Phi_2)(\xi_n)\Big|\le \Big(\sum_{\xi_n\in K}\wQ(n)\Big)\,\|\Phi_1-\Phi_2\|_\infty.
+\end{equation}
+For the tail, note $\Phi(\xi)\le e^{-4\pi^2 t\,\xi^2}$ and $\xi_n=\tfrac{\log n}{2\pi}$, hence
+\begin{equation}\label{eq:A2_continuity_Q-formula-1}
+\sum_{n>N} \wQ(n)\,\Phi(\xi_n)\ \le\ \sum_{n>N} \frac{2\log n}{\sqrt n}\, e^{-t (\log n)^2}.
+\end{equation}
+Estimating the sum by an integral with the change of variables $y=\log n$ yields, for some absolute $C$,
+\begin{equation}\label{eq:A2_continuity_Q-formula}
+\sum_{n>N} \frac{\log n}{\sqrt n}\, e^{-t (\log n)^2}\ \le\ C \int_{\log N}^{\infty} y\, e^{-t y^2}\, e^{-y/2}\,dy\ \ll\ \int_{\log N}^{\infty} y\, e^{-t y^2}\,dy\ \ll\ \frac{e^{-t (\log N)^2}}{t}.
+\end{equation}
+This bound is independent of $R$ once $K$ is fixed and $B\gg R$; if $\Phi$ is strictly supported in $K$ the tail vanishes.
+\end{proof}
+\begin{remark}[Leakage control]\label{rem:leakage}
+When Fej\'er$\times$heat windows are used on $[-K,K]$, the Gaussian factor produces
+exponentially small leakage outside the compact. The tail bound
+\eqref{eq:A2_continuity_Q-formula-4} therefore contributes at most
+$\mathcal O(e^{-t(\log N)^2}/t)$ to $Q(\Phi)$, which is absorbed in the T5 continuity budget.
+\end{remark}
+
+\begin{corollary}[Explicit Lipschitz modulus for $Q$]\label{a2:cor:explicit-lip}
+Fix $K=[-R,R]$ and set
+\[
+L_Q(K)\ :=\ \|a\|_{L^1(K)} + \sum_{\xi_n\in K} \frac{2\Lambda(n)}{\sqrt n}.
+\]
+Then for all even, nonnegative $\Phi_1,\Phi_2\in C_c(K)$ one has
+\[
+|Q(\Phi_1)-Q(\Phi_2)|\ \le\ L_Q(K)\,\|\Phi_1-\Phi_2\|_\infty.
+\]
+In particular, if $\Phi$ is supported in $K$ and is Fej\'er$\times$heat with parameters $(B,t)$, the tail estimate \eqref{eq:A2_continuity_Q-formula-4} shows that extending $\Phi$ by zero outside $K$ alters $Q(\Phi)$ by at most $O(e^{-t(\log N)^2}/t)$ once $N$ truncates the prime sum.
+\end{corollary}
+\begin{proof}
+Combine Corollary~\ref{cor:A2-Lip} with the evenization convention $w(n)=2\Lambda(n)/\sqrt n$. The tail clause follows from Lemma~\ref{a2:lem:A2}.
+\end{proof}

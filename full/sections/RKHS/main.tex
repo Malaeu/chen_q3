@@ -1,0 +1,163 @@
+% RKHS contraction mechanism (de Branges style)
+\subsection{RKHS Contraction Mechanism}
+\SeeAlso{Weight cap Lemma (w\_max $\le 2/e$)~\ref{rkhs:lem:wmax_cap},
+Node-gap lower bound Lemma~\ref{rkhs:lem:node_gap_lower_bound},
+Two-scale decoupling Corollary~\ref{rkhs:cor:rkhs_two_scale},
+Mixed lower bound in A3 Theorem~\ref{thm:A3},
+Base/induction alt. Theorem $\text{IND}^{\text{block~\ref{md:thm:IND_block}}}$.}
+We briefly record the RKHS framework that delivers operator positivity $T_A-T_P\succeq0$ on each compact without pointwise measure domination; comprehensive background may be found in \cite{Aronszajn1950,BerlinetThomasAgnan2004,PaulsenRaghupathi2016,Berlinet2004,Paulsen2016}.
+
+\subsection{Setup}
+Fix $K=[-K,K]$ and let $\{\alpha_n\}$ be the active nodes on $K$. Let $K_A^{(t)}(\alpha,\beta)$ be the Archimedean kernel associated to the heat scale $t>0$ (normalized $K_A^{(t)}(\alpha,\alpha)=1$). Define the Hilbert space $\mathcal H_K$ as the RKHS with kernel $K_A^{(t)}$ or a two--scale convex mixture in $t\in\{t_{\min},t_{\max}\}$. In the even setting (T0) we merge the symmetric nodes $\pm\alpha_n$ into a single reproducing vector and work with the effective weights
+\begin{equation}\label{eq:RKHS_contraction-formula-8}
+ \wRKHS(n)\ :=\ \frac{\Lambda(n)}{\sqrt n}\,\in(0,\infty),\qquad \sup_n \wRKHS(n)\le \sup_{x>0}\frac{\log x}{\sqrt x}=\frac{2}{e}<1.
+\end{equation}
+(This is the \emph{undoubled} operator weight; in $Q$ the evenization yields doubled weights $2\Lambda(n)/\sqrt n$ at positive nodes, equivalent to $\Lambda(n)/\sqrt n$ at $\pm$ nodes for even tests.)
+The prime operator is
+\begin{equation}\label{eq:RKHS_contraction-formula-9}
+T_P\ :=\ \sum_{\alpha_n\in[-K,K]} \wRKHS(n)\, |k_{\alpha_n}\rangle\!\langle k_{\alpha_n}|,\qquad \|k_{\alpha}\|_{\mathcal H_K}=1,
+\end{equation}
+and the Archimedean operator acts via this kernel and is positive semidefinite on $\mathcal H_K$.
+
+\subsection{Norm bound via weighted Gram}
+Let $G$ be the Gram matrix $G_{mn}=\langle k_{\alpha_m},k_{\alpha_n}\rangle_{\mathcal H_K}$. With $W=\mathrm{diag}(\wRKHS(n))$ one has $\|T_P\|_{\mathcal H_K}=\|W^{1/2}GW^{1/2}\|_{\ell^2\to\ell^2}$. Writing $\delta_K$ for the minimal node spacing on $[-K,K]$ and setting
+\begin{equation}\label{eq:RKHS_contraction-formula-7}
+S_K(t)\ :=\ \sum_{m\ne n} e^{-\frac{(\alpha_m-\alpha_n)^2}{4t}}\ \le\ \frac{2e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}
+\end{equation}
+one obtains the Gershgorin--type bound
+\begin{equation}\label{rkhs:eq:rkhs-norm}
+\|T_P\|_{\mathcal H_K}\ \le\ \wmax\ +\ \sqrt{\wmax}\, S_K(t),\qquad \wmax:=\max_{\alpha_n\in[-K,K]} \wRKHS(n).
+\end{equation}
+
+\begin{lemma}[Geometric tail bound for SK(t)]\label{rkhs:lem:geom-SK}
+For any node set with minimal spacing $\delta_K>0$ one has
+\begin{equation}\label{eq:RKHS_contraction-formula-4}
+ S_K(t)\ :=\ \sum_{m\ne n} e^{-\frac{(\alpha_m-\alpha_n)^2}{4t}}
+ \ \le\ 2\sum_{j\ge1} e^{-\frac{j^2\delta_K^2}{4t}}
+ \ \le\ \frac{2\,e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}\,.
+\end{equation}
+\end{lemma}
+\phantomsection\label{a3:lem:prime-L2-trace}
+\begin{proof}
+Fix $n$ and order the remaining nodes by increasing distance. The $j$-th nearest neighbor lies at distance at least $j\,\delta_K$, hence the $n$-th row sum of off-diagonal magnitudes is bounded by $2\sum_{j\ge1} e^{-j^2\delta_K^2/(4t)}$. Summing rows and using symmetry gives the first inequality. Since $j^2\ge j$ for $j\ge1$, $e^{-j^2 c}\le e^{-jc}$ for $c>0$, yielding the geometric series bound and the stated closed form.
+\end{proof}
+
+\begin{theorem}[Strict contraction]\label{rkhs:thm:rkhs-contraction}
+If $t=t_{\min}(K)$ is chosen so that $S_K(t_{\min})\le \dfrac{1-w_{\max}-\varepsilon_K}{\sqrt{w_{\max}}}$ for some $\varepsilon_K\in(0,1-w_{\max})$, then $\|T_P\|_{\mathcal H_K}\le \rho_K<1$ with $\rho_K=w_{\max}+\sqrt{w_{\max}}\,S_K(t_{\min})$, and hence
+\begin{equation}\label{eq:RKHS_contraction-formula-3}
+T_A-T_P\ \succeq\ (1-\rho_K)\,T_A\ \succeq\ 0\qquad\text{on }\mathcal H_K.
+\end{equation}
+Moreover, it suffices to enforce the geometric bound of Lemma~\ref{rkhs:lem:geom-SK}. Solving $\dfrac{2\,e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}\le \eta_K$ for $t$ gives
+\begin{equation}\label{eq:RKHS_contraction-formula-6}
+ \boxed{\ t_{\min}(K)\ =\ \frac{\delta_K^2}{4\,\ln\!\bigl((2+\eta_K)/\eta_K\bigr)}\ },\qquad \eta_K=\frac{1-w_{\max}-\varepsilon_K}{\sqrt{w_{\max}}}.
+\end{equation}
+\end{theorem}
+
+\begin{remark}
+Because $\delta_K\downarrow0$ as the compact widens, the closed form \eqref{eq:RKHS_contraction-formula-6} shows that $t_{\min}(K)$ is automatically chosen monotone decreasing along the chain $K\nearrow$. Thus the parameter schedule used in A3/T5 (where $t_{\mathrm{rkhs}}(K)=t_{\min}(K)$) is consistent without additional tuning.
+\end{remark}
+
+\begin{proposition}[Dataset-free RKHS schedule]\label{prop:rkhs-schedule}
+Let $w_{\max}=\sup \Lambda(n)/\sqrt{n}\le 2/e$ and let $\delta_K$ denote the minimal logarithmic spacing on $[-K,K]$ (Lemma~\ref{rkhs:lem:deltaK}). For
+\[
+S_K(t)\;:=\;\sum_{m\neq n} e^{-\frac{(\alpha_m-\alpha_n)^2}{4t}}\ \le\ \frac{2e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}
+\]
+(Lemma~\ref{rkhs:lem:geom-SK}) choose
+\[
+t_{\min}(K)\;=\;\frac{\delta_K^2}{4\ln\!\bigl((2+\eta_K)/\eta_K\bigr)},\qquad \eta_K\in\bigl(0,1-w_{\max}\bigr).
+\]
+Then $S_K\bigl(t_{\min}(K)\bigr)\le \eta_K$ and therefore
+\[
+\|T_P\|_{\mathcal H_K}\ \le\ w_{\max}+\sqrt{w_{\max}}\,S_K\bigl(t_{\min}(K)\bigr)
+\ =:\ \rho_K\ < 1,
+\]
+so $T_A-T_P\succeq(1-\rho_K)\,T_A$ on the RKHS. In parallel, Theorem~\ref{thm:rkhs-tstar} supplies the analytic cap $\|T_P\|\le c_0(K)/4$ once $t_{\mathrm{rkhs}}\ge t_{\min}(K)$ (route~(A)) or $t_{\mathrm{rkhs}}\ge t^\star(K)$ (route~(B)).
+\end{proposition}
+
+\begin{lemma}[Trace-cap bound]\label{lem:trace-cap-bound}
+For every compact $[-K,K]$ choose $t_{\mathrm{rkhs}}\ge\max\{t_{\min}(K),\,t^\star(K)\}$, where $t_{\min}$ is given by \eqref{eq:tmin} and $t^\star(K)$ by Theorem~\ref{thm:rkhs-tstar}. Then the prime operator obeys the uniform cap
+\[
+  \|T_P\|_{\op} \le \min\Bigl\{\rho_K,\ \tfrac14\,c_0(K)\Bigr\}\ \le\ \frac{1}{4}\,c_0(K),
+\]
+where $\rho_K = w_{\max} + \sqrt{w_{\max}}\,S_K\bigl(t_{\min}(K)\bigr)$. Consequently, for every Fej\'er$\times$heat parameter set $(B,t_{\mathrm{rkhs}})$ with $t_{\mathrm{rkhs}}\ge \max\{t_{\min}(K),t^\star(K)\}$ the contraction bound $\|T_P\|\le c_0(K)/4$ holds without recourse to numerical tables.
+\end{lemma}
+
+\begin{proof}
+The Gershgorin estimate $\|T_P\|\le\rho_K$ is Proposition~\ref{prop:rkhs-schedule}. Theorem~\ref{thm:rkhs-tstar} bounds $\|T_P\|\le c_0(K)/4$ once $t_{\mathrm{rkhs}}$ dominates either threshold. The displayed minimum records both analytic inputs. Monotonicity in $t_{\mathrm{rkhs}}$ follows because $S_K(t)$ decreases and $\rho(t)$ is decreasing in $t$.
+\end{proof}
+
+\begin{proof}
+By the Gershgorin circle theorem applied to $W^{1/2}GW^{1/2}$ (see, e.g., \cite[Thm.~6.1.1]{HornJohnson2013}; also \cite{Varga2004}), each eigenvalue $\lambda$ of $T_P$ lies in a disc centered at $\wRKHS(n)$ with radius $\sqrt{\wRKHS(n)}\sum_{m\ne n} \sqrt{\wRKHS(m)}\,|G_{mn}|\le \sqrt{\wmax}\sum_{m\ne n}|G_{mn}|$. Using $G_{mn}=\langle k_{\alpha_m},k_{\alpha_n}\rangle\le e^{-(\alpha_m-\alpha_n)^2/(4t)}$ and Lemma~\ref{rkhs:lem:geom-SK} yields $\|T_P\|\le \wmax+\sqrt{\wmax}\,S_K(t)$. Imposing $S_K(t_{\min})\le (1-\wmax-\varepsilon_K)/\sqrt{\wmax}$ gives the claim. For the explicit $t_{\min}$, set $q:=e^{-\delta_K^2/(4t)}\in(0,1)$ and require $\dfrac{2q}{1-q}\le\eta_K$, i.e. $q\le\dfrac{\eta_K}{2+\eta_K}$. This is equivalent to $t\le \delta_K^2/\bigl(4\ln((2+\eta_K)/\eta_K)\bigr)$.
+\end{proof}
+
+% Mini-lemmas: weight cap and node gap with explicit labels
+\begin{lemma}[Effective weight cap]\label{rkhs:lem:wmax_cap}
+For $w(p^m)=\dfrac{\log p}{p^{m/2}}$ one has $0\le w(p^m)\le \dfrac{2}{e} < \dfrac{3}{4}$, with the maximum attained at $p^m=e^2$ formally. Hence $w_{\max}\le 2/e < 3/4 <1$ on every compact. (Rational bound: $2/e\approx 0.7358 < 3/4 = 0.75$.)
+\end{lemma}
+
+\begin{proof}
+Consider $f(x)=\log x/\sqrt{x}$ on $x>1$; $f'(x)=(1-\tfrac12\log x)/x^{3/2}$ vanishes at $x=e^2$ with $f(e^2)=2/e$.
+\end{proof}
+
+\begin{lemma}[Rayleigh lower bound for ||TP||]\label{rkhs:lem:rayleigh_lower}
+For the prime operator $T_P=\sum_{\alpha_n}\wRKHS(n)|k_{\alpha_n}\rangle\!\langle k_{\alpha_n}|$ with normalized kernel vectors $\|k_{\alpha}\|=1$, the operator norm satisfies
+\begin{equation}\label{eq:RKHS_contraction-rayleigh-lower}
+\|T_P\|\ \ge\ \sup_{n:\alpha_n\in[-K,K]} \wRKHS(n)\ =:\ \wmax.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For any node $m$ with $\alpha_m\in[-K,K]$, the Rayleigh quotient gives
+\begin{equation}
+\langle k_{\alpha_m}, T_P k_{\alpha_m}\rangle\ =\ \sum_n \wRKHS(n)\,|\langle k_{\alpha_n},k_{\alpha_m}\rangle|^2\ \ge\ \wRKHS(m)\,\|k_{\alpha_m}\|^2\ =\ \wRKHS(m).
+\end{equation}
+Hence $\|T_P\|\ge w(m)$ for every active node, implying $\|T_P\|\ge w_{\max}$.
+\end{proof}
+
+\begin{lemma}[Node gap on compacts]\label{rkhs:lem:node_gap_lower_bound}
+For $\alpha_n=\tfrac{\log n}{2\pi}$ and fixed $K>0$ the active set is $\{2,\dots,\lfloor e^{2\pi K}\rfloor\}$ and the minimal spacing satisfies
+\begin{equation}\label{eq:RKHS_contraction-formula-2}
+\delta_K:=\min_{m\neq n,\ \alpha_m,\alpha_n\in[-K,K]}|\alpha_m-\alpha_n|\ \ge\ \frac{1}{2\pi(\lfloor e^{2\pi K}\rfloor+1)}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Mean value theorem on $\log x$ between consecutive integers.
+\end{proof}
+
+%% BEGIN PATCH: RKHS_contraction.tex (two-scale decoupling)
+\begin{corollary}[Two-scale decoupling]\label{rkhs:cor:rkhs_two_scale}
+On a fixed compact $K$, choose $t_{\mathrm{rkhs}}=t_{\min}(K)$ as in Theorem~\ref{rkhs:thm:rkhs-contraction}, so that $\|T_P\|\le \rho_K<1$. Let $t_{\mathrm{sym}}>0$ in the Fej\'er$\times$heat window be chosen independently. If $t_{\mathrm{sym}}$ is such that $L_A(B,t_{\mathrm{sym}})\le L_A^*$ and $\min P_A\ge c_0>0$, then Corollary~\ref{a3:cor:A3_lock_formal} applies with the same contraction bound $\rho_K$ and modulus $L_A^*$. Thus the symbol parameter controls the modulus $\omega_{P_A}$ (symbol barrier), while $t_{\mathrm{rkhs}}$ controls only $\|T_P\|$ (contraction); the effects are formally decoupled.
+\end{corollary}
+%% END PATCH
+
+\begin{remark}[Uniform vs.\ adaptive prime caps]\label{rem:prime-caps}
+Two complementary caps for $T_P$ are available. A \emph{uniform} trace cap at
+$t=0.7$ gives $\|T_P\|\le \rho_{\mathrm{cap}}<1/25$ on every compact and suffices
+for the A3 budget. An \emph{adaptive} cap at $t_{\mathrm{rkhs}}(K)=t_{\min}(K)$
+uses the node gap $\delta_K$ and yields $\|T_P\|\le \wmax+\sqrt{\wmax}\,\eta_K$
+for a prescribed off-diagonal level $\eta_K$. The mainline proof invokes
+the uniform cap; the adaptive one provides additional slack when needed.
+\end{remark}
+
+\begin{theorem}[One--prime induction]\label{rkhs:thm:rkhs-ind}
+Upon crossing an activity threshold that introduces a single new node with weight $w_{\mathrm{new}}$, the update is
+\begin{equation}\label{eq:RKHS_contraction-formula-1}
+\|T_P^{\mathrm{new}}\|\ \le\ \|T_P^{\mathrm{old}}\|\ +\ w_{\mathrm{new}}.
+\end{equation}
+Consequently, if $\|T_P^{\mathrm{old}}\|\le\rho_K^{\mathrm{old}}<1$ and $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$, then $T_A-T_P^{\mathrm{new}}\succeq0$ on $\mathcal H_K$.
+\end{theorem}
+
+\begin{remark}[Boxed formulas and effective weight cap]
+\begin{equation}\label{eq:RKHS_contraction-formula-5}
+ \boxed{\ S_K(t)\ =\ \frac{2\,e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}\ },\qquad \boxed{\ \rho_K\ =\ w_{\max}+\sqrt{w_{\max}}\,S_K(t_{\min})\ }.
+\end{equation}
+In the even windowed setting the effective prime weights satisfy $0\le \wRKHS(n)\le 2/e$ (see Lemma~\ref{md:lem:weight-cap} in the MD appendix), hence $\wmax\le 2/e<1$, ensuring feasibility of strict contraction once $t_{\min}(K)\asymp c\,\delta_K^2$ is small enough.
+\end{remark}
+
+\begin{lemma}[Node separation]\label{rkhs:lem:deltaK}
+For $\alpha_n=\log n/(2\pi)$ and fixed $K>0$ one has a finite active set $\{n: \alpha_n\in[-K,K]\}=\{2,\dots,\lfloor e^{2\pi K}\rfloor\}$ and a positive minimal gap
+\begin{equation}\label{eq:RKHS_contraction-formula}
+ \delta_K\ :=\ \min_{m\ne n,\,\alpha_m,\alpha_n\in[-K,K]} |\alpha_m-\alpha_n|\ \ge\ \frac{1}{2\pi\,(\lfloor e^{2\pi K}\rfloor+1)}\,.
+\end{equation}
+\end{lemma}

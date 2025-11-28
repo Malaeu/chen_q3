@@ -1,0 +1,58 @@
+% Analytic rewrite: Fej\'er × heat modulus estimates
+% Phase 3 (Bricks A3.3a–A3.3b)
+
+\subsection{Fej\'er--Heat Modulus Control}\label{subsec:a3-fejer-modulus}
+Let $K>0$ be fixed. Throughout this subsection we work on the interval $[-K,K]$ and the circle $\TT$, and consider the Fej\'er kernel
+\[
+  \mathrm{Fej}_M(\theta) := \frac{1}{M+1} \left( \frac{\sin\big((M+1)\theta/2\big)}{\sin(\theta/2)} \right)^2,
+\]
+and the heat kernel on the circle
+\[
+  h_t(\theta) := \sum_{k\in\ZZ} e^{-4\pi^2 t k^2} e^{ik\theta} = 1 + 2\sum_{k\ge1} e^{-4\pi^2 t k^2} \cos(k\theta).
+\]
+Both kernels are nonnegative, even, and integrate to 1 on $\TT$. Their convolution
+\[
+  \Xi_{M,t}(\theta) := (\mathrm{Fej}_M * h_t)(\theta)
+\]
+serves as the smoothing profile entering the definition of the Archimedean symbol. We record the basic bounds needed in the sequel; see, e.g., Stein--Shakarchi \cite[Ch.~2]{SteinShakarchi2003} for the Fej\'er kernel and the classical heat kernel estimates.
+
+\begin{lemma}[Uniform bounds]\label{lem:a3-fejer-uniform}
+For every $M\in\NN$ and $t>0$ one has
+\[
+  0 \le \mathrm{Fej}_M(\theta) \le M+1,\qquad
+  0 \le h_t(\theta) \le \frac{C}{\sqrt{t}},
+\]
+and therefore $0 \le \Xi_{M,t}(\theta) \le C \,\frac{\sqrt{M+1}}{\sqrt{t}}$ for an absolute constant $C>0$.
+\end{lemma}
+
+\begin{proof}
+The Fej\'er kernel is the Ces\'aro mean of Dirichlet kernels and satisfies $\mathrm{Fej}_M(\theta) \le M+1$; the bound for $h_t$ is classical (Gaussian upper bound). The convolution estimate follows from Cauchy--Schwarz.
+\end{proof}
+
+\begin{lemma}[Lipschitz modulus]\label{lem:a3-fejer-lip}
+Let $f \in C^1([-K,K])$ with bounded derivative. Then for every $M\in\NN$ and $t>0$, the smoothed function
+\[
+  f_{M,t}(x) := (f * (\mathrm{Fej}_M * h_t))(x)
+\]
+satisfies
+\[
+  \omega_{f_{M,t}}(\delta) \ \le\ C\,\|f'\|_{L^\infty([-K,K])}\,\frac{\sqrt{M+1}}{\sqrt{t}}\,\delta,
+\]
+for an absolute constant $C>0$.
+\end{lemma}
+\begin{proof}
+Differentiate under the convolution and use Lemma~\ref{lem:a3-fejer-uniform} to bound the $L^1$-norm and the first moment of $\Xi_{M,t}$.
+\end{proof}
+
+\begin{corollary}[Modulus bound for the Arch symbol]\label{cor:a3-omega-fejer}
+In the setting of Section~\ref{subsec:a3-symbol-floor}, the Archimedean symbol $P_A$ satisfies
+\[
+  \omega_{P_A}(\delta) \ \le\ C\,\Big(\frac{\sqrt{M+1}}{\sqrt{t_{\mathrm{sym}}}}+1\Big)\,\delta,
+\]
+for all $\delta\ge0$ and for an absolute constant $C>0$ (depending on $\|a'\|_{L^\infty([-K,K])}$).
+\end{corollary}
+\begin{proof}
+Apply Lemma~\ref{lem:a3-fejer-lip} to $f=a$ and note that convolution with the Fej\'er--heat kernel preserves the Lipschitz modulus up to the displayed factor.
+\end{proof}
+
+These analytic bounds will be combined with the Szeg\H{o}--B\"ottcher barrier in the mixed bridge inequality of Theorem~\ref{thm:A3}.

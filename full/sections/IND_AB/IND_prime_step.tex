@@ -1,0 +1,35 @@
+% Theorem B.3 --- One-interval induction (IND/AB step)
+\begin{theorem}[B.3: IND/AB]\label{md:thm:INDprime}
+On an activity interval $[B_n,B_{n+1})$ let $\|T_P^{\mathrm{old}}\|_{\mathcal H_K}\le \rho_K^{\mathrm{old}}<1$. When crossing the threshold $B_{n+1}$ a single new node $\alpha_{\mathrm{new}}$ with weight $w_{\mathrm{new}}$ enters. In the RKHS normalization $\|k_{\alpha}\|=1$ one has
+\begin{equation}\label{eq:IND_prime_step-formula-1}
+\|T_P^{\mathrm{new}}\|\le \rho_K^{\mathrm{old}}+ w_{\mathrm{new}}.
+\end{equation}
+Hence if $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$, then $T_A-T_P^{\mathrm{new}}\succeq 0$ on $\mathcal H_K$.
+\end{theorem}
+\begin{proof}
+Rank--one update: $T_P^{\mathrm{new}}=T_P^{\mathrm{old}}+ w_{\mathrm{new}}\,|k_{\alpha_{\mathrm{new}}}\rangle\langle k_{\alpha_{\mathrm{new}}}|$ with $\|k_{\alpha}\|=1$ gives the claimed norm bound; strict inequality implies the Loewner positivity.
+\end{proof}
+
+\paragraph{Certified parameters.}
+Table~\ref{tab:ind-schedule} records the concrete margins exported from the
+legacy certificates. In particular, for $K=1$ the greedy block consumes
+$0.181352<c_0/4$ and the follow-up step \texttt{cert/bridge/K1\_step\_next.json}
+verifies $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$; for larger $K$ the margin
+$c_0(K)-\rho(t)$ stays above $0.67$, so the one-prime update is comfortably
+within budget.
+
+% Corollary --- Gluing across intervals
+\begin{corollary}[Gluing intervals]\label{md:cor:IND-glue}
+Suppose MD$_{2,3}$ holds on $[B_3,B_4)$, and across each threshold $B_{n}\to B_{n+1}$ the one--prime condition $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$ is verified in the RKHS normalization on $[-K,K]$. Then $T_A-T_P\succeq 0$ holds on $[-K,K]$ for all $B\ge B_3$, i.e. the measure domination persists interval--by--interval.
+\end{corollary}
+
+\begin{lemma}[Analytic bound for early blocks]\label{md:lem:IND-early-analytic}
+Let $\Phi_{B,t}(\xi)=(1-|\xi|/B)_+e^{-4\pi^2 t\xi^2}$ with $B>0$. Then for the even setting with weights $w(n)=\Lambda(n)/\sqrt n$ and nodes $\alpha_n=\log n/(2\pi)$ one has the deterministic bound
+\begin{equation}\label{eq:IND_prime_step-formula}
+ \sum_{\alpha_n\in[-B,B]} w(n)\,\Phi_{B,t}(\alpha_n)\ \le\ \sum_{n\le e^{2\pi B}} \frac{\Lambda(n)}{\sqrt n}\ \le\ \int_1^{e^{2\pi B}} \frac{\log u}{\sqrt u}\,du\ =\ 2\,e^{\pi B}\,(2\pi B-2)\ +\ 4.
+\end{equation}
+In particular, choosing $B=B(K)>0$ small enough forces the early--block mass to lie below any prescribed budget $\varepsilon(K)>0$.
+\end{lemma}
+\begin{proof}
+Since $0\le \Phi_{B,t}\le1$ and $\Phi_{B,t}$ vanishes outside $[-B,B]$, the first inequality holds. For the second, use $\Lambda(n)\le\log n$ and compare the sum to the integral; the evaluation follows by the substitution $u=v^2$.
+\end{proof}

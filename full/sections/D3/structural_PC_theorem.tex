@@ -1,0 +1,31 @@
+% D3: Structural PC(K) Theorem (Prime-power lift / Bilinear resonance)
+\subsection{D3: Structural PC(K) Theorem}\label{d3:sec:D3-structural}
+\SeeAlso{D3 dispersion (Lemma~\ref{d3:lem:D3-dispersion}), operator bridge (\S\ref{d3:sec:D3-operator}).}
+
+\begin{definition}[Working space]\label{def:D3-setup}
+Let $K>0$.  Denote by $P_A$ the Archimedean symbol after the A3 smoothing, by $T_M[P_A]$ its Toeplitz truncation, and by $T_P$ the even prime operator on $[-K,K]$.
+\end{definition}
+
+\begin{definition}[Criteria \ACDthree]\label{def:AC-D3}
+We say that \ACDthree.1 holds if: (i) $P_A\in\Lip(1)$ and $\min P_A\ge \czero>0$; (ii) $\|T_P\|\le \rhok$; (iii) the two-scale construction of Lemma~\ref{lem:a3.two-scale} is in force.  Condition \ACDthree.2 demands a sequence $\delta_A\to0$ with
+\[
+  \DispK(A)\ \le\ C(K)\,\delta_A.
+\]
+\end{definition}
+
+\begin{theorem}[Structural prime cancellation]\label{thm:AC-D3-structure}
+Under A2 and A3 the criteria \ACDthree.1 hold. Furthermore \ACDthree.1 $\Rightarrow$ \ACDthree.2 with $\delta_A\to0$, hence
+\[
+  \DispK(A)\ \le\ C(K)\,\delta_A\ \xrightarrow[A\to\infty]{}\ 0.
+\]
+\end{theorem}
+\begin{proof}
+A3 (Lemmas~\ref{lem:a3.bv-to-lip}, \ref{lem:a3.lip-floor}, \ref{lem:a3.cap-combine}, \ref{lem:a3.two-scale}) yields (i)--(iii); Lemma~\ref{lem:trace-cap-bound} fixes the cap $\|T_P\|\le\rhok$.  Lemma~\ref{d3:lem:D3-dispersion} then provides the dispersion bound.
+\end{proof}
+
+\begin{corollary}[D3-lock]\label{d3:cor:D3-lock}
+Under Theorem~\ref{thm:AC-D3-structure}, for any normalized RKHS test $f$,
+\[
+  \Biggl|\sum_{p\le A}\Bigl(f(p)-\mathbb{E}_{\mathcal{P}\cap[1,A]}f\Bigr)\Biggr|\ \le\ C(K)\,\delta_A\ \xrightarrow[A\to\infty]{}\ 0.
+\]
+\end{corollary}

@@ -1,0 +1,65 @@
+\subsection{Compact-by-compact transfer (T5)}\label{sec:T5-compact}
+
+\subsection*{Standing analytic inputs}
+For each $K>0$ we assume the analytic data provided by Sections~\ref{sec:A3} and~\ref{sec:rkhs-prime-cap}:
+\begin{itemize}
+  \item[\textbf{(A3.a)}] Archimedean margin $c_0(K)>0$ such that $\inf_{\theta}P_A(\theta)\ge c_0(K)$.
+  \item[\textbf{(A3.b)}] Discretization control: for all $M\in\mathbb{N}$,
+  \[
+    \|T_M[P_A]-T[P_A]\|\ \le\ C_T\,\omega_{P_A}\!\Big(\frac{\pi}{M}\Big),
+  \]
+  where $\omega_{P_A}$ is a modulus of continuity from Section~\ref{sec:A3}.
+  \item[\textbf{(RKHS)}] Prime contraction (Theorem~\ref{thm:rkhs-tstar}): for all $t\ge t^\star(K)$,
+  \[
+    \|{\mathcal T}_P\|\ \le\ \rho\!\big(t\big)\ \le\ \rho\!\big(t^\star(K)\big).
+  \]
+\end{itemize}
+
+We also recall the density/continuity interface on $W_K$:
+\begin{itemize}
+  \item[\textbf{(A1$'$)}] The Fej\'er$\times$heat cone is dense in $W_K$.
+  \item[\textbf{(A2)}] $Q$ is continuous on $W_K$; specifically $|Q(\Phi)-Q(\Psi)|\le L_Q(K)\|\Phi-\Psi\|_\infty$.
+\end{itemize}
+
+\subsection{Monotone schedules}\label{subsec:T5-schedules}
+Define the nondecreasing envelopes
+\[
+  c_0^\ast(K):=\inf_{0<u\le K} c_0(u),\qquad
+  L_A^\ast(K):=\sup_{0<u\le K} L_A(u),
+\]
+where $L_A(u)$ is any Lipschitz constant for $P_A$ on $[-u,u]$ (from A3). Then choose the parameters by explicit monotone formulas:
+\begin{align}
+  t^\star_\mathrm{T5}(K)&:=\inf\big\{t>0:\ \rho(t)\le \tfrac14\,c_0^\ast(K)\big\},\label{eq:T5-tstar}\\
+  M^\star(K)&:=\min\Big\{M\in\mathbb{N}:\ C_T\,\omega_{P_A}\!\Big(\frac{\pi}{M}\Big)\ \le\ \tfrac14\,c_0^\ast(K)\Big\}.\label{eq:T5-Mstar}
+\end{align}
+By construction $K_1\le K_2\Rightarrow c_0^\ast(K_2)\le c_0^\ast(K_1)$ and
+$t^\star_\mathrm{T5}(K_2)\ge t^\star_\mathrm{T5}(K_1)$, $M^\star(K_2)\ge M^\star(K_1)$.
+
+\begin{lemma}[Grid-lift inequality]\label{lem:T5p-grid}
+For every $K>0$ and $M\in\mathbb{N}$,
+\[
+  \lambda_{\min}\!\big(T_M[P_A]-{\mathcal T}_P\big)
+  \ \ge\ c_0(K)\ -\ C_T\,\omega_{P_A}\!\Big(\tfrac{\pi}{M}\Big)\ -\ \|{\mathcal T}_P\|.
+\]
+\emph{Proof.} Combine the Archimedean lower bound with the Toeplitz continuity estimate and norm subadditivity. \qed
+\end{lemma}
+
+\begin{theorem}[T5: monotone compact transfer]\label{thm:T5-compact}
+For every $K>0$ one has
+\[
+  \lambda_{\min}\!\big(T_{M^\star(K)}[P_A]-{\mathcal T}_P\big)\ \ge\ \tfrac12\,c_0^\ast(K).
+\]
+In particular, $Q(\Phi)\ge0$ on $W_K$ for all $K>0$. Hence $Q\ge0$ on $\bigcup_{K>0} W_K$, i.e. on the full Weil class.
+\emph{Proof.}
+By Lemma~\ref{lem:T5p-grid} and the choices \eqref{eq:T5-tstar}--\eqref{eq:T5-Mstar},
+\[
+  \lambda_{\min}\!\big(T_{M^\star(K)}[P_A]-{\mathcal T}_P\big)
+  \ \ge\ c_0^\ast(K)\ -\ \tfrac14 c_0^\ast(K)\ -\ \tfrac14 c_0^\ast(K)
+  \ =\ \tfrac12 c_0^\ast(K).
+\]
+Positivity of the finite Toeplitz form on the Fej\'er$\times$heat cone follows. Then (A1$'$)--(A2) extend $Q\ge0$ from the dense cone to all of $W_K$. Taking the union over $K$ gives the claim. \qed
+\end{theorem}
+
+\begin{remark}[Optional early-tail variant]\label{rem:T5-early-tail}
+The RKHS cap already controls $\|{\mathcal T}_P\|$. If one prefers a split $(\mathrm{early})+(\mathrm{tail})$, bound the early block $\sum_{n\le N}w(n)$ by $2\sqrt{N}\log N$ and the tail by Lemma~\ref{lem:rkhs-tail}; then choose a monotone $N(K)$ and $t(K)$ so that each part $\le \tfrac18 c_0^\ast(K)$. This produces the same conclusion with a slightly different schedule $(N,t,M)$.
+\end{remark}

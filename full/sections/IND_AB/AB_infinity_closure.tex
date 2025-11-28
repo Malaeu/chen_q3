@@ -1,0 +1,18 @@
+% AB_infinity_closure: RNA gate with fixed modcap, SAFE lift, uniform scales
+\section*{AB($\infty$) closure: RNA gate with fixed modcap and SAFE lift}
+
+\input{sections/IND_AB/include/ab_infinity_lemma}
+
+\paragraph{Remarks.}
+\begin{itemize}
+  \item The mod-30 cap is fixed once and for all; its early block and tail are the audited
+        ones used throughout the acceptance pipeline (no dependence on $K$ beyond the
+        truncated lists).
+  \item The SAFE lift replaces the coarse Lipschitz mesh. One may still use the deterministic
+        bound $\Delta_K \le c_0(K)/(4 L_Q(K) L_\Phi(K))$ when convenient, but the BRC
+        check is the primary path in our RNA gate.
+  \item The scales $t_{\mathrm{sym}}, t_{\mathrm{rkhs}}$ are bounded away from~$0$, so the
+        arch-floor constants and the modular cap norms remain uniform along the
+        AB$_\infty$ ladder.
+  \item \textbf{Grid $\to$ continuum $\to$ Weil transfer.} By A1$'$ (Theorem 9.2) the Fej\'er$\times$heat cone is dense in $W_K$ in $\|\cdot\|_\infty$; by A2 (Proposition 10.2) $Q$ is Lipschitz on $W_K$. Hence the grid positivity and the SAFE/Lipschitz lift imply $Q\ge0$ on all of $W_K$. With the monotone parameter schedule (Lemma 17.4), Theorem 18.2 transfers positivity to the Weil class.
+\end{itemize}

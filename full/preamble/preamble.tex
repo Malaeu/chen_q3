@@ -1,0 +1,111 @@
+% Preamble for the Toeplitz--Weil Bridge paper
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{textcomp}     % Fix for Unicode symbols (en-dash, quotes, etc)
+\usepackage{microtype}    % Better typography and line breaking
+\usepackage[final]{pdfpages} % Better PDF handling
+\usepackage{scalerel}     % Better symbol scaling
+\usepackage[english]{babel}
+\usepackage{amsmath,amsthm,amssymb,mathtools}
+\usepackage{enumitem}      % For customizing description/itemize/enumerate
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage[nameinlink,capitalize,noabbrev]{cleveref}
+\usepackage{url}
+\usepackage[hyphenbreaks]{breakurl}
+\def\UrlBreaks{\do\/\do-\do.}
+\input{preamble/constants}
+\newif\ifrkhroute
+\rkhroutetrue
+% --- Cross-ref helpers (safe no-ops if already defined)
+\providecommand{\xlink}[2]{\hyperref[#1]{#2}}
+\newcommand{\SeeAlso}[1]{\par\smallskip\noindent\textit{See also.} #1\par\smallskip}
+\hypersetup{
+  pdftitle={Operator Methods for the Weil Criterion},
+  pdfauthor={Eugen Malamutmann}
+}
+
+\pdfstringdefDisableCommands{%
+  \def\czero{c\_0}%%
+  \def\rhok{\rho\_K}%%
+  \def\AssumpPack{(T0)+(A1'$)$+(A2)+(A3)+(RKHS/MD)+(T5)}%%
+}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}    % Professional table rules (toprule, midrule, bottomrule)
+\usepackage{float}       % Force table/figure placement with [H]
+\usepackage{multirow}    % Multi-row cells in tables
+\usepackage{tcolorbox}
+\newcommand{\figinclude}[1]{\IfFileExists{#1}{\includegraphics[width=0.95\linewidth]{#1}}{\fbox{Missing figure: \texttt{\detokenize{#1}}}}}
+\providecommand{\MetricsAutoTable}{}
+\geometry{margin=1in}
+
+% Fix for overfull hbox issues
+\sloppy
+\tolerance=2000
+\emergencystretch=5em
+\hbadness=10000  % Suppress underfull hbox warnings
+\vfuzz=2pt       % Allow small overfull vboxes
+\hfuzz=2pt       % Allow small overfull hboxes
+
+% Theorem environments
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+% Shortcuts
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\TT}{\mathbb T}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\vp}{\varphi}
+\newcommand{\xiN}{\xi_n}
+\newcommand{\La}{\Lambda}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\astar}{a_*}
+\newcommand{\Lip}{\mathrm{Lip}}
+\newcommand{\BV}{\mathrm{BV}}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\ip}[2]{\left\langle #1,\,#2\right\rangle}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\om}{\omega}
+\newcommand{\Pa}{P_A}
+\newcommand{\TP}{T_{\!P}}
+\newcommand{\TPA}{T_{\!P_A}}
+\newcommand{\czero}{c_0}
+\newcommand{\rhok}{\rho_K}
+\newcommand{\lammin}{\lambda_{\min}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\Kern}{K}
+\newcommand{\Kt}{K_t}
+\newcommand{\epsK}{\varepsilon_{K}}
+\newcommand{\DispK}[1]{\operatorname{Disp}_K\!(#1)}
+\newcommand{\ACDthree}{\textsf{AC--D3}}
+\newcommand{\wQ}[1]{w_{\mathrm{Q}}(#1)}
+\newcommand{\wRKHS}[1]{w_{\mathrm{RKHS}}(#1)}
+\newcommand{\wmax}{w_{\max}^{\mathrm{RKHS}}}
+
+% --- Conditional RH phrasing macros ---
+% Assumption chain used across the paper
+\newcommand{\AssumpChain}{(T0)+(A1$'$)+(A2)+(A3)+(MD/IND or RKHS)+(T5)} % chktex 36
+% Unified shorthand for the full hypothesis pack
+\newcommand{\AssumpPack}{\textup{(T0)+(A1$'$)+(A2)+(A3)+(RKHS/MD)+(T5)}}
+% Short, context-free Weil implication phrase (no re-listing assumptions)
+\newcommand{\WeilImpRH}{by Weil's positivity criterion, RH would hold.}
+% Variant when explicitly tying to the assumption chain
+\newcommand{\WeilImpRHUnder}{by Weil's positivity criterion, RH would hold under \AssumpChain.}
+% Title/metadata helpers
+\input{preamble/titleblock}
+\usepackage{tikz}

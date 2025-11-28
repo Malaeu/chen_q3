@@ -1,0 +1,173 @@
+% Theorem MD_{2,3} --- Base Interval Domination
+
+\begin{remark}[MD$_{2,3}$ role: optional sufficient condition]\label{rem:md-optional}
+The MD$_{2,3}$ base interval theorem is an \emph{alternative sufficient condition} for achieving symbol floor domination over prime contribution on a small compact. It is \textbf{not} required for the main logical chain.
+
+\textbf{Two proof routes:}
+\begin{itemize}
+  \item \textbf{Main route (RNA gate):} A3-Lock (symbol barrier + RKHS contraction) + AB(K) aggregation + T5 transfer. Uses constructive parameter recipe (Section Parameter Recipe) with explicit formulas for $(B,t,M,\Delta,\eta_K)$. \emph{No numerical Gold K=1 example needed.}
+  \item \textbf{Alternative route (MD base):} Explicit parameter windows $(B,r,t)$ where criterion~\eqref{md:eq:MD23-criterion} holds analytically on base interval $[B_3,B_4)$. Provides:
+  \begin{itemize}
+    \item \emph{Constructive illustration} that feasible parameters exist;
+    \item \emph{QA check:} Gold K=1 numerical scan confirms parameter feasibility;
+    \item \emph{Fallback:} If A3-Lock slack becomes tight, MD gives certified explicit windows.
+  \end{itemize}
+\end{itemize}
+
+\textbf{Logical necessity:} MD$_{2,3}$ is \emph{sufficient but not necessary}. The proof chain works without it via the parameter recipe's constructive formulas. MD serves as historical context and quality assurance, not as a required step.
+\end{remark}
+
+\begin{remark}[Weight convention]
+Throughout Sections~\ref{sec:rkhs-prime-cap} and \ref{sec:IND} we write $w(n)$ for the undoubled operator weight $\wRKHS(n)=\Lambda(n)/\sqrt n$; the evenized weights $\wQ(n)=2\Lambda(n)/\sqrt n$ only appear inside the Weil functional $Q$.
+\end{remark}
+
+\begin{theorem}[MD$_{2,3}$: Base interval $[B_3,B_4)$]\label{md:thm:MD23}
+Let $B\in[B_3,B_4)$ with $B_3=\tfrac{\log 3}{2\pi}$ and $B_4=\tfrac{\log 4}{2\pi}$. Active integers are $\{2,3\}$ with nodes $\xi_n=\tfrac{\log n}{2\pi}$. For $\Phi_{B,t,\tau}(\xi)=\Lambda_B(\xi-\tau)\,\rho_t(\xi-\tau)+\Lambda_B(\xi+\tau)\,\rho_t(\xi+\tau)$ (even, nonnegative) where $\Lambda_B(x)=(1-|x|/B)_+$ and $\rho_t$ is a normalized heat kernel, define
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-2}
+\nu_{\mathrm{Arch}}(d\xi)=a(\xi)\,d\xi,\qquad a(\xi)=\log\pi-\Re\psi\Big(\tfrac14+i\pi\xi\Big),\qquad \nu_P=\sum_{n\in\{2,3\}} \frac{2\,\Lambda(n)}{\sqrt n}\,\delta_{\xi_n}.
+\end{equation}
+For $r\in(0,B)$ and $t>0$, set the core minimum $m_r:=\inf_{|\xi|\le r} a(\xi)$ and the off\-core mass $N_{B,r}:=\int_{[-B,B]\setminus[-r,r]} |a(\xi)|\,d\xi$. With $\rho_t(\xi)=(4\pi t)^{-1/2} e^{-(2\pi)^2\xi^2/t}$, write $\rho_t(r)=(4\pi t)^{-1/2} e^{-(2\pi)^2 r^2/t}$. If
+\begin{equation}\label{md:eq:MD23-criterion}
+ m_r\,\rho_t(r)\,\frac{r^2}{B}\ -\ 2\,(4\pi t)^{-1/2}\,N_{B,r}\ \ge\ \frac{\log 2}{\sqrt 2}+\frac{\log 3}{\sqrt 3},
+\end{equation}
+then for all $\tau\in[-B,B]$ one has
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-11}
+ \int_{-B}^{B} a(\xi)\,\Phi_{B,t,\tau}(\xi)\,d\xi\ \ge\ \sum_{n\in\{2,3\}} \frac{2\,\Lambda(n)}{\sqrt n}\,\Phi_{B,t,\tau}(\xi_n),
+\end{equation}
+equivalently $Q(\Phi_{B,t,\tau})\ge 0$ on the base interval cone.
+\end{theorem}
+\begin{remark}[Constants table]
+Illustrative bounds supporting the sufficient condition\,(\ref{md:eq:MD23-criterion}) for sample parameters $(B,r,t)$ are summarized in the appendix table \texttt{MD\_2\_3\_constants\_table.tex}. The proof itself is analytic and does not rely on numerics; the table serves communication only.
+\end{remark}
+\begin{proof}
+We prove the inequality $\int_{-B}^{B} a(\xi)\,\Phi_{B,t,\tau}(\xi)\,d\xi \ge \sum_{n\in\{2,3\}} \frac{2\,\Lambda(n)}{\sqrt n}\,\Phi_{B,t,\tau}(\xi_n)$ for all $\tau\in[-B,B]$ under condition~\eqref{md:eq:MD23-criterion}.
+
+Step 1 (Prime side). Since $\Lambda_B\le1$ and $\|\rho_t\|_\infty=(4\pi t)^{-1/2}$, one has $\Phi_{B,t,\tau}(\xi_n)\le 2\,(4\pi t)^{-1/2}$. In particular, if $t\ge 1/\pi$ then $2\,(4\pi t)^{-1/2}\le1$ and $\Phi_{B,t,\tau}(\xi_n)\le1$ uniformly in $\tau$ and $n\in\{2,3\}$; hence
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-10}
+ \sum_{n\in\{2,3\}} \frac{2\,\Lambda(n)}{\sqrt n}\,\Phi_{B,t,\tau}(\xi_n)\ \le\ \frac{2\log 2}{\sqrt 2}+\frac{2\log 3}{\sqrt 3}.
+\end{equation}
+
+Step 2 (Core/off\-core split). Decompose
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-12}
+ \int_{-B}^{B} a\,\Phi_{B,t,\tau}\,d\xi\ =\ \int_{-r}^{r}\! a\,\Phi_{B,t,\tau}\,d\xi\ +\ \int_{[-B,B]\setminus[-r,r]}\! a\,\Phi_{B,t,\tau}\,d\xi.
+\end{equation}
+
+Step 3 (Core lower bound). On $[-r,r]$, $a\ge m_r$. For the first summand of $\Phi_{B,t,\tau}$, change variables $x=\xi-\tau$:
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-9}
+ \int_{-r}^{r}\!\Lambda_B(\xi-\tau)\,\rho_t(\xi-\tau)\,d\xi\ =\ \int_{\tau-r}^{\tau+r}\! \Lambda_B(x)\,\rho_t(x-\tau)\,dx\ \ge\ \rho_t(r)\int_{\tau-r}^{\tau+r}\! \Lambda_B(x)\,dx.
+\end{equation}
+The minimum of $\int_{\tau-r}^{\tau+r} \Lambda_B$ over $|\tau|\le B$ occurs at the boundary of $[-B,B]$ and equals $\int_{B-r}^{B} (1-x/B)\,dx = r^2/(2B)$. The symmetric summand contributes the same bound, hence
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-8}
+ \int_{-r}^{r}\!\Phi_{B,t,\tau}(\xi)\,d\xi\ \ge\ \rho_t(r)\,\frac{r^2}{B},\qquad \text{so}\quad \int_{-r}^{r}\! a\,\Phi_{B,t,\tau}\,d\xi\ \ge\ m_r\,\rho_t(r)\,\frac{r^2}{B}.
+\end{equation}
+
+Step 4 (Off\-core upper bound). On $[-B,B]\setminus[-r,r]$, using $\Lambda_B\le1$ and Young's inequality for convolution (e.g. \cite[Ch.~3]{SteinShakarchi2003}) in the form $\|f*\rho_t\|_\infty\le (4\pi t)^{-1/2}\,\|f\|_1$ applied to $f=|a|\,\mathbf 1_{[-B,B]\setminus[-r,r]}$, we obtain
+\begin{equation}\label{eq:MD_2_3_base_interval-lambda-min-1}
+ \int_{[-B,B]\setminus[-r,r]}\! |a(\xi)|\,\Lambda_B(\xi\mp\tau)\,\rho_t(\xi\mp\tau)\,d\xi\ \le\ (4\pi t)^{-1/2}\,N_{B,r}.
+\end{equation}
+Summing the two symmetric contributions gives a total off\-core penalty $\le 2\,(4\pi t)^{-1/2}\,N_{B,r}$.
+
+Step 5 (Combine). Putting pieces together,
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-7}
+ \int_{-B}^{B} a\,\Phi_{B,t,\tau}\,d\xi\ \ge\ m_r\,\rho_t(r)\,\frac{r^2}{B}\ -\ 2\,(4\pi t)^{-1/2}\,N_{B,r}.
+\end{equation}
+By assumption \eqref{md:eq:MD23-criterion} this lower bound is at least $\frac{2\log 2}{\sqrt 2}+\frac{2\log 3}{\sqrt 3}$, which in turn dominates the prime contribution from Step 1. Hence the claimed inequality holds uniformly in $\tau$.
+\end{proof}
+\begin{remark}
+Explicit lower bounds for $m_r$ on small $r$ follow from classical digamma bounds (see, e.g., \cite[\S5]{NISTDLMF}); $N_{B,r}$ is finite for fixed $B$ and admits explicit upper bounds via $\Re\psi(\tfrac14+i\pi\xi)=\log|\pi\xi|+O(1/|\xi|)$. The core mass factor $\rho_t(r)\,\tfrac{r^2}{B}$ captures Gaussian localization and Fej\'er area; taking $t\ge 1/\pi$ ensures the pointwise prime contribution $\Phi_{B,t,\tau}(\xi_n)\le1$.
+\end{remark}
+
+% Operator (RKHS) formulation for the base interval
+\begin{theorem}[MD$_{2,3}$ in operator form]\label{md:thm:MD23-operator}
+Let $B\in[B_3,B_4)$ so that only $n\in\{2,3\}$ are active on $[-K,K]$. With the RKHS normalization $\|k_{\alpha}\|=1$, one has
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-1}
+\|T_P\|\ \le\ w_{\max}\ +\ \sqrt{w_{\max}}\,S_K(t),\qquad w_{\max}=\max\Big\{\tfrac{\log 2}{\sqrt2},\tfrac{\log 3}{\sqrt3}\Big\}.
+\end{equation}
+Choosing $t=t_{\min}(K)$ so that $S_K(t_{\min})\le \dfrac{1-w_{\max}-\varepsilon_K}{\sqrt{w_{\max}}}$ yields $\|T_P\|\le \rho_K<1$ and hence $T_A-T_P\succeq0$ on $\mathcal H_K$.
+\end{theorem}
+
+% Block induction: adding packets of nodes
+\begin{theorem}[Block induction IND$^{\mathrm{block}}$]\label{md:thm:ind-block}
+Suppose on a compact $[-K,K]$ one has $\|T_P^{\mathrm{old}}\|\le \rho_K^{\mathrm{old}}<1$. Let $\mathcal N$ be a finite set of newly active nodes with weights $\{w(n): n\in\mathcal N\}$ and let $T_P^{\mathrm{new}}=T_P^{\mathrm{old}}+\sum_{n\in\mathcal N} w(n)\,|k_{\alpha_n}\rangle\!\langle k_{\alpha_n}|$. Then
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-6}
+ \|T_P^{\mathrm{new}}\|\ \le\ \|T_P^{\mathrm{old}}\|\ +\ \sum_{n\in\mathcal N} w(n)\,.
+\end{equation}
+In particular, if $\sum_{n\in\mathcal N} w(n)\le \varepsilon_K$ with $\rho_K^{\mathrm{old}}+\varepsilon_K<1$, then $T_A-T_P^{\mathrm{new}}\succeq 0$ on $\mathcal H_K$.
+\end{theorem}
+\begin{proof}
+The update is a finite sum of positive rank--one operators. By the triangle inequality for the operator norm and $\|\,|k\rangle\!\langle k|\,\|=\|k\|^2=1$, we obtain
+\(\|\sum_{n\in\mathcal N} w(n)|k_{\alpha_n}\rangle\!\langle k_{\alpha_n}|\|\le \sum_{n\in\mathcal N} w(n).\)
+The conclusion follows.
+\end{proof}
+
+% Strong early-phase block induction with A3--Lock cushion
+\begin{theorem}[Block induction across early active thresholds]\label{md:thm:ind-block-early}
+Fix $K>0$ and let $\mathcal N_{\le N_0}$ be the finite set of active nodes on $[-K,K]$ up to a cutoff index $N_0=N_0(K)$. There exist:
+\begin{itemize}
+  \item a partition $\mathcal N_{\le N_0}=B_1\sqcup B_2\sqcup\cdots\sqcup B_J$ into consecutive blocks (in any fixed ordering),
+  \item a number $\varepsilon(K)\in(0,1)$ and a uniform margin $\gamma(K)>0$,
+  \item for each block $B_j$ a two--scale Fej\'er$\times$heat window $\Phi_j=\alpha_j\,\Phi_{\mathrm{sym}}+\beta_j\,\Phi_{\mathrm{rkhs}}$ with parameters from Lemma~\ref{lem:a3.two-scale},
+\end{itemize}
+such that
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-5}
+ \sum_{n\in B_j} w(n)\ \le\ \varepsilon(K)\quad\text{for all }j,
+\end{equation}
+and the following operator inequality holds uniformly in $j$:
+\begin{equation}\label{md:eq:block-claim}
+ (T_A-T_P)\bigl[\Phi_j;\, B_1\cup\cdots\cup B_j\bigr]\ \succeq\ \gamma(K)\,I.
+\end{equation}
+After exhausting the early blocks, the one--prime step (Theorem~\ref{rkhs:thm:rkhs-ind}) applies since the remaining new weights satisfy $w_{\mathrm{new}}\le\varepsilon(K)$ and $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$.
+\end{theorem}
+\begin{proof}
+Let $c_0(K)$ and $t_{\mathrm{sym}},t_{\mathrm{rkhs}},M_0$ be as in Lemma~\ref{lem:a3.two-scale}. Choose $\varepsilon(K):=\tfrac14 c_0(K)$ and $\gamma(K):=\tfrac12 c_0(K)$. Construct blocks greedily along the chosen ordering so that each block satisfies $\sum_{n\in B_j} w(n)\le\varepsilon(K)$ (the last block may have a strictly smaller sum). For $\Phi_j$ take any convex mixture with $\alpha_j,\beta_j\in(0,1)$ (e.g. $\alpha_j=\beta_j=\tfrac12$) of the two scales furnished by Lemma~\ref{lem:a3.two-scale}.
+
+By that theorem, uniformly for $M\ge M_0$,
+\begin{equation}\label{eq:MD_2_3_base_interval-lambda-min}
+ \lambda_{\min}\!\bigl(T_M[P_A[\Phi_j]]-T_P[\Phi_j]\bigr)\ \ge\ \tfrac12 c_0(K).
+\end{equation}
+Restricting the prime sum to a subset (the cumulative blocks $\bigcup_{i\le j} B_i$) can only decrease the prime operator in the Loewner order, hence preserves the lower bound. Equivalently, on the RKHS side one has
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-4}
+ \|T_P[\Phi_j;\, B_1\cup\cdots\cup B_j]\|\ \le\ \|T_P[\Phi_j]\|\ \le\ \tfrac14 c_0(K)\ \le\ \varepsilon(K),
+\end{equation}
+while the Archimedean part contributes at least $\tfrac34 c_0(K)$ in the mixed symbol bound. Combining these gives \eqref{md:eq:block-claim} with $\gamma(K)=\tfrac12 c_0(K)$. The tail phase follows from Theorem~\ref{rkhs:thm:rkhs-ind} because each subsequent new node has weight at most $\varepsilon(K)$ and the previously accumulated norm is bounded away from 1.
+\end{proof}
+
+\subsection*{Block algorithm (greedy) and cert format}
+Appendix~\ref{app:a3-repro} records the certified budgets (Table~\ref{tab:ind-schedule}) used by the IND/AB chain.
+The entry for $K=1$ comes from the first greedy block in
+\path{cert/bridge/K1_blocks.json} (see also the log
+\path{cert/bridge/logs/K1_blocks.txt}), leaving a residual budget of
+$\varepsilon(K)-0.181352\approx0.00522$ for the subsequent IND/AB one-prime step recorded in
+\path{cert/bridge/K1_step_next.json}.
+
+\textbf{Greedy blocks.} Order early active nodes by increasing $n$ and greedily form consecutive
+blocks $B_j$ until adding the next weight would exceed $\varepsilon(K)=c_0(K)/4$. The last block
+may have a smaller sum. After exhausting these blocks, proceed with IND$'$ one--by--one; the
+legacy certificates provide the concrete block masses listed in Table~\ref{tab:ind-schedule}.
+
+\paragraph{Data availability.}
+The early greedy blocks and the first IND$'$ step are recorded in the supplementary bundle
+(\path{cert/bridge/K\{K\}_blocks.json}, \path{cert/bridge/K\{K\}_step_next.json}).
+These files support reproducibility, while the analytic guarantees follow from the theorems above.
+Appendix~\ref{subsec:ind-atp} points to the corresponding ATP logs.
+
+% === PATCH MD-1: block induction for early heavy primes ===
+\begin{theorem}[IND$^{\mathrm{block}}$ (block update on activity jumps)]\label{md:thm:IND_block}
+Let $[-K,K]$ be fixed and suppose on some activity interval $I=[B_n,B_{n+1})$ we have the operator margin
+\begin{equation}\label{eq:MD_2_3_base_interval-formula}
+T_A-T_P \succeq\ \gamma_K\,T_A\quad\text{with }\ \gamma_K\in(0,1].
+\end{equation}
+Let a packet $B$ of new prime nodes enter when crossing to the next activity interval, with cumulative weight 
+\(W_B:=\sum_{n\in B} w(n).\)
+Then
+\begin{equation}\label{eq:MD_2_3_base_interval-formula-3}
+T_A-(T_P+\Delta T_P) \succeq (\gamma_K - W_B)\,T_A,
+\end{equation}
+where $\Delta T_P=\sum_{n\in B} w(n)\,|k_{\alpha_n}\rangle\langle k_{\alpha_n}|$ in the RKHS normalization $\|k_{\alpha}\|=1$. In particular, if $W_B\le \varepsilon(K)<\gamma_K$, positivity persists: 
+\(T_A-(T_P+\Delta T_P)\succeq (\gamma_K-\varepsilon(K))\,T_A \succeq 0.\)
+After the block, one may continue with the one-prime step (IND$'$).
+\end{theorem}
+\begin{proof}
+Monotonicity in the Loewner order and the rank-one bound give $\|\Delta T_P\|\le \sum_{n\in B} w(n)=W_B$. For any unit vector $f$, 
+$\langle (T_A - (T_P+\Delta T_P))f,f\rangle \ge \gamma_K\langle T_A f,f\rangle - \|\Delta T_P\|\langle f,f\rangle \ge (\gamma_K-W_B)\langle T_A f,f\rangle.$
+\end{proof}

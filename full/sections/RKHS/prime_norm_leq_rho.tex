@@ -1,0 +1,116 @@
+% Discrete-to-integral bound for the prime block norm
+\subsection{Prime sampling norm bounded by $\rho(t)$}
+
+Throughout this subsection we write $\rho(t)$ for the Gaussian cap in Lemma~\ref{pm:lem:rho-closed-form}.
+
+\begin{lemma}[Integral domination for the Gaussian--weighted prime sum]\label{pm:lem:sum-to-rho}
+Let $t>0$ and write $t' := 4\pi^2 t$. Then
+\begin{equation}\label{eq:gaussian-prime-sum}
+  \sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}\,e^{-t'(\log n)^2}
+  \ \le\ 
+  \int_{1}^{\infty}\frac{\log x}{\sqrt x}\,e^{-t'(\log x)^2}\,dx
+  \ =\ 
+  \int_{0}^{\infty} y\,e^{y/2}\,e^{-t' y^2}\,dy.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Set
+\begin{equation}\label{eq:Prime_norm_leq_rho-formula-9}
+  g(x):=\frac{1}{\sqrt{x}}\,e^{-t'(\log x)^2},\qquad
+  h(x):=(\log x)g(x)=\frac{\log x}{\sqrt{x}}\,e^{-t'(\log x)^2},\qquad x>1.
+\end{equation}
+Differentiating $g$ (using $u=\log x$, $du/dx = 1/x$) yields
+\begin{equation}\label{eq:Prime_norm_leq_rho-formula-8}
+  g'(x) = -\frac{e^{-t'(\log x)^2}}{x^{3/2}}\Bigl(\tfrac12 + 2t'\log x\Bigr) < 0\qquad(x>1,\,t'>0),
+\end{equation}
+so $g$ is strictly decreasing on $[1,\infty)$. By the Chebyshev rearrangement principle (equivalently, by applying the integral test to the eventually decreasing function $h$; see Remark~\ref{rem:eventual-monotone} below) we have
+\begin{equation}\label{eq:Prime_norm_leq_rho-formula-7}
+  \sum_{n\ge 2}\Lambda(n) g(n)
+  \ \le\ \sum_{n\ge 2}(\log n) g(n)
+  \ \le\ \int_{1}^{\infty}(\log x) g(x)\,dx,
+\end{equation}
+because $\Lambda(n)\le \log n$ for every $n$ (indeed $\Lambda(p^m)=\log p \le m\log p = \log(p^m)$).
+Substituting $x=e^{y}$ gives $dx=e^{y}dy$ and $x^{-1/2}e^{y}=e^{y/2}$, so the last integral equals $\int_{0}^{\infty} y e^{y/2} e^{-t' y^2}\,dy$, which is the claimed right-hand side of \eqref{eq:gaussian-prime-sum}.
+\end{proof}
+
+\begin{remark}[Eventual monotonicity of $h$]\label{rem:eventual-monotone}
+Writing $y=\log x$ and $h(x)=H(y)$ with $H(y)=y e^{-t'y^2+y/2}$, we compute $H'(y)=e^{-t'y^2+y/2}\bigl(1-2t' y^2 + \tfrac12 y\bigr)$. For $y\ge 2$ this derivative is nonpositive whenever $t'\ge \tfrac14$, i.e. $t\ge t_\star:=\frac{1}{16\pi^2}$. Therefore $h$ decreases on $[e^2,\infty)$ in that regime, so the integral test gives $\sum_{n\ge \lceil e^2\rceil} h(n) \le \int_{e^2}^{\infty} h(x)\,dx$; adding the finite block $2\le n<e^2$ yields \eqref{eq:gaussian-prime-sum} without further loss.
+\end{remark}
+
+\begin{proposition}[Norm bound for the symmetrized prime block]\label{pm:prop:norm-leq-rho}
+Fix a compact interval $[-K,K]$. The even--symmetrized prime sampling operator $T_P^{\mathrm{sym}}$ on $[-K,K]$ is positive and of finite rank. Consequently,
+\begin{equation}\label{eq:Prime_norm_leq_rho-formula-1}
+  \|T_P\| = \|T_P^{\mathrm{sym}}\| \le \operatorname{Tr}\,T_P^{\mathrm{sym}}
+  = 2\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}\,e^{-t'(\log n)^2}
+  \ \le\ \rho(t),
+\end{equation}
+where the last inequality is Lemma~\ref{pm:lem:sum-to-rho}.
+\end{proposition}
+
+\begin{lemma}[Trace cap with explicit remainder via $\operatorname{erfc}$]\label{pm:lem:trace-cap-erfc}
+Let $t>0$, set $a:=4\pi^2 t$ and $b:=\tfrac12$, and introduce $\widetilde{\mu}:=\frac{1}{2a}$. For $z_0\in\RR$ define
+\begin{equation}\label{eq:Prime_norm_leq_rho-formula}
+  J_a(z_0) := e^{a \widetilde{\mu}^{\,2}} \int_{z_0}^{\infty} z\,e^{-a (z-\widetilde{\mu})^2}\,dz.
+\end{equation}
+Then the even--symmetrized prime sampling operator on any compact $[-K,K]$ satisfies
+\begin{equation}\label{eq:Prime_norm_leq_rho-formula-6}
+  \|T_P\|\ \le\ 2\sum_{2\le n\le e^2}\frac{\log n}{\sqrt{n}}\,e^{-4\pi^2 t(\log n)^2}
+  \; +\; 2\,J_a(2)\ \le\ 2\,J_a(0).
+\end{equation}
+Moreover $J_a$ admits the closed form
+\begin{equation}\label{eq:J-closed-form}
+  J_a(z_0)
+  = e^{a\widetilde{\mu}^{\,2}}
+    \left(
+      \frac{\widetilde{\mu}\sqrt{\pi}}{2\sqrt{a}}\,
+        \operatorname{erfc}\!\bigl(\sqrt{a}\,(z_0-\widetilde{\mu})\bigr)
+      + \frac{1}{2a}\,e^{-a (z_0-\widetilde{\mu})^2}
+    \right).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Split the prime block into the finite range $2\le n\le e^2$ and the tail $n>e^2$. For the tail consider
+\begin{equation}\label{eq:Prime_norm_leq_rho-formula-5}
+  f(x) := \frac{\log x}{\sqrt{x}}\,e^{-a(\log x)^2 + b\log x}
+  = h(\log x),\qquad h(z):= z\,e^{-a z^2 + b z}.
+\end{equation}
+For $z\ge 2$ we compute $h'(z)=e^{-a z^2 + b z}\bigl(1-\tfrac12 z-2a z^2\bigr)\le 0$ (for $a\ge \tfrac14$), so $f$ is nonincreasing on $[e^2,\infty)$. Therefore
+\begin{equation}\label{eq:Prime_norm_leq_rho-formula-4}
+  \sum_{n>e^2} f(n) \ \le\ \int_{e^2}^{\infty} f(x)\,dx.
+\end{equation}
+Substituting $x=e^{z}$ transforms the integral into
+\begin{equation}\label{eq:Prime_norm_leq_rho-formula-3}
+  \int_{2}^{\infty} z\,e^{-a z^2 + (b+\frac12)z}\,dz
+  = e^{a\widetilde{\mu}^{\,2}} \int_{2}^{\infty} z\,e^{-a (z-\widetilde{\mu})^2}\,dz,
+\end{equation}
+because $-a z^2 + (b+\frac12)z = -a(z-\widetilde{\mu})^2 + a\widetilde{\mu}^{\,2}$. Writing $z = \widetilde{\mu} + u/\sqrt{a}$ (with $u = \sqrt{a}(z-\widetilde{\mu})$) gives
+\begin{equation}\label{eq:Prime_norm_leq_rho-formula-2}
+  J_a(2) = e^{a\widetilde{\mu}^{\,2}}\left(\frac{\widetilde{\mu}}{\sqrt{a}}\int_{u_0}^{\infty} e^{-u^2}\,du + \frac{1}{a}\int_{u_0}^{\infty} u e^{-u^2}\,du\right),
+  \qquad u_0 = \sqrt{a}(2-\widetilde{\mu}).
+\end{equation}
+Evaluating the integrals via $\int_{u_0}^{\infty} e^{-u^2}\,du = \frac{\sqrt{\pi}}{2}\operatorname{erfc}(u_0)$ and $\int_{u_0}^{\infty} u e^{-u^2}\,du = \tfrac12 e^{-u_0^2}$ yields the closed form \eqref{eq:J-closed-form}. Dropping the finite block enlarges the bound to $J_a(0)$, and positivity plus finite rank of $T_P^{\mathrm{sym}}$ supply the two displayed inequalities for $\|T_P\|$.
+
+Finally, the integrand in the definition of $J_a$ is nonnegative, so $z_0 \mapsto J_a(z_0)$ is decreasing, giving $J_a(2)\le J_a(0)$ as claimed.
+\end{proof}
+
+\paragraph{Notes.}
+\begin{itemize}
+  \item The choice $b=\tfrac12$ exactly cancels the factor $e^{z/2}$ coming from $dx=e^{z}dz$ and $x^{-1/2}$, which is why the completing-the-square center is $\widetilde{\mu}=\tfrac{1}{2a}$.
+  \item If one prefers not to appeal to global monotonicity, the finite-block split at $e^{2}$ already isolates a region on which $h$ is decreasing for every $a\ge \tfrac14$ (equivalently $t\ge \tfrac{1}{16\pi^2}$), covering all parameter regimes used in the certificate.
+\end{itemize}
+
+\paragraph{Reproducibility.}
+Legacy numerics for the optimisation parameter $t$ and the resulting caps $\rho(t)$ are archived in
+Appendix~\ref{app:a3-repro}; they corroborate but do not enter the analytic bounds above.
+
+\subsubsection{Immediate corollaries used in the certificate}
+\begin{itemize}
+  \item From Proposition~\ref{pm:prop:norm-leq-rho} we obtain the operator-norm cap $\|T_P\|\le \rho(t)=2\int_{0}^{\infty} y e^{y/2} e^{-4\pi^2 t y^2}\,dy$ for every $t>0$; at $t=1$ this evaluates to $\rho(1)<1$, so $c_0^{\mathrm{eff}}:=1-\rho(1)>0$.
+  \item Lemma~\ref{pm:lem:trace-cap-erfc} supplies the explicit finite-block plus tail bound
+  \(
+    \|T_P\| \le 2\sum_{2\le n\le e^{2}} \frac{\log n}{\sqrt n} e^{-4\pi^2 t(\log n)^2} + 2 J_{4\pi^2 t}(2),
+  \)
+  where $J_a$ is given by \eqref{eq:J-closed-form} in terms of elementary functions and $\operatorname{erfc}$. This closed form is convenient both analytically (Gaussian tails) and numerically (stable evaluation).
+\end{itemize}

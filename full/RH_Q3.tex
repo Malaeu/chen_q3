@@ -1,0 +1,87 @@
+\documentclass[11pt]{article}
+\input{preamble/preamble}
+
+\input{preamble/titleblock}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/scope_notation}
+
+\section{Normalization (T0)}\label{sec:T0}
+\input{sections/T0}
+\input{sections/T0_AD_fix}
+
+\section{Local Density (A1$'$)}\label{sec:A1}
+\input{sections/A1prime}
+
+\section{Continuity of $Q$ on Compacts (A2)}\label{sec:A2}
+\input{sections/A2}
+
+\section{Toeplitz--Symbol Bridge (A3)}\label{sec:A3}
+\input{sections/A3/calibration}
+\input{sections/A3/arch_bounds}
+\input{sections/A3/rayleigh_bridge}
+\input{sections/A3/symbol_floor}
+\input{sections/A3/fejer_modulus}
+\input{sections/A3/matrix_guard}
+\input{sections/A3/local_positivity}
+\input{sections/A3/locks}
+\input{sections/A3/main}
+
+\section{Prime Operator Control via RKHS}\label{sec:RKHS}
+\input{sections/RKHS/core}
+\input{sections/RKHS/main}
+\input{sections/RKHS/prime_cap}
+\input{sections/RKHS/weil_isometry}
+\input{sections/RKHS/prime_trace_closed_form}
+\input{sections/RKHS/prime_norm_leq_rho}
+
+\section{Prime Operator Control via Measure Domination and Induction}\label{sec:IND}
+\input{sections/IND_AB/MD_2_3_base_interval}
+\input{sections/IND_AB/MD_2_3_constants}
+\input{sections/IND_AB/MD_2_3_constants_table}
+\input{sections/IND_AB/IND_prime_step}
+\input{sections/IND_AB/AB_infinity_closure}
+\input{sections/IND_AB/parameter_recipe}
+
+\section{Prime Cancellation (D3)}\label{sec:D3}
+\input{sections/D3/operator_bridge}
+\input{sections/D3/structural_PC_theorem}
+\input{sections/D3/amp_noD3}
+
+\section{Compact-by-Compact Positivity and Limit (T5)}\label{sec:T5}
+\input{sections/T5/summary}
+\input{sections/T5/compact_transfer}
+\input{sections/T5/lemmas}
+
+\section{Weil Criterion Linkage and Main Theorem}\label{sec:Weil}
+\input{sections/Weil_linkage}
+\input{sections/Weil_pack}
+\input{sections/Main_closure}
+
+\appendix
+\section{Notation}\label{app:notation}
+\input{appendix/notation}
+
+\section{Clarifications}\label{app:faq}
+\input{appendix/clarifications}
+
+\section{Verification Notes}\label{app:verification}
+\input{appendix/verification}
+
+\input{appendix/repro_A3}
+
+\section{ATP Notes}\label{subsec:t5-atp}
+\input{appendix/T5_atp}
+
+\input{sections/references_nocite}
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
