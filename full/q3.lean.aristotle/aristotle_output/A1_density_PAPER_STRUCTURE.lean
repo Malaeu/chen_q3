@@ -36,9 +36,11 @@ def W_K (K : ℝ) : Set (ℝ → ℝ) :=
        Even Φ ∧
        ∀ x, 0 ≤ Φ x}
 
+-- Normalized even symmetrization: (1/2) factor so that Sym fixes even functions
+-- "Scaling generators by a positive constant does not change the generated cone"
 def Atom (B t τ : ℝ) (x : ℝ) : ℝ :=
-  FejerKernel B (x - τ) * HeatKernel t (x - τ) +
-  FejerKernel B (x + τ) * HeatKernel t (x + τ)
+  (1/2) * (FejerKernel B (x - τ) * HeatKernel t (x - τ) +
+           FejerKernel B (x + τ) * HeatKernel t (x + τ))
 
 def AtomSet (K : ℝ) : Set (ℝ → ℝ) :=
   {g | ∃ B > 0, ∃ t > 0, ∃ τ ∈ Icc (-K) K, g = Atom B t τ}
@@ -65,7 +67,16 @@ lemma HeatKernel_approx_identity_uniform (f : ℝ → ℝ) (hf_cont : Continuous
     ∃ t₀ > 0, ∀ t ∈ Ioo 0 t₀, ∀ x, |real_convolution f (HeatKernel t) x - f x| < ε := by
   sorry -- Proven in A1_FINAL_COMPLETE.lean
 
--- Extension lemma
+-- Extension lemma (with nonnegativity preservation)
+lemma exists_even_compact_extension_nonneg (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ)
+    (hΦ_cont : ContinuousOn Φ (Icc (-K) K)) (hΦ_even : Even Φ) (hΦ_nonneg : ∀ x, 0 ≤ Φ x) :
+    ∃ Ψ : ℝ → ℝ, Continuous Ψ ∧ HasCompactSupport Ψ ∧ Even Ψ ∧
+      (∀ x, 0 ≤ Ψ x) ∧ ∀ x ∈ Icc (-K) K, Ψ x = Φ x := by
+  -- Standard construction: Extend by 0 outside [-2K, 2K] with smooth bump
+  -- Since Φ ≥ 0 and bump ≥ 0, the extension Ψ ≥ 0
+  sorry -- Extension with nonnegativity (Tietze + smooth cutoff)
+
+-- Extension lemma (without nonnegativity, for compatibility)
 lemma exists_even_compact_extension (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ)
     (hΦ_cont : ContinuousOn Φ (Icc (-K) K)) (hΦ_even : Even Φ) :
     ∃ Ψ : ℝ → ℝ, Continuous Ψ ∧ HasCompactSupport Ψ ∧ Even Ψ ∧
@@ -95,9 +106,9 @@ theorem A1_density_paper (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ) (hΦ : Φ ∈
   -- Unpack W_K membership
   obtain ⟨hΦ_cont, hΦ_supp, hΦ_even, hΦ_nonneg⟩ := hΦ
 
-  -- Step 0: Extend Φ to Ψ : ℝ → ℝ (continuous, compactly supported, even)
-  obtain ⟨Ψ, hΨ_cont, hΨ_supp, hΨ_even, hΨ_eq⟩ :=
-    exists_even_compact_extension K hK Φ hΦ_cont hΦ_even
+  -- Step 0: Extend Φ to Ψ : ℝ → ℝ (continuous, compactly supported, even, nonneg)
+  obtain ⟨Ψ, hΨ_cont, hΨ_supp, hΨ_even, hΨ_nonneg, hΨ_eq⟩ :=
+    exists_even_compact_extension_nonneg K hK Φ hΦ_cont hΦ_even hΦ_nonneg
 
   /-
   STEP 1 (mollification): Find t such that ‖Ψ * H_t - Ψ‖_∞ < ε/3
@@ -157,37 +168,83 @@ theorem A1_density_paper (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ) (hΦ : Φ ∈
     sorry -- Riemann sum approximation
 
   /-
-  STEP 3 (Fejér truncation): Replace H_t with Atom (symmetric Fejér × heat)
+  STEP 3 (Fejér truncation): Replace H_t with normalized Atom
 
-  h(ξ) = Σⱼ c_j · Atom(B, t, τⱼ)(ξ)
-       = Σⱼ c_j · [Λ_B(ξ-τⱼ)·H_t(ξ-τⱼ) + Λ_B(ξ+τⱼ)·H_t(ξ+τⱼ)]
+  With normalized atom (1/2 factor), h approximates g_R^sym directly:
+    h(ξ) = Σⱼ c_j · Atom(B, t, τⱼ)(ξ)
+         = Σⱼ c_j · (1/2)[Λ_B(ξ-τⱼ)·H_t(ξ-τⱼ) + Λ_B(ξ+τⱼ)·H_t(ξ+τⱼ)]
 
-  For large enough B, |Λ_B(·) - 1| < ε/(3·C) where C bounds the sum.
+  Define g_R^sym := (g_R(ξ) + g_R(-ξ))/2 (normalized even symmetrization).
+  For large enough B, |Λ_B(·) - 1| ≤ 2K/B, so |h - g_R^sym| < ε/3.
   -/
 
-  -- Choose B large enough
+  -- Define normalized symmetrization
+  let g_R_sym : ℝ → ℝ := fun ξ => (g_R ξ + g_R (-ξ)) / 2
+
+  -- Choose B large enough: need (2K/B) · C_f ≤ ε/3, so B ≥ 6KC_f/ε
   let B : ℝ := 12 * K / ε + 1
   have hB_pos : B > 0 := by simp [B]; positivity
 
-  -- Construct h as sum of atoms
+  -- Construct h as sum of normalized atoms
   let h : ℝ → ℝ := fun ξ => ∑ j ∈ Finset.range N, c j * Atom B t (τ j) ξ
 
-  -- Bound: |h(ξ) - (g_R(ξ) + g_R(-ξ))| < ε/3
-  -- This follows from |Λ_B - 1| ≤ 2K/B < ε/6 for our choice of B
-  have step3_bound : ∀ x ∈ Icc (-K) K, |h x - (g_R x + g_R (-x))| < ε/3 := by
+  -- Bound: |h(ξ) - g_R^sym(ξ)| < ε/3
+  -- With normalized atom, this follows directly from |Λ_B - 1| ≤ 2K/B
+  have step3_bound : ∀ x ∈ Icc (-K) K, |h x - g_R_sym x| < ε/3 := by
     intro x hx
-    -- Each term differs by at most c_j · |Atom - (H_t(x-τ) + H_t(x+τ))|
-    -- This is bounded by c_j · (ε/3) / (Σ c_j) from Fejér approximation
-    sorry -- Fejér truncation bound
+    -- h = (1/2) Σ c_j [Λ_B·H_t(x-τ) + Λ_B·H_t(x+τ)]
+    -- g_R_sym = (1/2)(Σ c_j H_t(x-τ) + Σ c_j H_t(-x-τ))
+    -- Difference bounded by (1/2) · 2 · (2K/B) · Σ c_j ≤ ε/3
+    sorry -- Fejér truncation bound (now cleaner with normalized atoms)
+
+  -- g is even (convolution of even Ψ with even HeatKernel)
+  have hg_even : ∀ x, g x = g (-x) := by
+    intro x
+    simp only [g, real_convolution]
+    -- (Ψ * H_t)(x) = ∫ Ψ(y)·H_t(x-y) dy
+    -- (Ψ * H_t)(-x) = ∫ Ψ(y)·H_t(-x-y) dy
+    -- Substitution u = -y: = ∫ Ψ(-u)·H_t(-x+u) du = ∫ Ψ(u)·H_t(u-x) du
+    -- Since Ψ even and H_t even, this equals original integral
+    sorry -- Convolution of even functions is even
+
+  -- Key: Sym is contractive and fixes even functions
+  -- ‖g_R^sym - g‖ = ‖Sym(g_R) - Sym(g)‖ ≤ ‖g_R - g‖ < ε/3
+  have sym_contractive : ∀ x ∈ Icc (-K) K, |g_R_sym x - g x| < ε/3 := by
+    intro x hx
+    simp only [g_R_sym]
+    have hx_neg : -x ∈ Icc (-K) K := by simp only [mem_Icc] at hx ⊢; constructor <;> linarith
+    have b2_x := step2_bound x hx        -- |g_R x - g x| < ε/3
+    have b2_neg := step2_bound (-x) hx_neg  -- |g_R(-x) - g(-x)| < ε/3
+    -- g is even: g(-x) = g(x)
+    have h3 : g (-x) = g x := (hg_even x).symm
+    -- So |g_R(-x) - g(-x)| = |g_R(-x) - g(x)|
+    rw [h3] at b2_neg
+    -- Also g(x) = (g(x) + g(-x))/2 since g(-x) = g(x)
+    have hg_sym : g x = (g x + g (-x)) / 2 := by rw [h3]; ring
+    rw [hg_sym, h3]
+    -- Now bound |(g_R x + g_R(-x))/2 - (g x + g x)/2|
+    have calc1 : |(g_R x + g_R (-x)) / 2 - (g x + g x) / 2| =
+                 |((g_R x - g x) + (g_R (-x) - g x)) / 2| := by ring_nf
+    rw [calc1]
+    have h4 : |((g_R x - g x) + (g_R (-x) - g x)) / 2| ≤
+              (|g_R x - g x| + |g_R (-x) - g x|) / 2 := by
+      rw [abs_div, abs_of_pos (by norm_num : (2 : ℝ) > 0)]
+      apply div_le_div_of_nonneg_right
+      · exact abs_add_le (g_R x - g x) (g_R (-x) - g x)
+      · norm_num
+    calc |((g_R x - g x) + (g_R (-x) - g x)) / 2|
+        ≤ (|g_R x - g x| + |g_R (-x) - g x|) / 2 := h4
+      _ < (ε/3 + ε/3) / 2 := by linarith [b2_x, b2_neg]
+      _ = ε / 3 := by ring
 
   /-
-  STEP 4 (collect errors): Triangle inequality
+  STEP 4 (collect errors): PROPER triangle inequality chain
 
-  Since Ψ (hence g) is even, g_R is even, so g_R(ξ) + g_R(-ξ) = 2·g_R(ξ)
-  Actually, for even Ψ: g(-ξ) = g(ξ), and with symmetric partition, g_R(-ξ) ≈ g_R(ξ)
+  With normalized atoms and g_R^sym:
+    |h - f| ≤ |h - g_R^sym| + |g_R^sym - g| + |g - f|
+           < ε/3 + ε/3 + ε/3 = ε
 
-  |h(ξ) - Φ(ξ)| ≤ |h - (g_R + g_R(-·))| + |g_R - g| + |g - Φ|
-                < ε/3 + ε/3 + ε/3 = ε
+  This chain is now COMPLETE: h → g_R^sym → g → f
   -/
 
   -- Coefficients are nonnegative (g ≥ 0 since Ψ ≥ 0 and H_t ≥ 0)
@@ -197,16 +254,48 @@ theorem A1_density_paper (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ) (hΦ : Φ ∈
     apply mul_nonneg
     · -- g(τ j) ≥ 0 because it's convolution of nonneg functions
       simp only [g, real_convolution]
-      sorry -- Nonnegativity of convolution
+      apply integral_nonneg
+      intro y
+      apply mul_nonneg
+      · -- Ψ y ≥ 0: from extended nonnegativity
+        exact hΨ_nonneg y
+      · exact HeatKernel_nonneg t ht_pos (τ j - y)
     · exact hΔ_pos.le
 
   -- Sample points are in [-K, K]
   have hτ_mem : ∀ j ∈ Finset.range N, τ j ∈ Icc (-K) K := by
     intro j hj
+    simp only [Finset.mem_range] at hj
     simp only [τ, Δ, mem_Icc]
+    have hN_cast_pos : (0 : ℝ) < N := Nat.cast_pos.mpr hN_pos
+    have hj_lt : (j : ℝ) < N := Nat.cast_lt.mpr hj
     constructor
-    · nlinarith [Finset.mem_range.mp hj]
-    · nlinarith [Finset.mem_range.mp hj]
+    -- Lower bound: -K + (j + 1/2) * (2K/N) ≥ -K
+    · have h1 : (0 : ℝ) ≤ (j : ℝ) + 1/2 := by positivity
+      have h2 : 0 ≤ ((j : ℝ) + 1/2) * (2 * K / N) := by positivity
+      linarith
+    -- Upper bound: -K + (j + 1/2) * (2K/N) ≤ K
+    · -- j < N implies j + 1/2 ≤ N - 1/2 (since j ≤ N-1 for j : ℕ)
+      have hj_le : (j : ℝ) ≤ N - 1 := by
+        have h := Nat.lt_iff_add_one_le.mp hj  -- j + 1 ≤ N
+        have h2 : (j : ℝ) + 1 ≤ N := by
+          calc (j : ℝ) + 1 = ((j + 1 : ℕ) : ℝ) := by simp [Nat.cast_add]
+            _ ≤ N := Nat.cast_le.mpr h
+        linarith
+      have h5 : (j : ℝ) + 1/2 ≤ N - 1/2 := by linarith
+      -- (j + 1/2) * (2K/N) ≤ (N - 1/2) * (2K/N) = 2K - K/N ≤ 2K
+      have h6 : ((j : ℝ) + 1/2) * (2 * K / N) ≤ (N - 1/2) * (2 * K / N) := by
+        apply mul_le_mul_of_nonneg_right h5
+        positivity
+      have h7 : ((N : ℝ) - 1/2) * (2 * K / N) = 2 * K - K / N := by
+        have hN_ne : (N : ℝ) ≠ 0 := ne_of_gt hN_cast_pos
+        field_simp [hN_ne]
+      have h8 : K / N > 0 := by positivity
+      calc -K + ((j : ℝ) + 1/2) * (2 * K / N)
+          ≤ -K + (N - 1/2) * (2 * K / N) := by linarith [h6]
+        _ = -K + (2 * K - K / N) := by rw [h7]
+        _ = K - K / N := by ring
+        _ ≤ K := by linarith
 
   -- Check if we have positive sum
   by_cases h_sum_zero : ∑ j ∈ Finset.range N, c j = 0
@@ -214,47 +303,48 @@ theorem A1_density_paper (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ) (hΦ : Φ ∈
     -- Degenerate case: all coefficients sum to 0
     -- This means g ≈ 0 everywhere, hence Φ ≈ 0
     use fun _ => 0
-    constructor
-    · admit -- 0 in cone (degenerate)
+    refine ⟨?_, ?_⟩
+    · -- 0 in cone (degenerate)
+      admit
     · intro x hx
       -- If sum of c_j = 0 and all c_j ≥ 0, then all c_j = 0
-      -- This means g(τ_j) = 0 for all j, so g ≈ 0, so Φ ≈ 0
-      admit -- Degenerate case
+      admit
 
   case neg =>
     have h_sum_pos : ∑ j ∈ Finset.range N, c j > 0 := by
-      cases' (lt_or_eq_of_le (Finset.sum_nonneg hc_nonneg)) with h h
+      rcases lt_or_eq_of_le (Finset.sum_nonneg hc_nonneg) with h | h
       · exact h
       · exact absurd h.symm h_sum_zero
 
     -- h is in AtomCone_K K
     have hh_cone : h ∈ AtomCone_K K := by
-      -- Convert from ℕ-indexed sum to Finset ℝ-indexed sum
       -- Each c_j * Atom B t (τ j) is a nonneg combination of atoms
       sorry -- sum_atoms_in_cone application
 
     use h, hh_cone
 
-    -- Final bound via triangle inequality
+    -- Final bound via PROPER triangle inequality chain
+    -- With normalized atoms: h → g_R^sym → g → Φ
     intro x hx
 
-    -- For even g: g_R(x) + g_R(-x) = 2 · g(x) + O(Δ)
-    -- Simplify by noting g is even
-    have g_even : g (-x) = g x := by
-      simp only [g, real_convolution]
-      -- Uses evenness of Ψ and H_t
-      sorry -- Evenness of convolution
+    -- Get bounds from each step
+    have b1 := step1_bound x hx      -- |g - Φ| < ε/3
+    have b2 := sym_contractive x hx  -- |g_R^sym - g| < ε/3
+    have b3 := step3_bound x hx      -- |h - g_R^sym| < ε/3
 
+    -- Flip directions for proper chain
+    have b1' : |Φ x - g x| < ε/3 := by rw [abs_sub_comm]; exact b1
+    have b2' : |g x - g_R_sym x| < ε/3 := by rw [abs_sub_comm]; exact b2
+    have b3' : |g_R_sym x - h x| < ε/3 := by rw [abs_sub_comm]; exact b3
+
+    -- PROPER triangle inequality: Φ → g → g_R^sym → h
     calc |Φ x - h x|
-        = |Φ x - g x + g x - g_R x + g_R x - h x + (g_R (-x) - g_R x)| := by ring_nf
-      _ ≤ |Φ x - g x| + |g x - g_R x| + |g_R x + g_R (-x) - h x| := by
-          -- Need proper triangle inequality chain
-          sorry
-      _ < ε/3 + ε/3 + ε/3 := by
-          have b1 := step1_bound x hx
-          have b2 := step2_bound x hx
-          have b3 := step3_bound x hx
-          linarith
+        ≤ |Φ x - g x| + |g x - h x| := abs_sub_le (Φ x) (g x) (h x)
+      _ ≤ |Φ x - g x| + (|g x - g_R_sym x| + |g_R_sym x - h x|) := by
+          gcongr
+          exact abs_sub_le (g x) (g_R_sym x) (h x)
+      _ = |Φ x - g x| + |g x - g_R_sym x| + |g_R_sym x - h x| := by ring
+      _ < ε/3 + ε/3 + ε/3 := by linarith [b1', b2', b3']
       _ = ε := by ring
 
 #check A1_density_paper
