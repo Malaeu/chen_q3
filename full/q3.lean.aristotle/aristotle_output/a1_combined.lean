@@ -185,7 +185,7 @@ theorem A1_density (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ) (hΦ : Φ ∈ W_K K
   
   let t := t₀ / 2
   have ht_pos : t > 0 := by simp [t]; linarith
-  have ht_mem : t ∈ Ioo 0 t₀ := by simp [t, mem_Ioo]; constructor <;> linarith
+  have ht_mem : t ∈ Ioo 0 t₀ := ⟨by simp [t]; linarith, by simp [t]; linarith⟩
   
   -- Step 3: Discretize the convolution integral
   -- Approximate ∫ Ψ(y) H_t(x-y) dy by Riemann sum
@@ -193,9 +193,16 @@ theorem A1_density (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ) (hΦ : Φ ∈ W_K K
   
   have hF_cont : ContinuousOn (Function.uncurry F) (Icc (-K) K ×ˢ Icc (-K-1) (K+1)) := by
     apply ContinuousOn.mul
-    · exact hΨ_cont.continuousOn.comp continuousOn_snd (fun _ _ => trivial)
+    · exact hΨ_cont.continuousOn.comp continuousOn_snd (fun ⟨_, y⟩ hy => by
+        simp only [Set.mem_prod] at hy; exact hy.2)
     · apply Continuous.continuousOn
-      continuity
+      unfold HeatKernel
+      apply Continuous.mul continuous_const
+      apply Real.continuous_exp.comp
+      apply Continuous.div_const
+      apply Continuous.neg
+      apply Continuous.pow
+      exact continuous_fst.sub continuous_snd
   
   obtain ⟨s, w, hw_pos, hs_mem, hs_approx⟩ := 
     uniform_riemann_sum (-K-1) (K+1) (by linarith) (Icc (-K) K) isCompact_Icc 
@@ -256,10 +263,10 @@ theorem A1_density (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ) (hΦ : Φ ∈ W_K K
       -- Combine hs_approx and hB_approx
       sorry
     
-    calc |Φ x - g x| 
+    calc |Φ x - g x|
         = |Ψ x - g x| := by rw [eq1]
-      _ ≤ |Ψ x - real_convolution Ψ (HeatKernel t) x| + 
-          |real_convolution Ψ (HeatKernel t) x - g x| := abs_sub_abs_le_abs_sub _ _
+      _ ≤ |Ψ x - real_convolution Ψ (HeatKernel t) x| +
+          |real_convolution Ψ (HeatKernel t) x - g x| := abs_sub_le _ _ _
       _ < ε/3 + (ε/3 + ε/3) := by linarith [bound2, bound34]
       _ = ε := by ring
 
