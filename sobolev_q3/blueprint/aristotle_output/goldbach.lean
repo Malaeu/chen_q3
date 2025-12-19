@@ -18,7 +18,7 @@ set_option linter.mathlibStandardSet false
 
 open scoped BigOperators
 open scoped Real
-open scoped Nat
+-- open scoped Nat  -- Conflicts with local notation "φ" => Nat.totient
 open scoped Classical
 open scoped Pointwise
 
@@ -38,9 +38,9 @@ Define e(x) = exp(2πix), the exponential sum S_N(α), and the Goldbach integral
 open Nat Real Complex MeasureTheory intervalIntegral ArithmeticFunction
 open scoped BigOperators
 
--- Fix: Add notation for Möbius function and Euler's totient
+-- Fix: Add notation for Möbius function (φ removed due to ambiguity)
 local notation "μ" => ArithmeticFunction.moebius
-local notation "φ" => Nat.totient
+-- local notation "φ" => Nat.totient  -- Causes ambiguity, use Nat.totient directly
 
 noncomputable def e (x : ℝ) : ℂ := Complex.exp (2 * Real.pi * Complex.I * x)
 
@@ -62,7 +62,7 @@ noncomputable def ramanujanSum (q N : ℕ) : ℂ :=
   ∑ a ∈ (Finset.range q).filter (fun x => x.Coprime q), e (a * N / q)
 
 noncomputable def singularSeriesTerm (q N : ℕ) : ℂ :=
-  ((μ q : ℂ) ^ 2) / ((φ q : ℂ) ^ 2) * ramanujanSum q N
+  ((μ q : ℂ) ^ 2) / ((Nat.totient q : ℂ) ^ 2) * ramanujanSum q N
 
 noncomputable def singularSeries (N : ℕ) : ℂ := ∑' q : ℕ, singularSeriesTerm q N
 
@@ -159,7 +159,7 @@ theorem singular_series_term_multiplicative (N : ℕ) :
         · exact h_2 <| h.squarefree_of_dvd <| dvd_mul_right _ _;
         · exact h_1 <| h.squarefree_of_dvd <| dvd_mul_left _ _;
         · rw [ Nat.squarefree_mul_iff ] at h ; aesop
-      have h_phi : (φ (m * n) : ℂ) = (φ m : ℂ) * (φ n : ℂ) := by
+      have h_phi : (Nat.totient (m * n) : ℂ) = (Nat.totient m : ℂ) * (Nat.totient n : ℂ) := by
         exact mod_cast Nat.totient_mul hmn
       have h_ramanujan : ramanujanSum (m * n) N = ramanujanSum m N * ramanujanSum n N := by
         -- By the properties of the Möbius function and the Euler's totient function, we can rewrite the sum.
