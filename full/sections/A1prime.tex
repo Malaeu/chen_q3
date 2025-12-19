@@ -14,6 +14,16 @@ Fejér kernels form a positive approximation identity on $\mathbb T$; heat flow 
 On $[-K,K]$ the heat kernel satisfies $\widehat{\rho_t}(s)=e^{-4\pi^2 t s^2}\ge e^{-4\pi^2 t K^2}>0$, hence the convolution with $\rho_t$ is invertible on the compact in the PW metric. Together with the Fej\'er (positive) hat interpolation and a Weierstrass/Fej\'er--Riesz approximation step in $\|\cdot\|_{\infty}$, this yields the cone density in $W_{\mathrm{PW},K}$ with explicit error control; the constants enter only via $e^{-4\pi^2 t K^2}$ and the mesh parameter in the hat partition of unity.
 \end{remark}
 
+\begin{lemma}[Compact support convolution reduction]\label{lem:convolution-compact-support}
+Let $f\in C_c(\mathbb{R})$ be compactly supported with $\mathrm{supp}(f)\subseteq[-L,L]$, and let $g:\mathbb{R}\to\mathbb{R}$ be any function. Then for all $x\in\mathbb{R}$,
+\[
+(f*g)(x) = \int_{\mathbb{R}} f(y)\,g(x-y)\,dy = \int_{-L}^{L} f(y)\,g(x-y)\,dy.
+\]
+\end{lemma}
+\begin{proof}
+Since $f(y)=0$ for $|y|>L$, the integrand vanishes outside $[-L,L]$.
+\end{proof}
+
 \begin{theorem}[A1']\label{a1:thm:A1-local-density}
 Let $K=[-R,R]$ with $R>0$. For $B>0$, $t>0$, $\tau\in[-R,R]$ define the even nonnegative frequency windows
 \[
