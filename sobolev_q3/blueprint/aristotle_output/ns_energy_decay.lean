@@ -179,8 +179,7 @@ lemma torus_integral_split_i (f : Point → ℝ) (i : Fin 3) (hf : IntegrableOn 
           · refine' h_integrable.mono_measure _;
             refine' MeasureTheory.Measure.restrict_mono _ le_rfl;
             intro p hp; simp +decide [ Fin.insertNth ] at hp ⊢; aesop;
-            · intro j; fin_cases i <;> fin_cases j <;> simp +decide [ * ] ;
-              all_goals exact?;
+            · intro j; fin_cases i <;> fin_cases j <;> simp +decide [ * ] <;> aesop
             · intro x; fin_cases i <;> fin_cases x <;> simp +decide [ * ] ;
               all_goals exact right _;
           · exact h_integrable.1;
@@ -253,8 +252,7 @@ open Real MeasureTheory Set Function
 
 noncomputable def split_i_equiv (i : Fin 3) : (Fin 3 → ℝ) ≃L[ℝ] ℝ × (Fin 2 → ℝ) :=
   LinearEquiv.toContinuousLinearEquivOfContinuous (split_i_linear i)
-    (by
-      refine Continuous.prod_mk (continuous_apply i) (continuous_pi (fun j => continuous_apply _)))
+    (Continuous.prodMk (continuous_apply i) (continuous_pi (fun j => continuous_apply _)))
 
 /-
 The integral of a partial derivative of a periodic function over the torus is zero.
