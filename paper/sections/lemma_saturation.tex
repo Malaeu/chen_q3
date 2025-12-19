@@ -81,19 +81,3 @@ The integral $\int_0^B |g''|$ can be split:
 Thus $C_*(t) = A_0 + \frac{\pi^2}{3}(|g'(0)| + |g'(B)| + \int |g''|)$ is finite.
 \end{proof}
 
-\subsection{Numerical Verification}
-
-Computational experiments (see Section~\ref{sec:numerical}) confirm:
-\begin{center}
-\begin{tabular}{c|c|c|c}
-$B$ & $A_0$ (integral) & Tail bound & Total $C_0(B)$ \\
-\hline
-1.0 & 1.04 & 289.5 & 290.5 \\
-10.0 & 1.09 & 276.7 & 277.8 \\
-20.0 & 1.09 & 276.1 & 277.2 \\
-$\infty$ & 1.09 & 276.0 & $\approx 277$
-\end{tabular}
-\end{center}
-
-The saturation at $C_* \approx 277$ confirms the lemma.
-Q3 achieves the tighter bound $C_* \approx 109$ through more refined estimates.

@@ -1,0 +1,259 @@
+% Section 2: The Sobolev-Q3 Machine
+% Ported from Q3 Heat Kernel framework to Sobolev H^s for Twin Prime Applications
+% Author: Ilsha (extending the Q3 framework from RH_Q3.pdf)
+
+\section{The Sobolev-Q3 Machine}\label{sec:sobolev-machine}
+
+We now reformulate the Q3 operator framework, originally developed for the Riemann Hypothesis using Heat Kernel RKHS (see \cite{RH_Q3}), within the Sobolev space setting. This transition enables \emph{sharp cutoff handling}—essential for circle method decompositions into Major and Minor arcs—which the Heat Kernel cannot accommodate without norm explosion.
+
+\subsection{Motivation: Why Sobolev?}\label{subsec:why-sobolev}
+
+In the original Q3 framework (Theorem~8.35 of \cite{RH_Q3}), the RKHS is induced by the heat kernel
+\[
+  K_t(\xi,\eta) = \exp\!\Big(-\frac{(\xi-\eta)^2}{4t}\Big),
+\]
+with effective weights $w_{\mathrm{RKHS}}(n) = \Lambda(n)/\sqrt{n}$ and Gershgorin-type contraction bounds. This setup is optimal for \emph{smooth} test functions: Fej\'er$\times$heat tests are $C^\infty$, and the heat scale $t_{\mathrm{sym}}$ controls the symbol modulus.
+
+\medskip
+\noindent\textbf{The Barrier.} For Twin Primes via the circle method, we must decompose:
+\[
+  \mathfrak{M} \cup \mathfrak{m} = \mathbb{T} \quad\text{(Major arcs $\mathfrak{M}$ and Minor arcs $\mathfrak{m}$)}.
+\]
+The characteristic function $\mathbf{1}_{\mathfrak{m}}(\theta)$ is \emph{not smooth}. In the heat-induced RKHS, indicator functions have poor regularity:
+\[
+  \|\mathbf{1}_{[a,b]}\|_{\mathcal{H}_t} \sim t^{-1/4} \cdot (b-a)^{1/2} \quad\text{(diverges as $t\to0$)}.
+\]
+This forces large $t$, which in turn widens the symbol modulus $\omega_{P_A}(\pi/M)$ and kills the A3 margin.
+
+\medskip
+\noindent\textbf{The Solution.} The Sobolev space $H^s(\mathbb{T})$ with $s\in(0,1/2)$ admits indicator functions:
+\[
+  \mathbf{1}_{[a,b]} \in H^s(\mathbb{T}) \quad\Longleftrightarrow\quad s < \tfrac12.
+\]
+Moreover, the Sobolev norm of $\mathbf{1}_{\mathfrak{m}}$ is \emph{controlled} by the arc measure:
+\[
+  \|\mathbf{1}_{\mathfrak{m}}\|_{H^s}^2 \lesssim_s |\mathfrak{m}|^{1-2s} + C_s,
+\]
+enabling quantitative bounds on Minor arc contributions without regularity breakdown.
+
+\subsection{Sobolev Space Setup}\label{subsec:sobolev-setup}
+
+\begin{definition}[Sobolev space on $\mathbb{T}$]\label{def:sobolev}
+For $s\ge0$, the Sobolev space $H^s(\mathbb{T})$ consists of functions $f:\mathbb{T}\to\mathbb{C}$ with
+\[
+  \|f\|_{H^s}^2 := \sum_{k\in\mathbb{Z}} |\hat{f}(k)|^2\,(1+|k|^2)^s < \infty,
+\]
+where $\hat{f}(k) = \int_{\mathbb{T}} f(\theta)\,e^{-2\pi i k\theta}\,d\theta$ are the Fourier coefficients.
+\end{definition}
+
+\begin{remark}[Comparison with Heat RKHS]
+The heat-induced RKHS $\mathcal{H}_t$ has reproducing kernel $K_t(\xi,\eta) = e^{-(\xi-\eta)^2/(4t)}$, which decays Gaussian-fast in frequency. The Sobolev $H^s$ instead decays \emph{polynomially}:
+\[
+  \mathcal{H}_t: \quad |\hat{K}_t(k)| \sim e^{-t|k|^2} \quad\text{vs.}\quad H^s: \quad \langle k\rangle^{-s},\quad \langle k\rangle = (1+|k|^2)^{1/2}.
+\]
+The polynomial decay is weaker, but it allows non-smooth functions (indicators, BV, etc.) into the space.
+\end{remark}
+
+\begin{definition}[Twin Prime Functional in Sobolev]\label{def:twin-functional}
+For a test function $\Phi\in H^s(\mathbb{T})$ and twin prime weights $\lambda_p = \Lambda(p)\Lambda(p+2)$, define:
+\[
+  \mathcal{T}(\Phi) := \sum_{\substack{p,\,p+2\text{ prime}}} \lambda_p\,\Phi(\xi_p), \qquad \xi_p = \frac{\log p}{2\pi}.
+\]
+The Archimedean comparison term is
+\[
+  \mathcal{A}(\Phi) := \int_{\mathbb{T}} a_*(\xi)\,\Phi(\xi)\,d\xi, \qquad a_*(\xi) = 2\pi\big(\log\pi - \Re\psi(\tfrac14+i\pi\xi)\big).
+\]
+The \textbf{Sobolev-Q3 functional} is
+\[
+  Q_s(\Phi) := \mathcal{A}(\Phi) - \mathcal{T}(\Phi).
+\]
+\end{definition}
+
+\subsection{Density in the Sobolev Cone (A1$'_s$)}\label{subsec:sobolev-density}
+
+The original A1$'$ (Theorem~\ref{a1:thm:A1-local-density} in \cite{RH_Q3}) establishes that Fej\'er$\times$heat functions are dense in the Weil cone. We now prove the analogous statement for Sobolev-smooth approximations.
+
+\begin{theorem}[Local density in $H^s$]\label{thm:sobolev-density}
+Let $0 < s < 1/2$ and let $K>0$ be a compact window. Define the \textbf{Sobolev cone}:
+\[
+  \mathcal{S}_K := \big\{\Phi\in H^s(\mathbb{T}) : \Phi \ge 0,\;\mathrm{supp}(\hat{\Phi})\subseteq[-K,K]\big\}.
+\]
+Then the mollified Fej\'er functions $F_N * \phi_\varepsilon$ (where $\phi_\varepsilon$ is a standard mollifier) are dense in $\mathcal{S}_K$ with respect to $\|\cdot\|_{H^s}$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Standard convolution approximation: for $\Phi\in\mathcal{S}_K$, the mollified $\Phi_\varepsilon = \Phi * \phi_\varepsilon$ satisfies:
+\begin{enumerate}
+  \item $\|\Phi - \Phi_\varepsilon\|_{H^s} \to 0$ as $\varepsilon\to0$ (Sobolev continuity of convolution).
+  \item $\Phi_\varepsilon \ge 0$ (positivity preserved by non-negative mollifier).
+  \item $\mathrm{supp}(\hat{\Phi}_\varepsilon) \subseteq [-K-\delta_\varepsilon, K+\delta_\varepsilon]$ (slight frequency spread, controlled).
+\end{enumerate}
+The Fej\'er kernel $F_N(\theta) = \frac{1}{N}\big(\frac{\sin(N\pi\theta)}{\sin(\pi\theta)}\big)^2$ is positive and has compactly supported Fourier transform, so $F_N * \Phi_\varepsilon$ stays in the cone for $N$ large.
+\end{proof}
+
+\subsection{Lipschitz Continuity of $Q_s$ (A2$_s$)}\label{subsec:sobolev-lipschitz}
+
+\begin{lemma}[Sobolev-Lipschitz bound]\label{lem:sobolev-lipschitz}
+For $\Phi_1, \Phi_2 \in \mathcal{S}_K$ with $\|\Phi_j\|_{H^s}\le R$, one has:
+\[
+  |Q_s(\Phi_1) - Q_s(\Phi_2)| \le L_s(K)\,\|\Phi_1 - \Phi_2\|_{H^s},
+\]
+where the Lipschitz constant is:
+\[
+  L_s(K) = \|a_*\|_{H^{-s}([-K,K])} + \sum_{\substack{p\le e^{2\pi K}\\p+2\text{ prime}}} \lambda_p\,(1+|\xi_p|^2)^{-s/2}.
+\]
+\end{lemma}
+
+\begin{proof}
+By duality $H^s \leftrightarrow H^{-s}$:
+\[
+  |\mathcal{A}(\Phi_1) - \mathcal{A}(\Phi_2)| = |\langle a_*, \Phi_1 - \Phi_2\rangle| \le \|a_*\|_{H^{-s}}\,\|\Phi_1-\Phi_2\|_{H^s}.
+\]
+For the prime sum, point evaluation at $\xi_p$ is bounded by $(1+|\xi_p|^2)^{-s/2}$ in the $H^{-s}$ sense, giving the stated bound.
+\end{proof}
+
+\subsection{The Sobolev-Toeplitz Bridge (A3$_s$)}\label{subsec:sobolev-bridge}
+
+This is the heart of the adaptation. We restate Theorem~8.35 of \cite{RH_Q3} for Sobolev symbols.
+
+\begin{definition}[Sobolev-Toeplitz operator]\label{def:sobolev-toeplitz}
+For a symbol $P_A \in H^{s+\varepsilon}(\mathbb{T})$ with $\varepsilon>0$, the finite-dimensional Toeplitz matrix is:
+\[
+  \big(T_M[P_A]\big)_{jk} := \hat{P}_A(j-k), \qquad j,k \in \{-M,\ldots,M\}.
+\]
+The discretization size is $(2M+1)\times(2M+1)$.
+\end{definition}
+
+\begin{theorem}[A3$_s$ Bridge Inequality]\label{thm:A3s-bridge}
+Let $K>0$ and $s\in(0,1/2)$. Suppose:
+\begin{enumerate}[label=\textnormal{(A3$_s$.\arabic*)}]
+  \item \textbf{Symbol margin:} The smoothed Archimedean symbol $P_A\in H^{s+\varepsilon}(\mathbb{T})$ satisfies
+  \[
+    c_0(K) := \min_{\theta\in\Gamma_K} P_A(\theta) > 0
+  \]
+  on a working arc $\Gamma_K\subseteq\mathbb{T}$.
+  \item \textbf{Prime operator cap:} The twin-weighted prime operator $T_P$ on the Sobolev-induced RKHS satisfies
+  \[
+    \|T_P\|_{\mathrm{op}} \le \frac{c_0(K)}{4}.
+  \]
+  \item \textbf{Discretization threshold:} There exists $M_0(K)$ such that for all $M\ge M_0(K)$:
+  \[
+    C_{\mathrm{SB}}\,\omega_{P_A}^{(s)}(\pi/M) \le \frac{c_0(K)}{4},
+  \]
+  where $\omega_{P_A}^{(s)}(h)$ is the Sobolev modulus of continuity.
+\end{enumerate}
+Then for every $M\ge M_0(K)$:
+\[
+  \boxed{\lambda_{\min}\big(T_M[P_A] - T_P\big) \ge \frac{c_0(K)}{2} > 0.}
+\]
+\end{theorem}
+
+\begin{proof}
+The Szeg\H{o}--B\"ottcher spectral theory (Theorem~8.35 in \cite{RH_Q3}; classical sources \cite{Szego1952,BoettcherSilbermann2006}) gives:
+\[
+  \lambda_{\min}(T_M[P_A]) \ge \min P_A - C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M).
+\]
+The condition (A3$_s$.3) ensures the modulus term is $\le c_0(K)/4$. Subtracting $T_P$ and using (A3$_s$.2):
+\begin{align*}
+  \lambda_{\min}(T_M[P_A] - T_P) &\ge \lambda_{\min}(T_M[P_A]) - \|T_P\| \\
+  &\ge c_0(K) - \frac{c_0(K)}{4} - \frac{c_0(K)}{4} = \frac{c_0(K)}{2}. \qedhere
+\end{align*}
+\end{proof}
+
+\subsection{The Sobolev Modulus of Continuity}\label{subsec:sobolev-modulus}
+
+\begin{definition}[Sobolev modulus]\label{def:sobolev-modulus}
+For $f\in H^s(\mathbb{T})$, define:
+\[
+  \omega_f^{(s)}(h) := \sup_{|u|\le h} \|f(\cdot+u) - f(\cdot)\|_{H^{s-1}}.
+\]
+\end{definition}
+
+\begin{lemma}[Sobolev modulus bound]\label{lem:sobolev-modulus-bound}
+If $f\in H^s(\mathbb{T})$ with $s>0$, then:
+\[
+  \omega_f^{(s)}(h) \le C_s\,h^{\min(s,1)}\,\|f\|_{H^s}.
+\]
+In particular, for $s\in(0,1)$, the modulus decays as $O(h^s)$.
+\end{lemma}
+
+\begin{proof}
+By Fourier:
+\[
+  \|f(\cdot+u) - f(\cdot)\|_{H^{s-1}}^2 = \sum_k |e^{2\pi i ku} - 1|^2\,|\hat{f}(k)|^2\,(1+|k|^2)^{s-1}.
+\]
+Using $|e^{i\theta}-1| \le \min(2, |\theta|)$ and $|ku|\le |k|\cdot h$:
+\[
+  |e^{2\pi i ku} - 1|^2 \le (2\pi|k|h)^{2\min(1,\cdot)} \lesssim h^{2s}\,|k|^{2s}.
+\]
+Summing with the $(1+|k|^2)^{s-1}$ weight gives the claimed bound.
+\end{proof}
+
+\subsection{Comparison: Heat vs.\ Sobolev Parameters}\label{subsec:comparison}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{Heat RKHS (Q3)} & \textbf{Sobolev $H^s$} \\
+\hline
+Kernel decay & $e^{-|\xi-\eta|^2/(4t)}$ (Gaussian) & $(1+|\xi-\eta|^2)^{-s}$ (polynomial) \\
+\hline
+Indicator functions & Not in $\mathcal{H}_t$ for small $t$ & $\mathbf{1}_{[a,b]}\in H^s$ for $s<1/2$ \\
+\hline
+Symbol modulus & $\omega_{P_A}(h) \le L_A\,h$ (Lipschitz) & $\omega_{P_A}^{(s)}(h) \le C_s\,h^s$ \\
+\hline
+Prime weights & $w(n) = \Lambda(n)/\sqrt{n}$ & $\lambda_p = \Lambda(p)\Lambda(p+2)$ \\
+\hline
+Gershgorin tail & $S_K(t) = O(e^{-\delta_K^2/t})$ & $S_K^{(s)} = O(\delta_K^{-2s})$ \\
+\hline
+Margin preservation & $c_{\mathrm{arch}}(K) \sim e^{-c/t}$ & $c_0(K)$ uniform for $s$ fixed \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Application: Minor Arc Control}\label{subsec:minor-arc}
+
+The key advantage of the Sobolev setting for Twin Primes is the following.
+
+\begin{proposition}[Minor arc indicator in Sobolev]\label{prop:minor-arc-sobolev}
+Let $\mathfrak{m}\subseteq\mathbb{T}$ be the Minor arcs with $|\mathfrak{m}| = 1 - O((\log X)^{-A})$. For $s\in(0,1/2)$:
+\[
+  \|\mathbf{1}_{\mathfrak{m}}\|_{H^s}^2 \le C_s\,|\partial\mathfrak{m}| \cdot |\mathfrak{m}|^{-2s} + C_s',
+\]
+where $|\partial\mathfrak{m}|$ counts the boundary components. For the standard Hardy--Littlewood Major arcs with $Q = (\log X)^B$ and $P = X/(\log X)^C$:
+\[
+  |\partial\mathfrak{m}| = O(Q\cdot\phi(Q)) = O((\log X)^{B+1}),
+\]
+hence $\|\mathbf{1}_{\mathfrak{m}}\|_{H^s}$ is polynomially bounded in $\log X$.
+\end{proposition}
+
+This allows the circle method decomposition $S(N) = S_{\mathfrak{M}}(N) + S_{\mathfrak{m}}(N)$ to be handled within the Sobolev-Q3 framework without the norm explosion that would occur in the Heat RKHS.
+
+\subsection{Summary: The Sobolev-Q3 Architecture}\label{subsec:sobolev-summary}
+
+\begin{tcolorbox}[colback=white,colframe=black!60]
+\textbf{From Q3 (Heat) to Q3$_s$ (Sobolev):}
+
+\medskip
+\begin{tabular}{ll}
+\textbf{T0} & Guinand--Weil normalization (unchanged) \\
+\textbf{A1$'_s$} & Density of mollified Fej\'er in Sobolev cone $\mathcal{S}_K$ \\
+\textbf{A2$_s$} & Lipschitz continuity: $L_s(K)$ via Sobolev duality \\
+\textbf{A3$_s$} & Toeplitz bridge with \emph{Sobolev modulus} $\omega^{(s)}$ \\
+\textbf{RKHS$_s$} & Prime contraction: Gershgorin tail in $H^{-s}$ \\
+\textbf{T5} & Compact-by-compact transfer (unchanged in logic)
+\end{tabular}
+
+\medskip
+\textbf{New capability:} Indicator functions $\mathbf{1}_{\mathfrak{m}}$ are now admissible test functions.
+\end{tcolorbox}
+
+\begin{remark}[Parameter choice for Twin Primes]
+For the Twin Prime application, we choose $s = 1/4$. This gives:
+\begin{itemize}
+  \item $\mathbf{1}_{\mathfrak{m}} \in H^{1/4}$ with controlled norm.
+  \item Modulus decay $\omega^{(s)}(h) = O(h^{1/4})$, sufficient for A3$_s$ with $M = O(X^{1/4+\varepsilon})$.
+  \item Prime sum weights $\lambda_p = \Lambda(p)\Lambda(p+2)$ have the bilinear structure needed for twin detection.
+\end{itemize}
+\end{remark}

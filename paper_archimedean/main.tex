@@ -1,0 +1,104 @@
+% Archimedean Bridge Paper - Main File
+% =====================================
+% Explicit Spectral Bounds for the Archimedean Weil Functional
+% via Toeplitz Operators
+%
+% Paper 2 in the Weil Positivity series (after Fejér-heat generators)
+
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+% Commands
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\carch}{c_{\mathrm{arch}}}
+\newcommand{\tsym}{t_{\mathrm{sym}}}
+\newcommand{\trkhs}{t_{\mathrm{rkhs}}}
+
+% Title
+\title{Explicit Spectral Bounds for the Archimedean\\
+Weil Functional via Toeplitz Operators}
+
+\author{Eugen Malamutmann\\
+\small ORCID: 0000-0003-4624-5890}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We analyze the Archimedean component of the Weil quadratic functional
+associated with the Riemann zeta function in the Guinand--Weil normalization.
+This component, determined by the logarithmic derivative of the Gamma function,
+plays the role of a positive ``kinetic energy'' term in the explicit formula.
+
+Building on the theory of Fej\'er--heat generators~\cite{Malamutmann2025Fejer},
+we construct a localized Toeplitz representation of the Archimedean functional
+on compact frequency windows $[-K, K]$. We prove that the associated symbol
+$P_A$ is Lipschitz continuous and satisfies a strict lower bound
+$P_A(\theta) \geq \carch(K) > 0$.
+
+By applying quantitative spectral estimates for Toeplitz matrices, we establish
+that the Archimedean operator is \emph{coercive} on the Fej\'er--heat cone,
+with an explicit spectral gap depending only on the window size $K$.
+This provides an unconditional, analytical verification of the ``spectral floor''
+for the Weil functional's positive part.
+\end{abstract}
+
+%==============================================================================
+% Section 1: Introduction
+%==============================================================================
+\input{sections/introduction}
+
+%==============================================================================
+% Section 2: The Archimedean Symbol
+%==============================================================================
+\input{sections/symbol_construction}
+
+%==============================================================================
+% Section 3: Toeplitz Operators and Spectral Theory
+%==============================================================================
+\input{sections/toeplitz_theory}
+
+%==============================================================================
+% Section 4: The Spectral Floor Theorem
+%==============================================================================
+\input{sections/spectral_floor}
+
+%==============================================================================
+% Section 5: Explicit Bounds via Digamma Estimates
+%==============================================================================
+\input{sections/digamma_bounds}
+
+%==============================================================================
+% Section 6: Conclusions
+%==============================================================================
+\input{sections/conclusions}
+
+%==============================================================================
+% References
+%==============================================================================
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

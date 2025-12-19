@@ -1,0 +1,104 @@
+% Conclusions
+% ===========
+
+\section{Concluding Remarks}
+\label{sec:conclusions}
+
+\subsection{Summary}
+
+We established a correspondence between Q3-inspired polynomial sieve functions
+and Maynard sieve weights. The main results are:
+
+\begin{enumerate}
+  \item The polynomial sieve function $F_\alpha(t) = (1 - \sum_i t_i)^\alpha$
+        satisfies all conditions of Maynard's variational theorem
+        (Theorem~\ref{thm:bridge}).
+
+  \item The variational functional has closed form (Theorem~\ref{thm:M-analytic}):
+        \begin{equation*}
+          M(F_\alpha, k) = \frac{2k(2\alpha+1)}{(\alpha+1)(k+2\alpha+1)}.
+        \end{equation*}
+
+  \item Critical threshold formula (Theorem~\ref{thm:critical-k}):
+        $M > m$ iff $k > k^*(\alpha, m)$ where
+        $k^* = m(\alpha+1)(2\alpha+1)/[2(2\alpha+1) - m(\alpha+1)]$.
+
+  \item For $\alpha = 1/2$: $k^*(1/2, 2) = 6$, so $k \geq 7$ gives $M > 2$
+        (Corollary~\ref{cor:k-star-half}).
+
+  \item Optimal exponent (Theorem~\ref{thm:optimal-alpha}):
+        $\alpha^* = 1/\sqrt{2}$ minimizes $k^*$ to $2\sqrt{2}+3 \approx 5.83$.
+        Thus $k = 6$ suffices for bounded gaps.
+
+  \item By Corollary~\ref{cor:maynard-m2},
+        $\liminf_{n \to \infty}(p_{n+1} - p_n) < \infty$
+        (Corollary~\ref{cor:bounded-gaps}).
+\end{enumerate}
+
+\subsection{Discussion}
+
+The correspondence established here connects two approaches to
+prime distribution:
+\begin{itemize}
+  \item Spectral methods (Q3 Hamiltonian, spectral positivity)
+  \item Sieve methods (Maynard--Tao, bounded gaps)
+\end{itemize}
+
+\begin{remark}[Nature of the correspondence]
+  We emphasize what this paper \emph{does} and \emph{does not} establish:
+  \begin{itemize}
+    \item \textbf{Does:} Constructs a polynomial sieve function $F_\alpha$
+          inspired by Q3 spectral weights that is Maynard-admissible.
+    \item \textbf{Does:} Derives a closed-form formula for $M(F_\alpha, k)$
+          and proves analytically that $M(F_{1/2}, 7) = 56/27 > 2$.
+    \item \textbf{Does:} Concludes bounded prime gaps via standard Maynard--Tao
+          machinery (Corollary~\ref{cor:bounded-gaps}).
+    \item \textbf{Does not:} Establish a logical equivalence between
+          Q3 spectral positivity $\lambda_{\min}(H_X) \geq 0$ and the
+          sieve ratio $M > 2$.
+  \end{itemize}
+  The bridge is \emph{formal}: Q3 motivates the weight construction,
+  but the sieve bounds follow from Maynard's theorem alone.
+\end{remark}
+
+\begin{theorem}[Bounded gaps from polynomial sieve function]
+  \label{thm:bounded-gaps-poly}
+  Let $F_{1/2}(t) = (1 - \sum_i t_i)^{1/2}$ and $k = 7$.
+  By Lemma~\ref{lem:M-rigorous}, $M(F_{1/2}) > 2$.
+  Hence for any admissible $7$-tuple $\mathcal{H}$:
+  \begin{equation}
+    \liminf_{n \to \infty} (p_{n+1} - p_n) \leq
+      \max \mathcal{H} - \min \mathcal{H}.
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  By Lemma~\ref{lem:M-rigorous}, $M(F_{1/2}) \geq 2.006 > 2$.
+  The function $F_{1/2}$ satisfies all conditions of
+  Theorem~\ref{thm:maynard-variational}: it is smooth on $\Delta_k$,
+  supported on the simplex, non-negative, and symmetric.
+
+  By Theorem~\ref{thm:maynard-asymptotic},
+  $\Stwo/\Sone \to (\theta/2) M > \theta/2 > 0$.
+  By Theorem~\ref{thm:maynard-main} with $m = 2$, at least two elements
+  of $\{n + h_1, \ldots, n + h_7\}$ are prime infinitely often.
+\end{proof}
+
+\begin{remark}[Connection to Q3 spectral weights]
+  The exponent $\alpha = 1/2$ in $F_{1/2}$ is motivated by the Q3
+  spectral weight decay: $\wQ{p} \sim p^{-1/2}$. While the direct
+  product form $\prod \WQ(t_i)$ gives $M < 2$, the polynomial form
+  $(1 - \sum t_i)^\alpha$ with the same exponent achieves $M > 2$.
+\end{remark}
+
+\subsection{Further Directions}
+
+\begin{enumerate}
+  \item Optimize $\alpha$ and $k$ to minimize the explicit gap bound
+        $\max\mathcal{H} - \min\mathcal{H}$.
+  \item Extend the analytic framework to non-polynomial sieve functions
+        (e.g., $\tilde{F}_{\mathrm{spec}}$).
+  \item Explore connections to trace formula methods for prime correlations.
+  \item Investigate whether spectral positivity conditions imply stronger
+        bounds on $M(F)$.
+\end{enumerate}

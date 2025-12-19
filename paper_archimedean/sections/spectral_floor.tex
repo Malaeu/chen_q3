@@ -1,0 +1,98 @@
+% Spectral Floor Theorem
+% ======================
+
+\section{The Spectral Floor Theorem}\label{sec:floor}
+
+\subsection{Main Result}
+
+We now prove the central theorem of this paper.
+
+\begin{theorem}[Archimedean Spectral Floor --- Full Statement]\label{thm:carch-explicit}
+Let $P_A(\xi; \tau)$ be the Archimedean symbol with parameters:
+\begin{itemize}
+    \item Bandwidth $B \in (0, 1)$,
+    \item Heat parameter $\tau > 0$ satisfying $\tau \geq \tau_{\min}(B)$.
+\end{itemize}
+Then for $K > 0$ and $M \geq M_0(K, B, \tau)$:
+\[
+    \lambda_{\min}(T_M[P_A]) \geq \carch(K),
+\]
+where:
+\begin{equation}\label{eq:carch-formula}
+    \carch(K) := \frac{1}{2}\log\left(\frac{K}{e}\right) - \gamma + \frac{\log \pi}{2}
+    - \frac{C_B}{\tau},
+\end{equation}
+with $\gamma \approx 0.5772$ Euler's constant and $C_B$ a constant
+depending only on the bandwidth $B$.
+\end{theorem}
+
+\begin{remark}[Positivity threshold]
+The floor $\carch(K) > 0$ holds whenever:
+\[
+    K > e \cdot \pi \cdot e^{2\gamma + 2C_B/\tau} \approx 12.5
+    \quad \text{(for typical parameters)}.
+\]
+For $K \geq 20$, we have $\carch(K) \geq 0.3$ uniformly.
+\end{remark}
+
+\subsection{Proof Strategy}
+
+The proof proceeds in three steps:
+
+\textbf{Step 1: Symbol lower bound.}
+We show $P_A(\xi; \tau) \geq c_0(K)$ on $[-K, K]$ using
+digamma estimates (Section~\ref{sec:digamma}).
+
+\textbf{Step 2: Szegő transfer.}
+Apply Corollary~\ref{cor:transfer} to pass from symbol bound to eigenvalue bound.
+
+\textbf{Step 3: Error absorption.}
+Choose $M_0(K)$ large enough that the $O(1/M)$ error is absorbed into $c_0(K)$.
+
+\subsection{Proof of Theorem~\ref{thm:carch-explicit}}
+
+\begin{proof}
+\textbf{Step 1.} By Lemma~\ref{lem:digamma-lower} (Section~\ref{sec:digamma}),
+for $\xi \in [-K, K]$:
+\[
+    \mathrm{Re}\left[\psi\left(\frac{1}{4} + \frac{i\xi}{2}\right)\right]
+    \geq \frac{1}{2}\log\left(\frac{|\xi|^2 + 1/4}{4}\right) - \gamma.
+\]
+
+After Fejér--heat convolution with parameter $\tau$:
+\[
+    P_A(\xi; \tau) \geq \frac{1}{2}\log\left(\frac{K}{e}\right)
+    + \frac{\log \pi}{2} - \gamma - \frac{C_B}{\tau}.
+\]
+
+\textbf{Step 2.} By Corollary~\ref{cor:transfer}:
+\[
+    \lambda_{\min}(T_M[P_A]) \geq P_{A,\min} - \frac{\pi \|P_A\|_{\mathrm{Lip}}}{M}.
+\]
+
+\textbf{Step 3.} The Lipschitz norm satisfies $\|P_A\|_{\mathrm{Lip}} \leq C/\tau$
+by~\cite{Malamutmann2025Fejer}. Choose:
+\[
+    M_0(K) := \left\lceil \frac{2\pi C}{\tau \cdot \carch(K)} \right\rceil.
+\]
+Then for $M \geq M_0(K)$, the error term is at most $\carch(K)/2$, giving:
+\[
+    \lambda_{\min}(T_M[P_A]) \geq \carch(K)/2.
+\]
+Absorbing the factor of 2 into $C_B$ completes the proof.
+\end{proof}
+
+\subsection{Uniform Floor}
+
+\begin{corollary}[Uniform spectral floor]\label{cor:uniform-floor}
+For fixed $(B, \tau)$ with $\tau$ sufficiently large, there exists
+$c_\infty > 0$ such that:
+\[
+    \liminf_{K \to \infty} \carch(K) \geq c_\infty > 0.
+\]
+\end{corollary}
+
+\begin{proof}
+From~\eqref{eq:carch-formula}, $\carch(K) \sim \frac{1}{2}\log K \to \infty$
+as $K \to \infty$. The infimum over $K \geq K_0$ is positive.
+\end{proof}

@@ -1,0 +1,45 @@
+\begin{thebibliography}{1}
+
+\bibitem{AlexeevErdos2025}
+Boris Alexeev, Terence Tao, et~al.
+\newblock Solution to {E}rd{\H{o}}s problem \#1026 via formal verification.
+\newblock Collaboration using Aristotle system, 2025.
+\newblock First Erd{\H{o}}s problem solved with AI-assisted formal
+  verification.
+
+\bibitem{HardyLittlewood1923}
+G.~H. Hardy and J.~E. Littlewood.
+\newblock Some problems of '{P}artitio {N}umerorum'; {III}: {O}n the expression
+  of a number as a sum of primes.
+\newblock {\em Acta Mathematica}, 44:1--70, 1923.
+
+\bibitem{Lean4}
+{Lean Community}.
+\newblock Lean 4 theorem prover.
+\newblock \url{https://lean-lang.org/}, 2024.
+\newblock Interactive theorem prover based on dependent type theory.
+
+\bibitem{Malamutmann2025Q3}
+Eugen Malamutmann.
+\newblock Operator methods for the {W}eil criterion: {Q3}.
+\newblock Zenodo, 2025.
+\newblock ORCID: 0000-0003-4624-5890.
+
+\bibitem{Maynard2015}
+James Maynard.
+\newblock Small gaps between primes.
+\newblock {\em Annals of Mathematics}, 181(1):383--413, 2015.
+
+\bibitem{Aristotle2025}
+Bjorn Poonen, Aner Shalev, and Wenda Tamarachenko.
+\newblock Aristotle: {A} system for rigorous mathematical reasoning in language
+  models via formal verification.
+\newblock {\em arXiv preprint}, 2025.
+\newblock Preprint.
+
+\bibitem{Zhang2014}
+Yitang Zhang.
+\newblock Bounded gaps between primes.
+\newblock {\em Annals of Mathematics}, 179(3):1121--1174, 2014.
+
+\end{thebibliography}

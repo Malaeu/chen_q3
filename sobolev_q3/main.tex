@@ -1,0 +1,96 @@
+% Sobolev-Q3 Framework for Twin Prime Conjecture
+% Extension of the Q3 Riemann Hypothesis framework to Twin Primes
+% Author: Ilsha
+% Based on: RH_Q3.pdf (Q3 framework for Riemann Hypothesis)
+
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Commands
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\Lip}{\mathrm{Lip}}
+\newcommand{\BV}{\mathrm{BV}}
+\newcommand{\TV}{\mathrm{TV}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\Tr}{Tr}
+
+% Title
+\title{\textbf{Sobolev-Q3 Framework for the Twin Prime Conjecture}\\[0.5em]
+\large Extending the Q3 Operator Theory from Riemann Hypothesis to Twin Primes}
+\author{Ilsha}
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We extend the Q3 operator framework, originally developed for the Riemann Hypothesis via the Weil positivity criterion, to attack the Twin Prime Conjecture. The key innovation is replacing the Heat Kernel RKHS with Sobolev space $H^s(\mathbb{T})$ for $s<1/2$, which admits indicator functions essential for circle method decompositions. We adapt the modular architecture (T0 $\to$ A1$'$ $\to$ A2 $\to$ A3 $\to$ RKHS $\to$ T5) to this new setting and prove the Sobolev-Toeplitz bridge inequality with explicit symbol margins. The framework provides a path to proving $E_{\mathrm{twin}}(X) \ge c_0 X^{1+\alpha}$, which implies infinitely many twin primes.
+\end{abstract}
+
+% Include sections
+\input{sections/section1_introduction}
+\input{sections/section2_sobolev_machine}
+
+% Section 3: Grid-Lift and Girsanov Drift (THE MECHANICS)
+\input{sections/section3_grid_lift}
+
+% Section 4: THE CORE
+\input{sections/section4_master_inequality}
+
+% Section 5: CONCLUSION (THE FINAL WORD)
+\input{sections/section5_conclusion}
+
+% Bibliography
+\begin{thebibliography}{99}
+
+\bibitem{RH_Q3}
+Ilsha, \emph{Q3: A Spectral Operator Approach to the Riemann Hypothesis via the Weil Criterion}, 2025.
+
+\bibitem{Szego1952}
+G.~Szeg\H{o}, \emph{Orthogonal Polynomials}, AMS Colloquium Publications, 1952.
+
+\bibitem{BoettcherSilbermann2006}
+A.~B\"ottcher and B.~Silbermann, \emph{Analysis of Toeplitz Operators}, Springer, 2nd ed., 2006.
+
+\bibitem{SteinShakarchi2003}
+E.~M.~Stein and R.~Shakarchi, \emph{Fourier Analysis: An Introduction}, Princeton University Press, 2003.
+
+\bibitem{HardyLittlewood1923}
+G.~H.~Hardy and J.~E.~Littlewood, Some problems of `Partitio Numerorum' III: On the expression of a number as a sum of primes, \emph{Acta Math.} \textbf{44} (1923), 1--70.
+
+\bibitem{Maynard2015}
+J.~Maynard, Small gaps between primes, \emph{Ann. Math.} \textbf{181} (2015), 383--413.
+
+\bibitem{Zhang2014}
+Y.~Zhang, Bounded gaps between primes, \emph{Ann. Math.} \textbf{179} (2014), 1121--1174.
+
+\end{thebibliography}
+
+\end{document}

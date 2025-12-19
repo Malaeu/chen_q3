@@ -1,0 +1,76 @@
+% Archimedean–Arithmetic Bridge Lemmas (outline)
+\section*{Appendix: Bridge Lemmas Needed for Step B (outline)}
+
+This appendix records the two analytic lemmas that remain to close the proof for
+the specific twin vector $\Phi_X$. They separate the archimedean functional
+analysis from the arithmetic lower bound.
+
+\begin{lemma}[Archimedean commutator inequality]\label{lem:arch}
+Let $H_{\mathrm{arch}}$ be the archimedean part of $H_X$ and $C_{\mathrm{arch}}=[H_{\mathrm{arch}},\Xi]$
+with Gaussian kernel $G(\delta)=\sqrt{2\pi t}\,e^{-\delta^2/(8t)}$. There exists
+$c_{\mathrm{arch}}(X)>0$ such that for all $f$ in the twin cone (in particular
+$f=\Phi_X$),
+\[
+    \|C_{\mathrm{arch}} f\|^2 \;\ge\; c_{\mathrm{arch}}(X)\,\langle H_{\mathrm{arch}} f,f\rangle .
+\]
+This is purely archimedean (no primes); $c_{\mathrm{arch}}(X)$ depends only on the
+Gaussian scale and the $\xi$-window.
+\end{lemma}
+
+\begin{lemma}[Arithmetic commutator lower bound]\label{lem:arith}
+Write $T_P$ for the prime Toeplitz operator and $C_{\mathrm{arith}}=[T_P,\Xi]$. There
+exists a smoothed weight $W_X$ such that
+\begin{align*}
+    E_{\text{lat}}(\Phi_X) &= \langle T_P\Phi_X,\Phi_X\rangle
+        \;=\; \sum_{n\le X} \Lambda(n)\Lambda(n+2)\,W_X(n) ,\\
+    \|C_{\mathrm{arith}}\Phi_X\|^2 &\;\ge\; \theta(X)\,
+        \Big(\sum_{n\le X} \Lambda(n)\Lambda(n+2)\,W_X^{(1)}(n)\Big)^2 ,
+\end{align*}
+for some explicit derivative-type weight $W_X^{(1)}$ and coefficient
+$\theta(X)\ge 0$. Any positive power-law lower bound on the smoothed twin sum
+(\emph{e.g.}\ $\sum \Lambda(n)\Lambda(n+2)W_X(n)\gtrsim X^\delta$) yields
+$\|C_{\mathrm{arith}}\Phi_X\|^2 \gtrsim X^{2\delta}$.
+
+\paragraph{Concrete choice of weights.}
+With Gaussian kernel $G_t(\delta)=\sqrt{2\pi t}\,e^{-\delta^2/(8t)}$ and
+$\xi_n=\tfrac{\log n}{2\pi}$ we may take
+\[
+    W_X(n) = \frac{1}{n}\,G_t\!\left(\log n - \log X\right),\qquad
+    W_X^{(1)}(n) = \frac{\log n - \log X}{4t}\, W_X(n).
+\]
+Then $T_P$ contributes exactly the $G_t$ overlap, while the commutator inserts
+a linear factor $(\xi_q-\xi_p)$, yielding $W_X^{(1)}$.
+\end{lemma}
+
+\begin{lemma}[Gluing]\label{lem:glue}
+If Lemmas~\ref{lem:arch} and \ref{lem:arith} hold with coefficients
+$c_{\mathrm{arch}}(X)$, $\theta(X)$, then
+\[
+    \|[H_X,\Xi]\Phi_X\|^2 \;\ge\; c_{\mathrm{arch}}(X)\,\theta(X)\,
+    \langle H_X \Phi_X,\Phi_X\rangle .
+\]
+Consequently,
+\[
+    R(\Phi_X)=\frac{\|[H_X,\Xi]\Phi_X\|^2}{E_{\text{lat}}(\Phi_X)}
+    \;\gtrsim\; c_{\mathrm{arch}}(X)\,\theta(X)\,
+    \frac{\langle H_X \Phi_X,\Phi_X\rangle}{E_{\text{lat}}(\Phi_X)} .
+\]
+A positive power-law for $\theta(X)$ (from Lemma~\ref{lem:arith}) forces
+$R(\Phi_X)\to\infty$, contradicting SC2 under finite twins.
+\end{lemma}
+
+Remarks:
+\begin{itemize}
+    \item Lemma~\ref{lem:arch} is pure functional analysis in $\xi$; no
+    arithmetic input is needed.
+    \item Lemma~\ref{lem:arith} is the sole arithmetic gap: it amounts to a
+    lower bound on a smoothed twin prime sum. Any $X^\delta$ (\,$\delta>0$) suffices.
+    \item Lemma~\ref{lem:glue} is algebraic once the two components are known.
+\end{itemize}
+
+\begin{corollary}[Hardy--Littlewood conditional]\label{cor:HL}
+Assume the Hardy--Littlewood conjecture $\pi_2(X)\sim 2C_2 X/(\log X)^2$.
+Then Lemma~\ref{lem:arith} holds with $\theta(X)\asymp X$ and
+$\sum_{n\le X}\Lambda(n)\Lambda(n+2)W_X(n)\asymp X$, hence
+$\|C_{\mathrm{arith}}\Phi_X\|^2 \gtrsim X^{2}$ and $R(\Phi_X)\gtrsim X^{1-\varepsilon}$.
+\end{corollary}

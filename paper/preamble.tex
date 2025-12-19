@@ -1,0 +1,106 @@
+% Q3 Preamble - Packages and Theorem Environments
+% ================================================
+
+\documentclass[11pt,a4paper]{article}
+
+% Encoding and fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Math packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+
+% References and hyperlinks
+\usepackage{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+% Tables and figures
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tikz-cd}
+
+% Layout
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Enumeration
+\usepackage{enumitem}
+
+% ============================================
+% Theorem environments
+% ============================================
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+% ============================================
+% Custom commands - Notation
+% ============================================
+% Number sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\T}{\mathbb{T}}
+
+% Operators
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Lip}{\operatorname{Lip}}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\BV}{\operatorname{BV}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+
+% Brackets and norms
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+
+% Q3 specific notation
+\newcommand{\astar}{a^*}           % Archimedean density a*(xi)
+\newcommand{\aarch}{a}             % Undoubled density a(xi)
+\newcommand{\xilog}{\xi_n}         % Log-coordinate xi_n = log(n)/(2pi)
+\newcommand{\wQ}[1]{w(#1)}         % Q-functional weight w(n) = 2 Lambda(n)/sqrt(n)
+\newcommand{\wRKHS}[1]{\tilde{w}(#1)} % RKHS weight Lambda(n)/sqrt(n)
+
+% Operators
+\newcommand{\TA}{T_A}              % Archimedean Toeplitz operator
+\newcommand{\TP}{T_P}              % Prime Toeplitz operator
+\newcommand{\PA}{P_A}              % Symbol of T_A
+\newcommand{\TPA}{T[P_A]}          % Toeplitz with symbol P_A
+
+% Dirichlet characters
+\newcommand{\chifour}{\chi_4}      % Character mod 4
+\newcommand{\Hzeta}{H_\zeta}       % Hamiltonian for zeta
+\newcommand{\Hchi}{H_\chi}         % Hamiltonian for L(s,chi)
+\newcommand{\Hplus}{H_+}           % Class 1 mod 4 Hamiltonian
+\newcommand{\Hminus}{H_-}          % Class 3 mod 4 Hamiltonian
+
+% Spectral parameters
+\newcommand{\lammin}{\lambda_{\min}}
+\newcommand{\lammax}{\lambda_{\max}}
+\newcommand{\czero}{c_0}
+\newcommand{\rhok}{\rho_K}
+\newcommand{\carch}{c_{\mathrm{arch}}}
+
+% Heat and Fejer
+\newcommand{\Phitest}{\Phi_{B,t}}  % Fejer x heat test function
+\newcommand{\tsym}{t_{\mathrm{sym}}}
+\newcommand{\trkhs}{t_{\mathrm{rkhs}}}

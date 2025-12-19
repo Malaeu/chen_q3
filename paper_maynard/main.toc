@@ -1,0 +1,47 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Bounded Gaps Between Primes}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Spectral Approaches to RH}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Main Contribution}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Outline}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}The Maynard--Tao Sieve}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Admissible Tuples}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Sieve Sums}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The Sieve Ratio}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Optimizing the Weights}{4}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Current State}{4}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Q3 Spectral Weights}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The Q3 Hamiltonian}{5}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Archimedean Operator}{5}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Prime Operator}{5}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}The Q3 Weight Function}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Spectral Positivity and RH}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Why These Weights?}{6}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Formal Setup}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Spectral Weight Kernel}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Spectral Sieve Function}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Modified Spectral Sieve Function}{7}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Verification of Maynard Conditions}{7}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Parameter Correspondence}{7}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Admissible Tuple Construction}{7}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Monte Carlo Approximation}{8}{subsection.4.7}%
+\contentsline {section}{\numberline {5}The Sieve--Spectral Correspondence}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Structural Parallels}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Main Hypotheses}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Conditional Implications}{9}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Why This Might Work}{9}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}What Remains to Prove}{9}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Main Result: The Sieve--Spectral Bridge Theorem}{9}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Numerical Experiments}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Experimental Setup}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Results: Parameter Sweep}{10}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Key Observations}{11}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Comparison with Maynard Bound}{11}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Dependence on $k$}{11}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Statistical Confidence}{11}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Comparison with Polymath Optimal Weights}{11}{subsection.6.7}%
+\contentsline {section}{\numberline {7}Conclusions and Open Questions}{12}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Summary}{12}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}What This Suggests}{12}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Limitations}{12}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Open Questions}{13}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Future Directions}{13}{subsection.7.5}%

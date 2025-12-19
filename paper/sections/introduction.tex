@@ -1,47 +1,130 @@
-\section{Introduction}
-\label{sec:introduction}
+% Introduction
+% ============
 
-The Chen Q3 framework approaches the Riemann Hypothesis through spectral analysis
-of Toeplitz operators constructed from the explicit formula. The key object is the
-\emph{Archimedean symbol}
-\begin{equation}
-    P_A(\theta) = \sum_{k=0}^{\infty} A_k \cos(k\theta),
-\end{equation}
-where the Fourier coefficients $A_k$ are derived from the Archimedean contribution
-$a^*(\xi) = \log\pi - \Re\psi\left(\tfrac{1}{4} + i\pi\xi\right)$.
+\section{Introduction}\label{sec:intro}
 
-\subsection{Main Questions}
+\subsection{Background and Motivation}
 
-The validity of Q3 arguments rests on two fundamental spectral bounds:
+We investigate spectral positivity criteria for the Riemann zeta function and Dirichlet $L$-functions through the Weil explicit formula framework. The central object is a canonical quadratic form $Q$ on the Weil test class $\mathcal{W}$, whose positivity is equivalent to the Riemann Hypothesis (RH) by Weil's criterion~\cite{Weil1952}.
 
-\begin{enumerate}[label=(\roman*)]
-    \item \textbf{Ceiling (Norm Saturation):} Does $\|P_A\|_\infty$ remain bounded
-    as the bandwidth parameter $B \to \infty$?
-
-    \item \textbf{Floor (Positivity):} Does $\min_\theta P_A(\theta) \geq c_{\text{arch}} > 0$
-    for some uniform constant $c_{\text{arch}}$?
-\end{enumerate}
-
-\subsection{Our Contributions}
-
-In this work we:
+Our approach constructs a Toeplitz operator $H = T_A - T_P$ where:
 \begin{itemize}
-    \item Provide numerical verification that $\|P_A\|_\infty$ saturates at $\approx 277$
-    (greedier bound than Q3's $\approx 109$, but finite).
+  \item $T_A$ is an \emph{archimedean} Toeplitz operator encoding the smooth density,
+  \item $T_P$ is a \emph{prime} operator supported on nodes $\xi_n = \frac{\log n}{2\pi}$.
+\end{itemize}
+The spectral condition $H \geq 0$ (positive semidefinite) translates directly to $Q(\Phi) \geq 0$ for all test functions $\Phi$ in the Weil class.
 
-    \item Show that with a Lorentzian model kernel $a(\xi) = 1/(1+\xi^2)$,
-    the floor $c_{\text{arch}} \approx 0.19$, matching Q3's claim of $\approx 0.1878$.
+\subsection{Main Results}
 
-    \item Identify that the \textbf{Mellin kernel} $K(\xi) = 1/(1+|\xi|^{1/2})$
-    achieves optimal stability ratio $\delta_* \approx 0.79$.
+\begin{theorem}[Main reduction, informal]\label{thm:intro-main-informal}
+Let $Q$ be the quadratic form on the Weil class $\mathcal{W}$ defined in Section~\ref{sec:T0}. The analytic modules (A3, RKHS, T5) of Sections~\ref{sec:A3}--\ref{sec:T5} provide explicit monotone schedules $(t^\star(K), M^\star(K))$ that make $H_K := T_{M^\star(K)}[P_A]-T_P$ positive semidefinite on each compact window $W_K$. Propagating these bounds along an exhaustion of $\mathcal{W}$ would yield $Q(\Phi) \ge 0$ for all $\Phi \in \mathcal{W}$, and hence RH by Weil. Closing this propagation globally remains the outstanding analytic step.
+\end{theorem}
 
-    \item Formalize the analytical estimates required for rigorous proofs.
+The same machinery applies to Dirichlet twists $H_\chi$ and class operators $H_\pm$ (GRH module), and—conditionally—to twin-prime two-particle operators $A^{(2)}$.
+
+\subsection{The Three Analytic Modules}
+
+The proof organizes around three analytic modules:
+
+\paragraph{(A3) Archimedean Toeplitz Barrier.}
+On each compact window $W_K = [-K, K] \subset \RR$ we bound from below the Toeplitz component by an \emph{archimedean barrier} $c_0(K) > 0$, up to a controllable Lipschitz loss. Szeg\H{o}--B\"ottcher asymptotics together with an explicit modulus of continuity for $P_A$ yield
+\[
+  \lambda_{\min}\!\big(T_M[P_A]\big) \geq c_0(K) - C \cdot \omega_{P_A}\!\Big(\frac{\pi}{M}\Big).
+\]
+
+\paragraph{(RKHS) Prime Contraction.}
+The prime contribution is encoded by a sampling operator $T_P$ with weights $w(n) = \Lambda(n)/\sqrt{n}$. We develop an upper bound on $\|T_P\|$ inside a reproducing-kernel Hilbert space (RKHS) of the heat flow:
+\[
+  \|T_P\| \leq w_{\max} + \sqrt{w_{\max}} \cdot S_K(t), \quad
+  S_K(t) \leq \frac{2e^{-\delta_K^2/(4t)}}{1 - e^{-\delta_K^2/(4t)}},
+\]
+where $w_{\max} \leq 2/e$ and $\delta_K$ is the node separation on $W_K$.
+
+\paragraph{(T5) Compact-by-Compact Transfer.}
+Once on a given $W_K$ the deterministic inequalities
+\[
+  C \cdot \omega_{P_A}\!\Big(\frac{\pi}{M}\Big) \leq \frac{c_0(K)}{4}, \quad
+  \|T_P\| \leq \frac{c_0(K)}{4}
+\]
+hold with parameters $(M, t)$ chosen \emph{monotonically} in $K$, then $\lambda_{\min}(T_M[P_A] - T_P) > 0$ on $W_K$, and positivity inherits to $W_{K'}$ for all $K' \geq K$.
+
+\subsection{Outline of the Proof Strategy}
+
+Combining the Toeplitz barrier and RKHS cap yields, on each $W_K$:
+\[
+  \lambda_{\min}\!\big(T_M[P_A] - T_P\big) \geq c_0(K) - C \cdot \omega_{P_A}\!\Big(\frac{\pi}{M}\Big) - \|T_P\|.
+\]
+Choosing $t \geq t_{\min}(K)$ enforces $\|T_P\| \leq c_0(K)/4$, and selecting $M$ so that $C \cdot \omega_{P_A}(\pi/M) \leq c_0(K)/4$ gives
+\[
+  \lambda_{\min}\!\big(T_M[P_A] - T_P\big) \geq \tfrac{1}{2} c_0(K) > 0.
+\]
+The compact-by-compact transfer then propagates positivity along any monotone chain $K_i \uparrow \infty$.
+
+\subsection{Contemporary Context}
+
+This work was inspired by several recent developments:
+
+\begin{itemize}
+  \item \textbf{Analytic criteria.} Li's positivity sequence~\cite{Li1997} and the Jensen polynomial programme of Griffin--Ono--Rolen--Zagier~\cite{GriffinOnoRolenZagier2019} give logically equivalent restatements of RH.
+
+  \item \textbf{Zero-density breakthroughs.} The Dirichlet-polynomial bounds of Guth and Maynard~\cite{GuthMaynard2024} illustrate spectral encoding of the zeta problem.
+
+  \item \textbf{Near-miss invariants.} Rodgers and Tao's work on the de Bruijn--Newman constant~\cite{rodgers2020debruijn} shows RH may be ``barely true.''
+
+  \item \textbf{Geometric approaches.} Fesenko's two-dimensional adelic programme~\cite{Fesenko2008} and Connes--Marcolli's noncommutative geometry~\cite{ConnesMarcolli2008} highlight operator factorizations.
+
+  \item \textbf{Physical operator heuristics.} PT-symmetric constructions such as Bender--Brody--M\"uller~\cite{BenderBrodyMuller2017} keep the Hilbert--P\'olya dream alive.
+
+  \item \textbf{Massive computations.} Platt and Trudgian's verification of RH up to $3 \times 10^{12}$~\cite{PlattTrudgian2021} emphasizes transparent, audit-friendly proofs.
 \end{itemize}
 
-\subsection{Structure}
+\subsection{What is New}
 
-Section~\ref{sec:preliminaries} reviews the Q3 framework.
-Section~\ref{sec:saturation} proves the saturation lemma.
-Section~\ref{sec:floor} establishes the positivity of $c_{\text{arch}}$.
-Section~\ref{sec:stability} combines these into the main stability theorem.
-Section~\ref{sec:numerical} presents computational verification.
+Two features distinguish the present work:
+\begin{enumerate}
+  \item \textbf{A tables-free prime contraction.} The norm of the prime operator is bounded analytically in an RKHS, via Gram geometry. All constants are explicit and monotone in $K$.
+
+  \item \textbf{GRH and twin prime extensions.} The same analytic machinery applies to Dirichlet $L$-functions (GRH module); the twin-prime analysis is developed as a conditional extension using the class operators.
+\end{enumerate}
+
+\subsection{Notation}
+
+We write $\Lambda$ for the von Mangoldt function, $\xi_n = \frac{\log n}{2\pi}$ for sampling nodes, and $w(n) = \Lambda(n)/\sqrt{n}$ for operator weights with $w_{\max} = \sup_n w(n) \leq 2/e$. The heat kernel is $k_t(x,y) = \exp\!\bigl(-\frac{(x-y)^2}{4t}\bigr)$. Compact windows are $W_K = [-K, K]$, and $\mathcal{W} = \bigcup_{K>0} \mathcal{W}_K$ is the Weil cone. Complete conventions appear in Section~\ref{sec:T0}.
+
+\subsection{Dependency Map}
+
+\begin{center}
+\small
+\begin{tabular}{lll}
+\toprule
+\textbf{Module} & \textbf{Key Statement} & \textbf{Consumed by} \\
+\midrule
+T0 & Proposition~\ref{prop:T0-GW} (Guinand--Weil) & Theorem~\ref{thm:A3-bridge} \\
+A1' & Theorem~\ref{thm:A1-density} (Cone density) & Theorem~\ref{thm:A3-bridge} \\
+A2 & Lemma~\ref{lem:A2-lip} (Lipschitz) & Theorem~\ref{thm:A3-bridge} \\
+A3 & Theorem~\ref{thm:A3-bridge} (Toeplitz bridge) & Main verification \\
+RKHS & Theorem~\ref{thm:rkhs-contraction} (Prime cap) & Theorem~\ref{thm:A3-bridge} \\
+T5 & Theorem~\ref{thm:T5-transfer} (Transfer to Weil cone) & Main positivity \\
+GRH & Theorem~\ref{thm:GRH-criterion} ($H_\chi \geq 0$) & Twin analysis \\
+Twins & Section~\ref{sec:twin-coherence} (Coherence, conditional) & Bridge Section~\ref{sec:bridge} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Assumption stack.} Throughout, "under (T0)+(A1')+(A2)+(A3)+(RKHS)+(T5)" means exactly: fixed Guinand--Weil normalization; cone density; Lipschitz continuity of $Q$; Archimedean Toeplitz lower bound with explicit $c_0(K)$ and modulus $\omega_{P_A}$; RKHS prime contraction with explicit $t_{\min}(K)$; and the compact-by-compact transfer. The IND/AB route is retained only as an archival alternative and is \emph{not} used in the main proof.
+
+\subsection{Organization}
+
+\begin{itemize}
+  \item Section~\ref{sec:T0}: Weil class and Guinand--Weil normalization
+  \item Section~\ref{sec:A1}: Cone density (Fej\'er$\times$heat generators)
+  \item Section~\ref{sec:A2}: Lipschitz continuity of $Q$
+  \item Section~\ref{sec:A3}: Toeplitz--symbol bridge (A3) with explicit archimedean bounds
+  \item Section~\ref{sec:rkhs}: RKHS prime contraction
+  \item Section~\ref{sec:T5}: Compact transfer (T5)
+  \item Section~\ref{sec:GRH}: GRH extension and class decomposition
+  \item Section~\ref{sec:twin-coherence}: Twin prime coherence analysis (conditional)
+  \item Section~\ref{sec:bridge}: Coherence-counting bridge (formal theorems)
+  \item Section~\ref{sec:Weil}: Weil linkage and discussion
+  \item Appendix: notation, FAQ, parameter tables, diagnostics (not used in the proof)
+\end{itemize}

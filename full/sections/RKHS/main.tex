@@ -71,19 +71,24 @@ Then $S_K\bigl(t_{\min}(K)\bigr)\le \eta_K$ and therefore
 \|T_P\|_{\mathcal H_K}\ \le\ w_{\max}+\sqrt{w_{\max}}\,S_K\bigl(t_{\min}(K)\bigr)
 \ =:\ \rho_K\ < 1,
 \]
-so $T_A-T_P\succeq(1-\rho_K)\,T_A$ on the RKHS. In parallel, Theorem~\ref{thm:rkhs-tstar} supplies the analytic cap $\|T_P\|\le c_0(K)/4$ once $t_{\mathrm{rkhs}}\ge t_{\min}(K)$ (route~(A)) or $t_{\mathrm{rkhs}}\ge t^\star(K)$ (route~(B)).
+so $T_A-T_P\succeq(1-\rho_K)\,T_A$ on the RKHS. In parallel, Theorem~\ref{thm:rkhs-tstar} supplies the analytic cap $\|T_P\|\le c_0(K)/4$ via two routes: (A)~Gram geometry with $t_{\mathrm{rkhs}}=t_{\min}(K)$ (where the condition is $t\le t_{\min}$), or (B)~tail decay with $t_{\mathrm{rkhs}}\ge t^\star(K)$.
 \end{proposition}
 
 \begin{lemma}[Trace-cap bound]\label{lem:trace-cap-bound}
-For every compact $[-K,K]$ choose $t_{\mathrm{rkhs}}\ge\max\{t_{\min}(K),\,t^\star(K)\}$, where $t_{\min}$ is given by \eqref{eq:tmin} and $t^\star(K)$ by Theorem~\ref{thm:rkhs-tstar}. Then the prime operator obeys the uniform cap
+For every compact $[-K,K]$ choose $t_{\mathrm{rkhs}}$ via either:
+\begin{itemize}
+\item[(A)] Gram route: $t_{\mathrm{rkhs}}=t_{\min}(K)$ where $t_{\min}$ is given by \eqref{eq:tmin} (note: the geometric bound requires $t\le t_{\min}$), or
+\item[(B)] Tail route: $t_{\mathrm{rkhs}}\ge t^\star(K)$ from Theorem~\ref{thm:rkhs-tstar}.
+\end{itemize}
+Then the prime operator obeys the uniform cap
 \[
   \|T_P\|_{\op} \le \min\Bigl\{\rho_K,\ \tfrac14\,c_0(K)\Bigr\}\ \le\ \frac{1}{4}\,c_0(K),
 \]
-where $\rho_K = w_{\max} + \sqrt{w_{\max}}\,S_K\bigl(t_{\min}(K)\bigr)$. Consequently, for every Fej\'er$\times$heat parameter set $(B,t_{\mathrm{rkhs}})$ with $t_{\mathrm{rkhs}}\ge \max\{t_{\min}(K),t^\star(K)\}$ the contraction bound $\|T_P\|\le c_0(K)/4$ holds without recourse to numerical tables.
+where $\rho_K = w_{\max} + \sqrt{w_{\max}}\,S_K\bigl(t_{\min}(K)\bigr)$. Consequently, for every Fej\'er$\times$heat parameter set $(B,t_{\mathrm{rkhs}})$ satisfying either route, the contraction bound $\|T_P\|\le c_0(K)/4$ holds without recourse to numerical tables.
 \end{lemma}
 
 \begin{proof}
-The Gershgorin estimate $\|T_P\|\le\rho_K$ is Proposition~\ref{prop:rkhs-schedule}. Theorem~\ref{thm:rkhs-tstar} bounds $\|T_P\|\le c_0(K)/4$ once $t_{\mathrm{rkhs}}$ dominates either threshold. The displayed minimum records both analytic inputs. Monotonicity in $t_{\mathrm{rkhs}}$ follows because $S_K(t)$ decreases and $\rho(t)$ is decreasing in $t$.
+The Gershgorin estimate $\|T_P\|\le\rho_K$ is Proposition~\ref{prop:rkhs-schedule}. Theorem~\ref{thm:rkhs-tstar} bounds $\|T_P\|\le c_0(K)/4$ once $t_{\mathrm{rkhs}}$ satisfies the appropriate route condition. The displayed minimum records both analytic inputs. For route~(B), monotonicity follows because $\rho(t)$ is decreasing in $t$. For route~(A), the bound $S_K(t)\le\eta_K$ holds at $t=t_{\min}$ (note: $S_K(t)$ \emph{increases} with $t$, so the condition is $t\le t_{\min}$).
 \end{proof}
 
 \begin{proof}

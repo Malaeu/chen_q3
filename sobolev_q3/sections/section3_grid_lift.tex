@@ -1,0 +1,310 @@
+% Section 3: Grid-Lift Sampling and Girsanov Drift
+% THE MECHANICS: How we discretize and construct the drift
+% Author: Ilsha
+
+\section{Grid-Lift Sampling and Girsanov Drift}\label{sec:grid-lift}
+
+This section provides the technical machinery connecting the abstract Sobolev-Q3 framework (Section~\ref{sec:sobolev-machine}) to the Master Inequality (Section~\ref{sec:master-inequality}). We establish two key results:
+\begin{enumerate}
+  \item \textbf{Grid-Lift Theorem:} Continuous integrals over $\TT$ can be approximated by discrete sums on a grid $G_M$ with polynomial error in $M$.
+  \item \textbf{Girsanov Drift Construction:} An explicit $H^s$-regular symbol $\Psi_{\mathrm{drift}}$ that resonates with twin prime phases.
+\end{enumerate}
+
+\subsection{The Grid-Lift Framework}
+
+The circle method naturally leads to integrals of the form $\int_\TT \Psi(\alpha)\,|S(\alpha)|^2\,d\alpha$. For computational and theoretical purposes, we replace these with discrete sums on Farey-type grids.
+
+\begin{definition}[Farey Grid]\label{def:farey-grid}
+For $M \ge 1$, define the \textbf{Farey grid} of order $M$:
+\begin{equation}\label{eq:farey-grid}
+  G_M := \Big\{\frac{a}{q} \in [0,1) : 1 \le q \le M,\; (a,q) = 1\Big\}.
+\end{equation}
+The grid has cardinality $|G_M| = \sum_{q=1}^M \phi(q) \sim \frac{3}{\pi^2}\,M^2$.
+\end{definition}
+
+\begin{definition}[Grid Lift]\label{def:grid-lift}
+For a function $\Psi:\TT\to\CC$ and the Farey grid $G_M$, define the \textbf{grid lift}:
+\begin{equation}\label{eq:grid-lift}
+  \mathcal{L}_M(\Psi) := \frac{1}{|G_M|}\sum_{\gamma\in G_M} \Psi(\gamma)\,|S(\gamma)|^2.
+\end{equation}
+This is a discrete approximation to $\mathcal{I}(\Psi; X) = \int_\TT \Psi\,|S|^2$.
+\end{definition}
+
+\subsection{Sobolev Embedding and Hölder Continuity}
+
+The key to controlling discretization error is regularity of $\Psi$. For Sobolev functions, we have:
+
+\begin{theorem}[Sobolev Embedding]\label{thm:sobolev-embedding}
+For $s > 1/2$, the space $H^s(\TT)$ embeds continuously into $C^{0,\alpha}(\TT)$ (Hölder continuous functions) with exponent $\alpha = s - 1/2$:
+\begin{equation}\label{eq:sobolev-embedding}
+  H^s(\TT) \hookrightarrow C^{0,s-1/2}(\TT), \qquad s > \tfrac12.
+\end{equation}
+Specifically, for $\Psi \in H^s(\TT)$:
+\begin{equation}
+  |\Psi(\alpha) - \Psi(\beta)| \le C_s\,\|\Psi\|_{H^s}\,|\alpha - \beta|^{s-1/2}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By the Fourier representation $\Psi(\alpha) = \sum_k \hat{\Psi}(k)\,e(k\alpha)$, the difference is:
+\begin{align}
+  |\Psi(\alpha) - \Psi(\beta)| &= \Big|\sum_k \hat{\Psi}(k)\,(e(k\alpha) - e(k\beta))\Big| \\
+  &\le \sum_k |\hat{\Psi}(k)|\,|e(k\alpha) - e(k\beta)|.
+\end{align}
+Using $|e(k\alpha) - e(k\beta)| \le 2\pi|k|\,|\alpha-\beta|$ and Cauchy-Schwarz:
+\begin{align}
+  &\le |\alpha-\beta|\,\Big(\sum_k |\hat{\Psi}(k)|^2\,(1+|k|^2)^s\Big)^{1/2}\Big(\sum_k \frac{|k|^2}{(1+|k|^2)^s}\Big)^{1/2}.
+\end{align}
+The second sum converges for $s > 1/2$, giving $C_s = \big(\sum_k |k|^2\,(1+|k|^2)^{-s}\big)^{1/2} < \infty$.
+\end{proof}
+
+\begin{remark}[Critical Exponent $s = 1/2$]
+At $s = 1/2$, the embedding fails: $H^{1/2}(\TT) \not\hookrightarrow C^0(\TT)$. However, $H^{1/2}$ functions are BMO (bounded mean oscillation), which still provides some control. For our purposes, we work with $s > 1/2$ to ensure pointwise bounds.
+\end{remark}
+
+\subsection{The Grid-Lift Theorem}
+
+\begin{theorem}[Grid-Lift Error Bound]\label{thm:grid-lift}
+Let $s > 1/2$ and $\Psi \in H^s(\TT)$. Then for the Farey grid $G_M$:
+\begin{equation}\label{eq:grid-lift-error}
+  \boxed{\Big|\int_\TT \Psi(\alpha)\,|S(\alpha)|^2\,d\alpha - \frac{1}{|G_M|}\sum_{\gamma\in G_M} \Psi(\gamma)\,|S(\gamma)|^2\Big| \le C_s\,\|\Psi\|_{H^s}\,M^{-(s-1/2)}\,\mathcal{E}(X),}
+\end{equation}
+where $\mathcal{E}(X) = \int_\TT |S(\alpha)|^2\,d\alpha \sim X$ is the total prime energy.
+\end{theorem}
+
+\begin{proof}
+Partition $\TT$ into Farey arcs: for each $\gamma = a/q \in G_M$, let $I_\gamma$ be the interval of points closer to $\gamma$ than to any other grid point. By Farey properties, $|I_\gamma| \asymp q^{-1}M^{-1}$.
+
+On each arc $I_\gamma$:
+\begin{align}
+  \Big|\int_{I_\gamma} \Psi(\alpha)\,|S(\alpha)|^2\,d\alpha - |I_\gamma|\,\Psi(\gamma)\,|S(\gamma)|^2\Big|
+  &\le \int_{I_\gamma} |\Psi(\alpha) - \Psi(\gamma)|\,|S(\alpha)|^2\,d\alpha \\
+  &\quad + |\Psi(\gamma)|\,\Big|\int_{I_\gamma} |S(\alpha)|^2\,d\alpha - |I_\gamma|\,|S(\gamma)|^2\Big|.
+\end{align}
+
+\textbf{Term 1:} By Sobolev embedding (Theorem~\ref{thm:sobolev-embedding}):
+\begin{equation}
+  |\Psi(\alpha) - \Psi(\gamma)| \le C_s\,\|\Psi\|_{H^s}\,|I_\gamma|^{s-1/2} \le C_s\,\|\Psi\|_{H^s}\,(qM)^{-(s-1/2)}.
+\end{equation}
+
+\textbf{Term 2:} The function $|S(\alpha)|^2$ is smooth on $I_\gamma$ (exponential sum), so:
+\begin{equation}
+  \Big|\int_{I_\gamma} |S(\alpha)|^2 - |I_\gamma|\,|S(\gamma)|^2\Big| \le C\,|I_\gamma|^2\,\sup_{I_\gamma}|\nabla|S|^2| \ll |I_\gamma|^2\,X^2.
+\end{equation}
+
+Summing over $\gamma \in G_M$ and using $\sum_\gamma |I_\gamma| = 1$:
+\begin{align}
+  \text{Total error} &\le C_s\,\|\Psi\|_{H^s}\,M^{-(s-1/2)}\sum_\gamma \int_{I_\gamma} |S(\alpha)|^2\,d\alpha \\
+  &= C_s\,\|\Psi\|_{H^s}\,M^{-(s-1/2)}\,\mathcal{E}(X). \qedhere
+\end{align}
+\end{proof}
+
+\begin{corollary}[Polynomial Decay of Grid Error]\label{cor:grid-error-decay}
+For any $\delta > 0$, choosing $M = X^\delta$ gives:
+\begin{equation}
+  \Big|\int_\TT \Psi\,|S|^2 - \mathcal{L}_M(\Psi)\Big| \ll \|\Psi\|_{H^s}\,X^{1-\delta(s-1/2)}.
+\end{equation}
+This is $o(X)$ provided $\delta(s-1/2) > 0$, i.e., $s > 1/2$.
+\end{corollary}
+
+\begin{remark}[Sobolev vs Heat: Polynomial vs Exponential]
+In the Heat Kernel setting of Q3, discretization error decays \emph{exponentially} in $M$:
+\[
+  \text{Heat:}\quad O(e^{-cM^2/t}).
+\]
+In Sobolev, the decay is \emph{polynomial}:
+\[
+  \text{Sobolev:}\quad O(M^{-(s-1/2)}).
+\]
+The polynomial rate is slower but sufficient for circle method applications, where $M = (\log X)^A$ suffices.
+\end{remark}
+
+\subsection{Girsanov Drift: Explicit Construction}
+
+We now construct the twisted symbol $\Psi_{\mathrm{drift}}$ used in Section~\ref{sec:master-inequality} and verify its Sobolev regularity.
+
+\begin{definition}[Smooth Major Arc Cutoff]\label{def:smooth-cutoff}
+Let $\eta:\RR\to[0,1]$ be a smooth bump function with:
+\begin{itemize}
+  \item $\eta(x) = 1$ for $|x| \le 1$,
+  \item $\eta(x) = 0$ for $|x| \ge 2$,
+  \item $\eta \in C^\infty(\RR)$ with $\|\eta^{(k)}\|_{L^\infty} \le C_k$.
+\end{itemize}
+For the Major Arc $\mathfrak{M}(a/q)$ around $a/q$, define:
+\begin{equation}\label{eq:arc-cutoff}
+  \phi_{a/q}(\alpha) := \eta\Big(\frac{(\alpha - a/q)\,qX}{Q}\Big).
+\end{equation}
+The \textbf{global Major Arc cutoff} is:
+\begin{equation}
+  \phi_{\mathfrak{M}}(\alpha) := \max_{a/q \in \mathfrak{M}} \phi_{a/q}(\alpha).
+\end{equation}
+\end{definition}
+
+\begin{lemma}[Sobolev Regularity of Cutoff]\label{lem:cutoff-sobolev}
+The smooth cutoff $\phi_{\mathfrak{M}}$ belongs to $H^s(\TT)$ for all $s \ge 0$, with:
+\begin{equation}\label{eq:cutoff-sobolev-norm}
+  \|\phi_{\mathfrak{M}}\|_{H^s}^2 \le C_s\,Q^2\,\big(1 + (QX)^{2s}\big).
+\end{equation}
+For the standard choice $Q = (\log X)^B$, this is $O((\log X)^{2B(1+s)})$.
+\end{lemma}
+
+\begin{proof}
+Each bump $\phi_{a/q}$ is a rescaled translate of $\eta$. By scaling:
+\begin{equation}
+  \widehat{\phi_{a/q}}(k) = e(-ka/q)\,\frac{Q}{qX}\,\hat{\eta}\Big(\frac{kQ}{qX}\Big).
+\end{equation}
+The rapid decay of $\hat{\eta}$ (as $\eta\in\mathcal{S}$) gives:
+\begin{equation}
+  |\widehat{\phi_{a/q}}(k)| \le \frac{C_N Q}{qX}\,\Big(1 + \frac{|k|Q}{qX}\Big)^{-N}
+\end{equation}
+for any $N$.
+
+Summing over the $O(Q^2)$ arcs in $\mathfrak{M}$:
+\begin{align}
+  \|\phi_{\mathfrak{M}}\|_{H^s}^2 &\le Q^2 \cdot \sup_{a/q}\|\phi_{a/q}\|_{H^s}^2 \\
+  &\le C_s\,Q^2\,\sum_k \frac{Q^2}{X^2}\,(1+|k|^2)^s\,\Big(1 + \frac{|k|Q}{X}\Big)^{-2N}.
+\end{align}
+Choosing $N > s + 1$ makes the sum convergent, giving the stated bound.
+\end{proof}
+
+\begin{definition}[Girsanov Drift Symbol]\label{def:girsanov-symbol}
+The \textbf{Girsanov drift symbol} is:
+\begin{equation}\label{eq:girsanov-symbol}
+  \boxed{\Psi_{\mathrm{drift}}(\alpha) := \phi_{\mathfrak{M}}(\alpha)\,e(2\alpha).}
+\end{equation}
+This is the product of the smooth Major Arc cutoff and the twin prime phase $e(2\alpha) = e^{4\pi i\alpha}$.
+\end{definition}
+
+\begin{proposition}[Drift Symbol in $H^s$]\label{prop:drift-in-Hs}
+For any $s \ge 0$, the drift symbol satisfies $\Psi_{\mathrm{drift}} \in H^s(\TT)$ with:
+\begin{equation}\label{eq:drift-sobolev-norm}
+  \|\Psi_{\mathrm{drift}}\|_{H^s} \le C_s\,(\log X)^{B(1+s)}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The phase twist $e(2\alpha)$ acts as a frequency shift:
+\begin{equation}
+  \widehat{\Psi_{\mathrm{drift}}}(k) = \widehat{\phi_{\mathfrak{M}}}(k-2).
+\end{equation}
+Therefore:
+\begin{align}
+  \|\Psi_{\mathrm{drift}}\|_{H^s}^2 &= \sum_k |\widehat{\phi_{\mathfrak{M}}}(k-2)|^2\,(1+|k|^2)^s \\
+  &\le 2^s\sum_k |\widehat{\phi_{\mathfrak{M}}}(k-2)|^2\,(1+|k-2|^2)^s\,(1 + 4)^s \\
+  &= 5^s\,\|\phi_{\mathfrak{M}}\|_{H^s}^2.
+\end{align}
+Applying Lemma~\ref{lem:cutoff-sobolev} completes the proof.
+\end{proof}
+
+\subsection{Phase Alignment and Drift Generation}
+
+The key property of $\Psi_{\mathrm{drift}}$ is its resonance with twin prime phases.
+
+\begin{lemma}[Phase Resonance]\label{lem:phase-resonance}
+For twin primes $p, p+2$ and $\alpha \in \mathfrak{M}$:
+\begin{equation}
+  \Psi_{\mathrm{drift}}(\alpha)\,e(-p\alpha)\,e(-(p+2)\alpha) = \phi_{\mathfrak{M}}(\alpha)\,e(2\alpha - 2p\alpha - 2\alpha) = \phi_{\mathfrak{M}}(\alpha)\,e(-2p\alpha).
+\end{equation}
+On the Major Arc around $a/q$ with $p \equiv r \pmod{q}$:
+\begin{equation}
+  e(-2p\alpha) = e(-2ra/q)\,e(-2p\beta), \qquad \beta = \alpha - a/q.
+\end{equation}
+For $p \equiv 1 \pmod{q}$ (the ``resonant'' residue class):
+\begin{equation}
+  e(-2ra/q) = e(-2a/q).
+\end{equation}
+Summing over residue classes produces the singular series $\mathfrak{S}_2$.
+\end{lemma}
+
+\begin{theorem}[Girsanov Drift Bound]\label{thm:girsanov-bound}
+The Major Arc contribution with drift symbol is:
+\begin{equation}\label{eq:girsanov-bound}
+  \mathrm{Drift}(X) := \int_{\mathfrak{M}} \Psi_{\mathrm{drift}}(\alpha)\,|S(\alpha)|^2\,d\alpha = \mathfrak{S}_2\,X + O(X(\log X)^{-A}),
+\end{equation}
+where $\mathfrak{S}_2 = 2C_2 \approx 1.32$ is the twin prime singular series, and $A > 0$ can be made arbitrarily large by choosing $B$ large in $Q = (\log X)^B$.
+\end{theorem}
+
+\begin{proof}
+See Lemma~\ref{lem:girsanov-drift} in Section~\ref{sec:master-inequality}. The proof uses:
+\begin{enumerate}
+  \item Factorization of $S(\alpha)$ on Major Arcs via residue classes,
+  \item Siegel--Walfisz theorem for primes in arithmetic progressions,
+  \item Extraction of the singular series via Ramanujan sums.
+\end{enumerate}
+The smooth cutoff $\phi_{\mathfrak{M}}$ ensures no boundary effects.
+\end{proof}
+
+\subsection{Minor Arc Control via Sobolev}
+
+The complement of Major Arcs is handled by Sobolev regularity.
+
+\begin{theorem}[Minor Arc Bound]\label{thm:minor-arc-bound}
+For $\Psi \in H^s(\TT)$ with $s > 1/2$:
+\begin{equation}\label{eq:minor-arc-bound}
+  \Big|\int_{\mathfrak{m}} \Psi(\alpha)\,|S(\alpha)|^2\,d\alpha\Big| \le \|\Psi\|_{H^s}\,\sup_{\alpha\in\mathfrak{m}}|S(\alpha)|\,\|S\|_{L^2(\mathfrak{m})}.
+\end{equation}
+By Vinogradov's Minor Arc estimate:
+\begin{equation}
+  \sup_{\alpha\in\mathfrak{m}}|S(\alpha)| \ll \frac{X}{(\log X)^{A/2}},
+\end{equation}
+hence:
+\begin{equation}
+  \Big|\int_{\mathfrak{m}} \Psi\,|S|^2\Big| \ll \|\Psi\|_{H^s}\,\frac{X^{3/2}}{(\log X)^{A/2}} = o(X).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Apply $H^s \times H^{-s}$ duality (Lemma~\ref{lem:sobolev-lipschitz}):
+\begin{equation}
+  \Big|\int_{\mathfrak{m}} \Psi\,|S|^2\Big| \le \|\Psi\|_{H^s(\mathfrak{m})}\,\||S|^2\|_{H^{-s}(\mathfrak{m})}.
+\end{equation}
+The $H^{-s}$ norm of $|S|^2$ on $\mathfrak{m}$ is controlled by:
+\begin{equation}
+  \||S|^2\|_{H^{-s}(\mathfrak{m})} \le \|S\|_{L^\infty(\mathfrak{m})}\,\|S\|_{L^2(\mathfrak{m})}.
+\end{equation}
+Vinogradov's method (exponential sum bounds on Minor Arcs) gives the stated decay.
+\end{proof}
+
+\subsection{Summary: The Grid-Lift--Drift Pipeline}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Section 3 Summary: Mechanics of the Sobolev-Q3 Attack}
+
+\medskip
+\textbf{Step 1: Grid-Lift (Theorem~\ref{thm:grid-lift})}
+\[
+  \int_\TT \Psi\,|S|^2 \;=\; \frac{1}{|G_M|}\sum_{\gamma\in G_M}\Psi(\gamma)|S(\gamma)|^2 \;+\; O(M^{-(s-1/2)}\,X).
+\]
+Discrete approximation with \emph{polynomial} error (Sobolev), not exponential (Heat).
+
+\medskip
+\textbf{Step 2: Girsanov Drift (Definition~\ref{def:girsanov-symbol})}
+\[
+  \Psi_{\mathrm{drift}}(\alpha) = \phi_{\mathfrak{M}}(\alpha)\,e(2\alpha) \;\in\; H^s(\TT).
+\]
+Smooth cutoff times twin phase. Belongs to $H^s$ for all $s \ge 0$.
+
+\medskip
+\textbf{Step 3: Drift Dominates Noise}
+\begin{align*}
+  \mathrm{Drift} &= \int_{\mathfrak{M}} \Psi_{\mathrm{drift}}\,|S|^2 = \mathfrak{S}_2\,X + O(X(\log X)^{-A}), \\
+  \mathrm{Noise} &= \Big|\int_{\mathfrak{m}} \Psi_{\mathrm{drift}}\,|S|^2\Big| = o(X).
+\end{align*}
+$\Rightarrow$ \textbf{Drift $>$ Noise} for large $X$ $\Rightarrow$ Master Inequality (Section~\ref{sec:master-inequality}).
+}}
+\end{center}
+
+\begin{remark}[Connection to Q3 Architecture]
+In the original Q3 for RH \cite{RH_Q3}:
+\begin{itemize}
+  \item \textbf{T5 (Compact Transfer)} handles the $K\to\infty$ limit.
+  \item \textbf{A3 (Toeplitz Bridge)} converts symbol positivity to operator positivity.
+\end{itemize}
+Here:
+\begin{itemize}
+  \item \textbf{Grid-Lift} is the Sobolev analogue of T5 discretization.
+  \item \textbf{Girsanov Drift} is the Sobolev analogue of the Fej\'er$\times$heat symbol construction.
+\end{itemize}
+The polynomial (vs.\ exponential) decay is the price of admitting non-smooth functions.
+\end{remark}

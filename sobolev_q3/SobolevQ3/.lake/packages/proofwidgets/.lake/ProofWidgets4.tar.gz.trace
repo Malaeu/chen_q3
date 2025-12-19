@@ -1,0 +1,9 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs": null,
+ "log":
+ [{"message":
+   ".> curl -s -S -f -o /Users/emalam/Documents/GitHub/chen_q3/sobolev_q3/SobolevQ3/.lake/packages/proofwidgets/.lake/ProofWidgets4.tar.gz -L https://github.com/leanprover-community/ProofWidgets4/releases/download/v0.0.83/ProofWidgets4.tar.gz",
+   "level": "trace"}],
+ "inputs": [],
+ "depHash": "ac81b488d8595d35"}

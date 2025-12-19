@@ -1,0 +1,6 @@
+{"platform": "arm64-apple-darwin23.6.0",
+ "options":
+ {"errorOnBuild":
+  "ProofWidgets not up-to-date. Please run `lake exe cache get` to fetch the latest ProofWidgets. If this does not work, report your issue on the Lean Zulip."},
+ "leanHash": "797c613eb9b6d4ec95db23e3e00af9ac6657f24b",
+ "configHash": "16284962742868876782"}

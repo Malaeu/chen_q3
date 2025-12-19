@@ -1,0 +1,144 @@
+% Chen variance ↔ commutator energy (outline)
+\section*{Appendix: Variance of $P_\tau f_X$ equals commutator energy (outline)}
+
+We sketch why, with a suitable choice $\tau = (4t)^{-1}$, the variance of a
+Chen-smoothed twin function $f_X$ is proportional to the commutator energy
+$E_{\mathrm{comm}}(\Phi_X)=\|[H_X,\Xi]\Phi_X\|^2$. We give two encodings; the
+``global'' encoding grows in dimension even if twins are finite, matching the
+operator sums over all primes.
+
+\subsection*{Encoding A (twin-only, dimension $N=|T(X)|$)}
+Let $N=\# T(X)$ and index coordinates by twin primes $p\le X$. Define
+\[
+    f_X(\sigma) \;=\; \exp\!\Big(\sum_{p\in T(X)} \lambda_p \tfrac{1+\sigma_p}{2}\Big),
+    \qquad \sigma\in\{\pm1\}^N,\ \ \lambda_p=(\log p)^2.
+\]
+Chen's heat semigroup on the cube:
+\[
+    P_\tau f_X(\sigma) \;=\; \mathbb{E}\big[f_X(\sigma\odot \xi_\tau)\big],
+    \quad \xi_{\tau,i}\sim\mathrm{Rad}(e^{-2\tau}),\ i\text{ indep.}
+\]
+Choosing $\tau = (4t)^{-1}$ matches decay $e^{-\tau} = e^{-(\Delta\xi)^2/(4t)}$
+with our Gaussian kernel width $t$ in $\xi$-space.
+
+\subsection*{Multilinear expansion}
+Write the Fourier–Walsh expansion $f_X = \sum_{S} \hat f(S)\,\sigma^S$. Then
+\[
+    P_\tau f_X = \sum_{S} e^{-2\tau|S|}\, \hat f(S)\,\sigma^S,
+\]
+so
+\[
+    \mathrm{Var}_\mu(P_\tau f_X)
+    = \sum_{S\ne\emptyset} e^{-4\tau|S|}\,\hat f(S)^2 .
+\tag{1}
+\]
+
+\subsection*{Twin Fourier weights}
+For our multiplicative $f_X$, only squarefree sets $S$ contribute; moreover
+$\hat f(\{p\}) = \tfrac{1}{2}\lambda_p e^{\Lambda}$ and higher-order terms
+factor. To second order (which suffices for a lower bound),
+\[
+    \mathrm{Var}_\mu(P_\tau f_X)
+    \;\asymp\; e^{-4\tau}\sum_{p} \lambda_p^2 + e^{-8\tau}\sum_{p\neq q}\lambda_p\lambda_q
+    + \cdots
+\]
+The exponential weights $e^{-4\tau|S|}$ mirror Gaussian overlaps
+$e^{-(\xi_p-\xi_q)^2/(4t)}$ when $\tau=(4t)^{-1}$.
+
+\subsection*{Encoding B (global primes, dimension $M=\pi(X)$)}
+Index coordinates by all primes $r\le X$ and set weights
+\[
+    w_r := \sum_{p\in T(X)} \lambda_p\, K_t(\xi_r-\xi_p), \qquad
+    f_X(\sigma) := \exp\!\Big(\sum_{r\le X} w_r \tfrac{1+\sigma_r}{2}\Big),
+    \quad \sigma\in\{\pm1\}^M .
+\]
+Then
+\[
+    \mathrm{Var}(P_\tau f_X) \;\asymp\; \sum_{p,q\in T(X)} \lambda_p\lambda_q
+    \sum_{r\le X} K_t(\xi_r-\xi_p)K_t(\xi_r-\xi_q)
+    \;\asymp\; E_{\mathrm{comm}}(\Phi_X),
+\]
+with $\tau=(4t)^{-1}$, since the inner sum is exactly the $K^2$ overlap forming
+$B_{pq}$ in the commutator matrix.
+
+\subsection*{Identification with $E_{\mathrm{comm}}$ (Encoding A heuristic, Encoding B direct)}
+Our commutator energy is
+\[
+    E_{\mathrm{comm}}(\Phi_X)
+    = \sum_{p,q} \lambda_p \lambda_q\, B_{pq},
+    \quad
+    B_{pq} = \sum_r (\xi_p-\xi_r)(\xi_q-\xi_r)\,K_{pr}K_{qr},
+    \ K_{pr}=e^{-(\xi_p-\xi_r)^2/(4t)} .
+\]
+Expanding $(1)$ and using $\xi_p=\tfrac{\log p}{2\pi}$, one matches coefficients:
+pairs $(p,q)$ in the variance pick up weight $e^{-(\xi_p-\xi_q)^2/(4t)}$,
+and the gradient factors $(\xi_p-\xi_r)(\xi_q-\xi_r)$ come from first-order
+score terms exactly as in Chen's score energy $\sum_i S_i^2$.
+Up to an absolute constant depending only on $t$,
+\[
+    \mathrm{Var}_\mu(P_\tau f_X) \;\asymp\; E_{\mathrm{comm}}(\Phi_X),
+    \qquad \tau = (4t)^{-1}.
+\]
+
+\subsection*{Consequence}
+If $R(\Phi_X)=E_{\mathrm{comm}}/E_{\mathrm{lat}}$ were $O(1)$ along $X\to\infty$,
+then $\mathrm{Var}_\mu(P_\tau f_X)=O(1)$ for the corresponding $\tau(X)$.
+Chen's anti-concentration (Theorem 1 in his paper) forbids such bounded
+variance unless the function stabilizes (finite twins); numerically and
+conceptually, variance grows like $X^\beta$ ($\beta>0$). Thus bounded $R$
+contradicts Chen's inequality, forcing $R(\Phi_X)\to\infty$ and, via SC2,
+infinitely many twin primes.
+
+\subsection*{Lemma (score--commutator identity, discrete OU)}
+Let $L$ be the Ornstein--Uhlenbeck generator on the Boolean cube
+$(Lf)(\sigma)=\sum_{r} (f(\sigma^{(r)})-f(\sigma))$, with carré du champ
+$\Gamma(f)=\tfrac12(L(f^2)-2fLf)=\tfrac14\sum_r (\partial_r f)^2$. For any
+nonnegative $f$ and $\tau>0$,
+\begin{equation}
+    \mathbb{E}\big[\Gamma(P_\tau f)\big]
+    = \sum_{S\neq\emptyset} |S|\, e^{-2\tau |S|}\, \hat f(S)^2,
+    \label{eq:ou-gamma}
+\end{equation}
+where $\hat f(S)$ are Walsh--Fourier coefficients.
+
+Choose the \emph{global} encoding on all primes $r\le X$:
+\[
+    f_X(\sigma) = \exp\!\Big(\sum_{r\le X} w_r \tfrac{1+\sigma_r}{2}\Big),\qquad
+    w_r := \sum_{p\in T(X)} \lambda_p\,K_t(\xi_r-\xi_p),\ \ \xi_n=\tfrac{\log n}{2\pi}.
+\]
+Then $\hat f_X(S)=\Big(\prod_{r\in S}\sinh \tfrac{w_r}{2}\Big)\Big(\prod_{r\notin S}
+\cosh \tfrac{w_r}{2}\Big)$ and for $\tau=(4t)^{-1}$ the leading term of
+\eqref{eq:ou-gamma} is
+\[
+    \mathbb{E}[\Gamma(P_\tau f_X)]
+    = e^{-2\tau}\sum_{r} w_r^2 + e^{-4\tau}\sum_{r\ne s} w_r w_s\,\!K_t(\xi_r-\xi_s)^2
+      + O\!\Big(\sum_r w_r^4\Big).
+\tag{†}
+\]
+Expanding $w_r$ and rearranging the double sum yields
+\[
+    \mathbb{E}[\Gamma(P_\tau f_X)] = c(t)\, \lambda^\top B\, \lambda
+    \;+\; O\!\Big(\sum_{r} w_r^4\Big),
+    \qquad c(t)>0 \text{ universal},
+\]
+where $B=A^\top A$ is the commutator kernel used in $E_{\mathrm{comm}}$.
+
+\begin{lemma}[Score bridge]\label{lem:score-bridge}
+For fixed $t>0$ and $\tau=(4t)^{-1}$ there exist absolute constants
+$c_1(t),c_2(t)>0$ such that
+\[
+    c_1(t)\, E_{\mathrm{comm}}(\Phi_X)
+    \;\le\; \mathbb{E}[\Gamma(P_\tau f_X)]
+    \;\le\; c_2(t)\, E_{\mathrm{comm}}(\Phi_X)
+    \bigl(1 + O_t(\|w\|_\infty^2)\bigr).
+\]
+If $\|w\|_\infty$ remains bounded (true for fixed $t$), then
+$\mathbb{E}[\Gamma(P_\tau f_X)]\asymp E_{\mathrm{comm}}(\Phi_X)$ uniformly in $X$.
+\end{lemma}
+
+This gives the required Lemma~A in the main plan: commutator energy is equivalent
+to the score-energy that drives Chen's anti-concentration, without invoking pair
+correlation or Hardy--Littlewood. Combining Lemma~\ref{lem:score-bridge} with
+Chen's lower bound on $\mathbb{E}[\Gamma(P_\tau f_X)]$ (Lemma B in the plan)
+yields a uniform positive lower bound for $E_{\mathrm{comm}}$, hence for
+$R(\Phi_X)$ once $E_{\mathrm{lat}}$ is estimated via PNT.

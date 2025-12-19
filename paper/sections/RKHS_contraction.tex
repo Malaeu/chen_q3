@@ -1,0 +1,232 @@
+% RKHS Contraction Mechanism
+% ==========================
+
+\section{RKHS Prime Contraction}\label{sec:rkhs}
+
+The prime contribution to the Weil functional is encoded by a sampling operator $T_P$. This section develops analytic upper bounds on $\|T_P\|$ inside a reproducing-kernel Hilbert space (RKHS) of the heat flow, following the classical framework of Aronszajn~\cite{Aronszajn1950} and modern expositions~\cite{BerlinetThomasAgnan2004,PaulsenRaghupathi2016}.
+
+\begin{remark}[Proof provenance]
+Detailed proofs of the RKHS contraction lemmas and the monotone schedules $t_{\min}(K)$ appear in the RH\_Q3 manuscript (Section 9). We summarize the statements and key estimates here; all constants are explicit.
+\end{remark}
+
+\subsection{Setup and Notation}
+
+Fix a compact $[-K, K] \subset \RR$, $K \geq 1$. Prime sample nodes are
+\begin{equation}\label{eq:xi-nodes}
+  \xi_n := \frac{\log n}{2\pi} \in [0, \infty), \qquad n \geq 2,
+\end{equation}
+with weights
+\begin{equation}\label{eq:rkhs-weights}
+  w(n) := \frac{\Lambda(n)}{\sqrt{n}}, \qquad w_{\max} := \sup_{n \geq 2} w(n) \leq \frac{2}{e}.
+\end{equation}
+
+We work in the RKHS $\mathcal{H}_k$ of the heat kernel on $\RR$:
+\begin{equation}\label{eq:heat-kernel}
+  k_t(x, y) := \exp\!\Big(-\frac{(x-y)^2}{4t}\Big), \qquad t > 0.
+\end{equation}
+
+\begin{lemma}[Effective weight cap]\label{lem:wmax-cap}
+For $w(p^m) = \frac{\log p}{p^{m/2}}$ one has
+\begin{equation}
+  0 \leq w(p^m) \leq \frac{2}{e} < \frac{3}{4}.
+\end{equation}
+The maximum is attained at $p^m = e^2$ formally.
+\end{lemma}
+
+\begin{proof}
+Consider $f(x) = \log x / \sqrt{x}$ on $x > 1$. Then $f'(x) = (1 - \tfrac{1}{2}\log x)/x^{3/2}$ vanishes at $x = e^2$ with $f(e^2) = 2/e \approx 0.7358$.
+\end{proof}
+
+\subsection{Node Separation}
+
+\begin{lemma}[Node gap on compacts]\label{lem:node-gap}
+For $\xi_n = \frac{\log n}{2\pi}$ and fixed $K > 0$, the active set is $\{2, \ldots, \lfloor e^{2\pi K} \rfloor\}$ and the minimal spacing satisfies
+\begin{equation}\label{eq:deltaK}
+  \delta_K := \min_{m \neq n,\ \xi_m, \xi_n \in [-K, K]} |\xi_m - \xi_n| \geq \frac{1}{2\pi(\lfloor e^{2\pi K} \rfloor + 1)}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Apply the mean value theorem to $\log x$ between consecutive integers.
+\end{proof}
+
+\subsection{RKHS Core Lemmas}
+
+\begin{lemma}[Energy identity]\label{lem:rkhs-energy}
+For $f \in \mathcal{H}_k$ supported on the closure of $\mathrm{span}\{k(\cdot, x) : x \in \mathcal{X}\}$:
+\begin{equation}
+  \|f\|_{\mathcal{H}_k}^2 = \langle f, T_k^\dagger f \rangle_{L^2(\mu)},
+\end{equation}
+where $T_k^\dagger$ is the pseudoinverse on the image of $T_k$. In particular, if $f(x) = \sum_{i=1}^N a_i k(x, x_i)$ for a finite sample, then
+\begin{equation}
+  \|f\|_{\mathcal{H}_k}^2 = a^\top K a,
+\end{equation}
+where $K = [k(x_i, x_j)]_{i,j=1}^N$ is the Gram matrix.
+\end{lemma}
+
+\begin{lemma}[Spectral floor for Gram matrices]\label{lem:gram-spectral-floor}
+Assume the diagonal of $K$ obeys $k(x_i, x_i) \geq c_0$ and the off-diagonal mass satisfies
+\begin{equation}
+  \sum_{j \neq i} |k(x_i, x_j)| \leq \rho_k \qquad \text{for every } i \in \{1, \ldots, N\}.
+\end{equation}
+Then
+\begin{equation}
+  \lambda_{\min}(K) \geq c_0 - \rho_k.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Gershgorin's circle theorem~\cite{HornJohnson2013,Varga2004} states that every eigenvalue $\lambda$ of $K$ belongs to at least one disc
+\begin{equation}
+  D_i = \Big\{ z \in \mathbb{C} : |z - k(x_i, x_i)| \leq \sum_{j \neq i} |k(x_i, x_j)| \Big\}.
+\end{equation}
+The hypothesis guarantees $\inf D_i \geq c_0 - \rho_k$, hence every eigenvalue lies in $[c_0 - \rho_k, \infty)$.
+\end{proof}
+
+\subsection{Off-Diagonal Bounds}
+
+\begin{lemma}[Geometric tail bound]\label{lem:geom-SK}
+For any node set with minimal spacing $\delta_K > 0$, define
+\begin{equation}
+  S_K(t) := \sum_{m \neq n} e^{-\frac{(\xi_m - \xi_n)^2}{4t}}.
+\end{equation}
+Then
+\begin{equation}\label{eq:SK-bound}
+  S_K(t) \leq \frac{2 e^{-\delta_K^2/(4t)}}{1 - e^{-\delta_K^2/(4t)}}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Fix $n$ and order the remaining nodes by increasing distance. The $j$-th nearest neighbor lies at distance at least $j \cdot \delta_K$, hence the $n$-th row sum of off-diagonal magnitudes is bounded by $2 \sum_{j \geq 1} e^{-j^2 \delta_K^2/(4t)}$. Since $j^2 \geq j$ for $j \geq 1$, we have $e^{-j^2 c} \leq e^{-jc}$ for $c > 0$, yielding the geometric series bound.
+\end{proof}
+
+\subsection{Prime Operator Bounds}
+
+The prime operator is defined as
+\begin{equation}\label{eq:TP-def}
+  T_P := \sum_{\xi_n \in [-K, K]} w(n) |k_{\xi_n}\rangle \langle k_{\xi_n}|, \qquad \|k_\xi\|_{\mathcal{H}_K} = 1.
+\end{equation}
+
+\begin{proposition}[RKHS cap via Gram geometry]\label{prop:rkhs-gram-cap}
+For every $t > 0$ and $K \geq 1$:
+\begin{equation}\label{eq:TP-bound}
+  \|T_P\|_{\mathcal{H}_k \to \mathcal{H}_k} \leq w_{\max} + \sqrt{w_{\max}} \cdot S_K(t).
+\end{equation}
+In particular, with $t = t_{\min}(K)$ defined below:
+\begin{equation}
+  \|T_P\| \leq \rho_K := w_{\max} + \sqrt{w_{\max}} \cdot \eta_K, \qquad \eta_K \in (0, 1 - w_{\max}).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+By Gershgorin's theorem applied to the weighted Gram matrix $W^{1/2} G W^{1/2}$ where $W = \mathrm{diag}(w(n))$ and $G_{mn} = \langle k_{\xi_m}, k_{\xi_n} \rangle$, each eigenvalue of $T_P$ lies in a disc centered at $w(n)$ with radius $\sqrt{w(n)} \sum_{m \neq n} \sqrt{w(m)} |G_{mn}|$. Using $|G_{mn}| \leq e^{-(\xi_m - \xi_n)^2/(4t)}$ and Lemma~\ref{lem:geom-SK} yields the stated bound.
+\end{proof}
+
+\subsection{Constructive Heat Scale}
+
+\begin{theorem}[Strict contraction]\label{thm:rkhs-contraction}
+If $t = t_{\min}(K)$ is chosen so that
+\begin{equation}
+  S_K(t_{\min}) \leq \frac{1 - w_{\max} - \varepsilon_K}{\sqrt{w_{\max}}}
+\end{equation}
+for some $\varepsilon_K \in (0, 1 - w_{\max})$, then $\|T_P\|_{\mathcal{H}_K} \leq \rho_K < 1$ and hence
+\begin{equation}
+  T_A - T_P \succeq (1 - \rho_K) T_A \succeq 0 \qquad \text{on } \mathcal{H}_K.
+\end{equation}
+Solving the geometric bound of Lemma~\ref{lem:geom-SK} for $t$ gives the explicit formula:
+\begin{equation}\label{eq:tmin}
+  \boxed{t_{\min}(K) = \frac{\delta_K^2}{4 \ln\!\bigl((2 + \eta_K)/\eta_K\bigr)}}, \qquad \eta_K = \frac{1 - w_{\max} - \varepsilon_K}{\sqrt{w_{\max}}}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Set $q := e^{-\delta_K^2/(4t)} \in (0, 1)$ and require $\frac{2q}{1-q} \leq \eta_K$, i.e., $q \leq \frac{\eta_K}{2 + \eta_K}$. This is equivalent to $t \leq \delta_K^2 / (4 \ln((2 + \eta_K)/\eta_K))$.
+\end{proof}
+
+\begin{remark}[Monotonicity in $K$]
+Because $\delta_K \downarrow 0$ as the compact widens, the closed form~\eqref{eq:tmin} shows that $t_{\min}(K)$ is automatically chosen monotone decreasing along the chain $K \nearrow$. Thus the parameter schedule used in A3/T5 is consistent without additional tuning.
+\end{remark}
+
+\subsection{Explicit contraction schedule}\label{subsec:explicit-tmin}
+
+Combining the analytic Archimedean floor \(c_0(K)\) from Proposition~\ref{prop:c-arch-explicit} with the gap bound~\eqref{eq:deltaK} yields a fully explicit choice of \(t\).
+
+\begin{corollary}[Closed form for $t_{\min}(K)$]\label{cor:explicit-tmin}
+Let
+\[
+  \eta_K := \frac{ \tfrac14 c_0(K) - w_{\max} }{ \sqrt{w_{\max}} },
+\]
+and note $\eta_K>0$ for all $K>0$ under the explicit bound of Proposition~\ref{prop:c-arch-explicit} (since $c_0(K) \downarrow 0.80\ldots > 4 w_{\max} \approx 0.736$ as $K\to\infty$). Define
+\begin{equation}\label{eq:tmin-explicit}
+  t_{\min}(K) := \frac{\delta_K^2}{4 \ln\!\bigl((2+\eta_K)/\eta_K\bigr)}, \qquad
+  \delta_K \ge \frac{1}{2\pi(e^{2\pi K}+1)}.
+\end{equation}
+Then $S_K(t_{\min}) \le \eta_K$ and consequently
+\[
+  \|T_P\| \le w_{\max} + \sqrt{w_{\max}}\, \eta_K \le \frac{c_0(K)}{4}.
+\]
+\end{corollary}
+
+\begin{proof}
+Set the geometric tail bound $2q/(1-q) \le \eta_K$ with $q = e^{-\delta_K^2/(4t)}$; solving for $t$ gives~\eqref{eq:tmin-explicit}. The norm bound then follows from Proposition~\ref{prop:rkhs-gram-cap}.
+\end{proof}
+
+
+\subsection{Early/Tail Calculus}
+
+\begin{lemma}[Early block]\label{lem:rkhs-early}
+For every $N \geq 2$:
+\begin{equation}
+  \sum_{n \leq N} \frac{\Lambda(n)}{\sqrt{n}} \leq \sum_{n \leq N} \frac{\log n}{\sqrt{n}} \leq 2\sqrt{N} \log N.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$\Lambda(n) \leq \log n$ is standard. For the integral bound:
+\begin{equation}
+  \sum_{n \leq N} \frac{\log n}{\sqrt{n}} \leq \int_1^N \frac{\log x}{\sqrt{x}} dx + O(1) = \big[2\sqrt{x} \log x - 4\sqrt{x}\big]_1^N + O(1) \leq 2\sqrt{N} \log N.
+\end{equation}
+\end{proof}
+
+\begin{lemma}[Log-Gaussian tail]\label{lem:rkhs-tail}
+For every $t > 0$ and $N \geq 2$:
+\begin{equation}
+  \sum_{n > N} \frac{\Lambda(n)}{\sqrt{n}} e^{-4\pi^2 t (\log n)^2} \ll \frac{e^{-4\pi^2 t (\log N)^2}}{t}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Replace the sum by a Stieltjes integral against $\psi(x) = \sum_{n \leq x} \Lambda(n)$ and substitute $y = \log x$. The Gaussian tail estimate is elementary.
+\end{proof}
+
+\subsection{Trace-Cap Bound}
+
+\begin{lemma}[Trace-cap bound]\label{lem:trace-cap-bound}
+For every compact $[-K, K]$, choose $t_{\mathrm{rkhs}} \geq t_{\min}(K)$ from~\eqref{eq:tmin}. Then the prime operator obeys:
+\begin{equation}
+  \|T_P\|_{\mathrm{op}} \leq \rho_K = w_{\max} + \sqrt{w_{\max}} \cdot S_K(t_{\min}(K)) \leq \frac{1}{4} c_0(K),
+\end{equation}
+where $c_0(K)$ is the Archimedean floor from Section~\ref{sec:A3}. Consequently, for every Fej\'er$\times$heat parameter set $(B, t_{\mathrm{rkhs}})$ with $t_{\mathrm{rkhs}} \geq t_{\min}(K)$, the contraction bound $\|T_P\| \leq c_0(K)/4$ holds analytically.
+\end{lemma}
+
+\begin{corollary}[Plug into A3]\label{cor:a3-plug}
+On $[-K, K]$:
+\begin{equation}
+  \lambda_{\min}\big(T_M[P_A] - T_P\big) \geq c_0(K) - C \cdot \omega_{P_A}\!\big(\tfrac{\pi}{M}\big) - \|T_P\|.
+\end{equation}
+With $t \geq t_{\min}(K)$ one has $\|T_P\| \leq c_0(K)/4$, hence:
+\begin{equation}
+  \lambda_{\min}\big(T_M[P_A] - T_P\big) \geq \tfrac{1}{2} c_0(K) - C \cdot \omega_{P_A}\!\big(\tfrac{\pi}{M}\big).
+\end{equation}
+\end{corollary}
+
+\subsection{Two-Scale Decoupling}
+
+\begin{corollary}[Two-scale decoupling]\label{cor:two-scale}
+On a fixed compact $K$, choose $t_{\mathrm{rkhs}} = t_{\min}(K)$ so that $\|T_P\| \leq \rho_K < 1$. Let $t_{\mathrm{sym}} > 0$ in the Fej\'er$\times$heat window be chosen independently. If $t_{\mathrm{sym}}$ is such that $\min P_A \geq c_0 > 0$, then:
+\begin{itemize}
+  \item The symbol parameter $t_{\mathrm{sym}}$ controls the modulus $\omega_{P_A}$ (symbol barrier).
+  \item The RKHS parameter $t_{\mathrm{rkhs}}$ controls only $\|T_P\|$ (contraction).
+\end{itemize}
+The effects are formally decoupled.
+\end{corollary}

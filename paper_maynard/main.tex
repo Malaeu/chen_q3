@@ -1,0 +1,51 @@
+% Sieve-Spectral Synergy Paper
+% ============================
+
+\input{preamble}
+
+\title{Sieve--Spectral Synergy:\\
+       A Bridge Between Maynard Weights and Q3 Spectral Positivity}
+
+\author{Eugen Malamutmann, MD\thanks{ORCID: 0000-0003-4624-5890} \\
+\small University of Duisburg--Essen}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We construct polynomial sieve functions $F_\alpha(t) = (1 - \sum_i t_i)^\alpha$
+and derive the closed-form variational functional
+$M(F_\alpha, k) = 2k(2\alpha+1)/[(\alpha+1)(k+2\alpha+1)]$.
+We prove that $M(F_\alpha, k) > m$ iff $k > k^*(\alpha, m)$, where
+$k^*(\alpha, m) = m(\alpha+1)(2\alpha+1)/[2(2\alpha+1) - m(\alpha+1)]$.
+For $m = 2$, the optimal exponent $\alpha^* = 1/\sqrt{2}$ minimizes
+$k^*$ to $2\sqrt{2}+3 \approx 5.83$, so $k = 6$ suffices.
+For $\alpha = 1/2$ (Q3-motivated), $k^* = 6$, giving $M(F_{1/2}, 7) = 56/27 > 2$.
+Since $M > 2$ implies bounded prime gaps (Maynard--Tao),
+we establish $\liminf(p_{n+1} - p_n) < \infty$ by purely analytic methods.
+\end{abstract}
+
+\medskip
+\noindent\textit{2020 Mathematics Subject Classification:}
+11N35 (Sieves), 11M26 (Nonreal zeros of zeta and $L$-functions).
+
+\smallskip
+\noindent\textit{Keywords:}
+prime gaps, Maynard--Tao sieve, spectral positivity, Q3 criterion,
+bounded gaps between primes.
+
+\input{sections/introduction}
+\input{sections/maynard_review}
+\input{sections/q3_weights}
+\input{sections/formal_setup}
+\input{sections/correspondence}
+\input{sections/numerical}
+\input{sections/conclusions}
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

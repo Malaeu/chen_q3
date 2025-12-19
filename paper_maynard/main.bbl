@@ -1,0 +1,36 @@
+\begin{thebibliography}{GPY09}
+
+\bibitem[GPY09]{GPY2009}
+Daniel~A. Goldston, J{\'a}nos Pintz, and Cem~Y. Y{\i}ld{\i}r{\i}m.
+\newblock Primes in tuples {I}.
+\newblock {\em Annals of Mathematics}, 170(2):819--862, 2009.
+
+\bibitem[HL23]{HardyLittlewood1923}
+G.~H. Hardy and J.~E. Littlewood.
+\newblock Some problems of `{P}artitio numerorum'; {III}: {O}n the expression
+  of a number as a sum of primes.
+\newblock {\em Acta Mathematica}, 44:1--70, 1923.
+
+\bibitem[Mal25]{Q3paper}
+Eugen Malamutmann.
+\newblock Operator--geometric proof of the {R}iemann {H}ypothesis via the
+  positivity of the {W}eil functional, 2025.
+\newblock Available at \url{https://doi.org/10.5281/zenodo.17541763}.
+
+\bibitem[May15]{Maynard2015}
+James Maynard.
+\newblock Small gaps between primes.
+\newblock {\em Annals of Mathematics}, 181(1):383--413, 2015.
+
+\bibitem[Pol14]{Polymath2014}
+D.~H.~J. Polymath.
+\newblock Variants of the {S}elberg sieve, and bounded intervals containing
+  many primes.
+\newblock {\em Research in the Mathematical Sciences}, 1(12), 2014.
+
+\bibitem[Zha14]{Zhang2014}
+Yitang Zhang.
+\newblock Bounded gaps between primes.
+\newblock {\em Annals of Mathematics}, 179(3):1121--1174, 2014.
+
+\end{thebibliography}

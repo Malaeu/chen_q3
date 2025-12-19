@@ -1,0 +1,173 @@
+% Formal Setup
+% ============
+
+\section{The Spectral Sieve Function}
+\label{sec:setup}
+
+We construct a sieve function from Q3 spectral weights and verify
+that it satisfies the hypotheses of Maynard's theorem.
+
+\subsection{Weight Kernel}
+
+\begin{definition}[Smooth weight kernel]
+  \label{def:weight-kernel}
+  For $s \in [0,1]$ and parameters $K > 0$, $\tsym > 0$, define
+  \begin{equation}
+    \WQ(s) = 4\pi K s \cdot e^{-\pi K s} \cdot e^{-K^2 s^2/(4\tsym)}.
+  \end{equation}
+\end{definition}
+
+\begin{lemma}
+  \label{lem:kernel-properties}
+  The function $\WQ : [0,1] \to \R$ satisfies:
+  \begin{enumerate}
+    \item[\textnormal{(i)}] $\WQ \in C^\infty([0,1])$,
+    \item[\textnormal{(ii)}] $\WQ(s) \geq 0$ for all $s \in [0,1]$,
+    \item[\textnormal{(iii)}] $\WQ(0) = 0$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  (i) The function $\WQ(s)$ is a product of $s$ (polynomial),
+  $e^{-\pi K s}$ (entire function), and $e^{-K^2 s^2/(4\tsym)}$
+  (entire function). Products of smooth functions are smooth,
+  so $\WQ \in C^\infty(\R)$ and in particular $\WQ \in C^\infty([0,1])$.
+
+  (ii) For $s \in [0,1]$: the factor $4\pi K > 0$; the factor $s \geq 0$;
+  exponential functions are strictly positive. Hence $\WQ(s) \geq 0$.
+
+  (iii) At $s = 0$: $\WQ(0) = 4\pi K \cdot 0 \cdot e^0 \cdot e^0 = 0$.
+\end{proof}
+
+\subsection{Spectral Sieve Function}
+
+\begin{definition}[Spectral sieve function]
+  \label{def:Fspec}
+  For $t = (t_1, \ldots, t_k) \in [0,1]^k$, define
+  \begin{equation}
+    \Fspec(t) = \prod_{i=1}^k \WQ(t_i) \cdot \exp\Bigl(-\frac{\|t\|^2}{\tau}\Bigr),
+  \end{equation}
+  where $\tau = 16\tsym$ and $\|t\|^2 = \sum_{i=1}^k t_i^2$.
+\end{definition}
+
+\begin{definition}[Smooth simplex cutoff]
+  \label{def:cutoff}
+  Fix $\epsilon \in (0, 1/2)$. Let $\chi_\epsilon : \R \to [0,1]$
+  be a smooth function satisfying:
+  \begin{enumerate}
+    \item $\chi_\epsilon(x) = 1$ for $x \leq 1 - \epsilon$,
+    \item $\chi_\epsilon(x) = 0$ for $x \geq 1$,
+    \item $\chi_\epsilon$ is monotonically decreasing on $[1-\epsilon, 1]$.
+  \end{enumerate}
+  Such functions exist; for example, one may use a mollified step function.
+\end{definition}
+
+\begin{definition}[Modified spectral sieve function]
+  \label{def:Fspec-modified}
+  Define
+  \begin{equation}
+    \tilde{F}_{\mathrm{spec}}(t) = \Fspec(t) \cdot
+      \chi_\epsilon\Bigl(\sum_{i=1}^k t_i\Bigr).
+  \end{equation}
+\end{definition}
+
+\subsection{Verification of Maynard Conditions}
+
+We now verify that $\tilde{F}_{\mathrm{spec}}$ satisfies the four
+conditions required by Theorem~\ref{thm:maynard-variational}.
+
+\begin{lemma}[Smoothness]
+  \label{lem:smooth}
+  $\tilde{F}_{\mathrm{spec}} \in C^\infty([0,1]^k)$.
+\end{lemma}
+
+\begin{proof}
+  We show each factor of $\tilde{F}_{\mathrm{spec}}$ is smooth.
+
+  \textit{Factor 1:} $\prod_{i=1}^k \WQ(t_i)$.
+  By Lemma~\ref{lem:kernel-properties}(i), each $\WQ(t_i)$ is
+  $C^\infty$ in $t_i$. The product of smooth functions is smooth.
+
+  \textit{Factor 2:} $\exp(-\|t\|^2/\tau)$.
+  The function $\|t\|^2 = \sum_i t_i^2$ is a polynomial, hence smooth.
+  Composition with the exponential gives a smooth function.
+
+  \textit{Factor 3:} $\chi_\epsilon(\sum_i t_i)$.
+  The sum $\sum_i t_i$ is smooth, and $\chi_\epsilon$ is smooth by
+  Definition~\ref{def:cutoff}. The composition is smooth.
+
+  The product of smooth functions is smooth, so
+  $\tilde{F}_{\mathrm{spec}} \in C^\infty([0,1]^k)$.
+\end{proof}
+
+\begin{lemma}[Simplex support]
+  \label{lem:support}
+  $\supp(\tilde{F}_{\mathrm{spec}}) \subseteq \Delta_k$,
+  where $\Delta_k = \{t \in [0,1]^k : \sum_i t_i \leq 1\}$.
+\end{lemma}
+
+\begin{proof}
+  Let $t \in [0,1]^k$ with $\sum_i t_i > 1$. By Definition~\ref{def:cutoff},
+  $\chi_\epsilon(x) = 0$ for $x \geq 1$. Since $\sum_i t_i > 1$,
+  we have $\chi_\epsilon(\sum_i t_i) = 0$, hence
+  $\tilde{F}_{\mathrm{spec}}(t) = 0$.
+
+  Therefore $\tilde{F}_{\mathrm{spec}}(t) \neq 0$ implies $\sum_i t_i \leq 1$,
+  i.e., $\supp(\tilde{F}_{\mathrm{spec}}) \subseteq \Delta_k$.
+\end{proof}
+
+\begin{lemma}[Non-negativity]
+  \label{lem:nonneg}
+  $\tilde{F}_{\mathrm{spec}}(t) \geq 0$ for all $t \in [0,1]^k$.
+\end{lemma}
+
+\begin{proof}
+  Each factor is non-negative:
+  \begin{itemize}
+    \item $\WQ(t_i) \geq 0$ by Lemma~\ref{lem:kernel-properties}(ii),
+    \item $\exp(-\|t\|^2/\tau) > 0$ since exponentials are positive,
+    \item $\chi_\epsilon(\sum_i t_i) \in [0,1]$ by Definition~\ref{def:cutoff}.
+  \end{itemize}
+  The product of non-negative numbers is non-negative.
+\end{proof}
+
+\begin{lemma}[Symmetry]
+  \label{lem:symmetry}
+  $\tilde{F}_{\mathrm{spec}}$ is symmetric: for any permutation
+  $\sigma \in S_k$,
+  \begin{equation}
+    \tilde{F}_{\mathrm{spec}}(t_{\sigma(1)}, \ldots, t_{\sigma(k)})
+    = \tilde{F}_{\mathrm{spec}}(t_1, \ldots, t_k).
+  \end{equation}
+\end{lemma}
+
+\begin{proof}
+  Each component of $\tilde{F}_{\mathrm{spec}}$ is symmetric:
+  \begin{itemize}
+    \item $\prod_{i=1}^k \WQ(t_i) = \prod_{i=1}^k \WQ(t_{\sigma(i)})$
+          since the product is over all indices,
+    \item $\|t\|^2 = \sum_i t_i^2 = \sum_i t_{\sigma(i)}^2$
+          by commutativity of addition,
+    \item $\sum_i t_i = \sum_i t_{\sigma(i)}$ similarly.
+  \end{itemize}
+  Hence $\tilde{F}_{\mathrm{spec}}$ is invariant under permutations.
+\end{proof}
+
+\begin{proposition}[Maynard admissibility]
+  \label{prop:maynard-admissible}
+  The function $\tilde{F}_{\mathrm{spec}}$ satisfies all hypotheses
+  of Theorem~\ref{thm:maynard-variational}:
+  \begin{enumerate}
+    \item[\textnormal{(i)}] $\tilde{F}_{\mathrm{spec}} \in C^\infty([0,1]^k)$,
+    \item[\textnormal{(ii)}] $\supp(\tilde{F}_{\mathrm{spec}}) \subseteq \Delta_k$,
+    \item[\textnormal{(iii)}] $\tilde{F}_{\mathrm{spec}} \geq 0$,
+    \item[\textnormal{(iv)}] $\tilde{F}_{\mathrm{spec}}$ is symmetric.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  (i) is Lemma~\ref{lem:smooth}.
+  (ii) is Lemma~\ref{lem:support}.
+  (iii) is Lemma~\ref{lem:nonneg}.
+  (iv) is Lemma~\ref{lem:symmetry}.
+\end{proof}

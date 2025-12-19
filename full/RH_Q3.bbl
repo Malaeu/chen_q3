@@ -1,0 +1,179 @@
+\begin{thebibliography}{10}
+
+\bibitem{Aronszajn1950}
+Nachman Aronszajn.
+\newblock Theory of reproducing kernels.
+\newblock {\em Transactions of the American Mathematical Society}, 68:337--404,
+  1950.
+
+\bibitem{BenderBrodyMuller2017}
+Carl~M. Bender, Dorje~C. Brody, and Markus~P. M{\"u}ller.
+\newblock Hamiltonian for the zeros of the {R}iemann zeta function.
+\newblock {\em Physical Review Letters}, 118(13):130201, 2017.
+
+\bibitem{BerlinetThomasAgnan2004}
+Alain Berlinet and Christine Thomas-Agnan.
+\newblock {\em Reproducing Kernel {H}ilbert Spaces in Probability and
+  Statistics}.
+\newblock Kluwer Academic Publishers, Boston, MA, 2004.
+
+\bibitem{Berlinet2004}
+Alain Berlinet and Christine Thomas-Agnan.
+\newblock Reproducing kernel hilbert spaces in probability and statistics.
+\newblock {\em Lecture Notes in Statistics}, 71, 2004.
+\newblock Monograph.
+
+\bibitem{BoettcherSilbermann2006}
+Albrecht B{\"o}ttcher and Bernd Silbermann.
+\newblock {\em Introduction to Large Truncated Toeplitz Matrices}.
+\newblock Springer, New York, 2006.
+
+\bibitem{Bottcher1907}
+Karl B{\"o}ttcher.
+\newblock Theorie der toeplitzschen determinanten zweite abhandlung.
+\newblock {\em Mathematische Annalen}, 64:521--560, 1907.
+
+\bibitem{cairo2025counterexample}
+Hannah Cairo.
+\newblock A counterexample to the {M}izohata--{T}akeuchi conjecture.
+\newblock {\em arXiv preprint}, 2025.
+\newblock Preprint; submitted to peer-reviewed journal.
+
+\bibitem{ConnesMarcolli2008}
+Alain Connes and Matilde Marcolli.
+\newblock {\em Noncommutative Geometry, Quantum Fields and Motives}.
+\newblock American Mathematical Society, Providence, RI, 2008.
+
+\bibitem{Conrey2003}
+J.~Brian Conrey.
+\newblock The {R}iemann hypothesis.
+\newblock {\em Notices of the American Mathematical Society}, 50(3):341--353,
+  2003.
+
+\bibitem{Edwards1974}
+Harold~M. Edwards.
+\newblock {\em Riemann's Zeta Function}.
+\newblock Academic Press, New York, 1974.
+
+\bibitem{Fesenko2008}
+Ivan Fesenko.
+\newblock Analysis on arithmetic schemes, {H}eins' theory and {W}eil explicit
+  formula.
+\newblock {\em Mathematical Proceedings of the Cambridge Philosophical
+  Society}, 145(3):675--699, 2008.
+
+\bibitem{GrenanderSzego1958}
+Ulf Grenander and G{\'a}bor Szeg{\H{o}}.
+\newblock {\em Toeplitz Forms and Their Applications}.
+\newblock University of California Press, Berkeley, CA, 1958.
+
+\bibitem{GriffinOnoRolenZagier2019}
+Michael Griffin, Ken Ono, Larry Rolen, and Don Zagier.
+\newblock Jensen polynomials for the {R}iemann zeta function and other
+  sequences.
+\newblock {\em Proceedings of the National Academy of Sciences USA},
+  116(21):9942--9947, 2019.
+
+\bibitem{Guinand1948}
+A.~P. Guinand.
+\newblock A summation formula in the theory of prime numbers.
+\newblock {\em Proceedings of the London Mathematical Society}, 50:107--119,
+  1948.
+
+\bibitem{GuthMaynard2024}
+Larry Guth and James Maynard.
+\newblock New large value estimates for {D}irichlet polynomials.
+\newblock {\em Annals of Mathematics}, 2024.
+\newblock To appear.
+
+\bibitem{HornJohnson2013}
+Roger~A. Horn and Charles~R. Johnson.
+\newblock {\em Matrix Analysis}.
+\newblock Cambridge University Press, Cambridge, 2nd edition, 2013.
+
+\bibitem{IwaniecKowalski2004}
+Henryk Iwaniec and Emmanuel Kowalski.
+\newblock {\em Analytic Number Theory}, volume~53 of {\em American Mathematical
+  Society Colloquium Publications}.
+\newblock American Mathematical Society, Providence, RI, 2004.
+
+\bibitem{Li1997}
+Xian-Jin Li.
+\newblock The positivity of a sequence of numbers and the {R}iemann hypothesis.
+\newblock {\em Journal of Number Theory}, 65:325--333, 1997.
+
+\bibitem{MontgomeryVaughan2007}
+Hugh~L. Montgomery and Robert~C. Vaughan.
+\newblock {\em Multiplicative Number Theory I: Classical Theory}, volume~97 of
+  {\em Cambridge Studies in Advanced Mathematics}.
+\newblock Cambridge University Press, Cambridge, 2007.
+
+\bibitem{NISTDLMF}
+{NIST Digital Library of Mathematical Functions}.
+\newblock Nist digital library of mathematical functions.
+\newblock \url{https://dlmf.nist.gov/}.
+\newblock (release 1.1.10 of 2024-04-15).
+
+\bibitem{PaulsenRaghupathi2016}
+Vern Paulsen and Mrinal Raghupathi.
+\newblock {\em An Introduction to the Theory of Reproducing Kernel Hilbert
+  Spaces}, volume 152 of {\em Cambridge Studies in Advanced Mathematics}.
+\newblock Cambridge University Press, Cambridge, 2016.
+
+\bibitem{Paulsen2016}
+Vern Paulsen and Mrinal Raghupathi.
+\newblock An introduction to the theory of reproducing kernel hilbert spaces.
+\newblock {\em Cambridge Studies in Advanced Mathematics}, 152, 2016.
+
+\bibitem{Perelman2002}
+Grigori Perelman.
+\newblock The entropy formula for the {R}icci flow and its geometric
+  applications.
+\newblock {\em arXiv preprint}, 2002.
+
+\bibitem{Perelman2003}
+Grigori Perelman.
+\newblock Ricci flow with surgery on three-manifolds.
+\newblock {\em arXiv preprint}, 2003.
+
+\bibitem{PlattTrudgian2021}
+David~J. Platt and Tim Trudgian.
+\newblock The {R}iemann hypothesis is true up to $3 \times 10^{12}$.
+\newblock {\em Bulletin of the London Mathematical Society}, 53(3):792--797,
+  2021.
+
+\bibitem{rodgers2020debruijn}
+Brad Rodgers and Terence Tao.
+\newblock Lower bounds for the de {B}ruijn--{N}ewman constant.
+\newblock {\em Journal of the American Mathematical Society}, 33(1):223--232,
+  2020.
+
+\bibitem{SteinShakarchi2003}
+Elias~M. Stein and Rami Shakarchi.
+\newblock {\em Fourier Analysis: {A}n Introduction}, volume~1 of {\em Princeton
+  Lectures in Analysis}.
+\newblock Princeton University Press, Princeton, NJ, 2003.
+
+\bibitem{Szego1952}
+G{\'a}bor Szeg{\H{o}}.
+\newblock {\em Orthogonal Polynomials}, volume~23 of {\em American Mathematical
+  Society Colloquium Publications}.
+\newblock American Mathematical Society, New York, 1952.
+
+\bibitem{Varga2004}
+Richard~S. Varga.
+\newblock {\em Ger{\v{s}}gorin and His Circles}.
+\newblock Springer, Berlin, 2004.
+
+\bibitem{Weil1952}
+Andr{\'e} Weil.
+\newblock Sur les formules explicites de la th{\'e}orie des nombres premiers.
+\newblock {\em Meddelanden Fran Lunds Univ. Mat. Sem.}, pages 252--265, 1952.
+\newblock Reprinted in \emph{Œuvres Scientifiques}, Vol.~2, pp.~48--61.
+
+\bibitem{Zygmund2002}
+Antoni Zygmund.
+\newblock {\em Trigonometric Series}.
+\newblock Cambridge University Press, Cambridge, 3rd edition, 2002.
+
+\end{thebibliography}

@@ -1,0 +1,47 @@
+% Chen ↔ Twin Primes Dictionary (conceptual)
+\section*{Appendix: Chen–Twin Dictionary (conceptual outline)}
+
+This note sketches a translation between Chen's reverse heat method on the
+Boolean cube and the twin-prime commutator framework. The goal is to set up a
+precise anti-concentration statement whose violation would force $R(\Phi_X)$
+to stay bounded, contradicting numerics and (under SC2) finiteness of twins.
+
+\subsection*{Objects}
+\begin{tabular}{l|l}
+Chen (Boolean cube) & Twin primes (this work) \\
+\hline
+State space $\{-1,1\}^n$ & Twin index set $T(X)$ with signs $\chi_4(p)\in\{\pm1\}$ \\
+Heat semigroup $P_\tau f(x)$ & Gaussian kernel $G_t(\xi-\eta)=e^{-(\xi-\eta)^2/(4t)}$ \\
+Reverse heat flow $V_t = U_{T-t}$ & Backward smoothing / de-smoothing of twin vector \\
+Score $S_i(x)=x_i\partial_i f/f$ & Gradient $G_p = (A\lambda)_p$ (commutator coeffs) \\
+Level-1 inequality (Lemma 6) & Local coherence inequality on $B_{pq}=(A^\top A)_{pq}$ \\
+Anti-concentration $\mathbb{P}(P_\tau f > \eta \int f)$ & Lower bound on $R(\Phi_X)=E_{\mathrm{comm}}/E_{\mathrm{lat}}$ \\
+\end{tabular}
+
+\subsection*{Key structural analogies}
+\begin{itemize}
+    \item Chen’s reverse heat argument shows a smoothed $f$ cannot concentrate too much: tails are controlled by score/Dirichlet energy.
+    \item Our $E_{\mathrm{comm}} = \|A\lambda\|^2$ is exactly the Dirichlet-form analogue; $E_{\mathrm{lat}}$ plays the role of mass/normalization.
+    \item Bounded $R(\Phi_X)$ would mean high concentration of the smoothed twin mass along kernel directions—an analogue of forbidden concentration in Chen.
+\end{itemize}
+
+\subsection*{Target hypothesis (anti-concentration for twins)}
+\begin{quote}
+If $R(\Phi_X)$ were $O(1)$ along a sequence $X_k\to\infty$, then the smoothed
+twin density would exhibit concentration incompatible with a Chen-type
+anti-concentration bound; hence either $R(\Phi_X)\to\infty$ or twins are
+infinite.
+\end{quote}
+
+\subsection*{Intended proof skeleton}
+\begin{enumerate}
+    \item Express $E_{\mathrm{comm}}$ and $E_{\mathrm{lat}}$ as Chen-type Dirichlet and mass functionals of a positive function $f_X$ derived from twin weights.
+    \item Import a Chen-style level-1 inequality (archimedean, Lemma~\ref{lem:arch}) to bound concentration by Dirichlet energy.
+    \item Show bounded $R$ would force concentration of $f_X$ beyond that allowed by the inequality (anti-concentration step).
+    \item Conclude: $R(\Phi_X)$ must grow (power-law); together with SC2 (finite twins $\Rightarrow R=O(1)$) this yields infinitely many twin primes.
+\end{enumerate}
+
+\subsection*{What remains}
+The missing analytic piece is the anti-concentration inequality in the twin
+setting (Step 3), i.e.\ a lower bound on a smoothed twin sum (or on
+$\overline{B}(X)$). Any positive power-law would suffice.

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aristotle Monitor - Q3 Formalization</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        h1 { color: #58a6ff; margin-bottom: 5px; font-size: 28px; }
+        .subtitle { color: #8b949e; margin-bottom: 20px; }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        button {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover { background: #2ea043; }
+        button.secondary {
+            background: #21262d;
+            border: 1px solid #30363d;
+        }
+        button.secondary:hover { background: #30363d; }
+        .interval-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #161b22;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+        .interval-control label { font-size: 12px; color: #8b949e; }
+        .interval-control input[type="number"] {
+            width: 60px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: #58a6ff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .interval-control span { font-size: 12px; color: #8b949e; }
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .summary-item {
+            background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            text-align: center;
+        }
+        .summary-value {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .summary-value.complete { color: #3fb950; }
+        .summary-value.progress { color: #58a6ff; }
+        .summary-value.queued { color: #8b949e; }
+        .summary-label { font-size: 12px; color: #8b949e; margin-top: 5px; }
+        .projects { display: grid; gap: 12px; }
+        .project {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .project-header {
+            padding: 16px 20px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 15px;
+        }
+        .project-info { display: flex; flex-direction: column; gap: 8px; }
+        .project-name {
+            font-weight: 600;
+            color: #58a6ff;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .project-name:hover { color: #79c0ff; text-decoration: underline; }
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: #21262d;
+            border-radius: 4px;
+            overflow: hidden;
+            min-width: 200px;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .progress-fill.complete { background: linear-gradient(90deg, #238636, #3fb950); }
+        .progress-fill.progress { background: linear-gradient(90deg, #1f6feb, #58a6ff); }
+        .progress-fill.queued { background: #30363d; }
+        .progress-text { font-size: 13px; color: #8b949e; min-width: 45px; }
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status-badge.COMPLETE { background: #238636; color: white; }
+        .status-badge.IN_PROGRESS { background: #1f6feb; color: white; }
+        .status-badge.QUEUED { background: #30363d; color: #8b949e; }
+        .status-badge.FAILED, .status-badge.ERROR { background: #da3633; color: white; }
+        .project-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .download-btn {
+            background: #1f6feb;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+        .download-btn:hover { background: #388bfd; }
+        .toggle-btn {
+            background: #6e7681;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+        .toggle-btn:hover { background: #8b949e; }
+        .toggle-btn.open { background: #1f6feb; }
+        .project-id {
+            font-family: monospace;
+            font-size: 10px;
+            color: #484f58;
+        }
+        .timestamps {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+        .ts-item {
+            font-size: 11px;
+            color: #6e7681;
+            white-space: nowrap;
+        }
+        .ts-item:nth-child(3) { color: #58a6ff; } /* Local check highlighted */
+        .elapsed-time {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f0883e;
+            margin-top: 6px;
+            font-family: monospace;
+        }
+        .elapsed-time.complete { color: #3fb950; }
+        .elapsed-time .label { font-weight: normal; color: #8b949e; }
+        .stats-bar {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .stat-item { display: flex; align-items: center; gap: 8px; }
+        .stat-label { font-size: 12px; color: #8b949e; }
+        .stat-value { font-size: 16px; font-weight: 600; color: #58a6ff; font-family: monospace; }
+        .refresh-info {
+            text-align: center;
+            color: #6e7681;
+            margin-top: 25px;
+            font-size: 13px;
+        }
+        #lastUpdate { color: #58a6ff; }
+        .error {
+            background: #da363322;
+            border: 1px solid #da3633;
+            color: #f85149;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #8b949e;
+        }
+        .chain-diagram {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.8;
+            color: #8b949e;
+        }
+        .chain-item { display: inline-block; padding: 2px 8px; border-radius: 4px; margin: 2px; }
+        .chain-item.done { background: #238636; color: white; }
+        .chain-item.active { background: #1f6feb; color: white; }
+        .chain-item.pending { background: #30363d; }
+
+        /* Inline input content */
+        .input-content {
+            display: none;
+            background: #0d1117;
+            border-top: 1px solid #30363d;
+            padding: 16px 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .input-content.show { display: block; }
+        .input-content pre {
+            font-size: 12px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #8b949e;
+        }
+        .input-content .loading-text {
+            color: #6e7681;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔬 Aristotle Monitor</h1>
+    <p class="subtitle">Q3 Formalization via Weil Criterion → Riemann Hypothesis</p>
+
+    <div class="controls">
+        <button onclick="refresh()">🔄 Refresh Now</button>
+        <button class="secondary" onclick="toggleAuto()">⏱️ Auto: <span id="autoLabel">OFF</span></button>
+        <div class="interval-control">
+            <label>Interval:</label>
+            <input type="number" id="intervalInput" min="0.5" max="60" step="0.5" value="1" onchange="updateInterval()">
+            <span>min</span>
+        </div>
+        <button class="secondary" onclick="downloadAll()">⬇️ Download All Complete</button>
+    </div>
+
+    <div id="error"></div>
+
+    <div class="summary">
+        <div class="summary-item">
+            <div class="summary-value" id="total">-</div>
+            <div class="summary-label">Total Projects</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-value complete" id="complete">-</div>
+            <div class="summary-label">✅ Complete</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-value progress" id="inProgress">-</div>
+            <div class="summary-label">⏳ In Progress</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-value queued" id="queued">-</div>
+            <div class="summary-label">📋 Queued</div>
+        </div>
+    </div>
+
+    <div class="stats-bar" id="statsBar">
+        <div class="stat-item">
+            <span class="stat-label">⏱️ Avg Duration:</span>
+            <span class="stat-value" id="avgDuration">-</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">🏃 Total Active:</span>
+            <span class="stat-value" id="totalActive">-</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">⏳ Total Elapsed:</span>
+            <span class="stat-value" id="totalElapsed">-</span>
+        </div>
+    </div>
+
+    <div class="chain-diagram" id="chain">
+        Loading proof chain...
+    </div>
+
+    <div class="projects" id="projects">
+        <div class="loading">Loading projects...</div>
+    </div>
+
+    <div class="refresh-info">
+        Last update: <span id="lastUpdate">-</span> |
+        Next refresh: <span id="nextRefresh">-</span> |
+        Server: <code>python monitor_server.py</code>
+    </div>
+
+    <script>
+        let autoInterval = null;
+        let refreshIntervalMs = 60000; // 1 minute default
+        let nextRefreshTime = null;
+        let countdownInterval = null;
+        let elapsedInterval = null; // For live elapsed time updates
+        let openInputs = new Set(); // Track which inputs are open
+        let projectsData = []; // Store project data for elapsed time calculations
+
+        // Format duration in human readable format
+        function formatDuration(ms) {
+            if (!ms || ms < 0) return '-';
+            const seconds = Math.floor(ms / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+
+            if (hours > 0) {
+                return `${hours}h ${minutes % 60}m ${seconds % 60}s`;
+            } else if (minutes > 0) {
+                return `${minutes}m ${seconds % 60}s`;
+            } else {
+                return `${seconds}s`;
+            }
+        }
+
+        // Calculate elapsed time for a project
+        function getElapsedMs(p) {
+            if (!p.created_at) return null;
+            const start = new Date(p.created_at).getTime();
+            if (p.status === 'COMPLETE' && p.last_updated_at) {
+                // For completed: duration = last_updated - created
+                return new Date(p.last_updated_at).getTime() - start;
+            } else if (p.status === 'IN_PROGRESS') {
+                // For in progress: duration = now - created
+                return Date.now() - start;
+            }
+            return null;
+        }
+
+        // Update all elapsed time displays
+        function updateElapsedDisplays() {
+            let totalElapsedMs = 0;
+            let completedDurations = [];
+            let activeCount = 0;
+
+            for (const p of projectsData) {
+                const elapsedMs = getElapsedMs(p);
+                const elId = `elapsed-${p.name.replace(/[^a-zA-Z0-9]/g, '_')}`;
+                const el = document.getElementById(elId);
+
+                if (el && elapsedMs !== null) {
+                    if (p.status === 'COMPLETE') {
+                        el.innerHTML = `<span class="label">✅ Duration:</span> ${formatDuration(elapsedMs)}`;
+                        el.className = 'elapsed-time complete';
+                        completedDurations.push(elapsedMs);
+                    } else if (p.status === 'IN_PROGRESS') {
+                        el.innerHTML = `<span class="label">⏳ Elapsed:</span> ${formatDuration(elapsedMs)}`;
+                        el.className = 'elapsed-time';
+                        totalElapsedMs += elapsedMs;
+                        activeCount++;
+                    }
+                }
+            }
+
+            // Update stats
+            document.getElementById('totalActive').textContent = activeCount;
+            document.getElementById('totalElapsed').textContent = formatDuration(totalElapsedMs);
+
+            if (completedDurations.length > 0) {
+                const avgMs = completedDurations.reduce((a, b) => a + b, 0) / completedDurations.length;
+                document.getElementById('avgDuration').textContent = formatDuration(avgMs);
+            } else {
+                document.getElementById('avgDuration').textContent = '-';
+            }
+        }
+
+        // Start elapsed time updater
+        function startElapsedUpdater() {
+            if (elapsedInterval) clearInterval(elapsedInterval);
+            elapsedInterval = setInterval(updateElapsedDisplays, 1000);
+        }
+
+        async function refresh() {
+            const errorDiv = document.getElementById('error');
+            const projectsDiv = document.getElementById('projects');
+            errorDiv.innerHTML = '';
+
+            try {
+                const response = await fetch('/api/status');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.json();
+
+                let complete = 0, inProgress = 0, queued = 0;
+                const html = [];
+
+                // Store data for elapsed time calculations
+                projectsData = data.projects;
+
+                // Build chain diagram
+                const chainParts = data.projects.map(p => {
+                    const cls = p.status === 'COMPLETE' ? 'done' :
+                               p.status === 'IN_PROGRESS' ? 'active' : 'pending';
+                    return `<span class="chain-item ${cls}">${p.name.split('_')[0]}</span>`;
+                });
+                document.getElementById('chain').innerHTML =
+                    chainParts.join(' → ') + ' → <span class="chain-item pending">RH ✓</span>';
+
+                for (const p of data.projects) {
+                    if (p.status === 'COMPLETE') complete++;
+                    else if (p.status === 'IN_PROGRESS') inProgress++;
+                    else if (p.status === 'QUEUED') queued++;
+
+                    const pct = p.percent_complete || 0;
+                    const fillClass = p.status === 'COMPLETE' ? 'complete' :
+                                     p.status === 'IN_PROGRESS' ? 'progress' : 'queued';
+
+                    const lastUpdated = p.last_updated_at ?
+                        new Date(p.last_updated_at).toLocaleString() : 'N/A';
+
+                    const isOpen = openInputs.has(p.name);
+                    const inputId = `input-${p.name.replace(/[^a-zA-Z0-9]/g, '_')}`;
+                    const elapsedId = `elapsed-${p.name.replace(/[^a-zA-Z0-9]/g, '_')}`;
+
+                    html.push(`
+                        <div class="project">
+                            <div class="project-header">
+                                <div class="project-info">
+                                    <div class="project-name" onclick="toggleInput('${p.name}', '${inputId}')">${p.name}</div>
+                                    <div class="progress-container">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill ${fillClass}" style="width: ${Math.min(pct, 100)}%"></div>
+                                        </div>
+                                        <span class="progress-text">${pct}%</span>
+                                    </div>
+                                    <div class="project-id">${p.id}</div>
+                                    <div class="timestamps">
+                                        <span class="ts-item">📅 Started: ${p.created_at ? new Date(p.created_at).toLocaleString() : 'N/A'}</span>
+                                        <span class="ts-item">🔄 API: ${p.last_updated_at ? new Date(p.last_updated_at).toLocaleString() : 'N/A'}</span>
+                                        <span class="ts-item">🔍 Check: ${p.local_check ? new Date(p.local_check).toLocaleString() : 'N/A'}</span>
+                                    </div>
+                                    <div class="elapsed-time" id="${elapsedId}">
+                                        <span class="label">⏳ Elapsed:</span> -
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="toggle-btn ${isOpen ? 'open' : ''}" onclick="toggleInput('${p.name}', '${inputId}')">📄 ${isOpen ? 'Hide' : 'Show'}</button>
+                                    <span class="status-badge ${p.status}">${p.status.replace('_', ' ')}</span>
+                                    ${p.status === 'COMPLETE' ?
+                                        `<button class="download-btn" onclick="download('${p.id}', '${p.name}')">⬇️</button>` : ''}
+                                </div>
+                            </div>
+                            <div class="input-content ${isOpen ? 'show' : ''}" id="${inputId}">
+                                <pre class="loading-text">Click to load input...</pre>
+                            </div>
+                        </div>
+                    `);
+                }
+
+                projectsDiv.innerHTML = html.join('');
+                document.getElementById('total').textContent = data.projects.length;
+                document.getElementById('complete').textContent = complete;
+                document.getElementById('inProgress').textContent = inProgress;
+                document.getElementById('queued').textContent = queued;
+
+                const now = new Date();
+                document.getElementById('lastUpdate').textContent =
+                    now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
+
+                // Reload content for open inputs
+                for (const name of openInputs) {
+                    const inputId = `input-${name.replace(/[^a-zA-Z0-9]/g, '_')}`;
+                    loadInputContent(name, inputId);
+                }
+
+                // Reset next refresh countdown
+                if (autoInterval) {
+                    nextRefreshTime = Date.now() + refreshIntervalMs;
+                }
+
+                // Update elapsed times immediately
+                updateElapsedDisplays();
+
+            } catch (err) {
+                errorDiv.innerHTML = `<div class="error">Error: ${err.message}<br>Make sure monitor_server.py is running!</div>`;
+                projectsDiv.innerHTML = '';
+            }
+        }
+
+        async function toggleInput(projectName, inputId) {
+            const contentDiv = document.getElementById(inputId);
+            if (!contentDiv) return;
+
+            if (openInputs.has(projectName)) {
+                openInputs.delete(projectName);
+                contentDiv.classList.remove('show');
+            } else {
+                openInputs.add(projectName);
+                contentDiv.classList.add('show');
+                loadInputContent(projectName, inputId);
+            }
+
+            // Update button text
+            refresh();
+        }
+
+        async function loadInputContent(projectName, inputId) {
+            const contentDiv = document.getElementById(inputId);
+            if (!contentDiv) return;
+
+            const pre = contentDiv.querySelector('pre');
+            pre.textContent = 'Loading...';
+            pre.className = 'loading-text';
+
+            try {
+                const response = await fetch(`/api/input/${projectName}`);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const text = await response.text();
+                pre.textContent = text;
+                pre.className = '';
+            } catch (err) {
+                pre.textContent = `Error: ${err.message}`;
+                pre.className = '';
+            }
+        }
+
+        function download(id, name) {
+            window.location.href = `/api/download/${id}`;
+        }
+
+        async function downloadAll() {
+            const response = await fetch('/api/status');
+            const data = await response.json();
+            for (const p of data.projects) {
+                if (p.status === 'COMPLETE') {
+                    download(p.id, p.name);
+                    await new Promise(r => setTimeout(r, 500));
+                }
+            }
+        }
+
+        function updateInterval() {
+            const input = document.getElementById('intervalInput');
+            const minutes = parseFloat(input.value) || 1;
+            refreshIntervalMs = minutes * 60 * 1000;
+
+            // If auto is on, restart with new interval
+            if (autoInterval) {
+                clearInterval(autoInterval);
+                autoInterval = setInterval(refresh, refreshIntervalMs);
+                nextRefreshTime = Date.now() + refreshIntervalMs;
+                document.getElementById('autoLabel').textContent = `ON (${minutes}m)`;
+            }
+        }
+
+        function toggleAuto() {
+            if (autoInterval) {
+                clearInterval(autoInterval);
+                clearInterval(countdownInterval);
+                autoInterval = null;
+                countdownInterval = null;
+                document.getElementById('autoLabel').textContent = 'OFF';
+                document.getElementById('nextRefresh').textContent = '-';
+            } else {
+                const minutes = parseFloat(document.getElementById('intervalInput').value) || 1;
+                refreshIntervalMs = minutes * 60 * 1000;
+                autoInterval = setInterval(refresh, refreshIntervalMs);
+                nextRefreshTime = Date.now() + refreshIntervalMs;
+                document.getElementById('autoLabel').textContent = `ON (${minutes}m)`;
+
+                // Start countdown display
+                countdownInterval = setInterval(() => {
+                    if (nextRefreshTime) {
+                        const remainingMs = Math.max(0, nextRefreshTime - Date.now());
+                        const remainingSec = Math.ceil(remainingMs / 1000);
+                        if (remainingSec >= 60) {
+                            const mins = Math.floor(remainingSec / 60);
+                            const secs = remainingSec % 60;
+                            document.getElementById('nextRefresh').textContent = `${mins}m ${secs}s`;
+                        } else {
+                            document.getElementById('nextRefresh').textContent = `${remainingSec}s`;
+                        }
+                    }
+                }, 1000);
+
+                refresh(); // Immediate refresh
+            }
+        }
+
+        // Initial load
+        refresh();
+        startElapsedUpdater();
+    </script>
+</body>
+</html>

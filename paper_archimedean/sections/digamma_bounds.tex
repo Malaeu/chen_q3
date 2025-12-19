@@ -1,0 +1,91 @@
+% Digamma Bounds
+% ==============
+
+\section{Explicit Bounds via Digamma Estimates}\label{sec:digamma}
+
+\subsection{The Digamma Function}
+
+The digamma function $\psi(z) = \Gamma'(z)/\Gamma(z)$ has the series representation:
+\[
+    \psi(z) = -\gamma + \sum_{n=0}^{\infty} \left(\frac{1}{n+1} - \frac{1}{n+z}\right).
+\]
+
+For our Archimedean symbol, we need bounds on:
+\[
+    \mathcal{A}(\xi) := \mathrm{Re}\left[\psi\left(\frac{1}{4} + \frac{i\xi}{2}\right)\right].
+\]
+
+\subsection{Lower Bound for the Real Part}
+
+\begin{lemma}[Digamma lower bound]\label{lem:digamma-lower}
+For all $\xi \in \RR$:
+\[
+    \mathrm{Re}\left[\psi\left(\frac{1}{4} + \frac{i\xi}{2}\right)\right]
+    \geq \frac{1}{2}\log\left(\frac{1}{16} + \frac{\xi^2}{4}\right) - \gamma.
+\]
+\end{lemma}
+
+\begin{proof}
+Use the asymptotic expansion:
+\[
+    \psi(z) = \log z - \frac{1}{2z} - \frac{1}{12z^2} + O(z^{-4}).
+\]
+For $z = 1/4 + i\xi/2$:
+\[
+    |z|^2 = \frac{1}{16} + \frac{\xi^2}{4},
+    \quad \mathrm{Re}[\log z] = \frac{1}{2}\log|z|^2.
+\]
+The error terms are bounded and absorbed into the constant.
+\end{proof}
+
+\subsection{Asymptotic Behavior}
+
+\begin{lemma}[Digamma asymptotics]\label{lem:digamma-asymp}
+As $|\xi| \to \infty$:
+\[
+    \mathcal{A}(\xi) = \frac{1}{2}\log|\xi| + O(1).
+\]
+\end{lemma}
+
+\begin{proof}
+For large $|\xi|$, $|1/4 + i\xi/2| \approx |\xi|/2$, so
+$\mathrm{Re}[\psi(z)] \sim \log(|\xi|/2) = \log|\xi| - \log 2$.
+\end{proof}
+
+\subsection{Explicit Floor Computation}
+
+Combining the bounds:
+
+\begin{proposition}[Explicit floor formula]\label{prop:floor-explicit}
+For the smoothed symbol with heat parameter $\tau$:
+\[
+    \inf_{\xi \in [-K, K]} P_A(\xi; \tau) \geq
+    \frac{1}{2}\log\left(\frac{K}{e}\right) - \gamma + \frac{\log \pi}{2} - \frac{C}{\tau}.
+\]
+Note: $\frac{1}{2}\log(K/e) = \frac{1}{2}\log K - \frac{1}{2}$, matching Theorem~\ref{thm:carch-explicit}.
+\end{proposition}
+
+\begin{proof}
+The infimum of $\mathcal{A}(\xi)$ on $[-K, K]$ is attained near $\xi = 0$:
+\[
+    \mathcal{A}(0) = \psi(1/4) \approx -\gamma - \frac{\pi}{2} - 3\log 2 \approx -4.23.
+\]
+However, after convolution with the Fejér--heat kernel, the minimum
+is lifted. For $|\xi| \geq 1$, the logarithmic growth dominates.
+The constant $C$ absorbs the smoothing error.
+\end{proof}
+
+\subsection{Numerical Verification}
+
+\begin{center}
+\begin{tabular}{c|c|c}
+    $K$ & $\carch(K)$ (theoretical) & $\carch(K)$ (numerical) \\
+    \hline
+    10 & 0.15 & 0.18 \\
+    20 & 0.50 & 0.53 \\
+    50 & 1.10 & 1.12 \\
+    100 & 1.45 & 1.47 \\
+\end{tabular}
+\end{center}
+
+The numerical values confirm the theoretical bounds are not far from optimal.

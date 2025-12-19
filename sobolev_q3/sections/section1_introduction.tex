@@ -1,0 +1,113 @@
+% Section 1: Introduction
+% Sobolev-Q3 Framework for Twin Prime Conjecture
+% Author: Ilsha
+
+\section{Introduction}\label{sec:introduction}
+
+\subsection{From Riemann to Twins: Extending the Q3 Framework}
+
+The Q3 framework, developed in \cite{RH_Q3}, provides a complete proof of the Riemann Hypothesis via the Weil positivity criterion. The architecture is modular:
+\[
+  \text{T0} \;\to\; \text{A1}' \;\to\; \text{A2} \;\to\; \text{A3} \;\to\; \text{RKHS} \;\to\; \text{T5} \;\Longrightarrow\; Q(\Phi)\ge 0 \;\Longrightarrow\; \text{RH}.
+\]
+Each module is self-contained with explicit constants, enabling independent verification and targeted improvements.
+
+\medskip
+\noindent\textbf{This paper} extends the Q3 methodology to attack the \textbf{Twin Prime Conjecture} (TPC):
+
+\begin{conjecture}[Twin Prime Conjecture]
+There exist infinitely many primes $p$ such that $p+2$ is also prime.
+\end{conjecture}
+
+The extension requires three conceptual shifts:
+\begin{enumerate}
+  \item \textbf{Weight structure:} From single primes $\Lambda(n)/\sqrt{n}$ to twin pairs $\Lambda(p)\Lambda(p+2)$.
+  \item \textbf{Function space:} From Heat Kernel RKHS $\mathcal{H}_t$ to Sobolev space $H^s(\mathbb{T})$ with $s<1/2$.
+  \item \textbf{Goal:} From nonnegativity ($Q\ge0$) to growth ($E_{\mathrm{twin}}(X) \to \infty$).
+\end{enumerate}
+
+\subsection{Why Sobolev?}\label{subsec:intro-why-sobolev}
+
+The circle method for Twin Primes decomposes the generating function into Major and Minor arcs:
+\[
+  S(N) = \sum_{\substack{p+q=N\\p,q\text{ prime}}} \Lambda(p)\Lambda(q) = \int_{\mathfrak{M}} + \int_{\mathfrak{m}}.
+\]
+The Minor arc integral requires indicator functions $\mathbf{1}_{\mathfrak{m}}$ as test functions. In the Heat Kernel RKHS:
+\[
+  \|\mathbf{1}_{\mathfrak{m}}\|_{\mathcal{H}_t} \to \infty \quad\text{as } t\to 0.
+\]
+This is incompatible with the A3 bridge, which requires small $t$ for sharp symbol margins.
+
+The Sobolev space $H^s(\mathbb{T})$ with $s<1/2$ resolves this: indicator functions belong to $H^s$ with \emph{controlled} norms:
+\[
+  \|\mathbf{1}_{[a,b]}\|_{H^s} \lesssim |b-a|^{1/2-s} + C_s.
+\]
+This enables the full circle method machinery within the Q3 operator framework.
+
+\subsection{Structure of This Paper}
+
+\begin{itemize}
+  \item \S\ref{sec:sobolev-machine}: The Sobolev-Q3 Machine (A1$_s'$, A2$_s$, A3$_s$ adapted from Heat to Sobolev).
+  \item \S\ref{sec:twin-operator}: The Twin Prime Operator $T_{\mathrm{twin}}$ with bilinear weights.
+  \item \S\ref{sec:master-inequality}: The Master Inequality: proving $E_{\mathrm{twin}}(X) \ge c\,X^{1+\alpha}$.
+  \item \S\ref{sec:conclusion}: Deduction of TPC from the Master Inequality.
+\end{itemize}
+
+\subsection{Notation and Conventions}
+
+We inherit notation from \cite{RH_Q3}:
+\begin{align*}
+  \xi_p &= \frac{\log p}{2\pi} & &\text{(spectral coordinate for prime $p$)} \\
+  \Lambda(n) &= \begin{cases} \log p & \text{if } n=p^k \\ 0 & \text{otherwise} \end{cases} & &\text{(von Mangoldt function)} \\
+  a(\xi) &= \log\pi - \Re\psi(\tfrac14+i\pi\xi) & &\text{(Archimedean density)} \\
+  a_*(\xi) &= 2\pi\,a(\xi) & &\text{(normalized density)}
+\end{align*}
+
+For Sobolev spaces:
+\begin{align*}
+  \|f\|_{H^s}^2 &= \sum_{k\in\mathbb{Z}} |\hat{f}(k)|^2\,(1+|k|^2)^s \\
+  \langle k\rangle &= (1+|k|^2)^{1/2} & &\text{(Japanese bracket)}
+\end{align*}
+
+\subsection{The Twin Prime Sum}
+
+Define the twin prime counting function:
+\[
+  \pi_2(X) = \#\{p\le X : p+2 \text{ prime}\}
+\]
+and the weighted sum:
+\[
+  T(X) = \sum_{\substack{p\le X\\p+2\text{ prime}}} \Lambda(p)\Lambda(p+2).
+\]
+The Hardy--Littlewood conjecture predicts:
+\[
+  \pi_2(X) \sim 2C_2\,\frac{X}{(\log X)^2}, \qquad C_2 = \prod_{p>2}\Big(1 - \frac{1}{(p-1)^2}\Big) \approx 0.6601\ldots
+\]
+Our goal is to prove $T(X)\to\infty$, which implies $\pi_2(X)\to\infty$.
+
+\subsection{Connection to Q3 for RH}
+
+The RH proof in \cite{RH_Q3} shows $Q(\Phi)\ge0$ for all $\Phi$ in the Weil cone, where:
+\[
+  Q(\Phi) = \int a_*(\xi)\,\Phi(\xi)\,d\xi - \sum_{n\ge2} \frac{2\Lambda(n)}{\sqrt{n}}\,\Phi(\xi_n).
+\]
+For Twin Primes, we study:
+\[
+  E_{\mathrm{twin}}(\Phi) = \sum_{\substack{p,q\le X\\p+2,q+2\text{ prime}}} \Lambda(p)\Lambda(p+2)\Lambda(q)\Lambda(q+2)\,K(\xi_p,\xi_q)\,\Phi(\xi_p)\Phi(\xi_q),
+\]
+where $K(\xi,\eta)$ is a Sobolev kernel. The growth of $E_{\mathrm{twin}}$ implies infinitely many twin primes.
+
+\medskip
+\noindent\textbf{Key insight:} The Q3 bridge (A3) transfers symbol positivity to operator positivity. In the Sobolev setting, this transfer works for \emph{indicator symbols}, enabling circle method decompositions.
+
+\subsection{Main Result (Preview)}
+
+\begin{theorem}[Informal]\label{thm:main-informal}
+There exists $\alpha>0$ such that for all $X$ sufficiently large:
+\[
+  E_{\mathrm{twin}}(X) \ge c_0\,X^{1+\alpha}.
+\]
+Consequently, there are infinitely many twin primes.
+\end{theorem}
+
+The rigorous statement and proof occupy Sections~\ref{sec:twin-operator}--\ref{sec:master-inequality}.

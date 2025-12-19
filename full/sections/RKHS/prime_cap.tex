@@ -242,7 +242,7 @@ Choose any $\eta_K\in(0,1-w_{\max})$ with
 \[
 w_{\max}+\sqrt{w_{\max}}\;\eta_K\ \le\ \tfrac{1}{4}c_0(K),
 \]
-and take $t\ge t_{\min}(K)$ from \eqref{eq:tmin}. Then \eqref{eq:rhoK-eta} gives
+and take $t=t_{\min}(K)$ from \eqref{eq:tmin} (note: the geometric bound requires $t\le t_{\min}$). Then \eqref{eq:rhoK-eta} gives
 $\|T_P\|\le c_0(K)/4$.
 
 \smallskip
@@ -280,7 +280,7 @@ On $[-K,K]$,
 \[
 \lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ c_0(K)\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big)\ -\ \|T_P\|.
 \]
-With either choice $t\ge t_{\min}(K)$ from (A) or $t\ge t^\star(K)$ from (B) one has
+With either choice $t=t_{\min}(K)$ from (A) (where $t\le t_{\min}$ is required) or $t\ge t^\star(K)$ from (B) one has
 $\|T_P\|\le c_0(K)/4$, hence
 \[
 \lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ \tfrac{1}{2}\,c_0(K)\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big).
@@ -289,8 +289,8 @@ $\|T_P\|\le c_0(K)/4$, hence
 
 \begin{remark}[Interface to T5]\label{rem:t5-interface}
 For a nondecreasing compact chain $K_i\uparrow\infty$, pick $M_i$ so that
-$C\,\omega_{P_A}(\pi/M_i)\le c_0(K_i)/4$ and choose $t_i\ge t_{\min}(K_i)$ (route A)
-or $t_i\ge t^\star(K_i)$ (route B). Then the T5 criterion applies on each $W_{K_i}$ and
+$C\,\omega_{P_A}(\pi/M_i)\le c_0(K_i)/4$ and choose either $t_i=t_{\min}(K_i)$ (route A, where $t\le t_{\min}$ is required)
+or $t_i\ge t^\star(K_i)$ (route B). In practice, the T5 module uses route~(B) with $t_i=t^\star_{T5}(K_i)$. Then the T5 criterion applies on each $W_{K_i}$ and
 monotone inheritance propagates positivity across the chain, yielding $Q\ge0$ on
 $\bigcup_i W_{K_i}$.
 \end{remark}

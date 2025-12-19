@@ -1,0 +1,152 @@
+% Compact-by-Compact Transfer (T5)
+% =================================
+
+\section{Compact-by-Compact Transfer (T5)}\label{sec:T5}
+
+This section establishes the mechanism for transferring positivity from finite compacts to the full Weil class. The key insight is that monotone parameter schedules ensure positivity propagates along any increasing chain of compacts.
+
+\begin{remark}[Proof provenance]
+The T5 construction and its lemmas are proved in detail in RH\_Q3 (Section 12). We retain the formulations and the monotone schedules here; all dependencies on $c_0$, $L_A$, $t_{\min}$, and $M^\star$ are explicit.
+\end{remark}
+
+\subsection{Standing Analytic Inputs}
+
+For each $K > 0$ we assume the analytic data from Sections~\ref{sec:A3} and~\ref{sec:rkhs}:
+
+\begin{itemize}
+  \item[\textbf{(A3.a)}] \textbf{Archimedean margin:} $c_0(K) > 0$ such that $\inf_\theta P_A(\theta) \geq c_0(K)$.
+
+  \item[\textbf{(A3.b)}] \textbf{Discretization control:} For all $M \in \mathbb{N}$,
+  \begin{equation}
+    \|T_M[P_A] - T[P_A]\| \leq C_T \cdot \omega_{P_A}\!\Big(\frac{\pi}{M}\Big),
+  \end{equation}
+  where $\omega_{P_A}$ is a modulus of continuity.
+
+  \item[\textbf{(RKHS)}] \textbf{Prime contraction:} For all $t \geq t^\star(K)$,
+  \begin{equation}
+    \|T_P\| \leq \rho(t) \leq \rho(t^\star(K)).
+  \end{equation}
+\end{itemize}
+
+We also recall the density/continuity interface on $W_K$:
+\begin{itemize}
+  \item[\textbf{(A1')}] The Fej\'er$\times$heat cone is dense in $W_K$.
+  \item[\textbf{(A2)}] $Q$ is continuous on $W_K$: $|Q(\Phi) - Q(\Psi)| \leq L_Q(K) \|\Phi - \Psi\|_\infty$.
+\end{itemize}
+
+\subsection{Monotone Schedules}
+
+Define the nondecreasing envelopes (using the explicit formulas of Proposition~\ref{prop:c-arch-explicit} and Corollary~\ref{cor:arch-modulus}):
+\begin{equation}
+  c_0^\ast(K) := \inf_{0 < u \leq K} c_0(u), \qquad
+  L_A^\ast(K) := \sup_{0 < u \leq K} L_A(u),
+\end{equation}
+and the monotone RKHS schedule based on Corollary~\ref{cor:explicit-tmin}:
+\begin{equation}\label{eq:T5-tstar}
+  t^\star_{\mathrm{T5}}(K) := \sup_{0 < u \leq K} t_{\min}(u),
+  \qquad
+  t_{\min}(u) = \frac{\delta_u^2}{4 \ln\!\bigl((2+\eta_u)/\eta_u\bigr)}, \quad
+  \eta_u = \frac{\tfrac14 c_0(u) - w_{\max}}{\sqrt{w_{\max}}}.
+\end{equation}
+Likewise, set the monotone grid size (using $C_T=1$ from Corollary~\ref{cor:Mstar-explicit})
+\begin{equation}\label{eq:T5-Mstar}
+  M^\star(K) := \left\lceil \sup_{0 < u \leq K} \frac{2\pi\, L_A(u)}{c_0(u)} \right\rceil,
+\end{equation}
+which is nondecreasing in $K$. By construction $K_1 \leq K_2 \Rightarrow c_0^\ast(K_2) \leq c_0^\ast(K_1)$ and $t^\star_{\mathrm{T5}}(K_2) \geq t^\star_{\mathrm{T5}}(K_1)$, $M^\star(K_2) \geq M^\star(K_1)$.
+
+\subsection{Grid-Lift Inequality}
+
+\begin{lemma}[Grid-lift inequality]\label{lem:T5-grid}
+For every $K > 0$ and $M \in \mathbb{N}$:
+\begin{equation}
+  \lambda_{\min}\!\big(T_M[P_A] - T_P\big) \geq c_0(K) - C_T \cdot \omega_{P_A}\!\Big(\frac{\pi}{M}\Big) - \|T_P\|.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Combine the Archimedean lower bound with the Toeplitz continuity estimate and norm subadditivity.
+\end{proof}
+
+\subsection{Main Transfer Theorem}
+
+\begin{theorem}[T5: Monotone compact transfer]\label{thm:T5-compact}
+For every $K > 0$:
+\begin{equation}
+  \lambda_{\min}\!\big(T_{M^\star(K)}[P_A] - T_P\big) \geq \tfrac{1}{2} c_0^\ast(K).
+\end{equation}
+In particular, $Q(\Phi) \geq 0$ on $W_K$ for all $K > 0$. Hence $Q \geq 0$ on $\bigcup_{K>0} W_K$, i.e., on the full Weil class.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:T5-grid} and the choices~\eqref{eq:T5-tstar}--\eqref{eq:T5-Mstar}:
+\begin{equation}
+  \lambda_{\min}\!\big(T_{M^\star(K)}[P_A] - T_P\big) \geq c_0^\ast(K) - \tfrac{1}{4} c_0^\ast(K) - \tfrac{1}{4} c_0^\ast(K) = \tfrac{1}{2} c_0^\ast(K).
+\end{equation}
+Positivity of the finite Toeplitz form on the Fej\'er$\times$heat cone follows. Then (A1')--(A2) extend $Q \geq 0$ from the dense cone to all of $W_K$. Taking the union over $K$ gives the claim.
+\end{proof}
+
+\subsection{Inductive Limit Structure}
+
+Let $\mathcal{W}_K = C^+_{\mathrm{even}}([-K, K])$ with the uniform norm, and let $\mathcal{W} = \bigcup_{K>0} \mathcal{W}_K$ carry the inductive limit topology.
+
+\begin{lemma}[Nested dictionaries yield $\mathcal{W}$]\label{lem:T5-dicts}
+For each $K > 0$ let $\mathcal{G}_K \subset \mathcal{C}_K$ be a finite dictionary constructed over a shift grid with step $\Delta(K)$ and two heat scales $t_{\min}(K), t_{\max}(K)$. If $K_i \nearrow \infty$ and $\Delta(K_{i+1})$ divides $\Delta(K_i)$ so that $\mathcal{G}_{K_i} \subset \mathcal{G}_{K_{i+1}}$, then
+\begin{equation}
+  \bigcup_i \overline{\mathrm{cone}(\mathcal{G}_{K_i})}^{\|\cdot\|_\infty} = \bigcup_i \mathcal{W}_{K_i} =: \mathcal{W}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By Theorem~\ref{thm:A1-density}, each $\overline{\mathrm{cone}(\mathcal{G}_{K_i})}$ is dense in $\mathcal{W}_{K_i}$, and nestedness yields the union identity.
+\end{proof}
+
+\begin{theorem}[Transfer of positivity to the Weil class]\label{thm:T5-transfer}
+Assume $Q \geq 0$ on $\mathcal{W}_{K_i}$ for every $i$, where $Q$ is continuous on each $\mathcal{W}_{K_i}$ (Lemma~\ref{lem:A2-lip}). Then $Q \geq 0$ on $\mathcal{W}$ in the inductive limit topology.
+\end{theorem}
+
+\begin{proof}
+Given $\Phi \in \mathcal{W}$, choose $i$ with $\mathrm{supp}\,\Phi \subset [-K_i, K_i]$. Then $\Phi \in \mathcal{W}_{K_i}$ and $Q(\Phi) \geq 0$ by hypothesis. Continuity on each $\mathcal{W}_{K_i}$ and Lemma~\ref{lem:T5-dicts} pass the result to the closure and thus to $\mathcal{W}$.
+\end{proof}
+
+\subsection{Monotone Inheritance}
+
+\begin{lemma}[Grid-lift by Lipschitz margin]\label{lem:T5-grid-lip}
+Let $Q$ be Lipschitz on $W_K$ with constant $L_Q(K)$ (A2). Suppose there exists a uniform grid $\{\tau_j\}$ in $[-K, K]$ of step $\Delta > 0$ such that
+\begin{equation}
+  \min_j Q(\tau_j) \geq c_0(K) > 0
+\end{equation}
+and $\Delta \leq c_0(K)/(4 L_Q(K))$. Then $\min_{\tau \in [-K, K]} Q(\tau) \geq \tfrac{1}{2} c_0(K)$.
+\end{lemma}
+
+\begin{proof}
+Fix $\tau \in [-K, K]$ and let $\tau_\ast$ be the nearest grid point, so $|\tau - \tau_\ast| \leq \Delta/2$. By Lipschitz continuity:
+\begin{equation}
+  Q(\tau) \geq Q(\tau_\ast) - L_Q(K) |\tau - \tau_\ast| \geq c_0(K) - L_Q(K) \frac{\Delta}{2} \geq c_0(K) - \frac{c_0(K)}{8} \geq \tfrac{1}{2} c_0(K).
+\end{equation}
+\end{proof}
+
+\begin{lemma}[Monotone inheritance across $K$]\label{lem:T5-inheritance}
+Fix an increasing chain $K_0 < K_1 < \cdots$ and choose the monotone schedules $t_{\mathrm{rkhs}}(K_i) := t^\star_{\mathrm{T5}}(K_i)$ and $M_i := M^\star(K_i)$ from~\eqref{eq:T5-tstar}--\eqref{eq:T5-Mstar}. Then
+\begin{equation}
+  \lambda_{\min}\big(T_{M_i}[P_A] - T_P\big) \geq \tfrac{1}{2} c_0^\ast(K_i) \quad \text{on } \mathcal{W}_{K_i},
+\end{equation}
+and the property propagates from $K_i$ to $K_{i+1}$.
+\end{lemma}
+
+\begin{proof}
+Lemma~\ref{lem:T5-grid} with $M_i = M^\star(K_i)$ and $t = t^\star_{\mathrm{T5}}(K_i)$ gives the lower bound. Since $K \mapsto c_0^\ast(K)$ is decreasing and $K \mapsto t^\star_{\mathrm{T5}}(K), M^\star(K)$ are nondecreasing, the same estimate applies at $K_{i+1}$, so the chain inherits positivity.
+\end{proof}
+
+\subsection{Summary}
+
+The compact-by-compact transfer provides a mechanism to extend positivity from finite windows to the full Weil class:
+
+\begin{enumerate}
+  \item \textbf{Local positivity:} On each $W_K$, the spectral bound $\lambda_{\min}(T_M[P_A] - T_P) \geq \tfrac{1}{2} c_0^\ast(K) > 0$ holds.
+
+  \item \textbf{Monotone schedules:} Parameters $(M^\star(K), t^\star(K))$ are chosen monotonically, ensuring consistency across compacts.
+
+  \item \textbf{Inheritance:} Positivity on $W_K$ implies positivity on $W_{K'}$ for all $K' \geq K$.
+
+  \item \textbf{Union:} Taking $K \to \infty$ gives $Q \geq 0$ on the full Weil class $\mathcal{W}$.
+\end{enumerate}

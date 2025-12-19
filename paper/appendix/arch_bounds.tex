@@ -1,0 +1,119 @@
+% Appendix: Analytic Archimedean Bounds
+% ======================================
+
+\section{Analytic Archimedean Bounds}\label{app:arch-bounds}
+
+This appendix starts Step~1 of the proof-only programme: giving \emph{explicit, analytic} lower bounds for the Archimedean symbol on any compact window. We work throughout with the digamma representation (DLMF~\cite{NISTDLMF}, 5.9.E7)
+\begin{equation}\label{eq:psi-int}
+  \psi(\sigma + i\tau) = -\gamma + \int_0^\infty \left( \frac{e^{-t}}{t} - \frac{e^{-\sigma t}\cos(\tau t)}{1 - e^{-t}} \right) dt, \qquad \sigma>0.
+\end{equation}
+
+\subsection{Integral bound for \texorpdfstring{$\Re\psi$}{Re psi}}
+
+\begin{lemma}[Upper bound for $\Re\psi$]\label{lem:psi-upper}
+Let $\sigma = \tfrac14$ and $|\tau| \leq \pi K$. Then, for any $t_0>0$,
+\begin{align}\label{eq:psi-upper}
+  \Re \psi\!\left(\tfrac14 + i\tau\right)
+  &\le -\gamma + \int_0^{t_0} \!\!\left(\frac{e^{-t}}{t} - \frac{e^{-t/4}\cos(\tau t)}{1-e^{-t}}\right) dt \\
+  &\quad + \int_{t_0}^{\infty} \left(\frac{e^{-t}}{t} - \frac{e^{-t/4}}{1-e^{-t}}\left(1 - \tfrac12 (\tau t)^2\right) \right) dt.
+\end{align}
+In particular,
+\begin{equation}\label{eq:psi-upper-explicit}
+  \Re \psi\!\left(\tfrac14 + i\tau\right)
+  \le \log\!\sqrt{\tfrac{1}{16} + \tau^2} + \frac{2}{1 + 16\tau^2} + R(t_0,K),
+\end{equation}
+where $R(t_0,K)$ is an explicit, decreasing function of $t_0$ depending only on $K$ (the tail of the two integrals).
+\end{lemma}
+
+\begin{proof}
+Use~\eqref{eq:psi-int}; on $[t_0,\infty)$ bound $\cos(\tau t) \geq 1 - (\tau t)^2/2$; on $(0,t_0]$ the integrand is integrable and positive for $\sigma=\tfrac14$. Estimating the tail integrals with $e^{-t}\le e^{-t_0}$ and $1-e^{-t}\ge t/2$ gives the explicit $R(t_0,K)$ term and the elementary bound~\eqref{eq:psi-upper-explicit}.
+\end{proof}
+
+\subsection{Archimedean floor on a compact}
+
+Recall $a^*(\xi) = 2\pi \big(\log \pi - \Re \psi(\tfrac14 + i\pi\xi)\big)$ and
+\[
+  P_A(\theta) = \sum_{|k|\le B} \widehat{P}_A(k) e^{ik\theta}, \qquad
+  \widehat{P}_A(k) = \int_{-K}^{K} a^*(\xi)\, \Phi_{B,t}(\xi) e^{-2\pi i k \xi}\, d\xi,
+\]
+where $\Phi_{B,t}$ is the Fej\'er$\times$heat window supported on $[-K,K]$.
+
+\begin{proposition}[Explicit Archimedean floor]\label{prop:c-arch-explicit}
+For any $K>0$, bandwidth $B\ge 1$, and heat parameter $t>0$,
+\begin{equation}\label{eq:c-arch}
+  \min_{\theta\in\T} P_A(\theta)
+  \;\ge\; 2\pi\!\left(\log \pi - \log\!\sqrt{\tfrac{1}{16} + \pi^2 K^2} - \frac{2}{1+16\pi^2 K^2}\right) - C_{\mathrm{heat}}\, e^{-4\pi^2 t} ,
+\end{equation}
+where $C_{\mathrm{heat}}$ is an explicit constant depending only on $B,t$ (the $k\neq 0$ Fourier mass of the Fej\'er$\times$heat kernel). In particular,
+\[
+  c_0(K) := 2\pi\!\left(\log \pi - \log\!\sqrt{\tfrac{1}{16} + \pi^2 K^2} - \frac{2}{1+16\pi^2 K^2}\right)
+\]
+is a fully explicit lower bound before smoothing, and the heat factor improves it by $C_{\mathrm{heat}} e^{-4\pi^2 t}$.
+\end{proposition}
+
+\begin{proof}
+Insert the bound from Lemma~\ref{lem:psi-upper} with $|\tau|\le \pi K$ into $a^*(\xi)$ to obtain a pointwise lower bound on $[-K,K]$. Convolution with the Fej\'er$\times$heat kernel preserves minima up to the $k\neq 0$ Fourier leakage, which is bounded by $C_{\mathrm{heat}} e^{-4\pi^2 t}$. Summing the Fourier series gives~\eqref{eq:c-arch}.
+\end{proof}
+
+\begin{corollary}[Modulus of continuity]\label{cor:arch-modulus}
+On $[-K,K]$, the symbol satisfies
+\[
+  \omega_{P_A}(\delta) \le L_A(K)\, \delta, \qquad
+  L_A(K) := 4\pi^2 K \left( 1 + \frac{64\pi^2 K^2}{(1+16\pi^2 K^2)^2} \right) + C_{\mathrm{heat}} e^{-4\pi^2 t}.
+\]
+\end{corollary}
+
+\begin{proof}
+Differentiate the bound in Lemma~\ref{lem:psi-upper} with respect to $\tau$, using $|\sin(\tau t)|\le |\tau| t$ and the same tail estimates; convolution with the Fej\'er$\times$heat kernel multiplies Lipschitz constants by its $L^1$ norm (=1) and adds the exponential leakage term.
+\end{proof}
+
+\subsection{Explicit grid size for Toeplitz discretization}
+
+For Lipschitz symbols the standard discretization bound (Lemma~\ref{lem:toeplitz-disc}) holds with $C_T=1$.
+
+\begin{corollary}[Grid size ensuring positivity]\label{cor:Mstar-explicit}
+Fix $K>0$ and parameters $(B,t)$ for $\Phi_{B,t}$ on $[-K,K]$. With $c_0(K)$ from Proposition~\ref{prop:c-arch-explicit} and $L_A(K)$ from Corollary~\ref{cor:arch-modulus}, any
+\[
+  M \;\ge\; M_{\min}(K) := \left\lceil \frac{2\pi\, L_A(K)}{c_0(K)} \right\rceil
+\]
+guarantees
+\[
+  \lambda_{\min}\big(T_M[P_A]\big) \;\ge\; \tfrac12\, c_0(K).
+\]
+\end{corollary}
+
+\begin{proof}
+With $C_T=1$, Lemma~\ref{lem:toeplitz-disc} gives $\lambda_{\min}(T_M[P_A]) \ge c_0(K) - L_A(K)\pi/M$. Enforce $\ge \tfrac12 c_0(K)$ and solve for $M$.
+\end{proof}
+
+\begin{proposition}[Symbol floor stabilization]\label{arch:stable}
+There exist $0 < B_0 < 1$, $r \in (0, B_0)$, and $t_{\mathrm{sym}} > 0$ such that for every $K > 0$ and every shift $\tau$ with $[\tau-B_0,\tau+B_0] \subset [-K,K]$, the Fej\'er$\times$heat window
+\[
+  \Phi_{B_0,t_{\mathrm{sym}},\tau}(\xi) := \Bigl(1-\frac{|\xi-\tau|}{B_0}\Bigr)_+ e^{-4\pi^2 t_{\mathrm{sym}}(\xi-\tau)^2}
+\]
+produces a Toeplitz symbol $P_A^{(\tau)}$ satisfying
+\[
+  \min_{\theta\in\mathbb{T}} P_A^{(\tau)}(\theta) \;\ge\; c_\infty > 0,
+\]
+where $c_\infty$ depends only on $(B_0,r,t_{\mathrm{sym}})$ and not on $K$ or $\tau$. In particular, one may take $c_0(K) \equiv c_\infty$ for all $K$.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Choose $\delta>0$ with $a(\xi)>0$ for $|\xi|\le \delta$ (continuity and $a(0)>0$). Fix $B_0\in(0,\delta)$, $r\in(0,B_0)$, set $m_r:=\inf_{|\xi|\le r} a(\xi)>0$ and $M_{B_0}:=\|a\|_{L^\infty([-B_0,B_0])}$. Lemma~\ref{lem:core-arch} and Lemma~\ref{lem:heat-reg-symbol} yield
+\[
+  A_0(B_0,r,t_{\mathrm{sym}}) \ge 2 m_r \frac{r}{B_0} e^{-4\pi^2 t_{\mathrm{sym}} r^2} - \frac{M_{B_0}}{4\pi^2 t_{\mathrm{sym}} r} e^{-4\pi^2 t_{\mathrm{sym}} r^2}.
+\]
+Lemma~\ref{lem:heat-reg-symbol} also gives $\omega_{P_A}(h) \le L_A(B_0,t_{\mathrm{sym}}) h$ with $L_A(B_0,t_{\mathrm{sym}}) \to 0$ as $t_{\mathrm{sym}}\to\infty$. Choose $t_{\mathrm{sym}}$ large so that
+\[
+  A_0(B_0,r,t_{\mathrm{sym}}) - \pi L_A(B_0,t_{\mathrm{sym}}) \ge c_\infty>0.
+\]
+Shift-robust Fej\'er mass (Lemma~\ref{lem:heat-reg-symbol}, shift form of Lemma~\ref{lem:heat-reg-symbol}) shows the same lower bound holds for every shift $\tau$ with $[\tau-B_0,\tau+B_0]\subset[-K,K]$, giving the stated uniform floor.
+\end{proof}
+
+Remarks and next steps
+----------------------
+1. The bounds above are completely explicit and depend only on $K$, $B$, and $t$. They are deliberately conservative; they can be sharpened by:
+   - optimizing $t_0$ in Lemma~\ref{lem:psi-upper};
+   - using higher-order truncations of $\cos$ and sharper digamma remainder bounds (e.g., Batir 2008).
+2. Substituting Corollary~\ref{cor:arch-modulus} into the Toeplitz discretization bound (Lemma~\ref{lem:toeplitz-disc}) yields an explicit $M^*(K)$ once $C_T$ is fixed (Step~4 of \texttt{PROOF\_TASKS}).
+3. Positivity on a given compact follows if $c_0(K) - C_T \omega_{P_A}(\pi/M) > 0$; this will be paired with the RKHS cap in Step~2.

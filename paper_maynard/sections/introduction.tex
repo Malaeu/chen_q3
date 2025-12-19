@@ -1,0 +1,120 @@
+% Introduction
+% ============
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Historical Background}
+
+The distribution of prime numbers has fascinated mathematicians since antiquity.
+Euclid proved the infinitude of primes circa 300 BCE, but the question of how
+primes are \emph{distributed} among integers remained mysterious until the 19th
+century.
+
+The Prime Number Theorem, proved independently by Hadamard and de la Vallée
+Poussin in 1896, established that the average gap between primes near $n$
+is approximately $\log n$. This raised a natural question: can the gap
+$g_n = p_{n+1} - p_n$ be bounded by a constant infinitely often?
+
+Hardy and Littlewood \cite{HardyLittlewood1923} conjectured in 1923 that
+twin primes ($p$ and $p+2$ both prime) occur infinitely often. More generally,
+they formulated precise asymptotic predictions for $k$-tuples of primes
+in arithmetic progressions. Despite a century of effort, these conjectures
+remain unproved.
+
+\subsection{The GPY Revolution}
+
+The modern era began with Goldston, Pintz, and Yıldırım \cite{GPY2009}, who
+proved in 2005 that
+\begin{equation}
+  \liminf_{n \to \infty} \frac{g_n}{\log p_n} = 0.
+\end{equation}
+While not establishing a finite bound, their method---combining sieve theory
+with the Bombieri--Vinogradov theorem---opened a new pathway.
+
+Zhang \cite{Zhang2014} achieved the breakthrough in 2013:
+\begin{equation}
+  \liminf_{n \to \infty} g_n \leq 7 \times 10^7.
+\end{equation}
+This was the first proof that bounded gaps occur infinitely often.
+
+\subsection{The Maynard--Tao Method}
+
+Maynard \cite{Maynard2015} and Tao independently developed a new approach
+using multi-dimensional sieve weights. Their key insight: instead of optimizing
+one-dimensional weights, consider functions $F(t_1, \ldots, t_k)$ on the
+$k$-simplex and define
+\begin{equation}
+  M(F) = \frac{\displaystyle\int_{\Delta_k}
+    \Bigl(\sum_{j=1}^k \partial_j F\Bigr)^2 dt}
+    {\displaystyle\int_{\Delta_k} F^2 \, dt}.
+\end{equation}
+The fundamental result: if $M(F) > m$, then $m$ primes appear in a bounded
+interval infinitely often. The Polymath project \cite{Polymath2014} optimized
+this to obtain
+\begin{equation}
+  \liminf_{n \to \infty} g_n \leq 246,
+\end{equation}
+the current best unconditional result.
+
+\subsection{Spectral Approaches and the Hilbert--Pólya Philosophy}
+
+A parallel development in analytic number theory concerns spectral
+interpretations of the Riemann Hypothesis. Hilbert and Pólya independently
+suggested that the zeros of $\zeta(s)$ might be eigenvalues of a
+self-adjoint operator. If such an operator exists and is positive,
+the Riemann Hypothesis would follow.
+
+The Q3 framework \cite{Q3paper} constructs a concrete candidate:
+the Hamiltonian
+\begin{equation}
+  H_X = T_A - T_P
+\end{equation}
+on $L^2([-K, K])$, where $T_A$ is an archimedean operator and $T_P$
+encodes prime contributions via weights
+\begin{equation}
+  w(p) = \frac{2\log p}{\sqrt{p}}.
+\end{equation}
+The spectral positivity condition $\lambda_{\min}(H_X) \geq 0$ provides
+an equivalent reformulation of the Riemann Hypothesis.
+
+\subsection{Our Contribution: The Sieve--Spectral Bridge}
+
+This paper constructs polynomial sieve functions inspired by Q3 spectral weights.
+We consider the family
+\begin{equation}
+  F_\alpha(t_1, \ldots, t_k) = \Bigl(1 - \sum_{i=1}^k t_i\Bigr)^\alpha
+\end{equation}
+supported on the $k$-simplex $\Delta_k$, and prove:
+
+\medskip
+\noindent\textbf{Main Theorem.}
+\textit{For $F_\alpha(t) = (1 - \sum_i t_i)^\alpha$ on the $k$-simplex:
+\begin{enumerate}
+  \item[\textnormal{(i)}] $F_\alpha$ satisfies all conditions of Maynard's variational theorem
+        (smoothness, simplex support, non-negativity, symmetry).
+  \item[\textnormal{(ii)}] The variational functional has closed form:
+        $M(F_\alpha, k) = \frac{2k(2\alpha+1)}{(\alpha+1)(k+2\alpha+1)}$.
+  \item[\textnormal{(iii)}] For $\alpha = 1/2$, $k = 7$: $M(F_{1/2}, 7) = 56/27 > 2$.
+  \item[\textnormal{(iv)}] Critical threshold: $M > m$ iff $k > k^*(\alpha, m)$
+        where $k^* = m(\alpha+1)(2\alpha+1)/[2(2\alpha+1) - m(\alpha+1)]$.
+  \item[\textnormal{(v)}] Optimal exponent: for $m = 2$, the minimum $k^*$ is achieved
+        at $\alpha^* = 1/\sqrt{2}$, giving $k^* = 2\sqrt{2}+3 \approx 5.83$.
+  \item[\textnormal{(vi)}] Consequently, $\liminf_{n \to \infty}(p_{n+1} - p_n) < \infty$.
+\end{enumerate}}
+
+\medskip
+The proof is purely analytic: no Monte Carlo, no numerical optimization.
+The Q3 spectral framework motivates the function family (via weights $w(p) \sim p^{-1/2}$),
+but the proof chain uses only Maynard--Tao machinery and explicit $\Gamma$-function calculus.
+
+\subsection{Organization}
+
+Section~\ref{sec:maynard} reviews the Maynard--Tao sieve framework.
+Section~\ref{sec:q3weights} defines Q3 spectral weights and their origin.
+Section~\ref{sec:setup} constructs the spectral sieve function and verifies
+Maynard admissibility.
+Section~\ref{sec:correspondence} states and proves the main correspondence
+theorems.
+Section~\ref{sec:numerical} presents computational verification.
+Section~\ref{sec:conclusions} discusses implications and further directions.

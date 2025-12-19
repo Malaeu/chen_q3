@@ -1,0 +1,86 @@
+{"synthetic": false,
+ "outputs":
+ {"o": ["1616650599348625134"],
+  "i": "7569098712670554928",
+  "c": "15044135888187065676"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/packages/Cli/.lake/build/lib/lean:/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/packages/batteries/.lake/build/lib/lean:/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/packages/Qq/.lake/build/lib/lean:/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/packages/aesop/.lake/build/lib/lean:/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/packages/importGraph/.lake/build/lib/lean:/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/packages/plausible/.lake/build/lib/lean:/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/packages/mathlib/.lake/build/lib/lean:/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/build/lib/lean /Users/emalam/.elan/toolchains/leanprover--lean4---v4.24.0/bin/lean /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/Q3/CheckAxioms.lean -o /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/build/lib/lean/Q3/CheckAxioms.olean -i /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/build/lib/lean/Q3/CheckAxioms.ilean -c /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/build/ir/Q3/CheckAxioms.c --setup /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/.lake/build/ir/Q3/CheckAxioms.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "Q3/CheckAxioms.lean:37:0: Q3.Weil_criterion : (∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0) ↔ Q3.RH",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:38:0: Q3.explicit_formula (Φ : ℝ → ℝ) : Φ ∈ Q3.Weil_cone → Q3.Q Φ = Q3.arch_term Φ - Q3.prime_term Φ",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:39:0: Q3.a_star_pos (ξ : ℝ) : Q3.a_star ξ > 0",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:40:0: Q3.Szego_Bottcher_eigenvalue_bound (M : ℕ) (P : ℝ → ℝ) :\n  Continuous P →\n    (∀ (θ : ℝ), P (-θ) = P θ) →\n      ∀ (μ : ℝ),\n        (∃ v, v ≠ 0 ∧ (Q3.ToeplitzMatrix M P).mulVec v = μ • v) →\n          sInf {x | ∃ θ ∈ Set.Icc 0 (2 * Real.pi), P θ = x} ≤ μ ∧ μ ≤ sSup {x | ∃ θ ∈ Set.Icc 0 (2 * Real.pi), P θ = x}",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:41:0: Q3.Szego_Bottcher_convergence (P : ℝ → ℝ) :\n  Continuous P →\n    (∀ (θ : ℝ), P (-θ) = P θ) →\n      ∀ ε > 0,\n        ∃ N,\n          ∀ m ≥ N,\n            ∀ (μ : ℝ),\n              (∃ v, v ≠ 0 ∧ (Q3.ToeplitzMatrix m P).mulVec v = μ • v) → ∃ θ ∈ Set.Icc 0 (2 * Real.pi), |μ - P θ| < ε",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:42:0: Q3.Schur_test.{u_1} {n : Type u_1} [Fintype n] [DecidableEq n] (A : Matrix n n ℝ) :\n  A.IsSymm → ∀ (C : ℝ), 0 ≤ C → (∀ (i : n), ∑ j, |A i j| ≤ C) → ‖A‖ ≤ C",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:43:0: Q3.c_arch_pos (K : ℝ) : K > 0 → Q3.c_arch K > 0",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:44:0: Q3.eigenvalue_le_norm.{u_1} {n : Type u_1} [Fintype n] [DecidableEq n] (A : Matrix n n ℝ) (μ : ℝ) :\n  (∃ v, v ≠ 0 ∧ A.mulVec v = μ • v) → |μ| ≤ ‖A‖",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:48:0: Q3.A1_density_WK_axiom (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ) :\n  Φ ∈ Q3.W_K K → ∀ ε > 0, ∃ g ∈ Q3.AtomCone_K K, sSup {x | ∃ x_1 ∈ Set.Icc (-K) K, |Φ x_1 - g x_1| = x} < ε",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:49:0: Q3.A1_density_axiom (K : ℝ) (hK : K > 0) (f : ℝ → ℝ) :\n  f ∈ Q3.C_even_nonneg K → ∀ ε > 0, ∃ g ∈ Q3.Fejer_heat_cone K, ∀ x ∈ Set.Icc (-K) K, |f x - g x| < ε",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:52:0: Q3.Q_Lipschitz_on_W_K (K : ℝ) (hK : K > 0) :\n  ∃ L > 0,\n    ∀ Φ₁ ∈ Q3.W_K K, ∀ Φ₂ ∈ Q3.W_K K, |Q3.Q Φ₁ - Q3.Q Φ₂| ≤ L * sSup {x | ∃ x_1 ∈ Set.Icc (-K) K, |Φ₁ x_1 - Φ₂ x_1| = x}",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:55:0: Q3.RKHS_contraction_axiom (K : ℝ) (hK : K ≥ 1) :\n  ∃ t > 0,\n    ∃ ρ < 1,\n      ∀ (Nodes_K : Set ℕ) [inst : Fintype ↑Nodes_K] (T_P : Matrix ↑Nodes_K ↑Nodes_K ℝ),\n        T_P.IsSymm →\n          (∀ (i j : ↑Nodes_K),\n              T_P i j = √(Q3.w_RKHS ↑i) * √(Q3.w_RKHS ↑j) * Real.exp (-(Q3.xi_n ↑i - Q3.xi_n ↑j) ^ 2 / (4 * t))) →\n            ‖T_P‖ ≤ ρ",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:56:0: Q3.T_P_row_sum_bound_axiom (K t : ℝ) (hK : K ≥ 1) (ht : t > 0) (Nodes_K : Set ℕ) [Fintype ↑Nodes_K]\n  (T_P : Matrix ↑Nodes_K ↑Nodes_K ℝ) :\n  (∀ (i j : ↑Nodes_K),\n      T_P i j = √(Q3.w_RKHS ↑i) * √(Q3.w_RKHS ↑j) * Real.exp (-(Q3.xi_n ↑i - Q3.xi_n ↑j) ^ 2 / (4 * t))) →\n    ∀ (i : ↑Nodes_K), ∑ j, |T_P i j| ≤ Q3.w_max + √Q3.w_max * Q3.S_K K t",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:57:0: Q3.S_K_small_axiom (K t η : ℝ) (hK : K ≥ 1) (hη : η > 0) (ht : t ≥ Q3.t_min K η) : Q3.S_K K t ≤ η",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:60:0: Q3.A3_bridge_axiom (K : ℝ) (hK : K ≥ 1) :\n  ∃ M₀,\n    ∃ t > 0,\n      ∀ M ≥ M₀,\n        ∀ (v : Fin M → ℝ),\n          v ≠ 0 →\n            (∑ i,\n                  ∑ j,\n                    v i * v j *\n                      (Q3.ToeplitzMatrix M Q3.a_star i j -\n                        √(Q3.w_RKHS ↑i) * √(Q3.w_RKHS ↑j) * Real.exp (-(Q3.xi_n ↑i - Q3.xi_n ↑j) ^ 2 / (4 * t)))) /\n                ∑ i, v i ^ 2 ≥\n              Q3.c_arch K / 4",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:63:0: Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom (K : ℝ) (hK : K ≥ 1) :\n  Q3.A3_bridge_data K → Q3.RKHS_contraction_data K → ∀ g ∈ Q3.AtomCone_K K, Q3.Q g ≥ 0",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:64:0: Q3.Atoms.Q_nonneg_on_atoms (K : ℝ) (hK : K ≥ 1) (g : ℝ → ℝ) : g ∈ Q3.AtomCone_K K → Q3.Q g ≥ 0",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:67:0: Q3.T5.T5_transfer (K : ℝ) (hK : K ≥ 1) (Φ : ℝ → ℝ) : Φ ∈ Q3.W_K K → Q3.Q Φ ≥ 0",
+   "level": "info"},
+  {"message":
+   "Q3/CheckAxioms.lean:70:0: Q3.Main.Weil_cone_continuous (Φ : ℝ → ℝ) : Φ ∈ Q3.Weil_cone → Continuous Φ",
+   "level": "info"}],
+ "inputs":
+ [["Q3.CheckAxioms:deps",
+   [["deps",
+     [["q3_lean_aristotle/Q3:extraDep",
+       [["@q3_lean_aristotle:extraDep", "1723"]]],
+      ["imports",
+       [["Q3.Main transitive imports (legacy)", "2766607388644708074"],
+        ["Q3.Main:importAllArts", "6278118019179202922"]]]]],
+    ["libs",
+     [["import dynlibs", "1723"],
+      ["package external libraries", "1723"],
+      ["module dynlibs", "1723"],
+      ["module plugins", "1723"]]]]],
+  ["Lean 4.24.0, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b",
+   "1165570713881806064"],
+  ["/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/Q3/CheckAxioms.lean",
+   "8956467476219166396"],
+  ["options", "1723"],
+  ["Module.leanArgs: #[]", "1723"]],
+ "depHash": "5806329831559198568"}

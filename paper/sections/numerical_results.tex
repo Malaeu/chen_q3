@@ -1,104 +1,147 @@
-\section{Numerical Results}
-\label{sec:numerical}
+% Numerical Results
+% =================
 
-All numerical experiments were performed using Python with
-\texttt{numpy}, \texttt{scipy}, and \texttt{mpmath} for arbitrary precision.
-Source code available in \texttt{src/} directory.
+\section{Numerical Results (diagnostic only)}\label{app:results}
 
-\subsection{Saturation Experiment}
+All computations use parameters $M = 18$, $t = 3.0$, with Python (\texttt{numpy}, \texttt{scipy}).
+Source code in \texttt{src/} directory.
 
-\textbf{Script:} \texttt{saturation\_proof.py}
+\subsection{RH Verification (diagnostic)}
 
-\textbf{Method:} Compute $C_0(B) = A_0 + \text{Tail Bound}$ for various $B$.
-
-\begin{figure}[h]
+\begin{table}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{../output/saturation_proof.png}
-\caption{Saturation of symbol norm $C_0(B) \to C_* \approx 277$ as $B \to \infty$.}
-\label{fig:saturation}
+\caption{Minimum eigenvalues of $H = T_A - T_P$ for various compact sizes.}
+\label{diag:tab:RH}
+\begin{tabular}{cccc}
+\toprule
+$K$ & Primes & $\lambda_{\min}(H)$ & Status \\
+\midrule
+0.5 & 9      & $-9.8 \times 10^{-11}$ & $\approx 0$ \\
+1.0 & 99     & $-4.7 \times 10^{-10}$ & $\approx 0$ \\
+1.5 & 1,479  & $-7.3 \times 10^{-10}$ & $\approx 0$ \\
+2.0 & 24,976 & $-9.0 \times 10^{-10}$ & $\approx 0$ \\
+2.5 & 453,424 & $-1.2 \times 10^{-9}$ & $\approx 0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All eigenvalues are within machine precision of zero, numerically consistent with the Weil criterion for RH.
+
+\subsection{GRH and Class Decomposition (diagnostic)}
+
+\begin{table}[H]
+\centering
+\caption{Eigenvalues for GRH operators ($K = 2.0$).}
+\label{diag:tab:GRH}
+\begin{tabular}{ccc}
+\toprule
+Operator & $\lambda_{\min}$ & Description \\
+\midrule
+$H$ (RH)        & $-9.0 \times 10^{-10}$ & all primes \\
+$H_\chi$ (GRH)  & $-4.5 \times 10^{-15}$ & $\chi_4$ twist \\
+$H_+$           & $-3.7 \times 10^{-15}$ & $p \equiv 1 \pmod{4}$ \\
+$H_-$           & $-2.3 \times 10^{-13}$ & $p \equiv 3 \pmod{4}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Twin Prime Coherence (conditional/numerical)}
+
+\begin{table}[H]
+\centering
+\caption{Phase deviation for anti-diagonal modes ($K = 2.0$, 1,393 twins).}
+\label{diag:tab:twin}
+\begin{tabular}{ccc}
+\toprule
+Mode $(k, -k)$ & std($\phi$) & Coherence \\
+\midrule
+$(1, -1)$ & $0.69^\circ$ & strong \\
+$(2, -2)$ & $1.39^\circ$ & strong \\
+$(4, -4)$ & $2.77^\circ$ & strong \\
+$(8, -8)$ & $5.54^\circ$ & moderate \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Diagonal modes $(k, k)$ show std($\phi$) $\approx 90^\circ$ (random phases).
+
+\subsection{Twin-restricted sum $Z_{\mathrm{twins}}$ (diagnostic)}
+
+Using all twin primes up to $X=10^7$ (58{,}980 pairs) we formed
+\[
+  Z_{\mathrm{twins}}(X)=\sum_{\substack{p\le X\\ p,p+2\,\text{prime}}} \frac{\log p}{\sqrt p}\,e^{i\log p}.
+\]
+Because the twin Dirichlet series has no pole at $s=1$, this sum has no main term. Numerically $|Z_{\mathrm{twins}}(X)|$ grows from $\approx 2.6$ at $X=10^2$ to $\approx 2.4\times 10^2$ at $X=10^7$, exhibiting steady increase (see Figure~\ref{fig:twin-Z-growth}). A sliding-log energy $E(T)=\frac1T\int_T^{2T}|Z_{\mathrm{twins}}(e^t)|^2\,dt$ rises from $\sim 7$ at small $T$ to $\sim 5\times10^4$ near $X=10^7$ (Figure~\ref{fig:twin-energy}). These diagnostics illustrate positivity of the twin-restricted signal but remain outside the proof.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.48\textwidth]{figures/twin_Z_growth.png}\hfill
+  \includegraphics[width=0.48\textwidth]{figures/twin_energy_bins.png}
+  \caption{Left: $|Z_{\mathrm{twins}}(X)|$ up to $10^7$. Right: energy bins $E$ vs $X=e^t$ (log--log).}
+  \label{diag:fig:twin-Z-growth}
+  \label{diag:fig:twin-energy}
 \end{figure}
 
-\textbf{Observation:} The norm saturates rapidly; by $B = 10$, we are within
-1\% of the asymptotic value.
+\subsection{Zeros-only energy functional (diagnostic)}
 
-\subsection{Floor Experiment (Lorentzian)}
-
-\textbf{Script:} \texttt{floor\_proof.py}
-
-\textbf{Method:} Periodize the Lorentzian kernel with triangular window.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{../output/floor_proof.png}
-\caption{Floor $c_{\text{arch}}(B)$ grows and saturates at $\approx 0.20$.}
-\label{fig:floor}
-\end{figure}
-
-\textbf{Observation:} The floor matches Q3's claimed value $c_{\text{arch}} \approx 0.1878$.
-
-\subsection{Digamma Analysis}
-
-\textbf{Script:} \texttt{analyze\_digamma\_poison.py}
-
-\textbf{Finding:} The raw digamma function $a^*(\xi) = \log\pi - \Re\psi(\tfrac{1}{4} + i\pi\xi)$
-changes sign at $\xi \approx 1.0$:
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{../output/digamma_poison_analysis.png}
-\caption{The digamma-based function becomes negative for $|\xi| > 1$.}
-\label{fig:digamma}
-\end{figure}
-
-\textbf{Implication:} Direct use of digamma requires careful windowing;
-positive model kernels (Lorentzian, Mellin) are analytically cleaner.
-
-\subsection{Kernel Comparison}
-
-\textbf{Script:} \texttt{merlin\_kernel\_test.py}
-
-\textbf{Method:} Test five kernel types for spectral stability.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.95\textwidth]{../output/merlin_kernel_test.png}
-\caption{Comparison of kernels. Mellin achieves $\delta_* \approx 0.79$.}
-\label{fig:kernels}
-\end{figure}
-
-\textbf{Results Summary:}
+Let $\gamma_n$ be the imaginary parts of the nontrivial zeros of $\zeta$. For a Gaussian window
+$g_{\alpha,\sigma}(x) = \exp\bigl(-\sigma^2(x-\alpha)^2\bigr)$ and cutoff $T$, define
+\begin{align*}
+  D(T) &:= \sum_{\gamma_n \le T} g_{\alpha,\sigma}(\gamma_n),\\
+  O(T) &:= \sum_{\substack{\gamma_m,\gamma_n \le T\\ m\ne n}}
+           g_{\alpha,\sigma}(\gamma_m)^{1/2} g_{\alpha,\sigma}(\gamma_n)^{1/2}
+           \frac{\sin(T(\gamma_m-\gamma_n))}{T(\gamma_m-\gamma_n)},\\
+  E(T) &:= D(T)+O(T).
+\end{align*}
+With a modest cutoff $T=50{,}000$, window width $\sigma=0.005$ (std. $\approx 200$) and the first $10^4$ zeros,
+the diagonal term dominates:
 \begin{center}
-\begin{tabular}{l|c|c|c}
-Kernel & Floor Behavior & Ceiling Behavior & $\delta_*$ \\
-\hline
-Sinc & Oscillates negative & Grows & 0 \\
-Fejér & Zero at edges & Grows & 0 \\
-Poisson & Bounded positive & Explodes & $\to 0$ \\
-Gaussian & Small positive & Bounded & 0.014 \\
-\textbf{Lorentzian} & Positive & Bounded & \textbf{0.20} \\
-\textbf{Mellin} & Positive, parallel & Bounded & \textbf{0.79}
+\begin{tabular}{ccccc}
+\toprule
+$T$ & $D(T)$ & $O(T)$ & $E(T)$ & $|O|/D$ \\
+\midrule
+100   & $2.70\times 10^{-1}$ & $-2.2\times 10^{-4}$ & $2.70\times 10^{-1}$ & $10^{-3}$ \\
+1{,}000 & $2.44\times 10^{2}$ & $-1.9\times 10^{-2}$ & $2.44\times 10^{2}$ & $10^{-4}$ \\
+50{,}000& $2.44\times 10^{2}$ & $1.7\times 10^{-4}$ & $2.44\times 10^{2}$ & $10^{-6}$ \\
+\bottomrule
 \end{tabular}
 \end{center}
-
-\subsection{Key Discovery: Decay Rate Law}
-
-\begin{observation}[Decay-Stability Relationship]
-The stability ratio $\delta_*$ increases with slower decay:
-\begin{equation}
-    \text{Decay } \sim |\xi|^{-\alpha} \quad \Rightarrow \quad
-    \delta_* \text{ increases as } \alpha \downarrow.
-\end{equation}
-\end{observation}
-
+Scanning the window center $\alpha$ (same $\sigma$, $T=50{,}000$) keeps $E>0$ with tiny off-diagonal mass:
 \begin{center}
-\begin{tabular}{c|c}
-$\alpha$ (decay exponent) & $\delta_*$ \\
-\hline
-$\infty$ (exponential) & $\approx 0$ \\
-2 (Lorentzian) & 0.20 \\
-0.5 (Mellin) & 0.79
+\begin{tabular}{ccccc}
+\toprule
+$\alpha$ & $D$ & $|O|$ & $E$ & $|O|/D$ \\
+\midrule
+100  & 124.88 & $4.8\times10^{-4}$ & 124.88 & $3.8\times10^{-6}$ \\
+500  & 244.25 & $1.7\times10^{-4}$ & 244.25 & $6.9\times10^{-7}$ \\
+5{,}000 & 376.82 & $5.8\times10^{-4}$ & 376.82 & $1.5\times10^{-6}$ \\
+\bottomrule
 \end{tabular}
 \end{center}
+For a larger set of $200{,}000$ zeros we estimate $O$ via $10^6$ random pairs (quadratic summation is infeasible). At $\alpha=10^4$ we obtain $D\approx 416$, $O\approx -3.9\times10^{-2}\pm3.7\times10^{-2}$, so $|O|/D\approx 9\times10^{-5}$; at $\alpha=50{,}000$, $D\approx 253$, $|O|/D\approx 6\times10^{-5}$. These diagnostics support the positivity of the zeros-only kernel but are not used in the proof.
 
-This explains why exponentially decaying kernels (Gamma, Gaussian)
-perform poorly: they create ``holes'' in the periodization.
+\subsection{Two-Particle Operators (conditional/numerical)}
+
+\begin{table}[H]
+\centering
+\caption{Two-particle operator eigenvalues.}
+\label{diag:tab:two-particle}
+\begin{tabular}{cccc}
+\toprule
+$K$ & Twins & $\lambda_{\min}(A^{(2)})$ & $\lambda_{\min}(V_{\text{twins}})$ \\
+\midrule
+0.5 & 2    & $-1.9 \times 10^{-10}$ & $\geq 0$ \\
+1.0 & 23   & $-9.0 \times 10^{-10}$ & $\geq 0$ \\
+1.5 & 172  & $-1.4 \times 10^{-9}$  & $\geq 0$ \\
+2.0 & 1,393 & $-1.8 \times 10^{-9}$ & $\geq 0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Interpretation}
+
+\textbf{Numerical vs Proof:}
+These diagnostics check $H \geq 0$ and $H_\chi \geq 0$ on finite compacts $K \leq 2.5$. They are \emph{not} part of the proof; a proof requires the analytic arguments in Sections~\ref{sec:A3}--\ref{sec:T5}. The values come from scripts (Appendix~C) and are provided for reproducibility only.
+
+\textbf{Twin prime implications:}
+The anti-diagonal coherence and antiferromagnetic order are structural properties of twins in the Q3 framework. They suggest twins occupy a low-dimensional subspace in Fourier space, but do not imply infinitude.

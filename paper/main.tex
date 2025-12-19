@@ -1,33 +1,140 @@
+% Twin Prime Paper - Main File
+% ============================
+% Conditional Spectral Approaches to Twin Primes:
+% A Reduction to Cone-Constrained Energy Growth
+%
+% Structure: Main Theorem (TPC ⟺ R→∞) + Key Target P(X) + Five Attack Paths
+% Style: Conditional reduction à la Goldston-Pintz-Yıldırım
+
 \documentclass[11pt,a4paper]{article}
 
-% === PREAMBLE ===
-\input{preamble/preamble}
-\input{preamble/constants}
+% Packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\setlength{\emergencystretch}{2em} % soften line breaks to avoid overfull boxes
 
-% === DOCUMENT ===
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+% Commands
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\CC}{\mathbb{C}}
+
+% Title
+\title{Conditional Spectral Approaches to Twin Primes:\\
+A Reduction to Cone-Constrained Energy Growth}
+
+\author{[Authors]}
+
+\date{\today}
+
 \begin{document}
 
-\input{preamble/titleblock}
 \maketitle
 
-\tableofcontents
-\newpage
+\begin{abstract}
+We reduce the Twin Prime Conjecture (TPC) to a single sufficient condition.
+Let $\Phi_X$ denote the characteristic vector of twin primes up to $X$,
+and let $R(\Phi_X)$ be the Rayleigh quotient of commutator energy over lattice energy.
 
-% === MAIN SECTIONS ===
-\input{sections/introduction}
-\input{sections/preliminaries}
-\input{sections/lemma_saturation}
-\input{sections/lemma_floor}
-\input{sections/theorem_stability}
-\input{sections/numerical_results}
-\input{sections/conclusions}
+\textbf{Main Theorem (Unconditional):}
+\[
+    \textbf{TPC} \;\iff\; R(\Phi_X) \to \infty \text{ as } X \to \infty.
+\]
 
-% === APPENDIX ===
+\textbf{Key Target $\mathbf{P(X)}$:} We identify the sufficient condition
+\[
+    R(\Phi_X) \geq c \cdot X^\delta \quad \text{for some } \delta > 0, \; c > 0.
+\]
+If $\mathbf{P(X)}$ holds, then TPC follows immediately from our Main Theorem.
+
+\textbf{Five Attack Paths:} We present five independent approaches to proving $\mathbf{P(X)}$:
+\begin{enumerate}[nosep]
+    \item \emph{CV Growth:} Show $\mathrm{cv}(\xi) \to \infty$ (coefficient of variation of spectral coordinates)
+    \item \emph{Eigenvalue Ratio:} Show $\lambda_{\max}/\lambda_{\min} \to \infty$
+    \item \emph{Character Sum:} Show $|S(t)|/\sqrt{N} \to \infty$ where $S(t) = \sum p^{-it}$
+    \item \emph{L-function:} Analyze divergence of $L_{\mathrm{twins}}(s) = \sum_{\mathrm{twin}\, p} p^{-s}$
+    \item \emph{Direct Summation:} Explicit bounds on commutator energy via number-theoretic estimates
+\end{enumerate}
+
+We do not claim to prove TPC. We provide a \emph{conditional reduction} in the spirit of
+Goldston--Pintz--Y{\i}ld{\i}r{\i}m: prove $\mathbf{P(X)}$ by any path, obtain TPC.
+Key components---including the Main Theorem equivalence and the CV Growth path---have been
+formally verified in Lean4 using the Aristotle theorem prover.
+\end{abstract}
+
+%==============================================================================
+% Section 1: Introduction
+%==============================================================================
+\input{sections/introduction_twins}
+
+%==============================================================================
+% Section 2: Setup and Definitions
+%==============================================================================
+\input{sections/setup_twins}
+
+%==============================================================================
+% Section 3: Operator-Sum Bridge (T_P ↔ S(X))
+%==============================================================================
+\input{sections/TP_SX_bridge}
+
+%==============================================================================
+% Section 4: B1-strong (Cone-Kernel Separation) — PROVEN
+%==============================================================================
+\input{sections/hypothesis_B1_prime}
+
+%==============================================================================
+% Section 5: Abstract SC1 Framework (Pure Operator Theory) — PROVEN
+%==============================================================================
+\input{sections/abstract_SC1}
+
+%==============================================================================
+% Section 6: SC2 Arithmetic Upper Bound
+%==============================================================================
+\input{sections/SC2_arithmetic}
+
+%==============================================================================
+% Section 7: Target Theorem (Conditional Twin Primes)
+%==============================================================================
+\input{sections/target_theorem}
+
+%==============================================================================
+% Section 8: Five Attack Paths to P(X)
+%==============================================================================
+\input{sections/attack_paths}
+
+%==============================================================================
+% Section 9: Numerical Verification
+%==============================================================================
+\input{sections/numerics_twins}
+
+%==============================================================================
+% Section 10: Discussion and Conclusions
+%==============================================================================
+\input{sections/conclusions_twins}
+
+%==============================================================================
+% Appendix: Formal Lean4 Verification
+%==============================================================================
 \appendix
-% \input{appendix/verification}
-% \input{appendix/code_listings}
+\input{appendix/lean_verification}
 
-% === BIBLIOGRAPHY ===
+%==============================================================================
+% References
+%==============================================================================
 \bibliographystyle{plain}
 \bibliography{references}
 

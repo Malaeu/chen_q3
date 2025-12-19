@@ -1,0 +1,249 @@
+{
+  "nodes": [
+    {
+      "id": "lem:psi-upper",
+      "type": "lemma",
+      "file": "appendix/arch_bounds.tex",
+      "line": 13,
+      "label": "Upper bound for $\\Re\\psi$",
+      "has_proof": false,
+      "has_citation": true,
+      "content_preview": "[Upper bound for $Repsi$] Let $sigma = tfrac14$ and $|tau| leq pi K$. Then, for any $t_0>0$,"
+    },
+    {
+      "id": "lem:kernel-uniform",
+      "type": "lemma",
+      "file": "main.tex",
+      "line": 520,
+      "label": "Kernel uniform bounds",
+      "has_proof": false,
+      "has_citation": true,
+      "content_preview": "[Kernel uniform bounds] For every $M in $ and $t > 0$:"
+    },
+    {
+      "id": "definition_q3_preprint_101",
+      "type": "definition",
+      "file": "q3_preprint.tex",
+      "line": 101,
+      "label": "Q3 Hamiltonian",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Q3 Hamiltonian] For compact parameter $K > 0$, matrix size $M$, and heat parameter $t > 0$, define:"
+    },
+    {
+      "id": "def:fejer-heat",
+      "type": "definition",
+      "file": "sections/A1_cone_density.tex",
+      "line": 8,
+      "label": "Fej\\'er-heat test functions",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Fej'er-heat test functions] For bandwidth $B > 0$, heat parameter $t > 0$, and center $tau$, define"
+    },
+    {
+      "id": "lem:Q-local-finite",
+      "type": "lemma",
+      "file": "sections/A2_continuity.tex",
+      "line": 8,
+      "label": "Local finiteness of the prime sampler",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Local finiteness of the prime sampler] Fix $K > 0$. For every even $Phi in C_c(R)$ with $suppPhi su"
+    },
+    {
+      "id": "lem:lipschitz-modulus",
+      "type": "lemma",
+      "file": "sections/A3_detailed.tex",
+      "line": 18,
+      "label": "Lipschitz modulus of $P_A$",
+      "has_proof": false,
+      "has_citation": true,
+      "content_preview": "[Lipschitz modulus of $P_A$] For each compact $K > 0$, the symbol $P_A$ restricted to test functions"
+    },
+    {
+      "id": "def:Q3-hamiltonian",
+      "type": "remark",
+      "file": "sections/A3_operator_bridge.tex",
+      "line": 6,
+      "label": "Proof provenance",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Proof provenance] Full, line-by-line proofs of the A3 statements appear in the RH_Q3 manuscript (Se"
+    },
+    {
+      "id": "def:chi4",
+      "type": "remark",
+      "file": "sections/GRH_extension.tex",
+      "line": 6,
+      "label": "Proof provenance",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Proof provenance] The GRH module mirrors the $zeta$-case; full proofs are given in RH_Q3 (Section 1"
+    },
+    {
+      "id": "def:AB-chain",
+      "type": "definition",
+      "file": "sections/IND_AB_closure.tex",
+      "line": 12,
+      "label": "Activity block chain",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Activity block chain] An  is a sequence of compacts $K_i_i geq 1$ with:"
+    },
+    {
+      "id": "eq:xi-nodes",
+      "type": "remark",
+      "file": "sections/RKHS_contraction.tex",
+      "line": 8,
+      "label": "Proof provenance",
+      "has_proof": false,
+      "has_citation": true,
+      "content_preview": "[Proof provenance] Detailed proofs of the RKHS contraction lemmas and the monotone schedules $t_min("
+    },
+    {
+      "id": "lem:rho-closed-form",
+      "type": "definition",
+      "file": "sections/RKHS_prime_trace.tex",
+      "line": 16,
+      "label": "Prime trace function",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Prime trace function] For $t > 0$, define the prime trace function:"
+    },
+    {
+      "id": "def:weil-functional",
+      "type": "definition",
+      "file": "sections/T0_normalization.tex",
+      "line": 18,
+      "label": "Weil functional",
+      "has_proof": false,
+      "has_citation": true,
+      "content_preview": "[Weil functional] For an even, compactly supported test function $Phi$ on $R$, define:"
+    },
+    {
+      "id": "eq:T5-tstar",
+      "type": "remark",
+      "file": "sections/T5_compact_transfer.tex",
+      "line": 8,
+      "label": "Proof provenance",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Proof provenance] The T5 construction and its lemmas are proved in detail in RH_Q3 (Section 12). We"
+    },
+    {
+      "id": "def:weil-class",
+      "type": "definition",
+      "file": "sections/Weil_linkage.tex",
+      "line": 14,
+      "label": "Weil test class",
+      "has_proof": false,
+      "has_citation": true,
+      "content_preview": "[Weil test class] The  $$ consists of all even, smooth test functions $Phi : RR to RR$ with sufficie"
+    },
+    {
+      "id": "def:twin-set",
+      "type": "definition",
+      "file": "sections/coherence_bridge.tex",
+      "line": 10,
+      "label": "Twin prime set",
+      "has_proof": false,
+      "has_citation": true,
+      "content_preview": "[Twin prime set] Let $T(X)$ denote the set of primes $p leq X$ such that $(p, p+2)$ is a twin prime"
+    },
+    {
+      "id": "lem:semigroup",
+      "type": "lemma",
+      "file": "sections/commutator_resonance.tex",
+      "line": 7,
+      "label": "Semigroup representation",
+      "has_proof": false,
+      "has_citation": true,
+      "content_preview": "[Semigroup representation] Let $P_t^(X) := e^-tH_X$ be the heat semigroup generated by $H_X$ on $mat"
+    },
+    {
+      "id": "thm:intro-main-informal",
+      "type": "theorem",
+      "file": "sections/introduction.tex",
+      "line": 19,
+      "label": "Main reduction, informal",
+      "has_proof": false,
+      "has_citation": true,
+      "content_preview": "[Main reduction, informal] Let $Q$ be the quadratic form on the Weil class $$ defined in Section~. T"
+    },
+    {
+      "id": "lem:floor",
+      "type": "lemma",
+      "file": "sections/lemma_floor.tex",
+      "line": 4,
+      "label": "Archimedean Floor",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Archimedean Floor]  For the Lorentzian model kernel $a(xi) = 1/(1+xi^2)$ with window"
+    },
+    {
+      "id": "lem:saturation",
+      "type": "lemma",
+      "file": "sections/lemma_saturation.tex",
+      "line": 4,
+      "label": "Norm Saturation",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Norm Saturation]  For any $B > 0$ and $t geq 0$, the symbol norm satisfies"
+    },
+    {
+      "id": "prop:empirical-decay",
+      "type": "definition",
+      "file": "sections/off_diagonal_lemma.tex",
+      "line": 20,
+      "label": "Localised power-law decay",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Localised power-law decay] We say that $H$ exhibits  if, for each centre position $c in [-K, K]$, t"
+    },
+    {
+      "id": "remark_preliminaries_13",
+      "type": "remark",
+      "file": "sections/preliminaries.tex",
+      "line": 13,
+      "label": "Asymptotic Behavior",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Asymptotic Behavior] For large $|xi|$:"
+    },
+    {
+      "id": "def:test-classes",
+      "type": "definition",
+      "file": "sections/scope_positioning.tex",
+      "line": 54,
+      "label": "Test classes",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Test classes] On the compact $W_K = [-K, K]$:"
+    },
+    {
+      "id": "def:antidiag-modes",
+      "type": "definition",
+      "file": "sections/twin_coherence.tex",
+      "line": 10,
+      "label": "Anti-diagonal modes",
+      "has_proof": false,
+      "has_citation": false,
+      "content_preview": "[Anti-diagonal modes] In the complex Fourier basis $e^ikxi$, the anti-diagonal modes are those with:"
+    }
+  ],
+  "edges": [],
+  "stats": {
+    "total_theorems": 23,
+    "with_proof": 0,
+    "cited": 9,
+    "missing": 14,
+    "total_edges": 0,
+    "by_type": {
+      "lemma": 7,
+      "definition": 10,
+      "remark": 5,
+      "theorem": 1
+    },
+    "max_depth": 0
+  }
+}

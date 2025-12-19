@@ -1,0 +1,89 @@
+% Sieve-Spectral Synergy - Preamble
+% ==================================
+
+\documentclass[11pt,a4paper]{article}
+
+% Encoding and fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Math packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+
+% References and hyperlinks
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[nameinlink]{cleveref}
+
+% Tables and figures
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+
+% Layout
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Enumeration
+\usepackage{enumitem}
+
+% ============================================
+% Theorem environments
+% ============================================
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+% ============================================
+% Custom commands - Number sets
+% ============================================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+
+% Operators
+\newcommand{\Tr}{\operatorname{Tr}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+
+% Brackets and norms
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+
+% ============================================
+% Sieve notation
+% ============================================
+\newcommand{\Sone}{S_1}              % First sieve sum
+\newcommand{\Stwo}{S_2}              % Second sieve sum
+\newcommand{\MF}{M(F)}               % Sieve ratio
+\newcommand{\Fspec}{F_{\mathrm{spec}}} % Spectral sieve function
+\newcommand{\WQ}{W_{Q3}}             % Q3 weight kernel
+
+% ============================================
+% Q3 notation (from main paper)
+% ============================================
+\newcommand{\TA}{T_A}                % Archimedean Toeplitz
+\newcommand{\TP}{T_P}                % Prime Toeplitz
+\newcommand{\HX}{H_X}                % Hamiltonian
+\newcommand{\wQ}[1]{w(#1)}           % Q3 weight w(n) = 2 Lambda(n)/sqrt(n)
+\newcommand{\lammin}{\lambda_{\min}} % Minimum eigenvalue
+\newcommand{\tsym}{t_{\mathrm{sym}}} % Symmetry parameter

@@ -1,0 +1,1 @@
+{"directImports":[["Mathlib",false,false,false]],"module":"Q3","references":{"{\"c\":{\"m\":\"Mathlib.NumberTheory.LSeries.RiemannZeta\",\"n\":\"riemannZeta\"}}":{"definition":null,"usages":[[9,7,9,18]]}},"version":4}
