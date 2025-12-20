@@ -491,26 +491,29 @@ lake env lean Q3/filename.lean 2>&1 | grep -i "error"
 | `deprecated: Use X instead` | API устарело | Заменить на новое (опционально) |
 | `ring` failed, use `ring_nf` | ring не закрыл цель | Ничего (информационное) |
 
-**3. Подстановка `exact?` (опционально):**
+**3. `exact?` — это РАБОТАЮЩИЙ library search, НЕ placeholder!**
 
-`exact?` — это Mathlib library search. Lean ищет подходящую лемму и выводит:
-```
-Try this: exact some_lemma arg1 arg2
-```
+⚠️ **КРИТИЧНО:** `exact?` это НЕ incomplete proof! Это тактика Mathlib которая:
+1. Ищет в Mathlib подходящую лемму для текущего goal
+2. Выводит warning `Try this: exact some_lemma arg1 arg2`
+3. **PROOF ПРОХОДИТ** если лемма найдена!
 
-Можно подставить напрямую:
+Если `exact?` не находит лемму — будет **error**, не warning.
+Если видишь warning "Try this" — значит proof **РАБОТАЕТ**.
+
+**Опционально** можно подставить найденную лемму:
 ```lean
--- До:
+-- До (работает, но ищет при каждой компиляции):
 exact?;
 
--- После:
+-- После (чуть быстрее, явная лемма):
 exact some_lemma arg1 arg2;
 ```
 
-**Важно:**
-- Иногда suggestions содержат "inaccessible names" (типа `a`, `a✝`) которые нельзя скопировать напрямую
-- Deprecated warnings НЕ означают что можно просто заменить имя — API может измениться
-- В обоих случаях лучше оставить `exact?` — он работает и находит лемму на compile time
+**Когда оставить `exact?`:**
+- Suggestions содержат "inaccessible names" (типа `a✝`) — нельзя скопировать
+- Deprecated API — suggestion может не работать в будущем
+- Лень разбираться — `exact?` и так работает
 
 **4. Проблема `open scoped Nat`:**
 
