@@ -53,49 +53,46 @@ ALL standalone Aristotle proofs are **CLEAN** (verified with `#print axioms`):
 
 ---
 
-## WORKING BRIDGES (4/8 + 1 partial)
+## WORKING BRIDGES - UPDATED 2025-12-20
 
-Bridges transfer standalone proofs to Q3 definitions:
+### SELF-CONTAINED Bridges (import only Q3.Basic.Defs, no namespace conflicts)
 
-| Bridge File | Status | Verification |
-|-------------|--------|--------------|
-| `Q3/Proofs/node_spacing_bridge.lean` | ✅ WORKS | `#print axioms` = CLEAN |
-| `Q3/Proofs/off_diag_exp_sum_bridge.lean` | ✅ WORKS | `#print axioms` = CLEAN |
-| `Q3/Proofs/S_K_small_bridge.lean` | ✅ WORKS | `#print axioms` = CLEAN |
-| `Q3/Proofs/W_sum_finite_bridge.lean` | ✅ WORKS | `#print axioms` = CLEAN |
-| `Q3/Proofs/Q_nonneg_bridge.lean` | ⚠️ PARTIAL | Has 4 bridge axioms + 3 sorry's |
+| Bridge File | Status | Used in AxiomsTheorems |
+|-------------|--------|------------------------|
+| `Q3/Proofs/node_spacing_bridge.lean` | ✅ WORKS | ✅ Yes |
+| `Q3/Proofs/S_K_small_bridge_v2.lean` | ✅ WORKS | ✅ Yes |
+| `Q3/Proofs/W_sum_finite_bridge_v2.lean` | ✅ WORKS | ✅ Yes |
 
-### Q_nonneg Bridge Details (2025-12-20)
+These bridges are SELF-CONTAINED: they define local copies of Aristotle's definitions
+in their own namespace, prove equivalence to Q3 definitions, then transfer theorems.
 
-The Q_nonneg_bridge is **structurally complete** but uses intermediate axioms:
-- `AtomCone_K_subset_axiom` - Q3.AtomCone_K ⊆ AtomCone_local
-- `RKHS_data_to_local_axiom` - RKHS_contraction_data → RKHSContractionProperty_local
-- `c_arch_eq_c0_local_axiom` - c_arch K = c_0_local K Q3.a_star
-- `A3_data_to_local_axiom` - A3_bridge_data → ∃ T_arch, A3BridgeProperty_local
+### Bridges with Namespace Conflicts (standalone imports cause conflicts)
 
-These are **mechanically consistent** (formalization of the type gap between Aristotle's proof and Q3's axiom formulation).
+| Bridge File | Issue |
+|-------------|-------|
+| `off_diag_exp_sum_bridge.lean` | Imports `off_diag_exp_sum.lean` which defines `xi_n`, `S_K` in root namespace |
+| `S_K_small_bridge.lean` | Imports `S_K_small.lean` which defines `delta_K`, `S_K` in root namespace |
+| `W_sum_finite_bridge.lean` | Imports `W_sum_finite.lean` which defines `xi_n`, `N_K` in root namespace |
 
-### How Bridges Work
-
-1. Aristotle standalone uses own definitions (xi_n, Nodes, S_K, etc.)
-2. These are DEFINITIONALLY EQUAL to Q3.Basic.Defs
-3. Bridge imports both and transfers via `rfl` or direct application
+**Replaced by v2 self-contained versions** where the standalone proof was simple enough.
+`off_diag_exp_sum` is too complex for self-contained re-proof.
 
 ### Bridge Difficulty Classification (2025-12-20)
 
-**EASY (definitions match, trivial transfer):**
-- node_spacing ✅
-- off_diag_exp_sum ✅
-- S_K_small ✅
-- W_sum_finite ✅ (FIXED: axiom changed to existence form `∃ B, W_sum K ≤ B`)
+**PROVEN via self-contained bridges (3/9):**
+- node_spacing → NodeSpacingBridge.node_spacing_Q3
+- S_K_small → S_K_SmallBridgeV2.S_K_small_Q3
+- W_sum_finite → W_sum_BridgeV2.W_sum_finite_Q3
 
-**COMPLEX (definitions differ, need non-trivial proof):**
-| Proof | Issue | Status |
-|-------|-------|--------|
-| `RKHS_contraction` | Uses ξ=log n vs xi_n=log n/(2π); universal quantifier over all node sets | Not started |
-| `Q_Lipschitz_local` | Uses simplified a_star=1 instead of real digamma-based a_star | Not started |
-| `A3_Bridge_Theorem` | Uses abstract Laurent polynomials vs concrete matrix formulation | Not started |
-| `Q_nonneg` | Takes a_star as parameter; conditional on A3/RKHS properties | ⚠️ PARTIAL (has 4 bridge axioms) |
+**AXIOM FALLBACK (6/9):**
+| Proof | Issue | Complexity |
+|-------|-------|------------|
+| `off_diag_exp_sum` | Too complex for self-contained re-proof (uses geometric series bounds) | HIGH |
+| `RKHS_contraction` | ξ=log n vs xi_n=log n/(2π), different node set definitions | HIGH |
+| `Q_Lipschitz_local` | Uses a_star=1 instead of digamma-based a_star | MEDIUM |
+| `A3_Bridge_Theorem` | Laurent polynomials vs matrix Rayleigh quotient | HIGH |
+| `Q_nonneg` | Depends on A3/RKHS properties | MEDIUM |
+| `A1_density` | AtomCone definition mismatch (exact? = library search, WORKS!) | MEDIUM |
 
 ---
 
