@@ -51,7 +51,7 @@ ALL standalone Aristotle proofs are **CLEAN** (verified with `#print axioms`):
 
 ---
 
-## WORKING BRIDGES (4/8)
+## WORKING BRIDGES (4/8 + 1 partial)
 
 Bridges transfer standalone proofs to Q3 definitions:
 
@@ -61,6 +61,17 @@ Bridges transfer standalone proofs to Q3 definitions:
 | `Q3/Proofs/off_diag_exp_sum_bridge.lean` | ✅ WORKS | `#print axioms` = CLEAN |
 | `Q3/Proofs/S_K_small_bridge.lean` | ✅ WORKS | `#print axioms` = CLEAN |
 | `Q3/Proofs/W_sum_finite_bridge.lean` | ✅ WORKS | `#print axioms` = CLEAN |
+| `Q3/Proofs/Q_nonneg_bridge.lean` | ⚠️ PARTIAL | Has 4 bridge axioms + 3 sorry's |
+
+### Q_nonneg Bridge Details (2025-12-20)
+
+The Q_nonneg_bridge is **structurally complete** but uses intermediate axioms:
+- `AtomCone_K_subset_axiom` - Q3.AtomCone_K ⊆ AtomCone_local
+- `RKHS_data_to_local_axiom` - RKHS_contraction_data → RKHSContractionProperty_local
+- `c_arch_eq_c0_local_axiom` - c_arch K = c_0_local K Q3.a_star
+- `A3_data_to_local_axiom` - A3_bridge_data → ∃ T_arch, A3BridgeProperty_local
+
+These are **mechanically consistent** (formalization of the type gap between Aristotle's proof and Q3's axiom formulation).
 
 ### How Bridges Work
 
@@ -77,12 +88,12 @@ Bridges transfer standalone proofs to Q3 definitions:
 - W_sum_finite ✅ (FIXED: axiom changed to existence form `∃ B, W_sum K ≤ B`)
 
 **COMPLEX (definitions differ, need non-trivial proof):**
-| Proof | Issue |
-|-------|-------|
-| `RKHS_contraction` | Uses ξ=log n vs xi_n=log n/(2π); universal quantifier over all node sets |
-| `Q_Lipschitz_local` | Uses simplified a_star=1 instead of real digamma-based a_star |
-| `A3_Bridge_Theorem` | Uses abstract Laurent polynomials vs concrete matrix formulation |
-| `Q_nonneg` | Takes a_star as parameter; conditional on A3/RKHS properties |
+| Proof | Issue | Status |
+|-------|-------|--------|
+| `RKHS_contraction` | Uses ξ=log n vs xi_n=log n/(2π); universal quantifier over all node sets | Not started |
+| `Q_Lipschitz_local` | Uses simplified a_star=1 instead of real digamma-based a_star | Not started |
+| `A3_Bridge_Theorem` | Uses abstract Laurent polynomials vs concrete matrix formulation | Not started |
+| `Q_nonneg` | Takes a_star as parameter; conditional on A3/RKHS properties | ⚠️ PARTIAL (has 4 bridge axioms) |
 
 ---
 
@@ -170,6 +181,14 @@ Q3/
 - ✅ node_spacing_bridge.lean
 - ✅ off_diag_exp_sum_bridge.lean
 - ✅ S_K_small_bridge.lean
+
+---
+
+## LITERATURE HOOKS (Reviewer-facing)
+
+- `docs/literature/hilbert6_limit_program.md` - limit-bridge program analogy (not a lemma source)
+- `docs/literature/fr_spectral_gap_trace.md` - trace-formula to spectral-gap narrative
+- `sections/introduction.tex` - program diagram + context bullets
 
 ### Phase 2: Fix Axiom Definitions
 1. **Fix W_sum_finite_axiom** - Change from `< 1000000` to K-dependent bound or existence

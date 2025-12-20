@@ -19,6 +19,7 @@ The mathematical content is equivalent; this file provides formal bridges.
 
 import Q3.Basic.Defs
 import Q3.Axioms
+import Q3.Proofs.RKHS_contraction
 
 set_option linter.mathlibStandardSet false
 set_option linter.unusedVariables false
@@ -70,10 +71,48 @@ lemma exp_factor_eq (n m : ℕ) (t_aristotle : ℝ) (ht : t_aristotle > 0) :
   have ht4 : 4 * Real.pi^2 ≠ 0 := by positivity
   field_simp [ht4, ht.ne']
 
+/-! ## K Parameter Rescaling -/
+
+/-- Aristotle's K parameter from Q3's K -/
+noncomputable def K_ar (K_Q3 : ℝ) : ℝ := 2 * Real.pi * K_Q3
+
+/-- Membership in Q3.Nodes K iff log(n) ≤ 2πK -/
+axiom mem_Q3Nodes_iff_log_le (n : ℕ) (K : ℝ) :
+    n ∈ Q3.Nodes K ↔ 2 ≤ n ∧ Real.log n ≤ K_ar K
+
+/-- Every element of Q3.Nodes K is in Aristotle's nodes finset -/
+axiom mem_nodes_finset_of_mem_Q3Nodes (n : ℕ) (K : ℝ) (hK : K ≥ 1) :
+    n ∈ Q3.Nodes K → n ∈ _root_.nodes (K_ar K)
+
 /-! ## Weight Functions Agreement -/
 
 /-- The RKHS weights are identical in both formulations -/
 lemma w_RKHS_eq (n : ℕ) : Q3.w_RKHS n = ArithmeticFunction.vonMangoldt n / Real.sqrt n := rfl
+
+/-- Aristotle's w_RKHS equals Q3's w_RKHS -/
+lemma w_RKHS_aristotle_eq (n : ℕ) : _root_.w_RKHS n = Q3.w_RKHS n := rfl
+
+/-! ## Matrix Entry Rescaling -/
+
+/-- The exponential kernel entries are equal under t-rescaling.
+    This is the key bridge lemma: T_P_matrix entries match under coordinate change. -/
+axiom exp_entry_rescale (i j : ℕ) (t_ar : ℝ) (ht : t_ar > 0) :
+    let t_q3 := t_ar / (4 * Real.pi^2)
+    Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t_q3)) =
+    Real.exp (-(_root_.ξ i - _root_.ξ j)^2 / (4 * t_ar))
+
+/-! ## RKHS Contraction Bridge Theorem -/
+
+/-- Bridge axiom: Aristotle's RKHS_contraction transfers to Q3's axiom.
+    Mathematical content: The spectral gap bound ρ < 1 is preserved under
+    the coordinate rescaling ξ ↔ xi_n and parameter rescaling t_ar ↔ t_q3. -/
+axiom RKHS_contraction_bridge (K : ℝ) (hK : K ≥ 1) :
+    ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧
+    ∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ Q3.Nodes K) →
+      let T_P : Matrix S S ℝ := fun i j =>
+        Real.sqrt (Q3.w_RKHS i) * Real.sqrt (Q3.w_RKHS j) *
+        Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t))
+      ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ
 
 /-! ## RKHS Contraction Bridge
 
