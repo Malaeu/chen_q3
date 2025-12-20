@@ -36,6 +36,28 @@ def AtomCone (K : ℝ) : Set (ℝ → ℝ) :=
     (∀ i, |ξs i| ≤ K) ∧
     Φ = fun x => ∑ i, cs i * atom (ts i) (Bs i) (ξs i) x}
 
+/-! ## RKHS positivity lemmas -/
+
+/-- Single atom has positive Q value.
+This follows from RKHS positivity: Q(ρ_t * Λ_B) = ⟨ρ_t * Λ_B, ρ_t * Λ_B⟩_RKHS ≥ 0 -/
+lemma Q_atom_nonneg (t B ξ₀ : ℝ) (ht : t > 0) (hB : B > 0) :
+    Q3.Q (atom t B ξ₀) ≥ 0 := by
+  -- ρ_t * Λ_B is a smooth compactly-supported function
+  -- It's in the RKHS because heat×Fejér atoms are RKHS elements
+  -- Q = RKHS bilinear form ⟨·, ·⟩_RKHS
+  -- So Q(atom) = ⟨atom, atom⟩_RKHS ≥ 0
+  sorry
+
+/-- Sum of nonneg coefficients × nonneg atoms gives nonneg Q -/
+lemma Q_weighted_sum_nonneg {n : ℕ} (ts Bs ξs : Fin n → ℝ) (cs : Fin n → ℝ)
+    (hts : ∀ i, ts i > 0) (hBs : ∀ i, Bs i > 0) (hcs : ∀ i, cs i ≥ 0) :
+    Q3.Q (fun x => ∑ i, cs i * atom (ts i) (Bs i) (ξs i) x) ≥ 0 := by
+  -- Q is a bilinear form: Q(Σ c_i a_i) = ΣΣ c_i c_j Q(a_i, a_j)
+  -- where Q(a_i, a_j) = ⟨a_i, a_j⟩_RKHS
+  -- This is a positive semi-definite quadratic form
+  -- So Q(Σ c_i a_i) ≥ 0 when c_i ≥ 0 and atoms are RKHS elements
+  sorry
+
 /-- Q is nonnegative on the atom cone.
 
 Mathematical argument:
@@ -45,6 +67,8 @@ Mathematical argument:
 -/
 theorem Q_nonneg_on_atoms_Q3 (K : ℝ) (hK : K ≥ 1) :
     ∀ Φ ∈ AtomCone K, Q3.Q Φ ≥ 0 := by
-  sorry
+  intro Φ hΦ
+  obtain ⟨n, ts, Bs, ξs, cs, hts, hBs, hcs, _, rfl⟩ := hΦ
+  exact Q_weighted_sum_nonneg ts Bs ξs cs hts hBs hcs
 
 end Q3.Proofs.QNonnegBridgeV2

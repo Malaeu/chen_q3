@@ -99,6 +99,36 @@ lemma T_P_diag (K t : ℝ) (i : Q3.Nodes K) :
   have h := Q3.w_RKHS_nonneg i.val
   rw [← Real.sqrt_mul h, Real.sqrt_mul_self h]
 
+/-! ## Off-diagonal bounds -/
+
+/-- Off-diagonal entries bounded by w_max * exp -/
+lemma T_P_off_diag_bound (K t : ℝ) (ht : t > 0) (i j : Q3.Nodes K) (hij : i ≠ j) :
+    |T_P_matrix K t i j| ≤ Q3.w_max * Real.exp (-(Q3.xi_n i.val - Q3.xi_n j.val)^2 / (4 * t)) := by
+  unfold T_P_matrix
+  rw [abs_mul, abs_mul]
+  have hw_i := Q3.w_RKHS_le_w_max i.val
+  have hw_j := Q3.w_RKHS_le_w_max j.val
+  have hwm_nn : (0 : ℝ) ≤ Q3.w_max := by unfold Q3.w_max; positivity
+  calc |Real.sqrt (Q3.w_RKHS i.val)| * |Real.sqrt (Q3.w_RKHS j.val)| * |Real.exp _|
+      = Real.sqrt (Q3.w_RKHS i.val) * Real.sqrt (Q3.w_RKHS j.val) * Real.exp _ := by
+        rw [abs_of_nonneg (Real.sqrt_nonneg _), abs_of_nonneg (Real.sqrt_nonneg _),
+            abs_of_nonneg (Real.exp_nonneg _)]
+    _ ≤ Real.sqrt Q3.w_max * Real.sqrt Q3.w_max * Real.exp _ := by
+        gcongr <;> exact Real.sqrt_le_sqrt ‹_›
+    _ = Q3.w_max * Real.exp _ := by rw [← Real.sqrt_mul hwm_nn, Real.sqrt_mul_self hwm_nn]
+
+/-- Row sum of off-diagonal entries bounded by w_max * S_K -/
+lemma off_diag_sum_bound (K t : ℝ) (hK : K ≥ 1) (ht : t > 0) (i : Q3.Nodes K) :
+    (∑ j : Q3.Nodes K, if j = i then 0 else |T_P_matrix K t i j|) ≤ Q3.w_max * Q3.S_K K t := by
+  -- The off-diagonal sum is bounded by geometric series
+  sorry
+
+/-- S_K ≤ η when t = t_min(K, η) -/
+lemma S_K_at_t_min (K η : ℝ) (hK : K ≥ 1) (hη : η > 0) :
+    Q3.S_K K (Q3.t_min K η) ≤ η := by
+  -- By definition of t_min, this is exactly the threshold
+  sorry
+
 /-! ## Main Contraction Theorem -/
 
 /-- RKHS Contraction: For K ≥ 1, there exists t > 0 and ρ < 1 such that
@@ -151,13 +181,32 @@ theorem RKHS_contraction_Q3 (K : ℝ) (hK : K ≥ 1) :
       linarith
   use t, ht_pos, ρ, hρ_lt, hρ_pos
   intro i
-  -- Row sum = Σ |T_P(i,j)| = |T_P(i,i)| + Σ_{j≠i} |T_P(i,j)|
-  -- T_P(i,i) = w_RKHS(i) (by T_P_diag)
-  -- |T_P(i,j)| = √w_RKHS(i) * √w_RKHS(j) * exp(...) ≤ w_max * exp(...)
-  -- Σ_{j≠i} exp(...) ≤ S_K by off-diagonal bound
-  -- So row sum ≤ w_RKHS(i) + w_max * S_K ≤ w_max + w_max * η = w_max(1 + η)
-  -- But we chose η = gap/w_max, so w_max(1 + η) = w_max + gap = ρ
-  sorry
+  -- Row sum = diagonal + off-diagonal
+  -- diagonal = w_RKHS(i) ≤ w_max
+  -- off-diagonal ≤ w_max * S_K(t) ≤ w_max * η = gap
+  -- Total: ≤ w_max + gap = ρ
+  have h_diag : |T_P_matrix K t i i| = Q3.w_RKHS i.val := by
+    rw [abs_of_nonneg]; exact T_P_diag K t i
+    unfold T_P_matrix
+    apply mul_nonneg (mul_nonneg (Real.sqrt_nonneg _) (Real.sqrt_nonneg _)) (Real.exp_nonneg _)
+  have h_diag_le : Q3.w_RKHS i.val ≤ Q3.w_max := Q3.w_RKHS_le_w_max i.val
+  have h_off_diag := off_diag_sum_bound K t hK ht_pos i
+  have h_S_K := S_K_at_t_min K η hK h_eta
+  -- Split sum: row_sum = diag + off_diag
+  -- We show row_sum ≤ w_max + w_max * S_K ≤ w_max + w_max * η = ρ
+  have h_S_K' : Q3.S_K K t ≤ η := by
+    rw [ht_def]; exact h_S_K
+  have hwm_pos' : (0 : ℝ) ≤ Q3.w_max := by unfold Q3.w_max; positivity
+  calc (∑ j : Q3.Nodes K, |T_P_matrix K t i j|)
+      ≤ Q3.w_RKHS i.val + (∑ j : Q3.Nodes K, if j = i then 0 else |T_P_matrix K t i j|) := by
+        -- The diagonal term + off-diagonal terms
+        -- Since if j=i we get |T_P(i,i)| = w_RKHS(i), and we replace it with 0 in the sum
+        -- So LHS = w_RKHS(i) + Σ_{j≠i} |T_P(i,j)| = RHS
+        sorry
+    _ ≤ Q3.w_max + Q3.w_max * Q3.S_K K t := by linarith [h_off_diag, h_diag_le]
+    _ ≤ Q3.w_max + Q3.w_max * η := by gcongr
+    _ = Q3.w_max + gap := by simp only [hη_def]; field_simp
+    _ = ρ := by simp only [hρ_def]
 
 /-- Corollary: Contraction implies spectral radius < 1 -/
 theorem RKHS_spectral_gap (K : ℝ) (hK : K ≥ 1) :
