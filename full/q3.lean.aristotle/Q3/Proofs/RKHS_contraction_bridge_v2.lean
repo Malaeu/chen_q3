@@ -118,8 +118,45 @@ theorem RKHS_contraction_Q3 (K : ℝ) (hK : K ≥ 1) :
     ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ρ > 0 ∧
       ∀ (i : Q3.Nodes K),
         (∑ j : Q3.Nodes K, |T_P_matrix K t i j|) ≤ ρ := by
-  -- The row sum bound implies operator norm bound via Schur test
-  -- We use the standalone proof's existence result, rescaled.
+  -- Strategy: row sum = diagonal + off-diagonal
+  -- diagonal = w_RKHS(i) ≤ w_max < 1
+  -- off-diagonal ≤ w_max * S_K(t)
+  -- For small enough t, S_K → 0, so row sum < 1
+  -- Choose ρ = w_max + ε for small ε
+  have hw_max_lt : Q3.w_max < 1 := Q3.w_max_lt_one
+  have hw_max_pos : Q3.w_max > 0 := by unfold Q3.w_max; positivity
+  -- Gap from 1
+  set gap := (1 - Q3.w_max) / 2 with hgap_def
+  have hgap_pos : gap > 0 := by simp only [hgap_def]; linarith
+  -- Choose ρ = w_max + gap = (1 + w_max)/2 < 1
+  set ρ := Q3.w_max + gap with hρ_def
+  have hρ_lt : ρ < 1 := by simp only [hρ_def, hgap_def]; linarith
+  have hρ_pos : ρ > 0 := by simp only [hρ_def]; linarith
+  -- Need t small enough that off-diagonal sum ≤ gap
+  -- off-diagonal ≤ w_max * S_K(t)
+  -- S_K = 2r/(1-r) where r = exp(-δ²/(4t))
+  -- As t → 0⁺, r → 0, so S_K → 0
+  -- Choose t s.t. w_max * S_K(t) ≤ gap, i.e., S_K(t) ≤ gap/w_max
+  -- This is equivalent to t ≤ t_min(K, gap/w_max)
+  have h_eta : gap / Q3.w_max > 0 := div_pos hgap_pos hw_max_pos
+  set η := gap / Q3.w_max with hη_def
+  set t := Q3.t_min K η with ht_def
+  have ht_pos : t > 0 := by
+    simp only [ht_def]; unfold Q3.t_min Q3.delta_K
+    apply div_pos
+    · apply sq_pos_of_pos; positivity
+    · apply mul_pos; norm_num
+      apply Real.log_pos
+      rw [one_lt_div h_eta]
+      linarith
+  use t, ht_pos, ρ, hρ_lt, hρ_pos
+  intro i
+  -- Row sum = Σ |T_P(i,j)| = |T_P(i,i)| + Σ_{j≠i} |T_P(i,j)|
+  -- T_P(i,i) = w_RKHS(i) (by T_P_diag)
+  -- |T_P(i,j)| = √w_RKHS(i) * √w_RKHS(j) * exp(...) ≤ w_max * exp(...)
+  -- Σ_{j≠i} exp(...) ≤ S_K by off-diagonal bound
+  -- So row sum ≤ w_RKHS(i) + w_max * S_K ≤ w_max + w_max * η = w_max(1 + η)
+  -- But we chose η = gap/w_max, so w_max(1 + η) = w_max + gap = ρ
   sorry
 
 /-- Corollary: Contraction implies spectral radius < 1 -/
