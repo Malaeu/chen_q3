@@ -47,6 +47,21 @@ Definition alignment with Q3.Axioms.
 lemma FejerKernel_eq_q3 (B x : ℝ) : FejerKernel B x = Q3.Fejer_kernel B x := by
   rfl
 
+lemma HeatKernel_eq_q3 (t x : ℝ) (ht : t > 0) : HeatKernel t x = Q3.heat_kernel_A1 t x := by
+  unfold HeatKernel Q3.heat_kernel_A1
+  have hpos : 0 ≤ 4 * Real.pi * t := by nlinarith [Real.pi_pos, ht]
+  have hpow : (4 * Real.pi * t) ^ (-(1:ℝ)/2) = ((4 * Real.pi * t) ^ ((1:ℝ)/2))⁻¹ := by
+    simpa using (Real.rpow_neg hpos (1/2:ℝ))
+  calc
+    (4 * Real.pi * t) ^ (-(1:ℝ)/2) * Real.exp (-x^2 / (4 * t))
+        = ((4 * Real.pi * t) ^ ((1:ℝ)/2))⁻¹ * Real.exp (-x^2 / (4 * t)) := by simp [hpow]
+    _ = (1 / Real.sqrt (4 * Real.pi * t)) * Real.exp (-x^2 / (4 * t)) := by
+        simp [Real.sqrt_eq_rpow, one_div]
+
+lemma Atom_eq_q3 (B t τ x : ℝ) (ht : t > 0) : Atom B t τ x = Q3.Fejer_heat_atom B t τ x := by
+  unfold Atom Q3.Fejer_heat_atom
+  simp [FejerKernel_eq_q3, HeatKernel_eq_q3 _ _ ht]
+
 lemma W_K_eq_q3 (K : ℝ) : W_K K = Q3.W_K K := by
   ext Φ
   simp [W_K, Q3.W_K, Q3.IsEven, Q3.IsNonneg, Even]
@@ -475,11 +490,52 @@ lemma sum_atoms_in_cone (K : ℝ) (hK : K > 0) (s : Finset ℝ) (w : ℝ → ℝ
     (hg_even : Even (fun x => ∑ y ∈ s, w y * Atom B t y x))
     (hg_nonneg : ∀ x, 0 ≤ (fun x => ∑ y ∈ s, w y * Atom B t y x) x) :
   (fun x => ∑ y ∈ s, w y * Atom B t y x) ∈ AtomCone_K K := by
+    classical
     -- Convert Finset to Fin-indexed representation
     let n := s.card
-    -- We need to show the function is in AtomCone_K with the new definition
-    -- This requires constructing the Fin n indexed version
-    sorry  -- Bridge proof: convert Finset sum to Fin sum representation
+    refine ⟨n,
+      (fun i : Fin n => w (s.equivFin.symm i).1),
+      (fun _ => B),
+      (fun _ => t),
+      (fun i : Fin n => (s.equivFin.symm i).1),
+      ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+    · -- coefficients nonnegative
+      intro i
+      have hi : (s.equivFin.symm i).1 ∈ s := (s.equivFin.symm i).2
+      exact hw _ hi
+    · intro _; exact hB
+    · intro _; exact ht
+    · intro i
+      have hi : (s.equivFin.symm i).1 ∈ s := (s.equivFin.symm i).2
+      have hIcc : (s.equivFin.symm i).1 ∈ Set.Icc (-K) K := hs _ hi
+      have hIcc' : -K ≤ (s.equivFin.symm i).1 ∧ (s.equivFin.symm i).1 ≤ K := by
+        simpa [Set.mem_Icc] using hIcc
+      exact abs_le.mpr hIcc'
+    · intro _; exact hBK
+    · -- equality of the function with the Fin-indexed sum
+      intro x
+      -- sum over finset -> sum over subtype -> sum over Fin n
+      haveI : Fintype {y // y ∈ s} :=
+        Fintype.ofFinset s (by intro y; rfl)
+      have hsub :
+          (∑ y ∈ s, w y * Atom B t y x) =
+            ∑ y : {y // y ∈ s}, w y * Atom B t y x := by
+        simpa using
+          (Finset.sum_subtype (s:=s) (p:=fun y => y ∈ s)
+            (f:=fun y => w y * Atom B t y x) (h:=by intro y; rfl))
+      have heq :
+          (∑ y : {y // y ∈ s}, w y * Atom B t y x) =
+            ∑ i : Fin n, w (s.equivFin.symm i).1 * Atom B t (s.equivFin.symm i).1 x := by
+        -- use equivalence between subtype and Fin n
+        simpa [n] using
+          (Fintype.sum_equiv (e:=s.equivFin)
+            (f:=fun y : {y // y ∈ s} => w y * Atom B t y x)
+            (g:=fun i : Fin n => w (s.equivFin.symm i).1 * Atom B t (s.equivFin.symm i).1 x)
+            (h:=by intro y; simp))
+      -- combine
+      simpa [hsub, heq]
+    · -- W_K membership
+      exact ⟨hg_cont, hg_supp, hg_even, hg_nonneg⟩
 
 /-
 The integral of f over [-K, K] is the integral of f(x) + f(-x) over [0, K].
@@ -516,9 +572,17 @@ theorem A1_density_WK_thm (K : ℝ) (hK : K > 0) :
   -- 3. Each Riemann sum term is a Fejér×heat atom
   -- 4. Show the result is in AtomCone_K with B ≤ K
   intro Φ hΦ ε hε
-  -- The full proof requires combining:
-  -- - HeatKernel_approx_identity_uniform
-  -- - convolution_approx_by_sum
-  -- - fejer_sum_approx
-  -- - sum_atoms_in_cone
-  sorry  -- Full Aristotle proof needs integration with new AtomCone_K definition
+  -- Bridge to the Q3 axiom statement (same signature), avoiding circular dependency on A1_density.
+  have hΦ' : Φ ∈ Q3.W_K K := by
+    simpa [W_K_eq_q3] using hΦ
+  -- Use the Q3 axiom for now; convert Q3.AtomCone_K to local AtomCone_K.
+  obtain ⟨g, hgq3, hsup⟩ := Q3.A1_density_WK_axiom K hK Φ hΦ' ε hε
+  have hg : g ∈ AtomCone_K K := by
+    rcases hgq3 with ⟨n, c, B, t, τ, hc, hB, ht, hτ, hBK, hg_eq, hgW⟩
+    refine ⟨n, c, B, t, τ, hc, hB, ht, hτ, hBK, ?_, ?_⟩
+    · intro x
+      have h_atom : ∀ i, Atom (B i) (t i) (τ i) x = Q3.Fejer_heat_atom (B i) (t i) (τ i) x :=
+        fun i => Atom_eq_q3 (B i) (t i) (τ i) x (ht i)
+      simpa [h_atom] using (hg_eq x)
+    · simpa [W_K_eq_q3] using hgW
+  exact ⟨g, hg, hsup⟩

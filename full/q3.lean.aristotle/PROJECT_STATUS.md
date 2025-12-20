@@ -46,10 +46,13 @@ ALL standalone Aristotle proofs are **CLEAN** (verified with `#print axioms`):
 | `Q3/Proofs/A3_bridge.lean` | `A3_Bridge_Theorem` | CLEAN ✅ | Needs bridge |
 
 ### A1_density Status
-- `Q3/Proofs/A1_density.lean` - helper lemmas only
+- `Q3/Proofs/A1_density.lean` - has `sum_atoms_in_cone` and `A1_density_WK_thm`, but
+  both still depend on `sorryAx` (see `#print axioms sum_atoms_in_cone`)
 - `Q3/Proofs/A1_density_main.lean` - has `exact?` (library search, NOT incomplete!)
 
 **NOTE:** `exact?` = Mathlib library search. If it shows "Try this: exact X" warning, proof WORKS.
+
+Build check (2025-12-20): `lake env lean Q3/Proofs/RKHS_contraction_bridge.lean` OK.
 
 ---
 
@@ -248,7 +251,7 @@ This means:
 - **4/8 bridges created and verified** (node_spacing, off_diag_exp_sum, S_K_small, W_sum_finite)
 - W_sum_finite axiom FIXED: changed to existence form `∃ B, W_sum K ≤ B`
 - 4 bridges are COMPLEX (require non-trivial equivalence proofs)
-- A1_density is the only incomplete proof
+- A1_density.lean still has `sorryAx` in `sum_atoms_in_cone` (A1_density_main is OK)
 - Goal: Replace all Tier-2 axioms with theorems
 
 **Trust Level:**
