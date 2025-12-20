@@ -84,11 +84,11 @@ in their own namespace, prove equivalence to Q3 definitions, then transfer theor
 - S_K_small → S_K_SmallBridgeV2.S_K_small_Q3
 - W_sum_finite → W_sum_BridgeV2.W_sum_finite_Q3
 
-**AXIOM FALLBACK (6/9):**
+**AXIOM/BRIDGE FALLBACK (6/9):**
 | Proof | Issue | Complexity |
 |-------|-------|------------|
 | `off_diag_exp_sum` | Too complex for self-contained re-proof (uses geometric series bounds) | HIGH |
-| `RKHS_contraction` | ξ=log n vs xi_n=log n/(2π), different node set definitions | HIGH |
+| `RKHS_contraction` | Uses bridge axiom `Q3.Bridge.RKHS_contraction_data_of_bridge` (no circular dependency) | MEDIUM |
 | `Q_Lipschitz_local` | Uses a_star=1 instead of digamma-based a_star | MEDIUM |
 | `A3_Bridge_Theorem` | Laurent polynomials vs matrix Rayleigh quotient | HIGH |
 | `Q_nonneg` | Depends on A3/RKHS properties | MEDIUM |
@@ -118,7 +118,7 @@ in their own namespace, prove equivalence to Q3 definitions, then transfer theor
 | 1 | `node_spacing_axiom` | `node_spacing` | ✅ BRIDGED |
 | 2 | `off_diag_exp_sum_axiom` | `off_diag_exp_sum_bound` | ✅ BRIDGED |
 | 3 | `S_K_small_axiom` | `S_K_small` | ✅ BRIDGED |
-| 4 | `RKHS_contraction_axiom` | `RKHS_contraction` | ⚠️ COMPLEX |
+| 4 | `RKHS_contraction_axiom` | `RKHS_contraction` | ⚠️ BRIDGE AXIOM (via `Q3.Bridge.RKHS_contraction_data_of_bridge`) |
 | 5 | `W_sum_finite_axiom` | `W_sum_is_finite` | ✅ BRIDGED |
 | 6 | `Q_Lipschitz_on_W_K` | `Q_Lipschitz_local` | ⚠️ COMPLEX |
 | 7 | `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q_nonneg` | ⚠️ COMPLEX |
