@@ -39,7 +39,7 @@ noncomputable def L_Q (K : ℝ) : ℝ := 2 * K * M_a K + Q3.W_sum_axiom K
 /-! ## Key Lemmas -/
 
 /-- W_sum is finite (from W_sum_finite_axiom) -/
-lemma W_sum_finite (K : ℝ) (hK : K > 0) : Q3.W_sum_axiom K < 1000000 :=
+lemma W_sum_finite (K : ℝ) (hK : K > 0) : ∃ B, Q3.W_sum_axiom K ≤ B :=
   Q3.W_sum_finite_axiom K hK
 
 /-! ## Main Theorem -/

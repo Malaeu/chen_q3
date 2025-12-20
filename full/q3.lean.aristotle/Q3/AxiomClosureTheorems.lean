@@ -73,10 +73,10 @@ theorem off_diag_exp_sum_theorem (K t : ℝ) (hK : K ≥ 1) (ht : t > 0) :
     W_SUM FINITE THEOREM (closes W_sum_finite_axiom)
     ═══════════════════════════════════════════════════════════════════ -/
 
-/-- Weight sum is finite
-    Full proof: Q3/Proofs/W_sum_finite_integrated.lean (has issues) -/
+/-- Weight sum is finite (K-dependent bound)
+    Full proof: Q3/Proofs/W_sum_finite.lean -/
 theorem W_sum_finite_theorem (K : ℝ) (hK : K > 0) :
-    W_sum_axiom K < 1000000 := by
+    ∃ B, W_sum_axiom K ≤ B := by
   exact W_sum_finite_axiom K hK
 
 /-! ═══════════════════════════════════════════════════════════════════

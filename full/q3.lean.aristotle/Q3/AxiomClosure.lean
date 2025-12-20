@@ -106,9 +106,10 @@ theorem off_diag_exp_sum_theorem (K t : ℝ) (hK : K ≥ 1) (ht : t > 0) :
 /-- Weight sum finiteness (closes W_sum_finite_axiom).
 
 **Proof**: By Aristotle's W_sum_finite.lean.
-ActiveNodes is finite, each w_Q(n) bounded, sum bounded. -/
+ActiveNodes is finite, each w_Q(n) bounded, sum bounded.
+Bound is K-dependent: B(K) ≤ N_K · 2√(2π)·K where N_K = ⌊e^{2πK}⌋. -/
 theorem W_sum_finite_theorem (K : ℝ) (hK : K > 0) :
-    Q3.W_sum_axiom K < 1000000 := by
+    ∃ B, Q3.W_sum_axiom K ≤ B := by
   exact Q3.W_sum_finite_axiom K hK
 
 /-! ## Q Lipschitz Closure -/

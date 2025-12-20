@@ -118,8 +118,8 @@ lemma W_sum_eq_axiom (K : ℝ) : W_sum K = Q3.W_sum_axiom K := by
 
 /-- W_sum is finite for any K > 0.
     This follows from: ActiveNodes K is finite, each term bounded by 2·w_max < 2.
-    Uses the axiom W_sum_finite_axiom which bounds W_sum for reasonable K. -/
-lemma W_sum_finite (K : ℝ) (hK : K > 0) : W_sum K < 1000000 := by
+    Uses the axiom W_sum_finite_axiom which provides existence of a bound. -/
+lemma W_sum_finite (K : ℝ) (hK : K > 0) : ∃ B, W_sum K ≤ B := by
   rw [W_sum_eq_axiom]
   exact Q3.W_sum_finite_axiom K hK
 

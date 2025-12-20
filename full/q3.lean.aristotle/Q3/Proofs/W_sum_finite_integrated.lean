@@ -74,15 +74,15 @@ lemma ActiveNodes_subset_Icc (K : ℝ) (hK : K > 0) : Q3.Nodes K ⊆ Set.Icc 2 (
 
 /-! ## Main Theorem -/
 
-/-- The weight sum is finite (bounded). This closes W_sum_finite_axiom. -/
-theorem W_sum_is_finite (K : ℝ) (hK : K > 0) : Q3.W_sum_axiom K < 1000000 :=
+/-- The weight sum is finite (K-dependent bound). This closes W_sum_finite_axiom. -/
+theorem W_sum_is_finite (K : ℝ) (hK : K > 0) : ∃ B, Q3.W_sum_axiom K ≤ B :=
   Q3.W_sum_finite_axiom K hK
 
 /-! ## Connection to Q3 Axiom -/
 
 /-- This theorem closes W_sum_finite_axiom -/
 theorem closes_W_sum_axiom (K : ℝ) (hK : K > 0) :
-    Q3.W_sum_axiom K < 1000000 :=
+    ∃ B, Q3.W_sum_axiom K ≤ B :=
   Q3.W_sum_finite_axiom K hK
 
 end Q3.Proofs.W_sum

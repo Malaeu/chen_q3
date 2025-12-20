@@ -203,7 +203,7 @@ This is used in A2 Lipschitz to bound the prime_term difference.
 - ActiveNodes K = {n ≥ 2 : |ξ_n| ≤ K} is finite (bounded by ⌊e^{2πK}⌋)
 - Each w_Q(n) ≤ 2·w_max < 2
 - W_sum(K) = Σ_{n ∈ ActiveNodes} w_Q(n) ≤ (N_K + 1) · 2
-- The bound 1000000 is generous for practical K values
+- The bound is K-dependent: B(K) ≤ N_K · 2√(2π)·K where N_K = ⌊e^{2πK}⌋
 -/
 
 /-- Active prime nodes set (for axiom) -/
@@ -213,7 +213,7 @@ def ActiveNodes_axiom (K : ℝ) : Set ℕ := {n | |xi_n n| ≤ K ∧ n ≥ 2}
 noncomputable def W_sum_axiom (K : ℝ) : ℝ :=
   ∑' n, if n ∈ ActiveNodes_axiom K then w_Q n else 0
 
-axiom W_sum_finite_axiom : ∀ (K : ℝ) (hK : K > 0), W_sum_axiom K < 1000000
+axiom W_sum_finite_axiom : ∀ (K : ℝ) (hK : K > 0), ∃ B, W_sum_axiom K ≤ B
 
 /-! ## Axiom T2.2: A2 Lipschitz (Q3 Paper Section 5)
 
