@@ -1,6 +1,6 @@
 # Q3 → RH Lean Formalization: MASTER STATUS
 
-**Last Verified:** 2025-12-20
+**Last Verified:** 2025-12-20 (sum_atoms_in_cone fix)
 **Verified By:** Claude Opus 4.5 via `#print axioms`
 
 ---
@@ -45,9 +45,11 @@ ALL standalone Aristotle proofs are **CLEAN** (verified with `#print axioms`):
 | `Q3/Proofs/Q_nonneg_on_atoms.lean` | `Q_nonneg` | CLEAN ✅ | Needs bridge |
 | `Q3/Proofs/A3_bridge.lean` | `A3_Bridge_Theorem` | CLEAN ✅ | Needs bridge |
 
-### A1_density Status
-- `Q3/Proofs/A1_density.lean` - has `sum_atoms_in_cone` and `A1_density_WK_thm`, but
-  both still depend on `sorryAx` (see `#print axioms sum_atoms_in_cone`)
+### A1_density Status (Updated 2025-12-20)
+- `Q3/Proofs/A1_density.lean`:
+  - `sum_atoms_in_cone` **FIXED** - now CLEAN: `[propext, Classical.choice, Quot.sound]`
+  - `A1_density_WK_thm` still uses `Q3.A1_density_WK_axiom` (by design)
+  - Fixed: Atom definition order, Finset.sum_bij vs sum_equiv, rpow_neg type mismatch
 - `Q3/Proofs/A1_density_main.lean` - has `exact?` (library search, NOT incomplete!)
 
 **NOTE:** `exact?` = Mathlib library search. If it shows "Try this: exact X" warning, proof WORKS.
@@ -251,7 +253,7 @@ This means:
 - **4/8 bridges created and verified** (node_spacing, off_diag_exp_sum, S_K_small, W_sum_finite)
 - W_sum_finite axiom FIXED: changed to existence form `∃ B, W_sum K ≤ B`
 - 4 bridges are COMPLEX (require non-trivial equivalence proofs)
-- A1_density.lean still has `sorryAx` in `sum_atoms_in_cone` (A1_density_main is OK)
+- A1_density.lean: `sum_atoms_in_cone` **FIXED** (now CLEAN), `A1_density_main` uses exact? (OK)
 - Goal: Replace all Tier-2 axioms with theorems
 
 **Trust Level:**
