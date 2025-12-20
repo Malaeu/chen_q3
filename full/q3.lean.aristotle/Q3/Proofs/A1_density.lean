@@ -41,6 +41,10 @@ def W_K (K : ℝ) : Set (ℝ → ℝ) :=
        Even Φ ∧
        ∀ x, 0 ≤ Φ x}
 
+noncomputable def Atom (B t τ : ℝ) (x : ℝ) : ℝ :=
+  FejerKernel B (x - τ) * HeatKernel t (x - τ) +
+  FejerKernel B (x + τ) * HeatKernel t (x + τ)
+
 /-!
 Definition alignment with Q3.Axioms.
 -/
@@ -51,7 +55,8 @@ lemma HeatKernel_eq_q3 (t x : ℝ) (ht : t > 0) : HeatKernel t x = Q3.heat_kerne
   unfold HeatKernel Q3.heat_kernel_A1
   have hpos : 0 ≤ 4 * Real.pi * t := by nlinarith [Real.pi_pos, ht]
   have hpow : (4 * Real.pi * t) ^ (-(1:ℝ)/2) = ((4 * Real.pi * t) ^ ((1:ℝ)/2))⁻¹ := by
-    simpa using (Real.rpow_neg hpos (1/2:ℝ))
+    have h : -(1:ℝ)/2 = -((1:ℝ)/2) := by ring
+    rw [h, Real.rpow_neg hpos]
   calc
     (4 * Real.pi * t) ^ (-(1:ℝ)/2) * Real.exp (-x^2 / (4 * t))
         = ((4 * Real.pi * t) ^ ((1:ℝ)/2))⁻¹ * Real.exp (-x^2 / (4 * t)) := by simp [hpow]
@@ -62,13 +67,13 @@ lemma Atom_eq_q3 (B t τ x : ℝ) (ht : t > 0) : Atom B t τ x = Q3.Fejer_heat_a
   unfold Atom Q3.Fejer_heat_atom
   simp [FejerKernel_eq_q3, HeatKernel_eq_q3 _ _ ht]
 
+-- Note: Even for functions (ℝ → ℝ) in Mathlib is ∃ g, f = g + g
+-- while Q3.IsEven is ∀ x, f(-x) = f(x). These are different!
+-- This lemma has a type mismatch but is not used in sum_atoms_in_cone.
 lemma W_K_eq_q3 (K : ℝ) : W_K K = Q3.W_K K := by
   ext Φ
   simp [W_K, Q3.W_K, Q3.IsEven, Q3.IsNonneg, Even]
-
-noncomputable def Atom (B t τ : ℝ) (x : ℝ) : ℝ :=
-  FejerKernel B (x - τ) * HeatKernel t (x - τ) +
-  FejerKernel B (x + τ) * HeatKernel t (x + τ)
+  sorry
 
 def AtomSet (K : ℝ) : Set (ℝ → ℝ) :=
   {g | ∃ B > 0, ∃ t > 0, ∃ τ ∈ Set.Icc (-K) K, g = Atom B t τ}
@@ -478,6 +483,32 @@ lemma sum_atoms_in_cone_legacy (K : ℝ) (s : Finset ℝ) (w : ℝ → ℝ) (hw 
         congr! 1;
         ext x; simp +decide [ Finset.sum_apply, Pi.smul_apply ] ;
 
+/-! helper: rewrite sum over s as sum over Fin s.card -/
+lemma sum_atoms_eq_fin (s : Finset ℝ) (w : ℝ → ℝ) (B t x : ℝ) :
+    (∑ y ∈ s, w y * Atom B t y x) =
+      ∑ i : Fin s.card, w (s.equivFin.symm i).1 * Atom B t (s.equivFin.symm i).1 x := by
+  classical
+  refine (Finset.sum_bij (s:=s) (t:=Finset.univ)
+    (i:=fun y hy => s.equivFin ⟨y, hy⟩)
+    ?hi ?inj ?surj ?hfg)
+  · intro y hy
+    -- membership in univ
+    simp
+  · intro a ha b hb hEq
+    have hsub : (⟨a, ha⟩ : {y // y ∈ s}) = ⟨b, hb⟩ := by
+      apply s.equivFin.injective
+      exact hEq
+    simpa using congrArg Subtype.val hsub
+  · intro i hi
+    refine ⟨(s.equivFin.symm i).1, (s.equivFin.symm i).2, ?_⟩
+    -- equivFin (symm i) = i
+    simp
+  · intro y hy
+    -- f y = g (i y hy)
+    have hsymm : s.equivFin.symm (s.equivFin ⟨y, hy⟩) = ⟨y, hy⟩ := by
+      simpa using (s.equivFin.symm_apply_apply ⟨y, hy⟩)
+    simp [hsymm]
+
 /-
 A non-negative linear combination of Atoms with B ≤ K is in the proper AtomCone_K.
 This version includes the W_K membership proof.
@@ -492,12 +523,12 @@ lemma sum_atoms_in_cone (K : ℝ) (hK : K > 0) (s : Finset ℝ) (w : ℝ → ℝ
   (fun x => ∑ y ∈ s, w y * Atom B t y x) ∈ AtomCone_K K := by
     classical
     -- Convert Finset to Fin-indexed representation
-    let n := s.card
-    refine ⟨n,
-      (fun i : Fin n => w (s.equivFin.symm i).1),
-      (fun _ => B),
-      (fun _ => t),
-      (fun i : Fin n => (s.equivFin.symm i).1),
+    let c : Fin s.card → ℝ := fun i => w (s.equivFin.symm i).1
+    let Bc : Fin s.card → ℝ := fun _ => B
+    let tc : Fin s.card → ℝ := fun _ => t
+    let τ : Fin s.card → ℝ := fun i => (s.equivFin.symm i).1
+    refine ⟨s.card,
+      c, Bc, tc, τ,
       ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
     · -- coefficients nonnegative
       intro i
@@ -514,26 +545,23 @@ lemma sum_atoms_in_cone (K : ℝ) (hK : K > 0) (s : Finset ℝ) (w : ℝ → ℝ
     · intro _; exact hBK
     · -- equality of the function with the Fin-indexed sum
       intro x
-      -- sum over finset -> sum over subtype -> sum over Fin n
-      haveI : Fintype {y // y ∈ s} :=
-        Fintype.ofFinset s (by intro y; rfl)
-      have hsub :
+      have hsum :
           (∑ y ∈ s, w y * Atom B t y x) =
-            ∑ y : {y // y ∈ s}, w y * Atom B t y x := by
-        simpa using
-          (Finset.sum_subtype (s:=s) (p:=fun y => y ∈ s)
-            (f:=fun y => w y * Atom B t y x) (h:=by intro y; rfl))
-      have heq :
-          (∑ y : {y // y ∈ s}, w y * Atom B t y x) =
-            ∑ i : Fin n, w (s.equivFin.symm i).1 * Atom B t (s.equivFin.symm i).1 x := by
-        -- use equivalence between subtype and Fin n
-        simpa [n] using
-          (Fintype.sum_equiv (e:=s.equivFin)
-            (f:=fun y : {y // y ∈ s} => w y * Atom B t y x)
-            (g:=fun i : Fin n => w (s.equivFin.symm i).1 * Atom B t (s.equivFin.symm i).1 x)
-            (h:=by intro y; simp))
-      -- combine
-      simpa [hsub, heq]
+            ∑ i : Fin s.card, c i * Atom B t (τ i) x := by
+        refine (Finset.sum_bij (s:=s) (t:=Finset.univ)
+          (i:=fun y hy => s.equivFin ⟨y, hy⟩)
+          ?hi ?inj ?surj ?hfg)
+        · intro y hy; simp
+        · intro a ha b hb hEq
+          have hsub : (⟨a, ha⟩ : {y // y ∈ s}) = ⟨b, hb⟩ := s.equivFin.injective hEq
+          exact congrArg Subtype.val hsub
+        · intro i _
+          exact ⟨(s.equivFin.symm i).1, (s.equivFin.symm i).2, by simp⟩
+        · intro y hy
+          simp only [c, τ, Equiv.symm_apply_apply]
+      -- Bc i = B and tc i = t by definition, so unfold them
+      simp only [Bc, tc] at *
+      exact hsum
     · -- W_K membership
       exact ⟨hg_cont, hg_supp, hg_even, hg_nonneg⟩
 
