@@ -47,6 +47,12 @@ def w_RKHS (n : ℕ) : ℝ := ArithmeticFunction.vonMangoldt n / Real.sqrt n
 /-- Maximum weight: sup_n w_RKHS(n) = 2/e ≈ 0.7358 -/
 def w_max : ℝ := 2 / Real.exp 1
 
+/-- ActiveNodes is alias for Nodes (for compatibility with axiom naming) -/
+abbrev ActiveNodes (K : ℝ) : Set ℕ := Nodes K
+
+/-- Sum of weights over active nodes -/
+noncomputable def W_sum (K : ℝ) : ℝ := ∑' n, if n ∈ Nodes K then w_Q n else 0
+
 /-! ## Archimedean Kernel -/
 
 /-- Digamma function (logarithmic derivative of Gamma)
