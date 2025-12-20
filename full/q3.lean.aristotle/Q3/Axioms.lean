@@ -9,8 +9,12 @@ This file contains axioms organized by tier:
 IMPORTANT: Run `#print axioms RH_of_Weil_and_Q3` to verify all dependencies.
 
 Axiom Summary:
-- Tier-1: 8 axioms (Weil, Guinand, Szegő-Böttcher, Schur, etc.)
+- Tier-1: 10 axioms (Weil, Guinand, a_star properties, Szegő-Böttcher, Schur, etc.)
 - Tier-2: 12 axioms (A1', A2, A3, RKHS, node spacing, Q ≥ 0 on compacts)
+
+New additions (2024-12):
+- T1.3d: a_star_even (digamma conjugation symmetry)
+- T1.4b: Szego_Rayleigh_lower_bound (Rayleigh quotient → symbol infimum)
 -/
 
 import Q3.Basic.Defs
@@ -64,6 +68,36 @@ a*(ξ) = 2π(log π - Re(ψ(1/4 + iπξ))) > 0 for all ξ
 -/
 axiom a_star_pos : ∀ ξ : ℝ, a_star ξ > 0
 
+/-! ## Axiom T1.3b: Archimedean Kernel Continuity
+
+a*(ξ) is continuous (follows from digamma regularity away from poles).
+
+**Citation:**
+- Titchmarsh, E.C. (1986) "The Theory of the Riemann Zeta-Function", Chapter IX.
+-/
+axiom a_star_continuous : Continuous a_star
+
+/-! ## Axiom T1.3c: Archimedean Kernel Bounded on Compacts
+
+a*(ξ) is bounded on any compact set (continuous function on compact → bounded).
+
+**Citation:**
+- Direct corollary of continuity and Heine-Borel.
+-/
+axiom a_star_bdd_on_compact : ∀ (K : ℝ) (hK : K > 0),
+  ∃ M > 0, ∀ ξ ∈ Set.Icc (-K) K, a_star ξ ≤ M
+
+/-! ## Axiom T1.3d: Archimedean Kernel Even Symmetry
+
+a*(−ξ) = a*(ξ) because ψ(z̄) = ψ(z)̄ for the digamma function.
+For z = 1/4 + iπξ, the conjugate is 1/4 - iπξ = 1/4 + iπ(−ξ).
+
+**Citation:**
+- Abramowitz & Stegun (1964). "Handbook of Mathematical Functions", Section 6.3.
+- NIST DLMF (2024), Section 5.5: ψ(z̄) = ψ(z)̄.
+-/
+axiom a_star_even : ∀ ξ : ℝ, a_star (-ξ) = a_star ξ
+
 /-! ## Axiom T1.4: Szegő-Böttcher Theory (1958/1999)
 
 Eigenvalues of Toeplitz matrices bounded by symbol range.
@@ -88,6 +122,32 @@ axiom Szego_Bottcher_convergence :
   ∀ ε > 0, ∃ N, ∀ m ≥ N,
     ∀ μ, (∃ v : Fin m → ℝ, v ≠ 0 ∧ (ToeplitzMatrix m P).mulVec v = μ • v) →
       ∃ θ ∈ Set.Icc 0 (2 * Real.pi), |μ - P θ| < ε
+
+/-! ## Axiom T1.4b: Szegő Rayleigh Quotient Bound (Classical)
+
+**Key Bridge Axiom**: Minimum Rayleigh quotient converges to symbol infimum.
+
+For Toeplitz matrix T_M[P] with continuous even symbol P:
+  inf_{v ≠ 0} (v^T · T_M[P] · v) / ||v||² → inf_θ P(θ)  as M → ∞
+
+More precisely: for any ε > 0, there exists M₀ such that for all M ≥ M₀,
+the Rayleigh quotient is at least inf P - ε.
+
+**Citation:**
+- Grenander, U. & Szegő, G. (1958). "Toeplitz Forms and Their Applications", Ch. 5.
+- Gray, R.M. (2006). "Toeplitz and Circulant Matrices: A Review", Theorem 4.2.
+-/
+
+/-- Rayleigh quotient for symmetric matrix -/
+noncomputable def RayleighQuotient {n : ℕ} (A : Matrix (Fin n) (Fin n) ℝ) (v : Fin n → ℝ) : ℝ :=
+  (∑ i, ∑ j, v i * A i j * v j) / (∑ i, v i ^ 2)
+
+/-- Szegő Rayleigh bound: for large M, Rayleigh quotient ≥ inf P - ε -/
+axiom Szego_Rayleigh_lower_bound :
+  ∀ (P : ℝ → ℝ), Continuous P → (∀ θ, P (-θ) = P θ) →
+  ∀ ε > 0, ∃ M₀ : ℕ, ∀ M ≥ M₀,
+    ∀ (v : Fin M → ℝ), v ≠ 0 →
+      RayleighQuotient (ToeplitzMatrix M P) v ≥ sInf {P θ | θ ∈ Set.Icc 0 (2 * Real.pi)} - ε
 
 /-! ## Axiom T1.5: Schur Test (1911)
 

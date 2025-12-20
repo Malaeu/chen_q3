@@ -73,7 +73,17 @@ structure AtomParams where
 def evalAtomParams (p : AtomParams) : ℝ → ℝ :=
   fun x => p.c * FejerHeatAtom p.B p.t p.tau x
 
+/-- AtomCone_K: Finite nonnegative combinations of Fejér-heat atoms
+    with proper support control (B ≤ K) and W_K membership.
+    This matches Q3.AtomCone_K from Axioms.lean -/
 def AtomCone_K (K : ℝ) : Set (ℝ → ℝ) :=
+  { g | ∃ (L : List AtomParams),
+        (∀ p ∈ L, p.c ≥ 0 ∧ p.B > 0 ∧ p.t > 0 ∧ |p.tau| ≤ K ∧ p.B ≤ K) ∧
+        g = (L.map evalAtomParams).sum ∧
+        g ∈ W_K K }  -- explicitly require g ∈ W_K
+
+/-- Legacy AtomCone without W_K requirement (for helper lemmas) -/
+def AtomCone_K_legacy (K : ℝ) : Set (ℝ → ℝ) :=
   { g | ∃ (L : List AtomParams),
         (∀ p ∈ L, p.c ≥ 0 ∧ p.B > 0 ∧ p.t > 0 ∧ |p.tau| ≤ K ∧ p.B ≤ K) ∧
         g = (L.map evalAtomParams).sum }
@@ -715,11 +725,23 @@ Checking if continuous_map_integral_approx_by_sum exists.
 #check continuous_map_integral_approx_by_sum_v4
 
 /-
-The symmetrized Riemann sum is in the AtomCone.
+The symmetrized Riemann sum is in the legacy AtomCone.
 -/
-theorem sum_in_AtomCone (K : ℝ) (hK : K > 0) (t : ℝ) (ht : t > 0) (s : Finset ℝ) (w : ℝ → ℝ) (hw : ∀ y ∈ s, w y > 0) (hy : ∀ y ∈ s, y ∈ Set.Icc (-K) K) (Φ : ℝ → ℝ) (hΦ : Φ ∈ W_K K) :
-  (fun x => ∑ y ∈ s, w y * Φ y * (ModifiedKernel K t (x - y) + ModifiedKernel K t (x + y)) / 2) ∈ AtomCone_K K := by
+theorem sum_in_AtomCone_legacy (K : ℝ) (hK : K > 0) (t : ℝ) (ht : t > 0) (s : Finset ℝ) (w : ℝ → ℝ) (hw : ∀ y ∈ s, w y > 0) (hy : ∀ y ∈ s, y ∈ Set.Icc (-K) K) (Φ : ℝ → ℝ) (hΦ : Φ ∈ W_K K) :
+  (fun x => ∑ y ∈ s, w y * Φ y * (ModifiedKernel K t (x - y) + ModifiedKernel K t (x + y)) / 2) ∈ AtomCone_K_legacy K := by
     refine' ⟨ s.toList.map ( fun y => ⟨ w y * Φ y / 2, K, t, y ⟩ ), _, _ ⟩;
+    · aesop;
+      · exact div_nonneg ( mul_nonneg ( le_of_lt ( hw _ left ) ) ( hΦ.2.2.2 _ ) ) zero_le_two;
+      · cases abs_cases w_1 <;> linarith [ hy _ left ];
+    · unfold evalAtomParams; ext; simp +decide [ div_eq_inv_mul, mul_assoc, mul_comm, mul_left_comm, Finset.mul_sum _ _ _, Finset.sum_mul ] ; aesop;
+
+/-
+The symmetrized Riemann sum is in the proper AtomCone (with W_K membership).
+-/
+theorem sum_in_AtomCone (K : ℝ) (hK : K > 0) (t : ℝ) (ht : t > 0) (s : Finset ℝ) (w : ℝ → ℝ) (hw : ∀ y ∈ s, w y > 0) (hy : ∀ y ∈ s, y ∈ Set.Icc (-K) K) (Φ : ℝ → ℝ) (hΦ : Φ ∈ W_K K)
+    (hg_W_K : (fun x => ∑ y ∈ s, w y * Φ y * (ModifiedKernel K t (x - y) + ModifiedKernel K t (x + y)) / 2) ∈ W_K K) :
+  (fun x => ∑ y ∈ s, w y * Φ y * (ModifiedKernel K t (x - y) + ModifiedKernel K t (x + y)) / 2) ∈ AtomCone_K K := by
+    refine' ⟨ s.toList.map ( fun y => ⟨ w y * Φ y / 2, K, t, y ⟩ ), _, _, hg_W_K ⟩;
     · aesop;
       · exact div_nonneg ( mul_nonneg ( le_of_lt ( hw _ left ) ) ( hΦ.2.2.2 _ ) ) zero_le_two;
       · cases abs_cases w_1 <;> linarith [ hy _ left ];

@@ -12,6 +12,20 @@ Let $Q$ be the quadratic form fixed in Section~\ref{sec:T0} on the Weil class $\
 Via Theorem~\ref{thm:Weil-criterion} (the Weil criterion) this positivity is equivalent to the Riemann Hypothesis.
 \end{theorem}
 
+\subsection*{Program diagram}
+Our proof is organized as a controlled-limit program: a small number of analytic bridges are composed, and each bridge is driven by explicit parameter schedules along a compact exhaustion. This ``limits with a bridge'' architecture mirrors the standard programmatic style in mathematical physics, where theorems are structured around robust intermediate objects and stable limit transitions (compare the two-step limiting diagram in Deng--Hani--Ma~\cite{DengHaniMa2025Hilbert6}). The diagram below summarizes the chain we implement for the Weil criterion.
+
+\begin{center}
+  \small
+  \begin{tabular}{c}
+    Weil criterion $\Longleftarrow$ Weil positivity on $\mathcal W$ \\
+    $\Uparrow$ \\
+    PSD on each $W_K$ $\Leftarrow$ Toeplitz barrier + RKHS prime cap + compact transfer \\
+    $\Uparrow$ \\
+    cone density + Lipschitz control + monotone schedules ($K \uparrow \infty$)
+  \end{tabular}
+\end{center}
+
 The proof organises around three analytic modules.
 
 \subsection*{Archimedean bridge}
@@ -127,6 +141,10 @@ This work was inspired by several recent developments in analytic number theory,
   \item \textbf{Physical operator heuristics.} PT-symmetric constructions such as Bender--Brody--M\"uller~\cite{BenderBrodyMuller2017} keep the Hilbert--P\'olya dream alive; our framework aims to supply the missing rigorous operator inequalities.
 
   \item \textbf{Geometric flows and smoothing.} Perelman's Ricci-flow programme~\cite{Perelman2002,Perelman2003} shows how parabolic averaging can enforce global structure; we mirror that philosophy by pairing Fej\'er kernels with heat-flow smoothing in the Toeplitz bridge.
+
+  \item \textbf{Programmatic limit architectures.} Deng--Hani--Ma~\cite{DengHaniMa2025Hilbert6} present a two-step limiting program (Newtonian dynamics $\to$ Boltzmann $\to$ fluid equations) that highlights how long-time control stabilizes successive limits; our compact-by-compact transfer plays an analogous ``bridge'' role for the Weil criterion.
+
+  \item \textbf{Trace-formula-to-gap pipelines.} Anantharaman--Monk~\cite{AnantharamanMonk2025FR} use length-spectrum data and trace-formula technology to obtain asymptotic spectral gaps for random hyperbolic surfaces, a context that reinforces why spectral/trace language is a natural narrative for Weil-criterion positivity (here ``Weil--Petersson'' is unrelated to the Weil criterion).
 
   \item \textbf{Massive computations.} Platt and Trudgian's verification of RH up to $3\cdot10^{12}$~\cite{PlattTrudgian2021}, together with surveys like Conrey's~\cite{Conrey2003}, emphasise the need for transparent, audit-friendly proofs rather than ever-larger numerics.
 

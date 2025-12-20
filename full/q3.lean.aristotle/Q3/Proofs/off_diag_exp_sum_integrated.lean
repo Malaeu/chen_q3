@@ -14,6 +14,7 @@ Key insight: Aristotle uses IDENTICAL coordinate system:
 -/
 
 import Q3.Axioms
+import Q3.Proofs.node_spacing_integrated
 
 set_option linter.mathlibStandardSet false
 
@@ -78,13 +79,13 @@ lemma node_spacing_bound (K : ℝ) (hK : K ≥ 1) (i j : ℕ)
     exact Nat.cast_add_one_pos _
   rcases Nat.lt_trichotomy i j with h | h | h
   · -- i < j
-    have hsp := Q3.node_spacing_axiom K hK i j hi hj h
+    have hsp := Q3.Proofs.NodeSpacing.node_spacing K hK i j hi hj h
     have h_nonneg : Q3.xi_n j - Q3.xi_n i ≥ 0 := by linarith
     rw [abs_sub_comm, abs_of_nonneg h_nonneg]
     exact hsp
   · exact absurd h hij
   · -- j < i
-    have hsp := Q3.node_spacing_axiom K hK j i hj hi h
+    have hsp := Q3.Proofs.NodeSpacing.node_spacing K hK j i hj hi h
     have h_nonneg : Q3.xi_n i - Q3.xi_n j ≥ 0 := by linarith
     rw [abs_of_nonneg h_nonneg]
     exact hsp
