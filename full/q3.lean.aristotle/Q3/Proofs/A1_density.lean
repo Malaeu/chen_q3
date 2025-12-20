@@ -10,6 +10,7 @@ Sorry, Aristotle was unable to complete the task in time.
 -/
 
 import Mathlib
+import Q3.Axioms
 
 set_option linter.mathlibStandardSet false
 
@@ -39,6 +40,16 @@ def W_K (K : ℝ) : Set (ℝ → ℝ) :=
        Function.support Φ ⊆ Set.Icc (-K) K ∧
        Even Φ ∧
        ∀ x, 0 ≤ Φ x}
+
+/-!
+Definition alignment with Q3.Axioms.
+-/
+lemma FejerKernel_eq_q3 (B x : ℝ) : FejerKernel B x = Q3.Fejer_kernel B x := by
+  rfl
+
+lemma W_K_eq_q3 (K : ℝ) : W_K K = Q3.W_K K := by
+  ext Φ
+  simp [W_K, Q3.W_K, Q3.IsEven, Q3.IsNonneg, Even]
 
 noncomputable def Atom (B t τ : ℝ) (x : ℝ) : ℝ :=
   FejerKernel B (x - τ) * HeatKernel t (x - τ) +

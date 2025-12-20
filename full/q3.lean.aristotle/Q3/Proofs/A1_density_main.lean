@@ -13,6 +13,7 @@ please submit the same prompt, and add this .lean file in "Optional: Attach a Le
 -/
 
 import Mathlib
+import Q3.Axioms
 
 set_option linter.mathlibStandardSet false
 
@@ -87,6 +88,25 @@ def AtomCone_K_legacy (K : ℝ) : Set (ℝ → ℝ) :=
   { g | ∃ (L : List AtomParams),
         (∀ p ∈ L, p.c ≥ 0 ∧ p.B > 0 ∧ p.t > 0 ∧ |p.tau| ≤ K ∧ p.B ≤ K) ∧
         g = (L.map evalAtomParams).sum }
+
+/-!
+Definition alignment with Q3.Axioms.
+-/
+lemma FejerKernel_eq_q3 (B x : ℝ) : FejerKernel B x = Q3.Fejer_kernel B x := by
+  unfold FejerKernel Q3.Fejer_kernel
+  rw [max_comm]
+
+lemma HeatKernel_eq_q3 (t x : ℝ) : HeatKernel t x = Q3.heat_kernel_A1 t x := by
+  rfl
+
+lemma FejerHeatAtom_eq_q3 (B t tau x : ℝ) :
+    FejerHeatAtom B t tau x = Q3.Fejer_heat_atom B t tau x := by
+  unfold FejerHeatAtom Q3.Fejer_heat_atom
+  simp [FejerKernel_eq_q3, HeatKernel_eq_q3]
+
+lemma W_K_eq_q3 (K : ℝ) : W_K K = Q3.W_K K := by
+  ext Φ
+  simp [W_K, Q3.W_K, Q3.IsEven, Q3.IsNonneg]
 
 /-
 Heat kernel integrates to 1.

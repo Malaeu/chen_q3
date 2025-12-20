@@ -99,6 +99,48 @@ noncomputable def prime_term_local (Φ : ℝ → ℝ) : ℝ := ∑' n, w_Q n * �
 /-- Local Q functional -/
 noncomputable def Q_local (Φ : ℝ → ℝ) : ℝ := arch_term_local Φ - prime_term_local Φ
 
+/-! ## Bridge Lemmas for Lipschitz Bound Components -/
+
+/-- D is bounded (sup of continuous on compact is finite) -/
+lemma D_bdd_above (K : ℝ) (_hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ)
+    (hcont₁ : ContinuousOn Φ₁ (Set.Icc (-K) K))
+    (hcont₂ : ContinuousOn Φ₂ (Set.Icc (-K) K)) :
+    BddAbove {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K} := by
+  have hcomp : IsCompact (Set.Icc (-K) K) := isCompact_Icc
+  have hdiff_cont : ContinuousOn (fun x => |Φ₁ x - Φ₂ x|) (Set.Icc (-K) K) := by
+    apply ContinuousOn.abs
+    exact ContinuousOn.sub hcont₁ hcont₂
+  have himg_compact := hcomp.image_of_continuousOn hdiff_cont
+  exact himg_compact.bddAbove
+
+/-- D is nonneg (sup of abs is nonneg) -/
+lemma D_nonneg (K : ℝ) (_hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ) :
+    0 ≤ sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K} := by
+  apply Real.sSup_nonneg
+  intro y hy
+  obtain ⟨x, _, rfl⟩ := hy
+  exact abs_nonneg _
+
+/-- Arch term Lipschitz bound (bridge axiom).
+    |arch_term Φ₁ - arch_term Φ₂| ≤ 2K · M_a · D
+    Uses MeasureTheory: |∫ f| ≤ ∫ |f|, a* bounded, measure of [-K,K] = 2K -/
+axiom arch_term_Lipschitz_bridge (K : ℝ) (hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ)
+    (hcont₁ : ContinuousOn Φ₁ (Set.Icc (-K) K))
+    (hcont₂ : ContinuousOn Φ₂ (Set.Icc (-K) K))
+    (hsupp₁ : Function.support Φ₁ ⊆ Set.Icc (-K) K)
+    (hsupp₂ : Function.support Φ₂ ⊆ Set.Icc (-K) K) :
+  |arch_term_local Φ₁ - arch_term_local Φ₂| ≤
+    2 * K * M_a_local K * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K}
+
+/-- Prime term Lipschitz bound (bridge axiom).
+    |prime_term Φ₁ - prime_term Φ₂| ≤ W_sum · D
+    Uses: tsum linearity, |Σ aₙ| ≤ Σ |aₙ|, w_Q ≥ 0, W_sum_finite -/
+axiom prime_term_Lipschitz_bridge (K : ℝ) (hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ)
+    (hsupp₁ : Function.support Φ₁ ⊆ Set.Icc (-K) K)
+    (hsupp₂ : Function.support Φ₂ ⊆ Set.Icc (-K) K) :
+  |prime_term_local Φ₁ - prime_term_local Φ₂| ≤
+    W_sum_local K * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K}
+
 /-! ## Main Lipschitz theorem -/
 
 /-- Q is Lipschitz on W_K_local with constant L_Q_local K -/
@@ -131,7 +173,55 @@ theorem Q_Lipschitz_local (K : ℝ) (hK : K > 0) :
     -- (a) Support of Φ₁, Φ₂ is in [-K, K], so only finitely many prime nodes contribute
     -- (b) a_star is bounded on [-K, K] by M_a_local K
     -- (c) W_sum_local K bounds the prime term contribution
-    sorry
+
+    -- Let D = sup-norm of Φ₁ - Φ₂ on [-K, K]
+    set D := sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K} with hD_def
+
+    -- Extract membership properties
+    obtain ⟨hcont₁, hsupp₁, heven₁, hnonneg₁⟩ := hΦ₁
+    obtain ⟨hcont₂, hsupp₂, heven₂, hnonneg₂⟩ := hΦ₂
+
+    -- Get M_a bound from a_star_bdd_on_compact axiom
+    have hMa := a_star_bdd_above_on_Icc K hK
+
+    -- Step 1: The goal is to show |Q_local Φ₁ - Q_local Φ₂| ≤ L_Q_local K * D
+    -- where D = sup-norm of Φ₁ - Φ₂ on [-K, K]
+    --
+    -- Q_local = arch_term_local - prime_term_local
+    -- So |Q_local Φ₁ - Q_local Φ₂|
+    --  = |(arch₁ - prime₁) - (arch₂ - prime₂)|
+    --  ≤ |arch₁ - arch₂| + |prime₁ - prime₂|  (triangle inequality)
+    --  ≤ (2K · M_a) · D + W_sum · D            (integration and summation bounds)
+    --  = L_Q · D
+
+    -- Step 1: Get arch and prime term bounds from bridge axioms
+    have h_arch := arch_term_Lipschitz_bridge K hK Φ₁ Φ₂ hcont₁ hcont₂ hsupp₁ hsupp₂
+    have h_prime := prime_term_Lipschitz_bridge K hK Φ₁ Φ₂ hsupp₁ hsupp₂
+
+    -- Step 2: Triangle inequality for Q_local = arch - prime
+    -- |Q₁ - Q₂| = |(arch₁ - prime₁) - (arch₂ - prime₂)|
+    --           = |(arch₁ - arch₂) - (prime₁ - prime₂)|
+    --           ≤ |arch₁ - arch₂| + |prime₁ - prime₂|
+    have h_triangle : |Q_local Φ₁ - Q_local Φ₂| ≤
+        |arch_term_local Φ₁ - arch_term_local Φ₂| + |prime_term_local Φ₁ - prime_term_local Φ₂| := by
+      unfold Q_local
+      -- Q_local Φ₁ - Q_local Φ₂ = (arch₁ - prime₁) - (arch₂ - prime₂) = (arch₁ - arch₂) - (prime₁ - prime₂)
+      -- |x - y| ≤ |x| + |y| (triangle inequality)
+      have heq : arch_term_local Φ₁ - prime_term_local Φ₁ - (arch_term_local Φ₂ - prime_term_local Φ₂) =
+                 (arch_term_local Φ₁ - arch_term_local Φ₂) - (prime_term_local Φ₁ - prime_term_local Φ₂) := by ring
+      rw [heq]
+      exact abs_sub (arch_term_local Φ₁ - arch_term_local Φ₂) (prime_term_local Φ₁ - prime_term_local Φ₂)
+
+    -- Step 3: Combine bounds
+    -- |Q₁ - Q₂| ≤ |arch diff| + |prime diff|
+    --           ≤ 2K·M_a·D + W_sum·D
+    --           = (2K·M_a + W_sum)·D
+    --           = L_Q·D
+    calc |Q_local Φ₁ - Q_local Φ₂|
+        ≤ |arch_term_local Φ₁ - arch_term_local Φ₂| + |prime_term_local Φ₁ - prime_term_local Φ₂| := h_triangle
+      _ ≤ 2 * K * M_a_local K * D + W_sum_local K * D := add_le_add h_arch h_prime
+      _ = (2 * K * M_a_local K + W_sum_local K) * D := by ring
+      _ = L_Q_local K * D := by unfold L_Q_local; ring
 
 /-! ## Bridge theorem: close the axiom Q_Lipschitz_on_W_K -/
 

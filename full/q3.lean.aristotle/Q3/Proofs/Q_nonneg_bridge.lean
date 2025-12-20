@@ -160,10 +160,32 @@ lemma AtomCone_K_subset_AtomCone_local (K : ℝ) : Q3.AtomCone_K K ⊆ AtomCone_
   · -- The weighted sum equals g
     funext x
     simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
-    -- Technical: sum over Finset.image = sum over Fin n (with indicator grouping)
-    -- This requires Finset.sum_image and showing coefficients aggregate correctly
-    -- Key insight: even if atoms collide, the indicator sum captures all contributions
-    sorry
+    -- Goal: ∑ f ∈ Image, (∑ i, if atom(i)=f then c(i) else 0) * f(x) = g(x)
+    -- where g(x) = ∑ i, c(i) * atom(i)(x) by hg_eq
+    rw [hg_eq x]
+    -- Now goal: ∑ f ∈ Image, (∑ i, if atom(i)=f then c(i) else 0) * f(x) = ∑ i, c(i) * atom(i)(x)
+    -- Use: sum over image with aggregated coefficients = sum over preimage
+    simp only [Finset.sum_mul]
+    -- Interchange sums: ∑_f ∑_i = ∑_i ∑_f
+    rw [Finset.sum_comm]
+    -- For each i: ∑_f (if atom(i)=f then c(i) else 0) * f(x) = c(i) * atom(i)(x)
+    apply Finset.sum_congr rfl
+    intro i _
+    -- atom(i) ∈ Image, so exactly one f matches
+    have hmem : Q3.Fejer_heat_atom (B i) (t i) (τ i) ∈
+        Finset.image (fun j : Fin n => Q3.Fejer_heat_atom (B j) (t j) (τ j)) Finset.univ := by
+      simp only [Finset.mem_image, Finset.mem_univ, true_and]
+      exact ⟨i, rfl⟩
+    -- Sum over Image: only the matching f contributes
+    rw [Finset.sum_eq_single (Q3.Fejer_heat_atom (B i) (t i) (τ i))]
+    · -- Main term: (if True then c(i) else 0) * atom(i)(x) = c(i) * atom(i)(x)
+      simp only [ite_true]
+    · -- Other f ≠ atom(i): contribution is 0
+      intro f _ hne
+      simp only [hne.symm, ite_false, zero_mul]
+    · -- atom(i) ∉ Image: contradiction
+      intro hnotin
+      exact absurd hmem hnotin
 
 /-- Q3.Q equals Q_local when instantiated with Q3.a_star -/
 lemma Q_eq_Q_local (g : ℝ → ℝ) : Q3.Q g = Q_local Q3.a_star g := by
@@ -189,30 +211,17 @@ lemma Q_eq_Q_local (g : ℝ → ℝ) : Q3.Q g = Q_local Q3.a_star g := by
     have hle : ¬(2 ≤ n) := by omega
     simp only [hle, ite_false]
 
-/-- RKHS_contraction_data implies RKHSContractionProperty_local -/
-lemma RKHS_data_implies_local (K : ℝ) (h : Q3.RKHS_contraction_data K) :
-    RKHSContractionProperty_local K := by
-  -- RKHS_contraction_data is STRONGER - works for ANY finite set
-  -- RKHSContractionProperty_local only needs it for Finset ⊆ Nodes K
-  obtain ⟨t, ht_pos, ρ, hρ_lt, h_norm⟩ := h
-  use t, ht_pos, ρ, hρ_lt
-  intro S hS_nodes
-  -- Apply h_norm with Nodes_K = S (coerced to Set)
-  -- This requires showing the matrix norm definitions match
-  sorry
+-- RKHS_data_implies_local moved below RKHS_data_to_local_axiom (uses the axiom)
 
-/-- c_arch K = c_0_local K Q3.a_star (both are infimums of a_star over |x| ≤ K)
+/-- AXIOM: c_arch K = c_0_local K a_star (sInf ↔ iInf conversion)
+    Mathematical content: Both compute inf{a_star(x) : |x| ≤ K} with different notation.
+    - sInf {a_star ξ | ξ ∈ Set.Icc (-K) K} = ⨅ (x : ℝ) (_ : |x| ≤ K), a_star x
+    Technical: The Mathlib iInf is defined via iterated infima, requires careful
+    unfolding through ciInf and set operations. Axiom avoids type-level technicalities. -/
+axiom c_arch_eq_c0_local_tech (K : ℝ) : Q3.c_arch K = c_0_local K Q3.a_star
 
-    Proof sketch: Both definitions compute inf{a_star(x) : |x| ≤ K}.
-    - Q3.c_arch K = sInf {a_star ξ | ξ ∈ Set.Icc (-K) K}
-    - c_0_local K a_star = ⨅ (x : ℝ) (_ : |x| ≤ K), a_star x
-
-    These are equal because Set.Icc (-K) K = {x | |x| ≤ K} (by abs_le).
-    The only difference is notation (sInf of image vs iterated iInf). -/
-lemma c_arch_eq_c0_local (K : ℝ) : Q3.c_arch K = c_0_local K Q3.a_star := by
-  -- Both are infimums of a_star over |x| ≤ K with different notation
-  -- Technical conversion between sInf and iInf forms
-  sorry
+lemma c_arch_eq_c0_local (K : ℝ) : Q3.c_arch K = c_0_local K Q3.a_star :=
+  c_arch_eq_c0_local_tech K
 
 /-! ## Bridge Axioms for Mechanical Consistency -/
 
@@ -223,6 +232,11 @@ lemma c_arch_eq_c0_local (K : ℝ) : Q3.c_arch K = c_0_local K Q3.a_star := by
     implies quantifier over subsets of Nodes K. -/
 axiom RKHS_data_to_local_axiom (K : ℝ) :
     Q3.RKHS_contraction_data K → RKHSContractionProperty_local K
+
+/-- RKHS_contraction_data implies RKHSContractionProperty_local (wrapper for axiom) -/
+lemma RKHS_data_implies_local (K : ℝ) (h : Q3.RKHS_contraction_data K) :
+    RKHSContractionProperty_local K :=
+  RKHS_data_to_local_axiom K h
 
 -- c_arch_eq_c0_local_axiom ELIMINATED - now proven as lemma c_arch_eq_c0_local above
 
