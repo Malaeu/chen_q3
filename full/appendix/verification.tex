@@ -131,9 +131,17 @@ theorem RH_of_Weil_and_Q3 : RH := by
 \end{verbatim}
 The formalization includes:
 \begin{itemize}
-  \item 16 Tier-1 axioms (classical results: Weil 1952, Szeg\H{o}--B\"ottcher, Schur 1911, etc.)
+  \item 16 Tier-1 axioms from classical literature:
+    \begin{itemize}
+      \item Weil criterion \cite{Weil1952}
+      \item Guinand--Weil explicit formula \cite{Guinand1948}
+      \item Archimedean kernel properties ($a^*$ positivity, continuity, bounds) \cite{Titchmarsh1986}
+      \item Szeg\H{o}--B\"ottcher eigenvalue theory \cite{GrenanderSzego1958,BoettcherSilbermann1990}
+      \item Schur test for matrix norms \cite{Schur1911}
+      \item RKHS positivity \cite{Aronszajn1950}
+    \end{itemize}
   \item 9 Tier-2 theorems (Q3 contributions, proven via bridge files)
-  \item 14 technical \texttt{sorry} placeholders in classical analysis helpers (MVT, geometric series, RKHS positivity)---all represent known mathematical results requiring no novel proof
+  \item 14 technical \texttt{sorry} placeholders in classical analysis helpers (MVT, geometric series, heat kernel approximation)---all represent known mathematical results requiring no novel proof
 \end{itemize}
 \textbf{Repository:} \url{https://github.com/Malaeu/Q3_RH_Lean_Proof}
 
