@@ -1,0 +1,39 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Lean build artifacts
+.lake/
+*.olean
+*.ilean
+*.trace
+*.c.hash
+lake-manifest.json.bak
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Backups
+*.backup
+*.bak_*
+*_backup*
+
+# Session transcripts
+session_*.jsonl
+
+# Editor
+.vscode/
+*.swp
+*~
+
+# Temporary
+/tmp/
+*.tmp
