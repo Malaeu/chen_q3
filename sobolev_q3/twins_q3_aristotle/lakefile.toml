@@ -1,0 +1,12 @@
+name = "twins_q3"
+version = "0.1.0"
+defaultTargets = ["Twins"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
+
+[[lean_lib]]
+name = "Twins"
+globs = ["Twins"]
