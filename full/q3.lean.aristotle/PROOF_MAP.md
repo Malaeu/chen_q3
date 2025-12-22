@@ -1,8 +1,8 @@
 # Q3 → RH PROOF MAP: Paper ↔ Lean
 
-**Generated:** 2025-12-21
+**Generated:** 2025-12-22
 **Status:** Clean Chain Complete
-**Sorries:** 14 (all in classical analysis helpers)
+**Sorries:** 11 (all in classical analysis helpers)
 
 ---
 
@@ -77,9 +77,9 @@ These are **novel results** from the Q3 paper, proven via bridges.
 | Node spacing | `node_spacing` | node_spacing_bridge | ✅ CLEAN | 0 |
 | S_K bound | `S_K_small` | S_K_small_bridge_v2 | ✅ CLEAN | 0 |
 | W_sum finite | `W_sum_finite` | W_sum_finite_bridge_v3 | ✅ CLEAN | 0 |
-| Off-diag sum | `off_diag_exp_sum` | off_diag_bridge_v2 | ✅ THEOREM | 3* |
-| RKHS contraction | `RKHS_contraction` | RKHS_bridge_v2 | ✅ THEOREM | 3* |
-| Q Lipschitz | `Q_Lipschitz` | Q_Lipschitz_bridge_v2 | ✅ THEOREM | 2* |
+| Off-diag sum | `off_diag_exp_sum` | off_diag_bridge_v2 | ✅ THEOREM | 2* |
+| RKHS contraction | `RKHS_contraction` | RKHS_bridge_v2 | ✅ THEOREM | 2* |
+| Q Lipschitz | `Q_Lipschitz` | Q_Lipschitz_bridge_v2 | ✅ THEOREM | 1* |
 | A3 bridge | `A3_bridge` | A3_bridge_v2 | ✅ THEOREM | 2* |
 | Q ≥ 0 atoms | `Q_nonneg_on_atoms` | Q_nonneg_bridge_v2 | ✅ THEOREM | 2* |
 | A1 density | `A1_density` | A1_density_bridge_v2 | ✅ THEOREM | 2* |
@@ -103,11 +103,11 @@ All 11 sorries are in **CLASSICAL ANALYSIS** - known results that don't need pro
 
 | File | Line | What's Sorry'd | Classical Source | Year |
 |------|------|----------------|------------------|------|
-| `off_diag_exp_sum_bridge_v2.lean` | :92 | Node spacing combine | MVT application | ~1820 |
-| `off_diag_exp_sum_bridge_v2.lean` | :110 | Geometric series sum | Ancient | - |
-| `RKHS_contraction_bridge_v2.lean` | :124 | Off-diag sum split | Geometric series | - |
-| `RKHS_contraction_bridge_v2.lean` | :205 | Matrix norm bound | Schur 1911 | 1911 |
-| `Q_Lipschitz_bridge_v2.lean` | :114 | Integration bounds | Calculus | - |
+| `off_diag_exp_sum_bridge_v2.lean` | :97 | Node spacing combine | MVT application | ~1820 |
+| `off_diag_exp_sum_bridge_v2.lean` | :115 | Geometric series sum | Ancient | - |
+| `RKHS_contraction_bridge_v2.lean` | :125 | Off-diag sum split | Geometric series | - |
+| `RKHS_contraction_bridge_v2.lean` | :207 | Matrix norm bound | Schur 1911 | 1911 |
+| `Q_Lipschitz_bridge_v2.lean` | :119 | Integration bounds | Calculus | - |
 | `Q_nonneg_bridge_v2.lean` | :49 | RKHS inner product | Aronszajn | 1950 |
 | `Q_nonneg_bridge_v2.lean` | :59 | Positivity transfer | RKHS theory | 1950 |
 | `A3_bridge_v2.lean` | :31 | Heat conv smooth | PDE theory | 1800s |
