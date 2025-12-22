@@ -2,7 +2,7 @@
 
 **Generated:** 2025-12-22
 **Status:** Clean Chain Complete
-**Sorries:** 9 (all in classical analysis helpers)
+**Sorries:** 8 (all in classical analysis helpers)
 
 ---
 
@@ -80,11 +80,11 @@ These are **novel results** from the Q3 paper, proven via bridges.
 | Off-diag sum | `off_diag_exp_sum` | off_diag_bridge_v2 | ✅ THEOREM | 2* |
 | RKHS contraction | `RKHS_contraction` | RKHS_bridge_v2 | ✅ THEOREM | 1* |
 | Q Lipschitz | `Q_Lipschitz` | Q_Lipschitz_bridge_v2 | ✅ THEOREM | 1* |
-| A3 bridge | `A3_bridge` | A3_bridge_v2 | ✅ THEOREM | 1* |
+| A3 bridge | `A3_bridge` | A3_bridge_v2 | ✅ CLEAN | 0 |
 | Q ≥ 0 atoms | `Q_nonneg_on_atoms` | Q_nonneg_bridge_v2 | ✅ THEOREM | 2* |
 | A1 density | `A1_density` | A1_density_bridge_v2 | ✅ THEOREM | 2* |
 
-**Total: 9 theorems** (3 fully proven, 6 with classical analysis sorries)
+**Total: 9 theorems** (4 fully proven, 5 with classical analysis sorries)
 
 *\* Sorries are in classical analysis helpers (MVT, geometric series, etc.)*
 
@@ -92,7 +92,7 @@ These are **novel results** from the Q3 paper, proven via bridges.
 
 ## LAYER 4: SORRY BREAKDOWN (Detailed)
 
-All 9 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
+All 8 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
 
 **UPDATE 2025-12-22:**
 - Closed `W_sum ≥ 0` sorry in Q_Lipschitz_bridge_v2.lean:99 ✅
@@ -100,6 +100,7 @@ All 9 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proo
 - Closed `MVT for log` sorry in off_diag_exp_sum_bridge_v2.lean:73 ✅ (uses Q3.Clean.MVT_log_bound)
 - Closed `Heat approx identity` sorry in A3_bridge_v2.lean:38 ✅ (uses Q3.Clean.heat_kernel_approx_identity)
 - Closed `Sum split` sorry in RKHS_contraction_bridge_v2.lean:207 ✅ (pure algebra: Finset.sum_ite_eq')
+- Closed `Heat conv smooth` sorry in A3_bridge_v2.lean:32 ✅ (uses Q3.Clean.heat_conv_smooth)
 
 ### Complete Sorry Table:
 
@@ -111,7 +112,6 @@ All 9 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proo
 | `Q_Lipschitz_bridge_v2.lean` | :119 | Integration bounds | Calculus | - |
 | `Q_nonneg_bridge_v2.lean` | :49 | RKHS inner product | Aronszajn | 1950 |
 | `Q_nonneg_bridge_v2.lean` | :59 | Positivity transfer | RKHS theory | 1950 |
-| `A3_bridge_v2.lean` | :32 | Heat conv smooth | PDE theory | 1800s |
 | `A1_density_bridge_v2.lean` | :50 | Density approximation | Weierstrass | 1885 |
 | `A1_density_bridge_v2.lean` | :57 | Uniform approx | Stone-Weierstrass | 1937 |
 
@@ -122,10 +122,10 @@ All 9 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proo
 | MVT / Calculus | 2 | ❌ No | Cauchy ~1820 |
 | Geometric Series | 2 | ❌ No | Ancient mathematics |
 | RKHS Theory | 2 | ❌ No | Aronszajn 1950 |
-| Heat Kernel | 1 | ❌ No | 19th century PDE |
+| Heat Kernel | 0 | ❌ No | 19th century PDE |
 | Approximation | 2 | ❌ No | Weierstrass 1885 |
 
-**Conclusion:** All 9 sorries are **classical mathematics** - no novel proofs needed.
+**Conclusion:** All 8 sorries are **classical mathematics** - no novel proofs needed.
 
 ---
 
