@@ -1,7 +1,8 @@
 # Q3 → RH Lean Formalization: MASTER STATUS
 
-**Last Verified:** 2025-12-21
+**Last Verified:** 2025-12-22
 **Verified By:** Claude Opus 4.5 via `#print axioms`
+**Governance:** See [REPO_POLICY.md](REPO_POLICY.md) for 10 repository rules
 
 ---
 
