@@ -16,12 +16,12 @@
 -- ✅ NO Q3.RKHS_contraction_axiom, Q3.A1_density_WK_axiom, etc.!
 ```
 
-### Bridge Sorry Count (14 total):
+### Bridge Sorry Count (13 total):
 | Bridge | Sorries | Description |
 |--------|---------|-------------|
 | off_diag | 3 | MVT, node spacing, geometric series |
 | RKHS | 3 | off-diag sum, S_K at t_min, row split |
-| Q_Lipschitz | 2 | W_sum ≥ 0, integration bounds |
+| Q_Lipschitz | 1 | integration bounds (W_sum ≥ 0 CLOSED 2025-12-22 ✅) |
 | Q_nonneg | 2 | atom RKHS positivity |
 | A3 | 2 | heat smoothness, convolution approx |
 | A1_density | 2 | density theorem |
@@ -50,7 +50,7 @@ Q3/Proofs/*_bridge_v2/v3.lean  -- Clean bridges (import only Q3.Basic.Defs)
 | W_sum_finite | v3 | ✅ FULLY PROVEN |
 | off_diag_exp_sum | v2 | structured (3 sorry) |
 | RKHS_contraction | v2 | structured (3 sorry) |
-| Q_Lipschitz | v2 | structured (2 sorry) |
+| Q_Lipschitz | v2 | structured (1 sorry) ✅ -1 |
 | A3_bridge | v2 | structured (2 sorry) |
 | Q_nonneg_on_atoms | v2 | structured (2 sorry) |
 | A1_density | v2 | structured (2 sorry) |

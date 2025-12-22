@@ -92,7 +92,9 @@ These are **novel results** from the Q3 paper, proven via bridges.
 
 ## LAYER 4: SORRY BREAKDOWN (Detailed)
 
-All 14 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
+All 13 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
+
+**UPDATE 2025-12-22:** Closed `W_sum ≥ 0` sorry in Q_Lipschitz_bridge_v2.lean:99 ✅
 
 ### Complete Sorry Table:
 
@@ -104,7 +106,6 @@ All 14 sorries are in **CLASSICAL ANALYSIS** - known results that don't need pro
 | `RKHS_contraction_bridge_v2.lean` | :124 | Off-diag sum split | Geometric series | - |
 | `RKHS_contraction_bridge_v2.lean` | :130 | S_K at t_min | By definition | - |
 | `RKHS_contraction_bridge_v2.lean` | :205 | Matrix norm bound | Schur 1911 | 1911 |
-| `Q_Lipschitz_bridge_v2.lean` | :99 | W_sum ≥ 0 | Elementary | - |
 | `Q_Lipschitz_bridge_v2.lean` | :114 | Integration bounds | Calculus | - |
 | `Q_nonneg_bridge_v2.lean` | :49 | RKHS inner product | Aronszajn | 1950 |
 | `Q_nonneg_bridge_v2.lean` | :59 | Positivity transfer | RKHS theory | 1950 |
@@ -121,10 +122,10 @@ All 14 sorries are in **CLASSICAL ANALYSIS** - known results that don't need pro
 | Geometric Series | 2 | ❌ No | Ancient mathematics |
 | RKHS Theory | 2 | ❌ No | Aronszajn 1950 |
 | Heat Kernel | 2 | ❌ No | 19th century PDE |
-| Elementary Bounds | 3 | ❌ No | Obvious/definitional |
+| Elementary Bounds | 2 | ❌ No | Obvious/definitional |
 | Approximation | 2 | ❌ No | Weierstrass 1885 |
 
-**Conclusion:** All 14 sorries are **classical mathematics** - no novel proofs needed.
+**Conclusion:** All 13 sorries are **classical mathematics** - no novel proofs needed.
 
 ---
 
