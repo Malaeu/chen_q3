@@ -92,17 +92,17 @@ These are **novel results** from the Q3 paper, proven via bridges.
 
 ## LAYER 4: SORRY BREAKDOWN (Detailed)
 
-All 12 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
+All 11 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
 
 **UPDATE 2025-12-22:**
 - Closed `W_sum ≥ 0` sorry in Q_Lipschitz_bridge_v2.lean:99 ✅
 - Closed `S_K at t_min` sorry in RKHS_contraction_bridge_v2.lean:130 ✅
+- Closed `MVT for log` sorry in off_diag_exp_sum_bridge_v2.lean:73 ✅ (uses Q3.Clean.MVT_log_bound)
 
 ### Complete Sorry Table:
 
 | File | Line | What's Sorry'd | Classical Source | Year |
 |------|------|----------------|------------------|------|
-| `off_diag_exp_sum_bridge_v2.lean` | :73 | MVT for log | Cauchy | ~1820 |
 | `off_diag_exp_sum_bridge_v2.lean` | :92 | Node spacing combine | MVT application | ~1820 |
 | `off_diag_exp_sum_bridge_v2.lean` | :110 | Geometric series sum | Ancient | - |
 | `RKHS_contraction_bridge_v2.lean` | :124 | Off-diag sum split | Geometric series | - |
@@ -119,14 +119,14 @@ All 12 sorries are in **CLASSICAL ANALYSIS** - known results that don't need pro
 
 | Category | Count | Need Proof? | Reference |
 |----------|-------|-------------|-----------|
-| MVT / Calculus | 3 | ❌ No | Cauchy ~1820 |
+| MVT / Calculus | 2 | ❌ No | Cauchy ~1820 |
 | Geometric Series | 2 | ❌ No | Ancient mathematics |
 | RKHS Theory | 2 | ❌ No | Aronszajn 1950 |
 | Heat Kernel | 2 | ❌ No | 19th century PDE |
 | Elementary Bounds | 1 | ❌ No | Obvious/definitional |
 | Approximation | 2 | ❌ No | Weierstrass 1885 |
 
-**Conclusion:** All 12 sorries are **classical mathematics** - no novel proofs needed.
+**Conclusion:** All 11 sorries are **classical mathematics** - no novel proofs needed.
 
 ---
 

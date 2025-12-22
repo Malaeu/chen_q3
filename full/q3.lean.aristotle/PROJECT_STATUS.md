@@ -16,10 +16,10 @@
 -- ✅ NO Q3.RKHS_contraction_axiom, Q3.A1_density_WK_axiom, etc.!
 ```
 
-### Bridge Sorry Count (12 total):
+### Bridge Sorry Count (11 total):
 | Bridge | Sorries | Description |
 |--------|---------|-------------|
-| off_diag | 3 | MVT, node spacing, geometric series |
+| off_diag | 2 | node spacing, geometric series (MVT CLOSED via Tier-1 axiom ✅) |
 | RKHS | 2 | off-diag sum, row split (S_K at t_min CLOSED 2025-12-22 ✅) |
 | Q_Lipschitz | 1 | integration bounds (W_sum ≥ 0 CLOSED 2025-12-22 ✅) |
 | Q_nonneg | 2 | atom RKHS positivity |
@@ -48,7 +48,7 @@ Q3/Proofs/*_bridge_v2/v3.lean  -- Clean bridges (import only Q3.Basic.Defs)
 | node_spacing | v1 | ✅ FULLY PROVEN |
 | S_K_small | v2 | ✅ FULLY PROVEN |
 | W_sum_finite | v3 | ✅ FULLY PROVEN |
-| off_diag_exp_sum | v2 | structured (3 sorry) |
+| off_diag_exp_sum | v2 | structured (2 sorry) ✅ -1 |
 | RKHS_contraction | v2 | structured (2 sorry) ✅ -1 |
 | Q_Lipschitz | v2 | structured (1 sorry) ✅ -1 |
 | A3_bridge | v2 | structured (2 sorry) |
