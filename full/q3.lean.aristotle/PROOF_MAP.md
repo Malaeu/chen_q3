@@ -2,7 +2,7 @@
 
 **Generated:** 2025-12-22
 **Status:** Clean Chain Complete
-**Sorries:** 10 (all in classical analysis helpers)
+**Sorries:** 9 (all in classical analysis helpers)
 
 ---
 
@@ -78,7 +78,7 @@ These are **novel results** from the Q3 paper, proven via bridges.
 | S_K bound | `S_K_small` | S_K_small_bridge_v2 | ✅ CLEAN | 0 |
 | W_sum finite | `W_sum_finite` | W_sum_finite_bridge_v3 | ✅ CLEAN | 0 |
 | Off-diag sum | `off_diag_exp_sum` | off_diag_bridge_v2 | ✅ THEOREM | 2* |
-| RKHS contraction | `RKHS_contraction` | RKHS_bridge_v2 | ✅ THEOREM | 2* |
+| RKHS contraction | `RKHS_contraction` | RKHS_bridge_v2 | ✅ THEOREM | 1* |
 | Q Lipschitz | `Q_Lipschitz` | Q_Lipschitz_bridge_v2 | ✅ THEOREM | 1* |
 | A3 bridge | `A3_bridge` | A3_bridge_v2 | ✅ THEOREM | 1* |
 | Q ≥ 0 atoms | `Q_nonneg_on_atoms` | Q_nonneg_bridge_v2 | ✅ THEOREM | 2* |
@@ -92,13 +92,14 @@ These are **novel results** from the Q3 paper, proven via bridges.
 
 ## LAYER 4: SORRY BREAKDOWN (Detailed)
 
-All 10 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
+All 9 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
 
 **UPDATE 2025-12-22:**
 - Closed `W_sum ≥ 0` sorry in Q_Lipschitz_bridge_v2.lean:99 ✅
 - Closed `S_K at t_min` sorry in RKHS_contraction_bridge_v2.lean:130 ✅
 - Closed `MVT for log` sorry in off_diag_exp_sum_bridge_v2.lean:73 ✅ (uses Q3.Clean.MVT_log_bound)
 - Closed `Heat approx identity` sorry in A3_bridge_v2.lean:38 ✅ (uses Q3.Clean.heat_kernel_approx_identity)
+- Closed `Sum split` sorry in RKHS_contraction_bridge_v2.lean:207 ✅ (pure algebra: Finset.sum_ite_eq')
 
 ### Complete Sorry Table:
 
@@ -107,7 +108,6 @@ All 10 sorries are in **CLASSICAL ANALYSIS** - known results that don't need pro
 | `off_diag_exp_sum_bridge_v2.lean` | :97 | Node spacing combine | MVT application | ~1820 |
 | `off_diag_exp_sum_bridge_v2.lean` | :115 | Geometric series sum | Ancient | - |
 | `RKHS_contraction_bridge_v2.lean` | :125 | Off-diag sum split | Geometric series | - |
-| `RKHS_contraction_bridge_v2.lean` | :207 | Matrix norm bound | Schur 1911 | 1911 |
 | `Q_Lipschitz_bridge_v2.lean` | :119 | Integration bounds | Calculus | - |
 | `Q_nonneg_bridge_v2.lean` | :49 | RKHS inner product | Aronszajn | 1950 |
 | `Q_nonneg_bridge_v2.lean` | :59 | Positivity transfer | RKHS theory | 1950 |
@@ -123,10 +123,9 @@ All 10 sorries are in **CLASSICAL ANALYSIS** - known results that don't need pro
 | Geometric Series | 2 | ❌ No | Ancient mathematics |
 | RKHS Theory | 2 | ❌ No | Aronszajn 1950 |
 | Heat Kernel | 1 | ❌ No | 19th century PDE |
-| Elementary Bounds | 1 | ❌ No | Obvious/definitional |
 | Approximation | 2 | ❌ No | Weierstrass 1885 |
 
-**Conclusion:** All 10 sorries are **classical mathematics** - no novel proofs needed.
+**Conclusion:** All 9 sorries are **classical mathematics** - no novel proofs needed.
 
 ---
 
