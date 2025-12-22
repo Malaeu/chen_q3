@@ -19,6 +19,7 @@ The full bridge with matrix norm bounds uses sorry for technical parts.
 -/
 
 import Q3.Basic.Defs  -- ONLY Defs, no Axioms!
+import Q3.Proofs.S_K_small_bridge_v2  -- For S_K_small_Q3
 -- Note: We DON'T import Q3.Proofs.RKHS_contraction to avoid namespace conflict
 
 set_option linter.mathlibStandardSet false
@@ -126,8 +127,9 @@ lemma off_diag_sum_bound (K t : ℝ) (hK : K ≥ 1) (ht : t > 0) (i : Q3.Nodes K
 /-- S_K ≤ η when t = t_min(K, η) -/
 lemma S_K_at_t_min (K η : ℝ) (hK : K ≥ 1) (hη : η > 0) :
     Q3.S_K K (Q3.t_min K η) ≤ η := by
-  -- By definition of t_min, this is exactly the threshold
-  sorry
+  -- Use S_K_small_Q3: t ≤ t_min → S_K t ≤ η
+  -- Here t = t_min, so t ≤ t_min holds by le_refl
+  exact Q3.Proofs.S_K_SmallBridgeV2.S_K_small_Q3 K (Q3.t_min K η) η hK hη le_rfl
 
 /-! ## Main Contraction Theorem -/
 

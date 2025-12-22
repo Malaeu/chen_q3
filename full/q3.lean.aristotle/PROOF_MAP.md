@@ -92,9 +92,11 @@ These are **novel results** from the Q3 paper, proven via bridges.
 
 ## LAYER 4: SORRY BREAKDOWN (Detailed)
 
-All 13 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
+All 12 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
 
-**UPDATE 2025-12-22:** Closed `W_sum ≥ 0` sorry in Q_Lipschitz_bridge_v2.lean:99 ✅
+**UPDATE 2025-12-22:**
+- Closed `W_sum ≥ 0` sorry in Q_Lipschitz_bridge_v2.lean:99 ✅
+- Closed `S_K at t_min` sorry in RKHS_contraction_bridge_v2.lean:130 ✅
 
 ### Complete Sorry Table:
 
@@ -104,7 +106,6 @@ All 13 sorries are in **CLASSICAL ANALYSIS** - known results that don't need pro
 | `off_diag_exp_sum_bridge_v2.lean` | :92 | Node spacing combine | MVT application | ~1820 |
 | `off_diag_exp_sum_bridge_v2.lean` | :110 | Geometric series sum | Ancient | - |
 | `RKHS_contraction_bridge_v2.lean` | :124 | Off-diag sum split | Geometric series | - |
-| `RKHS_contraction_bridge_v2.lean` | :130 | S_K at t_min | By definition | - |
 | `RKHS_contraction_bridge_v2.lean` | :205 | Matrix norm bound | Schur 1911 | 1911 |
 | `Q_Lipschitz_bridge_v2.lean` | :114 | Integration bounds | Calculus | - |
 | `Q_nonneg_bridge_v2.lean` | :49 | RKHS inner product | Aronszajn | 1950 |
@@ -122,10 +123,10 @@ All 13 sorries are in **CLASSICAL ANALYSIS** - known results that don't need pro
 | Geometric Series | 2 | ❌ No | Ancient mathematics |
 | RKHS Theory | 2 | ❌ No | Aronszajn 1950 |
 | Heat Kernel | 2 | ❌ No | 19th century PDE |
-| Elementary Bounds | 2 | ❌ No | Obvious/definitional |
+| Elementary Bounds | 1 | ❌ No | Obvious/definitional |
 | Approximation | 2 | ❌ No | Weierstrass 1885 |
 
-**Conclusion:** All 13 sorries are **classical mathematics** - no novel proofs needed.
+**Conclusion:** All 12 sorries are **classical mathematics** - no novel proofs needed.
 
 ---
 
