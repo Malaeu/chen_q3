@@ -692,5 +692,5 @@ R₂ ~ 2C₂N
     ↓
 π₂ ~ 2C₂N/ln²N
     ↓
-TPC ✅
+TPC (conditional: Q3-1 ⇒ TPC) ✅
 ```
