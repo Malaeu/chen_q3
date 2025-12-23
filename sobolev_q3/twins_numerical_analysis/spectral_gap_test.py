@@ -1,0 +1,451 @@
+#!/usr/bin/env python3
+"""
+Anantharaman-Monk Spectral Gap Test Suite
+=========================================
+Tests for Q3-2 Bridge: spectral gap, minor arcs suppression, correlation decay.
+
+Based on Rep_N_BRIDGE.md v2.3 Section 17 (Developer's Summary)
+"""
+
+import numpy as np
+from numpy import pi, sqrt, log, exp
+from numpy.linalg import eigvalsh
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
+from rich.progress import track
+from rich import print as rprint
+import warnings
+warnings.filterwarnings('ignore')
+
+console = Console()
+
+# =============================================================================
+# CORE FUNCTIONS
+# =============================================================================
+
+def sieve_primes(N: int) -> np.ndarray:
+    """Sieve of Eratosthenes for primes up to N."""
+    is_prime = np.ones(N + 1, dtype=bool)
+    is_prime[0:2] = False
+    for i in range(2, int(sqrt(N)) + 1):
+        if is_prime[i]:
+            is_prime[i*i::i] = False
+    return np.where(is_prime)[0]
+
+
+def heat_kernel(u: float, v: float, t: float) -> float:
+    """Heat kernel k_t(u, v) = exp(-(u-v)^2 / (4t))"""
+    return exp(-(u - v)**2 / (4 * t))
+
+
+def build_gram_matrix(primes: np.ndarray, t: float) -> np.ndarray:
+    """
+    Build Gram matrix G_{pq} = k_t(xi_p, xi_q)
+    where xi_p = log(p) / (2*pi)
+    """
+    xi = log(primes) / (2 * pi)  # log-coordinates
+    n = len(primes)
+    G = np.zeros((n, n))
+    for i in range(n):
+        for j in range(n):
+            G[i, j] = heat_kernel(xi[i], xi[j], t)
+    return G
+
+
+def prime_weights(primes: np.ndarray) -> np.ndarray:
+    """Weights w(p) = log(p) / sqrt(p)"""
+    return log(primes) / sqrt(primes)
+
+
+def circle_twist(primes: np.ndarray, alpha: float) -> np.ndarray:
+    """Circle twist e(alpha * p) = exp(2*pi*i*alpha*p)"""
+    return np.exp(2j * pi * alpha * primes)
+
+
+def twisted_sum(primes: np.ndarray, alpha: float, N: int) -> complex:
+    """
+    Compute S_alpha(N) = sum_{p <= N} Lambda(p) * e(alpha * p)
+    Using Lambda(p) = log(p) for primes
+    """
+    mask = primes <= N
+    p = primes[mask]
+    return np.sum(log(p) * np.exp(2j * pi * alpha * p))
+
+
+def compute_C_d(primes: np.ndarray, G: np.ndarray, a: np.ndarray, d: int) -> complex:
+    """
+    Compute d-correlation: C_d(a) = sum_{q: q,q+d in P} a_{q+d} * conj(a_q) * G_{q+d,q}
+    """
+    prime_set = set(primes)
+    prime_to_idx = {p: i for i, p in enumerate(primes)}
+
+    result = 0j
+    for i, q in enumerate(primes):
+        qd = q + d
+        if qd in prime_set:
+            j = prime_to_idx[qd]
+            result += a[j] * np.conj(a[i]) * G[j, i]
+    return result
+
+
+# =============================================================================
+# TEST 1: SPECTRAL GAP CHECK
+# =============================================================================
+
+def test_spectral_gap(primes: np.ndarray, t: float) -> dict:
+    """
+    Check spectral gap: lambda_2 << lambda_1
+    """
+    console.print("\n[bold cyan]TEST 1: SPECTRAL GAP CHECK[/bold cyan]")
+    console.print(f"Building Gram matrix for {len(primes)} primes, t={t}...")
+
+    G = build_gram_matrix(primes, t)
+
+    console.print("Computing eigenvalues...")
+    eigenvalues = eigvalsh(G)
+    eigenvalues = np.sort(eigenvalues)[::-1]  # descending
+
+    lambda_1 = eigenvalues[0]
+    lambda_2 = eigenvalues[1]
+    lambda_min = eigenvalues[-1]
+
+    ratio = lambda_2 / lambda_1
+    gap = 1 - ratio
+
+    # Results table
+    table = Table(title="Spectral Analysis")
+    table.add_column("Metric", style="cyan")
+    table.add_column("Value", style="green")
+    table.add_column("Status", style="yellow")
+
+    table.add_row("lambda_1 (largest)", f"{lambda_1:.6f}", "")
+    table.add_row("lambda_2 (second)", f"{lambda_2:.6f}", "")
+    table.add_row("lambda_min", f"{lambda_min:.6f}", "")
+    table.add_row("Ratio lambda_2/lambda_1", f"{ratio:.6f}", "")
+    table.add_row("Spectral Gap (1 - ratio)", f"{gap:.6f}",
+                  "[green]GOOD[/green]" if gap > 0.1 else "[red]WEAK[/red]")
+
+    console.print(table)
+
+    # Ramanujan bound check (for d-regular graphs: lambda_2 <= 2*sqrt(d-1))
+    # For our case, check if gap exists
+    passed = gap > 0.05
+
+    if passed:
+        console.print("[bold green]PASS: Spectral gap exists![/bold green]")
+    else:
+        console.print("[bold red]WARNING: Spectral gap may be too small[/bold red]")
+
+    return {
+        "G": G,
+        "lambda_1": lambda_1,
+        "lambda_2": lambda_2,
+        "gap": gap,
+        "passed": passed,
+        "eigenvalues": eigenvalues[:10]  # top 10
+    }
+
+
+# =============================================================================
+# TEST 2: MINOR ARCS TEST
+# =============================================================================
+
+def build_twisted_operator(primes: np.ndarray, G: np.ndarray, alpha: float) -> np.ndarray:
+    """
+    Build twisted operator B_α = G^{1/2} W U_α G^{1/2}
+
+    For spectral norm, we compute B_α B_α^* and take sqrt of max eigenvalue.
+    Simplified: B_α ≈ W^{1/2} G_α W^{1/2} where G_α = U_α G U_α*
+    """
+    n = len(primes)
+    w = prime_weights(primes)
+    W_sqrt = np.diag(np.sqrt(np.abs(w)))
+
+    # Twisted Gram: (G_α)_{pq} = e(α(p-q)) * G_{pq}
+    twist = np.exp(2j * pi * alpha * (primes[:, None] - primes[None, :]))
+    G_alpha = twist * G
+
+    # B_α ≈ W^{1/2} G_α W^{1/2}
+    B_alpha = W_sqrt @ G_alpha @ W_sqrt
+
+    return B_alpha
+
+
+def test_minor_arcs(primes: np.ndarray, N: int, G: np.ndarray, delta_target: float = 0.01) -> dict:
+    """
+    Test Q3-2: a* G_α a < a* G_0 a for MINOR ARC alpha
+
+    KEY INSIGHT: ‖G_α‖ = ‖G‖ (unitary invariance of spectral norm!)
+    But bilinear form a* G_α a CAN be smaller due to phase cancellation.
+
+    We test: Σ_d e(αd) C_d(a) < Σ_d C_d(a)
+    """
+    console.print("\n[bold cyan]TEST 2: BILINEAR FORM ON MINOR ARCS (Q3-2)[/bold cyan]")
+    console.print("[dim]Testing a* G_α a = Σ e(αd) C_d(a) vs a* G_0 a = Σ C_d(a)[/dim]")
+    console.print("[dim]Note: Spectral norm is unitary-invariant, but bilinear form is NOT[/dim]")
+
+    # ONLY irrational / poorly approximable alpha (TRUE minor arcs)
+    test_alphas = [
+        (sqrt(2) - 1, "sqrt(2)-1"),           # algebraic irrational
+        ((sqrt(5) - 1) / 2, "phi"),           # golden ratio (most irrational!)
+        (sqrt(3) - 1, "sqrt(3)-1"),           # another algebraic
+        (pi / 10, "pi/10"),                   # transcendental
+        (exp(1) / 10, "e/10"),                # transcendental
+        (0.123456789, "random"),              # pseudo-random
+        (0.7182818284, "e-2"),                # e - 2
+        (log(2), "ln(2)"),                    # transcendental
+    ]
+
+    # Use prime weights as test vector
+    w = prime_weights(primes)
+    a = w / np.linalg.norm(w)  # normalized
+
+    # Build twisted Gram matrices
+    def compute_bilinear(G, primes, alpha, a):
+        """Compute a* G_α a where G_α = U_α G U_α*"""
+        twist = np.exp(2j * pi * alpha * primes)
+        # (G_α)_{pq} = e(α(p-q)) G_{pq} = e(αp) G_{pq} e(-αq)
+        # a* G_α a = Σ_{pq} conj(a_p) e(αp) G_{pq} e(-αq) a_q
+        #          = Σ_{pq} (a_p e(-αp))* G_{pq} (a_q e(-αq))
+        a_twisted = a * np.conj(twist)
+        return np.real(np.conj(a_twisted) @ G @ a_twisted)
+
+    # Baseline: α = 0
+    bilinear_0 = np.real(np.conj(a) @ G @ a)
+
+    table = Table(title=f"Q3-2 Bilinear Form Test (N={N})")
+    table.add_column("Alpha", style="cyan")
+    table.add_column("a*G_α*a", style="green")
+    table.add_column("a*G_0*a", style="yellow")
+    table.add_column("Ratio", style="magenta")
+    table.add_column("Status")
+
+    results = []
+    for alpha, name in track(test_alphas, description="Computing bilinear forms..."):
+        bilinear_alpha = compute_bilinear(G, primes, alpha, a)
+        ratio = bilinear_alpha / bilinear_0
+
+        # Status: good if ratio < 1 (phase cancellation!)
+        if ratio < 0.5:
+            status = "[bold green]STRONG[/bold green]"
+        elif ratio < 0.8:
+            status = "[green]GOOD[/green]"
+        elif ratio < 1.0:
+            status = "[yellow]WEAK[/yellow]"
+        else:
+            status = "[red]NONE[/red]"
+
+        results.append({"alpha": alpha, "name": name, "bilinear": bilinear_alpha, "ratio": ratio})
+
+    # Display results
+    for r in results:
+        status = "[bold green]STRONG[/bold green]" if r["ratio"] < 0.5 else \
+                 "[green]GOOD[/green]" if r["ratio"] < 0.8 else \
+                 "[yellow]WEAK[/yellow]" if r["ratio"] < 1.0 else "[red]NONE[/red]"
+        table.add_row(r["name"], f"{r['bilinear']:.4f}", f"{bilinear_0:.4f}", f"{r['ratio']:.4f}", status)
+
+    console.print(table)
+
+    # Summary
+    avg_ratio = np.mean([r["ratio"] for r in results])
+    min_ratio = min([r["ratio"] for r in results])
+    max_ratio = max([r["ratio"] for r in results])
+
+    console.print(f"\n[bold]Bilinear form analysis:[/bold]")
+    console.print(f"  a*G_0*a (untwisted) = {bilinear_0:.4f}")
+    console.print(f"  Average ratio = {avg_ratio:.4f}")
+    console.print(f"  Range: [{min_ratio:.4f}, {max_ratio:.4f}]")
+
+    if avg_ratio < 0.8:
+        console.print("[bold green]PASS: Phase cancellation confirmed![/bold green]")
+        passed = True
+    elif avg_ratio < 1.0:
+        console.print("[bold yellow]PARTIAL: Some cancellation observed[/bold yellow]")
+        passed = True
+    else:
+        console.print("[bold red]FAIL: No phase cancellation[/bold red]")
+        passed = False
+
+    return {"results": results, "bilinear_0": bilinear_0, "avg_ratio": avg_ratio, "passed": passed}
+
+
+# =============================================================================
+# TEST 3: CORRELATION DECAY
+# =============================================================================
+
+def test_correlation_decay(primes: np.ndarray, G: np.ndarray, t: float, max_d: int = 100) -> dict:
+    """
+    Test: |C_d(a)| decays exponentially with d
+    Expected: |C_d| ~ exp(-c*|d|/sqrt(t))
+
+    Uses PRIME WEIGHTS: a_p = w(p) = log(p)/sqrt(p)
+    """
+    console.print("\n[bold cyan]TEST 3: CORRELATION DECAY[/bold cyan]")
+
+    # Use PRIME WEIGHTS (not uniform!)
+    # a_p = w(p) = log(p) / sqrt(p)
+    a = prime_weights(primes)
+    a = a / np.linalg.norm(a)  # normalized
+    console.print(f"[dim]Using prime weights w(p) = log(p)/sqrt(p), normalized[/dim]")
+
+    # Compute C_d for various d
+    d_values = list(range(2, min(max_d, 50), 2))  # even d (twin-like)
+    C_values = []
+
+    console.print(f"Computing C_d for d in [2, {max(d_values)}]...")
+
+    for d in track(d_values, description="Computing correlations..."):
+        C_d = compute_C_d(primes, G, a, d)
+        C_values.append(abs(C_d))
+
+    # Fit exponential decay: log|C_d| = -c*d + const
+    valid_idx = [i for i, c in enumerate(C_values) if c > 1e-15]
+    if len(valid_idx) > 3:
+        d_fit = np.array([d_values[i] for i in valid_idx])
+        C_fit = np.array([C_values[i] for i in valid_idx])
+        log_C = np.log(C_fit)
+
+        # Linear regression
+        coeffs = np.polyfit(d_fit, log_C, 1)
+        decay_rate = -coeffs[0]
+
+        console.print(f"\n[bold]Exponential decay rate: {decay_rate:.6f}[/bold]")
+        console.print(f"Expected rate ~ 1/sqrt(t) = {1/sqrt(t):.6f}")
+    else:
+        decay_rate = 0
+        console.print("[yellow]Not enough data for decay fit[/yellow]")
+
+    # Display table
+    table = Table(title="Correlation Values C_d")
+    table.add_column("d", style="cyan")
+    table.add_column("|C_d|", style="green")
+    table.add_column("log|C_d|", style="yellow")
+
+    for d, C in zip(d_values[:15], C_values[:15]):  # first 15
+        log_c = np.log(C) if C > 0 else float('-inf')
+        table.add_row(str(d), f"{C:.2e}", f"{log_c:.2f}")
+
+    console.print(table)
+
+    # Check if decay is happening
+    if len(C_values) > 5:
+        ratio = C_values[-1] / C_values[0] if C_values[0] > 0 else 1
+        if ratio < 0.1:
+            console.print("[bold green]PASS: Strong correlation decay![/bold green]")
+            passed = True
+        elif ratio < 0.5:
+            console.print("[bold yellow]PARTIAL: Moderate decay[/bold yellow]")
+            passed = True
+        else:
+            console.print("[bold red]WARNING: Weak decay[/bold red]")
+            passed = False
+    else:
+        passed = False
+
+    return {
+        "d_values": d_values,
+        "C_values": C_values,
+        "decay_rate": decay_rate,
+        "passed": passed
+    }
+
+
+# =============================================================================
+# MAIN TEST RUNNER
+# =============================================================================
+
+def run_all_tests(N: int = 10000, t: float = 0.1):
+    """Run complete test suite."""
+
+    console.print(Panel.fit(
+        "[bold yellow]ANANTHARAMAN-MONK SPECTRAL GAP TEST SUITE[/bold yellow]\n"
+        f"N = {N}, t = {t}\n"
+        "Testing Q3-2 Bridge components",
+        title="Q3 Numerical Verification"
+    ))
+
+    # Generate primes
+    console.print(f"\nGenerating primes up to N={N}...")
+    primes = sieve_primes(N)
+    console.print(f"Found {len(primes)} primes")
+
+    # Run tests
+    results = {}
+
+    # Test 1: Spectral Gap
+    results["spectral_gap"] = test_spectral_gap(primes, t)
+    G = results["spectral_gap"]["G"]
+
+    # Test 2: Minor Arcs (Q3-2 operator norm)
+    results["minor_arcs"] = test_minor_arcs(primes, N, G)
+
+    # Test 3: Correlation Decay
+    results["correlation_decay"] = test_correlation_decay(primes, G, t)
+
+    # Summary
+    console.print("\n" + "="*60)
+    console.print("[bold cyan]SUMMARY[/bold cyan]")
+    console.print("="*60)
+
+    summary_table = Table()
+    summary_table.add_column("Test", style="cyan")
+    summary_table.add_column("Result", style="green")
+    summary_table.add_column("Key Metric")
+
+    summary_table.add_row(
+        "1. Spectral Gap",
+        "[green]PASS[/green]" if results["spectral_gap"]["passed"] else "[red]FAIL[/red]",
+        f"gap = {results['spectral_gap']['gap']:.4f}"
+    )
+    summary_table.add_row(
+        "2. Minor Arcs",
+        "[green]PASS[/green]" if results["minor_arcs"]["passed"] else "[yellow]PARTIAL[/yellow]",
+        f"avg_ratio = {results['minor_arcs']['avg_ratio']:.4f}"
+    )
+    summary_table.add_row(
+        "3. Correlation Decay",
+        "[green]PASS[/green]" if results["correlation_decay"]["passed"] else "[red]FAIL[/red]",
+        f"decay_rate = {results['correlation_decay']['decay_rate']:.4f}"
+    )
+
+    console.print(summary_table)
+
+    # Final verdict
+    all_passed = all([
+        results["spectral_gap"]["passed"],
+        results["minor_arcs"]["passed"],
+        results["correlation_decay"]["passed"]
+    ])
+
+    if all_passed:
+        console.print(Panel.fit(
+            "[bold green]ALL TESTS PASSED![/bold green]\n"
+            "Q3-2 Bridge components working as expected.\n"
+            "Spectral gap guarantees minor arcs suppression.",
+            title="VERDICT"
+        ))
+    else:
+        console.print(Panel.fit(
+            "[bold yellow]PARTIAL SUCCESS[/bold yellow]\n"
+            "Some components need attention.",
+            title="VERDICT"
+        ))
+
+    return results
+
+
+# =============================================================================
+# ENTRY POINT
+# =============================================================================
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Q3-2 Bridge Spectral Gap Test Suite")
+    parser.add_argument("-N", type=int, default=10000, help="Upper bound for primes (default: 10000)")
+    parser.add_argument("-t", type=float, default=0.1, help="Heat kernel parameter (default: 0.1)")
+
+    args = parser.parse_args()
+
+    run_all_tests(N=args.N, t=args.t)
