@@ -1,6 +1,6 @@
-# Q3 для Twin Primes: Формализация (v3.2)
+# Q3 для Twin Primes: Формализация (v3.3)
 
-## LEAN FORMALIZATION AUDIT (2024-12-23) — NEW!
+## LEAN FORMALIZATION AUDIT (2024-12-23) — UPDATED!
 
 ### ⚠️ ОШИБКА 6: PSD Trivialization в sqrtG!
 
@@ -33,9 +33,27 @@ noncomputable def sqrtG ... :=
 - `k_t` возвращает ℝ, но G : Matrix ... ℂ — нужен cast
 - `vonMangoldt` : ℕ → ℕ, но w(p) должен быть ℝ — нужен cast
 
-### ✅ Исправлено в v2.4
+### ⚠️ ОШИБКА 10: §15.2 target inequality ЛОЖНАЯ!
 
-См. `Q3_2_BRIDGE_v2.4_fixes.md` для полного списка исправлений.
+**Старая формулировка (НЕПРАВИЛЬНО):**
+```
+∀a: Σ_d e(αd) C_d(a) ≤ ρ² Σ_d C_d(a)
+```
+
+**Проблема:** Если a = (1,0,...,0), то C_{d≠0} = 0 и LHS = RHS с ρ = 1!
+
+**Правильная формулировка (Generalized Rayleigh quotient):**
+```
+∀y ≠ 0: y* (W U_α G U_α* W) y ≤ ρ² · y* G^{-1} y
+```
+
+**Почему G^{-1}?** B_α = G^{1/2} W U_α G^{1/2}, поэтому знаменатель должен быть y* G^{-1} y.
+
+**Исправлено:** Rep_N_BRIDGE.md v2.6
+
+### ✅ Исправлено в v2.4 + v2.6
+
+См. `Q3_2_BRIDGE_v2.4_fixes.md` и `Rep_N_BRIDGE.md v2.6` для полного списка исправлений.
 
 ---
 
