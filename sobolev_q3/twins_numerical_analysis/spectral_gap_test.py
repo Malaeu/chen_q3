@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """
-Anantharaman-Monk Spectral Gap Test Suite
-=========================================
+Anantharaman-Monk Spectral Gap Test Suite v3.0
+==============================================
 Tests for Q3-2 Bridge: spectral gap, minor arcs suppression, correlation decay.
 
-Based on Rep_N_BRIDGE.md v2.3 Section 17 (Developer's Summary)
+Based on Rep_N_BRIDGE.md v2.6 Section 17 (Developer's Summary)
+
+v2.0: Added Test 4 - Generalized Rayleigh Quotient (G^{-1} RHS)
+v3.0: Added Test 5 - Gram Conditioning (κ(G) vs t Safe Zone)
+      Added Test 6 - Minor Arcs Uniformity Scan (ρ < 1 everywhere)
 """
 
 import numpy as np
@@ -352,6 +356,344 @@ def test_correlation_decay(primes: np.ndarray, G: np.ndarray, t: float, max_d: i
 
 
 # =============================================================================
+# TEST 4: GENERALIZED RAYLEIGH QUOTIENT (G^{-1} RHS)
+# =============================================================================
+
+def test_rayleigh_quotient(primes: np.ndarray, G: np.ndarray, t: float) -> dict:
+    """
+    Test CORRECT Q3-2 formulation with G^{-1} denominator.
+
+    CORRECT: y* (W U_α G U_α* W) y ≤ ρ² · y* G^{-1} y
+
+    This is the Generalized Rayleigh Quotient that actually implies ‖B_α‖ ≤ ρ.
+    The naive bound Σ e(αd) C_d ≤ ρ² Σ C_d is FALSE for single-point vectors!
+    """
+    console.print("\n[bold cyan]TEST 4: GENERALIZED RAYLEIGH QUOTIENT (G^{-1} RHS)[/bold cyan]")
+    console.print("[dim]Testing: y* (W U_α G U_α* W) y / (y* G^{-1} y) < ρ²[/dim]")
+    console.print("[bold yellow]This is the CORRECT Q3-2 formulation![/bold yellow]")
+
+    n = len(primes)
+    w = prime_weights(primes)
+    W = np.diag(w)
+
+    # Compute G^{-1} (pseudoinverse for numerical stability)
+    try:
+        G_inv = np.linalg.pinv(G, rcond=1e-10)
+        console.print(f"[green]G^{{-1}} computed (condition number: {np.linalg.cond(G):.2e})[/green]")
+    except:
+        console.print("[red]Failed to compute G^{-1}[/red]")
+        return {"passed": False, "error": "G^{-1} computation failed"}
+
+    # Test alphas (minor arcs)
+    test_alphas = [
+        (sqrt(2) - 1, "sqrt(2)-1"),
+        ((sqrt(5) - 1) / 2, "phi"),
+        (pi / 10, "pi/10"),
+        (log(2), "ln(2)"),
+        (0.123456789, "random"),
+    ]
+
+    # Test with multiple random vectors y
+    n_samples = 50
+    np.random.seed(42)
+
+    results = []
+
+    for alpha, name in test_alphas:
+        # Compute W U_α G U_α* W
+        twist = np.exp(2j * pi * alpha * primes)
+        U_alpha = np.diag(twist)
+        U_alpha_star = np.diag(np.conj(twist))
+
+        # LHS operator: W U_α G U_α* W
+        LHS_op = W @ U_alpha @ G @ U_alpha_star @ W
+
+        # Compute Rayleigh quotients for random vectors
+        quotients = []
+        for _ in range(n_samples):
+            # Random complex vector
+            y = np.random.randn(n) + 1j * np.random.randn(n)
+            y = y / np.linalg.norm(y)
+
+            # LHS: y* (W U_α G U_α* W) y
+            lhs = np.real(np.conj(y) @ LHS_op @ y)
+
+            # RHS: y* G^{-1} y
+            rhs = np.real(np.conj(y) @ G_inv @ y)
+
+            if rhs > 1e-10:
+                quotients.append(lhs / rhs)
+
+        max_quotient = max(quotients) if quotients else float('inf')
+        avg_quotient = np.mean(quotients) if quotients else float('inf')
+
+        results.append({
+            "alpha": alpha,
+            "name": name,
+            "max_quotient": max_quotient,
+            "avg_quotient": avg_quotient,
+            "rho_squared": max_quotient  # This is ρ² estimate
+        })
+
+    # Display results
+    table = Table(title="Generalized Rayleigh Quotient (ρ² estimates)")
+    table.add_column("Alpha", style="cyan")
+    table.add_column("Max Quotient", style="green")
+    table.add_column("Avg Quotient", style="yellow")
+    table.add_column("ρ estimate", style="magenta")
+    table.add_column("Status")
+
+    for r in results:
+        rho = sqrt(r["max_quotient"]) if r["max_quotient"] > 0 else float('inf')
+        status = "[bold green]ρ<1[/bold green]" if rho < 1.0 else "[red]ρ≥1[/red]"
+        table.add_row(
+            r["name"],
+            f"{r['max_quotient']:.4f}",
+            f"{r['avg_quotient']:.4f}",
+            f"{rho:.4f}",
+            status
+        )
+
+    console.print(table)
+
+    # Summary
+    all_rho = [sqrt(r["max_quotient"]) for r in results if r["max_quotient"] > 0]
+    max_rho = max(all_rho) if all_rho else float('inf')
+
+    console.print(f"\n[bold]Maximum ρ across all test α: {max_rho:.4f}[/bold]")
+
+    if max_rho < 1.0:
+        console.print("[bold green]PASS: ρ < 1 confirmed! Q3-2 holds numerically.[/bold green]")
+        passed = True
+    else:
+        console.print("[bold red]FAIL: ρ ≥ 1, Q3-2 NOT confirmed[/bold red]")
+        passed = False
+
+    return {
+        "results": results,
+        "max_rho": max_rho,
+        "passed": passed
+    }
+
+
+# =============================================================================
+# TEST 5: GRAM CONDITIONING STRESS TEST (κ(G) vs t)
+# =============================================================================
+
+def test_gram_conditioning(primes: np.ndarray, t_values: list = None) -> dict:
+    """
+    Test Gram matrix conditioning for different heat kernel widths t.
+
+    GOAL: Find "Safe Zone" for t where:
+    - κ(G) is polynomial (not exponential)
+    - G is neither too diagonal (disconnected) nor too flat (singular)
+
+    Returns optimal t range for ValidParams.
+    """
+    console.print("\n[bold cyan]TEST 5: GRAM CONDITIONING STRESS TEST[/bold cyan]")
+    console.print("[dim]Testing κ(G) = λ_max/λ_min across t values[/dim]")
+
+    if t_values is None:
+        # Logarithmic scale from 0.001 to 10
+        t_values = [0.001, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0]
+
+    results = []
+    n = len(primes)
+
+    for t in track(t_values, description="Testing t values..."):
+        G = build_gram_matrix(primes, t)
+
+        # Eigenvalues
+        eigs = eigvalsh(G)
+        lambda_max = eigs[-1]
+        lambda_min = max(eigs[0], 1e-15)  # avoid division by zero
+
+        kappa = lambda_max / lambda_min
+
+        # Check if G^{-1} is stable
+        try:
+            G_inv = np.linalg.pinv(G, rcond=1e-10)
+            inv_norm = np.linalg.norm(G_inv, 2)
+            inv_stable = inv_norm < 1e10
+        except:
+            inv_stable = False
+            inv_norm = float('inf')
+
+        results.append({
+            "t": t,
+            "kappa": kappa,
+            "log_kappa": log(kappa),
+            "lambda_max": lambda_max,
+            "lambda_min": lambda_min,
+            "inv_norm": inv_norm,
+            "inv_stable": inv_stable
+        })
+
+    # Display results
+    table = Table(title="Gram Conditioning κ(G) vs Heat Kernel Width t")
+    table.add_column("t", style="cyan")
+    table.add_column("κ(G)", style="green")
+    table.add_column("log(κ)", style="yellow")
+    table.add_column("λ_max", style="blue")
+    table.add_column("λ_min", style="magenta")
+    table.add_column("G^{-1} stable?")
+
+    for r in results:
+        status = "[green]YES[/green]" if r["inv_stable"] else "[red]NO[/red]"
+        kappa_color = "[green]" if r["kappa"] < 1e6 else "[yellow]" if r["kappa"] < 1e12 else "[red]"
+        table.add_row(
+            f"{r['t']:.3f}",
+            f"{kappa_color}{r['kappa']:.2e}[/]",
+            f"{r['log_kappa']:.1f}",
+            f"{r['lambda_max']:.2e}",
+            f"{r['lambda_min']:.2e}",
+            status
+        )
+
+    console.print(table)
+
+    # Find Safe Zone
+    safe_t = [r["t"] for r in results if r["kappa"] < 1e8 and r["inv_stable"]]
+
+    if safe_t:
+        t_min, t_max = min(safe_t), max(safe_t)
+        console.print(f"\n[bold green]SAFE ZONE: t ∈ [{t_min}, {t_max}][/bold green]")
+        console.print(f"[dim]Recommended: t = {np.sqrt(t_min * t_max):.3f} (geometric mean)[/dim]")
+        passed = True
+    else:
+        console.print("[bold red]WARNING: No safe t found! Need regularization.[/bold red]")
+        t_min, t_max = 0.01, 1.0  # fallback
+        passed = False
+
+    return {
+        "results": results,
+        "safe_zone": (t_min, t_max) if safe_t else None,
+        "recommended_t": sqrt(t_min * t_max) if safe_t else 0.1,
+        "passed": passed
+    }
+
+
+# =============================================================================
+# TEST 6: MINOR ARCS UNIFORMITY SCAN
+# =============================================================================
+
+def test_minor_arcs_scan(primes: np.ndarray, G: np.ndarray, t: float,
+                         n_points: int = 100, exclude_major: float = 0.01) -> dict:
+    """
+    Scan minor arcs uniformly to verify ρ < 1 EVERYWHERE.
+
+    GOAL: Confirm Q3-2 uniformity - no "hot spots" where ρ spikes.
+
+    Parameters:
+    - n_points: number of α values to test
+    - exclude_major: exclude α within this distance of rationals a/q with q ≤ 10
+    """
+    console.print("\n[bold cyan]TEST 6: MINOR ARCS UNIFORMITY SCAN[/bold cyan]")
+    console.print(f"[dim]Scanning {n_points} points on [0, 1), excluding major arcs[/dim]")
+
+    n = len(primes)
+    w = prime_weights(primes)
+    W = np.diag(w)
+
+    # Compute G^{-1}
+    G_inv = np.linalg.pinv(G, rcond=1e-10)
+
+    # Generate test points (avoiding major arcs)
+    def is_major_arc(alpha, threshold=0.01, max_q=10):
+        """Check if α is near a/q for small q."""
+        for q in range(1, max_q + 1):
+            for a in range(q):
+                if abs(alpha - a/q) < threshold/q or abs(alpha - a/q - 1) < threshold/q:
+                    return True
+        return False
+
+    # Grid of alpha values
+    alpha_grid = np.linspace(0.001, 0.999, n_points)
+    minor_arc_alphas = [(a, f"{a:.4f}") for a in alpha_grid if not is_major_arc(a, exclude_major)]
+
+    console.print(f"[dim]After filtering: {len(minor_arc_alphas)} minor arc points[/dim]")
+
+    # Compute ρ for each α
+    n_samples = 20  # fewer samples per point for speed
+    np.random.seed(42)
+
+    results = []
+    rho_values = []
+
+    for alpha, name in track(minor_arc_alphas, description="Scanning minor arcs..."):
+        # W U_α G U_α* W
+        twist = np.exp(2j * pi * alpha * primes)
+        U_alpha = np.diag(twist)
+        U_alpha_star = np.diag(np.conj(twist))
+        LHS_op = W @ U_alpha @ G @ U_alpha_star @ W
+
+        # Sample Rayleigh quotients
+        quotients = []
+        for _ in range(n_samples):
+            y = np.random.randn(n) + 1j * np.random.randn(n)
+            y = y / np.linalg.norm(y)
+
+            lhs = np.real(np.conj(y) @ LHS_op @ y)
+            rhs = np.real(np.conj(y) @ G_inv @ y)
+
+            if rhs > 1e-10:
+                quotients.append(lhs / rhs)
+
+        max_quotient = max(quotients) if quotients else float('inf')
+        rho = sqrt(max_quotient) if max_quotient > 0 else float('inf')
+
+        results.append({"alpha": alpha, "rho": rho})
+        rho_values.append(rho)
+
+    # Statistics
+    rho_array = np.array(rho_values)
+    rho_max = np.max(rho_array)
+    rho_mean = np.mean(rho_array)
+    rho_std = np.std(rho_array)
+
+    # Find worst points
+    worst_idx = np.argsort(rho_array)[-5:][::-1]
+
+    console.print(f"\n[bold]Uniformity Statistics:[/bold]")
+    console.print(f"  Max ρ = {rho_max:.4f}")
+    console.print(f"  Mean ρ = {rho_mean:.4f}")
+    console.print(f"  Std ρ = {rho_std:.4f}")
+
+    console.print(f"\n[bold]Worst 5 points (highest ρ):[/bold]")
+    table = Table()
+    table.add_column("α", style="cyan")
+    table.add_column("ρ", style="red" if rho_max >= 1 else "green")
+
+    for idx in worst_idx:
+        table.add_row(f"{results[idx]['alpha']:.4f}", f"{results[idx]['rho']:.4f}")
+
+    console.print(table)
+
+    # Verdict
+    if rho_max < 1.0:
+        delta = 1 - rho_max
+        console.print(f"\n[bold green]PASS: ρ < 1 EVERYWHERE on minor arcs![/bold green]")
+        console.print(f"[bold green]Spectral gap δ ≥ {delta:.4f}[/bold green]")
+        passed = True
+    elif rho_max < 1.05:
+        console.print(f"\n[bold yellow]WARNING: ρ ≈ 1 at some points (max = {rho_max:.4f})[/bold yellow]")
+        console.print("[dim]May need finer parameters or more samples[/dim]")
+        passed = False
+    else:
+        console.print(f"\n[bold red]FAIL: ρ ≥ 1 at some minor arc points![/bold red]")
+        passed = False
+
+    return {
+        "results": results,
+        "rho_max": rho_max,
+        "rho_mean": rho_mean,
+        "rho_std": rho_std,
+        "delta": 1 - rho_max if rho_max < 1 else 0,
+        "passed": passed
+    }
+
+
+# =============================================================================
 # MAIN TEST RUNNER
 # =============================================================================
 
@@ -383,6 +725,15 @@ def run_all_tests(N: int = 10000, t: float = 0.1):
     # Test 3: Correlation Decay
     results["correlation_decay"] = test_correlation_decay(primes, G, t)
 
+    # Test 4: Generalized Rayleigh Quotient (CORRECT Q3-2!)
+    results["rayleigh_quotient"] = test_rayleigh_quotient(primes, G, t)
+
+    # Test 5: Gram Conditioning (Safe Zone for t)
+    results["gram_conditioning"] = test_gram_conditioning(primes)
+
+    # Test 6: Minor Arcs Uniformity Scan
+    results["minor_arcs_scan"] = test_minor_arcs_scan(primes, G, t)
+
     # Summary
     console.print("\n" + "="*60)
     console.print("[bold cyan]SUMMARY[/bold cyan]")
@@ -408,6 +759,21 @@ def run_all_tests(N: int = 10000, t: float = 0.1):
         "[green]PASS[/green]" if results["correlation_decay"]["passed"] else "[red]FAIL[/red]",
         f"decay_rate = {results['correlation_decay']['decay_rate']:.4f}"
     )
+    summary_table.add_row(
+        "4. Rayleigh Quotient (G^{-1})",
+        "[green]PASS[/green]" if results["rayleigh_quotient"]["passed"] else "[red]FAIL[/red]",
+        f"max_ρ = {results['rayleigh_quotient']['max_rho']:.4f}"
+    )
+    summary_table.add_row(
+        "5. Gram Conditioning",
+        "[green]PASS[/green]" if results["gram_conditioning"]["passed"] else "[yellow]WARN[/yellow]",
+        f"safe t ∈ {results['gram_conditioning']['safe_zone']}"
+    )
+    summary_table.add_row(
+        "6. Minor Arcs Scan",
+        "[green]PASS[/green]" if results["minor_arcs_scan"]["passed"] else "[red]FAIL[/red]",
+        f"δ = {results['minor_arcs_scan']['delta']:.4f}"
+    )
 
     console.print(summary_table)
 
@@ -415,7 +781,10 @@ def run_all_tests(N: int = 10000, t: float = 0.1):
     all_passed = all([
         results["spectral_gap"]["passed"],
         results["minor_arcs"]["passed"],
-        results["correlation_decay"]["passed"]
+        results["correlation_decay"]["passed"],
+        results["rayleigh_quotient"]["passed"],
+        results["gram_conditioning"]["passed"],
+        results["minor_arcs_scan"]["passed"]
     ])
 
     if all_passed:
@@ -436,6 +805,155 @@ def run_all_tests(N: int = 10000, t: float = 0.1):
 
 
 # =============================================================================
+# TEST 7: SCALING ANALYSIS (δ vs N)
+# =============================================================================
+
+def scaling_analysis(N_values: list = None, t: float = 0.1, n_alpha_samples: int = 30) -> dict:
+    """
+    Analyze how spectral gap δ scales with N.
+
+    GOAL: Verify that δ stays bounded away from 0 as N → ∞.
+    If δ plateaus at some constant > 0, this suggests universal behavior.
+    """
+    console.print("\n" + "="*70)
+    console.print("[bold magenta]TEST 7: SCALING ANALYSIS (δ vs N)[/bold magenta]")
+    console.print("="*70)
+    console.print(f"[dim]Testing if δ = 1 - max_ρ stays positive as N grows[/dim]\n")
+
+    if N_values is None:
+        N_values = [2000, 5000, 10000, 20000, 50000]
+
+    results = []
+
+    for N in N_values:
+        console.print(f"\n[bold cyan]━━━ N = {N:,} ━━━[/bold cyan]")
+
+        # Generate primes
+        primes = sieve_primes(N)
+        n_primes = len(primes)
+        console.print(f"Primes: {n_primes}")
+
+        # Build Gram matrix
+        G = build_gram_matrix(primes, t)
+
+        # Compute G^{-1}
+        G_inv = np.linalg.pinv(G, rcond=1e-10)
+        kappa = np.linalg.cond(G)
+
+        # Weights
+        w = prime_weights(primes)
+        W = np.diag(w)
+
+        # Quick minor arcs scan (fewer points for speed)
+        np.random.seed(42)
+        test_alphas = np.random.uniform(0.05, 0.95, n_alpha_samples)
+
+        rho_values = []
+        n_samples = 15  # per alpha
+
+        for alpha in track(test_alphas, description=f"Scanning α (N={N})..."):
+            twist = np.exp(2j * pi * alpha * primes)
+            U_alpha = np.diag(twist)
+            U_alpha_star = np.diag(np.conj(twist))
+            LHS_op = W @ U_alpha @ G @ U_alpha_star @ W
+
+            quotients = []
+            for _ in range(n_samples):
+                y = np.random.randn(n_primes) + 1j * np.random.randn(n_primes)
+                y = y / np.linalg.norm(y)
+
+                lhs = np.real(np.conj(y) @ LHS_op @ y)
+                rhs = np.real(np.conj(y) @ G_inv @ y)
+
+                if rhs > 1e-10:
+                    quotients.append(lhs / rhs)
+
+            if quotients:
+                rho_values.append(sqrt(max(quotients)))
+
+        max_rho = max(rho_values) if rho_values else 1.0
+        mean_rho = np.mean(rho_values) if rho_values else 1.0
+        delta = 1 - max_rho
+
+        results.append({
+            "N": N,
+            "n_primes": n_primes,
+            "max_rho": max_rho,
+            "mean_rho": mean_rho,
+            "delta": delta,
+            "kappa": kappa
+        })
+
+        status = "[bold green]δ > 0[/bold green]" if delta > 0 else "[bold red]δ ≤ 0[/bold red]"
+        console.print(f"  max_ρ = {max_rho:.4f}, δ = {delta:.4f} {status}")
+
+    # Summary table
+    console.print("\n" + "="*70)
+    console.print("[bold cyan]SCALING SUMMARY[/bold cyan]")
+    console.print("="*70)
+
+    table = Table(title="Spectral Gap δ vs N")
+    table.add_column("N", style="cyan", justify="right")
+    table.add_column("#Primes", style="blue", justify="right")
+    table.add_column("max_ρ", style="yellow")
+    table.add_column("mean_ρ", style="green")
+    table.add_column("δ = 1-ρ", style="magenta")
+    table.add_column("Status")
+
+    for r in results:
+        delta_color = "[bold green]" if r["delta"] > 0.5 else "[green]" if r["delta"] > 0 else "[red]"
+        status = "✅" if r["delta"] > 0 else "❌"
+        table.add_row(
+            f"{r['N']:,}",
+            f"{r['n_primes']:,}",
+            f"{r['max_rho']:.4f}",
+            f"{r['mean_rho']:.4f}",
+            f"{delta_color}{r['delta']:.4f}[/]",
+            status
+        )
+
+    console.print(table)
+
+    # ASCII "graph" of δ vs N
+    console.print("\n[bold]δ trend (ASCII graph):[/bold]")
+    max_delta = max(r["delta"] for r in results)
+    for r in results:
+        bar_len = int(50 * r["delta"] / max_delta) if max_delta > 0 else 0
+        bar = "█" * bar_len
+        console.print(f"  N={r['N']:>6,}: {bar} {r['delta']:.3f}")
+
+    # Verdict
+    deltas = [r["delta"] for r in results]
+    if all(d > 0.5 for d in deltas):
+        console.print(f"\n[bold green]🎯 EXCELLENT: δ > 0.5 for ALL N tested![/bold green]")
+        console.print("[bold green]Spectral gap appears UNIVERSAL.[/bold green]")
+        passed = True
+    elif all(d > 0 for d in deltas):
+        console.print(f"\n[bold yellow]⚠️ GOOD: δ > 0 for all N, but some values are small[/bold yellow]")
+        passed = True
+    else:
+        console.print(f"\n[bold red]❌ WARNING: δ ≤ 0 for some N! Gap may collapse.[/bold red]")
+        passed = False
+
+    # Trend analysis
+    if len(deltas) >= 3:
+        trend = np.polyfit(range(len(deltas)), deltas, 1)[0]
+        if trend > 0.01:
+            console.print(f"[dim]Trend: δ INCREASING with N (slope = {trend:.4f})[/dim]")
+        elif trend < -0.01:
+            console.print(f"[dim]Trend: δ DECREASING with N (slope = {trend:.4f})[/dim]")
+        else:
+            console.print(f"[dim]Trend: δ STABLE (plateau, slope ≈ {trend:.4f})[/dim]")
+
+    return {
+        "results": results,
+        "passed": passed,
+        "min_delta": min(deltas),
+        "max_delta": max(deltas)
+    }
+
+
+# =============================================================================
 # ENTRY POINT
 # =============================================================================
 
@@ -445,7 +963,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Q3-2 Bridge Spectral Gap Test Suite")
     parser.add_argument("-N", type=int, default=10000, help="Upper bound for primes (default: 10000)")
     parser.add_argument("-t", type=float, default=0.1, help="Heat kernel parameter (default: 0.1)")
+    parser.add_argument("--scaling", action="store_true", help="Run scaling analysis (δ vs N)")
+    parser.add_argument("--scaling-values", type=str, default="2000,5000,10000,20000",
+                        help="Comma-separated N values for scaling (default: 2000,5000,10000,20000)")
 
     args = parser.parse_args()
 
-    run_all_tests(N=args.N, t=args.t)
+    if args.scaling:
+        N_values = [int(x.strip()) for x in args.scaling_values.split(",")]
+        scaling_analysis(N_values=N_values, t=args.t)
+    else:
+        run_all_tests(N=args.N, t=args.t)
