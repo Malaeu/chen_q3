@@ -1,6 +1,7 @@
-# Rep(N) — Representation Axiom / Lemma-Bridge (v2.5)
+# Rep(N) — Representation Axiom / Lemma-Bridge (v2.6)
 
 ## CHANGELOG
+- v2.6: CRITICAL FIX §15.2 - Generalized Rayleigh quotient (G^{-1} RHS) instead of false naive bound
 - v2.5: Added GRAM CONDITIONING LEMMA (§19) - λ_min > 0 guarantee
 - v2.4: Added NUMERICAL VERIFICATION RESULTS (§18) - 99.9% phase suppression confirmed!
 - v2.3: Added DEVELOPER'S SUMMARY: Anantharaman-Monk Spectral Gap (§17) - GPT 5.2 Pro
@@ -427,11 +428,20 @@ $$\|B_\alpha\|_2^2 = \lambda_{max}(B_\alpha B_\alpha^*) = \sup_{\|x\|=1} \langle
 Write a := W G^{1/2} x. Then:
 $$\langle B_\alpha B_\alpha^* x, x \rangle = a^* (U_\alpha G U_\alpha^*) a = \sum_{d \in \mathbb{Z}} e(\alpha d) C_d(a)$$
 
-### 15.2 THE TARGET INEQUALITY
+### 15.2 THE TARGET INEQUALITY (CORRECTED)
 
-$$\boxed{\forall \alpha \in \mathfrak{m}(N;Q), \forall a: \quad \sum_d e(\alpha d) C_d(a) \le \rho^2 \sum_d C_d(a)}$$
+**⚠️ WARNING:** The naive formulation `Σ_d e(αd) C_d(a) ≤ ρ² Σ_d C_d(a)` is FALSE for single-point a!
+If a = (1,0,...,0), then C_{d≠0} = 0 and LHS = RHS with ρ = 1.
 
-**Meaning:** "Phase twist makes the sum strictly smaller than α=0 case."
+**CORRECT FORMULATION (Generalized Rayleigh quotient):**
+
+$$\boxed{\forall \alpha \in \mathfrak{m}(N;Q), \forall y \neq 0: \quad y^* (W U_\alpha G U_\alpha^* W) y \le \rho^2 \cdot y^* G^{-1} y}$$
+
+**Why G^{-1}?** The balanced matrix B_α = G^{1/2} W U_α G^{1/2}, so:
+- ‖B_α‖² = sup_{‖x‖=1} x* B_α B_α* x
+- Setting y = G^{1/2} x gives denominator y* G^{-1} y = x* x = 1
+
+**Meaning:** "Operator contraction in the CORRECT metric (not just energy comparison)."
 
 ### 15.3 Two-step proof strategy
 
