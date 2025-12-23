@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔬 Prime Phase Explorer v2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            color: #c9d1d9;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .canvas-container {
+            flex: 1;
+            min-width: 600px;
+            background: #0d1117;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        #canvas {
+            width: 100%;
+            border-radius: 8px;
+            background: #010409;
+        }
+
+        .controls {
+            width: 340px;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            color: #58a6ff;
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+        }
+
+        h2 {
+            font-size: 0.95em;
+            margin: 20px 0 10px;
+            color: #8b949e;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 5px;
+        }
+
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #8b949e;
+            font-size: 0.85em;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #30363d;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #58a6ff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: #21262d;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.8em;
+            user-select: none;
+            border: 2px solid transparent;
+        }
+
+        .checkbox-item:hover {
+            background: #30363d;
+        }
+
+        .checkbox-item.active {
+            background: #238636;
+            border-color: #3fb950;
+            box-shadow: 0 0 10px rgba(35, 134, 54, 0.5);
+        }
+
+        .color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(35, 134, 54, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(35, 134, 54, 0.6);
+        }
+
+        .btn-secondary {
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #da3633 0%, #f85149 100%);
+            color: white;
+        }
+
+        .stats {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 0.8em;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-value {
+            color: #58a6ff;
+            font-weight: bold;
+        }
+
+        .value-display {
+            display: inline-block;
+            min-width: 70px;
+            text-align: right;
+            color: #58a6ff;
+            font-weight: bold;
+        }
+
+        .preset-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+        }
+
+        .preset-btn {
+            padding: 6px 4px;
+            font-size: 0.75em;
+            margin-top: 0;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8em;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #30363d, transparent);
+            margin: 15px 0;
+        }
+
+        .alpha-input-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .alpha-input-row input[type="number"] {
+            width: 80px;
+            padding: 6px 8px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            background: #0d1117;
+            color: #58a6ff;
+            font-family: inherit;
+            font-size: 0.9em;
+        }
+
+        .alpha-input-row input[type="range"] {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="canvas-container">
+            <h1>🔬 Prime Phase Explorer v2</h1>
+            <canvas id="canvas" width="800" height="800"></canvas>
+            <div class="legend" id="legend"></div>
+        </div>
+
+        <div class="controls">
+            <h2>📊 Data Sets (click to toggle)</h2>
+            <div class="checkbox-group" id="datasets">
+                <div class="checkbox-item active" data-set="primes">
+                    <span class="color-dot" style="background: #39d353"></span>
+                    All Primes
+                </div>
+                <div class="checkbox-item active" data-set="twins">
+                    <span class="color-dot" style="background: #f85149"></span>
+                    Twins
+                </div>
+                <div class="checkbox-item" data-set="sophie">
+                    <span class="color-dot" style="background: #a371f7"></span>
+                    Sophie Germain
+                </div>
+                <div class="checkbox-item" data-set="cousin">
+                    <span class="color-dot" style="background: #f0883e"></span>
+                    Cousin (p,p+4)
+                </div>
+                <div class="checkbox-item" data-set="sexy">
+                    <span class="color-dot" style="background: #ff6eb4"></span>
+                    Sexy (p,p+6)
+                </div>
+                <div class="checkbox-item" data-set="goldbach">
+                    <span class="color-dot" style="background: #ffd700"></span>
+                    Goldbach
+                </div>
+                <div class="checkbox-item" data-set="mersenne">
+                    <span class="color-dot" style="background: #00ffff"></span>
+                    Mersenne exp
+                </div>
+                <div class="checkbox-item" data-set="fermat">
+                    <span class="color-dot" style="background: #ff00ff"></span>
+                    Fermat
+                </div>
+            </div>
+
+            <h2>🎛️ Parameters</h2>
+            <div class="control-group">
+                <label>α (frequency):</label>
+                <div class="alpha-input-row">
+                    <input type="number" id="alpha-num" min="0.001" max="10" step="0.001" value="0.02">
+                    <input type="range" id="alpha" min="0.001" max="1" step="0.001" value="0.02">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Limit: <span class="value-display" id="limit-val">5000</span></label>
+                <input type="range" id="limit" min="100" max="50000" step="100" value="5000">
+            </div>
+
+            <div class="control-group">
+                <label>Animation Speed: <span class="value-display" id="speed-val">50</span></label>
+                <input type="range" id="speed" min="1" max="200" step="1" value="50">
+            </div>
+
+            <h2>⚡ Presets</h2>
+            <div class="preset-buttons">
+                <button class="btn-secondary preset-btn" data-alpha="0.02">Major 0.02</button>
+                <button class="btn-secondary preset-btn" data-alpha="0.05">α=0.05</button>
+                <button class="btn-secondary preset-btn" data-alpha="0.1">α=0.1</button>
+                <button class="btn-secondary preset-btn" data-alpha="0.1666667">1/6</button>
+                <button class="btn-secondary preset-btn" data-alpha="0.5">1/2</button>
+                <button class="btn-secondary preset-btn" data-alpha="0.333333">1/3</button>
+                <button class="btn-secondary preset-btn" data-alpha="1.41421356">√2</button>
+                <button class="btn-secondary preset-btn" data-alpha="3.14159265">π</button>
+                <button class="btn-secondary preset-btn" data-alpha="2.71828183">e</button>
+                <button class="btn-secondary preset-btn" data-alpha="1.61803399">φ (golden)</button>
+                <button class="btn-secondary preset-btn" data-alpha="0.693147">ln(2)</button>
+                <button class="btn-secondary preset-btn" data-alpha="0.577216">γ Euler</button>
+            </div>
+
+            <h2>🎨 Visual Options</h2>
+            <div class="checkbox-group">
+                <div class="checkbox-item active" data-option="grid">Grid</div>
+                <div class="checkbox-item active" data-option="glow">Glow</div>
+                <div class="checkbox-item active" data-option="trail">Trail</div>
+                <div class="checkbox-item" data-option="dots">Dots</div>
+                <div class="checkbox-item" data-option="axes">Axes</div>
+                <div class="checkbox-item" data-option="fixedScale">Fixed Scale</div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <button class="btn-primary" id="animate">▶️ Animate</button>
+            <button class="btn-secondary" id="draw">📊 Draw Instant</button>
+            <button class="btn-danger" id="clear">🗑️ Clear</button>
+
+            <div class="stats" id="stats">
+                <div class="stat-row">
+                    <span>All Primes:</span>
+                    <span class="stat-value" id="stat-primes">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Twins:</span>
+                    <span class="stat-value" id="stat-twins">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Sophie Germain:</span>
+                    <span class="stat-value" id="stat-sophie">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Goldbach primes:</span>
+                    <span class="stat-value" id="stat-goldbach">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Max Distance:</span>
+                    <span class="stat-value" id="stat-distance">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>|S|/√N (normalized):</span>
+                    <span class="stat-value" id="stat-normalized">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Current α:</span>
+                    <span class="stat-value" id="stat-alpha">0.02</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === PRIME GENERATION ===
+        function sieve(n) {
+            const primes = [];
+            const isPrime = new Array(n + 1).fill(true);
+            isPrime[0] = isPrime[1] = false;
+            for (let p = 2; p <= n; p++) {
+                if (isPrime[p]) {
+                    primes.push(p);
+                    for (let i = p * p; i <= n; i += p) {
+                        isPrime[i] = false;
+                    }
+                }
+            }
+            return { primes, isPrime };
+        }
+
+        function getTwinPrimes(primes, isPrime) {
+            const twins = new Set();
+            for (const p of primes) {
+                if (p + 2 <= isPrime.length - 1 && isPrime[p + 2]) {
+                    twins.add(p);
+                    twins.add(p + 2);
+                }
+            }
+            return [...twins].sort((a, b) => a - b);
+        }
+
+        function getSophieGermain(primes, isPrime) {
+            return primes.filter(p => {
+                const q = 2 * p + 1;
+                return q < isPrime.length && isPrime[q];
+            });
+        }
+
+        function getCousinPrimes(primes, isPrime) {
+            const cousins = new Set();
+            for (const p of primes) {
+                if (p + 4 < isPrime.length && isPrime[p + 4]) {
+                    cousins.add(p);
+                    cousins.add(p + 4);
+                }
+            }
+            return [...cousins].sort((a, b) => a - b);
+        }
+
+        function getSexyPrimes(primes, isPrime) {
+            const sexy = new Set();
+            for (const p of primes) {
+                if (p + 6 < isPrime.length && isPrime[p + 6]) {
+                    sexy.add(p);
+                    sexy.add(p + 6);
+                }
+            }
+            return [...sexy].sort((a, b) => a - b);
+        }
+
+        // Goldbach: primes p such that for some even n, both p and n-p are prime
+        function getGoldbachPrimes(primes, isPrime, limit) {
+            const goldbach = new Set();
+            // For even numbers 4 to limit, find prime pairs
+            for (let n = 4; n <= Math.min(limit, 10000); n += 2) {
+                for (const p of primes) {
+                    if (p > n / 2) break;
+                    const q = n - p;
+                    if (q > 0 && q < isPrime.length && isPrime[q]) {
+                        goldbach.add(p);
+                        goldbach.add(q);
+                    }
+                }
+            }
+            return [...goldbach].sort((a, b) => a - b);
+        }
+
+        // Mersenne exponents: primes p where 2^p - 1 might be prime (just the exponents)
+        function getMersenneExponents(primes) {
+            // Known Mersenne exponents up to reasonable range
+            const known = [2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607];
+            return primes.filter(p => known.includes(p) || p <= 31);
+        }
+
+        // Fermat primes: primes of form 2^(2^n) + 1
+        function getFermatPrimes(primes) {
+            // Only 5 known: 3, 5, 17, 257, 65537
+            const fermat = [3, 5, 17, 257, 65537];
+            return primes.filter(p => fermat.includes(p));
+        }
+
+        // === PHASE WALK ===
+        function computePhaseWalk(numbers, alpha) {
+            const path = [{x: 0, y: 0}];
+            let x = 0, y = 0;
+            for (const n of numbers) {
+                x += Math.cos(2 * Math.PI * n * alpha);
+                y += Math.sin(2 * Math.PI * n * alpha);
+                path.push({x, y});
+            }
+            return path;
+        }
+
+        // === CANVAS DRAWING ===
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const datasets = {
+            primes:   { color: '#39d353', name: 'All Primes', data: [], path: [] },
+            twins:    { color: '#f85149', name: 'Twin Primes', data: [], path: [] },
+            sophie:   { color: '#a371f7', name: 'Sophie Germain', data: [], path: [] },
+            cousin:   { color: '#f0883e', name: 'Cousin Primes', data: [], path: [] },
+            sexy:     { color: '#ff6eb4', name: 'Sexy Primes', data: [], path: [] },
+            goldbach: { color: '#ffd700', name: 'Goldbach Primes', data: [], path: [] },
+            mersenne: { color: '#00ffff', name: 'Mersenne Exp', data: [], path: [] },
+            fermat:   { color: '#ff00ff', name: 'Fermat Primes', data: [], path: [] }
+        };
+
+        let options = {
+            grid: true,
+            glow: true,
+            trail: true,
+            dots: false,
+            axes: false,
+            fixedScale: false
+        };
+
+        let fixedBoundsCache = null;
+
+        let animationId = null;
+        let isAnimating = false;
+
+        function getAlpha() {
+            return parseFloat(document.getElementById('alpha-num').value) || 0.02;
+        }
+
+        function generateData() {
+            const limit = parseInt(document.getElementById('limit').value);
+            const alpha = getAlpha();
+
+            const { primes, isPrime } = sieve(limit);
+
+            datasets.primes.data = primes;
+            datasets.twins.data = getTwinPrimes(primes, isPrime);
+            datasets.sophie.data = getSophieGermain(primes, isPrime);
+            datasets.cousin.data = getCousinPrimes(primes, isPrime);
+            datasets.sexy.data = getSexyPrimes(primes, isPrime);
+            datasets.goldbach.data = getGoldbachPrimes(primes, isPrime, limit);
+            datasets.mersenne.data = getMersenneExponents(primes);
+            datasets.fermat.data = getFermatPrimes(primes);
+
+            // Compute paths
+            for (const key in datasets) {
+                datasets[key].path = computePhaseWalk(datasets[key].data, alpha);
+            }
+
+            // Update stats
+            document.getElementById('stat-primes').textContent = datasets.primes.data.length;
+            document.getElementById('stat-twins').textContent = datasets.twins.data.length;
+            document.getElementById('stat-sophie').textContent = datasets.sophie.data.length;
+            document.getElementById('stat-goldbach').textContent = datasets.goldbach.data.length;
+            document.getElementById('stat-alpha').textContent = alpha.toFixed(6);
+
+            // Find max distance
+            let maxDist = 0;
+            const activeSets = getActiveSets();
+            for (const key of activeSets) {
+                for (const p of datasets[key].path) {
+                    const d = Math.sqrt(p.x * p.x + p.y * p.y);
+                    if (d > maxDist) maxDist = d;
+                }
+            }
+            document.getElementById('stat-distance').textContent = maxDist.toFixed(2);
+
+            // Normalized metric: |S|/√N — this should be ~constant for random walk
+            // For major arc: grows as √N (normalized stays constant or grows)
+            // For minor arc: should stay bounded (normalized shrinks as 1/√N)
+            const N = primes.length;
+            const normalized = N > 0 ? maxDist / Math.sqrt(N) : 0;
+            document.getElementById('stat-normalized').textContent = normalized.toFixed(3);
+        }
+
+        function getActiveSets() {
+            const active = [];
+            document.querySelectorAll('#datasets .checkbox-item').forEach(el => {
+                if (el.classList.contains('active')) {
+                    active.push(el.dataset.set);
+                }
+            });
+            return active;
+        }
+
+        function getBounds(activeSets) {
+            // Fixed scale mode: use cached bounds or compute once based on primes at α=0.02
+            if (options.fixedScale && fixedBoundsCache) {
+                return fixedBoundsCache;
+            }
+
+            let minX = 0, maxX = 0;
+            let minY = 0, maxY = 0;
+
+            for (const key of activeSets) {
+                for (const p of datasets[key].path) {
+                    minX = Math.min(minX, p.x);
+                    maxX = Math.max(maxX, p.x);
+                    minY = Math.min(minY, p.y);
+                    maxY = Math.max(maxY, p.y);
+                }
+            }
+
+            // Ensure some bounds even if empty
+            if (maxX === minX) { minX = -10; maxX = 10; }
+            if (maxY === minY) { minY = -10; maxY = 10; }
+
+            // Add padding
+            const padX = (maxX - minX) * 0.1;
+            const padY = (maxY - minY) * 0.1;
+
+            const bounds = {
+                minX: minX - padX,
+                maxX: maxX + padX,
+                minY: minY - padY,
+                maxY: maxY + padY
+            };
+
+            // Cache bounds if fixed scale is on
+            if (options.fixedScale && !fixedBoundsCache) {
+                fixedBoundsCache = bounds;
+            }
+
+            return bounds;
+        }
+
+        function scalePoint(p, bounds) {
+            const padding = 50;
+            const w = canvas.width - 2 * padding;
+            const h = canvas.height - 2 * padding;
+
+            return {
+                x: padding + (p.x - bounds.minX) / (bounds.maxX - bounds.minX) * w,
+                y: padding + (p.y - bounds.minY) / (bounds.maxY - bounds.minY) * h
+            };
+        }
+
+        function drawGrid(bounds) {
+            if (!options.grid) return;
+
+            ctx.strokeStyle = '#21262d';
+            ctx.lineWidth = 0.5;
+
+            const padding = 50;
+            const steps = 10;
+
+            for (let i = 0; i <= steps; i++) {
+                const x = padding + (canvas.width - 2 * padding) * i / steps;
+                const y = padding + (canvas.height - 2 * padding) * i / steps;
+
+                ctx.beginPath();
+                ctx.moveTo(x, padding);
+                ctx.lineTo(x, canvas.height - padding);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(canvas.width - padding, y);
+                ctx.stroke();
+            }
+        }
+
+        function drawAxes(bounds) {
+            if (!options.axes) return;
+
+            const origin = scalePoint({x: 0, y: 0}, bounds);
+
+            ctx.strokeStyle = '#484f58';
+            ctx.lineWidth = 1;
+
+            // X axis
+            ctx.beginPath();
+            ctx.moveTo(50, origin.y);
+            ctx.lineTo(canvas.width - 50, origin.y);
+            ctx.stroke();
+
+            // Y axis
+            ctx.beginPath();
+            ctx.moveTo(origin.x, 50);
+            ctx.lineTo(origin.x, canvas.height - 50);
+            ctx.stroke();
+        }
+
+        function drawPath(path, color, bounds, endIndex = null) {
+            if (path.length < 2) return;
+
+            const end = endIndex || path.length;
+
+            if (options.glow) {
+                ctx.shadowColor = color;
+                ctx.shadowBlur = 8;
+            }
+
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            ctx.beginPath();
+            const start = scalePoint(path[0], bounds);
+            ctx.moveTo(start.x, start.y);
+
+            for (let i = 1; i < end; i++) {
+                const p = scalePoint(path[i], bounds);
+                ctx.lineTo(p.x, p.y);
+            }
+            ctx.stroke();
+
+            if (options.dots && end > 1) {
+                ctx.fillStyle = color;
+                const step = Math.max(1, Math.floor(end / 50));
+                for (let i = 0; i < end; i += step) {
+                    const p = scalePoint(path[i], bounds);
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            ctx.shadowBlur = 0;
+        }
+
+        function drawStartPoint(bounds) {
+            const start = scalePoint({x: 0, y: 0}, bounds);
+
+            ctx.shadowColor = '#f85149';
+            ctx.shadowBlur = 15;
+            ctx.fillStyle = '#f85149';
+            ctx.beginPath();
+            ctx.arc(start.x, start.y, 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            ctx.fillStyle = '#8b949e';
+            ctx.font = '11px monospace';
+            ctx.fillText('START (0,0)', start.x + 10, start.y - 10);
+        }
+
+        function draw() {
+            generateData();
+            const activeSets = getActiveSets();
+
+            ctx.fillStyle = '#010409';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (activeSets.length === 0) {
+                ctx.fillStyle = '#8b949e';
+                ctx.font = '16px monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText('Select at least one dataset', canvas.width/2, canvas.height/2);
+                ctx.textAlign = 'left';
+                document.getElementById('legend').innerHTML = '';
+                return;
+            }
+
+            const bounds = getBounds(activeSets);
+
+            drawGrid(bounds);
+            drawAxes(bounds);
+
+            for (const key of activeSets) {
+                drawPath(datasets[key].path, datasets[key].color, bounds);
+            }
+
+            drawStartPoint(bounds);
+            updateLegend(activeSets);
+        }
+
+        function animate() {
+            if (isAnimating) {
+                cancelAnimationFrame(animationId);
+                isAnimating = false;
+                document.getElementById('animate').textContent = '▶️ Animate';
+                return;
+            }
+
+            generateData();
+            const activeSets = getActiveSets();
+
+            if (activeSets.length === 0) {
+                alert('Select at least one dataset!');
+                return;
+            }
+
+            const bounds = getBounds(activeSets);
+            const speed = parseInt(document.getElementById('speed').value);
+
+            let frame = 0;
+            const maxFrames = Math.max(...activeSets.map(k => datasets[k].path.length));
+
+            isAnimating = true;
+            document.getElementById('animate').textContent = '⏸️ Pause';
+
+            function step() {
+                if (options.trail) {
+                    ctx.fillStyle = 'rgba(1, 4, 9, 0.05)';
+                } else {
+                    ctx.fillStyle = '#010409';
+                }
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                drawGrid(bounds);
+                drawAxes(bounds);
+
+                for (const key of activeSets) {
+                    const endIndex = Math.min(Math.floor(frame), datasets[key].path.length);
+                    drawPath(datasets[key].path, datasets[key].color, bounds, endIndex);
+                }
+
+                drawStartPoint(bounds);
+
+                frame += speed / 10;
+
+                if (frame < maxFrames && isAnimating) {
+                    animationId = requestAnimationFrame(step);
+                } else {
+                    isAnimating = false;
+                    document.getElementById('animate').textContent = '▶️ Animate';
+                    updateLegend(activeSets);
+                }
+            }
+
+            step();
+        }
+
+        function updateLegend(activeSets) {
+            const legend = document.getElementById('legend');
+            legend.innerHTML = activeSets.map(key => `
+                <div class="legend-item">
+                    <span class="color-dot" style="background: ${datasets[key].color}"></span>
+                    ${datasets[key].name} (${datasets[key].data.length})
+                </div>
+            `).join('');
+        }
+
+        // === EVENT LISTENERS ===
+
+        // Dataset toggles - FIXED!
+        document.querySelectorAll('#datasets .checkbox-item').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.toggle('active');
+                console.log('Toggled:', this.dataset.set, 'Active:', this.classList.contains('active'));
+                draw(); // Redraw immediately!
+            });
+        });
+
+        // Visual options toggles
+        document.querySelectorAll('[data-option]').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.toggle('active');
+                const opt = this.dataset.option;
+                options[opt] = this.classList.contains('active');
+
+                // Reset fixed scale cache when toggling
+                if (opt === 'fixedScale') {
+                    fixedBoundsCache = null;
+                }
+
+                draw();
+            });
+        });
+
+        // Presets - FIXED for large values!
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const alpha = parseFloat(btn.dataset.alpha);
+                document.getElementById('alpha-num').value = alpha;
+                // Update slider too (clamped to its range)
+                document.getElementById('alpha').value = Math.min(alpha, 1);
+                draw();
+            });
+        });
+
+        // Sync alpha inputs
+        document.getElementById('alpha').addEventListener('input', (e) => {
+            document.getElementById('alpha-num').value = e.target.value;
+        });
+
+        document.getElementById('alpha-num').addEventListener('input', (e) => {
+            const val = parseFloat(e.target.value) || 0.02;
+            document.getElementById('alpha').value = Math.min(val, 1);
+        });
+
+        document.getElementById('limit').addEventListener('input', (e) => {
+            document.getElementById('limit-val').textContent = e.target.value;
+            fixedBoundsCache = null; // Reset cache when limit changes
+        });
+
+        document.getElementById('speed').addEventListener('input', (e) => {
+            document.getElementById('speed-val').textContent = e.target.value;
+        });
+
+        document.getElementById('animate').addEventListener('click', animate);
+        document.getElementById('draw').addEventListener('click', draw);
+        document.getElementById('clear').addEventListener('click', () => {
+            if (isAnimating) {
+                cancelAnimationFrame(animationId);
+                isAnimating = false;
+                document.getElementById('animate').textContent = '▶️ Animate';
+            }
+            ctx.fillStyle = '#010409';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('legend').innerHTML = '';
+        });
+
+        // Initial draw
+        draw();
+    </script>
+</body>
+</html>

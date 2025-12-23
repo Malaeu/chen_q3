@@ -1,0 +1,279 @@
+<svg width="1200" height="900" xmlns="http://www.w3.org/2000/svg">
+<rect width="100%" height="100%" fill="#0d1117"/>
+<text x="20" y="35" font-family="monospace" font-size="22" fill="#58a6ff">🔬 Twin Primes mod 6 Structure</text>
+<text x="20" y="58" font-family="monospace" font-size="12" fill="#8b949e">Why ALL twins (except 3,5) have form (6k-1, 6k+1)?</text>
+<text x="30" y="90" font-family="monospace" font-size="14" fill="#ffa657" font-weight="bold">1️⃣ WHY primes &gt; 3 are 6k±1:</text>
+<rect x="50" y="115" width="180" height="28" fill="#161b22" stroke="#f85149" rx="4"/>
+<text x="60" y="134" font-family="monospace" font-size="12" fill="#f85149">6k → ÷6 ✗</text>
+<rect x="250" y="115" width="180" height="28" fill="#161b22" stroke="#3fb950" rx="4"/>
+<text x="260" y="134" font-family="monospace" font-size="12" fill="#3fb950">6k+1 → prime? ✓</text>
+<rect x="450" y="115" width="180" height="28" fill="#161b22" stroke="#f85149" rx="4"/>
+<text x="460" y="134" font-family="monospace" font-size="12" fill="#f85149">6k+2 → ÷2 ✗</text>
+<rect x="50" y="150" width="180" height="28" fill="#161b22" stroke="#f85149" rx="4"/>
+<text x="60" y="169" font-family="monospace" font-size="12" fill="#f85149">6k+3 → ÷3 ✗</text>
+<rect x="250" y="150" width="180" height="28" fill="#161b22" stroke="#f85149" rx="4"/>
+<text x="260" y="169" font-family="monospace" font-size="12" fill="#f85149">6k+4 → ÷2 ✗</text>
+<rect x="450" y="150" width="180" height="28" fill="#161b22" stroke="#3fb950" rx="4"/>
+<text x="460" y="169" font-family="monospace" font-size="12" fill="#3fb950">6k+5 → =6k-1, prime? ✓</text>
+<text x="30" y="215" font-family="monospace" font-size="14" fill="#ffa657" font-weight="bold">2️⃣ WHY twins must be (6k-1, 6k+1):</text>
+<rect x="50" y="245" width="500" height="40" fill="#161b22" stroke="#3fb950" rx="6"/>
+<text x="65" y="262" font-family="monospace" font-size="11" fill="#8b949e">p = 6k-1 → p+2 = 6k+1</text>
+<text x="65" y="277" font-family="monospace" font-size="11" fill="#3fb950">Both can be prime! ✓ TWINS!</text>
+<rect x="50" y="295" width="500" height="40" fill="#161b22" stroke="#f85149" rx="6"/>
+<text x="65" y="312" font-family="monospace" font-size="11" fill="#8b949e">p = 6k+1 → p+2 = 6k+3 = 3(2k+1)</text>
+<text x="65" y="327" font-family="monospace" font-size="11" fill="#f85149">Divisible by 3! ✗ IMPOSSIBLE</text>
+<text x="30" y="375" font-family="monospace" font-size="14" fill="#ffa657" font-weight="bold">3️⃣ STATISTICS: Distribution of p (from twins) mod 6:</text>
+<text x="50" y="410" font-family="monospace" font-size="11" fill="#8b949e">p ≡ 0 (mod 6):</text>
+<rect x="160" y="397" width="0.0" height="18" fill="#30363d" rx="2"/>
+<text x="170.0" y="410" font-family="monospace" font-size="11" fill="#30363d">0 (0.0%)</text>
+<text x="50" y="440" font-family="monospace" font-size="11" fill="#8b949e">p ≡ 1 (mod 6):</text>
+<rect x="160" y="427" width="0.0" height="18" fill="#8b949e" rx="2"/>
+<text x="170.0" y="440" font-family="monospace" font-size="11" fill="#8b949e">0 (0.0%) (only (3,5))</text>
+<text x="50" y="470" font-family="monospace" font-size="11" fill="#8b949e">p ≡ 2 (mod 6):</text>
+<rect x="160" y="457" width="0.0" height="18" fill="#30363d" rx="2"/>
+<text x="170.0" y="470" font-family="monospace" font-size="11" fill="#30363d">0 (0.0%)</text>
+<text x="50" y="500" font-family="monospace" font-size="11" fill="#8b949e">p ≡ 3 (mod 6):</text>
+<rect x="160" y="487" width="0.3270645952575634" height="18" fill="#30363d" rx="2"/>
+<text x="170.32706459525755" y="500" font-family="monospace" font-size="11" fill="#30363d">1 (0.1%)</text>
+<text x="50" y="530" font-family="monospace" font-size="11" fill="#8b949e">p ≡ 4 (mod 6):</text>
+<rect x="160" y="517" width="0.0" height="18" fill="#30363d" rx="2"/>
+<text x="170.0" y="530" font-family="monospace" font-size="11" fill="#30363d">0 (0.0%)</text>
+<text x="50" y="560" font-family="monospace" font-size="11" fill="#8b949e">p ≡ 5 (mod 6):</text>
+<rect x="160" y="547" width="400.0" height="18" fill="#3fb950" rx="2"/>
+<text x="570.0" y="560" font-family="monospace" font-size="11" fill="#3fb950">1223 (99.9%) ← ALL TWINS HERE!</text>
+<text x="30" y="605" font-family="monospace" font-size="14" fill="#ffa657" font-weight="bold">4️⃣ THE 6k±1 LATTICE (first 100 numbers):</text>
+<rect x="50" y="620" width="20" height="20" fill="#21262d" rx="2"/>
+<text x="60" y="634" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">1</text>
+<rect x="72" y="620" width="20" height="20" fill="#58a6ff" rx="2"/>
+<text x="82" y="634" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">2</text>
+<rect x="94" y="620" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="104" y="634" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">3</text>
+<rect x="116" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="126" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">4</text>
+<rect x="138" y="620" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="148" y="634" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">5</text>
+<rect x="160" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="170" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">6</text>
+<rect x="182" y="620" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="192" y="634" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">7</text>
+<rect x="204" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="214" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">8</text>
+<rect x="226" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="236" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">9</text>
+<rect x="248" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="258" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">10</text>
+<rect x="270" y="620" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="280" y="634" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">11</text>
+<rect x="292" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="302" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">12</text>
+<rect x="314" y="620" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="324" y="634" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">13</text>
+<rect x="336" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="346" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">14</text>
+<rect x="358" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="368" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">15</text>
+<rect x="380" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="390" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">16</text>
+<rect x="402" y="620" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="412" y="634" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">17</text>
+<rect x="424" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="434" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">18</text>
+<rect x="446" y="620" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="456" y="634" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">19</text>
+<rect x="468" y="620" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="478" y="634" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">20</text>
+<rect x="50" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="60" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">21</text>
+<rect x="72" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="82" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">22</text>
+<rect x="94" y="642" width="20" height="20" fill="#58a6ff" rx="2"/>
+<text x="104" y="656" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">23</text>
+<rect x="116" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="126" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">24</text>
+<rect x="138" y="642" width="20" height="20" fill="#21262d" rx="2"/>
+<text x="148" y="656" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">25</text>
+<rect x="160" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="170" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">26</text>
+<rect x="182" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="192" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">27</text>
+<rect x="204" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="214" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">28</text>
+<rect x="226" y="642" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="236" y="656" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">29</text>
+<rect x="248" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="258" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">30</text>
+<rect x="270" y="642" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="280" y="656" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">31</text>
+<rect x="292" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="302" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">32</text>
+<rect x="314" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="324" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">33</text>
+<rect x="336" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="346" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">34</text>
+<rect x="358" y="642" width="20" height="20" fill="#21262d" rx="2"/>
+<text x="368" y="656" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">35</text>
+<rect x="380" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="390" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">36</text>
+<rect x="402" y="642" width="20" height="20" fill="#58a6ff" rx="2"/>
+<text x="412" y="656" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">37</text>
+<rect x="424" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="434" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">38</text>
+<rect x="446" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="456" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">39</text>
+<rect x="468" y="642" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="478" y="656" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">40</text>
+<rect x="50" y="664" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="60" y="678" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">41</text>
+<rect x="72" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="82" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">42</text>
+<rect x="94" y="664" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="104" y="678" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">43</text>
+<rect x="116" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="126" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">44</text>
+<rect x="138" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="148" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">45</text>
+<rect x="160" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="170" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">46</text>
+<rect x="182" y="664" width="20" height="20" fill="#58a6ff" rx="2"/>
+<text x="192" y="678" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">47</text>
+<rect x="204" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="214" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">48</text>
+<rect x="226" y="664" width="20" height="20" fill="#21262d" rx="2"/>
+<text x="236" y="678" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">49</text>
+<rect x="248" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="258" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">50</text>
+<rect x="270" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="280" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">51</text>
+<rect x="292" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="302" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">52</text>
+<rect x="314" y="664" width="20" height="20" fill="#58a6ff" rx="2"/>
+<text x="324" y="678" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">53</text>
+<rect x="336" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="346" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">54</text>
+<rect x="358" y="664" width="20" height="20" fill="#21262d" rx="2"/>
+<text x="368" y="678" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">55</text>
+<rect x="380" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="390" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">56</text>
+<rect x="402" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="412" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">57</text>
+<rect x="424" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="434" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">58</text>
+<rect x="446" y="664" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="456" y="678" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">59</text>
+<rect x="468" y="664" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="478" y="678" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">60</text>
+<rect x="50" y="686" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="60" y="700" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">61</text>
+<rect x="72" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="82" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">62</text>
+<rect x="94" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="104" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">63</text>
+<rect x="116" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="126" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">64</text>
+<rect x="138" y="686" width="20" height="20" fill="#21262d" rx="2"/>
+<text x="148" y="700" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">65</text>
+<rect x="160" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="170" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">66</text>
+<rect x="182" y="686" width="20" height="20" fill="#58a6ff" rx="2"/>
+<text x="192" y="700" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">67</text>
+<rect x="204" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="214" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">68</text>
+<rect x="226" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="236" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">69</text>
+<rect x="248" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="258" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">70</text>
+<rect x="270" y="686" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="280" y="700" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">71</text>
+<rect x="292" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="302" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">72</text>
+<rect x="314" y="686" width="20" height="20" fill="#3fb950" rx="2"/>
+<text x="324" y="700" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">73</text>
+<rect x="336" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="346" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">74</text>
+<rect x="358" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="368" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">75</text>
+<rect x="380" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="390" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">76</text>
+<rect x="402" y="686" width="20" height="20" fill="#21262d" rx="2"/>
+<text x="412" y="700" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">77</text>
+<rect x="424" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="434" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">78</text>
+<rect x="446" y="686" width="20" height="20" fill="#58a6ff" rx="2"/>
+<text x="456" y="700" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">79</text>
+<rect x="468" y="686" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="478" y="700" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">80</text>
+<rect x="50" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="60" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">81</text>
+<rect x="72" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="82" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">82</text>
+<rect x="94" y="708" width="20" height="20" fill="#58a6ff" rx="2"/>
+<text x="104" y="722" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">83</text>
+<rect x="116" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="126" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">84</text>
+<rect x="138" y="708" width="20" height="20" fill="#21262d" rx="2"/>
+<text x="148" y="722" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">85</text>
+<rect x="160" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="170" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">86</text>
+<rect x="182" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="192" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">87</text>
+<rect x="204" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="214" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">88</text>
+<rect x="226" y="708" width="20" height="20" fill="#58a6ff" rx="2"/>
+<text x="236" y="722" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">89</text>
+<rect x="248" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="258" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">90</text>
+<rect x="270" y="708" width="20" height="20" fill="#21262d" rx="2"/>
+<text x="280" y="722" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">91</text>
+<rect x="292" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="302" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">92</text>
+<rect x="314" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="324" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">93</text>
+<rect x="336" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="346" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">94</text>
+<rect x="358" y="708" width="20" height="20" fill="#21262d" rx="2"/>
+<text x="368" y="722" font-family="monospace" font-size="8" fill="#8b949e" text-anchor="middle">95</text>
+<rect x="380" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="390" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">96</text>
+<rect x="402" y="708" width="20" height="20" fill="#58a6ff" rx="2"/>
+<text x="412" y="722" font-family="monospace" font-size="8" fill="#0d1117" text-anchor="middle">97</text>
+<rect x="424" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="434" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">98</text>
+<rect x="446" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="456" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">99</text>
+<rect x="468" y="708" width="20" height="20" fill="#161b22" rx="2"/>
+<text x="478" y="722" font-family="monospace" font-size="8" fill="#30363d" text-anchor="middle">100</text>
+<rect x="50" y="745" width="12" height="12" fill="#3fb950" rx="2"/>
+<text x="68" y="755" font-family="monospace" font-size="10" fill="#8b949e">Twin prime</text>
+<rect x="210" y="745" width="12" height="12" fill="#58a6ff" rx="2"/>
+<text x="228" y="755" font-family="monospace" font-size="10" fill="#8b949e">Prime (not twin)</text>
+<rect x="370" y="745" width="12" height="12" fill="#21262d" rx="2"/>
+<text x="388" y="755" font-family="monospace" font-size="10" fill="#8b949e">6k±1 (composite)</text>
+<rect x="530" y="745" width="12" height="12" fill="#161b22" rx="2"/>
+<text x="548" y="755" font-family="monospace" font-size="10" fill="#8b949e">Not 6k±1</text>
+<rect x="620" y="90" width="550" height="280" fill="#161b22" stroke="#30363d" rx="8"/>
+<text x="635" y="115" font-family="monospace" font-size="14" fill="#a371f7" font-weight="bold">🎯 CONNECTION TO ln(2) AND ln(3):</text>
+<text x="640" y="135" font-family="monospace" font-size="10" fill="#8b949e"></text>
+<text x="640" y="146" font-family="monospace" font-size="10" fill="#8b949e">6 = 2 × 3</text>
+<text x="640" y="157" font-family="monospace" font-size="10" fill="#8b949e"></text>
+<text x="640" y="168" font-family="monospace" font-size="10" fill="#ffa657">ln(2) ← encodes the difference (p+2 - p = 2)</text>
+<text x="640" y="179" font-family="monospace" font-size="10" fill="#ffa657">ln(3) ← encodes the mod 3 structure</text>
+<text x="640" y="190" font-family="monospace" font-size="10" fill="#8b949e"></text>
+<text x="640" y="201" font-family="monospace" font-size="10" fill="#8b949e">Together they capture the FULL mod 6 lattice!</text>
+<text x="640" y="212" font-family="monospace" font-size="10" fill="#8b949e"></text>
+<text x="640" y="223" font-family="monospace" font-size="10" fill="#8b949e">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+<text x="640" y="234" font-family="monospace" font-size="10" fill="#8b949e"></text>
+<text x="640" y="245" font-family="monospace" font-size="10" fill="#ffa657">Phase function f(p) = p·ln(3):</text>
+<text x="640" y="256" font-family="monospace" font-size="10" fill="#8b949e"></text>
+<text x="640" y="267" font-family="monospace" font-size="10" fill="#8b949e">  For twins (6k-1, 6k+1):</text>
+<text x="640" y="278" font-family="monospace" font-size="10" fill="#ffa657">    f(6k-1) = (6k-1)·ln(3)</text>
+<text x="640" y="289" font-family="monospace" font-size="10" fill="#ffa657">    f(6k+1) = (6k+1)·ln(3)</text>
+<text x="640" y="300" font-family="monospace" font-size="10" fill="#ffa657">    Δf = 2·ln(3) = ln(9)</text>
+<text x="640" y="311" font-family="monospace" font-size="10" fill="#8b949e"></text>
+<text x="640" y="322" font-family="monospace" font-size="10" fill="#ffa657">  Phase shift: Δφ = 2π·ln(9) ≈ 13.8 rad</text>
+<text x="640" y="333" font-family="monospace" font-size="10" fill="#8b949e">              ≈ 72° (mod 360°) = 360°/5</text>
+<text x="640" y="344" font-family="monospace" font-size="10" fill="#8b949e"></text>
+<text x="640" y="355" font-family="monospace" font-size="10" fill="#3fb950">  → 5-fold symmetry → CANCELLATION!</text>
+<rect x="620" y="390" width="550" height="60" fill="#1a3d1a" stroke="#3fb950" rx="8"/>
+<text x="635" y="415" font-family="monospace" font-size="12" fill="#3fb950" font-weight="bold">✨ CONCLUSION:</text>
+<text x="635" y="435" font-family="monospace" font-size="11" fill="#8b949e">Twins live on 6k±1 lattice → ln(2), ln(3) are natural frequencies!</text>
+</svg>
