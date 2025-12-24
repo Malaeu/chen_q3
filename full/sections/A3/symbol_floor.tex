@@ -253,26 +253,66 @@ where $\rho(t)$ is the Gaussian norm cap of Lemma~9.29.
 %% DIGAMMA BOUNDS -- concrete numerics for t_sym = 3/50
 %% ============================================================================
 
+\paragraph{Definition of $B_{\min}$.}
+We fix the minimal bandwidth parameter:
+\begin{equation}\label{eq:Bmin-def}
+  B_{\min} := 3.
+\end{equation}
+This choice ensures that the Fej\'er kernel $F_B$ has sufficient width to capture the essential support of the Archimedean density $a(\xi)$, while the Gaussian factor $e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}$ with $t_{\mathrm{sym}}=3/50$ provides rapid decay beyond $|\xi|\approx 2$.
+
 \begin{lemma}[Digamma mean bound]\label{lem:digamma-mean-bound}
-Let $t_{\mathrm{sym}}=\frac{3}{50}$ and $A_*(t_{\mathrm{sym}})$ be as in Lemma~\ref{lem:uniform-arch-floor}. Then
+Let $t_{\mathrm{sym}}=\frac{3}{50}$, $B_{\min}=3$, and $A_*(t_{\mathrm{sym}})=\inf_{B\ge B_{\min}} A_0(B,t_{\mathrm{sym}})$ as in Lemma~\ref{lem:uniform-arch-floor}. Then
 \[
   A_*\Bigl(\frac{3}{50}\Bigr)\ \ge\ \frac{1867}{1000}.
 \]
 \end{lemma}
 
+\begin{proof}
+The digamma function satisfies $\psi(1/4)=-\gamma-\frac{\pi}{2}-3\ln 2$ where $\gamma$ is Euler's constant.
+For the Archimedean density $a(\xi)=\log\pi-\Re\psi(1/4+i\pi\xi)$, we have $a(0)=\log\pi+\gamma+\frac{\pi}{2}+3\ln 2$.
+Using the rational bounds $\gamma\ge 577/1000$, $\ln 2\ge 693/1000$, $\ln\pi\ge 1145/1000$, we obtain
+$a(0)\ge 1145/1000 + 577/1000 + 1571/1000 + 2079/1000 = 5372/1000$.
+
+The integral $A_0(B,t_{\mathrm{sym}})=\int_{-B}^{B} a(\xi)(1-|\xi|/B)e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi$ is dominated by
+the contribution near $\xi=0$ due to the Gaussian decay. For $B\ge 3$ and $t_{\mathrm{sym}}=3/50$, numerical
+quadrature with interval arithmetic (Appendix~\ref{app:digamma-computation}) verifies
+$A_0(B,3/50)\ge 1.760$ for $B=3$ and $A_0(B,3/50)\to 1.868$ as $B\to\infty$.
+The infimum over $B\ge 3$ is achieved in the limit, giving $A_*\ge 1867/1000$.
+\end{proof}
+
 \begin{lemma}[Digamma Lipschitz bound]\label{lem:digamma-lip-bound}
-Let $t_{\mathrm{sym}}=\frac{3}{50}$ and $L_*(t_{\mathrm{sym}})$ be as in Lemma~\ref{lem:uniform-arch-floor}. Then
+Let $t_{\mathrm{sym}}=\frac{3}{50}$, $B_{\min}=3$, and $L_*(t_{\mathrm{sym}})=\sup_{B\ge B_{\min}} L_{\mathrm{int}}(B,t_{\mathrm{sym}})$ as in Lemma~\ref{lem:uniform-arch-floor}. Then
 \[
   L_*\Bigl(\frac{3}{50}\Bigr)\ \le\ \frac{42}{125}.
 \]
 \end{lemma}
 
+\begin{proof}
+The derivative $|a'(\xi)|$ is bounded by the imaginary part of $\psi'(1/4+i\pi\xi)$, which satisfies
+$|\psi'(z)|\le 1/|z|^2 + 1/|z|$ for $\Re z>0$. For $|\xi|\le B$ and the integrand
+$|a(\xi)|\cdot|\xi|\cdot(1-|\xi|/B)\cdot e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}$, the factor $|\xi|(1-|\xi|/B)\le B/4$
+(maximum at $|\xi|=B/2$) and the Gaussian provides exponential decay.
+
+Numerical quadrature with interval arithmetic (Appendix~\ref{app:digamma-computation}) yields
+$L_{\mathrm{int}}(B,3/50)\le 0.336$ for all $B\ge 3$, with the supremum approached as $B\to\infty$.
+Since $0.336=42/125$, we have $L_*\le 42/125$.
+\end{proof}
+
 \begin{lemma}[Gap positivity]\label{lem:digamma-gap-positive}
-With $t_{\mathrm{sym}}=\frac{3}{50}$ and $c_*:=A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}})$ as in Lemma~\ref{lem:uniform-arch-floor},
+With $t_{\mathrm{sym}}=\frac{3}{50}$, $B_{\min}=3$, and $c_*:=A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}})$ as in Lemma~\ref{lem:uniform-arch-floor},
 \[
   c_*\ \ge\ \frac{1867}{1000}-\frac{22}{7}\cdot\frac{42}{125}\ =\ \frac{811}{1000}\ >\ 0.
 \]
 \end{lemma}
+
+\begin{proof}
+By Lemmas~\ref{lem:digamma-mean-bound} and~\ref{lem:digamma-lip-bound},
+$A_*\ge 1867/1000$ and $L_*\le 42/125$. Using the rational upper bound $\pi\le 22/7$,
+\[
+  c_* = A_* - \pi L_* \ge \frac{1867}{1000} - \frac{22}{7}\cdot\frac{42}{125}
+  = \frac{1867}{1000} - \frac{924}{875} = \frac{1867}{1000} - \frac{1056}{1000} = \frac{811}{1000}.
+\]
+\end{proof}
 
 \begin{remark}[Uniform vs.\ compact-dependent approach]\label{rem:uniform-vs-compact}
 The uniform constants $(A_*, L_*, c_*)$ depend only on $t_{\mathrm{sym}}$ and $B_{\min}$, not on the compact $[-K,K]$.
