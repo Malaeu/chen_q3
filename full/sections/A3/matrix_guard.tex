@@ -1,4 +1,24 @@
-\subsection{Matrix Guards and Mixed Bridge}\label{subsec:a3-matrix-guard}
+\subsection{Matrix Guards and Mixed Bridge (K-dependent version)}\label{subsec:a3-matrix-guard}
+
+%% ============================================================================
+%% LEGACY SECTION: K-dependent approach using c_arch(K)
+%%
+%% This section documents the original per-compact approach where all parameters
+%% (M_0, t_rkhs*, etc.) depend on c_arch(K). The MAIN proof chain now uses the
+%% UNIFORM approach from Lemma~\ref{lem:uniform-arch-floor}, which provides
+%% c_* >= 811/1000 independent of K.
+%%
+%% The K-dependent formulas below remain valid but are NOT used in the main proof;
+%% see Corollary~\ref{cor:uniform-discretisation} and Theorem~\ref{thm:rkhs-tstar}
+%% for the uniform versions.
+%% ============================================================================
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{\textbf{Note:} This subsection uses \emph{K-dependent} parameters
+$c_{\mathrm{arch}}(K)$, $M_0(K)$, $t_{\mathrm{rkhs}}^\star(K)$. The main proof chain uses the
+\emph{uniform} floor $c_*\ge 811/1000$ from Lemma~\ref{lem:uniform-arch-floor} instead,
+with corresponding uniform thresholds $M_0^{\mathrm{unif}}$ and $t_{\mathrm{rkhs}}^{\mathrm{unif}}$.}}
+\end{center}
 
 The analytic constants from Sections~\ref{subsec:a3-rayleigh}--\ref{subsec:a3-fejer-modulus}
 feed into two matrix guards: a Frobenius drift control and the Szeg\H{o}--B\"ottcher barrier.

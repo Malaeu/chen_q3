@@ -174,7 +174,7 @@ which relies entirely on the analytic bound $c_*\ge 811/1000$.
 Let $K>0$ and use the uniform floor $c_*\ge 811/1000$ from Lemma~\ref{lem:uniform-arch-floor}.
 Then for every $M\ge M_0^{\mathrm{unif}}$ (Corollary~\ref{cor:uniform-discretisation}),
 \[
-  \lambda_{\min}\!\bigl(T_M[P_A]-T_P\bigr)\ \ge\ \frac{c_{\mathrm{arch}}(K)}{4}\ > 0,
+  \lambda_{\min}\!\bigl(T_M[P_A]-T_P\bigr)\ \ge\ \frac{c_*}{4}\ \ge\ \frac{811}{4000}\ >\ 0.2,
 \]
 and the associated Fej\'er$\times$heat test functions satisfy
 \[
@@ -183,5 +183,11 @@ and the associated Fej\'er$\times$heat test functions satisfy
 \end{theorem}
 
 \begin{proof}
-Items \textnormal{(A3.1)}–\textnormal{(A3.3)} supply the hypotheses of Theorem~\ref{thm:a3-mixed-margin} with $c_0(K)=c_{\mathrm{arch}}(K)$.  The theorem therefore yields the stated operator inequality.  Lemma~\ref{lem:a3-model-space} combined with Theorem~\ref{thm:a3-rayleigh-identification} converts the matrix margin into $Q(\Phi_{B,t})\ge0$.
+The uniform floor Lemma~\ref{lem:uniform-arch-floor} gives $\min_{\theta\in\TT} P_A(\theta)\ge c_*\ge 811/1000$
+for all $B\ge B_{\min}$. Corollary~\ref{cor:uniform-discretisation} provides
+$M_0^{\mathrm{unif}}$ such that $C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M)\le c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
+Theorem~\ref{thm:rkhs-tstar} gives $\|T_P\|\le \rho(t_{\mathrm{rkhs}}^{\mathrm{unif}})\le c_*/4$.
+Thus $\lambda_{\min}(T_M[P_A]-T_P)\ge c_* - c_*/2 - c_*/4 = c_*/4$.
+Lemma~\ref{lem:a3-model-space} combined with Theorem~\ref{thm:a3-rayleigh-identification}
+converts the matrix margin into $Q(\Phi_{B,t})\ge0$.
 \end{proof}
