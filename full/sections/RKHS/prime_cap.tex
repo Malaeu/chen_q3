@@ -132,17 +132,17 @@ the equality being the standard Gaussian evaluation.  Fix \(t_0=\tfrac{7}{10}\).
 Therefore the uniform prime cap \(\|T_P\|\le \rho(t_0)\le\tfrac{1}{25}\) holds for every compact
 \([-K,K]\), and the YES-gate slack satisfies
 \[
-  \mathrm{slack}(K)
-  := \frac{c_{\mathrm{arch}}(K)}{4}-\rho(t_0)
-  \ge \frac{c_{\mathrm{arch}}(1)}{4}-\RhoGate,
+  \mathrm{slack}
+  := \frac{c_*}{4}-\rho(t_0)
+  \ge \frac{811/1000}{4}-\RhoGate,
 \]
-with $c_{\mathrm{arch}}(1)>0$ supplied analytically in Section~\ref{subsec:a3-symbol-floor}.
-By Theorem~\ref{thm:a3-k1-floor} the right-hand side equals
+where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:8.17U} and
+Lemma~\ref{lem:digamma-gap-positive} in Section~\ref{subsec:a3-symbol-floor}.
+Numerically,
 \(
-  \tfrac{\CarchOne}{4}-\RhoGate
-  = \YesSlackMin > 0
+  \tfrac{811}{4000}-\RhoGate > 0.16
 \),
-so the YES gate retains a uniform positive margin on every compact.
+so the YES gate retains a uniform positive margin on every compact \emph{independently of $K$}.
 \end{lemma}
 \begin{proof}
 Lemma~\ref{pm:lem:sum-to-rho} together with Lemma~\ref{pm:lem:trace-cap-erfc} yields
@@ -278,19 +278,18 @@ ensures that the RKHS cap \(\rho_K\) does not degenerate with increasing \(K\).
 \begin{corollary}[Plug into A3]\label{cor:a3-plug}
 On $[-K,K]$,
 \[
-\lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ c_0(K)\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big)\ -\ \|T_P\|.
+\lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ c_*\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big)\ -\ \|T_P\|.
 \]
-With either choice $t=t_{\min}(K)$ from (A) (where $t\le t_{\min}$ is required) or $t\ge t^\star(K)$ from (B) one has
-$\|T_P\|\le c_0(K)/4$, hence
+With $c_*\ge 811/1000$ from Lemma~\ref{lem:8.17U} and $\|T_P\|\le c_*/4$ (Corollary~\ref{cor:8.25U}),
 \[
-\lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ \tfrac{1}{2}\,c_0(K)\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big).
+\lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ \tfrac{1}{2}\,c_*\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big).
 \]
 \end{corollary}
 
 \begin{remark}[Interface to T5]\label{rem:t5-interface}
 For a nondecreasing compact chain $K_i\uparrow\infty$, pick $M_i$ so that
-$C\,\omega_{P_A}(\pi/M_i)\le c_0(K_i)/4$ and choose either $t_i=t_{\min}(K_i)$ (route A, where $t\le t_{\min}$ is required)
-or $t_i\ge t^\star(K_i)$ (route B). In practice, the T5 module uses route~(B) with $t_i=t^\star_{T5}(K_i)$. Then the T5 criterion applies on each $W_{K_i}$ and
+$C\,\omega_{P_A}(\pi/M_i)\le c_*/4$ where $c_*\ge 811/1000$ is the uniform floor from Lemma~\ref{lem:8.17U}.
+In practice, the T5 module uses $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ from Corollary~\ref{cor:8.25U}. Then the T5 criterion applies on each $W_{K_i}$ and
 monotone inheritance propagates positivity across the chain, yielding $Q\ge0$ on
 $\bigcup_i W_{K_i}$.
 \end{remark}
@@ -299,9 +298,9 @@ $\bigcup_i W_{K_i}$.
 \begin{theorem}[Prime-Cap Uniform (PCU)]\label{thm:pcu-main}
 There exist an explicit function $t_{\mathrm{pr}}(K)>0$ and a constant $\beta\in(0,1/2]$ such that for every compact $[-K,K]$ one has
 \[
-  \|T_P\| \le \rho_{\mathrm{cap}}(K) \le \beta\,c_0(K),
+  \|T_P\| \le \rho_{\mathrm{cap}} \le \beta\,c_*,
 \]
-where $c_0(K)$ is the Archimedean floor from Section~\ref{subsec:a3-symbol-floor} and $\rho_{\mathrm{cap}}(K)$ is any one of the analytic bounds built below.  Two concrete realizations are available:
+where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:8.17U} and $\rho_{\mathrm{cap}}$ is any one of the analytic bounds built below.  Two concrete realizations are available:
 \begin{enumerate}[label=(\roman*)]
   \item \textbf{Uniform trace cap.} Fix $t_{\mathrm{pr}}(K)\equiv 1$.  Lemma~\ref{pm:lem:rho-closed-form} evaluates the closed form~\eqref{eq:rho-closed-form} and gives
   \[

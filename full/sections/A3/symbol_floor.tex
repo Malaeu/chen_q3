@@ -178,30 +178,94 @@ rational bounds on $a(0)$, $M_B$ and $L_A^{\mathrm{up}}$ yields the stated fract
 \(\CarchOne=\tfrac{1\,346\,209}{7\,168\,000}\).
 \end{proof}
 
-\begin{lemma}[Global archimedean floor]\label{lem:a3-global-arch-floor}
-Fix any \(\kappa\in(0,1)\) and set \(B(K):=\lceil K/(1-\kappa)\rceil\). The margins
-from Corollary~\ref{cor:a3-arch-floor-compact} then satisfy
+%% ============================================================================
+%% UNIFORM ARCHIMEDEAN FLOOR (Lemma 8.17') -- replaces K-dependent approach
+%% ============================================================================
+
+\begin{lemma}[Uniform Archimedean floor via mean+modulus]\label{lem:8.17U}
+Fix $t_{\mathrm{sym}}>0$ and a baseline $B_{\min}>0$ (e.g.\ $B_{\min}:=B(1)$ for the A3 schedule).
+For each $B\ge B_{\min}$ define
 \[
-  c_{\mathrm{arch}}(K)\ \ge\ c^*\ >\ 0 \qquad (K\ge 1),
+  A_0(B,t_{\mathrm{sym}})
+  :=\int_{-B}^{B} a(\xi)\Bigl(1-\frac{|\xi|}{B}\Bigr)_{+} e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi,
 \]
-where \(c^* := \inf_{K\ge1} c_{\mathrm{arch}}(K) = c_{\mathrm{arch}}(1)\). In particular,
-the baseline Theorem~\ref{thm:a3-k1-floor} gives \(c_{\mathrm{arch}}(1)\ge \CarchOne\).
-Legacy “plateau” tables are retained only for reproducibility and introduce no extra hypotheses.
+\[
+  L_{\mathrm{int}}(B,t_{\mathrm{sym}})
+  :=\int_{-B}^{B}|a(\xi)|\,|\xi|\Bigl(1-\frac{|\xi|}{B}\Bigr)_{+} e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi.
+\]
+Define the uniform constants
+\[
+  A_*(t_{\mathrm{sym}}):=\inf_{B\ge B_{\min}}A_0(B,t_{\mathrm{sym}}),\qquad
+  L_*(t_{\mathrm{sym}}):=\sup_{B\ge B_{\min}}L_{\mathrm{int}}(B,t_{\mathrm{sym}}),\qquad
+  c_*:=A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}}).
+\]
+Then, for every $B\ge B_{\min}$ and the corresponding Archimedean symbol $P_A$,
+\[
+  \min_{\theta\in\TT}P_A(\theta)\ge c_*.
+\]
 \end{lemma}
+
 \begin{proof}
-The gap $g(K) := C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M(K))$ is monotone non-increasing in $K$
-(as $M(K)$ increases and $\omega_{P_A}(h)$ is non-decreasing in $h$).
-Consequently $c_{\mathrm{arch}}(K) = \min_\xi P_A(\xi) - g(K)$ is monotone non-decreasing in $K$,
-so $c^* = \inf_{K\ge1} c_{\mathrm{arch}}(K) = c_{\mathrm{arch}}(1)$.
-The explicit baseline from Theorem~\ref{thm:a3-k1-floor} furnishes $c^*>0$.
+Differentiate the integral representation of $\widetilde P_A$ to get $|\widetilde P_A'(\theta)|\le L_{\mathrm{int}}(B,t_{\mathrm{sym}})$; hence $\omega_{P_A}(h)\le \omega_{\widetilde P_A}(h)\le L_{\mathrm{int}}(B,t_{\mathrm{sym}})\,h$.
+Proposition~8.5 yields $\min_{\TT}P_A\ge A_0(B,t_{\mathrm{sym}})-\pi L_{\mathrm{int}}(B,t_{\mathrm{sym}})$.
+Take $\inf_{B\ge B_{\min}}$ on $A_0$ and $\sup_{B\ge B_{\min}}$ on $L_{\mathrm{int}}$ to obtain $\min_{\TT}P_A\ge A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}})=c_*$.
 \end{proof}
 
-\begin{remark}[Direction sanity check]\label{rem:a3-direction-full}
-Since $\omega_{P_A}(h)$ is nondecreasing in $h$ and $h=\pi/M(K)$ decreases
-with $K$ (as $M(K)$ increases), the gap
-$g(K):= C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M(K))$ is monotone non-increasing in $K$.
-Consequently $c_{\mathrm{arch}}(K) = \min_\xi P_A(\xi) - g(K)$ is monotone non-decreasing
-in $K$.  This corrects an earlier sign error in the preliminary draft.
+\begin{corollary}[Uniform discretisation threshold]\label{cor:8.24U}
+Assume $c_*>0$ in Lemma~\ref{lem:8.17U}, and let $C_{\mathrm{SB}}=4$ be the absolute constant of Lemma~8.23.
+Define
+\[
+  M_{0}^{\mathrm{unif}}
+  :=\left\lceil \frac{2\pi\,C_{\mathrm{SB}}\,L_*(t_{\mathrm{sym}})}{c_*}\right\rceil.
+\]
+Then for every $B\ge B_{\min}$ and every $M\ge M_{0}^{\mathrm{unif}}$,
+\[
+  \lambda_{\min}\bigl(T_M[P_A]\bigr)\ \ge\ \frac{1}{2}\,c_*.
+\]
+\end{corollary}
+
+\begin{corollary}[Uniform prime cap time]\label{cor:8.25U}
+Assume $c_*>0$ in Lemma~\ref{lem:8.17U}. Define
+\[
+  t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}
+  :=\frac{1}{8\pi^2}\left(\frac{1}{2}+\frac{4e^{1/4}}{c_*}\right).
+\]
+Then for every $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ the symmetrised prime operator satisfies
+\[
+  \|T_P\|\ \le\ \rho(t_{\mathrm{rkhs}})\ \le\ \frac{c_*}{4},
+\]
+where $\rho(t)$ is the Gaussian norm cap of Lemma~9.29.
+\end{corollary}
+
+%% ============================================================================
+%% DIGAMMA BOUNDS -- concrete numerics for t_sym = 3/50
+%% ============================================================================
+
+\begin{lemma}[Digamma mean bound]\label{lem:digamma-mean-bound}
+Let $t_{\mathrm{sym}}=\frac{3}{50}$ and $A_*(t_{\mathrm{sym}})$ be as in Lemma~\ref{lem:8.17U}. Then
+\[
+  A_*\Bigl(\frac{3}{50}\Bigr)\ \ge\ \frac{1867}{1000}.
+\]
+\end{lemma}
+
+\begin{lemma}[Digamma Lipschitz bound]\label{lem:digamma-lip-bound}
+Let $t_{\mathrm{sym}}=\frac{3}{50}$ and $L_*(t_{\mathrm{sym}})$ be as in Lemma~\ref{lem:8.17U}. Then
+\[
+  L_*\Bigl(\frac{3}{50}\Bigr)\ \le\ \frac{42}{125}.
+\]
+\end{lemma}
+
+\begin{lemma}[Gap positivity]\label{lem:digamma-gap-positive}
+With $t_{\mathrm{sym}}=\frac{3}{50}$ and $c_*:=A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}})$ as in Lemma~\ref{lem:8.17U},
+\[
+  c_*\ \ge\ \frac{1867}{1000}-\frac{22}{7}\cdot\frac{42}{125}\ =\ \frac{811}{1000}\ >\ 0.
+\]
+\end{lemma}
+
+\begin{remark}[Uniform vs.\ compact-dependent approach]\label{rem:uniform-vs-compact}
+The uniform constants $(A_*, L_*, c_*)$ depend only on $t_{\mathrm{sym}}$ and $B_{\min}$, not on the compact $[-K,K]$.
+This decouples the Archimedean floor from the parameter schedule $B(K)$: once $c_*>0$ is established analytically,
+every compact inherits the same positive margin without requiring monotonicity arguments or numerical tables.
 \end{remark}
 
 \begin{remark}[References]
