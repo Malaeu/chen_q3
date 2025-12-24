@@ -148,12 +148,18 @@ Lemma~\ref{lem:a3-core-lower-bound} gives
 so the condition $\theta\ge\theta_1(K)$ (with $\theta=t_{\mathrm{sym}}r(K)^2$) makes the expression in parentheses $\ge A_K/2$.  Lemma~\ref{lem:a3-lipschitz-bound} supplies the Lipschitz estimate.  At $\theta=\theta_2(K)$ we balance exponential and polynomial terms so that $e^{-4\pi^2\theta}\frac{A_K}{2}\ge \frac{2D_K}{\theta}$; hence at $\theta^\star=\max\{\theta_1,\theta_2\}$ we have $F_K(\theta^\star)\ge \frac{A_K}{4}e^{-4\pi^2\theta^\star}$.  Consequently $c_{\mathrm{arch}}(K)\ge \tfrac14 A_K e^{-4\pi^2\theta^\star(K)}>0$ (all quantities $M_B,\TV(a)$ finite on $[-B,B]$; $m_r>0$ for small $r$ by continuity of $a$ and explicit digamma properties), establishing \textnormal{(A3.1)}.  Proposition~\ref{prop:a3-m0} with $C_{\mathrm{SB}}=4$ yields \textnormal{(A3.2)}, and Proposition~\ref{prop:a3-prime-cap} provides the stated $t_{\mathrm{rkhs}}^\star(K)$ satisfying \textnormal{(A3.3)}.  The bounds on $m_r$ and $M_B$ used above follow from the digamma inequalities recalled in Section~\ref{sec:T0} and Appendix~\ref{app:md23-constants}.
 \end{proof}
 
-\paragraph{A3 input summary.}
-\begin{enumerate}[label=(A3.\arabic*)]
-  \item \emph{Arch symbol margin.} Corollary~\ref{cor:a3-arch-floor-compact} and Corollary~\ref{cor:a3-omega-fejer} provide an explicit floor $c_{\mathrm{arch}}(K)>0$ and modulus bound $L_A(B,t_{\mathrm{sym}})$ for the Fej\'er$\times$heat symbol $P_A$.
-  \item \emph{Prime cap.} Proposition~\ref{prop:a3-prime-cap} supplies $t_{\mathrm{rkhs}}^\star(K)$ such that every $t_{\mathrm{rkhs}}\ge t_{\mathrm{rkhs}}^\star(K)$ satisfies $\rho(t_{\mathrm{rkhs}})\le c_{\mathrm{arch}}(K)/4$ and hence $\|T_P\|\le c_{\mathrm{arch}}(K)/4$.
-  \item \emph{Discretisation threshold.} Proposition~\ref{prop:a3-m0} furnishes $M_0(K)$ such that $T_M[P_A]$ keeps half of the Arch margin for every $M\ge M_0(K)$.
+\paragraph{A3 input summary (uniform version).}
+\begin{enumerate}[label=(A3-U.\arabic*)]
+  \item \emph{Uniform Arch floor.} Lemma~\ref{lem:uniform-arch-floor} provides $c_*\ge 811/1000$ valid on $\TT$ for all $B\ge B_{\min}$.
+  \item \emph{Uniform prime cap.} Theorem~\ref{thm:rkhs-tstar} with $t_0=7/10$ gives $\rho(t_0)\le 1971/50000 < c_*/4$.
+  \item \emph{Uniform discretisation.} Corollary~\ref{cor:uniform-discretisation} provides $M_0^{\mathrm{unif}}$ such that $\lambda_{\min}(T_M[P_A])\ge c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
 \end{enumerate}
+
+\begin{remark}[Legacy K-dependent summary -- not used]
+The original per-compact summary used $c_{\mathrm{arch}}(K)$, $t_{\mathrm{rkhs}}^\star(K)$, $M_0(K)$ from
+Corollaries~\ref{cor:a3-arch-floor-compact}--\ref{cor:a3-omega-fejer} and Propositions~\ref{prop:a3-m0}--\ref{prop:a3-prime-cap}.
+This approach is superseded by the uniform version above and is retained only for historical reference.
+\end{remark}
 
 %% NOTE: The uniform approach (Lemma 8.17') gives a K-independent floor c_* >= 811/1000
 %% on the FULL circle T, not just an arc. This supersedes the arc-based approach.
