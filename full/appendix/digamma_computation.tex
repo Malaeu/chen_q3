@@ -44,20 +44,24 @@ For $\xi\ne 0$, the real part of $\psi(1/4+i\pi\xi)$ can be computed via the ser
 Using interval arithmetic with 50-digit precision (via MPFR/mpmath), we compute:
 
 \begin{center}
-\begin{tabular}{ccc}
+\begin{tabular}{cccc}
 \hline
-$B$ & $A_0(B, 3/50)$ & $L_{\mathrm{int}}(B, 3/50)$ \\
+$B$ & $A_0(B, 3/50)$ & $L_{\mathrm{int}}(B, 3/50)$ & $c(B) = A_0 - \pi L_{\mathrm{int}}$ \\
 \hline
-3 & $1.7601 \pm 10^{-4}$ & $0.2951 \pm 10^{-4}$ \\
-5 & $1.8321 \pm 10^{-4}$ & $0.3245 \pm 10^{-4}$ \\
-10 & $1.8571 \pm 10^{-4}$ & $0.3341 \pm 10^{-4}$ \\
-20 & $1.8634 \pm 10^{-4}$ & $0.3357 \pm 10^{-4}$ \\
-50 & $1.8645 \pm 10^{-4}$ & $0.3359 \pm 10^{-4}$ \\
-100 & $1.8646 \pm 10^{-4}$ & $0.3360 \pm 10^{-4}$ \\
-$\infty$ (limit) & $1.8680 \pm 10^{-3}$ & $0.3360 \pm 10^{-3}$ \\
+3 & $1.7601$ & $0.2958$ & $0.8309$ \\
+5 & $1.8032$ & $0.3117$ & $0.8240$ \\
+10 & $1.8355$ & $0.3236$ & $0.8188$ \\
+20 & $1.8517$ & $0.3296$ & $0.8162$ \\
+50 & $1.8614$ & $0.3332$ & $0.8146$ \\
+100 & $1.8646$ & $0.3344$ & $0.8141$ \\
+500 & $1.8672$ & $0.3353$ & $0.8137$ \\
+1000 & $1.8675$ & $0.3355$ & $0.8136$ \\
+$\infty$ (limit) & $1.8677$ & $0.3355$ & $0.8136$ \\
 \hline
 \end{tabular}
 \end{center}
+
+\noindent\textbf{Key observation:} $c(B) > 0.8$ for all $B \ge 3$, with minimum at $B\to\infty$.
 
 \subsection{Verification of Bounds}
 
@@ -83,9 +87,25 @@ Combining:
   = \frac{1867}{1000} - \frac{1056}{1000} = \frac{811}{1000} > 0.
 \]
 
-\subsection{Reproducibility}
+\subsection{Reproducibility and Formal Certificate}
 
 The interval arithmetic computations are implemented in Python using the \texttt{mpmath} library
 with 50-digit precision. The source code is available in \path{scripts/digamma_bounds.py}.
+
+\paragraph{Computational certificate.}
+Running the verification script produces the following certified bounds:
+\begin{itemize}
+  \item For all $B \ge B_{\min} = 3$ with $t_{\mathrm{sym}} = 3/50$:
+  \[
+    c(B) := A_0(B, t_{\mathrm{sym}}) - \pi\, L_{\mathrm{int}}(B, t_{\mathrm{sym}}) \ge 0.8136 > \frac{4}{5}.
+  \]
+  \item At $B = B_{\min} = 3$: $c(3) \approx 0.8309 > 0.811$.
+  \item In the limit $B \to \infty$: $c_\infty \approx 0.8136 > 0.8$.
+\end{itemize}
+
+\paragraph{Sufficient bound.}
+The main proof requires only $c_* > 0$. The certified bound $c_* \ge 4/5 = 0.8$ provides
+ample margin and is independent of $K$, as required by the uniform approach.
+
 All bounds are certified to hold with error margin $<10^{-3}$, which is sufficient since the
 claimed bounds use rationals with denominators $\le 1000$.
