@@ -1,8 +1,8 @@
 % Explicit constants for MD_{2,3}
-\subsection{Explicit Constants for MD$_{2,3}$}\label{app:md23-constants}
+\subsection{Explicit Constants for \texorpdfstring{MD$_{2,3}$}{MD₂,₃}}\label{app:md23-constants}
 We collect analytic bounds sufficient to verify the base interval MD$_{2,3}$ without numerics in the main text. Numerical certification (interval arithmetic) may be delegated to the reproducibility appendix.
 
-\subsection{Lower bound for $m_r$}
+\subsection{Lower bound for \texorpdfstring{$m_r$}{m\_r}}
 Define $a(\xi)=\log\pi-\Re\psi(\tfrac14+i\pi\xi)$. For $r\in(0,1]$ set
 \begin{equation}\label{eq:MD_2_3_constants-formula-11}
 m_r\ :=\ \inf_{|\xi|\le r} a(\xi)\ =\ \log\pi-\sup_{|\xi|\le r}\Re\psi\Big(\tfrac14+i\pi\xi\Big).
@@ -21,7 +21,7 @@ m_r\ \ge\ \log\pi-\log\sqrt{\tfrac{1}{16}+\pi^2 r^2}-C_0\ =\ \tfrac12\log\Big(\f
 \end{equation}
 This gives an explicit (computable) lower bound $m_r\downarrow 0$ as $r\downarrow0$.
 
-\subsection{Upper bound for $N_{B,r}$}
+\subsection{Upper bound for \texorpdfstring{$N_{B,r}$}{N\_B,r}}
 Let $N_{B,r}=\int_{[-B,B]\setminus[-r,r]} |a(\xi)|\,d\xi$. For $|\xi|\ge r$ and $r\in(0,1]$ we use the asymptotic
 \begin{equation}\label{eq:MD_2_3_constants-formula-8}
 \Re\psi\Big(\tfrac14+i\pi\xi\Big)=\log(\pi|\xi|)+O\Big(\frac{1}{1+|\xi|}\Big),
@@ -32,7 +32,7 @@ N_{B,r}\ \le\ \int_{[-B,-r]\cup[r,B]} \big(\log^+\!\tfrac{1}{|\xi|}+C_1\big)\,d\
 \end{equation}
 In particular, for fixed $B$ and small $r$ one has $N_{B,r}=O\big(r\log\tfrac{1}{r}\big)$.
 
-\subsection{Core mass via $\rho_t(r)$ and Fej\'er area}
+\subsection{Core mass via \texorpdfstring{$\rho_t(r)$}{ρₜ(r)} and Fejér area}
 For any $|\tau|\le B$ and $r\in(0,B)$,
 \begin{equation}\label{eq:MD_2_3_constants-formula-6}
  \int_{-r}^{r}\!\Lambda_B(\xi-\tau)\,\rho_t(\xi-\tau)\,d\xi\ \ge\ \rho_t(r)\int_{\tau-r}^{\tau+r}\!\Lambda_B(x)\,dx\ \ge\ \rho_t(r)\,\frac{r^2}{2B},
