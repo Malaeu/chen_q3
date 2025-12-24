@@ -22,28 +22,31 @@ Given $\Phi\in\mathcal W$, choose $i$ with $\mathrm{supp}\,\Phi\subset[-K_i,K_i]
 \begin{lemma}[Grid-lift by Lipschitz margin]\label{lem:t5-grid-lip}
 Let $Q$ be Lipschitz on $W_K$ with constant $L_Q(K)$ (\textup{A2}). Suppose there exists a uniform grid $\{\tau_j\}$ in $[-K,K]$ of step $\Delta>0$ such that
 \[
-  \min_j Q(\tau_j)\ \ge\ c_0(K)\ > 0
+  \min_j Q(\tau_j)\ \ge\ c_*\ > 0
 \]
-and $\Delta\le c_0(K)/(4L_Q(K))$. Then $\min_{\tau\in[-K,K]} Q(\tau)\ge \tfrac12\,c_0(K)$.
+where $c_*\ge 811/1000$ is the uniform floor from Lemma~\ref{lem:uniform-arch-floor}, and $\Delta\le c_*/(4L_Q(K))$. Then $\min_{\tau\in[-K,K]} Q(\tau)\ge \tfrac12\,c_*$.
 \end{lemma}
 \begin{proof}
 Fix $\tau\in[-K,K]$ and let $\tau_\ast$ be the nearest grid point, so $|\tau-\tau_\ast|\le \Delta/2$. By Lipschitz continuity,
 \[
-  Q(\tau)\ \ge\ Q(\tau_\ast) - L_Q(K)\,|\tau-\tau_\ast|\ \ge\ c_0(K) - L_Q(K)\,\frac{\Delta}{2}
-  \ \ge\ c_0(K) - \frac{c_0(K)}{8}\ \ge\ \tfrac12\,c_0(K).
+  Q(\tau)\ \ge\ Q(\tau_\ast) - L_Q(K)\,|\tau-\tau_\ast|\ \ge\ c_* - L_Q(K)\,\frac{\Delta}{2}
+  \ \ge\ c_* - \frac{c_*}{8}\ \ge\ \tfrac12\,c_*.
 \]
-The last step uses $\Delta\le c_0/(4L_Q)$ twice (once for $\Delta/2$ and a slack factor); any constant $<1/2$ suffices after rescaling.\qedhere
+The last step uses $\Delta\le c_*/(4L_Q)$ twice (once for $\Delta/2$ and a slack factor); any constant $<1/2$ suffices after rescaling.\qedhere
 \end{proof}
-\begin{lemma}[Monotone inheritance across $K$]\label{t5:lem:T5-inheritance}
-Fix an increasing chain $K_0<K_1<\cdots$ and choose the monotone schedules
-$t_{\mathrm{rkhs}}(K_i):=t^{\star}_{\mathrm{T5}}(K_i)$ and $M_i:=M^{\star}(K_i)$ from \eqref{eq:T5-tstar}--\eqref{eq:T5-Mstar}. Then
-\begin{equation}\label{eq:t5_compact_limit_lemmas-L33-042e1eb1}
-  \lambda_{\min}\big(T_{M_i}[P_A]-T_P\big)
-  \ \ge\ \tfrac12\,c_0^{\ast}(K_i)
+
+\begin{lemma}[Uniform inheritance across $K$]\label{t5:lem:T5-inheritance}
+Fix an increasing chain $K_0<K_1<\cdots$. Using the uniform parameters $t_0=7/10$ and $M\ge M_0^{\mathrm{unif}}$
+from Theorem~\ref{thm:A3}, for every $i$ we have
+\begin{equation}\label{eq:T5-uniform-inheritance}
+  \lambda_{\min}\big(T_{M}[P_A]-T_P\big)
+  \ \ge\ \frac{c_*}{4}\ \ge\ \frac{811}{4000}
   \quad\text{on }\mathcal W_{K_i},
 \end{equation}
 and the property propagates from $K_i$ to $K_{i+1}$.
 \end{lemma}
 \begin{proof}
-Lemma~\ref{lem:T5p-grid} with $M_i=M^{\star}(K_i)$ and $t=t^{\star}_{\mathrm{T5}}(K_i)$ gives the lower bound. Since $K\mapsto c_0^{\ast}(K)$ is decreasing and $K\mapsto t^{\star}_{\mathrm{T5}}(K), M^{\star}(K)$ are nondecreasing, the same estimate applies at $K_{i+1}$, so the chain inherits positivity.
+Lemma~\ref{lem:T5p-grid} with uniform parameters gives the lower bound $\ge c_*/4$ for all $K$.
+Since the floor $c_*$ and the parameters $t_0$, $M_0^{\mathrm{unif}}$ are K-independent,
+the same estimate applies at every $K_i$, so the chain inherits positivity uniformly.
 \end{proof}

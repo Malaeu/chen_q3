@@ -1,28 +1,14 @@
-\subsection{Matrix Guards and Mixed Bridge (K-dependent version)}\label{subsec:a3-matrix-guard}
+\subsection{Matrix Guards (General Lemmas)}\label{subsec:a3-matrix-guard}
 
 %% ============================================================================
-%% LEGACY SECTION: K-dependent approach using c_arch(K)
-%%
-%% This section documents the original per-compact approach where all parameters
-%% (M_0, t_rkhs*, etc.) depend on c_arch(K). The MAIN proof chain now uses the
-%% UNIFORM approach from Lemma~\ref{lem:uniform-arch-floor}, which provides
-%% c_* >= 811/1000 independent of K.
-%%
-%% The K-dependent formulas below remain valid but are NOT used in the main proof;
-%% see Corollary~\ref{cor:uniform-discretisation} and Theorem~\ref{thm:rkhs-tstar}
-%% for the uniform versions.
+%% CLEANED UP: December 2025
+%% K-dependent propositions (M_0(K), t_rkhs*(K), c_arch(K)) have been removed.
+%% The main proof uses the UNIFORM approach from Lemma~\ref{lem:uniform-arch-floor}.
+%% This section now contains only the general matrix lemmas used by the uniform proof.
 %% ============================================================================
 
-\begin{center}
-\fbox{\parbox{0.9\textwidth}{\textbf{Note:} This subsection uses \emph{K-dependent} parameters
-$c_{\mathrm{arch}}(K)$, $M_0(K)$, $t_{\mathrm{rkhs}}^\star(K)$. The main proof chain uses the
-\emph{uniform} floor $c_*\ge 811/1000$ from Lemma~\ref{lem:uniform-arch-floor} instead,
-with corresponding uniform thresholds $M_0^{\mathrm{unif}}$ and $t_{\mathrm{rkhs}}^{\mathrm{unif}}$.}}
-\end{center}
-
-The analytic constants from Sections~\ref{subsec:a3-rayleigh}--\ref{subsec:a3-fejer-modulus}
-feed into two matrix guards: a Frobenius drift control and the Szeg\H{o}--B\"ottcher barrier.
-Together with the RKHS prime cap they deliver the mixed lower bound required for Track~B.
+The lemmas below provide the Frobenius drift control and Szeg\H{o}--B\"ottcher barrier
+used in the uniform A3 bridge (Theorem~\ref{thm:A3}).
 
 \begin{lemma}[Hoffman--Wielandt and Ky Fan guard]\label{lem:hw-kf}
 Let $A,B\in\mathbb{C}^{M\times M}$ be Hermitian and set $E:=B-A$. Denote by $\lambda_i^{\downarrow}(A)$ the eigenvalues of~$A$ in non-increasing order. Then, for every $1\le k\le M$,
@@ -70,107 +56,30 @@ Corollary~5.7 in Chapter~5); see also Grenander--Szeg\H{o} (Ch.~3) and Varga's \
 For the Lipschitz/H\"older classes relevant here the constant in front of the modulus is $C_{\mathrm{SB}}=4$.
 
 Lemma~\ref{lem:a3-sb-barrier} is the only place where this numerical constant enters our treatment of A3.
-Coupled with the RKHS prime contraction (Theorem~\ref{thm:rkhs-tstar}) and the discretisation threshold below,
-it yields the mixed lower bound summarised in Theorem~\ref{thm:A3}.
+Coupled with the RKHS prime contraction (Theorem~\ref{thm:rkhs-tstar}) and the uniform floor $c_*\ge 811/1000$,
+it yields the mixed lower bound in Theorem~\ref{thm:A3}.
 \end{remark}
 
 \begin{remark}[Operator difference vs.\ symbol difference]\label{rem:a3-operator-diff}
-When applying Lemma~\ref{lem:a3-sb-barrier} and Proposition~\ref{prop:a3-m0} we always work with
+When applying Lemma~\ref{lem:a3-sb-barrier} we always work with
 the Toeplitz operators $T_M[P_A]$ and $T_M[P_A]-T_P$; no ``symbol minus symbol'' simplification
 is invoked.  The lower bounds track the operator difference directly, so all perturbative terms
 are measured in operator/Frobenius norms as mandated by Lemma~\ref{lem:hw-kf}.
 \end{remark}
 
-\begin{proposition}[Discretisation threshold for $T_M(P_A)$]\label{prop:a3-m0}
-Fix $K>0$ and choose parameters $(B,r,t_{\mathrm{sym}})$ producing the symbol margin
-$c_{\mathrm{arch}}(K)>0$ of Corollary~\ref{cor:a3-arch-floor-compact}.  Let
-$L_A(B,t_{\mathrm{sym}})$ be the Lipschitz constant from Lemma~\ref{lem:a3-lipschitz-bound} and define
-\[
-  M_0(K)\ :=\ \Biggl\lceil \frac{2\pi\,C_{\mathrm{SB}}\,L_A(B,t_{\mathrm{sym}})}{c_{\mathrm{arch}}(K)} \Biggr\rceil.
-\]
-Then for every $M\ge M_0(K)$,
-\[
-  \lambda_{\min}\!\bigl(T_M[P_A]\bigr)\ \ge\ \tfrac12\,c_{\mathrm{arch}}(K).
-\]
-\end{proposition}
-
-\begin{proof}
-Lemma~\ref{lem:a3-lipschitz-bound} gives $\omega_{P_A}(\pi/M)\le L_A(B,t_{\mathrm{sym}})\,\pi/M$.
-Insert this bound into Lemma~\ref{lem:a3-sb-barrier} and take $M\ge M_0(K)$ so that
-$C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M)\le \tfrac12\,c_{\mathrm{arch}}(K)$.
-\end{proof}
-
-\begin{proposition}[Prime cap from the RKHS contraction]\label{prop:a3-prime-cap}
-Let $K>0$ and set
-\[
-  t_{\mathrm{rkhs}}^\star(K)\ :=\ \frac{1}{8\pi^2}\left(\frac12 + \frac{4e^{1/4}}{c_{\mathrm{arch}}(K)}\right).
-\]
-For every $t_{\mathrm{rkhs}}\ge t_{\mathrm{rkhs}}^\star(K)$ the symmetrised prime operator satisfies
-\[
-  \|T_P\|\ \le\ \rho(t_{\mathrm{rkhs}})\ \le\ \frac{c_{\mathrm{arch}}(K)}{4},
-\]
-where $\rho(t)$ is the Gaussian norm cap defined in Lemma~\ref{pm:lem:sum-to-rho}.
-\end{proposition}
-
-\begin{proof}
-Proposition~\ref{pm:prop:norm-leq-rho} gives $\|T_P\|\le\rho(t)$ for every $t>0$.  For $y\ge0$ we
-have $y/2 \le y^2/4 + 1/4$, hence $e^{y/2}\le e^{1/4} e^{y^2/4}$.  Lemma~\ref{pm:lem:sum-to-rho}
-therefore implies
-\[
-  \rho(t)
-  \;=\; \int_{0}^{\infty} y\,e^{y/2}\,e^{-4\pi^2 t y^2}\,dy
-  \;\le\; e^{1/4}\!\int_{0}^{\infty} y\,e^{-(4\pi^2 t - \tfrac14)y^2}\,dy
-  \;=\; \frac{e^{1/4}}{8\pi^2 t - \tfrac12},
-\]
-provided $t>1/(16\pi^2)$.  The definition of $t_{\mathrm{rkhs}}^\star(K)$ ensures both
-$t_{\mathrm{rkhs}}^\star(K) > 1/(16\pi^2)$ and
-$8\pi^2 t_{\mathrm{rkhs}}^\star(K) - \tfrac12 = 4 e^{1/4}/c_{\mathrm{arch}}(K)$.  Thus for every
-$t_{\mathrm{rkhs}}\ge t_{\mathrm{rkhs}}^\star(K)$ we obtain
-\(
-  \rho(t_{\mathrm{rkhs}}) \le e^{1/4} / (8\pi^2 t_{\mathrm{rkhs}} - \tfrac12)
-  \le c_{\mathrm{arch}}(K)/4,
-\)
-which is the claimed bound.
-\end{proof}
-
-\begin{theorem}[Mixed Toeplitz--prime margin]\label{thm:a3-mixed-margin}
-Fix $K>0$ and choose smoothing parameters $(B,t_{\mathrm{sym}})$ such that the Archimedean margin
-$c_{\mathrm{arch}}(K)$ from Corollary~\ref{cor:a3-arch-floor-compact} is positive.  Let
-$t_{\mathrm{rkhs}}\ge t_{\mathrm{rkhs}}^\star(K)$ and $M_0(K)$ be given by
-Proposition~\ref{prop:a3-m0}.  Then for every $M\ge M_0(K)$
-\[
-  \lambda_{\min}\!\bigl(T_M[P_A]-T_P\bigr)
-  \ \ge\ c_{\mathrm{arch}}(K)\ -\ C_{\mathrm{SB}}\,\omega_{P_A}\!\Bigl(\frac{\pi}{M}\Bigr)\ -\ \rho(t_{\mathrm{rkhs}}),
-\]
-and in particular
-\[
-  \lambda_{\min}\!\bigl(T_M[P_A]-T_P\bigr)\ \ge\ \frac{c_{\mathrm{arch}}(K)}{4},
-\]
-because Proposition~\ref{prop:a3-prime-cap} ensures $\rho(t_{\mathrm{rkhs}})\le c_{\mathrm{arch}}(K)/4$ and
-Proposition~\ref{prop:a3-m0} yields $C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M)\le c_{\mathrm{arch}}(K)/2$ for
-all $M\ge M_0(K)$.
-\end{theorem}
-
-\begin{proof}
-Combine Lemma~\ref{lem:a3-sb-barrier} with Lemma~\ref{lem:a3.lip-floor} to control the Toeplitz part
-and apply Proposition~\ref{prop:a3-prime-cap} to the prime component.  The stated lower bound follows
-once we impose $t_{\mathrm{rkhs}}\ge t_{\mathrm{rkhs}}^\star(K)$ and $M\ge M_0(K)$.
-\end{proof}
-
-\begin{remark}[Bridge to the IND schedule]\label{rem:a3-ind-bridge}
-For the IND/AB block induction one may adopt the analytic budgets
-$\varepsilon(K):=c_{\mathrm{arch}}(K)/4$ and $M_0(K)$ from
-Proposition~\ref{prop:a3-m0}.  These choices coincide with the guard required by
-Theorem~\ref{thm:a3-mixed-margin}, while the Frobenius slack of
-Corollary~\ref{cor:toeplitz-frob} distributes the residual perturbative budgets across the blocks.
-Lemma~\ref{lem:rkhs-uniform-cap-full} fixes the RKHS scale at $t_0=\tfrac{7}{10}$, giving the uniform
-prime cap $\rho(t_0)\le 1/25$ used throughout the YES-gate checks.
-\end{remark}
-
-\begin{remark}
+\begin{remark}[Frobenius norm structure]
 For Hermitian Toeplitz matrices with first row $c_0,\dots,c_{M-1}$ and coefficients $c_{-k}=\overline{c_k}$, one has
 \(\|T_M[P]\|_F^2 = M|c_0|^2 + 2\sum_{k=1}^{M-1} (M-k)|c_k|^2\).
 Hence a split budget $\varepsilon = \varepsilon^{\mathrm{F}}_{\text{tail}} + \varepsilon^{\mathrm{F}}_{\text{grid}} + \varepsilon^{\mathrm{F}}_{\text{num}}$ controls the total spectral drift of $T_P$ relative to the capped operator.
 \end{remark}
 
-\paragraph{Interaction with the resolvent watchdog.} The resolvent trace $Q_\varepsilon(\tau)=\mathrm{Tr}\bigl((A(\tau)^2+\varepsilon^2 I)^{-1}\bigr)$ obeys $Q_\varepsilon(\tau)\le 4M/c_0^2$ whenever $\lambda_{\min}(A(\tau))\ge c_0/2$. Combining this with Corollary~\ref{cor:toeplitz-frob} yields a single Frobenius guard: if $Q_\varepsilon(\tau)\le 4M/c_0^2$ and the total Frobenius budget satisfies $\varepsilon^{\mathrm{F}}_{\text{tail}}+\varepsilon^{\mathrm{F}}_{\text{grid}}+\varepsilon^{\mathrm{F}}_{\text{num}}\le c_0/4$, then $\lambda_{\min}(T_M[P_A(\tau)]-T_P)\ge c_0/4$ for the entire grid. This is the Budgeted Resolvent Certificate (BRC) used in the acceptance gate.
+%% ============================================================================
+%% REMOVED (December 2025 cleanup): K-dependent propositions and theorems
+%% - Proposition prop:a3-m0 (discretisation threshold with M_0(K))
+%% - Proposition prop:a3-prime-cap (prime cap with c_arch(K))
+%% - Theorem thm:a3-mixed-margin (mixed margin with c_arch(K))
+%% - Remark rem:a3-ind-bridge (bridge to IND with c_arch(K))
+%%
+%% The main proof now uses the uniform floor c_* >= 811/1000 from
+%% Lemma~\ref{lem:uniform-arch-floor} and Theorem~\ref{thm:A3}.
+%% ============================================================================

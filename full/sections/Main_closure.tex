@@ -6,25 +6,19 @@ Throughout this section we rely only on the following proved ingredients:
   \item \textbf{(T0) Normalization.} Guinand--Weil crosswalk and our conventions, cf.\ Proposition~\ref{prop:T0-GW} (Section~\ref{sec:T0}).
   \item \textbf{(A1$'$) Density.} The Fej\'er$\times$heat cone is dense in $W_K$, cf.\ Theorem~\ref{a1:thm:A1-local-density}.
   \item \textbf{(A2) Continuity.} The Weil functional $Q$ is continuous on $W_K$ with a modulus $L_Q(K)$ (Section~\ref{sec:A2}).
-  \item \textbf{(A3) Toeplitz bridge.} For $M\ge M_0(K)$ one has
+  \item \textbf{(A3) Uniform Toeplitz bridge.} Theorem~\ref{thm:A3} provides: for all $M\ge M_0^{\mathrm{unif}}$,
   \[
-    \lambda_{\min}\!\big(T_M[P_A]-\mathcal T_P\big)\ \ge\ c_0(K)-C_T\,\omega_{P_A}\!\Big(\tfrac{\pi}{M}\Big)-\|\mathcal T_P\|,
+    \lambda_{\min}\!\big(T_M[P_A]-\mathcal T_P\big)\ \ge\ \frac{c_*}{4}\ \ge\ \frac{811}{4000}\ >\ 0.2,
   \]
-  with analytic $c_0(K)\ge c_*\ge 811/1000$ (uniform floor from Lemma~\ref{lem:uniform-arch-floor}), $\omega_{P_A}$, $C_T$, cf.\ Theorem~\ref{thm:A3}.
-  \item \textbf{(RKHS) Prime contraction.} For $t\ge t^\star_{\mathrm{rkhs}}(K)$ one has
+  where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:uniform-arch-floor}.
+  \item \textbf{(RKHS) Uniform prime contraction.} Theorem~\ref{thm:rkhs-tstar} with $t_0=7/10$ gives
   \(
-    \|\mathcal T_P\|\le \rho\!\big(t^\star_{\mathrm{rkhs}}(K)\big)\le \tfrac14\,c_0(K),
+    \|\mathcal T_P\|\le \rho(t_0)\le \frac{1971}{50000} < \frac{c_*}{4}.
   \)
-  cf.\ Theorem~\ref{thm:rkhs-tstar} (Section~\ref{sec:rkhs-prime-cap}).
-  \item \textbf{(T5) Compact transfer.} With the monotone schedules $t^\star_{\mathrm{T5}}(K)$, $M^\star(K)$ from \eqref{eq:T5-tstar}--\eqref{eq:T5-Mstar}, one has
-  \(
-    \lambda_{\min}\!\big(T_{M^\star(K)}[P_A]-\mathcal T_P\big)\ge\tfrac12\,c_0^\ast(K),
-  \)
-  hence $Q\ge0$ on $W_K$, cf.\ Theorem~\ref{thm:T5-compact}.
 \end{itemize}
 
 \begin{theorem}[Main positivity]\label{thm:Main-positivity}
-If \textup{(T0)}+\textup{(A1$'$)}+\textup{(A2)}+\textup{(A3)}+\textup{(RKHS)}+\textup{(T5)} hold, then
+If \textup{(T0)}+\textup{(A1$'$)}+\textup{(A2)}+\textup{(A3)} hold, then
 \[
   Q(\Phi)\ \ge\ 0\qquad\text{for every even, real, compactly supported }\Phi\in \mathcal W,
 \]
@@ -32,13 +26,21 @@ where $\mathcal W=\bigcup_{K>0}\mathcal W_K$ is the Weil cone from Section~\ref{
 \end{theorem}
 
 \begin{proof}
-Fix $K>0$. By \textup{(T5)} with the monotone schedules $t^\star_{\mathrm{T5}}(K)$, $M^\star(K)$, Lemma~\ref{lem:T5p-grid} together with Theorem~\ref{thm:A3} yield
+Fix $K>0$. By Theorem~\ref{thm:A3} (uniform A3 bridge) with the uniform floor $c_*\ge 811/1000$,
+we have
 \[
-  \lambda_{\min}\!\big(T_{M^\star(K)}[P_A]-\mathcal T_P\big)\ \ge\ \tfrac12\,c_0^\ast(K)\ >\ 0.
+  \lambda_{\min}\!\big(T_M[P_A]-\mathcal T_P\big)\ \ge\ \frac{c_*}{4}\ >\ 0
 \]
-Hence the finite Toeplitz form is nonnegative on the Fej\'er$\times$heat cone. By \textup{(A1$'$)} the cone is dense in $W_K$, and by \textup{(A2)} the functional $Q$ is continuous; therefore $Q\ge0$ on $W_K$. Taking the union over all $K$ shows $Q\ge0$ on $W$. Finally \textup{(T0)} identifies this $Q$ with the canonical Weil functional.
+for all $M\ge M_0^{\mathrm{unif}}$. Hence the finite Toeplitz form is nonnegative on the Fej\'er$\times$heat cone.
+By \textup{(A1$'$)} the cone is dense in $W_K$, and by \textup{(A2)} the functional $Q$ is continuous;
+therefore $Q\ge0$ on $W_K$. Taking the union over all $K$ shows $Q\ge0$ on $\mathcal W$.
+Finally \textup{(T0)} identifies this $Q$ with the canonical Weil functional.
 \end{proof}
 
-\begin{remark}[No numerics, no ATP]
-The proof of Theorem~\ref{thm:Main-positivity} uses only analytic bounds established in Sections~\ref{sec:T0}--\ref{sec:T5}; legacy numerical certificates and ATP logs are archived separately for reproducibility but play no role in the argument.
+\begin{remark}[No numerics, no ATP, no K-dependent parameters]
+The proof of Theorem~\ref{thm:Main-positivity} uses only the uniform analytic bounds:
+$c_*\ge 811/1000$ (Lemma~\ref{lem:uniform-arch-floor}) and $\rho(7/10)\le 1971/50000$ (Theorem~\ref{thm:rkhs-tstar}).
+No K-dependent schedules $t_{\mathrm{rkhs}}(K)$, $M_0(K)$, or $c_0(K)$ appear in the argument.
+Legacy numerical certificates and ATP logs are archived separately for reproducibility
+but play no role in the proof.
 \end{remark}

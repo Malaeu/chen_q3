@@ -83,70 +83,14 @@ holds for $(B,t_{\mathrm{rkhs}})$ (Lemma~\ref{lem:trace-cap-bound}).  Then $\TPA
 Apply Lemmas~\ref{lem:a3.two-scale} and \ref{lem:a3.lip-floor}, together with the stated trace-cap inequality.
 \end{proof}
 
-\paragraph{Collected analytic constants and path choice.}
-For a fixed compact $[-K,K]$ define $c_{\mathrm{arch}}(K)$, $L_A(B,t_{\mathrm{sym}})$ and $M_0(K)$ as in Corollary~\ref{cor:a3-arch-floor-compact} and Corollary~\ref{cor:a3-omega-fejer}.  Throughout the bridge we adopt the RKHS contraction route and set
-\[
-  \rho_K := \rho\bigl(t_{\mathrm{rkhs}}^\star(K)\bigr),\qquad
-  t_{\mathrm{rkhs}}^\star(K) := \frac{1}{8\pi^2}\left(\frac12 + \frac{4e^{1/4}}{c_{\mathrm{arch}}(K)}\right),
-\]
-so that Proposition~\ref{prop:a3-prime-cap} guarantees $\|T_P\|\le \rho_K \le c_{\mathrm{arch}}(K)/4$ for every $t_{\mathrm{rkhs}}\ge t_{\mathrm{rkhs}}^\star(K)$.  (The MD/IND alternative is archived separately and not used in this track.)
+%% LEGACY: The K-dependent path choice (c_arch(K), t_rkhs*(K), ρ_K) has been removed.
+%% The main proof uses the uniform floor c_* >= 811/1000 from Lemma~\ref{lem:uniform-arch-floor}.
 
-%% ============================================================================
-%% LEGACY: Lemma below uses B^{(1)}_K = M_B/(4π²r) but the correct formula
-%% from Lemma 8.11 requires B^{(1)}_K = M_B·r/(4π²) (dimension mismatch).
-%% This is superseded by the uniform approach in Lemma~\ref{lem:uniform-arch-floor}
-%% which provides c_* >= 811/1000 without needing constructive parameter recipes.
-%% Retained for historical reference only; NOT used in the main proof chain.
-%% ============================================================================
-\begin{lemma}[Constructive parameter recipe -- \textbf{LEGACY}]\label{lem:a3-constructive-schedule}
-\textbf{Note:} This lemma is superseded by the uniform floor Lemma~\ref{lem:uniform-arch-floor}.
-The definition of $B_K^{(1)}$ below has a dimension inconsistency with Lemma~\ref{lem:a3-core-lower-bound};
-the main proof uses $c_*\ge 811/1000$ from the uniform approach instead.
-
-\medskip\noindent
-Fix the parameter $\kappa\in(0,1)$ used in Lemma~\ref{lem:uniform-arch-floor}. There exists $r_0\in(0,1)$ such that $m_{r_0}>0$ (for example $r_0=\tfrac{1}{16}$ because $a(0)=\log\pi-\Re\psi(\tfrac14)>0$). For each $K>0$ set
-\[
-  B(K):=\Bigl\lceil \frac{K}{1-\kappa}\Bigr\rceil,\qquad
-  r(K):=\min\Bigl\{\frac{K}{2},\,r_0\Bigr\},
-\]
-and define
-\[
-  A_K := 2m_{r(K)}\,r(K)\Bigl(1-\frac{r(K)}{B(K)}\Bigr),\qquad
-  B_{K}^{(1)} := \frac{M_{B(K)}}{4\pi^2 r(K)},\qquad
-  D_K := \pi\,\|K'\|_{L^1(\TT)}\,\TV(a).
-\]
-For $\theta>0$ put
-\[
-  F_K(\theta)\ :=\ e^{-4\pi^2\theta}\Bigl(A_K-\frac{B_{K}^{(1)}}{\theta}\Bigr)\ -\ \frac{D_K}{\theta}.
-\]
-Let $\theta_1(K):=\max\{1,\,2B_{K}^{(1)}/A_K\}$ and denote by $\theta_2(K)$ the smallest positive solution of $\frac{4D_K}{A_K}=\theta\,e^{-4\pi^2\theta}$ (exists because $\max_{\theta>0}\theta e^{-4\pi^2\theta}=\tfrac{1}{4\pi^2 e}$).  Set
-\[
-  \theta^\star(K):=\max\{\theta_1(K),\theta_2(K)\},\qquad
-  t_{\mathrm{sym}}(K):=\frac{\theta^\star(K)}{r(K)^2},
-\]
-and
-\[
-  c_{\mathrm{arch}}(K) := \underline{A}_0\bigl(B(K),r(K),t_{\mathrm{sym}}(K)\bigr)
-  - \pi L_A\bigl(B(K),t_{\mathrm{sym}}(K)\bigr).
-\]
-Finally define
-\[
-  M_0(K):=\Biggl\lceil \frac{2\pi\,C_{\mathrm{SB}}\,L_A\bigl(B(K),t_{\mathrm{sym}}(K)\bigr)}{c_{\mathrm{arch}}(K)} \Biggr\rceil,
-  \qquad
-  t_{\mathrm{rkhs}}^\star(K):=\frac{1}{8\pi^2}\left(\frac12 + \frac{4e^{1/4}}{c_{\mathrm{arch}}(K)}\right).
-\]
-Then $c_{\mathrm{arch}}(K)>0$, and the triple $\bigl(B(K),t_{\mathrm{sym}}(K),t_{\mathrm{rkhs}}^\star(K)\bigr)$ satisfies \textnormal{(A3.1)}–\textnormal{(A3.3)}.
-\end{lemma}
-
-\begin{proof}
-Lemma~\ref{lem:a3-core-lower-bound} gives
-\[
-  \underline{A}_0(B,r,t_{\mathrm{sym}})
-  = e^{-4\pi^2 t_{\mathrm{sym}} r^2}
-    \Bigl(2m_r r\bigl(1-\tfrac{r}{B}\bigr) - \frac{M_B}{4\pi^2 t_{\mathrm{sym}} r}\Bigr),
-\]
-so the condition $\theta\ge\theta_1(K)$ (with $\theta=t_{\mathrm{sym}}r(K)^2$) makes the expression in parentheses $\ge A_K/2$.  Lemma~\ref{lem:a3-lipschitz-bound} supplies the Lipschitz estimate.  At $\theta=\theta_2(K)$ we balance exponential and polynomial terms so that $e^{-4\pi^2\theta}\frac{A_K}{2}\ge \frac{2D_K}{\theta}$; hence at $\theta^\star=\max\{\theta_1,\theta_2\}$ we have $F_K(\theta^\star)\ge \frac{A_K}{4}e^{-4\pi^2\theta^\star}$.  Consequently $c_{\mathrm{arch}}(K)\ge \tfrac14 A_K e^{-4\pi^2\theta^\star(K)}>0$ (all quantities $M_B,\TV(a)$ finite on $[-B,B]$; $m_r>0$ for small $r$ by continuity of $a$ and explicit digamma properties), establishing \textnormal{(A3.1)}.  Proposition~\ref{prop:a3-m0} with $C_{\mathrm{SB}}=4$ yields \textnormal{(A3.2)}, and Proposition~\ref{prop:a3-prime-cap} provides the stated $t_{\mathrm{rkhs}}^\star(K)$ satisfying \textnormal{(A3.3)}.  The bounds on $m_r$ and $M_B$ used above follow from the digamma inequalities recalled in Section~\ref{sec:T0} and Appendix~\ref{app:md23-constants}.
-\end{proof}
+%% LEGACY LEMMA REMOVED (December 2025 cleanup)
+%% The K-dependent constructive parameter recipe (θ₂, c_arch(K), etc.) has been removed
+%% from the main proof chain. The main proof now uses only the uniform approach from
+%% Lemma~\ref{lem:uniform-arch-floor} which provides c_* >= 811/1000.
+%% See Appendix for historical reference if needed.
 
 \paragraph{A3 input summary (uniform version).}
 \begin{enumerate}[label=(A3-U.\arabic*)]
@@ -155,11 +99,9 @@ so the condition $\theta\ge\theta_1(K)$ (with $\theta=t_{\mathrm{sym}}r(K)^2$) m
   \item \emph{Uniform discretisation.} Corollary~\ref{cor:uniform-discretisation} provides $M_0^{\mathrm{unif}}$ such that $\lambda_{\min}(T_M[P_A])\ge c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
 \end{enumerate}
 
-\begin{remark}[Legacy K-dependent summary -- not used]
-The original per-compact summary used $c_{\mathrm{arch}}(K)$, $t_{\mathrm{rkhs}}^\star(K)$, $M_0(K)$ from
-Corollaries~\ref{cor:a3-arch-floor-compact}--\ref{cor:a3-omega-fejer} and Propositions~\ref{prop:a3-m0}--\ref{prop:a3-prime-cap}.
-This approach is superseded by the uniform version above and is retained only for historical reference.
-\end{remark}
+%% Legacy K-dependent remark removed (December 2025 cleanup).
+%% The original per-compact summary used c_arch(K), t_rkhs*(K), M_0(K).
+%% This is superseded by the uniform version above.
 
 %% NOTE: The uniform approach (Lemma 8.17') gives a K-independent floor c_* >= 811/1000
 %% on the FULL circle T, not just an arc. This supersedes the arc-based approach.
@@ -170,11 +112,8 @@ The uniform Archimedean floor (Lemma~\ref{lem:uniform-arch-floor}) provides a \t
 valid for the \textbf{entire circle} $\TT$, i.e., $\min_{\theta\in\TT}P_A(\theta)\ge c_*$ for all $B\ge B_{\min}$.
 This eliminates the need for arc-based constructions ($\Gamma_K$) and provides a simpler, cleaner proof.
 
-\begin{remark}[Reproducibility -- not part of proof]
-Historical arc data $(\Gamma_K,\min_{\Gamma_K}P_A)$ and JSON files \path{cert/bridge/K*_A3_floor.json}
-are archived for reproducibility purposes only; they are \textbf{not used} in the main proof chain,
-which relies entirely on the analytic bound $c_*\ge 811/1000$.
-\end{remark}
+%% Remark about legacy arc data and JSON files removed (December 2025 cleanup).
+%% The main proof relies entirely on the analytic bound c_* >= 811/1000.
 
 \begin{theorem}[A3 bridge inequality]\label{thm:A3}
 Let $K>0$ and use the uniform floor $c_*\ge 811/1000$ from Lemma~\ref{lem:uniform-arch-floor}.

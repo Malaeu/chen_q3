@@ -64,15 +64,18 @@ which is the desired identity.
 \end{proof}
 
 \begin{proposition}[Bridge margin calibration]\label{prop:a3-calib}
-Under Assumptions \textnormal{(A3.1)--(A3.3)} and the standing slack $\rhok\le \czero/2$ the mixed Toeplitz block satisfies
+Under the uniform floor $c_*\ge 811/1000$ from Lemma~\ref{lem:uniform-arch-floor} and the prime cap $\rho(t_0)<c_*/4$, the mixed Toeplitz block satisfies
 \[
-  \lammin\!\bigl(T_M[\Pa]-T_P\bigr)\ \ge\ \tfrac12\bigl(\czero-\rhok\bigr)
+  \lammin\!\bigl(T_M[\Pa]-T_P\bigr)\ \ge\ \frac{c_*}{4}
 \]
-for every $M\ge M_0(K)$ in Theorem~\ref{thm:A3}.
+for every $M\ge M_0^{\mathrm{unif}}$ in Theorem~\ref{thm:A3}.
 \end{proposition}
 
 \begin{proof}
-Theorem~\ref{thm:A3} yields $\lammin(T_M[\Pa]-T_P)\ge \czero-C_{\mathrm{SB}}\omega_{\Pa}(\pi/M)-\|T_P\|_{\op}$. Assumption (A3.3) ensures $C_{\mathrm{SB}}\omega_{\Pa}(\pi/M)\le \tfrac12(\czero-\rhok)$, and (A3.2) gives $\|T_P\|_{\op}\le \rhok \le \tfrac12(\czero-\rhok)$, producing the stated bound.
+Theorem~\ref{thm:A3} yields $\lammin(T_M[\Pa]-T_P)\ge c_*-C_{\mathrm{SB}}\omega_{\Pa}(\pi/M)-\|T_P\|_{\op}$.
+For $M\ge M_0^{\mathrm{unif}}$, Corollary~\ref{cor:uniform-discretisation} ensures $C_{\mathrm{SB}}\omega_{\Pa}(\pi/M)\le c_*/2$.
+Theorem~\ref{thm:rkhs-tstar} gives $\|T_P\|_{\op}\le \rho(t_0) < c_*/4$.
+Thus $\lammin \ge c_* - c_*/2 - c_*/4 = c_*/4$.
 \end{proof}
 
 \begin{remark}[Evenization does not increase $C_0$]

@@ -295,41 +295,31 @@ $\bigcup_i W_{K_i}$.
 \end{remark}
 \subsection*{Analytic prime caps and the PCU theorem}
 
-\begin{theorem}[Prime-Cap Uniform (PCU)]\label{thm:pcu-main}
-There exist an explicit function $t_{\mathrm{pr}}(K)>0$ and a constant $\beta\in(0,1/2]$ such that for every compact $[-K,K]$ one has
+\begin{corollary}[Uniform prime cap at $t_0=7/10$]\label{cor:pcu-uniform}
+Let $t_0:=7/10$. Then
 \[
-  \|T_P\| \le \rho_{\mathrm{cap}} \le \beta\,c_*,
+  \|T_P\|\le \rho(t_0)\le \frac{1971}{50000}<\frac{c_*}{4},
 \]
-where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:uniform-arch-floor} and $\rho_{\mathrm{cap}}$ is any one of the analytic bounds built below.  Two concrete realizations are available:
-\begin{enumerate}[label=(\roman*)]
-  \item \textbf{Uniform trace cap.} Fix $t_{\mathrm{pr}}(K)\equiv 1$.  Lemma~\ref{pm:lem:rho-closed-form} evaluates the closed form~\eqref{eq:rho-closed-form} and gives
-  \[
-    \rho_{\mathrm{cap}}(K)=\rho(1)=0.027199800082174495\ldots<\tfrac{1}{25}
-  \]
-  uniformly in $K$.  Consequently PCU holds whenever $c_0(K)\ge 4\rho(1)$, which is met by the spectral Archimedean floors recorded in \path{cert/bridge/K*_A3_floor.json}.
-  \item \textbf{RKHS cap.} Choose $\eta_K\in(0,1-w_{\max})$, set $t_{\mathrm{pr}}(K)=t_{\min}(K)$ from~\eqref{eq:tmin}, and take
-  \[
-    \rho_{\mathrm{cap}}(K)=w_{\max}+\sqrt{w_{\max}}\;S_K\big(t_{\min}(K)\big),
-  \]
-  so PCU holds once $w_{\max}+\sqrt{w_{\max}}\eta_K\le \beta\,c_0(K)$.
-\end{enumerate}
-In either realization, the mixed bridge inequality
-\[
-  \lambda_{\min}\big(T_M[P_A]-T_P\big)
-  \ge c_0(K)-C_{\mathrm{SB}}\omega_{P_A}\Big(\frac{\pi}{M}\Big)-\rho_{\mathrm{cap}}(K)
-\]
-is positive whenever $C_{\mathrm{SB}}\omega_{P_A}(\pi/M)\le \tfrac12(1-\beta)c_0(K)$ and PCU applies.
-\end{theorem}
+where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:uniform-arch-floor}.
+\end{corollary}
 
-\paragraph{Implementation link.}
-\texttt{sections/RKHS/prime\_cap\_table.tex} reads $(c_0(K),\,t_{\mathrm{pr}},\,\rho_{\mathrm{cap}})$ directly from the spectral Archimedean floors \path{cert/bridge/K*_A3_floor.json} and the trace-cap certificates \path{cert/pcu/K*_pcu_trace.json}.  Each JSON stores the tuple $(K, t_{\mathrm{pr}}=1, \beta=\tfrac12, \rho(1))$ so that the acceptance checks in Appendix~\ref{sec:verification} can trace every numeric value in the text back to an immutable artifact.
+\begin{proof}
+Lemma~\ref{pm:lem:rho-closed-form} evaluates $\rho(7/10)\le 1971/50000 = 0.03942$.
+Lemma~\ref{lem:uniform-arch-floor} gives $c_*\ge 811/1000$, so $c_*/4 \ge 811/4000 \approx 0.203$.
+Since $0.03942 < 0.203$, the uniform prime cap satisfies $\rho(t_0) < c_*/4$.
+\end{proof}
 
-\paragraph{ATP linkage (FAST vs.\ FULL).}
-For every compact in the audit list we mechanically check the implication
-\[
-  \bigl(\texttt{pcu\_ok}(K)\ \wedge\ \texttt{grid\_ok}(K)\bigr)\ \Rightarrow\ \texttt{lam\_pos}(K)
-\]
-in two modes.  The FAST mode emits boolean facts \texttt{pcu\_ok(k)}, \texttt{grid\_ok(k)} from the JSON certificates and lets Vampire 5.0.0 discharge the propositional implication (logs: \path{proofs/PCU_to_T5/logs_fast/}).  The FULL mode replays the TFF arithmetic version \path{tptp/pcu_to_t5.p} with the explicit constants from the same JSONs (logs: \path{proofs/PCU_to_T5/logs/}).  Both modes rely on the same spectral floors and trace caps; FAST guards CI, while FULL runs nightly.
+\begin{remark}[No K-dependent parameters]
+The uniform prime cap uses only the fixed parameter $t_0=7/10$ and the
+uniform floor $c_*\ge 811/1000$. No K-dependent schedules appear in the argument.
+\end{remark}
 
-\begin{remark}
-In the acceptance pipeline we fix $\beta=1/2$.  The trace cap uses $t_0=1$, giving $\rho_{\mathrm{cap}}=\rho(1)=0.027199800082174495\ldots<1/25$ (Lemma~\ref{pm:lem:rho-closed-form}); the RKHS cap allows larger $t_{\mathrm{pr}}$ at the cost of tracking $\eta_K$.\end{remark}
+%% ============================================================================
+%% REMOVED (December 2025 cleanup): K-dependent PCU theorem and JSON references
+%% - Theorem thm:pcu-main with c_0(K) and t_pr(K)
+%% - "Implementation link" paragraph with cert/bridge/*.json references
+%% - "ATP linkage" paragraph with Vampire and TPTP references
+%%
+%% The main proof now uses only Corollary~\ref{cor:pcu-uniform} with uniform bounds.
+%% Legacy JSON certificates are archived in Appendix for reproducibility only.
+%% ============================================================================
