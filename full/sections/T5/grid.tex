@@ -1,6 +1,10 @@
-\subsection{Grid lift}
+\subsection{Grid lift (legacy reproducibility version)}
 
-\begin{lemma}[Grid lift with certified parameters]\label{lem:T5p-grid}\label{lem:t5-grid-lift}
+%% NOTE: This subsection documents the LEGACY grid-lift approach using JSON certificates.
+%% The MAIN proof uses the analytic version in compact_transfer.tex (Lemma lem:T5p-grid).
+%% All JSON references below are for reproducibility only and do not enter the logical proof.
+
+\begin{lemma}[Grid lift with certified parameters -- \textbf{LEGACY}]\label{lem:t5-grid-lift-legacy}
 For every compact $[-K,K]$ listed in Table~\ref{tab:T5-grid-lip}, the legacy grid certificates \texttt{cert/bridge/K\_{}\emph{K}\_grid.json} provide a shift step $\Delta_K$ and Lipschitz constant $L_Q(K)$ satisfying
 \[
   m_{\mathrm{full}}(K)\ :=\ \tfrac{1}{2}c_0(K)\;-\;L_Q(K)\,\Delta_K\ =\ \tfrac{1}{4}c_0(K)\ >\ 0.
