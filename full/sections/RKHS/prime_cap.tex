@@ -136,7 +136,7 @@ Therefore the uniform prime cap \(\|T_P\|\le \rho(t_0)\le\tfrac{1}{25}\) holds f
   := \frac{c_*}{4}-\rho(t_0)
   \ge \frac{811/1000}{4}-\RhoGate,
 \]
-where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:8.17U} and
+where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:uniform-arch-floor} and
 Lemma~\ref{lem:digamma-gap-positive} in Section~\ref{subsec:a3-symbol-floor}.
 Numerically,
 \(
@@ -280,7 +280,7 @@ On $[-K,K]$,
 \[
 \lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ c_*\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big)\ -\ \|T_P\|.
 \]
-With $c_*\ge 811/1000$ from Lemma~\ref{lem:8.17U} and $\|T_P\|\le c_*/4$ (Corollary~\ref{cor:8.25U}),
+With $c_*\ge 811/1000$ from Lemma~\ref{lem:uniform-arch-floor} and $\|T_P\|\le c_*/4$ (Corollary~\ref{cor:uniform-prime-cap}),
 \[
 \lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ \tfrac{1}{2}\,c_*\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big).
 \]
@@ -288,8 +288,8 @@ With $c_*\ge 811/1000$ from Lemma~\ref{lem:8.17U} and $\|T_P\|\le c_*/4$ (Coroll
 
 \begin{remark}[Interface to T5]\label{rem:t5-interface}
 For a nondecreasing compact chain $K_i\uparrow\infty$, pick $M_i$ so that
-$C\,\omega_{P_A}(\pi/M_i)\le c_*/4$ where $c_*\ge 811/1000$ is the uniform floor from Lemma~\ref{lem:8.17U}.
-In practice, the T5 module uses $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ from Corollary~\ref{cor:8.25U}. Then the T5 criterion applies on each $W_{K_i}$ and
+$C\,\omega_{P_A}(\pi/M_i)\le c_*/4$ where $c_*\ge 811/1000$ is the uniform floor from Lemma~\ref{lem:uniform-arch-floor}.
+In practice, the T5 module uses $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ from Corollary~\ref{cor:uniform-prime-cap}. Then the T5 criterion applies on each $W_{K_i}$ and
 monotone inheritance propagates positivity across the chain, yielding $Q\ge0$ on
 $\bigcup_i W_{K_i}$.
 \end{remark}
@@ -300,7 +300,7 @@ There exist an explicit function $t_{\mathrm{pr}}(K)>0$ and a constant $\beta\in
 \[
   \|T_P\| \le \rho_{\mathrm{cap}} \le \beta\,c_*,
 \]
-where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:8.17U} and $\rho_{\mathrm{cap}}$ is any one of the analytic bounds built below.  Two concrete realizations are available:
+where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:uniform-arch-floor} and $\rho_{\mathrm{cap}}$ is any one of the analytic bounds built below.  Two concrete realizations are available:
 \begin{enumerate}[label=(\roman*)]
   \item \textbf{Uniform trace cap.} Fix $t_{\mathrm{pr}}(K)\equiv 1$.  Lemma~\ref{pm:lem:rho-closed-form} evaluates the closed form~\eqref{eq:rho-closed-form} and gives
   \[

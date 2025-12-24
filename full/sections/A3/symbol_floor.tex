@@ -182,7 +182,7 @@ rational bounds on $a(0)$, $M_B$ and $L_A^{\mathrm{up}}$ yields the stated fract
 %% UNIFORM ARCHIMEDEAN FLOOR (Lemma 8.17') -- replaces K-dependent approach
 %% ============================================================================
 
-\begin{lemma}[Uniform Archimedean floor via mean+modulus]\label{lem:8.17U}
+\begin{lemma}[Uniform Archimedean floor via mean+modulus]\label{lem:uniform-arch-floor}
 Fix $t_{\mathrm{sym}}>0$ and a baseline $B_{\min}>0$ (e.g.\ $B_{\min}:=B(1)$ for the A3 schedule).
 For each $B\ge B_{\min}$ define
 \[
@@ -211,8 +211,8 @@ Proposition~8.5 yields $\min_{\TT}P_A\ge A_0(B,t_{\mathrm{sym}})-\pi L_{\mathrm{
 Take $\inf_{B\ge B_{\min}}$ on $A_0$ and $\sup_{B\ge B_{\min}}$ on $L_{\mathrm{int}}$ to obtain $\min_{\TT}P_A\ge A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}})=c_*$.
 \end{proof}
 
-\begin{corollary}[Uniform discretisation threshold]\label{cor:8.24U}
-Assume $c_*>0$ in Lemma~\ref{lem:8.17U}, and let $C_{\mathrm{SB}}=4$ be the absolute constant of Lemma~8.23.
+\begin{corollary}[Uniform discretisation threshold]\label{cor:uniform-discretisation}
+Assume $c_*>0$ in Lemma~\ref{lem:uniform-arch-floor}, and let $C_{\mathrm{SB}}=4$ be the absolute constant of Lemma~8.23.
 Define
 \[
   M_{0}^{\mathrm{unif}}
@@ -224,8 +224,8 @@ Then for every $B\ge B_{\min}$ and every $M\ge M_{0}^{\mathrm{unif}}$,
 \]
 \end{corollary}
 
-\begin{corollary}[Uniform prime cap time]\label{cor:8.25U}
-Assume $c_*>0$ in Lemma~\ref{lem:8.17U}. Define
+\begin{corollary}[Uniform prime cap time]\label{cor:uniform-prime-cap}
+Assume $c_*>0$ in Lemma~\ref{lem:uniform-arch-floor}. Define
 \[
   t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}
   :=\frac{1}{8\pi^2}\left(\frac{1}{2}+\frac{4e^{1/4}}{c_*}\right).
@@ -242,21 +242,21 @@ where $\rho(t)$ is the Gaussian norm cap of Lemma~9.29.
 %% ============================================================================
 
 \begin{lemma}[Digamma mean bound]\label{lem:digamma-mean-bound}
-Let $t_{\mathrm{sym}}=\frac{3}{50}$ and $A_*(t_{\mathrm{sym}})$ be as in Lemma~\ref{lem:8.17U}. Then
+Let $t_{\mathrm{sym}}=\frac{3}{50}$ and $A_*(t_{\mathrm{sym}})$ be as in Lemma~\ref{lem:uniform-arch-floor}. Then
 \[
   A_*\Bigl(\frac{3}{50}\Bigr)\ \ge\ \frac{1867}{1000}.
 \]
 \end{lemma}
 
 \begin{lemma}[Digamma Lipschitz bound]\label{lem:digamma-lip-bound}
-Let $t_{\mathrm{sym}}=\frac{3}{50}$ and $L_*(t_{\mathrm{sym}})$ be as in Lemma~\ref{lem:8.17U}. Then
+Let $t_{\mathrm{sym}}=\frac{3}{50}$ and $L_*(t_{\mathrm{sym}})$ be as in Lemma~\ref{lem:uniform-arch-floor}. Then
 \[
   L_*\Bigl(\frac{3}{50}\Bigr)\ \le\ \frac{42}{125}.
 \]
 \end{lemma}
 
 \begin{lemma}[Gap positivity]\label{lem:digamma-gap-positive}
-With $t_{\mathrm{sym}}=\frac{3}{50}$ and $c_*:=A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}})$ as in Lemma~\ref{lem:8.17U},
+With $t_{\mathrm{sym}}=\frac{3}{50}$ and $c_*:=A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}})$ as in Lemma~\ref{lem:uniform-arch-floor},
 \[
   c_*\ \ge\ \frac{1867}{1000}-\frac{22}{7}\cdot\frac{42}{125}\ =\ \frac{811}{1000}\ >\ 0.
 \]

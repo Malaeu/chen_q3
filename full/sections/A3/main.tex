@@ -1,5 +1,5 @@
 % Toeplitz--symbol bridge (A3) --- quantitative formulation
-\SeeAlso{Lemmas~\ref{lem:a3.bv-to-lip}--\ref{lem:a3.cap-combine}, Uniform floor Lemma~\ref{lem:8.17U}, trace-cap Lemma~\ref{lem:trace-cap-bound}.}
+\SeeAlso{Lemmas~\ref{lem:a3.bv-to-lip}--\ref{lem:a3.cap-combine}, Uniform floor Lemma~\ref{lem:uniform-arch-floor}, trace-cap Lemma~\ref{lem:trace-cap-bound}.}
 
 Throughout this section $a$ denotes the Archimedean density after Fej\'er$\times$heat smoothing on $[-B,B]$, and $\Kern$ is a fixed even $C^1$ mollifier with $\int_{\TT}\Kern=1$.  Write $\Kt(\theta)=t^{-1}\Kern(\theta/t)$ and set
 \[
@@ -92,7 +92,7 @@ For a fixed compact $[-K,K]$ define $c_{\mathrm{arch}}(K)$, $L_A(B,t_{\mathrm{sy
 so that Proposition~\ref{prop:a3-prime-cap} guarantees $\|T_P\|\le \rho_K \le c_{\mathrm{arch}}(K)/4$ for every $t_{\mathrm{rkhs}}\ge t_{\mathrm{rkhs}}^\star(K)$.  (The MD/IND alternative is archived separately and not used in this track.)
 
 \begin{lemma}[Constructive parameter recipe]\label{lem:a3-constructive-schedule}
-Fix the parameter $\kappa\in(0,1)$ used in Lemma~\ref{lem:8.17U}. There exists $r_0\in(0,1)$ such that $m_{r_0}>0$ (for example $r_0=\tfrac{1}{16}$ because $a(0)=\log\pi-\Re\psi(\tfrac14)>0$). For each $K>0$ set
+Fix the parameter $\kappa\in(0,1)$ used in Lemma~\ref{lem:uniform-arch-floor}. There exists $r_0\in(0,1)$ such that $m_{r_0}>0$ (for example $r_0=\tfrac{1}{16}$ because $a(0)=\log\pi-\Re\psi(\tfrac14)>0$). For each $K>0$ set
 \[
   B(K):=\Bigl\lceil \frac{K}{1-\kappa}\Bigr\rceil,\qquad
   r(K):=\min\Bigl\{\frac{K}{2},\,r_0\Bigr\},
