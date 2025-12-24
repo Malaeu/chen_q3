@@ -10,13 +10,9 @@ Hence if $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$, then $T_A-T_P^{\mathrm{new}
 Rank--one update: $T_P^{\mathrm{new}}=T_P^{\mathrm{old}}+ w_{\mathrm{new}}\,|k_{\alpha_{\mathrm{new}}}\rangle\langle k_{\alpha_{\mathrm{new}}}|$ with $\|k_{\alpha}\|=1$ gives the claimed norm bound; strict inequality implies the Loewner positivity.
 \end{proof}
 
-\paragraph{Certified parameters.}
-Table~\ref{tab:ind-schedule} records the concrete margins exported from the
-legacy certificates. In particular, for $K=1$ the greedy block consumes
-$0.181352<c_0/4$ and the follow-up step \texttt{cert/bridge/K1\_step\_next.json}
-verifies $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$; for larger $K$ the margin
-$c_0(K)-\rho(t)$ stays above $0.67$, so the one-prime update is comfortably
-within budget.
+%% Certified parameters table: see Appendix~\ref{app:a3-repro}, Table~\ref{tab:ind-schedule}.
+%% The analytic bounds in Theorem~\ref{md:thm:INDprime} and Lemma~\ref{md:lem:IND-early-analytic}
+%% do not depend on numerical certificates.
 
 % Corollary --- Gluing across intervals
 \begin{corollary}[Gluing intervals]\label{md:cor:IND-glue}

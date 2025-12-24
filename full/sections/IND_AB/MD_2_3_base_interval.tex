@@ -132,24 +132,9 @@ Restricting the prime sum to a subset (the cumulative blocks $\bigcup_{i\le j} B
 while the Archimedean part contributes at least $\tfrac34 c_0(K)$ in the mixed symbol bound. Combining these gives \eqref{md:eq:block-claim} with $\gamma(K)=\tfrac12 c_0(K)$. The tail phase follows from Theorem~\ref{rkhs:thm:rkhs-ind} because each subsequent new node has weight at most $\varepsilon(K)$ and the previously accumulated norm is bounded away from 1.
 \end{proof}
 
-\subsection*{Block algorithm (greedy) and cert format}
-Appendix~\ref{app:a3-repro} records the certified budgets (Table~\ref{tab:ind-schedule}) used by the IND/AB chain.
-The entry for $K=1$ comes from the first greedy block in
-\path{cert/bridge/K1_blocks.json} (see also the log
-\path{cert/bridge/logs/K1_blocks.txt}), leaving a residual budget of
-$\varepsilon(K)-0.181352\approx0.00522$ for the subsequent IND/AB one-prime step recorded in
-\path{cert/bridge/K1_step_next.json}.
-
-\textbf{Greedy blocks.} Order early active nodes by increasing $n$ and greedily form consecutive
-blocks $B_j$ until adding the next weight would exceed $\varepsilon(K)=c_0(K)/4$. The last block
-may have a smaller sum. After exhausting these blocks, proceed with IND$'$ one--by--one; the
-legacy certificates provide the concrete block masses listed in Table~\ref{tab:ind-schedule}.
-
-\paragraph{Data availability.}
-The early greedy blocks and the first IND$'$ step are recorded in the supplementary bundle
-(\path{cert/bridge/K\{K\}_blocks.json}, \path{cert/bridge/K\{K\}_step_next.json}).
-These files support reproducibility, while the analytic guarantees follow from the theorems above.
-Appendix~\ref{subsec:ind-atp} points to the corresponding ATP logs.
+%% Block algorithm description and cert format moved to Appendix~\ref{app:a3-repro}.
+%% The analytic guarantees are established by the theorems above; numerical certificates
+%% serve only reproducibility (see Table~\ref{tab:ind-schedule} in the appendix).
 
 % === PATCH MD-1: block induction for early heavy primes ===
 \begin{theorem}[IND$^{\mathrm{block}}$ (block update on activity jumps)]\label{md:thm:IND_block}
