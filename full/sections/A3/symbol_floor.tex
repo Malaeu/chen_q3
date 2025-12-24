@@ -158,7 +158,19 @@ $\log 2\ge\tfrac{17}{25}$ (obtained by truncating the alternating series after t
 $a(0)\ge \tfrac{5117}{1000}$. Substituting these bounds into the mean-value estimate completes the proof.
 \end{proof}
 
-\begin{theorem}[Archimedean floor at $K=1$]\label{thm:a3-k1-floor}
+%% ============================================================================
+%% OBSOLETE: Theorem 8.16 below is superseded by Lemma 8.17' (uniform-arch-floor)
+%% which provides a K-independent floor c_* >= 811/1000 > 0.
+%% The parametrization here has a scale error: the negative term M_B/(4π²t·r)
+%% dominates the positive term for the stated (B,r,t) values.
+%% Retained for historical reference only; NOT used in the main proof chain.
+%% ============================================================================
+\begin{theorem}[Archimedean floor at $K=1$ -- \textbf{OBSOLETE}]\label{thm:a3-k1-floor}
+\textbf{Note:} This theorem is superseded by Lemma~\ref{lem:uniform-arch-floor} which provides
+the uniform bound $c_*\ge 811/1000$ valid for all $K$. The parametrization below contains
+a scale inconsistency and is retained only for historical reference.
+
+\medskip\noindent
 Let $B=\tfrac13$, $r=\tfrac{1}{32}$ and $t_{\mathrm{sym}}=\tfrac{3}{50}$. Then
 \[
   c_{\mathrm{arch}}(1)
@@ -169,7 +181,7 @@ Let $B=\tfrac13$, $r=\tfrac{1}{32}$ and $t_{\mathrm{sym}}=\tfrac{3}{50}$. Then
 where $m_r=\inf_{|\xi|\le r}a(\xi)$ and $M_B=\|a\|_{L^\infty([-B,B])}$. All auxiliary
 inequalities are recorded in Appendix~\ref{app:md23-constants}.
 \end{theorem}
-\begin{proof}
+\begin{proof}[Proof (historical -- not used)]
 Lemma~\ref{lem:a3-arch-floor} gives the first inequality. The bounds
 \(m_r\ge a(0)-20\pi r\) and \(M_B\le \tfrac{11}{2}\) follow from Lemma~\ref{lem:a3-core-slope} and
 Appendix~\ref{app:md23-constants}; for $L_A^{\mathrm{up}}(B,t_{\mathrm{sym}})$ we use

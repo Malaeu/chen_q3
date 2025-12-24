@@ -91,7 +91,19 @@ For a fixed compact $[-K,K]$ define $c_{\mathrm{arch}}(K)$, $L_A(B,t_{\mathrm{sy
 \]
 so that Proposition~\ref{prop:a3-prime-cap} guarantees $\|T_P\|\le \rho_K \le c_{\mathrm{arch}}(K)/4$ for every $t_{\mathrm{rkhs}}\ge t_{\mathrm{rkhs}}^\star(K)$.  (The MD/IND alternative is archived separately and not used in this track.)
 
-\begin{lemma}[Constructive parameter recipe]\label{lem:a3-constructive-schedule}
+%% ============================================================================
+%% LEGACY: Lemma below uses B^{(1)}_K = M_B/(4π²r) but the correct formula
+%% from Lemma 8.11 requires B^{(1)}_K = M_B·r/(4π²) (dimension mismatch).
+%% This is superseded by the uniform approach in Lemma~\ref{lem:uniform-arch-floor}
+%% which provides c_* >= 811/1000 without needing constructive parameter recipes.
+%% Retained for historical reference only; NOT used in the main proof chain.
+%% ============================================================================
+\begin{lemma}[Constructive parameter recipe -- \textbf{LEGACY}]\label{lem:a3-constructive-schedule}
+\textbf{Note:} This lemma is superseded by the uniform floor Lemma~\ref{lem:uniform-arch-floor}.
+The definition of $B_K^{(1)}$ below has a dimension inconsistency with Lemma~\ref{lem:a3-core-lower-bound};
+the main proof uses $c_*\ge 811/1000$ from the uniform approach instead.
+
+\medskip\noindent
 Fix the parameter $\kappa\in(0,1)$ used in Lemma~\ref{lem:uniform-arch-floor}. There exists $r_0\in(0,1)$ such that $m_{r_0}>0$ (for example $r_0=\tfrac{1}{16}$ because $a(0)=\log\pi-\Re\psi(\tfrac14)>0$). For each $K>0$ set
 \[
   B(K):=\Bigl\lceil \frac{K}{1-\kappa}\Bigr\rceil,\qquad
@@ -143,14 +155,24 @@ so the condition $\theta\ge\theta_1(K)$ (with $\theta=t_{\mathrm{sym}}r(K)^2$) m
   \item \emph{Discretisation threshold.} Proposition~\ref{prop:a3-m0} furnishes $M_0(K)$ such that $T_M[P_A]$ keeps half of the Arch margin for every $M\ge M_0(K)$.
 \end{enumerate}
 
-For each compact $W_K$ we therefore work with the explicit arc $\Gamma_K\subset\TT$ on which $P_A(\theta)\ge c_{\mathrm{arch}}(K)$: the data points $(\Gamma_K,\min_{\Gamma_K}P_A,\omega_{P_A}(\pi/M))$ and the corresponding Fej\'er$\times$heat parameters are archived in the JSON files \path{cert/bridge/K*_A3_floor.json}. This makes the identity
+%% NOTE: The uniform approach (Lemma 8.17') gives a K-independent floor c_* >= 811/1000
+%% on the FULL circle T, not just an arc. This supersedes the arc-based approach.
+The uniform Archimedean floor (Lemma~\ref{lem:uniform-arch-floor}) provides a \textbf{K-independent} lower bound
 \[
-  c_{\mathrm{arch}}(K)\ =\ \min_{\theta\in\Gamma_K} P_A(\theta)
+  c_* := A_*(t_{\mathrm{sym}}) - \pi L_*(t_{\mathrm{sym}}) \ge \frac{811}{1000} > 0,
 \]
-fully explicit for every $K$ and ties the analytic constants in (A3.1)--(A3.3) to the reproducibility pack cited in Appendix~\ref{app:verification}.
+valid for the \textbf{entire circle} $\TT$, i.e., $\min_{\theta\in\TT}P_A(\theta)\ge c_*$ for all $B\ge B_{\min}$.
+This eliminates the need for arc-based constructions ($\Gamma_K$) and provides a simpler, cleaner proof.
+
+\begin{remark}[Reproducibility -- not part of proof]
+Historical arc data $(\Gamma_K,\min_{\Gamma_K}P_A)$ and JSON files \path{cert/bridge/K*_A3_floor.json}
+are archived for reproducibility purposes only; they are \textbf{not used} in the main proof chain,
+which relies entirely on the analytic bound $c_*\ge 811/1000$.
+\end{remark}
 
 \begin{theorem}[A3 bridge inequality]\label{thm:A3}
-Let $K>0$ and let $(B,t_{\mathrm{sym}},t_{\mathrm{rkhs}})$ satisfy \textnormal{(A3.1)}–\textnormal{(A3.3)}; in particular one may use the schedule produced in Lemma~\ref{lem:a3-constructive-schedule}. Then for every $M\ge M_0(K)$,
+Let $K>0$ and use the uniform floor $c_*\ge 811/1000$ from Lemma~\ref{lem:uniform-arch-floor}.
+Then for every $M\ge M_0^{\mathrm{unif}}$ (Corollary~\ref{cor:uniform-discretisation}),
 \[
   \lambda_{\min}\!\bigl(T_M[P_A]-T_P\bigr)\ \ge\ \frac{c_{\mathrm{arch}}(K)}{4}\ > 0,
 \]

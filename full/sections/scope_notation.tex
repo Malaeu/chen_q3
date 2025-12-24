@@ -16,11 +16,11 @@ This work introduces a quantitative, modular operator framework for the Weil cri
 \end{itemize}
 
 \medskip
-\noindent\emph{Bridge summary.} We split $Q$ as $T_M[P_A]-T_P$ with $P_A\in \mathrm{Lip}(1)$ and $T_P$ finite rank. The symbol barrier yields $\lambda_{\min}(T_M[P_A])\ge c_0(K) - C\,\omega_{P_A}(\pi/M)$ with
+\noindent\emph{Bridge summary.} We split $Q$ as $T_M[P_A]-T_P$ with $P_A\in \mathrm{Lip}(1)$ and $T_P$ finite rank. The symbol barrier yields $\lambda_{\min}(T_M[P_A])\ge c_* - C\,\omega_{P_A}(\pi/M)$ with
 \[
-  c_0(K):=\min_{\theta\in\Gamma_K} P_A(\theta),
+  c_* := A_*(t_{\mathrm{sym}}) - \pi L_*(t_{\mathrm{sym}}) \ge \frac{811}{1000},
 \]
-where $\Gamma_K$ is the working arc on $W_K$ (the explicit minima appear in the JSON files \path{cert/bridge/K*_A3_floor.json}). The prime norm is bounded in the Arch-induced RKHS by
+where $c_*$ is the \textbf{uniform Archimedean floor} (Lemma~8.17'), valid on the full circle $\TT$ and independent of $K$. The prime norm is bounded in the Arch-induced RKHS by
 \[
   \|T_P\|\le w_{\max}+\sqrt{w_{\max}}\,\eta_K,
 \]
