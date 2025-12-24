@@ -35,6 +35,8 @@ The proof organises around three analytic modules.
 \]
 as developed in Section~\ref{sec:A3}.
 
+\smallskip\noindent\textbf{Uniform floor.} The mean+modulus analysis of Lemma~8.17' yields a \emph{$K$-independent} lower bound $c_*\ge 811/1000$ that replaces the per-compact $c_0(K)$ in all subsequent estimates; see Section~\ref{sec:notation} for details.
+
 \subsection*{Prime contraction}
 \emph{(RKHS) Prime contraction without tables.} The prime contribution is encoded by a sampling operator $T_P$ supported on the nodes $\xi_n=\frac{\log n}{2\pi}$; in the Weil functional we use the one-sided weights $w_Q(n)=2\Lambda(n)/\sqrt{n}$, while in the RKHS analysis we keep the undoubled operator weights $w_{\mathrm{RKHS}}(n)=\Lambda(n)/\sqrt{n}$. Section~\ref{sec:rkhs-prime-cap} develops a \emph{tables-free} upper bound on $\|T_P\|$ inside the reproducing-kernel Hilbert space of the heat flow. Two complementary routes are provided:
 \begin{itemize}
@@ -124,6 +126,8 @@ We write $\Lambda$ for the von Mangoldt function, $\xi_n=\frac{\log n}{2\pi}$ fo
 \noindent\textbf{Assumption stack.} When we write ``under $(\mathrm{T0})+(\mathrm{A1'})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{MD/IND/AB}\text{ or RKHS})+(\mathrm{T5})$'' we mean precisely the data enumerated above: a fixed normalization, cone density, Lipschitz control, the mixed Toeplitz lower bound, either the MD/IND/AB prime-control chain or the RKHS contraction, and the compact limit machinery. No hidden steps are invoked outside this list.
 
 \noindent\textbf{Verification aids.} Appendices~\ref{app:a3-repro} and~\ref{app:verification} archive the legacy JSON files, ATP logs, and numerical cross-checks that originally motivated the parameter choices. These artefacts are reproducibility collateral only: the proofs in Sections~\ref{sec:T0}--\ref{sec:T5} rely solely on the analytic estimates stated there, and every inequality invoked in the main argument is justified in-line. Appendix~\ref{app:a3-repro} also collates the archived inputs in a single summary table for ease of audit.
+
+\smallskip\noindent\textbf{Clarification on ``no tables''.} The phrase ``no numerical tables or automated certificates enter the proof'' refers to the \emph{logical} chain: every theorem statement and its proof use only explicit analytic inequalities. The JSON files and ATP logs in Appendix~\ref{app:verification} are \emph{provenance artifacts} documenting how the constants were originally computed; they do not appear as premises in any theorem.
 
 \subsection{Contemporary Context and Inspiration}
 

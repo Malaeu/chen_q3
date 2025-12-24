@@ -124,7 +124,7 @@ In addition to Vampire ATP, the AB(K) aggregation result was independently verif
 \textbf{Purpose of ATP/SMT verification:} All formal verification (Vampire + Z3) was used to \emph{verify and cross-check} mathematical reasoning already developed in the manuscript, not to discover proofs. Mathematical content, logical structure, and proof strategies were established through classical analysis prior to formalization. ATP/SMT provides independent machine-checked confirmation of arithmetic correctness and logical soundness, serving as a reproducibility certificate for key steps.
 
 \paragraph{Lean 4 formal verification.}
-The complete theorem chain T0 $\to$ A1$'$ $\to$ A2 $\to$ A3 $\to$ RKHS $\to$ T5 $\to$ RH has been formalized in Lean~4 (version 4.24.0) with Mathlib. The main theorem is:
+The theorem chain T0 $\to$ A1$'$ $\to$ A2 $\to$ A3 $\to$ RKHS $\to$ T5 $\to$ RH has been formalized in Lean~4 (version 4.24.0) with Mathlib. The formalization covers the main logical structure; 14 classical-analysis lemmas (MVT, series bounds, heat kernel estimates) remain as \texttt{sorry} placeholders representing known results. The main theorem is:
 \begin{verbatim}
 theorem RH_of_Weil_and_Q3 : RH := by
   rw [← Weil_criterion]
@@ -142,7 +142,7 @@ The formalization includes:
       \item RKHS positivity \cite{Aronszajn1950}
     \end{itemize}
   \item 9 Tier-2 theorems (Q3 contributions, proven via bridge files)
-  \item 14 technical \texttt{sorry} placeholders in classical analysis helpers (MVT, geometric series, heat kernel approximation)---all represent known mathematical results requiring no novel proof
+  \item 14 \texttt{sorry} placeholders (see above)---all represent standard results from classical analysis requiring no novel proof
 \end{itemize}
 \textbf{Repository:} \url{https://github.com/Malaeu/Q3_RH_Lean_Proof}
 
