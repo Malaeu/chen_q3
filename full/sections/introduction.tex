@@ -1,7 +1,7 @@
 \section{Introduction}\label{sec:intro}
 
 \subsection*{Background and motivation}
-We prove that a canonical quadratic form on the Weil test class is nonnegative, and therefore\textemdash{}by the Weil criterion\textemdash{}deduce the Riemann Hypothesis. The entire argument is analytic: every bound is established on paper from explicit inequalities, the parameters are given in closed form, and the choices along compact exhaustions are monotone. No numerical tables or automated certificates enter the proof.
+We prove that a canonical quadratic form on the Weil test class is nonnegative, and therefore\textemdash{}by the Weil criterion\textemdash{}deduce the Riemann Hypothesis. The entire argument is analytic: every bound is established on paper from explicit inequalities, the parameters are given in closed form, and the uniform bridge avoids K-dependent schedules. No numerical tables or automated certificates enter the main proof.
 
 \subsection*{Main result}
 \begin{theorem}[Main result, informal]\label{thm:intro-main-informal}
@@ -20,79 +20,53 @@ Our proof is organized as a controlled-limit program: a small number of analytic
   \begin{tabular}{c}
     Weil criterion $\Longleftarrow$ Weil positivity on $\mathcal W$ \\
     $\Uparrow$ \\
-    PSD on each $W_K$ $\Leftarrow$ Toeplitz barrier + RKHS prime cap + compact transfer \\
+    PSD on each $W_K$ $\Leftarrow$ Toeplitz barrier + uniform RKHS cap \\
     $\Uparrow$ \\
-    cone density + Lipschitz control + monotone schedules ($K \uparrow \infty$)
+    cone density + Lipschitz control (uniform A3 bridge)
   \end{tabular}
 \end{center}
 
 The proof organises around three analytic modules.
 
 \subsection*{Archimedean bridge}
-\emph{(A3) Archimedean Toeplitz barrier.} On each compact window $W_K=[-K,K]\subset\RR$ we bound from below the Toeplitz component $T_M[P_A]$ of $Q$ by an \emph{archimedean barrier} $c_0(K)>0$, up to a controllable Lipschitz loss $C\,\omega_{P_A}(\pi/M)$. Szeg\H{o}--B\"ottcher asymptotics together with an explicit modulus of continuity for $P_A$ yield
+\emph{(A3) Archimedean Toeplitz barrier.} The Toeplitz component $T_M[P_A]$ of $Q$ is bounded from below by the explicit uniform Archimedean floor $c_*$ (Lemma~\ref{lem:uniform-arch-floor}), up to the controllable Lipschitz loss $C\,\omega_{P_A}(1/(2M))$. Szeg\H{o}--B\"ottcher asymptotics together with an explicit modulus of continuity for $P_A$ yield
 \[
-  \lambda_{\min}\!\big(T_M[P_A]\big)\ \ge\ c_0(K)\ -\ C\,\omega_{P_A}\!\Big(\frac{\pi}{M}\Big),
+  \lambda_{\min}\!\big(T_M[P_A]\big)\ \ge\ c_*\ -\ C\,\omega_{P_A}\!\Big(\frac{1}{2M}\Big),
 \]
 as developed in Section~\ref{sec:A3}.
 
-\smallskip\noindent\textbf{Uniform floor.} The mean+modulus analysis of Lemma~8.17' yields a \emph{$K$-independent} lower bound $c_*\ge 811/1000$ that replaces the per-compact $c_0(K)$ in all subsequent estimates; see Section~\ref{sec:notation} for details.
-
 \subsection*{Prime contraction}
-\emph{(RKHS) Prime contraction without tables.} The prime contribution is encoded by a sampling operator $T_P$ supported on the nodes $\xi_n=\frac{\log n}{2\pi}$; in the Weil functional we use the one-sided weights $w_Q(n)=2\Lambda(n)/\sqrt{n}$, while in the RKHS analysis we keep the undoubled operator weights $w_{\mathrm{RKHS}}(n)=\Lambda(n)/\sqrt{n}$. Section~\ref{sec:rkhs-prime-cap} develops a \emph{tables-free} upper bound on $\|T_P\|$ inside the reproducing-kernel Hilbert space of the heat flow. Two complementary routes are provided:
-\begin{itemize}
-  \item \textbf{Classical treatments.} Standard expositions of the analytic theory~\cite{IwaniecKowalski2004,MontgomeryVaughan2007,Edwards1974} provide the backdrop against which we calibrate notation, normalizations, and cone generators.
-  \item a \emph{Gram-geometry route}, giving
-  \[
-    \|T_P\|\ \le\ w_{\max}+\sqrt{w_{\max}}\,S_K(t),\qquad
-    S_K(t)\ \le\ \frac{2e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}},
-  \]
-  where $w_{\max}\le 2/e$ and $\delta_K$ is the separation of the nodes on $W_K$; choosing
-  \[
-    t_{\min}(K)\ :=\ \frac{\delta_K^2}{4\ln\!\big((2+\eta_K)/\eta_K\big)},\qquad \eta_K\in(0,1-w_{\max}),
-  \]
-  forces $\|T_P\|\le \rho_K:=w_{\max}+\sqrt{w_{\max}}\;\eta_K$;
-  \item an \emph{early/tail route}, splitting the prime sum at $N=N(K)$, with
-  \[
-    \sum_{n\le N}\frac{\Lambda(n)}{\sqrt{n}}\ \le\ 2\sqrt{N}\log N,
-    \qquad
-    \sum_{n>N}\frac{\Lambda(n)}{\sqrt{n}}\,e^{-4\pi^2 t(\log n)^2}\ \ll\ \frac{e^{-4\pi^2 t(\log N)^2}}{t},
-  \]
-  which produces an explicit threshold $t^\star(K)$ ensuring $\|T_P\|\le c_0(K)/4$.
-\end{itemize}
+\emph{(RKHS) Uniform prime contraction without tables.} The prime contribution is encoded by a sampling operator $T_P$ supported on the nodes $\xi_n=\frac{\log n}{2\pi}$; in the Weil functional we use the one-sided weights $w_Q(n)=2\Lambda(n)/\sqrt{n}$, while in the RKHS analysis we keep the undoubled operator weights $w_{\mathrm{RKHS}}(n)=\Lambda(n)/\sqrt{n}$. Section~\ref{sec:rkhs-prime-cap} develops a \emph{tables-free} uniform cap from the closed form $\rho(t)$; choosing $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ (Corollary~\ref{cor:uniform-prime-cap}) ensures $\|T_P\|\le \rho(t_{\mathrm{rkhs}})\le c_*/4$ once $c_*>0$ is established. This cap is independent of $K$ and suffices for the uniform A3 bridge. The adaptive Gram-geometry and early/tail routes are archived for reference in Appendix~\ref{app:legacy-branch}.
 
-\subsection*{Compact transfer}
-\emph{(T5) Compact-by-compact transfer.} Section~\ref{sec:T5} shows that once, on a given $W_K$, the deterministic inequalities
-\[
-  C\,\omega_{P_A}\!\Big(\frac{\pi}{M}\Big)\ \le\ \frac{c_0(K)}{4},\qquad
-  \|T_P\|\ \le\ \frac{c_0(K)}{4},\qquad
-  \text{(finite early block)}\ \le\ \frac{c_0(K)}{4}
-\]
-hold with parameters $(M,t)$ chosen \emph{monotonically} in $K$, then $\lambda_{\min}\!\big(T_M[P_A]-T_P\big)>0$ on $W_K$, and positivity inherits to $W_{K'}$ for all $K'\ge K$. Thus $Q\ge0$ on any exhaustion $\bigcup_i W_{K_i}$ with $K_i\uparrow\infty$.
+\subsection*{Compact extension}
+\emph{(A1$'$ + A2) Density and continuity.} The uniform A3 bridge yields $Q(\Phi)\ge0$ on the Fej\'er$\times$heat generator cone inside each $W_K$. By density (A1$'$) and continuity (A2), this extends to all of $W_K$, and taking the union over $K$ gives $Q\ge0$ on the full Weil cone $\mathcal W$.
 
 \subsection*{Outline of the proof}
 
-Combining the Toeplitz barrier and the RKHS cap yields, on each $W_K$,
+Combining the Toeplitz barrier and the uniform RKHS cap yields, on each $W_K$,
 \[
   \lambda_{\min}\!\big(T_M[P_A]-T_P\big)
-  \ \ge\ c_0(K)\ -\ C\,\omega_{P_A}\!\Big(\frac{\pi}{M}\Big)\ -\ \|T_P\|.
+  \ \ge\ c_*\ -\ C\,\omega_{P_A}\!\Big(\frac{1}{2M}\Big)\ -\ \rho(t_{\mathrm{rkhs}}).
 \]
-Choosing $t=t_{\min}(K)$ (Gram route, requiring $t\le t_{\min}$) or $t\ge t^\star(K)$ (tail route) enforces $\|T_P\|\le c_0(K)/4$, and selecting $M$ so that $C\,\omega_{P_A}(\pi/M)\le c_0(K)/4$ gives
+Selecting $M\ge M_0^{\mathrm{unif}}$ gives $C\,\omega_{P_A}(1/(2M))\le c_*/2$, and
+taking $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ yields $\rho(t_{\mathrm{rkhs}})\le c_*/4$, so
+whenever $c_*>0$ one has
 \[
-  \lambda_{\min}\!\big(T_M[P_A]-T_P\big)\ \ge\ \tfrac12\,c_0(K)\ >\ 0.
+  \lambda_{\min}\!\big(T_M[P_A]-T_P\big)\ \ge\ \frac{c_*}{4}\ >\ 0.
 \]
-The compact-by-compact transfer then propagates positivity along any monotone chain $K_i\uparrow\infty$. Positivity on $\bigcup_i W_{K_i}$ extends by definition to all of $\mathcal{W}$, proving $Q\ge0$ in Theorem~\ref{thm:Main-positivity}. Finally Section~\ref{sec:Weil} applies Theorem~\ref{thm:Weil-criterion} to convert this positivity into the Riemann Hypothesis.
+Hence $Q\ge0$ on the Fej\'er$\times$heat cone inside $W_K$. Density (A1$'$) and continuity (A2) extend this to all of $W_K$, and the union over $K$ gives $Q\ge0$ on $\mathcal{W}$, proving Theorem~\ref{thm:Main-positivity}. Finally Section~\ref{sec:Weil} applies Theorem~\ref{thm:Weil-criterion} to convert this positivity into the Riemann Hypothesis.
 
 \subsection*{What is new}
 
 Two features distinguish the present work.
 \begin{enumerate}
-  \item \textbf{A tables-free prime contraction.} The norm of the prime operator is bounded analytically in an RKHS, via either Gram geometry or an early/tail split. All constants are explicit (for example $t_{\min}(K)$ above), monotone in $K$, and no legacy tables or certificates appear in the proof; reproducibility data are confined to Appendix~\ref{app:a3-repro}.
-  \item \textbf{A monotone transfer principle.} The compact-by-compact module (T5) depends only on $c_0(K)$, $\omega_{P_A}$, and the RKHS cap $\rho_{\mathrm{cap}}(K)$. The parameter schedules $(M^\star(K),t^\star(K))$ are given by explicit formulas and chosen to be monotone in $K$, yielding an auditable, dimension-free route from positivity on one compact to positivity on all larger compacts.
+  \item \textbf{A consistent symbol definition.} The Archimedean symbol is defined once via periodization of the Fej\'er$\times$heat window, and its Lipschitz modulus is proved directly for that same object (Lemma~\ref{lem:a3-lipschitz-bound}), eliminating mixed definitions.
+  \item \textbf{A uniform prime cap.} The RKHS bound is set at $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ and is independent of $K$, removing all K-dependent schedules from the main proof chain.
 \end{enumerate}
 
 \subsection*{Organization of the paper}
 
-Section~\ref{sec:T0} recalls the Weil class, the quadratic form $Q$, and the Guinand--Weil normalization. Section~\ref{sec:A3} establishes the Archimedean Toeplitz barrier (A3). Section~\ref{sec:rkhs-prime-cap} develops the RKHS prime contraction together with the thresholds $t_{\min}(K)$ and $t^\star(K)$. Section~\ref{sec:T5} proves the compact-by-compact transfer (T5) and the monotone inheritance. Section~\ref{sec:Weil} links compact positivity to the full Weil class and states the main theorem together with its Weil corollary. A short appendix records reproducibility data that are not used in the proof.
+Section~\ref{sec:T0} recalls the Weil class, the quadratic form $Q$, and the Guinand--Weil normalization. Section~\ref{sec:A3} establishes the Archimedean Toeplitz barrier (A3). Section~\ref{sec:rkhs-prime-cap} develops the uniform RKHS prime cap at the scale $t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$. Section~\ref{sec:Weil} links compact positivity to the full Weil class and states the main theorem together with its Weil corollary. Appendix~\ref{app:legacy-branch} archives the legacy K-dependent branches and reproducibility data.
 
 \subsection*{Notation}
 
@@ -100,7 +74,7 @@ We write $\Lambda$ for the von Mangoldt function, $\xi_n=\frac{\log n}{2\pi}$ fo
 
 \subsection*{Analytic modules at a glance}
 
-\noindent\textbf{Stage legend.} $(\mathrm{T0})$ fixes the Guinand--Weil normalization of the Weil functional. $(\mathrm{A1'})$ proves density of the Fej\'er$\times$heat generator cone on each compact, and $(\mathrm{A2})$ supplies Lipschitz continuity so that positivity propagates from the generators to all even nonnegative tests. $(\mathrm{A3})$ is the Toeplitz bridge: it splits $Q$ into an Archimedean Toeplitz symbol and a finite-rank prime block with explicit lower bounds on $\lambda_{\min}$. The main route for the prime contribution is the RKHS contraction developed in Section~\ref{sec:rkhs-prime-cap}; the MD/IND/AB chain remains archived as an alternative in the appendices. Finally $(\mathrm{T5})$ performs the compact-by-compact lift and closes the YES gate, chaining the local statements to $Q\ge0$ on the full Weil class.
+\noindent\textbf{Stage legend.} $(\mathrm{T0})$ fixes the Guinand--Weil normalization of the Weil functional. $(\mathrm{A1'})$ proves density of the Fej\'er$\times$heat generator cone on each compact, and $(\mathrm{A2})$ supplies Lipschitz continuity so that positivity propagates from the generators to all even nonnegative tests. $(\mathrm{A3})$ is the Toeplitz bridge: it splits $Q$ into an Archimedean Toeplitz symbol and a finite-rank prime block with explicit lower bounds on $\lambda_{\min}$. The prime contribution is controlled by the uniform RKHS cap in Section~\ref{sec:rkhs-prime-cap}. Legacy K-dependent chains (MD/IND/AB and T5) are archived in Appendix~\ref{app:legacy-branch}.
 
 \begin{center}
   \small\textbf{Dependency map for the analytic chain}
@@ -112,22 +86,21 @@ We write $\Lambda$ for the von Mangoldt function, $\xi_n=\frac{\log n}{2\pi}$ fo
     Module & Key statement & Consumed by \\
     \hline
     $\mathrm{T0}$ & Proposition~\ref{prop:T0-GW} (Guinand--Weil normalization) & Theorem~\ref{thm:Main-positivity}, Theorem~\ref{thm:RH} \\
-    $\mathrm{A1'}$ & Theorem~\ref{a1:thm:A1-local-density} (Density on $W_K$) & Theorem~\ref{thm:T5-compact}, Theorem~\ref{thm:Main-positivity} \\
-    $\mathrm{A2}$ & Lemma~\ref{a2:lem:A2} / Corollary~\ref{a2:cor:explicit-lip} (Lipschitz control) & Theorem~\ref{thm:T5-compact}, Theorem~\ref{thm:Main-positivity} \\
-    $\mathrm{A3}$ & Theorem~\ref{thm:A3} (Toeplitz bridge) & Theorem~\ref{thm:T5-compact}, Theorem~\ref{thm:Main-positivity} \\
-    RKHS & Theorem~\ref{thm:rkhs-tstar} (Prime contraction) & Theorem~\ref{thm:T5-compact}, Theorem~\ref{thm:Main-positivity} \\
-    $\mathrm{T5}$ & Theorem~\ref{thm:T5-compact} (Compact transfer) & Theorem~\ref{thm:Main-positivity} \\
+    $\mathrm{A1'}$ & Theorem~\ref{a1:thm:A1-local-density} (Density on $W_K$) & Theorem~\ref{thm:Main-positivity} \\
+    $\mathrm{A2}$ & Lemma~\ref{a2:lem:A2} / Corollary~\ref{a2:cor:explicit-lip} (Lipschitz control) & Theorem~\ref{thm:Main-positivity} \\
+    $\mathrm{A3}$ & Theorem~\ref{thm:A3} (Uniform A3 bridge) & Theorem~\ref{thm:Main-positivity} \\
+    RKHS & Corollary~\ref{cor:uniform-prime-cap} (Uniform prime cap) & Theorem~\ref{thm:Main-positivity} \\
     MAIN & Theorem~\ref{thm:Main-positivity} (Weil positivity on $W$) & Theorem~\ref{thm:RH} \\
     WEIL & Theorem~\ref{thm:Weil-criterion} (Weil criterion) & Theorem~\ref{thm:RH} \\
     \hline
   \end{tabular}
 \end{center}
 
-\noindent\textbf{Assumption stack.} When we write ``under $(\mathrm{T0})+(\mathrm{A1'})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{MD/IND/AB}\text{ or RKHS})+(\mathrm{T5})$'' we mean precisely the data enumerated above: a fixed normalization, cone density, Lipschitz control, the mixed Toeplitz lower bound, either the MD/IND/AB prime-control chain or the RKHS contraction, and the compact limit machinery. No hidden steps are invoked outside this list.
+\noindent\textbf{Assumption stack.} When we write ``under $(\mathrm{T0})+(\mathrm{A1'})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{RKHS})$'' we mean precisely the data enumerated above: a fixed normalization, cone density, Lipschitz control, the mixed Toeplitz lower bound, and the uniform RKHS cap. Legacy K-dependent chains are archived and not used in the main proof.
 
-\noindent\textbf{Verification aids.} Appendices~\ref{app:a3-repro} and~\ref{app:verification} archive the legacy JSON files, ATP logs, and numerical cross-checks that originally motivated the parameter choices. These artefacts are reproducibility collateral only: the proofs in Sections~\ref{sec:T0}--\ref{sec:T5} rely solely on the analytic estimates stated there, and every inequality invoked in the main argument is justified in-line. Appendix~\ref{app:a3-repro} also collates the archived inputs in a single summary table for ease of audit.
+\noindent\textbf{Verification aids.} Appendices~\ref{app:a3-repro} and~\ref{app:verification} archive legacy JSON files, ATP logs, and numerical cross-checks that originally motivated parameter choices. These artefacts are reproducibility collateral only and are not used as premises. Appendix~\ref{app:digamma-computation} now records an analytic framework and optional numerical exploration; the main chain uses only the explicit analytic inequalities stated in the body. Appendix~\ref{app:a3-repro} collates the archived inputs in a single summary table for ease of audit.
 
-\smallskip\noindent\textbf{Clarification on ``no tables''.} The phrase ``no numerical tables or automated certificates enter the proof'' refers to the \emph{logical} chain: every theorem statement and its proof use only explicit analytic inequalities. The JSON files and ATP logs in Appendix~\ref{app:verification} are \emph{provenance artifacts} documenting how the constants were originally computed; they do not appear as premises in any theorem.
+\smallskip\noindent\textbf{Clarification on ``no tables''.} The phrase ``no numerical tables or automated certificates enter the proof'' refers to the \emph{legacy} JSON/ATP artifacts and optional numerical appendices: they remain provenance-only and do not appear as premises in any theorem. All bounds invoked in the main chain are proved in-line from explicit analytic estimates.
 
 \subsection{Contemporary Context and Inspiration}
 

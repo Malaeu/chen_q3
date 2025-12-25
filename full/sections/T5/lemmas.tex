@@ -24,7 +24,7 @@ Let $Q$ be Lipschitz on $W_K$ with constant $L_Q(K)$ (\textup{A2}). Suppose ther
 \[
   \min_j Q(\tau_j)\ \ge\ c_*\ > 0
 \]
-where $c_*\ge 811/1000$ is the uniform floor from Lemma~\ref{lem:uniform-arch-floor}, and $\Delta\le c_*/(4L_Q(K))$. Then $\min_{\tau\in[-K,K]} Q(\tau)\ge \tfrac12\,c_*$.
+where $c_*>0$ is the uniform floor from Lemma~\ref{lem:uniform-arch-floor}, and $\Delta\le c_*/(4L_Q(K))$. Then $\min_{\tau\in[-K,K]} Q(\tau)\ge \tfrac12\,c_*$.
 \end{lemma}
 \begin{proof}
 Fix $\tau\in[-K,K]$ and let $\tau_\ast$ be the nearest grid point, so $|\tau-\tau_\ast|\le \Delta/2$. By Lipschitz continuity,
@@ -36,17 +36,18 @@ The last step uses $\Delta\le c_*/(4L_Q)$ twice (once for $\Delta/2$ and a slack
 \end{proof}
 
 \begin{lemma}[Uniform inheritance across $K$]\label{t5:lem:T5-inheritance}
-Fix an increasing chain $K_0<K_1<\cdots$. Using the uniform parameters $t_0=7/10$ and $M\ge M_0^{\mathrm{unif}}$
+Fix an increasing chain $K_0<K_1<\cdots$. Using the uniform parameters
+$t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ and $M\ge M_0^{\mathrm{unif}}$
 from Theorem~\ref{thm:A3}, for every $i$ we have
 \begin{equation}\label{eq:T5-uniform-inheritance}
   \lambda_{\min}\big(T_{M}[P_A]-T_P\big)
-  \ \ge\ \frac{c_*}{4}\ \ge\ \frac{811}{4000}
+  \ \ge\ \frac{c_*}{4}\ >\ 0
   \quad\text{on }\mathcal W_{K_i},
 \end{equation}
 and the property propagates from $K_i$ to $K_{i+1}$.
 \end{lemma}
 \begin{proof}
 Lemma~\ref{lem:T5p-grid} with uniform parameters gives the lower bound $\ge c_*/4$ for all $K$.
-Since the floor $c_*$ and the parameters $t_0$, $M_0^{\mathrm{unif}}$ are K-independent,
+Since the floor $c_*$ and the parameters $t_{\mathrm{rkhs}}$, $M_0^{\mathrm{unif}}$ are K-independent,
 the same estimate applies at every $K_i$, so the chain inherits positivity uniformly.
 \end{proof}

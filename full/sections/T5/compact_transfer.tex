@@ -3,18 +3,18 @@
 \subsection*{Standing analytic inputs (uniform version)}
 For each $K>0$ we use the uniform analytic data from Sections~\ref{sec:A3} and~\ref{sec:rkhs-prime-cap}:
 \begin{itemize}
-  \item[\textbf{(A3)}] Uniform Archimedean floor: $\min_{\theta\in\TT} P_A(\theta) \ge c_* \ge 811/1000$
-  (Lemma~\ref{lem:uniform-arch-floor}).
+  \item[\textbf{(A3)}] Uniform Archimedean floor: $\min_{\theta\in\TT} P_A(\theta) \ge c_*$
+  (Lemma~\ref{lem:uniform-arch-floor}), which supplies an explicit $c_*>0$.
   \item[\textbf{(A3.b)}] Discretization control: for all $M\ge M_0^{\mathrm{unif}}$,
   \[
-    C_{\mathrm{SB}}\,\omega_{P_A}\!\Big(\frac{\pi}{M}\Big)\ \le\ \frac{c_*}{2}
+    C_{\mathrm{SB}}\,\omega_{P_A}\!\Big(\frac{1}{2M}\Big)\ \le\ \frac{c_*}{2}
   \]
   (Corollary~\ref{cor:uniform-discretisation}).
-  \item[\textbf{(RKHS)}] Uniform prime contraction: at $t_0=7/10$,
+  \item[\textbf{(RKHS)}] Uniform prime contraction: for $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$,
   \[
-    \|{\mathcal T}_P\|\ \le\ \rho(t_0)\ \le\ \frac{1971}{50000}\ <\ \frac{c_*}{4}
+    \|{\mathcal T}_P\|\ \le\ \rho(t_{\mathrm{rkhs}})\ \le\ \frac{c_*}{4}
   \]
-  (Theorem~\ref{thm:rkhs-tstar} and Corollary~\ref{cor:pcu-uniform}).
+  (Corollary~\ref{cor:pcu-uniform}).
 \end{itemize}
 
 We also recall the density/continuity interface on $W_K$:
@@ -24,10 +24,10 @@ We also recall the density/continuity interface on $W_K$:
 \end{itemize}
 
 \begin{lemma}[Grid-lift inequality]\label{lem:T5p-grid}
-For every $K>0$ and $M\ge M_0^{\mathrm{unif}}$,
+Assume $c_*>0$ and $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$. For every $K>0$ and $M\ge M_0^{\mathrm{unif}}$,
 \[
   \lambda_{\min}\!\big(T_M[P_A]-{\mathcal T}_P\big)
-  \ \ge\ c_*\ -\ C_{\mathrm{SB}}\,\omega_{P_A}\!\Big(\tfrac{\pi}{M}\Big)\ -\ \|{\mathcal T}_P\|
+  \ \ge\ c_*\ -\ C_{\mathrm{SB}}\,\omega_{P_A}\!\Big(\tfrac{1}{2M}\Big)\ -\ \|{\mathcal T}_P\|
   \ \ge\ \frac{c_*}{4}.
 \]
 \end{lemma}
@@ -35,16 +35,16 @@ For every $K>0$ and $M\ge M_0^{\mathrm{unif}}$,
 \begin{proof}
 Combine the uniform Archimedean floor $\min P_A \ge c_*$ with:
 \begin{itemize}
-  \item Discretization: $C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M) \le c_*/2$ for $M\ge M_0^{\mathrm{unif}}$.
-  \item Prime cap: $\|{\mathcal T}_P\| \le \rho(t_0) < c_*/4$.
+  \item Discretization: $C_{\mathrm{SB}}\,\omega_{P_A}(1/(2M)) \le c_*/2$ for $M\ge M_0^{\mathrm{unif}}$.
+  \item Prime cap: $\|{\mathcal T}_P\| \le \rho(t_{\mathrm{rkhs}}) \le c_*/4$.
 \end{itemize}
 Then $\lambda_{\min} \ge c_* - c_*/2 - c_*/4 = c_*/4$.
 \end{proof}
 
 \begin{theorem}[T5: uniform compact transfer]\label{thm:T5-compact}
-For every $K>0$ one has
+Assume $c_*>0$ and $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$. For every $K>0$ one has
 \[
-  \lambda_{\min}\!\big(T_{M}[P_A]-{\mathcal T}_P\big)\ \ge\ \frac{c_*}{4}\ \ge\ \frac{811}{4000}\ >\ 0.2
+  \lambda_{\min}\!\big(T_{M}[P_A]-{\mathcal T}_P\big)\ \ge\ \frac{c_*}{4}\ >\ 0
 \]
 for all $M\ge M_0^{\mathrm{unif}}$.
 In particular, $Q(\Phi)\ge0$ on $W_K$ for all $K>0$. Hence $Q\ge0$ on $\bigcup_{K>0} W_K$, i.e., on the full Weil class.
@@ -60,8 +60,8 @@ Taking the union over $K$ gives the claim.
 
 \begin{remark}[No K-dependent schedules]
 The uniform approach eliminates the need for K-dependent schedules $c_0(K)$, $t^\star(K)$, $M^\star(K)$.
-The same uniform parameters $c_*\ge 811/1000$, $t_0=7/10$, and $M_0^{\mathrm{unif}}$
-work for all compacts $[-K,K]$ simultaneously.
+The same uniform parameters $c_*$, $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$,
+and $M_0^{\mathrm{unif}}$ work for all compacts $[-K,K]$ simultaneously.
 \end{remark}
 
 %% ============================================================================
@@ -71,5 +71,5 @@ work for all compacts $[-K,K]$ simultaneously.
 %% - M*(K) := min{M : C_T ω(π/M) <= c_0*(K)/4}
 %%
 %% The main proof now uses only uniform parameters from Lemma~\ref{lem:uniform-arch-floor}
-%% and Theorem~\ref{thm:rkhs-tstar}.
+%% and Corollary~\ref{cor:uniform-prime-cap}.
 %% ============================================================================

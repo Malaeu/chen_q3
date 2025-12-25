@@ -1,3 +1,9 @@
 uniform_arch_floor.md: dbfa2c26-a1b2-4a7b-a0aa-05151839a090
 uniform_arch_floor_v2.md: 2e3b3bf8-c308-4d27-af09-2c46e8569df5
 uniform_arch_floor_v3.md: d2728386-8dd5-4ec2-9e63-c2c80f3cd218
+uniform_arch_floor.md: dd21a597-b222-4033-a958-903ad48c690e
+Lipschitz_Bridge_v1.md: 68f7963c-a7d9-4971-8777-2bd0b7425e9a
+Q3_FULL_BRIDGE.md: 6cd52bc6-5e5c-411a-a784-86009f2c5f24
+A3_FLOOR.md: 9f4a33c2-dfa7-4024-b81d-00d75497ca06
+RH_FINAL.md: f758546b-4b31-4436-8c0d-9759b15d043b
+A3_FLOOR_v2.md: e3ae346c-ed26-47c4-b4b0-df229881b1a3

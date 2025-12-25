@@ -16,6 +16,21 @@ $\operatorname{tr}(M)$ the trace, $\|T\|_{\mathrm{op}}$ the operator norm.
 $r\lesssim s$ means $r\le C s$ with an absolute constant $C$ independent of the current parameters; $r\simeq s$ abbreviates $r\lesssim s$ and $s\lesssim r$ simultaneously.
 
 \paragraph{Critical constants.}
-$c_* \ge 811/1000$ is the \textbf{uniform} archimedean floor (Lemma~8.17'), valid for all $K\ge 1$ on the full circle $\TT$ via mean+modulus analysis.
+$c_* = \tfrac{11}{10}$ is the \textbf{uniform} archimedean floor (Lemma~\ref{lem:uniform-arch-floor}), valid for all $K\ge 1$ on the full circle $\TT$ (parameters $t_{\mathrm{sym}}=3/50$, $B_{\min}=3$).
 \textbf{Note:} The legacy value $\CarchOne$ from Theorem~8.16 is obsolete (contains a scale error); the main proof uses $c_*$ exclusively.
-$\RhoGate$ is the uniform RKHS prime cap ensuring $\|T_P\|\le \RhoGate$ for all $K$.
+The uniform RKHS prime cap is $\rho(t_{\mathrm{rkhs}})\le c_*/4$ for $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ (Corollary~\ref{cor:uniform-prime-cap}).
+
+\paragraph{Uniform constants (mainline).}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Constant & Value & Source \\
+\midrule
+$t_{\mathrm{sym}}$ & $3/50$ & Lemma~\ref{lem:uniform-arch-floor} \\
+$B_{\min}$ & $3$ & Lemma~\ref{lem:uniform-arch-floor} \\
+$c_*$ & $\tfrac{11}{10}$ & Lemma~\ref{lem:uniform-arch-floor} \\
+$M_0^{\mathrm{unif}}$ & $\left\lceil C_{\mathrm{SB}}\,L_*(t_{\mathrm{sym}})/c_*\right\rceil$ & Corollary~\ref{cor:uniform-discretisation} \\
+$t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ & $1$ & Corollary~\ref{cor:uniform-prime-cap} \\
+\bottomrule
+\end{tabular}
+\end{center}

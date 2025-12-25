@@ -3,8 +3,7 @@
 \SeeAlso{Weight cap Lemma (w\_max $\le 2/e$)~\ref{rkhs:lem:wmax_cap},
 Node-gap lower bound Lemma~\ref{rkhs:lem:node_gap_lower_bound},
 Two-scale decoupling Corollary~\ref{rkhs:cor:rkhs_two_scale},
-Mixed lower bound in A3 Theorem~\ref{thm:A3},
-Base/induction alt. Theorem $\text{IND}^{\text{block~\ref{md:thm:IND_block}}}$.}
+Mixed lower bound in A3 Theorem~\ref{thm:A3}.}
 We briefly record the RKHS framework that delivers operator positivity $T_A-T_P\succeq0$ on each compact without pointwise measure domination; comprehensive background may be found in \cite{Aronszajn1950,BerlinetThomasAgnan2004,PaulsenRaghupathi2016,Berlinet2004,Paulsen2016}.
 
 \subsection{Setup}
@@ -54,7 +53,7 @@ Moreover, it suffices to enforce the geometric bound of Lemma~\ref{rkhs:lem:geom
 \end{theorem}
 
 \begin{remark}
-Because $\delta_K\downarrow0$ as the compact widens, the closed form \eqref{eq:RKHS_contraction-formula-6} shows that $t_{\min}(K)$ is automatically chosen monotone decreasing along the chain $K\nearrow$. Thus the parameter schedule used in A3/T5 (where $t_{\mathrm{rkhs}}(K)=t_{\min}(K)$) is consistent without additional tuning.
+Because $\delta_K\downarrow0$ as the compact widens, the closed form \eqref{eq:RKHS_contraction-formula-6} shows that $t_{\min}(K)$ is automatically chosen monotone decreasing along the chain $K\nearrow$. This supports the optional adaptive cap, but the uniform branch fixes a single scale $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
 \end{remark}
 
 \begin{proposition}[Dataset-free RKHS schedule]\label{prop:rkhs-schedule}
@@ -71,25 +70,8 @@ Then $S_K\bigl(t_{\min}(K)\bigr)\le \eta_K$ and therefore
 \|T_P\|_{\mathcal H_K}\ \le\ w_{\max}+\sqrt{w_{\max}}\,S_K\bigl(t_{\min}(K)\bigr)
 \ =:\ \rho_K\ < 1,
 \]
-so $T_A-T_P\succeq(1-\rho_K)\,T_A$ on the RKHS. In parallel, Theorem~\ref{thm:rkhs-tstar} supplies the analytic cap $\|T_P\|\le c_0(K)/4$ via two routes: (A)~Gram geometry with $t_{\mathrm{rkhs}}=t_{\min}(K)$ (where the condition is $t\le t_{\min}$), or (B)~tail decay with $t_{\mathrm{rkhs}}\ge t^\star(K)$.
+so $T_A-T_P\succeq(1-\rho_K)\,T_A$ on the RKHS.
 \end{proposition}
-
-\begin{lemma}[Trace-cap bound]\label{lem:trace-cap-bound}
-For every compact $[-K,K]$ choose $t_{\mathrm{rkhs}}$ via either:
-\begin{itemize}
-\item[(A)] Gram route: $t_{\mathrm{rkhs}}=t_{\min}(K)$ where $t_{\min}$ is given by \eqref{eq:tmin} (note: the geometric bound requires $t\le t_{\min}$), or
-\item[(B)] Tail route: $t_{\mathrm{rkhs}}\ge t^\star(K)$ from Theorem~\ref{thm:rkhs-tstar}.
-\end{itemize}
-Then the prime operator obeys the uniform cap
-\[
-  \|T_P\|_{\op} \le \min\Bigl\{\rho_K,\ \tfrac14\,c_0(K)\Bigr\}\ \le\ \frac{1}{4}\,c_0(K),
-\]
-where $\rho_K = w_{\max} + \sqrt{w_{\max}}\,S_K\bigl(t_{\min}(K)\bigr)$. Consequently, for every Fej\'er$\times$heat parameter set $(B,t_{\mathrm{rkhs}})$ satisfying either route, the contraction bound $\|T_P\|\le c_0(K)/4$ holds without recourse to numerical tables.
-\end{lemma}
-
-\begin{proof}
-The Gershgorin estimate $\|T_P\|\le\rho_K$ is Proposition~\ref{prop:rkhs-schedule}. Theorem~\ref{thm:rkhs-tstar} bounds $\|T_P\|\le c_0(K)/4$ once $t_{\mathrm{rkhs}}$ satisfies the appropriate route condition. The displayed minimum records both analytic inputs. For route~(B), monotonicity follows because $\rho(t)$ is decreasing in $t$. For route~(A), the bound $S_K(t)\le\eta_K$ holds at $t=t_{\min}$ (note: $S_K(t)$ \emph{increases} with $t$, so the condition is $t\le t_{\min}$).
-\end{proof}
 
 \begin{proof}
 By the Gershgorin circle theorem applied to $W^{1/2}GW^{1/2}$ (see, e.g., \cite[Thm.~6.1.1]{HornJohnson2013}; also \cite{Varga2004}), each eigenvalue $\lambda$ of $T_P$ lies in a disc centered at $\wRKHS(n)$ with radius $\sqrt{\wRKHS(n)}\sum_{m\ne n} \sqrt{\wRKHS(m)}\,|G_{mn}|\le \sqrt{\wmax}\sum_{m\ne n}|G_{mn}|$. Using $G_{mn}=\langle k_{\alpha_m},k_{\alpha_n}\rangle\le e^{-(\alpha_m-\alpha_n)^2/(4t)}$ and Lemma~\ref{rkhs:lem:geom-SK} yields $\|T_P\|\le \wmax+\sqrt{\wmax}\,S_K(t)$. Imposing $S_K(t_{\min})\le (1-\wmax-\varepsilon_K)/\sqrt{\wmax}$ gives the claim. For the explicit $t_{\min}$, set $q:=e^{-\delta_K^2/(4t)}\in(0,1)$ and require $\dfrac{2q}{1-q}\le\eta_K$, i.e. $q\le\dfrac{\eta_K}{2+\eta_K}$. This is equivalent to $t\le \delta_K^2/\bigl(4\ln((2+\eta_K)/\eta_K)\bigr)$.
@@ -131,15 +113,15 @@ Mean value theorem on $\log x$ between consecutive integers.
 \end{proof}
 
 %% BEGIN PATCH: RKHS_contraction.tex (two-scale decoupling)
-\begin{corollary}[Two-scale decoupling]\label{rkhs:cor:rkhs_two_scale}
-On a fixed compact $K$, choose $t_{\mathrm{rkhs}}=t_{\min}(K)$ as in Theorem~\ref{rkhs:thm:rkhs-contraction}, so that $\|T_P\|\le \rho_K<1$. Let $t_{\mathrm{sym}}>0$ in the Fej\'er$\times$heat window be chosen independently. If $t_{\mathrm{sym}}$ is such that $L_A(B,t_{\mathrm{sym}})\le L_A^*$ and $\min P_A\ge c_0>0$, then Corollary~\ref{a3:cor:A3_lock_formal} applies with the same contraction bound $\rho_K$ and modulus $L_A^*$. Thus the symbol parameter controls the modulus $\omega_{P_A}$ (symbol barrier), while $t_{\mathrm{rkhs}}$ controls only $\|T_P\|$ (contraction); the effects are formally decoupled.
+\begin{corollary}[Two-scale decoupling (uniform)]\label{rkhs:cor:rkhs_two_scale}
+Let $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ be the RKHS scale and let $t_{\mathrm{sym}}>0$ be the Fej\'er$\times$heat parameter. If $L_A(B,t_{\mathrm{sym}})\le L_A^*$ and $\min P_A\ge c_*>0$, then Corollary~\ref{a3:cor:A3_lock_formal} applies with the uniform cap $\|T_P\|\le\rho(t_{\mathrm{rkhs}})$ and modulus $L_A^*$. Thus the symbol parameter controls the modulus $\omega_{P_A}$ (symbol barrier), while the RKHS scale controls only $\|T_P\|$ (contraction); the effects are decoupled.
 \end{corollary}
 %% END PATCH
 
 \begin{remark}[Uniform vs.\ adaptive prime caps]\label{rem:prime-caps}
 Two complementary caps for $T_P$ are available. A \emph{uniform} trace cap at
-$t=0.7$ gives $\|T_P\|\le \rho_{\mathrm{cap}}<1/25$ on every compact and suffices
-for the A3 budget. An \emph{adaptive} cap at $t_{\mathrm{rkhs}}(K)=t_{\min}(K)$
+$t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ gives $\|T_P\|\le \rho(t_{\mathrm{rkhs}})\le c_*/4$
+on every compact and suffices for the A3 budget. An \emph{adaptive} cap at $t_{\mathrm{rkhs}}(K)=t_{\min}(K)$
 uses the node gap $\delta_K$ and yields $\|T_P\|\le \wmax+\sqrt{\wmax}\,\eta_K$
 for a prescribed off-diagonal level $\eta_K$. The mainline proof invokes
 the uniform cap; the adaptive one provides additional slack when needed.

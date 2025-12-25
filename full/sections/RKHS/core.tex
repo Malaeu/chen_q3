@@ -57,10 +57,10 @@ Lemma~\ref{lem:gram-min-eig-lb} yields the spectral bound. Any $g=\sum_i a_i k(\
 These statements provide the structural ingredients cited in Assumption~(A3.1) and in the proof of Theorem~\ref{thm:A3}: the diagonal floor produces $\czero$, the RKHS contraction supplies $\rhok$, and Lemma~\ref{lem:gram-min-eig-lb} transfers the margin to the finite Toeplitz block.
 
 \begin{lemma}[Rayleigh sampling identification]\label{lem:rkhs-rayleigh-sampling-id}
-For any Fej\'er$\times$heat window $\Phi$ with Dirichlet sampling polynomial $p(\theta)=\sum_{k\in\ZZ}\widehat\Phi(k)e^{ik\theta}$, one has
+For any Fej\'er$\times$heat window $\Phi$ with Dirichlet sampling polynomial $p(\theta)=\sum_{k\in\ZZ}\widehat\Phi(k)e^{2\pi i k\theta}$, one has
 \[
   \big\langle (T_M[P_A]-T_P)p,\,p\big\rangle_{L^2(\TT)}
-  \;=\; \frac{1}{2\pi}\,Q(\Phi)
+  \;=\; Q(\Phi)
 \]
 whenever $M$ is large enough that the Dirichlet coefficients of $\Phi$ lie in the span $\{|k_\tau\rangle\}$. In particular the operator inequality for $T_M[P_A]-T_P$ transfers directly to the Weil functional $Q$.
 \end{lemma}

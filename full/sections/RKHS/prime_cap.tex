@@ -106,78 +106,55 @@ In particular, with $t=t_{\min}(K)$ from \eqref{eq:tmin},
 \end{equation}
 \end{proposition}
 
-\begin{proof}[Sketch]
-Let $g_x(\cdot):=k_t(\cdot,x)$. By Lemma~\ref{lem:rkhs-energy} and Cauchy--Schwarz,
+\begin{proof}
+Let $g_n:=k_t(\cdot,\xi_n)$ so that $\|g_n\|_{H_k}^2=k_t(\xi_n,\xi_n)=1$. Define the unweighted frame operator
 \[
-|(T_P f)(x)|\ \le\ \sum \wRKHS(n)\,|f(\xi_n)|\,\|g_{\xi_n}\|\,\|g_x\|
-\ \le\ \|f\|\,\|g_x\|\!\left(\sum \wRKHS(n)\,\|g_{\xi_n}\|^2\right)^{\!1/2}\!\!\!\left(1+S_K(t)\right)^{1/2},
+S_0:=\sum_{\xi_n\in[-K,K]} |g_n\rangle\!\langle g_n|.
 \]
-and $\|g_x\|$ is constant in $x$. Optimizing the trivial weights split ($w\le w_{\max}$ on the diagonal and $\sqrt{w_{\max}}$ off-diagonal) gives the stated bound; see also standard Schur/Gram tests.
+Its Gram matrix on the span of $\{g_n\}$ is $G=(\langle g_m,g_n\rangle)_{m,n}$ with diagonal $1$ and off-diagonal entries
+$|\langle g_m,g_n\rangle|=k_t(\xi_m,\xi_n)\le e^{-(\xi_m-\xi_n)^2/(4t)}$. By definition of $S_K(t)$,
+the absolute row sum of $G$ is bounded by $1+S_K(t)$, hence the Schur/Gershgorin bound gives
+\[
+\|S_0\|\ \le\ 1+S_K(t).
+\]
+Since $0\le \wRKHS(n)\le \wmax$, we have the PSD order inequality
+\(
+T_P=\sum \wRKHS(n)\,|g_n\rangle\!\langle g_n|\ \preceq\ \wmax S_0,
+\)
+hence
+\[
+\|T_P\|\ \le\ \wmax(1+S_K(t))
+\ \le\ \wmax+\sqrt{\wmax}\,S_K(t),
+\]
+because $\wmax\le\sqrt{\wmax}$ for $0<\wmax\le1$. This proves the stated bound.
 \end{proof}
 
 \begin{lemma}[Uniform RKHS cap]\label{lem:rkhs-uniform-cap-full}\label{lem:prime-cap-uniform}
 Let
 \[
-  \rho(t)\ :=\ 2\int_{0}^{\infty} y\,e^{y/2}\,e^{-4\pi^2 t\,y^2}\,dy
-  \ =\ 2\Bigg[\frac{1}{8\pi^2 t}
-      + \frac{\sqrt{\pi}}{64\pi^3 t\sqrt{t}}\,
-        \exp\!\Big(\frac{1}{64\pi^2 t}\Big)\,
-        \operatorname{erfc}\!\Big(-\frac{1}{8\pi\sqrt{t}}\Big)\Bigg],
+\begin{aligned}
+  \rho(t) &:= 2\int_{0}^{\infty} y\,e^{y/2}\,e^{-4\pi^2 t\,y^2}\,dy \\
+          &= 2\Bigg[\frac{1}{8\pi^2 t}
+              + \frac{\sqrt{\pi}}{64\pi^3 t\sqrt{t}}\,
+                \exp\!\Big(\frac{1}{64\pi^2 t}\Big)\,
+                \operatorname{erfc}\!\Big(-\frac{1}{8\pi\sqrt{t}}\Big)\Bigg],
+\end{aligned}
 \]
-the equality being the standard Gaussian evaluation.  Fix \(t_0=\tfrac{7}{10}\).  Using
-\(\pi \le \tfrac{22}{7}\) and \(e^{1/4}\le\tfrac{33}{25}\) in the closed form yields
-\[
-  \rho(t_0)\ \le\ \RhoSeventytight\ <\ \RhoGate.
-\]
-Therefore the uniform prime cap \(\|T_P\|\le \rho(t_0)\le\tfrac{1}{25}\) holds for every compact
-\([-K,K]\), and the YES-gate slack satisfies
-\[
-  \mathrm{slack}
-  := \frac{c_*}{4}-\rho(t_0)
-  \ge \frac{811/1000}{4}-\RhoGate,
-\]
-where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:uniform-arch-floor} and
-Lemma~\ref{lem:digamma-gap-positive} in Section~\ref{subsec:a3-symbol-floor}.
-Numerically,
-\(
-  \tfrac{811}{4000}-\RhoGate > 0.16
-\),
-so the YES gate retains a uniform positive margin on every compact \emph{independently of $K$}.
+the equality being the standard Gaussian evaluation. The function $\rho(t)$ is strictly decreasing in $t$ and
+satisfies $\rho(t)\to0$ as $t\to\infty$.
 \end{lemma}
 \begin{proof}
-Lemma~\ref{pm:lem:sum-to-rho} together with Lemma~\ref{pm:lem:trace-cap-erfc} yields
-\[
-  \rho(t_0)
-  = \frac{1}{4\pi^2 t_0}
-    + \frac{\sqrt{\pi}}{32\pi^3 t_0\sqrt{t_0}}\,
-      \exp\!\Bigl(\frac{1}{64\pi^2 t_0}\Bigr)\,
-      \Bigl(1 + \frac{2}{\sqrt{\pi}}\frac{1}{8\pi\sqrt{t_0}}\Bigr),
-\]
-because \(\operatorname{erf}(x) \le \tfrac{2}{\sqrt{\pi}}x\) for \(x\ge0\)
-(hence \(\operatorname{erfc}(-x)\le 1 + \tfrac{2}{\sqrt{\pi}}x\)).
-Bounding the parameters monotonically via
-\[
-  \frac{333}{106}\ \le\ \pi\ \le\ \frac{22}{7},\qquad
-  \frac{810}{457}\ \le\ \sqrt{\pi}\ \le\ \frac{296}{167},\qquad
-  \sqrt{t_0}\ \ge\ \frac{210}{251},
-\]
-and using \(\exp(y)\le 1+y+y^2\) for \(0\le y\le \tfrac13\) applied to
-\(y=\frac{1}{64\pi^2 t_0}\) shows that the second summand is at most
-\(\frac{139}{43\,140}\). Consequently
-\[
-  \rho(t_0)\ \le\ \frac{28\,090}{776\,223}\ +\ \frac{139}{43\,140}
-  \ <\ \frac{1\,971}{50\,000}\ =\ \RhoSeventytight,
-\]
-which is strictly below \(\RhoGate\). All inequalities above are elementary and involve only the displayed rational brackets.
+Lemma~\ref{pm:lem:sum-to-rho} and Lemma~\ref{pm:lem:trace-cap-erfc} give the closed form.
+For monotonicity, observe that the integrand $y\,e^{y/2}e^{-4\pi^2 t y^2}$ decreases pointwise in $t$,
+so $\rho(t)$ is decreasing by monotone convergence. The Gaussian factor forces $\rho(t)\to0$ as $t\to\infty$.
 \end{proof}
 
 \begin{remark}[Why uniform cap beats local bisection]\label{rem:uniform-vs-local-full}
-A local approach would choose \(t^*(K)\) via bisection to satisfy
-\(\rho(t^*(K))\le c_{\mathrm{arch}}(K)/4\), yielding near-zero slack by construction.
-The uniform route instead freezes \(t_0=\tfrac{7}{10}\) independent of \(K\); the lemma shows
-\(\rho(t_0)\le 1/25\), so once \(c_{\mathrm{arch}}(K)\) is bounded below analytically the YES-gate
-inherits a positive margin without appealing to any numerical tables.  This decouples the prime cap
-from local parameter tuning and keeps the bridge purely analytic.
+Legacy per-compact bisection schedules are archived in Appendix~\ref{app:legacy-branch} for provenance.
+The mainline selects a single scale \(t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}\)
+independent of \(K\); Corollary~\ref{cor:uniform-prime-cap} then guarantees
+\(\rho(t_{\mathrm{rkhs}})\le c_*/4\). This decouples the prime cap from local parameter tuning
+and keeps the bridge analytic.
 \end{remark}
 
 \subsection*{Early/tail calculus (tables-free)}
@@ -194,24 +171,29 @@ For every $N\ge2$,
 \begin{proof}
 $\Lambda(n)\le\log n$ is standard. For the integral bound,
 \[
-\sum_{n\le N}\frac{\log n}{\sqrt{n}}\ \le\ \int_{1}^{N}\frac{\log x}{\sqrt{x}}\,dx\ + O(1)
-= \Big[2\sqrt{x}\,\log x-4\sqrt{x}\Big]_1^N + O(1)
-\ \le\ 2\sqrt{N}\,\log N.
+\sum_{n\le N}\frac{\log n}{\sqrt{n}}
+\le \log N \sum_{n\le N}\frac{1}{\sqrt{n}}
+\le \log N\Bigl(1+\int_{1}^{N}\frac{dx}{\sqrt{x}}\Bigr)
+= \log N\,(2\sqrt{N}-1)
+\le 2\sqrt{N}\,\log N.
 \]
 \end{proof}
 
 \begin{lemma}[Log--Gaussian tail]\label{lem:rkhs-tail}
-For every $t>0$ and $N\ge2$,
+For every $t\ge \tfrac{1}{16\pi^2}$ and $N\ge2$, set $N_0:=\max\{N,e^2\}$. Then
 \[
 \sum_{n>N}\frac{\Lambda(n)}{\sqrt{n}}\,e^{-4\pi^2 t\,(\log n)^2}
-\ \ll\ \int_{\log N}^{\infty} y\,e^{-4\pi^2 t\,y^2}\,dy
-\ \ll\ \frac{e^{-4\pi^2 t\,(\log N)^2}}{t}.
+\ \le\ \int_{\log N_0}^{\infty} y\,e^{-4\pi^2 t\,y^2}\,dy
+\ =\ \frac{e^{-4\pi^2 t\,(\log N_0)^2}}{8\pi^2 t}.
 \]
 \end{lemma}
 
 \begin{proof}
-Replace the sum by the Stieltjes integral against $\psi(x)=\sum_{n\le x}\Lambda(n)$ and
-substitute $y=\log x$. The Gaussian tail estimate is elementary.
+As in Remark~\ref{rem:eventual-monotone}, for $t\ge \tfrac{1}{16\pi^2}$ the function
+$x\mapsto (\log x)x^{-1/2}e^{-4\pi^2 t(\log x)^2}$ is decreasing on $[e^2,\infty)$.
+Since $\Lambda(n)\le\log n$, for $N\ge e^2$ we may bound the tail by the integral test.
+If $2\le N<e^2$, replace $N$ by $e^2$; the right-hand side decreases with $N_0$.
+Substitute $y=\log x$ to obtain the stated Gaussian tail bound.
 \end{proof}
 
 \begin{proposition}[Heat cap via early/tail split]\label{prop:rkhs-early-tail-cap}
@@ -221,105 +203,27 @@ Define for $t>0$ and $N\ge2$
 2\sum_{\substack{\xi_n\in[-K,K]\\ n\le N}}\frac{\Lambda(n)}{\sqrt{n}}\,e^{-4\pi^2 t\,(\log n)^2}
 \ +\ \underbrace{\sum_{\substack{\xi_n\in[-K,K]\\ n>N}}\frac{2\Lambda(n)}{\sqrt{n}}\,e^{-4\pi^2 t\,(\log n)^2}}_{\text{tail}}.
 \]
-Then $\|T_P\|\le \rho_{\mathrm{heat}}(K;t,N)$, and by Lemmas~\ref{lem:rkhs-early}--\ref{lem:rkhs-tail}
+Assume $t\ge \tfrac{1}{16\pi^2}$ and set $N_0:=\max\{N,e^2\}$. Then $\|T_P\|\le \rho_{\mathrm{heat}}(K;t,N)$, and by Lemmas~\ref{lem:rkhs-early}--\ref{lem:rkhs-tail}
 \[
-\rho_{\mathrm{heat}}(K;t,N)\ \ll\ 4\sqrt{N}\,\log N\ +\ \frac{e^{-4\pi^2 t\,(\log N)^2}}{t}.
+\rho_{\mathrm{heat}}(K;t,N)\ \le\ 4\sqrt{N}\,\log N\ +\ \frac{e^{-4\pi^2 t\,(\log N_0)^2}}{4\pi^2 t}.
 \]
 \end{proposition}
 
-\subsection*{Thresholds \(t^\star(K)\) and clean interface to A3/T5}
-
-\begin{theorem}[Constructive cap on each compact]\label{thm:rkhs-tstar}
-Let $c_0(K)>0$ be the Archimedean barrier from A3. There are two tables-free ways to force
-\(
-\|T_P\|\le \frac{1}{4}\,c_0(K)
-\)
-on $[-K,K]$:
-
-\smallskip
-\noindent{\em (A) Gram--geometry route.}
-Choose any $\eta_K\in(0,1-w_{\max})$ with
-\[
-w_{\max}+\sqrt{w_{\max}}\;\eta_K\ \le\ \tfrac{1}{4}c_0(K),
-\]
-and take $t=t_{\min}(K)$ from \eqref{eq:tmin} (note: the geometric bound requires $t\le t_{\min}$). Then \eqref{eq:rhoK-eta} gives
-$\|T_P\|\le c_0(K)/4$.
-
-\smallskip
-\noindent{\em (B) Early/tail route.}
-Fix an explicit $N(K)\ge2$ (e.g.\ $N(K)=\lceil(1+K)^\alpha\rceil$, $\alpha>0$) and define
-\[
-t^\star(K)\ :=\ \inf\Big\{t>0:\ \rho_{\mathrm{heat}}(K;t,N(K))\ \le\ \tfrac{1}{4}\,c_0(K)\Big\}.
-\]
-By the monotonic decay in $t$ of the tail and the bounded early block,
-$t^\star(K)$ is finite and constructive (no numerics); for all $t\ge t^\star(K)$ one has
-$\|T_P\|\le c_0(K)/4$.
-\end{theorem}
-
-\begin{remark}[Monotonicity in $K$]\label{rem:monotone-K}
-In route (A), $\delta_K$ decreases with $K$, hence $t_{\min}(K)$ is nonincreasing in $K$.
-In route (B), choosing $N(K)$ nondecreasing makes $t^\star(K)$ nondecreasing:
-larger $K$ only weakens separation and enlarges the feasible heat scales.
-Both forms are compatible with the monotone inheritance used in T5.
-\end{remark}
-
-\begin{remark}[Stability under node-spacing decay]\label{rem:rkhs-delta-scaling-full}
-The key insight: choosing \(t_{\min}(K) = \delta_K^2/(4\log(...))\)
-\emph{fixes} the ratio
-\[
-  q := e^{-\delta_K^2/(4t_{\min})}
-\]
-independently of \(K\).  Therefore \(S_K(t_{\min}) = 2q/(1-q)\) remains
-bounded even as \(\delta_K \to 0\).  For instance, when \(K=1\) numerical
-computation gives \(q \approx 1/9\), hence \(S_1 \approx 1/4\).  This scaling
-ensures that the RKHS cap \(\rho_K\) does not degenerate with increasing \(K\).
-\end{remark}
-
-\begin{corollary}[Plug into A3]\label{cor:a3-plug}
-On $[-K,K]$,
-\[
-\lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ c_*\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big)\ -\ \|T_P\|.
-\]
-With $c_*\ge 811/1000$ from Lemma~\ref{lem:uniform-arch-floor} and $\|T_P\|\le c_*/4$ (Corollary~\ref{cor:uniform-prime-cap}),
-\[
-\lambda_{\min}\big(T_M[P_A]-T_P\big)\ \ge\ \tfrac{1}{2}\,c_*\ -\ C\,\omega_{P_A}\!\big(\tfrac{\pi}{M}\big).
-\]
-\end{corollary}
-
-\begin{remark}[Interface to T5]\label{rem:t5-interface}
-For a nondecreasing compact chain $K_i\uparrow\infty$, pick $M_i$ so that
-$C\,\omega_{P_A}(\pi/M_i)\le c_*/4$ where $c_*\ge 811/1000$ is the uniform floor from Lemma~\ref{lem:uniform-arch-floor}.
-In practice, the T5 module uses $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ from Corollary~\ref{cor:uniform-prime-cap}. Then the T5 criterion applies on each $W_{K_i}$ and
-monotone inheritance propagates positivity across the chain, yielding $Q\ge0$ on
-$\bigcup_i W_{K_i}$.
-\end{remark}
 \subsection*{Analytic prime caps and the PCU theorem}
 
-\begin{corollary}[Uniform prime cap at $t_0=7/10$]\label{cor:pcu-uniform}
-Let $t_0:=7/10$. Then
+\begin{corollary}[Uniform prime cap at the analytic scale]\label{cor:pcu-uniform}
+Let $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ as in Corollary~\ref{cor:uniform-prime-cap}. Then
 \[
-  \|T_P\|\le \rho(t_0)\le \frac{1971}{50000}<\frac{c_*}{4},
+  \|T_P\|\le \rho(t_{\mathrm{rkhs}})\le \frac{c_*}{4}.
 \]
-where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:uniform-arch-floor}.
 \end{corollary}
 
 \begin{proof}
-Lemma~\ref{pm:lem:rho-closed-form} evaluates $\rho(7/10)\le 1971/50000 = 0.03942$.
-Lemma~\ref{lem:uniform-arch-floor} gives $c_*\ge 811/1000$, so $c_*/4 \ge 811/4000 \approx 0.203$.
-Since $0.03942 < 0.203$, the uniform prime cap satisfies $\rho(t_0) < c_*/4$.
+Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P\|\le \rho(t_{\mathrm{rkhs}})\le c_*/4$ for every
+$t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
 \end{proof}
 
 \begin{remark}[No K-dependent parameters]
-The uniform prime cap uses only the fixed parameter $t_0=7/10$ and the
-uniform floor $c_*\ge 811/1000$. No K-dependent schedules appear in the argument.
+The uniform prime cap uses a single scale $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$
+and the uniform floor $c_*>0$. No K-dependent schedules appear in the argument.
 \end{remark}
-
-%% ============================================================================
-%% REMOVED (December 2025 cleanup): K-dependent PCU theorem and JSON references
-%% - Theorem thm:pcu-main with c_0(K) and t_pr(K)
-%% - "Implementation link" paragraph with cert/bridge/*.json references
-%% - "ATP linkage" paragraph with Vampire and TPTP references
-%%
-%% The main proof now uses only Corollary~\ref{cor:pcu-uniform} with uniform bounds.
-%% Legacy JSON certificates are archived in Appendix for reproducibility only.
-%% ============================================================================

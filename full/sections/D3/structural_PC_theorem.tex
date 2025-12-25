@@ -7,7 +7,7 @@ Let $K>0$.  Denote by $P_A$ the Archimedean symbol after the A3 smoothing, by $T
 \end{definition}
 
 \begin{definition}[Criteria \ACDthree]\label{def:AC-D3}
-We say that \ACDthree.1 holds if: (i) $P_A\in\Lip(1)$ and $\min P_A\ge \czero>0$; (ii) $\|T_P\|\le \rhok$; (iii) the two-scale construction of Lemma~\ref{lem:a3.two-scale} is in force.  Condition \ACDthree.2 demands a sequence $\delta_A\to0$ with
+We say that \ACDthree.1 holds if: (i) $P_A\in\Lip(1)$ and $\min P_A\ge \czero>0$; (ii) $\|T_P\|\le \rho(t_{\mathrm{rkhs}})$ with $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$; (iii) the two-scale construction of Lemma~\ref{lem:a3.two-scale} is in force.  Condition \ACDthree.2 demands a sequence $\delta_A\to0$ with
 \[
   \DispK(A)\ \le\ C(K)\,\delta_A.
 \]
@@ -20,7 +20,7 @@ Under A2 and A3 the criteria \ACDthree.1 hold. Furthermore \ACDthree.1 $\Rightar
 \]
 \end{theorem}
 \begin{proof}
-A3 (Lemmas~\ref{lem:a3.bv-to-lip}, \ref{lem:a3.lip-floor}, \ref{lem:a3.cap-combine}, \ref{lem:a3.two-scale}) yields (i)--(iii); Lemma~\ref{lem:trace-cap-bound} fixes the cap $\|T_P\|\le\rhok$.  Lemma~\ref{d3:lem:D3-dispersion} then provides the dispersion bound.
+A3 (Lemma~\ref{lem:a3-lipschitz-bound}, Lemma~\ref{lem:a3.lip-floor}, Lemma~\ref{lem:a3.cap-combine}, Lemma~\ref{lem:a3.two-scale}) yields (i)--(iii); Corollary~\ref{cor:uniform-prime-cap} fixes the cap $\|T_P\|\le\rho(t_{\mathrm{rkhs}})$.  Lemma~\ref{d3:lem:D3-dispersion} then provides the dispersion bound.
 \end{proof}
 
 \begin{corollary}[D3-lock]\label{d3:cor:D3-lock}

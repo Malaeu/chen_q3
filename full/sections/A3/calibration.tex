@@ -3,16 +3,45 @@
 \label{a3:sec:A3-calibration}
 \SeeAlso{Normalization T0 Lemma~\ref{t0:lem:T0}, Toeplitz bridge A3 Theorem~\ref{thm:A3}.}
 
+\begin{lemma}[Period-1 normalization audit]\label{lem:a3-period1-audit}
+Let $g\in L^1(\RR)$ be even and define the period-$1$ symbol
+\[
+  P_A(\theta)\ :=\ 2\pi\sum_{m\in\ZZ} g(\theta+m),\qquad \theta\in[-\tfrac12,\tfrac12].
+\]
+Then
+\[
+  \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta
+  \ =\ 2\pi\int_{\RR} g(\xi)\,d\xi,
+\]
+and the Fourier coefficients with respect to the basis $e^{2\pi i k\theta}$ satisfy
+\[
+  A_k\ =\ 2\pi\int_{\RR} g(\xi)\,e^{-2\pi i k\xi}\,d\xi,
+  \qquad
+  P_A(\theta)=A_0+2\sum_{k\ge1}A_k\cos(2\pi k\theta).
+\]
+In particular, with $g=a\,\Phi$ and $a_*(\xi)=2\pi a(\xi)$, the Rayleigh pairing matches
+the T0-normalized Weil functional $Q$ without further rescaling.
+\end{lemma}
+\begin{proof}
+By Fubini and the change of variables $\xi=\theta+m$,
+\[
+  \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta
+  = 2\pi\sum_{m\in\ZZ}\int_{-\tfrac12}^{\tfrac12} g(\theta+m)\,d\theta
+  = 2\pi\int_{\RR} g(\xi)\,d\xi.
+\]
+The Fourier coefficient computation is identical, yielding the stated $A_k$ and cosine series.
+\end{proof}
+
 \begin{lemma}[Calibration of $\kappa_{\mathrm{A3}}$]\label{a3:lem:A3-kappa}
 Let $\Phi(\xi)=(1-|\xi|/B)_+\,e^{-4\pi^2 t_0\,\xi^2}$ be an even Fej\'er$\times$heat window. Define the Arch coefficients
 \begin{equation}\label{eq:A3_calibration_kappa-formula}
-  A_k\ :=\ \int_{\RR} a(\xi)\,\Phi(\xi)\,\cos(k\xi)\,d\xi,\quad
-  P_A(\theta)\ :=\ A_0+2\sum_{k\ge1}A_k\cos(k\theta),
+  A_k\ :=\ 2\pi\int_{\RR} a(\xi)\,\Phi(\xi)\,\cos(2\pi k\xi)\,d\xi,\quad
+  P_A(\theta)\ :=\ A_0+2\sum_{k\ge1}A_k\cos(2\pi k\theta),
 \end{equation}
 with $a(\xi)=\log\pi-\Re\psi\big(\tfrac14+i\pi\xi\big)$, and let $T_P$ be the even prime sampling operator with weights $w(n)=\tfrac{2\Lambda(n)}{\sqrt n}$ at nodes $\xi_n=\tfrac{\log n}{2\pi}$. Then, in the Rayleigh identification of Theorem~\ref{thm:A3}, at the constant test $p\equiv1$ one has
 \begin{equation}\label{eq:A3_calibration_kappa-formula-3}
-  \frac{1}{2\pi}\int_{-\pi}^{\pi} P_A(\theta)\,d\theta\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n)
-  \ =\ \underbrace{\int_{\RR} a(\xi)\,\Phi(\xi)\,d\xi}_{\;=\ A_0}\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n).
+  \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n)
+  \ =\ \underbrace{\int_{\RR} a_*(\xi)\,\Phi(\xi)\,d\xi}_{\;=\ A_0}\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n).
 \end{equation}
 By the T0 normalization (Lemma~\ref{t0:lem:T0}), the Weil functional on our axis is
 \begin{equation}\label{eq:A3_calibration_kappa-q-functional-1}
@@ -20,20 +49,20 @@ By the T0 normalization (Lemma~\ref{t0:lem:T0}), the Weil functional on our axis
 \end{equation}
 Therefore
 \begin{equation}\label{eq:A3_calibration_kappa-q-functional}
-  Q(\Phi)\ =\ 2\pi\,\Bigg[\,\frac{1}{2\pi}\int_{-\pi}^{\pi} P_A(\theta)\,\frac{d\theta}{1}\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n)\,\Bigg],
+  Q(\Phi)\ =\ \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n),
 \end{equation}
 and the bridge A3 introduces the fixed scale factor
 \begin{equation}\label{eq:A3_calibration_kappa-formula-2}
-\boxed{\ \kappa_{\mathrm{A3}}(t_0)\ =\ 2\pi\ }\qquad\text{(independent of $t_0$)}.
+\boxed{\ \kappa_{\mathrm{A3}}(t_0)\ =\ 1\ }\qquad\text{(independent of $t_0$)}.
 \end{equation}
-Equivalently, if one works directly with $a_*(\xi)=2\pi a(\xi)$ in the definition of $P_A$ (absorbing the Jacobian into the symbol), then $\kappa_{\mathrm{A3}}\equiv1$.
+Equivalently, the normalization in \eqref{eq:A3_calibration_kappa-formula} absorbs the Jacobian $2\pi$ into the symbol coefficients, so $\kappa_{\mathrm{A3}}\equiv1$.
 \end{lemma}
 \phantomsection\label{a3:lem:rayleigh_sampling_id}
 
 \begin{lemma}[Rayleigh identification]\label{lem:rayleigh-sampling}
 For every even Fej\'er$\times$heat window $\Phi$ the operator form and the Weil functional satisfy
 \[
-  \Big\langle \bigl(T_M[P_A]-T_P\bigr) p,\,p\Big\rangle \;=\; \frac{1}{2\pi}\,Q(\Phi)
+  \Big\langle \bigl(T_M[P_A]-T_P\bigr) p,\,p\Big\rangle \;=\; Q(\Phi)
 \]
 whenever $p$ corresponds to $\Phi$ via the standard Dirichlet sampling operator.
 \end{lemma}
@@ -41,10 +70,10 @@ whenever $p$ corresponds to $\Phi$ via the standard Dirichlet sampling operator.
 \begin{proof}
 Write the Fej\'er$\times$heat window as
 \[
-  \Phi(\xi)\ =\ \sum_{k\in\ZZ} \widehat \Phi(k)\,e^{ik\xi},\qquad
-  \widehat \Phi(k) = \int_{\RR}\Phi(\xi)e^{-ik\xi}\,d\xi.
+  \Phi(\xi)\ =\ \sum_{k\in\ZZ} \widehat \Phi(k)\,e^{2\pi i k\xi},\qquad
+  \widehat \Phi(k) = \int_{\RR}\Phi(\xi)e^{-2\pi i k\xi}\,d\xi.
 \]
-The Dirichlet sampling operator maps $p(\theta)=\sum_{k\in\ZZ} \widehat \Phi(k)\,e^{ik\theta}$ to $\Phi$; hence
+The Dirichlet sampling operator maps $p(\theta)=\sum_{k\in\ZZ} \widehat \Phi(k)\,e^{2\pi i k\theta}$ to $\Phi$; hence
 \[
   \Big\langle T_M[P_A]p,\,p\Big\rangle
   = \sum_{k\in\ZZ} A_k\,|\widehat \Phi(k)|^2
@@ -55,16 +84,16 @@ where $A_k$ are the Arch coefficients from \eqref{eq:A3_calibration_kappa-formul
   \Big\langle T_P p,\,p\Big\rangle
   = \sum_{n\ge2} \frac{2\,\Lambda(n)}{\sqrt{n}}\,\Phi(\xi_n)\,\overline{\Phi(\xi_n)}.
 \]
-Subtracting, inserting the factor $2\pi$ from \eqref{eq:A3_calibration_kappa-q-functional}, and recalling $Q(\Phi)$ from \eqref{eq:A3_calibration_kappa-q-functional-1} gives
+Subtracting and recalling $Q(\Phi)$ from \eqref{eq:A3_calibration_kappa-q-functional-1} gives
 \[
   \Big\langle (T_M[P_A]-T_P)p,\,p\Big\rangle
-  = \frac{1}{2\pi}\,Q(\Phi),
+  = Q(\Phi),
 \]
 which is the desired identity.
 \end{proof}
 
 \begin{proposition}[Bridge margin calibration]\label{prop:a3-calib}
-Under the uniform floor $c_*\ge 811/1000$ from Lemma~\ref{lem:uniform-arch-floor} and the prime cap $\rho(t_0)<c_*/4$, the mixed Toeplitz block satisfies
+Under the uniform floor $c_*>0$ from Lemma~\ref{lem:uniform-arch-floor} and the prime cap $\rho(t_{\mathrm{rkhs}})\le c_*/4$, the mixed Toeplitz block satisfies
 \[
   \lammin\!\bigl(T_M[\Pa]-T_P\bigr)\ \ge\ \frac{c_*}{4}
 \]
@@ -72,14 +101,14 @@ for every $M\ge M_0^{\mathrm{unif}}$ in Theorem~\ref{thm:A3}.
 \end{proposition}
 
 \begin{proof}
-Theorem~\ref{thm:A3} yields $\lammin(T_M[\Pa]-T_P)\ge c_*-C_{\mathrm{SB}}\omega_{\Pa}(\pi/M)-\|T_P\|_{\op}$.
-For $M\ge M_0^{\mathrm{unif}}$, Corollary~\ref{cor:uniform-discretisation} ensures $C_{\mathrm{SB}}\omega_{\Pa}(\pi/M)\le c_*/2$.
-Theorem~\ref{thm:rkhs-tstar} gives $\|T_P\|_{\op}\le \rho(t_0) < c_*/4$.
+Theorem~\ref{thm:A3} yields $\lammin(T_M[\Pa]-T_P)\ge c_*-C_{\mathrm{SB}}\omega_{\Pa}(1/(2M))-\|T_P\|_{\op}$.
+For $M\ge M_0^{\mathrm{unif}}$, Corollary~\ref{cor:uniform-discretisation} ensures $C_{\mathrm{SB}}\omega_{\Pa}(1/(2M))\le c_*/2$.
+Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P\|_{\op}\le \rho(t_{\mathrm{rkhs}}) \le c_*/4$.
 Thus $\lammin \ge c_* - c_*/2 - c_*/4 = c_*/4$.
 \end{proof}
 
 \begin{remark}[Evenization does not increase $C_0$]
-In the T0 normalization we already place symmetric prime weights at $\pm\xi_n$ and integrate the zero counting measure $dN(\gamma)$ over the full real line. The diagonal constant on the zero side is therefore $C_0=\tfrac{1}{2\pi}$, not $\tfrac{1}{\pi}$. Passing to an evenized basis (replacing $\{+\tau,-\tau\}$ by a single cosine packet) redistributes mass within each pair but does not create an additional factor~2: the same symmetry is already built into T0 and into the A3 calibration. Consequently, with $\kappa_{\mathrm{A3}}=2\pi$ the asymptotic PG--LS slope in Road~A is $1-2\pi\Lambda_0\nearrow1^-$ as $\Lambda_0\downarrow0$.
+In the T0 normalization we already place symmetric prime weights at $\pm\xi_n$ and integrate the zero counting measure $dN(\gamma)$ over the full real line. The diagonal constant on the zero side is therefore $C_0=\tfrac{1}{2\pi}$, not $\tfrac{1}{\pi}$. Passing to an evenized basis (replacing $\{+\tau,-\tau\}$ by a single cosine packet) redistributes mass within each pair but does not create an additional factor~2: the same symmetry is already built into T0 and into the A3 calibration. Consequently, with $\kappa_{\mathrm{A3}}=1$ the asymptotic PG--LS slope in Road~A is $1-\Lambda_0\nearrow1^-$ as $\Lambda_0\downarrow0$.
 \end{remark}
 
 \begin{remark}[Consequence for the PG--LS slope]
@@ -87,7 +116,7 @@ Let the zero-side packet Gram lower bound be normalized as
 \(\sum_{\rho}\big|\sum_j c_j\,\widehat g_{\tau_j}(\gamma_\rho)\big|^2\ \ge\ \big(\tfrac{1}{2\pi}-\Lambda_0\big)\,\log(1{+}K)\,\sum_j|c_j|^2\ -\ C_{\mathrm{edge}}\sum_j|c_j|^2\).
 Under A3 and T0 the prime-side gain is
 \begin{equation}\label{eq:A3_calibration_kappa-formula-1}
- \Gamma(K)\ \ge\ \kappa_{\mathrm{A3}}\,\Big(\tfrac{1}{2\pi}-\Lambda_0\Big)\,\log(1{+}K)\ -\ \kappa_{\mathrm{A3}}\,C_{\mathrm{edge}}\ =\ \big(1-2\pi\Lambda_0\big)\,\log(1{+}K)\ -\ 2\pi C_{\mathrm{edge}},
+ \Gamma(K)\ \ge\ \kappa_{\mathrm{A3}}\,\Big(\tfrac{1}{2\pi}-\Lambda_0\Big)\,\log(1{+}K)\ -\ \kappa_{\mathrm{A3}}\,C_{\mathrm{edge}}\ =\ \Big(\tfrac{1}{2\pi}-\Lambda_0\Big)\,\log(1{+}K)\ -\ C_{\mathrm{edge}},
 \end{equation}
 so the asymptotic slope approaches $1^{-}$ as $\Lambda_0\to0$. Hence a strict $>1$ cannot be achieved within Road A by only shrinking $\Lambda_0$; one needs an amplifier (e.g. Road B/C) or a different normalization.
 \end{remark}

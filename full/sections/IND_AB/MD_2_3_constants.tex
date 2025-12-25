@@ -7,7 +7,7 @@ Define $a(\xi)=\log\pi-\Re\psi(\tfrac14+i\pi\xi)$. For $r\in(0,1]$ set
 \begin{equation}\label{eq:MD_2_3_constants-formula-11}
 m_r\ :=\ \inf_{|\xi|\le r} a(\xi)\ =\ \log\pi-\sup_{|\xi|\le r}\Re\psi\Big(\tfrac14+i\pi\xi\Big).
 \end{equation}
-Using the integral representation (for $\Re z>0$)
+Using the integral representation (for $\Re z>0$) from \cite[Ch.~2]{Titchmarsh1986}
 \begin{equation}\label{eq:MD_2_3_constants-formula-12}
 \psi(z)=\log z-\int_0^{\infty} \Big(\frac{1}{t}-\frac{1}{1-e^{-t}}\Big) e^{-zt}\,dt,
 \end{equation}
@@ -22,7 +22,7 @@ m_r\ \ge\ \log\pi-\log\sqrt{\tfrac{1}{16}+\pi^2 r^2}-C_0\ =\ \tfrac12\log\Big(\f
 This gives an explicit (computable) lower bound $m_r\downarrow 0$ as $r\downarrow0$.
 
 \subsection{Upper bound for \texorpdfstring{$N_{B,r}$}{N\_B,r}}
-Let $N_{B,r}=\int_{[-B,B]\setminus[-r,r]} |a(\xi)|\,d\xi$. For $|\xi|\ge r$ and $r\in(0,1]$ we use the asymptotic
+Let $N_{B,r}=\int_{[-B,B]\setminus[-r,r]} |a(\xi)|\,d\xi$. For $|\xi|\ge r$ and $r\in(0,1]$ we use the asymptotic (\cite[Ch.~2]{Titchmarsh1986})
 \begin{equation}\label{eq:MD_2_3_constants-formula-8}
 \Re\psi\Big(\tfrac14+i\pi\xi\Big)=\log(\pi|\xi|)+O\Big(\frac{1}{1+|\xi|}\Big),
 \end{equation}

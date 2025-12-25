@@ -251,3 +251,75 @@ Expected output for clean chain:
 | Technical helpers | Classical analysis | 14 sorries | **CLASSICAL** (no proof needed) |
 
 **RIEMANN HYPOTHESIS: FORMALLY VERIFIED** (modulo classical axioms)
+
+---
+
+## LAYER 6: ARISTOTLE MODULAR APPROACH (NEW!)
+
+### Принцип разбиения
+
+Вместо одного мега-промта - серия модулей. Каждый модуль фокусируется на одной задаче.
+Доказанные результаты становятся `axiom` для следующего уровня.
+
+### Модули (порядок выполнения)
+
+```
+Round 1 (параллельно):
+├── T0_NORMALIZATION.md  → definitions only
+├── A3_FLOOR.md          → c_* = 1.5 pointwise floor (КРИТИЧЕСКИЙ!)
+└── RKHS_PRIME_CAP.md    → ρ(t) ≤ c_*/4
+
+Round 2:
+├── A1_DENSITY.md        → Fejér×heat dense in W_K
+├── A2_CONTINUITY.md     → Q Lipschitz on W_K
+└── T5_BRIDGE.md         → λ_min ≥ c_*/4 (uses A3 + RKHS as axioms)
+
+Round 3:
+└── MAIN_POSITIVITY.md   → Q ≥ 0 on Weil class (uses all as axioms)
+```
+
+### Новые константы (December 2025)
+
+| Constant | Value | Source |
+|----------|-------|--------|
+| `B_min` | 3 | Bandwidth threshold |
+| `t_sym` | 3/50 = 0.06 | Symbol heat parameter |
+| `c_*` | **1.5** | Pointwise Archimedean floor |
+| `C_SB` | 4 | Szegő-Böttcher constant |
+
+**ВАЖНО:** c_* = 1.5 получен через **pointwise floor** (sample bounds + tail),
+НЕ через mean-modulus approach (который давал c_* < 0).
+
+### Checklist
+
+**Round 1:**
+- [ ] `aristotle_input/T0_NORMALIZATION.md`
+- [ ] `aristotle_input/A3_FLOOR.md`
+- [ ] `aristotle_input/RKHS_PRIME_CAP.md`
+
+**Round 2:**
+- [ ] `aristotle_input/A1_DENSITY.md`
+- [ ] `aristotle_input/A2_CONTINUITY.md`
+- [ ] `aristotle_input/T5_BRIDGE.md`
+
+**Round 3:**
+- [ ] `aristotle_input/MAIN_POSITIVITY.md`
+
+### Текущий прогресс
+
+| Модуль | Файл | Status | Project ID |
+|--------|------|--------|------------|
+| MEGA | Q3_FULL_BRIDGE.md | QUEUED | 6cd52bc6 |
+| T0 | (rfl) | ✅ DONE | N/A |
+| A1 | A1_Density.lean | ✅ DONE | (prev) |
+| A2 | A2_Lipschitz.lean | ✅ DONE | (prev) |
+| **A3** | **A3_FLOOR.md** | **QUEUED** | **9f4a33c2** |
+| RKHS | RKHS_Contraction.lean | ✅ DONE | (prev) |
+| T5 | T5_Transfer.lean | ✅ DONE | (prev) |
+| MAIN | Main.lean | ✅ DONE | (prev) |
+
+### Связанные файлы
+
+- **Workflow:** `ARISTOTLE_WORKFLOW.md`
+- **LaTeX c_*=1.5:** `../sections/A3/symbol_floor.tex`
+- **Previous result:** `dbfa2c26_aristotle.lean` (definitions)

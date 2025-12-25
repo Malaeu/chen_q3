@@ -1,6 +1,8 @@
-\section{Digamma Bounds Computation}\label{app:digamma-computation}
+\section{Digamma Bounds: Analytic Framework and Optional Numerics}\label{app:digamma-computation}
 
-This appendix provides the computational verification of the digamma bounds used in the uniform Archimedean floor.
+This appendix records the analytic framework behind the bounds for the uniform Archimedean floor, and separates
+any numerical checks as non-normative evidence. The main proof relies only on the analytic lemmas in
+Section~\ref{subsec:a3-symbol-floor}.
 
 \subsection{Definitions}
 
@@ -10,102 +12,89 @@ The Archimedean density is defined as
 \]
 where $\psi(z)=\Gamma'(z)/\Gamma(z)$ is the digamma function.
 
-For $B>0$ and $t_{\mathrm{sym}}>0$, define the weighted integrals:
+For $B>0$ and $t_{\mathrm{sym}}>0$, define
 \begin{align}
-  A_0(B,t_{\mathrm{sym}}) &:= \int_{-B}^{B} a(\xi)\Bigl(1-\frac{|\xi|}{B}\Bigr) e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi, \\
-  L_{\mathrm{int}}(B,t_{\mathrm{sym}}) &:= \int_{-B}^{B} |a(\xi)|\cdot|\xi|\cdot\Bigl(1-\frac{|\xi|}{B}\Bigr) e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi.
+  A_0(B,t_{\mathrm{sym}}) &:= 2\pi\int_{-B}^{B} a(\xi)\Bigl(1-\frac{|\xi|}{B}\Bigr) e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi, \\
+  g_{B,t_{\mathrm{sym}}}(\xi) &:= a(\xi)\Bigl(1-\frac{|\xi|}{B}\Bigr) e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}, \\
+  L_A(B,t_{\mathrm{sym}}) &:= 2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}\sum_{m\in\ZZ}\bigl|g_{B,t_{\mathrm{sym}}}'(\theta+m)\bigr|.
 \end{align}
 
-With $B_{\min}=3$ and $t_{\mathrm{sym}}=3/50$, the uniform constants are:
-\begin{align}
-  A_*(t_{\mathrm{sym}}) &:= \inf_{B\ge B_{\min}} A_0(B,t_{\mathrm{sym}}), \\
-  L_*(t_{\mathrm{sym}}) &:= \sup_{B\ge B_{\min}} L_{\mathrm{int}}(B,t_{\mathrm{sym}}), \\
-  c_* &:= A_*(t_{\mathrm{sym}}) - \pi L_*(t_{\mathrm{sym}}).
-\end{align}
+With $B_{\min}=3$ and $t_{\mathrm{sym}}=3/50$, the uniform Lipschitz constant is
+\[
+  L_*(t_{\mathrm{sym}}):=\sup_{B\ge B_{\min}}L_A(B,t_{\mathrm{sym}})
+\]
+as in Definition~\ref{def:uniform-L}.  The uniform Archimedean floor $c_*>0$ is supplied
+directly by Lemma~\ref{lem:uniform-arch-floor}.
 
 \subsection{Digamma Properties}
 
-The digamma function at $z=1/4$ satisfies the reflection formula:
+The digamma function at $z=1/4$ satisfies the reflection formula \cite[Ch.~2]{Titchmarsh1986}:
 \[
   \psi\Bigl(\frac{1}{4}\Bigr) = -\gamma - \frac{\pi}{2} - 3\ln 2,
 \]
 where $\gamma$ is Euler's constant. This gives:
 \[
-  a(0) = \log\pi + \gamma + \frac{\pi}{2} + 3\ln 2 \approx 5.372.
+  a(0) = \log\pi + \gamma + \frac{\pi}{2} + 3\ln 2.
 \]
 
-For $\xi\ne 0$, the real part of $\psi(1/4+i\pi\xi)$ can be computed via the series:
+For $\xi\ne 0$, the real part of $\psi(1/4+i\pi\xi)$ can be computed via the series \cite[Ch.~2]{Titchmarsh1986}:
 \[
   \Re\psi\Bigl(\frac{1}{4}+i\pi\xi\Bigr) = -\gamma + \sum_{n=0}^{\infty}\Bigl(\frac{1}{n+1} - \frac{n+1/4}{(n+1/4)^2+\pi^2\xi^2}\Bigr).
 \]
 
-\subsection{Numerical Bounds}
+\subsection{Analytic bound framework}
 
-Using interval arithmetic with 50-digit precision (via MPFR/mpmath), we compute:
+Section~\ref{subsec:a3-symbol-floor} introduces analytic bounds for $L_*(t_{\mathrm{sym}})$
+and records the direct pointwise floor $c_*$ (Lemma~\ref{lem:uniform-arch-floor}). The
+mean--modulus estimates for $A_0$ and $L_A$ remain as auxiliary bounds but are not used
+to define $c_*$ in the main proof chain.
 
-\begin{center}
-\begin{tabular}{cccc}
-\hline
-$B$ & $A_0(B, 3/50)$ & $L_{\mathrm{int}}(B, 3/50)$ & $c(B) = A_0 - \pi L_{\mathrm{int}}$ \\
-\hline
-3 & $1.7601$ & $0.2958$ & $0.8309$ \\
-5 & $1.8032$ & $0.3117$ & $0.8240$ \\
-10 & $1.8355$ & $0.3236$ & $0.8188$ \\
-20 & $1.8517$ & $0.3296$ & $0.8162$ \\
-50 & $1.8614$ & $0.3332$ & $0.8146$ \\
-100 & $1.8646$ & $0.3344$ & $0.8141$ \\
-500 & $1.8672$ & $0.3353$ & $0.8137$ \\
-1000 & $1.8675$ & $0.3355$ & $0.8136$ \\
-$\infty$ (limit) & $1.8677$ & $0.3355$ & $0.8136$ \\
-\hline
-\end{tabular}
-\end{center}
-
-\noindent\textbf{Key observation:} $c(B) > 0.8$ for all $B \ge 3$, with minimum at $B\to\infty$.
-
-\subsection{Verification of Bounds}
-
-\paragraph{Mean bound.}
-From the table, $A_0(B,3/50)\ge 1.760$ for $B=3$ and increases monotonically with $B$.
-The infimum $A_*=\inf_{B\ge 3} A_0(B,3/50)$ is achieved at $B=3$, but the limit as $B\to\infty$
-gives the claimed $A_*\ge 1867/1000$ when we account for the full tail contribution.
-
-More precisely, as $B\to\infty$, the triangular factor $(1-|\xi|/B)\to 1$ and
+\subsection{Finite-sum bounds at sample points}\label{app:digamma-sample}
+For $y=\pi\xi$ set
 \[
-  \lim_{B\to\infty} A_0(B,t) = \int_{-\infty}^{\infty} a(\xi)\,e^{-4\pi^2 t\xi^2}\,d\xi =: A_\infty(t).
+  t_n(y):=\frac{1}{n+1}-\frac{n+\tfrac14}{(n+\tfrac14)^2+y^2},
+\qquad
+  \Re\psi\Bigl(\frac14+i y\Bigr)
+  = -\gamma + \sum_{n\ge0} t_n(y).
 \]
-Numerical integration yields $A_\infty(3/50)\approx 1.868 > 1867/1000$.
-
-\paragraph{Lipschitz bound.}
-The function $L_{\mathrm{int}}(B,3/50)$ is increasing in $B$ (since we are taking a supremum of nonnegative integrands).
-The limit $L_*=\sup_{B\ge 3} L_{\mathrm{int}}(B,3/50)\approx 0.336 = 42/125$.
-
-\paragraph{Gap positivity.}
-Combining:
+The summand satisfies $t_n(y)\le0$ once
+$n\ge \lceil \tfrac43 y^2-\tfrac14\rceil$, so for $\xi=\tfrac12$ we have
+$t_n(\pi/2)\le0$ for $n\ge4$ and therefore
 \[
-  c_* = A_* - \pi L_* \ge \frac{1867}{1000} - \frac{22}{7}\cdot\frac{42}{125}
-  = \frac{1867}{1000} - \frac{1056}{1000} = \frac{811}{1000} > 0.
+  \Re\psi\Bigl(\tfrac14+\tfrac{i\pi}{2}\Bigr)\ \le\ -\gamma + \sum_{n=0}^3 t_n\Bigl(\tfrac{\pi}{2}\Bigr).
 \]
+Using $\pi^2<10$ yields the explicit bounds
+\[
+  t_0\le \frac{37}{41},\qquad
+  t_1\le \frac{5}{26},\qquad
+  t_2\le \frac{13}{363},\qquad
+  t_3\le \frac{1}{836},
+\]
+hence $\sum_{n=0}^3 t_n(\pi/2)<1.132$. With $\pi>333/106$ and $\gamma>0.5772$ this gives
+$a(\tfrac12)=\log\pi+\gamma-\sum t_n(\pi/2)>\frac{29}{50}$, as recorded in
+Lemma~\ref{lem:a3-a-sample}.
 
-\subsection{Reproducibility and Formal Certificate}
+For $\xi\ge1$ the standard digamma remainder bound
+\(
+|\psi(z)-\log z+\tfrac{1}{2z}|\le \frac{1}{12|z|^2}
+\)
+(\cite[\S5.11]{NISTDLMF}) implies
+\[
+  a(\xi)\ \ge\ -\log\xi\ -\ \frac{1}{2\pi\xi}\ -\ \frac{1}{12\pi^2\xi^2}.
+\]
+Plugging $\xi=\tfrac32$ and $\xi=\tfrac52$ and using $\pi>3$ together with
+the elementary bounds $\log(3/2)<\tfrac{5}{12}$ and $\log(5/2)<1$ gives
+\[
+  a(\tfrac32)\ \ge\ -\frac{5}{12}-\frac{1}{9}-\frac{1}{243}\ >\ -\frac35,
+\]
+and
+\[
+  a(\tfrac52)\ \ge\ -1-\frac{1}{15}-\frac{1}{675}\ >\ -\frac{11}{10},
+\]
+matching Lemma~\ref{lem:a3-a-sample}.
 
-The interval arithmetic computations are implemented in Python using the \texttt{mpmath} library
-with 50-digit precision. The source code is available in \path{scripts/digamma_bounds.py}.
+\subsection{Optional numerical evidence (not used in the proof)}
 
-\paragraph{Computational certificate.}
-Running the verification script produces the following certified bounds:
-\begin{itemize}
-  \item For all $B \ge B_{\min} = 3$ with $t_{\mathrm{sym}} = 3/50$:
-  \[
-    c(B) := A_0(B, t_{\mathrm{sym}}) - \pi\, L_{\mathrm{int}}(B, t_{\mathrm{sym}}) \ge 0.8136 > \frac{4}{5}.
-  \]
-  \item At $B = B_{\min} = 3$: $c(3) \approx 0.8309 > 0.811$.
-  \item In the limit $B \to \infty$: $c_\infty \approx 0.8136 > 0.8$.
-\end{itemize}
-
-\paragraph{Sufficient bound.}
-The main proof requires only $c_* > 0$. The certified bound $c_* \ge 4/5 = 0.8$ provides
-ample margin and is independent of $K$, as required by the uniform approach.
-
-All bounds are certified to hold with error margin $<10^{-3}$, which is sufficient since the
-claimed bounds use rationals with denominators $\le 1000$.
+Exploratory numerical checks (high-precision quadrature and grid evaluation of the periodized derivative sum)
+are implemented in \path{scripts/digamma_bounds.py}. These computations are \emph{not} part of the logical proof;
+they merely provide sanity checks on the scale of $A_0(B,t_{\mathrm{sym}})$ and $L_A(B,t_{\mathrm{sym}})$.

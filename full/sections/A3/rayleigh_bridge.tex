@@ -11,7 +11,7 @@ T0 density $a(\xi)=\log\pi-\Re\psi(\tfrac14+i\pi\xi)$ with the Fej\'er and heat 
 on $[-B,B]$.  The prime weights are $w(n)=\frac{2\Lambda(n)}{\sqrt n}$ located at the
 nodes $\xi_n=\frac{\log n}{2\pi}$, as fixed in Section~\ref{sec:T0}.
 
-Let $\mathcal P_M:=\{p(\theta)=\sum_{|k|\le M}c_k e^{ik\theta}\}$ denote the trigonometric
+Let $\mathcal P_M:=\{p(\theta)=\sum_{|k|\le M}c_k e^{2\pi i k\theta}\}$ denote the trigonometric
 polynomials of degree at most $M$, equipped with the $L^2(\TT)$ inner product, and let
 $\iota_M:\mathcal P_M\hookrightarrow L^2(\TT)$ be the canonical inclusion with adjoint
 $\iota_M^\ast$ equal to the orthogonal projection onto $\mathcal P_M$.
@@ -20,7 +20,7 @@ $\iota_M^\ast$ equal to the orthogonal projection onto $\mathcal P_M$.
 The Toeplitz operator $T_M[P_A]$ acts on $\mathcal P_M$, is self-adjoint and satisfies
 \[
   \left\langle T_M[P_A]\,p,\,p\right\rangle_{L^2(\TT)}
-  = \int_{-\pi}^{\pi} P_A(\theta)\,|p(\theta)|^2\,\frac{d\theta}{2\pi},
+  = \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,|p(\theta)|^2\,d\theta,
   \qquad p\in\mathcal P_M.
 \]
 Moreover, the symmetrised prime operator
@@ -28,7 +28,7 @@ Moreover, the symmetrised prime operator
   T_P^{(M)}\ :=\ \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
      w(n)\,\Phi_{B,t}(\xi_n)\,|v_n^{(M)}\rangle\!\langle v_n^{(M)}|,
   \qquad
-  v_n^{(M)}(\theta)\ :=\ \frac{1}{\sqrt{2M+1}}\sum_{|k|\le M} e^{ik(\theta-\xi_n)},
+  v_n^{(M)}(\theta)\ :=\ \frac{1}{\sqrt{2M+1}}\sum_{|k|\le M} e^{2\pi i k(\theta-\xi_n)},
 \]
 is the orthogonal compression of the global prime operator $T_P$ to $\mathcal P_M$,
 and is positive semidefinite with
@@ -42,7 +42,7 @@ The Toeplitz matrix $T_M[P_A]$ is the compression of the Fourier multiplier with
 symbol $P_A$ to $\mathcal P_M$; the stated quadratic form is the standard representation
 of Toeplitz forms (see, e.g., \cite[Chapter~1]{GrenanderSzego1958}).  For the prime
 operator note that
-$T_P=\sum_{n\ge2} w(n)\Phi_{B,t}(\xi_n)\,|e^{i(\cdot)\xi_n}\rangle\!\langle e^{i(\cdot)\xi_n}|$
+$T_P=\sum_{n\ge2} w(n)\Phi_{B,t}(\xi_n)\,|e^{2\pi i(\cdot)\xi_n}\rangle\!\langle e^{2\pi i(\cdot)\xi_n}|$
 is a finite-rank positive operator on $L^2(\TT)$, hence
 $T_P^{(M)}=\iota_M^\ast T_P \iota_M$ is self-adjoint and positive semidefinite.
 The displayed norm bound is immediate from the triangle inequality applied to
@@ -53,7 +53,7 @@ the sum of rank-one projections $|v_n^{(M)}\rangle\!\langle v_n^{(M)}|$.
 For every $p\in\mathcal P_M$ one has
 \[
   \left\langle (T_M[P_A]-T_P^{(M)})\,p,\,p\right\rangle_{L^2(\TT)}
-  = \int_{-\pi}^{\pi} P_A(\theta)\,|p(\theta)|^2\,\frac{d\theta}{2\pi}
+  = \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,|p(\theta)|^2\,d\theta
     - \sum_{\substack{n\ge2\\ |\xi_n|\le B}} w(n)\,\Phi_{B,t}(\xi_n)\,|p(\xi_n)|^2.
 \]
 \end{lemma}
@@ -68,9 +68,9 @@ Let $\Phi_{B,t}$ and $P_A$ be as above, and let $p\equiv1$ be the constant polyn
 Then
 \[
   \left\langle (T_M[P_A]-T_P^{(M)})\,1,\,1\right\rangle_{L^2(\TT)}
-  = \int_{-\pi}^{\pi} P_A(\theta)\,\frac{d\theta}{2\pi}
+  = \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta
     - \sum_{\substack{n\ge2\\ |\xi_n|\le B}} w(n)\,\Phi_{B,t}(\xi_n)
-  = \frac{1}{2\pi}\,Q(\Phi_{B,t}),
+  = Q(\Phi_{B,t}),
 \]
 where $Q$ is the Weil functional in the T0 normalization (Lemma~\ref{t0:lem:T0}).  In particular,
 $Q(\Phi_{B,t})\ge0$ if and only if the Rayleigh quotient on the left-hand side is nonnegative.
@@ -80,26 +80,17 @@ $Q(\Phi_{B,t})\ge0$ if and only if the Rayleigh quotient on the left-hand side i
 Applying Lemma~\ref{lem:a3-rayleigh-quotient} with $p\equiv1$ yields
 \[
   \left\langle (T_M[P_A]-T_P^{(M)})\,1,\,1\right\rangle_{L^2(\TT)}
-  = \int_{-\pi}^{\pi} P_A(\theta)\,\frac{d\theta}{2\pi}
+  = \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta
     - \sum_{n\ge2} w(n)\,\Phi_{B,t}(\xi_n),
 \]
 where the prime sum is finite because $\Phi_{B,t}$ is supported in $[-B,B]$.
 By definition of $P_A$ and the normalization fixed in Section~\ref{sec:T0} one has
 \[
-  \int_{-\pi}^{\pi} P_A(\theta)\,\frac{d\theta}{2\pi}
-  = \int_{\RR} a(\xi)\,\Phi_{B,t}(\xi)\,d\xi,
+  \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta
+  = \int_{\RR} a_*(\xi)\,\Phi_{B,t}(\xi)\,d\xi,
 \]
 and Lemma~\ref{t0:lem:T0} gives
-$Q(\Phi_{B,t}) = 2\pi\!\left[\int_{-\pi}^{\pi}P_A(\theta)\frac{d\theta}{2\pi}
-       - \sum_{n\ge2}w(n)\,\Phi_{B,t}(\xi_n)\right]$.
-Therefore the Rayleigh quotient equals $\frac{1}{2\pi}Q(\Phi_{B,t})$, proving the claim.
+$Q(\Phi_{B,t}) = \int_{-\tfrac12}^{\tfrac12}P_A(\theta)\,d\theta
+       - \sum_{n\ge2}w(n)\,\Phi_{B,t}(\xi_n)$.
+Therefore the Rayleigh quotient equals $Q(\Phi_{B,t})$, proving the claim.
 \end{proof}
-
-\begin{remark}[Density and limit passage]\label{rem:a3-density-rayleigh}
-Trigonometric polynomials are dense in $L^2(\TT)$, hence the identity in
-Theorem~\ref{thm:a3-rayleigh-identification} extends by approximation to every
-$p\in L^2(\TT)$ with support contained in $\mathcal P_M$.  The Fej\'er kernel ensures
-that $T_M[P_A]$ converges strongly to the full Toeplitz operator, so the above equality
-records the exact analytic correspondence between the Toeplitz quadratic form and
-the Weil functional $Q$ for the Fej\'er$\times$heat window.
-\end{remark}

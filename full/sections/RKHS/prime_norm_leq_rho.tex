@@ -105,9 +105,14 @@ Finally, the integrand in the definition of $J_a$ is nonnegative, so $z_0 \mapst
 Legacy numerics for the optimisation parameter $t$ and the resulting caps $\rho(t)$ are archived in
 Appendix~\ref{app:a3-repro}; they corroborate but do not enter the analytic bounds above.
 
-\subsubsection{Immediate corollaries used in the certificate}
+\subsubsection{Immediate corollaries used below}
 \begin{itemize}
-  \item From Proposition~\ref{pm:prop:norm-leq-rho} we obtain the operator-norm cap $\|T_P\|\le \rho(t)=2\int_{0}^{\infty} y e^{y/2} e^{-4\pi^2 t y^2}\,dy$ for every $t>0$; at $t=1$ this evaluates to $\rho(1)<1$, so $c_0^{\mathrm{eff}}:=1-\rho(1)>0$.
+  \item From Proposition~\ref{pm:prop:norm-leq-rho} we obtain the operator-norm cap
+  \(
+    \|T_P\|\le \rho(t)=2\int_{0}^{\infty} y e^{y/2} e^{-4\pi^2 t y^2}\,dy
+  \)
+  for every $t>0$. Since $\rho(t)$ is decreasing (Lemma~\ref{lem:rkhs-uniform-cap-full}), any choice of $t_{\mathrm{rkhs}}$
+  with $\rho(t_{\mathrm{rkhs}})\le c_*/4$ yields the uniform prime cap in Corollary~\ref{cor:uniform-prime-cap}.
   \item Lemma~\ref{pm:lem:trace-cap-erfc} supplies the explicit finite-block plus tail bound
   \(
     \|T_P\| \le 2\sum_{2\le n\le e^{2}} \frac{\log n}{\sqrt n} e^{-4\pi^2 t(\log n)^2} + 2 J_{4\pi^2 t}(2),

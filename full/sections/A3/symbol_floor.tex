@@ -8,41 +8,51 @@ We now record explicit regularity and lower bounds for the Archimedean symbol $P
 \]
 and define
 \[
-  P_A(\theta) = A_0 + 2\sum_{k\ge 1} A_k\cos(k\theta),\qquad
-  A_k = \int_{\RR} a(\xi)\,\Phi_{B,t_{\mathrm{sym}}}(\xi)\,\cos(k\xi)\,d\xi,
+  g_{B,t_{\mathrm{sym}}}(\xi) := a(\xi)\,\Phi_{B,t_{\mathrm{sym}}}(\xi),\qquad
+  P_A(\theta) := 2\pi\sum_{m\in\ZZ} g_{B,t_{\mathrm{sym}}}(\theta+m).
 \]
-with $a(\xi)=\log\pi - \Re\psi(\tfrac14+i\pi\xi)$ the normalized Archimedean density fixed in Section~\ref{sec:T0}.  Differentiation under the integral sign is justified because $a\in C^\infty(\RR)$ (see \cite[\S5.2]{NISTDLMF}) and $\Phi_{B,t_{\mathrm{sym}}}\in C_c^\infty(\RR)$.
+For $k\ge 0$ set
+\[
+  A_k := 2\pi\int_{\RR} g_{B,t_{\mathrm{sym}}}(\xi)\,\cos(2\pi k\xi)\,d\xi,
+\]
+where $a(\xi)=\log\pi - \Re\psi(\tfrac14+i\pi\xi)$ is the normalized Archimedean density fixed in Section~\ref{sec:T0}. The function $g_{B,t_{\mathrm{sym}}}$ is compactly supported on $[-B,B]$, so the periodization sum defining $P_A$ is finite for each $\theta$.
 
-\begin{lemma}[Lipschitz modulus]\label{lem:a3-lipschitz-bound}
-For every $h\ge 0$ one has
+\begin{lemma}[Periodized symbol and Lipschitz modulus]\label{lem:a3-lipschitz-bound}
+The symbol $P_A$ is $1$--periodic and admits the cosine series
+\[
+  P_A(\theta)=A_0+2\sum_{k\ge1}A_k\cos(2\pi k\theta).
+\]
+Moreover, for every $h\ge 0$ one has
 \[
   \omega_{P_A}(h)\ \le\ L_A(B,t_{\mathrm{sym}})\,h,
 \]
 where
 \[
   L_A(B,t_{\mathrm{sym}})
-  := \frac{\|a\|_{L^\infty([-B,B])}}{4\pi^2 t_{\mathrm{sym}}}
-     + \frac{C_1\,\|a'\|_{L^\infty([-B,B])}}{(4\pi^2 t_{\mathrm{sym}})^{3/2}},
+  := 2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}\sum_{m\in\ZZ}\bigl|g_{B,t_{\mathrm{sym}}}'(\theta+m)\bigr|.
 \]
-with an absolute constant $C_1>0$.  In particular $P_A\in \mathrm{Lip}(1)$ on the unit circle.
+In particular $P_A\in \mathrm{Lip}(1)$ on the unit torus $\TT$.
 \end{lemma}
 
 \begin{proof}
-Let $\widetilde P_A$ be the $2\pi$--periodic extension of
+Since $g_{B,t_{\mathrm{sym}}}\in L^1(\RR)$ and has compact support, Fubini and the change of variables $\xi=\theta+m$ give
 \[
-  \widetilde P_A(\theta) = \int_{-B}^{B} a(\xi)\,\Phi_{B,t_{\mathrm{sym}}}(\xi)\,\cos(\theta\xi)\,d\xi.
+  \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,e^{-2\pi i k\theta}\,d\theta
+  = 2\pi\int_{\RR} g_{B,t_{\mathrm{sym}}}(\xi)\,e^{-2\pi i k\xi}\,d\xi.
 \]
-Differentiating under the integral and using $\Phi_{B,t_{\mathrm{sym}}}(\pm B)=0$ yields
+Because $g_{B,t_{\mathrm{sym}}}$ is even, the Fourier coefficients are real and coincide with $A_k$, yielding the cosine series.
+
+For the modulus, write
 \[
-  \widetilde P_A'(\theta)= -\int_{-B}^{B} a(\xi)\,\Phi_{B,t_{\mathrm{sym}}}(\xi)\,\xi\,\sin(\theta\xi)\,d\xi,
+  P_A(\theta+h)-P_A(\theta)
+  = 2\pi\sum_{m\in\ZZ}\bigl(g_{B,t_{\mathrm{sym}}}(\theta+h+m)-g_{B,t_{\mathrm{sym}}}(\theta+m)\bigr).
 \]
-hence $\|\widetilde P_A'\|_{L^\infty}\le \|a\|_{L^\infty([-B,B])} \int_{-B}^{B} |\xi| \Phi_{B,t_{\mathrm{sym}}}(\xi)\,d\xi$.  A direct computation gives
-\[
- \int_{-B}^{B} |\xi| \Bigl(1-\frac{|\xi|}{B}\Bigr)_{+} e^{-4\pi^2 t_{\mathrm{sym}} \xi^2} d\xi
- \le \frac{1}{4\pi^2 t_{\mathrm{sym}}} + \frac{C_1}{(4\pi^2 t_{\mathrm{sym}})^{3/2}},
-\]
-with $C_1$ absolute.
-Therefore $\omega_{\widetilde P_A}(h)\le \|\widetilde P_A'\|_{L^\infty} h$ and the claimed bound follows.  Since $P_A$ is the cosine-Fourier series of $\widetilde P_A$, periodization does not increase the modulus.
+The function $g_{B,t_{\mathrm{sym}}}$ is Lipschitz on $\RR$ (it is the product of a smooth function and a compactly supported Lipschitz cutoff), so for each $m$ the mean-value bound yields
+\(
+|g(\theta+h+m)-g(\theta+m)| \le h\,\sup_{s\in[\theta,\theta+h]}|g'(s+m)|.
+\)
+Summing over the finitely many $m$ with $\theta+m\in[-B,B]$ gives
+$\omega_{P_A}(h)\le L_A(B,t_{\mathrm{sym}})h$.
 \end{proof}
 
 Next we quantify the symbol floor by splitting the integral into a ``core'' region $[-r,r]$ and its complement.
@@ -55,8 +65,8 @@ Let $0<r<B$. Set
 \]
 Then
 \[
-  A_0 \ge 2 m_r\,r\left(1-\frac{r}{B}\right) e^{-4\pi^2 t_{\mathrm{sym}} r^2}
-        - \frac{M_B}{4\pi^2 t_{\mathrm{sym}} r} e^{-4\pi^2 t_{\mathrm{sym}} r^2}.
+  A_0 \ge 4\pi\,m_r\,r\left(1-\frac{r}{B}\right) e^{-4\pi^2 t_{\mathrm{sym}} r^2}
+        - \frac{M_B}{2\pi\,t_{\mathrm{sym}} r} e^{-4\pi^2 t_{\mathrm{sym}} r^2}.
 \]
 \end{lemma}
 
@@ -87,46 +97,32 @@ The same value is obtained on the symmetric left endpoint, and every other trans
 \begin{lemma}[Archimedean floor]\label{lem:a3-arch-floor}
 With notation as above define
 \[
-  L_A^{\mathrm{up}}(B,t_{\mathrm{sym}}) := L_A(B,t_{\mathrm{sym}}),\qquad
+\begin{aligned}
+  L_A^{\mathrm{up}}(B,t_{\mathrm{sym}}) &:= L_A(B,t_{\mathrm{sym}}), \\
   \underline{A}_0(B,r,t_{\mathrm{sym}})
-    := 2 m_r\,r\left(1-\frac{r}{B}\right) e^{-4\pi^2 t_{\mathrm{sym}} r^2}
+    &:= 2 m_r\,r\left(1-\frac{r}{B}\right) e^{-4\pi^2 t_{\mathrm{sym}} r^2}
        - \frac{M_B}{4\pi^2 t_{\mathrm{sym}} r} e^{-4\pi^2 t_{\mathrm{sym}} r^2}.
+\end{aligned}
 \]
 Then
 \[
-  \min_{\theta\in\TT} P_A(\theta)\ \ge\ \underline{A}_0(B,r,t_{\mathrm{sym}}) - \pi L_A^{\mathrm{up}}(B,t_{\mathrm{sym}}).
+  \min_{\theta\in\TT} P_A(\theta)\ \ge\ \underline{A}_0(B,r,t_{\mathrm{sym}}) - \tfrac12 L_A^{\mathrm{up}}(B,t_{\mathrm{sym}}).
 \]
 \end{lemma}
 
 \begin{proof}
-For any $\theta$ choose a point $\theta_0$ at which $P_A$ attains its mean value and apply the mean-value inequality $P_A(\theta)\ge A_0 - \omega_{P_A}(|\theta-\theta_0|)$. Since $|\theta-\theta_0|\le \pi$, the Lipschitz bound and Lemma~\ref{lem:a3-core-lower-bound} give the claimed inequality.
-\end{proof}
-
-\begin{corollary}[Symbol floor on a compact]\label{cor:a3-arch-floor-compact}
-Fix a compact interval $[-K,K]$. Choose parameters $B>B_K\ge K$, $0<r< K$, and $t_{\mathrm{sym}}>0$ such that
-\[
-  c_{\mathrm{arch}}(K) := \underline{A}_0(B,r,t_{\mathrm{sym}}) - \pi L_A^{\mathrm{up}}(B,t_{\mathrm{sym}}) > 0.
-\]
-Then the Archimedean symbol attached to the Fej\'er$\times$heat cone satisfies
-\[
-  \min_{\theta\in\TT} P_A(\theta) \ge c_{\mathrm{arch}}(K)>0.
-\]
-In particular $c_{\mathrm{arch}}(K)$ serves as the analytic symbol margin used in the A3 bridge.
-\end{corollary}
-
-\begin{proof}
-Combine Lemmas~\ref{lem:a3-lipschitz-bound} and~\ref{lem:a3-arch-floor}. The positivity is ensured by the explicit choice of $(B,r,t_{\mathrm{sym}})$; numerically one may take $B$ moderately larger than $K$ and $r=K/2$, but only the displayed inequality is required in the analytic proof.
+For any $\theta$ choose a point $\theta_0$ at which $P_A$ attains its mean value and apply the mean-value inequality $P_A(\theta)\ge A_0 - \omega_{P_A}(|\theta-\theta_0|)$. Since $|\theta-\theta_0|\le \tfrac12$, the Lipschitz bound and Lemma~\ref{lem:a3-core-lower-bound} give the claimed inequality.
 \end{proof}
 
 \begin{lemma}[Core slope bound]\label{lem:a3-core-slope}
 For $a(\xi)=\log\pi-\Re\psi(\tfrac14+i\pi\xi)$ and every $r>0$,
 \[
-  \inf_{|\xi|\le r} a(\xi)\ \ge\ a(0)\ -\ L_A\,r,
-  \qquad L_A \le 20\pi,
+  \inf_{|\xi|\le r} a(\xi)\ \ge\ a(0)\ -\ L_a\,r,
+  \qquad L_a \le 20\pi,
 \]
 where
 \(
-  a(0)=\gamma + \frac{\pi}{2} + \log\pi + 3\log 2 \ge \frac{5117}{1000}
+  a(0)=\gamma + \frac{\pi}{2} + \log\pi + 3\log 2 > 0
 \).
 \end{lemma}
 \begin{proof}
@@ -136,7 +132,7 @@ The trigamma admits the convergent series
 \(
   \psi'(z)=\sum_{n\ge0}(n+z)^{-2}
 \)
-for $\Re z>0$, so
+for $\Re z>0$ (see, e.g., \cite[Ch.~2]{Titchmarsh1986}), so
 \[
   |\psi'(\tfrac14+i\pi\xi)|
   \le \sum_{n\ge0} \frac{1}{|n+\tfrac14+i\pi\xi|^2}
@@ -151,84 +147,193 @@ The identity
 \(
   \psi(\tfrac14) = -\gamma - \tfrac{\pi}{2} - 3\log 2
 \)
-is recorded in Appendix~\ref{app:md23-constants}, equation~\eqref{eq:MD_2_3_constants-formula-11}. Together with equation~\eqref{eq:MD_2_3_constants-formula-9} it implies
-$a(0)=\log\pi-\Re\psi(\tfrac14)=\gamma+\tfrac{\pi}{2}+\log\pi+3\log 2$. Elementary estimates
-$\gamma\ge\tfrac{577}{1000}$, $\tfrac{\pi}{2}\ge\tfrac{3}{2}$, $\log\pi\ge 1$ (because $\pi>e$), and
-$\log 2\ge\tfrac{17}{25}$ (obtained by truncating the alternating series after three terms) yield
-$a(0)\ge \tfrac{5117}{1000}$. Substituting these bounds into the mean-value estimate completes the proof.
+is recorded in Appendix~\ref{app:md23-constants}, equation~\eqref{eq:MD_2_3_constants-formula-11} (see also \cite[Ch.~2]{Titchmarsh1986}). Together with equation~\eqref{eq:MD_2_3_constants-formula-9} it implies
+$a(0)=\log\pi-\Re\psi(\tfrac14)=\gamma+\tfrac{\pi}{2}+\log\pi+3\log 2$, which is positive. Substituting this identity into the mean-value estimate completes the proof.
 \end{proof}
 
-%% ============================================================================
-%% OBSOLETE: Theorem 8.16 below is superseded by Lemma 8.17' (uniform-arch-floor)
-%% which provides a K-independent floor c_* >= 811/1000 > 0.
-%% The parametrization here has a scale error: the negative term M_B/(4π²t·r)
-%% dominates the positive term for the stated (B,r,t) values.
-%% Retained for historical reference only; NOT used in the main proof chain.
-%% ============================================================================
-\begin{theorem}[Archimedean floor at $K=1$ -- \textbf{OBSOLETE}]\label{thm:a3-k1-floor}
-\textbf{Note:} This theorem is superseded by Lemma~\ref{lem:uniform-arch-floor} which provides
-the uniform bound $c_*\ge 811/1000$ valid for all $K$. The parametrization below contains
-a scale inconsistency and is retained only for historical reference.
-
-\medskip\noindent
-Let $B=\tfrac13$, $r=\tfrac{1}{32}$ and $t_{\mathrm{sym}}=\tfrac{3}{50}$. Then
+\begin{lemma}[Digamma monotonicity]\label{lem:a3-a-monotone}
+For $\xi>0$ the Archimedean density satisfies
 \[
-  c_{\mathrm{arch}}(1)
-  \ \ge\ e^{-4\pi^2 t_{\mathrm{sym}} r^2}\Biggl(2m_r r\Bigl(1-\frac{r}{B}\Bigr) - \frac{M_B}{4\pi^2 t_{\mathrm{sym}} r}\Biggr)
-  - \pi L_A^{\mathrm{up}}(B,t_{\mathrm{sym}})
-  \ \ge\ \CarchOne\ >\ 0.1878,
+  a'(\xi)
+  = -2\pi^2\xi\sum_{n\ge0}\frac{n+\tfrac14}{\bigl((n+\tfrac14)^2+\pi^2\xi^2\bigr)^2},
 \]
-where $m_r=\inf_{|\xi|\le r}a(\xi)$ and $M_B=\|a\|_{L^\infty([-B,B])}$. All auxiliary
-inequalities are recorded in Appendix~\ref{app:md23-constants}.
-\end{theorem}
-\begin{proof}[Proof (historical -- not used)]
-Lemma~\ref{lem:a3-arch-floor} gives the first inequality. The bounds
-\(m_r\ge a(0)-20\pi r\) and \(M_B\le \tfrac{11}{2}\) follow from Lemma~\ref{lem:a3-core-slope} and
-Appendix~\ref{app:md23-constants}; for $L_A^{\mathrm{up}}(B,t_{\mathrm{sym}})$ we use
-Lemma~\ref{lem:a3-lipschitz-bound}. Substituting the chosen $(B,r,t_{\mathrm{sym}})$ and the
-rational bounds on $a(0)$, $M_B$ and $L_A^{\mathrm{up}}$ yields the stated fraction
-\(\CarchOne=\tfrac{1\,346\,209}{7\,168\,000}\).
+hence $a'(\xi)<0$ and $a$ is even and strictly decreasing on $[0,\infty)$.
+Moreover, for $\xi\ge 1$,
+\[
+  |a'(\xi)| \ \le\ \frac{1}{|\xi|}+\frac{1}{2\pi^2|\xi|^3}
+  \ \le\ \frac{11}{10}\cdot\frac{1}{|\xi|}.
+\]
+\end{lemma}
+\begin{proof}
+From the trigamma series
+\(
+  \psi'(z)=\sum_{n\ge0}(n+z)^{-2}
+\)
+and $\Im\,(x+iy)^{-2}=-2xy/(x^2+y^2)^2$ we obtain
+\[
+  a'(\xi)=\pi\,\Im\psi'\bigl(\tfrac14+i\pi\xi\bigr)
+  = -2\pi^2\xi\sum_{n\ge0}\frac{n+\tfrac14}{\bigl((n+\tfrac14)^2+\pi^2\xi^2\bigr)^2},
+\]
+which is negative for $\xi>0$ because every term in the sum is positive.
+For $\xi\ge1$, bounding the sum by the first term plus the integral
+\(
+  \int_{0}^{\infty}\frac{x+\tfrac14}{\bigl((x+\tfrac14)^2+\pi^2\xi^2\bigr)^2}\,dx
+  = \frac{1}{2(\pi^2\xi^2+\tfrac{1}{16})}
+\)
+gives
+\[
+  |a'(\xi)|\le 2\pi^2|\xi|\Bigl(\frac{1}{2\pi^2\xi^2}+\frac{1}{2\pi^4\xi^4}\Bigr)
+  = \frac{1}{|\xi|}+\frac{1}{2\pi^2|\xi|^3},
+\]
+and the last inequality follows since $\xi\ge1$.
+\end{proof}
+
+\begin{lemma}[Logarithmic growth bound]\label{lem:a3-a-log}
+For $\xi\ge 1$ one has
+\[
+  |a(\xi)|\ \le\ a(0)\ +\ \frac{11}{10}\log(1+\xi).
+\]
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:a3-a-monotone}, $|a'(\xi)|\le \frac{11}{10}\xi^{-1}$ for $\xi\ge1$.
+Integrating from $1$ to $\xi$ yields
+\(
+  |a(\xi)|\le |a(1)|+\frac{11}{10}\log\xi\le a(0)+\frac{11}{10}\log(1+\xi),
+\)
+since $a$ is decreasing and $|a(1)|\le a(0)$.
 \end{proof}
 
 %% ============================================================================
 %% UNIFORM ARCHIMEDEAN FLOOR (Lemma 8.17') -- replaces K-dependent approach
 %% ============================================================================
 
-\begin{lemma}[Uniform Archimedean floor via mean+modulus]\label{lem:uniform-arch-floor}
-Fix $t_{\mathrm{sym}}>0$ and a baseline $B_{\min}>0$ (e.g.\ $B_{\min}:=B(1)$ for the A3 schedule).
-For each $B\ge B_{\min}$ define
+\begin{lemma}[Sample-point bounds for $a$]\label{lem:a3-a-sample}
+The Archimedean density satisfies
 \[
-  A_0(B,t_{\mathrm{sym}})
-  :=\int_{-B}^{B} a(\xi)\Bigl(1-\frac{|\xi|}{B}\Bigr)_{+} e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi,
-\]
-\[
-  L_{\mathrm{int}}(B,t_{\mathrm{sym}})
-  :=\int_{-B}^{B}|a(\xi)|\,|\xi|\Bigl(1-\frac{|\xi|}{B}\Bigr)_{+} e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi.
-\]
-Define the uniform constants
-\[
-  A_*(t_{\mathrm{sym}}):=\inf_{B\ge B_{\min}}A_0(B,t_{\mathrm{sym}}),\qquad
-  L_*(t_{\mathrm{sym}}):=\sup_{B\ge B_{\min}}L_{\mathrm{int}}(B,t_{\mathrm{sym}}),\qquad
-  c_*:=A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}}).
-\]
-Then, for every $B\ge B_{\min}$ and the corresponding Archimedean symbol $P_A$,
-\[
-  \min_{\theta\in\TT}P_A(\theta)\ge c_*.
+  a\Bigl(\tfrac12\Bigr)\ge \frac{29}{50},\qquad
+  a\Bigl(\tfrac32\Bigr)\ge -\frac{3}{5},\qquad
+  a\Bigl(\tfrac52\Bigr)\ge -\frac{11}{10}.
 \]
 \end{lemma}
-
 \begin{proof}
-Differentiate the integral representation of $\widetilde P_A$ to get $|\widetilde P_A'(\theta)|\le L_{\mathrm{int}}(B,t_{\mathrm{sym}})$; hence $\omega_{P_A}(h)\le \omega_{\widetilde P_A}(h)\le L_{\mathrm{int}}(B,t_{\mathrm{sym}})\,h$.
-Proposition~8.5 yields $\min_{\TT}P_A\ge A_0(B,t_{\mathrm{sym}})-\pi L_{\mathrm{int}}(B,t_{\mathrm{sym}})$.
-Take $\inf_{B\ge B_{\min}}$ on $A_0$ and $\sup_{B\ge B_{\min}}$ on $L_{\mathrm{int}}$ to obtain $\min_{\TT}P_A\ge A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}})=c_*$.
+Write $y=\pi\xi$ and
+\[
+  t_n(y):=\frac{1}{n+1}-\frac{n+\tfrac14}{(n+\tfrac14)^2+y^2},\qquad
+  \Re\psi\Bigl(\tfrac14+i y\Bigr)=-\gamma+\sum_{n\ge0}t_n(y).
+\]
+For $\xi=\tfrac12$ one has $y^2=\pi^2/4$ and $t_n(y)\le0$ for $n\ge4$, so
+\[
+  \Re\psi\Bigl(\tfrac14+\tfrac{i\pi}{2}\Bigr)\ \le\ -\gamma+\sum_{n=0}^{3}t_n\Bigl(\tfrac{\pi}{2}\Bigr).
+\]
+Using $\pi^2<10$ gives the explicit upper bounds
+\[
+  t_0\le 1-\frac{1/4}{1/16+5/2}=\frac{37}{41},\quad
+  t_1\le \frac12-\frac{5/4}{25/16+5/2}=\frac{5}{26},\quad
+  t_2\le \frac13-\frac{9/4}{81/16+5/2}=\frac{13}{363},\quad
+  t_3\le \frac14-\frac{13/4}{169/16+5/2}=\frac{1}{836}.
+\]
+Hence $\sum_{n=0}^{3}t_n(\pi/2)<1.132$. With the classical bounds
+$\pi>333/106$ and $\gamma>0.5772$ we obtain $\log\pi+\gamma>1.72$, therefore
+\[
+  a\Bigl(\tfrac12\Bigr)=\log\pi+\gamma-\sum_{n\ge0}t_n(\pi/2)\ \ge\ 1.72-1.132\ >\ \frac{29}{50}.
+\]
+
+For $\xi\ge1$ we use the standard digamma remainder bound
+\[
+  \bigl|\psi(z)-\log z+\tfrac{1}{2z}\bigr|\le \frac{1}{12|z|^2}\qquad(\Re z>0)
+\]
+(\cite[\S5.11]{NISTDLMF}). Taking real parts at $z=\tfrac14+i\pi\xi$ yields
+\[
+  a(\xi)\ \ge\ -\log\xi\ -\ \frac{1}{2\pi\xi}\ -\ \frac{1}{12\pi^2\xi^2}.
+\]
+For $\xi=\tfrac32$, using $\pi>3$ and $\log(3/2)<\tfrac{5}{12}$ (from the alternating series for $\log(1+x)$ at $x=\tfrac12$) gives
+\[
+  a\Bigl(\tfrac32\Bigr)\ \ge\ -\frac{5}{12}-\frac{1}{9}-\frac{1}{243}\ >\ -\frac{3}{5}.
+\]
+For $\xi=\tfrac52$, using $\pi>3$ and $\log(5/2)<1$ (since $e>2.5$ by the series for $e$) gives
+\[
+  a\Bigl(\tfrac52\Bigr)\ \ge\ -1-\frac{1}{15}-\frac{1}{675}\ >\ -\frac{11}{10}.
+\]
 \end{proof}
 
+\begin{lemma}[Uniform Archimedean floor (pointwise)]\label{lem:uniform-arch-floor}
+Fix $t_{\mathrm{sym}}=\frac{3}{50}$ and $B_{\min}=3$. Then for every $B\ge B_{\min}$ and every
+$\theta\in\TT$ the Archimedean symbol satisfies
+\[
+  P_A(\theta)\ \ge\ c_*\ :=\ \frac{11}{10}.
+\]
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:a3-a-monotone} the function $a(\xi)$ is decreasing on $[0,\infty)$, and the window
+\(
+  w_B(\xi):=(1-\xi/B)e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}
+\)
+is decreasing for $\xi\in[0,B]$.  For $\theta\in[0,\tfrac12]$ and $B\ge3$ we have
+\[
+  P_A(\theta)=2\pi\sum_{m\in\ZZ} g_{B,t_{\mathrm{sym}}}(\theta+m)
+  \ge 2\pi\bigl(g(\theta)+2g(\theta+1)+2g(\theta+2)\bigr) - \mathcal T,
+\]
+where $\mathcal T$ collects the $|m|\ge3$ tail terms.  Using monotonicity and the bounds
+from Lemma~\ref{lem:a3-a-sample} we obtain
+\[
+  g(\theta)\ge \frac{29}{50}\,w_{B_{\min}}\!\Bigl(\tfrac12\Bigr),\quad
+  g(\theta+1)\ge -\frac{3}{5}\,w_{B_{\min}}(1),\quad
+  g(\theta+2)\ge -\frac{11}{10}\,w_{B_{\min}}(2).
+\]
+With $\pi<\tfrac{22}{7}$ we have $\pi^2<10$, so
+\[
+  w_{B_{\min}}\!\Bigl(\tfrac12\Bigr)
+  \ge \frac{5}{6}e^{-3/5}
+  >\frac{9}{20}.
+\]
+Using $\pi>\tfrac{333}{106}$ we obtain
+\(
+  \frac{6\pi^2}{25}>\frac{665334}{280900}.
+\)
+The tail is bounded by
+\[
+  \mathcal T \le 4\pi\int_{5/2}^{\infty}\!|a(\xi)|\,e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi
+  \le 10^{-5},
+\]
+using Lemma~\ref{lem:a3-a-log} to bound $|a(\xi)|\le a(0)+\tfrac{11}{10}\log(1+\xi)\le 8$ for $\xi\ge\tfrac52$
+and the Gaussian tail bound $\int_{R}^{\infty}e^{-\alpha \xi^2}\,d\xi\le e^{-\alpha R^2}/(2\alpha R)$.
+The exponential series bound
+\(
+  e^{x}\ge \sum_{j=0}^{5}\frac{x^j}{j!}
+\)
+applied at \(x=\frac{665334}{280900}\) gives \(e^{6\pi^2/25}>10\), hence
+\[
+  w_{B_{\min}}(1)\le \frac{2}{3}e^{-6\pi^2/25}\le \frac{1}{15},\qquad
+  w_{B_{\min}}(2)\le \frac{1}{3}e^{-24\pi^2/25}\le \frac{1}{30000}.
+\]
+Combining the inequalities and using \(2\pi>\tfrac{666}{106}\) yields
+\[
+  P_A(\theta)\ \ge\ 2\pi\Bigl(\frac{29}{50}\cdot\frac{9}{20}-\frac{2}{25}-\frac{11}{150000}\Bigr)-10^{-5}
+  \ >\ \frac{11}{10}.
+\]
+Evenness of $P_A$ completes the bound on all of $\TT$.
+\end{proof}
+
+\begin{definition}[Uniform Lipschitz constant]\label{def:uniform-L}
+For $B\ge B_{\min}$ set
+\[
+  L_A(B,t_{\mathrm{sym}})
+  := 2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}
+      \sum_{m\in\ZZ}\bigl|g_{B,t_{\mathrm{sym}}}'(\theta+m)\bigr|,
+\]
+and define
+\[
+  L_*(t_{\mathrm{sym}}) := \sup_{B\ge B_{\min}}L_A(B,t_{\mathrm{sym}}).
+\]
+The constant $L_*$ is used only for discretisation in the Szeg\H{o}--B\"ottcher bridge.
+\end{definition}
+
 \begin{corollary}[Uniform discretisation threshold]\label{cor:uniform-discretisation}
-Assume $c_*>0$ in Lemma~\ref{lem:uniform-arch-floor}, and let $C_{\mathrm{SB}}=4$ be the absolute constant of Lemma~8.23.
+Assume $c_*>0$ in Lemma~\ref{lem:uniform-arch-floor}, and let $C_{\mathrm{SB}}=4$ be the absolute constant of Lemma~\ref{lem:a3-sb-barrier}.
 Define
 \[
   M_{0}^{\mathrm{unif}}
-  :=\left\lceil \frac{2\pi\,C_{\mathrm{SB}}\,L_*(t_{\mathrm{sym}})}{c_*}\right\rceil.
+  :=\left\lceil \frac{C_{\mathrm{SB}}\,L_*(t_{\mathrm{sym}})}{c_*}\right\rceil.
 \]
 Then for every $B\ge B_{\min}$ and every $M\ge M_{0}^{\mathrm{unif}}$,
 \[
@@ -239,14 +344,13 @@ Then for every $B\ge B_{\min}$ and every $M\ge M_{0}^{\mathrm{unif}}$,
 \begin{corollary}[Uniform prime cap time]\label{cor:uniform-prime-cap}
 Assume $c_*>0$ in Lemma~\ref{lem:uniform-arch-floor}. Define
 \[
-  t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}
-  :=\frac{1}{8\pi^2}\left(\frac{1}{2}+\frac{4e^{1/4}}{c_*}\right).
+  t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}:=1.
 \]
 Then for every $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ the symmetrised prime operator satisfies
 \[
-  \|T_P\|\ \le\ \rho(t_{\mathrm{rkhs}})\ \le\ \frac{c_*}{4},
+  \|T_P\|\ \le\ \rho(t_{\mathrm{rkhs}})\ \le\ \rho(1)\ <\ \frac{1}{25}\ <\ \frac{c_*}{4},
 \]
-where $\rho(t)$ is the Gaussian norm cap of Lemma~9.29.
+where $\rho(t)$ is the Gaussian norm cap of Lemma~\ref{pm:lem:rho-closed-form}.
 \end{corollary}
 
 %% ============================================================================
@@ -260,66 +364,83 @@ We fix the minimal bandwidth parameter:
 \end{equation}
 This choice ensures that the Fej\'er kernel $F_B$ has sufficient width to capture the essential support of the Archimedean density $a(\xi)$, while the Gaussian factor $e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}$ with $t_{\mathrm{sym}}=3/50$ provides rapid decay beyond $|\xi|\approx 2$.
 
-\begin{lemma}[Digamma mean bound]\label{lem:digamma-mean-bound}
-Let $t_{\mathrm{sym}}=\frac{3}{50}$, $B_{\min}=3$, and $A_*(t_{\mathrm{sym}})=\inf_{B\ge B_{\min}} A_0(B,t_{\mathrm{sym}})$ as in Lemma~\ref{lem:uniform-arch-floor}. Then
+\begin{lemma}[Analytic mean bound (auxiliary)]\label{lem:digamma-mean-bound}
+Let $t_{\mathrm{sym}}=\frac{3}{50}$ and $B_{\min}=3$, and define
+\(
+  A_*(t_{\mathrm{sym}}):=\inf_{B\ge B_{\min}} A_0(B,t_{\mathrm{sym}}).
+\)
+Write $\alpha:=4\pi^2 t_{\mathrm{sym}}$ and let $L_a$ be the global slope bound from Lemma~\ref{lem:a3-core-slope}.
+For any $r\in\bigl(0,\min\{B_{\min},a(0)/L_a\}\bigr)$ define
 \[
-  A_*\Bigl(\frac{3}{50}\Bigr)\ \ge\ \frac{1867}{1000}.
+  A_{\mathrm{low}}(r)
+  := 4\pi\bigl(a(0)-L_a r\bigr)\int_{0}^{r}\!\Bigl(1-\frac{\xi}{B_{\min}}\Bigr)e^{-\alpha \xi^2}\,d\xi
+     - 4\pi\int_{r}^{\infty}\!\bigl(a(0)+L_a \xi\bigr)e^{-\alpha \xi^2}\,d\xi.
 \]
+Then $A_*(t_{\mathrm{sym}})\ge A_{\mathrm{low}}(r)$ for every $r\in(0,B_{\min})$.
 \end{lemma}
 
 \begin{proof}
-The digamma function satisfies $\psi(1/4)=-\gamma-\frac{\pi}{2}-3\ln 2$ where $\gamma$ is Euler's constant.
-For the Archimedean density $a(\xi)=\log\pi-\Re\psi(1/4+i\pi\xi)$, we have $a(0)=\log\pi+\gamma+\frac{\pi}{2}+3\ln 2$.
-Using the rational bounds $\gamma\ge 577/1000$, $\ln 2\ge 693/1000$, $\ln\pi\ge 1145/1000$, we obtain
-$a(0)\ge 1145/1000 + 577/1000 + 1571/1000 + 2079/1000 = 5372/1000$.
-
-The integral $A_0(B,t_{\mathrm{sym}})=\int_{-B}^{B} a(\xi)(1-|\xi|/B)e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi$ is dominated by
-the contribution near $\xi=0$ due to the Gaussian decay. For $B\ge 3$ and $t_{\mathrm{sym}}=3/50$, numerical
-quadrature with interval arithmetic (Appendix~\ref{app:digamma-computation}) verifies
-$A_0(B,3/50)\ge 1.760$ for $B=3$ and $A_0(B,3/50)\to 1.868$ as $B\to\infty$.
-The infimum over $B\ge 3$ is achieved in the limit, giving $A_*\ge 1867/1000$.
+By Lemma~\ref{lem:a3-core-slope}, $|a(\xi)-a(0)|\le L_a|\xi|$ for all $\xi$, hence
+$a(\xi)\ge a(0)-L_a|\xi|$ on $|\xi|\le r$ and $a(\xi)\ge -\bigl(a(0)+L_a|\xi|\bigr)$ for $|\xi|\ge r$.
+The restriction $r\le a(0)/L_a$ ensures $a(0)-L_a\xi\ge0$ on $[0,r]$. Since $0\le (1-|\xi|/B)\le 1$, we obtain
+\[
+  A_0(B,t_{\mathrm{sym}})
+  \ge 4\pi\int_{0}^{r}\!\bigl(a(0)-L_a\xi\bigr)\Bigl(1-\frac{\xi}{B}\Bigr)e^{-\alpha \xi^2}\,d\xi
+     - 4\pi\int_{r}^{B}\!\bigl(a(0)+L_a\xi\bigr)e^{-\alpha \xi^2}\,d\xi.
+\]
+For $B\ge B_{\min}$ the first integral is bounded below by replacing $B$ with $B_{\min}$,
+and the second is bounded below by extending to $[r,\infty)$. This yields the stated bound,
+uniformly in $B$, and therefore $A_*(t_{\mathrm{sym}})\ge A_{\mathrm{low}}(r)$.
 \end{proof}
 
-\begin{lemma}[Digamma Lipschitz bound]\label{lem:digamma-lip-bound}
-Let $t_{\mathrm{sym}}=\frac{3}{50}$, $B_{\min}=3$, and $L_*(t_{\mathrm{sym}})=\sup_{B\ge B_{\min}} L_{\mathrm{int}}(B,t_{\mathrm{sym}})$ as in Lemma~\ref{lem:uniform-arch-floor}. Then
+\begin{lemma}[Analytic Lipschitz bound (auxiliary)]\label{lem:digamma-lip-bound}
+Let $t_{\mathrm{sym}}=\frac{3}{50}$, $B_{\min}=3$, and $L_*(t_{\mathrm{sym}})=\sup_{B\ge B_{\min}} L_A(B,t_{\mathrm{sym}})$ as in Definition~\ref{def:uniform-L}.
+Set $\alpha:=4\pi^2 t_{\mathrm{sym}}$ and $L_a$ as in Lemma~\ref{lem:a3-core-slope}. For $B\ge B_{\min}$ one has
+$\Phi_{B,t_{\mathrm{sym}}}(\xi)\le e^{-\alpha\xi^2}$ and
+$
+|\Phi_{B,t_{\mathrm{sym}}}'(\xi)|
+\le \bigl(B_{\min}^{-1}+8\pi^2 t_{\mathrm{sym}}|\xi|\bigr)e^{-\alpha\xi^2}.
+$
+Define
 \[
-  L_*\Bigl(\frac{3}{50}\Bigr)\ \le\ \frac{42}{125}.
+  G(\xi)
+  := L_a\,e^{-\alpha\xi^2}
+     + \bigl(a(0)+L_a|\xi|\bigr)\bigl(B_{\min}^{-1}+8\pi^2 t_{\mathrm{sym}}|\xi|\bigr)e^{-\alpha\xi^2},
 \]
+and
+\[
+  L_{\mathrm{up}}
+  := 2\pi\Bigl(G(0) + 2\int_{0}^{\infty} G(\xi)\,d\xi\Bigr).
+\]
+Then $L_*(t_{\mathrm{sym}})\le L_{\mathrm{up}}$.
 \end{lemma}
 
 \begin{proof}
-The derivative $|a'(\xi)|$ is bounded by the imaginary part of $\psi'(1/4+i\pi\xi)$, which satisfies
-$|\psi'(z)|\le 1/|z|^2 + 1/|z|$ for $\Re z>0$. For $|\xi|\le B$ and the integrand
-$|a(\xi)|\cdot|\xi|\cdot(1-|\xi|/B)\cdot e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}$, the factor $|\xi|(1-|\xi|/B)\le B/4$
-(maximum at $|\xi|=B/2$) and the Gaussian provides exponential decay.
-
-Numerical quadrature with interval arithmetic (Appendix~\ref{app:digamma-computation}) yields
-$L_{\mathrm{int}}(B,3/50)\le 0.336$ for all $B\ge 3$, with the supremum approached as $B\to\infty$.
-Since $0.336=42/125$, we have $L_*\le 42/125$.
+Lemma~\ref{lem:a3-lipschitz-bound} gives
+$L_A(B,t_{\mathrm{sym}})=2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}\sum_{m\in\ZZ}|g_{B,t_{\mathrm{sym}}}'(\theta+m)|$.
+Since $g'=a'\Phi+a\Phi'$, the bounds $|a'|\le L_a$ and $|a|\le a(0)+L_a|\xi|$ together with the
+envelope bounds on $\Phi_{B,t_{\mathrm{sym}}}$ and $\Phi_{B,t_{\mathrm{sym}}}'$ yield $|g'(\xi)|\le G(\xi)$.
+The function $G$ is even and decays Gaussianly, so for each $\theta$
+the sum is dominated by a unit-step Riemann sum of $G$; in particular
+\[
+  \sum_{m\in\ZZ} G(\theta+m)\ \le\ G(0) + 2\int_{0}^{\infty} G(\xi)\,d\xi.
+\]
+Taking the supremum over $\theta$ and then $B\ge B_{\min}$ gives $L_*(t_{\mathrm{sym}})\le L_{\mathrm{up}}$.
 \end{proof}
 
-\begin{lemma}[Gap positivity]\label{lem:digamma-gap-positive}
-With $t_{\mathrm{sym}}=\frac{3}{50}$, $B_{\min}=3$, and $c_*:=A_*(t_{\mathrm{sym}})-\pi L_*(t_{\mathrm{sym}})$ as in Lemma~\ref{lem:uniform-arch-floor},
-\[
-  c_*\ \ge\ \frac{1867}{1000}-\frac{22}{7}\cdot\frac{42}{125}\ =\ \frac{811}{1000}\ >\ 0.
-\]
-\end{lemma}
-
-\begin{proof}
-By Lemmas~\ref{lem:digamma-mean-bound} and~\ref{lem:digamma-lip-bound},
-$A_*\ge 1867/1000$ and $L_*\le 42/125$. Using the rational upper bound $\pi\le 22/7$,
-\[
-  c_* = A_* - \pi L_* \ge \frac{1867}{1000} - \frac{22}{7}\cdot\frac{42}{125}
-  = \frac{1867}{1000} - \frac{924}{875} = \frac{1867}{1000} - \frac{1056}{1000} = \frac{811}{1000}.
-\]
-\end{proof}
+\begin{remark}[Auxiliary mean--modulus route]\label{rem:aux-mean-modulus}
+Lemmas~\ref{lem:digamma-mean-bound} and~\ref{lem:digamma-lip-bound} provide analytic estimates for
+$A_*(t_{\mathrm{sym}})$ and $L_*(t_{\mathrm{sym}})$, which may be used for coarse bounds on $\min P_A$
+via the mean--modulus inequality.  The main proof instead uses the direct pointwise floor from
+Lemma~\ref{lem:uniform-arch-floor}, which yields a much sharper constant.
+\end{remark}
 
 \begin{remark}[Uniform vs.\ compact-dependent approach]\label{rem:uniform-vs-compact}
 The uniform constants $(A_*, L_*, c_*)$ depend only on $t_{\mathrm{sym}}$ and $B_{\min}$, not on the compact $[-K,K]$.
-This decouples the Archimedean floor from the parameter schedule $B(K)$: once $c_*>0$ is established analytically,
+This decouples the Archimedean floor from the parameter schedule $B(K)$: once $c_*>0$ is established quantitatively,
 every compact inherits the same positive margin without requiring monotonicity arguments or numerical tables.
 \end{remark}
 
 \begin{remark}[References]
-The Lipschitz estimate relies on standard Fourier analysis for compactly supported smooth kernels (see, e.g., Stein--Shakarchi~\cite[Ch.~2]{SteinShakarchi2003} and Zygmund~\cite[Ch.~I]{Zygmund2002}), while bounds on $a$ and $a'$ follow from classical properties of the digamma function (\cite[\S5.2]{NISTDLMF}).  The quantitative Toeplitz eigenvalue barrier used later takes the form $\lambda_{\min}(T_M[P])\ge\min P - C_{\mathrm{SB}}\,\omega_P(\pi/M)$ with $C_{\mathrm{SB}}=4$, as recorded in B\"ottcher--Silbermann~\cite[Ch.~5]{BoettcherSilbermann2006}.
+The Lipschitz estimate relies on standard Fourier analysis for compactly supported smooth kernels (see, e.g., Stein--Shakarchi~\cite[Ch.~2]{SteinShakarchi2003} and Zygmund~\cite[Ch.~I]{Zygmund2002}), while bounds on $a$ and $a'$ follow from classical properties of the digamma function (\cite[\S5.2]{NISTDLMF}).  The quantitative Toeplitz eigenvalue barrier used later takes the form $\lambda_{\min}(T_M[P])\ge\min P - C_{\mathrm{SB}}\,\omega_P(1/(2M))$ with $C_{\mathrm{SB}}=4$, as recorded in B\"ottcher--Silbermann~\cite[Ch.~5]{BoettcherSilbermann2006}.
 \end{remark}

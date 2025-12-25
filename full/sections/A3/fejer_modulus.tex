@@ -4,11 +4,11 @@
 \subsection{Fej\'er--Heat Modulus Control}\label{subsec:a3-fejer-modulus}
 Let $K>0$ be fixed. Throughout this subsection we work on the interval $[-K,K]$ and the circle $\TT$, and consider the Fej\'er kernel
 \[
-  \mathrm{Fej}_M(\theta) := \frac{1}{M+1} \left( \frac{\sin\big((M+1)\theta/2\big)}{\sin(\theta/2)} \right)^2,
+  \mathrm{Fej}_M(\theta) := \frac{1}{M+1} \left( \frac{\sin\big(\pi(M+1)\theta\big)}{\sin(\pi\theta)} \right)^2,
 \]
 and the heat kernel on the circle
 \[
-  h_t(\theta) := \sum_{k\in\ZZ} e^{-4\pi^2 t k^2} e^{ik\theta} = 1 + 2\sum_{k\ge1} e^{-4\pi^2 t k^2} \cos(k\theta).
+  h_t(\theta) := \sum_{k\in\ZZ} e^{-4\pi^2 t k^2} e^{2\pi i k\theta} = 1 + 2\sum_{k\ge1} e^{-4\pi^2 t k^2} \cos(2\pi k\theta).
 \]
 Both kernels are nonnegative, even, and integrate to 1 on $\TT$. Their convolution
 \[

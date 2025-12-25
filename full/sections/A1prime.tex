@@ -7,7 +7,7 @@ Convolution with the Fejér kernel and subsequent heat smoothing preserve evenne
 For every compact $[-K,K]$ the cone $\{\text{Fejér}*\text{heat approximants}\}$ is dense in $C^+_{\mathrm{even}}([-K,K])$ in $\|\cdot\|_\infty$.
 \end{theorem}
 \begin{proof}
-Fejér kernels form a positive approximation identity on $\mathbb T$; heat flow preserves positivity and evenness, hence the uniform limit remains in the cone.
+This is an immediate corollary of Theorem~\ref{a1:thm:A1-local-density}, which provides the explicit uniform approximation on $[-K,K]$ by finite nonnegative combinations of Fej\'er$\times$heat atoms.
 \end{proof}
 
 \begin{remark}[PW reinforcement]
@@ -73,9 +73,9 @@ By construction, $h$ is a finite nonnegative combination of $\Phi_{B,t,\tau_j^*}
 \begin{remark}[Parameter scaling in A1']\label{rem:a1-scaling}
 The bandwidth $B$ and heat scale $t$ required in Theorem~\ref{a1:thm:A1-local-density}
 depend on the compact $[-R,R]$ and the target accuracy $\varepsilon$.
-Consequently, in the compact-by-compact transfer (T5) the schedules $K\mapsto B(K)$
+Consequently, in the main closure the schedules $K\mapsto B(K)$
 and $K\mapsto t_{\mathrm{sym}}(K)$ are allowed to grow with $K$; no uniform bound
-$\sup_K B(K)$ or $\sup_K t_{\mathrm{sym}}(K)$ is needed.
+$\sup_K B(K)$ or $\sup_K t_{\mathrm{sym}}(K)$ is needed for density.
 \end{remark}
 
 \begin{lemma}[Fixed-$t_0$ cone density]\label{lem:a1-fixed-t-density}

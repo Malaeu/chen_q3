@@ -1,62 +1,34 @@
 % Toeplitz--symbol bridge (A3) --- quantitative formulation
-\SeeAlso{Lemmas~\ref{lem:a3.bv-to-lip}--\ref{lem:a3.cap-combine}, Uniform floor Lemma~\ref{lem:uniform-arch-floor}, trace-cap Lemma~\ref{lem:trace-cap-bound}.}
+\SeeAlso{Lemmas~\ref{lem:a3-lipschitz-bound}--\ref{lem:a3.cap-combine}, Uniform floor Lemma~\ref{lem:uniform-arch-floor}, uniform RKHS cap Lemma~\ref{lem:rkhs-uniform-cap-full}.}
 
-Throughout this section $a$ denotes the Archimedean density after Fej\'er$\times$heat smoothing on $[-B,B]$, and $\Kern$ is a fixed even $C^1$ mollifier with $\int_{\TT}\Kern=1$.  Write $\Kt(\theta)=t^{-1}\Kern(\theta/t)$ and set
-\[
-  \Pa(\theta) = (a * K_{t_{\mathrm{sym}}})(\theta).
-\]
-The arguments below sit inside the classical Toeplitz framework of Szeg\H{o} and B\"ottcher~\cite{Szego1952,Bottcher1907,GrenanderSzego1958,BoettcherSilbermann2006}, with convolution and Fourier bounds calibrated against standard real-analytic estimates~\cite{SteinShakarchi2003,Zygmund2002}.
+Throughout this section $a$ denotes the Archimedean density and $P_A$ denotes the Archimedean symbol defined in \S\ref{subsec:a3-symbol-floor} via the Fej\'er$\times$heat window. We use only this definition in the main proof chain. The arguments below sit inside the classical Toeplitz framework of Szeg\H{o} and B\"ottcher~\cite{Szego1952,Bottcher1907,GrenanderSzego1958,BoettcherSilbermann2006}, with Fourier bounds calibrated against standard real-analytic estimates~\cite{SteinShakarchi2003,Zygmund2002}.
 The following chain of lemmas replaces all “A3 assume …” statements by explicit estimates.  An analytic proof of the Rayleigh identification is recorded in \S\ref{subsec:a3-rayleigh}, while symbol regularity and Archimedean floors are collected in \S\ref{subsec:a3-symbol-floor}.
-
-\begin{lemma}[BV $\Rightarrow$ Lipschitz under convolution]\label{lem:a3.bv-to-lip}
-Let $a\in\BV(\TT)$ with periodic extension.  For every $t>0$ the smoothed profile $a_t := a*K_t$ satisfies
-\[
-  \|a_t\|_{L^\infty}\le \|a\|_{L^\infty},\qquad 
-  \|a_t'\|_{L^\infty}\le \frac{\|K'\|_{L^1}}{t}\,\TV(a),\qquad
-  \Lip(a_t)\le \frac{\|K'\|_{L^1}}{t}\,\TV(a).
-\]
-In particular $\Pa\in\Lip(1)$ with the same bound at $t=t_{\mathrm{sym}}$.
-\end{lemma}
-
-\begin{proof}
-Standard convolution estimates~\cite{SteinShakarchi2003,Zygmund2002} yield $\|a*K_t\|_\infty\le \|a\|_\infty$.  Since $(a*K_t)'=a*K_t'$, the variation identity $\|Da\|(\TT)=\TV(a)$ implies $\|(a*K_t)'\|_\infty\le \TV(a)\|K_t'\|_{L^1}=\TV(a)\|K'\|_{L^1}/t$, giving the desired Lipschitz control. 
-\end{proof}
 
 \begin{remark}[Two-scale architecture]\label{rem:two-scales}
 The Toeplitz bridge and the prime contraction employ two independent smoothing parameters.
 \begin{itemize}
-  \item On the \emph{symbol side}, $t_{\mathrm{sym}}(K)$ enters the Fej\'er$\times$heat
-  convolution that produces $P_A$; together with the bandwidth $B(K)$ it controls the
-  modulus $\omega_{P_A}(\pi/M)$ in the Szeg\H{o}--B\"ottcher bridge.
-  \item On the \emph{RKHS side}, $t_{\mathrm{rkhs}}(K)$ is the heat scale in the Gaussian kernel
-  used to bound $\|T_P\|$ via Gram geometry; we typically take $t_{\mathrm{rkhs}}(K)=t_{\min}(K)$
-  obtained from the node spacing $\delta_K$.
+  \item On the \emph{symbol side}, $t_{\mathrm{sym}}$ enters the Fej\'er$\times$heat
+  convolution that produces $P_A$; together with the bandwidth $B$ it controls the
+  modulus $\omega_{P_A}(1/(2M))$ in the Szeg\H{o}--B\"ottcher bridge.
+  \item On the \emph{RKHS side}, $t_{\mathrm{rkhs}}$ is the heat scale in the Gaussian kernel
+  used to bound $\|T_P\|$; in the uniform branch we take $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$
+  as in Corollary~\ref{cor:uniform-prime-cap}.
 \end{itemize}
 The Fej\'er$\times$heat tests are built with $t_{\mathrm{sym}}$, whereas the RKHS analysis uses
 $t_{\mathrm{rkhs}}$; no coupling between the two scales is needed.
 \end{remark}
 
-\begin{lemma}[Uniform bounds for the smoothed symbol]\label{lem:a3.sup-bounds}
-Under the assumptions of Lemma~\ref{lem:a3.bv-to-lip},
+\begin{lemma}[Two-scale separation (uniform)]\label{lem:a3.two-scale}
+Let $P_A$ be the Archimedean symbol from \S\ref{subsec:a3-symbol-floor} built with the Fej\'er$\times$heat parameter $t_{\mathrm{sym}}$, and let $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ be the RKHS scale from Corollary~\ref{cor:uniform-prime-cap}. Then
 \[
-  \|\Pa\|_{L^\infty}\le \|a\|_{L^\infty},\qquad 
-  \|\Pa'\|_{L^\infty}\le \frac{\|K'\|_{L^1}}{t_{\mathrm{sym}}}\,\TV(a),\qquad
-  \om_{\Pa}(h)\le \frac{\|K'\|_{L^1}}{t_{\mathrm{sym}}}\,\TV(a)\,h.
+  \min_{\theta\in\TT} P_A(\theta)\ \ge\ c_*,
 \]
-\end{lemma}
-\phantomsection\label{a3:lem:A3_arch_C1_bounds}
-
-\begin{proof}
-Immediate from Lemma~\ref{lem:a3.bv-to-lip}.
-\end{proof}
-
-\begin{lemma}[Two-scale selection and preservation of the Arch floor]\label{lem:a3.two-scale}
-Assume $\Pa=a*K_{t_{\mathrm{sym}}}$ with $a\in\BV(\TT)$ and let $\Gamma\subset \TT$ be the arc coming from the trace-cap hypothesis.  There exists $t_{\mathrm{sym}}>0$ small enough such that $\min_{\theta\in \Gamma}\Pa(\theta) \ge \tfrac12 \min_{\theta\in\Gamma} a(\theta)=:c_{0,\Gamma}>0$.  Moreover, for any $t_{\mathrm{rkhs}}\ge t_{\mathrm{sym}}$ the RKHS kernel associated to $t_{\mathrm{rkhs}}$ enjoys a uniform floor $c_0(K_{t_{\mathrm{rkhs}}})\ge c_\ast>0$ independent of the Toeplitz size.
+by Lemma~\ref{lem:uniform-arch-floor}, and the RKHS cap $\|T_P\|\le\rho(t_{\mathrm{rkhs}})$ follows from Corollary~\ref{cor:uniform-prime-cap}. Thus the symbol scale $t_{\mathrm{sym}}$ and the RKHS scale $t_{\mathrm{rkhs}}$ are decoupled in the uniform branch.
 \end{lemma}
 \phantomsection\label{a3:lem:A3_dini_SB}
 
 \begin{proof}
-Since $a*K_t\to a$ uniformly as $t\to0$, small $t_{\mathrm{sym}}$ preserves the positive floor on $\Gamma$.  The RKHS floor follows from the explicit Gram estimates used in the trace-cap bound (see Lemma~\ref{lem:trace-cap-bound}); choosing $t_{\mathrm{rkhs}}\ge t_{\mathrm{sym}}$ keeps the same positivity budget.
+Immediate from Lemma~\ref{lem:uniform-arch-floor} and Corollary~\ref{cor:uniform-prime-cap}.
 \end{proof}
 
 \begin{lemma}[Lipschitz symbol with positive floor implies A3 prerequisites]\label{lem:a3.lip-floor}
@@ -71,31 +43,22 @@ In particular, once $\rhok\ge \|\Pa\|_{L^\infty}$ the A3-lock positivity and bou
 For any $f$ with $\|f\|_2=1$ we have $\ip{\TPA f}{f}=\int_{\TT}\Pa(\theta)|f(\theta)|^2\,d\theta\ge \czero$, hence $\TPA\succeq \czero I$.  The $\|\Pa\|_{\infty}$ bound is immediate from the Rayleigh quotient; see, e.g., the spectral calculus in~\cite{HornJohnson2013,Varga2004}.
 \end{proof}
 
-\begin{lemma}[Combining with the trace-cap]\label{lem:a3.cap-combine}
-Suppose $\Pa$ is constructed as above and the RKHS/trace-cap estimate
+\begin{lemma}[Combining with the RKHS cap]\label{lem:a3.cap-combine}
+Suppose $\Pa$ is constructed as above and the RKHS cap
 \[
-  \|\TPA\|_{\op}\le \rhok
+  \|T_P\|\le \rho(t_{\mathrm{rkhs}})
 \]
-holds for $(B,t_{\mathrm{rkhs}})$ (Lemma~\ref{lem:trace-cap-bound}).  Then $\TPA$ simultaneously satisfies the positivity floor and the operator-norm bound required by A3-lock.
+holds (Corollary~\ref{cor:uniform-prime-cap}). Then $\TPA$ simultaneously satisfies the positivity floor and the operator-norm bound required by A3-lock.
 \end{lemma}
 
 \begin{proof}
-Apply Lemmas~\ref{lem:a3.two-scale} and \ref{lem:a3.lip-floor}, together with the stated trace-cap inequality.
+Apply Lemmas~\ref{lem:a3.two-scale} and \ref{lem:a3.lip-floor}, together with Corollary~\ref{cor:uniform-prime-cap}.
 \end{proof}
-
-%% LEGACY: The K-dependent path choice (c_arch(K), t_rkhs*(K), ρ_K) has been removed.
-%% The main proof uses the uniform floor c_* >= 811/1000 from Lemma~\ref{lem:uniform-arch-floor}.
-
-%% LEGACY LEMMA REMOVED (December 2025 cleanup)
-%% The K-dependent constructive parameter recipe (θ₂, c_arch(K), etc.) has been removed
-%% from the main proof chain. The main proof now uses only the uniform approach from
-%% Lemma~\ref{lem:uniform-arch-floor} which provides c_* >= 811/1000.
-%% See Appendix for historical reference if needed.
 
 \paragraph{A3 input summary (uniform version).}
 \begin{enumerate}[label=(A3-U.\arabic*)]
-  \item \emph{Uniform Arch floor.} Lemma~\ref{lem:uniform-arch-floor} provides $c_*\ge 811/1000$ valid on $\TT$ for all $B\ge B_{\min}$.
-  \item \emph{Uniform prime cap.} Theorem~\ref{thm:rkhs-tstar} with $t_0=7/10$ gives $\rho(t_0)\le 1971/50000 < c_*/4$.
+\item \emph{Uniform Arch floor.} Lemma~\ref{lem:uniform-arch-floor} provides the explicit floor $c_*=\tfrac{11}{10}$ on $\TT$ for all $B\ge B_{\min}$.
+  \item \emph{Uniform prime cap.} Corollary~\ref{cor:uniform-prime-cap} gives $t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ with $\rho(t_{\mathrm{rkhs}})\le c_*/4$ for all $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
   \item \emph{Uniform discretisation.} Corollary~\ref{cor:uniform-discretisation} provides $M_0^{\mathrm{unif}}$ such that $\lambda_{\min}(T_M[P_A])\ge c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
 \end{enumerate}
 
@@ -103,35 +66,36 @@ Apply Lemmas~\ref{lem:a3.two-scale} and \ref{lem:a3.lip-floor}, together with th
 %% The original per-compact summary used c_arch(K), t_rkhs*(K), M_0(K).
 %% This is superseded by the uniform version above.
 
-%% NOTE: The uniform approach (Lemma 8.17') gives a K-independent floor c_* >= 811/1000
+%% NOTE: The uniform approach (Lemma 8.17') gives a K-independent floor c_* > 0
 %% on the FULL circle T, not just an arc. This supersedes the arc-based approach.
 The uniform Archimedean floor (Lemma~\ref{lem:uniform-arch-floor}) provides a \textbf{K-independent} lower bound
 \[
-  c_* := A_*(t_{\mathrm{sym}}) - \pi L_*(t_{\mathrm{sym}}) \ge \frac{811}{1000} > 0,
+  \min_{\theta\in\TT}P_A(\theta)\ge c_*
 \]
-valid for the \textbf{entire circle} $\TT$, i.e., $\min_{\theta\in\TT}P_A(\theta)\ge c_*$ for all $B\ge B_{\min}$.
-This eliminates the need for arc-based constructions ($\Gamma_K$) and provides a simpler, cleaner proof.
+valid for the \textbf{entire circle} $\TT$ and all $B\ge B_{\min}$.
+This eliminates the need for arc-based constructions and provides a simpler, cleaner proof.
 
 %% Remark about legacy arc data and JSON files removed (December 2025 cleanup).
-%% The main proof relies entirely on the analytic bound c_* >= 811/1000.
+%% The main proof relies entirely on the quantitative bound c_* > 0.
 
-\begin{theorem}[A3 bridge inequality]\label{thm:A3}
-Let $K>0$ and use the uniform floor $c_*\ge 811/1000$ from Lemma~\ref{lem:uniform-arch-floor}.
+\begin{theorem}[Uniform A3 bridge]\label{thm:A3}
+Assume the uniform floor $c_*>0$ from Lemma~\ref{lem:uniform-arch-floor} and fix
+$B\ge B_{\min}$, $t_{\mathrm{sym}}=\tfrac{3}{50}$, and $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
 Then for every $M\ge M_0^{\mathrm{unif}}$ (Corollary~\ref{cor:uniform-discretisation}),
 \[
-  \lambda_{\min}\!\bigl(T_M[P_A]-T_P\bigr)\ \ge\ \frac{c_*}{4}\ \ge\ \frac{811}{4000}\ >\ 0.2,
+  \lambda_{\min}\!\bigl(T_M[P_A]-T_P\bigr)\ \ge\ \frac{c_*}{4}\ >\ 0,
 \]
 and the associated Fej\'er$\times$heat test functions satisfy
 \[
-  Q(\Phi_{B,t})\ \ge\ 0.
+  Q(\Phi_{B,t_{\mathrm{sym}}})\ \ge\ 0.
 \]
 \end{theorem}
 
 \begin{proof}
-The uniform floor Lemma~\ref{lem:uniform-arch-floor} gives $\min_{\theta\in\TT} P_A(\theta)\ge c_*\ge 811/1000$
+The uniform floor Lemma~\ref{lem:uniform-arch-floor} gives $\min_{\theta\in\TT} P_A(\theta)\ge c_*$
 for all $B\ge B_{\min}$. Corollary~\ref{cor:uniform-discretisation} provides
-$M_0^{\mathrm{unif}}$ such that $C_{\mathrm{SB}}\,\omega_{P_A}(\pi/M)\le c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
-Theorem~\ref{thm:rkhs-tstar} gives $\|T_P\|\le \rho(t_{\mathrm{rkhs}}^{\mathrm{unif}})\le c_*/4$.
+$M_0^{\mathrm{unif}}$ such that $C_{\mathrm{SB}}\,\omega_{P_A}(1/(2M))\le c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
+Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P\|\le \rho(t_{\mathrm{rkhs}})\le c_*/4$.
 Thus $\lambda_{\min}(T_M[P_A]-T_P)\ge c_* - c_*/2 - c_*/4 = c_*/4$.
 Lemma~\ref{lem:a3-model-space} combined with Theorem~\ref{thm:a3-rayleigh-identification}
 converts the matrix margin into $Q(\Phi_{B,t})\ge0$.

@@ -45,7 +45,7 @@ Consequently, if $A:=T_M[P_A]-T_P^{\mathrm{cap}}$ satisfies $\lambda_{\min}(A)\g
 Let $P_A$ be the Archimedean symbol constructed in Section~\ref{subsec:a3-symbol-floor}.
 There exists an absolute constant $C_{\mathrm{SB}}=4$ such that for every $M\ge1$
 \[
-  \lambda_{\min}\!\bigl(T_M[P_A]\bigr)\ \ge\ \min_{\theta\in\TT}P_A(\theta)\;-\;C_{\mathrm{SB}}\,\omega_{P_A}\!\Bigl(\frac{\pi}{M}\Bigr).
+  \lambda_{\min}\!\bigl(T_M[P_A]\bigr)\ \ge\ \min_{\theta\in\TT}P_A(\theta)\;-\;C_{\mathrm{SB}}\,\omega_{P_A}\!\Bigl(\frac{1}{2M}\Bigr).
 \]
 \end{lemma}
 
@@ -56,7 +56,7 @@ Corollary~5.7 in Chapter~5); see also Grenander--Szeg\H{o} (Ch.~3) and Varga's \
 For the Lipschitz/H\"older classes relevant here the constant in front of the modulus is $C_{\mathrm{SB}}=4$.
 
 Lemma~\ref{lem:a3-sb-barrier} is the only place where this numerical constant enters our treatment of A3.
-Coupled with the RKHS prime contraction (Theorem~\ref{thm:rkhs-tstar}) and the uniform floor $c_*\ge 811/1000$,
+Coupled with the uniform RKHS cap (Corollary~\ref{cor:uniform-prime-cap}) and the uniform floor $c_*>0$,
 it yields the mixed lower bound in Theorem~\ref{thm:A3}.
 \end{remark}
 
@@ -72,14 +72,3 @@ For Hermitian Toeplitz matrices with first row $c_0,\dots,c_{M-1}$ and coefficie
 \(\|T_M[P]\|_F^2 = M|c_0|^2 + 2\sum_{k=1}^{M-1} (M-k)|c_k|^2\).
 Hence a split budget $\varepsilon = \varepsilon^{\mathrm{F}}_{\text{tail}} + \varepsilon^{\mathrm{F}}_{\text{grid}} + \varepsilon^{\mathrm{F}}_{\text{num}}$ controls the total spectral drift of $T_P$ relative to the capped operator.
 \end{remark}
-
-%% ============================================================================
-%% REMOVED (December 2025 cleanup): K-dependent propositions and theorems
-%% - Proposition prop:a3-m0 (discretisation threshold with M_0(K))
-%% - Proposition prop:a3-prime-cap (prime cap with c_arch(K))
-%% - Theorem thm:a3-mixed-margin (mixed margin with c_arch(K))
-%% - Remark rem:a3-ind-bridge (bridge to IND with c_arch(K))
-%%
-%% The main proof now uses the uniform floor c_* >= 811/1000 from
-%% Lemma~\ref{lem:uniform-arch-floor} and Theorem~\ref{thm:A3}.
-%% ============================================================================

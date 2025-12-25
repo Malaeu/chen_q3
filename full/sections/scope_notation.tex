@@ -10,23 +10,19 @@ This work introduces a quantitative, modular operator framework for the Weil cri
   \[
     \mathcal W := \bigcup_{K>0} \mathcal W_K
   \]
-  the 	extbf{Weil cone}; density and continuity are always invoked inside this cone before taking the inductive limit.
-  \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:T5} supply the fully written proofs for each module, with Appendix~\ref{app:verification} recording auxiliary machine-checks.
+  the \textbf{Weil cone}; density and continuity are always invoked inside this cone before taking the inductive limit.
+  \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written proofs for the main modules, with Appendix~\ref{app:verification} recording auxiliary machine-checks and Appendix~\ref{app:legacy-branch} archiving legacy branches.
   \item \textbf{Computation:} Symbol scans and PSD checks are reproducibility aids only; they do not enter the logical core of the proofs.
 \end{itemize}
 
 \medskip
-\noindent\emph{Bridge summary.} We split $Q$ as $T_M[P_A]-T_P$ with $P_A\in \mathrm{Lip}(1)$ and $T_P$ finite rank. The symbol barrier yields $\lambda_{\min}(T_M[P_A])\ge c_* - C\,\omega_{P_A}(\pi/M)$ with
+\noindent\emph{Bridge summary.} We split $Q$ as $T_M[P_A]-T_P$ with $P_A\in \mathrm{Lip}(1)$ and $T_P$ finite rank. The symbol barrier yields $\lambda_{\min}(T_M[P_A])\ge c_* - C\,\omega_{P_A}(1/(2M))$, where $c_* = \tfrac{11}{10}$ is the \textbf{uniform Archimedean floor} from Lemma~\ref{lem:uniform-arch-floor} (for $t_{\mathrm{sym}}=3/50$, $B_{\min}=3$), valid on the full circle $\TT$ and independent of $K$. The prime norm is bounded in the Arch-induced RKHS by the uniform cap
 \[
-  c_* := A_*(t_{\mathrm{sym}}) - \pi L_*(t_{\mathrm{sym}}) \ge \frac{811}{1000},
+  \|T_P\|\le \rho(t_{\mathrm{rkhs}}),
 \]
-where $c_*$ is the \textbf{uniform Archimedean floor} (Lemma~8.17'), valid on the full circle $\TT$ and independent of $K$. The prime norm is bounded in the Arch-induced RKHS by
+with $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ (Corollary~\ref{cor:uniform-prime-cap}). Thus
 \[
-  \|T_P\|\le w_{\max}+\sqrt{w_{\max}}\,\eta_K,
-\]
-where $w_{\max}:=\sup_n w_{\mathrm{RKHS}}(n)\le 2/e$ for the undoubled operator weights $w_{\mathrm{RKHS}}(n)=\Lambda(n)/\sqrt{n}$, and $\eta_K\in(0,1-w_{\max})$ is tuned via the log-node gap $\delta_K$. Thus
-\[
-  \lambda_{\min}(T_M[P_A]-T_P)\ \ge\ \min P_A\ -\ C\,\omega_{P_A}(\pi/M)\ -\ \|T_P\|,
+  \lambda_{\min}(T_M[P_A]-T_P)\ \ge\ \min P_A\ -\ C\,\omega_{P_A}(1/(2M))\ -\ \rho(t_{\mathrm{rkhs}}),
 \]
 closing the bridge module and feeding the remaining steps.
 
@@ -38,24 +34,27 @@ For reference we collect the global hypotheses used in the closure section. Each
   \item[(H1)] $(\mathrm{T0})$ --- Guinand--Weil normalization of $Q$ (Proposition~\ref{prop:T0-GW}).
   \item[(H2)] $(\mathrm{A1}')$ --- Density of the Fej\'er$\times$heat cone on every $W_K$ (Theorem~\ref{a1:thm:A1-local-density}).
   \item[(H3)] $(\mathrm{A2})$ --- Lipschitz continuity of $Q$ on each $W_K$ (Lemma~\ref{a2:lem:A2} and Corollary~\ref{a2:cor:explicit-lip}).
-  \item[(H4)] $(\mathrm{A3})$ --- Toeplitz bridge with uniform Arch floor $c_*\ge 811/1000$ (Lemma~\ref{lem:uniform-arch-floor}), RKHS cap $\rho(t_{\mathrm{rkhs}}^{\mathrm{unif}})\le c_*/4$, and uniform discretisation threshold $M_0^{\mathrm{unif}}$ (Theorem~\ref{thm:A3}).
-  \item[(H5)] $(\mathrm{RKHS})$ or $(\mathrm{MD/IND/AB})$ --- prime contraction via the RKHS route (Theorem~\ref{thm:rkhs-tstar}) or the archival MD/IND/AB chain (Theorem~\ref{md:thm:INDprime}).
-  \item[(H6)] $(\mathrm{T5})$ --- compact-by-compact transfer of positivity (Theorem~\ref{thm:T5-compact}).
+  \item[(H4)] $(\mathrm{A3})$ --- Toeplitz bridge with the explicit uniform floor $c_*>0$ (Lemma~\ref{lem:uniform-arch-floor}), RKHS cap $\rho(t_{\mathrm{rkhs}})\le c_*/4$ for $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$, and uniform discretisation threshold $M_0^{\mathrm{unif}}$ (Theorem~\ref{thm:A3}).
+  \item[(H5)] $(\mathrm{RKHS})$ --- prime contraction via the uniform RKHS cap (Corollary~\ref{cor:uniform-prime-cap}).
 \end{description}
 
-Sections~\ref{sec:T0}--\ref{sec:T5} establish (H1)--(H6); the closure Theorem~\ref{thm:Main-positivity} assumes precisely these hypotheses, and Theorem~\ref{thm:RH} invokes (H1)--(H6) together with Weil's criterion.
+Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} establish (H1)--(H5); the closure Theorem~\ref{thm:Main-positivity} assumes precisely these hypotheses, and Theorem~\ref{thm:RH} invokes (H1)--(H5) together with Weil's criterion.
 
 \section{Notation and Conventions}\label{sec:notation}
 
-On the frequency axis we write $\xi=\eta/(2\pi)$. The Archimedean density is
+On the frequency axis we write $\xi=\eta/(2\pi)$. In the Toeplitz bridge we work on the unit circle
+\(\TT=\RR/\ZZ\) with fundamental domain $[-\tfrac12,\tfrac12]$. The Archimedean density is
 \[
   a(\xi)=\log\pi-\Re\psi\Big(\tfrac14+i\pi\xi\Big),\qquad a_*(\xi)=2\pi\,a(\xi),
 \]
 and prime nodes are at $\xi_n=\tfrac{\log n}{2\pi}$ with symmetric placement $\pm\xi_n$.  We distinguish two weight conventions:
 \[
-  w_Q(n)=\frac{2\Lambda(n)}{\sqrt{n}} \quad\text{(the one-sided weight inside $Q$)},
-  \qquad
-  w_{\mathrm{RKHS}}(n)=\frac{\Lambda(n)}{\sqrt{n}} \quad\text{(the operator weight on $W_K$)}.
+\begin{aligned}
+  w_Q(n) &= \frac{2\Lambda(n)}{\sqrt{n}}
+  &&\text{(the one-sided weight inside $Q$)}, \\
+  w_{\mathrm{RKHS}}(n) &= \frac{\Lambda(n)}{\sqrt{n}}
+  &&\text{(the operator weight on $W_K$)}.
+\end{aligned}
 \]
 Evenization lets us pass freely between them: doubling $w_{\mathrm{RKHS}}$ on $\xi_n>0$ gives $w_Q$, while placing both $\pm\xi_n$ leaves $w_{\mathrm{RKHS}}$ unchanged. All RKHS and operator bounds below use $w_{\mathrm{RKHS}}$; we abbreviate $w_{\max}:=\sup_n w_{\mathrm{RKHS}}(n)\le 2/e$. Throughout we use
 \[
@@ -65,21 +64,17 @@ on each compact window; Section~\ref{sec:T0} records the exact crosswalk to the 
 
 \subsection*{Quick reference for reviewers}\label{sec:quick-ref}
 \begin{tcolorbox}[colback=white,colframe=black!60]
-\textbf{Architecture.} T0 $\to$ A1$'$ $\to$ A2 $\to$ A3 $\to$ RKHS (or MD/IND/AB) $\to$ T5.
+\textbf{Architecture.} T0 $\to$ A1$'$ $\to$ A2 $\to$ A3 $\to$ RKHS $\to$ Main closure.
 \textbf{Goal:} $Q\ge0$ on the Weil cone $\mathcal W$.
 
 \textbf{Two scales.} $t_{\mathrm{sym}}$ controls the symbol modulus $\omega_{P_A}$ (A3), while
 $t_{\mathrm{rkhs}}$ controls the prime cap $\|T_P\|$ (RKHS). No coupling is imposed.
 
-\textbf{Uniform margins.} Global Arch floor $c_\ast>0$ comes from the spectral Fej\'er$\times$heat
-routine. The uniform prime cap at $t=0.7$ satisfies $\rho_{\mathrm{cap}}<1/25$.
-Budget split: $C_{\mathrm{SB}}\omega_{P_A}(\pi/M)\le c_\ast/4$ and $\|T_P\|\le c_\ast/4$
-\ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P)\ge c_\ast/2$.
+\textbf{Uniform margins.} Global Arch floor $c_\ast=\tfrac{11}{10}$ is supplied explicitly by
+Lemma~\ref{lem:uniform-arch-floor} (with $t_{\mathrm{sym}}=3/50$, $B_{\min}=3$). The prime cap is set by
+$t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$, ensuring $\|T_P\|\le c_\ast/4$.
+Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P\|\le c_\ast/4$
+\ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P)\ge c_\ast/4$.
 
-\textbf{Adaptive option.} On a compact $[-K,K]$, the RKHS scale
-$t_{\min}(K)=\delta_K^2/(4\ln((2+\eta_K)/\eta_K))$ sharpens $\|T_P\|$.
-
-\textbf{Transfer (T5).} Grid $\Rightarrow$ compact $\Rightarrow$ Weil cone.
-Series, tail, grid, and limit steps have ATP witnesses
-(\texttt{proofs/T5\_global\_transfer/}).
+\textbf{Uniform constants.} $t_{\mathrm{sym}}=3/50$, $B_{\min}=3$, $c_\ast=\tfrac{11}{10}$; see Appendix~\ref{app:notation} for $M_0^{\mathrm{unif}}$ and $t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
 \end{tcolorbox}

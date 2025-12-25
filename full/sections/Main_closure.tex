@@ -1,24 +1,21 @@
 \subsection{Main closure: from analytic modules to Weil positivity}\label{sec:Main-closure}
 
 \subsection*{Standing hypotheses (analytic chain)}
-Throughout this section we rely only on the following proved ingredients:
+Throughout this section we rely only on the following analytic inputs:
 \begin{itemize}
   \item \textbf{(T0) Normalization.} Guinand--Weil crosswalk and our conventions, cf.\ Proposition~\ref{prop:T0-GW} (Section~\ref{sec:T0}).
   \item \textbf{(A1$'$) Density.} The Fej\'er$\times$heat cone is dense in $W_K$, cf.\ Theorem~\ref{a1:thm:A1-local-density}.
   \item \textbf{(A2) Continuity.} The Weil functional $Q$ is continuous on $W_K$ with a modulus $L_Q(K)$ (Section~\ref{sec:A2}).
   \item \textbf{(A3) Uniform Toeplitz bridge.} Theorem~\ref{thm:A3} provides: for all $M\ge M_0^{\mathrm{unif}}$,
   \[
-    \lambda_{\min}\!\big(T_M[P_A]-\mathcal T_P\big)\ \ge\ \frac{c_*}{4}\ \ge\ \frac{811}{4000}\ >\ 0.2,
+    \lambda_{\min}\!\big(T_M[P_A]-\mathcal T_P\big)\ \ge\ \frac{c_*}{4}\ >\ 0,
   \]
-  where $c_*\ge 811/1000$ is the uniform Archimedean floor from Lemma~\ref{lem:uniform-arch-floor}.
-  \item \textbf{(RKHS) Uniform prime contraction.} Theorem~\ref{thm:rkhs-tstar} with $t_0=7/10$ gives
-  \(
-    \|\mathcal T_P\|\le \rho(t_0)\le \frac{1971}{50000} < \frac{c_*}{4}.
-  \)
+  where $c_*$ is the uniform Archimedean floor from Lemma~\ref{lem:uniform-arch-floor}.
 \end{itemize}
 
-\begin{theorem}[Main positivity]\label{thm:Main-positivity}
-If \textup{(T0)}+\textup{(A1$'$)}+\textup{(A2)}+\textup{(A3)} hold, then
+\begin{theorem}[Main positivity on $\mathcal W$]\label{thm:Main-positivity}
+Assume \textup{(T0)}, \textup{(A1$'$)}, \textup{(A2)}, and the uniform A3 bridge inequality (Theorem~\ref{thm:A3}).
+Then
 \[
   Q(\Phi)\ \ge\ 0\qquad\text{for every even, real, compactly supported }\Phi\in \mathcal W,
 \]
@@ -26,21 +23,13 @@ where $\mathcal W=\bigcup_{K>0}\mathcal W_K$ is the Weil cone from Section~\ref{
 \end{theorem}
 
 \begin{proof}
-Fix $K>0$. By Theorem~\ref{thm:A3} (uniform A3 bridge) with the uniform floor $c_*\ge 811/1000$,
-we have
-\[
-  \lambda_{\min}\!\big(T_M[P_A]-\mathcal T_P\big)\ \ge\ \frac{c_*}{4}\ >\ 0
-\]
-for all $M\ge M_0^{\mathrm{unif}}$. Hence the finite Toeplitz form is nonnegative on the Fej\'er$\times$heat cone.
-By \textup{(A1$'$)} the cone is dense in $W_K$, and by \textup{(A2)} the functional $Q$ is continuous;
-therefore $Q\ge0$ on $W_K$. Taking the union over all $K$ shows $Q\ge0$ on $\mathcal W$.
-Finally \textup{(T0)} identifies this $Q$ with the canonical Weil functional.
+Fix $K>0$. By Theorem~\ref{thm:A3} we have $Q(\Phi)\ge 0$ on the Fej\'er$\times$heat generator cone inside $\mathcal W_K$.
+By \textup{(A1$'$)} density and \textup{(A2)} continuity, this extends to all of $\mathcal W_K$.
+Since $\mathcal W=\bigcup_{K>0}\mathcal W_K$, we obtain $Q\ge 0$ on $\mathcal W$.
+Finally, by \textup{(T0)} this is the Weil positivity criterion, hence RH.
 \end{proof}
 
-\begin{remark}[No numerics, no ATP, no K-dependent parameters]
-The proof of Theorem~\ref{thm:Main-positivity} uses only the uniform analytic bounds:
-$c_*\ge 811/1000$ (Lemma~\ref{lem:uniform-arch-floor}) and $\rho(7/10)\le 1971/50000$ (Theorem~\ref{thm:rkhs-tstar}).
-No K-dependent schedules $t_{\mathrm{rkhs}}(K)$, $M_0(K)$, or $c_0(K)$ appear in the argument.
-Legacy numerical certificates and ATP logs are archived separately for reproducibility
-but play no role in the proof.
+\begin{remark}[Uniform input only]
+The proof of Theorem~\ref{thm:Main-positivity} uses only the uniform analytic bounds built into Theorem~\ref{thm:A3}.
+No K-dependent schedules or numerical certificates enter the main argument.
 \end{remark}

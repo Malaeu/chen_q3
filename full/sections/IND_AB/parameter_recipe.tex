@@ -34,9 +34,11 @@ monotonic rise before $\tau$, a flat segment of width $\beta$, and
 compatible one-sided derivatives at the junctions.
 \end{lemma}
 
-\begin{proof}[Sketch]
-Formula \eqref{eq:param_recipe-plateau-defs} consists of three segments
-with slopes $\alpha$, $0$, and $-\alpha$. Continuity follows from matching
-the constants; the corner points are controlled by the one-sided bounds.
-The values stay below $\gamma\le1$, satisfying the normalized AB regime.
+\begin{proof}
+On $(-\infty,\tau]$ the function is $A(t)=\alpha t$, so it is increasing and Lipschitz with slope $\alpha$.
+On $(\tau,\tau+\beta]$ we have $A(t)=\gamma$, so $A$ is constant and Lipschitz with slope $0$.
+On $(\tau+\beta,\infty)$ we have $A(t)=\max\{\gamma-\alpha(t-\tau-\beta),0\}$, hence $A$ is nonincreasing
+and Lipschitz with slope in $[-\alpha,0]$. Since $0<\alpha\le\gamma\le1$, all three branches take values in $[0,1]$,
+and the one-sided derivatives at the junctions are $\alpha$ and $0$ at $t=\tau$, and $0$ and $-\alpha$ (or $0$ once the
+floor is active) at $t=\tau+\beta$. This matches the plateau constraints.
 \end{proof}

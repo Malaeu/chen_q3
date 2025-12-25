@@ -4,19 +4,19 @@ We record how the local ingredients assembled in \S\ref{sec:A3} feed the global 
 
 \begin{itemize}
   \item Lemma~\ref{lem:a3.cap-combine} supplies the bounded-overlap control on caps.
-  \item Lemma~\ref{lem:a3.two-scale} keeps the Arch floor under two-scale smoothing.
-  \item Lemma~\ref{lem:trace-cap-bound} (powered by Theorem~\ref{thm:rkhs-tstar}) gives the $L^2$ trace bound on the RKHS slice.
-  \item Theorem~\ref{thm:A3} combines the uniform symbol floor $c_*\ge 811/1000$ with the RKHS prime cap from Corollary~\ref{cor:pcu-uniform} and the Frobenius guard of Corollary~\ref{cor:toeplitz-frob}.
+  \item Lemma~\ref{lem:a3.two-scale} records the uniform two-scale separation.
+  \item Corollary~\ref{cor:uniform-prime-cap} gives the uniform RKHS prime cap for $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
+  \item Theorem~\ref{thm:A3} combines the uniform symbol floor $c_*>0$ with the RKHS prime cap from Corollary~\ref{cor:uniform-prime-cap} and the Frobenius guard of Corollary~\ref{cor:toeplitz-frob}.
 \end{itemize}
 
 \begin{corollary}[Lock]\label{cor:D3-lock}
-Under the hypotheses of Lemmas~\ref{lem:a3.cap-combine}, \ref{lem:a3.two-scale} and \ref{lem:trace-cap-bound} the A3 lock closes with a constant depending only on the overlap bound and the trace constant.
+Under the hypotheses of Lemmas~\ref{lem:a3.cap-combine}, \ref{lem:a3.two-scale}, and Corollary~\ref{cor:uniform-prime-cap} the A3 lock closes with a constant depending only on the overlap bound and the uniform prime cap.
 \end{corollary}
 \phantomsection\label{a3:cor:A3_lock_formal}
 
 \begin{proof}
 Lemma~\ref{lem:a3.cap-combine} gives almost orthogonality, Lemma~\ref{lem:a3.two-scale}
-controls interactions between scales, Lemma~\ref{lem:trace-cap-bound} closes the trace on the slice,
+controls interactions between scales, Corollary~\ref{cor:uniform-prime-cap} provides the uniform cap,
 and Theorem~\ref{thm:A3} supplies the quantitative margin with the uniform floor.
 Summing the contributions yields the stated lock.
 \end{proof}

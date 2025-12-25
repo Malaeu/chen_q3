@@ -20,7 +20,7 @@ proof and serve only as provenance for the archived JSON logs under \texttt{cert
     Module & Legacy artefact (read-only) & Primary cite & Secondary cite \\
     \midrule
     $\mathrm{A3}$ & \path{cert/bridge/K*_A3_lock.json};\newline \path{proofs/A3_global/logs/a3_global_lock_vampire.log} & Theorem~\ref{thm:A3} & Section~\ref{sec:T5-compact} \\
-    RKHS & \path{cert/bridge/K*_trace.json};\newline \path{cert/bridge/yes_gate_chain_report_trace.json} & Theorem~\ref{thm:rkhs-tstar} & Corollary~\ref{cor:pcu-uniform} \\
+    RKHS & \path{cert/bridge/K*_trace.json};\newline \path{cert/bridge/yes_gate_chain_report_trace.json} & Lemma~\ref{lem:rkhs-uniform-cap-full} & Corollary~\ref{cor:pcu-uniform} \\
     $\mathrm{IND/AB}$ & \path{cert/bridge/K1_blocks.json};\newline \path{cert/bridge/K1_step_next.json};\newline \path{proofs/ABK_aggregation/tptp/ab_lin_k11.p} & Appendix~\ref{app:a3-repro} & Theorem~\ref{md:thm:INDprime} \\
     $\mathrm{T5}$ & \path{cert/bridge/K*_grid.json};\newline \path{proofs/T5_global_transfer/tptp/t5_{\{compact,grid\}}.p} & Theorem~\ref{thm:T5-compact} & \path{appendix/T5_parameters.tex} \\
     \bottomrule
@@ -29,7 +29,7 @@ proof and serve only as provenance for the archived JSON logs under \texttt{cert
 \end{center}
 
 \subsection*{Prime trace caps (legacy)}
-\noindent\emph{Historical trace-mode reports; analytic arguments use the uniform bound $\RhoGate$ at $t_0=\tfrac{7}{10}$.}
+\noindent\emph{Historical trace-mode reports; analytic arguments use the uniform cap from Corollary~\ref{cor:uniform-prime-cap}.}
 \input{sections/RKHS/prime_cap_table}
 
 \subsection*{IND/AB schedule}
