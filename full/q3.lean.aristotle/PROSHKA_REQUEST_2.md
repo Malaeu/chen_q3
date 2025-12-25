@@ -115,10 +115,10 @@ e_k(\theta) = e^{2\pi i k \theta}, \qquad k \in \mathbb{Z}
 | Константа | Значение | Смысл |
 |-----------|----------|-------|
 | \(B_{\min}\) | 3 | Порог ширины полосы |
-| \(t_{\text{sym}}\) | 3/50 = 0.06 | Параметр теплового сглаживания |
-| \(c_*\) | **11/10 = 1.1** | Архимедов пол (ПРЯМАЯ ОЦЕНКА!) |
+| \(t_{\text{sym}}\) | 3/50 | Параметр теплового сглаживания |
+| \(c_*\) | **11/10** | Архимедов пол (ПРЯМАЯ ОЦЕНКА!) |
 | \(C_{SB}\) | 4 | Константа Сегё-Бёттхера |
-| \(\rho(1)\) | < 1/25 = 0.04 | RKHS cap |
+| \(\rho(1)\) | < 1/25 | RKHS cap |
 
 ---
 
@@ -137,7 +137,7 @@ e_k(\theta) = e^{2\pi i k \theta}, \qquad k \in \mathbb{Z}
 
 ### Axiom SB: Оценка Сегё-Бёттхера (1958)
 \[
-\lambda_{\min}(T_n(\sigma)) \geq \min \sigma - O(1/n)
+\lambda_{\min}(T_M(\sigma)) \geq \min \sigma - C_{SB}\,\omega_{\sigma}\!\Big(\frac{1}{2M}\Big)
 \]
 
 ---
@@ -153,7 +153,7 @@ e_k(\theta) = e^{2\pi i k \theta}, \qquad k \in \mathbb{Z}
 
 ### Axiom A1': Плотность Фейера × тепловых
 \[
-\forall \varepsilon > 0,\, \forall \Phi \in W_K,\, \exists (B, t):\quad \|\Phi - \Phi_{B,t}\|_K < \varepsilon
+\forall \varepsilon > 0,\, \forall \Phi \in W_K,\, \exists B\ge B_{\min}:\quad \|\Phi - \Phi_{B,t_{\text{sym}}}\|_K < \varepsilon
 \]
 
 ### Axiom A2: Липшицевость Q
@@ -163,7 +163,9 @@ e_k(\theta) = e^{2\pi i k \theta}, \qquad k \in \mathbb{Z}
 
 ### Axiom RKHS-C: Сжатие простого оператора
 \[
-\|T_{\text{prime}}\|_{\text{op}} \le \rho(1) < \frac{1}{25}
+t_{\mathrm{rkhs}} \ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}=1
+\quad\Longrightarrow\quad
+\|T_{P}\|_{\text{op}} \le \rho(1) < \frac{1}{25}
 \]
 
 ---
@@ -175,15 +177,15 @@ e_k(\theta) = e^{2\pi i k \theta}, \qquad k \in \mathbb{Z}
 
 Шаг 2: Аппроксимация Фейером × тепловыми (A1') → приближаем любое Φ ∈ W_K
 
-Шаг 3: Q непрерывен (A2) → Q(Φ) = lim Q(Φ_{B,t})
+Шаг 3: Q непрерывен (A2) → Q(Φ) = lim Q(Φ_{B,t_{\text{sym}}})
 
 Шаг 4: Для Φ_{B,t} разлагаем Q = Q_arch − Q_prime (МИНУС!)
 
-Шаг 5: Q_arch ≥ c_* = 11/10 (A3) → через оценку Тёплица
+Шаг 5: Q_arch ≥ c_* = 11/10 (A3) → прямая точечная оценка P_A и интеграл по T
 
-Шаг 6: Q_prime ≤ ρ(1) < 1/25 < c_* (RKHS-C) → сжатие ||T_P||
+Шаг 6: Q_prime ≤ ρ(1) < 1/25 < c_* (RKHS-C) → t_rkhs ≥ 1 и сжатие ||T_P||
 
-Шаг 7: Вместе: Q(Φ_{B,t}) = Q_arch − Q_prime ≥ 11/10 − 1/25 > 0
+Шаг 7: Вместе: Q(Φ_{B,t_{\text{sym}}}) = Q_arch − Q_prime ≥ 11/10 − 1/25 > 0
 
 Шаг 8: Предельный переход: Q(Φ) ≥ 0 для всех Φ ∈ Weil_cone
 
@@ -198,7 +200,7 @@ Weil criterion: Q(Φ) ≥ 0 ∀Φ ⟹ RH
                  ↑
          A1′ density approximation
                  ↑
-    Q(Φ_{B,t}) = Q_arch − Q_prime ≥ 0
+    Q(Φ_{B,t_{\text{sym}}}) = Q_arch − Q_prime ≥ 0
                  ↑
          ┌──────┴──────┐
          │             │
@@ -273,3 +275,34 @@ Markdown с LaTeX. Секции §0-§8. Каждое доказательств
 5. Статус: УСЛОВНЫЙ (Tier-2 ⟹ RH)
 
 **Начинай!**
+
+---
+
+## КОНТЕКСТ‑ПАКЕТ ДЛЯ ПРОШКИ (СЖАТО)
+
+1) **T0‑нормировка + period‑1.**  
+   Узлы \(\xi_n=\log n/(2\pi)\), \(a_*(\xi)=2\pi a(\xi)\),  
+   \(\TT=[-1/2,1/2]\), \(e_k(\theta)=e^{2\pi i k\theta}\),  
+   \(P_A(\theta)=2\pi\sum_{m\in\ZZ}g(\theta+m)\).  
+   Sources: `full/sections/T0.tex`, `full/sections/A3/symbol_floor.tex`, `full/sections/A3/rayleigh_bridge.tex`.
+
+2) **A3‑floor + дискретизация.**  
+   \(P_A(\theta)\ge c_*=\frac{11}{10}\) на \([-1/2,1/2]\),  
+   \(\lambda_{\min}(T_M[P_A])\ge \min P_A - C_{SB}\omega(1/(2M))\),  
+   \(M_0^{\mathrm{unif}}=\lceil C_{SB}L_*/c_*\rceil\).  
+   Sources: `full/sections/A3/symbol_floor.tex`, `full/sections/A3/matrix_guard.tex`.
+
+3) **Rayleigh‑мост.**  
+   \(Q(\Phi_{B,t_{\mathrm{sym}}})\) совпадает с Rayleigh‑квотентом \(T_M[P_A]-T_P\) при \(p\equiv1\).  
+   Source: `full/sections/A3/rayleigh_bridge.tex`.
+
+4) **RKHS‑cap (prime‑часть).**  
+   \(t_{\mathrm{rkhs}}\ge 1\Rightarrow \|T_P\|\le\rho(1)<1/25\).  
+   Sources: `full/sections/RKHS/prime_trace_closed_form.tex`, Cor. `cor:uniform-prime-cap` in `full/sections/A3/symbol_floor.tex`.
+
+5) **Закрытие (A1′+A2 → W) ⇒ Weil.**  
+   Плотность Fejér×heat (фиксированный \(t_{\mathrm{sym}}\)) + липшицевость \(Q\) на \(W_K\)  
+   ⇒ \(Q\ge0\) на \(W\) ⇒ Weil ⇒ RH (условно).  
+   Sources: `full/sections/A1prime.tex`, `full/sections/A2.tex`, `full/sections/Main_closure.tex`, `full/sections/Weil_linkage.tex`.
+
+**Важно:** legacy‑ветки (K‑dependent/JSON/арки) не использовать в mainline.

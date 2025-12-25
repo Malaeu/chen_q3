@@ -88,10 +88,10 @@ $$
 
 | Constant | Value | Source |
 |----------|-------|--------|
-| $t_{\mathrm{sym}}$ | $\frac{3}{50} = 0.06$ | Fixed parameter |
+| $t_{\mathrm{sym}}$ | $\frac{3}{50}$ | Fixed parameter |
 | $B_{\min}$ | $3$ | Bandwidth threshold |
-| $c_*$ | $\frac{11}{10} = 1.1$ | `symbol_floor.tex` (L258) |
-| $\rho(1)$ | $< \frac{1}{25} = 0.04$ | RKHS cap |
+| $c_*$ | $\frac{11}{10}$ | `symbol_floor.tex` (L258) |
+| $\rho(1)$ | $< \frac{1}{25}$ | RKHS cap |
 
 ### KEY FORMULA (ЗНАК МИНУС!)
 
@@ -101,7 +101,7 @@ $$
 
 **Для Q ≥ 0 нужно:** $Q_{\mathrm{arch}} \ge Q_{\mathrm{prime}}$
 
-**Margin:** $c_* - \rho(1) = \frac{11}{10} - \frac{1}{25} = \frac{55-2}{50} = \frac{53}{50} > 1 > 0$
+**Margin:** $c_* - \rho(1) = \frac{11}{10} - \frac{1}{25} = \frac{55-2}{50} = \frac{53}{50} > 0$
 
 ---
 
@@ -145,27 +145,26 @@ Q_{\mathrm{arch}}(\Phi_{B,t}) \ge c_* = \frac{11}{10}
 $$
 
 **Proof:**
-1. $Q_{\mathrm{arch}}$ соответствует Toeplitz с символом $P_A$.
+1. В period‑1 нормировке $Q_{\mathrm{arch}}(\Phi_{B,t_{\mathrm{sym}}})=\int_{-1/2}^{1/2} P_A(\theta)\,d\theta$ (Rayleigh identification).
 2. По A3: $P_A(\theta) \ge \frac{11}{10}$ для всех $\theta \in [-\frac{1}{2}, \frac{1}{2}]$.
-3. По Szegő-Böttcher: $\lambda_{\min}(T_M) \ge \min P_A - O(1/M)$.
-4. Следовательно, $Q_{\mathrm{arch}} \ge c_*$. ∎
+3. Так как длина интервала равна $1$, получаем $Q_{\mathrm{arch}} \ge \frac{11}{10} = c_*$. ∎
 
 ### Lemma 3: Prime Contribution Bound (RKHS-C)
 
-**Statement:** Для $t \ge t_{\mathrm{sym}}$:
+**Statement:** Для $t_{\mathrm{rkhs}} \ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}} = 1$:
 
 $$
-Q_{\mathrm{prime}}(\Phi_{B,t}) \le \rho(1) < \frac{1}{25}
+Q_{\mathrm{prime}}(\Phi_{B,t_{\mathrm{sym}}}) \le \rho(1) < \frac{1}{25}
 $$
 
 **Proof:**
 1. $Q_{\mathrm{prime}}$ реализуется через оператор $T_P$.
-2. По RKHS-C: $\|T_P\| \le \rho(t)$.
+2. По RKHS‑cap: $\|T_P\| \le \rho(t_{\mathrm{rkhs}})\le \rho(1)$.
 3. $\rho(1) < \frac{1}{25}$ (closed form из `prime_trace_closed_form.tex`). ∎
 
 ### Lemma 4: Positivity on Approximants (ИСПРАВЛЕНА!)
 
-**Statement:** Для $\Phi_{B,t}$ выполняется:
+**Statement:** Для $\Phi_{B,t_{\mathrm{sym}}}$ выполняется:
 
 $$
 Q(\Phi_{B,t}) = Q_{\mathrm{arch}} - Q_{\mathrm{prime}} \ge c_* - \rho(1) > 0
@@ -192,13 +191,13 @@ $$
 
 2. **Локализация.** По Lemma 1, $\Phi \in W_K$ для некоторого $K$.
 
-3. **Аппроксимация.** По A1′, для любого $\varepsilon > 0$ существуют $B \ge B_{\min}$, $t \ge t_{\mathrm{sym}}$ такие, что $\|\Phi - \Phi_{B,t}\|_K < \varepsilon/L$.
+3. **Аппроксимация.** По A1′ (фиксированный $t_{\mathrm{sym}}$), для любого $\varepsilon > 0$ существуют $B \ge B_{\min}$ такие, что $\|\Phi - \Phi_{B,t_{\mathrm{sym}}}\|_K < \varepsilon/L$.
 
-4. **Липшицевость.** По A2: $|Q(\Phi) - Q(\Phi_{B,t})| < \varepsilon$.
+4. **Липшицевость.** По A2: $|Q(\Phi) - Q(\Phi_{B,t_{\mathrm{sym}}})| < \varepsilon$.
 
-5. **Оценка аппроксиманта.** По Lemma 4: $Q(\Phi_{B,t}) \ge \frac{53}{50} > 0$.
+5. **Оценка аппроксиманта.** По Lemma 4: $Q(\Phi_{B,t_{\mathrm{sym}}}) \ge \frac{53}{50} > 0$.
 
-6. **Предельный переход.** $Q(\Phi) \ge Q(\Phi_{B,t}) - \varepsilon \ge \frac{53}{50} - \varepsilon$.
+6. **Предельный переход.** $Q(\Phi) \ge Q(\Phi_{B,t_{\mathrm{sym}}}) - \varepsilon \ge \frac{53}{50} - \varepsilon$.
 
 7. **ε → 0.** Получаем $Q(\Phi) \ge 0$.
 
