@@ -6,6 +6,7 @@ Rigorous numerical verification and analytical estimates for the Chen Q3 approac
 
 ```
 chen_q3/
+├── docs/                   # Project docs and policies
 ├── src/                    # Python source code
 │   ├── saturation_proof.py     # Symbol norm saturation
 │   ├── floor_proof.py          # Archimedean floor (Lorentzian)
@@ -38,10 +39,11 @@ chen_q3/
 ├── full/                   # Lean proofs and formalization workflow
 │   └── q3.lean.aristotle/      # A3_FLOOR kernel proofs + DB + Aristotle I/O
 │
-├── docs/                   # Documentation
 ├── data/                   # Data files
 └── archive/                # Legacy materials moved out of root
 ```
+
+See `docs/PROJECT_STRUCTURE.md` for the archive policy and layout rules.
 
 ## Key Results
 
