@@ -3,11 +3,15 @@
 ТЕСТ: Адаптивное t для режима перекрытия окон
 Идея: t = c / B^α чтобы окно расширялось с ростом B
 """
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 import mpmath
 
 pi = np.pi
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def a_digamma(xi):
     """Реальная функция a(ξ) через дигамму"""
@@ -191,8 +195,9 @@ ax4.legend()
 ax4.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/Users/emalam/Downloads/floor_adaptive_comparison.png', dpi=150)
-print("\n✅ Saved: floor_adaptive_comparison.png")
+plot_path = OUTPUT_DIR / "floor_adaptive_comparison.png"
+plt.savefig(plot_path, dpi=150)
+print(f"\n✅ Saved: {plot_path}")
 
 # === ФИНАЛЬНЫЙ ВЕРДИКТ ===
 print("\n" + "=" * 70)

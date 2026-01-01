@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 import mpmath
@@ -15,6 +17,8 @@ g(xi) = a(xi) * W(xi)
 
 pi = np.pi
 t_sym = 0.7  # Параметр из Q3
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def a_q3(xi):
     """Реальная функция a(xi) из Q3 через дигамму"""
@@ -93,5 +97,6 @@ plt.ylabel('Periodization Value')
 plt.legend()
 plt.grid(True, alpha=0.2)
 plt.tight_layout()
-plt.savefig('floor_q3_real.png', dpi=150)
-print("\n✅ Saved: floor_q3_real.png")
+plot_path = OUTPUT_DIR / "floor_q3_real.png"
+plt.savefig(plot_path, dpi=150)
+print(f"\n✅ Saved: {plot_path}")

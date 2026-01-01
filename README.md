@@ -35,8 +35,12 @@ chen_q3/
 │   ├── numerical_results.tex  # Section 6: Experiments
 │   └── conclusions.tex        # Section 7
 │
+├── full/                   # Lean proofs and formalization workflow
+│   └── q3.lean.aristotle/      # A3_FLOOR kernel proofs + DB + Aristotle I/O
+│
 ├── docs/                   # Documentation
-└── data/                   # Data files
+├── data/                   # Data files
+└── archive/                # Legacy materials moved out of root
 ```
 
 ## Key Results

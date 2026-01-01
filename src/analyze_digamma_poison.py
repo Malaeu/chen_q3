@@ -3,12 +3,16 @@
 АНАЛИЗ: Где дигамма становится "ядовитой"?
 Исследуем a(ξ) = log(π) - Re(ψ(1/4 + iπξ))
 """
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 import mpmath
 
 pi = np.pi
 log_pi = np.log(pi)
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def a_digamma(xi):
     """a(ξ) = log(π) - Re(ψ(1/4 + iπξ))"""
@@ -130,8 +134,9 @@ ax4.grid(True, alpha=0.3)
 ax4.set_xlim(0, 10)
 
 plt.tight_layout()
-plt.savefig('/Users/emalam/Downloads/digamma_poison_analysis.png', dpi=150)
-print("\n✅ Saved: digamma_poison_analysis.png")
+plot_path = OUTPUT_DIR / "digamma_poison_analysis.png"
+plt.savefig(plot_path, dpi=150)
+print(f"\n✅ Saved: {plot_path}")
 
 # === ВЫВОД ===
 print("\n" + "=" * 60)

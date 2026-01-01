@@ -1,5 +1,10 @@
-import numpy as np
+from pathlib import Path
 from typing import Sequence, Tuple
+
+import numpy as np
+
+ROOT = Path(__file__).resolve().parent.parent
+OUTPUT_DIR = ROOT / "output"
 
 
 def load_zeros(path: str, limit: int | None = None) -> np.ndarray:
@@ -110,7 +115,7 @@ def main():
     parser.add_argument("--sigma", type=float, default=1.0)
     parser.add_argument("--cutoff", type=float, default=10.0, help="|gamma_i-gamma_j| <= cutoff/sigma")
     parser.add_argument("--Ts", type=float, nargs="*", default=[100, 500, 1000, 5000, 10000, 50000])
-    parser.add_argument("--out", default="/Users/emalam/Documents/GitHub/chen_q3/output/energy_table.txt")
+    parser.add_argument("--out", default=str(OUTPUT_DIR / "energy_table.txt"))
     args = parser.parse_args()
 
     gamma = load_zeros(args.zeros, args.limit)
@@ -142,7 +147,9 @@ def main():
         plt.ylabel("value (log scale)")
         plt.legend()
         plt.tight_layout()
-        plt.savefig("/Users/emalam/Documents/GitHub/chen_q3/output/energy_plot.png", dpi=200)
+        plot_path = OUTPUT_DIR / "energy_plot.png"
+        plot_path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(plot_path, dpi=200)
     except Exception as e:  # noqa: PIE786
         print("Plotting skipped:", e)
 

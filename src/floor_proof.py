@@ -1,5 +1,10 @@
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
+
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def check_spectral_floor(B_values):
     """
@@ -83,5 +88,6 @@ plt.ylabel('Normalized Magnitude')
 plt.legend()
 plt.grid(True, alpha=0.2)
 plt.tight_layout()
-plt.savefig('floor_proof.png', dpi=150)
-print("\n✅ Saved: floor_proof.png")
+plot_path = OUTPUT_DIR / "floor_proof.png"
+plt.savefig(plot_path, dpi=150)
+print(f"\n✅ Saved: {plot_path}")

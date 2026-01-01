@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 import mpmath
@@ -5,6 +7,8 @@ import mpmath
 # --- SETUP ---
 t_sym = 0.7
 pi = np.pi
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Список значений B для проверки (от Q3-минимума до "бесконечности")
 B_values = [1.0/3.0, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0]
@@ -103,5 +107,6 @@ plt.ylabel(r'Proven Upper Bound $C_0$')
 plt.grid(True, alpha=0.2)
 plt.legend()
 plt.tight_layout()
-plt.savefig('saturation_proof.png', dpi=150)
-print("\n✅ Saved: saturation_proof.png")
+plot_path = OUTPUT_DIR / "saturation_proof.png"
+plt.savefig(plot_path, dpi=150)
+print(f"\n✅ Saved: {plot_path}")

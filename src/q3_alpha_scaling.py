@@ -9,6 +9,8 @@ Q3 Alpha Scaling Analysis
 - Если α растёт → нужно больше данных
 """
 
+from pathlib import Path
+
 import numpy as np
 from scipy.special import digamma
 from scipy.linalg import expm
@@ -21,6 +23,8 @@ from rich import box
 import time
 
 console = Console()
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def a_star(xi):
@@ -286,8 +290,9 @@ def run_alpha_scaling(K_values, M=15, t_heat=3.0):
         ax2.grid(True, alpha=0.3)
 
         plt.tight_layout()
-        plt.savefig('alpha_scaling.png', dpi=150, bbox_inches='tight')
-        console.print("[green]Plot saved: alpha_scaling.png[/green]")
+        plot_path = OUTPUT_DIR / "alpha_scaling.png"
+        plt.savefig(plot_path, dpi=150, bbox_inches='tight')
+        console.print(f"[green]Plot saved: {plot_path}[/green]")
         plt.show()
 
     return results

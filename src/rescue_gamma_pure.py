@@ -3,10 +3,15 @@
 СПАСАТЕЛЬНАЯ МИССИЯ v2: Чистая Гамма-метрика без окна
 Идея: Гамма сама себя обрезает экспоненциально, окно не нужно!
 """
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import gamma
 import mpmath
+
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def get_gamma_metric(xi, power=2):
     """
@@ -159,7 +164,8 @@ ax4.grid(True, alpha=0.3)
 ax4.set_ylim(0, 1)
 
 plt.tight_layout()
-plt.savefig('/Users/emalam/Downloads/rescue_gamma_pure.png', dpi=150)
+plot_path = OUTPUT_DIR / "rescue_gamma_pure.png"
+plt.savefig(plot_path, dpi=150)
 
 # --- FINAL VERDICT ---
 print("\n" + "=" * 65)
@@ -182,4 +188,4 @@ if best_result[3] > 0.01:
 else:
     print("\n⚠️  δ* слишком мал, нужны дополнительные исследования")
 
-print("\n✅ Saved: rescue_gamma_pure.png")
+print(f"\n✅ Saved: {plot_path}")

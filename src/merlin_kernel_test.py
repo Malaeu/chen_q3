@@ -9,12 +9,16 @@ MERLIN KERNEL TEST: Поиск положительно-определённог
 5. Gaussian kernel
 6. Mellin-type kernel
 """
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import gamma
 import mpmath
 
 pi = np.pi
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def sinc_kernel(xi, B=1.0):
     """
@@ -184,7 +188,8 @@ for idx, (name, color) in enumerate(zip(kernel_names, colors)):
         ax.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/Users/emalam/Downloads/merlin_kernel_test.png', dpi=150)
+plot_path = OUTPUT_DIR / "merlin_kernel_test.png"
+plt.savefig(plot_path, dpi=150)
 
 # === SUMMARY ===
 print("\n" + "=" * 70)
@@ -211,4 +216,4 @@ if winner_ratio > 0.01:
 else:
     print("\n⚠️  Все ядра имеют слабый пол, нужны модификации")
 
-print("\n✅ Saved: merlin_kernel_test.png")
+print(f"\n✅ Saved: {plot_path}")

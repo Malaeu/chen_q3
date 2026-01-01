@@ -5,6 +5,8 @@ Q3 STRESS TEST: K=2.0, K=2.5
 Финальный рывок: проверка стабильности α при большом K.
 """
 
+from pathlib import Path
+
 import numpy as np
 from scipy.special import digamma
 from scipy.linalg import expm
@@ -16,6 +18,8 @@ from rich import box
 import time
 
 console = Console()
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def a_star(xi):
@@ -306,8 +310,9 @@ def main():
         ax2.grid(True, alpha=0.3)
 
         plt.tight_layout()
-        plt.savefig('stress_test_results.png', dpi=150, bbox_inches='tight')
-        console.print("[green]Plot saved: stress_test_results.png[/green]")
+        plot_path = OUTPUT_DIR / "stress_test_results.png"
+        plt.savefig(plot_path, dpi=150, bbox_inches='tight')
+        console.print(f"[green]Plot saved: {plot_path}[/green]")
         plt.show()
 
     return results

@@ -3,10 +3,15 @@
 СПАСАТЕЛЬНАЯ МИССИЯ: Гамма-метрика вместо Дигамма-яда
 Гипотеза: |Γ(1/4 + iπξ)|² дает стабильный положительный пол
 """
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import gamma
 import mpmath
+
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def get_gamma_metric(xi, power=1):
     """
@@ -109,7 +114,8 @@ plt.grid(True, alpha=0.2)
 plt.xscale('log')
 
 plt.tight_layout()
-plt.savefig('/Users/emalam/Downloads/rescue_archimedes.png', dpi=150)
+plot_path = OUTPUT_DIR / "rescue_archimedes.png"
+plt.savefig(plot_path, dpi=150)
 
 # --- VERDICT ---
 print("\n" + "=" * 65)
@@ -131,4 +137,4 @@ else:
     print(f"❌ PARTIAL SUCCESS: {positive_floors}/{len(floors)} positive floors")
     print(f"   Min Floor = {min_floor:.6f}")
 
-print("\n✅ Saved: rescue_archimedes.png")
+print(f"\n✅ Saved: {plot_path}")

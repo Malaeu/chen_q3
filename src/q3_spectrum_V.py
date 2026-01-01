@@ -10,6 +10,8 @@ Q3 Spectrum Analysis: Eigenvalues of V_K
 - λ_n ~ n^{-1/α} или похожий power law
 """
 
+from pathlib import Path
+
 import numpy as np
 from scipy.special import digamma
 from scipy.linalg import expm
@@ -21,6 +23,8 @@ from rich.panel import Panel
 from rich import box
 
 console = Console()
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def a_star(xi):
@@ -347,8 +351,9 @@ def main():
             cbar = plt.colorbar(ax3.collections[0], ax=ax3, label='K')
 
         plt.tight_layout()
-        plt.savefig('spectrum_V_analysis.png', dpi=150, bbox_inches='tight')
-        console.print("[green]Plot saved: spectrum_V_analysis.png[/green]")
+        plot_path = OUTPUT_DIR / "spectrum_V_analysis.png"
+        plt.savefig(plot_path, dpi=150, bbox_inches='tight')
+        console.print(f"[green]Plot saved: {plot_path}[/green]")
         plt.show()
 
     return results
