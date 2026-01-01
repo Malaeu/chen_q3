@@ -1,0 +1,127 @@
+# A3_FLOOR Доказательство — ROADMAP
+
+## Цель: P_A(θ) ≥ c* = 11/10 для всех θ ∈ [-1/2, 1/2]
+
+---
+
+## ЭТАП 1: Trigamma Foundations ✅ DONE
+**Файл:** `A3_FLOOR_v3_trigamma_foundations.lean`
+**Aristotle:** f86d36da (COMPLETE)
+
+| Лемма | Статус | Описание |
+|-------|--------|----------|
+| `im_trigamma_neg` | ✅ | Im(ψ''(z)) < 0 для z в верхней полуплоскости |
+| `deriv_a_eq` | ✅ | a'(ξ) = π · Im(ψ'(1/4 + iπξ)) |
+| `continuousOn_a` | ✅ | a непрерывна на [0,∞) |
+| `trigamma_summable` | ✅ | Ряд для ψ'' сходится |
+| `digamma_add_one` | ✅ | ψ(z+1) = ψ(z) + 1/z |
+
+---
+
+## ЭТАП 2: Monotonicity ⚠️ CONDITIONAL
+**Файлы:**
+- `A3_FLOOR_v6_deriv_foundations.lean` (23KB, 313 строк)
+- `A3_FLOOR_v8_monotonicity.lean` (15KB)
+- `A3_FLOOR_v11_fixed.lean` (local, lake-checked; uses axioms)
+
+### Ключевые леммы v6/v8:
+| Лемма | Статус | Описание |
+|-------|--------|----------|
+| `trigamma_add_one` | ✅ | ψ₁(z+1) = ψ₁(z) - 1/z² |
+| `diff_digamma_trigamma_add_one` | ✅ | ψ'(z+1) - ψ₁(z+1) = ψ'(z) - ψ₁(z) |
+| `trigamma_tendsto_zero` | ✅ | lim ψ₁(x) = 0 при x→∞ |
+| `deriv_digamma_eq_trigamma` | ⚠️ assumed | ψ'(z) = ψ₁(z) (нет доказательства в репо) |
+
+### TARGET LEMMAS (correct sign):
+| Лемма | Статус | Описание |
+|-------|--------|----------|
+| `deriv_a_neg` | ✅ (conditional) | a'(ξ) < 0 для ξ > 0 |
+| `strictAntiOn_a` | ✅ (conditional) | a строго убывает на (0,∞) |
+
+**Доказательство (правильный знак):**
+```
+deriv a ξ = π * Im(trigamma z)      -- deriv_a_eq (из определения a)
+         = π * (negative)           -- im_trigamma_neg
+         = negative                 -- ✅ deriv_a_neg
+
+strictAntiOn_of_deriv_neg + continuousOn_a + deriv_a_neg = strictAntiOn_a ✅
+```
+**Комментарий:** v11 fixed даёт правильный знак, но использует axiom `deriv_digamma_eq_trigamma`.
+**Блокеры:**
+1. `deriv_digamma_eq_trigamma` ещё не доказана (используется как axiom).
+
+---
+
+## ЭТАП 3: Numerical Bounds ⬚ TODO
+**Файл:** `A3_FLOOR_v5_bounds.lean`
+
+| Лемма | Статус | Описание |
+|-------|--------|----------|
+| `a_half_bound` | ⬚ | a(1/2) ≥ 0.68 |
+| `a_three_half_bound` | ⬚ | a(3/2) ≥ -0.45 |
+| `a_five_half_bound` | ⬚ | a(5/2) ≥ -1.00 |
+| `w_bounds` | ⬚ | Оценки w(1/2), w(1), w(2) |
+| `tail_bound` | ⬚ | Хвост T ≤ 10⁻⁵ |
+
+---
+
+## ЭТАП 4: FINAL THEOREM ⬚ TODO
+**Файл:** `A3_FLOOR_THEOREM.lean`
+
+| Теорема | Статус | Описание |
+|---------|--------|----------|
+| `P_A_ge_c_star` | ⬚ | P_A(θ) ≥ 11/10 ∀θ ∈ [-1/2, 1/2] |
+
+**Сборка:**
+```
+strictAntiOn_a + numerical_bounds + tail_bound
+    → g_bounds
+    → P_A = 2π Σ g(θ+m) ≥ c*
+    → A3 FLOOR PROVEN!
+```
+
+---
+
+## Зависимости
+
+```
+im_trigamma_neg ─────┐
+                     ├──→ deriv_a_neg ──→ strictAntiOn_a ──┐
+deriv_a_eq ──────────┘                                     │
+                                                           ├──→ P_A_ge_c_star
+continuousOn_a ────────────────────────────────────────────┤
+                                                           │
+numerical_bounds ──────────────────────────────────────────┘
+```
+
+---
+
+## История Aristotle
+
+| ID | Версия | Статус | Результат |
+|----|--------|--------|-----------|
+| f86d36da | v3 | ✅ COMPLETE | trigamma_foundations |
+| 73f35bb5 | v4 | ✅ COMPLETE | partial (digamma series) |
+| 5c9cbf80 | v5 | ✅ COMPLETE | partial (diff_digamma_trigamma) |
+| da9fe6a2 | v6 | ✅ COMPLETE | deriv_foundations (23KB!) |
+| 74219d5a | v7 | ⚠️ REPEAT | пере-доказал уже доказанные леммы |
+| 028f042c | v8 | ✅ COMPLETE | новые леммы (digammaSeq, deriv_digamma_add_one) |
+| be2b9846 | v9 | ⚠️ CONDITIONAL | opaque defs + missing deriv_digamma_eq_trigamma |
+| e81da2b4 | v11 | ✅ COMPLETE | hole fixed locally in `A3_FLOOR_v11_fixed.lean` |
+
+---
+
+## 🔥 ПРОГРЕСС
+
+| Этап | Статус | Файл |
+|------|--------|------|
+| Stage 1: Trigamma | ✅ DONE | v3 |
+| Stage 2: Monotonicity | ⚠️ CONDITIONAL | v11_fixed |
+| Stage 3: Bounds | ⬚ TODO | - |
+| Stage 4: Final | ⬚ TODO | - |
+
+**Следующий шаг:** Доказать `deriv_digamma_eq_trigamma`, затем Numerical bounds для a(1/2), a(3/2), a(5/2), w, tail
+
+---
+
+**Последнее обновление:** 2025-12-28
