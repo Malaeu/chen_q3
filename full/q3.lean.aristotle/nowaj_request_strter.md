@@ -131,3 +131,4 @@ taak. ok teper ispolzuem etu nowuju informaciu . potom hitaem /Users/emalam/Docu
 | /full/q3.lean.aristotle/PROSHKA_REQUEST_2.md                 | CREATE   |
 | /full/q3.lean.aristotle/PROOF_DOSSIER_V4.md                  | CREATE   |
 | ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌ |          |
+

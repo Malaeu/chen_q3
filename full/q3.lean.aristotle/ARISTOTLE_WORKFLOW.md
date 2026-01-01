@@ -88,6 +88,7 @@ cd /Users/emalam/Documents/GitHub/chen_q3
 source .venv/bin/activate
 
 # Проверить статус всех проектов
+# NOTE: project_ids.txt живёт в aristotle_input/
 python ~/.claude/skills/aristotle/scripts/status.py
 
 # Отправить новый файл
@@ -148,13 +149,14 @@ theorem main_goal : ... := by sorry
 ```
 q3.lean.aristotle/
 ├── aristotle_input/           # Входные .md файлы
-│   ├── T0_NORMALIZATION.md
-│   ├── A1_DENSITY.md
-│   ├── A2_CONTINUITY.md
-│   ├── A3_FLOOR.md           # c_* = 1.5
-│   ├── RKHS_PRIME_CAP.md
-│   ├── T5_BRIDGE.md
-│   └── MAIN_POSITIVITY.md
+│   ├── A3_FLOOR_v3.md
+│   ├── A3_FLOOR_v6.md
+│   ├── A3_FLOOR_v8.md
+│   ├── A3_FLOOR_v9.md         # legacy, wrong sign
+│   ├── A3_FLOOR_v10.md        # correct sign, real defs
+│   ├── A3_FLOOR_v11.md        # next iteration (if needed)
+│   ├── Q3_FULL_BRIDGE.md
+│   └── PROSHKA_REQUEST_3.md   # specs/invariants
 │
 ├── aristotle_output/          # Результаты от Aristotle
 │   ├── T0_aristotle.lean
@@ -166,9 +168,18 @@ q3.lean.aristotle/
 │   ├── A3.lean
 │   └── ...
 │
-├── project_ids.txt            # UUID'ы проектов
+├── project_ids.txt            # UUID'ы проектов (mirror of aristotle_input/project_ids.txt)
 ├── ARISTOTLE_WORKFLOW.md      # Этот файл
 └── PROOF_MAP.md               # План модулей
+```
+
+Archive (legacy / old chain):
+```
+q3.lean.aristotle/archive/
+├── input/                     # Старые A3_FLOOR версии и legacy-запросы
+├── output/                    # Старые Aristotle результаты
+├── lean/                      # Старые цепочки A3_FLOOR (v3-v9 и т.п.)
+└── docs/                      # Черновые заметки
 ```
 
 ---
@@ -188,7 +199,7 @@ q3.lean.aristotle/
 
 1. **Один модуль = один фокус.** Не мешать A3 floor с RKHS cap.
 
-2. **Числа явно.** Вместо "существует c_*" писать "c_* := 1.5".
+2. **Числа явно.** Вместо "существует c_*" писать "c_* := 11/10".
 
 3. **Mathlib imports.** Aristotle знает Mathlib. Указывай какие леммы использовать.
 
@@ -198,20 +209,18 @@ q3.lean.aristotle/
 
 ---
 
-## Типичный workflow для Q3
+## Типичный workflow для Q3 (NEW_KERNEL)
 
 ```
-День 1:
-  ├── Submit A3_FLOOR.md (c_* = 1.5)
-  ├── Submit RKHS_CAP.md (ρ(t) bound)
-  └── Submit T0_NORM.md (definitions)
+Stage 1:
+  ├── A3_FLOOR_v3/v6/v8 (trigamma + deriv foundations)
+  └── Fix sign invariants from PROSHKA_REQUEST_3.md
 
-День 2:
-  ├── Check results
-  ├── Fix issues → V2
-  └── Submit T5_BRIDGE.md (uses A3 + RKHS as axioms)
+Stage 2:
+  ├── A3_FLOOR_v10 (deriv_digamma_eq_trigamma)
+  └── deriv_a_neg + strictAntiOn_a (correct sign)
 
-День 3:
-  ├── Final check
-  └── Submit MAIN_POSITIVITY.md (uses all as axioms)
+Stage 3:
+  ├── numerical bounds for a(1/2), a(3/2), a(5/2), w, tail
+  └── feed into A3 floor bound c_* = 11/10
 ```

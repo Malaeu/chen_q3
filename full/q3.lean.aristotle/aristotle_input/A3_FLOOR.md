@@ -53,11 +53,11 @@ theorem a_strict_mono : StrictAntiOn a (Ici 0) := by sorry
 **Proof outline:**
 
 The derivative of a(ξ) is:
-$$a'(\xi) = -\pi \cdot \text{Im}\,\psi'\left(\frac{1}{4} + i\pi\xi\right)$$
+$$a'(\xi) = \pi \cdot \text{Im}\,\psi'\left(\frac{1}{4} + i\pi\xi\right)$$
 
 where ψ' is the trigamma function. For z in the right half-plane (Re z > 0):
 - ψ'(z) = Σ_{n≥0} 1/(z+n)²
-- For z = 1/4 + iπξ with ξ > 0, Im(ψ'(z)) > 0
+- For z = 1/4 + iπξ with ξ > 0, Im(ψ'(z)) < 0
 
 Therefore a'(ξ) < 0 for all ξ > 0, so a is strictly decreasing.
 

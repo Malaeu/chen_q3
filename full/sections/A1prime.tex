@@ -88,11 +88,17 @@ and their even symmetrizations. Then $\mathcal C_K(t_0)=C^+_{\mathrm{even}}([-K,
 Let $f\in C^+_{\mathrm{even}}([-K,K])$ and $\varepsilon>0$. Choose a uniform grid with mesh $\delta>0$
 and hats $H_j(\xi):=\Lambda_\delta(\xi-\tau_j)$. By positive piecewise-linear interpolation,
 $h(\xi):=\sum_j f(\tau_j)H_j(\xi)$ satisfies $\|h-f\|_\infty<\varepsilon/3$ and $h\ge0$.
-Since $\rho_{t_0}(\xi)$ is positive and Lipschitz on $[-K,K]$, for $\delta$ small one has
-$\sup_{|u|\le\delta}\!|\rho_{t_0}(\xi+u)-\rho_{t_0}(\xi)|\le L_{t_0}\,\delta$. Set
+Since $\rho_{t_0}$ is positive and Lipschitz on $[-2K,2K]$, there is $L_{t_0}>0$ with
+$|\rho_{t_0}(x)-\rho_{t_0}(y)|\le L_{t_0}|x-y|$ for $x,y\in[-2K,2K]$. Set
 $g(\xi):=\sum_j c_j\,\Phi_{\delta,t_0,\tau_j}(\xi)$ with $c_j:=f(\tau_j)/\rho_{t_0}(\tau_j)$.
-Then $g(\xi)=\rho_{t_0}(\xi)\sum_j c_j\Lambda_\delta(\xi-\tau_j)+\mathcal O(L_{t_0}\,\delta)$,
-hence $\|g-h\|_\infty\le(L_{t_0}\,\delta)\,\|c\|_{\ell^1}$; choosing $\delta$ small gives
-$\|g-f\|_\infty<\varepsilon$. Evenization preserves nonnegativity. Taking the conoid-closure
+Then for $|\xi|\le K$,
+\[
+g(\xi)-h(\xi)=\sum_j c_j\,\Lambda_\delta(\xi-\tau_j)\bigl(\rho_{t_0}(\xi-\tau_j)-\rho_{t_0}(\tau_j)\bigr),
+\]
+and therefore
+\[
+|g(\xi)-h(\xi)|\le L_{t_0}\,\delta\sum_j |c_j|\,\Lambda_\delta(\xi-\tau_j)\le L_{t_0}\,\delta\,\|c\|_{\ell^1}.
+\]
+Choosing $\delta$ small gives $\|g-f\|_\infty<\varepsilon$. Evenization preserves nonnegativity. Taking the conoid-closure
 yields the claim.
 \end{proof}

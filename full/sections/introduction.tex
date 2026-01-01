@@ -1,7 +1,7 @@
 \section{Introduction}\label{sec:intro}
 
 \subsection*{Background and motivation}
-We prove that a canonical quadratic form on the Weil test class is nonnegative, and therefore\textemdash{}by the Weil criterion\textemdash{}deduce the Riemann Hypothesis. The entire argument is analytic: every bound is established on paper from explicit inequalities, the parameters are given in closed form, and the uniform bridge avoids K-dependent schedules. No numerical tables or automated certificates enter the main proof.
+We establish that a canonical quadratic form on the Weil test class is nonnegative under the analytic module stack \textup{(T0)}+\textup{(A1$'$)}+\textup{(A2)}+\textup{(A3)}+\textup{(RKHS)}; by the Weil criterion this suffices to deduce the Riemann Hypothesis. The entire argument is analytic: every bound is established on paper from explicit inequalities, the parameters are given in closed form, and the uniform bridge avoids K-dependent schedules. No numerical tables or automated certificates enter the main proof.
 
 \subsection*{Main result}
 \begin{theorem}[Main result, informal]\label{thm:intro-main-informal}
@@ -98,9 +98,7 @@ We write $\Lambda$ for the von Mangoldt function, $\xi_n=\frac{\log n}{2\pi}$ fo
 
 \noindent\textbf{Assumption stack.} When we write ``under $(\mathrm{T0})+(\mathrm{A1'})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{RKHS})$'' we mean precisely the data enumerated above: a fixed normalization, cone density, Lipschitz control, the mixed Toeplitz lower bound, and the uniform RKHS cap. Legacy K-dependent chains are archived and not used in the main proof.
 
-\noindent\textbf{Verification aids.} Appendices~\ref{app:a3-repro} and~\ref{app:verification} archive legacy JSON files, ATP logs, and numerical cross-checks that originally motivated parameter choices. These artefacts are reproducibility collateral only and are not used as premises. Appendix~\ref{app:digamma-computation} now records an analytic framework and optional numerical exploration; the main chain uses only the explicit analytic inequalities stated in the body. Appendix~\ref{app:a3-repro} collates the archived inputs in a single summary table for ease of audit.
-
-\smallskip\noindent\textbf{Clarification on ``no tables''.} The phrase ``no numerical tables or automated certificates enter the proof'' refers to the \emph{legacy} JSON/ATP artifacts and optional numerical appendices: they remain provenance-only and do not appear as premises in any theorem. All bounds invoked in the main chain are proved in-line from explicit analytic estimates.
+\noindent\textbf{Verification aids.} Appendix~\ref{app:verification} records reproducibility collateral; Appendix~\ref{app:digamma-computation} records an analytic framework and optional numerical exploration. These materials are not used as premises in any theorem. All bounds invoked in the main chain are proved in-line from explicit analytic estimates.
 
 \subsection{Contemporary Context and Inspiration}
 

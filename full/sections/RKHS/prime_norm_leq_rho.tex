@@ -48,6 +48,10 @@ Fix a compact interval $[-K,K]$. The even--symmetrized prime sampling operator $
 where the last inequality is Lemma~\ref{pm:lem:sum-to-rho}.
 \end{proposition}
 
+\begin{proof}
+Since $T_P^{\mathrm{sym}}$ is positive and of finite rank, its nonzero spectrum consists of finitely many eigenvalues $\lambda_j\ge 0$. The operator norm is $\|T_P^{\mathrm{sym}}\|=\max_j \lambda_j$ and the trace is $\operatorname{Tr} T_P^{\mathrm{sym}}=\sum_j \lambda_j$, so $\|T_P^{\mathrm{sym}}\|\le \operatorname{Tr} T_P^{\mathrm{sym}}$. The final bound by $\rho(t)$ is Lemma~\ref{pm:lem:sum-to-rho}.
+\end{proof}
+
 \begin{lemma}[Trace cap with explicit remainder via $\operatorname{erfc}$]\label{pm:lem:trace-cap-erfc}
 Let $t>0$, set $a:=4\pi^2 t$ and $b:=\tfrac12$, and introduce $\widetilde{\mu}:=\frac{1}{2a}$. For $z_0\in\RR$ define
 \begin{equation}\label{eq:Prime_norm_leq_rho-formula}

@@ -55,8 +55,8 @@ theorem a_strict_mono : StrictAntiOn a (Set.Ici 0) := by sorry
 
 **Proof outline:**
 The derivative satisfies:
-$$a'(\xi) = -\pi \cdot \text{Im}\, \psi'\left(\frac{1}{4} + i\pi\xi\right) < 0$$
-for $\xi > 0$, using the trigamma positivity on the right half-plane.
+$$a'(\xi) = \pi \cdot \text{Im}\, \psi'\left(\frac{1}{4} + i\pi\xi\right) < 0$$
+for $\xi > 0$, using $\Im \psi'(z) < 0$ on the right half-plane.
 
 ---
 
