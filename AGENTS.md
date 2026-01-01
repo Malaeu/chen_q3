@@ -1,3 +1,4 @@
+Project workflow: `full/q3.lean.aristotle/PROJECT_WORKFLOW.md`
 Aristotle workflow and scripts: `~/.claude/skills/aristotle/`
 
 Aristotle integration rules (project workflow):

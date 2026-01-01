@@ -1,12 +1,41 @@
-# Aristotle Workflow для Q3
+# Project Workflow for Q3
 
-## Принцип работы
+This file is the main project workflow; Aristotle is only one tool in the loop.
+
+## Aristotle Integration: Principles
 
 Aristotle берёт **informal математику** (markdown с LaTeX) и генерирует **Lean 4 код**.
 
 **Ключевое правило:** НЕ ссылаться на номера лемм/теорем из LaTeX файлов!
 Aristotle не знает про `lem:uniform-arch-floor` или `Theorem 8.17'`.
 Нужно давать **полные формулировки** в самом .md файле.
+
+---
+
+## Project Workflow (Decision Loop)
+
+This is the full project loop; Aristotle is only one tool in it.
+
+1. Read the current status:
+   - `PROOF_MAP_NEW_KERNEL.md`
+   - `A3_FLOOR_ROADMAP.md`
+2. Pick the next lemma or step to close.
+3. Decide: manual proof vs Aristotle.
+   - If short/standard and local, prefer manual.
+   - If long/tactical or needs many sublemmas, send to Aristotle.
+4. If sending to Aristotle:
+   - Prepare the input file, submit it, and keep working in parallel.
+   - Try to close the lemma manually while Aristotle runs.
+5. When a lemma is closed:
+   - Check the lemma file in Lean (`lake env lean <file>`).
+   - Integrate into the main Lean project and recheck compile.
+6. Record the result:
+   - Re-import into DB (`aristotle_db/parse_lean.py`).
+   - Update `PROOF_MAP_NEW_KERNEL.md` (status + file link).
+   - Update `A3_FLOOR_ROADMAP.md` (advance the active step).
+   - If specs changed, update `PROSHKA_REQUEST_3.md` and DB.
+
+This loop repeats until the roadmap is complete.
 
 ---
 
@@ -169,9 +198,39 @@ q3.lean.aristotle/
 │   └── ...
 │
 ├── project_ids.txt            # UUID'ы проектов (mirror of aristotle_input/project_ids.txt)
-├── ARISTOTLE_WORKFLOW.md      # Этот файл
+├── PROJECT_WORKFLOW.md        # Этот файл
 └── PROOF_MAP.md               # План модулей
 ```
+
+---
+
+## Трекинг статуса (обязательный шаг)
+
+После закрытия леммы/модуля **всегда** обновляем три источника статуса:
+
+1. **DB (канонический источник):**
+   - `aristotle_db/parse_lean.py import ...` для новых/изменённых файлов.
+2. **PROOF_MAP_NEW_KERNEL.md (карта доказательств):**
+   - отметить леммы как `proven/in_progress/todo`;
+   - проставить ссылки на файлы и версии.
+3. **A3_FLOOR_ROADMAP.md (пошаговый план):**
+   - закрыть завершённый этап;
+   - обозначить следующий активный шаг.
+
+Если меняются инварианты/спеки — обновить `PROSHKA_REQUEST_3.md`
+и заново занести спецификации в DB.
+
+---
+
+## Разница между ROADMAP и PROOF_MAP
+
+- **A3_FLOOR_ROADMAP.md** — последовательность шагов (stage-план),
+  отвечает на вопрос **"что делаем дальше"**.
+- **PROOF_MAP_NEW_KERNEL.md** — карта доказательств и статусов лемм,
+  отвечает на вопрос **"что уже закрыто и в каких файлах"**.
+
+DB `aristotle_proofs.db` — источник истины по леммам и статусам,
+а ROADMAP/PROOF_MAP — человеческие summaries.
 
 Archive (legacy / old chain):
 ```

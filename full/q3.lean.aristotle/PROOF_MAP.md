@@ -320,6 +320,6 @@ Round 3:
 
 ### Связанные файлы
 
-- **Workflow:** `ARISTOTLE_WORKFLOW.md`
+- **Workflow:** `PROJECT_WORKFLOW.md`
 - **LaTeX c_*=1.5:** `../sections/A3/symbol_floor.tex`
 - **Previous result:** `dbfa2c26_aristotle.lean` (definitions)
