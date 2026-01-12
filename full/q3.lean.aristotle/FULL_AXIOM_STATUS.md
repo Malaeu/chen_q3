@@ -1,6 +1,9 @@
 # FULL AXIOM & PROOF STATUS
 
-**Updated: 2025-12-18 — ALL ARISTOTLE TASKS COMPLETE!**
+**Deprecated snapshot:** this file is historical and may be stale.  
+Use `PROOF_MAP_NEW_KERNEL.md`, `PROJECT_ASCII.md`, and `Q3/AxiomsTheorems.lean` for current status.
+
+**Updated: 2025-12-18 — historical snapshot (do not use for current status).**
 
 ## Lean Axioms (19 total in Axioms.lean)
 
@@ -99,7 +102,7 @@ These lemmas are **INTERNAL to the A3 proof**. They strengthen the A3 bridge but
 
 ---
 
-## COMPLETION STATUS: 100%
+## COMPLETION STATUS (historical snapshot)
 
 ### What's Done:
 - ✅ ALL 19 Lean axioms closed

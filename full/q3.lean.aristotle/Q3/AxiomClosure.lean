@@ -2,13 +2,13 @@
 Q3 Axiom Closure Module
 =======================
 
-This module provides theorem versions of Tier-2 axioms, proven using
-Aristotle-generated proofs adapted to Q3 definitions.
+This module provides theorem versions of Tier-2 axioms, intended to be
+closed by Aristotle-generated proofs adapted to Q3 definitions.
 
 STATUS:
-- Mathematical proofs: ✅ Complete (Aristotle)
-- Lean compilation: ✅ All files compile with 0 errors
-- Axiom closure: ✅ Theorems proven below close the axiom dependencies
+- These theorems currently discharge via axioms from `Q3.Axioms`.
+- Integrated proofs live under `Q3/Proofs` and `Q3.AxiomsTheorems`.
+- Treat this file as a placeholder until all bridges are integrated.
 
 COORDINATE SYSTEMS:
 - Q3 uses xi_n(n) = log(n)/(2π)

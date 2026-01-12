@@ -2,20 +2,13 @@
 Q3 Axiom Closure Theorems
 =========================
 
-This file contains PROVEN theorems that close Tier-2 axioms.
-Each theorem references Q3 definitions and Aristotle proofs.
+This file contains theorem wrappers for Tier-2 axioms.
+Each theorem references Q3 definitions and Aristotle proof sources.
 
 STATUS:
-- node_spacing_integrated.lean: ✅ Compiles (0 errors)
-- off_diag_exp_sum_integrated.lean: ✅ Compiles (0 errors)
-- S_K_small_integrated.lean: ✅ Compiles (0 errors)
-- RKHS_contraction_integrated.lean: ✅ Compiles (0 errors)
-- W_sum_finite_integrated.lean: ⚠️ Has issues
-
-INTEGRATION SUMMARY:
-- Definitions match between Aristotle and Q3 for most files
-- RKHS_contraction uses different coordinates (ξ = log n vs xi_n = log n/(2π))
-- Bridge lemmas in Q3/Proofs/Bridge.lean handle coordinate rescaling
+- These theorems currently discharge via axioms from `Q3.Axioms`.
+- Integrated proofs live under `Q3/Proofs` and `Q3.AxiomsTheorems`.
+- Treat this file as a placeholder until all bridges are integrated.
 -/
 
 import Q3.Axioms
