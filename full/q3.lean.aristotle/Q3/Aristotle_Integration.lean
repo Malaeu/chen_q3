@@ -4,7 +4,8 @@ Q3 Formalization: Aristotle Proofs Integration
 
 This file documents the integration of Aristotle-generated proofs with Q3.
 
-**Status: 2025-12-18 — ALL PROOFS COMPLETE!**
+**Status: 2025-12-18 — historical snapshot (may be stale).**
+Use `PROOF_MAP_NEW_KERNEL.md` and `PROJECT_ASCII.md` for current status.
 
 ## Aristotle Output Files (8 new proofs)
 

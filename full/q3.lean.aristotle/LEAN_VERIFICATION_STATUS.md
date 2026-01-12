@@ -1,9 +1,12 @@
 # Q3 Lean Verification Status
 
+**Deprecated snapshot:** may be stale.  
+Use `PROOF_MAP_NEW_KERNEL.md` and `PROJECT_ASCII.md` for current status.
+
 **Date:** 2025-12-17
 **Build Status:** ✅ SUCCESS (7352 jobs)
 **Sorry Count:** 0
-**Tier-2 Axioms:** 10/10 PROVEN ✅
+**Tier-2 Axioms:** historical snapshot
 
 ## Overview
 
