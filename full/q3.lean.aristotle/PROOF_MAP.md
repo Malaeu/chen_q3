@@ -1,8 +1,8 @@
 # Q3 → RH PROOF MAP: Paper ↔ Lean
 
 **Generated:** 2025-12-22
-**Status:** Clean Chain Complete
-**Sorries:** 8 (all in classical analysis helpers)
+**Status:** Deprecated snapshot (may be stale)
+**Use:** `PROOF_MAP_NEW_KERNEL.md` and `PROJECT_ASCII.md` for current status.
 
 ---
 
