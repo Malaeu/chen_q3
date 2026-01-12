@@ -94,7 +94,8 @@ theorem off_diag_exp_sum : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0),
 /-! ## AXIOM FALLBACK (5/9) - Pending complex bridges -/
 
 /-- A1' Density: Fejér×heat atoms dense in W_K
-    STATUS: Needs bridge (exact? holes + AtomCone mismatch) -/
+    STATUS: Blocked by AtomCone/W_K support mismatch (atoms with large B have
+    support outside [-K,K], but AtomCone_K requires g ∈ W_K). -/
 theorem A1_density_WK : ∀ (K : ℝ) (hK : K > 0),
     ∀ Φ ∈ Q3.W_K K, ∀ ε > 0,
       ∃ g ∈ Q3.AtomCone_K K,

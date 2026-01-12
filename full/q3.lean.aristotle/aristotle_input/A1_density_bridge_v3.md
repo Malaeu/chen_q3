@@ -16,6 +16,8 @@ noncomputable def real_convolution (f g : ℝ → ℝ) (x : ℝ) : ℝ := ∫ y,
 
 -- Use Q3 definitions for kernels/atoms
 noncomputable def HeatKernel (t : ℝ) (x : ℝ) : ℝ := Q3.heat_kernel_A1 t x
+noncomputable def FejerHeatKernel (B t : ℝ) (x : ℝ) : ℝ :=
+  Q3.Fejer_kernel B x * Q3.heat_kernel_A1 t x
 noncomputable def Atom (B t τ : ℝ) (x : ℝ) : ℝ := Q3.Fejer_heat_atom B t τ x
 
 -- Helper lemmas already proven in Q3/Proofs/A1_density.lean
@@ -24,13 +26,13 @@ axiom exists_compact_extension (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ)
   ∃ Ψ : ℝ → ℝ, Continuous Ψ ∧ HasCompactSupport Ψ ∧
     ∀ x ∈ Set.Icc (-K) K, Ψ x = Φ x
 
-axiom HeatKernel_approx_identity_uniform (f : ℝ → ℝ)
-  (hf_cont : Continuous f) (hf_supp : HasCompactSupport f)
+axiom FejerHeatKernel_approx_identity_uniform (B : ℝ) (hB : B > 0)
+  (f : ℝ → ℝ) (hf_cont : Continuous f) (hf_supp : HasCompactSupport f)
   (ε : ℝ) (hε : ε > 0) :
   ∃ t₀ > 0, ∀ t ∈ Set.Ioo 0 t₀, ∀ x,
-    |real_convolution f (HeatKernel t) x - f x| < ε
+    |real_convolution f (FejerHeatKernel B t) x - f x| < ε
 
-axiom convolution_approx_by_sum (K : ℝ) (hK : K > 0)
+axiom convolution_approx_by_sum_fejer (K : ℝ) (hK : K > 0) (B : ℝ) (hB : B > 0)
   (f : ℝ → ℝ) (hf_cont : ContinuousOn f (Set.Icc (-K) K))
   (hf_supp : Function.support f ⊆ Set.Icc (-K) K)
   (hf_nonneg : ∀ x, 0 ≤ f x) (t : ℝ) (ht : t > 0)
@@ -38,15 +40,7 @@ axiom convolution_approx_by_sum (K : ℝ) (hK : K > 0)
   ∃ (s : Finset ℝ) (w : ℝ → ℝ),
     (∀ y ∈ s, w y ≥ 0) ∧ (∀ y ∈ s, y ∈ Set.Icc (-K) K) ∧
     ∀ x ∈ Set.Icc (-K) K,
-      |real_convolution f (HeatKernel t) x - ∑ y ∈ s, w y * HeatKernel t (x - y)| < ε
-
-axiom fejer_sum_approx (K : ℝ) (hK : K > 0) (t : ℝ) (ht : t > 0)
-  (s : Finset ℝ) (w : ℝ → ℝ) (hw_nonneg : ∀ y ∈ s, w y ≥ 0)
-  (hs_subset : ∀ y ∈ s, y ∈ Set.Icc (-K) K) (ε : ℝ) (hε : ε > 0) :
-  ∃ B > 0, ∀ x ∈ Set.Icc (-K) K,
-    |∑ y ∈ s, w y * Atom B t y x -
-      (∑ y ∈ s, w y * HeatKernel t (x - y) +
-       ∑ y ∈ s, w y * HeatKernel t (x + y))| < ε
+      |real_convolution f (FejerHeatKernel B t) x - ∑ y ∈ s, w y * FejerHeatKernel B t (x - y)| < ε
 
 axiom sum_atoms_in_cone (K : ℝ) (hK : K > 0) (s : Finset ℝ) (w : ℝ → ℝ)
   (hw : ∀ y ∈ s, 0 ≤ w y) (B : ℝ) (hB : B > 0) (hBK : B ≤ K)
@@ -72,10 +66,10 @@ theorem A1_density_WK_thm (K : ℝ) (hK : K > 0) :
 
 1. From `Φ ∈ W_K K`, extract continuity on `Icc`, support ⊆ `Icc`, evenness, nonneg.
 2. Use `exists_compact_extension` to get `Ψ` continuous on ℝ with compact support and `Ψ=Φ` on `Icc`.
-3. Use `HeatKernel_approx_identity_uniform` with `ε/3` to choose `t>0` so convolution approximates `Ψ` uniformly.
-4. Use `convolution_approx_by_sum` with `ε/3` to approximate convolution by a finite sum over `s` with weights `w ≥ 0`.
-5. Use `fejer_sum_approx` with `ε/3` to approximate the heat kernel sum by a sum of atoms.
-6. Let `g(x) = ∑ y ∈ s, w y * Atom B t y x`. Show `g ∈ AtomCone_K K` using `sum_atoms_in_cone` (continuity, support, evenness, nonneg are straightforward for sums of atoms).
-7. Combine the three `ε/3` bounds (triangle inequality) to obtain the final `sSup` bound on `Icc`.
+3. Fix `B := K` (so `B ≤ K`). Use `FejerHeatKernel_approx_identity_uniform` with `ε/3` to choose `t>0` so convolution with `FejerHeatKernel B t` approximates `Ψ` uniformly.
+4. Use `convolution_approx_by_sum_fejer` with `ε/3` to approximate that convolution by a finite sum over `s` with weights `w ≥ 0`.
+5. Let `g(x) = ∑ y ∈ s, w y * (FejerHeatKernel B t (x - y) + FejerHeatKernel B t (x + y))`. Then `g = ∑ y ∈ s, w y * Atom B t y x`.
+6. Show `g ∈ AtomCone_K K` using `sum_atoms_in_cone` (continuity, support, evenness, nonneg are straightforward for sums of atoms; use `B ≤ K`).
+7. Combine the `ε/3` bounds (triangle inequality) to obtain the final `sSup` bound on `Icc`.
 
 Important: keep the proof in Lean, no `sorry`/`exact?`.
