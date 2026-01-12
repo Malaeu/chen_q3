@@ -1,5 +1,8 @@
 # Q3 → RH Lean Formalization Status
 
+**Deprecated snapshot:** may be stale.  
+Use `PROOF_MAP_NEW_KERNEL.md` and `PROJECT_ASCII.md` for current status.
+
 **Last Updated:** 2025-12-16
 **Project:** q3.lean.aristotle
 **Goal:** Formalize Riemann Hypothesis proof via Weil criterion

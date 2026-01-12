@@ -1,5 +1,8 @@
 # COMPLETE BRIDGE AUDIT
 
+**Deprecated snapshot:** may be stale.  
+Use `PROOF_MAP_NEW_KERNEL.md` and `PROJECT_ASCII.md` for current status.
+
 **Date:** 2025-12-20
 **Source:** Deep analysis of all Aristotle proof files vs Q3 axioms
 
