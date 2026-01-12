@@ -2,9 +2,9 @@
 Tier-2 Axiom Verification
 =========================
 
-This file DOCUMENTS that all Tier-2 axioms have CLEAN standalone proofs.
-The axioms remain in Q3.Axioms for architectural reasons, but this file
-demonstrates they are mathematically justified (not circular).
+This file documents a historical verification pass for Tier-2 axioms.
+It may be stale; use `PROOF_MAP_NEW_KERNEL.md` and `PROJECT_ASCII.md`
+for current integration status.
 
 VERIFIED 2025-12-20:
 All 9 Tier-2 axioms have standalone proofs depending ONLY on standard
