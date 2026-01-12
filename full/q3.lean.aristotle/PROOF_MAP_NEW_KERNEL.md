@@ -18,7 +18,7 @@ Method: Digamma/Trigamma analysis
 
 Chain: im_trigamma_neg → deriv_a_neg → strictAntiOn_a → bounds → P_A
 
-Status: STAGE 2/4 (Monotonicity, conditional)
+Status: STAGE 4/4 DONE (A3_FLOOR proven)
 ═══════════════════════════════════════════════════════════════
 ```
 
@@ -59,16 +59,11 @@ Status: STAGE 2/4 (Monotonicity, conditional)
 
 ---
 
-## STAGE 2: Monotonicity ⏳ IN PROGRESS
+## STAGE 2: Monotonicity ✅ DONE
 
 **Files:**
-- `A3_FLOOR_v6_deriv_foundations.lean` (23KB)
-- `A3_FLOOR_v7_repeat.lean` (16KB)
-- `A3_FLOOR_v8_monotonicity.lean` (15KB)
-- `A3_FLOOR_v11_fixed.lean` (local, lake-checked)
-
-**Current Working File:** `A3_FLOOR_v11_fixed.lean` ← **conditional (axioms for deriv_digamma_eq_trigamma)**
-**Aristotle IDs:** v9 be2b9846 (opaque defs, wrong sign), v11 e81da2b4 (one hole, fixed locally)
+- `A3_FLOOR_v19_monotonicity.lean` (full proof, no axioms)
+- `A3_FLOOR_v16_deriv_digamma_eq_trigamma.lean` (core lemma)
 
 ### Proven Lemmas:
 
@@ -87,12 +82,8 @@ Status: STAGE 2/4 (Monotonicity, conditional)
 
 | Lemma | Status | Why Needed | DB Priority |
 |-------|--------|------------|-------------|
-| `deriv_a_neg` | ✅ (conditional) | correct sign: a'(ξ) < 0 for ξ > 0 | **CRITICAL** |
-| `strictAntiOn_a` | ✅ (conditional) | a strictly decreasing on (0,∞) | **CRITICAL** |
-
-**Blocking issues (must resolve before Stage 2 is complete):**
-1. `deriv_digamma_eq_trigamma` is still assumed (axiom) in `A3_FLOOR_v11_fixed.lean`.
-2. Replace axiom with a proven lemma (likely from a focused Aristotle run).
+| `deriv_a_neg` | ✅ | correct sign: a'(ξ) < 0 for ξ > 0 | **CRITICAL** |
+| `strictAntiOn_a` | ✅ | a strictly decreasing on (0,∞) | **CRITICAL** |
 
 ### Proof Chain:
 ```
@@ -102,27 +93,30 @@ deriv_a_neg + continuousOn_a → strictAntiOn_a
 
 ---
 
-## STAGE 3: Numerical Bounds ⬚ TODO
+## STAGE 3: Numerical Bounds ✅ DONE
 
-**File:** `A3_FLOOR_bounds.lean` (to be created)
+**File:** `A3_FLOOR_v20_bounds_core.lean`
 
 | Lemma | Status | Value | DB Priority |
 |-------|--------|-------|-------------|
-| `a_half_bound` | ⬚ | a(1/2) ≥ 0.68 | **HIGH** |
-| `a_three_half_bound` | ⬚ | a(3/2) ≥ -0.45 | **HIGH** |
-| `a_five_half_bound` | ⬚ | a(5/2) ≥ -1.00 | **HIGH** |
-| `w_bounds` | ⬚ | w(1/2), w(1), w(2) | **HIGH** |
-| `tail_bound` | ⬚ | Tail T ≤ 10⁻⁵ | **HIGH** |
+| `a_half_bound` | ✅ | a(1/2) ≥ 5/8 | **HIGH** |
+| `a_three_half_bound` | ✅ | a(3/2) ≥ -1/2 | **HIGH** |
+| `a_five_half_bound` | ✅ | a(5/2) ≥ -21/20 | **HIGH** |
+| `a_one_bound` | ✅ | a(1) ≥ -1/50 | **HIGH** |
+| `a_two_bound` | ✅ | a(2) ≥ -2 | **HIGH** |
+| `a_three_bound` | ✅ | a(3) ≥ -3 | **HIGH** |
+| `w_bounds` | ✅ | w(1/2), w(1), w(3/2), w(2) | **HIGH** |
+| `tail_bound` | ✅ | Tail = 0 (support of w, |ξ|>3) | **HIGH** |
 
 ---
 
-## STAGE 4: Final Theorem ⬚ TODO
+## STAGE 4: Final Theorem ✅ DONE
 
-**File:** `A3_FLOOR_THEOREM.lean` (to be created)
+**File:** `A3_FLOOR_v22_stage4_floor.lean`
 
 | Theorem | Status | Description | DB Priority |
 |---------|--------|-------------|-------------|
-| `P_A_ge_c_star` | ⬚ | P_A(θ) ≥ 11/10 ∀θ | **CRITICAL** |
+| `P_A_ge_c_star` | ✅ | P_A(θ) ≥ 11/10 ∀θ | **CRITICAL** |
 
 ### Assembly:
 ```
@@ -141,9 +135,10 @@ strictAntiOn_a + numerical_bounds + tail_bound
 These files contain **essential lemmas** for the new kernel:
 
 1. `A3_FLOOR_v3_trigamma_foundations.lean` ← Stage 1
-2. `A3_FLOOR_v6_deriv_foundations.lean` ← Stage 2
-3. `A3_FLOOR_v8_monotonicity.lean` ← Stage 2 (new lemmas)
-4. `A3_FLOOR_COMBINED.lean` (if exists)
+2. `A3_FLOOR_v16_deriv_digamma_eq_trigamma.lean` ← Stage 2
+3. `A3_FLOOR_v19_monotonicity.lean` ← Stage 2
+4. `A3_FLOOR_v20_bounds_core.lean` ← Stage 3
+5. `A3_FLOOR_v22_stage4_floor.lean` ← Stage 4
 
 ### MEDIUM PRIORITY (Import Second)
 
@@ -231,7 +226,7 @@ python ~/.claude/skills/aristotle/scripts/status.py be2b9846
           │                    │                    │
 ┌─────────▼─────────┐ ┌────────▼────────┐ ┌────────▼────────┐
 │  strictAntiOn_a   │ │ numerical_bounds│ │   tail_bound    │
-│  (a decreasing)   │ │  (a values)     │ │   (T ≤ 10⁻⁵)    │
+│  (a decreasing)   │ │  (a values)     │ │ (T=0 by support)│
 └─────────┬─────────┘ └────────┬────────┘ └────────┬────────┘
           │                    │                    │
           └────────────────────┼────────────────────┘
@@ -244,11 +239,11 @@ python ~/.claude/skills/aristotle/scripts/status.py be2b9846
 
 ---
 
-**Last Updated:** 2025-12-28
-**Next Action:** Prove `deriv_digamma_eq_trigamma` (remove axiom), then proceed to Stage 3
+**Last Updated:** 2026-01-12
+**Next Action:** интеграция A3_FLOOR в основной chain и зачистка устаревших заметок.
 
 <!-- AUTO-STATUS:BEGIN -->
-Auto status (DB snapshot): 2026-01-12 17:53
+Auto status (DB snapshot): 2026-01-12 18:54
 
 Doc status (A3_FLOOR + Q3_DigammaRemainder):
 | doc_id | status | lines |
@@ -257,14 +252,14 @@ Doc status (A3_FLOOR + Q3_DigammaRemainder):
 | A3_FLOOR_v6 | proven | 313 |
 | A3_FLOOR_v8 | proven | 291 |
 | A3_FLOOR_v16 | proven | 329 |
-| A3_FLOOR_v19 | missing | 0 |
+| A3_FLOOR_v19 | proven | 505 |
 | A3_FLOOR_v20_core | proven | 853 |
 | A3_FLOOR_v20_manual | missing | 0 |
 | A3_FLOOR_v21_manual | missing | 0 |
 | A3_FLOOR_v22_stage4 | proven | 879 |
 | A3_FLOOR_THEOREM | missing | 0 |
-| Q3_DigammaRemainder | missing | 0 |
+| Q3_DigammaRemainder | proven | 2084 |
 
-Counts: missing=5, proven=6
+Counts: missing=3, proven=8
 Generated by scripts/update_status.py
 <!-- AUTO-STATUS:END -->
