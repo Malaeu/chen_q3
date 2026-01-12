@@ -127,7 +127,7 @@ numerical_bounds ─────────────────────
 **Последнее обновление:** 2026-01-12
 
 <!-- AUTO-STATUS:BEGIN -->
-Auto status (DB snapshot): 2026-01-12 19:23
+Auto status (DB snapshot): 2026-01-12 19:48
 
 Doc status (A3_FLOOR + Q3_DigammaRemainder):
 | doc_id | status | lines |
