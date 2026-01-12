@@ -1,5 +1,8 @@
 # Aristotle Task Tracker
 
+**Note:** historical snapshot of Aristotle project statuses (not integration status).  
+Use `PROOF_MAP_NEW_KERNEL.md` and `PROJECT_ASCII.md` for current status.
+
 ## Status: 2025-12-18 — ALL COMPLETE! 🔥
 
 ### A1 Density
