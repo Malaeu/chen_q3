@@ -59,7 +59,7 @@ These are re-exported from Q3.Axioms
 /-!
 # TIER-2: Q3 PAPER CONTRIBUTIONS
 
-## Status (2025-12-20):
+## Status (2026-01-12):
 - 3 PROVEN via self-contained bridges: node_spacing, S_K_small, W_sum_finite
 - 1 BLOCKED (namespace conflicts): off_diag_exp_sum
 - 5 AXIOM fallback (complex bridges pending): A1_density, RKHS, Q_Lipschitz, A3, Q_nonneg
@@ -128,7 +128,7 @@ theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1),
 end Q3.Theorems
 
 /-!
-# Summary (2025-12-20 Session)
+# Summary (2026-01-12 Session)
 
 ## Tier-1 axioms (8): Remain as axioms in Q3.Axioms
 - Weil_criterion, explicit_formula, a_star_pos

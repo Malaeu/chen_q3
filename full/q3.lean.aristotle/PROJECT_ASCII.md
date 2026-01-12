@@ -36,7 +36,7 @@ RH
                 |
                 +-- node_spacing [OK*]
                 +-- off_diag_exp_sum [AX]
-                +-- S_K_small [AX]
+                +-- S_K_small [OK*]
                 +-- T_P_row_sum_bound [OK*]
 
 ## A3_FLOOR Subdiagram
@@ -45,17 +45,13 @@ Q3 / A3_FLOOR (Lean)
 
 [Stage 1] Trigamma foundations ............... [OK]
 [Stage 2] Monotonicity ....................... [OK]
-[Stage 3] Numerical bounds ................... [OK*]
+[Stage 3] Numerical bounds ................... [OK]
    +-- w_bounds .............................. [OK]
-   +-- a(1/2), a(3/2), a(5/2) ................. [OK*] (uses DLMF remainder axiom)
-   +-- tail_bound (gaussian + |a| tail) ....... [OK*]
-[Stage 4] Final assembly ..................... [OK*]
-   +-- g_bounds ............................... [OK*]
-   +-- P_A_ge_c_star (P_A >= 11/10) ........... [OK*]
-
-Current gap in A3_FLOOR:
-- DLMF remainder axiom still used in point bounds (`a_half_bound/a_three_half_bound/a_five_half_bound`)
-- rewrite those bounds via Stieltjes + shift (see `PROWKA_RESPONSE_3.md`)
+   +-- a(1/2), a(3/2), a(5/2) ................. [OK]
+   +-- tail_bound (gaussian + |a| tail) ....... [OK]
+[Stage 4] Final assembly ..................... [OK]
+   +-- g_bounds ............................... [OK]
+   +-- P_A_ge_c_star (P_A >= 11/10) ........... [OK]
 
 ## Axiom -> Closure Table
 
@@ -91,7 +87,7 @@ Tier-2 (Q3 contributions)
 | `Q_Lipschitz_on_W_K` | `Q3/Proofs/Q_Lipschitz.lean` (uses bridge axioms) | AX |
 | `RKHS_contraction_axiom` | `Q3/Proofs/RKHS_contraction_integrated.lean` (bridge/rescaling) | OK* |
 | `T_P_row_sum_bound_axiom` | `Q3/Proofs/RKHS_contraction.lean` | OK* |
-| `S_K_small_axiom` | `Q3/Proofs/S_K_small_integrated.lean` | AX |
+| `S_K_small_axiom` | `Q3/Proofs/S_K_small_integrated.lean` | OK* |
 | `node_spacing_axiom` | `Q3/Proofs/node_spacing_integrated.lean` | OK* |
 | `off_diag_exp_sum_axiom` | `Q3/Proofs/off_diag_exp_sum_integrated.lean` | AX |
 | `A3_bridge_axiom` | `Q3/Proofs/A3_bridge.lean` / `Q3/Proofs/A3_bridge_integrated.lean` | AX |
@@ -101,6 +97,13 @@ Local (A3_FLOOR)
 | Axiom | Closure file(s) | Status |
 | --- | --- | --- |
 | (none) | (n/a) | OK |
+
+## Bridged (axiom-free in Q3.Theorems)
+
+These items are no longer axioms when using `Q3.AxiomsTheorems`:
+- `W_sum_finite_axiom`
+- `S_K_small_axiom`
+- `node_spacing_axiom`
 
 ## Still Strictly AX (main chain)
 
@@ -124,18 +127,15 @@ Tier-2 (Q3 contributions):
 - `Q_Lipschitz_on_W_K`
 - `RKHS_contraction_axiom`
 - `T_P_row_sum_bound_axiom`
-- `S_K_small_axiom`
-- `node_spacing_axiom`
 - `off_diag_exp_sum_axiom`
 - `A3_bridge_axiom`
 - `Q_nonneg_on_atoms_of_A3_RKHS_axiom`
-- `W_sum_finite_axiom` (proof exists, still axiom in main chain)
 
 Local (A3_FLOOR):
 - (none)
 
 <!-- AUTO-STATUS:BEGIN -->
-Auto status (DB snapshot): 2026-01-12 19:01
+Auto status (DB snapshot): 2026-01-12 19:23
 
 Doc status (A3_FLOOR + Q3_DigammaRemainder):
 | doc_id | status | lines |

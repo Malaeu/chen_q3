@@ -30,6 +30,7 @@ IMPORTS = [
     ("A3_FLOOR_THEOREM.lean", "A3_FLOOR_THEOREM", "NEW_KERNEL", "HIGH"),
     ("Q3/DigammaRemainder.lean", "Q3_DigammaRemainder", "NEW_KERNEL", "HIGH"),
     ("Q3/DigammaSeries.lean", "Q3_DigammaSeries", "NEW_KERNEL", "MEDIUM"),
+    ("Q3/AxiomsTheorems.lean", "Q3_AxiomsTheorems", "NEW_KERNEL", "LOW"),
 ]
 
 
