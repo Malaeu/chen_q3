@@ -21,10 +21,11 @@ Key axiom dependencies:
 - Tier-2: A1_density_WK_axiom, Q_Lipschitz_on_W_K, A3_bridge_axiom, RKHS_contraction_axiom,
           Q_nonneg_on_atoms_of_A3_RKHS_axiom
 - Atoms positivity is a THEOREM from A3 + RKHS; T5_transfer is a THEOREM from A1 + A2 + Atoms
+  (see Q3.AxiomsTheorems for theorem replacements where available)
 -/
 
 import Q3.Basic.Defs
-import Q3.Axioms
+import Q3.AxiomsTheorems
 import Q3.A1_Density
 import Q3.RKHS_Contraction
 import Q3.A3_Bridge

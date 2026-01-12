@@ -255,15 +255,7 @@ axiom A1_density_axiom : ∀ (K : ℝ) (hK : K > 0),
 The sum of weights over active nodes is finite.
 This is used in A2 Lipschitz to bound the prime_term difference.
 
-**STATUS: PROVEN BY ARISTOTLE** ✅
-- File: `Q3/Proofs/W_sum_finite.lean`
-- Theorem: `W_sum_is_finite`
-
-**PROOF STRUCTURE**:
-- ActiveNodes K = {n ≥ 2 : |ξ_n| ≤ K} is finite (bounded by ⌊e^{2πK}⌋)
-- Each w_Q(n) ≤ 2·w_max < 2
-- W_sum(K) = Σ_{n ∈ ActiveNodes} w_Q(n) ≤ (N_K + 1) · 2
-- The bound is K-dependent: B(K) ≤ N_K · 2√(2π)·K where N_K = ⌊e^{2πK}⌋
+**STATUS:** axiom here; see `Q3.AxiomsTheorems` for proven bridge.
 -/
 
 /-- Active prime nodes set (for axiom) -/
@@ -280,15 +272,7 @@ axiom W_sum_finite_axiom : ∀ (K : ℝ) (hK : K > 0), ∃ B, W_sum_axiom K ≤ 
 Q is Lipschitz on W_K with constant L_Q(K).
 This is essential for T5 transfer: Lipschitz + dense approximation → limit preservation.
 
-**STATUS: PROVEN BY ARISTOTLE** ✅
-- File: `Q3/Proofs/Q_Lipschitz.lean`
-- Theorem: `Q_Lipschitz_local`
-
-**PROOF STRUCTURE**:
-- L_Q(K) = 2K · sup{a*(ξ)} + Σ w_Q(n) for active nodes
-- ActiveNodes bounded: n ≤ ⌊e^{2πK}⌋
-- arch_term difference ≤ 2K · max(a*) · ||Φ₁ - Φ₂||_∞
-- prime_term difference ≤ W_sum(K) · ||Φ₁ - Φ₂||_∞
+**STATUS:** axiom here; see `Q3.AxiomsTheorems` for proven bridge status.
 -/
 axiom Q_Lipschitz_on_W_K : ∀ (K : ℝ) (hK : K > 0),
   ∃ L > 0, ∀ Φ₁, Φ₁ ∈ W_K K → ∀ Φ₂, Φ₂ ∈ W_K K →
@@ -298,11 +282,7 @@ axiom Q_Lipschitz_on_W_K : ∀ (K : ℝ) (hK : K > 0),
 
 The prime sampling operator T_P has ‖T_P‖ < 1 for appropriate t.
 
-**STATUS: PROVEN BY ARISTOTLE** ✅
-- File: `Q3/Proofs/RKHS_contraction.lean`
-- Theorem: `RKHS_contraction (K : ℝ) (hK : K ≥ 1) : ∃ t > 0, ∃ ρ < 1, T_P_norm K t ≤ ρ`
-- Also contains: `T_P_row_sum_bound` (closes T_P_row_sum_bound_axiom)
-- Key lemmas: w_RKHS_le_w_max, delta_K_pos, S_K_bound, T_P_norm_bound
+**STATUS:** axiom here; bridge pending in `Q3.AxiomsTheorems`.
 -/
 axiom RKHS_contraction_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
   ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K],
@@ -315,14 +295,7 @@ axiom RKHS_contraction_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
 
 Gershgorin-style row sum bound for T_P matrix.
 
-**STATUS: PROVEN BY ARISTOTLE** ✅
-- File: `Q3/Proofs/RKHS_contraction.lean`
-- Theorem: `T_P_row_sum_bound`
-
-**PROOF STRUCTURE**:
-- Split row sum into diagonal (j=i) and off-diagonal (j≠i) parts
-- Diagonal: T_P[i,i] = w_RKHS(i) ≤ w_max
-- Off-diagonal: bounded by √w_max · S_K (geometric series over node spacing)
+**STATUS:** axiom here; see `Q3.AxiomsTheorems` for proven bridge status.
 -/
 axiom T_P_row_sum_bound_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0),
   ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K] (T_P : Matrix Nodes_K Nodes_K ℝ),
@@ -334,18 +307,7 @@ axiom T_P_row_sum_bound_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0),
 
 S_K = 2x/(1-x) where x = exp(-δ²/(4t)) is a geometric series tail bound.
 
-**STATUS: PROVEN BY ARISTOTLE** ✅
-- File: `Q3/Proofs/S_K_small.lean`
-- Theorem: `S_K_small`
-
-**PROOF STRUCTURE**:
-- At t = t_min, x = η/(2+η) and S_K = η exactly
-- For t < t_min, x < η/(2+η) and by monotonicity S_K < η
-- Key lemma: 2x/(1-x) is increasing in x for 0 < x < 1
-
-**NOTE**: Direction is t ≤ t_min (not ≥) because S_K(t) INCREASES with t:
-  - As t → ∞: x = exp(-δ²/(4t)) → 1, S_K → ∞
-  - As t → 0+: x → 0, S_K → 0
+**STATUS:** axiom here; see `Q3.AxiomsTheorems` for proven bridge.
 -/
 axiom S_K_small_axiom : ∀ (K t η : ℝ) (hK : K ≥ 1) (hη : η > 0) (ht : t ≤ t_min K η),
   S_K K t ≤ η
@@ -354,16 +316,7 @@ axiom S_K_small_axiom : ∀ (K t η : ℝ) (hK : K ≥ 1) (hη : η > 0) (ht : t
 
 Adjacent spectral nodes are separated by at least δ_K.
 
-**STATUS: PROVEN BY ARISTOTLE** ✅
-- File: `Q3/Proofs/node_spacing.lean`
-- Theorem: `node_spacing`
-
-**PROOF STRUCTURE**:
-For nodes n₁ < n₂ both in Nodes_K (so 2 ≤ n₁ < n₂ ≤ N_K where N_K = ⌊e^{2πK}⌋):
-- ξ_{n₂} - ξ_{n₁} = (log n₂ - log n₁)/(2π) = log(n₂/n₁)/(2π)
-- Since n₂ ≥ n₁ + 1, we have n₂/n₁ ≥ (n₁+1)/n₁ = 1 + 1/n₁ ≥ 1 + 1/N_K
-- So ξ_{n₂} - ξ_{n₁} ≥ log(1 + 1/N_K)/(2π) ≥ 1/(2π·N_K) = δ_K
-  (using log(1+x) ≥ x/(1+x) for x > 0)
+**STATUS:** axiom here; see `Q3.AxiomsTheorems` for proven bridge.
 -/
 axiom node_spacing_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
   ∀ (n₁ n₂ : ℕ), n₁ ∈ Nodes K → n₂ ∈ Nodes K → n₁ < n₂ →
@@ -373,16 +326,7 @@ axiom node_spacing_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
 
 The off-diagonal sum of Gaussian terms is bounded by the geometric series S_K.
 
-**STATUS: PROVEN BY ARISTOTLE** ✅
-- File: `Q3/Proofs/off_diag_exp_sum.lean`
-- Theorem: `off_diag_exp_sum_bound`
-
-**PROOF STRUCTURE**:
-1. Order nodes: By node_spacing, consecutive nodes separated by ≥ δ_K
-2. For node i, split j≠i into "left" (j < i) and "right" (j > i)
-3. Each direction: at distance k steps from i, separation ≥ k·δ_K
-4. Bound: exp(-(k·δ_K)²/(4t)) ≤ exp(-k·δ_K²/(4t)) = x^k where x = exp(-δ_K²/(4t))
-5. Sum: 2·Σ_{k≥1} x^k = 2x/(1-x) = S_K
+**STATUS:** axiom here; bridge pending in `Q3.AxiomsTheorems`.
 -/
 axiom off_diag_exp_sum_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0),
   ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K] (i : Nodes_K),
@@ -393,14 +337,7 @@ axiom off_diag_exp_sum_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0),
 
 Toeplitz-Symbol bridge: λ_min(T_M[P_A] - T_P) ≥ c₀(K)/4.
 
-**STATUS: PROVEN BY ARISTOTLE** ✅
-- File: `Q3/Proofs/A3_bridge.lean`
-- Theorem: `A3_Bridge_Theorem`
-
-**Key proof structure**:
-1. Szegő limit theorem → ToeplitzForm/L2NormSq ≥ 3·c₀(K)/4 for M ≥ M₀
-2. RKHS contraction → PrimeForm/L2NormSq ≤ c₀(K)/4 for appropriate t
-3. Subtraction gives the bound: difference ≥ c₀(K)/4
+**STATUS:** axiom here; bridge pending in `Q3.AxiomsTheorems`.
 -/
 axiom A3_bridge_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
   ∃ M₀ : ℕ, ∃ t > 0, ∀ M ≥ M₀,

@@ -30,7 +30,7 @@ RH
             |   +-- Schur_test [AX]
             |   +-- eigenvalue_le_norm [AX]
             |   +-- c_arch_pos + a_star_* [AX]
-            |   +-- A3_FLOOR (a_star lower bounds) [OK*]
+            |   +-- A3_FLOOR (a_star lower bounds) [OK local / OK* main]
             |
             +-- RKHS_contraction [AX]
                 |
@@ -135,7 +135,7 @@ Local (A3_FLOOR):
 - (none)
 
 <!-- AUTO-STATUS:BEGIN -->
-Auto status (DB snapshot): 2026-01-12 19:48
+Auto status (DB snapshot): 2026-01-12 20:13
 
 Doc status (A3_FLOOR + Q3_DigammaRemainder):
 | doc_id | status | lines |
