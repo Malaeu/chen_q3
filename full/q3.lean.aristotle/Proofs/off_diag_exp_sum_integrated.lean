@@ -114,7 +114,7 @@ lemma r_lt_one (K t : ℝ) (hK : K ≥ 1) (ht : t > 0) : r_param K t < 1 := by
 /-- Off-diagonal exponential sum bounded by S_K.
     This is the key lemma for RKHS contraction. -/
 theorem off_diag_exp_sum_bound (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
-    (i : Q3.Nodes K) :
+    [Fintype (Q3.Nodes K)] (i : Q3.Nodes K) :
     ∑ j : Q3.Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
       Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) ≤ Q3.S_K K t := by
   -- Proof outline from Aristotle:
@@ -123,17 +123,16 @@ theorem off_diag_exp_sum_bound (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
   -- 3. Sum over geometric series: sum_{k>=1} 2r^k = 2r/(1-r) = S_K
   --
   -- The factor 2 accounts for j > i and j < i directions
-  exact Q3.off_diag_exp_sum_axiom K t hK ht (Q3.Nodes K) i
+  exact Q3.off_diag_exp_sum_axiom K t hK ht i
 
 /-! ## Connection to Q3 Axiom -/
 
 /-- This theorem closes off_diag_exp_sum_axiom -/
-theorem closes_off_diag_axiom (K t : ℝ) (hK : K ≥ 1) (ht : t > 0) :
-    ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K] (i : Nodes_K),
-      ∑ j : Nodes_K, (if (j : ℕ) ≠ (i : ℕ) then
-        Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) ≤ Q3.S_K K t := by
-  -- Use off_diag_exp_sum_bound with Q3.Nodes K
-  exact Q3.off_diag_exp_sum_axiom K t hK ht
+theorem closes_off_diag_axiom (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
+    [Fintype (Q3.Nodes K)] (i : Q3.Nodes K) :
+    ∑ j : Q3.Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
+      Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) ≤ Q3.S_K K t := by
+  exact Q3.off_diag_exp_sum_axiom K t hK ht i
 
 end Q3.Proofs.OffDiagExpSum
 

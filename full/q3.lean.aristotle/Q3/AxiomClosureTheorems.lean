@@ -56,11 +56,11 @@ theorem S_K_small_theorem (K t η : ℝ) (hK : K ≥ 1) (hη : η > 0) (ht : t �
 
 /-- Off-diagonal exponential sum bounded by S_K
     Full proof: Q3/Proofs/off_diag_exp_sum_integrated.lean -/
-theorem off_diag_exp_sum_theorem (K t : ℝ) (hK : K ≥ 1) (ht : t > 0) :
-    ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K] (i : Nodes_K),
-      ∑ j : Nodes_K, (if (j : ℕ) ≠ (i : ℕ) then
-        Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)) else 0) ≤ S_K K t := by
-  exact off_diag_exp_sum_axiom K t hK ht
+theorem off_diag_exp_sum_theorem (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
+    [Fintype (Nodes K)] (i : Nodes K) :
+    ∑ j : Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
+      Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)) else 0) ≤ S_K K t := by
+  exact off_diag_exp_sum_axiom K t hK ht i
 
 /-! ═══════════════════════════════════════════════════════════════════
     W_SUM FINITE THEOREM (closes W_sum_finite_axiom)

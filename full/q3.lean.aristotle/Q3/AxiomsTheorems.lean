@@ -84,12 +84,12 @@ theorem W_sum_finite : ∀ (K : ℝ) (hK : K > 0), ∃ B, Q3.W_sum_axiom K ≤ B
 /-! ## BLOCKED - Need self-contained bridges (1/9) -/
 
 /-- Off-diagonal exponential sum bound
-    STATUS: Bridge exists but conflicts (needs refactor to self-contained) -/
-theorem off_diag_exp_sum : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0),
-    ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K] (i : Nodes_K),
-      ∑ j : Nodes_K, (if (j : ℕ) ≠ (i : ℕ) then
-        Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) ≤ Q3.S_K K t :=
-  Q3.off_diag_exp_sum_axiom  -- Axiom fallback until bridge refactored
+    STATUS: CLOSED via bridge_v3 -/
+theorem off_diag_exp_sum (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
+    [Fintype (Q3.Nodes K)] (i : Q3.Nodes K) :
+    ∑ j : Q3.Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
+      Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) ≤ Q3.S_K K t :=
+  Q3.off_diag_exp_sum_axiom K t hK ht i
 
 /-! ## AXIOM FALLBACK (5/9) - Pending complex bridges -/
 

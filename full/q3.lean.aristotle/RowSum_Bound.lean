@@ -72,12 +72,12 @@ lemma diagonal_term_bound (i : ℕ) :
 
 /-- Off-diagonal exponential sum is bounded by S_K -/
 lemma off_diag_exp_sum_bound (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
-    (Nodes_K : Set ℕ) [Fintype Nodes_K] (i : Nodes_K) :
-    ∑ j : Nodes_K, (if (j : ℕ) ≠ (i : ℕ) then
+    [Fintype (Nodes K)] (i : Nodes K) :
+    ∑ j : Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
       Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)) else 0) ≤ S_K K t := by
   -- Use the axiom that encapsulates the geometric series argument
   -- The full proof is documented in Q3.Axioms: node_spacing_axiom + geometric series
-  exact Q3.off_diag_exp_sum_axiom K t hK ht Nodes_K i
+  exact Q3.off_diag_exp_sum_axiom K t hK ht i
 
 /-!
 ## Main Theorem

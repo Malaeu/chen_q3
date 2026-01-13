@@ -183,9 +183,14 @@ lemma w_max_lt_one : w_max < 1 := by
 
 /-! ## RKHS Technical Definitions -/
 
-/-- Node separation: δ_K = 1/(2π·N_K) where N_K = ⌊exp(2πK)⌋ -/
+/-- Maximum node index: N_K = ⌊exp(2πK)⌋
+    This bounds the number of nodes in [-K, K] -/
+def N_K (K : ℝ) : ℕ := Nat.floor (Real.exp (2 * Real.pi * K))
+
+/-- Node separation: δ_K = 1/(2π·(N_K+1))
+    Minimum spacing between spectral coordinates of nodes -/
 def delta_K (K : ℝ) : ℝ :=
-  1 / (2 * Real.pi * (Nat.floor (Real.exp (2 * Real.pi * K)) + 1))
+  1 / (2 * Real.pi * (N_K K + 1))
 
 /-- Heat parameter minimum for contraction -/
 def t_min (K η : ℝ) : ℝ :=

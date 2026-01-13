@@ -328,9 +328,9 @@ The off-diagonal sum of Gaussian terms is bounded by the geometric series S_K.
 
 **STATUS:** axiom here; bridge pending in `Q3.AxiomsTheorems`.
 -/
-axiom off_diag_exp_sum_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0),
-  ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K] (i : Nodes_K),
-    ∑ j : Nodes_K, (if (j : ℕ) ≠ (i : ℕ) then
+axiom off_diag_exp_sum_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
+    [Fintype (Nodes K)] (i : Nodes K),
+    ∑ j : Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
       Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)) else 0) ≤ S_K K t
 
 /-! ## Axiom T2.6: A3 Bridge (Q3 Paper Section 7)

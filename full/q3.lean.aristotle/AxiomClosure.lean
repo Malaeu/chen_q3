@@ -95,11 +95,11 @@ theorem node_spacing_theorem (K : ℝ) (hK : K ≥ 1) :
 
 **Proof**: By Aristotle's off_diag_exp_sum.lean.
 Using node spacing, off-diagonal Gaussian terms form geometric series. -/
-theorem off_diag_exp_sum_theorem (K t : ℝ) (hK : K ≥ 1) (ht : t > 0) :
-    ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K] (i : Nodes_K),
-      ∑ j : Nodes_K, (if (j : ℕ) ≠ (i : ℕ) then
-        Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) ≤ Q3.S_K K t := by
-  exact Q3.off_diag_exp_sum_axiom K t hK ht
+theorem off_diag_exp_sum_theorem (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
+    [Fintype (Q3.Nodes K)] (i : Q3.Nodes K) :
+    ∑ j : Q3.Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
+      Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) ≤ Q3.S_K K t := by
+  exact Q3.off_diag_exp_sum_axiom K t hK ht i
 
 /-! ## W_sum Finite Closure -/
 

@@ -170,6 +170,43 @@ noncomputable def c_arch (K : ℝ) : ℝ :=
 
 axiom c_arch_pos : ∀ K : ℝ, K > 0 → c_arch K > 0
 
+/-! ## Uniform Archimedean Floor (December 2025 paper update)
+
+The paper was updated to use a UNIFORM floor c* = 11/10 instead of K-dependent c_arch(K).
+This is the global minimum of P_A(θ) over the entire torus T.
+Proven in A3_FLOOR_v22_stage4_floor.lean.
+
+Benefits of uniform approach:
+- M₀ is K-independent (single threshold for all K)
+- t_rkhs is K-independent (single heat parameter)
+- Simplifies the A3_bridge axiom chain
+-/
+
+/-- Uniform Archimedean floor: c* = 11/10
+    This is min_{θ ∈ T} P_A(θ) where P_A is the Archimedean symbol. -/
+noncomputable def c_star : ℝ := 11 / 10
+
+/-- c* is positive (trivial computation) -/
+lemma c_star_pos : c_star > 0 := by norm_num [c_star]
+
+/-- c* > 1 (useful for contraction arguments) -/
+lemma c_star_gt_one : c_star > 1 := by norm_num [c_star]
+
+/-- c*/4 > 0 (the bound used in A3_bridge) -/
+lemma c_star_div_four_pos : c_star / 4 > 0 := by norm_num [c_star]
+
+/-- c* ≤ c_arch(K) for K ≥ threshold.
+
+Since c_star = 11/10 is the GLOBAL minimum of P_A(θ) over the torus T,
+and c_arch(K) = inf_{|ξ| ≤ K} a_star(ξ) is the minimum over [-K, K],
+we have c_star ≤ c_arch(K) when the support of the periodization
+is contained in [-K, K].
+
+This lemma allows backwards-compatible use of old K-dependent proofs:
+any bound using c_star/4 automatically gives a bound using c_arch(K)/4.
+-/
+axiom c_star_le_c_arch : ∀ K : ℝ, K ≥ 1 → c_star ≤ c_arch K
+
 /-! ## Axiom T1.7: Eigenvalue-Norm Bound
 
 For symmetric matrices: |eigenvalue| ≤ operator norm.
@@ -328,9 +365,9 @@ The off-diagonal sum of Gaussian terms is bounded by the geometric series S_K.
 
 **STATUS:** axiom here; bridge pending in `Q3.AxiomsTheorems`.
 -/
-axiom off_diag_exp_sum_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0),
-  ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K] (i : Nodes_K),
-    ∑ j : Nodes_K, (if (j : ℕ) ≠ (i : ℕ) then
+axiom off_diag_exp_sum_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
+    [Fintype (Nodes K)] (i : Nodes K),
+    ∑ j : Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
       Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)) else 0) ≤ S_K K t
 
 /-! ## Axiom T2.6: A3 Bridge (Q3 Paper Section 7)
@@ -347,6 +384,23 @@ axiom A3_bridge_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
       Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)))) /
     (∑ i, v i ^ 2) ≥ c_arch K / 4
 
+/-! ## Axiom T2.6b: A3 Bridge Uniform (December 2025 paper update)
+
+K-INDEPENDENT version of A3 bridge using uniform floor c* = 11/10.
+This is the new primary formulation; the K-dependent version above is deprecated.
+
+Key changes from K-dependent:
+- Uses c_star instead of c_arch K
+- M₀ and t are uniform (K-independent)
+- Directly follows from A3_FLOOR (P_A(θ) ≥ 11/10 for all θ)
+-/
+axiom A3_bridge_uniform :
+  ∃ M₀ : ℕ, ∃ t > 0, ∀ M ≥ M₀,
+    ∀ (v : Fin M → ℝ), v ≠ 0 →
+    (∑ i, ∑ j, v i * v j * (ToeplitzMatrix M a_star i j -
+      Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
+      Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)))) /
+    (∑ i, v i ^ 2) ≥ c_star / 4
 
 /-! ## Axiom T2.7: Q ≥ 0 on Atom Cone (Q3 Core Result)
 
@@ -357,7 +411,7 @@ The full "Q ≥ 0 on W_K" is then a THEOREM (T5_transfer), not an axiom,
 proven via: A1 (density) + A2 (Lipschitz) + this axiom.
 -/
 
-/-- Bundled statement of the A3 bridge axiom for a fixed compact parameter `K`. -/
+/-- Bundled statement of the A3 bridge axiom for a fixed compact parameter `K`. (DEPRECATED) -/
 def A3_bridge_data (K : ℝ) : Prop :=
   ∃ M₀ : ℕ, ∃ t > 0, ∀ M ≥ M₀,
     ∀ (v : Fin M → ℝ), v ≠ 0 →
@@ -366,7 +420,17 @@ def A3_bridge_data (K : ℝ) : Prop :=
       Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)))) /
     (∑ i, v i ^ 2) ≥ c_arch K / 4
 
-/-- Bundled statement of the RKHS contraction axiom for a fixed compact parameter `K`. -/
+/-- Uniform A3 bridge data (December 2025 paper update).
+    K-independent version using c_star = 11/10. -/
+def A3_bridge_data_uniform : Prop :=
+  ∃ M₀ : ℕ, ∃ t > 0, ∀ M ≥ M₀,
+    ∀ (v : Fin M → ℝ), v ≠ 0 →
+    (∑ i, ∑ j, v i * v j * (ToeplitzMatrix M a_star i j -
+      Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
+      Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)))) /
+    (∑ i, v i ^ 2) ≥ c_star / 4
+
+/-- Bundled statement of the RKHS contraction axiom for a fixed compact parameter `K`. (DEPRECATED) -/
 def RKHS_contraction_data (K : ℝ) : Prop :=
   ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K],
     ∀ (T_P : Matrix Nodes_K Nodes_K ℝ), T_P.IsSymm →
@@ -374,11 +438,26 @@ def RKHS_contraction_data (K : ℝ) : Prop :=
       Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))) →
     ‖T_P‖ ≤ ρ
 
+/-- Uniform RKHS contraction data (December 2025 paper update).
+    K-independent version - the heat parameter t and bound ρ are uniform. -/
+def RKHS_contraction_data_uniform : Prop :=
+  ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K],
+    ∀ (T_P : Matrix Nodes_K Nodes_K ℝ), T_P.IsSymm →
+    (∀ i j : Nodes_K, T_P i j = Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
+      Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))) →
+    ‖T_P‖ ≤ ρ
+
 /-- Core positivity transfer from the A3 bridge + RKHS contraction to atom cone positivity.
-    This is the remaining hard analytic step (Q3 paper core). -/
+    This is the remaining hard analytic step (Q3 paper core). (DEPRECATED - use uniform version) -/
 axiom Q_nonneg_on_atoms_of_A3_RKHS_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
   A3_bridge_data K → RKHS_contraction_data K →
   ∀ g ∈ AtomCone_K K, Q g ≥ 0
+
+/-- Uniform version: A3_bridge_uniform + RKHS_contraction_uniform ⟹ Q ≥ 0 on atoms.
+    December 2025 paper update - the primary formulation. -/
+axiom Q_nonneg_on_atoms_uniform :
+  A3_bridge_data_uniform → RKHS_contraction_data_uniform →
+  ∀ K ≥ 1, ∀ g ∈ AtomCone_K K, Q g ≥ 0
 
 /-!
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -396,6 +475,15 @@ axiom Q_nonneg_on_atoms_of_A3_RKHS_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
 #check c_arch_pos
 #check eigenvalue_le_norm
 
+-- Uniform definitions (December 2025 paper update)
+#check c_star                        -- NEW: Uniform floor c* = 11/10
+#check c_star_pos                    -- c* > 0
+#check c_star_gt_one                 -- c* > 1
+#check A3_bridge_uniform             -- NEW: K-independent A3 bridge
+#check A3_bridge_data_uniform        -- NEW: Bundled uniform data
+#check RKHS_contraction_data_uniform -- NEW: Bundled uniform RKHS
+#check Q_nonneg_on_atoms_uniform     -- NEW: Uniform positivity transfer
+
 -- Tier-2 axioms (12 Q3 contributions)
 #check A1_density_WK_axiom           -- density in W_K
 #check A1_density_axiom              -- Legacy density
@@ -404,9 +492,9 @@ axiom Q_nonneg_on_atoms_of_A3_RKHS_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
 #check RKHS_contraction_axiom        -- RKHS contraction
 #check T_P_row_sum_bound_axiom       -- Row sum bound
 #check S_K_small_axiom               -- Geometric series decay
-#check node_spacing_axiom            -- NEW: Node spacing ≥ δ_K
-#check off_diag_exp_sum_axiom        -- NEW: Off-diagonal sum ≤ S_K
-#check A3_bridge_axiom               -- A3 Toeplitz bridge
-#check Q_nonneg_on_atoms_of_A3_RKHS_axiom   -- A3+RKHS ⇒ atoms positivity
+#check node_spacing_axiom            -- Node spacing ≥ δ_K
+#check off_diag_exp_sum_axiom        -- Off-diagonal sum ≤ S_K
+#check A3_bridge_axiom               -- A3 Toeplitz bridge (DEPRECATED)
+#check Q_nonneg_on_atoms_of_A3_RKHS_axiom   -- A3+RKHS ⇒ atoms positivity (DEPRECATED)
 
 end Q3
