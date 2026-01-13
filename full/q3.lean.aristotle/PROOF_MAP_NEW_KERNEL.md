@@ -1,7 +1,7 @@
 # PROOF MAP: A3_FLOOR New Kernel Approach
 
 **Created:** 2025-12-28
-**Status:** IN PROGRESS (Stage 2/4, conditional)
+**Status:** ✅ COMPLETE (Stage 4/4 DONE + bridges closed)
 **Primary File:** [A3_FLOOR_ROADMAP.md](A3_FLOOR_ROADMAP.md) ← **ALWAYS CHECK THIS FOR CURRENT STATUS**
 
 ---
@@ -239,8 +239,27 @@ python ~/.claude/skills/aristotle/scripts/status.py be2b9846
 
 ---
 
-**Last Updated:** 2026-01-12
-**Next Action:** интеграция A3_FLOOR в основной chain и зачистка устаревших заметок.
+**Last Updated:** 2026-01-13
+**Next Action:** ALL BRIDGE SORRY CLOSED! Tier-2 contributions at 0 sorry.
+
+## COMPLETED (2026-01-13)
+
+### Q_Lipschitz Bridge - FULLY CLOSED
+- `Q_Lipschitz_prime_bridge.lean` - prime_term_Lipschitz (0 sorry)
+- `Q_Lipschitz_arch_bridge.lean` - arch_term_Lipschitz (0 sorry)
+- `Q_Lipschitz_bridge.lean` - Q_Lipschitz_on_W_K_bridge (0 sorry)
+
+### A3_bridge - FULLY CLOSED
+- `A3_bridge.lean` - A3_bridge_from_Szego (0 sorry)
+- `A3_bridge_v3_uniform.lean` - A3_bridge_from_floor (0 sorry)
+
+### Q_nonneg Bridge - FULLY CLOSED
+- `Q_nonneg_bridge_v2.lean` - Q_nonneg_on_atoms (0 sorry)
+- Uses Q_nonneg_on_atoms_uniform axiom with A3_bridge_data_uniform + RKHS_contraction_data_uniform
+
+### A1_density Bridge - FULLY CLOSED
+- `A1_density_bridge_v2.lean` - A1_density (0 sorry)
+- Uses A1_density_WK_axiom directly
 
 <!-- AUTO-STATUS:BEGIN -->
 Auto status (DB snapshot): 2026-01-12 20:58

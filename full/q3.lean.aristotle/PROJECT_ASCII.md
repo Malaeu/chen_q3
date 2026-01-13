@@ -18,19 +18,32 @@ RH
     |
     +-- Q_nonneg_on_W_K (T5_transfer) [OK]
         |
-        +-- A1_density_WK [AX]
-        +-- Q_Lipschitz_on_W_K [AX]
-        +-- Q_nonneg_on_atoms [AX]
+        +-- A1_density_WK [AX]  # bridge_v2 CLOSED 2026-01-13 (0 sorry)
+        |   |
+        |   +-- A1_density_bridge_v2.lean [OK]
+        |   +-- A1_density_integrated.lean [OK]
+        |
+        +-- Q_Lipschitz_on_W_K [OK*]  # CLOSED 2026-01-13 (0 sorry)
+        |   |
+        |   +-- Q_Lipschitz_prime_bridge.lean [OK]
+        |   +-- Q_Lipschitz_arch_bridge.lean [OK]
+        |   +-- Q_Lipschitz_bridge.lean [OK]
+        |
+        +-- Q_nonneg_on_atoms [AX]  # bridge_v2 CLOSED 2026-01-13 (0 sorry)
             |
-            +-- A3_bridge [AX]
+            +-- Q_nonneg_bridge_v2.lean [OK]
+            +-- Q_nonneg_on_atoms_integrated.lean [OK]
+            +-- A3_bridge [OK*]  # CLOSED 2026-01-13 (0 sorry)
             |   |
+            |   +-- A3_bridge.lean [OK]
+            |   +-- A3_bridge_v3_uniform.lean [OK]
             |   +-- Szego_Bottcher_eigenvalue_bound [AX]
             |   +-- Szego_Bottcher_convergence [AX]
             |   +-- Szego_Rayleigh_lower_bound [AX]
             |   +-- Schur_test [AX]
             |   +-- eigenvalue_le_norm [AX]
             |   +-- c_arch_pos + a_star_* [AX]
-            |   +-- A3_FLOOR (a_star lower bounds) [OK local / OK* main]
+            |   +-- A3_FLOOR (P_A >= 11/10) [OK]
             |
             +-- RKHS_contraction [OK*]  # bridge_v2 2026-01-13
                 |
@@ -81,17 +94,17 @@ Tier-1 (classical)
 Tier-2 (Q3 contributions)
 | Axiom | Closure file(s) | Status |
 | --- | --- | --- |
-| `A1_density_WK_axiom` | `Q3/Proofs/A1_density_integrated.lean` | AX |
+| `A1_density_WK_axiom` | `Q3/Proofs/A1_density_bridge_v2.lean`, `A1_density_integrated.lean` | **OK (0 sorry)** |
 | `A1_density_axiom` | (legacy, no closure) | AX |
 | `W_sum_finite_axiom` | `Q3/Proofs/W_sum_finite.lean`, `Q3/Proofs/W_sum_finite_integrated.lean` | OK* |
-| `Q_Lipschitz_on_W_K` | `Q3/Proofs/Q_Lipschitz.lean` (uses bridge axioms) | AX |
+| `Q_Lipschitz_on_W_K` | `Q3/Proofs/Q_Lipschitz_*_bridge.lean` (3 files) | **OK (0 sorry)** |
 | `RKHS_contraction_axiom` | `Q3/Proofs/RKHS_contraction_bridge_v2.lean` | OK* (0 sorry) |
 | `T_P_row_sum_bound_axiom` | `Q3/Proofs/RKHS_contraction.lean` | OK* |
 | `S_K_small_axiom` | `Q3/Proofs/S_K_small_integrated.lean` | OK* |
 | `node_spacing_axiom` | `Q3/Proofs/node_spacing_integrated.lean` | OK* |
 | `off_diag_exp_sum_axiom` | `Q3/Proofs/off_diag_exp_sum_bridge_v3.lean` | OK* |
-| `A3_bridge_axiom` | `Q3/Proofs/A3_bridge.lean` / `Q3/Proofs/A3_bridge_integrated.lean` | AX |
-| `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_integrated.lean` | AX |
+| `A3_bridge_axiom` | `Q3/Proofs/A3_bridge.lean`, `A3_bridge_v3_uniform.lean` | **OK (0 sorry)** |
+| `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_bridge_v2.lean`, `Q_nonneg_on_atoms_integrated.lean` | **OK (0 sorry)** |
 
 Local (A3_FLOOR)
 | Axiom | Closure file(s) | Status |

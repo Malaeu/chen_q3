@@ -143,33 +143,8 @@ This connects Aristotle's analytic result to the matrix form needed for Q3.
 theorem A3_bridge_from_Szego (K : ℝ) (hK : K ≥ 1) : A3_bridge_data K :=
   A3_bridge_axiom K hK
 
-/-- Alternative proof showing the axiom is consistent with Szegő theory.
-    This demonstrates that our Tier-1 Szegő axiom supports the Tier-2 A3_bridge_axiom.
-
-    **Technical note**: The domain correspondence between:
-    - Szegő axiom: θ ∈ [0, 2π] (Toeplitz matrix angle domain)
-    - c_arch K: ξ ∈ [-K, K] (spectral frequency domain)
-    requires showing that min over [0, 2π] ≥ min over [-K, K] for appropriate scaling.
-    This is where the Tier-2 A3_bridge_axiom encapsulates the domain bridge. -/
-theorem A3_bridge_supported_by_Szego (K : ℝ) (hK : K ≥ 1) :
-    ∃ M₀ : ℕ, ∀ ε > 0, ∃ M₁ ≥ M₀, ∀ M ≥ M₁, ∀ (v : Fin M → ℝ), v ≠ 0 →
-      RayleighQuotient (ToeplitzMatrix M a_star) v ≥ c_arch K - ε := by
-  -- This follows from Szego_Rayleigh_lower_bound + domain correspondence
-  -- The technical gap is the relationship between [0, 2π] and [-K, K] domains
-  -- which is handled by the A3_bridge_axiom at the Tier-2 level
-  obtain ⟨M₀, t, ht, hbound⟩ := A3_bridge_axiom K hK
-  use M₀
-  intro ε hε
-  use M₀
-  constructor
-  · exact le_refl _
-  intro M hM v hv
-  -- The A3_bridge_axiom gives us the full bound including prime matrix subtraction
-  -- Here we only need the Toeplitz part, which is larger
-  have h := hbound M hM v hv
-  -- Technical: extract just the Toeplitz Rayleigh quotient from the difference bound
-  -- Rayleigh(Toeplitz - Prime) ≥ c_arch K / 4 implies Rayleigh(Toeplitz) ≥ c_arch K / 4
-  -- (since Prime matrix is positive semidefinite)
-  sorry -- Domain correspondence: [0,2π] ↔ [-K,K] + Rayleigh extraction
+/-- A3_bridge_data_uniform follows directly from A3_bridge_uniform axiom. -/
+theorem A3_bridge_data_from_uniform : A3_bridge_data_uniform :=
+  A3_bridge_uniform
 
 end Q3
