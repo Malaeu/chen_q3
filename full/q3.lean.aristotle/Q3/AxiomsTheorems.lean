@@ -59,10 +59,13 @@ These are re-exported from Q3.Axioms
 /-!
 # TIER-2: Q3 PAPER CONTRIBUTIONS
 
-## Status (2026-01-12):
+## Status (2026-01-13):
 - 3 PROVEN via self-contained bridges: node_spacing, S_K_small, W_sum_finite
-- 1 BLOCKED (namespace conflicts): off_diag_exp_sum
-- 5 AXIOM fallback (complex bridges pending): A1_density, RKHS, Q_Lipschitz, A3, Q_nonneg
+- 5 BRIDGE CLOSED (0 sorry): off_diag_exp_sum, Q_Lipschitz, A3_bridge, Q_nonneg, A1_density
+- 1 AXIOM in use: RKHS_contraction (used by other bridges)
+
+Note: "BRIDGE CLOSED" means the bridge file has 0 sorry, but it may still USE an axiom.
+The underlying Tier-2 axioms remain - bridges provide clean interfaces to them.
 -/
 
 /-! ## PROVEN THEOREMS (3/9) - Self-contained bridges, no conflicts -/
@@ -129,7 +132,7 @@ theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1),
 end Q3.Theorems
 
 /-!
-# Summary (2026-01-12 Session)
+# Summary (2026-01-13 Session)
 
 ## Tier-1 axioms (8): Remain as axioms in Q3.Axioms
 - Weil_criterion, explicit_formula, a_star_pos
@@ -142,18 +145,19 @@ end Q3.Theorems
 - S_K_small → S_K_SmallBridgeV2.S_K_small_Q3
 - W_sum_finite → W_sum_BridgeV2.W_sum_finite_Q3
 
-### AXIOM fallback (6/9) ⚠️
-- off_diag_exp_sum → too complex for self-contained re-proof
-- A1_density_WK → needs exact? fix + AtomCone bridge
-- Q_Lipschitz → needs a_star digamma bridge
-- RKHS_contraction → needs coordinate rescaling
-- A3_bridge → needs polynomial→matrix bridge
-- Q_nonneg_on_atoms → depends on RKHS/A3
+### BRIDGE CLOSED (5/9) - 0 sorry, uses axioms ✅
+- off_diag_exp_sum → off_diag_exp_sum_bridge_v3 (0 sorry)
+- Q_Lipschitz → Q_Lipschitz_*_bridge.lean (3 files, 0 sorry)
+- A3_bridge → A3_bridge.lean, A3_bridge_v3_uniform.lean (0 sorry)
+- Q_nonneg → Q_nonneg_bridge_v2.lean (0 sorry)
+- A1_density → A1_density_bridge_v2.lean (0 sorry)
 
-## Next Steps (Priority Order)
-1. Create RKHS_contraction_bridge.lean (coordinate rescaling)
-2. Create Q_Lipschitz_bridge.lean (a_star digamma)
-3. Create A3_bridge_bridge.lean (polynomial→matrix)
-4. Update Q_nonneg_bridge.lean
-5. Finish A1_density_bridge.lean
+### AXIOM in main chain (1/9)
+- RKHS_contraction → used directly, no bridge yet
+
+## Architecture Note
+Bridges provide clean interfaces but still USE underlying Tier-2 axioms.
+To fully eliminate axioms, each would need a proof from first principles.
+Current bridges demonstrate the STRUCTURE is complete - axioms are placeholders
+for the mathematical content proven in the Q3 paper.
 -/
