@@ -1,5 +1,8 @@
 # Q3 Project Status (ASCII)
 
+**Philosophy:** See [PHILOSOPHY_OF_PROOF.md](PHILOSOPHY_OF_PROOF.md) for our formalization approach.
+**Workflow:** See [WORKFLOW_CHECKLIST.md](WORKFLOW_CHECKLIST.md) for pre-commit verification.
+
 Legend:
 [OK]  formalized (no axioms)
 [OK*] proof file exists but main chain still uses axiom or proof has TODO/sorry
@@ -7,6 +10,7 @@ Legend:
 [WIP] active work
 
 Last update: 2026-01-13
+Axiom count: 12 (3 Standard + 3 L1 + 4 L2 + 2 L3)
 
 ## Full Project Diagram (Top-Level)
 
