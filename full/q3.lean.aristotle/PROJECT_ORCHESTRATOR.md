@@ -1,240 +1,104 @@
-# PROJECT ORCHESTRATOR
-## Q3: Lean Formalization of Riemann Hypothesis
+# PROJECT ORCHESTRATOR — Q3
+## Lean Formalization of Riemann Hypothesis
 
-**Last Updated:** 2026-01-13 14:00
-**Current Phase:** BRIDGE AXIOM REDUCTION
-**Next Action:** Present to Talia Ringer / Lean community
+**Last Updated:** 2026-01-13
+**Single entry point:** read this file at session start.
 
----
+## Quick Start
 
-## 📍 QUICK START
+Read only this file. It links to everything else you need.
 
-При старте новой сессии:
-```
-Прочитай /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
-```
+## Current State (short)
 
----
+- A3_FLOOR is proven and integrated: `A3_FLOOR_v22_stage4_floor.lean` →
+  `Q3/Proofs/A3_bridge_v3_uniform.lean` uses `P_A_ge_c_star`.
+- `Q_Lipschitz_on_W_K` is already wired as a theorem in `Q3/AxiomsTheorems.lean`,
+  but it still depends on two local bridge axioms (arch/prime Lipschitz).
 
-## 🎯 CURRENT STATUS
+## Axiom Count (verified)
 
-```
-[████████████████████████░░] 90% Complete
-
-AXIOMS: 12 total
-├── 3 Standard Lean (propext, Classical.choice, Quot.sound)
-├── 3 Level 1: Classical literature (Weil, a_star)
-├── 4 Level 2: Q3 Paper claims (A1_density, A3_bridge, RKHS, Q_nonneg)
-└── 2 Level 3: Bridge axioms (arch_Lipschitz, prime_Lipschitz)
-
-✅ Phase 1: Architecture Design       DONE
-✅ Phase 2: Core Proof Chain          DONE
-✅ Phase 3: A3_FLOOR Formalization    DONE (P_A ≥ 11/10)
-✅ Phase 4: Bridge Axiom Reduction    DONE (0 sorry in bridges)
-✅ Phase 5: Philosophy Documentation  DONE
-⬜ Phase 6: Community Presentation    PENDING
-⬜ Phase 7: Mathlib Integration       FUTURE
-⬜ Phase 8: Full Axiom Elimination    FUTURE
+Command:
+```bash
+echo 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
----
+Result: **12 axioms**
+- Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
+- External/classical: `Weil_criterion`, `a_star_pos`, `a_star_bdd_on_compact`
+- Tier-2 (closable): `A1_density_WK_axiom`, `A3_bridge_axiom`,
+  `RKHS_contraction_axiom`, `Q_nonneg_on_atoms_of_A3_RKHS_axiom`
+- Bridge axioms (closable): `arch_term_Lipschitz_bridge`,
+  `prime_term_Lipschitz_bridge`
 
-## 📁 KEY FILES
+## Active Next Step
 
-### Core Documentation (READ THESE FIRST)
-| File | Purpose | Status |
-|------|---------|--------|
-| [`PROJECT_ASCII.md`](./PROJECT_ASCII.md) | Full proof tree + axiom table | ✅ Current |
-| [`PHILOSOPHY_OF_PROOF.md`](./PHILOSOPHY_OF_PROOF.md) | Why we use axioms, Talia approach | ✅ Ready for review |
-| [`WORKFLOW_CHECKLIST.md`](./WORKFLOW_CHECKLIST.md) | Pre-commit verification steps | ✅ Active |
-| [`ARCHITECTURE.md`](./ARCHITECTURE.md) | Lean module structure | ✅ |
-| [`PAPER_LEAN_MAPPING.md`](./PAPER_LEAN_MAPPING.md) | Paper theorem → Lean file mapping | ✅ |
+1) **Lipschitz Bridge Wiring (BLOCKED - signature mismatch)**:
+   - `arch_term_Lipschitz_bridge` uses `arch_term_local Φ = ∫ ξ, a*·Φ` (global)
+   - Bridge theorem uses `arch_term_local K Φ = ∫ ξ in [-K,K], a*·Φ` (set integral)
+   - **Need:** Prove they're equal for Φ with support ⊆ [-K,K]
+   - Same issue for `prime_term_Lipschitz_bridge`
+   - Files: `Q3/Proofs/Q_Lipschitz_arch_bridge.lean`, `Q3/Proofs/Q_Lipschitz_prime_bridge.lean`
 
-### Scripts
-| File | Purpose |
-|------|---------|
-| [`scripts/check_axioms.sh`](./scripts/check_axioms.sh) | Automated axiom audit |
+2) Remove `mem_nodes_finset_of_mem_Q3Nodes` axiom in `Q3/Proofs/Bridge.lean`.
+3) Re-run `lake env lean Q3/Proofs/RKHS_contraction_bridge.lean`.
+4) Then prove `A3_bridge_uniform` in `Q3/Proofs/A3_bridge_v3_uniform.lean`.
 
-### Main Lean Files
-| File | Purpose | Status |
-|------|---------|--------|
-| `Q3/Main.lean` | Main theorem: RH_of_Weil_and_Q3 | ✅ Compiles |
-| `Q3/A3_FLOOR/*.lean` | P_A ≥ 11/10 proof | ✅ Complete |
-| `Q3/Proofs/*.lean` | Bridge proofs | ✅ 0 sorry |
+## Closure Tracker (remaining axioms)
 
----
+| Axiom | Current proof source | Blocker | Next action | Status |
+|------|-----------------------|---------|-------------|--------|
+| `arch_term_Lipschitz_bridge` | `Q3/Proofs/Q_Lipschitz_arch_bridge.lean` | **signature mismatch** (global vs set integral) | prove equivalence lemma | BLOCKED |
+| `prime_term_Lipschitz_bridge` | `Q3/Proofs/Q_Lipschitz_prime_bridge.lean` | **signature mismatch** (global vs local def) | prove equivalence lemma | BLOCKED |
+| `RKHS_contraction_axiom` | `Q3/Proofs/RKHS_contraction.lean` + bridge | `Bridge.lean` has axiom `mem_nodes_finset_of_mem_Q3Nodes` | replace axiom with lemma | IN_PROGRESS |
+| `A3_bridge_uniform` / `A3_bridge_axiom` | `Q3/Proofs/A3_bridge_v3_uniform.lean` | still uses `A3_bridge_uniform` axiom | prove via A3_FLOOR + Szego + RKHS | BLOCKED |
+| `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms.lean` + bridge | needs A3 + RKHS proofs | rewrite `Q3/Proofs/Q_nonneg_bridge_v2.lean` | BLOCKED |
+| `A1_density_WK_axiom` | `Q3/Proofs/A1_density.lean` | `A1_density_WK_thm` calls the axiom | replace axiom call with internal lemmas | TODO |
 
-## 📊 PROJECT ESSENCE
+## Key Files (open only as needed)
 
-### What We Claim
+- `PROJECT_WORKFLOW.md` — workflow loop + Aristotle rules
+- `PROJECT_ASCII.md` — proof tree diagram
+- `PROOF_MAP_NEW_KERNEL.md` + `A3_FLOOR_ROADMAP.md` — A3_FLOOR status
+- `FORMALIZATION_STATUS.md` — detailed status (secondary, not an entry point)
+- `Q3/Axioms.lean` and `Q3/AxiomsTheorems.lean` — axioms and wiring
+- `Q3/Proofs/Q_Lipschitz.lean` — real proof of Q_Lipschitz
+- `Q3/Proofs/Bridge.lean` + `Q3/Proofs/RKHS_contraction_bridge.lean`
+- `Q3/Proofs/A3_bridge_v3_uniform.lean`
+- `Q3/Proofs/Q_nonneg_bridge_v2.lean`
+- `Q3/Proofs/A1_density.lean`
+- `aristotle_db/parse_lean.py` — DB import
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│  IF these 9 mathematical statements are true (proven in Q3 paper)  │
-│  THEN RH (Riemann Hypothesis) is true.                             │
-│                                                                    │
-│  Lean verifies: the logical implication is CORRECT.                │
-│  Human verifies: the 9 statements match what's in the paper.       │
-└─────────────────────────────────────────────────────────────────────┘
-```
+## Update Rule
 
-### Axiom Classification
+After closing a step:
+- run `lake env lean <file>`
+- re-import to DB (`aristotle_db/parse_lean.py import ...`)
+- update this file and `PROJECT_ASCII.md`
 
-| Level | Count | Description | Example |
-|-------|-------|-------------|---------|
-| Standard | 3 | Lean/Mathlib defaults | propext, Classical.choice |
-| L1 Classical | 3 | Published literature | Weil criterion |
-| L2 Q3 Paper | 4 | Claims from Q3 paper | A1_density, A3_bridge |
-| L3 Bridge | 2 | Our technical bridges | Lipschitz bounds |
-| **TOTAL** | **12** | | |
+## Future: Community Presentation
 
-### Key Achievement: A3_FLOOR
+After Tier-2 closure → present to Talia Ringer / Lean Zulip.
+See `PHILOSOPHY_OF_PROOF.md` for the pitch.
 
-```
-P_A(1/2) ≥ 11/10 > 1
+## Build / Verify
 
-Proof chain (all in Lean, no axioms):
-├── Trigamma foundations
-├── Monotonicity bounds
-├── Numerical computation (w_bounds, a_bounds)
-└── Final assembly: P_A_ge_c_star
-```
-
----
-
-## 🎯 NEXT ACTIONS
-
-### Immediate (Phase 6: Community Presentation)
-1. [ ] Run `./scripts/check_axioms.sh` → verify 12 axioms
-2. [ ] Create GitHub issue/discussion for Lean community
-3. [ ] Tag Talia Ringer or post on Lean Zulip
-4. [ ] Prepare "explicit reduction" pitch
-
-### Message to Talia:
-```
-"Here's our Philosophy of Proof document. We follow your 'explicit reduction'
-approach - we're explicit about what Lean verifies vs what requires human trust.
-Run `#print axioms Q3.Main.RH_of_Weil_and_Q3` to see exactly 12 axioms,
-all documented and classified."
-```
-
-### After Community Feedback
-5. [ ] Address any concerns
-6. [ ] Consider submitting to Mathlib (foundational pieces)
-7. [ ] Document response in this file
-
----
-
-## 🔧 BUILD & VERIFY
-
-### Quick Build
 ```bash
 cd /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle
 lake build Q3.Main
 ```
 
-### Axiom Audit
 ```bash
 ./scripts/check_axioms.sh
 ```
 
-### Full Check
 ```bash
-lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 | grep -v "^info:"
+lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 | rg -v "^info:"
 ```
 
-Expected output: 12 axioms (3 standard + 9 project-specific)
+## Change Log (recent)
 
----
-
-## 🧭 WORKFLOW PHASES
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    Q3 FORMALIZATION WORKFLOW                         │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│  Phase 1: ARCHITECTURE     Phase 2: CORE CHAIN     Phase 3: A3_FLOOR│
-│  ┌──────────────────┐     ┌──────────────────┐    ┌───────────────┐ │
-│  │ Design modules   │  →  │ Main theorem     │ →  │ P_A ≥ 11/10   │ │
-│  │ Define axioms    │     │ RH_of_Weil_Q3    │    │ Trigamma      │ │
-│  │ Map paper→Lean   │     │ Proof chain      │    │ Numerical     │ │
-│  └──────────────────┘     └──────────────────┘    └───────────────┘ │
-│          ✅                       ✅                     ✅          │
-│                                                                      │
-│  Phase 4: BRIDGES          Phase 5: DOCS           Phase 6: PRESENT │
-│  ┌──────────────────┐     ┌──────────────────┐    ┌───────────────┐ │
-│  │ Reduce axioms    │  →  │ PHILOSOPHY.md    │ →  │ Lean Zulip    │ │
-│  │ Close sorries    │     │ WORKFLOW.md      │    │ Talia Ringer  │ │
-│  │ Bridge proofs    │     │ PROJECT_ASCII    │    │ Community     │ │
-│  └──────────────────┘     └──────────────────┘    └───────────────┘ │
-│          ✅                       ✅                     ⬜          │
-│                                                                      │
-│  Phase 7: MATHLIB          Phase 8: ELIMINATE                        │
-│  ┌──────────────────┐     ┌──────────────────┐                      │
-│  │ Submit pieces    │  →  │ Prove L1 axioms  │                      │
-│  │ Get feedback     │     │ Prove L2 axioms  │                      │
-│  │ Integrate        │     │ Zero custom ax   │                      │
-│  └──────────────────┘     └──────────────────┘                      │
-│          ⬜                       ⬜                                  │
-│                                                                      │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 📜 CHANGE LOG
-
-| Date | Phase | Changes |
-|------|-------|---------|
-| 2026-01-13 | 5 | Created PHILOSOPHY_OF_PROOF.md, WORKFLOW_CHECKLIST.md, check_axioms.sh |
-| 2026-01-13 | 4 | Closed all bridge axioms: 0 sorry in proofs |
-| 2026-01-13 | 4 | Q_Lipschitz wired as real theorem |
-| 2026-01-12 | 3 | A3_FLOOR complete: P_A_ge_c_star proven |
-| Earlier | 1-2 | Architecture design, core chain implementation |
-
----
-
-## 🔗 LINKED PROJECTS
-
-### Related Repositories
-- **Q3 Paper:** Mathematical paper being formalized
-- **Mathlib:** Lean 4 math library (dependency)
-
-### Related Documentation
-- [`ARISTOTLE.md`](./ARISTOTLE.md) - Aristotle methodology
-- [`ARISTOTLE_PROOFS_DB.md`](./ARISTOTLE_PROOFS_DB.md) - Proof database
-- [`PROOF_DOSSIER_V4.md`](./PROOF_DOSSIER_V4.md) - Detailed proof status
-
----
-
-## 🆘 IF STUCK
-
-### Build fails?
-```bash
-lake clean && lake build Q3.Main
-```
-
-### Axiom count wrong?
-```bash
-./scripts/check_axioms.sh
-# Check output for UNKNOWN axioms
-```
-
-### Need to update axiom classification?
-Edit `PHILOSOPHY_OF_PROOF.md` → Section "Axiom Classification"
-
-### Lost context on specific file?
-```bash
-# Check input docs
-ls aristotle_input/
-# Most recent work is usually in latest *.md files
-```
-
----
-
-**REMEMBER:** After each session, update this file with current status!
-
----
-
-*Generated by /x-orch for chen_q3 project*
+- 2026-01-13: Discovered signature mismatch in Lipschitz bridges (global vs set integral)
+- 2026-01-13: Added PHILOSOPHY_OF_PROOF.md, WORKFLOW_CHECKLIST.md, scripts/check_axioms.sh
+- 2026-01-13: Wired Q_Lipschitz_on_W_K as theorem (axiom count: 5→4 Tier-2 + 2 bridge)
+- 2026-01-13: A3_FLOOR integrated in `Q3/Proofs/A3_bridge_v3_uniform.lean`.
+- 2026-01-13: DB import for `A3_bridge_v3_uniform`.
