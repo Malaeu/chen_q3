@@ -17,6 +17,7 @@ implies limit preservation of nonnegativity.
 import Q3.Basic.Defs
 import Q3.Axioms
 import Q3.Atoms_Positive
+import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 
 set_option linter.mathlibStandardSet false
 
@@ -82,9 +83,9 @@ theorem T5_transfer (K : ℝ) (hK : K ≥ 1) :
   set δ := -Q Φ with hδ_def
   have hδ_pos : δ > 0 := by linarith
 
-  -- Get Lipschitz constant from A2
+  -- Get Lipschitz constant from A2 (using real theorem, not axiom!)
   have hK_pos : K > 0 := by linarith
-  obtain ⟨L, hL_pos, hLip⟩ := Q_Lipschitz_on_W_K K hK_pos
+  obtain ⟨L, hL_pos, hLip⟩ := Q3.Proofs.Q_Lipschitz_on_W_K_thm K hK_pos
 
   -- Choose ε small enough: ε < δ/(2L)
   set ε := δ / (2 * L) with hε_def

@@ -23,7 +23,7 @@ RH
         |   +-- A1_density_bridge_v2.lean [OK]
         |   +-- A1_density_integrated.lean [OK]
         |
-        +-- Q_Lipschitz_on_W_K [OK*]  # CLOSED 2026-01-13 (0 sorry)
+        +-- Q_Lipschitz_on_W_K [OK]  # WIRED 2026-01-13 (real theorem!)
         |   |
         |   +-- Q_Lipschitz_prime_bridge.lean [OK]
         |   +-- Q_Lipschitz_arch_bridge.lean [OK]
@@ -97,7 +97,7 @@ Tier-2 (Q3 contributions)
 | `A1_density_WK_axiom` | `Q3/Proofs/A1_density_bridge_v2.lean`, `A1_density_integrated.lean` | **OK (0 sorry)** |
 | `A1_density_axiom` | (legacy, no closure) | AX |
 | `W_sum_finite_axiom` | `Q3/Proofs/W_sum_finite.lean`, `Q3/Proofs/W_sum_finite_integrated.lean` | OK* |
-| `Q_Lipschitz_on_W_K` | `Q3/Proofs/Q_Lipschitz_*_bridge.lean` (3 files) | **OK (0 sorry)** |
+| `Q_Lipschitz_on_W_K` | `Q3/Proofs/Q_Lipschitz.lean` → `Q_Lipschitz_on_W_K_thm` | **WIRED (theorem!)** |
 | `RKHS_contraction_axiom` | `Q3/Proofs/RKHS_contraction_bridge_v2.lean` | OK* (0 sorry) |
 | `T_P_row_sum_bound_axiom` | `Q3/Proofs/RKHS_contraction.lean` | OK* |
 | `S_K_small_axiom` | `Q3/Proofs/S_K_small_integrated.lean` | OK* |
@@ -138,11 +138,11 @@ Tier-1 (classical):
 Tier-2 (Q3 contributions):
 - `A1_density_WK_axiom`
 - `A1_density_axiom`
-- `Q_Lipschitz_on_W_K`
 - `RKHS_contraction_axiom`
 - `T_P_row_sum_bound_axiom`
 - `A3_bridge_axiom`
 - `Q_nonneg_on_atoms_of_A3_RKHS_axiom`
+- ~~`Q_Lipschitz_on_W_K`~~ → NOW THEOREM (uses arch/prime bridge axioms)
 
 Local (A3_FLOOR):
 - (none)

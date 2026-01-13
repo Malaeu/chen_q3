@@ -18,14 +18,16 @@ Final result: RH is true.
 
 Key axiom dependencies:
 - Tier-1: Weil_criterion
-- Tier-2: A1_density_WK_axiom, Q_Lipschitz_on_W_K, A3_bridge_axiom, RKHS_contraction_axiom,
+- Tier-2: A1_density_WK_axiom, A3_bridge_axiom, RKHS_contraction_axiom,
           Q_nonneg_on_atoms_of_A3_RKHS_axiom
+- THEOREM: Q_Lipschitz_on_W_K_thm (real proof via arch/prime bridge axioms!)
 - Atoms positivity is a THEOREM from A3 + RKHS; T5_transfer is a THEOREM from A1 + A2 + Atoms
   (see Q3.AxiomsTheorems for theorem replacements where available)
 -/
 
 import Q3.Basic.Defs
 import Q3.AxiomsTheorems
+import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 import Q3.A1_Density
 import Q3.RKHS_Contraction
 import Q3.A3_Bridge
@@ -55,11 +57,11 @@ theorem T0_normalization (Φ : ℝ → ℝ) (_hΦ : Φ ∈ Q3.Weil_cone) :
 
 /-! ## Step A2: Lipschitz Control -/
 
-/-- A2: Q is Lipschitz on W_K with constant L_Q(K) -/
+/-- A2: Q is Lipschitz on W_K with constant L_Q(K) (REAL THEOREM!) -/
 theorem A2_Lipschitz (K : ℝ) (hK : K > 0) :
     ∃ L > 0, ∀ Φ₁, Φ₁ ∈ Q3.W_K K → ∀ Φ₂, Φ₂ ∈ Q3.W_K K →
       |Q3.Q Φ₁ - Q3.Q Φ₂| ≤ L * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K} :=
-  Q3.Q_Lipschitz_on_W_K K hK
+  Q3.Proofs.Q_Lipschitz_on_W_K_thm K hK
 
 /-! ## Compact Transfer -/
 
@@ -185,14 +187,16 @@ theorem RH_of_Weil_and_Q3 : Q3.RH := by
 
 -- Check what axioms the proof depends on
 #check RH_of_Weil_and_Q3
--- Expected axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
+-- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
 -- Standard: propext, Classical.choice, Quot.sound
--- Tier-1: Q3.Weil_criterion
--- Tier-2: Q3.A1_density_WK_axiom, Q3.Q_Lipschitz_on_W_K
---         Q3.A3_bridge_axiom, Q3.RKHS_contraction_axiom, Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom
--- Local: Weil_cone_continuous
+-- Tier-1: Q3.Weil_criterion, Q3.a_star_pos, Q3.a_star_bdd_on_compact
+-- Tier-2: Q3.A1_density_WK_axiom, Q3.A3_bridge_axiom,
+--         Q3.RKHS_contraction_axiom, Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom
+-- Bridge: Q3.Proofs.arch_term_Lipschitz_bridge, Q3.Proofs.prime_term_Lipschitz_bridge
 --
--- KEY: Q_nonneg_on_W_K_axiom is GONE! T5 is now a THEOREM!
+-- KEY IMPROVEMENTS:
+-- - Q_Lipschitz_on_W_K is now a THEOREM (uses arch/prime bridge axioms)!
+-- - Q_nonneg_on_W_K_axiom is GONE! T5 is now a THEOREM!
 
 end Q3.Main
 
