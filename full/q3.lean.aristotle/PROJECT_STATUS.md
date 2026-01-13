@@ -3,7 +3,7 @@
 **Deprecated snapshot:** this file is historical and may be stale.  
 Use `PROOF_MAP_NEW_KERNEL.md` and `PROJECT_ASCII.md` for current status.
 
-**Last Verified:** 2025-12-22
+**Last Verified:** 2026-01-13
 **Verified By:** Claude Opus 4.5 via `#print axioms`
 **Governance:** See [REPO_POLICY.md](REPO_POLICY.md) for 10 repository rules
 
@@ -19,11 +19,11 @@ Use `PROOF_MAP_NEW_KERNEL.md` and `PROJECT_ASCII.md` for current status.
 -- ✅ NO Q3.RKHS_contraction_axiom, Q3.A1_density_WK_axiom, etc.!
 ```
 
-### Bridge Sorry Count (11 total):
+### Bridge Sorry Count (8 total):
 | Bridge | Sorries | Description |
 |--------|---------|-------------|
-| off_diag | 2 | node spacing, geometric series (MVT CLOSED via Tier-1 axiom ✅) |
-| RKHS | 2 | off-diag sum, row split (S_K at t_min CLOSED 2025-12-22 ✅) |
+| off_diag | 0 | ✅ FULLY CLOSED (bridge_v3, 2026-01-13) |
+| RKHS | 0 | ✅ CLOSED (off_diag_sum_bound via bridge_v3, 2026-01-13) |
 | Q_Lipschitz | 1 | integration bounds (W_sum ≥ 0 CLOSED 2025-12-22 ✅) |
 | Q_nonneg | 2 | atom RKHS positivity |
 | A3 | 2 | heat smoothness, convolution approx |
@@ -51,8 +51,8 @@ Q3/Proofs/*_bridge_v2/v3.lean  -- Clean bridges (import only Q3.Basic.Defs)
 | node_spacing | v1 | ✅ FULLY PROVEN |
 | S_K_small | v2 | ✅ FULLY PROVEN |
 | W_sum_finite | v3 | ✅ FULLY PROVEN |
-| off_diag_exp_sum | v2 | structured (2 sorry) ✅ -1 |
-| RKHS_contraction | v2 | structured (2 sorry) ✅ -1 |
+| off_diag_exp_sum | v3 | ✅ FULLY PROVEN (0 sorry) |
+| RKHS_contraction | v2 | ✅ FULLY PROVEN (0 sorry) |
 | Q_Lipschitz | v2 | structured (1 sorry) ✅ -1 |
 | A3_bridge | v2 | structured (2 sorry) |
 | Q_nonneg_on_atoms | v2 | structured (2 sorry) |
@@ -204,7 +204,7 @@ in their own namespace, prove equivalence to Q3 definitions, then transfer theor
 | # | Axiom | Standalone Proof | Bridge Status |
 |---|-------|------------------|---------------|
 | 1 | `node_spacing_axiom` | `node_spacing` | ✅ BRIDGED |
-| 2 | `off_diag_exp_sum_axiom` | `off_diag_exp_sum_bound` | ✅ BRIDGED |
+| 2 | `off_diag_exp_sum_axiom` | `off_diag_exp_sum_bound` | ✅ BRIDGED (bridge_v3, 2026-01-13) |
 | 3 | `S_K_small_axiom` | `S_K_small` | ✅ BRIDGED |
 | 4 | `RKHS_contraction_axiom` | `RKHS_contraction` | ⚠️ BRIDGE AXIOM (via `Q3.Bridge.RKHS_contraction_data_of_bridge`) |
 | 5 | `W_sum_finite_axiom` | `W_sum_is_finite` | ✅ BRIDGED |
@@ -247,7 +247,7 @@ Q3/
     ├── node_spacing.lean           # Standalone ✅ CLEAN
     ├── node_spacing_bridge.lean    # Bridge ✅ WORKS
     ├── off_diag_exp_sum.lean       # Standalone ✅ CLEAN
-    ├── off_diag_exp_sum_bridge.lean # Bridge ✅ WORKS
+    ├── off_diag_exp_sum_bridge_v3.lean # Bridge ✅ WORKS (2026-01-13)
     ├── S_K_small.lean              # Standalone ✅ CLEAN
     ├── S_K_small_bridge.lean       # Bridge ✅ WORKS (NEW)
     ├── RKHS_contraction.lean       # Standalone ✅ CLEAN (bridge: COMPLEX)

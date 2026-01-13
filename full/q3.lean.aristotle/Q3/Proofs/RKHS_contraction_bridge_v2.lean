@@ -20,6 +20,7 @@ The full bridge with matrix norm bounds uses sorry for technical parts.
 
 import Q3.Basic.Defs  -- ONLY Defs, no Axioms!
 import Q3.Proofs.S_K_small_bridge_v2  -- For S_K_small_Q3
+import Q3.Proofs.off_diag_exp_sum_bridge_v3  -- For off_diag_exp_sum_closed
 -- Note: We DON'T import Q3.Proofs.RKHS_contraction to avoid namespace conflict
 
 set_option linter.mathlibStandardSet false
@@ -121,8 +122,36 @@ lemma T_P_off_diag_bound (K t : ℝ) (ht : t > 0) (i j : Q3.Nodes K) (hij : i �
 /-- Row sum of off-diagonal entries bounded by w_max * S_K -/
 lemma off_diag_sum_bound (K t : ℝ) (hK : K ≥ 1) (ht : t > 0) (i : Q3.Nodes K) :
     (∑ j : Q3.Nodes K, if j = i then 0 else |T_P_matrix K t i j|) ≤ Q3.w_max * Q3.S_K K t := by
-  -- The off-diagonal sum is bounded by geometric series
-  sorry
+  -- Step 1: Rewrite sum with if j ≠ i condition
+  have h_sum_eq : (∑ j : Q3.Nodes K, if j = i then 0 else |T_P_matrix K t i j|) =
+      (∑ j : Q3.Nodes K, if j ≠ i then |T_P_matrix K t i j| else 0) := by
+    apply Finset.sum_congr rfl
+    intro j _
+    by_cases h : j = i <;> simp [h]
+  rw [h_sum_eq]
+  -- Step 2: Bound each |T_P[i,j]| by w_max * exp(...)
+  have h_bound : ∀ j : Q3.Nodes K, (if j ≠ i then |T_P_matrix K t i j| else 0) ≤
+      Q3.w_max * (if (j : ℕ) ≠ (i : ℕ) then Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) := by
+    intro j
+    by_cases h : j = i
+    · simp [h]
+    · simp only [ne_eq, h, not_false_eq_true, ite_true, ite_false]
+      have hne : (j : ℕ) ≠ (i : ℕ) := fun heq => h (Subtype.ext heq)
+      simp only [hne, ite_true]
+      exact T_P_off_diag_bound K t ht i j (Ne.symm h)
+  -- Step 3: Apply sum_le_sum and factor out w_max
+  have hwm_nn : (0 : ℝ) ≤ Q3.w_max := by unfold Q3.w_max; positivity
+  calc ∑ j : Q3.Nodes K, (if j ≠ i then |T_P_matrix K t i j| else 0)
+      ≤ ∑ j : Q3.Nodes K, Q3.w_max * (if (j : ℕ) ≠ (i : ℕ) then
+          Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) :=
+        Finset.sum_le_sum (fun j _ => h_bound j)
+    _ = Q3.w_max * ∑ j : Q3.Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
+          Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) := by
+        simp only [Finset.mul_sum]
+    _ ≤ Q3.w_max * Q3.S_K K t := by
+        apply mul_le_mul_of_nonneg_left
+        exact Q3.off_diag_exp_sum_closed K t hK ht i
+        exact hwm_nn
 
 /-- S_K ≤ η when t = t_min(K, η) -/
 lemma S_K_at_t_min (K η : ℝ) (hK : K ≥ 1) (hη : η > 0) :

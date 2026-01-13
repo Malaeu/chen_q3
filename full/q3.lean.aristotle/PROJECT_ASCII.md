@@ -6,7 +6,7 @@ Legend:
 [AX]  axiom in main chain
 [WIP] active work
 
-Last update: 2026-01-12
+Last update: 2026-01-13
 
 ## Full Project Diagram (Top-Level)
 
@@ -32,10 +32,10 @@ RH
             |   +-- c_arch_pos + a_star_* [AX]
             |   +-- A3_FLOOR (a_star lower bounds) [OK local / OK* main]
             |
-            +-- RKHS_contraction [AX]
+            +-- RKHS_contraction [OK*]  # bridge_v2 2026-01-13
                 |
                 +-- node_spacing [OK*]
-                +-- off_diag_exp_sum [AX]
+                +-- off_diag_exp_sum [OK*]  # bridge_v3 2026-01-13
                 +-- S_K_small [OK*]
                 +-- T_P_row_sum_bound [OK*]
 
@@ -85,11 +85,11 @@ Tier-2 (Q3 contributions)
 | `A1_density_axiom` | (legacy, no closure) | AX |
 | `W_sum_finite_axiom` | `Q3/Proofs/W_sum_finite.lean`, `Q3/Proofs/W_sum_finite_integrated.lean` | OK* |
 | `Q_Lipschitz_on_W_K` | `Q3/Proofs/Q_Lipschitz.lean` (uses bridge axioms) | AX |
-| `RKHS_contraction_axiom` | `Q3/Proofs/RKHS_contraction_integrated.lean` (bridge/rescaling) | OK* |
+| `RKHS_contraction_axiom` | `Q3/Proofs/RKHS_contraction_bridge_v2.lean` | OK* (0 sorry) |
 | `T_P_row_sum_bound_axiom` | `Q3/Proofs/RKHS_contraction.lean` | OK* |
 | `S_K_small_axiom` | `Q3/Proofs/S_K_small_integrated.lean` | OK* |
 | `node_spacing_axiom` | `Q3/Proofs/node_spacing_integrated.lean` | OK* |
-| `off_diag_exp_sum_axiom` | `Q3/Proofs/off_diag_exp_sum_integrated.lean` | AX |
+| `off_diag_exp_sum_axiom` | `Q3/Proofs/off_diag_exp_sum_bridge_v3.lean` | OK* |
 | `A3_bridge_axiom` | `Q3/Proofs/A3_bridge.lean` / `Q3/Proofs/A3_bridge_integrated.lean` | AX |
 | `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_integrated.lean` | AX |
 
@@ -104,6 +104,7 @@ These items are no longer axioms when using `Q3.AxiomsTheorems`:
 - `W_sum_finite_axiom`
 - `S_K_small_axiom`
 - `node_spacing_axiom`
+- `off_diag_exp_sum_axiom` (bridge_v3, 2026-01-13)
 
 ## Still Strictly AX (main chain)
 
@@ -127,7 +128,6 @@ Tier-2 (Q3 contributions):
 - `Q_Lipschitz_on_W_K`
 - `RKHS_contraction_axiom`
 - `T_P_row_sum_bound_axiom`
-- `off_diag_exp_sum_axiom`
 - `A3_bridge_axiom`
 - `Q_nonneg_on_atoms_of_A3_RKHS_axiom`
 
