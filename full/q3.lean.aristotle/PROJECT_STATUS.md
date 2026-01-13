@@ -96,6 +96,9 @@ Two files connecting A3_FLOOR to A3_bridge_uniform axiom:
 | `A3_bridge.lean` | `A3_bridge_from_Szego` | A3_bridge_data K from A3_bridge_axiom |
 | `A3_bridge_v3_uniform.lean` | `A3_bridge_from_floor` | A3_bridge_data_uniform from A3_bridge_uniform |
 
+Integration note (2026-01-13): `A3_bridge_v3_uniform.lean` now imports
+`A3_FLOOR_v22_stage4_floor.lean` and uses `P_A_ge_c_star` (no placeholder axiom).
+
 **Proof structure:**
 - `A3_FLOOR` theorem (proven in A3_FLOOR_v22_stage4_floor.lean): P_A(θ) ≥ c_star = 11/10
 - `Szego_Rayleigh_lower_bound` (Tier-1 axiom): Toeplitz eigenvalues → symbol infimum

@@ -120,11 +120,11 @@ numerical_bounds ─────────────────────
 | Stage 3: Bounds | ✅ DONE | v20 |
 | Stage 4: Final | ✅ DONE | v22 |
 
-**Следующий шаг:** интеграция A3_FLOOR в основной chain и зачистка устаревших заметок.
+**Следующий шаг:** интеграция A3_FLOOR в основной chain — DONE (A3_bridge_v3_uniform → P_A_ge_c_star).
 
 ---
 
-**Последнее обновление:** 2026-01-12
+**Последнее обновление:** 2026-01-13
 
 <!-- AUTO-STATUS:BEGIN -->
 Auto status (DB snapshot): 2026-01-12 20:58

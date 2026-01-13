@@ -36,7 +36,7 @@ RH
             +-- A3_bridge [OK*]  # CLOSED 2026-01-13 (0 sorry)
             |   |
             |   +-- A3_bridge.lean [OK]
-            |   +-- A3_bridge_v3_uniform.lean [OK]
+            |   +-- A3_bridge_v3_uniform.lean [OK]  # imports P_A_ge_c_star
             |   +-- Szego_Bottcher_eigenvalue_bound [AX]
             |   +-- Szego_Bottcher_convergence [AX]
             |   +-- Szego_Rayleigh_lower_bound [AX]

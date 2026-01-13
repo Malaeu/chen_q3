@@ -21,6 +21,7 @@ A3_FLOOR_v22_stage4_floor.lean.
 -/
 
 import Q3.Axioms
+import A3_FLOOR_v22_stage4_floor
 
 set_option linter.mathlibStandardSet false
 
@@ -41,12 +42,14 @@ The periodized Archimedean symbol P_A(θ) is the symbol of the Toeplitz operator
 in the A3 bridge. The floor c* = 11/10 is the minimum over the torus T = [-1/2, 1/2].
 -/
 
-/-- A3_FLOOR theorem (proven in A3_FLOOR_v22_stage4_floor.lean).
-    min_{θ ∈ T} P_A(θ) ≥ 11/10 = c_star -/
-axiom A3_FLOOR_main :
-  ∀ θ : ℝ, θ ∈ Set.Icc (-1/2 : ℝ) (1/2) →
-    -- P_A B_min t_sym θ ≥ c_star
-    True  -- placeholder; real proof imports A3_FLOOR_v22
+/-- A3_FLOOR theorem (imported from A3_FLOOR_v22_stage4_floor.lean).
+    min_{θ ∈ T} P_A(θ) ≥ 11/10 = c_star
+
+    Note: P_A and c_star here are from A3_FLOOR_v22 namespace, not Q3.
+    Both c_star = 11/10, so the bound transfers. -/
+lemma A3_FLOOR_main {θ : ℝ} (hθ : θ ∈ Set.Icc (-1/2 : ℝ) (1/2)) :
+    P_A B_min t_sym θ ≥ c_star :=
+  P_A_ge_c_star hθ
 
 /-- Key bridge: A3_FLOOR implies A3_bridge_data_uniform.
 
