@@ -14,21 +14,21 @@ Notes:
 
 | Source | Lines | Theorems | Lemmas | Defs | Total Decls |
 |--------|-------|----------|--------|------|-------------|
-| **Q3/** (core) | 17,020 | 197 | 351 | 280 | 849 |
-| **aristotle_output/** | 11,116 | 91 | 259 | 278 | 636 |
+| **Q3/** (core) | 17,081 | 196 | 356 | 280 | 853 |
+| **aristotle_output/** | 11,201 | 92 | 262 | 286 | 648 |
 | **A3_FLOOR*** | 2,901 | 14 | 74 | 22 | 110 |
-| **TOTAL** | **31,037** | **302** | **684** | **580** | **1,595** |
+| **TOTAL** | **31,183** | **302** | **692** | **588** | **1,611** |
 
 ## Δ vs previous snapshot
 
 | Source | Lines Δ | Theorems Δ | Lemmas Δ | Defs Δ | Total Decls Δ |
 |--------|---------|------------|----------|--------|----------------|
-| **Q3/** (core) | +37 | +0 | +4 | +0 | +4 |
-| **aristotle_output/** | +0 | +0 | +0 | +0 | +0 |
+| **Q3/** (core) | +31 | -1 | +2 | +0 | +1 |
+| **aristotle_output/** | +85 | +1 | +3 | +8 | +12 |
 | **A3_FLOOR*** | +0 | +0 | +0 | +0 | +0 |
-| **TOTAL** | +37 | +0 | +4 | +0 | +4 |
+| **TOTAL** | +116 | +0 | +5 | +8 | +13 |
 
-*Previous TOTAL line count was a rough estimate (~48,000); recompute gives 31,037.
+*Previous TOTAL line count was a rough estimate (~48,000); recompute gives 31,183.
 
 ---
 
@@ -43,7 +43,7 @@ Notes:
 | sandbox_test_result.lean | 49 | `c33c6672` - sandbox test |
 | + 35 other output files | 10,491 | Various experiments |
 
-**Total Aristotle contribution: 11,116 lines (~36% of project)**
+**Total Aristotle contribution: 11,201 lines (~36% of project)**
 
 ### 📐 A3_FLOOR (Numerical Analysis)
 
@@ -64,7 +64,7 @@ Notes:
 | Category | Files | Lines | Thm/Lemmas |
 |----------|-------|-------|------------|
 | Axioms/Main | 2 | 713 | 12 |
-| Proofs/ | 44 | 8,795 | 319 |
+| Proofs/ | 44 | 8,846 | 321 |
 | Archive/ | 20 | 4,568 | 146 |
 | DigammaSeries | 2 | 2,571 | 48 |
 | Other | 28 | 4,849 | 166 |
@@ -107,12 +107,12 @@ Q3/Proofs/Q_nonneg_bridge_v2.lean
 
 ```
 Q3/Proofs (44 files)
-  lines: 8795 (nonempty 7535), namespaces: 37
-  lemma 217 | theorem 102 | def 148 | abbrev 1 | structure 1 | instance 1
+  lines: 8846 (nonempty 7589), namespaces: 37
+  lemma 220 | theorem 101 | def 148 | abbrev 1 | structure 1 | instance 1
 
 Q3 total (76 files)
-  lines: 17020 (nonempty 14699), namespaces: 60
-  lemma 351 | theorem 197 | def 280 | abbrev 8 | structure 8 | instance 5
+  lines: 17081 (nonempty 14768), namespaces: 60
+  lemma 356 | theorem 196 | def 280 | abbrev 8 | structure 8 | instance 5
 ```
 
 ---

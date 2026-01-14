@@ -85,6 +85,11 @@ def fejer_heat (B t : ℝ) (x : ℝ) : ℝ := fejer_kernel B x * heat_kernel t x
 def fejer_heat_window (B t : ℝ) (ξ : ℝ) : ℝ :=
   max 0 (1 - |ξ| / B) * Real.exp (-4 * Real.pi^2 * t * ξ^2)
 
+lemma fejer_heat_window_nonneg (B t ξ : ℝ) : 0 ≤ fejer_heat_window B t ξ := by
+  have h0 : 0 ≤ max (0 : ℝ) (1 - |ξ| / B) := by
+    exact le_max_left _ _
+  exact mul_nonneg h0 (Real.exp_nonneg _)
+
 /-- Fourier index for i in Fin (2*M+1): maps 0..2M to -M..M. -/
 def fourier_index (M : ℕ) (i : Fin (2 * M + 1)) : ℤ :=
   (i.val : ℤ) - (M : ℤ)
@@ -217,6 +222,18 @@ lemma w_max_lt_one : w_max < 1 := by
 lemma prime_vec_norm (M : ℕ) (ξ : ℝ) (i : Fin (2 * M + 1)) :
     ‖prime_vec M ξ i‖ = 1 / Real.sqrt (2 * M + 1 : ℝ) := by
   simp [prime_vec, Complex.norm_exp]
+
+lemma prime_vec_mul_conj_norm (M : ℕ) (ξ : ℝ)
+    (i j : Fin (2 * M + 1)) :
+    ‖prime_vec M ξ i * conj (prime_vec M ξ j)‖ =
+      (1 / Real.sqrt (2 * M + 1 : ℝ))^2 := by
+  calc
+    ‖prime_vec M ξ i * conj (prime_vec M ξ j)‖
+        = ‖prime_vec M ξ i‖ * ‖conj (prime_vec M ξ j)‖ := by
+            simp
+    _ = ‖prime_vec M ξ i‖ * ‖prime_vec M ξ j‖ := by simp
+    _ = (1 / Real.sqrt (2 * M + 1 : ℝ))^2 := by
+            simp [prime_vec_norm, pow_two, mul_comm]
 
 lemma prime_vec_norm_sq_sum (M : ℕ) (ξ : ℝ) :
     (∑ i : Fin (2 * M + 1), ‖prime_vec M ξ i‖^2) = 1 := by

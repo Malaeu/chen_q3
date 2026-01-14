@@ -121,12 +121,21 @@ This has ||T_P^{(M)}|| ≤ ||T_P|| (compression), so uniform t IS possible.
 
 **V1/V4 status**: Useful for local bounds, sanity checks. NOT for uniform A3_bridge.
 
-**🚀 V5 (`1cac53dd`) — RAYLEIGH-FIRST (2026-01-14)**:
+**🚀 V5 (`1cac53dd`) — RAYLEIGH-FIRST (2026-01-14)**: ✅ **COMPLETE!**
 - Input: `aristotle_input/A3_bridge_RAYLEIGH_FIRST.md` (from Proshka)
+- Output: `aristotle_output/A3_bridge_rayleigh_first_v5.lean` — **120 lines, 0 sorry!**
 - **No SB, No M₀** — uses t_rkhs=1 for RKHS cap, Rayleigh for Toeplitz
 - **T_P_comp** — rank-one sum (compression, correct definition!)
-- Status: QUEUED
-- Key: λ_min(Toeplitz - T_P_comp) ≥ c* - ρ(1) ≥ c*/4
+
+**V5 proven lemmas:**
+- `quadForm_sub`, `rayleighQ_sub` — quadratic form algebra
+- `cstar_sub_rho_ge_quarter` — c* - 1/25 ≥ c*/4 (norm_num)
+- `A3_bridge_rayleigh_first` — **MAIN THEOREM**
+
+**Dependencies (hypotheses in V5):**
+1. `h_rayleigh_lower_bound` — from `rayleigh_v1.lean` ✅
+2. `h_floor` — from A3_FLOOR ✅
+3. `h_cap` — RKHS cap at t_rkhs=1 (need to wire)
 
 **V3 SUCCESS**: `aristotle_output/A3_bridge_v3_proshka.lean`
 - Все 4 леммы доказаны
