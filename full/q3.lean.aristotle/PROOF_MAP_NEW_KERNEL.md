@@ -270,6 +270,8 @@ PY
 ### A1_density Theorem - CLOSED (axiom-free)
 - `Q3/Proofs/A1_density.lean` - `A1_density_WK_thm` (0 sorry)
 - Wired in `Q3/T5_Transfer.lean` via `Q3.Theorems.A1_density_WK`
+- Aristotle output `aristotle_output/A1_density_hat_chain.lean` cleaned
+  (exact? removed, ring_nf, no unused vars).
 
 <!-- AUTO-STATUS:BEGIN -->
 Auto status (DB snapshot): 2026-01-12 20:58

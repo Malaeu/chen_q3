@@ -43,7 +43,7 @@ def W_K (K : ℝ) : Set (ℝ → ℝ) :=
 
 noncomputable def FejerKernel (B : ℝ) (x : ℝ) : ℝ := max 0 (1 - |x| / B)
 
-lemma W_K_boundary_vanish (K : ℝ) (hK : K > 0) (Φ : ℝ → ℝ) (hΦ : Φ ∈ W_K K) :
+lemma W_K_boundary_vanish (K : ℝ) (_hK : K > 0) (Φ : ℝ → ℝ) (hΦ : Φ ∈ W_K K) :
     Φ (-K) = 0 ∧ Φ K = 0 := by
       obtain ⟨ hΦ1, hΦ2, hΦ3 ⟩ := hΦ;
       constructor <;> contrapose! hΦ2;
@@ -87,7 +87,7 @@ lemma local_hat_approx (h : ℝ) (h_pos : 0 < h) (x0 : ℝ) (f : ℝ → ℝ) (�
     suffices h_local_approx : |(f x - f x0) * FejerKernel h (x - x0) + (f x - f (x0 + h)) * FejerKernel h (x - (x0 + h))| < ε by
       have h_partition : FejerKernel h (x - x0) + FejerKernel h (x - (x0 + h)) = 1 := by
         exact FejerKernel_partition_unity h h_pos x0 x hx
-      convert h_local_approx using 2 ; rw [ eq_sub_of_add_eq' h_partition ] ; ring;
+      convert h_local_approx using 2 ; rw [ eq_sub_of_add_eq' h_partition ] ; ring_nf;
     have h_local_approx : |(f x - f x0) * FejerKernel h (x - x0) + (f x - f (x0 + h)) * FejerKernel h (x - (x0 + h))| ≤ |f x - f x0| * FejerKernel h (x - x0) + |f x - f (x0 + h)| * FejerKernel h (x - (x0 + h)) := by
       rw [ abs_le ];
       constructor <;> cases abs_cases ( f x - f x0 ) <;> cases abs_cases ( f x - f ( x0 + h ) ) <;> nlinarith [ show 0 ≤ FejerKernel h ( x - x0 ) by exact le_max_left _ _, show 0 ≤ FejerKernel h ( x - ( x0 + h ) ) by exact le_max_left _ _ ];
@@ -178,11 +178,11 @@ lemma hat_approx_uniform_bound (K : ℝ) (hK : K > 0) (f : ℝ → ℝ)
         have h_local_approx : |f x - (f (GridPoints K N i) * FejerKernel (K / N) (x - GridPoints K N i) + f (GridPoints K N (i + 1)) * FejerKernel (K / N) (x - GridPoints K N (i + 1)))| < ε / 2 := by
           have := local_hat_approx ( K / N ) ( by positivity ) ( GridPoints K N i ) f ( ε / 2 );
           convert this _ x _ using 1;
-          · unfold GridPoints; norm_num; ring;
+          · unfold GridPoints; norm_num; ring_nf;
           · simp_all +decide [ GridPoints ];
-            exact fun x hx₁ hx₂ => ⟨ h_osc x hx₁ ( by linarith ) |>.1, by convert h_osc x hx₁ ( by linarith ) |>.2 using 1 ; ring ⟩;
-          · convert hx_interval using 2 ; unfold GridPoints ; ring;
-            push_cast; ring;
+            exact fun x hx₁ hx₂ => ⟨ h_osc x hx₁ ( by linarith ) |>.1, by convert h_osc x hx₁ ( by linarith ) |>.2 using 1 ; ring_nf ⟩;
+          · convert hx_interval using 2 ; unfold GridPoints ; ring_nf;
+            push_cast; ring_nf;
         linarith;
       refine' ⟨ N, hN_pos, fun x hx => _ ⟩;
       obtain ⟨ i, hi₁, hi₂ ⟩ := h_partition x hx;
@@ -194,7 +194,7 @@ Hat interpolation approximation lemma.
 -/
 lemma hat_interpolation_approx (K : ℝ) (hK : K > 0) (f : ℝ → ℝ)
     (hf_cont : ContinuousOn f (Set.Icc (-K) K))
-    (hf_nonneg : ∀ x ∈ Set.Icc (-K) K, 0 ≤ f x)
+    (_hf_nonneg : ∀ x ∈ Set.Icc (-K) K, 0 ≤ f x)
     (hf_zero_left : f (-K) = 0)
     (hf_zero_right : f K = 0)
     (ε : ℝ) (hε : ε > 0) :

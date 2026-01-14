@@ -33,5 +33,7 @@ RH_of_Weil_and_Q3
 - `Q_Lipschitz_on_W_K` is a theorem (arch/prime bridge axioms closed).
 - Remaining closable axioms: `A3_bridge_axiom`,
   `Q_nonneg_on_atoms_of_A3_RKHS_axiom`.
+- `aristotle_output/A1_density_hat_chain.lean` is now exact?-free and compiles
+  cleanly (ring_nf + unused variables fixed).
 - External/classical axioms in the chain: `Weil_criterion`, `a_star_pos`,
   `a_star_bdd_on_compact`, `a_star_continuous`.

@@ -166,6 +166,10 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
   (project `18bfe8c7-4620-41d4-be62-489409168e95`) with corrected boundary
   condition `f(-K)=f(K)=0`.
 
+- 2026-01-14: Cleaned `aristotle_output/A1_density_hat_chain.lean` by replacing
+  `exact?` with `FejerKernel_partition_unity`, switching `ring`→`ring_nf`, and
+  removing unused variables; file compiles with no warnings.
+
 - 2026-01-14: Submitted `A1_density_hat_chain` to Aristotle (project `e90d4213`).
   Plan: rewrite A1_density_WK_thm using hat-chain (Lemma 6.4) instead of
   convolution + Riemann sum. This avoids B vs B' mismatch and asymmetric sums.
