@@ -1,160 +1,173 @@
-# PROSHKA REQUEST v3: Сверка с базой (BASE-SYNCED)
+# PROSHKA REQUEST v4: Rayleigh bridge + fixed-t density (BASE-SYNCED)
 
 ---
 
-## §0. Статус и цель
+## §0. Status and goal
 
-**Цель:** Доказать только $Q(\Phi) \geq 0$ для всех $\Phi \in \mathcal{W}$.
+**Goal:** Prove only $Q(\Phi) \ge 0$ for all $\Phi \in \mathcal{W}$.
 
-**Статус:** Условная схема «Tier-2 ⟹ RH» через Weil criterion (никаких "RH proven").
+**Status:** Conditional chain "Tier-2 ==> RH" via Weil criterion (no "RH proven").
 
 ---
 
-## §1. Нормировка / знак / тор (ФИКСИРУЕМ)
+## §1. Normalization / sign / torus (LOCKED)
 
-### Знак (МИНУС!)
+### Sign (MINUS)
 $$
 Q(\Phi) = Q_{\mathrm{arch}}(\Phi) - Q_{\mathrm{prime}}(\Phi)
 $$
 
-### T0-нормировка
+### T0 normalization
 $$
 a_*(\xi) = 2\pi a(\xi), \qquad \xi_n = \frac{\log n}{2\pi}
 $$
 
-### Period-1 тор
+### Period-1 torus
 $$
 \mathbb{T} = [-1/2, 1/2], \quad e_k(\theta) = e^{2\pi i k\theta}, \quad d\theta
 $$
 
-### Символ A3 (period-1)
+### A3 symbol (period-1)
 $$
-P_A(\theta) = 2\pi \sum_{m \in \mathbb{Z}} g_{B,t_{\mathrm{sym}}}(\theta + m), \quad g_{B,t}(\xi) = a(\xi)\Phi_{B,t}(\xi)
+P_A(\theta) = 2\pi \sum_{m \in \mathbb{Z}} g_{B,t_{\mathrm{sym}}}(\theta + m),
+\quad g_{B,t}(\xi) = a(\xi)\Phi_{B,t}(\xi)
 $$
 
 ---
 
-## §2. Tier-1 факты
+## §2. Tier-1 facts
 
 ### Weil criterion
 $$
-Q \geq 0 \text{ на } \mathcal{W} \iff \mathrm{RH}
+Q \ge 0 \text{ on } \mathcal{W} \iff \mathrm{RH}
 $$
 
-### Szegő-Böttcher (period-1)
+### Toeplitz quadratic form (Rayleigh core)
+For trig polynomials $p$ in $P_M$:
 $$
-\lambda_{\min}(T_M[\sigma]) \geq \min\sigma - C_{SB} \cdot \omega_\sigma\left(\frac{1}{2M}\right), \quad C_{SB} = 4
+\langle T_M[P_A]p,p\rangle = \int_{\mathbb{T}} P_A(\theta) |p(\theta)|^2\,d\theta
 $$
+
+### Rayleigh lower bound (no Szego-Bottcher needed)
+$$
+\lambda_{\min}(T_M[P_A]) \ge \min_{\theta \in \mathbb{T}} P_A(\theta)
+$$
+
+**Note:** The classical Szego-Bottcher estimate
+$$
+\lambda_{\min}(T_M[\sigma]) \ge \min \sigma - C_{SB} \cdot \omega_\sigma(1/(2M))
+$$
+is **optional** and follows as a corollary since $\omega_\sigma \ge 0$.
 
 ---
 
-## §3. Tier-2 модули (по базе)
+## §3. Tier-2 modules (current plan)
 
-### A1': Плотность Fejér×heat-конуса
-При фиксированном $t_{\mathrm{sym}}$.
+### A1' density (fixed $t_0$, hat interpolation)
+Atoms are restricted by the margin condition:
+$$
+|\tau| + B \le K
+$$
+so support stays in $[-K,K]$. Use hat interpolation (Lemma 6.4) on $[-K,K]$.
 
-### A2: Lipschitz-контроль
-$Q$ липшицев на каждом $\mathcal{W}_K$.
+### A2 (Lipschitz)
+$Q$ is Lipschitz on each $\mathcal{W}_K$.
 
 ### A3 floor (pointwise)
 $$
-P_A(\theta) \geq c_* = \frac{11}{10} \quad \forall\theta \in [-1/2, 1/2]
+P_A(\theta) \ge c_* = 11/10 \quad \forall \theta \in [-1/2, 1/2]
 $$
 
-### RKHS-cap
-При $t_{\mathrm{rkhs}} \geq t_{\star,\mathrm{rkhs}}^{\mathrm{unif}} = 1$:
+### RKHS cap
+For $t_{\mathrm{rkhs}} \ge t_{*,\mathrm{rkhs}}^{\mathrm{unif}} = 1$:
 $$
-\|T_P\| \leq \rho(1) < \frac{1}{25}
+\|T_P\| \le \rho(1) < 1/25
 $$
 
-### Rayleigh-мост
-$Q(\Phi_{B,t_{\mathrm{sym}}})$ равен Rayleigh-квотенту $T_M[P_A] - T_P$ при $p \equiv 1$, без внешнего $2\pi$ (он уже в $P_A$).
+### Rayleigh bridge (p = 1)
+$Q(\Phi_{B,t_{\mathrm{sym}}})$ equals the Rayleigh quotient of
+$T_M[P_A] - T_P$ at $p \equiv 1$ (no extra $2\pi$ factor; already in $P_A$).
 
 ---
 
-## §4. Дискретизация
+## §4. Discretization (optional)
 
+No $M_0$ is required if we use the Rayleigh lower bound directly.
+If we still want Szego-Bottcher, treat it as a weaker corollary:
 $$
-\lambda_{\min}(T_M[P_A]) \geq \min P_A - C_{SB} \cdot \omega_{P_A}\left(\frac{1}{2M}\right)
-$$
-
-$$
-M_0^{\mathrm{unif}} = \left\lceil \frac{C_{SB} L_*}{c_*} \right\rceil, \quad
-M \geq M_0^{\mathrm{unif}} \Rightarrow \lambda_{\min}(T_M[P_A]) \geq \frac{c_*}{2}
+\lambda_{\min} \ge \min P_A \ge \min P_A - 4\,\omega_{P_A}(1/(2M))
 $$
 
 ---
 
-## §5. Позитивность на генераторах
+## §5. Positivity on generators
 
-1. **A3:** $\min P_A \geq c_*$
-2. **Discretisation:** $\lambda_{\min}(T_M[P_A]) \geq c_*/2$
-3. **RKHS-cap:** $\|T_P\| \leq c_*/4$ (через $\rho(1) < 1/25$)
+1) **A3 floor:** $P_A \ge c_*$ (pointwise)
+2) **Rayleigh:** $\lambda_{\min}(T_M[P_A]) \ge c_*$
+3) **RKHS cap:** $\|T_P\| \le c_*/4$
 
-Отсюда:
+Hence
 $$
-\lambda_{\min}(T_M[P_A] - T_P) \geq \frac{c_*}{4} > 0
+\lambda_{\min}(T_M[P_A] - T_P) \ge c_* - \|T_P\| \ge 3c_*/4 > 0
 $$
-
-и $Q(\Phi_{B,t_{\mathrm{sym}}}) \geq 0$.
-
----
-
-## §6. Замыкание и RH
-
-По A1'+A2 переносим $Q \geq 0$ с генераторов на всё $\mathcal{W}_K$, затем на $\mathcal{W}$.
-
-По Weil criterion получаем **RH (условно на Tier-2)**.
+so $Q(\Phi_{B,t_{\mathrm{sym}}}) \ge 0$.
 
 ---
 
-## §7. Ключевые инварианты (проверка)
+## §6. Closure and RH
 
-| # | Инвариант | Значение |
-|---|-----------|----------|
-| 1 | Знак | $Q = Q_{\mathrm{arch}} - Q_{\mathrm{prime}}$ |
-| 2 | Нормировка | $\xi_n = \log n/(2\pi)$, $a_* = 2\pi a$ |
-| 3 | Тор | period-1, $\mathbb{T} = [-1/2, 1/2]$ |
-| 4 | Символ | $P_A = 2\pi \sum_m g(\theta+m)$ |
-| 5 | Floor | $c_* = 11/10$ (НЕ 1.5!) |
-| 6 | Toeplitz-gap | $\omega(1/(2M))$, $M_0 = \lceil C_{SB}L_*/c_* \rceil$ |
-| 7 | Prime-cap | $t_{\mathrm{rkhs}} \geq 1 \Rightarrow \rho(1) < 1/25$ |
-| 8 | Цель | $Q(\Phi) \geq 0$ (НЕ "≥ 1.125"!) |
+By A1'+A2 we extend $Q \ge 0$ from generators to all of $\mathcal{W}_K$, then to $\mathcal{W}$.
+By Weil criterion we obtain **RH (conditional on Tier-2)**.
 
 ---
 
-## §8. Формат ответа
+## §7. Key invariants (checklist)
 
-- Короткий отчёт "совпадает/не совпадает" по пунктам 1-8
-- Пересобранный текст §0-§8 (одним блоком)
-- Без внешних ссылок; без новых обозначений; без legacy-веток
-
----
-
-## ЧЕГО НЕ ДЕЛАТЬ
-
-❌ Не возвращать $c_* = 1.5$
-❌ Не писать SB как $O(1/M)$; только $C_{SB} \cdot \omega(1/(2M))$
-❌ Не ставить $t_{\mathrm{rkhs}} = t_{\mathrm{sym}}$
-❌ Не вводить $2\pi$-периодизацию
-❌ Не писать $Q \geq 1.125$ без нормировки
+| # | Invariant | Value |
+|---|-----------|-------|
+| 1 | Sign | $Q = Q_{\mathrm{arch}} - Q_{\mathrm{prime}}$ |
+| 2 | Normalization | $\xi_n = \log n/(2\pi)$, $a_* = 2\pi a$ |
+| 3 | Torus | period-1, $\mathbb{T} = [-1/2, 1/2]$ |
+| 4 | Symbol | $P_A = 2\pi \sum_m g(\theta+m)$ |
+| 5 | Floor | $c_* = 11/10$ (NOT 1.5) |
+| 6 | Rayleigh | $\lambda_{\min} \ge \min P_A$ (no SB needed) |
+| 7 | Prime cap | $t_{\mathrm{rkhs}} \ge 1 \Rightarrow \rho(1) < 1/25$ |
+| 8 | Goal | $Q(\Phi) \ge 0$ (NOT $\ge 1.125$) |
 
 ---
 
-## Контекст-пакет (.tex база)
+## §8. Response format
 
-| Файл | Модуль |
+- Short "matches / mismatches" report for items 1-8
+- Reassembled text of §0-§8 (single block)
+- No new notation, no external links
+
+---
+
+## DO NOT DO
+
+- Do NOT revert to $c_* = 1.5$
+- Do NOT require Szego-Bottcher as a blocker (use Rayleigh bound)
+- Do NOT change the sign convention
+- Do NOT switch to $2\pi$-periodic torus
+- Do NOT claim $Q \ge 1.125$ without normalization
+
+---
+
+## Context pack (.tex base)
+
+| File | Module |
 |------|--------|
-| `full/sections/T0.tex` | T0 нормировка |
+| `full/sections/T0.tex` | T0 normalization |
 | `full/sections/A3/symbol_floor.tex` | A3 floor |
-| `full/sections/A3/rayleigh_bridge.tex` | Rayleigh мост |
-| `full/sections/A3/matrix_guard.tex` | Дискретизация |
+| `full/sections/A3/rayleigh_bridge.tex` | Toeplitz quadratic form + Rayleigh |
+| `full/sections/A3/matrix_guard.tex` | (Optional) Szego-Bottcher discretization |
 | `full/sections/RKHS/prime_trace_closed_form.tex` | RKHS cap |
-| `full/sections/A1prime.tex` | A1' density |
+| `full/sections/A1prime.tex` | A1' density (fixed t0) |
 | `full/sections/A2.tex` | A2 Lipschitz |
-| `full/sections/Main_closure.tex` | Замыкание |
+| `full/sections/Main_closure.tex` | Closure |
 | `full/sections/Weil_linkage.tex` | Weil linkage |
 
 ---
 
-**∎ END OF PROSHKA REQUEST v3**
+**END OF PROSHKA REQUEST v4**

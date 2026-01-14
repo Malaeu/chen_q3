@@ -108,17 +108,17 @@ def Weil_cone_K (K : ℝ) : Set (ℝ → ℝ) :=
   {Φ | IsEven Φ ∧ IsNonneg Φ ∧ Function.support Φ ⊆ Set.Icc (-K) K}
 
 /-- W_K: space for T5 transfer theorem
-    This is the proper domain with continuity required for sup-norm control -/
+    This matches the paper: compactly supported continuous tests on [-K, K]. -/
 def W_K (K : ℝ) : Set (ℝ → ℝ) :=
-  {Φ | ContinuousOn Φ (Set.Icc (-K) K) ∧
-       Function.support Φ ⊆ Set.Icc (-K) K ∧
+  {Φ | Continuous Φ ∧
+       Function.support Φ ⊆ Set.Ioo (-K) K ∧
        IsEven Φ ∧
        IsNonneg Φ}
 
 /-- W_K implies Weil_cone_K (but not conversely - W_K requires continuity) -/
 lemma W_K_subset_Weil_cone_K (K : ℝ) : W_K K ⊆ Weil_cone_K K := by
   intro Φ ⟨_, hsupp, heven, hnonneg⟩
-  exact ⟨heven, hnonneg, hsupp⟩
+  exact ⟨heven, hnonneg, Set.Subset.trans hsupp Set.Ioo_subset_Icc_self⟩
 
 /-! ## Riemann Hypothesis -/
 

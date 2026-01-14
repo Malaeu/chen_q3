@@ -1,5 +1,8 @@
 # Project Workflow for Q3
 
+Entry point: `PROJECT_ORCHESTRATOR.md` (status + next steps).
+This file documents the workflow only.
+
 This file is the main project workflow; Aristotle is only one tool in the loop.
 
 ## Aristotle Integration: Principles
@@ -116,21 +119,33 @@ theorem new_result : Q := by
 cd /Users/emalam/Documents/GitHub/chen_q3
 source .venv/bin/activate
 
-# Проверить статус всех проектов
-# NOTE: project_ids.txt живёт в aristotle_input/
-python ~/.claude/skills/aristotle/scripts/status.py
+# Отправить новый файл (informal markdown)
+aristotle prove-from-file --informal --no-validate-lean-project --no-wait problem.md
 
-# Отправить новый файл
-python ~/.claude/skills/aristotle/scripts/submit.py problem.md
+# Проверить статус проекта (Python API)
+python3 - <<'PY'
+import asyncio
+from aristotlelib import Project
 
-# Мониторинг (каждые 5 минут)
-python ~/.claude/skills/aristotle/scripts/watch.py <project_id> --interval 300
+async def main():
+    p = await Project.from_id("<project_id>")
+    print(p.status, p.percent_complete)
 
-# Скачать результат
-python ~/.claude/skills/aristotle/scripts/download.py <project_id>
+asyncio.run(main())
+PY
 
-# Итерация (V2 с контекстом V1)
-python ~/.claude/skills/aristotle/scripts/iterate.py <project_id> original.md
+# Скачать результат (Python API)
+python3 - <<'PY'
+import asyncio
+from aristotlelib import Project
+
+async def main():
+    p = await Project.from_id("<project_id>")
+    path = await p.get_solution("aristotle_output/<project_id>-output.lean")
+    print("Downloaded:", path)
+
+asyncio.run(main())
+PY
 ```
 
 ---

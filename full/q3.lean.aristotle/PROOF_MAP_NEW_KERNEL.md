@@ -199,7 +199,16 @@ Files that are superseded or incorrect:
 # Check Aristotle v9 status
 cd /Users/emalam/Documents/GitHub/chen_q3
 source .venv/bin/activate
-python ~/.claude/skills/aristotle/scripts/status.py be2b9846
+python3 - <<'PY'
+import asyncio
+from aristotlelib import Project
+
+async def main():
+    p = await Project.from_id("be2b9846-bce6-4419-8edb-98ec19ccd2d7")
+    print(p.status, p.percent_complete)
+
+asyncio.run(main())
+PY
 ```
 
 ---

@@ -18,6 +18,8 @@ import Q3.Proofs.node_spacing_bridge
 import Q3.Proofs.S_K_small_bridge_v2
 import Q3.Proofs.W_sum_finite_bridge_v2
 import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
+import Q3.Proofs.A1_density   -- For A1_density_WK_thm (real proof!)
+import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
 
 -- NOTE: These bridges CONFLICT (they import standalone proofs that define
 -- xi_n, S_K, delta_K etc. in root namespace):
@@ -29,7 +31,6 @@ import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 --       (define local copies instead of importing standalone proofs)
 --
 -- Complex bridges not yet implemented:
--- - RKHS_contraction_bridge (coordinate rescaling gap)
 -- - Q_Lipschitz_bridge (a_star mismatch)
 -- - A3_bridge (Laurent polynomial → matrix form)
 -- - Q_nonneg_bridge (depends on RKHS/A3)
@@ -63,7 +64,7 @@ These are re-exported from Q3.Axioms
 ## Status (2026-01-13):
 - 4 PROVEN via theorems/bridges: node_spacing, S_K_small, W_sum_finite, Q_Lipschitz
 - 4 BRIDGE CLOSED (0 sorry): off_diag_exp_sum, A3_bridge, Q_nonneg, A1_density
-- 1 AXIOM in use: RKHS_contraction (used by other bridges)
+- 0 AXIOM in use: RKHS_contraction now bridged (xi_n rescaling)
 
 Note: "BRIDGE CLOSED" means the bridge file has 0 sorry, but it may still USE an axiom.
 "PROVEN" means actual theorem proof (may use lower-level axioms).
@@ -98,13 +99,17 @@ theorem off_diag_exp_sum (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
 /-! ## AXIOM FALLBACK (5/9) - Pending complex bridges -/
 
 /-- A1' Density: Fejér×heat atoms dense in W_K
-    STATUS: Blocked by AtomCone/W_K support mismatch (atoms with large B have
-    support outside [-K,K], but AtomCone_K requires g ∈ W_K). -/
+    STATUS: PROVEN via Q3/Proofs/A1_density.lean. -/
 theorem A1_density_WK : ∀ (K : ℝ) (hK : K > 0),
     ∀ Φ ∈ Q3.W_K K, ∀ ε > 0,
       ∃ g ∈ Q3.AtomCone_K K,
         sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε :=
-  Q3.A1_density_WK_axiom  -- Axiom fallback
+by
+  intro K hK Φ hΦ ε hε
+  have hΦ' : Φ ∈ _root_.W_K K := by
+    simpa [_root_.W_K_eq_q3] using hΦ
+  simpa [_root_.W_K_eq_q3, _root_.AtomCone_K_eq_q3] using
+    (_root_.A1_density_WK_thm K hK Φ hΦ' ε hε)
 
 /-- Q is Lipschitz on W_K
     STATUS: PROVEN via Q_Lipschitz.lean (uses arch/prime bridge axioms) -/
@@ -114,9 +119,9 @@ theorem Q_Lipschitz : ∀ (K : ℝ) (hK : K > 0),
   Q3.Proofs.Q_Lipschitz_on_W_K_thm  -- Real theorem!
 
 /-- RKHS contraction
-    STATUS: Needs bridge (xi_n rescaling + quantifier alignment) -/
+    STATUS: PROVEN via Bridge.RKHS_contraction_data_of_bridge -/
 theorem RKHS_contraction : ∀ (K : ℝ) (hK : K ≥ 1), Q3.RKHS_contraction_data K :=
-  Q3.RKHS_contraction_axiom  -- Axiom fallback
+  Q3.Bridge.RKHS_contraction_data_of_bridge
 
 /-- A3 bridge
     STATUS: Needs bridge (Laurent polynomial → matrix Rayleigh quotient) -/
@@ -153,8 +158,8 @@ end Q3.Theorems
 - Q_nonneg → Q_nonneg_bridge_v2.lean (0 sorry)
 - A1_density → A1_density_bridge_v2.lean (0 sorry)
 
-### AXIOM in main chain (1/9)
-- RKHS_contraction → used directly, no bridge yet
+### AXIOM in main chain (0/9)
+- RKHS_contraction → bridged via Bridge.RKHS_contraction_data_of_bridge
 
 ## Architecture Note
 PROVEN = actual theorem proof exists (may use lower-level axioms for arch/prime terms).

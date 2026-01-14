@@ -10,7 +10,7 @@ The proof structure:
 2. A1': Fejér×heat atoms are dense in W_K (with support control)
 3. A2: Q is Lipschitz continuous on W_K
 4. A3: Toeplitz-Symbol bridge gives λ_min ≥ c₀(K)/4
-5. RKHS: Prime operator contraction ‖T_P‖ ≤ ρ_K < 1
+5. RKHS: Prime operator contraction ‖T_P‖ ≤ ρ_K < 1 (THEOREM via bridge)
 6. T5: Transfer from atoms to all of W_K (THEOREM, not axiom!)
 7. Weil Criterion (axiom): Q ≥ 0 on Weil cone ⟺ RH
 
@@ -18,7 +18,7 @@ Final result: RH is true.
 
 Key axiom dependencies:
 - Tier-1: Weil_criterion
-- Tier-2: A1_density_WK_axiom, A3_bridge_axiom, RKHS_contraction_axiom,
+- Tier-2: A1_density_WK_axiom, A3_bridge_axiom,
           Q_nonneg_on_atoms_of_A3_RKHS_axiom
 - THEOREM: Q_Lipschitz_on_W_K_thm (real proof via arch/prime bridge axioms!)
 - Atoms positivity is a THEOREM from A3 + RKHS; T5_transfer is a THEOREM from A1 + A2 + Atoms
@@ -65,12 +65,12 @@ theorem A2_Lipschitz (K : ℝ) (hK : K > 0) :
 
 /-! ## Compact Transfer -/
 
-/-- W_K is included in the full Weil cone (via Weil_cone_K)
-    Note: W_K only has ContinuousOn, not full Continuous, so we need continuity axiom -/
+/-- W_K is included in the full Weil cone (via Weil_cone_K). -/
 lemma W_K_subset_Weil_cone (K : ℝ) (Φ : ℝ → ℝ)
-    (hΦ : Φ ∈ Q3.W_K K) (hcont : Continuous Φ) : Φ ∈ Q3.Weil_cone := by
+    (hΦ : Φ ∈ Q3.W_K K) : Φ ∈ Q3.Weil_cone := by
   have h1 : Φ ∈ Q3.Weil_cone_K K := Q3.W_K_subset_Weil_cone_K K hΦ
   obtain ⟨heven, hnonneg, hsupp⟩ := h1
+  obtain ⟨hcont, _, _, _⟩ := hΦ
   refine ⟨heven, hnonneg, ?_, hcont⟩
   -- HasCompactSupport follows from support ⊆ [-K, K]
   have h2 : tsupport Φ ⊆ Set.Icc (-K) K := by
@@ -107,12 +107,12 @@ theorem Weil_cone_continuous : ∀ Φ ∈ Q3.Weil_cone, Continuous Φ := by
   intro Φ ⟨_, _, _, hcont⟩
   exact hcont
 
-/-- Corollary: Functions in Weil cone with support in [-K,K] are in W_K -/
+/-- Corollary: Functions in Weil cone with support in (-K,K) are in W_K -/
 lemma Weil_cone_K_to_W_K (K : ℝ) (Φ : ℝ → ℝ)
-    (hΦ_cone : Φ ∈ Q3.Weil_cone) (hsupp : Function.support Φ ⊆ Set.Icc (-K) K) :
+    (hΦ_cone : Φ ∈ Q3.Weil_cone) (hsupp : Function.support Φ ⊆ Set.Ioo (-K) K) :
     Φ ∈ Q3.W_K K := by
   obtain ⟨heven, hnonneg, _, hcont⟩ := hΦ_cone
-  exact ⟨hcont.continuousOn, hsupp, heven, hnonneg⟩
+  exact ⟨hcont, hsupp, heven, hnonneg⟩
 
 /-! ## Main Theorem -/
 
@@ -130,7 +130,7 @@ theorem Q_nonneg_on_Weil_cone : ∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0 := by
   have hΦ_cone : Φ ∈ Q3.Weil_cone := hΦ
   obtain ⟨heven, hnonneg, hcompact, _hcont⟩ := hΦ
   -- Since Φ has compact support, there exists K ≥ 1 with supp(Φ) ⊆ [-K, K]
-  obtain ⟨K, hK_ge, hsupp⟩ : ∃ K ≥ 1, Function.support Φ ⊆ Set.Icc (-K) K := by
+  obtain ⟨K0, hK0_ge, hsupp0⟩ : ∃ K ≥ 1, Function.support Φ ⊆ Set.Icc (-K) K := by
     -- HasCompactSupport implies bounded support
     obtain ⟨M, hM⟩ := Metric.isBounded_iff_subset_ball (0 : ℝ) |>.mp hcompact.isCompact.isBounded
     use max M 1
@@ -144,7 +144,16 @@ theorem Q_nonneg_on_Weil_cone : ∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0 := by
       constructor
       · linarith [abs_nonneg x, neg_abs_le x]
       · linarith [le_abs_self x]
-  -- Φ is in W_K (using continuity axiom)
+  -- Enlarge the window so support lands in the open interval.
+  let K := K0 + 1
+  have hK_ge : K ≥ 1 := by nlinarith [hK0_ge]
+  have hsupp : Function.support Φ ⊆ Set.Ioo (-K) K := by
+    intro x hx
+    have hx' := hsupp0 hx
+    have hx1 : -K < x := by nlinarith [hx'.1]
+    have hx2 : x < K := by nlinarith [hx'.2]
+    exact ⟨hx1, hx2⟩
+  -- Φ is in W_K (continuity is part of Weil_cone)
   have hΦ_in_W_K : Φ ∈ Q3.W_K K := Weil_cone_K_to_W_K K Φ hΦ_cone hsupp
   -- Apply T5 transfer theorem
   exact Q_nonneg_on_W_K K hK_ge Φ hΦ_in_W_K
@@ -164,7 +173,6 @@ This theorem depends on:
 - A1_density_WK_axiom: atoms dense in W_K
 - Q_Lipschitz_on_W_K: Q is Lipschitz
 - A3_bridge_axiom: Toeplitz-symbol bridge
-- RKHS_contraction_axiom: prime operator contraction
 - Q_nonneg_on_atoms_of_A3_RKHS_axiom: core (A3+RKHS) ⇒ atoms positivity
 
 **Local axiom:**
@@ -172,6 +180,7 @@ This theorem depends on:
 
 **Theorem (not axiom!):**
 - Atoms.Q_nonneg_on_atoms: Q ≥ 0 on AtomCone_K (from A3 + RKHS)
+- RKHS_contraction: prime operator contraction (bridge theorem)
 - T5_transfer: Q ≥ 0 on W_K (from A1 + A2 + Atoms)
 
 Proof: By T5_transfer theorem, Q ≥ 0 on W_K for each K.
@@ -189,13 +198,13 @@ theorem RH_of_Weil_and_Q3 : Q3.RH := by
 #check RH_of_Weil_and_Q3
 -- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
 -- Standard: propext, Classical.choice, Quot.sound
--- Tier-1: Q3.Weil_criterion, Q3.a_star_pos, Q3.a_star_bdd_on_compact
+-- Tier-1: Q3.Weil_criterion, Q3.a_star_pos, Q3.a_star_bdd_on_compact, Q3.a_star_continuous
 -- Tier-2: Q3.A1_density_WK_axiom, Q3.A3_bridge_axiom,
---         Q3.RKHS_contraction_axiom, Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom
--- Bridge: Q3.Proofs.arch_term_Lipschitz_bridge, Q3.Proofs.prime_term_Lipschitz_bridge
+--         Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom
 --
 -- KEY IMPROVEMENTS:
 -- - Q_Lipschitz_on_W_K is now a THEOREM (uses arch/prime bridge axioms)!
+-- - RKHS_contraction is now a THEOREM (bridge closed)!
 -- - Q_nonneg_on_W_K_axiom is GONE! T5 is now a THEOREM!
 
 end Q3.Main

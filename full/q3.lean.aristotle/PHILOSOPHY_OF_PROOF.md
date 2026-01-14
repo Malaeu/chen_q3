@@ -41,7 +41,7 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│  IF these 9 mathematical statements are true (proven in Q3 paper)  │
+│  IF these 7 mathematical statements are true (4 classical + 3 Q3)  │
 │  THEN RH is true.                                                  │
 │                                                                    │
 │  Lean verifies: the logical implication is CORRECT.                │
@@ -65,7 +65,7 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ## Axiom Classification
 
-Our formalization depends on exactly **12 axioms** (beyond Standard Lean):
+Our formalization depends on exactly **7 axioms** (beyond Standard Lean):
 
 ### Level 0: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
 ```
@@ -75,31 +75,28 @@ Quot.sound       — Quotient soundness
 ```
 These are part of Lean's foundation. Every Mathlib proof uses them.
 
-### Level 1: Classical Results from Literature (3) — ESTABLISHED MATHEMATICS
+### Level 1: Classical Results from Literature (4) — ESTABLISHED MATHEMATICS
 ```
 Weil_criterion        — Weil 1952: Q ≥ 0 on Weil cone ⟺ RH
 a_star_pos            — a*(ξ) > 0 (digamma function properties)
 a_star_bdd_on_compact — a* bounded on compact sets
+a_star_continuous     — a* continuous on ℝ
 ```
 These are well-known results. Citations:
 - Weil, A. (1952). "Sur les 'formules explicites' de la théorie des nombres premiers"
 - Standard complex analysis (digamma function)
 
-### Level 2: Q3 Paper Contributions (4) — OUR MATHEMATICAL CONTENT
+### Level 2: Q3 Paper Contributions (3) — OUR MATHEMATICAL CONTENT
 ```
 A1_density_WK_axiom           — Fejér×heat atoms dense in W_K (Section 4)
 A3_bridge_axiom               — Toeplitz-symbol bridge (Section 6)
-RKHS_contraction_axiom        — ||T_P|| ≤ ρ < 1 (Section 5)
 Q_nonneg_on_atoms_of_A3_RKHS  — Q ≥ 0 on atoms (Theorem 5.3)
 ```
 These are the novel contributions proven in the Q3 paper.
 
-### Level 3: Technical Bridge Lemmas (2) — STANDARD ANALYSIS
-```
-arch_term_Lipschitz_bridge    — Integral bound (measure theory)
-prime_term_Lipschitz_bridge   — Series bound (summation theory)
-```
-These are straightforward analysis lemmas that could be formalized from Mathlib.
+### Level 3: Technical Bridge Lemmas (0) — CLOSED
+
+arch/prime Lipschitz bridges are now proven in Lean (no longer axioms).
 
 ---
 
@@ -126,12 +123,10 @@ Expected output:
   Q3.Weil_criterion,                    -- Level 1: Weil 1952
   Q3.a_star_pos,                        -- Level 1: Analysis
   Q3.a_star_bdd_on_compact,             -- Level 1: Analysis
+  Q3.a_star_continuous,                 -- Level 1: Analysis
   Q3.A1_density_WK_axiom,               -- Level 2: Q3 paper
   Q3.A3_bridge_axiom,                   -- Level 2: Q3 paper
-  Q3.RKHS_contraction_axiom,            -- Level 2: Q3 paper
-  Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom,-- Level 2: Q3 paper
-  Q3.Proofs.arch_term_Lipschitz_bridge, -- Level 3: Analysis
-  Q3.Proofs.prime_term_Lipschitz_bridge -- Level 3: Analysis
+  Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom -- Level 2: Q3 paper
 ]
 ```
 
@@ -166,9 +161,9 @@ Expected output:
                                    │                    │
                           ┌────────┴────────┐    ┌─────┴─────┐
                           │  arch + prime   │    │ A3 + RKHS │
-                          │  Lipschitz      │    │ (Level 2) │
-                          │  (Level 3)      │    └───────────┘
-                          └─────────────────┘
+                          │  Lipschitz      │    │ (A3 L2 +  │
+                          │  (THEOREM)      │    │  RKHS Thm)│
+                          └─────────────────┘    └───────────┘
 ```
 
 **Key insight:** The boxes marked "THEOREM" are fully machine-checked. The boxes marked "Level X" are our explicit assumptions.
@@ -206,15 +201,13 @@ Our axioms can be eliminated one by one:
 |-------|------------------|------------|
 | `a_star_pos` | Formalize digamma properties from Mathlib | Medium |
 | `a_star_bdd_on_compact` | Formalize from Mathlib | Medium |
-| `arch_term_Lipschitz_bridge` | Measure theory in Mathlib | Low |
-| `prime_term_Lipschitz_bridge` | Series bounds in Mathlib | Low |
+| `a_star_continuous` | Continuity of a* from Mathlib | Low |
 | `Weil_criterion` | Major project (Weil explicit formula) | Very High |
 | `A1_density_WK_axiom` | Density arguments | Medium |
 | `A3_bridge_axiom` | Szegő-Rayleigh theory | High |
-| `RKHS_contraction_axiom` | Schur test + operator bounds | High |
-| `Q_nonneg_on_atoms` | Follows from A3+RKHS | Medium |
+| `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | Follows from A3 + RKHS | Medium |
 
-Each elimination makes the proof stronger. Current state: **structure verified, awaiting full formalization of base lemmas.**
+Each elimination makes the proof stronger. Current state: **structure verified, with arch/prime Lipschitz and RKHS contraction already closed.**
 
 ---
 

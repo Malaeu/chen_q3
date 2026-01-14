@@ -5,7 +5,7 @@ Quick links to the current workflow, status, and sources of truth.
 ## Workflow
 
 - Project workflow (main loop): `full/q3.lean.aristotle/PROJECT_WORKFLOW.md`
-- Aristotle skill usage: `~/.claude/skills/aristotle/`
+- Aristotle skill usage: `~/.codex/skills/aristotle/`
 
 ## Status and Roadmap
 

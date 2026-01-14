@@ -22,3 +22,9 @@ A3_FLOOR_v14.md: ffa743a3-2c10-4a5d-b2bd-0493e0e4d34f
 A3_FLOOR_v15.md: 383828ff-fcc0-4dc6-b434-76a29e369f50
 A3_FLOOR_v17.md: c1ea0b1f-7f44-4fa6-8f83-6ef6aaa1b413
 A3_FLOOR_v18_fix_gamma_div_lemmas.md: f2dbbad1-3f72-4aff-b365-ab1329cfad2f
+A1_density_bridge_v4.md: ccf01635-d3c8-4e0f-b1f0-1b084dfcb405
+A1_density_hat_full_v1.md: 9dda8778-857e-42cf-a669-aad1a2e04d5b
+A1_density_hat_chain.md: e90d4213-cf0f-40bd-b161-d771155e5ecb
+A1_density_hat_chain_v2.md: 4276c4a4-2523-4916-9220-07484a6bbb72
+A1_density_hat_chain_v3.md: 00b89f9d-0655-43a6-ab84-0e39b31678e2
+sandbox_test.md: c33c6672-311f-4df7-a2c3-e47c19fd37e2

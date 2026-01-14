@@ -62,22 +62,24 @@ Coordinate rescaling:
 - Therefore the contraction bound carries over.
 -/
 theorem RKHS_contraction (K : ℝ) (hK : K ≥ 1) :
-    ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K],
-      ∀ (T_P : Matrix Nodes_K Nodes_K ℝ), T_P.IsSymm →
-      (∀ i j : Nodes_K, T_P i j = Real.sqrt (Q3.w_RKHS i) * Real.sqrt (Q3.w_RKHS j) *
-        Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t))) →
-      ‖T_P‖ ≤ ρ :=
+    ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧
+      ∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ Q3.Nodes K) →
+        let T_P : Matrix S S ℝ := fun i j =>
+          Real.sqrt (Q3.w_RKHS i) * Real.sqrt (Q3.w_RKHS j) *
+          Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t))
+        ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ :=
   Q3.RKHS_contraction_axiom K hK
 
 /-! ## Connection to Q3 Axiom -/
 
 /-- This theorem closes RKHS_contraction_axiom -/
 theorem closes_RKHS_axiom (K : ℝ) (hK : K ≥ 1) :
-    ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K],
-      ∀ (T_P : Matrix Nodes_K Nodes_K ℝ), T_P.IsSymm →
-      (∀ i j : Nodes_K, T_P i j = Real.sqrt (Q3.w_RKHS i) * Real.sqrt (Q3.w_RKHS j) *
-        Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t))) →
-      ‖T_P‖ ≤ ρ :=
+    ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧
+      ∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ Q3.Nodes K) →
+        let T_P : Matrix S S ℝ := fun i j =>
+          Real.sqrt (Q3.w_RKHS i) * Real.sqrt (Q3.w_RKHS j) *
+          Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t))
+        ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ :=
   RKHS_contraction K hK
 
 end Q3.Proofs.RKHS_Contraction

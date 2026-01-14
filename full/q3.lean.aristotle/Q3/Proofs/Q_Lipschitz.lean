@@ -11,6 +11,8 @@ Uses the real a_star = 2π·(log π - Re(ψ(1/4 + iπξ))) from Q3.Basic.Defs.
 import Mathlib
 import Q3.Basic.Defs
 import Q3.Axioms
+import Q3.Proofs.Q_Lipschitz_arch_bridge
+import Q3.Proofs.Q_Lipschitz_prime_bridge
 
 set_option linter.mathlibStandardSet false
 
@@ -121,25 +123,56 @@ lemma D_nonneg (K : ℝ) (_hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ) :
   obtain ⟨x, _, rfl⟩ := hy
   exact abs_nonneg _
 
-/-- Arch term Lipschitz bound (bridge axiom).
-    |arch_term Φ₁ - arch_term Φ₂| ≤ 2K · M_a · D
-    Uses MeasureTheory: |∫ f| ≤ ∫ |f|, a* bounded, measure of [-K,K] = 2K -/
-axiom arch_term_Lipschitz_bridge (K : ℝ) (hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ)
+/-- Arch term Lipschitz bound (bridge theorem).
+    |arch_term Φ₁ - arch_term Φ₂| ≤ 2K · M_a · D -/
+lemma arch_term_Lipschitz_bridge (K : ℝ) (hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ)
     (hcont₁ : ContinuousOn Φ₁ (Set.Icc (-K) K))
     (hcont₂ : ContinuousOn Φ₂ (Set.Icc (-K) K))
     (hsupp₁ : Function.support Φ₁ ⊆ Set.Icc (-K) K)
     (hsupp₂ : Function.support Φ₂ ⊆ Set.Icc (-K) K) :
   |arch_term_local Φ₁ - arch_term_local Φ₂| ≤
-    2 * K * M_a_local K * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K}
+    2 * K * M_a_local K * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K} := by
+  -- Convert full integrals to set integrals using support.
+  have h_support_mul (Φ : ℝ → ℝ) (hsupp : Function.support Φ ⊆ Set.Icc (-K) K) :
+      Function.support (fun ξ => a_star ξ * Φ ξ) ⊆ Set.Icc (-K) K := by
+    exact (Function.support_mul_subset_right (fun ξ => a_star ξ) Φ).trans hsupp
+  have h_eq (Φ : ℝ → ℝ) (hsupp : Function.support Φ ⊆ Set.Icc (-K) K) :
+      arch_term_local Φ = Q3.Proofs.QLipschitzArchBridge.arch_term_local K Φ := by
+    unfold arch_term_local Q3.Proofs.QLipschitzArchBridge.arch_term_local
+    have h_indicator :
+        Set.indicator (Set.Icc (-K) K) (fun ξ => a_star ξ * Φ ξ) =
+          (fun ξ => a_star ξ * Φ ξ) := by
+      apply Set.indicator_eq_self.2
+      exact h_support_mul Φ hsupp
+    calc
+      (∫ ξ, a_star ξ * Φ ξ) =
+          ∫ ξ, (Set.Icc (-K) K).indicator (fun ξ => a_star ξ * Φ ξ) ξ := by
+            simp [h_indicator]
+      _ = ∫ ξ in Set.Icc (-K) K, a_star ξ * Φ ξ := by
+            simpa using
+              (MeasureTheory.integral_indicator
+                (s := Set.Icc (-K) K) (f := fun ξ => a_star ξ * Φ ξ) measurableSet_Icc)
+  have h_arch :=
+    Q3.Proofs.QLipschitzArchBridge.arch_term_Lipschitz K hK Φ₁ Φ₂ hcont₁ hcont₂
+  have h_eq₁ := h_eq Φ₁ hsupp₁
+  have h_eq₂ := h_eq Φ₂ hsupp₂
+  simpa [h_eq₁, h_eq₂, Q3.Proofs.QLipschitzArchBridge.M_a_local, M_a_local] using h_arch
 
-/-- Prime term Lipschitz bound (bridge axiom).
-    |prime_term Φ₁ - prime_term Φ₂| ≤ W_sum · D
-    Uses: tsum linearity, |Σ aₙ| ≤ Σ |aₙ|, w_Q ≥ 0, W_sum_finite -/
-axiom prime_term_Lipschitz_bridge (K : ℝ) (hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ)
+/-- Prime term Lipschitz bound (bridge theorem).
+    |prime_term Φ₁ - prime_term Φ₂| ≤ W_sum · D -/
+lemma prime_term_Lipschitz_bridge (K : ℝ) (hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ)
+    (hcont₁ : ContinuousOn Φ₁ (Set.Icc (-K) K))
+    (hcont₂ : ContinuousOn Φ₂ (Set.Icc (-K) K))
     (hsupp₁ : Function.support Φ₁ ⊆ Set.Icc (-K) K)
     (hsupp₂ : Function.support Φ₂ ⊆ Set.Icc (-K) K) :
   |prime_term_local Φ₁ - prime_term_local Φ₂| ≤
-    W_sum_local K * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K}
+    W_sum_local K * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K} := by
+  simpa [prime_term_local, W_sum_local, ActiveNodes_local,
+    Q3.Proofs.QLipschitzPrimeBridge.prime_term_local,
+    Q3.Proofs.QLipschitzPrimeBridge.W_sum_local,
+    Q3.Proofs.QLipschitzPrimeBridge.ActiveNodes_local] using
+      (Q3.Proofs.QLipschitzPrimeBridge.prime_term_Lipschitz K hK Φ₁ Φ₂
+        hcont₁ hcont₂ hsupp₁ hsupp₂)
 
 /-! ## Main Lipschitz theorem -/
 
@@ -196,7 +229,7 @@ theorem Q_Lipschitz_local (K : ℝ) (hK : K > 0) :
 
     -- Step 1: Get arch and prime term bounds from bridge axioms
     have h_arch := arch_term_Lipschitz_bridge K hK Φ₁ Φ₂ hcont₁ hcont₂ hsupp₁ hsupp₂
-    have h_prime := prime_term_Lipschitz_bridge K hK Φ₁ Φ₂ hsupp₁ hsupp₂
+    have h_prime := prime_term_Lipschitz_bridge K hK Φ₁ Φ₂ hcont₁ hcont₂ hsupp₁ hsupp₂
 
     -- Step 2: Triangle inequality for Q_local = arch - prime
     -- |Q₁ - Q₂| = |(arch₁ - prime₁) - (arch₂ - prime₂)|
@@ -237,7 +270,9 @@ lemma W_K_subset_W_K_local (K : ℝ) : ∀ Φ, Φ ∈ W_K K → Φ ∈ W_K_local
   unfold W_K at hΦ
   unfold W_K_local
   obtain ⟨hcont, hsupp, heven, hnonneg⟩ := hΦ
-  exact ⟨hcont, hsupp, heven, hnonneg⟩
+  have hsupp' : Function.support Φ ⊆ Set.Icc (-K) K :=
+    Set.Subset.trans hsupp Set.Ioo_subset_Icc_self
+  exact ⟨hcont.continuousOn, hsupp', heven, hnonneg⟩
 
 /-- This theorem closes the axiom Q3.Q_Lipschitz_on_W_K.
     It shows Q is Lipschitz on W_K with respect to the sup-norm. -/

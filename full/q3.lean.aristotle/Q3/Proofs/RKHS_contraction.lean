@@ -139,7 +139,7 @@ lemma S_K_bound (K : ℝ) (t : ℝ) (hK : K ≥ 1) (ht : t > 0) :
                 · exact ne_of_lt ( Real.log_lt_log ( Nat.cast_pos.mpr ( Nat.pos_of_ne_zero ( by aesop_cat ) ) ) ( by norm_num ) );
               norm_num at *; linarith [ ih i hi ( by
                 unfold nodes at *; aesop;
-                · exact?;
+                · linarith;
                 · linarith;
                 · exact le_trans ( Real.log_le_log ( by norm_cast; linarith ) ( by norm_cast; linarith ) ) right_1 ) hij' ] ;
             · norm_num [ show i = j by linarith ] at *;
@@ -280,7 +280,8 @@ lemma l2_opNorm_le_of_row_col_sum_bound {n : Type*} [Fintype n] (A : Matrix n n 
             -- Applying the Cauchy-Schwarz inequality to the sums, we get:
             have h_cauchy_schwarz : (∑ j, |A i j| * |x j|)^2 ≤ (∑ j, |A i j|) * (∑ j, |A i j| * |x j|^2) := by
               have h_cauchy_schwarz : ∀ (u v : n → ℝ), (∑ j, u j * v j)^2 ≤ (∑ j, u j^2) * (∑ j, v j^2) := by
-                exact?
+                intro u v
+                simpa using (Finset.sum_mul_sq_le_sq_mul_sq (s := (Finset.univ : Finset n)) u v)
               convert h_cauchy_schwarz ( fun j => Real.sqrt ( |A i j| ) ) ( fun j => Real.sqrt ( |A i j| ) * |x j| ) using 3 <;> ring <;> norm_num [ Real.sq_sqrt ( abs_nonneg _ ) ] ; ring;
               ring;
             linarith;
@@ -319,7 +320,8 @@ lemma T_P_norm_bound (K : ℝ) (t : ℝ) (hK : K ≥ 1) (ht : t > 0) :
         unfold S_K;
         norm_num +zetaDelta at *;
         split_ifs <;> first | positivity | exact Finset.max'_mem _ _ |> fun x => Finset.mem_image.mp x |> fun ⟨ y, _, hy ⟩ => hy ▸ Finset.sum_nonneg fun _ _ => by positivity;
-      · exact?;
+      · intro i
+        simpa [C] using T_P_row_sum_bound K t hK ht i;
       · -- By definition of $T_P$, we know that its entries are symmetric.
         have h_symm : ∀ i j : Node K, T_P_matrix K t i j = T_P_matrix K t j i := by
           unfold T_P_matrix; intros; ring;

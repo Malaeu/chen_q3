@@ -1,9 +1,9 @@
 Project workflow: `full/q3.lean.aristotle/PROJECT_WORKFLOW.md`
-Aristotle workflow and scripts: `~/.claude/skills/aristotle/`
+Aristotle skill (CLI-based): `~/.codex/skills/aristotle/`
 
 Aristotle integration rules (project workflow):
-- Activate venv before any Aristotle script: `source .venv/bin/activate`.
-- Check status with `python ~/.claude/skills/aristotle/scripts/status.py <project_id>` and download with `download.py`.
+- Activate venv before any Aristotle command: `source .venv/bin/activate`.
+- Submit via `aristotle prove-from-file` and check/download via the Python API snippets in the Aristotle skill.
 - Always scan downloaded files for holes: `rg -n "sorry|exact\\?" <file>`.
 - Treat files with holes as drafts; extract only hole-free lemmas or use as structure guidance.
 - Run `lake env lean <file>` after every integration to ensure the project still compiles.

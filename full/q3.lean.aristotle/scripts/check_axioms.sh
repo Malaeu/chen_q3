@@ -2,7 +2,7 @@
 # Q3 Axiom Verification Script
 # Run before every commit to ensure philosophy compliance
 
-set -e
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
@@ -29,7 +29,8 @@ echo ""
 
 # Step 2: Extract axioms
 echo "═══ Step 2: Axiom Extraction ═══"
-AXIOMS=$(lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1)
+AXIOMS=$(echo 'import Q3.Main
+#print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1)
 
 echo "$AXIOMS"
 echo ""
@@ -37,20 +38,23 @@ echo ""
 # Step 3: Count axioms
 echo "═══ Step 3: Axiom Count ═══"
 
-STANDARD_COUNT=$(echo "$AXIOMS" | grep -E "propext|Classical.choice|Quot.sound" | wc -l | tr -d ' ')
-Q3_COUNT=$(echo "$AXIOMS" | grep -E "Q3\." | wc -l | tr -d ' ')
+# Count standard axioms from full output (propext is on the header line)
+STANDARD_COUNT=$(echo "$AXIOMS" | grep -oE "propext|Classical.choice|Quot.sound" | wc -l | tr -d ' ')
+# For Q3 axioms, filter out header line to avoid counting Q3.Main.RH_of_Weil_and_Q3
+AXIOMS_ONLY=$(echo "$AXIOMS" | grep -v "depends on")
+Q3_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + Q3_COUNT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: 3)"
-echo "Q3 Project:    $Q3_COUNT (expected: 9)"
-echo "TOTAL:         $TOTAL (expected: 12)"
+echo "Q3 Project:    $Q3_COUNT (expected: 7)"
+echo "TOTAL:         $TOTAL (expected: 10)"
 echo ""
 
 # Step 4: Classification
 echo "═══ Step 4: Axiom Classification ═══"
 
 echo "Level 1 (Classical Literature):"
-echo "$AXIOMS" | grep -E "Weil_criterion|a_star_pos|a_star_bdd" | sed 's/^/  /' || echo "  (none found)"
+echo "$AXIOMS" | grep -E "Weil_criterion|a_star_pos|a_star_bdd|a_star_continuous" | sed 's/^/  /' || echo "  (none found)"
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
@@ -69,16 +73,14 @@ EXPECTED_AXIOMS=(
     "Q3.Weil_criterion"
     "Q3.a_star_pos"
     "Q3.a_star_bdd_on_compact"
+    "Q3.a_star_continuous"
     "Q3.A1_density_WK_axiom"
     "Q3.A3_bridge_axiom"
-    "Q3.RKHS_contraction_axiom"
     "Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom"
-    "Q3.Proofs.arch_term_Lipschitz_bridge"
-    "Q3.Proofs.prime_term_Lipschitz_bridge"
 )
 
 UNKNOWN_AXIOMS=""
-for axiom in $(echo "$AXIOMS" | grep -E "Q3\." | tr -d ' [],'); do
+for axiom in $(echo "$AXIOMS_ONLY" | grep -E "Q3\." | tr -d ' [],'); do
     FOUND=false
     for expected in "${EXPECTED_AXIOMS[@]}"; do
         if [[ "$axiom" == "$expected" ]]; then
@@ -105,7 +107,7 @@ echo ""
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                    VERIFICATION PASSED ✓                      ║"
 echo "║                                                                ║"
-echo "║  Axiom count: $TOTAL (9 Q3 + 3 Standard)                       ║"
+echo "║  Axiom count: $TOTAL (7 Q3 + 3 Standard)                       ║"
 echo "║  Philosophy: Compliant                                         ║"
 echo "║  Ready to commit!                                              ║"
 echo "╚════════════════════════════════════════════════════════════════╝"

@@ -15,7 +15,7 @@ implies limit preservation of nonnegativity.
 -/
 
 import Q3.Basic.Defs
-import Q3.Axioms
+import Q3.AxiomsTheorems
 import Q3.Atoms_Positive
 import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 
@@ -53,7 +53,7 @@ This is standard real analysis.
 /-- Auxiliary: AtomCone_K is a subset of W_K (by definition) -/
 lemma AtomCone_subset_W_K (K : ℝ) : AtomCone_K K ⊆ W_K K := by
   intro g hg
-  rcases hg with ⟨n, c, B, t, τ, -, -, -, -, -, -, hg_in_W_K⟩
+  rcases hg with ⟨n, c, B, t, τ, -, -, -, -, -, hg_in_W_K⟩
   exact hg_in_W_K
 
 /-!
@@ -91,8 +91,8 @@ theorem T5_transfer (K : ℝ) (hK : K ≥ 1) :
   set ε := δ / (2 * L) with hε_def
   have hε_pos : ε > 0 := by positivity
 
-  -- By A1, get approximant g ∈ AtomCone_K with ||Φ - g||_∞ < ε
-  obtain ⟨g, hg_atom, hg_approx⟩ := A1_density_WK_axiom K hK_pos Φ hΦ ε hε_pos
+  -- By A1 (theorem), get approximant g ∈ AtomCone_K with ||Φ - g||_∞ < ε
+  obtain ⟨g, hg_atom, hg_approx⟩ := Q3.Theorems.A1_density_WK K hK_pos Φ hΦ ε hε_pos
 
   -- g ∈ AtomCone_K ⊆ W_K
   have hg_W_K : g ∈ W_K K := AtomCone_subset_W_K K hg_atom
@@ -157,7 +157,9 @@ theorem Q_nonneg_on_W_K (K : ℝ) (hK : K ≥ 1) :
 lemma W_K_subset_Weil_cone_K_with_cont (K : ℝ) (Φ : ℝ → ℝ) (hΦ : Φ ∈ W_K K) :
     Φ ∈ Weil_cone_K K ∧ ContinuousOn Φ (Set.Icc (-K) K) := by
   obtain ⟨hcont, hsupp, heven, hnonneg⟩ := hΦ
-  exact ⟨⟨heven, hnonneg, hsupp⟩, hcont⟩
+  have hsupp' : Function.support Φ ⊆ Set.Icc (-K) K :=
+    Set.Subset.trans hsupp Set.Ioo_subset_Icc_self
+  exact ⟨⟨heven, hnonneg, hsupp'⟩, hcont.continuousOn⟩
 
 end Q3.T5
 

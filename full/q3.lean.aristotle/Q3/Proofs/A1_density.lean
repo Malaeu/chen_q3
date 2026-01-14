@@ -11,6 +11,9 @@ Sorry, Aristotle was unable to complete the task in time.
 
 import Mathlib
 import Q3.Axioms
+import Q3.Proofs.HatInterpolation
+-- Note: Full proof of hat_interpolation_approx available in aristotle_output/HatInterpolationBridge.lean
+-- Cannot import directly due to FejerKernel name conflict. Integration TODO.
 
 set_option linter.mathlibStandardSet false
 
@@ -36,8 +39,8 @@ noncomputable def HeatKernel (t : ℝ) (x : ℝ) : ℝ :=
   (4 * Real.pi * t) ^ (-(1:ℝ)/2) * Real.exp (-x^2 / (4 * t))
 
 def W_K (K : ℝ) : Set (ℝ → ℝ) :=
-  {Φ | ContinuousOn Φ (Set.Icc (-K) K) ∧
-       Function.support Φ ⊆ Set.Icc (-K) K ∧
+  {Φ | Continuous Φ ∧
+       Function.support Φ ⊆ Set.Ioo (-K) K ∧
        Q3.IsEven Φ ∧
        Q3.IsNonneg Φ}
 
@@ -68,7 +71,15 @@ lemma Atom_eq_q3 (B t τ x : ℝ) (ht : t > 0) : Atom B t τ x = Q3.Fejer_heat_a
   simp [FejerKernel_eq_q3, HeatKernel_eq_q3 _ _ ht]
 
 lemma W_K_eq_q3 (K : ℝ) : W_K K = Q3.W_K K := by
-  rfl
+  ext Φ
+  constructor
+  · intro h
+    rcases h with ⟨hcont, hsupp, heven, hnonneg⟩
+    exact ⟨hcont, hsupp, heven, hnonneg⟩
+  · intro h
+    rcases h with ⟨hcont, hsupp, heven, hnonneg⟩
+    exact ⟨hcont, hsupp, heven, hnonneg⟩
+
 
 def AtomSet (K : ℝ) : Set (ℝ → ℝ) :=
   {g | ∃ B > 0, ∃ t > 0, ∃ τ ∈ Set.Icc (-K) K, g = Atom B t τ}
@@ -81,10 +92,41 @@ def AtomCone_K (K : ℝ) : Set (ℝ → ℝ) :=
         (∀ i, c i ≥ 0) ∧
         (∀ i, B i > 0) ∧
         (∀ i, t i > 0) ∧
-        (∀ i, |τ i| ≤ K) ∧
-        (∀ i, B i ≤ K) ∧  -- ensures support ⊆ [-2K, 2K]
+        (∀ i, |τ i| + B i ≤ K) ∧  -- ensures support ⊆ [-K, K] (Lemma a1-fixed-t-density)
         (∀ x, g x = ∑ i, c i * Atom (B i) (t i) (τ i) x) ∧
         g ∈ W_K K }  -- explicitly require g ∈ W_K
+
+lemma AtomCone_K_eq_q3 (K : ℝ) : AtomCone_K K = Q3.AtomCone_K K := by
+  ext g
+  constructor
+  · intro hg
+    rcases hg with ⟨n, c, B, t, τ, hc, hB, ht, hτB, hg_sum, hg_mem⟩
+    refine ⟨n, c, B, t, τ, hc, hB, ht, hτB, ?_, ?_⟩
+    · intro x
+      have hg' :
+          ∑ i, c i * Atom (B i) (t i) (τ i) x =
+            ∑ i, c i * Q3.Fejer_heat_atom (B i) (t i) (τ i) x := by
+        classical
+        refine Finset.sum_congr rfl ?_
+        intro i _
+        have hAtom := Atom_eq_q3 (B i) (t i) (τ i) x (ht i)
+        simp [hAtom]
+      exact (hg_sum x).trans hg'
+    · simpa [W_K_eq_q3] using hg_mem
+  · intro hg
+    rcases hg with ⟨n, c, B, t, τ, hc, hB, ht, hτB, hg_sum, hg_mem⟩
+    refine ⟨n, c, B, t, τ, hc, hB, ht, hτB, ?_, ?_⟩
+    · intro x
+      have hg' :
+          ∑ i, c i * Q3.Fejer_heat_atom (B i) (t i) (τ i) x =
+            ∑ i, c i * Atom (B i) (t i) (τ i) x := by
+        classical
+        refine Finset.sum_congr rfl ?_
+        intro i _
+        have hAtom := Atom_eq_q3 (B i) (t i) (τ i) x (ht i)
+        simp [hAtom]
+      exact (hg_sum x).trans hg'
+    · simpa [W_K_eq_q3] using hg_mem
 
 /-- Legacy cone without W_K requirement (for helper lemmas) -/
 def AtomCone_K_legacy (K : ℝ) : Set (ℝ → ℝ) :=
@@ -107,6 +149,67 @@ lemma HeatKernel_integral (t : ℝ) (ht : t > 0) : ∫ x, HeatKernel t x = 1 := 
   have := integral_gaussian ( 1 / ( 4 * t ) ) ; norm_num [ div_eq_inv_mul ] at *;
   rw [ this, Real.rpow_neg ( by positivity ) ];
   rw [ ← Real.sqrt_eq_rpow, inv_mul_eq_div, div_eq_iff ] <;> ring ; positivity
+
+/-!
+## Support Control Lemmas
+
+Key lemmas for proving atoms have support ⊆ [-K, K] when |τ| + B ≤ K.
+This is the "margin condition" from Lemma 6.4 (Fixed-t₀ cone density).
+-/
+
+/-- Fejér kernel is zero when |x| ≥ B (for B > 0) -/
+lemma FejerKernel_eq_zero_of_abs_ge {B x : ℝ} (hB : B > 0) (hx : |x| ≥ B) :
+    FejerKernel B x = 0 := by
+  unfold FejerKernel
+  have h : 1 - |x| / B ≤ 0 := by
+    have : |x| / B ≥ 1 := by
+      rw [ge_iff_le, le_div_iff₀ hB]
+      simpa using hx
+    linarith
+  simp [max_eq_left h]
+
+/-- Atom is zero outside the window [-K, K] when |τ| + B ≤ K.
+    This is the key lemma for support control (Lemma 6.4 margin condition). -/
+lemma Atom_eq_zero_outside_window {K B t τ x : ℝ} (hK : K ≥ 0) (hB : B > 0) (hτB : |τ| + B ≤ K)
+    (hx : x ∉ Set.Icc (-K) K) : Atom B t τ x = 0 := by
+  -- From x ∉ [-K, K], we get |x| > K
+  have hxK : K < |x| := by
+    simp only [Set.mem_Icc, not_and, not_le] at hx
+    by_cases h : x < -K
+    · have hxneg : x < 0 := by linarith
+      rw [abs_of_neg hxneg]
+      linarith
+    · push_neg at h
+      have hxK' : K < x := hx h
+      have hxnn : 0 ≤ x := by linarith
+      rw [abs_of_nonneg hxnn]
+      exact hxK'
+  -- From |τ| + B ≤ K and |x| > K, we get B < |x| - |τ|
+  have hB_lt : B < |x| - |τ| := by linarith
+  -- By reverse triangle inequality: |x - τ| ≥ |x| - |τ| > B
+  have hxmt : |x - τ| ≥ B := by
+    have h1 : |x| - |τ| ≤ |x - τ| := abs_sub_abs_le_abs_sub x τ
+    linarith
+  have hxpt : |x + τ| ≥ B := by
+    have h1 : |x| - |τ| ≤ |x + τ| := by
+      have := abs_sub_abs_le_abs_sub x (-τ)
+      simp only [abs_neg] at this
+      calc |x| - |τ| ≤ |x - (-τ)| := this
+        _ = |x + τ| := by ring_nf
+    linarith
+  -- Fejér kernel is zero when |·| ≥ B
+  unfold Atom
+  rw [FejerKernel_eq_zero_of_abs_ge hB hxmt,
+      FejerKernel_eq_zero_of_abs_ge hB hxpt]
+  simp
+
+/-- Sum of atoms is zero outside [-K, K] when all |τᵢ| + Bᵢ ≤ K -/
+lemma sum_atoms_eq_zero_outside {K : ℝ} {s : Finset ℝ} {w : ℝ → ℝ} {B t x : ℝ}
+    (hK : K ≥ 0) (hB : B > 0) (hτB : ∀ y ∈ s, |y| + B ≤ K) (hx : x ∉ Set.Icc (-K) K) :
+    ∑ y ∈ s, w y * Atom B t y x = 0 := by
+  apply Finset.sum_eq_zero
+  intro y hy
+  rw [Atom_eq_zero_outside_window hK hB (hτB y hy) hx, mul_zero]
 
 /-
 As t approaches 0 from above, the integral of the Heat Kernel outside any fixed neighborhood (-δ, δ) tends to 0.
@@ -171,6 +274,153 @@ The Heat Kernel is non-negative for all t > 0 and all x.
 -/
 lemma HeatKernel_nonneg (t : ℝ) (ht : t > 0) (x : ℝ) : 0 ≤ HeatKernel t x := by
   exact mul_nonneg ( Real.rpow_nonneg ( by positivity ) _ ) ( Real.exp_nonneg _ )
+
+/-!
+## HeatKernel Lipschitz property (Lemma 6.4 dependency)
+
+For fixed t₀ > 0, HeatKernel t₀ is Lipschitz on any bounded interval.
+This is key for the fixed-t₀ cone density proof.
+-/
+
+/-- HeatKernel is continuous (needed for Lipschitz) -/
+lemma HeatKernel_continuous (t : ℝ) (ht : t > 0) : Continuous (HeatKernel t) := by
+  unfold HeatKernel
+  apply Continuous.mul
+  · exact continuous_const
+  · exact Real.continuous_exp.comp (by continuity)
+
+/-- Derivative of HeatKernel: d/dx H_t(x) = H_t(x) · (-x/(2t)) -/
+lemma HeatKernel_deriv (t : ℝ) (ht : t > 0) (x : ℝ) :
+    HasDerivAt (HeatKernel t) (HeatKernel t x * (-x / (2 * t))) x := by
+  unfold HeatKernel
+  have h1 : HasDerivAt (fun y => -y^2 / (4 * t)) (-2 * x / (4 * t)) x := by
+    -- d/dy(y²) = 2y, so d/dy(-y²/(4t)) = -2y/(4t)
+    have h_sq : HasDerivAt (fun y => y^2) (2 * x) x := by
+      simpa using (hasDerivAt_pow (n := 2) (x := x))
+    convert h_sq.neg.div_const (4 * t) using 1
+    ring
+  have h2 : HasDerivAt (fun y => Real.exp (-y^2 / (4 * t)))
+      (Real.exp (-x^2 / (4 * t)) * (-2 * x / (4 * t))) x :=
+    Real.hasDerivAt_exp _ |>.comp x h1
+  have h3 := (hasDerivAt_const x ((4 * Real.pi * t) ^ (-(1:ℝ)/2))).mul h2
+  convert h3 using 1
+  ring
+
+/-- HeatKernel derivative is bounded on compact intervals -/
+lemma HeatKernel_deriv_bound (t : ℝ) (ht : t > 0) (R : ℝ) (hR : R > 0) :
+    ∃ L > 0, ∀ x ∈ Set.Icc (-R) R, |HeatKernel t x * (-x / (2 * t))| ≤ L := by
+  -- H_t(x) ≤ H_t(0) = (4πt)^(-1/2) on ℝ
+  -- |derivative| = H_t(x) · |x|/(2t) ≤ H_t(0) · R/(2t)
+  -- Technical calculus proof - placeholder for now
+  use (4 * Real.pi * t) ^ (-(1:ℝ)/2) * R / (2 * t)
+  constructor
+  · have hconst_pos : 0 < (4 * Real.pi * t) ^ (-(1:ℝ)/2) := by
+      apply Real.rpow_pos_of_pos
+      nlinarith [Real.pi_pos, ht]
+    have hnum_pos : 0 < (4 * Real.pi * t) ^ (-(1:ℝ)/2) * R :=
+      mul_pos hconst_pos hR
+    have hden_pos : 0 < 2 * t := by nlinarith [ht]
+    exact div_pos hnum_pos hden_pos
+  · intro x hx
+    -- The bound follows from: H_t(x) ≤ H_t(0) and |x| ≤ R
+    have hx' : -R ≤ x ∧ x ≤ R := by
+      simpa [Set.mem_Icc] using hx
+    have h_absx : |x| ≤ R := abs_le.mpr hx'
+    have h_arg : -x^2 / (4 * t) ≤ 0 := by
+      have hx2 : 0 ≤ x^2 := by nlinarith
+      have hx2_div : 0 ≤ x^2 / (4 * t) := by
+        exact div_nonneg hx2 (by nlinarith [ht])
+      have h := neg_nonpos.mpr hx2_div
+      simpa [neg_div] using h
+    have h_exp : Real.exp (-x^2 / (4 * t)) ≤ 1 :=
+      (Real.exp_le_one_iff.mpr h_arg)
+    have hconst_nonneg : 0 ≤ (4 * Real.pi * t) ^ (-(1:ℝ)/2) := by
+      apply Real.rpow_nonneg
+      nlinarith [Real.pi_pos, ht]
+    have hH_le : HeatKernel t x ≤ (4 * Real.pi * t) ^ (-(1:ℝ)/2) := by
+      unfold HeatKernel
+      have := mul_le_mul_of_nonneg_left h_exp hconst_nonneg
+      simpa using this
+    have hH_abs : |HeatKernel t x| ≤ (4 * Real.pi * t) ^ (-(1:ℝ)/2) := by
+      have hH_nonneg := HeatKernel_nonneg t ht x
+      simpa [abs_of_nonneg hH_nonneg] using hH_le
+    have hden_nonneg : 0 ≤ (2 * t) := by nlinarith [ht]
+    have h_abs_div : |-x / (2 * t)| = |x| / (2 * t) := by
+      simp [abs_div, abs_neg, abs_of_nonneg hden_nonneg]
+    have h_absx_div : |x| / (2 * t) ≤ R / (2 * t) := by
+      exact div_le_div_of_nonneg_right h_absx hden_nonneg
+    calc
+      |HeatKernel t x * (-x / (2 * t))|
+          = |HeatKernel t x| * |-x / (2 * t)| := by
+              simp [abs_mul]
+      _ = |HeatKernel t x| * (|x| / (2 * t)) := by
+              simp [h_abs_div]
+      _ ≤ (4 * Real.pi * t) ^ (-(1:ℝ)/2) * R / (2 * t) := by
+              have h_absx_div_nonneg : 0 ≤ |x| / (2 * t) :=
+                div_nonneg (abs_nonneg _) hden_nonneg
+              have h := mul_le_mul hH_abs h_absx_div h_absx_div_nonneg hconst_nonneg
+              simpa [mul_div_assoc] using h
+
+/-- HeatKernel is Lipschitz on bounded intervals (key for Lemma 6.4) -/
+lemma HeatKernel_LipschitzOn (t : ℝ) (ht : t > 0) (R : ℝ) (hR : R > 0) :
+    ∃ L > 0, ∀ x ∈ Set.Icc (-R) R, ∀ y ∈ Set.Icc (-R) R, |HeatKernel t x - HeatKernel t y| ≤ L * |x - y| := by
+  obtain ⟨L, hL_pos, hL_bound⟩ := HeatKernel_deriv_bound t ht R hR
+  refine ⟨L, hL_pos, ?_⟩
+  intro x hx y hy
+  -- Mean Value Theorem: |f(x) - f(y)| ≤ sup|f'| · |x - y|
+  -- The derivative bound hL_bound gives sup|H_t'| ≤ L on [-R, R]
+  have hdiff : ∀ z ∈ Set.Icc (-R) R, DifferentiableAt ℝ (HeatKernel t) z := by
+    intro z hz
+    exact (HeatKernel_deriv t ht z).differentiableAt
+  have hbound : ∀ z ∈ Set.Icc (-R) R, ‖deriv (HeatKernel t) z‖ ≤ L := by
+    intro z hz
+    have hderiv := HeatKernel_deriv t ht z
+    have hderiv_eq : deriv (HeatKernel t) z = HeatKernel t z * (-z / (2 * t)) :=
+      hderiv.deriv
+    -- Avoid simp rewriting abs_mul/abs_div
+    rw [Real.norm_eq_abs, hderiv_eq]
+    exact hL_bound z hz
+  have hconvex : Convex ℝ (Set.Icc (-R) R) := by
+    simpa using (convex_Icc (-R) R)
+  simpa [Real.norm_eq_abs, abs_sub_comm] using
+    (Convex.norm_image_sub_le_of_norm_deriv_le (f := HeatKernel t) (s := Set.Icc (-R) R)
+      (x := x) (y := y) hdiff hbound hconvex hx hy)
+
+/-!
+## Hat interpolation (Lemma 6.4 core)
+
+For uniformly continuous f on [-K, K], interpolation via tent functions (FejerKernel)
+with sufficiently small mesh δ approximates f in sup-norm.
+
+h(ξ) = Σⱼ f(τⱼ) · Λ_δ(ξ - τⱼ)  where Λ_δ = FejerKernel δ
+||h - f||∞ ≤ ω_f(δ)  (modulus of continuity)
+-/
+
+/-- Hat interpolation approximation: for continuous f with f(-K) = f(K) = 0,
+    the hat interpolation approximates f uniformly.
+    This is the key approximation lemma for Lemma 6.4 (Fixed-t₀ cone density).
+
+    NOTE: The boundary condition f(-K) = f(K) = 0 is necessary because the margin
+    condition |τᵢ| + δ ≤ K forces all hats to vanish at ±K. (Aristotle proved a
+    counterexample for f(x) = 1.) -/
+lemma hat_interpolation_approx (K : ℝ) (hK : K > 0) (f : ℝ → ℝ)
+    (hf_cont : ContinuousOn f (Set.Icc (-K) K))
+    (hf_nonneg : ∀ x ∈ Set.Icc (-K) K, 0 ≤ f x)
+    (hf_boundary : f (-K) = 0 ∧ f K = 0)
+    (ε : ℝ) (hε : ε > 0) :
+    ∃ (n : ℕ) (τ : Fin n → ℝ) (δ : ℝ),
+      n > 0 ∧ δ > 0 ∧
+      (∀ i, τ i ∈ Set.Ioo (-K) K) ∧
+      (∀ i, |τ i| + δ ≤ K) ∧  -- margin condition for atoms
+      (∀ x ∈ Set.Icc (-K) K, |∑ i, f (τ i) * FejerKernel δ (x - τ i) - f x| < ε) ∧
+      (∀ x ∈ Set.Icc (-K) K, 0 ≤ ∑ i, f (τ i) * FejerKernel δ (x - τ i)) := by
+  obtain ⟨n, τ, δ, hn, hδ, hτ, hmargin, happrox, hnonneg⟩ :=
+    HatInterp.hat_interpolation_approx K hK f hf_cont hf_nonneg hf_boundary ε hε
+  refine ⟨n, τ, δ, hn, hδ, hτ, hmargin, ?_, ?_⟩
+  · intro x hx
+    simpa [HatInterp.FejerKernel, FejerKernel, max_comm] using happrox x hx
+  · intro x hx
+    simpa [HatInterp.FejerKernel, FejerKernel, max_comm] using hnonneg x hx
 
 /-
 The Fejer Kernel is bounded between 0 and 1.
@@ -307,7 +557,7 @@ lemma HeatKernel_approx_identity_uniform (f : ℝ → ℝ) (hf_cont : Continuous
 The integral of a continuous function F(x, y) over y in [a, b] can be uniformly approximated in x by a Riemann sum.
 -/
 lemma uniform_riemann_sum (a b : ℝ) (hab : a < b) (X : Set ℝ) (hX : IsCompact X) (F : ℝ → ℝ → ℝ) (hF : ContinuousOn (Function.uncurry F) (X ×ˢ Set.Icc a b)) (ε : ℝ) (hε : ε > 0) :
-  ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, w y > 0) ∧ (∀ y ∈ s, y ∈ Set.Icc a b) ∧
+  ∃ (s : Finset ℝ) (w : ℝ → ℝ), s.Nonempty ∧ (∀ y ∈ s, w y > 0) ∧ (∀ y ∈ s, y ∈ Set.Ioo a b) ∧
   ∀ x ∈ X, |(∫ y in Set.Icc a b, F x y) - ∑ y ∈ s, w y * F x y| < ε := by
     -- Since $D = X \times [a, b]$ is compact, $F$ is uniformly continuous on $D$.
     obtain ⟨δ, hδ_pos, hδ⟩ : ∃ δ > 0, ∀ x x' y y', x ∈ X → y ∈ Set.Icc a b → x' ∈ X → y' ∈ Set.Icc a b → |x - x'| < δ → |y - y'| < δ → |F x y - F x' y'| < ε / (2 * (b - a)) := by
@@ -317,13 +567,40 @@ lemma uniform_riemann_sum (a b : ℝ) (hab : a < b) (X : Set ℝ) (hX : IsCompac
       rcases Metric.uniformContinuousOn_iff.mp h_unif ( ε / ( 2 * ( b - a ) ) ) ( div_pos hε ( mul_pos zero_lt_two ( sub_pos.mpr hab ) ) ) with ⟨ δ, δ_pos, hδ ⟩ ; use δ; aesop;
       exact hδ x y a_1 a_2 a_3 x' y' a_4 a_5 a_6 ( by simpa [ Prod.dist_eq ] using max_lt a_7 a_8 );
     -- Let's choose the partition points $y_i$ such that they are spaced less than $\delta$ apart.
-    obtain ⟨s, w, hs⟩ : ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, w y > 0) ∧ (∀ y ∈ s, y ∈ Set.Icc a b) ∧ (∀ x ∈ X, |(∫ y in Set.Icc a b, F x y) - ∑ y ∈ s, w y * F x y| < ε) := by
+    obtain ⟨s, w, hs_nonempty, hs⟩ : ∃ (s : Finset ℝ) (w : ℝ → ℝ), s.Nonempty ∧ (∀ y ∈ s, w y > 0) ∧ (∀ y ∈ s, y ∈ Set.Ioo a b) ∧ (∀ x ∈ X, |(∫ y in Set.Icc a b, F x y) - ∑ y ∈ s, w y * F x y| < ε) := by
       have h_partition : ∃ (m : ℕ) (m_pos : 0 < m), δ > (b - a) / (m : ℝ) := by
         exact ⟨ ⌊ ( b - a ) / δ⌋₊ + 1, Nat.succ_pos _, by rw [ gt_iff_lt ] ; rw [ div_lt_iff₀ ] <;> push_cast <;> nlinarith [ Nat.lt_floor_add_one ( ( b - a ) / δ ), mul_div_cancel₀ ( b - a ) hδ_pos.ne' ] ⟩
       obtain ⟨ m, hm_pos, hm ⟩ := h_partition;
-      refine' ⟨ Finset.image ( fun i : ℕ => a + ( i + 1 / 2 ) * ( b - a ) / m ) ( Finset.range m ), fun y => ( b - a ) / m, _, _, _ ⟩ <;> norm_num;
+      refine' ⟨ Finset.image ( fun i : ℕ => a + ( i + 1 / 2 ) * ( b - a ) / m ) ( Finset.range m ), fun y => ( b - a ) / m, ?_, _, _, _ ⟩;
+      · -- s.Nonempty: Finset.range m is nonempty since m > 0
+        exact Finset.image_nonempty.mpr (Finset.nonempty_range_iff.mpr (Nat.pos_iff_ne_zero.mp hm_pos))
       · exact fun _ _ => div_pos ( sub_pos.mpr hab ) ( Nat.cast_pos.mpr hm_pos );
-      · exact fun i hi => ⟨ div_nonneg ( mul_nonneg ( by positivity ) ( by linarith ) ) ( by positivity ), by rw [ add_div', div_le_iff₀ ] <;> nlinarith [ show ( i : ℝ ) + 1 ≤ m by norm_cast ] ⟩;
+      · intro y hy
+        obtain ⟨i, hi_range, hi_eq⟩ := Finset.mem_image.mp hy
+        have hi_lt : i < m := Finset.mem_range.mp hi_range
+        subst hi_eq
+        constructor
+        -- Lower: a < a + (i + 1/2) * (b-a) / m since (i + 1/2) * (b-a) / m > 0
+        · have h1 : (0 : ℝ) < (i : ℝ) + 1/2 := by positivity
+          have h2 : (0 : ℝ) < b - a := sub_pos.mpr hab
+          have h3 : (0 : ℝ) < m := Nat.cast_pos.mpr hm_pos
+          have : (0 : ℝ) < (i + 1/2) * (b - a) / m := by positivity
+          linarith
+        -- Upper: a + (i + 1/2) * (b-a) / m < b since i + 1/2 < m (i ≤ m-1 from range)
+        · have h_i_bound : (i : ℝ) + 1 / 2 < m := by
+            have h1 : (i : ℝ) < m := Nat.cast_lt.mpr hi_lt
+            have h2 : (1 : ℝ) / 2 < 1 := by norm_num
+            have h3 : (i : ℝ) + 1 ≤ m := by exact_mod_cast Nat.add_one_le_iff.mpr hi_lt
+            linarith
+          have h_pos : (0 : ℝ) < m := Nat.cast_pos.mpr hm_pos
+          have h_sub : (0 : ℝ) < b - a := sub_pos.mpr hab
+          have h_frac : ((i : ℝ) + 1/2) / m < 1 := by
+            rw [div_lt_one h_pos]
+            exact h_i_bound
+          calc a + (i + 1/2) * (b - a) / m
+              = a + ((i + 1/2) / m) * (b - a) := by ring
+            _ < a + 1 * (b - a) := by nlinarith
+            _ = b := by ring
       · -- By the properties of the Riemann sum, we can bound the difference between the integral and the sum.
         intros x hx
         have h_riemann_sum : |(∫ y in Set.Icc a b, F x y) - ∑ i ∈ Finset.range m, (b - a) / m * F x (a + (i + 1 / 2) * (b - a) / m)| ≤ ∑ i ∈ Finset.range m, ∫ y in (a + i * (b - a) / m).. (a + (i + 1) * (b - a) / m), |F x y - F x (a + (i + 1 / 2) * (b - a) / m)| := by
@@ -372,16 +649,16 @@ lemma uniform_riemann_sum (a b : ℝ) (hab : a < b) (X : Set ℝ) (hX : IsCompac
           norm_num [ div_eq_mul_inv, mul_assoc, mul_comm, mul_left_comm, hm_pos.ne', ne_of_gt ( sub_pos.mpr hab ) ];
           linarith;
         · simp +decide [ div_eq_mul_inv, ne_of_gt ( show 0 < m by positivity ), ne_of_gt ( show 0 < b - a by linarith ) ];
-    use s, w
+    exact ⟨s, w, hs_nonempty, hs⟩
 
 /-
 The convolution of a non-negative continuous function supported on [-K, K] with the Heat Kernel can be uniformly approximated by a non-negative Riemann sum on [-K, K].
 -/
 lemma convolution_approx_by_sum (K : ℝ) (hK : K > 0) (f : ℝ → ℝ) (hf_cont : ContinuousOn f (Set.Icc (-K) K)) (hf_supp : Function.support f ⊆ Set.Icc (-K) K) (hf_nonneg : ∀ x, 0 ≤ f x) (t : ℝ) (ht : t > 0) (ε : ℝ) (hε : ε > 0) :
-  ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, w y ≥ 0) ∧ (∀ y ∈ s, y ∈ Set.Icc (-K) K) ∧
+  ∃ (s : Finset ℝ) (w : ℝ → ℝ), s.Nonempty ∧ (∀ y ∈ s, w y ≥ 0) ∧ (∀ y ∈ s, y ∈ Set.Ioo (-K) K) ∧
   ∀ x ∈ Set.Icc (-K) K, |real_convolution f (HeatKernel t) x - ∑ y ∈ s, w y * HeatKernel t (x - y)| < ε := by
     -- Apply uniform_riemann_sum to F(x, y) = f(y) * HeatKernel t (x - y) on [-K, K] x [-K, K].
-    obtain ⟨s, w, hw_pos, hw_bounds, hw_approx⟩ : ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, w y > 0) ∧ (∀ y ∈ s, y ∈ Set.Icc (-K) K) ∧ ∀ x ∈ Set.Icc (-K) K, |(∫ y in Set.Icc (-K) K, f y * HeatKernel t (x - y)) - ∑ y ∈ s, w y * f y * HeatKernel t (x - y)| < ε := by
+    obtain ⟨s, w, hs_nonempty, hw_pos, hw_bounds, hw_approx⟩ : ∃ (s : Finset ℝ) (w : ℝ → ℝ), s.Nonempty ∧ (∀ y ∈ s, w y > 0) ∧ (∀ y ∈ s, y ∈ Set.Ioo (-K) K) ∧ ∀ x ∈ Set.Icc (-K) K, |(∫ y in Set.Icc (-K) K, f y * HeatKernel t (x - y)) - ∑ y ∈ s, w y * f y * HeatKernel t (x - y)| < ε := by
       have := @uniform_riemann_sum ( -K ) K ( by linarith ) ( Set.Icc ( -K ) K ) ?_ ( fun x y => f y * HeatKernel t ( x - y ) ) ?_ ε ?_ <;> norm_num at *;
       · simpa only [ mul_assoc ] using this;
       · exact CompactIccSpace.isCompact_Icc;
@@ -391,7 +668,7 @@ lemma convolution_approx_by_sum (K : ℝ) (hK : K > 0) (f : ℝ → ℝ) (hf_con
           · exact continuousOn_const;
           · exact Continuous.continuousOn ( by continuity );
       · bound;
-    refine' ⟨ s, fun y => w y * f y, _, _, _ ⟩ <;> aesop;
+    refine' ⟨ s, fun y => w y * f y, hs_nonempty, _, _, _ ⟩ <;> aesop;
     convert hw_approx x left right using 1;
     rw [ MeasureTheory.setIntegral_eq_integral_of_forall_compl_eq_zero ];
     · rfl;
@@ -528,14 +805,17 @@ lemma sum_atoms_eq_fin (s : Finset ℝ) (w : ℝ → ℝ) (B t x : ℝ) :
     simp [hsymm]
 
 /-
-A non-negative linear combination of Atoms with B ≤ K is in the proper AtomCone_K.
+A non-negative linear combination of Atoms with |τ| + B ≤ K is in the proper AtomCone_K.
 This version includes the W_K membership proof.
+Key change: require |τ| + B ≤ K (not just B ≤ K and |τ| ≤ K separately)
+to ensure support ⊆ [-K, K] (Lemma a1-fixed-t-density from A1prime.tex).
 -/
 lemma sum_atoms_in_cone (K : ℝ) (hK : K > 0) (s : Finset ℝ) (w : ℝ → ℝ) (hw : ∀ y ∈ s, 0 ≤ w y)
-    (B : ℝ) (hB : B > 0) (hBK : B ≤ K) (t : ℝ) (ht : t > 0)
-    (hs : ∀ y ∈ s, y ∈ Set.Icc (-K) K) (h_sum_pos : ∑ y ∈ s, w y > 0)
-    (hg_cont : ContinuousOn (fun x => ∑ y ∈ s, w y * Atom B t y x) (Set.Icc (-K) K))
-    (hg_supp : Function.support (fun x => ∑ y ∈ s, w y * Atom B t y x) ⊆ Set.Icc (-K) K)
+    (B : ℝ) (hB : B > 0) (t : ℝ) (ht : t > 0)
+    (hτB : ∀ y ∈ s, |y| + B ≤ K)  -- NEW: combined condition for support ⊆ [-K, K]
+    (h_sum_pos : ∑ y ∈ s, w y > 0)
+    (hg_cont : Continuous (fun x => ∑ y ∈ s, w y * Atom B t y x))
+    (hg_supp : Function.support (fun x => ∑ y ∈ s, w y * Atom B t y x) ⊆ Set.Ioo (-K) K)
     (hg_even : Q3.IsEven (fun x => ∑ y ∈ s, w y * Atom B t y x))
     (hg_nonneg : ∀ x, 0 ≤ (fun x => ∑ y ∈ s, w y * Atom B t y x) x) :
   (fun x => ∑ y ∈ s, w y * Atom B t y x) ∈ AtomCone_K K := by
@@ -547,20 +827,18 @@ lemma sum_atoms_in_cone (K : ℝ) (hK : K > 0) (s : Finset ℝ) (w : ℝ → ℝ
     let τ : Fin s.card → ℝ := fun i => (s.equivFin.symm i).1
     refine ⟨s.card,
       c, Bc, tc, τ,
-      ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+      ?_, ?_, ?_, ?_, ?_, ?_⟩  -- 6 conditions: c≥0, B>0, t>0, |τ|+B≤K, sum_eq, W_K
     · -- coefficients nonnegative
       intro i
       have hi : (s.equivFin.symm i).1 ∈ s := (s.equivFin.symm i).2
       exact hw _ hi
     · intro _; exact hB
     · intro _; exact ht
-    · intro i
+    · -- |τ i| + B i ≤ K (follows directly from hτB)
+      intro i
       have hi : (s.equivFin.symm i).1 ∈ s := (s.equivFin.symm i).2
-      have hIcc : (s.equivFin.symm i).1 ∈ Set.Icc (-K) K := hs _ hi
-      have hIcc' : -K ≤ (s.equivFin.symm i).1 ∧ (s.equivFin.symm i).1 ≤ K := by
-        simpa [Set.mem_Icc] using hIcc
-      exact abs_le.mpr hIcc'
-    · intro _; exact hBK
+      -- τ i = (s.equivFin.symm i).1 by definition, B is constant
+      exact hτB _ hi
     · -- equality of the function with the Fin-indexed sum
       intro x
       have hsum :
@@ -606,29 +884,538 @@ The approximant g satisfies:
 - g ∈ W_K K (continuity, support, even, nonnegative)
 -/
 
-/-- A1 Density Theorem: Fejér×heat atoms are dense in W_K.
-    This matches the signature of Q3.A1_density_WK_axiom in Axioms.lean. -/
+/- A1 Density Theorem: Fejér×heat atoms are dense in W_K.
+   This matches the signature of Q3.A1_density_WK_axiom in Axioms.lean.
+
+   Proof strategy (fixed-t hat chain):
+   1) Hat interpolation on [-K, K] with margin |τᵢ|+δ ≤ K (Lemma 6.4).
+   2) Evenize the hat sum using symmetry of Φ.
+   3) Choose t large so HeatKernel t is nearly constant on [-2K, 2K].
+   4) Turn hats into Fejér×heat atoms with coefficients cᵢ = Φ(τᵢ)/(2 H_t(0)).
+-/
 theorem A1_density_WK_thm (K : ℝ) (hK : K > 0) :
     ∀ Φ ∈ W_K K, ∀ ε > 0,
       ∃ g ∈ AtomCone_K K,
         sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε := by
-  -- Strategy: Use convolution approximation from helper lemmas
-  -- 1. Approximate Φ by convolution with heat kernel
-  -- 2. Approximate convolution by Riemann sum
-  -- 3. Each Riemann sum term is a Fejér×heat atom
-  -- 4. Show the result is in AtomCone_K with B ≤ K
   intro Φ hΦ ε hε
-  -- Bridge to the Q3 axiom statement (same signature), avoiding circular dependency on A1_density.
-  have hΦ' : Φ ∈ Q3.W_K K := by
-    simpa [W_K_eq_q3] using hΦ
-  -- Use the Q3 axiom for now; convert Q3.AtomCone_K to local AtomCone_K.
-  obtain ⟨g, hgq3, hsup⟩ := Q3.A1_density_WK_axiom K hK Φ hΦ' ε hε
-  have hg : g ∈ AtomCone_K K := by
-    rcases hgq3 with ⟨n, c, B, t, τ, hc, hB, ht, hτ, hBK, hg_eq, hgW⟩
-    refine ⟨n, c, B, t, τ, hc, hB, ht, hτ, hBK, ?_, ?_⟩
-    · intro x
-      have h_atom : ∀ i, Atom (B i) (t i) (τ i) x = Q3.Fejer_heat_atom (B i) (t i) (τ i) x :=
-        fun i => Atom_eq_q3 (B i) (t i) (τ i) x (ht i)
-      simpa [h_atom] using (hg_eq x)
-    · simpa [W_K_eq_q3] using hgW
-  exact ⟨g, hg, hsup⟩
+  obtain ⟨hΦ_cont, hΦ_supp, hΦ_even, hΦ_nonneg⟩ := hΦ
+
+  -- Boundary values vanish because support ⊆ (-K, K).
+  have hΦ_boundary : Φ (-K) = 0 ∧ Φ K = 0 := by
+    constructor
+    · by_contra h
+      have hmem : -K ∈ Function.support Φ := by
+        simpa [Function.mem_support] using h
+      have hmem' : (-K : ℝ) < -K ∧ (-K : ℝ) < K := by
+        simpa [Set.mem_Ioo] using (hΦ_supp hmem)
+      have hlt : (-K : ℝ) < -K := hmem'.1
+      linarith
+    · by_contra h
+      have hmem : K ∈ Function.support Φ := by
+        simpa [Function.mem_support] using h
+      have hmem' : (-K : ℝ) < K ∧ (K : ℝ) < K := by
+        simpa [Set.mem_Ioo] using (hΦ_supp hmem)
+      have hlt : (K : ℝ) < K := hmem'.2
+      linarith
+
+  have hε4 : ε / 4 > 0 := by linarith
+
+  obtain ⟨n, τ, δ, hn_pos, hδ_pos, hτ_in, hmargin, h_hat_approx, h_hat_nonneg⟩ :=
+    hat_interpolation_approx K hK Φ hΦ_cont.continuousOn (fun x _ => hΦ_nonneg x)
+      hΦ_boundary (ε / 4) hε4
+
+  let h : ℝ → ℝ := fun x => ∑ i, Φ (τ i) * FejerKernel δ (x - τ i)
+  let h_even : ℝ → ℝ := fun x => (h x + h (-x)) / 2
+
+  have h_even_approx : ∀ x ∈ Set.Icc (-K) K, |h_even x - Φ x| < ε / 4 := by
+    intro x hx
+    have h1 : |h x - Φ x| < ε / 4 := by
+      simpa [h] using h_hat_approx x hx
+    have hx_neg : -x ∈ Set.Icc (-K) K := by
+      have hx' : -K ≤ x ∧ x ≤ K := by
+        simpa [Set.mem_Icc] using hx
+      have hx_neg' : -K ≤ -x ∧ -x ≤ K := by
+        constructor <;> nlinarith [hx'.1, hx'.2]
+      exact hx_neg'
+    have h2 : |h (-x) - Φ (-x)| < ε / 4 := by
+      simpa [h] using h_hat_approx (-x) hx_neg
+    have h2' : |h (-x) - Φ x| < ε / 4 := by
+      simpa [hΦ_even x] using h2
+    have h_eq : h_even x - Φ x = ((h x - Φ x) + (h (-x) - Φ x)) / 2 := by
+      calc
+        h_even x - Φ x = (h x + h (-x)) / 2 - Φ x := by rfl
+        _ = ((h x + h (-x)) - 2 * Φ x) / 2 := by
+          ring
+        _ = ((h x - Φ x) + (h (-x) - Φ x)) / 2 := by
+          ring
+    have h_bound :
+        |h_even x - Φ x| ≤ (|h x - Φ x| + |h (-x) - Φ x|) / 2 := by
+      calc
+        |h_even x - Φ x| = |(h x - Φ x + (h (-x) - Φ x)) / 2| := by
+          simpa [h_eq, add_comm, add_left_comm, add_assoc]
+        _ = |(h x - Φ x) + (h (-x) - Φ x)| / 2 := by
+          simp [abs_div]
+        _ ≤ (|h x - Φ x| + |h (-x) - Φ x|) / 2 := by
+          exact (div_le_div_of_nonneg_right (abs_add_le _ _) (by norm_num))
+    have hsum : (|h x - Φ x| + |h (-x) - Φ x|) / 2 < ε / 4 := by
+      nlinarith [h1, h2']
+    exact lt_of_le_of_lt h_bound hsum
+
+  have hΦ_cont_on : ContinuousOn Φ (Set.Icc (-K) K) := hΦ_cont.continuousOn
+  obtain ⟨M, hM⟩ := IsCompact.exists_bound_of_continuousOn (CompactIccSpace.isCompact_Icc) hΦ_cont_on
+  let M' : ℝ := max M 1
+  have hM'_pos : 0 < M' := by
+    have h1 : (0 : ℝ) < 1 := by norm_num
+    exact lt_of_lt_of_le h1 (le_max_right _ _)
+  have hM_bound : ∀ x ∈ Set.Icc (-K) K, |Φ x| ≤ M' := by
+    intro x hx
+    have hMx : |Φ x| ≤ M := by
+      simpa [Real.norm_eq_abs] using hM x hx
+    exact le_trans hMx (le_max_left _ _)
+
+  let t : ℝ := 8 * K ^ 2 * (n : ℝ) * M' / ε
+  have ht_pos : t > 0 := by
+    have hn_pos' : (0 : ℝ) < n := by exact_mod_cast hn_pos
+    have hK_pos : 0 < K ^ 2 := sq_pos_of_pos hK
+    have hnum_pos : 0 < 8 * K ^ 2 * (n : ℝ) * M' := by
+      have h8 : (0 : ℝ) < 8 := by norm_num
+      have h1 : 0 < 8 * K ^ 2 := by exact mul_pos h8 hK_pos
+      have h2 : 0 < (8 * K ^ 2) * (n : ℝ) := by exact mul_pos h1 hn_pos'
+      exact mul_pos h2 hM'_pos
+    dsimp [t]
+    exact div_pos hnum_pos hε
+
+  let H0 : ℝ := HeatKernel t 0
+  have hH0_pos : H0 > 0 := by
+    unfold H0 HeatKernel
+    have hconst_pos : 0 < (4 * Real.pi * t) ^ (-(1:ℝ)/2) := by
+      apply Real.rpow_pos_of_pos
+      nlinarith [Real.pi_pos, ht_pos]
+    have hexp_pos : 0 < Real.exp (-0^2 / (4 * t)) := by
+      exact Real.exp_pos _
+    simpa using mul_pos hconst_pos hexp_pos
+
+  let c : Fin n → ℝ := fun i => Φ (τ i) / (2 * H0)
+  let g : ℝ → ℝ := fun x => ∑ i, c i * Atom δ t (τ i) x
+
+  have hg_mem : g ∈ AtomCone_K K := by
+    refine ⟨n, c, (fun _ => δ), (fun _ => t), τ, ?_, ?_, ?_, ?_, ?_, ?_⟩
+    · intro i
+      have hΦ_nonneg_i : 0 ≤ Φ (τ i) := hΦ_nonneg (τ i)
+      have hden_pos : 0 < 2 * H0 := by nlinarith [hH0_pos]
+      exact div_nonneg hΦ_nonneg_i (le_of_lt hden_pos)
+    · intro _; exact hδ_pos
+    · intro _; exact ht_pos
+    · intro i; exact hmargin i
+    · intro x; rfl
+    · -- g ∈ W_K K
+      refine ⟨?_, ?_, ?_, ?_⟩
+      · -- continuity
+        classical
+        have hAtom_cont : ∀ i, Continuous (fun x => Atom δ t (τ i) x) := by
+          intro i
+          unfold Atom FejerKernel HeatKernel
+          have h1 : Continuous (fun x => |x - τ i| / δ) := by
+            exact (continuous_abs.comp (continuous_sub_right (τ i))).div_const δ
+          have h2 : Continuous (fun x => |x + τ i| / δ) := by
+            exact (continuous_abs.comp (continuous_add_right (τ i))).div_const δ
+          have h3 : Continuous (fun x => -(x - τ i)^2 / (4 * t)) := by
+            exact (((continuous_sub_right (τ i)).pow 2).neg).div_const (4 * t)
+          have h4 : Continuous (fun x => -(x + τ i)^2 / (4 * t)) := by
+            exact (((continuous_add_right (τ i)).pow 2).neg).div_const (4 * t)
+          apply Continuous.add
+          · apply Continuous.mul
+            · exact continuous_const.max (continuous_const.sub h1)
+            · exact continuous_const.mul (Real.continuous_exp.comp h3)
+          · apply Continuous.mul
+            · exact continuous_const.max (continuous_const.sub h2)
+            · exact continuous_const.mul (Real.continuous_exp.comp h4)
+        refine continuous_finset_sum (s:=Finset.univ) ?_
+        intro i _
+        exact continuous_const.mul (hAtom_cont i)
+      · -- support
+        intro x hx
+        have hx_ne : g x ≠ 0 := by
+          simpa [Function.mem_support] using hx
+        have hx_abs : |x| < K := by
+          by_contra hx_abs
+          have hx_ge : |x| ≥ K := le_of_not_lt hx_abs
+          have hAtom_zero : ∀ i, Atom δ t (τ i) x = 0 := by
+            intro i
+            have hτB : |τ i| + δ ≤ K := hmargin i
+            have h_sub : |x - τ i| ≥ δ := by
+              have h1 : |x| - |τ i| ≤ |x - τ i| := abs_sub_abs_le_abs_sub x (τ i)
+              have h2 : δ ≤ |x| - |τ i| := by linarith [hx_ge, hτB]
+              exact le_trans h2 h1
+            have h_add : |x + τ i| ≥ δ := by
+              have h1 : |x| - |τ i| ≤ |x + τ i| := by
+                have h := abs_sub_abs_le_abs_sub x (-τ i)
+                simpa [abs_neg, sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using h
+              have h2 : δ ≤ |x| - |τ i| := by linarith [hx_ge, hτB]
+              exact le_trans h2 h1
+            unfold Atom
+            rw [FejerKernel_eq_zero_of_abs_ge hδ_pos h_sub,
+                FejerKernel_eq_zero_of_abs_ge hδ_pos h_add]
+            simp
+          have hgx0 : g x = 0 := by
+            classical
+            have hsum : ∑ i, c i * Atom δ t (τ i) x = 0 := by
+              apply Finset.sum_eq_zero
+              intro i _
+              simp [hAtom_zero i]
+            simpa [g] using hsum
+          exact hx_ne hgx0
+        have hx_mem : x ∈ Set.Ioo (-K) K := by
+          simpa [Set.mem_Ioo] using (abs_lt.mp hx_abs)
+        exact hx_mem
+      · -- evenness
+        unfold Q3.IsEven g
+        intro x
+        have hF_even : ∀ z : ℝ, FejerKernel δ z = FejerKernel δ (-z) := by
+          intro z
+          simp [FejerKernel, abs_neg]
+        have hH_even : ∀ z : ℝ, HeatKernel t z = HeatKernel t (-z) := by
+          intro z
+          unfold HeatKernel
+          ring_nf
+        have hAtom_even : ∀ i, Atom δ t (τ i) (-x) = Atom δ t (τ i) x := by
+          intro i
+          unfold Atom
+          have eq1 : -x - τ i = -(x + τ i) := by ring
+          have eq2 : -x + τ i = -(x - τ i) := by ring
+          rw [eq1, eq2, ← hF_even (x + τ i), ← hH_even (x + τ i),
+              ← hF_even (x - τ i), ← hH_even (x - τ i)]
+          ring
+        simp [g, hAtom_even]
+      · -- nonneg
+        intro x
+        apply Finset.sum_nonneg
+        intro i _
+        have hci_nonneg : 0 ≤ c i := by
+          have hΦ_nonneg_i : 0 ≤ Φ (τ i) := hΦ_nonneg (τ i)
+          have hden_pos : 0 < 2 * H0 := by nlinarith [hH0_pos]
+          exact div_nonneg hΦ_nonneg_i (le_of_lt hden_pos)
+        have hH_nonneg : ∀ z : ℝ, 0 ≤ HeatKernel t z := by
+          intro z
+          exact HeatKernel_nonneg t ht_pos z
+        have hF_nonneg : ∀ z : ℝ, 0 ≤ FejerKernel δ z := by
+          intro z
+          exact (FejerKernel_bounds δ hδ_pos z).1
+        have hAtom_nonneg : 0 ≤ Atom δ t (τ i) x := by
+          unfold Atom
+          apply add_nonneg <;> exact mul_nonneg (hF_nonneg _) (hH_nonneg _)
+        exact mul_nonneg hci_nonneg hAtom_nonneg
+
+  have h_g_h_even : ∀ x ∈ Set.Icc (-K) K, |g x - h_even x| ≤ ε / 4 := by
+    intro x hx
+    have hx_abs : |x| ≤ K := by
+      exact abs_le.mpr (by simpa [Set.mem_Icc] using hx)
+    have h_abs_sub : ∀ i, |x - τ i| ≤ 2 * K := by
+      intro i
+      have hτ_mem : τ i ∈ Set.Icc (-K) K := Set.Ioo_subset_Icc_self (hτ_in i)
+      have hτ_abs : |τ i| ≤ K := by
+        exact abs_le.mpr (by simpa [Set.mem_Icc] using hτ_mem)
+      have htriangle : |x - τ i| ≤ |x| + |τ i| := by
+        simpa [sub_eq_add_neg, abs_neg] using (abs_add_le x (-τ i))
+      calc
+        |x - τ i| ≤ |x| + |τ i| := htriangle
+        _ ≤ K + K := by nlinarith [hx_abs, hτ_abs]
+        _ = 2 * K := by ring
+    have h_abs_add : ∀ i, |x + τ i| ≤ 2 * K := by
+      intro i
+      have hτ_mem : τ i ∈ Set.Icc (-K) K := Set.Ioo_subset_Icc_self (hτ_in i)
+      have hτ_abs : |τ i| ≤ K := by
+        exact abs_le.mpr (by simpa [Set.mem_Icc] using hτ_mem)
+      have htriangle : |x + τ i| ≤ |x| + |τ i| := by
+        simpa using (abs_add_le x (τ i))
+      calc
+        |x + τ i| ≤ |x| + |τ i| := htriangle
+        _ ≤ K + K := by nlinarith [hx_abs, hτ_abs]
+        _ = 2 * K := by ring
+    have h_heat_bound :
+        ∀ z, |z| ≤ 2 * K → |HeatKernel t z - H0| ≤ H0 * 2 * K ^ 2 / t := by
+      intro z hz
+      have hz_mem : z ∈ Set.Icc (-2 * K) (2 * K) := by
+        simpa [Set.mem_Icc] using (abs_le.mp hz)
+      have hdiff : ∀ z ∈ Set.Icc (-2 * K) (2 * K), DifferentiableAt ℝ (HeatKernel t) z := by
+        intro z hz
+        exact (HeatKernel_deriv t ht_pos z).differentiableAt
+      have hbound : ∀ z ∈ Set.Icc (-2 * K) (2 * K), ‖deriv (HeatKernel t) z‖ ≤ H0 * K / t := by
+        intro z hz
+        have hderiv := HeatKernel_deriv t ht_pos z
+        have hderiv_eq : deriv (HeatKernel t) z = HeatKernel t z * (-z / (2 * t)) :=
+          hderiv.deriv
+        have hz_abs : |z| ≤ 2 * K := by
+          exact abs_le.mpr (by simpa [Set.mem_Icc] using hz)
+        have hH_le : |HeatKernel t z| ≤ H0 := by
+          have hH_nonneg : 0 ≤ HeatKernel t z := HeatKernel_nonneg t ht_pos z
+          have h_arg : -z ^ 2 / (4 * t) ≤ 0 := by
+            have hz2 : 0 ≤ z ^ 2 := by nlinarith
+            have hz2_div : 0 ≤ z ^ 2 / (4 * t) := by
+              exact div_nonneg hz2 (by nlinarith [ht_pos])
+            simpa [neg_div] using (neg_nonpos.mpr hz2_div)
+          have h_exp : Real.exp (-z ^ 2 / (4 * t)) ≤ 1 := by
+            exact Real.exp_le_one_iff.mpr h_arg
+          have hconst_nonneg : 0 ≤ (4 * Real.pi * t) ^ (-(1:ℝ)/2) := by
+            apply Real.rpow_nonneg
+            nlinarith [Real.pi_pos, ht_pos]
+          have hH_le' : HeatKernel t z ≤ H0 := by
+            have h := mul_le_mul_of_nonneg_left h_exp hconst_nonneg
+            simpa [HeatKernel, H0] using h
+          simpa [abs_of_nonneg hH_nonneg] using hH_le'
+        have hden_pos : 0 < (2 * t) := by nlinarith [ht_pos]
+        have hden_nonneg : 0 ≤ (2 * t) := le_of_lt hden_pos
+        have h_abs_div : |-z / (2 * t)| = |z| / (2 * t) := by
+          calc
+            |-z / (2 * t)| = |z| / |2 * t| := by
+              rw [abs_div, abs_neg]
+            _ = |z| / (2 * t) := by
+              rw [abs_of_pos hden_pos]
+        have hnorm : ‖deriv (HeatKernel t) z‖ = |deriv (HeatKernel t) z| := by
+          simp [Real.norm_eq_abs]
+        calc
+          ‖deriv (HeatKernel t) z‖ = |deriv (HeatKernel t) z| := hnorm
+          _ = |HeatKernel t z * (-z / (2 * t))| := by
+            simp [hderiv_eq]
+          _ = |HeatKernel t z| * |-z / (2 * t)| := by
+            simpa using (abs_mul (HeatKernel t z) (-z / (2 * t)))
+          _ = |HeatKernel t z| * (|z| / (2 * t)) := by
+            rw [h_abs_div]
+          _ ≤ H0 * (|z| / (2 * t)) := by
+            have hz_div_nonneg : 0 ≤ |z| / (2 * t) := by
+              exact div_nonneg (abs_nonneg _) hden_nonneg
+            exact mul_le_mul_of_nonneg_right hH_le hz_div_nonneg
+          _ ≤ H0 * (2 * K / (2 * t)) := by
+            have hz_div : |z| / (2 * t) ≤ (2 * K) / (2 * t) := by
+              exact div_le_div_of_nonneg_right hz_abs hden_nonneg
+            have hH0_nonneg : 0 ≤ H0 := le_of_lt hH0_pos
+            have h := mul_le_mul_of_nonneg_left hz_div hH0_nonneg
+            simpa [mul_div_assoc] using h
+          _ = H0 * K / t := by
+            field_simp [ht_pos.ne']
+      have hconvex : Convex ℝ (Set.Icc (-2 * K) (2 * K)) := by
+        simpa using (convex_Icc (-2 * K) (2 * K))
+      have h0_mem : (0 : ℝ) ∈ Set.Icc (-2 * K) (2 * K) := by
+        constructor <;> nlinarith [hK]
+      have h_lip := (Convex.norm_image_sub_le_of_norm_deriv_le (f := HeatKernel t)
+        (s := Set.Icc (-2 * K) (2 * K)) (x := z) (y := 0) hdiff hbound hconvex hz_mem h0_mem)
+      have h_lip' : |HeatKernel t z - H0| ≤ H0 * K / t * |z| := by
+        simpa [H0, Real.norm_eq_abs, abs_sub_comm] using h_lip
+      have h_nonneg : 0 ≤ H0 * K / t := by
+        exact div_nonneg (mul_nonneg (le_of_lt hH0_pos) (le_of_lt hK)) (le_of_lt ht_pos)
+      calc
+        |HeatKernel t z - H0| ≤ H0 * K / t * |z| := h_lip'
+        _ ≤ H0 * K / t * (2 * K) := by
+          exact mul_le_mul_of_nonneg_left hz h_nonneg
+        _ = H0 * 2 * K ^ 2 / t := by ring
+    have hsum_bound :
+        |g x - h_even x|
+          ≤ ∑ i, c i * (|HeatKernel t (x - τ i) - H0| + |HeatKernel t (x + τ i) - H0|) := by
+      have hdiff :
+          g x - h_even x =
+            ∑ i,
+              c i *
+                (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) - H0) +
+                 FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) - H0)) := by
+        classical
+        have hF_even : ∀ z : ℝ, FejerKernel δ (-z) = FejerKernel δ z := by
+          intro z
+          simp [FejerKernel, abs_neg]
+        have hneg : ∀ i, FejerKernel δ (-x - τ i) = FejerKernel δ (x + τ i) := by
+          intro i
+          have : -x - τ i = -(x + τ i) := by ring
+          simpa [this] using (hF_even (x + τ i))
+        have hH0c : ∀ i, H0 * c i = Φ (τ i) * (2⁻¹) := by
+          intro i
+          have hH0_ne : H0 ≠ 0 := by nlinarith [hH0_pos]
+          dsimp [c]
+          field_simp [hH0_ne]
+        have hterm : ∀ i z,
+            Φ (τ i) * (FejerKernel δ z * 2⁻¹) = FejerKernel δ z * (H0 * c i) := by
+          intro i z
+          calc
+            Φ (τ i) * (FejerKernel δ z * 2⁻¹)
+                = FejerKernel δ z * (Φ (τ i) * 2⁻¹) := by ring
+            _ = FejerKernel δ z * (H0 * c i) := by
+                simp [hH0c i, mul_comm, mul_left_comm, mul_assoc]
+        have hneg' : ∀ i, FejerKernel δ (-x + -τ i) = FejerKernel δ (x + τ i) := by
+          intro i
+          have : -x + -τ i = -x - τ i := by ring
+          simpa [this] using hneg i
+        -- expand g and h_even
+        simp [g, h_even, h, Atom, hneg', hterm, mul_add, add_mul, sub_eq_add_neg,
+          add_assoc, add_left_comm, add_comm, div_eq_mul_inv, two_mul,
+          Finset.sum_add_distrib, Finset.sum_mul, Finset.mul_sum, mul_comm,
+          mul_left_comm, mul_assoc]
+      have hterm_bound :
+          ∀ i,
+            |c i *
+                (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) - H0) +
+                 FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) - H0))|
+              ≤ c i * (|HeatKernel t (x - τ i) - H0| + |HeatKernel t (x + τ i) - H0|) := by
+        intro i
+        have hci_nonneg : 0 ≤ c i := by
+          have hΦ_nonneg_i : 0 ≤ Φ (τ i) := hΦ_nonneg (τ i)
+          have hden_pos : 0 < 2 * H0 := by nlinarith [hH0_pos]
+          exact div_nonneg hΦ_nonneg_i (le_of_lt hden_pos)
+        have hF_bound : ∀ z, |FejerKernel δ z| ≤ 1 := by
+          intro z
+          have h := (FejerKernel_bounds δ hδ_pos z).2
+          simpa [abs_of_nonneg (FejerKernel_bounds δ hδ_pos z).1] using h
+        calc
+          |c i *
+              (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) - H0) +
+               FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) - H0))|
+              = c i *
+                |FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) - H0) +
+                 FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) - H0)| := by
+                  simp [abs_mul, abs_of_nonneg hci_nonneg]
+          _ ≤ c i *
+              (|FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) - H0)| +
+               |FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) - H0)|) := by
+                have h := abs_add_le
+                  (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) - H0))
+                  (FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) - H0))
+                exact mul_le_mul_of_nonneg_left h hci_nonneg
+          _ ≤ c i * (|HeatKernel t (x - τ i) - H0| + |HeatKernel t (x + τ i) - H0|) := by
+                have h1 :
+                    |FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) - H0)|
+                      ≤ |HeatKernel t (x - τ i) - H0| := by
+                    calc
+                      |FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) - H0)|
+                          = |FejerKernel δ (x - τ i)| * |HeatKernel t (x - τ i) - H0| := by
+                              simp [abs_mul]
+                      _ ≤ 1 * |HeatKernel t (x - τ i) - H0| := by
+                              exact mul_le_mul_of_nonneg_right (hF_bound _) (abs_nonneg _)
+                      _ = _ := by ring
+                have h2 :
+                    |FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) - H0)|
+                      ≤ |HeatKernel t (x + τ i) - H0| := by
+                    calc
+                      |FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) - H0)|
+                          = |FejerKernel δ (x + τ i)| * |HeatKernel t (x + τ i) - H0| := by
+                              simp [abs_mul]
+                      _ ≤ 1 * |HeatKernel t (x + τ i) - H0| := by
+                              exact mul_le_mul_of_nonneg_right (hF_bound _) (abs_nonneg _)
+                      _ = _ := by ring
+                nlinarith [h1, h2, hci_nonneg]
+      calc
+        |g x - h_even x| = |∑ i,
+            c i *
+              (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) - H0) +
+               FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) - H0))| := by
+          simpa [hdiff]
+        _ ≤ ∑ i,
+            |c i *
+                (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) - H0) +
+                 FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) - H0))| := by
+          exact Finset.abs_sum_le_sum_abs _ _
+        _ ≤ ∑ i, c i * (|HeatKernel t (x - τ i) - H0| + |HeatKernel t (x + τ i) - H0|) := by
+          exact Finset.sum_le_sum (fun i _ => hterm_bound i)
+    have hsum : ∑ i, Φ (τ i) ≤ (n : ℝ) * M' := by
+      have h_each : ∀ i, Φ (τ i) ≤ M' := by
+        intro i
+        have hτ_mem : τ i ∈ Set.Icc (-K) K := Set.Ioo_subset_Icc_self (hτ_in i)
+        have hΦ_abs : |Φ (τ i)| ≤ M' := hM_bound _ hτ_mem
+        have hΦ_nonneg_i : 0 ≤ Φ (τ i) := hΦ_nonneg (τ i)
+        simpa [abs_of_nonneg hΦ_nonneg_i] using hΦ_abs
+      have hsum' : ∑ i, Φ (τ i) ≤ ∑ i : Fin n, M' := by
+        exact Finset.sum_le_sum (fun i _ => h_each i)
+      have hsum'' : (∑ i : Fin n, M') = (n : ℝ) * M' := by
+        simpa using (Finset.sum_const (s:=Finset.univ) (a:=M'))
+      exact hsum'.trans (by simpa [hsum''] )
+    have hH_bound_sub : ∀ i, |HeatKernel t (x - τ i) - H0| ≤ H0 * 2 * K ^ 2 / t := by
+      intro i
+      apply h_heat_bound
+      exact h_abs_sub i
+    have hH_bound_add : ∀ i, |HeatKernel t (x + τ i) - H0| ≤ H0 * 2 * K ^ 2 / t := by
+      intro i
+      apply h_heat_bound
+      exact h_abs_add i
+    have hsum_bound2 :
+        ∑ i, c i * (|HeatKernel t (x - τ i) - H0| + |HeatKernel t (x + τ i) - H0|)
+          ≤ 2 * K ^ 2 / t * ∑ i, Φ (τ i) := by
+      have hci_nonneg : ∀ i, 0 ≤ c i := by
+        intro i
+        have hΦ_nonneg_i : 0 ≤ Φ (τ i) := hΦ_nonneg (τ i)
+        have hden_pos : 0 < 2 * H0 := by nlinarith [hH0_pos]
+        exact div_nonneg hΦ_nonneg_i (le_of_lt hden_pos)
+      have hterm_bound2 :
+          ∀ i,
+            c i * (|HeatKernel t (x - τ i) - H0| + |HeatKernel t (x + τ i) - H0|)
+              ≤ Φ (τ i) * (2 * K ^ 2 / t) := by
+        intro i
+        have h1 := hH_bound_sub i
+        have h2 := hH_bound_add i
+        have hci_nonneg_i : 0 ≤ c i := hci_nonneg i
+        have hsum' :
+            |HeatKernel t (x - τ i) - H0| + |HeatKernel t (x + τ i) - H0|
+              ≤ 2 * (H0 * 2 * K ^ 2 / t) := by
+          nlinarith [h1, h2]
+        have hsum'' :
+            c i * (|HeatKernel t (x - τ i) - H0| + |HeatKernel t (x + τ i) - H0|)
+              ≤ c i * (2 * (H0 * 2 * K ^ 2 / t)) := by
+          exact mul_le_mul_of_nonneg_left hsum' hci_nonneg_i
+        have hterm_simp :
+            c i * (2 * (H0 * 2 * K ^ 2 / t)) = Φ (τ i) * (2 * K ^ 2 / t) := by
+          have hH0_ne : H0 ≠ 0 := by nlinarith [hH0_pos]
+          have ht_ne : t ≠ 0 := by nlinarith [ht_pos]
+          dsimp [c]
+          field_simp [hH0_ne, ht_ne]
+        simpa [hterm_simp] using hsum''
+      have hsum' :
+          ∑ i, c i * (|HeatKernel t (x - τ i) - H0| + |HeatKernel t (x + τ i) - H0|)
+            ≤ ∑ i, Φ (τ i) * (2 * K ^ 2 / t) := by
+        exact Finset.sum_le_sum (fun i _ => hterm_bound2 i)
+      have hsum_const :
+          ∑ i, Φ (τ i) * (2 * K ^ 2 / t) = (2 * K ^ 2 / t) * ∑ i, Φ (τ i) := by
+        have h := (Finset.sum_mul (s:=Finset.univ) (f:=fun i => Φ (τ i)) (a:=2 * K ^ 2 / t))
+        simpa [mul_comm, mul_left_comm, mul_assoc] using h.symm
+      exact hsum'.trans (by simpa [hsum_const])
+    have hfinal_bound : |g x - h_even x| ≤ ε / 4 := by
+      have hsum_le := le_trans hsum_bound hsum_bound2
+      have ht_ne : t ≠ 0 := ne_of_gt ht_pos
+      have hε_ne : ε ≠ 0 := ne_of_gt hε
+      have hsum_le' : |g x - h_even x| ≤ 2 * K ^ 2 / t * ((n : ℝ) * M') := by
+        have h_nonneg : 0 ≤ 2 * K ^ 2 / t := by
+          have hnum : 0 ≤ 2 * K ^ 2 := by nlinarith [sq_nonneg K]
+          exact div_nonneg hnum (le_of_lt ht_pos)
+        have := hsum_le.trans (by
+          have : ∑ i, Φ (τ i) ≤ (n : ℝ) * M' := hsum
+          exact mul_le_mul_of_nonneg_left this h_nonneg)
+        simpa [mul_assoc] using this
+      have hbound : 2 * K ^ 2 / t * ((n : ℝ) * M') ≤ ε / 4 := by
+        dsimp [t]
+        field_simp [hε_ne, ht_ne, hK.ne', hM'_pos.ne', (ne_of_gt (by exact_mod_cast hn_pos))]
+        nlinarith
+      exact le_trans hsum_le' hbound
+    exact hfinal_bound
+
+  have h_pointwise : ∀ x ∈ Set.Icc (-K) K, |Φ x - g x| ≤ ε / 2 := by
+    intro x hx
+    have h1 : |Φ x - h_even x| < ε / 4 := by
+      simpa [abs_sub_comm] using h_even_approx x hx
+    have h2 : |h_even x - g x| ≤ ε / 4 := by
+      simpa [abs_sub_comm] using h_g_h_even x hx
+    have htri : |Φ x - g x| ≤ |Φ x - h_even x| + |h_even x - g x| := by
+      simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using abs_sub_le (Φ x) (h_even x) (g x)
+    have hsum : |Φ x - h_even x| + |h_even x - g x| ≤ ε / 2 := by
+      nlinarith [h1, h2]
+    exact le_trans htri hsum
+
+  have h_approx : sSup ({|Φ x - g x| | x ∈ Set.Icc (-K) K} : Set ℝ) < ε := by
+    have h0_mem : (0 : ℝ) ∈ Set.Icc (-K) K := by
+      constructor <;> nlinarith [hK]
+    have hs_nonempty :
+        ({|Φ x - g x| | x ∈ Set.Icc (-K) K} : Set ℝ).Nonempty := by
+      refine ⟨|Φ 0 - g 0|, ?_⟩
+      exact ⟨0, h0_mem, rfl⟩
+    have h_sSup : sSup ({|Φ x - g x| | x ∈ Set.Icc (-K) K} : Set ℝ) ≤ ε / 2 := by
+      refine csSup_le hs_nonempty ?_
+      intro y hy
+      rcases hy with ⟨x, hx, rfl⟩
+      exact h_pointwise x hx
+    have hε2 : ε / 2 < ε := by linarith
+    exact lt_of_le_of_lt h_sSup hε2
+
+  exact ⟨g, hg_mem, h_approx⟩

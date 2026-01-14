@@ -222,8 +222,16 @@ Only then proceed with the full dossier structure.
 ```bash
 cd /Users/emalam/Documents/GitHub/chen_q3
 source .venv/bin/activate
-python ~/.claude/skills/aristotle/scripts/status.py
-python ~/.claude/skills/aristotle/scripts/submit.py file.md
-python ~/.claude/skills/aristotle/scripts/watch.py <id>
-python ~/.claude/skills/aristotle/scripts/download.py <id>
+aristotle prove-from-file --informal --no-validate-lean-project --no-wait file.md
+
+python3 - <<'PY'
+import asyncio
+from aristotlelib import Project
+
+async def main():
+    p = await Project.from_id("<project_id>")
+    print(p.status, p.percent_complete)
+
+asyncio.run(main())
+PY
 ```

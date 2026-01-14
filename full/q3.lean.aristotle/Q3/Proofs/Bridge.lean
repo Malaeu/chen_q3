@@ -27,6 +27,7 @@ set_option linter.unusedVariables false
 open scoped BigOperators
 open scoped Real
 open scoped Classical
+open scoped Matrix.Norms.L2Operator
 
 set_option maxHeartbeats 400000
 
@@ -112,9 +113,34 @@ theorem mem_Q3Nodes_iff_log_le (n : ℕ) (K : ℝ) (hK : K ≥ 0) :
            _ = K := by field_simp
     · exact hn
 
-/-- Every element of Q3.Nodes K is in Aristotle's nodes finset -/
-axiom mem_nodes_finset_of_mem_Q3Nodes (n : ℕ) (K : ℝ) (hK : K ≥ 1) :
-    n ∈ Q3.Nodes K → n ∈ _root_.nodes (K_ar K)
+/-- Every element of Q3.Nodes K is in Aristotle's nodes finset.
+    PROVEN: follows from log(n) ≤ K_ar K ⟹ n ≤ exp(K_ar K) ⟹ n ∈ range. -/
+theorem mem_nodes_finset_of_mem_Q3Nodes (n : ℕ) (K : ℝ) (hK : K ≥ 1) :
+    n ∈ Q3.Nodes K → n ∈ _root_.nodes (K_ar K) := by
+  intro hmem
+  -- Use the characterization of Q3.Nodes membership
+  have hK_nonneg : K ≥ 0 := le_trans (by norm_num) hK
+  rw [mem_Q3Nodes_iff_log_le n K hK_nonneg] at hmem
+  obtain ⟨hn2, hlog⟩ := hmem
+  -- Unfold nodes definition
+  unfold _root_.nodes
+  simp only [Finset.mem_filter, Finset.mem_range]
+  -- Need: n < floor(exp(K_ar K)) + 1 ∧ 1 ≤ n ∧ log n ≤ K_ar K
+  refine ⟨?_, ?_, hlog⟩
+  · -- n < floor(exp(K_ar K)) + 1
+    have hn_pos : (0 : ℝ) < n := by
+      have : (2 : ℕ) ≤ n := hn2
+      have : (2 : ℝ) ≤ (n : ℝ) := Nat.cast_le.mpr this
+      linarith
+    have hexp_log : Real.exp (Real.log n) = n := Real.exp_log hn_pos
+    have hle_exp : (n : ℝ) ≤ Real.exp (K_ar K) := by
+      rw [← hexp_log]
+      exact Real.exp_le_exp.mpr hlog
+    have hle_floor : n ≤ Nat.floor (Real.exp (K_ar K)) := by
+      exact Nat.le_floor hle_exp
+    omega
+  · -- 1 ≤ n
+    omega
 
 /-! ## Weight Functions Agreement -/
 
@@ -123,6 +149,172 @@ lemma w_RKHS_eq (n : ℕ) : Q3.w_RKHS n = ArithmeticFunction.vonMangoldt n / Rea
 
 /-- Aristotle's w_RKHS equals Q3's w_RKHS -/
 lemma w_RKHS_aristotle_eq (n : ℕ) : _root_.w_RKHS n = Q3.w_RKHS n := rfl
+
+/-! ## Submatrix Operator Norm Bound -/
+
+private noncomputable def extend_vec {ι κ : Type*} (f : κ → ι) (v : EuclideanSpace ℝ κ) :
+    EuclideanSpace ℝ ι :=
+  fun i => if h : ∃ k, f k = i then v (Classical.choose h) else 0
+
+private lemma extend_vec_apply {ι κ : Type*} [DecidableEq ι]
+    (f : κ → ι) (hf : Function.Injective f) (v : EuclideanSpace ℝ κ) (k : κ) :
+    extend_vec f v (f k) = v k := by
+  classical
+  have h' : ∃ k', f k' = f k := ⟨k, rfl⟩
+  have hk' : Classical.choose h' = k := hf (Classical.choose_spec h')
+  calc
+    extend_vec f v (f k) = v (Classical.choose h') := by
+      simp [extend_vec, h']
+    _ = v k := by
+      rw [hk']
+
+private lemma norm_restrict_le {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    (f : κ → ι) (hf : Function.Injective f) (w : EuclideanSpace ℝ ι) :
+    ‖(WithLp.toLp 2 (fun k : κ => w (f k)) : EuclideanSpace ℝ κ)‖ ≤ ‖w‖ := by
+  classical
+  have hsum_image :
+      (∑ k : κ, (w (f k)) ^ 2) =
+        ∑ i ∈ (Finset.univ.image f), (w i) ^ 2 := by
+    have h :=
+        (Finset.sum_image (s := (Finset.univ : Finset κ)) (g := f)
+          (f := fun i : ι => (w i) ^ 2) (by
+            intro x hx y hy hxy
+            exact hf hxy))
+    simpa using h.symm
+  have hsum_le :
+      ∑ i ∈ (Finset.univ.image f), (w i) ^ 2 ≤ ∑ i : ι, (w i) ^ 2 := by
+    refine Finset.sum_le_sum_of_subset_of_nonneg ?_ ?_
+    · intro i hi
+      exact Finset.mem_univ i
+    · intro i hi hnot
+      exact sq_nonneg _
+  have hsum :
+      ∑ k : κ, (w (f k)) ^ 2 ≤ ∑ i : ι, (w i) ^ 2 := by
+    calc
+      ∑ k : κ, (w (f k)) ^ 2
+          = ∑ i ∈ (Finset.univ.image f), (w i) ^ 2 := hsum_image
+      _ ≤ ∑ i : ι, (w i) ^ 2 := hsum_le
+  have hsqrt := Real.sqrt_le_sqrt hsum
+  have hnorm_left :
+      ‖(WithLp.toLp 2 (fun k : κ => w (f k)) : EuclideanSpace ℝ κ)‖ =
+        √(∑ k : κ, (w (f k)) ^ 2) := by
+    simpa [Real.norm_eq_abs, sq_abs] using
+      (EuclideanSpace.norm_eq (WithLp.toLp 2 (fun k : κ => w (f k)) : EuclideanSpace ℝ κ))
+  have hnorm_right :
+      ‖w‖ = √(∑ i : ι, (w i) ^ 2) := by
+    simpa [Real.norm_eq_abs, sq_abs] using (EuclideanSpace.norm_eq w)
+  calc
+    ‖(WithLp.toLp 2 (fun k : κ => w (f k)) : EuclideanSpace ℝ κ)‖
+        = √(∑ k : κ, (w (f k)) ^ 2) := hnorm_left
+    _ ≤ √(∑ i : ι, (w i) ^ 2) := hsqrt
+    _ = ‖w‖ := hnorm_right.symm
+
+private lemma norm_extend_eq {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
+    (f : κ → ι) (hf : Function.Injective f) (v : EuclideanSpace ℝ κ) :
+    ‖(extend_vec f v : EuclideanSpace ℝ ι)‖ = ‖v‖ := by
+  classical
+  have hsum_image :
+      ∑ i ∈ (Finset.univ.image f), (extend_vec f v i) ^ 2 = ∑ k : κ, (v k) ^ 2 := by
+    have h :=
+        (Finset.sum_image (s := (Finset.univ : Finset κ)) (g := f)
+          (f := fun i : ι => (extend_vec f v i) ^ 2) (by
+            intro x hx y hy hxy
+            exact hf hxy))
+    simpa [extend_vec_apply, hf] using h
+  have hsum_total :
+      ∑ i : ι, (extend_vec f v i) ^ 2 =
+        ∑ i ∈ (Finset.univ.image f), (extend_vec f v i) ^ 2 := by
+    have hsubset : (Finset.univ.image f) ⊆ (Finset.univ : Finset ι) := by
+      intro i hi
+      exact Finset.mem_univ i
+    have hzero :
+        ∀ i ∈ (Finset.univ : Finset ι), i ∉ (Finset.univ.image f) →
+          (extend_vec f v i) ^ 2 = 0 := by
+      intro i _ hnot
+      have hnot' : ¬ ∃ k, f k = i := by
+        intro h
+        have : i ∈ (Finset.univ.image f) := by
+          rcases h with ⟨k, hk⟩
+          exact Finset.mem_image.mpr ⟨k, Finset.mem_univ k, hk⟩
+        exact hnot this
+      simp [extend_vec, hnot']
+    have h := Finset.sum_subset hsubset hzero
+    simpa using h.symm
+  have hsum :
+      ∑ i : ι, (extend_vec f v i) ^ 2 = ∑ k : κ, (v k) ^ 2 :=
+    hsum_total.trans hsum_image
+  have hsqrt := congrArg Real.sqrt hsum
+  simpa [EuclideanSpace.norm_eq, Real.norm_eq_abs, sq_abs] using hsqrt
+
+private lemma opNorm_submatrix_le {ι κ : Type*} [Fintype ι] [Fintype κ]
+    [DecidableEq ι] [DecidableEq κ] [Nonempty ι] [Nonempty κ]
+    (A : Matrix ι ι ℝ) (f : κ → ι) (hf : Function.Injective f) :
+    ‖(Matrix.toEuclideanLin (Matrix.submatrix A f f)).toContinuousLinearMap‖ ≤
+      ‖(Matrix.toEuclideanLin A).toContinuousLinearMap‖ := by
+  classical
+  let restrict : EuclideanSpace ℝ ι → EuclideanSpace ℝ κ :=
+    fun w => (WithLp.toLp 2 (fun k : κ => w (f k)) : EuclideanSpace ℝ κ)
+  have h_submatrix : ∀ v,
+      (Matrix.toEuclideanLin (Matrix.submatrix A f f)) v =
+        restrict ((Matrix.toEuclideanLin A) (extend_vec f v)) := by
+    intro v
+    ext k
+    simp [Matrix.toEuclideanLin_apply, WithLp.toLp, WithLp.ofLp, Matrix.submatrix,
+      Matrix.mulVec, restrict]
+    -- Reduce to sums over the image of f.
+    have hsum_image :
+        ∑ i ∈ (Finset.univ.image f), A (f k) i * extend_vec f v i =
+          ∑ j : κ, A (f k) (f j) * v j := by
+      have h :=
+          (Finset.sum_image (s := (Finset.univ : Finset κ)) (g := f)
+            (f := fun i : ι => A (f k) i * extend_vec f v i) (by
+              intro x hx y hy hxy
+              exact hf hxy))
+      simpa [extend_vec_apply, hf] using h
+    have hsum_total :
+        ∑ i ∈ (Finset.univ.image f), A (f k) i * extend_vec f v i =
+          ∑ i : ι, A (f k) i * extend_vec f v i := by
+      have hsubset : (Finset.univ.image f) ⊆ (Finset.univ : Finset ι) := by
+        intro i hi
+        exact Finset.mem_univ i
+      have hzero :
+          ∀ i ∈ (Finset.univ : Finset ι), i ∉ (Finset.univ.image f) →
+            A (f k) i * extend_vec f v i = 0 := by
+        intro i _ hnot
+        have hnot' : ¬ ∃ j, f j = i := by
+          intro h
+          have : i ∈ (Finset.univ.image f) := by
+            rcases h with ⟨j, hj⟩
+            exact Finset.mem_image.mpr ⟨j, Finset.mem_univ j, hj⟩
+          exact hnot this
+        simp [extend_vec, hnot']
+      have h := Finset.sum_subset hsubset hzero
+      simpa using h
+    calc
+      ∑ j : κ, A (f k) (f j) * v j
+          = ∑ i ∈ (Finset.univ.image f), A (f k) i * extend_vec f v i := by
+              symm
+              exact hsum_image
+      _ = ∑ i : ι, A (f k) i * extend_vec f v i := by
+              exact hsum_total
+  refine ContinuousLinearMap.opNorm_le_bound _ ?_ ?_
+  · exact norm_nonneg _
+  · intro v
+    have hA :=
+      (Matrix.toEuclideanLin A).toContinuousLinearMap.le_opNorm
+        (extend_vec f v : EuclideanSpace ℝ ι)
+    calc
+      ‖(Matrix.toEuclideanLin (Matrix.submatrix A f f)).toContinuousLinearMap v‖
+          = ‖(Matrix.toEuclideanLin (Matrix.submatrix A f f)) v‖ := by rfl
+      _ = ‖restrict ((Matrix.toEuclideanLin A) (extend_vec f v))‖ := by
+            simp [h_submatrix]
+      _ ≤ ‖(Matrix.toEuclideanLin A) (extend_vec f v : EuclideanSpace ℝ ι)‖ := by
+              dsimp [restrict]
+              exact norm_restrict_le f hf ((Matrix.toEuclideanLin A)
+                (extend_vec f v : EuclideanSpace ℝ ι))
+      _ ≤ ‖(Matrix.toEuclideanLin A).toContinuousLinearMap‖ * ‖extend_vec f v‖ := hA
+      _ = ‖(Matrix.toEuclideanLin A).toContinuousLinearMap‖ * ‖v‖ := by
+              simp [norm_extend_eq f hf]
 
 /-! ## Matrix Entry Rescaling -/
 
@@ -194,13 +386,96 @@ lemma mem_Q3Nodes_iff (n : ℕ) (K : ℝ) (hK : K ≥ 0) :
     - Full formalization requires subtype/finset conversion (tedious, not mathematically interesting)
 
     **Source**: `Q3/Proofs/RKHS_contraction.lean` theorem `RKHS_contraction` -/
-axiom RKHS_contraction_bridge (K : ℝ) (hK : K ≥ 1) :
+theorem RKHS_contraction_bridge (K : ℝ) (hK : K ≥ 1) :
     ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧
     ∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ Q3.Nodes K) →
       let T_P : Matrix S S ℝ := fun i j =>
         Real.sqrt (Q3.w_RKHS i) * Real.sqrt (Q3.w_RKHS j) *
         Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t))
-      ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ
+      ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ := by
+  classical
+  have h2pi_ge_one : (1 : ℝ) ≤ 2 * Real.pi := by
+    have h2pi_gt : (1 : ℝ) < 2 * Real.pi := by
+      nlinarith [Real.pi_gt_three]
+    exact le_of_lt h2pi_gt
+  have h2pi_pos : 0 ≤ 2 * Real.pi := by
+    nlinarith [Real.pi_pos]
+  have hK_ar : K_ar K ≥ 1 := by
+    have h2pi_le : 2 * Real.pi ≤ 2 * Real.pi * K := by
+      simpa using (mul_le_mul_of_nonneg_left hK h2pi_pos)
+    unfold K_ar
+    exact le_trans h2pi_ge_one h2pi_le
+  obtain ⟨t_ar, ht_ar, ρ, hρ_lt, h_norm⟩ :=
+    _root_.RKHS_contraction (K_ar K) hK_ar
+  let t_q3 := t_ar / (4 * Real.pi^2)
+  have ht_q3 : t_q3 > 0 := by
+    have hpi : 0 < 4 * Real.pi^2 := by positivity
+    exact div_pos ht_ar hpi
+  refine ⟨t_q3, ht_q3, ρ, hρ_lt, ?_⟩
+  intro S hS
+  let toNode : S → _root_.Node (K_ar K) := fun s =>
+    ⟨s.1, mem_nodes_finset_of_mem_Q3Nodes s.1 K hK (hS s.1 s.2)⟩
+  have h_inj : Function.Injective toNode := by
+    intro a b h
+    apply Subtype.ext
+    have hval :
+        (toNode a).1 = (toNode b).1 :=
+      congrArg (fun x : _root_.Node (K_ar K) => x.1) h
+    simpa [toNode] using hval
+  let T_full : Matrix (_root_.Node (K_ar K)) (_root_.Node (K_ar K)) ℝ :=
+    _root_.T_P_matrix (K_ar K) t_ar
+  have hnode_nonempty : Nonempty (_root_.Node (K_ar K)) := by
+    refine ⟨⟨1, ?_⟩⟩
+    unfold _root_.nodes
+    refine Finset.mem_filter.mpr ?_
+    refine ⟨?_, ?_⟩
+    · have h_exp : 1 ≤ Real.exp (K_ar K) :=
+        (Real.one_le_exp_iff).2 (by linarith [hK_ar])
+      have h_floor : 1 ≤ Nat.floor (Real.exp (K_ar K)) :=
+        (Nat.one_le_floor_iff _).2 h_exp
+      exact (Finset.mem_range).2 ((Nat.lt_succ_iff).2 h_floor)
+    · refine ⟨by norm_num, ?_⟩
+      have hK_ar_nonneg : 0 ≤ K_ar K := by linarith [hK_ar]
+      simpa [Real.log_one] using hK_ar_nonneg
+  letI : Nonempty (_root_.Node (K_ar K)) := hnode_nonempty
+  let T_P : Matrix S S ℝ := fun i j =>
+    Real.sqrt (Q3.w_RKHS i) * Real.sqrt (Q3.w_RKHS j) *
+    Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t_q3))
+  have h_TP_eq : T_P = Matrix.submatrix T_full toNode toNode := by
+    ext i j
+    have h_exp :
+        Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t_q3)) =
+          Real.exp (-(_root_.ξ i - _root_.ξ j)^2 / (4 * t_ar)) := by
+      simpa [xi_aristotle_eq_root_xi, t_q3] using
+        exp_factor_eq (i : ℕ) (j : ℕ) t_ar ht_ar
+    simp [T_P, T_full, _root_.T_P_matrix, Matrix.submatrix, toNode,
+      w_RKHS_aristotle_eq, h_exp]
+  have h_sub :
+      ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤
+        ‖(Matrix.toEuclideanLin T_full).toContinuousLinearMap‖ := by
+    classical
+    by_cases hS_empty : S = ∅
+    · subst hS_empty
+      have hzero : (Matrix.toEuclideanLin T_P).toContinuousLinearMap = 0 := by
+        ext v i
+        cases i with
+        | mk val property => cases property
+      calc
+        ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖
+            = ‖(0 : EuclideanSpace ℝ { x // x ∈ (∅ : Finset ℕ) } →L[ℝ]
+                  EuclideanSpace ℝ { x // x ∈ (∅ : Finset ℕ) })‖ := by
+                rw [hzero]
+        _ = 0 := ContinuousLinearMap.opNorm_zero
+        _ ≤ ‖(Matrix.toEuclideanLin T_full).toContinuousLinearMap‖ := by
+              exact norm_nonneg _
+    · have hS_nonempty : S.Nonempty := Finset.nonempty_iff_ne_empty.mpr hS_empty
+      have hS_type : Nonempty (S : Type _) := (Finset.nonempty_coe_sort).2 hS_nonempty
+      letI : Nonempty (S : Type _) := hS_type
+      simpa [h_TP_eq] using (opNorm_submatrix_le (A := T_full) (f := toNode) h_inj)
+  have h_norm_full :
+      ‖(Matrix.toEuclideanLin T_full).toContinuousLinearMap‖ ≤ ρ := by
+    simpa [_root_.T_P_norm, T_full] using h_norm
+  exact le_trans h_sub h_norm_full
 
 /-- **Bridge axiom**: RKHS contraction in bundled form for main theorems.
 
@@ -209,8 +484,10 @@ axiom RKHS_contraction_bridge (K : ℝ) (hK : K ≥ 1) :
     - `‖T_P‖` as matrix operator norm
 
     **Source**: `RKHS_contraction_bridge` + type coercion -/
-axiom RKHS_contraction_data_of_bridge (K : ℝ) (hK : K ≥ 1) :
-    Q3.RKHS_contraction_data K
+theorem RKHS_contraction_data_of_bridge (K : ℝ) (hK : K ≥ 1) :
+    Q3.RKHS_contraction_data K := by
+  unfold Q3.RKHS_contraction_data
+  exact RKHS_contraction_bridge K hK
 
 /-! ## Documentation of Bridge Status
 

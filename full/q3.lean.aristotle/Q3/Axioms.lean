@@ -255,8 +255,7 @@ def AtomCone_K (K : ℝ) : Set (ℝ → ℝ) :=
         (∀ i, c i ≥ 0) ∧
         (∀ i, B i > 0) ∧
         (∀ i, t i > 0) ∧
-        (∀ i, |τ i| ≤ K) ∧
-        (∀ i, B i ≤ K) ∧  -- ensures support ⊆ [-2K, 2K], approx [-K,K] for centers in [-K,K]
+        (∀ i, |τ i| + B i ≤ K) ∧  -- ensures support ⊆ [-K, K] (Lemma a1-fixed-t-density)
         (∀ x, g x = ∑ i, c i * Fejer_heat_atom (B i) (t i) (τ i) x) ∧
         g ∈ W_K K }  -- explicitly require g ∈ W_K
 
@@ -322,11 +321,12 @@ The prime sampling operator T_P has ‖T_P‖ < 1 for appropriate t.
 **STATUS:** axiom here; bridge pending in `Q3.AxiomsTheorems`.
 -/
 axiom RKHS_contraction_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
-  ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K],
-    ∀ (T_P : Matrix Nodes_K Nodes_K ℝ), T_P.IsSymm →
-    (∀ i j : Nodes_K, T_P i j = Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
-      Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))) →
-    ‖T_P‖ ≤ ρ
+  ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧
+    ∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ Nodes K) →
+      let T_P : Matrix S S ℝ := fun i j =>
+        Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
+        Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))
+      ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ
 
 /-! ## Axiom T2.4: Row Sum Bound (Q3 RKHS Analysis)
 
@@ -432,20 +432,22 @@ def A3_bridge_data_uniform : Prop :=
 
 /-- Bundled statement of the RKHS contraction axiom for a fixed compact parameter `K`. (DEPRECATED) -/
 def RKHS_contraction_data (K : ℝ) : Prop :=
-  ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K],
-    ∀ (T_P : Matrix Nodes_K Nodes_K ℝ), T_P.IsSymm →
-    (∀ i j : Nodes_K, T_P i j = Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
-      Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))) →
-    ‖T_P‖ ≤ ρ
+  ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧
+    ∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ Nodes K) →
+      let T_P : Matrix S S ℝ := fun i j =>
+        Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
+        Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))
+      ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ
 
 /-- Uniform RKHS contraction data (December 2025 paper update).
     K-independent version - the heat parameter t and bound ρ are uniform. -/
 def RKHS_contraction_data_uniform : Prop :=
-  ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K],
-    ∀ (T_P : Matrix Nodes_K Nodes_K ℝ), T_P.IsSymm →
-    (∀ i j : Nodes_K, T_P i j = Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
-      Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))) →
-    ‖T_P‖ ≤ ρ
+  ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧
+    ∀ K ≥ 1, ∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ Nodes K) →
+      let T_P : Matrix S S ℝ := fun i j =>
+        Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
+        Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))
+      ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ
 
 /-- Core positivity transfer from the A3 bridge + RKHS contraction to atom cone positivity.
     This is the remaining hard analytic step (Q3 paper core). (DEPRECATED - use uniform version) -/

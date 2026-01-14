@@ -58,11 +58,12 @@ Key ingredients from Aristotle:
 **Proof**: By Aristotle's RKHS_contraction.lean.
 The coordinate rescaling preserves the contraction bound. -/
 theorem RKHS_contraction_theorem (K : ℝ) (hK : K ≥ 1) :
-    ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K],
-      ∀ (T_P : Matrix Nodes_K Nodes_K ℝ), T_P.IsSymm →
-      (∀ i j : Nodes_K, T_P i j = Real.sqrt (Q3.w_RKHS i) * Real.sqrt (Q3.w_RKHS j) *
-        Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t))) →
-      ‖T_P‖ ≤ ρ := by
+    ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧
+      ∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ Q3.Nodes K) →
+        let T_P : Matrix S S ℝ := fun i j =>
+          Real.sqrt (Q3.w_RKHS i) * Real.sqrt (Q3.w_RKHS j) *
+          Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t))
+        ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ := by
   -- Proof uses Aristotle's result with coordinate rescaling
   -- For now, we use the axiom; full proof requires Aristotle integration
   exact Q3.RKHS_contraction_axiom K hK

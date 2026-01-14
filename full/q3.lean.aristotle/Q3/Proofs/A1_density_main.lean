@@ -52,8 +52,8 @@ noncomputable def FejerHeatAtom (B t tau xi : ℝ) : ℝ :=
 Definition of the space W_K of test functions.
 -/
 def W_K (K : ℝ) : Set (ℝ → ℝ) :=
-  { Φ | ContinuousOn Φ (Set.Icc (-K) K) ∧
-        Function.support Φ ⊆ Set.Icc (-K) K ∧
+  { Φ | Continuous Φ ∧
+        Function.support Φ ⊆ Set.Ioo (-K) K ∧
         (∀ x, Φ (-x) = Φ x) ∧
         (∀ x, Φ x ≥ 0) }
 

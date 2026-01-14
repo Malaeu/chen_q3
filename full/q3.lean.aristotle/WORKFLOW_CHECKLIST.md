@@ -196,7 +196,7 @@ Save output to `reports/axiom_health_YYYY-MM-DD.txt` for tracking.
 ║  • lake build Q3.Main                                          ║
 ║  • #print axioms Q3.Main.RH_of_Weil_and_Q3                    ║
 ║                                                                ║
-║  TARGET: 12 axioms (3 Standard + 3 L1 + 4 L2 + 2 L3)          ║
+║  CURRENT: see PROJECT_ORCHESTRATOR.md (counts + tiers)         ║
 ║                                                                ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
@@ -207,7 +207,7 @@ Save output to `reports/axiom_health_YYYY-MM-DD.txt` for tracking.
 
 | Date | Axiom Count | Change |
 |------|-------------|--------|
-| 2026-01-13 | 12 | Initial: Q_Lipschitz wired as theorem |
+| 2026-01-13 | 10 | Closed arch/prime Lipschitz + RKHS contraction |
 | ... | ... | ... |
 
 ---

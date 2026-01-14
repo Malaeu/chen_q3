@@ -97,9 +97,9 @@ theorem Q_Lipschitz_on_W_K_bridge (K : ℝ) (hK : K ≥ 1) :
   intro Φ₁ hΦ₁ Φ₂ hΦ₂
 
   -- Extract properties from W_K membership
-  -- W_K K = {Φ | ContinuousOn ∧ support ⊆ Icc ∧ IsEven ∧ IsNonneg}
-  have hcont₁ : ContinuousOn Φ₁ (Set.Icc (-K) K) := hΦ₁.1
-  have hcont₂ : ContinuousOn Φ₂ (Set.Icc (-K) K) := hΦ₂.1
+  -- W_K K = {Φ | Continuous ∧ support ⊆ Icc ∧ IsEven ∧ IsNonneg}
+  have hcont₁ : ContinuousOn Φ₁ (Set.Icc (-K) K) := hΦ₁.1.continuousOn
+  have hcont₂ : ContinuousOn Φ₂ (Set.Icc (-K) K) := hΦ₂.1.continuousOn
   have hsupp₁ : Function.support Φ₁ ⊆ Set.Icc (-K) K := hΦ₁.2.1
   have hsupp₂ : Function.support Φ₂ ⊆ Set.Icc (-K) K := hΦ₂.2.1
 

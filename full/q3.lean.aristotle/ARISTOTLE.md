@@ -11,6 +11,15 @@
 
 ---
 
+## Local Skill (Codex)
+
+Skill location: `~/.codex/skills/aristotle/`
+
+Use the skill for the current submit/status/download workflow. The old
+`~/.claude/skills/aristotle/` path is deprecated.
+
+---
+
 ## API Reference
 
 ### Base URL
@@ -317,6 +326,8 @@ Aristotle иногда генерирует `open scoped Nat`, что делае
 ---
 
 ## Q3 Project IDs (текущая сессия)
+
+Source of truth: `full/q3.lean.aristotle/aristotle_input/project_ids.txt`
 
 | Name | Project ID | Status |
 |------|------------|--------|

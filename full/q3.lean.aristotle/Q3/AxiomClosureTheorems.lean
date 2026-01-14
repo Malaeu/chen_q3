@@ -91,11 +91,12 @@ theorem Q_Lipschitz_theorem (K : ℝ) (hK : K > 0) :
     Full proof: Q3/Proofs/RKHS_contraction_integrated.lean
     Note: Requires coordinate bridge (Aristotle uses ξ = log n) -/
 theorem RKHS_contraction_theorem (K : ℝ) (hK : K ≥ 1) :
-    ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧ ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K],
-      ∀ (T_P : Matrix Nodes_K Nodes_K ℝ), T_P.IsSymm →
-      (∀ i j : Nodes_K, T_P i j = Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
-        Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))) →
-      ‖T_P‖ ≤ ρ := by
+    ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧
+      ∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ Nodes K) →
+        let T_P : Matrix S S ℝ := fun i j =>
+          Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
+          Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))
+        ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ := by
   exact RKHS_contraction_axiom K hK
 
 /-! ═══════════════════════════════════════════════════════════════════

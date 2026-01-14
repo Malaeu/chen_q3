@@ -1,5 +1,8 @@
 # Q3 Paper ↔ Lean Proof Mapping (Complete)
 
+**Note:** For current axiom counts/status, use `PROJECT_ORCHESTRATOR.md`.
+This file is for citation-to-file mapping and may lag behind the live status.
+
 ## Status Legend
 
 | Symbol | Meaning |
@@ -196,7 +199,7 @@ These need Aristotle tasks created:
 ```
 q3.lean.aristotle/
 ├── Q3/
-│   ├── Axioms.lean              # 12 axioms (peer-reviewed + core)
+│   ├── Axioms.lean              # axioms list (count tracked in PROJECT_ORCHESTRATOR.md)
 │   └── Main.lean                # RH_of_Weil_and_Q3 ✅
 ├── Q3/Proofs/
 │   ├── A1_density_integrated.lean
