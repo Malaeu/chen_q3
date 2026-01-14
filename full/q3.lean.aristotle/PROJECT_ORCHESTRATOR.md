@@ -96,7 +96,11 @@ RH_of_Weil_and_Q3
 - Все 4 леммы доказаны
 - НО: P_A=const, T_P=0 (placeholder'ы)
 - Общие леммы (rayleigh, quadform_sub) переиспользуемы
-- **Нужен ещё запрос** с реальными определениями из нашего проекта
+
+**V4 (c35f3088)**: Real T_P definition — IN_PROGRESS
+- Uses actual RKHS matrix: `sqrt(w_RKHS i) * sqrt(w_RKHS j) * exp(-(xi_n i - xi_n j)^2 / (4t))`
+- Key insight: w_max = 0.7358 < 3c*/4 = 0.825, so Schur bound works for small t (S(t) → 0)
+- Strategy: Show ||T_P|| ≤ w_max(1+ε) for small t, then combine with Rayleigh
 
 **INSIGHT**: Прошка показал что SB не нужен, RKHS cap ρ(1)<1/25<<c*/4.
 Полный скелет: `aristotle_input/A3_bridge_PROSHKA_SKELETON.md`

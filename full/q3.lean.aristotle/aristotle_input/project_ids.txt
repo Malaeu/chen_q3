@@ -39,3 +39,4 @@ rayleigh_lower_bound_v2.md (sandbox): e9f8b481-8f80-4bdd-b798-be5c796eeead
 A3_bridge_closure_v1.md (pure informal): 4c2ed336-b94b-4269-9af8-7e566f680396
 A3_bridge_closure_v2.md (corrected, no SB): f6a9eed5-a06e-4686-86cc-37cecb8a620f
 A3_bridge_v3_proshka.md: 22378a11-eb7b-4d7e-bd57-01dbadf258c8
+A3_bridge_v4_real_TP.md: c35f3088-0755-4b8c-a33b-bd03064dbfea
