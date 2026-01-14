@@ -402,6 +402,19 @@ axiom A3_bridge_uniform :
       Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)))) /
     (∑ i, v i ^ 2) ≥ c_star / 4
 
+/-! ## Axiom T2.6c: A3 Bridge (Rayleigh-first, Compression)
+
+Rayleigh-only variant using the compression prime operator T_P^{(M)}.
+No Szegő–Böttcher discretization step (no M₀), and T_P is built from Nodes K.
+-/
+axiom A3_bridge_rayleigh_axiom :
+  ∀ (K : ℝ) (hK : K ≥ 1) [Fintype (Nodes K)],
+    ∃ t > 0, ∀ M : ℕ,
+      ∀ (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
+        RayleighQuotient
+            (ToeplitzMatrix (2 * M + 1) a_star - T_P_comp_real K K t M) v
+          ≥ c_arch K / 4
+
 /-! ## Axiom T2.7: Q ≥ 0 on Atom Cone (Q3 Core Result)
 
 This is the key positivity axiom: Q ≥ 0 on the generating atom cone.
@@ -429,6 +442,15 @@ def A3_bridge_data_uniform : Prop :=
       Real.sqrt (w_RKHS i) * Real.sqrt (w_RKHS j) *
       Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)))) /
     (∑ i, v i ^ 2) ≥ c_star / 4
+
+/-- Rayleigh-first A3 bridge data using the compression prime operator. -/
+def A3_bridge_data_rayleigh (K : ℝ) : Prop :=
+  ∀ (hK : K ≥ 1) [Fintype (Nodes K)],
+    ∃ t > 0, ∀ M : ℕ,
+      ∀ (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
+        RayleighQuotient
+            (ToeplitzMatrix (2 * M + 1) a_star - T_P_comp_real K K t M) v
+          ≥ c_arch K / 4
 
 /-- Bundled statement of the RKHS contraction axiom for a fixed compact parameter `K`. (DEPRECATED) -/
 def RKHS_contraction_data (K : ℝ) : Prop :=

@@ -19,6 +19,7 @@ open scoped BigOperators
 open scoped Real
 open scoped Classical
 open scoped Pointwise
+open scoped ComplexConjugate
 open MeasureTheory
 
 set_option maxHeartbeats 400000
@@ -77,6 +78,36 @@ def fejer_kernel (B : ℝ) (x : ℝ) : ℝ :=
 
 /-- Fejér × Heat product -/
 def fejer_heat (B t : ℝ) (x : ℝ) : ℝ := fejer_kernel B x * heat_kernel t x
+
+/-! ## Prime Operator (Compression) -/
+
+/-- Fejer-heat window used in the A3 Rayleigh bridge: Phi_{B,t}(xi). -/
+def fejer_heat_window (B t : ℝ) (ξ : ℝ) : ℝ :=
+  max 0 (1 - |ξ| / B) * Real.exp (-4 * Real.pi^2 * t * ξ^2)
+
+/-- Fourier index for i in Fin (2*M+1): maps 0..2M to -M..M. -/
+def fourier_index (M : ℕ) (i : Fin (2 * M + 1)) : ℤ :=
+  (i.val : ℤ) - (M : ℤ)
+
+/-- Normalized evaluation vector v_n^{(M)} at frequency xi. -/
+def prime_vec (M : ℕ) (ξ : ℝ) : Fin (2 * M + 1) → ℂ :=
+  fun i =>
+    ((1 / Real.sqrt (2 * M + 1 : ℝ)) : ℂ) *
+      Complex.exp
+        (-2 * Real.pi * Complex.I * ((fourier_index M i : ℤ) : ℂ) * (ξ : ℂ))
+
+/-- Compression prime operator T_P^{(M)} as a rank-one sum over Nodes K. -/
+noncomputable def T_P_comp (K B t : ℝ) (M : ℕ) [Fintype (Nodes K)] :
+    Matrix (Fin (2 * M + 1)) (Fin (2 * M + 1)) ℂ :=
+  fun i j =>
+    ∑ n : Nodes K,
+      ((w_Q n * fejer_heat_window B t (xi_n n)) : ℂ) *
+        prime_vec M (xi_n n) i * conj (prime_vec M (xi_n n) j)
+
+/-- Real part of the compression prime operator (for real Rayleigh quotients). -/
+noncomputable def T_P_comp_real (K B t : ℝ) (M : ℕ) [Fintype (Nodes K)] :
+    Matrix (Fin (2 * M + 1)) (Fin (2 * M + 1)) ℝ :=
+  fun i j => (T_P_comp K B t M i j).re
 
 /-! ## Q Functional -/
 
