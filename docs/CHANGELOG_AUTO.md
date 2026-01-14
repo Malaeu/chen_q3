@@ -207,3 +207,6 @@
 - 📄 `full/q3.lean.aristotle/ARISTOTLE_SANDBOX_GUIDE.md` — 12:28
 - 📄 `CLAUDE.md` — 12:30
 - 📄 `CLAUDE.md` — 12:31
+- 📄 `full/q3.lean.aristotle/aristotle_input/rayleigh_lower_bound_v1.md` — 13:17
+- 🔷 `full/q3.lean.aristotle/aristotle_input/rayleigh_lower_bound_v2_sandbox.lean` — 13:17
+- 📄 `full/q3.lean.aristotle/aristotle_input/rayleigh_lower_bound_v2.md` — 13:17
