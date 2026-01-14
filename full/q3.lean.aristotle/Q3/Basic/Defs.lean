@@ -212,6 +212,39 @@ lemma w_max_lt_one : w_max < 1 := by
   have h : (2.7182818283 : ℝ) < Real.exp 1 := Real.exp_one_gt_d9
   linarith
 
+/-! ## Prime Vector Bounds -/
+
+lemma prime_vec_norm (M : ℕ) (ξ : ℝ) (i : Fin (2 * M + 1)) :
+    ‖prime_vec M ξ i‖ = 1 / Real.sqrt (2 * M + 1 : ℝ) := by
+  simp [prime_vec, Complex.norm_exp]
+
+lemma prime_vec_norm_sq_sum (M : ℕ) (ξ : ℝ) :
+    (∑ i : Fin (2 * M + 1), ‖prime_vec M ξ i‖^2) = 1 := by
+  have hconst :
+      ∀ i : Fin (2 * M + 1),
+        ‖prime_vec M ξ i‖^2 = (1 / Real.sqrt (2 * M + 1 : ℝ))^2 := by
+    intro i
+    simp [prime_vec, Complex.norm_exp]
+  classical
+  calc
+    (∑ i : Fin (2 * M + 1), ‖prime_vec M ξ i‖^2)
+        = ∑ i : Fin (2 * M + 1), (1 / Real.sqrt (2 * M + 1 : ℝ))^2 := by
+            simp [hconst]
+    _ = (2 * M + 1) * (1 / Real.sqrt (2 * M + 1 : ℝ))^2 := by
+            simp
+    _ = 1 := by
+            have hpos : (0 : ℝ) < (2 * M + 1 : ℝ) := by positivity
+            have hsqrt :
+                (Real.sqrt (2 * M + 1 : ℝ))^2 = (2 * M + 1 : ℝ) := by
+              simpa [pow_two] using
+                (Real.sq_sqrt (show 0 ≤ (2 * M + 1 : ℝ) by positivity))
+            calc
+              (2 * M + 1) * (1 / Real.sqrt (2 * M + 1 : ℝ))^2
+                  = (2 * M + 1) * (1 / (Real.sqrt (2 * M + 1 : ℝ))^2) := by
+                      simp [pow_two, mul_comm]
+              _ = (2 * M + 1) * (1 / (2 * M + 1 : ℝ)) := by simp [hsqrt]
+              _ = 1 := by field_simp [hpos.ne']
+
 /-! ## RKHS Technical Definitions -/
 
 /-- Maximum node index: N_K = ⌊exp(2πK)⌋

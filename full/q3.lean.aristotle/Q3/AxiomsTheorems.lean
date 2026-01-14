@@ -128,6 +128,12 @@ theorem RKHS_contraction : ∀ (K : ℝ) (hK : K ≥ 1), Q3.RKHS_contraction_dat
 theorem A3_bridge : ∀ (K : ℝ) (hK : K ≥ 1), Q3.A3_bridge_data K :=
   Q3.A3_bridge_axiom  -- Axiom fallback
 
+/-- A3 bridge (Rayleigh-first, compression)
+    STATUS: Axiom fallback (new formulation). -/
+theorem A3_bridge_rayleigh (K : ℝ) : Q3.A3_bridge_data_rayleigh K := by
+  intro hK _inst
+  simpa using (Q3.A3_bridge_rayleigh_axiom K hK)
+
 /-- Q ≥ 0 on atoms
     STATUS: Needs bridge (depends on RKHS/A3 bridges) -/
 theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1),

@@ -14,21 +14,21 @@ Notes:
 
 | Source | Lines | Theorems | Lemmas | Defs | Total Decls |
 |--------|-------|----------|--------|------|-------------|
-| **Q3/** (core) | 16,832 | 195 | 347 | 274 | 846 |
-| **aristotle_output/** | 9,993 | 88 | 230 | 246 | 575 |
+| **Q3/** (core) | 16,983 | 197 | 347 | 280 | 845 |
+| **aristotle_output/** | 11,116 | 91 | 259 | 278 | 636 |
 | **A3_FLOOR*** | 2,901 | 14 | 74 | 22 | 110 |
-| **TOTAL** | **29,726** | **297** | **651** | **542** | **1,531** |
+| **TOTAL** | **31,000** | **302** | **680** | **580** | **1,591** |
 
 ## Δ vs previous snapshot
 
 | Source | Lines Δ | Theorems Δ | Lemmas Δ | Defs Δ | Total Decls Δ |
 |--------|---------|------------|----------|--------|----------------|
-| **Q3/** (core) | +0 | +0 | +0 | +0 | +8 |
-| **aristotle_output/** | +398 | -12 | +30 | +196 | +225 |
-| **A3_FLOOR*** | +0 | -13 | +13 | +22 | +22 |
-| **TOTAL** | -18,274* | -23 | +51 | +212 | +331 |
+| **Q3/** (core) | +151 | +2 | +0 | +6 | -1 |
+| **aristotle_output/** | +1,123 | +3 | +29 | +32 | +61 |
+| **A3_FLOOR*** | +0 | +0 | +0 | +0 | +0 |
+| **TOTAL** | +1,274 | +5 | +29 | +38 | +60 |
 
-*Previous TOTAL line count was a rough estimate (~48,000); recompute gives 29,726.
+*Previous TOTAL line count was a rough estimate (~48,000); recompute gives 31,000.
 
 ---
 
@@ -41,9 +41,9 @@ Notes:
 | HatInterpolation.lean | 339 | `bcec962f` - hat interpolation proof |
 | A1_density_hat_chain.lean | 237 | `e90d4213` - full A1 chain |
 | sandbox_test_result.lean | 49 | `c33c6672` - sandbox test |
-| + 35 other output files | 9,368 | Various experiments |
+| + 35 other output files | 10,491 | Various experiments |
 
-**Total Aristotle contribution: 9,993 lines (~34% of project)**
+**Total Aristotle contribution: 11,116 lines (~36% of project)**
 
 ### 📐 A3_FLOOR (Numerical Analysis)
 
@@ -64,7 +64,7 @@ Notes:
 | Category | Files | Lines | Thm/Lemmas |
 |----------|-------|-------|------------|
 | Axioms/Main | 2 | 713 | 12 |
-| Proofs/ | 42 | 8,699 | 316 |
+| Proofs/ | 43 | 8,758 | 315 |
 | Archive/ | 20 | 4,568 | 146 |
 | DigammaSeries | 2 | 2,571 | 48 |
 | Other | 28 | 4,849 | 166 |
@@ -106,13 +106,13 @@ Q3/Proofs/Q_nonneg_bridge_v2.lean
 ## Aggregate Totals
 
 ```
-Q3/Proofs (42 files)
-  lines: 8699 (nonempty 7453), namespaces: 35
-  lemma 215 | theorem 101 | def 148 | abbrev 1 | structure 1 | instance 7
+Q3/Proofs (43 files)
+  lines: 8758 (nonempty 7506), namespaces: 36
+  lemma 213 | theorem 102 | def 148 | abbrev 1 | structure 1 | instance 1
 
-Q3 total (74 files)
-  lines: 16832 (nonempty 14538), namespaces: 58
-  lemma 347 | theorem 195 | def 274 | abbrev 8 | structure 8 | instance 14
+Q3 total (75 files)
+  lines: 16983 (nonempty 14670), namespaces: 59
+  lemma 347 | theorem 197 | def 280 | abbrev 8 | structure 8 | instance 5
 ```
 
 ---
