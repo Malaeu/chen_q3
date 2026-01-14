@@ -17,7 +17,24 @@ Aristotle не знает про `lem:uniform-arch-floor` или `Theorem 8.17'`
 
 ## Project Workflow (Decision Loop)
 
-This is the full project loop; Aristotle is only one tool in it.
+This is the full project loop; Aristotle и Прошка — ключевые инструменты.
+
+### Escape Hatch: Когда застрял → Прошка
+
+**ПРАВИЛО:** Если застрял > 30 минут ИЛИ Aristotle < 10% долго:
+1. НЕ продолжать биться головой
+2. Сформулировать запрос к Прошке (o3/o4-класс)
+3. Прошка даёт: правильную математику, Lean statements, DO NOT DO
+4. Создать новый Aristotle запрос по Прошкиному скелету
+
+**Пример (A3_bridge 2026-01-14):**
+- Мы: "Нужен Szegő-Böttcher, bound не сходится"
+- Прошка: "SB optional! Rayleigh напрямую, ρ(1)<1/25, всё сходится"
+- Результат: V3 запрос по Прошкиному скелету
+
+---
+
+### Main Loop
 
 1. Read the current status:
    - `PROOF_MAP_NEW_KERNEL.md`
@@ -282,6 +299,10 @@ q3.lean.aristotle/archive/
 4. **Proof outline важен.** Aristotle следует твоему плану.
 
 5. **Не торопись с V2.** Дождись полного завершения V1.
+
+6. **Застрял → Прошка.** Если Aristotle < 10% более 30 мин — запроси Прошку.
+
+7. **Pure informal > sandbox.** Для сложных теорем informal даёт свободу переформулировать.
 
 ---
 

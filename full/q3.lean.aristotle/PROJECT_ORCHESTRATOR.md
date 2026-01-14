@@ -11,6 +11,7 @@ Single entry point: read this file at session start.
 3) Only open linked files if needed.
 4) Documentation discipline: update `docs/INSIGHTS.md` and
    `FORMALIZATION_STATS.md` instead of creating new docs.
+5) **Застрял > 30 мин?** → Запроси Прошку (см. `docs/INSIGHTS.md` секция "Прошка").
 
 ## Current State (short)
 
@@ -85,6 +86,14 @@ RH_of_Weil_and_Q3
 **NEW (2026-01-14)**: Rayleigh lower bound PROVEN via Aristotle!
 - V1 (pure informal): `aristotle_output/rayleigh_v1.lean` — COMPLETE, 0 sorry
 - V2 (sandbox): `aristotle_output/rayleigh_v2.lean` — helpers only, main sorry
+
+**A3_bridge Aristotle runs (2026-01-14)**:
+- V1 (`4c2ed336`): имеет ошибки (t direction, SB mention)
+- V2 (`f6a9eed5`): исправленный
+- **V3 (`22378a11`)**: по Прошкиному скелету — ФАВОРИТ
+
+**INSIGHT**: Прошка показал что SB не нужен, RKHS cap ρ(1)<1/25<<c*/4.
+Полный скелет: `aristotle_input/A3_bridge_PROSHKA_SKELETON.md`
 
 Closed (recent):
 - `RKHS_contraction_axiom` → bridged in `Q3/Proofs/Bridge.lean`, wired in `Q3/AxiomsTheorems.lean`
