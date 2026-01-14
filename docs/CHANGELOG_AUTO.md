@@ -233,3 +233,8 @@
 - 📄 `full/q3.lean.aristotle/aristotle_input/A3_bridge_v4_real_TP.md` — 17:01
 - 📃 `full/q3.lean.aristotle/aristotle_input/project_ids.txt` — 17:02
 - 📄 `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` — 17:05
+- 📄 `full/q3.lean.aristotle/docs/INSIGHTS.md` — 18:01
+- 📄 `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` — 18:02
+- 📄 `full/q3.lean.aristotle/docs/INSIGHTS.md` — 18:48
+- 📄 `full/q3.lean.aristotle/docs/INSIGHTS.md` — 19:14
+- 📄 `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` — 19:15

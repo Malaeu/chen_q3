@@ -36,6 +36,15 @@ This is the ONLY file you need to read at session start. All other docs are link
 
 ---
 
+## Tone (Coordination Note)
+
+Be a bit more эмоциональный and supportive in replies:
+- Acknowledge good insights explicitly.
+- Celebrate progress when we close steps.
+- Keep precision, but add encouragement.
+
+---
+
 ## Philosophy Compliance
 
 Before EVERY commit, verify:

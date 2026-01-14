@@ -333,4 +333,145 @@ def T_P (t : ℝ) (M : ℕ) (i j : Fin M) : ℝ := 0  -- нуль!
 
 ---
 
+## V1 SURPRISE: Real T_P bounds proven! (2026-01-14)
+
+### Insight: V1 доказал ключевые леммы для real T_P
+
+**Файл:** `aristotle_output/A3_bridge_closure_v1.lean` (project 4c2ed336)
+
+Думали что V1 застрял, но он завершился и доказал важные вещи:
+
+| Lemma | Статус | Значение |
+|-------|--------|----------|
+| `w_RKHS_le_w_max` | ✅ | w_RKHS(n) ≤ w_max = 2/e |
+| `w_max_lt_three_quarters_c_star` | ✅ | **w_max < 3c*/4** (0.7358 < 0.825) |
+| `T_P_tendsto_zero_of_ne` | ✅ | T_P(i,j,t) → 0 as t → 0 for i≠j |
+| `exists_t_max_row_sum_le_for_M` | ✅ | **∀ M, ∃ t > 0: ||T_P|| ≤ 3c*/4** |
+
+### КРИТИЧЕСКИЙ НЮАНС: t зависит от M!
+
+V1 comment:
+> "operator norm of T_P is unbounded for fixed t as M grows"
+
+**Что доказано:** Для каждого ФИКСИРОВАННОГО M существует t(M) такое что ||T_P(t(M))|| ≤ 3c*/4.
+
+**Что требует аксиома:** UNIFORM t для всех M ≥ M₀.
+
+**Вопрос к Прошке:** Достаточно ли t(M) или нужен uniform t? Как A3_bridge используется в T5_Transfer?
+
+### Переиспользуемые леммы из V1
+
+Эти леммы можно wire напрямую в Q3:
+- `w_RKHS_le_w_max` — matches `Q3.w_RKHS_le_w_max` в Defs.lean
+- `w_max_lt_three_quarters_c_star` — новый результат!
+- `T_P_tendsto_zero_of_ne` — off-diagonal decay
+
+---
+
+## V4 SUCCESS: Full T_P Bound Proven! (2026-01-14)
+
+### Insight: V4 доказал полную теорему с реальными определениями
+
+**Файл:** `aristotle_output/A3_bridge_v4_real_TP.lean`
+**Проект:** c35f3088-0755-4b8c-a33b-bd03064dbfea
+**Строк:** 309, **sorry:** 0
+
+**Что доказано:**
+
+| Lemma | Status | Значение |
+|-------|--------|----------|
+| `w_max_lt_one` | ✅ | w_max = 2/e < 1 |
+| `w_RKHS_le_w_max` | ✅ | w_RKHS(n) ≤ w_max |
+| `S_off_tendsto_zero` | ✅ | S_off(t,δ) → 0 as t → 0+ |
+| `xi_n_diff_ge_dist_mul_delta_min_pos` | ✅ | Spectral node separation |
+| `sum_exp_bound` | ✅ | Gaussian sum ≤ S_off |
+| `T_P_row_sum_bound` | ✅ | Row sum ≤ w_max*(1 + S_off) |
+| **`T_P_norm_lt_three_quarters_c_star`** | ✅ | **MAIN** |
+
+### Главная теорема V4
+
+```lean
+theorem T_P_norm_lt_three_quarters_c_star (M : ℕ) :
+  ∃ t > 0, ∀ v : Fin M → ℝ, v ≠ 0 →
+    (∑ i, ∑ j, v i * T_P_matrix t M i j * v j) / (∑ i, v i ^ 2) ≤ 3 * c_star / 4
+```
+
+**КРИТИЧЕСКИЙ ФАКТ:** Это `∀ M, ∃ t(M)`, НЕ `∃ t, ∀ M`!
+
+---
+
+## КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: T_P Compression (2026-01-14)
+
+### Insight: Два РАЗНЫХ определения T_P
+
+**Как было в нашем Axioms.lean (НЕПРАВИЛЬНО):**
+```lean
+T_P i j = sqrt(w_RKHS i) * sqrt(w_RKHS j) * exp(-(ξᵢ - ξⱼ)²/4t)
+-- Direct indexing: i,j ∈ Fin M напрямую дают ξᵢ, ξⱼ
+-- Проблема: норма растёт с M → uniform t невозможен
+```
+
+**Как в Q3 tex / rayleigh_bridge.tex (ПРАВИЛЬНО):**
+```lean
+T_P^{(M)} i j = ∑ n : Nodes K, w_Q n * Φ_{B,t}(ξₙ) * v_n[i] * v_n[j]
+-- Rank-one compression: T_P^{(M)} = ι_M* T_P ι_M
+-- v_n[i] = cos(2πk·ξₙ) — проекция на Фурье-базис P_M
+-- Норма ≤ ||T_P|| (compression inequality) → uniform t ВОЗМОЖЕН
+```
+
+### Ключевое различие
+
+| Аспект | Direct indexing (V1/V4) | Compression (Q3 tex) |
+|--------|-------------------------|----------------------|
+| Размер | M × M, зависит от M | M × M, но сумма по Nodes K |
+| Норма при M → ∞ | → ∞ | ≤ ||T_P|| (bounded!) |
+| Uniform t | ❌ Невозможен | ✅ Возможен |
+
+### Почему V1/V4 не закрыли uniform t
+
+V1/V4 доказали `∀M ∃t(M)` для **direct indexing** версии.
+Это слабее чем `∃t ∀M≥M₀` из Q3.
+
+Для uniform t нужен **компрессионный аргумент**:
+```
+||T_P^{(M)}|| ≤ ||T_P|| (compression of self-adjoint operator)
+```
+
+### V1/V4 статус
+
+- ✅ `w_RKHS_le_w_max` — универсально полезно
+- ✅ `S_off_tendsto_zero` — универсально полезно
+- ⚠️ `T_P_norm_lt_three_quarters_c_star` — sanity check, но на неправильном T_P
+
+### Следующий шаг
+
+Переписать T_P в Axioms.lean на compression-версию:
+```lean
+def T_P_matrix (K B t : ℝ) (M : ℕ) [Fintype (Nodes K)] :=
+  fun i j => ∑ n : Nodes K,
+    w_Q n * Phi_Bt B t (xi_n n) * v_n M (xi_n n) i * v_n M (xi_n n) j
+```
+
+Нужен мост: w_Q vs w_RKHS, Gaussian vs rank-one
+
+---
+
+## Optional: Rayleigh-only vs SB Discretization (Do Not Forget)
+
+**Контекст:** В `full/sections/A3/main.tex` сейчас используется SB-дискретизация
+с `M_0^{unif}` (это корректный, но "тяжёлый" путь). В протоколе
+`full/q3.lean.aristotle/PROSHKA_REQUEST_3.md` зафиксирован упрощённый путь:
+Rayleigh lower bound даёт `λ_min(T_M[P_A]) ≥ min P_A` без SB, значит без `M_0`.
+
+**Это не противоречие:**
+- SB-путь остаётся верным (просто избыточный).
+- Rayleigh-путь сильнее (оценка для всех M).
+
+**Если когда-нибудь нужно согласовать текст с протоколом:**
+1) Добавить ремарку в `full/sections/A3/main.tex`: SB-оценка optional; можно
+   заменить на Rayleigh lower bound и убрать `M_0`.
+2) В доказательстве Theorem A3 убрать SB-дискретизацию и сослаться на Rayleigh.
+
+---
+
 *Обновляй этот файл когда находишь новые insights!*

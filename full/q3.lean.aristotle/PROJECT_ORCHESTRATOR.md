@@ -88,19 +88,44 @@ RH_of_Weil_and_Q3
 - V2 (sandbox): `aristotle_output/rayleigh_v2.lean` — helpers only, main sorry
 
 **A3_bridge Aristotle runs (2026-01-14)**:
-- V1 (`4c2ed336`): имеет ошибки (t direction, SB mention) — IN_PROGRESS
-- V2 (`f6a9eed5`): исправленный — IN_PROGRESS
+- **V1 (`4c2ed336`)**: COMPLETE! Real T_P bounds proven (see below)
+- V2 (`f6a9eed5`): исправленный — skipped (V1/V3 better)
 - **V3 (`22378a11`)**: по Прошкиному скелету — **COMPLETE! 0 sorry!**
+- **V4 (`c35f3088`)**: COMPLETE! 309 lines, 0 sorry — bounds for direct-indexed T_P
+
+**V1 SURPRISE**: `aristotle_output/A3_bridge_closure_v1.lean`
+- `w_RKHS_le_w_max`: ✅ w_RKHS(n) ≤ w_max = 2/e
+- `w_max_lt_three_quarters_c_star`: ✅ **w_max < 3c*/4** (key inequality!)
+- `T_P_tendsto_zero_of_ne`: ✅ off-diagonal → 0 as t → 0
+- `exists_t_max_row_sum_le_for_M`: ✅ ∀ M, ∃ t: ||T_P|| ≤ 3c*/4
+- **CLARIFIED**: V1/V4 prove `∀M ∃t(M)` for DIRECT-INDEXED T_P. See below.
+
+**V4 COMPLETE**: `aristotle_output/A3_bridge_v4_real_TP.lean`
+- 309 lines, 14 declarations, 0 sorry
+- Main: `T_P_norm_lt_three_quarters_c_star (M : ℕ) : ∃ t > 0, bound`
+- Useful helpers: `w_RKHS_le_w_max`, `S_off_tendsto_zero`, `T_P_row_sum_bound`
+
+**⚠️ CRITICAL INSIGHT: T_P Definition Mismatch (2026-01-14)**
+
+V1/V4 use **direct-indexed T_P**:
+```lean
+T_P i j = sqrt(w_RKHS i) * sqrt(w_RKHS j) * exp(-(ξᵢ - ξⱼ)²/4t)
+```
+This has ||T_P|| → ∞ as M → ∞, so uniform t is IMPOSSIBLE.
+
+Q3 tex (rayleigh_bridge.tex) uses **compression T_P**:
+```lean
+T_P^{(M)} i j = ∑ n : Nodes K, w_Q n * Φ(ξₙ) * v_n[i] * v_n[j]
+```
+This has ||T_P^{(M)}|| ≤ ||T_P|| (compression), so uniform t IS possible.
+
+**V1/V4 status**: Useful for local bounds, sanity checks. NOT for uniform A3_bridge.
+**Next step**: Rewrite T_P as compression in Axioms.lean (diff-plan from Proshka).
 
 **V3 SUCCESS**: `aristotle_output/A3_bridge_v3_proshka.lean`
 - Все 4 леммы доказаны
 - НО: P_A=const, T_P=0 (placeholder'ы)
 - Общие леммы (rayleigh, quadform_sub) переиспользуемы
-
-**V4 (c35f3088)**: Real T_P definition — IN_PROGRESS
-- Uses actual RKHS matrix: `sqrt(w_RKHS i) * sqrt(w_RKHS j) * exp(-(xi_n i - xi_n j)^2 / (4t))`
-- Key insight: w_max = 0.7358 < 3c*/4 = 0.825, so Schur bound works for small t (S(t) → 0)
-- Strategy: Show ||T_P|| ≤ w_max(1+ε) for small t, then combine with Rayleigh
 
 **INSIGHT**: Прошка показал что SB не нужен, RKHS cap ρ(1)<1/25<<c*/4.
 Полный скелет: `aristotle_input/A3_bridge_PROSHKA_SKELETON.md`
