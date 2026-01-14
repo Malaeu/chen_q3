@@ -14,10 +14,21 @@ Notes:
 
 | Source | Lines | Theorems | Lemmas | Defs | Total Decls |
 |--------|-------|----------|--------|------|-------------|
-| **Q3/** (core) | 16,832 | 195 | 347 | 274 | 838 |
-| **aristotle_output/** | 9,595 | ~100 | ~200 | ~50 | ~350 |
-| **A3_FLOOR*** | 2,901 | 27 | 61 | - | 88 |
-| **TOTAL** | **~48,000** | **~320** | **~600** | **~330** | **~1,200** |
+| **Q3/** (core) | 16,832 | 195 | 347 | 274 | 846 |
+| **aristotle_output/** | 9,993 | 88 | 230 | 246 | 575 |
+| **A3_FLOOR*** | 2,901 | 14 | 74 | 22 | 110 |
+| **TOTAL** | **29,726** | **297** | **651** | **542** | **1,531** |
+
+## Δ vs previous snapshot
+
+| Source | Lines Δ | Theorems Δ | Lemmas Δ | Defs Δ | Total Decls Δ |
+|--------|---------|------------|----------|--------|----------------|
+| **Q3/** (core) | +0 | +0 | +0 | +0 | +8 |
+| **aristotle_output/** | +398 | -12 | +30 | +196 | +225 |
+| **A3_FLOOR*** | +0 | -13 | +13 | +22 | +22 |
+| **TOTAL** | -18,274* | -23 | +51 | +212 | +331 |
+
+*Previous TOTAL line count was a rough estimate (~48,000); recompute gives 29,726.
 
 ---
 
@@ -30,9 +41,9 @@ Notes:
 | HatInterpolation.lean | 339 | `bcec962f` - hat interpolation proof |
 | A1_density_hat_chain.lean | 237 | `e90d4213` - full A1 chain |
 | sandbox_test_result.lean | 49 | `c33c6672` - sandbox test |
-| + 20 other output files | ~9,000 | Various experiments |
+| + 35 other output files | 9,368 | Various experiments |
 
-**Total Aristotle contribution: ~9,600 lines (~20% of project)**
+**Total Aristotle contribution: 9,993 lines (~34% of project)**
 
 ### 📐 A3_FLOOR (Numerical Analysis)
 
@@ -41,9 +52,9 @@ Notes:
 | A3_FLOOR_v22_stage4_floor.lean | 878 | 27 |
 | A3_FLOOR_v20_bounds_core.lean | 852 | 22 |
 | A3_FLOOR_v19_monotonicity.lean | 504 | 19 |
-| A3_FLOOR_v16_deriv_digamma.lean | 328 | 10 |
+| A3_FLOOR_v16_deriv_digamma_eq_trigamma.lean | 328 | 10 |
 | A3_FLOOR_COMBINED.lean | 333 | 10 |
-| A3_FLOOR_THEOREM.lean | 6 | wrapper |
+| A3_FLOOR_THEOREM.lean | 6 | 0 |
 
 **Total A3_FLOOR: 2,901 lines, 88 theorems/lemmas**
 *Proves: P_A(θ) ≥ c* = 11/10 ∀θ*
@@ -52,11 +63,11 @@ Notes:
 
 | Category | Files | Lines | Thm/Lemmas |
 |----------|-------|-------|------------|
-| Axioms/Main | 2 | 713 | - |
+| Axioms/Main | 2 | 713 | 12 |
 | Proofs/ | 42 | 8,699 | 316 |
-| Archive/ | 10 | 3,500 | ~100 |
-| DigammaSeries | 2 | 2,571 | ~50 |
-| Other | 18 | ~1,350 | ~70 |
+| Archive/ | 20 | 4,568 | 146 |
+| DigammaSeries | 2 | 2,571 | 48 |
+| Other | 28 | 4,849 | 166 |
 
 ---
 

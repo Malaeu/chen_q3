@@ -210,3 +210,8 @@
 - 📄 `full/q3.lean.aristotle/aristotle_input/rayleigh_lower_bound_v1.md` — 13:17
 - 🔷 `full/q3.lean.aristotle/aristotle_input/rayleigh_lower_bound_v2_sandbox.lean` — 13:17
 - 📄 `full/q3.lean.aristotle/aristotle_input/rayleigh_lower_bound_v2.md` — 13:17
+- 📄 `full/q3.lean.aristotle/FORMALIZATION_STATS.md` — 14:22
+- 📄 `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` — 14:31
+- 📄 `full/q3.lean.aristotle/aristotle_input/A3_bridge_closure_v1.md` — 14:37
+- 📄 `full/q3.lean.aristotle/docs/INSIGHTS.md` — 14:43
+- 📄 `full/q3.lean.aristotle/docs/INSIGHTS.md` — 14:50

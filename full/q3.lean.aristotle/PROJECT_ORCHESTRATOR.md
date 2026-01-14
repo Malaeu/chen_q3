@@ -9,6 +9,8 @@ Single entry point: read this file at session start.
 1) Read this file.
 2) Use "Current State" and "Active Next Step".
 3) Only open linked files if needed.
+4) Documentation discipline: update `docs/INSIGHTS.md` and
+   `FORMALIZATION_STATS.md` instead of creating new docs.
 
 ## Current State (short)
 
@@ -117,6 +119,8 @@ of separate `|τ| ≤ K` and `B ≤ K`. This matches Lemma 6.4 (Fixed-t₀ cone 
 
 - `PROJECT_WORKFLOW.md` - workflow loop + Aristotle rules (no status)
 - `PROJECT_ASCII.md` - diagram (derived from this file)
+- `docs/INSIGHTS.md` - collected project insights (do not create new docs)
+- `FORMALIZATION_STATS.md` - quantitative stats snapshot
 - `PROSHKA_REQUEST_3.md` - spec/invariants for Proshka check (Rayleigh plan)
 - `PROOF_MAP_NEW_KERNEL.md` + `A3_FLOOR_ROADMAP.md` - A3_FLOOR status
 - `Q3/Axioms.lean` and `Q3/AxiomsTheorems.lean` - axioms and wiring
