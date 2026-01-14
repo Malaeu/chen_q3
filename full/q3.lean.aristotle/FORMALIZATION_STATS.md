@@ -14,21 +14,21 @@ Notes:
 
 | Source | Lines | Theorems | Lemmas | Defs | Total Decls |
 |--------|-------|----------|--------|------|-------------|
-| **Q3/** (core) | 16,983 | 197 | 347 | 280 | 845 |
+| **Q3/** (core) | 17,020 | 197 | 351 | 280 | 849 |
 | **aristotle_output/** | 11,116 | 91 | 259 | 278 | 636 |
 | **A3_FLOOR*** | 2,901 | 14 | 74 | 22 | 110 |
-| **TOTAL** | **31,000** | **302** | **680** | **580** | **1,591** |
+| **TOTAL** | **31,037** | **302** | **684** | **580** | **1,595** |
 
 ## Δ vs previous snapshot
 
 | Source | Lines Δ | Theorems Δ | Lemmas Δ | Defs Δ | Total Decls Δ |
 |--------|---------|------------|----------|--------|----------------|
-| **Q3/** (core) | +151 | +2 | +0 | +6 | -1 |
-| **aristotle_output/** | +1,123 | +3 | +29 | +32 | +61 |
+| **Q3/** (core) | +37 | +0 | +4 | +0 | +4 |
+| **aristotle_output/** | +0 | +0 | +0 | +0 | +0 |
 | **A3_FLOOR*** | +0 | +0 | +0 | +0 | +0 |
-| **TOTAL** | +1,274 | +5 | +29 | +38 | +60 |
+| **TOTAL** | +37 | +0 | +4 | +0 | +4 |
 
-*Previous TOTAL line count was a rough estimate (~48,000); recompute gives 31,000.
+*Previous TOTAL line count was a rough estimate (~48,000); recompute gives 31,037.
 
 ---
 
@@ -64,7 +64,7 @@ Notes:
 | Category | Files | Lines | Thm/Lemmas |
 |----------|-------|-------|------------|
 | Axioms/Main | 2 | 713 | 12 |
-| Proofs/ | 43 | 8,758 | 315 |
+| Proofs/ | 44 | 8,795 | 319 |
 | Archive/ | 20 | 4,568 | 146 |
 | DigammaSeries | 2 | 2,571 | 48 |
 | Other | 28 | 4,849 | 166 |
@@ -106,13 +106,13 @@ Q3/Proofs/Q_nonneg_bridge_v2.lean
 ## Aggregate Totals
 
 ```
-Q3/Proofs (43 files)
-  lines: 8758 (nonempty 7506), namespaces: 36
-  lemma 213 | theorem 102 | def 148 | abbrev 1 | structure 1 | instance 1
+Q3/Proofs (44 files)
+  lines: 8795 (nonempty 7535), namespaces: 37
+  lemma 217 | theorem 102 | def 148 | abbrev 1 | structure 1 | instance 1
 
-Q3 total (75 files)
-  lines: 16983 (nonempty 14670), namespaces: 59
-  lemma 347 | theorem 197 | def 280 | abbrev 8 | structure 8 | instance 5
+Q3 total (76 files)
+  lines: 17020 (nonempty 14699), namespaces: 60
+  lemma 351 | theorem 197 | def 280 | abbrev 8 | structure 8 | instance 5
 ```
 
 ---

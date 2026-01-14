@@ -56,4 +56,13 @@ lemma RayleighQuotient_sub {n : ℕ} (A B : Matrix (Fin n) (Fin n) ℝ) (v : Fin
         (g := fun i => ∑ j, v i * B i j * v j))
   simp [Matrix.sub_apply, hnum, sub_div]
 
+lemma RayleighQuotient_sub_ge {n : ℕ} (A B : Matrix (Fin n) (Fin n) ℝ) (v : Fin n → ℝ)
+    {a b : ℝ} (hA : Q3.RayleighQuotient A v ≥ a) (hB : Q3.RayleighQuotient B v ≤ b) :
+    Q3.RayleighQuotient (A - B) v ≥ a - b := by
+  calc
+    Q3.RayleighQuotient (A - B) v
+        = Q3.RayleighQuotient A v - Q3.RayleighQuotient B v := by
+            simpa using (RayleighQuotient_sub (A:=A) (B:=B) (v:=v))
+    _ ≥ a - b := by linarith
+
 end Q3.Proofs
