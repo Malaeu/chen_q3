@@ -37,3 +37,12 @@ RH_of_Weil_and_Q3
   cleanly (ring_nf + unused variables fixed).
 - External/classical axioms in the chain: `Weil_criterion`, `a_star_pos`,
   `a_star_bdd_on_compact`, `a_star_continuous`.
+
+## A3_bridge Progress (2026-01-14)
+
+**V3 COMPLETE:** `aristotle_output/A3_bridge_v3_proshka.lean`
+- Structure proven: rayleigh + quadform_sub + main theorem
+- BUT: uses placeholder P_A=const, T_P=0
+- NEXT: need Aristotle/Proshka request with real definitions
+
+**Key insight from Прошка:** SB not needed, Rayleigh direct approach works.

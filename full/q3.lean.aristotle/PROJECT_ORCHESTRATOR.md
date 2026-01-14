@@ -88,9 +88,15 @@ RH_of_Weil_and_Q3
 - V2 (sandbox): `aristotle_output/rayleigh_v2.lean` — helpers only, main sorry
 
 **A3_bridge Aristotle runs (2026-01-14)**:
-- V1 (`4c2ed336`): имеет ошибки (t direction, SB mention)
-- V2 (`f6a9eed5`): исправленный
-- **V3 (`22378a11`)**: по Прошкиному скелету — ФАВОРИТ
+- V1 (`4c2ed336`): имеет ошибки (t direction, SB mention) — IN_PROGRESS
+- V2 (`f6a9eed5`): исправленный — IN_PROGRESS
+- **V3 (`22378a11`)**: по Прошкиному скелету — **COMPLETE! 0 sorry!**
+
+**V3 SUCCESS**: `aristotle_output/A3_bridge_v3_proshka.lean`
+- Все 4 леммы доказаны
+- НО: P_A=const, T_P=0 (placeholder'ы)
+- Общие леммы (rayleigh, quadform_sub) переиспользуемы
+- **Нужен ещё запрос** с реальными определениями из нашего проекта
 
 **INSIGHT**: Прошка показал что SB не нужен, RKHS cap ρ(1)<1/25<<c*/4.
 Полный скелет: `aristotle_input/A3_bridge_PROSHKA_SKELETON.md`
