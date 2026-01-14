@@ -37,3 +37,4 @@ rayleigh_lower_bound_v2.md (sandbox): e9f8b481-8f80-4bdd-b798-be5c796eeead
 
 # A3_bridge closure experiment (2026-01-14)
 A3_bridge_closure_v1.md (pure informal): 4c2ed336-b94b-4269-9af8-7e566f680396
+A3_bridge_closure_v2.md (corrected, no SB): f6a9eed5-a06e-4686-86cc-37cecb8a620f
