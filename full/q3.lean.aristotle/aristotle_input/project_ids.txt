@@ -34,3 +34,6 @@ hat_interpolation_approx.md: 18bfe8c7-4620-41d4-be62-489409168e95
 # Rayleigh Lower Bound experiment (2026-01-14)
 rayleigh_lower_bound_v1.md (pure informal): 5990b601-ed48-442b-a4d3-5d8a18b444e3
 rayleigh_lower_bound_v2.md (sandbox): e9f8b481-8f80-4bdd-b798-be5c796eeead
+
+# A3_bridge closure experiment (2026-01-14)
+A3_bridge_closure_v1.md (pure informal): 4c2ed336-b94b-4269-9af8-7e566f680396
