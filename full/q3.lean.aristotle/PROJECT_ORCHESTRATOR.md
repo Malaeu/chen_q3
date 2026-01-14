@@ -77,8 +77,12 @@ RH_of_Weil_and_Q3
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `A3_bridge_axiom` | `Q3/Proofs/A3_bridge_v3_uniform.lean` | still uses `A3_bridge_uniform` axiom | prove via A3_FLOOR + Rayleigh (no SB) | BLOCKED |
-| `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms.lean` + bridge | needs A3 + RKHS proofs | rewrite `Q3/Proofs/Q_nonneg_bridge_v2.lean` | BLOCKED |
+| `A3_bridge_axiom` | `Q3/Proofs/A3_bridge_v3_uniform.lean` | need to wire Rayleigh + RKHS | combine `rayleigh_lower_bound` + RKHS contraction | IN PROGRESS |
+| `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms.lean` + bridge | needs A3 closed | wire after A3 | BLOCKED |
+
+**NEW (2026-01-14)**: Rayleigh lower bound PROVEN via Aristotle!
+- V1 (pure informal): `aristotle_output/rayleigh_v1.lean` — COMPLETE, 0 sorry
+- V2 (sandbox): `aristotle_output/rayleigh_v2.lean` — helpers only, main sorry
 
 Closed (recent):
 - `RKHS_contraction_axiom` → bridged in `Q3/Proofs/Bridge.lean`, wired in `Q3/AxiomsTheorems.lean`
@@ -158,6 +162,18 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
 ```
 
 ## Change Log (recent)
+
+- 2026-01-14: **Rayleigh Lower Bound PROVEN** via Aristotle!
+  Two parallel Aristotle jobs submitted:
+  - V1 (pure informal): project `5990b601-ed48-442b-a4d3-5d8a18b444e3` → COMPLETE
+  - V2 (sandbox): project `e9f8b481-8f80-4bdd-b798-be5c796eeead` → helpers only
+
+  **V1 is the winner**: `aristotle_output/rayleigh_v1.lean` has COMPLETE proof (0 sorry):
+  - `toeplitz_integrand_eq`, `toeplitz_quadratic_form`, `integral_exp_2pi_n_theta`
+  - `parseval_trig_poly`, `rayleigh_lower_bound` (MAIN THEOREM)
+
+  Key result: For Toeplitz matrix T with symbol P ≥ m, Rayleigh quotient ≥ m.
+  Next: Wire this into A3_bridge_axiom together with RKHS contraction.
 
 - 2026-01-14: Wired `Q3.Theorems.A1_density_WK` into `Q3/T5_Transfer.lean`.
   `A1_density_WK_axiom` is now removed from `#print axioms` (total axioms: 9).
