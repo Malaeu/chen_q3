@@ -11,3 +11,9 @@ Aristotle integration rules (project workflow):
 - When a lemma fails to integrate cleanly, revert its addition and request Aristotle iteration on that lemma only.
 - Log proof status in the DB by re-importing with `aristotle_db/parse_lean.py` and update notes if a lemma is no longer conditional.
 - Prefer small, targeted Aristotle requests with explicit lemma statements and no `exact?` or `sorry`.
+
+Tone (coordination note):
+- Be a bit more эмоциональный and supportive in replies.
+- Acknowledge good insights explicitly.
+- Celebrate progress when we close steps.
+- Keep precision, but add encouragement.
