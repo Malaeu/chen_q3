@@ -36,6 +36,7 @@ This is the full project loop; Aristotle is only one tool in it.
    - Re-import into DB (`aristotle_db/parse_lean.py`).
    - Update `PROOF_MAP_NEW_KERNEL.md` (status + file link).
    - Update `A3_FLOOR_ROADMAP.md` (advance the active step).
+   - Update `FORMALIZATION_STATS.md` (rerun the stats script and refresh counts).
    - If specs changed, update `PROSHKA_REQUEST_3.md` and DB.
 
 This loop repeats until the roadmap is complete.
