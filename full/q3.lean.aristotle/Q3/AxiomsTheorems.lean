@@ -61,9 +61,9 @@ These are re-exported from Q3.Axioms
 /-!
 # TIER-2: Q3 PAPER CONTRIBUTIONS
 
-## Status (2026-01-13):
-- 4 PROVEN via theorems/bridges: node_spacing, S_K_small, W_sum_finite, Q_Lipschitz
-- 4 BRIDGE CLOSED (0 sorry): off_diag_exp_sum, A3_bridge, Q_nonneg, A1_density
+## Status (2026-01-14):
+- 5 PROVEN via theorems/bridges: node_spacing, S_K_small, W_sum_finite, Q_Lipschitz, A1_density
+- 3 BRIDGE CLOSED (0 sorry): off_diag_exp_sum, A3_bridge, Q_nonneg
 - 0 AXIOM in use: RKHS_contraction now bridged (xi_n rescaling)
 
 Note: "BRIDGE CLOSED" means the bridge file has 0 sorry, but it may still USE an axiom.
@@ -146,17 +146,17 @@ end Q3.Theorems
 
 ## Tier-2 Status (9 total):
 
-### PROVEN via theorems/bridges (4/9) ✅
+### PROVEN via theorems/bridges (5/9) ✅
 - node_spacing → NodeSpacingBridge.node_spacing_Q3
 - S_K_small → S_K_SmallBridgeV2.S_K_small_Q3
 - W_sum_finite → W_sum_BridgeV2.W_sum_finite_Q3
 - Q_Lipschitz → Q3.Proofs.Q_Lipschitz_on_W_K_thm (real proof!)
+- A1_density → Q3.Proofs.A1_density_WK_thm (real proof!)
 
-### BRIDGE CLOSED (4/9) - 0 sorry, uses axioms ✅
+### BRIDGE CLOSED (3/9) - 0 sorry, uses axioms ✅
 - off_diag_exp_sum → off_diag_exp_sum_bridge_v3 (0 sorry)
 - A3_bridge → A3_bridge.lean, A3_bridge_v3_uniform.lean (0 sorry)
 - Q_nonneg → Q_nonneg_bridge_v2.lean (0 sorry)
-- A1_density → A1_density_bridge_v2.lean (0 sorry)
 
 ### AXIOM in main chain (0/9)
 - RKHS_contraction → bridged via Bridge.RKHS_contraction_data_of_bridge

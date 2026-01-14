@@ -18,8 +18,7 @@ Final result: RH is true.
 
 Key axiom dependencies:
 - Tier-1: Weil_criterion
-- Tier-2: A1_density_WK_axiom, A3_bridge_axiom,
-          Q_nonneg_on_atoms_of_A3_RKHS_axiom
+- Tier-2: A3_bridge_axiom, Q_nonneg_on_atoms_of_A3_RKHS_axiom
 - THEOREM: Q_Lipschitz_on_W_K_thm (real proof via arch/prime bridge axioms!)
 - Atoms positivity is a THEOREM from A3 + RKHS; T5_transfer is a THEOREM from A1 + A2 + Atoms
   (see Q3.AxiomsTheorems for theorem replacements where available)
@@ -170,10 +169,11 @@ This theorem depends on:
 - Weil_criterion (Weil 1952)
 
 **Tier-2 (Q3 Paper):**
-- A1_density_WK_axiom: atoms dense in W_K
-- Q_Lipschitz_on_W_K: Q is Lipschitz
 - A3_bridge_axiom: Toeplitz-symbol bridge
 - Q_nonneg_on_atoms_of_A3_RKHS_axiom: core (A3+RKHS) ⇒ atoms positivity
+**Theorems (now closed):**
+- A1_density_WK: atoms dense in W_K
+- Q_Lipschitz_on_W_K: Q is Lipschitz
 
 **Local axiom:**
 - Weil_cone_continuous: test functions are continuous
@@ -199,8 +199,7 @@ theorem RH_of_Weil_and_Q3 : Q3.RH := by
 -- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
 -- Standard: propext, Classical.choice, Quot.sound
 -- Tier-1: Q3.Weil_criterion, Q3.a_star_pos, Q3.a_star_bdd_on_compact, Q3.a_star_continuous
--- Tier-2: Q3.A1_density_WK_axiom, Q3.A3_bridge_axiom,
---         Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom
+-- Tier-2: Q3.A3_bridge_axiom, Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom
 --
 -- KEY IMPROVEMENTS:
 -- - Q_Lipschitz_on_W_K is now a THEOREM (uses arch/prime bridge axioms)!

@@ -248,8 +248,8 @@ PY
 
 ---
 
-**Last Updated:** 2026-01-13
-**Next Action:** ALL BRIDGE SORRY CLOSED! Tier-2 contributions at 0 sorry.
+**Last Updated:** 2026-01-14
+**Next Action:** Close `A3_bridge_axiom` via Rayleigh bound, then wire `Q_nonneg_on_atoms`.
 **A3_FLOOR Integration:** DONE (A3_bridge_v3_uniform imports P_A_ge_c_star).
 
 ## COMPLETED (2026-01-13)
@@ -267,9 +267,9 @@ PY
 - `Q_nonneg_bridge_v2.lean` - Q_nonneg_on_atoms (0 sorry)
 - Uses Q_nonneg_on_atoms_uniform axiom with A3_bridge_data_uniform + RKHS_contraction_data_uniform
 
-### A1_density Bridge - FULLY CLOSED
-- `A1_density_bridge_v2.lean` - A1_density (0 sorry)
-- Uses A1_density_WK_axiom directly
+### A1_density Theorem - CLOSED (axiom-free)
+- `Q3/Proofs/A1_density.lean` - `A1_density_WK_thm` (0 sorry)
+- Wired in `Q3/T5_Transfer.lean` via `Q3.Theorems.A1_density_WK`
 
 <!-- AUTO-STATUS:BEGIN -->
 Auto status (DB snapshot): 2026-01-12 20:58

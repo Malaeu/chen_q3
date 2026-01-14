@@ -18,6 +18,16 @@ Skill location: `~/.codex/skills/aristotle/`
 Use the skill for the current submit/status/download workflow. The old
 `~/.claude/skills/aristotle/` path is deprecated.
 
+### Skill bootstrap (if missing)
+
+If the Codex skill was lost during refactors:
+1. Use the legacy doc as source: `~/.claude/skills/aristotle/skill.md`
+2. Copy it to: `~/.codex/skills/aristotle/SKILL.md`
+3. Restart the session and re-load the skill.
+
+Note: the legacy path contains docs only (no `scripts/` folder). Use the CLI
+and Python API below for status/download.
+
 ---
 
 ## API Reference
@@ -338,3 +348,4 @@ Source of truth: `full/q3.lean.aristotle/aristotle_input/project_ids.txt`
 | 05_RKHS_prime_cap | 34be4dc5-7272-42a8-9be8-59f4be0d90f8 | IN_PROGRESS |
 | 06_T5_transfer | f3991944-86d5-4667-93d4-d7d19dc15dab | IN_PROGRESS |
 | 07_Main_closure | 6e8bdd2f-2503-471e-a132-b81a36a31b1f | COMPLETE |
+| hat_interpolation_approx | 18bfe8c7-4620-41d4-be62-489409168e95 | QUEUED/IN_PROGRESS |

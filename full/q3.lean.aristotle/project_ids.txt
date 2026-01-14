@@ -22,3 +22,5 @@ A3_FLOOR_v14.md: ffa743a3-2c10-4a5d-b2bd-0493e0e4d34f
 A3_FLOOR_v15.md: 383828ff-fcc0-4dc6-b434-76a29e369f50
 A3_FLOOR_v17.md: c1ea0b1f-7f44-4fa6-8f83-6ef6aaa1b413
 A1_density_hat_full_v1.md: 9dda8778-857e-42cf-a669-aad1a2e04d5b
+
+hat_interpolation_approx.md: 18bfe8c7-4620-41d4-be62-489409168e95

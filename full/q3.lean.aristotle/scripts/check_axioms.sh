@@ -46,8 +46,8 @@ Q3_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + Q3_COUNT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: 3)"
-echo "Q3 Project:    $Q3_COUNT (expected: 7)"
-echo "TOTAL:         $TOTAL (expected: 10)"
+echo "Q3 Project:    $Q3_COUNT (expected: 6)"
+echo "TOTAL:         $TOTAL (expected: 9)"
 echo ""
 
 # Step 4: Classification
@@ -58,7 +58,7 @@ echo "$AXIOMS" | grep -E "Weil_criterion|a_star_pos|a_star_bdd|a_star_continuous
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
-echo "$AXIOMS" | grep -E "A1_density|A3_bridge|RKHS_contraction|Q_nonneg_on_atoms" | sed 's/^/  /' || echo "  (none found)"
+echo "$AXIOMS" | grep -E "A3_bridge|RKHS_contraction|Q_nonneg_on_atoms" | sed 's/^/  /' || echo "  (none found)"
 
 echo ""
 echo "Level 3 (Bridge Lemmas):"
@@ -74,7 +74,6 @@ EXPECTED_AXIOMS=(
     "Q3.a_star_pos"
     "Q3.a_star_bdd_on_compact"
     "Q3.a_star_continuous"
-    "Q3.A1_density_WK_axiom"
     "Q3.A3_bridge_axiom"
     "Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom"
 )
@@ -107,7 +106,7 @@ echo ""
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                    VERIFICATION PASSED ✓                      ║"
 echo "║                                                                ║"
-echo "║  Axiom count: $TOTAL (7 Q3 + 3 Standard)                       ║"
+echo "║  Axiom count: $TOTAL (6 Q3 + 3 Standard)                       ║"
 echo "║  Philosophy: Compliant                                         ║"
 echo "║  Ready to commit!                                              ║"
 echo "╚════════════════════════════════════════════════════════════════╝"

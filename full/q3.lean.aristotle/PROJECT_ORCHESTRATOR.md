@@ -20,6 +20,8 @@ Single entry point: read this file at session start.
 - RKHS contraction is now bridged: `RKHS_contraction_axiom` is no longer in
   `#print axioms` for `Q3.Main.RH_of_Weil_and_Q3` (see `Q3/Proofs/Bridge.lean`,
   wired in `Q3/AxiomsTheorems.lean`).
+- `A1_density_WK_thm` is proven in `Q3/Proofs/A1_density.lean` and wired in
+  `Q3/T5_Transfer.lean`, so `A1_density_WK_axiom` is gone from the main chain.
 
 ## Wiring vs Closing (definition)
 
@@ -36,14 +38,14 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **10 axioms**
-Note: 12 → 11 (closed arch/prime Lipschitz), 11 → 10 (closed RKHS contraction bridge).
+Result: **9 axioms**
+Note: 12 → 11 (closed arch/prime Lipschitz), 11 → 10 (closed RKHS contraction bridge),
+10 → 9 (closed A1_density via theorem wiring).
 
 - Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - External/classical: `Weil_criterion`, `a_star_pos`, `a_star_bdd_on_compact`,
   `a_star_continuous`
-- Tier-2 (closable): `A1_density_WK_axiom`, `A3_bridge_axiom`,
-  `Q_nonneg_on_atoms_of_A3_RKHS_axiom`
+- Tier-2 (closable): `A3_bridge_axiom`, `Q_nonneg_on_atoms_of_A3_RKHS_axiom`
 
 ## Critical Chain (ASCII)
 
@@ -56,7 +58,7 @@ RH_of_Weil_and_Q3
        |
        +-- T5_transfer [OK]
             |
-            +-- A1_density_WK [AX]
+            +-- A1_density_WK [OK]
             +-- Q_Lipschitz_on_W_K [OK]
             +-- Q_nonneg_on_atoms [AX]
                  |
@@ -66,22 +68,17 @@ RH_of_Weil_and_Q3
 
 ## Active Next Step (closing, not wiring)
 
-1) Close `A1_density_WK_axiom` in `Q3/Proofs/A1_density.lean` using Lemma 6.4
-   (fixed `t₀`, hat interpolation, atoms with `|τ|+B≤K`):
-   - finish the hat‑interpolation lemmas
-   - rewrite `h_approx` to use the hat chain (not convolution+Riemann sum)
-2) Close `A3_bridge_axiom` via the Toeplitz quadratic‑form lower bound
+1) Close `A3_bridge_axiom` via the Toeplitz quadratic‑form lower bound
    (Rayleigh: `λ_min ≥ min P_A`), avoiding Szegő–Böttcher.
-3) After A3 is closed, `Q_nonneg_on_atoms_of_A3_RKHS_axiom` becomes a short
+2) After A3 is closed, `Q_nonneg_on_atoms_of_A3_RKHS_axiom` becomes a short
    wiring from `Q3/Proofs/Q_nonneg_bridge_v2.lean`.
 
 ## Closure Tracker (remaining axioms)
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `A3_bridge_axiom` | `Q3/Proofs/A3_bridge_v3_uniform.lean` | still uses `A3_bridge_uniform` axiom | prove via A3_FLOOR + Szego + RKHS | BLOCKED |
+| `A3_bridge_axiom` | `Q3/Proofs/A3_bridge_v3_uniform.lean` | still uses `A3_bridge_uniform` axiom | prove via A3_FLOOR + Rayleigh (no SB) | BLOCKED |
 | `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms.lean` + bridge | needs A3 + RKHS proofs | rewrite `Q3/Proofs/Q_nonneg_bridge_v2.lean` | BLOCKED |
-| `A1_density_WK_axiom` | `Q3/Proofs/A1_density.lean` | 1 sorry (h_approx); hat_interpolation_approx CLOSED via HatInterpolation.lean | Aristotle hat-chain `e90d4213` | IN_PROGRESS |
 
 Closed (recent):
 - `RKHS_contraction_axiom` → bridged in `Q3/Proofs/Bridge.lean`, wired in `Q3/AxiomsTheorems.lean`
@@ -109,15 +106,8 @@ of separate `|τ| ≤ K` and `B ≤ K`. This matches Lemma 6.4 (Fixed-t₀ cone 
 - hg_nonneg: nonnegativity (nonneg weights × nonneg atoms)
 - hg_supp: support containment (uses new margin condition)
 
-**Remaining sorries** (1):
-- `h_approx` (line ~852): triangle‑inequality chain in A1_density_WK_thm
-
-**Closed:** `hat_interpolation_approx` is now proved via
-`Q3/Proofs/HatInterpolation.lean` with the boundary condition
-`f(-K) = 0 ∧ f(K) = 0` (holds for `W_K`).
-
-**Note:** the current `A1_density_WK_thm` proof still uses convolution + Riemann
-sum; it should be rewritten to match Lemma 6.4 (fixed `t₀`, hats).
+**A1_density status:** `A1_density_WK_thm` is fully proven and wired into
+`Q3/T5_Transfer.lean`. No remaining sorries in `Q3/Proofs/A1_density.lean`.
 
 ## Key Files (open only as needed)
 
@@ -168,6 +158,13 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
 ```
 
 ## Change Log (recent)
+
+- 2026-01-14: Wired `Q3.Theorems.A1_density_WK` into `Q3/T5_Transfer.lean`.
+  `A1_density_WK_axiom` is now removed from `#print axioms` (total axioms: 9).
+
+- 2026-01-14: Submitted Aristotle job `hat_interpolation_approx.md`
+  (project `18bfe8c7-4620-41d4-be62-489409168e95`) with corrected boundary
+  condition `f(-K)=f(K)=0`.
 
 - 2026-01-14: Submitted `A1_density_hat_chain` to Aristotle (project `e90d4213`).
   Plan: rewrite A1_density_WK_thm using hat-chain (Lemma 6.4) instead of

@@ -28,3 +28,5 @@ A1_density_hat_chain.md: e90d4213-cf0f-40bd-b161-d771155e5ecb
 A1_density_hat_chain_v2.md: 4276c4a4-2523-4916-9220-07484a6bbb72
 A1_density_hat_chain_v3.md: 00b89f9d-0655-43a6-ab84-0e39b31678e2
 sandbox_test.md: c33c6672-311f-4df7-a2c3-e47c19fd37e2
+
+hat_interpolation_approx.md: 18bfe8c7-4620-41d4-be62-489409168e95

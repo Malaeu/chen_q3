@@ -86,13 +86,13 @@ These are well-known results. Citations:
 - Weil, A. (1952). "Sur les 'formules explicites' de la théorie des nombres premiers"
 - Standard complex analysis (digamma function)
 
-### Level 2: Q3 Paper Contributions (3) — OUR MATHEMATICAL CONTENT
+### Level 2: Q3 Paper Contributions (2) — OUR MATHEMATICAL CONTENT
 ```
-A1_density_WK_axiom           — Fejér×heat atoms dense in W_K (Section 4)
 A3_bridge_axiom               — Toeplitz-symbol bridge (Section 6)
 Q_nonneg_on_atoms_of_A3_RKHS  — Q ≥ 0 on atoms (Theorem 5.3)
 ```
 These are the novel contributions proven in the Q3 paper.
+`A1_density_WK` is now a theorem (see `Q3/Proofs/A1_density.lean`).
 
 ### Level 3: Technical Bridge Lemmas (0) — CLOSED
 
@@ -124,7 +124,6 @@ Expected output:
   Q3.a_star_pos,                        -- Level 1: Analysis
   Q3.a_star_bdd_on_compact,             -- Level 1: Analysis
   Q3.a_star_continuous,                 -- Level 1: Analysis
-  Q3.A1_density_WK_axiom,               -- Level 2: Q3 paper
   Q3.A3_bridge_axiom,                   -- Level 2: Q3 paper
   Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom -- Level 2: Q3 paper
 ]
@@ -203,7 +202,6 @@ Our axioms can be eliminated one by one:
 | `a_star_bdd_on_compact` | Formalize from Mathlib | Medium |
 | `a_star_continuous` | Continuity of a* from Mathlib | Low |
 | `Weil_criterion` | Major project (Weil explicit formula) | Very High |
-| `A1_density_WK_axiom` | Density arguments | Medium |
 | `A3_bridge_axiom` | Szegő-Rayleigh theory | High |
 | `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | Follows from A3 + RKHS | Medium |
 

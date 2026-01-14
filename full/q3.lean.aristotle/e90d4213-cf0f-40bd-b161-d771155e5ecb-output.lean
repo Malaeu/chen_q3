@@ -86,14 +86,14 @@ lemma local_hat_approx (h : ℝ) (h_pos : 0 < h) (x0 : ℝ) (f : ℝ → ℝ) (�
     intros x hx
     suffices h_local_approx : |(f x - f x0) * FejerKernel h (x - x0) + (f x - f (x0 + h)) * FejerKernel h (x - (x0 + h))| < ε by
       have h_partition : FejerKernel h (x - x0) + FejerKernel h (x - (x0 + h)) = 1 := by
-        exact FejerKernel_partition_unity h h_pos x0 x hx
+        exact?;
       convert h_local_approx using 2 ; rw [ eq_sub_of_add_eq' h_partition ] ; ring;
     have h_local_approx : |(f x - f x0) * FejerKernel h (x - x0) + (f x - f (x0 + h)) * FejerKernel h (x - (x0 + h))| ≤ |f x - f x0| * FejerKernel h (x - x0) + |f x - f (x0 + h)| * FejerKernel h (x - (x0 + h)) := by
       rw [ abs_le ];
       constructor <;> cases abs_cases ( f x - f x0 ) <;> cases abs_cases ( f x - f ( x0 + h ) ) <;> nlinarith [ show 0 ≤ FejerKernel h ( x - x0 ) by exact le_max_left _ _, show 0 ≤ FejerKernel h ( x - ( x0 + h ) ) by exact le_max_left _ _ ];
     -- Since FejerKernel is non-negative on the interval, we can apply the bounds from h_osc.
     have h_nonneg : FejerKernel h (x - x0) + FejerKernel h (x - (x0 + h)) = 1 := by
-      exact FejerKernel_partition_unity h h_pos x0 x hx
+      exact?;
     cases le_or_gt ( FejerKernel h ( x - x0 ) ) 0 <;> cases le_or_gt ( FejerKernel h ( x - ( x0 + h ) ) ) 0 <;> nlinarith [ h_osc x hx, abs_nonneg ( f x - f x0 ), abs_nonneg ( f x - f ( x0 + h ) ), show 0 ≤ FejerKernel h ( x - x0 ) from by exact le_max_left _ _, show 0 ≤ FejerKernel h ( x - ( x0 + h ) ) from by exact le_max_left _ _ ]
 
 /-

@@ -9,6 +9,7 @@
 ```lean
 lemma hat_interpolation_approx (K : ℝ) (hK : K > 0) (f : ℝ → ℝ)
     (hf_cont : ContinuousOn f (Set.Icc (-K) K)) (hf_nonneg : ∀ x ∈ Set.Icc (-K) K, 0 ≤ f x)
+    (hf_boundary : f (-K) = 0 ∧ f K = 0)
     (ε : ℝ) (hε : ε > 0) :
     ∃ (n : ℕ) (τ : Fin n → ℝ) (δ : ℝ),
       n > 0 ∧ δ > 0 ∧
@@ -44,7 +45,8 @@ lemma hat_interpolation_approx (K : ℝ) (hK : K > 0) (f : ℝ → ℝ)
 1. Use uniform continuity to get δ₀ such that |x - y| < δ₀ ⟹ |f(x) - f(y)| < ε/2.
 2. Choose δ = min(δ₀, K)/2 and n = ⌈2K/δ⌉.
 3. Define grid τᵢ = -K + (i + 1/2) · (2K/n) for i = 0, ..., n-1.
-4. Show hat functions form approximate partition of unity on [-K, K].
+4. Use hf_boundary to handle the boundary (hats vanish at ±K).
+5. Show hat functions form approximate partition of unity on [-K, K].
 5. At each x, at most 2 hats are nonzero; weighted average approximates f(x).
 6. Nonnegativity: f ≥ 0 and FejerKernel ≥ 0 ⟹ sum ≥ 0.
 
@@ -78,7 +80,7 @@ lemma hat_interpolation_approx (K : ℝ) (hK : K > 0) (f : ℝ → ℝ)
 | Issue | Location | Verification |
 |-------|----------|--------------|
 | Hidden quantifiers | §6 | All explicit: for all x ∈ [-K, K] |
-| Boundary cases | §6 step 6 | τᵢ strictly inside (-K, K) |
+| Boundary cases | §6 step 4 | hf_boundary handles f(±K)=0 |
 | Division by zero | §2 | δ > 0 ensured |
 | Partition unity | §5.1 | At most 2 overlaps, sum ≤ 2 |
 | Nonnegativity | §6 step 9 | Product of nonneg terms |
