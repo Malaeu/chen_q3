@@ -41,3 +41,6 @@ A3_bridge_closure_v2.md (corrected, no SB): f6a9eed5-a06e-4686-86cc-37cecb8a620f
 A3_bridge_v3_proshka.md: 22378a11-eb7b-4d7e-bd57-01dbadf258c8
 A3_bridge_v4_real_TP.md: c35f3088-0755-4b8c-a33b-bd03064dbfea
 1cac53dd-b35c-4afa-9c88-696e5ca55f33  A3_bridge_RAYLEIGH_FIRST (Proshka, no SB, no M₀)  2026-01-14 20:33
+2b3cd17f-bac2-4b35-901f-0adb5ac43b85  RKHS_cap_rayleigh (h_cap, Cauchy-Schwarz)  2026-01-14 22:06
+RKHS_cap_t1_proshka.md: bef6fa7b-2cc4-424a-85b2-8919ac52b1fe
+weight_sum_bound.md: fb91fbb3-4c87-4740-939a-c672648a38ae

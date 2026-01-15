@@ -241,3 +241,18 @@
 - 📄 `full/q3.lean.aristotle/docs/INSIGHTS.md` — 20:21
 - 📄 `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` — 20:35
 - 📄 `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` — 21:16
+- 📄 `full/q3.lean.aristotle/aristotle_input/RKHS_cap_rayleigh.md` — 21:45
+- 📄 `full/q3.lean.aristotle/PROJECT_WORKFLOW.md` — 21:47
+- 📄 `full/q3.lean.aristotle/docs/INSIGHTS.md` — 22:12
+- 📄 `full/q3.lean.aristotle/aristotle_input/RKHS_cap_t1_proshka.md` — 23:27
+- 📄 `full/q3.lean.aristotle/aristotle_input/RKHS_cap_t1_proshka.md` — 23:36
+
+## 2026-01-15
+
+- 📄 `full/q3.lean.aristotle/aristotle_input/weight_sum_bound.md` — 01:02
+- 📄 `full/q3.lean.aristotle/aristotle_output/weight_sum_variants/ANALYSIS.md` — 10:56
+- 📄 `full/q3.lean.aristotle/aristotle_output/weight_sum_variants/PROSHKA_ANALYSIS_REQUEST.md` — 11:00
+- 📄 `full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md` — 11:39
+- 📄 `full/q3.lean.aristotle/aristotle_output/weight_sum_variants/ANALYSIS.md` — 11:40
+- 📄 `full/q3.lean.aristotle/aristotle_output/weight_sum_variants/PROSHKA_ANALYSIS_REQUEST.md` — 11:41
+- 📄 `CLAUDE.md` — 11:51

@@ -413,7 +413,7 @@ axiom A3_bridge_rayleigh_axiom :
       ∀ (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
         RayleighQuotient
             (ToeplitzMatrix (2 * M + 1) a_star - T_P_comp_real K K t M) v
-          ≥ c_arch K / 4
+          ≥ c_star / 4
 
 /-! ## Axiom T2.7: Q ≥ 0 on Atom Cone (Q3 Core Result)
 
@@ -450,7 +450,7 @@ def A3_bridge_data_rayleigh (K : ℝ) : Prop :=
       ∀ (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
         RayleighQuotient
             (ToeplitzMatrix (2 * M + 1) a_star - T_P_comp_real K K t M) v
-          ≥ c_arch K / 4
+          ≥ c_star / 4
 
 /-- Bundled statement of the RKHS contraction axiom for a fixed compact parameter `K`. (DEPRECATED) -/
 def RKHS_contraction_data (K : ℝ) : Prop :=

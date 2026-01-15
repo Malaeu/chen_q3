@@ -28,6 +28,7 @@ lake-manifest.json.bak
 
 # Session transcripts
 session_*.jsonl
+docs/*-conversations.zip
 
 # Editor
 .vscode/

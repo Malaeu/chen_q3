@@ -14,21 +14,21 @@ Notes:
 
 | Source | Lines | Theorems | Lemmas | Defs | Total Decls |
 |--------|-------|----------|--------|------|-------------|
-| **Q3/** (core) | 17,081 | 196 | 356 | 280 | 853 |
+| **Q3/** (core) | 17,245 | 196 | 361 | 281 | 859 |
 | **aristotle_output/** | 11,201 | 92 | 262 | 286 | 648 |
 | **A3_FLOOR*** | 2,901 | 14 | 74 | 22 | 110 |
-| **TOTAL** | **31,183** | **302** | **692** | **588** | **1,611** |
+| **TOTAL** | **31,347** | **302** | **697** | **589** | **1,617** |
 
 ## Δ vs previous snapshot
 
 | Source | Lines Δ | Theorems Δ | Lemmas Δ | Defs Δ | Total Decls Δ |
 |--------|---------|------------|----------|--------|----------------|
-| **Q3/** (core) | +31 | -1 | +2 | +0 | +1 |
-| **aristotle_output/** | +85 | +1 | +3 | +8 | +12 |
+| **Q3/** (core) | +164 | +0 | +5 | +1 | +6 |
+| **aristotle_output/** | +0 | +0 | +0 | +0 | +0 |
 | **A3_FLOOR*** | +0 | +0 | +0 | +0 | +0 |
-| **TOTAL** | +116 | +0 | +5 | +8 | +13 |
+| **TOTAL** | +164 | +0 | +5 | +1 | +6 |
 
-*Previous TOTAL line count was a rough estimate (~48,000); recompute gives 31,183.
+*Previous TOTAL line count was a rough estimate (~48,000); recompute gives 31,295.
 
 ---
 
@@ -64,7 +64,7 @@ Notes:
 | Category | Files | Lines | Thm/Lemmas |
 |----------|-------|-------|------------|
 | Axioms/Main | 2 | 713 | 12 |
-| Proofs/ | 44 | 8,846 | 321 |
+| Proofs/ | 46 | 9,010 | 326 |
 | Archive/ | 20 | 4,568 | 146 |
 | DigammaSeries | 2 | 2,571 | 48 |
 | Other | 28 | 4,849 | 166 |
@@ -106,13 +106,13 @@ Q3/Proofs/Q_nonneg_bridge_v2.lean
 ## Aggregate Totals
 
 ```
-Q3/Proofs (44 files)
-  lines: 8846 (nonempty 7589), namespaces: 37
-  lemma 220 | theorem 101 | def 148 | abbrev 1 | structure 1 | instance 1
+Q3/Proofs (46 files)
+  lines: 9010 (nonempty 7737), namespaces: 39
+  lemma 225 | theorem 101 | def 149 | abbrev 1 | structure 1 | instance 1
 
-Q3 total (76 files)
-  lines: 17081 (nonempty 14768), namespaces: 60
-  lemma 356 | theorem 196 | def 280 | abbrev 8 | structure 8 | instance 5
+Q3 total (78 files)
+  lines: 17245 (nonempty 14916), namespaces: 62
+  lemma 361 | theorem 196 | def 281 | abbrev 8 | structure 8 | instance 5
 ```
 
 ---

@@ -82,4 +82,67 @@ lemma T_P_comp_real_entry_abs_le_weight_sum (K B t : ℝ) (M : ℕ) [Fintype (Q3
     T_P_comp_entry_norm_le_weight_sum (K:=K) (B:=B) (t:=t) (M:=M) i j
   simpa [Q3.T_P_comp_real] using (le_trans hRe hbound)
 
+lemma T_P_comp_real_row_sum_le_weight_sum (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    (i : Fin (2 * M + 1)) :
+    ∑ j, |Q3.T_P_comp_real K B t M i j| ≤
+      ∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖ := by
+  classical
+  set c : ℝ := (1 / Real.sqrt (2 * M + 1 : ℝ))^2
+  set w : ℝ :=
+    ∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖
+  set const : ℝ :=
+    ∑ n : Q3.Nodes K,
+      ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖ * c
+  have hentry : ∀ j : Fin (2 * M + 1),
+      |Q3.T_P_comp_real K B t M i j| ≤ const := by
+    intro j
+    have hbound :=
+      T_P_comp_real_entry_abs_le_weight_sum (K:=K) (B:=B) (t:=t) (M:=M) i j
+    simpa [const, c] using hbound
+  have hsum :
+      (∑ j : Fin (2 * M + 1), |Q3.T_P_comp_real K B t M i j|) ≤
+        ∑ j : Fin (2 * M + 1), const := by
+    refine Finset.sum_le_sum ?_
+    intro j hj
+    exact hentry j
+  have hconst_mul :
+      (2 * M + 1 : ℝ) * c = 1 := by
+    have hpos : (0 : ℝ) < (2 * M + 1 : ℝ) := by positivity
+    have hsqrt :
+        (Real.sqrt (2 * M + 1 : ℝ))^2 = (2 * M + 1 : ℝ) := by
+      simpa [pow_two] using
+        (Real.sq_sqrt (show 0 ≤ (2 * M + 1 : ℝ) by positivity))
+    calc
+      (2 * M + 1 : ℝ) * c
+          = (2 * M + 1 : ℝ) * (1 / (Real.sqrt (2 * M + 1 : ℝ))^2) := by
+              simp [c, pow_two, mul_comm]
+      _ = (2 * M + 1 : ℝ) * (1 / (2 * M + 1 : ℝ)) := by simp [hsqrt]
+      _ = 1 := by field_simp [hpos.ne']
+  have hsumconst :
+      (∑ j : Fin (2 * M + 1), const) = (2 * M + 1 : ℝ) * const := by
+    simp [const]
+  have hconst' : (2 * M + 1 : ℝ) * const = w := by
+    calc
+      (2 * M + 1 : ℝ) * const
+          = (2 * M + 1 : ℝ) *
+              (∑ n : Q3.Nodes K,
+                ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖ * c) := by
+                simp [const]
+      _ = ∑ n : Q3.Nodes K,
+            (2 * M + 1 : ℝ) *
+              (‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖ * c) := by
+                simp [Finset.mul_sum, mul_comm, mul_assoc]
+      _ = ∑ n : Q3.Nodes K,
+            ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖ * ((2 * M + 1 : ℝ) * c) := by
+                simp [mul_comm, mul_left_comm, mul_assoc]
+      _ = w := by
+            calc
+              (∑ n : Q3.Nodes K,
+                ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖ * ((2 * M + 1 : ℝ) * c))
+                  = ∑ n : Q3.Nodes K,
+                      ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖ * 1 := by
+                        simp [hconst_mul]
+              _ = w := by simp [w]
+  exact le_trans hsum (by simp [hsumconst, hconst'])
+
 end Q3.Proofs

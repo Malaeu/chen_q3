@@ -102,12 +102,25 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 
 ## Aristotle (AI proof assistant)
 
+**⚠️ ПЕРЕД КАЖДЫМ ПРОМПТОМ ЧИТАЙ:**
+- `full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+
+**Ключевые правила (из анализа 7 вариантов Прошкой):**
+| ИЗБЕГАТЬ | ИСПОЛЬЗОВАТЬ |
+|----------|--------------|
+| `exact?` | Явные леммы |
+| Тяжёлый `aesop` (>2) | `nlinarith`, `positivity`, `gcongr` |
+| Длинные `have` лесенки | `suffices` для редукции |
+| ζ(2)/π bounds | Прямые грубые оценки |
+
 **Документация (читать в этом порядке):**
 | Doc | Path | Content |
 |-----|------|---------|
+| **Guidelines** | `aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md` | **Prompt policy!** |
 | Skill | `~/.claude/skills/aristotle/skill.md` | API, workflows, limits |
-| Sandbox Guide | `full/q3.lean.aristotle/ARISTOTLE_SANDBOX_GUIDE.md` | Как делать sandbox |
-| Project IDs | `full/q3.lean.aristotle/aristotle_input/project_ids.txt` | Все UUID |
+| Sandbox Guide | `ARISTOTLE_SANDBOX_GUIDE.md` | Как делать sandbox |
+| Project IDs | `aristotle_input/project_ids.txt` | Все UUID |
+| Variants Analysis | `aristotle_output/weight_sum_variants/ANALYSIS.md` | 7-variant study |
 
 **Quick start:**
 ```bash
