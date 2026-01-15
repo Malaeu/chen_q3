@@ -43,3 +43,7 @@ docs/*-conversations.zip
 .claude/
 multiagent/
 full/q3.lean.aristotle/docs/cc_15_01_26.md
+
+# Aristotle output files
+*-output.lean
+output.lean
