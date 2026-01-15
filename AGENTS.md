@@ -17,3 +17,47 @@ Tone (coordination note):
 - Acknowledge good insights explicitly.
 - Celebrate progress when we close steps.
 - Keep precision, but add encouragement.
+
+Documentation link map (entry points):
+
+                      ┌─────────────────────────────────────┐
+                      │           CLAUDE.md                 │
+                      │      (auto-read entry point)        │
+                      └──────────────┬──────────────────────┘
+                                     │
+            ┌────────────────────────┼────────────────────────┐
+            │                        │                        │
+            ▼                        ▼                        ▼
+
+  ┌─────────────────┐    ┌─────────────────────┐    ┌──────────────────────┐
+  │ PROJECT_        │    │ PHILOSOPHY_OF_      │    │ ARISTOTLE_PROMPT_     │
+  │ ORCHESTRATOR.md │    │ PROOF.md            │    │ GUIDELINES.md         │
+  │ (status/next)   │    │ (axiom rules)       │    │ (prompt policy)       │
+  └────────┬────────┘    └─────────────────────┘    └──────────────────────┘
+           │
+           ├──► PROJECT_ASCII.md (diagram)
+           ├──► PROJECT_WORKFLOW.md (checklist)
+           ├──► docs/INSIGHTS.md (Proshka notes)
+           └──► FORMALIZATION_STATS.md (metrics)
+
+Closure: YES
+- Start at CLAUDE.md -> navigate everywhere.
+- Philosophy, Workflow, Aristotle guidance are all reachable.
+
+Aristotle guidelines (links):
+
+| Path | Content |
+| --- | --- |
+| /Users/emalam/.claude/skills/aristotle/skill.md | Full API documentation (~830 lines) |
+| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md | Prompt policy for Q3 |
+| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/project_ids.txt | All project UUIDs |
+| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/ARISTOTLE_SANDBOX_GUIDE.md | Sandbox workflow |
+
+Project files (Q3):
+
+| Path | Content |
+| --- | --- |
+| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md | Current status, next step |
+| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md | Axiom criteria |
+| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/TRICKS_LIBRARY.md | Tricks/notes |
+| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/docs/INSIGHTS.md | Accumulated insights |
