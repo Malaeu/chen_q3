@@ -12,6 +12,7 @@ Integration: change-durch: claude-code 2026-01-15 Rayleigh_Fourier
 -/
 
 import Q3.Axioms
+import Mathlib.Data.Complex.BigOperators
 
 set_option linter.mathlibStandardSet false
 
@@ -41,6 +42,16 @@ This is DIFFERENT from Q3.ToeplitzMatrix which uses SAMPLING: T[i,j] = P(π(i-j)
 -/
 noncomputable def ToeplitzEntry (P : ℝ → ℝ) (i j : ℕ) : ℂ :=
   ∫ θ in (-1/2 : ℝ)..(1/2 : ℝ), (P θ : ℂ) * Complex.exp (2 * Real.pi * Complex.I * ((i : ℂ) - (j : ℂ)) * (θ : ℂ))
+
+/-
+Fourier Toeplitz matrices (complex and real parts).
+Use M = 2*M' + 1 to match the Q3 symmetric frequency window.
+-/
+noncomputable def ToeplitzMatrix_Fourier (M : ℕ) (P : ℝ → ℝ) : Matrix (Fin M) (Fin M) ℂ :=
+  fun i j => ToeplitzEntry P i j
+
+noncomputable def ToeplitzMatrix_Fourier_real (M : ℕ) (P : ℝ → ℝ) : Matrix (Fin M) (Fin M) ℝ :=
+  fun i j => (ToeplitzEntry P i j).re
 
 /-
 Definition of the trigonometric polynomial associated with vector v.
@@ -150,5 +161,60 @@ theorem rayleigh_lower_bound
       convert parseval_trig_poly M v using 1;
     simp_all +decide [ Complex.normSq_eq_norm_sq ];
   exact le_div_iff₀ ( lt_of_le_of_ne ( Finset.sum_nonneg fun _ _ => sq_nonneg _ ) ( Ne.symm <| by contrapose! hv; ext i; simp_all +decide [ Finset.sum_eq_zero_iff_of_nonneg, sq_nonneg ] ) ) |>.2 h_rayleigh
+
+theorem rayleigh_lower_bound_real
+    (M : ℕ) (hM : M > 0)
+    (P : ℝ → ℝ) (hP_cont : Continuous P)
+    (m : ℝ) (hP_ge : ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2), m ≤ P θ)
+    (v : Fin M → ℝ) (hv : v ≠ 0) :
+    Q3.RayleighQuotient (ToeplitzMatrix_Fourier_real M P) v ≥ m := by
+  have h :=
+    rayleigh_lower_bound (M:=M) (hM:=hM) (P:=P) (hP_cont:=hP_cont)
+      (m:=m) (hP_ge:=hP_ge) (v:=v) (hv:=hv)
+  have hnum :
+      (∑ i : Fin M, ∑ j : Fin M, v i * (ToeplitzEntry P i j).re * v j)
+        = (∑ i : Fin M, ∑ j : Fin M, (v i : ℂ) * ToeplitzEntry P i j * (v j : ℂ)).re := by
+    classical
+    symm
+    have hterm :
+        ∀ i j : Fin M,
+          ((v i : ℂ) * ToeplitzEntry P i j * (v j : ℂ)).re =
+            v i * (ToeplitzEntry P i j).re * v j := by
+      intro i j
+      calc
+        ((v i : ℂ) * ToeplitzEntry P i j * (v j : ℂ)).re
+            = (((v i : ℂ) * ToeplitzEntry P i j) * (v j : ℂ)).re := by
+                simp [mul_assoc]
+        _ = ((v i : ℂ) * ToeplitzEntry P i j).re * v j := by
+              simpa using (Complex.re_mul_ofReal ((v i : ℂ) * ToeplitzEntry P i j) (v j))
+        _ = (v i * (ToeplitzEntry P i j).re) * v j := by
+              simpa using (Complex.re_ofReal_mul (v i) (ToeplitzEntry P i j))
+        _ = v i * (ToeplitzEntry P i j).re * v j := by
+              ring
+    calc
+      (∑ i : Fin M, ∑ j : Fin M, (v i : ℂ) * ToeplitzEntry P i j * (v j : ℂ)).re
+          = ∑ i : Fin M, ∑ j : Fin M,
+              ((v i : ℂ) * ToeplitzEntry P i j * (v j : ℂ)).re := by
+                simp [Complex.re_sum]
+      _ = ∑ i : Fin M, ∑ j : Fin M, v i * (ToeplitzEntry P i j).re * v j := by
+            refine Finset.sum_congr rfl ?_
+            intro i hi
+            refine Finset.sum_congr rfl ?_
+            intro j hj
+            exact hterm i j
+  have hRQ_base :
+      Q3.RayleighQuotient (ToeplitzMatrix_Fourier_real M P) v =
+        (∑ i : Fin M, ∑ j : Fin M, v i * (ToeplitzEntry P i j).re * v j) / (∑ i : Fin M, v i ^ 2) := by
+    classical
+    simp [Q3.RayleighQuotient, ToeplitzMatrix_Fourier_real]
+  have hRQ :
+      Q3.RayleighQuotient (ToeplitzMatrix_Fourier_real M P) v =
+        (∑ i : Fin M, ∑ j : Fin M, (v i : ℂ) * ToeplitzEntry P i j * (v j : ℂ)).re / (∑ i : Fin M, v i ^ 2) := by
+    calc
+      Q3.RayleighQuotient (ToeplitzMatrix_Fourier_real M P) v =
+          (∑ i : Fin M, ∑ j : Fin M, v i * (ToeplitzEntry P i j).re * v j) / (∑ i : Fin M, v i ^ 2) := hRQ_base
+      _ = (∑ i : Fin M, ∑ j : Fin M, (v i : ℂ) * ToeplitzEntry P i j * (v j : ℂ)).re / (∑ i : Fin M, v i ^ 2) := by
+            rw [hnum]
+  simpa [hRQ] using h
 
 end Q3.Proofs.RayleighFourier
