@@ -192,8 +192,9 @@ async def run_proof():
     # Дождаться завершения
     await project.wait_for_completion()
 
-    # Скачать solution
-    path = await project.get_solution("output.lean")
+    # Скачать solution (НЕ писать в cwd)
+    output_path = f"/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_output/{project.id}-output.lean"
+    path = await project.get_solution(output_path)
     print(f"Downloaded: {path}")
 
 # Проверить статус существующего
