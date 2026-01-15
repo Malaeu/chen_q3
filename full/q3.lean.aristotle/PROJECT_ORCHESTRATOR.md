@@ -231,6 +231,15 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
 
 ## Change Log (recent)
 
+- 2026-01-15: **weight_sum_bound PROVEN** via Aristotle — 7 parallel submissions, ALL complete!
+  - All 7 variants: 0 sorry, line counts 197-242
+  - **v1_copy1 (197 lines)** — SHORTEST, recommended
+  - Files: `aristotle_output/weight_sum_variants/v0_original.lean` through `v6_copy6.lean`
+  - Analysis: `aristotle_output/weight_sum_variants/ANALYSIS.md`
+  - **Proshka insights**: `suffices` > `have` ladders, minimal `aesop` (<2), π-free bounds more stable
+  - **New guidelines**: `aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+  - Job IDs: fb91fbb3, ee8bc919, 78a7d870, e648f487, caf3e4c0, ba71a35a, c020a6a2
+
 - 2026-01-14: **Rayleigh Lower Bound PROVEN** via Aristotle!
   Two parallel Aristotle jobs submitted:
   - V1 (pure informal): project `5990b601-ed48-442b-a4d3-5d8a18b444e3` → COMPLETE

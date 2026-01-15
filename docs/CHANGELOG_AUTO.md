@@ -264,3 +264,12 @@
 - 📄 `full/q3.lean.aristotle/aristotle_output/weight_sum_variants/ANALYSIS.md` — 11:40
 - 📄 `full/q3.lean.aristotle/aristotle_output/weight_sum_variants/PROSHKA_ANALYSIS_REQUEST.md` — 11:41
 - 📄 `CLAUDE.md` — 11:51
+- 📄 `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` — 16:42
+- 📄 `multiagent/AXIOM_LOOP_FLOW.md` — 18:11
+- 📄 `multiagent/README.md` — 18:29
+- 📄 `.claude/agents/proof-writer.md` — 19:34
+- 📄 `.claude/agents/aristotle-submitter.md` — 19:34
+- 📄 `.claude/agents/proshka-request.md` — 19:35
+- 📄 `multiagent/SUBAGENT_ARCHITECTURE.md` — 19:35
+- 📄 `.claude/agents/proshka-request.md` — 19:42
+- 📄 `multiagent/SUBAGENT_ARCHITECTURE.md` — 19:43
