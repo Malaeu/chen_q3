@@ -1,9 +1,17 @@
 /-
 Rayleigh-first A3 bridge proof (compression form).
+
+NOTE: The original A3_bridge_rayleigh_first uses sampling Toeplitz with a_star.
+      This is DEPRECATED per Proshka Analysis (a_star → -∞ at infinity).
+      The correct formulation uses Fourier Toeplitz with P_A (periodized windowed symbol).
+      See P_A_Toeplitz_bridge.lean for the correct Fourier variant.
+
+change-durch: claude-code 2026-01-16 A3_bridge_rayleigh_first Fourier note
 -/
 
 import Q3.Axioms
 import Q3.Proofs.Rayleigh_utils
+import Q3.Proofs.Rayleigh_Fourier  -- Fourier Toeplitz definitions
 
 open scoped BigOperators
 
@@ -50,5 +58,19 @@ lemma A3_bridge_rayleigh_first (K : ℝ)
       (B:=Q3.T_P_comp_real K K t_rkhs_cap M) (v:=v)
       (a:=Q3.c_star) (b:=rho_one) hT hP
   exact le_trans c_star_div_four_le_sub_rho_one hsub
+
+/-! ## Fourier Variant (CORRECT FORMULATION)
+
+The Fourier variant uses:
+- ToeplitzMatrix_Fourier_real (Fourier coefficients, not sampling)
+- P_A (periodized windowed symbol with floor c* = 11/10)
+
+This is the mathematically correct formulation. The sampling Toeplitz with a_star
+is DEPRECATED because a_star → -∞ at infinity (no floor).
+
+See Q3.Proofs.P_A_Bridge for:
+- A3_bridge_data_rayleigh_Fourier: correct definition using Fourier Toeplitz
+- A3_bridge_rayleigh_from_weight_sum_P_A: bridge from weight_sum bound
+- P_A_rayleigh_lower_bound: RQ(T_{P_A}) ≥ c* -/
 
 end Q3.Proofs

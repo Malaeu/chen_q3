@@ -563,6 +563,10 @@ lemma rkhs_cap_rayleigh_tcap (K B : ℝ) [Fintype (Q3.Nodes K)]
     RayleighQuotient_le_opNorm (A:=Q3.T_P_comp_real K B t_rkhs_cap M) (v:=v) hv
   exact le_trans hRayleigh (le_trans hnorm h_weight_sum)
 
+/-- DEPRECATED: This lemma uses sampling Toeplitz with a_star.
+    Use A3_bridge_rayleigh_from_weight_sum_P_A from P_A_Toeplitz_bridge.lean instead,
+    which uses Fourier Toeplitz with P_A (the mathematically correct formulation).
+    See docs/PROSHKA_ANALYSIS_a_star_crisis.md for details. -/
 lemma A3_bridge_rayleigh_from_weight_sum (K : ℝ)
     (h_rayleigh_lower_bound :
       ∀ {M : ℕ} {v : Fin (2 * M + 1) → ℝ}, v ≠ 0 →

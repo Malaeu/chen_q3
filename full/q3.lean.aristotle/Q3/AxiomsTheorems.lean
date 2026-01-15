@@ -20,6 +20,7 @@ import Q3.Proofs.W_sum_finite_bridge_v2
 import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 import Q3.Proofs.A1_density   -- For A1_density_WK_thm (real proof!)
 import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
+import Q3.Proofs.P_A_Toeplitz_bridge  -- Fourier Toeplitz with P_A (correct formulation)
 
 -- NOTE: These bridges CONFLICT (they import standalone proofs that define
 -- xi_n, S_K, delta_K etc. in root namespace):
@@ -128,11 +129,22 @@ theorem RKHS_contraction : ∀ (K : ℝ) (hK : K ≥ 1), Q3.RKHS_contraction_dat
 theorem A3_bridge : ∀ (K : ℝ) (hK : K ≥ 1), Q3.A3_bridge_data K :=
   Q3.A3_bridge_axiom  -- Axiom fallback
 
-/-- A3 bridge (Rayleigh-first, compression)
-    STATUS: Axiom fallback (new formulation). -/
+/-- A3 bridge (Rayleigh-first, compression) — DEPRECATED sampling Toeplitz version
+    STATUS: Axiom fallback (old formulation with sampling Toeplitz, a_star).
+    Use A3_bridge_rayleigh_Fourier instead. -/
 theorem A3_bridge_rayleigh (K : ℝ) : Q3.A3_bridge_data_rayleigh K := by
   intro hK _inst
   simpa using (Q3.A3_bridge_rayleigh_axiom K hK)
+
+/-- A3 bridge (Rayleigh-first, Fourier Toeplitz) — CORRECT formulation
+    Uses Fourier Toeplitz with P_A symbol (periodized windowed archimedean).
+    This is the mathematically correct formulation per Proshka Analysis.
+    STATUS: Proven via P_A_Toeplitz_bridge (requires weight_sum bound and K > 0). -/
+theorem A3_bridge_rayleigh_Fourier (K : ℝ) (hK : K > 0) :
+    Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K := by
+  apply Q3.Proofs.P_A_Bridge.A3_bridge_rayleigh_from_weight_sum_P_A K
+  intro _inst
+  exact Q3.Proofs.weight_sum_le_rho_one K K hK
 
 /-- Q ≥ 0 on atoms
     STATUS: Needs bridge (depends on RKHS/A3 bridges) -/
