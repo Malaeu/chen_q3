@@ -81,6 +81,14 @@ Pure informal даёт свободу ПЕРЕФОРМУЛИРОВАТЬ тео�
 
 ## A3 Bridge Mathematics
 
+### Insight: Fourier Toeplitz Rayleigh bound is now formalized
+
+**Дата:** 2026-01-15
+
+**Суть:** готова лемма `rayleigh_lower_bound_real` для Fourier-Toeplitz в
+`Q3/Proofs/Rayleigh_Fourier.lean`. Для Q3 использовать `M = 2*M'+1`, чтобы
+совпасть с симметричным окном частот.
+
 ### Insight: RKHS bound — как правильно применять
 
 **Дата:** 2026-01-14
