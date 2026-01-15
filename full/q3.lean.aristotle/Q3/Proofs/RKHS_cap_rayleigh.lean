@@ -201,6 +201,17 @@ lemma pow_inv_shift_antitone {m n : ℕ} (hm : 0 < m) (hmn : m ≤ n) :
     exact one_div_le_one_div_of_le hpos hpow
   simpa [pow_inv_shift] using hinv
 
+lemma summable_pow_inv_shift : Summable pow_inv_shift := by
+  have hsum : Summable (fun n : ℕ => 1 / (n : ℝ) ^ (10 : ℕ)) := by
+    exact (Real.summable_one_div_nat_pow (p:=10)).2 (by norm_num)
+  have hsum_shift :
+      Summable (fun n : ℕ => 1 / (n + 2 : ℝ) ^ (10 : ℕ)) := by
+    simpa [one_div, add_comm, add_left_comm, add_assoc] using
+      (summable_nat_add_iff (f:=fun n : ℕ => 1 / (n : ℝ) ^ (10 : ℕ)) 2).2 hsum
+  refine hsum_shift.congr ?_
+  intro n
+  simp [pow_inv_shift]
+
 lemma condensed_term_le_geom (k : ℕ) :
     (2 ^ k : ℝ) * pow_inv_shift (2 ^ k) ≤ (1 / (2 ^ 9 : ℝ)) ^ k := by
   have hkpos : 0 ≤ (2 ^ k : ℝ) := by positivity
@@ -367,6 +378,154 @@ lemma tsum_pow_inv_shift_le :
     tsum_condensed_term_le
   exact le_trans htsum (by
     simpa [add_assoc, add_left_comm, add_comm] using add_le_add_left hcond_le (pow_inv_shift 0))
+
+lemma exp_xi_log_eq (n : ℕ) :
+    Real.exp (-(4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2)) =
+      Real.exp (-(t_rkhs_cap * (Real.log n) ^ 2)) := by
+  have hpi : (2 * Real.pi : ℝ) ≠ 0 := by
+    exact mul_ne_zero (by norm_num) Real.pi_ne_zero
+  have hpos :
+      4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2
+        = t_rkhs_cap * (Real.log n) ^ 2 := by
+    unfold Q3.xi_n
+    field_simp [pow_two, hpi]
+    ring
+  have hneg :
+      -(4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2)
+        = -(t_rkhs_cap * (Real.log n) ^ 2) := by
+    nlinarith [hpos]
+  simpa [hneg]
+
+lemma weight_term_le_pow_inv (K B : ℝ) (hB : 0 < B) (n : Q3.Nodes K) :
+    ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖
+      ≤ (4 / Real.exp 1) * pow_inv_shift ((n : ℕ) - 2) := by
+  have hn : (n : ℕ) ≥ 2 := n.property.2
+  have hwindow_nonneg :
+      0 ≤ Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n) :=
+    Q3.fejer_heat_window_nonneg _ _ _
+  have hw_nonneg : 0 ≤ Q3.w_Q n := Q3.w_Q_nonneg n
+  have hprod_nonneg :
+      0 ≤ Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n) :=
+    mul_nonneg hw_nonneg hwindow_nonneg
+  have hnorm :
+      ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖
+        = Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n) := by
+    have hnorm' :
+        ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖ =
+          |Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)| := by
+      simp
+    simpa [abs_of_nonneg hprod_nonneg] using hnorm'
+  have hfej :
+      Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)
+        ≤ Real.exp (-4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2) := by
+    exact fejer_heat_window_le_exp B t_rkhs_cap (Q3.xi_n n) hB
+  have hexp :
+      Real.exp (-4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2)
+        ≤ 1 / (n : ℝ) ^ (10 : ℕ) := by
+    have hexp0 := exp_log_sq_le_inv_pow (n:=(n : ℕ)) hn
+    have hexp1 :
+        Real.exp (-(4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2))
+          ≤ 1 / (n : ℝ) ^ (10 : ℕ) := by
+      simpa [exp_xi_log_eq (n:=(n : ℕ))] using hexp0
+    simpa [neg_mul, mul_comm, mul_left_comm, mul_assoc] using hexp1
+  have hw : Q3.w_Q n ≤ 4 / Real.exp 1 := w_Q_le_const (n:=(n : ℕ)) hn
+  calc
+    ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖
+        = Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n) := hnorm
+    _ ≤ (4 / Real.exp 1) *
+          Real.exp (-4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2) := by
+          exact mul_le_mul hw hfej hwindow_nonneg (by positivity)
+    _ ≤ (4 / Real.exp 1) * (1 / (n : ℝ) ^ (10 : ℕ)) := by
+          exact mul_le_mul_of_nonneg_left hexp (by positivity)
+    _ = (4 / Real.exp 1) * pow_inv_shift ((n : ℕ) - 2) := by
+          have hn2 : 2 ≤ (n : ℕ) := hn
+          have hbase : (↑↑n : ℝ) - ((2 : ℕ) : ℝ) + 2 = (↑↑n : ℝ) := by
+            ring
+          rw [pow_inv_shift, Nat.cast_sub hn2, hbase]
+
+lemma weight_sum_le_rho_one (K B : ℝ) (hB : 0 < B) [Fintype (Q3.Nodes K)] :
+    ∑ n : Q3.Nodes K,
+        ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖
+      ≤ rho_one := by
+  classical
+  let idx : Q3.Nodes K → ℕ := fun n => (n : ℕ) - 2
+  have hidx_inj : Set.InjOn idx (Set.univ : Set (Q3.Nodes K)) := by
+    intro a ha b hb h
+    have ha2 : 2 ≤ (a : ℕ) := a.property.2
+    have hb2 : 2 ≤ (b : ℕ) := b.property.2
+    have h' := congrArg (fun x => x + 2) h
+    have hab : (a : ℕ) = (b : ℕ) := by
+      simpa [idx, Nat.sub_add_cancel ha2, Nat.sub_add_cancel hb2] using h'
+    exact Subtype.ext hab
+  have hterm :
+      ∀ n : Q3.Nodes K,
+        ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖
+          ≤ (4 / Real.exp 1) * pow_inv_shift (idx n) := by
+    intro n
+    simpa [idx] using weight_term_le_pow_inv (K:=K) (B:=B) hB n
+  have hsum_le :
+      ∑ n : Q3.Nodes K,
+          ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖
+        ≤ ∑ n : Q3.Nodes K, (4 / Real.exp 1) * pow_inv_shift (idx n) := by
+    refine Finset.sum_le_sum ?_
+    intro n hn
+    exact hterm n
+  have hsum_image :
+      ∑ n : Q3.Nodes K, (4 / Real.exp 1) * pow_inv_shift (idx n) =
+        Finset.sum (Finset.univ.image idx)
+          (fun m => (4 / Real.exp 1) * pow_inv_shift m) := by
+    have hidx_inj' :
+        Set.InjOn idx (↑(Finset.univ : Finset (Q3.Nodes K)) : Set (Q3.Nodes K)) := by
+      intro a ha b hb h
+      exact hidx_inj (by trivial) (by trivial) h
+    simpa using (Finset.sum_image (s:=Finset.univ)
+      (f:=fun m => (4 / Real.exp 1) * pow_inv_shift m) (g:=idx) hidx_inj').symm
+  have hsum_le_tsum :
+      Finset.sum (Finset.univ.image idx)
+          (fun m => (4 / Real.exp 1) * pow_inv_shift m) ≤
+        ∑' m : ℕ, (4 / Real.exp 1) * pow_inv_shift m := by
+    have hsum : Summable (fun m : ℕ => (4 / Real.exp 1) * pow_inv_shift m) := by
+      exact Summable.mul_left (4 / Real.exp 1) summable_pow_inv_shift
+    have hnonneg : ∀ m, 0 ≤ (4 / Real.exp 1) * pow_inv_shift m := by
+      intro m
+      exact mul_nonneg (by positivity) (pow_inv_shift_nonneg m)
+    exact Summable.sum_le_tsum (s:=Finset.univ.image idx)
+      (f:=fun m : ℕ => (4 / Real.exp 1) * pow_inv_shift m)
+      (hs:=by intro m hm; exact hnonneg m) (hf:=hsum)
+  have htsum_bound :
+      ∑' m : ℕ, (4 / Real.exp 1) * pow_inv_shift m ≤
+        (4 / Real.exp 1) * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) := by
+    have hnonneg : 0 ≤ (4 / Real.exp 1 : ℝ) := by positivity
+    calc
+      ∑' m : ℕ, (4 / Real.exp 1) * pow_inv_shift m
+          = (4 / Real.exp 1) * ∑' m : ℕ, pow_inv_shift m := by
+              simpa using (tsum_mul_left (a:=4 / Real.exp 1) (f:=pow_inv_shift))
+      _ ≤ (4 / Real.exp 1) * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) := by
+              exact mul_le_mul_of_nonneg_left tsum_pow_inv_shift_le hnonneg
+  have hconst : (4 / Real.exp 1 : ℝ) ≤ 2 := by
+    have h : (2 : ℝ) ≤ Real.exp 1 := by
+      linarith [Real.exp_one_gt_d9]
+    have hpos : 0 < Real.exp 1 := by exact Real.exp_pos 1
+    have h' : 4 ≤ 2 * Real.exp 1 := by nlinarith [h]
+    exact (div_le_iff₀ hpos).2 h'
+  have hS :
+      (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) ≤ (1 / 100 : ℝ) := by
+    norm_num [pow_inv_shift]
+  have hfinal :
+      (4 / Real.exp 1) * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ))
+        ≤ rho_one := by
+    have hnonneg :
+        0 ≤ (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) := by
+      nlinarith [pow_inv_shift_nonneg 0, pow_inv_shift_nonneg 1]
+    have hmul : (4 / Real.exp 1) *
+        (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ))
+          ≤ 2 * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) := by
+      exact mul_le_mul_of_nonneg_right hconst hnonneg
+    have hS' : 2 * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) ≤ (1 / 25 : ℝ) := by
+      nlinarith [hS]
+    simpa [rho_one] using (le_trans hmul hS')
+  exact le_trans hsum_le (by
+    simpa [hsum_image] using le_trans hsum_le_tsum (le_trans htsum_bound hfinal))
 
 lemma T_P_comp_real_opNorm_le_weight_sum (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] :
     ‖Q3.T_P_comp_real K B t M‖ ≤
