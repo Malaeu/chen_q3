@@ -5,6 +5,14 @@
 
 ---
 
+## 2026-01-15
+
+- 🔷 `full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean` — 14:45
+- 📄 `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` — 14:46
+- 📄 `full/q3.lean.aristotle/FORMALIZATION_STATS.md` — 14:46
+- 📄 `full/q3.lean.aristotle/docs/INSIGHTS.md` — 14:47
+- 📄 `full/q3.lean.aristotle/docs/A3_bridge_RAYLEIGH_FIRST.md` — 14:47
+
 
 ## 2026-01-12
 

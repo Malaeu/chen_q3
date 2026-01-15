@@ -1,6 +1,6 @@
 # Formalization Stats (Snapshot)
 
-Last updated: 2026-01-14
+Last updated: 2026-01-15
 Scope: Q3 Lean codebase (regex counts of declarations in .lean files).
 
 Notes:
@@ -14,21 +14,21 @@ Notes:
 
 | Source | Lines | Theorems | Lemmas | Defs | Total Decls |
 |--------|-------|----------|--------|------|-------------|
-| **Q3/** (core) | 17,245 | 196 | 361 | 281 | 859 |
-| **aristotle_output/** | 11,201 | 92 | 262 | 286 | 648 |
+| **Q3/** (core) | 17,851 | 196 | 385 | 283 | 864 |
+| **aristotle_output/** | 13,107 | 109 | 298 | 323 | 730 |
 | **A3_FLOOR*** | 2,901 | 14 | 74 | 22 | 110 |
-| **TOTAL** | **31,347** | **302** | **697** | **589** | **1,617** |
+| **TOTAL** | **33,859** | **319** | **757** | **628** | **1,704** |
 
 ## Δ vs previous snapshot
 
 | Source | Lines Δ | Theorems Δ | Lemmas Δ | Defs Δ | Total Decls Δ |
 |--------|---------|------------|----------|--------|----------------|
-| **Q3/** (core) | +164 | +0 | +5 | +1 | +6 |
-| **aristotle_output/** | +0 | +0 | +0 | +0 | +0 |
+| **Q3/** (core) | +606 | +0 | +24 | +2 | +5 |
+| **aristotle_output/** | +1,906 | +17 | +36 | +37 | +82 |
 | **A3_FLOOR*** | +0 | +0 | +0 | +0 | +0 |
-| **TOTAL** | +164 | +0 | +5 | +1 | +6 |
+| **TOTAL** | +2,512 | +17 | +60 | +39 | +87 |
 
-*Previous TOTAL line count was a rough estimate (~48,000); recompute gives 31,295.
+*Previous TOTAL line count was 31,347; recompute gives 33,859.
 
 ---
 
@@ -43,7 +43,7 @@ Notes:
 | sandbox_test_result.lean | 49 | `c33c6672` - sandbox test |
 | + 35 other output files | 10,491 | Various experiments |
 
-**Total Aristotle contribution: 11,201 lines (~36% of project)**
+**Total Aristotle contribution: 13,107 lines (~39% of project)**
 
 ### 📐 A3_FLOOR (Numerical Analysis)
 
@@ -98,6 +98,10 @@ Q3/Proofs/A3_bridge_v3_uniform.lean
   lines: 98 (nonempty 75), namespaces: 1
   lemma 1 | theorem 2
 
+Q3/Proofs/RKHS_cap_rayleigh.lean
+  lines: 588 (nonempty 552), namespaces: 1
+  lemma 24 | theorem 0 | def 0
+
 Q3/Proofs/Q_nonneg_bridge_v2.lean
   lines: 74 (nonempty 56), namespaces: 1
   theorem 2
@@ -107,12 +111,12 @@ Q3/Proofs/Q_nonneg_bridge_v2.lean
 
 ```
 Q3/Proofs (46 files)
-  lines: 9010 (nonempty 7737), namespaces: 39
-  lemma 225 | theorem 101 | def 149 | abbrev 1 | structure 1 | instance 1
+  lines: 9616 (nonempty 8311), namespaces: 39
+  lemma 249 | theorem 101 | def 151 | abbrev 1 | structure 1 | instance 1
 
 Q3 total (78 files)
-  lines: 17245 (nonempty 14916), namespaces: 62
-  lemma 361 | theorem 196 | def 281 | abbrev 8 | structure 8 | instance 5
+  lines: 17851 (nonempty 15490), namespaces: 62
+  lemma 385 | theorem 196 | def 283 | abbrev 8 | structure 8 | instance 5
 ```
 
 ---
@@ -124,7 +128,7 @@ Q3 total (78 files)
 | A1_density_WK | ✅ PROVEN | Aristotle + HatInterpolation |
 | Q_Lipschitz_on_W_K | ✅ PROVEN | Manual + bridges |
 | RKHS_contraction | ✅ PROVEN | Manual + rescaling |
-| A3_bridge_axiom | ❌ OPEN | Waiting for Rayleigh |
+| A3_bridge_axiom | ❌ OPEN | Rayleigh + RKHS cap proven; needs wiring |
 | Q_nonneg_on_atoms | ❌ OPEN | Depends on A3 |
 
 **Current: 5/9 Tier-2 axioms closed**

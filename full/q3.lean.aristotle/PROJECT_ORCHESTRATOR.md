@@ -1,7 +1,7 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
-Last Updated: 2026-01-14
+Last Updated: 2026-01-15
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -25,6 +25,8 @@ Single entry point: read this file at session start.
   wired in `Q3/AxiomsTheorems.lean`).
 - `A1_density_WK_thm` is proven in `Q3/Proofs/A1_density.lean` and wired in
   `Q3/T5_Transfer.lean`, so `A1_density_WK_axiom` is gone from the main chain.
+- RKHS cap is PROVEN in `Q3/Proofs/RKHS_cap_rayleigh.lean`:
+  `weight_sum_le_rho_one` + `rkhs_cap_rayleigh_tcap` with `t_rkhs_cap = 40`.
 
 ## Wiring vs Closing (definition)
 
@@ -71,16 +73,17 @@ RH_of_Weil_and_Q3
 
 ## Active Next Step (closing, not wiring)
 
-1) Close `A3_bridge_axiom` via the Toeplitz quadratic‑form lower bound
-   (Rayleigh: `λ_min ≥ min P_A`), avoiding Szegő–Böttcher.
-2) After A3 is closed, `Q_nonneg_on_atoms_of_A3_RKHS_axiom` becomes a short
-   wiring from `Q3/Proofs/Q_nonneg_bridge_v2.lean`.
+1) Wire Rayleigh + RKHS cap into `A3_bridge_data_rayleigh` in
+   `Q3/AxiomsTheorems.lean` using
+   `Q3.Proofs.A3_bridge_rayleigh_from_weight_sum`.
+2) After A3 is closed, wire `Q_nonneg_on_atoms_of_A3_RKHS_axiom` via
+   `Q3/Proofs/Q_nonneg_bridge_v2.lean`.
 
 ## Closure Tracker (remaining axioms)
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `A3_bridge_axiom` | `Q3/Proofs/A3_bridge_v3_uniform.lean` | need to wire Rayleigh + RKHS | combine `rayleigh_lower_bound` + RKHS contraction | IN PROGRESS |
+| `A3_bridge_axiom` | `Q3/Proofs/A3_bridge_v3_uniform.lean` | wire Rayleigh + RKHS cap | use `A3_bridge_rayleigh_from_weight_sum` | READY TO WIRE |
 | `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms.lean` + bridge | needs A3 closed | wire after A3 | BLOCKED |
 
 **NEW (2026-01-14)**: Rayleigh lower bound PROVEN via Aristotle!
@@ -124,7 +127,7 @@ This has ||T_P^{(M)}|| ≤ ||T_P|| (compression), so uniform t IS possible.
 **🚀 V5 (`1cac53dd`) — RAYLEIGH-FIRST (2026-01-14)**: ✅ **COMPLETE!**
 - Input: `aristotle_input/A3_bridge_RAYLEIGH_FIRST.md` (from Proshka)
 - Output: `aristotle_output/A3_bridge_rayleigh_first_v5.lean` — **120 lines, 0 sorry!**
-- **No SB, No M₀** — uses t_rkhs=1 for RKHS cap, Rayleigh for Toeplitz
+- **No SB, No M₀** — Rayleigh for Toeplitz; RKHS cap now at `t_rkhs_cap=40`
 - **T_P_comp** — rank-one sum (compression, correct definition!)
 
 **V5 proven lemmas:**
@@ -135,14 +138,16 @@ This has ||T_P^{(M)}|| ≤ ||T_P|| (compression), so uniform t IS possible.
 **Dependencies (hypotheses in V5):**
 1. `h_rayleigh_lower_bound` — from `rayleigh_v1.lean` ✅
 2. `h_floor` — from A3_FLOOR ✅
-3. `h_cap` — RKHS cap at t_rkhs=1 (need to wire)
+3. `h_cap` — **PROVEN** in `Q3/Proofs/RKHS_cap_rayleigh.lean`
+   (`weight_sum_le_rho_one`, `rkhs_cap_rayleigh_tcap`, `t_rkhs_cap=40`)
 
 **V3 SUCCESS**: `aristotle_output/A3_bridge_v3_proshka.lean`
 - Все 4 леммы доказаны
 - НО: P_A=const, T_P=0 (placeholder'ы)
 - Общие леммы (rayleigh, quadform_sub) переиспользуемы
 
-**INSIGHT**: Прошка показал что SB не нужен, RKHS cap ρ(1)<1/25<<c*/4.
+**INSIGHT**: Прошка показал что SB не нужен; RKHS cap ≤ `rho_one = 1/25`
+(в реализации с `t_rkhs_cap=40`).
 Полный скелет: `aristotle_input/A3_bridge_PROSHKA_SKELETON.md`
 
 Closed (recent):

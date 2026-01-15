@@ -38,7 +38,11 @@ So you just need:
 def c_star : ℝ := (11 : ℝ) / 10
 def c_star_quarter : ℝ := c_star / 4         -- = 11/40 = 0.275
 def rho_one : ℝ := (1 : ℝ) / 25              -- 0.04
+def t_rkhs_cap : ℝ := 40                      -- chosen for exp(-t (log n)^2) decay
 ```
+
+**Update (2026-01-15):** In Lean we use `t_rkhs_cap = 40` (not `1`) to enforce
+`exp(-t (log n)^2) ≤ n^-10`. Replace `t=1` in the sketches below with `t_rkhs_cap`.
 
 ---
 
