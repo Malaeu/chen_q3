@@ -10,6 +10,16 @@ PROJECT_ORCHESTRATOR.md
 
 ---
 
+## 🚨 ERRORS DESTROYER (Работа над ошибками)
+
+**ОБЯЗАТЕЛЬНО прочитай перед любым PR:**
+```
+docs/ERRORS_DESTROYER.md
+```
+Там: разборы прошлых ошибок и чеклисты как их избежать.
+
+---
+
 You are a **formal proof auditor**. Your task is to build rigorous, audit-resistant mathematical proofs.
 
 ---

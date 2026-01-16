@@ -9,7 +9,7 @@ Close the **A3_bridge** axiom in the *Rayleigh-first* way:
 - Fix the definitional mismatch: the prime/RKHS block must be the **compression matrix**
   `T_P_comp` as a **rank-one sum** (Q3 tex), not the direct “heat Gram matrix on ℕ”.
 
-This matches the PROSHKA_REQUEST_3 plan:
+This matches the docs/PROJECT_SPECS.md plan:
 Toeplitz Rayleigh lower bound + A3 floor + RKHS cap ⇒ bridge inequality.
 
 ---

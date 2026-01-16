@@ -56,6 +56,15 @@ See: `/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 
 ---
 
+## 🚨 ERRORS DESTROYER (Работа над ошибками)
+
+**ОБЯЗАТЕЛЬНО прочитай перед любым PR:**
+- `/full/q3.lean.aristotle/docs/ERRORS_DESTROYER.md`
+
+Там: разборы прошлых ошибок и чеклисты как их избежать.
+
+---
+
 ## Current Axiom Count: 10
 
 ```

@@ -185,7 +185,7 @@ of separate `|τ| ≤ K` and `B ≤ K`. This matches Lemma 6.4 (Fixed-t₀ cone 
 - `PROJECT_ASCII.md` - diagram (derived from this file)
 - `docs/INSIGHTS.md` - collected project insights (do not create new docs)
 - `FORMALIZATION_STATS.md` - quantitative stats snapshot
-- `PROSHKA_REQUEST_3.md` - spec/invariants for Proshka check (Rayleigh plan)
+- `docs/PROJECT_SPECS.md` - spec/invariants for Proshka check (Rayleigh plan)
 - `PROOF_MAP_NEW_KERNEL.md` + `A3_FLOOR_ROADMAP.md` - A3_FLOOR status
 - `Q3/Axioms.lean` and `Q3/AxiomsTheorems.lean` - axioms and wiring
 - `Q3/Proofs/Q_Lipschitz.lean` - real proof of Q_Lipschitz
@@ -297,7 +297,7 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
   updated workflow docs to use CLI/Python API, submitted
   `aristotle_input/A1_density_hat_full_v1.md` (project `9dda8778-857e-42cf-a669-aad1a2e04d5b`).
 
-- 2026-01-14: Updated `PROSHKA_REQUEST_3.md` to the Rayleigh plan (no SB as blocker);
+- 2026-01-14: Updated `docs/PROJECT_SPECS.md` to the Rayleigh plan (no SB as blocker);
   added Aristotle input drafts `aristotle_input/A1_density_hat_full_v1.md` and
   `aristotle_input/A1_density_hat_only_v1.md`.
 

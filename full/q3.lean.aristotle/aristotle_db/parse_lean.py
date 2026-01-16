@@ -229,8 +229,8 @@ def import_lean_file(file_path: Path, doc_id: str, approach: str, priority: str,
     return len(declarations)
 
 
-def import_specs_from_proshka(file_path: Path):
-    """Import specs from PROSHKA_REQUEST_3.md."""
+def import_specs_from_project_specs(file_path: Path):
+    """Import specs from docs/PROJECT_SPECS.md."""
     conn = get_connection()
 
     # First insert as doc
@@ -239,7 +239,7 @@ def import_specs_from_proshka(file_path: Path):
     stat = file_path.stat()
 
     insert_doc(
-        conn, 'PROSHKA_REQUEST_3', str(file_path), 'NEW_KERNEL', 'HIGH',
+        conn, 'PROJECT_SPECS', str(file_path), 'NEW_KERNEL', 'HIGH',
         'proven', None, 'spec', None, lines, stat.st_size
     )
 
@@ -303,7 +303,7 @@ if __name__ == '__main__':
         print("Usage: parse_lean.py <command> [args]")
         print("Commands:")
         print("  import <file.lean> <doc_id> <approach> <priority> [stage] [uuid]")
-        print("  import-specs <PROSHKA_REQUEST_3.md>")
+        print("  import-specs <docs/PROJECT_SPECS.md>")
         print("  list-docs")
         print("  list-lemmas [doc_id]")
         print("  list-specs")
@@ -324,7 +324,7 @@ if __name__ == '__main__':
 
     elif cmd == 'import-specs' and len(sys.argv) >= 3:
         file_path = Path(sys.argv[2])
-        count = import_specs_from_proshka(file_path)
+        count = import_specs_from_project_specs(file_path)
         print(f"Imported {count} specs from {file_path}")
 
     elif cmd == 'list-docs':

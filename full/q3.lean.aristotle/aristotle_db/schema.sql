@@ -4,7 +4,7 @@
 
 -- Таблица документов (файлов)
 CREATE TABLE IF NOT EXISTS docs (
-    doc_id TEXT PRIMARY KEY,       -- e.g. "A3_FLOOR_v3", "PROSHKA_REQUEST_3"
+    doc_id TEXT PRIMARY KEY,       -- e.g. "A3_FLOOR_v3", "PROJECT_SPECS"
     path TEXT NOT NULL,            -- full path to file
     approach TEXT NOT NULL,        -- NEW_KERNEL | OLD_RKHS
     priority TEXT NOT NULL,        -- HIGH | MEDIUM | LOW | DEPRECATED
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS lemmas (
     FOREIGN KEY (doc_id) REFERENCES docs(doc_id)
 );
 
--- Таблица спецификаций (из PROSHKA_REQUEST_3.md)
+-- Таблица спецификаций (из docs/PROJECT_SPECS.md)
 CREATE TABLE IF NOT EXISTS specs (
     spec_id TEXT PRIMARY KEY,      -- e.g. "c_star_value"
     section TEXT NOT NULL,         -- e.g. "§3", "§7"

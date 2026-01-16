@@ -63,7 +63,7 @@ This is the full project loop; Aristotle и Прошка — ключевые и
    - Update `A3_FLOOR_ROADMAP.md` (advance the active step).
    - Update `FORMALIZATION_STATS.md` (rerun the stats script and refresh counts).
    - Update `docs/INSIGHTS.md` (reusable insights, no new docs).
-   - If specs changed, update `PROSHKA_REQUEST_3.md` and DB.
+   - If specs changed, update `docs/PROJECT_SPECS.md` and DB.
 
 This loop repeats until the roadmap is complete.
 
@@ -227,7 +227,7 @@ q3.lean.aristotle/
 │   ├── A3_FLOOR_v10.md        # correct sign, real defs
 │   ├── A3_FLOOR_v11.md        # next iteration (if needed)
 │   ├── Q3_FULL_BRIDGE.md
-│   └── PROSHKA_REQUEST_3.md   # specs/invariants
+│   └── docs/PROJECT_SPECS.md   # specs/invariants
 │
 ├── aristotle_output/          # Результаты от Aristotle
 │   ├── T0_aristotle.lean
@@ -259,7 +259,7 @@ q3.lean.aristotle/
    - закрыть завершённый этап;
    - обозначить следующий активный шаг.
 
-Если меняются инварианты/спеки — обновить `PROSHKA_REQUEST_3.md`
+Если меняются инварианты/спеки — обновить `docs/PROJECT_SPECS.md`
 и заново занести спецификации в DB.
 
 ---
@@ -319,7 +319,7 @@ q3.lean.aristotle/archive/
 ```
 Stage 1:
   ├── A3_FLOOR_v3/v6/v8 (trigamma + deriv foundations)
-  └── Fix sign invariants from PROSHKA_REQUEST_3.md
+  └── Fix sign invariants from docs/PROJECT_SPECS.md
 
 Stage 2:
   ├── A3_FLOOR_v10 (deriv_digamma_eq_trigamma)
