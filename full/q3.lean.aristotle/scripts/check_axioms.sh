@@ -17,6 +17,16 @@ echo "Date: $(date)"
 echo "Directory: $PROJECT_DIR"
 echo ""
 
+# Step 0: Prebuild A3_FLOOR (ensures standalone module is available)
+echo "═══ Step 0: Prebuilding A3_FLOOR_v22_stage4_floor ═══"
+if lake build A3_FLOOR_v22_stage4_floor 2>&1 | tail -5; then
+    echo "✓ A3_FLOOR prebuild successful"
+else
+    echo "✗ A3_FLOOR prebuild FAILED"
+    exit 1
+fi
+echo ""
+
 # Step 1: Build
 echo "═══ Step 1: Building Q3.Main ═══"
 if lake build Q3.Main 2>&1 | tail -5; then
