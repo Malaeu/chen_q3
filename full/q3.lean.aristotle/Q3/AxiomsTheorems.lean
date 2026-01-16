@@ -21,6 +21,7 @@ import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 import Q3.Proofs.A1_density   -- For A1_density_WK_thm (real proof!)
 import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
 import Q3.Proofs.P_A_Toeplitz_bridge  -- Fourier Toeplitz with P_A (correct formulation)
+import Q3.Proofs.Q_nonneg_on_atoms_fourier_axiom
 
 -- NOTE: These bridges CONFLICT (they import standalone proofs that define
 -- xi_n, S_K, delta_K etc. in root namespace):
@@ -147,11 +148,12 @@ theorem A3_bridge_rayleigh_Fourier (K : ℝ) (hK : K > 0) :
   exact Q3.Proofs.weight_sum_le_rho_one K K hK
 
 /-- Q ≥ 0 on atoms
-    STATUS: Needs bridge (depends on RKHS/A3 bridges) -/
+    STATUS: Fourier A3 + RKHS => atoms positivity (axiom placeholder). -/
 theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1),
-    Q3.A3_bridge_data K → Q3.RKHS_contraction_data K →
+    Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K →
+    Q3.RKHS_contraction_data K →
     ∀ g ∈ Q3.AtomCone_K K, Q3.Q g ≥ 0 :=
-  Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom  -- Axiom fallback
+  Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom  -- Axiom fallback (Fourier variant)
 
 end Q3.Theorems
 

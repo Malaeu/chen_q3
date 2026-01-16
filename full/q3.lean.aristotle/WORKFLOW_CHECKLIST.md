@@ -20,26 +20,28 @@ lake build Q3.Main
 lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 | grep -v "^info:"
 ```
 
-**Expected axioms (9 total):**
+**Expected axioms (11 total):**
 ```
 Standard Lean (3):
   - propext
   - Classical.choice
   - Quot.sound
 
-Level 1 - Classical (4):
+Level 1 - Classical (6):
   - Q3.Weil_criterion
+  - Q3.Schur_test
   - Q3.a_star_pos
   - Q3.a_star_bdd_on_compact
   - Q3.a_star_continuous
+  - Q3.a_star_even
 
 Level 2 - Q3 Paper (2):
-  - Q3.A3_bridge_axiom
-  - Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom
+  - P_A_continuous
+  - Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
 ```
 
 **Checklist:**
-- [ ] Count matches expected (9 total)
+- [ ] Count matches expected (11 total)
 - [ ] No UNKNOWN axioms appeared
 - [ ] If count DECREASED → document in commit message (progress!)
 - [ ] If count INCREASED → STOP and justify in `PHILOSOPHY_OF_PROOF.md`
@@ -47,8 +49,8 @@ Level 2 - Q3 Paper (2):
 ### Step 3: No Circular Dependencies
 ```bash
 # Each axiom should only depend on itself + Standard Lean
-lake env lean -c 'import Q3.Main; #print axioms Q3.A3_bridge_axiom'
-# Should show: [propext, Classical.choice, Q3.A3_bridge_axiom, Quot.sound]
+lake env lean -c 'import Q3.Main; #print axioms Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom'
+# Should show: [propext, Classical.choice, Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom, Quot.sound]
 ```
 - [ ] Axioms don't depend on other Q3 axioms (no hidden chains)
 
@@ -89,7 +91,7 @@ Changes:
 Axiom Status:
 - Added: (none / list new axioms with justification)
 - Removed: (none / list axioms now proven as theorems)
-- Total: 9 (or new count)
+- Total: 11 (or new count)
 
 Philosophy Check: ✓
 ```

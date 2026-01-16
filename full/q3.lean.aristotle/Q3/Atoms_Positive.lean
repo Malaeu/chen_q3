@@ -17,6 +17,8 @@ dependencies on A3 + RKHS (instead of a standalone "atoms positivity" axiom).
 
 import Q3.Axioms
 import Q3.Proofs.Bridge
+import Q3.Proofs.P_A_Toeplitz_bridge
+import Q3.Proofs.Q_nonneg_on_atoms_fourier_axiom
 
 set_option linter.mathlibStandardSet false
 
@@ -26,8 +28,10 @@ open Q3
 
 /-! ## Bundling A3 + RKHS into Atom Positivity -/
 
-/-- A3 bridge data for `K` (just re-exported from `Q3.Axioms`). -/
-abbrev A3_bridge_data := Q3.A3_bridge_data
+/-! ## Bundling A3 + RKHS into Atom Positivity (Fourier variant) -/
+
+/-- A3 bridge data for `K` (Fourier Toeplitz with P_A). -/
+abbrev A3_bridge_data := Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier
 
 /-- RKHS contraction data for `K` (just re-exported from `Q3.Axioms`). -/
 abbrev RKHS_contraction_data := Q3.RKHS_contraction_data
@@ -38,10 +42,14 @@ From the A3 bridge axiom and the RKHS contraction bridge, we obtain
 -/
 theorem Q_nonneg_on_atoms (K : ℝ) (hK : K ≥ 1) :
     ∀ g ∈ AtomCone_K K, Q g ≥ 0 := by
-  -- Extract the bundled A3 and RKHS data from the corresponding axioms.
-  have hA3 : A3_bridge_data K := A3_bridge_axiom K hK
+  -- Build Fourier A3 bridge data from the weight-sum cap.
+  have hKpos : 0 < K := by nlinarith [hK]
+  have hA3 : A3_bridge_data K := by
+    refine Q3.Proofs.P_A_Bridge.A3_bridge_rayleigh_from_weight_sum_P_A K ?_
+    intro _inst
+    exact Q3.Proofs.weight_sum_le_rho_one K K hKpos
   have hRKHS : RKHS_contraction_data K := Q3.Bridge.RKHS_contraction_data_of_bridge K hK
-  -- Apply the core implication axiom.
-  exact Q_nonneg_on_atoms_of_A3_RKHS_axiom K hK hA3 hRKHS
+  -- Apply the Fourier A3 + RKHS positivity axiom.
+  exact Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom K hK hA3 hRKHS
 
 end Q3.Atoms

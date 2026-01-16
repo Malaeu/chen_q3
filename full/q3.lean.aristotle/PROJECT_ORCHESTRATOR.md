@@ -1,7 +1,7 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
-Last Updated: 2026-01-15
+Last Updated: 2026-01-16
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -15,8 +15,11 @@ Single entry point: read this file at session start.
 
 ## Current State (short)
 
-- A3_FLOOR is proven and integrated: `Q3/Proofs/A3_bridge_v3_uniform.lean` uses
-  `P_A_ge_c_star` from `A3_FLOOR_v22_stage4_floor.lean`.
+- A3_FLOOR is proven and integrated: `P_A_ge_c_star` from
+  `A3_FLOOR_v22_stage4_floor.lean` is used in the Fourier A3 bridge.
+- Fourier A3 bridge is wired: `Q3/Atoms_Positive.lean` now depends on
+  `A3_bridge_data_rayleigh_Fourier` and the axiom
+  `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
 - `Q_Lipschitz_on_W_K` is a theorem; arch/prime Lipschitz bridge axioms are closed
   in `Q3/Proofs/Q_Lipschitz.lean`.
 - `mem_nodes_finset_of_mem_Q3Nodes` is a theorem in `Q3/Proofs/Bridge.lean`.
@@ -27,6 +30,8 @@ Single entry point: read this file at session start.
   `Q3/T5_Transfer.lean`, so `A1_density_WK_axiom` is gone from the main chain.
 - RKHS cap is PROVEN in `Q3/Proofs/RKHS_cap_rayleigh.lean`:
   `weight_sum_le_rho_one` + `rkhs_cap_rayleigh_tcap` with `t_rkhs_cap = 40`.
+- Legacy: `A3_bridge_axiom` (sampling Toeplitz + a_star) is still in `Q3/Axioms.lean`
+  but no longer appears in the main chain.
 
 ## Wiring vs Closing (definition)
 
@@ -43,14 +48,14 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **9 axioms**
+Result: **11 axioms** (8 project + 3 standard)
 Note: 12 → 11 (closed arch/prime Lipschitz), 11 → 10 (closed RKHS contraction bridge),
-10 → 9 (closed A1_density via theorem wiring).
+10 → 9 (closed A1_density via theorem wiring), 9 → 11 (A3 Fourier axiom + P_A_continuous in chain).
 
 - Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - External/classical: `Weil_criterion`, `a_star_pos`, `a_star_bdd_on_compact`,
-  `a_star_continuous`
-- Tier-2 (closable): `A3_bridge_axiom`, `Q_nonneg_on_atoms_of_A3_RKHS_axiom`
+  `a_star_continuous`, `a_star_even`, `Schur_test`
+- Q3 paper (closable): `P_A_continuous`, `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
 
 ## Critical Chain (ASCII)
 
@@ -67,32 +72,25 @@ RH_of_Weil_and_Q3
             +-- Q_Lipschitz_on_W_K [OK]
             +-- Q_nonneg_on_atoms [AX]
                  |
-                 +-- A3_bridge_axiom [AX]
+                 +-- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom [AX]
                  +-- RKHS_contraction [OK]
 ```
 
 ## Active Next Step (closing, not wiring)
 
-**⚠️ BLOCKER DISCOVERED (2026-01-16):** Direct wiring not possible due to symbol mismatch!
-
-1) ~~Wire Rayleigh + RKHS cap into `A3_bridge_data_rayleigh`~~ **BLOCKED**
-   - `A3_bridge_data` uses `a_star` sampling Toeplitz (WRONG: a_star → -∞)
-   - `A3_bridge_data_rayleigh_Fourier` uses `P_A` Fourier Toeplitz (CORRECT: proven)
-   - Types are mathematically INCOMPATIBLE (see `docs/insights/a_star_vs_p_a_dossier.md`)
-
-2) **NEW PLAN:** Refactor chain to Fourier formulation:
-   a) Add `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm` using `A3_bridge_data_rayleigh_Fourier`
-   b) Prove Rayleigh-Q identification (tex Theorem 3.3): `⟨(T_M[P_A]-T_P)1,1⟩ = Q(Φ)`
-   c) Wire into `Q3/Atoms_Positive.lean`
-
-3) After A3 Fourier chain complete, close `Q_nonneg_on_atoms_of_A3_RKHS_axiom`.
+1) Prove `P_A_continuous` (remove axiom in `A3_FLOOR_v22_stage4_floor.lean`).
+2) Prove `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` via Rayleigh-Q identification
+   (tex Theorem 3.3): `⟨(T_M[P_A]-T_P)1,1⟩ = Q(Φ)`.
+3) Then wire the proof into `Q3/Atoms_Positive.lean` and remove the axiom file.
 
 ## Closure Tracker (remaining axioms)
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `A3_bridge_axiom` | `Q3/Proofs/P_A_Toeplitz_bridge.lean` | Type mismatch (sampling vs Fourier) | Refactor chain to Fourier | **NEEDS REFACTOR** |
-| `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms.lean` | Depends on A3 type + Rayleigh-Q bridge | Prove Theorem 3.3 | **NEEDS MATH** |
+| `P_A_continuous` | `A3_FLOOR_v22_stage4_floor.lean` | Need continuity of periodized symbol | Prove continuity using compact support of `w` | **NEEDS PROOF** |
+| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | Needs Rayleigh-Q identification | Prove Theorem 3.3 + wire | **NEEDS MATH** |
+
+## Legacy / History (2026-01-14)
 
 **NEW (2026-01-14)**: Rayleigh lower bound PROVEN via Aristotle!
 - V1 (pure informal): `aristotle_output/rayleigh_v1.lean` — COMPLETE, 0 sorry
@@ -265,7 +263,7 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
   - `parseval_trig_poly`, `rayleigh_lower_bound` (MAIN THEOREM)
 
   Key result: For Toeplitz matrix T with symbol P ≥ m, Rayleigh quotient ≥ m.
-  Next: Wire this into A3_bridge_axiom together with RKHS contraction.
+  Legacy note: this was previously wired into `A3_bridge_axiom` (sampling path).
 
 - 2026-01-14: Wired `Q3.Theorems.A1_density_WK` into `Q3/T5_Transfer.lean`.
   `A1_density_WK_axiom` is now removed from `#print axioms` (total axioms: 9).

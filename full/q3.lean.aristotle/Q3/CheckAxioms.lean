@@ -21,9 +21,9 @@ Used in CI to ensure no undocumented axioms sneak in.
 The "nuclear bomb" axiom Q_nonneg_on_W_K_axiom has been decomposed into:
 - A1_density_WK_axiom: atoms dense in W_K
 - Q_Lipschitz_on_W_K: Q is Lipschitz on W_K
-- A3_bridge_axiom: Toeplitz-symbol bridge (spectral gap)
+- A3 bridge via Fourier Toeplitz + P_A (A3_FLOOR)
 - RKHS_contraction_axiom: prime operator contraction
-- Q_nonneg_on_atoms_of_A3_RKHS_axiom: core (A3+RKHS) ⇒ atoms positivity
+- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom: core (A3+RKHS) ⇒ atoms positivity
 
 And:
 - `Q3.Atoms.Q_nonneg_on_atoms` is a THEOREM deriving atom positivity from A3+RKHS.
@@ -56,11 +56,8 @@ open Q3.Main
 #check Q3.T_P_row_sum_bound_axiom
 #check Q3.S_K_small_axiom
 
--- A3 Bridge
-#check Q3.A3_bridge_axiom
-
 -- Atoms (NEW - replaces Q_nonneg_on_W_K_axiom)
-#check Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom  -- core implication A3+RKHS ⇒ atoms positivity
+#check Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom  -- core implication A3+RKHS ⇒ atoms positivity
 #check Q3.Atoms.Q_nonneg_on_atoms             -- THEOREM: Q ≥ 0 on AtomCone_K
 
 /-! ## Verify T5 is a THEOREM (not axiom!) -/
@@ -88,12 +85,12 @@ open Q3.Main
 ### Tier-2 Q3 Paper Axioms:
 - `Q3.A1_density_WK_axiom` : Atoms dense in W_K
 - `Q3.Q_Lipschitz_on_W_K` : Q is Lipschitz
-- `Q3.A3_bridge_axiom` : Toeplitz-symbol bridge
 - `Q3.RKHS_contraction_axiom` : prime operator contraction
-- `Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom` : core implication A3+RKHS ⇒ atoms positivity
+- `Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` : core implication A3+RKHS ⇒ atoms positivity
 
-### Local Axiom:
+### Local Axioms:
 - `Q3.Main.Weil_cone_continuous` : Test functions are continuous
+- `A3_FLOOR_v22_stage4_floor.P_A_continuous` : continuity of P_A at (B_min, t_sym)
 
 ### THEOREM (not axiom!):
 - `Q3.T5.T5_transfer` : Q ≥ 0 on W_K (proven from A1 + A2 + Atoms)

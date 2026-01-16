@@ -3,6 +3,9 @@
 **Deprecated snapshot:** this file is historical and may be stale.  
 Use `PROOF_MAP_NEW_KERNEL.md` and `PROJECT_ASCII.md` for current status.
 
+**Update (2026-01-16):** Main chain now uses `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+and `P_A_continuous`; the legacy `A3_bridge_axiom` path is no longer in the main chain.
+
 **Last Verified:** 2026-01-13
 **Verified By:** Claude Opus 4.5 via `#print axioms`
 **Governance:** See [REPO_POLICY.md](REPO_POLICY.md) for 10 repository rules

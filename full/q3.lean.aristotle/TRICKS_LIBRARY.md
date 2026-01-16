@@ -23,6 +23,8 @@ Knowledge base of tactics, patterns, workarounds, and insights discovered during
 **Solution:** Cannot bridge directly. Need to refactor chain to use Fourier formulation:
 1. Use `A3_bridge_data_rayleigh_Fourier` instead of `A3_bridge_data`
 2. Prove Rayleigh-Q identification (tex Theorem 3.3)
+**Update (2026-01-16):** Fourier chain is wired in `Q3/Atoms_Positive.lean`.
+Remaining closures: `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` and `P_A_continuous`.
 **Files:**
 - `Q3/Axioms.lean:428` - old A3_bridge_data (sampling)
 - `Q3/Proofs/P_A_Toeplitz_bridge.lean:63` - new A3_bridge_data_rayleigh_Fourier (Fourier)
@@ -43,4 +45,3 @@ Knowledge base of tactics, patterns, workarounds, and insights discovered during
 1. Add type conversion lemma (if mathematically equivalent)
 2. Refactor chain to use new type (if mathematically different)
 In this case: types are mathematically different (sampling vs Fourier) → need option 2.
-

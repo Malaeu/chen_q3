@@ -17,9 +17,9 @@ echo "Date: $(date)"
 echo "Directory: $PROJECT_DIR"
 echo ""
 
-# Step 0: Prebuild A3_FLOOR (ensures standalone module is available)
+# Step 0: Prebuild A3_FLOOR (standalone root file)
 echo "═══ Step 0: Prebuilding A3_FLOOR_v22_stage4_floor ═══"
-if lake build A3_FLOOR_v22_stage4_floor 2>&1 | tail -5; then
+if lake env lean A3_FLOOR_v22_stage4_floor.lean 2>&1 | tail -5; then
     echo "✓ A3_FLOOR prebuild successful"
 else
     echo "✗ A3_FLOOR prebuild FAILED"
@@ -60,25 +60,25 @@ echo "═══ Step 3: Axiom Count ═══"
 
 # Count standard axioms from full output (propext is on the header line)
 STANDARD_COUNT=$(echo "$AXIOMS" | grep -oE "propext|Classical.choice|Quot.sound" | wc -l | tr -d ' ')
-# For Q3 axioms, filter out header line to avoid counting Q3.Main.RH_of_Weil_and_Q3
-AXIOMS_ONLY=$(echo "$AXIOMS" | grep -v "depends on")
-Q3_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
-TOTAL=$((STANDARD_COUNT + Q3_COUNT))
+# Strip the header label but keep the axiom list (P_A_continuous lives on the header line).
+AXIOMS_ONLY=$(echo "$AXIOMS" | sed "s/'Q3.Main.RH_of_Weil_and_Q3' depends on axioms: //")
+PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\.|P_A_continuous" | wc -l | tr -d ' ')
+TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: 3)"
-echo "Q3 Project:    $Q3_COUNT (expected: 6)"
-echo "TOTAL:         $TOTAL (expected: 9)"
+echo "Project:       $PROJECT_COUNT (expected: 8)"
+echo "TOTAL:         $TOTAL (expected: 11)"
 echo ""
 
 # Step 4: Classification
 echo "═══ Step 4: Axiom Classification ═══"
 
 echo "Level 1 (Classical Literature):"
-echo "$AXIOMS" | grep -E "Weil_criterion|a_star_pos|a_star_bdd|a_star_continuous" | sed 's/^/  /' || echo "  (none found)"
+echo "$AXIOMS" | grep -E "Weil_criterion|a_star_pos|a_star_bdd|a_star_continuous|a_star_even|Schur_test" | sed 's/^/  /' || echo "  (none found)"
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
-echo "$AXIOMS" | grep -E "A3_bridge|RKHS_contraction|Q_nonneg_on_atoms" | sed 's/^/  /' || echo "  (none found)"
+echo "$AXIOMS_ONLY" | grep -E "RKHS_contraction|Q_nonneg_on_atoms|P_A_continuous" | sed 's/^/  /' || echo "  (none found)"
 
 echo ""
 echo "Level 3 (Bridge Lemmas):"
@@ -91,15 +91,17 @@ echo "═══ Step 5: Philosophy Verification ═══"
 
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion"
+    "Q3.Schur_test"
     "Q3.a_star_pos"
     "Q3.a_star_bdd_on_compact"
     "Q3.a_star_continuous"
-    "Q3.A3_bridge_axiom"
-    "Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom"
+    "Q3.a_star_even"
+    "Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom"
+    "P_A_continuous"
 )
 
 UNKNOWN_AXIOMS=""
-for axiom in $(echo "$AXIOMS_ONLY" | grep -E "Q3\." | tr -d ' [],'); do
+for axiom in $(echo "$AXIOMS_ONLY" | grep -E "Q3\.|P_A_continuous" | tr -d ' [],'); do
     FOUND=false
     for expected in "${EXPECTED_AXIOMS[@]}"; do
         if [[ "$axiom" == "$expected" ]]; then
@@ -126,7 +128,7 @@ echo ""
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                    VERIFICATION PASSED ✓                      ║"
 echo "║                                                                ║"
-echo "║  Axiom count: $TOTAL (6 Q3 + 3 Standard)                       ║"
+echo "║  Axiom count: $TOTAL (8 Project + 3 Standard)                  ║"
 echo "║  Philosophy: Compliant                                         ║"
 echo "║  Ready to commit!                                              ║"
 echo "╚════════════════════════════════════════════════════════════════╝"

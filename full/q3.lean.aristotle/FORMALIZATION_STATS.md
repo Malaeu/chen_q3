@@ -128,10 +128,10 @@ Q3 total (80 files)
 | A1_density_WK | ✅ PROVEN | Aristotle + HatInterpolation |
 | Q_Lipschitz_on_W_K | ✅ PROVEN | Manual + bridges |
 | RKHS_contraction | ✅ PROVEN | Manual + rescaling |
-| A3_bridge_axiom | ❌ OPEN | Rayleigh + RKHS cap proven; needs wiring |
-| Q_nonneg_on_atoms | ❌ OPEN | Depends on A3 |
+| P_A_continuous | ❌ OPEN | A3_FLOOR_v22_stage4_floor (axiom) |
+| Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom | ❌ OPEN | Q_nonneg_on_atoms_fourier_axiom |
 
-**Current: 5/9 Tier-2 axioms closed**
+**Current: 5/7 Tier-2 axioms closed** (remaining: P_A_continuous, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom)
 
 ---
 

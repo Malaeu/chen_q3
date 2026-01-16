@@ -248,9 +248,13 @@ PY
 
 ---
 
-**Last Updated:** 2026-01-14
-**Next Action:** Close `A3_bridge_axiom` via Rayleigh bound, then wire `Q_nonneg_on_atoms`.
+**Last Updated:** 2026-01-16
+**Next Action:** Prove `P_A_continuous` and close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+via Rayleigh–Q identification (Theorem 3.3).
 **A3_FLOOR Integration:** DONE (A3_bridge_v3_uniform imports P_A_ge_c_star).
+
+**Update (2026-01-16):** Fourier A3 chain is wired in `Q3/Atoms_Positive.lean` using
+`A3_bridge_data_rayleigh_Fourier` + `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
 
 ## COMPLETED (2026-01-13)
 
