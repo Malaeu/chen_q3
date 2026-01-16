@@ -35,6 +35,15 @@ $$
 
 ---
 
+## §1.1 Contract checks (RH_Q3)
+
+- A3 symbol is `P_A` (periodized, windowed). Do not use `a_star` as A3 symbol.
+- Toeplitz in A3 uses Fourier/Rayleigh on period-1 torus; sampling `P(π(i-j)/M)` is not allowed in the main chain.
+- Prime operator in A3 is the compression/rank-one sum `T_P^{(M)}` with `w_Q`, not direct-indexed Gaussian.
+- Keep `t_sym` (symbol) and `t_rkhs` (cap) distinct; do not mix `w_Q` and `w_RKHS`.
+
+---
+
 ## §2. Tier-1 facts
 
 ### Weil criterion
@@ -151,6 +160,8 @@ By Weil criterion we obtain **RH (conditional on Tier-2)**.
 - Do NOT change the sign convention
 - Do NOT switch to $2\pi$-periodic torus
 - Do NOT claim $Q \ge 1.125$ without normalization
+- Do NOT use sampling Toeplitz `P(π(i-j)/M)` in the A3 chain
+- Do NOT mix `t_sym` with `t_rkhs` or `w_Q` with `w_RKHS`
 
 ---
 

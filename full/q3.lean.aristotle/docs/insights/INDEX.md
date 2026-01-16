@@ -18,6 +18,7 @@ Files:
 - proshka_key_resource.md
 - proven_assets_inventory_2026_01_14.md
 - rayleigh_vs_sb_optional.md
+- rh_q3_invariants_contract_2026_01_16.md
 - rkhs_cap_implementation_2026_01_15.md
 - szego_bottcher_not_needed.md
 - t_p_comp_mismatch.md
