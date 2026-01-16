@@ -2165,7 +2165,8 @@ project = Project(id="...")  # НЕ РАБОТАЕТ!
 # ✅ ПРАВИЛЬНО:
 project = await Project.from_id("project-uuid")
 projects = await Project.list_projects()  # returns tuple!
-solution = await project.get_solution()
+output_path = "/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_output/<project_id>-output.lean"
+solution = await project.get_solution(output_path)
 ```
 
 ### Структура проекта для Lean-верификации

@@ -31,8 +31,7 @@ async def check():
         pct = getattr(p, 'percent_complete', '-')
         print(f'{name:20s}: {status:15s} ({pct}%)')
         if status == 'COMPLETED':
-            sol = await p.get_solution()
-            print(f'  → Proof: {len(sol) if sol else 0} chars')
+            print('  → COMPLETED (use get_solution to download)')
 
 asyncio.run(check())
 EOF
@@ -48,10 +47,9 @@ from aristotlelib import Project
 async def get_proof(pid, name):
     p = await Project.from_id(pid)
     if p.status.name == 'COMPLETED':
-        sol = await p.get_solution()
-        with open(f'/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_output/{name}.lean', 'w') as f:
-            f.write(sol)
-        print(f'Saved {name}.lean')
+        output_path = f'/Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_output/{name}.lean'
+        path = await p.get_solution(output_path)
+        print(f'Saved {path}')
     else:
         print(f'{name}: {p.status.name}')
 
