@@ -170,6 +170,10 @@ lemma log_abs_z_le (xi : ℝ) (hxi : 0 < xi) :
     nlinarith [hbound, hconst]
   exact hbound'
 
+/- DEAD CODE: Requires non-existent `re_digamma_remainder_bound` (expects 1/12 bound).
+   Only used by `a_ge_neg_log_xi` which is also unused.
+   The working path uses `a_lower_bound_from_stieltjes` with 1/4 bound.
+
 lemma a_lower_bound_from_remainder (xi : ℝ) (hxi : 0 < xi) :
     a xi ≥
       Real.log Real.pi -
@@ -198,6 +202,7 @@ lemma a_lower_bound_from_remainder (xi : ℝ) (hxi : 0 < xi) :
       simp [a, z, sub_eq_add_neg]
     nlinarith [hdef, hle, hconst]
   simpa [z] using hmain
+-/
 
 lemma norm_z_sq (xi : ℝ) :
     ‖(1 / 4 : ℂ) + Complex.I * Real.pi * xi‖^2 =
@@ -239,6 +244,9 @@ lemma a_lower_bound_from_stieltjes (xi : ℝ) :
       simp [a, z, sub_eq_add_neg]
     nlinarith [hdef, hle, hconst]
   simpa [z] using hmain
+
+/- DEAD CODE: Uses a_lower_bound_from_remainder which depends on non-existent re_digamma_remainder_bound.
+   This lemma is never used elsewhere in the codebase.
 
 lemma a_ge_neg_log_xi (xi : ℝ) (hxi : (1 / 2 : ℝ) ≤ xi) :
     a xi ≥ -Real.log xi := by
@@ -331,6 +339,7 @@ lemma a_ge_neg_log_xi (xi : ℝ) (hxi : (1 / 2 : ℝ) ≤ xi) :
   have hfinal : a xi ≥ -Real.log xi := by
     linarith [hbound', hnonneg]
   exact hfinal
+-/
 
 lemma log_three_halves_le_421_over_960 :
     Real.log (3 / 2 : ℝ) ≤ (421 / 960 : ℝ) := by

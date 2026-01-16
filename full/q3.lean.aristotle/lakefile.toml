@@ -14,3 +14,16 @@ globs = ["Q3"]
 [[lean_lib]]
 name = "aristotle_output"
 roots = ["aristotle_output"]
+
+# A3_FLOOR standalone files in root (dependency chain: v22 → v20, v19)
+[[lean_lib]]
+name = "A3_FLOOR_v19_monotonicity"
+roots = ["A3_FLOOR_v19_monotonicity"]
+
+[[lean_lib]]
+name = "A3_FLOOR_v20_bounds_core"
+roots = ["A3_FLOOR_v20_bounds_core"]
+
+[[lean_lib]]
+name = "A3_FLOOR_v22_stage4_floor"
+roots = ["A3_FLOOR_v22_stage4_floor"]
