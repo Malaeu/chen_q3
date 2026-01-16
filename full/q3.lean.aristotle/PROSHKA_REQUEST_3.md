@@ -1,6 +1,6 @@
 # PROSHKA REQUEST v4: Rayleigh bridge + fixed-t density (BASE-SYNCED)
 
-> DEPRECATED: use `docs/PROJECT_SPECS.md`. This file is kept for archive only.
+> LEGACY / ARCHIVE: use `docs/PROJECT_SPECS.md`. Do not update this file.
 
 ---
 

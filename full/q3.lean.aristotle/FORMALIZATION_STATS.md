@@ -1,6 +1,6 @@
 # Formalization Stats (Snapshot)
 
-Last updated: 2026-01-15
+Last updated: 2026-01-16
 Scope: Q3 Lean codebase (regex counts of declarations in .lean files).
 
 Notes:
@@ -14,21 +14,21 @@ Notes:
 
 | Source | Lines | Theorems | Lemmas | Defs | Total Decls |
 |--------|-------|----------|--------|------|-------------|
-| **Q3/** (core) | 17,851 | 196 | 385 | 283 | 864 |
-| **aristotle_output/** | 13,107 | 109 | 298 | 323 | 730 |
-| **A3_FLOOR*** | 2,901 | 14 | 74 | 22 | 110 |
-| **TOTAL** | **33,859** | **319** | **757** | **628** | **1,704** |
+| **Q3/** (core) | 18,217 | 199 | 392 | 288 | 879 |
+| **aristotle_output/** | 15,326 | 113 | 356 | 369 | 838 |
+| **A3_FLOOR*** | 2,905 | 14 | 74 | 22 | 110 |
+| **TOTAL** | **36,448** | **326** | **822** | **679** | **1,827** |
 
 ## Δ vs previous snapshot
 
 | Source | Lines Δ | Theorems Δ | Lemmas Δ | Defs Δ | Total Decls Δ |
 |--------|---------|------------|----------|--------|----------------|
-| **Q3/** (core) | +606 | +0 | +24 | +2 | +5 |
-| **aristotle_output/** | +1,906 | +17 | +36 | +37 | +82 |
-| **A3_FLOOR*** | +0 | +0 | +0 | +0 | +0 |
-| **TOTAL** | +2,512 | +17 | +60 | +39 | +87 |
+| **Q3/** (core) | +366 | +3 | +7 | +5 | +15 |
+| **aristotle_output/** | +2,219 | +4 | +58 | +46 | +108 |
+| **A3_FLOOR*** | +4 | +0 | +0 | +0 | +0 |
+| **TOTAL** | +2,589 | +7 | +65 | +51 | +123 |
 
-*Previous TOTAL line count was 31,347; recompute gives 33,859.
+*Previous TOTAL line count was 33,859; recompute gives 36,448.
 
 ---
 
@@ -43,7 +43,7 @@ Notes:
 | sandbox_test_result.lean | 49 | `c33c6672` - sandbox test |
 | + 35 other output files | 10,491 | Various experiments |
 
-**Total Aristotle contribution: 13,107 lines (~39% of project)**
+**Total Aristotle contribution: 15,326 lines (~42% of project)**
 
 ### 📐 A3_FLOOR (Numerical Analysis)
 
@@ -56,7 +56,7 @@ Notes:
 | A3_FLOOR_COMBINED.lean | 333 | 10 |
 | A3_FLOOR_THEOREM.lean | 6 | 0 |
 
-**Total A3_FLOOR: 2,901 lines, 88 theorems/lemmas**
+**Total A3_FLOOR: 2,905 lines, 88 theorems/lemmas**
 *Proves: P_A(θ) ≥ c* = 11/10 ∀θ*
 
 ### 👨‍💻 Manual/Human-written (Q3/ core)
@@ -110,13 +110,13 @@ Q3/Proofs/Q_nonneg_bridge_v2.lean
 ## Aggregate Totals
 
 ```
-Q3/Proofs (46 files)
-  lines: 9616 (nonempty 8311), namespaces: 39
-  lemma 249 | theorem 101 | def 151 | abbrev 1 | structure 1 | instance 1
+Q3/Proofs (48 files)
+  lines: 9970 (nonempty 8621), namespaces: 41
+  lemma 256 | theorem 103 | def 156 | abbrev 1 | structure 1 | instance 1
 
-Q3 total (78 files)
-  lines: 17851 (nonempty 15490), namespaces: 62
-  lemma 385 | theorem 196 | def 283 | abbrev 8 | structure 8 | instance 5
+Q3 total (80 files)
+  lines: 18217 (nonempty 15811), namespaces: 64
+  lemma 392 | theorem 199 | def 288 | abbrev 8 | structure 8 | instance 5
 ```
 
 ---
