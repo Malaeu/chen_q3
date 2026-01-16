@@ -4,6 +4,7 @@ Purpose: Minimal, up-to-date context for Proshka. This pack avoids legacy docs.
 Build date: 2026-01-16
 
 ## Core contract and navigation
+- full/q3.lean.aristotle/docs/PROSHKA_ENTRYPOINT.md
 - full/q3.lean.aristotle/docs/PROJECT_SPECS.md
 - full/q3.lean.aristotle/docs/insights/rh_q3_invariants_contract_2026_01_16.md
 - full/q3.lean.aristotle/docs/INSIGHTS.md

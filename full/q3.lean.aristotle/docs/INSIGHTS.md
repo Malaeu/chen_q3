@@ -21,6 +21,7 @@
 - Докдисциплина: распухают инсайды и хаос в документах → `docs/insights/documentation_discipline.md`.
 - Реюз активов: нужно быстро понять, что уже proven → `docs/insights/proven_assets_inventory_2026_01_14.md`.
 - Константы: расхождение чисел/порогов → `docs/insights/key_constants_reference.md`.
+- Входная точка для Прошки → `docs/PROSHKA_ENTRYPOINT.md`.
 
 ---
 
