@@ -25,6 +25,12 @@
 
 ---
 
+## Tooling / Checks
+
+- check_axioms падает на A3_FLOOR: нужен предварительный build → `docs/insights/check_axioms_prebuild_a3_floor_2026_01_16.md`.
+
+---
+
 ## A3/Rayleigh: критический путь
 
 - Символы `a_star` vs `P_A`: признаки рассогласования, reverse‑engineering → `docs/insights/a3_symbol_mismatch_reverse_engineering.md`.
