@@ -1,15 +1,15 @@
 # check_axioms prebuild for A3_FLOOR
 
-### Insight: check_axioms падает, если не собран A3_FLOOR
+### Insight: check_axioms fails when A3_FLOOR is not built
 
-Проблема:
-- `./scripts/check_axioms.sh` может упасть на `Q3/Proofs/P_A_Toeplitz_bridge.lean` с ошибкой
+Problem:
+- `./scripts/check_axioms.sh` can fail at `Q3/Proofs/P_A_Toeplitz_bridge.lean` with
   `unknown module prefix 'A3_FLOOR_v22_stage4_floor'`.
 
-Как детектить:
-- В логе `check_axioms` виден модуль `A3_FLOOR_v22_stage4_floor` как неизвестный.
+How to detect:
+- The check_axioms log shows the missing module error above.
 
-Фикс:
-- Перед проверкой собрать модуль:
+Fix:
+- Prebuild the module before running checks:
   `lake build A3_FLOOR_v22_stage4_floor`
-- Шаг добавлен в `scripts/check_axioms.sh`.
+- This step is included in `scripts/check_axioms.sh`.
