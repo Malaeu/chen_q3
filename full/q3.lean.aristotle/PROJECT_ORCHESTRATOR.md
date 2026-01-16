@@ -73,18 +73,26 @@ RH_of_Weil_and_Q3
 
 ## Active Next Step (closing, not wiring)
 
-1) Wire Rayleigh + RKHS cap into `A3_bridge_data_rayleigh` in
-   `Q3/AxiomsTheorems.lean` using
-   `Q3.Proofs.A3_bridge_rayleigh_from_weight_sum`.
-2) After A3 is closed, wire `Q_nonneg_on_atoms_of_A3_RKHS_axiom` via
-   `Q3/Proofs/Q_nonneg_bridge_v2.lean`.
+**⚠️ BLOCKER DISCOVERED (2026-01-16):** Direct wiring not possible due to symbol mismatch!
+
+1) ~~Wire Rayleigh + RKHS cap into `A3_bridge_data_rayleigh`~~ **BLOCKED**
+   - `A3_bridge_data` uses `a_star` sampling Toeplitz (WRONG: a_star → -∞)
+   - `A3_bridge_data_rayleigh_Fourier` uses `P_A` Fourier Toeplitz (CORRECT: proven)
+   - Types are mathematically INCOMPATIBLE (see `docs/insights/a_star_vs_p_a_dossier.md`)
+
+2) **NEW PLAN:** Refactor chain to Fourier formulation:
+   a) Add `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm` using `A3_bridge_data_rayleigh_Fourier`
+   b) Prove Rayleigh-Q identification (tex Theorem 3.3): `⟨(T_M[P_A]-T_P)1,1⟩ = Q(Φ)`
+   c) Wire into `Q3/Atoms_Positive.lean`
+
+3) After A3 Fourier chain complete, close `Q_nonneg_on_atoms_of_A3_RKHS_axiom`.
 
 ## Closure Tracker (remaining axioms)
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `A3_bridge_axiom` | `Q3/Proofs/A3_bridge_v3_uniform.lean` | wire Rayleigh + RKHS cap | use `A3_bridge_rayleigh_from_weight_sum` | READY TO WIRE |
-| `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms.lean` + bridge | needs A3 closed | wire after A3 | BLOCKED |
+| `A3_bridge_axiom` | `Q3/Proofs/P_A_Toeplitz_bridge.lean` | Type mismatch (sampling vs Fourier) | Refactor chain to Fourier | **NEEDS REFACTOR** |
+| `Q_nonneg_on_atoms_of_A3_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms.lean` | Depends on A3 type + Rayleigh-Q bridge | Prove Theorem 3.3 | **NEEDS MATH** |
 
 **NEW (2026-01-14)**: Rayleigh lower bound PROVEN via Aristotle!
 - V1 (pure informal): `aristotle_output/rayleigh_v1.lean` — COMPLETE, 0 sorry
@@ -230,6 +238,13 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
 ```
 
 ## Change Log (recent)
+
+- 2026-01-16: **BLOCKER DISCOVERED** — A3_bridge closure blocked by symbol mismatch!
+  - `A3_bridge_data` uses sampling Toeplitz with `a_star` (mathematically WRONG: a_star → -∞)
+  - `A3_bridge_data_rayleigh_Fourier` uses Fourier Toeplitz with `P_A` (CORRECT and PROVEN)
+  - Types are mathematically incompatible — cannot bridge directly
+  - **NEW PLAN:** Refactor chain to Fourier formulation + prove Rayleigh-Q identification (Theorem 3.3)
+  - See: `TRICKS_LIBRARY.md`, `docs/insights/a_star_vs_p_a_dossier.md`
 
 - 2026-01-15: **weight_sum_bound PROVEN** via Aristotle — 7 parallel submissions, ALL complete!
   - All 7 variants: 0 sorry, line counts 197-242
