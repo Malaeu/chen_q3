@@ -29,16 +29,11 @@ namespace Q3.Proofs.P_A_Bridge
 
 open Q3.Proofs  -- access t_rkhs_cap, rkhs_cap_rayleigh_tcap, RayleighQuotient_sub_ge, etc.
 
-/-- P_A is the periodized windowed archimedean symbol.
-    P_A(B,t,θ) = 2π Σ_{m∈ℤ} g(B,t,θ+m) where g = a · w (Fejér×heat window).
+/- P_A is the periodized windowed archimedean symbol.
+   P_A(B,t,θ) = 2π Σ_{m∈ℤ} g(B,t,θ+m) where g = a · w (Fejér×heat window).
 
-    Continuity follows from:
-    1. w(B,t,·) has compact support in [-B, B]
-    2. a(·) is continuous (digamma away from poles)
-    3. The sum is effectively finite (only |m| ≤ B + 1/2 contribute)
-    4. Finite sum of continuous functions is continuous
--/
-axiom P_A_continuous : Continuous (P_A B_min t_sym)
+   Continuity is currently assumed in `A3_FLOOR_v22_stage4_floor` as
+   `P_A_continuous`. -/
 
 /-- Bridge lemma: Apply Rayleigh lower bound to P_A.
     Uses P_A_ge_c_star from A3_FLOOR and rayleigh_lower_bound_real from Rayleigh_Fourier. -/

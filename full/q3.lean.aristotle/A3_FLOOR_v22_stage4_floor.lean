@@ -18,6 +18,10 @@ def g (B t ξ : ℝ) : ℝ := Q3.a ξ * w B t ξ
 def P_A (B t θ : ℝ) : ℝ :=
   2 * Real.pi * ∑' (m : ℤ), g B t (θ + m)
 
+/-- Assumption: continuity of the periodized symbol at the A3_FLOOR parameters.
+    TODO: replace with a proof using continuity of `Q3.a` and compact support of `w`. -/
+axiom P_A_continuous : Continuous (P_A B_min t_sym)
+
 lemma a_antitone_on_Ioi : AntitoneOn Q3.a (Set.Ioi 0) := by
   intro x hx y hy hxy
   by_cases hxy' : x = y
