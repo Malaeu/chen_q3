@@ -12,6 +12,7 @@ Files:
 - breakthrough_proshka_full_proof_2026_01_14.md
 - check_axioms_prebuild_a3_floor_2026_01_16.md
 - documentation_discipline.md
+- drift_report_m1_m4.md
 - file_organization_aristotle.md
 - h_cap_numerical_estimates_2026_01_14.md
 - heat_parameter_mismatch_2026_01_14.md
