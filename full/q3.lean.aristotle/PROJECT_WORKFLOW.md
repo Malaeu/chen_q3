@@ -57,6 +57,7 @@ This is the full project loop; Aristotle и Прошка — ключевые и
 5. When a lemma is closed:
    - Check the lemma file in Lean (`lake env lean <file>`).
    - Integrate into the main Lean project and recheck compile.
+   - Run `./scripts/check_axioms.sh` (includes the docs link check).
 6. Record the result:
    - Re-import into DB (`aristotle_db/parse_lean.py`).
    - Update `PROOF_MAP_NEW_KERNEL.md` (status + file link).

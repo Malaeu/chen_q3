@@ -27,6 +27,16 @@ else
 fi
 echo ""
 
+# Step 0.5: Docs link check
+echo "═══ Step 0.5: Docs link check ═══"
+if python3 scripts/check_links.py; then
+    echo "✓ Link check successful"
+else
+    echo "✗ Link check FAILED"
+    exit 1
+fi
+echo ""
+
 # Step 1: Build
 echo "═══ Step 1: Building Q3.Main ═══"
 if lake build Q3.Main 2>&1 | tail -5; then
