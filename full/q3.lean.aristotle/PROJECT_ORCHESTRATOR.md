@@ -87,8 +87,30 @@ RH_of_Weil_and_Q3
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `P_A_continuous` | `A3_FLOOR_v22_stage4_floor.lean` | Need continuity of periodized symbol | Prove continuity using compact support of `w` | **NEEDS PROOF** |
-| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | Needs Rayleigh-Q identification | Prove Theorem 3.3 + wire | **NEEDS MATH** |
+| `P_A_continuous` | `A3_FLOOR_v22_stage4_floor.lean` | tsum continuity | **Aristotle: b2145057 (QUEUED)** | **ARISTOTLE** |
+| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | Rayleigh-Q identification | See `Rayleigh_Q_identification.lean` | **IN PROGRESS** |
+
+## Progress Log (2026-01-16)
+
+**P_A_continuous**:
+- Submitted to Aristotle (project b2145057-c737-403d-b532-c79454c9cf69)
+- Current code has `sorry` pending proof
+- Key insight: P_A is locally a finite sum due to compact support of w
+
+**Q_nonneg_on_atoms (Rayleigh-Q identification)**:
+- Created `Q3/Proofs/Rayleigh_Q_identification.lean` with:
+  - `basis0`, `i0` definitions (constant-1 vector)
+  - `basis0_norm_sq`, `basis0_ne_zero` (PROVEN)
+  - `quadForm_basis0`, `rayleigh_basis0` (PROVEN)
+  - `ToeplitzEntry_diag`, `ToeplitzEntry_diag_re` (PROVEN)
+  - `ToeplitzMatrix_Fourier_real_diag` (PROVEN)
+  - `fourier_index_i0`, `prime_vec_i0` (PROVEN)
+  - `T_P_comp_real_diag` (sorry - algebraic)
+- Remaining: periodization integral = arch_term, final assembly
+
+**Aristotle projects (all QUEUED)**:
+- b2145057 (P_A_continuous)
+- 200eb072, 5e36515f, e9f53e97, eeca690a (Rayleigh sandbox variants)
 
 ## Legacy / History (2026-01-14)
 
