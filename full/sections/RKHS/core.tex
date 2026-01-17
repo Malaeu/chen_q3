@@ -59,10 +59,12 @@ These statements provide the structural ingredients cited in Assumption~(A3.1) a
 \begin{lemma}[Rayleigh sampling identification]\label{lem:rkhs-rayleigh-sampling-id}
 For any Fej\'er$\times$heat window $\Phi$ with Dirichlet sampling polynomial $p(\theta)=\sum_{k\in\ZZ}\widehat\Phi(k)e^{2\pi i k\theta}$, one has
 \[
-  \big\langle (T_M[P_A]-T_P)p,\,p\big\rangle_{L^2(\TT)}
+  \big\langle T_M[P_A]\,p,\,p\big\rangle_{L^2(\TT)}
+  \;-\; (2M+1)\big\langle T_P^{(M)}\,p,\,p\big\rangle_{L^2(\TT)}
   \;=\; Q(\Phi)
 \]
-whenever $M$ is large enough that the Dirichlet coefficients of $\Phi$ lie in the span $\{|k_\tau\rangle\}$. In particular the operator inequality for $T_M[P_A]-T_P$ transfers directly to the Weil functional $Q$.
+whenever $M$ is large enough that the Dirichlet coefficients of $\Phi$ lie in the span $\{|k_\tau\rangle\}$. In particular, any estimate on the two quadratic forms
+$\langle T_M[P_A]p,p\rangle$ and $\langle T_P^{(M)}p,p\rangle$ transfers directly to $Q(\Phi)$ via the displayed identity.
 \end{lemma}
 
 \begin{remark}[Finite support and the threshold $M$]
