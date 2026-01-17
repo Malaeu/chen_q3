@@ -15,8 +15,8 @@ Tier-2 Theorems (9 total):
 1. node_spacing - FULLY PROVEN
 2. S_K_small - FULLY PROVEN
 3. W_sum_finite - FULLY PROVEN
-4. off_diag_exp_sum - clean chain (sorry)
-5. RKHS_contraction - clean chain (sorry)
+4. off_diag_exp_sum - clean chain (closed)
+5. RKHS_contraction - clean chain (closed)
 6. Q_Lipschitz - clean chain (closed)
 7. A3_bridge - clean chain (sorry)
 8. Q_nonneg_on_atoms - clean chain (sorry)
