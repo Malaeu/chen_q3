@@ -6,6 +6,7 @@ Files:
 
 - a3_bridge_math_rkhs_bound.md
 - a3_fourier_atoms_axiom_2026_01_16.md
+- carleson_implicit_proof_2026_01_17.md *(NEW)*
 - a3_symbol_mismatch_reverse_engineering.md
 - a_star_vs_p_a_dossier.md
 - aristotle_error_recovery.md
@@ -18,9 +19,14 @@ Files:
 - h_cap_numerical_estimates_2026_01_14.md
 - heat_parameter_mismatch_2026_01_14.md
 - key_constants_reference.md
+- heat_localization_kills_primes_2026_01_16.md
+- localization_argument_full_analysis_2026_01_16.md
+- prime_term_nodes_bridge_2026_01_17.md *(NEW)*
 - proshka_key_resource.md
 - proven_assets_inventory_2026_01_14.md
+- rayleigh_q_identification_2026_01_17.md *(NEW)*
 - rayleigh_vs_sb_optional.md
+- rescaled_density_lemma_variants_2026_01_16.md
 - rh_q3_invariants_contract_2026_01_16.md
 - rkhs_cap_implementation_2026_01_15.md
 - szego_bottcher_not_needed.md

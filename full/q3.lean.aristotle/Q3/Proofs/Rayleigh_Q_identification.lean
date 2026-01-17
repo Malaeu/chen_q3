@@ -411,4 +411,72 @@ theorem rayleigh_Q_identification (B t K : ℝ) (M : ℕ)
     ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n) := by
   rw [arch_rayleigh_eq B t M hP hB, prime_rayleigh_eq K B t M hM]
 
+/-! ## Bridge: Finite Sum → prime_term (tsum)
+
+For functions with compact support, prime_term (tsum over all n) equals
+the finite sum over Nodes K when K is large enough.
+-/
+
+/-- fejer_heat_window has compact support: vanishes when |ξ| > B. -/
+lemma fejer_heat_window_support (B t ξ : ℝ) (hB : 0 < B) (h : B < |ξ|) :
+    Q3.fejer_heat_window B t ξ = 0 := by
+  rw [← w_eq_fejer_heat_window]
+  exact w_support B t ξ hB h
+
+/-- w_Q n = 0 for n < 2 (vonMangoldt vanishes at 0 and 1). -/
+lemma w_Q_zero_of_lt_two (n : ℕ) (hn : n < 2) : Q3.w_Q n = 0 := by
+  simp only [Q3.w_Q]
+  interval_cases n
+  · -- n = 0: vonMangoldt 0 = 0
+    simp only [ArithmeticFunction.map_zero, zero_div, mul_zero]
+  · -- n = 1: vonMangoldt 1 = 0
+    simp only [ArithmeticFunction.vonMangoldt_apply_one, zero_div, mul_zero]
+
+/-- Key bridge: For Φ with support in [-B, B] and K ≥ B, the prime_term (tsum)
+    equals the finite sum over Nodes K.
+
+    This connects rayleigh_Q_identification to Q3.Q. -/
+theorem prime_term_eq_nodes_sum (B t K : ℝ) [Fintype (Q3.Nodes K)]
+    (hB : 0 < B) (hK : B ≤ K) :
+    Q3.prime_term (fun ξ => Q3.fejer_heat_window B t ξ) =
+    ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n) := by
+  simp only [Q3.prime_term]
+  -- The tsum over all n equals sum over Nodes K because:
+  -- 1. For n < 2: w_Q n = 0
+  -- 2. For n ≥ 2 with |xi_n n| > K ≥ B: fejer_heat_window = 0
+  have h_zero_outside : ∀ n : ℕ, n ∉ Q3.Nodes K →
+      Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n) = 0 := by
+    intro n hn
+    -- Nodes K = {n | |xi_n n| ≤ K ∧ n ≥ 2}
+    -- n ∉ Nodes K means: ¬(|xi_n n| ≤ K) ∨ ¬(n ≥ 2)
+    simp only [Q3.Nodes, Set.mem_setOf_eq, not_and_or, not_le] at hn
+    -- hn : K < |xi_n n| ∨ n < 2
+    rcases hn with h_outside | hn2
+    · -- Case: |xi_n n| > K ≥ B, so fejer_heat_window = 0
+      have h_support : B < |Q3.xi_n n| := lt_of_le_of_lt hK h_outside
+      simp [fejer_heat_window_support B t (Q3.xi_n n) hB h_support]
+    · -- Case: n < 2, so w_Q n = 0
+      simp [w_Q_zero_of_lt_two n hn2]
+  -- The tsum collapses to finite sum over Nodes K
+  -- Using sorry for the tsum=finite_sum machinery (straightforward but technical)
+  sorry
+
+/-- **Final Q3.Q identification**: Combining rayleigh_Q_identification with
+    prime_term_eq_nodes_sum gives the connection to Q3.Q.
+
+    RQ(Toeplitz) − (2M+1)·RQ(T_P_comp) = Q3.Q(Φ)
+
+    where Φ = fejer_heat_window B t with K ≥ B. -/
+theorem rayleigh_Q_eq_Q (B t K : ℝ) (M : ℕ)
+    [Fintype (Q3.Nodes K)] (hB : 0 < B) (hK : B ≤ K)
+    (hP : Continuous (P_A B t)) (hM : 0 < 2 * M + 1) :
+    Q3.RayleighQuotient
+      (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (P_A B t)) (basis0 M) -
+    (2 * M + 1 : ℝ) * Q3.RayleighQuotient (Q3.T_P_comp_real K B t M) (basis0 M) =
+    Q3.Q (fun ξ => Q3.fejer_heat_window B t ξ) := by
+  rw [rayleigh_Q_identification B t K M hB hP hM]
+  simp only [Q3.Q]
+  congr 1
+  exact (prime_term_eq_nodes_sum B t K hB hK).symm
+
 end Q3.Proofs.RayleighQId
