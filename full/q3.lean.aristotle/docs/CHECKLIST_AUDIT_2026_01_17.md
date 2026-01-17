@@ -88,8 +88,6 @@ Guard script: `full/q3.lean.aristotle/scripts/check_audit_invariants.sh`
 - Status: OK
 
 ## Open issues captured for follow-up
-- `Q3/Proofs/Q_Lipschitz_bridge_v2.lean` (sorry)
-- `Q3/Proofs/RKHS_contraction_bridge_v2.lean` (sorry)
 - `Q3/Proofs/Rayleigh_Q_identification.lean:integral_P_A_eq_arch_term` (timeout)
 
 ## 9. Addendum: normalization and chain guardrails (Jan 17 checklist)
