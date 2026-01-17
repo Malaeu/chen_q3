@@ -17,6 +17,8 @@ if [ ! -d "$SANDBOX_DIR" ]; then
     exit 0
 fi
 
+# Note: rm -rf safely removes symlinks without affecting target
+# (shared .lake cache in main repo stays intact)
 echo "Deleting sandbox: $SANDBOX_DIR"
 rm -rf "$SANDBOX_DIR"
-echo "Done."
+echo "Done. (shared Lake cache preserved)"

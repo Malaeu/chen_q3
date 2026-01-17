@@ -141,6 +141,41 @@ aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.
 
 ---
 
+## 🔍 Mathlib/Codebase Search (CRITICAL!)
+
+**НЕ УГАДЫВАЙ имена лемм!** Используй Explore sub-agent:
+
+```
+Task(
+  subagent_type="Explore",
+  prompt="Search Mathlib for lemmas about [description].
+          Look in [relevant modules].
+          Find EXACT lemma names with signatures."
+)
+```
+
+**Почему это важно:**
+- Из 3 агентов только 1 догадался использовать Explore
+- Остальные гадали имена или спрашивали юзера
+- Explore agent грепает по `.elan/toolchains/` и `.lake/packages/`
+
+**Паттерн:**
+```
+WRONG: "I think it's called `intervalIntegral_add_adjacent`..."
+WRONG: exact?  (timeout на сложных goals)
+WRONG: "Can you tell me the lemma name?"
+
+RIGHT: Task(Explore, "Search Mathlib for adjacent interval lemmas...")
+       → Returns EXACT names with signatures
+```
+
+**Где искать:**
+- `~/.elan/toolchains/*/lib/lean4/library/` — Mathlib source
+- `.lake/packages/mathlib/` — downloaded deps
+- Project `Q3/` files
+
+---
+
 ## Active TODO (from Orchestrator)
 
 1. **A1_density_WK** → 1 sorry remains: `h_approx` (triangle ineq)

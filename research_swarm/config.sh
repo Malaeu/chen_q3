@@ -33,7 +33,9 @@ export USE_SHALLOW_CLONE=true
 export LINK_LAKE_CACHE=true
 
 # === Claude ===
-export BX_COMMAND="bx"  # Existing claude code alias
+# --dangerously-skip-permissions: bypass trust dialog and all permission checks
+# Use this ONLY because sandboxes are isolated clones (no risk to main repo)
+export BX_COMMAND="claude --dangerously-skip-permissions"
 
 # === Timeouts ===
 export SPAWN_TIMEOUT=30

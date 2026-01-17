@@ -74,6 +74,27 @@ ${MATH_CONTENT:-See original insight file.}
 
 ${LEAN_TRANSLATION:-No specific hints provided.}
 
+## 🔍 Finding Mathlib Lemmas (CRITICAL!)
+
+**DO NOT guess lemma names!** Use Explore sub-agent:
+
+\`\`\`
+Task(
+  subagent_type="Explore",
+  prompt="Search Mathlib for lemmas about [description].
+          Look in [relevant module paths].
+          Find EXACT lemma names with signatures."
+)
+\`\`\`
+
+The sub-agent will grep through:
+- \`~/.elan/toolchains/*/lib/lean4/library/\`
+- \`.lake/packages/mathlib/\`
+
+**WRONG:** Guessing names like "I think it's \`foo_bar\`..."
+**WRONG:** Using \`exact?\` (often timeouts)
+**RIGHT:** Task(Explore, "Search for...") → get EXACT names
+
 ## Verification Plan
 
 ${VERIFICATION_PLAN:-

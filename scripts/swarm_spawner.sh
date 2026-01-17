@@ -38,21 +38,46 @@ cat > "${WORKER_DIR}/status.json" << EOF
 }
 EOF
 
-# === Clone repository ===
+# === Clone repository (without .lake to save space) ===
 log "Creating sandbox clone..."
+LEAN_PROJECT="${PROJECT_ROOT}/full/q3.lean.aristotle"
+SANDBOX_LEAN="${SANDBOX_DIR}/repo/full/q3.lean.aristotle"
+
 if [[ "$USE_SHALLOW_CLONE" == "true" ]]; then
+    # Clone without .lake directory
     git clone --depth 1 --single-branch "${PROJECT_ROOT}" "${SANDBOX_DIR}/repo" 2>/dev/null || {
-        log "Shallow clone failed, trying full clone..."
-        cp -r "${PROJECT_ROOT}" "${SANDBOX_DIR}/repo"
+        log "Shallow clone failed, trying rsync..."
+        rsync -a --exclude='.lake' --exclude='.git/objects/pack/*.pack' "${PROJECT_ROOT}/" "${SANDBOX_DIR}/repo/"
     }
+    # Remove .lake if it was cloned
+    rm -rf "${SANDBOX_LEAN}/.lake" 2>/dev/null || true
 else
-    cp -r "${PROJECT_ROOT}" "${SANDBOX_DIR}/repo"
+    # rsync without .lake for speed
+    rsync -a --exclude='.lake' "${PROJECT_ROOT}/" "${SANDBOX_DIR}/repo/"
 fi
 
-# === Link lake cache if available ===
-if [[ "$LINK_LAKE_CACHE" == "true" && -d "${PROJECT_ROOT}/full/q3.lean.aristotle/.lake" ]]; then
-    log "Linking lake cache..."
-    ln -sf "${PROJECT_ROOT}/full/q3.lean.aristotle/.lake" "${SANDBOX_DIR}/repo/full/q3.lean.aristotle/.lake" 2>/dev/null || true
+# === Symlink Lake cache (packages + build) ===
+if [[ "$LINK_LAKE_CACHE" == "true" && -d "${LEAN_PROJECT}/.lake" ]]; then
+    log "Setting up Lake symlinks..."
+
+    mkdir -p "${SANDBOX_LEAN}/.lake"
+
+    # Symlink packages (shared, read-only effectively)
+    if [[ -d "${LEAN_PROJECT}/.lake/packages" ]]; then
+        ln -sf "${LEAN_PROJECT}/.lake/packages" "${SANDBOX_LEAN}/.lake/packages"
+        log "Linked packages -> ${LEAN_PROJECT}/.lake/packages"
+    fi
+
+    # Symlink build artifacts (shared cache - same Lean version)
+    if [[ -d "${LEAN_PROJECT}/.lake/build" ]]; then
+        ln -sf "${LEAN_PROJECT}/.lake/build" "${SANDBOX_LEAN}/.lake/build"
+        log "Linked build -> ${LEAN_PROJECT}/.lake/build"
+    fi
+
+    # Copy lakefile and manifest (small files, need local copies)
+    cp -f "${LEAN_PROJECT}/lakefile.toml" "${SANDBOX_LEAN}/" 2>/dev/null || true
+    cp -f "${LEAN_PROJECT}/lake-manifest.json" "${SANDBOX_LEAN}/" 2>/dev/null || true
+    cp -f "${LEAN_PROJECT}/lean-toolchain" "${SANDBOX_LEAN}/" 2>/dev/null || true
 fi
 
 # === Copy TASK.md to sandbox ===
@@ -75,16 +100,37 @@ log "Sandbox ready at: ${SANDBOX_DIR}/repo"
 
 # === Open terminal with Claude ===
 WORK_DIR="${SANDBOX_DIR}/repo"
+LEAN_DIR="${WORK_DIR}/full/q3.lean.aristotle"
+INITIAL_PROMPT="Read TASK.md and begin working on the task. Use Explore sub-agent for Mathlib lookups."
 
 open_warp() {
+    # Warp doesn't support AppleScript well - use clipboard + paste approach
+    local cmd="cd ${LEAN_DIR} && ${BX_COMMAND}"
+
+    # Save current clipboard, set command, paste, restore
+    echo "${cmd}" | pbcopy
     osascript << EOF
 tell application "Warp" to activate
 delay 0.5
 tell application "System Events"
     tell process "Warp"
         keystroke "t" using command down
+        delay 0.5
+        keystroke "v" using command down
         delay 0.3
-        keystroke "cd ${WORK_DIR} && ${BX_COMMAND}"
+        keystroke return
+    end tell
+end tell
+EOF
+    # Wait for claude to fully load (8 sec for safety)
+    sleep 8
+    # Send initial prompt via clipboard
+    echo "${INITIAL_PROMPT}" | pbcopy
+    osascript << EOF
+tell application "System Events"
+    tell process "Warp"
+        keystroke "v" using command down
+        delay 0.3
         keystroke return
     end tell
 end tell
@@ -98,7 +144,9 @@ tell application "iTerm"
     tell current window
         create tab with default profile
         tell current session
-            write text "cd ${WORK_DIR} && ${BX_COMMAND}"
+            write text "cd ${LEAN_DIR} && ${BX_COMMAND}"
+            delay 2
+            write text "${INITIAL_PROMPT}"
         end tell
     end tell
 end tell
