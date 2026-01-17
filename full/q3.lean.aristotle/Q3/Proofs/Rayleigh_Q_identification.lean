@@ -516,8 +516,8 @@ theorem honest_formula (B t K : ℝ) (M : ℕ)
 
     Equivalently: Q_finite(Φ) where prime_term is summed over Nodes K only.
 
-    TODO: Connect Σ_n (finite over Nodes K) to Σ_n (tsum over all primes)
-    when establishing Q ≥ 0 for atoms. -/
+    Connection to the full prime_term (tsum) is completed below via
+    `prime_term_eq_nodes_sum` and `rayleigh_Q_eq_Q`. -/
 theorem rayleigh_Q_identification (B t K : ℝ) (M : ℕ)
     [Fintype (Q3.Nodes K)] (hB : 0 < B) (hP : Continuous (P_A B t)) (hM : 0 < 2 * M + 1) :
     Q3.RayleighQuotient

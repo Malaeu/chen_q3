@@ -445,3 +445,6 @@
 - 📝 `sandboxes/measure_dom/full/sections/A2.tex` — 14:06
 - 📝 `sandboxes/measure_dom/full/sections/A3/symbol_floor.tex` — 14:07
 - 📝 `sandboxes/measure_dom/full/sections/RKHS/prime_trace_closed_form.tex` — 14:31
+- 🔧 `.claude/swarm/config.sh` — 14:46
+- 🔧 `.claude/swarm/config.sh` — 14:47
+- 📄 `sandboxes/PROBLEM.md` — 15:04

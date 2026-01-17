@@ -60,8 +60,8 @@ Guard script: `full/q3.lean.aristotle/scripts/check_audit_invariants.sh`
 - Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Rayleigh bridge notes)
 - Lean:
   - `Q3/Proofs/Rayleigh_Q_identification.lean` (scaled form fixed)
-  - `integral_P_A_eq_arch_term` still heavy/timeout
-- Status: TODO (periodization lemma needs a fast proof)
+  - `integral_P_A_eq_arch_term` proven (periodization closed)
+- Status: DONE (Rayleigh identification complete; wiring to atoms pending)
 
 ## 6. A3 uniform bridge / floor
 - Paper: `full/sections/A3/main.tex` (Theorem `thm:A3`),
@@ -88,7 +88,7 @@ Guard script: `full/q3.lean.aristotle/scripts/check_audit_invariants.sh`
 - Status: OK
 
 ## Open issues captured for follow-up
-- `Q3/Proofs/Rayleigh_Q_identification.lean:integral_P_A_eq_arch_term` (timeout)
+- (none from Rayleigh identification; wiring into atoms remains in main tracker)
 
 ## 9. Addendum: normalization and chain guardrails (Jan 17 checklist)
 - Weights (w_Q vs w_RKHS):
