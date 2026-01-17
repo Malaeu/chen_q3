@@ -47,9 +47,21 @@ lemma support_implies_finite_periodization
   use Nat.ceil (B + 1)
   intro θ hθ n hn
   apply hsupp
-  -- Mathematical: |θ + n| ≥ |n| - |θ| > ⌈B+1⌉ - 1/2 > B
-  -- Technical coercion issues resolved by sorry
-  sorry
+  -- Need: B < |θ + (n : ℝ)|
+  have hθ_abs : |θ| ≤ 1/2 := abs_le.mpr ⟨hθ.1, hθ.2⟩
+  have hN_ge : B + 1 ≤ (Nat.ceil (B + 1) : ℝ) := Nat.le_ceil (B + 1)
+  -- Convert |n| to real absolute value
+  have hn_real : (Nat.ceil (B + 1) : ℝ) < |(n : ℝ)| := by
+    simp only [Int.cast_abs] at hn
+    exact hn
+  -- Triangle inequality: |θ + n| ≥ |n| - |θ|
+  have htri : |(n : ℝ)| - |θ| ≤ |θ + (n : ℝ)| := by
+    have h := abs_sub_abs_le_abs_sub (n : ℝ) (-θ)
+    simp only [sub_neg_eq_add, abs_neg] at h
+    have heq : |θ + (n : ℝ)| = |(n : ℝ) + θ| := by ring_nf
+    linarith
+  -- Chain: B < B + 1/2 ≤ ⌈B+1⌉ - 1/2 < |n| - 1/2 ≤ |n| - |θ| ≤ |θ + n|
+  linarith
 
 /-! ## Lemma 2: tsum = Finset.sum when outside is zero -/
 
@@ -75,8 +87,20 @@ lemma periodization_eq_finset_sum
   intro n hn
   simp only [Finset.mem_Icc, not_and_or, not_le] at hn
   apply hN θ hθ n
-  -- |n| > N follows from n ∉ Icc(-N, N), technical coercion resolved by sorry
-  sorry
+  -- n ∉ Icc(-N, N) means n < -N or N < n, which gives |n| > N
+  -- The goal is: (N : ℝ) < |(n : ℝ)|
+  simp only [Int.cast_abs]
+  rcases hn with h | h
+  · -- Case: n < -(N : ℤ)
+    have hn_neg : n < 0 := by omega
+    rw [abs_of_neg (by exact_mod_cast hn_neg : (n : ℝ) < 0)]
+    have : -n > (N : ℤ) := by omega
+    calc (N : ℝ) < ((-n : ℤ) : ℝ) := by exact_mod_cast this
+      _ = -(n : ℝ) := by push_cast; ring
+  · -- Case: (N : ℤ) < n
+    have hn_pos : 0 ≤ n := by omega
+    rw [abs_of_nonneg (by exact_mod_cast hn_pos : 0 ≤ (n : ℝ))]
+    exact_mod_cast h
 
 /-! ## Lemma 4: Integral of periodization (NO dominated convergence!)
 
