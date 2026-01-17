@@ -74,6 +74,37 @@ lake build
 
 ---
 
+## 🔧 LAKEFILE: globs vs roots
+
+**ПРАВИЛО:** Для standalone `.lean` файлов в корне проекта используй `roots`, НЕ `globs`.
+
+| Параметр | Что делает | Когда использовать |
+|----------|------------|-------------------|
+| `globs` | Glob pattern для директорий | `["Q3"]` → ищет `Q3/**/*.lean` |
+| `roots` | Корневые файлы напрямую | `["MyFile"]` → ищет `MyFile.lean` |
+
+**Ошибка (НЕПРАВИЛЬНО):**
+```toml
+[[lean_lib]]
+name = "A3_FLOOR_v22"
+globs = ["A3_FLOOR_v22.lean"]  # ❌ Lake ищет ДИРЕКТОРИЮ A3_FLOOR_v22.lean/
+```
+Результат: `error: no such file or directory: A3_FLOOR_v22.lean/lean.lean`
+
+**Правильно:**
+```toml
+[[lean_lib]]
+name = "A3_FLOOR_v22"
+roots = ["A3_FLOOR_v22"]  # ✓ Lake ищет ФАЙЛ A3_FLOOR_v22.lean
+```
+
+**Почему так:**
+- `globs` интерпретирует аргумент как директорию/паттерн
+- `roots` интерпретирует как имя модуля (без `.lean`)
+- Для файлов в корне (не в поддиректории) — всегда `roots`
+
+---
+
 You are a **formal proof auditor**. Your task is to build rigorous, audit-resistant mathematical proofs.
 
 ---
