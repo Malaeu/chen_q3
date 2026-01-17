@@ -18,9 +18,72 @@ def g (B t ξ : ℝ) : ℝ := Q3.a ξ * w B t ξ
 def P_A (B t θ : ℝ) : ℝ :=
   2 * Real.pi * ∑' (m : ℤ), g B t (θ + m)
 
-/-- Assumption: continuity of the periodized symbol at the A3_FLOOR parameters.
-    TODO: replace with a proof using continuity of `Q3.a` and compact support of `w`. -/
-axiom P_A_continuous : Continuous (P_A B_min t_sym)
+/-- w is continuous in ξ for fixed B, t. -/
+lemma continuous_w (B t : ℝ) : Continuous (w B t) := by
+  unfold w; apply_rules [Continuous.mul, continuous_const]
+  · fun_prop
+  · continuity
+
+/-- Support of w is contained in [-B, B] for B > 0. -/
+lemma w_support_lemma (B t x : ℝ) (hB : 0 < B) (h : B ≤ |x|) : w B t x = 0 := by
+  exact mul_eq_zero_of_left (max_eq_left (by nlinarith [div_mul_cancel₀ (|x|) hB.ne'])) _
+
+/-- Q3.a is continuous (follows from a_star_continuous via a = a_star / (2π)). -/
+lemma continuous_a : Continuous Q3.a := by
+  have h : Continuous (fun ξ => Q3.a_star ξ / (2 * Real.pi)) := Q3.a_star_continuous.div_const _
+  convert h using 1
+  ext ξ
+  simp only [Q3.a_star]
+  field_simp
+
+/-- g is continuous in ξ for fixed B, t. -/
+lemma continuous_g (B t : ℝ) : Continuous (g B t) := continuous_a.mul (continuous_w B t)
+
+/-- B_min is positive. -/
+lemma B_min_pos : 0 < B_min := by unfold B_min; norm_num
+
+/-- P_A is continuous at the A3_FLOOR parameters.
+    Proof: The sum is locally finite since w has compact support in [-B, B]. -/
+theorem P_A_continuous : Continuous (P_A B_min t_sym) := by
+  -- For each θ, there exists N such that g B_min t_sym (θ + m) = 0 for |m| > N
+  have h_finite : ∀ θ : ℝ, ∃ N : ℕ, ∀ m : ℤ, |m| > N → g B_min t_sym (θ + m) = 0 := by
+    intro θ
+    use Nat.ceil (B_min + |θ|) + 1
+    intro m hm
+    simp [g, w, w_support_lemma] at *
+    exact Or.inr (by
+      rw [le_div_iff₀ B_min_pos]
+      cases abs_cases (θ + m) <;> cases abs_cases θ <;> cases abs_cases (m : ℝ) <;>
+        linarith [Nat.le_ceil (B_min + |θ|), show (|m| : ℝ) ≥ ⌈B_min + |θ|⌉₊ + 2 by exact_mod_cast hm])
+  -- Extended finite support for continuity at θ
+  have h_finite_ext : ∀ θ, ∃ N : ℕ, ∀ m : ℤ, |m| > N →
+      g B_min t_sym (θ + m) = 0 ∧ ∀ θ' ∈ Set.Icc (θ - 1) (θ + 1), g B_min t_sym (θ' + m) = 0 := by
+    intros θ
+    obtain ⟨N, hN⟩ := h_finite θ
+    use Nat.ceil (B_min + |θ| + 1) + N
+    intros m hm
+    have h_abs_m : |m| > B_min + |θ| + 1 :=
+      lt_of_le_of_lt (Nat.le_ceil _) (mod_cast by push_cast at *; linarith)
+    have h_abs_m' : ∀ θ' ∈ Set.Icc (θ - 1) (θ + 1), |θ' + m| > B_min := by
+      norm_num +zetaDelta at *
+      intro θ' hθ₁ hθ₂
+      cases abs_cases (θ' + m) <;> cases abs_cases (m : ℝ) <;> cases abs_cases θ <;> linarith
+    simp_all +decide [g]
+    exact ⟨hN m <| by linarith [Nat.le_ceil (B_min + |θ| + 1)],
+           fun θ' hθ₁ hθ₂ => Or.inr <| w_support_lemma B_min t_sym _ B_min_pos <| le_of_lt <| h_abs_m' θ' hθ₁ hθ₂⟩
+  -- Continuity via local finiteness
+  refine' continuous_iff_continuousAt.mpr _
+  intro θ
+  obtain ⟨N, hN⟩ := h_finite_ext θ
+  have h_sum_cont : ContinuousAt (fun θ' => ∑' m : ℤ, g B_min t_sym (θ' + m)) θ := by
+    have h_finite_sum_cont : ContinuousAt (fun θ' => ∑ m ∈ Finset.Icc (-N : ℤ) N, g B_min t_sym (θ' + m)) θ := by
+      refine' tendsto_finset_sum _ fun m hm => _
+      exact Continuous.tendsto (by exact continuous_g B_min t_sym |> Continuous.comp <| continuous_add_right _) _
+    refine' h_finite_sum_cont.congr _
+    filter_upwards [Icc_mem_nhds (show θ - 1 < θ by linarith) (show θ < θ + 1 by linarith)] with θ' hθ'
+    rw [tsum_eq_sum]
+    exact fun m hm => hN m (by contrapose! hm; exact Finset.mem_Icc.mpr ⟨by linarith [abs_le.mp hm], by linarith [abs_le.mp hm]⟩) |>.2 θ' hθ'
+  exact ContinuousAt.mul continuousAt_const h_sum_cont
 
 lemma a_antitone_on_Ioi : AntitoneOn Q3.a (Set.Ioi 0) := by
   intro x hx y hy hxy
