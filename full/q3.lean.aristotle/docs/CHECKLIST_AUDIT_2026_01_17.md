@@ -8,6 +8,7 @@ Legend:
 - Specs: internal specs pointer
 - Lean: relevant file/lemma
 - Status: OK / TODO (axiom/sorry/timeout)
+Guard script: `full/q3.lean.aristotle/scripts/check_audit_invariants.sh`
 
 ## 0. Dependency map
 - Paper: `full/sections/Weil_pack.tex` (Remark `rem:weil-dependency`),
@@ -36,9 +37,9 @@ Legend:
 - Paper: `full/sections/A2.tex` (Lemma `a2:lem:A2`, Cor `a2:cor:explicit-lip`)
 - Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Section 3)
 - Lean:
-  - `Q3/Proofs/Q_Lipschitz_bridge_v2.lean` (contains a sorry)
+  - `Q3/Proofs/Q_Lipschitz_bridge_v2.lean` (clean bridge, no sorry)
   - `Q3/Proofs/Q_Lipschitz.lean` (axiom-backed)
-- Status: TODO (sorry / axioms)
+- Status: DONE (clean bridge proven; axioms remain in main proof file)
 
 ## 4. RKHS transfer and prime cap
 - Paper:
@@ -48,9 +49,9 @@ Legend:
 - Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Sections 3, 5)
 - Lean:
   - `Q3/Proofs/off_diag_exp_sum_bridge_v2.lean` (now closes via root proof)
-  - `Q3/Proofs/RKHS_contraction_bridge_v2.lean` (sorry)
+  - `Q3/Proofs/RKHS_contraction_bridge_v2.lean` (clean bridge, no sorry)
   - `Q3/Proofs/RKHS_cap_rayleigh.lean` (rayleigh-style cap)
-- Status: TODO (contraction bridge still sorry)
+- Status: DONE (contraction bridge proven)
 
 ## 5. Period-1 normalization / Rayleigh identification
 - Paper:
@@ -91,3 +92,27 @@ Legend:
 - `Q3/Proofs/RKHS_contraction_bridge_v2.lean` (sorry)
 - `Q3/Proofs/Rayleigh_Q_identification.lean:integral_P_A_eq_arch_term` (timeout)
 
+## 9. Addendum: normalization and chain guardrails (Jan 17 checklist)
+- Weights (w_Q vs w_RKHS):
+  - Paper: `full/sections/introduction.tex`, `full/sections/scope_notation.tex`
+  - Lean: `Q3/Basic/Defs.lean` (Q uses w_Q), RKHS proofs use undoubled weights
+  - Status: OK (paper/Lean consistent)
+- Prime-vector scaling (2M+1) only on the prime block:
+  - Paper: `full/sections/A3/rayleigh_bridge.tex` (Theorem `thm:a3-rayleigh-identification`)
+  - Lean: `Q3/Proofs/Rayleigh_Q_identification.lean` (scaled form fixed)
+  - Status: OK
+- Sampling span condition (M >= B for general p):
+  - Paper: `full/sections/RKHS/core.tex` (Remark "Finite support and the threshold M")
+  - Lean: no standalone lemma for general p yet (p = 1 case does not need it)
+  - Status: TODO (only if general sampling lemma is introduced)
+- Two-scale separation (t_sym vs t_rkhs):
+  - Paper: `full/sections/scope_notation.tex`, `full/sections/A3/main.tex`
+  - Lean: uses distinct parameters in A3/RKHS bridges
+  - Status: OK
+- Legacy constants / scale-error data kept out of mainline:
+  - Paper: `full/sections/A3/param_tables.tex` (legacy notes), Appendix legacy sections
+  - Status: OK (legacy confined to appendix)
+- Discretization/Szego-Bottcher guard:
+  - Paper: `full/sections/A3/matrix_guard.tex`, `full/sections/A3/main.tex`
+  - Lean: A3 bridge uses floor + discretization in the axiomatic wrapper
+  - Status: OK (paper), TODO (Lean bridge is axiomatic)
