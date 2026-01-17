@@ -62,7 +62,7 @@ Research Agent → insights/new/*.insight.md → fswatch Watcher → Spawn Worke
 
 | File | Purpose |
 |------|---------|
-| `PROBLEM.md` | Central problem definition |
+| `PROBLEM.md` | Pointer to `sandboxes/PROBLEM.md` |
 | `research_swarm/SPEC.md` | Full specification |
 | `research_swarm/config.sh` | Configuration |
 | `scripts/swarm_watcher.sh` | fswatch daemon |

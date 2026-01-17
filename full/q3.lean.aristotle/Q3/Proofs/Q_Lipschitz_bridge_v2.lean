@@ -154,7 +154,7 @@ lemma volume_real_Icc (K : ℝ) (hK : K > 0) :
     volume.real (Set.Icc (-K) K) = 2 * K := by
   rw [Measure.real_def, Real.volume_Icc]
   simp only [ENNReal.toReal_ofReal (by linarith : 0 ≤ K - (-K))]
-  ring
+  ring_nf
 
 lemma arch_term_Lipschitz_local (K : ℝ) (hK : K > 0) (Φ Ψ : ℝ → ℝ)
     (hcontΦ : ContinuousOn Φ (Set.Icc (-K) K))
@@ -168,7 +168,7 @@ lemma arch_term_Lipschitz_local (K : ℝ) (hK : K > 0) (Φ Ψ : ℝ → ℝ)
       ∫ ξ in Set.Icc (-K) K, Q3.a_star ξ * (Φ ξ - Ψ ξ) := by
     unfold arch_term_local
     rw [← MeasureTheory.integral_sub]
-    · congr 1; ext ξ; ring
+    · congr 1; ext ξ; ring_nf
     · apply ContinuousOn.integrableOn_Icc
       exact (Q3.Clean.a_star_continuous.continuousOn.mul hcontΦ)
     · apply ContinuousOn.integrableOn_Icc
@@ -199,7 +199,7 @@ lemma arch_term_Lipschitz_local (K : ℝ) (hK : K > 0) (Φ Ψ : ℝ → ℝ)
           rw [MeasureTheory.setIntegral_const, smul_eq_mul, mul_comm]
     _ = M_a K * D * (2 * K) := by
           rw [volume_real_Icc K hK]
-    _ = 2 * K * M_a K * D := by ring
+    _ = 2 * K * M_a K * D := by ring_nf
 
 /-! ## Prime term bounds -/
 
@@ -286,14 +286,14 @@ lemma prime_term_Lipschitz (K : ℝ) (hK : K > 0) (Φ Ψ : ℝ → ℝ)
     rw [← Summable.tsum_sub hsumΦ hsumΨ]
     congr 1
     ext n
-    ring
+    ring_nf
   rw [h_diff]
   have h_summable_diff :
       Summable (fun n => Q3.w_Q n * (Φ (Q3.xi_n n) - Ψ (Q3.xi_n n))) := by
     have h_eq :
         (fun n => Q3.w_Q n * (Φ (Q3.xi_n n) - Ψ (Q3.xi_n n))) =
           (fun n => Q3.w_Q n * Φ (Q3.xi_n n) - Q3.w_Q n * Ψ (Q3.xi_n n)) := by
-      ext n; ring
+      ext n; ring_nf
     rw [h_eq]
     exact Summable.sub hsumΦ hsumΨ
   have h_summable_abs :
@@ -383,12 +383,12 @@ theorem Q_Lipschitz_on_W_K (K : ℝ) (hK : K > 0) :
     exact prime_term_Lipschitz K hK Φ Ψ hcontΦ' hcontΨ' hsuppΦ' hsuppΨ'
   calc |Q3.Q Φ - Q3.Q Ψ|
       = |(Q3.arch_term Φ - Q3.prime_term Φ) - (Q3.arch_term Ψ - Q3.prime_term Ψ)| := rfl
-    _ = |(Q3.arch_term Φ - Q3.arch_term Ψ) - (Q3.prime_term Φ - Q3.prime_term Ψ)| := by ring
+    _ = |(Q3.arch_term Φ - Q3.arch_term Ψ) - (Q3.prime_term Φ - Q3.prime_term Ψ)| := by ring_nf
     _ ≤ |Q3.arch_term Φ - Q3.arch_term Ψ| + |Q3.prime_term Φ - Q3.prime_term Ψ| :=
         abs_sub _ _
     _ ≤ 2 * K * M_a K * sup_norm_diff K Φ Ψ + Q3.W_sum K * sup_norm_diff K Φ Ψ :=
         add_le_add h_arch h_prime
-    _ = (2 * K * M_a K + Q3.W_sum K) * sup_norm_diff K Φ Ψ := by ring
+    _ = (2 * K * M_a K + Q3.W_sum K) * sup_norm_diff K Φ Ψ := by ring_nf
     _ = L_Q K * sup_norm_diff K Φ Ψ := by rfl
 
 /-- Corollary: Q is uniformly continuous on W_K -/
