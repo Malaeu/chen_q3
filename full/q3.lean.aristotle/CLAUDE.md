@@ -1,5 +1,13 @@
 # PROOF AUDIT PROJECT — SYSTEM INSTRUCTIONS
 
+## 🚫 NO CLAUDE BRANDING
+**NEVER** add to commits/PRs:
+- `Co-Authored-By: Claude`
+- `🤖 Generated with Claude Code`
+
+---
+
+
 ## 📍 QUICK START
 
 **При старте новой сессии СНАЧАЛА прочитай:**

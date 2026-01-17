@@ -1,5 +1,12 @@
 # Project Memory — Q3 Lean Formalization
 
+## 🚫 NO CLAUDE BRANDING
+**NEVER** add to commits/PRs:
+- `Co-Authored-By: Claude`
+- `🤖 Generated with Claude Code`
+
+---
+
 ## SINGLE ENTRY POINT
 **START HERE:** `/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 
