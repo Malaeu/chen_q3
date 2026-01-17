@@ -212,7 +212,6 @@ lemma g_support (B t ξ : ℝ) (hB : 0 < B) (h : B < |ξ|) : g B t ξ = 0 := by
 /-- w equals fejer_heat_window (same definition). -/
 lemma w_eq_fejer_heat_window (B t ξ : ℝ) : w B t ξ = Q3.fejer_heat_window B t ξ := by
   simp only [w, Q3.fejer_heat_window]
-  ring_nf
 
 /-- Key support bound: for θ ∈ [-1/2, 1/2] and |m| > ⌈B⌉ + 1, we have g(θ+m) = 0. -/
 lemma g_shift_zero_of_large_m (B t θ : ℝ) (m : ℤ) (hB : 0 < B)
@@ -230,14 +229,29 @@ lemma g_shift_zero_of_large_m (B t θ : ℝ) (m : ℤ) (hB : 0 < B)
   have hθ_abs : |θ| ≤ 1/2 := by
     rw [abs_le]
     constructor <;> linarith [hθ.1, hθ.2]
+  -- Use reverse triangle inequality: ||a| - |b|| ≤ |a - b| (Mathlib form)
+  -- abs_sub_abs_le_abs_sub (m : ℝ) θ gives: ||(m:ℝ)| - |θ|| ≤ |(m:ℝ) - θ|
+  -- We need for (m + θ), so apply to m and (-θ):
+  -- abs_sub_abs_le_abs_sub (m : ℝ) (-θ) gives: ||(m:ℝ)| - |-θ|| ≤ |(m:ℝ) - (-θ)| = |m + θ|
+  have h_abs_m : |(m : ℝ)| = |m| := by
+    simp only [Int.cast_abs]
+  have h_tri : (|(m : ℝ)| - |θ|) ≤ |θ + (m : ℝ)| := by
+    have h1 := abs_sub_abs_le_abs_sub (m : ℝ) (-θ)
+    simp only [abs_neg, sub_neg_eq_add] at h1
+    -- h1 : |↑m| - |θ| ≤ |↑m + θ|, need to reorder to |θ + ↑m|
+    calc |(m : ℝ)| - |θ| ≤ |(m : ℝ) + θ| := h1
+      _ = |θ + (m : ℝ)| := by ring_nf
+  -- Now chain the inequalities
+  have h_m_bound : (B : ℝ) + 1 ≤ |(m : ℝ)| := by
+    have h1 : (⌈B⌉ : ℝ) + 1 < |m| := by exact_mod_cast hm
+    have h2 : B ≤ ⌈B⌉ := Int.le_ceil B
+    have h3 : (|m| : ℝ) = |(m : ℝ)| := by simp only [Int.cast_abs]
+    linarith
   calc B < B + 1/2 := by linarith
-    _ ≤ |m| - 1/2 := by linarith
-    _ ≤ |m| - |θ| := by linarith
-    _ ≤ ||m| - |θ|| := le_abs_self _
-    _ ≤ |↑m + θ| := by
-        rw [add_comm]
-        exact abs_abs_sub_abs_le_abs_add θ m
-    _ = |θ + m| := by ring_nf
+    _ ≤ |(m : ℝ)| - 1/2 := by linarith
+    _ ≤ |(m : ℝ)| - |θ| := by linarith
+    _ ≤ |θ + (m : ℝ)| := h_tri
+    _ = |θ + m| := by norm_cast
 
 /-- The tsum defining P_A is actually a finite sum over |m| ≤ ⌈B⌉ + 1. -/
 lemma P_A_tsum_eq_finite_sum (B t θ : ℝ) (hB : 0 < B) (hθ : θ ∈ Set.Icc (-1/2 : ℝ) (1/2)) :
@@ -247,19 +261,45 @@ lemma P_A_tsum_eq_finite_sum (B t θ : ℝ) (hB : 0 < B) (hθ : θ ∈ Set.Icc (
   intro m hm
   simp only [Finset.mem_Icc, not_and, not_le] at hm
   -- m ∉ [-⌈B⌉-1, ⌈B⌉+1] means |m| > ⌈B⌉ + 1
+  -- ⌈B⌉ + 1 ≥ 1 since B > 0 implies ⌈B⌉ ≥ 0
+  have hceil_pos : (0 : ℤ) < ⌈B⌉ + 1 := by
+    have : (0 : ℤ) ≤ ⌈B⌉ := Int.ceil_nonneg (le_of_lt hB)
+    omega
   have h_large : (⌈B⌉ : ℤ) + 1 < |m| := by
     by_cases h : m < -(⌈B⌉ + 1)
-    · simp only [abs_of_neg (by linarith : m < 0)]
-      linarith
+    · have hm_neg : m < 0 := by omega
+      simp only [abs_of_neg hm_neg]
+      omega
     · push_neg at h
       have := hm h
-      simp only [abs_of_nonneg (by linarith : 0 ≤ m)]
+      have hm_nonneg : 0 ≤ m := by omega
+      simp only [abs_of_nonneg hm_nonneg]
       exact this
   exact g_shift_zero_of_large_m B t θ m hB hθ h_large
 
+/-- Both sides of the periodization identity equal 2π · ∫ g.
+    This lemma establishes the connection through definitional unfolding. -/
+lemma arch_term_eq_two_pi_integral_g (B t : ℝ) :
+    Q3.arch_term (fun ξ => Q3.fejer_heat_window B t ξ) =
+      2 * Real.pi * ∫ ξ, Q3.a ξ * w B t ξ := by
+  simp only [Q3.arch_term]
+  -- Now goal: ∫ ξ, Q3.a_star ξ * Q3.fejer_heat_window B t ξ = 2 * π * ∫ ξ, Q3.a ξ * w B t ξ
+  -- Since w = fejer_heat_window by definition:
+  have hw : ∀ ξ, w B t ξ = Q3.fejer_heat_window B t ξ := w_eq_fejer_heat_window B t
+  simp_rw [hw]
+  -- Now both sides have fejer_heat_window
+  -- arch_term = ∫ a_star · Φ = ∫ (2π·a) · Φ = 2π · ∫ a · Φ
+  have h : ∀ ξ, Q3.a_star ξ * Q3.fejer_heat_window B t ξ =
+      2 * Real.pi * (Q3.a ξ * Q3.fejer_heat_window B t ξ) := by
+    intro ξ
+    simp only [Q3.a_star]
+    ring
+  simp_rw [h]
+  rw [MeasureTheory.integral_mul_left]
+
 /-- Periodization theorem: integral of P_A over one period equals arch_term.
 
-    **Proof via finite sum:**
+    **Mathematical content:**
     Since w has compact support in [-B, B], the periodization sum
     ∑'_m g(θ+m) is actually finite (only |m| ≤ ⌈B⌉+1 contribute).
 
@@ -268,65 +308,45 @@ lemma P_A_tsum_eq_finite_sum (B t θ : ℝ) (hB : 0 < B) (hθ : θ ∈ Set.Icc (
         = 2π · ∑_m ∫_{m-1/2}^{m+1/2} g(ξ) dξ    (substitution ξ = θ+m)
         = 2π · ∫_ℝ g(ξ) dξ                       (disjoint intervals)
         = ∫_ℝ a_star(ξ) · w(ξ) dξ               (a_star = 2π·a, g = a·w)
-        = arch_term(w) -/
-theorem integral_P_A_eq_arch_term (B t : ℝ) (hB : 0 < B) :
+        = arch_term(w)
+
+    **Key identity used:** Both sides equal 2π · ∫_ℝ g dξ where g = a·w.
+
+    **Proof status:** Uses sorry for the core periodization identity.
+    The measure-theoretic formalization requires careful handling of:
+    - Finset reindexing (integers to naturals)
+    - intervalIntegral.sum_integral_adjacent_intervals (Mathlib)
+    - MeasureTheory.setIntegral_eq_integral_of_forall_compl_eq_zero (Mathlib)
+    - Translation invariance of Lebesgue measure
+
+    The mathematical content is standard harmonic analysis (Poisson summation formula
+    for compactly supported functions). -/
+theorem integral_P_A_eq_arch_term (B t : ℝ) (_hB : 0 < B) :
     ∫ θ in (-1/2 : ℝ)..(1/2), P_A B t θ =
       Q3.arch_term (fun ξ => Q3.fejer_heat_window B t ξ) := by
   /-
-  **Proof strategy:**
-  LHS = ∫_{-1/2}^{1/2} P_A(θ) dθ
+  Strategy: Show both sides equal 2π · ∫_ℝ g dξ where g = a · w.
+
+  LHS = ∫_{-1/2}^{1/2} P_A dθ
       = ∫_{-1/2}^{1/2} 2π · ∑'_m g(θ+m) dθ
-      = 2π · ∫_{-1/2}^{1/2} ∑'_m g(θ+m) dθ
+      = 2π · ∫_ℝ g dξ                       (periodization identity)
 
   RHS = arch_term(w)
-      = ∫_ℝ a_star(ξ) · w(ξ) dξ
-      = ∫_ℝ 2π · a(ξ) · w(ξ) dξ
-      = 2π · ∫_ℝ g(ξ) dξ
-
-  Key identity: ∫_{-1/2}^{1/2} ∑'_m g(θ+m) dθ = ∫_ℝ g(ξ) dξ
-  This is the periodization identity for compactly supported functions.
-
-  The proof uses:
-  1. tsum is finite (support bound)
-  2. Swap integral and finite sum
-  3. Translation: ∫_{-1/2}^{1/2} g(θ+m) dθ = ∫_{m-1/2}^{m+1/2} g(ξ) dξ
-  4. Sum of integrals over disjoint intervals = integral over ℝ
+      = ∫_ℝ a_star · w dξ
+      = ∫_ℝ (2π·a) · w dξ
+      = 2π · ∫_ℝ a·w dξ
+      = 2π · ∫_ℝ g dξ
   -/
-
-  -- Rewrite both sides to expose the 2π factor
-  simp only [P_A, Q3.arch_term]
-  rw [w_eq_fejer_heat_window]
-
-  -- Factor out 2π on LHS
-  have h_lhs : ∫ θ in (-1/2 : ℝ)..(1/2), 2 * Real.pi * ∑' (m : ℤ), g B t (θ + ↑m) =
-               2 * Real.pi * ∫ θ in (-1/2 : ℝ)..(1/2), ∑' (m : ℤ), g B t (θ + ↑m) := by
-    rw [← intervalIntegral.integral_const_mul]
-
-  -- Rewrite a_star as 2π·a on RHS
-  have h_rhs : ∫ ξ, Q3.a_star ξ * w B t ξ = 2 * Real.pi * ∫ ξ, Q3.a ξ * w B t ξ := by
-    simp only [Q3.a_star]
-    rw [← MeasureTheory.integral_mul_left]
-    congr 1
-    ext ξ
-    ring
-
-  rw [h_lhs, h_rhs]
-
-  -- Now need: ∫_{-1/2}^{1/2} ∑'_m g(θ+m) dθ = ∫_ℝ g(ξ) dξ
-  -- where g = Q3.a * w
-
+  -- RHS simplification
+  rw [arch_term_eq_two_pi_integral_g]
+  -- LHS: expand P_A and use periodization
+  simp only [P_A]
+  -- Now need: ∫_{-1/2}^{1/2} 2π · ∑'_m g(θ+m) dθ = 2π · ∫_ℝ g dξ
+  -- Factor out 2π
+  rw [intervalIntegral.integral_const_mul]
   congr 1
-  -- This is the core periodization identity.
-  -- For compactly supported g, the periodization sum is finite and
-  -- the integral of the sum equals the integral over ℝ.
-
-  -- Use that g = Q3.a * w and w has compact support
-  simp only [g]
-
-  -- The periodization identity for compactly supported functions:
-  -- This is a standard result in Fourier analysis.
-  -- For technical completeness, we axiomatize the measure-theoretic details
-  -- (Fubini + translation + partition of ℝ into unit intervals).
+  -- Core periodization identity: ∫_{-1/2}^{1/2} ∑'_m g(θ+m) dθ = ∫_ℝ g dξ
+  -- This is standard Poisson summation for compactly supported g
   sorry
 
 /-- Arch side: Rayleigh quotient of Toeplitz[P_A] at basis0 = arch_term.
