@@ -94,8 +94,15 @@ $$
 $$
 
 ### Rayleigh bridge (p = 1)
-$Q(\Phi_{B,t_{\mathrm{sym}}})$ equals the Rayleigh quotient of
-$T_M[P_A] - T_P$ at $p \equiv 1$ (no extra $2\pi$ factor; already in $P_A$).
+$Q(\Phi_{B,t_{\mathrm{sym}}})$ matches the Rayleigh identity at $p \equiv 1$ in two
+equivalent forms (see `full/sections/A3/calibration.tex` and
+`full/sections/A3/rayleigh_bridge.tex`):
+
+- **Infinite-dimensional idealization:** $\langle (T_M[P_A]-T_P)1,1\rangle = Q(\Phi)$.
+- **Finite-dimensional compression:** $\langle T_M[P_A]1,1\rangle - (2M+1)\langle T_P^{(M)}1,1\rangle = Q(\Phi)$.
+
+The factor $(2M{+}1)$ comes from the normalization of $v_n^{(M)}$ and the identity
+$\iota_M^\ast T_P \iota_M = (2M{+}1)\,T_P^{(M)}$.
 
 ---
 
@@ -119,7 +126,11 @@ Hence
 $$
 \lambda_{\min}(T_M[P_A] - T_P) \ge c_* - \|T_P\| \ge 3c_*/4 > 0
 $$
-so $Q(\Phi_{B,t_{\mathrm{sym}}}) \ge 0$.
+so $Q(\Phi_{B,t_{\mathrm{sym}}}) \ge 0$ in the idealized operator form. For the
+finite-dimensional Lean operator, replace $T_P$ by the compressed $T_P^{(M)}$
+(a.k.a. `T_P_comp`); the cap applies to the normalized vectors, and the
+$(2M{+}1)$ factor only appears when converting $\langle T_P^{(M)}1,1\rangle$
+to the prime sum in the $p\equiv1$ identity.
 
 ---
 

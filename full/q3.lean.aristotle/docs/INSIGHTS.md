@@ -28,6 +28,7 @@
 ## Tooling / Checks
 
 - check_axioms падает на A3_FLOOR: нужен предварительный build → `docs/insights/check_axioms_prebuild_a3_floor_2026_01_16.md`.
+- check_axioms (2026-01-17): main chain axioms = 10 total (7 project + 3 standard); Level 2 осталось только `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
 
 ---
 

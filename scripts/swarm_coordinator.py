@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 # Configuration
-SWARM_ROOT = Path("/Users/emalam/Documents/GitHub/chen_q3/research_swarm")
+SWARM_ROOT = Path("/Users/emalam/Documents/GitHub/chen_q3/.claude/swarm")
 WORKERS_DIR = SWARM_ROOT / "workers"
 INSIGHTS_ACTIVE = SWARM_ROOT / "insights/active"
 INSIGHTS_COMPLETED = SWARM_ROOT / "insights/completed"

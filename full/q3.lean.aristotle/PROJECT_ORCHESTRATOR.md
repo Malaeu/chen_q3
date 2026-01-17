@@ -80,7 +80,7 @@ RH_of_Weil_and_Q3
 ## Active Next Step (closing, not wiring)
 
 1) Prove `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` via Rayleigh-Q identification
-   (tex Theorem 3.3): `⟨(T_M[P_A]-T_P)1,1⟩ = Q(Φ)`.
+   (tex Theorem 3.3): `⟨T_M[P_A]1,1⟩ - (2M+1)⟨T_P^{(M)}1,1⟩ = Q(Φ)`.
 2) Then wire the proof into `Q3/Atoms_Positive.lean` and remove the axiom file.
 
 ## Closure Tracker (remaining axioms)

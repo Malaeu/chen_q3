@@ -439,3 +439,5 @@
 - 📄 `sandboxes/carleson/full/q3.lean.aristotle/CLAUDE.md` — 11:23
 - 📝 `sandboxes/carleson/full/q3.lean.aristotle/lakefile.toml` — 11:26
 - 📄 `sandboxes/carleson/full/q3.lean.aristotle/CLAUDE.md` — 11:29
+- 🔧 `.claude/swarm/config.sh` — 12:28
+- 🐍 `scripts/swarm_coordinator.py` — 12:28

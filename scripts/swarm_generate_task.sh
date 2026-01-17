@@ -4,7 +4,7 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${SCRIPT_DIR}/../research_swarm/config.sh"
+source "${SCRIPT_DIR}/../.claude/swarm/config.sh"
 
 INSIGHT_FILE="$1"
 INSIGHT_ID="$2"
