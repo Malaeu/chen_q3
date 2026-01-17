@@ -48,14 +48,15 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **11 axioms** (8 project + 3 standard)
+Result: **10 axioms** (7 project + 3 standard)
 Note: 12 → 11 (closed arch/prime Lipschitz), 11 → 10 (closed RKHS contraction bridge),
-10 → 9 (closed A1_density via theorem wiring), 9 → 11 (A3 Fourier axiom + P_A_continuous in chain).
+10 → 9 (closed A1_density via theorem wiring), 9 → 11 (A3 Fourier axiom + P_A_continuous in chain),
+11 → 10 (closed P_A_continuous via theorem with Aristotle proof).
 
 - Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - External/classical: `Weil_criterion`, `a_star_pos`, `a_star_bdd_on_compact`,
   `a_star_continuous`, `a_star_even`, `Schur_test`
-- Q3 paper (closable): `P_A_continuous`, `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- Q3 paper (closable): `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` (1 remaining)
 
 ## Critical Chain (ASCII)
 
@@ -359,3 +360,6 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
 - 2026-01-13: `Q3/Proofs/RKHS_contraction_bridge.lean` compiles; DB import updated.
 - 2026-01-13: Fixed `Q3/T5_Transfer.lean` AtomCone subset pattern; `lake build Q3.Main`
   passes; `RKHS_contraction_axiom` removed from main axiom list (total now 10).
+- 2026-01-17: Closed `P_A_continuous` axiom → theorem in `A3_FLOOR_v22_stage4_floor.lean`.
+  Proof uses locally finite sum (w has compact support), Aristotle-assisted.
+  Axiom count: 11 → 10.
