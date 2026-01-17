@@ -1,5 +1,13 @@
 # PROOF AUDIT PROJECT — SYSTEM INSTRUCTIONS
 
+## 🚫 NO CLAUDE BRANDING
+**NEVER** add to commits/PRs:
+- `Co-Authored-By: Claude`
+- `🤖 Generated with Claude Code`
+
+---
+
+
 ## 📍 QUICK START
 
 **При старте новой сессии СНАЧАЛА прочитай:**
@@ -17,6 +25,40 @@ PROJECT_ORCHESTRATOR.md
 docs/ERRORS_DESTROYER.md
 ```
 Там: разборы прошлых ошибок и чеклисты как их избежать.
+
+---
+
+## 🧪 SANDBOX WORKFLOW
+
+**НИКОГДА не используй git worktree!** Всегда отдельный clone + checkout.
+
+**Создание sandbox:**
+```bash
+mkdir -p /path/to/sandboxes/name
+cd /path/to/sandboxes/name
+git clone /path/to/main/repo .
+git checkout -b sandbox/name   # или существующую ветку
+```
+
+**Lake cache (КРИТИЧНО для экономии места!):**
+```bash
+cd full/q3.lean.aristotle
+mkdir -p .lake/build                                    # локальный build
+ln -s /path/to/main/repo/full/q3.lean.aristotle/.lake/packages .lake/packages
+```
+
+**Структура:**
+```
+.lake/
+├── build/     ← ЛОКАЛЬНЫЙ (sandbox пишет сюда)
+└── packages/  ← СИМЛИНК на main repo (7GB Mathlib cache)
+```
+
+**Почему так:**
+- `packages/` = Mathlib + зависимости (~7GB) — read-only, можно шарить
+- `build/` = скомпилированные .olean файлы проекта — должен быть локальным
+
+**После создания:** `lake build` (использует shared packages, пишет в локальный build)
 
 ---
 
