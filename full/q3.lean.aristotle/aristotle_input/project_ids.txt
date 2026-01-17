@@ -44,3 +44,8 @@ A3_bridge_v4_real_TP.md: c35f3088-0755-4b8c-a33b-bd03064dbfea
 2b3cd17f-bac2-4b35-901f-0adb5ac43b85  RKHS_cap_rayleigh (h_cap, Cauchy-Schwarz)  2026-01-14 22:06
 RKHS_cap_t1_proshka.md: bef6fa7b-2cc4-424a-85b2-8919ac52b1fe
 weight_sum_bound.md: fb91fbb3-4c87-4740-939a-c672648a38ae
+
+# 2026-01-17 Rayleigh_Q_correct remaining sorries
+periodization_lemma_v1: b8a2abbd-569a-4e8e-9a38-87c2543957e1
+toeplitz_diag_v1: b5b18052-c301-449c-9fac-6d0fda4b416b
+Q_finite_eq_Q_v1: 3b491a4e-62d3-4c78-8d9f-3b6a9e607190
