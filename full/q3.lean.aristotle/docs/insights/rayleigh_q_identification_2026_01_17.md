@@ -2,7 +2,7 @@
 
 **Date:** 2026-01-17
 **Category:** Spectral Theory / Matrix Analysis
-**Status:** Proven (with 1 sorry for periodization identity)
+**Status:** Proven (no sorries)
 
 ## Core Result
 
@@ -35,17 +35,9 @@ The factor (2M+1) only applies to T_P_comp due to prime_vec normalization:
 | `T_P_comp_real_diag` | `T_P_comp[i0,i0] = (1/(2M+1))·Σ w_Q·Φ(ξ_n)` | ✅ Proven |
 | `arch_rayleigh_eq` | `RQ(Toeplitz[P_A], basis0) = arch_term(Φ)` | ✅ Proven |
 | `prime_rayleigh_eq` | `(2M+1)·RQ(T_P_comp, basis0) = Σ w_Q·Φ(ξ_n)` | ✅ Proven |
-| `integral_P_A_eq_arch_term` | `∫ P_A dθ = arch_term(Φ)` | ⚠️ 1 sorry |
+| `integral_P_A_eq_arch_term` | `∫ P_A dθ = arch_term(Φ)` | ✅ Proven |
 | `rayleigh_Q_identification` | Main identity | ✅ Proven |
 | `rayleigh_Q_eq_Q` | Connects to Q3.Q | ✅ Proven |
-
-## Periodization Sorry
-
-The remaining sorry is for standard Poisson summation:
-```
-∫_{-1/2}^{1/2} ∑'_m g(θ+m) dθ = ∫_ℝ g(ξ) dξ
-```
-for compactly supported g. This is classical harmonic analysis.
 
 ## Applications
 

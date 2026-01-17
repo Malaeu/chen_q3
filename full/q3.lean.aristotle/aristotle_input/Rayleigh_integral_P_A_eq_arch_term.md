@@ -1,5 +1,8 @@
 # Rayleigh periodization: integral_P_A_eq_arch_term
 
+**Status:** RESOLVED in `Q3/Proofs/Rayleigh_Q_identification.lean` (no sorry).
+This file is kept for historical reference; do not resubmit.
+
 ## Goal
 Provide a Lean proof for the lemma below (no `sorry`, no `exact?`).
 This is the single bottleneck lemma in `Q3/Proofs/Rayleigh_Q_identification.lean`.
