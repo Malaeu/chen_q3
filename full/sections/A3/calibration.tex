@@ -59,15 +59,15 @@ Equivalently, the normalization in \eqref{eq:A3_calibration_kappa-formula} absor
 \end{lemma}
 \phantomsection\label{a3:lem:rayleigh_sampling_id}
 
-\begin{lemma}[Rayleigh identification]\label{lem:rayleigh-sampling}
-For every even Fej\'er$\times$heat window $\Phi$ with Dirichlet sampling polynomial
-$p(\theta)=\sum_{k\in\ZZ}\widehat \Phi(k)\,e^{2\pi i k\theta}$, one has
+\begin{lemma}[Rayleigh identification (infinite-dimensional)]\label{lem:rayleigh-sampling}
+For every even Fej\'er$\times$heat window $\Phi$ the operator form and the Weil functional satisfy
 \[
-  \Big\langle T_M[P_A]\,p,\,p\Big\rangle\;-\;(2M+1)\Big\langle T_P^{(M)}\,p,\,p\Big\rangle
-  \;=\; Q(\Phi),
+  \Big\langle \bigl(T_M[P_A]-T_P\bigr) p,\,p\Big\rangle \;=\; Q(\Phi)
 \]
-where $T_P^{(M)}$ is the normalized model-space prime operator from
-Section~\ref{subsec:a3-rayleigh}.
+whenever $p$ corresponds to $\Phi$ via the standard Dirichlet sampling operator.
+\emph{Note:} This is the infinite-dimensional idealization.  For the finite-dimensional
+compression to $\mathcal P_M$, see Theorem~\ref{thm:a3-rayleigh-identification} where
+the normalization of vectors introduces a factor $(2M{+}1)$.
 \end{lemma}
 
 \begin{proof}
@@ -83,14 +83,14 @@ The Dirichlet sampling operator maps $p(\theta)=\sum_{k\in\ZZ} \widehat \Phi(k)\
   = A_0\,|\widehat \Phi(0)|^2 + 2\sum_{k\ge1}A_k\,|\widehat \Phi(k)|^2,
 \]
 where $A_k$ are the Arch coefficients from \eqref{eq:A3_calibration_kappa-formula}.  Likewise, the
-normalized model-space prime operator contributes
+prime operator contributes
 \[
-  \Big\langle T_P^{(M)} p,\,p\Big\rangle
-  = \frac{1}{2M+1}\sum_{n\ge2} \frac{2\,\Lambda(n)}{\sqrt{n}}\,\Phi(\xi_n)\,\overline{\Phi(\xi_n)}.
+  \Big\langle T_P p,\,p\Big\rangle
+  = \sum_{n\ge2} \frac{2\,\Lambda(n)}{\sqrt{n}}\,\Phi(\xi_n)\,\overline{\Phi(\xi_n)}.
 \]
 Subtracting and recalling $Q(\Phi)$ from \eqref{eq:A3_calibration_kappa-q-functional-1} gives
 \[
-  \Big\langle T_M[P_A]p,\,p\Big\rangle-(2M+1)\Big\langle T_P^{(M)}p,\,p\Big\rangle
+  \Big\langle (T_M[P_A]-T_P)p,\,p\Big\rangle
   = Q(\Phi),
 \]
 which is the desired identity.
