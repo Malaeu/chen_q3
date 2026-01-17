@@ -81,7 +81,7 @@ Target: Reduce Level 2 to 0 (or minimal classical results)
 ## Quick Commands
 
 ```bash
-cd /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle
+cd /Users/emalam/Documents/GitHub/chen_q3/sandboxes/measure_dom/full/q3.lean.aristotle
 
 # Build
 lake build Q3.Main
@@ -133,7 +133,7 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 
 **Quick start:**
 ```bash
-source /Users/emalam/Documents/GitHub/chen_q3/.venv/bin/activate
+source /Users/emalam/Documents/GitHub/chen_q3/sandboxes/measure_dom/.venv/bin/activate
 aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
 ```
 
@@ -155,7 +155,7 @@ Options: (1) modify AtomCone_K, (2) use B + |τ| ≤ K, (3) add truncation.
 
 ## LaTeX Source Files (for Proshka)
 
-**Base path:** `/Users/emalam/Documents/GitHub/chen_q3/full/sections/`
+**Base path:** `/Users/emalam/Documents/GitHub/chen_q3/sandboxes/measure_dom/full/sections/`
 
 | Module | File | Description |
 |--------|------|-------------|

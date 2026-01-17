@@ -103,7 +103,24 @@ def prime_term_finite (K B t : ℝ) [Fintype (Q3.Nodes K)] : ℝ :=
 lemma T_P_comp_unnorm_diag_i0 (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] :
     (Q3.T_P_comp_unnorm K B t M (i0 M) (i0 M)).re = prime_term_finite K B t := by
   -- Key: prime_vec_unnorm M ξ (i0 M) = 1, so the product simplifies
-  sorry
+  simp only [Q3.T_P_comp_unnorm]
+  -- Show each term equals just the weight times window (with separate casts)
+  have h_eq : ∀ n : Q3.Nodes K,
+      ((Q3.w_Q n : ℝ) : ℂ) * ((Q3.fejer_heat_window B t (Q3.xi_n n) : ℝ) : ℂ) *
+        Q3.prime_vec_unnorm M (Q3.xi_n n) (i0 M) *
+        conj (Q3.prime_vec_unnorm M (Q3.xi_n n) (i0 M)) =
+      ((Q3.w_Q n : ℝ) : ℂ) * ((Q3.fejer_heat_window B t (Q3.xi_n n) : ℝ) : ℂ) := by
+    intro n
+    rw [prime_vec_unnorm_i0]
+    simp [map_one]
+  conv_lhs => rw [Finset.sum_congr rfl (fun n _ => h_eq n)]
+  -- Now: (∑ n, (w_Q n : ℂ) * (fejer_heat_window B t (xi_n n) : ℂ)).re = prime_term_finite
+  simp only [prime_term_finite]
+  -- Real sum of real-cast values is the real sum
+  rw [Complex.re_sum]
+  congr 1
+  ext n
+  simp [Complex.ofReal_mul, Complex.mul_re]
 
 /-- Real version: T_P_comp_unnorm_real[i0,i0] = prime_term_finite. -/
 lemma T_P_comp_unnorm_real_diag_i0 (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] :
@@ -162,9 +179,28 @@ lemma g_zero_large_m (B t θ : ℝ) (m : ℤ) (hB : B > 0)
     (hm : (|m| : ℝ) > B + 1/2) :
     g B t (θ + m) = 0 := by
   apply g_support B t _ hB
-  -- Proof: |θ + m| ≥ |m| - |θ| ≥ |m| - 1/2 > B (reverse triangle)
-  -- Elementary but tedious cast arithmetic
-  sorry
+  -- Reverse triangle: |θ + m| ≥ |m| - |θ|
+  -- From hθ: |θ| ≤ 1/2, so |θ + m| ≥ |m| - 1/2 > B
+  have hθ_abs : |θ| ≤ 1/2 := by
+    rw [abs_le]
+    constructor
+    · have h1 := hθ.1
+      linarith
+    · exact hθ.2
+  -- Use abs_sub_abs_le_abs_sub(m, -θ): |m| - |-θ| ≤ |m - (-θ)| = |m + θ|
+  -- Since |-θ| = |θ|, this gives |m| - |θ| ≤ |m + θ|
+  have h_rev_tri : |θ + ↑m| ≥ |(↑m : ℝ)| - |θ| := by
+    have key : |(↑m : ℝ)| - |-θ| ≤ |↑m - (-θ)| := abs_sub_abs_le_abs_sub _ _
+    simp only [abs_neg, sub_neg_eq_add] at key
+    calc |(↑m : ℝ)| - |θ| ≤ |↑m + θ| := key
+      _ = |θ + ↑m| := by ring_nf
+  -- Chain: |θ + m| ≥ |m| - |θ| ≥ |m| - 1/2 > B
+  have hm_real : |(↑m : ℝ)| = (|m| : ℝ) := by
+    rw [← Int.cast_abs]
+  calc |θ + ↑m| ≥ |(↑m : ℝ)| - |θ| := h_rev_tri
+    _ ≥ |(↑m : ℝ)| - 1/2 := by linarith
+    _ = (|m| : ℝ) - 1/2 := by rw [hm_real]
+    _ > B := by linarith
 
 /-- The cutoff index: N = ⌈B⌉ + 1 suffices. -/
 def periodization_cutoff (B : ℝ) : ℕ := Nat.ceil B + 1
@@ -179,8 +215,52 @@ lemma g_zero_beyond_cutoff (B t θ : ℝ) (m : ℤ) (hB : B > 0)
     g B t (θ + m) = 0 := by
   apply g_zero_large_m B t θ m hB hθ
   -- Proof: |m| > periodization_cutoff B = ⌈B⌉ + 1 ≥ B + 1 > B + 1/2
-  -- Elementary Nat→ℝ cast arithmetic
-  sorry
+  -- Step 1: |m|.toNat > periodization_cutoff B implies real cast inequality
+  have h1 : (periodization_cutoff B : ℝ) < (|m|.toNat : ℝ) := Nat.cast_lt.mpr hm
+  -- Step 2: |m|.toNat as real = |(m : ℝ)| (the real absolute value)
+  -- Key: Int.cast_abs gives |↑m| = ↑|m| for m : ℤ
+  have h2 : (|m|.toNat : ℝ) = |(↑m : ℝ)| := by
+    have hab : |m| ≥ 0 := abs_nonneg m
+    -- Int.toNat_of_nonneg: 0 ≤ n → ↑(Int.toNat n) = n (as Int)
+    have hcast : (|m|.toNat : ℤ) = |m| := Int.toNat_of_nonneg hab
+    -- Int.cast_abs: |↑m| = ↑|m| for real cast
+    have hint_cast_abs : |(↑m : ℝ)| = ((|m| : ℤ) : ℝ) := by
+      rw [← Int.cast_abs]
+    -- Chain: |m|.toNat → Int cast → Real cast
+    calc (|m|.toNat : ℝ) = ((|m|.toNat : ℤ) : ℝ) := by norm_cast
+      _ = ((|m| : ℤ) : ℝ) := by rw [hcast]
+      _ = |(↑m : ℝ)| := hint_cast_abs.symm
+  -- Step 3: periodization_cutoff = Nat.ceil B + 1 ≥ B + 1
+  have h3 : (periodization_cutoff B : ℝ) ≥ B + 1 := by
+    simp only [periodization_cutoff]
+    have hceil : (Nat.ceil B : ℝ) ≥ B := Nat.le_ceil B
+    have hadd : ((Nat.ceil B + 1 : ℕ) : ℝ) = (Nat.ceil B : ℝ) + 1 := by
+      simp only [Nat.cast_add, Nat.cast_one]
+    linarith
+  -- Combine: |m| > periodization_cutoff ≥ B + 1 > B + 1/2
+  -- h1: periodization_cutoff B < |m|.toNat as ℝ
+  -- Here |m| is Int.abs m : ℤ, and .toNat gives ℕ
+  -- Since Int.abs m ≥ 0, (Int.abs m).toNat = Int.natAbs m
+  have h4 : (|m|.toNat : ℝ) = |(↑m : ℝ)| := by
+    -- |m|.toNat = Int.natAbs m (since abs ≥ 0)
+    -- Int.abs m = Int.natAbs m as ℤ (both are ≥0)
+    -- .toNat of nonneg Int = that Int as ℕ
+    have habs_eq : |m|.toNat = m.natAbs := by
+      -- |m| : ℤ is nonneg, so .toNat = |m| as ℕ
+      -- |m| = (natAbs m : ℤ) by Int.abs_eq_natAbs
+      simp only [Int.abs_eq_natAbs, Int.toNat_natCast]
+    rw [habs_eq]
+    -- Now: (Int.natAbs m : ℝ) = |(↑m : ℝ)|
+    -- Nat.cast_natAbs: (m.natAbs : ℝ) = (|m| : ℤ → ℝ)
+    -- Int.cast_abs: |(↑m : ℝ)| = (|m| : ℤ → ℝ)
+    -- Combine: (m.natAbs : ℝ) = (|m| : ℝ) = |(↑m : ℝ)|
+    rw [← Int.cast_abs]
+    exact @Nat.cast_natAbs ℝ _ m
+  rw [h4] at h1
+  -- Now h1: (periodization_cutoff B : ℝ) < |(↑m : ℝ)|
+  -- h3: (periodization_cutoff B : ℝ) ≥ B + 1 > B + 1/2
+  -- So |(↑m : ℝ)| > B + 1/2
+  linarith
 
 /-- The tsum over ℤ equals a finite sum when terms vanish outside [-N, N]. -/
 lemma tsum_eq_finite_sum_g (B t θ : ℝ) (hB : B > 0)
@@ -195,8 +275,43 @@ lemma tsum_eq_finite_sum_g (B t θ : ℝ) (hB : B > 0)
   apply g_zero_beyond_cutoff B t θ m hB hθ
   -- Need: periodization_cutoff B < |m|.toNat from m ∉ Finset.Icc
   simp only [Finset.mem_Icc, not_and_or, not_le] at hm
-  -- Elementary: m < -N or m > N implies |m| > N
-  sorry
+  -- hm : m < -(N : ℤ) ∨ (N : ℤ) < m where N = periodization_cutoff B
+  -- Goal: N < |m|.toNat
+  -- Key: |m|.toNat = m.natAbs (via Int.abs_eq_natAbs + toNat)
+  have h_eq : |m|.toNat = m.natAbs := by
+    simp only [Int.abs_eq_natAbs, Int.toNat_natCast]
+  rw [h_eq]
+  -- Now need: periodization_cutoff B < m.natAbs
+  -- From hm: either m < -(N : ℤ) or (N : ℤ) < m
+  -- In either case, |m| > N, so m.natAbs > N
+  cases hm with
+  | inl h_neg =>
+    -- m < -(N : ℤ), so m ≤ 0 and -m > N
+    have hneg : m ≤ 0 := by
+      have hN : (periodization_cutoff B : ℤ) ≥ 0 := Int.natCast_nonneg _
+      linarith
+    have hposm : -m ≥ 0 := neg_nonneg.mpr hneg
+    have h1 : (periodization_cutoff B : ℤ) < -m := by linarith
+    -- ((-m).natAbs : ℤ) = -m by Int.natAbs_of_nonneg since -m ≥ 0
+    have h2 : ((-m).natAbs : ℤ) = -m := Int.natAbs_of_nonneg hposm
+    -- (-m).natAbs = m.natAbs by Int.natAbs_neg
+    have h3 : (-m).natAbs = m.natAbs := Int.natAbs_neg m
+    -- So (m.natAbs : ℤ) = -m
+    have h4 : (m.natAbs : ℤ) = -m := by rw [← h3, h2]
+    -- (N : ℤ) < -m = (m.natAbs : ℤ)
+    have h5 : (periodization_cutoff B : ℤ) < (m.natAbs : ℤ) := by rw [h4]; exact h1
+    exact Nat.cast_lt.mp h5
+  | inr h_pos =>
+    -- (N : ℤ) < m, so m ≥ 0 and m > N
+    have hpos : m ≥ 0 := by
+      have hN : (periodization_cutoff B : ℤ) ≥ 0 := Int.natCast_nonneg _
+      linarith
+    have h1 : (periodization_cutoff B : ℤ) < m := h_pos
+    -- (m.natAbs : ℤ) = m by Int.natAbs_of_nonneg since m ≥ 0
+    have h2 : (m.natAbs : ℤ) = m := Int.natAbs_of_nonneg hpos
+    -- (N : ℤ) < m = (m.natAbs : ℤ)
+    have h3 : (periodization_cutoff B : ℤ) < (m.natAbs : ℤ) := by rw [h2]; exact h1
+    exact Nat.cast_lt.mp h3
 
 /-- Periodization: ∫_{-1/2}^{1/2} P_A(θ) dθ = arch_term(Φ_{B,t})
 
@@ -224,10 +339,22 @@ theorem periodization_lemma (B t : ℝ) (hB : B > 0) (ht : t > 0) :
 lemma ToeplitzFourier_P_A_diag (M : ℕ) (B t : ℝ) :
     RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (P_A B t) (i0 M) (i0 M) =
       ∫ θ in (-1/2 : ℝ)..(1/2), P_A B t θ := by
-  -- At i0, fourier_index = M - M = 0, so the Toeplitz entry is ∫ P_A(θ) · exp(0) dθ = ∫ P_A(θ) dθ
-  simp only [RayleighFourier.ToeplitzMatrix_Fourier_real]
-  -- This requires unfolding ToeplitzEntry and showing that at diagonal the exp factor is 1
-  sorry
+  -- At i0, the index is M, so i - j = M - M = 0, and exp(0) = 1
+  simp only [RayleighFourier.ToeplitzMatrix_Fourier_real, RayleighFourier.ToeplitzEntry]
+  -- i0 M has value M as ℕ
+  have h_val : (i0 M : ℕ) = M := rfl
+  -- Show the exp factor is 1 when i = j = M
+  have h_exp : ∀ θ : ℝ, Complex.exp (2 * Real.pi * Complex.I * ((M : ℂ) - (M : ℂ)) * (θ : ℂ)) = 1 := by
+    intro θ
+    simp only [sub_self, mul_zero, zero_mul, Complex.exp_zero]
+  -- The integral becomes ∫ (P_A θ : ℂ) * 1, and .re of that is ∫ P_A θ
+  simp_rw [h_val, h_exp, mul_one]
+  -- (∫ (P_A θ : ℂ)).re = ∫ P_A θ for real-valued P_A
+  -- Use: re (∫ f : ℂ) = ∫ re f when f is real-valued
+  have h_re_eq : ∀ θ : ℝ, ((P_A B t θ : ℝ) : ℂ).re = P_A B t θ := fun θ => Complex.ofReal_re _
+  -- Goal: (∫ θ, ↑(P_A θ)).re = ∫ θ, P_A θ
+  -- This requires showing the integral commutes with re
+  sorry  -- Needs integrability argument for interval integral
 
 /-- Combining: Toeplitz[i0,i0] = arch_term(Φ). -/
 theorem ToeplitzFourier_P_A_diag_eq_arch (M : ℕ) (B t : ℝ) (hB : B > 0) (ht : t > 0) :

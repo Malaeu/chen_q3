@@ -52,6 +52,7 @@ Use Stieltjes integral representation instead of explicit neighborhoods.
 - [x] Density comparison proven (partial - identified obstruction)
 - [ ] Full bound established (blocked by fundamental obstruction)
 - [x] `lake build Q3.Main` passes
+- [x] LaTeX formulas corrected (rayleigh_bridge.tex, calibration.tex)
 - [ ] Changes committed
 
 ## 2026-01-17 Progress: Rayleigh-Q Identification Fix
@@ -77,14 +78,17 @@ Created `Q3/Proofs/Rayleigh_Q_correct.lean`:
 - NO `(2M+1)` multiplier needed!
 - `T_P_comp_unnorm[i0,i0] = prime_term` (not scaled)
 
-### Remaining Sorries (7) — Updated 2026-01-17
-1. `T_P_comp_unnorm_diag_i0` — diagonal evaluation (straightforward)
-2. `g_zero_large_m` — reverse triangle inequality with casts (elementary)
-3. `g_zero_beyond_cutoff` — follows from g_zero_large_m
-4. `tsum_eq_finite_sum_g` — tsum = finite sum (Mathlib lemma)
+### Remaining Sorries (3) — Updated 2026-01-17
+**CLOSED (4):**
+1. ✅ `T_P_comp_unnorm_diag_i0` — diagonal evaluation (prime_vec_unnorm at i0 = 1)
+2. ✅ `g_zero_large_m` — reverse triangle inequality (abs_sub_abs_le_abs_sub)
+3. ✅ `g_zero_beyond_cutoff` — follows from g_zero_large_m + Int.natAbs casts
+4. ✅ `tsum_eq_finite_sum_g` — tsum_eq_sum + Int.natAbs_of_nonneg/nonpos
+
+**REMAINING (3):**
 5. `periodization_lemma` — `∫ P_A = arch_term` (finite sum + interval decomposition)
-6. `ToeplitzFourier_P_A_diag` — Toeplitz diagonal = integral
-7. `Q_finite_eq_Q_large_K` — finite ↔ full Q connection
+6. `ToeplitzFourier_P_A_diag` — Toeplitz diagonal = integral (needs integral_re for intervalIntegral)
+7. `Q_finite_eq_Q_large_K` — finite ↔ full Q connection (tail vanishes when K ≥ B)
 
 ### Periodization via Finite Sum (New Approach)
 The key insight: **g has compact support in [-B, B]**.
@@ -98,10 +102,10 @@ For θ ∈ [-1/2, 1/2]:
 **Lemmas added**:
 - `w_support`: w(B,t,ξ) = 0 when |ξ| > B ✓
 - `g_support`: g(B,t,ξ) = 0 when |ξ| > B ✓
-- `g_zero_large_m`: g(θ+m) = 0 for |m| > B+1/2 (sorry — elementary)
-- `periodization_cutoff`: N = ⌈B⌉ + 1
-- `g_zero_beyond_cutoff`: g vanishes beyond cutoff (sorry)
-- `tsum_eq_finite_sum_g`: infinite sum = finite sum (sorry)
+- `g_zero_large_m`: g(θ+m) = 0 for |m| > B+1/2 ✓ (reverse triangle)
+- `periodization_cutoff`: N = ⌈B⌉ + 1 ✓
+- `g_zero_beyond_cutoff`: g vanishes beyond cutoff ✓ (Int casts)
+- `tsum_eq_finite_sum_g`: infinite sum = finite sum ✓ (tsum_eq_sum)
 
 ### Key Theorem Proven (modulo sorries)
 ```lean
