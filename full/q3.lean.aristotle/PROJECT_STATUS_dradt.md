@@ -111,11 +111,9 @@
 ---
  AGENTIC RUN #2 - ОСТАЛЬНЫЕ SORRY
 
- Agent 1: Q_Lipschitz sorry
+ Agent 1: Q_Lipschitz (CLOSED)
 
- - Файл: Q3/Proofs/Q_Lipschitz.lean:165
- - Documented proof strategy уже есть
- - Использовать: a_star_bdd_on_compact, W_sum bounded, MeasureTheory
+ - Закрыто в `Q3/Proofs/Q_Lipschitz_bridge_v2.lean` (clean bridge, no sorry)
 
  Agent 2: Q_nonneg_bridge sorry (3 штуки)
 
@@ -146,7 +144,7 @@
 
  Run #2:
 
- - Q3/Proofs/Q_Lipschitz.lean:165 - закрыть sorry
+ - (CLOSED) Q3/Proofs/Q_Lipschitz_bridge_v2.lean
  - Q3/Proofs/Q_nonneg_bridge.lean:166,202,215 - закрыть 3 sorry
  - Q3/Proofs/A1_density.lean: sum_atoms_in_cone → sorryAx (закрыть)
 
