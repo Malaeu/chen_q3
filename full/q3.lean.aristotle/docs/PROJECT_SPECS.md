@@ -10,6 +10,12 @@
 
 ---
 
+## §0.1 Audit guardrails (prevent drift)
+
+- Canonical checklist: `full/q3.lean.aristotle/docs/CHECKLIST_AUDIT_2026_01_17.md`.
+- Quick invariant check: `full/q3.lean.aristotle/scripts/check_audit_invariants.sh`.
+- Before merge: run the script; if any anchor changed, update the checklist.
+
 ## §1. Normalization / sign / torus (LOCKED)
 
 ### Sign (MINUS)

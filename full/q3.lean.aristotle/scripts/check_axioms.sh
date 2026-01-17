@@ -37,6 +37,16 @@ else
 fi
 echo ""
 
+# Step 0.6: Audit invariants
+echo "═══ Step 0.6: Audit invariants ═══"
+if scripts/check_audit_invariants.sh; then
+    echo "✓ Audit invariants successful"
+else
+    echo "✗ Audit invariants FAILED"
+    exit 1
+fi
+echo ""
+
 # Step 1: Build
 echo "═══ Step 1: Building Q3.Main ═══"
 if lake build Q3.Main 2>&1 | tail -5; then
