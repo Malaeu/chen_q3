@@ -17,7 +17,7 @@ Tier-2 Theorems (9 total):
 3. W_sum_finite - FULLY PROVEN
 4. off_diag_exp_sum - clean chain (sorry)
 5. RKHS_contraction - clean chain (sorry)
-6. Q_Lipschitz - clean chain (sorry)
+6. Q_Lipschitz - clean chain (closed)
 7. A3_bridge - clean chain (sorry)
 8. Q_nonneg_on_atoms - clean chain (sorry)
 9. A1_density - clean chain (sorry)

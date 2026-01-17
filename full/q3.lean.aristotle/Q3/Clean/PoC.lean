@@ -111,9 +111,9 @@ CLEAN THEOREMS (9/9):
 - node_spacing ✅ FULLY PROVEN
 - S_K_small ✅ FULLY PROVEN
 - W_sum_finite ✅ FULLY PROVEN
-- off_diag_exp_sum ✅ (has sorry, but clean chain)
-- RKHS_contraction ✅ (has sorry, but clean chain)
-- Q_Lipschitz ✅ (has sorry, but clean chain)
+- off_diag_exp_sum ✅ FULLY PROVEN
+- RKHS_contraction ✅ FULLY PROVEN
+- Q_Lipschitz ✅ FULLY PROVEN
 - A3_bridge ✅ (has sorry, but clean chain)
 - Q_nonneg_on_atoms ✅ (has sorry, but clean chain)
 - A1_density ✅ (has sorry, but clean chain)

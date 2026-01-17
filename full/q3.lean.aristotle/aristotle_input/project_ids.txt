@@ -45,3 +45,4 @@ A3_bridge_v4_real_TP.md: c35f3088-0755-4b8c-a33b-bd03064dbfea
 RKHS_cap_t1_proshka.md: bef6fa7b-2cc4-424a-85b2-8919ac52b1fe
 weight_sum_bound.md: fb91fbb3-4c87-4740-939a-c672648a38ae
 P_A_continuous_v2.md: 796496eb-9eee-4b29-861e-4922363962d7  2026-01-17 03:41
+478a2302-35dd-4042-9994-27e4f7e95822  Q_Lipschitz_bridge_v2_close
