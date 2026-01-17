@@ -53,7 +53,28 @@ Use Stieltjes integral representation instead of explicit neighborhoods.
 - [ ] Full bound established (blocked by fundamental obstruction)
 - [x] `lake build Q3.Main` passes
 - [x] LaTeX formulas corrected (rayleigh_bridge.tex, calibration.tex)
+- [x] P_A_continuous axiom closed (11 → 10 axioms)
 - [ ] Changes committed
+
+## 2026-01-17 Progress: P_A_continuous Axiom Closed
+
+**Achievement:** Closed `P_A_continuous` axiom in `A3_FLOOR_v22_stage4_floor.lean`.
+
+**Approach:** Local finiteness via compact support of kernel `g`.
+
+**Key lemmas added:**
+- `P_A_periodic`: P_A is 1-periodic
+- `continuous_g_B_min_t_sym`: g(B_min, t_sym, ·) is continuous
+- `g_support_B_min`: g vanishes when |ξ| ≥ B_min = 3
+- `P_A_locally_finite_sum`: For any θ₀, P_A equals a finite sum in neighborhood
+
+**Proof strategy:**
+1. g has compact support [-B_min, B_min]
+2. For θ ∈ (θ₀ - 1/2, θ₀ + 1/2), only finitely many terms g(θ+m) are nonzero
+3. P_A locally = 2π × (finite sum of continuous functions) = continuous
+4. Local continuity + arbitrary θ₀ ⟹ global continuity
+
+**Axiom count:** 11 → 10
 
 ## 2026-01-17 Progress: Rayleigh-Q Identification Fix
 

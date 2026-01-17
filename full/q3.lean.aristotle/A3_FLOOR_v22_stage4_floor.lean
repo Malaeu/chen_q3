@@ -18,9 +18,150 @@ def g (B t ξ : ℝ) : ℝ := Q3.a ξ * w B t ξ
 def P_A (B t θ : ℝ) : ℝ :=
   2 * Real.pi * ∑' (m : ℤ), g B t (θ + m)
 
-/-- Assumption: continuity of the periodized symbol at the A3_FLOOR parameters.
-    TODO: replace with a proof using continuity of `Q3.a` and compact support of `w`. -/
-axiom P_A_continuous : Continuous (P_A B_min t_sym)
+/-- P_A is 1-periodic: P_A(θ + 1) = P_A(θ). -/
+lemma P_A_periodic : Function.Periodic (P_A B_min t_sym) 1 := by
+  intro θ
+  simp only [P_A]
+  congr 1
+  -- Need: Σ' m, g(θ + 1 + m) = Σ' m, g(θ + m)
+  -- θ + 1 + m = θ + (m + 1), and reindex n = m + 1
+  have h1 : ∀ m : ℤ, g B_min t_sym (θ + 1 + m) = g B_min t_sym (θ + (m + 1)) := by
+    intro m; ring_nf
+  simp_rw [h1]
+  -- Use that sum is invariant under index shift
+  have h2 := Equiv.tsum_eq (Equiv.addRight (1 : ℤ)) (fun m => g B_min t_sym (θ + m))
+  convert h2 using 2
+  ext m
+  congr 1
+  -- Goal: θ + (↑m + 1) = θ + ↑(Equiv.addRight 1 m)
+  -- Equiv.addRight 1 m = m + 1 : ℤ, and ↑(m + 1) = ↑m + 1
+  have h3 : (Equiv.addRight 1 m : ℤ) = m + 1 := rfl
+  simp only [h3, Int.cast_add, Int.cast_one]
+
+/-- g B_min t_sym is continuous. -/
+lemma continuous_g_B_min_t_sym : Continuous (fun ξ => g B_min t_sym ξ) := by
+  simp only [g]
+  have ha : Continuous Q3.a := by
+    have hpi : (2 * Real.pi) ≠ 0 := by nlinarith [Real.pi_pos]
+    have h_eq : Q3.a = (fun ξ => (1 / (2 * Real.pi)) * Q3.a_star ξ) := by
+      ext ξ
+      simp only [Q3.a_star]
+      field_simp [hpi]
+    rw [h_eq]
+    exact continuous_const.mul Q3.a_star_continuous
+  have hw : Continuous (fun ξ => w B_min t_sym ξ) := by
+    simp only [w]
+    have h_lin : Continuous (fun ξ => 1 - |ξ| / B_min) :=
+      continuous_const.sub (continuous_abs.div_const B_min)
+    have h_max : Continuous (fun ξ => max (0 : ℝ) (1 - |ξ| / B_min)) :=
+      continuous_const.max h_lin
+    have h_exp : Continuous (fun ξ => Real.exp (-4 * Real.pi ^ 2 * t_sym * ξ ^ 2)) := by
+      have h1 : Continuous (fun ξ => -4 * Real.pi ^ 2 * t_sym * ξ ^ 2) :=
+        continuous_const.mul (continuous_pow 2)
+      exact Real.continuous_exp.comp h1
+    exact h_max.mul h_exp
+  exact ha.mul hw
+
+/-- g has compact support: g(ξ) = 0 when |ξ| ≥ B_min. -/
+lemma g_support_B_min (ξ : ℝ) (h : B_min ≤ |ξ|) : g B_min t_sym ξ = 0 := by
+  simp only [g, w]
+  have hB : (0 : ℝ) < B_min := by norm_num [B_min]
+  have h_lin : 1 - |ξ| / B_min ≤ 0 := by
+    have h1 : 1 ≤ |ξ| / B_min := by
+      rw [one_le_div hB]
+      exact h
+    linarith
+  simp only [max_eq_left h_lin, zero_mul, mul_zero]
+
+/-- For any θ₀, there exists N such that on (θ₀ - 1/2, θ₀ + 1/2),
+    P_A equals a finite sum over |m| ≤ N. -/
+lemma P_A_locally_finite_sum (θ₀ : ℝ) :
+    ∃ N : ℕ, ∀ θ ∈ Set.Ioo (θ₀ - 1/2) (θ₀ + 1/2),
+      P_A B_min t_sym θ = 2 * Real.pi * ∑ m ∈ Finset.Icc (-(N : ℤ)) N, g B_min t_sym (θ + m) := by
+  -- For B_min = 3, if θ ∈ (θ₀ - 1/2, θ₀ + 1/2) and |m| > ⌈|θ₀|⌉ + 4, then g(θ + m) = 0
+  use Nat.ceil |θ₀| + 4
+  intro θ hθ
+  unfold P_A
+  congr 1
+  apply tsum_eq_sum
+  intro m hm
+  simp only [Finset.mem_Icc, not_and, not_le] at hm
+  -- m ∉ [-(⌈|θ₀|⌉ + 4), ⌈|θ₀|⌉ + 4] means |m| > ⌈|θ₀|⌉ + 4
+  have h_large : B_min ≤ |θ + m| := by
+    have hθ_bound : |θ| < |θ₀| + 1/2 := by
+      have h1 : θ₀ - 1/2 < θ := hθ.1
+      have h2 : θ < θ₀ + 1/2 := hθ.2
+      rw [abs_lt]
+      constructor
+      · by_cases hθ₀_neg : θ₀ ≤ 0
+        · have : |θ₀| = -θ₀ := abs_of_nonpos hθ₀_neg
+          linarith
+        · push_neg at hθ₀_neg
+          have : |θ₀| = θ₀ := abs_of_pos hθ₀_neg
+          linarith
+      · by_cases hθ₀_neg : θ₀ ≤ 0
+        · have : |θ₀| = -θ₀ := abs_of_nonpos hθ₀_neg
+          linarith
+        · push_neg at hθ₀_neg
+          have : |θ₀| = θ₀ := abs_of_pos hθ₀_neg
+          linarith
+    have hN : (Nat.ceil |θ₀| : ℤ) + 4 < |m| := by
+      by_cases h : m < -((Nat.ceil |θ₀| : ℤ) + 4)
+      · have hm_neg : m < 0 := by omega
+        simp only [abs_of_neg hm_neg]
+        omega
+      · push_neg at h
+        have := hm h
+        have hm_nonneg : 0 ≤ m := by omega
+        simp only [abs_of_nonneg hm_nonneg]
+        exact this
+    have h_ceil : |θ₀| ≤ Nat.ceil |θ₀| := Nat.le_ceil |θ₀|
+    have h_m_real : |θ₀| + 4 < |(m : ℝ)| := by
+      have h1 : (Nat.ceil |θ₀| : ℝ) + 4 < |m| := by exact_mod_cast hN
+      calc |θ₀| + 4 ≤ (Nat.ceil |θ₀| : ℝ) + 4 := by linarith
+        _ < |m| := h1
+        _ = |(m : ℝ)| := by simp [Int.cast_abs]
+    -- |θ + m| ≥ |m| - |θ| > |θ₀| + 4 - (|θ₀| + 1/2) > 3 = B_min
+    have h_tri : |(m : ℝ)| - |θ| ≤ |θ + (m : ℝ)| := by
+      have h1 := abs_sub_abs_le_abs_sub (m : ℝ) (-θ)
+      simp only [abs_neg, sub_neg_eq_add] at h1
+      calc |(m : ℝ)| - |θ| ≤ |(m : ℝ) + θ| := h1
+        _ = |θ + (m : ℝ)| := by ring_nf
+    have h_final : (B_min : ℝ) < |θ + (m : ℝ)| := by
+      calc (B_min : ℝ) = 3 := by norm_num [B_min]
+        _ < 3.5 := by norm_num
+        _ = |θ₀| + 4 - (|θ₀| + 1/2) := by ring
+        _ < |(m : ℝ)| - |θ| := by linarith
+        _ ≤ |θ + (m : ℝ)| := h_tri
+    have h_eq : |θ + (m : ℝ)| = |θ + m| := by norm_cast
+    linarith [h_final, h_eq.symm ▸ h_final]
+  exact g_support_B_min (θ + m) h_large
+
+/-- Continuity of the periodized symbol at the A3_FLOOR parameters. -/
+theorem P_A_continuous : Continuous (P_A B_min t_sym) := by
+  rw [continuous_iff_continuousAt]
+  intro θ₀
+  -- Use local finiteness: near θ₀, P_A is a finite sum
+  obtain ⟨N, hN⟩ := P_A_locally_finite_sum θ₀
+  -- The finite sum function is continuous
+  let f := fun θ => 2 * Real.pi * ∑ m ∈ Finset.Icc (-(N : ℤ)) N, g B_min t_sym (θ + m)
+  have h_sum_cont : Continuous f := by
+    apply continuous_const.mul
+    apply continuous_finset_sum
+    intro m _
+    exact continuous_g_B_min_t_sym.comp (continuous_id.add continuous_const)
+  -- P_A equals f on a neighborhood of θ₀
+  have h_mem : Set.Ioo (θ₀ - 1/2) (θ₀ + 1/2) ∈ nhds θ₀ := by
+    apply Ioo_mem_nhds <;> linarith
+  have h_eq : ∀ θ ∈ Set.Ioo (θ₀ - 1/2) (θ₀ + 1/2), P_A B_min t_sym θ = f θ := hN
+  -- f is continuous at θ₀
+  have h_f_cont : ContinuousAt f θ₀ := h_sum_cont.continuousAt
+  -- P_A =ᶠ f near θ₀
+  have h_eq_f : P_A B_min t_sym =ᶠ[nhds θ₀] f := by
+    apply Filter.eventuallyEq_of_mem h_mem
+    intro θ hθ
+    exact h_eq θ hθ
+  exact h_f_cont.congr h_eq_f.symm
 
 lemma a_antitone_on_Ioi : AntitoneOn Q3.a (Set.Ioi 0) := by
   intro x hx y hy hxy
