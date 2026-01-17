@@ -18,12 +18,12 @@ roots = ["aristotle_output"]
 # A3_FLOOR standalone files in root (dependency chain: v22 → v20, v19)
 [[lean_lib]]
 name = "A3_FLOOR_v19_monotonicity"
-globs = ["A3_FLOOR_v19_monotonicity.lean"]
+roots = ["A3_FLOOR_v19_monotonicity"]
 
 [[lean_lib]]
 name = "A3_FLOOR_v20_bounds_core"
-globs = ["A3_FLOOR_v20_bounds_core.lean"]
+roots = ["A3_FLOOR_v20_bounds_core"]
 
 [[lean_lib]]
 name = "A3_FLOOR_v22_stage4_floor"
-globs = ["A3_FLOOR_v22_stage4_floor.lean"]
+roots = ["A3_FLOOR_v22_stage4_floor"]

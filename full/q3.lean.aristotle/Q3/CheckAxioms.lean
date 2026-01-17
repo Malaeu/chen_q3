@@ -90,10 +90,10 @@ open Q3.Main
 
 ### Local Axioms:
 - `Q3.Main.Weil_cone_continuous` : Test functions are continuous
-- `A3_FLOOR_v22_stage4_floor.P_A_continuous` : continuity of P_A at (B_min, t_sym)
 
 ### THEOREM (not axiom!):
 - `Q3.T5.T5_transfer` : Q ≥ 0 on W_K (proven from A1 + A2 + Atoms)
+- `A3_FLOOR_v22_stage4_floor.P_A_continuous` : continuity of P_A at (B_min, t_sym)
 
 ## Verification
 

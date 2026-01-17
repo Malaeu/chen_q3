@@ -48,14 +48,15 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **11 axioms** (8 project + 3 standard)
+Result: **10 axioms** (7 project + 3 standard)
 Note: 12 → 11 (closed arch/prime Lipschitz), 11 → 10 (closed RKHS contraction bridge),
-10 → 9 (closed A1_density via theorem wiring), 9 → 11 (A3 Fourier axiom + P_A_continuous in chain).
+10 → 9 (closed A1_density via theorem wiring), 9 → 10 (A3 Fourier axiom in chain),
+10 → 11 (P_A_continuous in chain), 11 → 10 (P_A_continuous closed).
 
 - Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - External/classical: `Weil_criterion`, `a_star_pos`, `a_star_bdd_on_compact`,
   `a_star_continuous`, `a_star_even`, `Schur_test`
-- Q3 paper (closable): `P_A_continuous`, `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- Q3 paper (closable): `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
 
 ## Critical Chain (ASCII)
 
@@ -78,24 +79,20 @@ RH_of_Weil_and_Q3
 
 ## Active Next Step (closing, not wiring)
 
-1) Prove `P_A_continuous` (remove axiom in `A3_FLOOR_v22_stage4_floor.lean`).
-2) Prove `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` via Rayleigh-Q identification
+1) Prove `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` via Rayleigh-Q identification
    (tex Theorem 3.3): `⟨(T_M[P_A]-T_P)1,1⟩ = Q(Φ)`.
-3) Then wire the proof into `Q3/Atoms_Positive.lean` and remove the axiom file.
+2) Then wire the proof into `Q3/Atoms_Positive.lean` and remove the axiom file.
 
 ## Closure Tracker (remaining axioms)
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `P_A_continuous` | `A3_FLOOR_v22_stage4_floor.lean` | tsum continuity | **Aristotle: b2145057 (QUEUED)** | **ARISTOTLE** |
 | `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | Rayleigh-Q identification | See `Rayleigh_Q_identification.lean` | **IN PROGRESS** |
 
 ## Progress Log (2026-01-16)
 
 **P_A_continuous**:
-- Submitted to Aristotle (project b2145057-c737-403d-b532-c79454c9cf69)
-- Current code has `sorry` pending proof
-- Key insight: P_A is locally a finite sum due to compact support of w
+- CLOSED in `A3_FLOOR_v22_stage4_floor.lean` (local finiteness + periodicity proof)
 
 **Q_nonneg_on_atoms (Rayleigh-Q identification)**:
 - Created `Q3/Proofs/Rayleigh_Q_identification.lean` with:
@@ -108,8 +105,7 @@ RH_of_Weil_and_Q3
   - `T_P_comp_real_diag` (sorry - algebraic)
 - Remaining: periodization integral = arch_term, final assembly
 
-**Aristotle projects (all QUEUED)**:
-- b2145057 (P_A_continuous)
+**Aristotle projects (Rayleigh variants)**:
 - 200eb072, 5e36515f, e9f53e97, eeca690a (Rayleigh sandbox variants)
 
 ## Legacy / History (2026-01-14)

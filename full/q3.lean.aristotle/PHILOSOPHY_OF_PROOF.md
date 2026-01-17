@@ -41,11 +41,11 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│  IF these 8 mathematical statements are true (6 classical + 2 Q3)  │
+│  IF these 7 mathematical statements are true (6 classical + 1 Q3)  │
 │  THEN RH is true.                                                  │
 │                                                                    │
 │  Lean verifies: the logical implication is CORRECT.                │
-│  Human verifies: the 8 statements match what's in the paper.       │
+│  Human verifies: the 7 statements match what's in the paper.       │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -65,7 +65,7 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ## Axiom Classification
 
-Our formalization depends on exactly **8 axioms** (beyond Standard Lean):
+Our formalization depends on exactly **7 axioms** (beyond Standard Lean):
 
 ### Level 0: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
 ```
@@ -88,10 +88,9 @@ These are well-known results. Citations:
 - Weil, A. (1952). "Sur les 'formules explicites' de la théorie des nombres premiers"
 - Standard complex analysis (digamma function)
 
-### Level 2: Q3 Paper Contributions (2) — OUR MATHEMATICAL CONTENT
+### Level 2: Q3 Paper Contributions (1) — OUR MATHEMATICAL CONTENT
 ```
 Q_nonneg_on_atoms_of_A3_Fourier_RKHS — Q ≥ 0 on atoms (Theorem 5.3, Fourier A3)
-P_A_continuous                       — continuity of P_A at (B_min, t_sym)
 ```
 These are the novel contributions proven in the Q3 paper.
 `A1_density_WK` is now a theorem (see `Q3/Proofs/A1_density.lean`).
@@ -128,7 +127,6 @@ Expected output:
   Q3.a_star_bdd_on_compact,             -- Level 1: Analysis
   Q3.a_star_continuous,                 -- Level 1: Analysis
   Q3.a_star_even,                       -- Level 1: Analysis
-  P_A_continuous,                       -- Level 2: Q3 paper
   Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom -- Level 2: Q3 paper
 ]
 ```
@@ -207,9 +205,8 @@ Our axioms can be eliminated one by one:
 | `a_star_continuous` | Continuity of a* from Mathlib | Low |
 | `Weil_criterion` | Major project (Weil explicit formula) | Very High |
 | `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | Follows from A3 + RKHS | Medium |
-| `P_A_continuous` | Continuity of P_A at (B_min, t_sym) | Low |
 
-Each elimination makes the proof stronger. Current state: **structure verified, with arch/prime Lipschitz and RKHS contraction already closed.**
+Each elimination makes the proof stronger. Current state: **structure verified, with arch/prime Lipschitz, RKHS contraction, and P_A_continuous closed.**
 
 ---
 

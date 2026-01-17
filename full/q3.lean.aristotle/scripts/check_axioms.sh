@@ -60,14 +60,14 @@ echo "═══ Step 3: Axiom Count ═══"
 
 # Count standard axioms from full output (propext is on the header line)
 STANDARD_COUNT=$(echo "$AXIOMS" | grep -oE "propext|Classical.choice|Quot.sound" | wc -l | tr -d ' ')
-# Strip the header label but keep the axiom list (P_A_continuous lives on the header line).
+# Strip the header label but keep the axiom list.
 AXIOMS_ONLY=$(echo "$AXIOMS" | sed "s/'Q3.Main.RH_of_Weil_and_Q3' depends on axioms: //")
-PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\.|P_A_continuous" | wc -l | tr -d ' ')
+PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: 3)"
-echo "Project:       $PROJECT_COUNT (expected: 8)"
-echo "TOTAL:         $TOTAL (expected: 11)"
+echo "Project:       $PROJECT_COUNT (expected: 7)"
+echo "TOTAL:         $TOTAL (expected: 10)"
 echo ""
 
 # Step 4: Classification
@@ -78,7 +78,7 @@ echo "$AXIOMS" | grep -E "Weil_criterion|a_star_pos|a_star_bdd|a_star_continuous
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
-echo "$AXIOMS_ONLY" | grep -E "RKHS_contraction|Q_nonneg_on_atoms|P_A_continuous" | sed 's/^/  /' || echo "  (none found)"
+echo "$AXIOMS_ONLY" | grep -E "RKHS_contraction|Q_nonneg_on_atoms" | sed 's/^/  /' || echo "  (none found)"
 
 echo ""
 echo "Level 3 (Bridge Lemmas):"
@@ -97,11 +97,10 @@ EXPECTED_AXIOMS=(
     "Q3.a_star_continuous"
     "Q3.a_star_even"
     "Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom"
-    "P_A_continuous"
 )
 
 UNKNOWN_AXIOMS=""
-for axiom in $(echo "$AXIOMS_ONLY" | grep -E "Q3\.|P_A_continuous" | tr -d ' [],'); do
+for axiom in $(echo "$AXIOMS_ONLY" | grep -E "Q3\." | tr -d ' [],'); do
     FOUND=false
     for expected in "${EXPECTED_AXIOMS[@]}"; do
         if [[ "$axiom" == "$expected" ]]; then
@@ -128,7 +127,7 @@ echo ""
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                    VERIFICATION PASSED ✓                      ║"
 echo "║                                                                ║"
-echo "║  Axiom count: $TOTAL (8 Project + 3 Standard)                  ║"
+echo "║  Axiom count: $TOTAL (7 Project + 3 Standard)                  ║"
 echo "║  Philosophy: Compliant                                         ║"
 echo "║  Ready to commit!                                              ║"
 echo "╚════════════════════════════════════════════════════════════════╝"

@@ -436,3 +436,6 @@
 - 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/aristotle_input/periodization_lemma_v1.md` — 09:46
 - 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/aristotle_input/toeplitz_diag_v1.md` — 09:47
 - 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/aristotle_input/Q_finite_eq_Q_v1.md` — 09:48
+- 📄 `sandboxes/carleson/full/q3.lean.aristotle/CLAUDE.md` — 11:23
+- 📝 `sandboxes/carleson/full/q3.lean.aristotle/lakefile.toml` — 11:26
+- 📄 `sandboxes/carleson/full/q3.lean.aristotle/CLAUDE.md` — 11:29
