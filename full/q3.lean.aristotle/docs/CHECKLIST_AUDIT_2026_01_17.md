@@ -1,0 +1,93 @@
+# Checklist Audit 2026-01-17 (RH_Q3 dependency chain)
+
+Scope: verify the RH_Q3 dependency map (T0 -> A1' -> A2 -> RKHS transfer -> A3 -> Q>=0 -> RH)
+against the current TeX sources, project specs, and Lean files.
+
+Legend:
+- Paper: TeX label and file
+- Specs: internal specs pointer
+- Lean: relevant file/lemma
+- Status: OK / TODO (axiom/sorry/timeout)
+
+## 0. Dependency map
+- Paper: `full/sections/Weil_pack.tex` (Remark `rem:weil-dependency`),
+  `full/sections/introduction.tex` (table "Dependency map for the analytic chain")
+- Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Sections 0-6)
+- Lean: `Q3/Main.lean` (high-level chain overview)
+- Status: OK
+
+## 1. T0 normalization (Guinand-Weil crosswalk)
+- Paper: `full/sections/T0.tex` (Prop `prop:T0-GW`, Lemma `t0:lem:T0`)
+- Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Section 1)
+- Lean:
+  - `Q3/Main.lean:T0_normalization` (definitional `Q = arch_term - prime_term`)
+  - `Q3/Archive/01_T0_aristotle.lean` (full crosswalk proof)
+- Status: OK (formal crosswalk lives in archive; main uses definitional Q)
+
+## 2. A1' density (Fejer x heat cone dense on W_K)
+- Paper: `full/sections/A1prime.tex` (Theorem `a1:thm:A1-local-density`)
+- Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Section 3)
+- Lean:
+  - `Q3/Proofs/A1_density_bridge_v2.lean` (uses `Q3.Axioms`)
+  - `Q3/Clean/TheoremsTier2.lean:Q3.Clean.Theorems.A1_density`
+- Status: TODO (axiom-backed)
+
+## 3. A2 Lipschitz continuity
+- Paper: `full/sections/A2.tex` (Lemma `a2:lem:A2`, Cor `a2:cor:explicit-lip`)
+- Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Section 3)
+- Lean:
+  - `Q3/Proofs/Q_Lipschitz_bridge_v2.lean` (contains a sorry)
+  - `Q3/Proofs/Q_Lipschitz.lean` (axiom-backed)
+- Status: TODO (sorry / axioms)
+
+## 4. RKHS transfer and prime cap
+- Paper:
+  - `full/sections/RKHS/weil_isometry.tex` (Lemma `lem:rkhs-weil-isometry`)
+  - `full/sections/RKHS/core.tex` (Lemma `lem:rkhs-rayleigh-sampling-id`)
+  - `full/sections/RKHS/prime_cap.tex` (Cor `cor:uniform-prime-cap`)
+- Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Sections 3, 5)
+- Lean:
+  - `Q3/Proofs/off_diag_exp_sum_bridge_v2.lean` (now closes via root proof)
+  - `Q3/Proofs/RKHS_contraction_bridge_v2.lean` (sorry)
+  - `Q3/Proofs/RKHS_cap_rayleigh.lean` (rayleigh-style cap)
+- Status: TODO (contraction bridge still sorry)
+
+## 5. Period-1 normalization / Rayleigh identification
+- Paper:
+  - `full/sections/A3/calibration.tex` (normalization audit)
+  - `full/sections/A3/rayleigh_bridge.tex` (Theorem `thm:a3-rayleigh-identification`)
+- Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Rayleigh bridge notes)
+- Lean:
+  - `Q3/Proofs/Rayleigh_Q_identification.lean` (scaled form fixed)
+  - `integral_P_A_eq_arch_term` still heavy/timeout
+- Status: TODO (periodization lemma needs a fast proof)
+
+## 6. A3 uniform bridge / floor
+- Paper: `full/sections/A3/main.tex` (Theorem `thm:A3`),
+  `full/sections/A3/symbol_floor.tex` (Lemma `lem:uniform-arch-floor`)
+- Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Sections 3, 5)
+- Lean:
+  - `A3_FLOOR_v22_stage4_floor.lean` (arch floor proof)
+  - `Q3/Proofs/A3_bridge_v2.lean` (clean bridge; uses Tier-1 axioms)
+- Status: TODO (bridge is heuristic / Tier-1 axioms)
+
+## 7. Weil closure / RH
+- Paper: `full/sections/Main_closure.tex` (Theorem `thm:Main-positivity`),
+  `full/sections/Weil_pack.tex` (Theorem `thm:weil-sufficiency-pack`),
+  `full/sections/Weil_linkage.tex` (Weil criterion)
+- Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Section 6)
+- Lean:
+  - `Q3/Main.lean` (assembly uses axioms / Tier-2 bridges)
+- Status: TODO (depends on A1', A2, RKHS, A3)
+
+## 8. Normalization mismatch check (2M+1 scaling)
+- Paper: `full/sections/A3/rayleigh_bridge.tex` (discussion of scaling by `2M+1`)
+- Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Rayleigh bridge section)
+- Lean: `Q3/Proofs/Rayleigh_Q_identification.lean` (rescaled form)
+- Status: OK
+
+## Open issues captured for follow-up
+- `Q3/Proofs/Q_Lipschitz_bridge_v2.lean` (sorry)
+- `Q3/Proofs/RKHS_contraction_bridge_v2.lean` (sorry)
+- `Q3/Proofs/Rayleigh_Q_identification.lean:integral_P_A_eq_arch_term` (timeout)
+
