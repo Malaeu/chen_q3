@@ -114,6 +114,49 @@ noncomputable def T_P_comp_real (K B t : ℝ) (M : ℕ) [Fintype (Nodes K)] :
     Matrix (Fin (2 * M + 1)) (Fin (2 * M + 1)) ℝ :=
   fun i j => (T_P_comp K B t M i j).re
 
+/-! ## Unnormalized Prime Operator (Correct for Rayleigh-Q Identification)
+
+The NORMALIZED `prime_vec` has factor 1/√(2M+1), which causes:
+  T_P_comp[i0,i0] = (1/(2M+1)) * Σ w_Q(n) · φ(ξ_n)
+
+This leads to WRONG formula: (2M+1) · RQ(ToeplitzFourier(P_A) - T_P_comp) = Q(Φ)
+because it multiplies the arch part by (2M+1) too!
+
+CORRECT approach: Use UNNORMALIZED vectors so:
+  T_P_comp_unnorm[i0,i0] = Σ w_Q(n) · φ(ξ_n) = prime_term(Φ)
+
+Then: RQ(ToeplitzFourier(P_A) - T_P_comp_unnorm) = arch_term - prime_term = Q(Φ)
+WITHOUT any (2M+1) multiplier!
+-/
+
+/-- UNNORMALIZED evaluation vector at frequency xi (no 1/√(2M+1) factor). -/
+def prime_vec_unnorm (M : ℕ) (ξ : ℝ) : Fin (2 * M + 1) → ℂ :=
+  fun i =>
+    Complex.exp (-2 * Real.pi * Complex.I * ((fourier_index M i : ℤ) : ℂ) * (ξ : ℂ))
+
+/-- UNNORMALIZED compression prime operator: T_P_comp_unnorm[i,j] without 1/(2M+1) scaling.
+    At i0: T_P_comp_unnorm[i0,i0] = Σ w_Q(n) · φ(ξ_n) = prime_term(Φ). -/
+noncomputable def T_P_comp_unnorm (K B t : ℝ) (M : ℕ) [Fintype (Nodes K)] :
+    Matrix (Fin (2 * M + 1)) (Fin (2 * M + 1)) ℂ :=
+  fun i j =>
+    ∑ n : Nodes K,
+      ((w_Q n * fejer_heat_window B t (xi_n n)) : ℂ) *
+        prime_vec_unnorm M (xi_n n) i * conj (prime_vec_unnorm M (xi_n n) j)
+
+/-- Real part of UNNORMALIZED compression prime operator. -/
+noncomputable def T_P_comp_unnorm_real (K B t : ℝ) (M : ℕ) [Fintype (Nodes K)] :
+    Matrix (Fin (2 * M + 1)) (Fin (2 * M + 1)) ℝ :=
+  fun i j => (T_P_comp_unnorm K B t M i j).re
+
+/-- Relationship: T_P_comp = (1/(2M+1)) * T_P_comp_unnorm
+    (Because |prime_vec(i)|² = 1/(2M+1) · |prime_vec_unnorm(i)|²) -/
+lemma T_P_comp_eq_scaled_unnorm (K B t : ℝ) (M : ℕ) [Fintype (Nodes K)] :
+    T_P_comp K B t M = (1 / (2 * M + 1 : ℝ)) • T_P_comp_unnorm K B t M := by
+  ext i j
+  simp only [T_P_comp, T_P_comp_unnorm, prime_vec, prime_vec_unnorm, Matrix.smul_apply]
+  -- |1/√(2M+1)|² = 1/(2M+1)
+  sorry
+
 /-! ## Q Functional -/
 
 /-- Archimedean term: ∫ a*(ξ)·Φ(ξ) dξ -/
