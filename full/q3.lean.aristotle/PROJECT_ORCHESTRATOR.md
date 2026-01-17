@@ -1,7 +1,7 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
-Last Updated: 2026-01-16
+Last Updated: 2026-01-17
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -90,6 +90,36 @@ RH_of_Weil_and_Q3
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
 | `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | Wiring into atoms chain | Use `rayleigh_Q_eq_Q` + A3/RKHS | **IN PROGRESS** |
+
+## Quick Reference (closures + sorries)
+
+Snapshot: 2026-01-17
+Scope: project files only (excludes `.lake`, `archive`, `aristotle_input`, `aristotle_output`, `Clean`, `Q3/Archive`)
+
+**Remaining closable axiom (main chain):**
+- `Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` used in `full/q3.lean.aristotle/Q3/Atoms_Positive.lean:53`
+- wired in `full/q3.lean.aristotle/Q3/AxiomsTheorems.lean:156`
+- target theorem: `rayleigh_Q_eq_Q` in `full/q3.lean.aristotle/Q3/Proofs/Rayleigh_Q_identification.lean`
+
+**Sorries snapshot:**
+- `full/q3.lean.aristotle/Proofs/A1_density.lean:76`
+- `full/q3.lean.aristotle/Proofs/A1_density_bridge_v2.lean:50`
+- `full/q3.lean.aristotle/Proofs/A1_density_bridge_v2.lean:57`
+- `full/q3.lean.aristotle/Proofs/A3_bridge.lean:173`
+- `full/q3.lean.aristotle/Proofs/A3_bridge_v2.lean:31`
+- `full/q3.lean.aristotle/Proofs/A3_bridge_v2.lean:38`
+- `full/q3.lean.aristotle/Proofs/Q_Lipschitz_bridge_v2.lean:119`
+- `full/q3.lean.aristotle/Proofs/Q_nonneg_bridge_v2.lean:49`
+- `full/q3.lean.aristotle/Proofs/Q_nonneg_bridge_v2.lean:59`
+- `full/q3.lean.aristotle/Proofs/RKHS_contraction_bridge_v2.lean:125`
+- `full/q3.lean.aristotle/Proofs/RKHS_contraction_bridge_v2.lean:207`
+- `full/q3.lean.aristotle/Proofs/off_diag_exp_sum_bridge_v2.lean:97`
+- `full/q3.lean.aristotle/Proofs/off_diag_exp_sum_bridge_v2.lean:115`
+- `full/q3.lean.aristotle/UniformArchFloor_Combined.lean:251`
+- `full/q3.lean.aristotle/UniformArchFloor_Combined.lean:252`
+- `full/q3.lean.aristotle/UniformArchFloor_Combined.lean:257`
+
+No `sorry` in `full/q3.lean.aristotle/Q3` (non-archive) at last scan.
 
 ## Progress Log (2026-01-16)
 

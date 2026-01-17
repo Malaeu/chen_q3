@@ -1,0 +1,32 @@
+#!/bin/bash
+# Swarm command wrapper
+# Usage: ./scripts/swarm <command>
+
+SWARM_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.claude/swarm" && pwd)"
+
+case "$1" in
+    start|watch)
+        "${SWARM_DIR}/scripts/swarm_watcher.sh" &
+        disown
+        echo "Watcher started"
+        ;;
+    stop)
+        "${SWARM_DIR}/scripts/swarm_coordinator.py" stop
+        ;;
+    status)
+        "${SWARM_DIR}/scripts/swarm_coordinator.py" status
+        ;;
+    cleanup)
+        "${SWARM_DIR}/scripts/swarm_coordinator.py" cleanup
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|status|cleanup}"
+        echo ""
+        echo "Commands:"
+        echo "  start   - Start watcher daemon"
+        echo "  stop    - Stop watcher"
+        echo "  status  - Show worker status"
+        echo "  cleanup - Mark abandoned workers"
+        exit 1
+        ;;
+esac
