@@ -131,12 +131,46 @@ lemma prime_vec_i0 (M : ℕ) (ξ : ℝ) :
 /-- T_P_comp_real diagonal at i0.
     T_P_comp_real[i0,i0] = (1/(2M+1)) * Σ_n w_Q(n) * φ(ξ_n).
     This follows from prime_vec(i0) = 1/√(2M+1), so |prime_vec(i0)|² = 1/(2M+1). -/
-lemma T_P_comp_real_diag (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] (hM : 0 < 2 * M + 1) :
+lemma T_P_comp_real_diag (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] (_hM : 0 < 2 * M + 1) :
     Q3.T_P_comp_real K B t M (i0 M) (i0 M) =
       (1 / (2 * M + 1 : ℝ)) *
         ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n) := by
   -- Key: prime_vec M ξ (i0 M) = 1/√(2M+1) (from fourier_index = 0, exp(0)=1)
   -- So T_P_comp[i0,i0] = Σ_n w_Q(n)*φ(ξ_n) * |1/√(2M+1)|² = (1/(2M+1)) * Σ_n ...
-  sorry
+  simp only [Q3.T_P_comp_real, Q3.T_P_comp]
+  -- Rewrite using prime_vec_i0
+  have hprime : ∀ ξ : ℝ, Q3.prime_vec M ξ (i0 M) = (1 / Real.sqrt (2 * M + 1 : ℝ) : ℂ) :=
+    fun ξ => prime_vec_i0 M ξ
+  simp_rw [hprime]
+  -- For real c, conj(c) = c
+  have hconj : starRingEnd ℂ ((1 : ℂ) / Real.sqrt (2 * M + 1 : ℝ)) =
+      (1 : ℂ) / Real.sqrt (2 * M + 1 : ℝ) := by
+    simp only [map_div₀, map_one, Complex.conj_ofReal]
+  simp_rw [hconj]
+  -- (1/√n)² = 1/n for n>0
+  have hpos : (0 : ℝ) < 2 * M + 1 := by positivity
+  have hmul : ((1 : ℂ) / Real.sqrt (2 * M + 1 : ℝ)) * ((1 : ℂ) / Real.sqrt (2 * M + 1 : ℝ)) =
+      (1 / (2 * M + 1 : ℝ) : ℂ) := by
+    rw [div_mul_div_comm, one_mul]
+    congr 1
+    simp only [Complex.ofReal_mul]
+    norm_cast
+    exact Real.sqrt_mul_self (le_of_lt hpos)
+  -- Rewrite the sum: each term becomes (w*φ) * (1/(2M+1))
+  have hsumrw : (∑ n : Q3.Nodes K, (Q3.w_Q ↑n * Q3.fejer_heat_window B t (Q3.xi_n ↑n) : ℂ) *
+      ((1 : ℂ) / Real.sqrt (2 * M + 1 : ℝ)) * ((1 : ℂ) / Real.sqrt (2 * M + 1 : ℝ))) =
+      (∑ n : Q3.Nodes K, (Q3.w_Q ↑n * Q3.fejer_heat_window B t (Q3.xi_n ↑n) : ℂ)) *
+        (1 / (2 * M + 1 : ℝ) : ℂ) := by
+    rw [Finset.sum_mul]
+    congr 1
+    ext n
+    rw [mul_assoc, hmul]
+  rw [hsumrw]
+  -- Real part of product of reals: both are ℝ embedded in ℂ
+  simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, mul_zero, sub_zero]
+  rw [mul_comm]
+  congr 1
+  -- ∑ (↑(w * φ) : ℂ).re = ∑ w * φ (since ofReal preserves re)
+  simp only [← Finset.sum_coe_sort, Complex.ofReal_re]
 
 end Q3.Proofs.RayleighQId
