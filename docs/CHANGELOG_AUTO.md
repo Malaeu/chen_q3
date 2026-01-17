@@ -441,3 +441,7 @@
 - 📄 `sandboxes/carleson/full/q3.lean.aristotle/CLAUDE.md` — 11:29
 - 🔧 `.claude/swarm/config.sh` — 12:28
 - 🐍 `scripts/swarm_coordinator.py` — 12:28
+- 📝 `sandboxes/measure_dom/full/sections/A3/rayleigh_bridge.tex` — 13:55
+- 📝 `sandboxes/measure_dom/full/sections/A2.tex` — 14:06
+- 📝 `sandboxes/measure_dom/full/sections/A3/symbol_floor.tex` — 14:07
+- 📝 `sandboxes/measure_dom/full/sections/RKHS/prime_trace_closed_form.tex` — 14:31
