@@ -28,6 +28,52 @@ docs/ERRORS_DESTROYER.md
 
 ---
 
+## 🧪 SANDBOX WORKFLOW
+
+**НИКОГДА не используй git worktree!** Всегда отдельный clone + checkout.
+
+**Правило соответствия:** Папка sandbox = ветка с таким же именем.
+- `sandboxes/carleson/` → ветка `sandbox/carleson`
+- Пока папка существует → ветка должна существовать
+- Удаляем папку → удаляем ветку
+
+**Создание нового sandbox:**
+```bash
+# 1. Создать директорию
+mkdir -p /path/to/chen_q3/sandboxes/NEW_NAME
+cd /path/to/chen_q3/sandboxes/NEW_NAME
+
+# 2. Клонировать полный repo (origin = main repo, READ-ONLY из sandbox)
+git clone /path/to/chen_q3 .
+
+# 3. Создать ветку по имени sandbox
+git checkout -b sandbox/NEW_NAME
+git push -u origin sandbox/NEW_NAME
+
+# 4. Настроить Lake cache (КРИТИЧНО для экономии места!)
+cd full/q3.lean.aristotle
+mkdir -p .lake/build                                    # локальный build (writable)
+ln -s /path/to/chen_q3/full/q3.lean.aristotle/.lake/packages .lake/packages  # symlink (7GB shared)
+
+# 5. Build
+lake build
+```
+
+**Структура .lake:**
+```
+.lake/
+├── build/     ← ЛОКАЛЬНЫЙ (sandbox пишет сюда)
+└── packages/  ← СИМЛИНК на main repo (7GB Mathlib cache, read-only)
+```
+
+**Merge workflow:**
+- Работаем в sandbox на ветке `sandbox/NAME`
+- Коммитим изменения, push в origin
+- Создаём PR: `sandbox/NAME` → `main`
+- После merge: можно продолжать работу или удалить sandbox
+
+---
+
 You are a **formal proof auditor**. Your task is to build rigorous, audit-resistant mathematical proofs.
 
 ---
