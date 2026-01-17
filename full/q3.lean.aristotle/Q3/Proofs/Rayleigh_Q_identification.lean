@@ -209,6 +209,35 @@ lemma w_support (B t ξ : ℝ) (hB : 0 < B) (h : B < |ξ|) : w B t ξ = 0 := by
 lemma g_support (B t ξ : ℝ) (hB : 0 < B) (h : B < |ξ|) : g B t ξ = 0 := by
   simp only [g, w_support B t ξ hB h, mul_zero]
 
+lemma continuous_w (B t : ℝ) : Continuous (fun ξ => w B t ξ) := by
+  unfold w
+  have h_lin : Continuous (fun ξ => 1 - |ξ| / B) := by
+    have h_abs : Continuous (fun ξ => |ξ|) := by simpa using (continuous_abs : Continuous fun ξ : ℝ => |ξ|)
+    have h_div : Continuous (fun ξ => |ξ| / B) := by
+      simpa [div_eq_mul_inv] using h_abs.mul continuous_const
+    exact continuous_const.sub h_div
+  have h_max : Continuous (fun ξ => max (0 : ℝ) (1 - |ξ| / B)) :=
+    (continuous_const).max h_lin
+  have h_pow : Continuous (fun ξ => ξ ^ 2) := continuous_pow 2
+  have h_poly : Continuous (fun ξ => (-4 * Real.pi ^ 2 * t) * (ξ ^ 2)) := continuous_const.mul h_pow
+  have h_exp : Continuous (fun ξ => Real.exp (-4 * Real.pi ^ 2 * t * ξ ^ 2)) := by
+    simpa [mul_assoc] using (Real.continuous_exp.comp h_poly)
+  exact h_max.mul h_exp
+
+lemma continuous_g (B t : ℝ) : Continuous (fun ξ => g B t ξ) := by
+  unfold g
+  have ha : Continuous (fun ξ => Q3.a ξ) := by
+    have hpi : (2 * Real.pi) ≠ 0 := by nlinarith [Real.pi_pos]
+    have h :
+        (fun ξ => Q3.a ξ) = fun ξ => (1 / (2 * Real.pi)) * Q3.a_star ξ := by
+      funext ξ
+      calc
+        (1 / (2 * Real.pi)) * Q3.a_star ξ
+            = (1 / (2 * Real.pi)) * (2 * Real.pi * Q3.a ξ) := by simp [Q3.a_star]
+        _ = Q3.a ξ := by field_simp [hpi]; ring
+    simpa [h] using (Q3.a_star_continuous.const_mul (1 / (2 * Real.pi)))
+  exact ha.mul (continuous_w B t)
+
 /-- w equals fejer_heat_window (same definition). -/
 lemma w_eq_fejer_heat_window (B t ξ : ℝ) : w B t ξ = Q3.fejer_heat_window B t ξ := by
   simp only [w, Q3.fejer_heat_window]
@@ -312,18 +341,13 @@ lemma arch_term_eq_two_pi_integral_g (B t : ℝ) :
 
     **Key identity used:** Both sides equal 2π · ∫_ℝ g dξ where g = a·w.
 
-    **Proof status:** Uses sorry for the core periodization identity.
-    The measure-theoretic formalization requires careful handling of:
-    - Finset reindexing (integers to naturals)
-    - intervalIntegral.sum_integral_adjacent_intervals (Mathlib)
-    - MeasureTheory.setIntegral_eq_integral_of_forall_compl_eq_zero (Mathlib)
-    - Translation invariance of Lebesgue measure
-
+    **Proof status:** Completed using finite-support truncation and interval integrals.
     The mathematical content is standard harmonic analysis (Poisson summation formula
     for compactly supported functions). -/
-theorem integral_P_A_eq_arch_term (B t : ℝ) (_hB : 0 < B) :
+theorem integral_P_A_eq_arch_term (B t : ℝ) (hB : 0 < B) :
     ∫ θ in (-1/2 : ℝ)..(1/2), P_A B t θ =
       Q3.arch_term (fun ξ => Q3.fejer_heat_window B t ξ) := by
+  classical
   /-
   Strategy: Show both sides equal 2π · ∫_ℝ g dξ where g = a · w.
 
@@ -337,17 +361,109 @@ theorem integral_P_A_eq_arch_term (B t : ℝ) (_hB : 0 < B) :
       = 2π · ∫_ℝ a·w dξ
       = 2π · ∫_ℝ g dξ
   -/
+  have hab : (-1/2 : ℝ) ≤ (1/2 : ℝ) := by norm_num
+  let s : Finset ℤ := Finset.Icc (-(⌈B⌉ + 1)) (⌈B⌉ + 1)
+  have hsupp : Function.support (fun ξ => g B t ξ) ⊆ Set.Icc (-B) B := by
+    refine (Function.support_subset_iff'.2 ?_)
+    intro ξ hξ
+    by_contra hle
+    have hle' : |ξ| ≤ B := le_of_not_gt hle
+    have : ξ ∈ Set.Icc (-B) B := by
+      exact (abs_le.mp hle')
+    exact hξ this
+  have hcompact : HasCompactSupport (fun ξ => g B t ξ) := by
+    exact HasCompactSupport.of_support_subset_isCompact isCompact_Icc hsupp
+  have hint : Integrable (fun ξ => g B t ξ) := by
+    exact (continuous_g B t).integrable_of_hasCompactSupport hcompact
+
+  have h_eq_tsum :
+      EqOn (fun θ => ∑' m : ℤ, g B t (θ + m))
+        (fun θ => ∑ m ∈ s, g B t (θ + m)) ([[(-1/2 : ℝ), (1/2 : ℝ)]]) := by
+    intro θ hθ
+    have hθ' : θ ∈ Set.Icc (-1/2 : ℝ) (1/2 : ℝ) := by
+      simpa [Set.uIcc_of_le hab] using hθ
+    simpa [s] using P_A_tsum_eq_finite_sum B t θ hB hθ'
+
+  have h_int_eq :
+      ∫ θ in (-1/2 : ℝ)..(1/2), ∑' m : ℤ, g B t (θ + m) =
+        ∫ θ in (-1/2 : ℝ)..(1/2), ∑ m ∈ s, g B t (θ + m) := by
+    exact intervalIntegral.integral_congr h_eq_tsum
+
+  have h_int_sum :
+      ∫ θ in (-1/2 : ℝ)..(1/2), ∑ m ∈ s, g B t (θ + m) =
+        ∑ m ∈ s, ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + m) := by
+    refine intervalIntegral.integral_finset_sum ?_
+    intro m hm
+    have hcont : Continuous (fun θ => g B t (θ + m)) := by
+      simpa [add_comm, add_left_comm, add_assoc] using
+        (continuous_g B t).comp (continuous_id.add continuous_const)
+    exact hcont.intervalIntegrable (μ:=volume) (-1/2 : ℝ) (1/2 : ℝ)
+
+  have hsum_base :
+      HasSum (fun n : ℤ =>
+          ∫ x in (-1/2 : ℝ) + (n : ℝ)..(-1/2 : ℝ) + (n : ℝ) + 1, g B t x)
+        (∫ x, g B t x) := by
+    simpa using
+      (MeasureTheory.Integrable.hasSum_intervalIntegral (μ:=volume)
+        (f:=fun x => g B t x) (y:=(-1/2 : ℝ)) hint)
+
+  have hsum :
+      HasSum (fun n : ℤ => ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + (n : ℝ)))
+        (∫ x, g B t x) := by
+    refine (HasSum.congr_fun hsum_base ?_)
+    intro n
+    have hcomp :=
+      intervalIntegral.integral_comp_add_right (f:=fun x => g B t x) (d:=(n : ℝ))
+        (a:=(-1/2 : ℝ)) (b:=(1/2 : ℝ))
+    convert hcomp using 1 <;> ring
+
+  have hsum_eq :
+      (∑' n : ℤ, ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + (n : ℝ))) =
+        ∑ n ∈ s, ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + (n : ℝ)) := by
+    apply tsum_eq_sum
+    intro n hn
+    simp only [Finset.mem_Icc, not_and, not_le] at hn
+    have h_large : (⌈B⌉ : ℤ) + 1 < |n| := by
+      by_cases h : n < -(⌈B⌉ + 1)
+      · have hn_neg : n < 0 := by omega
+        simp [abs_of_neg hn_neg]
+        omega
+      · push_neg at h
+        have := hn h
+        have hn_nonneg : 0 ≤ n := by omega
+        simp [abs_of_nonneg hn_nonneg]
+        exact this
+    have h_eq0 :
+        EqOn (fun θ => g B t (θ + n)) (fun _ => (0 : ℝ))
+          ([[(-1/2 : ℝ), (1/2 : ℝ)]]) := by
+      intro θ hθ
+      have hθ' : θ ∈ Set.Icc (-1/2 : ℝ) (1/2 : ℝ) := by
+        simpa [Set.uIcc_of_le hab] using hθ
+      simpa using g_shift_zero_of_large_m B t θ n hB hθ' h_large
+    have h_integral_zero :
+        ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + n) =
+          ∫ θ in (-1/2 : ℝ)..(1/2), (0 : ℝ) := by
+      exact intervalIntegral.integral_congr h_eq0
+    simpa using h_integral_zero
+
+  have hsum_fin :
+      ∑ n ∈ s, ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + (n : ℝ)) =
+        ∫ x, g B t x := by
+    exact hsum_eq.symm.trans hsum.tsum_eq
+
+  have h_integral :
+      ∫ θ in (-1/2 : ℝ)..(1/2), ∑' m : ℤ, g B t (θ + m) =
+        ∫ x, g B t x := by
+    calc
+      ∫ θ in (-1/2 : ℝ)..(1/2), ∑' m : ℤ, g B t (θ + m)
+          = ∫ θ in (-1/2 : ℝ)..(1/2), ∑ m ∈ s, g B t (θ + m) := h_int_eq
+      _ = ∑ m ∈ s, ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + m) := h_int_sum
+      _ = ∫ x, g B t x := hsum_fin
+
   -- RHS simplification
   rw [arch_term_eq_two_pi_integral_g]
   -- LHS: expand P_A and use periodization
-  simp only [P_A]
-  -- Now need: ∫_{-1/2}^{1/2} 2π · ∑'_m g(θ+m) dθ = 2π · ∫_ℝ g dξ
-  -- Factor out 2π
-  rw [intervalIntegral.integral_const_mul]
-  congr 1
-  -- Core periodization identity: ∫_{-1/2}^{1/2} ∑'_m g(θ+m) dθ = ∫_ℝ g dξ
-  -- This is standard Poisson summation for compactly supported g
-  sorry
+  simp [P_A, intervalIntegral.integral_const_mul, h_integral]
 
 /-- Arch side: Rayleigh quotient of Toeplitz[P_A] at basis0 = arch_term.
     This follows because RQ(A, basis0) = A[i0,i0] for unit-norm basis vector,
@@ -432,6 +548,32 @@ lemma w_Q_zero_of_lt_two (n : ℕ) (hn : n < 2) : Q3.w_Q n = 0 := by
   · -- n = 1: vonMangoldt 1 = 0
     simp only [ArithmeticFunction.vonMangoldt_apply_one, zero_div, mul_zero]
 
+/-- Generic bridge: if Φ vanishes outside [-K, K], then the prime_term (tsum)
+    equals the finite sum over Nodes K. -/
+theorem prime_term_eq_nodes_of_support (Φ : ℝ → ℝ) (K : ℝ) [Fintype (Q3.Nodes K)]
+    (hΦ : ∀ ξ, K < |ξ| → Φ ξ = 0) :
+    Q3.prime_term Φ = ∑ n : Q3.Nodes K, Q3.w_Q n * Φ (Q3.xi_n n) := by
+  classical
+  have h_zero_outside : ∀ n : ℕ, n ∉ Q3.Nodes K →
+      Q3.w_Q n * Φ (Q3.xi_n n) = 0 := by
+    intro n hn
+    simp only [Q3.Nodes, Set.mem_setOf_eq, not_and_or, not_le] at hn
+    rcases hn with h_outside | hn2
+    · -- Case: |xi_n n| > K, so Φ vanishes
+      simp [hΦ (Q3.xi_n n) h_outside]
+    · -- Case: n < 2, so w_Q n = 0
+      simp [w_Q_zero_of_lt_two n hn2]
+  have hsupport :
+      Function.support (fun n => Q3.w_Q n * Φ (Q3.xi_n n)) ⊆ Q3.Nodes K := by
+    refine Function.support_subset_iff'.2 ?_
+    intro n hn
+    exact h_zero_outside n hn
+  have htsum :
+      (∑' n : ℕ, Q3.w_Q n * Φ (Q3.xi_n n)) =
+        ∑' n : Q3.Nodes K, Q3.w_Q n * Φ (Q3.xi_n n) :=
+    tsum_subtype_eq_of_support_subset hsupport
+  simpa [Q3.prime_term, tsum_fintype] using htsum
+
 /-- Key bridge: For Φ with support in [-B, B] and K ≥ B, the prime_term (tsum)
     equals the finite sum over Nodes K.
 
@@ -440,26 +582,11 @@ theorem prime_term_eq_nodes_sum (B t K : ℝ) [Fintype (Q3.Nodes K)]
     (hB : 0 < B) (hK : B ≤ K) :
     Q3.prime_term (fun ξ => Q3.fejer_heat_window B t ξ) =
     ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n) := by
-  simp only [Q3.prime_term]
-  -- The tsum over all n equals sum over Nodes K because:
-  -- 1. For n < 2: w_Q n = 0
-  -- 2. For n ≥ 2 with |xi_n n| > K ≥ B: fejer_heat_window = 0
-  have h_zero_outside : ∀ n : ℕ, n ∉ Q3.Nodes K →
-      Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n) = 0 := by
-    intro n hn
-    -- Nodes K = {n | |xi_n n| ≤ K ∧ n ≥ 2}
-    -- n ∉ Nodes K means: ¬(|xi_n n| ≤ K) ∨ ¬(n ≥ 2)
-    simp only [Q3.Nodes, Set.mem_setOf_eq, not_and_or, not_le] at hn
-    -- hn : K < |xi_n n| ∨ n < 2
-    rcases hn with h_outside | hn2
-    · -- Case: |xi_n n| > K ≥ B, so fejer_heat_window = 0
-      have h_support : B < |Q3.xi_n n| := lt_of_le_of_lt hK h_outside
-      simp [fejer_heat_window_support B t (Q3.xi_n n) hB h_support]
-    · -- Case: n < 2, so w_Q n = 0
-      simp [w_Q_zero_of_lt_two n hn2]
-  -- The tsum collapses to finite sum over Nodes K
-  -- Using sorry for the tsum=finite_sum machinery (straightforward but technical)
-  sorry
+  have hΦ : ∀ ξ, K < |ξ| → Q3.fejer_heat_window B t ξ = 0 := by
+    intro ξ hξ
+    have h_support : B < |ξ| := lt_of_le_of_lt hK hξ
+    exact fejer_heat_window_support B t ξ hB h_support
+  simpa using (prime_term_eq_nodes_of_support (Φ := fun ξ => Q3.fejer_heat_window B t ξ) (K := K) hΦ)
 
 /-- **Final Q3.Q identification**: Combining rayleigh_Q_identification with
     prime_term_eq_nodes_sum gives the connection to Q3.Q.
