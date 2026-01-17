@@ -79,17 +79,15 @@ RH_of_Weil_and_Q3
 
 ## Active Next Step (closing, not wiring)
 
-1) Wire the **proven** Rayleigh-Q identification into the atoms-positivity chain:
-   use `rayleigh_Q_eq_Q` in `Q3/Proofs/Rayleigh_Q_identification.lean`.
-2) Replace `Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` in
-   `Q3/Atoms_Positive.lean` / `Q3/AxiomsTheorems.lean` with the theorem proof
-   (A3 floor + RKHS cap + Rayleigh identification).
+1) Prove `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` via Rayleigh-Q identification
+   (tex Theorem 3.3): `⟨T_M[P_A]1,1⟩ - (2M+1)⟨T_P^{(M)}1,1⟩ = Q(Φ)`.
+2) Then wire the proof into `Q3/Atoms_Positive.lean` and remove the axiom file.
 
 ## Closure Tracker (remaining axioms)
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | Wiring into atoms chain | Use `rayleigh_Q_eq_Q` + A3/RKHS | **IN PROGRESS** |
+| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | Rayleigh-Q identification | See `Rayleigh_Q_identification.lean` | **IN PROGRESS** |
 
 ## Progress Log (2026-01-16)
 
@@ -97,14 +95,15 @@ RH_of_Weil_and_Q3
 - CLOSED in `A3_FLOOR_v22_stage4_floor.lean` (local finiteness + periodicity proof)
 
 **Q_nonneg_on_atoms (Rayleigh-Q identification)**:
-- `Q3/Proofs/Rayleigh_Q_identification.lean` COMPLETE:
-  - `basis0`, `i0`, `basis0_norm_sq`, `basis0_ne_zero`
-  - `quadForm_basis0`, `rayleigh_basis0`, `rayleigh_basis0_sub`
-  - `ToeplitzEntry_diag`, `ToeplitzEntry_diag_re`, `ToeplitzMatrix_Fourier_real_diag`
-  - `fourier_index_i0`, `prime_vec_i0`, `T_P_comp_real_diag`
-  - `integral_P_A_eq_arch_term` (periodization) ✅
-  - `rayleigh_Q_identification`, `rayleigh_Q_eq_Q` ✅
-- Next: wire into `Atoms_Positive.lean` to eliminate the axiom.
+- Created `Q3/Proofs/Rayleigh_Q_identification.lean` with:
+  - `basis0`, `i0` definitions (constant-1 vector)
+  - `basis0_norm_sq`, `basis0_ne_zero` (PROVEN)
+  - `quadForm_basis0`, `rayleigh_basis0` (PROVEN)
+  - `ToeplitzEntry_diag`, `ToeplitzEntry_diag_re` (PROVEN)
+  - `ToeplitzMatrix_Fourier_real_diag` (PROVEN)
+  - `fourier_index_i0`, `prime_vec_i0` (PROVEN)
+  - `T_P_comp_real_diag` (sorry - algebraic)
+- Remaining: periodization integral = arch_term, final assembly
 
 **Aristotle projects (Rayleigh variants)**:
 - 200eb072, 5e36515f, e9f53e97, eeca690a (Rayleigh sandbox variants)
