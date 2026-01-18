@@ -10,8 +10,8 @@ KEY INSIGHT (from Proshka analysis):
 - On θ ∈ [-1/2, 1/2], the periodization sum ∑' n, g(θ+n) is FINITE
 - This means: no dominated convergence needed, just Finset.sum + linearity
 
-PROOF STATUS: Statements verified mathematically (see PERIODIZATION_INSIGHT.md).
-Technical proofs use sorry for coercion issues - mathematical content is correct.
+PROOF STATUS: ALL PROOFS COMPLETE ✓
+No sorries, no axioms (except standard Mathlib axioms).
 
 Reference: docs/PERIODIZATION_INSIGHT.md
 -/
@@ -74,33 +74,53 @@ lemma tsum_eq_finset_sum_of_outside_zero
 
 /-! ## Lemma 3: Periodization on torus = Finset.sum -/
 
-/-- On the fundamental domain [-1/2, 1/2], periodization is finite. -/
+/-- On the fundamental domain [-1/2, 1/2], periodization is finite.
+    Also returns the bound B + 1 ≤ N for use in later proofs. -/
 lemma periodization_eq_finset_sum
     {f : ℝ → ℝ} {B : ℝ} (hB : 0 < B)
     (hsupp : ∀ x, B < |x| → f x = 0) :
-    ∃ N : ℕ, ∀ θ ∈ Icc (-(1/2 : ℝ)) (1/2),
+    ∃ N : ℕ, (B + 1 ≤ N) ∧ ∀ θ ∈ Icc (-(1/2 : ℝ)) (1/2),
       (∑' n : ℤ, f (θ + n)) = ∑ n ∈ Finset.Icc (-(N : ℤ)) N, f (θ + n) := by
-  obtain ⟨N, hN⟩ := support_implies_finite_periodization hB hsupp
+  -- Use N = ⌈B + 1⌉ directly to preserve the bound
+  let N := Nat.ceil (B + 1)
   use N
-  intro θ hθ
-  apply tsum_eq_finset_sum_of_outside_zero
-  intro n hn
-  simp only [Finset.mem_Icc, not_and_or, not_le] at hn
-  apply hN θ hθ n
-  -- n ∉ Icc(-N, N) means n < -N or N < n, which gives |n| > N
-  -- The goal is: (N : ℝ) < |(n : ℝ)|
-  simp only [Int.cast_abs]
-  rcases hn with h | h
-  · -- Case: n < -(N : ℤ)
-    have hn_neg : n < 0 := by omega
-    rw [abs_of_neg (by exact_mod_cast hn_neg : (n : ℝ) < 0)]
-    have : -n > (N : ℤ) := by omega
-    calc (N : ℝ) < ((-n : ℤ) : ℝ) := by exact_mod_cast this
-      _ = -(n : ℝ) := by push_cast; ring
-  · -- Case: (N : ℤ) < n
-    have hn_pos : 0 ≤ n := by omega
-    rw [abs_of_nonneg (by exact_mod_cast hn_pos : 0 ≤ (n : ℝ))]
-    exact_mod_cast h
+  constructor
+  · exact Nat.le_ceil (B + 1)
+  · -- Get the support property
+    have hN : ∀ θ ∈ Icc (-(1/2 : ℝ)) (1/2), ∀ n : ℤ, (N : ℝ) < |n| → f (θ + n) = 0 := by
+      intro θ hθ n hn
+      apply hsupp
+      have hθ_abs : |θ| ≤ 1/2 := abs_le.mpr ⟨hθ.1, hθ.2⟩
+      have hN_ge : B + 1 ≤ (N : ℝ) := Nat.le_ceil (B + 1)
+      -- Bridge: (|n| : ℝ) = |(n : ℝ)|
+      have hn' : (N : ℝ) < |(n : ℝ)| := by
+        have habs_eq : ((|n| : ℤ) : ℝ) = |(n : ℝ)| := Int.cast_abs
+        rw [← habs_eq]
+        exact hn
+      have htri : |(n : ℝ)| - |θ| ≤ |θ + (n : ℝ)| := by
+        have h := abs_sub_abs_le_abs_sub (n : ℝ) (-θ)
+        simp only [sub_neg_eq_add, abs_neg] at h
+        have heq : |θ + (n : ℝ)| = |(n : ℝ) + θ| := by ring_nf
+        linarith
+      linarith
+    intro θ hθ
+    apply tsum_eq_finset_sum_of_outside_zero
+    intro n hn
+    simp only [Finset.mem_Icc, not_and_or, not_le] at hn
+    apply hN θ hθ n
+    -- n ∉ Icc(-N, N) means n < -N or N < n, which gives |n| > N
+    simp only [Int.cast_abs]
+    rcases hn with h | h
+    · -- Case: n < -(N : ℤ)
+      have hn_neg : n < 0 := by omega
+      rw [abs_of_neg (by exact_mod_cast hn_neg : (n : ℝ) < 0)]
+      have : -n > (N : ℤ) := by omega
+      calc (N : ℝ) < ((-n : ℤ) : ℝ) := by exact_mod_cast this
+        _ = -(n : ℝ) := by push_cast; ring
+    · -- Case: (N : ℤ) < n
+      have hn_pos : 0 ≤ n := by omega
+      rw [abs_of_nonneg (by exact_mod_cast hn_pos : 0 ≤ (n : ℝ))]
+      exact_mod_cast h
 
 /-! ## Lemma 4: Integral of periodization (NO dominated convergence!)
 
@@ -126,14 +146,91 @@ theorem intervalIntegral_periodization_eq_integral
     (hsupp : ∀ x, B < |x| → f x = 0)
     (hint : Integrable f) :
     (∫ θ in (-(1/2 : ℝ))..(1/2), ∑' n : ℤ, f (θ + n)) = ∫ x, f x := by
-  -- Proof outline:
-  -- 1. Get finite reduction from periodization_eq_finset_sum
-  -- 2. Swap integral and finite sum (intervalIntegral.integral_finset_sum)
-  -- 3. Change of variables in each term
-  -- 4. Show sum equals integral via hasSum_intervalIntegral
-  --
-  -- The key is that steps 2-4 use ONLY finite sums and standard Mathlib lemmas,
-  -- avoiding the OOM-prone infinite sum/integral swap.
-  sorry
+  classical
+  -- Step 1: Get finite reduction (N, bound, and finite sum property)
+  obtain ⟨N, hN_bound, hN⟩ := periodization_eq_finset_sum hB hsupp
+  let S := Finset.Icc (-(N : ℤ)) N
+
+  -- Step 2: Rewrite integrand to Finset.sum (pointwise equal on interval)
+  have step1 : (∫ θ in (-(1/2 : ℝ))..(1/2), ∑' n : ℤ, f (θ + n)) =
+               ∫ θ in (-(1/2 : ℝ))..(1/2), ∑ n ∈ S, f (θ + n) := by
+    apply intervalIntegral.integral_congr
+    intro θ hθ
+    have hθ' : θ ∈ Set.Icc (-(1/2 : ℝ)) (1/2) := by
+      simp only [Set.uIcc_of_le (by norm_num : -(1/2 : ℝ) ≤ 1/2)] at hθ
+      exact hθ
+    exact hN θ hθ'
+
+  -- Step 3: Swap finite sum and integral
+  have step2 : (∫ θ in (-(1/2 : ℝ))..(1/2), ∑ n ∈ S, f (θ + n)) =
+               ∑ n ∈ S, ∫ θ in (-(1/2 : ℝ))..(1/2), f (θ + n) := by
+    rw [intervalIntegral.integral_finset_sum]
+    intro n _
+    exact (hint.comp_add_right n).intervalIntegrable
+
+  -- Step 4: Change of variables in each integral
+  have step3 : ∑ n ∈ S, ∫ θ in (-(1/2 : ℝ))..(1/2), f (θ + n) =
+               ∑ n ∈ S, ∫ x in (-(1/2 : ℝ) + n)..(1/2 + n), f x := by
+    apply Finset.sum_congr rfl
+    intro n _
+    rw [← intervalIntegral.integral_comp_add_right]
+
+  -- Step 5: Outside S, integrals vanish (compact support)
+  have outside_zero : ∀ n : ℤ, n ∉ S →
+      (∫ x in (-(1/2 : ℝ) + n)..(1/2 + n), f x) = 0 := by
+    intro n hn
+    -- f is zero on this interval because |x| > B for all x in the interval
+    apply intervalIntegral.integral_zero_ae
+    filter_upwards with x hx
+    apply hsupp
+    -- hx : x ∈ Ι (-(1/2) + n) (1/2 + n) = Set.uIoc (-(1/2) + n) (1/2 + n)
+    simp only [Set.mem_uIoc] at hx
+    -- hN_bound : B + 1 ≤ N (from periodization_eq_finset_sum)
+    -- n ∉ S means n < -N or N < n
+    simp only [S, Finset.mem_Icc, not_and_or, not_le] at hn
+    rcases hn with h | h
+    · -- n < -(N : ℤ)
+      have hn_bound : (n : ℝ) < -(N : ℝ) := by exact_mod_cast h
+      have hx_upper : x ≤ (1/2 : ℝ) + n := by
+        rcases hx with ⟨hx1, hx2⟩ | ⟨hx1, hx2⟩ <;> linarith
+      have hx_neg : x < 0 := by linarith
+      rw [abs_of_neg hx_neg]
+      linarith
+    · -- (N : ℤ) < n
+      have hn_bound : (N : ℝ) < (n : ℝ) := by exact_mod_cast h
+      have hx_lower : -(1/2 : ℝ) + n < x := by
+        rcases hx with ⟨hx1, hx2⟩ | ⟨hx1, hx2⟩ <;> linarith
+      have hx_pos : 0 < x := by linarith
+      rw [abs_of_pos hx_pos]
+      linarith
+
+  -- Step 6: The HasSum from Mathlib
+  have hsum : HasSum (fun n : ℤ => ∫ x in (-(1/2 : ℝ) + n)..(-(1/2 : ℝ) + n + 1), f x)
+                     (∫ x, f x) := hint.hasSum_intervalIntegral (y := -(1/2 : ℝ))
+
+  -- Step 7: Intervals match: [-1/2 + n, 1/2 + n] = [-1/2 + n, -1/2 + n + 1]
+  have interval_eq : ∀ n : ℤ,
+      (∫ x in (-(1/2 : ℝ) + n)..(1/2 + n), f x) =
+      (∫ x in (-(1/2 : ℝ) + n)..(-(1/2 : ℝ) + n + 1), f x) := by
+    intro n
+    congr 1
+    ring
+
+  -- Combine all steps
+  calc (∫ θ in (-(1/2 : ℝ))..(1/2), ∑' n : ℤ, f (θ + n))
+      = ∫ θ in (-(1/2 : ℝ))..(1/2), ∑ n ∈ S, f (θ + n) := step1
+    _ = ∑ n ∈ S, ∫ θ in (-(1/2 : ℝ))..(1/2), f (θ + n) := step2
+    _ = ∑ n ∈ S, ∫ x in (-(1/2 : ℝ) + n)..(1/2 + n), f x := step3
+    _ = ∑ n ∈ S, ∫ x in (-(1/2 : ℝ) + n)..(-(1/2 : ℝ) + n + 1), f x := by
+        apply Finset.sum_congr rfl
+        intro n _
+        exact interval_eq n
+    _ = ∑' n : ℤ, ∫ x in (-(1/2 : ℝ) + n)..(-(1/2 : ℝ) + n + 1), f x := by
+        symm
+        apply tsum_eq_finset_sum_of_outside_zero
+        intro n hn
+        rw [← interval_eq n]
+        exact outside_zero n hn
+    _ = ∫ x, f x := hsum.tsum_eq
 
 end Q3.Proofs.Periodization

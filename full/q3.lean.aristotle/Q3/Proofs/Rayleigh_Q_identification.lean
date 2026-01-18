@@ -19,7 +19,9 @@ Integration: change-durch: claude-code 2026-01-17 Rayleigh_Q_identification
 
 import Q3.Axioms
 import Q3.Proofs.Rayleigh_Fourier
-import A3_FLOOR_v22_stage4_floor
+import Q3.Proofs.ShiftedWindows
+import Q3.Proofs.Periodization  -- Lightweight periodization lemmas
+-- Note: A3_FLOOR definitions inlined below to avoid cascade import
 
 set_option linter.mathlibStandardSet false
 
@@ -28,6 +30,53 @@ open scoped BigOperators Real Classical ComplexConjugate
 set_option maxHeartbeats 0
 
 noncomputable section
+
+/-! ## A3_FLOOR definitions (inlined for fast compilation)
+
+These are lightweight copies of definitions from A3_FLOOR_v22_stage4_floor.lean.
+Inlined here to avoid heavy proof cascade import.
+-/
+
+/-- Standard A3 bandwidth parameter. -/
+def B_min : ℝ := 3
+
+/-- Standard A3 heat parameter (symbol). -/
+def t_sym : ℝ := 3 / 50
+
+/-- Fejér-heat window function: max(0, 1 - |ξ|/B) · exp(-4π²tξ²). -/
+def w (B t ξ : ℝ) : ℝ :=
+  max 0 (1 - |ξ| / B) * Real.exp (-4 * Real.pi ^ 2 * t * ξ ^ 2)
+
+/-- Archimedean kernel: g = a · w where a = a_star / (2π). -/
+def g (B t ξ : ℝ) : ℝ := Q3.a ξ * w B t ξ
+
+/-- Periodized symbol P_A: 2π · Σₘ g(θ + m). -/
+def P_A (B t θ : ℝ) : ℝ :=
+  2 * Real.pi * ∑' (m : ℤ), g B t (θ + m)
+
+/-- Target floor constant c* = 11/10. -/
+def c_star : ℝ := 11 / 10
+
+/-- w equals Q3.fejer_heat_window (by definition). -/
+lemma w_eq_fejer_heat_window (B t ξ : ℝ) : w B t ξ = Q3.fejer_heat_window B t ξ := by
+  simp only [w, Q3.fejer_heat_window]
+
+/-! ## End inlined A3_FLOOR definitions -/
+
+namespace Q3
+
+noncomputable def T_P_comp_shift (K B t tau : ℝ) (M : ℕ) [Fintype (Nodes K)] :
+    Matrix (Fin (2 * M + 1)) (Fin (2 * M + 1)) ℂ :=
+  fun i j =>
+    ∑ n : Nodes K,
+      ((w_Q n * phi_shift B t tau (xi_n n)) : ℂ) *
+        prime_vec M (xi_n n) i * conj (prime_vec M (xi_n n) j)
+
+noncomputable def T_P_comp_real_shift (K B t tau : ℝ) (M : ℕ) [Fintype (Nodes K)] :
+    Matrix (Fin (2 * M + 1)) (Fin (2 * M + 1)) ℝ :=
+  fun i j => (T_P_comp_shift K B t tau M i j).re
+
+end Q3
 
 namespace Q3.Proofs.RayleighQId
 
@@ -211,31 +260,26 @@ lemma g_support (B t ξ : ℝ) (hB : 0 < B) (h : B < |ξ|) : g B t ξ = 0 := by
 
 lemma continuous_w (B t : ℝ) : Continuous (fun ξ => w B t ξ) := by
   unfold w
-  have h_lin : Continuous (fun ξ => 1 - |ξ| / B) := by
-    have h_abs : Continuous (fun ξ => |ξ|) := by simpa using (continuous_abs : Continuous fun ξ : ℝ => |ξ|)
-    have h_div : Continuous (fun ξ => |ξ| / B) := by
-      simpa [div_eq_mul_inv] using h_abs.mul continuous_const
-    exact continuous_const.sub h_div
-  have h_max : Continuous (fun ξ => max (0 : ℝ) (1 - |ξ| / B)) :=
-    (continuous_const).max h_lin
-  have h_pow : Continuous (fun ξ => ξ ^ 2) := continuous_pow 2
-  have h_poly : Continuous (fun ξ => (-4 * Real.pi ^ 2 * t) * (ξ ^ 2)) := continuous_const.mul h_pow
-  have h_exp : Continuous (fun ξ => Real.exp (-4 * Real.pi ^ 2 * t * ξ ^ 2)) := by
-    simpa [mul_assoc] using (Real.continuous_exp.comp h_poly)
+  have h_abs : Continuous (fun ξ : ℝ => |ξ|) := continuous_abs
+  have h_lin : Continuous (fun ξ : ℝ => 1 - |ξ| / B) :=
+    continuous_const.sub (h_abs.div_const B)
+  have h_max : Continuous (fun ξ : ℝ => max (0 : ℝ) (1 - |ξ| / B)) :=
+    continuous_const.max h_lin
+  have h_exp : Continuous (fun ξ : ℝ => Real.exp (-4 * Real.pi ^ 2 * t * ξ ^ 2)) :=
+    Real.continuous_exp.comp (continuous_const.mul (continuous_pow 2))
   exact h_max.mul h_exp
 
 lemma continuous_g (B t : ℝ) : Continuous (fun ξ => g B t ξ) := by
   unfold g
   have ha : Continuous (fun ξ => Q3.a ξ) := by
+    -- a_star ξ = 2π · a ξ, so a ξ = a_star ξ / (2π)
     have hpi : (2 * Real.pi) ≠ 0 := by nlinarith [Real.pi_pos]
-    have h :
-        (fun ξ => Q3.a ξ) = fun ξ => (1 / (2 * Real.pi)) * Q3.a_star ξ := by
+    have h : (fun ξ => Q3.a ξ) = fun ξ => Q3.a_star ξ / (2 * Real.pi) := by
       funext ξ
-      calc
-        (1 / (2 * Real.pi)) * Q3.a_star ξ
-            = (1 / (2 * Real.pi)) * (2 * Real.pi * Q3.a ξ) := by simp [Q3.a_star]
-        _ = Q3.a ξ := by field_simp [hpi]; ring
-    simpa [h] using (Q3.a_star_continuous.const_mul (1 / (2 * Real.pi)))
+      simp only [Q3.a_star]
+      field_simp [hpi]
+    rw [h]
+    exact Q3.a_star_continuous.div_const (2 * Real.pi)
   exact ha.mul (continuous_w B t)
 
 /-- w equals fejer_heat_window (same definition). -/
@@ -347,6 +391,42 @@ lemma arch_term_eq_two_pi_integral_g (B t : ℝ) :
 theorem integral_P_A_eq_arch_term (B t : ℝ) (hB : 0 < B) :
     ∫ θ in (-1/2 : ℝ)..(1/2), P_A B t θ =
       Q3.arch_term (fun ξ => Q3.fejer_heat_window B t ξ) := by
+  -- Uses lightweight Periodization.lean instead of heavy tsum manipulation
+  -- Strategy: P_A = 2π·∑' g, arch_term = 2π·∫ g, so both = 2π·∫ g
+  have hsupp : ∀ x, B < |x| → g B t x = 0 := fun x hx => g_support B t x hB hx
+  have hint : MeasureTheory.Integrable (fun ξ => g B t ξ) := by
+    have hcont : Continuous (fun ξ => g B t ξ) := continuous_g B t
+    have hcompact : HasCompactSupport (fun ξ => g B t ξ) := by
+      apply HasCompactSupport.of_support_subset_isCompact (isCompact_Icc (a := -B) (b := B))
+      intro x hx
+      simp only [Function.mem_support, ne_eq] at hx
+      rw [Set.mem_Icc, ← abs_le]
+      by_contra habs
+      have habs' : B < |x| := not_le.mp habs
+      have : g B t x = 0 := g_support B t x hB habs'
+      exact hx this
+    exact hcont.integrable_of_hasCompactSupport hcompact
+  -- Apply lightweight periodization: ∫ ∑' g(θ+n) = ∫ g
+  have hperiod := Q3.Proofs.Periodization.intervalIntegral_periodization_eq_integral hB hsupp hint
+  -- LHS: ∫ P_A = ∫ 2π·∑' g = 2π·∫ ∑' g = 2π·∫ g
+  have lhs_eq : (∫ θ in (-1/2 : ℝ)..(1/2), P_A B t θ) =
+                2 * Real.pi * ∫ ξ, g B t ξ := by
+    simp only [P_A]
+    rw [intervalIntegral.integral_const_mul]
+    congr 1
+    convert hperiod using 2
+    ring
+  -- RHS: arch_term(w) = ∫ a_star·w = ∫ 2π·a·w = 2π·∫ a·w = 2π·∫ g
+  have rhs_eq : Q3.arch_term (fun ξ => Q3.fejer_heat_window B t ξ) =
+                2 * Real.pi * ∫ ξ, g B t ξ := by
+    simp only [Q3.arch_term, g, w_eq_fejer_heat_window]
+    rw [← MeasureTheory.integral_mul_left]
+    congr 1
+    funext ξ
+    simp only [Q3.a_star]
+    ring
+  rw [lhs_eq, rhs_eq]
+  /-  ORIGINAL PROOF COMMENTED OUT:
   classical
   /-
   Strategy: Show both sides equal 2π · ∫_ℝ g dξ where g = a · w.
@@ -464,6 +544,7 @@ theorem integral_P_A_eq_arch_term (B t : ℝ) (hB : 0 < B) :
   rw [arch_term_eq_two_pi_integral_g]
   -- LHS: expand P_A and use periodization
   simp [P_A, intervalIntegral.integral_const_mul, h_integral]
+  END ORIGINAL PROOF -/
 
 /-- Arch side: Rayleigh quotient of Toeplitz[P_A] at basis0 = arch_term.
     This follows because RQ(A, basis0) = A[i0,i0] for unit-norm basis vector,
@@ -571,7 +652,7 @@ theorem prime_term_eq_nodes_of_support (Φ : ℝ → ℝ) (K : ℝ) [Fintype (Q3
   have htsum :
       (∑' n : ℕ, Q3.w_Q n * Φ (Q3.xi_n n)) =
         ∑' n : Q3.Nodes K, Q3.w_Q n * Φ (Q3.xi_n n) :=
-    tsum_subtype_eq_of_support_subset hsupport
+    (tsum_subtype_eq_of_support_subset hsupport).symm
   simpa [Q3.prime_term, tsum_fintype] using htsum
 
 /-- Key bridge: For Φ with support in [-B, B] and K ≥ B, the prime_term (tsum)
@@ -605,5 +686,76 @@ theorem rayleigh_Q_eq_Q (B t K : ℝ) (M : ℕ)
   simp only [Q3.Q]
   congr 1
   exact (prime_term_eq_nodes_sum B t K hB hK).symm
+
+/-- Diagonal of shifted T_P_comp_real at basis0.
+    Follows same pattern as T_P_comp_real_diag, using prime_vec_i0_norm_sq. -/
+lemma T_P_comp_real_shift_diag (K B t tau : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] (hM : 0 < 2 * M + 1) :
+    Q3.T_P_comp_real_shift K B t tau M (i0 M) (i0 M) =
+      (1 / (2 * M + 1 : ℝ)) *
+        ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) := by
+  simp only [Q3.T_P_comp_real_shift, Q3.T_P_comp_shift]
+  simp only [← Complex.ofReal_mul]
+  have h_factor : ∀ n : Q3.Nodes K,
+      ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) : ℝ) : ℂ) *
+        Q3.prime_vec M (Q3.xi_n n) (i0 M) * conj (Q3.prime_vec M (Q3.xi_n n) (i0 M)) =
+      ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) : ℝ) : ℂ) * (1 / (2 * M + 1 : ℝ)) := by
+    intro n
+    rw [mul_assoc, prime_vec_i0_norm_sq M (Q3.xi_n n) hM]
+  have h_sum_eq : (∑ n : Q3.Nodes K,
+        ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) : ℝ) : ℂ) *
+          Q3.prime_vec M (Q3.xi_n n) (i0 M) * conj (Q3.prime_vec M (Q3.xi_n n) (i0 M))) =
+      ∑ n : Q3.Nodes K, ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) : ℝ) : ℂ) *
+        (1 / (2 * M + 1 : ℝ)) := by
+    congr 1
+    ext n
+    exact h_factor n
+  rw [h_sum_eq, ← Finset.sum_mul]
+  rw [← Complex.ofReal_sum]
+  rw [one_div, ← Complex.ofReal_inv, ← Complex.ofReal_mul, Complex.ofReal_re]
+  ring
+
+theorem arch_rayleigh_eq_shift (B t tau : ℝ) (M : ℕ)
+    (hP : Continuous (Q3.P_A_shift B t tau)) (hB : 0 < B) :
+    Q3.RayleighQuotient
+      (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (Q3.P_A_shift B t tau)) (basis0 M) =
+    Q3.arch_term (fun ξ => Q3.phi_shift B t tau ξ) := by
+  rw [rayleigh_basis0, ToeplitzMatrix_Fourier_real_diag M (Q3.P_A_shift B t tau) hP]
+  exact Q3.Proofs.ShiftedWindows.integral_P_A_shift_eq_arch_term B t tau hB
+
+theorem prime_rayleigh_eq_shift (K B t tau : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] (hM : 0 < 2 * M + 1) :
+    (2 * M + 1 : ℝ) * Q3.RayleighQuotient (Q3.T_P_comp_real_shift K B t tau M) (basis0 M) =
+    ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) := by
+  rw [rayleigh_basis0, T_P_comp_real_shift_diag K B t tau M hM]
+  field_simp
+
+theorem rayleigh_Q_identification_shift (B t tau K : ℝ) (M : ℕ)
+    [Fintype (Q3.Nodes K)] (hB : 0 < B) (hP : Continuous (Q3.P_A_shift B t tau)) (hM : 0 < 2 * M + 1) :
+    Q3.RayleighQuotient
+      (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (Q3.P_A_shift B t tau)) (basis0 M) -
+    (2 * M + 1 : ℝ) * Q3.RayleighQuotient (Q3.T_P_comp_real_shift K B t tau M) (basis0 M) =
+    Q3.arch_term (fun ξ => Q3.phi_shift B t tau ξ) -
+    ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) := by
+  rw [arch_rayleigh_eq_shift B t tau M hP hB, prime_rayleigh_eq_shift K B t tau M hM]
+
+theorem prime_term_eq_nodes_sum_shift (B t tau K : ℝ) [Fintype (Q3.Nodes K)]
+    (hB : 0 < B) (hK : |tau| + B ≤ K) :
+    Q3.prime_term (fun ξ => Q3.phi_shift B t tau ξ) =
+    ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) := by
+  have hPhi : ∀ ξ, K < |ξ| → Q3.phi_shift B t tau ξ = 0 := by
+    intro ξ hξ
+    exact Q3.Proofs.ShiftedWindows.phi_shift_support_of_margin B t tau K hB hK ξ hξ
+  simpa using (prime_term_eq_nodes_of_support (Φ := fun ξ => Q3.phi_shift B t tau ξ) (K := K) hPhi)
+
+theorem rayleigh_Q_eq_Q_shift (B t tau K : ℝ) (M : ℕ)
+    [Fintype (Q3.Nodes K)] (hB : 0 < B) (hK : |tau| + B ≤ K)
+    (hP : Continuous (Q3.P_A_shift B t tau)) (hM : 0 < 2 * M + 1) :
+    Q3.RayleighQuotient
+      (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (Q3.P_A_shift B t tau)) (basis0 M) -
+    (2 * M + 1 : ℝ) * Q3.RayleighQuotient (Q3.T_P_comp_real_shift K B t tau M) (basis0 M) =
+    Q3.Q (fun ξ => Q3.phi_shift B t tau ξ) := by
+  rw [rayleigh_Q_identification_shift B t tau K M hB hP hM]
+  simp only [Q3.Q]
+  congr 1
+  exact (prime_term_eq_nodes_sum_shift B t tau K hB hK).symm
 
 end Q3.Proofs.RayleighQId
