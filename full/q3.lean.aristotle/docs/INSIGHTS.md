@@ -72,6 +72,20 @@
   `Q3/Proofs/Rayleigh_Q_identification.lean` (`honest_formula`) + A3/RKHS cap;
   3) `Q_nonneg_on_atomcone_of_atoms` из формы `AtomCone_K` (finite sum of atoms);
   4) подключить в `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
+- Synthesis (2026-01-18): wiring plan + import conflict.
+  1) Sandbox: `sandboxes/measure_dom/full/q3.lean.aristotle/Q3/Proofs/Q_nonneg_lemmas.lean`
+     содержит A1/A2/A5 + integrability/summability; скопировано в `Q3/Proofs/Q_nonneg_lemmas.lean`
+     (компилируется, предупреждение: `integral_mul_left` deprecated).
+  2) Import conflict: `Q_nonneg_atoms_helpers.lean` не может импортировать одновременно
+     `Q3.Proofs.Rayleigh_Q_identification` и `Q3.Proofs.P_A_Toeplitz_bridge`
+     (B_min collision из `A3_FLOOR_v20_bounds_core`).
+  3) Mitigation: держать Rayleigh‑леммы в файле, который импортирует только
+     `Rayleigh_Q_identification`; для `rho_one` подключать `Q3.Proofs.A3_bridge_rayleigh_first`.
+  4) Дальше: `rayleigh_basis0_of_A3` вынести в файл с `P_A_Toeplitz_bridge` (без Rayleigh),
+     затем связать с `Q_nonneg_fejer_heat_window` при wiring в
+     `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
+  5) Проверка: `lake env lean Q3/Proofs/Q_nonneg_atoms_helpers.lean` и
+     `lake env lean Q3/Proofs/Q_nonneg_lemmas.lean`.
 - Последний мост к Q3.Q: для Phi с compact support (например, fejer_heat_window) показать, что prime_term (tsum по n) равен конечной сумме по Nodes K при K >= B; тогда rayleigh_Q_identification переписывается в Q3.Q (см. `Q3/Proofs/Rayleigh_Q_identification.lean`).
 - P_A_continuous: доказательство через локальную конечность суммы и периодичность, без `sorry` (см. `A3_FLOOR_v22_stage4_floor.lean`).
 
