@@ -86,6 +86,20 @@
      `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
   5) Проверка: `lake env lean Q3/Proofs/Q_nonneg_atoms_helpers.lean` и
      `lake env lean Q3/Proofs/Q_nonneg_lemmas.lean`.
+- Synthesis (2026-01-18, in progress): AtomCone_K_fixed wiring plan.
+  1) Fix t0: define `t0_A1 = 1 / (16 * Real.pi^2 * t_sym)` in `Q3/Proofs/HeatKernelParams.lean`
+     with `t0_A1_pos`; use this for all fixed-t atoms.
+  2) Add atom rewrite: in `Q3/Proofs/ShiftedWindows.lean`, prove
+     `Fejer_heat_atom = const * (phi_shift B t_sym tau + phi_shift B t_sym (-tau))`.
+  3) Port fixed-t chain from sandbox `sandboxes/measure_dom/.../Q_nonneg_atoms_proof.lean` into
+     `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`:
+     `Q_nonneg_on_atomcone_fixed_of_atoms`, `Q_single_atom_fixed_nonneg`, `Q_nonneg_on_atoms_fixed`.
+  4) Prove `Q (phi_shift ...) ≥ 0` via `rayleigh_Q_eq_Q_shift` + `A3_bridge_data_rayleigh_Fourier`
+     + `rkhs_cap_rayleigh_tcap`; use `rayleigh_basis0_of_A3` as the arch lower bound.
+  5) Wire fixed-t theorem in `Q3/Atoms_Positive.lean` and `Q3/AxiomsTheorems.lean`;
+     keep `AtomCone_K` for density and use `AtomCone_K_fixed_subset`.
+  6) Checks: `lake env lean Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`,
+     `lake env lean Q3/Atoms_Positive.lean`, then `#print axioms`.
 - Последний мост к Q3.Q: для Phi с compact support (например, fejer_heat_window) показать, что prime_term (tsum по n) равен конечной сумме по Nodes K при K >= B; тогда rayleigh_Q_identification переписывается в Q3.Q (см. `Q3/Proofs/Rayleigh_Q_identification.lean`).
 - P_A_continuous: доказательство через локальную конечность суммы и периодичность, без `sorry` (см. `A3_FLOOR_v22_stage4_floor.lean`).
 
