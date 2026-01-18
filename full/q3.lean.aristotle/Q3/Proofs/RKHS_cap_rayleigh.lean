@@ -10,6 +10,7 @@ import Q3.Axioms
 import Q3.Proofs.Rayleigh_utils
 import Q3.Proofs.T_P_comp_utils
 import Q3.Proofs.A3_bridge_rayleigh_first
+import Q3.Proofs.Rayleigh_Q_identification
 
 set_option maxHeartbeats 0
 
@@ -396,6 +397,48 @@ lemma exp_xi_log_eq (n : ℕ) :
     nlinarith [hpos]
   simpa [hneg]
 
+lemma exp_shift_le_exp_mul (K t xi tau : ℝ) (hxi : |xi| ≤ K) (ht : 0 ≤ t) :
+    Real.exp (-4 * Real.pi ^ 2 * t * (xi - tau) ^ 2) ≤
+      Real.exp (8 * Real.pi ^ 2 * t * K ^ 2) * Real.exp (-4 * Real.pi ^ 2 * t * xi ^ 2) := by
+  have hxi2 : xi ^ 2 ≤ K ^ 2 := by
+    have hK : 0 ≤ K := by
+      exact le_trans (abs_nonneg xi) hxi
+    have h' : |xi| ≤ |K| := by
+      simpa [abs_of_nonneg hK] using hxi
+    exact (sq_le_sq).2 h'
+  have hneg' : xi ^ 2 - 2 * K ^ 2 ≤ 0 := by nlinarith [hxi2]
+  have hpos : 0 ≤ (xi - tau) ^ 2 := by nlinarith
+  have hneg : xi ^ 2 - 2 * K ^ 2 ≤ (xi - tau) ^ 2 := by
+    exact le_trans hneg' hpos
+  have hcoef : -4 * Real.pi ^ 2 * t ≤ 0 := by
+    have hpi : 0 ≤ Real.pi ^ 2 := by nlinarith [Real.pi_pos]
+    nlinarith [ht, hpi]
+  have hmul :
+      -4 * Real.pi ^ 2 * t * (xi - tau) ^ 2 ≤
+        -4 * Real.pi ^ 2 * t * (xi ^ 2 - 2 * K ^ 2) := by
+    exact mul_le_mul_of_nonpos_left hneg hcoef
+  have hmul' :
+      -4 * Real.pi ^ 2 * t * (xi - tau) ^ 2 ≤
+        8 * Real.pi ^ 2 * t * K ^ 2 - 4 * Real.pi ^ 2 * t * xi ^ 2 := by
+    calc
+      -4 * Real.pi ^ 2 * t * (xi - tau) ^ 2
+          ≤ -4 * Real.pi ^ 2 * t * (xi ^ 2 - 2 * K ^ 2) := hmul
+      _ = 8 * Real.pi ^ 2 * t * K ^ 2 - 4 * Real.pi ^ 2 * t * xi ^ 2 := by ring
+  have hexp :
+      Real.exp (-4 * Real.pi ^ 2 * t * (xi - tau) ^ 2) ≤
+        Real.exp (8 * Real.pi ^ 2 * t * K ^ 2 - 4 * Real.pi ^ 2 * t * xi ^ 2) := by
+    exact (Real.exp_le_exp).2 hmul'
+  calc
+    Real.exp (-4 * Real.pi ^ 2 * t * (xi - tau) ^ 2)
+        ≤ Real.exp (8 * Real.pi ^ 2 * t * K ^ 2 - 4 * Real.pi ^ 2 * t * xi ^ 2) := hexp
+    _ = Real.exp (8 * Real.pi ^ 2 * t * K ^ 2) *
+        Real.exp (-4 * Real.pi ^ 2 * t * xi ^ 2) := by
+      simp [sub_eq_add_neg, Real.exp_add, add_comm, add_left_comm, add_assoc,
+        mul_comm, mul_left_comm, mul_assoc]
+
+def rho_oneK (K : ℝ) : ℝ :=
+  Real.exp (8 * Real.pi ^ 2 * t_rkhs_cap * K ^ 2) * rho_one
+
 lemma weight_term_le_pow_inv (K B : ℝ) (hB : 0 < B) (n : Q3.Nodes K) :
     ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖
       ≤ (4 / Real.exp 1) * pow_inv_shift ((n : ℕ) - 2) := by
@@ -442,6 +485,78 @@ lemma weight_term_le_pow_inv (K B : ℝ) (hB : 0 < B) (n : Q3.Nodes K) :
           have hbase : (↑↑n : ℝ) - ((2 : ℕ) : ℝ) + 2 = (↑↑n : ℝ) := by
             ring
           rw [pow_inv_shift, Nat.cast_sub hn2, hbase]
+
+lemma weight_term_shift_le_pow_inv (K B tau : ℝ) (hB : 0 < B) (n : Q3.Nodes K) :
+    ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖
+      ≤ Real.exp (8 * Real.pi ^ 2 * t_rkhs_cap * K ^ 2) *
+        (4 / Real.exp 1) * pow_inv_shift ((n : ℕ) - 2) := by
+  have hn : (n : ℕ) ≥ 2 := n.property.2
+  have hwindow_nonneg :
+      0 ≤ Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) := by
+    simpa [Q3.phi_shift] using
+      Q3.fejer_heat_window_nonneg B t_rkhs_cap (Q3.xi_n n - tau)
+  have hw_nonneg : 0 ≤ Q3.w_Q n := Q3.w_Q_nonneg n
+  have hprod_nonneg :
+      0 ≤ Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) :=
+    mul_nonneg hw_nonneg hwindow_nonneg
+  have hnorm :
+      ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖
+        = Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) := by
+    have hnorm' :
+        ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖ =
+          |Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)| := by
+      simp
+    simpa [abs_of_nonneg hprod_nonneg] using hnorm'
+  have hfej :
+      Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)
+        ≤ Real.exp (-4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n - tau) ^ 2) := by
+    simpa [Q3.phi_shift] using
+      (fejer_heat_window_le_exp B t_rkhs_cap (Q3.xi_n n - tau) hB)
+  have hshift :
+      Real.exp (-4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n - tau) ^ 2)
+        ≤ Real.exp (8 * Real.pi ^ 2 * t_rkhs_cap * K ^ 2) *
+          Real.exp (-4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2) := by
+    have hxi : |Q3.xi_n n| ≤ K := n.property.1
+    have ht : 0 ≤ t_rkhs_cap := by nlinarith [one_le_t_rkhs_cap]
+    exact exp_shift_le_exp_mul (K:=K) (t:=t_rkhs_cap) (xi:=Q3.xi_n n) (tau:=tau) hxi ht
+  have hphi :
+      Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) ≤
+        Real.exp (8 * Real.pi ^ 2 * t_rkhs_cap * K ^ 2) *
+          Real.exp (-4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2) := by
+    exact le_trans hfej hshift
+  have hexp :
+      Real.exp (-4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2)
+        ≤ 1 / (n : ℝ) ^ (10 : ℕ) := by
+    have hexp0 := exp_log_sq_le_inv_pow (n:=(n : ℕ)) hn
+    have hexp1 :
+        Real.exp (-(4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2))
+          ≤ 1 / (n : ℝ) ^ (10 : ℕ) := by
+      simpa [exp_xi_log_eq (n:=(n : ℕ))] using hexp0
+    simpa [neg_mul, mul_comm, mul_left_comm, mul_assoc] using hexp1
+  have hw : Q3.w_Q n ≤ 4 / Real.exp 1 := w_Q_le_const (n:=(n : ℕ)) hn
+  have hconst : 0 ≤ Real.exp (8 * Real.pi ^ 2 * t_rkhs_cap * K ^ 2) := by
+    exact Real.exp_nonneg _
+  calc
+    ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖
+        = Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) := hnorm
+    _ ≤ (4 / Real.exp 1) *
+          (Real.exp (8 * Real.pi ^ 2 * t_rkhs_cap * K ^ 2) *
+            Real.exp (-4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2)) := by
+          exact mul_le_mul hw hphi hwindow_nonneg (by positivity)
+    _ = Real.exp (8 * Real.pi ^ 2 * t_rkhs_cap * K ^ 2) *
+          ((4 / Real.exp 1) *
+            Real.exp (-4 * Real.pi ^ 2 * t_rkhs_cap * (Q3.xi_n n) ^ 2)) := by
+          ring
+    _ ≤ Real.exp (8 * Real.pi ^ 2 * t_rkhs_cap * K ^ 2) *
+          ((4 / Real.exp 1) * (1 / (n : ℝ) ^ (10 : ℕ))) := by
+          refine mul_le_mul_of_nonneg_left ?_ hconst
+          exact mul_le_mul_of_nonneg_left hexp (by positivity)
+    _ = Real.exp (8 * Real.pi ^ 2 * t_rkhs_cap * K ^ 2) *
+          (4 / Real.exp 1) * pow_inv_shift ((n : ℕ) - 2) := by
+          have hn2 : 2 ≤ (n : ℕ) := hn
+          have hbase : (↑↑n : ℝ) - ((2 : ℕ) : ℝ) + 2 = (↑↑n : ℝ) := by
+            ring
+          simp [pow_inv_shift, Nat.cast_sub hn2, hbase, mul_assoc, mul_left_comm, mul_comm]
 
 lemma weight_sum_le_rho_one (K B : ℝ) (hB : 0 < B) [Fintype (Q3.Nodes K)] :
     ∑ n : Q3.Nodes K,
@@ -526,6 +641,192 @@ lemma weight_sum_le_rho_one (K B : ℝ) (hB : 0 < B) [Fintype (Q3.Nodes K)] :
     simpa [rho_one] using (le_trans hmul hS')
   exact le_trans hsum_le (by
     simpa [hsum_image] using le_trans hsum_le_tsum (le_trans htsum_bound hfinal))
+
+lemma weight_sum_le_rho_oneK (K B tau : ℝ) (hB : 0 < B) [Fintype (Q3.Nodes K)] :
+    ∑ n : Q3.Nodes K,
+        ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖
+      ≤ rho_oneK K := by
+  classical
+  let idx : Q3.Nodes K → ℕ := fun n => (n : ℕ) - 2
+  let C : ℝ := Real.exp (8 * Real.pi ^ 2 * t_rkhs_cap * K ^ 2)
+  have hC_nonneg : 0 ≤ C := by exact Real.exp_nonneg _
+  have hidx_inj : Set.InjOn idx (Set.univ : Set (Q3.Nodes K)) := by
+    intro a ha b hb h
+    have ha2 : 2 ≤ (a : ℕ) := a.property.2
+    have hb2 : 2 ≤ (b : ℕ) := b.property.2
+    have h' := congrArg (fun x => x + 2) h
+    have hab : (a : ℕ) = (b : ℕ) := by
+      simpa [idx, Nat.sub_add_cancel ha2, Nat.sub_add_cancel hb2] using h'
+    exact Subtype.ext hab
+  have hterm :
+      ∀ n : Q3.Nodes K,
+        ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖
+          ≤ C * (4 / Real.exp 1) * pow_inv_shift (idx n) := by
+    intro n
+    simpa [idx, C, mul_assoc, mul_left_comm, mul_comm] using
+      weight_term_shift_le_pow_inv (K:=K) (B:=B) (tau:=tau) hB n
+  have hsum_le :
+      ∑ n : Q3.Nodes K,
+          ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖
+        ≤ ∑ n : Q3.Nodes K, C * (4 / Real.exp 1) * pow_inv_shift (idx n) := by
+    refine Finset.sum_le_sum ?_
+    intro n hn
+    exact hterm n
+  have hsum_image :
+      ∑ n : Q3.Nodes K, C * (4 / Real.exp 1) * pow_inv_shift (idx n) =
+        Finset.sum (Finset.univ.image idx)
+          (fun m => C * (4 / Real.exp 1) * pow_inv_shift m) := by
+    have hidx_inj' :
+        Set.InjOn idx (↑(Finset.univ : Finset (Q3.Nodes K)) : Set (Q3.Nodes K)) := by
+      intro a ha b hb h
+      exact hidx_inj (by trivial) (by trivial) h
+    simpa using (Finset.sum_image (s:=Finset.univ)
+      (f:=fun m => C * (4 / Real.exp 1) * pow_inv_shift m) (g:=idx) hidx_inj').symm
+  have hsum_le_tsum :
+      Finset.sum (Finset.univ.image idx)
+          (fun m => C * (4 / Real.exp 1) * pow_inv_shift m) ≤
+        ∑' m : ℕ, C * (4 / Real.exp 1) * pow_inv_shift m := by
+    have hsum : Summable (fun m : ℕ => C * (4 / Real.exp 1) * pow_inv_shift m) := by
+      exact Summable.mul_left (C * (4 / Real.exp 1)) summable_pow_inv_shift
+    have hnonneg : ∀ m, 0 ≤ C * (4 / Real.exp 1) * pow_inv_shift m := by
+      intro m
+      exact mul_nonneg (mul_nonneg hC_nonneg (by positivity)) (pow_inv_shift_nonneg m)
+    exact Summable.sum_le_tsum (s:=Finset.univ.image idx)
+      (f:=fun m : ℕ => C * (4 / Real.exp 1) * pow_inv_shift m)
+      (hs:=by intro m hm; exact hnonneg m) (hf:=hsum)
+  have htsum_bound :
+      ∑' m : ℕ, C * (4 / Real.exp 1) * pow_inv_shift m ≤
+        C * (4 / Real.exp 1) * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) := by
+    have hnonneg : 0 ≤ (C * (4 / Real.exp 1 : ℝ)) := by
+      exact mul_nonneg hC_nonneg (by positivity)
+    calc
+      ∑' m : ℕ, C * (4 / Real.exp 1) * pow_inv_shift m
+          = (C * (4 / Real.exp 1)) * ∑' m : ℕ, pow_inv_shift m := by
+              simpa [mul_assoc] using
+                (tsum_mul_left (a:=C * (4 / Real.exp 1)) (f:=pow_inv_shift))
+      _ ≤ (C * (4 / Real.exp 1)) * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) := by
+              exact mul_le_mul_of_nonneg_left tsum_pow_inv_shift_le hnonneg
+  have hconst : (4 / Real.exp 1 : ℝ) ≤ 2 := by
+    have h : (2 : ℝ) ≤ Real.exp 1 := by
+      linarith [Real.exp_one_gt_d9]
+    have hpos : 0 < Real.exp 1 := by exact Real.exp_pos 1
+    have h' : 4 ≤ 2 * Real.exp 1 := by nlinarith [h]
+    exact (div_le_iff₀ hpos).2 h'
+  have hS :
+      (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) ≤ (1 / 100 : ℝ) := by
+    norm_num [pow_inv_shift]
+  have hfinal_base :
+      (4 / Real.exp 1) * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ))
+        ≤ rho_one := by
+    have hnonneg :
+        0 ≤ (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) := by
+      nlinarith [pow_inv_shift_nonneg 0, pow_inv_shift_nonneg 1]
+    have hmul : (4 / Real.exp 1) *
+        (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ))
+          ≤ 2 * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) := by
+      exact mul_le_mul_of_nonneg_right hconst hnonneg
+    have hS' : 2 * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ)) ≤ (1 / 25 : ℝ) := by
+      nlinarith [hS]
+    simpa [rho_one] using (le_trans hmul hS')
+  have hfinal :
+      C * (4 / Real.exp 1) * (pow_inv_shift 0 + pow_inv_shift 1 + (1 / 511 : ℝ))
+        ≤ rho_oneK K := by
+    have hmul := mul_le_mul_of_nonneg_left hfinal_base hC_nonneg
+    simpa [rho_oneK, C, mul_assoc] using hmul
+  exact le_trans hsum_le (by
+    simpa [hsum_image] using le_trans hsum_le_tsum (le_trans htsum_bound hfinal))
+
+lemma prime_rayleigh_shift_le_rho_oneK (K B tau : ℝ) (M : ℕ)
+    [Fintype (Q3.Nodes K)] (hB : 0 < B) (hM : 0 < 2 * M + 1) :
+    (2 * M + 1 : ℝ) *
+        Q3.RayleighQuotient (Q3.T_P_comp_real_shift K B t_rkhs_cap tau M)
+          (Q3.Proofs.RayleighQId.basis0 M) ≤ rho_oneK K := by
+  have hsum_norm :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) =
+        ∑ n : Q3.Nodes K,
+          ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖ := by
+    refine Finset.sum_congr rfl ?_
+    intro n hn
+    have hwindow_nonneg :
+        0 ≤ Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) := by
+      simpa [Q3.phi_shift] using
+        Q3.fejer_heat_window_nonneg B t_rkhs_cap (Q3.xi_n n - tau)
+    have hw_nonneg : 0 ≤ Q3.w_Q n := Q3.w_Q_nonneg n
+    have hprod_nonneg :
+        0 ≤ Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) :=
+      mul_nonneg hw_nonneg hwindow_nonneg
+    have hnorm' :
+        |Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)| =
+          ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖ := by
+      have hnorm_real :
+          ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖ =
+            |Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)| := by
+        simpa [Real.norm_eq_abs] using
+          (norm_real (Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)))
+      exact hnorm_real.symm
+    calc
+      Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) =
+          |Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)| := by
+        exact (abs_of_nonneg hprod_nonneg).symm
+      _ = ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖ := hnorm'
+  have h_weight_sum :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) ≤ rho_oneK K := by
+    simpa [hsum_norm] using weight_sum_le_rho_oneK (K:=K) (B:=B) (tau:=tau) hB
+  have hprime :
+      (2 * M + 1 : ℝ) *
+          Q3.RayleighQuotient (Q3.T_P_comp_real_shift K B t_rkhs_cap tau M)
+            (Q3.Proofs.RayleighQId.basis0 M) =
+        ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) := by
+    exact Q3.Proofs.RayleighQId.prime_rayleigh_eq_shift (K:=K) (B:=B) (t:=t_rkhs_cap)
+      (tau:=tau) (M:=M) hM
+  calc
+    (2 * M + 1 : ℝ) *
+        Q3.RayleighQuotient (Q3.T_P_comp_real_shift K B t_rkhs_cap tau M)
+          (Q3.Proofs.RayleighQId.basis0 M)
+        = ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) := hprime
+    _ ≤ rho_oneK K := h_weight_sum
+
+lemma prime_term_phi_shift_le_rho_oneK (K B tau : ℝ) (hB : 0 < B) (hK : |tau| + B ≤ K)
+    [Fintype (Q3.Nodes K)] :
+    Q3.prime_term (fun ξ => Q3.phi_shift B t_rkhs_cap tau ξ) ≤ rho_oneK K := by
+  have hsum :
+      Q3.prime_term (fun ξ => Q3.phi_shift B t_rkhs_cap tau ξ) =
+        ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) := by
+    simpa using
+      (Q3.Proofs.RayleighQId.prime_term_eq_nodes_sum_shift
+        (B:=B) (t:=t_rkhs_cap) (tau:=tau) (K:=K) hB hK)
+  have hsum_norm :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) =
+        ∑ n : Q3.Nodes K,
+          ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖ := by
+    refine Finset.sum_congr rfl ?_
+    intro n hn
+    have hwindow_nonneg :
+        0 ≤ Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) := by
+      simpa [Q3.phi_shift] using
+        Q3.fejer_heat_window_nonneg B t_rkhs_cap (Q3.xi_n n - tau)
+    have hw_nonneg : 0 ≤ Q3.w_Q n := Q3.w_Q_nonneg n
+    have hprod_nonneg :
+        0 ≤ Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) :=
+      mul_nonneg hw_nonneg hwindow_nonneg
+    have hnorm' :
+        |Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)| =
+          ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖ := by
+      have hnorm_real :
+          ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖ =
+            |Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)| := by
+        simpa [Real.norm_eq_abs] using
+          (norm_real (Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)))
+      exact hnorm_real.symm
+    calc
+      Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) =
+          |Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)| := by
+        exact (abs_of_nonneg hprod_nonneg).symm
+      _ = ‖((Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) : ℂ)‖ := hnorm'
+  have hweight :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) ≤ rho_oneK K := by
+    simpa [hsum_norm] using (weight_sum_le_rho_oneK (K:=K) (B:=B) (tau:=tau) hB)
+  simpa [hsum] using hweight
 
 lemma T_P_comp_real_opNorm_le_weight_sum (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] :
     ‖Q3.T_P_comp_real K B t M‖ ≤

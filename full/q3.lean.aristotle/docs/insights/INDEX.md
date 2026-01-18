@@ -6,25 +6,26 @@ Files:
 
 - a3_bridge_math_rkhs_bound.md
 - a3_fourier_atoms_axiom_2026_01_16.md
-- carleson_implicit_proof_2026_01_17.md *(NEW)*
 - a3_symbol_mismatch_reverse_engineering.md
 - a_star_vs_p_a_dossier.md
 - aristotle_error_recovery.md
 - aristotle_strategy_pure_informal.md
 - breakthrough_proshka_full_proof_2026_01_14.md
+- carleson_implicit_proof_2026_01_17.md
 - check_axioms_prebuild_a3_floor_2026_01_16.md
 - documentation_discipline.md
 - drift_report_m1_m4.md
 - file_organization_aristotle.md
 - h_cap_numerical_estimates_2026_01_14.md
+- heat_localization_kills_primes_2026_01_16.md
 - heat_parameter_mismatch_2026_01_14.md
 - key_constants_reference.md
-- heat_localization_kills_primes_2026_01_16.md
 - localization_argument_full_analysis_2026_01_16.md
-- prime_term_nodes_bridge_2026_01_17.md *(NEW)*
+- PERIODIZATION_BOTTLENECK_FIX.md
+- prime_term_nodes_bridge_2026_01_17.md
 - proshka_key_resource.md
 - proven_assets_inventory_2026_01_14.md
-- rayleigh_q_identification_2026_01_17.md *(NEW)*
+- rayleigh_q_identification_2026_01_17.md
 - rayleigh_vs_sb_optional.md
 - rescaled_density_lemma_variants_2026_01_16.md
 - rh_q3_invariants_contract_2026_01_16.md
@@ -33,6 +34,7 @@ Files:
 - t_p_comp_mismatch.md
 - t_p_compression_fix_2026_01_14.md
 - t_parameter_forms.md
+- tau_shift_variants_rkhs_a3_2026_01_18.md
 - v1_surprise_real_tp_bounds_2026_01_14.md
 - v3_success_a3_bridge_rayleigh_2026_01_14.md
 - v4_success_full_tp_bound_2026_01_14.md

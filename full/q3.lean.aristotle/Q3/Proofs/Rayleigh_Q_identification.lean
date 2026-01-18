@@ -19,6 +19,7 @@ Integration: change-durch: claude-code 2026-01-17 Rayleigh_Q_identification
 
 import Q3.Axioms
 import Q3.Proofs.Rayleigh_Fourier
+import Q3.Proofs.ShiftedWindows
 import A3_FLOOR_v22_stage4_floor
 
 set_option linter.mathlibStandardSet false
@@ -28,6 +29,21 @@ open scoped BigOperators Real Classical ComplexConjugate
 set_option maxHeartbeats 0
 
 noncomputable section
+
+namespace Q3
+
+noncomputable def T_P_comp_shift (K B t tau : ℝ) (M : ℕ) [Fintype (Nodes K)] :
+    Matrix (Fin (2 * M + 1)) (Fin (2 * M + 1)) ℂ :=
+  fun i j =>
+    ∑ n : Nodes K,
+      ((w_Q n * phi_shift B t tau (xi_n n)) : ℂ) *
+        prime_vec M (xi_n n) i * conj (prime_vec M (xi_n n) j)
+
+noncomputable def T_P_comp_real_shift (K B t tau : ℝ) (M : ℕ) [Fintype (Nodes K)] :
+    Matrix (Fin (2 * M + 1)) (Fin (2 * M + 1)) ℝ :=
+  fun i j => (T_P_comp_shift K B t tau M i j).re
+
+end Q3
 
 namespace Q3.Proofs.RayleighQId
 
@@ -605,5 +621,75 @@ theorem rayleigh_Q_eq_Q (B t K : ℝ) (M : ℕ)
   simp only [Q3.Q]
   congr 1
   exact (prime_term_eq_nodes_sum B t K hB hK).symm
+
+/-- Diagonal of shifted T_P_comp_real at basis0. -/
+lemma T_P_comp_real_shift_diag (K B t tau : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] (hM : 0 < 2 * M + 1) :
+    Q3.T_P_comp_real_shift K B t tau M (i0 M) (i0 M) =
+      (1 / (2 * M + 1 : ℝ)) *
+        ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) := by
+  simp only [Q3.T_P_comp_real_shift, Q3.T_P_comp_shift]
+  simp only [← Complex.ofReal_mul]
+  have h_factor : ∀ n : Q3.Nodes K,
+      ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n)) : ℂ) *
+        Q3.prime_vec M (Q3.xi_n n) (i0 M) * conj (Q3.prime_vec M (Q3.xi_n n) (i0 M)) =
+      ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n)) : ℂ) * (1 / (2 * M + 1 : ℝ)) := by
+    intro n
+    rw [mul_assoc, prime_vec_i0_norm_sq M (Q3.xi_n n) hM]
+  have h_sum_eq : (∑ n : Q3.Nodes K,
+        ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n)) : ℂ) *
+          Q3.prime_vec M (Q3.xi_n n) (i0 M) * conj (Q3.prime_vec M (Q3.xi_n n) (i0 M))) =
+      ∑ n : Q3.Nodes K, ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n)) : ℂ) *
+        (1 / (2 * M + 1 : ℝ)) := by
+    congr 1
+    ext n
+    exact h_factor n
+  rw [h_sum_eq, ← Finset.sum_mul]
+  rw [← Complex.ofReal_sum]
+  rw [one_div, ← Complex.ofReal_inv, ← Complex.ofReal_mul, Complex.ofReal_re]
+  ring
+
+theorem arch_rayleigh_eq_shift (B t tau : ℝ) (M : ℕ)
+    (hP : Continuous (Q3.P_A_shift B t tau)) (hB : 0 < B) :
+    Q3.RayleighQuotient
+      (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (Q3.P_A_shift B t tau)) (basis0 M) =
+    Q3.arch_term (fun ξ => Q3.phi_shift B t tau ξ) := by
+  rw [rayleigh_basis0, ToeplitzMatrix_Fourier_real_diag M (Q3.P_A_shift B t tau) hP]
+  exact Q3.Proofs.ShiftedWindows.integral_P_A_shift_eq_arch_term B t tau hB
+
+theorem prime_rayleigh_eq_shift (K B t tau : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] (hM : 0 < 2 * M + 1) :
+    (2 * M + 1 : ℝ) * Q3.RayleighQuotient (Q3.T_P_comp_real_shift K B t tau M) (basis0 M) =
+    ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) := by
+  rw [rayleigh_basis0, T_P_comp_real_shift_diag K B t tau M hM]
+  field_simp
+
+theorem rayleigh_Q_identification_shift (B t tau K : ℝ) (M : ℕ)
+    [Fintype (Q3.Nodes K)] (hB : 0 < B) (hP : Continuous (Q3.P_A_shift B t tau)) (hM : 0 < 2 * M + 1) :
+    Q3.RayleighQuotient
+      (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (Q3.P_A_shift B t tau)) (basis0 M) -
+    (2 * M + 1 : ℝ) * Q3.RayleighQuotient (Q3.T_P_comp_real_shift K B t tau M) (basis0 M) =
+    Q3.arch_term (fun ξ => Q3.phi_shift B t tau ξ) -
+    ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) := by
+  rw [arch_rayleigh_eq_shift B t tau M hP hB, prime_rayleigh_eq_shift K B t tau M hM]
+
+theorem prime_term_eq_nodes_sum_shift (B t tau K : ℝ) [Fintype (Q3.Nodes K)]
+    (hB : 0 < B) (hK : |tau| + B ≤ K) :
+    Q3.prime_term (fun ξ => Q3.phi_shift B t tau ξ) =
+    ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) := by
+  have hPhi : ∀ ξ, K < |ξ| → Q3.phi_shift B t tau ξ = 0 := by
+    intro ξ hξ
+    exact Q3.Proofs.ShiftedWindows.phi_shift_support_of_margin B t tau K hB hK ξ hξ
+  simpa using (prime_term_eq_nodes_of_support (Φ := fun ξ => Q3.phi_shift B t tau ξ) (K := K) hPhi)
+
+theorem rayleigh_Q_eq_Q_shift (B t tau K : ℝ) (M : ℕ)
+    [Fintype (Q3.Nodes K)] (hB : 0 < B) (hK : |tau| + B ≤ K)
+    (hP : Continuous (Q3.P_A_shift B t tau)) (hM : 0 < 2 * M + 1) :
+    Q3.RayleighQuotient
+      (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (Q3.P_A_shift B t tau)) (basis0 M) -
+    (2 * M + 1 : ℝ) * Q3.RayleighQuotient (Q3.T_P_comp_real_shift K B t tau M) (basis0 M) =
+    Q3.Q (fun ξ => Q3.phi_shift B t tau ξ) := by
+  rw [rayleigh_Q_identification_shift B t tau K M hB hP hM]
+  simp only [Q3.Q]
+  congr 1
+  exact (prime_term_eq_nodes_sum_shift B t tau K hB hK).symm
 
 end Q3.Proofs.RayleighQId
