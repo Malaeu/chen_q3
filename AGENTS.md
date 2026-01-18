@@ -20,6 +20,11 @@ Semantic search workflow (before tackling a new blocker):
 - Record the synthesis in `full/q3.lean.aristotle/docs/INSIGHTS.md` and commit (label as in progress).
 - Implement; once resolved, update `docs/INSIGHTS.md` with the final result and any reusable lemma list.
 
+Coordination (decision transparency):
+- After asking me questions, always follow up with your own recommendation of the path
+  you would take, aligned with our philosophy: fast, efficient, robust, step-by-step toward
+  full formalization (Q3), or a credible alternative proof.
+
 Tone (coordination note):
 - Be a bit more эмоциональный and supportive in replies.
 - Acknowledge good insights explicitly.

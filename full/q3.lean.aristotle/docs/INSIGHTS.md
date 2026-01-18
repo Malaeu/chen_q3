@@ -100,6 +100,23 @@
      keep `AtomCone_K` for density and use `AtomCone_K_fixed_subset`.
   6) Checks: `lake env lean Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`,
      `lake env lean Q3/Atoms_Positive.lean`, then `#print axioms`.
+- Synthesis (2026-01-19, in progress): A1–A5 helpers + fixed‑t wiring checklist.
+  1) A1/A2 already in `Q3/Proofs/Q_nonneg_lemmas.lean` (`Q_finset_sum`, `prime_sum_nonneg`);
+     import/reuse in `Q3/Proofs/Q_nonneg_atoms_helpers.lean` for A5.
+  2) A4 in `Q3/Proofs/Rayleigh_basis0_of_A3.lean`; keep imports minimal
+     (`Q3/Proofs/Rayleigh_basis0.lean`, `Q3/Proofs/P_A_Toeplitz_bridge.lean`).
+  3) A3 in `Q3/Proofs/Q_nonneg_atoms_helpers.lean` via
+     `Q3.Proofs.RayleighQId.honest_formula` + RKHS cap (`weight_sum_le_rho_one`/`rkhs_cap_rayleigh_tcap`).
+  4) Use fixed‑t cone lemma from sandbox
+     `sandboxes/measure_dom/full/q3.lean.aristotle/Q3/Proofs/Q_nonneg_atoms_proof.lean`
+     (`Q_nonneg_on_atomcone_fixed_of_atoms`) with `AtomCone_K_fixed` (see
+     `docs/insights/atomcone_fixed_t_gap_2026_01_18.md`).
+  5) Wire `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` in
+     `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` using A1–A4 + fixed‑t cone.
+  6) Replace axiom usage in `Q3/Atoms_Positive.lean` and `Q3/AxiomsTheorems.lean`.
+  7) Checks: `lake env lean Q3/Proofs/Q_nonneg_atoms_helpers.lean`,
+     `lake env lean Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`,
+     `lake env lean Q3/Atoms_Positive.lean`.
 - Последний мост к Q3.Q: для Phi с compact support (например, fejer_heat_window) показать, что prime_term (tsum по n) равен конечной сумме по Nodes K при K >= B; тогда rayleigh_Q_identification переписывается в Q3.Q (см. `Q3/Proofs/Rayleigh_Q_identification.lean`).
 - P_A_continuous: доказательство через локальную конечность суммы и периодичность, без `sorry` (см. `A3_FLOOR_v22_stage4_floor.lean`).
 
