@@ -96,81 +96,91 @@ theorem Q_nonneg_special_cone (K : ℝ) (hK : K ≥ 1)
   have hg' : g ∈ Q3.AtomCone_K K := special_cone_subset_atom_cone K hg
   exact Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom K hK hA3 hRKHS g hg'
 
-/-! ## Density of SpecialAtomCone_K in W_K
+/-! ## T5 Transfer: Q ≥ 0 on W_K
 
-Standard approximation theory: shifted heat-smoothed Fejér kernels
-with fixed bandwidth are dense in the space of smooth functions.
+The key insight: we can use AtomCone_K directly (not SpecialAtomCone_K) since:
+1. Q ≥ 0 on AtomCone_K (via Q_nonneg_on_atoms_of_A3_RKHS_axiom)
+2. AtomCone_K is dense in W_K (via A1_density_WK_axiom)
+3. Q is Lipschitz on W_K (via Q_Lipschitz_on_W_K axiom)
+
+This is cleaner than the original approach which required SpecialAtomCone_K density.
 -/
 
-/-- SpecialAtomCone_K is dense in W_K (or at least in AtomCone_K).
+/-- Q is nonnegative on AtomCone_K. Direct application of the axiom. -/
+theorem Q_nonneg_on_atom_cone (K : ℝ) (hK : K ≥ 1)
+    (hA3 : Q3.A3_bridge_data K) (hRKHS : Q3.RKHS_contraction_data K)
+    (g : ℝ → ℝ) (hg : g ∈ Q3.AtomCone_K K) :
+    Q3.Q g ≥ 0 :=
+  Q3.Q_nonneg_on_atoms_of_A3_RKHS_axiom K hK hA3 hRKHS g hg
 
-    This is the density part of T5 transfer.
-    Mathematical argument:
-    - Translations of a fixed function are dense under convolution smoothing
-    - The heat kernel provides the smoothing
-    - Fejér kernel provides compact support
-
-    This follows from standard approximation theory (Stone-Weierstrass type).
--/
-theorem special_cone_dense_in_W_K (K : ℝ) (hK : K > 0) :
-    ∀ Φ ∈ Q3.W_K K, ∀ ε > 0, ∃ g ∈ SpecialAtomCone_K K,
-      sSup {x | ∃ ξ ∈ Set.Icc (-K) K, |Φ ξ - g ξ| = x} < ε := by
-  -- This is the key approximation lemma
-  -- Standard argument: heat-smoothed Fejér approximation
-  sorry
-
-/-! ## T5 Transfer: Q ≥ 0 on W_K -/
+/-- AtomCone_K membership implies W_K membership. -/
+lemma atom_cone_subset_W_K (K : ℝ) : Q3.AtomCone_K K ⊆ Q3.W_K K := by
+  intro g hg
+  obtain ⟨_, _, _, _, _, _, _, _, _, ⟨_, hW⟩⟩ := hg
+  exact hW
 
 /-- **T5 Transfer Theorem**: Q ≥ 0 on all of W_K.
 
-    Proof:
-    1. Q ≥ 0 on SpecialAtomCone_K (by Q_nonneg_special_cone + A3/RKHS axioms)
-    2. SpecialAtomCone_K is dense in W_K (by special_cone_dense_in_W_K)
-    3. Q is Lipschitz continuous on W_K (by Q3.Q_Lipschitz_on_W_K axiom)
-    4. Therefore Q ≥ 0 on all of W_K
-
-    This completes the closure of Q_nonneg_on_atoms_of_A3_RKHS_axiom.
+    Proof using AtomCone_K directly:
+    1. Q ≥ 0 on AtomCone_K (by Q_nonneg_on_atoms_of_A3_RKHS_axiom)
+    2. AtomCone_K is dense in W_K (by A1_density_WK_axiom)
+    3. Q is Lipschitz continuous on W_K (by Q_Lipschitz_on_W_K axiom)
+    4. Therefore Q ≥ 0 on all of W_K by density argument
 -/
 theorem Q_nonneg_on_W_K (K : ℝ) (hK_pos : K > 0) (hK : K ≥ 1)
     (hA3 : Q3.A3_bridge_data K) (hRKHS : Q3.RKHS_contraction_data K) :
     ∀ Φ ∈ Q3.W_K K, Q3.Q Φ ≥ 0 := by
   intro Φ hΦ
-  -- By density, approximate Φ by g_n ∈ SpecialAtomCone_K with ‖Φ - g_n‖ → 0
-  -- Each Q(g_n) ≥ 0
-  -- By Lipschitz continuity: |Q(Φ) - Q(g_n)| ≤ L · ‖Φ - g_n‖ → 0
-  -- Therefore Q(Φ) = lim Q(g_n) ≥ 0
+  -- Proof by contradiction: assume Q(Φ) < 0
   by_contra hQ
   push_neg at hQ
-  -- Get ε = -Q(Φ) > 0
+  -- Let ε = -Q(Φ) > 0
   have hε : 0 < -Q3.Q Φ := neg_pos.mpr hQ
-  -- Get Lipschitz constant
+  -- Get Lipschitz constant L > 0
   obtain ⟨L, hL_pos, hLip⟩ := Q3.Q_Lipschitz_on_W_K K hK_pos
-  -- Choose δ = ε / (2L)
+  -- Choose δ = -Q(Φ) / (2L) > 0
   let δ := -Q3.Q Φ / (2 * L)
   have hδ : 0 < δ := by positivity
-  -- Get approximant g with ‖Φ - g‖ < δ
-  obtain ⟨g, hg_mem, hg_close⟩ := special_cone_dense_in_W_K K hK_pos Φ hΦ δ hδ
-  -- Q(g) ≥ 0 (using the axiom via cone inclusion)
-  have hQg : Q3.Q g ≥ 0 := Q_nonneg_special_cone K hK hA3 hRKHS g hg_mem
-  -- But |Q(Φ) - Q(g)| ≤ L · ‖Φ - g‖ < L · δ = -Q(Φ)/2
-  -- So Q(Φ) > Q(g) - (-Q(Φ)/2) = Q(g) + Q(Φ)/2 ≥ Q(Φ)/2
-  -- This gives Q(Φ) > Q(Φ)/2, so Q(Φ) > 0, contradiction
-  -- Need to show g ∈ W_K K for Lipschitz bound to apply
-  have hg_W : g ∈ Q3.W_K K := by
-    obtain ⟨_, _, _, _, _, _, hW⟩ := hg_mem
-    exact hW
-  -- Apply Lipschitz bound
-  have hLip_app := hLip Φ hΦ g hg_W
-  -- The distance sSup {|Φ(x) - g(x)| : x ∈ [-K, K]} < δ
-  -- So |Q(Φ) - Q(g)| ≤ L * δ = L * (-Q(Φ))/(2L) = -Q(Φ)/2
-  -- Therefore Q(Φ) ≥ Q(g) - |Q(Φ) - Q(g)| ≥ 0 - (-Q(Φ)/2) = Q(Φ)/2
-  -- But Q(Φ) < 0, so Q(Φ) ≥ Q(Φ)/2 means Q(Φ)/2 ≤ 0, i.e., Q(Φ) ≤ 0 ✓
-  -- Contradiction: Q(Φ) < 0 but Q(g) ≥ 0 and |Q(Φ) - Q(g)| < -Q(Φ)/2
-  -- implies Q(Φ) > Q(g) + Q(Φ)/2 ≥ Q(Φ)/2, hence Q(Φ)/2 < 0, i.e., Q(Φ) < 0 ✓
-  -- Wait, we need: Q(Φ) > -|Q(Φ) - Q(g)| + Q(g) > -(-Q(Φ)/2) + 0 = Q(Φ)/2
-  -- So Q(Φ) > Q(Φ)/2, which for Q(Φ) < 0 gives: e.g., -1 > -0.5 FALSE!
-  -- The argument shows Q(Φ) ≥ Q(g) - L*δ = 0 - (-Q(Φ)/2) = Q(Φ)/2
-  -- For Q(Φ) < 0: Q(Φ) ≥ Q(Φ)/2 means -x ≥ -x/2 i.e., -x/2 ≥ 0, FALSE for x > 0
-  sorry
+  -- By A1_density, get g ∈ AtomCone_K with ‖Φ - g‖_∞ < δ
+  obtain ⟨g, hg_atom, hg_close⟩ := Q3.A1_density_WK_axiom K hK_pos Φ hΦ δ hδ
+  -- g ∈ W_K since AtomCone_K ⊆ W_K
+  have hg_W : g ∈ Q3.W_K K := atom_cone_subset_W_K K hg_atom
+  -- Q(g) ≥ 0 by the axiom
+  have hQg : Q3.Q g ≥ 0 := Q_nonneg_on_atom_cone K hK hA3 hRKHS g hg_atom
+  -- Apply Lipschitz bound: |Q(Φ) - Q(g)| ≤ L · ‖Φ - g‖_∞
+  have hLip_bound := hLip Φ hΦ g hg_W
+  -- We have ‖Φ - g‖_∞ < δ = -Q(Φ)/(2L), so:
+  -- |Q(Φ) - Q(g)| ≤ L · δ = L · (-Q(Φ)/(2L)) = -Q(Φ)/2
+  -- Since Q(g) ≥ 0:
+  --   Q(Φ) = Q(g) - (Q(g) - Q(Φ)) ≥ Q(g) - |Q(Φ) - Q(g)|
+  --        ≥ 0 - (-Q(Φ)/2) = Q(Φ)/2
+  -- So Q(Φ) ≥ Q(Φ)/2. For Q(Φ) < 0, this gives -|Q(Φ)| ≥ -|Q(Φ)|/2, contradiction!
+  -- More precisely: Q(g) - Q(Φ) ≤ |Q(Φ) - Q(g)| < -Q(Φ)/2
+  -- So Q(g) < Q(Φ) + (-Q(Φ)/2) = Q(Φ)/2 < 0
+  -- But Q(g) ≥ 0, contradiction!
+  have h_dist_bound : sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < δ := hg_close
+  have h_lip_ineq : |Q3.Q Φ - Q3.Q g| ≤ L * sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} := hLip_bound
+  have h_key : |Q3.Q Φ - Q3.Q g| < L * δ := by
+    calc |Q3.Q Φ - Q3.Q g| ≤ L * sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} := h_lip_ineq
+      _ < L * δ := by nlinarith [h_dist_bound]
+  -- L * δ = L * (-Q(Φ)/(2L)) = -Q(Φ)/2
+  have h_Ldelta : L * δ = -Q3.Q Φ / 2 := by
+    simp only [δ]
+    field_simp
+  rw [h_Ldelta] at h_key
+  -- |Q(Φ) - Q(g)| < -Q(Φ)/2
+  -- Since Q(Φ) < 0 and Q(g) ≥ 0, we have Q(Φ) - Q(g) < 0
+  -- So |Q(Φ) - Q(g)| = Q(g) - Q(Φ) = -(Q(Φ) - Q(g))
+  have h_diff_neg : Q3.Q Φ - Q3.Q g < 0 := by linarith
+  have h_abs_eq : |Q3.Q Φ - Q3.Q g| = Q3.Q g - Q3.Q Φ := by
+    rw [abs_of_neg h_diff_neg]
+    ring
+  rw [h_abs_eq] at h_key
+  -- Q(g) - Q(Φ) < -Q(Φ)/2
+  -- Q(g) < Q(Φ) - Q(Φ)/2 = Q(Φ)/2 < 0
+  have h_Qg_neg : Q3.Q g < Q3.Q Φ / 2 := by linarith
+  have h_half_neg : Q3.Q Φ / 2 < 0 := by linarith
+  -- But Q(g) ≥ 0, contradiction
+  linarith
 
 end Q3.Proofs.T5Transfer
