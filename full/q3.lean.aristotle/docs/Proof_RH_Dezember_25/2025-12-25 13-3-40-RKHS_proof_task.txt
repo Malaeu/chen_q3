@@ -1,0 +1,783 @@
+# RKHS proof task
+
+https://chat.openai.com/c/694d281b-cb08-832e-9bb4-27946f6339a7
+
+>> USER: ЗАДАНИЕ ПРОШКЕ №2 (RKHS‑cap, железобетон)
+Цель (строго по базе):
+доказать
+[
+t_{\mathrm{rkhs}}\ge1 ;\Longrightarrow; |T_P|\le\rho(1)<\frac{1}{25},
+]
+где
+[
+\rho(t)=2\int_0^\infty y,e^{y/2}e^{-4\pi^2 t y^2},dy,
+]
+и всё в T0‑нормировке, без чисел/скетчей.
+
+Разрешённые источники в базе:
+
+prime_trace_closed_form.tex
+prime_cap.tex (но без legacy‑веток)
+prime_norm_leq_rho.tex
+symbol_floor.tex (для связи (\rho(1)<1/25<c_*/4))
+Формат:
+
+Lemma: (|T_P|\le \mathrm{tr}(T_P)\le \rho(t)) (PSD + finite rank).
+Lemma: closed‑form bound
+[
+\rho(t)\le \frac{1}{4\pi^2 t}+\frac{\sqrt\pi}{2(4\pi^2 t)^{3/2}}e^{1/(16\pi^2 t)}.
+]
+Corollary: при (t=1), используя (\pi>3) и (e^{1/144}\le 1+1/144+1/20736), получить
+(\rho(1)<1/25).
+Никаких внешних ссылок, никаких “O(1)”, только явные неравенства.
+Важно:
+
+не менять веса (в RKHS — недвоенные),
+не тащить (2\pi) извне,
+не использовать “численный калькулятор”.
+
+>> ASSISTANT: According to a document from **2025-12-25**, here is a “железобетон” proof dossier in **T0‑нормировке** using only the allowed base material.
+
+---
+
+## 0. Theorem Title and Status
+
+- **Exact statement:** For every RKHS heat scale \(t_{\mathrm{rkhs}}\ge 1\), the (even‑symmetrized) prime sampling operator \(T_P\) satisfies
+  \[
+  |T_P| \le \rho(1) < \frac{1}{25},
+  \qquad
+  \rho(t)=2\int_{0}^{\infty} y\,e^{y/2}e^{-4\pi^2 t y^2}\,dy.
+  \]
+- **Status:** Standard Hilbert‑space operator theory + explicit calculus bounds, within the project’s **T0 conventions** and the base lemmas on the prime trace cap and its closed form. The key base statements appear as Proposition 9.27, Lemma 9.26, Lemma 9.18, Lemma 9.24, and Corollary 8.22 in the dossier source. 【53:1†RH_Q3.pdf†L84-L101】【53:0†RH_Q3.pdf†L43-L115】【65:2†RH_Q3.pdf†L5-L52】【65:10†RH_Q3.pdf†L9-L35】【65:0†RH_Q3.pdf†L108-L123】
+
+---
+
+## 1. Formal Statement (with Quantifiers)
+
+Let \((\mathcal H,\langle\cdot,\cdot\rangle)\) be the RKHS on a compact interval \([-K,K]\) in T0‑normalization, with normalized reproducing vectors \(k_\alpha\in\mathcal H\) satisfying \(\|k_\alpha\|_{\mathcal H}=1\). Fix the RKHS prime weights
+\[
+w_{\mathrm{rkhs}}(n):=\frac{\Lambda(n)}{\sqrt n}
+\quad\text{(undoubled)}.
+\]
+【65:8†RH_Q3.pdf†L47-L97】
+
+For each \(K>0\) and \(t>0\), let \(T_P(t)\) denote the **even‑symmetrized** prime sampling operator on \([-K,K]\) with these undoubled weights (so the factor \(2\) comes only from the \(\pm\)-symmetry, not from altering weights). The base establishes that \(T_P(t)\) is positive, finite rank, and its trace is bounded by a Gaussian cap \(\rho(t)\). 【53:1†RH_Q3.pdf†L84-L101】
+
+Define, for all \(t>0\),
+\[
+\rho(t):=2\int_{0}^{\infty} y\,e^{y/2}e^{-4\pi^2 t y^2}\,dy.
+\]
+【65:2†RH_Q3.pdf†L5-L12】
+
+**Claim:**  
+\[
+\forall\,K>0\;\forall\,t_{\mathrm{rkhs}}\in[1,\infty):
+\quad
+\|T_P(t_{\mathrm{rkhs}})\|_{\mathrm{op}}
+\le \rho(1)
+<\frac{1}{25}.
+\]
+
+(Here \(|T_P|\) is understood as the operator norm \(\|T_P\|_{\mathrm{op}}\).)
+
+---
+
+## 2. Definitions and Notation
+
+1. **von Mangoldt function** \(\Lambda(n)\): \(\Lambda(n)=\log p\) if \(n=p^m\) for prime \(p\) and \(m\ge1\), and \(\Lambda(n)=0\) otherwise. (Used in the prime weights.) 【65:8†RH_Q3.pdf†L47-L97】
+
+2. **RKHS (undoubled) weights:**
+   \[
+   w_{\mathrm{rkhs}}(n)=\frac{\Lambda(n)}{\sqrt n}.
+   \]
+   This is explicitly distinguished from the doubled one‑sided weight used inside \(Q\); in the RKHS operator we keep the undoubled convention. 【65:8†RH_Q3.pdf†L47-L97】
+
+3. **Rank‑one operator notation:** for \(u\in\mathcal H\),
+   \[
+   |u\rangle\langle u|:\mathcal H\to\mathcal H,\qquad f\mapsto \langle f,u\rangle\,u.
+   \]
+
+4. **Positive semidefinite (PSD) operator:** a bounded self‑adjoint operator \(A\) is PSD if \(\langle Af,f\rangle\ge0\) for all \(f\in\mathcal H\).
+
+5. **Trace (finite rank):** for finite‑rank self‑adjoint \(A\), \(\mathrm{Tr}(A)\) is the sum of eigenvalues (counted with multiplicity), equivalently the sum of diagonal entries in any orthonormal basis.
+
+6. **Operator norm:** \(\|A\|_{\mathrm{op}}=\sup_{\|f\|=1}\|Af\|\). For PSD \(A\), \(\|A\|_{\mathrm{op}}\) equals its largest eigenvalue.
+
+7. **Gaussian cap function:**
+   \[
+   \rho(t)=2\int_0^\infty y\,e^{y/2}e^{-4\pi^2 t y^2}\,dy.
+   \]
+   It is strictly decreasing in \(t\). 【65:2†RH_Q3.pdf†L5-L52】
+
+---
+
+## 3. Dependencies (Dependency List)
+
+All dependencies are internal to the base and/or standard elementary facts.
+
+1. **Proposition 9.27 (Norm bound via trace for the symmetrized prime block):** \(T_P^{\mathrm{sym}}\) is PSD and finite rank; hence \(\|T_P\|\le \mathrm{Tr}(T_P^{\mathrm{sym}})\), and the trace is bounded by \(\rho(t)\) via Lemma 9.26. 【53:1†RH_Q3.pdf†L84-L101】
+
+2. **Lemma 9.26 (Integral domination):**
+   \[
+   \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}e^{-t'(\log n)^2}
+   \le
+   \int_0^\infty y\,e^{y/2}e^{-t' y^2}\,dy,
+   \quad t':=4\pi^2 t.
+   \]
+   【53:0†RH_Q3.pdf†L43-L115】
+
+3. **Lemma 9.18 (Monotonicity and closed form context of \(\rho\)):** \(\rho(t)=2\int_0^\infty y e^{y/2}e^{-4\pi^2 t y^2}dy\) is strictly decreasing in \(t\) and tends to \(0\). 【65:2†RH_Q3.pdf†L5-L52】
+
+4. **Lemma 9.24 (Closed‑form upper bound):**
+   \[
+   \rho(t)\le \frac{1}{4\pi^2 t}+\frac{\sqrt\pi}{2(4\pi^2 t)^{3/2}}e^{1/(16\pi^2 t)}.
+   \]
+   【65:10†RH_Q3.pdf†L21-L35】
+
+5. **Elementary inequalities explicitly permitted for the \(t=1\) corollary:**
+   \[
+   \pi>3,\qquad
+   e^{1/144}\le 1+\frac{1}{144}+\frac{1}{20736}.
+   \]
+   (Used verbatim in the base derivation of \(\rho(1)<1/25\).) 【65:10†RH_Q3.pdf†L100-L109】
+
+6. **Standard finite‑rank PSD fact:** If \(A\) is PSD and finite rank then \(\|A\|_{\mathrm{op}}\le \mathrm{Tr}(A)\). (We prove this below as part of Lemma 1, so it is not an external dependency.)
+
+---
+
+## 4. Proof Plan (Roadmap)
+
+1. Show \(T_P\) (even‑symmetrized, undoubled weights) is PSD and finite rank; then \(\|T_P\|_{\mathrm{op}}\le \mathrm{Tr}(T_P)\).
+2. Bound \(\mathrm{Tr}(T_P)\) by a Gaussian prime sum and dominate that sum by the Gaussian integral \(\rho(t)\) (Lemma 9.26).
+3. Apply the closed‑form bound for \(\rho(t)\) and specialize to \(t=1\), using only \(\pi>3\) and the provided bound on \(e^{1/144}\), to obtain \(\rho(1)<1/25\).
+4. Use monotonicity of \(\rho(t)\) to pass from \(t_{\mathrm{rkhs}}\ge 1\) to \(\rho(t_{\mathrm{rkhs}})\le \rho(1)\).
+
+---
+
+## 5. Lemmas
+
+### Lemma 1. Operator norm \(\le\) trace \(\le \rho(t)\) for the symmetrized prime operator
+
+**Lemma (quantified).**  
+For every \(K>0\) and every \(t>0\), the even‑symmetrized prime sampling operator \(T_P(t)\) on \([-K,K]\) with undoubled RKHS weights \(w_{\mathrm{rkhs}}(n)=\Lambda(n)/\sqrt n\) satisfies:
+\[
+\|T_P(t)\|_{\mathrm{op}} \le \mathrm{Tr}(T_P(t)) \le \rho(t),
+\qquad
+\rho(t)=2\int_{0}^{\infty} y\,e^{y/2}e^{-4\pi^2 t y^2}\,dy.
+\]
+【53:1†RH_Q3.pdf†L84-L101】【53:0†RH_Q3.pdf†L43-L115】
+
+**Proof.**
+
+**Step 1 (PSD and finite rank).**  
+By the base construction, \(T_P(t)\) is an even‑symmetrized **prime sampling operator** on a compact interval. It is a finite sum of rank‑one operators with nonnegative coefficients; hence it is PSD and finite rank. This is stated explicitly in Proposition 9.27. 【53:1†RH_Q3.pdf†L84-L90】
+
+**Step 2 (\(\|T\|_{\mathrm{op}}\le \mathrm{Tr}(T)\) for PSD finite rank).**  
+Let \(A\) be any PSD finite‑rank operator on a Hilbert space. Since \(A\) is self‑adjoint and finite rank, it admits an orthonormal eigenbasis on its range with eigenvalues \(\lambda_1,\dots,\lambda_r\ge0\). Then:
+- \(\|A\|_{\mathrm{op}}=\max_{1\le j\le r}\lambda_j\) (PSD case).
+- \(\mathrm{Tr}(A)=\sum_{j=1}^r \lambda_j\).
+
+Because each \(\lambda_j\ge0\), we have \(\max_j \lambda_j \le \sum_j \lambda_j\). Hence \(\|A\|_{\mathrm{op}}\le \mathrm{Tr}(A)\).  
+Applying this to \(A=T_P(t)\) yields \(\|T_P(t)\|_{\mathrm{op}}\le \mathrm{Tr}(T_P(t))\). 【53:1†RH_Q3.pdf†L84-L101】
+
+**Step 3 (trace formula \(\le \rho(t)\)).**  
+Proposition 9.27 further identifies \(\mathrm{Tr}(T_P(t))\) with a prime sum (symmetrization produces an overall factor \(2\) from the \(\pm\) pairing, while the RKHS weight itself stays undoubled), and then bounds that sum by \(\rho(t)\) using Lemma 9.26. Concretely, the base gives:
+\[
+\mathrm{Tr}(T_P(t)) \le 2\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,e^{-t'(\log n)^2},
+\qquad t':=4\pi^2 t,
+\]
+and Lemma 9.26 gives
+\[
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}e^{-t'(\log n)^2}
+\le \int_0^\infty y\,e^{y/2}e^{-t' y^2}\,dy.
+\]
+Multiplying the latter inequality by \(2\) and substituting \(t'=4\pi^2 t\) yields
+\[
+\mathrm{Tr}(T_P(t))\le 2\int_0^\infty y\,e^{y/2}e^{-4\pi^2 t y^2}\,dy=\rho(t).
+\]
+This is exactly the needed upper bound. 【53:1†RH_Q3.pdf†L90-L101】【53:0†RH_Q3.pdf†L43-L115】
+
+Combining Steps 2 and 3 gives \(\|T_P(t)\|_{\mathrm{op}} \le \mathrm{Tr}(T_P(t)) \le \rho(t)\). ∎
+
+---
+
+### Lemma 2. Closed‑form bound for \(\rho(t)\)
+
+**Lemma (quantified).**  
+For all \(t>0\),
+\[
+\rho(t)\le \frac{1}{4\pi^2 t}+\frac{\sqrt\pi}{2(4\pi^2 t)^{3/2}}\exp\!\Big(\frac{1}{16\pi^2 t}\Big).
+\]
+【65:10†RH_Q3.pdf†L21-L35】
+
+**Proof.**
+
+**Step 1 (rewrite as Gaussian integral).**  
+Fix \(t>0\) and set \(a:=4\pi^2 t\) and \(b:=\tfrac12\). Then, by definition of \(\rho(t)\),
+\[
+\rho(t)=2\int_0^\infty y\,e^{y/2}e^{-4\pi^2 t y^2}\,dy
+=2\int_0^\infty y\,e^{-a y^2 + b y}\,dy.
+\]
+【65:2†RH_Q3.pdf†L5-L12】
+
+**Step 2 (evaluate \(\int_0^\infty y e^{-a y^2 + b y}dy\)).**  
+Lemma 9.24 provides the standard closed form (via completion of the square and the error function):
+\[
+\int_0^\infty y e^{-a y^2 + b y}dy
+=
+\frac{1}{2a}
++
+\exp\!\Big(\frac{b^2}{4a}\Big)\,
+\frac{b\sqrt\pi}{4a^{3/2}}\,
+\Big(1+\operatorname{erf}\!\big(\tfrac{b}{2\sqrt a}\big)\Big).
+\]
+【65:10†RH_Q3.pdf†L91-L118】
+
+Multiplying by \(2\) gives
+\[
+\rho(t)
+=
+\frac{1}{a}
++
+\exp\!\Big(\frac{b^2}{4a}\Big)\,
+\frac{b\sqrt\pi}{2a^{3/2}}\,
+\Big(1+\operatorname{erf}\!\big(\tfrac{b}{2\sqrt a}\big)\Big).
+\]
+
+**Step 3 (crude bound \(1+\mathrm{erf}\le 2\) and relax the exponential).**  
+For all real \(x\), \(\operatorname{erf}(x)\le 1\), hence \(1+\operatorname{erf}(x)\le2\). Therefore
+\[
+\rho(t)\le \frac{1}{a}+\exp\!\Big(\frac{b^2}{4a}\Big)\,\frac{b\sqrt\pi}{a^{3/2}}.
+\]
+Now \(b=\tfrac12\), so \(b\sqrt\pi=\tfrac{\sqrt\pi}{2}\), hence
+\[
+\rho(t)\le \frac{1}{a}+\frac{\sqrt\pi}{2a^{3/2}}\exp\!\Big(\frac{b^2}{4a}\Big).
+\]
+Moreover \(\frac{b^2}{4a}=\frac{1}{64\pi^2 t}\le \frac{1}{16\pi^2 t}\) (since \(t>0\)), so
+\[
+\exp\!\Big(\frac{b^2}{4a}\Big)\le \exp\!\Big(\frac{1}{16\pi^2 t}\Big).
+\]
+Combining yields
+\[
+\rho(t)\le \frac{1}{4\pi^2 t}+\frac{\sqrt\pi}{2(4\pi^2 t)^{3/2}}\exp\!\Big(\frac{1}{16\pi^2 t}\Big),
+\]
+which is the claimed inequality. 【65:10†RH_Q3.pdf†L21-L35】【65:10†RH_Q3.pdf†L91-L118】
+
+∎
+
+---
+
+### Corollary 3. At \(t=1\), one has \(\rho(1)<\frac{1}{25}\)
+
+**Corollary.**  
+\[
+\rho(1)<\frac{1}{25}.
+\]
+
+**Proof.**
+
+**Step 1 (apply Lemma 2 at \(t=1\)).**  
+From Lemma 2,
+\[
+\rho(1)\le \frac{1}{4\pi^2}+\frac{\sqrt\pi}{2(4\pi^2)^{3/2}}\exp\!\Big(\frac{1}{16\pi^2}\Big).
+\]
+【65:10†RH_Q3.pdf†L21-L35】
+
+**Step 2 (use \(\pi>3\) to bound the first term).**  
+Given \(\pi>3\), we have \(\pi^2>9\), hence
+\[
+\frac{1}{4\pi^2}<\frac{1}{4\cdot 9}=\frac{1}{36}.
+\]
+(This is exactly the permitted inequality \(\pi>3\).) 【65:10†RH_Q3.pdf†L100-L103】
+
+**Step 3 (bound the second term by \(\frac{1}{144}e^{1/144}\)).**  
+First simplify the coefficient:
+\[
+\frac{\sqrt\pi}{2(4\pi^2)^{3/2}}
+=\frac{1}{16\pi^{5/2}}
+\quad\text{(since }(4\pi^2)^{3/2}=8\pi^3\text{)}.
+\]
+Because \(\pi>1\), we have \(\sqrt\pi>1\), hence \(\pi^{5/2}=\pi^2\sqrt\pi>\pi^2\). Therefore
+\[
+\frac{1}{16\pi^{5/2}}<\frac{1}{16\pi^2}.
+\]
+Using \(\pi^2>9\) again yields
+\[
+\frac{1}{16\pi^2}<\frac{1}{16\cdot 9}=\frac{1}{144}.
+\]
+So altogether
+\[
+\frac{\sqrt\pi}{2(4\pi^2)^{3/2}}<\frac{1}{144}.
+\]
+
+Next, since \(\pi^2>9\), we have
+\[
+\frac{1}{16\pi^2}<\frac{1}{144},
+\qquad\Rightarrow\qquad
+\exp\!\Big(\frac{1}{16\pi^2}\Big)<\exp\!\Big(\frac{1}{144}\Big).
+\]
+
+Thus the entire second term satisfies the strict bound
+\[
+\frac{\sqrt\pi}{2(4\pi^2)^{3/2}}\exp\!\Big(\frac{1}{16\pi^2}\Big)
+<
+\frac{1}{144}\exp\!\Big(\frac{1}{144}\Big).
+\]
+
+**Step 4 (use the allowed bound for \(e^{1/144}\)).**  
+By the explicitly permitted inequality,
+\[
+e^{1/144}\le 1+\frac{1}{144}+\frac{1}{20736}
+= \frac{20881}{20736}.
+\]
+【65:10†RH_Q3.pdf†L104-L109】
+
+Hence
+\[
+\frac{1}{144}e^{1/144}
+\le
+\frac{1}{144}\cdot\frac{20881}{20736}
+=
+\frac{20881}{2985984}.
+\]
+
+**Step 5 (combine and compare with \(1/25\) by cross‑multiplication).**  
+From Steps 1–4,
+\[
+\rho(1)
+<
+\frac{1}{36}+\frac{20881}{2985984}.
+\]
+Write \(\frac{1}{36}=\frac{82944}{2985984}\). Then
+\[
+\rho(1)
+<
+\frac{82944+20881}{2985984}
+=
+\frac{103825}{2985984}.
+\]
+To prove \(\frac{103825}{2985984}<\frac{1}{25}\), multiply both sides by the positive number \(25\cdot 2985984\):
+\[
+\frac{103825}{2985984}<\frac{1}{25}
+\;\Longleftrightarrow\;
+25\cdot 103825 < 2985984.
+\]
+Compute \(25\cdot 103825=2595625\). Since \(2595625<2985984\), the inequality holds. Therefore \(\rho(1)<\frac{1}{25}\). ∎
+
+---
+
+## 6. Main Proof
+
+We prove the target implication
+\[
+t_{\mathrm{rkhs}}\ge 1\quad\Longrightarrow\quad |T_P|\le\rho(1)<\frac{1}{25}.
+\]
+
+**Step 1 (norm cap at general \(t\)).**  
+Fix any \(K>0\) and any \(t_{\mathrm{rkhs}}>0\). By Lemma 1,
+\[
+\|T_P(t_{\mathrm{rkhs}})\|_{\mathrm{op}}\le \rho(t_{\mathrm{rkhs}}).
+\]
+【53:1†RH_Q3.pdf†L84-L101】
+
+**Step 2 (monotonicity in \(t\)).**  
+From Lemma 9.18, \(\rho(t)\) is strictly decreasing in \(t\). In particular, if \(t_{\mathrm{rkhs}}\ge 1\) then
+\[
+\rho(t_{\mathrm{rkhs}})\le \rho(1).
+\]
+【65:2†RH_Q3.pdf†L5-L52】
+
+**Step 3 (combine Steps 1–2).**  
+If \(t_{\mathrm{rkhs}}\ge 1\), then
+\[
+\|T_P(t_{\mathrm{rkhs}})\|_{\mathrm{op}}
+\le \rho(t_{\mathrm{rkhs}})
+\le \rho(1).
+\]
+
+**Step 4 (numerical‑free strict bound \(\rho(1)<1/25\)).**  
+By Corollary 3,
+\[
+\rho(1)<\frac{1}{25}.
+\]
+
+Putting Steps 3–4 together yields
+\[
+t_{\mathrm{rkhs}}\ge 1\;\Longrightarrow\;
+|T_P|=\|T_P(t_{\mathrm{rkhs}})\|_{\mathrm{op}}
+\le \rho(1)
+<\frac{1}{25},
+\]
+as required. ∎
+
+---
+
+## 7. Audit–Edge Check (“Where errors might hide”)
+
+1. **Weight convention / “не менять веса”:**  
+   We kept the RKHS operator weight \(w_{\mathrm{rkhs}}(n)=\Lambda(n)/\sqrt n\) (undoubled). The factor \(2\) arises only from even‑symmetrization (the \(\pm\) pairing), consistent with the base’s separation of \(w_Q\) vs \(w_{\mathrm{rkhs}}\). 【65:8†RH_Q3.pdf†L47-L97】【53:1†RH_Q3.pdf†L84-L101】
+
+2. **Finite rank and trace legitimacy:**  
+   The operator is a finite sum of rank‑one PSD terms on a compact block; Proposition 9.27 explicitly flags positivity and finite rank, guaranteeing trace is well‑defined and finite. 【53:1†RH_Q3.pdf†L84-L90】
+
+3. **\(\|T\|\le \mathrm{Tr}(T)\) uses only PSD + finite rank:**  
+   We did not use any trace‑class functional analysis; the argument is purely finite‑dimensional on the range: eigenvalues \(\lambda_j\ge0\) imply \(\max \lambda_j\le\sum \lambda_j\).
+
+4. **Sum \(\le\) integral domination (no hidden asymptotics):**  
+   The domination is precisely Lemma 9.26 (with explicit \(t'=4\pi^2 t\)), not an \(O(\cdot)\) statement. 【53:0†RH_Q3.pdf†L43-L115】
+
+5. **Closed‑form bound for \(\rho(t)\) (no calculators):**  
+   The inequality is Lemma 9.24’s explicit bound (9.18), derived via completing the square and the trivial bound \(1+\mathrm{erf}\le2\). No numeric approximations are used. 【65:10†RH_Q3.pdf†L21-L35】【65:10†RH_Q3.pdf†L91-L118】
+
+6. **Final inequality \(\rho(1)<1/25\):**  
+   Only the permitted inequalities \(\pi>3\) and \(e^{1/144}\le 1+1/144+1/20736\) are used, and the final comparison is done by integer cross‑multiplication, avoiding any floating‑point steps. 【65:10†RH_Q3.pdf†L100-L109】
+
+7. **No “\((2\pi)\) from outside”:**  
+   We never rescaled variables to remove or introduce extra \(2\pi\) factors; the definition of \(\rho(t)\) is used exactly as stated and as in the base. 【65:2†RH_Q3.pdf†L5-L12】
+
+---
+
+## 8. Appendix
+
+### A. Optional link to the global budget constant \(c_*\)
+
+If needed for the budget split, the base records \(c_* = 11/10\). 【57:1†RH_Q3.pdf†L54-L68】  
+Then
+\[
+\frac{1}{25} < \frac{c_*}{4} = \frac{11}{40}
+\quad\text{since}\quad
+40<275.
+\]
+This matches the base chain \(\rho(1)<1/25<c_*/4\). 【65:0†RH_Q3.pdf†L108-L123】
+
+∎
+
+>> USER: PROSHKA_REQUEST_3 — RKHS‑CAP (BASE‑SYNCED, period‑1)
+Goal (one task only):
+Дать железобетонное доказательство
+[
+t_{\mathrm{rkhs}}\ge 1\quad\Longrightarrow\quad |T_P|\le \rho(1)<\frac{1}{25}
+]
+в T0‑нормировке, без внешних источников, только из базы RH_Q3.
+
+Invariants (do not change)
+Знак: (Q=Q_{\mathrm{arch}}-Q_{\mathrm{prime}}).
+Узлы: (\xi_n=\log n/(2\pi)).
+RKHS weights undoubled: (w_{\mathrm{rkhs}}(n)=\Lambda(n)/\sqrt n).
+(\rho(t)=2\int_0^\infty y,e^{y/2}e^{-4\pi^2 t y^2},dy).
+Требуемый cap: (\rho(1)<1/25).
+Allowed base references only
+Proposition 9.27 (PSD + finite rank + trace formula for symmetrized (T_P)).
+Lemma 9.26 (prime sum ≤ Gaussian integral).
+Lemma 9.18 (ρ(t) decreasing).
+Lemma 9.24 (closed‑form bound for ρ(t)).
+Corollary 8.22 (target inequality claim).
+Must show explicitly
+Почему (T_P) PSD и finite rank ⇒ (|T_P|\le \mathrm{Tr}(T_P)).
+Почему (\mathrm{Tr}(T_P)\le \rho(t)) (через Lemma 9.26).
+Почему (\rho(t)) убывает ⇒ (t_{\mathrm{rkhs}}\ge1\Rightarrow \rho(t)\le\rho(1)).
+Полностью аналитическое доказательство (\rho(1)<1/25) без десятичных: только рациональные оценки (разрешены: (\pi>3), (e^{1/144}\le1+1/144+1/20736)).
+Output format
+Один LaTeX‑proof блок, с нумерованными шагами, чистые рациональные оценки.
+Никаких ссылок наружу; только те Lemma/Prop номера из базы.
+
+>> ASSISTANT: \begin{proof}
+\textbf{0. Theorem Title and Status.}
+\begin{enumerate}
+\item \textbf{Statement (target cap).} In the T0–normalization with nodes \(\xi_n=\dfrac{\log n}{2\pi}\) and undoubled RKHS weights \(w_{\mathrm{rkhs}}(n)=\dfrac{\Lambda(n)}{\sqrt n}\), show
+\[
+t_{\mathrm{rkhs}}\ge 1 \quad\Longrightarrow\quad |T_P|\le \rho(1)<\frac1{25},
+\]
+where
+\[
+\rho(t)=2\int_0^\infty y\,e^{y/2}\,e^{-4\pi^2 t\,y^2}\,dy.
+\]
+\item \textbf{Status.} Standard functional analysis (PSD finite-rank operators) + explicit analytic inequalities; only base items are used: Proposition 9.27, Lemma 9.26, Lemma 9.18, Lemma 9.24 (and the elementary bounds \(\pi>3\), \(e^{1/144}\le 1+\frac1{144}+\frac1{20736}\)).
+\end{enumerate}
+
+\textbf{1. Formal Statement (with Quantifiers).}
+\begin{enumerate}
+\item Let \(t_{\mathrm{rkhs}}\in\mathbb R\) with \(t_{\mathrm{rkhs}}\ge 1\).
+\item For each compact window \([{-}K,K]\) (arbitrary but fixed), let \(T_P(t_{\mathrm{rkhs}})\) denote the even–symmetrized prime sampling operator at RKHS scale \(t_{\mathrm{rkhs}}\) in the sense of Proposition 9.27 (positive semidefinite and finite rank on \([{-}K,K]\)).
+\item Claim:
+\[
+\forall K>0:\quad \|T_P(t_{\mathrm{rkhs}})\|_{\mathrm{op}}\le \rho(1)\quad\text{and}\quad \rho(1)<\frac1{25}.
+\]
+(We identify \(|T_P|\) with \(\|T_P\|_{\mathrm{op}}\).)
+\end{enumerate}
+
+\textbf{2. Definitions and Notation.}
+\begin{enumerate}
+\item \(\Lambda(n)\) is the von Mangoldt function.
+\item Nodes (T0): \(\xi_n:=\dfrac{\log n}{2\pi}\) for \(n\ge 2\).
+\item Undoubled RKHS weights: \(w_{\mathrm{rkhs}}(n):=\dfrac{\Lambda(n)}{\sqrt n}\ge 0\).
+\item \(\|\cdot\|_{\mathrm{op}}\) is the operator norm on the relevant Hilbert space (as in Proposition 9.27). For a positive semidefinite operator \(A\), \(\|A\|_{\mathrm{op}}=\lambda_{\max}(A)\).
+\item \(\operatorname{Tr}(A)\) is the trace (finite for finite-rank operators).
+\item \(\rho(t)\) is the explicit Gaussian integral above.
+\end{enumerate}
+
+\textbf{3. Dependencies (base-only).}
+\begin{enumerate}
+\item Proposition 9.27: \(T_P\) (even-symmetrized on a compact) is PSD + finite rank and satisfies \(\|T_P\|_{\mathrm{op}}\le \operatorname{Tr}(T_P)=2\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}e^{-(4\pi^2 t)(\log n)^2}\), and \(\operatorname{Tr}(T_P)\le \rho(t)\) via Lemma 9.26.
+\item Lemma 9.26: the prime sum is dominated by the Gaussian integral \(\int_0^\infty y e^{y/2}e^{-(4\pi^2 t)y^2}dy\).
+\item Lemma 9.18: \(\rho(t)\) is (strictly) decreasing in \(t\).
+\item Lemma 9.24: closed-form upper bound
+\[
+\rho(t)\le \frac{1}{4\pi^2 t}+\frac{\sqrt\pi}{2(4\pi^2 t)^{3/2}}\exp\!\Big(\frac{1}{16\pi^2 t}\Big),
+\]
+and the rational evaluation at \(t=1\) giving \(\rho(1)<\frac1{25}\) using \(\pi>3\) and \(e^{1/144}\le 1+\frac1{144}+\frac1{20736}\).
+\end{enumerate}
+
+\textbf{4. Proof Plan (Roadmap).}
+\begin{enumerate}
+\item Show: PSD + finite rank \(\Rightarrow \|T_P\|_{\mathrm{op}}\le \operatorname{Tr}(T_P)\).
+\item Use Proposition 9.27 + Lemma 9.26 to obtain \(\operatorname{Tr}(T_P)\le \rho(t_{\mathrm{rkhs}})\).
+\item Use Lemma 9.18 to pass from \(\rho(t_{\mathrm{rkhs}})\) to \(\rho(1)\).
+\item Prove \(\rho(1)<\frac1{25}\) via the explicit bound (Lemma 9.24) and purely rational estimates.
+\end{enumerate}
+
+\textbf{5. Lemmas (proved explicitly, base-synced).}
+
+\textbf{Lemma 5.1 (PSD + finite rank \(\Rightarrow\) norm \(\le\) trace).}
+For every Hilbert space \(H\) and every operator \(A:H\to H\) such that:
+(i) \(A\succeq 0\) (positive semidefinite), and
+(ii) \(A\) has finite rank,
+one has
+\[
+\|A\|_{\mathrm{op}}\le \operatorname{Tr}(A).
+\]
+
+\textbf{Proof of Lemma 5.1.}
+\begin{enumerate}
+\item Since \(A\succeq 0\) and \(\operatorname{rank}(A)<\infty\), the spectrum of \(A\) consists of finitely many nonnegative eigenvalues \(\lambda_1,\dots,\lambda_N\ge 0\) (counted with multiplicity) and \(0\) on the orthogonal complement of \(\operatorname{Ran}(A)\).
+\item By definition of operator norm for self-adjoint PSD operators,
+\[
+\|A\|_{\mathrm{op}}=\lambda_{\max}(A)=\max_{1\le j\le N}\lambda_j.
+\]
+\item By definition of trace for finite-rank operators,
+\[
+\operatorname{Tr}(A)=\sum_{j=1}^N \lambda_j.
+\]
+\item Since all \(\lambda_j\ge 0\), we have \(\max_j\lambda_j\le \sum_j \lambda_j\). Therefore \(\|A\|_{\mathrm{op}}\le \operatorname{Tr}(A)\).
+\end{enumerate}
+\(\Box\)
+
+\textbf{Lemma 5.2 (Analytic closed-form bound for \(\rho(t)\) in the required shape).}
+For every \(t>0\),
+\[
+\rho(t)=2\int_0^\infty y\,e^{y/2}\,e^{-4\pi^2 t\,y^2}\,dy
+\;\le\;
+\frac{1}{4\pi^2 t}+\frac{\sqrt\pi}{2(4\pi^2 t)^{3/2}}\exp\!\Big(\frac{1}{16\pi^2 t}\Big).
+\]
+
+\textbf{Proof of Lemma 5.2.}
+Fix \(t>0\) and abbreviate \(a:=4\pi^2 t>0\) and \(b:=\frac12>0\). Then
+\[
+\frac{\rho(t)}{2}=\int_0^\infty y\,e^{-a y^2+b y}\,dy.
+\]
+\begin{enumerate}
+\item \textbf{Integration-by-parts identity.} Note that
+\[
+\frac{d}{dy}\big(e^{-a y^2+b y}\big)=(-2ay+b)e^{-a y^2+b y}.
+\]
+Hence
+\[
+y e^{-a y^2+b y}=-\frac{1}{2a}\frac{d}{dy}\big(e^{-a y^2+b y}\big)+\frac{b}{2a}e^{-a y^2+b y}.
+\]
+Integrating over \([0,\infty)\) gives
+\[
+\int_0^\infty y e^{-a y^2+b y}\,dy
+=
+-\frac{1}{2a}\Big[e^{-a y^2+b y}\Big]_{y=0}^{y=\infty}
++\frac{b}{2a}\int_0^\infty e^{-a y^2+b y}\,dy.
+\]
+Since \(-a y^2+b y\to -\infty\) as \(y\to\infty\), the boundary term at \(\infty\) is \(0\), and at \(0\) it is \(1\). Therefore
+\[
+\int_0^\infty y e^{-a y^2+b y}\,dy
+=
+\frac{1}{2a}+\frac{b}{2a}\,J,
+\quad
+J:=\int_0^\infty e^{-a y^2+b y}\,dy.
+\]
+\item \textbf{Complete the square in \(J\).} We have
+\[
+-a y^2+b y=-a\Big(y-\frac{b}{2a}\Big)^2+\frac{b^2}{4a}.
+\]
+Thus
+\[
+J=e^{b^2/(4a)}\int_0^\infty e^{-a\left(y-\frac{b}{2a}\right)^2}dy.
+\]
+Let \(u:=\sqrt a\left(y-\frac{b}{2a}\right)\), so \(dy=du/\sqrt a\). When \(y=0\), \(u=-\frac{b}{2\sqrt a}\). When \(y\to\infty\), \(u\to\infty\). Hence
+\[
+J=e^{b^2/(4a)}\frac{1}{\sqrt a}\int_{-\,b/(2\sqrt a)}^\infty e^{-u^2}\,du
+\le
+e^{b^2/(4a)}\frac{1}{\sqrt a}\int_{-\infty}^\infty e^{-u^2}\,du
+=
+e^{b^2/(4a)}\frac{\sqrt\pi}{\sqrt a}.
+\]
+\item \textbf{Combine.} Therefore
+\[
+\frac{\rho(t)}{2}
+=
+\int_0^\infty y e^{-a y^2+b y}\,dy
+\le
+\frac{1}{2a}+\frac{b}{2a}\cdot e^{b^2/(4a)}\frac{\sqrt\pi}{\sqrt a}.
+\]
+Multiplying by \(2\) gives
+\[
+\rho(t)\le \frac{1}{a}+\frac{b\sqrt\pi}{a^{3/2}}e^{b^2/(4a)}.
+\]
+Substituting \(a=4\pi^2 t\), \(b=\frac12\) yields the (slightly sharper) bound
+\[
+\rho(t)\le \frac{1}{4\pi^2 t}+\frac{\sqrt\pi}{2(4\pi^2 t)^{3/2}}\exp\!\Big(\frac{1}{64\pi^2 t}\Big).
+\]
+Finally, since \(\frac{1}{64\pi^2 t}\le \frac{1}{16\pi^2 t}\) and \(x\mapsto e^x\) is increasing,
+\[
+\exp\!\Big(\frac{1}{64\pi^2 t}\Big)\le \exp\!\Big(\frac{1}{16\pi^2 t}\Big),
+\]
+which gives exactly the required displayed inequality.
+\end{enumerate}
+\(\Box\)
+
+\textbf{Lemma 5.3 (Monotonicity of \(\rho\)).}
+The map \(t\mapsto \rho(t)\) is decreasing on \((0,\infty)\). In particular, \(t_{\mathrm{rkhs}}\ge 1\Rightarrow \rho(t_{\mathrm{rkhs}})\le \rho(1)\).
+
+\textbf{Proof of Lemma 5.3.}
+\begin{enumerate}
+\item Fix \(y>0\). The function \(t\mapsto e^{-4\pi^2 t y^2}\) is decreasing on \((0,\infty)\).
+\item Since the remaining factor \(2y e^{y/2}>0\) is independent of \(t\), the integrand \(2y e^{y/2}e^{-4\pi^2 t y^2}\) is pointwise decreasing in \(t\).
+\item Therefore for \(t_2>t_1>0\), we have
+\[
+0\le 2y e^{y/2}e^{-4\pi^2 t_2 y^2}\le 2y e^{y/2}e^{-4\pi^2 t_1 y^2}
+\quad(\forall y\ge 0),
+\]
+and integrating yields \(\rho(t_2)\le \rho(t_1)\).
+\end{enumerate}
+\(\Box\)
+
+\textbf{6. Main Proof (numbered steps; base chain Prop 9.27 \(\to\) Lem 9.26 \(\to\) Lem 9.18 \(\to\) Lem 9.24).}
+\begin{enumerate}
+\item \textbf{PSD + finite rank for \(T_P\) (Proposition 9.27 context).}
+Fix an arbitrary compact window \([{-}K,K]\). By Proposition 9.27, the even–symmetrized prime sampling operator \(T_P(t_{\mathrm{rkhs}})\) on \([{-}K,K]\) is:
+\[
+T_P(t_{\mathrm{rkhs}})\succeq 0,\qquad \operatorname{rank}\big(T_P(t_{\mathrm{rkhs}})\big)<\infty.
+\]
+(Conceptually: it is a finite sum of nonnegative weights times rank-one positive operators supported on the finitely many active nodes in \([{-}K,K]\).)
+\item \textbf{Norm \(\le\) trace.} By Lemma 5.1 applied to \(A:=T_P(t_{\mathrm{rkhs}})\),
+\[
+|T_P|=\|T_P(t_{\mathrm{rkhs}})\|_{\mathrm{op}}\le \operatorname{Tr}\big(T_P(t_{\mathrm{rkhs}})\big).
+\]
+\item \textbf{Trace \(\le \rho(t_{\mathrm{rkhs}})\) (Lemma 9.26 packaged in Prop 9.27).}
+Proposition 9.27 gives the trace identity and bound (with the symmetric \(\pm\xi_n\) convention, hence the factor \(2\)):
+\[
+\operatorname{Tr}\big(T_P(t_{\mathrm{rkhs}})\big)
+=
+2\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}\,e^{-(4\pi^2 t_{\mathrm{rkhs}})(\log n)^2}
+\le
+\rho(t_{\mathrm{rkhs}}),
+\]
+where the inequality is exactly Lemma 9.26 written with \(t'=4\pi^2 t_{\mathrm{rkhs}}\) and then multiplied by \(2\), matching the definition of \(\rho\).
+\item \textbf{Monotonicity to \(\rho(1)\).} Since \(t_{\mathrm{rkhs}}\ge 1\), Lemma 5.3 (i.e. Lemma 9.18) gives
+\[
+\rho(t_{\mathrm{rkhs}})\le \rho(1).
+\]
+Combining Steps 2–4 yields
+\[
+|T_P|
+\le \operatorname{Tr}(T_P(t_{\mathrm{rkhs}}))
+\le \rho(t_{\mathrm{rkhs}})
+\le \rho(1).
+\]
+\item \textbf{Purely analytic bound \(\rho(1)<\frac1{25}\).}
+By Lemma 5.2 at \(t=1\),
+\[
+\rho(1)\le \frac{1}{4\pi^2}+\frac{\sqrt\pi}{2(4\pi^2)^{3/2}}\exp\!\Big(\frac{1}{16\pi^2}\Big).
+\]
+We now bound the RHS using only rational inequalities.
+\begin{enumerate}
+\item Since \(\pi>3\), we have \(4\pi^2>36\), hence
+\[
+\frac{1}{4\pi^2}<\frac{1}{36}.
+\]
+\item Since \(\pi>1\), we have \(\sqrt\pi\le \pi\) (because \(\pi\le \pi^2\)). Therefore
+\[
+\frac{\sqrt\pi}{2(4\pi^2)^{3/2}}
+\le
+\frac{\pi}{2(4\pi^2)^{3/2}}
+=
+\frac{\pi}{2\cdot 8\pi^3}
+=
+\frac{1}{16\pi^2}.
+\]
+\item Again \(\pi>3\Rightarrow 16\pi^2>144\), so
+\[
+\frac{1}{16\pi^2}<\frac{1}{144}
+\quad\text{and}\quad
+\exp\!\Big(\frac{1}{16\pi^2}\Big)\le \exp\!\Big(\frac{1}{144}\Big)
+\]
+(monotonicity of \(e^x\)).
+\item Using the allowed inequality \(e^{1/144}\le 1+\frac1{144}+\frac1{20736}\), we obtain
+\[
+\frac{1}{16\pi^2}\exp\!\Big(\frac{1}{16\pi^2}\Big)
+<
+\frac{1}{144}\exp\!\Big(\frac{1}{144}\Big)
+\le
+\frac{1}{144}\Big(1+\frac{1}{144}+\frac{1}{20736}\Big)
+=
+\frac{1}{144}+\frac{1}{20736}+\frac{1}{2985984}.
+\]
+\item Summing the bounds gives
+\[
+\rho(1)
+<
+\frac{1}{36}
++\Big(\frac{1}{144}+\frac{1}{20736}+\frac{1}{2985984}\Big)
+=
+\frac{5}{144}+\frac{1}{20736}+\frac{1}{2985984}.
+\]
+To compare with \(\frac1{25}\), compute the exact difference:
+\[
+\frac{1}{25}-\frac{5}{144}
+=\frac{144-125}{3600}
+=\frac{19}{3600}.
+\]
+Also,
+\[
+\frac{1}{20736}+\frac{1}{2985984}
+<
+\frac{1}{20736}+\frac{1}{20736}
+=
+\frac{1}{10368}.
+\]
+Since \(\frac{1}{10368}<\frac{19}{3600}\) is equivalent to \(3600<19\cdot 10368=196992\), which is true, we get
+\[
+\frac{1}{20736}+\frac{1}{2985984}<\frac{19}{3600}.
+\]
+Therefore \(\frac{5}{144}+\frac{1}{20736}+\frac{1}{2985984}<\frac1{25}\), hence \(\rho(1)<\frac1{25}\).
+\end{enumerate}
+\item \textbf{Conclusion.} Steps 1–5 yield
+\[
+t_{\mathrm{rkhs}}\ge 1 \;\Longrightarrow\; |T_P|\le \rho(1)<\frac1{25}.
+\]
+\end{enumerate}
+
+\textbf{7. Audit–Edge Check (Where errors might hide).}
+\begin{enumerate}
+\item \textbf{Hidden doubling.} We never replace \(w_{\mathrm{rkhs}}(n)=\Lambda(n)/\sqrt n\) by a doubled weight; the factor \(2\) occurs only from the even symmetrization (two nodes \(\pm\xi_n\)), as in Proposition 9.27.
+\item \textbf{Finite rank / trace legitimacy.} The operator is considered on a fixed compact \([{-}K,K]\); only finitely many nodes \(\xi_n\) lie inside, hence \(T_P\) is a finite sum of rank-one terms and trace is finite (this is exactly the “finite rank on compacts” hypothesis in Proposition 9.27).
+\item \textbf{Norm \(\le\) trace.} Lemma 5.1 uses only the spectral decomposition of a finite-rank PSD operator; no infinite-dimensional trace-class subtleties.
+\item \textbf{Integral domination.} Lemma 9.26 bounds the prime sum using \(\Lambda(n)\le \log n\) and a monotone/integral-test comparison; we used it only through the inequality packaged in Proposition 9.27.
+\item \textbf{Monotonicity in \(t\).} The integrand is pointwise decreasing in \(t\) and nonnegative; no interchange of limits is needed (pure comparison).
+\item \textbf{No decimals.} All final comparisons are rational and explicitly cross-multiplied.
+\end{enumerate}
+
+\textbf{8. Appendix (optional link to the A3 budget).}
+If needed for the A3 budget split (symbol floor \(c_*=\tfrac{11}{10}\) from the symbol-floor module), note purely rationally:
+\[
+\frac1{25}<\frac{c_*}{4}=\frac{11}{40},
+\quad\text{since}\quad 1\cdot 40<25\cdot 11\;(40<275).
+\]
+\end{proof}
+
+fileciteturn0file0 fileciteturn0file1
+

@@ -627,3 +627,15 @@
 - 📄 `full/q3.lean.aristotle/docs/insights/mgrep_websearch_discovery_2026_01_18.md` — 19:25
 - 📄 `full/q3.lean.aristotle/docs/insights/mgrep_websearch_discovery_2026_01_18.md` — 19:26
 - 📄 `CLAUDE.md` — 19:28
+- 📄 `full/q3.lean.aristotle/docs/insights/atomcone_fixed_t_gap_2026_01_18.md` — 21:26
+- 📄 `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` — 21:26
+- 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/aristotle_input/arch_term_phi_shift_ge.md` — 21:41
+- 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/aristotle_input/arch_term_phi_shift_ge.md` — 21:42
+- 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/aristotle_input/arch_term_phi_shift_ge.md` — 21:43
+- 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/docs/insights/B_min_floor_strategy_2026_01_18.md` — 21:47
+- 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` — 21:47
+- 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/docs/insights/INDEX.md` — 21:47
+- 🔷 `sandboxes/measure_dom/full/q3.lean.aristotle/Q3/Axioms.lean` — 21:56
+- 🔷 `sandboxes/measure_dom/full/q3.lean.aristotle/Q3/Axioms.lean` — 21:57
+- 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/aristotle_input/C2_arch_term_phi_shift.md` — 22:02
+- 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/aristotle_input/C3_prime_term_phi_shift.md` — 22:04
