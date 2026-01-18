@@ -623,3 +623,7 @@
 - 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/ShiftedWindows.lean` — 17:37
 - 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/ShiftedWindows.lean` — 17:39
 - 📄 `sandboxes/carleson_response_20260118-1757-35da6_to_codex_20260118.md` — 17:58
+- 📝 `full/q3.lean.aristotle/.mgreprc.yaml` — 19:06
+- 📄 `full/q3.lean.aristotle/docs/insights/mgrep_websearch_discovery_2026_01_18.md` — 19:25
+- 📄 `full/q3.lean.aristotle/docs/insights/mgrep_websearch_discovery_2026_01_18.md` — 19:26
+- 📄 `CLAUDE.md` — 19:28

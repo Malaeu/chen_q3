@@ -63,6 +63,26 @@ See: `/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 
 ---
 
+## 🔍 Problem-Solving Workflow (mgrep)
+
+**Когда уперся в проблему:**
+
+```
+1. q3search "описание проблемы" -c    ← СНАЧАЛА база (643 файла)
+2. websearch "мат. формулировка"      ← ПОТОМ веб (arxiv, MO, SE)
+3. Анализ: что нашли? как применить?
+4. Aristotle (если нужен formal proof)
+```
+
+**Почему этот порядок:**
+- База содержит УЖЕ решённые проблемы — не повторяй ошибки!
+- Веб даёт проверенные мат. источники
+- Aristotle дорогой — используй с готовой формулировкой
+
+**Guide:** `~/.claude/docs/MGREP_GUIDE.md`
+
+---
+
 ## 🚨 ERRORS DESTROYER (Работа над ошибками)
 
 **ОБЯЗАТЕЛЬНО прочитай перед любым PR:**
@@ -98,6 +118,10 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 
 # Automated check
 ./scripts/check_axioms.sh
+
+# Semantic search (НОВОЕ!)
+q3search "твой запрос" -c       # поиск по базе (643 файла)
+websearch "вопрос"              # AI web search
 ```
 
 ---
