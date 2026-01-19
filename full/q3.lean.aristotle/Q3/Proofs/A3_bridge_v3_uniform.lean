@@ -21,7 +21,7 @@ A3_FLOOR_v22_stage4_floor.lean.
 -/
 
 import Q3.Axioms
-import A3_FLOOR_v22_stage4_floor
+import Q3.Proofs.A3_FLOOR_v22_stage4_floor
 
 set_option linter.mathlibStandardSet false
 

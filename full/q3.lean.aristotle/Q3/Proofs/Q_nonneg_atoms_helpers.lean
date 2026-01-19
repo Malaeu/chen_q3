@@ -200,3 +200,240 @@ lemma Q_phi_shift_nonneg
   exact le_trans hpos hlower
 
 end Q3.Proofs.QNonnegAtoms
+
+namespace Q3.Proofs.QNonnegAtoms
+
+open Q3
+open Q3.Proofs.ShiftedWindows
+
+/-! ## phi_shift support, integrability, and summability -/
+
+lemma phi_shift_support_subset (B t tau : ℝ) (hB : 0 < B) :
+    Function.support (Q3.phi_shift B t tau) ⊆ Set.Icc (tau - B) (tau + B) := by
+  intro xi hxi
+  simp only [Function.mem_support] at hxi
+  by_contra h_not
+  by_cases hlt : xi < tau - B
+  · have hneg : xi - tau < 0 := by linarith
+    have hB' : B < -(xi - tau) := by linarith
+    have hdist : B < |xi - tau| := by
+      simpa [abs_of_neg hneg] using hB'
+    have h_zero := phi_shift_support B t tau xi hB hdist
+    exact hxi h_zero
+  · have hge : tau - B ≤ xi := by
+      have hnot : ¬ (tau - B > xi) := by
+        simpa [gt_iff_lt] using hlt
+      exact le_of_not_gt hnot
+    have hgt : tau + B < xi := by
+      have : ¬ xi ≤ tau + B := by
+        intro hle
+        exact h_not ⟨hge, hle⟩
+      exact lt_of_not_ge this
+    have hpos : 0 < xi - tau := by linarith
+    have hB' : B < xi - tau := by linarith
+    have hdist : B < |xi - tau| := by
+      simpa [abs_of_pos hpos] using hB'
+    have h_zero := phi_shift_support B t tau xi hB hdist
+    exact hxi h_zero
+
+lemma phi_shift_integrable_with_a_star (B t tau : ℝ) (hB : 0 < B) :
+    MeasureTheory.Integrable (fun x => Q3.a_star x * Q3.phi_shift B t tau x) := by
+  have h_phi_hcs : HasCompactSupport (Q3.phi_shift B t tau) :=
+    HasCompactSupport.of_support_subset_isCompact isCompact_Icc
+      (phi_shift_support_subset B t tau hB)
+  have h_prod_cont : Continuous (fun x => Q3.a_star x * Q3.phi_shift B t tau x) :=
+    Q3.a_star_continuous.mul (continuous_phi_shift B t tau)
+  have h_prod_hcs : HasCompactSupport (fun x => Q3.a_star x * Q3.phi_shift B t tau x) :=
+    h_phi_hcs.mul_left
+  exact h_prod_cont.integrable_of_hasCompactSupport h_prod_hcs
+
+lemma phi_shift_prime_summable (B t tau : ℝ) (hB : 0 < B) :
+    Summable (fun k => Q3.w_Q k * Q3.phi_shift B t tau (Q3.xi_n k)) := by
+  let N := Nat.ceil (Real.exp (2 * Real.pi * (|tau| + B))) + 1
+  apply summable_of_ne_finset_zero (s := Finset.range N)
+  intro k hk
+  simp only [Finset.mem_range, not_lt] at hk
+  suffices h : Q3.phi_shift B t tau (Q3.xi_n k) = 0 by simp [h]
+  have h_xi_large : Q3.xi_n k > |tau| + B := by
+    apply Q3.Proofs.Q_nonneg_lemmas.xi_n_large_of_k_large
+    omega
+  have h_right : tau + B < Q3.xi_n k := by
+    have htau : tau ≤ |tau| := le_abs_self tau
+    linarith
+  have h_not_in_Icc : Q3.xi_n k ∉ Set.Icc (tau - B) (tau + B) := by
+    intro h
+    exact (not_lt_of_ge h.2) h_right
+  have h_supp := phi_shift_support_subset (B:=B) (t:=t) (tau:=tau) hB
+  by_contra h_ne
+  exact h_not_in_Icc (h_supp (Function.mem_support.mpr h_ne))
+
+/-! ## Fejer_heat_atom decomposition and single-atom nonnegativity (abstract) -/
+
+lemma Fejer_heat_atom_decomposition (B t tau : ℝ) (ht : 0 < t) :
+    ∃ c > 0, ∀ xi, Q3.Fejer_heat_atom B t tau xi =
+      c * (Q3.phi_shift B (1 / (16 * Real.pi ^ 2 * t)) tau xi +
+        Q3.phi_shift B (1 / (16 * Real.pi ^ 2 * t)) (-tau) xi) := by
+  -- Choose t' = 1/(16*pi^2*t) and c = 1/sqrt(4*pi*t)
+  refine ⟨1 / Real.sqrt (4 * Real.pi * t), ?_, ?_⟩
+  · apply div_pos one_pos
+    apply Real.sqrt_pos_of_pos
+    apply mul_pos (mul_pos (by norm_num : (0 : ℝ) < 4) Real.pi_pos) ht
+  · intro xi
+    have exp_eq1 :
+        -(xi - tau) ^ 2 / (4 * t) =
+          -4 * Real.pi ^ 2 * (1 / (16 * Real.pi ^ 2 * t)) * (xi - tau) ^ 2 := by
+      field_simp
+      ring
+    have exp_eq2 :
+        -(xi + tau) ^ 2 / (4 * t) =
+          -4 * Real.pi ^ 2 * (1 / (16 * Real.pi ^ 2 * t)) * (xi + tau) ^ 2 := by
+      field_simp
+      ring
+    have exp_eq2' :
+        -(tau + xi) ^ 2 / (4 * t) =
+          -4 * Real.pi ^ 2 * (1 / (16 * Real.pi ^ 2 * t)) * (tau + xi) ^ 2 := by
+      simpa [add_comm] using exp_eq2
+    simp [Q3.Fejer_heat_atom, Q3.heat_kernel_A1, Q3.Fejer_kernel, Q3.phi_shift,
+      Q3.fejer_heat_window, exp_eq1, exp_eq2', add_comm, add_left_comm, add_assoc,
+      mul_comm, mul_left_comm, mul_assoc]
+    ring
+
+lemma Q_scale_add (f g : ℝ → ℝ) (c : ℝ)
+    (h_int_f : MeasureTheory.Integrable (fun x => Q3.a_star x * f x))
+    (h_int_g : MeasureTheory.Integrable (fun x => Q3.a_star x * g x))
+    (h_sum_f : Summable (fun k => Q3.w_Q k * f (Q3.xi_n k)))
+    (h_sum_g : Summable (fun k => Q3.w_Q k * g (Q3.xi_n k))) :
+    Q3.Q (fun x => c * (f x + g x)) = c * (Q3.Q f + Q3.Q g) := by
+  classical
+  let atoms : Fin 2 → ℝ → ℝ := fun i => if i.val = 0 then f else g
+  let coeffs : Fin 2 → ℝ := fun _ => c
+  have h_int : ∀ i, MeasureTheory.Integrable (fun x => Q3.a_star x * atoms i x) := by
+    intro i
+    fin_cases i <;> simp [atoms, h_int_f, h_int_g]
+  have h_sum : ∀ i, Summable (fun k => Q3.w_Q k * atoms i (Q3.xi_n k)) := by
+    intro i
+    fin_cases i <;> simp [atoms, h_sum_f, h_sum_g]
+  have hQ := Q3.Proofs.Q_nonneg_lemmas.Q_finset_sum
+    (atoms:=atoms) (coeffs:=coeffs) h_int h_sum
+  have h_eval :
+      (fun x => ∑ i : Fin 2, coeffs i * atoms i x) =
+        fun x => c * (f x + g x) := by
+    funext x
+    simp [atoms, coeffs, Fin.sum_univ_two, mul_add, add_mul]
+  have h_eval2 :
+      (fun x => coeffs 0 * atoms 0 x + coeffs 1 * atoms 1 x) =
+        fun x => c * (f x + g x) := by
+    funext x
+    simp [atoms, coeffs, mul_add, add_mul]
+  have hQ' : Q3.Q (fun x => c * (f x + g x)) =
+      ∑ i : Fin 2, coeffs i * Q3.Q (atoms i) := by
+    simpa [h_eval2] using hQ
+  calc
+    Q3.Q (fun x => c * (f x + g x)) = ∑ i : Fin 2, coeffs i * Q3.Q (atoms i) := hQ'
+    _ = c * (Q3.Q f + Q3.Q g) := by
+      simp [atoms, coeffs, Fin.sum_univ_two, mul_add, add_mul]
+
+lemma Q_single_atom_nonneg_of_phi_shift
+    (K B t tau R : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    (hB : 0 < B) (ht : 0 < t) (hK : |tau| + B ≤ K)
+    (htsym : (1 / (16 * Real.pi ^ 2 * t)) = t_sym)
+    (hP : Continuous (Q3.P_A_shift B t_sym tau))
+    (hP_neg : Continuous (Q3.P_A_shift B t_sym (-tau)))
+    (hM : 0 < 2 * M + 1)
+    (h_cap :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) ≤ R)
+    (h_cap_neg :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap (-tau) (Q3.xi_n n) ≤ R)
+    (h_rayleigh :
+      Q3.RayleighQuotient
+        (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (Q3.P_A_shift B t_sym tau))
+        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star / 4)
+    (h_rayleigh_neg :
+      Q3.RayleighQuotient
+        (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (Q3.P_A_shift B t_sym (-tau)))
+        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star / 4)
+    (hpos : 0 ≤ Q3.c_star / 4 - PrimeTermBridge.exp_tsym_to_rkhs K * R)
+    (h_int :
+      MeasureTheory.Integrable (fun x => Q3.a_star x * Q3.phi_shift B t_sym tau x))
+    (h_int_neg :
+      MeasureTheory.Integrable (fun x => Q3.a_star x * Q3.phi_shift B t_sym (-tau) x))
+    (h_sum :
+      Summable (fun k => Q3.w_Q k * Q3.phi_shift B t_sym tau (Q3.xi_n k)))
+    (h_sum_neg :
+      Summable (fun k => Q3.w_Q k * Q3.phi_shift B t_sym (-tau) (Q3.xi_n k))) :
+    0 ≤ Q3.Q (Q3.Fejer_heat_atom B t tau) := by
+  obtain ⟨c, hc, h_decomp⟩ := Fejer_heat_atom_decomposition B t tau ht
+  have hK_neg : |(-tau)| + B ≤ K := by simpa [abs_neg] using hK
+  have hQ_phi :
+      0 ≤ Q3.Q (fun xi => Q3.phi_shift B t_sym tau xi) := by
+    exact Q_phi_shift_nonneg (K:=K) (B:=B) (tau:=tau) (R:=R) (M:=M)
+      hB hK hP hM h_cap h_rayleigh hpos
+  have hQ_phi_neg :
+      0 ≤ Q3.Q (fun xi => Q3.phi_shift B t_sym (-tau) xi) := by
+    exact Q_phi_shift_nonneg (K:=K) (B:=B) (tau:=(-tau)) (R:=R) (M:=M)
+      hB hK_neg hP_neg hM h_cap_neg h_rayleigh_neg hpos
+  have hQ :
+      Q3.Q (Q3.Fejer_heat_atom B t tau) =
+        c * (Q3.Q (fun xi => Q3.phi_shift B t_sym tau xi) +
+          Q3.Q (fun xi => Q3.phi_shift B t_sym (-tau) xi)) := by
+    have h_eval :
+        (fun xi => c * (Q3.phi_shift B t_sym tau xi +
+          Q3.phi_shift B t_sym (-tau) xi)) =
+          fun xi => Q3.Fejer_heat_atom B t tau xi := by
+      funext xi
+      simp [h_decomp, htsym, add_comm, add_left_comm, add_assoc]
+    have hQ' := Q_scale_add
+      (f:=fun xi => Q3.phi_shift B t_sym tau xi)
+      (g:=fun xi => Q3.phi_shift B t_sym (-tau) xi)
+      (c:=c) h_int h_int_neg h_sum h_sum_neg
+    simpa [h_eval] using hQ'
+  have hsum_nonneg :
+      0 ≤ Q3.Q (fun xi => Q3.phi_shift B t_sym tau xi) +
+        Q3.Q (fun xi => Q3.phi_shift B t_sym (-tau) xi) := by
+    linarith
+  have hc_nonneg : 0 ≤ c := le_of_lt hc
+  have hfinal : 0 ≤ c *
+      (Q3.Q (fun xi => Q3.phi_shift B t_sym tau xi) +
+        Q3.Q (fun xi => Q3.phi_shift B t_sym (-tau) xi)) :=
+    mul_nonneg hc_nonneg hsum_nonneg
+  simpa [hQ] using hfinal
+
+lemma Q_single_atom_nonneg_of_phi_shift_basic
+    (K B t tau R : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    (hB : 0 < B) (ht : 0 < t) (hK : |tau| + B ≤ K)
+    (htsym : (1 / (16 * Real.pi ^ 2 * t)) = t_sym)
+    (hP : Continuous (Q3.P_A_shift B t_sym tau))
+    (hP_neg : Continuous (Q3.P_A_shift B t_sym (-tau)))
+    (hM : 0 < 2 * M + 1)
+    (h_cap :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) ≤ R)
+    (h_cap_neg :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap (-tau) (Q3.xi_n n) ≤ R)
+    (h_rayleigh :
+      Q3.RayleighQuotient
+        (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (Q3.P_A_shift B t_sym tau))
+        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star / 4)
+    (h_rayleigh_neg :
+      Q3.RayleighQuotient
+        (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (Q3.P_A_shift B t_sym (-tau)))
+        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star / 4)
+    (hpos : 0 ≤ Q3.c_star / 4 - PrimeTermBridge.exp_tsym_to_rkhs K * R) :
+    0 ≤ Q3.Q (Q3.Fejer_heat_atom B t tau) := by
+  have h_int :
+      MeasureTheory.Integrable (fun x => Q3.a_star x * Q3.phi_shift B t_sym tau x) :=
+    phi_shift_integrable_with_a_star (B:=B) (t:=t_sym) (tau:=tau) hB
+  have h_int_neg :
+      MeasureTheory.Integrable (fun x => Q3.a_star x * Q3.phi_shift B t_sym (-tau) x) :=
+    phi_shift_integrable_with_a_star (B:=B) (t:=t_sym) (tau:=(-tau)) hB
+  have h_sum :
+      Summable (fun k => Q3.w_Q k * Q3.phi_shift B t_sym tau (Q3.xi_n k)) :=
+    phi_shift_prime_summable (B:=B) (t:=t_sym) (tau:=tau) hB
+  have h_sum_neg :
+      Summable (fun k => Q3.w_Q k * Q3.phi_shift B t_sym (-tau) (Q3.xi_n k)) :=
+    phi_shift_prime_summable (B:=B) (t:=t_sym) (tau:=(-tau)) hB
+  exact Q_single_atom_nonneg_of_phi_shift
+    (K:=K) (B:=B) (t:=t) (tau:=tau) (R:=R) (M:=M)
+    hB ht hK htsym hP hP_neg hM h_cap h_cap_neg h_rayleigh h_rayleigh_neg hpos
+    h_int h_int_neg h_sum h_sum_neg
+
+end Q3.Proofs.QNonnegAtoms

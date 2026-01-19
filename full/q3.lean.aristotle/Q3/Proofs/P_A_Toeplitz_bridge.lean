@@ -15,7 +15,7 @@ import Q3.Proofs.Rayleigh_Fourier
 import Q3.Proofs.A3_bridge_rayleigh_first  -- t_rkhs_cap, one_le_t_rkhs_cap, c_star_div_four_le_sub_rho_one
 import Q3.Proofs.RKHS_cap_rayleigh         -- rkhs_cap_rayleigh_tcap
 import Q3.Proofs.Rayleigh_utils            -- RayleighQuotient_sub_ge
-import A3_FLOOR_v22_stage4_floor
+import Q3.Proofs.A3_FLOOR_v22_stage4_floor
 
 set_option linter.mathlibStandardSet false
 

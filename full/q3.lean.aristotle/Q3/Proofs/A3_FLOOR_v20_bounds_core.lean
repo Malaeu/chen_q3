@@ -5,7 +5,7 @@ import Q3.DigammaRemainder
 
 open scoped BigOperators Real Nat Classical Pointwise
 open Real Complex MeasureTheory Set
-open Q3
+open Q3 (a)
 
 set_option maxHeartbeats 400000
 
@@ -222,7 +222,7 @@ lemma a_lower_bound_from_stieltjes (xi : ℝ) :
         (1 / 8 : ℝ) * (1 / ‖(1 / 4 : ℂ) + Complex.I * Real.pi * xi‖^2) := by
   set z : ℂ := (1 / 4 : ℂ) + Complex.I * Real.pi * xi
   have hz : 0 < z.re := by simp [z]
-  have hrem := re_digamma_remainder_bound_stieltjes z hz
+  have hrem := Q3.re_digamma_remainder_bound_stieltjes z hz
   have hrem' :
       |(Q3.digamma z).re - (Real.log ‖z‖ - z.re / (2 * ‖z‖^2))| ≤
         1 / (4 * ‖z‖^2) := by
