@@ -19,6 +19,7 @@ import Q3.Axioms
 import Q3.Proofs.Bridge
 import Q3.Proofs.P_A_Toeplitz_bridge
 import Q3.Proofs.Q_nonneg_on_atoms_fourier_axiom
+import Q3.Proofs.HeatKernelParams
 
 set_option linter.mathlibStandardSet false
 
@@ -41,7 +42,7 @@ From the A3 bridge axiom and the RKHS contraction bridge, we obtain
 `Q g ≥ 0` for all `g` in the atom cone `AtomCone_K K`.
 -/
 theorem Q_nonneg_on_atoms (K : ℝ) (hK : K ≥ 1) :
-    ∀ g ∈ AtomCone_K K, Q g ≥ 0 := by
+    ∀ g ∈ AtomCone_K_fixed K Q3.t0_A1, Q g ≥ 0 := by
   -- Build Fourier A3 bridge data from the weight-sum cap.
   have hKpos : 0 < K := by nlinarith [hK]
   have hA3 : A3_bridge_data K := by
@@ -49,7 +50,7 @@ theorem Q_nonneg_on_atoms (K : ℝ) (hK : K ≥ 1) :
     intro _inst
     exact Q3.Proofs.weight_sum_le_rho_one K K hKpos
   have hRKHS : RKHS_contraction_data K := Q3.Bridge.RKHS_contraction_data_of_bridge K hK
-  -- Apply the Fourier A3 + RKHS positivity axiom.
-  exact Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom K hK hA3 hRKHS
+  -- Apply the Fourier A3 + RKHS positivity theorem (fixed-t₀).
+  exact Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS K hK hA3 hRKHS
 
 end Q3.Atoms

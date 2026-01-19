@@ -1,7 +1,7 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
-Last Updated: 2026-01-16
+Last Updated: 2026-01-18
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -85,11 +85,37 @@ RH_of_Weil_and_Q3
    `Q3/Atoms_Positive.lean` / `Q3/AxiomsTheorems.lean` with the theorem proof
    (A3 floor + RKHS cap + Rayleigh identification).
 
+## 🚨 CRITICAL GAP: AtomCone_K_fixed (2026-01-18)
+
+**Discovery:** mgrep semantic search revealed a gap between обсуждение и реализация.
+
+**Problem:** `Q_nonneg_bridge.lean` не компилируется из-за quantifier mismatch:
+- `AtomCone_K` квантифицирует `∀ t > 0` (произвольный t)
+- A3/RKHS bounds доказаны для ФИКСИРОВАННЫХ t:
+  - A3 floor: `t_sym = 0.06`
+  - RKHS cap: `t_rkhs_cap = 40`
+
+**Solution (from Прошка 2026-01-16, NOT implemented):**
+```lean
+def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
+  { g | ∃ (n : ℕ) (c B τ : Fin n → ℝ),
+        (∀ i, c i ≥ 0) ∧ (∀ i, B i > 0) ∧ (∀ i, |τ i| + B i ≤ K) ∧
+        (∀ x, g x = ∑ i, c i * Fejer_heat_atom (B i) t₀ (τ i) x) ∧ g ∈ W_K K }
+```
+
+**Action Items:**
+1. [ ] Add `AtomCone_K_fixed` to `Q3/Axioms.lean`
+2. [ ] Add `AtomCone_K_fixed_subset` lemma
+3. [ ] Rewrite axiom for fixed cone
+4. [ ] Update `Q_nonneg_bridge.lean`
+
+**Details:** `docs/insights/atomcone_fixed_t_gap_2026_01_18.md`
+
 ## Closure Tracker (remaining axioms)
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | Wiring into atoms chain | Use `rayleigh_Q_eq_Q` + A3/RKHS | **IN PROGRESS** |
+| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | **AtomCone_K_fixed gap** | Implement fixed-t cone | **BLOCKED** |
 
 ## Progress Log (2026-01-16)
 

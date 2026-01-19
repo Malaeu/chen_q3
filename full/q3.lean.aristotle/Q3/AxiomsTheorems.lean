@@ -19,6 +19,7 @@ import Q3.Proofs.S_K_small_bridge_v2
 import Q3.Proofs.W_sum_finite_bridge_v2
 import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 import Q3.Proofs.A1_density   -- For A1_density_WK_thm (real proof!)
+import Q3.Proofs.HeatKernelParams
 import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
 import Q3.Proofs.P_A_Toeplitz_bridge  -- Fourier Toeplitz with P_A (correct formulation)
 import Q3.Proofs.Q_nonneg_on_atoms_fourier_axiom
@@ -102,16 +103,13 @@ theorem off_diag_exp_sum (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
 
 /-- A1' Density: Fejér×heat atoms dense in W_K
     STATUS: PROVEN via Q3/Proofs/A1_density.lean. -/
-theorem A1_density_WK : ∀ (K : ℝ) (hK : K > 0),
+theorem A1_density_WK : ∀ (K : ℝ) (hK : K > 0) (t0 : ℝ) (ht0 : t0 > 0),
     ∀ Φ ∈ Q3.W_K K, ∀ ε > 0,
-      ∃ g ∈ Q3.AtomCone_K K,
+      ∃ g ∈ Q3.AtomCone_K_fixed K t0,
         sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε :=
 by
-  intro K hK Φ hΦ ε hε
-  have hΦ' : Φ ∈ _root_.W_K K := by
-    simpa [_root_.W_K_eq_q3] using hΦ
-  simpa [_root_.W_K_eq_q3, _root_.AtomCone_K_eq_q3] using
-    (_root_.A1_density_WK_thm K hK Φ hΦ' ε hε)
+  intro K hK t0 ht0 Φ hΦ ε hε
+  exact Q3.A1_density_WK_axiom K hK t0 ht0 Φ hΦ ε hε
 
 /-- Q is Lipschitz on W_K
     STATUS: PROVEN via Q_Lipschitz.lean (uses arch/prime bridge axioms) -/
@@ -148,12 +146,12 @@ theorem A3_bridge_rayleigh_Fourier (K : ℝ) (hK : K > 0) :
   exact Q3.Proofs.weight_sum_le_rho_one K K hK
 
 /-- Q ≥ 0 on atoms
-    STATUS: Fourier A3 + RKHS => atoms positivity (axiom placeholder). -/
+    STATUS: Fourier A3 + RKHS => atoms positivity (theorem wrapper). -/
 theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1),
     Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K →
     Q3.RKHS_contraction_data K →
-    ∀ g ∈ Q3.AtomCone_K K, Q3.Q g ≥ 0 :=
-  Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom  -- Axiom fallback (Fourier variant)
+    ∀ g ∈ Q3.AtomCone_K_fixed K Q3.t0_A1, Q3.Q g ≥ 0 :=
+  Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS  -- Wrapper (Fourier variant)
 
 end Q3.Theorems
 

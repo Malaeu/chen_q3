@@ -259,6 +259,24 @@ def AtomCone_K (K : ℝ) : Set (ℝ → ℝ) :=
         (∀ x, g x = ∑ i, c i * Fejer_heat_atom (B i) (t i) (τ i) x) ∧
         g ∈ W_K K }  -- explicitly require g ∈ W_K
 
+/-- AtomCone_K_fixed: fixed heat parameter t0 (A1' fixed-t cone). -/
+def AtomCone_K_fixed (K t0 : ℝ) : Set (ℝ → ℝ) :=
+  { g | ∃ (n : ℕ) (c : Fin n → ℝ) (B τ : Fin n → ℝ),
+        (∀ i, c i ≥ 0) ∧
+        (∀ i, B i > 0) ∧
+        (∀ i, |τ i| + B i ≤ K) ∧  -- ensures support ⊆ [-K, K]
+        (∀ x, g x = ∑ i, c i * Fejer_heat_atom (B i) t0 (τ i) x) ∧
+        g ∈ W_K K }
+
+lemma AtomCone_K_fixed_subset (K t0 : ℝ) (ht0 : t0 > 0) :
+    AtomCone_K_fixed K t0 ⊆ AtomCone_K K := by
+  intro g hg
+  rcases hg with ⟨n, c, B, τ, hc, hB, hτB, hg_sum, hg_mem⟩
+  refine ⟨n, c, B, (fun _ => t0), τ, hc, hB, ?_, hτB, ?_, hg_mem⟩
+  · intro _; exact ht0
+  · intro x
+    simpa using (hg_sum x)
+
 /-- Even nonnegative continuous functions on [-K, K] -/
 def C_even_nonneg (K : ℝ) : Set (ℝ → ℝ) :=
   { f | ContinuousOn f (Set.Icc (-K) K) ∧
@@ -276,9 +294,9 @@ Aristotle proved helper lemmas:
 - `HeatKernel_mass_concentration` - mass concentrates as t → 0
 Main theorem incomplete (approximation theory complexity).
 -/
-axiom A1_density_WK_axiom : ∀ (K : ℝ) (hK : K > 0),
+axiom A1_density_WK_axiom : ∀ (K : ℝ) (hK : K > 0) (t0 : ℝ) (ht0 : t0 > 0),
   ∀ Φ ∈ W_K K, ∀ ε > 0,
-    ∃ g ∈ AtomCone_K K,  -- g is in AtomCone_K ⊆ W_K
+    ∃ g ∈ AtomCone_K_fixed K t0,  -- fixed-t cone ⊆ W_K
       sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε
 
 /-- Legacy A1 density (for compatibility) -/

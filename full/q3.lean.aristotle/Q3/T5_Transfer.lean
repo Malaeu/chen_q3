@@ -17,6 +17,7 @@ implies limit preservation of nonnegativity.
 import Q3.Basic.Defs
 import Q3.AxiomsTheorems
 import Q3.Atoms_Positive
+import Q3.Proofs.HeatKernelParams
 import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 
 set_option linter.mathlibStandardSet false
@@ -51,9 +52,9 @@ This is standard real analysis.
 -/
 
 /-- Auxiliary: AtomCone_K is a subset of W_K (by definition) -/
-lemma AtomCone_subset_W_K (K : ℝ) : AtomCone_K K ⊆ W_K K := by
+lemma AtomCone_subset_W_K (K t0 : ℝ) : AtomCone_K_fixed K t0 ⊆ W_K K := by
   intro g hg
-  rcases hg with ⟨n, c, B, t, τ, -, -, -, -, -, hg_in_W_K⟩
+  rcases hg with ⟨n, c, B, τ, -, -, -, -, hg_in_W_K⟩
   exact hg_in_W_K
 
 /-!
@@ -91,13 +92,15 @@ theorem T5_transfer (K : ℝ) (hK : K ≥ 1) :
   set ε := δ / (2 * L) with hε_def
   have hε_pos : ε > 0 := by positivity
 
-  -- By A1 (theorem), get approximant g ∈ AtomCone_K with ||Φ - g||_∞ < ε
-  obtain ⟨g, hg_atom, hg_approx⟩ := Q3.Theorems.A1_density_WK K hK_pos Φ hΦ ε hε_pos
+  -- Fixed-t₀ density (A1' with fixed t₀)
+  have ht0 : (0 : ℝ) < Q3.t0_A1 := Q3.t0_A1_pos
+  obtain ⟨g, hg_atom, hg_approx⟩ :=
+    Q3.Theorems.A1_density_WK K hK_pos Q3.t0_A1 ht0 Φ hΦ ε hε_pos
 
-  -- g ∈ AtomCone_K ⊆ W_K
-  have hg_W_K : g ∈ W_K K := AtomCone_subset_W_K K hg_atom
+  -- g ∈ AtomCone_K_fixed ⊆ W_K
+  have hg_W_K : g ∈ W_K K := AtomCone_subset_W_K K Q3.t0_A1 hg_atom
 
-  -- By Atoms axiom, Q(g) ≥ 0
+  -- By Atoms theorem (fixed-t₀), Q(g) ≥ 0
   have hg_nonneg : Q g ≥ 0 := Q3.Atoms.Q_nonneg_on_atoms K hK g hg_atom
 
   -- By Lipschitz: |Q(Φ) - Q(g)| ≤ L * ||Φ - g||_∞ < L * ε = δ/2

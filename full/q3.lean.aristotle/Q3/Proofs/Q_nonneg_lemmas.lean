@@ -290,4 +290,31 @@ lemma Q_nonneg_on_atomcone_of_atoms (K : ℝ) (_hK : K ≥ 1)
   · exact hc_nonneg i
   · exact h_atom (B i) (t i) (τ i) (hB_pos i) (ht_pos i) (h_support i)
 
+/-! ## A5 (fixed-t): Extension from atoms to AtomCone_K_fixed -/
+
+/-- If Q ≥ 0 on each Fejer_heat_atom with fixed t0, then Q ≥ 0 on AtomCone_K_fixed. -/
+lemma Q_nonneg_on_atomcone_fixed_of_atoms (K t0 : ℝ) (_hK : K ≥ 1) (ht0 : t0 > 0)
+    (h_atom : ∀ B τ, B > 0 → |τ| + B ≤ K →
+              Q3.Q (Q3.Fejer_heat_atom B t0 τ) ≥ 0) :
+    ∀ g ∈ Q3.AtomCone_K_fixed K t0, Q3.Q g ≥ 0 := by
+  intro g hg
+  obtain ⟨n, c, B, τ, hc_nonneg, hB_pos, h_support, hg_eq, _hg_WK⟩ := hg
+  have hg_fn : g = fun x => ∑ i, c i * Q3.Fejer_heat_atom (B i) t0 (τ i) x := by
+    ext x; exact hg_eq x
+  rw [hg_fn]
+  have h_int : ∀ i, MeasureTheory.Integrable
+      (fun x => Q3.a_star x * Q3.Fejer_heat_atom (B i) t0 (τ i) x) := by
+    intro i
+    exact fejer_heat_atom_integrable_with_a_star (B i) t0 (τ i) (hB_pos i) ht0
+  have h_sum : ∀ i, Summable
+      (fun k => Q3.w_Q k * Q3.Fejer_heat_atom (B i) t0 (τ i) (Q3.xi_n k)) := by
+    intro i
+    exact fejer_heat_atom_prime_summable (B i) t0 (τ i) (hB_pos i) ht0
+  rw [Q_finset_sum _ _ h_int h_sum]
+  apply Finset.sum_nonneg
+  intro i _
+  apply mul_nonneg
+  · exact hc_nonneg i
+  · exact h_atom (B i) (τ i) (hB_pos i) (h_support i)
+
 end Q3.Proofs.Q_nonneg_lemmas
