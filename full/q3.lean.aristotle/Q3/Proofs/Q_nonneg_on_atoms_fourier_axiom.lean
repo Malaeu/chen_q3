@@ -11,12 +11,18 @@ It replaces the deprecated sampling/a_star axiom in the main chain.
 import Q3.Axioms
 import Q3.Proofs.P_A_Toeplitz_bridge
 import Q3.Proofs.HeatKernelParams
+import Q3.Proofs.Rayleigh_basis0_of_A3
 
 set_option linter.mathlibStandardSet false
 
 noncomputable section
 
 namespace Q3
+
+/-! ## A4 hook: Rayleigh lower bound at basis0 from Fourier A3 -/
+
+abbrev rayleigh_basis0_of_A3_for_chain :=
+  Q3.Proofs.QNonnegAtoms.rayleigh_basis0_of_A3
 
 /-- Core positivity transfer: Fourier A3 bridge + RKHS contraction => Q >= 0 on atoms. -/
 axiom Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom :
