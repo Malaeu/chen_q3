@@ -1,0 +1,13 @@
+name = "docbuild"
+version = "0.1.0"
+defaultTargets = ["docs"]
+
+[[require]]
+name = "q3_lean_aristotle"
+path = ".."
+
+[[require]]
+name = "doc-gen4"
+scope = "leanprover"
+git = "https://github.com/leanprover/doc-gen4.git"
+rev = "v4.24.0"
