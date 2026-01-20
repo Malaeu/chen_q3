@@ -20,7 +20,7 @@
 
 ## ЭТАП 2: Monotonicity ✅ DONE
 **Файлы:**
-- `A3_FLOOR_v19_monotonicity.lean` (полный proof, без аксиом)
+- `A3_Floor_Monotonicity.lean` (полный proof, без аксиом)
 - `A3_FLOOR_v16_deriv_digamma_eq_trigamma.lean` (база deriv_digamma_eq_trigamma)
 
 ### Ключевые леммы v6/v8:
@@ -50,7 +50,7 @@ strictAntiOn_of_deriv_neg + continuousOn_a + deriv_a_neg = strictAntiOn_a ✅
 ---
 
 ## ЭТАП 3: Numerical Bounds ✅ DONE
-**Файл:** `A3_FLOOR_v20_bounds_core.lean`
+**Файл:** `A3_Floor_Bounds.lean`
 
 | Лемма | Статус | Описание |
 |-------|--------|----------|
@@ -66,7 +66,7 @@ strictAntiOn_of_deriv_neg + continuousOn_a + deriv_a_neg = strictAntiOn_a ✅
 ---
 
 ## ЭТАП 4: FINAL THEOREM ✅ DONE
-**Файл:** `A3_FLOOR_v22_stage4_floor.lean`
+**Файл:** `A3_Floor_Main.lean`
 
 | Теорема | Статус | Описание |
 |---------|--------|----------|
@@ -120,7 +120,7 @@ numerical_bounds ─────────────────────
 | Stage 3: Bounds | ✅ DONE | v20 |
 | Stage 4: Final | ✅ DONE | v22 |
 
-**Следующий шаг:** интеграция A3_FLOOR в основной chain — DONE (A3_bridge_v3_uniform → P_A_ge_c_star).
+**Следующий шаг:** интеграция A3_FLOOR в основной chain — DONE (A3_Bridge_Uniform → P_A_ge_c_star).
 
 ---
 
@@ -136,11 +136,11 @@ Doc status (A3_FLOOR + Q3_DigammaRemainder):
 | A3_FLOOR_v6 | proven | 313 |
 | A3_FLOOR_v8 | proven | 291 |
 | A3_FLOOR_v16 | proven | 329 |
-| A3_FLOOR_v19 | proven | 505 |
-| A3_FLOOR_v20_core | proven | 853 |
-| A3_FLOOR_v20_manual | missing | 0 |
-| A3_FLOOR_v21_manual | missing | 0 |
-| A3_FLOOR_v22_stage4 | proven | 879 |
+| A3_Floor_Monotonicity | proven | 505 |
+| A3_Floor_Bounds | proven | 853 |
+| A3_Floor_Bounds_manual | missing | 0 |
+| A3_Floor_Main_manual | missing | 0 |
+| A3_Floor_Main | proven | 879 |
 | A3_FLOOR_THEOREM | proven | 7 |
 | Q3_DigammaRemainder | proven | 2084 |
 

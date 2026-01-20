@@ -75,14 +75,14 @@ These are **novel results** from the Q3 paper, proven via bridges.
 | Paper Result | Lean Theorem | Bridge File | Status | Sorries |
 |--------------|--------------|-------------|--------|---------|
 | Node spacing | `node_spacing` | node_spacing_bridge | ✅ CLEAN | 0 |
-| S_K bound | `S_K_small` | S_K_small_bridge_v2 | ✅ CLEAN | 0 |
-| W_sum finite | `W_sum_finite` | W_sum_finite_bridge_v3 | ✅ CLEAN | 0 |
-| Off-diag sum | `off_diag_exp_sum` | off_diag_bridge_v2 | ✅ THEOREM | 2* |
-| RKHS contraction | `RKHS_contraction` | RKHS_bridge_v2 | ✅ THEOREM | 1* |
-| Q Lipschitz | `Q_Lipschitz` | Q_Lipschitz_bridge_v2 | ✅ THEOREM | 1* |
-| A3 bridge | `A3_bridge` | A3_bridge_v2 | ✅ CLEAN | 0 |
-| Q ≥ 0 atoms | `Q_nonneg_on_atoms` | Q_nonneg_bridge_v2 | ✅ THEOREM | 2* |
-| A1 density | `A1_density` | A1_density_bridge_v2 | ✅ THEOREM | 2* |
+| S_K bound | `S_K_small` | S_K_Small_Bridge | ✅ CLEAN | 0 |
+| W_sum finite | `W_sum_finite` | W_Sum_Finite_Bridge | ✅ CLEAN | 0 |
+| Off-diag sum | `off_diag_exp_sum` | Off_Diag_Exp_Sum_Bridge | ✅ THEOREM | 2* |
+| RKHS contraction | `RKHS_contraction` | RKHS_Contraction_Bridge | ✅ THEOREM | 1* |
+| Q Lipschitz | `Q_Lipschitz` | Q_Lipschitz_Bridge | ✅ THEOREM | 1* |
+| A3 bridge | `A3_bridge` | A3_Bridge_Simple | ✅ CLEAN | 0 |
+| Q ≥ 0 atoms | `Q_nonneg_on_atoms` | Q_Nonneg_Bridge | ✅ THEOREM | 2* |
+| A1 density | `A1_density` | A1_Density_Bridge | ✅ THEOREM | 2* |
 
 **Total: 9 theorems** (4 fully proven, 5 with classical analysis sorries)
 
@@ -95,25 +95,25 @@ These are **novel results** from the Q3 paper, proven via bridges.
 All 8 sorries are in **CLASSICAL ANALYSIS** - known results that don't need proof.
 
 **UPDATE 2025-12-22:**
-- Closed `W_sum ≥ 0` sorry in Q_Lipschitz_bridge_v2.lean:99 ✅
-- Closed `S_K at t_min` sorry in RKHS_contraction_bridge_v2.lean:130 ✅
-- Closed `MVT for log` sorry in off_diag_exp_sum_bridge_v2.lean:73 ✅ (uses Q3.Clean.MVT_log_bound)
-- Closed `Heat approx identity` sorry in A3_bridge_v2.lean:38 ✅ (uses Q3.Clean.heat_kernel_approx_identity)
-- Closed `Sum split` sorry in RKHS_contraction_bridge_v2.lean:207 ✅ (pure algebra: Finset.sum_ite_eq')
-- Closed `Heat conv smooth` sorry in A3_bridge_v2.lean:32 ✅ (uses Q3.Clean.heat_conv_smooth)
+- Closed `W_sum ≥ 0` sorry in Q_Lipschitz_Bridge.lean:99 ✅
+- Closed `S_K at t_min` sorry in RKHS_Contraction_Bridge.lean:130 ✅
+- Closed `MVT for log` sorry in Off_Diag_Exp_Sum_Bridge.lean:73 ✅ (uses Q3.Clean.MVT_log_bound)
+- Closed `Heat approx identity` sorry in A3_Bridge_Simple.lean:38 ✅ (uses Q3.Clean.heat_kernel_approx_identity)
+- Closed `Sum split` sorry in RKHS_Contraction_Bridge.lean:207 ✅ (pure algebra: Finset.sum_ite_eq')
+- Closed `Heat conv smooth` sorry in A3_Bridge_Simple.lean:32 ✅ (uses Q3.Clean.heat_conv_smooth)
 
 ### Complete Sorry Table:
 
 | File | Line | What's Sorry'd | Classical Source | Year |
 |------|------|----------------|------------------|------|
-| `off_diag_exp_sum_bridge_v2.lean` | :97 | Node spacing combine | MVT application | ~1820 |
-| `off_diag_exp_sum_bridge_v2.lean` | :115 | Geometric series sum | Ancient | - |
-| `RKHS_contraction_bridge_v2.lean` | :125 | Off-diag sum split | Geometric series | - |
-| `Q_Lipschitz_bridge_v2.lean` | :119 | Integration bounds | Calculus | - |
-| `Q_nonneg_bridge_v2.lean` | :49 | RKHS inner product | Aronszajn | 1950 |
-| `Q_nonneg_bridge_v2.lean` | :59 | Positivity transfer | RKHS theory | 1950 |
-| `A1_density_bridge_v2.lean` | :50 | Density approximation | Weierstrass | 1885 |
-| `A1_density_bridge_v2.lean` | :57 | Uniform approx | Stone-Weierstrass | 1937 |
+| `Off_Diag_Exp_Sum_Bridge.lean` | :97 | Node spacing combine | MVT application | ~1820 |
+| `Off_Diag_Exp_Sum_Bridge.lean` | :115 | Geometric series sum | Ancient | - |
+| `RKHS_Contraction_Bridge.lean` | :125 | Off-diag sum split | Geometric series | - |
+| `Q_Lipschitz_Bridge.lean` | :119 | Integration bounds | Calculus | - |
+| `Q_Nonneg_Bridge.lean` | :49 | RKHS inner product | Aronszajn | 1950 |
+| `Q_Nonneg_Bridge.lean` | :59 | Positivity transfer | RKHS theory | 1950 |
+| `A1_Density_Bridge.lean` | :50 | Density approximation | Weierstrass | 1885 |
+| `A1_Density_Bridge.lean` | :57 | Uniform approx | Stone-Weierstrass | 1937 |
 
 ### Classification:
 
@@ -138,13 +138,13 @@ Aristotle (Claude) generated standalone proof files. These were integrated via b
 | Aristotle File | Lines | Bridge File | What It Proves |
 |----------------|-------|-------------|----------------|
 | `node_spacing.lean` | 5347 | `node_spacing_bridge.lean` | Node gap ≥ δ_K |
-| `S_K_small.lean` | 2638 | `S_K_small_bridge_v2.lean` | S_K(t_min) ≤ η |
-| `W_sum_finite.lean` | 5333 | `W_sum_finite_bridge_v3.lean` | W_sum < ∞ |
-| `off_diag_exp_sum.lean` | 12785 | `off_diag_exp_sum_bridge_v2.lean` | Off-diag ≤ S_K |
-| `RKHS_contraction.lean` | 28141 | `RKHS_contraction_bridge_v2.lean` | ‖T_P‖ < 1 |
-| `Q_Lipschitz.lean` | 10502 | `Q_Lipschitz_bridge_v2.lean` | Q is Lipschitz |
-| `Q_nonneg_on_atoms.lean` | 5004 | `Q_nonneg_bridge_v2.lean` | Q ≥ 0 on atoms |
-| `A1_density.lean` | 45993 | `A1_density_bridge_v2.lean` | Density theorem |
+| `S_K_small.lean` | 2638 | `S_K_Small_Bridge.lean` | S_K(t_min) ≤ η |
+| `W_sum_finite.lean` | 5333 | `W_Sum_Finite_Bridge.lean` | W_sum < ∞ |
+| `off_diag_exp_sum.lean` | 12785 | `Off_Diag_Exp_Sum_Bridge.lean` | Off-diag ≤ S_K |
+| `RKHS_contraction.lean` | 28141 | `RKHS_Contraction_Bridge.lean` | ‖T_P‖ < 1 |
+| `Q_Lipschitz.lean` | 10502 | `Q_Lipschitz_Bridge.lean` | Q is Lipschitz |
+| `Q_nonneg_on_atoms.lean` | 5004 | `Q_Nonneg_Bridge.lean` | Q ≥ 0 on atoms |
+| `A1_density.lean` | 45993 | `A1_Density_Bridge.lean` | Density theorem |
 | `A1_density_main.lean` | 69142 | (integrated) | Main A1 proof |
 
 ### Status Summary:
@@ -172,7 +172,7 @@ Aristotle (Claude) generated standalone proof files. These were integrated via b
 | Paper Lemma | Lean | Status |
 |-------------|------|--------|
 | Thm:A1-density | `A1_density` | ✅ THEOREM |
-| Lem:A1-compact | `A1_density_bridge_v2` | ✅ (2 sorry*) |
+| Lem:A1-compact | `A1_Density_Bridge` | ✅ (2 sorry*) |
 
 ### A2: Lipschitz (§3)
 
@@ -187,7 +187,7 @@ Aristotle (Claude) generated standalone proof files. These were integrated via b
 | Paper Lemma | Lean | Status |
 |-------------|------|--------|
 | Lem:A3-lipschitz | `A3_bridge` | ✅ THEOREM |
-| Prop:A0-minus-LA | (in A3_bridge_v2) | ✅ (2 sorry*) |
+| Prop:A0-minus-LA | (in A3_Bridge_Simple) | ✅ (2 sorry*) |
 | Thm:A3 | `A3_spectral_gap` | ✅ THEOREM |
 
 ### RKHS: Prime Operator (§5)

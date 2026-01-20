@@ -29,7 +29,7 @@ Guard script: `full/q3.lean.aristotle/scripts/check_audit_invariants.sh`
 - Paper: `full/sections/A1prime.tex` (Theorem `a1:thm:A1-local-density`)
 - Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Section 3)
 - Lean:
-  - `Q3/Proofs/A1_density_bridge_v2.lean` (uses `Q3.Axioms`)
+  - `Q3/Proofs/A1_Density_Bridge.lean` (uses `Q3.Axioms`)
   - `Q3/Clean/TheoremsTier2.lean:Q3.Clean.Theorems.A1_density`
 - Status: TODO (axiom-backed)
 
@@ -37,7 +37,7 @@ Guard script: `full/q3.lean.aristotle/scripts/check_audit_invariants.sh`
 - Paper: `full/sections/A2.tex` (Lemma `a2:lem:A2`, Cor `a2:cor:explicit-lip`)
 - Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Section 3)
 - Lean:
-  - `Q3/Proofs/Q_Lipschitz_bridge_v2.lean` (clean bridge, no sorry)
+  - `Q3/Proofs/Q_Lipschitz_Bridge.lean` (clean bridge, no sorry)
   - `Q3/Proofs/Q_Lipschitz.lean` (axiom-backed)
 - Status: DONE (clean bridge proven; axioms remain in main proof file)
 
@@ -48,8 +48,8 @@ Guard script: `full/q3.lean.aristotle/scripts/check_audit_invariants.sh`
   - `full/sections/RKHS/prime_cap.tex` (Cor `cor:uniform-prime-cap`)
 - Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Sections 3, 5)
 - Lean:
-  - `Q3/Proofs/off_diag_exp_sum_bridge_v2.lean` (now closes via root proof)
-  - `Q3/Proofs/RKHS_contraction_bridge_v2.lean` (clean bridge, no sorry)
+  - `Q3/Proofs/Off_Diag_Exp_Sum_Bridge.lean` (now closes via root proof)
+  - `Q3/Proofs/RKHS_Contraction_Bridge.lean` (clean bridge, no sorry)
   - `Q3/Proofs/RKHS_cap_rayleigh.lean` (rayleigh-style cap)
 - Status: DONE (contraction bridge proven)
 
@@ -68,8 +68,8 @@ Guard script: `full/q3.lean.aristotle/scripts/check_audit_invariants.sh`
   `full/sections/A3/symbol_floor.tex` (Lemma `lem:uniform-arch-floor`)
 - Specs: `full/q3.lean.aristotle/docs/PROJECT_SPECS.md` (Sections 3, 5)
 - Lean:
-  - `A3_FLOOR_v22_stage4_floor.lean` (arch floor proof)
-  - `Q3/Proofs/A3_bridge_v2.lean` (clean bridge; uses Tier-1 axioms)
+  - `A3_Floor_Main.lean` (arch floor proof)
+  - `Q3/Proofs/A3_Bridge_Simple.lean` (clean bridge; uses Tier-1 axioms)
 - Status: TODO (bridge is heuristic / Tier-1 axioms)
 
 ## 7. Weil closure / RH

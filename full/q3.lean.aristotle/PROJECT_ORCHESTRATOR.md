@@ -16,7 +16,7 @@ Single entry point: read this file at session start.
 ## Current State (short)
 
 - A3_FLOOR is proven and integrated: `P_A_ge_c_star` from
-  `A3_FLOOR_v22_stage4_floor.lean` is used in the Fourier A3 bridge.
+  `A3_Floor_Main.lean` is used in the Fourier A3 bridge.
 - Fourier A3 bridge is wired: `Q3/Atoms_Positive.lean` now depends on
   `A3_bridge_data_rayleigh_Fourier` and the axiom
   `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
@@ -120,7 +120,7 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
 ## Progress Log (2026-01-16)
 
 **P_A_continuous**:
-- CLOSED in `A3_FLOOR_v22_stage4_floor.lean` (local finiteness + periodicity proof)
+- CLOSED in `A3_Floor_Main.lean` (local finiteness + periodicity proof)
 
 **Q_nonneg_on_atoms (Rayleigh-Q identification)**:
 - `Q3/Proofs/Rayleigh_Q_identification.lean` COMPLETE:
@@ -241,8 +241,8 @@ of separate `|τ| ≤ K` and `B ≤ K`. This matches Lemma 6.4 (Fixed-t₀ cone 
 - `Q3/Axioms.lean` and `Q3/AxiomsTheorems.lean` - axioms and wiring
 - `Q3/Proofs/Q_Lipschitz.lean` - real proof of Q_Lipschitz
 - `Q3/Proofs/Bridge.lean` + `Q3/Proofs/RKHS_contraction_bridge.lean`
-- `Q3/Proofs/A3_bridge_v3_uniform.lean`
-- `Q3/Proofs/Q_nonneg_bridge_v2.lean`
+- `Q3/Proofs/A3_Bridge_Uniform.lean`
+- `Q3/Proofs/Q_Nonneg_Bridge.lean`
 - `Q3/Proofs/A1_density.lean`
 - `aristotle_db/parse_lean.py` - DB import
 

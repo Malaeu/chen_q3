@@ -62,7 +62,7 @@ Status: STAGE 4/4 DONE (A3_FLOOR proven)
 ## STAGE 2: Monotonicity ✅ DONE
 
 **Files:**
-- `A3_FLOOR_v19_monotonicity.lean` (full proof, no axioms)
+- `A3_Floor_Monotonicity.lean` (full proof, no axioms)
 - `A3_FLOOR_v16_deriv_digamma_eq_trigamma.lean` (core lemma)
 
 ### Proven Lemmas:
@@ -95,7 +95,7 @@ deriv_a_neg + continuousOn_a → strictAntiOn_a
 
 ## STAGE 3: Numerical Bounds ✅ DONE
 
-**File:** `A3_FLOOR_v20_bounds_core.lean`
+**File:** `A3_Floor_Bounds.lean`
 
 | Lemma | Status | Value | DB Priority |
 |-------|--------|-------|-------------|
@@ -112,7 +112,7 @@ deriv_a_neg + continuousOn_a → strictAntiOn_a
 
 ## STAGE 4: Final Theorem ✅ DONE
 
-**File:** `A3_FLOOR_v22_stage4_floor.lean`
+**File:** `A3_Floor_Main.lean`
 
 | Theorem | Status | Description | DB Priority |
 |---------|--------|-------------|-------------|
@@ -136,9 +136,9 @@ These files contain **essential lemmas** for the new kernel:
 
 1. `A3_FLOOR_v3_trigamma_foundations.lean` ← Stage 1
 2. `A3_FLOOR_v16_deriv_digamma_eq_trigamma.lean` ← Stage 2
-3. `A3_FLOOR_v19_monotonicity.lean` ← Stage 2
-4. `A3_FLOOR_v20_bounds_core.lean` ← Stage 3
-5. `A3_FLOOR_v22_stage4_floor.lean` ← Stage 4
+3. `A3_Floor_Monotonicity.lean` ← Stage 2
+4. `A3_Floor_Bounds.lean` ← Stage 3
+5. `A3_Floor_Main.lean` ← Stage 4
 
 ### MEDIUM PRIORITY (Import Second)
 
@@ -251,9 +251,9 @@ PY
 **Last Updated:** 2026-01-17
 **Next Action:** Close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
 via Rayleigh–Q identification (Theorem 3.3).
-**A3_FLOOR Integration:** DONE (A3_bridge_v3_uniform imports P_A_ge_c_star).
+**A3_FLOOR Integration:** DONE (A3_Bridge_Uniform imports P_A_ge_c_star).
 
-**Update (2026-01-17):** `P_A_continuous` is now a theorem in `A3_FLOOR_v22_stage4_floor.lean`.
+**Update (2026-01-17):** `P_A_continuous` is now a theorem in `A3_Floor_Main.lean`.
 **Update (2026-01-16):** Fourier A3 chain is wired in `Q3/Atoms_Positive.lean` using
 `A3_bridge_data_rayleigh_Fourier` + `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
 
@@ -266,10 +266,10 @@ via Rayleigh–Q identification (Theorem 3.3).
 
 ### A3_bridge - FULLY CLOSED
 - `A3_bridge.lean` - A3_bridge_from_Szego (0 sorry)
-- `A3_bridge_v3_uniform.lean` - A3_bridge_from_floor (0 sorry)
+- `A3_Bridge_Uniform.lean` - A3_bridge_from_floor (0 sorry)
 
 ### Q_nonneg Bridge - FULLY CLOSED
-- `Q_nonneg_bridge_v2.lean` - Q_nonneg_on_atoms (0 sorry)
+- `Q_Nonneg_Bridge.lean` - Q_nonneg_on_atoms (0 sorry)
 - Uses Q_nonneg_on_atoms_uniform axiom with A3_bridge_data_uniform + RKHS_contraction_data_uniform
 
 ### A1_density Theorem - CLOSED (axiom-free)
@@ -288,11 +288,11 @@ Doc status (A3_FLOOR + Q3_DigammaRemainder):
 | A3_FLOOR_v6 | proven | 313 |
 | A3_FLOOR_v8 | proven | 291 |
 | A3_FLOOR_v16 | proven | 329 |
-| A3_FLOOR_v19 | proven | 505 |
-| A3_FLOOR_v20_core | proven | 853 |
-| A3_FLOOR_v20_manual | missing | 0 |
-| A3_FLOOR_v21_manual | missing | 0 |
-| A3_FLOOR_v22_stage4 | proven | 879 |
+| A3_Floor_Monotonicity | proven | 505 |
+| A3_Floor_Bounds | proven | 853 |
+| A3_Floor_Bounds_manual | missing | 0 |
+| A3_Floor_Main_manual | missing | 0 |
+| A3_Floor_Main | proven | 879 |
 | A3_FLOOR_THEOREM | proven | 7 |
 | Q3_DigammaRemainder | proven | 2084 |
 

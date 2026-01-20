@@ -49,9 +49,9 @@ Notes:
 
 | File | Lines | Thm/Lemmas |
 |------|-------|------------|
-| A3_FLOOR_v22_stage4_floor.lean | 878 | 27 |
-| A3_FLOOR_v20_bounds_core.lean | 852 | 22 |
-| A3_FLOOR_v19_monotonicity.lean | 504 | 19 |
+| A3_Floor_Main.lean | 878 | 27 |
+| A3_Floor_Bounds.lean | 852 | 22 |
+| A3_Floor_Monotonicity.lean | 504 | 19 |
 | A3_FLOOR_v16_deriv_digamma_eq_trigamma.lean | 328 | 10 |
 | A3_FLOOR_COMBINED.lean | 333 | 10 |
 | A3_FLOOR_THEOREM.lean | 6 | 0 |
@@ -94,7 +94,7 @@ Q3/Proofs/Bridge.lean
   lines: 512 (nonempty 460), namespaces: 1
   lemma 12 | theorem 5 | def 2
 
-Q3/Proofs/A3_bridge_v3_uniform.lean
+Q3/Proofs/A3_Bridge_Uniform.lean
   lines: 98 (nonempty 75), namespaces: 1
   lemma 1 | theorem 2
 
@@ -102,7 +102,7 @@ Q3/Proofs/RKHS_cap_rayleigh.lean
   lines: 588 (nonempty 552), namespaces: 1
   lemma 24 | theorem 0 | def 0
 
-Q3/Proofs/Q_nonneg_bridge_v2.lean
+Q3/Proofs/Q_Nonneg_Bridge.lean
   lines: 74 (nonempty 56), namespaces: 1
   theorem 2
 ```
@@ -128,7 +128,7 @@ Q3 total (80 files)
 | A1_density_WK | ✅ PROVEN | Aristotle + HatInterpolation |
 | Q_Lipschitz_on_W_K | ✅ PROVEN | Manual + bridges |
 | RKHS_contraction | ✅ PROVEN | Manual + rescaling |
-| P_A_continuous | ✅ PROVEN | A3_FLOOR_v22_stage4_floor (theorem) |
+| P_A_continuous | ✅ PROVEN | A3_Floor_Main (theorem) |
 | Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom | ❌ OPEN | Q_nonneg_on_atoms_fourier_axiom |
 
 **Current: 6/7 Tier-2 axioms closed** (remaining: Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom)

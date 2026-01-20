@@ -39,7 +39,7 @@ Note:
 
 ## M4) Parameters - OK (split across files)
 
-- `t_sym` is fixed in `full/q3.lean.aristotle/A3_FLOOR_v22_stage4_floor.lean`
+- `t_sym` is fixed in `full/q3.lean.aristotle/A3_Floor_Main.lean`
 - `t_rkhs_cap` and `rho_one` are in
   `full/q3.lean.aristotle/Q3/Proofs/A3_bridge_rayleigh_first.lean`
 

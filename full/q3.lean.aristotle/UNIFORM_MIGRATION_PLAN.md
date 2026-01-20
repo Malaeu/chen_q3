@@ -42,7 +42,7 @@ K-dependent everywhere           K-independent
 
 /-- Uniform Archimedean floor: c* = 11/10
     This is the minimum of P_A(θ) over the entire torus T.
-    Proven in A3_FLOOR_v22_stage4_floor.lean -/
+    Proven in A3_Floor_Main.lean -/
 def c_star : ℝ := 11 / 10
 
 /-- c* is positive (trivial) -/
@@ -144,11 +144,11 @@ axiom Q_nonneg_on_atoms_uniform :
 
 ## Phase 5: Connect to A3_FLOOR
 
-### File: `Q3/Proofs/A3_bridge_v3_uniform.lean` (NEW)
+### File: `Q3/Proofs/A3_Bridge_Uniform.lean` (NEW)
 
 ```lean
 import Q3.Axioms
-import A3_FLOOR_v22_stage4_floor  -- or wherever P_A_ge_c_star lives
+import A3_Floor_Main  -- or wherever P_A_ge_c_star lives
 
 /-- Main connection: A3_FLOOR provides the uniform floor.
 
@@ -217,7 +217,7 @@ Step 2: Add A3_bridge_uniform axiom (keep old for compatibility)
         ↓
 Step 3: Add A3_bridge_data_uniform
         ↓
-Step 4: Create A3_bridge_v3_uniform.lean with bridge from A3_FLOOR
+Step 4: Create A3_Bridge_Uniform.lean with bridge from A3_FLOOR
         ↓
 Step 5: Update Q_nonneg_on_atoms
         ↓

@@ -8,9 +8,9 @@
 
 ### Файлы, которые вскрывают проблему
 - `Q3/Axioms.lean` — `Toeplitz_Rayleigh_lower_bound_uniform` (комментарий про `P=a_star, c=c_star`) + `c_star_le_c_arch`.
-- `Q3/Proofs/A3_bridge_v3_uniform.lean` — A3_FLOOR (`P_A_ge_c_star`) в тексте, но вывод через `A3_bridge_uniform` (с `a_star`).
+- `Q3/Proofs/A3_Bridge_Uniform.lean` — A3_FLOOR (`P_A_ge_c_star`) в тексте, но вывод через `A3_bridge_uniform` (с `a_star`).
 - `Q3/Proofs/A3_bridge_rayleigh_first.lean` — гипотеза `RayleighQuotient (ToeplitzMatrix ... a_star) ≥ c_star`.
-- `A3_FLOOR_v22_stage4_floor.lean` — доказано `P_A_ge_c_star`.
+- `A3_Floor_Main.lean` — доказано `P_A_ge_c_star`.
 - `UNIFORM_MIGRATION_PLAN.md` — план миграции, где смешаны `c_star` и `a_star`.
 - `PERIOD1_FIX.md`, `PERIOD1_PATCH_CHECKLIST.md` — масштаб/периодизация `P_A` vs `ToeplitzMatrix` (потенциальная причина дрейфа).
 

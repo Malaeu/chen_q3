@@ -113,7 +113,7 @@
 
  Agent 1: Q_Lipschitz (CLOSED)
 
- - Закрыто в `Q3/Proofs/Q_Lipschitz_bridge_v2.lean` (clean bridge, no sorry)
+ - Закрыто в `Q3/Proofs/Q_Lipschitz_Bridge.lean` (clean bridge, no sorry)
 
  Agent 2: Q_nonneg_bridge sorry (3 штуки)
 
@@ -144,7 +144,7 @@
 
  Run #2:
 
- - (CLOSED) Q3/Proofs/Q_Lipschitz_bridge_v2.lean
+ - (CLOSED) Q3/Proofs/Q_Lipschitz_Bridge.lean
  - Q3/Proofs/Q_nonneg_bridge.lean:166,202,215 - закрыть 3 sorry
  - Q3/Proofs/A1_density.lean: sum_atoms_in_cone → sorryAx (закрыть)
 

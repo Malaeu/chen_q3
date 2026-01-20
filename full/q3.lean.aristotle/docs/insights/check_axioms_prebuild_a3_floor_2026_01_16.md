@@ -4,12 +4,12 @@
 
 Problem:
 - `./scripts/check_axioms.sh` can fail at `Q3/Proofs/P_A_Toeplitz_bridge.lean` with
-  `unknown module prefix 'A3_FLOOR_v22_stage4_floor'`.
+  `unknown module prefix 'A3_Floor_Main'`.
 
 How to detect:
 - The check_axioms log shows the missing module error above.
 
 Fix:
 - Prebuild the module before running checks:
-  `lake build A3_FLOOR_v22_stage4_floor`
+  `lake build A3_Floor_Main`
 - This step is included in `scripts/check_axioms.sh`.

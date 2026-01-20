@@ -79,7 +79,7 @@
      (компилируется, предупреждение: `integral_mul_left` deprecated).
   2) Import conflict: `Q_nonneg_atoms_helpers.lean` не может импортировать одновременно
      `Q3.Proofs.Rayleigh_Q_identification` и `Q3.Proofs.P_A_Toeplitz_bridge`
-     (B_min collision из `A3_FLOOR_v20_bounds_core`).
+     (B_min collision из `A3_Floor_Bounds`).
   3) Mitigation: держать Rayleigh‑леммы в файле, который импортирует только
      `Rayleigh_Q_identification`; для `rho_one` подключать `Q3.Proofs.A3_bridge_rayleigh_first`.
   4) Дальше: `rayleigh_basis0_of_A3` вынести в файл с `P_A_Toeplitz_bridge` (без Rayleigh),
@@ -119,7 +119,7 @@
      `lake env lean Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`,
      `lake env lean Q3/Atoms_Positive.lean`.
 - Последний мост к Q3.Q: для Phi с compact support (например, fejer_heat_window) показать, что prime_term (tsum по n) равен конечной сумме по Nodes K при K >= B; тогда rayleigh_Q_identification переписывается в Q3.Q (см. `Q3/Proofs/Rayleigh_Q_identification.lean`).
-- P_A_continuous: доказательство через локальную конечность суммы и периодичность, без `sorry` (см. `A3_FLOOR_v22_stage4_floor.lean`).
+- P_A_continuous: доказательство через локальную конечность суммы и периодичность, без `sorry` (см. `A3_Floor_Main.lean`).
 
 ---
 

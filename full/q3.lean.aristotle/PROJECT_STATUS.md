@@ -45,7 +45,7 @@ Q3/Clean/
 ├── MainClean.lean       -- RH_proven_clean
 └── PoC.lean             -- Proof of concept
 
-Q3/Proofs/*_bridge_v2/v3.lean  -- Clean bridges (import only Q3.Basic.Defs)
+Q3/Proofs/*_Bridge.lean  -- Clean bridges (import only Q3.Basic.Defs)
 ```
 
 ### Tier-2 Status (9/9 clean chains):
@@ -97,13 +97,13 @@ Two files connecting A3_FLOOR to A3_bridge_uniform axiom:
 | File | Main Theorem | Description |
 |------|--------------|-------------|
 | `A3_bridge.lean` | `A3_bridge_from_Szego` | A3_bridge_data K from A3_bridge_axiom |
-| `A3_bridge_v3_uniform.lean` | `A3_bridge_from_floor` | A3_bridge_data_uniform from A3_bridge_uniform |
+| `A3_Bridge_Uniform.lean` | `A3_bridge_from_floor` | A3_bridge_data_uniform from A3_bridge_uniform |
 
-Integration note (2026-01-13): `A3_bridge_v3_uniform.lean` now imports
-`A3_FLOOR_v22_stage4_floor.lean` and uses `P_A_ge_c_star` (no placeholder axiom).
+Integration note (2026-01-13): `A3_Bridge_Uniform.lean` now imports
+`A3_Floor_Main.lean` and uses `P_A_ge_c_star` (no placeholder axiom).
 
 **Proof structure:**
-- `A3_FLOOR` theorem (proven in A3_FLOOR_v22_stage4_floor.lean): P_A(θ) ≥ c_star = 11/10
+- `A3_FLOOR` theorem (proven in A3_Floor_Main.lean): P_A(θ) ≥ c_star = 11/10
 - `Szego_Rayleigh_lower_bound` (Tier-1 axiom): Toeplitz eigenvalues → symbol infimum
 - `RKHS_contraction` (proven): ||T_P|| ≤ ρ < 1
 - Combined: Rayleigh(T_M - T_P) ≥ c_star/4
@@ -198,8 +198,8 @@ Build check (2025-12-20): `lake env lean Q3/Proofs/RKHS_contraction_bridge.lean`
 | Bridge File | Status | Used in AxiomsTheorems |
 |-------------|--------|------------------------|
 | `Q3/Proofs/node_spacing_bridge.lean` | ✅ WORKS | ✅ Yes |
-| `Q3/Proofs/S_K_small_bridge_v2.lean` | ✅ WORKS | ✅ Yes |
-| `Q3/Proofs/W_sum_finite_bridge_v2.lean` | ✅ WORKS | ✅ Yes |
+| `Q3/Proofs/S_K_Small_Bridge.lean` | ✅ WORKS | ✅ Yes |
+| `Q3/Proofs/W_Sum_Finite_Bridge.lean` | ✅ WORKS | ✅ Yes |
 
 These bridges are SELF-CONTAINED: they define local copies of Aristotle's definitions
 in their own namespace, prove equivalence to Q3 definitions, then transfer theorems.
@@ -297,7 +297,7 @@ Q3/
     ├── node_spacing.lean           # Standalone ✅ CLEAN
     ├── node_spacing_bridge.lean    # Bridge ✅ WORKS
     ├── off_diag_exp_sum.lean       # Standalone ✅ CLEAN
-    ├── off_diag_exp_sum_bridge_v3.lean # Bridge ✅ WORKS (2026-01-13)
+    ├── Off_Diag_Exp_Sum_Bridge.lean # Bridge ✅ WORKS (2026-01-13)
     ├── S_K_small.lean              # Standalone ✅ CLEAN
     ├── S_K_small_bridge.lean       # Bridge ✅ WORKS (NEW)
     ├── RKHS_contraction.lean       # Standalone ✅ CLEAN (bridge: COMPLEX)

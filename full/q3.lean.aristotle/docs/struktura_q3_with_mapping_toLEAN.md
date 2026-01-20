@@ -68,9 +68,9 @@ Sections 5–9.5 establish (H1)–(H5); Theorem 11.4 (closure) assumes these hyp
 | Def 8.1 | Definition | Toeplitz matrix T_M[P] | `ToeplitzMatrix` | `Q3/Axioms.lean:111` | ✅ |
 | Def 8.2 | Definition | Symbol P_A(θ) | `P_A` | `Q3/Basic/Defs.lean` | ✅ |
 | Def 8.3 | Definition | c* = 11/10 uniform floor | `c_star` | `Q3/Axioms.lean:187` | ✅ |
-| Lem 8.15 | Lemma | a(1/2) > 29/50 | (in A3_FLOOR) | `A3_FLOOR_v22_stage4_floor.lean` | ✅ |
-| Lem 8.18 | Lemma | Sample point bounds | (in A3_FLOOR) | `A3_FLOOR_v22_stage4_floor.lean` | ✅ |
-| **Lem 8.19** | Lemma | P_A(θ) ≥ c* = 11/10 | `P_A_ge_c_star` | `A3_FLOOR_v22_stage4_floor.lean` | ✅ PROVEN |
+| Lem 8.15 | Lemma | a(1/2) > 29/50 | (in A3_FLOOR) | `A3_Floor_Main.lean` | ✅ |
+| Lem 8.18 | Lemma | Sample point bounds | (in A3_FLOOR) | `A3_Floor_Main.lean` | ✅ |
+| **Lem 8.19** | Lemma | P_A(θ) ≥ c* = 11/10 | `P_A_ge_c_star` | `A3_Floor_Main.lean` | ✅ PROVEN |
 | Def 8.20 | Definition | L*(t_sym) uniform Lipschitz | `L_star` | `Q3/Proofs/Q_Lipschitz.lean` | ✅ |
 | Lem 8.21 | Lemma | Rayleigh quotient ≥ inf P | `Szego_Rayleigh_lower_bound` | `Q3/Axioms.lean` | AX |
 | **Cor 8.22** | Corollary | ρ(t_rkhs) ≤ 1/25 < c*/4 | `rkhs_cap_rayleigh_tcap` | `Q3/Proofs/RKHS_cap_rayleigh.lean:850` | ✅ PROVEN |
@@ -289,12 +289,12 @@ These clarify that the Q3 approach is elementary (Toeplitz + density + Lipschitz
      ├── Q3/Proofs/Q_Lipschitz.lean — 290 lines, THEOREM! [OK]
          ├── Q_Lipschitz_arch_bridge.lean  — arch term
          ├── Q_Lipschitz_prime_bridge.lean — prime term
-         └── Q_Lipschitz_bridge_v2.lean    — combined
+         └── Q_Lipschitz_Bridge.lean    — combined
 
 (H4) A3 — Toeplitz floor c* = 11/10 (Lemma 8.19, Thm 8.35)
      ├── Q3/A3_Bridge.lean         — module wrapper
      ├── Q3/Axioms.lean            — c_star := 11/10
-     ├── A3_FLOOR_v22_stage4_floor.lean — 47K lines, floor PROVEN!
+     ├── A3_Floor_Main.lean — 47K lines, floor PROVEN!
      └── Q3/Proofs/
          ├── A3_bridge.lean                — 149 lines
          ├── A3_bridge_rayleigh_first.lean — 76 lines
@@ -328,7 +328,7 @@ These clarify that the Q3 approach is elementary (Toeplitz + density + Lipschitz
 | **(H1) T0** | Prop 5.1 | ✅ OK (def) | `Q3/Main.lean` |
 | **(H2) A1′** | Thm 6.3 | ✅ THEOREM | `Q3/Proofs/A1_density.lean` |
 | **(H3) A2** | Lem 7.3 | ✅ THEOREM | `Q3/Proofs/Q_Lipschitz.lean` |
-| **(H4) A3** | Lem 8.19 | ✅ PROVEN | `A3_FLOOR_v22_stage4_floor.lean` |
+| **(H4) A3** | Lem 8.19 | ✅ PROVEN | `A3_Floor_Main.lean` |
 | **(H5) RKHS** | Cor 8.22 | ✅ BRIDGED | `Q3/Proofs/RKHS_cap_rayleigh.lean` |
 | **(T5)** | Thm 11.4 | ✅ THEOREM | `Q3/T5_Transfer.lean` |
 | **(RH)** | Thm 11.2 | ⚠️ 1 AXIOM | `Q3/Main.lean` |
@@ -375,52 +375,52 @@ RH_of_Weil_and_Q3
 | **RKHS_cap_rayleigh.lean** | 893 | RKHS cap bound (t=40) |
 | **Rayleigh_Q_identification.lean** | 629 | Rayleigh ↔ Q identification |
 | **Bridge.lean** | 512 | General bridges between modules |
-| **Q_Lipschitz_bridge_v2.lean** | 431 | Lipschitz bridge v2 |
+| **Q_Lipschitz_Bridge.lean** | 431 | Lipschitz bridge |
 | **RKHS_contraction.lean** | 371 | RKHS operator contraction |
 | **Q_Lipschitz_prime_bridge.lean** | 358 | Prime term Lipschitz |
 | **HatInterpolation.lean** | 339 | Hat function interpolation |
 | **ShiftedWindows.lean** | 307 | Shifted windows W_K |
 | **Q_nonneg_lemmas.lean** | 293 | Lemmas for Q ≥ 0 |
-| **RKHS_contraction_bridge_v2.lean** | 290 | RKHS bridge v2 |
+| **RKHS_Contraction_Bridge.lean** | 290 | RKHS bridge |
 | **Q_Lipschitz.lean** | 290 | Q Lipschitz main |
 | **Q_nonneg_bridge.lean** | 284 | Q ≥ 0 bridge |
 | **Rayleigh_Fourier.lean** | 220 | Rayleigh via Fourier |
 | **RKHS_contraction_bridge.lean** | 211 | RKHS bridge v1 |
 | **RKHS_rescaling.lean** | 190 | RKHS rescaling |
 | **Q_Lipschitz_arch_bridge.lean** | 183 | Arch term Lipschitz |
-| **W_sum_finite_bridge_v2.lean** | 180 | Sum finiteness v2 |
+| **W_Sum_Finite_Bridge.lean** | 180 | Sum finiteness |
 | **off_diag_exp_sum.lean** | 170 | Off-diagonal exp sums |
 | **node_spacing_bridge.lean** | 159 | Node spacing bridge |
 | **off_diag_exp_sum_integrated.lean** | 157 | Off-diag integrated |
 | **A3_bridge.lean** | 149 | A3 floor bridge |
 | **T_P_comp_utils.lean** | 148 | T_P compression utilities |
-| **S_K_small_bridge_v2.lean** | 141 | S_K small bridge |
+| **S_K_Small_Bridge.lean** | 141 | S_K small bridge |
 | **Q_Lipschitz_bridge.lean** | 136 | Lipschitz bridge v1 |
 | **Rayleigh_utils.lean** | 133 | Rayleigh utilities |
 | **W_sum_finite.lean** | 122 | W-sum finiteness |
 | **A1_density_integrated.lean** | 119 | A1 integrated |
 | **A3_bridge_integrated.lean** | 117 | A3 integrated |
-| **off_diag_exp_sum_bridge_v2.lean** | 116 | Off-diag bridge v2 |
+| **Off_Diag_Exp_Sum_Bridge.lean** | 116 | Off-diag bridge |
 | **Q_nonneg_on_atoms.lean** | 110 | Q ≥ 0 on atoms |
 | **RKHS_contraction_integrated.lean** | 108 | RKHS integrated |
 | **P_A_Toeplitz_bridge.lean** | 108 | P_A Toeplitz bridge |
-| **W_sum_finite_bridge_v3.lean** | 106 | W-sums v3 |
+| **W_Sum_Finite_Bridge.lean** | 106 | W-sums |
 | **node_spacing.lean** | 105 | Node spacing |
 | **W_sum_finite_bridge.lean** | 103 | W-sums bridge v1 |
 | **node_spacing_integrated.lean** | 101 | Spacing integrated |
 | **W_sum_finite_integrated.lean** | 100 | W-sums integrated |
 | **S_K_small_bridge.lean** | 98 | S_K small v1 |
-| **A3_bridge_v3_uniform.lean** | 98 | A3 uniform bridge |
+| **A3_Bridge_Uniform.lean** | 98 | A3 uniform bridge |
 | **S_K_small_integrated.lean** | 95 | S_K integrated |
 | **Q_nonneg_atoms_helpers.lean** | 94 | Helpers for atoms |
 | **Q_nonneg_on_atoms_integrated.lean** | 90 | Q atoms integrated |
 | **Q_Lipschitz_integrated.lean** | 88 | Lipschitz integrated |
 | **Rayleigh_basis0.lean** | 85 | Rayleigh basis0 module |
-| **off_diag_exp_sum_bridge_v3.lean** | 83 | Off-diag v3 |
+| **Off_Diag_Exp_Sum_Bridge.lean** | 83 | Off-diag |
 | **A3_bridge_rayleigh_first.lean** | 76 | A3 Rayleigh-first |
-| **Q_nonneg_bridge_v2.lean** | 74 | Q ≥ 0 bridge v2 |
-| **A1_density_bridge_v2.lean** | 70 | A1 bridge v2 |
-| **A3_bridge_v2.lean** | 64 | A3 bridge v2 |
+| **Q_Nonneg_Bridge.lean** | 74 | Q >= 0 bridge |
+| **A1_Density_Bridge.lean** | 70 | A1 bridge |
+| **A3_Bridge_Simple.lean** | 64 | A3 bridge |
 | **S_K_small.lean** | 57 | S_K small bounds |
 | **off_diag_exp_sum_bridge.lean** | 53 | Off-diag bridge v1 |
 | **Rayleigh_basis0_of_A3.lean** | 31 | basis0 from A3 |
@@ -481,7 +481,7 @@ For audit convenience, here are the ones invoked explicitly:
 
 ### Lean Verification Status
 
-These inequalities are verified in `A3_FLOOR_v22_stage4_floor.lean` using:
+These inequalities are verified in `A3_Floor_Main.lean` using:
 - `norm_num` for rational arithmetic
 - `nlinarith` for polynomial inequalities
 - Explicit Taylor bounds for transcendental functions
@@ -604,9 +604,9 @@ a(ξ) ≥ −log ξ − 1/(2πξ) − 1/(12π²ξ²)
 | a_star_pos axiom | `Q3/Axioms.lean` | AX (Tier-1) | **(H4) A3** |
 | a_star_even axiom | `Q3/Axioms.lean` | AX (Tier-1) | **(H4) A3** |
 | a_star_continuous | `Q3/Axioms.lean` | AX (Tier-1) | **(H3) A2** |
-| A₀ computation | `A3_FLOOR_v22_stage4_floor.lean` | ✅ | **(H4) A3** |
-| Floor c* = 11/10 | `A3_FLOOR_v22_stage4_floor.lean` | ✅ PROVEN | **(H4) A3** |
-| Finite-sum bounds | `A3_FLOOR_v22_stage4_floor.lean` | ✅ | **(H4) A3** |
+| A0 computation | `A3_Floor_Main.lean` | ✅ | **(H4) A3** |
+| Floor c* = 11/10 | `A3_Floor_Main.lean` | ✅ PROVEN | **(H4) A3** |
+| Finite-sum bounds | `A3_Floor_Main.lean` | ✅ | **(H4) A3** |
 | L_A Lipschitz | `Q3/Proofs/Q_Lipschitz.lean` | ✅ THEOREM | **(H3) A2** |
 
 ### Why a(ξ) > 0
