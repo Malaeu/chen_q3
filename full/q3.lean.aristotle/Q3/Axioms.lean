@@ -30,9 +30,7 @@ open scoped Matrix.Norms.L2Operator
 namespace Q3
 
 /-!
-# ═══════════════════════════════════════════════════════════════════════════════
-# TIER-1: CLASSICAL AXIOMS FROM LITERATURE
-# ═══════════════════════════════════════════════════════════════════════════════
+## TIER-1: CLASSICAL AXIOMS FROM LITERATURE
 
 These are well-established theorems from peer-reviewed mathematics.
 Each is cited with publication details.
@@ -71,18 +69,26 @@ axiom a_star_pos : ∀ ξ : ℝ, a_star ξ > 0
 /-! ## Axiom T1.3b: Archimedean Kernel Continuity
 
 a*(ξ) is continuous (follows from digamma regularity away from poles).
+The digamma function ψ(s) is holomorphic for s ∉ {0, -1, -2, ...}.
+Since a*(ξ) = 2π(log π - Re(ψ(1/4 + iπξ))) and 1/4 + iπξ avoids poles,
+a* inherits continuity from ψ.
 
 **Citation:**
-- Titchmarsh, E.C. (1986) "The Theory of the Riemann Zeta-Function", Chapter IX.
+- Titchmarsh, E.C. (1986). "The Theory of the Riemann Zeta-Function", Chapter IX.
+- Abramowitz & Stegun (1964). "Handbook of Mathematical Functions", Section 6.3.
+- NIST DLMF (2024), Section 5.2: Digamma function properties.
 -/
 axiom a_star_continuous : Continuous a_star
 
 /-! ## Axiom T1.3c: Archimedean Kernel Bounded on Compacts
 
 a*(ξ) is bounded on any compact set (continuous function on compact → bounded).
+This is a standard consequence of the extreme value theorem:
+continuous real-valued function on a compact set attains its bounds.
 
 **Citation:**
-- Direct corollary of continuity and Heine-Borel.
+- Rudin, W. (1976). "Principles of Mathematical Analysis", Theorem 4.16.
+- Direct corollary of T1.3b (continuity) and Heine-Borel theorem.
 -/
 axiom a_star_bdd_on_compact : ∀ (K : ℝ) (hK : K > 0),
   ∃ M > 0, ∀ ξ ∈ Set.Icc (-K) K, a_star ξ ≤ M
@@ -162,6 +168,11 @@ axiom Schur_test {n : Type*} [Fintype n] [DecidableEq n] :
 /-! ## Axiom T1.6: Archimedean Constant Positivity
 
 c₀(K) = inf_{|ξ| ≤ K} a*(ξ) > 0 by continuity and T1.3.
+Since a*(ξ) > 0 for all ξ (T1.3) and continuous (T1.3b),
+the infimum over a compact set is attained and positive.
+
+**Citation:**
+- Follows from T1.3 (positivity), T1.3b (continuity), and extreme value theorem.
 -/
 
 /-- Archimedean constant: c₀(K) = inf_{|ξ| ≤ K} a*(ξ) -/
@@ -210,15 +221,18 @@ axiom c_star_le_c_arch : ∀ K : ℝ, K ≥ 1 → c_star ≤ c_arch K
 /-! ## Axiom T1.7: Eigenvalue-Norm Bound
 
 For symmetric matrices: |eigenvalue| ≤ operator norm.
+This is a standard result in spectral theory.
+
+**Citation:**
+- Horn, R.A. & Johnson, C.R. (2012). "Matrix Analysis", 2nd ed., Theorem 5.6.2.
+- Kato, T. (1995). "Perturbation Theory for Linear Operators", Chapter II.
 -/
 axiom eigenvalue_le_norm {n : Type*} [Fintype n] [DecidableEq n] :
   ∀ (A : Matrix n n ℝ) (μ : ℝ),
   (∃ v : n → ℝ, v ≠ 0 ∧ A.mulVec v = μ • v) → |μ| ≤ ‖A‖
 
 /-!
-# ═══════════════════════════════════════════════════════════════════════════════
-# TIER-2: Q3 PAPER AXIOMS (NEW CONTRIBUTIONS)
-# ═══════════════════════════════════════════════════════════════════════════════
+## TIER-2: Q3 PAPER AXIOMS (NEW CONTRIBUTIONS)
 
 These axioms represent the technical contributions of the Q3 paper.
 Each corresponds to a theorem proved in the paper.
@@ -502,9 +516,7 @@ axiom Q_nonneg_on_atoms_uniform :
   ∀ K ≥ 1, ∀ g ∈ AtomCone_K K, Q g ≥ 0
 
 /-!
-# ═══════════════════════════════════════════════════════════════════════════════
-# AXIOM VERIFICATION
-# ═══════════════════════════════════════════════════════════════════════════════
+## AXIOM VERIFICATION
 -/
 
 -- Tier-1 axioms (7 classical)
