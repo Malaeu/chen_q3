@@ -76,15 +76,15 @@ PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: 3)"
-echo "Project:       $PROJECT_COUNT (expected: 8)"
-echo "TOTAL:         $TOTAL (expected: 11)"
+echo "Project:       $PROJECT_COUNT (expected: 5)"
+echo "TOTAL:         $TOTAL (expected: 8)"
 echo ""
 
 # Step 4: Classification
 echo "═══ Step 4: Axiom Classification ═══"
 
 echo "Level 1 (Classical Literature):"
-echo "$AXIOMS" | grep -E "Weil_criterion|a_star_pos|a_star_bdd|a_star_continuous|a_star_even|Schur_test" | sed 's/^/  /' || echo "  (none found)"
+echo "$AXIOMS" | grep -E "Weil_criterion|digamma_one_fourth_neg|Schur_test" | sed 's/^/  /' || echo "  (none found)"
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
@@ -101,13 +101,10 @@ echo "═══ Step 5: Philosophy Verification ═══"
 
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion"
+    "Q3.digamma_one_fourth_neg"
     "Q3.Schur_test"
-    "Q3.a_star_pos"
-    "Q3.a_star_bdd_on_compact"
-    "Q3.a_star_continuous"
-    "Q3.a_star_even"
-    "Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom"
     "Q3.A1_density_WK_axiom"
+    "Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom"
 )
 
 UNKNOWN_AXIOMS=""
@@ -138,7 +135,7 @@ echo ""
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                    VERIFICATION PASSED ✓                      ║"
 echo "║                                                                ║"
-echo "║  Axiom count: $TOTAL (8 Project + 3 Standard)                  ║"
+echo "║  Axiom count: $TOTAL (5 Project + 3 Standard)                  ║"
 echo "║  Philosophy: Compliant                                         ║"
 echo "║  Ready to commit!                                              ║"
 echo "╚════════════════════════════════════════════════════════════════╝"
