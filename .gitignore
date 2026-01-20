@@ -48,3 +48,4 @@ full/q3.lean.aristotle/docs/cc_15_01_26.md
 *-output.lean
 output.lean
 sandboxes/
+.venv/

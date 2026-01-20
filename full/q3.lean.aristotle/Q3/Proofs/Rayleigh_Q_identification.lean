@@ -21,7 +21,7 @@ import Q3.Axioms
 import Q3.Proofs.Rayleigh_basis0
 import Q3.Proofs.Rayleigh_Fourier
 import Q3.Proofs.ShiftedWindows
-import Q3.Proofs.A3_FLOOR_v22_stage4_floor
+import Q3.Proofs.A3_Floor_Main
 
 set_option linter.mathlibStandardSet false
 

@@ -15,8 +15,8 @@ import Q3.Axioms  -- For Tier-1 axioms and Tier-2 fallbacks
 
 -- Import WORKING self-contained bridges (no namespace conflicts)
 import Q3.Proofs.node_spacing_bridge
-import Q3.Proofs.S_K_small_bridge_v2
-import Q3.Proofs.W_sum_finite_bridge_v2
+import Q3.Proofs.S_K_Small_Bridge
+import Q3.Proofs.W_Sum_Finite_Bridge
 
 -- NOTE: These bridges CONFLICT (they import standalone proofs that define
 -- xi_n, S_K, delta_K etc. in root namespace):

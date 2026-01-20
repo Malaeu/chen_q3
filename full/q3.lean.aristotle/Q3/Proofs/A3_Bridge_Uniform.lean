@@ -17,11 +17,11 @@ Main structure:
 5. Combine: λ_min(T_M - T_P) ≥ c* - c*/2 - c*/4 = c*/4
 
 This file shows the bridge structure. Full proof would require importing
-A3_FLOOR_v22_stage4_floor.lean.
+A3_Floor_Main.lean.
 -/
 
 import Q3.Axioms
-import Q3.Proofs.A3_FLOOR_v22_stage4_floor
+import Q3.Proofs.A3_Floor_Main
 
 set_option linter.mathlibStandardSet false
 
@@ -33,7 +33,7 @@ namespace Q3
 
 /-! ## Connection to A3_FLOOR
 
-The external file A3_FLOOR_v22_stage4_floor.lean proves:
+The external file A3_Floor_Main.lean proves:
   theorem P_A_ge_c_star : P_A B_min t_sym θ ≥ c_star
 
 where c_star = 11/10 is defined identically to Q3.c_star.
@@ -42,10 +42,10 @@ The periodized Archimedean symbol P_A(θ) is the symbol of the Toeplitz operator
 in the A3 bridge. The floor c* = 11/10 is the minimum over the torus T = [-1/2, 1/2].
 -/
 
-/-- A3_FLOOR theorem (imported from A3_FLOOR_v22_stage4_floor.lean).
+/-- A3_FLOOR theorem (imported from A3_Floor_Main.lean).
     min_{θ ∈ T} P_A(θ) ≥ 11/10 = c_star
 
-    Note: P_A and c_star here are from A3_FLOOR_v22 namespace, not Q3.
+    Note: P_A and c_star here are from A3_Floor_Main namespace, not Q3.
     Both c_star = 11/10, so the bound transfers. -/
 lemma A3_FLOOR_main {θ : ℝ} (hθ : θ ∈ Set.Icc (-1/2 : ℝ) (1/2)) :
     P_A B_min t_sym θ ≥ c_star :=
@@ -64,7 +64,7 @@ Proof sketch:
 theorem A3_bridge_from_floor : A3_bridge_data_uniform :=
   -- A3_bridge_uniform axiom provides exactly A3_bridge_data_uniform.
   -- The axiom is justified by combining:
-  -- 1. P_A(θ) ≥ c_star (A3_FLOOR theorem in A3_FLOOR_v22_stage4_floor.lean)
+  -- 1. P_A(θ) ≥ c_star (A3_FLOOR theorem in A3_Floor_Main.lean)
   -- 2. Szegő-Rayleigh: Toeplitz eigenvalues converge to symbol infimum
   -- 3. RKHS contraction: ||T_P|| ≤ ρ < 1 for appropriate t
   A3_bridge_uniform

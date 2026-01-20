@@ -18,14 +18,14 @@ Success criteria:
 
 import Q3.Basic.Defs  -- Only Mathlib, no axioms
 import Q3.Proofs.node_spacing_bridge  -- CLEAN: imports only Q3.Basic.Defs
-import Q3.Proofs.S_K_small_bridge_v2  -- CLEAN: imports only Q3.Basic.Defs
-import Q3.Proofs.W_sum_finite_bridge_v3  -- CLEAN: imports only Q3.Basic.Defs
-import Q3.Proofs.off_diag_exp_sum_bridge_v2  -- CLEAN: self-contained, uses Q3.Nodes
-import Q3.Proofs.RKHS_contraction_bridge_v2  -- CLEAN: self-contained, T_P matrix
-import Q3.Proofs.Q_Lipschitz_bridge_v2  -- CLEAN: self-contained
-import Q3.Proofs.A3_bridge_v2  -- CLEAN: self-contained
-import Q3.Proofs.Q_nonneg_bridge_v2  -- CLEAN: self-contained
-import Q3.Proofs.A1_density_bridge_v2  -- CLEAN: self-contained
+import Q3.Proofs.S_K_Small_Bridge  -- CLEAN: imports only Q3.Basic.Defs
+import Q3.Proofs.W_Sum_Finite_Bridge  -- CLEAN: imports only Q3.Basic.Defs
+import Q3.Proofs.Off_Diag_Exp_Sum_Bridge  -- CLEAN: self-contained, uses Q3.Nodes
+import Q3.Proofs.RKHS_Contraction_Bridge  -- CLEAN: self-contained, T_P matrix
+import Q3.Proofs.Q_Lipschitz_Bridge  -- CLEAN: self-contained
+import Q3.Proofs.A3_Bridge_Simple  -- CLEAN: self-contained
+import Q3.Proofs.Q_Nonneg_Bridge  -- CLEAN: self-contained
+import Q3.Proofs.A1_Density_Bridge  -- CLEAN: self-contained
 
 -- CRITICAL: We do NOT import Q3.Axioms!
 
@@ -55,7 +55,7 @@ theorem off_diag_exp_sum (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
     (i : Q3.Nodes K) :
     ∑ j : Q3.Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
       Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) ≤ Q3.S_K K t :=
-  Q3.Proofs.OffDiagExpSumBridgeV2.off_diag_exp_sum_Q3 K t hK ht i
+  Q3.Proofs.OffDiagBridgeV3.off_diag_exp_sum_Q3 K t hK ht i
 
 /-- RKHS Contraction (THEOREM from clean bridge v2) -/
 theorem RKHS_contraction (K : ℝ) (hK : K ≥ 1) :

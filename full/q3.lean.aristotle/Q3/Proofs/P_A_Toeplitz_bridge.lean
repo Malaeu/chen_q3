@@ -2,7 +2,7 @@
 P_A Toeplitz Bridge: Connect A3_FLOOR (P_A ≥ c*) with Rayleigh_Fourier
 
 This module bridges:
-- A3_FLOOR_v22_stage4_floor.P_A_ge_c_star : P_A(B_min, t_sym, θ) ≥ 11/10 for θ ∈ [-1/2, 1/2]
+- A3_Floor_Main.P_A_ge_c_star : P_A(B_min, t_sym, θ) ≥ 11/10 for θ ∈ [-1/2, 1/2]
 - Rayleigh_Fourier.rayleigh_lower_bound_real : RQ(ToeplitzFourier P) ≥ inf(P)
 
 Result: RQ(ToeplitzFourier P_A) ≥ c_star
@@ -15,7 +15,7 @@ import Q3.Proofs.Rayleigh_Fourier
 import Q3.Proofs.A3_bridge_rayleigh_first  -- t_rkhs_cap, one_le_t_rkhs_cap, c_star_div_four_le_sub_rho_one
 import Q3.Proofs.RKHS_cap_rayleigh         -- rkhs_cap_rayleigh_tcap
 import Q3.Proofs.Rayleigh_utils            -- RayleighQuotient_sub_ge
-import Q3.Proofs.A3_FLOOR_v22_stage4_floor
+import Q3.Proofs.A3_Floor_Main
 
 set_option linter.mathlibStandardSet false
 
@@ -32,7 +32,7 @@ open Q3.Proofs  -- access t_rkhs_cap, rkhs_cap_rayleigh_tcap, RayleighQuotient_s
 /- P_A is the periodized windowed archimedean symbol.
    P_A(B,t,θ) = 2π Σ_{m∈ℤ} g(B,t,θ+m) where g = a · w (Fejér×heat window).
 
-   Continuity is currently assumed in `A3_FLOOR_v22_stage4_floor` as
+   Continuity is currently assumed in `A3_Floor_Main` as
    `P_A_continuous`. -/
 
 /-- Bridge lemma: Apply Rayleigh lower bound to P_A.

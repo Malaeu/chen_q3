@@ -1,2 +1,2 @@
 -- Compatibility wrapper: moved into Q3.Proofs to avoid global name clashes.
-import Q3.Proofs.A3_FLOOR_v20_bounds_core
+import Q3.Proofs.A3_Floor_Bounds

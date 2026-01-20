@@ -27,6 +27,6 @@ import Q3.DigammaRemainder
 -- Proof modules (key bridges and theorems)
 import Q3.Proofs.Q_Lipschitz
 import Q3.Proofs.A1_density
-import Q3.Proofs.A3_FLOOR_v22_stage4_floor
+import Q3.Proofs.A3_Floor_Main
 import Q3.Proofs.RKHS_contraction
 import Q3.Proofs.Rayleigh_Fourier

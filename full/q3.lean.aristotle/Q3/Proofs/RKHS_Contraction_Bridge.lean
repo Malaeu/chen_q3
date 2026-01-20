@@ -19,8 +19,8 @@ The full bridge with matrix norm bounds uses sorry for technical parts.
 -/
 
 import Q3.Basic.Defs  -- ONLY Defs, no Axioms!
-import Q3.Proofs.S_K_small_bridge_v2  -- For S_K_small_Q3
-import Q3.Proofs.off_diag_exp_sum_bridge_v3  -- For off_diag_exp_sum_closed
+import Q3.Proofs.S_K_Small_Bridge  -- For S_K_small_Q3
+import Q3.Proofs.Off_Diag_Exp_Sum_Bridge  -- For off_diag_exp_sum_closed
 -- Note: We DON'T import Q3.Proofs.RKHS_contraction to avoid namespace conflict
 
 set_option linter.mathlibStandardSet false

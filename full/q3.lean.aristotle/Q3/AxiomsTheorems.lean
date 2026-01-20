@@ -15,8 +15,8 @@ import Q3.Axioms  -- For Tier-1 axioms and Tier-2 fallbacks
 
 -- Import WORKING self-contained bridges (no namespace conflicts)
 import Q3.Proofs.node_spacing_bridge
-import Q3.Proofs.S_K_small_bridge_v2
-import Q3.Proofs.W_sum_finite_bridge_v2
+import Q3.Proofs.S_K_Small_Bridge
+import Q3.Proofs.W_Sum_Finite_Bridge
 import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 import Q3.Proofs.A1_density   -- For A1_density_WK_thm (real proof!)
 import Q3.Proofs.HeatKernelParams
@@ -104,7 +104,7 @@ theorem S_K_small : ∀ (K t η : ℝ), K ≥ 1 → η > 0 → t ≤ Q3.t_min K 
 * **Status:** theorem (wired)
 -/
 theorem W_sum_finite : ∀ (K : ℝ) (hK : K > 0), ∃ B, Q3.W_sum_axiom K ≤ B :=
-  Q3.Proofs.W_sum_BridgeV2.W_sum_finite_Q3
+  Q3.Proofs.W_sum_BridgeV3.W_sum_finite_Q3
 
 /-! ## BLOCKED - Need self-contained bridges (1/9) -/
 

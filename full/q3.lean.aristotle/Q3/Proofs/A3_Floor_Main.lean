@@ -1,6 +1,6 @@
 import Mathlib
-import Q3.Proofs.A3_FLOOR_v20_bounds_core
-import Q3.Proofs.A3_FLOOR_v19_monotonicity
+import Q3.Proofs.A3_Floor_Bounds
+import Q3.Proofs.A3_Floor_Monotonicity
 
 open scoped BigOperators Real Classical
 open Real Set

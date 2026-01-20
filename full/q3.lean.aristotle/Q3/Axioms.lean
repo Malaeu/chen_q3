@@ -185,7 +185,7 @@ axiom c_arch_pos : ∀ K : ℝ, K > 0 → c_arch K > 0
 
 The paper was updated to use a UNIFORM floor c* = 11/10 instead of K-dependent c_arch(K).
 This is the global minimum of P_A(θ) over the entire torus T.
-Proven in A3_FLOOR_v22_stage4_floor.lean.
+Proven in A3_Floor_Main.lean.
 
 Benefits of uniform approach:
 - M₀ is K-independent (single threshold for all K)

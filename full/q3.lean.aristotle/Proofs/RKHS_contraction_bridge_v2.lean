@@ -19,7 +19,7 @@ The full bridge with matrix norm bounds uses sorry for technical parts.
 -/
 
 import Q3.Basic.Defs  -- ONLY Defs, no Axioms!
-import Q3.Proofs.S_K_small_bridge_v2  -- For S_K_small_Q3
+import Q3.Proofs.S_K_Small_Bridge  -- For S_K_small_Q3
 -- Note: We DON'T import Q3.Proofs.RKHS_contraction to avoid namespace conflict
 
 set_option linter.mathlibStandardSet false
