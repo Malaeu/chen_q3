@@ -19,6 +19,7 @@ New additions (2024-12):
 
 import Q3.Basic.Defs
 import Q3.Proofs.A_Star_Properties  -- For a_star_even_thm (proven via Mathlib Gamma_conj)
+import Q3.Proofs.Digamma_One_Fourth  -- For digamma_one_fourth_neg_thm (proven via Aristotle)
 
 set_option linter.mathlibStandardSet false
 set_option linter.unusedVariables false
@@ -77,8 +78,10 @@ Each term in the sum is positive, so ψ(1/4) < -γ < 0.
 **Citation:**
 - DLMF 5.4.14: https://dlmf.nist.gov/5.4.14
 - Abramowitz & Stegun (1964), Section 6.3.3
+
+**Status:** THEOREM (proven via Aristotle using reflection/duplication formulas)
 -/
-axiom digamma_one_fourth_neg : (digamma (1/4 : ℂ)).re < 0
+theorem digamma_one_fourth_neg : (digamma (1/4 : ℂ)).re < 0 := digamma_one_fourth_neg_thm
 
 /-! ## Theorem T1.3: Archimedean Kernel Positivity at Origin (PROVEN)
 

@@ -65,7 +65,7 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ## Axiom Classification
 
-Our formalization depends on exactly **5 axioms** (beyond Standard Lean):
+Our formalization depends on exactly **4 axioms** (beyond Standard Lean):
 
 ### Level 0: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
 ```
@@ -75,17 +75,17 @@ Quot.sound       — Quotient soundness
 ```
 These are part of Lean's foundation. Every Mathlib proof uses them.
 
-### Level 1: Classical Results from Literature (3) — ESTABLISHED MATHEMATICS
+### Level 1: Classical Results from Literature (2) — ESTABLISHED MATHEMATICS
 ```
 Weil_criterion        — Weil 1952: Q ≥ 0 on Weil cone ⟺ RH
-digamma_one_fourth_neg — Re(ψ(1/4)) < 0 (DLMF 5.4.14)
 Schur_test            — Schur test for operator norm bounds
 ```
 These are well-known results. Citations:
 - Weil, A. (1952). "Sur les 'formules explicites' de la théorie des nombres premiers"
-- DLMF 5.4.14: ψ(1/4) = -γ - π/2 - 3·ln(2) ≈ -4.227
 
-**Note:** `a_star_pos`, `a_star_bdd_on_compact`, `a_star_continuous`, `a_star_even` are now THEOREMS (proven from Mathlib).
+**Note:** The following are now THEOREMS (proven from Mathlib/Aristotle):
+- `digamma_one_fourth_neg` — Re(ψ(1/4)) < 0 (DLMF 5.4.14, proven via reflection formula)
+- `a_star_pos`, `a_star_bdd_on_compact`, `a_star_continuous`, `a_star_even`
 
 ### Level 2: Q3 Paper Contributions (2) — OUR MATHEMATICAL CONTENT
 ```
@@ -121,7 +121,6 @@ Expected output:
   Classical.choice,                     -- Standard Lean
   Quot.sound,                           -- Standard Lean
   Q3.Weil_criterion,                    -- Level 1: Weil 1952
-  Q3.digamma_one_fourth_neg,            -- Level 1: DLMF 5.4.14
   Q3.Schur_test,                        -- Level 1: Analysis
   Q3.A1_density_WK_axiom,               -- Level 2: Q3 paper
   Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom -- Level 2: Q3 paper
@@ -197,15 +196,15 @@ Our axioms can be eliminated one by one:
 
 | Axiom | How to Eliminate | Difficulty |
 |-------|------------------|------------|
-| `digamma_one_fourth_neg` | Numerical verification (ψ(1/4) ≈ -4.227) | Low |
 | `Schur_test` | Formalize from Mathlib Analysis.InnerProductSpace | Medium |
 | `Weil_criterion` | Major project (Weil explicit formula) | Very High |
 | `A1_density_WK_axiom` | Prove density via Fejér×heat approximation | Medium |
 | `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | Follows from A3 floor + RKHS contraction | Medium |
 
-Each elimination makes the proof stronger. Current state: **8 axioms total (3 standard + 5 project)**.
+Each elimination makes the proof stronger. Current state: **7 axioms total (3 standard + 4 project)**.
 
 **Recently closed (now theorems):**
+- `digamma_one_fourth_neg` — proven via Aristotle (reflection/duplication formulas)
 - `a_star_pos` — proven from `digamma_one_fourth_neg`
 - `a_star_bdd_on_compact` — proven via Mathlib continuity
 - `a_star_continuous` — proven via Mathlib

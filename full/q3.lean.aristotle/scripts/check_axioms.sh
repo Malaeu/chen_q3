@@ -76,8 +76,8 @@ PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: 3)"
-echo "Project:       $PROJECT_COUNT (expected: 5)"
-echo "TOTAL:         $TOTAL (expected: 8)"
+echo "Project:       $PROJECT_COUNT (expected: 4)"
+echo "TOTAL:         $TOTAL (expected: 7)"
 echo ""
 
 # Step 4: Classification
@@ -101,7 +101,6 @@ echo "═══ Step 5: Philosophy Verification ═══"
 
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion"
-    "Q3.digamma_one_fourth_neg"
     "Q3.Schur_test"
     "Q3.A1_density_WK_axiom"
     "Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom"
@@ -135,7 +134,7 @@ echo ""
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                    VERIFICATION PASSED ✓                      ║"
 echo "║                                                                ║"
-echo "║  Axiom count: $TOTAL (5 Project + 3 Standard)                  ║"
+echo "║  Axiom count: $TOTAL (4 Project + 3 Standard)                  ║"
 echo "║  Philosophy: Compliant                                         ║"
 echo "║  Ready to commit!                                              ║"
 echo "╚════════════════════════════════════════════════════════════════╝"
