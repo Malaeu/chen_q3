@@ -1,0 +1,7 @@
+{
+    "insight_id": "test_simple",
+    "status": "active",
+    "started_at": "2026-01-17T09:21:32Z",
+    "sandbox_path": "/tmp/research_swarm_sandboxes/test_simple",
+    "terminal": "Warp"
+}

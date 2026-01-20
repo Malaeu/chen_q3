@@ -27,7 +27,7 @@ set_option linter.mathlibStandardSet false
 
 open scoped BigOperators Real Classical ComplexConjugate
 
-set_option maxHeartbeats 0
+set_option maxHeartbeats 8000000
 
 noncomputable section
 

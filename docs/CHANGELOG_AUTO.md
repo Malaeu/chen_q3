@@ -738,3 +738,17 @@
 - 🔷 `sandboxes/measure_dom/full/q3.lean.aristotle/Q3/Atoms_Positive.lean` — 23:21
 - 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/T5_GridLift.lean` — 23:47
 - 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/T5_GridLift.lean` — 23:48
+- 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/T5_GridLift.lean` — 23:51
+- 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/T5_GridLift.lean` — 23:52
+- 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/T5_GridLift.lean` — 23:56
+- 🔷 `sandboxes/measure_dom/full/q3.lean.aristotle/Q3/Proofs/Q_nonneg_grid_bridge.lean` — 23:57
+- 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/T5_GridLift.lean` — 23:57
+- 🔷 `sandboxes/measure_dom/full/q3.lean.aristotle/Q3/Proofs/Q_nonneg_grid_bridge.lean` — 23:58
+
+## 2026-01-20
+
+- 🔷 `sandboxes/measure_dom/full/q3.lean.aristotle/Q3/Proofs/Q_nonneg_grid_bridge.lean` — 00:00
+- 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/T5_GridLift.lean` — 00:01
+- 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/T5_GridLift.lean` — 00:02
+- 🔷 `sandboxes/carleson/full/q3.lean.aristotle/Q3/Proofs/T5_GridLift.lean` — 00:03
+- 📄 `sandboxes/measure_dom/full/q3.lean.aristotle/docs/insights/two_scale_t_mismatch_2026_01_20.md` — 00:26
