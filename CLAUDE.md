@@ -92,15 +92,15 @@ See: `/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 
 ---
 
-## Current Axiom Count: 10
+## Current Axiom Count: 11
 
 ```
 Standard (3): propext, Classical.choice, Quot.sound
-Level 1 (4):  Weil_criterion, a_star_pos, a_star_bdd_on_compact, a_star_continuous
-Level 2 (3):  A1_density_WK_axiom, A3_bridge_axiom, Q_nonneg_on_atoms_of_A3_RKHS_axiom
+Level 1 (6):  Weil_criterion, a_star_pos, a_star_bdd_on_compact, a_star_continuous, a_star_even, Schur_test
+Level 2 (2):  A1_density_WK_axiom, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
 ```
 
-Note: arch/prime Lipschitz bridges CLOSED (was 12 → 11), RKHS contraction closed (11 → 10).
+Note: RKHS contraction closed, A3_bridge_axiom removed from chain (Fourier formulation).
 Target: Reduce Level 2 to 0 (or minimal classical results)
 
 ---
@@ -108,7 +108,7 @@ Target: Reduce Level 2 to 0 (or minimal classical results)
 ## Quick Commands
 
 ```bash
-cd /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle
+cd /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
 
 # Build
 lake build Q3.Main
@@ -164,7 +164,7 @@ websearch "вопрос"              # AI web search
 
 **Quick start:**
 ```bash
-source /Users/emalam/Documents/GitHub/chen_q3/.venv/bin/activate
+source /media/chirurgie/hdd01/Soft/GitHub/chen_q3/.venv/bin/activate
 aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
 ```
 
@@ -221,7 +221,7 @@ Options: (1) modify AtomCone_K, (2) use B + |τ| ≤ K, (3) add truncation.
 
 ## LaTeX Source Files (for Proshka)
 
-**Base path:** `/Users/emalam/Documents/GitHub/chen_q3/full/sections/`
+**Base path:** `/media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/sections/`
 
 | Module | File | Description |
 |--------|------|-------------|
@@ -249,4 +249,4 @@ Options: (1) modify AtomCone_K, (2) use B + |τ| ≤ K, (3) add truncation.
 
 ---
 
-*Last updated: 2026-01-14*
+*Last updated: 2026-01-20*

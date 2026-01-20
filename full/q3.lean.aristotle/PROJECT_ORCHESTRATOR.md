@@ -268,7 +268,7 @@ See `PHILOSOPHY_OF_PROOF.md` for the pitch.
 ## Build / Verify
 
 ```bash
-cd /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle
+cd /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
 lake build Q3.Main
 ```
 
