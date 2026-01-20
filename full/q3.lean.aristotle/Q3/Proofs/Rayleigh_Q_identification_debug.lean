@@ -21,18 +21,16 @@ import Q3.Axioms
 import Q3.Proofs.Rayleigh_basis0
 import Q3.Proofs.Rayleigh_Fourier
 import Q3.Proofs.ShiftedWindows
-import Q3.Proofs.A3_FLOOR_v22_stage4_floor
+import A3_FLOOR_v22_stage4_floor
 
 set_option linter.mathlibStandardSet false
 
 open scoped BigOperators Real Classical ComplexConjugate
-open MeasureTheory Set
 
--- PERFORMANCE FIX: integral_P_A_eq_arch_term requires extensive typeclass resolution
--- for interval integrals and HasSum. Using very high heartbeat limit.
--- Performance tuning: rewritten proofs to avoid expensive simpa unification
-set_option maxHeartbeats 8000000
-set_option synthInstance.maxHeartbeats 50000
+-- DEBUG VERSION: Adding traces to find hanging location
+set_option maxHeartbeats 400000
+
+#print "=== DEBUG: Starting file compilation ==="
 
 noncomputable section
 
@@ -77,6 +75,8 @@ lemma ToeplitzMatrix_Fourier_real_diag (M : ℕ) (P : ℝ → ℝ) (hP : Continu
       ∫ θ in (-1/2 : ℝ)..(1/2), P θ := by
   simp only [RayleighFourier.ToeplitzMatrix_Fourier_real]
   exact ToeplitzEntry_diag_re P hP (i0 M).val
+
+#print "=== TRACE 1: Toeplitz lemmas done ==="
 
 /-! ## T_P_comp Diagonal Lemmas -/
 
@@ -145,6 +145,8 @@ lemma T_P_comp_real_diag (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] (hM : 0 
   rw [one_div, ← Complex.ofReal_inv, ← Complex.ofReal_mul, Complex.ofReal_re]
   ring
 
+#print "=== TRACE 2: T_P_comp_real_diag done ==="
+
 /-! ## Periodization and Rayleigh-Q Identification -/
 
 /-! ### Compact support lemmas -/
@@ -166,20 +168,31 @@ lemma g_support (B t ξ : ℝ) (hB : 0 < B) (h : B < |ξ|) : g B t ξ = 0 := by
 
 lemma continuous_w (B t : ℝ) : Continuous (fun ξ => w B t ξ) := by
   unfold w
-  apply Continuous.mul
-  · exact continuous_const.max (continuous_const.sub (continuous_abs.div_const B))
-  · exact Real.continuous_exp.comp (continuous_const.mul (continuous_pow 2))
+  have h_lin : Continuous (fun ξ => 1 - |ξ| / B) := by
+    have h_abs : Continuous (fun ξ => |ξ|) := by simpa using (continuous_abs : Continuous fun ξ : ℝ => |ξ|)
+    have h_div : Continuous (fun ξ => |ξ| / B) := by
+      simpa [div_eq_mul_inv] using h_abs.mul continuous_const
+    exact continuous_const.sub h_div
+  have h_max : Continuous (fun ξ => max (0 : ℝ) (1 - |ξ| / B)) :=
+    (continuous_const).max h_lin
+  have h_pow : Continuous (fun ξ => ξ ^ 2) := continuous_pow 2
+  have h_poly : Continuous (fun ξ => (-4 * Real.pi ^ 2 * t) * (ξ ^ 2)) := continuous_const.mul h_pow
+  have h_exp : Continuous (fun ξ => Real.exp (-4 * Real.pi ^ 2 * t * ξ ^ 2)) := by
+    simpa [mul_assoc] using (Real.continuous_exp.comp h_poly)
+  exact h_max.mul h_exp
 
 lemma continuous_g (B t : ℝ) : Continuous (fun ξ => g B t ξ) := by
   unfold g
   have ha : Continuous (fun ξ => Q3.a ξ) := by
     have hpi : (2 * Real.pi) ≠ 0 := by nlinarith [Real.pi_pos]
-    have heq : ∀ ξ, Q3.a ξ = (1 / (2 * Real.pi)) * Q3.a_star ξ := by
-      intro ξ
-      simp only [Q3.a_star]
-      field_simp [hpi]
-    simp_rw [heq]
-    exact continuous_const.mul Q3.a_star_continuous
+    have h :
+        (fun ξ => Q3.a ξ) = fun ξ => (1 / (2 * Real.pi)) * Q3.a_star ξ := by
+      funext ξ
+      calc
+        (1 / (2 * Real.pi)) * Q3.a_star ξ
+            = (1 / (2 * Real.pi)) * (2 * Real.pi * Q3.a ξ) := by simp [Q3.a_star]
+        _ = Q3.a ξ := by field_simp [hpi]; ring
+    simpa [h] using (Q3.a_star_continuous.const_mul (1 / (2 * Real.pi)))
   exact ha.mul (continuous_w B t)
 
 /-- w equals fejer_heat_window (same definition). -/
@@ -250,6 +263,8 @@ lemma P_A_tsum_eq_finite_sum (B t θ : ℝ) (hB : 0 < B) (hθ : θ ∈ Set.Icc (
       exact this
   exact g_shift_zero_of_large_m B t θ m hB hθ h_large
 
+#print "=== TRACE 3: P_A_tsum_eq_finite_sum done ==="
+
 /-- Both sides of the periodization identity equal 2π · ∫ g.
     This lemma establishes the connection through definitional unfolding. -/
 lemma arch_term_eq_two_pi_integral_g (B t : ℝ) :
@@ -308,12 +323,13 @@ theorem integral_P_A_eq_arch_term (B t : ℝ) (hB : 0 < B) :
   have hab : (-1/2 : ℝ) ≤ (1/2 : ℝ) := by norm_num
   let s : Finset ℤ := Finset.Icc (-(⌈B⌉ + 1)) (⌈B⌉ + 1)
   have hsupp : Function.support (fun ξ => g B t ξ) ⊆ Set.Icc (-B) B := by
+    refine (Function.support_subset_iff'.2 ?_)
     intro ξ hξ
-    simp only [Function.mem_support, ne_eq] at hξ
-    rw [Set.mem_Icc, ← abs_le]
-    by_contra h_not_le
-    push_neg at h_not_le
-    exact hξ (g_support B t ξ hB h_not_le)
+    by_contra hle
+    have hle' : |ξ| ≤ B := le_of_not_gt hle
+    have : ξ ∈ Set.Icc (-B) B := by
+      exact (abs_le.mp hle')
+    exact hξ this
   have hcompact : HasCompactSupport (fun ξ => g B t ξ) := by
     exact HasCompactSupport.of_support_subset_isCompact isCompact_Icc hsupp
   have hint : Integrable (fun ξ => g B t ξ) := by
@@ -321,10 +337,10 @@ theorem integral_P_A_eq_arch_term (B t : ℝ) (hB : 0 < B) :
 
   have h_eq_tsum :
       EqOn (fun θ => ∑' m : ℤ, g B t (θ + m))
-        (fun θ => ∑ m ∈ s, g B t (θ + m)) (Set.uIcc (-1/2 : ℝ) (1/2 : ℝ)) := by
+        (fun θ => ∑ m ∈ s, g B t (θ + m)) ([[(-1/2 : ℝ), (1/2 : ℝ)]]) := by
     intro θ hθ
     have hθ' : θ ∈ Set.Icc (-1/2 : ℝ) (1/2 : ℝ) := by
-      rwa [Set.uIcc_of_le hab] at hθ
+      simpa [Set.uIcc_of_le hab] using hθ
     simpa [s] using P_A_tsum_eq_finite_sum B t θ hB hθ'
 
   have h_int_eq :
@@ -336,18 +352,19 @@ theorem integral_P_A_eq_arch_term (B t : ℝ) (hB : 0 < B) :
       ∫ θ in (-1/2 : ℝ)..(1/2), ∑ m ∈ s, g B t (θ + m) =
         ∑ m ∈ s, ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + m) := by
     refine intervalIntegral.integral_finset_sum ?_
-    intro m _
-    have hcont : Continuous (fun θ => g B t (θ + (m : ℝ))) :=
-      (continuous_g B t).comp (continuous_add_right (m : ℝ))
-    exact hcont.intervalIntegrable (-1/2 : ℝ) (1/2 : ℝ)
+    intro m hm
+    have hcont : Continuous (fun θ => g B t (θ + m)) := by
+      simpa [add_comm, add_left_comm, add_assoc] using
+        (continuous_g B t).comp (continuous_id.add continuous_const)
+    exact hcont.intervalIntegrable (μ:=volume) (-1/2 : ℝ) (1/2 : ℝ)
 
   have hsum_base :
       HasSum (fun n : ℤ =>
           ∫ x in (-1/2 : ℝ) + (n : ℝ)..(-1/2 : ℝ) + (n : ℝ) + 1, g B t x)
         (∫ x, g B t x) := by
-    have h := MeasureTheory.Integrable.hasSum_intervalIntegral (μ := volume)
-      (f := fun x => g B t x) (y := (-1/2 : ℝ)) hint
-    convert h using 2
+    simpa using
+      (MeasureTheory.Integrable.hasSum_intervalIntegral (μ:=volume)
+        (f:=fun x => g B t x) (y:=(-1/2 : ℝ)) hint)
 
   have hsum :
       HasSum (fun n : ℤ => ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + (n : ℝ)))
@@ -364,26 +381,23 @@ theorem integral_P_A_eq_arch_term (B t : ℝ) (hB : 0 < B) :
         ∑ n ∈ s, ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + (n : ℝ)) := by
     apply tsum_eq_sum
     intro n hn
-    -- n ∉ s means n < -(⌈B⌉ + 1) or n > ⌈B⌉ + 1
-    simp only [s, Finset.mem_Icc, not_and, not_le] at hn
+    simp only [Finset.mem_Icc, not_and, not_le] at hn
     have h_large : (⌈B⌉ : ℤ) + 1 < |n| := by
-      by_cases h : n ≤ -(⌈B⌉ + 1)
-      · have hn_neg : n < 0 := by
-          have hceil : 0 ≤ ⌈B⌉ := Int.ceil_nonneg (le_of_lt hB)
-          omega
-        rw [abs_of_neg hn_neg]
+      by_cases h : n < -(⌈B⌉ + 1)
+      · have hn_neg : n < 0 := by omega
+        simp [abs_of_neg hn_neg]
         omega
       · push_neg at h
-        have h2 : ⌈B⌉ + 1 < n := hn (le_of_lt h)
+        have := hn h
         have hn_nonneg : 0 ≤ n := by omega
-        rw [abs_of_nonneg hn_nonneg]
-        exact h2
+        simp [abs_of_nonneg hn_nonneg]
+        exact this
     have h_eq0 :
         EqOn (fun θ => g B t (θ + n)) (fun _ => (0 : ℝ))
-          (Set.uIcc (-1/2 : ℝ) (1/2 : ℝ)) := by
+          ([[(-1/2 : ℝ), (1/2 : ℝ)]]) := by
       intro θ hθ
       have hθ' : θ ∈ Set.Icc (-1/2 : ℝ) (1/2 : ℝ) := by
-        rwa [Set.uIcc_of_le hab] at hθ
+        simpa [Set.uIcc_of_le hab] using hθ
       simpa using g_shift_zero_of_large_m B t θ n hB hθ' h_large
     have h_integral_zero :
         ∫ θ in (-1/2 : ℝ)..(1/2), g B t (θ + n) =
@@ -408,10 +422,10 @@ theorem integral_P_A_eq_arch_term (B t : ℝ) (hB : 0 < B) :
   -- RHS simplification
   rw [arch_term_eq_two_pi_integral_g]
   -- LHS: expand P_A and use periodization
-  simp only [P_A]
-  rw [intervalIntegral.integral_const_mul, h_integral]
-  -- g = a * w by definition
-  simp only [g]
+  -- PERFORMANCE FIX: Use simp only instead of simp to avoid exponential unfolding
+  simp only [P_A, g, intervalIntegral.integral_const_mul, h_integral]
+
+#print "=== TRACE 4: integral_P_A_eq_arch_term done ==="
 
 /-- Arch side: Rayleigh quotient of Toeplitz[P_A] at basis0 = arch_term.
     This follows because RQ(A, basis0) = A[i0,i0] for unit-norm basis vector,
@@ -475,6 +489,8 @@ theorem rayleigh_Q_identification (B t K : ℝ) (M : ℕ)
     ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n) := by
   rw [arch_rayleigh_eq B t M hP hB, prime_rayleigh_eq K B t M hM]
 
+#print "=== TRACE 5: rayleigh_Q_identification done ==="
+
 /-! ## Bridge: Finite Sum → prime_term (tsum)
 
 For functions with compact support, prime_term (tsum over all n) equals
@@ -519,7 +535,7 @@ theorem prime_term_eq_nodes_of_support (Φ : ℝ → ℝ) (K : ℝ) [Fintype (Q3
   have htsum :
       (∑' n : ℕ, Q3.w_Q n * Φ (Q3.xi_n n)) =
         ∑' n : Q3.Nodes K, Q3.w_Q n * Φ (Q3.xi_n n) :=
-    (tsum_subtype_eq_of_support_subset hsupport).symm
+    tsum_subtype_eq_of_support_subset hsupport
   simpa [Q3.prime_term, tsum_fintype] using htsum
 
 /-- Key bridge: For Φ with support in [-B, B] and K ≥ B, the prime_term (tsum)
@@ -560,23 +576,22 @@ lemma T_P_comp_real_shift_diag (K B t tau : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)
       (1 / (2 * M + 1 : ℝ)) *
         ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n) := by
   simp only [Q3.T_P_comp_real_shift, Q3.T_P_comp_shift]
-  -- Factor out the norm squared of prime_vec at i0
+  simp only [← Complex.ofReal_mul]
   have h_factor : ∀ n : Q3.Nodes K,
       ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n)) : ℂ) *
         Q3.prime_vec M (Q3.xi_n n) (i0 M) * conj (Q3.prime_vec M (Q3.xi_n n) (i0 M)) =
       ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n)) : ℂ) * (1 / (2 * M + 1 : ℝ)) := by
     intro n
     rw [mul_assoc, prime_vec_i0_norm_sq M (Q3.xi_n n) hM]
-  -- Rewrite the sum using h_factor
   have h_sum_eq : (∑ n : Q3.Nodes K,
         ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n)) : ℂ) *
           Q3.prime_vec M (Q3.xi_n n) (i0 M) * conj (Q3.prime_vec M (Q3.xi_n n) (i0 M))) =
       ∑ n : Q3.Nodes K, ((Q3.w_Q n * Q3.phi_shift B t tau (Q3.xi_n n)) : ℂ) *
-        (1 / (2 * M + 1 : ℝ)) := Finset.sum_congr rfl (fun n _ => h_factor n)
-  rw [h_sum_eq]
-  -- Now simplify the sum with constant factor
-  rw [← Finset.sum_mul]
-  simp only [← Complex.ofReal_mul]
+        (1 / (2 * M + 1 : ℝ)) := by
+    congr 1
+    ext n
+    exact h_factor n
+  rw [h_sum_eq, ← Finset.sum_mul]
   rw [← Complex.ofReal_sum]
   rw [one_div, ← Complex.ofReal_inv, ← Complex.ofReal_mul, Complex.ofReal_re]
   ring
@@ -624,5 +639,7 @@ theorem rayleigh_Q_eq_Q_shift (B t tau K : ℝ) (M : ℕ)
   simp only [Q3.Q]
   congr 1
   exact (prime_term_eq_nodes_sum_shift B t tau K hB hK).symm
+
+#print "=== TRACE 6: ALL THEOREMS COMPLETE ==="
 
 end Q3.Proofs.RayleighQId

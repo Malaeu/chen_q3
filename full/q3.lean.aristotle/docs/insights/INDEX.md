@@ -24,6 +24,7 @@ Files:
 - heat_localization_kills_primes_2026_01_16.md
 - heat_parameter_mismatch_2026_01_14.md
 - key_constants_reference.md
+- lean_simpa_performance_fix_2026_01_19.md
 - localization_argument_full_analysis_2026_01_16.md
 - PERIODIZATION_BOTTLENECK_FIX.md
 - prime_term_nodes_bridge_2026_01_17.md

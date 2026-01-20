@@ -27,6 +27,7 @@
 
 ## Tooling / Checks
 
+- **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
 - check_axioms падает на A3_FLOOR: нужен предварительный build → `docs/insights/check_axioms_prebuild_a3_floor_2026_01_16.md`.
 - Semantic search workflow (q3search/websearch):
   1) сначала q3search (3-5 запросов, до ~75% уверенности), 2) потом websearch,
