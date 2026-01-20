@@ -297,34 +297,35 @@ def C_even_nonneg (K : ℝ) : Set (ℝ → ℝ) :=
         (∀ x, f x = f (-x)) ∧
         (∀ x ∈ Set.Icc (-K) K, 0 ≤ f x) }
 
-/-! ## Axiom T2.1: A1' Density (Q3 Paper Section 4)
+/-- **[A1' Density]** Fejér-heat atoms are dense in `W_K` (sup-norm).
 
-Fejér×heat atoms are dense in W_K (with proper support control).
-The approximant g is in AtomCone_K, hence also in W_K.
+For any `Φ ∈ W_K` and `ε > 0`, exists `g ∈ AtomCone_K_fixed K t₀` with
+`sup |Φ - g| < ε`.
 
-**PARTIAL ARISTOTLE RESULT**: See `aristotle_output/A1_density_v2_aristotle.lean`
-Aristotle proved helper lemmas:
-- `HeatKernel_integral` - heat kernel integrates to 1
-- `HeatKernel_mass_concentration` - mass concentrates as t → 0
-Main theorem incomplete (approximation theory complexity).
+* **Q3:** `a1:thm:A1-local-density`
+* **TeX:** `sections/A1prime.tex`, Theorem A1'
+* **Status:** axiom (partial Aristotle proof: heat kernel lemmas done)
+
+See also: `lem:a1-fixed-t-density` for fixed-t₀ variant.
 -/
 axiom A1_density_WK_axiom : ∀ (K : ℝ) (hK : K > 0) (t0 : ℝ) (ht0 : t0 > 0),
   ∀ Φ ∈ W_K K, ∀ ε > 0,
     ∃ g ∈ AtomCone_K_fixed K t0,  -- fixed-t cone ⊆ W_K
       sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε
 
-/-- Legacy A1 density (for compatibility) -/
+/-- **[A1' Legacy]** ~~Legacy A1 density (deprecated).~~
+
+**DEPRECATED:** Use `A1_density_WK_axiom` instead.
+
+* **Q3:** `thm:A1-density`
+* **TeX:** `sections/A1prime.tex`
+* **Status:** deprecated (superseded by fixed-t₀ version)
+-/
 axiom A1_density_axiom : ∀ (K : ℝ) (hK : K > 0),
   ∀ f ∈ C_even_nonneg K, ∀ ε > 0,
     ∃ g ∈ Fejer_heat_cone K, ∀ x ∈ Set.Icc (-K) K, |f x - g x| < ε
 
-/-! ## Axiom T2.2a: W_sum Finiteness (A2 Helper)
-
-The sum of weights over active nodes is finite.
-This is used in A2 Lipschitz to bound the prime_term difference.
-
-**STATUS:** axiom here; see `Q3.AxiomsTheorems` for proven bridge.
--/
+/-! ## A2 Helpers -/
 
 /-- Active prime nodes set (for axiom) -/
 def ActiveNodes_axiom (K : ℝ) : Set ℕ := {n | |xi_n n| ≤ K ∧ n ≥ 2}
@@ -333,24 +334,35 @@ def ActiveNodes_axiom (K : ℝ) : Set ℕ := {n | |xi_n n| ≤ K ∧ n ≥ 2}
 noncomputable def W_sum_axiom (K : ℝ) : ℝ :=
   ∑' n, if n ∈ ActiveNodes_axiom K then w_Q n else 0
 
+/-- **[A2 Local Finite]** Prime weight sum is finite on compacts.
+
+The sum `∑_{ξ_n ∈ [-K,K]} w(n)` is bounded.
+
+* **Q3:** `lem:Q-local-finite`
+* **TeX:** `sections/A2.tex`, Lemma (local finiteness)
+* **Status:** wired → `W_sum_BridgeV2.W_sum_finite_Q3`
+-/
 axiom W_sum_finite_axiom : ∀ (K : ℝ) (hK : K > 0), ∃ B, W_sum_axiom K ≤ B
 
-/-! ## Axiom T2.2: A2 Lipschitz (Q3 Paper Section 5)
+/-- **[A2 Lipschitz]** `Q` is Lipschitz continuous on `W_K`.
 
-Q is Lipschitz on W_K with constant L_Q(K).
-This is essential for T5 transfer: Lipschitz + dense approximation → limit preservation.
+`|Q(Φ₁) - Q(Φ₂)| ≤ L_Q(K) · ‖Φ₁ - Φ₂‖_∞` for `Φ₁, Φ₂ ∈ W_K`.
 
-**STATUS:** axiom here; see `Q3.AxiomsTheorems` for proven bridge status.
+* **Q3:** `cor:A2-Lip`
+* **TeX:** `sections/A2.tex`, Corollary (Lipschitz on compact)
+* **Status:** wired → `Q3.Proofs.Q_Lipschitz_on_W_K_thm`
 -/
 axiom Q_Lipschitz_on_W_K : ∀ (K : ℝ) (hK : K > 0),
   ∃ L > 0, ∀ Φ₁, Φ₁ ∈ W_K K → ∀ Φ₂, Φ₂ ∈ W_K K →
     |Q Φ₁ - Q Φ₂| ≤ L * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K}
 
-/-! ## Axiom T2.3: RKHS Contraction (Q3 Paper Section 6)
+/-- **[RKHS Contraction]** Prime operator `T_P` is strictly contractive.
 
-The prime sampling operator T_P has ‖T_P‖ < 1 for appropriate t.
+`‖T_P‖ ≤ ρ < 1` for appropriate heat parameter `t`.
 
-**STATUS:** axiom here; bridge pending in `Q3.AxiomsTheorems`.
+* **Q3:** `rkhs:thm:rkhs-contraction`
+* **TeX:** `sections/RKHS/main.tex`, Theorem (strict contraction)
+* **Status:** wired → `Bridge.RKHS_contraction_data_of_bridge`
 -/
 axiom RKHS_contraction_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
   ∃ t > 0, ∃ ρ : ℝ, ρ < 1 ∧
@@ -360,11 +372,13 @@ axiom RKHS_contraction_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
         Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))
       ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ
 
-/-! ## Axiom T2.4: Row Sum Bound (Q3 RKHS Analysis)
+/-- **[RKHS Row Sum]** Gershgorin row sum bound for `T_P`.
 
-Gershgorin-style row sum bound for T_P matrix.
+`∑_j |T_P[i,j]| ≤ w_max + √w_max · S_K(t)`
 
-**STATUS:** axiom here; see `Q3.AxiomsTheorems` for proven bridge status.
+* **Q3:** `prop:rkhs-gram-cap`
+* **TeX:** `sections/RKHS/prime_cap.tex`, Proposition (RKHS cap via Gram)
+* **Status:** axiom
 -/
 axiom T_P_row_sum_bound_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0),
   ∀ (Nodes_K : Set ℕ) [Fintype Nodes_K] (T_P : Matrix Nodes_K Nodes_K ℝ),
@@ -372,41 +386,51 @@ axiom T_P_row_sum_bound_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0),
     Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))) →
   ∀ i, ∑ j, |T_P i j| ≤ w_max + Real.sqrt w_max * S_K K t
 
-/-! ## Axiom T2.5: Geometric Series Decay (Q3 RKHS Analysis)
+/-- **[RKHS S_K]** Off-diagonal geometric series bound.
 
-S_K = 2x/(1-x) where x = exp(-δ²/(4t)) is a geometric series tail bound.
+`S_K(t) = 2x/(1-x)` where `x = exp(-δ²/(4t))`, so `S_K(t) ≤ η` for `t ≤ t_min`.
 
-**STATUS:** axiom here; see `Q3.AxiomsTheorems` for proven bridge.
+* **Q3:** `lem:rkhs-gram-off`
+* **TeX:** `sections/RKHS/prime_cap.tex`, Lemma (off-diagonal sum bound)
+* **Status:** wired → `S_K_SmallBridgeV2.S_K_small_Q3`
 -/
 axiom S_K_small_axiom : ∀ (K t η : ℝ) (hK : K ≥ 1) (hη : η > 0) (ht : t ≤ t_min K η),
   S_K K t ≤ η
 
-/-! ## Axiom T2.5b: Node Spacing (Q3 RKHS Analysis)
+/-- **[RKHS Node Gap]** Adjacent spectral nodes separated by `δ_K`.
 
-Adjacent spectral nodes are separated by at least δ_K.
+`ξ_{n₂} - ξ_{n₁} ≥ δ_K` for adjacent nodes in `[-K, K]`.
 
-**STATUS:** axiom here; see `Q3.AxiomsTheorems` for proven bridge.
+* **Q3:** `rkhs:lem:node_gap_lower_bound`
+* **TeX:** `sections/RKHS/main.tex`, Lemma (node gap on compacts)
+* **Status:** wired → `NodeSpacingBridge.node_spacing_Q3`
 -/
 axiom node_spacing_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
   ∀ (n₁ n₂ : ℕ), n₁ ∈ Nodes K → n₂ ∈ Nodes K → n₁ < n₂ →
     xi_n n₂ - xi_n n₁ ≥ delta_K K
 
-/-! ## Axiom T2.5c: Off-Diagonal Exponential Sum Bound (Q3 RKHS Analysis)
+/-- **[RKHS Off-Diag]** Off-diagonal Gaussian sum bounded by `S_K`.
 
-The off-diagonal sum of Gaussian terms is bounded by the geometric series S_K.
+`∑_{j≠i} exp(-(ξᵢ-ξⱼ)²/(4t)) ≤ S_K(t)`
 
-**STATUS:** axiom here; bridge pending in `Q3.AxiomsTheorems`.
+* **Q3:** `lem:rkhs-gram-off`
+* **TeX:** `sections/RKHS/prime_cap.tex`, Lemma (off-diagonal sum)
+* **Status:** axiom
 -/
 axiom off_diag_exp_sum_axiom : ∀ (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
     [Fintype (Nodes K)] (i : Nodes K),
     ∑ j : Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
       Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)) else 0) ≤ S_K K t
 
-/-! ## Axiom T2.6: A3 Bridge (Q3 Paper Section 7)
+/-- **[A3 Bridge]** ~~K-dependent Toeplitz-symbol bridge (deprecated).~~
 
-Toeplitz-Symbol bridge: λ_min(T_M[P_A] - T_P) ≥ c₀(K)/4.
+**DEPRECATED:** Use `A3_bridge_uniform` instead.
 
-**STATUS:** axiom here; bridge pending in `Q3.AxiomsTheorems`.
+`λ_min(T_M[P_A] - T_P) ≥ c_arch(K)/4` for `M ≥ M₀(K)`.
+
+* **Q3:** `thm:A3` (old K-dependent formulation)
+* **TeX:** `sections/A3/main.tex`
+* **Status:** deprecated (superseded by uniform version)
 -/
 axiom A3_bridge_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
   ∃ M₀ : ℕ, ∃ t > 0, ∀ M ≥ M₀,
@@ -416,15 +440,15 @@ axiom A3_bridge_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
       Real.exp (-(xi_n i - xi_n j)^2 / (4 * t)))) /
     (∑ i, v i ^ 2) ≥ c_arch K / 4
 
-/-! ## Axiom T2.6b: A3 Bridge Uniform (December 2025 paper update)
+/-- **[A3 Uniform]** K-independent Toeplitz-symbol bridge.
 
-K-INDEPENDENT version of A3 bridge using uniform floor c* = 11/10.
-This is the new primary formulation; the K-dependent version above is deprecated.
+`λ_min(T_M[P_A] - T_P) ≥ c*/4` for `M ≥ M₀` (uniform threshold).
 
-Key changes from K-dependent:
-- Uses c_star instead of c_arch K
-- M₀ and t are uniform (K-independent)
-- Directly follows from A3_FLOOR (P_A(θ) ≥ 11/10 for all θ)
+Key: uses `c* = 11/10` instead of K-dependent `c_arch(K)`.
+
+* **Q3:** `thm:A3`
+* **TeX:** `sections/A3/main.tex`, Theorem A3 (uniform)
+* **Status:** axiom (December 2025 primary formulation)
 -/
 axiom A3_bridge_uniform :
   ∃ M₀ : ℕ, ∃ t > 0, ∀ M ≥ M₀,
@@ -503,14 +527,25 @@ def RKHS_contraction_data_uniform : Prop :=
         Real.exp (-(xi_n i - xi_n j)^2 / (4 * t))
       ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ
 
-/-- Core positivity transfer from the A3 bridge + RKHS contraction to atom cone positivity.
-    This is the remaining hard analytic step (Q3 paper core). (DEPRECATED - use uniform version) -/
+/-- **[Main Positivity K-dep]** ~~Q ≥ 0 on atom cone (K-dependent, deprecated).~~
+
+**DEPRECATED:** Use `Q_nonneg_on_atoms_uniform` instead.
+
+* **Q3:** `thm:Main-positivity` (old formulation)
+* **Status:** deprecated
+-/
 axiom Q_nonneg_on_atoms_of_A3_RKHS_axiom : ∀ (K : ℝ) (hK : K ≥ 1),
   A3_bridge_data K → RKHS_contraction_data K →
   ∀ g ∈ AtomCone_K K, Q g ≥ 0
 
-/-- Uniform version: A3_bridge_uniform + RKHS_contraction_uniform ⟹ Q ≥ 0 on atoms.
-    December 2025 paper update - the primary formulation. -/
+/-- **[Main Positivity]** `Q(g) ≥ 0` on atom cone (uniform version).
+
+A3_bridge_uniform + RKHS_contraction_uniform ⟹ Q ≥ 0 on atoms.
+
+* **Q3:** `thm:Main-positivity`
+* **TeX:** `sections/Main_closure.tex`, Main positivity theorem
+* **Status:** axiom (core result, December 2025 primary formulation)
+-/
 axiom Q_nonneg_on_atoms_uniform :
   A3_bridge_data_uniform → RKHS_contraction_data_uniform →
   ∀ K ≥ 1, ∀ g ∈ AtomCone_K K, Q g ≥ 0

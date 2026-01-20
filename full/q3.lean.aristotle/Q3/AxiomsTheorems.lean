@@ -80,24 +80,39 @@ Note: "PROVEN" = actual theorem proof wired into main chain.
 
 /-! ## PROVEN THEOREMS (4/9) - Self-contained bridges + real proofs -/
 
-/-- Node spacing (THEOREM via bridge) -/
+/-- **[RKHS Node Gap]** Adjacent nodes separated by `δ_K`.
+
+* **Q3:** `rkhs:lem:node_gap_lower_bound`
+* **Status:** theorem (wired)
+-/
 theorem node_spacing : ∀ (K : ℝ) (hK : K ≥ 1),
     ∀ (n₁ n₂ : ℕ), n₁ ∈ Q3.Nodes K → n₂ ∈ Q3.Nodes K → n₁ < n₂ →
       Q3.xi_n n₂ - Q3.xi_n n₁ ≥ Q3.delta_K K :=
   Q3.Proofs.NodeSpacingBridge.node_spacing_Q3
 
-/-- S_K small for small t (THEOREM via self-contained bridge v2) -/
+/-- **[RKHS S_K]** Off-diagonal geometric series bound.
+
+* **Q3:** `lem:rkhs-gram-off`
+* **Status:** theorem (wired)
+-/
 theorem S_K_small : ∀ (K t η : ℝ), K ≥ 1 → η > 0 → t ≤ Q3.t_min K η → Q3.S_K K t ≤ η :=
   Q3.Proofs.S_K_SmallBridgeV2.S_K_small_Q3
 
-/-- W_sum finiteness (THEOREM via self-contained bridge v2) -/
+/-- **[A2 Local Finite]** Prime weight sum is finite on compacts.
+
+* **Q3:** `lem:Q-local-finite`
+* **Status:** theorem (wired)
+-/
 theorem W_sum_finite : ∀ (K : ℝ) (hK : K > 0), ∃ B, Q3.W_sum_axiom K ≤ B :=
   Q3.Proofs.W_sum_BridgeV2.W_sum_finite_Q3
 
 /-! ## BLOCKED - Need self-contained bridges (1/9) -/
 
-/-- Off-diagonal exponential sum bound
-    STATUS: CLOSED via bridge_v3 -/
+/-- **[RKHS Off-Diag]** Off-diagonal Gaussian sum bounded by `S_K`.
+
+* **Q3:** `lem:rkhs-gram-off`
+* **Status:** axiom fallback
+-/
 theorem off_diag_exp_sum (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
     [Fintype (Q3.Nodes K)] (i : Q3.Nodes K) :
     ∑ j : Q3.Nodes K, (if (j : ℕ) ≠ (i : ℕ) then
@@ -106,8 +121,11 @@ theorem off_diag_exp_sum (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
 
 /-! ## AXIOM FALLBACK (5/9) - Pending complex bridges -/
 
-/-- A1' Density: Fejér×heat atoms dense in W_K
-    STATUS: PROVEN via Q3/Proofs/A1_density.lean. -/
+/-- **[A1' Density]** Fejér-heat atoms dense in `W_K`.
+
+* **Q3:** `a1:thm:A1-local-density`
+* **Status:** axiom fallback (theorem exists but wiring gap)
+-/
 theorem A1_density_WK : ∀ (K : ℝ) (hK : K > 0) (t0 : ℝ) (ht0 : t0 > 0),
     ∀ Φ ∈ Q3.W_K K, ∀ ε > 0,
       ∃ g ∈ Q3.AtomCone_K_fixed K t0,
@@ -116,47 +134,64 @@ by
   intro K hK t0 ht0 Φ hΦ ε hε
   exact Q3.A1_density_WK_axiom K hK t0 ht0 Φ hΦ ε hε
 
-/-- Q is Lipschitz on W_K
-    STATUS: PROVEN via Q_Lipschitz.lean (uses arch/prime bridge axioms) -/
+/-- **[A2 Lipschitz]** `Q` is Lipschitz continuous on `W_K`.
+
+* **Q3:** `cor:A2-Lip`
+* **Status:** theorem (wired)
+-/
 theorem Q_Lipschitz : ∀ (K : ℝ) (hK : K > 0),
     ∃ L > 0, ∀ Φ₁ ∈ Q3.W_K K, ∀ Φ₂ ∈ Q3.W_K K,
       |Q3.Q Φ₁ - Q3.Q Φ₂| ≤ L * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K} :=
-  Q3.Proofs.Q_Lipschitz_on_W_K_thm  -- Real theorem!
+  Q3.Proofs.Q_Lipschitz_on_W_K_thm
 
-/-- RKHS contraction
-    STATUS: PROVEN via Bridge.RKHS_contraction_data_of_bridge -/
+/-- **[RKHS Contraction]** Prime operator `T_P` is strictly contractive.
+
+* **Q3:** `rkhs:thm:rkhs-contraction`
+* **Status:** theorem (wired)
+-/
 theorem RKHS_contraction : ∀ (K : ℝ) (hK : K ≥ 1), Q3.RKHS_contraction_data K :=
   Q3.Bridge.RKHS_contraction_data_of_bridge
 
-/-- A3 bridge
-    STATUS: Needs bridge (Laurent polynomial → matrix Rayleigh quotient) -/
-theorem A3_bridge : ∀ (K : ℝ) (hK : K ≥ 1), Q3.A3_bridge_data K :=
-  Q3.A3_bridge_axiom  -- Axiom fallback
+/-- **[A3 Bridge]** ~~K-dependent Toeplitz bridge (deprecated).~~
 
-/-- A3 bridge (Rayleigh-first, compression) — DEPRECATED sampling Toeplitz version
-    STATUS: Axiom fallback (old formulation with sampling Toeplitz, a_star).
-    Use A3_bridge_rayleigh_Fourier instead. -/
+* **Q3:** `thm:A3` (old)
+* **Status:** axiom fallback
+-/
+theorem A3_bridge : ∀ (K : ℝ) (hK : K ≥ 1), Q3.A3_bridge_data K :=
+  Q3.A3_bridge_axiom
+
+/-- **[A3 Rayleigh]** ~~Sampling Toeplitz variant (deprecated).~~
+
+* **Q3:** `thm:a3-rayleigh-identification` (old)
+* **Status:** axiom fallback (use A3_bridge_rayleigh_Fourier)
+-/
 theorem A3_bridge_rayleigh (K : ℝ) : Q3.A3_bridge_data_rayleigh K := by
   intro hK _inst
   simpa using (Q3.A3_bridge_rayleigh_axiom K hK)
 
-/-- A3 bridge (Rayleigh-first, Fourier Toeplitz) — CORRECT formulation
-    Uses Fourier Toeplitz with P_A symbol (periodized windowed archimedean).
-    This is the mathematically correct formulation per Proshka Analysis.
-    STATUS: Proven via P_A_Toeplitz_bridge (requires weight_sum bound and K > 0). -/
+/-- **[A3 Fourier]** Fourier Toeplitz with `P_A` symbol (correct formulation).
+
+* **Q3:** `thm:a3-rayleigh-identification`
+* **TeX:** `sections/A3/rayleigh_bridge.tex`
+* **Status:** theorem (proven via P_A_Toeplitz_bridge)
+-/
 theorem A3_bridge_rayleigh_Fourier (K : ℝ) (hK : K > 0) :
     Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K := by
   apply Q3.Proofs.P_A_Bridge.A3_bridge_rayleigh_from_weight_sum_P_A K
   intro _inst
   exact Q3.Proofs.weight_sum_le_rho_one K K hK
 
-/-- Q ≥ 0 on atoms
-    STATUS: Fourier A3 + RKHS => atoms positivity (theorem wrapper). -/
+/-- **[Main Positivity]** `Q(g) ≥ 0` on atom cone.
+
+* **Q3:** `thm:Main-positivity`
+* **TeX:** `sections/Main_closure.tex`
+* **Status:** axiom fallback (Fourier A3 + RKHS wrapper)
+-/
 theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1),
     Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K →
     Q3.RKHS_contraction_data K →
     ∀ g ∈ Q3.AtomCone_K_fixed K Q3.t0_A1, Q3.Q g ≥ 0 :=
-  Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS  -- Wrapper (Fourier variant)
+  Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS
 
 end Q3.Theorems
 
