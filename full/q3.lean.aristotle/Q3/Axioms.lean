@@ -18,6 +18,7 @@ New additions (2024-12):
 -/
 
 import Q3.Basic.Defs
+import Q3.Proofs.A_Star_Properties  -- For a_star_even_thm (proven via Mathlib Gamma_conj)
 
 set_option linter.mathlibStandardSet false
 set_option linter.unusedVariables false
@@ -93,7 +94,7 @@ continuous real-valued function on a compact set attains its bounds.
 axiom a_star_bdd_on_compact : ∀ (K : ℝ) (hK : K > 0),
   ∃ M > 0, ∀ ξ ∈ Set.Icc (-K) K, a_star ξ ≤ M
 
-/-! ## Axiom T1.3d: Archimedean Kernel Even Symmetry
+/-! ## Theorem T1.3d: Archimedean Kernel Even Symmetry (PROVEN)
 
 a*(−ξ) = a*(ξ) because ψ(z̄) = ψ(z)̄ for the digamma function.
 For z = 1/4 + iπξ, the conjugate is 1/4 - iπξ = 1/4 + iπ(−ξ).
@@ -101,8 +102,10 @@ For z = 1/4 + iπξ, the conjugate is 1/4 - iπξ = 1/4 + iπ(−ξ).
 **Citation:**
 - Abramowitz & Stegun (1964). "Handbook of Mathematical Functions", Section 6.3.
 - NIST DLMF (2024), Section 5.5: ψ(z̄) = ψ(z)̄.
+
+**Status:** THEOREM (proven via Mathlib Complex.Gamma_conj)
 -/
-axiom a_star_even : ∀ ξ : ℝ, a_star (-ξ) = a_star ξ
+theorem a_star_even : ∀ ξ : ℝ, a_star (-ξ) = a_star ξ := a_star_even_thm
 
 /-! ## Axiom T1.4: Szegő-Böttcher Theory (1958/1999)
 

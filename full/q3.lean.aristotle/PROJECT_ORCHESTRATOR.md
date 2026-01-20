@@ -51,12 +51,16 @@ echo 'import Q3.Main
 Result: **10 axioms** (7 project + 3 standard)
 Note: 12 → 11 (closed arch/prime Lipschitz), 11 → 10 (closed RKHS contraction bridge),
 10 → 9 (closed A1_density via theorem wiring), 9 → 10 (A3 Fourier axiom in chain),
-10 → 11 (P_A_continuous in chain), 11 → 10 (P_A_continuous closed).
+10 → 11 (P_A_continuous in chain), 11 → 10 (P_A_continuous closed),
+10 → 10 (a_star_even closed via Mathlib Gamma_conj, replaced in Axioms.lean).
 
 - Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - External/classical: `Weil_criterion`, `a_star_pos`, `a_star_bdd_on_compact`,
-  `a_star_continuous`, `a_star_even`, `Schur_test`
+  `a_star_continuous`, `Schur_test`
 - Q3 paper (closable): `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+
+Note: `a_star_even` was closed 2026-01-20 using Mathlib `Complex.Gamma_conj`.
+Proof in `Q3/Proofs/A_Star_Properties.lean`.
 
 ## Critical Chain (ASCII)
 

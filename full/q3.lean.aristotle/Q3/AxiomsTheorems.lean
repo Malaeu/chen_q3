@@ -24,6 +24,7 @@ import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
 import Q3.Proofs.P_A_Toeplitz_bridge  -- Fourier Toeplitz with P_A (correct formulation)
 import Q3.Proofs.Q_nonneg_on_atoms_fourier_axiom
 import Q3.Proofs.Schur_Test  -- For Schur_test_proof (Mathlib-based)
+import Q3.Proofs.A_Star_Properties  -- For a_star_even_thm (Mathlib Gamma_conj)
 
 -- NOTE: These bridges CONFLICT (they import standalone proofs that define
 -- xi_n, S_K, delta_K etc. in root namespace):
@@ -61,6 +62,16 @@ These are re-exported from Q3.Axioms
 #check Q3.Schur_test
 #check Q3.c_arch_pos
 #check Q3.eigenvalue_le_norm
+
+/-! ## Tier-1 Theorems: a_star properties (from Mathlib Gamma) -/
+
+/-- **[T1.3d]** a_star is even: a*(-ξ) = a*(ξ)
+
+* **Citation:** DLMF 5.5, Abramowitz & Stegun 6.3
+* **Status:** theorem (wired via Mathlib Gamma_conj)
+-/
+theorem a_star_even : ∀ ξ : ℝ, Q3.a_star (-ξ) = Q3.a_star ξ :=
+  Q3.a_star_even_thm
 
 /-!
 # TIER-2: Q3 PAPER CONTRIBUTIONS

@@ -7,6 +7,7 @@ Files:
 - a3_bridge_math_rkhs_bound.md
 - a3_fourier_atoms_axiom_2026_01_16.md
 - a3_symbol_mismatch_reverse_engineering.md
+- a_star_even_closure_2026_01_20.md
 - a_star_vs_p_a_dossier.md
 - aristotle_error_recovery.md
 - aristotle_strategy_pure_informal.md
