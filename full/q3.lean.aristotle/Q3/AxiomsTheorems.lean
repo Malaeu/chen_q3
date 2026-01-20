@@ -64,13 +64,18 @@ These are re-exported from Q3.Axioms
 /-!
 # TIER-2: Q3 PAPER CONTRIBUTIONS
 
-## Status (2026-01-14):
-- 5 PROVEN via theorems/bridges: node_spacing, S_K_small, W_sum_finite, Q_Lipschitz, A1_density
-- 3 BRIDGE CLOSED (0 sorry): off_diag_exp_sum, A3_bridge, Q_nonneg
-- 0 AXIOM in use: RKHS_contraction now bridged (xi_n rescaling)
+## Status (2026-01-20):
 
-Note: "BRIDGE CLOSED" means the bridge file has 0 sorry, but it may still USE an axiom.
-"PROVEN" means actual theorem proof (may use lower-level axioms).
+**In main proof chain (`#print axioms RH_of_Weil_and_Q3`):**
+- 2 Q3 PAPER AXIOMS remain: `A1_density_WK_axiom`, `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- 6 EXTERNAL AXIOMS: `Weil_criterion`, `a_star_*`, `Schur_test`
+
+**Theorem status:**
+- ✅ PROVEN: node_spacing, S_K_small, W_sum_finite, Q_Lipschitz, RKHS_contraction
+- ⚠️ AXIOM FALLBACK: A1_density (theorem exists but wiring issue), off_diag_exp_sum, A3_bridge
+
+Note: "PROVEN" = actual theorem proof wired into main chain.
+"AXIOM FALLBACK" = theorem may exist but main chain still uses axiom.
 -/
 
 /-! ## PROVEN THEOREMS (4/9) - Self-contained bridges + real proofs -/
@@ -156,30 +161,31 @@ theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1),
 end Q3.Theorems
 
 /-!
-# Summary (2026-01-13 Session)
+# Summary (2026-01-20)
 
-## Tier-1 axioms (8): Remain as axioms in Q3.Axioms
-- Weil_criterion, explicit_formula, a_star_pos
-- Szego_Bottcher_*, Schur_test, c_arch_pos, eigenvalue_le_norm
+## Main Proof Chain: `#print axioms RH_of_Weil_and_Q3`
 
-## Tier-2 Status (9 total):
+**11 axioms total:**
+- 3 Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
+- 6 External/Classical: `Weil_criterion`, `a_star_pos/continuous/bdd/even`, `Schur_test`
+- 2 Q3 Paper: `A1_density_WK_axiom`, `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
 
-### PROVEN via theorems/bridges (5/9) ✅
-- node_spacing → NodeSpacingBridge.node_spacing_Q3
-- S_K_small → S_K_SmallBridgeV2.S_K_small_Q3
-- W_sum_finite → W_sum_BridgeV2.W_sum_finite_Q3
-- Q_Lipschitz → Q3.Proofs.Q_Lipschitz_on_W_K_thm (real proof!)
-- A1_density → Q3.Proofs.A1_density_WK_thm (real proof!)
+## Theorem Wiring Status
 
-### BRIDGE CLOSED (3/9) - 0 sorry, uses axioms ✅
-- off_diag_exp_sum → off_diag_exp_sum_bridge_v3 (0 sorry)
-- A3_bridge → A3_bridge.lean, A3_bridge_v3_uniform.lean (0 sorry)
-- Q_nonneg → Q_nonneg_bridge_v2.lean (0 sorry)
+### ✅ WIRED INTO MAIN CHAIN (not in `#print axioms`)
+- `node_spacing` → NodeSpacingBridge.node_spacing_Q3
+- `S_K_small` → S_K_SmallBridgeV2.S_K_small_Q3
+- `W_sum_finite` → W_sum_BridgeV2.W_sum_finite_Q3
+- `Q_Lipschitz` → Q3.Proofs.Q_Lipschitz_on_W_K_thm
+- `RKHS_contraction` → Bridge.RKHS_contraction_data_of_bridge
 
-### AXIOM in main chain (0/9)
-- RKHS_contraction → bridged via Bridge.RKHS_contraction_data_of_bridge
+### ⚠️ THEOREM EXISTS but AXIOM in main chain
+- `A1_density` → theorem in A1_density.lean, but axiom still in chain (wiring gap)
 
-## Architecture Note
-PROVEN = actual theorem proof exists (may use lower-level axioms for arch/prime terms).
-BRIDGE CLOSED = wrapper with 0 sorry, but passes through to underlying axiom.
+### ❌ AXIOM (no theorem yet)
+- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` → main blocker (AtomCone_K_fixed gap)
+
+## Next Steps to Close Axioms
+1. Wire A1_density_WK_thm → close `A1_density_WK_axiom`
+2. Fix AtomCone_K_fixed quantifier → close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
 -/
