@@ -58,21 +58,63 @@ axiom Weil_criterion : (∀ Φ ∈ Weil_cone, Q Φ ≥ 0) ↔ RH
 axiom explicit_formula :
   ∀ Φ ∈ Weil_cone, Q Φ = arch_term Φ - prime_term Φ
 
-/-! ## Axiom T1.3: Archimedean Kernel Positivity at Origin
+/-! ## Axiom T1.3a: Digamma at 1/4 is negative
+
+By DLMF 5.4.14: ψ(1/4) = -γ - π/2 - 3·ln(2)
+
+Numerical values:
+- γ (Euler-Mascheroni) ≈ 0.5772
+- π/2 ≈ 1.5708
+- 3·ln(2) ≈ 2.0794
+
+Sum: ψ(1/4) ≈ -4.227 < 0
+
+This can be proven rigorously via the series representation:
+  ψ(1/4) = -γ + Σ_{n=0}^∞ (1/(n+1) - 4/(4n+1))
+         = -γ - 3·Σ_{n=0}^∞ 1/((n+1)(4n+1))
+Each term in the sum is positive, so ψ(1/4) < -γ < 0.
+
+**Citation:**
+- DLMF 5.4.14: https://dlmf.nist.gov/5.4.14
+- Abramowitz & Stegun (1964), Section 6.3.3
+-/
+axiom digamma_one_fourth_neg : (digamma (1/4 : ℂ)).re < 0
+
+/-! ## Theorem T1.3: Archimedean Kernel Positivity at Origin (PROVEN)
 
 a*(0) = 2π(log π - ψ(1/4)) > 0
 
-By DLMF 5.4.14: ψ(1/4) = -γ - π/2 - 3·ln(2) ≈ -4.227
-Therefore: a*(0) = 2π(log π - (-4.227)) ≈ 2π · 5.37 ≈ 33.75 > 0
+**Proof:**
+- log π > 1 (since π > 3 > e)
+- Re(ψ(1/4)) < 0 (by digamma_one_fourth_neg axiom)
+- Therefore: log π - Re(ψ(1/4)) > 1 - 0 = 1 > 0
+- And: a*(0) = 2π · (positive) > 0
 
 **Note:** The full statement `∀ ξ, a_star ξ > 0` is FALSE for |ξ| > 1.
 However, only the value at ξ = 0 is needed in the proof chain.
 
 **Citation:**
-- DLMF 5.4.14: ψ(1/4) = -γ - π/2 - 3·ln(2)
-- Abramowitz & Stegun (1964), Section 6.3.3
+- DLMF 5.4.14 for ψ(1/4) = -γ - π/2 - 3·ln(2) ≈ -4.227
 -/
-axiom a_star_pos : a_star 0 > 0
+theorem a_star_pos : a_star 0 > 0 := by
+  unfold a_star a
+  have h_arg : (1/4 : ℂ) + Complex.I * Real.pi * (0 : ℝ) = (1/4 : ℂ) := by simp
+  rw [h_arg]
+  have h2pi_pos : (0 : ℝ) < 2 * Real.pi := by positivity
+  -- log π > 1 (since π > 3 > e)
+  have hlog_pi : Real.log Real.pi > 1 := by
+    have hlog3 : Real.log 3 > 1 := by
+      have h : Real.exp 1 < 3 := by
+        calc Real.exp 1 < 2.7182818286 := Real.exp_one_lt_d9
+          _ < 3 := by norm_num
+      exact (Real.lt_log_iff_exp_lt (by norm_num : (0 : ℝ) < 3)).mpr h
+    have hpi3 : Real.pi > 3 := Real.pi_gt_three
+    have hlog_mono : Real.log 3 < Real.log Real.pi := by
+      exact (Real.log_lt_log_iff (by norm_num) Real.pi_pos).mpr hpi3
+    linarith
+  have hpsi_neg : (digamma (1/4 : ℂ)).re < 0 := digamma_one_fourth_neg
+  have hdiff_pos : Real.log Real.pi - (digamma (1/4 : ℂ)).re > 0 := by linarith
+  exact mul_pos h2pi_pos hdiff_pos
 
 /-! ## Theorem T1.3b: Archimedean Kernel Continuity (PROVEN)
 

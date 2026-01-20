@@ -306,6 +306,32 @@ theorem a_star_bdd_on_compact_thm : ∀ (K : ℝ) (hK : K > 0),
     have h1 : a_star ξ ≤ M_raw := hξ_max_sup hξ
     exact le_trans h1 (le_max_left _ _)
 
+/-! ## Positivity at origin -/
+
+/-- log π > 1 (since π > 3 > e) -/
+lemma log_pi_gt_one : Real.log Real.pi > 1 := by
+  have hlog3 : Real.log 3 > 1 := by
+    have h : Real.exp 1 < 3 := by
+      calc Real.exp 1 < 2.7182818286 := Real.exp_one_lt_d9
+        _ < 3 := by norm_num
+    exact (Real.lt_log_iff_exp_lt (by norm_num : (0 : ℝ) < 3)).mpr h
+  have hpi3 : Real.pi > 3 := Real.pi_gt_three
+  have hlog_mono : Real.log 3 < Real.log Real.pi := by
+    exact (Real.log_lt_log_iff (by norm_num) Real.pi_pos).mpr hpi3
+  linarith
+
+/-! ## Note on a_star_pos
+
+The theorem `a_star_pos : a_star 0 > 0` is now proven in Q3/Axioms.lean
+using the axiom `digamma_one_fourth_neg` (also in Axioms.lean).
+
+The proof structure:
+- a_star 0 = 2π · (log π - Re(ψ(1/4)))
+- log π > 1 (since π > 3 > e) — proven via log_pi_gt_one above
+- Re(ψ(1/4)) < 0 — axiom digamma_one_fourth_neg (DLMF 5.4.14)
+- Therefore a_star 0 > 0
+-/
+
 end Q3
 
 end
