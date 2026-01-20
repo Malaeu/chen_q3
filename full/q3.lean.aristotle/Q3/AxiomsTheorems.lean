@@ -23,6 +23,7 @@ import Q3.Proofs.HeatKernelParams
 import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
 import Q3.Proofs.P_A_Toeplitz_bridge  -- Fourier Toeplitz with P_A (correct formulation)
 import Q3.Proofs.Q_nonneg_on_atoms_fourier_axiom
+import Q3.Proofs.Schur_Test  -- For Schur_test_proof (Mathlib-based)
 
 -- NOTE: These bridges CONFLICT (they import standalone proofs that define
 -- xi_n, S_K, delta_K etc. in root namespace):
@@ -79,6 +80,12 @@ Note: "PROVEN" = actual theorem proof wired into main chain.
 -/
 
 /-! ## PROVEN THEOREMS (4/9) - Self-contained bridges + real proofs -/
+
+-- NOTE: Schur_test remains as axiom (Tier-1 classical).
+-- The Mathlib proof uses L∞ norm (Matrix.linfty_opNorm_def),
+-- but our project uses L2/spectral norm (Matrix.Norms.L2Operator).
+-- Full proof would require Gershgorin + spectral norm bounds.
+-- See Q3/Proofs/Schur_Test.lean for L∞ version.
 
 /-- **[RKHS Node Gap]** Adjacent nodes separated by `δ_K`.
 

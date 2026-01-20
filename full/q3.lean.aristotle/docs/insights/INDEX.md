@@ -44,6 +44,7 @@ Files:
 - research_swarm_symlink_caching_2026_01_17.md
 - rh_q3_invariants_contract_2026_01_16.md
 - rkhs_cap_implementation_2026_01_15.md
+- schur_test_l2_vs_linfty_2026_01_20.md
 - szego_bottcher_not_needed.md
 - t_p_comp_mismatch.md
 - t_p_compression_fix_2026_01_14.md

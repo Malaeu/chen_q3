@@ -1,7 +1,7 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
-Last Updated: 2026-01-18
+Last Updated: 2026-01-20
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -281,6 +281,19 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
 ```
 
 ## Change Log (recent)
+
+- 2026-01-20: **Schur_test investigation** — L2 vs L∞ norm mismatch
+  - Attempted to close `Schur_test` axiom using Mathlib
+  - Created `Q3/Proofs/Schur_Test.lean` with L∞ proof
+  - CANNOT wire: project uses L2 (spectral) norm, Mathlib proof uses L∞ (row-sum)
+  - Full L2 proof requires Gershgorin + spectral norm theory
+  - See: `docs/insights/schur_test_l2_vs_linfty_2026_01_20.md`
+
+- 2026-01-20: **Phase A file refactoring** completed
+  - Renamed v19/v20/v22/v2/v3 files to clean names
+  - Updated all imports across project
+  - Updated check_axioms.sh with correct counts (11 total, 8 project)
+  - Updated CLAUDE.md paths (Mac → Linux)
 
 - 2026-01-16: **BLOCKER DISCOVERED** — A3_bridge closure blocked by symbol mismatch!
   - `A3_bridge_data` uses sampling Toeplitz with `a_star` (mathematically WRONG: a_star → -∞)
