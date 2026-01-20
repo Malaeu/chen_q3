@@ -75,8 +75,8 @@ a* inherits continuity from ψ.
 
 **Citation:**
 - Titchmarsh, E.C. (1986). "The Theory of the Riemann Zeta-Function", Chapter IX.
-- Abramowitz & Stegun (1964). "Handbook of Mathematical Functions", Section 6.3.
-- NIST DLMF (2024), Section 5.2: Digamma function properties.
+- Abramowitz & Stegun (1964). "Handbook of Mathematical Functions", Section 6.3 (p. 258).
+- NIST DLMF (2024), Section 5.2: Digamma function definitions (https://dlmf.nist.gov/5.2).
 -/
 axiom a_star_continuous : Continuous a_star
 
