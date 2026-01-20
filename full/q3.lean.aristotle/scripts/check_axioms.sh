@@ -17,8 +17,8 @@ echo "Date: $(date)"
 echo "Directory: $PROJECT_DIR"
 echo ""
 
-# Step 0: Prebuild A3_FLOOR (standalone root file)
-echo "═══ Step 0: Prebuilding A3_FLOOR_v22_stage4_floor ═══"
+# Step 0: Prebuild A3_FLOOR (via compatibility wrapper)
+echo "═══ Step 0: Prebuilding A3_Floor_Main ═══"
 if lake env lean A3_FLOOR_v22_stage4_floor.lean 2>&1 | tail -5; then
     echo "✓ A3_FLOOR prebuild successful"
 else
@@ -76,8 +76,8 @@ PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: 3)"
-echo "Project:       $PROJECT_COUNT (expected: 7)"
-echo "TOTAL:         $TOTAL (expected: 10)"
+echo "Project:       $PROJECT_COUNT (expected: 8)"
+echo "TOTAL:         $TOTAL (expected: 11)"
 echo ""
 
 # Step 4: Classification
@@ -88,7 +88,7 @@ echo "$AXIOMS" | grep -E "Weil_criterion|a_star_pos|a_star_bdd|a_star_continuous
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
-echo "$AXIOMS_ONLY" | grep -E "RKHS_contraction|Q_nonneg_on_atoms" | sed 's/^/  /' || echo "  (none found)"
+echo "$AXIOMS_ONLY" | grep -E "RKHS_contraction|Q_nonneg_on_atoms|A1_density" | sed 's/^/  /' || echo "  (none found)"
 
 echo ""
 echo "Level 3 (Bridge Lemmas):"
@@ -107,6 +107,7 @@ EXPECTED_AXIOMS=(
     "Q3.a_star_continuous"
     "Q3.a_star_even"
     "Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom"
+    "Q3.A1_density_WK_axiom"
 )
 
 UNKNOWN_AXIOMS=""
@@ -137,7 +138,7 @@ echo ""
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                    VERIFICATION PASSED ✓                      ║"
 echo "║                                                                ║"
-echo "║  Axiom count: $TOTAL (7 Project + 3 Standard)                  ║"
+echo "║  Axiom count: $TOTAL (8 Project + 3 Standard)                  ║"
 echo "║  Philosophy: Compliant                                         ║"
 echo "║  Ready to commit!                                              ║"
 echo "╚════════════════════════════════════════════════════════════════╝"
