@@ -6,9 +6,9 @@ Proofs of a_star classical axioms (Tier-1) using Mathlib Gamma function properti
 
 Axioms closed in this file:
 - a_star_even (T1.3d): a*(-ξ) = a*(ξ)
+- a_star_continuous (T1.3b): a* is continuous
 
 Axioms partially addressed:
-- a_star_continuous (T1.3b): requires digamma continuity
 - a_star_bdd_on_compact (T1.3c): follows from continuity
 - a_star_pos (T1.3): requires digamma positivity bounds
 
@@ -22,6 +22,7 @@ References:
 
 import Mathlib
 import Q3.Basic.Defs
+import Q3.DigammaSeries  -- For Gamma_continuousAt_of_re_pos, Gamma_differentiableOn_right_half_plane
 
 open scoped BigOperators Real Nat Classical Pointwise ComplexConjugate
 open Real Complex MeasureTheory Set
@@ -180,6 +181,130 @@ theorem a_star_even_thm : ∀ ξ : ℝ, a_star (-ξ) = a_star ξ := by
             (Q3.digamma ((1/4 : ℂ) + I * π * ξ)).re := Complex.conj_re _
   simp only [ofReal_neg] at h2 ⊢
   rw [h2, h3]
+
+/-! ## Continuity of digamma and a_star -/
+
+/-- deriv Gamma is continuous on right half-plane -/
+lemma deriv_Gamma_continuousOn_right_half_plane :
+    ContinuousOn (deriv Complex.Gamma) {z | 0 < z.re} := by
+  have hS_open : IsOpen {z : ℂ | 0 < z.re} :=
+    isOpen_lt continuous_const Complex.continuous_re
+  exact DifferentiableOn.continuousOn
+    (DifferentiableOn.deriv Gamma_differentiableOn_right_half_plane hS_open)
+
+/-- Gamma is continuous on right half-plane -/
+lemma Gamma_continuousOn_right_half_plane :
+    ContinuousOn Complex.Gamma {z | 0 < z.re} := by
+  intro z hz
+  exact (Gamma_continuousAt_of_re_pos hz).continuousWithinAt
+
+/-- digamma = deriv Gamma / Gamma is continuous on right half-plane -/
+lemma digamma_continuousOn_right_half_plane :
+    ContinuousOn Q3.digamma {z | 0 < z.re} := by
+  unfold Q3.digamma
+  apply ContinuousOn.div
+  · exact deriv_Gamma_continuousOn_right_half_plane
+  · exact Gamma_continuousOn_right_half_plane
+  · intro z hz
+    exact Complex.Gamma_ne_zero_of_re_pos hz
+
+/-- digamma is continuous at z when Re(z) > 0 -/
+lemma digamma_continuousAt_of_re_pos {z : ℂ} (hz : 0 < z.re) :
+    ContinuousAt Q3.digamma z := by
+  have hS_open : IsOpen {z : ℂ | 0 < z.re} :=
+    isOpen_lt continuous_const Complex.continuous_re
+  exact digamma_continuousOn_right_half_plane.continuousAt (hS_open.mem_nhds hz)
+
+/-- The argument map matching the definition in Defs.lean: ξ ↦ 1/4 + iπξ -/
+def arg_map' (ξ : ℝ) : ℂ := (1/4 : ℂ) + Complex.I * Real.pi * ξ
+
+lemma arg_map'_continuous : Continuous arg_map' := by
+  unfold arg_map'
+  fun_prop
+
+lemma arg_map'_re_pos (ξ : ℝ) : 0 < (arg_map' ξ).re := by
+  simp only [arg_map', add_re, one_div, mul_re, I_re, ofReal_im, mul_zero,
+             I_im, ofReal_re, sub_zero]
+  norm_num
+
+/-- digamma ∘ arg_map' is continuous -/
+lemma digamma_arg'_continuous : Continuous (fun ξ => Q3.digamma (arg_map' ξ)) := by
+  rw [continuous_iff_continuousAt]
+  intro ξ
+  have h1 : ContinuousAt Q3.digamma (arg_map' ξ) := digamma_continuousAt_of_re_pos (arg_map'_re_pos ξ)
+  have h2 : ContinuousAt arg_map' ξ := arg_map'_continuous.continuousAt
+  exact h1.comp h2
+
+/-- Re ∘ digamma ∘ arg_map' is continuous -/
+lemma re_digamma_arg'_continuous : Continuous (fun ξ => (Q3.digamma (arg_map' ξ)).re) := by
+  exact continuous_re.comp digamma_arg'_continuous
+
+/-- a is continuous -/
+lemma a_continuous : Continuous Q3.a := by
+  have h : Q3.a = (fun ξ => Real.log Real.pi - (Q3.digamma (arg_map' ξ)).re) := by
+    funext ξ
+    rfl
+  rw [h]
+  apply Continuous.sub
+  · exact continuous_const
+  · exact re_digamma_arg'_continuous
+
+/-- **Theorem (T1.3b):** a_star is continuous
+
+    **Proof:**
+    - digamma is continuous on {Re > 0} (quotient of continuous functions, denominator ≠ 0)
+    - The map ξ ↦ 1/4 + iπξ is continuous and maps into {Re > 0}
+    - Therefore digamma ∘ arg_map is continuous
+    - Taking Re and multiplying by constants preserves continuity
+
+    **Citation:** Titchmarsh (1986) Ch. IX, DLMF 5.2
+-/
+theorem a_star_continuous_thm : Continuous Q3.a_star := by
+  have h : Q3.a_star = (fun ξ => 2 * Real.pi * Q3.a ξ) := by
+    funext ξ
+    rfl
+  rw [h]
+  apply Continuous.mul
+  · exact continuous_const
+  · exact a_continuous
+
+/-! ## Boundedness on compact sets -/
+
+/-- **Theorem (T1.3c):** a_star is bounded on any compact interval.
+
+    **Proof:**
+    By extreme value theorem: continuous real-valued function on compact set
+    attains its supremum. Since [-K, K] is compact, a_star attains a maximum M.
+    Then a_star ξ ≤ M for all ξ ∈ [-K, K].
+
+    **Citation:** Rudin (1976) Theorem 4.16
+-/
+theorem a_star_bdd_on_compact_thm : ∀ (K : ℝ) (hK : K > 0),
+    ∃ M > 0, ∀ ξ ∈ Set.Icc (-K) K, a_star ξ ≤ M := by
+  intro K hK
+  -- The interval [-K, K] is compact
+  have hCompact : IsCompact (Set.Icc (-K) K) := isCompact_Icc
+  -- a_star restricted to [-K, K] is continuous
+  have hCont : ContinuousOn a_star (Set.Icc (-K) K) :=
+    a_star_continuous_thm.continuousOn
+  -- Non-empty interval
+  have hNe : (Set.Icc (-K) K).Nonempty := by
+    use 0
+    constructor <;> linarith
+  -- By extreme value theorem, a_star attains its supremum on [-K, K]
+  obtain ⟨ξ_max, hξ_max_mem, hξ_max_sup⟩ := hCompact.exists_isMaxOn hNe hCont
+  -- The supremum value
+  let M_raw := a_star ξ_max
+  -- We need M > 0. Use max with 1 to ensure positivity.
+  use max M_raw 1
+  constructor
+  · -- max M_raw 1 > 0
+    apply lt_max_of_lt_right
+    linarith
+  · -- For all ξ in the interval, a_star ξ ≤ max M_raw 1
+    intro ξ hξ
+    have h1 : a_star ξ ≤ M_raw := hξ_max_sup hξ
+    exact le_trans h1 (le_max_left _ _)
 
 end Q3
 

@@ -67,7 +67,7 @@ a*(ξ) = 2π(log π - Re(ψ(1/4 + iπξ))) > 0 for all ξ
 -/
 axiom a_star_pos : ∀ ξ : ℝ, a_star ξ > 0
 
-/-! ## Axiom T1.3b: Archimedean Kernel Continuity
+/-! ## Theorem T1.3b: Archimedean Kernel Continuity (PROVEN)
 
 a*(ξ) is continuous (follows from digamma regularity away from poles).
 The digamma function ψ(s) is holomorphic for s ∉ {0, -1, -2, ...}.
@@ -78,10 +78,12 @@ a* inherits continuity from ψ.
 - Titchmarsh, E.C. (1986). "The Theory of the Riemann Zeta-Function", Chapter IX.
 - Abramowitz & Stegun (1964). "Handbook of Mathematical Functions", Section 6.3 (p. 258).
 - NIST DLMF (2024), Section 5.2: Digamma function definitions (https://dlmf.nist.gov/5.2).
--/
-axiom a_star_continuous : Continuous a_star
 
-/-! ## Axiom T1.3c: Archimedean Kernel Bounded on Compacts
+**Status:** THEOREM (proven via Mathlib differentiability of Gamma)
+-/
+theorem a_star_continuous : Continuous a_star := a_star_continuous_thm
+
+/-! ## Theorem T1.3c: Archimedean Kernel Bounded on Compacts (PROVEN)
 
 a*(ξ) is bounded on any compact set (continuous function on compact → bounded).
 This is a standard consequence of the extreme value theorem:
@@ -90,9 +92,11 @@ continuous real-valued function on a compact set attains its bounds.
 **Citation:**
 - Rudin, W. (1976). "Principles of Mathematical Analysis", Theorem 4.16.
 - Direct corollary of T1.3b (continuity) and Heine-Borel theorem.
+
+**Status:** THEOREM (proven via extreme value theorem + T1.3b)
 -/
-axiom a_star_bdd_on_compact : ∀ (K : ℝ) (hK : K > 0),
-  ∃ M > 0, ∀ ξ ∈ Set.Icc (-K) K, a_star ξ ≤ M
+theorem a_star_bdd_on_compact : ∀ (K : ℝ) (hK : K > 0),
+  ∃ M > 0, ∀ ξ ∈ Set.Icc (-K) K, a_star ξ ≤ M := a_star_bdd_on_compact_thm
 
 /-! ## Theorem T1.3d: Archimedean Kernel Even Symmetry (PROVEN)
 
