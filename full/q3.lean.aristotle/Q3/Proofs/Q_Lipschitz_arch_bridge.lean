@@ -33,44 +33,44 @@ open Q3
 
 /-! ## Definitions (must match Q_Lipschitz.lean) -/
 
-/-- Sup of a_star on [-K, K] -/
-def M_a_local (K : ℝ) : ℝ := sSup (a_star '' Set.Icc (-K) K)
+/-- Sup of |a_star| on [-K, K] (absolute value for correct Lipschitz bound) -/
+def M_a_local (K : ℝ) : ℝ := sSup ((fun ξ => |a_star ξ|) '' Set.Icc (-K) K)
 
 /-- Local arch_term as SET INTEGRAL on [-K, K] -/
 def arch_term_local (K : ℝ) (Φ : ℝ → ℝ) : ℝ := ∫ ξ in Set.Icc (-K) K, a_star ξ * Φ ξ
 
 /-! ## Helper lemmas -/
 
-/-- a_star is bounded above on compacts -/
-lemma a_star_bdd_above_on_Icc (K : ℝ) (hK : K > 0) :
-    BddAbove (a_star '' Set.Icc (-K) K) := by
-  obtain ⟨M, _, hM⟩ := a_star_bdd_on_compact K hK
-  use M
-  intro y hy
-  obtain ⟨ξ, hξ, rfl⟩ := hy
-  exact hM ξ hξ
+/-- |a_star| is bounded above on compacts -/
+lemma abs_a_star_bdd_above_on_Icc (K : ℝ) (hK : K > 0) :
+    BddAbove ((fun ξ => |a_star ξ|) '' Set.Icc (-K) K) := by
+  -- |a_star| is continuous on compact, hence bounded
+  have hcont : ContinuousOn (fun ξ => |a_star ξ|) (Set.Icc (-K) K) :=
+    a_star_continuous.abs.continuousOn
+  have hcompact : IsCompact (Set.Icc (-K) K) := isCompact_Icc
+  exact (hcompact.image_of_continuousOn hcont).bddAbove
 
-/-- a_star image on [-K, K] is nonempty -/
-lemma a_star_image_nonempty (K : ℝ) (hK : K > 0) :
-    (a_star '' Set.Icc (-K) K).Nonempty := by
-  refine ⟨a_star 0, 0, ?_, rfl⟩
+/-- |a_star| image on [-K, K] is nonempty -/
+lemma abs_a_star_image_nonempty (K : ℝ) (hK : K > 0) :
+    ((fun ξ => |a_star ξ|) '' Set.Icc (-K) K).Nonempty := by
+  refine ⟨|a_star 0|, 0, ?_, rfl⟩
   constructor <;> linarith
 
-/-- M_a_local K > 0 -/
+/-- M_a_local K > 0 (since |a_star 0| > 0) -/
 lemma M_a_local_pos (K : ℝ) (hK : K > 0) : M_a_local K > 0 := by
   unfold M_a_local
-  have h_bdd := a_star_bdd_above_on_Icc K hK
-  have h_pos : a_star 0 > 0 := a_star_pos 0
-  have h_mem : a_star 0 ∈ a_star '' Set.Icc (-K) K := by
+  have h_bdd := abs_a_star_bdd_above_on_Icc K hK
+  have h_pos : |a_star 0| > 0 := abs_pos.mpr (ne_of_gt a_star_pos)
+  have h_mem : |a_star 0| ∈ (fun ξ => |a_star ξ|) '' Set.Icc (-K) K := by
     refine ⟨0, ?_, rfl⟩
     constructor <;> linarith
   exact lt_of_lt_of_le h_pos (le_csSup h_bdd h_mem)
 
-/-- a_star ξ ≤ M_a_local K for ξ ∈ [-K, K] -/
-lemma a_star_le_M_a_local (K : ℝ) (hK : K > 0) (ξ : ℝ) (hξ : ξ ∈ Set.Icc (-K) K) :
-    a_star ξ ≤ M_a_local K := by
+/-- |a_star ξ| ≤ M_a_local K for ξ ∈ [-K, K] -/
+lemma abs_le_M_a_local (K : ℝ) (hK : K > 0) (ξ : ℝ) (hξ : ξ ∈ Set.Icc (-K) K) :
+    |a_star ξ| ≤ M_a_local K := by
   unfold M_a_local
-  apply le_csSup (a_star_bdd_above_on_Icc K hK)
+  apply le_csSup (abs_a_star_bdd_above_on_Icc K hK)
   exact ⟨ξ, hξ, rfl⟩
 
 /-- D is bddAbove when Φ₁, Φ₂ continuous on compact [-K,K] -/
@@ -155,20 +155,21 @@ theorem arch_term_Lipschitz (K : ℝ) (hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ)
     _ ≤ ∫ ξ in Set.Icc (-K) K, |a_star ξ * (Φ₁ ξ - Φ₂ ξ)| := by
         rw [← Real.norm_eq_abs]
         exact norm_integral_le_integral_norm _
-    _ = ∫ ξ in Set.Icc (-K) K, a_star ξ * |Φ₁ ξ - Φ₂ ξ| := by
+    _ = ∫ ξ in Set.Icc (-K) K, |a_star ξ| * |Φ₁ ξ - Φ₂ ξ| := by
         congr 1; ext ξ
-        rw [abs_mul, abs_of_pos (a_star_pos ξ)]
+        rw [abs_mul]
     _ ≤ ∫ ξ in Set.Icc (-K) K, M_a_local K * D := by
         apply MeasureTheory.setIntegral_mono_on
-        · -- Integrability of a* |Φ₁ - Φ₂|
+        · -- Integrability of |a*| |Φ₁ - Φ₂|
           apply ContinuousOn.integrableOn_Icc
-          exact a_star_continuous.continuousOn.mul (ContinuousOn.abs (hcont₁.sub hcont₂))
+          exact (a_star_continuous.abs.continuousOn).mul (ContinuousOn.abs (hcont₁.sub hcont₂))
         · -- Integrability of constant
           exact integrableOn_const (hs := measure_Icc_lt_top.ne) (hC := ENNReal.coe_ne_top)
         · exact measurableSet_Icc
         · intro ξ hξ
           apply mul_le_mul
-          · exact a_star_le_M_a_local K hK ξ hξ
+          · -- |a_star ξ| ≤ M_a_local K
+            exact abs_le_M_a_local K hK ξ hξ
           · apply le_csSup hD_bdd
             exact ⟨ξ, hξ, rfl⟩
           · exact abs_nonneg _

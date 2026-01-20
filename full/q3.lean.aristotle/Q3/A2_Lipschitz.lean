@@ -90,7 +90,7 @@ lemma a_star_bounded_on_compact (K : ℝ) (hK : K > 0) :
   -- 0 ∈ [-K, K] since K > 0
   have h0_mem : (0 : ℝ) ∈ Set.Icc (-K) K := Set.mem_Icc.mpr ⟨by linarith, by linarith⟩
   -- a_star 0 > 0 by positivity axiom
-  have ha0_pos : 0 < a_star 0 := Q3.a_star_pos 0
+  have ha0_pos : 0 < a_star 0 := Q3.a_star_pos
   -- sSup of nonempty compact set exists; take M = max (sSup img) 1
   have hne : (a_star '' Set.Icc (-K) K).Nonempty := ⟨a_star 0, Set.mem_image_of_mem a_star h0_mem⟩
   use max (sSup (a_star '' Set.Icc (-K) K)) 1
@@ -130,7 +130,7 @@ def L_Q (K : ℝ) : ℝ :=
 lemma L_Q_pos (K : ℝ) (hK : K > 0) : L_Q K > 0 := by
   unfold L_Q
   have hW_nonneg : 0 ≤ W_sum K := W_sum_nonneg K
-  have ha_pos : 0 < a_star 0 := Q3.a_star_pos 0
+  have ha_pos : 0 < a_star 0 := Q3.a_star_pos
   -- 0 ∈ [-K, K] for K > 0
   have h0_mem : (0 : ℝ) ∈ Set.Icc (-K) K := Set.mem_Icc.mpr ⟨by linarith, by linarith⟩
   -- a_star 0 is in the set {a_star ξ | ξ ∈ [-K, K]}

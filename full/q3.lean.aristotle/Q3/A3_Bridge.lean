@@ -51,9 +51,6 @@ def modulusOfContinuity (f : ℝ → ℝ) (δ : ℝ) : ℝ :=
 
 /-! ## Archimedean Positivity -/
 
-/-- The archimedean kernel a*(ξ) is positive for all ξ -/
-lemma a_star_pos (ξ : ℝ) : Q3.a_star ξ > 0 := Q3.a_star_pos ξ
-
 /-- The archimedean constant is positive -/
 lemma c_arch_pos (K : ℝ) (hK : K > 0) : Q3.c_arch K > 0 :=
   Q3.c_arch_pos K hK

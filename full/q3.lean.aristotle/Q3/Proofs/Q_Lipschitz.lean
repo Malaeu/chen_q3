@@ -43,44 +43,43 @@ def ActiveNodes_local (K : ℝ) : Set ℕ := {n | |xi_n n| ≤ K ∧ n ≥ 2}
 noncomputable def W_sum_local (K : ℝ) : ℝ :=
   ∑' n, if n ∈ ActiveNodes_local K then w_Q n else 0
 
-/-- Sup of a_star on [-K, K] -/
-noncomputable def M_a_local (K : ℝ) : ℝ := sSup (a_star '' Set.Icc (-K) K)
+/-- Sup of |a_star| on [-K, K] (absolute value for correct Lipschitz bound) -/
+noncomputable def M_a_local (K : ℝ) : ℝ := sSup ((fun ξ => |a_star ξ|) '' Set.Icc (-K) K)
 
 /-- Lipschitz constant for Q on W_K -/
 noncomputable def L_Q_local (K : ℝ) : ℝ := 2 * K * M_a_local K + W_sum_local K
 
 /-! ## Key lemmas for a_star boundedness -/
 
-/-- a_star is bounded above on compacts: uses axiom a_star_bdd_on_compact -/
-lemma a_star_bdd_above_on_Icc (K : ℝ) (hK : K > 0) :
-    BddAbove (a_star '' Set.Icc (-K) K) := by
-  obtain ⟨M, _, hM⟩ := a_star_bdd_on_compact K hK
-  use M
-  intro y hy
-  obtain ⟨ξ, hξ, rfl⟩ := hy
-  exact hM ξ hξ
+/-- |a_star| is bounded above on compacts: uses continuity -/
+lemma abs_a_star_bdd_above_on_Icc (K : ℝ) (hK : K > 0) :
+    BddAbove ((fun ξ => |a_star ξ|) '' Set.Icc (-K) K) := by
+  have hcont : ContinuousOn (fun ξ => |a_star ξ|) (Set.Icc (-K) K) :=
+    a_star_continuous.abs.continuousOn
+  have hcompact : IsCompact (Set.Icc (-K) K) := isCompact_Icc
+  exact (hcompact.image_of_continuousOn hcont).bddAbove
 
-/-- a_star image on [-K, K] is nonempty -/
-lemma a_star_image_nonempty (K : ℝ) (hK : K > 0) :
-    (a_star '' Set.Icc (-K) K).Nonempty := by
-  refine ⟨a_star 0, 0, ?_, rfl⟩
+/-- |a_star| image on [-K, K] is nonempty -/
+lemma abs_a_star_image_nonempty (K : ℝ) (hK : K > 0) :
+    ((fun ξ => |a_star ξ|) '' Set.Icc (-K) K).Nonempty := by
+  refine ⟨|a_star 0|, 0, ?_, rfl⟩
   constructor <;> linarith
 
 /-- M_a_local K > 0 (follows from a_star_pos and nonemptiness) -/
 lemma M_a_local_pos (K : ℝ) (hK : K > 0) : M_a_local K > 0 := by
   unfold M_a_local
-  have h_bdd := a_star_bdd_above_on_Icc K hK
-  have h_pos : a_star 0 > 0 := a_star_pos 0
-  have h_mem : a_star 0 ∈ a_star '' Set.Icc (-K) K := by
+  have h_bdd := abs_a_star_bdd_above_on_Icc K hK
+  have h_pos : |a_star 0| > 0 := abs_pos.mpr (ne_of_gt a_star_pos)
+  have h_mem : |a_star 0| ∈ (fun ξ => |a_star ξ|) '' Set.Icc (-K) K := by
     refine ⟨0, ?_, rfl⟩
     constructor <;> linarith
   exact lt_of_lt_of_le h_pos (le_csSup h_bdd h_mem)
 
-/-- a_star ξ ≤ M_a_local K for ξ ∈ [-K, K] -/
-lemma a_star_le_M_a_local (K : ℝ) (hK : K > 0) (ξ : ℝ) (hξ : ξ ∈ Set.Icc (-K) K) :
-    a_star ξ ≤ M_a_local K := by
+/-- |a_star ξ| ≤ M_a_local K for ξ ∈ [-K, K] -/
+lemma abs_a_star_le_M_a_local (K : ℝ) (hK : K > 0) (ξ : ℝ) (hξ : ξ ∈ Set.Icc (-K) K) :
+    |a_star ξ| ≤ M_a_local K := by
   unfold M_a_local
-  apply le_csSup (a_star_bdd_above_on_Icc K hK)
+  apply le_csSup (abs_a_star_bdd_above_on_Icc K hK)
   exact ⟨ξ, hξ, rfl⟩
 
 /-! ## Local W_K definition (for proof convenience) -/
@@ -214,8 +213,8 @@ theorem Q_Lipschitz_local (K : ℝ) (hK : K > 0) :
     obtain ⟨hcont₁, hsupp₁, heven₁, hnonneg₁⟩ := hΦ₁
     obtain ⟨hcont₂, hsupp₂, heven₂, hnonneg₂⟩ := hΦ₂
 
-    -- Get M_a bound from a_star_bdd_on_compact axiom
-    have hMa := a_star_bdd_above_on_Icc K hK
+    -- Get M_a bound from continuity
+    have hMa := abs_a_star_bdd_above_on_Icc K hK
 
     -- Step 1: The goal is to show |Q_local Φ₁ - Q_local Φ₂| ≤ L_Q_local K * D
     -- where D = sup-norm of Φ₁ - Φ₂ on [-K, K]

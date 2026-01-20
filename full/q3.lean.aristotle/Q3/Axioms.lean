@@ -58,14 +58,21 @@ axiom Weil_criterion : (∀ Φ ∈ Weil_cone, Q Φ ≥ 0) ↔ RH
 axiom explicit_formula :
   ∀ Φ ∈ Weil_cone, Q Φ = arch_term Φ - prime_term Φ
 
-/-! ## Axiom T1.3: Archimedean Kernel Positivity
+/-! ## Axiom T1.3: Archimedean Kernel Positivity at Origin
 
-a*(ξ) = 2π(log π - Re(ψ(1/4 + iπξ))) > 0 for all ξ
+a*(0) = 2π(log π - ψ(1/4)) > 0
+
+By DLMF 5.4.14: ψ(1/4) = -γ - π/2 - 3·ln(2) ≈ -4.227
+Therefore: a*(0) = 2π(log π - (-4.227)) ≈ 2π · 5.37 ≈ 33.75 > 0
+
+**Note:** The full statement `∀ ξ, a_star ξ > 0` is FALSE for |ξ| > 1.
+However, only the value at ξ = 0 is needed in the proof chain.
 
 **Citation:**
-- Titchmarsh, E.C. (1986) "The Theory of the Riemann Zeta-Function", Chapter IX.
+- DLMF 5.4.14: ψ(1/4) = -γ - π/2 - 3·ln(2)
+- Abramowitz & Stegun (1964), Section 6.3.3
 -/
-axiom a_star_pos : ∀ ξ : ℝ, a_star ξ > 0
+axiom a_star_pos : a_star 0 > 0
 
 /-! ## Theorem T1.3b: Archimedean Kernel Continuity (PROVEN)
 
