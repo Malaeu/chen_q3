@@ -244,6 +244,8 @@ of separate `|τ| ≤ K` and `B ≤ K`. This matches Lemma 6.4 (Fixed-t₀ cone 
 - `docs/INSIGHTS.md` - collected project insights (do not create new docs)
 - `FORMALIZATION_STATS.md` - quantitative stats snapshot
 - `docs/PROJECT_SPECS.md` - spec/invariants for Proshka check (Rayleigh plan)
+- `docs/Q3_PDF_STRUCTURE.md` - **FULL theorem/lemma trace from RH_Q3.pdf**
+- `docs/PDF_DB_COVERAGE.md` - 80% coverage report (PDF vs DB)
 - `PROOF_MAP_NEW_KERNEL.md` + `A3_FLOOR_ROADMAP.md` - A3_FLOOR status
 - `Q3/Axioms.lean` and `Q3/AxiomsTheorems.lean` - axioms and wiring
 - `Q3/Proofs/Q_Lipschitz.lean` - real proof of Q_Lipschitz
