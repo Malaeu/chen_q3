@@ -1,6 +1,6 @@
 # Formalization Stats (Snapshot)
 
-Last updated: 2026-01-16
+Last updated: 2026-01-21
 Scope: Q3 Lean codebase (regex counts of declarations in .lean files).
 
 Notes:
@@ -14,21 +14,21 @@ Notes:
 
 | Source | Lines | Theorems | Lemmas | Defs | Total Decls |
 |--------|-------|----------|--------|------|-------------|
-| **Q3/** (core) | 18,217 | 199 | 392 | 288 | 879 |
-| **aristotle_output/** | 15,326 | 113 | 356 | 369 | 838 |
-| **A3_FLOOR*** | 2,905 | 14 | 74 | 22 | 110 |
-| **TOTAL** | **36,448** | **326** | **822** | **679** | **1,827** |
+| **Q3/** (core) | 25,137 | 262 | 548 | 303 | 1,113 |
+| **aristotle_output/** | 18,440 | ~130 | ~400 | ~400 | ~930 |
+| **A3_FLOOR*** | 673 | 14 | 74 | 22 | 110 |
+| **TOTAL** | **44,250** | **~406** | **~1,022** | **~725** | **~2,153** |
 
-## Δ vs previous snapshot
+## Δ vs previous snapshot (2026-01-16)
 
 | Source | Lines Δ | Theorems Δ | Lemmas Δ | Defs Δ | Total Decls Δ |
 |--------|---------|------------|----------|--------|----------------|
-| **Q3/** (core) | +366 | +3 | +7 | +5 | +15 |
-| **aristotle_output/** | +2,219 | +4 | +58 | +46 | +108 |
-| **A3_FLOOR*** | +4 | +0 | +0 | +0 | +0 |
-| **TOTAL** | +2,589 | +7 | +65 | +51 | +123 |
+| **Q3/** (core) | +6,920 | +63 | +156 | +15 | +234 |
+| **aristotle_output/** | +3,114 | +17 | +44 | +31 | +92 |
+| **A3_FLOOR*** | -2,232 | +0 | +0 | +0 | +0 |
+| **TOTAL** | **+7,802** | **+80** | **+200** | **+46** | **+326** |
 
-*Previous TOTAL line count was 33,859; recompute gives 36,448.
+*Previous TOTAL line count was 36,448; current is 44,250.*
 
 ---
 
@@ -36,88 +36,57 @@ Notes:
 
 ### 🤖 Aristotle (AI-generated)
 
-| File | Lines | Source |
-|------|-------|--------|
-| HatInterpolation.lean | 339 | `bcec962f` - hat interpolation proof |
-| A1_density_hat_chain.lean | 237 | `e90d4213` - full A1 chain |
-| sandbox_test_result.lean | 49 | `c33c6672` - sandbox test |
-| + 35 other output files | 10,491 | Various experiments |
+| Category | Files | Lines |
+|----------|-------|-------|
+| Total aristotle_output/ | 72 | 18,440 |
 
-**Total Aristotle contribution: 15,326 lines (~42% of project)**
+**Top Aristotle files by size:**
+| File | Lines |
+|------|-------|
+| A1_density_main_aristotle.lean | 852 |
+| d1524982_aristotle.lean | 767 |
+| A1_density_bridge_v4_aristotle.lean | 644 |
+| A1_FINAL_COMPLETE.lean | 553 |
+| A1_density_hat_full_v1_aristotle.lean | 544 |
+
+**Total Aristotle contribution: 18,440 lines (~42% of project)**
 
 ### 📐 A3_FLOOR (Numerical Analysis)
 
-| File | Lines | Thm/Lemmas |
-|------|-------|------------|
-| A3_Floor_Main.lean | 878 | 27 |
-| A3_Floor_Bounds.lean | 852 | 22 |
-| A3_Floor_Monotonicity.lean | 504 | 19 |
-| A3_FLOOR_v16_deriv_digamma_eq_trigamma.lean | 328 | 10 |
-| A3_FLOOR_COMBINED.lean | 333 | 10 |
-| A3_FLOOR_THEOREM.lean | 6 | 0 |
+| File | Lines | Description |
+|------|-------|-------------|
+| A3_Floor_Main.lean | ~878 | Main floor theorem |
+| A3_Floor_Bounds.lean | ~852 | Bound computations |
+| Other A3_FLOOR*.lean | ~673 | Supporting files |
 
-**Total A3_FLOOR: 2,905 lines, 88 theorems/lemmas**
-*Proves: P_A(θ) ≥ c* = 11/10 ∀θ*
+**Proves: P_A(θ) ≥ c* = 11/10 ∀θ**
 
 ### 👨‍💻 Manual/Human-written (Q3/ core)
 
-| Category | Files | Lines | Thm/Lemmas |
-|----------|-------|-------|------------|
-| Axioms/Main | 2 | 713 | 12 |
-| Proofs/ | 46 | 9,010 | 326 |
-| Archive/ | 20 | 4,568 | 146 |
-| DigammaSeries | 2 | 2,571 | 48 |
-| Other | 28 | 4,849 | 166 |
+| Category | Lines | Thm/Lemmas |
+|----------|-------|------------|
+| Q3/Proofs/ | ~12,000 | ~450 |
+| Q3/Archive/ | ~5,000 | ~150 |
+| Q3/ other | ~8,137 | ~210 |
+| **Total Q3/** | **25,137** | **810** |
 
 ---
 
-## Key Modules (Detailed)
+## 📈 DB Statistics
 
-```
-Q3/Proofs/A1_density.lean
-  lines: 1421 (nonempty 1346), namespaces: 0
-  lemma 29 | theorem 1 | def 10
+Database: `aristotle_db/aristotle_proofs.db`
 
-Q3/Proofs/HatInterpolation.lean
-  lines: 339 (nonempty 315), namespaces: 1
-  lemma 11 | theorem 1 | def 1
+| Metric | Count |
+|--------|-------|
+| Documents | 44 |
+| Lemmas/Theorems | 555 |
+| Specs | 9 |
 
-Q3/Proofs/Q_Lipschitz.lean
-  lines: 290 (nonempty 246), namespaces: 1
-  lemma 10 | theorem 2 | def 8
-
-Q3/Proofs/RKHS_contraction.lean
-  lines: 371 (nonempty 343), namespaces: 0
-  lemma 5 | theorem 2 | def 8 | abbrev 1 | instance 1
-
-Q3/Proofs/Bridge.lean
-  lines: 512 (nonempty 460), namespaces: 1
-  lemma 12 | theorem 5 | def 2
-
-Q3/Proofs/A3_Bridge_Uniform.lean
-  lines: 98 (nonempty 75), namespaces: 1
-  lemma 1 | theorem 2
-
-Q3/Proofs/RKHS_cap_rayleigh.lean
-  lines: 588 (nonempty 552), namespaces: 1
-  lemma 24 | theorem 0 | def 0
-
-Q3/Proofs/Q_Nonneg_Bridge.lean
-  lines: 74 (nonempty 56), namespaces: 1
-  theorem 2
-```
-
-## Aggregate Totals
-
-```
-Q3/Proofs (48 files)
-  lines: 9970 (nonempty 8621), namespaces: 41
-  lemma 256 | theorem 103 | def 156 | abbrev 1 | structure 1 | instance 1
-
-Q3 total (80 files)
-  lines: 18217 (nonempty 15811), namespaces: 64
-  lemma 392 | theorem 199 | def 288 | abbrev 8 | structure 8 | instance 5
-```
+### Document Status
+| Status | Count |
+|--------|-------|
+| proven | 40 |
+| in_progress | 4 |
 
 ---
 
@@ -125,19 +94,31 @@ Q3 total (80 files)
 
 | Axiom | Status | Proof Source |
 |-------|--------|--------------|
-| A1_density_WK | ✅ PROVEN | Aristotle + HatInterpolation |
-| Q_Lipschitz_on_W_K | ✅ PROVEN | Manual + bridges |
-| RKHS_contraction | ✅ PROVEN | Manual + rescaling |
-| P_A_continuous | ✅ PROVEN | A3_Floor_Main (theorem) |
-| Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom | ❌ OPEN | Q_nonneg_on_atoms_fourier_axiom |
+| a_star_pos | ✅ CLOSED | positivity (2026-01-21) |
+| a_star_continuous | ✅ CLOSED | Mathlib Gamma continuity |
+| a_star_bdd_on_compact | ✅ CLOSED | continuous + compact |
+| a_star_even | ✅ CLOSED | Mathlib Gamma_conj (2026-01-20) |
+| A1_density_WK | ✅ CLOSED | Aristotle + HatInterpolation |
+| Q_Lipschitz_on_W_K | ✅ CLOSED | Manual + bridges |
+| RKHS_contraction | ✅ CLOSED | Manual + rescaling |
+| P_A_continuous | ✅ CLOSED | A3_Floor_Main |
+| Schur_test | ⚪ EXTERNAL | Classical (L2 vs L∞ insight) |
+| Weil_criterion | ⚪ EXTERNAL | Classical literature |
+| Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom | ❌ OPEN | Blocked: AtomCone_K_fixed gap |
 
-**Current: 6/7 Tier-2 axioms closed** (remaining: Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom)
+**Current: 6 axioms total (3 standard + 3 project)**
+- Standard: `propext`, `Classical.choice`, `Quot.sound`
+- Project: `Weil_criterion`, `Schur_test`, `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+
+**Remaining closable: 1** (`Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`)
 
 ---
 
 ## Regenerate Script
 
 ```bash
+cd /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
+
 # Quick stats
 echo "=== Q3 Stats ===" && \
 find Q3 -name "*.lean" | xargs wc -l | tail -1 && \
@@ -152,6 +133,10 @@ find aristotle_output -name "*.lean" | xargs wc -l | tail -1
 # A3_FLOOR
 echo "=== A3_FLOOR ===" && \
 find . -maxdepth 1 -name "A3_FLOOR*.lean" | xargs wc -l | tail -1
+
+# DB stats
+python3 aristotle_db/parse_lean.py list-docs | wc -l
+python3 aristotle_db/parse_lean.py list-lemmas | wc -l
 ```
 
 ---
