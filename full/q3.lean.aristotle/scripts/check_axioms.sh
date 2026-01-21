@@ -65,6 +65,26 @@ AXIOMS=$(echo 'import Q3.Main
 echo "$AXIOMS"
 echo ""
 
+# Step 2.5: Check for sorryAx (indicates incomplete proofs)
+echo "═══ Step 2.5: sorryAx Check ═══"
+if echo "$AXIOMS" | grep -q "sorryAx"; then
+    echo "✗ ERROR: sorryAx detected in proof chain!"
+    echo ""
+    echo "  This means there's a 'sorry' somewhere in the proof."
+    echo "  Options:"
+    echo "    1. Find and close the sorry (preferred)"
+    echo "    2. Convert to explicit bridge axiom (if closure is hard)"
+    echo "    3. Revert wiring to use axiom instead of theorem"
+    echo ""
+    echo "  To find sorry locations:"
+    echo "    grep -rn 'sorry' Q3/Proofs/"
+    echo ""
+    exit 1
+else
+    echo "✓ No sorryAx detected"
+fi
+echo ""
+
 # Step 3: Count axioms
 echo "═══ Step 3: Axiom Count ═══"
 
@@ -75,30 +95,37 @@ AXIOMS_ONLY=$(echo "$AXIOMS" | sed "s/'Q3.Main.RH_of_Weil_and_Q3' depends on axi
 PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
-echo "Standard Lean: $STANDARD_COUNT (expected: 3)"
-echo "Project:       $PROJECT_COUNT (expected: 4)"
-echo "TOTAL:         $TOTAL (expected: 7)"
+# Expected counts (update when axioms change)
+EXPECTED_STANDARD=3
+EXPECTED_PROJECT=4  # Weil_criterion, Schur_test, A1_density_WK_axiom, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
+
+echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
+echo "Project:       $PROJECT_COUNT (expected: $EXPECTED_PROJECT)"
+echo "TOTAL:         $TOTAL (expected: $EXPECTED_TOTAL)"
 echo ""
 
 # Step 4: Classification
 echo "═══ Step 4: Axiom Classification ═══"
 
 echo "Level 1 (Classical Literature):"
-echo "$AXIOMS" | grep -E "Weil_criterion|digamma_one_fourth_neg|Schur_test" | sed 's/^/  /' || echo "  (none found)"
+echo "$AXIOMS" | grep -E "Weil_criterion|digamma_one_fourth_neg|Schur_test" | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
-echo "$AXIOMS_ONLY" | grep -E "RKHS_contraction|Q_nonneg_on_atoms|A1_density" | sed 's/^/  /' || echo "  (none found)"
+echo "$AXIOMS_ONLY" | grep -E "RKHS_contraction|Q_nonneg_on_atoms|A1_density" | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 echo "Level 3 (Bridge Lemmas):"
-echo "$AXIOMS" | grep -E "Lipschitz_bridge" | sed 's/^/  /' || echo "  (none found)"
+echo "$AXIOMS" | grep -E "Lipschitz_bridge" | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 
 # Step 5: Verification
 echo "═══ Step 5: Philosophy Verification ═══"
 
+# Expected axioms in proof chain (update when axioms are closed/added)
+# NOTE: A1_density_WK_axiom is AXIOM FALLBACK (theorem has 1 sorry)
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion"
     "Q3.Schur_test"
@@ -134,7 +161,7 @@ echo ""
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                    VERIFICATION PASSED ✓                      ║"
 echo "║                                                                ║"
-echo "║  Axiom count: $TOTAL (4 Project + 3 Standard)                  ║"
+printf "║  Axiom count: %d (%d Project + %d Standard)                   ║\n" "$TOTAL" "$PROJECT_COUNT" "$STANDARD_COUNT"
 echo "║  Philosophy: Compliant                                         ║"
 echo "║  Ready to commit!                                              ║"
 echo "╚════════════════════════════════════════════════════════════════╝"
