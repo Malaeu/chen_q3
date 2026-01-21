@@ -1,0 +1,26 @@
+% Critical clarifications (FAQ)
+% Heading is provided by main.tex as \section*{Critical Clarifications (FAQ)}
+\paragraph{FAQ-1 (Nodes are not dense on compacts).} On $[-K,K]$ the active set $\{\alpha_n=\tfrac{\log n}{2\pi}\}$ is finite: $n\le N(K)=\lfloor e^{2\pi K}\rfloor$. The minimal gap
+\begin{equation}\label{eq:FAQ_critical_points-formula-1}
+\delta_K=\min_{1\le n<N(K)}(\alpha_{n+1}-\alpha_n)=\frac{1}{2\pi}\min_{1\le n<N(K)}\log\Big(1+\frac1n\Big)\ge \frac{1}{2\pi\,(N(K)+1)} > 0.
+\end{equation}
+\paragraph{FAQ-2 (Weight upper bound).} For $w(n)=\La(n)/\sqrt n$ one has $w(n)\le \log n/\sqrt n\le 2/e< 3/4 <1$. Thus $w_{\max}<1$ on every compact. (Rational bound: $2/e\approx 0.7358 < 3/4 = 0.75$.)
+\paragraph{FAQ-3 (Finite Gram).} The Gram matrix $G$ of $\{k_{\alpha_n}\}$ on $[-K,K]$ is finite dimensional; $\|T_P\|=\|W^{1/2}GW^{1/2}\|$.
+\paragraph{FAQ-4 (Existence of $t_{\min}$).} As $t\downarrow 0$, $S_K(t)=\tfrac{2e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}\downarrow0$. Hence for any $\eta_K>0$ there exists
+\begin{equation}\label{eq:FAQ_critical_points-formula}
+t_{\min}(K)=\frac{\delta_K^2}{4\,\ln\!\bigl((2+\eta_K)/\eta_K\bigr)}\quad\text{with}\quad S_K(t_{\min})\le \eta_K.
+\end{equation}
+\paragraph{FAQ-5 (Dictionary density).} We assert $\varepsilon$--density of the cone $\mathcal C_K$ by a finite dictionary $\mathcal G_K$ at fixed $K$, not global density by a fixed finite set. See Theorem~A1$'$ and T5.
+\paragraph{FAQ-6 (Activity intervals).} $I_n=[B_n,B_{n+1})$ with $B_n=\tfrac{\log n}{2\pi}$. Crossing $I_n\to I_{n+1}$ adds a single new node $\alpha_{n+1}$, enabling the one--prime induction.
+\paragraph{FAQ-7 (Weil topology).} $\mathcal W=\bigcup_K\mathcal W_K$ with the inductive limit topology; $Q$ is continuous on each $\mathcal W_K$ (Lemma~\ref{a2:lem:A2}) and thus on $\mathcal W$ (Theorem~\ref{t5:thm:T5-transfer}).
+\paragraph{FAQ-8 (Link to zeta zeros).} See the Weil criterion and Section ``Weil Criterion and Implication to RH''.
+\paragraph{FAQ-9 (Example at $K=1$).} Take $N(1)=\lfloor e^{2\pi}\rfloor$, $\delta_1\ge \frac{1}{2\pi(N(1)+1)}$, choose $t_{\min}(1)$ by the formula above with a concrete $\eta_1\in(0,1)$, compute $S_1(t_{\min})$, and verify $\rho_1=w_{\max}+\sqrt{w_{\max}}\,S_1(t_{\min})<1$. PSD of a small dictionary $\mathcal G_1$ can be checked for $M\in\{10,20,40\}$ by the CLI.
+\paragraph{FAQ-10 (Role of Fej\'er).} The Fej\'er factor localizes to compacts and contributes to BV/Lipschitz regularity of the symbol; the heat factor yields smoothing and Gaussian-in-log tails. Their product preserves positivity and supplies the regularity required for A3 and the RKHS estimates.
+
+\paragraph{FAQ-11 (Anti-patterns: what we \emph{do not} assume).}
+\emph{No discrete spectrum claim.} We do not model the problem via a selfadjoint operator with a pure point spectrum on a Paley--Wiener space; on the Fourier side, multiplication by $\xi$ has absolutely continuous spectrum on $[-\Lambda,\Lambda]$.
+\emph{No rigged eigenfunctions.} We do not use generalized eigenvectors like $e^{i\gamma \tau}$ (with Dirac masses in frequency) as elements of our Hilbert space.
+\emph{No heat-trace/Weyl shortcuts.} We do not extract Weyl counting from $\mathrm{tr}\,e^{-tR^2}$; all lower bounds are via the symbol barrier for Toeplitz matrices and RKHS operator norms.
+\emph{No circular determinant logic.} We do not identify a Fredholm determinant with $\xi(s)$ nor assume RH to deduce bijections; our route to RH is exclusively through Weil's positivity criterion on an explicit test class.
+
+\paragraph{FAQ-12 (Our stance).} The proof skeleton is Toeplitz + RKHS + Weil: (i) A3 handles the Archimedean symbol $P_A\in\mathrm{Lip}(1)$ and keeps primes as a finite-rank operator; (ii) RKHS yields a strict contraction on each compact $[-K,K]$; (iii) T5 transfers positivity to the inductive limit; (iv) the Weil criterion (see Section ``Weil Criterion and Implication to RH'') finishes the implication.

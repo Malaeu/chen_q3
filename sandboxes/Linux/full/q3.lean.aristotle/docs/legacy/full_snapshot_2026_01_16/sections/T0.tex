@@ -1,0 +1,88 @@
+% Lemma T0 -- Guinand--Weil Normalization Crosswalk for Q
+
+% Macros for unified normalization
+\newcommand{\aarch}{a} % Archimedean density a(\xi)
+\newcommand{\xilog}{\xi_n} % nodes \xi_n = log n / (2\pi)
+
+\subsection{Fourier normalization adjustments}\label{conv:fourier}
+We fix
+\begin{equation}\label{eq:T0_Q_normalization-formula-4}
+  \widehat{\varphi}(\xi)=\int_{\mathbb R}\varphi(t)\,e^{-2\pi i t \xi}\,dt,
+  \qquad
+  \varphi(t)=\int_{\mathbb R}\widehat{\varphi}(\xi)\,e^{2\pi i t \xi}\,d\xi,
+\end{equation}
+and use the Lebesgue measure $d\xi$ on the frequency side. For even test functions, all identities are taken in the cosine form.
+
+\begin{proposition}[T0' --- Guinand--Weil matching]\label{prop:T0-GW}
+Under Convention~\ref{conv:fourier}, the repository normalization $Q(\varphi)$ matches the classical Guinand--Weil functional~\cite{Guinand1948,Weil1952} after the change of variables $\eta=2\pi\xi$:
+\begin{equation}\label{eq:T0_Q_normalization-q-functional}
+  Q(\varphi)\ =\ Q_{\mathrm{GW}}(\varphi)\ \text{ with } \ \eta=2\pi\xi,\ d\eta=2\pi\,d\xi.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Make the substitution $\eta=2\pi\xi$ in all frequency integrals (see \cite[Ch.~2]{SteinShakarchi2003}); by evenness the sine parts vanish and the cosine parts coincide. The Jacobian $d\eta=2\pi\,d\xi$ is absorbed by the fixed normalization of $\widehat{\varphi}$.
+\end{proof}
+
+\begin{lemma}[T0: Q normalization crosswalk]\label{t0:lem:T0}
+Let $\varphi_{\mathrm{GW}}\in C_c(\mathbb R)$ be even and nonnegative on the Guinand--Weil frequency axis $\eta\in\mathbb R$. Define
+\begin{equation}\label{eq:T0_Q_normalization-formula}
+Q_{\mathrm{GW}}(\varphi_{\mathrm{GW}})
+\ :=\ \int_{\mathbb R} \Bigl(\log\pi-\Re\psi\Big(\tfrac14+\tfrac{i\eta}{2}\Big)\Bigr)\,\varphi_{\mathrm{GW}}(\eta)\,d\eta
+\ -\ \sum_{n\ge2}\,\frac{\Lambda(n)}{\sqrt n}\,\bigl(\varphi_{\mathrm{GW}}(\log n)+\varphi_{\mathrm{GW}}(-\log n)\bigr).
+\end{equation}
+On our (repository) frequency axis $\xi:=\eta/(2\pi)$, define the even window $\varphi(\xi):=\varphi_{\mathrm{GW}}(2\pi\xi)$, nodes $\xi_n:=\frac{\log n}{2\pi}$, and the Archimedean densities
+\begin{equation}\label{eq:T0_Q_normalization-formula-3}
+\boxed{\ \aarch(\xi)\ :=\ \log\pi-\mathrm{Re}\,\psi\Big(\tfrac14+i\pi\xi\Big),\qquad \astar(\xi):=2\pi\,\aarch(\xi)\ }.
+\end{equation}
+Then the repository's quadratic functional
+\begin{equation}\label{eq:T0_Q_normalization-q-functional-2}
+Q(\varphi)\ :=\ \int_{\mathbb R} \astar(\xi)\,\varphi(\xi)\,d\xi\ -\ \sum_{n\ge2}\,\wQ{n}\,\varphi(\xilog)
+\end{equation}
+coincides with $Q_{\mathrm{GW}}$ evaluated at $\varphi_{\mathrm{GW}}$, i.e.
+\begin{equation}\label{eq:T0_Q_normalization-q-functional-1}
+Q(\varphi)\ =\ Q_{\mathrm{GW}}(\varphi_{\mathrm{GW}}),\qquad \eta=2\pi\xi,\ \ \varphi_{\mathrm{GW}}(\eta)=\varphi(\eta/2\pi).
+\end{equation}
+In operator or RKHS estimates we use the undoubled weights \(\wRKHS{n}\); the evenization doubling appears only in the $Q$ functional.\par
+\end{lemma}
+\begin{proof}
+Change variables $\eta=2\pi\xi$ in the Archimedean integral: $d\eta=2\pi\,d\xi$ and $\psi(\tfrac14+\tfrac{i\eta}{2})=\psi(\tfrac14+i\pi\xi)$. Hence
+\begin{equation}\label{eq:T0_Q_normalization-formula-2}
+\int_{\mathbb R}\!\Bigl(\log\pi-\Re\psi\Big(\tfrac14+\tfrac{i\eta}{2}\Big)\Bigr)\,\varphi_{\mathrm{GW}}(\eta)\,d\eta
+\ =\ \int_{\mathbb R} 2\pi\,\Bigl(\log\pi-\Re\psi\Big(\tfrac14+i\pi\xi\Big)\Bigr)\,\varphi(\xi)\,d\xi.
+\end{equation}
+For the prime term, $\varphi_{\mathrm{GW}}(\pm\log n)=\varphi(\pm\xi_n)$ with $\xi_n=\tfrac{\log n}{2\pi}$. Since $\varphi$ is even, $\varphi(\xi_n)+\varphi(-\xi_n)=2\varphi(\xi_n)$. Thus
+\begin{equation}\label{eq:T0_Q_normalization-formula-1}
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,\bigl(\varphi_{\mathrm{GW}}(\log n)+\varphi_{\mathrm{GW}}(-\log n)\bigr)
+\ =\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\varphi(\xi_n).
+\end{equation}
+Combining the two identities yields $Q(\varphi)=Q_{\mathrm{GW}}(\varphi_{\mathrm{GW}})$, as claimed; the properties of the digamma function used here follow from \cite[§5.2]{NISTDLMF}.
+\end{proof}
+\begin{remark}
+(i) The choice of doubling the prime weights $w(n)=2\Lambda(n)/\sqrt n$ at positive nodes $\xi_n>0$ is equivalent to placing unit weights at both $\pm\xi_n$; evenness of $\varphi$ makes the two conventions identical. (ii) If one prefers to keep $a(\xi)$ without the Jacobian factor $2\pi$, then the same equality holds with $Q(\varphi)$ written as $\int (2\pi a)\,\varphi\,d\xi-\sum 2\Lambda(n)/\sqrt n\,\varphi(\xi_n)$; Lemma~\ref{t0:lem:T0} records the canonical $\astar$ that directly matches the Guinand--Weil form under $\eta=2\pi\xi$. (iii) The digamma identities used throughout are tabulated in the NIST Digital Library of Mathematical Functions~\cite{NISTDLMF}.
+\end{remark}
+
+\begin{lemma}[Invariance under normalisation conventions]\label{lem:T0-normalisation-invariance-full}
+Different choices of Fourier-transform normalisations and node indexing yield
+equivalent formulations of the Weil positivity criterion.  Specifically:
+\begin{enumerate}[label=(\alph*)]
+  \item Switching from the unitary normalisation $\widehat\Phi(\xi)=\int \Phi(x)\,e^{-2\pi i x\xi}\,dx$
+  to the measure $\widehat\Phi'(\eta)=\int \Phi(x)\,e^{-i\eta x}\,dx$ with $\eta=2\pi\xi$
+  induces the density rescaling $a^*(\xi)=2\pi a(\xi)$ and preserves the form of $Q$.
+  \item Replacing the node sequence $\xi_n=\log n/(2\pi)$ by $\pm\log n/(2\pi)$
+  preserves the symmetry of the sampling operator and the archimedean/prime decomposition.
+  \item The quadratic form $Q(\phi)$ defined via the Guinand--Weil convention
+  coincides with $Q_{GW}(\phi_{GW})$ when test functions are converted via the measure factor.
+\end{enumerate}
+In particular, the positivity of $Q$ is independent of these technical choices.
+\end{lemma}
+\begin{proof}
+Each rescaling is a linear change of variable that preserves the spectral gap
+and the compact-by-compact structure.  The node-symmetry $\pm\log n/(2\pi)$
+is already built into the Guinand--Weil formalism; see \cite{Weil1952}, §16.
+The measure conversion $a^*(\xi)=2\pi a(\xi)$ follows from the Jacobian of the
+coordinate change $\eta=2\pi\xi$.
+\end{proof}
+
+\smallskip
+\noindent\textit{Transition.}
+With the normalization T0 established, we now verify local density of the Fej\'er$\times$heat cone on each compact in Section~\ref{a1:thm:A1-local-density}.

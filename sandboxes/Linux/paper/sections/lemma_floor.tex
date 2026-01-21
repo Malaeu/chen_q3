@@ -1,0 +1,106 @@
+\section{Positivity of the Archimedean Floor}
+\label{sec:floor}
+
+\begin{lemma}[Archimedean Floor]
+\label{lem:floor}
+For the Lorentzian model kernel $a(\xi) = 1/(1+\xi^2)$ with window
+$W_B(\xi) = (1 - |\xi|/B)_+$, the periodized symbol satisfies
+\begin{equation}
+    c_{\text{arch}}(B) := \min_{\theta} P_A(\theta) \geq c_0 > 0
+\end{equation}
+for all sufficiently large $B$, with $c_0 \approx 0.19$.
+\end{lemma}
+
+\subsection{The Periodization}
+
+The symbol is constructed via Poisson summation:
+\begin{equation}
+    P_A(\theta) = \sum_{n \in \Z} a(\theta + 2\pi n) \cdot W_B(\theta + 2\pi n).
+\end{equation}
+
+\begin{remark}[Physical Interpretation]
+This represents the superposition of ``copies'' of the kernel $a(\xi)$
+centered at $\theta + 2\pi n$, each weighted by the window function.
+As $B$ increases, more copies contribute.
+\end{remark}
+
+\subsection{Why the Floor is Positive}
+
+\begin{proposition}[Overlap Condition]
+\label{prop:overlap}
+For $B > \pi$, adjacent windows overlap, ensuring $P_A(\theta) > 0$
+for all $\theta$.
+\end{proposition}
+
+\begin{proof}[Sketch]
+At $\theta = \pi$ (the ``worst'' point):
+\begin{itemize}
+    \item The $n = 0$ term contributes $a(\pi) \cdot W_B(\pi)$.
+    \item The $n = -1$ term contributes $a(\pi - 2\pi) \cdot W_B(-\pi)$.
+    \item For $B > \pi$, both $W_B(\pi)$ and $W_B(-\pi)$ are positive.
+\end{itemize}
+Since $a(\xi) > 0$ always (Lorentzian is positive), the sum is positive.
+\end{proof}
+
+\subsection{Monotonicity of the Floor}
+
+\begin{lemma}[Floor Monotonicity]
+\label{lem:floor-monotone}
+The function $c_{\text{arch}}(B)$ is non-decreasing in $B$.
+\end{lemma}
+
+\begin{proof}
+Increasing $B$ adds positive contributions (since $a(\xi) \geq 0$)
+without removing any existing ones.
+\end{proof}
+
+\subsection{Saturation of the Floor}
+
+As $B \to \infty$, the floor approaches a limit:
+\begin{equation}
+    c_{\text{arch}}(\infty) = \min_\theta \sum_{n \in \Z} a(\theta + 2\pi n)
+    = \sum_{n \in \Z} a(\pi + 2\pi n).
+\end{equation}
+
+For the Lorentzian:
+\begin{equation}
+    c_{\text{arch}}(\infty) = \sum_{n \in \Z} \frac{1}{1 + (\pi + 2\pi n)^2}
+    \approx 0.1973.
+\end{equation}
+
+\subsection{Numerical Results}
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+$B$ & Floor $c_{\text{arch}}$ & Ceiling $\|P_A\|_\infty$ & Ratio $\delta_*$ \\
+\hline
+1 & 0.0000 & 0.9237 & 0.000 \\
+5 & 0.0632 & 0.9242 & 0.068 \\
+10 & 0.1178 & 0.9411 & 0.125 \\
+20 & 0.1558 & 0.9602 & 0.162 \\
+50 & 0.1851 & 0.9787 & 0.189 \\
+100 & 0.1973 & 0.9873 & 0.200
+\end{tabular}
+\end{center}
+
+\begin{remark}
+The value $c_{\text{arch}} \approx 0.19$ matches Q3's stated constant
+$c_{\text{arch}} \approx 0.1878$ remarkably well.
+\end{remark}
+
+\subsection{Comparison: Decay Rate vs Floor}
+
+The stability ratio $\delta_*$ depends on the kernel's decay rate:
+
+\begin{center}
+\begin{tabular}{l|c|c}
+Kernel & Decay & $\delta_*$ \\
+\hline
+Gamma $|\Gamma|^2$ & $e^{-c|\xi|}$ & $\approx 0$ \\
+Gaussian & $e^{-\xi^2}$ & $\approx 0.01$ \\
+Lorentzian $1/(1+\xi^2)$ & $|\xi|^{-2}$ & $\approx 0.20$ \\
+Mellin $1/(1+|\xi|^{1/2})$ & $|\xi|^{-1/2}$ & $\approx 0.79$
+\end{tabular}
+\end{center}
+
+\textbf{Key Insight:} Slower polynomial decay $\Rightarrow$ larger $\delta_*$.

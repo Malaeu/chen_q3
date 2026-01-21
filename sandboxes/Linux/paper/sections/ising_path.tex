@@ -1,0 +1,69 @@
+% Ising route: formal statement
+\section*{Appendix: Ising / Chen route to $E_{\mathrm{comm}}$}
+
+This appendix packages the Ising–Chen path (``Path~2'') into a single formal
+criterion. We encode twin data into an Ising model whose interaction matrix is
+the commutator kernel $B=A^\top A$.
+
+\paragraph{Ising encoding.}
+For $N=|T(X)|$ and $\sigma\in\{\pm1\}^N$, set
+\[
+    f_X(\sigma;\lambda,\beta)
+    := \exp\!\big(\lambda\cdot\sigma + \beta\,\sigma^\top B\,\sigma\big),
+    \qquad \lambda_p=(\log p)^2,\ \ \beta>0.
+\]
+Partition function $Z_X=\mathbb{E}_\mu[f_X]$, magnetisation
+$m_p=\partial_{\lambda_p}\log Z_X$, susceptibility
+$\chi_{pq} = \partial m_p / \partial\lambda_q$.
+
+\paragraph{High-temperature bridge.}
+For $\beta\|B\|_{op}\ll1$,
+\[
+    \chi \;=\; I + 2\beta B + O(\beta^2\|B\|_{op}^2),
+    \qquad
+    \mathrm{Var}_\mu(\lambda\cdot\sigma)
+    = \|\lambda\|^2 + 2\beta\,\lambda^\top B\lambda + O(\beta^2\|B\|_{op}^2\|\lambda\|^2).
+\tag{HT}
+\]
+Since $E_{\mathrm{comm}}(\Phi_X)=\lambda^\top B\lambda$, (HT) yields
+\[
+    E_{\mathrm{comm}}(\Phi_X)
+    \;=\; \frac{1}{2\beta}\Big(\mathrm{Var}_\mu(\lambda\cdot\sigma)-\|\lambda\|^2\Big)
+          + O(\beta\|B\|_{op}^2\|\lambda\|^2).
+\tag{Bridge}
+\]
+
+\paragraph{Heat semigroup.}
+Applying Chen's heat semigroup $P_\tau$ maps $(\lambda,\beta)$ to
+$(e^{-\tau}\lambda, e^{-2\tau}\beta)$ and multiplies by a harmless factor
+$e^{2\beta\mathrm{Tr}(B)}$. Thus the variance of $P_\tau f_X$ satisfies the
+same bridge with an $e^{-2\tau}$ prefactor.
+
+\begin{proposition}[Ising variance $\Rightarrow E_{\mathrm{comm}}$]\label{prop:ising-bridge}
+Fix $t>0$, set $\tau=(4t)^{-1}$ and choose $\beta>0$ with
+$\beta\|B\|_{op}\le \tfrac12$. Then
+\[
+    E_{\mathrm{comm}}(\Phi_X)
+    \;\asymp\; \frac{e^{2\tau}}{2\beta}\,
+    \Big(\mathrm{Var}_\mu(P_\tau f_X) - \|e^{-\tau}\lambda\|^2\Big),
+\]
+with absolute implicit constants (independent of $X$).
+\end{proposition}
+
+\begin{theorem}[Path~2 criterion]\label{thm:ising-path}
+Assume the finite-twins upper bound SC2 (proved) and pick $\beta(t)$ as above.
+If there exists $\delta>0$ such that $\mathrm{Var}_\mu(P_\tau f_X)\gtrsim X^\delta$,
+then $R(\Phi_X)=E_{\mathrm{comm}}/E_{\mathrm{lat}}$ grows like $X^\delta$ up to
+logs, contradicting SC2 under finite twins. Hence twins are infinite.
+\end{theorem}
+
+\paragraph{Key analytic target.}
+It suffices to show $\mathrm{Var}_\mu(P_\tau f_X)$ grows (any positive power).
+This can be achieved by proving a power-law lower bound on the kernel average
+$\overline{B}(X)=N^{-2}\sum_{p,q}B_{pq}$; numerics give
+$\overline{B}(X)\sim X^{2.29}$.
+
+\paragraph{Numerical probe.}
+The script \texttt{src/bpq\_growth.py} evaluates $B_{pq}(X)$ for fixed twins
+$(p,q)$ versus $X$, giving log–log slopes $\approx 2.2$ for $p=3,q=5$ up to
+$X=3\cdot10^5$, consistent with the required power-law growth.

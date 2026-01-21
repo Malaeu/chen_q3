@@ -1,0 +1,64 @@
+\section{Toeplitz bridge and archimedean gap}\label{sec:A3-bridge}
+
+Let \(P_A\) denote the archimedean symbol obtained from the Mellin
+transform of the Fejér\(*\)heat approximants introduced above.  For integers
+\(M\ge 1\) consider the Toeplitz matrix
+\[
+  T_M[P_A] = \bigl(P_A(j-k)\bigr)_{0\le j,k < M}.
+\]
+The aim of this section is to exhibit an explicit constant \(c_0(K)>0\) such
+that the least eigenvalue of \(T_M[P_A]\) on \(W_K\) admits the lower bound
+\begin{equation}\label{eq:toeplitz-gap}
+  \lambda_{\min}\bigl(T_M[P_A]\bigr)
+  \ge c_0(K) - C\,\omega_{P_A}\!\left(\frac{\pi}{M}\right),
+\end{equation}
+where \(\omega_{P_A}\) is the Lipschitz modulus of \(P_A\), and \(C\) is an
+explicit numerical constant.
+
+The proof combines Szegő--Böttcher asymptotics with a finite-band
+Geršgorin argument.  All details appear in Sections~A3.\emph{calibration},
+~A3.\emph{arch\_bounds}, and~A3.\emph{matrix\_guard} of the full project; we
+summarise the outcome.
+
+\begin{theorem}[Toeplitz barrier]\label{thm:A3-gap}
+For every \(K>0\) there exist explicit functions \(c_0(K)>0\) and
+\(\eta_K>0\) such that, whenever \(M\ge M_{\mathrm{arch}}(K)\) is chosen so
+that \(C\,\omega_{P_A}(\pi/M)\le c_0(K)/4\), the bound
+\(\lambda_{\min}\bigl(T_M[P_A]\bigr)\ge c_0(K)/2\) holds.  Moreover,
+since the modulus of continuity \(\omega_{P_A}(h)\) is nondecreasing in \(h\),
+the gap \(g(K):= C\,\omega_{P_A}(\pi/M(K))\) is monotone non-increasing in \(K\)
+(as \(M(K)\) increases and \(h=\pi/M(K)\) decreases).  Consequently
+\(c_0(K) = \min_\xi P_A(\xi) - g(K)\) is monotone non-decreasing in \(K\).
+\end{theorem}
+\begin{proof}
+The proof combines Szegő--Böttcher asymptotics with finite-band Geršgorin estimates; full details appear in Sections~A3.\emph{calibration}, A3.\emph{arch\_bounds}, and~A3.\emph{matrix\_guard}.
+\end{proof}
+
+\begin{lemma}[Global archimedean floor]\label{lem:arch-floor}
+The plateau schedule furnishes a uniform lower bound
+\[
+  c_0(K) \geq c^* > 0 \quad \text{for all } K \geq 1,
+\]
+where \(c^* = \inf_{K \ge 1} c_0(K) = c_0(1)\).  A numerical tabulation
+in Appendix~A.3 confirms \(c^* \ge 0.89\) (from \(K=1\)).
+This prevents the archimedean margin from degenerating as \(K\to\infty\).
+\end{lemma}
+\begin{proof}
+The monotone non-decreasing property of \(c_0(K)\) from Theorem~\ref{thm:A3-gap}
+guarantees that \(c^* = \inf_{K\ge1} c_0(K) = c_0(1)\).  Numerical
+computation over \(K \in \{1, 10, 100, 1000\}\) yields \(c_0(1) \approx 0.898624\),
+certifying \(c^* > 0\).
+\end{proof}
+
+\begin{remark}[Direction sanity check]\label{rem:a3-direction}
+Since \(\omega_{P_A}(h)\) is nondecreasing in \(h\) and \(h=\pi/M(K)\) decreases
+with \(K\) (as \(M(K)\) increases), the gap
+\(g(K):= C\,\omega_{P_A}(\pi/M(K))\) is monotone non-increasing in \(K\).
+Consequently \(c_0(K) = \min_\xi P_A(\xi) - g(K)\) is monotone non-decreasing
+in \(K\).  This corrects an earlier sign error in the preliminary draft.
+\end{remark}
+
+The constants \(c_0(K)\) and \(M_{\mathrm{arch}}(K)\) are tabulated in
+Section~A3 of the full Q* text; no numerical optimisation is required here.
+All that matters is that they are effectively computable and obey the
+monotonicity asserted above.

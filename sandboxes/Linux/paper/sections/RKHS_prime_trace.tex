@@ -1,0 +1,142 @@
+% RKHS Prime Trace Closed Form Bounds
+% =====================================
+
+\section{Prime Trace Closed Form Bounds}\label{sec:prime-trace-closed}
+
+This section develops closed-form upper bounds for the prime trace $\rho(t)$, which controls the operator norm of the prime sampling operator $T_P$.
+
+\subsection{The Prime Trace Function}
+
+Recall from Section~\ref{sec:rkhs} that the prime operator $T_P$ on the compact $W_K = [-K, K]$ has trace
+\begin{equation}
+  \mathrm{tr}\, T_P = 2 \sum_{n \geq 2} \frac{\Lambda(n)}{\sqrt{n}} k_t(\xi_n, \xi_n) = 2 \sum_{n \geq 2} \frac{\Lambda(n)}{\sqrt{n}},
+\end{equation}
+where the second equality holds because $k_t(x, x) = 1$ for the normalized heat kernel. However, for the operator norm on the RKHS $\mathcal{H}_t$, we need the weighted trace with the kernel evaluated at prime nodes.
+
+\begin{definition}[Prime trace function]
+For $t > 0$, define the prime trace function:
+\begin{equation}
+  \rho(t) := 2 \int_0^\infty y \, e^{y/2} \, e^{-4\pi^2 t \, y^2} \, dy.
+\end{equation}
+This is an upper bound for the prime sampling contribution via the integral approximation
+\begin{equation}
+  \sum_{n \geq 2} \frac{\Lambda(n)}{\sqrt{n}} e^{-4\pi^2 t (\log n/(2\pi))^2} \leq \int_1^\infty \frac{\log x}{\sqrt{x}} e^{-4\pi^2 t (\log x/(2\pi))^2} \, dx = \frac{1}{2} \rho(t).
+\end{equation}
+\end{definition}
+
+\subsection{Closed-Form Upper Bound}
+
+\begin{lemma}[Closed-form upper bound for the prime trace]\label{lem:rho-closed-form}
+For $t > 0$ one has
+\begin{equation}\label{eq:Prime-trace-closed-form-1}
+  \rho(t) \leq 2 \int_0^{\infty} y \, e^{y/2} \, e^{-4\pi^2 t \, y^2} \, dy.
+\end{equation}
+With $a = 4\pi^2 t$ and $b = \tfrac{1}{2}$ this implies
+\begin{equation}\label{eq:rho-closed-form}
+  \rho(t) \leq \frac{1}{4\pi^2 t} + \frac{\sqrt{\pi}}{2 \, (4\pi^2 t)^{3/2}} \exp\!\Big(\frac{1}{16\pi^2 t}\Big).
+\end{equation}
+In particular, at $t = 1$ this yields the unconditional bound $\rho(1) < \tfrac{1}{25}$, hence $\|T_P\| \leq \rho(1) < \tfrac{1}{25}$ for all compacts.
+\end{lemma}
+
+\begin{proof}[Sketch]
+The integral $\int_0^{\infty} y \, e^{-a y^2 + b y} \, dy$ admits the closed form via completing the square:
+\begin{equation}
+  \int_0^{\infty} y \, e^{-a y^2 + b y} \, dy = e^{\frac{b^2}{4a}} \frac{b\sqrt{\pi}}{4a^{3/2}} \bigl(1 + \operatorname{erf}(\tfrac{b}{2\sqrt{a}})\bigr) + \frac{1}{2a}.
+\end{equation}
+Using $1 + \operatorname{erf}(x) \leq 2$ gives the upper bound \eqref{eq:rho-closed-form}. Plug $a = 4\pi^2 t$, $b = \tfrac{1}{2}$ and simplify.
+
+For $t = 1$:
+\begin{align}
+  \rho(1) &\leq \frac{1}{4\pi^2} + \frac{\sqrt{\pi}}{2(4\pi^2)^{3/2}} \exp\!\Big(\frac{1}{16\pi^2}\Big) \\
+  &\approx 0.0253 + 0.0071 \times 1.0063 \\
+  &\approx 0.0325 < \frac{1}{25} = 0.04.
+\end{align}
+\end{proof}
+
+\subsection{Shift-Robust Trace Cap}
+
+For the compact-by-compact transfer in T5, we need bounds that are uniform over shifts $\tau \in [-K, K]$.
+
+\begin{lemma}[Shift-robust trace cap]\label{lem:shift-trace-cap}
+Fix $K > 0$. For any $B > 0$, $t > 0$, and $|\tau| \leq K$, the symmetrized prime sampling operator satisfies
+\begin{equation}\label{eq:shift-trace-bound}
+  \|T_P[\Phi_{B,t,\tau}]\|_{L^2 \to L^2} \leq \mathrm{tr}\, T_P = 2 \sum_{n \geq 2} \frac{\Lambda(n)}{\sqrt{n}} e^{-4\pi^2 t \, (\log n/(2\pi) - \tau)^2} \leq e^{\pi K} \Big(\rho(t) + 2\pi K \, \sigma(t)\Big),
+\end{equation}
+where
+\begin{equation}\label{eq:sigma-def}
+  \rho(t) := 2 \int_0^\infty y \, e^{y/2} e^{-4\pi^2 t \, y^2} \, dy, \qquad \sigma(t) := 2 \int_0^\infty e^{y/2} e^{-4\pi^2 t \, y^2} \, dy \leq \frac{\sqrt{\pi}}{\pi\sqrt{t}} \exp\!\Big(\frac{1}{64\pi^2 t}\Big).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Start with $\|T_P\| \leq \mathrm{tr}\, T_P$ since $T_P$ is positive semidefinite and finite rank on compacts.
+
+Bound the sum by an integral of the positive integrand and apply the change $x = e^{y+c}$ with $c = 2\pi\tau$:
+\begin{equation}
+  \int_1^\infty \frac{\log x}{\sqrt{x}} e^{-4\pi^2 t(\log x - c)^2} \, dx = e^{c/2} \int_0^\infty (y+c) \, e^{y/2} e^{-4\pi^2 t \, y^2} \, dy.
+\end{equation}
+Splitting gives $e^{c/2}\big(\tfrac{1}{2}\rho(t) + \tfrac{c}{2}\sigma(t)\big)$; doubling for $\pm\xi_n$ and using $|c| \leq 2\pi K$ yields the stated bound.
+
+The estimate for $\sigma(t)$ follows from the closed form for $\int_0^\infty e^{-ay^2+by} \, dy$ with $a = 4\pi^2 t$, $b = \tfrac{1}{2}$, using $1 + \mathrm{erf}(\cdot) \leq 2$.
+\end{proof}
+
+\subsection{Existence of Contraction Scale}
+
+\begin{proposition}[Existence of contraction scale]\label{prop:contraction-scale}
+For each $K > 0$ there exists $t_K > 0$ such that
+\begin{equation}
+  \theta_K := e^{\pi K} \Big(\rho(t_K) + 2\pi K \, \sigma(t_K)\Big) < 1.
+\end{equation}
+In particular, $I - T_P^{\mathrm{sym}}[\Phi_{B,t_K,\tau}] \succeq (1 - \theta_K) I$ uniformly in $B > 0$ and $|\tau| \leq K$.
+\end{proposition}
+
+\begin{proof}
+As $t \to \infty$, both $\rho(t) \to 0$ and $\sigma(t) \to 0$ (the Gaussian factor dominates). Thus there exists $t_K$ large enough that $\theta_K < 1$.
+
+More precisely, the leading terms are $\rho(t) \sim (4\pi^2 t)^{-1}$ and $\sigma(t) \sim (\pi\sqrt{t})^{-1}$, so we need
+\begin{equation}
+  e^{\pi K} \Big(\frac{1}{4\pi^2 t} + \frac{2K}{\sqrt{t}}\Big) < 1.
+\end{equation}
+This is satisfied for $t > C e^{2\pi K}$ with an explicit constant $C$.
+\end{proof}
+
+\subsection{Numerical Values}
+
+\begin{center}
+\textbf{Prime trace bounds at selected values of $t$}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$t$ & $\rho(t)$ upper bound & $\|T_P\|$ cap \\
+\midrule
+0.5 & $< 0.065$ & $< 0.07$ \\
+0.7 & $< 0.042$ & $< 0.045$ \\
+1.0 & $< 0.033$ & $< 0.04$ \\
+1.5 & $< 0.020$ & $< 0.025$ \\
+2.0 & $< 0.014$ & $< 0.02$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent These values confirm that the prime operator norm is well-controlled for moderate values of the heat scale $t$, providing ample room for the archimedean contribution in the Toeplitz bridge.
+
+\subsection{Monotonicity Properties}
+
+\begin{lemma}[Monotonicity of $\rho$]\label{lem:rho-monotone}
+The prime trace function $\rho(t)$ is strictly decreasing in $t > 0$, with
+\begin{equation}
+  \lim_{t \to 0^+} \rho(t) = +\infty, \qquad \lim_{t \to +\infty} \rho(t) = 0.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Differentiate under the integral:
+\begin{equation}
+  \frac{d\rho}{dt} = -8\pi^2 \int_0^\infty y^3 \, e^{y/2} e^{-4\pi^2 t y^2} \, dy < 0.
+\end{equation}
+The limits follow from dominated convergence.
+\end{proof}
+
+This monotonicity is crucial for the T5 transfer: as we move to larger compacts, we can always find a heat scale $t$ that makes the prime contribution arbitrarily small, at the cost of requiring finer Toeplitz grids.

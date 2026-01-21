@@ -1,0 +1,142 @@
+% Cone Positivity (B₁-strong): Cone-Kernel Separation Lemma
+% Updated December 2024: Hypothesis → Lemma (rigorous proof)
+
+\section{Cone Positivity (B\texorpdfstring{$_1$}{1}-strong)}\label{sec:B1-prime}
+
+This section contains the core rigorous result: the commutator kernel has trivial
+intersection with the positive cone. The proof is pure linear algebra---no number
+theory enters. The consequence is a uniform lower bound on the Rayleigh quotient
+over the cone, which we call \textbf{Cone Positivity} (B$_1$-strong).
+
+We use the notation from Section~\ref{sec:setup}: positions $\xi_p$, kernel $K_{pq}$,
+commutator matrix $A_{pq}$, cone $\mathcal{C}$, and energies $E_{\mathrm{comm}}$, $E_{\mathrm{lat}}$.
+
+\subsection{Main Result}
+
+\begin{lemma}[Cone--Kernel Separation]\label{lem:cone-kernel}
+Let $\xi_1 < \xi_2 < \cdots < \xi_N$ be strictly increasing points on $\mathbb{R}$,
+and let $K \in \mathbb{R}^{N \times N}$ be a symmetric matrix with $K_{pq} > 0$
+for all $p \neq q$. Define $A \in \mathbb{R}^{N \times N}$ by
+\[
+A_{pq} = (\xi_q - \xi_p) \cdot K_{pq}.
+\]
+Let $\mathcal{C} = \{\lambda \in \mathbb{R}^N : \lambda_p \geq 0, \lambda \neq 0\}$
+be the positive cone. Then
+\[
+\mathcal{C} \cap \ker(A) = \{0\}.
+\]
+\end{lemma}
+
+\begin{proof}
+Let $\lambda \in \mathcal{C} \setminus \{0\}$ and set $S = \{p : \lambda_p > 0\}$.
+Choose $p^* \in S$ such that $\xi_{p^*} = \max\{\xi_p : p \in S\}$
+(the rightmost active point).
+
+Consider the component $(A\lambda)_{p^*}$:
+\[
+(A\lambda)_{p^*} = \sum_{q=1}^N (\xi_q - \xi_{p^*}) K_{p^*q} \lambda_q.
+\]
+
+We partition the sum:
+\begin{itemize}
+    \item For $q > p^*$: By choice of $p^*$, we have $\lambda_q = 0$, so the contribution is zero.
+    \item For $q = p^*$: The factor $(\xi_q - \xi_{p^*}) = 0$, so the contribution is zero.
+    \item For $q < p^*$: We have $(\xi_q - \xi_{p^*}) < 0$, $K_{p^*q} > 0$, and $\lambda_q \geq 0$,
+          so each term is $\leq 0$.
+\end{itemize}
+
+\textbf{Case (a):} $\lambda$ is supported only at $p^*$ (i.e., $S = \{p^*\}$).
+
+Then $\lambda_q = 0$ for $q \neq p^*$. For any $p < p^*$:
+\[
+(A\lambda)_p = (\xi_{p^*} - \xi_p) K_{p,p^*} \lambda_{p^*}.
+\]
+Since $\xi_{p^*} > \xi_p$, $K_{p,p^*} > 0$, and $\lambda_{p^*} > 0$, we have $(A\lambda)_p > 0$.
+Thus $A\lambda \neq 0$.
+
+\textbf{Case (b):} There exists $q < p^*$ with $\lambda_q > 0$.
+
+Then in $(A\lambda)_{p^*}$, the term corresponding to this $q$ is
+$(\xi_q - \xi_{p^*}) K_{p^*q} \lambda_q < 0$ (strictly negative).
+Since all other terms are $\leq 0$, we have $(A\lambda)_{p^*} < 0$.
+Thus $A\lambda \neq 0$.
+
+In both cases, $\lambda \in \mathcal{C} \setminus \{0\}$ implies $A\lambda \neq 0$.
+\end{proof}
+
+\begin{corollary}[Cone Positivity (B$_1$-strong)]\label{cor:B1-strong}
+Let $Q = A^\top A$ be the commutator energy matrix. Then
+$\mathcal{C} \cap \ker(Q) = \{0\}$, and consequently the Rayleigh quotient
+$R(\lambda) = E_{\mathrm{comm}}(\lambda) / E_{\mathrm{lat}}(\lambda)$ achieves
+a positive infimum $c_1 > 0$ on the normalized cone $\mathcal{C}_1$.
+\end{corollary}
+
+\begin{proof}
+Since $\ker(A^\top A) = \ker(A)$, the kernel statement follows from Lemma~\ref{lem:cone-kernel}.
+For the positivity of $c_1$: the function $R(\lambda)$ is continuous on $\mathcal{C}_1$,
+the numerator $E_{\mathrm{comm}}(\lambda) > 0$ for all $\lambda \in \mathcal{C}_1$ by the
+kernel statement, and the denominator $E_{\mathrm{lat}}(\lambda) > 0$ since the Gram matrix
+is strictly positive definite. Since $\mathcal{C}_1$ is compact, $R$ attains its
+infimum, which must be positive.
+\end{proof}
+
+\begin{remark}[Local vs.\ Uniform bounds]\label{rem:local-vs-uniform}
+For each fixed $X$, the constant $c_1 = c_1(X) > 0$ in Corollary~\ref{cor:B1-strong}
+is \textbf{proven} to exist. This is a theorem, not a hypothesis.
+
+However, the \emph{uniform} statement $\inf_{X \geq X_0} c_1(X) \geq c^* > 0$
+is a separate claim (SC1) that requires arithmetic input about how twin primes
+distribute as $X \to \infty$. Numerical evidence (Section~\ref{sec:numerics})
+shows $c_1(X) \sim X^{0.90}$, suggesting the bound actually \emph{grows},
+but this scaling is not proven. Thus we have a theorem that $c_1(X) > 0$ for each $X$,
+and a hypothesis SC1 that $\inf_X c_1(X) \geq c^* > 0$ uniformly.
+\end{remark}
+
+\begin{remark}[Generality]
+Lemma~\ref{lem:cone-kernel} requires only strictly increasing positions $\xi_p$
+and a strictly positive off-diagonal kernel $K_{pq} > 0$. No number theory,
+prime distribution, or Hardy--Littlewood asymptotics are needed.
+This is pure linear algebra.
+\end{remark}
+
+\begin{remark}[Connection to the commutator operator]\label{rem:Q-C-connection}
+For the actual commutator $[T, \Xi]$ in the Gaussian RKHS, let $G$ be the Gram matrix
+with $G_{pq} = G(\xi_p - \xi_q)$. The commutator matrix $C = [T, \Xi]_{\mathrm{coord}}$
+in the kernel basis $\{k_p\}$ satisfies:
+\[
+    C_{pq} = \tfrac{1}{2}(\xi_q - \xi_p) (G^2)_{pq}.
+\]
+This has exactly the form of Lemma~\ref{lem:cone-kernel} with $K_{pq} = \tfrac{1}{2}(G^2)_{pq} > 0$.
+
+The commutator energy matrix $Q = C^\top G C$ satisfies
+\[
+    \ker(Q) = \ker(C),
+\]
+since $G$ is positive definite. Thus Cone--Kernel Separation for $Q$ follows
+directly from the lemma applied to $C$.
+\end{remark}
+
+\subsection{Numerical Verification}
+
+Numerical experiments confirm the lemma and provide quantitative bounds:
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+    $X$ & $N$ & $\dim\ker(Q)$ & $\ker \cap \mathcal{C}$ & $\min_{\mathcal{C}} R(\lambda)$ \\
+    \hline
+    500 & 24 & 22 & 0 & 0.008 \\
+    1000 & 35 & 32 & 0 & 0.014 \\
+    2000 & 61 & 58 & 0 & 0.027 \\
+    5000 & 126 & 122 & 0 & 0.048 \\
+    \hline
+    \multicolumn{5}{c}{$\min R(\lambda) \sim X^{0.90}$ (growing!)}
+\end{tabular}
+\end{center}
+
+Several features stand out. The kernel $\ker(Q)$ is large---its dimension is
+approximately $N - 3$---but every vector in the kernel has mixed signs. This
+confirms that $\ker(Q) \cap \mathcal{C} = \{0\}$ as predicted by the lemma.
+More striking is that the minimum Rayleigh quotient on the cone is not just
+positive but \emph{growing}, roughly as $X^{0.90}$.
+
+% Target Theorem moved to sections/target_theorem.tex

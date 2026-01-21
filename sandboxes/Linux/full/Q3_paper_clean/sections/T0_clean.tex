@@ -1,0 +1,70 @@
+\section{Normalisation of the Weil test class}\label{sec:T0-clean}
+
+Let \(\mathcal W\) denote the classical Weil test class consisting of even,
+Schwartz functions \(\Phi:\mathbb R\to\mathbb C\) whose Fourier transform
+\(\widehat \Phi\) is also compactly supported and even.  Following
+Guinand~\cite{Guinand1948} and Weil~\cite{Weil1952}, the quadratic form
+\[
+  Q(\Phi)
+  = \int_{\mathbb R} \Phi(x)\,dx
+    + 2\sum_{n\ge 1} \Lambda(n)\,n^{-1/2}\,\widehat{\Phi}\!\left(\frac{\log n}{2\pi}\right)
+    - \sum_{k\in\mathbb Z} \widehat{\Phi}(k)
+\]
+is well defined and finite on~\(\mathcal W\).  The normalisation adopted here
+matches Section~T0 of the full Q* manuscript: the Fourier transform is
+unitary, \(\widehat \Phi(\xi)=\int_{\mathbb R} \Phi(x)\,e^{-2\pi i x\xi}\,dx\),
+and the Guinand--Weil reciprocity reads
+\[
+  \Phi(0) - \widehat \Phi(0)
+  = \sum_{\rho} \widehat \Phi\!\left(\frac{\rho-\tfrac12}{2\pi i}\right)
+    - \sum_{n=1}^{\infty} \frac{\Lambda(n)}{\sqrt n}\,
+      \left(\Phi(\log n) + \Phi(-\log n)\right),
+\]
+where the first sum ranges over the non-trivial zeros \(\rho\) of \(\zeta(s)\)
+counted with multiplicity.
+
+For \(K>0\) we write \(W_K=[-K,K]\) and let \(\mathcal W_K\subset\mathcal W\)
+be the subspace of functions supported in~\(W_K\).  The exhaustion
+\(\bigcup_{K>0}\mathcal W_K=\mathcal W\) together with the density of Fejér
+heat-approximants (Section~A1' in the full project) yields the following
+normalisation lemma.
+
+\begin{lemma}\label{lem:T0-clean-density}
+For every \(K>0\) the set of Fejér\(*\)heat approximants supported in \(W_K\)
+is dense in \(\mathcal W_K\) with respect to \(\|\cdot\|_\infty\), and the
+quadratic form \(Q\) is continuous on \(\mathcal W_K\).
+\end{lemma}
+
+The proof repeats verbatim the arguments of Sections~T0 and~A1' of the full
+manuscript and is therefore omitted.  In what follows we fix \(K>0\) and
+work inside \(\mathcal W_K\); all constants are explicit functions of~\(K\).
+
+\begin{remark}
+With this normalisation the Weil quadratic form \(Q\) coincides with the
+distribution \(\Delta\) appearing in \cite[§16]{Weil1952} when evaluated on
+test functions induced from \(\Phi\in\mathcal W\).  Hence the positivity
+criterion stated there applies verbatim once \(Q(\Phi)\ge 0\) has been
+established on~\(\mathcal W\).
+\end{remark}
+
+\begin{lemma}[Invariance under normalisation conventions]\label{lem:T0-normalisation-invariance}
+Different choices of Fourier-transform normalisations and node indexing yield
+equivalent formulations of the Weil positivity criterion.  Specifically:
+\begin{enumerate}[label=(\alph*)]
+  \item Switching from the unitary normalisation \(\widehat\Phi(\xi)=\int \Phi(x)\,e^{-2\pi i x\xi}\,dx\)
+  to the measure \(\widehat\Phi'(\eta)=\int \Phi(x)\,e^{-i\eta x}\,dx\) with \(\eta=2\pi\xi\)
+  induces the density rescaling \(a^*(\xi)=2\pi a(\xi)\) and preserves the form of \(Q\).
+  \item Replacing the node sequence \(\xi_n=\log n/(2\pi)\) by \(\pm\log n/(2\pi)\)
+  preserves the symmetry of the sampling operator and the archimedean/prime decomposition.
+  \item The quadratic form \(Q(\phi)\) defined via the Guinand--Weil convention
+  coincides with \(Q_{GW}(\phi_{GW})\) when test functions are converted via the measure factor.
+\end{enumerate}
+In particular, the positivity of \(Q\) is independent of these technical choices.
+\end{lemma}
+\begin{proof}
+Each rescaling is a linear change of variable that preserves the spectral gap
+and the compact-by-compact structure.  The node-symmetry \(\pm\log n/(2\pi)\)
+is already built into the Guinand--Weil formalism; see \cite{Weil1952}, §16.
+The measure conversion \(a^*(\xi)=2\pi a(\xi)\) follows from the Jacobian of the
+coordinate change \(\eta=2\pi\xi\).
+\end{proof}

@@ -1,0 +1,82 @@
+% A3: Toeplitz-Symbol Bridge
+% ===========================
+
+\section{The Operator Formulation}\label{sec:A3}
+
+\begin{remark}[Proof provenance]
+Full, line-by-line proofs of the A3 statements appear in the RH\_Q3 manuscript (Sections 8.x). Here we retain the formulations and a proof sketch to keep the paper self-contained; the analytic inputs (archimedean bounds, modulus of continuity, discretization) are stated explicitly.
+\end{remark}
+
+\subsection{Discretization via Cosine Basis}
+
+Discretizing the Weil functional in a cosine basis $\{\cos(k\xi)\}_{k=0}^{M-1}$ yields a finite-dimensional operator formulation.
+
+\begin{definition}[Q3 Hamiltonian]\label{def:Q3-hamiltonian}
+For compact parameter $K > 0$, matrix size $M$, and heat parameter $t > 0$, define:
+\begin{equation}
+  H = \TA - \TP \in \R^{M \times M},
+\end{equation}
+where:
+\begin{itemize}
+  \item $\TA$ is a Toeplitz matrix with entries $(\TA)_{ij} = A_{|i-j|}$,
+  \begin{equation}
+    A_k = \int_{-K}^K \astar(\xi)\, \Phitest(\xi)\, \cos(k\xi)\, d\xi,
+  \end{equation}
+
+  \item $\TP$ is a finite-rank matrix encoding prime contributions,
+  \begin{equation}
+    \TP = \sum_{p \leq e^{2\pi K}} w(p)\, \phi_p\, v_p v_p^T,
+  \end{equation}
+  where $v_p = (\cos(k\xi_p))_{k=0}^{M-1}$, $\phi_p = \Phitest(\xi_p)$, and $w(p) = 2\log p/\sqrt{p}$.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Operator-functional equivalence]\label{thm:operator-functional}
+The Weil positivity criterion translates to:
+\begin{equation}
+  \text{RH} \quad \Longleftrightarrow \quad H \geq 0 \quad (\text{all eigenvalues } \geq 0).
+\end{equation}
+\end{theorem}
+
+\subsection{The A3 Bridge Inequality}
+
+\begin{lemma}[Archimedean floor]\label{lem:arch-floor}
+For the smoothed symbol $\PA = \astar * K_{\tsym}$ on the torus, there exists $\carch(K) > 0$ such that:
+\begin{equation}
+  \min_{\theta \in \T} \PA(\theta) \geq \carch(K).
+\end{equation}
+Moreover, by fixing a bandwidth $B_0 \in (0,1)$ and choosing $t_{\mathrm{sym}}$ large enough, one obtains a uniform lower bound $c_\infty > 0$ independent of $K$ (Proposition~\ref{prop:symbol-floor-stable}).
+\end{lemma}
+
+\begin{lemma}[Prime cap]\label{lem:prime-cap}
+For appropriate $\trkhs(K)$, the prime operator satisfies:
+\begin{equation}
+  \|\TP\|_{\mathrm{op}} \leq \rhok \leq \frac{\carch(K)}{4}.
+\end{equation}
+\end{lemma}
+
+\begin{theorem}[A3 bridge inequality]\label{thm:A3-bridge}
+Let $(B, \tsym, \trkhs)$ satisfy the parameter schedule of \cref{lem:arch-floor,lem:prime-cap}. Then for $M \geq M_0(K)$:
+\begin{equation}
+  \lammin(T_M[\PA] - \TP) \geq \frac{\carch(K)}{4} > 0,
+\end{equation}
+and the associated Fej\'er-heat test functions satisfy $Q(\Phitest) \geq 0$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The Archimedean floor $\carch(K)$ comes from explicit digamma bounds. The prime cap $\rhok$ follows from RKHS contraction (Gershgorin/Gram matrix analysis). The Szeg\H{o}-B\"ottcher theorem transfers the symbol floor to the Toeplitz eigenvalues with error $O(1/M)$.
+\end{proof}
+
+\subsection{RKHS Foundations}
+
+\begin{lemma}[Gershgorin bound for Gram matrices]\label{lem:gershgorin}
+Let $K = [k(x_i, x_j)]$ be a Gram matrix with diagonal floor $k(x_i, x_i) \geq \czero$ and off-diagonal bound:
+\begin{equation}
+  \sum_{j \neq i} |k(x_i, x_j)| \leq \rhok \quad \text{for all } i.
+\end{equation}
+Then $\lammin(K) \geq \czero - \rhok$.
+\end{lemma}
+
+\begin{proof}
+By Gershgorin's circle theorem, every eigenvalue lies in $[\czero - \rhok, \infty)$.
+\end{proof}

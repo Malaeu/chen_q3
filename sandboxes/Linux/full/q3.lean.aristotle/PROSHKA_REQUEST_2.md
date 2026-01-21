@@ -1,0 +1,334 @@
+# PROSHKA REQUEST v2: Условный вывод RH из Tier-2 аксиом
+
+---
+
+## §0. Статус и цель
+
+**Цель:** Построить audit-ready Proof Dossier для импликации:
+$$
+(\mathrm{T0}) + (\mathrm{A1'}) + (\mathrm{A2}) + (\mathrm{A3}) + (\mathrm{RKHS\text{-}C}) + (\mathrm{W}) \Longrightarrow \mathrm{RH}
+$$
+
+**Статус:** **УСЛОВНЫЙ** — доказываем только логическую связку Tier-2 ⟹ RH.
+НЕ утверждается что RH доказана безусловно!
+
+**Критические фиксы (v1 → v2):**
+
+| Проблема v1 | Исправление v2 |
+|-------------|----------------|
+| Q = Q_arch + Q_prime | **Q = Q_arch − Q_prime** (МИНУС!) |
+| c* = 1.5 | **c* = 11/10** |
+| 𝕋 = [-π, π] | **𝕋 = [-1/2, 1/2]** (period-1) |
+| "Q ≥ 1.125 для всех Φ" | **Q ≥ 0** (scaling invariance!) |
+
+---
+
+## §1. Теорема (формальная формулировка)
+
+**Теорема (Гипотеза Римана).**
+$$
+\forall s \in \mathbb{C}: \quad 0 < \Re(s) < 1 \land \zeta(s) = 0 \implies \Re(s) = \frac{1}{2}
+$$
+
+**Теорема (условный вывод).** Если выполнены аксиомы T0, A1', A2, A3, RKHS-C и W, то RH верна.
+
+---
+
+## §2. Определения (Period-1 Aligned)
+
+### Архимедова плотность
+$$
+a(\xi) = \log \pi - \Re\,\psi\left(\frac{1}{4} + i\pi\xi\right), \qquad a_*(\xi) = 2\pi \cdot a(\xi)
+$$
+
+### Узлы и веса
+$$
+\xi_n = \frac{\log n}{2\pi} \quad (n \geq 2), \qquad w_Q(n) = \frac{2\Lambda(n)}{\sqrt{n}}
+$$
+
+### Конус Вейля
+$$
+\mathcal{W} = \{\Phi : \mathbb{R} \to \mathbb{C} \mid \Phi \text{ непрерывна}, \operatorname{supp}(\Phi) \text{ компактен}, \Phi(-x) = \overline{\Phi(x)}\}
+$$
+
+### Функционал Q (ЗНАК МИНУС!)
+$$
+\boxed{Q(\Phi) = Q_{\mathrm{arch}}(\Phi) - Q_{\mathrm{prime}}(\Phi)}
+$$
+где:
+$$
+Q_{\mathrm{arch}}(\Phi) = \int_{\mathbb{R}} a_*(\xi)\,\Phi(\xi)\,d\xi, \qquad
+Q_{\mathrm{prime}}(\Phi) = \sum_{n \geq 2} w_Q(n)\,\Phi(\xi_n)
+$$
+
+### Fejér×heat окно
+$$
+\Phi_{B,t}(\xi) = (1 - |\xi|/B)_+ \cdot e^{-4\pi^2 t \xi^2}
+$$
+
+### Взвешенная плотность
+$$
+g_{B,t}(\xi) = a(\xi) \cdot \Phi_{B,t}(\xi)
+$$
+
+### Архимедов символ (PERIOD-1!)
+$$
+P_A(\theta) = 2\pi \sum_{m \in \mathbb{Z}} g_{B,t}(\theta + m), \qquad \theta \in \mathbb{T} = [-\tfrac{1}{2}, \tfrac{1}{2}]
+$$
+
+### Toeplitz базис (Period-1)
+$$
+e_k(\theta) = e^{2\pi i k \theta}, \quad k \in \mathbb{Z}, \qquad \text{мера: } d\theta \text{ на } [-\tfrac{1}{2}, \tfrac{1}{2}]
+$$
+
+---
+
+## §3. Константы проекта
+
+| Константа | Значение | Смысл |
+|-----------|----------|-------|
+| $B_{\min}$ | 3 | Порог ширины полосы |
+| $t_{\mathrm{sym}}$ | 3/50 | Параметр теплового сглаживания |
+| $c_*$ | **11/10** | Архимедов пол (прямая оценка) |
+| $C_{SB}$ | 4 | Константа Сегё-Бёттхера |
+| $\rho(1)$ | < 1/25 | RKHS cap |
+
+**Margin:**
+$$
+c_* - \rho(1) = \frac{11}{10} - \frac{1}{25} = \frac{53}{50} > 0
+$$
+
+---
+
+## §4. Tier-1 аксиомы (классические)
+
+### Axiom W: Критерий Вейля (1952)
+$$
+\left(\forall \Phi \in \mathcal{W},\, Q(\Phi) \geq 0\right) \iff \mathrm{RH}
+$$
+
+### Axiom EF: Явная формула Гинанда-Вейля (1948)
+$$
+Q(\Phi) = Q_{\mathrm{arch}}(\Phi) - Q_{\mathrm{prime}}(\Phi) \qquad \text{(МИНУС!)}
+$$
+
+### Axiom SB: Оценка Сегё-Бёттхера (1958)
+$$
+\lambda_{\min}(T_M[\sigma]) \geq \min \sigma - C_{SB}\,\omega_{\sigma}\left(\frac{1}{2M}\right)
+$$
+
+---
+
+## §5. Tier-2 аксиомы (Q3 проект)
+
+### Axiom T0: Нормировка
+$$
+a_*(\xi) = 2\pi a(\xi), \qquad \xi_n = \frac{\log n}{2\pi}
+$$
+
+### Axiom A1': Плотность Fejér×heat
+$$
+\forall \varepsilon > 0,\, \forall \Phi \in \mathcal{W}_K,\, \exists B \geq B_{\min}: \|\Phi - \Phi_{B,t_{\mathrm{sym}}}\|_\infty < \varepsilon
+$$
+
+### Axiom A2: Липшицевость Q
+$$
+\forall K > 0,\, \exists L: \forall \Phi_1, \Phi_2 \in \mathcal{W}_K: |Q(\Phi_1) - Q(\Phi_2)| \leq L \cdot \|\Phi_1 - \Phi_2\|_\infty
+$$
+
+### Axiom A3: Архимедов пол (прямая оценка)
+$$
+\forall B \geq B_{\min},\, \forall \theta \in [-\tfrac{1}{2}, \tfrac{1}{2}]: \quad P_A(\theta) \geq c_* = \frac{11}{10}
+$$
+
+### Axiom RKHS-C: Prime cap
+$$
+t_{\mathrm{rkhs}} \geq 1 \implies \|T_P\|_{\mathrm{op}} \leq \rho(1) < \frac{1}{25}
+$$
+
+---
+
+## §6. План доказательства
+
+```
+Шаг 1: Φ ∈ W имеет компактный носитель → Φ ∈ W_K для некоторого K
+
+Шаг 2: По A1' приближаем Φ атомами Φ_{B,t_sym} в ||·||_∞
+
+Шаг 3: По A2 имеем Q(Φ) = lim Q(Φ_j)
+
+Шаг 4: Для атомов: Q = Q_arch − Q_prime (МИНУС!)
+
+Шаг 5: По A3 + дискретизации: при M ≥ M_0^{unif} имеем λ_min(T_M[P_A]) ≥ c*/2
+
+Шаг 6: По RKHS-C: ∥T_P∥ ≤ ρ(1) < 1/25 < c*/4
+
+Шаг 7: Итого: λ_min(T_M[P_A]−T_P) ≥ c*/4 > 0, и по Rayleigh (p≡1) получаем Q(атом) ≥ 0
+
+Шаг 8: Предел: Q(Φ) ≥ 0 для всех Φ ∈ W
+
+Шаг 9: По W: RH (условно на Tier-2)
+```
+
+**Диаграмма:**
+```
+Weil criterion: Q(Φ) ≥ 0 ∀Φ ⟹ RH
+                 ↑
+         A2 Lipschitz transfer
+                 ↑
+         A1′ density approximation
+                 ↑
+    Q(Φ_{B,t_sym}) = Q_arch − Q_prime ≥ 0
+                 ↑
+         ┌──────┴──────┐
+         │             │
+   Toeplitz     RKHS-C cap
+  λ_min≥c*/2   ∥T_P∥≤c*/4
+         │             │
+         └──────┬──────┘
+                ↓
+      λ_min(T_M[P_A]−T_P) ≥ c*/4 > 0 ✓
+```
+
+**Важно (Rayleigh):**
+Q(Φ_{B,t}) = ⟨(T_M[P_A]−T_P)1,1⟩_{L^2(𝕋)} без внешнего множителя 2π
+(2π уже сидит в определении P_A).
+
+---
+
+## §7. Auditor's Kill List (E1-E25)
+
+### Часть A: Базовые ошибки (E1-E9)
+
+| # | Ошибка | Описание |
+|---|--------|----------|
+| E1 | Циклическая логика | Предполагают RH внутри доказательства |
+| E2 | Неконтролируемый log | Комплексный логарифм без ветви |
+| E3 | Большие параметры | t → ∞ без контроля |
+| E4 | Численное ≠ аналитика | "Проверил 10^13 нулей" |
+| E5 | Ложные обобщения | С конечных полей на ℂ |
+| E6 | Арифметические ошибки | Неверные вычисления |
+| E7 | Incoherent arguments | Нет понимания предмета |
+| E8 | Ложные положительные | Тесты ≠ доказательство |
+| E9 | Curve fitting | Подгонка под нули |
+
+### Часть B: Профессиональные ошибки (E10-E13)
+
+| # | Ошибка | Пример |
+|---|--------|--------|
+| E10 | Weak solutions fail | Atiyah 2018 |
+| E11 | Positivity not satisfied | de Branges 2010 |
+| E12 | Vacuous bounds | Turán |
+| E13 | Convexity errors | Blinovsky |
+
+### Часть C: Q3-специфические (E14-E23)
+
+| # | Ошибка | Проверка |
+|---|--------|----------|
+| E14 | Скрытые кванторы | ε зависит от чего? |
+| E15 | Перестановка lim/∫/Σ | Dominated convergence |
+| E16 | ∃ ↔ ∀ путаница | Universal vs existential |
+| E17 | Граничные случаи | Замкнутые интервалы |
+| E18 | Деление на ноль | n ≥ 2 |
+| E19 | Неявная компактность | supp(Φ) ⊂ [-K,K] |
+| E20 | Циклическая зависимость | A3 → Main → RH (линейно) |
+| E21 | Ветви log/√ | Re(z) = 1/4 > 0 |
+| E22 | Численное → общее | Sample bounds + tail |
+| E23 | Логарифмический рост | e^{-ξ²} · log(ξ) → 0 |
+
+### Часть D: КРИТИЧЕСКИЕ (E24-E25)
+
+| # | Ошибка | Проверка |
+|---|--------|----------|
+| **E24** | **SCALING** | Q(cΦ) = c·Q(Φ) ⟹ uniform > 0 невозможен! Цель: Q ≥ 0 |
+| **E25** | **PERIOD** | 2π-период с B=3 даёт P_A(π)=0. Правильно: period-1 |
+
+---
+
+## §8. Формат ответа
+
+**Структура:** Markdown с LaTeX, секции §0-§8, каждая лемма заканчивается ∎
+
+**КРИТИЧЕСКИЕ ИНВАРИАНТЫ:**
+1. Знак: Q = Q_arch − Q_prime (МИНУС!)
+2. c* = 11/10 (НЕ 1.5!)
+3. Period-1: θ ∈ [-1/2, 1/2]
+4. Цель: Q ≥ 0 (НЕ "Q ≥ 1.125"!)
+5. Статус: УСЛОВНЫЙ (Tier-2 ⟹ RH)
+
+---
+
+## Приложение: Контекст-пакет (.tex ссылки)
+
+| Модуль | Источник |
+|--------|----------|
+| T0 нормировка | `full/sections/T0.tex` |
+| A3 floor | `full/sections/A3/symbol_floor.tex` |
+| Rayleigh мост | `full/sections/A3/rayleigh_bridge.tex` |
+| Matrix guard | `full/sections/A3/matrix_guard.tex` |
+| RKHS cap | `full/sections/RKHS/prime_trace_closed_form.tex` |
+| A1' density | `full/sections/A1prime.tex` |
+| A2 Lipschitz | `full/sections/A2.tex` |
+| Main closure | `full/sections/Main_closure.tex` |
+| Weil linkage | `full/sections/Weil_linkage.tex` |
+
+---
+
+## ЧЕГО НЕ ДЕЛАТЬ
+
+❌ Не возвращать c* = 1.5
+❌ Не писать Q = Q_arch + Q_prime (плюс)
+❌ Не использовать 2π-периодизацию
+❌ Не ставить t_rkhs = t_sym
+❌ Не утверждать "RH доказана безусловно"
+❌ Не писать "Q ≥ 1.125 для всех Φ"
+
+---
+
+**∎ END OF PROSHKA REQUEST v2**
+
+---
+
+## ЗАПРОС ПРОШКЕ №3 (СВЕРКА С БАЗОЙ)
+
+Цель: проверить, что ответ полностью синхронизирован с базой проекта и без старых масштабов/констант.
+
+### БАЗА (опираемся только на это)
+- `full/sections/T0.tex`
+- `full/sections/A3/symbol_floor.tex`
+- `full/sections/A3/rayleigh_bridge.tex`
+- `full/sections/A3/matrix_guard.tex`
+- `full/sections/RKHS/prime_trace_closed_form.tex`
+- `full/sections/A1prime.tex`
+- `full/sections/A2.tex`
+- `full/sections/Main_closure.tex`
+- `full/sections/Weil_linkage.tex`
+
+### ИНВАРИАНТЫ (обязательное совпадение)
+1. **Знак:** \(Q=Q_{\rm arch}-Q_{\rm prime}\).
+2. **Нормировка:** \(\xi_n=\log n/(2\pi)\), \(a_*(\xi)=2\pi a(\xi)\).
+3. **Тор:** period‑1, \(\TT=[-1/2,1/2]\), базис \(e^{2\pi i k\theta}\).
+4. **Символ:** \(P_A(\theta)=2\pi\sum_{m\in\ZZ}g(\theta+m)\).
+5. **Floor:** \(c_*=\frac{11}{10}\) (не 1.5).
+6. **Toeplitz‑gap:** \(\omega(1/(2M))\), \(M_0^{\rm unif}=\lceil C_{SB}L_*/c_*\rceil\).
+7. **Prime‑cap:** \(t_{\rm rkhs}\ge 1\Rightarrow \rho(1)<1/25\).
+8. **Цель:** \(Q(\Phi)\ge 0\) (никаких “\(Q\ge 1.125\)” без нормировки).
+9. **Rayleigh:** \(Q(\Phi_{B,t})=\langle (T_M[P_A]-T_P)1,1\rangle\) без внешнего множителя \(2\pi\).
+10. **Генераторы:** использовать \(\lambda_{\min}(T_M[P_A])\ge c_*/2\) и \(\|T_P\|\le c_*/4\), чтобы получить \(\lambda_{\min}(T_M[P_A]-T_P)\ge c_*/4\).
+
+### ФОРМАТ ОТВЕТА
+- Короткий отчёт “совпадает/не совпадает” по пунктам 1–10.
+- Затем пересобранный текст §0–§8 (одним блоком).
+- Без внешних ссылок; без новых обозначений; без legacy‑веток.
+
+---
+
+## ЗАПРОС АРИСТОТЕЛЮ (Lean, по базе Q3)
+
+Цель: формализовать REQUEST‑3 (period‑1, c_* = 11/10) без новых констант.
+
+1. Взять базовые определения из Q3: period‑1 тор, \(P_A\) с \(2\pi\) внутри, \(c_*=11/10\), \(t_{\rm sym}=3/50\), \(t_{\rm rkhs}=1\).
+2. Зафиксировать axioms/instances: A1_density, A2_Lipschitz, A3_floor, RKHS_cap, Rayleigh_bridge, Weil_criterion.
+3. Доказать Main_positivity: \(\forall \Phi\in\)Weil_cone, \(Q\Phi\ge 0\) (modulo axioms).
+4. Доказать RH: Riemann_Hypothesis (modulo Weil_criterion + Main_positivity).
+5. Явно пометить, что ключевые шаги условны на аксиомах; никаких “proved” без условий.

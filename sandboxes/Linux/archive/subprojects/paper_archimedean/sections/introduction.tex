@@ -1,0 +1,55 @@
+% Introduction
+% ============
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{Context: The Weil Positivity Criterion}
+
+The Riemann Hypothesis (RH) is equivalent to a positivity condition
+on Weil's explicit formula~\cite{Weil1952,Bombieri2000}. For test functions
+$\Phi$ in a suitable class, the \emph{Weil functional} decomposes as:
+\[
+    W[\Phi] = W_{\mathrm{arch}}[\Phi] + W_{\mathrm{prime}}[\Phi] + \text{(lower order)},
+\]
+where $W_{\mathrm{arch}}$ arises from the gamma factor (Archimedean place)
+and $W_{\mathrm{prime}}$ encodes prime number contributions.
+
+Following~\cite{Malamutmann2025Fejer}, we reformulate this as an operator inequality:
+\[
+    T_{\mathrm{arch}} - T_{\mathrm{prime}} \geq 0
+    \quad\Longleftrightarrow\quad \text{RH}.
+\]
+This paper establishes the first half: \textbf{the Archimedean operator
+$T_{\mathrm{arch}}$ has a uniform positive lower bound}.
+
+\subsection{Main Result}
+
+\begin{theorem}[Archimedean Spectral Floor]\label{thm:main}
+Let $P_A(\xi; \tau)$ be the Archimedean symbol constructed from the digamma
+function (Definition~\ref{def:PA-symbol}). For the Toeplitz operator
+$T_M[P_A]$ acting on $\ell^2(\{-M,\ldots,M\})$:
+\[
+    \lambda_{\min}(T_M[P_A]) \geq \carch(K) > 0
+\]
+for all $M \geq M_0(K)$, where $K = M/(2\pi)$ is the spectral cutoff
+and $\carch(K)$ is given explicitly in Theorem~\ref{thm:carch-explicit}.
+\end{theorem}
+
+The constant $\carch(K)$ is computed from digamma asymptotics and
+Fejér--heat window properties~\cite{Malamutmann2025Fejer}.
+
+\subsection{Relation to Prior Work}
+
+This paper builds on~\cite{Malamutmann2025Fejer}, which established the
+Fej\'er--heat generators and their Lipschitz properties. Those results
+provide the functional-analytic foundation for our Toeplitz representation.
+
+\subsection{Structure of the Paper}
+
+\begin{itemize}
+    \item Section~\ref{sec:symbol}: The Archimedean density and symbol $P_A$.
+    \item Section~\ref{sec:toeplitz}: The Toeplitz bridge and Rayleigh identity.
+    \item Section~\ref{sec:floor}: Lipschitz regularity and the spectral floor.
+    \item Section~\ref{sec:digamma}: Explicit bounds via digamma estimates.
+    \item Section~\ref{sec:conclusions}: Conclusions.
+\end{itemize}

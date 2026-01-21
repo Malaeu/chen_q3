@@ -1,0 +1,129 @@
+% GRH Extension: Dirichlet L-functions
+% =====================================
+
+\section{Extension to the Generalized Riemann Hypothesis}\label{sec:GRH}
+
+\begin{remark}[Proof provenance]
+The GRH module mirrors the $\zeta$-case; full proofs are given in RH\_Q3 (Section 16). The schedules $t_{\min}^{(\chi)}(K)$ and $M_{\min}^{(\chi)}(K)$ coincide with the untwisted case because $c_0(K)$ and $w_{\max}$ are unchanged.
+\end{remark}
+
+\subsection{Dirichlet Characters}
+
+\begin{definition}[Character $\chifour$ mod 4]\label{def:chi4}
+The non-principal Dirichlet character modulo 4 is:
+\begin{equation}
+  \chifour(n) = \begin{cases}
+    1  & \text{if } n \equiv 1 \pmod{4}, \\
+    -1 & \text{if } n \equiv 3 \pmod{4}, \\
+    0  & \text{if } n \equiv 0, 2 \pmod{4}.
+  \end{cases}
+\end{equation}
+\end{definition}
+
+\begin{remark}[Connection to twin primes]
+For any twin prime pair $(p, p+2)$ with $p > 3$:
+\begin{equation}
+  \chifour(p) \times \chifour(p+2) = -1.
+\end{equation}
+This follows since $p \equiv 1 \pmod{4}$ implies $p+2 \equiv 3 \pmod{4}$, and vice versa.
+\end{remark}
+
+\subsection{The Modified Hamiltonian}
+
+\begin{definition}[$\chi$-twisted Hamiltonian]\label{def:H-chi}
+For a Dirichlet character $\chi$ mod $q$, define:
+\begin{equation}
+  \Hchi = \TA - \TP^\chi,
+\end{equation}
+where the prime operator carries character weights:
+\begin{equation}
+  \TP^\chi = \sum_p \chi(p)\, w(p)\, \phi_p\, v_p v_p^T.
+\end{equation}
+\end{definition}
+
+\begin{theorem}[GRH criterion]\label{thm:GRH-criterion}
+The Generalized Riemann Hypothesis for $L(s, \chi)$ is equivalent to:
+\begin{equation}
+  \Hchi \geq 0 \quad (\text{all eigenvalues } \geq 0).
+\end{equation}
+This is the Dirichlet-\!$L$ analogue of the Weil positivity criterion (Theorem~\ref{thm:Weil-criterion}).
+\end{theorem}
+
+\subsection{Explicit parameters for $\chi_4$}\label{subsec:grh-parameters}
+
+The Archimedean symbol and its bounds are unchanged by twisting with $\chi_4$, so $c_0(K)$ and $L_A(K)$ are as in Proposition~\ref{prop:c-arch-explicit} and Corollary~\ref{cor:arch-modulus}. The prime weights are signed by $\chi_4$, but satisfy the same uniform bound $w_{\max} \le 2/e$. Therefore the RKHS contraction schedule from Corollary~\ref{cor:explicit-tmin} applies verbatim:
+\[
+  t_{\min}^{(\chi_4)}(K) = \frac{\delta_K^2}{4 \ln\!\bigl((2+\eta_K)/\eta_K\bigr)}, \qquad
+  \eta_K = \frac{\tfrac14 c_0(K) - w_{\max}}{\sqrt{w_{\max}}}, \quad \delta_K \ge \frac{1}{2\pi(e^{2\pi K}+1)}.
+\]
+With the same Toeplitz grid size
+\[
+  M_{\min}^{(\chi_4)}(K) = \left\lceil \frac{2\pi\, L_A(K)}{c_0(K)} \right\rceil,
+\]
+we obtain
+\[
+  \lambda_{\min}\big(T_{M_{\min}^{(\chi_4)}(K)}[P_A] - T_P^{\chi_4}\big) \ge \tfrac12 c_0(K),
+\]
+and consequently $H_{\chi_4} \ge 0$ on each compact $[-K,K]$. The monotone schedules
+\[
+  t^\star_{\mathrm{T5},\chi_4}(K) = \sup_{0<u\le K} t_{\min}^{(\chi_4)}(u), \qquad
+  M^\star_{\chi_4}(K) = \left\lceil \sup_{0<u\le K} \frac{2\pi\, L_A(u)}{c_0(u)} \right\rceil
+\]
+are nondecreasing and feed directly into the T5 transfer (Theorem~\ref{thm:T5-transfer}), giving $Q_{\chi_4} \ge 0$ on the Weil cone and hence GRH for $\chi_4$.
+
+\subsection{Residue Class Decomposition}
+
+\begin{definition}[Class Hamiltonians]\label{def:H-pm}
+Define operators isolating each residue class:
+\begin{align}
+  \Hplus  &= \TA - \TP^+ \quad (\text{only } p \equiv 1 \pmod{4}), \\
+  \Hminus &= \TA - \TP^- \quad (\text{only } p \equiv 3 \pmod{4}).
+\end{align}
+\end{definition}
+
+\begin{lemma}[Alternative formulation]\label{lem:H-pm-alternative}
+The class Hamiltonians can also be expressed as:
+\begin{equation}
+  \Hplus = \frac{\Hzeta + \Hchi}{2}, \qquad
+  \Hminus = \frac{\Hzeta - \Hchi}{2}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For $p \equiv 1 \pmod{4}$: $\chifour(p) = 1$, so $(1 + \chifour(p))/2 = 1$ and $(1 - \chifour(p))/2 = 0$.
+For $p \equiv 3 \pmod{4}$: $\chifour(p) = -1$, so $(1 + \chifour(p))/2 = 0$ and $(1 - \chifour(p))/2 = 1$.
+\end{proof}
+
+\begin{corollary}[Joint criterion]\label{cor:joint-criterion}
+\begin{equation}
+  \text{RH} + \text{GRH}(\chifour) \quad \Longleftrightarrow \quad \Hplus \geq 0 \text{ and } \Hminus \geq 0.
+\end{equation}
+\end{corollary}
+
+\subsection{Two-Particle Operators for Twins}
+
+\begin{definition}[Two-particle Hilbert space]\label{def:two-particle}
+For twin prime analysis, consider the tensor product:
+\begin{equation}
+  \mathcal{H}^{(2)} = \mathcal{H}_+ \otimes \mathcal{H}_-,
+\end{equation}
+with the free two-particle Hamiltonian:
+\begin{equation}
+  A^{(2)} = \Hplus \otimes I + I \otimes \Hminus.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Twin interaction operator]\label{def:V-twins}
+\begin{equation}
+  V_{\mathrm{twins}} = \sum_{(p, p+2) \text{ twin}} w_p\, w_{p+2}\, \phi_p\, \phi_{p+2}\,
+  (v_p \otimes v_{p+2})(v_p \otimes v_{p+2})^T.
+\end{equation}
+\end{definition}
+
+\begin{lemma}[Positivity of $V_{\mathrm{twins}}$]\label{lem:V-twins-positive}
+$V_{\mathrm{twins}} \geq 0$ (positive semidefinite).
+\end{lemma}
+
+\begin{proof}
+$V_{\mathrm{twins}}$ is a sum of rank-one projectors with positive weights.
+\end{proof}

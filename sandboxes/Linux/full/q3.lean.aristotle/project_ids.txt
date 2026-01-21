@@ -1,0 +1,26 @@
+uniform_arch_floor.md: dbfa2c26-a1b2-4a7b-a0aa-05151839a090
+uniform_arch_floor_v2.md: 2e3b3bf8-c308-4d27-af09-2c46e8569df5
+uniform_arch_floor_v3.md: d2728386-8dd5-4ec2-9e63-c2c80f3cd218
+uniform_arch_floor.md: dd21a597-b222-4033-a958-903ad48c690e
+Lipschitz_Bridge_v1.md: 68f7963c-a7d9-4971-8777-2bd0b7425e9a
+Q3_FULL_BRIDGE.md: 6cd52bc6-5e5c-411a-a784-86009f2c5f24
+A3_FLOOR.md: 9f4a33c2-dfa7-4024-b81d-00d75497ca06
+RH_FINAL.md: f758546b-4b31-4436-8c0d-9759b15d043b
+A3_FLOOR_v2.md: e3ae346c-ed26-47c4-b4b0-df229881b1a3
+A3_FLOOR_v3.md: f86d36da-3cb8-47bc-a4c7-a1398634b1aa
+A3_FLOOR_v4.md: 73f35bb5-ca42-4076-b47f-69d0faf987d3
+A3_FLOOR_v5.md: 5c9cbf80-cf41-4d8c-8e35-8f1bc2de1261
+A3_FLOOR_v6.md: da9fe6a2-1639-43fd-92ee-d7cce8962c98
+A3_FLOOR_v7.md: 74219d5a-863e-47fa-a277-428c6cc97773
+A3_FLOOR_v8.md: 028f042c-7bf3-44de-8bee-140a756108d4
+A3_FLOOR_v9.md: be2b9846-bce6-4419-8edb-98ec19ccd2d7
+A3_FLOOR_v10.md: fc61aa7f-783f-4dd1-bcdb-a264d95da683
+A3_FLOOR_v11.md: e81da2b4-eb38-43be-a45a-fba229fef184
+A3_FLOOR_v12.md: 4ec30af1-6d92-4140-9767-7954aafaeb0c
+A3_FLOOR_v13.md: d1524982-34c6-4719-9c06-700cde3141e6
+A3_FLOOR_v14.md: ffa743a3-2c10-4a5d-b2bd-0493e0e4d34f
+A3_FLOOR_v15.md: 383828ff-fcc0-4dc6-b434-76a29e369f50
+A3_FLOOR_v17.md: c1ea0b1f-7f44-4fa6-8f83-6ef6aaa1b413
+A1_density_hat_full_v1.md: 9dda8778-857e-42cf-a669-aad1a2e04d5b
+
+hat_interpolation_approx.md: 18bfe8c7-4620-41d4-be62-489409168e95

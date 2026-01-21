@@ -1,0 +1,48 @@
+\section{Verification Appendix}\label{sec:verification}
+\begingroup
+\sloppy
+\Urlmuskip=0mu plus 1mu
+\renewcommand{\UrlFont}{\ttfamily\small}
+% Condensed from docs/VERIFICATION_PACK.md
+\textbf{Verification status:} Conceptual components prepared for independent expert review; no numerical premise enters the logic. The checklist below records only analytic sources used in the main chain.
+\begin{itemize}[leftmargin=2.2em]
+  \item \textbf{T0 (Normalization).} Guinand--Weil translation and the definitions of $a$, $\astar$, and prime weights.
+  \item \textbf{A1$'$ (Local density).} Mollification, positive Fej\'er Riemann sums, and symmetrisation on $[-K,K]$.
+  \item \textbf{A2 (Continuity and tails).} Explicit $L_Q(K)$ and Gaussian tail control.
+  \item \textbf{A3 (Toeplitz bridge).} SB barrier, Rayleigh identification, and the uniform Arch floor.
+  \item \textbf{RKHS + Weil linkage.} Uniform prime cap and the Weil criterion linkage.
+\end{itemize}
+
+% ---------------------------------------------------------------------------
+\paragraph{Elementary inequalities used in A3.}
+The A3 floor proof (Lemma~\ref{lem:uniform-arch-floor}) uses only fixed constant bounds and
+elementary inequalities. For audit convenience we record the ones invoked explicitly in
+Section~\ref{subsec:a3-symbol-floor}:
+\begin{itemize}[leftmargin=2.2em]
+  \item $\pi<\tfrac{22}{7}$ and $\pi>3$ (classical rational bounds).
+  \item $\pi>\tfrac{333}{106}$ (classical lower bound; used for the exponentials in Lemma~\ref{lem:uniform-arch-floor}).
+  \item $\log(3/2)<\tfrac{5}{12}$ from the alternating series
+  $\log(1+x)=x-\tfrac{x^2}{2}+\tfrac{x^3}{3}-\tfrac{x^4}{4}+\cdots$ at $x=\tfrac12$.
+  \item $\log(5/2)<1$ since $e>1+1+\tfrac12+\tfrac16+\tfrac{1}{24}=\tfrac{65}{24}>2.5$.
+  \item $e<3$ from the series $e=\sum_{k\ge0}\tfrac{1}{k!}$ and a tail bound. Using the Taylor remainder at $x=\tfrac35$ gives
+  \(
+    e^{3/5}
+    \le \sum_{j=0}^{4}\frac{(3/5)^j}{j!}+\frac{3}{120}\Big(\frac{3}{5}\Big)^{5}
+    <\frac{50}{27},
+  \)
+  hence $e^{-3/5}>\tfrac{27}{50}$.
+  \item With $x_0=\frac{665334}{280900}$ one has
+  \(
+    e^{x_0}\ge \sum_{j=0}^{5}\frac{x_0^j}{j!}>10,
+  \)
+  which implies $e^{6\pi^2/25}>10$, so
+  \(w_{B_{\min}}(1)\le \tfrac{1}{15}\) and \(w_{B_{\min}}(2)\le \tfrac{1}{30000}\) in Lemma~\ref{lem:uniform-arch-floor}.
+  \item For $0\le x\le 1$, $e^x\le 1+x+x^2$ (apply $f(x)=1+x+x^2-e^x$ with
+  $f(0)=f'(0)=0$ and $f'(1)=3-e>0$). Hence $e^{1/144}\le 1+\tfrac{1}{144}+\tfrac{1}{20736}<\tfrac{1007}{1000}$.
+  \item $\gamma>0.5772$ (Euler's constant lower bound; see standard tables in
+  \cite{Titchmarsh1986} or \cite{NISTDLMF}).
+\end{itemize}
+
+Reproducibility artifacts are archived in \texttt{docs/VERIFICATION\_PACK.md} and Appendix~\ref{app:legacy-branch} for reference only. The expanded legacy checklist is preserved in \texttt{appendix/verification\_legacy.tex}. None of these artifacts enter the logical proof: all analytic estimates are contained in the main text and use only the constants listed above.
+
+\endgroup

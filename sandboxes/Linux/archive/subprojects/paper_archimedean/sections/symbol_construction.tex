@@ -1,0 +1,74 @@
+% Symbol Construction
+% ===================
+
+\section{The Archimedean Symbol}\label{sec:symbol}
+
+\subsection{From Gamma Factor to Symbol}
+
+The Archimedean contribution to the Weil functional arises from the
+functional equation of the Riemann zeta function:
+\[
+    \xi(s) := \pi^{-s/2} \Gamma(s/2) \zeta(s) = \xi(1-s).
+\]
+
+Taking logarithmic derivatives and applying Fejér--heat smoothing,
+we obtain a symbol in the spectral variable $\xi$.
+
+\begin{definition}[Archimedean symbol]\label{def:PA-symbol}
+For bandwidth $B \in (0,1)$ and heat parameter $\tau > 0$, define:
+\[
+    P_A(\xi; \tau) := \int_{-\infty}^{\infty} \Phi_{B,\tau}(\xi - \eta)
+    \cdot \mathcal{A}(\eta) \, d\eta,
+\]
+where $\Phi_{B,\tau}$ is the Fejér--heat generator~\cite{Malamutmann2025Fejer}
+and $\mathcal{A}(\eta)$ is the Archimedean kernel:
+\[
+    \mathcal{A}(\eta) := \mathrm{Re}\left[
+    \psi\left(\frac{1}{4} + \frac{i\eta}{2}\right)
+    \right] + \frac{\log \pi}{2},
+\]
+with $\psi = \Gamma'/\Gamma$ the digamma function.
+\end{definition}
+
+\subsection{Properties of the Symbol}
+
+\begin{lemma}[Smoothness]\label{lem:PA-smooth}
+For fixed $\tau > 0$, the symbol $P_A(\cdot; \tau)$ is:
+\begin{enumerate}
+    \item Real-valued and even: $P_A(-\xi; \tau) = P_A(\xi; \tau)$.
+    \item Smooth: $P_A \in C^\infty(\RR)$.
+    \item Asymptotically logarithmic: $P_A(\xi; \tau) \sim \log|\xi|$ as $|\xi| \to \infty$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Properties (1) and (2) follow from the even symmetry of $\mathcal{A}$
+and smoothness of Fejér--heat convolution.
+Property (3) uses the digamma asymptotics $\psi(z) \sim \log z$ for $|z| \to \infty$.
+\end{proof}
+
+\subsection{The Truncated Symbol}
+
+For computational purposes, we work on a compact interval $[-K, K]$.
+
+\begin{definition}[Truncated symbol]
+Let $\chi_K$ be a smooth cutoff equal to 1 on $[-K+1, K-1]$ and
+supported on $[-K, K]$. Define:
+\[
+    P_A^{(K)}(\xi; \tau) := \chi_K(\xi) \cdot P_A(\xi; \tau).
+\]
+\end{definition}
+
+\begin{lemma}[Lower bound on compact sets]\label{lem:PA-lower}
+For any $K > 0$, there exists $c_0(K, \tau) > 0$ such that:
+\[
+    P_A(\xi; \tau) \geq c_0(K, \tau) \quad \text{for all } \xi \in [-K, K].
+\]
+\end{lemma}
+
+\begin{proof}
+The digamma function satisfies $\mathrm{Re}[\psi(1/4 + i\eta/2)] > -\gamma$
+for all $\eta \in \RR$, where $\gamma \approx 0.5772$ is Euler's constant.
+After Fejér--heat smoothing, the minimum on $[-K, K]$ is attained and positive.
+See Section~\ref{sec:digamma} for explicit bounds.
+\end{proof}

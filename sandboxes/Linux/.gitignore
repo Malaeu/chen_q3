@@ -1,0 +1,50 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Lean build artifacts
+.lake/
+*.olean
+*.ilean
+*.trace
+*.c.hash
+lake-manifest.json.bak
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Backups
+*.backup
+*.bak_*
+*_backup*
+
+# Session transcripts
+session_*.jsonl
+docs/*-conversations.zip
+
+# Editor
+.vscode/
+*.swp
+*~
+
+# Temporary
+/tmp/
+*.tmp
+
+# Local/agent artifacts
+.claude/
+multiagent/
+full/q3.lean.aristotle/docs/cc_15_01_26.md
+
+# Aristotle output files
+*-output.lean
+output.lean
+sandboxes/

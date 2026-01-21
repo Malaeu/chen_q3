@@ -1,0 +1,69 @@
+% Toeplitz Theory
+% ===============
+
+\section{Toeplitz Operators and Spectral Theory}\label{sec:toeplitz}
+
+\subsection{Finite Toeplitz Matrices}
+
+\begin{definition}[Toeplitz matrix]
+For a symbol $f \in L^1(\RR)$ and truncation $M \in \NN$, the
+\emph{finite Toeplitz matrix} $T_M[f]$ is the $(2M+1) \times (2M+1)$ matrix:
+\[
+    (T_M[f])_{jk} := \hat{f}(j - k), \quad j, k \in \{-M, \ldots, M\},
+\]
+where $\hat{f}$ denotes the Fourier transform.
+\end{definition}
+
+For our Archimedean symbol, the matrix elements are:
+\[
+    (T_M[P_A])_{jk} = \int_{-\infty}^{\infty} P_A(\xi; \tau) e^{-2\pi i (j-k) \xi} \, d\xi.
+\]
+
+\subsection{The Szegő--Böttcher Transfer Theorem}
+
+The key tool relating symbol properties to matrix eigenvalues is:
+
+\begin{theorem}[Szegő--Böttcher]\label{thm:szego}
+Let $f \in C^1(\RR)$ with $f(\xi) \to c_\pm$ as $\xi \to \pm\infty$.
+If $f_{\min} := \inf_{\xi \in \RR} f(\xi) > 0$, then:
+\[
+    \lambda_{\min}(T_M[f]) \geq f_{\min} - O(M^{-1}) \quad \text{as } M \to \infty.
+\]
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+This follows from the strong Szegő limit theorem and Böttcher's
+refinement for smooth symbols. See~\cite{BottcherSilbermann2006}
+for the complete theory.
+\end{proof}
+
+\subsection{Application to the Archimedean Symbol}
+
+\begin{corollary}[Spectral floor transfer]\label{cor:transfer}
+If $P_A(\xi; \tau) \geq c_0 > 0$ on $[-K, K]$ and the truncation
+satisfies $M \geq 2\pi K$, then:
+\[
+    \lambda_{\min}(T_M[P_A]) \geq c_0 - \frac{C}{M}
+\]
+for an explicit constant $C$ depending on the Lipschitz norm of $P_A$.
+\end{corollary}
+
+\begin{proof}
+Apply Theorem~\ref{thm:szego} to the truncated symbol $P_A^{(K)}$,
+using the Lipschitz bounds from~\cite{Malamutmann2025Fejer}.
+The error term $O(M^{-1})$ comes from the boundary effects at $|\xi| = K$.
+\end{proof}
+
+\subsection{Explicit Error Control}
+
+\begin{lemma}[Lipschitz error bound]\label{lem:lipschitz-error}
+Let $\|P_A\|_{\mathrm{Lip}} := \sup_{\xi \neq \eta} |P_A(\xi) - P_A(\eta)|/|\xi - \eta|$.
+Then the Szegő transfer error satisfies:
+\[
+    \left| \lambda_{\min}(T_M[P_A]) - \inf_\xi P_A(\xi) \right|
+    \leq \frac{\pi \|P_A\|_{\mathrm{Lip}}}{M}.
+\]
+\end{lemma}
+
+This explicit error control is essential for computing $M_0(K)$
+in Theorem~\ref{thm:main}.

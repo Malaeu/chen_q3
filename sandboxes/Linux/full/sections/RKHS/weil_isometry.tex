@@ -1,0 +1,8 @@
+\begin{lemma}[RKHS–Weil Isometry]\label{lem:rkhs-weil-isometry}
+Let $(\mathcal X,\mu)$ be a measure space and $k:\mathcal X\times\mathcal X\to\mathbb R$ a positive-definite kernel. Denote by $(\mathcal H_k,\langle\cdot,\cdot\rangle_{\mathcal H_k})$ its RKHS and by $\Phi$ the map that sends each kernel section $k_x:=k(\cdot,x)$ to $\varphi_x\in\mathcal W$ via a fixed Weil representation. Then:
+\begin{enumerate}
+  \item The map $\Phi$ is well-defined on the span of the kernel sections and preserves inner products: $\langle \Phi f,\Phi g\rangle_{\mathcal W}=\langle f,g\rangle_{\mathcal H_k}$.
+  \item $\Phi$ extends uniquely to an isometry from $\mathcal H_k$ into $\mathcal W$.
+  \item If $\{\varphi_x\}_{x\in\mathcal X}$ spans $\mathcal W$, then $\Phi(\mathcal H_k)$ is dense in $\mathcal W$.
+\end{enumerate}
+\end{lemma}

@@ -1,0 +1,221 @@
+% Hypothesis B₁: RKHS Commutator Lower Bound
+% This is a pure functional-analytic statement independent of Q3
+
+\section{Hypothesis B\texorpdfstring{$_1$}{1}: RKHS Commutator Lower Bound}\label{sec:hypothesis-B1}
+
+We formalize the commutator-energy inequality on the twin cone as a self-contained hypothesis.
+
+\subsection{Setup and Notation}
+
+Let $t > 0$ be a fixed heat parameter. For $X \ge 2$, define:
+
+\begin{itemize}
+    \item \textbf{Gaussian RKHS.} Let $\mathcal{H}_X$ be the reproducing kernel Hilbert space on $\mathbb{R}$ spanned by the heat kernels
+    \[
+        k_r(\xi) := \exp\!\left(-\frac{(\xi - \xi_r)^2}{4t}\right), \qquad \xi_r := \frac{\log r}{2\pi}, \quad r \le X.
+    \]
+
+    \item \textbf{Prime weights.} For prime powers $r \le X$,
+    \[
+        w_r := \frac{\Lambda(r)}{\sqrt{r}},
+    \]
+    where $\Lambda$ is the von Mangoldt function.
+
+    \item \textbf{Prime operator.} The rank-one Toeplitz sum
+    \[
+        T_P^{(X)} f := \sum_{r \le X} w_r^2 \, \langle f, k_r \rangle \, k_r, \qquad f \in \mathcal{H}_X.
+    \]
+
+    \item \textbf{Position operator.}
+    \[
+        (\Xi f)(\xi) := \xi \cdot f(\xi).
+    \]
+
+    \item \textbf{Commutator.}
+    \[
+        C_X := [T_P^{(X)}, \Xi] = T_P^{(X)} \Xi - \Xi T_P^{(X)}.
+    \]
+
+    \item \textbf{Twin primes.} Let $\mathcal{T}(X)$ denote the set of primes $p \le X$ such that $p+2$ is also prime.
+
+    \item \textbf{Twin cone.} For non-negative coefficients $\lambda = (\lambda_p)_{p \in \mathcal{T}(X)}$,
+    \[
+        \Phi_\lambda := \sum_{p \in \mathcal{T}(X)} \lambda_p \, k_p,
+    \]
+    and define
+    \[
+        \mathcal{C}_{\mathrm{twin}}(X) := \left\{ \Phi_\lambda : \lambda_p \ge 0, \text{ finite support} \subset \mathcal{T}(X) \right\} \subset \mathcal{H}_X.
+    \]
+
+    \item \textbf{Energies.}
+    \[
+        \mathcal{E}_P^{(X)}(\Phi) := \langle T_P^{(X)} \Phi, \Phi \rangle, \qquad
+        \mathcal{E}_{\mathrm{comm}}^{(X)}(\Phi) := \|C_X \Phi\|^2.
+    \]
+\end{itemize}
+
+\subsection{Main Hypothesis}
+
+\begin{hypothesis}[B$_1$: RKHS commutator lower bound on the twin cone]\label{hyp:B1}
+Let $t > 0$ be fixed. There exist a constant $c_1 = c_1(t) > 0$ and $X_0 \ge 2$ such that for all $X \ge X_0$ and all $\Phi \in \mathcal{C}_{\mathrm{twin}}(X)$:
+\begin{equation}\label{eq:B1}
+    \|[T_P^{(X)}, \Xi] \Phi\|^2 \ge c_1 \, \langle T_P^{(X)} \Phi, \Phi \rangle.
+    \tag{B$_1$}
+\end{equation}
+Equivalently, on $\mathcal{C}_{\mathrm{twin}}(X)$:
+\[
+    C_X^* C_X \succeq c_1 \, T_P^{(X)}.
+\]
+\end{hypothesis}
+
+\begin{remark}[Variant B$_1'$: Asymptotic version]
+A weaker formulation allows $c_1 = c_1(X)$ to depend on $X$:
+\begin{equation}\label{eq:B1-prime}
+    \|[T_P^{(X)}, \Xi] \Phi\|^2 \ge c_1(X) \, \langle T_P^{(X)} \Phi, \Phi \rangle, \qquad \Phi \in \mathcal{C}_{\mathrm{twin}}(X),
+    \tag{B$_1'$}
+\end{equation}
+with the requirement that $\displaystyle\liminf_{X \to \infty} c_1(X) > 0$.
+\end{remark}
+
+\begin{remark}[Independence from Q3]
+Hypothesis~B$_1$ is a pure functional-analytic statement about the Gaussian RKHS. It does not involve the Q3 framework, the spectral gap of $H_X$, or any number-theoretic input beyond the definition of the weights $w_r$.
+\end{remark}
+
+\begin{remark}[Generality of weights]
+For the formulation of Hypothesis~B$_1$, it suffices that the weights $w_r \ge 0$ have moderate growth. The specific form $w_r = \Lambda(r)/\sqrt{r}$ is needed only for the connection to prime arithmetic.
+\end{remark}
+
+\subsection{Numerical Evidence}
+
+Numerical experiments (see \texttt{src/verify\_B1.py}) strongly support Hypothesis~B$_1$:
+
+\begin{center}
+\begin{tabular}{c|c|c}
+    $X$ & $\#\mathcal{T}(X)$ & $c_1(X)$ \\
+    \hline
+    100 & 8 & 0.0042 \\
+    500 & 24 & 0.0056 \\
+    1000 & 35 & 0.0060 \\
+    2000 & 61 & 0.0070 \\
+    5000 & 126 & 0.0077
+\end{tabular}
+\end{center}
+
+The ratio $c_1(X)$ is positive and \emph{slightly increasing} with $X$, with $c_1(X) \sim X^{0.156}$. This provides strong numerical evidence that $\liminf_{X \to \infty} c_1(X) > 0$, supporting Variant~B$_1'$.
+
+\subsection{Model B\texorpdfstring{$_1$}{1}: Gaussian Lattice Version}\label{subsec:model-B1}
+
+To attack Hypothesis~B$_1$ analytically, we introduce a toy model without arithmetic:
+
+\begin{itemize}
+    \item \textbf{Lattice.} $\Sigma_h := h\mathbb{Z} \subset \mathbb{R}$ with step $h > 0$.
+    \item \textbf{Points.} $\xi_n := nh$ for $n \in \mathbb{Z}$.
+    \item \textbf{Weights.} $w_n \equiv 1$ (or more generally, $w_n \asymp 1$).
+    \item \textbf{Lattice operator.}
+    \[
+        T_{\mathrm{lat}} f := \sum_{n \in \mathbb{Z}} w_n^2 \, \langle f, k_n \rangle \, k_n.
+    \]
+    \item \textbf{Lattice cone.}
+    \[
+        \mathcal{C}_{\mathrm{lat}} := \left\{ \Phi_\lambda = \sum_{n} \lambda_n k_n : \lambda_n \ge 0, \text{ finite support} \right\}.
+    \]
+\end{itemize}
+
+\begin{theorem}[Model B$_1$ on Gaussian lattice]\label{thm:model-B1}
+Let $t > 0$ be fixed. Then:
+\begin{enumerate}
+    \item For each $h \in (0, h_0(t)]$, there exists $c_{\mathrm{lat}}(t,h) > 0$ such that for all $\Phi \in \mathcal{C}_{\mathrm{lat}}$:
+    \begin{equation}\label{eq:B1-lat}
+        \|[T_{\mathrm{lat}}, \Xi] \Phi\|^2 \ge c_{\mathrm{lat}}(t,h) \, \langle T_{\mathrm{lat}} \Phi, \Phi \rangle.
+        \tag{B$_1^{\mathrm{lat}}$}
+    \end{equation}
+    \item Moreover,
+    \[
+        \inf_{0 < h \le h_0(t)} c_{\mathrm{lat}}(t,h) > 0.
+    \]
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+Theorem~\ref{thm:model-B1} is a pure analytic statement about Gaussian RKHS on a lattice---no primes, no von Mangoldt function. Conceptually, $T_{\mathrm{lat}}$ is an idealized ``prime operator'' on a regular lattice, and \eqref{eq:B1-lat} is the ``rigid'' version of Hypothesis~B$_1$ without arithmetic complexity.
+\end{remark}
+
+\subsection{Numerical Verification of Model B$_1$}\label{subsec:model-B1-numerical}
+
+Direct numerical computation (see \texttt{src/model\_B1\_direct.py}) strongly confirms Model~B$_1$:
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+    $\lambda$ type & $\mathcal{E}_{\mathrm{comm}}$ & $\mathcal{E}_{\mathrm{lat}}$ & $\mathcal{E}_{\mathrm{comm}}/\mathcal{E}_{\mathrm{lat}}$ \\
+    \hline
+    uniform & $9.35 \times 10^3$ & $9.21 \times 10^3$ & 1.016 \\
+    peak & $2.90 \times 10^2$ & $4.45 \times 10^1$ & 6.51 \\
+    twin & $1.13 \times 10^3$ & $1.77 \times 10^2$ & 6.37 \\
+    gaussian & $3.81 \times 10^3$ & $6.50 \times 10^2$ & 5.86 \\
+    random & $1.30 \times 10^4$ & $8.15 \times 10^3$ & 1.60
+\end{tabular}
+\end{center}
+
+Key observations:
+\begin{enumerate}
+    \item $c_{\mathrm{lat}} \ge 1.0$ for all test vectors in the cone $\mathcal{C}_{\mathrm{lat}}$.
+    \item The minimum ratio is achieved for \emph{smooth} vectors (uniform, oscillating).
+    \item Localized vectors (peak, twin, sparse) give \emph{larger} ratios ($\sim 6$).
+    \item Parameter scan: $\inf_{h, N} c_{\mathrm{lat}} \approx 0.02 > 0$.
+\end{enumerate}
+
+\begin{remark}[Fourier vs.\ Direct]
+A naive Fourier analysis suggests $\inf_{\omega \neq 0} D(\omega)/\hat{g}(\omega) \to 0$ as $\omega \to 0$, but this computes the wrong ratio. The direct computation of $\mathcal{E}_{\mathrm{comm}}/\mathcal{E}_{\mathrm{lat}}$ properly handles the operator structure and confirms $c_{\mathrm{lat}} > 0$.
+\end{remark}
+
+\begin{remark}[Bakry--\'{E}mery / Perelman viewpoint]
+Hypothesis~B$_1$ (Model lattice version) is a discrete curvature--dimension inequality \`{a} la Bakry--\'{E}mery for the 1D Gaussian model, in the spirit of Perelman's entropy approach to Ricci flow.
+
+\textbf{Classical setup.} In Bakry--\'{E}mery theory for a generator $L$ (e.g., Ornstein--Uhlenbeck), one defines:
+\[
+    \Gamma(f) \approx |\nabla f|^2 \quad \text{(carr\'{e} du champ)}, \qquad
+    \Gamma_2(f) \approx |\mathrm{Hess}\, f|^2 + \mathrm{Ric}(\nabla f, \nabla f),
+\]
+and the condition $\mathrm{CD}(\rho, \infty)$: $\Gamma_2(f) \ge \rho \Gamma(f)$ represents a lower Ricci bound $\mathrm{Ric} \ge \rho$.
+
+\textbf{Our interpretation.} In the lattice Gaussian RKHS model:
+\begin{itemize}
+    \item $\mathcal{E}_{\mathrm{lat}}(\lambda) = \langle T_{\mathrm{lat}} \Phi_\lambda, \Phi_\lambda \rangle$ plays the role of $\Gamma(f)$ (base energy/gradient form).
+    \item $\mathcal{E}_{\mathrm{comm}}(\lambda) = \|[T_{\mathrm{lat}}, \Xi] \Phi_\lambda\|^2$ plays the role of $\Gamma_2(f)$ (curvature term), since the commutator with $\Xi$ is the discrete analogue of ``position $\times$ gradient'' in the continuous model.
+\end{itemize}
+Thus, the inequality B$_1^{\mathrm{lat}}$: $\mathcal{E}_{\mathrm{comm}} \ge c_{\mathrm{lat}} \mathcal{E}_{\mathrm{lat}}$ is the analogue of $\mathrm{CD}(\rho, \infty)$ with $\rho = c_{\mathrm{lat}} > 0$: \emph{positive discrete Ricci curvature} in the 1D Gaussian model.
+
+\textbf{Perelman connection.} In Perelman's approach to Ricci flow, monotonicity of entropy functionals and non-collapsing follow from CD-type inequalities: the ``second derivative of entropy'' ($\Gamma_2$-type) controls the first ($\Gamma$-type). We have the same philosophy:
+\begin{itemize}
+    \item Commutator energy $\|[T_{\mathrm{lat}}, \Xi] \Phi\|^2$ = ``entropy dissipation / curvature term'',
+    \item $T_{\mathrm{lat}}$-energy = ``base entropy / Dirichlet energy'',
+    \item Hypothesis~B$_1$ asserts that the positive ``curvature'' ($c_{\mathrm{lat}} > 0$) persists even on a coarse lattice.
+\end{itemize}
+In summary, B$_1^{\mathrm{lat}}$ states: ``\emph{our 1D Gaussian lattice has uniformly positive discrete Ricci curvature in the Bakry--\'{E}mery sense},'' resonating perfectly with Perelman's Ricci flow picture and the backward heat / Talagrand--Chen philosophy.
+\end{remark}
+
+\subsection{Strategy for Proving B\texorpdfstring{$_1$}{1}}
+
+\begin{enumerate}
+    \item \textbf{Prove Model B$_1$.} Establish \eqref{eq:B1-lat} for the lattice operator $T_{\mathrm{lat}}$ using:
+    \begin{itemize}
+        \item Direct quadratic form analysis: for $\Phi = \sum_n \lambda_n k_n$,
+        \[
+            \mathcal{E}_{\mathrm{comm}} = \|\sum_n (\xi_n \langle \Phi, k_n \rangle - \langle \Xi\Phi, k_n \rangle) k_n\|^2
+        \]
+        \item Gram matrix structure: $G_{nm} = \langle k_n, k_m \rangle = \sqrt{2\pi t} \, e^{-(\xi_n - \xi_m)^2/(8t)}$
+        \item Position matrix: $\Xi_{nm} = \langle \xi \cdot k_n, k_m \rangle = \frac{\xi_n + \xi_m}{2} G_{nm}$
+    \end{itemize}
+
+    \item \textbf{Perturbation argument.} Show that $T_P^{(X)}$ is a small perturbation of $T_{\mathrm{lat}}$ in operator norm:
+    \begin{itemize}
+        \item Prime positions $\xi_p$ are ``nearly uniform'' on scale $\sqrt{t}$
+        \item Weight fluctuations $w_r$ are smoothed by Gaussian overlap
+        \item $\|T_P - T_{\mathrm{lat}}\| \to 0$ appropriately
+    \end{itemize}
+
+    \item \textbf{Transfer to primes.} From $C_{\mathrm{lat}}^* C_{\mathrm{lat}} \succeq c_{\mathrm{lat}} T_{\mathrm{lat}}$ and small $\|T_P - T_{\mathrm{lat}}\|$, conclude
+    \[
+        C_P^* C_P \succeq (c_{\mathrm{lat}} - \varepsilon) T_P.
+    \]
+\end{enumerate}

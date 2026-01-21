@@ -1,0 +1,235 @@
+% Coherence Bridge: Formal Theorems on Twin Primes
+% =================================================
+
+\section{The Coherence-Counting Bridge}\label{sec:bridge}
+
+This section presents \textbf{rigorous, provable} results connecting coherent sums to twin prime counting. These are not heuristics---they follow from elementary linear algebra.
+
+\subsection{Definitions}
+
+\begin{definition}[Twin prime set]\label{def:twin-set}
+Let $T(X)$ denote the set of primes $p \leq X$ such that $(p, p+2)$ is a twin prime pair:
+\begin{equation}
+  T(X) := \{p \leq X : p \text{ prime}, p+2 \text{ prime}\}.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Coherent sum]\label{def:coherent-sum}
+For weights $w(p) = \log p / \sqrt{p}$ and phases $\phi_p = \log p / (2\pi)$, define:
+\begin{equation}
+  Z(X) := \sum_{p \in T(X)} w(p)\, e^{2\pi i \phi_p}
+       = \sum_{p \le X} \frac{\log p}{\sqrt{p}}\, e^{i \log p} \cdot \mathbf{1}_{p, p+2 \text{ prime}}.
+\end{equation}
+It will also be convenient to use the untapered version
+\begin{equation}\label{eq:Z-full}
+  Z_{\mathrm{full}}(X; s) := \sum_{p \le X} (\log p)\, p^{-s}, \qquad s_0 := \tfrac12 - i,
+\end{equation}
+so that $Z_{\mathrm{full}}(X; s_0) = \sum_{p \le X} (\log p) p^{-1/2+i}$ and $Z(X)$ is its restriction to twin primes.
+\end{definition}
+
+\begin{definition}[Weighted second moment]\label{def:W2}
+\begin{equation}
+  W_2(X) := \sum_{p \in T(X)} w(p)^2 = \sum_{p \in T(X)} \frac{(\log p)^2}{p}.
+\end{equation}
+\end{definition}
+
+\subsection{Bridge to the logarithmic derivative of $\zeta$}
+
+For $\Re s>1$ one has
+\[
+  -\frac{\zeta'}{\zeta}(s) = \sum_{n\ge1} \frac{\Lambda(n)}{n^s}
+  = \sum_p \sum_{k\ge1} \frac{\log p}{p^{ks}}.
+\]
+Splitting off higher prime powers,
+\[
+  Z_{\mathrm{full}}(X; s) = \sum_{p \le X} \frac{\log p}{p^s}
+  = \sum_{n \le X} \frac{\Lambda(n)}{n^s} - R_{\mathrm{pp}}(s,X),
+\]
+where $R_{\mathrm{pp}}(s,X) := \sum_{p^k \le X,\,k\ge2} (\log p) p^{-ks}$. Thus
+\begin{equation}\label{eq:Z-vs-Lambda}
+  Z_{\mathrm{full}}(X; s) = -\frac{\zeta'}{\zeta}(s) - R_{\mathrm{tail}}(s,X) - R_{\mathrm{pp}}(s,X),
+  \qquad
+  R_{\mathrm{tail}}(s,X):=\sum_{n>X}\frac{\Lambda(n)}{n^s}.
+\end{equation}
+
+\subsection{Explicit formula for $Z_{\mathrm{full}}$}
+
+Applying Perron's formula and shifting the contour yields, for $c>1-\Re s$,
+\[
+  Z_{\mathrm{full}}(X; s)
+  = -\frac{\zeta'}{\zeta}(s)
+    - \frac{X^{1-s}}{1-s}
+    + \sum_{\rho} \frac{X^{\rho-s}}{\rho-s}
+    + \mathcal{E}(s,X) - R_{\mathrm{pp}}(s,X),
+\]
+where the sum is over nontrivial zeros $\rho$ of $\zeta$ and $\mathcal{E}(s,X)$ contains the (small) contributions of trivial zeros and the shifted contour. In particular, at $s_0 = \tfrac12 - i$,
+\begin{equation}\label{eq:Z-explicit}
+  Z_{\mathrm{full}}(X; s_0)
+  = -\frac{\zeta'}{\zeta}(s_0)
+    - \frac{X^{1-s_0}}{1-s_0}
+    + \sum_{\rho} \frac{X^{\rho-s_0}}{\rho-s_0}
+    + \bigl(\mathcal{E}(s_0,X) - R_{\mathrm{pp}}(s_0,X)\bigr).
+\end{equation}
+
+\subsection{Zeros-only quadratic functional (Weil prototype)}
+
+Let $X = e^t$ and assume RH so $\rho = \tfrac12 + i\gamma$. Then
+\[
+  Z_{\mathrm{full}}(e^t; s_0) + \frac{\zeta'}{\zeta}(s_0) - \frac{e^{(1-s_0)t}}{1-s_0}
+  \approx - \sum_{\gamma} \frac{e^{i(\gamma+1)t}}{i(\gamma+1)}.
+\]
+For a Schwartz, even weight $w$ with $\widehat w \ge 0$, define
+\[
+  \mathcal{I}[w] := \int_{\RR} w(t)\, \bigl| Z_{\mathrm{full}}(e^t; s_0) \bigr|^2\, dt.
+\]
+Formally inserting the zeros expansion (and ignoring the small error terms) gives the zeros-only positive form
+\begin{equation}\label{eq:Weil-proto}
+  \mathcal{W}[w] := \sum_{\rho,\rho'} \frac{\widehat w(\gamma-\gamma')}{(\rho-s_0)(\overline{\rho'}-\overline{s_0})},
+  \qquad (\rho-s_0)(\overline{\rho'}-\overline{s_0}) = (\gamma+1)(\gamma'+1)\ \text{on RH},
+\end{equation}
+which is positive semidefinite when $\widehat w \ge 0$. Thus $\mathcal{W}[w]$ measures the same “energy” as $\int w |Z|^2$ but lives entirely on the zero set.
+
+\subsection{The Cauchy-Schwarz Bridge}
+
+\begin{lemma}[Cauchy-Schwarz bridge]\label{lem:CS-bridge}
+For all $X > 0$:
+\begin{equation}\label{eq:CS-bound}
+  |T(X)| \geq \frac{|Z(X)|^2}{W_2(X)}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Consider the vector $\mathbf{v}(X) = \bigl(w(p)\, e^{2\pi i \phi_p}\bigr)_{p \in T(X)} \in \mathbb{C}^{|T(X)|}$.
+
+Its squared norm is:
+\begin{equation}
+  \|\mathbf{v}(X)\|^2 = \sum_{p \in T(X)} |w(p)\, e^{2\pi i \phi_p}|^2 = \sum_{p \in T(X)} w(p)^2 = W_2(X).
+\end{equation}
+
+The inner product with $\mathbf{1} = (1, \ldots, 1)$ is:
+\begin{equation}
+  \langle \mathbf{v}(X), \mathbf{1} \rangle = \sum_{p \in T(X)} w(p)\, e^{2\pi i \phi_p} = Z(X).
+\end{equation}
+
+By Cauchy-Schwarz:
+\begin{equation}
+  |Z(X)|^2 = |\langle \mathbf{v}(X), \mathbf{1} \rangle|^2
+  \leq \|\mathbf{v}(X)\|^2 \cdot \|\mathbf{1}\|^2
+  = W_2(X) \cdot |T(X)|.
+\end{equation}
+
+Rearranging gives \eqref{eq:CS-bound}.
+\end{proof}
+
+\subsection{The Conditional Infinitude Theorem}
+
+\begin{theorem}[Coherence implies infinitude]\label{thm:coherence-infinitude}
+Assume there exist constants $C>0$, $\varepsilon>0$ and a polylogarithmic bound $G(X)=O(\mathrm{polylog}(X))$ such that for all sufficiently large $X$:
+\begin{enumerate}
+  \item[(i)] $|Z(X)| \geq C \cdot X^{\varepsilon}$ \quad (coherent sum grows at a power rate),
+  \item[(ii)] $W_2(X) \leq G(X)$ \quad (weighted second moment stays subpolynomial).
+\end{enumerate}
+Then for large $X$:
+\begin{equation}
+  |T(X)| \geq \frac{C^2}{G(X)} X^{2\varepsilon} \to \infty,
+\end{equation}
+and consequently, \textbf{there are infinitely many twin primes}.
+\end{theorem}
+
+\begin{proof}
+By \cref{lem:CS-bridge},
+\[
+  |T(X)| \geq \frac{|Z(X)|^2}{W_2(X)} \geq \frac{C^2 X^{2\varepsilon}}{G(X)}.
+\]
+The denominator is polylogarithmic while the numerator is a power of $X$, so the ratio diverges, proving infinitude of twin primes under the stated hypotheses.
+\end{proof}
+
+\begin{remark}[What this theorem does NOT prove]
+\cref{thm:coherence-infinitude} is a \textbf{conditional} result. It reduces the Twin Prime Conjecture to:
+\begin{center}
+\emph{Prove that $|Z(X)|$ grows sufficiently fast.}
+\end{center}
+No lower bound for $|Z(X)|$ is proved here; establishing such a bound would complete the bridge to the twin prime conjecture. Note also that $Z(X)$ is the twin-restricted sum and has no archimedean main term, whereas the zeros-only energy functional of \S\ref{sec:results} is built from the full prime sum $Z_{\mathrm{full}}$. An analytic mechanism that transfers positivity of the zeros-only kernel to a power growth of the twin-restricted $Z(X)$ remains an open gap.
+\end{remark}
+
+\subsection{Structural Lemmas (Unconditional)}
+
+The following results hold unconditionally:
+
+\begin{lemma}[Positivity of $V_{\mathrm{twins}}$]\label{lem:V-positive}
+The twin interaction operator
+\begin{equation}
+  V_{\mathrm{twins}} = \sum_{(p, p+2) \in T(X)} w(p)\, w(p+2)\, |\Psi_p \otimes \Psi_{p+2}\rangle \langle \Psi_p \otimes \Psi_{p+2}|
+\end{equation}
+is positive semidefinite: $V_{\mathrm{twins}} \geq 0$.
+\end{lemma}
+
+\begin{proof}
+$V_{\mathrm{twins}}$ is a finite sum of rank-one projectors $|v\rangle\langle v|$ with nonnegative coefficients $w(p)\, w(p+2) > 0$.
+\end{proof}
+
+\begin{lemma}[Antiferromagnetic order]\label{lem:antiferro}
+For every twin prime pair $(p, p+2)$ with $p > 3$:
+\begin{equation}
+  \chi_4(p) \cdot \chi_4(p+2) = -1.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For $p > 3$ prime, $p$ is odd. If $p \equiv 1 \pmod{4}$, then $p + 2 \equiv 3 \pmod{4}$, giving $\chi_4(p) = 1$ and $\chi_4(p+2) = -1$. The product is $-1$. The case $p \equiv 3 \pmod{4}$ is symmetric.
+\end{proof}
+
+\begin{lemma}[Sector decomposition]\label{lem:sector-decomp}
+If $H \geq 0$ and $H_\chi \geq 0$ as operators on the same Hilbert space, then:
+\begin{equation}
+  H_+ := \frac{H + H_\chi}{2}, \qquad H_- := \frac{H - H_\chi}{2}
+\end{equation}
+are self-adjoint and satisfy:
+\begin{equation}
+  H = H_+ + H_-, \qquad H_\chi = H_+ - H_-.
+\end{equation}
+Moreover, $H_+$ sees only primes $p \equiv 1 \pmod{4}$ and $H_-$ sees only $p \equiv 3 \pmod{4}$.
+\end{lemma}
+
+\begin{proof}
+Self-adjointness follows from $(H \pm H_\chi)^* = H^* \pm H_\chi^* = H \pm H_\chi$. The sector separation follows from $(1 \pm \chi_4(p))/2$ being 1 or 0 depending on the residue class.
+\end{proof}
+
+\subsection{Summary}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{Result} & \textbf{Status} \\
+\midrule
+\cref{lem:CS-bridge}: $|T(X)| \geq |Z(X)|^2 / W_2(X)$ & \textbf{Proven} \\
+\cref{thm:coherence-infinitude}: $|Z(X)| \to \infty \Rightarrow$ TPC & \textbf{Proven (conditional)} \\
+\cref{lem:V-positive}: $V_{\mathrm{twins}} \geq 0$ & \textbf{Proven} \\
+\cref{lem:antiferro}: $\chi_4(p)\chi_4(p+2) = -1$ & \textbf{Proven} \\
+\cref{lem:sector-decomp}: $H = H_+ + H_-$ & \textbf{Proven} \\
+\midrule
+$|Z(X)| \sim N^\beta$ with $\beta \approx 1$ & \textbf{Numerical evidence only} \\
+\midrule
+Pair correlation (PC) of $\zeta$ zeros $\Rightarrow$ GM variance formula & \textbf{Known equivalence (conditional on PC)} \\
+GM variance $+$ HL(2) $\Rightarrow \sum_{n\le X}\Lambda(n)\Lambda(n+2) \sim 2C_2 X$ & \textbf{Conditional} \\
+HL(2) $\Rightarrow$ TPC & \textbf{Conditional} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Conditional bridge via pair correlation and HL(2)}
+
+\begin{theorem}[PC $+$ HL(2) $\Rightarrow$ twin asymptotic (conditional)]\label{thm:pc-hl2}
+Assume the pair-correlation conjecture (GUE) for zeros of $\zeta$ and the Hardy--Littlewood conjecture for $h=2$ (HL(2)). Then
+\[
+  \sum_{n\le X} \Lambda(n)\Lambda(n+2) \sim 2C_2 X,
+\]
+and hence $|T(X)| \sim 2C_2 X/(\log X)^2$ and there are infinitely many twin primes.
+\end{theorem}
+
+\begin{remark}
+The implication \cref{thm:pc-hl2} packages known conditional links:
+pair correlation $\Leftrightarrow$ Goldston--Montgomery variance of $\psi$ in short intervals;
+variance $+$ HL(2) $\Rightarrow$ the stated asymptotic for the prime pair correlation.
+We include it to situate the coherence programme within classical conjectural bridges; it is \emph{not} used in the main proof.
+\end{remark}

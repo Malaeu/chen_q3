@@ -1,0 +1,179 @@
+% Setup and Definitions - Twin Prime Paper
+% ========================================
+
+\section{Setup and Definitions}\label{sec:setup}
+
+We now introduce the objects needed for our analysis. The basic idea is to
+represent twin primes as points on a line, build matrices from the pairwise
+interactions, and study the energy of vectors supported on twins.
+
+\subsection{Twin Primes and Counting Functions}
+
+We begin with standard notation for twin primes and their weighted count.
+
+\begin{definition}[Twin primes]
+Let $\mathcal{T}(X) := \{p \le X : p \text{ and } p+2 \text{ both prime}\}$
+denote the set of twin primes up to $X$. We write $N = |\mathcal{T}(X)|$.
+\end{definition}
+
+\begin{definition}[Twin sum]
+The weighted twin prime sum is
+\[
+    S(X) := \sum_{n \le X} \Lambda(n) \Lambda(n+2),
+\]
+where $\Lambda$ is the von Mangoldt function.
+Under the Hardy--Littlewood conjecture, $S(X) \sim 2C_2 X$.
+\end{definition}
+
+\subsection{Spectral Coordinates}
+
+To apply spectral methods, we assign each prime a position on the real line.
+The logarithmic scaling ensures that prime gaps translate into roughly
+uniform spacings, which is natural from the Prime Number Theorem.
+
+\begin{definition}[Prime positions]
+For a prime $p$, define the spectral coordinate
+\[
+    \xi_p := \frac{\log p}{2\pi}.
+\]
+This places primes on the real line with spacing $\xi_{p'} - \xi_p \approx 2/(2\pi p)$
+for consecutive primes.
+\end{definition}
+
+\begin{remark}
+The positions $\xi_p$ are strictly increasing in $p$:
+\[
+    \xi_3 < \xi_5 < \xi_7 < \xi_{11} < \cdots
+\]
+This monotonicity is essential for Lemma~\ref{lem:cone-kernel}.
+\end{remark}
+
+\subsection{Gaussian Kernel and Matrices}
+
+The interaction between primes at positions $\xi_p$ and $\xi_q$ is measured
+by a Gaussian kernel. The choice of Gaussian is convenient for explicit
+calculations, but the arguments work for any strictly positive kernel.
+Fix a heat parameter $t > 0$ (typically $t = 1$).
+
+\begin{definition}[Gaussian factor]
+\[
+    G(\delta) := \sqrt{2\pi t} \, e^{-\delta^2/(8t)}.
+\]
+\end{definition}
+
+\begin{definition}[Kernel matrix]
+For twin primes $p, q \in \mathcal{T}(X)$:
+\[
+    K_{pq} := G(\xi_p - \xi_q)^2 = 2\pi t \, e^{-(\xi_p - \xi_q)^2/(4t)}.
+\]
+Note: $K_{pq} > 0$ for all $p, q$ (strictly positive kernel).
+\end{definition}
+
+\begin{definition}[Commutator matrix]
+\[
+    A_{pq} := (\xi_q - \xi_p) \cdot K_{pq}.
+\]
+This is the key object: antisymmetric in the position factor, symmetric in the kernel.
+\end{definition}
+
+\begin{definition}[Commutator energy matrix]
+\[
+    Q := A^\top A.
+\]
+This is symmetric and positive semidefinite by construction.
+\end{definition}
+
+\subsection{The Twin Cone}
+
+A vector $\lambda \in \mathbb{R}^N$ assigns a weight to each twin prime.
+We focus on non-negative weights, since the natural twin vector---where
+$\lambda_p = \Lambda(p)\Lambda(p+2)$---has this property.
+
+\begin{definition}[Positive cone]
+\[
+    \mathcal{C} := \{\lambda \in \mathbb{R}^N : \lambda_p \ge 0 \text{ for all } p, \, \lambda \neq 0\}.
+\]
+This is the ``first orthant'' excluding the origin.
+\end{definition}
+
+\begin{definition}[Normalized cone]
+\[
+    \mathcal{C}_1 := \{\lambda \in \mathcal{C} : \|\lambda\| = 1\}.
+\]
+This is compact (intersection of cone with unit sphere).
+\end{definition}
+
+\begin{remark}[Physical interpretation]
+The cone $\mathcal{C}$ represents ``twin-weighted'' vectors where each twin prime
+contributes non-negatively. The natural twin vector
+$\lambda_p = \Lambda(p) \Lambda(p+2)$ lies in $\mathcal{C}$.
+\end{remark}
+
+\subsection{Energy Functionals}
+
+We now define the two energy functionals whose ratio is the central object of study.
+The commutator energy measures how much a vector ``feels'' the off-diagonal structure,
+while the lattice energy provides a natural normalization.
+
+\begin{definition}[Commutator energy]
+\[
+    E_{\mathrm{comm}}(\lambda) := \lambda^\top Q \lambda = \|A\lambda\|^2.
+\]
+\end{definition}
+
+\begin{definition}[Lattice energy]
+Let $G_{\mathrm{mat}}$ be the Gram matrix with $(G_{\mathrm{mat}})_{pq} = G(\xi_p - \xi_q)$.
+\[
+    E_{\mathrm{lat}}(\lambda) := \lambda^\top G_{\mathrm{mat}} \lambda.
+\]
+\end{definition}
+
+\begin{definition}[Rayleigh quotient]
+\[
+    R(\lambda) := \frac{E_{\mathrm{comm}}(\lambda)}{E_{\mathrm{lat}}(\lambda)}
+    = \frac{\lambda^\top Q \lambda}{\lambda^\top G_{\mathrm{mat}} \lambda}.
+\]
+\end{definition}
+
+\subsection{Spectral Floor (Q3 Connection)}
+
+The Q3 framework provides a ``floor'' for the energy operator.
+
+\begin{definition}[Spectral floor]\label{def:spectral-floor}
+Let $T_X$ denote the prime energy operator (see Section~\ref{sec:TP-SX}).
+The \emph{spectral floor} $\mu(X) > 0$ is defined by:
+\[
+    \langle T_X \Phi, \Phi \rangle \geq \mu(X) \|\Phi\|^2
+    \quad \text{for all } \Phi.
+\]
+\end{definition}
+
+\begin{remark}[Origin of the floor]
+In the full Q3 analysis~\cite{Malamutmann2025Q3}, the floor arises from the
+\emph{Archimedean contribution} $c_{\mathrm{arch}}(K)$ to the Toeplitz symbol.
+The key result is:
+\[
+    \mu(X) \geq c_{\mathrm{arch}}(K) - \rho_K,
+\]
+where $\rho_K$ is the prime contribution bounded by RKHS contraction.
+For $K \approx \log X / (2\pi)$, this gives $\mu(X) = \Omega(1)$ uniformly.
+\end{remark}
+
+\subsection{Summary of Notation}
+
+\begin{center}
+\begin{tabular}{c|l}
+    \textbf{Symbol} & \textbf{Definition} \\
+    \hline
+    $\mathcal{T}(X)$ & Twin primes up to $X$ \\
+    $N$ & $|\mathcal{T}(X)|$ \\
+    $S(X)$ & $\sum_{n \le X} \Lambda(n)\Lambda(n+2)$ \\
+    $\xi_p$ & $\log(p)/(2\pi)$ \\
+    $G(\delta)$ & $\sqrt{2\pi t} \, e^{-\delta^2/(8t)}$ \\
+    $K_{pq}$ & $G(\xi_p - \xi_q)^2$ \\
+    $A_{pq}$ & $(\xi_q - \xi_p) K_{pq}$ \\
+    $Q$ & $A^\top A$ \\
+    $\mathcal{C}$ & $\{\lambda \ge 0, \lambda \neq 0\}$ \\
+    $R(\lambda)$ & $E_{\mathrm{comm}}/E_{\mathrm{lat}}$ \\
+\end{tabular}
+\end{center}

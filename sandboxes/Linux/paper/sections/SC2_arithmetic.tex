@@ -1,0 +1,79 @@
+% Finite Stabilization (SC2): finite twins imply bounded Rayleigh quotient.
+
+\section{Finite Stabilization (SC2)}\label{sec:SC2}
+
+We now establish the upper bound that makes the Growth Target powerful. The idea
+is simple: if twin primes are finite, then the twin vector $\Phi_X$ stabilizes
+and so does its Rayleigh quotient. No Q3 spectral analysis or uniform bounds
+are needed---this is a direct consequence of finiteness.
+
+\subsection{The Finite Twins Hypothesis}
+
+\begin{definition}[Finite twins]\label{def:finite-twins}
+The \emph{finite twins hypothesis} states that there exists $X_0$ such that
+\[
+    \mathcal{T}(X) = \mathcal{T}(X_0) \quad \text{for all } X \geq X_0,
+\]
+i.e., no new twin primes appear beyond $X_0$.
+\end{definition}
+
+\subsection{Compact Support Principle}
+
+\begin{lemma}[Compact support]\label{lem:compact-support}
+If twins are finite with last twin at some $X_0$, then $\Phi_X = \Phi_{X_0}$
+is constant for all $X \geq X_0$. The support $\mathrm{supp}(\Phi) = \mathcal{T}(X_0)$
+is finite, and consequently $\|\Phi_X\|^2 = O(1)$.
+\end{lemma}
+
+\begin{proof}
+If $\mathcal{T}(X) = \mathcal{T}(X_0)$ for $X \geq X_0$, then
+\[
+    \Phi_X = \sum_{p \in \mathcal{T}(X)} \Lambda(p)\Lambda(p+2) k_p
+    = \sum_{p \in \mathcal{T}(X_0)} \Lambda(p)\Lambda(p+2) k_p = \Phi_{X_0}. \qedhere
+\]
+\end{proof}
+
+\subsection{The Main Result}
+
+\begin{proposition}[Finite Stabilization (SC2)]\label{prop:finite-upper}
+If twins are finite, then
+\[
+    R(\Phi_X) = O(1) \quad \text{as } X \to \infty.
+\]
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:compact-support}, $\Phi_X = \Phi_{X_0}$ for large $X$.
+Both energies are fixed:
+\[
+    E_{\mathrm{comm}}(\Phi_X) = E_{\mathrm{comm}}(\Phi_{X_0}), \qquad
+    E_{\mathrm{lat}}(\Phi_X) = E_{\mathrm{lat}}(\Phi_{X_0}).
+\]
+Hence $R(\Phi_X) = R(\Phi_{X_0})$ is constant.
+\end{proof}
+
+\begin{remark}[Elementary proof via $S(X)$]
+Document~2 gives a direct classical argument: if twins are finite,
+\[
+    S(X) := \sum_{n \le X} \Lambda(n)\Lambda(n+2) = O(X^{1/2+\varepsilon}).
+\]
+The twin contribution $S_{\mathrm{twin}}(X) = O((\log X)^2)$ and the
+prime power contribution $S_{\mathrm{pp}}(X) \ll X^{1/2}(\log X)^2$.
+Through the bridge (Section~\ref{sec:TP-SX}), this yields $R(\Phi_X) = O(1)$.
+\end{remark}
+
+\subsection{Consequence for the Growth Target}
+
+\begin{corollary}\label{cor:SC2-consequence}
+If the Growth Target (P(X)) holds, i.e., $R(\Phi_X) \gtrsim X^\delta$ for some $\delta > 0$,
+then twins are infinite.
+\end{corollary}
+
+\begin{proof}
+Contrapositive of Proposition~\ref{prop:finite-upper}:
+finite twins $\Rightarrow R(\Phi_X) = O(1)$, which contradicts
+$R(\Phi_X) \gtrsim X^\delta \to \infty$.
+\end{proof}
+
+This is the key: Finite Stabilization converts any power-law lower bound on $R(\Phi_X)$
+into a proof of infinitely many twin primes.

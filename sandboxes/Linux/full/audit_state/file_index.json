@@ -1,0 +1,220 @@
+{
+  "files": [
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/RH_Q3.tex",
+      "lines": 88
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/appendix/FAQ.tex",
+      "lines": 26
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/appendix/T5_atp.tex",
+      "lines": 2
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/appendix/T5_parameters.tex",
+      "lines": 53
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/appendix/clarifications.tex",
+      "lines": 54
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/appendix/notation.tex",
+      "lines": 16
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/appendix/repro_A3.tex",
+      "lines": 14
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/appendix/verification.tex",
+      "lines": 106
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/preamble/preamble.tex",
+      "lines": 104
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/preamble/titleblock.tex",
+      "lines": 4
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A1prime.tex",
+      "lines": 80
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A2.tex",
+      "lines": 87
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A3/arch_bounds.tex",
+      "lines": 48
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A3/calibration.tex",
+      "lines": 90
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A3/fejer_modulus.tex",
+      "lines": 58
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A3/local_positivity.tex",
+      "lines": 14
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A3/locks.tex",
+      "lines": 22
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A3/main.tex",
+      "lines": 143
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A3/matrix_guard.tex",
+      "lines": 147
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A3/param_tables.tex",
+      "lines": 26
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A3/rayleigh_bridge.tex",
+      "lines": 105
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/A3/symbol_floor.tex",
+      "lines": 103
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/D3/amp_noD3.tex",
+      "lines": 22
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/D3/operator_bridge.tex",
+      "lines": 46
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/D3/structural_PC_theorem.tex",
+      "lines": 31
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/IND_AB/AB_infinity_closure.tex",
+      "lines": 18
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/IND_AB/IND_prime_step.tex",
+      "lines": 35
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/IND_AB/MD_2_3_base_interval.tex",
+      "lines": 169
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/IND_AB/MD_2_3_constants.tex",
+      "lines": 84
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/IND_AB/MD_2_3_constants_table.tex",
+      "lines": 39
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/IND_AB/include/ab_infinity_lemma.tex",
+      "lines": 52
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/IND_AB/ind_schedule_table.tex",
+      "lines": 31
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/IND_AB/parameter_recipe.tex",
+      "lines": 40
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/Main_closure.tex",
+      "lines": 44
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/RKHS/core.tex",
+      "lines": 68
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/RKHS/main.tex",
+      "lines": 154
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/RKHS/prime_cap.tex",
+      "lines": 203
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/RKHS/prime_cap_table.tex",
+      "lines": 26
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/RKHS/prime_norm_leq_rho.tex",
+      "lines": 116
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/RKHS/prime_trace_closed_form.tex",
+      "lines": 48
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/RKHS/weil_isometry.tex",
+      "lines": 8
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/T0.tex",
+      "lines": 68
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/T0_AD_fix.tex",
+      "lines": 21
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/T5/compact_transfer.tex",
+      "lines": 65
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/T5/grid.tex",
+      "lines": 24
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/T5/lemmas.tex",
+      "lines": 33
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/T5/summary.tex",
+      "lines": 27
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/Weil_linkage.tex",
+      "lines": 21
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/Weil_pack.tex",
+      "lines": 25
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/abstract.tex",
+      "lines": 5
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/introduction.tex",
+      "lines": 156
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/references_nocite.tex",
+      "lines": 3
+    },
+    {
+      "path": "/Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/sections/scope_notation.tex",
+      "lines": 46
+    }
+  ],
+  "totals": {
+    "files_count": 53,
+    "lines_total": 3118
+  }
+}

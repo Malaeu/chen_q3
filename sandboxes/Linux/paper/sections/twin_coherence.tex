@@ -1,0 +1,88 @@
+% Twin Prime Coherence Analysis
+% =============================
+
+\section{Twin Prime Coherence Phenomenon}\label{sec:twin-coherence}
+
+\subsection{Anti-diagonal Fourier Modes}
+
+Twin prime vectors exhibit constructive interference along specific Fourier modes.
+
+\begin{definition}[Anti-diagonal modes]\label{def:antidiag-modes}
+In the complex Fourier basis $\{e^{ik\xi}\}$, the anti-diagonal modes are those with:
+\begin{equation}
+  k_1 + k_2 = 0, \quad \text{i.e., } k_2 = -k_1.
+\end{equation}
+\end{definition}
+
+\begin{lemma}[Phase difference for twins]\label{lem:phase-diff}
+For a twin pair $(p, p+2)$ with log-coordinates $\xi_p = \log p/(2\pi)$ and $\xi_{p+2} = \log(p+2)/(2\pi)$:
+\begin{equation}
+  \delta := \xi_{p+2} - \xi_p = \frac{\log(1 + 2/p)}{2\pi}.
+\end{equation}
+As $p \to \infty$, we have $\delta \to 0$ with $\delta \approx 1/(\pi p)$.
+\end{lemma}
+
+\begin{theorem}[Anti-diagonal coherence]\label{thm:antidiag-coherence}
+For the anti-diagonal mode $(k, -k)$, the combined phase contribution from a twin pair is:
+\begin{equation}
+  e^{2\pi i k \xi_p} \cdot e^{-2\pi i k \xi_{p+2}} = e^{-2\pi i k \delta}.
+\end{equation}
+Since $\delta \to 0$ as $p \to \infty$, all large twins contribute with phase $\approx 0$.
+\end{theorem}
+
+\begin{proof}
+Direct calculation:
+\begin{equation}
+  e^{2\pi i k (\xi_p - \xi_{p+2})} = e^{-2\pi i k \delta} = e^{-i k \log(1 + 2/p)} \to 1
+\end{equation}
+as $p \to \infty$.
+\end{proof}
+
+\begin{corollary}[Phase deviation bound]\label{cor:phase-deviation}
+For mode $k$ and twin pair $(p, p+2)$, the phase deviation from 0 is:
+\begin{equation}
+  |\arg(e^{-2\pi i k \delta})| = 2\pi |k| \delta \approx \frac{2|k|}{p}.
+\end{equation}
+For $k = 1$ and $p \geq 100$, this is under $1.15^{\circ}$.
+\end{corollary}
+
+\subsection{Coherent vs Incoherent Scaling}
+
+\begin{definition}[Coherence measures]\label{def:coherence-measures}
+For $N$ twin pairs with phases $\phi_j$:
+\begin{align}
+  S_{\mathrm{coh}} &:= \left| \sum_{j=1}^N e^{i\phi_j} \right| \quad \text{(coherent sum)}, \\
+  S_{\mathrm{inc}} &:= N \quad \text{(incoherent/random walk baseline)}.
+\end{align}
+\end{definition}
+
+\begin{theorem}[Numerical scaling law]\label{thm:scaling}
+This statement summarizes \emph{empirical log--log fits} from the code (complex Fourier basis, weights $w(p)=\log p/\sqrt{p}$) on the range $N \leq 1.4\times10^3$ twin pairs. It is not a rigorous asymptotic claim.
+\begin{itemize}
+  \item Coherent sum: $S_{\mathrm{coh}} \approx N^{0.96\text{--}1.01}$ on anti-diagonal modes.
+  \item Baseline (diagonal / incoherent): $S_{\mathrm{inc}} \approx N^{0.10\text{--}0.20}$.
+  \item Gain $G := S_{\mathrm{coh}} / S_{\mathrm{inc}}^{1/2} \approx N^{0.70\text{--}0.80}$.
+\end{itemize}
+\end{theorem}
+
+\begin{remark}[Weight and window dependence]
+The exponents vary with the weighting scheme and the compact window $K$; we do not attempt to identify a canonical value (e.g., $3/4$). Appendix tables and code logs record the precise fit ranges used.
+\end{remark}
+
+\subsection{Antiferromagnetic Order}
+
+\begin{theorem}[Antiferromagnetic structure]\label{thm:antiferro}
+Every twin pair $(p, p+2)$ with $p > 3$ satisfies:
+\begin{equation}
+  \chifour(p) \times \chifour(p+2) = -1.
+\end{equation}
+This defines an antiferromagnetic ordering in residue-class space.
+\end{theorem}
+
+\begin{proof}
+For $p > 3$ prime, $p$ is odd. If $p \equiv 1 \pmod{4}$, then $p + 2 \equiv 3 \pmod{4}$, giving $\chifour(p) = 1$ and $\chifour(p+2) = -1$. The converse case is symmetric.
+\end{proof}
+
+\begin{remark}[Physical interpretation]
+The antiferromagnetic order means twin primes always connect opposite residue classes (class 1 to class 3). This structural constraint underlies the coherence in the anti-diagonal Fourier basis, where the $\pm$ sectors couple constructively.
+\end{remark}

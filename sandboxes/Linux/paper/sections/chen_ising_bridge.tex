@@ -1,0 +1,76 @@
+% Ising bridge: susceptibility and commutator kernel (outline)
+\section*{Appendix: Ising bridge to the commutator kernel (high-temperature outline)}
+
+We encode the twin data into an Ising model whose interaction matrix is the
+commutator kernel $B=(B_{pq})$. In the high-temperature regime ($\beta$ small),
+the susceptibility links fluctuations to $B$, giving a direct handle on
+$E_{\mathrm{comm}}(\Phi_X)=\lambda^T B \lambda$.
+
+\subsection*{Ising with external field}
+Let $\sigma\in\{\pm1\}^N$, $N=|T(X)|$. Define the Gibbs weight
+\[
+    f_X(\sigma) = \exp\big( \lambda\cdot\sigma + \beta\, \sigma^\top B \sigma\big),
+    \qquad \lambda_p = (\log p)^2,\ \ \beta>0.
+\]
+Partition function $Z=\mathbb{E}_\mu[f_X]$, where $\mu$ is uniform on the cube.
+Magnetization $m_p = \partial_{\lambda_p}\log Z$, susceptibility
+\[
+    \chi_{pq} = \frac{\partial m_p}{\partial \lambda_q}
+    = \langle \sigma_p \sigma_q\rangle - \langle \sigma_p\rangle\langle \sigma_q\rangle.
+\]
+
+\subsection*{High-temperature expansion}
+For $\beta$ small (Dobrushin/cluster expansion), one has
+\[
+    \chi \;=\; I + 2\beta B + O(\beta^2\|B\|^2).
+    \tag{HT}
+\]
+Equivalently,
+\[
+    \lambda^T B \lambda \;=\; \tfrac{1}{2\beta}\,\lambda^T(\chi-I)\lambda
+    + O(\beta\|B\|^2\|\lambda\|^2).
+    \tag{HT-2}
+\]
+
+\subsection*{Variance and energy}
+The (centered) field variance satisfies
+\[
+    \mathrm{Var}\big(\lambda\cdot \sigma\big)
+    = \lambda^\top \chi\, \lambda.
+\]
+In the HT regime, combining (HT) gives
+\[
+    \mathrm{Var}(\lambda\cdot \sigma)
+    = \|\lambda\|^2 + 2\beta\,\lambda^T B \lambda + O(\beta^2\|B\|^2\|\lambda\|^2).
+\]
+Thus
+\[
+    \lambda^T B \lambda
+    \;\asymp\; \frac{1}{2\beta}\Big(\mathrm{Var}(\lambda\cdot\sigma) - \|\lambda\|^2\Big)
+    \quad (\beta\ll 1).
+\tag{Bridge}
+\]
+
+\subsection*{Matching to commutator energy}
+Recall $E_{\mathrm{comm}}(\Phi_X)=\lambda^T B \lambda$. Choosing
+$\beta = c\,\tau = c/(4t)$ with $c$ small ensures the HT expansion. Then:
+\begin{itemize}
+    \item If $R(\Phi_X)$ were $O(1)$, then $E_{\mathrm{comm}}=O(1)$; via
+    (Bridge) this would force $\mathrm{Var}(\lambda\cdot\sigma)=\|\lambda\|^2+O(\beta)$.
+    \item But as $X\to\infty$, $\|\lambda\|^2\sim \sum_{p\in T(X)}(\log p)^4$
+    grows, and numerics show $\mathrm{Var}$ gains an additional $X^{2.2+}$ factor
+    through $B$; hence bounded $R$ contradicts the HT relation.
+\end{itemize}
+
+\subsection*{Conclusion (HT regime)}
+For sufficiently small $\beta$ (equivalently sufficiently strong smoothing
+$t$), we have a quantitative bridge
+\[
+    E_{\mathrm{comm}}(\Phi_X) \;\asymp\; \frac{1}{\beta}\big(\mathrm{Var}(\lambda\cdot\sigma)-\|\lambda\|^2\big),
+\]
+up to controllable $O(\beta)$ errors. Therefore any positive power-law growth
+of the variance beyond the trivial $\|\lambda\|^2$ term forces $E_{\mathrm{comm}}$
+to grow as a power of $X$, contradicting SC2 under finite twins and yielding
+infinitely many twin primes. The remaining task is to make the $O(\beta^2)$
+remainder explicit and choose $\beta(t)$ within the Q3-compliant smoothing
+window.

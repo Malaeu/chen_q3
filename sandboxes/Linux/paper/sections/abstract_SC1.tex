@@ -1,0 +1,63 @@
+% Abstract SC1: Operator-Theoretic Framework (Legacy Route)
+% This section is kept for completeness but is NOT required for the main result.
+
+\section{Abstract Framework: SC1 (Legacy Route)}\label{sec:abstract-SC1}
+
+\begin{remark}[Status]
+This section describes the \emph{legacy} path to twin primes via uniform scaling
+on the whole cone. It is \textbf{not required} for the main result (Theorem~\ref{thm:equivalence}),
+which establishes a spectral equivalence. We include it for completeness.
+\end{remark}
+
+\subsection{Setup}
+
+Let $\mathcal{H}$ be a Hilbert space with:
+\begin{itemize}
+    \item $T \geq 0$: a non-negative self-adjoint operator,
+    \item $\Xi$: a self-adjoint ``position'' operator,
+    \item $\mathcal{C} \subset \mathcal{H}$: a cone (closed under positive scaling).
+\end{itemize}
+
+Define the commutator $C := [T, \Xi]$ and commutator energy $Q(\Phi) := \|C\Phi\|^2$.
+
+\subsection{The B$_1$ Condition}
+
+\begin{definition}[B$_1$ on a cone]\label{def:B1-cone}
+We say \emph{B$_1$ holds on $\mathcal{C}$} with constant $c_1 > 0$ if
+\[
+    Q(\Phi) \geq c_1 \cdot \langle T\Phi, \Phi \rangle
+    \quad \text{for all } \Phi \in \mathcal{C}.
+\]
+\end{definition}
+
+\subsection{Abstract Scaling Result}
+
+\begin{proposition}[Abstract SC1]\label{prop:abstract-SC1}
+Assume:
+\begin{enumerate}
+    \item $Q(\Phi) \geq c_1 \langle T\Phi, \Phi \rangle$ for all $\Phi \in \mathcal{C}$, with $c_1 > 0$.
+    \item $\langle T\Phi, \Phi \rangle \geq \mu \|\Phi\|^2$ for all $\Phi \in \mathcal{C}$, with $\mu > 0$.
+\end{enumerate}
+Then $Q(\Phi) \geq c_1 \mu \|\Phi\|^2$ for any $\Phi \in \mathcal{C}$.
+\end{proposition}
+
+\begin{proof}
+Direct: $Q(\Phi) \geq c_1 \langle T\Phi, \Phi \rangle \geq c_1 \mu \|\Phi\|^2$.
+\end{proof}
+
+\subsection{Spectral Scaling Conjecture (Legacy)}
+
+\begin{conjecture}[SC1: Spectral scaling]\label{conj:SC1}
+There exist $\alpha > 0$ and $X_0 > 0$ such that for all $X \geq X_0$:
+\[
+    c_1(X) \cdot \mu(X) \geq X^\alpha.
+\]
+\end{conjecture}
+
+\begin{remark}[Comparison with minimal path]
+\begin{itemize}
+    \item \textbf{Legacy (SC1):} Requires uniform bound over entire cone $\mathcal{C}$.
+    \item \textbf{Minimal (P(X)):} Requires bound only for single vector $\Phi_X$.
+\end{itemize}
+The minimal path is strictly weaker and sufficient for twin primes.
+\end{remark}

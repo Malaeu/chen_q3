@@ -1,0 +1,8 @@
+{"synthetic": false,
+ "outputs": null,
+ "log":
+ [{"message":
+   ".> curl -s -S -f -o /Users/emalam/Documents/GitHub/RH_2025_V3_October/Q3_paper/notes/lean/.lake/packages/batteries/.lake/build.barrel -L https://reservoir.lean-lang.org/api/v1/packages/leanprover-community/batteries/barrel?rev=8da40b72fece29b7d3fe3d768bac4c8910ce9bee&toolchain=leanprover%2Flean4%3Av4.24.0 -H X-Reservoir-Api-Version:1.0.0 -H X-Lake-Registry-Api-Version:0.1.0",
+   "level": "trace"}],
+ "inputs": [],
+ "depHash": "13534363447242452214"}

@@ -1,0 +1,2139 @@
+## User
+
+/understand
+
+## Assistant
+
+Ылша привет!
+
+Запускаю полный анализ проекта. Это Lean-проект по формализации математики (Q3/RH), так что сфокусируюсь на структуре доказательств и аксиомах.
+
+**Tool Call: List Lean files in project**
+Status: Completed
+
+Terminal:
+```
+./paper/appendix/lean_growth_target.lean
+./archive/subprojects/spectral_twin_primes/lean_aristotle/TwinPrimeConjecture.lean
+./archive/subprojects/spectral_twin_primes/lean_aristotle/TwinPrimeProject/TwinPrimeConjecture.lean
+./archive/subprojects/spectral_twin_primes/lean_aristotle/TwinPrimeProject/lakefile.lean
+./archive/subprojects/spectral_twin_primes/lean_aristotle/proved/fourier_rkhs_partial_v1.lean
+./archive/subprojects/spectral_twin_primes/lean_aristotle/proved/cv_growth_lemmas.lean
+./archive/aristotle_root/2647ad4e-a3ce-42e5-8bca-6b1ca80bdca4-output.lean
+./archive/aristotle_root/23501312-86ca-4819-a85e-4f0065d9e1be-output.lean
+./archive/aristotle_root/20207bb1-a64c-4aa3-8706-c089daee9930-output.lean
+./archive/aristotle_root/3a7ad321-583f-4851-b63e-ba96f8092202-output.lean
+./archive/aristotle_root/2026-01-15/fb91fbb3-4c87-4740-939a-c672648a38ae-output.lean
+./archive/aristotle_root/2026-01-15/caf3e4c0-357a-43c0-bd1a-a3e29aa237f1-output.lean
+./archive/aristotle_root/2026-01-15/ba71a35a-14e1-46d0-a51c-002860d03561-output.lean
+./archive/aristotle_root/2026-01-15/c020a6a2-3eb5-4cc1-8dfe-42166046183e-output.lean
+./archive/aristotle_root/2026-01-15/ccf01635-d3c8-4e0f-b1f0-1b084dfcb405-output.lean
+./archive/aristotle_root/2026-01-15/ee8bc919-4cf3-4f01-bab5-927a4e2a0821-output.lean
+./archive/aristotle_root/2026-01-15/bcec962f-4686-493e-b057-19695ddfc7b6-output.lean
+./archive/aristotle_root/2026-01-15/78a7d870-0b91-4cac-96c8-62b3cf26b4ae-output.lean
+./archive/aristotle_root/2026-01-15/docs/442c8097-5a65-4ab4-aec3-52ab2f098179-output.lean
+./archive/aristotle_root/2026-01-15/docs/293e3cb4-905b-4fc1-aadf-53e685710d51-output.lean
+./archive/aristotle_root/2026-01-15/docs/8534f354-d933-404c-9d72-0c635f368fb8-output.lean
+./archive/aristotle_root/2026-01-15/docs/3feb2153-3e8f-4283-9e01-a3c24759abbe-output.lean
+./archive/aristotle_root/2026-01-15/docs/7cc3a0a6-b069-4353-9cd6-9ece809658a6-output.lean
+./archive/aristotle_root/2026-01-15/docs/55184c84-b7c3-479c-8123-69d2eda08605-output.lean
+./archive/aristotle_root/2026-01-15/docs/b43094e0-72bf-4a8a-be77-fb59e5b47624-output.lean
+./archive/aristotle_root/2026-01-15/docs/3c744600-86d0-48da-8a29-eeb4b5a42f81-output.lean
+./archive/aristotle_root/2026-01-15/docs/9ba5988c-736f-4763-84c6-fe1ff97f62f5-output.lean
+./archive/aristotle_root/2026-01-15/docs/23659b1b-c03a-4348-ae09-2891edeee00b-output.lean
+./archive/aristotle_root/2026-01-15/docs/ff0fc81a-ce24-40db-a3a0-91239fedc821-output.lean
+./archive/aristotle_root/2026-01-15/docs/8f5f9cc6-cf31-4f4e-9d68-73f41b17985e-output.lean
+./archive/aristotle_root/2026-01-15/docs/3b4063f3-d610-41a9-b02a-e6bfaecb2162-output.lean
+./archive/aristotle_root/2026-01-15/docs/a52aeaf3-4be0-4de6-85bc-b58d37ecfa4e-output.lean
+./archive/aristotle_root/2026-01-15/docs/3218135c-0d49-41dc-9a33-d34aed13136e-output.lean
+./archive/aristotle_root/2026-01-15/docs/40988c69-3c8b-4078-a4a4-d305d37d4e20-output.lean
+./archive/aristotle_root/2026-01-15/docs/626d9078-974a-42b0-bc11-e1b0733b56b1-output.lean
+./archive/aristotle_root/2026-01-15/docs/6999ce71-c478-4328-91c4-1b7c680f46bc-output.lean
+./archive/aristotle_root/2026-01-15/e648f487-65e0-4b4a-980f-c76226ce120b-output.lean
+./archive/aristotle_root/6cd52bc6_aristotle.lean
+./archive/aristotle_root/850ffe5b-1d5c-4248-978d-ad911db7d9d0-output.lean
+./archive/aristotle_root/56913dc1-5fee-4513-ac85-f55ab67289d5-output.lean
+./archive/aristotle_root/68f7963c_aristotle.lean
+./archive/aristotle_root/ada58f31-f6fb-4426-99f2-9bb5cf98a3a3-output.lean
+./archive/aristotle_root/99060a23-d2c5-48a3-9830-e9a527bbe58c-output.lean
+./archive/aristotle_root/29c888c8-3c99-458e-9302-66d7324ba18f-output.lean
+./archive/aristotle_root/f8cd9fb7-b136-4836-8ec3-27769f908664-output.lean
+./archive/aristotle_root/e4a93701-387d-4d80-8140-d000a959e37a-output.lean
+./archive/aristotle_root/d5bbc4ae-b978-4f29-ace4-e5c11eef9735-output.lean
+./archive/aristotle_root/6df4dce0-7397-4303-b37e-f50d333ba384-output.lean
+./archive/aristotle_root/70f872fe-6eef-43e9-8ab7-a8ff6c71a862-output.lean
+./archive/aristotle_root/52696cee-ad2c-4feb-a69f-dbb05bfc7433-output.lean
+---
+8693
+
+```
+
+
+**Tool Call: Find `**/*.md`**
+Status: Completed
+
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/AGENTS.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/PROBLEM.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/README.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/CLAUDE.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/PROOF_TASKS.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/ARISTOTLE_GUIDE.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/PROOF_PLAN.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/LEAN_VERIFICATION_MASTER_old.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/PLAN_B1.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/STEP_B_PLAN.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/TODO_COMMUTATOR.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/TWINS_ANALYTICS_GAPS.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/TODO_math.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/WORKING_HYPOTHESES.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/old_docs/TODO_code.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/lean_test/cone_kernel.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/lean_test/cone_kernel_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/README.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/docs/ARISTOTLE_GUIDE.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/docs/DECOMPOSITION_PLAN.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/docs/CONTEXT_BRIEF_FOR_LLM.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/ARISTOTLE_STATUS_REPORT.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/TwinPrimeProject/SORRY_ANALYSIS.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/AUDIT_PROJECTS.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/01_cone_kernel_separation.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_FREE_EXPLORATION_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/02_cone_positivity_B1.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_FORCING_UPDATED_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/03_universal_scaling.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_LARGE_SIEVE_ATTACK.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_FORCING_POSITIVITY.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_FORCING_UPDATED.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_FORCING_POSITIVITY_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_LARGE_SIEVE_ATTACK_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/99_THE_GAP_growth_target_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/99_THE_GAP_growth_target.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_FREE_EXPLORATION.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/AUDIT_Buffer_Suppression_Proof.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_MASTER_ATTACK_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_MASTER_ATTACK.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_MINOR_ARCS_ATTACK_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_VINOGRADOV_ATTACK_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_SPECTRAL_ATTACK_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_SPECTRAL_ATTACK.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_VINOGRADOV_ATTACK.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/ARISTOTLE_MINOR_ARCS_ATTACK.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/AUDIT_MB_Theorem.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/CHARACTER_APPROACH_TPC.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/COROLLARY3_REFORMULATION.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/AUDIT_Fourier_Decay_Bound_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/AUDIT_Spectral_Gap_Axiom_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/AUDIT_Spectral_Gap_Axiom.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/AUDIT_Fourier_Decay_Bound.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/AUDIT_D3_Lock_Repair_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/AUDIT_D3_Lock_Repair.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/AUDIT_MB_Theorem_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/FINAL_Task1_Gaussian_Suppression_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/FINAL_Task1_Gaussian_Suppression.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/FINAL_Task4_Scale_Check.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/FINAL_Task3_Fourier_Minor_Bridge_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/FINAL_Task2_Gaussian_Prime_Sum.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/COROLLARY3_REFORMULATION_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/FINAL_Task2_Gaussian_Prime_Sum_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/FINAL_Task3_Fourier_Minor_Bridge.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/FINAL_Task4_Scale_Check_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/LARGE_SIEVE_v2.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/LEMMA_A_Full_Toeplitz_Buffer_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/LARGE_SIEVE_v2_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/GEH2_BELL_BRIDGE_AUDIT.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/Q3_MAS_CHAIN.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/FREE_EXPLORATION_v2.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/LEMMA_A_Full_Toeplitz_Buffer.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/FREE_EXPLORATION_v2_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_PRIME_COMM_BOUND.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_STEP5_ASSEMBLY.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_RANKONE_COMM.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_COMM_SUM_BOUND.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/Q3_MAS_CHAIN_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_COMM_SUM_BOUND_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_PRIME_COMM_BOUND_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_RANKONE_COMM_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/aristotle_fourier_rkhs_bridge.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_STEP6B_RKHS_SHIFT_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_TOEPLITZ_COMM_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_STEP6B_RKHS_SHIFT.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_TOEPLITZ_COMM.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/VECTOR3_STEP5_ASSEMBLY_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/aristotle_fourier_rkhs_bridge_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/bell_modulus_accumulation.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/aristotle_fourier_rkhs_bridge_v3_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/aristotle_fourier_rkhs_bridge_v3.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/aristotle_fourier_rkhs_bridge_v2_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/bell_modulus_accumulation_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/character_sum_equivalence.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/aristotle_fourier_rkhs_bridge_v2.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/chi4_afm_identity_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/contradiction_small_S2_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/contradiction_small_S2.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/character_sum_equivalence_aristotle.md
+/media/chirurgie/hdd01/Soft/GitHub/chen_q3/archive/subprojects/spectral_twin_primes/lean_aristotle/input/chi4_afm_identity.md
+(Results are truncated. Consider using a more specific path or pattern.)
+
+**Tool Call: Show project root and build config**
+Status: Completed
+
+Terminal:
+```
+insgesamt 248
+drwxrwxr-x 12 chirurgie chirurgie   4096 Jan 19 10:07  .
+drwxrwxr-x 57 chirurgie chirurgie   4096 Jan 19 10:09  ..
+-rw-rw-r--  1 chirurgie chirurgie   4738 Jan 19 08:52  AGENTS.md
+drwxrwxr-x  7 chirurgie chirurgie   4096 Jan 19 08:52  archive
+-rw-rw-r--  1 chirurgie chirurgie   8524 Jan 19 08:52  CLAUDE.md
+drwxrwxr-x 11 chirurgie chirurgie   4096 Jan 19 08:52  docs
+drwxrwxr-x 18 chirurgie chirurgie   4096 Jan 19 08:52  full
+drwxrwxr-x  8 chirurgie chirurgie   4096 Jan 19 11:17  .git
+-rw-rw-r--  1 chirurgie chirurgie    519 Jan 19 08:52  .gitignore
+-rw-rw-r--  1 chirurgie chirurgie  25250 Jan 19 08:52 'idei dla 2.txt'
+-rw-rw-r--  1 chirurgie chirurgie  25250 Jan 19 08:52 'idei dla.txt'
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  output
+drwxrwxr-x  8 chirurgie chirurgie   4096 Jan 19 08:52  paper
+-rw-rw-r--  1 chirurgie chirurgie    169 Jan 19 08:52  PROBLEM.md
+-rw-rw-r--  1 chirurgie chirurgie    440 Jan 19 08:52  pyproject.toml
+-rw-rw-r--  1 chirurgie chirurgie   2953 Jan 19 08:52  README.md
+drwxrwxr-x  3 chirurgie chirurgie   4096 Jan 19 10:01  sandboxes
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  scripts
+drwxrwxr-x  4 chirurgie chirurgie   4096 Jan 19 08:52  src
+-rw-rw-r--  1 chirurgie chirurgie 109791 Jan 19 08:52  uv.lock
+drwxrwxr-x  5 chirurgie chirurgie   4096 Jan 19 10:07  .venv
+---
+No lakefile found
+
+```
+
+
+## Assistant
+
+Так, проект большой — 8693 lean файла! Большинство в архиве. Нужно найти основную структуру проекта.
+
+**Tool Call: Explore main full/ directory**
+Status: Completed
+
+Terminal:
+```
+insgesamt 2252
+drwxrwxr-x 18 chirurgie chirurgie   4096 Jan 19 08:52  .
+drwxrwxr-x 12 chirurgie chirurgie   4096 Jan 19 10:07  ..
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  appendix
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  audit_state
+-rw-rw-r--  1 chirurgie chirurgie   1331 Jan 19 08:52  bib_audit.csv
+-rw-rw-r--  1 chirurgie chirurgie  15759 Jan 19 08:52  BIB_REPORT.md
+-rw-rw-r--  1 chirurgie chirurgie   5989 Jan 19 08:52  BIBTEX_VALIDATION_STRATEGY.md
+-rw-rw-r--  1 chirurgie chirurgie   7606 Jan 19 08:52  BIB_VERIFICATION_REPORT.md
+-rw-rw-r--  1 chirurgie chirurgie   6384 Jan 19 08:52  bib_verification_results.json
+-rw-rw-r--  1 chirurgie chirurgie  85549 Jan 19 08:52  citation_needed.csv
+drwxrwxr-x  3 chirurgie chirurgie   4096 Jan 19 08:52  docs
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52 'Fejér–heat generators and Lipschitz control for the Weil quadratic functional'
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  figures
+-rw-rw-r--  1 chirurgie chirurgie      7 Jan 19 08:52  .gitignore
+-rw-rw-r--  1 chirurgie chirurgie 978742 Jan 19 08:52  main_clean.pdf
+-rw-rw-r--  1 chirurgie chirurgie    792 Jan 19 08:52  Makefile
+drwxrwxr-x  4 chirurgie chirurgie   4096 Jan 19 08:52  notes
+drwxrwxr-x  3 chirurgie chirurgie   4096 Jan 19 08:52  paper1_fejer_heat
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  paper1_fejer_lipschitz
+-rw-rw-r--  1 chirurgie chirurgie   2845 Jan 19 08:52 'PAPER1_REVIEW_PROMPT 2.md'
+-rw-rw-r--  1 chirurgie chirurgie   2845 Jan 19 08:52  PAPER1_REVIEW_PROMPT.md
+-rw-rw-r--  1 chirurgie chirurgie   3692 Jan 19 08:52 'PAPER2_PROMPT 2.md'
+-rw-rw-r--  1 chirurgie chirurgie   3692 Jan 19 08:52  PAPER2_PROMPT.md
+-rw-rw-r--  1 chirurgie chirurgie   5248 Jan 19 08:52 'PAPER2_TAO_STYLE_PROMPT 2.md'
+-rw-rw-r--  1 chirurgie chirurgie   5248 Jan 19 08:52  PAPER2_TAO_STYLE_PROMPT.md
+drwxrwxr-x  3 chirurgie chirurgie   4096 Jan 19 08:52  paper2_toeplitz_rkhs
+-rw-rw-r--  1 chirurgie chirurgie   4690 Jan 19 08:52 'PAPER3_PROMPT 2.md'
+-rw-rw-r--  1 chirurgie chirurgie   4690 Jan 19 08:52  PAPER3_PROMPT.md
+drwxrwxr-x  3 chirurgie chirurgie   4096 Jan 19 08:52  paper3_rh_synthesis
+-rw-rw-r--  1 chirurgie chirurgie   9021 Jan 19 08:52 'PAPER3_TAO_STYLE_PROMPT 2.md'
+-rw-rw-r--  1 chirurgie chirurgie   9021 Jan 19 08:52  PAPER3_TAO_STYLE_PROMPT.md
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  paper3_weil_rh
+-rw-rw-r--  1 chirurgie chirurgie   7240 Jan 19 08:52 'PAPERS_TRILOGY_PLAN 2.md'
+-rw-rw-r--  1 chirurgie chirurgie   7240 Jan 19 08:52  PAPERS_TRILOGY_PLAN.md
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  preamble
+drwxrwxr-x 15 chirurgie chirurgie   4096 Jan 19 10:37  q3.lean.aristotle
+drwxrwxr-x  3 chirurgie chirurgie   4096 Jan 19 08:52  Q3_paper_clean
+-rw-rw-r--  1 chirurgie chirurgie    565 Jan 19 08:52  README.md
+-rw-rw-r--  1 chirurgie chirurgie  11021 Jan 19 08:52  references.bib
+-rw-rw-r--  1 chirurgie chirurgie 910977 Jan 19 08:52  RH_Q3.pdf
+-rw-rw-r--  1 chirurgie chirurgie   2497 Jan 19 08:52  RH_Q3.tex
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  scripts
+drwxrwxr-x  7 chirurgie chirurgie   4096 Jan 19 08:52  sections
+-rw-rw-r--  1 chirurgie chirurgie   3523 Jan 19 08:52  semantic_scholar_verification.csv
+-rw-rw-r--  1 chirurgie chirurgie   3487 Jan 19 08:52  suspect.bib
+-rw-rw-r--  1 chirurgie chirurgie   7313 Jan 19 08:52 'TAO_STYLE_GUIDE 2.md'
+-rw-rw-r--  1 chirurgie chirurgie   7313 Jan 19 08:52  TAO_STYLE_GUIDE.md
+-rw-rw-r--  1 chirurgie chirurgie   2880 Jan 19 08:52  test_two_entries.py
+-rw-rw-r--  1 chirurgie chirurgie    624 Jan 19 08:52  unused.bib
+-rw-rw-r--  1 chirurgie chirurgie  10777 Jan 19 08:52  verify_bibtex_final.py
+-rw-rw-r--  1 chirurgie chirurgie  10678 Jan 19 08:52  verify_bibtex_semantic_scholar.py
+-rw-rw-r--  1 chirurgie chirurgie  13801 Jan 19 08:52  verify_bibtex_ss.py
+-rw-rw-r--  1 chirurgie chirurgie  14497 Jan 19 08:52  verify_bibtex_ss_v3.py
+---LEAN PROJECT---
+insgesamt 1576
+drwxrwxr-x 15 chirurgie chirurgie   4096 Jan 19 10:37 .
+drwxrwxr-x 18 chirurgie chirurgie   4096 Jan 19 08:52 ..
+-rw-rw-r--  1 chirurgie chirurgie  20354 Jan 19 08:52 2e3b3bf8_aristotle.lean
+-rw-rw-r--  1 chirurgie chirurgie   1852 Jan 19 08:52 A1_Density.lean
+-rw-rw-r--  1 chirurgie chirurgie   7324 Jan 19 08:52 A2_Lipschitz.lean
+-rw-rw-r--  1 chirurgie chirurgie   4205 Jan 19 08:52 A3_Bridge.lean
+-rw-rw-r--  1 chirurgie chirurgie  14544 Jan 19 08:52 A3_FLOOR_COMBINED.lean
+-rw-rw-r--  1 chirurgie chirurgie   5456 Jan 19 08:52 A3_FLOOR_ROADMAP.md
+-rw-rw-r--  1 chirurgie chirurgie    187 Jan 19 08:52 A3_FLOOR_THEOREM.lean
+-rw-rw-r--  1 chirurgie chirurgie  15885 Jan 19 08:52 A3_FLOOR_v16_deriv_digamma_eq_trigamma.lean
+-rw-rw-r--  1 chirurgie chirurgie  24382 Jan 19 08:52 A3_FLOOR_v19_monotonicity.lean
+-rw-rw-r--  1 chirurgie chirurgie  38411 Jan 19 08:52 A3_FLOOR_v20_bounds_core.lean
+-rw-rw-r--  1 chirurgie chirurgie  47487 Jan 19 08:52 A3_FLOOR_v22_stage4_floor.lean
+-rw-rw-r--  1 chirurgie chirurgie   6449 Jan 19 08:52 ARCHITECTURE.md
+drwxrwxr-x  6 chirurgie chirurgie   4096 Jan 19 08:52 archive
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52 aristotle_db
+drwxrwxr-x  2 chirurgie chirurgie  12288 Jan 19 08:52 aristotle_input
+-rw-rw-r--  1 chirurgie chirurgie   4437 Jan 19 08:52 Aristotle_Integration.lean
+-rw-rw-r--  1 chirurgie chirurgie  10914 Jan 19 08:52 ARISTOTLE.md
+drwxrwxr-x  4 chirurgie chirurgie   4096 Jan 19 08:52 aristotle_output
+-rw-rw-r--  1 chirurgie chirurgie     43 Jan 19 08:52 aristotle_output.lean
+-rw-rw-r--  1 chirurgie chirurgie   2457 Jan 19 08:52 ARISTOTLE_PROJECTS.md
+-rw-rw-r--  1 chirurgie chirurgie   5881 Jan 19 08:52 ARISTOTLE_PROOFS_DB.md
+-rw-rw-r--  1 chirurgie chirurgie  10169 Jan 19 08:52 ARISTOTLE_SANDBOX_GUIDE.md
+-rw-rw-r--  1 chirurgie chirurgie   2482 Jan 19 08:52 ARISTOTLE_TASKS.md
+-rw-rw-r--  1 chirurgie chirurgie   1459 Jan 19 08:52 Atoms_Positive.lean
+-rw-rw-r--  1 chirurgie chirurgie   4976 Jan 19 08:52 AUDIT_HONEST.md
+-rw-rw-r--  1 chirurgie chirurgie   7950 Jan 19 08:52 AxiomClosure.lean
+-rw-rw-r--  1 chirurgie chirurgie  11218 Jan 19 08:52 AxiomClosureTheorems.lean
+-rw-rw-r--  1 chirurgie chirurgie  16845 Jan 19 08:52 Axioms.lean
+-rw-rw-r--  1 chirurgie chirurgie   6038 Jan 19 08:52 AxiomsTheorems.lean
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52 Basic
+-rw-rw-r--  1 chirurgie chirurgie   8533 Jan 19 08:52 BRIDGE_AUDIT_COMPLETE.md
+-rw-rw-r--  1 chirurgie chirurgie     46 Jan 19 08:52 check_axioms.lean
+-rw-rw-r--  1 chirurgie chirurgie   3265 Jan 19 08:52 CheckAxioms.lean
+-rw-rw-r--  1 chirurgie chirurgie   6967 Jan 19 08:52 CLAUDE.md
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52 Clean
+-rw-rw-r--  1 chirurgie chirurgie  58563 Jan 19 08:52 codex_lean_changes.zip
+-rw-rw-r--  1 chirurgie chirurgie   8074 Jan 19 08:52 COMPLEX_BRIDGES_ANALYSIS.md
+
+```
+
+
+**Tool Call: Read /media/chirurgie/hdd01/Soft/GitHub/chen_q3/README.md**
+Status: Completed
+
+````
+# Chen Q3 Spectral Analysis
+
+Rigorous numerical verification and analytical estimates for the Chen Q3 approach to the Riemann Hypothesis.
+
+## Project Structure
+
+```
+chen_q3/
+├── docs/                   # Project docs and policies
+├── src/                    # Python source code
+│   ├── saturation_proof.py     # Symbol norm saturation
+│   ├── floor_proof.py          # Archimedean floor (Lorentzian)
+│   ├── floor_q3_real.py        # Floor with real digamma
+│   ├── floor_saturation.py     # Floor saturation analysis
+│   ├── floor_adaptive_t.py     # Adaptive t parameter test
+│   ├── analyze_digamma_poison.py # Digamma sign analysis
+│   ├── rescue_archimedes.py    # Gamma metric test
+│   ├── rescue_gamma_pure.py    # Pure Gamma periodization
+│   └── merlin_kernel_test.py   # Kernel comparison (★ Mellin winner)
+│
+├── output/                 # Generated figures
+│   ├── saturation_proof.png
+│   ├── floor_proof.png
+│   ├── floor_adaptive_comparison.png
+│   ├── digamma_poison_analysis.png
+│   ├── rescue_archimedes.png
+│   └── merlin_kernel_test.png
+│
+├── paper/                  # LaTeX paper
+│   ├── main.tex               # Main document
+│   ├── introduction.tex       # Section 1
+│   ├── preliminaries.tex      # Section 2
+│   ├── lemma_saturation.tex   # Section 3: Ceiling lemma
+│   ├── lemma_floor.tex        # Section 4: Floor lemma
+│   ├── theorem_stability.tex  # Section 5: Main theorem
+│   ├── numerical_results.tex  # Section 6: Experiments
+│   └── conclusions.tex        # Section 7
+│
+├── full/                   # Lean proofs and formalization workflow
+│   └── q3.lean.aristotle/      # A3_FLOOR kernel proofs + DB + Aristotle I/O
+│
+├── data/                   # Data files
+└── archive/                # Legacy materials moved out of root
+```
+
+See `docs/PROJECT_STRUCTURE.md` for the archive policy and layout rules.
+
+## Key Results
+
+| Quantity | Value | Description |
+|----------|-------|-------------|
+| C* (Ceiling) | ~277 | Symbol norm saturation |
+| c_arch (Floor) | ~0.19 | Archimedean floor (Lorentzian) |
+| δ* (Stability) | ~0.20 | Stability ratio (Lorentzian) |
+| δ* (Mellin) | ~0.79 | Optimal stability (Mellin kernel) |
+
+## Key Findings
+
+1. **Saturation**: ||P_A||∞ ≤ C* ≈ 277 (grub) or 109 (Q3)
+2. **Floor**: c_arch ≈ 0.19 matches Q3's 0.1878
+3. **Decay Law**: Slower decay → larger δ*
+4. **Winner**: Mellin kernel K(ξ) = 1/(1+|ξ|^{1/2}) achieves δ* ≈ 0.79
+
+## Running the Code
+
+```bash
+cd src
+python saturation_proof.py
+python floor_proof.py
+python merlin_kernel_test.py
+```
+
+## Building the Paper
+
+```bash
+cd paper
+pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
+```
+
+## Dependencies
+
+- Python 3.10+
+- numpy
+- scipy
+- matplotlib
+- mpmath
+````
+
+**Tool Call: Read /media/chirurgie/hdd01/Soft/GitHub/chen_q3/PROBLEM.md**
+Status: Completed
+
+```
+# PROBLEM.md
+
+Этот файл — указатель.
+
+Актуальные формулировки:
+- `sandboxes/PROBLEM.md`
+- `sandboxes/PROBLEM_defs_von_Codex.md`
+```
+
+## Assistant
+
+Отлично, теперь вижу структуру. Это проект формализации гипотезы Римана. Смотрю ключевые файлы Lean.
+
+**Tool Call: Show Lean project structure and lakefile**
+Status: Completed
+
+Terminal:
+```
+insgesamt 1576
+drwxrwxr-x 15 chirurgie chirurgie   4096 Jan 19 10:37  .
+drwxrwxr-x 18 chirurgie chirurgie   4096 Jan 19 08:52  ..
+-rw-rw-r--  1 chirurgie chirurgie  20354 Jan 19 08:52  2e3b3bf8_aristotle.lean
+-rw-rw-r--  1 chirurgie chirurgie   1852 Jan 19 08:52  A1_Density.lean
+-rw-rw-r--  1 chirurgie chirurgie   7324 Jan 19 08:52  A2_Lipschitz.lean
+-rw-rw-r--  1 chirurgie chirurgie   4205 Jan 19 08:52  A3_Bridge.lean
+-rw-rw-r--  1 chirurgie chirurgie  14544 Jan 19 08:52  A3_FLOOR_COMBINED.lean
+-rw-rw-r--  1 chirurgie chirurgie   5456 Jan 19 08:52  A3_FLOOR_ROADMAP.md
+-rw-rw-r--  1 chirurgie chirurgie    187 Jan 19 08:52  A3_FLOOR_THEOREM.lean
+-rw-rw-r--  1 chirurgie chirurgie  15885 Jan 19 08:52  A3_FLOOR_v16_deriv_digamma_eq_trigamma.lean
+-rw-rw-r--  1 chirurgie chirurgie  24382 Jan 19 08:52  A3_FLOOR_v19_monotonicity.lean
+-rw-rw-r--  1 chirurgie chirurgie  38411 Jan 19 08:52  A3_FLOOR_v20_bounds_core.lean
+-rw-rw-r--  1 chirurgie chirurgie  47487 Jan 19 08:52  A3_FLOOR_v22_stage4_floor.lean
+-rw-rw-r--  1 chirurgie chirurgie   6449 Jan 19 08:52  ARCHITECTURE.md
+drwxrwxr-x  6 chirurgie chirurgie   4096 Jan 19 08:52  archive
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  aristotle_db
+drwxrwxr-x  2 chirurgie chirurgie  12288 Jan 19 08:52  aristotle_input
+-rw-rw-r--  1 chirurgie chirurgie   4437 Jan 19 08:52  Aristotle_Integration.lean
+-rw-rw-r--  1 chirurgie chirurgie  10914 Jan 19 08:52  ARISTOTLE.md
+drwxrwxr-x  4 chirurgie chirurgie   4096 Jan 19 08:52  aristotle_output
+-rw-rw-r--  1 chirurgie chirurgie     43 Jan 19 08:52  aristotle_output.lean
+-rw-rw-r--  1 chirurgie chirurgie   2457 Jan 19 08:52  ARISTOTLE_PROJECTS.md
+-rw-rw-r--  1 chirurgie chirurgie   5881 Jan 19 08:52  ARISTOTLE_PROOFS_DB.md
+-rw-rw-r--  1 chirurgie chirurgie  10169 Jan 19 08:52  ARISTOTLE_SANDBOX_GUIDE.md
+-rw-rw-r--  1 chirurgie chirurgie   2482 Jan 19 08:52  ARISTOTLE_TASKS.md
+-rw-rw-r--  1 chirurgie chirurgie   1459 Jan 19 08:52  Atoms_Positive.lean
+-rw-rw-r--  1 chirurgie chirurgie   4976 Jan 19 08:52  AUDIT_HONEST.md
+-rw-rw-r--  1 chirurgie chirurgie   7950 Jan 19 08:52  AxiomClosure.lean
+-rw-rw-r--  1 chirurgie chirurgie  11218 Jan 19 08:52  AxiomClosureTheorems.lean
+-rw-rw-r--  1 chirurgie chirurgie  16845 Jan 19 08:52  Axioms.lean
+-rw-rw-r--  1 chirurgie chirurgie   6038 Jan 19 08:52  AxiomsTheorems.lean
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  Basic
+-rw-rw-r--  1 chirurgie chirurgie   8533 Jan 19 08:52  BRIDGE_AUDIT_COMPLETE.md
+-rw-rw-r--  1 chirurgie chirurgie     46 Jan 19 08:52  check_axioms.lean
+-rw-rw-r--  1 chirurgie chirurgie   3265 Jan 19 08:52  CheckAxioms.lean
+-rw-rw-r--  1 chirurgie chirurgie   6967 Jan 19 08:52  CLAUDE.md
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  Clean
+-rw-rw-r--  1 chirurgie chirurgie  58563 Jan 19 08:52  codex_lean_changes.zip
+-rw-rw-r--  1 chirurgie chirurgie   8074 Jan 19 08:52  COMPLEX_BRIDGES_ANALYSIS.md
+-rw-rw-r--  1 chirurgie chirurgie  16796 Jan 19 08:52  d2728386_aristotle.lean
+-rw-rw-r--  1 chirurgie chirurgie  14590 Jan 19 08:52  dd21a597_aristotle.lean
+-rw-rw-r--  1 chirurgie chirurgie   5268 Jan 19 08:52  DECOMPOSITION_PLAN.md
+-rw-rw-r--  1 chirurgie chirurgie   3454 Jan 19 08:52  DECOMPOSITION_PLAN_w_discovery.md
+drwxrwxr-x  5 chirurgie chirurgie   4096 Jan 19 09:54  docs
+-rw-rw-r--  1 chirurgie chirurgie     30 Jan 19 10:37  .envrc
+-rw-rw-r--  1 chirurgie chirurgie   4774 Jan 19 08:52  findings.md
+-rw-rw-r--  1 chirurgie chirurgie   8023 Jan 19 08:52  findings_razbory.md
+-rw-rw-r--  1 chirurgie chirurgie   4717 Jan 19 08:52  FORMALIZATION_STATS.md
+-rw-rw-r--  1 chirurgie chirurgie  12850 Jan 19 08:52  FORMALIZATION_STATUS_1.md
+-rw-rw-r--  1 chirurgie chirurgie    508 Jan 19 08:52  FORMALIZATION_STATUS.md
+-rw-rw-r--  1 chirurgie chirurgie   6422 Jan 19 08:52  FULL_AXIOM_STATUS.md
+-rw-rw-r--  1 chirurgie chirurgie 176417 Jan 19 08:52  gem3_flash.md
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  input
+drwxrwxr-x  4 chirurgie chirurgie   4096 Jan 19 10:11  .lake
+-rw-rw-r--  1 chirurgie chirurgie    621 Jan 19 08:52  lakefile.toml
+-rw-rw-r--  1 chirurgie chirurgie   3158 Jan 19 10:10  lake-manifest.json
+-rw-rw-r--  1 chirurgie chirurgie   3279 Jan 19 08:52  last_answer.md
+-rw-rw-r--  1 chirurgie chirurgie     24 Jan 19 08:52  lean-toolchain
+-rw-rw-r--  1 chirurgie chirurgie   6004 Jan 19 08:52  LEAN_VERIFICATION_STATUS.md
+-rw-rw-r--  1 chirurgie chirurgie   7462 Jan 19 08:52  Main.lean
+-rw-rw-r--  1 chirurgie chirurgie   2057 Jan 19 08:52  MainTheorems.lean
+-rw-rw-r--  1 chirurgie chirurgie     44 Jan 19 08:52  .mgreprc.yaml
+-rw-rw-r--  1 chirurgie chirurgie  12484 Jan 19 08:52  monitor.html
+-rw-rw-r--  1 chirurgie chirurgie  24218 Jan 19 08:52  monitor_local.html
+-rw-rw-r--  1 chirurgie chirurgie   7174 Jan 19 08:52  monitor_server.py
+-rw-rw-r--  1 chirurgie chirurgie   6695 Jan 19 08:52  nowaj_request_strter.md
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  output
+-rw-rw-r--  1 chirurgie chirurgie  11386 Jan 19 08:52  PAPER_LEAN_MAPPING.md
+-rw-rw-r--  1 chirurgie chirurgie   6040 Jan 19 08:52  PERIOD1_FIX.md
+-rw-rw-r--  1 chirurgie chirurgie   6527 Jan 19 08:52  PERIOD1_PATCH_CHECKLIST.md
+-rw-rw-r--  1 chirurgie chirurgie  11612 Jan 19 08:52  PHILOSOPHY_OF_PROOF.md
+-rw-rw-r--  1 chirurgie chirurgie   5046 Jan 19 08:52  plan_15_12_2025_formailzing_axioms.md
+-rw-rw-r--  1 chirurgie chirurgie  12506 Jan 19 08:52  plan.md
+-rw-rw-r--  1 chirurgie chirurgie   1488 Jan 19 08:52  PROJECT_ASCII.md
+-rw-rw-r--  1 chirurgie chirurgie   1396 Jan 19 08:52  project_ids.txt
+-rw-rw-r--  1 chirurgie chirurgie  16951 Jan 19 08:52  PROJECT_ORCHESTRATOR.md
+-rw-rw-r--  1 chirurgie chirurgie   8394 Jan 19 08:52  PROJECT_STATUS_dradt.md
+-rw-rw-r--  1 chirurgie chirurgie 110844 Jan 19 08:52  PROJECT_STATUS.md
+-rw-rw-r--  1 chirurgie chirurgie  11353 Jan 19 08:52  PROJECT_WORKFLOW.md
+-rw-rw-r--  1 chirurgie chirurgie   6752 Jan 19 08:52  PROOF_DOSSIER_PROTOCOL.md
+-rw-rw-r--  1 chirurgie chirurgie   5695 Jan 19 08:52  PROOF_DOSSIER_V2.1.md
+-rw-rw-r--  1 chirurgie chirurgie   6425 Jan 19 08:52  PROOF_DOSSIER_V2.md
+-rw-rw-r--  1 chirurgie chirurgie   7524 Jan 19 08:52  PROOF_DOSSIER_V3.1.md
+-rw-rw-r--  1 chirurgie chirurgie  11232 Jan 19 08:52  PROOF_DOSSIER_V3.md
+-rw-rw-r--  1 chirurgie chirurgie  11698 Jan 19 08:52  PROOF_DOSSIER_V4.md
+-rw-rw-r--  1 chirurgie chirurgie  13108 Jan 19 08:52  PROOF_MAP.md
+-rw-rw-r--  1 chirurgie chirurgie  11093 Jan 19 08:52  PROOF_MAP_NEW_KERNEL.md
+-rw-rw-r--  1 chirurgie chirurgie  10574 Jan 19 08:52  PROOF_MAP_old.md
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  Proofs
+-rw-rw-r--  1 chirurgie chirurgie   1773 Jan 19 08:52  ProofsIntegrated.lean
+-rw-rw-r--  1 chirurgie chirurgie  12710 Jan 19 08:52  PROSHKA_REQUEST_2.md
+-rw-rw-r--  1 chirurgie chirurgie   4410 Jan 19 08:52  PROSHKA_REQUEST_3.md
+-rw-rw-r--  1 chirurgie chirurgie  13244 Jan 19 08:52  PROSHKA_REQUEST.md
+-rw-rw-r--  1 chirurgie chirurgie  25780 Jan 19 08:52  PROSHKA_RESPONSE_2.md
+-rw-rw-r--  1 chirurgie chirurgie  15198 Jan 19 08:52  PROSHKA_RESPONSE.md
+drwxrwxr-x  6 chirurgie chirurgie   4096 Jan 19 08:52  Q3
+-rw-rw-r--  1 chirurgie chirurgie    253 Jan 19 08:52  Q3.lean
+-rw-rw-r--  1 chirurgie chirurgie   8276 Jan 19 08:52  REBUTTAL_GROK_2025-12-24.md
+-rw-rw-r--  1 chirurgie chirurgie   5586 Jan 19 08:52  REPO_POLICY.md
+-rw-rw-r--  1 chirurgie chirurgie   6820 Jan 19 08:52  RKHS_Contraction.lean
+-rw-rw-r--  1 chirurgie chirurgie   3651 Jan 19 08:52  RowSum_Bound.lean
+-rw-rw-r--  1 chirurgie chirurgie   5748 Jan 19 08:52  SANDBOX_CHALLENGE.md
+-rw-rw-r--  1 chirurgie chirurgie   3981 Jan 19 08:52  SCALING_FIX.md
+drwxrwxr-x  2 chirurgie chirurgie   4096 Jan 19 08:52  scripts
+-rw-rw-r--  1 chirurgie chirurgie   7635 Jan 19 08:52  S_K_Bound.lean
+-rw-rw-r--  1 chirurgie chirurgie   4968 Jan 19 08:52  T5_Transfer.lean
+-rw-rw-r--  1 chirurgie chirurgie    600 Jan 19 08:52  test_compact2.lean
+-rw-rw-r--  1 chirurgie chirurgie    448 Jan 19 08:52  test_compact.lean
+-rw-rw-r--  1 chirurgie chirurgie    295 Jan 19 08:52  test_von.lean
+-rw-rw-r--  1 chirurgie chirurgie   1555 Jan 19 08:52  test_wrkhs.lean
+-rw-rw-r--  1 chirurgie chirurgie   4277 Jan 19 08:52  Tier2_Verification.lean
+-rw-rw-r--  1 chirurgie chirurgie   2441 Jan 19 08:52  TRICKS_LIBRARY.md
+-rw-rw-r--  1 chirurgie chirurgie  17190 Jan 19 08:52  UniformArchFloor_Combined.lean
+-rw-rw-r--  1 chirurgie chirurgie   7108 Jan 19 08:52  UNIFORM_MIGRATION_PLAN.md
+-rw-rw-r--  1 chirurgie chirurgie   6155 Jan 19 08:52  WORKFLOW_CHECKLIST.md
+-rw-rw-r--  1 chirurgie chirurgie 181450 Jan 19 08:52 'Тебе нужно экспортировать, чувак, весь процесс описания Zandbox. Как мы дошли до этого, к пониманию, каким образом ему посылать файлы. Попроб.txt'
+---
+name = "q3_lean_aristotle"
+version = "0.1.0"
+defaultTargets = ["Q3"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
+
+[[lean_lib]]
+name = "Q3"
+globs = ["Q3"]
+
+[[lean_lib]]
+name = "aristotle_output"
+roots = ["aristotle_output"]
+
+# A3_FLOOR standalone files in root (dependency chain: v22 → v20, v19)
+[[lean_lib]]
+name = "A3_FLOOR_v19_monotonicity"
+roots = ["A3_FLOOR_v19_monotonicity"]
+
+[[lean_lib]]
+name = "A3_FLOOR_v20_bounds_core"
+roots = ["A3_FLOOR_v20_bounds_core"]
+
+[[lean_lib]]
+name = "A3_FLOOR_v22_stage4_floor"
+roots = ["A3_FLOOR_v22_stage4_floor"]
+
+```
+
+
+**Tool Call: Read /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md**
+Status: Completed
+
+````
+# PROJECT ORCHESTRATOR - Q3
+## Lean Formalization of Riemann Hypothesis
+
+Last Updated: 2026-01-16
+Single entry point: read this file at session start.
+
+## Quick Start
+
+1) Read this file.
+2) Use "Current State" and "Active Next Step".
+3) Only open linked files if needed.
+4) Documentation discipline: update `docs/INSIGHTS.md` and
+   `FORMALIZATION_STATS.md` instead of creating new docs.
+5) **Застрял > 30 мин?** → Запроси Прошку (см. `docs/INSIGHTS.md` секция "Прошка").
+
+## Current State (short)
+
+- A3_FLOOR is proven and integrated: `P_A_ge_c_star` from
+  `A3_FLOOR_v22_stage4_floor.lean` is used in the Fourier A3 bridge.
+- Fourier A3 bridge is wired: `Q3/Atoms_Positive.lean` now depends on
+  `A3_bridge_data_rayleigh_Fourier` and the axiom
+  `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
+- `Q_Lipschitz_on_W_K` is a theorem; arch/prime Lipschitz bridge axioms are closed
+  in `Q3/Proofs/Q_Lipschitz.lean`.
+- `mem_nodes_finset_of_mem_Q3Nodes` is a theorem in `Q3/Proofs/Bridge.lean`.
+- RKHS contraction is now bridged: `RKHS_contraction_axiom` is no longer in
+  `#print axioms` for `Q3.Main.RH_of_Weil_and_Q3` (see `Q3/Proofs/Bridge.lean`,
+  wired in `Q3/AxiomsTheorems.lean`).
+- `A1_density_WK_thm` is proven in `Q3/Proofs/A1_density.lean` and wired in
+  `Q3/T5_Transfer.lean`, so `A1_density_WK_axiom` is gone from the main chain.
+- RKHS cap is PROVEN in `Q3/Proofs/RKHS_cap_rayleigh.lean`:
+  `weight_sum_le_rho_one` + `rkhs_cap_rayleigh_tcap` with `t_rkhs_cap = 40`.
+- Legacy: `A3_bridge_axiom` (sampling Toeplitz + a_star) is still in `Q3/Axioms.lean`
+  but no longer appears in the main chain.
+
+## Wiring vs Closing (definition)
+
+- wiring: replace an axiom in `Q3/AxiomsTheorems.lean` with a theorem. This only
+  reduces `#print axioms` if the theorem is itself axiom-free.
+- closing: provide a proof with no new axioms, so the axiom disappears from
+  `#print axioms`.
+
+## Axiom Count (verified)
+
+Command:
+```bash
+echo 'import Q3.Main
+#print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
+```
+
+Result: **10 axioms** (7 project + 3 standard)
+Note: 12 → 11 (closed arch/prime Lipschitz), 11 → 10 (closed RKHS contraction bridge),
+10 → 9 (closed A1_density via theorem wiring), 9 → 10 (A3 Fourier axiom in chain),
+10 → 11 (P_A_continuous in chain), 11 → 10 (P_A_continuous closed).
+
+- Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
+- External/classical: `Weil_criterion`, `a_star_pos`, `a_star_bdd_on_compact`,
+  `a_star_continuous`, `a_star_even`, `Schur_test`
+- Q3 paper (closable): `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+
+## Critical Chain (ASCII)
+
+```
+RH_of_Weil_and_Q3
+  |
+  +-- Weil_criterion [AX external]
+  |
+  +-- Q_nonneg_on_Weil_cone [OK]
+       |
+       +-- T5_transfer [OK]
+            |
+            +-- A1_density_WK [OK]
+            +-- Q_Lipschitz_on_W_K [OK]
+            +-- Q_nonneg_on_atoms [AX]
+                 |
+                 +-- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom [AX]
+                 +-- RKHS_contraction [OK]
+```
+
+## Active Next Step (closing, not wiring)
+
+1) Wire the **proven** Rayleigh-Q identification into the atoms-positivity chain:
+   use `rayleigh_Q_eq_Q` in `Q3/Proofs/Rayleigh_Q_identification.lean`.
+2) Replace `Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` in
+   `Q3/Atoms_Positive.lean` / `Q3/AxiomsTheorems.lean` with the theorem proof
+   (A3 floor + RKHS cap + Rayleigh identification).
+
+## Closure Tracker (remaining axioms)
+
+| Axiom | Current proof source | Blocker | Next action | Status |
+|------|-----------------------|---------|-------------|--------|
+| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | Wiring into atoms chain | Use `rayleigh_Q_eq_Q` + A3/RKHS | **IN PROGRESS** |
+
+## Progress Log (2026-01-16)
+
+**P_A_continuous**:
+- CLOSED in `A3_FLOOR_v22_stage4_floor.lean` (local finiteness + periodicity proof)
+
+**Q_nonneg_on_atoms (Rayleigh-Q identification)**:
+- `Q3/Proofs/Rayleigh_Q_identification.lean` COMPLETE:
+  - `basis0`, `i0`, `basis0_norm_sq`, `basis0_ne_zero`
+  - `quadForm_basis0`, `rayleigh_basis0`, `rayleigh_basis0_sub`
+  - `ToeplitzEntry_diag`, `ToeplitzEntry_diag_re`, `ToeplitzMatrix_Fourier_real_diag`
+  - `fourier_index_i0`, `prime_vec_i0`, `T_P_comp_real_diag`
+  - `integral_P_A_eq_arch_term` (periodization) ✅
+  - `rayleigh_Q_identification`, `rayleigh_Q_eq_Q` ✅
+- Next: wire into `Atoms_Positive.lean` to eliminate the axiom.
+
+**Aristotle projects (Rayleigh variants)**:
+- 200eb072, 5e36515f, e9f53e97, eeca690a (Rayleigh sandbox variants)
+
+## Legacy / History (2026-01-14)
+
+**NEW (2026-01-14)**: Rayleigh lower bound PROVEN via Aristotle!
+- V1 (pure informal): `aristotle_output/rayleigh_v1.lean` — COMPLETE, 0 sorry
+- V2 (sandbox): `aristotle_output/rayleigh_v2.lean` — helpers only, main sorry
+
+**A3_bridge Aristotle runs (2026-01-14)**:
+- **V1 (`4c2ed336`)**: COMPLETE! Real T_P bounds proven (see below)
+- V2 (`f6a9eed5`): исправленный — skipped (V1/V3 better)
+- **V3 (`22378a11`)**: по Прошкиному скелету — **COMPLETE! 0 sorry!**
+- **V4 (`c35f3088`)**: COMPLETE! 309 lines, 0 sorry — bounds for direct-indexed T_P
+
+**V1 SURPRISE**: `aristotle_output/A3_bridge_closure_v1.lean`
+- `w_RKHS_le_w_max`: ✅ w_RKHS(n) ≤ w_max = 2/e
+- `w_max_lt_three_quarters_c_star`: ✅ **w_max < 3c*/4** (key inequality!)
+- `T_P_tendsto_zero_of_ne`: ✅ off-diagonal → 0 as t → 0
+- `exists_t_max_row_sum_le_for_M`: ✅ ∀ M, ∃ t: ||T_P|| ≤ 3c*/4
+- **CLARIFIED**: V1/V4 prove `∀M ∃t(M)` for DIRECT-INDEXED T_P. See below.
+
+**V4 COMPLETE**: `aristotle_output/A3_bridge_v4_real_TP.lean`
+- 309 lines, 14 declarations, 0 sorry
+- Main: `T_P_norm_lt_three_quarters_c_star (M : ℕ) : ∃ t > 0, bound`
+- Useful helpers: `w_RKHS_le_w_max`, `S_off_tendsto_zero`, `T_P_row_sum_bound`
+
+**⚠️ CRITICAL INSIGHT: T_P Definition Mismatch (2026-01-14)**
+
+V1/V4 use **direct-indexed T_P**:
+```lean
+T_P i j = sqrt(w_RKHS i) * sqrt(w_RKHS j) * exp(-(ξᵢ - ξⱼ)²/4t)
+```
+This has ||T_P|| → ∞ as M → ∞, so uniform t is IMPOSSIBLE.
+
+Q3 tex (rayleigh_bridge.tex) uses **compression T_P**:
+```lean
+T_P^{(M)} i j = ∑ n : Nodes K, w_Q n * Φ(ξₙ) * v_n[i] * v_n[j]
+```
+This has ||T_P^{(M)}|| ≤ ||T_P|| (compression), so uniform t IS possible.
+
+**V1/V4 status**: Useful for local bounds, sanity checks. NOT for uniform A3_bridge.
+
+**🚀 V5 (`1cac53dd`) — RAYLEIGH-FIRST (2026-01-14)**: ✅ **COMPLETE!**
+- Input: `aristotle_input/A3_bridge_RAYLEIGH_FIRST.md` (from Proshka)
+- Output: `aristotle_output/A3_bridge_rayleigh_first_v5.lean` — **120 lines, 0 sorry!**
+- **No SB, No M₀** — Rayleigh for Toeplitz; RKHS cap now at `t_rkhs_cap=40`
+- **T_P_comp** — rank-one sum (compression, correct definition!)
+
+**V5 proven lemmas:**
+- `quadForm_sub`, `rayleighQ_sub` — quadratic form algebra
+- `cstar_sub_rho_ge_quarter` — c* - 1/25 ≥ c*/4 (norm_num)
+- `A3_bridge_rayleigh_first` — **MAIN THEOREM**
+
+**Dependencies (hypotheses in V5):**
+1. `h_rayleigh_lower_bound` — from `rayleigh_v1.lean` ✅
+2. `h_floor` — from A3_FLOOR ✅
+3. `h_cap` — **PROVEN** in `Q3/Proofs/RKHS_cap_rayleigh.lean`
+   (`weight_sum_le_rho_one`, `rkhs_cap_rayleigh_tcap`, `t_rkhs_cap=40`)
+
+**V3 SUCCESS**: `aristotle_output/A3_bridge_v3_proshka.lean`
+- Все 4 леммы доказаны
+- НО: P_A=const, T_P=0 (placeholder'ы)
+- Общие леммы (rayleigh, quadform_sub) переиспользуемы
+
+**INSIGHT**: Прошка показал что SB не нужен; RKHS cap ≤ `rho_one = 1/25`
+(в реализации с `t_rkhs_cap=40`).
+Полный скелет: `aristotle_input/A3_bridge_PROSHKA_SKELETON.md`
+
+Closed (recent):
+- `RKHS_contraction_axiom` → bridged in `Q3/Proofs/Bridge.lean`, wired in `Q3/AxiomsTheorems.lean`
+
+### A1_density Definitional Issue - RESOLVED (Option 2)
+
+**Problem**: AtomCone_K requires `g ∈ W_K K` which includes `support g ⊆ [-K, K]`.
+However, atoms with centers τ ∈ [-K, K] and widths B ≤ K have support in [-2K, 2K].
+
+**Solution (Option 2)**: Changed AtomCone_K definition to require `|τ| + B ≤ K` instead
+of separate `|τ| ≤ K` and `B ≤ K`. This matches Lemma 6.4 (Fixed-t₀ cone density).
+
+**What was done**:
+- Changed `AtomCone_K` in `Q3/Axioms.lean` and `Q3/Proofs/A1_density.lean`
+- Added support control lemmas: `FejerKernel_eq_zero_of_abs_ge`,
+  `Atom_eq_zero_outside_window`, `sum_atoms_eq_zero_outside`
+- `hg_supp` now uses these lemmas (conditional on `hτB_cond`)
+- Updated `W_K` to require `Continuous` (global), matching Q3 text (`C_c` tests).
+  This enables the heat-kernel identity lemma for `h_approx`.
+
+**Proven in A1_density_WK_thm**:
+- Zero case: handled via n=0 representation
+- hg_cont: continuity of sum of atoms
+- hg_even: evenness (atoms are even in x)
+- hg_nonneg: nonnegativity (nonneg weights × nonneg atoms)
+- hg_supp: support containment (uses new margin condition)
+
+**A1_density status:** `A1_density_WK_thm` is fully proven and wired into
+`Q3/T5_Transfer.lean`. No remaining sorries in `Q3/Proofs/A1_density.lean`.
+
+## Key Files (open only as needed)
+
+- `PROJECT_WORKFLOW.md` - workflow loop + Aristotle rules (no status)
+- `PROJECT_ASCII.md` - diagram (derived from this file)
+- `docs/INSIGHTS.md` - collected project insights (do not create new docs)
+- `FORMALIZATION_STATS.md` - quantitative stats snapshot
+- `docs/PROJECT_SPECS.md` - spec/invariants for Proshka check (Rayleigh plan)
+- `PROOF_MAP_NEW_KERNEL.md` + `A3_FLOOR_ROADMAP.md` - A3_FLOOR status
+- `Q3/Axioms.lean` and `Q3/AxiomsTheorems.lean` - axioms and wiring
+- `Q3/Proofs/Q_Lipschitz.lean` - real proof of Q_Lipschitz
+- `Q3/Proofs/Bridge.lean` + `Q3/Proofs/RKHS_contraction_bridge.lean`
+- `Q3/Proofs/A3_bridge_v3_uniform.lean`
+- `Q3/Proofs/Q_nonneg_bridge_v2.lean`
+- `Q3/Proofs/A1_density.lean`
+- `aristotle_db/parse_lean.py` - DB import
+
+## Progress Tracking (DB)
+
+```bash
+python3 aristotle_db/parse_lean.py list-docs
+python3 aristotle_db/parse_lean.py list-lemmas Q_Lipschitz
+```
+
+## Update Rule
+
+After closing a step:
+- run `lake env lean <file>`
+- re-import to DB (`aristotle_db/parse_lean.py import ...`)
+- update this file and `PROJECT_ASCII.md`
+
+## Future: Community Presentation
+
+After Tier-2 closure -> present to Talia Ringer / Lean Zulip.
+See `PHILOSOPHY_OF_PROOF.md` for the pitch.
+
+## Build / Verify
+
+```bash
+cd /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle
+lake build Q3.Main
+```
+
+```bash
+./scripts/check_axioms.sh
+```
+
+```bash
+lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 | rg -v "^info:"
+```
+
+## Change Log (recent)
+
+- 2026-01-16: **BLOCKER DISCOVERED** — A3_bridge closure blocked by symbol mismatch!
+  - `A3_bridge_data` uses sampling Toeplitz with `a_star` (mathematically WRONG: a_star → -∞)
+  - `A3_bridge_data_rayleigh_Fourier` uses Fourier Toeplitz with `P_A` (CORRECT and PROVEN)
+  - Types are mathematically incompatible — cannot bridge directly
+  - **NEW PLAN:** Refactor chain to Fourier formulation + prove Rayleigh-Q identification (Theorem 3.3)
+  - See: `TRICKS_LIBRARY.md`, `docs/insights/a_star_vs_p_a_dossier.md`
+
+- 2026-01-15: **weight_sum_bound PROVEN** via Aristotle — 7 parallel submissions, ALL complete!
+  - All 7 variants: 0 sorry, line counts 197-242
+  - **v1_copy1 (197 lines)** — SHORTEST, recommended
+  - Files: `aristotle_output/weight_sum_variants/v0_original.lean` through `v6_copy6.lean`
+  - Analysis: `aristotle_output/weight_sum_variants/ANALYSIS.md`
+  - **Proshka insights**: `suffices` > `have` ladders, minimal `aesop` (<2), π-free bounds more stable
+  - **New guidelines**: `aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+  - Job IDs: fb91fbb3, ee8bc919, 78a7d870, e648f487, caf3e4c0, ba71a35a, c020a6a2
+
+- 2026-01-14: **Rayleigh Lower Bound PROVEN** via Aristotle!
+  Two parallel Aristotle jobs submitted:
+  - V1 (pure informal): project `5990b601-ed48-442b-a4d3-5d8a18b444e3` → COMPLETE
+  - V2 (sandbox): project `e9f8b481-8f80-4bdd-b798-be5c796eeead` → helpers only
+
+  **V1 is the winner**: `aristotle_output/rayleigh_v1.lean` has COMPLETE proof (0 sorry):
+  - `toeplitz_integrand_eq`, `toeplitz_quadratic_form`, `integral_exp_2pi_n_theta`
+  - `parseval_trig_poly`, `rayleigh_lower_bound` (MAIN THEOREM)
+
+  Key result: For Toeplitz matrix T with symbol P ≥ m, Rayleigh quotient ≥ m.
+  Legacy note: this was previously wired into `A3_bridge_axiom` (sampling path).
+
+- 2026-01-14: Wired `Q3.Theorems.A1_density_WK` into `Q3/T5_Transfer.lean`.
+  `A1_density_WK_axiom` is now removed from `#print axioms` (total axioms: 9).
+
+- 2026-01-14: Submitted Aristotle job `hat_interpolation_approx.md`
+  (project `18bfe8c7-4620-41d4-be62-489409168e95`) with corrected boundary
+  condition `f(-K)=f(K)=0`.
+
+- 2026-01-14: Cleaned `aristotle_output/A1_density_hat_chain.lean` by replacing
+  `exact?` with `FejerKernel_partition_unity`, switching `ring`→`ring_nf`, and
+  removing unused variables; file compiles with no warnings.
+
+- 2026-01-14: Submitted `A1_density_hat_chain` to Aristotle (project `e90d4213`).
+  Plan: rewrite A1_density_WK_thm using hat-chain (Lemma 6.4) instead of
+  convolution + Riemann sum. This avoids B vs B' mismatch and asymmetric sums.
+  Key insight: W_K boundary vanishing (Φ(±K)=0) follows from global continuity.
+
+- 2026-01-14: Integrated hat interpolation proof into
+  `Q3/Proofs/HatInterpolation.lean` (namespaced) and wired
+  `hat_interpolation_approx` in `Q3/Proofs/A1_density.lean`
+  with `max_comm` rewrite. Remaining sorry: `h_approx` only.
+
+- 2026-01-14: Created `aristotle_output/HatInterpolationBridge.lean` bridge file.
+  Aristotle proof uses `FejerKernel δ x := max (1 - |x|/δ) 0` while A1_density uses
+  `max 0 (1 - |x|/B)`. Bridge converts between them via `max_comm`.
+  **BLOCKER**: Direct import causes FejerKernel name conflict (both at top level).
+  **TODO**: Refactor A1_density to use `Q3.Fejer_kernel` from Axioms.lean, or add namespace.
+  Current status: 2 sorries in A1_density.lean (hat_interpolation_approx + h_approx).
+  Build passes, 10 axioms unchanged.
+
+- 2026-01-14: **Aristotle COMPLETE** for `hat_interpolation_approx`!
+  KEY FINDING: Original lemma signature was WRONG — proved counterexample for f(x)=1.
+  **Fix**: Added `hf_boundary : f (-K) = 0 ∧ f K = 0` hypothesis.
+  With margin condition |τᵢ| + δ ≤ K, all hats vanish at ±K.
+  Full proof in `aristotle_output/hat_interpolation_approx.lean`.
+
+- 2026-01-14: `hat_interpolation_approx` scaffolded in A1_density.lean — proved
+  grid membership `hτ_in`, margin condition `hτ_margin`; 1 sorry remains
+  `h_approx_bound` (approximation chain). Aristotle processing two projects:
+  `bcec962f-4686-493e-b057-19695ddfc7b6` (hat_interpolation_approx),
+  `9dda8778-857e-42cf-a669-aad1a2e04d5b` (A1_density_hat_full_v1 at 3%).
+
+- 2026-01-14: Recreated Aristotle skill at `~/.codex/skills/aristotle/`,
+  updated workflow docs to use CLI/Python API, submitted
+  `aristotle_input/A1_density_hat_full_v1.md` (project `9dda8778-857e-42cf-a669-aad1a2e04d5b`).
+
+- 2026-01-14: Updated `docs/PROJECT_SPECS.md` to the Rayleigh plan (no SB as blocker);
+  added Aristotle input drafts `aristotle_input/A1_density_hat_full_v1.md` and
+  `aristotle_input/A1_density_hat_only_v1.md`.
+
+- 2026-01-14: Fixed HeatKernel derivative/Lipschitz proofs in
+  `Q3/Proofs/A1_density.lean`; remaining sorries now only
+  `hat_interpolation_approx` + `h_approx`.
+
+- 2026-01-13: `A1_density_WK_thm` hτB_cond CLOSED! Changed `uniform_riemann_sum` to
+  return `Set.Ioo` (strictly inside) instead of `Set.Icc`. Grid uses midpoints so
+  all points y satisfy |y| < K. Compute margin = K - max{|y|}, set B' = min B margin.
+  Also return `s.Nonempty` from both `uniform_riemann_sum` and `convolution_approx_by_sum`.
+  Only 1 sorry remains: h_approx (triangle inequality chain).
+- 2026-01-13: `A1_density_WK_thm` hg_mem proof mostly complete - proved continuity,
+  evenness, nonnegativity; 2 sorries remain (hg_supp blocked by definitional issue,
+  h_approx needs triangle inequality). Identified AtomCone_K support issue.
+- 2026-01-13: `A1_density_WK_thm` circular dependency removed; now uses local lemmas
+  with 4 `sorry` placeholders (support, nonneg, AtomCone membership, triangle ineq).
+- 2026-01-13: DB import: Bridge.lean (13 decls), RKHS_contraction_bridge.lean (10 decls).
+- 2026-01-13: Fixed `scripts/check_axioms.sh` (--stdin flag, correct axiom counting).
+- 2026-01-13: Updated orchestrator to be the single entry point and clarified
+  wiring vs closing.
+- 2026-01-13: Closed arch/prime Lipschitz bridge axioms in `Q3/Proofs/Q_Lipschitz.lean`.
+- 2026-01-13: `mem_nodes_finset_of_mem_Q3Nodes` proved in `Q3/Proofs/Bridge.lean`.
+- 2026-01-13: `Q3/Proofs/RKHS_contraction_bridge.lean` compiles; DB import updated.
+- 2026-01-13: Fixed `Q3/T5_Transfer.lean` AtomCone subset pattern; `lake build Q3.Main`
+  passes; `RKHS_contraction_axiom` removed from main axiom list (total now 10).
+````
+
+## Assistant
+
+Отличная информация! Теперь смотрю ключевые Lean файлы — аксиомы и главную теорему.
+
+**Tool Call: Read /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/Q3/Axioms.lean (1 - 200)**
+Status: Completed
+
+```
+/-
+Q3 Formalization: External Axioms
+=================================
+
+This file contains axioms organized by tier:
+- **Tier-1**: Classical results from peer-reviewed literature (1911-1999)
+- **Tier-2**: Q3 paper contributions (new technical results)
+
+IMPORTANT: Run `#print axioms RH_of_Weil_and_Q3` to verify all dependencies.
+
+Axiom Summary:
+- Tier-1: 10 axioms (Weil, Guinand, a_star properties, Szegő-Böttcher, Schur, etc.)
+- Tier-2: 12 axioms (A1', A2, A3, RKHS, node spacing, Q ≥ 0 on compacts)
+
+New additions (2024-12):
+- T1.3d: a_star_even (digamma conjugation symmetry)
+- T1.4b: Szego_Rayleigh_lower_bound (Rayleigh quotient → symbol infimum)
+-/
+
+import Q3.Basic.Defs
+
+set_option linter.mathlibStandardSet false
+set_option linter.unusedVariables false
+
+open scoped BigOperators
+open scoped Real
+open scoped Classical
+open scoped Matrix.Norms.L2Operator
+
+namespace Q3
+
+/-!
+# ═══════════════════════════════════════════════════════════════════════════════
+# TIER-1: CLASSICAL AXIOMS FROM LITERATURE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+These are well-established theorems from peer-reviewed mathematics.
+Each is cited with publication details.
+-/
+
+/-! ## Axiom T1.1: Weil Criterion (1952)
+
+The Weil explicit formula criterion:
+  RH ⟺ Q(Φ) ≥ 0 for all Φ in the Weil cone
+
+**Citation:**
+- Weil, A. (1952). "Sur les 'formules explicites' de la théorie des nombres premiers"
+  Meddelanden Från Lunds Universitets Matematiska Seminarium, 252-265.
+- Bombieri, E. (2000). "The Riemann Hypothesis" Clay Mathematics Institute.
+-/
+axiom Weil_criterion : (∀ Φ ∈ Weil_cone, Q Φ ≥ 0) ↔ RH
+
+/-! ## Axiom T1.2: Guinand-Weil Explicit Formula (1948)
+
+**Citation:**
+- Guinand, A.P. (1948). "A summation formula in the theory of prime numbers"
+  Proc. London Math. Soc. (2) 50, 107-119.
+-/
+axiom explicit_formula :
+  ∀ Φ ∈ Weil_cone, Q Φ = arch_term Φ - prime_term Φ
+
+/-! ## Axiom T1.3: Archimedean Kernel Positivity
+
+a*(ξ) = 2π(log π - Re(ψ(1/4 + iπξ))) > 0 for all ξ
+
+**Citation:**
+- Titchmarsh, E.C. (1986) "The Theory of the Riemann Zeta-Function", Chapter IX.
+-/
+axiom a_star_pos : ∀ ξ : ℝ, a_star ξ > 0
+
+/-! ## Axiom T1.3b: Archimedean Kernel Continuity
+
+a*(ξ) is continuous (follows from digamma regularity away from poles).
+
+**Citation:**
+- Titchmarsh, E.C. (1986) "The Theory of the Riemann Zeta-Function", Chapter IX.
+-/
+axiom a_star_continuous : Continuous a_star
+
+/-! ## Axiom T1.3c: Archimedean Kernel Bounded on Compacts
+
+a*(ξ) is bounded on any compact set (continuous function on compact → bounded).
+
+**Citation:**
+- Direct corollary of continuity and Heine-Borel.
+-/
+axiom a_star_bdd_on_compact : ∀ (K : ℝ) (hK : K > 0),
+  ∃ M > 0, ∀ ξ ∈ Set.Icc (-K) K, a_star ξ ≤ M
+
+/-! ## Axiom T1.3d: Archimedean Kernel Even Symmetry
+
+a*(−ξ) = a*(ξ) because ψ(z̄) = ψ(z)̄ for the digamma function.
+For z = 1/4 + iπξ, the conjugate is 1/4 - iπξ = 1/4 + iπ(−ξ).
+
+**Citation:**
+- Abramowitz & Stegun (1964). "Handbook of Mathematical Functions", Section 6.3.
+- NIST DLMF (2024), Section 5.5: ψ(z̄) = ψ(z)̄.
+-/
+axiom a_star_even : ∀ ξ : ℝ, a_star (-ξ) = a_star ξ
+
+/-! ## Axiom T1.4: Szegő-Böttcher Theory (1958/1999)
+
+Eigenvalues of Toeplitz matrices bounded by symbol range.
+
+**Citation:**
+- Grenander, U. & Szegő, G. (1958). "Toeplitz Forms and Their Applications".
+- Böttcher, A. & Silbermann, B. (1999). "Introduction to Large Truncated Toeplitz Matrices".
+-/
+
+/-- Toeplitz matrix from symbol -/
+noncomputable def ToeplitzMatrix (M : ℕ) (P : ℝ → ℝ) : Matrix (Fin M) (Fin M) ℝ :=
+  fun i j => P ((i.val - j.val : ℤ) * Real.pi / M)
+
+axiom Szego_Bottcher_eigenvalue_bound :
+  ∀ (M : ℕ) (P : ℝ → ℝ), Continuous P → (∀ θ, P (-θ) = P θ) →
+  ∀ μ, (∃ v : Fin M → ℝ, v ≠ 0 ∧ (ToeplitzMatrix M P).mulVec v = μ • v) →
+    sInf {P θ | θ ∈ Set.Icc 0 (2 * Real.pi)} ≤ μ ∧
+    μ ≤ sSup {P θ | θ ∈ Set.Icc 0 (2 * Real.pi)}
+
+axiom Szego_Bottcher_convergence :
+  ∀ (P : ℝ → ℝ), Continuous P → (∀ θ, P (-θ) = P θ) →
+  ∀ ε > 0, ∃ N, ∀ m ≥ N,
+    ∀ μ, (∃ v : Fin m → ℝ, v ≠ 0 ∧ (ToeplitzMatrix m P).mulVec v = μ • v) →
+      ∃ θ ∈ Set.Icc 0 (2 * Real.pi), |μ - P θ| < ε
+
+/-! ## Axiom T1.4b: Szegő Rayleigh Quotient Bound (Classical)
+
+**Key Bridge Axiom**: Minimum Rayleigh quotient converges to symbol infimum.
+
+For Toeplitz matrix T_M[P] with continuous even symbol P:
+  inf_{v ≠ 0} (v^T · T_M[P] · v) / ||v||² → inf_θ P(θ)  as M → ∞
+
+More precisely: for any ε > 0, there exists M₀ such that for all M ≥ M₀,
+the Rayleigh quotient is at least inf P - ε.
+
+**Citation:**
+- Grenander, U. & Szegő, G. (1958). "Toeplitz Forms and Their Applications", Ch. 5.
+- Gray, R.M. (2006). "Toeplitz and Circulant Matrices: A Review", Theorem 4.2.
+-/
+
+/-- Rayleigh quotient for symmetric matrix -/
+noncomputable def RayleighQuotient {n : ℕ} (A : Matrix (Fin n) (Fin n) ℝ) (v : Fin n → ℝ) : ℝ :=
+  (∑ i, ∑ j, v i * A i j * v j) / (∑ i, v i ^ 2)
+
+/-- Szegő Rayleigh bound: for large M, Rayleigh quotient ≥ inf P - ε -/
+axiom Szego_Rayleigh_lower_bound :
+  ∀ (P : ℝ → ℝ), Continuous P → (∀ θ, P (-θ) = P θ) →
+  ∀ ε > 0, ∃ M₀ : ℕ, ∀ M ≥ M₀,
+    ∀ (v : Fin M → ℝ), v ≠ 0 →
+      RayleighQuotient (ToeplitzMatrix M P) v ≥ sInf {P θ | θ ∈ Set.Icc 0 (2 * Real.pi)} - ε
+
+/-! ## Axiom T1.5: Schur Test (1911)
+
+**Citation:**
+- Schur, I. (1911). "Bemerkungen zur Theorie der beschränkten Bilinearformen"
+  J. Reine Angew. Math. 140, 1-28.
+-/
+axiom Schur_test {n : Type*} [Fintype n] [DecidableEq n] :
+  ∀ (A : Matrix n n ℝ), A.IsSymm →
+  ∀ (C : ℝ), 0 ≤ C → (∀ i, ∑ j, |A i j| ≤ C) → ‖A‖ ≤ C
+
+/-! ## Axiom T1.6: Archimedean Constant Positivity
+
+c₀(K) = inf_{|ξ| ≤ K} a*(ξ) > 0 by continuity and T1.3.
+-/
+
+/-- Archimedean constant: c₀(K) = inf_{|ξ| ≤ K} a*(ξ) -/
+noncomputable def c_arch (K : ℝ) : ℝ :=
+  sInf {a_star ξ | ξ ∈ Set.Icc (-K) K}
+
+axiom c_arch_pos : ∀ K : ℝ, K > 0 → c_arch K > 0
+
+/-! ## Uniform Archimedean Floor (December 2025 paper update)
+
+The paper was updated to use a UNIFORM floor c* = 11/10 instead of K-dependent c_arch(K).
+This is the global minimum of P_A(θ) over the entire torus T.
+Proven in A3_FLOOR_v22_stage4_floor.lean.
+
+Benefits of uniform approach:
+- M₀ is K-independent (single threshold for all K)
+- t_rkhs is K-independent (single heat parameter)
+- Simplifies the A3_bridge axiom chain
+-/
+
+/-- Uniform Archimedean floor: c* = 11/10
+    This is min_{θ ∈ T} P_A(θ) where P_A is the Archimedean symbol. -/
+noncomputable def c_star : ℝ := 11 / 10
+
+/-- c* is positive (trivial computation) -/
+lemma c_star_pos : c_star > 0 := by norm_num [c_star]
+
+/-- c* > 1 (useful for contraction arguments) -/
+lemma c_star_gt_one : c_star > 1 := by norm_num [c_star]
+
+/-- c*/4 > 0 (the bound used in A3_bridge) -/
+lemma c_star_div_four_pos : c_star / 4 > 0 := by norm_num [c_star]
+
+/-- c* ≤ c_arch(K) for K ≥ threshold.
+
+Since c_star = 11/10 is the GLOBAL minimum of P_A(θ) over the torus T,
+```
+
+**Tool Call: Read /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/Q3/Main.lean**
+Status: Completed
+
+```
+/-
+Q3 Formalization: Main Theorem - Riemann Hypothesis
+====================================================
+
+This file assembles all components to prove the Riemann Hypothesis
+via the Weil positivity criterion.
+
+The proof structure:
+1. T0: Normalize Q = arch_term - prime_term (Guinand-Weil form)
+2. A1': Fejér×heat atoms are dense in W_K (with support control)
+3. A2: Q is Lipschitz continuous on W_K
+4. A3: Toeplitz-Symbol bridge gives λ_min ≥ c₀(K)/4
+5. RKHS: Prime operator contraction ‖T_P‖ ≤ ρ_K < 1 (THEOREM via bridge)
+6. T5: Transfer from atoms to all of W_K (THEOREM, not axiom!)
+7. Weil Criterion (axiom): Q ≥ 0 on Weil cone ⟺ RH
+
+Final result: RH is true.
+
+Key axiom dependencies:
+- Tier-1: Weil_criterion
+- Tier-2: A3_FLOOR (P_A floor) + Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+- THEOREM: Q_Lipschitz_on_W_K_thm (real proof via arch/prime bridge axioms!)
+- Atoms positivity is a THEOREM from A3 + RKHS; T5_transfer is a THEOREM from A1 + A2 + Atoms
+  (see Q3.AxiomsTheorems for theorem replacements where available)
+-/
+
+import Q3.Basic.Defs
+import Q3.AxiomsTheorems
+import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
+import Q3.A1_Density
+import Q3.RKHS_Contraction
+import Q3.A3_Bridge
+import Q3.T5_Transfer
+
+set_option linter.mathlibStandardSet false
+
+open scoped BigOperators
+open scoped Real
+open scoped Classical
+open scoped Pointwise
+
+set_option maxHeartbeats 400000
+set_option maxRecDepth 4000
+
+noncomputable section
+
+namespace Q3.Main
+
+/-! ## Step T0: Normalization -/
+
+/-- T0: The Q functional has the Guinand-Weil form -/
+theorem T0_normalization (Φ : ℝ → ℝ) (_hΦ : Φ ∈ Q3.Weil_cone) :
+    Q3.Q Φ = Q3.arch_term Φ - Q3.prime_term Φ := by
+  -- This is essentially the definition of Q
+  rfl
+
+/-! ## Step A2: Lipschitz Control -/
+
+/-- A2: Q is Lipschitz on W_K with constant L_Q(K) (REAL THEOREM!) -/
+theorem A2_Lipschitz (K : ℝ) (hK : K > 0) :
+    ∃ L > 0, ∀ Φ₁, Φ₁ ∈ Q3.W_K K → ∀ Φ₂, Φ₂ ∈ Q3.W_K K →
+      |Q3.Q Φ₁ - Q3.Q Φ₂| ≤ L * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K} :=
+  Q3.Proofs.Q_Lipschitz_on_W_K_thm K hK
+
+/-! ## Compact Transfer -/
+
+/-- W_K is included in the full Weil cone (via Weil_cone_K). -/
+lemma W_K_subset_Weil_cone (K : ℝ) (Φ : ℝ → ℝ)
+    (hΦ : Φ ∈ Q3.W_K K) : Φ ∈ Q3.Weil_cone := by
+  have h1 : Φ ∈ Q3.Weil_cone_K K := Q3.W_K_subset_Weil_cone_K K hΦ
+  obtain ⟨heven, hnonneg, hsupp⟩ := h1
+  obtain ⟨hcont, _, _, _⟩ := hΦ
+  refine ⟨heven, hnonneg, ?_, hcont⟩
+  -- HasCompactSupport follows from support ⊆ [-K, K]
+  have h2 : tsupport Φ ⊆ Set.Icc (-K) K := by
+    calc tsupport Φ = closure (Function.support Φ) := rfl
+      _ ⊆ closure (Set.Icc (-K) K) := closure_mono hsupp
+      _ = Set.Icc (-K) K := IsClosed.closure_eq isClosed_Icc
+  exact IsCompact.of_isClosed_subset isCompact_Icc (isClosed_tsupport Φ) h2
+
+/-- Weil_cone_K is included in the full Weil cone (when given continuity) -/
+lemma Weil_cone_K_subset (K : ℝ) (Φ : ℝ → ℝ)
+    (h : Φ ∈ Q3.Weil_cone_K K) (hcont : Continuous Φ) : Φ ∈ Q3.Weil_cone := by
+  obtain ⟨heven, hnonneg, hsupp⟩ := h
+  refine ⟨heven, hnonneg, ?_, hcont⟩
+  have h1 : tsupport Φ ⊆ Set.Icc (-K) K := by
+    calc tsupport Φ = closure (Function.support Φ) := rfl
+      _ ⊆ closure (Set.Icc (-K) K) := closure_mono hsupp
+      _ = Set.Icc (-K) K := IsClosed.closure_eq isClosed_Icc
+  exact IsCompact.of_isClosed_subset isCompact_Icc (isClosed_tsupport Φ) h1
+
+/-! ## T5: Transfer from Atoms to W_K (THEOREM) -/
+
+/-- Q is nonnegative on W_K for each K ≥ 1 (via T5 transfer theorem)
+    This is now a THEOREM, not an axiom! -/
+theorem Q_nonneg_on_W_K (K : ℝ) (hK : K ≥ 1) :
+    ∀ Φ ∈ Q3.W_K K, Q3.Q Φ ≥ 0 :=
+  Q3.T5.T5_transfer K hK
+
+/-! ## Regularity of Test Functions -/
+
+/-- Theorem: Functions in Weil cone are continuous.
+    This follows directly from the definition of Weil_cone (which now includes Continuous).
+    All physical test functions in the Weil cone are smooth, hence continuous. -/
+theorem Weil_cone_continuous : ∀ Φ ∈ Q3.Weil_cone, Continuous Φ := by
+  intro Φ ⟨_, _, _, hcont⟩
+  exact hcont
+
+/-- Corollary: Functions in Weil cone with support in (-K,K) are in W_K -/
+lemma Weil_cone_K_to_W_K (K : ℝ) (Φ : ℝ → ℝ)
+    (hΦ_cone : Φ ∈ Q3.Weil_cone) (hsupp : Function.support Φ ⊆ Set.Ioo (-K) K) :
+    Φ ∈ Q3.W_K K := by
+  obtain ⟨heven, hnonneg, _, hcont⟩ := hΦ_cone
+  exact ⟨hcont, hsupp, heven, hnonneg⟩
+
+/-! ## Main Theorem -/
+
+/-- **Main Theorem**: Q(Φ) ≥ 0 for all Φ in the Weil cone
+
+This is the key positivity result that, combined with the Weil criterion,
+implies the Riemann Hypothesis.
+
+Proof outline:
+1. Φ ∈ Weil_cone has compact support, so Φ ∈ W_K for some K ≥ 1
+2. By T5_transfer (theorem!), Q(Φ) ≥ 0 on W_K
+-/
+theorem Q_nonneg_on_Weil_cone : ∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0 := by
+  intro Φ hΦ
+  have hΦ_cone : Φ ∈ Q3.Weil_cone := hΦ
+  obtain ⟨heven, hnonneg, hcompact, _hcont⟩ := hΦ
+  -- Since Φ has compact support, there exists K ≥ 1 with supp(Φ) ⊆ [-K, K]
+  obtain ⟨K0, hK0_ge, hsupp0⟩ : ∃ K ≥ 1, Function.support Φ ⊆ Set.Icc (-K) K := by
+    -- HasCompactSupport implies bounded support
+    obtain ⟨M, hM⟩ := Metric.isBounded_iff_subset_ball (0 : ℝ) |>.mp hcompact.isCompact.isBounded
+    use max M 1
+    constructor
+    · exact le_max_right M 1
+    · intro x hx
+      have h1 : x ∈ tsupport Φ := subset_tsupport Φ hx
+      have h2 : x ∈ Metric.ball 0 M := hM h1
+      rw [Metric.mem_ball, dist_zero_right, Real.norm_eq_abs] at h2
+      have hM1 : M ≤ max M 1 := le_max_left M 1
+      constructor
+      · linarith [abs_nonneg x, neg_abs_le x]
+      · linarith [le_abs_self x]
+  -- Enlarge the window so support lands in the open interval.
+  let K := K0 + 1
+  have hK_ge : K ≥ 1 := by nlinarith [hK0_ge]
+  have hsupp : Function.support Φ ⊆ Set.Ioo (-K) K := by
+    intro x hx
+    have hx' := hsupp0 hx
+    have hx1 : -K < x := by nlinarith [hx'.1]
+    have hx2 : x < K := by nlinarith [hx'.2]
+    exact ⟨hx1, hx2⟩
+  -- Φ is in W_K (continuity is part of Weil_cone)
+  have hΦ_in_W_K : Φ ∈ Q3.W_K K := Weil_cone_K_to_W_K K Φ hΦ_cone hsupp
+  -- Apply T5 transfer theorem
+  exact Q_nonneg_on_W_K K hK_ge Φ hΦ_in_W_K
+
+/-! ## Riemann Hypothesis -/
+
+/-- **RIEMANN HYPOTHESIS (conditional on Q3 axioms)**
+
+All nontrivial zeros of the Riemann zeta function lie on the critical line Re(s) = 1/2.
+
+This theorem depends on:
+
+**Tier-1 (Classical):**
+- Weil_criterion (Weil 1952)
+
+**Tier-2 (Q3 Paper):**
+- A3_FLOOR (P_A floor) + Fourier Toeplitz bridge
+- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom: core (A3+RKHS) ⇒ atoms positivity
+**Theorems (now closed):**
+- A1_density_WK: atoms dense in W_K
+- Q_Lipschitz_on_W_K: Q is Lipschitz
+
+**Local axiom:**
+- Weil_cone_continuous: test functions are continuous
+
+**Theorem (not axiom!):**
+- Atoms.Q_nonneg_on_atoms: Q ≥ 0 on AtomCone_K (from A3 + RKHS)
+- RKHS_contraction: prime operator contraction (bridge theorem)
+- T5_transfer: Q ≥ 0 on W_K (from A1 + A2 + Atoms)
+
+Proof: By T5_transfer theorem, Q ≥ 0 on W_K for each K.
+By compact support extraction, Q ≥ 0 on all of Weil_cone.
+By Weil criterion, RH follows.
+-/
+theorem RH_of_Weil_and_Q3 : Q3.RH := by
+  -- Apply Weil criterion (axiom)
+  rw [← Q3.Weil_criterion]
+  exact Q_nonneg_on_Weil_cone
+
+/-! ## Axiom Verification -/
+
+-- Check what axioms the proof depends on
+#check RH_of_Weil_and_Q3
+-- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
+-- Standard: propext, Classical.choice, Quot.sound
+-- Tier-1: Q3.Weil_criterion, Q3.a_star_pos, Q3.a_star_bdd_on_compact, Q3.a_star_continuous
+-- Tier-2: Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+--
+-- KEY IMPROVEMENTS:
+-- - Q_Lipschitz_on_W_K is now a THEOREM (uses arch/prime bridge axioms)!
+-- - RKHS_contraction is now a THEOREM (bridge closed)!
+-- - Q_nonneg_on_W_K_axiom is GONE! T5 is now a THEOREM!
+
+end Q3.Main
+
+end
+```
+
+**Tool Call: List Q3 Lean modules**
+Status: Completed
+
+Terminal:
+```
+Q3/S_K_Bound.lean
+Q3/Main.lean
+Q3/AxiomClosure.lean
+Q3/Atoms_Positive.lean
+Q3/CheckAxioms.lean
+Q3/A2_Lipschitz.lean
+Q3/MainTheorems.lean
+Q3/Archive/06_T5_aristotle.lean
+Q3/Archive/03_A2_aristotle.lean
+Q3/Archive/01_T0_aristotle.lean
+Q3/Archive/04_A3_aristotle.lean
+Q3/Archive/05_RKHS_aristotle.lean
+Q3/Archive/02_A1_aristotle.lean
+Q3/Archive/07_Main_aristotle.lean
+Q3/Aristotle_Integration.lean
+Q3/ProofsIntegrated.lean
+Q3/DigammaRemainder.lean
+Q3/Clean/AxiomsTier1.lean
+Q3/Clean/MainClean.lean
+Q3/Clean/TheoremsTier2.lean
+Q3/Clean/PoC.lean
+Q3/RKHS_Contraction.lean
+Q3/Proofs/Q_Lipschitz_bridge_v2.lean
+Q3/Proofs/Bridge.lean
+Q3/Proofs/Q_Lipschitz_prime_bridge.lean
+Q3/Proofs/S_K_small_bridge_v2.lean
+Q3/Proofs/A3_bridge.lean
+Q3/Proofs/RKHS_cap_rayleigh.lean
+Q3/Proofs/A3_bridge_rayleigh_first.lean
+Q3/Proofs/node_spacing_bridge.lean
+
+```
+
+
+**Tool Call: Read /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ASCII.md**
+Status: Completed
+
+````
+# Q3 Project Status (ASCII)
+
+Derived from `PROJECT_ORCHESTRATOR.md`. Keep this file short and consistent.
+
+Legend:
+[OK]  formalized (no axioms in the chain)
+[AX]  axiom in the chain
+
+Last update: 2026-01-16
+Axiom count in main chain: 10 total (7 project + 3 standard)
+
+## Critical Chain (ASCII)
+
+```
+RH_of_Weil_and_Q3
+  |
+  +-- Weil_criterion [AX external]
+  |
+  +-- Q_nonneg_on_Weil_cone [OK]
+       |
+       +-- T5_transfer [OK]
+            |
+            +-- A1_density_WK [OK]
+            +-- Q_Lipschitz_on_W_K [OK]
+            +-- Q_nonneg_on_atoms [AX]
+                 |
+                 +-- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom [AX]
+                 +-- RKHS_contraction [OK]
+```
+
+## Notes
+
+- `Q_Lipschitz_on_W_K` is a theorem (arch/prime bridge axioms closed).
+- Remaining closable axiom: `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
+- `aristotle_output/A1_density_hat_chain.lean` is now exact?-free and compiles
+  cleanly (ring_nf + unused variables fixed).
+- External/classical axioms in the chain: `Weil_criterion`, `a_star_pos`,
+  `a_star_bdd_on_compact`, `a_star_continuous`, `a_star_even`, `Schur_test`.
+
+## A3_bridge Progress (2026-01-14)
+
+**Fourier A3 bridge complete (theorem):** `Q3/Proofs/P_A_Toeplitz_bridge.lean`
+- Uses Fourier Toeplitz + `P_A` symbol + `T_P_comp_real`
+- Main chain now depends on `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+  (still an axiom pending proof)
+
+**Key insight from Прошка:** SB not needed, Rayleigh direct approach works.
+````
+
+**Tool Call: Show axiom check script**
+Status: Completed
+
+Terminal:
+```
+#!/bin/bash
+# Q3 Axiom Verification Script
+# Run before every commit to ensure philosophy compliance
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+
+cd "$PROJECT_DIR"
+
+echo "╔════════════════════════════════════════════════════════════════╗"
+echo "║           Q3 AXIOM VERIFICATION (Philosophy Check)            ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
+echo ""
+echo "Date: $(date)"
+echo "Directory: $PROJECT_DIR"
+echo ""
+
+# Step 0: Prebuild A3_FLOOR (standalone root file)
+echo "═══ Step 0: Prebuilding A3_FLOOR_v22_stage4_floor ═══"
+if lake env lean A3_FLOOR_v22_stage4_floor.lean 2>&1 | tail -5; then
+    echo "✓ A3_FLOOR prebuild successful"
+else
+    echo "✗ A3_FLOOR prebuild FAILED"
+    exit 1
+fi
+echo ""
+
+# Step 0.5: Docs link check
+echo "═══ Step 0.5: Docs link check ═══"
+if python3 scripts/check_links.py; then
+    echo "✓ Link check successful"
+else
+    echo "✗ Link check FAILED"
+    exit 1
+fi
+echo ""
+
+# Step 0.6: Audit invariants
+echo "═══ Step 0.6: Audit invariants ═══"
+if scripts/check_audit_invariants.sh; then
+    echo "✓ Audit invariants successful"
+else
+    echo "✗ Audit invariants FAILED"
+    exit 1
+fi
+echo ""
+
+# Step 1: Build
+echo "═══ Step 1: Building Q3.Main ═══"
+if lake build Q3.Main 2>&1 | tail -5; then
+    echo "✓ Build successful"
+else
+    echo "✗ Build FAILED"
+    exit 1
+fi
+echo ""
+
+# Step 2: Extract axioms
+echo "═══ Step 2: Axiom Extraction ═══"
+AXIOMS=$(echo 'import Q3.Main
+#print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1)
+
+echo "$AXIOMS"
+echo ""
+
+# Step 3: Count axioms
+echo "═══ Step 3: Axiom Count ═══"
+
+# Count standard axioms from full output (propext is on the header line)
+STANDARD_COUNT=$(echo "$AXIOMS" | grep -oE "propext|Classical.choice|Quot.sound" | wc -l | tr -d ' ')
+# Strip the header label but keep the axiom list.
+AXIOMS_ONLY=$(echo "$AXIOMS" | sed "s/'Q3.Main.RH_of_Weil_and_Q3' depends on axioms: //")
+PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
+TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
+
+echo "Standard Lean: $STANDARD_COUNT (expected: 3)"
+echo "Project:       $PROJECT_COUNT (expected: 7)"
+echo "TOTAL:         $TOTAL (expected: 10)"
+echo ""
+
+# Step 4: Classification
+echo "═══ Step 4: Axiom Classification ═══"
+
+echo "Level 1 (Classical Literature):"
+echo "$AXIOMS" | grep -E "Weil_criterion|a_star_pos|a_star_bdd|a_star_continuous|a_star_even|Schur_test" | sed 's/^/  /' || echo "  (none found)"
+
+echo ""
+echo "Level 2 (Q3 Paper Contributions):"
+echo "$AXIOMS_ONLY" | grep -E "RKHS_contraction|Q_nonneg_on_atoms" | sed 's/^/  /' || echo "  (none found)"
+
+echo ""
+echo "Level 3 (Bridge Lemmas):"
+echo "$AXIOMS" | grep -E "Lipschitz_bridge" | sed 's/^/  /' || echo "  (none found)"
+
+echo ""
+
+# Step 5: Verification
+echo "═══ Step 5: Philosophy Verification ═══"
+
+EXPECTED_AXIOMS=(
+    "Q3.Weil_criterion"
+    "Q3.Schur_test"
+    "Q3.a_star_pos"
+    "Q3.a_star_bdd_on_compact"
+    "Q3.a_star_continuous"
+    "Q3.a_star_even"
+    "Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom"
+)
+
+UNKNOWN_AXIOMS=""
+for axiom in $(echo "$AXIOMS_ONLY" | grep -E "Q3\." | tr -d ' [],'); do
+    FOUND=false
+    for expected in "${EXPECTED_AXIOMS[@]}"; do
+        if [[ "$axiom" == "$expected" ]]; then
+            FOUND=true
+            break
+        fi
+    done
+    if [[ "$FOUND" == "false" ]]; then
+        UNKNOWN_AXIOMS="$UNKNOWN_AXIOMS $axiom"
+    fi
+done
+
+if [[ -z "$UNKNOWN_AXIOMS" ]]; then
+    echo "✓ All axioms are documented in PHILOSOPHY_OF_PROOF.md"
+else
+    echo "✗ UNKNOWN AXIOMS DETECTED:"
+    echo "  $UNKNOWN_AXIOMS"
+    echo ""
+    echo "  ACTION REQUIRED: Add these to PHILOSOPHY_OF_PROOF.md with citations"
+    exit 1
+fi
+
+echo ""
+echo "╔════════════════════════════════════════════════════════════════╗"
+echo "║                    VERIFICATION PASSED ✓                      ║"
+echo "║                                                                ║"
+echo "║  Axiom count: $TOTAL (7 Project + 3 Standard)                  ║"
+echo "║  Philosophy: Compliant                                         ║"
+echo "║  Ready to commit!                                              ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
+
+```
+
+
+## Assistant
+
+Теперь смотрю на Python-часть и общую инфраструктуру проекта.
+
+**Tool Call: Show Python config and src**
+Status: Completed
+
+Terminal:
+```
+[project]
+name = "chen-q3"
+version = "0.1.0"
+description = "Q3 Spectral Analysis - Riemann Hypothesis Research"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.14",
+    "matplotlib>=3.9",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+---
+insgesamt 1044
+drwxrwxr-x  4 chirurgie chirurgie  4096 Jan 19 08:52  .
+drwxrwxr-x 12 chirurgie chirurgie  4096 Jan 19 10:07  ..
+-rw-rw-r--  1 chirurgie chirurgie  8154 Jan 19 08:52  analytical_B1.py
+-rw-rw-r--  1 chirurgie chirurgie  8659 Jan 19 08:52  analytic_M_computation.py
+-rw-rw-r--  1 chirurgie chirurgie  6495 Jan 19 08:52  analyze_digamma_poison.py
+-rw-rw-r--  1 chirurgie chirurgie 11611 Jan 19 08:52  anchor_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie 13390 Jan 19 08:52  audit_claims.py
+-rw-rw-r--  1 chirurgie chirurgie  8914 Jan 19 08:52  b1_precise_check.py
+-rw-rw-r--  1 chirurgie chirurgie  9946 Jan 19 08:52  bakry_emery_test.py
+-rw-rw-r--  1 chirurgie chirurgie  8082 Jan 19 08:52  boundary_concentration_proof.py
+-rw-rw-r--  1 chirurgie chirurgie  9038 Jan 19 08:52  boundary_R_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie  6403 Jan 19 08:52  boundary_rows_bound.py
+-rw-rw-r--  1 chirurgie chirurgie  3008 Jan 19 08:52  bpq_growth.py
+-rw-rw-r--  1 chirurgie chirurgie  4724 Jan 19 08:52  check_parity_sensitivity.py
+-rw-rw-r--  1 chirurgie chirurgie  5478 Jan 19 08:52  check_span_growth.py
+-rw-rw-r--  1 chirurgie chirurgie  6942 Jan 19 08:52  chen_pairs_test.py
+drwxrwxr-x  2 chirurgie chirurgie  4096 Jan 19 08:52  chen_q3.egg-info
+-rw-rw-r--  1 chirurgie chirurgie 11272 Jan 19 08:52  chi4_twisted_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie 14337 Jan 19 08:52  circularity_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie 13238 Jan 19 08:52  commutator_exact_formula.py
+-rw-rw-r--  1 chirurgie chirurgie  5205 Jan 19 08:52  commutator_resonance.py
+-rw-rw-r--  1 chirurgie chirurgie 11223 Jan 19 08:52  commutator_rkhs_bounds.py
+-rw-rw-r--  1 chirurgie chirurgie  6968 Jan 19 08:52  compare_interpretations.py
+-rw-rw-r--  1 chirurgie chirurgie  6476 Jan 19 08:52  constrained_lagrangian.py
+-rw-rw-r--  1 chirurgie chirurgie  9184 Jan 19 08:52  convolution_twin_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie 11443 Jan 19 08:52  cross_terms_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie  9886 Jan 19 08:52  c_twins_lambda_test.py
+-rw-rw-r--  1 chirurgie chirurgie  5035 Jan 19 08:52  c_twins_scaling.py
+-rw-rw-r--  1 chirurgie chirurgie  6924 Jan 19 08:52  c_twins_sparse.py
+-rw-rw-r--  1 chirurgie chirurgie  9169 Jan 19 08:52  delta_anatomy.py
+-rw-rw-r--  1 chirurgie chirurgie  5090 Jan 19 08:52  direct_min_R_test.py
+-rw-rw-r--  1 chirurgie chirurgie  9220 Jan 19 08:52  e_comm_e_dir_relation.py
+-rw-rw-r--  1 chirurgie chirurgie  5236 Jan 19 08:52  energy_functional.py
+-rw-rw-r--  1 chirurgie chirurgie  6160 Jan 19 08:52  energy_s2_correlation.py
+-rw-rw-r--  1 chirurgie chirurgie  8972 Jan 19 08:52  floor_adaptive_t.py
+-rw-rw-r--  1 chirurgie chirurgie  3068 Jan 19 08:52  floor_proof.py
+-rw-rw-r--  1 chirurgie chirurgie  2923 Jan 19 08:52  floor_q3_real.py
+-rw-rw-r--  1 chirurgie chirurgie  2811 Jan 19 08:52  floor_saturation.py
+-rw-rw-r--  1 chirurgie chirurgie  9047 Jan 19 08:52  formal_lower_bound.py
+-rw-rw-r--  1 chirurgie chirurgie 12759 Jan 19 08:52  formal_proof_P_X.py
+-rw-rw-r--  1 chirurgie chirurgie  8743 Jan 19 08:52  formal_R_min_proof.py
+-rw-rw-r--  1 chirurgie chirurgie  6974 Jan 19 08:52  fourier_twin_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie 11651 Jan 19 08:52  f_twin_maynard_bridge.py
+-rw-rw-r--  1 chirurgie chirurgie  4094 Jan 19 08:52  gaussian_to_powerlaw.py
+-rw-rw-r--  1 chirurgie chirurgie 12672 Jan 19 08:52  gpy_sieve_approach.py
+-rw-rw-r--  1 chirurgie chirurgie  7750 Jan 19 08:52  gpy_vs_random_test.py
+-rw-rw-r--  1 chirurgie chirurgie  2790 Jan 19 08:52  hamiltonian.py
+-rw-rw-r--  1 chirurgie chirurgie  8746 Jan 19 08:52  h_x_convergence.py
+-rw-rw-r--  1 chirurgie chirurgie     0 Jan 19 08:52  __init__.py
+-rw-rw-r--  1 chirurgie chirurgie  9969 Jan 19 08:52  kernel_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie  9518 Jan 19 08:52  kernel_cone_check.py
+-rw-rw-r--  1 chirurgie chirurgie  6594 Jan 19 08:52  lagrangian_eigenvalues.py
+-rw-rw-r--  1 chirurgie chirurgie  3436 Jan 19 08:52  large_N_test.py
+-rw-rw-r--  1 chirurgie chirurgie 12110 Jan 19 08:52  lipschitz_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie  9600 Jan 19 08:52  maynard_conditions.py
+-rw-rw-r--  1 chirurgie chirurgie  7133 Jan 19 08:52  merlin_kernel_test.py
+-rw-rw-r--  1 chirurgie chirurgie 11379 Jan 19 08:52  model_B1_direct.py
+-rw-rw-r--  1 chirurgie chirurgie 10681 Jan 19 08:52  model_B1_fourier.py
+-rw-rw-r--  1 chirurgie chirurgie 21561 Jan 19 08:52  off_diagonal_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie  7192 Jan 19 08:52  optimal_vector_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie  8004 Jan 19 08:52  perturbation_check.py
+-rw-rw-r--  1 chirurgie chirurgie  8108 Jan 19 08:52  perturbation_twins.py
+-rw-rw-r--  1 chirurgie chirurgie 10243 Jan 19 08:52  prove_boundary_lemma.py
+-rw-rw-r--  1 chirurgie chirurgie  8664 Jan 19 08:52  prove_c_constant.py
+-rw-rw-r--  1 chirurgie chirurgie  6495 Jan 19 08:52  prove_M_bound.py
+-rw-rw-r--  1 chirurgie chirurgie 11557 Jan 19 08:52  prove_min_R_growth.py
+-rw-rw-r--  1 chirurgie chirurgie 10318 Jan 19 08:52  prove_rowsum_bound.py
+-rw-rw-r--  1 chirurgie chirurgie 12400 Jan 19 08:52  prove_row_sum.py
+drwxrwxr-x  2 chirurgie chirurgie  4096 Jan 19 08:52  __pycache__
+-rw-rw-r--  1 chirurgie chirurgie 10203 Jan 19 08:52  q3_alpha_scaling.py
+-rw-rw-r--  1 chirurgie chirurgie 10214 Jan 19 08:52 'q3_atom_model 2.py'
+-rw-rw-r--  1 chirurgie chirurgie 11373 Jan 19 08:52  q3_atom_model.py
+-rw-rw-r--  1 chirurgie chirurgie  9150 Jan 19 08:52  q3_coherence_test.py
+-rw-rw-r--  1 chirurgie chirurgie 11227 Jan 19 08:52  q3_corrected_model.py
+-rw-rw-r--  1 chirurgie chirurgie  8069 Jan 19 08:52  q3_galerkin_phase1.py
+-rw-rw-r--  1 chirurgie chirurgie  9037 Jan 19 08:52  q3_grh_chi4.py
+-rw-rw-r--  1 chirurgie chirurgie 11282 Jan 19 08:52  q3_grh_phase_d1.py
+-rw-rw-r--  1 chirurgie chirurgie  5506 Jan 19 08:52  q3_spectral_summary.py
+-rw-rw-r--  1 chirurgie chirurgie 11876 Jan 19 08:52  q3_spectrum_V.py
+-rw-rw-r--  1 chirurgie chirurgie 10755 Jan 19 08:52  q3_stress_test.py
+-rw-rw-r--  1 chirurgie chirurgie 12167 Jan 19 08:52  q3_twins_phase2.py
+-rw-rw-r--  1 chirurgie chirurgie  6759 Jan 19 08:52  q3_verify.py
+-rw-rw-r--  1 chirurgie chirurgie 11213 Jan 19 08:52  q3_vtwin_operator.py
+-rw-rw-r--  1 chirurgie chirurgie 11094 Jan 19 08:52  ratio_const_analysis.py
+-rw-rw-r--  1 chirurgie chirurgie  6381 Jan 19 08:52  ratio_extrapolation.py
+-rw-rw-r--  1 chirurgie chirurgie  2629 Jan 19 08:52  ratio_extrapolation_v2.py
+-rw-rw-r--  1 chirurgie chirurgie  9274 Jan 19 08:52  rayleigh_minimum_scan.py
+-rw-rw-r--  1 chirurgie chirurgie  4896 Jan 19 08:52  rescue_archimedes.py
+-rw-rw-r--  1 chirurgie chirurgie  6405 Jan 19 08:52  rescue_gamma_pure.py
+-rw-rw-r--  1 chirurgie chirurgie 17332 Jan 19 08:52  R_lower_bound_derivation.py
+-rw-rw-r--  1 chirurgie chirurgie  8271 Jan 19 08:52  row_sum_analytical.py
+-rw-rw-r--  1 chirurgie chirurgie  6892 Jan 19 08:52  r_phi_scaling.py
+-rw-rw-r--  1 chirurgie chirurgie  3229 Jan 19 08:52  saturation_proof.py
+-rw-rw-r--  1 chirurgie chirurgie  9047 Jan 19 08:52  score_expansion_check.py
+-rw-rw-r--  1 chirurgie chirurgie   953 Jan 19 08:52  shift.py
+-rw-rw-r--  1 chirurgie chirurgie  8429 Jan 19 08:52  sieve_spectral_check.py
+-rw-rw-r--  1 chirurgie chirurgie  8296 Jan 19 08:52  spectral_B_operator.py
+-rw-rw-r--  1 chirurgie chirurgie  1657 Jan 19 08:52  spectral_capture.py
+-rw-rw-r--  1 chirurgie chirurgie 10795 Jan 19 08:52  strict_proof.py
+-rw-rw-r--  1 chirurgie chirurgie  4467 Jan 19 08:52  trace_twisted_commutator.py
+-rw-rw-r--  1 chirurgie chirurgie  1315 Jan 19 08:52  twin_correlation_bridge.py
+-rw-rw-r--  1 chirurgie chirurgie  2247 Jan 19 08:52  twins_state.py
+-rw-rw-r--  1 chirurgie chirurgie  7463 Jan 19 08:52  verify_B1.py
+-rw-rw-r--  1 chirurgie chirurgie  8508 Jan 19 08:52  verify_B2.py
+-rw-rw-r--  1 chirurgie chirurgie  7488 Jan 19 08:52  verify_B2_v2.py
+-rw-rw-r--  1 chirurgie chirurgie  3891 Jan 19 08:52  verify_gamma_formula.py
+-rw-rw-r--  1 chirurgie chirurgie  8128 Jan 19 08:52  weil_twin_connection.py
+-rw-rw-r--  1 chirurgie chirurgie  7596 Jan 19 08:52  x_vs_n_dependence.py
+
+```
+
+
+**Tool Call: List docs directory**
+Status: Completed
+
+Terminal:
+```
+insgesamt 6708
+drwxrwxr-x 11 chirurgie chirurgie    4096 Jan 19 08:52  .
+drwxrwxr-x 12 chirurgie chirurgie    4096 Jan 19 10:07  ..
+-rw-rw-r--  1 chirurgie chirurgie   18948 Jan 19 08:52  11_12_5.1_pro.zip
+-rwxrwxr-x  1 chirurgie chirurgie  358488 Jan 19 08:52 '2025-11-30 12-57-11-_______________________________.md'
+drwxrwxr-x  2 chirurgie chirurgie    4096 Jan 19 08:52  2025-11-30-conversations
+-rw-rw-r--  1 chirurgie chirurgie   24892 Jan 19 08:52  2025-12-09-proof_SC2zip.zip
+-rwxrwxr-x  1 chirurgie chirurgie  346781 Jan 19 08:52 '2025-12-12 21-57-49-_________________________twins.md'
+-rw-rw-r--  1 chirurgie chirurgie   57357 Jan 19 08:52  2025-12-16-conversations.zip
+-rwxrwxr-x  1 chirurgie chirurgie  291594 Jan 19 08:52 '2025-12-2 17-31-33-_____________________________.md'
+-rwxrwxr-x  1 chirurgie chirurgie  310825 Jan 19 08:52 '2025-12-6 16-24-11-__________________________.md'
+-rwxrwxr-x  1 chirurgie chirurgie  218903 Jan 19 08:52 '2025-12-7 5-43-18-Lower_bound__________.md'
+-rw-rw-r--  1 chirurgie chirurgie   10822 Jan 19 08:52  2026-01-15-conversations_prowka_a3.zip
+-rw-rw-r--  1 chirurgie chirurgie    8192 Jan 19 08:52  afm_opus.zip
+-rw-rw-r--  1 chirurgie chirurgie    6918 Jan 19 08:52  ARISTOTLE_FORCING_POSITIVITY.md
+-rw-rw-r--  1 chirurgie chirurgie    5169 Jan 19 08:52  ARISTOTLE_FORCING_UPDATED.md
+-rw-rw-r--  1 chirurgie chirurgie    4399 Jan 19 08:52  ARISTOTLE_FREE_EXPLORATION.md
+-rw-rw-r--  1 chirurgie chirurgie    4473 Jan 19 08:52  ARISTOTLE_LARGE_SIEVE_ATTACK.md
+-rw-rw-r--  1 chirurgie chirurgie    4669 Jan 19 08:52  ARISTOTLE_MASTER_ATTACK.md
+-rw-rw-r--  1 chirurgie chirurgie    7298 Jan 19 08:52  ARISTOTLE_MINOR_ARCS_ATTACK.md
+-rw-rw-r--  1 chirurgie chirurgie    5318 Jan 19 08:52  ARISTOTLE_SPECTRAL_ATTACK.md
+-rw-rw-r--  1 chirurgie chirurgie    3896 Jan 19 08:52  ARISTOTLE_VINOGRADOV_ATTACK.md
+-rw-rw-r--  1 chirurgie chirurgie   13919 Jan 19 08:52  ataka_opus_13.12.2025.zip
+-rw-rw-r--  1 chirurgie chirurgie   48608 Jan 19 08:52  CHANGELOG_AUTO.md
+-rw-rw-r--  1 chirurgie chirurgie    5704 Jan 19 08:52  CHECK_B_POSITIVITY.py
+-rw-rw-r--  1 chirurgie chirurgie    8181 Jan 19 08:52 'Claude-Оператор на основе доказанной гипотезы Римана.md'
+-rw-rw-r--  1 chirurgie chirurgie    6263 Jan 19 08:52  CRITICAL_GAP_ANALYSIS.py
+drwxrwxr-x  2 chirurgie chirurgie    4096 Jan 19 08:52 'eulers twins'
+-rw-rw-r--  1 chirurgie chirurgie    3742 Jan 19 08:52  GEH2_BELL_BRIDGE_AUDIT.md
+-rw-rw-r--  1 chirurgie chirurgie     796 Jan 19 08:52  INDEX.md
+drwxrwxr-x  2 chirurgie chirurgie    4096 Jan 19 08:52  insights
+-rw-rw-r--  1 chirurgie chirurgie   37402 Jan 19 08:52 'Key Results on Prime Gaps and Correlation Lower Bounds.pdf'
+-rw-rw-r--  1 chirurgie chirurgie  380422 Jan 19 08:52 'Lean 4 formalization of vector 3 twin prime attack (1).md'
+-rw-rw-r--  1 chirurgie chirurgie  372453 Jan 19 08:52 'Lean 4 formalization of vector 3 twin prime attack.md'
+-rw-rw-r--  1 chirurgie chirurgie   77672 Jan 19 08:52  model_b1_twins_v2_07_12_2025.zip
+-rw-rw-r--  1 chirurgie chirurgie 1024523 Jan 19 08:52 'Operator Methods for the Weil Criterion: Q3.pdf'
+drwxrwxr-x  3 chirurgie chirurgie    4096 Jan 19 08:52  opus4.5
+-rw-rw-r--  1 chirurgie chirurgie    4974 Jan 19 08:52  opus4.5_12.10.2025_planB.zip
+-rw-rw-r--  1 chirurgie chirurgie    6654 Jan 19 08:52  opus4.5_12.10.2025.zip
+-rw-rw-r--  1 chirurgie chirurgie 2134492 Jan 19 08:52  Paper_RH.zip
+-rw-rw-r--  1 chirurgie chirurgie   37942 Jan 19 08:52  Physics_lichts_b_feld.zip
+-rw-rw-r--  1 chirurgie chirurgie  278895 Jan 19 08:52 'Power please ozeni.md'
+-rw-rw-r--  1 chirurgie chirurgie    2054 Jan 19 08:52  PROJECT_STRUCTURE.md
+drwxrwxr-x  2 chirurgie chirurgie    4096 Jan 19 08:52  Proof_RH_Dezember_25
+-rw-rw-r--  1 chirurgie chirurgie    2438 Jan 19 08:52  P_X_analysis_summary.md
+drwxrwxr-x  2 chirurgie chirurgie    4096 Jan 19 08:52  RH_Chen_X
+-rw-rw-r--  1 chirurgie chirurgie  334649 Jan 19 08:52 'RH_Q3 and Weil publication project.md'
+drwxrwxr-x  3 chirurgie chirurgie    4096 Jan 19 08:52  Superpower-ChatGPT-Gallery
+drwxrwxr-x  2 chirurgie chirurgie    4096 Jan 19 08:52  synergy_extracted
+-rw-rw-r--  1 chirurgie chirurgie    4551 Jan 19 08:52  synergy_opus.zip
+-rw-rw-r--  1 chirurgie chirurgie  125866 Jan 19 08:52 'Анализ логической структуры гипотезы о близнецах.md'
+drwxrwxr-x  2 chirurgie chirurgie    4096 Jan 19 08:52 'Как работает Аристотель и создание промпта для LLM'
+-rw-rw-r--  1 chirurgie chirurgie    2680 Jan 19 08:52 'опус?10.12.2025.zip'
+-rw-rw-r--  1 chirurgie chirurgie    4705 Jan 19 08:52 'опус?10?12?2025?гут.zip'
+-rw-rw-r--  1 chirurgie chirurgie  125242 Jan 19 08:52 'Проверка Missing Lemma и гипотезы близнецов.md'
+
+```
+
+
+**Tool Call: Read /media/chirurgie/hdd01/Soft/GitHub/chen_q3/pyproject.toml**
+Status: Completed
+
+```
+[project]
+name = "chen-q3"
+version = "0.1.0"
+description = "Q3 Spectral Analysis - Riemann Hypothesis Research"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.14",
+    "matplotlib>=3.9",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+```
+
+**Tool Call: Count lines in Q3/Proofs**
+Status: Completed
+
+Terminal:
+```
+220 Q3/Proofs/Rayleigh_Fourier.lean
+284 Q3/Proofs/Q_nonneg_bridge.lean
+290 Q3/Proofs/Q_Lipschitz.lean
+290 Q3/Proofs/RKHS_contraction_bridge_v2.lean
+293 Q3/Proofs/Q_nonneg_lemmas.lean
+307 Q3/Proofs/ShiftedWindows.lean
+339 Q3/Proofs/HatInterpolation.lean
+358 Q3/Proofs/Q_Lipschitz_prime_bridge.lean
+371 Q3/Proofs/RKHS_contraction.lean
+431 Q3/Proofs/Q_Lipschitz_bridge_v2.lean
+512 Q3/Proofs/Bridge.lean
+629 Q3/Proofs/Rayleigh_Q_identification.lean
+893 Q3/Proofs/RKHS_cap_rayleigh.lean
+895 Q3/Proofs/A1_density_main.lean
+1421 Q3/Proofs/A1_density.lean
+
+```
+
+
+**Tool Call: Show Lean toolchain and core defs**
+Status: Completed
+
+Terminal:
+```
+leanprover/lean4:v4.24.0---
+/-
+Q3 Formalization: Core Definitions
+==================================
+
+This file contains the fundamental definitions for the Q3 proof of RH.
+All other modules import this file.
+
+References:
+- Q3 Paper: Chen et al. "A Spectral Approach to the Riemann Hypothesis"
+- Weil (1952): "Sur les 'formules explicites' de la théorie des nombres premiers"
+- Guinand (1948): "A summation formula in the theory of prime numbers"
+-/
+
+import Mathlib
+
+set_option linter.mathlibStandardSet false
+
+open scoped BigOperators
+open scoped Real
+open scoped Classical
+open scoped Pointwise
+open scoped ComplexConjugate
+open MeasureTheory
+
+set_option maxHeartbeats 400000
+set_option maxRecDepth 4000
+
+noncomputable section
+
+namespace Q3
+
+```
+
+
+**Tool Call: Show directory sizes**
+Status: Completed
+
+Terminal:
+```
+7,2G	.
+
+
+
+
+```
+
+
+**Tool Call: Show dir sizes and active lean files**
+Status: Completed
+
+Terminal:
+```
+3,7M	archive
+6,3G	full
+288M	.git
+---
+8619
+
+```
+
+
+**Tool Call: Count active Lean files in project**
+Status: Completed
+
+Terminal:
+```
+243
+---
+6,2G	.lake
+1,2M	Q3
+1,5M	aristotle_output
+792K	aristotle_input
+296K	aristotle_db
+
+```
+
+
+## Assistant
+
+Собираю полную картину проекта.
+
+---
+
+# PROJECT OVERVIEW: Chen Q3 — Lean Formalization of Riemann Hypothesis
+
+```
+PROJECT OVERVIEW
+├── Architecture: Lean 4 Formal Proof + Python Numerics
+├── Main Technologies: Lean 4.24.0 + Mathlib, Python 3.13
+├── Key Patterns: Axiom Closure Loop, Aristotle AI-assisted proving
+└── Entry Point: full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
+```
+
+## Mission
+
+Формальное доказательство гипотезы Римана (RH) через критерий Вейля:
+```
+RH ⟺ Q(Φ) ≥ 0 для всех Φ ∈ Weil_cone
+```
+
+## Directory Structure
+
+```
+chen_q3/                           (7.2 GB total)
+├── full/q3.lean.aristotle/        (6.3 GB, main Lean project)
+│   ├── Q3/                        (1.2 MB, core proof modules)
+│   │   ├── Basic/Defs.lean        — Core definitions (Q, Weil_cone, W_K)
+│   │   ├── Axioms.lean            — Tier-1/Tier-2 axioms
+│   │   ├── AxiomsTheorems.lean    — Theorem wiring
+│   │   ├── Main.lean              — RH_of_Weil_and_Q3 (главная теорема!)
+│   │   └── Proofs/                — 15+ proof files (8,000+ lines)
+│   │       ├── A1_density.lean    (1421 lines) — атомная плотность
+│   │       ├── Q_Lipschitz.lean   (290 lines)  — Lipschitz
+│   │       ├── Bridge.lean        (512 lines)  — мосты
+│   │       └── RKHS_cap_rayleigh.lean (893 lines) — RKHS cap
+│   │
+│   ├── aristotle_input/           (792 KB) — промпты для Aristotle
+│   ├── aristotle_output/          (1.5 MB) — выходы доказательств
+│   ├── aristotle_db/              (296 KB) — БД лемм
+│   ├── .lake/                     (6.2 GB) — Mathlib cache
+│   ├── lakefile.toml              — Lake build config
+│   └── scripts/check_axioms.sh    — axiom verification
+│
+├── docs/                          — документация и архивы
+├── paper/                         — LaTeX статья
+├── src/                           — Python численные расчеты
+├── archive/                       (3.7 MB) — исторический код
+└── CLAUDE.md                      — инструкции для Claude
+```
+
+## Critical Chain (Proof Structure)
+
+```
+RH_of_Weil_and_Q3
+  │
+  ├── Weil_criterion [AX external — Weil 1952]
+  │
+  └── Q_nonneg_on_Weil_cone [OK]
+       │
+       └── T5_transfer [OK]
+            │
+            ├── A1_density_WK [OK] — атомы плотны в W_K
+            ├── Q_Lipschitz_on_W_K [OK] — Q непрерывен
+            └── Q_nonneg_on_atoms [AX]
+                 │
+                 ├── Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom [AX]
+                 └── RKHS_contraction [OK]
+```
+
+## Axiom Count: 10 Total
+
+| Type | Count | Examples |
+|------|-------|----------|
+| Standard Lean | 3 | `propext`, `Classical.choice`, `Quot.sound` |
+| External/Classical | 6 | `Weil_criterion`, `a_star_pos`, `Schur_test` |
+| Q3 Paper (closable) | 1 | `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` |
+
+## Build System
+
+```bash
+# Build
+cd full/q3.lean.aristotle
+lake build Q3.Main
+
+# Verify axioms
+./scripts/check_axioms.sh
+
+# Quick axiom check
+lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
+```
+
+## Python Numerics
+
+```bash
+source .venv/bin/activate
+uv run python src/saturation_proof.py
+uv run python src/floor_proof.py
+```
+
+Dependencies: `numpy`, `scipy`, `matplotlib`, `rich` (Python 3.13+)
+
+## Key Workflow: Axiom Closure Loop
+
+```
+1. READ: PROJECT_ORCHESTRATOR.md → find "Active Next Step"
+2. WORK: Close the axiom/bridge
+3. VERIFY: lake build + check_axioms.sh
+4. UPDATE: Closure Tracker + commit
+5. REPEAT
+```
+
+## Aristotle Integration
+
+AI-assisted theorem prover для сложных лемм:
+
+```bash
+# Submit proof task
+aristotle prove-from-file --informal --no-validate-lean-project input.md
+
+# Check output
+cat aristotle_output/<uuid>.lean
+```
+
+Input files: `aristotle_input/`
+Output files: `aristotle_output/`
+
+## Key Constants (from LaTeX)
+
+| Const | Value | Description |
+|-------|-------|-------------|
+| c* | 11/10 | Symbol floor (uniform) |
+| C_SB | 4 | Szegő-Böttcher constant |
+| t_rkhs_cap | 40 | RKHS heat parameter |
+| ρ(1) | 1/25 | RKHS cap bound |
+
+## Active TODO
+
+**Единственный оставшийся closable axiom:**
+- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+
+Wire: Rayleigh-Q identification (`rayleigh_Q_eq_Q`) + A3 floor + RKHS cap
+
+---Готово! Вот краткое резюме проекта:
+
+## Итог
+
+**Chen Q3** — это формализация в Lean 4 доказательства гипотезы Римана через критерий Вейля.
+
+**Структура:**
+- Главная теорема: `Q3.Main.RH_of_Weil_and_Q3`
+- 10 аксиом (7 project + 3 standard Lean)
+- Только 1 закрываемая аксиома осталась: `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+
+**Tech stack:**
+- Lean 4.24.0 + Mathlib
+- Python 3.13 для численной верификации
+- Aristotle — AI для генерации доказательств
+
+**Ключевые файлы:**
+- Entry point: `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+- Главная теорема: `Q3/Main.lean`
+- Аксиомы: `Q3/Axioms.lean`
+- Доказательства: `Q3/Proofs/*.lean` (8000+ строк)
+
+**Workflow:** Axiom Closure Loop — закрывай аксиомы одну за другой, пока не останутся только классические (Weil, digamma bounds).
+

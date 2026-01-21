@@ -1,0 +1,55 @@
+% Q3 Spectral Framework
+% =====================
+
+\section{Q3 Spectral Weights}
+\label{sec:q3weights}
+
+We define the spectral weight function arising from the Q3 framework \cite{Q3paper}.
+
+\subsection{The Q3 Hamiltonian}
+
+Let $K > 0$ and $\tsym > 0$ be parameters. The Q3 Hamiltonian is
+\begin{equation}
+  \HX = \TA - \TP
+\end{equation}
+acting on $L^2([-K, K])$, where $\TA$ is the archimedean operator and
+$\TP$ encodes prime contributions.
+
+\begin{definition}
+  The prime operator $\TP$ has kernel
+  \begin{equation}
+    \TP(\xi, \eta) = \sum_p \wQ{p} \cdot K_{\tsym}(\xi - \xi_p)
+      \cdot K_{\tsym}(\eta - \xi_p),
+  \end{equation}
+  where $\xi_p = (\log p)/(2\pi)$ and $K_{\tsym}(x) = \exp(-x^2/(4\tsym))$.
+\end{definition}
+
+\subsection{The Weight Function}
+
+\begin{definition}[Q3 weight]
+  \label{def:q3weight}
+  For a prime $p$, define
+  \begin{equation}
+    \wQ{p} = \frac{2\log p}{\sqrt{p}}.
+  \end{equation}
+\end{definition}
+
+\begin{remark}
+  The weight $\wQ{p}$ derives from the von Mangoldt function
+  $\Lambda(p) = \log p$, normalized by $p^{-1/2}$ for $L^2$ convergence
+  of the sum $\sum_p \wQ{p}^2 < \infty$.
+\end{remark}
+
+\subsection{Spectral Positivity Criterion}
+
+\begin{theorem}[Q3 Equivalence \cite{Q3paper}]
+  \label{thm:q3-equivalence}
+  The Riemann Hypothesis is equivalent to the spectral condition
+  $\lammin(\HX) \geq 0$ for all sufficiently large $X$.
+\end{theorem}
+
+\begin{remark}
+  This equivalence transforms the analytic problem of locating zeros
+  of $\zeta(s)$ into a spectral positivity problem for a concrete
+  self-adjoint operator, realizing the Hilbert--Pólya philosophy.
+\end{remark}

@@ -1,0 +1,37 @@
+\refstepcounter{table}\label{tab:ind-schedule}
+\begin{center}
+  \small\textbf{Table \thetable: Monotone IND/AB schedule extracted from legacy certificates.}
+\end{center}
+\begin{center}
+  \small
+  \begin{tabular}{ccccccccc}
+    \toprule
+    $K$ & $B$ & $t_{\mathrm{sym}}$ & $c_0(K)$ & $\varepsilon(K)=c_0/4$ & $\rho(t)$ & $c_0-\rho$ & Block mass & Residual \\
+    \midrule
+    1 & 0.3 & 0.03 & 0.898624 & 0.224656 & 0.224656 & 0.673968 & 0.181352 & 0.005220 \\
+    2 & 0.3 & 0.013333 & 0.902867 & 0.225717 & 0.225717 & 0.677150 & -- & -- \\
+    3 & 0.3 & 0.007500 & 0.904368 & 0.226092 & 0.226092 & 0.678276 & -- & -- \\
+    4 & 0.3 & 0.004800 & 0.905066 & 0.226267 & 0.226267 & 0.678800 & -- & -- \\
+    6 & 0.3 & 0.002449 & 0.905675 & 0.226419 & 0.226419 & 0.679256 & -- & -- \\
+    8 & 0.3 & 0.001481 & 0.905926 & 0.226482 & 0.226482 & 0.679445 & -- & -- \\
+    10 & 0.3 & 0.000992 & 0.906053 & 0.226513 & 0.226513 & 0.679540 & -- & -- \\
+    12 & 0.3 & 0.000710 & 0.906127 & 0.226532 & 0.226532 & 0.679595 & -- & -- \\
+    16 & 0.3 & 0.000415 & 0.906203 & 0.226551 & 0.226551 & 0.679652 & -- & -- \\
+    20 & 0.3 & 0.000272 & 0.906240 & 0.226560 & 0.226560 & 0.679680 & -- & -- \\
+    24 & 0.3 & 0.000192 & 0.906261 & 0.226565 & 0.226565 & 0.679696 & -- & -- \\
+    28 & 0.3 & 0.000143 & 0.906274 & 0.226569 & 0.226569 & 0.679706 & -- & -- \\
+    32 & 0.3 & 0.000110 & 0.906282 & 0.226571 & 0.226571 & 0.679712 & -- & -- \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\par\smallskip
+\noindent\emph{Source:}
+\texttt{cert/bridge/K\{K\}\_A3\_lock.json} for $c_0$, $B$, $t_{\mathrm{sym}}$;
+\texttt{cert/bridge/K\{K\}\_trace.json} (mode \texttt{target}) for $\rho(t)$.
+Block mass and residual for $K=1$ come from \texttt{cert/bridge/K1\_blocks.json}
+with log \texttt{cert/bridge/logs/K1\_blocks.txt}; subsequent entries admit the same
+budgeting without explicit blocks. These numbers document reproducibility only and
+play no role in the analytic proof.
+\begin{center}
+  \footnotesize\itshape Reproducibility only – archived IND/AB schedule.
+\end{center}

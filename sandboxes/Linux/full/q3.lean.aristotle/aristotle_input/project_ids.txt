@@ -1,0 +1,51 @@
+uniform_arch_floor.md: dbfa2c26-a1b2-4a7b-a0aa-05151839a090
+uniform_arch_floor_v2.md: 2e3b3bf8-c308-4d27-af09-2c46e8569df5
+uniform_arch_floor_v3.md: d2728386-8dd5-4ec2-9e63-c2c80f3cd218
+uniform_arch_floor.md: dd21a597-b222-4033-a958-903ad48c690e
+Lipschitz_Bridge_v1.md: 68f7963c-a7d9-4971-8777-2bd0b7425e9a
+Q3_FULL_BRIDGE.md: 6cd52bc6-5e5c-411a-a784-86009f2c5f24
+A3_FLOOR.md: 9f4a33c2-dfa7-4024-b81d-00d75497ca06
+RH_FINAL.md: f758546b-4b31-4436-8c0d-9759b15d043b
+A3_FLOOR_v2.md: e3ae346c-ed26-47c4-b4b0-df229881b1a3
+A3_FLOOR_v3.md: f86d36da-3cb8-47bc-a4c7-a1398634b1aa
+A3_FLOOR_v4.md: 73f35bb5-ca42-4076-b47f-69d0faf987d3
+A3_FLOOR_v5.md: 5c9cbf80-cf41-4d8c-8e35-8f1bc2de1261
+A3_FLOOR_v6.md: da9fe6a2-1639-43fd-92ee-d7cce8962c98
+A3_FLOOR_v7.md: 74219d5a-863e-47fa-a277-428c6cc97773
+A3_FLOOR_v8.md: 028f042c-7bf3-44de-8bee-140a756108d4
+A3_FLOOR_v9.md: be2b9846-bce6-4419-8edb-98ec19ccd2d7
+A3_FLOOR_v10.md: fc61aa7f-783f-4dd1-bcdb-a264d95da683
+A3_FLOOR_v11.md: e81da2b4-eb38-43be-a45a-fba229fef184
+A3_FLOOR_v12.md: 4ec30af1-6d92-4140-9767-7954aafaeb0c
+A3_FLOOR_v13.md: d1524982-34c6-4719-9c06-700cde3141e6
+A3_FLOOR_v14.md: ffa743a3-2c10-4a5d-b2bd-0493e0e4d34f
+A3_FLOOR_v15.md: 383828ff-fcc0-4dc6-b434-76a29e369f50
+A3_FLOOR_v17.md: c1ea0b1f-7f44-4fa6-8f83-6ef6aaa1b413
+A3_FLOOR_v18_fix_gamma_div_lemmas.md: f2dbbad1-3f72-4aff-b365-ab1329cfad2f
+A1_density_bridge_v4.md: ccf01635-d3c8-4e0f-b1f0-1b084dfcb405
+A1_density_hat_full_v1.md: 9dda8778-857e-42cf-a669-aad1a2e04d5b
+A1_density_hat_chain.md: e90d4213-cf0f-40bd-b161-d771155e5ecb
+A1_density_hat_chain_v2.md: 4276c4a4-2523-4916-9220-07484a6bbb72
+A1_density_hat_chain_v3.md: 00b89f9d-0655-43a6-ab84-0e39b31678e2
+sandbox_test.md: c33c6672-311f-4df7-a2c3-e47c19fd37e2
+
+hat_interpolation_approx.md: 18bfe8c7-4620-41d4-be62-489409168e95
+
+# Rayleigh Lower Bound experiment (2026-01-14)
+rayleigh_lower_bound_v1.md (pure informal): 5990b601-ed48-442b-a4d3-5d8a18b444e3
+rayleigh_lower_bound_v2.md (sandbox): e9f8b481-8f80-4bdd-b798-be5c796eeead
+
+# A3_bridge closure experiment (2026-01-14)
+A3_bridge_closure_v1.md (pure informal): 4c2ed336-b94b-4269-9af8-7e566f680396
+A3_bridge_closure_v2.md (corrected, no SB): f6a9eed5-a06e-4686-86cc-37cecb8a620f
+A3_bridge_v3_proshka.md: 22378a11-eb7b-4d7e-bd57-01dbadf258c8
+A3_bridge_v4_real_TP.md: c35f3088-0755-4b8c-a33b-bd03064dbfea
+1cac53dd-b35c-4afa-9c88-696e5ca55f33  A3_bridge_RAYLEIGH_FIRST (Proshka, no SB, no M₀)  2026-01-14 20:33
+2b3cd17f-bac2-4b35-901f-0adb5ac43b85  RKHS_cap_rayleigh (h_cap, Cauchy-Schwarz)  2026-01-14 22:06
+RKHS_cap_t1_proshka.md: bef6fa7b-2cc4-424a-85b2-8919ac52b1fe
+weight_sum_bound.md: fb91fbb3-4c87-4740-939a-c672648a38ae
+P_A_continuous_v2.md: 796496eb-9eee-4b29-861e-4922363962d7  2026-01-17 03:41
+478a2302-35dd-4042-9994-27e4f7e95822  Q_Lipschitz_bridge_v2_close
+a5b117ea-8409-4219-baa4-9404ea801c2a  Rayleigh_integral_P_A_eq_arch_term
+
+proshka_tau_shift_floor_request_2026_01_18 d0d6e7f3-1549-4f3b-b921-2f576952fecd

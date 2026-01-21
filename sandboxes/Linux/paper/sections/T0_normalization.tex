@@ -1,0 +1,59 @@
+% T0: Guinand-Weil Normalization Crosswalk
+% ========================================
+
+\section{Normalization and the Weil Functional}\label{sec:T0}
+
+\subsection{Fourier Conventions}
+
+We adopt the unitary Fourier transform normalization:
+\begin{equation}\label{eq:fourier-conv}
+  \widehat{\varphi}(\xi) = \int_{\R} \varphi(t)\, e^{-2\pi i t \xi}\, dt,
+  \qquad
+  \varphi(t) = \int_{\R} \widehat{\varphi}(\xi)\, e^{2\pi i t \xi}\, d\xi,
+\end{equation}
+with Lebesgue measure $d\xi$ on the frequency side. For even test functions, all identities reduce to cosine form.
+
+\subsection{The Weil Functional}
+
+\begin{definition}[Weil functional]\label{def:weil-functional}
+For an even, compactly supported test function $\Phi$ on $\R$, define:
+\begin{equation}\label{eq:Q-functional}
+  Q(\Phi) := \int_{\R} \astar(\xi)\, \Phi(\xi)\, d\xi
+           - \sum_{n \geq 2} \wQ{n}\, \Phi(\xilog),
+\end{equation}
+where:
+\begin{itemize}
+  \item $\xilog := \frac{\log n}{2\pi}$ are the log-coordinates of integers,
+  \item $\wQ{n} := \frac{2\Lambda(n)}{\sqrt{n}}$ are the prime weights ($\Lambda$ = von Mangoldt function),
+  \item $\astar(\xi) := 2\pi\bigl(\log\pi - \re\psi(\tfrac{1}{4} + i\pi\xi)\bigr)$ is the Archimedean density.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}[T0: Guinand-Weil matching]\label{prop:T0-GW}
+Under the conventions above, our functional $Q(\Phi)$ matches the classical Guinand-Weil functional $Q_{\mathrm{GW}}$ after the change of variables $\eta = 2\pi\xi$:
+\begin{equation}
+  Q(\Phi) = Q_{\mathrm{GW}}(\Phi_{\mathrm{GW}}),
+  \qquad \eta = 2\pi\xi,\ \ \Phi_{\mathrm{GW}}(\eta) = \Phi(\eta/2\pi).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Change variables $\eta = 2\pi\xi$ in the Archimedean integral. The Jacobian $d\eta = 2\pi\, d\xi$ is absorbed by the definition of $\astar$, while $\psi(\tfrac{1}{4} + \tfrac{i\eta}{2}) = \psi(\tfrac{1}{4} + i\pi\xi)$. For the prime sum, $\Phi_{\mathrm{GW}}(\pm\log n) = \Phi(\pm\xilog)$, and by evenness, $\Phi(\xilog) + \Phi(-\xilog) = 2\Phi(\xilog)$, matching the doubled weights.
+\end{proof}
+
+\begin{theorem}[Weil's positivity criterion]\label{thm:weil-criterion}
+The Riemann Hypothesis is equivalent to:
+\begin{equation}
+  Q(\Phi) \geq 0 \quad \text{for all even, nonnegative } \Phi \in C_c(\R).
+\end{equation}
+\end{theorem}
+
+\begin{remark}[Weight conventions]\label{rem:weights}
+Throughout this paper:
+\begin{itemize}
+  \item $\wQ{n} = 2\Lambda(n)/\sqrt{n}$ in the Weil functional (evenized weights at positive nodes).
+  \item $\wRKHS{n} = \Lambda(n)/\sqrt{n}$ in RKHS and operator bounds (undoubled weights).
+  \item For primes: $\wQ{p} = 2\log p/\sqrt{p}$ and $\wRKHS{p} = \log p/\sqrt{p}$.
+\end{itemize}
+The factor of 2 arises from placing weights at $\pm\xilog$ for even tests.
+\end{remark}

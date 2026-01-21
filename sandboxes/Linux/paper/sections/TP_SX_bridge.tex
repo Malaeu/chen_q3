@@ -1,0 +1,45 @@
+% T_P ↔ S(X) Bridge: Operator-Sum Correspondence
+
+\section{Operator--Sum Bridge}\label{sec:TP-SX}
+
+The operator framework reduces questions about twin primes to linear algebra,
+but we must first connect it to the classical arithmetic. This section
+shows that the operator inner product recovers weighted sums over twin primes.
+
+\subsection{Classical Twin Sum}
+
+\begin{definition}[Twin sum]\label{def:twin-sum}
+\[
+    S(X) := \sum_{n \leq X} \Lambda(n) \Lambda(n+2).
+\]
+Hardy--Littlewood predicts $S(X) \sim 2C_2 X$ where $C_2 \approx 0.6601$.
+\end{definition}
+
+\subsection{The Bridge}
+
+\begin{proposition}[Operator--sum correspondence]\label{prop:TP-SX}
+For the twin vector $\Phi_X = \sum_{p \in \mathcal{T}(X)} \lambda_p k_p$
+with $\lambda_p = \Lambda(p)\Lambda(p+2)$:
+\[
+    \langle T_P \Phi_X, \Phi_X \rangle = \sum_{p,q \in \mathcal{T}(X)}
+    \lambda_p \cdot G(\xi_p - \xi_q) \cdot \lambda_q.
+\]
+\end{proposition}
+
+\begin{proof}
+Direct computation from the definition of $T_P$.
+\end{proof}
+
+\subsection{Asymptotic Behavior}
+
+The norm of the twin vector $\Phi_X$ exhibits a sharp dichotomy depending on
+whether the twin prime conjecture is true.
+
+\begin{lemma}[Growth dichotomy]\label{lem:growth-dichotomy}
+If twins are infinite, then $\|\Phi_X\|^2 \sim c \cdot X$ grows without bound.
+If twins are finite, then $\|\Phi_X\|^2 = O(1)$ remains bounded.
+\end{lemma}
+
+This dichotomy is the engine behind SC2. When twins are finite, both the
+numerator $E_{\mathrm{comm}}(\Phi_X)$ and denominator $E_{\mathrm{lat}}(\Phi_X)$
+of the Rayleigh quotient stabilize, forcing $R(\Phi_X) = O(1)$.

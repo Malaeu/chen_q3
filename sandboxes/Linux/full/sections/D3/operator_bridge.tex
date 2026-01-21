@@ -1,0 +1,57 @@
+% D3: From dispersion to operator contraction
+\subsection{D3: Operator Bridge to \texorpdfstring{$\|T_P\|\le 1-\delta_0$}{||T\_P|| <= 1 - delta0}}\label{d3:sec:D3-operator}
+
+The linear-algebraic bounds quoted here are standard consequences of Gershgorin and Rayleigh estimates~\cite{HornJohnson2013,Varga2004}.
+\SeeAlso{D3 dispersion (Lemma~\ref{d3:lem:D3-dispersion}), mixed bound (Theorem~\ref{thm:A3}).}
+\begin{remark}[Legacy (not used in main proof)]
+This D3 route provides a compact--dependent contraction mechanism and is archived for reference only.
+The main proof chain uses the uniform A3 bridge and the uniform RKHS cap; no D3 assumptions are invoked.
+\end{remark}
+
+Let $\mathcal H_K$ be the even RKHS on $[-K,K]$ with normalized kernels $\|k_\alpha\|=1$, and set
+\(
+T_P = \sum_{\alpha_n\in[-K,K]} w(n)\,|k_{\alpha_n}\rangle\!\langle k_{\alpha_n}|
+\)
+with $w(n)=\Lambda(n)/\sqrt n$.
+
+\begin{lemma}[Dispersion via A2/A3 data]\label{d3:lem:D3-dispersion}
+Assume the A3 hypotheses: $P_A\in\Lip(1)$ with $\min P_A\ge \czero>0$ (Lemma~\ref{lem:a3-lipschitz-bound} and Lemma~\ref{lem:a3.lip-floor}), the uniform RKHS cap $\|T_P\|\le \rho(t_{\mathrm{rkhs}})$ (Corollary~\ref{cor:uniform-prime-cap}), and the two-scale separation of Lemma~\ref{lem:a3.two-scale}. Then there exist a scale $t_{\mathrm{sym}}$ (with $t_{\mathrm{rkhs}}$ fixed) and a sequence $\delta_A\to0$ such that for every even RKHS test $f$ supported in $[-K,K]$
+\[
+  \Biggl|\sum_{p\le A}\Bigl(f(p)-\mathbb{E}_{\mathcal{P}\cap[1,A]}f\Bigr)\Biggr|
+  \le C(K)\Bigl(\omega_{P_A}(t_{\mathrm{sym}})+\epsK(t_{\mathrm{rkhs}})\Bigr)
+  \eqqcolon C(K)\,\delta_A.
+\]
+Consequently, $\delta_A\to0$ as $A\to\infty$.
+\end{lemma}
+
+\begin{proof}
+The Lipschitz control from Lemma~\ref{lem:a3-lipschitz-bound} bounds the near-diagonal contribution by $\omega_{P_A}(t_{\mathrm{sym}})$. The uniform RKHS cap (Corollary~\ref{cor:uniform-prime-cap}) together with Lemma~\ref{lem:a3.two-scale} controls the RKHS tail by $\epsK(t_{\mathrm{rkhs}})$. Adding the two estimates yields the desired inequality.
+\end{proof}
+
+\begin{theorem}[D3: Structural contraction]\label{d3:thm:D3-contraction}
+If Lemma~\ref{d3:lem:D3-dispersion} provides a gain $\delta_\ast>0$ after fixing the scales, then there exists $\delta_0\in(0,\delta_\ast)$ with
+\begin{equation}\label{eq:D3_operator_bridge-formula}
+  \|T_P\|_{\mathcal H_K}\ \le\ 1-\delta_0.
+\end{equation}
+Moreover, there is a constant $C_{\mathrm{D3}}>0$ (the uniform remainder in the mixed Toeplitz bound with Lipschitz symbol $P_A$) such that for $M\gg K^3$,
+\begin{equation}\label{eq:D3_operator_bridge-lambda-min}
+  \lambda_{\min}(T_M[P_A]-T_P)\ \ge\ (1+\delta_0)\,\log(1{+}K)\ -\ C_{\mathrm{D3}}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+In the packet basis the matrix of $T_P$ is $A:=W^{1/2}GW^{1/2}$. The dispersion bound in
+Lemma~\ref{d3:lem:D3-dispersion} gives a uniform gain $\delta_\ast>0$ after fixing the scales, so for every unit vector $u$
+one has $\langle Au,u\rangle\le 1-\delta_\ast$. Hence $\|T_P\|=\|A\|\le 1-\delta_\ast$; choose any
+$\delta_0\in(0,\delta_\ast)$ to obtain \eqref{eq:D3_operator_bridge-formula}. Inserting this norm bound into the mixed Toeplitz
+estimate with Lipschitz symbol $P_A$ gives \eqref{eq:D3_operator_bridge-lambda-min}; the constant
+$C_{\mathrm{D3}}$ is the uniform remainder from that bound.
+\end{proof}
+
+\begin{corollary}[Amplitude closure]\label{d3:cor:amplitude-closure}
+With the auxiliary suppressors (Roads B/C) and Theorem~\ref{d3:thm:D3-contraction} we obtain
+\(
+  \Gamma(K) \ge (1+\delta_0)\,\log(1+K) - C_{\mathrm{D3}},
+\)
+closing the amplitude gate.
+\end{corollary}

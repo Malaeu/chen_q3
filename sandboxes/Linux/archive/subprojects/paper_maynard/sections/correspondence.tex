@@ -1,0 +1,313 @@
+% Main Theorems
+% =============
+
+\section{Main Results}
+\label{sec:correspondence}
+
+We state and prove the main theorems establishing the sieve--spectral bridge.
+
+\subsection{Weight Construction}
+
+\begin{theorem}[Sieve weights from spectral function]
+  \label{thm:weights}
+  Let $\tilde{F}_{\mathrm{spec}}$ be defined as in Definition~\ref{def:Fspec-modified}.
+  Define sieve weights according to the Maynard formula
+  (Definition~\ref{def:maynard-weights}):
+  \begin{equation}
+    \label{eq:lambda-from-Fspec}
+    \lambda_{d_1,\ldots,d_k} := \mu(d_1) \cdots \mu(d_k) \cdot
+      \tilde{F}_{\mathrm{spec}}\biggl(\frac{\log d_1}{\log R}, \ldots,
+      \frac{\log d_k}{\log R}\biggr),
+  \end{equation}
+  where $R = X^{\theta/(2k)}$ with $\theta = 1/2$ (Bombieri--Vinogradov level).
+  Then these weights satisfy the Maynard conditions.
+\end{theorem}
+
+\begin{proof}
+  The weights \eqref{eq:lambda-from-Fspec} are precisely those of
+  Definition~\ref{def:maynard-weights} with $F = \tilde{F}_{\mathrm{spec}}$.
+  By Proposition~\ref{prop:maynard-admissible}, $\tilde{F}_{\mathrm{spec}}$
+  is smooth, supported on $\Delta_k$, non-negative, and symmetric.
+  Hence it satisfies all conditions required for the Maynard framework.
+\end{proof}
+
+\begin{remark}[Q3 motivation vs.\ sieve weights]
+  \label{rem:q3-motivation}
+  We emphasize the logical structure:
+  \begin{itemize}
+    \item The \emph{form} of $\tilde{F}_{\mathrm{spec}}$ is motivated by
+          Q3 spectral weights $\WQ(s)$.
+    \item The \emph{sieve weights} $\lambda_{d_1,\ldots,d_k}$ are defined
+          purely through Maynard's standard formula \eqref{eq:lambda-from-Fspec},
+          not through any direct spectral correspondence.
+  \end{itemize}
+  Thus Q3 provides the \emph{construction} of $F$, while Maynard provides
+  the \emph{machinery} to convert $F$ into sieve weights.
+\end{remark}
+
+\subsection{Asymptotic Analysis}
+
+The following lemma establishes when the Maynard asymptotic formula applies.
+
+\begin{lemma}[Conditions for asymptotic formula]
+  \label{lem:asymptotic-conditions}
+  Let $F : \Delta_k \to \R$ satisfy:
+  \begin{enumerate}
+    \item[\textnormal{(i)}] $F \in C^1(\Delta_k)$ (continuous differentiability);
+    \item[\textnormal{(ii)}] $\supp(F) \subseteq \Delta_k$ (simplex support);
+    \item[\textnormal{(iii)}] $F \geq 0$ (non-negativity).
+  \end{enumerate}
+  Then the Maynard asymptotic formula (Theorem~\ref{thm:maynard-asymptotic}) holds:
+  \begin{equation}
+    \frac{\Stwo}{\Sone} = \frac{\theta}{2} \cdot M(F) + o(1)
+    \quad \text{as } X \to \infty.
+  \end{equation}
+\end{lemma}
+
+\begin{proof}
+  This follows from \cite[Theorem~3.1]{Maynard2015}. The conditions (i)--(iii)
+  ensure absolute convergence of the relevant sums and applicability of
+  the Bombieri--Vinogradov theorem.
+\end{proof}
+
+\begin{lemma}[$\tilde{F}_{\mathrm{spec}}$ satisfies asymptotic conditions]
+  \label{lem:Fspec-asymptotic}
+  The spectral sieve function $\tilde{F}_{\mathrm{spec}}$ of
+  Definition~\ref{def:Fspec-modified} satisfies conditions (i)--(iii)
+  of Lemma~\ref{lem:asymptotic-conditions}.
+\end{lemma}
+
+\begin{proof}
+  Condition (i): By Lemma~\ref{lem:smooth}, $\tilde{F}_{\mathrm{spec}} \in C^\infty$.
+  Condition (ii): By Lemma~\ref{lem:support}, $\supp(\tilde{F}_{\mathrm{spec}}) \subseteq \Delta_k$.
+  Condition (iii): By Lemma~\ref{lem:nonneg}, $\tilde{F}_{\mathrm{spec}} \geq 0$.
+\end{proof}
+
+\begin{theorem}[Asymptotic sieve ratio for $\tilde{F}_{\mathrm{spec}}$]
+  \label{thm:Fspec-asymptotic}
+  For $F = \tilde{F}_{\mathrm{spec}}$ with weights $\lambda_{d_1,\ldots,d_k}$
+  defined by \eqref{eq:lambda-from-Fspec}:
+  \begin{equation}
+    \frac{\Stwo}{\Sone} = \frac{1}{4} \cdot M(\tilde{F}_{\mathrm{spec}}) + o(1)
+    \quad \text{as } X \to \infty,
+  \end{equation}
+  where $\theta = 1/2$ is the Bombieri--Vinogradov level of distribution.
+\end{theorem}
+
+\begin{proof}
+  By Lemma~\ref{lem:Fspec-asymptotic}, $\tilde{F}_{\mathrm{spec}}$ satisfies
+  the conditions of Lemma~\ref{lem:asymptotic-conditions}. Apply
+  Theorem~\ref{thm:maynard-asymptotic} with $\theta = 1/2$.
+\end{proof}
+
+\subsection{The Main Theorem}
+
+\begin{theorem}[Sieve--Spectral Bridge]
+  \label{thm:bridge}
+  Let $F_\alpha(t) = (1 - \sum_i t_i)^\alpha$ be the polynomial sieve function
+  with $\alpha = 1/2$ and tuple size $k = 7$.
+  Then:
+  \begin{enumerate}
+    \item[\textnormal{(i)}] $F_\alpha$ satisfies all conditions of
+          Theorem~\ref{thm:maynard-variational} (smoothness, simplex support,
+          non-negativity, symmetry).
+    \item[\textnormal{(ii)}] The variational ratio satisfies
+          $M(F_{1/2}, 7) = 56/27 > 2$ (Lemma~\ref{lem:M-rigorous}).
+    \item[\textnormal{(iii)}] The asymptotic sieve ratio satisfies
+          $\Stwo/\Sone \to M/4 > 1/2$ as $X \to \infty$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \textit{Part (i):}
+  $F_\alpha(t) = (1 - \sum_i t_i)^\alpha$ is $C^\infty$ on $\Delta_k$ for $\alpha > 0$.
+  Support is $\Delta_k$ by construction. Non-negativity: $(1-s)^\alpha \geq 0$
+  for $s \in [0,1]$. Symmetry: $F_\alpha$ depends only on $\sum_i t_i$.
+
+  \textit{Part (ii):}
+  By Theorem~\ref{thm:M-analytic}, the variational functional has closed form
+  \begin{equation}
+    M(F_\alpha, k) = \frac{2k(2\alpha+1)}{(\alpha+1)(k + 2\alpha + 1)}.
+  \end{equation}
+  By Lemma~\ref{lem:M-rigorous}, substituting $\alpha = 1/2$ and $k = 7$:
+  $M(F_{1/2}, 7) = 56/27 = 2 + 2/27 > 2$.
+
+  \textit{Part (iii):}
+  By Theorem~\ref{thm:maynard-asymptotic} with $\theta = 1/2$:
+  $\Stwo/\Sone = (1/4) M(F_{1/2}, 7) + o(1) = 14/27 + o(1) > 1/2$
+  as $X \to \infty$.
+\end{proof}
+
+\begin{corollary}[Bounded gaps from polynomial sieve function]
+  \label{cor:bounded-gaps}
+  By Theorem~\ref{thm:bridge} and Corollary~\ref{cor:maynard-m2},
+  $M(F_{1/2}) > 2$ implies
+  \begin{equation}
+    \liminf_{n \to \infty} (p_{n+1} - p_n) < \infty.
+  \end{equation}
+\end{corollary}
+
+\begin{proof}
+  By Theorem~\ref{thm:bridge}(i), $F_{1/2}$ satisfies
+  the hypotheses of Theorem~\ref{thm:maynard-main}. By part (ii),
+  $M(F_{1/2}, 7) = 56/27 > 2$. Applying Corollary~\ref{cor:maynard-m2}:
+  there exists an admissible $k$-tuple $\mathcal{H}$ such that
+  infinitely many $n$ have at least two of $n + h_1, \ldots, n + h_k$ prime.
+
+  This implies $\liminf_{n \to \infty} (p_{n+1} - p_n) \leq
+  \max \mathcal{H} - \min \mathcal{H} < \infty$.
+\end{proof}
+
+\subsection{Dependence on Tuple Size}
+
+\begin{theorem}[Critical tuple size]
+  \label{thm:critical-k}
+  For $F_\alpha(t) = (1 - \sum_i t_i)^\alpha$ on $\Delta_k$, let
+  $L(\alpha) := 2(2\alpha+1)/(\alpha+1)$ be the asymptotic limit.
+  For $m < L(\alpha)$, we have $M(F_\alpha, k) > m$ if and only if $k > k^*(\alpha, m)$,
+  where
+  \begin{equation}
+    \label{eq:critical-k}
+    k^*(\alpha, m) = \frac{m(\alpha+1)(2\alpha+1)}{2(2\alpha+1) - m(\alpha+1)}.
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  Solving $M(F_\alpha, k) = m$ for $k$:
+  \begin{align}
+    \frac{2k(2\alpha+1)}{(\alpha+1)(k+2\alpha+1)} &= m \\
+    2k(2\alpha+1) &= m(\alpha+1)(k+2\alpha+1) \\
+    k[2(2\alpha+1) - m(\alpha+1)] &= m(\alpha+1)(2\alpha+1).
+  \end{align}
+  The denominator is positive iff $m < L(\alpha)$.
+  By Remark~\ref{rem:asymptotic}, $M$ is strictly increasing in $k$,
+  so $M > m$ iff $k > k^*$.
+\end{proof}
+
+\begin{corollary}[Threshold for bounded gaps]
+  \label{cor:k-star-half}
+  For $\alpha = 1/2$ and $m = 2$:
+  \begin{equation}
+    k^*(1/2, 2) = \frac{2 \cdot (3/2) \cdot 2}{2 \cdot 2 - 2 \cdot (3/2)}
+                = \frac{6}{1} = 6.
+  \end{equation}
+  Hence $M(F_{1/2}, k) > 2$ if and only if $k \geq 7$.
+\end{corollary}
+
+\begin{theorem}[Optimal exponent]
+  \label{thm:optimal-alpha}
+  For $m = 2$, the critical tuple size $k^*(\alpha, 2)$ is minimized at
+  $\alpha^* = 1/\sqrt{2}$, yielding
+  \begin{equation}
+    k^*(1/\sqrt{2}, 2) = 2\sqrt{2} + 3 \approx 5.828.
+  \end{equation}
+  Consequently, $k = 6$ suffices for $M > 2$ when $\alpha = 1/\sqrt{2}$.
+\end{theorem}
+
+\begin{proof}
+  From \eqref{eq:critical-k} with $m = 2$:
+  \begin{equation}
+    k^*(\alpha, 2) = \frac{(\alpha+1)(2\alpha+1)}{\alpha} = 2\alpha + 3 + \frac{1}{\alpha}.
+  \end{equation}
+  Let $f(\alpha) = 2\alpha + 3 + 1/\alpha$. Then $f'(\alpha) = 2 - 1/\alpha^2 = 0$
+  gives $\alpha = 1/\sqrt{2}$. Since $f''(\alpha) = 2/\alpha^3 > 0$, this is a minimum.
+  Substituting: $f(1/\sqrt{2}) = \sqrt{2} + 3 + \sqrt{2} = 2\sqrt{2} + 3$.
+\end{proof}
+
+\begin{lemma}[Barrier for $m$-prime results]
+  \label{lem:barrier}
+  Since $M(F_\alpha, k) < L(\alpha) = 2(2\alpha+1)/(\alpha+1)$ for all $k$,
+  achieving $M > m$ requires $\alpha > \alpha_{\min}(m)$ where
+  \begin{equation}
+    \alpha_{\min}(m) = \frac{m - 2}{4 - m} \quad \text{for } m < 4.
+  \end{equation}
+  In particular: $\alpha_{\min}(2) = 0$, $\alpha_{\min}(3) = 1$, $\alpha_{\min}(4^-) = +\infty$.
+\end{lemma}
+
+\begin{proof}
+  From $L(\alpha) = m$: $2(2\alpha+1) = m(\alpha+1)$ gives $\alpha(4-m) = m-2$.
+\end{proof}
+
+\subsection{Computer-Assisted Verification}
+
+\begin{theorem}[Analytic formula for $M(F_\alpha)$]
+  \label{thm:M-analytic}
+  For the polynomial sieve function $F_\alpha(t) = (1 - \sum_i t_i)^\alpha$
+  on the $k$-simplex $\Delta_k$, the variational functional has the closed form:
+  \begin{equation}
+    \label{eq:M-closed-form}
+    M(F_\alpha, k) = \frac{2k(2\alpha+1)}{(\alpha+1)(k + 2\alpha + 1)}.
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  We compute $I_k$ and $J_k^{(m)}$ using the Dirichlet integral formula:
+  \begin{equation}
+    \int_{\Delta_n} (1 - \textstyle\sum_i t_i)^\beta \, dt
+    = \frac{\Gamma(\beta+1)}{\Gamma(n + \beta + 1)}.
+  \end{equation}
+
+  \textit{Step 1: Compute $I_k$.}
+  \begin{equation}
+    I_k(F_\alpha) = \int_{\Delta_k} (1 - \textstyle\sum_i t_i)^{2\alpha} dt
+    = \frac{\Gamma(2\alpha+1)}{\Gamma(k + 2\alpha + 1)}.
+  \end{equation}
+
+  \textit{Step 2: Compute $J_k^{(m)}$.}
+  By symmetry, all $J_k^{(m)}$ are equal. The inner integral:
+  \begin{equation}
+    \int_0^{1-s} (1-s-t_m)^\alpha \, dt_m = \frac{(1-s)^{\alpha+1}}{\alpha+1},
+  \end{equation}
+  where $s = \sum_{i \neq m} t_i$. Thus:
+  \begin{equation}
+    J_k^{(m)} = \frac{1}{(\alpha+1)^2} \int_{\Delta_{k-1}} (1-s)^{2\alpha+2} ds
+    = \frac{\Gamma(2\alpha+3)}{(\alpha+1)^2 \cdot \Gamma(k + 2\alpha + 2)}.
+  \end{equation}
+
+  \textit{Step 3: Compute $M = k \cdot J / I$.}
+  \begin{align}
+    M &= k \cdot \frac{\Gamma(2\alpha+3) \cdot \Gamma(k+2\alpha+1)}
+         {(\alpha+1)^2 \cdot \Gamma(2\alpha+1) \cdot \Gamma(k+2\alpha+2)} \\
+      &= k \cdot \frac{(2\alpha+2)(2\alpha+1)}{(\alpha+1)^2 \cdot (k+2\alpha+1)} \\
+      &= \frac{2k(2\alpha+1)}{(\alpha+1)(k+2\alpha+1)}. \qedhere
+  \end{align}
+\end{proof}
+
+\begin{lemma}[Rigorous bound: $M(F_{1/2}, 7) > 2$]
+  \label{lem:M-rigorous}
+  For $\alpha = 1/2$ and $k = 7$:
+  \begin{equation}
+    M(F_{1/2}, 7) = \frac{56}{27} = 2\tfrac{2}{27} > 2.
+  \end{equation}
+\end{lemma}
+
+\begin{proof}
+  Direct substitution into \eqref{eq:M-closed-form}:
+  \begin{equation}
+    M = \frac{2 \cdot 7 \cdot 2}{(3/2) \cdot 9}
+      = \frac{28}{27/2} = \frac{56}{27}.
+  \end{equation}
+  Since $56 = 27 \cdot 2 + 2$, we have $56/27 = 2 + 2/27 > 2$.
+\end{proof}
+
+\begin{remark}[Scaling with $k$]
+  \label{rem:asymptotic}
+  From the closed form \eqref{eq:M-closed-form}, for fixed $\alpha > 0$:
+  \begin{equation}
+    M(F_\alpha, k) \to \frac{2(2\alpha+1)}{\alpha+1} \quad \text{as } k \to \infty.
+  \end{equation}
+  For $\alpha = 1/2$: $M \to 8/3 \approx 2.667$ as $k \to \infty$.
+  The critical $k$ where $M = 2$ is $k = 2\alpha + 3 + 1/\alpha$; for $\alpha = 1/2$, this gives $k = 6$.
+
+  For bounded prime gaps via Theorem~\ref{thm:maynard-main} with $m = 2$,
+  we require $M > 2$, which is achieved for $k \geq 7$ by the closed form.
+  For larger $k$, the formula predicts $M(F_{1/2}, 50) = 100/39 \approx 2.56$;
+  see Section~\ref{sec:numerical} for supplementary numerical experiments.
+\end{remark}
+
+\begin{remark}[Dependence on parameters]
+  The value of $M(\tilde{F}_{\mathrm{spec}})$ depends on $(K, \tau, \epsilon, k)$.
+  Parameter optimization is a numerical problem: larger $K$ increases the
+  weight kernel spread, while smaller $\tau$ concentrates the Gaussian.
+  The trade-off determines the optimal $M$ for each $k$.
+\end{remark}

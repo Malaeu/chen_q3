@@ -1,0 +1,145 @@
+% The Maynard-Tao Sieve
+% =====================
+
+\section{The Maynard--Tao Sieve}
+\label{sec:maynard}
+
+We recall the essential definitions and results from \cite{Maynard2015, Polymath2014}.
+
+\subsection{Admissible Tuples}
+
+\begin{definition}
+  A $k$-tuple $\mathcal{H} = \{h_1, \ldots, h_k\}$ of distinct integers
+  is \emph{admissible} if for every prime $p$,
+  $|\mathcal{H} \bmod p| < p$.
+\end{definition}
+
+\subsection{Sieve Weights}
+
+Let $\mathcal{H} = \{h_1, \ldots, h_k\}$ be admissible.
+Fix a smooth function $F : [0,1]^k \to \R$ supported on the simplex
+$\Delta_k = \{t \in [0,1]^k : \sum_i t_i \leq 1\}$.
+
+\begin{definition}[Maynard sieve weights {\cite[Eq.~(2.1)]{Maynard2015}}]
+  \label{def:maynard-weights}
+  Let $R = X^{\theta/(2k)}$ where $\theta < 1$ is the level of distribution.
+  The sieve weights are defined as
+  \begin{equation}
+    \label{eq:lambda-maynard}
+    \lambda_{d_1,\ldots,d_k} := \mu(d_1) \cdots \mu(d_k) \cdot
+      F\biggl(\frac{\log d_1}{\log R}, \ldots, \frac{\log d_k}{\log R}\biggr)
+  \end{equation}
+  for squarefree $d_i \mid P(R)$, and zero otherwise.
+\end{definition}
+
+\begin{remark}
+  The M\"obius factors $\mu(d_i)$ ensure the sieve inclusion-exclusion
+  structure. The function $F$ encodes the weight profile.
+\end{remark}
+
+\subsection{Sieve Sums}
+
+Let $\lambda_{d_1,\ldots,d_k}$ be defined as in \eqref{eq:lambda-maynard}.
+
+\begin{definition}
+  The sieve sums are
+  \begin{align}
+    \Sone &= \sum_{n \sim X} \Bigl(
+      \sum_{\substack{d_1,\ldots,d_k \\ d_i \mid n+h_i}}
+      \lambda_{d_1,\ldots,d_k}
+    \Bigr)^2, \\
+    \Stwo &= \sum_{n \sim X} \Bigl(
+      \sum_{\substack{d_1,\ldots,d_k \\ d_i \mid n+h_i}}
+      \lambda_{d_1,\ldots,d_k}
+    \Bigr)^2 \cdot \nu_{\mathcal{H}}(n),
+  \end{align}
+  where $\nu_{\mathcal{H}}(n) = \#\{i : n+h_i \text{ is prime}\}$.
+\end{definition}
+
+\begin{definition}
+  The \emph{empirical sieve ratio} is $R_{\mathcal{H}}(X) := \Stwo / \Sone$.
+\end{definition}
+
+\begin{remark}
+  We reserve $M(F)$ for the variational functional (Definition~\ref{def:variational-functionals}),
+  which is related to $R_{\mathcal{H}}(X)$ asymptotically by Theorem~\ref{thm:maynard-asymptotic}.
+\end{remark}
+
+\subsection{Main Theorem of Maynard}
+
+\begin{theorem}[Maynard \cite{Maynard2015}]
+  \label{thm:maynard-main}
+  Let $F$ be a smooth function on $\Delta_k$ with $M(F) > m$ (in the sense
+  of Definition~\ref{def:variational-functionals}). Then for any admissible
+  $k$-tuple $\mathcal{H}$:
+  \begin{equation}
+    \liminf_{n \to \infty} (p_{n+m} - p_n) \leq \max \mathcal{H} - \min \mathcal{H}.
+  \end{equation}
+\end{theorem}
+
+\begin{corollary}
+  \label{cor:maynard-m2}
+  If $M(F) > 2$ for some admissible $F$, then
+  $\liminf_{n \to \infty} (p_{n+1} - p_n) < \infty$.
+\end{corollary}
+
+\subsection{Variational Formulation}
+
+\begin{definition}[Variational functionals {\cite[Sec.~2]{Maynard2015}}]
+  \label{def:variational-functionals}
+  For smooth $F : [0,1]^k \to \R$ supported on $\Delta_k$, define:
+  \begin{align}
+    I_k(F) &:= \int_{\Delta_k} F(t)^2 \, dt, \\
+    J_k^{(m)}(F) &:= \int_{\Delta_{k-1}}
+      \biggl(\int_0^{1-\sum_{i \neq m} t_i} F(t) \, dt_m\biggr)^2 dt_{-m},
+  \end{align}
+  where $\Delta_{k-1}$ denotes the $(k-1)$-simplex and $dt_{-m}$ integrates
+  over all variables except $t_m$.
+\end{definition}
+
+\begin{definition}[Variational functional $M(F)$ {\cite[Sec.~2]{Maynard2015}}]
+  \label{def:M-variational}
+  For smooth $F : [0,1]^k \to \R$ supported on $\Delta_k$, define
+  \begin{equation}
+    \label{eq:M-variational}
+    M(F) := \frac{\sum_{m=1}^k J_k^{(m)}(F)}{I_k(F)}.
+  \end{equation}
+  Equivalently, using integration by parts:
+  \begin{equation}
+    \label{eq:M-gradient}
+    M(F) = \frac{\displaystyle\int_{\Delta_k}
+      \Bigl(\sum_{j=1}^k \frac{\partial F}{\partial t_j}\Bigr)^2 dt}
+      {\displaystyle\int_{\Delta_k} F(t)^2 \, dt}.
+  \end{equation}
+\end{definition}
+
+\begin{theorem}[Variational admissibility conditions {\cite[Sec.~2--3]{Maynard2015}}]
+  \label{thm:maynard-variational}
+  Let $F : [0,1]^k \to \R$ satisfy:
+  \begin{enumerate}
+    \item[\textnormal{(i)}] $F \in C^1([0,1]^k)$ (continuous differentiability);
+    \item[\textnormal{(ii)}] $\supp(F) \subseteq \Delta_k$ (simplex support);
+    \item[\textnormal{(iii)}] $F \geq 0$ (non-negativity);
+    \item[\textnormal{(iv)}] $F$ is symmetric under permutations of coordinates.
+  \end{enumerate}
+  Then the Maynard sieve machinery applies: weights $\lambda_{d_1,\ldots,d_k}$
+  defined by \eqref{eq:lambda-maynard} yield the asymptotic formula
+  $\Stwo/\Sone = (\theta/2) M(F) + o(1)$ as $X \to \infty$.
+\end{theorem}
+
+\begin{theorem}[Asymptotic sieve ratio {\cite[Theorem~3.1]{Maynard2015}}]
+  \label{thm:maynard-asymptotic}
+  For $F$ satisfying the conditions of Theorem~\ref{thm:maynard-variational}
+  and weights $\lambda_{d_1,\ldots,d_k}$ defined by \eqref{eq:lambda-maynard},
+  \begin{equation}
+    \label{eq:sieve-ratio-asymptotic}
+    \frac{\Stwo}{\Sone} = \frac{\theta}{2} \cdot M(F) + o(1)
+    \quad \text{as } X \to \infty,
+  \end{equation}
+  where $\theta$ is the level of distribution (under Bombieri--Vinogradov, $\theta = 1/2$).
+\end{theorem}
+
+\begin{theorem}[Maynard bound]
+  \label{thm:maynard-bound}
+  $\sup_F M(F) \geq \log k - 2\log\log k - O(1)$ as $k \to \infty$.
+\end{theorem}

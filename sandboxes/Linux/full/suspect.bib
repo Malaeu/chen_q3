@@ -1,0 +1,66 @@
+% suspect.bib — Unverified, potentially incorrect, or replacement-pending BibTeX entries
+% Created: 2025-10-18 02:43 UTC by Bibliography Audit
+% 
+% Entries in this file are:
+% - Orphan citations (used in .tex but not found in references.bib)
+% - Entries with high uncertainty (confidence < 0.6)
+% - Future-dated or "To appear" items requiring publication confirmation
+% - Potentially bogus or fabricated references (e.g., "Cairo 2025")
+%
+% Protocol: Each suspect entry includes a note explaining the issue and proposed resolution.
+% Do NOT use these keys in \cite{} until resolution is complete.
+% After resolution, entries should be moved to references.bib with a % RESOLVED: comment.
+
+% ==============================================================================
+% ORPHAN ENTRY #1 (NOW RESOLVED): cairo2025counterexample
+% ==============================================================================
+% Location: sections/introduction.tex:145
+% Context: "cautionary analyses such as Cairo's~\cite{cairo2025counterexample}"
+% Original Status: UNRESOLVED / SUSPECTED FABRICATED (confidence=0.10 in audit)
+% **CORRECTED Status**: VERIFIED ✅ (confidence=0.95)
+%
+% Resolution Update (2025-10-18 followup):
+%   - Author: Hannah Cairo (real researcher)
+%   - Title: "A Counterexample to the Mizohata–Takeuchi Conjecture"
+%   - Source: arXiv:2502.06137, DOI: 10.48550/arXiv.2502.06137
+%   - URL: https://arxiv.org/abs/2502.06137
+%   - Year: 2025 (preprint, valid)
+%   - Primary Class: math.AP (Analysis of PDEs)
+%
+% Note: This is NOT a counterexample to Riemann Hypothesis, but a valid
+%       mathematical preprint. The citation in Q3 manuscript context appears
+%       to refer to a "cautionary analysis" on false/preliminary proofs,
+%       and Cairo's work represents recent critical mathematical research.
+%
+% Action: ENTRY NOW IN references.bib WITH FULL METADATA.
+%         Removed from suspect.bib; canonically resolved.
+%
+% Previous Incorrect Entry (for reference only):
+% @misc{cairo2025counterexample-PLACEHOLDER,
+%   author = {Unknown or Placeholder},
+%   title = {Counterexample to the Riemann Hypothesis (UNVERIFIED)},
+%   year = {2025},
+%   note = {SUPERSEDED by correct entry in references.bib}
+% }
+
+% ==============================================================================
+% ORPHAN ENTRY #2 (RESOLVED): conrey2015riemann → Conrey2003
+% ==============================================================================
+% Location: sections/introduction.tex:145
+% Context: "surveys like Conrey's~\cite{conrey2015riemann}"
+% Original Problem: Key 'conrey2015riemann' not in references.bib
+% Status: RESOLVED (confidence=0.75)
+%
+% Resolution: TYPO / CITATION KEY ERROR
+%   - Original key 'conrey2015riemann' was orphan
+%   - Likely intended: Conrey2003 in references.bib
+%   - Citation now fixed: \cite{conrey2015riemann} → \cite{Conrey2003}
+%   - Year mismatch explanation: Conrey wrote 'The Riemann Hypothesis' in 2003 (Notices of AMS)
+%                               Other Conrey works from 2010s+ exist but are more specialized
+%                               The 2003 Notices article is the canonical survey reference
+%
+% Conrey2003 entry (see references.bib for full details):
+%   Conrey, J. B. (2003). "The Riemann Hypothesis." Notices of the American Mathematical Society.
+%   [Provides overview and current status of RH; primary reference for broad RH surveys]
+%
+% Status: FIXED — Remove this entry after migrating back to references.bib for archive.

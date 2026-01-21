@@ -1,0 +1,44 @@
+\subsection{IND/AB: Parameter recipe}\label{sec:ind-ab-params}
+
+\begin{center}
+  \small\textbf{Acceptance parameters (IND/AB)}
+\end{center}
+\begin{center}
+  \small
+  \begin{tabular}{lccp{0.45\textwidth}}
+    \hline
+    Name & Symbol & Range & Role \\
+    \hline
+    Pre-plateau slope & $\alpha$ & $[0,1]$ & Growth before the plateau \\
+    Plateau width & $\beta$ & $(0,\infty)$ & Length of the flat segment \\
+    Onset shift & $\tau$ & $[0,\infty)$ & Position of the plateau window \\
+    Saturation level & $\gamma$ & $(0,1]$ & Upper acceptance bound \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{equation}\label{eq:param_recipe-plateau-defs}
+\mathrm{Plateau}(t;\alpha,\beta,\tau,\gamma)=
+\begin{cases}
+\alpha\,t, & t\le \tau,\\[2pt]
+\gamma, & \tau<t\le \tau+\beta,\\[2pt]
+\max\{\gamma-\alpha\,(t-\tau-\beta),\,0\}, & t>\tau+\beta.
+\end{cases}
+\end{equation}
+
+\begin{lemma}[Plateau schedule is admissible]\label{lem:param_schedule_plateau}
+Let $A(t)=\mathrm{Plateau}(t;\alpha,\beta,\tau,\gamma)$ with
+$0<\alpha\le\gamma\le1$ and $\beta>0$. Then $A$ takes values in $[0,1]$,
+is piecewise Lipschitz, and meets the IND/AB plateau constraints:
+monotonic rise before $\tau$, a flat segment of width $\beta$, and
+compatible one-sided derivatives at the junctions.
+\end{lemma}
+
+\begin{proof}
+On $(-\infty,\tau]$ the function is $A(t)=\alpha t$, so it is increasing and Lipschitz with slope $\alpha$.
+On $(\tau,\tau+\beta]$ we have $A(t)=\gamma$, so $A$ is constant and Lipschitz with slope $0$.
+On $(\tau+\beta,\infty)$ we have $A(t)=\max\{\gamma-\alpha(t-\tau-\beta),0\}$, hence $A$ is nonincreasing
+and Lipschitz with slope in $[-\alpha,0]$. Since $0<\alpha\le\gamma\le1$, all three branches take values in $[0,1]$,
+and the one-sided derivatives at the junctions are $\alpha$ and $0$ at $t=\tau$, and $0$ and $-\alpha$ (or $0$ once the
+floor is active) at $t=\tau+\beta$. This matches the plateau constraints.
+\end{proof}

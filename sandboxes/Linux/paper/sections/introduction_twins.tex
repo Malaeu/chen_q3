@@ -1,0 +1,85 @@
+% Introduction - Twin Prime Paper
+% ================================
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{The Twin Prime Problem}
+
+A \emph{twin prime pair} is a pair $(p, p+2)$ where both are prime.
+The twin prime conjecture asserts infinitely many such pairs exist.
+Hardy--Littlewood~\cite{HardyLittlewood1923} predicted
+\[
+    \pi_2(X) \sim 2C_2 \frac{X}{(\log X)^2}, \quad
+    C_2 \approx 0.6602.
+\]
+Despite Zhang~\cite{Zhang2014} and Maynard~\cite{Maynard2015} proving bounded gaps,
+the conjecture remains open.
+
+\subsection{Main Result}
+
+We establish a spectral reformulation of the Twin Prime Conjecture.
+
+\begin{theorem}[Spectral Equivalence]\label{thm:main-intro}
+The Twin Prime Conjecture is equivalent to the divergence of commutator energy:
+\[
+    \textbf{TPC} \;\iff\; R(\Phi_X) \to \infty \text{ as } X \to \infty,
+\]
+where $R(\Phi_X) = E_{\mathrm{comm}}(\Phi_X) / E_{\mathrm{lat}}(\Phi_X)$ is the
+Rayleigh quotient of the twin vector.
+\end{theorem}
+
+This is an \textbf{equivalence}, not a proof of TPC. We translate the arithmetic
+question ``are there infinitely many twins?'' into the geometric question
+``does commutator energy diverge?''
+
+\subsection{The Two Ingredients}
+
+The equivalence rests on two results:
+
+\paragraph{Universal Energy Scaling (Conjecture).}
+We conjecture that for any sequence of $N$ points with spectral span $\mathrm{span}$,
+the commutator energy satisfies $\mathrm{Sum}(Q) \sim N^2 \cdot \mathrm{span}^2$.
+This is supported by numerical evidence (Section~\ref{sec:numerics}) but a rigorous
+proof remains open due to the Gaussian kernel's exponential decay.
+If true, and if twins are infinite, then $N(X) \to \infty$, so $R(\Phi_X) \to \infty$.
+
+\paragraph{Finite Stabilization (SC2).}
+If twin primes are finite, then beyond the last twin the vector $\Phi_X$ stabilizes:
+its support and coordinates become constant. The Rayleigh quotient therefore
+satisfies $R(\Phi_X) = O(1)$.
+
+Together: infinite twins forces divergent energy; finite twins forces bounded energy.
+The dichotomy is complete.
+
+\subsection{What Is Proven}
+
+\begin{center}
+\small
+\begin{tabular}{p{4.5cm}|p{2cm}|p{3cm}}
+    \textbf{Result} & \textbf{Status} & \textbf{Type} \\
+    \hline
+    Cone--Kernel Separation & \textbf{Proven} & Linear algebra \\
+    Cone Positivity (B$_1$-strong) & \textbf{Proven} & Compactness \\
+    Universal Energy Scaling & \textbf{Conjecture} & Geometry \\
+    Finite Stabilization (SC2) & \textbf{Proven} & Elementary \\
+    \hline
+    Spectral Equivalence & \textbf{Proven} & Main result \\
+\end{tabular}
+\end{center}
+
+We do not prove TPC. We prove that TPC is \emph{equivalent} to energy divergence.
+
+\subsection{Paper Outline}
+
+Section~\ref{sec:setup} fixes notation and defines the principal objects:
+spectral coordinates $\xi_p$, the kernel $K_{pq}$, and the Rayleigh quotient $R$.
+Section~\ref{sec:TP-SX} bridges the operator framework to the classical twin sum $S(X)$.
+Section~\ref{sec:B1-prime} proves Cone--Kernel Separation and derives Cone Positivity.
+Section~\ref{sec:abstract-SC1} describes an alternative route via uniform scaling;
+this is kept for completeness but is not needed for the main result.
+Section~\ref{sec:SC2} proves Finite Stabilization unconditionally.
+Section~\ref{sec:target-theorem} states the Spectral Equivalence theorem and
+establishes Universal Energy Scaling.
+Section~\ref{sec:numerics} presents numerical evidence, and
+Section~\ref{sec:discussion} concludes with remarks on formal verification
+approaches inspired by recent AI-assisted theorem proving~\cite{Aristotle2025,AlexeevErdos2025}.

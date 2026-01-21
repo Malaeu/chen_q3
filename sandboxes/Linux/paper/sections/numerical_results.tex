@@ -1,0 +1,147 @@
+% Numerical Results
+% =================
+
+\section{Numerical Results (diagnostic only)}\label{app:results}
+
+All computations use parameters $M = 18$, $t = 3.0$, with Python (\texttt{numpy}, \texttt{scipy}).
+Source code in \texttt{src/} directory.
+
+\subsection{RH Verification (diagnostic)}
+
+\begin{table}[H]
+\centering
+\caption{Minimum eigenvalues of $H = T_A - T_P$ for various compact sizes.}
+\label{diag:tab:RH}
+\begin{tabular}{cccc}
+\toprule
+$K$ & Primes & $\lambda_{\min}(H)$ & Status \\
+\midrule
+0.5 & 9      & $-9.8 \times 10^{-11}$ & $\approx 0$ \\
+1.0 & 99     & $-4.7 \times 10^{-10}$ & $\approx 0$ \\
+1.5 & 1,479  & $-7.3 \times 10^{-10}$ & $\approx 0$ \\
+2.0 & 24,976 & $-9.0 \times 10^{-10}$ & $\approx 0$ \\
+2.5 & 453,424 & $-1.2 \times 10^{-9}$ & $\approx 0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All eigenvalues are within machine precision of zero, numerically consistent with the Weil criterion for RH.
+
+\subsection{GRH and Class Decomposition (diagnostic)}
+
+\begin{table}[H]
+\centering
+\caption{Eigenvalues for GRH operators ($K = 2.0$).}
+\label{diag:tab:GRH}
+\begin{tabular}{ccc}
+\toprule
+Operator & $\lambda_{\min}$ & Description \\
+\midrule
+$H$ (RH)        & $-9.0 \times 10^{-10}$ & all primes \\
+$H_\chi$ (GRH)  & $-4.5 \times 10^{-15}$ & $\chi_4$ twist \\
+$H_+$           & $-3.7 \times 10^{-15}$ & $p \equiv 1 \pmod{4}$ \\
+$H_-$           & $-2.3 \times 10^{-13}$ & $p \equiv 3 \pmod{4}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Twin Prime Coherence (conditional/numerical)}
+
+\begin{table}[H]
+\centering
+\caption{Phase deviation for anti-diagonal modes ($K = 2.0$, 1,393 twins).}
+\label{diag:tab:twin}
+\begin{tabular}{ccc}
+\toprule
+Mode $(k, -k)$ & std($\phi$) & Coherence \\
+\midrule
+$(1, -1)$ & $0.69^\circ$ & strong \\
+$(2, -2)$ & $1.39^\circ$ & strong \\
+$(4, -4)$ & $2.77^\circ$ & strong \\
+$(8, -8)$ & $5.54^\circ$ & moderate \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Diagonal modes $(k, k)$ show std($\phi$) $\approx 90^\circ$ (random phases).
+
+\subsection{Twin-restricted sum $Z_{\mathrm{twins}}$ (diagnostic)}
+
+Using all twin primes up to $X=10^7$ (58{,}980 pairs) we formed
+\[
+  Z_{\mathrm{twins}}(X)=\sum_{\substack{p\le X\\ p,p+2\,\text{prime}}} \frac{\log p}{\sqrt p}\,e^{i\log p}.
+\]
+Because the twin Dirichlet series has no pole at $s=1$, this sum has no main term. Numerically $|Z_{\mathrm{twins}}(X)|$ grows from $\approx 2.6$ at $X=10^2$ to $\approx 2.4\times 10^2$ at $X=10^7$, exhibiting steady increase (see Figure~\ref{fig:twin-Z-growth}). A sliding-log energy $E(T)=\frac1T\int_T^{2T}|Z_{\mathrm{twins}}(e^t)|^2\,dt$ rises from $\sim 7$ at small $T$ to $\sim 5\times10^4$ near $X=10^7$ (Figure~\ref{fig:twin-energy}). These diagnostics illustrate positivity of the twin-restricted signal but remain outside the proof.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.48\textwidth]{figures/twin_Z_growth.png}\hfill
+  \includegraphics[width=0.48\textwidth]{figures/twin_energy_bins.png}
+  \caption{Left: $|Z_{\mathrm{twins}}(X)|$ up to $10^7$. Right: energy bins $E$ vs $X=e^t$ (log--log).}
+  \label{diag:fig:twin-Z-growth}
+  \label{diag:fig:twin-energy}
+\end{figure}
+
+\subsection{Zeros-only energy functional (diagnostic)}
+
+Let $\gamma_n$ be the imaginary parts of the nontrivial zeros of $\zeta$. For a Gaussian window
+$g_{\alpha,\sigma}(x) = \exp\bigl(-\sigma^2(x-\alpha)^2\bigr)$ and cutoff $T$, define
+\begin{align*}
+  D(T) &:= \sum_{\gamma_n \le T} g_{\alpha,\sigma}(\gamma_n),\\
+  O(T) &:= \sum_{\substack{\gamma_m,\gamma_n \le T\\ m\ne n}}
+           g_{\alpha,\sigma}(\gamma_m)^{1/2} g_{\alpha,\sigma}(\gamma_n)^{1/2}
+           \frac{\sin(T(\gamma_m-\gamma_n))}{T(\gamma_m-\gamma_n)},\\
+  E(T) &:= D(T)+O(T).
+\end{align*}
+With a modest cutoff $T=50{,}000$, window width $\sigma=0.005$ (std. $\approx 200$) and the first $10^4$ zeros,
+the diagonal term dominates:
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$T$ & $D(T)$ & $O(T)$ & $E(T)$ & $|O|/D$ \\
+\midrule
+100   & $2.70\times 10^{-1}$ & $-2.2\times 10^{-4}$ & $2.70\times 10^{-1}$ & $10^{-3}$ \\
+1{,}000 & $2.44\times 10^{2}$ & $-1.9\times 10^{-2}$ & $2.44\times 10^{2}$ & $10^{-4}$ \\
+50{,}000& $2.44\times 10^{2}$ & $1.7\times 10^{-4}$ & $2.44\times 10^{2}$ & $10^{-6}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Scanning the window center $\alpha$ (same $\sigma$, $T=50{,}000$) keeps $E>0$ with tiny off-diagonal mass:
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$\alpha$ & $D$ & $|O|$ & $E$ & $|O|/D$ \\
+\midrule
+100  & 124.88 & $4.8\times10^{-4}$ & 124.88 & $3.8\times10^{-6}$ \\
+500  & 244.25 & $1.7\times10^{-4}$ & 244.25 & $6.9\times10^{-7}$ \\
+5{,}000 & 376.82 & $5.8\times10^{-4}$ & 376.82 & $1.5\times10^{-6}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+For a larger set of $200{,}000$ zeros we estimate $O$ via $10^6$ random pairs (quadratic summation is infeasible). At $\alpha=10^4$ we obtain $D\approx 416$, $O\approx -3.9\times10^{-2}\pm3.7\times10^{-2}$, so $|O|/D\approx 9\times10^{-5}$; at $\alpha=50{,}000$, $D\approx 253$, $|O|/D\approx 6\times10^{-5}$. These diagnostics support the positivity of the zeros-only kernel but are not used in the proof.
+
+\subsection{Two-Particle Operators (conditional/numerical)}
+
+\begin{table}[H]
+\centering
+\caption{Two-particle operator eigenvalues.}
+\label{diag:tab:two-particle}
+\begin{tabular}{cccc}
+\toprule
+$K$ & Twins & $\lambda_{\min}(A^{(2)})$ & $\lambda_{\min}(V_{\text{twins}})$ \\
+\midrule
+0.5 & 2    & $-1.9 \times 10^{-10}$ & $\geq 0$ \\
+1.0 & 23   & $-9.0 \times 10^{-10}$ & $\geq 0$ \\
+1.5 & 172  & $-1.4 \times 10^{-9}$  & $\geq 0$ \\
+2.0 & 1,393 & $-1.8 \times 10^{-9}$ & $\geq 0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Interpretation}
+
+\textbf{Numerical vs Proof:}
+These diagnostics check $H \geq 0$ and $H_\chi \geq 0$ on finite compacts $K \leq 2.5$. They are \emph{not} part of the proof; a proof requires the analytic arguments in Sections~\ref{sec:A3}--\ref{sec:T5}. The values come from scripts (Appendix~C) and are provided for reproducibility only.
+
+\textbf{Twin prime implications:}
+The anti-diagonal coherence and antiferromagnetic order are structural properties of twins in the Q3 framework. They suggest twins occupy a low-dimensional subspace in Fourier space, but do not imply infinitude.
