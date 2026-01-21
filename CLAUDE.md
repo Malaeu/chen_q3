@@ -135,7 +135,17 @@ have hδ2 : δ ≤ δ_heat := le_trans (min_le_right _ _) (min_le_left _ _)
 -- nlinarith съест всё
 ```
 
-### D) Sorry Triage Template
+### D) Quick Dependency Graph
+
+```bash
+# Построить граф импортов (требует graphviz)
+lake env lean --deps Q3/Main.lean 2>/dev/null | dot -Tpng -o deps.png
+
+# Или текстовый список
+rg "^import" Q3/ -t lean | sort | uniq -c | sort -rn
+```
+
+### E) Sorry Triage Template
 
 | Priority | Criterion | Action |
 |----------|-----------|--------|
@@ -143,6 +153,19 @@ have hδ2 : δ ≤ δ_heat := le_trans (min_le_right _ _) (min_le_left _ _)
 | P1 | Имеет downstream dependencies | Закрыть до зависимых |
 | P2 | Изолированный, простой | Batch-закрытие |
 | P3 | Требует новую теорию | Отложить / axiom временно |
+
+### F) Автоматизация поиска I/O
+
+```bash
+# Найти все sorry с их контекстом
+rg -n -B5 "sorry" Q3/ -t lean | head -100
+
+# Найти hypotheses в scope (ищи have/let перед sorry)
+rg -n -B10 "sorry" FILE.lean | rg "have|let|obtain"
+
+# GitHub indexing trigger (для repo search)
+repo:{username/repo_name} import
+```
 
 ---
 
@@ -309,6 +332,32 @@ Files created:
 | C_SB | 4 | Szegő-Böttcher |
 | t_sym | 3/50 | Symbol heat param |
 | t_rkhs | ≥ 1 | RKHS threshold |
+
+---
+
+## GIT COMMIT PROTOCOL
+
+- **COMMIT FORMAT:** `[AI-name] Clear message` (в root) или `[SandboxName][AI-name] Message` (в sandbox)
+  
+  | AI Tool | Tag |
+  |---------|-----|
+  | Claude Code | `AI-cc` |
+  | OpenAI Codex | `AI-codex` |
+  | Cursor | `AI-cursor` |
+  | Other | `AI-agent` |
+
+- **Examples:**
+  ```bash
+  # Root repo:
+  git commit -m "[AI-cc] Close A1_density axiom (7->6)"
+  
+  # From sandbox:
+  git commit -m "[Linux][AI-cc] Fix HeatError lemma"
+  ```
+
+- **ALWAYS** include axiom count change in message if relevant: `(7->6 axioms)`
+- **ALWAYS** pull with rebase after committing: `git pull --rebase`
+- **ALWAYS** push after pulling: `git push`
 
 ---
 
