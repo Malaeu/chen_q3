@@ -1,0 +1,68 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#E3F2FD', 'primaryTextColor': '#1565C0', 'primaryBorderColor': '#1565C0', 'lineColor': '#424242', 'secondaryColor': '#FCE4EC', 'tertiaryColor': '#FFF3E0'}}}%%
+flowchart TB
+    subgraph BASE["БАЗОВЫЕ КОНСТАНТЫ"]
+        direction LR
+        a_vals["a(1/2) ≈ 2.508<br/>a(3/2) ≈ 1.115<br/>a(5/2) ≈ 0.864"]
+        t_sym["t_sym = 3/50<br/>= 0.06"]
+        B_min["B_min = 3"]
+    end
+
+    subgraph L819["Lemma 8.19<br/>ERS=223.8 ⚠️ HARD"]
+        c_star["c_* = 11/10<br/>= 1.1<br/>Archimedean floor"]
+    end
+
+    subgraph L830["Lemma 8.30<br/>ERS=108.0 ⚠️ HARD"]
+        C_SB["C_SB = 4<br/>Szegő-Böttcher"]
+    end
+
+    subgraph L924["Lemma 9.24<br/>ERS=25.2"]
+        rho_1["ρ(1) < 1/25<br/>= 0.04<br/>Prime cap"]
+    end
+
+    subgraph C821["Corollary 8.21<br/>ERS=150.6"]
+        M_0["M_0^{unif}<br/>= ⌈C_SB·L_*/c_*⌉<br/>Discretisation"]
+    end
+
+    subgraph C822["Corollary 8.22<br/>ERS=134.7"]
+        t_rkhs["t^{unif}_{*,rkhs} = 1<br/>RKHS scale"]
+    end
+
+    subgraph T835["Theorem 8.35<br/>ERS=351.6 🎯 MAX"]
+        margin["λ_min ≥ c_*/4<br/>= 11/40 = 0.275<br/>A3 bridge margin"]
+    end
+
+    subgraph T114["Theorem 11.4<br/>ERS=245.8"]
+        Q_pos["Q(Φ) ≥ 0<br/>Main positivity"]
+    end
+
+    subgraph T112["Theorem 11.2"]
+        RH["RIEMANN<br/>HYPOTHESIS"]
+    end
+
+    %% Dependencies
+    a_vals --> c_star
+    t_sym --> c_star
+    B_min --> c_star
+
+    c_star --> M_0
+    C_SB --> M_0
+    t_sym --> M_0
+
+    rho_1 --> t_rkhs
+    c_star --> t_rkhs
+
+    c_star --> margin
+    M_0 --> margin
+    t_rkhs --> margin
+    C_SB --> margin
+
+    margin --> Q_pos
+    Q_pos --> RH
+
+    %% Styling
+    style c_star fill:#FFCDD2,stroke:#D32F2F,stroke-width:2px
+    style margin fill:#FFCDD2,stroke:#D32F2F,stroke-width:2px
+    style Q_pos fill:#FFE0B2,stroke:#F57C00,stroke-width:2px
+    style RH fill:#C8E6C9,stroke:#388E3C,stroke-width:3px
+    style C_SB fill:#E1BEE7,stroke:#7B1FA2,stroke-width:2px
+    style rho_1 fill:#B3E5FC,stroke:#0288D1,stroke-width:2px

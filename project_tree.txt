@@ -1,0 +1,168 @@
+chen_q3/
+├── 📋 Project Config
+│   ├── CLAUDE.md                    # Проектная память (start here!)
+│   ├── AGENTS.md                    # Описание AI агентов
+│   ├── TASK.md                      # Текущие задачи
+│   ├── README.md                    # Общее описание
+│   ├── pyproject.toml               # Python deps (uv)
+│   └── uv.lock                      # Lock file
+│
+├── 🎯 full/ — ГЛАВНАЯ РАБОЧАЯ ДИРЕКТОРИЯ
+│   │
+│   ├── q3.lean.aristotle/           # ⭐ Lean формализация (основной фокус)
+│   │   ├── PROJECT_ORCHESTRATOR.md  # ЕДИНАЯ ТОЧКА ВХОДА (читать первым!)
+│   │   ├── PHILOSOPHY_OF_PROOF.md   # Философия: no sorry, no axiom proliferation
+│   │   ├── PROJECT_ASCII.md         # ASCII диаграмма зависимостей
+│   │   ├── WORKFLOW_CHECKLIST.md    # Чеклист для коммитов
+│   │   ├── ARISTOTLE_SANDBOX_GUIDE.md # Как работать с Aristotle
+│   │   │
+│   │   ├── Q3/                      # Исходники Lean
+│   │   │   ├── Main.lean            # Главная теорема RH_of_Weil_and_Q3
+│   │   │   ├── Axioms.lean          # Определения аксиом (Level 1/2)
+│   │   │   ├── AxiomsTheorems.lean  # Проводка аксиом → теорем
+│   │   │   ├── Definitions.lean     # Q, Wₖ, атомы и т.д.
+│   │   │   ├── Bridges.lean         # Мосты между модулями
+│   │   │   └── Proofs/              # Доказательства модулей
+│   │   │       ├── A1_density.lean
+│   │   │       ├── A2_Lipschitz.lean
+│   │   │       ├── A3_floor.lean
+│   │   │       ├── T0_normalization.lean
+│   │   │       ├── T5_transfer.lean
+│   │   │       ├── Schur.lean
+│   │   │       └── Weil_criterion.lean
+│   │   │
+│   │   ├── aristotle_input/         # Промпты для Aristotle
+│   │   │   ├── ARISTOTLE_PROMPT_GUIDELINES.md  # ⚠️ ЧИТАТЬ ПЕРЕД КАЖДЫМ ПРОМПТОМ!
+│   │   │   └── project_ids.txt      # UUID проектов
+│   │   │
+│   │   ├── aristotle_output/        # Результаты Aristotle
+│   │   │   └── weight_sum_variants/ # Анализ 7 вариантов от Прошки
+│   │   │       └── ANALYSIS.md      # Ключевые инсайты
+│   │   │
+│   │   ├── aristotle_db/            # База mgrep (643 файла)
+│   │   ├── docs/                    # Документация проекта
+│   │   │   ├── ERRORS_DESTROYER.md # ⚠️ Разбор прошлых ошибок
+│   │   │   └── claude_*.md          # Беседы с Claude
+│   │   │
+│   │   ├── scripts/
+│   │   │   └── check_axioms.sh      # Автопроверка аксиом
+│   │   │
+│   │   ├── sandboxes/               # Изолированные тесты
+│   │   └── lakefile.lean            # Конфиг Lake build
+│   │
+│   ├── sections/                    # LaTeX модули (для Прошки)
+│   │   ├── T0.tex                   # Нормировка ξₙ
+│   │   ├── A1prime.tex              # Плотность конуса
+│   │   ├── A2.tex                   # Липшиц Q
+│   │   ├── A3/
+│   │   │   ├── symbol_floor.tex     # P_A ≥ 11/10
+│   │   │   ├── rayleigh_bridge.tex  # Toeplitz-Rayleigh мост
+│   │   │   ├── matrix_guard.tex     # Дискретизация
+│   │   │   ├── arch_bounds.tex      # Архимедовы bounds
+│   │   │   └── fejer_modulus.tex    # Модуль непрерывности
+│   │   ├── RKHS/
+│   │   │   ├── prime_cap.tex        # ρ(1) < 1/25
+│   │   │   └── prime_norm_leq_rho.tex # ‖T_P‖ ≤ ρ
+│   │   ├── T5/
+│   │   │   └── compact_transfer.tex # Трансфер теорема
+│   │   ├── Main_closure.tex         # Closure аргумент
+│   │   └── Weil_linkage.tex         # Q ≥ 0 ⇔ RH
+│   │
+│   ├── paper1_fejer_heat/           # Статья 1: Fejér-heat
+│   ├── paper2_toeplitz_rkhs/        # Статья 2: Toeplitz RKHS
+│   ├── paper3_rh_synthesis/         # Статья 3: RH синтез
+│   ├── paper3_weil_rh/              # Статья 3: Weil-RH связь
+│   │
+│   ├── figures/                     # Графика (TikZ, pgfplots)
+│   ├── docs/                        # Литература и заметки
+│   └── scripts/                     # Вспомогательные скрипты
+│
+├── 📚 docs/ — Архив беседы и инсайтов
+│   ├── 2025-12-16-conversations/    # Беседы Декабрь
+│   ├── 2026-01-15-conversations_prowka_a3/ # Беседы с Прошкой
+│   ├── opus4.5/                     # Работа с Opus 4.5
+│   ├── model_b1_twins_v2_07_12_2025/ # Twin primes
+│   ├── Paper_RH/                    # Статьи про RH
+│   ├── insights/                    # Математические инсайты
+│   ├── Как работают модели типа Аристотель/ # Аристотель документация
+│   └── [много других архивов]
+│
+├── 🗃️ archive/ — Старые версии
+│   ├── aristotle_root/              # Старые Aristotle проекты
+│   ├── latex_aux/                   # LaTeX временные файлы
+│   ├── legacy_tools/                # Устаревшие инструменты
+│   └── subprojects/                 # Подпроекты (AFM, twins и т.д.)
+│
+├── 🐍 src/ — Python tools (если есть)
+│   └── core/                        # Утилиты Python
+│
+├── 🧪 sandboxes/ — Изолированные эксперименты
+├── 📜 scripts/ — Вспомогательные скрипты
+├── 📊 research_swarm/ — Swarm агенты для исследования
+├── 🔬 sandbox_tasks/ — Задачи для песочниц
+├── 📁 output/ — Выходные файлы
+├── 📄 paper/ — Статья (черновики)
+└── 🔐 .venv/ — Virtual environment (Python 3.13 + uv)
+
+
+═══════════════════════════════════════════════════════════════
+📍 КРИТИЧЕСКИЕ ФАЙЛЫ (start here):
+═══════════════════════════════════════════════════════════════
+
+1. /full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
+   ↳ ЕДИНАЯ ТОЧКА ВХОДА для работы
+
+2. /CLAUDE.md
+   ↳ Проектная память (этот файл)
+
+3. /full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md
+   ↳ Философия: no sorry, no axiom proliferation
+
+4. /full/q3.lean.aristotle/Q3/Main.lean
+   ↳ Главная теорема: RH_of_Weil_and_Q3
+
+5. /full/q3.lean.aristotle/docs/ERRORS_DESTROYER.md
+   ↳ ⚠️ Разбор прошлых ошибок (читать перед PR!)
+
+6. /full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md
+   ↳ ⚠️ Правила промптов для Aristotle
+
+═══════════════════════════════════════════════════════════════
+🎯 ТЕКУЩАЯ ЗАДАЧА:
+═══════════════════════════════════════════════════════════════
+
+Axiom Count: 11 → target 8-9 (Level 2 axioms)
+
+Active:
+1. A1_density_WK → 1 sorry: h_approx (triangle inequality)
+2. A3_bridge_axiom → prove via A3_FLOOR + Szegő (BLOCKED on Szegő)
+3. Q_nonneg → rewrite after A3 closed (BLOCKED)
+
+═══════════════════════════════════════════════════════════════
+🛠️ ИНСТРУМЕНТЫ:
+═══════════════════════════════════════════════════════════════
+
+# Build & Check
+cd /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
+lake build Q3.Main
+./scripts/check_axioms.sh
+
+# Semantic Search
+q3search "твой запрос" -c       # поиск по базе (643 файла)
+websearch "вопрос"              # AI web search
+
+# Aristotle
+source /media/chirurgie/hdd01/Soft/GitHub/chen_q3/.venv/bin/activate
+aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
+
+═══════════════════════════════════════════════════════════════
+📊 СТАТИСТИКА:
+═══════════════════════════════════════════════════════════════
+
+- Axioms: 11 (Standard: 3, Level 1: 6, Level 2: 2)
+- Lean files: ~30 в Q3/
+- LaTeX modules: ~20 в sections/
+- База mgrep: 643 файла в aristotle_db/
+- Aristotle sessions: см. project_ids.txt
+
+═══════════════════════════════════════════════════════════════

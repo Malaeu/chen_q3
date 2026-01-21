@@ -1,0 +1,60 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#E3F2FD', 'primaryTextColor': '#1565C0', 'primaryBorderColor': '#1565C0', 'lineColor': '#F44336', 'secondaryColor': '#FCE4EC', 'tertiaryColor': '#FFF3E0'}}}%%
+flowchart TB
+    subgraph Phase1["ФАЗА 1: Базовые леммы"]
+        L8_12["lemma_8_12<br/>Core contribution<br/>ERS=100.8"]
+        L8_13["lemma_8_13<br/>Shift-robust core mass<br/>ERS=40.3"]
+        L8_15["lemma_8_15<br/>Core slope bound<br/>ERS=36.0"]
+        L8_17["lemma_8_17<br/>Log growth bound<br/>ERS=57.6"]
+        L8_18["lemma_8_18<br/>Sample-point bounds<br/>ERS=16.2"]
+        L8_30["lemma_8_30<br/>Szegő-Böttcher<br/>ERS=108.0<br/>⚠️ HARD"]
+    end
+
+    subgraph Phase2["ФАЗА 2: Промежуточные"]
+        L8_14["lemma_8_14<br/>Archimedean floor<br/>ERS=132.5"]
+        T9_6["thm_9_6<br/>Strict contraction<br/>ERS=96.1<br/>⚠️ HARD"]
+    end
+
+    subgraph Phase3["ФАЗА 3: Ключевая лемма"]
+        L8_19["lemma_8_19<br/>Uniform Archimedean floor<br/>c_* = 11/10<br/>ERS=223.8<br/>⚠️ HARD<br/>🔑 КЛЮЧЕВАЯ"]
+    end
+
+    subgraph Phase4["ФАЗА 4: Следствия"]
+        C8_21["cor_8_21<br/>Uniform discretisation<br/>ERS=150.6"]
+        C8_22["cor_8_22<br/>Uniform prime cap<br/>ERS=134.7"]
+    end
+
+    subgraph Phase5["ФАЗА 5: A3 Bridge"]
+        T8_35["thm_8_35<br/>Uniform A3 bridge<br/>λ_min ≥ c_*/4<br/>ERS=351.6<br/>⚠️ HARD<br/>🎯 MAX ERS"]
+    end
+
+    subgraph Phase6["ФАЗА 6: Main Positivity"]
+        T11_4["thm_11_4<br/>Main positivity on W<br/>Q(Φ) ≥ 0<br/>ERS=245.8<br/>⚠️ HARD"]
+    end
+
+    subgraph Phase7["ФАЗА 7: RH"]
+        T11_2["thm_11_2<br/>RIEMANN HYPOTHESIS<br/>ERS=76.7<br/>✅ GOAL"]
+    end
+
+    %% Critical path edges (red)
+    L8_12 --> L8_14
+    L8_13 --> L8_14
+    L8_14 --> L8_19
+    L8_15 --> L8_19
+    L8_17 --> L8_19
+    L8_18 --> L8_19
+    L8_19 --> C8_21
+    L8_19 --> C8_22
+    L8_30 --> C8_21
+    C8_21 --> T8_35
+    C8_22 --> T8_35
+    T9_6 --> T8_35
+    T8_35 --> T11_4
+    T11_4 --> T11_2
+
+    %% Styling
+    style L8_19 fill:#FFCDD2,stroke:#D32F2F,stroke-width:3px
+    style T8_35 fill:#FFCDD2,stroke:#D32F2F,stroke-width:3px
+    style T11_4 fill:#FFCDD2,stroke:#D32F2F,stroke-width:3px
+    style T11_2 fill:#C8E6C9,stroke:#388E3C,stroke-width:3px
+    style L8_30 fill:#FFE0B2,stroke:#F57C00,stroke-width:2px
+    style T9_6 fill:#FFE0B2,stroke:#F57C00,stroke-width:2px
