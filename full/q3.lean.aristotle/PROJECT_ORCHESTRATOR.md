@@ -1,7 +1,7 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -44,23 +44,24 @@ Single entry point: read this file at session start.
 
 Command:
 ```bash
+./scripts/check_axioms.sh
+# or manually:
 echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **10 axioms** (7 project + 3 standard)
-Note: 12 → 11 (closed arch/prime Lipschitz), 11 → 10 (closed RKHS contraction bridge),
-10 → 9 (closed A1_density via theorem wiring), 9 → 10 (A3 Fourier axiom in chain),
-10 → 11 (P_A_continuous in chain), 11 → 10 (P_A_continuous closed),
-10 → 10 (a_star_even closed via Mathlib Gamma_conj, replaced in Axioms.lean).
+Result: **6 axioms** (3 project + 3 standard)
 
 - Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
-- External/classical: `Weil_criterion`, `a_star_pos`, `a_star_bdd_on_compact`,
-  `a_star_continuous`, `Schur_test`
-- Q3 paper (closable): `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- Level 1 (Classical Literature): `Weil_criterion`, `Schur_test`
+- Level 2 (Q3 Paper): `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
 
-Note: `a_star_even` was closed 2026-01-20 using Mathlib `Complex.Gamma_conj`.
-Proof in `Q3/Proofs/A_Star_Properties.lean`.
+**Closed axioms (history):**
+- `a_star_pos` → closed via positivity (2026-01-21)
+- `a_star_continuous` → closed via Mathlib Gamma continuity
+- `a_star_bdd_on_compact` → closed via continuous + compact
+- `a_star_even` → closed via Mathlib Gamma_conj (2026-01-20)
+- `A1_density_WK_axiom` → closed via bounded hat interpolation (h_even as mass bound)
 
 ## Critical Chain (ASCII)
 
@@ -119,6 +120,8 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
+| `Weil_criterion` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
+| `Schur_test` | External (classical) | L2 vs L∞ mismatch | Classical result, keep as axiom | **EXTERNAL** |
 | `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | **AtomCone_K_fixed gap** | Implement fixed-t cone | **BLOCKED** |
 
 ## Progress Log (2026-01-16)

@@ -5,16 +5,17 @@ Derived from `PROJECT_ORCHESTRATOR.md`. Keep this file short and consistent.
 Legend:
 [OK]  formalized (no axioms in the chain)
 [AX]  axiom in the chain
+[EXT] external/classical axiom (not closable)
 
-Last update: 2026-01-16
-Axiom count in main chain: 10 total (7 project + 3 standard)
+Last update: 2026-01-21
+Axiom count in main chain: 6 total (3 project + 3 standard)
 
 ## Critical Chain (ASCII)
 
 ```
 RH_of_Weil_and_Q3
   |
-  +-- Weil_criterion [AX external]
+  +-- Weil_criterion [EXT classical]
   |
   +-- Q_nonneg_on_Weil_cone [OK]
        |
@@ -26,22 +27,37 @@ RH_of_Weil_and_Q3
                  |
                  +-- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom [AX]
                  +-- RKHS_contraction [OK]
+                 +-- Schur_test [EXT classical]
 ```
+
+## Axiom Summary
+
+| Category | Axioms | Count |
+|----------|--------|-------|
+| Standard Lean | `propext`, `Classical.choice`, `Quot.sound` | 3 |
+| Classical Literature | `Weil_criterion`, `Schur_test` | 2 |
+| Q3 Paper (closable) | `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | 1 |
+| **TOTAL** | | **6** |
+
+## Closed Axioms (2026-01-21)
+
+- `a_star_pos` - positivity proof
+- `a_star_continuous` - Mathlib Gamma continuity
+- `a_star_bdd_on_compact` - continuous + compact
+- `a_star_even` - Mathlib Gamma_conj
+- `A1_density_WK_axiom` - bounded hat interpolation (h_even mass bound)
+- `RKHS_contraction` - bridged in Q3/Proofs/Bridge.lean
+- `arch/prime Lipschitz` - closed in Q3/Proofs/Q_Lipschitz.lean
 
 ## Notes
 
 - `Q_Lipschitz_on_W_K` is a theorem (arch/prime bridge axioms closed).
 - Remaining closable axiom: `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
-- `aristotle_output/A1_density_hat_chain.lean` is now exact?-free and compiles
-  cleanly (ring_nf + unused variables fixed).
-- External/classical axioms in the chain: `Weil_criterion`, `a_star_pos`,
-  `a_star_bdd_on_compact`, `a_star_continuous`, `a_star_even`, `Schur_test`.
+- Blocker: AtomCone_K_fixed gap (quantifier mismatch for fixed t).
+- External axioms (`Weil_criterion`, `Schur_test`) are classical results.
 
-## A3_bridge Progress (2026-01-14)
+## A3_bridge Progress
 
 **Fourier A3 bridge complete (theorem):** `Q3/Proofs/P_A_Toeplitz_bridge.lean`
 - Uses Fourier Toeplitz + `P_A` symbol + `T_P_comp_real`
-- Main chain now depends on `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
-  (still an axiom pending proof)
-
-**Key insight from Прошка:** SB not needed, Rayleigh direct approach works.
+- Main chain depends on `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
