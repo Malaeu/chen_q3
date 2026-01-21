@@ -92,16 +92,77 @@ See: `/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 
 ---
 
-## Current Axiom Count: 11
+## 🔧 Sorry Resolution Protocol (Universal)
+
+### A) Reverse-Dependency Search
+
+```bash
+# Где используется лемма?
+rg -n "lemma_name" Q3/Proofs/ -t lean
+
+# С контекстом (3 строки до/после):
+rg -n -C3 "sorry" Q3/ -t lean
+```
+
+### B) I/O Card для каждого Sorry
+
+```lean
+/- I/O CARD: lemma_name
+   INPUT:  h1 : condition_1, h2 : condition_2
+   OUTPUT: goal_type
+   NEED:   lemma_A (for step 1), lemma_B (for connection)
+   BLOCKS: [list of downstream lemmas waiting on this]
+-/
+sorry
+```
+
+### C) Constraint Balancing (δ-выбор)
+
+Когда нужно выбрать параметр из нескольких ограничений:
+
+```lean
+-- Определи частные ограничения
+def δ_hat : ℝ := ...   -- от uniform continuity
+def δ_heat : ℝ := ...  -- от Lipschitz bound
+def δ_main : ℝ := ...  -- от основного условия
+
+-- Возьми минимум
+def δ : ℝ := min δ_hat (min δ_heat δ_main)
+
+-- Докажи каждое ограничение отдельно
+have hδ1 : δ ≤ δ_hat := min_le_left _ _
+have hδ2 : δ ≤ δ_heat := le_trans (min_le_right _ _) (min_le_left _ _)
+-- nlinarith съест всё
+```
+
+### D) Sorry Triage Template
+
+| Priority | Criterion | Action |
+|----------|-----------|--------|
+| P0 | Блокирует main theorem | Закрыть немедленно |
+| P1 | Имеет downstream dependencies | Закрыть до зависимых |
+| P2 | Изолированный, простой | Batch-закрытие |
+| P3 | Требует новую теорию | Отложить / axiom временно |
+
+---
+
+## Current Axiom Count: 6
 
 ```
 Standard (3): propext, Classical.choice, Quot.sound
-Level 1 (6):  Weil_criterion, a_star_pos, a_star_bdd_on_compact, a_star_continuous, a_star_even, Schur_test
-Level 2 (2):  A1_density_WK_axiom, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+Project (3):  Weil_criterion, a_star_pos, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
 ```
 
-Note: RKHS contraction closed, A3_bridge_axiom removed from chain (Fourier formulation).
-Target: Reduce Level 2 to 0 (or minimal classical results)
+**Closed axioms:**
+- a_star_continuous → closed via Mathlib Gamma continuity
+- a_star_bdd_on_compact → closed via continuous + compact
+- a_star_even → closed via Mathlib Gamma_conj
+- A1_density_WK_axiom → closed via bounded hat interpolation (h_even as mass bound)
+- Schur_test → not needed (L2 vs L-infinity norm insight)
+- A3_bridge_axiom → removed from chain (Fourier formulation)
+- RKHS contraction → closed
+
+**Target:** Close Q_nonneg_on_atoms to reach 5 project axioms
 
 ---
 
@@ -209,13 +270,15 @@ RIGHT: Task(Explore, "Search Mathlib for adjacent interval lemmas...")
 
 ## Active TODO (from Orchestrator)
 
-1. **A1_density_WK** → 1 sorry remains: `h_approx` (triangle ineq)
-2. **A3_bridge_axiom** → prove via A3_FLOOR + Szegő (BLOCKED on Szegő)
-3. **Q_nonneg** → rewrite after A3 closed (BLOCKED)
+1. ~~**A1_density_WK**~~ → CLOSED via h_even as mass bound approach
+2. **Q_nonneg_on_atoms** → next target (depends on A3 Fourier formulation)
 
-### A1_density Definitional Issue
-AtomCone_K requires `support g ⊆ [-K, K]`, but atoms with τ ∈ [-K,K] and B ≤ K have support in [-2K, 2K].
-Options: (1) modify AtomCone_K, (2) use B + |τ| ≤ K, (3) add truncation.
+### Recent Victory: A1_density Closure
+Key insight from Ылша: use `h_even(x) ≤ M' + ε/4` as mass bound instead of partition of unity.
+Files created:
+- `Q3/Proofs/A1prime/HatInterpBounded.lean` - hat interpolation
+- `Q3/Proofs/A1prime/HeatError.lean` - `total_atom_error_even` lemma
+- `Q3/Proofs/A1prime/A1_density_fixed_t0.lean` - main theorem
 
 ---
 
@@ -249,4 +312,4 @@ Options: (1) modify AtomCone_K, (2) use B + |τ| ≤ K, (3) add truncation.
 
 ---
 
-*Last updated: 2026-01-20*
+*Last updated: 2026-01-21*
