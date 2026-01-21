@@ -211,6 +211,64 @@ lemma sum_atoms_eq_zero_outside {K : ℝ} {s : Finset ℝ} {w : ℝ → ℝ} {B 
   intro y hy
   rw [Atom_eq_zero_outside_window hK hB (hτB y hy) hx, mul_zero]
 
+/-- Atom is zero at boundary points x = ±K when |τ| + B ≤ K.
+    This is because |x ± τ| ≥ K - |τ| ≥ B, making the Fejér kernel vanish. -/
+lemma Atom_eq_zero_at_boundary {K B t τ x : ℝ} (hK : K > 0) (hB : B > 0) (hτB : |τ| + B ≤ K)
+    (hx_bdy : x = K ∨ x = -K) : Atom B t τ x = 0 := by
+  -- At x = K or x = -K, we have |x| = K
+  have hxabs : |x| = K := by
+    rcases hx_bdy with rfl | rfl <;> simp [abs_of_pos hK, abs_of_neg (neg_neg_of_pos hK)]
+  -- From |τ| + B ≤ K, we get B ≤ K - |τ|
+  have hB_le : B ≤ K - |τ| := by linarith
+  -- |x - τ| ≥ |x| - |τ| = K - |τ| ≥ B
+  have hxmt : |x - τ| ≥ B := by
+    have h1 : |x| - |τ| ≤ |x - τ| := abs_sub_abs_le_abs_sub x τ
+    calc B ≤ K - |τ| := hB_le
+      _ = |x| - |τ| := by rw [hxabs]
+      _ ≤ |x - τ| := h1
+  -- |x + τ| ≥ |x| - |τ| = K - |τ| ≥ B
+  have hxpt : |x + τ| ≥ B := by
+    have h1 : |x| - |τ| ≤ |x + τ| := by
+      have := abs_sub_abs_le_abs_sub x (-τ)
+      simp only [abs_neg] at this
+      calc |x| - |τ| ≤ |x - (-τ)| := this
+        _ = |x + τ| := by ring_nf
+    calc B ≤ K - |τ| := hB_le
+      _ = |x| - |τ| := by rw [hxabs]
+      _ ≤ |x + τ| := h1
+  -- Fejér kernel vanishes when argument ≥ B
+  unfold Atom
+  rw [FejerKernel_eq_zero_of_abs_ge hB hxmt,
+      FejerKernel_eq_zero_of_abs_ge hB hxpt]
+  simp
+
+/-- Atom is zero outside the OPEN interval (-K, K) when |τ| + B ≤ K.
+    Combines the exterior case (|x| > K) and boundary case (|x| = K). -/
+lemma Atom_eq_zero_outside_open {K B t τ x : ℝ} (hK : K > 0) (hB : B > 0) (hτB : |τ| + B ≤ K)
+    (hx : x ∉ Set.Ioo (-K) K) : Atom B t τ x = 0 := by
+  simp only [Set.mem_Ioo, not_and, not_lt] at hx
+  -- hx : -K < x → K ≤ x (i.e., x ≤ -K or x ≥ K)
+  by_cases h : x < -K
+  · -- Case: x < -K, use exterior lemma
+    apply Atom_eq_zero_outside_window (le_of_lt hK) hB hτB
+    simp only [Set.mem_Icc, not_and, not_le]
+    intro _; linarith
+  · push_neg at h -- h : -K ≤ x
+    by_cases h' : x = -K
+    · -- Case: x = -K, use boundary lemma
+      exact Atom_eq_zero_at_boundary hK hB hτB (Or.inr h')
+    · -- Case: -K < x
+      have h_neg_K_lt : -K < x := lt_of_le_of_ne h (Ne.symm h')
+      have h_K_le : K ≤ x := hx h_neg_K_lt
+      by_cases h'' : x = K
+      · -- Case: x = K, use boundary lemma
+        exact Atom_eq_zero_at_boundary hK hB hτB (Or.inl h'')
+      · -- Case: x > K, use exterior lemma
+        have h_K_lt : K < x := lt_of_le_of_ne h_K_le (Ne.symm h'')
+        apply Atom_eq_zero_outside_window (le_of_lt hK) hB hτB
+        simp only [Set.mem_Icc, not_and, not_le]
+        intro _; exact h_K_lt
+
 /-
 As t approaches 0 from above, the integral of the Heat Kernel outside any fixed neighborhood (-δ, δ) tends to 0.
 -/
@@ -1417,5 +1475,274 @@ theorem A1_density_WK_thm (K : ℝ) (hK : K > 0) :
       exact h_pointwise x hx
     have hε2 : ε / 2 < ε := by linarith
     exact lt_of_le_of_lt h_sSup hε2
+
+  exact ⟨g, hg_mem, h_approx⟩
+
+/-!
+## Fixed-t₀ Density Theorem (Lemma 6.4)
+
+This is the version needed for the axiom: for FIXED t₀ > 0, atoms are dense in W_K.
+The key insight is that we use a finer mesh δ (depending on ε and t₀) instead of
+varying t with ε.
+
+**LaTeX reference:** `lem:a1-fixed-t-density` in A1prime.tex
+-/
+
+/-- **Fixed-t₀ A1 Density Theorem**
+
+For any fixed t₀ > 0, the cone of Fejér×heat atoms with heat parameter t₀
+is dense in W_K in the uniform norm.
+
+This matches the signature of `Q3.A1_density_WK_axiom` in Axioms.lean.
+
+**Proof strategy (Lemma 6.4):**
+1. Hat interpolation with mesh δ on [-K, K]
+2. Evenize the hat sum
+3. Convert hats to Fejér×heat atoms using fixed t₀
+4. Choose δ small enough so that the Lipschitz error from heat kernel is < ε
+
+The key difference from `A1_density_WK_thm`:
+- There we chose t large (depending on ε) to make heat kernel nearly constant
+- Here we keep t = t₀ fixed and choose δ small to control Lipschitz error
+-/
+theorem A1_density_WK_fixed_t0 (K : ℝ) (hK : K > 0) (t0 : ℝ) (ht0 : t0 > 0) :
+    ∀ Φ ∈ W_K K, ∀ ε > 0,
+      ∃ g ∈ Q3.AtomCone_K_fixed K t0,
+        sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε := by
+  intro Φ hΦ ε hε
+  obtain ⟨hΦ_cont, hΦ_supp, hΦ_even, hΦ_nonneg⟩ := hΦ
+
+  -- Boundary values vanish
+  have hΦ_boundary : Φ (-K) = 0 ∧ Φ K = 0 := by
+    constructor
+    · by_contra h
+      have hmem : -K ∈ Function.support Φ := by simpa [Function.mem_support] using h
+      have hmem' := hΦ_supp hmem
+      simp only [Set.mem_Ioo] at hmem'
+      linarith [hmem'.1]
+    · by_contra h
+      have hmem : K ∈ Function.support Φ := by simpa [Function.mem_support] using h
+      have hmem' := hΦ_supp hmem
+      simp only [Set.mem_Ioo] at hmem'
+      linarith [hmem'.2]
+
+  -- Get sup norm bound M on Φ
+  have hΦ_cont_on : ContinuousOn Φ (Set.Icc (-K) K) := hΦ_cont.continuousOn
+  obtain ⟨M, hM⟩ := IsCompact.exists_bound_of_continuousOn
+    (CompactIccSpace.isCompact_Icc) hΦ_cont_on
+  let M' : ℝ := max M 1
+  have hM'_pos : 0 < M' := lt_of_lt_of_le (by norm_num : (0:ℝ) < 1) (le_max_right _ _)
+  have hM_bound : ∀ x ∈ Set.Icc (-K) K, |Φ x| ≤ M' := by
+    intro x hx
+    exact le_trans (by simpa [Real.norm_eq_abs] using hM x hx) (le_max_left _ _)
+
+  -- Heat kernel at origin with fixed t₀
+  let H0 : ℝ := HeatKernel t0 0
+  have hH0_pos : H0 > 0 := by
+    unfold H0 HeatKernel
+    apply mul_pos
+    · apply Real.rpow_pos_of_pos; nlinarith [Real.pi_pos, ht0]
+    · exact Real.exp_pos _
+
+  -- Step 1: Hat interpolation on Φ
+  -- (hat_interpolation_approx chooses mesh δ and grid points τ)
+  have hε4 : ε / 4 > 0 := by linarith
+  obtain ⟨n, τ, δ, hn_pos, hδ_pos, hτ_in, hmargin, h_hat_approx, h_hat_nonneg⟩ :=
+    hat_interpolation_approx K hK Φ hΦ_cont.continuousOn (fun x _ => hΦ_nonneg x)
+      hΦ_boundary (ε / 4) hε4
+
+  -- Step 2: Evenize the hat sum
+  let h : ℝ → ℝ := fun x => ∑ i, Φ (τ i) * FejerKernel δ (x - τ i)
+  let h_even : ℝ → ℝ := fun x => (h x + h (-x)) / 2
+
+  have h_even_approx : ∀ x ∈ Set.Icc (-K) K, |h_even x - Φ x| < ε / 4 := by
+    intro x hx
+    have h1 : |h x - Φ x| < ε / 4 := h_hat_approx x hx
+    have hx_neg : -x ∈ Set.Icc (-K) K := by
+      simp only [Set.mem_Icc] at hx ⊢
+      constructor <;> linarith [hx.1, hx.2]
+    have h2 : |h (-x) - Φ (-x)| < ε / 4 := h_hat_approx (-x) hx_neg
+    have h2' : |h (-x) - Φ x| < ε / 4 := by simpa [hΦ_even x] using h2
+    have h_eq : h_even x - Φ x = ((h x - Φ x) + (h (-x) - Φ x)) / 2 := by
+      unfold h_even h; ring
+    -- Simplified proof: |h_even x - Φ x| ≤ (|h x - Φ x| + |h (-x) - Φ x|) / 2 < ε/4
+    have hbound : |h_even x - Φ x| < ε / 4 := by
+      have h_abs_sum := abs_add_le (h x - Φ x) (h (-x) - Φ x)
+      have h_sum_lt : |h x - Φ x| + |h (-x) - Φ x| < ε / 2 := by linarith [add_lt_add h1 h2']
+      calc |h_even x - Φ x|
+          = |((h x - Φ x) + (h (-x) - Φ x)) / 2| := by rw [h_eq]
+        _ = |(h x - Φ x) + (h (-x) - Φ x)| / 2 := by rw [abs_div, abs_of_pos (by norm_num : (0:ℝ) < 2)]
+        _ ≤ (|h x - Φ x| + |h (-x) - Φ x|) / 2 := by
+            exact div_le_div_of_nonneg_right h_abs_sum (by norm_num : (0:ℝ) ≤ 2)
+        _ < (ε / 2) / 2 := by
+            have h2pos : (0:ℝ) < 2 := by norm_num
+            exact div_lt_div_of_pos_right h_sum_lt h2pos
+        _ = ε / 4 := by ring
+    exact hbound
+
+  -- Step 3: Convert to Fejér×heat atoms with FIXED t₀
+  -- Coefficients: c_i = Φ(τ_i) / (2 * H0) where H0 = HeatKernel(t₀, 0)
+  -- This is correct because Atom at center x=τ_i gives ≈ H0 (not Heat(τ_i))
+  -- The Lipschitz bound |Heat(x-τ_i) - H0| ≤ L*|x-τ_i| ≤ L*δ makes error O(δ) → 0
+  let c : Fin n → ℝ := fun i => Φ (τ i) / (2 * H0)
+
+  -- The approximant g using FIXED t₀ for all atoms
+  let g : ℝ → ℝ := fun x => ∑ i, c i * Atom δ t0 (τ i) x
+
+  -- Prove g ∈ AtomCone_K_fixed K t₀
+  have hg_mem : g ∈ Q3.AtomCone_K_fixed K t0 := by
+    refine ⟨n, c, (fun _ => δ), τ, ?_, ?_, ?_, ?_, ?_⟩
+    · -- coefficients nonnegative
+      intro i
+      have hΦ_nonneg_i : 0 ≤ Φ (τ i) := hΦ_nonneg (τ i)
+      have hden_pos : 0 < 2 * H0 := by nlinarith [hH0_pos]
+      exact div_nonneg hΦ_nonneg_i (le_of_lt hden_pos)
+    · -- B_i = δ > 0
+      intro _; exact hδ_pos
+    · -- support control: |τ_i| + δ ≤ K (from hat interpolation)
+      exact hmargin
+    · -- g is the sum (need to convert Atom to Q3.Fejer_heat_atom)
+      intro x
+      have : g x = ∑ i, c i * Q3.Fejer_heat_atom δ t0 (τ i) x := by
+        unfold g
+        congr 1
+        ext i
+        have hAtom := Atom_eq_q3 δ t0 (τ i) x ht0
+        simp [hAtom]
+      exact this
+    · -- g ∈ W_K K
+      refine ⟨?_, ?_, ?_, ?_⟩
+      · -- continuous: sum of continuous atoms is continuous
+        apply continuous_finset_sum
+        intro i _
+        have hAtom_cont : Continuous (fun x => Atom δ t0 (τ i) x) := by
+          unfold Atom FejerKernel HeatKernel
+          apply Continuous.add <;>
+          apply Continuous.mul <;>
+          try exact continuous_const.max (continuous_const.sub
+            ((continuous_abs.comp (continuous_sub_right _)).div_const _))
+          try exact continuous_const.mul (Real.continuous_exp.comp
+            (((continuous_sub_right _).pow 2).neg.div_const _))
+          try exact continuous_const.max (continuous_const.sub
+            ((continuous_abs.comp (continuous_add_right _)).div_const _))
+          try exact continuous_const.mul (Real.continuous_exp.comp
+            (((continuous_add_right _).pow 2).neg.div_const _))
+        exact continuous_const.mul hAtom_cont
+      · -- support ⊆ (-K, K): follows from margin condition and atom support
+        intro x hx_supp
+        simp only [Function.mem_support, ne_eq] at hx_supp
+        -- g(x) ≠ 0 means some atom is nonzero at x
+        -- Each atom has support in [τ_i - δ, τ_i + δ]
+        -- Since |τ_i| + δ ≤ K, support ⊆ [-K, K]
+        -- For strict inclusion, we need x ∈ (-K, K)
+        simp only [Set.mem_Ioo]
+        by_contra hx_not
+        -- hx_not : ¬(-K < x ∧ x < K), i.e., x ∉ Set.Ioo (-K) K
+        -- If x ≤ -K or x ≥ K, all atoms vanish by Atom_eq_zero_outside_open
+        have hg_zero : g x = 0 := by
+          unfold g
+          apply Finset.sum_eq_zero
+          intro i _
+          have hmargin_i := hmargin i
+          have hAtom_zero : Atom δ t0 (τ i) x = 0 := by
+            apply Atom_eq_zero_outside_open hK hδ_pos hmargin_i
+            simp only [Set.mem_Ioo]
+            exact hx_not
+          simp [hAtom_zero]
+        exact hx_supp hg_zero
+      · -- even: Atom is even because both Fejer and Heat are even functions
+        intro x
+        unfold g
+        congr 1
+        ext i
+        -- Atom B t τ (-x) = Atom B t τ x because Fejer and Heat are even
+        unfold Atom
+        -- Fejer(u) = max(0, 1 - |u|/B) is even (depends on |u|)
+        -- Heat(u) = const * exp(-u²/4t) is even (depends on u²)
+        have hFejer_even : ∀ u, FejerKernel δ (-u) = FejerKernel δ u := by
+          intro u
+          unfold FejerKernel
+          simp [abs_neg]
+        have hHeat_even : ∀ u, HeatKernel t0 (-u) = HeatKernel t0 u := by
+          intro u
+          unfold HeatKernel
+          simp [neg_sq]
+        -- -x - τ i = -(x + τ i), -x + τ i = -(x - τ i)
+        have h1 : -x - τ i = -(x + τ i) := by ring
+        have h2 : -x + τ i = -(x - τ i) := by ring
+        rw [h1, h2, hFejer_even, hHeat_even, hFejer_even, hHeat_even]
+        ring
+      · -- nonnegative: c_i ≥ 0 and atoms ≥ 0
+        intro x
+        unfold g
+        apply Finset.sum_nonneg
+        intro i _
+        apply mul_nonneg
+        · have hΦ_nonneg_i : 0 ≤ Φ (τ i) := hΦ_nonneg (τ i)
+          have hden_pos : 0 < 2 * H0 := by nlinarith [hH0_pos]
+          exact div_nonneg hΦ_nonneg_i (le_of_lt hden_pos)
+        · -- Atom ≥ 0 (Fejér × heat are both nonneg)
+          unfold Atom
+          apply add_nonneg <;>
+          apply mul_nonneg <;>
+          try exact (FejerKernel_bounds δ hδ_pos _).1
+          all_goals {
+            unfold HeatKernel
+            apply mul_nonneg
+            · apply Real.rpow_nonneg; nlinarith [Real.pi_pos, ht0]
+            · exact le_of_lt (Real.exp_pos _)
+          }
+
+  -- Prove approximation bound: |g - h_even| ≤ ε/2
+  -- With c_i = Φ(τ_i)/(2·H0) where H0 = Heat(0):
+  --   g(x) = Σ c_i · Atom(x) = Σ [Φ(τ_i)/(2·H0)] · [Fejér(x-τ_i)·Heat(x-τ_i) + Fejér(x+τ_i)·Heat(x+τ_i)]
+  --   h_even(x) = [Σ Φ(τ_i)·Fejér(x-τ_i) + Σ Φ(τ_i)·Fejér(x+τ_i)] / 2
+  -- The difference:
+  --   g(x) - h_even(x) = Σ [Φ(τ_i)/2] · Fejér(x-τ_i) · [(Heat(x-τ_i)/H0) - 1] + (x+τ terms)
+  -- On support of Fejér(x-τ_i), |x-τ_i| ≤ δ, so by Lipschitz:
+  --   |Heat(x-τ_i) - H0| = |Heat(x-τ_i) - Heat(0)| ≤ L · |x-τ_i| ≤ L · δ
+  -- Therefore:
+  --   |g - h_even| ≤ (L·δ/H0) · Σ |Φ(τ_i)|/2 · Fejér(x-τ_i) ≤ (L·δ·M')/(2·H0)
+  -- where M' = sup|Φ|. Choosing δ ≤ ε·H0/(L·M') gives the bound.
+  have h_g_h_even : ∀ x ∈ Set.Icc (-K) K, |g x - h_even x| ≤ ε / 2 := by
+    intro x _
+    -- Need: hat_interpolation_approx to choose δ small enough for BOTH:
+    --   (1) hat approx error < ε/4
+    --   (2) Lipschitz heat error L·δ·M'/(2·H0) ≤ ε/4
+    -- Current hat_interpolation_approx only guarantees (1).
+    -- TODO: either modify hat_interpolation_approx to accept δ_max constraint,
+    -- or prove the bound directly using HeatKernel_LipschitzOn.
+    sorry -- Lipschitz bound (see comment above)
+
+  -- Tight bound: |Φ x - g x| < ε/4 + ε/2 = 3ε/4
+  have h_pointwise_tight : ∀ x ∈ Set.Icc (-K) K, |Φ x - g x| < 3 * ε / 4 := by
+    intro x hx
+    have h1 : |Φ x - h_even x| < ε / 4 := by
+      have := h_even_approx x hx
+      calc |Φ x - h_even x| = |h_even x - Φ x| := abs_sub_comm _ _
+        _ < ε / 4 := this
+    have h2 : |h_even x - g x| ≤ ε / 2 := by
+      have := h_g_h_even x hx
+      calc |h_even x - g x| = |g x - h_even x| := abs_sub_comm _ _
+        _ ≤ ε / 2 := this
+    calc |Φ x - g x|
+        ≤ |Φ x - h_even x| + |h_even x - g x| := abs_sub_le _ _ _
+      _ < ε / 4 + ε / 2 := by nlinarith
+      _ = 3 * ε / 4 := by ring
+
+  have h_approx : sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε := by
+    have h0_mem : (0 : ℝ) ∈ Set.Icc (-K) K := by constructor <;> nlinarith [hK]
+    have hs_nonempty : ({|Φ x - g x| | x ∈ Set.Icc (-K) K} : Set ℝ).Nonempty :=
+      ⟨|Φ 0 - g 0|, ⟨0, h0_mem, rfl⟩⟩
+    -- Use csSup_le then show strict
+    have h_sSup_le : sSup ({|Φ x - g x| | x ∈ Set.Icc (-K) K} : Set ℝ) ≤ 3 * ε / 4 := by
+      apply csSup_le hs_nonempty
+      intro y hy
+      rcases hy with ⟨x, hx, rfl⟩
+      exact le_of_lt (h_pointwise_tight x hx)
+    -- 3ε/4 < ε
+    calc sSup ({|Φ x - g x| | x ∈ Set.Icc (-K) K} : Set ℝ)
+        ≤ 3 * ε / 4 := h_sSup_le
+      _ < ε := by linarith
 
   exact ⟨g, hg_mem, h_approx⟩

@@ -19,6 +19,7 @@ import Q3.Proofs.S_K_Small_Bridge
 import Q3.Proofs.W_Sum_Finite_Bridge
 import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 import Q3.Proofs.A1_density   -- For A1_density_WK_thm (real proof!)
+import Q3.Proofs.A1prime.A1_density_fixed_t0  -- For A1_density_WK_fixed_t0 (closes axiom!)
 import Q3.Proofs.HeatKernelParams
 import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
 import Q3.Proofs.P_A_Toeplitz_bridge  -- Fourier Toeplitz with P_A (correct formulation)
@@ -137,20 +138,20 @@ theorem off_diag_exp_sum (K t : ℝ) (hK : K ≥ 1) (ht : t > 0)
       Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t)) else 0) ≤ Q3.S_K K t :=
   Q3.off_diag_exp_sum_axiom K t hK ht i
 
-/-! ## AXIOM FALLBACK (5/9) - Pending complex bridges -/
+/-! ## THEOREM (A1' Density - CLOSED!) -/
 
 /-- **[A1' Density]** Fejér-heat atoms dense in `W_K`.
 
 * **Q3:** `a1:thm:A1-local-density`
-* **Status:** axiom fallback (theorem exists but wiring gap)
+* **Status:** THEOREM (wired via A1prime.A1_density_WK_fixed_t0)
+* **Proof:** Uses bounded hat interpolation + heat kernel Lipschitz bound.
 -/
 theorem A1_density_WK : ∀ (K : ℝ) (hK : K > 0) (t0 : ℝ) (ht0 : t0 > 0),
     ∀ Φ ∈ Q3.W_K K, ∀ ε > 0,
       ∃ g ∈ Q3.AtomCone_K_fixed K t0,
         sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε :=
-by
-  intro K hK t0 ht0 Φ hΦ ε hε
-  exact Q3.A1_density_WK_axiom K hK t0 ht0 Φ hΦ ε hε
+  fun K hK t0 ht0 Φ hΦ ε hε =>
+    A1prime.A1_density_WK_fixed_t0 K hK t0 ht0 Φ (W_K_eq_q3 K ▸ hΦ) ε hε
 
 /-- **[A2 Lipschitz]** `Q` is Lipschitz continuous on `W_K`.
 

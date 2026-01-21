@@ -144,6 +144,186 @@ theorem total_atom_error (t δ : ℝ) (ht : t > 0) (hδ : δ > 0)
         simp only [one_mul, M, ← Finset.sum_mul]
         ring
 
+/-- Similar lemma for the +τ case -/
+lemma atom_heat_error_with_L_plus (t δ : ℝ) (ht : t > 0) (hδ : δ > 0) (τ x : ℝ)
+    (L : ℝ) (hL_pos : L > 0)
+    (hL_lip : ∀ y ∈ Set.Icc (-δ) δ, ∀ z ∈ Set.Icc (-δ) δ,
+              |HeatKernel t y - HeatKernel t z| ≤ L * |y - z|) :
+    |FejerKernel δ (x + τ) * HeatKernel t (x + τ) - FejerKernel δ (x + τ) * HeatKernel t 0| ≤
+      FejerKernel δ (x + τ) * L * δ := by
+  by_cases hF : FejerKernel δ (x + τ) > 0
+  · have hsupp := FejerKernel_support_bound δ hδ (x + τ) hF
+    have h_factor : FejerKernel δ (x + τ) * HeatKernel t (x + τ) -
+        FejerKernel δ (x + τ) * HeatKernel t 0 =
+        FejerKernel δ (x + τ) * (HeatKernel t (x + τ) - HeatKernel t 0) := by ring
+    rw [h_factor, abs_mul]
+    have hF_nonneg : 0 ≤ FejerKernel δ (x + τ) := (FejerKernel_bounds δ hδ (x + τ)).1
+    rw [abs_of_nonneg hF_nonneg]
+    have h0_in : (0 : ℝ) ∈ Set.Icc (-δ) δ := by
+      simp only [Set.mem_Icc]
+      constructor <;> linarith
+    have hxτ_in : (x + τ) ∈ Set.Icc (-δ) δ := by
+      simp only [Set.mem_Icc]
+      rw [abs_le] at hsupp
+      exact hsupp
+    have h_heat_lip := hL_lip (x + τ) hxτ_in 0 h0_in
+    simp only [sub_zero] at h_heat_lip
+    calc FejerKernel δ (x + τ) * |HeatKernel t (x + τ) - HeatKernel t 0|
+        ≤ FejerKernel δ (x + τ) * (L * |x + τ|) := by
+          apply mul_le_mul_of_nonneg_left h_heat_lip hF_nonneg
+      _ ≤ FejerKernel δ (x + τ) * (L * δ) := by
+          apply mul_le_mul_of_nonneg_left _ hF_nonneg
+          apply mul_le_mul_of_nonneg_left hsupp (le_of_lt hL_pos)
+      _ = FejerKernel δ (x + τ) * L * δ := by ring
+  · push_neg at hF
+    have hF_nonneg := (FejerKernel_bounds δ hδ (x + τ)).1
+    have hF_zero : FejerKernel δ (x + τ) = 0 := le_antisymm hF hF_nonneg
+    simp [hF_zero]
+
+/-- Error bound for evenized atoms: g - h_even where
+    g(x) = Σ [Φ(τ_i)/(2*H0)] * [Fejér(x-τ_i)*Heat(x-τ_i) + Fejér(x+τ_i)*Heat(x+τ_i)]
+    h_even(x) = Σ Φ(τ_i) * [Fejér(x-τ_i) + Fejér(x+τ_i)] / 2
+
+    Key insight: The difference factors as (Heat(u)/H0 - 1) weighted by h_even terms.
+    On Fejér support, |Heat(u)/H0 - 1| ≤ L*δ/H0 by Lipschitz. Outside support, Fejér = 0. -/
+theorem total_atom_error_even (t δ : ℝ) (ht : t > 0) (hδ : δ > 0)
+    {n : ℕ} (Φ_vals : Fin n → ℝ) (hΦ_nonneg : ∀ i, Φ_vals i ≥ 0) (τ : Fin n → ℝ) (x : ℝ)
+    (L : ℝ) (hL_pos : L > 0)
+    (hL_lip : ∀ y ∈ Set.Icc (-δ) δ, ∀ z ∈ Set.Icc (-δ) δ,
+              |HeatKernel t y - HeatKernel t z| ≤ L * |y - z|) :
+    let H0 := HeatKernel t 0
+    let g := fun x' => ∑ i, (Φ_vals i / (2 * H0)) *
+        (FejerKernel δ (x' - τ i) * HeatKernel t (x' - τ i) +
+         FejerKernel δ (x' + τ i) * HeatKernel t (x' + τ i))
+    let h_even := fun x' => ∑ i, Φ_vals i * (FejerKernel δ (x' - τ i) + FejerKernel δ (x' + τ i)) / 2
+    |g x - h_even x| ≤ (L * δ / H0) * h_even x := by
+  intro H0 g h_even
+
+  have hH0_pos : H0 > 0 := by
+    unfold H0 HeatKernel
+    apply mul_pos
+    · apply Real.rpow_pos_of_pos; nlinarith [Real.pi_pos, ht]
+    · exact Real.exp_pos _
+
+  -- Rewrite g - h_even factoring out the error terms
+  -- g(x) = Σ Φ(τ_i) * [Fejér(x-τ)*(Heat(x-τ)/H0) + Fejér(x+τ)*(Heat(x+τ)/H0)] / 2
+  -- h_even(x) = Σ Φ(τ_i) * [Fejér(x-τ) + Fejér(x+τ)] / 2
+  -- Difference: each term has factor Fejér * (Heat/H0 - 1)
+
+  have h_diff_form : g x - h_even x =
+      ∑ i, Φ_vals i * (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) / H0 - 1) +
+                       FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) / H0 - 1)) / 2 := by
+    simp only [g, h_even]
+    rw [← Finset.sum_sub_distrib]
+    congr 1
+    ext i
+    have hH0_ne : H0 ≠ 0 := ne_of_gt hH0_pos
+    field_simp
+    ring
+
+  -- Key helper: bound Fejér * |Heat/H0 - 1| ≤ Fejér * (L*δ/H0)
+  -- This works because:
+  -- - When Fejér > 0: argument is in [-δ,δ], so Lipschitz applies
+  -- - When Fejér = 0: the product is 0 ≤ 0 anyway
+  have h_prod_bound_minus : ∀ i,
+      FejerKernel δ (x - τ i) * |HeatKernel t (x - τ i) / H0 - 1| ≤
+      FejerKernel δ (x - τ i) * (L * δ / H0) := by
+    intro i
+    have hF_nonneg : 0 ≤ FejerKernel δ (x - τ i) := (FejerKernel_bounds δ hδ _).1
+    by_cases hF : FejerKernel δ (x - τ i) > 0
+    · -- Fejér > 0, so |x - τ i| ≤ δ
+      have hsupp := FejerKernel_support_bound δ hδ (x - τ i) hF
+      have h0_in : (0 : ℝ) ∈ Set.Icc (-δ) δ := ⟨by linarith, by linarith⟩
+      have hxτ_in : (x - τ i) ∈ Set.Icc (-δ) δ := by rw [abs_le] at hsupp; exact hsupp
+      have h_lip := hL_lip (x - τ i) hxτ_in 0 h0_in
+      simp only [sub_zero] at h_lip
+      have h_abs : |HeatKernel t (x - τ i) - H0| ≤ L * |x - τ i| := h_lip
+      have h_abs' : |HeatKernel t (x - τ i) - H0| ≤ L * δ :=
+        le_trans h_abs (mul_le_mul_of_nonneg_left hsupp (le_of_lt hL_pos))
+      have h_ratio : |HeatKernel t (x - τ i) / H0 - 1| ≤ L * δ / H0 := by
+        have h_eq : HeatKernel t (x - τ i) / H0 - 1 = (HeatKernel t (x - τ i) - H0) / H0 := by
+          field_simp
+        rw [h_eq, abs_div, abs_of_pos hH0_pos]
+        exact div_le_div_of_nonneg_right h_abs' (le_of_lt hH0_pos)
+      exact mul_le_mul_of_nonneg_left h_ratio hF_nonneg
+    · -- Fejér = 0
+      push_neg at hF
+      have hF_zero : FejerKernel δ (x - τ i) = 0 := le_antisymm hF hF_nonneg
+      simp [hF_zero]
+
+  have h_prod_bound_plus : ∀ i,
+      FejerKernel δ (x + τ i) * |HeatKernel t (x + τ i) / H0 - 1| ≤
+      FejerKernel δ (x + τ i) * (L * δ / H0) := by
+    intro i
+    have hF_nonneg : 0 ≤ FejerKernel δ (x + τ i) := (FejerKernel_bounds δ hδ _).1
+    by_cases hF : FejerKernel δ (x + τ i) > 0
+    · have hsupp := FejerKernel_support_bound δ hδ (x + τ i) hF
+      have h0_in : (0 : ℝ) ∈ Set.Icc (-δ) δ := ⟨by linarith, by linarith⟩
+      have hxτ_in : (x + τ i) ∈ Set.Icc (-δ) δ := by rw [abs_le] at hsupp; exact hsupp
+      have h_lip := hL_lip (x + τ i) hxτ_in 0 h0_in
+      simp only [sub_zero] at h_lip
+      have h_abs : |HeatKernel t (x + τ i) - H0| ≤ L * |x + τ i| := h_lip
+      have h_abs' : |HeatKernel t (x + τ i) - H0| ≤ L * δ :=
+        le_trans h_abs (mul_le_mul_of_nonneg_left hsupp (le_of_lt hL_pos))
+      have h_ratio : |HeatKernel t (x + τ i) / H0 - 1| ≤ L * δ / H0 := by
+        have h_eq : HeatKernel t (x + τ i) / H0 - 1 = (HeatKernel t (x + τ i) - H0) / H0 := by
+          field_simp
+        rw [h_eq, abs_div, abs_of_pos hH0_pos]
+        exact div_le_div_of_nonneg_right h_abs' (le_of_lt hH0_pos)
+      exact mul_le_mul_of_nonneg_left h_ratio hF_nonneg
+    · push_neg at hF
+      have hF_zero : FejerKernel δ (x + τ i) = 0 := le_antisymm hF hF_nonneg
+      simp [hF_zero]
+
+  -- Bound each term of the sum
+  have h_term_bound : ∀ i, |Φ_vals i * (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) / H0 - 1) +
+                                        FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) / H0 - 1)) / 2| ≤
+      (L * δ / H0) * Φ_vals i * (FejerKernel δ (x - τ i) + FejerKernel δ (x + τ i)) / 2 := by
+    intro i
+    have hΦ_i := hΦ_nonneg i
+    have hF1_nonneg : 0 ≤ FejerKernel δ (x - τ i) := (FejerKernel_bounds δ hδ _).1
+    have hF2_nonneg : 0 ≤ FejerKernel δ (x + τ i) := (FejerKernel_bounds δ hδ _).1
+
+    calc |Φ_vals i * (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) / H0 - 1) +
+             FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) / H0 - 1)) / 2|
+        = Φ_vals i * |FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) / H0 - 1) +
+             FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) / H0 - 1)| / 2 := by
+            rw [abs_div, abs_mul, abs_of_nonneg hΦ_i, abs_of_nonneg (by norm_num : (0:ℝ) ≤ 2)]
+      _ ≤ Φ_vals i * (|FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) / H0 - 1)| +
+             |FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) / H0 - 1)|) / 2 := by
+            apply div_le_div_of_nonneg_right _ (by norm_num : (0:ℝ) ≤ 2)
+            apply mul_le_mul_of_nonneg_left _ hΦ_i
+            exact abs_add_le _ _
+      _ = Φ_vals i * (FejerKernel δ (x - τ i) * |HeatKernel t (x - τ i) / H0 - 1| +
+             FejerKernel δ (x + τ i) * |HeatKernel t (x + τ i) / H0 - 1|) / 2 := by
+            congr 2
+            rw [abs_mul, abs_mul, abs_of_nonneg hF1_nonneg, abs_of_nonneg hF2_nonneg]
+      _ ≤ Φ_vals i * (FejerKernel δ (x - τ i) * (L * δ / H0) +
+             FejerKernel δ (x + τ i) * (L * δ / H0)) / 2 := by
+            apply div_le_div_of_nonneg_right _ (by norm_num : (0:ℝ) ≤ 2)
+            apply mul_le_mul_of_nonneg_left _ hΦ_i
+            exact add_le_add (h_prod_bound_minus i) (h_prod_bound_plus i)
+      _ = (L * δ / H0) * Φ_vals i * (FejerKernel δ (x - τ i) + FejerKernel δ (x + τ i)) / 2 := by
+            ring
+
+  -- Sum up the bounds
+  rw [h_diff_form]
+  calc |∑ i, Φ_vals i * (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) / H0 - 1) +
+                         FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) / H0 - 1)) / 2|
+      ≤ ∑ i, |Φ_vals i * (FejerKernel δ (x - τ i) * (HeatKernel t (x - τ i) / H0 - 1) +
+                          FejerKernel δ (x + τ i) * (HeatKernel t (x + τ i) / H0 - 1)) / 2| :=
+          Finset.abs_sum_le_sum_abs _ _
+    _ ≤ ∑ i, (L * δ / H0) * Φ_vals i * (FejerKernel δ (x - τ i) + FejerKernel δ (x + τ i)) / 2 := by
+          apply Finset.sum_le_sum
+          intro i _
+          exact h_term_bound i
+    _ = (L * δ / H0) * ∑ i, Φ_vals i * (FejerKernel δ (x - τ i) + FejerKernel δ (x + τ i)) / 2 := by
+          rw [Finset.mul_sum]
+          congr 1
+          ext i
+          ring
+    _ = (L * δ / H0) * h_even x := rfl
+
 end HeatError
 
 end
