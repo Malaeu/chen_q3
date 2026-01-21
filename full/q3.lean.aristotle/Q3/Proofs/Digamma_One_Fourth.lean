@@ -14,7 +14,7 @@ where γ is the Euler-Mascheroni constant.
 **Proof source:** Aristotle (file 2e3b3bf8_aristotle.lean, namespace Digamma14)
 -/
 
-import aristotle_output.«2e3b3bf8_aristotle»
+import Q3.Proofs.Digamma_Aristotle
 import Q3.Basic.Defs
 
 set_option linter.mathlibStandardSet false
