@@ -80,6 +80,30 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
+## Quick Start (after git clone)
+
+```bash
+cd chen_q3
+git pull
+
+# Main Lean project
+cd full/q3.lean.aristotle
+./scripts/check_axioms.sh        # Verify axioms (expect 6)
+./scripts/contribution_stats.sh  # Code statistics
+
+# Sandbox (isolated experiments)
+cd sandboxes/Linux
+# Work here without affecting main
+```
+
+## Current Status (2026-01-21)
+
+- **Axioms:** 6 total (3 standard Lean + 3 project)
+- **Remaining closable:** 1 (`Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`)
+- **Lines of code:** 44,250 (Q3/ + aristotle_output/)
+- **Aristotle contribution:** 20% (in proof chain)
+- **DB lemmas:** 555
+
 ## Dependencies
 
 - Python 3.10+
@@ -87,3 +111,4 @@ pdflatex main.tex
 - scipy
 - matplotlib
 - mpmath
+- Lean 4 + Mathlib (for formalization)
