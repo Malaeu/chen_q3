@@ -13,11 +13,27 @@ is enforced by an explicit embedding $\iota_{t,M}$ and the compression formula
 We record two concrete constructions of $\iota_{t,M}$ that each yield the same
 compression inequality; the choice is driven by formalization cost.
 
+\begin{lemma}[Compression bound (C1)]\label{lem:a3-embedding-compression}
+Let $\iota_{t,M}:\CC^{2M+1}\hookrightarrow \mathcal H_t$ be a linear isometry and assume
+\[
+T_P^{\mathrm{Ray}}(t,M)\ =\ \iota_{t,M}^\ast\,T_P^{\mathrm{RKHS}}(t)\,\iota_{t,M}.
+\]
+Then $\|T_P^{\mathrm{Ray}}(t,M)\|\le \|T_P^{\mathrm{RKHS}}(t)\|$.
+\end{lemma}
+\begin{proof}
+By submultiplicativity of the operator norm and $\|\iota_{t,M}\|=\|\iota_{t,M}^\ast\|=1$ for a linear isometry,
+\[
+\|T_P^{\mathrm{Ray}}(t,M)\|
+\le \|\iota_{t,M}^\ast\|\,\|T_P^{\mathrm{RKHS}}(t)\|\,\|\iota_{t,M}\|
+ = \|T_P^{\mathrm{RKHS}}(t)\|.
+\]
+\end{proof}
+
 \paragraph{C1 micro-lemmas (shared).}
 \begin{enumerate}
   \item \textbf{Spaces:} set $E:=\CC^{2M+1}$ and $H:=\mathcal H_t$ as Hilbert spaces.
   \item \textbf{Embedding:} construct a linear isometry $\iota:E\hookrightarrow H$.
-  \item \textbf{Compression:} define $T_P^{\mathrm{Ray}}:=\iota^\ast T_P^{\mathrm{RKHS}}\iota$.
+  \item \textbf{Compression:} define $T_P^{\mathrm{Ray}}(t,M):=\iota^\ast T_P^{\mathrm{RKHS}}(t)\iota$.
   \item \textbf{Isometry norm:} $\|\iota\|=\|\iota^\ast\|=1$.
   \item \textbf{Submultiplicativity:} $\|AB\|\le\|A\|\,\|B\|$.
   \item \textbf{Conclusion:} $\|T_P^{\mathrm{Ray}}\|\le\|T_P^{\mathrm{RKHS}}\|$.
