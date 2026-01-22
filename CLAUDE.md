@@ -210,6 +210,24 @@ websearch "вопрос"              # AI web search
 
 ---
 
+## CLI Tools (IMPORTANT!)
+
+- **ALWAYS use `rg` (ripgrep) instead of `grep` in Bash!**
+  - `rg` is 10-100x faster than GNU grep
+  - Installed at: `/usr/bin/rg` (v14.1.0)
+  - Wrong: `grep -r "pattern" dir/`
+  - Right: `rg "pattern" dir/`
+- Claude's built-in `Grep` tool already uses ripgrep under the hood
+- For simple pipes, `grep` is acceptable (e.g., `| grep -E "error"`)
+- For file searches, ALWAYS prefer `rg`:
+  ```bash
+  rg -n "sorry" Q3/           # line numbers
+  rg -C3 "pattern" file.lean  # with context
+  rg -t lean "theorem"        # by file type
+  ```
+
+---
+
 ## Key Files (reference only - use ORCHESTRATOR)
 
 | Purpose | File |
@@ -294,9 +312,29 @@ RIGHT: Task(Explore, "Search Mathlib for adjacent interval lemmas...")
 ## Active TODO (from Orchestrator)
 
 1. ~~**A1_density_WK**~~ → CLOSED via h_even as mass bound approach
-2. **Q_nonneg_on_atoms** → next target (depends on A3 Fourier formulation)
+2. **Q_nonneg_on_atoms** → IN PROGRESS via MatrixBridge (Variant B)
 
-### Recent Victory: A1_density Closure
+### Current Work: MatrixBridge (Q_nonneg via Finite Matrix Cap)
+
+**File:** `sandboxes/projekt_2/full/q3.lean.aristotle/Q3/Proofs/MatrixBridge.lean`
+
+**Strategy:** Instead of RKHS, use finite Toeplitz matrices:
+- T_M[P_A] — Toeplitz matrix of symbol P_A
+- T_P^{(M)} — prime operator compressed to ℂ^{2M+1}
+- Chain: λ_min(A) ≥ c*/2, ‖B‖ ≤ c*/4 → λ_min(A-B) ≥ c*/4 > 0 → Q ≥ 0
+
+**Closed lemmas:**
+- `T_M_P_A_symm` — Toeplitz symmetry (P_A even)
+- `T_M_P_A_lambda_min_ge_B_min` — RQ ≥ c*/2 at B_min
+- `lambda_min_diff_ge`, `Q_nonneg_via_matrix` — main chain (from sorries)
+
+**Remaining sorries (5):**
+- `P_A_continuous_t_crit` — technical
+- `P_A_ge_c_star_t_crit` — numerical (min=1.66 > 1.1)
+- `T_P_rayleigh_le` — row sum bound
+- `rayleigh_identity` — Fourier matching
+
+### Previous Victory: A1_density Closure
 Key insight from Ылша: use `h_even(x) ≤ M' + ε/4` as mass bound instead of partition of unity.
 Files created:
 - `Q3/Proofs/A1prime/HatInterpBounded.lean` - hat interpolation
@@ -361,4 +399,4 @@ Files created:
 
 ---
 
-*Last updated: 2026-01-21*
+*Last updated: 2026-01-22*
