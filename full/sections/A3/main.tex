@@ -11,7 +11,7 @@ The Toeplitz bridge and the prime contraction employ two independent smoothing p
   convolution that produces $P_A$; together with the bandwidth $B$ it controls the
   modulus $\omega_{P_A}(1/(2M))$ in the Szeg\H{o}--B\"ottcher bridge.
   \item On the \emph{RKHS side}, $t_{\mathrm{rkhs}}$ is the heat scale in the Gaussian kernel
-  used to bound $\|T_P\|$; in the uniform branch we take $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$
+  used to bound $\|T_P^{\mathrm{RKHS}}(t_{\mathrm{rkhs}})\|$; in the uniform branch we take $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$
   as in Corollary~\ref{cor:uniform-prime-cap}.
 \end{itemize}
 The Fej\'er$\times$heat tests are built with $t_{\mathrm{sym}}$, whereas the RKHS analysis uses
@@ -23,7 +23,7 @@ Let $P_A$ be the Archimedean symbol from \S\ref{subsec:a3-symbol-floor} built wi
 \[
   \min_{\theta\in\TT} P_A(\theta)\ \ge\ c_*,
 \]
-by Lemma~\ref{lem:uniform-arch-floor}, and the RKHS cap $\|T_P\|\le\rho(t_{\mathrm{rkhs}})$ follows from Corollary~\ref{cor:uniform-prime-cap}. Thus the symbol scale $t_{\mathrm{sym}}$ and the RKHS scale $t_{\mathrm{rkhs}}$ are decoupled in the uniform branch.
+by Lemma~\ref{lem:uniform-arch-floor}, and the RKHS cap $\|T_P^{\mathrm{RKHS}}(t_{\mathrm{rkhs}})\|\le\rho(t_{\mathrm{rkhs}})$ follows from Corollary~\ref{cor:uniform-prime-cap}. Thus the symbol scale $t_{\mathrm{sym}}$ and the RKHS scale $t_{\mathrm{rkhs}}$ are decoupled in the uniform branch.
 \end{lemma}
 \phantomsection\label{a3:lem:A3_dini_SB}
 
@@ -46,7 +46,7 @@ For any $f$ with $\|f\|_2=1$ we have $\ip{\TPA f}{f}=\int_{\TT}\Pa(\theta)|f(\th
 \begin{lemma}[Combining with the RKHS cap]\label{lem:a3.cap-combine}
 Suppose $\Pa$ is constructed as above and the RKHS cap
 \[
-  \|T_P\|\le \rho(t_{\mathrm{rkhs}})
+  \|T_P^{\mathrm{RKHS}}(t_{\mathrm{rkhs}})\|\le \rho(t_{\mathrm{rkhs}})
 \]
 holds (Corollary~\ref{cor:uniform-prime-cap}). Then $\TPA$ simultaneously satisfies the positivity floor and the operator-norm bound required by A3-lock.
 \end{lemma}
@@ -59,7 +59,7 @@ Apply Lemmas~\ref{lem:a3.two-scale} and \ref{lem:a3.lip-floor}, together with Co
 \begin{enumerate}[label=(A3-U.\arabic*)]
 \item \emph{Uniform Arch floor.} Lemma~\ref{lem:uniform-arch-floor} provides the explicit floor $c_*=\tfrac{11}{10}$ on $\TT$ for all $B\ge B_{\min}$.
   \item \emph{Uniform prime cap.} Corollary~\ref{cor:uniform-prime-cap} gives $t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ with $\rho(t_{\mathrm{rkhs}})\le c_*/4$ for all $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
-  \item \emph{Uniform discretisation.} Corollary~\ref{cor:uniform-discretisation} provides $M_0^{\mathrm{unif}}$ such that $\lambda_{\min}(T_M[P_A])\ge c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
+  \item \emph{Uniform discretisation.} Corollary~\ref{cor:uniform-discretisation} provides $M_0^{\mathrm{unif}}$ such that $\lambda_{\min}(T_M[P_A](t_{\mathrm{sym}},B,M))\ge c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
 \end{enumerate}
 
 %% Legacy K-dependent remark removed (December 2025 cleanup).
@@ -83,11 +83,11 @@ Assume the uniform floor $c_*>0$ from Lemma~\ref{lem:uniform-arch-floor} and fix
 $B\ge B_{\min}$, $t_{\mathrm{sym}}=\tfrac{3}{50}$, and $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
 Then for every $M\ge M_0^{\mathrm{unif}}$ (Corollary~\ref{cor:uniform-discretisation}),
 \[
-  \lambda_{\min}\!\bigl(T_M[P_A]-T_P\bigr)\ \ge\ \frac{c_*}{4}\ >\ 0,
+  \lambda_{\min}\!\bigl(T_M[P_A](t_{\mathrm{sym}},B,M)-T_P^{\mathrm{Ray}}(t_{\mathrm{sym}},M)\bigr)\ \ge\ \frac{c_*}{4}\ >\ 0,
 \]
 and the associated Fej\'er$\times$heat test functions satisfy
 \[
-  Q(\Phi_{B,t_{\mathrm{sym}}})\ \ge\ 0.
+  Q^\ast(t_{\mathrm{sym}};\Phi_{B,t_{\mathrm{sym}}})\ \ge\ 0.
 \]
 \end{theorem}
 
@@ -95,8 +95,8 @@ and the associated Fej\'er$\times$heat test functions satisfy
 The uniform floor Lemma~\ref{lem:uniform-arch-floor} gives $\min_{\theta\in\TT} P_A(\theta)\ge c_*$
 for all $B\ge B_{\min}$. Corollary~\ref{cor:uniform-discretisation} provides
 $M_0^{\mathrm{unif}}$ such that $C_{\mathrm{SB}}\,\omega_{P_A}(1/(2M))\le c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
-Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P\|\le \rho(t_{\mathrm{rkhs}})\le c_*/4$.
-Thus $\lambda_{\min}(T_M[P_A]-T_P)\ge c_* - c_*/2 - c_*/4 = c_*/4$.
+Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P^{\mathrm{RKHS}}(t_{\mathrm{rkhs}})\|\le \rho(t_{\mathrm{rkhs}})\le c_*/4$.
+Thus $\lambda_{\min}(T_M[P_A](t_{\mathrm{sym}},B,M)-T_P^{\mathrm{Ray}}(t_{\mathrm{sym}},M))\ge c_* - c_*/2 - c_*/4 = c_*/4$.
 Lemma~\ref{lem:a3-model-space} combined with Theorem~\ref{thm:a3-rayleigh-identification}
-converts the matrix margin into $Q(\Phi_{B,t})\ge0$.
+converts the matrix margin into $Q^\ast(t_{\mathrm{sym}};\Phi_{B,t_{\mathrm{sym}}})\ge0$.
 \end{proof}
