@@ -16,7 +16,7 @@ This work introduces a quantitative, modular operator framework for the Weil cri
 \end{itemize}
 
 \medskip
-\noindent\emph{Bridge summary.} We split $Q$ as $T_M[P_A]-T_P$ with $P_A\in \mathrm{Lip}(1)$ and $T_P$ finite rank. The symbol barrier yields $\lambda_{\min}(T_M[P_A])\ge c_* - C\,\omega_{P_A}(1/(2M))$, where $c_* = \tfrac{11}{10}$ is the \textbf{uniform Archimedean floor} from Lemma~\ref{lem:uniform-arch-floor} (for $t_{\mathrm{sym}}=3/50$, $B_{\min}=3$), valid on the full circle $\TT$ and independent of $K$. The prime norm is bounded in the Arch-induced RKHS by the uniform cap
+\noindent\emph{Bridge summary.} We split $Q$ as $T_M[P_A]-T_P$ with $P_A\in \mathrm{Lip}(1)$ and $T_P$ finite rank. The symbol barrier yields $\lambda_{\min}(T_M[P_A])\ge c_* - C\,\omega_{P_A}(1/(2M))$, where $c_* = \tfrac{11}{10}$ is the \textbf{uniform Archimedean floor} from Lemma~\ref{lem:uniform-arch-floor} (for $t=\tfrac{3}{20}$, $B_{\min}=3$), valid on the full circle $\TT$ and independent of $K$. The prime norm is bounded in the Arch-induced RKHS by the uniform cap
 \[
   \|T_P\|\le \rho(t_{\mathrm{rkhs}}),
 \]
@@ -67,14 +67,16 @@ on each compact window; Section~\ref{sec:T0} records the exact crosswalk to the 
 \textbf{Architecture.} T0 $\to$ A1$'$ $\to$ A2 $\to$ A3 $\to$ RKHS $\to$ Main closure.
 \textbf{Goal:} $Q\ge0$ on the Weil cone $\mathcal W$.
 
-\textbf{Two scales.} $t_{\mathrm{sym}}$ controls the symbol modulus $\omega_{P_A}$ (A3), while
-$t_{\mathrm{rkhs}}$ controls the prime cap $\|T_P\|$ (RKHS). No coupling is imposed.
+\textbf{Single scale (mainline).} We fix one heat scale $t=0.15$ with $\tau=0$ and use it for
+both the Fej\'er$\times$heat symbol and the RKHS cap; the main proof chain keeps Rayleigh and
+RKHS objects at this shared $t$. The decoupled two-scale setup is archived as legacy in
+Appendix~\ref{app:legacy-branch}.
 
 \textbf{Uniform margins.} Global Arch floor $c_\ast=\tfrac{11}{10}$ is supplied explicitly by
-Lemma~\ref{lem:uniform-arch-floor} (with $t_{\mathrm{sym}}=3/50$, $B_{\min}=3$). The prime cap is set by
-$t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$, ensuring $\|T_P\|\le c_\ast/4$.
+Lemma~\ref{lem:uniform-arch-floor} (with $t=\tfrac{3}{20}$, $B_{\min}=3$). The prime cap is set by
+the uniform RKHS bound $\|T_P\|\le c_\ast/4$ at the same $t$.
 Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P\|\le c_\ast/4$
 \ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P)\ge c_\ast/4$.
 
-\textbf{Uniform constants.} $t_{\mathrm{sym}}=3/50$, $B_{\min}=3$, $c_\ast=\tfrac{11}{10}$; see Appendix~\ref{app:notation} for $M_0^{\mathrm{unif}}$ and $t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
+\textbf{Uniform constants.} $t=\tfrac{3}{20}$, $B_{\min}=3$, $c_\ast=\tfrac{11}{10}$; see Appendix~\ref{app:notation} for $M_0^{\mathrm{unif}}$ and legacy scale notes.
 \end{tcolorbox}

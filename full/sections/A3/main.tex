@@ -4,26 +4,20 @@
 Throughout this section $a$ denotes the Archimedean density and $P_A$ denotes the Archimedean symbol defined in \S\ref{subsec:a3-symbol-floor} via the Fej\'er$\times$heat window. We use only this definition in the main proof chain. The arguments below sit inside the classical Toeplitz framework of Szeg\H{o} and B\"ottcher~\cite{Szego1952,Bottcher1907,GrenanderSzego1958,BoettcherSilbermann2006}, with Fourier bounds calibrated against standard real-analytic estimates~\cite{SteinShakarchi2003,Zygmund2002}.
 The following chain of lemmas replaces all “A3 assume …” statements by explicit estimates.  An analytic proof of the Rayleigh identification is recorded in \S\ref{subsec:a3-rayleigh}, while symbol regularity and Archimedean floors are collected in \S\ref{subsec:a3-symbol-floor}.
 
-\begin{remark}[Two-scale architecture]\label{rem:two-scales}
-The Toeplitz bridge and the prime contraction employ two independent smoothing parameters.
-\begin{itemize}
-  \item On the \emph{symbol side}, $t_{\mathrm{sym}}$ enters the Fej\'er$\times$heat
-  convolution that produces $P_A$; together with the bandwidth $B$ it controls the
-  modulus $\omega_{P_A}(1/(2M))$ in the Szeg\H{o}--B\"ottcher bridge.
-  \item On the \emph{RKHS side}, $t_{\mathrm{rkhs}}$ is the heat scale in the Gaussian kernel
-  used to bound $\|T_P\|$; in the uniform branch we take $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$
-  as in Corollary~\ref{cor:uniform-prime-cap}.
-\end{itemize}
-The Fej\'er$\times$heat tests are built with $t_{\mathrm{sym}}$, whereas the RKHS analysis uses
-$t_{\mathrm{rkhs}}$; no coupling between the two scales is needed.
+\begin{remark}[Single-scale convention]\label{rem:single-scale}
+The main proof chain fixes one heat scale $t=\tfrac{3}{20}$ (with $\tau=0$) and uses it for
+both the Fej\'er$\times$heat symbol and the RKHS cap, so Rayleigh and RKHS objects share the
+same $t$. The legacy decoupled two-scale setup is archived in Appendix~\ref{app:legacy-branch}.
 \end{remark}
 
-\begin{lemma}[Two-scale separation (uniform)]\label{lem:a3.two-scale}
-Let $P_A$ be the Archimedean symbol from \S\ref{subsec:a3-symbol-floor} built with the Fej\'er$\times$heat parameter $t_{\mathrm{sym}}$, and let $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ be the RKHS scale from Corollary~\ref{cor:uniform-prime-cap}. Then
+\begin{lemma}[Single-scale alignment (uniform)]\label{lem:a3.two-scale}
+Let $P_A$ be the Archimedean symbol from \S\ref{subsec:a3-symbol-floor} built with the
+Fej\'er$\times$heat parameter $t=\tfrac{3}{20}$, and assume the RKHS cap $\|T_P\|\le\rho(t)$
+is enforced at the same scale. Then
 \[
   \min_{\theta\in\TT} P_A(\theta)\ \ge\ c_*,
 \]
-by Lemma~\ref{lem:uniform-arch-floor}, and the RKHS cap $\|T_P\|\le\rho(t_{\mathrm{rkhs}})$ follows from Corollary~\ref{cor:uniform-prime-cap}. Thus the symbol scale $t_{\mathrm{sym}}$ and the RKHS scale $t_{\mathrm{rkhs}}$ are decoupled in the uniform branch.
+by Lemma~\ref{lem:uniform-arch-floor}, and the shared-scale RKHS bound supplies the prime cap.
 \end{lemma}
 \phantomsection\label{a3:lem:A3_dini_SB}
 
@@ -46,9 +40,10 @@ For any $f$ with $\|f\|_2=1$ we have $\ip{\TPA f}{f}=\int_{\TT}\Pa(\theta)|f(\th
 \begin{lemma}[Combining with the RKHS cap]\label{lem:a3.cap-combine}
 Suppose $\Pa$ is constructed as above and the RKHS cap
 \[
-  \|T_P\|\le \rho(t_{\mathrm{rkhs}})
+  \|T_P\|\le \rho(t)
 \]
-holds (Corollary~\ref{cor:uniform-prime-cap}). Then $\TPA$ simultaneously satisfies the positivity floor and the operator-norm bound required by A3-lock.
+holds at the shared scale (Corollary~\ref{cor:uniform-prime-cap}). Then $\TPA$ simultaneously
+satisfies the positivity floor and the operator-norm bound required by A3-lock.
 \end{lemma}
 
 \begin{proof}
@@ -58,7 +53,7 @@ Apply Lemmas~\ref{lem:a3.two-scale} and \ref{lem:a3.lip-floor}, together with Co
 \paragraph{A3 input summary (uniform version).}
 \begin{enumerate}[label=(A3-U.\arabic*)]
 \item \emph{Uniform Arch floor.} Lemma~\ref{lem:uniform-arch-floor} provides the explicit floor $c_*=\tfrac{11}{10}$ on $\TT$ for all $B\ge B_{\min}$.
-  \item \emph{Uniform prime cap.} Corollary~\ref{cor:uniform-prime-cap} gives $t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ with $\rho(t_{\mathrm{rkhs}})\le c_*/4$ for all $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
+  \item \emph{Uniform prime cap.} Corollary~\ref{cor:uniform-prime-cap} yields the uniform bound $\rho(t)\le c_*/4$ at the shared scale; the legacy decoupled threshold is archived in Appendix~\ref{app:legacy-branch}.
   \item \emph{Uniform discretisation.} Corollary~\ref{cor:uniform-discretisation} provides $M_0^{\mathrm{unif}}$ such that $\lambda_{\min}(T_M[P_A])\ge c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
 \end{enumerate}
 
@@ -80,14 +75,14 @@ This eliminates the need for arc-based constructions and provides a simpler, cle
 
 \begin{theorem}[Uniform A3 bridge]\label{thm:A3}
 Assume the uniform floor $c_*>0$ from Lemma~\ref{lem:uniform-arch-floor} and fix
-$B\ge B_{\min}$, $t_{\mathrm{sym}}=\tfrac{3}{50}$, and $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
+$B\ge B_{\min}$ and the shared scale $t=\tfrac{3}{20}$ (with $\tau=0$).
 Then for every $M\ge M_0^{\mathrm{unif}}$ (Corollary~\ref{cor:uniform-discretisation}),
 \[
   \lambda_{\min}\!\bigl(T_M[P_A]-T_P\bigr)\ \ge\ \frac{c_*}{4}\ >\ 0,
 \]
 and the associated Fej\'er$\times$heat test functions satisfy
 \[
-  Q(\Phi_{B,t_{\mathrm{sym}}})\ \ge\ 0.
+  Q(\Phi_{B,t})\ \ge\ 0.
 \]
 \end{theorem}
 
@@ -95,7 +90,7 @@ and the associated Fej\'er$\times$heat test functions satisfy
 The uniform floor Lemma~\ref{lem:uniform-arch-floor} gives $\min_{\theta\in\TT} P_A(\theta)\ge c_*$
 for all $B\ge B_{\min}$. Corollary~\ref{cor:uniform-discretisation} provides
 $M_0^{\mathrm{unif}}$ such that $C_{\mathrm{SB}}\,\omega_{P_A}(1/(2M))\le c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
-Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P\|\le \rho(t_{\mathrm{rkhs}})\le c_*/4$.
+Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P\|\le \rho(t)\le c_*/4$.
 Thus $\lambda_{\min}(T_M[P_A]-T_P)\ge c_* - c_*/2 - c_*/4 = c_*/4$.
 Lemma~\ref{lem:a3-model-space} combined with Theorem~\ref{thm:a3-rayleigh-identification}
 converts the matrix margin into $Q(\Phi_{B,t})\ge0$.

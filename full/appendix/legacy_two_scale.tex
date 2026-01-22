@@ -1,0 +1,25 @@
+\begin{remark}[Legacy two-scale architecture (archived)]
+The historical Toeplitz bridge and prime contraction used two independent smoothing parameters.
+\begin{itemize}
+  \item On the \emph{symbol side}, $t_{\mathrm{sym}}$ enters the Fej\'er$\times$heat
+  convolution that produces $P_A$; together with the bandwidth $B$ it controls the
+  modulus $\omega_{P_A}(1/(2M))$ in the Szeg\H{o}--B\"ottcher bridge.
+  \item On the \emph{RKHS side}, $t_{\mathrm{rkhs}}$ is the heat scale in the Gaussian kernel
+  used to bound $\|T_P\|$; in the uniform branch we take $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$
+  as in Corollary~\ref{cor:uniform-prime-cap}.
+\end{itemize}
+The Fej\'er$\times$heat tests were built with $t_{\mathrm{sym}}$, whereas the RKHS analysis used
+$t_{\mathrm{rkhs}}$; no coupling between the two scales was imposed.
+\end{remark}
+
+\begin{lemma}[Legacy two-scale separation (archived)]
+Let $P_A$ be the Archimedean symbol from \S\ref{subsec:a3-symbol-floor} built with the
+Fej\'er$\times$heat parameter $t_{\mathrm{sym}}$, and let $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$
+be the RKHS scale from Corollary~\ref{cor:uniform-prime-cap}. Then
+\[
+  \min_{\theta\in\TT} P_A(\theta)\ \ge\ c_*,
+\]
+by Lemma~\ref{lem:uniform-arch-floor}, and the RKHS cap $\|T_P\|\le\rho(t_{\mathrm{rkhs}})$ follows
+from Corollary~\ref{cor:uniform-prime-cap}. Thus the symbol scale $t_{\mathrm{sym}}$ and the
+RKHS scale $t_{\mathrm{rkhs}}$ were decoupled in the uniform branch.
+\end{lemma}
