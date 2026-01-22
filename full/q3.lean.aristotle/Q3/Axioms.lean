@@ -350,6 +350,35 @@ lemma AtomCone_K_fixed_subset (K t0 : ℝ) (ht0 : t0 > 0) :
   · intro x
     simpa using (hg_sum x)
 
+/-- BaseAtomCone_K: Fejér-heat atoms with τ = 0 only (centered atoms).
+
+This cone aligns directly with the A3 bridge which uses P_A(B, t) without τ-shift.
+For τ = 0: Fejer_heat_atom B t 0 ξ = 2 * Fejer_kernel B ξ * heat_kernel_A1 t ξ
+(symmetric, no shift).
+
+**Architecture:**
+1. Q ≥ 0 on BaseAtomCone_K via A3 bridge (P_A floor + RKHS cap)
+2. τ-transfer to AtomCone_K_fixed via Q Lipschitz continuity
+-/
+def BaseAtomCone_K (K t0 : ℝ) : Set (ℝ → ℝ) :=
+  { g | ∃ (n : ℕ) (c : Fin n → ℝ) (B : Fin n → ℝ),
+        (∀ i, c i ≥ 0) ∧
+        (∀ i, B i > 0) ∧
+        (∀ i, B i ≤ K) ∧  -- support ⊆ [-K, K] since τ = 0
+        (∀ x, g x = ∑ i, c i * Fejer_heat_atom (B i) t0 0 x) ∧
+        g ∈ W_K K }
+
+lemma BaseAtomCone_K_subset_AtomCone_K_fixed (K t0 : ℝ) :
+    BaseAtomCone_K K t0 ⊆ AtomCone_K_fixed K t0 := by
+  intro g hg
+  rcases hg with ⟨n, c, B, hc, hB, hBK, hg_sum, hg_mem⟩
+  refine ⟨n, c, B, (fun _ => 0), hc, hB, ?_, ?_, hg_mem⟩
+  · intro i
+    simp only [abs_zero, zero_add]
+    exact hBK i
+  · intro x
+    simp only [hg_sum x]
+
 /-- Even nonnegative continuous functions on [-K, K] -/
 def C_even_nonneg (K : ℝ) : Set (ℝ → ℝ) :=
   { f | ContinuousOn f (Set.Icc (-K) K) ∧
