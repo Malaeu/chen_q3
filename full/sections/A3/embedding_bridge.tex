@@ -1,7 +1,7 @@
 % Embedding bridge between Rayleigh and RKHS operators (C1)
 \subsection{Embedding bridge: Rayleigh vs.\ RKHS}\label{subsec:a3-embedding-bridge}
 We fix a single heat scale $t$ and work with the Rayleigh operator
-$T_P^{\mathrm{Ray}}(t,M)$ on $\C^{2M+1}$ and the RKHS operator
+$T_P^{\mathrm{Ray}}(t,M)$ on $\CC^{2M+1}$ and the RKHS operator
 $T_P^{\mathrm{RKHS}}(t)$ on $\mathcal H_t$.  The comparison
 \[
   \bigl\|T_P^{\mathrm{Ray}}(t,M)\bigr\| \ \le\ \bigl\|T_P^{\mathrm{RKHS}}(t)\bigr\|
@@ -15,7 +15,7 @@ compression inequality; the choice is driven by formalization cost.
 
 \paragraph{C1 micro-lemmas (shared).}
 \begin{enumerate}
-  \item \textbf{Spaces:} set $E:=\C^{2M+1}$ and $H:=\mathcal H_t$ as Hilbert spaces.
+  \item \textbf{Spaces:} set $E:=\CC^{2M+1}$ and $H:=\mathcal H_t$ as Hilbert spaces.
   \item \textbf{Embedding:} construct a linear isometry $\iota:E\hookrightarrow H$.
   \item \textbf{Compression:} define $T_P^{\mathrm{Ray}}:=\iota^\ast T_P^{\mathrm{RKHS}}\iota$.
   \item \textbf{Isometry norm:} $\|\iota\|=\|\iota^\ast\|=1$.
@@ -45,7 +45,7 @@ sections $k_t(\cdot,\xi_n)$ at the prime nodes) and set
 $V:=\mathrm{span}\{d_i\}$.  Choose an orthonormal basis
 $\{e_1,\dots,e_N\}$ of $V$ and define the isometric inclusion
 \[
-  \iota_{t,M}:\C^N\to \mathcal H_t,\qquad \iota_{t,M}(c):=\sum_{j=1}^{N} c_j\,e_j.
+  \iota_{t,M}:\CC^N\to \mathcal H_t,\qquad \iota_{t,M}(c):=\sum_{j=1}^{N} c_j\,e_j.
 \]
 Then $\iota_{t,M}$ is a linear isometry and the compression
 $\iota_{t,M}^\ast T_P^{\mathrm{RKHS}}(t)\iota_{t,M}$ yields a finite-dimensional
