@@ -11,6 +11,7 @@ import Q3.Proofs.Rayleigh_utils
 import Q3.Proofs.T_P_comp_utils
 import Q3.Proofs.A3_bridge_rayleigh_first
 import Q3.Proofs.Rayleigh_Q_identification
+import Q3.Proofs.C1_T_P_comp_dictEmbedding
 
 set_option maxHeartbeats 0
 
@@ -846,6 +847,23 @@ lemma T_P_comp_real_opNorm_le_weight_sum (K B t : ℝ) (M : ℕ) [Fintype (Q3.No
   exact Q3.Schur_test (A:=Q3.T_P_comp_real K B t M) hsymm
     (C:=∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖)
     hC_nonneg hrow
+
+lemma T_P_comp_real_opNorm_le_via_C1_dictEmbedding
+    (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+    {n : ℕ} (d : Fin n → H)
+    (hdim : Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1)
+    (T : H →L[ℝ] H)
+    (hA :
+      (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t M)).toContinuousLinearMap =
+        Q3.Proofs.C1Embedding.compression
+          (Q3.Proofs.C1Embedding.dictEmbeddingCast (𝕜 := ℝ) (d := d) (m := 2 * M + 1) hdim) T) :
+    ‖Q3.T_P_comp_real K B t M‖ ≤ ‖T‖ := by
+  have hC1 :
+      ‖(Matrix.toEuclideanLin (Q3.T_P_comp_real K B t M)).toContinuousLinearMap‖ ≤ ‖T‖ :=
+    T_P_comp_real_opNorm_le_of_dictEmbedding (K := K) (B := B) (t := t) (M := M)
+      (d := d) (hdim := hdim) (T := T) hA
+  simpa [Matrix.l2_opNorm_def, LinearEquiv.trans_apply] using hC1
 
 lemma rkhs_cap_rayleigh_tcap (K B : ℝ) [Fintype (Q3.Nodes K)]
     (h_weight_sum :
