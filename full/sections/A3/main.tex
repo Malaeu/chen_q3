@@ -10,7 +10,7 @@ both the Fej\'er$\times$heat symbol and the RKHS cap, so Rayleigh and RKHS objec
 same $t$. The legacy decoupled two-scale setup is archived in Appendix~\ref{app:legacy-branch}.
 \end{remark}
 
-\begin{lemma}[Single-scale alignment (uniform)]\label{lem:a3.two-scale}
+\begin{lemma}[Single-scale alignment (uniform)]\label{lem:a3.single-scale}
 Let $P_A$ be the Archimedean symbol from \S\ref{subsec:a3-symbol-floor} built with the
 Fej\'er$\times$heat parameter $t=\tfrac{3}{20}$, and assume the RKHS cap $\|T_P\|\le\rho(t)$
 is enforced at the same scale. Then
@@ -47,13 +47,13 @@ satisfies the positivity floor and the operator-norm bound required by A3-lock.
 \end{lemma}
 
 \begin{proof}
-Apply Lemmas~\ref{lem:a3.two-scale} and \ref{lem:a3.lip-floor}, together with Corollary~\ref{cor:uniform-prime-cap}.
+Apply Lemmas~\ref{lem:a3.single-scale} and \ref{lem:a3.lip-floor}, together with Corollary~\ref{cor:uniform-prime-cap}.
 \end{proof}
 
 \paragraph{A3 input summary (uniform version).}
 \begin{enumerate}[label=(A3-U.\arabic*)]
 \item \emph{Uniform Arch floor.} Lemma~\ref{lem:uniform-arch-floor} provides the explicit floor $c_*=\tfrac{11}{10}$ on $\TT$ for all $B\ge B_{\min}$.
-  \item \emph{Uniform prime cap.} Corollary~\ref{cor:uniform-prime-cap} yields the uniform bound $\rho(t)\le c_*/4$ at the shared scale; the legacy decoupled threshold is archived in Appendix~\ref{app:legacy-branch}.
+  \item \emph{Uniform prime cap.} Corollary~\ref{cor:uniform-prime-cap} yields a uniform bound of the form $\rho(t_{\mathrm{rkhs}})\le c_*/4$ for all $t_{\mathrm{rkhs}}\ge t^{\mathrm{rkhs}}_{\star,\mathrm{unif}}$; under the single-scale convention $t_{\mathrm{rkhs}}=t=\tfrac{3}{20}$ this specializes to $\rho(t)\le c_*/4$ at the shared scale. The legacy decoupled threshold is archived in Appendix~\ref{app:legacy-branch}.
   \item \emph{Uniform discretisation.} Corollary~\ref{cor:uniform-discretisation} provides $M_0^{\mathrm{unif}}$ such that $\lambda_{\min}(T_M[P_A])\ge c_*/2$ for all $M\ge M_0^{\mathrm{unif}}$.
 \end{enumerate}
 

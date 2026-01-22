@@ -15,7 +15,7 @@ T_P = \sum_{\alpha_n\in[-K,K]} w(n)\,|k_{\alpha_n}\rangle\!\langle k_{\alpha_n}|
 with $w(n)=\Lambda(n)/\sqrt n$.
 
 \begin{lemma}[Dispersion via A2/A3 data]\label{d3:lem:D3-dispersion}
-Assume the A3 hypotheses: $P_A\in\Lip(1)$ with $\min P_A\ge \czero>0$ (Lemma~\ref{lem:a3-lipschitz-bound} and Lemma~\ref{lem:a3.lip-floor}), the uniform RKHS cap $\|T_P\|\le \rho(t_{\mathrm{rkhs}})$ (Corollary~\ref{cor:uniform-prime-cap}), and the two-scale separation of Lemma~\ref{lem:a3.two-scale}. Then there exist a scale $t_{\mathrm{sym}}$ (with $t_{\mathrm{rkhs}}$ fixed) and a sequence $\delta_A\to0$ such that for every even RKHS test $f$ supported in $[-K,K]$
+Assume the A3 hypotheses: $P_A\in\Lip(1)$ with $\min P_A\ge \czero>0$ (Lemma~\ref{lem:a3-lipschitz-bound} and Lemma~\ref{lem:a3.lip-floor}), the uniform RKHS cap $\|T_P\|\le \rho(t_{\mathrm{rkhs}})$ (Corollary~\ref{cor:uniform-prime-cap}), and the two-scale separation of Lemma~\ref{lem:a3.single-scale}. Then there exist a scale $t_{\mathrm{sym}}$ (with $t_{\mathrm{rkhs}}$ fixed) and a sequence $\delta_A\to0$ such that for every even RKHS test $f$ supported in $[-K,K]$
 \[
   \Biggl|\sum_{p\le A}\Bigl(f(p)-\mathbb{E}_{\mathcal{P}\cap[1,A]}f\Bigr)\Biggr|
   \le C(K)\Bigl(\omega_{P_A}(t_{\mathrm{sym}})+\epsK(t_{\mathrm{rkhs}})\Bigr)
@@ -25,7 +25,7 @@ Consequently, $\delta_A\to0$ as $A\to\infty$.
 \end{lemma}
 
 \begin{proof}
-The Lipschitz control from Lemma~\ref{lem:a3-lipschitz-bound} bounds the near-diagonal contribution by $\omega_{P_A}(t_{\mathrm{sym}})$. The uniform RKHS cap (Corollary~\ref{cor:uniform-prime-cap}) together with Lemma~\ref{lem:a3.two-scale} controls the RKHS tail by $\epsK(t_{\mathrm{rkhs}})$. Adding the two estimates yields the desired inequality.
+The Lipschitz control from Lemma~\ref{lem:a3-lipschitz-bound} bounds the near-diagonal contribution by $\omega_{P_A}(t_{\mathrm{sym}})$. The uniform RKHS cap (Corollary~\ref{cor:uniform-prime-cap}) together with Lemma~\ref{lem:a3.single-scale} controls the RKHS tail by $\epsK(t_{\mathrm{rkhs}})$. Adding the two estimates yields the desired inequality.
 \end{proof}
 
 \begin{theorem}[D3: Structural contraction]\label{d3:thm:D3-contraction}

@@ -106,7 +106,7 @@ Fix $K>0$ and let $\mathcal N_{\le N_0}$ be the finite set of active nodes on $[
 \begin{itemize}
   \item a partition $\mathcal N_{\le N_0}=B_1\sqcup B_2\sqcup\cdots\sqcup B_J$ into consecutive blocks (in any fixed ordering),
   \item a number $\varepsilon(K)\in(0,1)$ and a uniform margin $\gamma(K)>0$,
-  \item for each block $B_j$ a two--scale Fej\'er$\times$heat window $\Phi_j=\alpha_j\,\Phi_{\mathrm{sym}}+\beta_j\,\Phi_{\mathrm{rkhs}}$ with parameters from Lemma~\ref{lem:a3.two-scale},
+  \item for each block $B_j$ a two--scale Fej\'er$\times$heat window $\Phi_j=\alpha_j\,\Phi_{\mathrm{sym}}+\beta_j\,\Phi_{\mathrm{rkhs}}$ with parameters from Lemma~\ref{lem:a3.single-scale},
 \end{itemize}
 such that
 \begin{equation}\label{eq:MD_2_3_base_interval-formula-5}
@@ -119,7 +119,7 @@ and the following operator inequality holds uniformly in $j$:
 After exhausting the early blocks, the one--prime step (Theorem~\ref{rkhs:thm:rkhs-ind}) applies since the remaining new weights satisfy $w_{\mathrm{new}}\le\varepsilon(K)$ and $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$.
 \end{theorem}
 \begin{proof}
-Let $c_0(K)$ and $t_{\mathrm{sym}},t_{\mathrm{rkhs}},M_0$ be as in Lemma~\ref{lem:a3.two-scale}. Choose $\varepsilon(K):=\tfrac14 c_0(K)$ and $\gamma(K):=\tfrac12 c_0(K)$. Construct blocks greedily along the chosen ordering so that each block satisfies $\sum_{n\in B_j} w(n)\le\varepsilon(K)$ (the last block may have a strictly smaller sum). For $\Phi_j$ take any convex mixture with $\alpha_j,\beta_j\in(0,1)$ (e.g. $\alpha_j=\beta_j=\tfrac12$) of the two scales furnished by Lemma~\ref{lem:a3.two-scale}.
+Let $c_0(K)$ and $t_{\mathrm{sym}},t_{\mathrm{rkhs}},M_0$ be as in Lemma~\ref{lem:a3.single-scale}. Choose $\varepsilon(K):=\tfrac14 c_0(K)$ and $\gamma(K):=\tfrac12 c_0(K)$. Construct blocks greedily along the chosen ordering so that each block satisfies $\sum_{n\in B_j} w(n)\le\varepsilon(K)$ (the last block may have a strictly smaller sum). For $\Phi_j$ take any convex mixture with $\alpha_j,\beta_j\in(0,1)$ (e.g. $\alpha_j=\beta_j=\tfrac12$) of the two scales furnished by Lemma~\ref{lem:a3.single-scale}.
 
 By that theorem, uniformly for $M\ge M_0$,
 \begin{equation}\label{eq:MD_2_3_base_interval-lambda-min}
