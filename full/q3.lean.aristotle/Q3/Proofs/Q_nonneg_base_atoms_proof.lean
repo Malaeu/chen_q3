@@ -31,6 +31,30 @@ namespace Q3.Proofs.BaseAtomProof
 
 open Q3
 
+/-! ## Step 0: Key identities at τ = 0 -/
+
+/-- phi_shift at τ = 0 is just fejer_heat_window. -/
+lemma phi_shift_tau_zero (B t ξ : ℝ) :
+    phi_shift B t 0 ξ = fejer_heat_window B t ξ := by
+  simp only [phi_shift, sub_zero]
+
+/-- g_shift at τ = 0 equals g from A3_Floor_Main.
+    Note: g B t ξ = a ξ * w B t ξ where w = fejer_heat_window. -/
+lemma g_shift_tau_zero (B t ξ : ℝ) :
+    g_shift B t 0 ξ = a ξ * fejer_heat_window B t ξ := by
+  simp only [g_shift, phi_shift_tau_zero]
+
+/-- P_A_shift at τ = 0 equals P_A from A3_Floor_Main.
+    This is the KEY IDENTITY that connects the shifted formulation to A3 floor. -/
+lemma P_A_shift_tau_zero (B t θ : ℝ) :
+    P_A_shift B t 0 θ = P_A B t θ := by
+  simp only [P_A_shift, P_A, g_shift_tau_zero]
+  congr 1
+  ext m
+  simp only [g, w]
+  -- w B t = fejer_heat_window B t by definition
+  rfl
+
 /-! ## Step 1: Fejer_heat_atom at τ = 0 equals scaled fejer_heat_window -/
 
 /-- For τ = 0, Fejer_heat_atom simplifies to 2 * Fejer_kernel * heat_kernel_A1. -/
@@ -86,27 +110,87 @@ lemma Q_scale_const (c : ℝ) (f : ℝ → ℝ)
   rw [h1, h2]
   ring
 
-/-! ## Step 3: Q ≥ 0 on single centered atom via A3 bridge -/
+/-! ## Step 3: Q ≥ 0 on phi_shift at τ = 0 via A3 floor -/
 
-/-- Q on fejer_heat_window is nonnegative via A3 bridge.
-    This uses the Rayleigh-Q identification and A3 floor. -/
+/-- Rayleigh quotient for P_A_shift at τ = 0 reduces to P_A.
+    Uses P_A_shift_tau_zero and P_A_rayleigh_lower_bound_odd. -/
+lemma rayleigh_P_A_shift_tau_zero (M : ℕ) (v : Fin (2 * M + 1) → ℝ) (hv : v ≠ 0) :
+    RayleighQuotient
+      (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (P_A_shift B_min t_sym 0)) v
+    ≥ c_star := by
+  -- P_A_shift B_min t_sym 0 = P_A B_min t_sym by P_A_shift_tau_zero
+  have h_eq : P_A_shift B_min t_sym 0 = P_A B_min t_sym := by
+    ext θ
+    exact P_A_shift_tau_zero B_min t_sym θ
+  rw [h_eq]
+  exact Q3.Proofs.P_A_Bridge.P_A_rayleigh_lower_bound_odd M v hv
+
+/-- P_A_shift B_min t_sym 0 is continuous (inherited from P_A). -/
+lemma P_A_shift_tau_zero_continuous :
+    Continuous (P_A_shift B_min t_sym 0) := by
+  have h_eq : P_A_shift B_min t_sym 0 = P_A B_min t_sym := by
+    ext θ; exact P_A_shift_tau_zero B_min t_sym θ
+  rw [h_eq]
+  exact P_A_continuous
+
+/-- Q on phi_shift at τ = 0 (= fejer_heat_window) is nonnegative via A3 floor.
+
+    Key path:
+    1. phi_shift B_min t_sym 0 = fejer_heat_window B_min t_sym (by phi_shift_tau_zero)
+    2. P_A_shift B_min t_sym 0 = P_A B_min t_sym (by P_A_shift_tau_zero)
+    3. RQ(Toeplitz[P_A B_min t_sym]) ≥ c_star (by P_A_rayleigh_lower_bound_odd)
+    4. Apply Q_phi_shift_nonneg with R = rho_one
+-/
+theorem Q_nonneg_phi_shift_tau_zero (K : ℝ) [Fintype (Nodes K)]
+    (hK : K ≥ 1) (hBK : B_min ≤ K)
+    (h_cap : ∑ n : Nodes K, w_Q n * phi_shift B_min t_rkhs_cap 0 (xi_n n) ≤
+        Q3.Proofs.rho_one) :
+    Q (fun ξ => phi_shift B_min t_sym 0 ξ) ≥ 0 := by
+  have hB_pos : (0 : ℝ) < B_min := by norm_num [B_min]
+  have hK_support : |0| + B_min ≤ K := by simp [hBK]
+  have hP_cont : Continuous (P_A_shift B_min t_sym 0) := P_A_shift_tau_zero_continuous
+  have hM : 0 < 2 * 0 + 1 := by norm_num
+  -- Rayleigh bound: RQ ≥ c_star ≥ c_star/4
+  have h_rayleigh : RayleighQuotient
+      (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * 0 + 1) (P_A_shift B_min t_sym 0))
+      (Q3.Proofs.RayleighQId.basis0 0) ≥ c_star / 4 := by
+    have h_full := rayleigh_P_A_shift_tau_zero 0
+      (Q3.Proofs.RayleighQId.basis0 0) (Q3.Proofs.RayleighQId.basis0_ne_zero 0)
+    have h_quarter : c_star / 4 ≤ c_star := by
+      have hc : c_star > 0 := by norm_num [c_star]
+      linarith
+    exact le_trans h_quarter h_full
+  -- Positivity condition: c_star/4 - exp_factor * rho_one ≥ 0
+  have hpos : 0 ≤ c_star / 4 - Q3.Proofs.PrimeTermBridge.exp_tsym_to_rkhs K * Q3.Proofs.rho_one := by
+    -- This needs the cap bound to be small enough
+    -- exp_tsym_to_rkhs K * rho_one < c_star/4
+    -- For K ≥ 1, this should hold by construction
+    sorry  -- Needs numerical bound on exp_tsym_to_rkhs
+  exact Q3.Proofs.QNonnegAtoms.Q_phi_shift_nonneg
+    (K:=K) (B:=B_min) (tau:=0) (R:=Q3.Proofs.rho_one) (M:=0)
+    hB_pos hK_support hP_cont hM h_cap h_rayleigh hpos
+
+/-- Q on fejer_heat_window B_min t_sym is nonnegative.
+    This is a direct corollary of Q_nonneg_phi_shift_tau_zero. -/
 theorem Q_nonneg_fejer_heat_window_B_min (K : ℝ) [Fintype (Nodes K)]
     (hK : K ≥ 1) (hBK : B_min ≤ K)
-    (hA3 : Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K)
-    (h_cap : ∑ n : Nodes K, w_Q n * fejer_heat_window B_min t_sym (xi_n n) ≤
+    (h_cap : ∑ n : Nodes K, w_Q n * fejer_heat_window B_min t_rkhs_cap (xi_n n) ≤
         Q3.Proofs.rho_one) :
     Q (fun ξ => fejer_heat_window B_min t_sym ξ) ≥ 0 := by
-  -- Use existing Q_nonneg_fejer_heat_window from helpers
-  have hB_pos : (0 : ℝ) < B_min := by norm_num [B_min]
-  have hP_cont : Continuous (P_A B_min t_sym) := P_A_continuous
-  -- Get Rayleigh bound from A3 bridge
-  obtain ⟨t, ht, hA3M⟩ := hA3 hK
-  -- For M = 0, get the base case
-  have hM : 0 < 2 * 0 + 1 := by norm_num
-  have h_rayleigh := hA3M 0 (Q3.Proofs.RayleighQId.basis0 0) (Q3.Proofs.RayleighQId.basis0_ne_zero 0)
-  -- Need to show RQ for B_min, t_sym matches what A3 gives for P_A B_min t_sym
-  -- This requires that A3 bridge uses exactly P_A B_min t_sym
-  sorry  -- Bridge A3_bridge_data_rayleigh_Fourier → h_rayleigh for Q_nonneg_fejer_heat_window
+  -- fejer_heat_window B_min t_sym = phi_shift B_min t_sym 0
+  have h_eq : (fun ξ => fejer_heat_window B_min t_sym ξ) =
+              (fun ξ => phi_shift B_min t_sym 0 ξ) := by
+    ext ξ
+    exact (phi_shift_tau_zero B_min t_sym ξ).symm
+  rw [h_eq]
+  -- Also convert h_cap
+  have h_cap' : ∑ n : Nodes K, w_Q n * phi_shift B_min t_rkhs_cap 0 (xi_n n) ≤
+      Q3.Proofs.rho_one := by
+    convert h_cap using 2
+    ext n
+    congr 1
+    exact (phi_shift_tau_zero B_min t_rkhs_cap (xi_n n)).symm
+  exact Q_nonneg_phi_shift_tau_zero K hK hBK h_cap'
 
 /-- Q ≥ 0 on centered Fejer_heat_atom with B = B_min. -/
 theorem Q_nonneg_centered_atom_B_min (K : ℝ) [Fintype (Nodes K)]

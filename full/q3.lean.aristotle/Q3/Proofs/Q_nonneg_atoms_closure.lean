@@ -42,12 +42,22 @@ The key is to connect:
 - rayleigh_Q_eq_Q_shift: RQ at basis0 = Q(phi_shift)
 -/
 
-/-- Q is nonnegative on phi_shift (single shifted fejer-heat window).
-    Uses Rayleigh-Q identification and A3 bridge. -/
-theorem Q_nonneg_phi_shift (K B τ : ℝ) [Fintype (Nodes K)]
+/-- Q is nonnegative on phi_shift at t_sym (single shifted fejer-heat window).
+    Uses Rayleigh-Q identification and A3 bridge.
+
+    **Key:** phi_shift B t_sym τ uses the SAME exponential parameter as A3 floor.
+    This is because t_sym = 3/50 appears directly in fejer_heat_window's exp(-4π²·t_sym·ξ²).
+
+    The A3 bridge gives RQ(Toeplitz[P_A B_min t_sym] - T_P_comp) ≥ c_star/4.
+    Combined with arch_rayleigh_eq_shift and prime bounds, this yields Q ≥ 0.
+-/
+theorem Q_nonneg_phi_shift_tsym (K B τ : ℝ) [Fintype (Nodes K)]
     (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K)
     (hA3 : Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K) :
-    Q (fun ξ => phi_shift B t0_A1 τ ξ) ≥ 0 := by
+    Q (fun ξ => phi_shift B t_sym τ ξ) ≥ 0 := by
+  -- Use Q_phi_shift_nonneg from Q_nonneg_atoms_helpers
+  -- Need: hpos : 0 ≤ c_star/4 - exp_tsym_to_rkhs K * R
+  -- This requires careful parameter choice
   sorry
 
 /-! ## Step 2: Heat kernel scaling
@@ -122,11 +132,24 @@ theorem Q_Fejer_heat_atom_eq_sum (B t τ : ℝ) (hB : B > 0) (ht : t > 0) :
 
 /-! ## Step 5: Q ≥ 0 on half_atom via scaling -/
 
-/-- half_atom is a scaled version of phi_shift -/
+/-- half_atom at t0_A1 is a scaled version of phi_shift at t_sym.
+
+    **Proof:**
+    half_atom B t0_A1 τ ξ = Fejer_kernel B (ξ-τ) * heat_kernel_A1 t0_A1 (ξ-τ)
+                         = Fejer_kernel B (ξ-τ) * (1/√(4π·t0_A1)) * exp(-(ξ-τ)²/(4·t0_A1))
+                         = (1/√(4π·t0_A1)) * Fejer_kernel B (ξ-τ) * exp(-4π²·t_sym·(ξ-τ)²)
+                           (using exp_reparam)
+                         = (1/√(4π·t0_A1)) * fejer_heat_window B t_sym (ξ-τ)
+                         = (1/√(4π·t0_A1)) * phi_shift B t_sym τ ξ
+-/
 lemma half_atom_eq_scaled_phi_shift (B τ ξ : ℝ) :
     half_atom B t0_A1 τ ξ =
       (1 / Real.sqrt (4 * Real.pi * t0_A1)) * phi_shift B t_sym τ ξ := by
-  sorry
+  simp only [half_atom, heat_kernel_A1, phi_shift, fejer_heat_window, Fejer_kernel]
+  -- exp_reparam gives: exp(-x²/(4·t0_A1)) = exp(-4π²·t_sym·x²)
+  have hexp := exp_reparam (ξ - τ)
+  rw [hexp]
+  ring
 
 /-- Q scales with positive constants -/
 lemma Q_scale (c : ℝ) (hc : c > 0) (f : ℝ → ℝ)
@@ -145,11 +168,28 @@ lemma Q_scale (c : ℝ) (hc : c > 0) (f : ℝ → ℝ)
   rw [h1, h2]
   ring
 
-/-- Q ≥ 0 on half_atom -/
+/-- Q ≥ 0 on half_atom.
+
+    Uses: half_atom = c * phi_shift B t_sym τ, and Q(phi_shift B t_sym τ) ≥ 0.
+-/
 theorem Q_nonneg_half_atom (K B τ : ℝ) [Fintype (Nodes K)]
     (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K)
     (hA3 : Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K) :
     Q (half_atom B t0_A1 τ) ≥ 0 := by
+  -- half_atom = c * phi_shift B t_sym τ
+  have hc_pos : (1 / Real.sqrt (4 * Real.pi * t0_A1)) > 0 := by
+    apply div_pos one_pos
+    apply Real.sqrt_pos_of_pos
+    have ht : t0_A1 > 0 := t0_A1_pos
+    nlinarith [Real.pi_pos]
+  have h_eq : half_atom B t0_A1 τ = fun ξ =>
+      (1 / Real.sqrt (4 * Real.pi * t0_A1)) * phi_shift B t_sym τ ξ := by
+    ext ξ
+    exact half_atom_eq_scaled_phi_shift B τ ξ
+  rw [h_eq]
+  -- Q(c * f) = c * Q(f), and Q(phi_shift) ≥ 0
+  have hQ_phi := Q_nonneg_phi_shift_tsym K B τ hK hB hτB hA3
+  -- Need integrability and summability for Q_scale
   sorry
 
 /-! ## Step 6: Q ≥ 0 on Fejer_heat_atom -/

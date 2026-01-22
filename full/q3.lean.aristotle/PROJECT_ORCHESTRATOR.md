@@ -82,13 +82,43 @@ RH_of_Weil_and_Q3
                  +-- RKHS_contraction [OK]
 ```
 
-## Active Next Step (closing, not wiring)
+## 🚨🚨🚨 CRITICAL: LaTeX Proof Gap Discovered (2026-01-22) 🚨🚨🚨
 
-1) Wire the **proven** Rayleigh-Q identification into the atoms-positivity chain:
-   use `rayleigh_Q_eq_Q` in `Q3/Proofs/Rayleigh_Q_identification.lean`.
-2) Replace `Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` in
-   `Q3/Atoms_Positive.lean` / `Q3/AxiomsTheorems.lean` with the theorem proof
-   (A3 floor + RKHS cap + Rayleigh identification).
+**FINDING:** Numerical verification shows Q(Φ_{t_sym}) = -16.29 < 0, contradicting Theorem A3.
+
+**ROOT CAUSE:** The LaTeX proof conflates TWO DIFFERENT T_P operators:
+
+1. **Rayleigh T_P^{(M)}** (rayleigh_bridge.tex): `Σ w(n)·Φ_{B,t}(ξ_n)·|v_n⟩⟨v_n|`
+   - Includes Fejér×heat damping factor `Φ_{B,t}(ξ_n)`
+   
+2. **RKHS T_P** (RKHS/main.tex): `Σ w_RKHS(n)·|k_n⟩⟨k_n|`
+   - NO Fejér×heat factor — just `w_RKHS(n) = Λ(n)/√n`
+
+**THE GAP:** Theorem A3 claims `λ_min(T_M[P_A] - T_P) ≥ c_*/4` using:
+- P_A built with t_sym = 0.06
+- ||T_P|| bound from RKHS (which uses different operator!)
+
+**Numerical verification (B=3, t_sym=0.06):**
+- Arch term: ∫ P_A dθ = 11.06
+- Prime term: Σ w(n)·Φ(ξ_n) = 27.35
+- **Q = -16.29 < 0** ← CONTRADICTS THEOREM
+
+**FULL ANALYSIS:** `docs/LATEX_PROOF_GAP_ANALYSIS.md`
+
+**STATUS:** Cannot close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` with current approach.
+Mathematical consultation with Proshka required.
+
+---
+
+## Active Next Step (ON HOLD pending gap resolution)
+
+~~1) Wire the **proven** Rayleigh-Q identification into the atoms-positivity chain:~~
+~~   use `rayleigh_Q_eq_Q` in `Q3/Proofs/Rayleigh_Q_identification.lean`.~~
+~~2) Replace `Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` in~~
+~~   `Q3/Atoms_Positive.lean` / `Q3/AxiomsTheorems.lean` with the theorem proof~~
+~~   (A3 floor + RKHS cap + Rayleigh identification).~~
+
+**NEW PRIORITY:** Resolve LaTeX proof gap before proceeding with axiom closure.
 
 ## 🚨 CRITICAL GAP: AtomCone_K_fixed (2026-01-18)
 
@@ -290,6 +320,14 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
 ```
 
 ## Change Log (recent)
+
+- 2026-01-22: **CRITICAL LaTeX PROOF GAP DISCOVERED**
+  - Numerical verification: Q(Φ_{B=3,t=0.06}) = -16.29 < 0
+  - Root cause: Two different T_P operators conflated in proof
+  - Rayleigh T_P uses Φ weights, RKHS T_P does not
+  - "Two-scale decoupling" is mathematically invalid
+  - Created: `docs/LATEX_PROOF_GAP_ANALYSIS.md`
+  - Status: **BLOCKED** — need mathematical consultation
 
 - 2026-01-20: **Schur_test investigation** — L2 vs L∞ norm mismatch
   - Attempted to close `Schur_test` axiom using Mathlib
