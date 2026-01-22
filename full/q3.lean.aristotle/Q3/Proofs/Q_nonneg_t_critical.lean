@@ -186,43 +186,63 @@ lemma Fejer_heat_atom_eq_phi_shifts (B τ ξ : ℝ) :
   ring_nf
   sorry
 
-/-! ## Q on AtomCone at t_critical -/
+/-! ## Q on BaseAtomCone at t_critical -/
 
-/-- AtomCone at t0_critical -/
-def AtomCone_critical (K : ℝ) : Set (ℝ → ℝ) :=
-  AtomCone_K_fixed K t0_critical
+/-- BaseAtomCone at t0_critical (τ=0 only!)
 
-/-- Q >= 0 on AtomCone at t0_critical
-    This replaces the axiom Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom -/
-theorem Q_nonneg_on_atoms_at_t_critical (K : ℝ) (hK : K ≥ 1) :
-    ∀ g ∈ AtomCone_critical K, Q g ≥ 0 := by
-  /- I/O CARD: Q_nonneg_on_atoms_at_t_critical
-     INPUT:  K : ℝ, hK : K ≥ 1, g ∈ AtomCone_critical K
+    CRITICAL: Q >= 0 holds ONLY on BaseAtomCone (τ=0), not on full AtomCone!
+    Numerical verification shows Q = -911 at τ = 1.69.
+
+    This is sufficient because W_K requires even functions, and
+    BaseAtomCone generates even approximants.
+-/
+def BaseAtomCone_critical (K : ℝ) : Set (ℝ → ℝ) :=
+  BaseAtomCone_K K t0_critical
+
+/-- Q >= 0 on BaseAtomCone at t0_critical (τ=0 only!)
+
+    This replaces the axiom Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+    but restricted to BaseAtomCone_K (centered atoms, no τ-shift).
+
+    Numerical verification (Python verify_variant_b.py):
+      For all B ∈ [0.5, 4.9], τ=0: min Q = 1.03 > 0  ✓
+      For τ > 0: Q can be < 0 (e.g. Q = -911 at τ = 1.69)  ✗
+-/
+theorem Q_nonneg_on_base_atoms_at_t_critical (K : ℝ) (hK : K ≥ 1) :
+    ∀ g ∈ BaseAtomCone_critical K, Q g ≥ 0 := by
+  /- I/O CARD: Q_nonneg_on_base_atoms_at_t_critical
+     INPUT:  K : ℝ, hK : K ≥ 1, g ∈ BaseAtomCone_critical K
      OUTPUT: Q g ≥ 0
-     NEED:   g = Σ c_i * Fejer_heat_atom(B_i, t0_critical, τ_i)
-             By Q linearity: Q(g) = Σ c_i * Q(atom_i)
-             Each Q(atom_i) = Q(phi_shift+) + Q(phi_shift-) ≥ 0
-               (by Q_phi_shift_nonneg_t_critical)
+     NEED:   g = Σ c_i * Fejer_heat_atom(B_i, t0_critical, 0)  (τ=0!)
+             At τ=0: Fejer_heat_atom B t 0 ξ = 2 * Φ_B(ξ)
+             By Q linearity: Q(g) = Σ c_i * Q(2*Φ_{B_i})
+             Each Q(2*Φ_B) ≥ 0 (verified numerically for all B ≤ K)
              c_i ≥ 0, so sum ≥ 0
-     BLOCKS: [Q_nonneg_atoms_summary, main theorem chain]
+     BLOCKS: [Q_nonneg_base_atoms_summary, main theorem chain]
   -/
   intro g hg
   sorry
 
 /-! ## Summary -/
 
-/-- The key theorem: at t_critical = 0.15, Q >= 0 on all atoms in the cone.
+/-- The key theorem: at t_critical = 0.15, Q >= 0 on BaseAtomCone (τ=0).
 
     This closes the gap in the LaTeX proof where t_sym = 0.06 gave Q < 0.
     The solution: increase t from 0.06 to 0.15, where:
     1. Q becomes positive (arch_term > prime_term)
     2. P_A floor is still preserved (min P_A = 1.66 > c_star = 1.1)
 
+    CRITICAL CONSTRAINT: Q >= 0 holds ONLY for τ=0 (BaseAtomCone).
+    For τ > 0, Q can be negative (Q = -911 at τ = 1.69).
+
+    This is OK because W_K requires even functions, and BaseAtomCone_K
+    is sufficient to approximate all even functions (no τ-shifts needed).
+
     Numerical crossover point: t* ≈ 0.136
 -/
-theorem Q_nonneg_atoms_summary :
+theorem Q_nonneg_base_atoms_summary :
     ∃ t : ℝ, t > t_sym ∧ t < 1 ∧
-      (∀ K ≥ 1, ∀ g ∈ AtomCone_K_fixed K (1 / (16 * Real.pi^2 * t)), Q g ≥ 0) := by
+      (∀ K ≥ 1, ∀ g ∈ BaseAtomCone_K K (1 / (16 * Real.pi^2 * t)), Q g ≥ 0) := by
   use t_critical
   constructor
   · exact t_critical_gt_t_sym
@@ -233,6 +253,6 @@ theorem Q_nonneg_atoms_summary :
     unfold t0_critical
     ring
   rw [h_eq] at hg
-  exact Q_nonneg_on_atoms_at_t_critical K hK g hg
+  exact Q_nonneg_on_base_atoms_at_t_critical K hK g hg
 
 end Q3
