@@ -33,6 +33,58 @@ The axiom Q >= 0 is **FALSE** at t_sym.
 
 ---
 
+## Stronger Verification (Tail-Controlled)
+
+We reran Q with a **prime-power cutoff N = 10^7** and a **rigorous tail bound**:
+for all n > N, use Λ(n) ≤ log n and Φ(ξ_n) ≤ exp(-t (log n)^2). This yields a
+strict bracketing:
+
+```
+Q_lower = arch_term - (prime_partial + tail_bound)
+Q_upper = arch_term - prime_partial
+```
+
+So **Q_lower > 0 ⇒ Q > 0** and **Q_upper < 0 ⇒ Q < 0**.
+
+### Tail-Controlled Q Bounds (B = 3.0)
+
+| t | Q_lower | Q_upper |
+|---|---------|---------|
+| 0.06 | -16.3093 | -16.2974 |
+| 0.15 | +0.85646 | +0.85646 |
+
+### Worst-Case B (B = 4.9, K = 5)
+
+| t | Q_lower | Q_upper |
+|---|---------|---------|
+| 0.15 | +0.51459 | +0.51459 |
+
+---
+
+## t-Scan (Interval for Positivity)
+
+We scanned **t ∈ [0.08, 0.20]** on a grid, with **B ∈ [0.5, 4.9]**, and used
+the tail-controlled lower bound for Q. The **worst-case B** was always ~4.9.
+
+Coarse scan (step 0.01):
+
+```
+t=0.14  min Q_lower = -0.118
+t=0.15  min Q_lower = +0.515
+```
+
+Refined near the threshold (B = 4.9):
+
+```
+Q_lower(0.141)  = -0.049595
+Q_lower(0.142)  = +0.017889
+t* ≈ 0.141733 (Q_lower ≈ 0)
+```
+
+**Practical safe interval:** `t ≥ 0.142` (on the tested grid), with strong margin at `t = 0.15`.
+
+---
+
 ## Critical Constraint: tau = 0 ONLY
 
 **Q >= 0 holds ONLY on BaseAtomCone_K (tau = 0).**
@@ -109,6 +161,7 @@ Therefore: **BaseAtomCone_K is dense in W_K** (for the relevant even subspace).
 |------|--------|
 | `verify_phase0.py` | Verified Q < 0 at t_sym, Q > 0 at t_critical |
 | `verify_variant_b.py` | Added BaseAtomCone test, showed tau > 0 fails |
+| `verify_q_tail.py` | Tail-controlled Q bounds + t-scan |
 | `QSpec.lean` | Frozen specification with test/critical specs |
 | `Q_nonneg_t_critical.lean` | Updated to use BaseAtomCone_critical |
 
@@ -127,6 +180,38 @@ Therefore: **BaseAtomCone_K is dense in W_K** (for the relevant even subspace).
 3. **Update T5_Transfer** to use BaseAtomCone_K
 
 4. **Close the axiom** `Q_nonneg_on_BaseAtomCone_axiom` at t_critical
+
+---
+
+## Plan to Close the Last Axiom (No Lean Changes Yet)
+
+Goal: close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` using fixed‑t
+and **BaseAtomCone** (τ = 0), with a clean proof chain.
+
+1. **Lock parameters**
+   - Freeze `t_sym = 3/20` and `t0_A1 = 1/(16π² t_sym)` in
+     `full/q3.lean.aristotle/Q3/Proofs/HeatKernelParams.lean`.
+   - Record the **validated interval** `t ≥ 0.142` (t* ≈ 0.141733) and choose
+     `t_critical = 0.15` for margin.
+
+2. **BaseAtomCone positivity statement**
+   - Use `Q3/Proofs/Q_nonneg_base_atoms.lean` (or `Q_nonneg_t_critical.lean`)
+     as the canonical statement:  
+     `∀ K ≥ 1, ∀ g ∈ BaseAtomCone_K K t0_A1, Q g ≥ 0`.
+   - This is where the numerical certificate/tail-bound gets wired.
+
+3. **Density/transfer step**
+   - Replace the A1 density target cone with `BaseAtomCone_K` (τ = 0 only),
+     leveraging evenness of `W_K`.
+   - This affects `Q3/Proofs/A1_density.lean` + `Q3/T5_Transfer.lean`.
+
+4. **Wire the axiom replacement**
+   - Update `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` to use the
+     BaseAtomCone theorem in place of the axiom.
+
+5. **Rebuild + check axioms**
+   - `lake build Q3.Main`
+   - `./full/q3.lean.aristotle/scripts/check_axioms.sh`
 
 ---
 

@@ -49,3 +49,6 @@ full/q3.lean.aristotle/docs/cc_15_01_26.md
 output.lean
 sandboxes/
 .venv/
+
+# Python
+__pycache__/
