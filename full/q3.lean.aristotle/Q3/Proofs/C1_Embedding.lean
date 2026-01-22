@@ -78,6 +78,25 @@ noncomputable def dictEmbedding {n : ℕ} (d : Fin n → H) :
     FiniteDimensional.span_of_finite 𝕜 (Set.finite_range d)
   exact V.subtypeₗᵢ.comp (stdOrthonormalBasis 𝕜 V).repr.symm.toLinearIsometry
 
+/-- Casted version of the dictionary embedding to a fixed dimension `m`. -/
+noncomputable def dictEmbeddingCast {n m : ℕ} (d : Fin n → H)
+    (hdim : Module.finrank 𝕜 (dictSubmodule (𝕜 := 𝕜) d) = m) :
+    EuclideanSpace 𝕜 (Fin m) →ₗᵢ[𝕜] H := by
+  classical
+  have e : Fin m ≃ Fin (Module.finrank 𝕜 (dictSubmodule (𝕜 := 𝕜) d)) := by
+    cases hdim
+    exact Equiv.refl _
+  let e' :
+      EuclideanSpace 𝕜 (Fin m) ≃ₗᵢ[𝕜]
+        EuclideanSpace 𝕜 (Fin (Module.finrank 𝕜 (dictSubmodule (𝕜 := 𝕜) d))) := by
+    simpa [EuclideanSpace] using
+      (LinearIsometryEquiv.piLpCongrLeft 2 𝕜 (E := 𝕜) e)
+  let e'' :
+      EuclideanSpace 𝕜 (Fin m) →ₗᵢ[𝕜]
+        EuclideanSpace 𝕜 (Fin (Module.finrank 𝕜 (dictSubmodule (𝕜 := 𝕜) d))) :=
+    e'.toLinearIsometry
+  exact (dictEmbedding (𝕜 := 𝕜) d).comp e''
+
 end Dictionary
 
 end Q3.Proofs.C1Embedding
