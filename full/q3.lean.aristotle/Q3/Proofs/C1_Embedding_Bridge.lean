@@ -25,4 +25,14 @@ lemma C1_compression_opNorm_le {𝕜 : Type*} [RCLike 𝕜]
     ‖compression ι T‖ ≤ ‖T‖ := by
   simpa using (compression_opNorm_le (ι := ι) (T := T))
 
+/-- Matrix form: if a matrix induces a compression map, its opNorm is bounded by the RKHS norm. -/
+lemma C1_opNorm_toEuclideanLin_le_of_compression {𝕜 : Type*} [RCLike 𝕜]
+    {n : Type*} [Fintype n] [DecidableEq n]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace 𝕜 H] [CompleteSpace H]
+    [Nontrivial (EuclideanSpace 𝕜 n)]
+    (ι : EuclideanSpace 𝕜 n →ₗᵢ[𝕜] H) (T : H →L[𝕜] H) (A : Matrix n n 𝕜)
+    (hA : (Matrix.toEuclideanLin A).toContinuousLinearMap = compression ι T) :
+    ‖(Matrix.toEuclideanLin A).toContinuousLinearMap‖ ≤ ‖T‖ := by
+  simpa [hA] using (C1_compression_opNorm_le (ι := ι) (T := T))
+
 end Q3.Proofs
