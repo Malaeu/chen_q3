@@ -5,7 +5,7 @@ Fix a compact $[-K,K]\subset\RR$, $K\ge1$. Prime sample nodes (as in the normali
 \[
 \xi_n \ :=\ \frac{\log n}{2\pi}\in[0,\infty),\qquad n\ge2,
 \]
-with weights (doubling belongs only to the Weil functional $Q^\ast(t;\Phi)$; see Remark~\ref{rkhs:rem:weights})
+with weights (doubling belongs only to the Weil functional $Q^\star(t;\Phi)$; see Remark~\ref{rkhs:rem:weights})
 \[
 \wRKHS(n)\ :=\ \frac{\Lambda(n)}{\sqrt{n}},\qquad \wmax:=\sup_{n\ge2}\wRKHS(n)\le \frac{2}{e}.
 \]
@@ -17,10 +17,10 @@ and write $K_t=(k_t(\xi_m,\xi_n))_{m,n\ge2}$ for the Gram matrix on the sample n
 
 
 \begin{remark}[Evenization and weights]\label{rkhs:rem:weights}
-Lemma~\ref{t0:lem:T0} identifies the node set $\xi_n=\log n/(2\pi)$ and shows that $Q^\ast(t;\Phi)$ uses the doubled
+Lemma~\ref{t0:lem:T0} identifies the node set $\xi_n=\log n/(2\pi)$ and shows that $Q^\star(t;\Phi)$ uses the doubled
 weights $2\Lambda(n)/\sqrt n$ on the positive half-line. Operator and RKHS estimates are performed on the
 symmetric node set $\{\pm\xi_n\}$ with weights $\Lambda(n)/\sqrt n$, which is equivalent to keeping the
-positive nodes and doubling the weights (the $Q^\ast$ convention). All prime caps below are interpreted in this symmetric sense; no additional assumptions enter.
+positive nodes and doubling the weights (the $Q^\star$ convention). All prime caps below are interpreted in this symmetric sense; no additional assumptions enter.
 \end{remark}
 For separation we use the simple lower bound
 \begin{equation}\label{eq:deltaK}
@@ -151,9 +151,9 @@ so $\rho(t)$ is decreasing by monotone convergence. The Gaussian factor forces $
 
 \begin{remark}[Why uniform cap beats local bisection]\label{rem:uniform-vs-local-full}
 Legacy per-compact bisection schedules are archived in Appendix~\ref{app:legacy-branch} for provenance.
-The mainline selects a single scale \(t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}\)
+The mainline selects a single scale \(t=t_{\mathrm{crit}}\)
 independent of \(K\); Corollary~\ref{cor:uniform-prime-cap} then guarantees
-\(\rho(t_{\mathrm{rkhs}})\le c_*/4\). This decouples the prime cap from local parameter tuning
+\(\rho(t)\le c_*/4\). This decouples the prime cap from local parameter tuning
 and keeps the bridge analytic.
 \end{remark}
 
@@ -212,18 +212,18 @@ Assume $t\ge \tfrac{1}{16\pi^2}$ and set $N_0:=\max\{N,e^2\}$. Then $\|T_P^{\mat
 \subsection*{Analytic prime caps and the PCU theorem}
 
 \begin{corollary}[Uniform prime cap at the analytic scale]\label{cor:pcu-uniform}
-Let $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ as in Corollary~\ref{cor:uniform-prime-cap}. Then
+Let $t=t_{\mathrm{crit}}$ as in Corollary~\ref{cor:uniform-prime-cap}. Then
 \[
-  \|T_P^{\mathrm{RKHS}}(t_{\mathrm{rkhs}})\|\le \rho(t_{\mathrm{rkhs}})\le \frac{c_*}{4}.
+  \|T_P^{\mathrm{RKHS}}(t)\|\le \rho(t)\le \frac{c_*}{4}.
 \]
 \end{corollary}
 
 \begin{proof}
-Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P^{\mathrm{RKHS}}(t_{\mathrm{rkhs}})\|\le \rho(t_{\mathrm{rkhs}})\le c_*/4$ for every
-$t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
+Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P^{\mathrm{RKHS}}(t)\|\le \rho(t)\le c_*/4$ at
+$t=t_{\mathrm{crit}}$.
 \end{proof}
 
 \begin{remark}[No K-dependent parameters]
-The uniform prime cap uses a single scale $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$
+The uniform prime cap uses a single scale $t=t_{\mathrm{crit}}$
 and the uniform floor $c_*>0$. No K-dependent schedules appear in the argument.
 \end{remark}

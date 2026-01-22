@@ -4,8 +4,8 @@ We record how the local ingredients assembled in \S\ref{sec:A3} feed the global 
 
 \begin{itemize}
   \item Lemma~\ref{lem:a3.cap-combine} supplies the bounded-overlap control on caps.
-  \item Lemma~\ref{lem:a3.two-scale} records the uniform two-scale separation.
-  \item Corollary~\ref{cor:uniform-prime-cap} gives the uniform RKHS prime cap for $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
+  \item Lemma~\ref{lem:a3.two-scale} records the uniform single-scale coupling.
+  \item Corollary~\ref{cor:uniform-prime-cap} gives the uniform RKHS prime cap at $t=t_{\mathrm{crit}}$.
   \item Theorem~\ref{thm:A3} combines the uniform symbol floor $c_*>0$ with the RKHS prime cap from Corollary~\ref{cor:uniform-prime-cap} and the Frobenius guard of Corollary~\ref{cor:toeplitz-frob}.
 \end{itemize}
 
@@ -16,7 +16,7 @@ Under the hypotheses of Lemmas~\ref{lem:a3.cap-combine}, \ref{lem:a3.two-scale},
 
 \begin{proof}
 Lemma~\ref{lem:a3.cap-combine} gives almost orthogonality, Lemma~\ref{lem:a3.two-scale}
-controls interactions between scales, Corollary~\ref{cor:uniform-prime-cap} provides the uniform cap,
+aligns the symbol and RKHS bounds at a single scale, Corollary~\ref{cor:uniform-prime-cap} provides the uniform cap,
 and Theorem~\ref{thm:A3} supplies the quantitative margin with the uniform floor.
 Summing the contributions yields the stated lock.
 \end{proof}

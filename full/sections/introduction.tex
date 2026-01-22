@@ -5,9 +5,9 @@ We establish that a canonical quadratic form on the Weil test class is nonnegati
 
 \subsection*{Main result}
 \begin{theorem}[Main result, informal]\label{thm:intro-main-informal}
-Let $Q$ be the quadratic form fixed in Section~\ref{sec:T0} on the Weil class $\mathcal{W}$. Then
+Let $Q^\star(t;\cdot)$ be the quadratic form fixed in Section~\ref{sec:T0} on the Weil class $\mathcal{W}$. Then
 \[
-  Q(\Phi)\ \ge\ 0\qquad\text{for all }\Phi\in\mathcal{W}.
+  Q^\star(t;\Phi)\ \ge\ 0\qquad\text{for all }\Phi\in\mathcal{W},
 \]
 Via Theorem~\ref{thm:Weil-criterion} (the Weil criterion) this positivity is equivalent to the Riemann Hypothesis.
 \end{theorem}
@@ -29,44 +29,44 @@ Our proof is organized as a controlled-limit program: a small number of analytic
 The proof organises around three analytic modules.
 
 \subsection*{Archimedean bridge}
-\emph{(A3) Archimedean Toeplitz barrier.} The Toeplitz component $T_M[P_A]$ of $Q$ is bounded from below by the explicit uniform Archimedean floor $c_*$ (Lemma~\ref{lem:uniform-arch-floor}), up to the controllable Lipschitz loss $C\,\omega_{P_A}(1/(2M))$. Szeg\H{o}--B\"ottcher asymptotics together with an explicit modulus of continuity for $P_A$ yield
+\emph{(A3) Archimedean Toeplitz barrier.} The Toeplitz component $T_M[P_A]$ in the Rayleigh decomposition of $Q^\star(t;\Phi_{B,t})$ is bounded from below by the explicit uniform Archimedean floor $c_*$ (Lemma~\ref{lem:uniform-arch-floor}), up to the controllable Lipschitz loss $C\,\omega_{P_A}(1/(2M))$. Szeg\H{o}--B\"ottcher asymptotics together with an explicit modulus of continuity for $P_A$ yield
 \[
   \lambda_{\min}\!\big(T_M[P_A]\big)\ \ge\ c_*\ -\ C\,\omega_{P_A}\!\Big(\frac{1}{2M}\Big),
 \]
 as developed in Section~\ref{sec:A3}.
 
 \subsection*{Prime contraction}
-\emph{(RKHS) Uniform prime contraction without tables.} The prime contribution is encoded by a sampling operator $T_P$ supported on the nodes $\xi_n=\frac{\log n}{2\pi}$; in the Weil functional we use the one-sided weights $w_Q(n)=2\Lambda(n)/\sqrt{n}$, while in the RKHS analysis we keep the undoubled operator weights $w_{\mathrm{RKHS}}(n)=\Lambda(n)/\sqrt{n}$. Section~\ref{sec:rkhs-prime-cap} develops a \emph{tables-free} uniform cap from the closed form $\rho(t)$; choosing $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ (Corollary~\ref{cor:uniform-prime-cap}) ensures $\|T_P\|\le \rho(t_{\mathrm{rkhs}})\le c_*/4$ once $c_*>0$ is established. This cap is independent of $K$ and suffices for the uniform A3 bridge. The adaptive Gram-geometry and early/tail routes are archived for reference in Appendix~\ref{app:legacy-branch}.
+\emph{(RKHS) Uniform prime contraction without tables.} The prime contribution is encoded by the RKHS operator $T_P^{\mathrm{RKHS}}(t)$ supported on the nodes $\xi_n=\frac{\log n}{2\pi}$; in the Weil functional we use the one-sided weights $w_Q(n)=2\Lambda(n)/\sqrt{n}$, while in the RKHS analysis we keep the undoubled operator weights $w_{\mathrm{RKHS}}(n)=\Lambda(n)/\sqrt{n}$. Section~\ref{sec:rkhs-prime-cap} develops a \emph{tables-free} uniform cap from the closed form $\rho(t)$; fixing $t=t_{\mathrm{crit}}$ (Corollary~\ref{cor:uniform-prime-cap}) ensures $\|T_P^{\mathrm{RKHS}}(t)\|\le \rho(t)\le c_*/4$ once $c_*>0$ is established. This cap is independent of $K$ and suffices for the uniform A3 bridge. The adaptive Gram-geometry and early/tail routes are archived for reference in Appendix~\ref{app:legacy-branch}.
 
 \subsection*{Compact extension}
-\emph{(A1$'$ + A2) Density and continuity.} The uniform A3 bridge yields $Q(\Phi)\ge0$ on the Fej\'er$\times$heat generator cone inside each $W_K$. By density (A1$'$) and continuity (A2), this extends to all of $W_K$, and taking the union over $K$ gives $Q\ge0$ on the full Weil cone $\mathcal W$.
+\emph{(A1$'$ + A2) Density and continuity.} The uniform A3 bridge yields $Q^\star(t;\Phi)\ge0$ on the Fej\'er$\times$heat generator cone inside each $W_K$. By density (A1$'$) and continuity (A2), this extends to all of $W_K$, and taking the union over $K$ gives $Q^\star(t;\Phi)\ge0$ on the full Weil cone $\mathcal W$.
 
 \subsection*{Outline of the proof}
 
 Combining the Toeplitz barrier and the uniform RKHS cap yields, on each $W_K$,
 \[
-  \lambda_{\min}\!\big(T_M[P_A]-T_P\big)
-  \ \ge\ c_*\ -\ C\,\omega_{P_A}\!\Big(\frac{1}{2M}\Big)\ -\ \rho(t_{\mathrm{rkhs}}).
+  \lambda_{\min}\!\big(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)\big)
+  \ \ge\ c_*\ -\ C\,\omega_{P_A}\!\Big(\frac{1}{2M}\Big)\ -\ \rho(t).
 \]
 Selecting $M\ge M_0^{\mathrm{unif}}$ gives $C\,\omega_{P_A}(1/(2M))\le c_*/2$, and
-taking $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ yields $\rho(t_{\mathrm{rkhs}})\le c_*/4$, so
+fixing $t=t_{\mathrm{crit}}$ yields $\rho(t)\le c_*/4$, so
 whenever $c_*>0$ one has
 \[
-  \lambda_{\min}\!\big(T_M[P_A]-T_P\big)\ \ge\ \frac{c_*}{4}\ >\ 0.
+  \lambda_{\min}\!\big(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)\big)\ \ge\ \frac{c_*}{4}\ >\ 0.
 \]
-Hence $Q\ge0$ on the Fej\'er$\times$heat cone inside $W_K$. Density (A1$'$) and continuity (A2) extend this to all of $W_K$, and the union over $K$ gives $Q\ge0$ on $\mathcal{W}$, proving Theorem~\ref{thm:Main-positivity}. Finally Section~\ref{sec:Weil} applies Theorem~\ref{thm:Weil-criterion} to convert this positivity into the Riemann Hypothesis.
+Hence $Q^\star(t;\Phi)\ge0$ on the Fej\'er$\times$heat cone inside $W_K$. Density (A1$'$) and continuity (A2) extend this to all of $W_K$, and the union over $K$ gives $Q^\star(t;\Phi)\ge0$ on $\mathcal{W}$, proving Theorem~\ref{thm:Main-positivity}. Finally Section~\ref{sec:Weil} applies Theorem~\ref{thm:Weil-criterion} to convert this positivity into the Riemann Hypothesis.
 
 \subsection*{What is new}
 
 Two features distinguish the present work.
 \begin{enumerate}
   \item \textbf{A consistent symbol definition.} The Archimedean symbol is defined once via periodization of the Fej\'er$\times$heat window, and its Lipschitz modulus is proved directly for that same object (Lemma~\ref{lem:a3-lipschitz-bound}), eliminating mixed definitions.
-  \item \textbf{A uniform prime cap.} The RKHS bound is set at $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ and is independent of $K$, removing all K-dependent schedules from the main proof chain.
+  \item \textbf{A uniform prime cap.} The RKHS bound is set at $t=t_{\mathrm{crit}}$ and is independent of $K$, removing all K-dependent schedules from the main proof chain.
 \end{enumerate}
 
 \subsection*{Organization of the paper}
 
-Section~\ref{sec:T0} recalls the Weil class, the quadratic form $Q$, and the Guinand--Weil normalization. Section~\ref{sec:A3} establishes the Archimedean Toeplitz barrier (A3). Section~\ref{sec:rkhs-prime-cap} develops the uniform RKHS prime cap at the scale $t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$. Section~\ref{sec:Weil} links compact positivity to the full Weil class and states the main theorem together with its Weil corollary. Appendix~\ref{app:legacy-branch} archives the legacy K-dependent branches and reproducibility data.
+Section~\ref{sec:T0} recalls the Weil class, the quadratic form $Q^\star(t;\cdot)$, and the Guinand--Weil normalization. Section~\ref{sec:A3} establishes the Archimedean Toeplitz barrier (A3). Section~\ref{sec:rkhs-prime-cap} develops the uniform RKHS prime cap at the fixed scale $t=t_{\mathrm{crit}}$. Section~\ref{sec:Weil} links compact positivity to the full Weil class and states the main theorem together with its Weil corollary. Appendix~\ref{app:legacy-branch} archives the legacy K-dependent branches and reproducibility data.
 
 \subsection*{Notation}
 
@@ -74,7 +74,7 @@ We write $\Lambda$ for the von Mangoldt function, $\xi_n=\frac{\log n}{2\pi}$ fo
 
 \subsection*{Analytic modules at a glance}
 
-\noindent\textbf{Stage legend.} $(\mathrm{T0})$ fixes the Guinand--Weil normalization of the Weil functional. $(\mathrm{A1'})$ proves density of the Fej\'er$\times$heat generator cone on each compact, and $(\mathrm{A2})$ supplies Lipschitz continuity so that positivity propagates from the generators to all even nonnegative tests. $(\mathrm{A3})$ is the Toeplitz bridge: it splits $Q$ into an Archimedean Toeplitz symbol and a finite-rank prime block with explicit lower bounds on $\lambda_{\min}$. The prime contribution is controlled by the uniform RKHS cap in Section~\ref{sec:rkhs-prime-cap}. Legacy K-dependent chains (MD/IND/AB and T5) are archived in Appendix~\ref{app:legacy-branch}.
+\noindent\textbf{Stage legend.} $(\mathrm{T0})$ fixes the Guinand--Weil normalization of the Weil functional. $(\mathrm{A1'})$ proves density of the Fej\'er$\times$heat generator cone on each compact, and $(\mathrm{A2})$ supplies Lipschitz continuity so that positivity propagates from the generators to all even nonnegative tests. $(\mathrm{A3})$ is the Toeplitz bridge: it splits $Q^\star(t;\Phi_{B,t})$ into an Archimedean Toeplitz symbol and a finite-rank prime block with explicit lower bounds on $\lambda_{\min}$. The prime contribution is controlled by the uniform RKHS cap in Section~\ref{sec:rkhs-prime-cap}. Legacy K-dependent chains (MD/IND/AB and T5) are archived in Appendix~\ref{app:legacy-branch}.
 
 \begin{center}
   \small\textbf{Dependency map for the analytic chain}

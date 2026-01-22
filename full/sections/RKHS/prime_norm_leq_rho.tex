@@ -7,9 +7,9 @@ Throughout this subsection we write $\rho(t)$ for the Gaussian cap in Lemma~\ref
 Let $t>0$ and write $t' := 4\pi^2 t$. Then
 \begin{equation}\label{eq:gaussian-prime-sum}
   \sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}\,e^{-t'(\log n)^2}
-  \ \le\ 
+  \ \le\
   \int_{1}^{\infty}\frac{\log x}{\sqrt x}\,e^{-t'(\log x)^2}\,dx
-  \ =\ 
+  \ =\
   \int_{0}^{\infty} y\,e^{y/2}\,e^{-t' y^2}\,dy.
 \end{equation}
 \end{lemma}
@@ -115,8 +115,8 @@ Appendix~\ref{app:a3-repro}; they corroborate but do not enter the analytic boun
   \(
     \|T_P^{\mathrm{RKHS}}(t)\|\le \rho(t)=2\int_{0}^{\infty} y e^{y/2} e^{-4\pi^2 t y^2}\,dy
   \)
-  for every $t>0$. Since $\rho(t)$ is decreasing (Lemma~\ref{lem:rkhs-uniform-cap-full}), any choice of $t_{\mathrm{rkhs}}$
-  with $\rho(t_{\mathrm{rkhs}})\le c_*/4$ yields the uniform prime cap in Corollary~\ref{cor:uniform-prime-cap}.
+  for every $t>0$. Since $\rho(t)$ is decreasing (Lemma~\ref{lem:rkhs-uniform-cap-full}), any choice of $t$
+  with $\rho(t)\le c_*/4$ (in particular $t=t_{\mathrm{crit}}$) yields the uniform prime cap in Corollary~\ref{cor:uniform-prime-cap}.
   \item Lemma~\ref{pm:lem:trace-cap-erfc} supplies the explicit finite-block plus tail bound
   \(
     \|T_P^{\mathrm{RKHS}}(t)\| \le 2\sum_{2\le n\le e^{2}} \frac{\log n}{\sqrt n} e^{-4\pi^2 t(\log n)^2} + 2 J_{4\pi^2 t}(2),

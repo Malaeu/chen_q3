@@ -2,20 +2,20 @@
 % Phase 2 (Bricks A3.2a–A3.2b)
 
 \subsection{Symbol Regularity and Archimedean Floor}\label{subsec:a3-symbol-floor}
-We now record explicit regularity and lower bounds for the Archimedean symbol $P_A$ attached to a Fej\'er$\times$heat window. Throughout we fix parameters $B>0$ and $t_{\mathrm{sym}}>0$, set
+We now record explicit regularity and lower bounds for the Archimedean symbol $P_A$ attached to a Fej\'er$\times$heat window. Throughout we fix parameters $B>0$ and $t>0$, set
 \[
-  \Phi_{B,t_{\mathrm{sym}}}(\xi) = \Bigl(1-\frac{|\xi|}{B}\Bigr)_{+} e^{-4\pi^2 t_{\mathrm{sym}} \xi^2},
+  \Phi_{B,t}(\xi) = \Bigl(1-\frac{|\xi|}{B}\Bigr)_{+} e^{-4\pi^2 t \xi^2},
 \]
 and define
 \[
-  g_{B,t_{\mathrm{sym}}}(\xi) := a(\xi)\,\Phi_{B,t_{\mathrm{sym}}}(\xi),\qquad
-  P_A(\theta) := 2\pi\sum_{m\in\ZZ} g_{B,t_{\mathrm{sym}}}(\theta+m).
+  g_{B,t}(\xi) := a(\xi)\,\Phi_{B,t}(\xi),\qquad
+  P_A(\theta) := 2\pi\sum_{m\in\ZZ} g_{B,t}(\theta+m).
 \]
 For $k\ge 0$ set
 \[
-  A_k := 2\pi\int_{\RR} g_{B,t_{\mathrm{sym}}}(\xi)\,\cos(2\pi k\xi)\,d\xi,
+  A_k := 2\pi\int_{\RR} g_{B,t}(\xi)\,\cos(2\pi k\xi)\,d\xi,
 \]
-where $a(\xi)=\log\pi - \Re\psi(\tfrac14+i\pi\xi)$ is the normalized Archimedean density fixed in Section~\ref{sec:T0}. The function $g_{B,t_{\mathrm{sym}}}$ is compactly supported on $[-B,B]$, so the periodization sum defining $P_A$ is finite for each $\theta$.
+where $a(\xi)=\log\pi - \Re\psi(\tfrac14+i\pi\xi)$ is the normalized Archimedean density fixed in Section~\ref{sec:T0}. The function $g_{B,t}$ is compactly supported on $[-B,B]$, so the periodization sum defining $P_A$ is finite for each $\theta$.
 
 \begin{lemma}[Periodized symbol and Lipschitz modulus]\label{lem:a3-lipschitz-bound}
 The symbol $P_A$ is $1$--periodic and admits the cosine series
@@ -24,35 +24,35 @@ The symbol $P_A$ is $1$--periodic and admits the cosine series
 \]
 Moreover, for every $h\ge 0$ one has
 \[
-  \omega_{P_A}(h)\ \le\ L_A(B,t_{\mathrm{sym}})\,h,
+  \omega_{P_A}(h)\ \le\ L_A(B,t)\,h,
 \]
 where
 \[
-  L_A(B,t_{\mathrm{sym}})
-  := 2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}\sum_{m\in\ZZ}\bigl|g_{B,t_{\mathrm{sym}}}'(\theta+m)\bigr|.
+  L_A(B,t)
+  := 2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}\sum_{m\in\ZZ}\bigl|g_{B,t}'(\theta+m)\bigr|.
 \]
 In particular $P_A\in \mathrm{Lip}(1)$ on the unit torus $\TT$.
 \end{lemma}
 
 \begin{proof}
-Since $g_{B,t_{\mathrm{sym}}}\in L^1(\RR)$ and has compact support, Fubini and the change of variables $\xi=\theta+m$ give
+Since $g_{B,t}\in L^1(\RR)$ and has compact support, Fubini and the change of variables $\xi=\theta+m$ give
 \[
   \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,e^{-2\pi i k\theta}\,d\theta
-  = 2\pi\int_{\RR} g_{B,t_{\mathrm{sym}}}(\xi)\,e^{-2\pi i k\xi}\,d\xi.
+  = 2\pi\int_{\RR} g_{B,t}(\xi)\,e^{-2\pi i k\xi}\,d\xi.
 \]
-Because $g_{B,t_{\mathrm{sym}}}$ is even, the Fourier coefficients are real and coincide with $A_k$, yielding the cosine series.
+Because $g_{B,t}$ is even, the Fourier coefficients are real and coincide with $A_k$, yielding the cosine series.
 
 For the modulus, write
 \[
   P_A(\theta+h)-P_A(\theta)
-  = 2\pi\sum_{m\in\ZZ}\bigl(g_{B,t_{\mathrm{sym}}}(\theta+h+m)-g_{B,t_{\mathrm{sym}}}(\theta+m)\bigr).
+  = 2\pi\sum_{m\in\ZZ}\bigl(g_{B,t}(\theta+h+m)-g_{B,t}(\theta+m)\bigr).
 \]
-The function $g_{B,t_{\mathrm{sym}}}$ is Lipschitz on $\RR$ (it is the product of a smooth function and a compactly supported Lipschitz cutoff), so for each $m$ the mean-value bound yields
+The function $g_{B,t}$ is Lipschitz on $\RR$ (it is the product of a smooth function and a compactly supported Lipschitz cutoff), so for each $m$ the mean-value bound yields
 \(
 |g(\theta+h+m)-g(\theta+m)| \le h\,\sup_{s\in[\theta,\theta+h]}|g'(s+m)|.
 \)
 Summing over the finitely many $m$ with $\theta+m\in[-B,B]$ gives
-$\omega_{P_A}(h)\le L_A(B,t_{\mathrm{sym}})h$.
+$\omega_{P_A}(h)\le L_A(B,t)h$.
 \end{proof}
 
 Next we quantify the symbol floor by splitting the integral into a ``core'' region $[-r,r]$ and its complement.
@@ -65,48 +65,48 @@ Let $0<r<B$. Set
 \]
 Then
 \[
-  A_0 \ge 4\pi\,m_r\,r\left(1-\frac{r}{B}\right) e^{-4\pi^2 t_{\mathrm{sym}} r^2}
-        - \frac{M_B}{2\pi\,t_{\mathrm{sym}} r} e^{-4\pi^2 t_{\mathrm{sym}} r^2}.
+  A_0 \ge 4\pi\,m_r\,r\left(1-\frac{r}{B}\right) e^{-4\pi^2 t r^2}
+        - \frac{M_B}{2\pi\,t r} e^{-4\pi^2 t r^2}.
 \]
 \end{lemma}
 
 \begin{proof}
-Split the integral defining $A_0$ into $[-r,r]$ and its complement. On $[-r,r]$ we lower bound $a(\xi)$ by $m_r$, and on $|\xi|\in[r,B]$ we bound $|a(\xi)|$ by $M_B$. The integral of $\Phi_{B,t_{\mathrm{sym}}}$ over each region is computed explicitly, giving the stated inequality.
+Split the integral defining $A_0$ into $[-r,r]$ and its complement. On $[-r,r]$ we lower bound $a(\xi)$ by $m_r$, and on $|\xi|\in[r,B]$ we bound $|a(\xi)|$ by $M_B$. The integral of $\Phi_{B,t}$ over each region is computed explicitly, giving the stated inequality.
 \end{proof}
 
-\begin{lemma}[Shift-robust core mass]\label{lem:a3-core-shift}
-Let $0<r<B$ and $|\tau|\le B-r$. Then the Fej\'er hat satisfies
+\begin{lemma}[Unshifted core mass]\label{lem:a3-core-shift}
+Let $0<r<B$. Then the Fej\'er hat satisfies
 \[
-  \int_{\tau-r}^{\tau+r} \Lambda_B(x)\,dx\ \ge\ \frac{2r^2}{B}.
+  \int_{-r}^{r} \Lambda_B(x)\,dx\ \ge\ \frac{2r^2}{B}.
 \]
-Consequently, for every $t_{\mathrm{sym}}>0$,
+Consequently, for every $t>0$,
 \[
-  \int_{\RR} \Lambda_B(x-\tau)\,e^{-4\pi^2 t_{\mathrm{sym}}(x-\tau)^2}\,dx
-  \ \ge\ \frac{2r^2}{B}\,e^{-4\pi^2 t_{\mathrm{sym}} r^2}.
+  \int_{\RR} \Lambda_B(x)\,e^{-4\pi^2 t x^2}\,dx
+  \ \ge\ \frac{2r^2}{B}\,e^{-4\pi^2 t r^2}.
 \]
 \end{lemma}
 
 \begin{proof}
-The function $\Lambda_B$ is linear on each of the intervals $[-B,0]$ and $[0,B]$ with slope magnitude $1/B$. Among all translates of length $2r$ contained in $[-B,B]$ the smallest area is attained when the interval abuts one of the endpoints; a direct calculation yields
+The function $\Lambda_B$ is linear on each of the intervals $[-B,0]$ and $[0,B]$ with slope magnitude $1/B$. A direct calculation gives
 \(
-\int_{B-2r}^{B}\Lambda_B(x)\,dx = \frac{2r^2}{B}.
+\int_{-r}^{r}\Lambda_B(x)\,dx = 2r - \frac{r^2}{B}\ \ge\ \frac{2r^2}{B}.
 \)
-The same value is obtained on the symmetric left endpoint, and every other translate has strictly larger mass. For the Gaussian factor we use the pointwise bound $e^{-4\pi^2 t_{\mathrm{sym}}(x-\tau)^2}\ge e^{-4\pi^2 t_{\mathrm{sym}} r^2}$ whenever $|x-\tau|\le r$.
+For the Gaussian factor we use the pointwise bound $e^{-4\pi^2 t x^2}\ge e^{-4\pi^2 t r^2}$ whenever $|x|\le r$.
 \end{proof}
 
 \begin{lemma}[Archimedean floor]\label{lem:a3-arch-floor}
 With notation as above define
 \[
 \begin{aligned}
-  L_A^{\mathrm{up}}(B,t_{\mathrm{sym}}) &:= L_A(B,t_{\mathrm{sym}}), \\
-  \underline{A}_0(B,r,t_{\mathrm{sym}})
-    &:= 2 m_r\,r\left(1-\frac{r}{B}\right) e^{-4\pi^2 t_{\mathrm{sym}} r^2}
-       - \frac{M_B}{4\pi^2 t_{\mathrm{sym}} r} e^{-4\pi^2 t_{\mathrm{sym}} r^2}.
+  L_A^{\mathrm{up}}(B,t) &:= L_A(B,t), \\
+  \underline{A}_0(B,r,t)
+    &:= 2 m_r\,r\left(1-\frac{r}{B}\right) e^{-4\pi^2 t r^2}
+       - \frac{M_B}{4\pi^2 t r} e^{-4\pi^2 t r^2}.
 \end{aligned}
 \]
 Then
 \[
-  \min_{\theta\in\TT} P_A(\theta)\ \ge\ \underline{A}_0(B,r,t_{\mathrm{sym}}) - \tfrac12 L_A^{\mathrm{up}}(B,t_{\mathrm{sym}}).
+  \min_{\theta\in\TT} P_A(\theta)\ \ge\ \underline{A}_0(B,r,t) - \tfrac12 L_A^{\mathrm{up}}(B,t).
 \]
 \end{lemma}
 
@@ -257,7 +257,7 @@ For $\xi=\tfrac52$, using $\pi>3$ and $\log(5/2)<1$ (since $e>2.5$ by the series
 \end{proof}
 
 \begin{lemma}[Uniform Archimedean floor (pointwise)]\label{lem:uniform-arch-floor}
-Fix $t_{\mathrm{sym}}=\frac{3}{50}$ and $B_{\min}=3$. Then for every $B\ge B_{\min}$ and every
+Fix $t=\frac{3}{50}$ and $B_{\min}=3$. Then for every $B\ge B_{\min}$ and every
 $\theta\in\TT$ the Archimedean symbol satisfies
 \[
   P_A(\theta)\ \ge\ c_*\ :=\ \frac{11}{10}.
@@ -266,11 +266,11 @@ $\theta\in\TT$ the Archimedean symbol satisfies
 \begin{proof}
 By Lemma~\ref{lem:a3-a-monotone} the function $a(\xi)$ is decreasing on $[0,\infty)$, and the window
 \(
-  w_B(\xi):=(1-\xi/B)e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}
+  w_B(\xi):=(1-\xi/B)e^{-4\pi^2 t\xi^2}
 \)
 is decreasing for $\xi\in[0,B]$.  For $\theta\in[0,\tfrac12]$ and $B\ge3$ we have
 \[
-  P_A(\theta)=2\pi\sum_{m\in\ZZ} g_{B,t_{\mathrm{sym}}}(\theta+m)
+  P_A(\theta)=2\pi\sum_{m\in\ZZ} g_{B,t}(\theta+m)
   \ge 2\pi\bigl(g(\theta)+2g(\theta+1)+2g(\theta+2)\bigr) - \mathcal T,
 \]
 where $\mathcal T$ collects the $|m|\ge3$ tail terms.  Using monotonicity and the bounds
@@ -292,7 +292,7 @@ Using $\pi>\tfrac{333}{106}$ we obtain
 \)
 The tail is bounded by
 \[
-  \mathcal T \le 4\pi\int_{5/2}^{\infty}\!|a(\xi)|\,e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi
+  \mathcal T \le 4\pi\int_{5/2}^{\infty}\!|a(\xi)|\,e^{-4\pi^2 t\xi^2}\,d\xi
   \le 10^{-5},
 \]
 using Lemma~\ref{lem:a3-a-log} to bound $|a(\xi)|\le a(0)+\tfrac{11}{10}\log(1+\xi)\le 8$ for $\xi\ge\tfrac52$
@@ -317,13 +317,13 @@ Evenness of $P_A$ completes the bound on all of $\TT$.
 \begin{definition}[Uniform Lipschitz constant]\label{def:uniform-L}
 For $B\ge B_{\min}$ set
 \[
-  L_A(B,t_{\mathrm{sym}})
+  L_A(B,t)
   := 2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}
-      \sum_{m\in\ZZ}\bigl|g_{B,t_{\mathrm{sym}}}'(\theta+m)\bigr|,
+      \sum_{m\in\ZZ}\bigl|g_{B,t}'(\theta+m)\bigr|,
 \]
 and define
 \[
-  L_*(t_{\mathrm{sym}}) := \sup_{B\ge B_{\min}}L_A(B,t_{\mathrm{sym}}).
+  L_*(t) := \sup_{B\ge B_{\min}}L_A(B,t).
 \]
 The constant $L_*$ is used only for discretisation in the Szeg\H{o}--B\"ottcher bridge.
 \end{definition}
@@ -333,7 +333,7 @@ Assume $c_*>0$ in Lemma~\ref{lem:uniform-arch-floor}, and let $C_{\mathrm{SB}}=4
 Define
 \[
   M_{0}^{\mathrm{unif}}
-  :=\left\lceil \frac{C_{\mathrm{SB}}\,L_*(t_{\mathrm{sym}})}{c_*}\right\rceil.
+  :=\left\lceil \frac{C_{\mathrm{SB}}\,L_*(t)}{c_*}\right\rceil.
 \]
 Then for every $B\ge B_{\min}$ and every $M\ge M_{0}^{\mathrm{unif}}$,
 \[
@@ -344,17 +344,17 @@ Then for every $B\ge B_{\min}$ and every $M\ge M_{0}^{\mathrm{unif}}$,
 \begin{corollary}[Uniform prime cap time]\label{cor:uniform-prime-cap}
 Assume $c_*>0$ in Lemma~\ref{lem:uniform-arch-floor}. Define
 \[
-  t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}:=1.
+  t_{\mathrm{crit}}:=\frac{3}{20}=0.15.
 \]
-Then for every $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ the symmetrised prime operator satisfies
+Then the symmetrised prime operator satisfies
 \[
-  \|T_P\|\ \le\ \rho(t_{\mathrm{rkhs}})\ \le\ \rho(1)\ <\ \frac{1}{25}\ <\ \frac{c_*}{4},
+  \|T_P^{\mathrm{RKHS}}(t_{\mathrm{crit}})\|\ \le\ \rho(t_{\mathrm{crit}})\ \le\ \frac{c_*}{4},
 \]
 where $\rho(t)$ is the Gaussian norm cap of Lemma~\ref{pm:lem:rho-closed-form}.
 \end{corollary}
 
 %% ============================================================================
-%% DIGAMMA BOUNDS -- concrete numerics for t_sym = 3/50
+%% DIGAMMA BOUNDS -- concrete numerics for t = 3/20 = 0.15
 %% ============================================================================
 
 \paragraph{Definition of $B_{\min}$.}
@@ -362,21 +362,21 @@ We fix the minimal bandwidth parameter:
 \begin{equation}\label{eq:Bmin-def}
   B_{\min} := 3.
 \end{equation}
-This choice ensures that the Fej\'er kernel $F_B$ has sufficient width to capture the essential support of the Archimedean density $a(\xi)$, while the Gaussian factor $e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}$ with $t_{\mathrm{sym}}=3/50$ provides rapid decay beyond $|\xi|\approx 2$.
+This choice ensures that the Fej\'er kernel $F_B$ has sufficient width to capture the essential support of the Archimedean density $a(\xi)$, while the Gaussian factor $e^{-4\pi^2 t\xi^2}$ with $t=t_{\mathrm{crit}}=3/20=0.15$ provides rapid decay beyond $|\xi|\approx 2$.
 
 \begin{lemma}[Analytic mean bound (auxiliary)]\label{lem:digamma-mean-bound}
-Let $t_{\mathrm{sym}}=\frac{3}{50}$ and $B_{\min}=3$, and define
+Let $t=t_{\mathrm{crit}}=\frac{3}{20}=0.15$ and $B_{\min}=3$, and define
 \(
-  A_*(t_{\mathrm{sym}}):=\inf_{B\ge B_{\min}} A_0(B,t_{\mathrm{sym}}).
+  A_*(t):=\inf_{B\ge B_{\min}} A_0(B,t).
 \)
-Write $\alpha:=4\pi^2 t_{\mathrm{sym}}$ and let $L_a$ be the global slope bound from Lemma~\ref{lem:a3-core-slope}.
+Write $\alpha:=4\pi^2 t$ and let $L_a$ be the global slope bound from Lemma~\ref{lem:a3-core-slope}.
 For any $r\in\bigl(0,\min\{B_{\min},a(0)/L_a\}\bigr)$ define
 \[
   A_{\mathrm{low}}(r)
   := 4\pi\bigl(a(0)-L_a r\bigr)\int_{0}^{r}\!\Bigl(1-\frac{\xi}{B_{\min}}\Bigr)e^{-\alpha \xi^2}\,d\xi
      - 4\pi\int_{r}^{\infty}\!\bigl(a(0)+L_a \xi\bigr)e^{-\alpha \xi^2}\,d\xi.
 \]
-Then $A_*(t_{\mathrm{sym}})\ge A_{\mathrm{low}}(r)$ for every $r\in(0,B_{\min})$.
+Then $A_*(t)\ge A_{\mathrm{low}}(r)$ for every $r\in(0,B_{\min})$.
 \end{lemma}
 
 \begin{proof}
@@ -384,59 +384,59 @@ By Lemma~\ref{lem:a3-core-slope}, $|a(\xi)-a(0)|\le L_a|\xi|$ for all $\xi$, hen
 $a(\xi)\ge a(0)-L_a|\xi|$ on $|\xi|\le r$ and $a(\xi)\ge -\bigl(a(0)+L_a|\xi|\bigr)$ for $|\xi|\ge r$.
 The restriction $r\le a(0)/L_a$ ensures $a(0)-L_a\xi\ge0$ on $[0,r]$. Since $0\le (1-|\xi|/B)\le 1$, we obtain
 \[
-  A_0(B,t_{\mathrm{sym}})
+  A_0(B,t)
   \ge 4\pi\int_{0}^{r}\!\bigl(a(0)-L_a\xi\bigr)\Bigl(1-\frac{\xi}{B}\Bigr)e^{-\alpha \xi^2}\,d\xi
      - 4\pi\int_{r}^{B}\!\bigl(a(0)+L_a\xi\bigr)e^{-\alpha \xi^2}\,d\xi.
 \]
 For $B\ge B_{\min}$ the first integral is bounded below by replacing $B$ with $B_{\min}$,
 and the second is bounded below by extending to $[r,\infty)$. This yields the stated bound,
-uniformly in $B$, and therefore $A_*(t_{\mathrm{sym}})\ge A_{\mathrm{low}}(r)$.
+uniformly in $B$, and therefore $A_*(t)\ge A_{\mathrm{low}}(r)$.
 \end{proof}
 
 \begin{lemma}[Analytic Lipschitz bound (auxiliary)]\label{lem:digamma-lip-bound}
-Let $t_{\mathrm{sym}}=\frac{3}{50}$, $B_{\min}=3$, and $L_*(t_{\mathrm{sym}})=\sup_{B\ge B_{\min}} L_A(B,t_{\mathrm{sym}})$ as in Definition~\ref{def:uniform-L}.
-Set $\alpha:=4\pi^2 t_{\mathrm{sym}}$ and $L_a$ as in Lemma~\ref{lem:a3-core-slope}. For $B\ge B_{\min}$ one has
-$\Phi_{B,t_{\mathrm{sym}}}(\xi)\le e^{-\alpha\xi^2}$ and
+Let $t=t_{\mathrm{crit}}=\frac{3}{20}$, $B_{\min}=3$, and $L_*(t)=\sup_{B\ge B_{\min}} L_A(B,t)$ as in Definition~\ref{def:uniform-L}.
+Set $\alpha:=4\pi^2 t$ and $L_a$ as in Lemma~\ref{lem:a3-core-slope}. For $B\ge B_{\min}$ one has
+$\Phi_{B,t}(\xi)\le e^{-\alpha\xi^2}$ and
 $
-|\Phi_{B,t_{\mathrm{sym}}}'(\xi)|
-\le \bigl(B_{\min}^{-1}+8\pi^2 t_{\mathrm{sym}}|\xi|\bigr)e^{-\alpha\xi^2}.
+|\Phi_{B,t}'(\xi)|
+\le \bigl(B_{\min}^{-1}+8\pi^2 t|\xi|\bigr)e^{-\alpha\xi^2}.
 $
 Define
 \[
   G(\xi)
   := L_a\,e^{-\alpha\xi^2}
-     + \bigl(a(0)+L_a|\xi|\bigr)\bigl(B_{\min}^{-1}+8\pi^2 t_{\mathrm{sym}}|\xi|\bigr)e^{-\alpha\xi^2},
+     + \bigl(a(0)+L_a|\xi|\bigr)\bigl(B_{\min}^{-1}+8\pi^2 t|\xi|\bigr)e^{-\alpha\xi^2},
 \]
 and
 \[
   L_{\mathrm{up}}
   := 2\pi\Bigl(G(0) + 2\int_{0}^{\infty} G(\xi)\,d\xi\Bigr).
 \]
-Then $L_*(t_{\mathrm{sym}})\le L_{\mathrm{up}}$.
+Then $L_*(t)\le L_{\mathrm{up}}$.
 \end{lemma}
 
 \begin{proof}
 Lemma~\ref{lem:a3-lipschitz-bound} gives
-$L_A(B,t_{\mathrm{sym}})=2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}\sum_{m\in\ZZ}|g_{B,t_{\mathrm{sym}}}'(\theta+m)|$.
+$L_A(B,t)=2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}\sum_{m\in\ZZ}|g_{B,t}'(\theta+m)|$.
 Since $g'=a'\Phi+a\Phi'$, the bounds $|a'|\le L_a$ and $|a|\le a(0)+L_a|\xi|$ together with the
-envelope bounds on $\Phi_{B,t_{\mathrm{sym}}}$ and $\Phi_{B,t_{\mathrm{sym}}}'$ yield $|g'(\xi)|\le G(\xi)$.
+envelope bounds on $\Phi_{B,t}$ and $\Phi_{B,t}'$ yield $|g'(\xi)|\le G(\xi)$.
 The function $G$ is even and decays Gaussianly, so for each $\theta$
 the sum is dominated by a unit-step Riemann sum of $G$; in particular
 \[
   \sum_{m\in\ZZ} G(\theta+m)\ \le\ G(0) + 2\int_{0}^{\infty} G(\xi)\,d\xi.
 \]
-Taking the supremum over $\theta$ and then $B\ge B_{\min}$ gives $L_*(t_{\mathrm{sym}})\le L_{\mathrm{up}}$.
+Taking the supremum over $\theta$ and then $B\ge B_{\min}$ gives $L_*(t)\le L_{\mathrm{up}}$.
 \end{proof}
 
 \begin{remark}[Auxiliary mean--modulus route]\label{rem:aux-mean-modulus}
 Lemmas~\ref{lem:digamma-mean-bound} and~\ref{lem:digamma-lip-bound} provide analytic estimates for
-$A_*(t_{\mathrm{sym}})$ and $L_*(t_{\mathrm{sym}})$, which may be used for coarse bounds on $\min P_A$
+$A_*(t)$ and $L_*(t)$, which may be used for coarse bounds on $\min P_A$
 via the mean--modulus inequality.  The main proof instead uses the direct pointwise floor from
 Lemma~\ref{lem:uniform-arch-floor}, which yields a much sharper constant.
 \end{remark}
 
 \begin{remark}[Uniform vs.\ compact-dependent approach]\label{rem:uniform-vs-compact}
-The uniform constants $(A_*, L_*, c_*)$ depend only on $t_{\mathrm{sym}}$ and $B_{\min}$, not on the compact $[-K,K]$.
+The uniform constants $(A_*, L_*, c_*)$ depend only on $t$ and $B_{\min}$, not on the compact $[-K,K]$.
 This decouples the Archimedean floor from the parameter schedule $B(K)$: once $c_*>0$ is established quantitatively,
 every compact inherits the same positive margin without requiring monotonicity arguments or numerical tables.
 \end{remark}

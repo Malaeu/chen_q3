@@ -1,13 +1,13 @@
 % Theorem B.3 --- One-interval induction (IND/AB step)
 \begin{theorem}[B.3: IND/AB]\label{md:thm:INDprime}
-On an activity interval $[B_n,B_{n+1})$ let $\|T_P^{\mathrm{old}}\|_{\mathcal H_K}\le \rho_K^{\mathrm{old}}<1$. When crossing the threshold $B_{n+1}$ a single new node $\alpha_{\mathrm{new}}$ with weight $w_{\mathrm{new}}$ enters. In the RKHS normalization $\|k_{\alpha}\|=1$ one has
+On an activity interval $[B_n,B_{n+1})$ let $\|T_{P,\mathrm{old}}^{\mathrm{RKHS}}(t)\|_{\mathcal H_K}\le \rho_K^{\mathrm{old}}<1$. When crossing the threshold $B_{n+1}$ a single new node $\alpha_{\mathrm{new}}$ with weight $w_{\mathrm{new}}$ enters. In the RKHS normalization $\|k_{\alpha}\|=1$ one has
 \begin{equation}\label{eq:IND_prime_step-formula-1}
-\|T_P^{\mathrm{new}}\|\le \rho_K^{\mathrm{old}}+ w_{\mathrm{new}}.
+\|T_{P,\mathrm{new}}^{\mathrm{RKHS}}(t)\|\le \rho_K^{\mathrm{old}}+ w_{\mathrm{new}}.
 \end{equation}
-Hence if $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$, then $T_A-T_P^{\mathrm{new}}\succeq 0$ on $\mathcal H_K$.
+Hence if $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$, then $T_A-T_{P,\mathrm{new}}^{\mathrm{RKHS}}(t)\succeq 0$ on $\mathcal H_K$.
 \end{theorem}
 \begin{proof}
-Rank--one update: $T_P^{\mathrm{new}}=T_P^{\mathrm{old}}+ w_{\mathrm{new}}\,|k_{\alpha_{\mathrm{new}}}\rangle\langle k_{\alpha_{\mathrm{new}}}|$ with $\|k_{\alpha}\|=1$ gives the claimed norm bound; strict inequality implies the Loewner positivity.
+Rank--one update: $T_{P,\mathrm{new}}^{\mathrm{RKHS}}(t)=T_{P,\mathrm{old}}^{\mathrm{RKHS}}(t)+ w_{\mathrm{new}}\,|k_{\alpha_{\mathrm{new}}}\rangle\langle k_{\alpha_{\mathrm{new}}}|$ with $\|k_{\alpha}\|=1$ gives the claimed norm bound; strict inequality implies the Loewner positivity.
 \end{proof}
 
 %% Certified parameters table: see Appendix~\ref{app:a3-repro}, Table~\ref{tab:ind-schedule}.
@@ -16,7 +16,7 @@ Rank--one update: $T_P^{\mathrm{new}}=T_P^{\mathrm{old}}+ w_{\mathrm{new}}\,|k_{
 
 % Corollary --- Gluing across intervals
 \begin{corollary}[Gluing intervals]\label{md:cor:IND-glue}
-Suppose MD$_{2,3}$ holds on $[B_3,B_4)$, and across each threshold $B_{n}\to B_{n+1}$ the one--prime condition $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$ is verified in the RKHS normalization on $[-K,K]$. Then $T_A-T_P\succeq 0$ holds on $[-K,K]$ for all $B\ge B_3$, i.e. the measure domination persists interval--by--interval.
+Suppose MD$_{2,3}$ holds on $[B_3,B_4)$, and across each threshold $B_{n}\to B_{n+1}$ the one--prime condition $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$ is verified in the RKHS normalization on $[-K,K]$. Then $T_A-T_P^{\mathrm{RKHS}}(t)\succeq 0$ holds on $[-K,K]$ for all $B\ge B_3$, i.e. the measure domination persists interval--by--interval.
 \end{corollary}
 
 \begin{lemma}[Analytic bound for early blocks]\label{md:lem:IND-early-analytic}

@@ -2,7 +2,7 @@
 
 %% ============================================================================
 %% CLEANED UP: December 2025
-%% K-dependent propositions (M_0(K), t_rkhs*(K), c_arch(K)) have been removed.
+%% K-dependent propositions (M_0(K), t_{\mathrm{crit}}, c_arch(K)) have been removed.
 %% The main proof uses the UNIFORM approach from Lemma~\ref{lem:uniform-arch-floor}.
 %% This section now contains only the general matrix lemmas used by the uniform proof.
 %% ============================================================================
@@ -35,9 +35,9 @@ Let $T_M[P]$ be a Toeplitz matrix and $\Delta T$ a perturbation with $\|\Delta T
 \[
   \bigl|\lambda_{\min}(T_M[P+\Delta P]) - \lambda_{\min}(T_M[P])\bigr|\ \le\ \varepsilon.
 \]
-Consequently, if $A:=T_M[P_A]-T_P^{\mathrm{cap}}$ satisfies $\lambda_{\min}(A)\ge \delta>0$ and $\|T_P-T_P^{\mathrm{cap}}\|_F\le \varepsilon$, then
+Consequently, if $A:=T_M[P_A]-T_P^{\mathrm{cap}}(t,M)$ satisfies $\lambda_{\min}(A)\ge \delta>0$ and $\|T_P^{\mathrm{Ray}}(t,M)-T_P^{\mathrm{cap}}(t,M)\|_F\le \varepsilon$, then
 \[
-  \lambda_{\min}\bigl(T_M[P_A]-T_P\bigr)\ \ge\ \delta-\varepsilon.
+  \lambda_{\min}\bigl(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)\bigr)\ \ge\ \delta-\varepsilon.
 \]
 \end{corollary}
 
@@ -62,7 +62,7 @@ it yields the mixed lower bound in Theorem~\ref{thm:A3}.
 
 \begin{remark}[Operator difference vs.\ symbol difference]\label{rem:a3-operator-diff}
 When applying Lemma~\ref{lem:a3-sb-barrier} we always work with
-the Toeplitz operators $T_M[P_A]$ and $T_M[P_A]-T_P$; no ``symbol minus symbol'' simplification
+the Toeplitz operators $T_M[P_A]$ and $T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)$; no ``symbol minus symbol'' simplification
 is invoked.  The lower bounds track the operator difference directly, so all perturbative terms
 are measured in operator/Frobenius norms as mandated by Lemma~\ref{lem:hw-kf}.
 \end{remark}
@@ -70,5 +70,5 @@ are measured in operator/Frobenius norms as mandated by Lemma~\ref{lem:hw-kf}.
 \begin{remark}[Frobenius norm structure]
 For Hermitian Toeplitz matrices with first row $c_0,\dots,c_{M-1}$ and coefficients $c_{-k}=\overline{c_k}$, one has
 \(\|T_M[P]\|_F^2 = M|c_0|^2 + 2\sum_{k=1}^{M-1} (M-k)|c_k|^2\).
-Hence a split budget $\varepsilon = \varepsilon^{\mathrm{F}}_{\text{tail}} + \varepsilon^{\mathrm{F}}_{\text{grid}} + \varepsilon^{\mathrm{F}}_{\text{num}}$ controls the total spectral drift of $T_P$ relative to the capped operator.
+Hence a split budget $\varepsilon = \varepsilon^{\mathrm{F}}_{\text{tail}} + \varepsilon^{\mathrm{F}}_{\text{grid}} + \varepsilon^{\mathrm{F}}_{\text{num}}$ controls the total spectral drift of $T_P^{\mathrm{Ray}}(t,M)$ relative to the capped operator.
 \end{remark}
