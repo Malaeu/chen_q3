@@ -198,6 +198,35 @@
 
 ---
 
+## A3_FLOOR @ one-scale `t_critical` (BLOCKER, 2026-01-23)
+
+**Target (exact):**
+- Prove (no axioms/sorry): `∀ θ ∈ Set.Icc (-1/2) (1/2), Q3.c_star ≤ P_A B_min Q3.t_critical θ`.
+- This is the missing input `hP_ge` for the one-scale bridge in `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`.
+
+**Why it’s hard right now (root cause, not vibes):**
+- The old proof `Q3/Proofs/A3_Floor_Main.lean` works at `t_sym = 3/50` because it can lower-bound the key
+  “two big terms” using the strong pointwise bound `a(1/2) ≥ 5/8` (log2 is large enough) and then crush all tails.
+- At `t_critical = 3/20`, the bottleneck becomes controlling `g B_min t (1-θ)` for `θ` close to `1/2`,
+  i.e. `a(x)` for `x` slightly **above** `1/2` (e.g. `x = 11/20 = 0.55`).
+- With the current remainder lemma `Q3.re_digamma_remainder_bound_stieltjes` (constant `1/4`),
+  the best “pure-inequality” lower bounds for `a(11/20)` appear too weak to close the numeric gap cleanly;
+  the dead-code path in `Q3/Proofs/A3_Floor_Bounds.lean` explicitly notes that a sharper
+  `re_digamma_remainder_bound` (constant `1/12`) would unlock the needed strength.
+
+**Decision tree (next moves):**
+1) **OK / recommended:** implement a sharper digamma remainder bound (the missing `re_digamma_remainder_bound`)
+   and resurrect `a_lower_bound_from_remainder` in `Q3/Proofs/A3_Floor_Bounds.lean`.
+   - Pointers: `full/q3.lean.aristotle/Q3/Proofs/A3_Floor_Bounds.lean` (dead code blocks around `re_digamma_remainder_bound`),
+     `full/q3.lean.aristotle/Q3/DigammaRemainder.lean` (current `…_stieltjes` bound).
+   - This is the most “community-standard” fix: better explicit remainder ⇒ better pointwise `a(x)` bounds ⇒ floor.
+2) **OK but larger infra:** prove a *local* control of `a` on `[1/2, 11/20]` (e.g. via trigamma bounds)
+   and use it to transfer the known `a(1/2)` lower bound to `a(1-θ)` when `θ≈1/2`.
+   - Risk: introduces heavy special-functions analysis in Lean.
+3) **False-for-now (policy):** silently mix two-scale (`t_sym` floor + `t_critical` prime cap) in the *same* proof chain.
+   - If we go two-scale, we must write an explicit comparison lemma and document the spec change; otherwise it’s drift.
+
+
 ## Спеки
 
 - Основной спецификатор инвариантов: `docs/PROJECT_SPECS.md`.
