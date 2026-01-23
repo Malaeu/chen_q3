@@ -911,7 +911,9 @@ lemma rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding_lift
   have hA :
       (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t_rkhs_cap M)).toContinuousLinearMap =
         Q3.Proofs.C1Embedding.compression ι T := by
-    simpa [A, T] using (Q3.Proofs.C1Embedding.compression_lift_eq (ι := ι) (A := A)).symm
+    simpa [ι, A, T] using
+      (T_P_comp_real_eq_compression_lift_of_dictEmbedding (K := K) (B := B) (t := t_rkhs_cap)
+        (M := M) (d := d) (hdim := hdim))
   have hAop :
       ‖A‖ ≤ rho_one := by
     have hnorm :

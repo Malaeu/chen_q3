@@ -140,6 +140,35 @@
 - Prime term = nodes sum bridge → `docs/insights/prime_term_nodes_bridge_2026_01_17.md`.
 - Rayleigh Q identification notes → `docs/insights/rayleigh_q_identification_2026_01_17.md`.
 - Rescaled density lemma variants → `docs/insights/rescaled_density_lemma_variants_2026_01_16.md`.
+- Decision tree (2026-01-23): “нетривиальное hA” для C1 (Rayleigh = compression RKHS-prime).
+  - Target lemma (informal): ∃ heat-RKHS `H_t`, ∃ isometry `ι_{t,M}`, s.t.
+    `(Matrix.toEuclideanLin (T_P_comp_real ...)).toCLM = compression ι_{t,M} (T_P_RKHS t)`.
+  - Tree-plan (no axioms, Moore–Aronszajn → close `hA`):  
+    1) `Q3/Proofs/Gaussian_RKHS_MooreAronszajn.lean`: build `H_t` from kernel `k_t(x,y)` via quotient+completion (Moore–Aronszajn), expose `eval x` and `k x` with reproducing lemma.  
+    2) `Q3/Proofs/Heat_RKHS_Interface.lean`: use `reproducing` to reduce `inner ℂ (ψ i) (k x)` to `eval x (ψ i)` (already: `h_eval_of_eval_eq_prime_vec`).  
+    3) `Q3/Proofs/RKHS_Interface_C1.lean`: discharge `hA` by providing `H, ψ, k` and the matching hypothesis; conclude exact compression identity (already: `T_P_comp_toCLM_eq_compression`).  
+    4) If “exact sampling ON family” is false-for-now: switch to node-span interpolation, prove unitary-conjugation equivalence, and use operator-norm invariance to recover the C1 cap (document as Option 1b in this tree).  
+  - Option 0 (DONE, algebraic core): exact factorization `T_P_comp = V† · D · V` in
+    `Q3/Proofs/RKHS_hA_prime.lean` (this is the real “content” of the rank-one sum).
+  - Option 1 (OK, conditional “true C1 as in PDF”): minimal Hilbert-interface version of `hA`
+    compiles as `Q3.Proofs.RKHSInterfaceC1.T_P_comp_toCLM_eq_compression` in
+    `Q3/Proofs/RKHS_Interface_C1.lean`:
+    assumptions = `(H, ψ orthonormal, k_n, inner(ψ_i,k_n)=prime_vec)` ⇒ `T_P_comp = compression ι T`.
+    Note: in this Lean toolchain `⟪·,·⟫` does not parse reliably; use `inner ℂ _ _` in new files.
+    Refinement: `Q3/Proofs/Heat_RKHS_Interface.lean` packages a minimal RKHS interface
+    (`eval x` + reproducing vectors `k x`) so the matching hypothesis reduces to:
+    `eval (xi_n n) (ψ i) = prime_vec ... i`.
+    Reality check (important before “full Gaussian RKHS”): in the *Gaussian RKHS on ℝ* with kernel
+    `k_t(x,y)=exp(-(x-y)^2/(4t))`, it is not obvious (and may be false) that one can pick an
+    orthonormal family `ψ_i` with exact exponential sample values `ψ_i(ξ_n)=prime_vec ... i`.
+    The robust route is to build `ψ_i` by *kernel interpolation on the finite node set* and then
+    track the induced unitary change-of-basis on `ℂ^{2M+1}`; this still gives the needed norm control
+    because `A · T_P_comp · A†` has the same operator norm as `T_P_comp`.
+  - Option 2 (OK fallback): skip RKHS and cap `‖T_P_comp_real‖` directly by Schur/row-sum:
+    `T_P_comp_real_opNorm_le_weight_sum` in `Q3/Proofs/RKHS_cap_rayleigh.lean`.
+    Status: compiles now; use when Option 1 is blocked.
+  - Pivot rule: if Option 1 requires new axioms / >N days of infrastructure, mark “false-for-now”
+    and wire Option 2 into the proof chain; keep Option 1 as long-term cleanup.
 
 ---
 
