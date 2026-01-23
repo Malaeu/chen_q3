@@ -21,6 +21,7 @@ import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 import Q3.Proofs.A1_density   -- For A1_density_WK_thm (real proof!)
 import Q3.Proofs.A1prime.A1_density_fixed_t0  -- For A1_density_WK_fixed_t0 (closes axiom!)
 import Q3.Proofs.HeatKernelParams
+import Q3.Proofs.Params_Critical
 import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
 import Q3.Proofs.P_A_Toeplitz_bridge  -- Fourier Toeplitz with P_A (correct formulation)
 import Q3.Proofs.Q_nonneg_on_atoms_fourier_axiom
@@ -209,7 +210,7 @@ theorem A3_bridge_rayleigh_Fourier (K : ℝ) (hK : K > 0) :
 theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1),
     Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K →
     Q3.RKHS_contraction_data K →
-    ∀ g ∈ Q3.AtomCone_K_fixed K Q3.t0_A1, Q3.Q g ≥ 0 :=
+    ∀ g ∈ Q3.AtomCone_K_fixed K Q3.t0_critical, Q3.Q g ≥ 0 :=
   Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS
 
 end Q3.Theorems

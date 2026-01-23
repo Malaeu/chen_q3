@@ -18,6 +18,7 @@ import Q3.Basic.Defs
 import Q3.AxiomsTheorems
 import Q3.Atoms_Positive
 import Q3.Proofs.HeatKernelParams
+import Q3.Proofs.Params_Critical
 import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 
 set_option linter.mathlibStandardSet false
@@ -153,11 +154,12 @@ theorem T5_transfer_of_atoms (K : ℝ) (hK : K ≥ 1) (t0 : ℝ) (ht0 : 0 < t0)
 
 /-- **T5 Transfer Theorem** (project default).
 
-Specialization of `T5_transfer_of_atoms` to the fixed project parameter `t0_A1`
+Specialization of `T5_transfer_of_atoms` to the fixed project parameter `t0_critical`
 and the bundled atoms-positivity theorem `Q3.Atoms.Q_nonneg_on_atoms`. -/
 theorem T5_transfer (K : ℝ) (hK : K ≥ 1) :
     ∀ Φ ∈ W_K K, Q Φ ≥ 0 :=
-  T5_transfer_of_atoms K hK Q3.t0_A1 Q3.t0_A1_pos (fun g hg => Q3.Atoms.Q_nonneg_on_atoms K hK g hg)
+  T5_transfer_of_atoms K hK Q3.t0_critical Q3.t0_critical_pos
+    (fun g hg => Q3.Atoms.Q_nonneg_on_atoms K hK g hg)
 
 /-- Corollary: Q is nonnegative on W_K for K ≥ 1 -/
 theorem Q_nonneg_on_W_K (K : ℝ) (hK : K ≥ 1) :

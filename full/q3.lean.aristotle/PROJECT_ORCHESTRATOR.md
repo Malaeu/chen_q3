@@ -1,7 +1,7 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
-Last Updated: 2026-01-23
+Last Updated: 2026-01-24
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -34,6 +34,8 @@ Single entry point: read this file at session start.
   (fixed-`t` bridge + generic weight-sum → Rayleigh cap lemma in `Q3/Proofs/RKHS_cap_generic.lean`).
 - New one-scale parameter module added (WIP pivot): `Q3/Proofs/Params_Critical.lean`
   centralizes `t_critical = 3/20` and `t0_critical`.
+- Atom positivity/T5 transfer now use `t0_critical` (t = 0.15) for `AtomCone_K_fixed`;
+  BaseAtomCone guard lemma added in `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
 - Helper lemma for “unitary conjugation preserves opNorm” added:
   `Q3/Proofs/OpNorm_Unitary.lean` (used in the `hA` decision tree, see `docs/INSIGHTS.md`).
 - Legacy: `A3_bridge_axiom` (sampling Toeplitz + a_star) is still in `Q3/Axioms.lean`
