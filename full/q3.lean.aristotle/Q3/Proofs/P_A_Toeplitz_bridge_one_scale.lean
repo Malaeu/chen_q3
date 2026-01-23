@@ -15,6 +15,7 @@ import Q3.Proofs.Rayleigh_Fourier
 import Q3.Proofs.Rayleigh_utils
 import Q3.Proofs.A3_Floor_Bounds  -- for `B_min`
 import Q3.Proofs.A3_Floor_Main    -- for definition `P_A`
+import Q3.Proofs.P_A_Properties   -- for `P_A_continuous_of_t`
 import Q3.Proofs.RKHS_cap_generic
 
 set_option linter.mathlibStandardSet false
@@ -58,7 +59,6 @@ def A3_bridge_data_rayleigh_Fourier_at (K t : ℝ) : Prop :=
 -/
 lemma A3_bridge_rayleigh_at_from_weight_sum_P_A (K t rho : ℝ)
     (h_floor : c_star / 4 ≤ c_star - rho)
-    (hP_cont : Continuous (P_A B_min t))
     (hP_ge : ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2), c_star ≤ P_A B_min t θ)
     (h_weight_sum :
       ∀ [Fintype (Q3.Nodes K)],
@@ -66,6 +66,7 @@ lemma A3_bridge_rayleigh_at_from_weight_sum_P_A (K t rho : ℝ)
     A3_bridge_data_rayleigh_Fourier_at K t := by
   intro hK _inst
   intro M v hv
+  have hP_cont : Continuous (P_A B_min t) := P_A_continuous_of_t t
   have hT :
       Q3.RayleighQuotient (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (P_A B_min t)) v
         ≥ c_star := by
