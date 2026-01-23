@@ -118,6 +118,19 @@
   7) Checks: `lake env lean Q3/Proofs/Q_nonneg_atoms_helpers.lean`,
      `lake env lean Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`,
      `lake env lean Q3/Atoms_Positive.lean`.
+- Synthesis (2026-01-23, in progress): close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+  via the one-scale chain (Stream A).
+  1) q3search/websearch were attempted but failed with spend-limit 403.
+  2) Implement `AtomCone_K_fixed` + `AtomCone_K_fixed_subset` in `Q3/Axioms.lean`
+     and update the fixed-t cone plumbing (see `docs/insights/atomcone_fixed_t_gap_2026_01_18.md`).
+  3) In `Q3/Proofs/Q_nonneg_atoms_helpers.lean`, import A1/A2 from
+     `Q3/Proofs/Q_nonneg_lemmas.lean` and add the missing A3/A4/A5 steps with minimal imports.
+  4) In `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`, use the fixed-t cone lemma,
+     `rayleigh_Q_eq_Q`/`rayleigh_Q_eq_Q_shift`, and the one-scale bridge from
+     `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean` plus the cap in
+     `Q3/Proofs/RKHS_cap_rayleigh.lean`.
+  5) Replace the axiom in `Q3/Atoms_Positive.lean` and `Q3/AxiomsTheorems.lean`,
+     then run `lake env lean` on the touched files and `./scripts/check_axioms.sh`.
 - Последний мост к Q3.Q: для Phi с compact support (например, fejer_heat_window) показать, что prime_term (tsum по n) равен конечной сумме по Nodes K при K >= B; тогда rayleigh_Q_identification переписывается в Q3.Q (см. `Q3/Proofs/Rayleigh_Q_identification.lean`).
 - P_A_continuous: доказательство через локальную конечность суммы и периодичность, без `sorry` (см. `A3_Floor_Main.lean`).
 
