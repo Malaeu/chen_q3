@@ -931,6 +931,53 @@ lemma rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding_lift
   exact rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding (K := K) (B := B) (M := M)
     (d := d) (hdim := hdim) (T := T) (hA := hA) (hT := hT)
 
+/-! ### Kernel-section dictionary (finite-dimensional model) -/
+
+private noncomputable def kernel_basis (M : ℕ) :
+    OrthonormalBasis (Fin (2 * M + 1)) ℝ (EuclideanSpace ℝ (Fin (2 * M + 1))) := by
+  classical
+  let E := EuclideanSpace ℝ (Fin (2 * M + 1))
+  have hfinrank : Module.finrank ℝ E = 2 * M + 1 :=
+    (finrank_euclideanSpace_fin (𝕜 := ℝ) (n := 2 * M + 1))
+  exact (stdOrthonormalBasis ℝ E).reindex (finCongr hfinrank)
+
+private noncomputable def kernel_dict (M : ℕ) :
+    Fin (2 * M + 1) → EuclideanSpace ℝ (Fin (2 * M + 1)) :=
+  kernel_basis M
+
+private lemma kernel_dict_finrank (M : ℕ) :
+    Module.finrank ℝ
+        (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) (kernel_dict M)) = 2 * M + 1 := by
+  classical
+  let E := EuclideanSpace ℝ (Fin (2 * M + 1))
+  have hspan :
+      Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) (kernel_dict M) = ⊤ := by
+    simpa [Q3.Proofs.C1Embedding.dictSubmodule, kernel_dict, kernel_basis] using
+      (kernel_basis M).toBasis.span_eq
+  have htop :
+      Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) (kernel_dict M)) =
+        Module.finrank ℝ E := by
+    rw [hspan]
+    exact (finrank_top (R := ℝ) (M := E))
+  exact htop.trans (finrank_euclideanSpace_fin (𝕜 := ℝ) (n := 2 * M + 1))
+
+lemma rkhs_cap_rayleigh_tcap_via_C1_kernel_dict
+    (K B : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    (h_weight_sum :
+      ∑ n : Q3.Nodes K,
+        ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖ ≤ rho_one) :
+    ∀ (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
+      Q3.RayleighQuotient (Q3.T_P_comp_real K B t_rkhs_cap M) v ≤ rho_one := by
+  classical
+  let d := kernel_dict M
+  have hdim :
+      Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1 := by
+    simpa [d] using kernel_dict_finrank (M := M)
+  simpa [d] using
+    (rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding_lift (K := K) (B := B) (M := M)
+      (H := EuclideanSpace ℝ (Fin (2 * M + 1))) (d := d) (hdim := hdim)
+      (h_weight_sum := h_weight_sum))
+
 lemma rkhs_cap_rayleigh_tcap (K B : ℝ) [Fintype (Q3.Nodes K)]
     (h_weight_sum :
       ∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖
@@ -938,15 +985,8 @@ lemma rkhs_cap_rayleigh_tcap (K B : ℝ) [Fintype (Q3.Nodes K)]
     ∀ (M : ℕ) (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
       Q3.RayleighQuotient (Q3.T_P_comp_real K B t_rkhs_cap M) v ≤ rho_one := by
   intro M v hv
-  have hnorm :
-      ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ ≤
-        ∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖ :=
-    T_P_comp_real_opNorm_le_weight_sum (K:=K) (B:=B) (t:=t_rkhs_cap) (M:=M)
-  have hRayleigh :
-      Q3.RayleighQuotient (Q3.T_P_comp_real K B t_rkhs_cap M) v ≤
-        ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ :=
-    RayleighQuotient_le_opNorm (A:=Q3.T_P_comp_real K B t_rkhs_cap M) (v:=v) hv
-  exact le_trans hRayleigh (le_trans hnorm h_weight_sum)
+  exact rkhs_cap_rayleigh_tcap_via_C1_kernel_dict (K := K) (B := B) (M := M)
+    (h_weight_sum := h_weight_sum) v hv
 
 /-- DEPRECATED: This lemma uses sampling Toeplitz with a_star.
     Use A3_bridge_rayleigh_from_weight_sum_P_A from P_A_Toeplitz_bridge.lean instead,
