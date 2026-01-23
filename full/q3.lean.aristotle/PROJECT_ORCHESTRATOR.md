@@ -1,7 +1,7 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
-Last Updated: 2026-01-21
+Last Updated: 2026-01-23
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -30,6 +30,10 @@ Single entry point: read this file at session start.
   `Q3/T5_Transfer.lean`, so `A1_density_WK_axiom` is gone from the main chain.
 - RKHS cap is PROVEN in `Q3/Proofs/RKHS_cap_rayleigh.lean`:
   `weight_sum_le_rho_one` + `rkhs_cap_rayleigh_tcap` with `t_rkhs_cap = 40`.
+- New one-scale parameter module added (WIP pivot): `Q3/Proofs/Params_Critical.lean`
+  centralizes `t_critical = 3/20` and `t0_critical`.
+- Helper lemma for “unitary conjugation preserves opNorm” added:
+  `Q3/Proofs/OpNorm_Unitary.lean` (used in the `hA` decision tree, see `docs/INSIGHTS.md`).
 - Legacy: `A3_bridge_axiom` (sampling Toeplitz + a_star) is still in `Q3/Axioms.lean`
   but no longer appears in the main chain.
 
@@ -108,6 +112,10 @@ RH_of_Weil_and_Q3
 **STATUS:** Cannot close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` with current approach.
 Mathematical consultation with Proshka required.
 
+**HARD PIVOT DIRECTION (in progress):** one-scale parameterization at `t = t_critical`
+and “true C1” matching (`hA`) for the RKHS prime operator (no embedding handwaving).
+Decision tree + file pointers live in `docs/INSIGHTS.md` (search for “нетривиальное hA”).
+
 ---
 
 ## Active Next Step (ON HOLD pending gap resolution)
@@ -118,7 +126,10 @@ Mathematical consultation with Proshka required.
 ~~   `Q3/Atoms_Positive.lean` / `Q3/AxiomsTheorems.lean` with the theorem proof~~
 ~~   (A3 floor + RKHS cap + Rayleigh identification).~~
 
-**NEW PRIORITY:** Resolve LaTeX proof gap before proceeding with axiom closure.
+**NEW PRIORITY:** Build an audit-resistant replacement for the old two-scale bridge:
+1) Fix the spec to one-scale (`t = t_critical`) in a new chain (do not patch ad-hoc).
+2) Close the *nontrivial* `hA` matching for the RKHS prime operator (C1 style).
+3) Only then rewire the main chain and close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
 
 ## 🚨 CRITICAL GAP: AtomCone_K_fixed (2026-01-18)
 

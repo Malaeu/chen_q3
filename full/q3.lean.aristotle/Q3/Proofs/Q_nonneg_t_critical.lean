@@ -20,7 +20,7 @@ LaTeX <-> Lean parameter conversion:
 -/
 
 import Q3.Axioms
-import Q3.Proofs.HeatKernelParams
+import Q3.Proofs.Params_Critical
 import Q3.Proofs.A3_Floor_Bounds
 import Q3.Proofs.ShiftedWindows
 
@@ -33,43 +33,14 @@ noncomputable section
 
 namespace Q3
 
-/-! ## Critical Heat Parameter -/
-
-/-- Critical heat parameter where Q crosses zero: t_critical = 3/20 = 0.15 -/
-def t_critical : ℝ := 3 / 20
-
-/-- A1 heat parameter for critical t: t0_critical = 1/(16*pi^2*t_critical) -/
-def t0_critical : ℝ := 1 / (16 * Real.pi ^ 2 * t_critical)
-
-lemma t_critical_pos : t_critical > 0 := by norm_num [t_critical]
-
-lemma t0_critical_pos : t0_critical > 0 := by
-  have hpi : (0 : ℝ) < Real.pi := Real.pi_pos
-  have ht : (0 : ℝ) < t_critical := by norm_num [t_critical]
-  have hden : 0 < 16 * Real.pi ^ 2 * t_critical := by
-    have hpi2 : 0 < Real.pi ^ 2 := sq_pos_of_pos hpi
-    nlinarith [hpi2, ht]
-  unfold t0_critical
-  exact one_div_pos.mpr hden
-
 /-- t_critical > t_sym (0.15 > 0.06), so heat decay is stronger -/
 lemma t_critical_gt_t_sym : t_critical > t_sym := by
   norm_num [t_critical, t_sym]
 
 /-- Parameter conversion: exp(-xi^2/(4*t0_critical)) = exp(-4*pi^2*t_critical*xi^2) -/
-lemma exp_reparam_critical (x : ℝ) :
-    Real.exp (-x^2 / (4 * t0_critical)) = Real.exp (-4 * Real.pi ^ 2 * t_critical * x^2) := by
-  have hden : (16 * Real.pi ^ 2 * t_critical) ≠ 0 := by
-    have hden_pos : (0 : ℝ) < 16 * Real.pi ^ 2 * t_critical := by
-      have hpi2 : 0 < Real.pi ^ 2 := sq_pos_of_pos Real.pi_pos
-      have ht : (0 : ℝ) < t_critical := by norm_num [t_critical]
-      nlinarith [hpi2, ht]
-    exact ne_of_gt hden_pos
-  have h : -x^2 / (4 * t0_critical) = -4 * Real.pi ^ 2 * t_critical * x^2 := by
-    unfold t0_critical
-    field_simp [hden]
-    ring
-  simp [h]
+lemma exp_reparam_critical' (x : ℝ) :
+    Real.exp (-x^2 / (4 * t0_critical)) = Real.exp (-4 * Real.pi ^ 2 * t_critical * x^2) :=
+  Q3.exp_reparam_critical x
 
 /-! ## Fejer-Heat Window at t_critical -/
 

@@ -74,7 +74,8 @@ Proof idea:
 4. By Atoms axiom, Q(g_n) ≥ 0 for all n
 5. Limit of nonnegatives is nonnegative: Q(Φ) ≥ 0
 -/
-theorem T5_transfer (K : ℝ) (hK : K ≥ 1) :
+theorem T5_transfer_of_atoms (K : ℝ) (hK : K ≥ 1) (t0 : ℝ) (ht0 : 0 < t0)
+    (hAtoms : ∀ g ∈ AtomCone_K_fixed K t0, Q g ≥ 0) :
     ∀ Φ ∈ W_K K, Q Φ ≥ 0 := by
   intro Φ hΦ
   -- We'll prove by contradiction: assume Q(Φ) < 0 and derive contradiction
@@ -93,15 +94,14 @@ theorem T5_transfer (K : ℝ) (hK : K ≥ 1) :
   have hε_pos : ε > 0 := by positivity
 
   -- Fixed-t₀ density (A1' with fixed t₀)
-  have ht0 : (0 : ℝ) < Q3.t0_A1 := Q3.t0_A1_pos
   obtain ⟨g, hg_atom, hg_approx⟩ :=
-    Q3.Theorems.A1_density_WK K hK_pos Q3.t0_A1 ht0 Φ hΦ ε hε_pos
+    Q3.Theorems.A1_density_WK K hK_pos t0 ht0 Φ hΦ ε hε_pos
 
   -- g ∈ AtomCone_K_fixed ⊆ W_K
-  have hg_W_K : g ∈ W_K K := AtomCone_subset_W_K K Q3.t0_A1 hg_atom
+  have hg_W_K : g ∈ W_K K := AtomCone_subset_W_K K t0 hg_atom
 
   -- By Atoms theorem (fixed-t₀), Q(g) ≥ 0
-  have hg_nonneg : Q g ≥ 0 := Q3.Atoms.Q_nonneg_on_atoms K hK g hg_atom
+  have hg_nonneg : Q g ≥ 0 := hAtoms g hg_atom
 
   -- By Lipschitz: |Q(Φ) - Q(g)| ≤ L * ||Φ - g||_∞ < L * ε = δ/2
   have h_diff_bound : |Q Φ - Q g| ≤ L * sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} :=
@@ -150,6 +150,14 @@ theorem T5_transfer (K : ℝ) (hK : K ≥ 1) :
     have : -(δ / 2) < 0 := by linarith [hδ_pos]
     exact lt_trans h_Qg_lt_neg_half this
   linarith
+
+/-- **T5 Transfer Theorem** (project default).
+
+Specialization of `T5_transfer_of_atoms` to the fixed project parameter `t0_A1`
+and the bundled atoms-positivity theorem `Q3.Atoms.Q_nonneg_on_atoms`. -/
+theorem T5_transfer (K : ℝ) (hK : K ≥ 1) :
+    ∀ Φ ∈ W_K K, Q Φ ≥ 0 :=
+  T5_transfer_of_atoms K hK Q3.t0_A1 Q3.t0_A1_pos (fun g hg => Q3.Atoms.Q_nonneg_on_atoms K hK g hg)
 
 /-- Corollary: Q is nonnegative on W_K for K ≥ 1 -/
 theorem Q_nonneg_on_W_K (K : ℝ) (hK : K ≥ 1) :

@@ -73,6 +73,13 @@ You are a **formal proof auditor**. Your task is to build rigorous, audit-resist
 - All parameters declared (fixed vs arbitrary)
 - All hypotheses stated
 
+### Rule 5: Choose community-standard paths (Q3 policy)
+- We only pursue proof branches that are standard and publishable in the mathematical community.
+- If two (or more) branches are standard and formally correct, we automatically choose the one that is
+  simplest in the current Q3 architecture (fastest to formalize, least new infrastructure).
+- For any nontrivial fork/pivot: write a **5–10 line decision tree** with exact file/lemma pointers in
+  `docs/INSIGHTS.md`, mark branches as **OK / blocked / false-for-now**, and commit the note.
+
 ---
 
 ## AUDITOR'S KILL LIST
