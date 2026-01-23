@@ -892,6 +892,43 @@ lemma rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding
     RayleighQuotient_le_opNorm (A:=Q3.T_P_comp_real K B t_rkhs_cap M) (v:=v) hv
   exact le_trans hRayleigh hnorm
 
+lemma rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding_lift
+    (K B : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+    {n : ℕ} (d : Fin n → H)
+    (hdim : Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1)
+    (h_weight_sum :
+      ∑ n : Q3.Nodes K,
+        ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖ ≤ rho_one) :
+    ∀ (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
+      Q3.RayleighQuotient (Q3.T_P_comp_real K B t_rkhs_cap M) v ≤ rho_one := by
+  classical
+  let ι :=
+    Q3.Proofs.C1Embedding.dictEmbeddingCast (𝕜 := ℝ) (d := d) (m := 2 * M + 1) hdim
+  let A : (EuclideanSpace ℝ (Fin (2 * M + 1))) →L[ℝ] (EuclideanSpace ℝ (Fin (2 * M + 1))) :=
+    (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t_rkhs_cap M)).toContinuousLinearMap
+  let T : H →L[ℝ] H := ι.toContinuousLinearMap.comp (A.comp ι.toContinuousLinearMap.adjoint)
+  have hA :
+      (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t_rkhs_cap M)).toContinuousLinearMap =
+        Q3.Proofs.C1Embedding.compression ι T := by
+    simpa [A, T] using (Q3.Proofs.C1Embedding.compression_lift_eq (ι := ι) (A := A)).symm
+  have hAop :
+      ‖A‖ ≤ rho_one := by
+    have hnorm :
+        ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ ≤
+          ∑ n : Q3.Nodes K,
+            ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖ :=
+      T_P_comp_real_opNorm_le_weight_sum (K:=K) (B:=B) (t:=t_rkhs_cap) (M:=M)
+    have hnorm' : ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ ≤ rho_one :=
+      le_trans hnorm h_weight_sum
+    simpa [A, Matrix.l2_opNorm_def, LinearEquiv.trans_apply] using hnorm'
+  have hT : ‖T‖ ≤ rho_one := by
+    have hTle : ‖T‖ ≤ ‖A‖ :=
+      Q3.Proofs.C1Embedding.opNorm_lift_le (ι := ι) (A := A)
+    exact le_trans hTle hAop
+  exact rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding (K := K) (B := B) (M := M)
+    (d := d) (hdim := hdim) (T := T) (hA := hA) (hT := hT)
+
 lemma rkhs_cap_rayleigh_tcap (K B : ℝ) [Fintype (Q3.Nodes K)]
     (h_weight_sum :
       ∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖

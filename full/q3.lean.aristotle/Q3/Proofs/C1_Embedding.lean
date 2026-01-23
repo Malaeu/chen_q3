@@ -58,6 +58,52 @@ lemma compression_opNorm_le [Nontrivial E] (ι : E →ₗᵢ[𝕜] H) (T : H →
     _ = ‖T‖ := by
           simp [hι, hιadj]
 
+lemma compression_lift_eq (ι : E →ₗᵢ[𝕜] H) (A : E →L[𝕜] E) :
+    compression ι
+        (ι.toContinuousLinearMap.comp (A.comp ι.toContinuousLinearMap.adjoint)) = A := by
+  have h_adj :
+      (ι.toContinuousLinearMap.adjoint).comp ι.toContinuousLinearMap = 1 := by
+    have hnorm : ∀ x : E, ‖ι.toContinuousLinearMap x‖ = ‖x‖ := by
+      intro x
+      simpa using (ι.norm_map x)
+    exact (ContinuousLinearMap.norm_map_iff_adjoint_comp_self
+      (u := ι.toContinuousLinearMap)).1 hnorm
+  have h_adj_apply : ∀ x : E, (ι.toContinuousLinearMap.adjoint) (ι x) = x := by
+    intro x
+    have h' := congrArg (fun f => f x) h_adj
+    simpa [ContinuousLinearMap.comp_apply] using h'
+  ext x
+  simp [compression, ContinuousLinearMap.comp_apply, h_adj_apply]
+
+lemma opNorm_lift_le [Nontrivial E] (ι : E →ₗᵢ[𝕜] H) (A : E →L[𝕜] E) :
+    ‖ι.toContinuousLinearMap.comp (A.comp ι.toContinuousLinearMap.adjoint)‖ ≤ ‖A‖ := by
+  have hι : ‖ι.toContinuousLinearMap‖ = 1 :=
+    (LinearIsometry.norm_toContinuousLinearMap (f := ι))
+  have hιadj : ‖ι.toContinuousLinearMap.adjoint‖ = 1 := by
+    have h' :
+        ‖ι.toContinuousLinearMap.adjoint‖ = ‖ι.toContinuousLinearMap‖ :=
+      (LinearIsometryEquiv.norm_map (ContinuousLinearMap.adjoint) (ι.toContinuousLinearMap))
+    calc
+      ‖ι.toContinuousLinearMap.adjoint‖ = ‖ι.toContinuousLinearMap‖ := h'
+      _ = 1 := hι
+  have h1 :
+      ‖ι.toContinuousLinearMap.comp (A.comp ι.toContinuousLinearMap.adjoint)‖ ≤
+        ‖ι.toContinuousLinearMap‖ * ‖A.comp ι.toContinuousLinearMap.adjoint‖ := by
+    simpa using
+      (ContinuousLinearMap.opNorm_comp_le (h := ι.toContinuousLinearMap)
+        (f := A.comp ι.toContinuousLinearMap.adjoint))
+  have h2 :
+      ‖A.comp ι.toContinuousLinearMap.adjoint‖ ≤ ‖A‖ * ‖ι.toContinuousLinearMap.adjoint‖ := by
+    simpa using
+      (ContinuousLinearMap.opNorm_comp_le (h := A) (f := ι.toContinuousLinearMap.adjoint))
+  calc
+    ‖ι.toContinuousLinearMap.comp (A.comp ι.toContinuousLinearMap.adjoint)‖
+        ≤ ‖ι.toContinuousLinearMap‖ * ‖A.comp ι.toContinuousLinearMap.adjoint‖ := h1
+    _ ≤ ‖ι.toContinuousLinearMap‖ * (‖A‖ * ‖ι.toContinuousLinearMap.adjoint‖) := by
+          exact mul_le_mul_of_nonneg_left h2 (norm_nonneg _)
+    _ = ‖A‖ := by
+          simp [hι, hιadj, mul_assoc]
+
 end Compression
 
 section Dictionary
