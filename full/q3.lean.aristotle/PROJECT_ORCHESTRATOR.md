@@ -131,6 +131,38 @@ Decision tree + file pointers live in `docs/INSIGHTS.md` (search for “нетр
 2) Close the *nontrivial* `hA` matching for the RKHS prime operator (C1 style).
 3) Only then rewire the main chain and close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
 
+### What does “which branch?” mean (for a normal git user)
+
+There are two different meanings of “ветка”:
+
+1) **Git branch** (what `git switch` changes): currently we work on `projekt_2A`.
+2) **Proof-architecture branch** (inside one git branch): “A3_FLOOR/Fourier Toeplitz” vs “old RKHS operator”.
+
+Quick way to orient a fresh session:
+
+```bash
+git branch --show-current
+git log -n 1 --oneline
+sed -n '1,80p' full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
+```
+
+### Two parallel work streams (recommended)
+
+**Stream A (NOW, closes chain fast): Option 2 = Schur/weight_sum cap (no RKHS embedding)**
+
+- The “cap” is already formalized for the Rayleigh/compression operator:
+  `Q3/Proofs/RKHS_cap_rayleigh.lean` (`T_P_comp_real_opNorm_le_weight_sum`, `weight_sum_le_rho_one`, `rkhs_cap_rayleigh_tcap`).
+- This stream is about **wiring/porting it to the one-scale `t_critical` chain** (not about Moore–Aronszajn).
+
+**Stream B (PARALLEL, infrastructure): Option 1 = true Gaussian/RKHS kernel model**
+
+- Aristotle tasks live in `full/q3.lean.aristotle/aristotle_input/`.
+- Current task (kernel identity): `aristotle_input/gaussian_rkhs_kernel_v1.lean` + `.md`.
+- Goal: extract hole-free lemmas from Aristotle output and then implement the RKHS interface in-project.
+
+Rule: do Stream A on the main branch to keep momentum; do Stream B via small, self-contained Aristotle tasks
+so we never block the main closure on analytic infrastructure.
+
 ## 🚨 CRITICAL GAP: AtomCone_K_fixed (2026-01-18)
 
 **Discovery:** mgrep semantic search revealed a gap between обсуждение и реализация.
