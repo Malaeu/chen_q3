@@ -149,7 +149,10 @@
   - Target lemma (informal): ∃ heat-RKHS `H_t`, ∃ isometry `ι_{t,M}`, s.t.
     `(Matrix.toEuclideanLin (T_P_comp_real ...)).toCLM = compression ι_{t,M} (T_P_RKHS t)`.
   - Tree-plan (no axioms, Moore–Aronszajn → close `hA`):  
-    1) `Q3/Proofs/Gaussian_RKHS_MooreAronszajn.lean`: build `H_t` from kernel `k_t(x,y)` via quotient+completion (Moore–Aronszajn), expose `eval x` and `k x` with reproducing lemma.  
+    1) Build `H_t` from kernel `k_t(x,y)` (Moore–Aronszajn: span/quotient/complete) and expose
+       `eval x` + `k x` + reproducing lemma. Status: **blocked (infrastructure)** — a first attempt at a
+       Fourier/Bochner model ran into nontrivial `simp`/`cpow`/conjugation normalization issues, so it was
+       reverted rather than kept half‑working.  
     2) `Q3/Proofs/Heat_RKHS_Interface.lean`: use `reproducing` to reduce `inner ℂ (ψ i) (k x)` to `eval x (ψ i)` (already: `h_eval_of_eval_eq_prime_vec`).  
     3) `Q3/Proofs/RKHS_Interface_C1.lean`: discharge `hA` by providing `H, ψ, k` and the matching hypothesis; conclude exact compression identity (already: `T_P_comp_toCLM_eq_compression`).  
     4) If “exact sampling ON family” is false-for-now: switch to node-span interpolation, prove unitary-conjugation equivalence, and use operator-norm invariance to recover the C1 cap (document as Option 1b in this tree).  
