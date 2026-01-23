@@ -30,6 +30,8 @@ Single entry point: read this file at session start.
   `Q3/T5_Transfer.lean`, so `A1_density_WK_axiom` is gone from the main chain.
 - RKHS cap is PROVEN in `Q3/Proofs/RKHS_cap_rayleigh.lean`:
   `weight_sum_le_rho_one` + `rkhs_cap_rayleigh_tcap` with `t_rkhs_cap = 40`.
+- New one-scale A3 bridge scaffolding (no two-scale): `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`
+  (fixed-`t` bridge + generic weight-sum → Rayleigh cap lemma in `Q3/Proofs/RKHS_cap_generic.lean`).
 - New one-scale parameter module added (WIP pivot): `Q3/Proofs/Params_Critical.lean`
   centralizes `t_critical = 3/20` and `t0_critical`.
 - Helper lemma for “unitary conjugation preserves opNorm” added:
