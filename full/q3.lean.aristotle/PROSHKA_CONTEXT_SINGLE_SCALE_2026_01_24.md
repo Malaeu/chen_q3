@@ -1,5 +1,5 @@
 # PROSHKA CONTEXT PACK
-Generated: 2026-01-24 16:06:37
+Generated: 2026-01-24 16:13:48
 Repo: /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2
 
 This pack is intended for Proshka. It inlines key files and recent git context.
@@ -12,6 +12,7 @@ This pack is intended for Proshka. It inlines key files and recent git context.
 
 ## Git log
 
+dc8893f [projekt_2A][AI-codex] proshka rules + aristotle requests
 08c099d [projekt_2A][AI-codex] proshka policy + pack refresh
 cb42a8e [projekt_2A][AI-codex] proshka refs + memory pack symlink
 6a38fc3 [projekt_2A][AI-codex] proshka pack + brief builder
@@ -51,7 +52,6 @@ ee52922 [2026-01-23][linux][AI-codex] RKHS eval→inner bridge cleanup + INSIGHT
 7970386 [2026-01-23][linux][AI-codex] One-scale t_critical params + hA decision-tree tooling
 a947539 [projekt_2A] RKHS interface + conditional C1 compression matching
 d628fb2 [projekt_2A][AI-codex] Add C1 lift compression cap lemma
-eef8ece [projekt_2A][AI-codex] Rebuild RH_Q3.pdf
 
 
 ## File: full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
@@ -923,6 +923,9 @@ Conclusion: A2 закрыт как теорема в mainline.
 - **Никакого** творческого добавления шагов.
 - **Никаких** “можно было бы” — только фактически найденные элементы.
 - **Никаких** ссылок на legacy как на канон.
+- **Не проверять статус RH** и не обсуждать “открыта/доказана/принята”.  
+  Мы строим доказательство в рамках проекта; статус внешнего мира не рассматривается.
+- **Не делать веб‑поиск** “доказана ли RH”.
 
 ---
 
@@ -1097,6 +1100,9 @@ axiom rho_oneK_tcritical_le_cstar_quarter (K : ℝ) :
 - Никаких ERS‑конструкций.
 - Никаких новых «креативных» теорем — только из проекта или стандартная математика.
 - В Lean: без `sorry`/`exact?`.
+- **Не проверять статус RH** (не обсуждать “открыта/доказана/принята”).  
+  Мы строим и формализуем доказательство в рамках проекта.  
+  **Никакого веб‑поиска** “доказана ли RH”.
 
 ---
 
