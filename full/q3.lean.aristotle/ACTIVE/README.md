@@ -35,6 +35,7 @@ It uses symlinks so existing paths keep working.
 - aristotle.md              -> ../ARISTOTLE.md
 - aristotle_sandbox_guide.md -> ../ARISTOTLE_SANDBOX_GUIDE.md
 - proshka_entrypoint.md     -> ../docs/PROSHKA_ENTRYPOINT.md
+- proshka_memory_pack.md    -> ../docs/PROSHKA_MEMORY_PACK.md
 
 ## Stats update
 
