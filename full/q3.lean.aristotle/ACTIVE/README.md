@@ -37,6 +37,10 @@ It uses symlinks so existing paths keep working.
 - proshka_entrypoint.md     -> ../docs/PROSHKA_ENTRYPOINT.md
 - proshka_memory_pack.md    -> ../docs/PROSHKA_MEMORY_PACK.md
 
+## Knowledge base (external docs)
+
+- aristotle_models_knowledge -> ../../../docs/Как работают модели типа Аристотель и их тренировка
+
 ## Stats update
 
 - Run `./scripts/update_formalization_stats.sh` to refresh `FORMALIZATION_STATS.md`.
