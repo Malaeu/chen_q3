@@ -12,6 +12,7 @@ import Q3.Proofs.T_P_comp_utils
 import Q3.Proofs.A3_bridge_rayleigh_first
 import Q3.Proofs.Rayleigh_Q_identification
 import Q3.Proofs.C1_T_P_comp_dictEmbedding
+import Q3.Proofs.RKHS_Interface_C1
 
 set_option maxHeartbeats 0
 
@@ -847,6 +848,25 @@ lemma T_P_comp_real_opNorm_le_weight_sum (K B t : ℝ) (M : ℕ) [Fintype (Q3.No
   exact Q3.Schur_test (A:=Q3.T_P_comp_real K B t M) hsymm
     (C:=∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖)
     hC_nonneg hrow
+
+/-! ### C1 compression identity (explicit basisFun model) -/
+
+/-- BasisFun model: `T_P_comp` is a compression with `ψ = basisFun`, `k = prime_vec`. -/
+lemma T_P_comp_toCLM_eq_compression_basisFun
+    (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] :
+    (Matrix.toEuclideanLin (Q3.T_P_comp K B t M)).toContinuousLinearMap =
+      Q3.Proofs.C1Embedding.compression
+        (ι := Q3.Proofs.RKHSInterfaceC1.iota (H := EuclideanSpace ℂ (Fin (2 * M + 1)))
+          (M := M)
+          (ψ := Q3.Proofs.RKHSInterfaceC1.psi_basis (M := M))
+          (Q3.Proofs.RKHSInterfaceC1.psi_basis_orthonormal (M := M)))
+        (T := Q3.Proofs.RKHSInterfaceC1.T_P_RKHS_like
+          (H := EuclideanSpace ℂ (Fin (2 * M + 1)))
+          (K := K) (B := B) (t := t)
+          (k := Q3.Proofs.RKHSInterfaceC1.k_basis (K := K) (M := M))) := by
+  simpa using
+    (Q3.Proofs.RKHSInterfaceC1.T_P_comp_toCLM_eq_compression_basisFun
+      (K := K) (B := B) (t := t) (M := M))
 
 /-! ### C1 compression identity (dictionary embedding) -/
 
