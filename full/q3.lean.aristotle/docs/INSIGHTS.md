@@ -57,6 +57,23 @@
 - Implemented as a direct numeric bound (no K dependence).
 - Legacy `rho_oneK` (tau-shift) remains as a separate variant; not used in mainline.
 
+## Synthesis (2026-01-24, in progress) — `rayleigh_basis0_shift_ge_cstar_quarter` (t_critical, tau = 0)
+
+- q3search "rayleigh_basis0_shift_ge_cstar_quarter" failed: 403 Spend limit exceeded.
+- websearch "Toeplitz Rayleigh lower bound t_critical" failed: 403 Spend limit exceeded.
+- Target lemma: `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` in `Q3/Proofs/SingleScale_Assumptions.lean`.
+- Option A (primary): reduce to floor at t_critical via
+  `P_A_shift_tau_zero` (`Q3/Proofs/Q_nonneg_base_atoms_proof.lean`) +
+  `P_A_rayleigh_lower_bound_of_floor` (`Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`) +
+  `A3FloorCritical.FloorGoal` (`Q3/Proofs/A3_Floor_Critical_Goal.lean`), then weaken to `c_star/4`.
+- Option B (fallback): use `arch_rayleigh_eq_shift` (`Q3/Proofs/Rayleigh_Q_identification.lean`) +
+  `integral_P_A_shift_eq_arch_term` (`Q3/Proofs/ShiftedWindows.lean`) and prove
+  `arch_term ≥ c_star/4` via a numeric/interval lemma in `Q3/Proofs/Q_nonneg_t_critical.lean`.
+- Success check: `lake env lean Q3/Proofs/SingleScale_Assumptions.lean`
+  then `./scripts/check_axioms.sh` (only `Weil_criterion` + `Schur_test` remain).
+- Blocker: no current floor lemma at `t_critical`; likely needs numeric/interval proof
+  or a monotonicity lemma for `P_A` in `t`.
+
 ---
 
 ## A3/Rayleigh: критический путь
