@@ -49,6 +49,21 @@
   BaseAtomCone guard `Q_nonneg_on_base_atoms_of_A3_Fourier_RKHS` added.
 - Proshka request drafted: `full/q3.lean.aristotle/PROSHKA_REQUEST_5.md` (one‑scale A3 floor + cap at t_critical).
 
+## Synthesis (2026-01-24, in progress) — close `prime_sum_phi_shift_le_cstar_quarter`
+
+- q3search failed (403 spend limit); websearch failed (403 spend limit).
+- Target lemma: `SingleScale.prime_sum_phi_shift_le_cstar_quarter` in
+  `Q3/Proofs/SingleScale_Assumptions.lean`, used in `Q3/Proofs/Q_nonneg_atoms_closure.lean`.
+- Option A (primary): adapt `Q3/Proofs/PrimeTerm_t_bridge.lean` to `t_critical`:
+  define `exp_tcrit_to_rkhs` and prove
+  `phi_shift t_critical ≤ exp_tcrit_to_rkhs K * phi_shift t_rkhs_cap`;
+  then sum and bound with `weight_sum_le_rho_oneK` or
+  `prime_term_phi_shift_le_rho_oneK` from `Q3/Proofs/RKHS_cap_rayleigh.lean`.
+- Check if `exp_tcrit_to_rkhs K * rho_oneK K ≤ c_star/4`; if false, record
+  “false‑for‑now” and keep axiom.
+- Success check: `lake env lean Q3/Proofs/Q_nonneg_atoms_closure.lean` and
+  `./scripts/check_axioms.sh` shows only the remaining two SingleScale axioms.
+
 ---
 
 ## A3/Rayleigh: критический путь
