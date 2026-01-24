@@ -18,6 +18,8 @@ It uses symlinks so existing paths keep working.
 - stats.md         -> ../FORMALIZATION_STATS.md
 - chain_status.md  -> ../docs/CHAIN_STATUS.md
 - KNOWLEDGE_BASE.md (this folder) — lightweight index + live facts
+- SPECS_INDEX.md (this folder) — curated spec pointers + constants checklist
+- Q3_BLOCK_MAP.md (this folder) — Lean ↔ paper block mapping
 
 ## Maps / Specs / Architecture
 
@@ -41,6 +43,13 @@ It uses symlinks so existing paths keep working.
 ## Knowledge base (external docs)
 
 - aristotle_models_knowledge -> ../../../docs/Как работают модели типа Аристотель и их тренировка
+
+## Imported specs (from external knowledge dir)
+
+- spec_critical_constants_rh_q3.md
+- spec_rh_q3_decomposition.md
+- spec_formalizing_rh_insights.md
+- spec_high_ers_constants.md
 
 ## Stats update
 

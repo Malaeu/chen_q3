@@ -9,6 +9,8 @@ Keep this file short. Put details in linked docs.
 2) `ACTIVE/chain_status.md` — single-scale chain summary
 3) `ACTIVE/insights.md` — live insights index (links only)
 4) `ACTIVE/workflow.md` — workflow rules
+5) `ACTIVE/SPECS_INDEX.md` — curated spec pointers + constants checklist
+6) `ACTIVE/Q3_BLOCK_MAP.md` — Lean ↔ paper block map
 
 ## 1) Canonical chain (single-scale t_critical)
 
