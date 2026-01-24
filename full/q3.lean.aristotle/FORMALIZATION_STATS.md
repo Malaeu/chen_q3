@@ -1,6 +1,6 @@
 # Formalization Stats (Snapshot)
 
-Last updated: 2026-01-21
+Last updated: 2026-01-24
 Scope: Q3 Lean codebase - **ONLY code in proof chain counted**
 
 Notes:
@@ -117,10 +117,89 @@ Database: `aristotle_db/aristotle_proofs.db`
 ## 🔧 Regenerate Stats
 
 ```bash
-cd /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
-./scripts/contribution_stats.sh
+cd /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle
+./scripts/update_formalization_stats.sh
 ```
 
 ---
 
 *Update this file after major proof completions or axiom closures.*
+
+## Raw Script Output (auto)
+
+<!-- stats:start -->
+```
+╔════════════════════════════════════════════════════════════════╗
+║              Q3 CONTRIBUTION STATISTICS                        ║
+╚════════════════════════════════════════════════════════════════╝
+
+Date: Sat Jan 24 14:14:46 CET 2026
+
+═══ Section 1: Total Q3/ Codebase ═══
+  Total lines:       27800
+  Theorems:            287
+  Lemmas:              623
+  Definitions:         333
+
+═══ Section 2: Aristotle Contribution (IN PROOF CHAIN) ═══
+
+A) Aristotle-generated files in Q3/Proofs/:
+    1748  Q3/Proofs/A1_density.lean
+     895  Q3/Proofs/A1_density_main.lean
+     149  Q3/Proofs/A3_bridge.lean
+     298  Q3/Proofs/Digamma_Aristotle.lean
+     339  Q3/Proofs/HatInterpolation.lean
+     110  Q3/Proofs/Q_nonneg_on_atoms.lean
+     371  Q3/Proofs/RKHS_contraction.lean
+      57  Q3/Proofs/S_K_small.lean
+     122  Q3/Proofs/W_sum_finite.lean
+     105  Q3/Proofs/node_spacing.lean
+     170  Q3/Proofs/off_diag_exp_sum.lean
+   ─────
+    4364  SUBTOTAL (integrated into Q3/Proofs/)
+
+B) Aristotle files imported from aristotle_output/:
+     767  aristotle_output/d1524982_aristotle.lean
+   ─────
+     767  SUBTOTAL (imported)
+
+╔══════════════════════════════════════════════════════════════╗
+║  TOTAL ARISTOTLE IN PROOF CHAIN:  5131 lines              ║
+╚══════════════════════════════════════════════════════════════╝
+
+═══ Section 3: Human/Manual Contribution ═══
+  Q3/ total:                 27800
+  - Aristotle integrated: 4364
+  ─────────────────────────
+  Human-written in Q3/:   23436
+
+═══ Section 4: Aristotle Experiments (NOT in proof chain) ═══
+  Total aristotle_output/ files:       72
+  Total aristotle_output/ lines:    18440
+  Used in proof chain:           767
+  Unused (experiments):          17673
+
+═══ Section 5: Q3/Proofs/A1prime/ (New Module) ═══
+  Files:
+     401  A1_density_fixed_t0.lean
+     189  HatInterpBounded.lean
+     329  HeatError.lean
+   ─────
+     919  TOTAL A1prime/
+
+═══ SUMMARY ═══
+
+  ┌─────────────────────────────────────────────────────────┐
+  │ Source                    │   Lines │   % of Q3/       │
+  ├─────────────────────────────────────────────────────────┤
+  │ Aristotle (in proof)      │    5131 │  18%             │
+  │ Human/Manual              │   23436 │  84%             │
+  ├─────────────────────────────────────────────────────────┤
+  │ TOTAL Q3/                 │   27800 │ 100%             │
+  └─────────────────────────────────────────────────────────┘
+
+  Aristotle experiments (not used): 17673 lines
+
+═══ Done ═══
+```
+<!-- stats:end -->

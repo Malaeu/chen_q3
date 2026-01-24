@@ -62,7 +62,7 @@ This is the full project loop; Aristotle и Прошка — ключевые и
    - Re-import into DB (`aristotle_db/parse_lean.py`).
    - Update `PROOF_MAP_NEW_KERNEL.md` (status + file link).
    - Update `A3_FLOOR_ROADMAP.md` (advance the active step).
-   - Update `FORMALIZATION_STATS.md` (rerun the stats script and refresh counts).
+   - Update `FORMALIZATION_STATS.md` via `./scripts/update_formalization_stats.sh`.
    - Update `docs/INSIGHTS.md` (reusable insights, no new docs).
    - If specs changed, update `docs/PROJECT_SPECS.md` and DB.
 
