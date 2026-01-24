@@ -92,17 +92,55 @@ lemma P_A_ge_c_star_at_t_critical (θ : ℝ) :
 /-! ## arch_term bounds at t_critical -/
 
 /-- arch_term at t_critical is bounded below -/
-lemma arch_term_ge_at_t_critical (B τ : ℝ) (hB : B > 0) :
+lemma arch_term_ge_at_t_critical (B τ : ℝ) (hB : B > 0)
+    (h_floor : ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
+      c_star ≤ P_A_shift B t_critical τ θ) :
     arch_term (fun ξ => phi_shift_critical B τ ξ) ≥
       c_star * (1 - |τ| / B) := by
   /- I/O CARD: arch_term_ge_at_t_critical
      INPUT:  B τ : ℝ, hB : B > 0
      OUTPUT: arch_term(phi_shift_critical) ≥ c_star * (1 - |τ|/B)
-     NEED:   P_A_ge_c_star_at_t_critical (floor bound)
+     NEED:   pointwise floor on P_A_shift at t_critical
              integral_P_A_shift_eq_arch_term (periodization identity)
      BLOCKS: [Q_phi_shift_nonneg_t_critical]
   -/
-  sorry
+  have hab : (-1/2 : ℝ) ≤ (1/2 : ℝ) := by norm_num
+  have h_cont : Continuous (fun θ => P_A_shift B t_critical τ θ) :=
+    Q3.Proofs.ShiftedWindows.P_A_shift_continuous (B:=B) (t:=t_critical) (tau:=τ) hB
+  have h_int : IntervalIntegrable (fun θ => P_A_shift B t_critical τ θ) volume (-1/2) (1/2) :=
+    h_cont.intervalIntegrable _ _
+  have h_const : IntervalIntegrable (fun _ : ℝ => (c_star : ℝ)) volume (-1/2) (1/2) := by
+    simpa using
+      (intervalIntegrable_const (μ := volume) (a := (-1/2 : ℝ)) (b := (1/2 : ℝ))
+        (c := (c_star : ℝ)))
+  have h_mono :
+      (∫ θ in (-1/2 : ℝ)..(1/2), (c_star : ℝ)) ≤
+        ∫ θ in (-1/2 : ℝ)..(1/2), P_A_shift B t_critical τ θ := by
+    exact intervalIntegral.integral_mono_on
+      (a := (-1/2 : ℝ)) (b := (1/2 : ℝ)) (μ := volume)
+      (f := fun _ : ℝ => (c_star : ℝ)) (g := fun θ => P_A_shift B t_critical τ θ)
+      (hab := hab) (hf := h_const) (hg := h_int) h_floor
+  have hlen : ((2⁻¹ : ℝ) - (-1/2)) = (1 : ℝ) := by norm_num
+  have h_const_int :
+      (∫ θ in (-1/2 : ℝ)..(1/2), (c_star : ℝ)) = c_star := by
+    simp [intervalIntegral.integral_const, hlen]
+  have h_arch_eq :
+      ∫ θ in (-1/2 : ℝ)..(1/2), P_A_shift B t_critical τ θ =
+        arch_term (fun ξ => phi_shift_critical B τ ξ) := by
+    simpa [phi_shift_critical] using
+      (Q3.Proofs.ShiftedWindows.integral_P_A_shift_eq_arch_term (B:=B) (t:=t_critical)
+        (tau:=τ) hB)
+  have h_arch_ge : arch_term (fun ξ => phi_shift_critical B τ ξ) ≥ c_star := by
+    have h_mono' := h_mono
+    rw [h_const_int] at h_mono'
+    rw [h_arch_eq] at h_mono'
+    exact h_mono'
+  have h_factor : c_star * (1 - |τ| / B) ≤ c_star := by
+    have h_nonneg : 0 ≤ |τ| / B := by
+      have hτ : 0 ≤ |τ| := abs_nonneg _
+      exact div_nonneg hτ (le_of_lt hB)
+    nlinarith [h_nonneg, c_star_pos]
+  exact le_trans h_factor h_arch_ge
 
 /-! ## prime_term bounds at t_critical -/
 

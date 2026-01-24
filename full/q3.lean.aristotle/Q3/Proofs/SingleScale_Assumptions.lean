@@ -102,7 +102,9 @@ theorem rayleigh_basis0_shift_ge_cstar_quarter_of_arch_term
   exact le_trans h_quarter hRQ_full
 
 theorem rayleigh_basis0_shift_ge_cstar_quarter
-    (B : ℝ) (M : ℕ) (hB : 0 < B) :
+    (B : ℝ) (M : ℕ) (hB : 0 < B)
+    (h_floor : ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
+      Q3.c_star ≤ Q3.P_A_shift B t_critical 0 θ) :
     Q3.RayleighQuotient
         (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1)
           (Q3.P_A_shift B t_critical 0))
@@ -110,7 +112,7 @@ theorem rayleigh_basis0_shift_ge_cstar_quarter
   have h_arch' :
       Q3.arch_term (fun ξ => Q3.phi_shift B t_critical 0 ξ) ≥
         Q3.c_star * (1 - |(0 : ℝ)| / B) := by
-    simpa using (Q3.arch_term_ge_at_t_critical (B:=B) (τ:=0) hB)
+    simpa using (Q3.arch_term_ge_at_t_critical (B:=B) (τ:=0) hB h_floor)
   have h_arch :
       Q3.arch_term (fun ξ => Q3.phi_shift B t_critical 0 ξ) ≥ Q3.c_star := by
     simpa using h_arch'

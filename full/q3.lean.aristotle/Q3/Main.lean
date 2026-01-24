@@ -170,7 +170,7 @@ This theorem depends on:
 
 **Tier-2 (Q3 Paper, single‑scale):**
 - SingleScale.continuous_P_A_shift (theorem)
-- SingleScale.rayleigh_basis0_shift_ge_cstar_quarter (theorem; uses arch_term @ t_critical)
+- SingleScale.rayleigh_basis0_shift_ge_cstar_quarter (theorem; uses arch_term @ t_critical + floor on P_A_shift)
 - SingleScale.rho_oneK_tcritical_le_cstar_quarter (theorem)
 **Theorems (now closed):**
 - A1_density_WK: atoms dense in W_K
