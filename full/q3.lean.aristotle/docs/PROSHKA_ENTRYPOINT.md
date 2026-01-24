@@ -21,5 +21,11 @@ All other files are optional and linked below.
 - docs/INSIGHTS.md + docs/insights/INDEX.md
 - docs/ERRORS_DESTROYER.md
 
-## 5) Legacy
+## 5) Current Proshka request
+- PROSHKA_REQUEST_4.md (single-scale closure pack; 3 open axioms)
+
+## 6) Packed context (one file)
+- PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md
+
+## 7) Legacy
 - PROSHKA_REQUEST_3.md (archive only)

@@ -57,6 +57,8 @@ Source of truth:
 - Proshka:
   - `ACTIVE/proshka_entrypoint.md`
   - `ACTIVE/proshka_memory_pack.md`
+  - `PROSHKA_REQUEST_4.md` (single‑scale closure pack)
+  - `ACTIVE/proshka_context_single_scale.md` (one‑file packed brief)
 
 ## 5) Stats update
 
