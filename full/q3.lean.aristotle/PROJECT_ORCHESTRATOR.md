@@ -9,9 +9,11 @@ Single entry point: read this file at session start.
 1) Read this file.
 2) Use "Current State" and "Active Next Step".
 3) Only open linked files if needed.
+3.5) Chain summary: `docs/CHAIN_STATUS.md` (single-scale t_critical mainline).
 4) Documentation discipline: update `docs/INSIGHTS.md` and
    `FORMALIZATION_STATS.md` instead of creating new docs.
 5) **Застрял > 30 мин?** → Запроси Прошку (см. `docs/INSIGHTS.md` секция "Прошка").
+6) Hub for active docs/db/scripts: `ACTIVE/` (symlink index).
 
 ## Current State (short)
 
@@ -30,12 +32,17 @@ Single entry point: read this file at session start.
   `Q3/T5_Transfer.lean`, so `A1_density_WK_axiom` is gone from the main chain.
 - RKHS cap is PROVEN in `Q3/Proofs/RKHS_cap_rayleigh.lean`:
   `weight_sum_le_rho_one` + `rkhs_cap_rayleigh_tcap` with `t_rkhs_cap = 40`.
+- C1 compression identity is formalized (basisFun + dictionary embedding) in
+  `Q3/Proofs/RKHS_cap_rayleigh.lean` (search `compression identity`).
 - New one-scale A3 bridge scaffolding (no two-scale): `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`
   (fixed-`t` bridge + generic weight-sum → Rayleigh cap lemma in `Q3/Proofs/RKHS_cap_generic.lean`).
 - New one-scale parameter module added (WIP pivot): `Q3/Proofs/Params_Critical.lean`
   centralizes `t_critical = 3/20` and `t0_critical`.
 - Atom positivity/T5 transfer now use `t0_critical` (t = 0.15) for `AtomCone_K_fixed`;
   BaseAtomCone guard lemma added in `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
+- Single-scale prime sum cap at `t_critical` is now a theorem:
+  `prime_sum_phi_shift_le_cstar_quarter` in `Q3/Proofs/SingleScale_Assumptions.lean`
+  (depends on `rho_oneK_tcritical_le_cstar_quarter`).
 - Helper lemma for “unitary conjugation preserves opNorm” added:
   `Q3/Proofs/OpNorm_Unitary.lean` (used in the `hA` decision tree, see `docs/INSIGHTS.md`).
 - Legacy: `A3_bridge_axiom` (sampling Toeplitz + a_star) is still in `Q3/Axioms.lean`
