@@ -26,6 +26,7 @@ All other files are optional and linked below.
 
 ## 6) Packed context (one file)
 - PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md
+ - Build script: scripts/build_proshka_brief.py
 
 ## 7) Legacy
 - PROSHKA_REQUEST_3.md (archive only)

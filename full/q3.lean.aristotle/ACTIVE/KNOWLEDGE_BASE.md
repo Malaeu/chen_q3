@@ -59,6 +59,7 @@ Source of truth:
   - `ACTIVE/proshka_memory_pack.md`
   - `PROSHKA_REQUEST_4.md` (single‑scale closure pack)
   - `ACTIVE/proshka_context_single_scale.md` (one‑file packed brief)
+  - `scripts/build_proshka_brief.py` (pack builder)
 
 ## 5) Stats update
 
