@@ -1,5 +1,14 @@
 # Декомпозиция RH_Q3.pdf для формализации в Lean
 
+> ⚠️ **STATUS (2026-01-24): legacy / two‑scale spec.**
+> Использует старую униформную/двухмасштабную схему (t_sym, t_rkhs_cap, ERS‑граф).
+> **Не является каноном** для текущей single‑scale ветки.
+>
+> Канонические ссылки:
+> - `ACTIVE/chain_status.md`
+> - `ACTIVE/SPECS_INDEX.md`
+> - `ACTIVE/Q3_BLOCK_MAP.md`
+
 ## Обзор публикации
 
 **Название**: Operator Methods for the Weil Criterion: Q3  

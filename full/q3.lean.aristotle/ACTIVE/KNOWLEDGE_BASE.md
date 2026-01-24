@@ -12,6 +12,9 @@ Keep this file short. Put details in linked docs.
 5) `ACTIVE/SPECS_INDEX.md` — curated spec pointers + constants checklist
 6) `ACTIVE/Q3_BLOCK_MAP.md` — Lean ↔ paper block map
 
+Note: spec sources are legacy/background. For mainline decisions, return to
+`ACTIVE/chain_status.md` and `ACTIVE/orchestrator.md`.
+
 ## 1) Canonical chain (single-scale t_critical)
 
 - Mainline parameters:

@@ -1,5 +1,14 @@
 # Критические константы из RH_Q3.pdf (страницы 32-36)
 
+> ⚠️ **STATUS (2026-01-24): legacy / two‑scale spec.**
+> Этот файл отражает старую двухмасштабную ветку (t_sym vs t_rkhs_cap).
+> **Не использовать как канон** для текущей single‑scale цепочки.
+>
+> Канонические ссылки:
+> - `ACTIVE/chain_status.md`
+> - `ACTIVE/SPECS_INDEX.md`
+> - `ACTIVE/Q3_BLOCK_MAP.md`
+
 ## Секция 9: RKHS Contraction
 
 ### Lemma 9.10 (Node gap on compacts)

@@ -1,5 +1,14 @@
 # Инсайты из FormalizingRiemannHypothesis.md
 
+> ⚠️ **STATUS (2026-01-24): process‑level notes.**
+> Это workflow‑инсайты, а не каноническая спецификация.
+> Использовать как методологию, **не** как источник констант/цепочки.
+>
+> Канонические ссылки:
+> - `ACTIVE/chain_status.md`
+> - `ACTIVE/SPECS_INDEX.md`
+> - `ACTIVE/Q3_BLOCK_MAP.md`
+
 ## Контекст
 Документ описывает реальный процесс формализации гипотезы Римана в Lean 4 (проект chen_q3).
 
