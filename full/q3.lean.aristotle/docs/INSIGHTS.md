@@ -133,6 +133,18 @@
   7) Checks: `lake env lean Q3/Proofs/Q_nonneg_atoms_helpers.lean`,
      `lake env lean Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`,
      `lake env lean Q3/Atoms_Positive.lean`.
+- Synthesis (2026-01-24, in progress): Close `Q3/Proofs/Q_nonneg_atoms_closure.lean` sorries (fixed‑t chain).
+  1) `Q_nonneg_phi_shift_tsym`: use `Q3.Proofs.QNonnegAtoms.Q_phi_shift_nonneg`
+     from `Q3/Proofs/Q_nonneg_atoms_helpers.lean` with cap
+     `prime_term_phi_shift_le_rho_oneK` (in `Q3/Proofs/RKHS_cap_rayleigh.lean`)
+     + `rayleigh_basis0_of_A3`; **need** explicit `hpos : 0 ≤ c_star/4 - exp_tsym_to_rkhs K * R`.
+  2) Replace scaling/half‑atom steps with the fixed‑t identity
+     `Fejer_heat_atom_eq_const_mul_phi_shift_sum` from `Q3/Proofs/ShiftedWindows_t0.lean`.
+  3) For `Q_nonneg_Fejer_heat_atom`, prefer `Q_single_atom_nonneg_of_phi_shift_basic`
+     (in `Q3/Proofs/Q_nonneg_atoms_helpers.lean`) + prove `htsym` for `t0_A1`.
+  4) Finish with `Q_nonneg_on_atomcone_fixed_of_atoms` (same file) to get
+     `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm`.
+  5) Searches attempted: `q3search` + `websearch` failed (403 spend limit); proceed with local lemmas.
 - Synthesis (2026-01-23, in progress): close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
   via the one-scale chain (Stream A).
   1) q3search/websearch were attempted but failed with spend-limit 403.
