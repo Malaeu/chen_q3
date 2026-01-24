@@ -1,5 +1,5 @@
 # PROSHKA CONTEXT PACK
-Generated: 2026-01-24 15:57:09
+Generated: 2026-01-24 16:06:37
 Repo: /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2
 
 This pack is intended for Proshka. It inlines key files and recent git context.
@@ -8,15 +8,13 @@ This pack is intended for Proshka. It inlines key files and recent git context.
 ## Git status
 
 ## projekt_2A
- M full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
- M full/q3.lean.aristotle/PROSHKA_REQUEST_4.md
- M full/q3.lean.aristotle/docs/PROSHKA_ENTRYPOINT.md
-?? full/q3.lean.aristotle/PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md
-?? scripts/build_proshka_brief.py
 
 
 ## Git log
 
+08c099d [projekt_2A][AI-codex] proshka policy + pack refresh
+cb42a8e [projekt_2A][AI-codex] proshka refs + memory pack symlink
+6a38fc3 [projekt_2A][AI-codex] proshka pack + brief builder
 1b7e648 [projekt_2A][AI-codex] Exclude ACTIVE hub from link checks
 df27142 [projekt_2A][AI-codex] Clarify legacy conflicts and add prompt example
 f71255a [projekt_2A][AI-codex] Consolidate ERS specs and add RU solver prompt
@@ -54,9 +52,6 @@ ee52922 [2026-01-23][linux][AI-codex] RKHS eval→inner bridge cleanup + INSIGHT
 a947539 [projekt_2A] RKHS interface + conditional C1 compression matching
 d628fb2 [projekt_2A][AI-codex] Add C1 lift compression cap lemma
 eef8ece [projekt_2A][AI-codex] Rebuild RH_Q3.pdf
-3e66e7e [projekt_2A][AI-codex] Add C1-based RKHS cap lemma
-9c25fc9 [projekt_2A][AI-codex] Add prime block scaling shorthand
-c7818aa [projekt_2A][AI-codex] Wire C1 dict embedding into RKHS cap
 
 
 ## File: full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
@@ -121,6 +116,9 @@ Source of truth:
   - `ACTIVE/proshka_entrypoint.md`
   - `ACTIVE/proshka_memory_pack.md`
   - `PROSHKA_REQUEST_4.md` (single‑scale closure pack)
+  - `ACTIVE/proshka_context_single_scale.md` (one‑file packed brief)
+  - `scripts/build_proshka_brief.py` (pack builder)
+  - `docs/PROSHKA_POLICY.md` (canonical set policy)
 
 ## 5) Stats update
 
