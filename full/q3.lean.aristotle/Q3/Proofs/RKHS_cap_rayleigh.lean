@@ -16,10 +16,31 @@ set_option maxHeartbeats 0
 
 open scoped BigOperators
 open scoped Matrix.Norms.L2Operator
+open scoped InnerProductSpace
+open scoped ComplexConjugate
 
 noncomputable section
 
 namespace Q3.Proofs
+
+/-! ## C1 compression identity (documented choice)
+
+We use the finite-dimensional dictionary/compression model (Option B)
+(out of three choices: analytic RKHS, abstract interface, or dictionary).
+This makes the prime block `T_P_comp` literally the compression matrix with
+entries built from `prime_vec`. It keeps `h_eval` definitional and
+the RKHS cap purely finite-dimensional. If this ever becomes an issue,
+we can roll back to an abstract RKHS interface or an analytic model.
+-/
+
+lemma T_P_comp_eq_compression_doc (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] :
+    Q3.T_P_comp K B t M =
+      fun i j =>
+        ∑ n : Q3.Nodes K,
+          ((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ) *
+            ⟪Q3.psi M i, Q3.k (K := K) M n⟫_ℂ *
+            conj (⟪Q3.psi M j, Q3.k (K := K) M n⟫_ℂ) := by
+  simpa using (Q3.Proofs.T_P_comp_eq_compression (K:=K) (B:=B) (t:=t) (M:=M))
 
 private def normSq {M : ℕ} (v : Fin M → ℝ) : ℝ :=
   ∑ i, (v i) ^ 2
