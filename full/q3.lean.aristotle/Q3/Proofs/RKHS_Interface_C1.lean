@@ -218,6 +218,25 @@ lemma T_P_comp_toCLM_eq_compression_basisFun :
       (ψ := psi_basis (M := M)) (hψ := psi_basis_orthonormal (M := M))
       (k := k_basis (K := K) (M := M)) (h_eval := h_eval_basisFun (K := K) (M := M)))
 
+/-- OpNorm bound via basisFun compression: `‖T_P_comp‖ ≤ ‖T_P_RKHS_like‖`. -/
+lemma T_P_comp_opNorm_le_basisFun :
+    ‖(Matrix.toEuclideanLin (Q3.T_P_comp K B t M)).toContinuousLinearMap‖ ≤
+      ‖T_P_RKHS_like (H := E) (K := K) (B := B) (t := t)
+          (k := k_basis (K := K) (M := M))‖ := by
+  classical
+  let ι :=
+    iota (H := E) (M := M) (ψ := psi_basis (M := M)) (psi_basis_orthonormal (M := M))
+  let T :=
+    T_P_RKHS_like (H := E) (K := K) (B := B) (t := t) (k := k_basis (K := K) (M := M))
+  have hC1 : ‖compression (ι := ι) T‖ ≤ ‖T‖ :=
+    Q3.Proofs.C1Embedding.compression_opNorm_le (ι := ι) (T := T)
+  have hA :
+      (Matrix.toEuclideanLin (Q3.T_P_comp K B t M)).toContinuousLinearMap =
+        compression (ι := ι) T := by
+    simpa [ι, T] using
+      (T_P_comp_toCLM_eq_compression_basisFun (K := K) (B := B) (t := t) (M := M))
+  simpa [hA] using hC1
+
 end BasisFunModel
 
 end RKHSInterfaceC1
