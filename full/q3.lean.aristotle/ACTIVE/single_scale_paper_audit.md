@@ -1,14 +1,14 @@
 # Single-scale paper audit (2026-01-24)
 
 Goal: verify whether the *paper* matches the single-scale mainline
-(t_critical = 3/20, tau = 0) and map the 3 remaining SingleScale axioms
+(t_critical = 3/20, tau = 0) and map the 2 remaining SingleScale axioms
 onto exact LaTeX locations.
 
 ## Summary (fast read)
 
 - The paper chain **is stated as complete**, and the main paper files have now
   been **aligned to single-scale** (t_critical = 3/20, tau = 0).
-- The three SingleScale axioms now have paper analogs that **use t_critical**
+- The two SingleScale axioms now have paper analogs that **use t_critical**
   (paper3_* files updated). Legacy two-scale mentions were removed there.
 - Action: keep an eye on other legacy drafts; if they still mention two-scale,
   mark as legacy or update in a follow-up sweep.
@@ -40,9 +40,9 @@ onto exact LaTeX locations.
 - Follow-up:
   - Check any remaining legacy paper fragments for `t_sym` or two-scale wording.
 
-### 3) SingleScale.rho_oneK_tcritical_le_cstar_quarter
+### 3) SingleScale.rho_oneK_tcritical_le_cstar_quarter (closed)
 
-- Lean axiom: `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
+- Lean theorem: `SingleScale.rho_oneK_tcritical_le_cstar_quarter` (rho_one ≤ c*/4)
 - Paper analog:
   - `full/sections/RKHS/prime_cap.tex`
   - `full/sections/RKHS/main.tex`
@@ -55,7 +55,7 @@ onto exact LaTeX locations.
 - Core closure statement:
   - `full/sections/Main_closure.tex` (Theorem "Main positivity on W")
 - This is the right place to ensure the single-scale parameterization is
-  consistent with the three SingleScale axioms.
+  consistent with the two SingleScale axioms.
 
 ## Action items (paper sync)
 

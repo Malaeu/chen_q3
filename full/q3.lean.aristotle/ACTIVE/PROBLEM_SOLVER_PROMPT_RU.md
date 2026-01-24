@@ -92,9 +92,9 @@ Conclusion: A2 закрыт как теорема в mainline.
 - single‑scale `t_critical = 3/20`
 - `tau = 0` (BaseAtomCone)
 - живые аксиомы:
-  - `SingleScale.continuous_P_A_shift`
-  - `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
-  - `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
+  - `SingleScale.continuous_P_A_shift` (tau = 0)
+  - `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` (tau = 0)
+  - `SingleScale.rho_oneK_tcritical_le_cstar_quarter` — now trivial (`rho_one ≤ c_star/4`)
 
 Источник: `ACTIVE/chain_status.md` + `ACTIVE/orchestrator.md`.
 

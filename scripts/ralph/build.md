@@ -16,7 +16,6 @@ Project reality:
 - The only open axioms on main chain:
   - SingleScale.continuous_P_A_shift
   - SingleScale.rayleigh_basis0_shift_ge_cstar_quarter
-  - SingleScale.rho_oneK_tcritical_le_cstar_quarter
 
 Output:
 - After the commit, print <promise>DONE</promise> and exit.

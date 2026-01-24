@@ -19,10 +19,9 @@ Project specs to read (in order):
 Plan requirements:
 - Break the work into small, testable steps.
 - Each task must have a clear acceptance check (e.g., `lake env lean <file>`).
-- Prioritize the three SingleScale axioms:
+- Prioritize the two SingleScale axioms:
   - SingleScale.continuous_P_A_shift
   - SingleScale.rayleigh_basis0_shift_ge_cstar_quarter
-  - SingleScale.rho_oneK_tcritical_le_cstar_quarter
 - Keep tasks atomic: one logical lemma or wiring step per task.
 
 Output format:

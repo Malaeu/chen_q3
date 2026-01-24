@@ -51,21 +51,11 @@
   BaseAtomCone guard `Q_nonneg_on_base_atoms_of_A3_Fourier_RKHS` added.
 - Proshka request drafted: `full/q3.lean.aristotle/PROSHKA_REQUEST_5.md` (one‑scale A3 floor + cap at t_critical).
 
-## Synthesis (2026-01-24, in progress) — close `rho_oneK_tcritical_le_cstar_quarter`
+## Synthesis (2026-01-24, resolved) — close `rho_oneK_tcritical_le_cstar_quarter`
 
-- q3search failed (403 spend limit); websearch failed (403 spend limit).
-- Target lemma: `SingleScale.rho_oneK_tcritical_le_cstar_quarter` in
-  `Q3/Proofs/SingleScale_Assumptions.lean`; `prime_sum_phi_shift_le_cstar_quarter`
-  is now a theorem derived from t‑bridge + `weight_sum_le_rho_oneK`.
-- Option A (primary): adapt `Q3/Proofs/PrimeTerm_t_bridge.lean` to `t_critical`:
-  define `exp_tcrit_to_rkhs` and prove
-  `phi_shift t_critical ≤ exp_tcrit_to_rkhs K * phi_shift t_rkhs_cap`;
-  then sum and bound with `weight_sum_le_rho_oneK` or
-  `prime_term_phi_shift_le_rho_oneK` from `Q3/Proofs/RKHS_cap_rayleigh.lean`.
-- Check if `exp_tcrit_to_rkhs K * rho_oneK K ≤ c_star/4`; if false, record
-  “false‑for‑now” and keep axiom.
-- Success check: `lake env lean Q3/Proofs/Q_nonneg_atoms_closure.lean` and
-  `./scripts/check_axioms.sh` shows only the remaining two SingleScale axioms.
+- Decision: mainline uses tau = 0, so the cap reduces to `rho_one ≤ c_star/4`.
+- Implemented as a direct numeric bound (no K dependence).
+- Legacy `rho_oneK` (tau-shift) remains as a separate variant; not used in mainline.
 
 ---
 
@@ -83,8 +73,7 @@
 - C1 basisFun model wired (machine `h_eval`) + compression remark in `Q3/Proofs/RKHS_cap_rayleigh.lean`.
 - Single-scale RKHS contraction at `t_critical` wired into `Q3/AxiomsTheorems.lean` (via `SingleScale_Assumptions`).
 - `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` closed via `Q_nonneg_atoms_closure`; remaining blockers are
-  `SingleScale.continuous_P_A_shift`, `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
-  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`.
+  `SingleScale.continuous_P_A_shift`, `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`.
 
 - Реальные bounds для T_P (V1 surprise): путаем direct‑indexed vs compression → `docs/insights/v1_surprise_real_tp_bounds_2026_01_14.md`.
 - Успешный Rayleigh‑bridge (V3) → `docs/insights/v3_success_a3_bridge_rayleigh_2026_01_14.md`.

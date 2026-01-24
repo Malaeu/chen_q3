@@ -37,13 +37,12 @@ Single entry point: read this file at session start.
   `Q3/Proofs/RKHS_cap_rayleigh.lean` (search `compression identity`).
 - New one-scale A3 bridge scaffolding (no two-scale): `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`
   (fixed-`t` bridge + generic weight-sum → Rayleigh cap lemma in `Q3/Proofs/RKHS_cap_generic.lean`).
-- New one-scale parameter module added (WIP pivot): `Q3/Proofs/Params_Critical.lean`
-  centralizes `t_critical = 3/20` and `t0_critical`.
+- Single-scale parameter source: `Q3/Proofs/Q_nonneg_t_critical.lean`
+  (defines `t_critical = 3/20` and `t0_critical`).
 - Atom positivity/T5 transfer now use `t0_critical` (t = 0.15) for `AtomCone_K_fixed`;
   BaseAtomCone guard lemma added in `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
-- Single-scale prime sum cap at `t_critical` is now a theorem:
-  `prime_sum_phi_shift_le_cstar_quarter` in `Q3/Proofs/SingleScale_Assumptions.lean`
-  (depends on `rho_oneK_tcritical_le_cstar_quarter`).
+- Single-scale prime cap (tau = 0) is now a direct numeric bound:
+  `rho_one ≤ c_star/4` in `Q3/Proofs/SingleScale_Assumptions.lean`.
 - Helper lemma for “unitary conjugation preserves opNorm” added:
   `Q3/Proofs/OpNorm_Unitary.lean` (used in the `hA` decision tree, see `docs/INSIGHTS.md`).
 - Legacy: `A3_bridge_axiom` (sampling Toeplitz + a_star) is still in `Q3/Axioms.lean`
@@ -66,13 +65,12 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **8 axioms** (5 project + 3 standard)
+Result: **7 axioms** (4 project + 3 standard)
 
 - Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - Level 1 (Classical Literature): `Weil_criterion`, `Schur_test`
 - Level 2 (Q3 Paper, single‑scale): `SingleScale.continuous_P_A_shift`,
-  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
-  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
+  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
 
 **Closed axioms (history):**
 - `a_star_pos` → closed via positivity (2026-01-21)
@@ -125,7 +123,7 @@ RH_of_Weil_and_Q3
 **FULL ANALYSIS:** `docs/LATEX_PROOF_GAP_ANALYSIS.md`
 
 **STATUS:** `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` is now closed via the
-single‑scale chain, but the gap remains as **three SingleScale axioms**.
+single‑scale chain, but the gap remains as **two SingleScale axioms**.
 Mathematical consultation with Proshka required to remove those assumptions.
 
 **HARD PIVOT DIRECTION (in progress):** one-scale parameterization at `t = t_critical`
@@ -211,9 +209,9 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
 |------|-----------------------|---------|-------------|--------|
 | `Weil_criterion` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
 | `Schur_test` | External (classical) | L2 vs L∞ mismatch | Classical result, keep as axiom | **EXTERNAL** |
-| `SingleScale.continuous_P_A_shift` | `Q3/Proofs/SingleScale_Assumptions.lean` | single‑scale continuity proof missing | Prove continuity at `t_critical` | **AXIOM** |
-| `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | A3 floor at `t_critical` | Prove Rayleigh lower bound for shifted symbol | **AXIOM** |
-| `SingleScale.rho_oneK_tcritical_le_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | prime cap via t‑bridge | Prove numeric bound `exp_tcrit_to_rkhs * rho_oneK ≤ c*/4` | **AXIOM** |
+| `SingleScale.continuous_P_A_shift` | `Q3/Proofs/SingleScale_Assumptions.lean` | single‑scale continuity proof missing (tau = 0) | Prove continuity at `t_critical` | **AXIOM** |
+| `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | A3 floor at `t_critical` (tau = 0) | Prove Rayleigh lower bound for shifted symbol | **AXIOM** |
+| `SingleScale.rho_oneK_tcritical_le_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | prime cap (tau = 0) | Numeric bound `rho_one ≤ c*/4` | **THEOREM** |
 
 ## Progress Log (2026-01-16)
 

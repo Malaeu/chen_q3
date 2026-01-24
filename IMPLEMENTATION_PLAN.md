@@ -4,7 +4,7 @@ Status: in progress
 
 ## Tasks (single-scale mainline)
 
-### A) `SingleScale.continuous_P_A_shift`
+### A) `SingleScale.continuous_P_A_shift` (tau = 0)
 
 - [ ] Prove continuity lemma for `P_A_shift` at single scale
   - Target files: `full/q3.lean.aristotle/Q3/Proofs/ShiftedWindows.lean`,
@@ -17,30 +17,22 @@ Status: in progress
   - Target file: `full/q3.lean.aristotle/Q3/Proofs/SingleScale_Assumptions.lean`
   - Verification: `lake env lean Q3/Proofs/SingleScale_Assumptions.lean`
 
-### B) `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
+### B) `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` (tau = 0)
 
 - [ ] Create single-scale Rayleigh basis0 lemma at `t_critical`
   - Target files: `full/q3.lean.aristotle/Q3/Proofs/Rayleigh_basis0_of_A3.lean`,
     `full/q3.lean.aristotle/Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`
-  - Notes: use `P_A_shift_tau_zero` and single-scale `P_A` floor at `t_critical`.
+  - Notes: use single-scale `P_A` floor at `t_critical` with tau = 0.
   - Verification: `lake env lean Q3/Proofs/Rayleigh_basis0_of_A3.lean`
 
 - [ ] Wire `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` by replacing axiom
   - Target file: `full/q3.lean.aristotle/Q3/Proofs/SingleScale_Assumptions.lean`
   - Verification: `lake env lean Q3/Proofs/SingleScale_Assumptions.lean`
 
-### C) `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
+### C) `SingleScale.rho_oneK_tcritical_le_cstar_quarter` (closed)
 
-- [ ] Prove/bridge RKHS cap at `t_critical` (single-scale)
-  - Target files: `full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean`,
-    `full/q3.lean.aristotle/Q3/Proofs/PrimeTerm_t_bridge.lean`
-  - Notes: reuse the t-bridge `exp_tcrit_to_rkhs` or add a lemma to show
-    `rho_oneK` bound at `t_critical`.
-  - Verification: `lake env lean Q3/Proofs/RKHS_cap_rayleigh.lean`
-
-- [ ] Wire `SingleScale.rho_oneK_tcritical_le_cstar_quarter` by replacing axiom
+- [x] Replace with direct numeric bound `rho_one ≤ c_star/4` (tau = 0 mainline)
   - Target file: `full/q3.lean.aristotle/Q3/Proofs/SingleScale_Assumptions.lean`
-  - Verification: `lake env lean Q3/Proofs/SingleScale_Assumptions.lean`
 
 ## Notes
 

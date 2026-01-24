@@ -24,7 +24,7 @@ Use this to answer: “Which block is this in Lean?”
 
 ## A3 — Archimedean floor + Toeplitz/Rayleigh bridge
 
-Mainline (single-scale):
+Mainline (single-scale, tau = 0):
 - **Axiom (open):** `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
   in `Q3/Proofs/SingleScale_Assumptions.lean`
 - Context: `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`
@@ -39,7 +39,7 @@ Legacy (two-scale / uniform):
   - `Q3/Proofs/RKHS_cap_rayleigh.lean`
   - `rho_one = 1/25`, `t_rkhs_cap = 40`
 
-- **Single-scale axiom (open):**
+- **Single-scale cap (closed):**
   - `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
   - `Q3/Proofs/SingleScale_Assumptions.lean`
 
@@ -53,7 +53,7 @@ Legacy (two-scale / uniform):
 ## Atom-level nonnegativity / closure
 
 - `Q3/Proofs/Q_nonneg_atoms_closure.lean`
-  - closes the fixed-t chain assuming the three SingleScale axioms
+  - closes the fixed-t chain assuming the two SingleScale axioms
 
 ## Main theorem (RH via Weil criterion)
 

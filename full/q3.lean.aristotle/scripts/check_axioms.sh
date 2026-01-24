@@ -97,7 +97,7 @@ TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
 EXPECTED_STANDARD=3
-EXPECTED_PROJECT=5  # Weil_criterion, Schur_test, SingleScale.{continuous_P_A_shift,rho_oneK_tcritical_le_cstar_quarter,rayleigh_basis0_shift_ge_cstar_quarter}
+EXPECTED_PROJECT=4  # Weil_criterion, Schur_test, SingleScale.{continuous_P_A_shift,rayleigh_basis0_shift_ge_cstar_quarter}
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
@@ -129,7 +129,6 @@ EXPECTED_AXIOMS=(
     "Q3.Weil_criterion"
     "Q3.Schur_test"
     "Q3.Proofs.SingleScale.continuous_P_A_shift"
-    "Q3.Proofs.SingleScale.rho_oneK_tcritical_le_cstar_quarter"
     "Q3.Proofs.SingleScale.rayleigh_basis0_shift_ge_cstar_quarter"
 )
 
