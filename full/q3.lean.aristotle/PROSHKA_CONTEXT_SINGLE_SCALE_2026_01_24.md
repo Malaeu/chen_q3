@@ -1,5 +1,5 @@
 # PROSHKA CONTEXT PACK
-Generated: 2026-01-24 16:13:48
+Generated: 2026-01-24 16:21:12
 Repo: /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2
 
 This pack is intended for Proshka. It inlines key files and recent git context.
@@ -8,10 +8,14 @@ This pack is intended for Proshka. It inlines key files and recent git context.
 ## Git status
 
 ## projekt_2A
+ M full/q3.lean.aristotle/ACTIVE/PROBLEM_SOLVER_PROMPT_RU.md
+ M full/q3.lean.aristotle/PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md
+ M full/q3.lean.aristotle/PROSHKA_REQUEST_4.md
 
 
 ## Git log
 
+8af492d [projekt_2A][AI-codex] proshka mission framing
 dc8893f [projekt_2A][AI-codex] proshka rules + aristotle requests
 08c099d [projekt_2A][AI-codex] proshka policy + pack refresh
 cb42a8e [projekt_2A][AI-codex] proshka refs + memory pack symlink
@@ -51,7 +55,6 @@ adacbda [2026-01-23][linux][AI-codex] One-scale A3 bridge scaffolding + generic 
 ee52922 [2026-01-23][linux][AI-codex] RKHS eval→inner bridge cleanup + INSIGHTS update
 7970386 [2026-01-23][linux][AI-codex] One-scale t_critical params + hA decision-tree tooling
 a947539 [projekt_2A] RKHS interface + conditional C1 compression matching
-d628fb2 [projekt_2A][AI-codex] Add C1 lift compression cap lemma
 
 
 ## File: full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
@@ -854,6 +857,11 @@ Legacy (two-scale / uniform):
 - для каждого шага — точная ссылка (файл, раздел/страница);
 - порядок шагов соответствует проектному mainline.
 
+**Контекст:** цепочка на бумаге полная, с проверяемыми константами и шагами.
+Остаются **3 атомарных узла** — они могут быть тяжёлыми аналитически.
+Твоя роль — **искать синергию и кратчайший путь** к закрытию этих узлов,
+строго и проверяемо (Lean + бумага), объединяя подходы анализа / Toeplitz / RKHS.
+
 ---
 
 ## 2) Процедура (строго)
@@ -947,6 +955,12 @@ Conclusion: A2 закрыт как теорема в mainline.
 
 **Цель:** закрыть ровно 3 открытые single‑scale аксиомы (mainline) и связать их в единый мост
 к положительности на атомах при `t = t_critical`.
+
+**Контекст (важно):** цепочка на бумаге полная, с проверяемыми константами и шагами.
+Остаются **3 атомарных узла** (см. ниже), которые могут быть тяжёлыми аналитически.
+Нужно закрыть их **строго**, без “интуитивных” вставок, и обеспечить независимую
+проверяемость (Lean + бумага). Роль Прошки — искать **синергию и кратчайшие
+решения**, объединяя лучшие подходы (анализ / Toeplitz / RKHS) и ускоряя формализацию.
 
 **Открытые аксиомы (mainline):**
 - `SingleScale.continuous_P_A_shift`
