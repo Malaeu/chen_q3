@@ -1,5 +1,5 @@
 # PROSHKA CONTEXT PACK
-Generated: 2026-01-24 16:21:12
+Generated: 2026-01-24 16:21:23
 Repo: /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2
 
 This pack is intended for Proshka. It inlines key files and recent git context.
@@ -8,13 +8,11 @@ This pack is intended for Proshka. It inlines key files and recent git context.
 ## Git status
 
 ## projekt_2A
- M full/q3.lean.aristotle/ACTIVE/PROBLEM_SOLVER_PROMPT_RU.md
- M full/q3.lean.aristotle/PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md
- M full/q3.lean.aristotle/PROSHKA_REQUEST_4.md
 
 
 ## Git log
 
+c2f2c33 [projekt_2A][AI-codex] proshka brief clarity
 8af492d [projekt_2A][AI-codex] proshka mission framing
 dc8893f [projekt_2A][AI-codex] proshka rules + aristotle requests
 08c099d [projekt_2A][AI-codex] proshka policy + pack refresh
@@ -54,7 +52,6 @@ adacbda [2026-01-23][linux][AI-codex] One-scale A3 bridge scaffolding + generic 
 6baeee4 [2026-01-23][linux][AI-codex] Add Aristotle task: Gaussian RKHS kernel integral identity
 ee52922 [2026-01-23][linux][AI-codex] RKHS eval→inner bridge cleanup + INSIGHTS update
 7970386 [2026-01-23][linux][AI-codex] One-scale t_critical params + hA decision-tree tooling
-a947539 [projekt_2A] RKHS interface + conditional C1 compression matching
 
 
 ## File: full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md

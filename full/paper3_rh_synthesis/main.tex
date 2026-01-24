@@ -150,7 +150,7 @@ for $M$ sufficiently large. This spectral gap implies $Q(\Phi) \geq 0$ on the ge
 By Part~I, the Fej\'er--heat generators are dense in the Weil cone, and $Q$ is continuous. Therefore, positivity extends from the generators to all of $\mathcal{W}$.
 
 \begin{remark}[Physical intuition]\label{rem:physics}
-One can think of the Toeplitz eigenvalues as a ``barrier'' holding up the Archimedean contribution, while the prime operator acts as a ``contraction'' pulling down. Positivity holds when the barrier dominates. The two-scale architecture---with independent parameters $t_{\mathrm{sym}}$ for the symbol and $t_{\mathrm{rkhs}}$ for the RKHS---ensures these mechanisms are decoupled.
+One can think of the Toeplitz eigenvalues as a ``barrier'' holding up the Archimedean contribution, while the prime operator acts as a ``contraction'' pulling down. Positivity holds when the barrier dominates. In the mainline chain we fix a single analytic scale $t_{\mathrm{crit}}=3/20$ for both the symbol and the RKHS cap, eliminating two-scale bookkeeping.
 \end{remark}
 
 \begin{remark}[Historical context]\label{rem:history}
@@ -173,8 +173,7 @@ We collect the notation used throughout the trilogy.
 \item $\mathcal{W} = \bigcup_{K > 0} \mathcal{W}_K$ is the Weil cone.
 \item $c_* = 11/10$ is the Archimedean floor.
 \item $C_{\mathrm{SB}} = 4$ is the Szeg\H{o}--B\"ottcher constant.
-\item $t_{\mathrm{sym}} = 3/50$ is the symbol heat parameter.
-\item $t_{\mathrm{rkhs}} \geq 1$ is the RKHS threshold.
+\item $t_{\mathrm{crit}} = 3/20$ is the single analytic heat scale used in the main chain.
 \end{itemize}
 
 %=============================================================================
@@ -242,7 +241,7 @@ where $L_Q(K) = \|a_*\|_{L^1(W_K)} + \sum_{\xi_n \in W_K} w_Q(n) < \infty$.
 \subsection{From Part~II: Spectral Analysis}
 
 \begin{theorem}[A3: Toeplitz barrier, Part~II]\label{thm:A3-recap}
-For $B \geq B_{\min} = 3$ and $t_{\mathrm{sym}} = 3/50$, the Archimedean symbol satisfies
+For $B \geq B_{\min} = 3$ and the single scale $t_{\mathrm{crit}} = 3/20$, the Archimedean symbol satisfies
 \begin{equation}\label{eq:floor}
   \inf_{\theta \in \T} P_A(\theta) \geq c_* := \frac{11}{10}.
 \end{equation}
@@ -254,18 +253,18 @@ with $C_{\mathrm{SB}} = 4$.
 \end{theorem}
 
 \begin{theorem}[RKHS: Prime cap, Part~II]\label{thm:RKHS-recap}
-For $t_{\mathrm{rkhs}} \geq t_*^{\mathrm{unif}}$, the prime sampling operator satisfies
+For the single scale $t_{\mathrm{crit}} = 3/20$, the prime sampling operator satisfies
 \begin{equation}\label{eq:prime-cap}
-  \|T_P\|_{\mathcal{H}_t \to \mathcal{H}_t} \leq \rho(t) < \frac{c_*}{4}.
+  \|T_P\|_{\mathcal{H}_t \to \mathcal{H}_t} \leq \rho(t_{\mathrm{crit}}) \le \frac{c_*}{4}.
 \end{equation}
 \end{theorem}
 
 \begin{corollary}[Spectral gap, Part~II]\label{cor:gap}
-For $M \geq M_0^{\mathrm{unif}}$ and $t_{\mathrm{rkhs}} \geq t_*^{\mathrm{unif}}$,
+For $M \geq M_0^{\mathrm{unif}}$ at the single scale $t_{\mathrm{crit}} = 3/20$,
 \begin{equation}\label{eq:gap-bound}
   \lambda_{\min}(T_M[P_A] - T_P) \geq \frac{c_*}{4} > 0.
 \end{equation}
-Consequently, $Q(\Phi) \geq 0$ for all Fej\'er--heat generators $\Phi_{B,t_{\mathrm{sym}}}$ with $B \geq B_{\min}$.
+Consequently, $Q(\Phi) \geq 0$ for all Fej\'er--heat generators $\Phi_{B,t_{\mathrm{crit}}}$ with $B \geq B_{\min}$.
 \end{corollary}
 
 %=============================================================================
@@ -286,7 +285,7 @@ Assume \textup{(T0)}, \textup{(A1')}, \textup{(A2)}, \textup{(A3)}, and \textup{
 We establish positivity on each $\mathcal{W}_K$ and then take the union.
 
 \textbf{Step 1: Positivity on generators.}
-By Corollary~\ref{cor:gap}, the spectral gap $\lambda_{\min}(T_M[P_A] - T_P) \geq c_*/4 > 0$ implies $Q(\Phi) \geq 0$ for all Fej\'er--heat generators $\Phi_{B,t_{\mathrm{sym}},\tau}$ with $B \geq B_{\min}$ and $\tau \in W_K$.
+By Corollary~\ref{cor:gap}, the spectral gap $\lambda_{\min}(T_M[P_A] - T_P) \geq c_*/4 > 0$ implies $Q(\Phi) \geq 0$ for all Fej\'er--heat generators $\Phi_{B,t_{\mathrm{crit}},0}$ with $B \geq B_{\min}$ (base-atom cone, $\tau=0$).
 
 \textbf{Step 2: Extension via density and continuity.}
 Let $\Phi \in \mathcal{W}_K$ be arbitrary. By Theorem~\ref{thm:A1-recap} (density), there exists a sequence of finite non-negative combinations of generators $\Phi_n \to \Phi$ in $\|\cdot\|_\infty$. Each $\Phi_n$ satisfies $Q(\Phi_n) \geq 0$ by Step~1. By Lemma~\ref{lem:A2-recap} (continuity),
@@ -299,7 +298,7 @@ Since $\mathcal{W} = \bigcup_{K > 0} \mathcal{W}_K$ and each $\Phi \in \mathcal{
 \end{proof}
 
 \begin{remark}[Uniform bounds only]\label{rem:uniform}
-The proof uses only uniform analytic bounds. No $K$-dependent schedules, numerical tables, or computational certificates enter the argument. The key parameters $(c_*, C_{\mathrm{SB}}, t_{\mathrm{sym}}, t_{\mathrm{rkhs}}, B_{\min})$ are fixed universal constants.
+The proof uses only uniform analytic bounds. No $K$-dependent schedules, numerical tables, or computational certificates enter the argument. The key parameters $(c_*, C_{\mathrm{SB}}, t_{\mathrm{crit}}, B_{\min})$ are fixed universal constants.
 \end{remark}
 
 %=============================================================================
@@ -384,8 +383,8 @@ Constant & Value & Role \\
 \midrule
 $c_*$ & $11/10$ & Archimedean floor \\
 $C_{\mathrm{SB}}$ & $4$ & Szeg\H{o}--B\"ottcher constant \\
-$t_{\mathrm{sym}}$ & $3/50$ & Symbol heat parameter \\
-$t_{\mathrm{rkhs}}$ & $\geq 1$ & RKHS threshold \\
+$t_{\mathrm{crit}}$ & $3/20$ & Single analytic heat scale (symbol + RKHS) \\
+$t_{\mathrm{crit}}$ & $3/20$ & Single analytic scale (symbol + RKHS) \\
 $B_{\min}$ & $3$ & Minimum bandwidth \\
 $w_{\max}$ & $\leq 2/e$ & Maximum prime weight \\
 $c_*/4$ & $11/40$ & Spectral gap \\

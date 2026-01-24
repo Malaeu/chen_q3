@@ -22,6 +22,7 @@ Note: spec sources are legacy/background. For mainline decisions, return to
   - `t_critical = 3/20`
   - base-atom cone with `tau = 0`
 - Canonical summary: `ACTIVE/chain_status.md`
+- Paper alignment audit (single-scale vs legacy): `ACTIVE/single_scale_paper_audit.md`
 
 ## 2) Live axioms (single-scale)
 
@@ -70,6 +71,7 @@ Source of truth:
 ## 6) Knowledge base (external)
 
 - `ACTIVE/aristotle_models_knowledge` — Aristotle model/training knowledge dump
+- `ACTIVE/codex_agent_loop_notes.md` — Codex CLI agent loop notes (OpenAI blog)
 
 ## 7) Editing policy (keep this stable)
 
