@@ -868,6 +868,18 @@ lemma T_P_comp_toCLM_eq_compression_basisFun
     (Q3.Proofs.RKHSInterfaceC1.T_P_comp_toCLM_eq_compression_basisFun
       (K := K) (B := B) (t := t) (M := M))
 
+/-- C1 (basisFun) opNorm bound: `‖T_P_comp‖ ≤ ‖T_P_RKHS_like‖`. -/
+lemma T_P_comp_opNorm_le_basisFun
+    (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] :
+    ‖(Matrix.toEuclideanLin (Q3.T_P_comp K B t M)).toContinuousLinearMap‖ ≤
+      ‖Q3.Proofs.RKHSInterfaceC1.T_P_RKHS_like
+        (H := EuclideanSpace ℂ (Fin (2 * M + 1)))
+        (K := K) (B := B) (t := t)
+        (k := Q3.Proofs.RKHSInterfaceC1.k_basis (K := K) (M := M))‖ := by
+  simpa using
+    (Q3.Proofs.RKHSInterfaceC1.T_P_comp_opNorm_le_basisFun
+      (K := K) (B := B) (t := t) (M := M))
+
 /-! ### C1 compression identity (dictionary embedding) -/
 
 /-- C1 identity: `T_P_comp_real` is the compression of its lifted operator along the
