@@ -1,5 +1,5 @@
 # PROSHKA CONTEXT PACK
-Generated: 2026-01-24 20:08:46
+Generated: 2026-01-24 20:09:43
 Repo: /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2
 
 This pack is intended for Proshka. It inlines key files and recent git context.
@@ -8,24 +8,11 @@ This pack is intended for Proshka. It inlines key files and recent git context.
 ## Git status
 
 ## projekt_2A
- M full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
- M full/q3.lean.aristotle/ACTIVE/PROBLEM_SOLVER_PROMPT_RU.md
- M full/q3.lean.aristotle/ACTIVE/single_scale_paper_audit.md
- M full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
- M full/q3.lean.aristotle/PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md
- M full/q3.lean.aristotle/Q3/Proofs/Q_nonneg_atoms_closure.lean
- M full/q3.lean.aristotle/Q3/Proofs/ShiftedWindows.lean
- M full/q3.lean.aristotle/Q3/Proofs/SingleScale_Assumptions.lean
- M full/q3.lean.aristotle/docs/CHAIN_STATUS.md
- M full/q3.lean.aristotle/docs/INSIGHTS.md
- M full/q3.lean.aristotle/docs/PROSHKA_POLICY.md
- M full/q3.lean.aristotle/scripts/check_axioms.sh
- M scripts/ralph/build.md
- M scripts/ralph/plan.md
 
 
 ## Git log
 
+8c3aae0 [projekt_2A][AI-codex] close P_A_shift continuity
 581d9f3 [projekt_2A][AI-codex] tau0 singlescale refactor
 ddd1d8a [projekt_2A][AI-codex] ralph plan update + zed note
 76541dc [projekt_2A][AI-codex] add ralph loop + plan sweep
@@ -65,7 +52,6 @@ b5202b5 [projekt_2A][AI-codex] Add Proshka request for C1/hA gap
 b4d0985 [projekt_2A][AI-codex] Wire RKHS cap through C1 kernel dict
 0f695c1 [2026-01-23][linux][AI-codex] A3_FLOOR@t_critical blocker note + Lean goal
 2afdb4f [2026-01-23][linux][AI-codex] Generalize P_A continuity/local finiteness in t
-adacbda [2026-01-23][linux][AI-codex] One-scale A3 bridge scaffolding + generic weight_sum cap
 
 
 ## File: full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
