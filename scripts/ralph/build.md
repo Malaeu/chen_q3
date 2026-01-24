@@ -14,7 +14,6 @@ Rules:
 Project reality:
 - Mainline is single-scale: t_critical = 3/20, tau = 0.
 - The only open axioms on main chain:
-  - SingleScale.continuous_P_A_shift
   - SingleScale.rayleigh_basis0_shift_ge_cstar_quarter
 
 Output:

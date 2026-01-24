@@ -65,12 +65,11 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **7 axioms** (4 project + 3 standard)
+Result: **6 axioms** (3 project + 3 standard)
 
 - Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - Level 1 (Classical Literature): `Weil_criterion`, `Schur_test`
-- Level 2 (Q3 Paper, single‑scale): `SingleScale.continuous_P_A_shift`,
-  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
+- Level 2 (Q3 Paper, single‑scale): `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
 
 **Closed axioms (history):**
 - `a_star_pos` → closed via positivity (2026-01-21)
@@ -79,6 +78,7 @@ Result: **7 axioms** (4 project + 3 standard)
 - `a_star_even` → closed via Mathlib Gamma_conj (2026-01-20)
 - `A1_density_WK_axiom` → closed via bounded hat interpolation (h_even as mass bound)
 - `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` → closed via Q_nonneg_atoms_closure (2026-01-24)
+- `SingleScale.continuous_P_A_shift` → closed via `ShiftedWindows.P_A_shift_continuous` (2026-01-24)
 
 ## Critical Chain (ASCII)
 
@@ -209,7 +209,7 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
 |------|-----------------------|---------|-------------|--------|
 | `Weil_criterion` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
 | `Schur_test` | External (classical) | L2 vs L∞ mismatch | Classical result, keep as axiom | **EXTERNAL** |
-| `SingleScale.continuous_P_A_shift` | `Q3/Proofs/SingleScale_Assumptions.lean` | single‑scale continuity proof missing (tau = 0) | Prove continuity at `t_critical` | **AXIOM** |
+| `SingleScale.continuous_P_A_shift` | `Q3/Proofs/SingleScale_Assumptions.lean` | proved via `ShiftedWindows.P_A_shift_continuous` (requires `B>0`) | done | **THEOREM** |
 | `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | A3 floor at `t_critical` (tau = 0) | Prove Rayleigh lower bound for shifted symbol | **AXIOM** |
 | `SingleScale.rho_oneK_tcritical_le_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | prime cap (tau = 0) | Numeric bound `rho_one ≤ c*/4` | **THEOREM** |
 

@@ -26,10 +26,9 @@ It is intended to stay aligned with the code after each refactor.
 - Single-scale numeric cap is now `rho_one ≤ c_star/4`
   (`SingleScale.rho_oneK_tcritical_le_cstar_quarter`, closed).
 
-4) Continuity (A2-style) at t_critical (tau = 0)
-- Status: axiomatized as
-  `SingleScale.continuous_P_A_shift` in
-  `Q3/Proofs/SingleScale_Assumptions.lean`.
+4) Continuity (A2-style) at t_critical (single-scale)
+- Status: **closed** via `ShiftedWindows.P_A_shift_continuous`
+  (requires `B > 0`, tau arbitrary).
 
 5) Atom-level nonnegativity and closure
 - `Q3/Proofs/Q_nonneg_atoms_closure.lean` closes the fixed-t chain assuming
@@ -37,7 +36,6 @@ It is intended to stay aligned with the code after each refactor.
 
 ## Remaining SingleScale axioms (open)
 
-- `SingleScale.continuous_P_A_shift`
 - `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
 
 ## Related entry points

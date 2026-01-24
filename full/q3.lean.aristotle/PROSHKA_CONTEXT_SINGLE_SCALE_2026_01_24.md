@@ -1,5 +1,5 @@
 # PROSHKA CONTEXT PACK
-Generated: 2026-01-24 17:53:23
+Generated: 2026-01-24 20:08:46
 Repo: /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2
 
 This pack is intended for Proshka. It inlines key files and recent git context.
@@ -8,10 +8,25 @@ This pack is intended for Proshka. It inlines key files and recent git context.
 ## Git status
 
 ## projekt_2A
+ M full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
+ M full/q3.lean.aristotle/ACTIVE/PROBLEM_SOLVER_PROMPT_RU.md
+ M full/q3.lean.aristotle/ACTIVE/single_scale_paper_audit.md
+ M full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
+ M full/q3.lean.aristotle/PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md
+ M full/q3.lean.aristotle/Q3/Proofs/Q_nonneg_atoms_closure.lean
+ M full/q3.lean.aristotle/Q3/Proofs/ShiftedWindows.lean
+ M full/q3.lean.aristotle/Q3/Proofs/SingleScale_Assumptions.lean
+ M full/q3.lean.aristotle/docs/CHAIN_STATUS.md
+ M full/q3.lean.aristotle/docs/INSIGHTS.md
+ M full/q3.lean.aristotle/docs/PROSHKA_POLICY.md
+ M full/q3.lean.aristotle/scripts/check_axioms.sh
+ M scripts/ralph/build.md
+ M scripts/ralph/plan.md
 
 
 ## Git log
 
+581d9f3 [projekt_2A][AI-codex] tau0 singlescale refactor
 ddd1d8a [projekt_2A][AI-codex] ralph plan update + zed note
 76541dc [projekt_2A][AI-codex] add ralph loop + plan sweep
 ccd7a99 [projekt_2A][AI-codex] single-scale paper sweep
@@ -51,7 +66,6 @@ b4d0985 [projekt_2A][AI-codex] Wire RKHS cap through C1 kernel dict
 0f695c1 [2026-01-23][linux][AI-codex] A3_FLOOR@t_critical blocker note + Lean goal
 2afdb4f [2026-01-23][linux][AI-codex] Generalize P_A continuity/local finiteness in t
 adacbda [2026-01-23][linux][AI-codex] One-scale A3 bridge scaffolding + generic weight_sum cap
-65654a8 [2026-01-23][linux][AI-codex] Clarify git-vs-proof branches + parallel streams
 
 
 ## File: full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
@@ -87,9 +101,7 @@ Note: spec sources are legacy/background. For mainline decisions, return to
 
 These are the only open project axioms on the main chain:
 
-- `SingleScale.continuous_P_A_shift`
-- `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
-- `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
+- `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` (tau = 0)
 
 Source of truth:
 - `ACTIVE/orchestrator.md` (Axiom Count + table)
@@ -155,7 +167,7 @@ It is intended to stay aligned with the code after each refactor.
 ## Current chain (code-level)
 
 1) A3 floor (archimedean lower bound)
-- Target: Rayleigh lower bound at t_critical for P_A_shift.
+- Target: Rayleigh lower bound at t_critical for P_A_shift (tau = 0).
 - Status: axiomatized as
   `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
   in `Q3/Proofs/SingleScale_Assumptions.lean`.
@@ -165,27 +177,21 @@ It is intended to stay aligned with the code after each refactor.
 - Includes C1 compression identity (basisFun and dictionary embedding) and
   RKHS cap wiring at t_rkhs_cap.
 
-3) Prime sum cap at t_critical
-- Theorem `prime_sum_phi_shift_le_cstar_quarter` (proved) in
-  `Q3/Proofs/SingleScale_Assumptions.lean`.
-- Uses the t-bridge `exp_tcrit_to_rkhs` from
-  `Q3/Proofs/PrimeTerm_t_bridge.lean` and the numeric axiom
-  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`.
+3) Prime cap (tau = 0)
+- Single-scale numeric cap is now `rho_one ≤ c_star/4`
+  (`SingleScale.rho_oneK_tcritical_le_cstar_quarter`, closed).
 
-4) Continuity (A2-style) at t_critical
-- Status: axiomatized as
-  `SingleScale.continuous_P_A_shift` in
-  `Q3/Proofs/SingleScale_Assumptions.lean`.
+4) Continuity (A2-style) at t_critical (single-scale)
+- Status: **closed** via `ShiftedWindows.P_A_shift_continuous`
+  (requires `B > 0`, tau arbitrary).
 
 5) Atom-level nonnegativity and closure
 - `Q3/Proofs/Q_nonneg_atoms_closure.lean` closes the fixed-t chain assuming
-  the three SingleScale axioms above.
+  the two SingleScale axioms above.
 
 ## Remaining SingleScale axioms (open)
 
-- `SingleScale.continuous_P_A_shift`
 - `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
-- `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
 
 ## Related entry points
 
@@ -235,13 +241,12 @@ Single entry point: read this file at session start.
   `Q3/Proofs/RKHS_cap_rayleigh.lean` (search `compression identity`).
 - New one-scale A3 bridge scaffolding (no two-scale): `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`
   (fixed-`t` bridge + generic weight-sum → Rayleigh cap lemma in `Q3/Proofs/RKHS_cap_generic.lean`).
-- New one-scale parameter module added (WIP pivot): `Q3/Proofs/Params_Critical.lean`
-  centralizes `t_critical = 3/20` and `t0_critical`.
+- Single-scale parameter source: `Q3/Proofs/Q_nonneg_t_critical.lean`
+  (defines `t_critical = 3/20` and `t0_critical`).
 - Atom positivity/T5 transfer now use `t0_critical` (t = 0.15) for `AtomCone_K_fixed`;
   BaseAtomCone guard lemma added in `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
-- Single-scale prime sum cap at `t_critical` is now a theorem:
-  `prime_sum_phi_shift_le_cstar_quarter` in `Q3/Proofs/SingleScale_Assumptions.lean`
-  (depends on `rho_oneK_tcritical_le_cstar_quarter`).
+- Single-scale prime cap (tau = 0) is now a direct numeric bound:
+  `rho_one ≤ c_star/4` in `Q3/Proofs/SingleScale_Assumptions.lean`.
 - Helper lemma for “unitary conjugation preserves opNorm” added:
   `Q3/Proofs/OpNorm_Unitary.lean` (used in the `hA` decision tree, see `docs/INSIGHTS.md`).
 - Legacy: `A3_bridge_axiom` (sampling Toeplitz + a_star) is still in `Q3/Axioms.lean`
@@ -264,13 +269,11 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **8 axioms** (5 project + 3 standard)
+Result: **6 axioms** (3 project + 3 standard)
 
 - Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - Level 1 (Classical Literature): `Weil_criterion`, `Schur_test`
-- Level 2 (Q3 Paper, single‑scale): `SingleScale.continuous_P_A_shift`,
-  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
-  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
+- Level 2 (Q3 Paper, single‑scale): `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
 
 **Closed axioms (history):**
 - `a_star_pos` → closed via positivity (2026-01-21)
@@ -279,6 +282,7 @@ Result: **8 axioms** (5 project + 3 standard)
 - `a_star_even` → closed via Mathlib Gamma_conj (2026-01-20)
 - `A1_density_WK_axiom` → closed via bounded hat interpolation (h_even as mass bound)
 - `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` → closed via Q_nonneg_atoms_closure (2026-01-24)
+- `SingleScale.continuous_P_A_shift` → closed via `ShiftedWindows.P_A_shift_continuous` (2026-01-24)
 
 ## Critical Chain (ASCII)
 
@@ -323,7 +327,7 @@ RH_of_Weil_and_Q3
 **FULL ANALYSIS:** `docs/LATEX_PROOF_GAP_ANALYSIS.md`
 
 **STATUS:** `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` is now closed via the
-single‑scale chain, but the gap remains as **three SingleScale axioms**.
+single‑scale chain, but the gap remains as **two SingleScale axioms**.
 Mathematical consultation with Proshka required to remove those assumptions.
 
 **HARD PIVOT DIRECTION (in progress):** one-scale parameterization at `t = t_critical`
@@ -409,9 +413,9 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
 |------|-----------------------|---------|-------------|--------|
 | `Weil_criterion` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
 | `Schur_test` | External (classical) | L2 vs L∞ mismatch | Classical result, keep as axiom | **EXTERNAL** |
-| `SingleScale.continuous_P_A_shift` | `Q3/Proofs/SingleScale_Assumptions.lean` | single‑scale continuity proof missing | Prove continuity at `t_critical` | **AXIOM** |
-| `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | A3 floor at `t_critical` | Prove Rayleigh lower bound for shifted symbol | **AXIOM** |
-| `SingleScale.rho_oneK_tcritical_le_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | prime cap via t‑bridge | Prove numeric bound `exp_tcrit_to_rkhs * rho_oneK ≤ c*/4` | **AXIOM** |
+| `SingleScale.continuous_P_A_shift` | `Q3/Proofs/SingleScale_Assumptions.lean` | proved via `ShiftedWindows.P_A_shift_continuous` (requires `B>0`) | done | **THEOREM** |
+| `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | A3 floor at `t_critical` (tau = 0) | Prove Rayleigh lower bound for shifted symbol | **AXIOM** |
+| `SingleScale.rho_oneK_tcritical_le_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | prime cap (tau = 0) | Numeric bound `rho_one ≤ c*/4` | **THEOREM** |
 
 ## Progress Log (2026-01-16)
 
@@ -785,7 +789,7 @@ Use this to answer: “Which block is this in Lean?”
 
 ## A3 — Archimedean floor + Toeplitz/Rayleigh bridge
 
-Mainline (single-scale):
+Mainline (single-scale, tau = 0):
 - **Axiom (open):** `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
   in `Q3/Proofs/SingleScale_Assumptions.lean`
 - Context: `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`
@@ -800,7 +804,7 @@ Legacy (two-scale / uniform):
   - `Q3/Proofs/RKHS_cap_rayleigh.lean`
   - `rho_one = 1/25`, `t_rkhs_cap = 40`
 
-- **Single-scale axiom (open):**
+- **Single-scale cap (closed):**
   - `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
   - `Q3/Proofs/SingleScale_Assumptions.lean`
 
@@ -814,7 +818,7 @@ Legacy (two-scale / uniform):
 ## Atom-level nonnegativity / closure
 
 - `Q3/Proofs/Q_nonneg_atoms_closure.lean`
-  - closes the fixed-t chain assuming the three SingleScale axioms
+  - closes the fixed-t chain assuming the two SingleScale axioms
 
 ## Main theorem (RH via Weil criterion)
 
@@ -918,9 +922,8 @@ Conclusion: A2 закрыт как теорема в mainline.
 - single‑scale `t_critical = 3/20`
 - `tau = 0` (BaseAtomCone)
 - живые аксиомы:
-  - `SingleScale.continuous_P_A_shift`
-  - `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
-  - `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
+  - `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` (tau = 0)
+  - `SingleScale.rho_oneK_tcritical_le_cstar_quarter` — now trivial (`rho_one ≤ c_star/4`)
 
 Источник: `ACTIVE/chain_status.md` + `ACTIVE/orchestrator.md`.
 
@@ -1425,21 +1428,11 @@ E) Parameters: keep `t_sym` (symbol) and `t_rkhs` (cap) distinct; `w_Q` and `w_R
   BaseAtomCone guard `Q_nonneg_on_base_atoms_of_A3_Fourier_RKHS` added.
 - Proshka request drafted: `full/q3.lean.aristotle/PROSHKA_REQUEST_5.md` (one‑scale A3 floor + cap at t_critical).
 
-## Synthesis (2026-01-24, in progress) — close `rho_oneK_tcritical_le_cstar_quarter`
+## Synthesis (2026-01-24, resolved) — close `rho_oneK_tcritical_le_cstar_quarter`
 
-- q3search failed (403 spend limit); websearch failed (403 spend limit).
-- Target lemma: `SingleScale.rho_oneK_tcritical_le_cstar_quarter` in
-  `Q3/Proofs/SingleScale_Assumptions.lean`; `prime_sum_phi_shift_le_cstar_quarter`
-  is now a theorem derived from t‑bridge + `weight_sum_le_rho_oneK`.
-- Option A (primary): adapt `Q3/Proofs/PrimeTerm_t_bridge.lean` to `t_critical`:
-  define `exp_tcrit_to_rkhs` and prove
-  `phi_shift t_critical ≤ exp_tcrit_to_rkhs K * phi_shift t_rkhs_cap`;
-  then sum and bound with `weight_sum_le_rho_oneK` or
-  `prime_term_phi_shift_le_rho_oneK` from `Q3/Proofs/RKHS_cap_rayleigh.lean`.
-- Check if `exp_tcrit_to_rkhs K * rho_oneK K ≤ c_star/4`; if false, record
-  “false‑for‑now” and keep axiom.
-- Success check: `lake env lean Q3/Proofs/Q_nonneg_atoms_closure.lean` and
-  `./scripts/check_axioms.sh` shows only the remaining two SingleScale axioms.
+- Decision: mainline uses tau = 0, so the cap reduces to `rho_one ≤ c_star/4`.
+- Implemented as a direct numeric bound (no K dependence).
+- Legacy `rho_oneK` (tau-shift) remains as a separate variant; not used in mainline.
 
 ---
 
@@ -1456,9 +1449,8 @@ E) Parameters: keep `t_sym` (symbol) and `t_rkhs` (cap) distinct; `w_Q` and `w_R
 - Tau-shift: варианты RKHS cap/A3 floor + выбор Variant 1 (риски/план) → `docs/insights/tau_shift_variants_rkhs_a3_2026_01_18.md`.
 - C1 basisFun model wired (machine `h_eval`) + compression remark in `Q3/Proofs/RKHS_cap_rayleigh.lean`.
 - Single-scale RKHS contraction at `t_critical` wired into `Q3/AxiomsTheorems.lean` (via `SingleScale_Assumptions`).
-- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` closed via `Q_nonneg_atoms_closure`; remaining blockers are
-  `SingleScale.continuous_P_A_shift`, `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
-  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`.
+- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` closed via `Q_nonneg_atoms_closure`; remaining blocker is
+  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`.
 
 - Реальные bounds для T_P (V1 surprise): путаем direct‑indexed vs compression → `docs/insights/v1_surprise_real_tp_bounds_2026_01_14.md`.
 - Успешный Rayleigh‑bridge (V3) → `docs/insights/v3_success_a3_bridge_rayleigh_2026_01_14.md`.
@@ -2552,6 +2544,65 @@ lemma g_shift_zero_of_large_m (B t tau theta : ℝ) (m : ℤ) (hB : 0 < B)
   exact g_shift_support B t tau (theta + m) hB (by
     simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using hB')
 
+lemma P_A_shift_locally_finite_sum (B t tau θ₀ : ℝ) (hB : 0 < B) :
+    ∃ N : ℕ, ∀ θ ∈ Set.Ioo (θ₀ - 1/2) (θ₀ + 1/2),
+      Q3.P_A_shift B t tau θ =
+        2 * Real.pi * ∑ m ∈ Finset.Icc (-(N : ℤ)) N, Q3.g_shift B t tau (θ + m) := by
+  let K : ℝ := |tau| + B
+  refine ⟨Nat.ceil (|θ₀| + K) + 4, ?_⟩
+  intro θ hθ
+  unfold Q3.P_A_shift
+  congr 1
+  apply tsum_eq_sum
+  intro m hm
+  simp only [Finset.mem_Icc, not_and, not_le] at hm
+  have hθ_bound : |θ| < |θ₀| + 1/2 := by
+    have h1 : θ₀ - 1/2 < θ := hθ.1
+    have h2 : θ < θ₀ + 1/2 := hθ.2
+    rw [abs_lt]
+    constructor
+    · by_cases hθ₀_neg : θ₀ ≤ 0
+      · have : |θ₀| = -θ₀ := abs_of_nonpos hθ₀_neg
+        linarith
+      · push_neg at hθ₀_neg
+        have : |θ₀| = θ₀ := abs_of_pos hθ₀_neg
+        linarith
+    · by_cases hθ₀_neg : θ₀ ≤ 0
+      · have : |θ₀| = -θ₀ := abs_of_nonpos hθ₀_neg
+        linarith
+      · push_neg at hθ₀_neg
+        have : |θ₀| = θ₀ := abs_of_pos hθ₀_neg
+        linarith
+  have hN : (Nat.ceil (|θ₀| + K) : ℤ) + 4 < |m| := by
+    by_cases h : m < -((Nat.ceil (|θ₀| + K) : ℤ) + 4)
+    · have hm_neg : m < 0 := by omega
+      simp only [abs_of_neg hm_neg]
+      omega
+    · push_neg at h
+      have hm' := hm h
+      have hm_nonneg : 0 ≤ m := by omega
+      simp only [abs_of_nonneg hm_nonneg]
+      exact hm'
+  have h_m_real : |θ₀| + K + 4 < |(m : ℝ)| := by
+    have h1 : (Nat.ceil (|θ₀| + K) : ℝ) + 4 < |m| := by exact_mod_cast hN
+    have hceil : |θ₀| + K ≤ (Nat.ceil (|θ₀| + K) : ℝ) := by
+      exact Nat.le_ceil (|θ₀| + K)
+    calc |θ₀| + K + 4 ≤ (Nat.ceil (|θ₀| + K) : ℝ) + 4 := by linarith
+      _ < |m| := h1
+      _ = |(m : ℝ)| := by simp [Int.cast_abs]
+  have h_tri : |(m : ℝ)| - |θ| ≤ |θ + (m : ℝ)| := by
+    have h1 := abs_sub_abs_le_abs_sub (m : ℝ) (-θ)
+    have h2 : |(m : ℝ)| - |θ| ≤ |(m : ℝ) + θ| := by
+      simpa [abs_neg, sub_eq_add_neg] using h1
+    simpa [add_comm] using h2
+  have h_final : K < |θ + (m : ℝ)| := by
+    have hmid : K < |(m : ℝ)| - |θ| := by
+      linarith [h_m_real, hθ_bound]
+    linarith [h_tri, hmid]
+  have h_final' : K < |θ + m| := by
+    simpa using h_final
+  exact g_shift_support_of_margin B t tau K hB (by simp [K, add_comm]) (θ + m) h_final'
+
 lemma P_A_shift_tsum_eq_finite_sum (B t tau theta : ℝ) (hB : 0 < B)
     (htheta : theta ∈ Set.Icc (-1/2 : ℝ) (1/2)) :
     ∑' (m : ℤ), Q3.g_shift B t tau (theta + m) =
@@ -2574,6 +2625,27 @@ lemma P_A_shift_tsum_eq_finite_sum (B t tau theta : ℝ) (hB : 0 < B)
       have hm_nonneg : 0 ≤ m := by linarith [hceil_pos, hm']
       simpa [abs_of_nonneg hm_nonneg] using hm'
   exact g_shift_zero_of_large_m B t tau theta m hB htheta h_large
+
+theorem P_A_shift_continuous (B t tau : ℝ) (hB : 0 < B) :
+    Continuous (Q3.P_A_shift B t tau) := by
+  rw [continuous_iff_continuousAt]
+  intro θ₀
+  obtain ⟨N, hN⟩ := P_A_shift_locally_finite_sum (B:=B) (t:=t) (tau:=tau) (θ₀:=θ₀) hB
+  let f := fun θ => 2 * Real.pi * ∑ m ∈ Finset.Icc (-(N : ℤ)) N, Q3.g_shift B t tau (θ + m)
+  have h_sum_cont : Continuous f := by
+    apply continuous_const.mul
+    apply continuous_finset_sum
+    intro m _
+    exact (continuous_g_shift B t tau).comp (continuous_id.add continuous_const)
+  have h_mem : Set.Ioo (θ₀ - 1/2) (θ₀ + 1/2) ∈ nhds θ₀ := by
+    apply Ioo_mem_nhds <;> linarith
+  have h_eq : ∀ θ ∈ Set.Ioo (θ₀ - 1/2) (θ₀ + 1/2), Q3.P_A_shift B t tau θ = f θ := hN
+  have h_f_cont : ContinuousAt f θ₀ := h_sum_cont.continuousAt
+  have h_eq_f : Q3.P_A_shift B t tau =ᶠ[nhds θ₀] f := by
+    apply Filter.eventuallyEq_of_mem h_mem
+    intro θ hθ
+    exact h_eq θ hθ
+  exact h_f_cont.congr h_eq_f.symm
 
 lemma arch_term_eq_two_pi_integral_g_shift (B t tau : ℝ) :
     Q3.arch_term (fun xi => Q3.phi_shift B t tau xi) =

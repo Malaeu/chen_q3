@@ -2,6 +2,7 @@ import Q3.Axioms
 import Q3.Proofs.Q_nonneg_t_critical
 import Q3.Proofs.Rayleigh_Q_identification
 import Q3.Proofs.RKHS_cap_rayleigh
+import Q3.Proofs.ShiftedWindows
 
 set_option linter.mathlibStandardSet false
 
@@ -18,9 +19,12 @@ namespace Q3.Proofs.SingleScale
 
 open Q3
 
-/-! ## Continuity of the shifted symbol (tau = 0 mainline) -/
+/-! ## Continuity of the shifted symbol (single-scale) -/
 
-axiom continuous_P_A_shift (B : ℝ) : Continuous (Q3.P_A_shift B t_critical 0)
+theorem continuous_P_A_shift (B tau : ℝ) (hB : 0 < B) :
+    Continuous (Q3.P_A_shift B t_critical tau) := by
+  simpa using
+    (Q3.Proofs.ShiftedWindows.P_A_shift_continuous (B:=B) (t:=t_critical) (tau:=tau) hB)
 
 /-! ## A3-style lower bound at basis0 (tau = 0 mainline) -/
 

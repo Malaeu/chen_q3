@@ -29,7 +29,6 @@ Note: spec sources are legacy/background. For mainline decisions, return to
 
 These are the only open project axioms on the main chain:
 
-- `SingleScale.continuous_P_A_shift` (tau = 0)
 - `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` (tau = 0)
 
 Source of truth:

@@ -1,32 +1,21 @@
 # Single-scale paper audit (2026-01-24)
 
 Goal: verify whether the *paper* matches the single-scale mainline
-(t_critical = 3/20, tau = 0) and map the 2 remaining SingleScale axioms
+(t_critical = 3/20, tau = 0) and map the remaining SingleScale axiom
 onto exact LaTeX locations.
 
 ## Summary (fast read)
 
 - The paper chain **is stated as complete**, and the main paper files have now
   been **aligned to single-scale** (t_critical = 3/20, tau = 0).
-- The two SingleScale axioms now have paper analogs that **use t_critical**
+- The remaining SingleScale axiom has a paper analog that **uses t_critical**
   (paper3_* files updated). Legacy two-scale mentions were removed there.
 - Action: keep an eye on other legacy drafts; if they still mention two-scale,
   mark as legacy or update in a follow-up sweep.
 
 ## Axiom-to-paper map (single-scale mismatch audit)
 
-### 1) SingleScale.continuous_P_A_shift
-
-- Lean axiom: `SingleScale.continuous_P_A_shift`
-- Paper analog:
-  - `full/sections/A2.tex` (Lipschitz / continuity of Q on compact windows)
-- Status:
-  - Continuity is **proved on paper**; single-scale is now referenced in the
-    mainline papers. (A2 itself is t-agnostic.)
-- Follow-up:
-  - If any local draft still binds A2 to legacy t_sym, mark as legacy.
-
-### 2) SingleScale.rayleigh_basis0_shift_ge_cstar_quarter
+### 1) SingleScale.rayleigh_basis0_shift_ge_cstar_quarter
 
 - Lean axiom: `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
 - Paper analog:

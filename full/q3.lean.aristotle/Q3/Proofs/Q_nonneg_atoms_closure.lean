@@ -65,7 +65,7 @@ theorem Q_nonneg_phi_shift_tsym (K B τ : ℝ) [Fintype (Nodes K)]
   -- Single-scale closure: use basis0 Rayleigh lower bound + single-scale prime cap.
   have hM : (0 : ℕ) < 2 * 0 + 1 := by decide
   have hP : Continuous (Q3.P_A_shift B t_main τ) := by
-    simpa [t_main] using (continuous_P_A_shift B τ)
+    simpa [t_main] using (continuous_P_A_shift B τ hB)
   have hQ_eq :
       Q (fun ξ => phi_shift B t_main τ ξ) =
         Q3.RayleighQuotient
