@@ -37,4 +37,23 @@ axiom prime_sum_phi_shift_le_cstar_quarter
     ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_critical tau (Q3.xi_n n)
       ≤ Q3.c_star / 4
 
+/-! ## Single-scale RKHS contraction (t = t_critical) -/
+
+axiom rkhs_contraction_tcritical
+    (K : ℝ) (hK : K ≥ 1) :
+    ∃ ρ : ℝ, ρ < 1 ∧
+      ∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ Q3.Nodes K) →
+        let T_P : Matrix S S ℝ := fun i j =>
+          Real.sqrt (Q3.w_RKHS i) * Real.sqrt (Q3.w_RKHS j) *
+          Real.exp (-(Q3.xi_n i - Q3.xi_n j)^2 / (4 * t_critical))
+        ‖(Matrix.toEuclideanLin T_P).toContinuousLinearMap‖ ≤ ρ
+
+theorem rkhs_contraction_data_of_tcritical (K : ℝ) (hK : K ≥ 1) :
+    Q3.RKHS_contraction_data K := by
+  classical
+  obtain ⟨ρ, hρ_lt, hT⟩ := rkhs_contraction_tcritical (K := K) hK
+  refine ⟨t_critical, t_critical_pos, ρ, hρ_lt, ?_⟩
+  intro S hS
+  exact hT S hS
+
 end Q3.Proofs.SingleScale

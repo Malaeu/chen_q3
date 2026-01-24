@@ -22,6 +22,7 @@ import Q3.Proofs.A1_density   -- For A1_density_WK_thm (real proof!)
 import Q3.Proofs.A1prime.A1_density_fixed_t0  -- For A1_density_WK_fixed_t0 (closes axiom!)
 import Q3.Proofs.HeatKernelParams
 import Q3.Proofs.Params_Critical
+import Q3.Proofs.SingleScale_Assumptions
 import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
 import Q3.Proofs.P_A_Toeplitz_bridge  -- Fourier Toeplitz with P_A (correct formulation)
 import Q3.Proofs.Q_nonneg_on_atoms_fourier_axiom
@@ -170,7 +171,7 @@ theorem Q_Lipschitz : ∀ (K : ℝ) (hK : K > 0),
 * **Status:** theorem (wired)
 -/
 theorem RKHS_contraction : ∀ (K : ℝ) (hK : K ≥ 1), Q3.RKHS_contraction_data K :=
-  Q3.Bridge.RKHS_contraction_data_of_bridge
+  Q3.Proofs.SingleScale.rkhs_contraction_data_of_tcritical
 
 /-- **[A3 Bridge]** ~~K-dependent Toeplitz bridge (deprecated).~~
 
