@@ -23,6 +23,7 @@ Note: spec sources are legacy/background. For mainline decisions, return to
   - base-atom cone with `tau = 0`
 - Canonical summary: `ACTIVE/chain_status.md`
 - Paper alignment audit (single-scale vs legacy): `ACTIVE/single_scale_paper_audit.md`
+- Legacy two-scale index: `ACTIVE/legacy_two_scale_index.md`
 
 ## 2) Live axioms (single-scale)
 
