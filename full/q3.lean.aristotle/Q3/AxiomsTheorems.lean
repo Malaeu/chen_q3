@@ -23,7 +23,6 @@ import Q3.Proofs.A1prime.A1_density_fixed_t0  -- For A1_density_WK_fixed_t0 (clo
 import Q3.Proofs.HeatKernelParams
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.SingleScale_Assumptions
-import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
 import Q3.Proofs.P_A_Toeplitz_bridge  -- Fourier Toeplitz with P_A (correct formulation)
 import Q3.Proofs.Q_nonneg_on_atoms_fourier_axiom
 import Q3.Proofs.Schur_Test  -- For Schur_test_proof (Mathlib-based)
@@ -82,7 +81,9 @@ theorem a_star_even : ∀ ξ : ℝ, Q3.a_star (-ξ) = Q3.a_star ξ :=
 ## Status (2026-01-20):
 
 **In main proof chain (`#print axioms RH_of_Weil_and_Q3`):**
-- 2 Q3 PAPER AXIOMS remain: `A1_density_WK_axiom`, `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- 3 Q3 PAPER AXIOMS remain (single‑scale): `SingleScale.continuous_P_A_shift`,
+  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
+  `SingleScale.prime_sum_phi_shift_le_cstar_quarter`
 - 6 EXTERNAL AXIOMS: `Weil_criterion`, `a_star_*`, `Schur_test`
 
 **Theorem status:**
@@ -224,7 +225,9 @@ end Q3.Theorems
 **11 axioms total:**
 - 3 Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - 6 External/Classical: `Weil_criterion`, `a_star_pos/continuous/bdd/even`, `Schur_test`
-- 2 Q3 Paper: `A1_density_WK_axiom`, `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- 3 Q3 Paper (single‑scale): `SingleScale.continuous_P_A_shift`,
+  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
+  `SingleScale.prime_sum_phi_shift_le_cstar_quarter`
 
 ## Theorem Wiring Status
 
@@ -233,7 +236,7 @@ end Q3.Theorems
 - `S_K_small` → S_K_SmallBridgeV2.S_K_small_Q3
 - `W_sum_finite` → W_sum_BridgeV2.W_sum_finite_Q3
 - `Q_Lipschitz` → Q3.Proofs.Q_Lipschitz_on_W_K_thm
-- `RKHS_contraction` → Bridge.RKHS_contraction_data_of_bridge
+- `RKHS_contraction` → SingleScale.rkhs_contraction_data_of_tcritical
 
 ### ⚠️ THEOREM EXISTS but AXIOM in main chain
 - `A1_density` → theorem in A1_density.lean, but axiom still in chain (wiring gap)

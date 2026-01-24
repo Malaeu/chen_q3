@@ -58,11 +58,13 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **6 axioms** (3 project + 3 standard)
+Result: **8 axioms** (5 project + 3 standard)
 
 - Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - Level 1 (Classical Literature): `Weil_criterion`, `Schur_test`
-- Level 2 (Q3 Paper): `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- Level 2 (Q3 Paper, single‑scale): `SingleScale.continuous_P_A_shift`,
+  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
+  `SingleScale.prime_sum_phi_shift_le_cstar_quarter`
 
 **Closed axioms (history):**
 - `a_star_pos` → closed via positivity (2026-01-21)
@@ -70,6 +72,7 @@ Result: **6 axioms** (3 project + 3 standard)
 - `a_star_bdd_on_compact` → closed via continuous + compact
 - `a_star_even` → closed via Mathlib Gamma_conj (2026-01-20)
 - `A1_density_WK_axiom` → closed via bounded hat interpolation (h_even as mass bound)
+- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` → closed via Q_nonneg_atoms_closure (2026-01-24)
 
 ## Critical Chain (ASCII)
 
@@ -84,9 +87,9 @@ RH_of_Weil_and_Q3
             |
             +-- A1_density_WK [OK]
             +-- Q_Lipschitz_on_W_K [OK]
-            +-- Q_nonneg_on_atoms [AX]
+            +-- Q_nonneg_on_atoms [OK]
                  |
-                 +-- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom [AX]
+                 +-- SingleScale assumptions [AX]
                  +-- RKHS_contraction [OK]
 ```
 
@@ -113,8 +116,9 @@ RH_of_Weil_and_Q3
 
 **FULL ANALYSIS:** `docs/LATEX_PROOF_GAP_ANALYSIS.md`
 
-**STATUS:** Cannot close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` with current approach.
-Mathematical consultation with Proshka required.
+**STATUS:** `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` is now closed via the
+single‑scale chain, but the gap remains as **three SingleScale axioms**.
+Mathematical consultation with Proshka required to remove those assumptions.
 
 **HARD PIVOT DIRECTION (in progress):** one-scale parameterization at `t = t_critical`
 and “true C1” matching (`hA`) for the RKHS prime operator (no embedding handwaving).
@@ -199,7 +203,9 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
 |------|-----------------------|---------|-------------|--------|
 | `Weil_criterion` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
 | `Schur_test` | External (classical) | L2 vs L∞ mismatch | Classical result, keep as axiom | **EXTERNAL** |
-| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | **AtomCone_K_fixed gap** | Implement fixed-t cone | **BLOCKED** |
+| `SingleScale.continuous_P_A_shift` | `Q3/Proofs/SingleScale_Assumptions.lean` | single‑scale continuity proof missing | Prove continuity at `t_critical` | **AXIOM** |
+| `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | A3 floor at `t_critical` | Prove Rayleigh lower bound for shifted symbol | **AXIOM** |
+| `SingleScale.prime_sum_phi_shift_le_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | prime cap at `t_critical` | Prove weight‑sum cap at `t_critical` | **AXIOM** |
 
 ## Progress Log (2026-01-16)
 
@@ -214,7 +220,7 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
   - `fourier_index_i0`, `prime_vec_i0`, `T_P_comp_real_diag`
   - `integral_P_A_eq_arch_term` (periodization) ✅
   - `rayleigh_Q_identification`, `rayleigh_Q_eq_Q` ✅
-- Next: wire into `Atoms_Positive.lean` to eliminate the axiom.
+- Done (2026-01-24): wired into `Atoms_Positive.lean` via `Q_nonneg_atoms_closure` (axiom closed).
 
 **Aristotle projects (Rayleigh variants)**:
 - 200eb072, 5e36515f, e9f53e97, eeca690a (Rayleigh sandbox variants)

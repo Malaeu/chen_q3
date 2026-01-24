@@ -194,11 +194,14 @@ repo:{username/repo_name} import
 
 ---
 
-## Current Axiom Count: 6
+## Current Axiom Count: 8
 
 ```
 Standard (3): propext, Classical.choice, Quot.sound
-Project (3):  Weil_criterion, a_star_pos, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+Project (5):  Weil_criterion, Schur_test,
+              SingleScale.continuous_P_A_shift,
+              SingleScale.rayleigh_basis0_shift_ge_cstar_quarter,
+              SingleScale.prime_sum_phi_shift_le_cstar_quarter
 ```
 
 **Closed axioms:**
@@ -206,11 +209,11 @@ Project (3):  Weil_criterion, a_star_pos, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_a
 - a_star_bdd_on_compact → closed via continuous + compact
 - a_star_even → closed via Mathlib Gamma_conj
 - A1_density_WK_axiom → closed via bounded hat interpolation (h_even as mass bound)
-- Schur_test → not needed (L2 vs L-infinity norm insight)
+- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom → closed via Q_nonneg_atoms_closure
 - A3_bridge_axiom → removed from chain (Fourier formulation)
 - RKHS contraction → closed
 
-**Target:** Close Q_nonneg_on_atoms to reach 5 project axioms
+**Target:** Close the 3 SingleScale axioms to reach 2 project axioms (Weil + Schur)
 
 ---
 

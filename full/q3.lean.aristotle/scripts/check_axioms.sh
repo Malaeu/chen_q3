@@ -97,7 +97,7 @@ TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
 EXPECTED_STANDARD=3
-EXPECTED_PROJECT=4  # Weil_criterion, Schur_test, A1_density_WK_axiom, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+EXPECTED_PROJECT=5  # Weil_criterion, Schur_test, SingleScale.{continuous_P_A_shift,prime_sum_phi_shift_le_cstar_quarter,rayleigh_basis0_shift_ge_cstar_quarter}
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
@@ -113,7 +113,7 @@ echo "$AXIOMS" | grep -E "Weil_criterion|digamma_one_fourth_neg|Schur_test" | se
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
-echo "$AXIOMS_ONLY" | grep -E "RKHS_contraction|Q_nonneg_on_atoms|A1_density" | sed 's/^/   /' || echo "   (none found)"
+echo "$AXIOMS_ONLY" | grep -E "SingleScale|A1_density|Q_nonneg_on_atoms" | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 echo "Level 3 (Bridge Lemmas):"
@@ -125,12 +125,12 @@ echo ""
 echo "═══ Step 5: Philosophy Verification ═══"
 
 # Expected axioms in proof chain (update when axioms are closed/added)
-# NOTE: A1_density_WK_axiom is AXIOM FALLBACK (theorem has 1 sorry)
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion"
     "Q3.Schur_test"
-    "Q3.A1_density_WK_axiom"
-    "Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom"
+    "Q3.Proofs.SingleScale.continuous_P_A_shift"
+    "Q3.Proofs.SingleScale.prime_sum_phi_shift_le_cstar_quarter"
+    "Q3.Proofs.SingleScale.rayleigh_basis0_shift_ge_cstar_quarter"
 )
 
 UNKNOWN_AXIOMS=""

@@ -168,9 +168,10 @@ This theorem depends on:
 **Tier-1 (Classical):**
 - Weil_criterion (Weil 1952)
 
-**Tier-2 (Q3 Paper):**
-- A3_FLOOR (P_A floor) + Fourier Toeplitz bridge
-- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom: core (A3+RKHS) ⇒ atoms positivity
+**Tier-2 (Q3 Paper, single‑scale):**
+- SingleScale.continuous_P_A_shift
+- SingleScale.rayleigh_basis0_shift_ge_cstar_quarter
+- SingleScale.prime_sum_phi_shift_le_cstar_quarter
 **Theorems (now closed):**
 - A1_density_WK: atoms dense in W_K
 - Q_Lipschitz_on_W_K: Q is Lipschitz
@@ -198,8 +199,8 @@ theorem RH_of_Weil_and_Q3 : Q3.RH := by
 #check RH_of_Weil_and_Q3
 -- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
 -- Standard: propext, Classical.choice, Quot.sound
--- Tier-1: Q3.Weil_criterion, Q3.a_star_pos, Q3.a_star_bdd_on_compact, Q3.a_star_continuous
--- Tier-2: Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+-- Tier-1: Q3.Weil_criterion, Q3.Schur_test
+-- Tier-2: Q3.Proofs.SingleScale.{continuous_P_A_shift,rayleigh_basis0_shift_ge_cstar_quarter,prime_sum_phi_shift_le_cstar_quarter}
 --
 -- KEY IMPROVEMENTS:
 -- - Q_Lipschitz_on_W_K is now a THEOREM (uses arch/prime bridge axioms)!

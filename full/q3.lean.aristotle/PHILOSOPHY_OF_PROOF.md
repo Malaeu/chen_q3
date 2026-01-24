@@ -41,11 +41,11 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│  IF these 7 mathematical statements are true (6 classical + 1 Q3)  │
+│  IF these 5 mathematical statements are true (2 classical + 3 Q3)  │
 │  THEN RH is true.                                                  │
 │                                                                    │
 │  Lean verifies: the logical implication is CORRECT.                │
-│  Human verifies: the 7 statements match what's in the paper.       │
+│  Human verifies: the 5 statements match what's in the paper.       │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -65,7 +65,7 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ## Axiom Classification
 
-Our formalization depends on exactly **4 axioms** (beyond Standard Lean):
+Our formalization depends on exactly **5 axioms** (beyond Standard Lean):
 
 ### Level 0: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
 ```
@@ -86,13 +86,17 @@ These are well-known results. Citations:
 **Note:** The following are now THEOREMS (proven from Mathlib/Aristotle):
 - `digamma_one_fourth_neg` — Re(ψ(1/4)) < 0 (DLMF 5.4.14, proven via reflection formula)
 - `a_star_pos`, `a_star_bdd_on_compact`, `a_star_continuous`, `a_star_even`
+- `A1_density_WK_axiom` → closed (A1_density_WK_thm)
+- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` → closed via Q_nonneg_atoms_closure
 
-### Level 2: Q3 Paper Contributions (2) — OUR MATHEMATICAL CONTENT
+### Level 2: Q3 Paper Contributions (3) — OUR MATHEMATICAL CONTENT
 ```
-A1_density_WK_axiom                  — Fejér×heat atoms dense in W_K
-Q_nonneg_on_atoms_of_A3_Fourier_RKHS — Q ≥ 0 on atoms (Theorem 5.3, Fourier A3)
+SingleScale.continuous_P_A_shift                  — continuity of shifted symbol at t_critical
+SingleScale.rayleigh_basis0_shift_ge_cstar_quarter — A3 floor at basis0 (t_critical)
+SingleScale.prime_sum_phi_shift_le_cstar_quarter   — prime cap at t_critical
 ```
-These are the novel contributions proven in the Q3 paper.
+These are the current single‑scale assumptions used to close the chain without the
+two‑scale mismatch. They are intended to be replaced by proofs.
 
 ### Level 3: Technical Bridge Lemmas (0) — CLOSED
 
@@ -122,8 +126,9 @@ Expected output:
   Quot.sound,                           -- Standard Lean
   Q3.Weil_criterion,                    -- Level 1: Weil 1952
   Q3.Schur_test,                        -- Level 1: Analysis
-  Q3.A1_density_WK_axiom,               -- Level 2: Q3 paper
-  Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom -- Level 2: Q3 paper
+  Q3.Proofs.SingleScale.continuous_P_A_shift,                  -- Level 2: Q3 paper
+  Q3.Proofs.SingleScale.rayleigh_basis0_shift_ge_cstar_quarter, -- Level 2: Q3 paper
+  Q3.Proofs.SingleScale.prime_sum_phi_shift_le_cstar_quarter    -- Level 2: Q3 paper
 ]
 ```
 
@@ -153,7 +158,7 @@ Expected output:
               │                     │                     │
     ┌─────────┴─────────┐ ┌────────┴────────┐ ┌─────────┴─────────┐
     │  A1_density_WK    │ │  Q_Lipschitz    │ │ Q_nonneg_on_atoms │
-    │  (Level 2: Q3)    │ │  (THEOREM!)     │ │ (Level 2: Q3)     │
+    │   (THEOREM!)      │ │  (THEOREM!)     │ │   (THEOREM!)      │
     └───────────────────┘ └────────┬────────┘ └─────────┬─────────┘
                                    │                    │
                           ┌────────┴────────┐    ┌─────┴─────┐
