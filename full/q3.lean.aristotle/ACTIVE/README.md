@@ -17,6 +17,7 @@ It uses symlinks so existing paths keep working.
 - workflow.md      -> ../PROJECT_WORKFLOW.md
 - stats.md         -> ../FORMALIZATION_STATS.md
 - chain_status.md  -> ../docs/CHAIN_STATUS.md
+- KNOWLEDGE_BASE.md (this folder) — lightweight index + live facts
 
 ## Maps / Specs / Architecture
 

@@ -10,6 +10,7 @@ Single entry point: read this file at session start.
 2) Use "Current State" and "Active Next Step".
 3) Only open linked files if needed.
 3.5) Chain summary: `docs/CHAIN_STATUS.md` (single-scale t_critical mainline).
+3.6) Knowledge base index: `ACTIVE/KNOWLEDGE_BASE.md` (link-first map).
 4) Documentation discipline: update `docs/INSIGHTS.md` and
    `FORMALIZATION_STATS.md` instead of creating new docs.
 5) **Застрял > 30 мин?** → Запроси Прошку (см. `docs/INSIGHTS.md` секция "Прошка").
