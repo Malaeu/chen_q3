@@ -201,7 +201,7 @@ Standard (3): propext, Classical.choice, Quot.sound
 Project (5):  Weil_criterion, Schur_test,
               SingleScale.continuous_P_A_shift,
               SingleScale.rayleigh_basis0_shift_ge_cstar_quarter,
-              SingleScale.prime_sum_phi_shift_le_cstar_quarter
+              SingleScale.rho_oneK_tcritical_le_cstar_quarter
 ```
 
 **Closed axioms:**

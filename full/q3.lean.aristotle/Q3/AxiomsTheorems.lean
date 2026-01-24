@@ -83,7 +83,7 @@ theorem a_star_even : ∀ ξ : ℝ, Q3.a_star (-ξ) = Q3.a_star ξ :=
 **In main proof chain (`#print axioms RH_of_Weil_and_Q3`):**
 - 3 Q3 PAPER AXIOMS remain (single‑scale): `SingleScale.continuous_P_A_shift`,
   `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
-  `SingleScale.prime_sum_phi_shift_le_cstar_quarter`
+  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
 - 6 EXTERNAL AXIOMS: `Weil_criterion`, `a_star_*`, `Schur_test`
 
 **Theorem status:**
@@ -227,7 +227,7 @@ end Q3.Theorems
 - 6 External/Classical: `Weil_criterion`, `a_star_pos/continuous/bdd/even`, `Schur_test`
 - 3 Q3 Paper (single‑scale): `SingleScale.continuous_P_A_shift`,
   `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
-  `SingleScale.prime_sum_phi_shift_le_cstar_quarter`
+  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
 
 ## Theorem Wiring Status
 

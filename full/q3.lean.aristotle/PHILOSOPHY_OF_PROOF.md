@@ -93,7 +93,7 @@ These are well-known results. Citations:
 ```
 SingleScale.continuous_P_A_shift                  — continuity of shifted symbol at t_critical
 SingleScale.rayleigh_basis0_shift_ge_cstar_quarter — A3 floor at basis0 (t_critical)
-SingleScale.prime_sum_phi_shift_le_cstar_quarter   — prime cap at t_critical
+SingleScale.rho_oneK_tcritical_le_cstar_quarter    — numeric cap for prime sum via t‑bridge
 ```
 These are the current single‑scale assumptions used to close the chain without the
 two‑scale mismatch. They are intended to be replaced by proofs.
@@ -128,7 +128,7 @@ Expected output:
   Q3.Schur_test,                        -- Level 1: Analysis
   Q3.Proofs.SingleScale.continuous_P_A_shift,                  -- Level 2: Q3 paper
   Q3.Proofs.SingleScale.rayleigh_basis0_shift_ge_cstar_quarter, -- Level 2: Q3 paper
-  Q3.Proofs.SingleScale.prime_sum_phi_shift_le_cstar_quarter    -- Level 2: Q3 paper
+  Q3.Proofs.SingleScale.rho_oneK_tcritical_le_cstar_quarter     -- Level 2: Q3 paper
 ]
 ```
 

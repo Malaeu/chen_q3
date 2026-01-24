@@ -64,7 +64,7 @@ Result: **8 axioms** (5 project + 3 standard)
 - Level 1 (Classical Literature): `Weil_criterion`, `Schur_test`
 - Level 2 (Q3 Paper, single‑scale): `SingleScale.continuous_P_A_shift`,
   `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
-  `SingleScale.prime_sum_phi_shift_le_cstar_quarter`
+  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
 
 **Closed axioms (history):**
 - `a_star_pos` → closed via positivity (2026-01-21)
@@ -205,7 +205,7 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
 | `Schur_test` | External (classical) | L2 vs L∞ mismatch | Classical result, keep as axiom | **EXTERNAL** |
 | `SingleScale.continuous_P_A_shift` | `Q3/Proofs/SingleScale_Assumptions.lean` | single‑scale continuity proof missing | Prove continuity at `t_critical` | **AXIOM** |
 | `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | A3 floor at `t_critical` | Prove Rayleigh lower bound for shifted symbol | **AXIOM** |
-| `SingleScale.prime_sum_phi_shift_le_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | prime cap at `t_critical` | Prove weight‑sum cap at `t_critical` | **AXIOM** |
+| `SingleScale.rho_oneK_tcritical_le_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | prime cap via t‑bridge | Prove numeric bound `exp_tcrit_to_rkhs * rho_oneK ≤ c*/4` | **AXIOM** |
 
 ## Progress Log (2026-01-16)
 
