@@ -70,6 +70,18 @@ theorem rayleigh_basis0_shift_ge_cstar_quarter_of_floor
     nlinarith [Q3.c_star_pos]
   exact le_trans h_quarter hRQ_full
 
+lemma floor_P_A_shift_tcritical_Bmin
+    (h_floor : Q3.Proofs.A3FloorCritical.FloorGoal) :
+    ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
+      Q3.c_star ≤ Q3.P_A_shift B_min t_critical 0 θ := by
+  intro θ hθ
+  have h' := h_floor θ hθ
+  have h_eq : Q3.P_A_shift B_min t_critical 0 = P_A B_min t_critical := by
+    ext t
+    simp [Q3.P_A_shift, P_A, Q3.g_shift, Q3.phi_shift, g,
+      Q3.Proofs.RayleighQId.w_eq_fejer_heat_window]
+  simpa [h_eq] using h'
+
 /-! ### Reduction: rayleigh_basis0 from arch_term at t_critical (Option 2) -/
 
 theorem rayleigh_basis0_shift_ge_cstar_quarter_of_arch_term
@@ -117,6 +129,17 @@ theorem rayleigh_basis0_shift_ge_cstar_quarter
       Q3.arch_term (fun ξ => Q3.phi_shift B t_critical 0 ξ) ≥ Q3.c_star := by
     simpa using h_arch'
   exact rayleigh_basis0_shift_ge_cstar_quarter_of_arch_term (B:=B) (M:=M) hB h_arch
+
+theorem rayleigh_basis0_shift_ge_cstar_quarter_Bmin
+    (M : ℕ) (h_floor : Q3.Proofs.A3FloorCritical.FloorGoal) :
+    Q3.RayleighQuotient
+        (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1)
+          (Q3.P_A_shift B_min t_critical 0))
+        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star / 4 := by
+  have hB : 0 < B_min := by
+    norm_num [B_min]
+  have h_floor' := floor_P_A_shift_tcritical_Bmin h_floor
+  exact rayleigh_basis0_shift_ge_cstar_quarter (B:=B_min) (M:=M) hB h_floor'
 
 /-! ## Single-scale prime cap (tau = 0 mainline) -/
 
