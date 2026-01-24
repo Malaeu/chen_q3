@@ -10,6 +10,13 @@
 > - `ACTIVE/Q3_BLOCK_MAP.md`
 > - `ACTIVE/ERS_SUMMARY.md` (консолидированный ERS‑обзор)
 
+## Конфликты с mainline (single‑scale)
+
+- В этом файле используется `t_sym = 3/50` и `t_rkhs_cap` как две шкалы; mainline теперь **single‑scale** (`t_critical = 3/20`).
+- ERS‑критичность построена на uniform‑A3; mainline опирается на **SingleScale** аксиомы
+  (`continuous_P_A_shift`, `rayleigh_basis0_shift_ge_cstar_quarter`, `rho_oneK_tcritical_le_cstar_quarter`).
+- Конус со сдвигами (τ≠0) здесь фигурирует как общий; mainline фиксирует **τ=0**.
+
 ## Обзор публикации
 
 **Название**: Operator Methods for the Weil Criterion: Q3  

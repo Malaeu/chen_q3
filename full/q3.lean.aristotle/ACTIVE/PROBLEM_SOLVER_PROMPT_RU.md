@@ -71,6 +71,15 @@
 
 ---
 
+## 3.1 Мини‑пример (формат ответа)
+
+### Шаг N — A2 (Lipschitz Q на W_K)
+Reasoning: В `Q3/Proofs/Q_Lipschitz.lean` доказано `Q_Lipschitz_on_W_K_thm`,
+а в `Q3/AxiomsTheorems.lean` это заведено как `Q3.Theorems.Q_Lipschitz`.
+Это даёт липшицевость на каждом W_K, значит перенос знака по пределу работает.
+Источник: `Q3/Proofs/Q_Lipschitz.lean`, `Q3/AxiomsTheorems.lean`.
+Conclusion: A2 закрыт как теорема в mainline.
+
 ## 4) Канонические факты (mainline)
 
 Эти элементы считаются **истиной** для текущей ветки:
