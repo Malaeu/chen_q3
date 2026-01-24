@@ -9,9 +9,10 @@ Keep this file short. Put details in linked docs.
 2) `ACTIVE/chain_status.md` — single-scale chain summary
 3) `ACTIVE/insights.md` — live insights index (links only)
 4) `ACTIVE/workflow.md` — workflow rules
-5) `ACTIVE/SPECS_INDEX.md` — curated spec pointers + constants checklist
-6) `ACTIVE/Q3_BLOCK_MAP.md` — Lean ↔ paper block map
-7) `ACTIVE/ERS_SUMMARY.md` — consolidated ERS legacy summary
+5) `ACTIVE/tree.md` — navigation tree (what depends on what)
+6) `ACTIVE/SPECS_INDEX.md` — curated spec pointers + constants checklist
+7) `ACTIVE/Q3_BLOCK_MAP.md` — Lean ↔ paper block map
+8) `ACTIVE/ERS_SUMMARY.md` — consolidated ERS legacy summary
 
 Note: spec sources are legacy/background. For mainline decisions, return to
 `ACTIVE/chain_status.md` and `ACTIVE/orchestrator.md`.

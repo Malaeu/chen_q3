@@ -18,6 +18,7 @@ It uses symlinks so existing paths keep working.
 - stats.md         -> ../FORMALIZATION_STATS.md
 - chain_status.md  -> ../docs/CHAIN_STATUS.md
 - KNOWLEDGE_BASE.md (this folder) — lightweight index + live facts
+- tree.md (this folder) — navigation tree (dependencies at a glance)
 - SPECS_INDEX.md (this folder) — curated spec pointers + constants checklist
 - Q3_BLOCK_MAP.md (this folder) — Lean ↔ paper block mapping
 - ERS_SUMMARY.md (this folder) — consolidated ERS legacy summary
