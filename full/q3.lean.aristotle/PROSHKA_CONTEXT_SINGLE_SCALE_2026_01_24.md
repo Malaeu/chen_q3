@@ -1,5 +1,5 @@
 # PROSHKA CONTEXT PACK
-Generated: 2026-01-24 16:21:23
+Generated: 2026-01-24 17:18:39
 Repo: /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2
 
 This pack is intended for Proshka. It inlines key files and recent git context.
@@ -8,10 +8,13 @@ This pack is intended for Proshka. It inlines key files and recent git context.
 ## Git status
 
 ## projekt_2A
+ M full/q3.lean.aristotle/PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md
 
 
 ## Git log
 
+76541dc [projekt_2A][AI-codex] add ralph loop + plan sweep
+ccd7a99 [projekt_2A][AI-codex] single-scale paper sweep
 c2f2c33 [projekt_2A][AI-codex] proshka brief clarity
 8af492d [projekt_2A][AI-codex] proshka mission framing
 dc8893f [projekt_2A][AI-codex] proshka rules + aristotle requests
@@ -50,8 +53,6 @@ b4d0985 [projekt_2A][AI-codex] Wire RKHS cap through C1 kernel dict
 adacbda [2026-01-23][linux][AI-codex] One-scale A3 bridge scaffolding + generic weight_sum cap
 65654a8 [2026-01-23][linux][AI-codex] Clarify git-vs-proof branches + parallel streams
 6baeee4 [2026-01-23][linux][AI-codex] Add Aristotle task: Gaussian RKHS kernel integral identity
-ee52922 [2026-01-23][linux][AI-codex] RKHS eval→inner bridge cleanup + INSIGHTS update
-7970386 [2026-01-23][linux][AI-codex] One-scale t_critical params + hA decision-tree tooling
 
 
 ## File: full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
@@ -80,6 +81,8 @@ Note: spec sources are legacy/background. For mainline decisions, return to
   - `t_critical = 3/20`
   - base-atom cone with `tau = 0`
 - Canonical summary: `ACTIVE/chain_status.md`
+- Paper alignment audit (single-scale vs legacy): `ACTIVE/single_scale_paper_audit.md`
+- Legacy two-scale index: `ACTIVE/legacy_two_scale_index.md`
 
 ## 2) Live axioms (single-scale)
 
@@ -128,6 +131,7 @@ Source of truth:
 ## 6) Knowledge base (external)
 
 - `ACTIVE/aristotle_models_knowledge` — Aristotle model/training knowledge dump
+- `ACTIVE/codex_agent_loop_notes.md` — Codex CLI agent loop notes (OpenAI blog)
 
 ## 7) Editing policy (keep this stable)
 

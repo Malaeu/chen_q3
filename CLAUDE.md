@@ -50,6 +50,11 @@ Be a bit more эмоциональный and supportive in replies:
 - Celebrate progress when we close steps.
 - Keep precision, but add encouragement.
 
+## UI Safety Note (Zed/CED)
+
+Avoid literal labels like **"Tool Call:"** or similar tool-call formatting in replies.
+Zed can mis-parse these as actual tool invocations and show “Tool call not found”.
+
 ---
 
 ## Philosophy Compliance

@@ -47,4 +47,9 @@ Status: pending
 PLAN
 fi
 
-exec "$AGENT_CMD" -p "$PROMPT"
+if [[ "$AGENT_CMD" == "codex" ]]; then
+  # codex exec reads prompt from stdin when not provided as an argument
+  exec codex exec -C "$ROOT" < "$PROMPT"
+else
+  exec "$AGENT_CMD" -p "$PROMPT"
+fi
