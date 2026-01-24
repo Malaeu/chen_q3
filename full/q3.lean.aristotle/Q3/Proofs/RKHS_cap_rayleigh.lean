@@ -848,6 +848,48 @@ lemma T_P_comp_real_opNorm_le_weight_sum (K B t : ℝ) (M : ℕ) [Fintype (Q3.No
     (C:=∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖)
     hC_nonneg hrow
 
+/-! ### C1 compression identity (dictionary embedding) -/
+
+/-- C1 identity: `T_P_comp_real` is the compression of its lifted operator along the
+dictionary embedding. This is the formal “compression identity” used below. -/
+lemma T_P_comp_real_eq_compression_lift_dict
+    (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+    {n : ℕ} (d : Fin n → H)
+    (hdim : Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1) :
+    let ι :=
+      Q3.Proofs.C1Embedding.dictEmbeddingCast (𝕜 := ℝ) (d := d) (m := 2 * M + 1) hdim
+    let A :
+        (EuclideanSpace ℝ (Fin (2 * M + 1))) →L[ℝ]
+          (EuclideanSpace ℝ (Fin (2 * M + 1))) :=
+        (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t M)).toContinuousLinearMap
+    let T : H →L[ℝ] H := ι.toContinuousLinearMap.comp (A.comp ι.toContinuousLinearMap.adjoint)
+    (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t M)).toContinuousLinearMap =
+      Q3.Proofs.C1Embedding.compression ι T := by
+  classical
+  simpa using
+    (T_P_comp_real_eq_compression_lift_of_dictEmbedding (K := K) (B := B) (t := t) (M := M)
+      (d := d) (hdim := hdim))
+
+/-- C1 corollary (lifted operator): `‖T_P_comp_real‖ ≤ ‖T‖` for the compression lift. -/
+lemma T_P_comp_real_opNorm_le_lift_dict
+    (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+    {n : ℕ} (d : Fin n → H)
+    (hdim : Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1) :
+    let ι :=
+      Q3.Proofs.C1Embedding.dictEmbeddingCast (𝕜 := ℝ) (d := d) (m := 2 * M + 1) hdim
+    let A :
+        (EuclideanSpace ℝ (Fin (2 * M + 1))) →L[ℝ]
+          (EuclideanSpace ℝ (Fin (2 * M + 1))) :=
+        (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t M)).toContinuousLinearMap
+    let T : H →L[ℝ] H := ι.toContinuousLinearMap.comp (A.comp ι.toContinuousLinearMap.adjoint)
+    ‖A‖ ≤ ‖T‖ := by
+  classical
+  simpa using
+    (T_P_comp_real_opNorm_le_lift_of_dictEmbedding (K := K) (B := B) (t := t) (M := M)
+      (d := d) (hdim := hdim))
+
 lemma T_P_comp_real_opNorm_le_via_C1_dictEmbedding
     (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]

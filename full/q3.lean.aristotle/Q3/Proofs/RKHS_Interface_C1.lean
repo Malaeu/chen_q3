@@ -180,5 +180,45 @@ theorem T_P_comp_toCLM_eq_compression
   have hx := congrArg (fun f => f x) hlin
   simpa using congrArg (fun y => y i) hx
 
+/-! ### BasisFun model (machine-friendly `h_eval`) -/
+
+section BasisFunModel
+
+noncomputable def psi_basis : mDim → E :=
+  fun i => EuclideanSpace.basisFun mDim ℂ i
+
+noncomputable def k_basis : Q3.Nodes K → E :=
+  fun n => fun i => Q3.prime_vec M (Q3.xi_n n) i
+
+lemma psi_basis_orthonormal : Orthonormal ℂ (psi_basis (M := M)) := by
+  classical
+  change Orthonormal ℂ (fun i => EuclideanSpace.basisFun mDim ℂ i)
+  exact (EuclideanSpace.basisFun mDim ℂ).orthonormal
+
+lemma h_eval_basisFun :
+    ∀ (n : Q3.Nodes K) (i : mDim),
+      inner ℂ (psi_basis (M := M) i) (k_basis (K := K) (M := M) n) =
+        Q3.prime_vec M (Q3.xi_n n) i := by
+  classical
+  intro n i
+  simpa [psi_basis, k_basis] using
+    (EuclideanSpace.basisFun_inner (𝕜 := ℂ) (ι := mDim)
+      (x := k_basis (K := K) (M := M) n) i)
+
+/-- With `ψ = basisFun` and `k n = prime_vec`, the compression identity is by simp. -/
+lemma T_P_comp_toCLM_eq_compression_basisFun :
+    (Matrix.toEuclideanLin (Q3.T_P_comp K B t M)).toContinuousLinearMap =
+      compression (ι := iota (H := E) (M := M) (ψ := psi_basis (M := M))
+          (psi_basis_orthonormal (M := M)))
+        (T := T_P_RKHS_like (H := E) (K := K) (B := B) (t := t)
+          (k := k_basis (K := K) (M := M))) := by
+  classical
+  simpa using
+    (T_P_comp_toCLM_eq_compression (H := E) (K := K) (B := B) (t := t) (M := M)
+      (ψ := psi_basis (M := M)) (hψ := psi_basis_orthonormal (M := M))
+      (k := k_basis (K := K) (M := M)) (h_eval := h_eval_basisFun (K := K) (M := M)))
+
+end BasisFunModel
+
 end RKHSInterfaceC1
 end Q3.Proofs
