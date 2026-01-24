@@ -222,10 +222,11 @@ end Q3.Theorems
 
 ## Main Proof Chain: `#print axioms RH_of_Weil_and_Q3`
 
-**11 axioms total:**
+**Axiom dependencies (run `#print axioms RH_of_Weil_and_Q3` to refresh):**
 - 3 Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - 6 External/Classical: `Weil_criterion`, `a_star_pos/continuous/bdd/even`, `Schur_test`
-- 3 Q3 Paper (single‑scale): `SingleScale.continuous_P_A_shift`,
+- 3 Q3 Paper (single‑scale) are now theorems (not axioms):
+  `SingleScale.continuous_P_A_shift`,
   `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
   `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
 

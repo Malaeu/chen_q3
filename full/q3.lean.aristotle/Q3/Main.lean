@@ -169,9 +169,9 @@ This theorem depends on:
 - Weil_criterion (Weil 1952)
 
 **Tier-2 (Q3 Paper, single‑scale):**
-- SingleScale.continuous_P_A_shift
-- SingleScale.rayleigh_basis0_shift_ge_cstar_quarter
-- SingleScale.rho_oneK_tcritical_le_cstar_quarter
+- SingleScale.continuous_P_A_shift (theorem)
+- SingleScale.rayleigh_basis0_shift_ge_cstar_quarter (theorem; uses arch_term @ t_critical)
+- SingleScale.rho_oneK_tcritical_le_cstar_quarter (theorem)
 **Theorems (now closed):**
 - A1_density_WK: atoms dense in W_K
 - Q_Lipschitz_on_W_K: Q is Lipschitz
@@ -200,7 +200,7 @@ theorem RH_of_Weil_and_Q3 : Q3.RH := by
 -- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
 -- Standard: propext, Classical.choice, Quot.sound
 -- Tier-1: Q3.Weil_criterion, Q3.Schur_test
--- Tier-2: Q3.Proofs.SingleScale.{continuous_P_A_shift,rayleigh_basis0_shift_ge_cstar_quarter,rho_oneK_tcritical_le_cstar_quarter}
+-- Tier-2: Q3.Proofs.SingleScale.{continuous_P_A_shift,rayleigh_basis0_shift_ge_cstar_quarter,rho_oneK_tcritical_le_cstar_quarter} (all theorems)
 --
 -- KEY IMPROVEMENTS:
 -- - Q_Lipschitz_on_W_K is now a THEOREM (uses arch/prime bridge axioms)!

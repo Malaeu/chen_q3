@@ -3,6 +3,7 @@ import Q3.Proofs.Q_nonneg_t_critical
 import Q3.Proofs.Rayleigh_Q_identification
 import Q3.Proofs.RKHS_cap_rayleigh
 import Q3.Proofs.ShiftedWindows
+import Q3.Proofs.A3_Floor_Critical_Goal
 
 set_option linter.mathlibStandardSet false
 
@@ -28,12 +29,92 @@ theorem continuous_P_A_shift (B tau : ℝ) (hB : 0 < B) :
 
 /-! ## A3-style lower bound at basis0 (tau = 0 mainline) -/
 
-axiom rayleigh_basis0_shift_ge_cstar_quarter
-    (B : ℝ) (M : ℕ) :
+/-! ### Reduction: rayleigh_basis0 from the one-scale floor -/
+
+theorem rayleigh_basis0_shift_ge_cstar_quarter_of_floor
+    (B : ℝ) (M : ℕ) (hBmin : B = B_min)
+    (h_floor : Q3.Proofs.A3FloorCritical.FloorGoal) :
     Q3.RayleighQuotient
         (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1)
           (Q3.P_A_shift B t_critical 0))
-        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star / 4
+        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star / 4 := by
+  classical
+  subst hBmin
+  have h_eq : Q3.P_A_shift B_min t_critical 0 = P_A B_min t_critical := by
+    ext θ
+    simp [Q3.P_A_shift, P_A, Q3.g_shift, Q3.phi_shift, g,
+      Q3.Proofs.RayleighQId.w_eq_fejer_heat_window]
+  have hB_pos : 0 < B_min := by
+    norm_num [B_min]
+  have hP_cont : Continuous (Q3.P_A_shift B_min t_critical 0) :=
+    Q3.Proofs.ShiftedWindows.P_A_shift_continuous (B:=B_min) (t:=t_critical) (tau:=0) hB_pos
+  have hM : (2 * M + 1) > 0 := by
+    exact Nat.succ_pos _
+  have hRQ_full :
+      Q3.RayleighQuotient
+          (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1)
+            (Q3.P_A_shift B_min t_critical 0))
+          (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star := by
+    have hP_ge : ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
+        Q3.c_star ≤ Q3.P_A_shift B_min t_critical 0 θ := by
+      intro θ hθ
+      have h' := h_floor θ hθ
+      simpa [h_eq] using h'
+    exact RayleighFourier.rayleigh_lower_bound_real
+      (M := 2 * M + 1) (hM := hM)
+      (P := Q3.P_A_shift B_min t_critical 0) (hP_cont := hP_cont)
+      (m := Q3.c_star) (hP_ge := hP_ge)
+      (v := Q3.Proofs.RayleighQId.basis0 M)
+      (hv := Q3.Proofs.RayleighQId.basis0_ne_zero M)
+  have h_quarter : Q3.c_star / 4 ≤ Q3.c_star := by
+    nlinarith [Q3.c_star_pos]
+  exact le_trans h_quarter hRQ_full
+
+/-! ### Reduction: rayleigh_basis0 from arch_term at t_critical (Option 2) -/
+
+theorem rayleigh_basis0_shift_ge_cstar_quarter_of_arch_term
+    (B : ℝ) (M : ℕ) (hB : 0 < B)
+    (h_arch : Q3.arch_term (fun ξ => Q3.phi_shift B t_critical 0 ξ) ≥ Q3.c_star) :
+    Q3.RayleighQuotient
+        (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1)
+          (Q3.P_A_shift B t_critical 0))
+        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star / 4 := by
+  have hP_cont : Continuous (Q3.P_A_shift B t_critical 0) :=
+    Q3.Proofs.ShiftedWindows.P_A_shift_continuous (B:=B) (t:=t_critical) (tau:=0) hB
+  have h_eq :
+      Q3.RayleighQuotient
+        (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1)
+          (Q3.P_A_shift B t_critical 0))
+        (Q3.Proofs.RayleighQId.basis0 M)
+        =
+      Q3.arch_term (fun ξ => Q3.phi_shift B t_critical 0 ξ) := by
+    simpa using
+      (Q3.Proofs.RayleighQId.arch_rayleigh_eq_shift
+        (B:=B) (t:=t_critical) (tau:=0) (M:=M) hP_cont hB)
+  have hRQ_full :
+      Q3.RayleighQuotient
+        (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1)
+          (Q3.P_A_shift B t_critical 0))
+        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star := by
+    simpa [h_eq] using h_arch
+  have h_quarter : Q3.c_star / 4 ≤ Q3.c_star := by
+    nlinarith [Q3.c_star_pos]
+  exact le_trans h_quarter hRQ_full
+
+theorem rayleigh_basis0_shift_ge_cstar_quarter
+    (B : ℝ) (M : ℕ) (hB : 0 < B) :
+    Q3.RayleighQuotient
+        (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1)
+          (Q3.P_A_shift B t_critical 0))
+        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star / 4 := by
+  have h_arch' :
+      Q3.arch_term (fun ξ => Q3.phi_shift B t_critical 0 ξ) ≥
+        Q3.c_star * (1 - |(0 : ℝ)| / B) := by
+    simpa using (Q3.arch_term_ge_at_t_critical (B:=B) (τ:=0) hB)
+  have h_arch :
+      Q3.arch_term (fun ξ => Q3.phi_shift B t_critical 0 ξ) ≥ Q3.c_star := by
+    simpa using h_arch'
+  exact rayleigh_basis0_shift_ge_cstar_quarter_of_arch_term (B:=B) (M:=M) hB h_arch
 
 /-! ## Single-scale prime cap (tau = 0 mainline) -/
 
