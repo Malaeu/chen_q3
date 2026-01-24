@@ -8,6 +8,7 @@
 > - `ACTIVE/chain_status.md`
 > - `ACTIVE/SPECS_INDEX.md`
 > - `ACTIVE/Q3_BLOCK_MAP.md`
+> - `ACTIVE/ERS_SUMMARY.md` (консолидированный ERS‑обзор)
 
 ## Обзор
 

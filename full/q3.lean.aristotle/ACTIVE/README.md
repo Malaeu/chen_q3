@@ -20,6 +20,9 @@ It uses symlinks so existing paths keep working.
 - KNOWLEDGE_BASE.md (this folder) — lightweight index + live facts
 - SPECS_INDEX.md (this folder) — curated spec pointers + constants checklist
 - Q3_BLOCK_MAP.md (this folder) — Lean ↔ paper block mapping
+- ERS_SUMMARY.md (this folder) — consolidated ERS legacy summary
+- PROBLEM_SOLVER_PROMPT_RU.md (this folder) — prompt for chain reconstruction
+- problem_solver_prompt.md -> ../ACTIVE/PROBLEM_SOLVER_PROMPT_RU.md
 
 ## Maps / Specs / Architecture
 

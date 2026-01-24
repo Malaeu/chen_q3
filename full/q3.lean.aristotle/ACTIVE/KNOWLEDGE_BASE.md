@@ -11,6 +11,7 @@ Keep this file short. Put details in linked docs.
 4) `ACTIVE/workflow.md` — workflow rules
 5) `ACTIVE/SPECS_INDEX.md` — curated spec pointers + constants checklist
 6) `ACTIVE/Q3_BLOCK_MAP.md` — Lean ↔ paper block map
+7) `ACTIVE/ERS_SUMMARY.md` — consolidated ERS legacy summary
 
 Note: spec sources are legacy/background. For mainline decisions, return to
 `ACTIVE/chain_status.md` and `ACTIVE/orchestrator.md`.

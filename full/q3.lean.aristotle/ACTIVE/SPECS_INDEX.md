@@ -13,6 +13,8 @@ Keep this short; details stay in linked docs.
   - Source: process insights from FormalizingRiemannHypothesis.
 - `spec_high_ers_constants.md`
   - Source: ERS-based critical constants (t_sym/t_rkhs era).
+- `ERS_SUMMARY.md`
+  - Consolidated ERS overview (legacy).
 
 These four are **inputs/legacy**. They are useful for background but are not
 canonical for the current single-scale chain. Use `ACTIVE/chain_status.md`
