@@ -21,7 +21,7 @@ LaTeX <-> Lean parameter conversion:
 
 import Q3.Axioms
 import Q3.Proofs.Params_Critical
-import Q3.Proofs.A3_Floor_Bounds
+import A3_FLOOR_v20_bounds_core
 import Q3.Proofs.ShiftedWindows
 
 set_option linter.mathlibStandardSet false

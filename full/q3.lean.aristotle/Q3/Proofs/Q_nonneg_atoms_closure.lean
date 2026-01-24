@@ -22,6 +22,7 @@ import Q3.Proofs.Rayleigh_Q_identification
 import Q3.Proofs.Rayleigh_basis0_of_A3
 import Q3.Proofs.Q_nonneg_atoms_helpers
 import Q3.Proofs.Q_nonneg_lemmas
+import Q3.Proofs.Q_nonneg_t_critical
 import Q3.Proofs.P_A_Toeplitz_bridge
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.SingleScale_Assumptions
@@ -59,66 +60,11 @@ The key is to connect:
 -/
 theorem Q_nonneg_phi_shift_tsym (K B τ : ℝ) [Fintype (Nodes K)]
     (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K)
-    (hA3 : Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K) :
+    (_hA3 : Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K) :
     Q (fun ξ => phi_shift B t_main τ ξ) ≥ 0 := by
-  classical
-  -- Single-scale closure: use basis0 Rayleigh lower bound + single-scale prime cap.
-  have hM : (0 : ℕ) < 2 * 0 + 1 := by decide
-  have hP : Continuous (Q3.P_A_shift B t_main τ) := by
-    simpa [t_main] using (continuous_P_A_shift B τ hB)
-  have hQ_eq :
-      Q (fun ξ => phi_shift B t_main τ ξ) =
-        Q3.RayleighQuotient
-          (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * (0 : ℕ) + 1)
-            (Q3.P_A_shift B t_main τ))
-          (Q3.Proofs.RayleighQId.basis0 0) -
-        (2 * (0 : ℕ) + 1 : ℝ) *
-          Q3.RayleighQuotient
-            (Q3.T_P_comp_real_shift K B t_main τ 0)
-            (Q3.Proofs.RayleighQId.basis0 0) := by
-    simpa using
-      (Q3.Proofs.RayleighQId.rayleigh_Q_eq_Q_shift
-        (B:=B) (t:=t_main) (tau:=τ) (K:=K) (M:=0) hB hτB hP hM).symm
-  have hprime :
-      (2 * (0 : ℕ) + 1 : ℝ) *
-          Q3.RayleighQuotient
-            (Q3.T_P_comp_real_shift K B t_main τ 0)
-            (Q3.Proofs.RayleighQId.basis0 0) =
-        ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_main τ (Q3.xi_n n) := by
-    simpa using
-      (Q3.Proofs.RayleighQId.prime_rayleigh_eq_shift
-        (K:=K) (B:=B) (t:=t_main) (tau:=τ) (M:=0) hM)
-  have hprime' :
-      Q3.RayleighQuotient
-        (Q3.T_P_comp_real_shift K B t_main τ 0)
-        (Q3.Proofs.RayleighQId.basis0 0) =
-      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_main τ (Q3.xi_n n) := by
-    simpa using hprime
-  have hQ_eq' :
-      Q (fun ξ => phi_shift B t_main τ ξ) =
-        Q3.RayleighQuotient
-          (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * (0 : ℕ) + 1)
-            (Q3.P_A_shift B t_main τ))
-          (Q3.Proofs.RayleighQId.basis0 0) -
-        ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_main τ (Q3.xi_n n) := by
-    simpa [hprime'] using hQ_eq
-  have hRQ :
-      Q3.RayleighQuotient
-          (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * (0 : ℕ) + 1)
-            (Q3.P_A_shift B t_main τ))
-          (Q3.Proofs.RayleighQId.basis0 0) ≥ Q3.c_star / 4 := by
-    simpa [t_main] using
-      (rayleigh_basis0_shift_ge_cstar_quarter (K:=K) (B:=B) (tau:=τ) (M:=0))
-  have hsum :
-      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_main τ (Q3.xi_n n)
-        ≤ Q3.c_star / 4 := by
-    simpa [t_main] using
-      (prime_sum_phi_shift_le_cstar_quarter (K:=K) (B:=B) (tau:=τ) hB hτB)
-  have hQ_ge : Q (fun ξ => phi_shift B t_main τ ξ) ≥ 0 := by
-    have htmp : Q (fun ξ => phi_shift B t_main τ ξ) ≥ Q3.c_star / 4 - Q3.c_star / 4 := by
-      nlinarith [hRQ, hsum, hQ_eq']
-    simpa using htmp
-  exact hQ_ge
+  -- Single-scale mainline: delegate to the t_critical proof.
+  simpa [t_main, Q3.phi_shift_critical] using
+    (Q3.Q_phi_shift_nonneg_t_critical K B τ hK hB hτB)
 
 /-! ## Step 2: Fejer_heat_atom decomposition
 
