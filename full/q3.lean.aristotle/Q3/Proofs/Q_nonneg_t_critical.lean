@@ -26,6 +26,8 @@ import Q3.Proofs.FloorCert.Defs
 import Q3.Proofs.FloorCert.Grid_2219
 import Q3.Proofs.FloorCert.Lipschitz_2219
 import Q3.Proofs.PrimeCert.Defs
+import Q3.Proofs.PrimeCert.Bmin_1826
+import Q3.Proofs.PrimeCert.Brange_2046
 import Q3.Proofs.ShiftedWindows
 import Q3.Proofs.Q_nonneg_atoms_helpers
 import Q3.Proofs.Q_nonneg_lemmas
@@ -323,37 +325,29 @@ lemma arch_term_ge_at_t_critical (B τ : ℝ) (hB : B > 0)
 Prime certificate constants and basic lemmas live in `Q3.Proofs.PrimeCert.Defs`.
 -/
 
-/-- Prime-term certificate (tau = 0, B = B_min): prime_term ≤ prime_cert_prime_ub. -/
-axiom prime_term_cert_on_Bmin_tau0 :
-    prime_term (fun ξ => phi_shift_critical B_min 0 ξ) ≤ prime_cert_prime_ub
-
-/-- Arch-term certificate (tau = 0, B = B_min): prime_cert_arch_lb ≤ arch_term. -/
-axiom arch_term_cert_on_Bmin_tau0 :
-    prime_cert_arch_lb ≤ arch_term (fun ξ => phi_shift_critical B_min 0 ξ)
-
 /-- Prime-term ≤ arch-term at t_critical for B = B_min, τ = 0 (certificate-based). -/
 lemma prime_term_le_at_t_critical_Bmin_tau0 :
     prime_term (fun ξ => phi_shift_critical B_min 0 ξ) ≤
       arch_term (fun ξ => phi_shift_critical B_min 0 ξ) := by
-  have h1 := prime_term_cert_on_Bmin_tau0
+  have h1 :
+      prime_term (fun ξ => phi_shift_critical B_min 0 ξ) ≤ prime_cert_prime_ub := by
+    simpa [phi_shift_critical] using prime_term_cert_on_Bmin_tau0
   have h2 := prime_cert_ub_le_arch_lb
-  have h3 := arch_term_cert_on_Bmin_tau0
+  have h3 :
+      prime_cert_arch_lb ≤ arch_term (fun ξ => phi_shift_critical B_min 0 ξ) := by
+    simpa [phi_shift_critical] using arch_term_cert_on_Bmin_tau0
   exact le_trans h1 (le_trans h2 h3)
-
-/-- Margin certificate on B-range at t_critical (tau = 0).
-    This is the single-scale prime cap over B ∈ [B_min, B_max]. -/
-axiom prime_cert_margin_on_Brange_axiom :
-    ∀ B ∈ Set.Icc B_min prime_cert_B_max,
-      prime_cert_margin_lb ≤
-        arch_term (fun ξ => phi_shift_critical B 0 ξ) -
-          prime_term (fun ξ => phi_shift_critical B 0 ξ)
 
 /-- prime_term ≤ arch_term for B ∈ [B_min, B_max] (tau = 0), from margin cert. -/
 lemma prime_term_le_arch_term_on_Brange_tau0
     (B : ℝ) (hB : B ∈ Set.Icc B_min prime_cert_B_max) :
     prime_term (fun ξ => phi_shift_critical B 0 ξ) ≤
       arch_term (fun ξ => phi_shift_critical B 0 ξ) := by
-  have h := prime_cert_margin_on_Brange_axiom B hB
+  have h :
+      prime_cert_margin_lb ≤
+        arch_term (fun ξ => phi_shift_critical B 0 ξ) -
+          prime_term (fun ξ => phi_shift_critical B 0 ξ) := by
+    simpa [phi_shift_critical] using prime_cert_margin_on_Brange_axiom B hB
   have h0 : 0 ≤ prime_cert_margin_lb := le_of_lt prime_cert_margin_pos
   linarith
 
