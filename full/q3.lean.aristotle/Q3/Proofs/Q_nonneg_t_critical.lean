@@ -24,6 +24,7 @@ import Q3.Proofs.Params_Critical
 import Q3.Proofs.A3_Floor_Main
 import Q3.Proofs.FloorCert.Defs
 import Q3.Proofs.FloorCert.Grid_2219
+import Q3.Proofs.FloorCert.Lipschitz_2219
 import Q3.Proofs.ShiftedWindows
 import Q3.Proofs.Q_nonneg_atoms_helpers
 import Q3.Proofs.Q_nonneg_lemmas
@@ -111,14 +112,6 @@ lemma sub_floor_add_half_mem_Icc (θ : ℝ) :
   ·
     have : θ - (Int.floor (θ + 1/2) : ℤ) < 1/2 := by nlinarith
     exact le_of_lt this
-
-/-- Lipschitz certificate on the fundamental domain. -/
-axiom P_A_Lipschitz_on_Icc_cert :
-    ∀ x y,
-      x ∈ Set.Icc (-1/2 : ℝ) (1/2) →
-      y ∈ Set.Icc (-1/2 : ℝ) (1/2) →
-      |P_A B_min t_critical x - P_A B_min t_critical y| ≤
-        floor_cert_L_ub * |x - y|
 
 /-- Grid cover certificate: every θ in Icc is within h/2 of some grid point. -/
 lemma floor_cert_grid_cover_cert :
