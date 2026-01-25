@@ -166,6 +166,9 @@ Fill TODOs as we refine each request.
 ## rho
 - rho_oneK_tcritical_le_cstar_quarter: `requests/rho_onek_tcritical_le_cstar_quarter/node.md`
 
+## prime cap
+- proshka_prime_cap_tcritical_2026_01_25: `requests/proshka_prime_cap_tcritical_2026_01_25/node.md`
+
 ## RKHS
 - RKHS_cap_rayleigh: `requests/rkhs_cap_rayleigh/node.md`
 - RKHS_cap_t1_proshka: `requests/rkhs_cap_t1_proshka/node.md`
