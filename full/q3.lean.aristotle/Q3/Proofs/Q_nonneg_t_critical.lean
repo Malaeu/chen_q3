@@ -21,7 +21,6 @@ LaTeX <-> Lean parameter conversion:
 
 import Q3.Axioms
 import Q3.Proofs.Params_Critical
-import A3_FLOOR_v20_bounds_core
 import Q3.Proofs.A3_Floor_Main
 import Q3.Proofs.ShiftedWindows
 import Q3.Proofs.Q_nonneg_atoms_helpers
@@ -81,7 +80,7 @@ def P_A_critical (B : ℝ) (θ : ℝ) : ℝ :=
 
 /-- Numeric certificate parameters (grid + Lipschitz) for t_critical.
     See docs/insights/floor_cert_tcritical_2026_01_25.md and
-    output/floor_cert_tcritical_2026-01-25_1615.txt. -/
+    output/floor_cert_tcritical_2026-01-25_1919.txt. -/
 def floor_cert_min_lb : ℝ := (83 / 50)
 def floor_cert_L_ub : ℝ := (180 : ℝ)
 def floor_cert_h : ℝ := (1 / 4000 : ℝ)

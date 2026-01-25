@@ -11,7 +11,7 @@
 - `B_min = 3`
 - `t_critical = 3/20 = 0.15`
 - `N = 4000` (grid on `[-1/2, 1/2]`), `h = 1/4000`
-- Precision: 60 digits (mpmath)
+- Precision: 80 digits (mpmath)
 
 **Result (numerical):**
 - `min_grid ≈ 1.66223919518145`
@@ -23,7 +23,7 @@
 
 **Artifacts:**
 - Script: `scripts/pa_floor_cert.py`
-- Output: `output/floor_cert_tcritical_2026-01-25_1615.txt`
+- Output: `output/floor_cert_tcritical_2026-01-25_1919.txt`
 
 **Lean integration plan:**
 - Use conservative rational bounds: `min_grid ≥ 83/50`, `L ≤ 180`, `h = 1/4000`.
