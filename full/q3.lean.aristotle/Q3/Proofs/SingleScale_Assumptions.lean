@@ -20,6 +20,16 @@ namespace Q3.Proofs.SingleScale
 
 open Q3
 
+/-! ## Single-scale floor at t_critical (from certificate) -/
+
+theorem A3_floor : Q3.Proofs.A3FloorCritical.FloorGoal := by
+  intro θ hθ
+  have h := Q3.P_A_ge_c_star_at_t_critical (θ := θ)
+  have h_eq : Q3.P_A_critical B_min θ = P_A B_min t_critical θ := by
+    simp [Q3.P_A_critical, Q3.P_A_shift, P_A, Q3.g_shift, Q3.phi_shift, g,
+      Q3.Proofs.RayleighQId.w_eq_fejer_heat_window]
+  simpa [h_eq] using h
+
 /-! ## Continuity of the shifted symbol (single-scale) -/
 
 theorem continuous_P_A_shift (B tau : ℝ) (hB : 0 < B) :
@@ -140,6 +150,14 @@ theorem rayleigh_basis0_shift_ge_cstar_quarter_Bmin
     norm_num [B_min]
   have h_floor' := floor_P_A_shift_tcritical_Bmin h_floor
   exact rayleigh_basis0_shift_ge_cstar_quarter (B:=B_min) (M:=M) hB h_floor'
+
+theorem rayleigh_basis0_shift_ge_cstar_quarter_Bmin_from_floor
+    (M : ℕ) :
+    Q3.RayleighQuotient
+        (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1)
+          (Q3.P_A_shift B_min t_critical 0))
+        (Q3.Proofs.RayleighQId.basis0 M) ≥ Q3.c_star / 4 := by
+  exact rayleigh_basis0_shift_ge_cstar_quarter_Bmin (M:=M) A3_floor
 
 /-! ## Single-scale prime cap (tau = 0 mainline) -/
 
