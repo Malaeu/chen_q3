@@ -81,13 +81,23 @@ def P_A_critical (B : ℝ) (θ : ℝ) : ℝ :=
 /-- Numeric certificate parameters (grid + Lipschitz) for t_critical.
     See docs/insights/floor_cert_tcritical_2026_01_25.md and
     output/floor_cert_tcritical_2026-01-25_2145.txt. -/
+def floor_cert_N : ℕ := 4000
 def floor_cert_min_lb : ℝ := (831 / 500)   -- 1.662
 def floor_cert_L_ub : ℝ := (2493 / 10)    -- 249.3
 def floor_cert_h : ℝ := (1 / 4000 : ℝ)
 
+def floor_grid (i : Fin (floor_cert_N + 1)) : ℝ :=
+  (-1/2 : ℝ) + (i.1 : ℝ) * floor_cert_h
+
 lemma floor_cert_margin_ge_c_star : c_star ≤ floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 := by
   -- 831/500 - (2493/10)*(1/4000)/2 = 1.6308375 > 11/10
   norm_num [c_star, floor_cert_min_lb, floor_cert_L_ub, floor_cert_h]
+
+lemma floor_cert_L_ub_nonneg : 0 ≤ floor_cert_L_ub := by
+  norm_num [floor_cert_L_ub]
+
+lemma floor_cert_h_pos : 0 < floor_cert_h := by
+  norm_num [floor_cert_h]
 
 
 /-- P_A is invariant under integer shifts: P_A(θ + k) = P_A(θ). -/
@@ -114,13 +124,51 @@ lemma sub_floor_add_half_mem_Icc (θ : ℝ) :
     have : θ - (Int.floor (θ + 1/2) : ℤ) < 1/2 := by nlinarith
     exact le_of_lt this
 
-/-- Floor certificate on the fundamental domain (grid + Lipschitz).
-    Certificate source: scripts/floor_cert_tcritical.py + output file.
-    This is the only external numeric trust point for the floor. -/
-axiom P_A_floor_cert_on_Icc_cert :
+/-- Grid certificate: lower bound at grid points. -/
+axiom P_A_floor_cert_on_grid_cert :
+    ∀ i : Fin (floor_cert_N + 1),
+      floor_cert_min_lb ≤ P_A B_min t_critical (floor_grid i)
+
+/-- Lipschitz certificate on the fundamental domain. -/
+axiom P_A_Lipschitz_on_Icc_cert :
+    ∀ x y,
+      x ∈ Set.Icc (-1/2 : ℝ) (1/2) →
+      y ∈ Set.Icc (-1/2 : ℝ) (1/2) →
+      |P_A B_min t_critical x - P_A B_min t_critical y| ≤
+        floor_cert_L_ub * |x - y|
+
+/-- Grid cover certificate: every θ in Icc is within h/2 of some grid point. -/
+axiom floor_cert_grid_cover_cert :
+    ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
+      ∃ i : Fin (floor_cert_N + 1),
+        floor_grid i ∈ Set.Icc (-1/2 : ℝ) (1/2) ∧
+          |θ - floor_grid i| ≤ floor_cert_h / 2
+
+/-! ## Derived floor on Icc from grid + Lipschitz -/
+
+lemma P_A_floor_cert_on_Icc_cert :
     ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
       floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 ≤
-        P_A B_min t_critical θ
+        P_A B_min t_critical θ := by
+  intro θ hθ
+  rcases floor_cert_grid_cover_cert θ hθ with ⟨i, hi_mem, hdist⟩
+  have hgrid : floor_cert_min_lb ≤ P_A B_min t_critical (floor_grid i) :=
+    P_A_floor_cert_on_grid_cert i
+  have hLip :
+      |P_A B_min t_critical θ - P_A B_min t_critical (floor_grid i)| ≤
+        floor_cert_L_ub * |θ - floor_grid i| := by
+    simpa [sub_eq_add_neg, abs_sub_comm] using
+      (P_A_Lipschitz_on_Icc_cert θ (floor_grid i) hθ hi_mem)
+  have hLip_lower :
+      P_A B_min t_critical (floor_grid i) - floor_cert_L_ub * |θ - floor_grid i| ≤
+        P_A B_min t_critical θ := by
+    have h' := (abs_sub_le_iff).1 hLip
+    -- h'.2: P_A(grid) - P_A(θ) ≤ L*|θ-grid|
+    nlinarith [h'.2]
+  have hdist' :
+      floor_cert_L_ub * |θ - floor_grid i| ≤ floor_cert_L_ub * (floor_cert_h / 2) := by
+    exact mul_le_mul_of_nonneg_left hdist floor_cert_L_ub_nonneg
+  nlinarith [hgrid, hLip_lower, hdist']
 
 lemma P_A_floor_cert_on_Icc :
     ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),

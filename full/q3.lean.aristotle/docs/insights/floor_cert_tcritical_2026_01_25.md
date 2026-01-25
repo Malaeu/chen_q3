@@ -12,6 +12,7 @@ Provide a **grid + Lipschitz** certificate for the pointwise floor on
 - `output/floor_cert_tcritical_2026-01-25_2145.txt`
 
 ## Parameters (Lean constants)
+- `floor_cert_N      = 4000`
 - `floor_cert_min_lb = 831/500 = 1.662`
 - `floor_cert_L_ub   = 2493/10 = 249.3`
 - `floor_cert_h      = 1/4000 = 0.00025`
@@ -21,5 +22,6 @@ Provide a **grid + Lipschitz** certificate for the pointwise floor on
 
 ## Notes
 - This is a **tau = 0**, single-scale (t_critical) certificate.
-- Uses finite grid + finite-difference derivative bound (Lipschitz) with 10% safety factor.
-- If tighter margin is needed, decrease `h` or increase precision in the script.
+- Grid part: `P_A_floor_cert_on_grid_cert` (lower bounds at grid points).
+- Lipschitz part: `P_A_Lipschitz_on_Icc_cert` + `floor_cert_grid_cover_cert`.
+- These combine into `P_A_floor_cert_on_Icc_cert`, which feeds `P_A_ge_c_star_at_t_critical`.
