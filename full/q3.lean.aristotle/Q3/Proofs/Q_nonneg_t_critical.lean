@@ -22,6 +22,8 @@ LaTeX <-> Lean parameter conversion:
 import Q3.Axioms
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.A3_Floor_Main
+import Q3.Proofs.FloorCert.Defs
+import Q3.Proofs.FloorCert.Grid_2219
 import Q3.Proofs.ShiftedWindows
 import Q3.Proofs.Q_nonneg_atoms_helpers
 import Q3.Proofs.Q_nonneg_lemmas
@@ -34,6 +36,8 @@ open MeasureTheory
 noncomputable section
 
 namespace Q3
+
+open Q3.Proofs.FloorCert
 
 /-- t_critical > t_sym (0.15 > 0.06), so heat decay is stronger -/
 lemma t_critical_gt_t_sym : t_critical > t_sym := by
@@ -78,32 +82,10 @@ lemma phi_shift_critical_nonneg (B τ ξ : ℝ) :
 def P_A_critical (B : ℝ) (θ : ℝ) : ℝ :=
   P_A_shift B t_critical 0 θ
 
-/-- Numeric certificate parameters (grid + Lipschitz) for t_critical.
-    See docs/insights/floor_cert_tcritical_2026_01_25.md and
-    output/floor_cert_tcritical_2026-01-25_2219.txt. -/
-def floor_cert_N : ℕ := 4000
-def floor_cert_min_lb : ℝ := (831 / 500)   -- 1.662
-def floor_cert_L_ub : ℝ := (2493 / 10)    -- 249.3
-def floor_cert_h : ℝ := (1 / 4000 : ℝ)
-
-def floor_grid (i : Fin (floor_cert_N + 1)) : ℝ :=
-  (-1/2 : ℝ) + (i.1 : ℝ) * floor_cert_h
-
-lemma floor_cert_margin_ge_c_star : c_star ≤ floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 := by
-  -- 831/500 - (2493/10)*(1/4000)/2 = 1.6308375 > 11/10
-  norm_num [c_star, floor_cert_min_lb, floor_cert_L_ub, floor_cert_h]
-
-lemma floor_cert_L_ub_nonneg : 0 ≤ floor_cert_L_ub := by
-  norm_num [floor_cert_L_ub]
-
-lemma floor_cert_h_pos : 0 < floor_cert_h := by
-  norm_num [floor_cert_h]
-
-lemma floor_cert_h_ne_zero : (floor_cert_h : ℝ) ≠ 0 := by
-  nlinarith [floor_cert_h_pos]
-
-lemma floor_cert_N_mul_h : (floor_cert_N : ℝ) * floor_cert_h = 1 := by
-  norm_num [floor_cert_N, floor_cert_h]
+/-!
+Numeric certificate constants and grid live in `Q3.Proofs.FloorCert.Defs` and
+grid values in `Q3.Proofs.FloorCert.Grid_2219`.
+-/
 
 
 /-- P_A is invariant under integer shifts: P_A(θ + k) = P_A(θ). -/
@@ -129,11 +111,6 @@ lemma sub_floor_add_half_mem_Icc (θ : ℝ) :
   ·
     have : θ - (Int.floor (θ + 1/2) : ℤ) < 1/2 := by nlinarith
     exact le_of_lt this
-
-/-- Grid certificate: lower bound at grid points. -/
-axiom P_A_floor_cert_on_grid_cert :
-    ∀ i : Fin (floor_cert_N + 1),
-      floor_cert_min_lb ≤ P_A B_min t_critical (floor_grid i)
 
 /-- Lipschitz certificate on the fundamental domain. -/
 axiom P_A_Lipschitz_on_Icc_cert :
@@ -274,7 +251,7 @@ lemma P_A_ge_c_star_at_t_critical (θ : ℝ) :
     exact P_A_floor_cert_on_Icc (θ - k) hk
 
   have hcert : c_star ≤ floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 := by
-    exact floor_cert_margin_ge_c_star
+    simpa using (floor_cert_margin_ge_c_star c_star)
 
   have hshift : P_A B_min t_critical θ = P_A B_min t_critical (θ - k) := by
     -- use periodicity with integer shift k
