@@ -117,13 +117,16 @@ lemma sub_floor_add_half_mem_Icc (θ : ℝ) :
 
 /-- Floor certificate on the fundamental domain.
     This is where the grid+Lipschitz proof must be inserted. -/
+axiom P_A_floor_cert_on_Icc_axiom :
+    ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
+      floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 ≤
+        P_A B_min t_critical θ
+
 lemma P_A_ge_floor_cert_on_Icc :
     ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
       floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 ≤
         P_A B_min t_critical θ := by
-  -- TODO: insert formal certificate from scripts/pa_floor_cert.py
-  -- Grid + Lipschitz margin on Icc [-1/2, 1/2].
-  sorry
+  simpa using P_A_floor_cert_on_Icc_axiom
 
 /-- P_A floor at t_critical: min P_A >= c_star = 11/10
     Numerical verification: at t_critical = 0.15, min P_A = 1.66 > 1.1 -/

@@ -1,5 +1,9 @@
 # Axiom Closure Analysis (2026-01-20)
 
+
+- **P_A_floor_cert_on_Icc_axiom** (t_critical): numeric grid+Lipschitz certificate
+  - Source: `scripts/pa_floor_cert.py` + `output/floor_cert_tcritical_2026-01-25_1615.txt`
+  - Used in: `Q3/Proofs/Q_nonneg_t_critical.lean` to close `P_A_ge_c_star_at_t_critical`
 ## Current Status: 7 Axioms
 
 ```
