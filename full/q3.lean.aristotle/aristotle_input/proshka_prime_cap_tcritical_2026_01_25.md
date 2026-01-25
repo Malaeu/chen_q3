@@ -1,4 +1,5 @@
 # Proshka Request: prime-term cap at t_critical (single-scale)
+Timestamp: 2026-01-25 15:22
 
 ## Context
 - We are in the **single-scale** branch: `t_critical = 3/20`, `t0_critical = 1/(16π² t_critical)`.

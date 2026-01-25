@@ -2,10 +2,12 @@
 
 ## Status
 - state: in_progress
-- updated: 2026-01-25
+- updated: 2026-01-25 15:22
 
 ## Source
 - request: `../../input/proshka_prime_cap_tcritical_2026_01_25.md`
+- related outputs:
+  - `../../output/proshka_prime_cap_tcritical_bundle_2026_01_25.md`
 
 ## Why we are here
 - `prime_term_le_at_t_critical` is still `sorry` in `Q3/Proofs/Q_nonneg_t_critical.lean`.

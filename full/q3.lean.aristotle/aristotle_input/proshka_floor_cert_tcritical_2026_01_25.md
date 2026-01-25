@@ -1,4 +1,5 @@
 # Proshka Request: floor certificate for P_A at t_critical (single-scale)
+Timestamp: 2026-01-25 15:22
 
 ## Context
 - We are in the single-scale branch with `t_critical = 3/20` and `B_min = 3`.
