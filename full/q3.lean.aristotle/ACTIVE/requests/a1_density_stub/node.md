@@ -1,7 +1,7 @@
 # Node: A1_density_stub
 
 ## Status
-- state: unknown
+- state: legacy
 - updated: 2026-01-25
 
 ## Source
@@ -9,10 +9,11 @@
 - related outputs: (none linked)
 
 ## Why we are here
-- TODO
+- Stub placeholder for A1 density; not part of the current single-scale mainline.
+- Keep only as a pointer to older scaffolding.
 
 ## Evidence / checks
-- TODO
+- Stub file exists; no linked outputs.
 
 ## Decision
-- TODO
+- Mark as legacy and ignore for the mainline.

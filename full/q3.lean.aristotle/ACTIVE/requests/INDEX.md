@@ -111,6 +111,7 @@ Fill TODOs as we refine each request.
 - project_ids: `requests/project_ids/node.md`
 
 ## proshka
+- proshka_floor_cert_tcritical_2026_01_25: `requests/proshka_floor_cert_tcritical_2026_01_25/node.md`
 - proshka_floor_tcritical_request_2026_01_24: `requests/proshka_floor_tcritical_request_2026_01_24/node.md`
 - proshka_floor_tcritical_request_strict_2026_01_24: `requests/proshka_floor_tcritical_request_strict_2026_01_24/node.md`
 - proshka_rayleigh_qid_debug_2026_01_16: `requests/proshka_rayleigh_qid_debug_2026_01_16/node.md`

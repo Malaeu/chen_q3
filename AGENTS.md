@@ -1,5 +1,6 @@
 Project workflow: `full/q3.lean.aristotle/PROJECT_WORKFLOW.md`
 Aristotle skill (CLI-based): `~/.codex/skills/aristotle/`
+Session entry (quick resume): `full/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
 
 Aristotle integration rules (project workflow):
 - Activate venv before any Aristotle command: `source .venv/bin/activate`.

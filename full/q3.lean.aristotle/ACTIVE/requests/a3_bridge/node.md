@@ -7,6 +7,24 @@
 ## Source
 - request: `../../input/A3_bridge.md`
 - related outputs:
+  - `../../output/A3_bridge_aristotle.lean`
+  - `../../output/A3_bridge_closure_v1.lean`
+  - `../../output/A3_bridge_closure_v2_aristotle.lean`
+  - `../../output/A3_bridge_rayleigh_first_v5.lean`
+  - `../../output/A3_bridge_v3_proshka.lean`
+  - `../../output/A3_bridge_v4_real_TP.lean`
+  - `../../output/A3_bridge_aristotle.lean`
+  - `../../output/A3_bridge_closure_v1.lean`
+  - `../../output/A3_bridge_closure_v2_aristotle.lean`
+  - `../../output/A3_bridge_rayleigh_first_v5.lean`
+  - `../../output/A3_bridge_v3_proshka.lean`
+  - `../../output/A3_bridge_v4_real_TP.lean`
+  - `../../output/A3_bridge_aristotle.lean`
+  - `../../output/A3_bridge_closure_v1.lean`
+  - `../../output/A3_bridge_closure_v2_aristotle.lean`
+  - `../../output/A3_bridge_rayleigh_first_v5.lean`
+  - `../../output/A3_bridge_v3_proshka.lean`
+  - `../../output/A3_bridge_v4_real_TP.lean`
   - `../../output/A3_bridge_closure_v2_aristotle.lean`
   - `../../output/A3_bridge_closure_v1.lean`
   - `../../output/A3_bridge_rayleigh_first_v5.lean`
@@ -15,10 +33,13 @@
   - `../../output/A3_bridge_v4_real_TP.lean`
 
 ## Why we are here
-- TODO
+- Request artifact `A3_bridge.md` captured a concrete task in this topic.
+- This node exists to record why it was asked, what evidence we have, and the decision taken.
 
 ## Evidence / checks
-- TODO
+- Source request file exists: `/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/full/q3.lean.aristotle/aristotle_input/A3_bridge.md`.
+- Related outputs (if any) are linked above; validate for correctness before reuse.
 
 ## Decision
-- TODO
+- Pending triage: open the request and any linked outputs.
+- Extract concrete sub-lemmas or actions; set status to keep/retire after review.

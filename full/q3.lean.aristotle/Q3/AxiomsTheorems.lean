@@ -207,13 +207,16 @@ theorem A3_bridge_rayleigh_Fourier (K : ℝ) (hK : K > 0) :
 
 * **Q3:** `thm:Main-positivity`
 * **TeX:** `sections/Main_closure.tex`
-* **Status:** axiom fallback (Fourier A3 + RKHS wrapper)
+* **Status:** theorem (Fourier A3 + RKHS wrapper)
 -/
-theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1),
+theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1) [Fintype (Q3.Nodes K)],
     Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K →
     Q3.RKHS_contraction_data K →
-    ∀ g ∈ Q3.AtomCone_K_fixed K Q3.t0_critical, Q3.Q g ≥ 0 :=
-  Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS
+    ∀ g ∈ Q3.AtomCone_K_fixed K Q3.t0_critical, Q3.Q g ≥ 0 := by
+  intro K hK _inst hA3 hRKHS g hg
+  simpa [Q3.Proofs.QNonnegClosure.t0_main] using
+    (Q3.Proofs.QNonnegClosure.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm
+      (K:=K) hK hA3 hRKHS g hg)
 
 end Q3.Theorems
 
@@ -239,13 +242,10 @@ end Q3.Theorems
 - `Q_Lipschitz` → Q3.Proofs.Q_Lipschitz_on_W_K_thm
 - `RKHS_contraction` → SingleScale.rkhs_contraction_data_of_tcritical
 
-### ⚠️ THEOREM EXISTS but AXIOM in main chain
-- `A1_density` → theorem in A1_density.lean, but axiom still in chain (wiring gap)
-
-### ❌ AXIOM (no theorem yet)
-- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` → main blocker (AtomCone_K_fixed gap)
+### ✅ THEOREM WIRED (previous wiring gaps closed)
+- `A1_density` → A1prime.A1_density_WK_fixed_t0
+- `Q_nonneg_on_atoms` → QNonnegClosure.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm
 
 ## Next Steps to Close Axioms
-1. Wire A1_density_WK_thm → close `A1_density_WK_axiom`
-2. Fix AtomCone_K_fixed quantifier → close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+1. Remove remaining axioms (off_diag_exp_sum, A3_bridge if still referenced)
 -/

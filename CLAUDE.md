@@ -12,6 +12,9 @@
 
 This is the ONLY file you need to read at session start. All other docs are linked from there.
 
+If resuming an in-progress session, read:
+`/full/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
+
 ---
 
 ## Workflow (Axiom Closure Loop)
