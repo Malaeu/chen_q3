@@ -218,6 +218,17 @@ theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1) [Fintype (Q3.Nodes K)],
     (Q3.Proofs.QNonnegClosure.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm
       (K:=K) hK hA3 hRKHS g hg)
 
+/-- **[Base Atoms (B-range, τ=0)]** Q(g) ≥ 0 on BaseAtomCone_critical_brange.
+
+* **Q3:** single-scale certificate (t_critical, B ∈ [B_min, B_max])
+* **Status:** theorem (from Q_nonneg_t_critical)
+-/
+theorem Q_nonneg_on_base_atoms_brange :
+    ∀ (K : ℝ) (hK : K ≥ 1),
+      ∀ g ∈ Q3.BaseAtomCone_critical_brange K, Q3.Q g ≥ 0 := by
+  intro K hK g hg
+  exact Q3.Q_nonneg_on_base_atoms_brange_tcritical K hK g hg
+
 end Q3.Theorems
 
 /-!

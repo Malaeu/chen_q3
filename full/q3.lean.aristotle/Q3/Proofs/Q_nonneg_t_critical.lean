@@ -80,13 +80,13 @@ def P_A_critical (B : ℝ) (θ : ℝ) : ℝ :=
 
 /-- Numeric certificate parameters (grid + Lipschitz) for t_critical.
     See docs/insights/floor_cert_tcritical_2026_01_25.md and
-    output/floor_cert_tcritical_2026-01-25_1919.txt. -/
-def floor_cert_min_lb : ℝ := (83 / 50)
-def floor_cert_L_ub : ℝ := (180 : ℝ)
+    output/floor_cert_tcritical_2026-01-25_2145.txt. -/
+def floor_cert_min_lb : ℝ := (831 / 500)   -- 1.662
+def floor_cert_L_ub : ℝ := (2493 / 10)    -- 249.3
 def floor_cert_h : ℝ := (1 / 4000 : ℝ)
 
 lemma floor_cert_margin_ge_c_star : c_star ≤ floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 := by
-  -- 83/50 - 180*(1/4000)/2 = 655/400 = 1.6375 > 11/10
+  -- 831/500 - (2493/10)*(1/4000)/2 = 1.6308375 > 11/10
   norm_num [c_star, floor_cert_min_lb, floor_cert_L_ub, floor_cert_h]
 
 

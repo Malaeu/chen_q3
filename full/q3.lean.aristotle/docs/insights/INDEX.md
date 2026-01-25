@@ -34,6 +34,7 @@ Files:
 - localization_argument_full_analysis_2026_01_16.md
 - mgrep_websearch_discovery_2026_01_18.md
 - PERIODIZATION_BOTTLENECK_FIX.md
+- prime_cert_brange_tcritical_2026_01_25.md
 - prime_cert_tcritical_2026_01_25.md
 - prime_term_nodes_bridge_2026_01_17 2.md
 - prime_term_nodes_bridge_2026_01_17.md
