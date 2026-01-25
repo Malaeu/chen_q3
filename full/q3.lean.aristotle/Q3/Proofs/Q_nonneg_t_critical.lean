@@ -25,6 +25,7 @@ import Q3.Proofs.A3_Floor_Main
 import Q3.Proofs.FloorCert.Defs
 import Q3.Proofs.FloorCert.Grid_2219
 import Q3.Proofs.FloorCert.Lipschitz_2219
+import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.ShiftedWindows
 import Q3.Proofs.Q_nonneg_atoms_helpers
 import Q3.Proofs.Q_nonneg_lemmas
@@ -39,6 +40,7 @@ noncomputable section
 namespace Q3
 
 open Q3.Proofs.FloorCert
+open Q3.Proofs.PrimeCert
 
 /-- t_critical > t_sym (0.15 > 0.06), so heat decay is stronger -/
 lemma t_critical_gt_t_sym : t_critical > t_sym := by
@@ -317,24 +319,9 @@ lemma arch_term_ge_at_t_critical (B τ : ℝ) (hB : B > 0)
 
 /-- Numeric certificate parameters for prime_term at t_critical.
     See output/prime_cert_tcritical_2026-01-25_1826.txt. -/
-def prime_cert_N : ℕ := 1000000
-def prime_cert_prime_ub : ℝ := (8714 / 1000) -- 8.714 (upper bound from sum+tail)
-def prime_cert_arch_lb : ℝ := (957 / 100)    -- 9.57 (numeric arch_term lower bound)
-
-/-- B-range certificate parameters at t_critical (tau = 0).
-    See output/prime_cert_brange_tcritical_2026-01-25_2046.txt. -/
-def prime_cert_B_max : ℝ := (49 / 10) -- 4.9
-def prime_cert_B_h : ℝ := (1 / 10)    -- 0.1
-def prime_cert_margin_lb : ℝ := (1 / 2) -- conservative margin
-def prime_cert_L_ub : ℝ := (3 / 10)      -- Lipschitz over B (finite-diff upper bound)
-
-/-- Margin lower bound is positive (sanity check). -/
-lemma prime_cert_margin_pos : 0 < prime_cert_margin_lb := by
-  norm_num [prime_cert_margin_lb]
-
-/-- Certificate margin: prime upper bound ≤ arch lower bound. -/
-lemma prime_cert_ub_le_arch_lb : prime_cert_prime_ub ≤ prime_cert_arch_lb := by
-  norm_num [prime_cert_prime_ub, prime_cert_arch_lb]
+/-!
+Prime certificate constants and basic lemmas live in `Q3.Proofs.PrimeCert.Defs`.
+-/
 
 /-- Prime-term certificate (tau = 0, B = B_min): prime_term ≤ prime_cert_prime_ub. -/
 axiom prime_term_cert_on_Bmin_tau0 :
