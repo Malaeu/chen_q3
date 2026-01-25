@@ -7,7 +7,7 @@ import Q3.Proofs.Params_Critical
 Lipschitz certificate on Icc[-1/2, 1/2] for t_critical.
 Sources:
 - output/floor_cert_tcritical_2026-01-25_2219.txt
-- output/lipschitz_cert_tcritical_2026-01-25_2350.txt
+- output/lipschitz_cert_tcritical_2026-01-26_0100.txt
 -/
 
 noncomputable section

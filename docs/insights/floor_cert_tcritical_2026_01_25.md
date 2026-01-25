@@ -16,17 +16,19 @@
 **Result (numerical):**
 - `min_grid ≈ 1.66223919518145`
 - `L ≈ 179.77149229567`
-- `L*h/2 ≈ 0.02247143653696`
-- `min_grid − L*h/2 ≈ 1.63976775864449`
+- `L_ub = 249.3` (conservative cap used in Lean)
+- `L_ub*h/2 = 0.0311625`
+- `min_grid − L_ub*h/2 ≈ 1.63107669518145`
 - `c_star = 11/10 = 1.1`
-- **margin ≈ 0.53977**
+- **margin ≈ 0.53108**
 
 **Artifacts:**
 - Script: `scripts/pa_floor_cert.py`
-- Output: `output/floor_cert_tcritical_2026-01-25_1919.txt`
+- Output: `output/floor_cert_tcritical_2026-01-26_0100.txt`
+- Lipschitz check: `output/lipschitz_cert_tcritical_2026-01-26_0100.txt`
 
 **Lean integration plan:**
-- Use conservative rational bounds: `min_grid ≥ 83/50`, `L ≤ 180`, `h = 1/4000`.
-- Then `83/50 − 180*(1/4000)/2 = 655/400 = 1.6375 > 1.1`.
+- Use conservative rational bounds: `min_grid ≥ 83/50`, `L ≤ 2493/10`, `h = 1/4000`.
+- Then `83/50 − (2493/10)*(1/4000)/2 = 65243/40000 = 1.631075 > 1.1`.
 - The remaining formal step is to connect these bounds to a formal lemma
   `∀ θ ∈ Icc (-1/2) (1/2), P_A B_min t_critical θ ≥ 83/50`.
