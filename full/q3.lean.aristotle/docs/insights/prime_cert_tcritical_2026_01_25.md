@@ -72,6 +72,26 @@ prime_cert_arch_lb = 9.57
 
 These match the script and give a comfortable margin.
 
+Lean now includes certificate axioms for the **B = B_min, τ = 0** case:
+
+```
+axiom prime_term_cert_on_Bmin_tau0 :
+  prime_term (phi_shift_critical B_min 0) ≤ prime_cert_prime_ub
+
+axiom arch_term_cert_on_Bmin_tau0 :
+  prime_cert_arch_lb ≤ arch_term (phi_shift_critical B_min 0)
+```
+
+and a lemma:
+
+```
+lemma prime_term_le_at_t_critical_Bmin_tau0 :
+  prime_term (phi_shift_critical B_min 0) ≤ arch_term (phi_shift_critical B_min 0)
+```
+
+`prime_term_le_at_t_critical` now uses the certificate when `(B, τ) = (B_min, 0)`
+and falls back to the general axiom otherwise.
+
 ## Notes / next tightening
 
 - This cert is for **tau = 0**, **B = B_min**.

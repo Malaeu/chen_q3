@@ -227,6 +227,27 @@ def prime_cert_N : ℕ := 1000000
 def prime_cert_prime_ub : ℝ := (8714 / 1000) -- 8.714 (upper bound from sum+tail)
 def prime_cert_arch_lb : ℝ := (957 / 100)    -- 9.57 (numeric arch_term lower bound)
 
+/-- Certificate margin: prime upper bound ≤ arch lower bound. -/
+lemma prime_cert_ub_le_arch_lb : prime_cert_prime_ub ≤ prime_cert_arch_lb := by
+  norm_num [prime_cert_prime_ub, prime_cert_arch_lb]
+
+/-- Prime-term certificate (tau = 0, B = B_min): prime_term ≤ prime_cert_prime_ub. -/
+axiom prime_term_cert_on_Bmin_tau0 :
+    prime_term (fun ξ => phi_shift_critical B_min 0 ξ) ≤ prime_cert_prime_ub
+
+/-- Arch-term certificate (tau = 0, B = B_min): prime_cert_arch_lb ≤ arch_term. -/
+axiom arch_term_cert_on_Bmin_tau0 :
+    prime_cert_arch_lb ≤ arch_term (fun ξ => phi_shift_critical B_min 0 ξ)
+
+/-- Prime-term ≤ arch-term at t_critical for B = B_min, τ = 0 (certificate-based). -/
+lemma prime_term_le_at_t_critical_Bmin_tau0 :
+    prime_term (fun ξ => phi_shift_critical B_min 0 ξ) ≤
+      arch_term (fun ξ => phi_shift_critical B_min 0 ξ) := by
+  have h1 := prime_term_cert_on_Bmin_tau0
+  have h2 := prime_cert_ub_le_arch_lb
+  have h3 := arch_term_cert_on_Bmin_tau0
+  exact le_trans h1 (le_trans h2 h3)
+
 /-- Prime-term certificate axiom (single-scale). This is the current placeholder for the
     numerical verification at t_critical; see docs/insights/prime_cert_tcritical_2026_01_25.md. -/
 axiom prime_term_le_at_t_critical_axiom (K B τ : ℝ)
@@ -251,7 +272,10 @@ lemma prime_term_le_at_t_critical (K B τ : ℝ)
              The heat factor exp(-4*pi^2*0.15*xi^2) decays fast enough
      BLOCKS: [Q_phi_shift_nonneg_t_critical]
   -/
-  simpa using (prime_term_le_at_t_critical_axiom K B τ hK hB hτB)
+  by_cases hBT : B = B_min ∧ τ = 0
+  · rcases hBT with ⟨rfl, rfl⟩
+    simpa using prime_term_le_at_t_critical_Bmin_tau0
+  · exact prime_term_le_at_t_critical_axiom K B τ hK hB hτB
 
 /-! ## Main Theorem: Q >= 0 at t_critical -/
 
