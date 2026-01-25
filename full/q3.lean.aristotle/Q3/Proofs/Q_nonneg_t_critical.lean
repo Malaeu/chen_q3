@@ -227,6 +227,17 @@ def prime_cert_N : ℕ := 1000000
 def prime_cert_prime_ub : ℝ := (8714 / 1000) -- 8.714 (upper bound from sum+tail)
 def prime_cert_arch_lb : ℝ := (957 / 100)    -- 9.57 (numeric arch_term lower bound)
 
+/-- B-range certificate parameters at t_critical (tau = 0).
+    See output/prime_cert_brange_tcritical_2026-01-25_2046.txt. -/
+def prime_cert_B_max : ℝ := (49 / 10) -- 4.9
+def prime_cert_B_h : ℝ := (1 / 10)    -- 0.1
+def prime_cert_margin_lb : ℝ := (1 / 2) -- conservative margin
+def prime_cert_L_ub : ℝ := (3 / 10)      -- Lipschitz over B (finite-diff upper bound)
+
+/-- Margin lower bound is positive (sanity check). -/
+lemma prime_cert_margin_pos : 0 < prime_cert_margin_lb := by
+  norm_num [prime_cert_margin_lb]
+
 /-- Certificate margin: prime upper bound ≤ arch lower bound. -/
 lemma prime_cert_ub_le_arch_lb : prime_cert_prime_ub ≤ prime_cert_arch_lb := by
   norm_num [prime_cert_prime_ub, prime_cert_arch_lb]
@@ -247,6 +258,23 @@ lemma prime_term_le_at_t_critical_Bmin_tau0 :
   have h2 := prime_cert_ub_le_arch_lb
   have h3 := arch_term_cert_on_Bmin_tau0
   exact le_trans h1 (le_trans h2 h3)
+
+/-- Margin certificate on B-range at t_critical (tau = 0).
+    This is the single-scale prime cap over B ∈ [B_min, B_max]. -/
+axiom prime_cert_margin_on_Brange_axiom :
+    ∀ B ∈ Set.Icc B_min prime_cert_B_max,
+      prime_cert_margin_lb ≤
+        arch_term (fun ξ => phi_shift_critical B 0 ξ) -
+          prime_term (fun ξ => phi_shift_critical B 0 ξ)
+
+/-- prime_term ≤ arch_term for B ∈ [B_min, B_max] (tau = 0), from margin cert. -/
+lemma prime_term_le_arch_term_on_Brange_tau0
+    (B : ℝ) (hB : B ∈ Set.Icc B_min prime_cert_B_max) :
+    prime_term (fun ξ => phi_shift_critical B 0 ξ) ≤
+      arch_term (fun ξ => phi_shift_critical B 0 ξ) := by
+  have h := prime_cert_margin_on_Brange_axiom B hB
+  have h0 : 0 ≤ prime_cert_margin_lb := le_of_lt prime_cert_margin_pos
+  linarith
 
 /-- Prime-term certificate axiom (single-scale). This is the current placeholder for the
     numerical verification at t_critical; see docs/insights/prime_cert_tcritical_2026_01_25.md. -/
@@ -272,9 +300,11 @@ lemma prime_term_le_at_t_critical (K B τ : ℝ)
              The heat factor exp(-4*pi^2*0.15*xi^2) decays fast enough
      BLOCKS: [Q_phi_shift_nonneg_t_critical]
   -/
-  by_cases hBT : B = B_min ∧ τ = 0
-  · rcases hBT with ⟨rfl, rfl⟩
-    simpa using prime_term_le_at_t_critical_Bmin_tau0
+  by_cases hτ : τ = 0
+  · by_cases hBRange : B_min ≤ B ∧ B ≤ prime_cert_B_max
+    · have hB' : B ∈ Set.Icc B_min prime_cert_B_max := ⟨hBRange.1, hBRange.2⟩
+      simpa [hτ] using (prime_term_le_arch_term_on_Brange_tau0 B hB')
+    · exact prime_term_le_at_t_critical_axiom K B τ hK hB hτB
   · exact prime_term_le_at_t_critical_axiom K B τ hK hB hτB
 
 /-! ## Main Theorem: Q >= 0 at t_critical -/

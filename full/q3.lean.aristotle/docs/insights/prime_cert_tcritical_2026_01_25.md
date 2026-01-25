@@ -92,6 +92,14 @@ lemma prime_term_le_at_t_critical_Bmin_tau0 :
 `prime_term_le_at_t_critical` now uses the certificate when `(B, τ) = (B_min, 0)`
 and falls back to the general axiom otherwise.
 
+## B-range extension (tau = 0)
+
+We also generated a **B-range** certificate on `[B_min, 4.9]`:\n
+`docs/insights/prime_cert_brange_tcritical_2026_01_25.md`
+
+`prime_term_le_at_t_critical` now uses this when `τ = 0` and `B ∈ [B_min, 4.9]`,
+and falls back to the general axiom outside that range.
+
 ## Notes / next tightening
 
 - This cert is for **tau = 0**, **B = B_min**.
