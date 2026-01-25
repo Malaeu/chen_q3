@@ -13,7 +13,7 @@ What remains (outside this file) is to actually provide:
 import Q3.Axioms
 import Q3.Proofs.Rayleigh_Fourier
 import Q3.Proofs.Rayleigh_utils
-import Q3.Proofs.A3_Floor_Bounds  -- for `B_min`
+import Q3.Proofs.A3_FLOOR_v20_bounds_core  -- for `B_min`
 import Q3.Proofs.A3_Floor_Main    -- for definition `P_A`
 import Q3.Proofs.P_A_Properties   -- for `P_A_continuous_of_t`
 import Q3.Proofs.RKHS_cap_generic

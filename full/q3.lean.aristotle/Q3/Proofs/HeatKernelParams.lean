@@ -2,7 +2,7 @@
 Parameter bridge between A1 heat kernel and A3 window.
 -/
 
-import Q3.Proofs.A3_Floor_Bounds
+import Q3.Proofs.A3_FLOOR_v20_bounds_core
 
 set_option linter.mathlibStandardSet false
 
