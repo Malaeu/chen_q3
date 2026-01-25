@@ -276,6 +276,17 @@ lemma prime_term_le_arch_term_on_Brange_tau0
   have h0 : 0 ≤ prime_cert_margin_lb := le_of_lt prime_cert_margin_pos
   linarith
 
+/-- Q >= 0 on phi_shift_critical with tau = 0 and B in the certified range. -/
+theorem Q_phi_shift_nonneg_t_critical_tau0_brange (B : ℝ)
+    (hBmin : B_min ≤ B) (hBmax : B ≤ prime_cert_B_max) :
+    Q (fun ξ => phi_shift_critical B 0 ξ) ≥ 0 := by
+  unfold Q
+  have hprime :
+      prime_term (fun ξ => phi_shift_critical B 0 ξ) ≤
+        arch_term (fun ξ => phi_shift_critical B 0 ξ) := by
+    exact prime_term_le_arch_term_on_Brange_tau0 B ⟨hBmin, hBmax⟩
+  linarith
+
 /-- Prime-term certificate axiom (single-scale). This is the current placeholder for the
     numerical verification at t_critical; see docs/insights/prime_cert_tcritical_2026_01_25.md. -/
 axiom prime_term_le_at_t_critical_axiom (K B τ : ℝ)
@@ -368,6 +379,15 @@ lemma Fejer_heat_atom_eq_phi_shifts (B τ : ℝ) :
 def BaseAtomCone_critical (K : ℝ) : Set (ℝ → ℝ) :=
   Q3.BaseAtomCone_K K t0_critical
 
+/-- BaseAtomCone with certified B-range at t0_critical (tau = 0 only). -/
+def BaseAtomCone_critical_brange (K : ℝ) : Set (ℝ → ℝ) :=
+  { g | ∃ (n : ℕ) (c : Fin n → ℝ) (B : Fin n → ℝ),
+        (∀ i, c i ≥ 0) ∧
+        (∀ i, B_min ≤ B i) ∧
+        (∀ i, B i ≤ prime_cert_B_max) ∧
+        (∀ x, g x = ∑ i, c i * Fejer_heat_atom (B i) t0_critical 0 x) ∧
+        g ∈ W_K K }
+
 /-- Q >= 0 on BaseAtomCone at t0_critical (τ=0 only!)
 
     This replaces the axiom Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
@@ -451,6 +471,90 @@ theorem Q_nonneg_on_base_atoms_at_t_critical (K : ℝ) (hK : K ≥ 1) :
     Q3.Proofs.Q_nonneg_lemmas.Q_nonneg_on_atomcone_fixed_of_atoms
       K t0_critical hK t0_critical_pos h_atom
   exact h_atomcone g hg'
+
+/-! ## BaseAtomCone (B-range) positivity at t_critical -/
+
+/-- Q >= 0 on BaseAtomCone with B in [B_min, B_max] (tau = 0 only). -/
+theorem Q_nonneg_on_base_atoms_at_t_critical_brange (K : ℝ) (_hK : K ≥ 1) :
+    ∀ g ∈ BaseAtomCone_critical_brange K, Q g ≥ 0 := by
+  intro g hg
+  rcases hg with ⟨n, c, B, hc, hBmin, hBmax, hg_sum, hg_WK⟩
+  have hBmin_pos : (0 : ℝ) < B_min := by
+    norm_num [B_min]
+  -- integrability / summability for each atom
+  have h_int : ∀ i, MeasureTheory.Integrable
+      (fun x => a_star x * Fejer_heat_atom (B i) t0_critical 0 x) := by
+    intro i
+    have hBpos : B i > 0 := by nlinarith [hBmin i, hBmin_pos]
+    exact Q3.Proofs.Q_nonneg_lemmas.fejer_heat_atom_integrable_with_a_star
+      (B i) t0_critical 0 hBpos t0_critical_pos
+  have h_sum : ∀ i, Summable
+      (fun k => w_Q k * Fejer_heat_atom (B i) t0_critical 0 (xi_n k)) := by
+    intro i
+    have hBpos : B i > 0 := by nlinarith [hBmin i, hBmin_pos]
+    exact Q3.Proofs.Q_nonneg_lemmas.fejer_heat_atom_prime_summable
+      (B i) t0_critical 0 hBpos t0_critical_pos
+  -- linearity of Q over finite sums
+  have hQ_sum :
+      Q (fun x => ∑ i, c i * Fejer_heat_atom (B i) t0_critical 0 x) =
+        ∑ i, c i * Q (Fejer_heat_atom (B i) t0_critical 0) := by
+    exact Q3.Proofs.Q_nonneg_lemmas.Q_finset_sum (atoms := fun i => Fejer_heat_atom (B i) t0_critical 0)
+      (coeffs := c) h_int h_sum
+  -- each atom is nonnegative via the tau=0 prime certificate
+  have h_atom : ∀ i, Q (Fejer_heat_atom (B i) t0_critical 0) ≥ 0 := by
+    intro i
+    obtain ⟨c0, hc0_pos, hdecomp⟩ := Fejer_heat_atom_eq_phi_shifts (B := B i) (τ := 0)
+    have h_int_f :
+        MeasureTheory.Integrable (fun x => a_star x * phi_shift_critical (B i) 0 x) := by
+      have hBpos : B i > 0 := by nlinarith [hBmin i, hBmin_pos]
+      simpa [phi_shift_critical] using
+        (Q3.Proofs.QNonnegAtoms.phi_shift_integrable_with_a_star
+          (B:=B i) (t:=t_critical) (tau:=0) hBpos)
+    have h_sum_f :
+        Summable (fun k => w_Q k * phi_shift_critical (B i) 0 (xi_n k)) := by
+      have hBpos : B i > 0 := by nlinarith [hBmin i, hBmin_pos]
+      simpa [phi_shift_critical] using
+        (Q3.Proofs.QNonnegAtoms.phi_shift_prime_summable
+          (B:=B i) (t:=t_critical) (tau:=0) hBpos)
+    have hQ_scale_add :
+        Q (fun x => c0 * (phi_shift_critical (B i) 0 x + phi_shift_critical (B i) 0 x)) =
+          c0 * (Q (phi_shift_critical (B i) 0) + Q (phi_shift_critical (B i) 0)) := by
+      simpa using
+        (Q3.Proofs.QNonnegAtoms.Q_scale_add
+          (f:=fun x => phi_shift_critical (B i) 0 x)
+          (g:=fun x => phi_shift_critical (B i) 0 x)
+          (c:=c0) h_int_f h_int_f h_sum_f h_sum_f)
+    have hQphi : Q (phi_shift_critical (B i) 0) ≥ 0 := by
+      exact Q_phi_shift_nonneg_t_critical_tau0_brange (B := B i) (hBmin := hBmin i) (hBmax := hBmax i)
+    have hQ_nonneg :
+        0 ≤ c0 * (Q (phi_shift_critical (B i) 0) + Q (phi_shift_critical (B i) 0)) := by
+      have hc0 : 0 ≤ c0 := le_of_lt hc0_pos
+      have hsum : 0 ≤ Q (phi_shift_critical (B i) 0) + Q (phi_shift_critical (B i) 0) := by
+        nlinarith [hQphi]
+      exact mul_nonneg hc0 hsum
+    have h_eq :
+        Q (Fejer_heat_atom (B i) t0_critical 0) =
+          c0 * (Q (phi_shift_critical (B i) 0) + Q (phi_shift_critical (B i) 0)) := by
+      have hfun :
+          (fun x => Fejer_heat_atom (B i) t0_critical 0 x) =
+            fun x => c0 * (phi_shift_critical (B i) 0 x + phi_shift_critical (B i) 0 x) := by
+        funext x
+        simpa using hdecomp x
+      simpa [hfun] using hQ_scale_add
+    simpa [h_eq] using hQ_nonneg
+  -- finish: Q(g) = sum c_i * Q(atom_i) ≥ 0
+  have hQ : Q g = ∑ i, c i * Q (Fejer_heat_atom (B i) t0_critical 0) := by
+    have hfun :
+        g = (fun x => ∑ i, c i * Fejer_heat_atom (B i) t0_critical 0 x) := by
+      funext x
+      exact hg_sum x
+    simpa [hfun] using hQ_sum
+  rw [hQ]
+  apply Finset.sum_nonneg
+  intro i _
+  apply mul_nonneg
+  · exact hc i
+  · exact h_atom i
 
 /-! ## Summary -/
 
