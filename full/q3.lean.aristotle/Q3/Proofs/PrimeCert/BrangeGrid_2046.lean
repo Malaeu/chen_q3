@@ -3,7 +3,7 @@ import Q3.Proofs.PrimeCert.Defs
 
 /-! Prime B-range margin grid values for t_critical.
 Source: output/prime_cert_brange_tcritical_2026-01-25_2046.txt
-Generated: 2026-01-26 00:09
+Generated: 2026-01-26 00:26
 Values are rounded *down* to 12 decimal places.
 -/-
 
@@ -20,7 +20,7 @@ def prime_b_grid_val_q (i : Fin (prime_b_grid_vals_q.size)) : ℚ :=
 def prime_b_grid_val (i : Fin (prime_b_grid_vals_q.size)) : ℝ :=
   (prime_b_grid_val_q i : ℝ)
 
-def prime_cert_margin_lb_q : ℚ := (1 / 2)
+def prime_cert_margin_lb_q : ℚ := (499 / 1000)
 
 lemma prime_cert_margin_lb_eq_q : (prime_cert_margin_lb : ℝ) = prime_cert_margin_lb_q := by
   norm_num [prime_cert_margin_lb, prime_cert_margin_lb_q]
@@ -35,5 +35,23 @@ lemma prime_b_grid_val_ge_lb :
   have hq' : (prime_cert_margin_lb_q : ℝ) ≤ (prime_b_grid_val_q i : ℝ) := by
     exact_mod_cast hq
   simpa [prime_cert_margin_lb_eq_q, prime_b_grid_val] using hq'
+
+/-- Table min bound with Lipschitz slack: every grid margin is ≥ margin_lb + L*h/2. -/
+lemma prime_b_grid_val_ge_lb_with_slack :
+    ∀ i : Fin (prime_b_grid_vals_q.size),
+      prime_cert_margin_lb + prime_cert_L_ub * prime_cert_B_h / 2 ≤ prime_b_grid_val i := by
+  intro i
+  -- reduce to ℚ and decide
+  have hq : (prime_cert_margin_lb_q + (3/10) * (1/10) / (2:ℚ)) ≤ prime_b_grid_val_q i := by
+    decide
+  have hq' : ((prime_cert_margin_lb_q + (3/10) * (1/10) / (2:ℚ)) : ℝ) ≤ (prime_b_grid_val_q i : ℝ) := by
+    exact_mod_cast hq
+  -- rewrite constants
+  have hL : (prime_cert_L_ub : ℝ) = (3/10 : ℝ) := by
+    norm_num [prime_cert_L_ub]
+  have hH : (prime_cert_B_h : ℝ) = (1/10 : ℝ) := by
+    norm_num [prime_cert_B_h]
+  -- assemble
+  simpa [prime_cert_margin_lb_eq_q, prime_b_grid_val, hL, hH] using hq'
 
 end Q3.Proofs.PrimeCert

@@ -98,10 +98,64 @@ lemma prime_b_grid_cover_cert :
   simpa using hfinal
 
 /-- Margin certificate on B-range at t_critical (tau = 0). -/
-axiom prime_cert_margin_on_Brange_axiom :
+lemma prime_cert_margin_on_Brange_axiom :
     ∀ B ∈ Set.Icc B_min prime_cert_B_max,
       prime_cert_margin_lb ≤
         arch_term (fun ξ => phi_shift B t_critical 0 ξ) -
           prime_term (fun ξ => phi_shift B t_critical 0 ξ)
+  := by
+  intro B hB
+  rcases prime_b_grid_cover_cert B hB with ⟨i, hdist⟩
+  -- shorthand for the margin function
+  set margin := fun x : ℝ =>
+    arch_term (fun ξ => phi_shift x t_critical 0 ξ) -
+      prime_term (fun ξ => phi_shift x t_critical 0 ξ)
+  have hgrid_lb :
+      prime_cert_margin_lb + prime_cert_L_ub * prime_cert_B_h / 2 ≤ prime_b_grid_val i := by
+    exact prime_b_grid_val_ge_lb_with_slack i
+  have hgrid_margin : prime_b_grid_val i ≤ margin (prime_b_grid i) := by
+    simpa [margin] using (prime_b_grid_val_le_margin i)
+  have hLip :
+      |margin B - margin (prime_b_grid i)| ≤
+        prime_cert_L_ub * |B - prime_b_grid i| := by
+    simpa [margin, sub_eq_add_neg, abs_sub_comm] using
+      (prime_margin_Lipschitz_on_Brange B (prime_b_grid i) hB
+        (by
+          -- grid point is in the B-range by construction
+          have hBmin : B_min ≤ prime_b_grid i := by
+            -- B_min ≤ B_min + i*h
+            have : 0 ≤ (i.1 : ℝ) := by exact_mod_cast (Nat.zero_le i.1)
+            nlinarith [this]
+          have hBmax : prime_b_grid i ≤ prime_cert_B_max := by
+            -- i ≤ 19, so B_min + i*h ≤ B_max
+            have hi : (i.1 : ℝ) ≤ 19 := by
+              have hsize : prime_b_grid_vals_q.size = 20 := by native_decide
+              have : (i.1 : ℝ) ≤ 19 := by
+                have hi' : i.1 < 20 := by
+                  simpa [hsize] using i.2
+                exact_mod_cast (Nat.lt_succ_iff.mp hi')
+              exact this
+            nlinarith [hi, prime_cert_B_h, prime_cert_B_max, B_min]
+          exact ⟨hBmin, hBmax⟩))
+  have hLip' := (abs_sub_le_iff).1 hLip
+  have hdist' :
+      prime_cert_L_ub * |B - prime_b_grid i| ≤
+        prime_cert_L_ub * (prime_cert_B_h / 2) := by
+    exact mul_le_mul_of_nonneg_left hdist prime_cert_L_ub_nonneg
+  -- combine: margin B ≥ margin(grid) - L*|B-grid|
+  have hmargin_ge :
+      margin (prime_b_grid i) - prime_cert_L_ub * |B - prime_b_grid i| ≤ margin B :=
+    hLip'.1
+  have hgrid_ge :
+      prime_cert_margin_lb ≤ margin (prime_b_grid i) - prime_cert_L_ub * (prime_cert_B_h / 2) := by
+    have : prime_cert_margin_lb + prime_cert_L_ub * prime_cert_B_h / 2 ≤ margin (prime_b_grid i) := by
+      exact le_trans hgrid_lb hgrid_margin
+    nlinarith
+  have hfinal : prime_cert_margin_lb ≤ margin B := by
+    have : prime_cert_margin_lb ≤ margin (prime_b_grid i) - prime_cert_L_ub * |B - prime_b_grid i| := by
+      have hL : prime_cert_L_ub * |B - prime_b_grid i| ≤ prime_cert_L_ub * (prime_cert_B_h / 2) := hdist'
+      nlinarith [hgrid_ge, hL]
+    exact le_trans this hmargin_ge
+  simpa [margin] using hfinal
 
 end Q3.Proofs.PrimeCert
