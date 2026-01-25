@@ -23,6 +23,8 @@ import Q3.Axioms
 import Q3.Proofs.Params_Critical
 import A3_FLOOR_v20_bounds_core
 import Q3.Proofs.ShiftedWindows
+import Q3.Proofs.Q_nonneg_atoms_helpers
+import Q3.Proofs.Q_nonneg_lemmas
 
 set_option linter.mathlibStandardSet false
 
@@ -175,25 +177,41 @@ theorem Q_phi_shift_nonneg_t_critical (K B τ : ℝ)
 
 /-! ## Connection to Fejer_heat_atom -/
 
-/-- Fejer_heat_atom at t_critical -/
+/-- Fejer_heat_atom at t0_critical (A1 heat parameter corresponding to t_critical). -/
 def Fejer_heat_atom_critical (B τ : ℝ) (ξ : ℝ) : ℝ :=
-  Fejer_heat_atom B t_critical τ ξ
+  Fejer_heat_atom B t0_critical τ ξ
 
-/-- Fejer_heat_atom = phi_shift(+tau) + phi_shift(-tau) (symmetrized) -/
-lemma Fejer_heat_atom_eq_phi_shifts (B τ ξ : ℝ) :
-    Fejer_heat_atom_critical B τ ξ =
-      phi_shift_critical B τ ξ + phi_shift_critical B (-τ) ξ := by
+/-- Fejer_heat_atom = scaled sum of phi_shift(+tau) and phi_shift(-tau). -/
+lemma Fejer_heat_atom_eq_phi_shifts (B τ : ℝ) :
+    ∃ c > 0, ∀ ξ,
+      Fejer_heat_atom_critical B τ ξ =
+        c * (phi_shift_critical B τ ξ + phi_shift_critical B (-τ) ξ) := by
   /- I/O CARD: Fejer_heat_atom_eq_phi_shifts
-     INPUT:  B τ ξ : ℝ
-     OUTPUT: Fejer_heat_atom_critical = phi_shift(+τ) + phi_shift(-τ)
+     INPUT:  B τ : ℝ
+     OUTPUT: Fejer_heat_atom_critical = c * (phi_shift(+τ) + phi_shift(-τ))
      NEED:   Definitions of Fejer_heat_atom, phi_shift, fejer_heat_window
-             The atom is cos-modulated: includes both +tau and -tau shifts
+             exp reparam at t_critical, and scalar factor from heat kernel
      BLOCKS: [Q_Fejer_heat_atom_nonneg_t_critical]
   -/
-  simp only [Fejer_heat_atom_critical, Fejer_heat_atom, phi_shift_critical, phi_shift,
-    fejer_heat_window]
-  ring_nf
-  sorry
+  have ht0 : t0_critical > 0 := t0_critical_pos
+  obtain ⟨c, hc, hdecomp⟩ :=
+    Q3.Proofs.QNonnegAtoms.Fejer_heat_atom_decomposition B t0_critical τ ht0
+  have ht : (1 / (16 * Real.pi ^ 2 * t0_critical)) = t_critical := by
+    -- invert the t0_critical definition
+    have hden : (16 * Real.pi ^ 2 * t_critical) ≠ 0 := by
+      have hpi : 0 < (Real.pi ^ 2) := by
+        exact pow_pos Real.pi_pos 2
+      have h16 : 0 < (16 : ℝ) := by norm_num
+      have h1 : 0 < (16 * Real.pi ^ 2) := mul_pos h16 hpi
+      have hpos : 0 < (16 * Real.pi ^ 2 * t_critical) := mul_pos h1 t_critical_pos
+      exact ne_of_gt hpos
+    by_cases hzero : (16 * Real.pi ^ 2 * t_critical) = 0
+    · exfalso; exact hden hzero
+    · unfold t0_critical
+      field_simp [hzero]
+  refine ⟨c, hc, ?_⟩
+  intro ξ
+  simpa [Fejer_heat_atom_critical, phi_shift_critical, ht] using hdecomp ξ
 
 /-! ## Q on BaseAtomCone at t_critical -/
 
@@ -230,7 +248,67 @@ theorem Q_nonneg_on_base_atoms_at_t_critical (K : ℝ) (hK : K ≥ 1) :
      BLOCKS: [Q_nonneg_base_atoms_summary, main theorem chain]
   -/
   intro g hg
-  sorry
+  have hsubset := Q3.BaseAtomCone_K_subset_AtomCone_K_fixed K t0_critical
+  have hg' : g ∈ AtomCone_K_fixed K t0_critical := hsubset hg
+  have h_atom : ∀ B τ, B > 0 → |τ| + B ≤ K →
+      Q (Fejer_heat_atom B t0_critical τ) ≥ 0 := by
+    intro B τ hB hτB
+    obtain ⟨c, hc_pos, hdecomp⟩ := Fejer_heat_atom_eq_phi_shifts (B:=B) (τ:=τ)
+    have h_int_f :
+        MeasureTheory.Integrable (fun x => a_star x * phi_shift_critical B τ x) := by
+      simpa [phi_shift_critical] using
+        (Q3.Proofs.QNonnegAtoms.phi_shift_integrable_with_a_star
+          (B:=B) (t:=t_critical) (tau:=τ) hB)
+    have h_int_g :
+        MeasureTheory.Integrable (fun x => a_star x * phi_shift_critical B (-τ) x) := by
+      simpa [phi_shift_critical] using
+        (Q3.Proofs.QNonnegAtoms.phi_shift_integrable_with_a_star
+          (B:=B) (t:=t_critical) (tau:=(-τ)) hB)
+    have h_sum_f :
+        Summable (fun k => w_Q k * phi_shift_critical B τ (xi_n k)) := by
+      simpa [phi_shift_critical] using
+        (Q3.Proofs.QNonnegAtoms.phi_shift_prime_summable
+          (B:=B) (t:=t_critical) (tau:=τ) hB)
+    have h_sum_g :
+        Summable (fun k => w_Q k * phi_shift_critical B (-τ) (xi_n k)) := by
+      simpa [phi_shift_critical] using
+        (Q3.Proofs.QNonnegAtoms.phi_shift_prime_summable
+          (B:=B) (t:=t_critical) (tau:=(-τ)) hB)
+    have hQ_scale_add :
+        Q (fun x => c * (phi_shift_critical B τ x + phi_shift_critical B (-τ) x)) =
+          c * (Q (phi_shift_critical B τ) + Q (phi_shift_critical B (-τ))) := by
+      simpa using
+        (Q3.Proofs.QNonnegAtoms.Q_scale_add
+          (f:=fun x => phi_shift_critical B τ x)
+          (g:=fun x => phi_shift_critical B (-τ) x)
+          (c:=c) h_int_f h_int_g h_sum_f h_sum_g)
+    have hQ1 : Q (phi_shift_critical B τ) ≥ 0 :=
+      Q_phi_shift_nonneg_t_critical K B τ hK hB hτB
+    have hτB' : |(-τ)| + B ≤ K := by
+      simpa [abs_neg] using hτB
+    have hQ2 : Q (phi_shift_critical B (-τ)) ≥ 0 :=
+      Q_phi_shift_nonneg_t_critical K B (-τ) hK hB hτB'
+    have hc_nonneg : 0 ≤ c := le_of_lt hc_pos
+    have hsum_nonneg :
+        0 ≤ Q (phi_shift_critical B τ) + Q (phi_shift_critical B (-τ)) := by
+      linarith [hQ1, hQ2]
+    have hQ_nonneg :
+        0 ≤ c * (Q (phi_shift_critical B τ) + Q (phi_shift_critical B (-τ))) := by
+      exact mul_nonneg hc_nonneg hsum_nonneg
+    have h_eq :
+        Q (Fejer_heat_atom B t0_critical τ) =
+          c * (Q (phi_shift_critical B τ) + Q (phi_shift_critical B (-τ))) := by
+      have hfun :
+          (fun x => Fejer_heat_atom B t0_critical τ x) =
+            fun x => c * (phi_shift_critical B τ x + phi_shift_critical B (-τ) x) := by
+        funext x
+        simpa using hdecomp x
+      simpa [hfun] using hQ_scale_add
+    simpa [h_eq] using hQ_nonneg
+  have h_atomcone :=
+    Q3.Proofs.Q_nonneg_lemmas.Q_nonneg_on_atomcone_fixed_of_atoms
+      K t0_critical hK t0_critical_pos h_atom
+  exact h_atomcone g hg'
 
 /-! ## Summary -/
 
