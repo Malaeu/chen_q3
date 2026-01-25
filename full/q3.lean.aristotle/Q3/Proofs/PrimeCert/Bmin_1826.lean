@@ -5,7 +5,7 @@ import Q3.Proofs.Params_Critical
 
 /-!
 Prime-term certificate at t_critical, tau = 0, B = B_min.
-Source: output/prime_cert_tcritical_2026-01-25_1826.txt
+Source: output/prime_cert_tcritical_2026-01-26_0046.txt
 -/
 
 noncomputable section
