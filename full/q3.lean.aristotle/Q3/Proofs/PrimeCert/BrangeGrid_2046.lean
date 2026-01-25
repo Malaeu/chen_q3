@@ -2,8 +2,8 @@ import Mathlib
 import Q3.Proofs.PrimeCert.Defs
 
 /-! Prime B-range margin grid values for t_critical.
-Source: output/prime_cert_brange_tcritical_2026-01-25_2046.txt
-Generated: 2026-01-26 00:26
+Source: full/q3.lean.aristotle/output/prime_cert_brange_tcritical_2026-01-26_0050.txt
+Generated: 2026-01-26 00:50
 Values are rounded *down* to 12 decimal places.
 -/-
 

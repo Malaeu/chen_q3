@@ -6,7 +6,7 @@ import Q3.Proofs.Params_Critical
 
 /-!
 Prime-term B-range certificate at t_critical, tau = 0.
-Source: output/prime_cert_brange_tcritical_2026-01-25_2046.txt
+Source: output/prime_cert_brange_tcritical_2026-01-26_0050.txt
 -/
 
 noncomputable section
