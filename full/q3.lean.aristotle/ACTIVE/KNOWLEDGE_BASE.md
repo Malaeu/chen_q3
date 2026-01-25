@@ -62,6 +62,7 @@ Source of truth:
   - `ACTIVE/proshka_context_single_scale.md` (one‑file packed brief)
   - `scripts/build_proshka_brief.py` (pack builder)
   - `docs/PROSHKA_POLICY.md` (canonical set policy)
+  - `ACTIVE/requests/INDEX.md` (request tree: why -> evidence -> decision -> request)
 
 ## 5) Stats update
 
