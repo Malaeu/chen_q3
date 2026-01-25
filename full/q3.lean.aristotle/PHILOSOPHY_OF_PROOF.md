@@ -94,6 +94,13 @@ These are well-known results. Citations:
 SingleScale.continuous_P_A_shift                  — continuity of shifted symbol at t_critical
 SingleScale.rayleigh_basis0_shift_ge_cstar_quarter — A3 floor at basis0 (t_critical)
 SingleScale.rho_oneK_tcritical_le_cstar_quarter    — numeric cap for prime sum via t‑bridge
+
+### Level 2b: Q3 Single‑scale certificates (1) — TEMPORARY BRIDGE
+```
+Q3.prime_term_le_at_t_critical_axiom — numeric prime‑term cap at t_critical (grid + tail)
+```
+This is currently a certificate-backed axiom in `Q3/Proofs/Q_nonneg_t_critical.lean`
+and is expected to be replaced by a formal certificate proof.
 ```
 These are the current single‑scale assumptions used to close the chain without the
 two‑scale mismatch. They are intended to be replaced by proofs.

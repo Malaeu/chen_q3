@@ -129,6 +129,7 @@ EXPECTED_AXIOMS=(
     "Q3.Weil_criterion"
     "Q3.Schur_test"
     "Q3.Proofs.SingleScale.rayleigh_basis0_shift_ge_cstar_quarter"
+    "Q3.prime_term_le_at_t_critical_axiom"
 )
 
 UNKNOWN_AXIOMS=""
