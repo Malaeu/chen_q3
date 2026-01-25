@@ -3,7 +3,7 @@
 ## Goal
 Provide a **grid + Lipschitz** certificate for the pointwise floor on
 `P_A B_min t_critical` over `Icc (-1/2) (1/2)`, feeding
-`P_A_floor_cert_on_Icc_axiom` in `Q3/Proofs/Q_nonneg_t_critical.lean`.
+`P_A_floor_cert_on_Icc_cert` in `Q3/Proofs/Q_nonneg_t_critical.lean`.
 
 ## Script
 - `scripts/floor_cert_tcritical.py`

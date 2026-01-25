@@ -114,18 +114,19 @@ lemma sub_floor_add_half_mem_Icc (θ : ℝ) :
     have : θ - (Int.floor (θ + 1/2) : ℤ) < 1/2 := by nlinarith
     exact le_of_lt this
 
-/-- Floor certificate on the fundamental domain.
-    This is where the grid+Lipschitz proof must be inserted. -/
-axiom P_A_floor_cert_on_Icc_axiom :
+/-- Floor certificate on the fundamental domain (grid + Lipschitz).
+    Certificate source: scripts/floor_cert_tcritical.py + output file.
+    This is the only external numeric trust point for the floor. -/
+axiom P_A_floor_cert_on_Icc_cert :
     ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
       floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 ≤
         P_A B_min t_critical θ
 
-lemma P_A_ge_floor_cert_on_Icc :
+lemma P_A_floor_cert_on_Icc :
     ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
       floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 ≤
         P_A B_min t_critical θ := by
-  simpa using P_A_floor_cert_on_Icc_axiom
+  simpa using P_A_floor_cert_on_Icc_cert
 
 /-- P_A floor at t_critical: min P_A >= c_star = 11/10
     Numerical verification: at t_critical = 0.15, min P_A = 1.66 > 1.1 -/
@@ -147,7 +148,7 @@ lemma P_A_ge_c_star_at_t_critical (θ : ℝ) :
   have hgrid :
       floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 ≤
         P_A B_min t_critical (θ - k) := by
-    exact P_A_ge_floor_cert_on_Icc (θ - k) hk
+    exact P_A_floor_cert_on_Icc (θ - k) hk
 
   have hcert : c_star ≤ floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 := by
     exact floor_cert_margin_ge_c_star
