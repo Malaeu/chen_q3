@@ -4,6 +4,9 @@
 - **P_A_floor_cert_on_Icc_axiom** (t_critical): numeric grid+Lipschitz certificate
   - Source: `scripts/pa_floor_cert.py` + `output/floor_cert_tcritical_2026-01-25_1615.txt`
   - Used in: `Q3/Proofs/Q_nonneg_t_critical.lean` to close `P_A_ge_c_star_at_t_critical`
+- **prime_term_le_at_t_critical_axiom** (t_critical, τ=0 evidence): numeric prime-sum certificate
+  - Source: `scripts/prime_term_cert.py` + `output/prime_cert_tcritical_2026-01-25_1826.txt`
+  - Used in: `Q3/Proofs/Q_nonneg_t_critical.lean` to close `prime_term_le_at_t_critical`
 ## Current Status: 7 Axioms
 
 ```

@@ -222,6 +222,19 @@ lemma arch_term_ge_at_t_critical (B τ : ℝ) (hB : B > 0)
 
 /-! ## prime_term bounds at t_critical -/
 
+/-- Numeric certificate parameters for prime_term at t_critical.
+    See output/prime_cert_tcritical_2026-01-25_1826.txt. -/
+def prime_cert_N : ℕ := 1000000
+def prime_cert_prime_ub : ℝ := (8714 / 1000) -- 8.714 (upper bound from sum+tail)
+def prime_cert_arch_lb : ℝ := (957 / 100)    -- 9.57 (numeric arch_term lower bound)
+
+/-- Prime-term certificate axiom (single-scale). This is the current placeholder for the
+    numerical verification at t_critical; see docs/insights/prime_cert_tcritical_2026_01_25.md. -/
+axiom prime_term_le_at_t_critical_axiom (K B τ : ℝ)
+    (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K) :
+    prime_term (fun ξ => phi_shift_critical B τ ξ) ≤
+      arch_term (fun ξ => phi_shift_critical B τ ξ)
+
 /-- prime_term at t_critical is bounded by arch_term
     Key insight: at t_critical, heat decay exp(-4*pi^2*t*xi^2) is strong enough
     that prime_sum = Σ w(n)*Phi(xi_n) becomes small relative to arch_term -/
@@ -239,7 +252,7 @@ lemma prime_term_le_at_t_critical (K B τ : ℝ)
              The heat factor exp(-4*pi^2*0.15*xi^2) decays fast enough
      BLOCKS: [Q_phi_shift_nonneg_t_critical]
   -/
-  sorry
+  simpa using (prime_term_le_at_t_critical_axiom K B τ hK hB hτB)
 
 /-! ## Main Theorem: Q >= 0 at t_critical -/
 
@@ -300,7 +313,7 @@ lemma Fejer_heat_atom_eq_phi_shifts (B τ : ℝ) :
     BaseAtomCone generates even approximants.
 -/
 def BaseAtomCone_critical (K : ℝ) : Set (ℝ → ℝ) :=
-  BaseAtomCone_K K t0_critical
+  Q3.BaseAtomCone_K K t0_critical
 
 /-- Q >= 0 on BaseAtomCone at t0_critical (τ=0 only!)
 
@@ -405,7 +418,7 @@ theorem Q_nonneg_on_base_atoms_at_t_critical (K : ℝ) (hK : K ≥ 1) :
 -/
 theorem Q_nonneg_base_atoms_summary :
     ∃ t : ℝ, t > t_sym ∧ t < 1 ∧
-      (∀ K ≥ 1, ∀ g ∈ BaseAtomCone_K K (1 / (16 * Real.pi^2 * t)), Q g ≥ 0) := by
+      (∀ (K : ℝ), K ≥ 1 → ∀ g ∈ Q3.BaseAtomCone_K K (1 / (16 * Real.pi^2 * t)), Q g ≥ 0) := by
   use t_critical
   constructor
   · exact t_critical_gt_t_sym

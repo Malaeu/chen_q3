@@ -18,10 +18,12 @@ Files:
 - carleson_implicit_proof_2026_01_17 2.md
 - carleson_implicit_proof_2026_01_17.md
 - check_axioms_prebuild_a3_floor_2026_01_16.md
+- decision_tree_template.md
 - documentation_discipline.md
 - drift_report_m1_m4.md
 - explore_agent_for_mathlib_search_2026_01_17.md
 - file_organization_aristotle.md
+- floor_cert_tcritical_2026_01_25.md
 - h_cap_numerical_estimates_2026_01_14.md
 - heat_localization_kills_primes_2026_01_16 2.md
 - heat_localization_kills_primes_2026_01_16.md
@@ -32,6 +34,7 @@ Files:
 - localization_argument_full_analysis_2026_01_16.md
 - mgrep_websearch_discovery_2026_01_18.md
 - PERIODIZATION_BOTTLENECK_FIX.md
+- prime_cert_tcritical_2026_01_25.md
 - prime_term_nodes_bridge_2026_01_17 2.md
 - prime_term_nodes_bridge_2026_01_17.md
 - prime_term_shift_K_dependent_2026_01_19.md
