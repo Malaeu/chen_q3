@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
-from decimal import Decimal, getcontext, ROUND_FLOOR
+from decimal import ROUND_FLOOR, Decimal, getcontext
 from pathlib import Path
 
 
@@ -39,7 +39,7 @@ def main() -> None:
             continue
         if line.startswith("i\t"):
             continue
-        if line[0].isdigit() or (line[0] == '-' and len(line) > 1 and line[1].isdigit()):
+        if line[0].isdigit() or (line[0] == "-" and len(line) > 1 and line[1].isdigit()):
             parts = line.split("\t")
             if len(parts) < 3:
                 continue
@@ -52,7 +52,7 @@ def main() -> None:
     if not data:
         raise SystemExit("No data rows parsed.")
 
-    # Build Lean array literal
+    # Build Lean array literal (as ℚ)
     def fmt(d: Decimal) -> str:
         s = format(d, f"f")
         return s
@@ -75,20 +75,34 @@ noncomputable section
 
 namespace Q3.Proofs.FloorCert
 
-def floor_grid_vals : Array ℝ := #[{arr_items}]
+def floor_grid_vals_q : Array ℚ := #[{arr_items}]
+
+def floor_grid_val_q (i : Fin (floor_cert_N + 1)) : ℚ :=
+  floor_grid_vals_q.get! i.1
 
 def floor_grid_val (i : Fin (floor_cert_N + 1)) : ℝ :=
-  floor_grid_vals.get! i.1
+  (floor_grid_val_q i : ℝ)
+
+def floor_cert_min_lb_q : ℚ := (831 / 500)
+
+lemma floor_cert_min_lb_eq_q : (floor_cert_min_lb : ℝ) = floor_cert_min_lb_q := by
+  norm_num [floor_cert_min_lb, floor_cert_min_lb_q]
+
+/-- Table min bound: every grid value is ≥ floor_cert_min_lb. -/
+lemma floor_grid_val_ge_min_lb :
+    ∀ i : Fin (floor_cert_N + 1),
+      floor_cert_min_lb ≤ floor_grid_val i := by
+  intro i
+  have hq : floor_cert_min_lb_q ≤ floor_grid_val_q i := by
+    decide
+  have hq' : (floor_cert_min_lb_q : ℝ) ≤ (floor_grid_val_q i : ℝ) := by
+    exact_mod_cast hq
+  simpa [floor_cert_min_lb_eq_q, floor_grid_val] using hq'
 
 /-- Table-to-function bridge: values are below the true P_A at grid points. -/
 axiom floor_grid_val_le_P_A :
     ∀ i : Fin (floor_cert_N + 1),
       floor_grid_val i ≤ P_A B_min t_critical (floor_grid i)
-
-/-- Table min bound: every grid value is ≥ floor_cert_min_lb. -/
-axiom floor_grid_val_ge_min_lb :
-    ∀ i : Fin (floor_cert_N + 1),
-      floor_cert_min_lb ≤ floor_grid_val i
 
 /-- Grid certificate: min bound holds at every grid point. -/
 lemma P_A_floor_cert_on_grid_cert :

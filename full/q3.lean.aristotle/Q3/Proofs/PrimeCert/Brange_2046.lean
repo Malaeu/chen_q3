@@ -16,12 +16,12 @@ namespace Q3.Proofs.PrimeCert
 open Q3
 
 /-- B-grid on [B_min, B_max] with step prime_cert_B_h. -/
-def prime_b_grid (i : Fin prime_b_grid_vals.size) : ℝ :=
+def prime_b_grid (i : Fin prime_b_grid_vals_q.size) : ℝ :=
   B_min + (i.1 : ℝ) * prime_cert_B_h
 
 /-- Link table grid values to the true margin at grid points. -/
 axiom prime_b_grid_val_le_margin :
-    ∀ i : Fin prime_b_grid_vals.size,
+    ∀ i : Fin prime_b_grid_vals_q.size,
       prime_b_grid_val i ≤
         arch_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) -
           prime_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ)
@@ -40,7 +40,7 @@ axiom prime_margin_Lipschitz_on_Brange :
 /-- Grid cover certificate on [B_min, B_max]. -/
 axiom prime_b_grid_cover_cert :
     ∀ B ∈ Set.Icc B_min prime_cert_B_max,
-      ∃ i : Fin prime_b_grid_vals.size,
+      ∃ i : Fin prime_b_grid_vals_q.size,
         |B - prime_b_grid i| ≤ prime_cert_B_h / 2
 
 /-- Margin certificate on B-range at t_critical (tau = 0). -/

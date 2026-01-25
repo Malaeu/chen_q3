@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
-from decimal import Decimal, getcontext, ROUND_FLOOR
+from decimal import ROUND_FLOOR, Decimal, getcontext
 from pathlib import Path
 
 
@@ -72,15 +72,29 @@ noncomputable section
 namespace Q3.Proofs.PrimeCert
 
 /-- Grid margins for B in [B_min, prime_cert_B_max] with step prime_cert_B_h. -/
-def prime_b_grid_vals : Array ℝ := #[{arr_items}]
+def prime_b_grid_vals_q : Array ℚ := #[{arr_items}]
 
-def prime_b_grid_val (i : Fin (prime_b_grid_vals.size)) : ℝ :=
-  prime_b_grid_vals.get! i.1
+def prime_b_grid_val_q (i : Fin (prime_b_grid_vals_q.size)) : ℚ :=
+  prime_b_grid_vals_q.get! i.1
+
+def prime_b_grid_val (i : Fin (prime_b_grid_vals_q.size)) : ℝ :=
+  (prime_b_grid_val_q i : ℝ)
+
+def prime_cert_margin_lb_q : ℚ := (1 / 2)
+
+lemma prime_cert_margin_lb_eq_q : (prime_cert_margin_lb : ℝ) = prime_cert_margin_lb_q := by
+  norm_num [prime_cert_margin_lb, prime_cert_margin_lb_q]
 
 /-- Table min bound: every grid margin is ≥ prime_cert_margin_lb. -/
-axiom prime_b_grid_val_ge_lb :
-    ∀ i : Fin (prime_b_grid_vals.size),
-      prime_cert_margin_lb ≤ prime_b_grid_val i
+lemma prime_b_grid_val_ge_lb :
+    ∀ i : Fin (prime_b_grid_vals_q.size),
+      prime_cert_margin_lb ≤ prime_b_grid_val i := by
+  intro i
+  have hq : prime_cert_margin_lb_q ≤ prime_b_grid_val_q i := by
+    decide
+  have hq' : (prime_cert_margin_lb_q : ℝ) ≤ (prime_b_grid_val_q i : ℝ) := by
+    exact_mod_cast hq
+  simpa [prime_cert_margin_lb_eq_q, prime_b_grid_val] using hq'
 
 end Q3.Proofs.PrimeCert
 """
