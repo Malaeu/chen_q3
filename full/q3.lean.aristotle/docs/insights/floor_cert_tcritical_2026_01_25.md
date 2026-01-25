@@ -9,7 +9,8 @@ Provide a **grid + Lipschitz** certificate for the pointwise floor on
 - `scripts/floor_cert_tcritical.py`
 
 ## Output
-- `output/floor_cert_tcritical_2026-01-25_2145.txt`
+- `output/floor_cert_tcritical_2026-01-25_2219.txt`
+- `output/floor_grid_tcritical_2026-01-25_2219.txt` (full grid values)
 
 ## Parameters (Lean constants)
 - `floor_cert_N      = 4000`

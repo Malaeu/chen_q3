@@ -80,7 +80,7 @@ def P_A_critical (B : ℝ) (θ : ℝ) : ℝ :=
 
 /-- Numeric certificate parameters (grid + Lipschitz) for t_critical.
     See docs/insights/floor_cert_tcritical_2026_01_25.md and
-    output/floor_cert_tcritical_2026-01-25_2145.txt. -/
+    output/floor_cert_tcritical_2026-01-25_2219.txt. -/
 def floor_cert_N : ℕ := 4000
 def floor_cert_min_lb : ℝ := (831 / 500)   -- 1.662
 def floor_cert_L_ub : ℝ := (2493 / 10)    -- 249.3
@@ -98,6 +98,12 @@ lemma floor_cert_L_ub_nonneg : 0 ≤ floor_cert_L_ub := by
 
 lemma floor_cert_h_pos : 0 < floor_cert_h := by
   norm_num [floor_cert_h]
+
+lemma floor_cert_h_ne_zero : (floor_cert_h : ℝ) ≠ 0 := by
+  nlinarith [floor_cert_h_pos]
+
+lemma floor_cert_N_mul_h : (floor_cert_N : ℝ) * floor_cert_h = 1 := by
+  norm_num [floor_cert_N, floor_cert_h]
 
 
 /-- P_A is invariant under integer shifts: P_A(θ + k) = P_A(θ). -/
@@ -138,11 +144,80 @@ axiom P_A_Lipschitz_on_Icc_cert :
         floor_cert_L_ub * |x - y|
 
 /-- Grid cover certificate: every θ in Icc is within h/2 of some grid point. -/
-axiom floor_cert_grid_cover_cert :
+lemma floor_cert_grid_cover_cert :
     ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
       ∃ i : Fin (floor_cert_N + 1),
         floor_grid i ∈ Set.Icc (-1/2 : ℝ) (1/2) ∧
-          |θ - floor_grid i| ≤ floor_cert_h / 2
+          |θ - floor_grid i| ≤ floor_cert_h / 2 := by
+  intro θ hθ
+  -- rescale to [0, N]
+  set t : ℝ := (θ + 1/2) / floor_cert_h
+  have ht0 : 0 ≤ t := by
+    have hθ' : 0 ≤ θ + 1/2 := by
+      have hθl : (-1/2 : ℝ) ≤ θ := hθ.1
+      nlinarith
+    exact div_nonneg hθ' (le_of_lt floor_cert_h_pos)
+  have htN : t ≤ (floor_cert_N : ℝ) := by
+    have hθ' : θ + 1/2 ≤ 1 := by
+      have hθu : θ ≤ (1/2 : ℝ) := hθ.2
+      nlinarith
+    -- (θ+1/2)/h ≤ N since N*h = 1
+    have hdiv : (θ + 1/2) / floor_cert_h ≤ (floor_cert_N : ℝ) := by
+      have hmul : θ + 1/2 ≤ (floor_cert_N : ℝ) * floor_cert_h := by
+        simpa [floor_cert_N_mul_h] using hθ'
+      exact (div_le_iff₀ (by exact floor_cert_h_pos)).2 hmul
+    simpa [t] using hdiv
+  -- choose nearest grid index via floor(t+1/2)
+  set n : ℕ := Nat.floor (t + 1/2)
+  have hn_le : (n : ℝ) ≤ t + 1/2 := Nat.floor_le (by nlinarith [ht0])
+  have ht_lt : t + 1/2 < (n : ℝ) + 1 := Nat.lt_floor_add_one (t + 1/2)
+  have hn_lt : n < floor_cert_N + 1 := by
+    have hnonneg : 0 ≤ t + 1/2 := by nlinarith [ht0]
+    have h1 : t + 1/2 ≤ (floor_cert_N : ℝ) + 1/2 := by
+      linarith [htN]
+    have h2 : (floor_cert_N : ℝ) + 1/2 < (floor_cert_N : ℝ) + 1 := by
+      nlinarith
+    have htop' : t + 1/2 < (floor_cert_N : ℝ) + 1 := lt_of_le_of_lt h1 h2
+    have htop : t + 1/2 < ((floor_cert_N + 1 : ℕ) : ℝ) := by
+      simpa using htop'
+    exact (Nat.floor_lt hnonneg).2 htop
+  have hn_leN : n ≤ floor_cert_N := Nat.lt_succ_iff.mp hn_lt
+  -- build Fin index
+  refine ⟨⟨n, hn_lt⟩, ?_, ?_⟩
+  · -- grid point in Icc
+    have h0 : (0 : ℝ) ≤ (n : ℝ) := by exact_mod_cast (Nat.zero_le n)
+    have hN : (n : ℝ) ≤ (floor_cert_N : ℝ) := by exact_mod_cast hn_leN
+    have hgrid_lo : (-1/2 : ℝ) ≤ floor_grid ⟨n, hn_lt⟩ := by
+      simp [floor_grid]
+      nlinarith [h0, floor_cert_h_pos]
+    have hgrid_hi : floor_grid ⟨n, hn_lt⟩ ≤ (1/2 : ℝ) := by
+      simp [floor_grid]
+      -- -1/2 + n*h ≤ -1/2 + N*h = 1/2
+      have hmul : (n : ℝ) * floor_cert_h ≤ (floor_cert_N : ℝ) * floor_cert_h := by
+        exact mul_le_mul_of_nonneg_right hN (le_of_lt floor_cert_h_pos)
+      nlinarith [hmul, floor_cert_N_mul_h]
+    exact ⟨hgrid_lo, hgrid_hi⟩
+  · -- distance ≤ h/2
+    have h_repr : t * floor_cert_h = θ + 1/2 := by
+      unfold t
+      field_simp [floor_cert_h_ne_zero]
+    have hdiff :
+        θ - floor_grid ⟨n, hn_lt⟩ = floor_cert_h * (t - n) := by
+      simp [floor_grid]
+      -- use t*h = θ+1/2
+      nlinarith [h_repr]
+    have habs_t : |t - n| ≤ (1/2 : ℝ) := by
+      have h1 : (n : ℝ) - 1/2 ≤ t := by nlinarith [hn_le]
+      have h2 : t ≤ (n : ℝ) + 1/2 := by nlinarith [ht_lt]
+      exact (abs_le.mpr ⟨by nlinarith [h1], by nlinarith [h2]⟩)
+    have habs : |θ - floor_grid ⟨n, hn_lt⟩| ≤ floor_cert_h / 2 := by
+      -- |θ - grid| = h*|t-n|
+      have hmul : |θ - floor_grid ⟨n, hn_lt⟩| = floor_cert_h * |t - n| := by
+        simp [hdiff, abs_mul, abs_of_pos floor_cert_h_pos]
+      have hmul' : floor_cert_h * |t - n| ≤ floor_cert_h * (1/2 : ℝ) := by
+        exact mul_le_mul_of_nonneg_left habs_t (le_of_lt floor_cert_h_pos)
+      simpa [hmul, mul_div_assoc] using hmul'
+    simpa using habs
 
 /-! ## Derived floor on Icc from grid + Lipschitz -/
 

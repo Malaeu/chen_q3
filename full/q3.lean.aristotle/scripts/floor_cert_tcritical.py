@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import math
 from datetime import datetime
+
 import mpmath as mp
 
 # Certificate for P_A floor at t_critical on Icc(-1/2, 1/2)
@@ -15,23 +16,27 @@ t_critical = mp.mpf(3) / mp.mpf(20)  # 0.15
 h = mp.mpf(1) / mp.mpf(4000)  # 0.00025
 
 # margins
-L_margin = mp.mpf('1.10')  # 10% safety factor
+L_margin = mp.mpf("1.10")  # 10% safety factor
 
 # functions
 pi = mp.pi
 
+
 def a(xi: mp.mpf) -> mp.mpf:
-    z = mp.mpf('0.25') + 1j * pi * xi
+    z = mp.mpf("0.25") + 1j * pi * xi
     return mp.log(pi) - mp.re(mp.digamma(z))
+
 
 def w(B: mp.mpf, t: mp.mpf, xi: mp.mpf) -> mp.mpf:
     lin = 1 - abs(xi) / B
     if lin <= 0:
         return mp.mpf(0)
-    return lin * mp.e**(-4 * pi**2 * t * xi**2)
+    return lin * mp.e ** (-4 * pi**2 * t * xi**2)
+
 
 def g(B: mp.mpf, t: mp.mpf, xi: mp.mpf) -> mp.mpf:
     return a(xi) * w(B, t, xi)
+
 
 def P_A(B: mp.mpf, t: mp.mpf, theta: mp.mpf) -> mp.mpf:
     # support |theta + m| <= B => m in [ceil(-B-theta), floor(B-theta)]
@@ -41,6 +46,7 @@ def P_A(B: mp.mpf, t: mp.mpf, theta: mp.mpf) -> mp.mpf:
     for m in range(m_min, m_max + 1):
         s += g(B, t, theta + m)
     return 2 * pi * s
+
 
 # grid evaluation
 N = int(mp.nint((mp.mpf(1) / h)))  # number of steps across length 1
@@ -85,8 +91,9 @@ print("max_deriv", max_deriv)
 print("L_ub_up", L_ub_up)
 print("cert_margin", cert_margin)
 
-# write file
-out_path = f"/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/full/q3.lean.aristotle/output/floor_cert_tcritical_{stamp}.txt"
+out_dir = "/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/full/q3.lean.aristotle/output"
+# write summary file
+out_path = f"{out_dir}/floor_cert_tcritical_{stamp}.txt"
 with open(out_path, "w", encoding="utf-8") as f:
     f.write(f"floor_cert_tcritical {stamp}\n")
     f.write(f"B_min = {B_min}\n")
@@ -99,3 +106,18 @@ with open(out_path, "w", encoding="utf-8") as f:
     f.write(f"cert_margin = {cert_margin}\n")
 
 print("wrote", out_path)
+
+# write grid values (audit)
+grid_path = f"{out_dir}/floor_grid_tcritical_{stamp}.txt"
+with open(grid_path, "w", encoding="utf-8") as f:
+    f.write(f"floor_grid_tcritical {stamp}\n")
+    f.write(f"B_min = {B_min}\n")
+    f.write(f"t_critical = {t_critical}\n")
+    f.write(f"grid_step_h = {h}\n")
+    f.write("i\ttheta\tP_A\n")
+    theta = theta0
+    for i, v in enumerate(vals):
+        f.write(f"{i}\t{theta}\t{v}\n")
+        theta += h
+
+print("wrote", grid_path)
