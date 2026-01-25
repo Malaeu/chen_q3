@@ -22,6 +22,7 @@ LaTeX <-> Lean parameter conversion:
 import Q3.Axioms
 import Q3.Proofs.Params_Critical
 import A3_FLOOR_v20_bounds_core
+import Q3.Proofs.A3_Floor_Main
 import Q3.Proofs.ShiftedWindows
 import Q3.Proofs.Q_nonneg_atoms_helpers
 import Q3.Proofs.Q_nonneg_lemmas
@@ -78,6 +79,52 @@ lemma phi_shift_critical_nonneg (B τ ξ : ℝ) :
 def P_A_critical (B : ℝ) (θ : ℝ) : ℝ :=
   P_A_shift B t_critical 0 θ
 
+/-- Numeric certificate parameters (grid + Lipschitz) for t_critical.
+    See docs/insights/floor_cert_tcritical_2026_01_25.md and
+    output/floor_cert_tcritical_2026-01-25_1615.txt. -/
+def floor_cert_min_lb : ℝ := (83 / 50)
+def floor_cert_L_ub : ℝ := (180 : ℝ)
+def floor_cert_h : ℝ := (1 / 4000 : ℝ)
+
+lemma floor_cert_margin_ge_c_star : c_star ≤ floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 := by
+  -- 83/50 - 180*(1/4000)/2 = 655/400 = 1.6375 > 11/10
+  norm_num [c_star, floor_cert_min_lb, floor_cert_L_ub, floor_cert_h]
+
+
+/-- P_A is invariant under integer shifts: P_A(θ + k) = P_A(θ). -/
+lemma P_A_add_int (B t : ℝ) (k : ℤ) (θ : ℝ) :
+    P_A B t (θ + k) = P_A B t θ := by
+  classical
+  unfold P_A
+  have htsum :
+      (∑' m : ℤ, g B t (θ + k + m)) = ∑' m : ℤ, g B t (θ + m) := by
+    simpa [add_assoc, add_left_comm, add_comm] using
+      (Equiv.tsum_eq (Equiv.addRight k) (fun m : ℤ => g B t (θ + m)))
+  simpa [add_assoc] using htsum
+
+/-- Reduce any θ to the fundamental domain [-1/2, 1/2] by subtracting floor(θ + 1/2). -/
+lemma sub_floor_add_half_mem_Icc (θ : ℝ) :
+    θ - (Int.floor (θ + 1/2) : ℤ) ∈ Set.Icc (-1/2) (1/2) := by
+  have h₁ : ((Int.floor (θ + 1/2) : ℤ) : ℝ) ≤ θ + 1/2 := by
+    exact Int.floor_le (θ + 1/2)
+  have h₂ : θ + 1/2 < ((Int.floor (θ + 1/2) : ℤ) : ℝ) + 1 := by
+    exact Int.lt_floor_add_one (θ + 1/2)
+  constructor
+  · nlinarith
+  ·
+    have : θ - (Int.floor (θ + 1/2) : ℤ) < 1/2 := by nlinarith
+    exact le_of_lt this
+
+/-- Floor certificate on the fundamental domain.
+    This is where the grid+Lipschitz proof must be inserted. -/
+lemma P_A_ge_floor_cert_on_Icc :
+    ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2),
+      floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 ≤
+        P_A B_min t_critical θ := by
+  -- TODO: insert formal certificate from scripts/pa_floor_cert.py
+  -- Grid + Lipschitz margin on Icc [-1/2, 1/2].
+  sorry
+
 /-- P_A floor at t_critical: min P_A >= c_star = 11/10
     Numerical verification: at t_critical = 0.15, min P_A = 1.66 > 1.1 -/
 lemma P_A_ge_c_star_at_t_critical (θ : ℝ) :
@@ -85,11 +132,37 @@ lemma P_A_ge_c_star_at_t_critical (θ : ℝ) :
   /- I/O CARD: P_A_ge_c_star_at_t_critical
      INPUT:  θ : ℝ
      OUTPUT: P_A_critical B_min θ ≥ c_star (= 11/10)
-     NEED:   Numerical verification that min P_A(θ) = 1.66 > 1.1 at t = 0.15
-             This follows from P_A floor INCREASING with t (heat decay suppresses harmonics)
+     NEED:   Floor certificate on Icc [-1/2,1/2] (see P_A_ge_floor_cert_on_Icc)
      BLOCKS: [arch_term_ge_at_t_critical, Q_phi_shift_nonneg_t_critical]
   -/
-  sorry
+  have hPA : P_A_critical B_min θ = P_A B_min t_critical θ := by
+    simp [P_A_critical, Q3.P_A_shift, P_A, Q3.g_shift, Q3.phi_shift, g, w, Q3.fejer_heat_window]
+
+  let k : ℤ := Int.floor (θ + 1/2)
+  have hk : θ - k ∈ Set.Icc (-1/2 : ℝ) (1/2) := by
+    simpa [k] using (sub_floor_add_half_mem_Icc (θ := θ))
+
+  have hgrid :
+      floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 ≤
+        P_A B_min t_critical (θ - k) := by
+    exact P_A_ge_floor_cert_on_Icc (θ - k) hk
+
+  have hcert : c_star ≤ floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 := by
+    exact floor_cert_margin_ge_c_star
+
+  have hshift : P_A B_min t_critical θ = P_A B_min t_critical (θ - k) := by
+    -- use periodicity with integer shift k
+    simpa [sub_eq_add_neg, add_assoc, add_left_comm, add_comm] using
+      (P_A_add_int (B := B_min) (t := t_critical) (k := k) (θ := θ - k))
+
+  have hPAθ : c_star ≤ P_A B_min t_critical θ := by
+    have h1 : c_star ≤ P_A B_min t_critical (θ - k) := le_trans hcert hgrid
+    simpa [hshift] using h1
+
+  have : c_star ≤ P_A_critical B_min θ := by
+    simpa [hPA] using hPAθ
+
+  exact this
 
 /-! ## arch_term bounds at t_critical -/
 
