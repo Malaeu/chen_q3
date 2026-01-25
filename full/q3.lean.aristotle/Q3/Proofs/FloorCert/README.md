@@ -21,6 +21,7 @@ scripts/floor_grid_to_lean.py \
 Primary evidence file:
 - `full/q3.lean.aristotle/output/floor_cert_tcritical_2026-01-25_2219.txt`
 - `full/q3.lean.aristotle/output/floor_grid_tcritical_2026-01-25_2219.txt`
+- `full/q3.lean.aristotle/output/lipschitz_cert_tcritical_2026-01-25_2350.txt`
 
 Integration point:
 - `full/q3.lean.aristotle/Q3/Proofs/Q_nonneg_t_critical.lean`
