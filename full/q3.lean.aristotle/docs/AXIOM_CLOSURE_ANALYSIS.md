@@ -15,6 +15,9 @@ Level 1 (1):  Weil_criterion_tau0
 Level 2 (2):  PrimeCert.prime_b_grid_val_le_margin, PrimeCert.prime_margin_Lipschitz_on_Brange
 ```
 
+PrimeCert evidence is pinned by sha256 in `Q3/Proofs/PrimeCert/README.md`
+and verified in `scripts/check_axioms.sh`.
+
 ## Recently Closed
 
 | Axiom | Method | Date |

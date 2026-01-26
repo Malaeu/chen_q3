@@ -53,6 +53,7 @@ echo 'import Q3.Main
 - One‑scale numeric certificates (t_critical, B‑range):  
   `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin`,  
   `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
+  (evidence files hash‑checked in `scripts/check_axioms.sh`)
 
 ## Related entry points
 

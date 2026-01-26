@@ -143,8 +143,9 @@ Decision tree + file pointers live in `docs/INSIGHTS.md` (search for “нетр
 
 ## Active Next Step (current mainline)
 
-1) Validate/close PrimeCert axioms:
+1) PrimeCert axioms are now **certificate-backed** (hash-checked):
    `prime_b_grid_val_le_margin`, `prime_margin_Lipschitz_on_Brange`.
+   Next: analytic closure (Option A) or keep as cert axioms.
 2) Keep `Weil_criterion_tau0` as external classical axiom.
 3) Revisit τ‑uniform bounds only after a new kernel model (optional, off‑chain).
 
@@ -194,8 +195,8 @@ so we never block the main closure on analytic infrastructure.
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
 | `Weil_criterion_tau0` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
-| `Proofs.PrimeCert.prime_b_grid_val_le_margin` | Numeric certificate | Cert proof/validation | close or keep as cert axiom | **AXIOM (cert)** |
-| `Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` | Numeric certificate | Cert proof/validation | close or keep as cert axiom | **AXIOM (cert)** |
+| `Proofs.PrimeCert.prime_b_grid_val_le_margin` | Numeric certificate (hash-checked) | Analytic closure | long-term Option A | **AXIOM (cert)** |
+| `Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` | Numeric certificate (hash-checked) | Analytic closure | long-term Option A | **AXIOM (cert)** |
 
 ## Progress Log (2026-01-16)
 

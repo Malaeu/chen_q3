@@ -113,7 +113,7 @@
   CI hash check added in `scripts/check_axioms.sh` (uses `output/prime_cert_*_2026-01-26_*`).
 - Success check: `lake env lean Q3/Proofs/PrimeCert/Brange_2046.lean`,
   then `./scripts/check_axioms.sh` (only `Weil_criterion_tau0` + PrimeCert remain).
-- Status: **in progress** (need to decide Option A vs B).
+- Status: **Option B implemented**; Option A (analytic closure) remains long‑term.
 
 ---
 
