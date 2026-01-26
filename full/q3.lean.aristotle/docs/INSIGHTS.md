@@ -51,6 +51,8 @@
     (likely move to a Fourier-positive/PD cone; then BaseAtomCone τ=0 becomes the generator).
   - Option C: replace A1/A2/T5 with a different positivity transfer (fallback; expensive).
 - Success check: after refactor, `#print axioms Q3.Main.RH_of_Weil_and_Q3` drops `prime_term_le_at_t_critical_axiom`.
+- **Status update (2026-01-26):** mainline now uses `Weil_cone_tau0` + `W_K_tau0`
+  (τ=0, B-range), so the τ‑uniform prime‑term axiom is no longer in the RH chain.
 - Note: `q3search`/`websearch` are not available in this container; use `rg` + local docs as fallback.
 
 ## Synthesis (2026-01-23, in progress) — fixed‑t/τ=0 one‑scale closure
@@ -87,7 +89,7 @@
   `integral_P_A_shift_eq_arch_term` (`Q3/Proofs/ShiftedWindows.lean`) and prove
   `arch_term ≥ c_star/4` via a numeric/interval lemma in `Q3/Proofs/Q_nonneg_t_critical.lean`.
 - Success check: `lake env lean Q3/Proofs/SingleScale_Assumptions.lean`
-  then `./scripts/check_axioms.sh` (only `Weil_criterion` + `Schur_test` remain).
+  then `./scripts/check_axioms.sh` (only `Weil_criterion_tau0` + PrimeCert axioms remain).
 - Blocker: no current floor lemma at `t_critical`; likely needs numeric/interval proof
   or a monotonicity lemma for `P_A` in `t`.
 

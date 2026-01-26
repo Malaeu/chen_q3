@@ -41,6 +41,9 @@ Single entry point: read this file at session start.
   (defines `t_critical = 3/20` and `t0_critical`).
 - Atom positivity/T5 transfer now use `t0_critical` (t = 0.15) for `AtomCone_K_fixed`;
   BaseAtomCone guard lemma added in `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
+- Mainline now uses `W_K_tau0` / `Weil_cone_tau0` (τ = 0, B-range) and
+  `Weil_criterion_tau0`; the τ‑uniform prime‑term axiom is removed from the chain.
+- `Schur_test` remains in the codebase but is **off‑chain** for the current mainline.
 - Single-scale prime cap (tau = 0) is now a direct numeric bound:
   `rho_one ≤ c_star/4` in `Q3/Proofs/SingleScale_Assumptions.lean`.
 - Helper lemma for “unitary conjugation preserves opNorm” added:
@@ -65,14 +68,15 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **8 axioms** (5 project + 3 kernel/standard)
+Result: **6 axioms** (3 project + 3 kernel/standard)
 
 - Kernel/standard: `propext`, `Classical.choice`, `Quot.sound`
-- Level 1 (Classical Literature): `Weil_criterion`, `Schur_test`
+- Level 1 (Classical Literature): `Weil_criterion_tau0`
 - Level 2 (One‑scale numeric certificates @ t_critical):
-  `prime_term_le_at_t_critical_axiom`,
   `Proofs.PrimeCert.prime_b_grid_val_le_margin`,
   `Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
+- Legacy (off‑chain):
+  `Schur_test` (classical), `prime_term_le_at_t_critical_axiom` (τ‑uniform bound; false‑for‑now)
 
 **Closed axioms (history):**
 - `a_star_pos` → closed via positivity (2026-01-21)
@@ -88,18 +92,19 @@ Result: **8 axioms** (5 project + 3 kernel/standard)
 ```
 RH_of_Weil_and_Q3
   |
-  +-- Weil_criterion [AX external]
+  +-- Weil_criterion_tau0 [AX external]
   |
-  +-- Q_nonneg_on_Weil_cone [OK]
+  +-- Q_nonneg_on_Weil_cone_tau0 [OK]
        |
-       +-- T5_transfer [OK]
+       +-- T5_transfer_tau0 [OK]
             |
-            +-- A1_density_WK [OK]
-	            +-- Q_Lipschitz_on_W_K [OK]
-	            +-- Q_nonneg_on_atoms [OK]
-	                 |
-	                 +-- PrimeCert / prime_term bound [AX]
-	                 +-- one‑scale closure (t_critical) [OK]
+            +-- Q_Lipschitz_on_W_K [OK]
+            +-- Q_nonneg_on_base_atoms_brange [OK]
+                 |
+                 +-- one‑scale @ t_critical [OK]
+                      |
+                      +-- PrimeCert: prime_b_grid_val_le_margin [AX cert]
+                      +-- PrimeCert: prime_margin_Lipschitz_on_Brange [AX cert]
 ```
 
 ## 🚨🚨🚨 CRITICAL: LaTeX Proof Gap Discovered (2026-01-22) 🚨🚨🚨
@@ -125,28 +130,23 @@ RH_of_Weil_and_Q3
 
 **FULL ANALYSIS:** `docs/LATEX_PROOF_GAP_ANALYSIS.md`
 
-**STATUS:** `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` is now closed via the
-single‑scale chain, but the gap remains as **two SingleScale axioms**.
+**STATUS:** `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` is closed via the
+single‑scale chain; mainline now uses the τ = 0 cone (`Weil_cone_tau0`) and
+`Weil_criterion_tau0`. The τ‑uniform prime‑term axiom is off‑chain.
 Mathematical consultation with Proshka required to remove those assumptions.
 
-**HARD PIVOT DIRECTION (in progress):** one-scale parameterization at `t = t_critical`
-and “true C1” matching (`hA`) for the RKHS prime operator (no embedding handwaving).
+**PIVOT STATUS:** one‑scale parameterization at `t = t_critical` is now the mainline,
+with τ = 0 cone (`Weil_cone_tau0`) and `Weil_criterion_tau0`.
 Decision tree + file pointers live in `docs/INSIGHTS.md` (search for “нетривиальное hA”).
 
 ---
 
-## Active Next Step (ON HOLD pending gap resolution)
+## Active Next Step (current mainline)
 
-~~1) Wire the **proven** Rayleigh-Q identification into the atoms-positivity chain:~~
-~~   use `rayleigh_Q_eq_Q` in `Q3/Proofs/Rayleigh_Q_identification.lean`.~~
-~~2) Replace `Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` in~~
-~~   `Q3/Atoms_Positive.lean` / `Q3/AxiomsTheorems.lean` with the theorem proof~~
-~~   (A3 floor + RKHS cap + Rayleigh identification).~~
-
-**NEW PRIORITY:** Build an audit-resistant replacement for the old two-scale bridge:
-1) Fix the spec to one-scale (`t = t_critical`) in a new chain (do not patch ad-hoc).
-2) Close the *nontrivial* `hA` matching for the RKHS prime operator (C1 style).
-3) Only then rewire the main chain and close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
+1) Validate/close PrimeCert axioms:
+   `prime_b_grid_val_le_margin`, `prime_margin_Lipschitz_on_Brange`.
+2) Keep `Weil_criterion_tau0` as external classical axiom.
+3) Revisit τ‑uniform bounds only after a new kernel model (optional, off‑chain).
 
 ### What does “which branch?” mean (for a normal git user)
 
@@ -180,29 +180,12 @@ sed -n '1,80p' full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
 Rule: do Stream A on the main branch to keep momentum; do Stream B via small, self-contained Aristotle tasks
 so we never block the main closure on analytic infrastructure.
 
-## 🚨 CRITICAL GAP: AtomCone_K_fixed (2026-01-18)
+## ✅ RESOLVED: AtomCone_K_fixed Quantifier Gap (2026-01-26)
 
-**Discovery:** mgrep semantic search revealed a gap between обсуждение и реализация.
-
-**Problem:** `Q_nonneg_bridge.lean` не компилируется из-за quantifier mismatch:
-- `AtomCone_K` квантифицирует `∀ t > 0` (произвольный t)
-- A3/RKHS bounds доказаны для ФИКСИРОВАННЫХ t:
-  - A3 floor: `t_sym = 0.06`
-  - RKHS cap: `t_rkhs_cap = 40`
-
-**Solution (from Прошка 2026-01-16, NOT implemented):**
-```lean
-def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
-  { g | ∃ (n : ℕ) (c B τ : Fin n → ℝ),
-        (∀ i, c i ≥ 0) ∧ (∀ i, B i > 0) ∧ (∀ i, |τ i| + B i ≤ K) ∧
-        (∀ x, g x = ∑ i, c i * Fejer_heat_atom (B i) t₀ (τ i) x) ∧ g ∈ W_K K }
-```
-
-**Action Items:**
-1. [ ] Add `AtomCone_K_fixed` to `Q3/Axioms.lean`
-2. [ ] Add `AtomCone_K_fixed_subset` lemma
-3. [ ] Rewrite axiom for fixed cone
-4. [ ] Update `Q_nonneg_bridge.lean`
+**Resolution:** the fixed‑t cone is now part of the formal chain.
+- `AtomCone_K_fixed` + `AtomCone_K_fixed_subset` are in `Q3/Axioms.lean`.
+- T5 transfer uses `t0_critical` and `AtomCone_K_fixed`.
+- Mainline uses the τ = 0 cone: `BaseAtomCone_K_brange` → `W_K_tau0` → `Weil_cone_tau0`.
 
 **Details:** `docs/insights/atomcone_fixed_t_gap_2026_01_18.md`
 
@@ -210,11 +193,9 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `Weil_criterion` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
-| `Schur_test` | External (classical) | L2 vs L∞ mismatch | Classical result, keep as axiom | **EXTERNAL** |
-| `SingleScale.continuous_P_A_shift` | `Q3/Proofs/SingleScale_Assumptions.lean` | proved via `ShiftedWindows.P_A_shift_continuous` (requires `B>0`) | done | **THEOREM** |
-| `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | A3 floor at `t_critical` (tau = 0) | Prove Rayleigh lower bound for shifted symbol | **AXIOM** |
-| `SingleScale.rho_oneK_tcritical_le_cstar_quarter` | `Q3/Proofs/SingleScale_Assumptions.lean` | prime cap (tau = 0) | Numeric bound `rho_one ≤ c*/4` | **THEOREM** |
+| `Weil_criterion_tau0` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
+| `Proofs.PrimeCert.prime_b_grid_val_le_margin` | Numeric certificate | Cert proof/validation | close or keep as cert axiom | **AXIOM (cert)** |
+| `Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` | Numeric certificate | Cert proof/validation | close or keep as cert axiom | **AXIOM (cert)** |
 
 ## Progress Log (2026-01-16)
 

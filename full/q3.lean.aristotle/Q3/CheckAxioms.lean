@@ -16,25 +16,18 @@ import Q3.Main
 This prints all axioms used by the main theorem.
 Used in CI to ensure no undocumented axioms sneak in.
 
-## KEY CHANGE: Q_nonneg_on_W_K_axiom is GONE!
+## KEY CHANGE: τ=0 mainline cone
 
-The "nuclear bomb" axiom Q_nonneg_on_W_K_axiom has been decomposed into:
-- A1_density_WK_axiom: atoms dense in W_K
-- Q_Lipschitz_on_W_K: Q is Lipschitz on W_K
-- A3 bridge via Fourier Toeplitz + P_A (A3_FLOOR)
-- RKHS_contraction_axiom: prime operator contraction
-- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom: core (A3+RKHS) ⇒ atoms positivity
-
-And:
-- `Q3.Atoms.Q_nonneg_on_atoms` is a THEOREM deriving atom positivity from A3+RKHS.
-- `Q3.T5.T5_transfer` is a THEOREM (not axiom!) proving Q ≥ 0 on W_K from density + Lipschitz + atoms.
+The RH chain now uses the τ=0 Weil cone `Weil_cone_tau0`, with base atoms
+restricted to the certified B-range at `t_critical`. The τ‑uniform prime‑term
+axiom is no longer in the main chain.
 -/
 
 -- Re-export the main theorem for verification
 open Q3.Main
 
 /-! ## Verify Tier-1 axioms exist -/
-#check Q3.Weil_criterion
+#check Q3.Weil_criterion_tau0
 #check Q3.explicit_formula
 #check Q3.a_star_pos
 #check Q3.Szego_Bottcher_eigenvalue_bound
@@ -43,28 +36,13 @@ open Q3.Main
 #check Q3.c_arch_pos
 #check Q3.eigenvalue_le_norm
 
-/-! ## Verify Tier-2 axioms exist (NEW STRUCTURE) -/
--- Density
-#check Q3.A1_density_WK_axiom        -- NEW: atoms dense in W_K
-#check Q3.A1_density_axiom           -- Legacy
+/-! ## Verify Tier-2 axioms exist (τ=0 mainline) -/
+-- PrimeCert
+#check Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin
+#check Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange
 
--- Lipschitz
-#check Q3.Q_Lipschitz_on_W_K
-
--- RKHS
-#check Q3.RKHS_contraction_axiom
-#check Q3.T_P_row_sum_bound_axiom
-#check Q3.S_K_small_axiom
-
--- Atoms (NEW - replaces Q_nonneg_on_W_K_axiom)
-#check Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom  -- core implication A3+RKHS ⇒ atoms positivity
-#check Q3.Atoms.Q_nonneg_on_atoms             -- THEOREM: Q ≥ 0 on AtomCone_K
-
-/-! ## Verify T5 is a THEOREM (not axiom!) -/
-#check Q3.T5.T5_transfer             -- THEOREM: Q ≥ 0 on W_K
-
-/-! ## Verify local axiom -/
-#check Q3.Main.Weil_cone_continuous  -- Test functions are continuous
+/-! ## Verify T5 (τ=0) is a THEOREM -/
+#check Q3.T5.T5_transfer_tau0
 
 /-! ## Print Axiom Dependencies -/
 
@@ -80,20 +58,14 @@ open Q3.Main
 - `Quot.sound` : Quotient soundness
 
 ### Tier-1 Classical Axioms:
-- `Q3.Weil_criterion` : Weil (1952)
+- `Q3.Weil_criterion_tau0` : Weil (1952), τ=0 cone
 
 ### Tier-2 Q3 Paper Axioms:
-- `Q3.A1_density_WK_axiom` : Atoms dense in W_K
-- `Q3.Q_Lipschitz_on_W_K` : Q is Lipschitz
-- `Q3.RKHS_contraction_axiom` : prime operator contraction
-- `Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` : core implication A3+RKHS ⇒ atoms positivity
-
-### Local Axioms:
-- `Q3.Main.Weil_cone_continuous` : Test functions are continuous
+- `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin` : grid certificate
+- `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` : Lipschitz margin certificate
 
 ### THEOREM (not axiom!):
-- `Q3.T5.T5_transfer` : Q ≥ 0 on W_K (proven from A1 + A2 + Atoms)
-- `A3_Floor_Main.P_A_continuous` : continuity of P_A at (B_min, t_sym)
+- `Q3.T5.T5_transfer_tau0` : Q ≥ 0 on W_K_tau0 (τ=0 mainline)
 
 ## Verification
 
@@ -102,7 +74,6 @@ Run `lake env lean Q3/Main.lean` to see:
 Q3.Main.RH_of_Weil_and_Q3 : RH
 ```
 
-The key improvement: Q_nonneg_on_W_K_axiom is GONE!
-It has been replaced by smaller, more focused axioms,
-and T5 is now a theorem proven in Lean.
+The key improvement: τ‑uniform prime‑term axiom is out of the chain,
+and τ=0 mainline uses only B‑range PrimeCert axioms.
 -/

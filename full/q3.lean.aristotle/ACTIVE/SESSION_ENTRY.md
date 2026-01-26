@@ -8,7 +8,7 @@ Read order:
 3) full/q3.lean.aristotle/ACTIVE/requests/proshka_floor_cert_tcritical_2026_01_25/node.md
 
 Current mainline decisions:
-- Single-scale only: t_critical = 3/20, tau = 0, BaseAtomCone only.
+- Single-scale only: t_critical = 3/20, tau = 0, BaseAtomCone (B-range) only.
 - Avoid two-scale t_sym/t_rkhs bridges.
 - T_P^{Ray} vs T_P^{RKHS} separated; C1 uses dictionary compression.
 
@@ -35,17 +35,16 @@ Active Proshka request:
 Open blockers (sorry in chain):
 - No `sorryAx` in the main chain anymore; remaining blockers are *axioms*.
 - Current `#print axioms Q3.Main.RH_of_Weil_and_Q3` includes:
-  - `Q3.prime_term_le_at_t_critical_axiom`
+  - `Q3.Weil_criterion_tau0`
   - `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin`
   - `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
-  - plus classical/standard axioms: `Q3.Weil_criterion`, `Q3.Schur_test`, `propext`, `Classical.choice`, `Quot.sound`
+  - plus standard axioms: `propext`, `Classical.choice`, `Quot.sound`
 
 Last check:
 - `lake build Q3.Main` passes.
 - `#print axioms Q3.Main.RH_of_Weil_and_Q3` is consistent with the list above.
 
 Next steps:
-1) Decide what we want as “final” axioms for the one‑scale numeric certificates
-   (keep explicit certificate axioms vs eliminate via a different encoding).
-2) If we keep certificate axioms: document them in `PHILOSOPHY_OF_PROOF.md` and update `scripts/check_axioms.sh`.
+1) Keep τ=0 mainline and close PrimeCert axioms formally.
+2) Keep documentation + `scripts/check_axioms.sh` in sync with the new axiom list.
 3) ✅ DONE: eliminated `native_decide` from PrimeCert tables (no `Lean.trustCompiler` / `Lean.ofReduceBool` in the chain).

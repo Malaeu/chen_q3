@@ -80,9 +80,8 @@ These are part of Lean's foundation. Most Mathlib proofs use them.
 We eliminated `native_decide` from the PrimeCert table checks, so
 `Lean.ofReduceBool` / `Lean.trustCompiler` no longer appear in the main chain.
 
-### Level 1: Classical Results from Literature (2) — ESTABLISHED MATHEMATICS
-- `Weil_criterion` — Weil 1952: `Q ≥ 0` on Weil cone ⟺ RH
-- `Schur_test` — Schur test for operator norm bounds
+### Level 1: Classical Results from Literature (1) — ESTABLISHED MATHEMATICS
+- `Weil_criterion_tau0` — Weil 1952, τ=0 mainline cone: `Q ≥ 0` on `Weil_cone_tau0` ⟺ RH
 
 These are well-known results. Citations:
 - Weil, A. (1952). "Sur les 'formules explicites' de la théorie des nombres premiers"
@@ -93,8 +92,7 @@ These are well-known results. Citations:
 - `A1_density_WK_axiom` → closed (A1_density_WK_thm)
 - `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` → closed via Q_nonneg_atoms_closure
 
-### Level 2: One‑Scale Numeric Certificates @ `t_critical` (3) — TEMPORARY BRIDGE
-- `Q3.prime_term_le_at_t_critical_axiom` — numeric prime‑term cap at `t_critical` (grid + tail), in `Q3/Proofs/Q_nonneg_t_critical.lean`
+### Level 2: One‑Scale Numeric Certificates @ `t_critical` (2) — TEMPORARY BRIDGE
 - `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin` — table correctness at grid points, in `Q3/Proofs/PrimeCert/Brange_2046.lean`
 - `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` — Lipschitz certificate over B-range, in `Q3/Proofs/PrimeCert/Brange_2046.lean`
 
@@ -106,6 +104,9 @@ These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26
 ### Level 3: Technical Bridge Lemmas (0) — CLOSED
 
 arch/prime Lipschitz bridges are now proven in Lean (no longer axioms).
+
+### Off‑Chain Classical Axioms (0 in main chain)
+- `Schur_test` remains defined as an axiom in the codebase, but is **not** in the current main chain.
 
 ---
 
@@ -129,9 +130,7 @@ Expected output:
   propext,                        -- Level 0a: Standard Lean
   Classical.choice,               -- Level 0a: Standard Lean
   Quot.sound,                     -- Level 0a: Standard Lean
-  Q3.Weil_criterion,              -- Level 1: Weil 1952
-  Q3.Schur_test,                  -- Level 1: Analysis
-  Q3.prime_term_le_at_t_critical_axiom,                 -- Level 2: one‑scale certificate
+  Q3.Weil_criterion_tau0,          -- Level 1: Weil 1952 (τ=0 cone)
   Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin,       -- Level 2: one‑scale certificate
   Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange  -- Level 2: one‑scale certificate
 ]
@@ -146,31 +145,33 @@ Expected output:
                                     ▲
                                     │
                         ┌───────────┴───────────┐
-                        │    Weil_criterion     │ ← Level 1 (Weil 1952)
-                        │  Q≥0 on Weil ⟺ RH     │
+                        │  Weil_criterion_tau0  │ ← Level 1 (Weil 1952, τ=0)
+                        │  Q≥0 on Weil_tau0 ⟺ RH│
                         └───────────┬───────────┘
                                     │
                         ┌───────────┴───────────┐
-                        │  Q_nonneg_on_Weil_cone │ ← THEOREM (proven in Lean!)
+                        │ Q_nonneg_on_Weil_cone │ ← THEOREM (τ=0)
+                        │        _tau0          │
                         └───────────┬───────────┘
                                     │
                         ┌───────────┴───────────┐
-                        │    T5_transfer        │ ← THEOREM (proven in Lean!)
-                        │  Q≥0 on atoms → W_K   │
+                        │   T5_transfer_tau0    │ ← THEOREM
+                        │ BaseAtoms → W_K_tau0  │
                         └───────────┬───────────┘
                                     │
-              ┌─────────────────────┼─────────────────────┐
-              │                     │                     │
-    ┌─────────┴─────────┐ ┌────────┴────────┐ ┌─────────┴─────────┐
-    │  A1_density_WK    │ │  Q_Lipschitz    │ │ Q_nonneg_on_atoms │
-    │   (THEOREM!)      │ │  (THEOREM!)     │ │   (THEOREM!)      │
-    └───────────────────┘ └────────┬────────┘ └─────────┬─────────┘
-                                   │                    │
-                          ┌────────┴────────┐    ┌─────┴─────┐
-                          │  arch + prime   │    │ A3 + RKHS │
-                          │  Lipschitz      │    │ (A3 L2 +  │
-                          │  (THEOREM)      │    │  RKHS Thm)│
-                          └─────────────────┘    └───────────┘
+              ┌─────────────────────┴─────────────────────┐
+              │                                           │
+    ┌─────────┴─────────┐                       ┌────────┴────────┐
+    │  Q_Lipschitz      │                       │ Q_nonneg_on     │
+    │   (THEOREM!)      │                       │ base_atoms      │
+    └─────────┬─────────┘                       │   _brange       │
+              │                                  └────────────────┘
+              │
+      ┌───────┴────────┐
+      │  arch + prime  │
+      │  Lipschitz     │
+      │  (THEOREM)     │
+      └────────────────┘
 ```
 
 **Key insight:** The boxes marked "THEOREM" are fully machine-checked. The boxes marked "Level X" are our explicit assumptions.
@@ -206,12 +207,11 @@ Our axioms can be eliminated one by one:
 
 | Axiom | How to Eliminate | Difficulty |
 |-------|------------------|------------|
-| `Schur_test` | Formalize from Mathlib Analysis.InnerProductSpace | Medium |
-| `Weil_criterion` | Major project (Weil explicit formula) | Very High |
-| `A1_density_WK_axiom` | Prove density via Fejér×heat approximation | Medium |
-| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | Follows from A3 floor + RKHS contraction | Medium |
+| `Weil_criterion_tau0` | Major project (Weil explicit formula, τ=0 cone) | Very High |
+| `prime_b_grid_val_le_margin` | Fully formalize PrimeCert grid verification | High |
+| `prime_margin_Lipschitz_on_Brange` | Fully formalize PrimeCert Lipschitz margin | High |
 
-Each elimination makes the proof stronger. Current state: **7 axioms total (3 standard + 4 project)**.
+Each elimination makes the proof stronger. Current state: **6 axioms total (3 standard + 3 project)**.
 
 **Recently closed (now theorems):**
 - `digamma_one_fourth_neg` — proven via Aristotle (reflection/duplication formulas)

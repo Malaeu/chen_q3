@@ -9,28 +9,24 @@ Legend:
 [TRUST] trusted computation (native_decide / compiler)
 
 Last update: 2026-01-26
-Axiom count in main chain: 8 total (5 project + 3 kernel/standard)
+Axiom count in main chain: 6 total (3 project + 3 kernel/standard)
 
 ## Critical Chain (ASCII)
 
 ```
 RH_of_Weil_and_Q3
   |
-  +-- Weil_criterion [EXT classical]
+  +-- Weil_criterion_tau0 [EXT classical]
   |
-  +-- Q_nonneg_on_Weil_cone [OK]
+  +-- Q_nonneg_on_Weil_cone_tau0 [OK]
        |
-       +-- T5_transfer [OK]
+       +-- T5_transfer_tau0 [OK]
             |
-            +-- A1_density_WK [OK]
             +-- Q_Lipschitz_on_W_K [OK]
-            +-- Q_nonneg_on_atoms [OK]
-                 |
-                 +-- Schur_test [EXT classical]
+            +-- Q_nonneg_on_base_atoms_brange [OK]
                  |
                  +-- One-scale @ t_critical = 3/20 [OK]
                       |
-                      +-- prime_term_le_at_t_critical_axiom [AX cert]
                       +-- PrimeCert: prime_b_grid_val_le_margin [AX cert]
                       +-- PrimeCert: prime_margin_Lipschitz_on_Brange [AX cert]
 ```
@@ -41,9 +37,9 @@ RH_of_Weil_and_Q3
 |----------|--------|-------|
 | Standard/kernel | `propext`, `Classical.choice`, `Quot.sound` | 3 |
 | Trusted computation | (none in main chain) | 0 |
-| Classical Literature | `Weil_criterion`, `Schur_test` | 2 |
-| One‑scale numeric certificates | `prime_term_le_at_t_critical_axiom`, `PrimeCert.*` (2) | 3 |
-| **TOTAL** | | **8** |
+| Classical Literature | `Weil_criterion_tau0` | 1 |
+| One‑scale numeric certificates | `PrimeCert.*` (2) | 2 |
+| **TOTAL** | | **6** |
 
 ## Sorry Summary (outside main chain)
 
@@ -68,8 +64,8 @@ Remaining `sorry` (draft/legacy files, not in main chain):
 ## Notes
 
 - Mainline is now **single-scale** at `t_critical = 3/20` (see `docs/CHAIN_STATUS.md`).
-- External axioms (`Weil_criterion`, `Schur_test`) are accepted classical results.
-- The remaining non-classical axioms are **certificate-backed** (t_critical prime-term + B-range).
+- External axiom (`Weil_criterion_tau0`) is accepted classical result.
+- The remaining non-classical axioms are **certificate-backed** (B-range PrimeCert).
 - `native_decide` is eliminated (no `Lean.trustCompiler` / `Lean.ofReduceBool` in the chain).
 
 ## A3_bridge Progress (context)

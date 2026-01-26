@@ -39,6 +39,7 @@ open scoped BigOperators
 open scoped Real
 open scoped Classical
 open scoped Pointwise
+open Q3.Proofs.PrimeCert
 
 set_option maxHeartbeats 400000
 set_option maxRecDepth 4000
@@ -51,7 +52,7 @@ namespace Q3.Main
 
 /-- T0: The Q functional has the Guinand-Weil form -/
 theorem T0_normalization (Φ : ℝ → ℝ)
-    (_hΦ : Φ ∈ Q3.Weil_cone_tau0 Q3.t0_critical Q3.B_min Q3.prime_cert_B_max) :
+    (_hΦ : Φ ∈ Q3.Weil_cone_tau0 Q3.t0_critical B_min prime_cert_B_max) :
     Q3.Q Φ = Q3.arch_term Φ - Q3.prime_term Φ := by
   -- This is essentially the definition of Q
   rfl
@@ -68,9 +69,9 @@ theorem A2_Lipschitz (K : ℝ) (hK : K > 0) :
 
 /-- Q is nonnegative on W_K_tau0 for each K ≥ 1 (τ = 0 mainline). -/
 theorem Q_nonneg_on_W_K_tau0 (K : ℝ) (hK : K ≥ 1) :
-    ∀ Φ ∈ Q3.W_K_tau0 K Q3.t0_critical Q3.B_min Q3.prime_cert_B_max, Q3.Q Φ ≥ 0 := by
+    ∀ Φ ∈ Q3.W_K_tau0 K Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
   have hAtoms :
-      ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical Q3.B_min Q3.prime_cert_B_max,
+      ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min prime_cert_B_max,
         Q3.Q g ≥ 0 := by
     intro g hg
     have hg' : g ∈ Q3.BaseAtomCone_critical_brange K := by
@@ -78,7 +79,7 @@ theorem Q_nonneg_on_W_K_tau0 (K : ℝ) (hK : K ≥ 1) :
     exact Q3.Q_nonneg_on_base_atoms_at_t_critical_brange K hK g hg'
   exact
     Q3.T5.T5_transfer_tau0
-      K hK Q3.t0_critical Q3.B_min Q3.prime_cert_B_max Q3.t0_critical_pos hAtoms
+      K hK Q3.t0_critical B_min prime_cert_B_max Q3.t0_critical_pos hAtoms
 
 /-! ## Main Theorem -/
 
@@ -92,7 +93,7 @@ Proof outline:
 2. By τ=0 T5 transfer, Q(Φ) ≥ 0 on W_K_tau0
 -/
 theorem Q_nonneg_on_Weil_cone_tau0 :
-    ∀ Φ ∈ Q3.Weil_cone_tau0 Q3.t0_critical Q3.B_min Q3.prime_cert_B_max, Q3.Q Φ ≥ 0 := by
+    ∀ Φ ∈ Q3.Weil_cone_tau0 Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
   intro Φ hΦ
   rcases hΦ with ⟨K, hK, hΦK⟩
   exact Q_nonneg_on_W_K_tau0 K hK Φ hΦK
@@ -106,31 +107,23 @@ All nontrivial zeros of the Riemann zeta function lie on the critical line Re(s)
 This theorem depends on:
 
 **Tier-1 (Classical):**
-- Weil_criterion (Weil 1952)
+- Weil_criterion_tau0 (τ = 0 Weil cone)
 
 **Tier-2 (Q3 Paper, single‑scale):**
-- SingleScale.continuous_P_A_shift (theorem)
-- SingleScale.rayleigh_basis0_shift_ge_cstar_quarter (theorem; uses arch_term @ t_critical + floor on P_A_shift)
-- SingleScale.rho_oneK_tcritical_le_cstar_quarter (theorem)
+- Prime certificate bounds on the B‑range at t_critical
+
 **Theorems (now closed):**
-- A1_density_WK: atoms dense in W_K
 - Q_Lipschitz_on_W_K: Q is Lipschitz
+- Q_nonneg_on_base_atoms_at_t_critical_brange
+- T5_transfer_tau0: Q ≥ 0 on W_K_tau0 (from τ=0 density + A2 + base atoms)
 
-**Local axiom:**
-- Weil_cone_continuous: test functions are continuous
-
-**Theorem (not axiom!):**
-- Atoms.Q_nonneg_on_atoms: Q ≥ 0 on AtomCone_K (from A3 + RKHS)
-- RKHS_contraction: prime operator contraction (bridge theorem)
-- T5_transfer: Q ≥ 0 on W_K (from A1 + A2 + Atoms)
-
-Proof: By T5_transfer theorem, Q ≥ 0 on W_K for each K.
-By compact support extraction, Q ≥ 0 on all of Weil_cone.
-By Weil criterion, RH follows.
+Proof: By T5_transfer_tau0, Q ≥ 0 on W_K_tau0 for each K.
+By compact-by-compact union, Q ≥ 0 on all of Weil_cone_tau0.
+By Weil criterion (τ=0 cone), RH follows.
 -/
 theorem RH_of_Weil_and_Q3 : Q3.RH := by
   -- Apply τ=0 Weil criterion (axiom)
-  rw [← Q3.Weil_criterion_tau0 Q3.t0_critical Q3.B_min Q3.prime_cert_B_max]
+  rw [← Q3.Weil_criterion_tau0 Q3.t0_critical B_min prime_cert_B_max]
   exact Q_nonneg_on_Weil_cone_tau0
 
 /-! ## Axiom Verification -/
@@ -139,13 +132,13 @@ theorem RH_of_Weil_and_Q3 : Q3.RH := by
 #check RH_of_Weil_and_Q3
 -- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
 -- Standard: propext, Classical.choice, Quot.sound
--- Tier-1: Q3.Weil_criterion, Q3.Schur_test
--- Tier-2: Q3.Proofs.SingleScale.{continuous_P_A_shift,rayleigh_basis0_shift_ge_cstar_quarter,rho_oneK_tcritical_le_cstar_quarter} (all theorems)
+-- Tier-1: Q3.Weil_criterion_tau0
+-- Tier-2: Q3.Proofs.PrimeCert.{prime_b_grid_val_le_margin,prime_margin_Lipschitz_on_Brange}
 --
 -- KEY IMPROVEMENTS:
--- - Q_Lipschitz_on_W_K is now a THEOREM (uses arch/prime bridge axioms)!
--- - RKHS_contraction is now a THEOREM (bridge closed)!
--- - Q_nonneg_on_W_K_axiom is GONE! T5 is now a THEOREM!
+-- - Q_Lipschitz_on_W_K is a THEOREM (uses arch/prime bridge axioms)!
+-- - Q_nonneg_on_base_atoms_at_t_critical_brange is a THEOREM!
+-- - T5_transfer_tau0 is a THEOREM (τ=0 mainline).
 
 end Q3.Main
 

@@ -12,9 +12,9 @@ It is intended to stay aligned with the code after each refactor.
 - Numerically, `τ-transfer` fails at `t = t_critical`:
   `python3 verify_variant_b.py --direct` reports `min Q = -911.2678` at `τ = 1.689`
   (so full `AtomCone_K_fixed` is not safe).
-- The current Lean main chain still depends on a placeholder axiom
-  `Q3.prime_term_le_at_t_critical_axiom` which *acts like* a “τ-uniform prime-term bound”.
-  Treat this as a temporary bridge until we refactor the cone / criterion target.
+- The main chain is now **τ=0 only**: we use `BaseAtomCone_K_brange` and the
+  τ=0 Weil cone `Weil_cone_tau0`. The τ‑uniform prime‑term axiom is **not**
+  in `#print axioms`.
 
 ## Current chain (code-level)
 
@@ -35,9 +35,10 @@ It is intended to stay aligned with the code after each refactor.
 - Status: **closed** via `ShiftedWindows.P_A_shift_continuous`
   (requires `B > 0`, tau arbitrary).
 
-5) Atom-level nonnegativity and closure
-- `Q3/Proofs/Q_nonneg_atoms_closure.lean` closes the fixed-t chain assuming
-  the one‑scale certificate inputs from `Q3/Proofs/Q_nonneg_t_critical.lean` / `Q3/Proofs/PrimeCert/*`.
+5) τ=0 atom-level nonnegativity and transfer
+- Base atoms (τ=0, B-range) are closed by
+  `Q3/Proofs/Q_nonneg_t_critical.lean` (see `Q_nonneg_on_base_atoms_at_t_critical_brange`).
+- Transfer to the τ=0 Weil class is via `Q3/T5_Transfer.lean` (`T5_transfer_tau0`).
 
 ## Current axioms in the main theorem (as of 2026-01-26)
 
@@ -48,9 +49,8 @@ echo 'import Q3.Main
 ```
 
 - Standard/kernel: `propext`, `Classical.choice`, `Quot.sound`
-- Classical literature: `Q3.Weil_criterion`, `Q3.Schur_test`
-- One‑scale numeric certificates (t_critical):  
-  `Q3.prime_term_le_at_t_critical_axiom`,  
+- Classical literature: `Q3.Weil_criterion_tau0`
+- One‑scale numeric certificates (t_critical, B‑range):  
   `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin`,  
   `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
 

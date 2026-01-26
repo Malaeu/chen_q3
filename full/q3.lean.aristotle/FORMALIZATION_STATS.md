@@ -1,10 +1,11 @@
 # Formalization Stats (Snapshot)
 
-Last updated: 2026-01-24
+Last updated: 2026-01-26
 Scope: Q3 Lean codebase - **ONLY code in proof chain counted**
 
 Notes:
 - Counts are from `./scripts/contribution_stats.sh`
+- Axiom status updated 2026-01-26; line counts last generated 2026-01-24
 - Aristotle contribution = files actually USED in proof chain (not experiments)
 - Line counts include comments and whitespace
 
@@ -105,12 +106,12 @@ Database: `aristotle_db/aristotle_proofs.db`
 | Q_Lipschitz_on_W_K | ✅ CLOSED |
 | RKHS_contraction | ✅ CLOSED |
 | P_A_continuous | ✅ CLOSED |
-| Schur_test | ⚪ EXTERNAL |
-| Weil_criterion | ⚪ EXTERNAL |
-| Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom | ❌ OPEN |
+| Weil_criterion_tau0 | ⚪ EXTERNAL |
+| PrimeCert.prime_b_grid_val_le_margin | ❌ OPEN (cert) |
+| PrimeCert.prime_margin_Lipschitz_on_Brange | ❌ OPEN (cert) |
 
 **Current: 6 axioms (3 standard + 3 project)**
-**Remaining closable: 1**
+**Remaining closable: 2 (PrimeCert certificates)**
 
 ---
 
