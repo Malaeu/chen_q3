@@ -5,7 +5,7 @@ import Q3.Proofs.PrimeCert.Defs
 Source: full/q3.lean.aristotle/output/prime_cert_brange_tcritical_2026-01-26_0050.txt
 Generated: 2026-01-26 00:50
 Values are rounded *down* to 12 decimal places.
--/-
+-/
 
 noncomputable section
 
@@ -25,27 +25,43 @@ def prime_cert_margin_lb_q : ℚ := (499 / 1000)
 lemma prime_cert_margin_lb_eq_q : (prime_cert_margin_lb : ℝ) = prime_cert_margin_lb_q := by
   norm_num [prime_cert_margin_lb, prime_cert_margin_lb_q]
 
+/-- Table min bound in ℚ: every grid margin is ≥ prime_cert_margin_lb_q. -/
+lemma prime_b_grid_val_ge_lb_q :
+    ∀ i : Fin (prime_b_grid_vals_q.size),
+      prime_cert_margin_lb_q ≤ prime_b_grid_val_q i := by
+  intro i
+  fin_cases i <;> native_decide
+
 /-- Table min bound: every grid margin is ≥ prime_cert_margin_lb. -/
 lemma prime_b_grid_val_ge_lb :
     ∀ i : Fin (prime_b_grid_vals_q.size),
       prime_cert_margin_lb ≤ prime_b_grid_val i := by
   intro i
-  have hq : prime_cert_margin_lb_q ≤ prime_b_grid_val_q i := by
-    decide
+  have hq : prime_cert_margin_lb_q ≤ prime_b_grid_val_q i := prime_b_grid_val_ge_lb_q i
+  have hq0 := (Rat.cast_le (K := ℝ)).2 hq
   have hq' : (prime_cert_margin_lb_q : ℝ) ≤ (prime_b_grid_val_q i : ℝ) := by
-    exact_mod_cast hq
+    simpa using hq0
   simpa [prime_cert_margin_lb_eq_q, prime_b_grid_val] using hq'
+
+/-- Table min bound with Lipschitz slack in ℚ: every grid margin is ≥ lb + L*h/2. -/
+lemma prime_b_grid_val_ge_lb_with_slack_q :
+    ∀ i : Fin (prime_b_grid_vals_q.size),
+      (prime_cert_margin_lb_q + (3 / 10) * (1 / 10) / (2 : ℚ)) ≤ prime_b_grid_val_q i := by
+  intro i
+  fin_cases i <;> native_decide
 
 /-- Table min bound with Lipschitz slack: every grid margin is ≥ margin_lb + L*h/2. -/
 lemma prime_b_grid_val_ge_lb_with_slack :
     ∀ i : Fin (prime_b_grid_vals_q.size),
       prime_cert_margin_lb + prime_cert_L_ub * prime_cert_B_h / 2 ≤ prime_b_grid_val i := by
   intro i
-  -- reduce to ℚ and decide
-  have hq : (prime_cert_margin_lb_q + (3/10) * (1/10) / (2:ℚ)) ≤ prime_b_grid_val_q i := by
-    decide
-  have hq' : ((prime_cert_margin_lb_q + (3/10) * (1/10) / (2:ℚ)) : ℝ) ≤ (prime_b_grid_val_q i : ℝ) := by
-    exact_mod_cast hq
+  have hq : (prime_cert_margin_lb_q + (3 / 10) * (1 / 10) / (2 : ℚ)) ≤ prime_b_grid_val_q i :=
+    prime_b_grid_val_ge_lb_with_slack_q i
+  have hq0 := (Rat.cast_le (K := ℝ)).2 hq
+  have hq' :
+      (prime_cert_margin_lb_q : ℝ) + (3 / 10 : ℝ) * (1 / 10 : ℝ) / 2 ≤
+        (prime_b_grid_val_q i : ℝ) := by
+    simpa using hq0
   -- rewrite constants
   have hL : (prime_cert_L_ub : ℝ) = (3/10 : ℝ) := by
     norm_num [prime_cert_L_ub]

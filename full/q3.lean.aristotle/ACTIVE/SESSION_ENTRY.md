@@ -1,4 +1,4 @@
-# Session Entry (2026-01-25)
+# Session Entry (2026-01-26)
 
 Purpose: quick resume snapshot for current Q3 single-scale work.
 
@@ -33,16 +33,19 @@ Active Proshka request:
   full/q3.lean.aristotle/aristotle_output/proshka_floor_cert_tcritical_bundle_2026_01_25.md
 
 Open blockers (sorry in chain):
-- Q3/Proofs/Q_nonneg_t_critical.lean:
-  - P_A_ge_c_star_at_t_critical (floor certificate)
-  - prime_term_le_at_t_critical
-  - Fejer_heat_atom_eq_phi_shifts
-  - Q_nonneg_on_base_atoms_at_t_critical
+- No `sorryAx` in the main chain anymore; remaining blockers are *axioms*.
+- Current `#print axioms Q3.Main.RH_of_Weil_and_Q3` includes:
+  - `Q3.prime_term_le_at_t_critical_axiom`
+  - `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin`
+  - `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
+  - plus compiler axioms `Lean.ofReduceBool`, `Lean.trustCompiler` (from `native_decide`-style table checks)
 
 Last check:
-- scripts/check_axioms.sh passes build, but reports sorryAx (from Q_nonneg_t_critical).
+- `lake build Q3.Main` passes.
+- `#print axioms Q3.Main.RH_of_Weil_and_Q3` is consistent with the list above.
 
 Next steps:
-1) Close floor certificate (P_A_ge_c_star_at_t_critical) via Proshka response.
-2) Close prime_term_le_at_t_critical and Fejer_heat_atom_eq_phi_shifts.
-3) Re-run scripts/check_axioms.sh.
+1) Decide what we want as “final” axioms for the one‑scale numeric certificates
+   (keep explicit certificate axioms vs eliminate via a different encoding).
+2) If we keep certificate axioms: document them in `PHILOSOPHY_OF_PROOF.md` and update `scripts/check_axioms.sh`.
+3) If we want to eliminate `Lean.trustCompiler`: replace `native_decide` table proofs with kernel-safe proofs (case splits + `norm_num`).

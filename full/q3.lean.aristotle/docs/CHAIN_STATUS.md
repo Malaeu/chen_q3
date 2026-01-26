@@ -13,9 +13,7 @@ It is intended to stay aligned with the code after each refactor.
 
 1) A3 floor (archimedean lower bound)
 - Target: Rayleigh lower bound at t_critical for P_A_shift (tau = 0).
-- Status: axiomatized as
-  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
-  in `Q3/Proofs/SingleScale_Assumptions.lean`.
+- Status: wired through the one‑scale `t_critical` development (see `Q3/Proofs/Q_nonneg_t_critical.lean`).
 
 2) RKHS prime cap
 - Implemented in `Q3/Proofs/RKHS_cap_rayleigh.lean`.
@@ -32,11 +30,22 @@ It is intended to stay aligned with the code after each refactor.
 
 5) Atom-level nonnegativity and closure
 - `Q3/Proofs/Q_nonneg_atoms_closure.lean` closes the fixed-t chain assuming
-  the two SingleScale axioms above.
+  the one‑scale certificate inputs from `Q3/Proofs/Q_nonneg_t_critical.lean` / `Q3/Proofs/PrimeCert/*`.
 
-## Remaining SingleScale axioms (open)
+## Current axioms in the main theorem (as of 2026-01-26)
 
-- `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
+From:
+```bash
+echo 'import Q3.Main
+#print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin
+```
+
+- Standard/kernel: `propext`, `Classical.choice`, `Quot.sound`, `Lean.ofReduceBool`, `Lean.trustCompiler`
+- Classical literature: `Q3.Weil_criterion`, `Q3.Schur_test`
+- One‑scale numeric certificates (t_critical):  
+  `Q3.prime_term_le_at_t_critical_axiom`,  
+  `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin`,  
+  `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
 
 ## Related entry points
 

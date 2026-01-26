@@ -88,16 +88,16 @@ echo ""
 # Step 3: Count axioms
 echo "═══ Step 3: Axiom Count ═══"
 
-# Count standard axioms from full output (propext is on the header line)
-STANDARD_COUNT=$(echo "$AXIOMS" | grep -oE "propext|Classical.choice|Quot.sound" | wc -l | tr -d ' ')
+# Count standard/kernel axioms from full output (propext is on the header line)
+STANDARD_COUNT=$(echo "$AXIOMS" | grep -oE "propext|Classical.choice|Quot.sound|Lean.ofReduceBool|Lean.trustCompiler" | wc -l | tr -d ' ')
 # Strip the header label but keep the axiom list.
 AXIOMS_ONLY=$(echo "$AXIOMS" | sed "s/'Q3.Main.RH_of_Weil_and_Q3' depends on axioms: //")
 PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
-EXPECTED_STANDARD=3
-EXPECTED_PROJECT=3  # Weil_criterion, Schur_test, SingleScale.rayleigh_basis0_shift_ge_cstar_quarter
+EXPECTED_STANDARD=5  # + Lean.ofReduceBool, Lean.trustCompiler (from native_decide-style checks)
+EXPECTED_PROJECT=5   # Weil_criterion, Schur_test, prime_term_le_at_t_critical_axiom, PrimeCert grid axioms (2)
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
@@ -128,8 +128,9 @@ echo "═══ Step 5: Philosophy Verification ═══"
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion"
     "Q3.Schur_test"
-    "Q3.Proofs.SingleScale.rayleigh_basis0_shift_ge_cstar_quarter"
     "Q3.prime_term_le_at_t_critical_axiom"
+    "Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin"
+    "Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange"
 )
 
 UNKNOWN_AXIOMS=""

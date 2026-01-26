@@ -2,6 +2,7 @@ import Mathlib
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.A3_Floor_Main
 import Q3.Proofs.Params_Critical
+import Q3.Proofs.ShiftedWindows
 
 /-!
 Prime-term certificate at t_critical, tau = 0, B = B_min.

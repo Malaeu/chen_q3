@@ -1,4 +1,5 @@
 import Mathlib
+import Q3.Axioms
 
 /-!
 Floor certificate constants and grid definition (t_critical).
@@ -29,9 +30,8 @@ lemma floor_cert_h_ne_zero : (floor_cert_h : ℝ) ≠ 0 := by
 lemma floor_cert_N_mul_h : (floor_cert_N : ℝ) * floor_cert_h = 1 := by
   norm_num [floor_cert_N, floor_cert_h]
 
-lemma floor_cert_margin_ge_c_star (c_star : ℝ) :
-    c_star ≤ floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 := by
-  -- caller provides c_star; specialize in Q_nonneg_t_critical
-  norm_num [c_star, floor_cert_min_lb, floor_cert_L_ub, floor_cert_h]
+lemma floor_cert_margin_ge_c_star :
+    Q3.c_star ≤ floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 := by
+  norm_num [Q3.c_star, floor_cert_min_lb, floor_cert_L_ub, floor_cert_h]
 
 end Q3.Proofs.FloorCert

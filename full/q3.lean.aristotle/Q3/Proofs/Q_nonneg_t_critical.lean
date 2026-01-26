@@ -248,7 +248,7 @@ lemma P_A_ge_c_star_at_t_critical (θ : ℝ) :
     exact P_A_floor_cert_on_Icc (θ - k) hk
 
   have hcert : c_star ≤ floor_cert_min_lb - floor_cert_L_ub * floor_cert_h / 2 := by
-    simpa using (floor_cert_margin_ge_c_star c_star)
+    simpa using floor_cert_margin_ge_c_star
 
   have hshift : P_A B_min t_critical θ = P_A B_min t_critical (θ - k) := by
     -- use periodicity with integer shift k
@@ -317,12 +317,11 @@ lemma arch_term_ge_at_t_critical (B τ : ℝ) (hB : B > 0)
     nlinarith [h_nonneg, c_star_pos]
   exact le_trans h_factor h_arch_ge
 
-/-! ## prime_term bounds at t_critical -/
+/-! ## prime_term bounds at t_critical
 
-/-- Numeric certificate parameters for prime_term at t_critical.
-    See output/prime_cert_tcritical_2026-01-25_1826.txt. -/
-/-!
 Prime certificate constants and basic lemmas live in `Q3.Proofs.PrimeCert.Defs`.
+See output/prime_cert_tcritical_2026-01-26_0046.txt and
+output/prime_cert_brange_tcritical_2026-01-26_0050.txt.
 -/
 
 /-- Prime-term ≤ arch-term at t_critical for B = B_min, τ = 0 (certificate-based). -/

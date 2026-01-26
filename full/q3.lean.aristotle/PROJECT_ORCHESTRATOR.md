@@ -1,7 +1,7 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
-Last Updated: 2026-01-24
+Last Updated: 2026-01-26
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -65,11 +65,14 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **6 axioms** (3 project + 3 standard)
+Result: **10 axioms** (5 project + 5 kernel/standard)
 
-- Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
+- Kernel/standard: `propext`, `Classical.choice`, `Quot.sound`, `Lean.ofReduceBool`, `Lean.trustCompiler`
 - Level 1 (Classical Literature): `Weil_criterion`, `Schur_test`
-- Level 2 (Q3 Paper, single‑scale): `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
+- Level 2 (One‑scale numeric certificates @ t_critical):
+  `prime_term_le_at_t_critical_axiom`,
+  `Proofs.PrimeCert.prime_b_grid_val_le_margin`,
+  `Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
 
 **Closed axioms (history):**
 - `a_star_pos` → closed via positivity (2026-01-21)
@@ -92,11 +95,11 @@ RH_of_Weil_and_Q3
        +-- T5_transfer [OK]
             |
             +-- A1_density_WK [OK]
-            +-- Q_Lipschitz_on_W_K [OK]
-            +-- Q_nonneg_on_atoms [OK]
-                 |
-                 +-- SingleScale assumptions [AX]
-                 +-- RKHS_contraction [OK]
+	            +-- Q_Lipschitz_on_W_K [OK]
+	            +-- Q_nonneg_on_atoms [OK]
+	                 |
+	                 +-- PrimeCert / prime_term bound [AX]
+	                 +-- one‑scale closure (t_critical) [OK]
 ```
 
 ## 🚨🚨🚨 CRITICAL: LaTeX Proof Gap Discovered (2026-01-22) 🚨🚨🚨

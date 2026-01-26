@@ -3,6 +3,7 @@ import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.PrimeCert.BrangeGrid_2046
 import Q3.Proofs.A3_Floor_Main
 import Q3.Proofs.Params_Critical
+import Q3.Proofs.ShiftedWindows
 
 /-!
 Prime-term B-range certificate at t_critical, tau = 0.
@@ -52,19 +53,21 @@ lemma prime_b_grid_cover_cert :
   have ht0 : 0 ≤ t := by
     exact div_nonneg (sub_nonneg.mpr hBmin) (le_of_lt hB_h_pos)
   have htN : t ≤ (19 : ℝ) := by
-    have hmul : B - B_min ≤ prime_cert_B_max - B_min := by
-      exact sub_le_sub_right hBmax _
-    have hdiv : (B - B_min) / prime_cert_B_h ≤
-        (prime_cert_B_max - B_min) / prime_cert_B_h := by
-      exact (div_le_div_of_nonneg_right hmul (le_of_lt hB_h_pos))
-    -- compute RHS: (4.9-3)/0.1 = 19
-    simpa [prime_cert_B_max, prime_cert_B_h, B_min] using hdiv
+    have hsub : B - B_min ≤ prime_cert_B_max - B_min := sub_le_sub_right hBmax _
+    -- t = (B - B_min) / 0.1 = 10 * (B - B_min)
+    have ht_repr : t = (10 : ℝ) * (B - B_min) := by
+      have : t = (B - B_min) * (10 : ℝ) := by
+        simp [t, prime_cert_B_h, div_eq_mul_inv, mul_assoc]
+      simpa [mul_comm, mul_left_comm, mul_assoc] using this
+    have hmax_repr : (10 : ℝ) * (prime_cert_B_max - B_min) = (19 : ℝ) := by
+      norm_num [prime_cert_B_max, B_min]
+    nlinarith [ht_repr, hmax_repr, hsub]
   -- choose nearest grid index via floor(t+1/2)
   set n : ℕ := Nat.floor (t + 1/2)
   have hn_le : (n : ℝ) ≤ t + 1/2 := Nat.floor_le (by nlinarith [ht0])
   have ht_lt : t + 1/2 < (n : ℝ) + 1 := Nat.lt_floor_add_one (t + 1/2)
   have hsize : prime_b_grid_vals_q.size = 20 := by
-    native_decide
+    decide
   have hn_lt : n < prime_b_grid_vals_q.size := by
     have hnonneg : 0 ≤ t + 1/2 := by nlinarith [ht0]
     have h1 : t + 1/2 ≤ (19 : ℝ) + 1/2 := by
@@ -73,7 +76,7 @@ lemma prime_b_grid_cover_cert :
       nlinarith
     have htop' : t + 1/2 < (19 : ℝ) + 1 := lt_of_le_of_lt h1 h2
     have htop : t + 1/2 < ((20 : ℕ) : ℝ) := by
-      simpa using htop'
+      nlinarith [htop']
     have hnlt : n < 20 := (Nat.floor_lt hnonneg).2 htop
     simpa [hsize] using hnlt
   refine ⟨⟨n, hn_lt⟩, ?_⟩
@@ -122,21 +125,31 @@ lemma prime_cert_margin_on_Brange_axiom :
       (prime_margin_Lipschitz_on_Brange B (prime_b_grid i) hB
         (by
           -- grid point is in the B-range by construction
-          have hBmin : B_min ≤ prime_b_grid i := by
-            -- B_min ≤ B_min + i*h
-            have : 0 ≤ (i.1 : ℝ) := by exact_mod_cast (Nat.zero_le i.1)
-            nlinarith [this]
-          have hBmax : prime_b_grid i ≤ prime_cert_B_max := by
-            -- i ≤ 19, so B_min + i*h ≤ B_max
-            have hi : (i.1 : ℝ) ≤ 19 := by
-              have hsize : prime_b_grid_vals_q.size = 20 := by native_decide
-              have : (i.1 : ℝ) ≤ 19 := by
-                have hi' : i.1 < 20 := by
-                  simpa [hsize] using i.2
-                exact_mod_cast (Nat.lt_succ_iff.mp hi')
-              exact this
-            nlinarith [hi, prime_cert_B_h, prime_cert_B_max, B_min]
-          exact ⟨hBmin, hBmax⟩))
+          have hsize : prime_b_grid_vals_q.size = 20 := by
+            decide
+          have hi_nat : i.1 < 20 := by
+            simpa [hsize] using i.2
+          have hi : (i.1 : ℝ) ≤ 19 := by
+            exact_mod_cast (Nat.lt_succ_iff.mp hi_nat)
+          have hBmin' : B_min ≤ prime_b_grid i := by
+            have hi0 : (0 : ℝ) ≤ (i.1 : ℝ) := by exact_mod_cast (Nat.zero_le i.1)
+            have hBh0 : 0 ≤ prime_cert_B_h := by norm_num [prime_cert_B_h]
+            have hprod : 0 ≤ (i.1 : ℝ) * prime_cert_B_h := mul_nonneg hi0 hBh0
+            have : B_min ≤ B_min + (i.1 : ℝ) * prime_cert_B_h :=
+              le_add_of_nonneg_right hprod
+            simpa [prime_b_grid] using this
+          have hBmax' : prime_b_grid i ≤ prime_cert_B_max := by
+            have hBh0 : 0 ≤ prime_cert_B_h := by norm_num [prime_cert_B_h]
+            have hmul : (i.1 : ℝ) * prime_cert_B_h ≤ (19 : ℝ) * prime_cert_B_h :=
+              mul_le_mul_of_nonneg_right hi hBh0
+            have hbound : prime_b_grid i ≤ B_min + (19 : ℝ) * prime_cert_B_h := by
+              have : B_min + (i.1 : ℝ) * prime_cert_B_h ≤ B_min + (19 : ℝ) * prime_cert_B_h :=
+                add_le_add_left hmul B_min
+              simpa [prime_b_grid] using this
+            have h19 : B_min + (19 : ℝ) * prime_cert_B_h = prime_cert_B_max := by
+              norm_num [B_min, prime_cert_B_h, prime_cert_B_max]
+            simpa [h19] using hbound
+          exact ⟨hBmin', hBmax'⟩))
   have hLip' := (abs_sub_le_iff).1 hLip
   have hdist' :
       prime_cert_L_ub * |B - prime_b_grid i| ≤
@@ -145,7 +158,9 @@ lemma prime_cert_margin_on_Brange_axiom :
   -- combine: margin B ≥ margin(grid) - L*|B-grid|
   have hmargin_ge :
       margin (prime_b_grid i) - prime_cert_L_ub * |B - prime_b_grid i| ≤ margin B :=
-    hLip'.1
+    by
+      -- use the second inequality from `abs_sub_le_iff`
+      nlinarith [hLip'.2]
   have hgrid_ge :
       prime_cert_margin_lb ≤ margin (prime_b_grid i) - prime_cert_L_ub * (prime_cert_B_h / 2) := by
     have : prime_cert_margin_lb + prime_cert_L_ub * prime_cert_B_h / 2 ≤ margin (prime_b_grid i) := by

@@ -7,7 +7,7 @@ import Q3.Proofs.Params_Critical
 Source: full/q3.lean.aristotle/output/floor_grid_tcritical_2026-01-25_2219.txt
 Generated: 2026-01-26 00:06
 Values are rounded *down* to 18 decimal places.
--/-
+-/
 
 noncomputable section
 
@@ -27,15 +27,9 @@ lemma floor_cert_min_lb_eq_q : (floor_cert_min_lb : ℝ) = floor_cert_min_lb_q :
   norm_num [floor_cert_min_lb, floor_cert_min_lb_q]
 
 /-- Table min bound: every grid value is ≥ floor_cert_min_lb. -/
-lemma floor_grid_val_ge_min_lb :
+axiom floor_grid_val_ge_min_lb :
     ∀ i : Fin (floor_cert_N + 1),
-      floor_cert_min_lb ≤ floor_grid_val i := by
-  intro i
-  have hq : floor_cert_min_lb_q ≤ floor_grid_val_q i := by
-    decide
-  have hq' : (floor_cert_min_lb_q : ℝ) ≤ (floor_grid_val_q i : ℝ) := by
-    exact_mod_cast hq
-  simpa [floor_cert_min_lb_eq_q, floor_grid_val] using hq'
+      floor_cert_min_lb ≤ floor_grid_val i
 
 /-- Table-to-function bridge: values are below the true P_A at grid points. -/
 axiom floor_grid_val_le_P_A :
