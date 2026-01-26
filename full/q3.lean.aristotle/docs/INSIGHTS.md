@@ -133,6 +133,13 @@
   plus a **uniform sup‑norm bound** on `|phi_shift B₁ - phi_shift B₂|`.
 - Need explicit constant `L ≤ 0.3` (matches `prime_cert_L_ub`), or show a sharper bound
   and then relax to 0.3.
+- **Implemented (analytic skeleton):** `Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean`
+  proves a symbolic Lipschitz bound for `margin` with constant
+  `margin_Lipschitz_const := (2*B_max*M_a_local(B_max)+W_sum_local(B_max)) * (B_max/B_min^2)`,
+  plus a pointwise `phi_shift` bound in `B`. This compiles.
+- **Still missing:** an explicit numeric upper bound on
+  `2*B_max*M_a_local(B_max)+W_sum_local(B_max)` to show
+  `margin_Lipschitz_const ≤ 3/10` (or any certified ≤ `prime_cert_L_ub`).
 - File pointers: `Q3/Proofs/ShiftedWindows.lean` (phi_shift definition/support),
   `Q3/Proofs/Q_Lipschitz_arch_bridge.lean`, `Q3/Proofs/Q_Lipschitz_prime_bridge.lean`,
   `Q3/Proofs/PrimeCert/Brange_2046.lean`.
