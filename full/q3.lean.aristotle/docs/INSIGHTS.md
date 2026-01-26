@@ -107,6 +107,10 @@
   existing arch/prime Lipschitz bounds (see `Q3/Proofs/Q_Lipschitz_*`).
 - Option B (fallback): keep axioms but gate them behind a dedicated certificate module
   with explicit provenance + CI check; **do not** re‑introduce `native_decide`.
+- Status update (2026-01-26): **Option B implemented** —
+  certificate module + hashes in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`,
+  evidence files pinned in `Q3/Proofs/PrimeCert/README.md`,
+  CI hash check added in `scripts/check_axioms.sh` (uses `output/prime_cert_*_2026-01-26_*`).
 - Success check: `lake env lean Q3/Proofs/PrimeCert/Brange_2046.lean`,
   then `./scripts/check_axioms.sh` (only `Weil_criterion_tau0` + PrimeCert remain).
 - Status: **in progress** (need to decide Option A vs B).
