@@ -161,6 +161,76 @@ theorem T5_transfer (K : ℝ) (hK : K ≥ 1) :
   T5_transfer_of_atoms K hK Q3.t0_critical Q3.t0_critical_pos
     (fun g hg => Q3.Atoms.Q_nonneg_on_atoms K hK g hg)
 
+/-! ## τ = 0 Mainline Transfer (BaseAtomCone_K_brange) -/
+
+lemma W_K_tau0_subset_W_K (K t0 B_min B_max : ℝ) :
+    W_K_tau0 K t0 B_min B_max ⊆ W_K K := by
+  intro Φ hΦ
+  exact hΦ.1
+
+/-- **T5 Transfer (τ = 0 mainline)**:
+
+If Q ≥ 0 on BaseAtomCone_K_brange, then Q ≥ 0 on the τ=0 Weil class W_K_tau0.
+-/
+theorem T5_transfer_tau0 (K : ℝ) (hK : K ≥ 1) (t0 B_min B_max : ℝ) (ht0 : 0 < t0)
+    (hAtoms : ∀ g ∈ BaseAtomCone_K_brange K t0 B_min B_max, Q g ≥ 0) :
+    ∀ Φ ∈ W_K_tau0 K t0 B_min B_max, Q Φ ≥ 0 := by
+  intro Φ hΦ
+  rcases hΦ with ⟨hΦ_WK, happrox⟩
+  -- We'll prove by contradiction as in T5_transfer_of_atoms.
+  by_contra h_neg
+  push_neg at h_neg
+  set δ := -Q Φ with hδ_def
+  have hδ_pos : δ > 0 := by linarith
+
+  -- Lipschitz constant on W_K.
+  have hK_pos : K > 0 := by linarith
+  obtain ⟨L, hL_pos, hLip⟩ := Q3.Proofs.Q_Lipschitz_on_W_K_thm K hK_pos
+
+  -- Choose ε small enough: ε < δ/(2L)
+  set ε := δ / (2 * L) with hε_def
+  have hε_pos : ε > 0 := by positivity
+
+  -- τ=0 density (built into W_K_tau0)
+  obtain ⟨g, hg_atom, hg_approx⟩ := happrox ε hε_pos
+  have hg_WK : g ∈ W_K K := by
+    rcases hg_atom with ⟨n, c, B, -, -, -, -, hg_mem⟩
+    exact hg_mem
+
+  -- By base atoms theorem, Q(g) ≥ 0.
+  have hg_nonneg : Q g ≥ 0 := hAtoms g hg_atom
+
+  -- Lipschitz: |Q(Φ) - Q(g)| ≤ L * ||Φ - g||_∞ < L * ε = δ/2
+  have h_diff_bound : |Q Φ - Q g| ≤ L * sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} :=
+    hLip Φ hΦ_WK g hg_WK
+  have h_sup_small : sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε := hg_approx
+  have h_diff_lt : |Q Φ - Q g| < L * ε := by
+    have hmul : L * sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < L * ε :=
+      mul_lt_mul_of_pos_left h_sup_small hL_pos
+    exact lt_of_le_of_lt h_diff_bound hmul
+
+  have h_Lε : L * ε = δ / 2 := by
+    have hL_ne : (L : ℝ) ≠ 0 := ne_of_gt hL_pos
+    calc
+      L * ε = L * (δ / (2 * L)) := by simp [hε_def]
+      _ = δ / 2 := by
+        field_simp [hL_ne]
+
+  rw [h_Lε] at h_diff_lt
+  have h_Q_Φ : Q Φ = -δ := by simp [hδ_def]
+  have h_Qg_minus_QΦ : Q g - Q Φ < δ / 2 :=
+    (abs_sub_lt_iff.mp h_diff_lt).2
+  have h_Qg_lt : Q g < Q Φ + δ / 2 := by linarith
+  have h_Qg_lt_neg_half : Q g < -(δ / 2) := by
+    have : Q Φ + δ / 2 = -(δ / 2) := by
+      rw [h_Q_Φ]
+      ring
+    simpa [this] using h_Qg_lt
+  have h_neg' : Q g < 0 := by
+    have : -(δ / 2) < 0 := by linarith [hδ_pos]
+    exact lt_trans h_Qg_lt_neg_half this
+  linarith
+
 /-- Corollary: Q is nonnegative on W_K for K ≥ 1 -/
 theorem Q_nonneg_on_W_K (K : ℝ) (hK : K ≥ 1) :
     ∀ Φ ∈ W_K K, Q Φ ≥ 0 :=
