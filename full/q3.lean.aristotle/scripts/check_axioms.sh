@@ -17,6 +17,17 @@ echo "Date: $(date)"
 echo "Directory: $PROJECT_DIR"
 echo ""
 
+# Hash helper (sha256sum on Linux, shasum on macOS)
+hash_file() {
+    if command -v sha256sum >/dev/null 2>&1; then
+        sha256sum "$1" | awk '{print $1}'
+    elif command -v shasum >/dev/null 2>&1; then
+        shasum -a 256 "$1" | awk '{print $1}'
+    else
+        return 1
+    fi
+}
+
 # Step 0: Prebuild A3_FLOOR (via compatibility wrapper)
 echo "═══ Step 0: Prebuilding A3_Floor_Main ═══"
 if lake env lean A3_FLOOR_v22_stage4_floor.lean 2>&1 | tail -5; then
@@ -45,6 +56,33 @@ else
     echo "✗ Audit invariants FAILED"
     exit 1
 fi
+echo ""
+
+# Step 0.7: PrimeCert evidence files
+echo "═══ Step 0.7: PrimeCert evidence check ═══"
+PRIME_CERT_TCRIT="output/prime_cert_tcritical_2026-01-26_0046.txt"
+PRIME_CERT_BRANGE="output/prime_cert_brange_tcritical_2026-01-26_0050.txt"
+PRIME_CERT_TCRIT_HASH="3af1204fc8f5ddf322e1110b9932bb44a5349e0773d6d1b3cdf5441ec8ef3b5d"
+PRIME_CERT_BRANGE_HASH="a9d5303b2da81886cf64bfc5ee9b5b1ab85ce0b45067a8cd9b499d051a294230"
+
+if [[ ! -f "$PRIME_CERT_TCRIT" || ! -f "$PRIME_CERT_BRANGE" ]]; then
+    echo "✗ PrimeCert evidence file missing"
+    exit 1
+fi
+
+HASH_TCRIT="$(hash_file "$PRIME_CERT_TCRIT" || true)"
+HASH_BRANGE="$(hash_file "$PRIME_CERT_BRANGE" || true)"
+
+if [[ -z "$HASH_TCRIT" || -z "$HASH_BRANGE" ]]; then
+    echo "✗ sha256 tool not available (sha256sum/shasum)"
+    exit 1
+fi
+
+if [[ "$HASH_TCRIT" != "$PRIME_CERT_TCRIT_HASH" || "$HASH_BRANGE" != "$PRIME_CERT_BRANGE_HASH" ]]; then
+    echo "✗ PrimeCert evidence hash mismatch"
+    exit 1
+fi
+echo "✓ PrimeCert evidence hash OK"
 echo ""
 
 # Step 1: Build

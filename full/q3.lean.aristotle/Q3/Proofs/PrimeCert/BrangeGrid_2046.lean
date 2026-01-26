@@ -1,5 +1,6 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.Defs
+import Q3.Proofs.A3_Floor_Bounds
 
 /-! Prime B-range margin grid values for t_critical.
 Source: full/q3.lean.aristotle/output/prime_cert_brange_tcritical_2026-01-26_0050.txt
@@ -13,6 +14,9 @@ namespace Q3.Proofs.PrimeCert
 
 /-- Size of the B-grid certificate table. -/
 abbrev prime_b_grid_size : Nat := 20
+
+def prime_b_grid (i : Fin prime_b_grid_size) : ℝ :=
+  B_min + (i.1 : ℝ) * prime_cert_B_h
 
 /-- Grid margins for B in [B_min, prime_cert_B_max] with step prime_cert_B_h. -/
 def prime_b_grid_vals_q : Array ℚ := #[0.856457311774, 0.828016971090, 0.801354151698, 0.776307260754, 0.752733716336, 0.730507231598, 0.709515551568, 0.689658556946, 0.670846667303, 0.652999489949, 0.636044671464, 0.619916917295, 0.604557151420, 0.589911793260, 0.575932133198, 0.562573791361, 0.549796246996, 0.537562427922, 0.525838351309, 0.514592808436]
