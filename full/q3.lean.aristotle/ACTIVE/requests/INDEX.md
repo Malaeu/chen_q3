@@ -1,6 +1,6 @@
 # Requests Tree Index
 
-Total nodes: 123
+Total nodes: 124
 
 Each node is a self-contained trace: why -> evidence -> decision -> request.
 Fill TODOs as we refine each request.
@@ -114,6 +114,7 @@ Fill TODOs as we refine each request.
 - proshka_floor_cert_tcritical_2026_01_25: `requests/proshka_floor_cert_tcritical_2026_01_25/node.md`
 - proshka_floor_tcritical_request_2026_01_24: `requests/proshka_floor_tcritical_request_2026_01_24/node.md`
 - proshka_floor_tcritical_request_strict_2026_01_24: `requests/proshka_floor_tcritical_request_strict_2026_01_24/node.md`
+- proshka_primecert_lipschitz_2026_01_26: `requests/proshka_primecert_lipschitz_2026_01_26/node.md`
 - proshka_rayleigh_qid_debug_2026_01_16: `requests/proshka_rayleigh_qid_debug_2026_01_16/node.md`
 - proshka_rayleigh_qid_debug_2026_01_16 2: `requests/proshka_rayleigh_qid_debug_2026_01_16_2/node.md`
 - proshka_request_a_asymptotic_crisis: `requests/proshka_request_a_asymptotic_crisis/node.md`
