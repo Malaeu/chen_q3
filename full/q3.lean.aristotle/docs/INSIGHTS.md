@@ -95,6 +95,24 @@
 
 ---
 
+## Synthesis (2026-01-26, in progress) — close PrimeCert B‑range axioms
+
+- Target axioms: `prime_b_grid_val_le_margin`, `prime_margin_Lipschitz_on_Brange`
+  in `Q3/Proofs/PrimeCert/Brange_2046.lean`; used by
+  `prime_cert_margin_on_Brange_axiom` → `Q3/Proofs/Q_nonneg_t_critical.lean`.
+- q3search/websearch commands are **missing** in this sandbox (both return “command not found”),
+  so no semantic scan done yet.
+- Option A (preferred): prove Lipschitz of `margin(B)` analytically by bounding
+  `‖phi_shift x - phi_shift y‖_∞` on `B ∈ [B_min, B_max]`, then combine with
+  existing arch/prime Lipschitz bounds (see `Q3/Proofs/Q_Lipschitz_*`).
+- Option B (fallback): keep axioms but gate them behind a dedicated certificate module
+  with explicit provenance + CI check; **do not** re‑introduce `native_decide`.
+- Success check: `lake env lean Q3/Proofs/PrimeCert/Brange_2046.lean`,
+  then `./scripts/check_axioms.sh` (only `Weil_criterion_tau0` + PrimeCert remain).
+- Status: **in progress** (need to decide Option A vs B).
+
+---
+
 ## A3/Rayleigh: критический путь
 
 - Символы `a_star` vs `P_A`: признаки рассогласования, reverse‑engineering → `docs/insights/a3_symbol_mismatch_reverse_engineering.md`.
