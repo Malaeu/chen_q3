@@ -8,12 +8,12 @@
 ---
 
 ## SINGLE ENTRY POINT
-**START HERE:** `/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+**START HERE:** `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 
 This is the ONLY file you need to read at session start. All other docs are linked from there.
 
 If resuming an in-progress session, read:
-`/full/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
+`/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
 
 ---
 
@@ -67,7 +67,7 @@ Before EVERY commit, verify:
 - [ ] No new `axiom` without citation
 - [ ] No `sorry` in main proof chain
 
-See: `/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
+See: `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 
 ---
 
@@ -119,7 +119,7 @@ See: `/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 ## 🚨 ERRORS DESTROYER (Работа над ошибками)
 
 **ОБЯЗАТЕЛЬНО прочитай перед любым PR:**
-- `/full/q3.lean.aristotle/docs/ERRORS_DESTROYER.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/docs/ERRORS_DESTROYER.md`
 
 Там: разборы прошлых ошибок и чеклисты как их избежать.
 
@@ -202,14 +202,13 @@ repo:{username/repo_name} import
 
 ---
 
-## Current Axiom Count: 8
+## Current Axiom Count: 6
 
 ```
 Standard (3): propext, Classical.choice, Quot.sound
-Project (5):  Weil_criterion, Schur_test,
-              SingleScale.continuous_P_A_shift,
-              SingleScale.rayleigh_basis0_shift_ge_cstar_quarter,
-              SingleScale.rho_oneK_tcritical_le_cstar_quarter
+Project (3):  Weil_criterion_tau0,
+              PrimeCert.prime_b_grid_val_le_margin,
+              PrimeCert.prime_margin_Lipschitz_on_Brange
 ```
 
 **Closed axioms:**
@@ -221,14 +220,14 @@ Project (5):  Weil_criterion, Schur_test,
 - A3_bridge_axiom → removed from chain (Fourier formulation)
 - RKHS contraction → closed
 
-**Target:** Close the 3 SingleScale axioms to reach 2 project axioms (Weil + Schur)
+**Target:** Close 2 PrimeCert axioms to reach 1 project axiom (Weil_criterion_tau0).
 
 ---
 
 ## Quick Commands
 
 ```bash
-cd /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
+cd /mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
 
 # Build
 lake build Q3.Main
@@ -250,20 +249,20 @@ websearch "вопрос"              # AI web search
 
 | Purpose | File |
 |---------|------|
-| Entry point | `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` |
-| Philosophy | `full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md` |
-| ASCII diagram | `full/q3.lean.aristotle/PROJECT_ASCII.md` |
-| Workflow checklist | `full/q3.lean.aristotle/WORKFLOW_CHECKLIST.md` |
-| Axioms definition | `full/q3.lean.aristotle/Q3/Axioms.lean` |
-| Theorem wiring | `full/q3.lean.aristotle/Q3/AxiomsTheorems.lean` |
-| Main proof | `full/q3.lean.aristotle/Q3/Main.lean` |
+| Entry point | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` |
+| Philosophy | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md` |
+| ASCII diagram | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ASCII.md` |
+| Workflow checklist | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/WORKFLOW_CHECKLIST.md` |
+| Axioms definition | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/Q3/Axioms.lean` |
+| Theorem wiring | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/Q3/AxiomsTheorems.lean` |
+| Main proof | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/Q3/Main.lean` |
 
 ---
 
 ## Aristotle (AI proof assistant)
 
 **⚠️ ПЕРЕД КАЖДЫМ ПРОМПТОМ ЧИТАЙ:**
-- `full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
 
 **Ключевые правила (из анализа 7 вариантов Прошкой):**
 | ИЗБЕГАТЬ | ИСПОЛЬЗОВАТЬ |
@@ -284,7 +283,7 @@ websearch "вопрос"              # AI web search
 
 **Quick start:**
 ```bash
-source /media/chirurgie/hdd01/Soft/GitHub/chen_q3/.venv/bin/activate
+source /mnt/hdd01/Soft/GitHub/chen_q3/.venv/bin/activate
 aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
 ```
 
@@ -343,7 +342,7 @@ Files created:
 
 ## LaTeX Source Files (for Proshka)
 
-**Base path:** `/media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/sections/`
+**Base path:** `/mnt/hdd01/Soft/GitHub/chen_q3/full/sections/`
 
 | Module | File | Description |
 |--------|------|-------------|
@@ -385,7 +384,7 @@ Files created:
 - **Examples:**
   ```bash
   # Root repo:
-  git commit -m "[AI-cc] Close A1_density axiom (7->6)"
+  git commit -m "[Linux][AI-cc] Close A1_density axiom (7->6)"
   
   # From sandbox:
   git commit -m "[Linux][AI-cc] Fix HeatError lemma"
