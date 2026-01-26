@@ -66,7 +66,7 @@ theorem digamma_add_one (z : ℂ) (hz : z ≠ 0) (hG : Complex.Gamma z ≠ 0) :
   -- Use the functional equation of the Gamma function: Γ'(z+1) = Γ(z) + zΓ'(z).
   have h_gamma_deriv : deriv Complex.Gamma (z + 1) = Complex.Gamma z + z * deriv Complex.Gamma z := by
     have h_gamma_deriv : deriv (fun w => Complex.Gamma (w + 1)) z = deriv Complex.Gamma (z + 1) := by
-      exact?;
+      simpa using (deriv_comp_add_const (f := Complex.Gamma) (a := (1 : ℂ)) z);
     rw [ ← h_gamma_deriv ];
     convert HasDerivAt.deriv ( HasDerivAt.congr_of_eventuallyEq ( HasDerivAt.mul ( hasDerivAt_id z ) ( Complex.differentiableAt_Gamma _ _ |> DifferentiableAt.hasDerivAt ) ) <| Filter.eventuallyEq_of_mem ( isOpen_ne.mem_nhds hz ) fun x hx => Complex.Gamma_add_one x hx ) using 1;
     · norm_num;
