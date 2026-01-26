@@ -2,7 +2,7 @@
 
 **Author:** Eugen Malamutmann
 **Project:** Q3 - Formal Verification of Riemann Hypothesis Proof Structure
-**Last Updated:** 2026-01-20
+**Last Updated:** 2026-01-26
 
 ---
 
@@ -65,21 +65,27 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ## Axiom Classification
 
-Our formalization depends on exactly **5 axioms** (beyond Standard Lean):
+As of **2026-01-26**, `#print axioms Q3.Main.RH_of_Weil_and_Q3` reports **10 axioms** total:
+5 kernel/standard + 5 project.
 
-### Level 0: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
-```
-propext          — Propositional extensionality
-Classical.choice — Axiom of choice
-Quot.sound       — Quotient soundness
-```
-These are part of Lean's foundation. Every Mathlib proof uses them.
+### Level 0a: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
+- `propext` — propositional extensionality
+- `Classical.choice` — axiom of choice
+- `Quot.sound` — quotient soundness
+
+These are part of Lean's foundation. Most Mathlib proofs use them.
+
+### Level 0b: Computation Trust (2) — FROM `native_decide` (REPLACEABLE)
+- `Lean.ofReduceBool`
+- `Lean.trustCompiler`
+
+These appear when we use `native_decide` to validate finite certificate tables (fast, but trusts the compiler).
+If we want a “kernel-only” proof, we can replace those table checks with explicit proofs (case splits + `norm_num`).
 
 ### Level 1: Classical Results from Literature (2) — ESTABLISHED MATHEMATICS
-```
-Weil_criterion        — Weil 1952: Q ≥ 0 on Weil cone ⟺ RH
-Schur_test            — Schur test for operator norm bounds
-```
+- `Weil_criterion` — Weil 1952: `Q ≥ 0` on Weil cone ⟺ RH
+- `Schur_test` — Schur test for operator norm bounds
+
 These are well-known results. Citations:
 - Weil, A. (1952). "Sur les 'formules explicites' de la théorie des nombres premiers"
 
@@ -89,21 +95,15 @@ These are well-known results. Citations:
 - `A1_density_WK_axiom` → closed (A1_density_WK_thm)
 - `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` → closed via Q_nonneg_atoms_closure
 
-### Level 2: Q3 Paper Contributions (3) — OUR MATHEMATICAL CONTENT
-```
-SingleScale.continuous_P_A_shift                  — continuity of shifted symbol at t_critical
-SingleScale.rayleigh_basis0_shift_ge_cstar_quarter — A3 floor at basis0 (t_critical)
-SingleScale.rho_oneK_tcritical_le_cstar_quarter    — numeric cap for prime sum via t‑bridge
+### Level 2: One‑Scale Numeric Certificates @ `t_critical` (3) — TEMPORARY BRIDGE
+- `Q3.prime_term_le_at_t_critical_axiom` — numeric prime‑term cap at `t_critical` (grid + tail), in `Q3/Proofs/Q_nonneg_t_critical.lean`
+- `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin` — table correctness at grid points, in `Q3/Proofs/PrimeCert/Brange_2046.lean`
+- `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` — Lipschitz certificate over B-range, in `Q3/Proofs/PrimeCert/Brange_2046.lean`
 
-### Level 2b: Q3 Single‑scale certificates (1) — TEMPORARY BRIDGE
-```
-Q3.prime_term_le_at_t_critical_axiom — numeric prime‑term cap at t_critical (grid + tail)
-```
-This is currently a certificate-backed axiom in `Q3/Proofs/Q_nonneg_t_critical.lean`
-and is expected to be replaced by a formal certificate proof.
-```
-These are the current single‑scale assumptions used to close the chain without the
-two‑scale mismatch. They are intended to be replaced by proofs.
+These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt` and
+`output/prime_cert_brange_tcritical_2026-01-26_0050.txt`) and are expected to be replaced by a fully formal certificate proof.
+
+**Important:** The former “SingleScale axioms” are now THEOREMS and do not appear in `#print axioms`.
 
 ### Level 3: Technical Bridge Lemmas (0) — CLOSED
 
@@ -128,14 +128,16 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 Expected output:
 ```
 'Q3.Main.RH_of_Weil_and_Q3' depends on axioms: [
-  propext,                              -- Standard Lean
-  Classical.choice,                     -- Standard Lean
-  Quot.sound,                           -- Standard Lean
-  Q3.Weil_criterion,                    -- Level 1: Weil 1952
-  Q3.Schur_test,                        -- Level 1: Analysis
-  Q3.Proofs.SingleScale.continuous_P_A_shift,                  -- Level 2: Q3 paper
-  Q3.Proofs.SingleScale.rayleigh_basis0_shift_ge_cstar_quarter, -- Level 2: Q3 paper
-  Q3.Proofs.SingleScale.rho_oneK_tcritical_le_cstar_quarter     -- Level 2: Q3 paper
+  propext,                        -- Level 0a: Standard Lean
+  Classical.choice,               -- Level 0a: Standard Lean
+  Quot.sound,                     -- Level 0a: Standard Lean
+  Lean.ofReduceBool,              -- Level 0b: native_decide trust
+  Lean.trustCompiler,             -- Level 0b: native_decide trust
+  Q3.Weil_criterion,              -- Level 1: Weil 1952
+  Q3.Schur_test,                  -- Level 1: Analysis
+  Q3.prime_term_le_at_t_critical_axiom,                 -- Level 2: one‑scale certificate
+  Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin,       -- Level 2: one‑scale certificate
+  Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange  -- Level 2: one‑scale certificate
 ]
 ```
 
