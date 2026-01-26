@@ -7,6 +7,7 @@ Keep this file short. Put details in linked docs.
 
 1) `ACTIVE/orchestrator.md` — current status + next steps
 2) `ACTIVE/chain_status.md` — single-scale chain summary
+2.1) `ACTIVE/MAIN_CHAIN_DEPS.md` — **actual** RH dependencies vs repo legacy
 3) `ACTIVE/insights.md` — live insights index (links only)
 4) `ACTIVE/workflow.md` — workflow rules
 5) `ACTIVE/tree.md` — navigation tree (what depends on what)
@@ -26,15 +27,11 @@ Note: spec sources are legacy/background. For mainline decisions, return to
 - Paper alignment audit (single-scale vs legacy): `ACTIVE/single_scale_paper_audit.md`
 - Legacy two-scale index: `ACTIVE/legacy_two_scale_index.md`
 
-## 2) Live axioms (single-scale)
-
-These are the only open project axioms on the main chain:
-
-- `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` (tau = 0)
+## 2) Main-chain dependencies (authoritative)
 
 Source of truth:
-- `ACTIVE/orchestrator.md` (Axiom Count + table)
-- `ACTIVE/chain_status.md`
+- `ACTIVE/MAIN_CHAIN_DEPS.md` (actual RH deps vs repo legacy)
+- `Q3/CheckAxioms.lean` (prints the live dependency list)
 
 ## 3) Canonical docs (maps/specs)
 
