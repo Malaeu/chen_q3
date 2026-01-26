@@ -5,7 +5,7 @@
   - Source: `scripts/pa_floor_cert.py` + `output/floor_cert_tcritical_2026-01-25_1615.txt`
   - Used in: `Q3/Proofs/Q_nonneg_t_critical.lean` to close `P_A_ge_c_star_at_t_critical`
 - **prime_term_le_at_t_critical_axiom** (legacy, τ‑uniform): numeric prime-sum certificate
-  - Source: `scripts/prime_term_cert.py` + `output/prime_cert_tcritical_2026-01-25_1826.txt`
+  - Source: `scripts/prime_term_cert.py` + `output/prime_cert_tcritical_2026-01-26_0046.txt`
   - **Status:** removed from main chain after τ=0 cone refactor
 ## Current Status: 6 Axioms
 

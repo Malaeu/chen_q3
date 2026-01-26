@@ -1,4 +1,4 @@
-# Prime-term certificate @ t_critical (2026-01-25)
+# Prime-term certificate @ t_critical (updated with 2026-01-26 output)
 
 Goal: support the single-scale prime bound
 
@@ -44,7 +44,7 @@ arch_term = integral_{-B..B} a_star(xi) * phi_shift_critical(xi) dxi
 
 `a_star(xi) = 2*pi * (log pi - Re(digamma(1/4 + i*pi*xi)))`.
 
-## Results (from output/prime_cert_tcritical_2026-01-25_1826.txt)
+## Results (from output/prime_cert_tcritical_2026-01-26_0046.txt)
 
 - `B_min = 3`, `t_critical = 0.15`, `tau = 0`
 - `prime_sum (n<=N)` = **8.7135790788318**

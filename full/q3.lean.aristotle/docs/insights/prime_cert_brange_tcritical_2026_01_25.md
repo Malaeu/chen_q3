@@ -1,4 +1,4 @@
-# Prime-term B-range certificate @ t_critical (2026-01-25)
+# Prime-term B-range certificate @ t_critical (updated with 2026-01-26 output)
 
 Goal: bound the single-scale prime term for **tau = 0** over **B ∈ [B_min, B_max]**:
 
@@ -8,7 +8,7 @@ prime_term(phi_shift_critical B 0) <= arch_term(phi_shift_critical B 0)
 
 ## Script
 
-`/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/scripts/prime_term_cert_brange.py`
+`scripts/prime_term_cert_brange.py`
 
 - Grid in **B** with step `h = 0.1` on `[3.0, 4.9]`.
 - For each B:
@@ -20,7 +20,7 @@ prime_term(phi_shift_critical B 0) <= arch_term(phi_shift_critical B 0)
 
 ## Output
 
-`/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/output/prime_cert_brange_tcritical_2026-01-25_2046.txt`
+`output/prime_cert_brange_tcritical_2026-01-26_0050.txt`
 
 Key values:
 
