@@ -6,9 +6,10 @@ Legend:
 [OK]  formalized (no axioms in the chain)
 [AX]  axiom in the chain
 [EXT] external/classical axiom (not closable)
+[TRUST] trusted computation (native_decide / compiler)
 
-Last update: 2026-01-21
-Axiom count in main chain: 6 total (3 project + 3 standard)
+Last update: 2026-01-26
+Axiom count in main chain: 10 total (5 project + 5 kernel/standard)
 
 ## Critical Chain (ASCII)
 
@@ -23,41 +24,47 @@ RH_of_Weil_and_Q3
             |
             +-- A1_density_WK [OK]
             +-- Q_Lipschitz_on_W_K [OK]
-            +-- Q_nonneg_on_atoms [AX]
+            +-- Q_nonneg_on_atoms [OK]
                  |
-                 +-- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom [AX]
-                 +-- RKHS_contraction [OK]
                  +-- Schur_test [EXT classical]
+                 |
+                 +-- One-scale @ t_critical = 3/20 [OK]
+                      |
+                      +-- prime_term_le_at_t_critical_axiom [AX cert]
+                      +-- PrimeCert: prime_b_grid_val_le_margin [AX cert]
+                      +-- PrimeCert: prime_margin_Lipschitz_on_Brange [AX cert]
 ```
 
 ## Axiom Summary
 
 | Category | Axioms | Count |
 |----------|--------|-------|
-| Standard Lean | `propext`, `Classical.choice`, `Quot.sound` | 3 |
+| Standard/kernel | `propext`, `Classical.choice`, `Quot.sound` | 3 |
+| Trusted computation | `Lean.ofReduceBool`, `Lean.trustCompiler` | 2 |
 | Classical Literature | `Weil_criterion`, `Schur_test` | 2 |
-| Q3 Paper (closable) | `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | 1 |
-| **TOTAL** | | **6** |
+| One‑scale numeric certificates | `prime_term_le_at_t_critical_axiom`, `PrimeCert.*` (2) | 3 |
+| **TOTAL** | | **10** |
 
-## Closed Axioms (2026-01-21)
+## Closed Axioms (history)
 
-- `a_star_pos` - positivity proof
+- `a_star_even` - Mathlib Gamma_conj
+- `a_star_pos` - positivity
 - `a_star_continuous` - Mathlib Gamma continuity
 - `a_star_bdd_on_compact` - continuous + compact
-- `a_star_even` - Mathlib Gamma_conj
 - `A1_density_WK_axiom` - bounded hat interpolation (h_even mass bound)
-- `RKHS_contraction` - bridged in Q3/Proofs/Bridge.lean
-- `arch/prime Lipschitz` - closed in Q3/Proofs/Q_Lipschitz.lean
+- `RKHS_contraction_axiom` - bridged in `Q3/Proofs/Bridge.lean`
+- `arch/prime Lipschitz bridge axioms` - closed in `Q3/Proofs/Q_Lipschitz.lean`
+- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` - closed via `Q_nonneg_atoms_closure` (2026-01-24)
 
 ## Notes
 
-- `Q_Lipschitz_on_W_K` is a theorem (arch/prime bridge axioms closed).
-- Remaining closable axiom: `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`.
-- Blocker: AtomCone_K_fixed gap (quantifier mismatch for fixed t).
-- External axioms (`Weil_criterion`, `Schur_test`) are classical results.
+- Mainline is now **single-scale** at `t_critical = 3/20` (see `docs/CHAIN_STATUS.md`).
+- External axioms (`Weil_criterion`, `Schur_test`) are accepted classical results.
+- The remaining non-classical axioms are **certificate-backed** (t_critical grid checks) and
+  **trusted computation** (`native_decide`) related (`Lean.trustCompiler`, `Lean.ofReduceBool`).
 
-## A3_bridge Progress
+## A3_bridge Progress (context)
 
 **Fourier A3 bridge complete (theorem):** `Q3/Proofs/P_A_Toeplitz_bridge.lean`
 - Uses Fourier Toeplitz + `P_A` symbol + `T_P_comp_real`
-- Main chain depends on `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- One-scale chain depends on prime certificate axioms (see `Q3/Proofs/PrimeCert/`)
