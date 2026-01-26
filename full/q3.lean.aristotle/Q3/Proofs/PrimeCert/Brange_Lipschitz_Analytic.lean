@@ -104,7 +104,7 @@ lemma fejer_heat_window_lipschitz_B (B1 B2 t xi : ℝ)
       |(1 - |xi| / B1) - (1 - |xi| / B2)| = |xi| * |1 / B1 - 1 / B2| := by
     have h :
         (1 - |xi| / B1) - (1 - |xi| / B2) = |xi| * (1 / B2 - 1 / B1) := by
-      ring
+      ring_nf
     calc
       |(1 - |xi| / B1) - (1 - |xi| / B2)|
           = |(|xi| * (1 / B2 - 1 / B1))| := by simpa [h]
@@ -121,7 +121,8 @@ lemma fejer_heat_window_lipschitz_B (B1 B2 t xi : ℝ)
       _ = |xi| * |1 / B1 - 1 / B2| := hdiff
       _ ≤ |xi| * (|B1 - B2| / (B_min ^ 2)) := by
         exact mul_le_mul_of_nonneg_left hbound_inv (abs_nonneg xi)
-      _ = |xi| * |B1 - B2| / (B_min ^ 2) := by ring
+      _ = |xi| * |B1 - B2| / (B_min ^ 2) := by
+        simp [div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm]
   -- apply exp factor (≤ 1)
   have hexp_le : Real.exp (-4 * Real.pi ^ 2 * t * xi ^ 2) ≤ 1 := by
     have hpi : 0 ≤ Real.pi ^ 2 := by nlinarith [Real.pi_pos]
@@ -144,7 +145,7 @@ lemma fejer_heat_window_lipschitz_B (B1 B2 t xi : ℝ)
         = |(max 0 (1 - |xi| / B1) * E) - (max 0 (1 - |xi| / B2) * E)| := by
           simp [hfej1, hfej2]
     _ = |(max 0 (1 - |xi| / B1) - max 0 (1 - |xi| / B2)) * E| := by
-          ring
+          ring_nf
     _ = E * |max 0 (1 - |xi| / B1) - max 0 (1 - |xi| / B2)| := by
           simp [abs_mul, abs_of_nonneg hexp_nonneg, mul_comm, mul_left_comm, mul_assoc]
     _ ≤ |max 0 (1 - |xi| / B1) - max 0 (1 - |xi| / B2)| := by
@@ -154,6 +155,59 @@ lemma fejer_heat_window_lipschitz_B (B1 B2 t xi : ℝ)
           nlinarith
     _ ≤ |xi| * |B1 - B2| / (B_min ^ 2) := hmax_le
 
+lemma fejer_heat_window_lipschitz_B_exp (B1 B2 t xi : ℝ)
+    (hB1 : B_min ≤ B1) (hB2 : B_min ≤ B2) (ht : 0 ≤ t) :
+    |fejer_heat_window B1 t xi - fejer_heat_window B2 t xi| ≤
+      Real.exp (-4 * Real.pi ^ 2 * t * xi ^ 2) * |xi| * |B1 - B2| / (B_min ^ 2) := by
+  have hmax :
+      |max 0 (1 - |xi| / B1) - max 0 (1 - |xi| / B2)| ≤
+        |(1 - |xi| / B1) - (1 - |xi| / B2)| := by
+    simpa using (abs_max0_sub_max0_le (1 - |xi| / B1) (1 - |xi| / B2))
+  have hdiff :
+      |(1 - |xi| / B1) - (1 - |xi| / B2)| = |xi| * |1 / B1 - 1 / B2| := by
+    have h :
+        (1 - |xi| / B1) - (1 - |xi| / B2) = |xi| * (1 / B2 - 1 / B1) := by
+      ring_nf
+    calc
+      |(1 - |xi| / B1) - (1 - |xi| / B2)|
+          = |(|xi| * (1 / B2 - 1 / B1))| := by simpa [h]
+      _ = |xi| * |1 / B2 - 1 / B1| := by simp [abs_mul]
+      _ = |xi| * |1 / B1 - 1 / B2| := by simpa [abs_sub_comm]
+  have hbound_inv : |1 / B1 - 1 / B2| ≤ |B1 - B2| / (B_min ^ 2) :=
+    abs_inv_sub_inv_le B1 B2 hB1 hB2
+  have hmax_le :
+      |max 0 (1 - |xi| / B1) - max 0 (1 - |xi| / B2)| ≤
+        |xi| * |B1 - B2| / (B_min ^ 2) := by
+    calc
+      |max 0 (1 - |xi| / B1) - max 0 (1 - |xi| / B2)|
+          ≤ |(1 - |xi| / B1) - (1 - |xi| / B2)| := hmax
+      _ = |xi| * |1 / B1 - 1 / B2| := hdiff
+      _ ≤ |xi| * (|B1 - B2| / (B_min ^ 2)) := by
+        exact mul_le_mul_of_nonneg_left hbound_inv (abs_nonneg xi)
+      _ = |xi| * |B1 - B2| / (B_min ^ 2) := by
+        simp [div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm]
+  have hexp_nonneg : 0 ≤ Real.exp (-4 * Real.pi ^ 2 * t * xi ^ 2) := by
+    exact Real.exp_nonneg _
+  set E : ℝ := Real.exp (-4 * Real.pi ^ 2 * t * xi ^ 2)
+  have hfej1 : fejer_heat_window B1 t xi = max 0 (1 - |xi| / B1) * E := by
+    simp [fejer_heat_window, E, mul_comm, mul_left_comm, mul_assoc]
+  have hfej2 : fejer_heat_window B2 t xi = max 0 (1 - |xi| / B2) * E := by
+    simp [fejer_heat_window, E, mul_comm, mul_left_comm, mul_assoc]
+  calc
+    |fejer_heat_window B1 t xi - fejer_heat_window B2 t xi|
+        = |(max 0 (1 - |xi| / B1) * E) - (max 0 (1 - |xi| / B2) * E)| := by
+          simp [hfej1, hfej2]
+    _ = |(max 0 (1 - |xi| / B1) - max 0 (1 - |xi| / B2)) * E| := by
+          ring_nf
+    _ = E * |max 0 (1 - |xi| / B1) - max 0 (1 - |xi| / B2)| := by
+          simp [abs_mul, abs_of_nonneg hexp_nonneg, mul_comm, mul_left_comm, mul_assoc]
+    _ ≤ E * (|xi| * |B1 - B2| / (B_min ^ 2)) := by
+          exact mul_le_mul_of_nonneg_left hmax_le hexp_nonneg
+    _ = Real.exp (-4 * Real.pi ^ 2 * t * xi ^ 2) * (|xi| * |B1 - B2| / (B_min ^ 2)) := by
+          simp [E]
+    _ = Real.exp (-4 * Real.pi ^ 2 * t * xi ^ 2) * |xi| * |B1 - B2| / (B_min ^ 2) := by
+          simp [div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm]
+
 lemma phi_shift_lipschitz_B (B1 B2 xi : ℝ)
     (hB1 : B_min ≤ B1) (hB2 : B_min ≤ B2) :
     |phi_shift B1 t_critical 0 xi - phi_shift B2 t_critical 0 xi| ≤
@@ -161,6 +215,15 @@ lemma phi_shift_lipschitz_B (B1 B2 xi : ℝ)
   simpa [phi_shift] using
     (fejer_heat_window_lipschitz_B (B1:=B1) (B2:=B2) (t:=t_critical) (xi:=xi) hB1 hB2
       (le_of_lt Q3.t_critical_pos))
+
+lemma phi_shift_lipschitz_B_exp (B1 B2 xi : ℝ)
+    (hB1 : B_min ≤ B1) (hB2 : B_min ≤ B2) :
+    |phi_shift B1 t_critical 0 xi - phi_shift B2 t_critical 0 xi| ≤
+      Real.exp (-4 * Real.pi ^ 2 * t_critical * xi ^ 2) *
+        |xi| * |B1 - B2| / (B_min ^ 2) := by
+  simpa [phi_shift] using
+    (fejer_heat_window_lipschitz_B_exp (B1:=B1) (B2:=B2) (t:=t_critical) (xi:=xi)
+      hB1 hB2 (le_of_lt Q3.t_critical_pos))
 
 lemma phi_shift_support_subset_Icc (B : ℝ) (hB : 0 < B) :
     Function.support (fun xi => phi_shift B t_critical 0 xi) ⊆ Set.Icc (-B) B := by
@@ -196,13 +259,13 @@ lemma phi_shift_sup_norm_le (B1 B2 : ℝ)
       |phi_shift B1 t_critical 0 x - phi_shift B2 t_critical 0 x|
           ≤ |x| * |B1 - B2| / (B_min ^ 2) := hphi
       _ = |x| * (|B1 - B2| / (B_min ^ 2)) := by
-        ring
+        simp [div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm]
       _ ≤ prime_cert_B_max * (|B1 - B2| / (B_min ^ 2)) := by
         have hcoef_nonneg : 0 ≤ |B1 - B2| / (B_min ^ 2) := by
           exact div_nonneg (abs_nonneg _) (by nlinarith [B_min_pos])
         exact mul_le_mul_of_nonneg_right hx' hcoef_nonneg
       _ = prime_cert_B_max * |B1 - B2| / (B_min ^ 2) := by
-        ring
+        simp [div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm]
       _ = phi_shift_B_Lipschitz_const * |B1 - B2| := by
         simp [phi_shift_B_Lipschitz_const, mul_comm, mul_left_comm, mul_assoc, div_eq_mul_inv]
   have h_nonempty :

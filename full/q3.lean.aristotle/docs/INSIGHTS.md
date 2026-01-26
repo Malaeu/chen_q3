@@ -137,6 +137,9 @@
   proves a symbolic Lipschitz bound for `margin` with constant
   `margin_Lipschitz_const := (2*B_max*M_a_local(B_max)+W_sum_local(B_max)) * (B_max/B_min^2)`,
   plus a pointwise `phi_shift` bound in `B`. This compiles.
+- **Note (2026-01-26):** attempted a weighted prime‑sum Lipschitz variant here, but Lean
+  hit deterministic heartbeat timeouts; rolled back the weighted lemma to keep the file compiling.
+  Next attempt should refactor to a finite‑sum (`Finset`) proof to avoid heavy `tsum` machinery.
 - **Still missing:** an explicit numeric upper bound on
   `2*B_max*M_a_local(B_max)+W_sum_local(B_max)` to show
   `margin_Lipschitz_const ≤ 3/10` (or any certified ≤ `prime_cert_L_ub`).
