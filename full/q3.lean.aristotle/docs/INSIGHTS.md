@@ -123,8 +123,8 @@
   (now in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`); goal is to **replace** them by proofs.
 - q3search/websearch are **missing** in this sandbox (both “command not found”); no semantic scan yet.
 - 2026-01-26 check: `q3search`/`websearch` still unavailable (127 / “Befehl nicht gefunden”).
-- Aristotle tooling missing here: `aristotle` CLI not on PATH, `aristotlelib` not installed in `.venv`.
-  Next action: install/activate Aristotle tools or run from a machine with them, then submit
+- Aristotle tooling installed in `.venv` (CLI + `aristotlelib`), but submission is
+  blocked by missing `ARISTOTLE_API_KEY`. Next action: set key and submit
   `aristotle_input/proshka_primecert_lipschitz_2026_01_26.md`.
 - Core idea: prove `B ↦ arch_term (phi_shift B t_critical 0)` and
   `B ↦ prime_term (phi_shift B t_critical 0)` are Lipschitz on `[B_min, B_max]`,
