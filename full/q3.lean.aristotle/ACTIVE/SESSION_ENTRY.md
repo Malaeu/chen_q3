@@ -38,7 +38,7 @@ Open blockers (sorry in chain):
   - `Q3.prime_term_le_at_t_critical_axiom`
   - `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin`
   - `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
-  - plus compiler axioms `Lean.ofReduceBool`, `Lean.trustCompiler` (from `native_decide`-style table checks)
+  - plus classical/standard axioms: `Q3.Weil_criterion`, `Q3.Schur_test`, `propext`, `Classical.choice`, `Quot.sound`
 
 Last check:
 - `lake build Q3.Main` passes.
@@ -48,4 +48,4 @@ Next steps:
 1) Decide what we want as “final” axioms for the one‑scale numeric certificates
    (keep explicit certificate axioms vs eliminate via a different encoding).
 2) If we keep certificate axioms: document them in `PHILOSOPHY_OF_PROOF.md` and update `scripts/check_axioms.sh`.
-3) If we want to eliminate `Lean.trustCompiler`: replace `native_decide` table proofs with kernel-safe proofs (case splits + `norm_num`).
+3) ✅ DONE: eliminated `native_decide` from PrimeCert tables (no `Lean.trustCompiler` / `Lean.ofReduceBool` in the chain).

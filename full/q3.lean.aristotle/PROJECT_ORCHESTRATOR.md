@@ -65,9 +65,9 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **10 axioms** (5 project + 5 kernel/standard)
+Result: **8 axioms** (5 project + 3 kernel/standard)
 
-- Kernel/standard: `propext`, `Classical.choice`, `Quot.sound`, `Lean.ofReduceBool`, `Lean.trustCompiler`
+- Kernel/standard: `propext`, `Classical.choice`, `Quot.sound`
 - Level 1 (Classical Literature): `Weil_criterion`, `Schur_test`
 - Level 2 (One‑scale numeric certificates @ t_critical):
   `prime_term_le_at_t_critical_axiom`,
@@ -459,7 +459,7 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
   **BLOCKER**: Direct import causes FejerKernel name conflict (both at top level).
   **TODO**: Refactor A1_density to use `Q3.Fejer_kernel` from Axioms.lean, or add namespace.
   Current status: 2 sorries in A1_density.lean (hat_interpolation_approx + h_approx).
-  Build passes, 10 axioms unchanged.
+  Build passes (axiom count tracked in the "Axiom Count" section above).
 
 - 2026-01-14: **Aristotle COMPLETE** for `hat_interpolation_approx`!
   KEY FINDING: Original lemma signature was WRONG — proved counterexample for f(x)=1.

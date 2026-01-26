@@ -9,7 +9,7 @@ Legend:
 [TRUST] trusted computation (native_decide / compiler)
 
 Last update: 2026-01-26
-Axiom count in main chain: 10 total (5 project + 5 kernel/standard)
+Axiom count in main chain: 8 total (5 project + 3 kernel/standard)
 
 ## Critical Chain (ASCII)
 
@@ -40,10 +40,10 @@ RH_of_Weil_and_Q3
 | Category | Axioms | Count |
 |----------|--------|-------|
 | Standard/kernel | `propext`, `Classical.choice`, `Quot.sound` | 3 |
-| Trusted computation | `Lean.ofReduceBool`, `Lean.trustCompiler` | 2 |
+| Trusted computation | (none in main chain) | 0 |
 | Classical Literature | `Weil_criterion`, `Schur_test` | 2 |
 | One‑scale numeric certificates | `prime_term_le_at_t_critical_axiom`, `PrimeCert.*` (2) | 3 |
-| **TOTAL** | | **10** |
+| **TOTAL** | | **8** |
 
 ## Closed Axioms (history)
 
@@ -60,8 +60,8 @@ RH_of_Weil_and_Q3
 
 - Mainline is now **single-scale** at `t_critical = 3/20` (see `docs/CHAIN_STATUS.md`).
 - External axioms (`Weil_criterion`, `Schur_test`) are accepted classical results.
-- The remaining non-classical axioms are **certificate-backed** (t_critical grid checks) and
-  **trusted computation** (`native_decide`) related (`Lean.trustCompiler`, `Lean.ofReduceBool`).
+- The remaining non-classical axioms are **certificate-backed** (t_critical prime-term + B-range).
+- `native_decide` is eliminated (no `Lean.trustCompiler` / `Lean.ofReduceBool` in the chain).
 
 ## A3_bridge Progress (context)
 

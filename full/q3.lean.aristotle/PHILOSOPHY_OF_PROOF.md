@@ -65,8 +65,8 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ## Axiom Classification
 
-As of **2026-01-26**, `#print axioms Q3.Main.RH_of_Weil_and_Q3` reports **10 axioms** total:
-5 kernel/standard + 5 project.
+As of **2026-01-26**, `#print axioms Q3.Main.RH_of_Weil_and_Q3` reports **8 axioms** total:
+3 kernel/standard + 5 project.
 
 ### Level 0a: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
 - `propext` — propositional extensionality
@@ -75,12 +75,10 @@ As of **2026-01-26**, `#print axioms Q3.Main.RH_of_Weil_and_Q3` reports **10 axi
 
 These are part of Lean's foundation. Most Mathlib proofs use them.
 
-### Level 0b: Computation Trust (2) — FROM `native_decide` (REPLACEABLE)
-- `Lean.ofReduceBool`
-- `Lean.trustCompiler`
+### Level 0b: Computation Trust (0) — CLOSED
 
-These appear when we use `native_decide` to validate finite certificate tables (fast, but trusts the compiler).
-If we want a “kernel-only” proof, we can replace those table checks with explicit proofs (case splits + `norm_num`).
+We eliminated `native_decide` from the PrimeCert table checks, so
+`Lean.ofReduceBool` / `Lean.trustCompiler` no longer appear in the main chain.
 
 ### Level 1: Classical Results from Literature (2) — ESTABLISHED MATHEMATICS
 - `Weil_criterion` — Weil 1952: `Q ≥ 0` on Weil cone ⟺ RH
@@ -131,8 +129,6 @@ Expected output:
   propext,                        -- Level 0a: Standard Lean
   Classical.choice,               -- Level 0a: Standard Lean
   Quot.sound,                     -- Level 0a: Standard Lean
-  Lean.ofReduceBool,              -- Level 0b: native_decide trust
-  Lean.trustCompiler,             -- Level 0b: native_decide trust
   Q3.Weil_criterion,              -- Level 1: Weil 1952
   Q3.Schur_test,                  -- Level 1: Analysis
   Q3.prime_term_le_at_t_critical_axiom,                 -- Level 2: one‑scale certificate

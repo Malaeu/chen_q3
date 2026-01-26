@@ -40,7 +40,7 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin
 ```
 
-- Standard/kernel: `propext`, `Classical.choice`, `Quot.sound`, `Lean.ofReduceBool`, `Lean.trustCompiler`
+- Standard/kernel: `propext`, `Classical.choice`, `Quot.sound`
 - Classical literature: `Q3.Weil_criterion`, `Q3.Schur_test`
 - One‑scale numeric certificates (t_critical):  
   `Q3.prime_term_le_at_t_critical_axiom`,  
