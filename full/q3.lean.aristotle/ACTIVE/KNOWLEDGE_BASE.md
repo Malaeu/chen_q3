@@ -1,5 +1,12 @@
 # Knowledge Base (index + live facts)
 
+**Purpose:** Router for ACTIVE docs. Read this first, then follow links only as needed.
+**Current status:** Main chain deps are fixed in `ACTIVE/MAIN_CHAIN_DEPS.md` (authoritative).
+**Next action:** Go to `ACTIVE/orchestrator.md` for tasks, or `ACTIVE/MAIN_CHAIN_DEPS.md` for blockers.
+**Links:** `ACTIVE/orchestrator.md` · `ACTIVE/MAIN_CHAIN_DEPS.md` · `ACTIVE/chain_status.md` · `ACTIVE/requests/INDEX.md`
+
+--- 
+
 Goal: lightweight, link-first map so agents pull only what they need.
 Keep this file short. Put details in linked docs.
 

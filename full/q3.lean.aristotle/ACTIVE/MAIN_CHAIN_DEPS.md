@@ -1,5 +1,12 @@
 # Main Chain Dependencies vs Repo Legacy (2026-01-27 00:47)
 
+**Purpose:** Separate *actual main-chain blockers* from legacy/sandbox noise.  
+**Current status:** Main-chain depends on **2 Q3 axioms** + 2 classical.  
+**Next action:** Close `prime_cert_margin_on_Brange_axiom` then `prime_term_le_at_t_critical_axiom`.  
+**Links:** `Q3/CheckAxioms.lean` · `Q3/Main.lean` · `ACTIVE/orchestrator.md`
+
+---
+
 Purpose: separate *what actually blocks RH in the current main chain* from
 legacy/sandbox files that inflate raw axiom/sorry counts.
 
@@ -49,4 +56,3 @@ These are **not** imported by `Q3/Main.lean` and do not affect the current main 
 - Raw counts (inflated):
   - `rg -n "^\s*axiom\b" Q3 --type=lean | wc -l`
   - `rg -n "\bsorry\b" Q3 --type=lean | wc -l`
-

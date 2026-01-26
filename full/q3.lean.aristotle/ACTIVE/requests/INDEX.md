@@ -1,5 +1,12 @@
 # Requests Tree Index
 
+**Purpose:** Index of request nodes (why → evidence → decision → request).  
+**Current status:** This is a catalog; only open nodes in `ACTIVE/MAIN_CHAIN_DEPS.md` are blockers.  
+**Next action:** Open a node only when it maps to a main-chain blocker.  
+**Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `ACTIVE/orchestrator.md`
+
+---
+
 Total nodes: 124
 
 Each node is a self-contained trace: why -> evidence -> decision -> request.

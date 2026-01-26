@@ -1,5 +1,21 @@
 # ACTIVE tree (navigation)
 
+**Purpose:** Compact navigation tree + minimal reader flow.  
+**Current status:** Main blockers are in `ACTIVE/MAIN_CHAIN_DEPS.md`.  
+**Next action:** Use the reader flow below; drill only as needed.  
+**Links:** `ACTIVE/KNOWLEDGE_BASE.md` · `ACTIVE/MAIN_CHAIN_DEPS.md` · `ACTIVE/orchestrator.md`
+
+---
+
+## Reader flow (minimal)
+
+1) `ACTIVE/KNOWLEDGE_BASE.md` (router)  
+2) `ACTIVE/MAIN_CHAIN_DEPS.md` (authoritative blockers)  
+3) `ACTIVE/chain_status.md` (short chain summary)  
+4) `ACTIVE/requests/INDEX.md` (request tree, when needed)  
+
+---
+
 Goal: a compact, link-first tree so agents can follow paths without loading everything.
 
 ```
@@ -40,11 +56,13 @@ ACTIVE/
 
 ## Current blocker path (minimal)
 
-1) `SingleScale_Assumptions.lean` → `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
-2) reduce via `P_A_shift_tau_zero` (`Q_nonneg_base_atoms_proof.lean`)
-3) use `P_A_rayleigh_lower_bound_of_floor` (`P_A_Toeplitz_bridge_one_scale.lean`)
-4) need floor at `t_critical`: `A3_Floor_Critical_Goal.lean`
+1) `Q3/Proofs/PrimeCert/Brange_2046.lean`  
+   → `prime_cert_margin_on_Brange_axiom`
+2) `Q3/Proofs/Q_nonneg_t_critical.lean`  
+   → `prime_term_le_at_t_critical_axiom`
+3) `Q3/CheckAxioms.lean`  
+   → prints live dependency list for `Q3.Main.RH_of_Weil_and_Q3`
 
 ## If you only read one chain file
 
-- `Q3/Proofs/Q_nonneg_atoms_closure.lean` (shows the exact dependency flow)
+- `ACTIVE/MAIN_CHAIN_DEPS.md` (authoritative blockers + file map)
