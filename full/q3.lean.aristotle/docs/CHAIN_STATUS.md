@@ -6,8 +6,15 @@ It is intended to stay aligned with the code after each refactor.
 ## Mainline parameters
 
 - Use single-scale t_critical = 3/20.
-- Use the base-atom cone with tau = 0 (even functions only).
 - Avoid the old two-scale chain (t_sym vs t_rkhs_cap) in the mainline.
+
+**Important (numerics vs current Lean chain):**
+- Numerically, `τ-transfer` fails at `t = t_critical`:
+  `python3 verify_variant_b.py --direct` reports `min Q = -911.2678` at `τ = 1.689`
+  (so full `AtomCone_K_fixed` is not safe).
+- The current Lean main chain still depends on a placeholder axiom
+  `Q3.prime_term_le_at_t_critical_axiom` which *acts like* a “τ-uniform prime-term bound”.
+  Treat this as a temporary bridge until we refactor the cone / criterion target.
 
 ## Current chain (code-level)
 

@@ -36,6 +36,23 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ запускать `mgrep watch`/`mgrep --sync`.
 
+## Synthesis (2026-01-26, in progress) — τ-shift AtomCone fails; `prime_term_le_at_t_critical_axiom` is false-for-now
+
+- Local numeric verification: `python3 verify_variant_b.py --direct` shows
+  `min Q = -911.2678` at `τ = 1.689` for `t = 0.15` (so full `AtomCone_K_fixed` is not safe).
+- Target axiom: `Q3.prime_term_le_at_t_critical_axiom` in `Q3/Proofs/Q_nonneg_t_critical.lean`
+  is currently the only thing making τ-uniform positivity go through in Lean.
+- Wiring (main chain): `prime_term_le_at_t_critical` → `Q_phi_shift_nonneg_t_critical` →
+  `QNonnegClosure.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm` →
+  `Atoms_Positive.Q_nonneg_on_atoms` → `T5.T5_transfer`.
+- Decision tree:
+  - Option A: keep the current cone (`AtomCone_K_fixed`) and accept this axiom permanently (not credible).
+  - Option B (recommended): refactor the cone/criterion target so τ-shift atoms are not required
+    (likely move to a Fourier-positive/PD cone; then BaseAtomCone τ=0 becomes the generator).
+  - Option C: replace A1/A2/T5 with a different positivity transfer (fallback; expensive).
+- Success check: after refactor, `#print axioms Q3.Main.RH_of_Weil_and_Q3` drops `prime_term_le_at_t_critical_axiom`.
+- Note: `q3search`/`websearch` are not available in this container; use `rg` + local docs as fallback.
+
 ## Synthesis (2026-01-23, in progress) — fixed‑t/τ=0 one‑scale closure
 
 - q3search "AtomCone_K_fixed" / "Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom" failed: 403 Spend limit exceeded.

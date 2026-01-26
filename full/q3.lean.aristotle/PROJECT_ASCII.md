@@ -45,6 +45,15 @@ RH_of_Weil_and_Q3
 | One‑scale numeric certificates | `prime_term_le_at_t_critical_axiom`, `PrimeCert.*` (2) | 3 |
 | **TOTAL** | | **8** |
 
+## Sorry Summary (outside main chain)
+
+Main chain has **no** `sorryAx` and `lake build Q3.Main` passes.
+
+Remaining `sorry` (draft/legacy files, not in main chain):
+- `Q3/Proofs/Q_nonneg_base_atoms_proof.lean` (4)
+- `Q3/Proofs/A1_density.lean` (2)
+- `Q3/Proofs/QSpec.lean` (4)
+
 ## Closed Axioms (history)
 
 - `a_star_even` - Mathlib Gamma_conj
