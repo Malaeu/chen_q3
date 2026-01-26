@@ -7,13 +7,23 @@
 
 ---
 
+## Paths (OS‑specific)
+
+- **Linux root:** `/mnt/hdd01/Soft/GitHub/chen_q3`
+- **macOS root:** `/Users/emalam/Documents/GitHub/chen_q3`
+
+Prefer **repo‑relative** paths below (work on both OS). If you need absolute paths,
+prepend the correct root above.
+
+---
+
 ## SINGLE ENTRY POINT
-**START HERE:** `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+**START HERE:** `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 
 This is the ONLY file you need to read at session start. All other docs are linked from there.
 
 If resuming an in-progress session, read:
-`/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
+`full/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
 
 ---
 
@@ -67,7 +77,7 @@ Before EVERY commit, verify:
 - [ ] No new `axiom` without citation
 - [ ] No `sorry` in main proof chain
 
-See: `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
+See: `full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 
 ---
 
@@ -119,7 +129,7 @@ See: `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.
 ## 🚨 ERRORS DESTROYER (Работа над ошибками)
 
 **ОБЯЗАТЕЛЬНО прочитай перед любым PR:**
-- `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/docs/ERRORS_DESTROYER.md`
+- `full/q3.lean.aristotle/docs/ERRORS_DESTROYER.md`
 
 Там: разборы прошлых ошибок и чеклисты как их избежать.
 
@@ -227,7 +237,11 @@ Project (3):  Weil_criterion_tau0,
 ## Quick Commands
 
 ```bash
+Linux:
 cd /mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
+
+macOS:
+cd /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle
 
 # Build
 lake build Q3.Main
@@ -249,20 +263,20 @@ websearch "вопрос"              # AI web search
 
 | Purpose | File |
 |---------|------|
-| Entry point | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` |
-| Philosophy | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md` |
-| ASCII diagram | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ASCII.md` |
-| Workflow checklist | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/WORKFLOW_CHECKLIST.md` |
-| Axioms definition | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/Q3/Axioms.lean` |
-| Theorem wiring | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/Q3/AxiomsTheorems.lean` |
-| Main proof | `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/Q3/Main.lean` |
+| Entry point | `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` |
+| Philosophy | `full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md` |
+| ASCII diagram | `full/q3.lean.aristotle/PROJECT_ASCII.md` |
+| Workflow checklist | `full/q3.lean.aristotle/WORKFLOW_CHECKLIST.md` |
+| Axioms definition | `full/q3.lean.aristotle/Q3/Axioms.lean` |
+| Theorem wiring | `full/q3.lean.aristotle/Q3/AxiomsTheorems.lean` |
+| Main proof | `full/q3.lean.aristotle/Q3/Main.lean` |
 
 ---
 
 ## Aristotle (AI proof assistant)
 
 **⚠️ ПЕРЕД КАЖДЫМ ПРОМПТОМ ЧИТАЙ:**
-- `/mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+- `full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
 
 **Ключевые правила (из анализа 7 вариантов Прошкой):**
 | ИЗБЕГАТЬ | ИСПОЛЬЗОВАТЬ |
@@ -283,7 +297,11 @@ websearch "вопрос"              # AI web search
 
 **Quick start:**
 ```bash
+Linux:
 source /mnt/hdd01/Soft/GitHub/chen_q3/.venv/bin/activate
+
+macOS:
+source /Users/emalam/Documents/GitHub/chen_q3/.venv/bin/activate
 aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
 ```
 
@@ -342,7 +360,7 @@ Files created:
 
 ## LaTeX Source Files (for Proshka)
 
-**Base path:** `/mnt/hdd01/Soft/GitHub/chen_q3/full/sections/`
+**Base path:** `full/sections/` (relative to repo root)
 
 | Module | File | Description |
 |--------|------|-------------|
