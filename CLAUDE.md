@@ -15,6 +15,10 @@
 Prefer **repo‑relative** paths below (work on both OS). If you need absolute paths,
 prepend the correct root above.
 
+**Sandbox symlinks (projekt_2):**
+- **Linux:** `/mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.lake`, `/mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.venv`
+- **macOS:** `/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/.lake`, `/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/.venv`
+
 ---
 
 ## SINGLE ENTRY POINT
@@ -298,10 +302,10 @@ websearch "вопрос"              # AI web search
 **Quick start:**
 ```bash
 Linux:
-source /mnt/hdd01/Soft/GitHub/chen_q3/.venv/bin/activate
+source /mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.venv/bin/activate
 
 macOS:
-source /Users/emalam/Documents/GitHub/chen_q3/.venv/bin/activate
+source /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/.venv/bin/activate
 aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
 ```
 
