@@ -17,12 +17,12 @@ namespace Q3.Proofs.PrimeCert
 open Q3
 
 /-- B-grid on [B_min, B_max] with step prime_cert_B_h. -/
-def prime_b_grid (i : Fin prime_b_grid_vals_q.size) : ℝ :=
+def prime_b_grid (i : Fin prime_b_grid_size) : ℝ :=
   B_min + (i.1 : ℝ) * prime_cert_B_h
 
 /-- Link table grid values to the true margin at grid points. -/
 axiom prime_b_grid_val_le_margin :
-    ∀ i : Fin prime_b_grid_vals_q.size,
+    ∀ i : Fin prime_b_grid_size,
       prime_b_grid_val i ≤
         arch_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) -
           prime_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ)
@@ -41,7 +41,7 @@ axiom prime_margin_Lipschitz_on_Brange :
 /-- Grid cover certificate on [B_min, B_max]. -/
 lemma prime_b_grid_cover_cert :
     ∀ B ∈ Set.Icc B_min prime_cert_B_max,
-      ∃ i : Fin prime_b_grid_vals_q.size,
+      ∃ i : Fin prime_b_grid_size,
         |B - prime_b_grid i| ≤ prime_cert_B_h / 2
   := by
   intro B hB
@@ -66,9 +66,7 @@ lemma prime_b_grid_cover_cert :
   set n : ℕ := Nat.floor (t + 1/2)
   have hn_le : (n : ℝ) ≤ t + 1/2 := Nat.floor_le (by nlinarith [ht0])
   have ht_lt : t + 1/2 < (n : ℝ) + 1 := Nat.lt_floor_add_one (t + 1/2)
-  have hsize : prime_b_grid_vals_q.size = 20 := by
-    decide
-  have hn_lt : n < prime_b_grid_vals_q.size := by
+  have hn_lt : n < prime_b_grid_size := by
     have hnonneg : 0 ≤ t + 1/2 := by nlinarith [ht0]
     have h1 : t + 1/2 ≤ (19 : ℝ) + 1/2 := by
       linarith [htN]
@@ -78,7 +76,7 @@ lemma prime_b_grid_cover_cert :
     have htop : t + 1/2 < ((20 : ℕ) : ℝ) := by
       nlinarith [htop']
     have hnlt : n < 20 := (Nat.floor_lt hnonneg).2 htop
-    simpa [hsize] using hnlt
+    simpa using hnlt
   refine ⟨⟨n, hn_lt⟩, ?_⟩
   -- distance ≤ h/2
   have h_repr : t * prime_cert_B_h = B - B_min := by
@@ -125,10 +123,8 @@ lemma prime_cert_margin_on_Brange_axiom :
       (prime_margin_Lipschitz_on_Brange B (prime_b_grid i) hB
         (by
           -- grid point is in the B-range by construction
-          have hsize : prime_b_grid_vals_q.size = 20 := by
-            decide
           have hi_nat : i.1 < 20 := by
-            simpa [hsize] using i.2
+            simpa using i.2
           have hi : (i.1 : ℝ) ≤ 19 := by
             exact_mod_cast (Nat.lt_succ_iff.mp hi_nat)
           have hBmin' : B_min ≤ prime_b_grid i := by

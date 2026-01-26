@@ -96,7 +96,7 @@ PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
-EXPECTED_STANDARD=5  # + Lean.ofReduceBool, Lean.trustCompiler (from native_decide-style checks)
+EXPECTED_STANDARD=3  # propext, Classical.choice, Quot.sound (no native_decide/compiler trust in chain)
 EXPECTED_PROJECT=5   # Weil_criterion, Schur_test, prime_term_le_at_t_critical_axiom, PrimeCert grid axioms (2)
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
