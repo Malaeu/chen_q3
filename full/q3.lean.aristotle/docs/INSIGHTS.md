@@ -117,6 +117,26 @@
 
 ---
 
+## Synthesis (2026-01-26, in progress) — analytic Lipschitz closure for PrimeCert margin(B)
+
+- Target axioms: `prime_b_grid_val_le_margin`, `prime_margin_Lipschitz_on_Brange`
+  (now in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`); goal is to **replace** them by proofs.
+- q3search/websearch are **missing** in this sandbox (both “command not found”); no semantic scan yet.
+- Core idea: prove `B ↦ arch_term (phi_shift B t_critical 0)` and
+  `B ↦ prime_term (phi_shift B t_critical 0)` are Lipschitz on `[B_min, B_max]`,
+  then combine to bound the margin. Use existing bounds:
+  `Q_Lipschitz_arch_bridge.lean` + `Q_Lipschitz_prime_bridge.lean`,
+  plus a **uniform sup‑norm bound** on `|phi_shift B₁ - phi_shift B₂|`.
+- Need explicit constant `L ≤ 0.3` (matches `prime_cert_L_ub`), or show a sharper bound
+  and then relax to 0.3.
+- File pointers: `Q3/Proofs/ShiftedWindows.lean` (phi_shift definition/support),
+  `Q3/Proofs/Q_Lipschitz_arch_bridge.lean`, `Q3/Proofs/Q_Lipschitz_prime_bridge.lean`,
+  `Q3/Proofs/PrimeCert/Brange_2046.lean`.
+- Success check: `lake env lean Q3/Proofs/PrimeCert/Brange_2046.lean`,
+  then `./scripts/check_axioms.sh` (PrimeCert axioms eliminated).
+
+---
+
 ## A3/Rayleigh: критический путь
 
 - Символы `a_star` vs `P_A`: признаки рассогласования, reverse‑engineering → `docs/insights/a3_symbol_mismatch_reverse_engineering.md`.
