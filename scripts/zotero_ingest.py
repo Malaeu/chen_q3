@@ -80,6 +80,72 @@ def fetch_creators(cursor: sqlite3.Cursor, item_id: int) -> list[dict]:
     return creators
 
 
+def fetch_collections(cursor: sqlite3.Cursor) -> list[dict]:
+    cursor.execute("select collectionID, collectionName, parentCollectionID, key from collections")
+    collections = []
+    for collection_id, name, parent_id, key in cursor.fetchall():
+        collections.append(
+            {
+                "collection_id": collection_id,
+                "name": name,
+                "parent_id": parent_id,
+                "key": key,
+            }
+        )
+    return collections
+
+
+def resolve_collection_ids(
+    cursor: sqlite3.Cursor,
+    collection_name: str | None,
+    collection_key: str | None,
+    include_children: bool,
+) -> list[int]:
+    collections = fetch_collections(cursor)
+    children_map: dict[int, list[int]] = {}
+    for c in collections:
+        parent_id = c["parent_id"]
+        if parent_id is not None:
+            children_map.setdefault(parent_id, []).append(c["collection_id"])
+
+    def add_descendants(seed_ids: list[int]) -> list[int]:
+        seen = set(seed_ids)
+        queue = list(seed_ids)
+        while queue:
+            cid = queue.pop(0)
+            for child_id in children_map.get(cid, []):
+                if child_id not in seen:
+                    seen.add(child_id)
+                    queue.append(child_id)
+        return sorted(seen)
+
+    base_ids: list[int] = []
+    if collection_key:
+        for c in collections:
+            if c["key"] == collection_key:
+                base_ids.append(c["collection_id"])
+    elif collection_name:
+        for c in collections:
+            if c["name"] == collection_name:
+                base_ids.append(c["collection_id"])
+
+    if not base_ids:
+        return []
+
+    if include_children:
+        return add_descendants(base_ids)
+    return sorted(set(base_ids))
+
+
+def list_collections(cursor: sqlite3.Cursor) -> None:
+    collections = fetch_collections(cursor)
+    by_id = {c["collection_id"]: c for c in collections}
+    for c in sorted(collections, key=lambda x: (x["name"] or "", x["collection_id"])):
+        parent = by_id.get(c["parent_id"])
+        parent_name = parent["name"] if parent else None
+        print(f"{c['name']}  (key={c['key']}, parent={parent_name})")
+
+
 def load_fulltext(cache_path: Path) -> str:
     return cache_path.read_text(encoding="utf-8", errors="ignore").strip()
 
@@ -206,6 +272,27 @@ def process_storage_dir(
     return entry
 
 
+def fetch_attachment_keys_for_collections(
+    cursor: sqlite3.Cursor,
+    collection_ids: list[int],
+) -> list[str]:
+    if not collection_ids:
+        return []
+    placeholders = ",".join("?" for _ in collection_ids)
+    query = f"""
+        select a.key
+        from collectionItems ci
+        join items p on p.itemID = ci.itemID
+        join itemAttachments ia on ia.parentItemID = p.itemID
+        join items a on a.itemID = ia.itemID
+        where ci.collectionID in ({placeholders})
+          and ia.contentType = 'application/pdf'
+    """
+    cursor.execute(query, collection_ids)
+    keys = [row[0] for row in cursor.fetchall() if row and row[0]]
+    return sorted(set(keys))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Convert Zotero full-text cache to markdown.")
     parser.add_argument("--db", default="~/Zotero/zotero.sqlite", help="path to zotero.sqlite")
@@ -216,6 +303,20 @@ def main() -> int:
     )
     parser.add_argument("--limit", type=int, default=None, help="limit number of items")
     parser.add_argument("--only-key", help="process only a specific storage key")
+    parser.add_argument(
+        "--collection-name", help="only ingest attachments in this Zotero collection"
+    )
+    parser.add_argument(
+        "--collection-key", help="only ingest attachments in this Zotero collection key"
+    )
+    parser.add_argument(
+        "--include-children",
+        action="store_true",
+        help="include subcollections under the target collection",
+    )
+    parser.add_argument(
+        "--list-collections", action="store_true", help="list Zotero collections and exit"
+    )
     parser.add_argument("--overwrite", action="store_true", help="overwrite existing markdown")
     parser.add_argument("--write-index", action="store_true", help="update PAPER_INDEX.json")
     parser.add_argument("--dry-run", action="store_true", help="list items without writing")
@@ -236,9 +337,29 @@ def main() -> int:
     conn = open_db(db_path)
     cursor = conn.cursor()
 
+    if args.list_collections:
+        list_collections(cursor)
+        conn.close()
+        return 0
+
+    collection_ids: list[int] = []
+    if args.collection_name or args.collection_key:
+        collection_ids = resolve_collection_ids(
+            cursor,
+            args.collection_name,
+            args.collection_key,
+            args.include_children,
+        )
+        if not collection_ids:
+            conn.close()
+            raise SystemExit("Collection not found. Use --list-collections to inspect names/keys.")
+
     storage_dirs = [p for p in storage_dir.iterdir() if p.is_dir()]
     if args.only_key:
         storage_dirs = [p for p in storage_dirs if p.name == args.only_key]
+    if collection_ids:
+        keys = fetch_attachment_keys_for_collections(cursor, collection_ids)
+        storage_dirs = [storage_dir / key for key in keys if (storage_dir / key).is_dir()]
 
     entries = []
     processed = 0

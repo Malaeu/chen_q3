@@ -30,7 +30,7 @@ Ensure literature lives under `full/q3.lean.aristotle/literature/`.
 ### Zotero full‑text cache → markdown
 
 ```bash
-./scripts/zotero_ingest.py --limit 50 --write-index
+./scripts/zotero_ingest.py --collection-name Riemann --include-children --limit 50 --write-index
 ./scripts/research_oracle.py ingest --path full/q3.lean.aristotle/literature/zotero \
   --collection zotero_lib --embed
 ```
