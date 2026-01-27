@@ -76,7 +76,29 @@ So fejer_heat_window and Fejer_kernel × heat_kernel_A1 are related by scaling.
 lemma fejer_heat_window_eq_scaled_product (B ξ : ℝ) :
     fejer_heat_window B t_sym ξ =
       Real.sqrt (4 * Real.pi * t0_A1) * Fejer_kernel B ξ * heat_kernel_A1 t0_A1 ξ := by
-  sorry
+  have hpos : 0 < 4 * Real.pi * t0_A1 := by
+    nlinarith [Real.pi_pos, t0_A1_pos]
+  have hsqrt : (Real.sqrt (4 * Real.pi * t0_A1)) ≠ 0 := by
+    exact ne_of_gt (Real.sqrt_pos_of_pos hpos)
+  have hexp : Real.exp (-4 * Real.pi ^ 2 * t_sym * ξ ^ 2) =
+      Real.exp (-ξ^2 / (4 * t0_A1)) := by
+    simpa using (exp_reparam ξ).symm
+  have hcancel : (Real.sqrt (4 * Real.pi * t0_A1) : ℝ) *
+      (Real.sqrt (4 * Real.pi * t0_A1) : ℝ)⁻¹ = (1 : ℝ) := by
+    field_simp [hsqrt]
+  unfold fejer_heat_window Fejer_kernel heat_kernel_A1
+  rw [hexp]
+  simp [one_div]
+  calc
+    max 0 (1 - |ξ| / B) * Real.exp (-ξ^2 / (4 * t0_A1)) =
+        (max 0 (1 - |ξ| / B) * Real.exp (-ξ^2 / (4 * t0_A1))) * (1:ℝ) := by
+          ring
+    _ = (max 0 (1 - |ξ| / B) * Real.exp (-ξ^2 / (4 * t0_A1))) *
+          (Real.sqrt (4 * Real.pi * t0_A1) * (Real.sqrt (4 * Real.pi * t0_A1))⁻¹) := by
+          simp [hcancel]
+    _ = Real.sqrt (4 * Real.pi * t0_A1) * max 0 (1 - |ξ| / B) *
+          ((Real.sqrt (4 * Real.pi * t0_A1))⁻¹ * Real.exp (-ξ^2 / (4 * t0_A1))) := by
+          ring
 
 /-! ## Step 3: Fejer_heat_atom decomposition
 
@@ -145,9 +167,10 @@ theorem Q_Fejer_heat_atom_eq_sum (B t τ : ℝ) (hB : B > 0) (ht : t > 0) :
 lemma half_atom_eq_scaled_phi_shift (B τ ξ : ℝ) :
     half_atom B t0_A1 τ ξ =
       (1 / Real.sqrt (4 * Real.pi * t0_A1)) * phi_shift B t_sym τ ξ := by
-  simp only [half_atom, heat_kernel_A1, phi_shift, fejer_heat_window, Fejer_kernel]
-  -- exp_reparam gives: exp(-x²/(4·t0_A1)) = exp(-4π²·t_sym·x²)
-  have hexp := exp_reparam (ξ - τ)
+  have hexp : Real.exp (-4 * Real.pi ^ 2 * t_sym * (ξ - τ) ^ 2) =
+      Real.exp (-(ξ - τ) ^ 2 / (4 * t0_A1)) := by
+    simpa using (exp_reparam (ξ - τ)).symm
+  unfold half_atom phi_shift fejer_heat_window Fejer_kernel heat_kernel_A1
   rw [hexp]
   ring
 
