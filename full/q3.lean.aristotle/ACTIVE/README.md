@@ -66,3 +66,9 @@ It uses symlinks so existing paths keep working.
 ## Stats update
 
 - Run `./scripts/update_formalization_stats.sh` to refresh `FORMALIZATION_STATS.md`.
+- Run `./scripts/build_dependency_tree.py` to refresh `ACTIVE/DEPS_TREE_MAIN.md`.
+
+## Proof-graph tools
+
+- `./scripts/build_dependency_tree.py` → updates `ACTIVE/DEPS_TREE_MAIN.md`
+- `./scripts/build_proof_graph.py` → updates `ACTIVE/PROOF_GRAPH.md`

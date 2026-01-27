@@ -1,0 +1,296 @@
+{
+  "generated_at": "2026-01-27 00:30 UTC",
+  "root": "Q3.Main.RH_of_Weil_and_Q3",
+  "nodes": [
+    {
+      "id": "propext",
+      "status": "classical",
+      "file": null,
+      "axioms_in_file": [],
+      "sorries_in_file": [],
+      "alternatives": []
+    },
+    {
+      "id": "Classical.choice",
+      "status": "classical",
+      "file": null,
+      "axioms_in_file": [],
+      "sorries_in_file": [],
+      "alternatives": []
+    },
+    {
+      "id": "Q3.Schur_test",
+      "status": "classical",
+      "file": "Q3/Axioms.lean",
+      "axioms_in_file": [
+        [
+          51,
+          "Weil_criterion"
+        ],
+        [
+          60,
+          "explicit_formula"
+        ],
+        [
+          180,
+          "Szego_Bottcher_eigenvalue_bound"
+        ],
+        [
+          186,
+          "Szego_Bottcher_convergence"
+        ],
+        [
+          212,
+          "Szego_Rayleigh_lower_bound"
+        ],
+        [
+          224,
+          "Schur_test"
+        ],
+        [
+          242,
+          "c_arch_pos"
+        ],
+        [
+          279,
+          "c_star_le_c_arch"
+        ],
+        [
+          290,
+          "eigenvalue_le_norm"
+        ],
+        [
+          407,
+          "Weil_criterion_tau0"
+        ],
+        [
+          427,
+          "A1_density_WK_axiom"
+        ],
+        [
+          440,
+          "A1_density_axiom"
+        ],
+        [
+          461,
+          "W_sum_finite_axiom"
+        ],
+        [
+          471,
+          "Q_Lipschitz_on_W_K"
+        ],
+        [
+          483,
+          "RKHS_contraction_axiom"
+        ],
+        [
+          499,
+          "T_P_row_sum_bound_axiom"
+        ],
+        [
+          513,
+          "S_K_small_axiom"
+        ],
+        [
+          524,
+          "node_spacing_axiom"
+        ],
+        [
+          536,
+          "off_diag_exp_sum_axiom"
+        ],
+        [
+          551,
+          "A3_bridge_axiom"
+        ],
+        [
+          569,
+          "A3_bridge_uniform"
+        ],
+        [
+          582,
+          "A3_bridge_rayleigh_axiom"
+        ],
+        [
+          653,
+          "Q_nonneg_on_atoms_of_A3_RKHS_axiom"
+        ],
+        [
+          665,
+          "Q_nonneg_on_atoms_uniform"
+        ]
+      ],
+      "sorries_in_file": [],
+      "alternatives": []
+    },
+    {
+      "id": "Q3.Weil_criterion",
+      "status": "classical",
+      "file": "Q3/Axioms.lean",
+      "axioms_in_file": [
+        [
+          51,
+          "Weil_criterion"
+        ],
+        [
+          60,
+          "explicit_formula"
+        ],
+        [
+          180,
+          "Szego_Bottcher_eigenvalue_bound"
+        ],
+        [
+          186,
+          "Szego_Bottcher_convergence"
+        ],
+        [
+          212,
+          "Szego_Rayleigh_lower_bound"
+        ],
+        [
+          224,
+          "Schur_test"
+        ],
+        [
+          242,
+          "c_arch_pos"
+        ],
+        [
+          279,
+          "c_star_le_c_arch"
+        ],
+        [
+          290,
+          "eigenvalue_le_norm"
+        ],
+        [
+          407,
+          "Weil_criterion_tau0"
+        ],
+        [
+          427,
+          "A1_density_WK_axiom"
+        ],
+        [
+          440,
+          "A1_density_axiom"
+        ],
+        [
+          461,
+          "W_sum_finite_axiom"
+        ],
+        [
+          471,
+          "Q_Lipschitz_on_W_K"
+        ],
+        [
+          483,
+          "RKHS_contraction_axiom"
+        ],
+        [
+          499,
+          "T_P_row_sum_bound_axiom"
+        ],
+        [
+          513,
+          "S_K_small_axiom"
+        ],
+        [
+          524,
+          "node_spacing_axiom"
+        ],
+        [
+          536,
+          "off_diag_exp_sum_axiom"
+        ],
+        [
+          551,
+          "A3_bridge_axiom"
+        ],
+        [
+          569,
+          "A3_bridge_uniform"
+        ],
+        [
+          582,
+          "A3_bridge_rayleigh_axiom"
+        ],
+        [
+          653,
+          "Q_nonneg_on_atoms_of_A3_RKHS_axiom"
+        ],
+        [
+          665,
+          "Q_nonneg_on_atoms_uniform"
+        ]
+      ],
+      "sorries_in_file": [],
+      "alternatives": []
+    },
+    {
+      "id": "Q3.prime_cert_margin_on_Brange_axiom",
+      "status": "axiom",
+      "file": "Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
+      "axioms_in_file": [
+        [
+          19,
+          "prime_b_grid_val_le_margin"
+        ],
+        [
+          25,
+          "prime_margin_Lipschitz_on_Brange"
+        ]
+      ],
+      "sorries_in_file": [],
+      "alternatives": [
+        {
+          "id": "alt_grid_lipschitz",
+          "title": "Grid + Lipschitz certificate (numeric)",
+          "status": "active",
+          "notes": "Use grid values + Lipschitz bound to bound margin on B-range."
+        },
+        {
+          "id": "alt_analytic_rkhs",
+          "title": "Analytic bound via RKHS cap + Toeplitz floor",
+          "status": "idea",
+          "notes": "If a direct analytic inequality can bound margin without grid."
+        }
+      ]
+    },
+    {
+      "id": "Q3.prime_term_le_at_t_critical_axiom",
+      "status": "axiom",
+      "file": "Q3/Proofs/Q_nonneg_t_critical.lean",
+      "axioms_in_file": [
+        [
+          366,
+          "prime_term_le_at_t_critical_axiom"
+        ]
+      ],
+      "sorries_in_file": [],
+      "alternatives": [
+        {
+          "id": "alt_brange_split",
+          "title": "Split: B in [B_min, B_max] via margin + outside via generic axiom",
+          "status": "active",
+          "notes": "Current proof uses brange certificate + fallback; close fallback with certs."
+        },
+        {
+          "id": "alt_direct_cert",
+          "title": "Direct numeric certificate at t_critical",
+          "status": "idea",
+          "notes": "Grid on \u03be with modulus bound to show arch >= prime for all \u03c4,B."
+        }
+      ]
+    },
+    {
+      "id": "Quot.sound",
+      "status": "classical",
+      "file": null,
+      "axioms_in_file": [],
+      "sorries_in_file": [],
+      "alternatives": []
+    }
+  ]
+}

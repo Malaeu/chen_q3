@@ -1,0 +1,34 @@
+{
+  "Q3.prime_cert_margin_on_Brange_axiom": {
+    "alternatives": [
+      {
+        "id": "alt_grid_lipschitz",
+        "title": "Grid + Lipschitz certificate (numeric)",
+        "status": "active",
+        "notes": "Use grid values + Lipschitz bound to bound margin on B-range."
+      },
+      {
+        "id": "alt_analytic_rkhs",
+        "title": "Analytic bound via RKHS cap + Toeplitz floor",
+        "status": "idea",
+        "notes": "If a direct analytic inequality can bound margin without grid."
+      }
+    ]
+  },
+  "Q3.prime_term_le_at_t_critical_axiom": {
+    "alternatives": [
+      {
+        "id": "alt_brange_split",
+        "title": "Split: B in [B_min, B_max] via margin + outside via generic axiom",
+        "status": "active",
+        "notes": "Current proof uses brange certificate + fallback; close fallback with certs."
+      },
+      {
+        "id": "alt_direct_cert",
+        "title": "Direct numeric certificate at t_critical",
+        "status": "idea",
+        "notes": "Grid on ξ with modulus bound to show arch >= prime for all τ,B."
+      }
+    ]
+  }
+}

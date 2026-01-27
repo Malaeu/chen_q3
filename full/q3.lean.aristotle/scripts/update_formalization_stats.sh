@@ -33,3 +33,9 @@ else:
 path.write_text(text, encoding="utf-8")
 print("Updated FORMALIZATION_STATS.md")
 PY
+
+# Refresh main dependency tree (authoritative main-chain deps)
+python3 ../sandboxes/projekt_2/scripts/build_dependency_tree.py
+
+# Refresh proof graph (deps + alternatives)
+python3 ../sandboxes/projekt_2/scripts/build_proof_graph.py
