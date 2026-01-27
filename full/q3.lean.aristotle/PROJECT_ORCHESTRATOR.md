@@ -8,7 +8,7 @@
 
 ---
 
-Last Updated: 2026-01-26
+Last Updated: 2026-01-27
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -25,6 +25,10 @@ Single entry point: read this file at session start.
 
 ## Current State (short)
 
+- FloorCert: closed `floor_grid_val_ge_min_lb` as a lemma in
+  `Q3/Proofs/FloorCert/Grid_2219.lean` (native_decide on the 2219 grid).
+  Remaining FloorCert axioms: `floor_grid_val_le_P_A` (Grid_2219.lean) and
+  `P_A_Lipschitz_on_Icc_cert` (Lipschitz_2219.lean).
 - A3_FLOOR is proven and integrated: `P_A_ge_c_star` from
   `A3_Floor_Main.lean` is used in the Fourier A3 bridge.
 - Fourier A3 bridge is wired: `Q3/Atoms_Positive.lean` now depends on

@@ -31,6 +31,8 @@
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
 - check_axioms падает на A3_FLOOR: нужен предварительный build → `docs/insights/check_axioms_prebuild_a3_floor_2026_01_16.md`.
+- FloorCert grid min: `floor_grid_val_ge_min_lb` closed via `native_decide`;
+  required `set_option maxRecDepth` / `maxHeartbeats` in `Q3/Proofs/FloorCert/Grid_2219.lean`.
 - Semantic search workflow (q3search/websearch):
   1) сначала q3search (3-5 запросов, до ~75% уверенности), 2) потом websearch,
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
