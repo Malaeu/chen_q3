@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-01-27 11:21 UTC",
+  "generated_at": "2026-01-27 11:25 UTC",
   "sources": [
     {
       "id": "Weil1952",
@@ -383,16 +383,6 @@
       "notes": "Zotero attachment TKW493EZ (parent GETGQ6T5)"
     },
     {
-      "id": "ZOTERO_6HFW39UU",
-      "title": "New large value estimates for Dirichlet polynomials",
-      "author": "Larry Guth, James Maynard",
-      "year": "2024",
-      "source_url": "https://annals.math.princeton.edu/articles/22049",
-      "sha256": "0fed167173b802ef1af92ffbd32103350158ac61b881819b076f8d13bffde353",
-      "local_path": "literature/zotero/6HFW39UU/fulltext.md",
-      "notes": "Zotero attachment HRQ9DQIP (parent 6HFW39UU)"
-    },
-    {
       "id": "ZOTERO_F2SR47XH",
       "title": "Finite extinction time for the solutions to the Ricci flow on certain three-manifolds",
       "author": "Grisha Perelman",
@@ -421,6 +411,16 @@
       "sha256": "6919cea78061f5502f17939640c55c4565af643008f29a55fff21a76f3e7575c",
       "local_path": "literature/zotero/LX253RN9/fulltext.md",
       "notes": "Zotero attachment Z8BL2CP9 (parent LX253RN9)"
+    },
+    {
+      "id": "ZOTERO_6HFW39UU",
+      "title": "New large value estimates for Dirichlet polynomials",
+      "author": "Larry Guth, James Maynard",
+      "year": "2024",
+      "source_url": "https://annals.math.princeton.edu/articles/22049",
+      "sha256": "0fed167173b802ef1af92ffbd32103350158ac61b881819b076f8d13bffde353",
+      "local_path": "literature/zotero/6HFW39UU/fulltext.md",
+      "notes": "Zotero attachment HRQ9DQIP (parent 6HFW39UU)"
     }
   ],
   "notes": "Populate with metadata + sha256; keep external claims in EQUIVALENCE_GRAPH.json."

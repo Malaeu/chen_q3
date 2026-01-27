@@ -40,6 +40,12 @@ def fetch_parent_item_id(cursor: sqlite3.Cursor, attachment_item_id: int) -> int
     return row[0] if row else None
 
 
+def fetch_attachment_path(cursor: sqlite3.Cursor, attachment_item_id: int) -> str | None:
+    cursor.execute("select path from itemAttachments where itemID=?", (attachment_item_id,))
+    row = cursor.fetchone()
+    return row[0] if row else None
+
+
 def fetch_item_key(cursor: sqlite3.Cursor, item_id: int) -> str | None:
     cursor.execute("select key from items where itemID=?", (item_id,))
     row = cursor.fetchone()
@@ -288,6 +294,9 @@ def build_missing_entries(
             fetch_parent_item_id(cursor, attachment_item_id) if attachment_item_id else None
         )
         target_item_id = parent_item_id or attachment_item_id
+        attachment_path = (
+            fetch_attachment_path(cursor, attachment_item_id) if attachment_item_id else None
+        )
         parent_key = fetch_item_key(cursor, target_item_id) if target_item_id else None
         fields = fetch_fields(cursor, target_item_id) if target_item_id else {}
         creators = fetch_creators(cursor, target_item_id) if target_item_id else []
@@ -296,6 +305,7 @@ def build_missing_entries(
             {
                 "attachment_key": key,
                 "parent_key": parent_key,
+                "path": attachment_path,
                 "title": fields.get("title"),
                 "authors": authors,
                 "date": fields.get("date"),
@@ -314,13 +324,14 @@ def write_missing_report(path: Path, missing: list[dict], collection_label: str 
     lines.append("")
     lines.append(f"**Missing items:** {len(missing)}")
     lines.append("")
-    lines.append("| attachment_key | parent_key | title | authors | date | doi |")
-    lines.append("|---|---|---|---|---|---|")
+    lines.append("| attachment_key | parent_key | path | title | authors | date | doi |")
+    lines.append("|---|---|---|---|---|---|---|")
     for item in missing:
         lines.append(
-            "| {attachment_key} | {parent_key} | {title} | {authors} | {date} | {doi} |".format(
+            "| {attachment_key} | {parent_key} | {path} | {title} | {authors} | {date} | {doi} |".format(
                 attachment_key=item.get("attachment_key") or "",
                 parent_key=item.get("parent_key") or "",
+                path=(item.get("path") or "").replace("|", "\\|"),
                 title=(item.get("title") or "").replace("|", "\\|"),
                 authors=", ".join(item.get("authors") or []),
                 date=item.get("date") or "",
@@ -345,6 +356,7 @@ def fetch_attachment_keys_for_collections(
         join items a on a.itemID = ia.itemID
         where ci.collectionID in ({placeholders})
           and ia.contentType = 'application/pdf'
+          and ia.path like 'storage:%'
     """
     cursor.execute(query, collection_ids)
     keys = [row[0] for row in cursor.fetchall() if row and row[0]]

@@ -2,10 +2,9 @@
 
 **Collection:** Riemann
 
-**Generated:** 2026-01-27 11:21 UTC
+**Generated:** 2026-01-27 11:29 UTC
 
-**Missing items:** 1
+**Missing items:** 0
 
-| attachment_key | parent_key | title | authors | date | doi |
-|---|---|---|---|---|---|
-| VIKGRCIX | 6HFW39UU | New large value estimates for Dirichlet polynomials | Larry Guth, James Maynard | 2024-00-00 2024 |  |
+| attachment_key | parent_key | path | title | authors | date | doi |
+|---|---|---|---|---|---|---|
