@@ -56,6 +56,17 @@ It uses symlinks so existing paths keep working.
 
 - aristotle_models_knowledge -> ../../../docs/Как работают модели типа Аристотель и их тренировка
 
+## External proof-graph pipeline
+
+- EXTERNAL_PIPELINE.md (this folder) — two-loop workflow
+- EXTERNAL_GRAPH_SCHEMA.md (this folder) — schema + invariants
+- EQUIVALENCE_GRAPH.json (this folder) — external equivalence edges (speculative by default)
+- PAPER_INDEX.json (this folder) — external source index
+- FAILURE_ATLAS.json (this folder) — where external routes fail
+- ALIGNMENT_MAP.json (this folder) — external ↔ Lean mapping
+- TAINT_ANALYSIS.md (this folder) — FRI-style taint propagation
+- RISK_MODEL.json (this folder) — risk aggregation + kill switch
+
 ## Imported specs (from external knowledge dir)
 
 - spec_critical_constants_rh_q3.md
@@ -72,3 +83,6 @@ It uses symlinks so existing paths keep working.
 
 - `./scripts/build_dependency_tree.py` → updates `ACTIVE/DEPS_TREE_MAIN.md`
 - `./scripts/build_proof_graph.py` → updates `ACTIVE/PROOF_GRAPH.md`
+- `./scripts/build_sorry_frontier.py` → updates `ACTIVE/SORRY_FRONTIER.md`
+- `./scripts/build_taint_graph.py` → updates `ACTIVE/TAINT_GRAPH.md`
+- `./scripts/numeric_sanity_check.py` → updates `ACTIVE/NUMERIC_CHECKS_REPORT.md`

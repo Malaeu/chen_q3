@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-27 06:06 UTC",
+  "generated_at": "2026-01-27 08:43 UTC",
   "root": "Q3.Main.RH_of_Weil_and_Q3",
   "nodes": [
     {
@@ -8,7 +8,16 @@
       "file": null,
       "axioms_in_file": [],
       "sorries_in_file": [],
-      "alternatives": []
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": null,
+      "risk_status": null,
+      "risk_exceeds": null,
+      "is_doomed": null
     },
     {
       "id": "Classical.choice",
@@ -16,7 +25,16 @@
       "file": null,
       "axioms_in_file": [],
       "sorries_in_file": [],
-      "alternatives": []
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": null,
+      "risk_status": null,
+      "risk_exceeds": null,
+      "is_doomed": null
     },
     {
       "id": "Q3.Weil_criterion_tau0",
@@ -121,7 +139,16 @@
         ]
       ],
       "sorries_in_file": [],
-      "alternatives": []
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": 0.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Quot.sound",
@@ -129,7 +156,16 @@
       "file": null,
       "axioms_in_file": [],
       "sorries_in_file": [],
-      "alternatives": []
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": null,
+      "risk_status": null,
+      "risk_exceeds": null,
+      "is_doomed": null
     },
     {
       "id": "Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin",
@@ -146,7 +182,16 @@
         ]
       ],
       "sorries_in_file": [],
-      "alternatives": []
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": 0.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange",
@@ -163,7 +208,16 @@
         ]
       ],
       "sorries_in_file": [],
-      "alternatives": []
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": 0.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     }
   ]
 }

@@ -39,6 +39,8 @@ Note: spec sources are legacy/background. For mainline decisions, return to
 Source of truth:
 - `ACTIVE/MAIN_CHAIN_DEPS.md` (actual RH deps vs repo legacy)
 - `Q3/CheckAxioms.lean` (prints the live dependency list)
+- `ACTIVE/SORRY_FRONTIER.md` (current `sorry` list in Q3)
+- `ACTIVE/TAINT_GRAPH.md` (FRI-style taint propagation)
 
 ## 3) Canonical docs (maps/specs)
 
@@ -77,6 +79,10 @@ Source of truth:
 
 - `ACTIVE/aristotle_models_knowledge` — Aristotle model/training knowledge dump
 - `ACTIVE/codex_agent_loop_notes.md` — Codex CLI agent loop notes (OpenAI blog)
+- `ACTIVE/EXTERNAL_PIPELINE.md` — two‑loop pipeline (formal DAG + external literature)
+- `ACTIVE/EXTERNAL_GRAPH_SCHEMA.md` — schema for external graphs + alignment
+- `ACTIVE/TAINT_ANALYSIS.md` — FRI-style taint propagation rules
+- `ACTIVE/RISK_MODEL.json` — risk aggregation + kill switch
 
 ## 7) Editing policy (keep this stable)
 

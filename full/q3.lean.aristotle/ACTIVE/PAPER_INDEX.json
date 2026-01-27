@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-01-27",
+  "sources": [],
+  "notes": "Populate with metadata + sha256; keep external claims in EQUIVALENCE_GRAPH.json."
+}

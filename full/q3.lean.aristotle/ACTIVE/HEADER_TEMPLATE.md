@@ -11,6 +11,7 @@ Place this at the **top** of each ACTIVE doc (10–25 lines).
 
 **Current status (1–3 lines):**
 - <what is true *right now*>
+- Aristotle: <mode + file + last run id> (optional)
 
 **Next action (1–2 lines):**
 - <what should happen next>
