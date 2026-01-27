@@ -1,5 +1,6 @@
 Project workflow: `full/q3.lean.aristotle/PROJECT_WORKFLOW.md`
 Aristotle skill (CLI-based): `~/.codex/skills/aristotle/`
+Local proof-compiler skill: `~/.codex/skills/x-rh-compiler/`
 
 Aristotle integration rules (project workflow):
 - Activate venv before any Aristotle command: `source .venv/bin/activate`.

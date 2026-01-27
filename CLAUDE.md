@@ -14,6 +14,13 @@ This is the ONLY file you need to read at session start. All other docs are link
 
 ---
 
+## Local Skill (Q3 Proof Compiler)
+
+Use skill `x-rh-compiler` for the proof-compiler workflow (DAG + sorry frontier + closure loop).
+Path: `~/.codex/skills/x-rh-compiler`
+
+---
+
 ## Workflow (Axiom Closure Loop)
 
 ```
