@@ -46,6 +46,13 @@ echo "[3/3] Cleaning up .hash/.trace files..."
 find "$API_DIR" -name "*.hash" -delete
 find "$API_DIR" -name "*.trace" -delete
 
+# Optional: external literature scan (set EXTERNAL_LOOP=1)
+if [ "${EXTERNAL_LOOP:-0}" = "1" ]; then
+  echo ""
+  echo "[ext] Running external literature loop..."
+  python3 "$SCRIPT_DIR/proof_compiler/external_loop.py" --query "toeplitz a3 bridge" --query "rkhs prime cap" --max 3 || true
+fi
+
 # Summary
 HTML_COUNT=$(find "$API_DIR" -name "*.html" | wc -l)
 SIZE=$(du -sh "$API_DIR" | cut -f1)
