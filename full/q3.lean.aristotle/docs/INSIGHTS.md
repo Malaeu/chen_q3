@@ -57,6 +57,45 @@
   (τ=0, B-range), so the τ‑uniform prime‑term axiom is no longer in the RH chain.
 - Note: `q3search`/`websearch` are not available in this container; use `rg` + local docs as fallback.
 
+## Synthesis (2026-01-27, in progress) — Weil explicit formula ⇒ positivity criterion (Artin–Hecke)
+
+Source: Zotero cache for Weil 1972 (Math USSR Izvestiya, 1972) at
+`full/q3.lean.aristotle/literature/zotero/W9IDA6HW/fulltext.md`.
+
+**Core idea (one paragraph):** Weil derives a **general explicit formula** for Artin–Hecke
+L-series (not just ζ), expressed as a distributional identity on a Weil-group–type object.
+This yields a distribution Δ (schematically δ₁ − 2D) whose **positivity on a test-function class**
+is equivalent to RH **plus** Artin’s conjecture (no “bad” local factors). So RH becomes a
+positivity statement for a quadratic/linear functional built from local archimedean
+and non‑archimedean terms with *fixed normalization*.
+
+**Mapping to Q3 chain:**
+- This is the theoretical source of `Weil_criterion_tau0` (current external axiom).
+- The positivity functional Δ ↔ our `Q`/`Weil_criterion` viewpoint (nonnegativity on a cone).
+- The strict separation of arch/prime local terms matches the `arch_term` / `prime_term`
+  split in `Q3/Proofs/Q_nonneg_t_critical.lean`.
+
+**Why normalization matters (risk area):**
+- Weil fixes **canonical Haar measures** on “modular” groups and uses them in the explicit formula.
+- Any change in normalization shifts constants in Δ and can **flip positivity**.
+- For formalization, all local measures must be normalized **once** and kept consistent
+  with the test-function transform.
+
+**Strength vs RH:**
+- Weil’s criterion is **stronger** than RH alone (it includes Artin conjecture).
+  That’s fine if treated as an external classical axiom, but important to document.
+
+**Actionable insight for formalization:**
+- Treat Δ positivity as the target “axiom” until the explicit formula is formalized.
+- If we ever close `Weil_criterion_tau0`, we need:
+  1) precise definition of the test-function space (cone) and transforms,
+  2) explicit formula linking zeros ↔ local terms,
+  3) proof that Δ ≥ 0 ↔ RH (with Artin assumptions).
+
+**Quick follow‑ups (literature mining):**
+- Collect references in Weil (1972) bibliography for explicit formulas and Weil groups.
+- Look for modern expositions to reduce heavy group/representation preliminaries.
+
 ## Synthesis (2026-01-23, in progress) — fixed‑t/τ=0 one‑scale closure
 
 - q3search "AtomCone_K_fixed" / "Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom" failed: 403 Spend limit exceeded.
