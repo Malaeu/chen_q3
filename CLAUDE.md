@@ -416,6 +416,11 @@ Files created:
 - **ALWAYS** pull with rebase after committing: `git pull --rebase`
 - **ALWAYS** push after pulling: `git push`
 
+**OS tag rule (this repo):**
+- On Linux, use **`[Linux]`** as the leading tag (preferred), or **`[Work]`** if you want a neutral tag.
+- On macOS, use **`[MacOS]`**.
+- Do **not** use `[projekt_2]` as a tag.
+
 ---
 
 *Last updated: 2026-01-21*
