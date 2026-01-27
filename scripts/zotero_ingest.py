@@ -3,6 +3,8 @@ import argparse
 import hashlib
 import json
 import sqlite3
+import urllib.parse
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -11,6 +13,7 @@ Q3_ROOT = PROJECT_ROOT / "full" / "q3.lean.aristotle"
 DEFAULT_OUT_DIR = Q3_ROOT / "literature" / "zotero"
 DEFAULT_PAPER_INDEX = Q3_ROOT / "ACTIVE" / "PAPER_INDEX.json"
 DEFAULT_MISSING_REPORT = Q3_ROOT / "ACTIVE" / "ZOTERO_MISSING_CACHE.md"
+DEFAULT_API_URL = "http://localhost:23119/api/users/0"
 
 
 def now_utc() -> str:
@@ -26,6 +29,40 @@ def yaml_quote(value: str | None) -> str:
 def open_db(db_path: Path) -> sqlite3.Connection:
     uri = f"file:{db_path}?mode=ro&immutable=1"
     return sqlite3.connect(uri, uri=True)
+
+
+def api_get(base_url: str, path: str, params: dict | None, api_key: str | None) -> list[dict]:
+    url = base_url.rstrip("/") + "/" + path.lstrip("/")
+    if params:
+        url += "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url)
+    if api_key:
+        req.add_header("Zotero-API-Key", api_key)
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        payload = resp.read().decode("utf-8")
+    return json.loads(payload)
+
+
+def api_paged(
+    base_url: str,
+    path: str,
+    params: dict | None,
+    api_key: str | None,
+    limit: int = 100,
+) -> list[dict]:
+    all_items: list[dict] = []
+    start = 0
+    params = params.copy() if params else {}
+    while True:
+        params.update({"limit": limit, "start": start, "format": "json"})
+        batch = api_get(base_url, path, params, api_key)
+        if not batch:
+            break
+        all_items.extend(batch)
+        if len(batch) < limit:
+            break
+        start += len(batch)
+    return all_items
 
 
 def fetch_item_id(cursor: sqlite3.Cursor, key: str) -> int | None:
@@ -102,6 +139,22 @@ def fetch_collections(cursor: sqlite3.Cursor) -> list[dict]:
     return collections
 
 
+def fetch_collections_api(base_url: str, api_key: str | None) -> list[dict]:
+    collections = api_paged(base_url, "collections", {}, api_key)
+    results = []
+    for item in collections:
+        data = item.get("data", item)
+        key = item.get("key") or data.get("key")
+        results.append(
+            {
+                "key": key,
+                "name": data.get("name"),
+                "parent_key": data.get("parentCollection"),
+            }
+        )
+    return results
+
+
 def resolve_collection_ids(
     cursor: sqlite3.Cursor,
     collection_name: str | None,
@@ -153,6 +206,45 @@ def list_collections(cursor: sqlite3.Cursor) -> None:
         print(f"{c['name']}  (key={c['key']}, parent={parent_name})")
 
 
+def resolve_collection_keys_api(
+    collections: list[dict],
+    collection_name: str | None,
+    collection_key: str | None,
+    include_children: bool,
+) -> list[str]:
+    by_key = {c["key"]: c for c in collections if c.get("key")}
+    children_map: dict[str, list[str]] = {}
+    for c in collections:
+        parent_key = c.get("parent_key")
+        if parent_key:
+            children_map.setdefault(parent_key, []).append(c["key"])
+
+    base_keys: list[str] = []
+    if collection_key:
+        if collection_key in by_key:
+            base_keys.append(collection_key)
+    elif collection_name:
+        for c in collections:
+            if c.get("name") == collection_name:
+                base_keys.append(c["key"])
+
+    if not base_keys:
+        return []
+
+    if not include_children:
+        return sorted(set(base_keys))
+
+    seen = set(base_keys)
+    queue = list(base_keys)
+    while queue:
+        key = queue.pop(0)
+        for child in children_map.get(key, []):
+            if child not in seen:
+                seen.add(child)
+                queue.append(child)
+    return sorted(seen)
+
+
 def load_fulltext(cache_path: Path) -> str:
     return cache_path.read_text(encoding="utf-8", errors="ignore").strip()
 
@@ -184,6 +276,26 @@ def write_markdown(out_path: Path, meta: dict, fulltext: str) -> None:
     lines.append("")
     lines.append(fulltext)
     out_path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def normalize_creator_name(creator: dict) -> str:
+    name = creator.get("name")
+    if name:
+        return name
+    first = creator.get("firstName") or ""
+    last = creator.get("lastName") or ""
+    return " ".join(part for part in [first, last] if part).strip()
+
+
+def creators_to_authors(creators: list[dict]) -> list[str]:
+    authors = []
+    for creator in creators:
+        if creator.get("creatorType") != "author":
+            continue
+        name = normalize_creator_name(creator)
+        if name:
+            authors.append(name)
+    return authors
 
 
 def update_paper_index(
@@ -279,6 +391,62 @@ def process_storage_dir(
     return entry
 
 
+def process_storage_dir_api(
+    storage_dir: Path,
+    out_dir: Path,
+    overwrite: bool,
+    attachment_key: str,
+    parent_key: str | None,
+    meta: dict,
+) -> dict | None:
+    cache_path = storage_dir / attachment_key / ".zotero-ft-cache"
+    if not cache_path.exists():
+        return None
+    parent_key = parent_key or attachment_key
+    title = meta.get("title") or f"Zotero {parent_key}"
+    authors = meta.get("authors") or []
+    date = meta.get("date")
+    publication = meta.get("publicationTitle")
+    doi = meta.get("DOI")
+    url = meta.get("url")
+
+    fulltext = load_fulltext(cache_path)
+    if not fulltext:
+        return None
+
+    target_dir = out_dir / parent_key
+    target_dir.mkdir(parents=True, exist_ok=True)
+    output_path = target_dir / "fulltext.md"
+    if output_path.exists() and not overwrite:
+        return None
+
+    header = {
+        "title": title,
+        "authors": authors,
+        "date": date,
+        "publication": publication,
+        "doi": doi,
+        "url": url,
+        "attachment_key": attachment_key,
+        "parent_key": parent_key,
+        "item_id": meta.get("item_id"),
+        "attachment_item_id": meta.get("attachment_item_id"),
+    }
+    write_markdown(output_path, header, fulltext)
+
+    entry = {
+        "id": f"ZOTERO_{parent_key}",
+        "title": title,
+        "author": ", ".join(authors) if authors else None,
+        "year": date[:4] if date else None,
+        "source_url": url or (f"https://doi.org/{doi}" if doi else None),
+        "sha256": compute_sha256(fulltext),
+        "local_path": str(output_path.relative_to(Q3_ROOT)),
+        "notes": f"Zotero attachment {attachment_key} (parent {parent_key})",
+    }
+    return entry
+
+
 def build_missing_entries(
     cursor: sqlite3.Cursor,
     attachment_keys: list[str],
@@ -310,6 +478,35 @@ def build_missing_entries(
                 "authors": authors,
                 "date": fields.get("date"),
                 "doi": fields.get("DOI"),
+            }
+        )
+    return missing
+
+
+def build_missing_entries_api(
+    attachment_items: list[dict],
+    storage_dir: Path,
+    parent_meta: dict,
+) -> list[dict]:
+    missing = []
+    for item in attachment_items:
+        attachment_key = item.get("key")
+        if not attachment_key:
+            continue
+        cache_path = storage_dir / attachment_key / ".zotero-ft-cache"
+        if cache_path.exists():
+            continue
+        parent_key = item.get("parentItem")
+        meta = parent_meta.get(parent_key, {})
+        missing.append(
+            {
+                "attachment_key": attachment_key,
+                "parent_key": parent_key,
+                "path": item.get("path"),
+                "title": meta.get("title"),
+                "authors": meta.get("authors", []),
+                "date": meta.get("date"),
+                "doi": meta.get("DOI"),
             }
         )
     return missing
@@ -393,6 +590,9 @@ def main() -> int:
     parser.add_argument(
         "--report-path", default=str(DEFAULT_MISSING_REPORT), help="output report path"
     )
+    parser.add_argument("--api", action="store_true", help="use Zotero local API instead of sqlite")
+    parser.add_argument("--api-url", default=DEFAULT_API_URL, help="Zotero API base URL")
+    parser.add_argument("--api-key", default=None, help="Zotero API key (optional)")
     parser.add_argument("--overwrite", action="store_true", help="overwrite existing markdown")
     parser.add_argument("--write-index", action="store_true", help="update PAPER_INDEX.json")
     parser.add_argument("--dry-run", action="store_true", help="list items without writing")
@@ -410,66 +610,197 @@ def main() -> int:
 
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    conn = open_db(db_path)
-    cursor = conn.cursor()
+    if args.api:
+        base_url = args.api_url
+        api_key = args.api_key or None
+        collections = fetch_collections_api(base_url, api_key)
+        if args.list_collections:
+            for c in sorted(collections, key=lambda x: (x.get("name") or "", x.get("key") or "")):
+                parent = c.get("parent_key")
+                parent_name = None
+                if parent:
+                    parent_name = next(
+                        (x.get("name") for x in collections if x.get("key") == parent), None
+                    )
+                print(f"{c.get('name')}  (key={c.get('key')}, parent={parent_name})")
+            return 0
 
-    if args.list_collections:
-        list_collections(cursor)
-        conn.close()
-        return 0
+        collection_keys: list[str] = []
+        if args.collection_name or args.collection_key:
+            collection_keys = resolve_collection_keys_api(
+                collections,
+                args.collection_name,
+                args.collection_key,
+                args.include_children,
+            )
+            if not collection_keys:
+                raise SystemExit(
+                    "Collection not found. Use --list-collections to inspect names/keys."
+                )
 
-    collection_ids: list[int] = []
-    if args.collection_name or args.collection_key:
-        collection_ids = resolve_collection_ids(
-            cursor,
-            args.collection_name,
-            args.collection_key,
-            args.include_children,
-        )
-        if not collection_ids:
-            conn.close()
-            raise SystemExit("Collection not found. Use --list-collections to inspect names/keys.")
+        attachment_items: list[dict] = []
+        parent_keys: set[str] = set()
+        for key in collection_keys:
+            items = api_paged(base_url, f"collections/{key}/items", {}, api_key)
+            for item in items:
+                data = item.get("data", item)
+                item_key = item.get("key") or data.get("key")
+                item_type = data.get("itemType")
+                if item_type == "attachment":
+                    path = data.get("path")
+                    if (
+                        data.get("contentType") == "application/pdf"
+                        and path
+                        and path.startswith("storage:")
+                    ):
+                        attachment_items.append(
+                            {
+                                "key": item_key,
+                                "parentItem": data.get("parentItem"),
+                                "path": path,
+                            }
+                        )
+                else:
+                    if item_key:
+                        parent_keys.add(item_key)
 
-    storage_dirs = [p for p in storage_dir.iterdir() if p.is_dir()]
-    if args.only_key:
-        storage_dirs = [p for p in storage_dirs if p.name == args.only_key]
-    attachment_keys: list[str] = []
-    if collection_ids:
-        keys = fetch_attachment_keys_for_collections(cursor, collection_ids)
-        attachment_keys = keys
-        storage_dirs = [storage_dir / key for key in keys if (storage_dir / key).is_dir()]
+            for parent_key in parent_keys:
+                children = api_paged(base_url, f"items/{parent_key}/children", {}, api_key)
+                for child in children:
+                    data = child.get("data", child)
+                    if data.get("itemType") != "attachment":
+                        continue
+                    path = data.get("path")
+                    if (
+                        data.get("contentType") == "application/pdf"
+                        and path
+                        and path.startswith("storage:")
+                    ):
+                        attachment_items.append(
+                            {
+                                "key": child.get("key") or data.get("key"),
+                                "parentItem": data.get("parentItem"),
+                                "path": path,
+                            }
+                        )
+
+        if args.only_key:
+            attachment_items = [a for a in attachment_items if a.get("key") == args.only_key]
+        if args.limit is not None:
+            attachment_items = attachment_items[: args.limit]
+
+        attachment_map: dict[str, dict] = {}
+        for item in attachment_items:
+            if item.get("key"):
+                attachment_map[item["key"]] = item
+        attachment_items = list(attachment_map.values())
+
+        parent_meta: dict[str, dict] = {}
+        parent_ids = {item.get("parentItem") for item in attachment_items if item.get("parentItem")}
+        for parent_key in parent_ids:
+            item = api_get(base_url, f"items/{parent_key}", {"format": "json"}, api_key)
+            data = item.get("data", item)
+            creators = data.get("creators", [])
+            parent_meta[parent_key] = {
+                "title": data.get("title"),
+                "authors": creators_to_authors(creators),
+                "date": data.get("date"),
+                "publicationTitle": data.get("publicationTitle"),
+                "DOI": data.get("DOI"),
+                "url": data.get("url"),
+                "item_id": data.get("key"),
+            }
+
+        if args.report_missing:
+            collection_label = args.collection_name or args.collection_key
+            missing = build_missing_entries_api(attachment_items, storage_dir, parent_meta)
+            report_path = Path(args.report_path)
+            write_missing_report(report_path, missing, collection_label)
+            print(f"Missing cache report: {report_path}")
+            for item in missing:
+                print(item.get("attachment_key"))
+
+        entries = []
+        processed = 0
+        for item in attachment_items:
+            if args.dry_run:
+                print(item.get("key"))
+                processed += 1
+                continue
+            entry = process_storage_dir_api(
+                storage_dir,
+                out_dir,
+                args.overwrite,
+                item.get("key"),
+                item.get("parentItem"),
+                parent_meta.get(item.get("parentItem"), {}),
+            )
+            if entry:
+                entries.append(entry)
+                processed += 1
     else:
-        attachment_keys = [p.name for p in storage_dirs]
+        conn = open_db(db_path)
+        cursor = conn.cursor()
 
-    if args.report_missing:
-        collection_label = args.collection_name or args.collection_key
-        missing = build_missing_entries(cursor, attachment_keys, storage_dir)
-        report_path = Path(args.report_path)
-        write_missing_report(report_path, missing, collection_label)
-        print(f"Missing cache report: {report_path}")
-        for item in missing:
-            print(item.get("attachment_key"))
+        if args.list_collections:
+            list_collections(cursor)
+            conn.close()
+            return 0
 
-    entries = []
-    processed = 0
-    for storage_path in sorted(storage_dirs):
-        if args.limit is not None and processed >= args.limit:
-            break
-        cache_path = storage_path / ".zotero-ft-cache"
-        if not cache_path.exists():
-            continue
+        collection_ids: list[int] = []
+        if args.collection_name or args.collection_key:
+            collection_ids = resolve_collection_ids(
+                cursor,
+                args.collection_name,
+                args.collection_key,
+                args.include_children,
+            )
+            if not collection_ids:
+                conn.close()
+                raise SystemExit(
+                    "Collection not found. Use --list-collections to inspect names/keys."
+                )
 
-        if args.dry_run:
-            print(storage_path.name)
-            processed += 1
-            continue
+        storage_dirs = [p for p in storage_dir.iterdir() if p.is_dir()]
+        if args.only_key:
+            storage_dirs = [p for p in storage_dirs if p.name == args.only_key]
+        attachment_keys: list[str] = []
+        if collection_ids:
+            keys = fetch_attachment_keys_for_collections(cursor, collection_ids)
+            attachment_keys = keys
+            storage_dirs = [storage_dir / key for key in keys if (storage_dir / key).is_dir()]
+        else:
+            attachment_keys = [p.name for p in storage_dirs]
 
-        entry = process_storage_dir(cursor, storage_path, out_dir, args.overwrite)
-        if entry:
-            entries.append(entry)
-            processed += 1
+        if args.report_missing:
+            collection_label = args.collection_name or args.collection_key
+            missing = build_missing_entries(cursor, attachment_keys, storage_dir)
+            report_path = Path(args.report_path)
+            write_missing_report(report_path, missing, collection_label)
+            print(f"Missing cache report: {report_path}")
+            for item in missing:
+                print(item.get("attachment_key"))
 
-    conn.close()
+        entries = []
+        processed = 0
+        for storage_path in sorted(storage_dirs):
+            if args.limit is not None and processed >= args.limit:
+                break
+            cache_path = storage_path / ".zotero-ft-cache"
+            if not cache_path.exists():
+                continue
+
+            if args.dry_run:
+                print(storage_path.name)
+                processed += 1
+                continue
+
+            entry = process_storage_dir(cursor, storage_path, out_dir, args.overwrite)
+            if entry:
+                entries.append(entry)
+                processed += 1
+
+        conn.close()
 
     if args.write_index and entries:
         update_paper_index(paper_index_path, entries, args.overwrite)

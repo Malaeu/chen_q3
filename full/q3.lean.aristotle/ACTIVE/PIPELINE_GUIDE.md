@@ -63,6 +63,11 @@ qmd embed
   --collection zotero_lib --embed
 ```
 
+### Zotero API mode (no sqlite locks)
+```bash
+./scripts/zotero_ingest.py --api --collection-name Riemann --include-children --report-missing
+```
+
 Notes:
 - `qmd embed` downloads models on first run.
 - Embeddings are stored in `~/.cache/qmd`.
