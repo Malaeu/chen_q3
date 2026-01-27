@@ -68,6 +68,9 @@ qmd embed
 ./scripts/zotero_ingest.py --api-auto --collection-name Riemann --include-children --report-missing
 ```
 
+Note: Zotero **local API is read‑only** for writes. Creating collections/notes
+requires the **Zotero Web API** (api.zotero.org) with an API key.
+
 Notes:
 - `qmd embed` downloads models on first run.
 - Embeddings are stored in `~/.cache/qmd`.
