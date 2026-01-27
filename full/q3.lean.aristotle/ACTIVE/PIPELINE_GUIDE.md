@@ -65,7 +65,7 @@ qmd embed
 
 ### Zotero API mode (no sqlite locks)
 ```bash
-./scripts/zotero_ingest.py --api --collection-name Riemann --include-children --report-missing
+./scripts/zotero_ingest.py --api-auto --collection-name Riemann --include-children --report-missing
 ```
 
 Notes:

@@ -591,6 +591,11 @@ def main() -> int:
         "--report-path", default=str(DEFAULT_MISSING_REPORT), help="output report path"
     )
     parser.add_argument("--api", action="store_true", help="use Zotero local API instead of sqlite")
+    parser.add_argument(
+        "--api-auto",
+        action="store_true",
+        help="try Zotero local API first, fallback to sqlite on failure",
+    )
     parser.add_argument("--api-url", default=DEFAULT_API_URL, help="Zotero API base URL")
     parser.add_argument("--api-key", default=None, help="Zotero API key (optional)")
     parser.add_argument("--overwrite", action="store_true", help="overwrite existing markdown")
@@ -610,135 +615,148 @@ def main() -> int:
 
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    if args.api:
-        base_url = args.api_url
-        api_key = args.api_key or None
-        collections = fetch_collections_api(base_url, api_key)
-        if args.list_collections:
-            for c in sorted(collections, key=lambda x: (x.get("name") or "", x.get("key") or "")):
-                parent = c.get("parent_key")
-                parent_name = None
-                if parent:
-                    parent_name = next(
-                        (x.get("name") for x in collections if x.get("key") == parent), None
-                    )
-                print(f"{c.get('name')}  (key={c.get('key')}, parent={parent_name})")
-            return 0
+    use_api = args.api or args.api_auto
+    api_success = False
+    if use_api:
+        try:
+            base_url = args.api_url
+            api_key = args.api_key or None
+            collections = fetch_collections_api(base_url, api_key)
+            if args.list_collections:
+                for c in sorted(
+                    collections, key=lambda x: (x.get("name") or "", x.get("key") or "")
+                ):
+                    parent = c.get("parent_key")
+                    parent_name = None
+                    if parent:
+                        parent_name = next(
+                            (x.get("name") for x in collections if x.get("key") == parent), None
+                        )
+                    print(f"{c.get('name')}  (key={c.get('key')}, parent={parent_name})")
+                return 0
 
-        collection_keys: list[str] = []
-        if args.collection_name or args.collection_key:
-            collection_keys = resolve_collection_keys_api(
-                collections,
-                args.collection_name,
-                args.collection_key,
-                args.include_children,
-            )
-            if not collection_keys:
-                raise SystemExit(
-                    "Collection not found. Use --list-collections to inspect names/keys."
+            collection_keys: list[str] = []
+            if args.collection_name or args.collection_key:
+                collection_keys = resolve_collection_keys_api(
+                    collections,
+                    args.collection_name,
+                    args.collection_key,
+                    args.include_children,
                 )
+                if not collection_keys:
+                    raise SystemExit(
+                        "Collection not found. Use --list-collections to inspect names/keys."
+                    )
 
-        attachment_items: list[dict] = []
-        parent_keys: set[str] = set()
-        for key in collection_keys:
-            items = api_paged(base_url, f"collections/{key}/items", {}, api_key)
-            for item in items:
-                data = item.get("data", item)
-                item_key = item.get("key") or data.get("key")
-                item_type = data.get("itemType")
-                if item_type == "attachment":
-                    path = data.get("path")
-                    if (
-                        data.get("contentType") == "application/pdf"
-                        and path
-                        and path.startswith("storage:")
-                    ):
-                        attachment_items.append(
-                            {
-                                "key": item_key,
-                                "parentItem": data.get("parentItem"),
-                                "path": path,
-                            }
-                        )
-                else:
-                    if item_key:
-                        parent_keys.add(item_key)
+            attachment_items: list[dict] = []
+            parent_keys: set[str] = set()
+            for key in collection_keys:
+                items = api_paged(base_url, f"collections/{key}/items", {}, api_key)
+                for item in items:
+                    data = item.get("data", item)
+                    item_key = item.get("key") or data.get("key")
+                    item_type = data.get("itemType")
+                    if item_type == "attachment":
+                        path = data.get("path")
+                        if (
+                            data.get("contentType") == "application/pdf"
+                            and path
+                            and path.startswith("storage:")
+                        ):
+                            attachment_items.append(
+                                {
+                                    "key": item_key,
+                                    "parentItem": data.get("parentItem"),
+                                    "path": path,
+                                }
+                            )
+                    else:
+                        if item_key:
+                            parent_keys.add(item_key)
 
-            for parent_key in parent_keys:
-                children = api_paged(base_url, f"items/{parent_key}/children", {}, api_key)
-                for child in children:
-                    data = child.get("data", child)
-                    if data.get("itemType") != "attachment":
-                        continue
-                    path = data.get("path")
-                    if (
-                        data.get("contentType") == "application/pdf"
-                        and path
-                        and path.startswith("storage:")
-                    ):
-                        attachment_items.append(
-                            {
-                                "key": child.get("key") or data.get("key"),
-                                "parentItem": data.get("parentItem"),
-                                "path": path,
-                            }
-                        )
+                for parent_key in parent_keys:
+                    children = api_paged(base_url, f"items/{parent_key}/children", {}, api_key)
+                    for child in children:
+                        data = child.get("data", child)
+                        if data.get("itemType") != "attachment":
+                            continue
+                        path = data.get("path")
+                        if (
+                            data.get("contentType") == "application/pdf"
+                            and path
+                            and path.startswith("storage:")
+                        ):
+                            attachment_items.append(
+                                {
+                                    "key": child.get("key") or data.get("key"),
+                                    "parentItem": data.get("parentItem"),
+                                    "path": path,
+                                }
+                            )
 
-        if args.only_key:
-            attachment_items = [a for a in attachment_items if a.get("key") == args.only_key]
-        if args.limit is not None:
-            attachment_items = attachment_items[: args.limit]
+            if args.only_key:
+                attachment_items = [a for a in attachment_items if a.get("key") == args.only_key]
+            if args.limit is not None:
+                attachment_items = attachment_items[: args.limit]
 
-        attachment_map: dict[str, dict] = {}
-        for item in attachment_items:
-            if item.get("key"):
-                attachment_map[item["key"]] = item
-        attachment_items = list(attachment_map.values())
+            attachment_map: dict[str, dict] = {}
+            for item in attachment_items:
+                if item.get("key"):
+                    attachment_map[item["key"]] = item
+            attachment_items = list(attachment_map.values())
 
-        parent_meta: dict[str, dict] = {}
-        parent_ids = {item.get("parentItem") for item in attachment_items if item.get("parentItem")}
-        for parent_key in parent_ids:
-            item = api_get(base_url, f"items/{parent_key}", {"format": "json"}, api_key)
-            data = item.get("data", item)
-            creators = data.get("creators", [])
-            parent_meta[parent_key] = {
-                "title": data.get("title"),
-                "authors": creators_to_authors(creators),
-                "date": data.get("date"),
-                "publicationTitle": data.get("publicationTitle"),
-                "DOI": data.get("DOI"),
-                "url": data.get("url"),
-                "item_id": data.get("key"),
+            parent_meta: dict[str, dict] = {}
+            parent_ids = {
+                item.get("parentItem") for item in attachment_items if item.get("parentItem")
             }
+            for parent_key in parent_ids:
+                item = api_get(base_url, f"items/{parent_key}", {"format": "json"}, api_key)
+                data = item.get("data", item)
+                creators = data.get("creators", [])
+                parent_meta[parent_key] = {
+                    "title": data.get("title"),
+                    "authors": creators_to_authors(creators),
+                    "date": data.get("date"),
+                    "publicationTitle": data.get("publicationTitle"),
+                    "DOI": data.get("DOI"),
+                    "url": data.get("url"),
+                    "item_id": data.get("key"),
+                }
 
-        if args.report_missing:
-            collection_label = args.collection_name or args.collection_key
-            missing = build_missing_entries_api(attachment_items, storage_dir, parent_meta)
-            report_path = Path(args.report_path)
-            write_missing_report(report_path, missing, collection_label)
-            print(f"Missing cache report: {report_path}")
-            for item in missing:
-                print(item.get("attachment_key"))
+            if args.report_missing:
+                collection_label = args.collection_name or args.collection_key
+                missing = build_missing_entries_api(attachment_items, storage_dir, parent_meta)
+                report_path = Path(args.report_path)
+                write_missing_report(report_path, missing, collection_label)
+                print(f"Missing cache report: {report_path}")
+                for item in missing:
+                    print(item.get("attachment_key"))
 
-        entries = []
-        processed = 0
-        for item in attachment_items:
-            if args.dry_run:
-                print(item.get("key"))
-                processed += 1
-                continue
-            entry = process_storage_dir_api(
-                storage_dir,
-                out_dir,
-                args.overwrite,
-                item.get("key"),
-                item.get("parentItem"),
-                parent_meta.get(item.get("parentItem"), {}),
-            )
-            if entry:
-                entries.append(entry)
-                processed += 1
-    else:
+            entries = []
+            processed = 0
+            for item in attachment_items:
+                if args.dry_run:
+                    print(item.get("key"))
+                    processed += 1
+                    continue
+                entry = process_storage_dir_api(
+                    storage_dir,
+                    out_dir,
+                    args.overwrite,
+                    item.get("key"),
+                    item.get("parentItem"),
+                    parent_meta.get(item.get("parentItem"), {}),
+                )
+                if entry:
+                    entries.append(entry)
+                    processed += 1
+            api_success = True
+        except Exception as exc:
+            if args.api and not args.api_auto:
+                raise
+            print(f"API failed ({exc}); falling back to sqlite.")
+
+    if not api_success:
         conn = open_db(db_path)
         cursor = conn.cursor()
 
