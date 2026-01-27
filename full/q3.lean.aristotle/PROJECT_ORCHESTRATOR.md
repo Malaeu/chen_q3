@@ -1,6 +1,13 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
+**Purpose:** Single entry point for live status + next step.  
+**Current status:** Main-chain blockers are in `ACTIVE/MAIN_CHAIN_DEPS.md`.  
+**Next action:** Close the two main-chain Q3 axioms (PrimeCert + prime_term cap).  
+**Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `ACTIVE/chain_status.md` · `ACTIVE/KNOWLEDGE_BASE.md`
+
+---
+
 Last Updated: 2026-01-26
 Single entry point: read this file at session start.
 

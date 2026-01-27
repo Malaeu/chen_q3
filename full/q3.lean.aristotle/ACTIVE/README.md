@@ -1,5 +1,12 @@
 # ACTIVE hub
 
+**Purpose:** Single entry point for live docs/links.  
+**Current status:** Start at `ACTIVE/KNOWLEDGE_BASE.md`.  
+**Next action:** Use reader flow in `ACTIVE/tree.md`.  
+**Links:** `ACTIVE/KNOWLEDGE_BASE.md` · `ACTIVE/tree.md` · `ACTIVE/MAIN_CHAIN_DEPS.md`
+
+---
+
 This folder is a single entry point for frequently updated docs, databases, and scripts.
 It uses symlinks so existing paths keep working.
 

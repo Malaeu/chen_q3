@@ -1,5 +1,12 @@
 # Specs Index (curated)
 
+**Purpose:** Curated spec sources + constants; legacy vs mainline.  
+**Current status:** Mainline constants listed below; legacy specs are inputs only.  
+**Next action:** If updating constants, also update `ACTIVE/chain_status.md`.  
+**Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `ACTIVE/chain_status.md`
+
+---
+
 Purpose: single place to find spec sources + current-status notes.
 Keep this short; details stay in linked docs.
 

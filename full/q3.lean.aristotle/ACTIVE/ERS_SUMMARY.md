@@ -1,5 +1,12 @@
 # ERS Summary (consolidated, legacy)
 
+**Purpose:** Legacy ERS analysis (historical only).  
+**Current status:** Not part of the main chain.  
+**Next action:** Use only if comparing old vs new critical paths.  
+**Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `ACTIVE/chain_status.md`
+
+---
+
 This file consolidates ERS-based analysis to avoid duplication.
 It is **legacy** and not canonical for the current single-scale mainline.
 Use only for historical context or when referencing old ERS graphs.
