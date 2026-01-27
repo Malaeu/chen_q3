@@ -98,7 +98,7 @@ and non‑archimedean terms with *fixed normalization*.
 
 ## Synthesis (2026-01-27, in progress) — Toeplitz‑Weil mapping (formal chain vs speculative edges)
 
-Source: `/home/chirurgie/Downloads/toeplitz_weil_bridge.md` (external note).
+Source: `docs/toeplitz_weil_bridge.md` (checked into this repo).
 
 **Critical correction (formal alignment):**
 - Do **not** state the Weil functional as `Σ |f̂(ρ)|²` in the formal chain.

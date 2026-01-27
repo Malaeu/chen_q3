@@ -52,3 +52,9 @@ sandboxes/
 
 # Python
 __pycache__/
+
+# Generated / local-only artifacts
+full/q3.lean.aristotle/ACTIVE/IMPORT_DEPS.dot
+
+# Local PDF dumps (use docs/links/* instead of committing binaries)
+full/q3.lean.aristotle/literature/quillen_working_papers/
