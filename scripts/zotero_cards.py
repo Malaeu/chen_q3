@@ -104,6 +104,22 @@ def creators_to_authors(creators: list[dict]) -> list[str]:
     return authors
 
 
+def pick_attachment_key(children: list[dict], storage_dir: Path) -> str | None:
+    for child in children:
+        cdata = child.get("data", child)
+        if cdata.get("itemType") == "attachment" and cdata.get("contentType") == "application/pdf":
+            key = child.get("key") or cdata.get("key")
+            if not key:
+                continue
+            path = cdata.get("path") or ""
+            if path.startswith("storage:"):
+                return key
+            cache_path = storage_dir / key / ".zotero-ft-cache"
+            if cache_path.exists():
+                return key
+    return None
+
+
 def read_cache(storage_dir: Path, attachment_key: str, limit: int) -> str | None:
     cache_path = storage_dir / attachment_key / ".zotero-ft-cache"
     if not cache_path.exists():
@@ -112,6 +128,43 @@ def read_cache(storage_dir: Path, attachment_key: str, limit: int) -> str | None
     if not text:
         return None
     return text[:limit]
+
+
+def read_cache_full(storage_dir: Path, attachment_key: str) -> str | None:
+    cache_path = storage_dir / attachment_key / ".zotero-ft-cache"
+    if not cache_path.exists():
+        return None
+    text = cache_path.read_text(encoding="utf-8", errors="ignore").strip()
+    if not text:
+        return None
+    return text
+
+
+def extract_bibliography(text: str) -> list[str]:
+    if not text:
+        return []
+    heading = re.search(
+        r"\bBIBLIOGRAPHY\b|\bBIBLIOGRAPHIE\b|\bREFERENCES\b|\bRÉFÉRENCES\b",
+        text,
+        re.IGNORECASE,
+    )
+    if not heading:
+        return []
+    body = text[heading.end() :]
+    body = re.sub(r"\s+", " ", body).strip()
+    if not body:
+        return []
+    matches = list(re.finditer(r"(?<!\d)([1-9]\d?)\.\s+", body))
+    if not matches:
+        return [body]
+    entries = []
+    for idx, match in enumerate(matches):
+        start = match.start()
+        end = matches[idx + 1].start() if idx + 1 < len(matches) else len(body)
+        entry = body[start:end].strip()
+        if entry:
+            entries.append(entry)
+    return entries
 
 
 def build_note_html(
@@ -138,12 +191,28 @@ def build_note_html(
     return "\n".join(lines)
 
 
-def collect_existing_card_keys(base_url: str, api_key: str | None, collection_key: str) -> set[str]:
+def build_refs_note_html(item_key: str, title: str, refs: list[str]) -> str:
+    safe_title = (
+        (title or "Untitled").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    )
+    lines = [f"<p><b>ZOTERO_REFS::{item_key}</b></p>", f"<p><b>Title:</b> {safe_title}</p>"]
+    if refs:
+        lines.append("<ol>")
+        for ref in refs:
+            safe = ref.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            lines.append(f"<li>{safe}</li>")
+        lines.append("</ol>")
+    return "\n".join(lines)
+
+
+def collect_existing_marker_keys(
+    base_url: str, api_key: str | None, collection_key: str, marker_prefix: str
+) -> set[str]:
     notes = api_paged(
         base_url, f"collections/{collection_key}/items", {"itemType": "note"}, api_key
     )
     existing = set()
-    marker = re.compile(r"ZOTERO_CARD::([A-Z0-9]+)")
+    marker = re.compile(re.escape(marker_prefix) + r"([A-Z0-9]+)")
     for note in notes:
         data = note.get("data", note)
         body = data.get("note", "")
@@ -186,6 +255,7 @@ def main() -> int:
         "--add-items", action="store_true", help="add matching items to subcollection"
     )
     parser.add_argument("--create-notes", action="store_true", help="create card notes")
+    parser.add_argument("--create-ref-notes", action="store_true", help="create bibliography notes")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -232,7 +302,12 @@ def main() -> int:
     if args.limit is not None:
         matches = matches[: args.limit]
 
-    existing_cards = collect_existing_card_keys(base_url, api_key, sub_key)
+    existing_cards = collect_existing_marker_keys(base_url, api_key, sub_key, "ZOTERO_CARD::")
+    existing_refs = (
+        collect_existing_marker_keys(base_url, api_key, sub_key, "ZOTERO_REFS::")
+        if args.create_ref_notes
+        else set()
+    )
     new_notes = []
     processed = 0
 
@@ -250,17 +325,7 @@ def main() -> int:
             children = api_paged(
                 base_url, f"items/{item_key}/children", {"include": "data"}, api_key
             )
-            attachment_key = None
-            for child in children:
-                cdata = child.get("data", child)
-                if (
-                    cdata.get("itemType") == "attachment"
-                    and cdata.get("contentType") == "application/pdf"
-                ):
-                    path = cdata.get("path") or ""
-                    if path.startswith("storage:"):
-                        attachment_key = child.get("key") or cdata.get("key")
-                        break
+            attachment_key = pick_attachment_key(children, storage_dir)
             snippet = (
                 read_cache(storage_dir, attachment_key, args.snippet_chars)
                 if attachment_key
@@ -285,6 +350,31 @@ def main() -> int:
                 "tags": [{"tag": "zotero-card"}, {"tag": args.subcollection_name}],
             }
             new_notes.append(note)
+
+        if args.create_ref_notes:
+            if item_key in existing_refs:
+                continue
+            children = api_paged(
+                base_url, f"items/{item_key}/children", {"include": "data"}, api_key
+            )
+            attachment_key = pick_attachment_key(children, storage_dir)
+            refs = []
+            if attachment_key:
+                full_text = read_cache_full(storage_dir, attachment_key)
+                if full_text:
+                    refs = extract_bibliography(full_text)
+            if refs:
+                note_html = build_refs_note_html(item_key, data.get("title") or "", refs)
+                note = {
+                    "itemType": "note",
+                    "note": note_html,
+                    "collections": [sub_key],
+                    "tags": [
+                        {"tag": "zotero-refs"},
+                        {"tag": args.subcollection_name},
+                    ],
+                }
+                new_notes.append(note)
 
         processed += 1
 
