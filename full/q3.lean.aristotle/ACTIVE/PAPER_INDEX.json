@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-01-27 09:44 UTC",
+  "generated_at": "2026-01-27 10:21 UTC",
   "sources": [
     {
       "id": "Weil1952",
@@ -21,6 +21,306 @@
       "sha256": "015e13030238f1d90f168d864b3b87b4d4208ec326a4e10ae7eb0dd3bdff0422",
       "local_path": "literature/zotero/H2EU6FUG/fulltext.md",
       "notes": "Zotero attachment NVDK7ZBK (parent H2EU6FUG)"
+    },
+    {
+      "id": "ZOTERO_3X26P6SD",
+      "title": "Hamiltonian for the zeros of the Riemann zeta function",
+      "author": "Carl M. Bender, Dorje C. Brody, Markus P. M\u00fcller",
+      "year": "2017",
+      "source_url": "https://doi.org/10.1103/PhysRevLett.118.130201",
+      "sha256": "f72ba0652a5fbaa0d56d001e2d022cc4117533650e5266ac97d84386de55a6b2",
+      "local_path": "literature/zotero/3X26P6SD/fulltext.md",
+      "notes": "Zotero attachment 3S7TIVMP (parent 3X26P6SD)"
+    },
+    {
+      "id": "ZOTERO_W9IDA6HW",
+      "title": "Sur les formules explicites de la th\u00e9orie des nombres premiers",
+      "author": "Andr\u00e9 Weil",
+      "year": "1952",
+      "source_url": "https://www.claymath.org/library/weil/",
+      "sha256": "62f9fd5ed8014faed825c7a881f2eab51d5ef2bf5c8760c86da603f64bfcca5f",
+      "local_path": "literature/zotero/W9IDA6HW/fulltext.md",
+      "notes": "Zotero attachment 4LY2A5FY (parent W9IDA6HW)"
+    },
+    {
+      "id": "ZOTERO_VEKKXXYN",
+      "title": "Riemann\u2019s hypothesis",
+      "author": "Brian Conrey",
+      "year": "2015",
+      "source_url": "http://link.springer.com/10.1007/978-88-7642-515-8_6",
+      "sha256": "0f9bee6d1d468c5b4dbd5b21af5247153bb08f6c6b70b21c3330ba19a2085be7",
+      "local_path": "literature/zotero/VEKKXXYN/fulltext.md",
+      "notes": "Zotero attachment 6E7FYFF2 (parent VEKKXXYN)"
+    },
+    {
+      "id": "ZOTERO_WTJYATRX",
+      "title": "Analytic number theory and algebraic asymptotic analysis",
+      "author": "Jesse Elliott",
+      "year": "2025",
+      "source_url": "https://doi.org/10.48550/arxiv.2407.17820",
+      "sha256": "bb3f5691bc8eeb05077c5fd75d76050fb4c87639ee3c592dbe27d22bc0f54e38",
+      "local_path": "literature/zotero/WTJYATRX/fulltext.md",
+      "notes": "Zotero attachment 7EYGBCU6 (parent WTJYATRX)"
+    },
+    {
+      "id": "ZOTERO_ZZMPBTIQ",
+      "title": "Problems of the Millennium: The Riemann Hypothesis",
+      "author": "Enrico Bombieri",
+      "year": "2000",
+      "source_url": "https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf",
+      "sha256": "30ce9db64e23235288e6fb66926f626721341e17c6cedea4dcac3f791fa5fcf4",
+      "local_path": "literature/zotero/ZZMPBTIQ/fulltext.md",
+      "notes": "Zotero attachment 7ZGWPCRG (parent ZZMPBTIQ)"
+    },
+    {
+      "id": "ZOTERO_9SILYYYC",
+      "title": "Effective approximation of heat flow evolution of the Riemann \u03be function, and a new upper bound for the de Bruijn\u2013Newman constant",
+      "author": "D. H. J. Polymath",
+      "year": "2019",
+      "source_url": "https://doi.org/10.1007/s40687-019-0193-1",
+      "sha256": "0b08ed665a93f2621427acadf4d7e2d7ef3cae6de01f7f310285b3b08caab1cf",
+      "local_path": "literature/zotero/9SILYYYC/fulltext.md",
+      "notes": "Zotero attachment 9M3QFAX6 (parent 9SILYYYC)"
+    },
+    {
+      "id": "ZOTERO_N9GCWPSB",
+      "title": "THE DE BRUIJN\u2013NEWMAN CONSTANT IS NON-NEGATIVE",
+      "author": "BRAD RODGERS, TERENCE TAO",
+      "year": "2020",
+      "source_url": "https://doi.org/10.1017/fmp.2020.6",
+      "sha256": "83baaf72bf807e013158c39a36fa1860f22d12f434aef252a9662ad450b769cc",
+      "local_path": "literature/zotero/N9GCWPSB/fulltext.md",
+      "notes": "Zotero attachment C4TWKY7F (parent N9GCWPSB)"
+    },
+    {
+      "id": "ZOTERO_UL8K9UF4",
+      "title": "No LLM Solved Yu Tsumura's 554th Problem",
+      "author": "Simon Frieder, William Hart",
+      "year": "2025",
+      "source_url": "http://arxiv.org/abs/2508.03685",
+      "sha256": "8ffc09b6046ae2d7ad7a45ca21e605a61efd0ea21490bada89f0a0b245585898",
+      "local_path": "literature/zotero/UL8K9UF4/fulltext.md",
+      "notes": "Zotero attachment CFD9WG6L (parent UL8K9UF4)"
+    },
+    {
+      "id": "ZOTERO_DDHT3C9H",
+      "title": "Simulating Time With Square-Root Space",
+      "author": "R. Ryan Williams",
+      "year": "2025",
+      "source_url": "http://arxiv.org/abs/2502.17779",
+      "sha256": "cb2cf9babd649666ea4a8da134e918d90d8fde8aff7b080bd5b2707cf5e9cd9e",
+      "local_path": "literature/zotero/DDHT3C9H/fulltext.md",
+      "notes": "Zotero attachment DFAXEGRE (parent DDHT3C9H)"
+    },
+    {
+      "id": "ZOTERO_GC46ZTLJ",
+      "title": "The Riemann hypothesis",
+      "author": "J. Brian Conrey",
+      "year": "2003",
+      "source_url": "https://www.ams.org/notices/200303/fea-conrey-web.pdf",
+      "sha256": "e0cca48dacd8db32c543bcf10dbfe9a1651bb8806030672934a0183e9019c826",
+      "local_path": "literature/zotero/GC46ZTLJ/fulltext.md",
+      "notes": "Zotero attachment DPRZEY6A (parent GC46ZTLJ)"
+    },
+    {
+      "id": "ZOTERO_3WEMC6QV",
+      "title": "The Riemann hypothesis is true up to 3\u00d710\u00b9\u00b2",
+      "author": "David J. Platt, Tim Trudgian",
+      "year": "2021",
+      "source_url": "https://doi.org/10.1112/blms.12460",
+      "sha256": "9dab1ea8c88a6d28b65350586360f58fce547e4c0048a924af6509386d0259d0",
+      "local_path": "literature/zotero/3WEMC6QV/fulltext.md",
+      "notes": "Zotero attachment E26MUVGW (parent 3WEMC6QV)"
+    },
+    {
+      "id": "ZOTERO_6HFW39UU",
+      "title": "New large value estimates for Dirichlet polynomials",
+      "author": "Larry Guth, James Maynard",
+      "year": "2024",
+      "source_url": "https://annals.math.princeton.edu/articles/22049",
+      "sha256": "0fed167173b802ef1af92ffbd32103350158ac61b881819b076f8d13bffde353",
+      "local_path": "literature/zotero/6HFW39UU/fulltext.md",
+      "notes": "Zotero attachment HRQ9DQIP (parent 6HFW39UU)"
+    },
+    {
+      "id": "ZOTERO_MTN59V47",
+      "title": "Jensen polynomials for the Riemann zeta function and other sequences",
+      "author": "Michael Griffin, Ken Ono, Larry Rolen, Don Zagier",
+      "year": "2019",
+      "source_url": "https://doi.org/10.1073/pnas.1902572116",
+      "sha256": "07965845f2348afe0cf477cb5d079c21dba488a58b2a4b616cdae83fe9b3ab77",
+      "local_path": "literature/zotero/MTN59V47/fulltext.md",
+      "notes": "Zotero attachment J9VH6H4K (parent MTN59V47)"
+    },
+    {
+      "id": "ZOTERO_A7UPDGTE",
+      "title": "A Counterexample to the Mizohata-Takeuchi Conjecture",
+      "author": "Hannah Cairo",
+      "year": "2025",
+      "source_url": "http://arxiv.org/abs/2502.06137",
+      "sha256": "f08d580b37a84348283ab7f9c0cc8860a4193fa3bd7104a93bc59a0f350c20f6",
+      "local_path": "literature/zotero/A7UPDGTE/fulltext.md",
+      "notes": "Zotero attachment JAWTUKMR (parent A7UPDGTE)"
+    },
+    {
+      "id": "ZOTERO_MAITKGPD",
+      "title": "The De Bruijn-Newman constant is non-negative",
+      "author": "Brad Rodgers, Terence Tao",
+      "year": "2021",
+      "source_url": "http://arxiv.org/abs/1801.05914",
+      "sha256": "e6d8e3844594e5eed83959e19f5d532e4577d279a5bfe3f67cec5ced0f191b0a",
+      "local_path": "literature/zotero/MAITKGPD/fulltext.md",
+      "notes": "Zotero attachment LTBYRPFU (parent MAITKGPD)"
+    },
+    {
+      "id": "ZOTERO_IWJJF6CJ",
+      "title": "Upper bounds for moments of zeta sums",
+      "author": "Peng Gao",
+      "year": "2026",
+      "source_url": "https://doi.org/10.1016/j.jnt.2025.04.002",
+      "sha256": "b80affdda8f228b91eadd038f5585178ae8e5877372914843a7e54e997ffba70",
+      "local_path": "literature/zotero/IWJJF6CJ/fulltext.md",
+      "notes": "Zotero attachment MGIZSAJI (parent IWJJF6CJ)"
+    },
+    {
+      "id": "ZOTERO_XJAZ6RXX",
+      "title": "Zur Theorie der quadratischen und bilinearen Formen von unendlich vielen Ver\u00e4nderlichen",
+      "author": "Otto Toeplitz",
+      "year": "1911",
+      "source_url": "https://doi.org/10.1007/BF01564502",
+      "sha256": "d3d35057d3b23b22a8cfc78445165d370f60af936901ca8a2ea8fa19daf58550",
+      "local_path": "literature/zotero/XJAZ6RXX/fulltext.md",
+      "notes": "Zotero attachment MS8BZUH5 (parent XJAZ6RXX)"
+    },
+    {
+      "id": "ZOTERO_I962857R",
+      "title": "The positivity of a sequence of numbers and the Riemann hypothesis",
+      "author": "Xian-Jin Li",
+      "year": "1997",
+      "source_url": "https://doi.org/10.1006/jnth.1997.2137",
+      "sha256": "f7cca517ee56830a8d43452b31779fb51fbbfd162b56a8e9e99b74553ff60372",
+      "local_path": "literature/zotero/I962857R/fulltext.md",
+      "notes": "Zotero attachment N85SXDDK (parent I962857R)"
+    },
+    {
+      "id": "ZOTERO_99EYTP4E",
+      "title": "Introduction to large truncated Toeplitz matrices",
+      "author": "Albrecht B\u00f6ttcher, Bernd Silbermann",
+      "year": "1999",
+      "source_url": "https://doi.org/10.1007/978-1-4612-1426-7",
+      "sha256": "8288824d5f1600aab6a5eb32d8f22baea7df1577c4eb8858b8543a208b831f37",
+      "local_path": "literature/zotero/99EYTP4E/fulltext.md",
+      "notes": "Zotero attachment NNPBIU32 (parent 99EYTP4E)"
+    },
+    {
+      "id": "ZOTERO_N2WSS8QJ",
+      "title": "Proof of the riemann hypothesis",
+      "author": "Yoshinori Shimizu",
+      "year": "2025",
+      "source_url": "https://doi.org/10.20944/preprints202505.2110.v1",
+      "sha256": "39bd1507c5d46a6e1ac05b078f7094a718a20f9ba948f88cafed691aea5cb500",
+      "local_path": "literature/zotero/N2WSS8QJ/fulltext.md",
+      "notes": "Zotero attachment NUUQM6ZB (parent N2WSS8QJ)"
+    },
+    {
+      "id": "ZOTERO_LHEN3UHA",
+      "title": "Accurate predictions on small data with a tabular foundation model",
+      "author": "Noah Hollmann, Samuel M\u00fcller, Lennart Purucker, Arjun Krishnakumar, Max K\u00f6rfer, Shi Bin Hoo, Robin Tibor Schirrmeister, Frank Hutter",
+      "year": "2025",
+      "source_url": "https://www.nature.com/articles/s41586-024-08328-6",
+      "sha256": "b1e2cc9c29a5d4a2e4cdd6ff4affe3f01dc60d4fe698bb25273abe5559185ecb",
+      "local_path": "literature/zotero/LHEN3UHA/fulltext.md",
+      "notes": "Zotero attachment PGY45TLN (parent LHEN3UHA)"
+    },
+    {
+      "id": "ZOTERO_XGS462W3",
+      "title": "Theory of reproducing kernels",
+      "author": "Nachman Aronszajn",
+      "year": "1950",
+      "source_url": "https://www.jstor.org/stable/1990404",
+      "sha256": "73521c69e682804af52bbbb92812dbda5b24885f8180d99888ef9cb2d1e566a9",
+      "local_path": "literature/zotero/XGS462W3/fulltext.md",
+      "notes": "Zotero attachment PMKIIXRV (parent XGS462W3)"
+    },
+    {
+      "id": "ZOTERO_KYYQ7QJR",
+      "title": "Reproducing kernel Hilbert spaces in probability and statistics",
+      "author": "Alain Berlinet, Christine Thomas-Agnan",
+      "year": "2004",
+      "source_url": "https://doi.org/10.1007/978-1-4419-9096-9",
+      "sha256": "0f7fcb947ba56b44786b3de6ec339b8ee21933b66185dd7d86c122534d859486",
+      "local_path": "literature/zotero/KYYQ7QJR/fulltext.md",
+      "notes": "Zotero attachment QEZAGXJ6 (parent KYYQ7QJR)"
+    },
+    {
+      "id": "ZOTERO_5DPZBPWU",
+      "title": "Numbers as functions",
+      "author": "Yuri I. Manin",
+      "year": "2013",
+      "source_url": "http://arxiv.org/abs/1312.5160",
+      "sha256": "afda153e26a709acbc98ea8f23400bbbeb4447ab393467784846ac0547e24286",
+      "local_path": "literature/zotero/5DPZBPWU/fulltext.md",
+      "notes": "Zotero attachment TV94Y7ES (parent 5DPZBPWU)"
+    },
+    {
+      "id": "ZOTERO_6K2N4LF4",
+      "title": "On the distribution of spacings between zeros of the zeta function",
+      "author": "A. M. Odlyzko",
+      "year": "1987",
+      "source_url": "https://doi.org/10.1090/S0025-5718-1987-0866115-0",
+      "sha256": "479bc0e7c9b0aa158a5d207cd7cc1d1ff9ea665f58d583bfb07db77db014656a",
+      "local_path": "literature/zotero/6K2N4LF4/fulltext.md",
+      "notes": "Zotero attachment V5DG9TFW (parent 6K2N4LF4)"
+    },
+    {
+      "id": "ZOTERO_GUWCAESL",
+      "title": "<span class=\"nocase\">H=xp</span> model revisited and the Riemann zeros",
+      "author": "Germ\u00e1n Sierra, Javier Rodr\u00edguez-Laguna",
+      "year": "2011",
+      "source_url": "https://doi.org/10.1103/PhysRevLett.106.200201",
+      "sha256": "b08beddfb879a51155588c536403477bc5148369398cf8876a484b25e6269fd9",
+      "local_path": "literature/zotero/GUWCAESL/fulltext.md",
+      "notes": "Zotero attachment W282XHIE (parent GUWCAESL)"
+    },
+    {
+      "id": "ZOTERO_82T7FKN8",
+      "title": "Sur les formules explicites de th\\'eorie des nombres",
+      "author": "A Weil",
+      "year": null,
+      "source_url": null,
+      "sha256": "62f9fd5ed8014faed825c7a881f2eab51d5ef2bf5c8760c86da603f64bfcca5f",
+      "local_path": "literature/zotero/82T7FKN8/fulltext.md",
+      "notes": "Zotero attachment WRU5DQR3 (parent 82T7FKN8)"
+    },
+    {
+      "id": "ZOTERO_SBB8H779",
+      "title": "The pair correlation of zeros of the zeta function",
+      "author": "Hugh L. Montgomery",
+      "year": "1973",
+      "source_url": "https://public.websites.umich.edu/~hlm/paircor1.pdf",
+      "sha256": "b0aa8b47cd0c074a884fbd805c986b150b2746605c153c306316b9a887588f91",
+      "local_path": "literature/zotero/SBB8H779/fulltext.md",
+      "notes": "Zotero attachment WSLDM3MR (parent SBB8H779)"
+    },
+    {
+      "id": "ZOTERO_N72XI92X",
+      "title": "Rough numbers between consecutive primes",
+      "author": "Ayla Gafni, Terence Tao",
+      "year": "2025",
+      "source_url": "http://arxiv.org/abs/2508.06463",
+      "sha256": "9a609d301d74052f94b1408cc1ad16fbdd85e24d6cbbe37b98abc1e31ee13edd",
+      "local_path": "literature/zotero/N72XI92X/fulltext.md",
+      "notes": "Zotero attachment WWF2T6ZB (parent N72XI92X)"
+    },
+    {
+      "id": "ZOTERO_RIJLMMZI",
+      "title": "A summation formula in the theory of prime numbers",
+      "author": "A. P. Guinand",
+      "year": "1948",
+      "source_url": "https://doi.org/10.1112/plms/s2-50.2.107",
+      "sha256": "7f35edfe4d24ad820a038ef3afeb96e065313259dae431fdc55208e29431efdc",
+      "local_path": "literature/zotero/RIJLMMZI/fulltext.md",
+      "notes": "Zotero attachment ZHD2YXTS (parent RIJLMMZI)"
     }
   ],
   "notes": "Populate with metadata + sha256; keep external claims in EQUIVALENCE_GRAPH.json."

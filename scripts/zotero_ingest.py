@@ -10,6 +10,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 Q3_ROOT = PROJECT_ROOT / "full" / "q3.lean.aristotle"
 DEFAULT_OUT_DIR = Q3_ROOT / "literature" / "zotero"
 DEFAULT_PAPER_INDEX = Q3_ROOT / "ACTIVE" / "PAPER_INDEX.json"
+DEFAULT_MISSING_REPORT = Q3_ROOT / "ACTIVE" / "ZOTERO_MISSING_CACHE.md"
 
 
 def now_utc() -> str:
@@ -272,6 +273,63 @@ def process_storage_dir(
     return entry
 
 
+def build_missing_entries(
+    cursor: sqlite3.Cursor,
+    attachment_keys: list[str],
+    storage_dir: Path,
+) -> list[dict]:
+    missing = []
+    for key in attachment_keys:
+        cache_path = storage_dir / key / ".zotero-ft-cache"
+        if cache_path.exists():
+            continue
+        attachment_item_id = fetch_item_id(cursor, key)
+        parent_item_id = (
+            fetch_parent_item_id(cursor, attachment_item_id) if attachment_item_id else None
+        )
+        target_item_id = parent_item_id or attachment_item_id
+        parent_key = fetch_item_key(cursor, target_item_id) if target_item_id else None
+        fields = fetch_fields(cursor, target_item_id) if target_item_id else {}
+        creators = fetch_creators(cursor, target_item_id) if target_item_id else []
+        authors = [c["name"] for c in creators if c["type"] == "author" and c["name"]]
+        missing.append(
+            {
+                "attachment_key": key,
+                "parent_key": parent_key,
+                "title": fields.get("title"),
+                "authors": authors,
+                "date": fields.get("date"),
+                "doi": fields.get("DOI"),
+            }
+        )
+    return missing
+
+
+def write_missing_report(path: Path, missing: list[dict], collection_label: str | None) -> None:
+    lines = ["# Zotero Missing Full‑Text Cache", ""]
+    if collection_label:
+        lines.append(f"**Collection:** {collection_label}")
+        lines.append("")
+    lines.append(f"**Generated:** {now_utc()}")
+    lines.append("")
+    lines.append(f"**Missing items:** {len(missing)}")
+    lines.append("")
+    lines.append("| attachment_key | parent_key | title | authors | date | doi |")
+    lines.append("|---|---|---|---|---|---|")
+    for item in missing:
+        lines.append(
+            "| {attachment_key} | {parent_key} | {title} | {authors} | {date} | {doi} |".format(
+                attachment_key=item.get("attachment_key") or "",
+                parent_key=item.get("parent_key") or "",
+                title=(item.get("title") or "").replace("|", "\\|"),
+                authors=", ".join(item.get("authors") or []),
+                date=item.get("date") or "",
+                doi=item.get("doi") or "",
+            )
+        )
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
 def fetch_attachment_keys_for_collections(
     cursor: sqlite3.Cursor,
     collection_ids: list[int],
@@ -317,6 +375,12 @@ def main() -> int:
     parser.add_argument(
         "--list-collections", action="store_true", help="list Zotero collections and exit"
     )
+    parser.add_argument(
+        "--report-missing", action="store_true", help="report attachments missing full-text cache"
+    )
+    parser.add_argument(
+        "--report-path", default=str(DEFAULT_MISSING_REPORT), help="output report path"
+    )
     parser.add_argument("--overwrite", action="store_true", help="overwrite existing markdown")
     parser.add_argument("--write-index", action="store_true", help="update PAPER_INDEX.json")
     parser.add_argument("--dry-run", action="store_true", help="list items without writing")
@@ -357,9 +421,22 @@ def main() -> int:
     storage_dirs = [p for p in storage_dir.iterdir() if p.is_dir()]
     if args.only_key:
         storage_dirs = [p for p in storage_dirs if p.name == args.only_key]
+    attachment_keys: list[str] = []
     if collection_ids:
         keys = fetch_attachment_keys_for_collections(cursor, collection_ids)
+        attachment_keys = keys
         storage_dirs = [storage_dir / key for key in keys if (storage_dir / key).is_dir()]
+    else:
+        attachment_keys = [p.name for p in storage_dirs]
+
+    if args.report_missing:
+        collection_label = args.collection_name or args.collection_key
+        missing = build_missing_entries(cursor, attachment_keys, storage_dir)
+        report_path = Path(args.report_path)
+        write_missing_report(report_path, missing, collection_label)
+        print(f"Missing cache report: {report_path}")
+        for item in missing:
+            print(item.get("attachment_key"))
 
     entries = []
     processed = 0
