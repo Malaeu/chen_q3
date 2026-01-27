@@ -51,3 +51,5 @@ a5b117ea-8409-4219-baa4-9404ea801c2a  Rayleigh_integral_P_A_eq_arch_term
 proshka_tau_shift_floor_request_2026_01_18 d0d6e7f3-1549-4f3b-b921-2f576952fecd
 rayleigh_basis0_shift_ge_cstar_quarter_tcritical.md: 7ac9a37e-c377-42a3-aa1b-fae4bcd6a34d  2026-01-24 16:12
 rho_oneK_tcritical_le_cstar_quarter.md: b644c90d-9934-4c95-a857-221e38620134  2026-01-24 16:12
+2026-01-27 qspec_phi_spec_in_w_k manual test :: 5b60eab5-423c-4bf1-b468-a41d523c1bf0
+2026-01-27 qspec_phi_spec_in_w_k manual test (v2, ShiftedWindows import) :: 2137c67b-9e37-413a-a4ae-f98cbbda5d2a

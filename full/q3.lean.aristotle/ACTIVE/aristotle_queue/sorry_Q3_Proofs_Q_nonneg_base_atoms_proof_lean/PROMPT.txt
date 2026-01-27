@@ -1,0 +1,21 @@
+Task
+Fill the remaining `sorry` in file `Q3/Proofs/Q_nonneg_base_atoms_proof.lean`.
+
+Targets (nearest declarations):
+- Q_nonneg_phi_shift_tau_zero, Q_nonneg_centered_atom_B_min, Q_finsum_atoms, Q_nonneg_on_BaseAtomCone_of_B_ge_Bmin
+
+Hard constraints:
+- Modify ONLY this file.
+- Do NOT add new imports.
+- Do NOT touch transitive dependencies.
+- Do NOT change definitions/structures.
+- Stay within single-scale assumptions (no two-scale bridges).
+
+Preferred tactics:
+- Use `suffices` for goal reduction.
+- Avoid `exact?` and heavy `aesop`.
+- Prefer `simp`, `linarith`, `nlinarith`, `gcongr`, `positivity`.
+
+If the statement is false or under-specified:
+- Provide a counterexample or a proof of the negation,
+  and point to the missing assumption.

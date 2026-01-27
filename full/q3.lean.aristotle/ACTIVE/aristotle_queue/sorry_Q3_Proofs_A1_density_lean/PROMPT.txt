@@ -1,0 +1,21 @@
+Task
+Fill the remaining `sorry` in file `Q3/Proofs/A1_density.lean`.
+
+Targets (nearest declarations):
+- A1_density_WK_fixed_t0
+
+Hard constraints:
+- Modify ONLY this file.
+- Do NOT add new imports.
+- Do NOT touch transitive dependencies.
+- Do NOT change definitions/structures.
+- Stay within single-scale assumptions (no two-scale bridges).
+
+Preferred tactics:
+- Use `suffices` for goal reduction.
+- Avoid `exact?` and heavy `aesop`.
+- Prefer `simp`, `linarith`, `nlinarith`, `gcongr`, `positivity`.
+
+If the statement is false or under-specified:
+- Provide a counterexample or a proof of the negation,
+  and point to the missing assumption.

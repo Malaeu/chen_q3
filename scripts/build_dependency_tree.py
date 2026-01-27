@@ -120,20 +120,24 @@ def main():
         item = {"name": dep, "file": None, "axioms_in_file": [], "sorries_in_file": []}
         # Normalize possible fully-qualified names from #print axioms
         lookup = dep
-        if lookup not in ax_map and lookup.startswith("Q3."):
+        if lookup.startswith("Q3."):
             lookup = lookup[len("Q3.") :]
-        if lookup not in ax_map and lookup.endswith("_axiom"):
-            # try dropping common suffix
-            stripped = lookup.replace("_axiom", "")
-            if stripped in ax_map:
-                lookup = stripped
-            # special mapping for margin axiom (lives in BrangeCert_2046.lean)
-            if (
-                lookup == "prime_cert_margin_on_Brange_axiom"
-                and "prime_b_grid_val_le_margin" in ax_map
-            ):
-                lookup = "prime_b_grid_val_le_margin"
-        path = ax_map.get(lookup)
+        candidates = [lookup]
+        if lookup.endswith("_axiom"):
+            candidates.append(lookup.replace("_axiom", ""))
+        if "." in lookup:
+            candidates.append(lookup.split(".")[-1])
+        # special mapping for legacy margin axiom (lives in BrangeCert_2046.lean)
+        if lookup == "prime_cert_margin_on_Brange_axiom":
+            candidates.append("prime_b_grid_val_le_margin")
+        path = None
+        for cand in candidates:
+            if cand in ax_map:
+                lookup = cand
+                path = ax_map[cand]
+                break
+        if path is None:
+            path = ax_map.get(lookup)
         if path:
             item["file"] = str(path.relative_to(ROOT))
             item["axioms_in_file"] = scan_file_for_axioms(path)

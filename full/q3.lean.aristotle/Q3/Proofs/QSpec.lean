@@ -12,6 +12,7 @@ Key invariants:
 
 import Q3.Basic.Defs
 import Q3.Axioms
+import Q3.Proofs.ShiftedWindows
 
 set_option linter.mathlibStandardSet false
 
@@ -146,7 +147,18 @@ lemma Φ_spec_even (spec : QSpec) (hτ : spec.τ = 0) :
   unfold fejer_heat_window
   simp only [abs_neg, neg_sq]
 
-/-- Test 4: Φ ∈ W_K -/
+/--
+Test 4: Φ ∈ W_K
+
+PROVIDED SOLUTION
+Use continuity of `phi_shift` from `Q3.Proofs.ShiftedWindows.continuous_phi_shift`
+and rewrite `Φ_spec` to `phi_shift` with `simp [Φ_spec, Q3.phi_shift]`.
+
+For support: after `simp [Function.mem_support, Φ_spec, fejer_heat_window]` on `hξ`,
+get `|ξ - spec.τ| < spec.B` from positivity of the `max` term, then use
+`abs_sub_le` and `spec.hτB_K : |spec.τ| + spec.B ≤ spec.K` to show `|ξ| < spec.K`.
+Conclude `ξ ∈ Set.Ioo (-spec.K) spec.K` via `abs_lt`.
+-/
 lemma Φ_spec_in_W_K (spec : QSpec) (hτ : spec.τ = 0) :
     Φ_spec spec ∈ W_K spec.K := by
   constructor

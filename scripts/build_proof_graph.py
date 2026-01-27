@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import json
-from pathlib import Path
 from datetime import datetime, timezone
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
 ACTIVE_DIR = ROOT / "ACTIVE"
@@ -50,7 +50,9 @@ def main():
     md = []
     md.append(f"# Proof Graph (auto) — {generated_at}")
     md.append("")
-    md.append("**Purpose:** Machine + human index of the main-chain proof nodes, with alternatives.")
+    md.append(
+        "**Purpose:** Machine + human index of the main-chain proof nodes, with alternatives."
+    )
     md.append("**Sources:** `ACTIVE/DEPS_TREE_MAIN.json` + `ACTIVE/ALTERNATIVE_PATHS.json`")
     md.append("")
 

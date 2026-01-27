@@ -23,6 +23,89 @@ Aristotle не знает про `lem:uniform-arch-floor` или `Theorem 8.17'`
 
 ---
 
+## Aristotle CLI/TUI — важные правила (обновлено 2026‑01‑27)
+
+### 1) Несовместимость флагов
+
+В версии `aristotlelib >= 0.7.0`:
+- **нельзя** использовать `--no-validate-lean-project`, если включены авто‑импорты.
+- Ошибка выглядит так:
+  ```
+  AssertionError: validate_lean_project must be True when auto_add_imports is True
+  ```
+
+**Вывод:** если используем авто‑импорты, **валидация обязательна**.
+
+### 2) Проблема “outermost project root”
+
+Aristotle ищет **самый внешний** Lean‑root.  
+На этой машине есть `lakefile.toml` и `lean-toolchain` в `/Users/emalam`, поэтому
+CLI думает, что **root = /Users/emalam** → и не видит `Q3.Basic.Defs`, `Q3.Axioms`:
+
+```
+ERROR - Could not resolve import 'Q3.Basic.Defs'
+```
+
+**Вывод:** CLI с auto‑imports здесь ломается.
+
+### 3) Канонический обход (Python API, без auto‑imports)
+
+**Рекомендуемый способ запуска** для Q3:
+- `auto_add_imports=False`
+- `validate_lean_project=False`
+- `context_file_paths` = транзитивные импорты от **правильного root**
+
+Мини‑шаблон (Mac):
+```python
+from pathlib import Path
+from aristotlelib import Project
+from aristotlelib.local_file_utils import gather_file_imports
+import asyncio
+
+ROOT = Path("/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/full/q3.lean.aristotle")
+INPUT = ROOT / "Q3/Proofs/QSpec.lean"
+
+deps = gather_file_imports(INPUT, project_root=ROOT)
+context = [str(p) for p in deps] + [
+    str(ROOT / "ACTIVE/aristotle_queue/<task>/PROMPT.txt"),
+    str(ROOT / "ACTIVE/aristotle_queue/<task>/NODE_BRIEF.md"),
+]
+
+async def main():
+    pid = await Project.prove_from_file(
+        input_file_path=INPUT,
+        auto_add_imports=False,
+        context_file_paths=context,
+        validate_lean_project=False,
+        wait_for_completion=False,
+        output_file_path=ROOT / "aristotle_output/<task>_aristotle.lean",
+    )
+    print(pid)
+
+asyncio.run(main())
+```
+
+Linux путь менять на `/mnt/hdd01/Soft/GitHub/chen_q3/...`.
+
+---
+
+## DAG‑loop (автоматизация очереди)
+
+Добавлен генератор очереди:
+```
+python full/q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 10
+```
+
+Он создаёт:
+- `ACTIVE/ARISTOTLE_QUEUE.json` + `ACTIVE/ARISTOTLE_QUEUE.md`
+- `ACTIVE/aristotle_queue/<task>/PROMPT.txt`
+- `ACTIVE/aristotle_queue/<task>/NODE_BRIEF.md`
+
+**Смысл:** агенты берут top‑задачи из очереди и отправляют в Aristotle
+через Python API (см. шаблон выше).
+
+---
+
 ## Project Workflow (Decision Loop)
 
 This is the full project loop; Aristotle и Прошка — ключевые инструменты.
