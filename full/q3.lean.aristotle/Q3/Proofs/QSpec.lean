@@ -161,21 +161,45 @@ Conclude `ξ ∈ Set.Ioo (-spec.K) spec.K` via `abs_lt`.
 -/
 lemma Φ_spec_in_W_K (spec : QSpec) (hτ : spec.τ = 0) :
     Φ_spec spec ∈ W_K spec.K := by
-  constructor
+  refine ⟨?_, ?_, ?_, ?_⟩
   · -- Continuous
-    unfold Φ_spec
-    have h1 : Continuous (fun ξ => fejer_heat_window spec.B spec.t (ξ - spec.τ)) := by
-      -- fejer_heat_window is continuous
-      sorry
-    exact h1
-  constructor
+    simpa [Φ_spec, Q3.phi_shift] using
+      (Q3.Proofs.ShiftedWindows.continuous_phi_shift spec.B spec.t spec.τ)
   · -- Support ⊆ (-K, K)
     intro ξ hξ
-    unfold Φ_spec fejer_heat_window at hξ
-    simp only [Function.mem_support, ne_eq] at hξ
-    -- If Φ(ξ) ≠ 0 then |ξ - τ| < B, so |ξ| < |τ| + B ≤ K
-    sorry
-  constructor
+    have hne : Φ_spec spec ξ ≠ 0 := by
+      simpa [Function.mem_support] using hξ
+    have hexp_ne :
+        Real.exp (-4 * Real.pi ^ 2 * spec.t * (ξ - spec.τ) ^ 2) ≠ 0 :=
+      Real.exp_ne_zero _
+    have hmax_ne : max (0 : ℝ) (1 - |ξ - spec.τ| / spec.B) ≠ 0 := by
+      intro hmax
+      apply hne
+      simp [Φ_spec, fejer_heat_window, hmax, hexp_ne]
+    have hmax_pos : 0 < max (0 : ℝ) (1 - |ξ - spec.τ| / spec.B) :=
+      lt_of_le_of_ne (le_max_left _ _) (Ne.symm hmax_ne)
+    have hu_pos : 0 < 1 - |ξ - spec.τ| / spec.B := by
+      by_cases hu : 1 - |ξ - spec.τ| / spec.B ≤ 0
+      ·
+        have hmax0 : max (0 : ℝ) (1 - |ξ - spec.τ| / spec.B) = 0 := max_eq_left hu
+        have : (0 : ℝ) < 0 := by simpa [hmax0] using hmax_pos
+        exfalso
+        exact (lt_irrefl 0 this)
+      · exact lt_of_not_ge hu
+    have habs_div : |ξ - spec.τ| / spec.B < 1 := by
+      linarith [hu_pos]
+    have habs_ltB : |ξ - spec.τ| < spec.B := (div_lt_one spec.hB).1 habs_div
+    have habs_tri : |ξ| ≤ |ξ - spec.τ| + |spec.τ| := by
+      simpa [sub_add_cancel] using (abs_add_le (ξ - spec.τ) spec.τ)
+    have hsum_lt : |ξ - spec.τ| + |spec.τ| < spec.B + |spec.τ| :=
+      add_lt_add_right habs_ltB _
+    have habs_lt_sum : |ξ| < spec.B + |spec.τ| :=
+      lt_of_le_of_lt habs_tri hsum_lt
+    have habs_lt_sum' : |ξ| < |spec.τ| + spec.B := by
+      simpa [add_comm, add_left_comm, add_assoc] using habs_lt_sum
+    have habs_ltK : |ξ| < spec.K :=
+      lt_of_lt_of_le habs_lt_sum' (by simpa [add_comm] using spec.hτB_K)
+    exact (abs_lt.mp habs_ltK)
   · -- Even
     exact Φ_spec_even spec hτ
   · -- Nonneg
@@ -185,27 +209,99 @@ lemma Φ_spec_in_W_K (spec : QSpec) (hτ : spec.τ = 0) :
 
 /-! ## Counterexample Membership -/
 
-/-- Key: Φ_{testSpec} = (1/2) · Fejer_heat_atom at τ=0
+/-- Convert the paper `t` parameter to the AtomCone `t0` parameter.
 
-    Note: Fejer_heat_atom(B, t, 0, ξ) = 2 * fejer_heat_window(B, t, ξ)
-    because at τ=0: Φ(ξ-0) + Φ(ξ+0) = 2*Φ(ξ)
--/
+The AtomCone heat kernel uses `exp(-(x^2)/(4*t0))`, while `fejer_heat_window` uses
+`exp(-4π²*t*x²)`. The matching choice is `t0 = 1/(16π²*t)`. -/
+def t0_of_spec (spec : QSpec) : ℝ := 1 / (16 * Real.pi ^ 2 * spec.t)
+
+/-! ## Counterexample Membership -/
+
+/-- Key: relating `Φ_spec` (fejér×exp convention) to `Fejer_heat_atom` (A1 cone convention).
+
+With `t0 := 1/(16π²·t)`, we have matching exponents:
+`exp(-(x^2)/(4*t0)) = exp(-4π²*t*x^2)`.
+The remaining difference is the normalizing factor `1/√(4π t0)` in `heat_kernel_A1`,
+so `Φ_spec = (√(4π t0)/2) • Fejer_heat_atom` at `τ=0`. -/
 lemma Φ_testSpec_is_half_atom (ξ : ℝ) :
-    Φ_spec testSpec ξ = (1/2) * Fejer_heat_atom testSpec.B testSpec.t 0 ξ := by
-  unfold Φ_spec Fejer_heat_atom testSpec fejer_heat_window
-  simp only [sub_zero, add_zero]
-  -- Goal: max 0 (1 - |ξ|/3) * exp(-4π²·(3/50)·ξ²) = (1/2) * 2 * (same)
-  ring_nf
-  -- The ring_nf can't solve this because of max and exp
-  -- Need to show: f(ξ) = (1/2) * (f(ξ) + f(ξ)) which is trivially true
-  sorry
+    Φ_spec testSpec ξ =
+      (Real.sqrt (4 * Real.pi * t0_of_spec testSpec) / 2) *
+        Fejer_heat_atom testSpec.B (t0_of_spec testSpec) 0 ξ := by
+  set t0 : ℝ := t0_of_spec testSpec with ht0
+  have ht_ne : (testSpec.t : ℝ) ≠ 0 := by
+    simp [testSpec]
+  have ht0_pos : 0 < t0 := by
+    rw [ht0]
+    simp [t0_of_spec, testSpec]
+    positivity
+  have hsqrt_ne : Real.sqrt (4 * Real.pi * t0) ≠ 0 := by
+    have hpi : 0 < Real.pi := Real.pi_pos
+    have : 0 < 4 * Real.pi * t0 := by nlinarith [hpi, ht0_pos]
+    exact ne_of_gt (Real.sqrt_pos.2 this)
+  have harg : -(ξ ^ 2) / (4 * t0) = -4 * Real.pi ^ 2 * testSpec.t * ξ ^ 2 := by
+    rw [ht0]
+    unfold t0_of_spec
+    field_simp [ht_ne]
+    ring
+  -- prove the equality by rewriting RHS into the fejer_heat_window normalization
+  symm
+  calc
+    (Real.sqrt (4 * Real.pi * t0) / 2) * Fejer_heat_atom testSpec.B t0 0 ξ
+        =
+        (Real.sqrt (4 * Real.pi * t0) / 2) *
+          ((Fejer_kernel testSpec.B ξ * heat_kernel_A1 t0 ξ) +
+            (Fejer_kernel testSpec.B ξ * heat_kernel_A1 t0 ξ)) := by
+          simp [Fejer_heat_atom, sub_eq_add_neg, add_assoc, add_left_comm, add_comm]
+    _ = Real.sqrt (4 * Real.pi * t0) * (Fejer_kernel testSpec.B ξ * heat_kernel_A1 t0 ξ) := by
+          ring
+    _ = Fejer_kernel testSpec.B ξ * Real.exp (-(ξ ^ 2) / (4 * t0)) := by
+          -- cancel the normalization factor `sqrt(4πt0)` in `heat_kernel_A1`
+          unfold heat_kernel_A1
+          calc
+            Real.sqrt (4 * Real.pi * t0) *
+                (Fejer_kernel testSpec.B ξ *
+                  ((1 / Real.sqrt (4 * Real.pi * t0)) *
+                    Real.exp (-(ξ ^ 2) / (4 * t0))))
+                =
+                Fejer_kernel testSpec.B ξ *
+                  (Real.sqrt (4 * Real.pi * t0) * (1 / Real.sqrt (4 * Real.pi * t0))) *
+                    Real.exp (-(ξ ^ 2) / (4 * t0)) := by
+                  ring
+            _ = Fejer_kernel testSpec.B ξ * Real.exp (-(ξ ^ 2) / (4 * t0)) := by
+                  have hcancel :
+                      Real.sqrt (4 * Real.pi * t0) * (1 / Real.sqrt (4 * Real.pi * t0)) = 1 := by
+                    field_simp [hsqrt_ne]
+                  -- rewrite using the cancellation identity
+                  rw [hcancel]
+                  ring
+    _ = Fejer_kernel testSpec.B ξ * Real.exp (-4 * Real.pi ^ 2 * testSpec.t * ξ ^ 2) := by
+          simp [harg]
+    _ = fejer_heat_window testSpec.B testSpec.t ξ := by
+          simp [fejer_heat_window, Fejer_kernel]
+    _ = Φ_spec testSpec ξ := by
+          simp [Φ_spec, testSpec]
 
 /-- Φ_{testSpec} ∈ AtomCone_K_fixed -/
 lemma Φ_testSpec_in_AtomCone :
     Φ_spec testSpec ∈ AtomCone_K_fixed testSpec.K (1 / (16 * Real.pi^2 * testSpec.t)) := by
-  -- Φ = (1/2) * atom, so it's a weighted sum of atoms with c = 1/2
-  -- This satisfies all AtomCone conditions
-  sorry
+  -- single-atom representation with a scalar factor matching the kernel normalizations
+  refine ⟨1,
+    (fun _ => Real.sqrt (4 * Real.pi * t0_of_spec testSpec) / 2),
+    (fun _ => testSpec.B),
+    (fun _ => 0),
+    ?_, ?_, ?_, ?_, ?_⟩
+  · intro _; have : 0 ≤ Real.sqrt (4 * Real.pi * t0_of_spec testSpec) := by
+      exact Real.sqrt_nonneg _
+    nlinarith
+  · intro _; simpa [testSpec] using testSpec.hB
+  · intro _
+    -- |τ| + B ≤ K, with τ = 0
+    simpa [testSpec] using testSpec.hτB_K
+  · intro x
+    -- Fin 1 sum: just the single coefficient times the atom
+    simpa [t0_of_spec, div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm] using (Φ_testSpec_is_half_atom x)
+  · -- membership in W_K K (τ = 0)
+    exact Φ_spec_in_W_K testSpec (by rfl)
 
 /-! ## The Key Finding: Q(Φ_{testSpec}) < 0 -/
 

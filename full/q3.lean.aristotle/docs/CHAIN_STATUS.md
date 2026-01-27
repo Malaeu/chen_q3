@@ -40,13 +40,22 @@ It is intended to stay aligned with the code after each refactor.
 
 These are the only Q3-specific axioms blocking the **current** main chain:
 
-- `Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom`
-- `Q3.prime_term_le_at_t_critical_axiom`
+- `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin`
+- `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
 
 Authoritative check:
 ```bash
 lake env lean Q3/CheckAxioms.lean
 ```
+
+Off-chain / legacy (not in `#print axioms Q3.Main.RH_of_Weil_and_Q3`):
+- `Q3.prime_term_le_at_t_critical_axiom` (τ ≠ 0 path placeholder)
+
+## Note on Tier-1 axioms
+
+The authoritative `#print axioms Q3.Main.RH_of_Weil_and_Q3` output currently includes
+`Q3.Weil_criterion_tau0` (τ = 0 mainline). It does **not** include `Q3.Schur_test`,
+even though `Q3/CheckAxioms.lean` still `#check`s that constant exists.
 
 ## Legacy (not in the current main chain)
 

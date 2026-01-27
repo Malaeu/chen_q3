@@ -23,8 +23,9 @@ This prints the *actual axioms used by* `Q3.Main.RH_of_Weil_and_Q3`.
 From `#print axioms Q3.Main.RH_of_Weil_and_Q3`:
 
 - Tier-1 / classical:
-  - `Q3.Weil_criterion`
-  - `Q3.Schur_test`
+  - `Q3.Weil_criterion_tau0`
+  - (Note) `Q3.Schur_test` exists in `Q3/Axioms.lean`, but is **not** in the current
+    `#print axioms Q3.Main.RH_of_Weil_and_Q3` output (verify via `Q3/CheckAxioms.lean`).
 
 - Tier-2 / Q3-specific (τ=0 mainline):
   - `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin`
@@ -38,8 +39,8 @@ Standard Mathlib axioms (`propext`, `Classical.choice`, `Quot.sound`) are always
 |---|---|---|
 | `prime_b_grid_val_le_margin` | `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` | Grid margin ≤ arch−prime at each grid point |
 | `prime_margin_Lipschitz_on_Brange` | `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` | Lipschitz control of margin on B‑range |
-| `Weil_criterion` | `Q3/Axioms.lean` | classical bridge `Q >= 0` ⇒ RH |
-| `Schur_test` | `Q3/Axioms.lean` | matrix norm bound in RKHS chain |
+| `Weil_criterion_tau0` | `Q3/Axioms.lean` | classical bridge `Q >= 0` ⇒ RH (τ = 0 mainline) |
+| `Schur_test` | `Q3/Axioms.lean` | legacy / off‑chain in current mainline |
 
 ## 4) Why raw counts look huge
 

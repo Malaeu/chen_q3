@@ -150,7 +150,7 @@ Aristotle читает **английский скетч** только из **�
 
 Добавлен генератор очереди:
 ```
-python full/q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 10
+python3 full/q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 10
 ```
 
 Он создаёт:
@@ -287,6 +287,10 @@ theorem new_result : Q := by
 cd /Users/emalam/Documents/GitHub/chen_q3
 source .venv/bin/activate
 
+# Безопасность:
+# - НЕ передавай ARISTOTLE_API_KEY через аргументы CLI (утечёт в history/logs).
+# - Держи ключ в переменной окружения (например, ~/.bashrc) и просто `source ...`.
+
 # Отправить новый файл (informal markdown)
 aristotle prove-from-file --informal --no-validate-lean-project --no-wait problem.md
 
@@ -314,6 +318,16 @@ async def main():
 
 asyncio.run(main())
 PY
+```
+
+### После скачивания (обязательная проверка)
+
+```bash
+# Скан на “дыры” (в т.ч. exact?) — файлы с дырками считаем DRAFT
+rg -n "sorry|exact\\?" aristotle_output/<project_id>-output.lean
+
+# Быстрая компиляция в проекте (если интегрируем)
+lake env lean <file>
 ```
 
 ---

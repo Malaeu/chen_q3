@@ -1,4 +1,4 @@
-# Aristotle Queue (auto) - 2026-01-27 06:06 UTC
+# Aristotle Queue (auto) - 2026-01-27 15:56 UTC
 
 **Purpose:** Auto-generated queue for Aristotle runs (no submission).
 **Source:** `DEPS_TREE_MAIN.json` + sorry scan of Q3/ trees.
@@ -16,22 +16,6 @@
 - Priority: `1`
 - Axiom: `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
 - File: `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
-
-## sorry::Q3/Proofs/A1_density.lean
-- Type: `sorry_file`
-- Mode: `fill_sorries`
-- Priority: `2`
-- File: `Q3/Proofs/A1_density.lean`
-- Sorries: 1
-  - A1_density_WK_fixed_t0@L1715
-
-## sorry::Q3/Proofs/QSpec.lean
-- Type: `sorry_file`
-- Mode: `fill_sorries`
-- Priority: `2`
-- File: `Q3/Proofs/QSpec.lean`
-- Sorries: 4
-  - prime_term_small_support@L169, prime_term_small_support@L177, prime_term_small_support@L201, prime_term_small_support@L208
 
 ## sorry::Q3/Proofs/Q_nonneg_base_atoms_proof.lean
 - Type: `sorry_file`

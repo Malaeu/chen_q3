@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-27 06:06 UTC",
+  "generated_at": "2026-01-27 15:56 UTC",
   "root": "Q3.Main.RH_of_Weil_and_Q3",
   "tasks": [
     {
@@ -17,44 +17,6 @@
       "file": "Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
       "priority": 1,
       "mode": "direct_english"
-    },
-    {
-      "id": "sorry::Q3/Proofs/A1_density.lean",
-      "type": "sorry_file",
-      "file": "Q3/Proofs/A1_density.lean",
-      "priority": 2,
-      "mode": "fill_sorries",
-      "sorries": [
-        {
-          "line": 1715,
-          "decl": "A1_density_WK_fixed_t0"
-        }
-      ]
-    },
-    {
-      "id": "sorry::Q3/Proofs/QSpec.lean",
-      "type": "sorry_file",
-      "file": "Q3/Proofs/QSpec.lean",
-      "priority": 2,
-      "mode": "fill_sorries",
-      "sorries": [
-        {
-          "line": 169,
-          "decl": "prime_term_small_support"
-        },
-        {
-          "line": 177,
-          "decl": "prime_term_small_support"
-        },
-        {
-          "line": 201,
-          "decl": "prime_term_small_support"
-        },
-        {
-          "line": 208,
-          "decl": "prime_term_small_support"
-        }
-      ]
     },
     {
       "id": "sorry::Q3/Proofs/Q_nonneg_base_atoms_proof.lean",

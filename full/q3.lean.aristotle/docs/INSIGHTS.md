@@ -248,6 +248,18 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 
 ---
 
+## Synthesis (2026-01-27, in progress) — PrimeCert closure architecture request (Proshka)
+
+- Goal: remove the two PrimeCert axioms in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` without changing the one-scale mainline.
+- Bottlenecks:
+  - Lipschitz: convert the symbolic bound in `Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean` into
+    `margin_Lipschitz_const ≤ prime_cert_L_ub` via certified numeric bounds on `M_a_local(4.9)` and `W_sum_local(4.9)` (or avoid these).
+  - Grid: connect the rational table in `Q3/Proofs/PrimeCert/BrangeGrid_2046.lean` to the true `arch_term - prime_term`
+    (needs a Lean-side verifier or another reduction).
+- Proshka request drafted: `aristotle_input/proshka_primecert_closure_2026_01_27.md`.
+
+---
+
 ## A3/Rayleigh: критический путь
 
 - Символы `a_star` vs `P_A`: признаки рассогласования, reverse‑engineering → `docs/insights/a3_symbol_mismatch_reverse_engineering.md`.
