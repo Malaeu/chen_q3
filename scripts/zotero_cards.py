@@ -199,7 +199,8 @@ def build_refs_note_html(item_key: str, title: str, refs: list[str]) -> str:
     if refs:
         lines.append("<ol>")
         for ref in refs:
-            safe = ref.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            cleaned = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", ref)
+            safe = cleaned.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
             lines.append(f"<li>{safe}</li>")
         lines.append("</ol>")
     return "\n".join(lines)
@@ -208,7 +209,8 @@ def build_refs_note_html(item_key: str, title: str, refs: list[str]) -> str:
 def build_refitem_note_html(item_key: str, index: int, ref: str) -> str:
     author, years = ref_label_parts(ref)
     label = f"{author} ({years})" if years else author
-    safe = ref.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    cleaned = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", ref)
+    safe = cleaned.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     lines = [
         f"<p><b>ZOTERO_REFITEM::{item_key}::{index}</b></p>",
         f"<p><b>Weil 1952 Ref {index} — {label}</b></p>",
@@ -535,11 +537,14 @@ def main() -> int:
         print(f"Matches: {len(matches)}")
         return 0
 
-    if args.create_notes and new_notes:
+    if new_notes:
         chunk = 10
         for i in range(0, len(new_notes), chunk):
             payload = new_notes[i : i + chunk]
-            api_request("POST", base_url, "items", None, payload, api_key)
+            resp = api_request("POST", base_url, "items", None, payload, api_key) or {}
+            failed = resp.get("failed") or {}
+            if failed:
+                print(f"Note create failures: {failed}")
 
     print(
         textwrap.dedent(
