@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-27 08:43 UTC",
+  "generated_at": "2026-01-27 13:36 UTC",
   "root": "Q3/",
   "nodes": [
     {
@@ -364,113 +364,6 @@
       "is_doomed": true
     },
     {
-      "id": "Q3/Clean/AxiomsTier1.lean",
-      "module": "Q3.Clean.AxiomsTier1",
-      "dependencies": [
-        "Q3/Basic/Defs.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "UNKNOWN",
-      "direct_status": "VERIFIED",
-      "intrinsic_risk": 0.0,
-      "propagation_status": "VERIFIED",
-      "integrity_status": "VERIFIED",
-      "taint_source": [],
-      "risk_score": 0.0,
-      "risk_threshold": 1.0,
-      "risk_status": "OK",
-      "risk_exceeds": false,
-      "is_doomed": false
-    },
-    {
-      "id": "Q3/Clean/MainClean.lean",
-      "module": "Q3.Clean.MainClean",
-      "dependencies": [
-        "Q3/Clean/AxiomsTier1.lean",
-        "Q3/Clean/TheoremsTier2.lean"
-      ],
-      "sorries": [
-        59,
-        75
-      ],
-      "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 1.0,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
-      "taint_source": [],
-      "risk_score": 4.0,
-      "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
-    },
-    {
-      "id": "Q3/Clean/PoC.lean",
-      "module": "Q3.Clean.PoC",
-      "dependencies": [
-        "Q3/Basic/Defs.lean",
-        "Q3/Proofs/A1_Density_Bridge.lean",
-        "Q3/Proofs/A3_Bridge_Simple.lean",
-        "Q3/Proofs/Off_Diag_Exp_Sum_Bridge.lean",
-        "Q3/Proofs/Q_Lipschitz_Bridge.lean",
-        "Q3/Proofs/Q_Nonneg_Bridge.lean",
-        "Q3/Proofs/RKHS_Contraction_Bridge.lean",
-        "Q3/Proofs/S_K_Small_Bridge.lean",
-        "Q3/Proofs/W_Sum_Finite_Bridge.lean",
-        "Q3/Proofs/node_spacing_bridge.lean"
-      ],
-      "sorries": [
-        117,
-        118,
-        119
-      ],
-      "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 1.5,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
-      "taint_source": [],
-      "risk_score": 3.0,
-      "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
-    },
-    {
-      "id": "Q3/Clean/TheoremsTier2.lean",
-      "module": "Q3.Clean.TheoremsTier2",
-      "dependencies": [
-        "Q3/Basic/Defs.lean",
-        "Q3/Clean/AxiomsTier1.lean",
-        "Q3/Proofs/A1_Density_Bridge.lean",
-        "Q3/Proofs/A3_Bridge_Simple.lean",
-        "Q3/Proofs/Off_Diag_Exp_Sum_Bridge.lean",
-        "Q3/Proofs/Q_Lipschitz_Bridge.lean",
-        "Q3/Proofs/Q_Nonneg_Bridge.lean",
-        "Q3/Proofs/RKHS_Contraction_Bridge.lean",
-        "Q3/Proofs/S_K_Small_Bridge.lean",
-        "Q3/Proofs/W_Sum_Finite_Bridge.lean",
-        "Q3/Proofs/node_spacing_bridge.lean"
-      ],
-      "sorries": [
-        21,
-        22,
-        23
-      ],
-      "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 1.5,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
-      "taint_source": [],
-      "risk_score": 3.0,
-      "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
-    },
-    {
       "id": "Q3/DigammaRemainder.lean",
       "module": "Q3.DigammaRemainder",
       "dependencies": [
@@ -714,8 +607,7 @@
       "id": "Q3/Proofs/A3_Bridge_Simple.lean",
       "module": "Q3.Proofs.A3_Bridge_Simple",
       "dependencies": [
-        "Q3/Basic/Defs.lean",
-        "Q3/Clean/AxiomsTier1.lean"
+        "Q3/Basic/Defs.lean"
       ],
       "sorries": [],
       "numeric_check": "UNKNOWN",
@@ -1579,8 +1471,7 @@
       "id": "Q3/Proofs/Q_Lipschitz_Bridge.lean",
       "module": "Q3.Proofs.Q_Lipschitz_Bridge",
       "dependencies": [
-        "Q3/Basic/Defs.lean",
-        "Q3/Clean/AxiomsTier1.lean"
+        "Q3/Basic/Defs.lean"
       ],
       "sorries": [],
       "numeric_check": "UNKNOWN",

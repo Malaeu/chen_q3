@@ -1,25 +1,13 @@
-# Sorry Frontier (auto) — 2026-01-27 08:21 UTC
+# Sorry Frontier (auto) — 2026-01-27 13:36 UTC
 
 **Purpose:** List every `sorry` occurrence in `Q3/` with file + line numbers.
 **Source:** regex scan of `Q3/**/*.lean`
 
-**Total sorries:** 30
+**Total sorries:** 22
 
 ## Q3/AxiomClosureTheorems.lean
 - Count: 3
 - Lines: L190, L192, L198
-
-## Q3/Clean/MainClean.lean
-- Count: 2
-- Lines: L59, L75
-
-## Q3/Clean/PoC.lean
-- Count: 3
-- Lines: L117, L118, L119
-
-## Q3/Clean/TheoremsTier2.lean
-- Count: 3
-- Lines: L21, L22, L23
 
 ## Q3/Proofs/A1_density.lean
 - Count: 1

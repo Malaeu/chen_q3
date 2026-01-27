@@ -24,15 +24,36 @@ def scan_file(path: Path) -> list[int]:
     return lines
 
 
+def should_skip(path: Path, exclude_paths: list[tuple[str, ...]]) -> bool:
+    rel_parts = path.relative_to(ROOT).parts
+    for ex in exclude_paths:
+        if not ex:
+            continue
+        for i in range(0, len(rel_parts) - len(ex) + 1):
+            if tuple(rel_parts[i : i + len(ex)]) == ex:
+                return True
+    return False
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(ACTIVE_DIR / "SORRY_FRONTIER.md"))
     ap.add_argument("--json", default=str(ACTIVE_DIR / "SORRY_FRONTIER.json"))
+    ap.add_argument(
+        "--exclude",
+        action="append",
+        default=["Q3/Clean"],
+        help="exclude subpaths (relative to repo root), can repeat",
+    )
     args = ap.parse_args()
+
+    exclude_paths = [Path(item).parts for item in args.exclude]
 
     files = []
     total = 0
     for path in sorted(Q3_DIR.rglob("*.lean")):
+        if should_skip(path, exclude_paths):
+            continue
         rel = path.relative_to(ROOT)
         lines = scan_file(path)
         if not lines:

@@ -1,18 +1,15 @@
-# Taint Graph (auto) — 2026-01-27 08:43 UTC
+# Taint Graph (auto) — 2026-01-27 13:36 UTC
 
 **Purpose:** Propagate `sorry`/BROKEN status upward across file import graph.
 **Source:** Q3 file imports + numeric checks report
 
-**Counts:** VERIFIED=99, TAINTED=13, SORRY=13, BROKEN=0
-**Doomed:** 13
+**Counts:** VERIFIED=98, TAINTED=13, SORRY=10, BROKEN=0
+**Doomed:** 10
 
 ## DOOMED
 - `Q3/AxiomClosureTheorems.lean`
 - `Q3/AxiomsTheorems.lean`
 - `Q3/CheckAxioms.lean`
-- `Q3/Clean/MainClean.lean`
-- `Q3/Clean/PoC.lean`
-- `Q3/Clean/TheoremsTier2.lean`
 - `Q3/Main.lean`
 - `Q3/MainTheorems.lean`
 - `Q3/Proofs/QSpec.lean`
@@ -25,9 +22,6 @@
 
 ## SORRY
 - `Q3/AxiomClosureTheorems.lean`
-- `Q3/Clean/MainClean.lean`
-- `Q3/Clean/PoC.lean`
-- `Q3/Clean/TheoremsTier2.lean`
 - `Q3/Proofs/A1_density.lean`
 - `Q3/Proofs/A1_density_integrated.lean`
 - `Q3/Proofs/A3_Floor_Critical_Goal.lean`
@@ -68,7 +62,6 @@
 - `Q3/AxiomClosure.lean`
 - `Q3/Axioms.lean`
 - `Q3/Basic/Defs.lean`
-- `Q3/Clean/AxiomsTier1.lean`
 - `Q3/DigammaRemainder.lean`
 - `Q3/DigammaSeries.lean`
 - `Q3/Proofs/A1_Density_Bridge.lean`

@@ -29,9 +29,11 @@ def module_name_for(path: Path) -> str:
     return ".".join(rel.parts)
 
 
-def build_module_map() -> dict[str, str]:
+def build_module_map(exclude_paths: list[tuple[str, ...]]) -> dict[str, str]:
     mod_map = {}
     for p in Q3_DIR.rglob("*.lean"):
+        if should_skip(p, exclude_paths):
+            continue
         mod_map[module_name_for(p)] = str(p.relative_to(ROOT))
     return mod_map
 
@@ -63,15 +65,34 @@ def scan_sorries(path: Path) -> list[int]:
     return lines
 
 
+def should_skip(path: Path, exclude_paths: list[tuple[str, ...]]) -> bool:
+    rel_parts = path.relative_to(ROOT).parts
+    for ex in exclude_paths:
+        if not ex:
+            continue
+        for i in range(0, len(rel_parts) - len(ex) + 1):
+            if tuple(rel_parts[i : i + len(ex)]) == ex:
+                return True
+    return False
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(ACTIVE_DIR / "TAINT_GRAPH.md"))
     ap.add_argument("--json", default=str(ACTIVE_DIR / "TAINT_GRAPH.json"))
     ap.add_argument("--numeric", default=str(ACTIVE_DIR / "NUMERIC_CHECKS_REPORT.json"))
     ap.add_argument("--risk", default=str(RISK_MODEL_JSON))
+    ap.add_argument(
+        "--exclude",
+        action="append",
+        default=["Q3/Clean"],
+        help="exclude subpaths (relative to repo root), can repeat",
+    )
     args = ap.parse_args()
 
-    mod_map = build_module_map()
+    exclude_paths = [Path(item).parts for item in args.exclude]
+
+    mod_map = build_module_map(exclude_paths)
 
     numeric_report = load_json(Path(args.numeric), {})
     numeric_map = {c.get("id"): c for c in numeric_report.get("checks", [])}
@@ -88,6 +109,8 @@ def main() -> None:
 
     nodes = {}
     for path in sorted(Q3_DIR.rglob("*.lean")):
+        if should_skip(path, exclude_paths):
+            continue
         rel = path.relative_to(ROOT)
         file_id = str(rel)
         module = module_name_for(path)
@@ -194,6 +217,10 @@ def main() -> None:
         memo[fid] = node
         visiting.remove(fid)
         return node
+
+    # drop dependencies that were excluded from the node set
+    for node in nodes.values():
+        node["dependencies"] = [d for d in node["dependencies"] if d in nodes]
 
     for fid in list(nodes.keys()):
         propagate(fid)
