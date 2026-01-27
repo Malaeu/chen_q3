@@ -96,6 +96,31 @@ and non‑archimedean terms with *fixed normalization*.
 - Collect references in Weil (1972) bibliography for explicit formulas and Weil groups.
 - Look for modern expositions to reduce heavy group/representation preliminaries.
 
+## Synthesis (2026-01-27, in progress) — Toeplitz‑Weil mapping (formal chain vs speculative edges)
+
+Source: `/home/chirurgie/Downloads/toeplitz_weil_bridge.md` (external note).
+
+**Critical correction (formal alignment):**
+- Do **not** state the Weil functional as `Σ |f̂(ρ)|²` in the formal chain.
+- In Q3 the correct formal target is: **`Q(Φ) ≥ 0` on the (τ=0) Weil cone ⇔ RH**,
+  i.e. `Weil_criterion_tau0` in `Q3/Axioms.lean`. Any spectral/quadratic‑form
+  intuition must be marked as *interpretation*, not formula.
+
+**Formal Chain (Lean‑anchored mapping):**
+- Weil criterion (τ=0): `Q3.Axioms.weil_criterion_tau0` → `Q3/Main.lean` mainline.
+- A3 bridge (Toeplitz − Prime): `Q3/Proofs/A3_bridge_integrated.lean`.
+- Base atom positivity (τ=0): `Q3/Proofs/Q_nonneg_base_atoms_proof.lean`.
+- RKHS contraction: `Q3/Proofs/RKHS_contraction.lean` and bridge wrappers.
+- T5 transfer (τ=0): `Q3/T5_Transfer.lean` (`T5_transfer_tau0`).
+
+**Speculative Edges (NOT in chain, keep isolated):**
+- Kapustin 2022 (explicit de Branges model), Connes 1998/2025 (trace formula / spectral triples),
+  Hilbert–Pólya heuristics: **informal context only**.
+- If used, they must enter as **speculative edges** with a formal bridge stub before activation.
+
+**Actionable rule:** keep the above split explicit in docs and dashboards; never “blend”
+speculative edges into the formal chain without a Lean stub.
+
 ## Synthesis (2026-01-23, in progress) — fixed‑t/τ=0 one‑scale closure
 
 - q3search "AtomCone_K_fixed" / "Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom" failed: 403 Spend limit exceeded.
