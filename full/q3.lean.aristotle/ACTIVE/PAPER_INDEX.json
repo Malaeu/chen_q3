@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-01-27 10:21 UTC",
+  "generated_at": "2026-01-27 11:21 UTC",
   "sources": [
     {
       "id": "Weil1952",
@@ -131,16 +131,6 @@
       "sha256": "9dab1ea8c88a6d28b65350586360f58fce547e4c0048a924af6509386d0259d0",
       "local_path": "literature/zotero/3WEMC6QV/fulltext.md",
       "notes": "Zotero attachment E26MUVGW (parent 3WEMC6QV)"
-    },
-    {
-      "id": "ZOTERO_6HFW39UU",
-      "title": "New large value estimates for Dirichlet polynomials",
-      "author": "Larry Guth, James Maynard",
-      "year": "2024",
-      "source_url": "https://annals.math.princeton.edu/articles/22049",
-      "sha256": "0fed167173b802ef1af92ffbd32103350158ac61b881819b076f8d13bffde353",
-      "local_path": "literature/zotero/6HFW39UU/fulltext.md",
-      "notes": "Zotero attachment HRQ9DQIP (parent 6HFW39UU)"
     },
     {
       "id": "ZOTERO_MTN59V47",
@@ -321,6 +311,116 @@
       "sha256": "7f35edfe4d24ad820a038ef3afeb96e065313259dae431fdc55208e29431efdc",
       "local_path": "literature/zotero/RIJLMMZI/fulltext.md",
       "notes": "Zotero attachment ZHD2YXTS (parent RIJLMMZI)"
+    },
+    {
+      "id": "ZOTERO_TZB7ACZ3",
+      "title": "Primes in tuples I",
+      "author": "Daniel A. Goldston, J\u00e1nos Pintz, Cem Y. Y\u0131ld\u0131r\u0131m",
+      "year": "2009",
+      "source_url": "https://doi.org/10.4007/annals.2009.170.819",
+      "sha256": "8f5b671c756bbd456aa9de79970709b11ac6c909a96dcfff6af6723ce6070e02",
+      "local_path": "literature/zotero/TZB7ACZ3/fulltext.md",
+      "notes": "Zotero attachment U7GQPYVD (parent TZB7ACZ3)"
+    },
+    {
+      "id": "ZOTERO_NISZ3BGC",
+      "title": "Small gaps between primes",
+      "author": "James Maynard",
+      "year": "2015",
+      "source_url": "https://doi.org/10.4007/annals.2015.181.1.7",
+      "sha256": "7ba47e8f96938559a3d856b07dd5a3dd5efc2f481e32e1952f42ba6d6ce38b15",
+      "local_path": "literature/zotero/NISZ3BGC/fulltext.md",
+      "notes": "Zotero attachment 4N27844N (parent NISZ3BGC)"
+    },
+    {
+      "id": "ZOTERO_TK4V5N95",
+      "title": "Operator\u2013Geometric Proof of the Riemann Hypothesis via the Positivity of the Weil Functional",
+      "author": "Eugen Malamutmann",
+      "year": "2025",
+      "source_url": "https://zenodo.org/records/17538227",
+      "sha256": "27d78f6fdf705d6c33312f678d75a994849da669e2094659d33cc57a3d24d96e",
+      "local_path": "literature/zotero/TK4V5N95/fulltext.md",
+      "notes": "Zotero attachment WK2SL8B3 (parent TK4V5N95)"
+    },
+    {
+      "id": "ZOTERO_577U9PX5",
+      "title": "250 PROBLEMS IN ELEMENTARY NUMBER THEORY",
+      "author": "Waclaw Sierpinski",
+      "year": null,
+      "source_url": null,
+      "sha256": "c09484698233d73da9a276268fd80d04cbafea70944708146b0bf851f9131135",
+      "local_path": "literature/zotero/577U9PX5/fulltext.md",
+      "notes": "Zotero attachment 8PT52RQL (parent 577U9PX5)"
+    },
+    {
+      "id": "ZOTERO_5XQS256K",
+      "title": "Ricci flow with surgery on three-manifolds",
+      "author": "Grisha Perelman",
+      "year": "2003",
+      "source_url": "http://arxiv.org/abs/math/0303109",
+      "sha256": "b39023b5d62ac521915978d91594afdacf8552dd0b2d97b3327bd4cfa1cc3f99",
+      "local_path": "literature/zotero/5XQS256K/fulltext.md",
+      "notes": "Zotero attachment A87TGFAF (parent 5XQS256K)"
+    },
+    {
+      "id": "ZOTERO_3LD5ZG7Q",
+      "title": "Spectral positivity and twin prime coherence via Weil's criterion",
+      "author": "Eugen Malamutmann",
+      "year": "2025",
+      "source_url": "https://doi.org/10.5281/zenodo.17541763",
+      "sha256": "1f5f934779eff877189bf3bdbfdbedee4001285187016735ba07893778567ca9",
+      "local_path": "literature/zotero/3LD5ZG7Q/fulltext.md",
+      "notes": "Zotero attachment PH3GIJ7B (parent 3LD5ZG7Q)"
+    },
+    {
+      "id": "ZOTERO_GETGQ6T5",
+      "title": "The entropy formula for the Ricci flow and its geometric applications",
+      "author": "Grisha Perelman",
+      "year": "2002",
+      "source_url": "http://arxiv.org/abs/math/0211159",
+      "sha256": "9060179fc0989e8c68791e823dcde5d87fc06de20a53b0a2c0c76bcfea48f080",
+      "local_path": "literature/zotero/GETGQ6T5/fulltext.md",
+      "notes": "Zotero attachment TKW493EZ (parent GETGQ6T5)"
+    },
+    {
+      "id": "ZOTERO_6HFW39UU",
+      "title": "New large value estimates for Dirichlet polynomials",
+      "author": "Larry Guth, James Maynard",
+      "year": "2024",
+      "source_url": "https://annals.math.princeton.edu/articles/22049",
+      "sha256": "0fed167173b802ef1af92ffbd32103350158ac61b881819b076f8d13bffde353",
+      "local_path": "literature/zotero/6HFW39UU/fulltext.md",
+      "notes": "Zotero attachment HRQ9DQIP (parent 6HFW39UU)"
+    },
+    {
+      "id": "ZOTERO_F2SR47XH",
+      "title": "Finite extinction time for the solutions to the Ricci flow on certain three-manifolds",
+      "author": "Grisha Perelman",
+      "year": "2003",
+      "source_url": "http://arxiv.org/abs/math/0307245",
+      "sha256": "e2698505f6fc84621f5cf7a62b7a4d0b7fc0b3cdee7b34e6d811ac400006f2ca",
+      "local_path": "literature/zotero/F2SR47XH/fulltext.md",
+      "notes": "Zotero attachment WRPAHBGV (parent F2SR47XH)"
+    },
+    {
+      "id": "ZOTERO_INKP9AKV",
+      "title": "Variants of the Selberg sieve, and bounded intervals containing many primes",
+      "author": "D. H. J. Polymath",
+      "year": "2014",
+      "source_url": "https://doi.org/10.1186/s40687-014-0012-7",
+      "sha256": "806e4aeec216a5fa0f14ad7aedb7edac0ed0c6f3ef93b1cfed503cfa95e000fd",
+      "local_path": "literature/zotero/INKP9AKV/fulltext.md",
+      "notes": "Zotero attachment WWZFBVNI (parent INKP9AKV)"
+    },
+    {
+      "id": "ZOTERO_LX253RN9",
+      "title": "Perelman's proof of the Poincar\u00e9 conjecture: a nonlinear PDE perspective",
+      "author": "Terence Tao",
+      "year": "2006",
+      "source_url": "http://arxiv.org/abs/math/0610903",
+      "sha256": "6919cea78061f5502f17939640c55c4565af643008f29a55fff21a76f3e7575c",
+      "local_path": "literature/zotero/LX253RN9/fulltext.md",
+      "notes": "Zotero attachment Z8BL2CP9 (parent LX253RN9)"
     }
   ],
   "notes": "Populate with metadata + sha256; keep external claims in EQUIVALENCE_GRAPH.json."
