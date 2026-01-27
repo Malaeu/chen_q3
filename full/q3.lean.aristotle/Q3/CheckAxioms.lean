@@ -11,6 +11,7 @@ Expected output: List of axioms used in RH_of_Weil_and_Q3
 import Q3.Main
 import Q3.Proofs.Q_nonneg_t_critical
 import Q3.Proofs.PrimeCert.Brange_2046
+import Q3.Proofs.PrimeCert.BrangeCert_2046
 
 /-!
 # Axiom Dependency Verification
@@ -36,8 +37,12 @@ open Q3.Main
 #check Q3.eigenvalue_le_norm
 
 /-! ## Verify Tier-2 axioms exist (τ=0 mainline) -/
--- PrimeCert
-#check Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom
+-- PrimeCert (grid margin + Lipschitz on B-range)
+#check Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin
+#check Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange
+
+/-! ## Off-chain (τ ≠ 0) placeholder -/
+-- Present in Q_nonneg_t_critical, but not used by the τ=0 main chain
 #check Q3.prime_term_le_at_t_critical_axiom
 
 /-! ## Verify T5 (τ=0) is a THEOREM -/
@@ -59,9 +64,9 @@ open Q3.Main
 ### Tier-1 Classical Axioms:
 - `Q3.Weil_criterion` : Weil (1952)
 
-### Tier-2 Q3 Paper Axioms:
-- `Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom` : B-range margin certificate
-- `Q3.prime_term_le_at_t_critical_axiom` : prime-term cap at t_critical
+### Tier-2 Q3 Paper Axioms (τ=0 mainline):
+- `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin` : grid margin ≤ arch−prime
+- `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` : Lipschitz control on B-range
 
 ### THEOREM (not axiom!):
 - `Q3.T5.T5_transfer` : Q ≥ 0 on W_K

@@ -121,6 +121,37 @@ Source: `/home/chirurgie/Downloads/toeplitz_weil_bridge.md` (external note).
 **Actionable rule:** keep the above split explicit in docs and dashboards; never “blend”
 speculative edges into the formal chain without a Lean stub.
 
+## Synthesis (2026-01-27, in progress) — Connes–Consani–Moscovici “Zeta Spectral Triples”
+
+Source: Zotero ingest
+`full/q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md`
+(paper: *Zeta Spectral Triples*, Connes–Consani–Moscovici).
+
+**Core idea (from cache):** construct self‑adjoint operators `D(λ,N)` as
+rank‑one perturbations of a spectral triple for the scaling operator on `[λ⁻¹, λ]`.
+The construction uses **finite Euler products** (`p ≤ x = λ²`). Spectra of `D(λ,N)`
+numerically align with low ζ‑zeros. Self‑adjointness relies on an **extension of the
+Carathéodory–Fejér theorem for Toeplitz matrices**.
+
+**Formal Chain (possible bridge points):**
+- CF‑extension ⇒ **Toeplitz self‑adjointness** in a finite‑rank/finite‑prime regime.
+  This could become a *formal* lemma stub that mirrors our Toeplitz/Rayleigh steps
+  (Szegő–Böttcher + Rayleigh bounds).
+- Rank‑one perturbation control ⇒ spectral stability lemma (if formalized,
+  could justify controlled operator deformations in the A3 path).
+
+**Speculative Edges (do NOT activate without stubs):**
+- “Finite Euler product” ⇒ **prime‑term truncation** with explicit error bound.
+  Potential leverage for PrimeCert Lipschitz/ margin bounds, but currently speculative.
+- Spectral triple / scaling operator formalization is out of scope for the mainline.
+
+**Actionable next step (lightweight):**
+- Add a speculative edge entry in the external graph:  
+  `CF_toeplitz_selfadjointness` (source = 6H6WHGDU, status = speculative).
+- If we pursue it: create a Lean stub lemma in `Q3/Proofs/PrimeCert/` or
+  `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean` documenting the intended statement
+  (self‑adjoint Toeplitz from truncated data), **without** wiring it into mainline.
+
 ## Synthesis (2026-01-23, in progress) — fixed‑t/τ=0 one‑scale closure
 
 - q3search "AtomCone_K_fixed" / "Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom" failed: 403 Spend limit exceeded.

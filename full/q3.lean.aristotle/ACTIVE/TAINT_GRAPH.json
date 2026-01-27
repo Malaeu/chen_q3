@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-27 13:36 UTC",
+  "generated_at": "2026-01-27 13:54 UTC",
   "root": "Q3/",
   "nodes": [
     {
@@ -345,6 +345,7 @@
       "module": "Q3.CheckAxioms",
       "dependencies": [
         "Q3/Main.lean",
+        "Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
         "Q3/Proofs/PrimeCert/Brange_2046.lean",
         "Q3/Proofs/Q_nonneg_t_critical.lean"
       ],

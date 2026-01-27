@@ -1,4 +1,4 @@
-# Taint Graph (auto) — 2026-01-27 13:36 UTC
+# Taint Graph (auto) — 2026-01-27 13:54 UTC
 
 **Purpose:** Propagate `sorry`/BROKEN status upward across file import graph.
 **Source:** Q3 file imports + numeric checks report

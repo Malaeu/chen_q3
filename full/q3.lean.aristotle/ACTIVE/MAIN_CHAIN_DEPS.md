@@ -2,7 +2,8 @@
 
 **Purpose:** Separate *actual main-chain blockers* from legacy/sandbox noise.  
 **Current status:** Main-chain depends on **2 Q3 axioms** + 2 classical.  
-**Next action:** Close `prime_cert_margin_on_Brange_axiom` then `prime_term_le_at_t_critical_axiom`.  
+**Next action:** Close the PrimeCert B‑range axioms
+`prime_b_grid_val_le_margin` and `prime_margin_Lipschitz_on_Brange`.  
 **Links:** `Q3/CheckAxioms.lean` · `Q3/Main.lean` · `ACTIVE/orchestrator.md`
 
 ---
@@ -19,15 +20,15 @@ This prints the *actual axioms used by* `Q3.Main.RH_of_Weil_and_Q3`.
 
 ## 2) Main-chain dependencies (current)
 
-From `Q3/CheckAxioms.lean`:
+From `#print axioms Q3.Main.RH_of_Weil_and_Q3`:
 
 - Tier-1 / classical:
   - `Q3.Weil_criterion`
   - `Q3.Schur_test`
 
-- Tier-2 / Q3-specific:
-  - `Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom`
-  - `Q3.prime_term_le_at_t_critical_axiom`
+- Tier-2 / Q3-specific (τ=0 mainline):
+  - `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin`
+  - `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
 
 Standard Mathlib axioms (`propext`, `Classical.choice`, `Quot.sound`) are always present.
 
@@ -35,8 +36,8 @@ Standard Mathlib axioms (`propext`, `Classical.choice`, `Quot.sound`) are always
 
 | Node / Axiom | File | Why it blocks the chain |
 |---|---|---|
-| `prime_cert_margin_on_Brange_axiom` | `Q3/Proofs/PrimeCert/Brange_2046.lean` | B-range margin certificate at `t_critical` |
-| `prime_term_le_at_t_critical_axiom` | `Q3/Proofs/Q_nonneg_t_critical.lean` | prime-term cap used by mainline |
+| `prime_b_grid_val_le_margin` | `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` | Grid margin ≤ arch−prime at each grid point |
+| `prime_margin_Lipschitz_on_Brange` | `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` | Lipschitz control of margin on B‑range |
 | `Weil_criterion` | `Q3/Axioms.lean` | classical bridge `Q >= 0` ⇒ RH |
 | `Schur_test` | `Q3/Axioms.lean` | matrix norm bound in RKHS chain |
 
@@ -49,6 +50,11 @@ Raw `rg` counts include:
 - legacy two-scale files
 
 These are **not** imported by `Q3/Main.lean` and do not affect the current main chain.
+
+## 6) Off‑chain notes
+
+- `Q3.prime_term_le_at_t_critical_axiom` lives in `Q3/Proofs/Q_nonneg_t_critical.lean`
+  for the **τ ≠ 0** path; the τ=0 mainline does **not** depend on it.
 
 ## 5) Quick commands (sanity check)
 
