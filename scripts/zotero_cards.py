@@ -205,6 +205,16 @@ def build_refs_note_html(item_key: str, title: str, refs: list[str]) -> str:
     return "\n".join(lines)
 
 
+def build_refitem_note_html(item_key: str, index: int, ref: str) -> str:
+    safe = ref.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    lines = [
+        f"<p><b>ZOTERO_REFITEM::{item_key}::{index}</b></p>",
+        f"<p><b>Ref {index}:</b></p>",
+        f"<p>{safe}</p>",
+    ]
+    return "\n".join(lines)
+
+
 def collect_existing_marker_keys(
     base_url: str, api_key: str | None, collection_key: str, marker_prefix: str
 ) -> set[str]:
@@ -219,6 +229,26 @@ def collect_existing_marker_keys(
         match = marker.search(body)
         if match:
             existing.add(match.group(1))
+    return existing
+
+
+def collect_existing_marker_indices(
+    base_url: str, api_key: str | None, collection_key: str, marker_prefix: str
+) -> set[int]:
+    notes = api_paged(
+        base_url, f"collections/{collection_key}/items", {"itemType": "note"}, api_key
+    )
+    existing = set()
+    marker = re.compile(re.escape(marker_prefix) + r"(\d+)")
+    for note in notes:
+        data = note.get("data", note)
+        body = data.get("note", "")
+        match = marker.search(body)
+        if match:
+            try:
+                existing.add(int(match.group(1)))
+            except ValueError:
+                pass
     return existing
 
 
@@ -249,6 +279,9 @@ def main() -> int:
     parser.add_argument("--filter-author", default="Weil", help="author substring filter")
     parser.add_argument("--filter-title", default=None, help="title substring filter")
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument(
+        "--ref-item-key", default=None, help="item key to extract bibliography from"
+    )
     parser.add_argument("--storage", default=DEFAULT_STORAGE, help="Zotero storage dir")
     parser.add_argument("--snippet-chars", type=int, default=1500)
     parser.add_argument(
@@ -256,6 +289,11 @@ def main() -> int:
     )
     parser.add_argument("--create-notes", action="store_true", help="create card notes")
     parser.add_argument("--create-ref-notes", action="store_true", help="create bibliography notes")
+    parser.add_argument(
+        "--create-ref-items",
+        action="store_true",
+        help="create one note per bibliography entry",
+    )
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -275,11 +313,19 @@ def main() -> int:
         {"include": "data"},
         api_key,
     )
+    items_by_key = {}
     matches = []
     for item in items:
         data = item.get("data", item)
         if data.get("itemType") == "attachment":
             continue
+        item_key = item.get("key") or data.get("key")
+        if item_key:
+            items_by_key[item_key] = {
+                "key": item_key,
+                "version": item.get("version"),
+                "data": data,
+            }
         title = data.get("title") or ""
         creators = data.get("creators") or []
         authors = creators_to_authors(creators)
@@ -306,6 +352,13 @@ def main() -> int:
     existing_refs = (
         collect_existing_marker_keys(base_url, api_key, sub_key, "ZOTERO_REFS::")
         if args.create_ref_notes
+        else set()
+    )
+    existing_refitems = (
+        collect_existing_marker_indices(
+            base_url, api_key, sub_key, f"ZOTERO_REFITEM::{args.ref_item_key}::"
+        )
+        if args.create_ref_items and args.ref_item_key
         else set()
     )
     new_notes = []
@@ -377,6 +430,39 @@ def main() -> int:
                 new_notes.append(note)
 
         processed += 1
+
+    if args.create_ref_items:
+        if not args.ref_item_key:
+            raise SystemExit("--ref-item-key is required with --create-ref-items")
+        source = items_by_key.get(args.ref_item_key)
+        if not source:
+            raise SystemExit(f"ref item not found in collection: {args.ref_item_key}")
+        children = api_paged(
+            base_url,
+            f"items/{args.ref_item_key}/children",
+            {"include": "data"},
+            api_key,
+        )
+        attachment_key = pick_attachment_key(children, storage_dir)
+        refs = []
+        if attachment_key:
+            full_text = read_cache_full(storage_dir, attachment_key)
+            if full_text:
+                refs = extract_bibliography(full_text)
+        for idx, ref in enumerate(refs, start=1):
+            if idx in existing_refitems:
+                continue
+            note_html = build_refitem_note_html(args.ref_item_key, idx, ref)
+            note = {
+                "itemType": "note",
+                "note": note_html,
+                "collections": [sub_key],
+                "tags": [
+                    {"tag": "zotero-refitem"},
+                    {"tag": args.subcollection_name},
+                ],
+            }
+            new_notes.append(note)
 
     if args.dry_run:
         print(f"Matches: {len(matches)}")
