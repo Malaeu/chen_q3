@@ -1,0 +1,43 @@
+[
+  {
+    "title": "Clay Mathematics Institute Library — Monographs",
+    "itemType": "webpage",
+    "url": "https://www.claymath.org/library/monographs/",
+    "tags": ["claymath", "library", "monographs"]
+  },
+  {
+    "title": "Patterns in the primes",
+    "itemType": "document",
+    "url": "https://www.claymath.org/library/Maynard/maynard.pdf",
+    "creators": [
+      { "creatorType": "author", "firstName": "James", "lastName": "Maynard" }
+    ],
+    "date": "2015-08-06",
+    "tags": ["claymath", "primes", "talk"],
+    "attachment_url": "https://www.claymath.org/library/Maynard/maynard.pdf"
+  },
+  {
+    "title": "Quillen Working Paper 2003-1 (Clay Mathematics Institute)",
+    "shortTitle": "Quillen's Last Stand",
+    "itemType": "document",
+    "url": "https://www.claymath.org/library/Quillen/Working_papers/quillen%202003/2003-1.pdf",
+    "creators": [
+      { "creatorType": "author", "firstName": "Daniel", "lastName": "Quillen" }
+    ],
+    "date": "2003",
+    "tags": ["claymath", "speculative-edge", "quillen-last-stand"],
+    "note": "Quillen's Last Stand — source for speculative edges. PDF appears scanned; OCR required for text extraction.",
+    "attachment_url": "https://www.claymath.org/library/Quillen/Working_papers/quillen%202003/2003-1.pdf"
+  },
+  {
+    "title": "Problems of the Millennium: The Riemann Hypothesis (2004)",
+    "itemType": "document",
+    "url": "https://www.claymath.org/library/annual_report/xSarnak_RH.pdf",
+    "creators": [
+      { "creatorType": "author", "firstName": "Peter", "lastName": "Sarnak" }
+    ],
+    "date": "2004",
+    "tags": ["claymath", "riemann-hypothesis", "survey"],
+    "attachment_url": "https://www.claymath.org/library/annual_report/xSarnak_RH.pdf"
+  }
+]
