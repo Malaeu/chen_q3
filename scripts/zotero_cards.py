@@ -206,13 +206,27 @@ def build_refs_note_html(item_key: str, title: str, refs: list[str]) -> str:
 
 
 def build_refitem_note_html(item_key: str, index: int, ref: str) -> str:
+    author, years = ref_label_parts(ref)
+    label = f"{author} ({years})" if years else author
     safe = ref.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     lines = [
         f"<p><b>ZOTERO_REFITEM::{item_key}::{index}</b></p>",
-        f"<p><b>Ref {index}:</b></p>",
+        f"<p><b>Weil 1952 Ref {index} — {label}</b></p>",
         f"<p>{safe}</p>",
     ]
     return "\n".join(lines)
+
+
+def ref_label_parts(ref: str) -> tuple[str, str]:
+    cleaned = re.sub(r"\s+", " ", ref).strip()
+    author = cleaned.split(",", 1)[0].strip() if cleaned else "Unknown"
+    years = re.findall(r"\b(?:18|19|20)\d{2}\b", cleaned)
+    unique_years = []
+    for year in years:
+        if year not in unique_years:
+            unique_years.append(year)
+    years_str = "/".join(unique_years)
+    return author, years_str
 
 
 def collect_existing_marker_keys(
@@ -252,6 +266,31 @@ def collect_existing_marker_indices(
     return existing
 
 
+def find_refitem_notes(
+    base_url: str, api_key: str | None, collection_key: str, item_key: str
+) -> dict[int, dict]:
+    notes = api_paged(
+        base_url, f"collections/{collection_key}/items", {"itemType": "note"}, api_key
+    )
+    marker = re.compile(rf"ZOTERO_REFITEM::{re.escape(item_key)}::(\d+)")
+    results: dict[int, dict] = {}
+    for note in notes:
+        data = note.get("data", note)
+        body = data.get("note", "")
+        match = marker.search(body)
+        if match:
+            try:
+                idx = int(match.group(1))
+            except ValueError:
+                continue
+            results[idx] = {
+                "key": note.get("key") or data.get("key"),
+                "version": note.get("version"),
+                "data": data,
+            }
+    return results
+
+
 def update_item_collections(
     base_url: str, api_key: str | None, item_key: str, version: int, data: dict, target_key: str
 ):
@@ -266,6 +305,21 @@ def update_item_collections(
     req.add_header("If-Unmodified-Since-Version", str(version))
     if headers_key:
         req.add_header("Zotero-API-Key", headers_key)
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        resp.read()
+
+
+def update_note_item(
+    base_url: str, api_key: str | None, item_key: str, version: int, data: dict, note_html: str
+):
+    payload = data.copy()
+    payload["note"] = note_html
+    url = base_url.rstrip("/") + "/items/" + item_key
+    req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), method="PUT")
+    req.add_header("Content-Type", "application/json")
+    req.add_header("If-Unmodified-Since-Version", str(version))
+    if api_key:
+        req.add_header("Zotero-API-Key", api_key)
     with urllib.request.urlopen(req, timeout=30) as resp:
         resp.read()
 
@@ -293,6 +347,11 @@ def main() -> int:
         "--create-ref-items",
         action="store_true",
         help="create one note per bibliography entry",
+    )
+    parser.add_argument(
+        "--rewrite-ref-items",
+        action="store_true",
+        help="rewrite existing ref notes for the given ref-item-key",
     )
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
@@ -355,11 +414,9 @@ def main() -> int:
         else set()
     )
     existing_refitems = (
-        collect_existing_marker_indices(
-            base_url, api_key, sub_key, f"ZOTERO_REFITEM::{args.ref_item_key}::"
-        )
+        find_refitem_notes(base_url, api_key, sub_key, args.ref_item_key)
         if args.create_ref_items and args.ref_item_key
-        else set()
+        else {}
     )
     new_notes = []
     processed = 0
@@ -450,9 +507,19 @@ def main() -> int:
             if full_text:
                 refs = extract_bibliography(full_text)
         for idx, ref in enumerate(refs, start=1):
-            if idx in existing_refitems:
-                continue
             note_html = build_refitem_note_html(args.ref_item_key, idx, ref)
+            if idx in existing_refitems:
+                if args.rewrite_ref_items:
+                    item = existing_refitems[idx]
+                    update_note_item(
+                        base_url,
+                        api_key,
+                        item["key"],
+                        item["version"],
+                        item["data"],
+                        note_html,
+                    )
+                continue
             note = {
                 "itemType": "note",
                 "note": note_html,
