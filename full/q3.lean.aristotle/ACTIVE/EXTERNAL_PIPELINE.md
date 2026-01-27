@@ -32,8 +32,15 @@
    *(risk config: `ACTIVE/RISK_MODEL.json`)*
 
 4. **External ingestion (speculative)**  
-   Add one source to `ACTIVE/PAPER_INDEX.json` and record its claims in
-   `ACTIVE/EQUIVALENCE_GRAPH.json` with status `speculative`.
+   - Ingest literature markdown:  
+     `./scripts/research_oracle.py ingest --embed`
+   - Zotero cache → markdown (optional):  
+     `./scripts/zotero_ingest.py --limit 50 --write-index`
+     `./scripts/research_oracle.py ingest --path full/q3.lean.aristotle/literature/zotero --collection zotero_lib --embed`
+   - Query and add speculative claims:  
+     `./scripts/research_oracle.py add-speculative "Szego-Bottcher bound" --target Q3.A3_Bridge`
+   - Record sources in `ACTIVE/PAPER_INDEX.json` and claims in
+     `ACTIVE/EQUIVALENCE_GRAPH.json` (status `speculative`).
 
 5. **Formal gate**  
    Create a Lean stub for any external claim you want to use.

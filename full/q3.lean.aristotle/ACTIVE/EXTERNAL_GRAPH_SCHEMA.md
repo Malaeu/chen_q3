@@ -36,6 +36,13 @@ Two layers are tracked separately:
 - `equivalence` — stated equivalence between two formulations.
 - `counterexample` — explicit disproof or obstruction.
 
+**Recommended `source` fields for external nodes:**
+- `qmd_docid` (from qmd JSON, e.g., `#abc123`)
+- `file` (collection-relative path)
+- `score` (qmd relevance score)
+- `collection` (qmd collection name)
+- `query` (original query string)
+
 ## Edge Types
 
 - `depends_on` — proof dependency inside a paper.
@@ -67,4 +74,3 @@ Each entry must include:
 2) **`active_formal` edges require a Lean stub or proof reference.**
 3) **Every external node must cite a source ID from `PAPER_INDEX.json`.**
 4) **Normalization conflicts must be explicit in alignment notes.**
-

@@ -83,6 +83,8 @@ Source of truth:
 - `ACTIVE/EXTERNAL_GRAPH_SCHEMA.md` — schema for external graphs + alignment
 - `ACTIVE/TAINT_ANALYSIS.md` — FRI-style taint propagation rules
 - `ACTIVE/RISK_MODEL.json` — risk aggregation + kill switch
+- `ACTIVE/RESEARCH_ORACLE.md` — qmd-based semantic search wrapper
+- `ACTIVE/PIPELINE_GUIDE.md` — end-to-end agent checklist
 
 ## 7) Editing policy (keep this stable)
 

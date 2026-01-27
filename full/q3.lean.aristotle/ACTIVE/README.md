@@ -66,6 +66,8 @@ It uses symlinks so existing paths keep working.
 - ALIGNMENT_MAP.json (this folder) — external ↔ Lean mapping
 - TAINT_ANALYSIS.md (this folder) — FRI-style taint propagation
 - RISK_MODEL.json (this folder) — risk aggregation + kill switch
+- RESEARCH_ORACLE.md (this folder) — qmd wrapper + usage
+- PIPELINE_GUIDE.md (this folder) — end-to-end agent checklist
 
 ## Imported specs (from external knowledge dir)
 

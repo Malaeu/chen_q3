@@ -1,6 +1,27 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-01-27",
-  "sources": [],
+  "generated_at": "2026-01-27 09:44 UTC",
+  "sources": [
+    {
+      "id": "Weil1952",
+      "title": "Sur les formules explicites de la th\u00e9orie des nombres premiers",
+      "author": "Andr\u00e9 Weil",
+      "year": 1952,
+      "source_url": null,
+      "sha256": null,
+      "local_path": "literature/Weil1952/Weil1952.md",
+      "notes": "Placeholder markdown; add URL + sha256 when PDF archived."
+    },
+    {
+      "id": "ZOTERO_H2EU6FUG",
+      "title": "The Riemann zeros and eigenvalue asymptotics",
+      "author": "M. V. Berry, J. P. Keating",
+      "year": "1999",
+      "source_url": "https://doi.org/10.1137/S0036144598347497",
+      "sha256": "015e13030238f1d90f168d864b3b87b4d4208ec326a4e10ae7eb0dd3bdff0422",
+      "local_path": "literature/zotero/H2EU6FUG/fulltext.md",
+      "notes": "Zotero attachment NVDK7ZBK (parent H2EU6FUG)"
+    }
+  ],
   "notes": "Populate with metadata + sha256; keep external claims in EQUIVALENCE_GRAPH.json."
 }
