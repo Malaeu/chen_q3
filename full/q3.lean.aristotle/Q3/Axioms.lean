@@ -9,7 +9,7 @@ This file contains axioms organized by tier:
 IMPORTANT: Run `#print axioms RH_of_Weil_and_Q3` to verify all dependencies.
 
 Axiom Summary:
-- Tier-1: 10 axioms (Weil, Guinand, a_star properties, Szegő-Böttcher, Schur, etc.)
+- Tier-1: 11 axioms (Weil, Guinand, a_star properties, Szegő-Böttcher, Schur, etc.)
 - Tier-2: 12 axioms (A1', A2, A3, RKHS, node spacing, Q ≥ 0 on compacts)
 
 New additions (2024-12):
@@ -163,6 +163,21 @@ For z = 1/4 + iπξ, the conjugate is 1/4 - iπξ = 1/4 + iπ(−ξ).
 **Status:** THEOREM (proven via Mathlib Complex.Gamma_conj)
 -/
 theorem a_star_even : ∀ ξ : ℝ, a_star (-ξ) = a_star ξ := a_star_even_thm
+
+/-! ## Axiom T1.3e: Archimedean Kernel Linear Growth (classical)
+
+Global linear growth bound for the archimedean kernel. This is a standard
+analytic consequence of the digamma asymptotics and/or a global derivative
+bound for a(ξ).
+
+**Citation:**
+- Titchmarsh, E.C. (1986). *The Theory of the Riemann Zeta-Function*, Ch. IX.
+- NIST DLMF (2024), §5.11 (asymptotics of ψ and ψ').
+
+**Status:** AXIOM (to be formalized separately).
+-/
+axiom a_star_linear_growth :
+  ∃ C0 C1 : ℝ, 0 ≤ C0 ∧ 0 ≤ C1 ∧ ∀ ξ : ℝ, |a_star ξ| ≤ C0 + C1 * |ξ|
 
 /-! ## Axiom T1.4: Szegő-Böttcher Theory (1958/1999)
 

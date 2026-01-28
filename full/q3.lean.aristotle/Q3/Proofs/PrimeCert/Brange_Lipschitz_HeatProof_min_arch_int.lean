@@ -6,6 +6,7 @@ No Q3.Axioms imports. Do not integrate directly; copy proof bodies only.
 import Mathlib
 import Q3.Basic.Defs
 import Q3.Proofs.Params_Critical
+import Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatIntegrable
 
 set_option linter.mathlibStandardSet false
 
@@ -15,15 +16,11 @@ open Q3
 
 noncomputable section
 
-/-- Heat-weighted factor used in the Lipschitz bound. -/
-def heat_weight (xi : ℝ) : ℝ :=
-  Real.exp (-4 * Real.pi ^ 2 * Q3.t_critical * xi ^ 2) * |xi|
-
 /-- Integrability of the heat-weighted arch integrand. -/
 lemma arch_heat_weight_integrable :
-    MeasureTheory.Integrable (fun ξ => |Q3.a_star ξ| * heat_weight ξ) := by
-  -- PROVIDED SOLUTION
-  -- 1) Use that `a_star` is continuous and has mild growth (logarithmic) if available.
-  -- 2) Use integrability of functions dominated by exp(-c*ξ^2) * |ξ|.
-  -- 3) Conclude by comparison.
-  sorry
+    MeasureTheory.Integrable (fun ξ => |Q3.a_star ξ| *
+      Q3.Proofs.PrimeCert.heat_weight Q3.t_critical ξ) := by
+  -- Use the global growth bound + Gaussian integrability.
+  simpa using
+    (Q3.Proofs.PrimeCert.integrable_abs_a_star_mul_heat_weight
+      (t := Q3.t_critical) Q3.t_critical_pos)

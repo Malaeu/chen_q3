@@ -47,6 +47,10 @@ axiom a_star_bdd_on_compact : ∀ (K : ℝ) (hK : K > 0),
 
 axiom a_star_even : ∀ ξ : ℝ, Q3.a_star (-ξ) = Q3.a_star ξ
 
+/-! ## T1.3e: Archimedean Kernel Linear Growth (global) -/
+axiom a_star_linear_growth :
+  ∃ C0 C1 : ℝ, 0 ≤ C0 ∧ 0 ≤ C1 ∧ ∀ ξ : ℝ, |Q3.a_star ξ| ≤ C0 + C1 * |ξ|
+
 /-! ## T1.4: Szegő-Böttcher Theory (1958/1999) -/
 
 /-- Toeplitz matrix from symbol -/
