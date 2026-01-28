@@ -394,22 +394,20 @@ Files created:
 
 ## GIT COMMIT PROTOCOL
 
-- **COMMIT FORMAT:** `[AI-name] Clear message` (в root) или `[SandboxName][AI-name] Message` (в sandbox)
-  
-  | AI Tool | Tag |
-  |---------|-----|
-  | Claude Code | `AI-cc` |
-  | OpenAI Codex | `AI-codex` |
-  | Cursor | `AI-cursor` |
-  | Other | `AI-agent` |
+- **BEFORE COMMIT:** check OS and branch:
+  ```bash
+  uname -s
+  git branch --show-current
+  ```
+
+- **COMMIT FORMAT (mandatory):**
+  - Linux: `[Linux][<branch>] Message`
+  - macOS: `[MacOS][<branch>] Message`
 
 - **Examples:**
   ```bash
-  # Root repo:
-  git commit -m "[Linux][AI-cc] Close A1_density axiom (7->6)"
-  
-  # From sandbox:
-  git commit -m "[Linux][AI-cc] Fix HeatError lemma"
+  git commit -m "[Linux][projekt_2A] Close A1_density axiom (7->6)"
+  git commit -m "[MacOS][projekt_2A] Fix HeatError lemma"
   ```
 
 - **ALWAYS** include axiom count change in message if relevant: `(7->6 axioms)`
@@ -417,9 +415,10 @@ Files created:
 - **ALWAYS** push after pulling: `git push`
 
 **OS tag rule (this repo):**
-- On Linux, use **`[Linux]`** as the leading tag (preferred), or **`[Work]`** if you want a neutral tag.
+- On Linux, use **`[Linux]`** as the leading tag.
 - On macOS, use **`[MacOS]`**.
-- Do **not** use `[projekt_2]` as a tag.
+- The second tag **must** be the git branch name.
+- Do **not** use sandbox names (e.g. `[projekt_2]`) as tags.
 
 ---
 

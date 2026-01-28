@@ -19,6 +19,7 @@ Semantic search workflow (before tackling a new blocker):
 - Run `websearch "question"` for external confirmation or alternative proof ideas.
 - Synthesize a 5-10 line plan with concrete file/lemma pointers.
 - Record the synthesis in `full/q3.lean.aristotle/docs/INSIGHTS.md` and commit (label as in progress).
+- Commit message format: check OS + branch first, then use `[Linux][<branch>] Message` or `[MacOS][<branch>] Message` (no sandbox tags).
 - Implement; once resolved, update `docs/INSIGHTS.md` with the final result and any reusable lemma list.
 
 Coordination (decision transparency):
