@@ -17,8 +17,8 @@ def prime_cert_arch_lb : ℝ := (957 / 100)    -- 9.57 (numeric arch_term lower 
     See output/prime_cert_brange_tcritical_2026-01-26_0050.txt. -/
 def prime_cert_B_max : ℝ := (49 / 10) -- 4.9
 def prime_cert_B_h : ℝ := (1 / 10)    -- 0.1
-def prime_cert_margin_lb : ℝ := (499 / 1000) -- conservative margin
-def prime_cert_L_ub : ℝ := (3 / 10)      -- Lipschitz over B (finite-diff upper bound)
+def prime_cert_margin_lb : ℝ := (12 / 25) -- conservative margin (loosened for heat Lipschitz)
+def prime_cert_L_ub : ℝ := (3 / 5)        -- Lipschitz over B (heat-weighted bound)
 
 lemma prime_cert_margin_pos : 0 < prime_cert_margin_lb := by
   norm_num [prime_cert_margin_lb]

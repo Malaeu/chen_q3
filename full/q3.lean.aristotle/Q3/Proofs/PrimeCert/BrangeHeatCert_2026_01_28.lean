@@ -37,6 +37,6 @@ def prime_cert_L_total_heat_raw : ℝ :=
 
 /-- Conservative upper bound (rounded up) for the total heat Lipschitz constant. -/
 def prime_cert_L_total_heat_ub : ℝ :=
-  0.60
+  (3 / 5)
 
 end Q3.Proofs.PrimeCert

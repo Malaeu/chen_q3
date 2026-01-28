@@ -27,10 +27,10 @@ def prime_b_grid_val_q (i : Fin prime_b_grid_size) : ℚ :=
 def prime_b_grid_val (i : Fin prime_b_grid_size) : ℝ :=
   (prime_b_grid_val_q i : ℝ)
 
-def prime_cert_margin_lb_q : ℚ := (499 / 1000)
+def prime_cert_margin_lb_q : ℚ := (12 / 25)
 
 lemma prime_cert_margin_lb_eq_q : (prime_cert_margin_lb : ℝ) = prime_cert_margin_lb_q := by
-  norm_num [prime_cert_margin_lb, prime_cert_margin_lb_q]
+  simp [prime_cert_margin_lb, prime_cert_margin_lb_q]
 
 /-- Table min bound in ℚ: every grid margin is ≥ prime_cert_margin_lb_q. -/
 lemma prime_b_grid_val_ge_lb_q :
@@ -54,7 +54,7 @@ lemma prime_b_grid_val_ge_lb :
 /-- Table min bound with Lipschitz slack in ℚ: every grid margin is ≥ lb + L*h/2. -/
 lemma prime_b_grid_val_ge_lb_with_slack_q :
     ∀ i : Fin prime_b_grid_size,
-      (prime_cert_margin_lb_q + (3 / 10) * (1 / 10) / (2 : ℚ)) ≤ prime_b_grid_val_q i := by
+      (prime_cert_margin_lb_q + (3 / 5) * (1 / 10) / (2 : ℚ)) ≤ prime_b_grid_val_q i := by
   intro i
   fin_cases i <;>
     simp [prime_b_grid_val_q, prime_b_grid_vals_q, prime_cert_margin_lb_q] <;> nlinarith
@@ -64,16 +64,16 @@ lemma prime_b_grid_val_ge_lb_with_slack :
     ∀ i : Fin prime_b_grid_size,
       prime_cert_margin_lb + prime_cert_L_ub * prime_cert_B_h / 2 ≤ prime_b_grid_val i := by
   intro i
-  have hq : (prime_cert_margin_lb_q + (3 / 10) * (1 / 10) / (2 : ℚ)) ≤ prime_b_grid_val_q i :=
+  have hq : (prime_cert_margin_lb_q + (3 / 5) * (1 / 10) / (2 : ℚ)) ≤ prime_b_grid_val_q i :=
     prime_b_grid_val_ge_lb_with_slack_q i
   have hq0 := (Rat.cast_le (K := ℝ)).2 hq
   have hq' :
-      (prime_cert_margin_lb_q : ℝ) + (3 / 10 : ℝ) * (1 / 10 : ℝ) / 2 ≤
+      (prime_cert_margin_lb_q : ℝ) + (3 / 5 : ℝ) * (1 / 10 : ℝ) / 2 ≤
         (prime_b_grid_val_q i : ℝ) := by
     simpa using hq0
   -- rewrite constants
-  have hL : (prime_cert_L_ub : ℝ) = (3/10 : ℝ) := by
-    norm_num [prime_cert_L_ub]
+  have hL : (prime_cert_L_ub : ℝ) = (3/5 : ℝ) := by
+    simp [prime_cert_L_ub]
   have hH : (prime_cert_B_h : ℝ) = (1/10 : ℝ) := by
     norm_num [prime_cert_B_h]
   -- assemble
