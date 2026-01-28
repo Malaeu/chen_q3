@@ -4,10 +4,12 @@ Entry point: `PROJECT_ORCHESTRATOR.md` (status + next steps).
 This file documents the workflow only.
 
 This file is the main project workflow; Aristotle is only one tool in the loop.
+Canonical Aristotle rules live in `ACTIVE/ARISTOTLE_WORKFLOW.md`.
 
 ## Aristotle Integration: Principles
 
 Aristotle берёт **informal математику** (markdown с LaTeX) и генерирует **Lean 4 код**.
+Полный гайд и актуальные правила: `ACTIVE/ARISTOTLE_WORKFLOW.md` (single source).
 
 **Ключевое правило:** НЕ ссылаться на номера лемм/теорем из LaTeX файлов!
 Aristotle не знает про `lem:uniform-arch-floor` или `Theorem 8.17'`.

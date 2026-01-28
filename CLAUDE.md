@@ -293,9 +293,9 @@ websearch "вопрос"              # AI web search
 **Документация (читать в этом порядке):**
 | Doc | Path | Content |
 |-----|------|---------|
+| **Workflow (canonical)** | `full/q3.lean.aristotle/ACTIVE/ARISTOTLE_WORKFLOW.md` | Единственный актуальный гайд |
 | **Guidelines** | `aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md` | **Prompt policy!** |
-| Skill | `~/.claude/skills/aristotle/skill.md` | API, workflows, limits |
-| Sandbox Guide | `ARISTOTLE_SANDBOX_GUIDE.md` | Как делать sandbox |
+| Skill | `~/.codex/skills/aristotle/SKILL.md` | API, workflows, limits |
 | Project IDs | `aristotle_input/project_ids.txt` | Все UUID |
 | Variants Analysis | `aristotle_output/weight_sum_variants/ANALYSIS.md` | 7-variant study |
 

@@ -63,10 +63,10 @@ Aristotle guidelines (links):
 
 | Path | Content |
 | --- | --- |
-| /Users/emalam/.claude/skills/aristotle/skill.md | Full API documentation (~830 lines) |
+| ~/.codex/skills/aristotle/SKILL.md | Local Aristotle skill (CLI + workflow) |
 | /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md | Prompt policy for Q3 |
 | /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/project_ids.txt | All project UUIDs |
-| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/ARISTOTLE_SANDBOX_GUIDE.md | Sandbox workflow |
+| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/ACTIVE/ARISTOTLE_WORKFLOW.md | Canonical workflow (single source) |
 
 Project files (Q3):
 
