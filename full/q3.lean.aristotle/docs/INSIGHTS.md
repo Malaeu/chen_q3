@@ -515,3 +515,29 @@ we need a *heat-weighted* Lipschitz constant to match the certificate scale (~0.
    `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` / `Brange_2046.lean`.
 
 **Note:** q3search failed locally (403 spend limit), so we used local `rg` only.
+
+---
+
+## PrimeCert Lipschitz closure plan (2026-01-28)
+
+**Target lemma:** `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` in
+`Q3/Proofs/PrimeCert/BrangeCert_2046.lean` (main-chain axiom).
+
+**Semantic search:** attempted `q3search` (3 queries) and `websearch` (1 query) → both commands missing
+in this sandbox (`Befehl nicht gefunden`, exit 127). Fell back to local `rg`.
+
+**Local hits:** `phi_shift_lipschitz_B_exp` + `margin_Lipschitz_symbolic` in
+`Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean` give the formal *shape* of a Lipschitz proof,
+but constants are too large (`W_sum_local`, `M_a_local`).
+
+**Option 1 (preferred):** formalize heat-weighted bounds using `phi_shift_lipschitz_B_exp`,
+then bound prime/arch contributions by numeric constants from
+`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`; instantiate
+`PrimeMarginHeatLipschitzCert` (file: `Brange_Lipschitz_HeatScaffold.lean`) and replace the axiom.
+
+**Option 2 (fallback):** keep the axiom but document the analytic bound path
+(`margin_Lipschitz_symbolic`) as “false-for-now” due to oversized constants.
+
+**Immediate next actions:** (a) create Lean lemmas `h_arch`/`h_prime` using heat-weighted
+integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.lean`;
+(c) re-run `lake env lean` on the touched files.
