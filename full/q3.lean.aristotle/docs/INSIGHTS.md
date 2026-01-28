@@ -486,3 +486,32 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 ## Спеки
 
 - Основной спецификатор инвариантов: `docs/PROJECT_SPECS.md`.
+
+---
+
+## PrimeCert B-range Lipschitz (heat-weighted scaffold, 2026-01-28)
+
+**Why:** current main-chain axioms are
+`PrimeCert.prime_b_grid_val_le_margin` and `PrimeCert.prime_margin_Lipschitz_on_Brange`.
+The analytic bound in `Brange_Lipschitz_Analytic.lean` uses `W_sum_local` and is far too large;
+we need a *heat-weighted* Lipschitz constant to match the certificate scale (~0.3).
+
+**What was added (scaffold):**
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatScaffold.lean`
+  - `PrimeMarginHeatLipschitzCert` structure (L_arch/L_prime + certified bounds)
+  - `margin_Lipschitz_of_cert` lemma to combine bounds
+- `scripts/prime_brange_heat_lipschitz_cert.py`
+  - numeric helper to estimate heat-weighted constants (arch + prime) for t_critical
+  - outputs `output/prime_cert_brange_heat_L_*.txt`
+  - latest output: `output/prime_cert_brange_heat_L_2026-01-28_0115.txt`
+    (sha256 `da6a6ac1221f93d376aafecd189169607b40b5d394868e893124445089a3e0a5`)
+    with `L_prime_heat ≈ 4.0049`, `L_arch_heat ≈ 1.3604`, `L_total ≈ 0.59614`
+    → conservative bound `L_total ≤ 0.60`
+
+**Next (to actually close the axiom):**
+1) Produce a certified numeric constant from the script output
+2) Provide Lean lemmas `h_arch` and `h_prime` (or a combined margin version)
+3) Instantiate `PrimeMarginHeatLipschitzCert` and replace the axiom in
+   `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` / `Brange_2046.lean`.
+
+**Note:** q3search failed locally (403 spend limit), so we used local `rg` only.
