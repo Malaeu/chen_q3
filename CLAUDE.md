@@ -83,6 +83,14 @@ Before EVERY commit, verify:
 
 See: `full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 
+## Commit Message Format
+
+Before committing, check OS + branch. Format:
+- Linux: `[Linux][<branch>] Message`
+- macOS: `[MacOS][<branch>] Message`
+
+No sandbox tags; we don't work on Windows.
+
 ---
 
 ## 🔍 Problem-Solving Workflow (Embeddings)

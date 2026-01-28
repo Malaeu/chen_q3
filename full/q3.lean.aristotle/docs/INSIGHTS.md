@@ -40,6 +40,15 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Synthesis (2026-01-28, in progress) — heat-weight integrability requires global a_star growth
+
+- Added Tier‑1 axiom `a_star_linear_growth` (global linear growth bound) to unblock
+  integrability of `|a_star ξ| * exp(-4π^2 t ξ^2) * |ξ|`.
+- Implemented integrability lemma in
+  `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatIntegrable.lean`.
+- `arch_heat_weight_integrable` now compiles in the minimal file and is available
+  in `Brange_Lipschitz_HeatProof.lean`.
+
 ## Synthesis (2026-01-26, in progress) — τ-shift AtomCone fails; `prime_term_le_at_t_critical_axiom` is false-for-now
 
 - Local numeric verification: `python3 verify_variant_b.py --direct` shows
