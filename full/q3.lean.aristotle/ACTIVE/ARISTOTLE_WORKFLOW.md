@@ -200,7 +200,19 @@ Classify the outcome first, then act:
 - For Q3, use Python API with `auto_add_imports=False`.
 - Ensure the root is `.../full/q3.lean.aristotle`.
 
-**E) SANDBOX REJECTION (unexpected axioms)**
+**E) “FILE NOT FOUND” in Aristotle output**
+- Cause: submitted informal `.md` that references a Lean file/path not included.
+- Fix: use **formal mode** on the `.lean` file with sorries, OR pass that file as
+  `formal_input_context` (informal mode) and include needed context files.
+- For Q3, prefer Python API with explicit `project_root` and context list.
+
+**F) “Axioms were added during init_sorries”**
+- Cause: imported files pull Q3 axioms into the environment.
+- Fix: isolate a **minimal** file with only needed defs/lemmas (Mathlib + Q3.Basic.Defs
+  + local defs), avoid importing heavy proof modules.
+- If needed, create a sandbox file and re‑prove helper lemmas locally.
+
+**G) SANDBOX REJECTION (unexpected axioms)**
 - Remove `axiom`/`constant`/custom imports.
 - Use only `import Mathlib`, `def`, `theorem ... := by sorry`.
 

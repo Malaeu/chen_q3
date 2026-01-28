@@ -33,10 +33,12 @@
 - check_axioms падает на A3_FLOOR: нужен предварительный build → `docs/insights/check_axioms_prebuild_a3_floor_2026_01_16.md`.
 - FloorCert grid min: `floor_grid_val_ge_min_lb` closed via `native_decide`;
   required `set_option maxRecDepth` / `maxHeartbeats` in `Q3/Proofs/FloorCert/Grid_2219.lean`.
-- Semantic search workflow (q3search/websearch):
-  1) сначала q3search (3-5 запросов, до ~75% уверенности), 2) потом websearch,
+- Semantic search workflow (Embeddings + web tool):
+  1) сначала embedding‑поиск по нашей базе (3-5 запросов, до ~75% уверенности),
+     команда: `./scripts/research_oracle.py query "keyword" -c q3_docs`
+  2) потом внешний web‑поиск через встроенный web tool,
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
-  5) по завершении добавить итоговый инсайт. НЕ запускать `mgrep watch`/`mgrep --sync`.
+  5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
 ## Synthesis (2026-01-26, in progress) — τ-shift AtomCone fails; `prime_term_le_at_t_critical_axiom` is false-for-now
 

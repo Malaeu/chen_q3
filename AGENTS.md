@@ -5,7 +5,7 @@ Session entry (quick resume): `full/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
 Aristotle integration rules (project workflow):
 - Activate venv before any Aristotle command: `source .venv/bin/activate`.
 - Submit via `aristotle prove-from-file` and check/download via the Python API snippets in the Aristotle skill.
-- Always scan downloaded files for holes: `rg -n "sorry|exact\\?" <file>`.
+- Always scan downloaded files for holes: `rg -n "sorry|exact\\?|admit" <file>`.
 - Treat files with holes as drafts; extract only hole-free lemmas or use as structure guidance.
 - Run `lake env lean <file>` after every integration to ensure the project still compiles.
 - Keep new kernel (A3_FLOOR) and old RKHS results separated; do not mix proof strategies.
@@ -15,8 +15,9 @@ Aristotle integration rules (project workflow):
 
 Semantic search workflow (before tackling a new blocker):
 - Define the exact target lemma/axiom and where it is wired in the chain.
-- Run `q3search "query" -c` first (3-5 queries, aim for ~75% confidence). Do not run `mgrep watch` or `mgrep --sync`.
-- Run `websearch "question"` for external confirmation or alternative proof ideas.
+- Run embedding search on our local index (3-5 queries, aim for ~75% confidence). Do not use mgrep/websearch.
+- Embedding command (from `full/q3.lean.aristotle`): `./scripts/research_oracle.py query "keyword" -c q3_docs` (use `math_papers`/`zotero_lib` if indexed).
+- Run external web search via the built-in web tool (not the `websearch` wrapper).
 - Synthesize a 5-10 line plan with concrete file/lemma pointers.
 - Record the synthesis in `full/q3.lean.aristotle/docs/INSIGHTS.md` and commit (label as in progress).
 - Commit message format: check OS + branch first, then use `[Linux][<branch>] Message` or `[MacOS][<branch>] Message` (no sandbox tags).

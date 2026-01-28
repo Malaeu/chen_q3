@@ -85,23 +85,27 @@ See: `full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 
 ---
 
-## 🔍 Problem-Solving Workflow (mgrep)
+## 🔍 Problem-Solving Workflow (Embeddings)
 
 **Когда уперся в проблему:**
 
 ```
-1. q3search "описание проблемы" -c    ← СНАЧАЛА база (643 файла)
-2. websearch "мат. формулировка"      ← ПОТОМ веб (arxiv, MO, SE)
+1. Embedding search по нашей базе (3–5 запросов, цель ~75% уверенности)
+2. Внешний веб‑поиск через встроенный web tool (НЕ через websearch/mgrep)
 3. Анализ: что нашли? как применить?
 4. Aristotle (если нужен formal proof)
 ```
 
-**Почему этот порядок:**
-- База содержит УЖЕ решённые проблемы — не повторяй ошибки!
-- Веб даёт проверенные мат. источники
-- Aristotle дорогой — используй с готовой формулировкой
+Команда embedding‑поиска (из `full/q3.lean.aristotle`):
+```bash
+./scripts/research_oracle.py query "keyword" -c q3_docs
+```
+Для литературы: `-c math_papers` или `-c zotero_lib` (если индексирован).
 
-**Guide:** `~/.claude/docs/MGREP_GUIDE.md`
+**Почему этот порядок:**
+- Наша embedding‑база содержит УЖЕ решённые проблемы — не повторяй ошибки!
+- Веб даёт проверенные мат. источники (как подтверждение/альтернатива)
+- Aristotle дорогой — используй с готовой формулировкой
 
 ---
 
@@ -115,7 +119,7 @@ See: `full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 - Если есть несколько путей, и они **равносильные + формально правильные + community‑standard** → автоматически берём тот, который в текущей архитектуре **проще, быстрее, дешевле** и легче поддерживать (минимум новых определений/инфры/параметров).
 
 1. **Фиксируем точную цель**: 1 строка “Target lemma” + где она в цепочке (файл/импорт).
-2. **Сканируем базу**: `q3search "точная формулировка" -c` (3–5 запросов) + 1 websearch при нужде.
+2. **Сканируем базу**: embedding‑поиск (3–5 запросов) + 1 web‑поиск через web tool при нужде.
 3. **Пишем дерево в `full/q3.lean.aristotle/docs/INSIGHTS.md`**:
    - Option 1 (основной): что доказываем, минимальные зависимости, “success check” (какая команда должна компилироваться).
    - Option 2 (fallback): рабочий путь, который точно закрывается, даже если менее красивый.
@@ -256,9 +260,10 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 # Automated check
 ./scripts/check_axioms.sh
 
-# Semantic search (НОВОЕ!)
-q3search "твой запрос" -c       # поиск по базе (643 файла)
-websearch "вопрос"              # AI web search
+# Semantic search (Embeddings)
+# Команда embedding‑поиска (qmd wrapper):
+./scripts/research_oracle.py query "keyword" -c q3_docs
+# Внешний веб‑поиск — через встроенный web tool
 ```
 
 ---
