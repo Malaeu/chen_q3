@@ -68,7 +68,7 @@ def main() -> None:
     ap.add_argument(
         "--exclude",
         action="append",
-        default=["Q3/Clean"],
+        default=["Q3/Clean", "Q3/Archive"],
         help="exclude subpaths (relative to repo root), can repeat",
     )
     args = ap.parse_args()

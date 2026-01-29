@@ -1,9 +1,9 @@
-# Sorry Frontier (auto) — 2026-01-29 13:45 UTC
+# Sorry Frontier (auto) — 2026-01-29 13:54 UTC
 
 **Purpose:** List every `sorry` occurrence in `Q3/` with file + line numbers.
 **Source:** regex scan of `Q3/**/*.lean`
 
-**Total sorries:** 11
+**Total sorries:** 7
 
 ## Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean
 - Count: 3
@@ -24,8 +24,4 @@
 ## Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean
 - Count: 1
 - Lines: L223
-
-## Q3/Proofs/Q_nonneg_base_atoms_proof.lean
-- Count: 4
-- Lines: L168, L200, L209, L227
 

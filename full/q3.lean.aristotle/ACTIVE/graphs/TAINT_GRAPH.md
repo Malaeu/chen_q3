@@ -1,14 +1,13 @@
-# Taint Graph (auto) — 2026-01-29 13:45 UTC
+# Taint Graph (auto) — 2026-01-29 13:54 UTC
 
 **Purpose:** Propagate `sorry`/BROKEN status upward across file import graph.
 **Source:** Q3 file imports + numeric checks report
 
-**Counts:** VERIFIED=129, TAINTED=0, SORRY=6, BROKEN=0
-**Doomed:** 2
+**Counts:** VERIFIED=122, TAINTED=0, SORRY=5, BROKEN=0
+**Doomed:** 1
 
 ## DOOMED
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean`
-- `Q3/Proofs/Q_nonneg_base_atoms_proof.lean`
 
 ## BROKEN
 
@@ -18,7 +17,6 @@
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step1.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_margin.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean`
-- `Q3/Proofs/Q_nonneg_base_atoms_proof.lean`
 
 ## TAINTED
 
@@ -26,13 +24,6 @@
 - `Q3/A1_Density.lean`
 - `Q3/A2_Lipschitz.lean`
 - `Q3/A3_Bridge.lean`
-- `Q3/Archive/01_T0_aristotle.lean`
-- `Q3/Archive/02_A1_aristotle.lean`
-- `Q3/Archive/03_A2_aristotle.lean`
-- `Q3/Archive/04_A3_aristotle.lean`
-- `Q3/Archive/05_RKHS_aristotle.lean`
-- `Q3/Archive/06_T5_aristotle.lean`
-- `Q3/Archive/07_Main_aristotle.lean`
 - `Q3/Aristotle_Integration.lean`
 - `Q3/Atoms_Positive.lean`
 - `Q3/AxiomClosure.lean`
