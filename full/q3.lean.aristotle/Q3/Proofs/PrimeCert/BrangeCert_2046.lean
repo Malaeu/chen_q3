@@ -29,7 +29,10 @@ structure PrimeBGridBounds where
       prime_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) ≤
         prime_b_grid_prime_ub i
 
-axiom prime_b_grid_bounds_cert : PrimeBGridBounds
+axiom prime_b_grid_bounds_data : PrimeBGridBounds
+
+theorem prime_b_grid_bounds_cert : PrimeBGridBounds :=
+  prime_b_grid_bounds_data
 
 theorem prime_b_grid_val_le_margin :
     ∀ i : Fin prime_b_grid_size,

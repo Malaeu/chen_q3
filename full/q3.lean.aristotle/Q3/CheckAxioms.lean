@@ -37,11 +37,13 @@ open Q3.Main
 #check Q3.eigenvalue_le_norm
 
 /-! ## Verify Tier-2 axioms exist (τ=0 mainline) -/
--- PrimeCert (grid bounds + Lipschitz on B-range)
-#check Q3.Proofs.PrimeCert.prime_b_grid_bounds_cert
+-- PrimeCert (grid/heat bounds data + Lipschitz on B-range)
+#check Q3.Proofs.PrimeCert.prime_b_grid_bounds_data
+#check Q3.Proofs.PrimeCert.prime_heat_bounds_data
 #check Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange
 
 -- Theorem (derived from grid bounds)
+#check Q3.Proofs.PrimeCert.prime_b_grid_bounds_cert
 #check Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin
 
 /-! ## Off-chain (τ ≠ 0) placeholder -/
@@ -68,7 +70,8 @@ open Q3.Main
 - `Q3.Weil_criterion` : Weil (1952)
 
 ### Tier-2 Q3 Paper Axioms (τ=0 mainline):
-- `Q3.Proofs.PrimeCert.prime_b_grid_bounds_cert` : grid arch/prime bounds
+- `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` : grid arch/prime bounds
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_data` : heat-weighted arch/prime bounds
 - `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` : Lipschitz control on B-range
 
 ### THEOREM (not axiom!):

@@ -246,8 +246,8 @@ repo:{username/repo_name} import
 ```
 Standard (3): propext, Classical.choice, Quot.sound
 Project (3):  Weil_criterion_tau0,
-              PrimeCert.prime_b_grid_bounds_cert,
-              PrimeCert.prime_margin_Lipschitz_on_Brange
+              PrimeCert.prime_b_grid_bounds_data,
+              PrimeCert.prime_heat_bounds_data
 ```
 
 **Closed axioms:**

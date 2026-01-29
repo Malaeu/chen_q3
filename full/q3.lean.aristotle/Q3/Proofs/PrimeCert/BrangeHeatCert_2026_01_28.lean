@@ -55,10 +55,30 @@ structure PrimeHeatBounds where
     (prime_cert_L_arch_heat_raw + prime_cert_L_prime_heat_raw) / (B_min ^ 2) ≤
       prime_cert_L_total_heat_ub
 
+structure PrimeHeatBoundsData where
+  h_arch :
+    ∫ ξ in Set.Icc (-prime_cert_B_max) prime_cert_B_max,
+        |a_star ξ| * (Real.exp (-4 * Real.pi ^ 2 * t_critical * ξ ^ 2) * |ξ|)
+      ≤ prime_cert_L_arch_heat_raw
+  h_prime :
+    ∑' n, (w_Q n * (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n n) ^ 2) * |xi_n n|)) *
+        (if |xi_n n| ≤ prime_cert_B_max then (1 : ℝ) else 0)
+      ≤ prime_cert_L_prime_heat_raw
+
+lemma prime_heat_bounds_total :
+    (prime_cert_L_arch_heat_raw + prime_cert_L_prime_heat_raw) / (B_min ^ 2) ≤
+      prime_cert_L_total_heat_ub := by
+  norm_num [prime_cert_L_arch_heat_raw, prime_cert_L_prime_heat_raw,
+    prime_cert_L_total_heat_ub, B_min]
+
 /-!
 Certificate bounds for heat-weighted Lipschitz estimates (t_critical, tau = 0).
 Numeric source: `output/prime_cert_brange_heat_L_2026-01-28_0115.txt`.
 -/
-axiom prime_heat_bounds_cert : PrimeHeatBounds
+axiom prime_heat_bounds_data : PrimeHeatBoundsData
+
+theorem prime_heat_bounds_cert : PrimeHeatBounds := by
+  refine ⟨prime_heat_bounds_data.h_arch, prime_heat_bounds_data.h_prime, ?_⟩
+  exact prime_heat_bounds_total
 
 end Q3.Proofs.PrimeCert
