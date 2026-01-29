@@ -567,12 +567,16 @@ This is the graded Hilbert space `H = H₊ ⊕ H₋` with odd self-adjoint contr
 - Quillen's 2003 notebooks focus on **hermitian K-theory** and symmetric spaces
 - Potential "speculative edge": K-theoretic approach to zeta positivity
 
-**Additional mathematical content (2003-2, 2003-3):**
+**Additional mathematical content (2003-2, 2003-3, 2003-4):**
 - **Sesquilinear forms** (2003-2.clean.md:269): `h(z₁v₁, z₂v₂) = z̄₁ h(v₁,v₂) z₂`
 - **Quadratic forms + O(2n,ℂ)** (2003-2.clean.md:511): "autos of H(V) respecting quadratic form"
 - **Quaternionic inner product** (2003-2.clean.md:652): Sp(2n) as automorphisms
 - **Bott periodicity** (2003-1.ocr.md:1115): "proof by AS using Kuiper's theorem"
 - **Atiyah R^{p,q}** (2003-1.ocr.md:2046): Z/2 representation theory
+- **Cayley transform + time evolution** (2003-4.ocr.md:39):
+  "X is the infinitesimal generator of the time evolution for a harmonic oscillator.
+   Even case: X = [[0,-T*],[T,0]]" — **identical to Toeplitz structure!**
+- **Spectrum of A⁻¹S** (2003-4.ocr.md:3272): "ratio" of symmetric/skew forms as eigenvalues
 
 **Potential index-theoretic bridge (speculative):**
 The Fredholm index of Toeplitz operator T_f equals the winding number of symbol f.
