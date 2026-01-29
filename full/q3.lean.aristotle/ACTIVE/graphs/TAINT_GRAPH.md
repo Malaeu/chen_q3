@@ -1,22 +1,16 @@
-# Taint Graph (auto) — 2026-01-29 13:54 UTC
+# Taint Graph (auto) — 2026-01-29 14:09 UTC
 
 **Purpose:** Propagate `sorry`/BROKEN status upward across file import graph.
 **Source:** Q3 file imports + numeric checks report
 
-**Counts:** VERIFIED=122, TAINTED=0, SORRY=5, BROKEN=0
-**Doomed:** 1
+**Counts:** VERIFIED=118, TAINTED=0, SORRY=0, BROKEN=0
+**Doomed:** 0
 
 ## DOOMED
-- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean`
 
 ## BROKEN
 
 ## SORRY
-- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean`
-- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch.lean`
-- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step1.lean`
-- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_margin.lean`
-- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean`
 
 ## TAINTED
 
@@ -85,10 +79,6 @@
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatIntegrable.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof.lean`
-- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_int.lean`
-- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step2.lean`
-- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step3.lean`
-- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step4.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatScaffold.lean`
 - `Q3/Proofs/PrimeCert/Defs.lean`
 - `Q3/Proofs/PrimeTerm_t_bridge.lean`

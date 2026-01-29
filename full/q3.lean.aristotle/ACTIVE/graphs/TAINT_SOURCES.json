@@ -1,12 +1,6 @@
 {
-  "generated_at": "2026-01-29 13:54 UTC",
-  "root_dirty": [
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean",
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch.lean",
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step1.lean",
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_margin.lean",
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean"
-  ],
+  "generated_at": "2026-01-29 14:09 UTC",
+  "root_dirty": [],
   "roots_by_file": {
     "Q3/A1_Density.lean": [],
     "Q3/A2_Lipschitz.lean": [],
@@ -72,25 +66,6 @@
     "Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean": [],
     "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatIntegrable.lean": [],
     "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof.lean": [],
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean": [
-      "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean"
-    ],
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch.lean": [
-      "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch.lean"
-    ],
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_int.lean": [],
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step1.lean": [
-      "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step1.lean"
-    ],
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step2.lean": [],
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step3.lean": [],
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step4.lean": [],
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_margin.lean": [
-      "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_margin.lean"
-    ],
-    "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean": [
-      "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean"
-    ],
     "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatScaffold.lean": [],
     "Q3/Proofs/PrimeCert/Defs.lean": [],
     "Q3/Proofs/PrimeTerm_t_bridge.lean": [],

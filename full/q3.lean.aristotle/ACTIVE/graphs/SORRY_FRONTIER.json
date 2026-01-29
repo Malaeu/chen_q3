@@ -1,44 +1,6 @@
 {
-  "generated_at": "2026-01-29 13:54 UTC",
+  "generated_at": "2026-01-29 14:09 UTC",
   "root": "Q3/",
-  "total_sorries": 7,
-  "files": [
-    {
-      "file": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean",
-      "lines": [
-        202,
-        223,
-        245
-      ],
-      "count": 3
-    },
-    {
-      "file": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch.lean",
-      "lines": [
-        202
-      ],
-      "count": 1
-    },
-    {
-      "file": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step1.lean",
-      "lines": [
-        217
-      ],
-      "count": 1
-    },
-    {
-      "file": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_margin.lean",
-      "lines": [
-        245
-      ],
-      "count": 1
-    },
-    {
-      "file": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean",
-      "lines": [
-        223
-      ],
-      "count": 1
-    }
-  ]
+  "total_sorries": 0,
+  "files": []
 }
