@@ -62,23 +62,26 @@ echo ""
 echo "═══ Step 0.7: PrimeCert evidence check ═══"
 PRIME_CERT_TCRIT="output/prime_cert_tcritical_2026-01-26_0046.txt"
 PRIME_CERT_BRANGE="output/prime_cert_brange_tcritical_2026-01-26_0050.txt"
+PRIME_CERT_HEAT="output/prime_cert_brange_heat_L_2026-01-28_0115.txt"
 PRIME_CERT_TCRIT_HASH="3af1204fc8f5ddf322e1110b9932bb44a5349e0773d6d1b3cdf5441ec8ef3b5d"
 PRIME_CERT_BRANGE_HASH="a9d5303b2da81886cf64bfc5ee9b5b1ab85ce0b45067a8cd9b499d051a294230"
+PRIME_CERT_HEAT_HASH="da6a6ac1221f93d376aafecd189169607b40b5d394868e893124445089a3e0a5"
 
-if [[ ! -f "$PRIME_CERT_TCRIT" || ! -f "$PRIME_CERT_BRANGE" ]]; then
+if [[ ! -f "$PRIME_CERT_TCRIT" || ! -f "$PRIME_CERT_BRANGE" || ! -f "$PRIME_CERT_HEAT" ]]; then
     echo "✗ PrimeCert evidence file missing"
     exit 1
 fi
 
 HASH_TCRIT="$(hash_file "$PRIME_CERT_TCRIT" || true)"
 HASH_BRANGE="$(hash_file "$PRIME_CERT_BRANGE" || true)"
+HASH_HEAT="$(hash_file "$PRIME_CERT_HEAT" || true)"
 
-if [[ -z "$HASH_TCRIT" || -z "$HASH_BRANGE" ]]; then
+if [[ -z "$HASH_TCRIT" || -z "$HASH_BRANGE" || -z "$HASH_HEAT" ]]; then
     echo "✗ sha256 tool not available (sha256sum/shasum)"
     exit 1
 fi
 
-if [[ "$HASH_TCRIT" != "$PRIME_CERT_TCRIT_HASH" || "$HASH_BRANGE" != "$PRIME_CERT_BRANGE_HASH" ]]; then
+if [[ "$HASH_TCRIT" != "$PRIME_CERT_TCRIT_HASH" || "$HASH_BRANGE" != "$PRIME_CERT_BRANGE_HASH" || "$HASH_HEAT" != "$PRIME_CERT_HEAT_HASH" ]]; then
     echo "✗ PrimeCert evidence hash mismatch"
     exit 1
 fi
