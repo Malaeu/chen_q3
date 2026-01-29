@@ -135,7 +135,7 @@ TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
 EXPECTED_STANDARD=3  # propext, Classical.choice, Quot.sound (no native_decide/compiler trust in chain)
-EXPECTED_PROJECT=3   # Weil_criterion_tau0, PrimeCert grid axioms (2)
+EXPECTED_PROJECT=3   # Weil_criterion_tau0, PrimeCert cert axioms (2)
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
@@ -166,7 +166,7 @@ echo "═══ Step 5: Philosophy Verification ═══"
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion_tau0"
     "Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin"
-    "Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange"
+    "Q3.Proofs.PrimeCert.prime_heat_bounds_cert"
 )
 
 UNKNOWN_AXIOMS=""
