@@ -165,8 +165,8 @@ echo "═══ Step 5: Philosophy Verification ═══"
 # Expected axioms in proof chain (update when axioms are closed/added)
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion_tau0"
-    "Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin"
-    "Q3.Proofs.PrimeCert.prime_heat_bounds_cert"
+    "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data"
+    "Q3.Proofs.PrimeCert.prime_heat_bounds_data"
 )
 
 UNKNOWN_AXIOMS=""

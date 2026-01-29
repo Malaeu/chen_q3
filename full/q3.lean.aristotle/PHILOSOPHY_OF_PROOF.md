@@ -93,8 +93,8 @@ These are well-known results. Citations:
 - `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` → closed via Q_nonneg_atoms_closure
 
 ### Level 2: One‑Scale Numeric Certificates @ `t_critical` (2) — TEMPORARY BRIDGE
-- `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin` — table correctness at grid points, in `Q3/Proofs/PrimeCert/Brange_2046.lean`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_cert` — arch/prime heat bounds over B‑range, in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+- `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` — grid arch/prime bounds (data axiom), in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_data` — arch/prime heat bounds over B‑range (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
 
 These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt` and
 `output/prime_cert_brange_tcritical_2026-01-26_0050.txt`) and are expected to be replaced by a fully formal certificate proof.
@@ -131,8 +131,8 @@ Expected output:
   Classical.choice,               -- Level 0a: Standard Lean
   Quot.sound,                     -- Level 0a: Standard Lean
   Q3.Weil_criterion_tau0,          -- Level 1: Weil 1952 (τ=0 cone)
-  Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin,       -- Level 2: one‑scale certificate
-  Q3.Proofs.PrimeCert.prime_heat_bounds_cert            -- Level 2: one‑scale certificate
+  Q3.Proofs.PrimeCert.prime_b_grid_bounds_data,         -- Level 2: one‑scale cert data
+  Q3.Proofs.PrimeCert.prime_heat_bounds_data            -- Level 2: one‑scale cert data
 ]
 ```
 
@@ -208,7 +208,7 @@ Our axioms can be eliminated one by one:
 | Axiom | How to Eliminate | Difficulty |
 |-------|------------------|------------|
 | `Weil_criterion_tau0` | Major project (Weil explicit formula, τ=0 cone) | Very High |
-| `prime_b_grid_val_le_margin` | Fully formalize PrimeCert grid verification | High |
+| `prime_b_grid_bounds_data` | Fully formalize PrimeCert grid verification | High |
 | `prime_margin_Lipschitz_on_Brange` | Fully formalize PrimeCert Lipschitz margin | High |
 
 Each elimination makes the proof stronger. Current state: **6 axioms total (3 standard + 3 project)**.
