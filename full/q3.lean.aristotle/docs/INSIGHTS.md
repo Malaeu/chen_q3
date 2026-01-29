@@ -13,6 +13,7 @@
 
 - Текущая цепочка (single-scale t_critical): `docs/CHAIN_STATUS.md`.
 - Hub для активных доков/скриптов/DB: `ACTIVE/`.
+- Актуальная карта доказательства: `ACTIVE/proof_map_new_kernel.md` (НЕ `ACTIVE/proof_map.md`).
 - Прошка как ускоритель: застряли >30 минут или <10% прогресса в Aristotle → `docs/insights/proshka_key_resource.md`.
 - Пример «идеального» ответа Прошки: нужна опорная структура → `docs/insights/breakthrough_proshka_full_proof_2026_01_14.md`.
 
