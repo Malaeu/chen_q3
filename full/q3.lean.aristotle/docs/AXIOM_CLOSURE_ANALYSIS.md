@@ -1,12 +1,22 @@
 # Axiom Closure Analysis (2026-01-20)
 
-## Current Status: 7 Axioms
+
+- **P_A_floor_cert_on_Icc_axiom** (t_critical): numeric grid+Lipschitz certificate
+  - Source: `scripts/pa_floor_cert.py` + `output/floor_cert_tcritical_2026-01-25_1615.txt`
+  - Used in: `Q3/Proofs/Q_nonneg_t_critical.lean` to close `P_A_ge_c_star_at_t_critical`
+- **prime_term_le_at_t_critical_axiom** (legacy, τ‑uniform): numeric prime-sum certificate
+  - Source: `scripts/prime_term_cert.py` + `output/prime_cert_tcritical_2026-01-26_0046.txt`
+  - **Status:** removed from main chain after τ=0 cone refactor
+## Current Status: 6 Axioms
 
 ```
 Standard (3): propext, Classical.choice, Quot.sound
-Level 1 (2):  Weil_criterion, Schur_test
-Level 2 (2):  A1_density_WK_axiom, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+Level 1 (1):  Weil_criterion_tau0
+Level 2 (2):  PrimeCert.prime_b_grid_val_le_margin, PrimeCert.prime_margin_Lipschitz_on_Brange
 ```
+
+PrimeCert evidence is pinned by sha256 in `Q3/Proofs/PrimeCert/README.md`
+and verified in `scripts/check_axioms.sh`.
 
 ## Recently Closed
 

@@ -1,0 +1,136 @@
+# Taint Graph (auto) — 2026-01-29 14:09 UTC
+
+**Purpose:** Propagate `sorry`/BROKEN status upward across file import graph.
+**Source:** Q3 file imports + numeric checks report
+
+**Counts:** VERIFIED=118, TAINTED=0, SORRY=0, BROKEN=0
+**Doomed:** 0
+
+## DOOMED
+
+## BROKEN
+
+## SORRY
+
+## TAINTED
+
+## VERIFIED
+- `Q3/A1_Density.lean`
+- `Q3/A2_Lipschitz.lean`
+- `Q3/A3_Bridge.lean`
+- `Q3/Aristotle_Integration.lean`
+- `Q3/Atoms_Positive.lean`
+- `Q3/AxiomClosure.lean`
+- `Q3/AxiomClosureTheorems.lean`
+- `Q3/Axioms.lean`
+- `Q3/AxiomsTheorems.lean`
+- `Q3/Basic/Defs.lean`
+- `Q3/CheckAxioms.lean`
+- `Q3/DigammaRemainder.lean`
+- `Q3/DigammaSeries.lean`
+- `Q3/Main.lean`
+- `Q3/MainTheorems.lean`
+- `Q3/Proofs/A1_Density_Bridge.lean`
+- `Q3/Proofs/A1_density.lean`
+- `Q3/Proofs/A1_density_integrated.lean`
+- `Q3/Proofs/A1_density_main.lean`
+- `Q3/Proofs/A1prime/A1_density_fixed_t0.lean`
+- `Q3/Proofs/A1prime/HatInterpBounded.lean`
+- `Q3/Proofs/A1prime/HeatError.lean`
+- `Q3/Proofs/A3_Bridge_Simple.lean`
+- `Q3/Proofs/A3_Bridge_Uniform.lean`
+- `Q3/Proofs/A3_Floor_Bounds.lean`
+- `Q3/Proofs/A3_Floor_Critical_Goal.lean`
+- `Q3/Proofs/A3_Floor_Critical_Proof.lean`
+- `Q3/Proofs/A3_Floor_Main.lean`
+- `Q3/Proofs/A3_Floor_Monotonicity.lean`
+- `Q3/Proofs/A3_bridge.lean`
+- `Q3/Proofs/A3_bridge_integrated.lean`
+- `Q3/Proofs/A3_bridge_rayleigh_first.lean`
+- `Q3/Proofs/A_Star_Properties.lean`
+- `Q3/Proofs/Bridge.lean`
+- `Q3/Proofs/C1_Embedding.lean`
+- `Q3/Proofs/C1_Embedding_Bridge.lean`
+- `Q3/Proofs/C1_T_P_comp_bridge.lean`
+- `Q3/Proofs/C1_T_P_comp_dictEmbedding.lean`
+- `Q3/Proofs/Carleson_prime.lean`
+- `Q3/Proofs/Digamma_Aristotle.lean`
+- `Q3/Proofs/Digamma_One_Fourth.lean`
+- `Q3/Proofs/FloorCert/Defs.lean`
+- `Q3/Proofs/FloorCert/Grid_2219.lean`
+- `Q3/Proofs/FloorCert/Lipschitz_2219.lean`
+- `Q3/Proofs/FloorCert/Lipschitz_analytic.lean`
+- `Q3/Proofs/HatInterpolation.lean`
+- `Q3/Proofs/HeatKernelParams.lean`
+- `Q3/Proofs/Heat_RKHS_Interface.lean`
+- `Q3/Proofs/Off_Diag_Exp_Sum_Bridge.lean`
+- `Q3/Proofs/OpNorm_Unitary.lean`
+- `Q3/Proofs/P_A_Properties.lean`
+- `Q3/Proofs/P_A_Toeplitz_bridge.lean`
+- `Q3/Proofs/P_A_Toeplitz_bridge_defs.lean`
+- `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`
+- `Q3/Proofs/Params_Critical.lean`
+- `Q3/Proofs/PrimeCert/Bmin_1826.lean`
+- `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
+- `Q3/Proofs/PrimeCert/BrangeGridBounds_2046.lean`
+- `Q3/Proofs/PrimeCert/BrangeGrid_2046.lean`
+- `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+- `Q3/Proofs/PrimeCert/Brange_2046.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatIntegrable.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatScaffold.lean`
+- `Q3/Proofs/PrimeCert/Defs.lean`
+- `Q3/Proofs/PrimeTerm_t_bridge.lean`
+- `Q3/Proofs/QSpec.lean`
+- `Q3/Proofs/Q_Lipschitz.lean`
+- `Q3/Proofs/Q_Lipschitz_Bridge.lean`
+- `Q3/Proofs/Q_Lipschitz_arch_bridge.lean`
+- `Q3/Proofs/Q_Lipschitz_integrated.lean`
+- `Q3/Proofs/Q_Lipschitz_prime_bridge.lean`
+- `Q3/Proofs/Q_Nonneg_Bridge.lean`
+- `Q3/Proofs/Q_nonneg_atoms_closure.lean`
+- `Q3/Proofs/Q_nonneg_atoms_helpers.lean`
+- `Q3/Proofs/Q_nonneg_base_atoms.lean`
+- `Q3/Proofs/Q_nonneg_lemmas.lean`
+- `Q3/Proofs/Q_nonneg_on_atoms.lean`
+- `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`
+- `Q3/Proofs/Q_nonneg_on_atoms_integrated.lean`
+- `Q3/Proofs/Q_nonneg_t_critical.lean`
+- `Q3/Proofs/RKHS_Contraction_Bridge.lean`
+- `Q3/Proofs/RKHS_Interface_C1.lean`
+- `Q3/Proofs/RKHS_cap_generic.lean`
+- `Q3/Proofs/RKHS_cap_rayleigh.lean`
+- `Q3/Proofs/RKHS_contraction.lean`
+- `Q3/Proofs/RKHS_contraction_integrated.lean`
+- `Q3/Proofs/RKHS_hA_prime.lean`
+- `Q3/Proofs/RKHS_rescaling.lean`
+- `Q3/Proofs/Rayleigh_Fourier.lean`
+- `Q3/Proofs/Rayleigh_Q_identification.lean`
+- `Q3/Proofs/Rayleigh_Q_identification_debug.lean`
+- `Q3/Proofs/Rayleigh_basis0.lean`
+- `Q3/Proofs/Rayleigh_basis0_of_A3.lean`
+- `Q3/Proofs/Rayleigh_utils.lean`
+- `Q3/Proofs/S_K_Small_Bridge.lean`
+- `Q3/Proofs/S_K_small.lean`
+- `Q3/Proofs/S_K_small_integrated.lean`
+- `Q3/Proofs/Schur_Test.lean`
+- `Q3/Proofs/ShiftedWindows.lean`
+- `Q3/Proofs/ShiftedWindows_t0.lean`
+- `Q3/Proofs/SingleScale_Assumptions.lean`
+- `Q3/Proofs/T_P_comp_utils.lean`
+- `Q3/Proofs/W_Sum_Finite_Bridge.lean`
+- `Q3/Proofs/W_sum_finite.lean`
+- `Q3/Proofs/W_sum_finite_integrated.lean`
+- `Q3/Proofs/node_spacing.lean`
+- `Q3/Proofs/node_spacing_bridge.lean`
+- `Q3/Proofs/node_spacing_integrated.lean`
+- `Q3/Proofs/off_diag_exp_sum.lean`
+- `Q3/Proofs/off_diag_exp_sum_integrated.lean`
+- `Q3/ProofsIntegrated.lean`
+- `Q3/RKHS_Contraction.lean`
+- `Q3/RowSum_Bound.lean`
+- `Q3/S_K_Bound.lean`
+- `Q3/T5_Transfer.lean`
+- `Q3/Tier2_Verification.lean`
+

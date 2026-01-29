@@ -1,0 +1,18 @@
+Task
+Close the axiom `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` by replacing it with a theorem (no new axioms).
+
+Hard constraints:
+- Modify only the file that declares this axiom.
+- Do NOT add new imports.
+- Do NOT change definitions/structures.
+- Stay within single-scale assumptions (no two-scale bridges).
+- Use existing lemmas already imported.
+
+Preferred tactics:
+- Use `suffices` for goal reduction.
+- Avoid `exact?` and heavy `aesop`.
+- Prefer `simp`, `linarith`, `nlinarith`, `gcongr`, `positivity`.
+
+If the statement is false or under-specified:
+- Provide a concrete counterexample or a proof of the negation,
+  and explain which assumption is missing.

@@ -1,0 +1,26 @@
+Task
+Fill ONLY the two `sorry` blocks inside the lemma `Φ_spec_in_W_K` in
+`Q3/Proofs/QSpec.lean`. Leave all other sorries in the file unchanged.
+
+Hard constraints:
+- Modify ONLY `Q3/Proofs/QSpec.lean`.
+- Do NOT add imports.
+- Do NOT modify definitions/structures.
+- Do NOT touch transitive dependencies.
+- Stay within single-scale assumptions (no two-scale bridges).
+
+Hints (use if helpful):
+- Continuity: use `Q3.Proofs.ShiftedWindows.continuous_phi_shift` and
+  `simp [Q3.phi_shift]` to match the goal.
+- Support: after `simp [Function.mem_support, Φ_spec, fejer_heat_window]` on `hξ`,
+  derive `|ξ - spec.τ| < spec.B` from `max` positivity, then
+  `|ξ| < spec.K` using triangle inequality and `spec.hτB_K`.
+- Conclude `ξ ∈ Set.Ioo (-spec.K) spec.K` via `abs_lt`.
+
+Preferred tactics:
+- `simp`, `linarith`, `nlinarith`.
+- Avoid heavy `aesop` and avoid `exact?`.
+
+If the statement is false or under-specified:
+- provide a concrete counterexample or a proof of the negation,
+  and explain which assumption is missing.

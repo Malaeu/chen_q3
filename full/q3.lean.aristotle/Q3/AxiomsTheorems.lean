@@ -21,7 +21,8 @@ import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 import Q3.Proofs.A1_density   -- For A1_density_WK_thm (real proof!)
 import Q3.Proofs.A1prime.A1_density_fixed_t0  -- For A1_density_WK_fixed_t0 (closes axiom!)
 import Q3.Proofs.HeatKernelParams
-import Q3.Proofs.Bridge  -- RKHS_contraction bridge (xi_n rescaling)
+import Q3.Proofs.Params_Critical
+import Q3.Proofs.SingleScale_Assumptions
 import Q3.Proofs.P_A_Toeplitz_bridge  -- Fourier Toeplitz with P_A (correct formulation)
 import Q3.Proofs.Q_nonneg_on_atoms_fourier_axiom
 import Q3.Proofs.Schur_Test  -- For Schur_test_proof (Mathlib-based)
@@ -58,6 +59,8 @@ These are re-exported from Q3.Axioms
 #check Q3.Weil_criterion
 #check Q3.explicit_formula
 #check Q3.a_star_pos
+#check Q3.a_star_linear_growth
+#check Q3.w_Q_heat_weight_summable
 #check Q3.Szego_Bottcher_eigenvalue_bound
 #check Q3.Szego_Bottcher_convergence
 #check Q3.Schur_test
@@ -80,7 +83,9 @@ theorem a_star_even : ∀ ξ : ℝ, Q3.a_star (-ξ) = Q3.a_star ξ :=
 ## Status (2026-01-20):
 
 **In main proof chain (`#print axioms RH_of_Weil_and_Q3`):**
-- 2 Q3 PAPER AXIOMS remain: `A1_density_WK_axiom`, `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- 3 Q3 PAPER AXIOMS remain (single‑scale): `SingleScale.continuous_P_A_shift`,
+  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`,
+  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
 - 6 EXTERNAL AXIOMS: `Weil_criterion`, `a_star_*`, `Schur_test`
 
 **Theorem status:**
@@ -169,7 +174,7 @@ theorem Q_Lipschitz : ∀ (K : ℝ) (hK : K > 0),
 * **Status:** theorem (wired)
 -/
 theorem RKHS_contraction : ∀ (K : ℝ) (hK : K ≥ 1), Q3.RKHS_contraction_data K :=
-  Q3.Bridge.RKHS_contraction_data_of_bridge
+  Q3.Proofs.SingleScale.rkhs_contraction_data_of_tcritical
 
 /-- **[A3 Bridge]** ~~K-dependent Toeplitz bridge (deprecated).~~
 
@@ -204,13 +209,27 @@ theorem A3_bridge_rayleigh_Fourier (K : ℝ) (hK : K > 0) :
 
 * **Q3:** `thm:Main-positivity`
 * **TeX:** `sections/Main_closure.tex`
-* **Status:** axiom fallback (Fourier A3 + RKHS wrapper)
+* **Status:** theorem (Fourier A3 + RKHS wrapper)
 -/
-theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1),
+theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1) [Fintype (Q3.Nodes K)],
     Q3.Proofs.P_A_Bridge.A3_bridge_data_rayleigh_Fourier K →
     Q3.RKHS_contraction_data K →
-    ∀ g ∈ Q3.AtomCone_K_fixed K Q3.t0_A1, Q3.Q g ≥ 0 :=
-  Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS
+    ∀ g ∈ Q3.AtomCone_K_fixed K Q3.t0_critical, Q3.Q g ≥ 0 := by
+  intro K hK _inst hA3 hRKHS g hg
+  simpa [Q3.Proofs.QNonnegClosure.t0_main] using
+    (Q3.Proofs.QNonnegClosure.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm
+      (K:=K) hK hA3 hRKHS g hg)
+
+/-- **[Base Atoms (B-range, τ=0)]** Q(g) ≥ 0 on BaseAtomCone_critical_brange.
+
+* **Q3:** single-scale certificate (t_critical, B ∈ [B_min, B_max])
+* **Status:** theorem (from Q_nonneg_t_critical)
+-/
+theorem Q_nonneg_on_base_atoms_brange :
+    ∀ (K : ℝ) (hK : K ≥ 1),
+      ∀ g ∈ Q3.BaseAtomCone_critical_brange K, Q3.Q g ≥ 0 := by
+  intro K hK g hg
+  exact Q3.Q_nonneg_on_base_atoms_brange_tcritical K hK g hg
 
 end Q3.Theorems
 
@@ -219,10 +238,13 @@ end Q3.Theorems
 
 ## Main Proof Chain: `#print axioms RH_of_Weil_and_Q3`
 
-**11 axioms total:**
+**Axiom dependencies (run `#print axioms RH_of_Weil_and_Q3` to refresh):**
 - 3 Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
 - 6 External/Classical: `Weil_criterion`, `a_star_pos/continuous/bdd/even`, `Schur_test`
-- 2 Q3 Paper: `A1_density_WK_axiom`, `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- 3 Q3 Paper (single‑scale) are now theorems (not axioms):
+  `SingleScale.continuous_P_A_shift`,
+  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` (requires floor on `P_A_shift` at t_critical),
+  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
 
 ## Theorem Wiring Status
 
@@ -231,15 +253,12 @@ end Q3.Theorems
 - `S_K_small` → S_K_SmallBridgeV2.S_K_small_Q3
 - `W_sum_finite` → W_sum_BridgeV2.W_sum_finite_Q3
 - `Q_Lipschitz` → Q3.Proofs.Q_Lipschitz_on_W_K_thm
-- `RKHS_contraction` → Bridge.RKHS_contraction_data_of_bridge
+- `RKHS_contraction` → SingleScale.rkhs_contraction_data_of_tcritical
 
-### ⚠️ THEOREM EXISTS but AXIOM in main chain
-- `A1_density` → theorem in A1_density.lean, but axiom still in chain (wiring gap)
-
-### ❌ AXIOM (no theorem yet)
-- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` → main blocker (AtomCone_K_fixed gap)
+### ✅ THEOREM WIRED (previous wiring gaps closed)
+- `A1_density` → A1prime.A1_density_WK_fixed_t0
+- `Q_nonneg_on_atoms` → QNonnegClosure.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm
 
 ## Next Steps to Close Axioms
-1. Wire A1_density_WK_thm → close `A1_density_WK_axiom`
-2. Fix AtomCone_K_fixed quantifier → close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+1. Remove remaining axioms (off_diag_exp_sum, A3_bridge if still referenced)
 -/

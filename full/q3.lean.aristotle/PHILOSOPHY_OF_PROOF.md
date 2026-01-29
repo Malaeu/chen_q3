@@ -2,7 +2,7 @@
 
 **Author:** Eugen Malamutmann
 **Project:** Q3 - Formal Verification of Riemann Hypothesis Proof Structure
-**Last Updated:** 2026-01-20
+**Last Updated:** 2026-01-26
 
 ---
 
@@ -41,11 +41,11 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│  IF these 7 mathematical statements are true (6 classical + 1 Q3)  │
+│  IF these 5 mathematical statements are true (2 classical + 3 Q3)  │
 │  THEN RH is true.                                                  │
 │                                                                    │
 │  Lean verifies: the logical implication is CORRECT.                │
-│  Human verifies: the 7 statements match what's in the paper.       │
+│  Human verifies: the 5 statements match what's in the paper.       │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -65,38 +65,48 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ## Axiom Classification
 
-Our formalization depends on exactly **4 axioms** (beyond Standard Lean):
+As of **2026-01-29**, `#print axioms Q3.Main.RH_of_Weil_and_Q3` reports **6 axioms** total:
+3 kernel/standard + 3 project.
 
-### Level 0: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
-```
-propext          — Propositional extensionality
-Classical.choice — Axiom of choice
-Quot.sound       — Quotient soundness
-```
-These are part of Lean's foundation. Every Mathlib proof uses them.
+### Level 0a: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
+- `propext` — propositional extensionality
+- `Classical.choice` — axiom of choice
+- `Quot.sound` — quotient soundness
 
-### Level 1: Classical Results from Literature (2) — ESTABLISHED MATHEMATICS
-```
-Weil_criterion        — Weil 1952: Q ≥ 0 on Weil cone ⟺ RH
-Schur_test            — Schur test for operator norm bounds
-```
+These are part of Lean's foundation. Most Mathlib proofs use them.
+
+### Level 0b: Computation Trust (0) — CLOSED
+
+We eliminated `native_decide` from the PrimeCert table checks, so
+`Lean.ofReduceBool` / `Lean.trustCompiler` no longer appear in the main chain.
+
+### Level 1: Classical Results from Literature (1) — ESTABLISHED MATHEMATICS
+- `Weil_criterion_tau0` — Weil 1952, τ=0 mainline cone: `Q ≥ 0` on `Weil_cone_tau0` ⟺ RH
+
 These are well-known results. Citations:
 - Weil, A. (1952). "Sur les 'formules explicites' de la théorie des nombres premiers"
 
 **Note:** The following are now THEOREMS (proven from Mathlib/Aristotle):
 - `digamma_one_fourth_neg` — Re(ψ(1/4)) < 0 (DLMF 5.4.14, proven via reflection formula)
 - `a_star_pos`, `a_star_bdd_on_compact`, `a_star_continuous`, `a_star_even`
+- `A1_density_WK_axiom` → closed (A1_density_WK_thm)
+- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` → closed via Q_nonneg_atoms_closure
 
-### Level 2: Q3 Paper Contributions (2) — OUR MATHEMATICAL CONTENT
-```
-A1_density_WK_axiom                  — Fejér×heat atoms dense in W_K
-Q_nonneg_on_atoms_of_A3_Fourier_RKHS — Q ≥ 0 on atoms (Theorem 5.3, Fourier A3)
-```
-These are the novel contributions proven in the Q3 paper.
+### Level 2: One‑Scale Numeric Certificates @ `t_critical` (2) — TEMPORARY BRIDGE
+- `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` — grid arch/prime bounds (data axiom), in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_data` — arch/prime heat bounds over B‑range (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+
+These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt` and
+`output/prime_cert_brange_tcritical_2026-01-26_0050.txt`) and are expected to be replaced by a fully formal certificate proof.
+
+**Important:** The former “SingleScale axioms” are now THEOREMS and do not appear in `#print axioms`.
 
 ### Level 3: Technical Bridge Lemmas (0) — CLOSED
 
 arch/prime Lipschitz bridges are now proven in Lean (no longer axioms).
+
+### Off‑Chain Classical Axioms (0 in main chain)
+- `Schur_test` remains defined as an axiom in the codebase, but is **not** in the current main chain.
 
 ---
 
@@ -117,13 +127,12 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 Expected output:
 ```
 'Q3.Main.RH_of_Weil_and_Q3' depends on axioms: [
-  propext,                              -- Standard Lean
-  Classical.choice,                     -- Standard Lean
-  Quot.sound,                           -- Standard Lean
-  Q3.Weil_criterion,                    -- Level 1: Weil 1952
-  Q3.Schur_test,                        -- Level 1: Analysis
-  Q3.A1_density_WK_axiom,               -- Level 2: Q3 paper
-  Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom -- Level 2: Q3 paper
+  propext,                        -- Level 0a: Standard Lean
+  Classical.choice,               -- Level 0a: Standard Lean
+  Quot.sound,                     -- Level 0a: Standard Lean
+  Q3.Weil_criterion_tau0,          -- Level 1: Weil 1952 (τ=0 cone)
+  Q3.Proofs.PrimeCert.prime_b_grid_bounds_data,         -- Level 2: one‑scale cert data
+  Q3.Proofs.PrimeCert.prime_heat_bounds_data            -- Level 2: one‑scale cert data
 ]
 ```
 
@@ -136,31 +145,33 @@ Expected output:
                                     ▲
                                     │
                         ┌───────────┴───────────┐
-                        │    Weil_criterion     │ ← Level 1 (Weil 1952)
-                        │  Q≥0 on Weil ⟺ RH     │
+                        │  Weil_criterion_tau0  │ ← Level 1 (Weil 1952, τ=0)
+                        │  Q≥0 on Weil_tau0 ⟺ RH│
                         └───────────┬───────────┘
                                     │
                         ┌───────────┴───────────┐
-                        │  Q_nonneg_on_Weil_cone │ ← THEOREM (proven in Lean!)
+                        │ Q_nonneg_on_Weil_cone │ ← THEOREM (τ=0)
+                        │        _tau0          │
                         └───────────┬───────────┘
                                     │
                         ┌───────────┴───────────┐
-                        │    T5_transfer        │ ← THEOREM (proven in Lean!)
-                        │  Q≥0 on atoms → W_K   │
+                        │   T5_transfer_tau0    │ ← THEOREM
+                        │ BaseAtoms → W_K_tau0  │
                         └───────────┬───────────┘
                                     │
-              ┌─────────────────────┼─────────────────────┐
-              │                     │                     │
-    ┌─────────┴─────────┐ ┌────────┴────────┐ ┌─────────┴─────────┐
-    │  A1_density_WK    │ │  Q_Lipschitz    │ │ Q_nonneg_on_atoms │
-    │  (Level 2: Q3)    │ │  (THEOREM!)     │ │ (Level 2: Q3)     │
-    └───────────────────┘ └────────┬────────┘ └─────────┬─────────┘
-                                   │                    │
-                          ┌────────┴────────┐    ┌─────┴─────┐
-                          │  arch + prime   │    │ A3 + RKHS │
-                          │  Lipschitz      │    │ (A3 L2 +  │
-                          │  (THEOREM)      │    │  RKHS Thm)│
-                          └─────────────────┘    └───────────┘
+              ┌─────────────────────┴─────────────────────┐
+              │                                           │
+    ┌─────────┴─────────┐                       ┌────────┴────────┐
+    │  Q_Lipschitz      │                       │ Q_nonneg_on     │
+    │   (THEOREM!)      │                       │ base_atoms      │
+    └─────────┬─────────┘                       │   _brange       │
+              │                                  └────────────────┘
+              │
+      ┌───────┴────────┐
+      │  arch + prime  │
+      │  Lipschitz     │
+      │  (THEOREM)     │
+      └────────────────┘
 ```
 
 **Key insight:** The boxes marked "THEOREM" are fully machine-checked. The boxes marked "Level X" are our explicit assumptions.
@@ -196,12 +207,11 @@ Our axioms can be eliminated one by one:
 
 | Axiom | How to Eliminate | Difficulty |
 |-------|------------------|------------|
-| `Schur_test` | Formalize from Mathlib Analysis.InnerProductSpace | Medium |
-| `Weil_criterion` | Major project (Weil explicit formula) | Very High |
-| `A1_density_WK_axiom` | Prove density via Fejér×heat approximation | Medium |
-| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | Follows from A3 floor + RKHS contraction | Medium |
+| `Weil_criterion_tau0` | Major project (Weil explicit formula, τ=0 cone) | Very High |
+| `prime_b_grid_bounds_data` | Fully formalize PrimeCert grid verification | High |
+| `prime_margin_Lipschitz_on_Brange` | Fully formalize PrimeCert Lipschitz margin | High |
 
-Each elimination makes the proof stronger. Current state: **7 axioms total (3 standard + 4 project)**.
+Each elimination makes the proof stronger. Current state: **6 axioms total (3 standard + 3 project)**.
 
 **Recently closed (now theorems):**
 - `digamma_one_fourth_neg` — proven via Aristotle (reflection/duplication formulas)

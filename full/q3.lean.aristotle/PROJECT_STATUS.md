@@ -354,8 +354,8 @@ These files contain incorrect or outdated information:
 
 - `FULL_AXIOM_STATUS.md` - claims all proven, but _integrated are circular
 - `FORMALIZATION_STATUS.md` - from 2025-12-16, outdated
-- `ARISTOTLE_TASKS.md` - historical, not current status
-- `ARISTOTLE_PROJECTS.md` - Aristotle project IDs only
+- `archive/aristotle_docs/2026-01-28/ARISTOTLE_TASKS.md` - historical, not current status
+- `archive/aristotle_docs/2026-01-28/ARISTOTLE_PROJECTS.md` - Aristotle project IDs only
 - `plan_15_12_2025_formailzing_axioms.md` - old plan
 
 **This file (PROJECT_STATUS.md) is the SINGLE SOURCE OF TRUTH.**

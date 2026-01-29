@@ -12,7 +12,7 @@
 
   \item \textbf{A2 (Continuity and tails).} Analytic source: \texttt{docs/tex/A2\_continuity\_Q.tex}. Provides $L_Q(K)$ and the Gaussian tail control. Optional ATP log: \texttt{proofs/A2\_cone\_density/logs/a2\_core\_clean*.log}.
 
-  \item \textbf{A3 (Toeplitz bridge).}\label{subsec:a3-atp} Analytic source: \texttt{docs/tex/A3\_toeplitz\_symbol\_bridge.tex}. Captures the SB barrier, Rayleigh identification, and $Q(\Phi)$ equivalence. Optional ATP log: \texttt{proofs/A3\_toeplitz\_bridge/logs/a3\_run\_*.log}.
+  \item \textbf{A3 (Toeplitz bridge).}\label{subsec:a3-atp} Analytic source: \texttt{docs/tex/A3\_toeplitz\_symbol\_bridge.tex}. Captures the SB barrier, Rayleigh identification, and $Q^\star(t;\Phi)$ equivalence. Optional ATP log: \texttt{proofs/A3\_toeplitz\_bridge/logs/a3\_run\_*.log}.
 
   \item \textbf{MD$_{2,3}$ base.}\label{subsec:md-atp} Analytic sources: \texttt{docs/tex/MD\_2\_3\_base\_interval.tex} and \texttt{docs/tex/MD\_2\_3\_constants.tex}. Optional ATP logs: \texttt{proofs/MD\_base\_domination/logs/md\_base\_n*.log}.
 
@@ -74,14 +74,14 @@ For each compact $[-K,K]$ we record four verifiable items (see also the Acceptan
   \item RKHS chain: monotone $(\eta_K,B(K),M(K))$ in \verb|cert/bridge/dict_chain.json| and the proof that $S_K(t_{\min})\le\eta_K<1$ in \verb|cert/bridge/dict_chain_proof.json| (generator \verb|tools/bridge/rkhs_chain.py|).
   \item T0/A1$'$/A2/MD/IND$'$/T5: as given in the respective sections of the manuscript.
 \end{itemize}
-Lemma \ref{t5:lem:T5-inheritance} (monotone inheritance in $K$) together with T5 transfers $Q\ge0$ from each $\mathcal W_K$ to the Weil test class; \texttt{Weil\_criterion\_linkage.tex} completes the implication to RH.
+Lemma \ref{t5:lem:T5-inheritance} (monotone inheritance in $K$) together with T5 transfers $Q^\star(t;\cdot)\ge0$ from each $\mathcal W_K$ to the Weil test class; \texttt{Weil\_criterion\_linkage.tex} completes the implication to RH.
 
 \paragraph{Track B checklist (no ``assume'').}
 For quick auditing of the unconditional chain (Section~\ref{sec:A3} and Appendix~\ref{app:legacy-branch}), verify the following six items are present \emph{and} carry explicit source references to the legacy JSON/logs:
 \begin{enumerate}[label=\textbf{V\arabic*.}, leftmargin=2.2em]
-  \item \textbf{A3 lock grid.} \texttt{sections/A3/param\_tables.tex} lists $(B,\,t_{\mathrm{sym}},\,c_0,\,\omega(\pi/M))$ for each $K$ (legacy $2\pi$ normalization), citing \verb|cert/bridge/K*_A3_lock.json| and logs. See \S\ref{sec:A3}.
-  \item \textbf{Prime trace caps.} \texttt{sections/RKHS/prime\_cap\_table.tex} lists $(K,t_{\mathrm{pr}},\rho_{\mathrm{cap}})$ using the spectral floors \path{cert/bridge/K*_A3_floor.json} and the trace certificates \path{cert/pcu/K*_pcu_trace.json}. The analytic cap is given by $\rho(t_{\mathrm{rkhs}})$ in Lemma~\ref{lem:rkhs-uniform-cap-full}, with the uniform gate $\rho(t_{\mathrm{rkhs}})\le c_*/4$ in Corollary~\ref{cor:pcu-uniform}. See \S\ref{sec:RKHS}.
-  \item \textbf{PCU (Prime-cap uniform).} Corollary~\ref{cor:pcu-uniform} shows $\|T_P\|\le\rho(t_{\mathrm{rkhs}})\le c_*/4$ for $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ using the uniform floor $c_*>0$ from Lemma~\ref{lem:uniform-arch-floor}. Legacy JSON certificates are archived in \path{cert/pcu/} for reproducibility only.
+  \item \textbf{A3 lock grid.} \texttt{sections/A3/param\_tables.tex} lists $(B,\,t,\,c_0,\,\omega(\pi/M))$ for each $K$ (legacy $2\pi$ normalization), citing \verb|cert/bridge/K*_A3_lock.json| and logs. See \S\ref{sec:A3}.
+  \item \textbf{Prime trace caps.} \texttt{sections/RKHS/prime\_cap\_table.tex} lists $(K,t_{\mathrm{pr}},\rho_{\mathrm{cap}})$ using the spectral floors \path{cert/bridge/K*_A3_floor.json} and the trace certificates \path{cert/pcu/K*_pcu_trace.json}. The analytic cap is given by $\rho(t)$ in Lemma~\ref{lem:rkhs-uniform-cap-full}, with the uniform gate $\rho(t)\le c_*/4$ in Corollary~\ref{cor:pcu-uniform}. See \S\ref{sec:RKHS}.
+  \item \textbf{PCU (Prime-cap uniform).} Corollary~\ref{cor:pcu-uniform} shows $\|T_P^{\mathrm{RKHS}}(t)\|\le\rho(t)\le c_*/4$ for $t\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}=t_{\mathrm{crit}}=3/20=0.15$ using the uniform floor $c_*>0$ from Lemma~\ref{lem:uniform-arch-floor}. Legacy JSON certificates are archived in \path{cert/pcu/} for reproducibility only.
   \item \textbf{IND/AB schedule.} \texttt{sections/IND\_AB/ind\_schedule\_table.tex} cites \verb|cert/bridge/K1_blocks.json|, \verb|K1_step_next.json| and the residual budget $\varepsilon(K)=c_0/4$. See Appendix~\ref{app:legacy-ind}.
   \item \textbf{T5 transport grid.} \texttt{appendix/T5\_parameters.tex} lists the lattice and monotone schedules $(t^\star(M),M^\star)$ with sources \verb|cert/bridge/K*_grid.json| and \verb|proofs/T5_global_transfer/| logs. See Appendix~\ref{app:legacy-t5}.
   \item \textbf{Acceptance linkage.} \texttt{sections/Weil\_linkage.tex} cites the same $c_0$, $\eta_K$, and transport margins certified in V1--V4, and the Lean export \texttt{notes/lean/KE\_integral\_certificate.json} aggregates those constants without alteration.

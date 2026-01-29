@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-01-27",
+  "qmd_command": "qmd",
+  "collection": "math_papers",
+  "literature_dir": "literature",
+  "zotero_collection": "zotero_lib",
+  "zotero_dir": "literature/zotero",
+  "context": "Mathematics and RH-related papers (markdown).",
+  "limit": 10,
+  "min_score": 0.2,
+  "index": null,
+  "notes": "Used by scripts/research_oracle.py"
+}

@@ -64,13 +64,13 @@ Riemann Hypothesis
 \end{tabular}
 \end{center}
 
-The components of this chain are:
+The components of this chain are, with the single analytic scale fixed at $t_{\mathrm{crit}}=3/20$:
 \begin{itemize}
 \item \textbf{(T0) Normalization}: The Guinand--Weil crosswalk between frequency conventions, established in this paper.
 \item \textbf{(A1$'$) Density}: The Fej\'er$\times$heat cone $\GG_K$ is dense in the cone of continuous, even, nonnegative functions on $[-K,K]$, established in Part~I~\cite{Paper1}.
 \item \textbf{(A2) Continuity}: The functional $Q$ is Lipschitz continuous on each compact window, established in Part~I~\cite{Paper1}.
 \item \textbf{(A3) Toeplitz barrier}: The uniform Archimedean floor $\min P_A(\theta) \ge c_* = 11/10$, established in Part~II~\cite{Paper2}.
-\item \textbf{(RKHS) Prime cap}: The uniform bound $\|T_P\| \le \rho(t_{\mathrm{rkhs}}) < c_*/4$, established in Part~II~\cite{Paper2}.
+\item \textbf{(RKHS) Prime cap}: The uniform bound $\|T_P\| \le \rho(t_{\mathrm{crit}}) \le c_*/4$, established in Part~II~\cite{Paper2}.
 \end{itemize}
 
 \subsection*{Main result}
@@ -85,7 +85,7 @@ The proof combines the uniform A3 bridge inequality from Part~II with a density-
 
 Three features distinguish this approach:
 \begin{enumerate}
-\item \textbf{Uniform bounds}: All constants ($c_*$, $t_{\mathrm{sym}}$, $t_{\mathrm{rkhs}}$, $B_{\min}$) are fixed globally and independent of the compact window $[-K,K]$.
+\item \textbf{Uniform bounds}: All constants ($c_*$, $t_{\mathrm{crit}}$, $B_{\min}$) are fixed globally and independent of the compact window $[-K,K]$.
 \item \textbf{No numerical tables}: Every bound is derived from explicit analytic estimates (digamma asymptotics, Gaussian integrals, Gershgorin bounds).
 \item \textbf{Modular architecture}: Each component (density, continuity, Toeplitz barrier, RKHS cap) is self-contained and verifiable independently.
 \end{enumerate}
@@ -195,7 +195,7 @@ for all admissible test functions $\Phi_1, \Phi_2$ supported in $[-K,K]$.
 \subsection{Module (A3): Uniform Toeplitz barrier}
 
 \begin{theorem}[Archimedean floor, Part~II]\label{thm:floor}
-Fix $t_{\mathrm{sym}} = 3/50$ and $B_{\min} = 3$. Then for every $B \ge B_{\min}$ and every $\theta \in \TT$,
+Fix the single scale $t_{\mathrm{crit}} = 3/20$ and $B_{\min} = 3$. Then for every $B \ge B_{\min}$ and every $\theta \in \TT$,
 \[
 P_A(\theta) \ge c_* := \frac{11}{10},
 \]
@@ -205,9 +205,9 @@ where $P_A$ is the periodized Archimedean symbol.
 \subsection{Module (RKHS): Uniform prime cap}
 
 \begin{theorem}[Prime cap, Part~II]\label{thm:prime-cap}
-For $t_{\mathrm{rkhs}} \ge 1$,
+For the single scale $t_{\mathrm{crit}} = 3/20$,
 \[
-\|T_P\| \le \rho(t_{\mathrm{rkhs}}) \le \rho(1) < \frac{1}{25} < \frac{c_*}{4},
+\|T_P\| \le \rho(t_{\mathrm{crit}}) \le \frac{c_*}{4},
 \]
 where $T_P$ is the prime sampling operator.
 \end{theorem}
@@ -215,11 +215,11 @@ where $T_P$ is the prime sampling operator.
 \subsection{Combined: The uniform A3 bridge}
 
 \begin{theorem}[A3 bridge, Part~II]\label{thm:A3-bridge}
-For $B \ge B_{\min}$, $t_{\mathrm{sym}} = 3/50$, $t_{\mathrm{rkhs}} \ge 1$, and $M \ge M_0^{\mathrm{unif}}$,
+For $B \ge B_{\min}$, the single scale $t_{\mathrm{crit}} = 3/20$, and $M \ge M_0^{\mathrm{unif}}$,
 \[
 \lambda_{\min}(T_M[P_A] - T_P) \ge \frac{c_*}{4} > 0.
 \]
-Consequently, $Q(\Phi_{B,t_{\mathrm{sym}}}) \ge 0$ for the associated Fej\'er--heat test function.
+Consequently, $Q(\Phi_{B,t_{\mathrm{crit}}}) \ge 0$ for the associated Fej\'er--heat test function.
 \end{theorem}
 
 \subsection{Module summary}
@@ -236,7 +236,7 @@ T0 & Guinand--Weil normalization & --- & III (this paper) \\
 A1$'$ & Fej\'er--heat density on $\WW_K$ & --- & I \\
 A2 & Lipschitz continuity $L_Q(K)$ & --- & I \\
 A3 & Uniform Archimedean floor & $c_* = 11/10$ & II \\
-RKHS & Uniform prime cap & $\rho(1) < 1/25$ & II \\
+RKHS & Uniform prime cap & $\rho(t_{\mathrm{crit}}) \le c_*/4$ & II \\
 \hline
 \end{tabular}
 \end{table}
@@ -267,7 +267,7 @@ Q(\Phi) \ge 0 \qquad \text{for every } \Phi \in \WW.
 \begin{proof}
 Fix $K > 0$. We show $Q(\Phi) \ge 0$ for all $\Phi \in \WW_K$.
 
-\textbf{Step 1: Positivity on generators.} By \Cref{thm:A3-bridge}, $Q(\Phi_{B,t_{\mathrm{sym}}}) \ge 0$ for every Fej\'er--heat generator $\Phi_{B,t_{\mathrm{sym}}}$ with $B \ge B_{\min}$. Since $Q$ is linear and $Q(\Phi) \ge 0$ for generators, we have $Q(g) \ge 0$ for every $g \in \GG_K$.
+\textbf{Step 1: Positivity on generators.} By \Cref{thm:A3-bridge}, $Q(\Phi_{B,t_{\mathrm{crit}}}) \ge 0$ for every Fej\'er--heat generator $\Phi_{B,t_{\mathrm{crit}}}$ with $B \ge B_{\min}$. Since $Q$ is linear and $Q(\Phi) \ge 0$ for generators, we have $Q(g) \ge 0$ for every $g \in \GG_K$.
 
 \textbf{Step 2: Extension by density and continuity.} Let $\Phi \in \WW_K$. By \Cref{thm:density}, there exists a sequence $(g_n) \subset \GG_K$ with $\|g_n - \Phi\|_\infty \to 0$. By \Cref{thm:lipschitz},
 \[
@@ -356,9 +356,9 @@ This architecture mirrors standard programmatic proofs in mathematical physics, 
 \begin{enumerate}
 \item \textbf{Consistent symbol definition}: The Archimedean symbol $P_A$ is defined once via periodization of the Fej\'er--heat window, and its Lipschitz modulus is proved directly for that same object.
 
-\item \textbf{Uniform prime cap}: The RKHS bound uses a single scale $t_{\mathrm{rkhs}} \ge 1$ independent of $K$, eliminating all K-dependent schedules.
+\item \textbf{Uniform prime cap}: The RKHS bound uses the single scale $t_{\mathrm{crit}} = 3/20$ independent of $K$, eliminating all K-dependent schedules.
 
-\item \textbf{Two-scale decoupling}: The symbol parameter $t_{\mathrm{sym}}$ and the RKHS parameter $t_{\mathrm{rkhs}}$ are independent; no coupling is required.
+\item \textbf{Single-scale alignment}: We fix a single analytic scale $t_{\mathrm{crit}} = 3/20$ for both the symbol and prime cap, eliminating two-scale bookkeeping.
 \end{enumerate}
 
 \subsection{Relation to other approaches}

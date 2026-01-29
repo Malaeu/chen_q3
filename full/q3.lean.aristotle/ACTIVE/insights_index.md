@@ -1,0 +1,1 @@
+../docs/insights/INDEX.md

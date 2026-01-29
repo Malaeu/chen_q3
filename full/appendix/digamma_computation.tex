@@ -12,16 +12,16 @@ The Archimedean density is defined as
 \]
 where $\psi(z)=\Gamma'(z)/\Gamma(z)$ is the digamma function.
 
-For $B>0$ and $t_{\mathrm{sym}}>0$, define
+For $B>0$ and $t>0$, define
 \begin{align}
-  A_0(B,t_{\mathrm{sym}}) &:= 2\pi\int_{-B}^{B} a(\xi)\Bigl(1-\frac{|\xi|}{B}\Bigr) e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}\,d\xi, \\
-  g_{B,t_{\mathrm{sym}}}(\xi) &:= a(\xi)\Bigl(1-\frac{|\xi|}{B}\Bigr) e^{-4\pi^2 t_{\mathrm{sym}}\xi^2}, \\
-  L_A(B,t_{\mathrm{sym}}) &:= 2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}\sum_{m\in\ZZ}\bigl|g_{B,t_{\mathrm{sym}}}'(\theta+m)\bigr|.
+  A_0(B,t) &:= 2\pi\int_{-B}^{B} a(\xi)\Bigl(1-\frac{|\xi|}{B}\Bigr) e^{-4\pi^2 t\xi^2}\,d\xi, \\
+  g_{B,t}(\xi) &:= a(\xi)\Bigl(1-\frac{|\xi|}{B}\Bigr) e^{-4\pi^2 t\xi^2}, \\
+  L_A(B,t) &:= 2\pi\sup_{\theta\in[-\tfrac12,\tfrac12]}\sum_{m\in\ZZ}\bigl|g_{B,t}'(\theta+m)\bigr|.
 \end{align}
 
-With $B_{\min}=3$ and $t_{\mathrm{sym}}=3/50$, the uniform Lipschitz constant is
+With $B_{\min}=3$ and $t=3/20=0.15$, the uniform Lipschitz constant is
 \[
-  L_*(t_{\mathrm{sym}}):=\sup_{B\ge B_{\min}}L_A(B,t_{\mathrm{sym}})
+  L_*(t):=\sup_{B\ge B_{\min}}L_A(B,t)
 \]
 as in Definition~\ref{def:uniform-L}.  The uniform Archimedean floor $c_*>0$ is supplied
 directly by Lemma~\ref{lem:uniform-arch-floor}.
@@ -44,7 +44,7 @@ For $\xi\ne 0$, the real part of $\psi(1/4+i\pi\xi)$ can be computed via the ser
 
 \subsection{Analytic bound framework}
 
-Section~\ref{subsec:a3-symbol-floor} introduces analytic bounds for $L_*(t_{\mathrm{sym}})$
+Section~\ref{subsec:a3-symbol-floor} introduces analytic bounds for $L_*(t)$
 and records the direct pointwise floor $c_*$ (Lemma~\ref{lem:uniform-arch-floor}). The
 mean--modulus estimates for $A_0$ and $L_A$ remain as auxiliary bounds but are not used
 to define $c_*$ in the main proof chain.
@@ -97,4 +97,4 @@ matching Lemma~\ref{lem:a3-a-sample}.
 
 Exploratory numerical checks (high-precision quadrature and grid evaluation of the periodized derivative sum)
 are implemented in \path{scripts/digamma_bounds.py}. These computations are \emph{not} part of the logical proof;
-they merely provide sanity checks on the scale of $A_0(B,t_{\mathrm{sym}})$ and $L_A(B,t_{\mathrm{sym}})$.
+they merely provide sanity checks on the scale of $A_0(B,t)$ and $L_A(B,t)$.

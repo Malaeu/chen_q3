@@ -49,3 +49,12 @@ full/q3.lean.aristotle/docs/cc_15_01_26.md
 output.lean
 sandboxes/
 .venv/
+
+# Python
+__pycache__/
+
+# Generated / local-only artifacts
+full/q3.lean.aristotle/ACTIVE/IMPORT_DEPS.dot
+
+# Local PDF dumps (use docs/links/* instead of committing binaries)
+full/q3.lean.aristotle/literature/quillen_working_papers/

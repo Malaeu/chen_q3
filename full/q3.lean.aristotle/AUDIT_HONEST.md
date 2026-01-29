@@ -129,7 +129,7 @@ done
 
 ### SHOULD INCLUDE:
 - [ ] aristotle_input/*.md (task specifications)
-- [ ] ARISTOTLE_TASKS.md (project IDs)
+- [ ] archive/aristotle_docs/2026-01-28/ARISTOTLE_TASKS.md (project IDs)
 
 ### DOCUMENTATION SHOULD STATE:
 1. 4/5 Tier-2 axioms have complete Aristotle proofs

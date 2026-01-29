@@ -4,10 +4,12 @@ Entry point: `PROJECT_ORCHESTRATOR.md` (status + next steps).
 This file documents the workflow only.
 
 This file is the main project workflow; Aristotle is only one tool in the loop.
+Canonical Aristotle rules live in `ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`.
 
 ## Aristotle Integration: Principles
 
 Aristotle берёт **informal математику** (markdown с LaTeX) и генерирует **Lean 4 код**.
+Полный гайд и актуальные правила: `ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md` (single source).
 
 **Ключевое правило:** НЕ ссылаться на номера лемм/теорем из LaTeX файлов!
 Aristotle не знает про `lem:uniform-arch-floor` или `Theorem 8.17'`.
@@ -20,6 +22,146 @@ Aristotle не знает про `lem:uniform-arch-floor` или `Theorem 8.17'`
 4. Только после OK → отправлять в Aristotle
 
 НЕ отправлять автоматически! Пользователь должен видеть запрос.
+
+---
+
+## Aristotle CLI/TUI — важные правила (обновлено 2026‑01‑27)
+
+### 1) Несовместимость флагов
+
+В версии `aristotlelib >= 0.7.0`:
+- **нельзя** использовать `--no-validate-lean-project`, если включены авто‑импорты.
+- Ошибка выглядит так:
+  ```
+  AssertionError: validate_lean_project must be True when auto_add_imports is True
+  ```
+
+**Вывод:** если используем авто‑импорты, **валидация обязательна**.
+
+### 2) Проблема “outermost project root”
+
+Aristotle ищет **самый внешний** Lean‑root.  
+На этой машине есть `lakefile.toml` и `lean-toolchain` в `/Users/emalam`, поэтому
+CLI думает, что **root = /Users/emalam** → и не видит `Q3.Basic.Defs`, `Q3.Axioms`:
+
+```
+ERROR - Could not resolve import 'Q3.Basic.Defs'
+```
+
+**Вывод:** CLI с auto‑imports здесь ломается.
+
+### 3) Канонический обход (Python API, без auto‑imports)
+
+**Рекомендуемый способ запуска** для Q3:
+- `auto_add_imports=False`
+- `validate_lean_project=False`
+- `context_file_paths` = транзитивные импорты от **правильного root**
+
+Мини‑шаблон (Mac):
+```python
+from pathlib import Path
+from aristotlelib import Project
+from aristotlelib.local_file_utils import gather_file_imports
+import asyncio
+
+ROOT = Path("/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/full/q3.lean.aristotle")
+INPUT = ROOT / "Q3/Proofs/QSpec.lean"
+
+deps = gather_file_imports(INPUT, project_root=ROOT)
+context = [str(p) for p in deps] + [
+    str(ROOT / "ACTIVE/aristotle/queue/<task>/PROMPT.txt"),
+    str(ROOT / "ACTIVE/aristotle/queue/<task>/NODE_BRIEF.md"),
+]
+
+async def main():
+    pid = await Project.prove_from_file(
+        input_file_path=INPUT,
+        auto_add_imports=False,
+        context_file_paths=context,
+        validate_lean_project=False,
+        wait_for_completion=False,
+        output_file_path=ROOT / "aristotle_output/<task>_aristotle.lean",
+    )
+    print(pid)
+
+asyncio.run(main())
+```
+
+Linux путь менять на `/mnt/hdd01/Soft/GitHub/chen_q3/...`.
+
+---
+
+### 4) Официальные TUI‑режимы и поведение (docs)
+
+**4 режима:**
+1. **Fill sorries in a Lean file** — основной режим для DAG‑узлов с `sorry`.
+2. **Upload math text** — формализация из естественного языка/документов.
+3. **Prompt Aristotle** — свободный промпт на английском (можно приложить Lean‑файл).
+4. **View recent attempts** — история попыток/статусы.
+
+**Важно про режим 1 (Fill sorries):**
+- Aristotle видит **только транзитивные импорты** указанного файла.
+- **Импорты сам не добавляет.**
+- **Меняет только указанный файл.**
+- **Definitions/data не модифицирует** по умолчанию.
+
+**Selective filling:** если нужно закрыть только часть дыр,
+замени остальные `sorry` на `admit` — тогда Aristotle не будет тратить бюджет.
+
+---
+
+### 5) “PROVIDED SOLUTION” (инъекция proof‑sketch)
+
+Aristotle читает **английский скетч** только из **комментария над теоремой**,
+помеченного `PROVIDED SOLUTION`.
+
+**Важно:**
+- Комментарии **внутри** блока `by` **не читаются**.
+- Чем короче и структурнее скетч, тем лучше.
+
+---
+
+### 6) Контрпримеры и отрицания (disprove mode)
+
+Если формулировка ложная, Aristotle может:
+- оставить комментарий с **контрпримером**,
+- или выдать **доказательство отрицания**.
+
+В таких случаях он может вставить служебный тактик `negate_state`.
+Это **сигнал “REFORMULATE”**, а не “дожимать доказательство”.
+
+---
+
+## FRI‑style taint propagation (ERROR bubble‑up)
+
+**Цель:** если в листьях есть `sorry` или контрпример, автоматически “портить”
+все зависимые узлы, чтобы не тратить ресурсы на верхний слой.
+
+**Команды:**
+```bash
+./scripts/numeric_sanity_check.py --write-back   # optional: mark BROKEN on FAIL
+./scripts/build_taint_graph.py                   # propagate SORRY/TAINTED/BROKEN
+./scripts/build_proof_graph.py                   # reflect statuses in main graph
+```
+
+**Правило планировщика:** работать **только** с нижними `SORRY` (без SORRY‑deps).
+
+---
+
+## DAG‑loop (автоматизация очереди)
+
+Добавлен генератор очереди:
+```
+python3 full/q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 10
+```
+
+Он создаёт:
+- `ACTIVE/aristotle/ARISTOTLE_QUEUE.json` + `ACTIVE/aristotle/ARISTOTLE_QUEUE.md`
+- `ACTIVE/aristotle/queue/<task>/PROMPT.txt`
+- `ACTIVE/aristotle/queue/<task>/NODE_BRIEF.md`
+
+**Смысл:** агенты берут top‑задачи из очереди и отправляют в Aristotle
+через Python API (см. шаблон выше).
 
 ---
 
@@ -62,7 +204,7 @@ This is the full project loop; Aristotle и Прошка — ключевые и
    - Re-import into DB (`aristotle_db/parse_lean.py`).
    - Update `PROOF_MAP_NEW_KERNEL.md` (status + file link).
    - Update `A3_FLOOR_ROADMAP.md` (advance the active step).
-   - Update `FORMALIZATION_STATS.md` (rerun the stats script and refresh counts).
+   - Update `FORMALIZATION_STATS.md` via `./scripts/update_formalization_stats.sh`.
    - Update `docs/INSIGHTS.md` (reusable insights, no new docs).
    - If specs changed, update `docs/PROJECT_SPECS.md` and DB.
 
@@ -147,6 +289,10 @@ theorem new_result : Q := by
 cd /Users/emalam/Documents/GitHub/chen_q3
 source .venv/bin/activate
 
+# Безопасность:
+# - НЕ передавай ARISTOTLE_API_KEY через аргументы CLI (утечёт в history/logs).
+# - Держи ключ в переменной окружения (например, ~/.bashrc) и просто `source ...`.
+
 # Отправить новый файл (informal markdown)
 aristotle prove-from-file --informal --no-validate-lean-project --no-wait problem.md
 
@@ -174,6 +320,16 @@ async def main():
 
 asyncio.run(main())
 PY
+```
+
+### После скачивания (обязательная проверка)
+
+```bash
+# Скан на “дыры” (в т.ч. exact?) — файлы с дырками считаем DRAFT
+rg -n "sorry|exact\\?" aristotle_output/<project_id>-output.lean
+
+# Быстрая компиляция в проекте (если интегрируем)
+lake env lean <file>
 ```
 
 ---
