@@ -14,7 +14,7 @@
 | 2003-2.ocr.md | ~50 | 129KB | Done |
 | 2003-3.ocr.md | 61 | 121KB | Done |
 | 2003-4.ocr.md | ~55 | 127KB | Done |
-| 2003-5.pdf | ~100? | 16MB | In progress |
+| 2003-5.ocr.md | 79 | 189KB | Done |
 | 2003-6.pdf | ? | ? | Pending |
 | 2003-7.pdf | ? | ? | Pending |
 
@@ -67,6 +67,26 @@ where α: H₊ → H₋ satisfies α*α ≤ I, so that I - F² ≥ 0 and ∈ K.
 | 39 | "X is the infinitesimal generator of the time evolution for a harmonic oscillator. Even case: X = [[0,-T*],[T,0]]" |
 | 3267 | "you want a 'time evolution' associated to S and the form" |
 | 3272 | "spectrum of A⁻¹S" — ratio of symmetric/skew forms as eigenvalues |
+
+### Polarization & Cayley Transform (2003-5) — NEW
+
+| Line | Content |
+|------|---------|
+| 2745 | "The key idea should be 'polarization', that is, a splitting of the basic rep space H(ℂⁿ) into complementary lagrangian subspaces which are orthogonal for the inner product" |
+| 3419 | "It's go back to Cayley Transform" — main discussion of C.T. |
+| 3542 | "polar decomp X = \|X\|J, where J = X/\|X\|. J is a complex structure; J* = -J = J⁻¹" |
+| 5221 | "A polarization of H(V) is described by an F = F* = F⁻¹" — **self-adjoint involution!** |
+| 5249 | "g = (1+x)/(1-x)" — explicit Cayley transform formula |
+| 5263 | "Periodicity Real Bott λ" — Bott periodicity reference |
+| 5278 | "g_t = (1+tX)/(1-t²X²)^{1/2} → X/\|X\| as t → ∞" — phase in polar decomp |
+| 5309 | "IDEA: Could there exist an infinite-dimensional anti-interacting index" — index theory! |
+| 5495 | "Problem: You want to show for any polarization F that the ±1 eigenvalues have isotropic" |
+
+**Key insight from 2003-5:** Quillen explicitly connects:
+- Polarization = Self-adjoint involution F = F* = F⁻¹
+- Cayley transform g = (1+X)/(1-X) for infinitesimal generators
+- Polar decomposition X = |X|·J where J² = -1
+- This is the SAME structure as Toeplitz operators on Hardy space!
 
 ### Positive Definite Structures (2003-2, 2003-3, 2003-4)
 
@@ -171,7 +191,7 @@ literature/quillen_working_papers/2003/
 ├── 2003-2.clean.md (Cleaned version)
 ├── 2003-3.ocr.md  (Symplectic geometry, eigenvalues)
 ├── 2003-4.ocr.md  (Time evolution, Cayley transform)
-├── 2003-5.pdf     (OCR in progress)
+├── 2003-5.ocr.md  (Polarization, Cayley transform, Bott periodicity) — 189KB
 ├── 2003-6.pdf     (Pending)
 └── 2003-7.pdf     (Pending)
 ```
