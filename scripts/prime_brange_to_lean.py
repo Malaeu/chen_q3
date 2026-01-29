@@ -49,10 +49,10 @@ def main() -> None:
             # B, prime_sum, prime_ub, arch_term, margin
             prime_ub = Decimal(parts[2])
             arch_term = Decimal(parts[3])
-            margin = Decimal(parts[4])
             prime_ub_q = prime_ub.quantize(quant, rounding=ROUND_CEILING)
             arch_term_q = arch_term.quantize(quant, rounding=ROUND_FLOOR)
-            margin_q = margin.quantize(quant, rounding=ROUND_FLOOR)
+            # conservative margin lower bound derived from rounded arch/prime bounds
+            margin_q = (arch_term_q - prime_ub_q).quantize(quant, rounding=ROUND_FLOOR)
             prime_ubs.append(prime_ub_q)
             arch_terms.append(arch_term_q)
             margins.append(margin_q)
@@ -63,9 +63,17 @@ def main() -> None:
     def fmt(d: Decimal) -> str:
         return format(d, "f")
 
-    arr_margin = ", ".join(fmt(d) for d in margins)
-    arr_prime_ub = ", ".join(fmt(d) for d in prime_ubs)
-    arr_arch = ", ".join(fmt(d) for d in arch_terms)
+    def render_fin_table(name: str, values: list[Decimal]) -> str:
+        lines = [f"def {name} : Fin prime_b_grid_size -> ℚ"]
+        for idx, val in enumerate(values):
+            lines.append(f"| ⟨{idx}, _⟩ => {fmt(val)}")
+        # fallback should be unreachable for Fin prime_b_grid_size
+        lines.append(f"| _ => {fmt(values[-1])}")
+        return "\n".join(lines)
+
+    table_margin = render_fin_table("prime_b_grid_val_q", margins)
+    table_prime_ub = render_fin_table("prime_b_grid_prime_ub_q_get", prime_ubs)
+    table_arch = render_fin_table("prime_b_grid_arch_term_q_get", arch_terms)
     ts = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
 
     lean = f"""import Mathlib
@@ -78,7 +86,7 @@ Generated: {ts}
 Values are rounded to {args.digits} decimal places.
 - margin and arch_term: rounded down (lower bounds)
 - prime_ub: rounded up (upper bounds)
--/-
+-/
 
 noncomputable section
 
@@ -91,65 +99,89 @@ def prime_b_grid (i : Fin prime_b_grid_size) : ℝ :=
   B_min + (i.1 : ℝ) * prime_cert_B_h
 
 /-- Grid margins for B in [B_min, prime_cert_B_max] with step prime_cert_B_h. -/
-def prime_b_grid_vals_q : Array ℚ := #[{arr_margin}]
+{table_margin}
 
 /-- Grid prime upper bounds (same B grid). -/
-def prime_b_grid_prime_ub_q : Array ℚ := #[{arr_prime_ub}]
+{table_prime_ub}
 
 /-- Grid arch term lower bounds (same B grid). -/
-def prime_b_grid_arch_term_q : Array ℚ := #[{arr_arch}]
+{table_arch}
 
-def prime_b_grid_val_q (i : Fin (prime_b_grid_vals_q.size)) : ℚ :=
-  prime_b_grid_vals_q.get! i.1
-
-def prime_b_grid_val (i : Fin (prime_b_grid_vals_q.size)) : ℝ :=
+def prime_b_grid_val (i : Fin prime_b_grid_size) : ℝ :=
   (prime_b_grid_val_q i : ℝ)
 
-def prime_b_grid_prime_ub_q_get (i : Fin (prime_b_grid_prime_ub_q.size)) : ℚ :=
-  prime_b_grid_prime_ub_q.get! i.1
-
-def prime_b_grid_prime_ub (i : Fin (prime_b_grid_prime_ub_q.size)) : ℝ :=
+def prime_b_grid_prime_ub (i : Fin prime_b_grid_size) : ℝ :=
   (prime_b_grid_prime_ub_q_get i : ℝ)
 
-def prime_b_grid_arch_term_q_get (i : Fin (prime_b_grid_arch_term_q.size)) : ℚ :=
-  prime_b_grid_arch_term_q.get! i.1
-
-def prime_b_grid_arch_term (i : Fin (prime_b_grid_arch_term_q.size)) : ℝ :=
+def prime_b_grid_arch_term (i : Fin prime_b_grid_size) : ℝ :=
   (prime_b_grid_arch_term_q_get i : ℝ)
 
-def prime_cert_margin_lb_q : ℚ := (499 / 1000)
+def prime_cert_margin_lb_q : ℚ := (12 / 25)
 
 lemma prime_cert_margin_lb_eq_q : (prime_cert_margin_lb : ℝ) = prime_cert_margin_lb_q := by
   norm_num [prime_cert_margin_lb, prime_cert_margin_lb_q]
 
+/-- Table min bound in ℚ: every grid margin is ≥ prime_cert_margin_lb_q. -/
+lemma prime_b_grid_val_ge_lb_q :
+    ∀ i : Fin prime_b_grid_size,
+      prime_cert_margin_lb_q ≤ prime_b_grid_val_q i := by
+  intro i
+  fin_cases i <;>
+    simp [prime_b_grid_val_q, prime_cert_margin_lb_q] <;> norm_num
+
 /-- Table min bound: every grid margin is ≥ prime_cert_margin_lb. -/
 lemma prime_b_grid_val_ge_lb :
-    ∀ i : Fin (prime_b_grid_vals_q.size),
+    ∀ i : Fin prime_b_grid_size,
       prime_cert_margin_lb ≤ prime_b_grid_val i := by
   intro i
-  have hq : prime_cert_margin_lb_q ≤ prime_b_grid_val_q i := by
-    decide
+  have hq : prime_cert_margin_lb_q ≤ prime_b_grid_val_q i := prime_b_grid_val_ge_lb_q i
   have hq' : (prime_cert_margin_lb_q : ℝ) ≤ (prime_b_grid_val_q i : ℝ) := by
     exact_mod_cast hq
   simpa [prime_cert_margin_lb_eq_q, prime_b_grid_val] using hq'
 
+/-- Table min bound with Lipschitz slack in ℚ: every grid margin is ≥ lb + L*h/2. -/
+lemma prime_b_grid_val_ge_lb_with_slack_q :
+    ∀ i : Fin prime_b_grid_size,
+      (prime_cert_margin_lb_q + (3/5) * (1/10) / (2:ℚ)) ≤ prime_b_grid_val_q i := by
+  intro i
+  fin_cases i <;>
+    simp [prime_b_grid_val_q, prime_cert_margin_lb_q] <;> norm_num
+
 /-- Table min bound with Lipschitz slack: every grid margin is ≥ margin_lb + L*h/2. -/
 lemma prime_b_grid_val_ge_lb_with_slack :
-    ∀ i : Fin (prime_b_grid_vals_q.size),
+    ∀ i : Fin prime_b_grid_size,
       prime_cert_margin_lb + prime_cert_L_ub * prime_cert_B_h / 2 ≤ prime_b_grid_val i := by
   intro i
-  -- reduce to ℚ and decide
-  have hq : (prime_cert_margin_lb_q + (3/10) * (1/10) / (2:ℚ)) ≤ prime_b_grid_val_q i := by
-    decide
-  have hq' : ((prime_cert_margin_lb_q + (3/10) * (1/10) / (2:ℚ)) : ℝ) ≤ (prime_b_grid_val_q i : ℝ) := by
+  fin_cases i <;>
+    simp [prime_b_grid_val, prime_b_grid_val_q, prime_cert_margin_lb,
+          prime_cert_L_ub, prime_cert_B_h] <;> norm_num
+
+/-! Table arithmetic: margin lower bound from arch/prime bounds. -/
+
+lemma prime_b_grid_val_le_arch_sub_prime_ub_q :
+    ∀ i : Fin prime_b_grid_size,
+      prime_b_grid_val_q i ≤
+        prime_b_grid_arch_term_q_get i - prime_b_grid_prime_ub_q_get i := by
+  intro i
+  fin_cases i <;>
+    simp [prime_b_grid_val_q,
+          prime_b_grid_arch_term_q_get,
+          prime_b_grid_prime_ub_q_get] <;> norm_num
+
+lemma prime_b_grid_val_le_arch_sub_prime_ub :
+    ∀ i : Fin prime_b_grid_size,
+      prime_b_grid_val i ≤
+        prime_b_grid_arch_term i - prime_b_grid_prime_ub i := by
+  intro i
+  have hq :
+      prime_b_grid_val_q i ≤
+        prime_b_grid_arch_term_q_get i - prime_b_grid_prime_ub_q_get i :=
+    prime_b_grid_val_le_arch_sub_prime_ub_q i
+  have hq' :
+      (prime_b_grid_val_q i : ℝ) ≤
+        (prime_b_grid_arch_term_q_get i - prime_b_grid_prime_ub_q_get i : ℝ) := by
     exact_mod_cast hq
-  -- rewrite constants
-  have hL : (prime_cert_L_ub : ℝ) = (3/10 : ℝ) := by
-    norm_num [prime_cert_L_ub]
-  have hH : (prime_cert_B_h : ℝ) = (1/10 : ℝ) := by
-    norm_num [prime_cert_B_h]
-  -- assemble
-  simpa [prime_cert_margin_lb_eq_q, prime_b_grid_val, hL, hH] using hq'
+  simpa [prime_b_grid_val, prime_b_grid_arch_term, prime_b_grid_prime_ub] using hq'
 
 end Q3.Proofs.PrimeCert
 """
