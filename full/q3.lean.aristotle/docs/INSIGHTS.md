@@ -13,7 +13,6 @@
 
 - Текущая цепочка (single-scale t_critical): `docs/CHAIN_STATUS.md`.
 - Hub для активных доков/скриптов/DB: `ACTIVE/`.
-- Актуальная карта доказательства: `ACTIVE/refs/proof_map_new_kernel.md` (НЕ `ACTIVE/refs/proof_map.md`).
 - Прошка как ускоритель: застряли >30 минут или <10% прогресса в Aristotle → `docs/insights/proshka_key_resource.md`.
 - Пример «идеального» ответа Прошки: нужна опорная структура → `docs/insights/breakthrough_proshka_full_proof_2026_01_14.md`.
 
@@ -40,6 +39,14 @@
   2) потом внешний web‑поиск через встроенный web tool,
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
+
+## Audit (2026-01-29) — PDF vs Lean mainline divergence (in progress)
+
+- RH_Q3.pdf формулирует **классический Weil‑конус**; mainline Lean использует
+  **`Weil_cone_tau0` (τ=0 + фиксированный B‑range)**.
+- PDF использует two‑scale (`t_sym`, `t_rkhs`); mainline использует single‑scale `t_critical`.
+- Полная секция‑к‑Lean карта + сводка расхождений:  
+  `docs/struktura_q3_with_mapping_toLEAN.md` (раздел “2026-01-29 Audit — PDF vs Lean Mainline”).
 
 ## Synthesis (2026-01-28, in progress) — heat-weight integrability requires global a_star growth
 
