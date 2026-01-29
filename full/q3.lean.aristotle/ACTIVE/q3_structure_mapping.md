@@ -1,1 +1,0 @@
-../docs/struktura_q3_with_mapping_toLEAN.md

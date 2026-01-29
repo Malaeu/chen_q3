@@ -71,7 +71,7 @@ Aristotle guidelines (links):
 | ~/.codex/skills/aristotle/SKILL.md | Local Aristotle skill (CLI + workflow) |
 | /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md | Prompt policy for Q3 |
 | /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/project_ids.txt | All project UUIDs |
-| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/ACTIVE/ARISTOTLE_WORKFLOW.md | Canonical workflow (single source) |
+| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md | Canonical workflow (single source) |
 
 Project files (Q3):
 

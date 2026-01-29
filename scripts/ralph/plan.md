@@ -12,7 +12,7 @@ Constraints:
 Project specs to read (in order):
 1) full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
 2) full/q3.lean.aristotle/ACTIVE/chain_status.md
-3) full/q3.lean.aristotle/ACTIVE/Q3_BLOCK_MAP.md
+3) full/q3.lean.aristotle/ACTIVE/refs/Q3_BLOCK_MAP.md
 4) full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
 5) full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md
 

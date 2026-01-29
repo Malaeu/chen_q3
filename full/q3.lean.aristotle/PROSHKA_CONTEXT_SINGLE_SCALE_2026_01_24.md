@@ -67,9 +67,9 @@ Keep this file short. Put details in linked docs.
 2) `ACTIVE/chain_status.md` — single-scale chain summary
 3) `ACTIVE/insights.md` — live insights index (links only)
 4) `ACTIVE/workflow.md` — workflow rules
-5) `ACTIVE/SPECS_INDEX.md` — curated spec pointers + constants checklist
-6) `ACTIVE/Q3_BLOCK_MAP.md` — Lean ↔ paper block map
-7) `ACTIVE/ERS_SUMMARY.md` — consolidated ERS legacy summary
+5) `ACTIVE/refs/SPECS_INDEX.md` — curated spec pointers + constants checklist
+6) `ACTIVE/refs/Q3_BLOCK_MAP.md` — Lean ↔ paper block map
+7) `ACTIVE/refs/ERS_SUMMARY.md` — consolidated ERS legacy summary
 
 Note: spec sources are legacy/background. For mainline decisions, return to
 `ACTIVE/chain_status.md` and `ACTIVE/orchestrator.md`.
@@ -80,8 +80,8 @@ Note: spec sources are legacy/background. For mainline decisions, return to
   - `t_critical = 3/20`
   - base-atom cone with `tau = 0`
 - Canonical summary: `ACTIVE/chain_status.md`
-- Paper alignment audit (single-scale vs legacy): `ACTIVE/single_scale_paper_audit.md`
-- Legacy two-scale index: `ACTIVE/legacy_two_scale_index.md`
+- Paper alignment audit (single-scale vs legacy): `ACTIVE/refs/single_scale_paper_audit.md`
+- Legacy two-scale index: `ACTIVE/refs/legacy_two_scale_index.md`
 
 ## 2) Live axioms (single-scale)
 
@@ -96,27 +96,27 @@ Source of truth:
 ## 3) Canonical docs (maps/specs)
 
 - Proof maps:
-  - `ACTIVE/proof_map.md`
-  - `ACTIVE/proof_map_new_kernel.md`
+  - `ACTIVE/refs/proof_map.md`
+  - `ACTIVE/refs/proof_map_new_kernel.md`
 - Paper ↔ Lean mapping:
-  - `ACTIVE/paper_lean_mapping.md`
-  - `ACTIVE/q3_pdf_structure.md`
-  - `ACTIVE/q3_structure_mapping.md`
+  - `ACTIVE/refs/paper_lean_mapping.md`
+  - `ACTIVE/refs/q3_pdf_structure.md`
+  - `ACTIVE/refs/q3_structure_mapping.md`
 - Architecture/status:
-  - `ACTIVE/architecture.md`
-  - `ACTIVE/project_status.md`
-  - `ACTIVE/axiom_closure_analysis.md`
+  - `ACTIVE/refs/architecture.md`
+  - `ACTIVE/refs/project_status.md`
+  - `ACTIVE/refs/axiom_closure_analysis.md`
 
 ## 4) Aristotle + Proshka
 
 - Aristotle docs (RU):
-  - `ACTIVE/aristotle.md`
-  - `ACTIVE/aristotle_sandbox_guide.md`
+  - `ACTIVE/aristotle/aristotle.md`
+  - `ACTIVE/aristotle/aristotle_sandbox_guide.md`
 - Proshka:
-  - `ACTIVE/proshka_entrypoint.md`
-  - `ACTIVE/proshka_memory_pack.md`
+  - `ACTIVE/aristotle/proshka_entrypoint.md`
+  - `ACTIVE/aristotle/proshka_memory_pack.md`
   - `PROSHKA_REQUEST_4.md` (single‑scale closure pack)
-  - `ACTIVE/proshka_context_single_scale.md` (one‑file packed brief)
+  - `ACTIVE/aristotle/proshka_context_single_scale.md` (one‑file packed brief)
   - `scripts/build_proshka_brief.py` (pack builder)
   - `docs/PROSHKA_POLICY.md` (canonical set policy)
 
@@ -127,8 +127,8 @@ Source of truth:
 
 ## 6) Knowledge base (external)
 
-- `ACTIVE/aristotle_models_knowledge` — Aristotle model/training knowledge dump
-- `ACTIVE/codex_agent_loop_notes.md` — Codex CLI agent loop notes (OpenAI blog)
+- `ACTIVE/aristotle/models_knowledge` — Aristotle model/training knowledge dump
+- `ACTIVE/pipeline/codex_agent_loop_notes.md` — Codex CLI agent loop notes (OpenAI blog)
 
 ## 7) Editing policy (keep this stable)
 
@@ -693,7 +693,7 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
   passes; `RKHS_contraction_axiom` removed from main axiom list (total now 10).
 
 
-## File: full/q3.lean.aristotle/ACTIVE/SPECS_INDEX.md
+## File: full/q3.lean.aristotle/ACTIVE/refs/SPECS_INDEX.md
 
 # Specs Index (curated)
 
@@ -744,10 +744,10 @@ If you cite any of these, mark as legacy in the doc.
 
 - Canonical chain: `ACTIVE/chain_status.md`
 - Axiom list: `ACTIVE/orchestrator.md`
-- Mainline specs: this file + `ACTIVE/Q3_BLOCK_MAP.md`
+- Mainline specs: this file + `ACTIVE/refs/Q3_BLOCK_MAP.md`
 
 
-## File: full/q3.lean.aristotle/ACTIVE/Q3_BLOCK_MAP.md
+## File: full/q3.lean.aristotle/ACTIVE/refs/Q3_BLOCK_MAP.md
 
 # Q3 Block Map (Lean ↔ Paper blocks)
 
@@ -758,7 +758,7 @@ Use this to answer: “Which block is this in Lean?”
 
 - Paper: T0 (Guinand–Weil normalization)
 - Lean entry: handled as external/classical pieces; see `Q3/Axioms.lean`
-  (`Weil_criterion`, `explicit_formula`) and `ACTIVE/proof_map.md`.
+  (`Weil_criterion`, `explicit_formula`) and `ACTIVE/refs/proof_map.md`.
 - Status: external; not in the single-scale axiom list
 
 ## A1' — Density (atoms in W_K)
@@ -812,7 +812,7 @@ Legacy (two-scale / uniform):
 - Axioms left: see `ACTIVE/chain_status.md` or `ACTIVE/orchestrator.md`
 
 
-## File: full/q3.lean.aristotle/ACTIVE/PROBLEM_SOLVER_PROMPT_RU.md
+## File: full/q3.lean.aristotle/ACTIVE/pipeline/PROBLEM_SOLVER_PROMPT_RU.md
 
 # Промпт‑рефакторинг (RU): проверяемая цепочка RH из проектных ресурсов
 
@@ -829,8 +829,8 @@ Legacy (two-scale / uniform):
 1) `ACTIVE/KNOWLEDGE_BASE.md` (карта ссылок)
 2) `ACTIVE/orchestrator.md` (текущий статус, аксиомы, next step)
 3) `ACTIVE/chain_status.md` (single‑scale mainline)
-4) `ACTIVE/Q3_BLOCK_MAP.md` (Lean ↔ paper блоки)
-5) `ACTIVE/SPECS_INDEX.md` (канонические константы + legacy пометки)
+4) `ACTIVE/refs/Q3_BLOCK_MAP.md` (Lean ↔ paper блоки)
+5) `ACTIVE/refs/SPECS_INDEX.md` (канонические константы + legacy пометки)
 6) `ACTIVE/insights.md` + `ACTIVE/insights_index.md` (если нужен контекст)
 7) Только после этого — legacy спеки (через `ACTIVE/spec_*`)
 
@@ -973,15 +973,15 @@ Conclusion: A2 закрыт как теорема в mainline.
 **Главный индекс знаний:** `ACTIVE/KNOWLEDGE_BASE.md`
 
 **Спецификации и мэппинг:**
-- `ACTIVE/SPECS_INDEX.md`
-- `ACTIVE/Q3_BLOCK_MAP.md`
-- `ACTIVE/paper_lean_mapping.md`
-- `ACTIVE/q3_structure_mapping.md`
+- `ACTIVE/refs/SPECS_INDEX.md`
+- `ACTIVE/refs/Q3_BLOCK_MAP.md`
+- `ACTIVE/refs/paper_lean_mapping.md`
+- `ACTIVE/refs/q3_structure_mapping.md`
 
 **Проектные правила/контракт:**
 - `ACTIVE/chain_status.md`
 - `ACTIVE/orchestrator.md`
-- `ACTIVE/PROBLEM_SOLVER_PROMPT_RU.md`
+- `ACTIVE/pipeline/PROBLEM_SOLVER_PROMPT_RU.md`
 
 **Внимание (красные флаги):**
 - **НЕ** смешивать `t_sym` и `t_rkhs`.
@@ -4205,7 +4205,7 @@ lemma T_P_comp_real_row_sum_le_weight_sum (K B t : ℝ) (M : ℕ) [Fintype (Q3.N
 end Q3.Proofs
 
 
-## File: full/q3.lean.aristotle/ACTIVE/spec_critical_constants_rh_q3.md
+## File: full/q3.lean.aristotle/ACTIVE/refs/specs/spec_critical_constants_rh_q3.md
 
 # Критические константы из RH_Q3.pdf (страницы 32-36)
 
@@ -4215,8 +4215,8 @@ end Q3.Proofs
 >
 > Канонические ссылки:
 > - `ACTIVE/chain_status.md`
-> - `ACTIVE/SPECS_INDEX.md`
-> - `ACTIVE/Q3_BLOCK_MAP.md`
+> - `ACTIVE/refs/SPECS_INDEX.md`
+> - `ACTIVE/refs/Q3_BLOCK_MAP.md`
 
 ## Секция 9: RKHS Contraction
 
@@ -4466,7 +4466,7 @@ Q(Φ_{B,t_sym}) ≥ 0
 | **c_*/4** | **11/40 = 0.275** | Theorem 8.35 | Final margin |
 
 
-## File: full/q3.lean.aristotle/ACTIVE/spec_formalizing_rh_insights.md
+## File: full/q3.lean.aristotle/ACTIVE/refs/specs/spec_formalizing_rh_insights.md
 
 # Инсайты из FormalizingRiemannHypothesis.md
 
@@ -4476,8 +4476,8 @@ Q(Φ_{B,t_sym}) ≥ 0
 >
 > Канонические ссылки:
 > - `ACTIVE/chain_status.md`
-> - `ACTIVE/SPECS_INDEX.md`
-> - `ACTIVE/Q3_BLOCK_MAP.md`
+> - `ACTIVE/refs/SPECS_INDEX.md`
+> - `ACTIVE/refs/Q3_BLOCK_MAP.md`
 
 ## Контекст
 Документ описывает реальный процесс формализации гипотезы Римана в Lean 4 (проект chen_q3).
@@ -4521,7 +4521,7 @@ Q(Φ_{B,t_sym}) ≥ 0
 4. **База знаний:** Использовать поиск по существующим решениям перед созданием новых `sorry`
 
 
-## File: full/q3.lean.aristotle/ACTIVE/spec_high_ers_constants.md
+## File: full/q3.lean.aristotle/ACTIVE/refs/specs/spec_high_ers_constants.md
 
 # Анализ критических констант для высоко-ERS узлов
 
@@ -4531,9 +4531,9 @@ Q(Φ_{B,t_sym}) ≥ 0
 >
 > Канонические ссылки:
 > - `ACTIVE/chain_status.md`
-> - `ACTIVE/SPECS_INDEX.md`
-> - `ACTIVE/Q3_BLOCK_MAP.md`
-> - `ACTIVE/ERS_SUMMARY.md` (консолидированный ERS‑обзор)
+> - `ACTIVE/refs/SPECS_INDEX.md`
+> - `ACTIVE/refs/Q3_BLOCK_MAP.md`
+> - `ACTIVE/refs/ERS_SUMMARY.md` (консолидированный ERS‑обзор)
 
 ## Конфликты с mainline (single‑scale)
 
@@ -4881,7 +4881,7 @@ theorem thm_8_35
 5. Theorem 8.35 — комбинация
 
 
-## File: full/q3.lean.aristotle/ACTIVE/spec_rh_q3_decomposition.md
+## File: full/q3.lean.aristotle/ACTIVE/refs/specs/spec_rh_q3_decomposition.md
 
 # Декомпозиция RH_Q3.pdf для формализации в Lean
 
@@ -4891,9 +4891,9 @@ theorem thm_8_35
 >
 > Канонические ссылки:
 > - `ACTIVE/chain_status.md`
-> - `ACTIVE/SPECS_INDEX.md`
-> - `ACTIVE/Q3_BLOCK_MAP.md`
-> - `ACTIVE/ERS_SUMMARY.md` (консолидированный ERS‑обзор)
+> - `ACTIVE/refs/SPECS_INDEX.md`
+> - `ACTIVE/refs/Q3_BLOCK_MAP.md`
+> - `ACTIVE/refs/ERS_SUMMARY.md` (консолидированный ERS‑обзор)
 
 ## Конфликты с mainline (single‑scale)
 

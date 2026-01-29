@@ -78,9 +78,9 @@ def should_skip(path: Path, exclude_paths: list[tuple[str, ...]]) -> bool:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default=str(ACTIVE_DIR / "TAINT_GRAPH.md"))
-    ap.add_argument("--json", default=str(ACTIVE_DIR / "TAINT_GRAPH.json"))
-    ap.add_argument("--numeric", default=str(ACTIVE_DIR / "NUMERIC_CHECKS_REPORT.json"))
+    ap.add_argument("--out", default=str(ACTIVE_DIR / "graphs" / "TAINT_GRAPH.md"))
+    ap.add_argument("--json", default=str(ACTIVE_DIR / "graphs" / "TAINT_GRAPH.json"))
+    ap.add_argument("--numeric", default=str(ACTIVE_DIR / "graphs" / "NUMERIC_CHECKS_REPORT.json"))
     ap.add_argument("--risk", default=str(RISK_MODEL_JSON))
     ap.add_argument(
         "--exclude",

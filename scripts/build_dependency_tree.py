@@ -94,8 +94,8 @@ def scan_file_for_axioms(path: Path) -> list[tuple[int, str]]:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default=str(ACTIVE_DIR / "DEPS_TREE_MAIN.md"))
-    ap.add_argument("--json", default=str(ACTIVE_DIR / "DEPS_TREE_MAIN.json"))
+    ap.add_argument("--out", default=str(ACTIVE_DIR / "graphs" / "DEPS_TREE_MAIN.md"))
+    ap.add_argument("--json", default=str(ACTIVE_DIR / "graphs" / "DEPS_TREE_MAIN.json"))
     args = ap.parse_args()
 
     deps = run_lean_check_axioms()

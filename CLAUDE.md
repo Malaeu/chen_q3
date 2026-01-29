@@ -319,7 +319,7 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 **Документация (читать в этом порядке):**
 | Doc | Path | Content |
 |-----|------|---------|
-| **Workflow (canonical)** | `full/q3.lean.aristotle/ACTIVE/ARISTOTLE_WORKFLOW.md` | Единственный актуальный гайд |
+| **Workflow (canonical)** | `full/q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md` | Единственный актуальный гайд |
 | **Guidelines** | `aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md` | **Prompt policy!** |
 | Skill | `~/.codex/skills/aristotle/SKILL.md` | API, workflows, limits |
 | Project IDs | `aristotle_input/project_ids.txt` | Все UUID |

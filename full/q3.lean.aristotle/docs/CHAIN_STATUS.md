@@ -67,7 +67,7 @@ The older SingleScale axioms list is **legacy** and no longer load-bearing in
 - `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
 - `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
 
-See `ACTIVE/legacy_two_scale_index.md` for legacy context.
+See `ACTIVE/refs/legacy_two_scale_index.md` for legacy context.
 
 ## Related entry points
 

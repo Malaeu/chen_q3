@@ -6,11 +6,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
 ACTIVE_DIR = ROOT / "ACTIVE"
 
-DEPS_JSON = ACTIVE_DIR / "DEPS_TREE_MAIN.json"
-ALT_JSON = ACTIVE_DIR / "ALTERNATIVE_PATHS.json"
-TAINT_JSON = ACTIVE_DIR / "TAINT_GRAPH.json"
-OUT_JSON = ACTIVE_DIR / "PROOF_GRAPH.json"
-OUT_MD = ACTIVE_DIR / "PROOF_GRAPH.md"
+DEPS_JSON = ACTIVE_DIR / "graphs" / "DEPS_TREE_MAIN.json"
+ALT_JSON = ACTIVE_DIR / "pipeline" / "ALTERNATIVE_PATHS.json"
+TAINT_JSON = ACTIVE_DIR / "graphs" / "TAINT_GRAPH.json"
+OUT_JSON = ACTIVE_DIR / "graphs" / "PROOF_GRAPH.json"
+OUT_MD = ACTIVE_DIR / "graphs" / "PROOF_GRAPH.md"
 
 CLASSICAL = {"Q3.Weil_criterion", "Q3.Schur_test", "propext", "Classical.choice", "Quot.sound"}
 
@@ -75,7 +75,9 @@ def main():
     md.append(
         "**Purpose:** Machine + human index of the main-chain proof nodes, with alternatives."
     )
-    md.append("**Sources:** `ACTIVE/DEPS_TREE_MAIN.json` + `ACTIVE/ALTERNATIVE_PATHS.json`")
+    md.append(
+        \"**Sources:** `ACTIVE/graphs/DEPS_TREE_MAIN.json` + `ACTIVE/pipeline/ALTERNATIVE_PATHS.json`\"
+    )
     md.append("")
 
     for node in graph["nodes"]:

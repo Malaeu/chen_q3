@@ -6,7 +6,7 @@ Read order:
 1) full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
 2) full/q3.lean.aristotle/ACTIVE/requests/INDEX.md
 3) full/q3.lean.aristotle/ACTIVE/requests/proshka_floor_cert_tcritical_2026_01_25/node.md
-4) full/q3.lean.aristotle/ACTIVE/ARISTOTLE_WORKFLOW.md
+4) full/q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md
 
 Current mainline decisions:
 - Single-scale only: t_critical = 3/20, tau = 0, BaseAtomCone (B-range) only.

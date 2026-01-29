@@ -6,8 +6,8 @@
 >
 > Канонические ссылки:
 > - `ACTIVE/chain_status.md`
-> - `ACTIVE/SPECS_INDEX.md`
-> - `ACTIVE/Q3_BLOCK_MAP.md`
+> - `ACTIVE/refs/SPECS_INDEX.md`
+> - `ACTIVE/refs/Q3_BLOCK_MAP.md`
 
 ## Контекст
 Документ описывает реальный процесс формализации гипотезы Римана в Lean 4 (проект chen_q3).

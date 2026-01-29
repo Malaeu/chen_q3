@@ -54,17 +54,17 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--config",
-        default=str(ACTIVE_DIR / "NUMERIC_CHECKS.json"),
+        default=str(ACTIVE_DIR / "graphs" / "NUMERIC_CHECKS.json"),
         help="input config JSON",
     )
     ap.add_argument(
         "--out",
-        default=str(ACTIVE_DIR / "NUMERIC_CHECKS_REPORT.json"),
+        default=str(ACTIVE_DIR / "graphs" / "NUMERIC_CHECKS_REPORT.json"),
         help="output report JSON",
     )
     ap.add_argument(
         "--md",
-        default=str(ACTIVE_DIR / "NUMERIC_CHECKS_REPORT.md"),
+        default=str(ACTIVE_DIR / "graphs" / "NUMERIC_CHECKS_REPORT.md"),
         help="output report Markdown",
     )
     ap.add_argument(
