@@ -6,14 +6,12 @@ and the rules for archiving legacy or out-of-scope material.
 ## Root Layout (Active)
 
 - `AGENTS.md` / `CLAUDE.md` / `README.md`: active workflow and entrypoints.
-- `full/`: Lean proofs and the Aristotle integration workflow.
-  - `full/q3.lean.aristotle/`: A3_FLOOR kernel proofs, DB, Aristotle input/output.
-- `paper/`: main LaTeX paper for the current proof path.
-- `src/`: Python experiments and analysis scripts.
-- `output/`: generated plots and tables from scripts (default target).
-- `data/`: input data files used by scripts.
+- `q3.lean.aristotle/`: Lean proofs, DB, Aristotle input/output.
+- `ACTIVE/`: symlink to `q3.lean.aristotle/ACTIVE` (current session hub).
+- `full/`: LaTeX sources + PDFs (RH_Q3.tex / RH_Q3.pdf).
 - `docs/`: living documentation for structure, decisions, and policies.
 - `archive/`: legacy materials moved out of the active root.
+- `bellman_bmo.py`: BMO check-mode script (lightweight verification).
 
 ## Output Policy (Keep Root Clean)
 
@@ -41,9 +39,9 @@ into `archive/`, using these buckets:
 
 ### What Stays Active
 
-- The A3_FLOOR Lean chain and its DB in `full/q3.lean.aristotle/`.
-- Current paper sources in `paper/`.
-- Active Python analysis in `src/`, with outputs in `output/`.
+- The A3_FLOOR Lean chain and its DB in `q3.lean.aristotle/`.
+- Current paper sources in `full/`.
+- Small analysis scripts live at repo root or in `archive/` as needed; outputs go to `output/` when used.
 
 ## Decision Rule (Quick Check)
 

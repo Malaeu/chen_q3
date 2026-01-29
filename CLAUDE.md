@@ -15,19 +15,23 @@
 Prefer **repo‑relative** paths below (work on both OS). If you need absolute paths,
 prepend the correct root above.
 
-**Sandbox symlinks (projekt_2):**
-- **Linux:** `/mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.lake`, `/mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.venv`
-- **macOS:** `/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/.lake`, `/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/.venv`
+**Structure:**
+- Lean root: `q3.lean.aristotle/`
+- ACTIVE: `ACTIVE/` (symlink to `q3.lean.aristotle/ACTIVE`)
+- Legacy compat: `full/q3.lean.aristotle` → `q3.lean.aristotle`
 
 ---
 
+
 ## SINGLE ENTRY POINT
-**START HERE:** `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+**START HERE:** `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 
 This is the ONLY file you need to read at session start. All other docs are linked from there.
 
+Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy docs.
+
 If resuming an in-progress session, read:
-`full/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
+`ACTIVE/SESSION_ENTRY.md`
 
 ---
 
@@ -81,7 +85,7 @@ Before EVERY commit, verify:
 - [ ] No new `axiom` without citation
 - [ ] No `sorry` in main proof chain
 
-See: `full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
+See: `q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 
 ## Commit Message Format
 
@@ -109,7 +113,7 @@ If you also use the workflow categories, append them after the OS+branch prefix:
 4. Aristotle (если нужен formal proof)
 ```
 
-Команда embedding‑поиска (из `full/q3.lean.aristotle`):
+Команда embedding‑поиска (из `q3.lean.aristotle`):
 ```bash
 ./scripts/research_oracle.py query "keyword" -c q3_docs
 ```
@@ -133,7 +137,7 @@ If you also use the workflow categories, append them after the OS+branch prefix:
 
 1. **Фиксируем точную цель**: 1 строка “Target lemma” + где она в цепочке (файл/импорт).
 2. **Сканируем базу**: embedding‑поиск (3–5 запросов) + 1 web‑поиск через web tool при нужде.
-3. **Пишем дерево в `full/q3.lean.aristotle/docs/INSIGHTS.md`**:
+3. **Пишем дерево в `q3.lean.aristotle/docs/INSIGHTS.md`**:
    - Option 1 (основной): что доказываем, минимальные зависимости, “success check” (какая команда должна компилироваться).
    - Option 2 (fallback): рабочий путь, который точно закрывается, даже если менее красивый.
    - (опц.) Option 0: уже готовые “ядра” (factorization/bridge), которые сохраняем независимо от выбора.
@@ -143,11 +147,15 @@ If you also use the workflow categories, append them after the OS+branch prefix:
 
 Смысл: мозг держит только текущую ветку; все развилки и причины — в INSIGHTS.
 
-Шаблон (копировать как новый insight): `full/q3.lean.aristotle/docs/insights/decision_tree_template.md`
+Шаблон (копировать как новый insight): `q3.lean.aristotle/docs/insights/decision_tree_template.md`
 
 ---
 
 ## Branching Safety (stable vs experimental)
+
+- Keep `main` clean and stable.
+- Do experimental/probing math in feature branches.
+- Merge back only after the chain compiles; otherwise cherry-pick or drop.
 
 - Keep `projekt_2A` clean and stable.
 - Do experimental/probing math in a feature branch (e.g. `projekt_2A-compact-support`).
@@ -158,7 +166,7 @@ If you also use the workflow categories, append them after the OS+branch prefix:
 ## 🚨 ERRORS DESTROYER (Работа над ошибками)
 
 **ОБЯЗАТЕЛЬНО прочитай перед любым PR:**
-- `full/q3.lean.aristotle/docs/ERRORS_DESTROYER.md`
+- `q3.lean.aristotle/docs/ERRORS_DESTROYER.md`
 
 Там: разборы прошлых ошибок и чеклисты как их избежать.
 
@@ -267,10 +275,10 @@ Project (3):  Weil_criterion_tau0,
 
 ```bash
 Linux:
-cd /mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
+cd /mnt/hdd01/Soft/GitHub/chen_q3/q3.lean.aristotle
 
 macOS:
-cd /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle
+cd /Users/emalam/Documents/GitHub/chen_q3/q3.lean.aristotle
 
 # Build
 lake build Q3.Main
@@ -311,20 +319,20 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 
 | Purpose | File |
 |---------|------|
-| Entry point | `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` |
-| Philosophy | `full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md` |
-| ASCII diagram | `full/q3.lean.aristotle/PROJECT_ASCII.md` |
-| Workflow checklist | `full/q3.lean.aristotle/WORKFLOW_CHECKLIST.md` |
-| Axioms definition | `full/q3.lean.aristotle/Q3/Axioms.lean` |
-| Theorem wiring | `full/q3.lean.aristotle/Q3/AxiomsTheorems.lean` |
-| Main proof | `full/q3.lean.aristotle/Q3/Main.lean` |
+| Entry point | `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` |
+| Philosophy | `q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md` |
+| ASCII diagram | `q3.lean.aristotle/PROJECT_ASCII.md` |
+| Workflow checklist | `q3.lean.aristotle/WORKFLOW_CHECKLIST.md` |
+| Axioms definition | `q3.lean.aristotle/Q3/Axioms.lean` |
+| Theorem wiring | `q3.lean.aristotle/Q3/AxiomsTheorems.lean` |
+| Main proof | `q3.lean.aristotle/Q3/Main.lean` |
 
 ---
 
 ## Aristotle (AI proof assistant)
 
 **⚠️ ПЕРЕД КАЖДЫМ ПРОМПТОМ ЧИТАЙ:**
-- `full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+- `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
 
 **Ключевые правила (из анализа 7 вариантов Прошкой):**
 | ИЗБЕГАТЬ | ИСПОЛЬЗОВАТЬ |
@@ -337,7 +345,7 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 **Документация (читать в этом порядке):**
 | Doc | Path | Content |
 |-----|------|---------|
-| **Workflow (canonical)** | `full/q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md` | Единственный актуальный гайд |
+| **Workflow (canonical)** | `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md` | Единственный актуальный гайд |
 | **Guidelines** | `aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md` | **Prompt policy!** |
 | Skill | `~/.codex/skills/aristotle/SKILL.md` | API, workflows, limits |
 | Project IDs | `aristotle_input/project_ids.txt` | Все UUID |
@@ -399,7 +407,7 @@ RIGHT: Task(Explore, "Search Mathlib for adjacent interval lemmas...")
 
 ### Current Work: MatrixBridge (Q_nonneg via Finite Matrix Cap)
 
-**File:** `sandboxes/projekt_2/full/q3.lean.aristotle/Q3/Proofs/MatrixBridge.lean`
+**File:** `sandboxes/projekt_2/q3.lean.aristotle/Q3/Proofs/MatrixBridge.lean`
 
 **Strategy:** Instead of RKHS, use finite Toeplitz matrices:
 - T_M[P_A] — Toeplitz matrix of symbol P_A

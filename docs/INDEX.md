@@ -4,24 +4,24 @@ Quick links to the current workflow, status, and sources of truth.
 
 ## Workflow
 
-- Project workflow (main loop): `full/q3.lean.aristotle/PROJECT_WORKFLOW.md`
+- Project workflow (main loop): `q3.lean.aristotle/PROJECT_WORKFLOW.md`
 - Aristotle skill usage: `~/.codex/skills/aristotle/`
 
 ## Status and Roadmap
 
-- Proof map (NEW_KERNEL): `full/q3.lean.aristotle/PROOF_MAP_NEW_KERNEL.md`
-- A3_FLOOR roadmap (stages): `full/q3.lean.aristotle/A3_FLOOR_ROADMAP.md`
-- Specs / invariants: `full/q3.lean.aristotle/PROSHKA_REQUEST_3.md`
+- Proof map (NEW_KERNEL): `q3.lean.aristotle/PROOF_MAP_NEW_KERNEL.md`
+- A3_FLOOR roadmap (stages): `q3.lean.aristotle/A3_FLOOR_ROADMAP.md`
+- Specs / invariants: `q3.lean.aristotle/PROSHKA_REQUEST_3.md`
 
 ## Proof Database
 
-- SQLite DB (lemmas + status): `full/q3.lean.aristotle/aristotle_db/aristotle_proofs.db`
-- DB importer: `full/q3.lean.aristotle/aristotle_db/parse_lean.py`
+- SQLite DB (lemmas + status): `q3.lean.aristotle/aristotle_db/aristotle_proofs.db`
+- DB importer: `q3.lean.aristotle/aristotle_db/parse_lean.py`
 
 ## Outputs
 
 - Plots and tables: `output/`
-- Paper (LaTeX): `paper/`
+- Paper (LaTeX): `full/`
 
 ## Archive Policy
 

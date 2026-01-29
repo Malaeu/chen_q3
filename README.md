@@ -6,41 +6,13 @@ Rigorous numerical verification and analytical estimates for the Chen Q3 approac
 
 ```
 chen_q3/
-├── docs/                   # Project docs and policies
-├── src/                    # Python source code
-│   ├── saturation_proof.py     # Symbol norm saturation
-│   ├── floor_proof.py          # Archimedean floor (Lorentzian)
-│   ├── floor_q3_real.py        # Floor with real digamma
-│   ├── floor_saturation.py     # Floor saturation analysis
-│   ├── floor_adaptive_t.py     # Adaptive t parameter test
-│   ├── analyze_digamma_poison.py # Digamma sign analysis
-│   ├── rescue_archimedes.py    # Gamma metric test
-│   ├── rescue_gamma_pure.py    # Pure Gamma periodization
-│   └── merlin_kernel_test.py   # Kernel comparison (★ Mellin winner)
-│
-├── output/                 # Generated figures
-│   ├── saturation_proof.png
-│   ├── floor_proof.png
-│   ├── floor_adaptive_comparison.png
-│   ├── digamma_poison_analysis.png
-│   ├── rescue_archimedes.png
-│   └── merlin_kernel_test.png
-│
-├── paper/                  # LaTeX paper
-│   ├── main.tex               # Main document
-│   ├── introduction.tex       # Section 1
-│   ├── preliminaries.tex      # Section 2
-│   ├── lemma_saturation.tex   # Section 3: Ceiling lemma
-│   ├── lemma_floor.tex        # Section 4: Floor lemma
-│   ├── theorem_stability.tex  # Section 5: Main theorem
-│   ├── numerical_results.tex  # Section 6: Experiments
-│   └── conclusions.tex        # Section 7
-│
-├── full/                   # Lean proofs and formalization workflow
-│   └── q3.lean.aristotle/      # A3_FLOOR kernel proofs + DB + Aristotle I/O
-│
-├── data/                   # Data files
-└── archive/                # Legacy materials moved out of root
+├── q3.lean.aristotle/     # Lean proofs + Aristotle workflow + DB
+├── ACTIVE -> q3.lean.aristotle/ACTIVE
+├── full/                 # LaTeX sources + PDFs (RH_Q3.tex/RH_Q3.pdf)
+├── docs/                 # Project docs and policies
+├── archive/              # Legacy materials
+├── bellman_bmo.py        # BMO check-mode script
+├── AGENTS.md / CLAUDE.md / README.md
 ```
 
 See `docs/PROJECT_STRUCTURE.md` for the archive policy and layout rules.
@@ -61,40 +33,37 @@ See `docs/PROJECT_STRUCTURE.md` for the archive policy and layout rules.
 3. **Decay Law**: Slower decay → larger δ*
 4. **Winner**: Mellin kernel K(ξ) = 1/(1+|ξ|^{1/2}) achieves δ* ≈ 0.79
 
-## Running the Code
+## Running Lean Checks
 
 ```bash
-cd src
-python saturation_proof.py
-python floor_proof.py
-python merlin_kernel_test.py
+cd q3.lean.aristotle
+./scripts/check_axioms.sh
 ```
 
 ## Building the Paper
 
 ```bash
-cd paper
-pdflatex main.tex
-bibtex main
-pdflatex main.tex
-pdflatex main.tex
+cd full
+latexmk -pdf RH_Q3.tex
 ```
 
 ## Quick Start (after git clone)
 
 ```bash
 cd chen_q3
+
 git pull
 
-# Main Lean project
-cd full/q3.lean.aristotle
-./scripts/check_axioms.sh        # Verify axioms (expect 6)
-./scripts/contribution_stats.sh  # Code statistics
+# Lean project
+cd q3.lean.aristotle
+./scripts/check_axioms.sh        # Verify axioms
 
-# Sandbox (isolated experiments)
-cd sandboxes/Linux
-# Work here without affecting main
+# Paper (LaTeX)
+cd ../full
+latexmk -pdf RH_Q3.tex
 ```
+
+Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy docs.
 
 ## Current Status (2026-01-21)
 

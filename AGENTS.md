@@ -1,6 +1,8 @@
-Project workflow: `full/q3.lean.aristotle/PROJECT_WORKFLOW.md`
+Project workflow: `q3.lean.aristotle/PROJECT_WORKFLOW.md`
 Aristotle skill (CLI-based): `~/.codex/skills/aristotle/`
-Session entry (quick resume): `full/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
+Session entry (quick resume): `ACTIVE/SESSION_ENTRY.md`
+
+Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy docs.
 
 Aristotle integration rules (project workflow):
 - Activate venv before any Aristotle command: `source .venv/bin/activate`.
@@ -16,10 +18,10 @@ Aristotle integration rules (project workflow):
 Semantic search workflow (before tackling a new blocker):
 - Define the exact target lemma/axiom and where it is wired in the chain.
 - Run embedding search on our local index (3-5 queries, aim for ~75% confidence). Do not use mgrep/websearch.
-- Embedding command (from `full/q3.lean.aristotle`): `./scripts/research_oracle.py query "keyword" -c q3_docs` (use `math_papers`/`zotero_lib` if indexed).
+- Embedding command (from `q3.lean.aristotle`): `./scripts/research_oracle.py query "keyword" -c q3_docs` (use `math_papers`/`zotero_lib` if indexed).
 - Run external web search via the built-in web tool (not the `websearch` wrapper).
 - Synthesize a 5-10 line plan with concrete file/lemma pointers.
-- Record the synthesis in `full/q3.lean.aristotle/docs/INSIGHTS.md` and commit (label as in progress).
+- Record the synthesis in `q3.lean.aristotle/docs/INSIGHTS.md` and commit (label as in progress).
 - Commit message format: check OS + branch first, then use `[Linux][<branch>] Message` or `[MacOS][<branch>] Message` (no sandbox tags).
   - OS check: `uname -s` → Linux/Darwin.
   - Branch check: `git rev-parse --abbrev-ref HEAD`.
@@ -69,15 +71,15 @@ Aristotle guidelines (links):
 | Path | Content |
 | --- | --- |
 | ~/.codex/skills/aristotle/SKILL.md | Local Aristotle skill (CLI + workflow) |
-| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md | Prompt policy for Q3 |
-| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/project_ids.txt | All project UUIDs |
-| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md | Canonical workflow (single source) |
+| q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md | Prompt policy for Q3 |
+| q3.lean.aristotle/aristotle_input/project_ids.txt | All project UUIDs |
+| ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md | Canonical workflow (single source) |
 
 Project files (Q3):
 
 | Path | Content |
 | --- | --- |
-| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md | Current status, next step |
-| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md | Axiom criteria |
-| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/TRICKS_LIBRARY.md | Tricks/notes |
-| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/docs/INSIGHTS.md | Accumulated insights |
+| q3.lean.aristotle/PROJECT_ORCHESTRATOR.md | Current status, next step |
+| q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md | Axiom criteria |
+| q3.lean.aristotle/TRICKS_LIBRARY.md | Tricks/notes |
+| q3.lean.aristotle/docs/INSIGHTS.md | Accumulated insights |
