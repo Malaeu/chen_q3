@@ -91,3 +91,21 @@ Source of truth:
 - Add only links + 1–2 lines of context.
 - Avoid duplicating content from linked docs.
 - When a doc becomes obsolete, mark it inside that doc (do not delete).
+
+## 8) Embeddings + Knowledge Graphs (how we use)
+
+- **Embeddings (fast recall):**
+  - Run: `./scripts/research_oracle.py query "keyword" -c q3_docs`
+  - Then write a 5–10 line synthesis into `docs/INSIGHTS.md` and add a short pointer
+    in `ACTIVE/insights.md` (link only).
+- **Knowledge graphs (dependency/taint):**
+  - Use `ACTIVE/PROOF_GRAPH.md`, `ACTIVE/DEPS_TREE_MAIN.md`, `ACTIVE/TAINT_GRAPH.md`
+    to see what actually blocks the main chain and what is safe to edit.
+  - Before a new blocker: check the graph → confirm the exact lemma/axiom node →
+    then use embeddings to avoid re‑doing solved work.
+
+## 9) Where we park future work
+
+- Long‑term: `docs/INSIGHTS.md` (full reasoning + decisions).
+- Short‑term pointers: `ACTIVE/insights.md` (links only).
+- Proshka requests: `ACTIVE/requests/INDEX.md` (why → evidence → decision → request).

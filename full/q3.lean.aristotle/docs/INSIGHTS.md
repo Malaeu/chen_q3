@@ -76,6 +76,17 @@
 - Connes/Toeplitz remarks are good context but **not needed** for heat integrability;
   keep as background only.
 
+## Synthesis (2026-01-29, in progress) — BMO Bellman check-mode + regularity gate
+
+- Added a lightweight `--check` mode to `bellman_bmo.py` to verify the closed‑form
+  answer numerically (balance residual + value check). Heavy concavity/optimizer
+  checks stay as future work.
+- Methodology takeaway for Q3: **regularity‑gate**. The Fejér×heat window has kinks
+  (|ξ| and cutoffs), so every step that assumes C² must be rejected unless
+  explicitly justified; stick to Lip/modulus control.
+- Future work capture: keep deeper BMO/Bellman formalization in `docs/INSIGHTS.md`
+  and only link it from `ACTIVE/insights.md` (short).
+
 ## Synthesis (2026-01-26, in progress) — τ-shift AtomCone fails; `prime_term_le_at_t_critical_axiom` is false-for-now
 
 - Local numeric verification: `python3 verify_variant_b.py --direct` shows
