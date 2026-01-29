@@ -161,4 +161,19 @@ This is used to construct the "educated guess" kλ for the minimal eigenvector.
 
 ---
 
+## Practical Q3 takeaways (analysis)
+
+1) **Validation, not wiring.** This paper is strong external validation that the
+   Toeplitz/Weil-form route is correct, but it does *not* close any current Lean gaps.
+2) **Maps to our open axioms.** Their “even-simple” + “prolate approximation”
+   are structurally the same as our A3/Floor-type hypotheses. This is useful for
+   justification/citation, not for formal closure.
+3) **Do not mix in proofs yet.** No direct Lean integration planned. Keep as a
+   background source; only extract precise, formalizable lemmas if we decide to
+   replace A3/Floor with their spectral-triple machinery (big scope).
+4) **Where it *could* help later.** If we need alternative proofs for Toeplitz
+   margin or explicit kernel formulas, revisit Prop 4.2 / Lemma 5.4 as candidates.
+
+---
+
 *Last updated: 2026-01-29*
