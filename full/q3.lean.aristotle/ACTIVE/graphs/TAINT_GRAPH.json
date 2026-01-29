@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-29 13:21 UTC",
+  "generated_at": "2026-01-29 13:45 UTC",
   "root": "Q3/",
   "nodes": [
     {
@@ -212,12 +212,10 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean"
-      ],
-      "risk_score": 0.5,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -248,22 +246,18 @@
       "dependencies": [
         "Q3/Axioms.lean"
       ],
-      "sorries": [
-        190,
-        192,
-        198
-      ],
+      "sorries": [],
       "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 1.5,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
       "taint_source": [],
-      "risk_score": 1.5,
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Q3/Axioms.lean",
@@ -309,13 +303,10 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean",
-        "Q3/Proofs/SingleScale_Assumptions.lean"
-      ],
-      "risk_score": 1.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -351,16 +342,14 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Main.lean"
-      ],
-      "risk_score": 2.5,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Q3/DigammaRemainder.lean",
@@ -421,17 +410,14 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/AxiomsTheorems.lean",
-        "Q3/T5_Transfer.lean"
-      ],
-      "risk_score": 2.5,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Q3/MainTheorems.lean",
@@ -444,17 +430,14 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/AxiomsTheorems.lean",
-        "Q3/Main.lean"
-      ],
-      "risk_score": 3.5,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Q3/Proofs/A1_Density_Bridge.lean",
@@ -502,17 +485,14 @@
       "dependencies": [
         "Q3/Axioms.lean"
       ],
-      "sorries": [
-        114,
-        117
-      ],
+      "sorries": [],
       "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 1.0,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
       "taint_source": [],
-      "risk_score": 1.0,
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -664,16 +644,14 @@
         "Q3/Proofs/A3_Floor_Main.lean",
         "Q3/Proofs/Params_Critical.lean"
       ],
-      "sorries": [
-        14
-      ],
+      "sorries": [],
       "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 0.5,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
       "taint_source": [],
-      "risk_score": 0.5,
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -692,12 +670,10 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Proofs/A3_Floor_Critical_Goal.lean"
-      ],
-      "risk_score": 0.5,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -765,16 +741,14 @@
       "dependencies": [
         "Q3/Axioms.lean"
       ],
-      "sorries": [
-        115
-      ],
+      "sorries": [],
       "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 0.5,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
       "taint_source": [],
-      "risk_score": 0.5,
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -1898,12 +1872,10 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Proofs/SingleScale_Assumptions.lean"
-      ],
-      "risk_score": 0.5,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -2033,12 +2005,10 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Proofs/Q_nonneg_atoms_closure.lean"
-      ],
-      "risk_score": 0.5,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -2101,22 +2071,18 @@
         "Q3/Proofs/Off_Diag_Exp_Sum_Bridge.lean",
         "Q3/Proofs/S_K_Small_Bridge.lean"
       ],
-      "sorries": [
-        18,
-        276,
-        289
-      ],
+      "sorries": [],
       "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 1.5,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
       "taint_source": [],
-      "risk_score": 1.5,
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Q3/Proofs/RKHS_Interface_C1.lean",
@@ -2422,17 +2388,14 @@
       "dependencies": [
         "Q3/Axioms.lean"
       ],
-      "sorries": [
-        90,
-        93
-      ],
+      "sorries": [],
       "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 1.0,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
       "taint_source": [],
-      "risk_score": 1.0,
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -2510,12 +2473,10 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Proofs/A3_Floor_Critical_Goal.lean"
-      ],
-      "risk_score": 0.5,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -2674,16 +2635,14 @@
         "Q3/Axioms.lean",
         "Q3/Proofs/node_spacing_integrated.lean"
       ],
-      "sorries": [
-        156
-      ],
+      "sorries": [],
       "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 0.5,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
       "taint_source": [],
-      "risk_score": 0.5,
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -2707,19 +2666,14 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Proofs/A1_density_integrated.lean",
-        "Q3/Proofs/A3_bridge_integrated.lean",
-        "Q3/Proofs/S_K_small_integrated.lean",
-        "Q3/Proofs/off_diag_exp_sum_integrated.lean"
-      ],
-      "risk_score": 3.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Q3/RKHS_Contraction.lean",
@@ -2795,17 +2749,14 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Atoms_Positive.lean",
-        "Q3/AxiomsTheorems.lean"
-      ],
-      "risk_score": 1.5,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Q3/Tier2_Verification.lean",

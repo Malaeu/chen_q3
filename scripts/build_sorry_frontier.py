@@ -12,13 +12,39 @@ ACTIVE_DIR = ROOT / "ACTIVE"
 SORRY_RE = re.compile(r"\bsorry\b")
 
 
+def strip_comments(lines: list[str]) -> list[str]:
+    """Remove line/block comments while preserving line structure."""
+    out_lines: list[str] = []
+    depth = 0
+    for line in lines:
+        i = 0
+        out = []
+        while i < len(line):
+            if depth == 0 and line[i : i + 2] == "--":
+                break
+            if line[i : i + 2] == "/-":
+                depth += 1
+                i += 2
+                continue
+            if depth > 0 and line[i : i + 2] == "-/":
+                depth -= 1
+                i += 2
+                continue
+            if depth == 0:
+                out.append(line[i])
+            i += 1
+        out_lines.append("".join(out))
+    return out_lines
+
+
 def scan_file(path: Path) -> list[int]:
     try:
         text = path.read_text(encoding="utf-8")
     except Exception:
         return []
     lines = []
-    for i, line in enumerate(text.splitlines(), start=1):
+    cleaned = strip_comments(text.splitlines())
+    for i, line in enumerate(cleaned, start=1):
         if SORRY_RE.search(line):
             lines.append(i)
     return lines

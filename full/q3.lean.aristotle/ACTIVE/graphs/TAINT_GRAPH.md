@@ -1,51 +1,26 @@
-# Taint Graph (auto) — 2026-01-29 13:21 UTC
+# Taint Graph (auto) — 2026-01-29 13:45 UTC
 
 **Purpose:** Propagate `sorry`/BROKEN status upward across file import graph.
 **Source:** Q3 file imports + numeric checks report
 
-**Counts:** VERIFIED=111, TAINTED=11, SORRY=13, BROKEN=0
-**Doomed:** 9
+**Counts:** VERIFIED=129, TAINTED=0, SORRY=6, BROKEN=0
+**Doomed:** 2
 
 ## DOOMED
-- `Q3/AxiomClosureTheorems.lean`
-- `Q3/CheckAxioms.lean`
-- `Q3/Main.lean`
-- `Q3/MainTheorems.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean`
 - `Q3/Proofs/Q_nonneg_base_atoms_proof.lean`
-- `Q3/Proofs/RKHS_Contraction_Bridge.lean`
-- `Q3/ProofsIntegrated.lean`
-- `Q3/T5_Transfer.lean`
 
 ## BROKEN
 
 ## SORRY
-- `Q3/AxiomClosureTheorems.lean`
-- `Q3/Proofs/A1_density_integrated.lean`
-- `Q3/Proofs/A3_Floor_Critical_Goal.lean`
-- `Q3/Proofs/A3_bridge_integrated.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step1.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_margin.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean`
 - `Q3/Proofs/Q_nonneg_base_atoms_proof.lean`
-- `Q3/Proofs/RKHS_Contraction_Bridge.lean`
-- `Q3/Proofs/S_K_small_integrated.lean`
-- `Q3/Proofs/off_diag_exp_sum_integrated.lean`
 
 ## TAINTED
-- `Q3/Atoms_Positive.lean`
-- `Q3/AxiomsTheorems.lean`
-- `Q3/CheckAxioms.lean`
-- `Q3/Main.lean`
-- `Q3/MainTheorems.lean`
-- `Q3/Proofs/A3_Floor_Critical_Proof.lean`
-- `Q3/Proofs/Q_nonneg_atoms_closure.lean`
-- `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`
-- `Q3/Proofs/SingleScale_Assumptions.lean`
-- `Q3/ProofsIntegrated.lean`
-- `Q3/T5_Transfer.lean`
 
 ## VERIFIED
 - `Q3/A1_Density.lean`
@@ -59,13 +34,20 @@
 - `Q3/Archive/06_T5_aristotle.lean`
 - `Q3/Archive/07_Main_aristotle.lean`
 - `Q3/Aristotle_Integration.lean`
+- `Q3/Atoms_Positive.lean`
 - `Q3/AxiomClosure.lean`
+- `Q3/AxiomClosureTheorems.lean`
 - `Q3/Axioms.lean`
+- `Q3/AxiomsTheorems.lean`
 - `Q3/Basic/Defs.lean`
+- `Q3/CheckAxioms.lean`
 - `Q3/DigammaRemainder.lean`
 - `Q3/DigammaSeries.lean`
+- `Q3/Main.lean`
+- `Q3/MainTheorems.lean`
 - `Q3/Proofs/A1_Density_Bridge.lean`
 - `Q3/Proofs/A1_density.lean`
+- `Q3/Proofs/A1_density_integrated.lean`
 - `Q3/Proofs/A1_density_main.lean`
 - `Q3/Proofs/A1prime/A1_density_fixed_t0.lean`
 - `Q3/Proofs/A1prime/HatInterpBounded.lean`
@@ -73,9 +55,12 @@
 - `Q3/Proofs/A3_Bridge_Simple.lean`
 - `Q3/Proofs/A3_Bridge_Uniform.lean`
 - `Q3/Proofs/A3_Floor_Bounds.lean`
+- `Q3/Proofs/A3_Floor_Critical_Goal.lean`
+- `Q3/Proofs/A3_Floor_Critical_Proof.lean`
 - `Q3/Proofs/A3_Floor_Main.lean`
 - `Q3/Proofs/A3_Floor_Monotonicity.lean`
 - `Q3/Proofs/A3_bridge.lean`
+- `Q3/Proofs/A3_bridge_integrated.lean`
 - `Q3/Proofs/A3_bridge_rayleigh_first.lean`
 - `Q3/Proofs/A_Star_Properties.lean`
 - `Q3/Proofs/Bridge.lean`
@@ -123,12 +108,15 @@
 - `Q3/Proofs/Q_Lipschitz_integrated.lean`
 - `Q3/Proofs/Q_Lipschitz_prime_bridge.lean`
 - `Q3/Proofs/Q_Nonneg_Bridge.lean`
+- `Q3/Proofs/Q_nonneg_atoms_closure.lean`
 - `Q3/Proofs/Q_nonneg_atoms_helpers.lean`
 - `Q3/Proofs/Q_nonneg_base_atoms.lean`
 - `Q3/Proofs/Q_nonneg_lemmas.lean`
 - `Q3/Proofs/Q_nonneg_on_atoms.lean`
+- `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`
 - `Q3/Proofs/Q_nonneg_on_atoms_integrated.lean`
 - `Q3/Proofs/Q_nonneg_t_critical.lean`
+- `Q3/Proofs/RKHS_Contraction_Bridge.lean`
 - `Q3/Proofs/RKHS_Interface_C1.lean`
 - `Q3/Proofs/RKHS_cap_generic.lean`
 - `Q3/Proofs/RKHS_cap_rayleigh.lean`
@@ -144,9 +132,11 @@
 - `Q3/Proofs/Rayleigh_utils.lean`
 - `Q3/Proofs/S_K_Small_Bridge.lean`
 - `Q3/Proofs/S_K_small.lean`
+- `Q3/Proofs/S_K_small_integrated.lean`
 - `Q3/Proofs/Schur_Test.lean`
 - `Q3/Proofs/ShiftedWindows.lean`
 - `Q3/Proofs/ShiftedWindows_t0.lean`
+- `Q3/Proofs/SingleScale_Assumptions.lean`
 - `Q3/Proofs/T_P_comp_utils.lean`
 - `Q3/Proofs/W_Sum_Finite_Bridge.lean`
 - `Q3/Proofs/W_sum_finite.lean`
@@ -155,8 +145,11 @@
 - `Q3/Proofs/node_spacing_bridge.lean`
 - `Q3/Proofs/node_spacing_integrated.lean`
 - `Q3/Proofs/off_diag_exp_sum.lean`
+- `Q3/Proofs/off_diag_exp_sum_integrated.lean`
+- `Q3/ProofsIntegrated.lean`
 - `Q3/RKHS_Contraction.lean`
 - `Q3/RowSum_Bound.lean`
 - `Q3/S_K_Bound.lean`
+- `Q3/T5_Transfer.lean`
 - `Q3/Tier2_Verification.lean`
 
