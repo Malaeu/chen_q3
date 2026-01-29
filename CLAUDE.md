@@ -24,14 +24,13 @@ prepend the correct root above.
 
 
 ## SINGLE ENTRY POINT
-**START HERE:** `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+**START HERE (project status):** `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 
-This is the ONLY file you need to read at session start. All other docs are linked from there.
+**START HERE (session):** `SESSION_ENTRY.md`
+
+Session entry is `SESSION_ENTRY.md` (single entry point). All other docs are linked from there.
 
 Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy docs.
-
-If resuming an in-progress session, read:
-`ACTIVE/SESSION_ENTRY.md`
 
 ---
 

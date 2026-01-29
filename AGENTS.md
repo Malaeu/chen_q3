@@ -1,6 +1,6 @@
 Project workflow: `q3.lean.aristotle/PROJECT_WORKFLOW.md`
 Aristotle skill (CLI-based): `~/.codex/skills/aristotle/`
-Session entry (quick resume): `ACTIVE/SESSION_ENTRY.md`
+Session entry (single): `SESSION_ENTRY.md`
 
 Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy docs.
 
