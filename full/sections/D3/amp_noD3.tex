@@ -3,7 +3,7 @@
 
 \begin{proposition}[AB($K$) supplied by A3]\label{prop:AB-closure-K}
 Lemmas~\ref{lem:uniform-arch-floor}, \ref{lem:a3-lipschitz-bound}, \ref{lem:a3.cap-combine}, and \ref{lem:a3.two-scale}
-ensure the AB($K$) conditions with constants depending only on $(K,c_*,\rho(t_{\mathrm{rkhs}}))$.
+ensure the AB($K$) conditions with constants depending only on $(K,c_*,\rho(t))$.
 \end{proposition}
 
 \begin{proof}
@@ -13,9 +13,9 @@ The Lipschitz floor $\min P_A\ge c_*$ gives (i), while the trace-cap and the two
 \begin{theorem}[Amplitude gate without explicit D3 assumptions]\label{thm:amp-noD3}
 Under A2/A3, Proposition~\ref{prop:AB-closure-K} and Corollary~\ref{cor:D3-lock} imply
 \[
-  \big\langle (T_M[P_A]-T_P)f,f\big\rangle\ \ge\ \Bigl(\frac{c_*}{2}-\rho(t_{\mathrm{rkhs}})\Bigr)\,\|f\|_2^2
+  \big\langle (T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))f,f\big\rangle\ \ge\ \Bigl(\frac{c_*}{2}-\rho(t)\Bigr)\,\|f\|_2^2
 \]
-for every $f$ supported in $[-K,K]$. In particular, if $\rho(t_{\mathrm{rkhs}})<c_*/2$ the mixed lower bound is positive; density and continuity then yield $Q\ge0$ on the Weil class and \WeilImpRH.
+for every $f$ supported in $[-K,K]$. In particular, if $\rho(t)<c_*/2$ the mixed lower bound is positive; density and continuity then yield $Q^\star(t;\Phi)\ge0$ on the Weil class and \WeilImpRH.
 \end{theorem}
 
 \begin{proof}

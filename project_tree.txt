@@ -147,9 +147,10 @@ cd /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
 lake build Q3.Main
 ./scripts/check_axioms.sh
 
-# Semantic Search
-q3search "твой запрос" -c       # поиск по базе (643 файла)
-websearch "вопрос"              # AI web search
+# Semantic Search (Embeddings + web tool)
+# Команда embedding‑поиска (qmd wrapper):
+./scripts/research_oracle.py query "keyword" -c q3_docs
+# Внешний web‑поиск — через встроенный web tool
 
 # Aristotle
 source /media/chirurgie/hdd01/Soft/GitHub/chen_q3/.venv/bin/activate
@@ -162,7 +163,7 @@ aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.
 - Axioms: 11 (Standard: 3, Level 1: 6, Level 2: 2)
 - Lean files: ~30 в Q3/
 - LaTeX modules: ~20 в sections/
-- База mgrep: 643 файла в aristotle_db/
+- Embedding index: qmd (см. `full/q3.lean.aristotle/ACTIVE/pipeline/RESEARCH_ORACLE.md`)
 - Aristotle sessions: см. project_ids.txt
 
 ═══════════════════════════════════════════════════════════════

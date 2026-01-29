@@ -1,0 +1,122 @@
+#!/usr/bin/env python3
+import argparse
+import json
+import re
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
+Q3_DIR = ROOT / "Q3"
+ACTIVE_DIR = ROOT / "ACTIVE"
+
+SORRY_RE = re.compile(r"\bsorry\b")
+
+
+def strip_comments(lines: list[str]) -> list[str]:
+    """Remove line/block comments while preserving line structure."""
+    out_lines: list[str] = []
+    depth = 0
+    for line in lines:
+        i = 0
+        out = []
+        while i < len(line):
+            if depth == 0 and line[i : i + 2] == "--":
+                break
+            if line[i : i + 2] == "/-":
+                depth += 1
+                i += 2
+                continue
+            if depth > 0 and line[i : i + 2] == "-/":
+                depth -= 1
+                i += 2
+                continue
+            if depth == 0:
+                out.append(line[i])
+            i += 1
+        out_lines.append("".join(out))
+    return out_lines
+
+
+def scan_file(path: Path) -> list[int]:
+    try:
+        text = path.read_text(encoding="utf-8")
+    except Exception:
+        return []
+    lines = []
+    cleaned = strip_comments(text.splitlines())
+    for i, line in enumerate(cleaned, start=1):
+        if SORRY_RE.search(line):
+            lines.append(i)
+    return lines
+
+
+def should_skip(path: Path, exclude_paths: list[tuple[str, ...]]) -> bool:
+    rel_parts = path.relative_to(ROOT).parts
+    for ex in exclude_paths:
+        if not ex:
+            continue
+        for i in range(0, len(rel_parts) - len(ex) + 1):
+            if tuple(rel_parts[i : i + len(ex)]) == ex:
+                return True
+    return False
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default=str(ACTIVE_DIR / "graphs" / "SORRY_FRONTIER.md"))
+    ap.add_argument("--json", default=str(ACTIVE_DIR / "graphs" / "SORRY_FRONTIER.json"))
+    ap.add_argument(
+        "--exclude",
+        action="append",
+        default=["Q3/Clean", "Q3/Archive"],
+        help="exclude subpaths (relative to repo root), can repeat",
+    )
+    args = ap.parse_args()
+
+    exclude_paths = [Path(item).parts for item in args.exclude]
+
+    files = []
+    total = 0
+    for path in sorted(Q3_DIR.rglob("*.lean")):
+        if should_skip(path, exclude_paths):
+            continue
+        rel = path.relative_to(ROOT)
+        lines = scan_file(path)
+        if not lines:
+            continue
+        total += len(lines)
+        files.append({"file": str(rel), "lines": lines, "count": len(lines)})
+
+    generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    data = {
+        "generated_at": generated_at,
+        "root": "Q3/",
+        "total_sorries": total,
+        "files": files,
+    }
+
+    md_lines = []
+    md_lines.append(f"# Sorry Frontier (auto) — {generated_at}")
+    md_lines.append("")
+    md_lines.append("**Purpose:** List every `sorry` occurrence in `Q3/` with file + line numbers.")
+    md_lines.append("**Source:** regex scan of `Q3/**/*.lean`")
+    md_lines.append("")
+    md_lines.append(f"**Total sorries:** {total}")
+    md_lines.append("")
+
+    if not files:
+        md_lines.append("_No sorries found._")
+    else:
+        for item in files:
+            md_lines.append(f"## {item['file']}")
+            md_lines.append(f"- Count: {item['count']}")
+            md_lines.append("- Lines: " + ", ".join([f"L{ln}" for ln in item["lines"]]))
+            md_lines.append("")
+
+    Path(args.out).write_text("\n".join(md_lines) + "\n", encoding="utf-8")
+    Path(args.json).write_text(json.dumps(data, indent=2), encoding="utf-8")
+    print(f"Wrote {args.out} and {args.json}")
+
+
+if __name__ == "__main__":
+    main()

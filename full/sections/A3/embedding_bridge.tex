@@ -1,0 +1,69 @@
+% Embedding bridge between Rayleigh and RKHS operators (C1)
+\subsection{Embedding bridge: Rayleigh vs.\ RKHS}\label{subsec:a3-embedding-bridge}
+We fix a single heat scale $t$ and work with the Rayleigh operator
+$T_P^{\mathrm{Ray}}(t,M)$ on $\CC^{2M+1}$ and the RKHS operator
+$T_P^{\mathrm{RKHS}}(t)$ on $\mathcal H_t$.  The comparison
+\[
+  \bigl\|T_P^{\mathrm{Ray}}(t,M)\bigr\| \ \le\ \bigl\|T_P^{\mathrm{RKHS}}(t)\bigr\|
+\]
+is enforced by an explicit embedding $\iota_{t,M}$ and the compression formula
+\[
+  T_P^{\mathrm{Ray}}(t,M)\ :=\ \iota_{t,M}^\ast\,T_P^{\mathrm{RKHS}}(t)\,\iota_{t,M}.
+\]
+We record two concrete constructions of $\iota_{t,M}$ that each yield the same
+compression inequality; the choice is driven by formalization cost.
+
+\begin{lemma}[Compression bound (C1)]\label{lem:a3-embedding-compression}
+Let $\iota_{t,M}:\CC^{2M+1}\hookrightarrow \mathcal H_t$ be a linear isometry and assume
+\[
+T_P^{\mathrm{Ray}}(t,M)\ =\ \iota_{t,M}^\ast\,T_P^{\mathrm{RKHS}}(t)\,\iota_{t,M}.
+\]
+Then $\|T_P^{\mathrm{Ray}}(t,M)\|\le \|T_P^{\mathrm{RKHS}}(t)\|$.
+\end{lemma}
+\begin{proof}
+By submultiplicativity of the operator norm and $\|\iota_{t,M}\|=\|\iota_{t,M}^\ast\|=1$ for a linear isometry,
+\[
+\|T_P^{\mathrm{Ray}}(t,M)\|
+\le \|\iota_{t,M}^\ast\|\,\|T_P^{\mathrm{RKHS}}(t)\|\,\|\iota_{t,M}\|
+ = \|T_P^{\mathrm{RKHS}}(t)\|.
+\]
+\end{proof}
+
+\paragraph{C1 micro-lemmas (shared).}
+\begin{enumerate}
+  \item \textbf{Spaces:} set $E:=\CC^{2M+1}$ and $H:=\mathcal H_t$ as Hilbert spaces.
+  \item \textbf{Embedding:} construct a linear isometry $\iota:E\hookrightarrow H$.
+  \item \textbf{Compression:} define $T_P^{\mathrm{Ray}}(t,M):=\iota^\ast T_P^{\mathrm{RKHS}}(t)\iota$.
+  \item \textbf{Isometry norm:} $\|\iota\|=\|\iota^\ast\|=1$.
+  \item \textbf{Submultiplicativity:} $\|AB\|\le\|A\|\,\|B\|$.
+  \item \textbf{Conclusion:} $\|T_P^{\mathrm{Ray}}\|\le\|T_P^{\mathrm{RKHS}}\|$.
+\end{enumerate}
+
+\paragraph{Option A: analytic feature-map embedding.}
+Choose orthonormal feature vectors $\{\psi_k\}_{k=-M}^M\subset\mathcal H_t$
+compatible with the heat kernel (Fourier--Gaussian features).  Define
+\[
+  \iota_{t,M}(v)\ :=\ \sum_{k=-M}^{M} v_k\,\psi_k,
+\]
+so $\iota_{t,M}$ is a linear isometry.  The compression matrix entries satisfy
+\[
+  \langle T_P^{\mathrm{RKHS}}(t)\psi_j,\psi_i\rangle
+  \;=\;\sum_n w_{\mathrm{RKHS}}(n)\,\Phi_{B,t}(\xi_n)\,
+  \overline{\psi_j(\xi_n)}\,\psi_i(\xi_n),
+\]
+which reproduces the Rayleigh matrix once the feature evaluations are matched
+to the trigonometric packet basis.  This is the mathematically clean bridge,
+but it requires explicit RKHS feature evaluations in the formal proof.
+
+\paragraph{Option B: pragmatic dictionary compression.}
+Let $\{d_1,\dots,d_N\}\subset\mathcal H_t$ be a finite dictionary (e.g. kernel
+sections $k_t(\cdot,\xi_n)$ at the prime nodes) and set
+$V:=\mathrm{span}\{d_i\}$.  Choose an orthonormal basis
+$\{e_1,\dots,e_N\}$ of $V$ and define the isometric inclusion
+\[
+  \iota_{t,M}:\CC^N\to \mathcal H_t,\qquad \iota_{t,M}(c):=\sum_{j=1}^{N} c_j\,e_j.
+\]
+Then $\iota_{t,M}$ is a linear isometry and the compression
+$\iota_{t,M}^\ast T_P^{\mathrm{RKHS}}(t)\iota_{t,M}$ yields a finite-dimensional
+operator dominated by $\|T_P^{\mathrm{RKHS}}(t)\|$.  This route avoids explicit
+kernel feature computations and is typically Lean-friendly.

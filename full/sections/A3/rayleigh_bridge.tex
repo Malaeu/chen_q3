@@ -2,7 +2,7 @@
 % Phase 1 (Brick A3.1) – derived from docs/lemmas/A3_bridge_outline.md
 
 \subsection{Rayleigh Identification for the Toeplitz Bridge}\label{subsec:a3-rayleigh}
-Throughout we fix a Fej\'er$\times$heat window
+Throughout we fix a single heat scale $t>0$ and a Fej\'er$\times$heat window
 \[
   \Phi_{B,t}(\xi)\ :=\ \Bigl(1-\frac{|\xi|}{B}\Bigr)_{+}\,e^{-4\pi^2 t\,\xi^2},
 \]
@@ -10,6 +10,7 @@ and write $P_A$ for the associated Archimedean symbol obtained by smoothing the
 T0 density $a(\xi)=\log\pi-\Re\psi(\tfrac14+i\pi\xi)$ with the Fej\'er and heat kernels
 on $[-B,B]$.  The prime weights are $w(n)=\frac{2\Lambda(n)}{\sqrt n}$ located at the
 nodes $\xi_n=\frac{\log n}{2\pi}$, as fixed in Section~\ref{sec:T0}.
+The corresponding Weil functional is denoted $Q^\star(t;\Phi_{B,t})$.
 
 Let $\mathcal P_M:=\{p(\theta)=\sum_{|k|\le M}c_k e^{2\pi i k\theta}\}$ denote the trigonometric
 polynomials of degree at most $M$, equipped with the $L^2(\TT)$ inner product, and let
@@ -23,21 +24,27 @@ The Toeplitz operator $T_M[P_A]$ acts on $\mathcal P_M$, is self-adjoint and sat
   = \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,|p(\theta)|^2\,d\theta,
   \qquad p\in\mathcal P_M.
 \]
-Moreover, the symmetrised prime operator
+Moreover, the symmetrised Rayleigh prime operator
 \[
-  T_P^{(M)}\ :=\ \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
+  T_P^{\mathrm{Ray}}(t,M)\ :=\ \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
      w(n)\,\Phi_{B,t}(\xi_n)\,|v_n^{(M)}\rangle\!\langle v_n^{(M)}|,
   \qquad
   v_n^{(M)}(\theta)\ :=\ \frac{1}{\sqrt{2M+1}}\sum_{|k|\le M} e^{2\pi i k(\theta-\xi_n)},
 \]
-is the \emph{normalized} compression of the global prime operator $T_P$ to $\mathcal P_M$,
-in the sense that
+is the \emph{normalized} compression of the global Rayleigh operator
 \[
-  \iota_M^\ast T_P \iota_M\ =\ (2M+1)\,T_P^{(M)}.
+  T_P^{\mathrm{Ray}}(t)\ :=\ \sum_{n\ge2} w(n)\,\Phi_{B,t}(\xi_n)\,
+  |e^{2\pi i(\cdot)\xi_n}\rangle\!\langle e^{2\pi i(\cdot)\xi_n}|
 \]
+to $\mathcal P_M$, in the sense that
+\[
+  \iota_M^\ast T_P^{\mathrm{Ray}}(t) \iota_M\ =\ (2M+1)\,T_P^{\mathrm{Ray}}(t,M).
+\]
+Equivalently, in the legacy shorthand $T_P^{(M)}:=T_P^{\mathrm{Ray}}(t,M)$, this is
+$(2M+1)\,T_P^{(M)}$ with the scaling attached to the prime block.
 It is positive semidefinite with
 \[
-  \|T_P^{(M)}\| \ \le\ \sum_{\substack{n\ge2\\ |\xi_n|\le B}} w(n)\,\Phi_{B,t}(\xi_n).
+  \|T_P^{\mathrm{Ray}}(t,M)\| \ \le\ \sum_{\substack{n\ge2\\ |\xi_n|\le B}} w(n)\,\Phi_{B,t}(\xi_n).
 \]
 \end{lemma}
 
@@ -45,12 +52,10 @@ It is positive semidefinite with
 The Toeplitz matrix $T_M[P_A]$ is the compression of the Fourier multiplier with
 symbol $P_A$ to $\mathcal P_M$; the stated quadratic form is the standard representation
 of Toeplitz forms (see, e.g., \cite[Chapter~1]{GrenanderSzego1958}).  For the prime
-operator note that
-$T_P=\sum_{n\ge2} w(n)\Phi_{B,t}(\xi_n)\,|e^{2\pi i(\cdot)\xi_n}\rangle\!\langle e^{2\pi i(\cdot)\xi_n}|$
-is a finite-rank positive operator on $L^2(\TT)$, hence
-$\iota_M^\ast T_P \iota_M$ is self-adjoint and positive semidefinite. Since
+operator note that $T_P^{\mathrm{Ray}}(t)$ is a finite-rank positive operator on $L^2(\TT)$,
+hence $\iota_M^\ast T_P^{\mathrm{Ray}}(t) \iota_M$ is self-adjoint and positive semidefinite. Since
 $\iota_M^\ast e^{2\pi i(\cdot)\xi_n}=\sum_{|k|\le M}e^{2\pi i k(\cdot-\xi_n)}=\sqrt{2M+1}\,v_n^{(M)}$,
-the displayed identity $\iota_M^\ast T_P \iota_M=(2M+1)\,T_P^{(M)}$ follows.
+the displayed identity $\iota_M^\ast T_P^{\mathrm{Ray}}(t) \iota_M=(2M+1)\,T_P^{\mathrm{Ray}}(t,M)$ follows.
 The displayed norm bound is immediate from the triangle inequality applied to
 the sum of rank-one projections $|v_n^{(M)}\rangle\!\langle v_n^{(M)}|$.
 \end{proof}
@@ -58,7 +63,7 @@ the sum of rank-one projections $|v_n^{(M)}\rangle\!\langle v_n^{(M)}|$.
 \begin{lemma}[Rayleigh pairing]\label{lem:a3-rayleigh-quotient}
 For every $p\in\mathcal P_M$ one has
 \begin{align*}
-  \left\langle (T_M[P_A]-T_P^{(M)})\,p,\,p\right\rangle_{L^2(\TT)}
+  \left\langle (T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\,p,\,p\right\rangle_{L^2(\TT)}
   &= \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,|p(\theta)|^2\,d\theta
     - \sum_{\substack{n\ge2\\ |\xi_n|\le B}} w(n)\,\Phi_{B,t}(\xi_n)\,|\langle p,v_n^{(M)}\rangle|^2 \\
   &= \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,|p(\theta)|^2\,d\theta
@@ -67,7 +72,7 @@ For every $p\in\mathcal P_M$ one has
 \end{lemma}
 
 \begin{proof}
-Combine Lemma~\ref{lem:a3-model-space} with the definition of $T_P^{(M)}$ and the identities
+Combine Lemma~\ref{lem:a3-model-space} with the definition of $T_P^{\mathrm{Ray}}(t,M)$ and the identities
 $p(\xi_n)=\sqrt{2M+1}\,\langle p,v_n^{(M)}\rangle$ and $\|v_n^{(M)}\|=1$.
 \end{proof}
 
@@ -76,25 +81,25 @@ Let $\Phi_{B,t}$ and $P_A$ be as above, and let $p\equiv1$ be the constant polyn
 Then
 \[
   \left\langle T_M[P_A]\,1,\,1\right\rangle_{L^2(\TT)}
-  - (2M+1)\left\langle T_P^{(M)}\,1,\,1\right\rangle_{L^2(\TT)}
+  - (2M+1)\left\langle T_P^{\mathrm{Ray}}(t,M)\,1,\,1\right\rangle_{L^2(\TT)}
   = \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta
     - \sum_{\substack{n\ge2\\ |\xi_n|\le B}} w(n)\,\Phi_{B,t}(\xi_n)
-  = Q(\Phi_{B,t}),
+  = Q^\star(t;\Phi_{B,t}),
 \]
-where $Q$ is the Weil functional in the T0 normalization (Lemma~\ref{t0:lem:T0}).  The factor
+where $Q^\star$ is the Weil functional in the T0 normalization (Lemma~\ref{t0:lem:T0}).  The factor
 $(2M{+}1)$ arises because $|\langle 1,v_n^{(M)}\rangle|^2 = 1/(2M{+}1)$ while
 $|1(\xi_n)|^2 = 1$.  Equivalently, one may use unnormalized vectors
 $\tilde v_n := \sqrt{2M{+}1}\,v_n^{(M)}$ and write the Rayleigh identity without the scaling
-factor.  In particular, $Q(\Phi_{B,t})\ge0$ if and only if
+factor.  In particular, $Q^\star(t;\Phi_{B,t})\ge0$ if and only if
 \[
-  \left\langle \bigl(T_M[P_A]-(2M+1)T_P^{(M)}\bigr)\,1,\,1\right\rangle_{L^2(\TT)}\ \ge\ 0.
+  \left\langle \bigl(T_M[P_A]-(2M+1)T_P^{\mathrm{Ray}}(t,M)\bigr)\,1,\,1\right\rangle_{L^2(\TT)}\ \ge\ 0.
 \]
 \end{theorem}
 
 \begin{proof}
 Applying Lemma~\ref{lem:a3-rayleigh-quotient} with $p\equiv1$ yields
 \[
-  \left\langle T_P^{(M)}\,1,\,1\right\rangle_{L^2(\TT)}
+  \left\langle T_P^{\mathrm{Ray}}(t,M)\,1,\,1\right\rangle_{L^2(\TT)}
   = \frac{1}{2M+1}\sum_{n\ge2} w(n)\,\Phi_{B,t}(\xi_n),
 \]
 where the prime sum is finite because $\Phi_{B,t}$ is supported in $[-B,B]$.
@@ -104,8 +109,8 @@ By definition of $P_A$ and the normalization fixed in Section~\ref{sec:T0} one h
   = \int_{\RR} a_*(\xi)\,\Phi_{B,t}(\xi)\,d\xi,
 \]
 and Lemma~\ref{t0:lem:T0} gives
-$Q(\Phi_{B,t}) = \int_{-\tfrac12}^{\tfrac12}P_A(\theta)\,d\theta
+$Q^\star(t;\Phi_{B,t}) = \int_{-\tfrac12}^{\tfrac12}P_A(\theta)\,d\theta
        - \sum_{n\ge2}w(n)\,\Phi_{B,t}(\xi_n)$.
-Multiplying the displayed identity for $\langle T_P^{(M)}1,1\rangle$ by $(2M+1)$ yields
+Multiplying the displayed identity for $\langle T_P^{\mathrm{Ray}}(t,M)1,1\rangle$ by $(2M+1)$ yields
 the prime sum, proving the claim.
 \end{proof}

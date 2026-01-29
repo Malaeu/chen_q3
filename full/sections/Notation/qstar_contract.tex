@@ -1,0 +1,27 @@
+\providecommand{\qstarcontractloaded}{0}
+\ifnum\qstarcontractloaded=0\relax
+\gdef\qstarcontractloaded{1}
+
+\section{Q$^\star$ parameter contract}\label{sec:qstar-contract}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+Symbol & Meaning & Space/parameters \\
+\midrule
+$t$ & single heat scale & $t_0=1/(16\pi^2 t)$ \\
+$\Phi_{B,t}$ & Fej\'er$\times$heat window ($\tau=0$) & bandwidth $B$, heat scale $t$ \\
+$Q^\star(t;\Phi)$ & Weil functional with explicit $t$ & $\Phi$ on a compact window $W_K$ \\
+$T_M[P_A](t,B,M)$ & Toeplitz block for $P_A$ & $\CC^{2M+1}$ \\
+$T_P^{\mathrm{Ray}}(t,M)$ & prime sampling block (Rayleigh) & $\CC^{2M+1}$ \\
+$T_P^{\mathrm{RKHS}}(t)$ & prime operator on RKHS & $\mathcal H_t$, cap $\rho(t)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{tcolorbox}[colback=white,colframe=black!60]
+\textbf{WRONG:} $T_P$, $Q$, $\rho$ (naked, ambiguous).\\
+\textbf{RIGHT:} $T_P^{\mathrm{Ray}}(t,M)$ on $\CC^{2M+1}$, $T_P^{\mathrm{RKHS}}(t)$ on $\mathcal H_t$, $Q^\star(t;\Phi)$, $\rho(t)$.
+\end{tcolorbox}
+\fi
