@@ -4,6 +4,8 @@
 **Current status:** Main-chain depends on **2 Q3 data axioms** + 2 classical.  
 **Next action:** Close the PrimeCert cert‑data axioms
 `prime_b_grid_bounds_data` and `prime_heat_bounds_data`.  
+**Decision (2026-01-29):** Option A selected — keep cert‑data axioms in main chain,
+hash‑checked, and move on to other blockers.
 **Links:** `Q3/CheckAxioms.lean` · `Q3/Main.lean` · `ACTIVE/orchestrator.md`
 
 ---
