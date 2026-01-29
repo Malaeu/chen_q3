@@ -1,6 +1,7 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.PrimeCert.BrangeGrid_2046
+import Q3.Proofs.PrimeCert.BrangeGridBounds_2046
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28
 import Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof
 import Q3.Proofs.Params_Critical
@@ -18,11 +19,27 @@ def prime_cert_brange_source : String :=
 def prime_cert_brange_sha256 : String :=
   "a9d5303b2da81886cf64bfc5ee9b5b1ab85ce0b45067a8cd9b499d051a294230"
 
-axiom prime_b_grid_val_le_margin :
+structure PrimeBGridBounds where
+  h_arch :
+    ∀ i : Fin prime_b_grid_size,
+      prime_b_grid_arch_term i ≤
+        arch_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ)
+  h_prime :
+    ∀ i : Fin prime_b_grid_size,
+      prime_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) ≤
+        prime_b_grid_prime_ub i
+
+axiom prime_b_grid_bounds_cert : PrimeBGridBounds
+
+theorem prime_b_grid_val_le_margin :
     ∀ i : Fin prime_b_grid_size,
       prime_b_grid_val i ≤
         arch_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) -
-          prime_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ)
+          prime_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) := by
+  intro i
+  have harch := prime_b_grid_bounds_cert.h_arch i
+  have hprime := prime_b_grid_bounds_cert.h_prime i
+  exact prime_b_grid_val_le_margin_of_bounds i harch hprime
 
 theorem prime_margin_Lipschitz_on_Brange :
     ∀ x y,

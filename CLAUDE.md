@@ -246,7 +246,7 @@ repo:{username/repo_name} import
 ```
 Standard (3): propext, Classical.choice, Quot.sound
 Project (3):  Weil_criterion_tau0,
-              PrimeCert.prime_b_grid_val_le_margin,
+              PrimeCert.prime_b_grid_bounds_cert,
               PrimeCert.prime_margin_Lipschitz_on_Brange
 ```
 

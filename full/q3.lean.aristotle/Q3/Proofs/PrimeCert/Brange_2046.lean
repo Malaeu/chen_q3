@@ -77,21 +77,6 @@ lemma prime_b_grid_cover_cert :
     simpa [hmul, mul_div_assoc] using hmul'
   simpa using hfinal
 
-lemma prime_b_grid_val_le_margin_of_bounds (i : Fin prime_b_grid_size)
-    (harch :
-      prime_b_grid_arch_term i ≤
-        arch_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ))
-    (hprime :
-      prime_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) ≤
-        prime_b_grid_prime_ub i) :
-    prime_b_grid_val i ≤
-      arch_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) -
-        prime_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) := by
-  have htable :=
-    prime_b_grid_val_le_arch_sub_prime_ub i
-  -- combine table arithmetic with external bounds
-  nlinarith [htable, harch, hprime]
-
 /-- Margin certificate on B-range at t_critical (tau = 0). -/
 lemma prime_cert_margin_on_Brange_axiom :
     ∀ B ∈ Set.Icc B_min prime_cert_B_max,
