@@ -15,7 +15,7 @@
 | 2003-3.ocr.md | 61 | 121KB | Done |
 | 2003-4.ocr.md | ~55 | 127KB | Done |
 | 2003-5.ocr.md | 79 | 189KB | Done |
-| 2003-6.pdf | ? | ? | Pending |
+| 2003-6.ocr.md | ~50 | 117KB | Done |
 | 2003-7.pdf | ? | ? | Pending |
 
 ---
@@ -87,6 +87,17 @@ where α: H₊ → H₋ satisfies α*α ≤ I, so that I - F² ≥ 0 and ∈ K.
 - Cayley transform g = (1+X)/(1-X) for infinitesimal generators
 - Polar decomposition X = |X|·J where J² = -1
 - This is the SAME structure as Toeplitz operators on Hardy space!
+
+### Rayleigh-Ritz & Eigenvalue Theory (2003-6) — NEW
+
+| Line | Content |
+|------|---------|
+| 336 | "**Rayleigh-Ritz theory** for eigenvalues... variational problem involving subspaces... interesting **minimax inequalities**; similarity with Morse theory construction of eigenvalues" |
+| 337 | "spectral critical point construction of the spectrum of a hermitian operator in the case of a symmetric linear form" |
+| 411 | "space of polarizations of H(ℂⁿ) = flag manifold = Sp(2n)/U(n)" |
+| 418 | "tangent space to polarization = symmetric bilinear forms" |
+
+**Direct Q3 connection:** Quillen's "minimax inequalities" = our λ_min via Rayleigh quotient!
 
 ### Positive Definite Structures (2003-2, 2003-3, 2003-4)
 
@@ -192,8 +203,8 @@ literature/quillen_working_papers/2003/
 ├── 2003-3.ocr.md  (Symplectic geometry, eigenvalues)
 ├── 2003-4.ocr.md  (Time evolution, Cayley transform)
 ├── 2003-5.ocr.md  (Polarization, Cayley transform, Bott periodicity) — 189KB
-├── 2003-6.pdf     (Pending)
-└── 2003-7.pdf     (Pending)
+├── 2003-6.ocr.md  (Rayleigh-Ritz, eigenvalues, Sp(2n)/U(n)) — 117KB
+└── 2003-7.pdf     (OCR in progress)
 ```
 
 ---
