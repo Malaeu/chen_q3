@@ -1,18 +1,17 @@
-# Taint Graph (auto) — 2026-01-27 13:54 UTC
+# Taint Graph (auto) — 2026-01-29 13:21 UTC
 
 **Purpose:** Propagate `sorry`/BROKEN status upward across file import graph.
 **Source:** Q3 file imports + numeric checks report
 
-**Counts:** VERIFIED=98, TAINTED=13, SORRY=10, BROKEN=0
-**Doomed:** 10
+**Counts:** VERIFIED=111, TAINTED=11, SORRY=13, BROKEN=0
+**Doomed:** 9
 
 ## DOOMED
 - `Q3/AxiomClosureTheorems.lean`
-- `Q3/AxiomsTheorems.lean`
 - `Q3/CheckAxioms.lean`
 - `Q3/Main.lean`
 - `Q3/MainTheorems.lean`
-- `Q3/Proofs/QSpec.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean`
 - `Q3/Proofs/Q_nonneg_base_atoms_proof.lean`
 - `Q3/Proofs/RKHS_Contraction_Bridge.lean`
 - `Q3/ProofsIntegrated.lean`
@@ -22,11 +21,14 @@
 
 ## SORRY
 - `Q3/AxiomClosureTheorems.lean`
-- `Q3/Proofs/A1_density.lean`
 - `Q3/Proofs/A1_density_integrated.lean`
 - `Q3/Proofs/A3_Floor_Critical_Goal.lean`
 - `Q3/Proofs/A3_bridge_integrated.lean`
-- `Q3/Proofs/QSpec.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step1.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_margin.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean`
 - `Q3/Proofs/Q_nonneg_base_atoms_proof.lean`
 - `Q3/Proofs/RKHS_Contraction_Bridge.lean`
 - `Q3/Proofs/S_K_small_integrated.lean`
@@ -38,8 +40,6 @@
 - `Q3/CheckAxioms.lean`
 - `Q3/Main.lean`
 - `Q3/MainTheorems.lean`
-- `Q3/Proofs/A1prime/A1_density_fixed_t0.lean`
-- `Q3/Proofs/A1prime/HeatError.lean`
 - `Q3/Proofs/A3_Floor_Critical_Proof.lean`
 - `Q3/Proofs/Q_nonneg_atoms_closure.lean`
 - `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`
@@ -65,8 +65,11 @@
 - `Q3/DigammaRemainder.lean`
 - `Q3/DigammaSeries.lean`
 - `Q3/Proofs/A1_Density_Bridge.lean`
+- `Q3/Proofs/A1_density.lean`
 - `Q3/Proofs/A1_density_main.lean`
+- `Q3/Proofs/A1prime/A1_density_fixed_t0.lean`
 - `Q3/Proofs/A1prime/HatInterpBounded.lean`
+- `Q3/Proofs/A1prime/HeatError.lean`
 - `Q3/Proofs/A3_Bridge_Simple.lean`
 - `Q3/Proofs/A3_Bridge_Uniform.lean`
 - `Q3/Proofs/A3_Floor_Bounds.lean`
@@ -99,11 +102,21 @@
 - `Q3/Proofs/Params_Critical.lean`
 - `Q3/Proofs/PrimeCert/Bmin_1826.lean`
 - `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
+- `Q3/Proofs/PrimeCert/BrangeGridBounds_2046.lean`
 - `Q3/Proofs/PrimeCert/BrangeGrid_2046.lean`
+- `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
 - `Q3/Proofs/PrimeCert/Brange_2046.lean`
 - `Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatIntegrable.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_int.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step2.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step3.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step4.lean`
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatScaffold.lean`
 - `Q3/Proofs/PrimeCert/Defs.lean`
 - `Q3/Proofs/PrimeTerm_t_bridge.lean`
+- `Q3/Proofs/QSpec.lean`
 - `Q3/Proofs/Q_Lipschitz.lean`
 - `Q3/Proofs/Q_Lipschitz_Bridge.lean`
 - `Q3/Proofs/Q_Lipschitz_arch_bridge.lean`

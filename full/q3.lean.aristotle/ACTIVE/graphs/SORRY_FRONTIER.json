@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-01-27 13:54 UTC",
+  "generated_at": "2026-01-29 13:21 UTC",
   "root": "Q3/",
-  "total_sorries": 22,
+  "total_sorries": 24,
   "files": [
     {
       "file": "Q3/AxiomClosureTheorems.lean",
@@ -11,13 +11,6 @@
         198
       ],
       "count": 3
-    },
-    {
-      "file": "Q3/Proofs/A1_density.lean",
-      "lines": [
-        1715
-      ],
-      "count": 1
     },
     {
       "file": "Q3/Proofs/A1_density_integrated.lean",
@@ -42,14 +35,41 @@
       "count": 1
     },
     {
-      "file": "Q3/Proofs/QSpec.lean",
+      "file": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean",
       "lines": [
-        169,
-        177,
-        201,
-        208
+        202,
+        223,
+        245
       ],
-      "count": 4
+      "count": 3
+    },
+    {
+      "file": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch.lean",
+      "lines": [
+        202
+      ],
+      "count": 1
+    },
+    {
+      "file": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step1.lean",
+      "lines": [
+        217
+      ],
+      "count": 1
+    },
+    {
+      "file": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_margin.lean",
+      "lines": [
+        245
+      ],
+      "count": 1
+    },
+    {
+      "file": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean",
+      "lines": [
+        223
+      ],
+      "count": 1
     },
     {
       "file": "Q3/Proofs/Q_nonneg_base_atoms_proof.lean",

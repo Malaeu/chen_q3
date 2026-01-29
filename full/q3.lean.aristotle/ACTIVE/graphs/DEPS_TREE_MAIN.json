@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-27 15:56 UTC",
+  "generated_at": "2026-01-29 13:21 UTC",
   "root": "Q3.Main.RH_of_Weil_and_Q3",
   "deps": [
     {
@@ -27,91 +27,99 @@
           "explicit_formula"
         ],
         [
-          180,
-          "Szego_Bottcher_eigenvalue_bound"
+          179,
+          "a_star_linear_growth"
         ],
         [
-          186,
-          "Szego_Bottcher_convergence"
+          194,
+          "w_Q_heat_weight_summable"
         ],
         [
           212,
+          "Szego_Bottcher_eigenvalue_bound"
+        ],
+        [
+          218,
+          "Szego_Bottcher_convergence"
+        ],
+        [
+          244,
           "Szego_Rayleigh_lower_bound"
         ],
         [
-          224,
+          256,
           "Schur_test"
         ],
         [
-          242,
+          274,
           "c_arch_pos"
         ],
         [
-          279,
+          311,
           "c_star_le_c_arch"
         ],
         [
-          290,
+          322,
           "eigenvalue_le_norm"
         ],
         [
-          407,
+          439,
           "Weil_criterion_tau0"
         ],
         [
-          427,
+          459,
           "A1_density_WK_axiom"
         ],
         [
-          440,
+          472,
           "A1_density_axiom"
         ],
         [
-          461,
+          493,
           "W_sum_finite_axiom"
         ],
         [
-          471,
+          503,
           "Q_Lipschitz_on_W_K"
         ],
         [
-          483,
+          515,
           "RKHS_contraction_axiom"
         ],
         [
-          499,
+          531,
           "T_P_row_sum_bound_axiom"
         ],
         [
-          513,
+          545,
           "S_K_small_axiom"
         ],
         [
-          524,
+          556,
           "node_spacing_axiom"
         ],
         [
-          536,
+          568,
           "off_diag_exp_sum_axiom"
         ],
         [
-          551,
+          583,
           "A3_bridge_axiom"
         ],
         [
-          569,
+          601,
           "A3_bridge_uniform"
         ],
         [
-          582,
+          614,
           "A3_bridge_rayleigh_axiom"
         ],
         [
-          653,
+          685,
           "Q_nonneg_on_atoms_of_A3_RKHS_axiom"
         ],
         [
-          665,
+          697,
           "Q_nonneg_on_atoms_uniform"
         ]
       ],
@@ -124,31 +132,23 @@
       "sorries_in_file": []
     },
     {
-      "name": "Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin",
+      "name": "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data",
       "file": "Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
       "axioms_in_file": [
         [
-          19,
-          "prime_b_grid_val_le_margin"
-        ],
-        [
-          25,
-          "prime_margin_Lipschitz_on_Brange"
+          32,
+          "prime_b_grid_bounds_data"
         ]
       ],
       "sorries_in_file": []
     },
     {
-      "name": "Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange",
-      "file": "Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
+      "name": "Q3.Proofs.PrimeCert.prime_heat_bounds_data",
+      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
       "axioms_in_file": [
         [
-          19,
-          "prime_b_grid_val_le_margin"
-        ],
-        [
-          25,
-          "prime_margin_Lipschitz_on_Brange"
+          78,
+          "prime_heat_bounds_data"
         ]
       ],
       "sorries_in_file": []

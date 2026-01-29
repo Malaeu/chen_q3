@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-27 13:54 UTC",
+  "generated_at": "2026-01-29 13:21 UTC",
   "root": "Q3/",
   "nodes": [
     {
@@ -312,16 +312,14 @@
       "propagation_status": "TAINTED",
       "integrity_status": "TAINTED",
       "taint_source": [
-        "Q3/Proofs/A1_density.lean",
-        "Q3/Proofs/A1prime/A1_density_fixed_t0.lean",
         "Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean",
         "Q3/Proofs/SingleScale_Assumptions.lean"
       ],
-      "risk_score": 2.5,
+      "risk_score": 1.0,
       "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Q3/Basic/Defs.lean",
@@ -358,7 +356,7 @@
       "taint_source": [
         "Q3/Main.lean"
       ],
-      "risk_score": 5.5,
+      "risk_score": 2.5,
       "risk_threshold": 1.0,
       "risk_status": "EXCESSIVE",
       "risk_exceeds": true,
@@ -429,7 +427,7 @@
         "Q3/AxiomsTheorems.lean",
         "Q3/T5_Transfer.lean"
       ],
-      "risk_score": 5.5,
+      "risk_score": 2.5,
       "risk_threshold": 1.0,
       "risk_status": "EXCESSIVE",
       "risk_exceeds": true,
@@ -452,7 +450,7 @@
         "Q3/AxiomsTheorems.lean",
         "Q3/Main.lean"
       ],
-      "risk_score": 8.0,
+      "risk_score": 3.5,
       "risk_threshold": 1.0,
       "risk_status": "EXCESSIVE",
       "risk_exceeds": true,
@@ -482,18 +480,17 @@
       "module": "Q3.Proofs.A1_density",
       "dependencies": [
         "Q3/Axioms.lean",
+        "Q3/Proofs/A1prime/HatInterpBounded.lean",
         "Q3/Proofs/HatInterpolation.lean"
       ],
-      "sorries": [
-        1715
-      ],
+      "sorries": [],
       "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 0.5,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
       "taint_source": [],
-      "risk_score": 0.5,
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -552,13 +549,10 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Proofs/A1_density.lean",
-        "Q3/Proofs/A1prime/HeatError.lean"
-      ],
-      "risk_score": 1.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -593,12 +587,10 @@
       "numeric_check": "UNKNOWN",
       "direct_status": "VERIFIED",
       "intrinsic_risk": 0.0,
-      "propagation_status": "TAINTED",
-      "integrity_status": "TAINTED",
-      "taint_source": [
-        "Q3/Proofs/A1_density.lean"
-      ],
-      "risk_score": 0.5,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
       "risk_status": "OK",
       "risk_exceeds": false,
@@ -1295,6 +1287,31 @@
       "module": "Q3.Proofs.PrimeCert.BrangeCert_2046",
       "dependencies": [
         "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/BrangeGridBounds_2046.lean",
+        "Q3/Proofs/PrimeCert/BrangeGrid_2046.lean",
+        "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+        "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean",
+        "Q3/Proofs/ShiftedWindows.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/BrangeGridBounds_2046.lean",
+      "module": "Q3.Proofs.PrimeCert.BrangeGridBounds_2046",
+      "dependencies": [
+        "Q3/Proofs/Params_Critical.lean",
         "Q3/Proofs/PrimeCert/BrangeGrid_2046.lean",
         "Q3/Proofs/PrimeCert/Defs.lean",
         "Q3/Proofs/ShiftedWindows.lean"
@@ -1317,6 +1334,28 @@
       "module": "Q3.Proofs.PrimeCert.BrangeGrid_2046",
       "dependencies": [
         "Q3/Proofs/A3_Floor_Bounds.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+      "module": "Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/A3_Floor_Bounds.lean",
+        "Q3/Proofs/Params_Critical.lean",
         "Q3/Proofs/PrimeCert/Defs.lean"
       ],
       "sorries": [],
@@ -1381,6 +1420,285 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatIntegrable.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatIntegrable",
+      "dependencies": [
+        "Q3/Axioms.lean",
+        "Q3/Basic/Defs.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof",
+      "dependencies": [
+        "Q3/Axioms.lean",
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+        "Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean",
+        "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatIntegrable.lean",
+        "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatScaffold.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean",
+        "Q3/Proofs/Q_nonneg_atoms_helpers.lean",
+        "Q3/Proofs/ShiftedWindows.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof_min",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean"
+      ],
+      "sorries": [
+        202,
+        223,
+        245
+      ],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "SORRY",
+      "intrinsic_risk": 1.5,
+      "propagation_status": "SORRY",
+      "integrity_status": "SORRY",
+      "taint_source": [],
+      "risk_score": 1.5,
+      "risk_threshold": 1.0,
+      "risk_status": "EXCESSIVE",
+      "risk_exceeds": true,
+      "is_doomed": true
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof_min_arch",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean"
+      ],
+      "sorries": [
+        202
+      ],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "SORRY",
+      "intrinsic_risk": 0.5,
+      "propagation_status": "SORRY",
+      "integrity_status": "SORRY",
+      "taint_source": [],
+      "risk_score": 0.5,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_int.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof_min_arch_int",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatIntegrable.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step1.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof_min_arch_step1",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean"
+      ],
+      "sorries": [
+        217
+      ],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "SORRY",
+      "intrinsic_risk": 0.5,
+      "propagation_status": "SORRY",
+      "integrity_status": "SORRY",
+      "taint_source": [],
+      "risk_score": 0.5,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step2.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof_min_arch_step2",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step3.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof_min_arch_step3",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_arch_step4.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof_min_arch_step4",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_margin.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof_min_margin",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean"
+      ],
+      "sorries": [
+        245
+      ],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "SORRY",
+      "intrinsic_risk": 0.5,
+      "propagation_status": "SORRY",
+      "integrity_status": "SORRY",
+      "taint_source": [],
+      "risk_score": 0.5,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof_min_prime.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof_min_prime",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean"
+      ],
+      "sorries": [
+        223
+      ],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "SORRY",
+      "intrinsic_risk": 0.5,
+      "propagation_status": "SORRY",
+      "integrity_status": "SORRY",
+      "taint_source": [],
+      "risk_score": 0.5,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatScaffold.lean",
+      "module": "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatScaffold",
+      "dependencies": [
+        "Q3/Basic/Defs.lean",
+        "Q3/Proofs/Params_Critical.lean",
+        "Q3/Proofs/PrimeCert/Defs.lean",
+        "Q3/Proofs/ShiftedWindows.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "UNKNOWN",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "risk_score": 0.0,
+      "risk_threshold": 1.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/PrimeCert/Defs.lean",
       "module": "Q3.Proofs.PrimeCert.Defs",
       "dependencies": [],
@@ -1428,23 +1746,18 @@
         "Q3/Basic/Defs.lean",
         "Q3/Proofs/ShiftedWindows.lean"
       ],
-      "sorries": [
-        169,
-        177,
-        201,
-        208
-      ],
+      "sorries": [],
       "numeric_check": "UNKNOWN",
-      "direct_status": "SORRY",
-      "intrinsic_risk": 2.0,
-      "propagation_status": "SORRY",
-      "integrity_status": "SORRY",
+      "direct_status": "VERIFIED",
+      "intrinsic_risk": 0.0,
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
       "taint_source": [],
-      "risk_score": 2.0,
+      "risk_score": 0.0,
       "risk_threshold": 1.0,
-      "risk_status": "EXCESSIVE",
-      "risk_exceeds": true,
-      "is_doomed": true
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     },
     {
       "id": "Q3/Proofs/Q_Lipschitz.lean",
@@ -2488,7 +2801,7 @@
         "Q3/Atoms_Positive.lean",
         "Q3/AxiomsTheorems.lean"
       ],
-      "risk_score": 3.0,
+      "risk_score": 1.5,
       "risk_threshold": 1.0,
       "risk_status": "EXCESSIVE",
       "risk_exceeds": true,

@@ -76,7 +76,7 @@ def main():
         "**Purpose:** Machine + human index of the main-chain proof nodes, with alternatives."
     )
     md.append(
-        \"**Sources:** `ACTIVE/graphs/DEPS_TREE_MAIN.json` + `ACTIVE/pipeline/ALTERNATIVE_PATHS.json`\"
+        "**Sources:** `ACTIVE/graphs/DEPS_TREE_MAIN.json` + `ACTIVE/pipeline/ALTERNATIVE_PATHS.json`"
     )
     md.append("")
 
