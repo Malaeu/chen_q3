@@ -26,7 +26,7 @@ It uses symlinks so existing paths keep working.
 - KNOWLEDGE_BASE.md (this folder) — lightweight index + live facts
 - MAIN_CHAIN_DEPS.md (this folder) — actual RH deps vs repo legacy
 - tree.md (this folder) — navigation tree (dependencies at a glance)
-- requests/ (this folder) — task/request queue
+- requests/ (this folder) — active + infra only (archive in `q3.lean.aristotle/archive/requests_2026_01_29`)
 
 ## Core folders (new layout)
 

@@ -56,11 +56,13 @@ ACTIVE/
 
 ## Current blocker path (minimal)
 
-1) `Q3/Proofs/PrimeCert/Brange_2046.lean`  
-   → `prime_cert_margin_on_Brange_axiom`
-2) `Q3/Proofs/Q_nonneg_t_critical.lean`  
-   → `prime_term_le_at_t_critical_axiom`
-3) `Q3/CheckAxioms.lean`  
+1) `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
+   → `prime_b_grid_bounds_data`
+2) `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+   → `prime_heat_bounds_data`
+3) `Q3/Axioms.lean`
+   → `Weil_criterion_tau0`
+4) `Q3/CheckAxioms.lean`
    → prints live dependency list for `Q3.Main.RH_of_Weil_and_Q3`
 
 ## If you only read one chain file
