@@ -16,7 +16,7 @@
 | 2003-4.ocr.md | ~55 | 127KB | Done |
 | 2003-5.ocr.md | 79 | 189KB | Done |
 | 2003-6.ocr.md | ~50 | 117KB | Done |
-| 2003-7.pdf | ? | ? | Pending |
+| 2003-7.ocr.md | ~70 | 155KB | Done |
 
 ---
 
@@ -98,6 +98,17 @@ where α: H₊ → H₋ satisfies α*α ≤ I, so that I - F² ≥ 0 and ∈ K.
 | 418 | "tangent space to polarization = symmetric bilinear forms" |
 
 **Direct Q3 connection:** Quillen's "minimax inequalities" = our λ_min via Rayleigh quotient!
+
+### Polarization = Involution (2003-7) — NEW
+
+| Line | Content |
+|------|---------|
+| 532 | "**F = F* = F⁻¹**, and one has a bijection between polarizations and such operators F" |
+| 559 | "eigenvalues are ±1" for conjugation action |
+| 783 | "**F = (1+X)/(1-X)·ε**" — explicit Cayley transform formula for polarizations |
+| 276 | "Riemann sphere as a symmetric space" |
+
+**Summary:** Quillen confirms that polarization ↔ self-adjoint involution F with spectrum {±1}.
 
 ### Positive Definite Structures (2003-2, 2003-3, 2003-4)
 
@@ -204,7 +215,7 @@ literature/quillen_working_papers/2003/
 ├── 2003-4.ocr.md  (Time evolution, Cayley transform)
 ├── 2003-5.ocr.md  (Polarization, Cayley transform, Bott periodicity) — 189KB
 ├── 2003-6.ocr.md  (Rayleigh-Ritz, eigenvalues, Sp(2n)/U(n)) — 117KB
-└── 2003-7.pdf     (OCR in progress)
+└── 2003-7.ocr.md  (Polarization = F=F*=F⁻¹, Cayley F=(1+X)/(1-X)·ε) — 155KB
 ```
 
 ---
