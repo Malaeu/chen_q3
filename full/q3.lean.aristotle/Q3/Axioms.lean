@@ -9,7 +9,7 @@ This file contains axioms organized by tier:
 IMPORTANT: Run `#print axioms RH_of_Weil_and_Q3` to verify all dependencies.
 
 Axiom Summary:
-- Tier-1: 11 axioms (Weil, Guinand, a_star properties, Szegő-Böttcher, Schur, etc.)
+- Tier-1: 12 axioms (Weil, Guinand, a_star properties, Szegő-Böttcher, Schur, etc.)
 - Tier-2: 12 axioms (A1', A2, A3, RKHS, node spacing, Q ≥ 0 on compacts)
 
 New additions (2024-12):
@@ -178,6 +178,23 @@ bound for a(ξ).
 -/
 axiom a_star_linear_growth :
   ∃ C0 C1 : ℝ, 0 ≤ C0 ∧ 0 ≤ C1 ∧ ∀ ξ : ℝ, |a_star ξ| ≤ C0 + C1 * |ξ|
+
+/-! ## Axiom T1.3f: Prime Heat-Weight Summability (classical)
+
+Summability of the prime weights against a Gaussian in log-scale. The factor
+`exp(-c * (log n)^2)` dominates any polynomial/logarithmic growth and yields
+absolute convergence.
+
+**Citation:**
+- Titchmarsh, E.C. (1986). *The Theory of the Riemann Zeta-Function*, Ch. I.
+- Ivić, A. (1985). *The Riemann Zeta-Function*, §1.2 (standard growth of Λ(n)).
+
+**Status:** AXIOM (to be formalized separately).
+-/
+axiom w_Q_heat_weight_summable :
+  ∀ t : ℝ, 0 < t →
+    Summable (fun n : ℕ =>
+      w_Q n * (Real.exp (-4 * Real.pi ^ 2 * t * (xi_n n) ^ 2) * |xi_n n|))
 
 /-! ## Axiom T1.4: Szegő-Böttcher Theory (1958/1999)
 

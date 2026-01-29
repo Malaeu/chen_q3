@@ -1,6 +1,6 @@
 # Formalization Stats (Snapshot)
 
-Last updated: 2026-01-28
+Last updated: 2026-01-29
 Scope: Q3 Lean codebase - **ONLY code in proof chain counted**
 
 Notes:
@@ -103,6 +103,7 @@ Database: `aristotle_db/aristotle_proofs.db`
 | a_star_bdd_on_compact | ✅ CLOSED |
 | a_star_even | ✅ CLOSED |
 | a_star_linear_growth | ⚪ EXTERNAL |
+| w_Q_heat_weight_summable | ⚪ EXTERNAL |
 | A1_density_WK | ✅ CLOSED |
 | Q_Lipschitz_on_W_K | ✅ CLOSED |
 | RKHS_contraction | ✅ CLOSED |
@@ -111,7 +112,7 @@ Database: `aristotle_db/aristotle_proofs.db`
 | PrimeCert.prime_b_grid_val_le_margin | ❌ OPEN (cert) |
 | PrimeCert.prime_margin_Lipschitz_on_Brange | ❌ OPEN (cert) |
 
-**Current: 7 axioms (4 standard + 3 project)**
+**Current: 8 axioms (5 standard + 3 project)**
 **Remaining closable: 2 (PrimeCert certificates)**
 
 ---

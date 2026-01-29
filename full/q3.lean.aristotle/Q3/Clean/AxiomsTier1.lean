@@ -51,6 +51,12 @@ axiom a_star_even : ∀ ξ : ℝ, Q3.a_star (-ξ) = Q3.a_star ξ
 axiom a_star_linear_growth :
   ∃ C0 C1 : ℝ, 0 ≤ C0 ∧ 0 ≤ C1 ∧ ∀ ξ : ℝ, |Q3.a_star ξ| ≤ C0 + C1 * |ξ|
 
+/-! ## T1.3f: Prime Heat-Weight Summability (global) -/
+axiom w_Q_heat_weight_summable :
+  ∀ t : ℝ, 0 < t →
+    Summable (fun n : ℕ =>
+      Q3.w_Q n * (Real.exp (-4 * Real.pi ^ 2 * t * (Q3.xi_n n) ^ 2) * |Q3.xi_n n|))
+
 /-! ## T1.4: Szegő-Böttcher Theory (1958/1999) -/
 
 /-- Toeplitz matrix from symbol -/

@@ -60,6 +60,7 @@ These are re-exported from Q3.Axioms
 #check Q3.explicit_formula
 #check Q3.a_star_pos
 #check Q3.a_star_linear_growth
+#check Q3.w_Q_heat_weight_summable
 #check Q3.Szego_Bottcher_eigenvalue_bound
 #check Q3.Szego_Bottcher_convergence
 #check Q3.Schur_test

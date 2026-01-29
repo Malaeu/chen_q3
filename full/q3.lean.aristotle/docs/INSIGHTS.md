@@ -49,6 +49,13 @@
 - `arch_heat_weight_integrable` now compiles in the minimal file and is available
   in `Brange_Lipschitz_HeatProof.lean`.
 
+## Synthesis (2026-01-29, in progress) — prime heat-weight summability axiom
+
+- Added Tier‑1 axiom `w_Q_heat_weight_summable` to capture summability of
+  `w_Q n * exp(-4π^2 t (xi_n n)^2) * |xi_n n|`.
+- Using this axiom to finish `prime_term_Lipschitz_heat` and
+  `margin_Lipschitz_heat_of_bounds` in `Brange_Lipschitz_HeatProof.lean`.
+
 ## Synthesis (2026-01-26, in progress) — τ-shift AtomCone fails; `prime_term_le_at_t_critical_axiom` is false-for-now
 
 - Local numeric verification: `python3 verify_variant_b.py --direct` shows
@@ -526,71 +533,6 @@ we need a *heat-weighted* Lipschitz constant to match the certificate scale (~0.
    `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` / `Brange_2046.lean`.
 
 **Note:** q3search failed locally (403 spend limit), so we used local `rg` only.
-
----
-
-## Speculative Edge: Quillen 2003 Working Papers → K-theory/Toeplitz Bridge (2026-01-28)
-
-**Source:** Clay Mathematics Institute — Quillen Working Papers 2003
-- Files: `literature/quillen_working_papers/2003/2003-1.ocr.md`, `2003-2.ocr.md`, `2003-3.ocr.md`
-- Status: OCR completed for 2003-1,2,3; 2003-4 through 2003-7 in progress
-- Tag: `speculative-edge` (not in mainline chain)
-
-**Core finding (2003-1, lines 1199-1204):**
-Quillen describes **exactly** our Toeplitz structure:
-```
-F = [[0, α*], [α, 0]]  where  α: H₊ → H₋,  α*α ≤ I
-```
-This is the graded Hilbert space `H = H₊ ⊕ H₋` with odd self-adjoint contraction —
-**identical** to the Hardy decomposition `L² = H² ⊕ (H²)⊥` underlying Toeplitz operators.
-
-**Key passages:**
-| File | Line | Content |
-|------|------|---------|
-| 2003-1.ocr.md | 579 | "Complex K-theory, space U, Z×B4, Frohlich operators... S.a. Fred essential spectrum ±1" |
-| 2003-1.ocr.md | 1150 | "Such an A corresponds to a **polarization of H**" (= Hardy decomposition) |
-| 2003-1.ocr.md | 1199-1204 | Fredholm F with F²-I ∈ K, odd self-adjoint contraction structure |
-| 2003-1.ocr.md | 751 | "nuclear map" (trace class connection) |
-| 2003-2.ocr.md | 1004 | "creation + annihilation operators" on hyperbolic space |
-
-**Connections to Q3 chain:**
-| Quillen Concept | Q3 Counterpart | Bridge |
-|-----------------|----------------|--------|
-| Polarization of H | Hardy decomposition L² = H² ⊕ (H²)⊥ | Standard |
-| F = [[0,α*],[α,0]], α*α ≤ I | Toeplitz T_f on H² | Direct structure |
-| Fredholm index = dim ker - dim coker | Winding number of symbol | Atiyah-Singer |
-| Essential spectrum ±1 | Symbol positivity P_A ≥ c* | Spectral bound |
-| Clifford modules C_n | Graded Z/2 structure | Periodicity |
-
-**Quillen-Lichtenbaum Conjecture (background):**
-- Connects algebraic K-groups K_n(Z) to special values ζ(1-n) via étale cohomology
-- Quillen's 2003 notebooks focus on **hermitian K-theory** and symmetric spaces
-- Potential "speculative edge": K-theoretic approach to zeta positivity
-
-**Additional mathematical content (2003-2, 2003-3, 2003-4):**
-- **Sesquilinear forms** (2003-2.clean.md:269): `h(z₁v₁, z₂v₂) = z̄₁ h(v₁,v₂) z₂`
-- **Quadratic forms + O(2n,ℂ)** (2003-2.clean.md:511): "autos of H(V) respecting quadratic form"
-- **Quaternionic inner product** (2003-2.clean.md:652): Sp(2n) as automorphisms
-- **Bott periodicity** (2003-1.ocr.md:1115): "proof by AS using Kuiper's theorem"
-- **Atiyah R^{p,q}** (2003-1.ocr.md:2046): Z/2 representation theory
-- **Cayley transform + time evolution** (2003-4.ocr.md:39):
-  "X is the infinitesimal generator of the time evolution for a harmonic oscillator.
-   Even case: X = [[0,-T*],[T,0]]" — **identical to Toeplitz structure!**
-- **Spectrum of A⁻¹S** (2003-4.ocr.md:3272): "ratio" of symmetric/skew forms as eigenvalues
-
-**Potential index-theoretic bridge (speculative):**
-The Fredholm index of Toeplitz operator T_f equals the winding number of symbol f.
-If Quillen's K-theory → zeta connection works, it might provide:
-- Alternative proof of symbol positivity via index constraints
-- Connection between K-group elements and L-function values
-
-**Actionable next steps (if pursued):**
-1. Complete OCR for 2003-4 through 2003-7 and search for explicit zeta/L-function mentions
-2. Check if Quillen's Fredholm/index notes suggest an alternative A3 path via index theory
-3. If activating: create Lean stub in `Q3/Proofs/KTheory_Bridge.lean` documenting the intended connection
-
-**Risk assessment:** This is a **speculative edge** — interesting for context but NOT a formal dependency.
-Do not wire into mainline without explicit bridge lemmas.
 
 ---
 
