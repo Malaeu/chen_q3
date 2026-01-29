@@ -1,0 +1,146 @@
+# PROSHKA REQUEST v6: one‑scale A3 floor + prime cap at t_critical
+
+Date: 2026-01-24 (local)
+
+Goal: close the last Q3 paper axiom `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` by
+providing *one‑scale* inputs at **t = t_critical = 3/20** (τ=0 main chain).
+We already wired `t0_critical` into the atoms/T5 chain; what is missing is the
+actual *math* at this t: the A3 floor and a prime cap at the same scale.
+
+---
+
+## 0) TL;DR (for Proshka)
+
+We have a fully formal chain, but it still consumes the axiom
+`Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`. The bridge code for a single scale
+already exists (`P_A_Toeplitz_bridge_one_scale.lean`), but it needs two concrete
+inputs at **the same t**:
+
+1) **A3 floor** at `t_critical = 3/20`:
+   \[ P_A(B_min, t_critical, \theta) \ge c_* \quad \forall \theta \in [-1/2, 1/2] \]
+
+2) **Prime cap** (weight‑sum bound) at the same `t_critical`:
+   \[ \sum_{n \in Nodes(K)} w_Q(n)\,\Phi_{B,t_critical}(\xi_n) \le \rho \]
+   with \(\rho \le 3 c_*/4\) (so `c_star/4 ≤ c_star − rho`).
+
+Once these exist, the one‑scale bridge gives `A3_bridge_data_rayleigh_Fourier_at K t_critical`,
+which plugs directly into the atoms‑positivity chain (now wired to `t0_critical`).
+
+---
+
+## 1) Exact Lean targets (statements we need)
+
+### 1.1 A3 floor at t_critical
+
+File already exists with the target `Prop`:
+`Q3/Proofs/A3_Floor_Critical_Goal.lean`
+
+```lean
+/-- One-scale A3_FLOOR goal at the critical parameter `t_critical = 3/20`. -/
+def FloorGoal : Prop :=
+  ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2), Q3.c_star ≤ P_A B_min Q3.t_critical θ
+```
+
+We need a proof of `FloorGoal` (or an equivalent lemma with this statement).
+
+### 1.2 Prime cap at t_critical
+
+We need a lemma of the form:
+
+```lean
+lemma weight_sum_le_rho_critical (K B : ℝ) (hB : 0 < B) [Fintype (Q3.Nodes K)] :
+    ∑ n : Q3.Nodes K,
+        ‖((Q3.w_Q n * Q3.fejer_heat_window B Q3.t_critical (Q3.xi_n n)) : ℂ)‖
+      ≤ rho_critical := by
+  -- with rho_critical ≤ 3*c_star/4
+```
+
+It is enough to produce any explicit `rho_critical` with
+`c_star / 4 ≤ c_star - rho_critical`.
+
+---
+
+## 2) Where this plugs in
+
+We already have the one‑scale bridge:
+`Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`
+
+```lean
+lemma A3_bridge_rayleigh_at_from_weight_sum_P_A (K t rho : ℝ)
+    (h_floor : c_star / 4 ≤ c_star - rho)
+    (hP_ge : ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2), c_star ≤ P_A B_min t θ)
+    (h_weight_sum : ... t ... ≤ rho) :
+    A3_bridge_data_rayleigh_Fourier_at K t
+```
+
+Once we have `hP_ge` at `t_critical` and a cap `h_weight_sum` at `t_critical`,
+we can build the one‑scale bridge and then swap the axiom in:
+
+- `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`
+- `Q3/Atoms_Positive.lean`
+- `Q3/T5_Transfer.lean`
+
+We already changed the chain to use `t0_critical` (see below), so the missing
+part is exactly the one‑scale A3 + cap.
+
+---
+
+## 3) Current wiring state (important)
+
+- We **already** switched the atoms/T5 chain to `t0_critical`:
+  - `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`
+  - `Q3/Atoms_Positive.lean`
+  - `Q3/T5_Transfer.lean`
+  - `Q3/AxiomsTheorems.lean`
+
+- A BaseAtomCone guard lemma was added:
+  `Q_nonneg_on_base_atoms_of_A3_Fourier_RKHS` in
+  `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`
+
+So you do **not** need to touch the chain wiring. We only need the math inputs.
+
+---
+
+## 4) Known landmines / do‑not‑do
+
+- **Do not** mix `t_sym` and `t_rkhs_cap` (two‑scale mismatch).
+- **Do not** claim bounds for `t_critical` using the old cap at `t_rkhs_cap = 40`.
+- **Do not** use sampling Toeplitz; the bridge is **Fourier Toeplitz**.
+- **Do not** assume τ ≠ 0; main chain is τ = 0 (BaseAtomCone guarded).
+
+---
+
+## 5) Useful file pointers (high signal)
+
+- `Q3/Proofs/Params_Critical.lean` (t_critical, t0_critical, reparam identity)
+- `Q3/Proofs/A3_Floor_Bounds.lean` (current lower‑bound machinery; dead code mentions
+  a stronger digamma remainder bound)
+- `Q3/DigammaRemainder.lean` (Stieltjes remainder bound with constant 1/4)
+- `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean` (one‑scale A3 bridge)
+- `Q3/Proofs/RKHS_cap_generic.lean` (generic Schur/weight‑sum → cap)
+- `Q3/Proofs/A3_Floor_Critical_Goal.lean` (exact floor target)
+
+---
+
+## 6) What we want from you (deliverables)
+
+**Primary deliverable:**
+- A formal plan (Lean‑ready) to prove `FloorGoal` at `t_critical` and to bound
+  the weight‑sum at `t_critical`.
+
+**If you can propose explicit lemmas**, please provide:
+- `P_A_ge_c_star_at_t_critical` or equivalent,
+- `weight_sum_le_rho_critical` or equivalent,
+- any numeric inequalities you rely on (with constant values).
+
+**If the digamma remainder constant 1/4 is too weak**, propose an alternative
+approach (e.g., higher‑order Euler–Maclaurin / N=2 remainder with a smaller
+constant) and give a precise statement suitable for Lean.
+
+---
+
+## 7) Context pack (optional but useful)
+
+If you want full context, I can provide a high‑recall pack with diffs and key
+files (generated by the local tool `proshka-brief`).
+

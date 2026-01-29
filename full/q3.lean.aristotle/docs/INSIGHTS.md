@@ -11,6 +11,8 @@
 
 ## Навигация (кратко)
 
+- Текущая цепочка (single-scale t_critical): `docs/CHAIN_STATUS.md`.
+- Hub для активных доков/скриптов/DB: `ACTIVE/`.
 - Прошка как ускоритель: застряли >30 минут или <10% прогресса в Aristotle → `docs/insights/proshka_key_resource.md`.
 - Пример «идеального» ответа Прошки: нужна опорная структура → `docs/insights/breakthrough_proshka_full_proof_2026_01_14.md`.
 
@@ -29,10 +31,291 @@
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
 - check_axioms падает на A3_FLOOR: нужен предварительный build → `docs/insights/check_axioms_prebuild_a3_floor_2026_01_16.md`.
-- Semantic search workflow (q3search/websearch):
-  1) сначала q3search (3-5 запросов, до ~75% уверенности), 2) потом websearch,
+- FloorCert grid min: `floor_grid_val_ge_min_lb` closed via `native_decide`;
+  required `set_option maxRecDepth` / `maxHeartbeats` in `Q3/Proofs/FloorCert/Grid_2219.lean`.
+- Semantic search workflow (Embeddings + web tool):
+  1) сначала embedding‑поиск по нашей базе (3-5 запросов, до ~75% уверенности),
+     команда: `./scripts/research_oracle.py query "keyword" -c q3_docs`
+  2) потом внешний web‑поиск через встроенный web tool,
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
-  5) по завершении добавить итоговый инсайт. НЕ запускать `mgrep watch`/`mgrep --sync`.
+  5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
+
+## Audit (2026-01-29) — PDF vs Lean mainline divergence (in progress)
+
+- RH_Q3.pdf формулирует **классический Weil‑конус**; mainline Lean использует
+  **`Weil_cone_tau0` (τ=0 + фиксированный B‑range)**.
+- PDF использует two‑scale (`t_sym`, `t_rkhs`); mainline использует single‑scale `t_critical`.
+- Полная секция‑к‑Lean карта + сводка расхождений:  
+  `docs/struktura_q3_with_mapping_toLEAN.md` (раздел “2026-01-29 Audit — PDF vs Lean Mainline”).
+
+## Synthesis (2026-01-28, in progress) — heat-weight integrability requires global a_star growth
+
+- Added Tier‑1 axiom `a_star_linear_growth` (global linear growth bound) to unblock
+  integrability of `|a_star ξ| * exp(-4π^2 t ξ^2) * |ξ|`.
+- Implemented integrability lemma in
+  `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatIntegrable.lean`.
+- `arch_heat_weight_integrable` now compiles in the minimal file and is available
+  in `Brange_Lipschitz_HeatProof.lean`.
+
+## Synthesis (2026-01-29, in progress) — prime heat-weight summability axiom
+
+- Added Tier‑1 axiom `w_Q_heat_weight_summable` to capture summability of
+  `w_Q n * exp(-4π^2 t (xi_n n)^2) * |xi_n n|`.
+- Using this axiom to finish `prime_term_Lipschitz_heat` and
+  `margin_Lipschitz_heat_of_bounds` in `Brange_Lipschitz_HeatProof.lean`.
+
+## Plan (future de-axiomization) — a_star growth + heat-weight summability
+
+- a_star growth: use digamma asymptotics (DLMF 5.11) to show
+  `|a_star ξ| <= C0 + C1 * log(1 + |ξ|)` on tails, and combine with
+  `a_star_bdd_on_compact` on `Icc (-R) R` to get a global bound.
+- heat-weight summability: use basic bound `vonMangoldt(n) <= log n` and
+  `xi_n = log n / (2*pi)` to show
+  `w_Q n * exp(-c * (log n)^2) * |log n|` is absolutely summable.
+- glue: `log(1+|ξ|) <= |ξ|` then Gaussian integrability of
+  `(1 + |ξ|) * exp(-c ξ^2) * |ξ|`.
+
+## Research note (2026-01-29) — digamma/trigamma asymptotics sanity check
+
+- Asymptotics (DLMF 5.11 / trigamma) imply `ψ(1/4 + iπξ) = log|πξ| + O(1/ξ)` on tails,
+  so `|a_star ξ| = O(log|ξ|)` and is strictly better than the current linear-growth axiom.
+- Formalization gap: asymptotics are tail-only; to get a global bound we must
+  combine tail bound with `a_star_bdd_on_compact` on `Icc (-R) R` and fix constants.
+- Connes/Toeplitz remarks are good context but **not needed** for heat integrability;
+  keep as background only.
+
+## Synthesis (2026-01-29, in progress) — BMO Bellman check-mode + regularity gate
+
+- Added a lightweight `--check` mode to `bellman_bmo.py` to verify the closed‑form
+  answer numerically (balance residual + value check). Heavy concavity/optimizer
+  checks stay as future work.
+- Methodology takeaway for Q3: **regularity‑gate**. The Fejér×heat window has kinks
+  (|ξ| and cutoffs), so every step that assumes C² must be rejected unless
+  explicitly justified; stick to Lip/modulus control.
+- Future work capture: keep deeper BMO/Bellman formalization in `docs/INSIGHTS.md`
+  and only link it from `ACTIVE/insights.md` (short).
+
+## Synthesis (2026-01-26, in progress) — τ-shift AtomCone fails; `prime_term_le_at_t_critical_axiom` is false-for-now
+
+- Local numeric verification: `python3 verify_variant_b.py --direct` shows
+  `min Q = -911.2678` at `τ = 1.689` for `t = 0.15` (so full `AtomCone_K_fixed` is not safe).
+- Target axiom: `Q3.prime_term_le_at_t_critical_axiom` in `Q3/Proofs/Q_nonneg_t_critical.lean`
+  is currently the only thing making τ-uniform positivity go through in Lean.
+- Wiring (main chain): `prime_term_le_at_t_critical` → `Q_phi_shift_nonneg_t_critical` →
+  `QNonnegClosure.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm` →
+  `Atoms_Positive.Q_nonneg_on_atoms` → `T5.T5_transfer`.
+- Decision tree:
+  - Option A: keep the current cone (`AtomCone_K_fixed`) and accept this axiom permanently (not credible).
+  - Option B (recommended): refactor the cone/criterion target so τ-shift atoms are not required
+    (likely move to a Fourier-positive/PD cone; then BaseAtomCone τ=0 becomes the generator).
+  - Option C: replace A1/A2/T5 with a different positivity transfer (fallback; expensive).
+- Success check: after refactor, `#print axioms Q3.Main.RH_of_Weil_and_Q3` drops `prime_term_le_at_t_critical_axiom`.
+- **Status update (2026-01-26):** mainline now uses `Weil_cone_tau0` + `W_K_tau0`
+  (τ=0, B-range), so the τ‑uniform prime‑term axiom is no longer in the RH chain.
+- Note: `q3search`/`websearch` are deprecated; use `./scripts/research_oracle.py ...` + web tool.
+
+## Synthesis (2026-01-27, in progress) — Weil explicit formula ⇒ positivity criterion (Artin–Hecke)
+
+Source: Zotero cache for Weil 1972 (Math USSR Izvestiya, 1972) at
+`full/q3.lean.aristotle/literature/zotero/W9IDA6HW/fulltext.md`.
+
+**Core idea (one paragraph):** Weil derives a **general explicit formula** for Artin–Hecke
+L-series (not just ζ), expressed as a distributional identity on a Weil-group–type object.
+This yields a distribution Δ (schematically δ₁ − 2D) whose **positivity on a test-function class**
+is equivalent to RH **plus** Artin’s conjecture (no “bad” local factors). So RH becomes a
+positivity statement for a quadratic/linear functional built from local archimedean
+and non‑archimedean terms with *fixed normalization*.
+
+**Mapping to Q3 chain:**
+- This is the theoretical source of `Weil_criterion_tau0` (current external axiom).
+- The positivity functional Δ ↔ our `Q`/`Weil_criterion` viewpoint (nonnegativity on a cone).
+- The strict separation of arch/prime local terms matches the `arch_term` / `prime_term`
+  split in `Q3/Proofs/Q_nonneg_t_critical.lean`.
+
+**Why normalization matters (risk area):**
+- Weil fixes **canonical Haar measures** on “modular” groups and uses them in the explicit formula.
+- Any change in normalization shifts constants in Δ and can **flip positivity**.
+- For formalization, all local measures must be normalized **once** and kept consistent
+  with the test-function transform.
+
+**Strength vs RH:**
+- Weil’s criterion is **stronger** than RH alone (it includes Artin conjecture).
+  That’s fine if treated as an external classical axiom, but important to document.
+
+**Actionable insight for formalization:**
+- Treat Δ positivity as the target “axiom” until the explicit formula is formalized.
+- If we ever close `Weil_criterion_tau0`, we need:
+  1) precise definition of the test-function space (cone) and transforms,
+  2) explicit formula linking zeros ↔ local terms,
+  3) proof that Δ ≥ 0 ↔ RH (with Artin assumptions).
+
+**Quick follow‑ups (literature mining):**
+- Collect references in Weil (1972) bibliography for explicit formulas and Weil groups.
+- Look for modern expositions to reduce heavy group/representation preliminaries.
+
+## Synthesis (2026-01-27, in progress) — Toeplitz‑Weil mapping (formal chain vs speculative edges)
+
+Source: `docs/toeplitz_weil_bridge.md` (checked into this repo).
+
+**Critical correction (formal alignment):**
+- Do **not** state the Weil functional as `Σ |f̂(ρ)|²` in the formal chain.
+- In Q3 the correct formal target is: **`Q(Φ) ≥ 0` on the (τ=0) Weil cone ⇔ RH**,
+  i.e. `Weil_criterion_tau0` in `Q3/Axioms.lean`. Any spectral/quadratic‑form
+  intuition must be marked as *interpretation*, not formula.
+
+**Formal Chain (Lean‑anchored mapping):**
+- Weil criterion (τ=0): `Q3.Axioms.weil_criterion_tau0` → `Q3/Main.lean` mainline.
+- A3 bridge (Toeplitz − Prime): `Q3/Proofs/A3_bridge_integrated.lean`.
+- Base atom positivity (τ=0): `Q3/Proofs/Q_nonneg_base_atoms_proof.lean`.
+- RKHS contraction: `Q3/Proofs/RKHS_contraction.lean` and bridge wrappers.
+- T5 transfer (τ=0): `Q3/T5_Transfer.lean` (`T5_transfer_tau0`).
+
+**Speculative Edges (NOT in chain, keep isolated):**
+- Kapustin 2022 (explicit de Branges model), Connes 1998/2025 (trace formula / spectral triples),
+  Hilbert–Pólya heuristics: **informal context only**.
+- If used, they must enter as **speculative edges** with a formal bridge stub before activation.
+
+**Actionable rule:** keep the above split explicit in docs and dashboards; never “blend”
+speculative edges into the formal chain without a Lean stub.
+
+## Synthesis (2026-01-27, in progress) — Connes–Consani–Moscovici “Zeta Spectral Triples”
+
+Source: Zotero ingest
+`full/q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md`
+(paper: *Zeta Spectral Triples*, Connes–Consani–Moscovici).
+
+**Core idea (from cache):** construct self‑adjoint operators `D(λ,N)` as
+rank‑one perturbations of a spectral triple for the scaling operator on `[λ⁻¹, λ]`.
+The construction uses **finite Euler products** (`p ≤ x = λ²`). Spectra of `D(λ,N)`
+numerically align with low ζ‑zeros. Self‑adjointness relies on an **extension of the
+Carathéodory–Fejér theorem for Toeplitz matrices**.
+
+**Formal Chain (possible bridge points):**
+- CF‑extension ⇒ **Toeplitz self‑adjointness** in a finite‑rank/finite‑prime regime.
+  This could become a *formal* lemma stub that mirrors our Toeplitz/Rayleigh steps
+  (Szegő–Böttcher + Rayleigh bounds).
+- Rank‑one perturbation control ⇒ spectral stability lemma (if formalized,
+  could justify controlled operator deformations in the A3 path).
+
+**Speculative Edges (do NOT activate without stubs):**
+- “Finite Euler product” ⇒ **prime‑term truncation** with explicit error bound.
+  Potential leverage for PrimeCert Lipschitz/ margin bounds, but currently speculative.
+- Spectral triple / scaling operator formalization is out of scope for the mainline.
+
+**Actionable next step (lightweight):**
+- Add a speculative edge entry in the external graph:  
+  `CF_toeplitz_selfadjointness` (source = 6H6WHGDU, status = speculative).
+- If we pursue it: create a Lean stub lemma in `Q3/Proofs/PrimeCert/` or
+  `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean` documenting the intended statement
+  (self‑adjoint Toeplitz from truncated data), **without** wiring it into mainline.
+
+## Synthesis (2026-01-23, in progress) — fixed‑t/τ=0 one‑scale closure
+
+- q3search "AtomCone_K_fixed" / "Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom" failed: 403 Spend limit exceeded.
+- websearch "AtomCone_K_fixed Lean" failed: 403 Spend limit exceeded.
+- Target lemma: close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` in `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
+- Option A (primary): implement fixed‑t cone/τ=0 guard in `Q3/Axioms.lean`, then wire one‑scale chain using
+  `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`, `Q3/Proofs/RKHS_cap_rayleigh.lean`, and `Q3/Proofs/Params_Critical.lean`.
+- Option B (fallback): keep RKHS embedding path; fill missing `kernel_dict` in `Q3/Proofs/RKHS_cap_rayleigh.lean`
+  or discharge `hA` via `Q3/Proofs/RKHS_Interface_C1.lean` + `Q3/Proofs/Heat_RKHS_Interface.lean`.
+- Success check: `lake env lean Q3/Atoms_Positive.lean` and `./scripts/check_axioms.sh` drop the axiom.
+- Progress: `t0_critical` wired into `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`,
+  `Q3/Atoms_Positive.lean`, `Q3/T5_Transfer.lean`, `Q3/AxiomsTheorems.lean`;
+  BaseAtomCone guard `Q_nonneg_on_base_atoms_of_A3_Fourier_RKHS` added.
+- Proshka request drafted: `full/q3.lean.aristotle/PROSHKA_REQUEST_5.md` (one‑scale A3 floor + cap at t_critical).
+
+## Synthesis (2026-01-24, resolved) — close `rho_oneK_tcritical_le_cstar_quarter`
+
+- Decision: mainline uses tau = 0, so the cap reduces to `rho_one ≤ c_star/4`.
+- Implemented as a direct numeric bound (no K dependence).
+- Legacy `rho_oneK` (tau-shift) remains as a separate variant; not used in mainline.
+
+## Synthesis (2026-01-24, in progress) — `rayleigh_basis0_shift_ge_cstar_quarter` (t_critical, tau = 0)
+
+- q3search "rayleigh_basis0_shift_ge_cstar_quarter" failed: 403 Spend limit exceeded.
+- websearch "Toeplitz Rayleigh lower bound t_critical" failed: 403 Spend limit exceeded.
+- Target lemma: `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` in `Q3/Proofs/SingleScale_Assumptions.lean`.
+- Option A (primary): reduce to floor at t_critical via
+  `P_A_shift_tau_zero` (`Q3/Proofs/Q_nonneg_base_atoms_proof.lean`) +
+  `P_A_rayleigh_lower_bound_of_floor` (`Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`) +
+  `A3FloorCritical.FloorGoal` (`Q3/Proofs/A3_Floor_Critical_Goal.lean`), then weaken to `c_star/4`.
+- Option B (fallback): use `arch_rayleigh_eq_shift` (`Q3/Proofs/Rayleigh_Q_identification.lean`) +
+  `integral_P_A_shift_eq_arch_term` (`Q3/Proofs/ShiftedWindows.lean`) and prove
+  `arch_term ≥ c_star/4` via a numeric/interval lemma in `Q3/Proofs/Q_nonneg_t_critical.lean`.
+- Success check: `lake env lean Q3/Proofs/SingleScale_Assumptions.lean`
+  then `./scripts/check_axioms.sh` (only `Weil_criterion_tau0` + PrimeCert axioms remain).
+- Blocker: no current floor lemma at `t_critical`; likely needs numeric/interval proof
+  or a monotonicity lemma for `P_A` in `t`.
+
+---
+
+## Synthesis (2026-01-26, in progress) — close PrimeCert B‑range axioms
+
+- Target axioms (current): `prime_b_grid_bounds_data`, `prime_heat_bounds_data`
+  in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`; used by
+  `prime_cert_margin_on_Brange_axiom` → `Q3/Proofs/Q_nonneg_t_critical.lean`.
+- q3search/websearch commands are **missing** in this sandbox (both return “command not found”),
+  so no semantic scan done yet.
+- Option A (preferred): prove Lipschitz of `margin(B)` analytically by bounding
+  `‖phi_shift x - phi_shift y‖_∞` on `B ∈ [B_min, B_max]`, then combine with
+  existing arch/prime Lipschitz bounds (see `Q3/Proofs/Q_Lipschitz_*`).
+- Option B (fallback): keep axioms but gate them behind a dedicated certificate module
+  with explicit provenance + CI check; **do not** re‑introduce `native_decide`.
+- Status update (2026-01-26): **Option B implemented** —
+  certificate module + hashes in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`,
+  evidence files pinned in `Q3/Proofs/PrimeCert/README.md`,
+  CI hash check added in `scripts/check_axioms.sh` (uses `output/prime_cert_*_2026-01-26_*`).
+- Status update (2026-01-29): `prime_b_grid_val_le_margin` and
+  `prime_heat_bounds_cert` are now theorems (derived from `*_data` axioms).
+- Success check: `lake env lean Q3/Proofs/PrimeCert/Brange_2046.lean`,
+  then `./scripts/check_axioms.sh` (only `Weil_criterion_tau0` + PrimeCert remain).
+- Status: **Option B implemented**; Option A (analytic closure) remains long‑term.
+
+---
+
+## Synthesis (2026-01-26, in progress) — analytic Lipschitz closure for PrimeCert margin(B)
+
+- Target axioms: `prime_b_grid_bounds_data`, `prime_heat_bounds_data`
+  (now in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`); goal is to **replace** them by proofs.
+- q3search/websearch are **missing** in this sandbox (both “command not found”); no semantic scan yet.
+- 2026-01-26 check: `q3search`/`websearch` still unavailable (127 / “Befehl nicht gefunden”).
+- Aristotle tooling installed in `.venv` (CLI + `aristotlelib`), but submission is
+  blocked by missing `ARISTOTLE_API_KEY`. Next action: set key and submit
+  `aristotle_input/proshka_primecert_lipschitz_2026_01_26.md`.
+- Core idea: prove `B ↦ arch_term (phi_shift B t_critical 0)` and
+  `B ↦ prime_term (phi_shift B t_critical 0)` are Lipschitz on `[B_min, B_max]`,
+  then combine to bound the margin. Use existing bounds:
+  `Q_Lipschitz_arch_bridge.lean` + `Q_Lipschitz_prime_bridge.lean`,
+  plus a **uniform sup‑norm bound** on `|phi_shift B₁ - phi_shift B₂|`.
+- Need explicit constant `L ≤ 0.3` (matches `prime_cert_L_ub`), or show a sharper bound
+  and then relax to 0.3.
+- **Implemented (analytic skeleton):** `Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean`
+  proves a symbolic Lipschitz bound for `margin` with constant
+  `margin_Lipschitz_const := (2*B_max*M_a_local(B_max)+W_sum_local(B_max)) * (B_max/B_min^2)`,
+  plus a pointwise `phi_shift` bound in `B`. This compiles.
+- **Note (2026-01-26):** attempted a weighted prime‑sum Lipschitz variant here, but Lean
+  hit deterministic heartbeat timeouts; rolled back the weighted lemma to keep the file compiling.
+  Next attempt should refactor to a finite‑sum (`Finset`) proof to avoid heavy `tsum` machinery.
+- **Still missing:** an explicit numeric upper bound on
+  `2*B_max*M_a_local(B_max)+W_sum_local(B_max)` to show
+  `margin_Lipschitz_const ≤ 3/10` (or any certified ≤ `prime_cert_L_ub`).
+- File pointers: `Q3/Proofs/ShiftedWindows.lean` (phi_shift definition/support),
+  `Q3/Proofs/Q_Lipschitz_arch_bridge.lean`, `Q3/Proofs/Q_Lipschitz_prime_bridge.lean`,
+  `Q3/Proofs/PrimeCert/Brange_2046.lean`.
+- Success check: `lake env lean Q3/Proofs/PrimeCert/Brange_2046.lean`,
+  then `./scripts/check_axioms.sh` (PrimeCert axioms eliminated).
+
+---
+
+## Synthesis (2026-01-27, in progress) — PrimeCert closure architecture request (Proshka)
+
+- Goal: remove the two PrimeCert axioms in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` without changing the one-scale mainline.
+- Bottlenecks:
+  - Lipschitz: convert the symbolic bound in `Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean` into
+    `margin_Lipschitz_const ≤ prime_cert_L_ub` via certified numeric bounds on `M_a_local(4.9)` and `W_sum_local(4.9)` (or avoid these).
+  - Grid: connect the rational table in `Q3/Proofs/PrimeCert/BrangeGrid_2046.lean` to the true `arch_term - prime_term`
+    (needs a Lean-side verifier or another reduction).
+- Proshka request drafted: `aristotle_input/proshka_primecert_closure_2026_01_27.md`.
 
 ---
 
@@ -47,7 +330,13 @@
 - RKHS cap: видим несходимость по ρ=0.868 → `docs/insights/a3_bridge_math_rkhs_bound.md`.
 - RKHS cap реализация (t_rkhs_cap=40, rho_one=1/25) → `docs/insights/rkhs_cap_implementation_2026_01_15.md`.
 - Tau-shift: варианты RKHS cap/A3 floor + выбор Variant 1 (риски/план) → `docs/insights/tau_shift_variants_rkhs_a3_2026_01_18.md`.
-- C1 compression identity (Option B dictionary) documented in `Q3/Proofs/RKHS_cap_rayleigh.lean`; rollback to abstract/analytic if needed.
+- Floor cert (t_critical): grid+Lipschitz numbers + script → `docs/insights/floor_cert_tcritical_2026_01_25.md`
+- Prime-term cert (t_critical): prime_sum + tail bound + arch_term numeric → `docs/insights/prime_cert_tcritical_2026_01_25.md`
+- Prime-term cert (B-range): grid + margin Lipschitz over B → `docs/insights/prime_cert_brange_tcritical_2026_01_25.md`
+- C1 basisFun model wired (machine `h_eval`) + compression identity (Option B dictionary) in `Q3/Proofs/RKHS_cap_rayleigh.lean`; rollback to abstract/analytic if needed.
+- Single-scale RKHS contraction at `t_critical` wired into `Q3/AxiomsTheorems.lean` (via `SingleScale_Assumptions`).
+- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` closed via `Q_nonneg_atoms_closure`; remaining blocker is
+  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`.
 
 - Реальные bounds для T_P (V1 surprise): путаем direct‑indexed vs compression → `docs/insights/v1_surprise_real_tp_bounds_2026_01_14.md`.
 - Успешный Rayleigh‑bridge (V3) → `docs/insights/v3_success_a3_bridge_rayleigh_2026_01_14.md`.
@@ -119,6 +408,31 @@
   7) Checks: `lake env lean Q3/Proofs/Q_nonneg_atoms_helpers.lean`,
      `lake env lean Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`,
      `lake env lean Q3/Atoms_Positive.lean`.
+- Synthesis (2026-01-24, in progress): Close `Q3/Proofs/Q_nonneg_atoms_closure.lean` sorries (fixed‑t chain).
+  1) `Q_nonneg_phi_shift_tsym`: use `Q3.Proofs.QNonnegAtoms.Q_phi_shift_nonneg`
+     from `Q3/Proofs/Q_nonneg_atoms_helpers.lean` with cap
+     `prime_term_phi_shift_le_rho_oneK` (in `Q3/Proofs/RKHS_cap_rayleigh.lean`)
+     + `rayleigh_basis0_of_A3`; **need** explicit `hpos : 0 ≤ c_star/4 - exp_tsym_to_rkhs K * R`.
+  2) Replace scaling/half‑atom steps with the fixed‑t identity
+     `Fejer_heat_atom_eq_const_mul_phi_shift_sum` from `Q3/Proofs/ShiftedWindows_t0.lean`.
+  3) For `Q_nonneg_Fejer_heat_atom`, prefer `Q_single_atom_nonneg_of_phi_shift_basic`
+     (in `Q3/Proofs/Q_nonneg_atoms_helpers.lean`) + prove `htsym` for `t0_A1`.
+  4) Finish with `Q_nonneg_on_atomcone_fixed_of_atoms` (same file) to get
+     `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm`.
+  5) Searches attempted: `q3search` + `websearch` failed (403 spend limit); proceed with local lemmas.
+- Synthesis (2026-01-23, in progress): close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+  via the one-scale chain (Stream A).
+  1) q3search/websearch were attempted but failed with spend-limit 403.
+  2) Implement `AtomCone_K_fixed` + `AtomCone_K_fixed_subset` in `Q3/Axioms.lean`
+     and update the fixed-t cone plumbing (see `docs/insights/atomcone_fixed_t_gap_2026_01_18.md`).
+  3) In `Q3/Proofs/Q_nonneg_atoms_helpers.lean`, import A1/A2 from
+     `Q3/Proofs/Q_nonneg_lemmas.lean` and add the missing A3/A4/A5 steps with minimal imports.
+  4) In `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`, use the fixed-t cone lemma,
+     `rayleigh_Q_eq_Q`/`rayleigh_Q_eq_Q_shift`, and the one-scale bridge from
+     `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean` plus the cap in
+     `Q3/Proofs/RKHS_cap_rayleigh.lean`.
+  5) Replace the axiom in `Q3/Atoms_Positive.lean` and `Q3/AxiomsTheorems.lean`,
+     then run `lake env lean` on the touched files and `./scripts/check_axioms.sh`.
 - Последний мост к Q3.Q: для Phi с compact support (например, fejer_heat_window) показать, что prime_term (tsum по n) равен конечной сумме по Nodes K при K >= B; тогда rayleigh_Q_identification переписывается в Q3.Q (см. `Q3/Proofs/Rayleigh_Q_identification.lean`).
 - P_A_continuous: доказательство через локальную конечность суммы и периодичность, без `sorry` (см. `A3_Floor_Main.lean`).
 
@@ -129,6 +443,11 @@
 - Две формы t (в числителе/знаменателе): знак эффекта не тот → `docs/insights/t_parameter_forms.md`.
 - Heat‑параметр mismatch (t_sym vs t_rkhs): путаем контексты → `docs/insights/heat_parameter_mismatch_2026_01_14.md`.
 - Численные оценки h‑cap: нужен sanity‑check по величинам → `docs/insights/h_cap_numerical_estimates_2026_01_14.md`.
+- One-scale vs two-scale (конкретно):
+  - **Two-scale** = A3 floor на `P_A(·, t_sym)` + prime cap на `T_P_comp(·, t_rkhs_cap)` (см. `Q3/Proofs/P_A_Toeplitz_bridge.lean`,
+    `Q3/Proofs/A3_bridge_rayleigh_first.lean`) и затем отдельный мост/штраф за смену t (см. `Q3/Proofs/PrimeTerm_t_bridge.lean`).
+  - **One-scale** = один и тот же `t` одновременно в `P_A(·, t)` и в `T_P_comp(·, t)` (и в RKHS-части): меньше “перекидываний”,
+    но нужно реально закрыть обе оценки на одном t. Параметры фиксируем в `Q3/Proofs/Params_Critical.lean` (`t_critical`, `t0_critical`).
 
 ---
 
@@ -141,9 +460,143 @@
 - Prime term = nodes sum bridge → `docs/insights/prime_term_nodes_bridge_2026_01_17.md`.
 - Rayleigh Q identification notes → `docs/insights/rayleigh_q_identification_2026_01_17.md`.
 - Rescaled density lemma variants → `docs/insights/rescaled_density_lemma_variants_2026_01_16.md`.
+- Decision tree (2026-01-23): “нетривиальное hA” для C1 (Rayleigh = compression RKHS-prime).
+  - Target lemma (informal): ∃ heat-RKHS `H_t`, ∃ isometry `ι_{t,M}`, s.t.
+    `(Matrix.toEuclideanLin (T_P_comp_real ...)).toCLM = compression ι_{t,M} (T_P_RKHS t)`.
+  - Tree-plan (no axioms, Moore–Aronszajn → close `hA`):  
+    1) Build `H_t` from kernel `k_t(x,y)` (Moore–Aronszajn: span/quotient/complete) and expose
+       `eval x` + `k x` + reproducing lemma. Status: **blocked (infrastructure)** — a first attempt at a
+       Fourier/Bochner model ran into nontrivial `simp`/`cpow`/conjugation normalization issues, so it was
+       reverted rather than kept half‑working.  
+    2) `Q3/Proofs/Heat_RKHS_Interface.lean`: use `reproducing` to reduce `inner ℂ (ψ i) (k x)` to `eval x (ψ i)` (already: `h_eval_of_eval_eq_prime_vec`).  
+    3) `Q3/Proofs/RKHS_Interface_C1.lean`: discharge `hA` by providing `H, ψ, k` and the matching hypothesis; conclude exact compression identity (already: `T_P_comp_toCLM_eq_compression`).  
+    4) If “exact sampling ON family” is false-for-now: switch to node-span interpolation, prove unitary-conjugation equivalence, and use operator-norm invariance to recover the C1 cap (document as Option 1b in this tree).  
+       Lean helper: `Q3/Proofs/OpNorm_Unitary.lean` (`opNorm_conj_linearIsometryEquiv`).
+  - Option 0 (DONE, algebraic core): exact factorization `T_P_comp = V† · D · V` in
+    `Q3/Proofs/RKHS_hA_prime.lean` (this is the real “content” of the rank-one sum).
+  - Option 1 (OK, conditional “true C1 as in PDF”): minimal Hilbert-interface version of `hA`
+    compiles as `Q3.Proofs.RKHSInterfaceC1.T_P_comp_toCLM_eq_compression` in
+    `Q3/Proofs/RKHS_Interface_C1.lean`:
+    assumptions = `(H, ψ orthonormal, k_n, inner(ψ_i,k_n)=prime_vec)` ⇒ `T_P_comp = compression ι T`.
+    Note: in this Lean toolchain `⟪·,·⟫` does not parse reliably; use `inner ℂ _ _` in new files.
+    Refinement: `Q3/Proofs/Heat_RKHS_Interface.lean` packages a minimal RKHS interface
+    (`eval x` + reproducing vectors `k x`) so the matching hypothesis reduces to:
+    `eval (xi_n n) (ψ i) = prime_vec ... i`.
+    Reality check (important before “full Gaussian RKHS”): in the *Gaussian RKHS on ℝ* with kernel
+    `k_t(x,y)=exp(-(x-y)^2/(4t))`, it is not obvious (and may be false) that one can pick an
+    orthonormal family `ψ_i` with exact exponential sample values `ψ_i(ξ_n)=prime_vec ... i`.
+    The robust route is to build `ψ_i` by *kernel interpolation on the finite node set* and then
+    track the induced unitary change-of-basis on `ℂ^{2M+1}`; this still gives the needed norm control
+    because `A · T_P_comp · A†` has the same operator norm as `T_P_comp`.
+  - Option 2 (OK fallback): skip RKHS and cap `‖T_P_comp_real‖` directly by Schur/row-sum:
+    `T_P_comp_real_opNorm_le_weight_sum` in `Q3/Proofs/RKHS_cap_rayleigh.lean`.
+    Status: compiles now; use when Option 1 is blocked.
+  - Pivot rule: if Option 1 requires new axioms / >N days of infrastructure, mark “false-for-now”
+    and wire Option 2 into the proof chain; keep Option 1 as long-term cleanup.
+  - τ=0 note (важно): `BaseAtomCone_K` в `Q3/Axioms.lean` требует `c_i ≥ 0` и `τ=0`.
+    Такой конус генерирует только “центрированные” (по |ξ|) профили и **не может быть плотным**
+    в общем `W_K` без дополнительных идей (иначе A1′ ломается). Поэтому “работаем только τ=0”
+    должно быть либо (a) про A3/RKHS-узел (matching/positivity) с сохранением τ-параметра в плотности,
+    либо (b) сопровождается новой, честной A1′-теоремой для изменённого генератора.
+
+- Tree-plan (2026-01-23, requested): Moore–Aronszajn RKHS + где закрывается `hA` (без аксиом).
+  - **(0) One-scale spec (must):** eliminate two-scale mismatch by using one `t` everywhere; scaffolding:
+    `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean` (`A3_bridge_data_rayleigh_Fourier_at`, `A3_bridge_rayleigh_at_from_weight_sum_P_A`).
+  - **(1) RKHS construction:** build `H_t` from kernel `k_t` (Moore–Aronszajn) + reproducing:
+    future file (blocked infra) + Aristotle sandbox tasks in `aristotle_input/` (start from `gaussian_rkhs_kernel_v1.lean`).
+  - **(2) Matching bridge:** use the minimal interface to reduce “inner = sample” to eval statements:
+    `Q3/Proofs/Heat_RKHS_Interface.lean` (`h_eval_of_eval_eq_prime_vec`).
+  - **(3) Close `hA` (C1 exact identity):** once matching hypotheses are provided, the compression identity is a theorem:
+    `Q3/Proofs/RKHS_Interface_C1.lean` (`T_P_comp_toCLM_eq_compression`).
+  - **(4) Fast fallback (no RKHS):** cap from Schur/weight_sum at the same `t`:
+    `Q3/Proofs/RKHS_cap_generic.lean` (`rkhs_cap_rayleigh_of_weight_sum`) + provide the numeric/analytic `h_weight_sum`.
 
 ---
+
+## A3_FLOOR @ one-scale `t_critical` (BLOCKER, 2026-01-23)
+
+**Target (exact):**
+- Prove (no axioms/sorry): `∀ θ ∈ Set.Icc (-1/2) (1/2), Q3.c_star ≤ P_A B_min Q3.t_critical θ`.
+- This is the missing input `hP_ge` for the one-scale bridge in `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`.
+
+**Why it’s hard right now (root cause, not vibes):**
+- The old proof `Q3/Proofs/A3_Floor_Main.lean` works at `t_sym = 3/50` because it can lower-bound the key
+  “two big terms” using the strong pointwise bound `a(1/2) ≥ 5/8` (log2 is large enough) and then crush all tails.
+- At `t_critical = 3/20`, the bottleneck becomes controlling `g B_min t (1-θ)` for `θ` close to `1/2`,
+  i.e. `a(x)` for `x` slightly **above** `1/2` (e.g. `x = 11/20 = 0.55`).
+- With the current remainder lemma `Q3.re_digamma_remainder_bound_stieltjes` (constant `1/4`),
+  the best “pure-inequality” lower bounds for `a(11/20)` appear too weak to close the numeric gap cleanly;
+  the dead-code path in `Q3/Proofs/A3_Floor_Bounds.lean` explicitly notes that a sharper
+  `re_digamma_remainder_bound` (constant `1/12`) would unlock the needed strength.
+
+**Decision tree (next moves):**
+1) **OK / recommended:** implement a sharper digamma remainder bound (the missing `re_digamma_remainder_bound`)
+   and resurrect `a_lower_bound_from_remainder` in `Q3/Proofs/A3_Floor_Bounds.lean`.
+   - Pointers: `full/q3.lean.aristotle/Q3/Proofs/A3_Floor_Bounds.lean` (dead code blocks around `re_digamma_remainder_bound`),
+     `full/q3.lean.aristotle/Q3/DigammaRemainder.lean` (current `…_stieltjes` bound).
+   - This is the most “community-standard” fix: better explicit remainder ⇒ better pointwise `a(x)` bounds ⇒ floor.
+2) **OK but larger infra:** prove a *local* control of `a` on `[1/2, 11/20]` (e.g. via trigamma bounds)
+   and use it to transfer the known `a(1/2)` lower bound to `a(1-θ)` when `θ≈1/2`.
+   - Risk: introduces heavy special-functions analysis in Lean.
+3) **False-for-now (policy):** silently mix two-scale (`t_sym` floor + `t_critical` prime cap) in the *same* proof chain.
+   - If we go two-scale, we must write an explicit comparison lemma and document the spec change; otherwise it’s drift.
+
 
 ## Спеки
 
 - Основной спецификатор инвариантов: `docs/PROJECT_SPECS.md`.
+
+---
+
+## PrimeCert B-range Lipschitz (heat-weighted scaffold, 2026-01-28)
+
+**Why:** current main-chain axioms are
+`PrimeCert.prime_b_grid_bounds_data` and `PrimeCert.prime_heat_bounds_data`.
+The analytic bound in `Brange_Lipschitz_Analytic.lean` uses `W_sum_local` and is far too large;
+we need a *heat-weighted* Lipschitz constant to match the certificate scale (~0.3).
+
+**What was added (scaffold):**
+- `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatScaffold.lean`
+  - `PrimeMarginHeatLipschitzCert` structure (L_arch/L_prime + certified bounds)
+  - `margin_Lipschitz_of_cert` lemma to combine bounds
+- `scripts/prime_brange_heat_lipschitz_cert.py`
+  - numeric helper to estimate heat-weighted constants (arch + prime) for t_critical
+  - outputs `output/prime_cert_brange_heat_L_*.txt`
+  - latest output: `output/prime_cert_brange_heat_L_2026-01-28_0115.txt`
+    (sha256 `da6a6ac1221f93d376aafecd189169607b40b5d394868e893124445089a3e0a5`)
+    with `L_prime_heat ≈ 4.0049`, `L_arch_heat ≈ 1.3604`, `L_total ≈ 0.59614`
+    → conservative bound `L_total ≤ 0.60`
+
+**Next (to actually close the axiom):**
+1) Produce a certified numeric constant from the script output
+2) Provide Lean lemmas `h_arch` and `h_prime` (or a combined margin version)
+3) Instantiate `PrimeMarginHeatLipschitzCert` and replace the axiom in
+   `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` / `Brange_2046.lean`.
+
+**Note:** q3search failed locally (403 spend limit), so we used local `rg` only.
+
+---
+
+## PrimeCert Lipschitz closure plan (2026-01-28)
+
+**Target lemma:** `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` in
+`Q3/Proofs/PrimeCert/BrangeCert_2046.lean` (main-chain axiom).
+
+**Semantic search:** attempted `q3search` (3 queries) and `websearch` (1 query) → both commands missing
+in this sandbox (`Befehl nicht gefunden`, exit 127). Fell back to local `rg`.
+
+**Local hits:** `phi_shift_lipschitz_B_exp` + `margin_Lipschitz_symbolic` in
+`Q3/Proofs/PrimeCert/Brange_Lipschitz_Analytic.lean` give the formal *shape* of a Lipschitz proof,
+but constants are too large (`W_sum_local`, `M_a_local`).
+
+**Option 1 (preferred):** formalize heat-weighted bounds using `phi_shift_lipschitz_B_exp`,
+then bound prime/arch contributions by numeric constants from
+`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`; instantiate
+`PrimeMarginHeatLipschitzCert` (file: `Brange_Lipschitz_HeatScaffold.lean`) and replace the axiom.
+
+**Option 2 (fallback):** keep the axiom but document the analytic bound path
+(`margin_Lipschitz_symbolic`) as “false-for-now” due to oversized constants.
+
+**Immediate next actions:** (a) create Lean lemmas `h_arch`/`h_prime` using heat-weighted
+integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.lean`;
+(c) re-run `lake env lean` on the touched files.

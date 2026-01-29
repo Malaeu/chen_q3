@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-01-27",
+  "alignments": [],
+  "notes": "Maps external graph nodes to Lean declarations with normalization notes."
+}

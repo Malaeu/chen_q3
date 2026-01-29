@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-01-27 15:56 UTC",
+  "root": "Q3.Main.RH_of_Weil_and_Q3",
+  "tasks": [
+    {
+      "id": "axiom::Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin",
+      "type": "axiom",
+      "name": "Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin",
+      "file": "Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
+      "priority": 1,
+      "mode": "direct_english"
+    },
+    {
+      "id": "axiom::Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange",
+      "type": "axiom",
+      "name": "Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange",
+      "file": "Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
+      "priority": 1,
+      "mode": "direct_english"
+    },
+    {
+      "id": "sorry::Q3/Proofs/Q_nonneg_base_atoms_proof.lean",
+      "type": "sorry_file",
+      "file": "Q3/Proofs/Q_nonneg_base_atoms_proof.lean",
+      "priority": 2,
+      "mode": "fill_sorries",
+      "sorries": [
+        {
+          "line": 168,
+          "decl": "Q_nonneg_phi_shift_tau_zero"
+        },
+        {
+          "line": 200,
+          "decl": "Q_nonneg_centered_atom_B_min"
+        },
+        {
+          "line": 209,
+          "decl": "Q_finsum_atoms"
+        },
+        {
+          "line": 227,
+          "decl": "Q_nonneg_on_BaseAtomCone_of_B_ge_Bmin"
+        }
+      ]
+    },
+    {
+      "id": "sorry::Q3/Clean/MainClean.lean",
+      "type": "sorry_file",
+      "file": "Q3/Clean/MainClean.lean",
+      "priority": 3,
+      "mode": "fill_sorries",
+      "sorries": [
+        {
+          "line": 59,
+          "decl": "RH_proven_clean"
+        }
+      ]
+    }
+  ]
+}

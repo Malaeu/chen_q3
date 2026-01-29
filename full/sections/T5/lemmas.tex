@@ -3,7 +3,7 @@
 Let $\mathcal W_K=C^+_{\mathrm{even}}([-K,K])$ with the uniform norm and let $\mathcal W=\bigcup_{K>0}\mathcal W_K$ carry the inductive limit topology.
 
 \begin{lemma}[Nested dictionaries yield $\mathcal W$]\label{t5:lem:T5-dicts}
-For each $K>0$ let $\mathcal G_K\subset\mathcal C_K$ be a finite dictionary as in Theorem~\ref{a1:thm:A1-local-density}, constructed over a shift grid with step $\Delta(K)$ and two heat scales $t_{\min}(K),t_{\max}(K)$. If $K_i\nearrow\infty$ and $\Delta(K_{i+1})$ divides $\Delta(K_i)$ so that $\mathcal G_{K_i}\subset\mathcal G_{K_{i+1}}$, then
+For each $K>0$ let $\mathcal G_K\subset\mathcal C_K$ be a finite dictionary as in Theorem~\ref{a1:thm:A1-local-density}, constructed over a bandwidth grid at the fixed scale $t=t_{\mathrm{crit}}$. If $K_i\nearrow\infty$ and the dictionaries are nested so that $\mathcal G_{K_i}\subset\mathcal G_{K_{i+1}}$, then
 \begin{equation}\label{eq:T5_compact_limit_lemmas-formula}
 \bigcup\limits_i \overline{\mathrm{cone}(\mathcal G_{K_i})}^{\,\|\cdot\|_\infty}\ =\ \bigcup\limits_i \mathcal W_{K_i}\ =:\ \mathcal W.
 \end{equation}
@@ -13,34 +13,36 @@ By Theorem~A1$'$ each $\overline{\mathrm{cone}(\mathcal G_{K_i})}$ is dense in $
 \end{proof}
 
 \begin{theorem}[Transfer of positivity to the Weil class]\label{t5:thm:T5-transfer}\label{lem:T5-transfer}
-Assume $Q\ge0$ on $\mathcal W_{K_i}$ for every $i$, where $Q$ is continuous on each $\mathcal W_{K_i}$ (Lemma~\ref{a2:lem:A2}). Then $Q\ge0$ on $\mathcal W$ in the inductive limit topology. With the normalization of Lemma~\ref{t0:lem:T0} and the bridge of Theorem~\ref{thm:A3}, this identifies the positivity domain with the Weil cone $\mathcal W$ used throughout Sections~\ref{sec:scope}--\ref{sec:Weil}.
+Assume $Q^\star(t;\Phi)\ge0$ on $\mathcal W_{K_i}$ for every $i$, where $Q^\star(t;\cdot)$ is continuous on each $\mathcal W_{K_i}$ (Lemma~\ref{a2:lem:A2}). Then $Q^\star(t;\Phi)\ge0$ on $\mathcal W$ in the inductive limit topology. With the normalization of Lemma~\ref{t0:lem:T0} and the bridge of Theorem~\ref{thm:A3}, this identifies the positivity domain with the Weil cone $\mathcal W$ used throughout Sections~\ref{sec:scope}--\ref{sec:Weil}.
 \end{theorem}
 \begin{proof}
-Given $\Phi\in\mathcal W$, choose $i$ with $\mathrm{supp}\,\Phi\subset[-K_i,K_i]$. Then $\Phi\in\mathcal W_{K_i}$ and $Q(\Phi)\ge0$ by hypothesis. Continuity on each $\mathcal W_{K_i}$ and Lemma~\ref{t5:lem:T5-dicts} pass the result to the closure and thus to $\mathcal W$.
+Given $\Phi\in\mathcal W$, choose $i$ with $\mathrm{supp}\,\Phi\subset[-K_i,K_i]$. Then $\Phi\in\mathcal W_{K_i}$ and $Q^\star(t;\Phi)\ge0$ by hypothesis. Continuity on each $\mathcal W_{K_i}$ and Lemma~\ref{t5:lem:T5-dicts} pass the result to the closure and thus to $\mathcal W$.
 \end{proof}
 
 \begin{lemma}[Grid-lift by Lipschitz margin]\label{lem:t5-grid-lip}
-Let $Q$ be Lipschitz on $W_K$ with constant $L_Q(K)$ (\textup{A2}). Suppose there exists a uniform grid $\{\tau_j\}$ in $[-K,K]$ of step $\Delta>0$ such that
+Let $Q^\star(t;\cdot)$ be Lipschitz on $W_K$ with constant $L_Q(K)$ (\textup{A2}). Suppose there exists a finite subset
+$\{\Phi_j\}\subset\mathcal C_K$ such that every $\Phi\in\mathcal C_K$ admits some $j$ with
+$\|\Phi-\Phi_j\|_\infty\le \Delta$, and
 \[
-  \min_j Q(\tau_j)\ \ge\ c_*\ > 0
+  \min_j Q^\star(t;\Phi_j)\ \ge\ c_*\ > 0
 \]
-where $c_*>0$ is the uniform floor from Lemma~\ref{lem:uniform-arch-floor}, and $\Delta\le c_*/(4L_Q(K))$. Then $\min_{\tau\in[-K,K]} Q(\tau)\ge \tfrac12\,c_*$.
+where $c_*>0$ is the uniform floor from Lemma~\ref{lem:uniform-arch-floor}. If $\Delta\le c_*/(4L_Q(K))$, then
+$Q^\star(t;\Phi)\ge \tfrac12\,c_*$ for all $\Phi\in\mathcal C_K$.
 \end{lemma}
 \begin{proof}
-Fix $\tau\in[-K,K]$ and let $\tau_\ast$ be the nearest grid point, so $|\tau-\tau_\ast|\le \Delta/2$. By Lipschitz continuity,
+Fix $\Phi\in\mathcal C_K$ and choose $j$ with $\|\Phi-\Phi_j\|_\infty\le \Delta$. By Lipschitz continuity,
 \[
-  Q(\tau)\ \ge\ Q(\tau_\ast) - L_Q(K)\,|\tau-\tau_\ast|\ \ge\ c_* - L_Q(K)\,\frac{\Delta}{2}
-  \ \ge\ c_* - \frac{c_*}{8}\ \ge\ \tfrac12\,c_*.
+  Q^\star(t;\Phi)\ \ge\ Q^\star(t;\Phi_j) - L_Q(K)\,\|\Phi-\Phi_j\|_\infty
+  \ \ge\ c_* - L_Q(K)\,\Delta\ \ge\ \tfrac12\,c_*.
 \]
-The last step uses $\Delta\le c_*/(4L_Q)$ twice (once for $\Delta/2$ and a slack factor); any constant $<1/2$ suffices after rescaling.\qedhere
 \end{proof}
 
 \begin{lemma}[Uniform inheritance across $K$]\label{t5:lem:T5-inheritance}
 Fix an increasing chain $K_0<K_1<\cdots$. Using the uniform parameters
-$t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ and $M\ge M_0^{\mathrm{unif}}$
+$t=t_{\mathrm{crit}}$ and $M\ge M_0^{\mathrm{unif}}$
 from Theorem~\ref{thm:A3}, for every $i$ we have
 \begin{equation}\label{eq:T5-uniform-inheritance}
-  \lambda_{\min}\big(T_{M}[P_A]-T_P\big)
+  \lambda_{\min}\big(T_{M}[P_A]-T_P^{\mathrm{Ray}}(t,M)\big)
   \ \ge\ \frac{c_*}{4}\ >\ 0
   \quad\text{on }\mathcal W_{K_i},
 \end{equation}
@@ -48,6 +50,6 @@ and the property propagates from $K_i$ to $K_{i+1}$.
 \end{lemma}
 \begin{proof}
 Lemma~\ref{lem:T5p-grid} with uniform parameters gives the lower bound $\ge c_*/4$ for all $K$.
-Since the floor $c_*$ and the parameters $t_{\mathrm{rkhs}}$, $M_0^{\mathrm{unif}}$ are K-independent,
+Since the floor $c_*$ and the parameters $t$, $M_0^{\mathrm{unif}}$ are K-independent,
 the same estimate applies at every $K_i$, so the chain inherits positivity uniformly.
 \end{proof}

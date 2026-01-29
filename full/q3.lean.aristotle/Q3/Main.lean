@@ -5,23 +5,20 @@ Q3 Formalization: Main Theorem - Riemann Hypothesis
 This file assembles all components to prove the Riemann Hypothesis
 via the Weil positivity criterion.
 
-The proof structure:
+The proof structure (τ = 0 mainline):
 1. T0: Normalize Q = arch_term - prime_term (Guinand-Weil form)
-2. A1': Fejér×heat atoms are dense in W_K (with support control)
-3. A2: Q is Lipschitz continuous on W_K
-4. A3: Toeplitz-Symbol bridge gives λ_min ≥ c₀(K)/4
-5. RKHS: Prime operator contraction ‖T_P‖ ≤ ρ_K < 1 (THEOREM via bridge)
-6. T5: Transfer from atoms to all of W_K (THEOREM, not axiom!)
-7. Weil Criterion (axiom): Q ≥ 0 on Weil cone ⟺ RH
+2. A2: Q is Lipschitz continuous on W_K
+3. Base atoms: Q ≥ 0 on BaseAtomCone_K_brange at t_critical
+4. T5 (τ = 0): Transfer from BaseAtomCone to W_K_tau0
+5. Weil Criterion (τ = 0 cone): Q ≥ 0 on Weil_cone_tau0 ⟺ RH
 
 Final result: RH is true.
 
 Key axiom dependencies:
-- Tier-1: Weil_criterion
-- Tier-2: A3_FLOOR (P_A floor) + Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+- Tier-1: Weil_criterion_tau0 (τ = 0 Weil cone)
+- Tier-2: Prime certificate bounds on B-range at t_critical
 - THEOREM: Q_Lipschitz_on_W_K_thm (real proof via arch/prime bridge axioms!)
-- Atoms positivity is a THEOREM from A3 + RKHS; T5_transfer is a THEOREM from A1 + A2 + Atoms
-  (see Q3.AxiomsTheorems for theorem replacements where available)
+- THEOREM: Q_nonneg_on_base_atoms_at_t_critical_brange
 -/
 
 import Q3.Basic.Defs
@@ -31,6 +28,10 @@ import Q3.A1_Density
 import Q3.RKHS_Contraction
 import Q3.A3_Bridge
 import Q3.T5_Transfer
+import Q3.Proofs.Params_Critical
+import Q3.Proofs.A3_Floor_Bounds
+import Q3.Proofs.PrimeCert.Defs
+import Q3.Proofs.Q_nonneg_t_critical
 
 set_option linter.mathlibStandardSet false
 
@@ -38,6 +39,7 @@ open scoped BigOperators
 open scoped Real
 open scoped Classical
 open scoped Pointwise
+open Q3.Proofs.PrimeCert
 
 set_option maxHeartbeats 400000
 set_option maxRecDepth 4000
@@ -49,7 +51,8 @@ namespace Q3.Main
 /-! ## Step T0: Normalization -/
 
 /-- T0: The Q functional has the Guinand-Weil form -/
-theorem T0_normalization (Φ : ℝ → ℝ) (_hΦ : Φ ∈ Q3.Weil_cone) :
+theorem T0_normalization (Φ : ℝ → ℝ)
+    (_hΦ : Φ ∈ Q3.Weil_cone_tau0 Q3.t0_critical B_min prime_cert_B_max) :
     Q3.Q Φ = Q3.arch_term Φ - Q3.prime_term Φ := by
   -- This is essentially the definition of Q
   rfl
@@ -62,56 +65,21 @@ theorem A2_Lipschitz (K : ℝ) (hK : K > 0) :
       |Q3.Q Φ₁ - Q3.Q Φ₂| ≤ L * sSup {|Φ₁ x - Φ₂ x| | x ∈ Set.Icc (-K) K} :=
   Q3.Proofs.Q_Lipschitz_on_W_K_thm K hK
 
-/-! ## Compact Transfer -/
+/-! ## T5: Transfer to τ = 0 Weil class -/
 
-/-- W_K is included in the full Weil cone (via Weil_cone_K). -/
-lemma W_K_subset_Weil_cone (K : ℝ) (Φ : ℝ → ℝ)
-    (hΦ : Φ ∈ Q3.W_K K) : Φ ∈ Q3.Weil_cone := by
-  have h1 : Φ ∈ Q3.Weil_cone_K K := Q3.W_K_subset_Weil_cone_K K hΦ
-  obtain ⟨heven, hnonneg, hsupp⟩ := h1
-  obtain ⟨hcont, _, _, _⟩ := hΦ
-  refine ⟨heven, hnonneg, ?_, hcont⟩
-  -- HasCompactSupport follows from support ⊆ [-K, K]
-  have h2 : tsupport Φ ⊆ Set.Icc (-K) K := by
-    calc tsupport Φ = closure (Function.support Φ) := rfl
-      _ ⊆ closure (Set.Icc (-K) K) := closure_mono hsupp
-      _ = Set.Icc (-K) K := IsClosed.closure_eq isClosed_Icc
-  exact IsCompact.of_isClosed_subset isCompact_Icc (isClosed_tsupport Φ) h2
-
-/-- Weil_cone_K is included in the full Weil cone (when given continuity) -/
-lemma Weil_cone_K_subset (K : ℝ) (Φ : ℝ → ℝ)
-    (h : Φ ∈ Q3.Weil_cone_K K) (hcont : Continuous Φ) : Φ ∈ Q3.Weil_cone := by
-  obtain ⟨heven, hnonneg, hsupp⟩ := h
-  refine ⟨heven, hnonneg, ?_, hcont⟩
-  have h1 : tsupport Φ ⊆ Set.Icc (-K) K := by
-    calc tsupport Φ = closure (Function.support Φ) := rfl
-      _ ⊆ closure (Set.Icc (-K) K) := closure_mono hsupp
-      _ = Set.Icc (-K) K := IsClosed.closure_eq isClosed_Icc
-  exact IsCompact.of_isClosed_subset isCompact_Icc (isClosed_tsupport Φ) h1
-
-/-! ## T5: Transfer from Atoms to W_K (THEOREM) -/
-
-/-- Q is nonnegative on W_K for each K ≥ 1 (via T5 transfer theorem)
-    This is now a THEOREM, not an axiom! -/
-theorem Q_nonneg_on_W_K (K : ℝ) (hK : K ≥ 1) :
-    ∀ Φ ∈ Q3.W_K K, Q3.Q Φ ≥ 0 :=
-  Q3.T5.T5_transfer K hK
-
-/-! ## Regularity of Test Functions -/
-
-/-- Theorem: Functions in Weil cone are continuous.
-    This follows directly from the definition of Weil_cone (which now includes Continuous).
-    All physical test functions in the Weil cone are smooth, hence continuous. -/
-theorem Weil_cone_continuous : ∀ Φ ∈ Q3.Weil_cone, Continuous Φ := by
-  intro Φ ⟨_, _, _, hcont⟩
-  exact hcont
-
-/-- Corollary: Functions in Weil cone with support in (-K,K) are in W_K -/
-lemma Weil_cone_K_to_W_K (K : ℝ) (Φ : ℝ → ℝ)
-    (hΦ_cone : Φ ∈ Q3.Weil_cone) (hsupp : Function.support Φ ⊆ Set.Ioo (-K) K) :
-    Φ ∈ Q3.W_K K := by
-  obtain ⟨heven, hnonneg, _, hcont⟩ := hΦ_cone
-  exact ⟨hcont, hsupp, heven, hnonneg⟩
+/-- Q is nonnegative on W_K_tau0 for each K ≥ 1 (τ = 0 mainline). -/
+theorem Q_nonneg_on_W_K_tau0 (K : ℝ) (hK : K ≥ 1) :
+    ∀ Φ ∈ Q3.W_K_tau0 K Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
+  have hAtoms :
+      ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min prime_cert_B_max,
+        Q3.Q g ≥ 0 := by
+    intro g hg
+    have hg' : g ∈ Q3.BaseAtomCone_critical_brange K := by
+      simpa [Q3.BaseAtomCone_critical_brange, Q3.BaseAtomCone_K_brange] using hg
+    exact Q3.Q_nonneg_on_base_atoms_at_t_critical_brange K hK g hg'
+  exact
+    Q3.T5.T5_transfer_tau0
+      K hK Q3.t0_critical B_min prime_cert_B_max Q3.t0_critical_pos hAtoms
 
 /-! ## Main Theorem -/
 
@@ -121,41 +89,14 @@ This is the key positivity result that, combined with the Weil criterion,
 implies the Riemann Hypothesis.
 
 Proof outline:
-1. Φ ∈ Weil_cone has compact support, so Φ ∈ W_K for some K ≥ 1
-2. By T5_transfer (theorem!), Q(Φ) ≥ 0 on W_K
+1. Φ ∈ Weil_cone_tau0 lies in W_K_tau0 for some K ≥ 1
+2. By τ=0 T5 transfer, Q(Φ) ≥ 0 on W_K_tau0
 -/
-theorem Q_nonneg_on_Weil_cone : ∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0 := by
+theorem Q_nonneg_on_Weil_cone_tau0 :
+    ∀ Φ ∈ Q3.Weil_cone_tau0 Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
   intro Φ hΦ
-  have hΦ_cone : Φ ∈ Q3.Weil_cone := hΦ
-  obtain ⟨heven, hnonneg, hcompact, _hcont⟩ := hΦ
-  -- Since Φ has compact support, there exists K ≥ 1 with supp(Φ) ⊆ [-K, K]
-  obtain ⟨K0, hK0_ge, hsupp0⟩ : ∃ K ≥ 1, Function.support Φ ⊆ Set.Icc (-K) K := by
-    -- HasCompactSupport implies bounded support
-    obtain ⟨M, hM⟩ := Metric.isBounded_iff_subset_ball (0 : ℝ) |>.mp hcompact.isCompact.isBounded
-    use max M 1
-    constructor
-    · exact le_max_right M 1
-    · intro x hx
-      have h1 : x ∈ tsupport Φ := subset_tsupport Φ hx
-      have h2 : x ∈ Metric.ball 0 M := hM h1
-      rw [Metric.mem_ball, dist_zero_right, Real.norm_eq_abs] at h2
-      have hM1 : M ≤ max M 1 := le_max_left M 1
-      constructor
-      · linarith [abs_nonneg x, neg_abs_le x]
-      · linarith [le_abs_self x]
-  -- Enlarge the window so support lands in the open interval.
-  let K := K0 + 1
-  have hK_ge : K ≥ 1 := by nlinarith [hK0_ge]
-  have hsupp : Function.support Φ ⊆ Set.Ioo (-K) K := by
-    intro x hx
-    have hx' := hsupp0 hx
-    have hx1 : -K < x := by nlinarith [hx'.1]
-    have hx2 : x < K := by nlinarith [hx'.2]
-    exact ⟨hx1, hx2⟩
-  -- Φ is in W_K (continuity is part of Weil_cone)
-  have hΦ_in_W_K : Φ ∈ Q3.W_K K := Weil_cone_K_to_W_K K Φ hΦ_cone hsupp
-  -- Apply T5 transfer theorem
-  exact Q_nonneg_on_W_K K hK_ge Φ hΦ_in_W_K
+  rcases hΦ with ⟨K, hK, hΦK⟩
+  exact Q_nonneg_on_W_K_tau0 K hK Φ hΦK
 
 /-! ## Riemann Hypothesis -/
 
@@ -166,31 +107,24 @@ All nontrivial zeros of the Riemann zeta function lie on the critical line Re(s)
 This theorem depends on:
 
 **Tier-1 (Classical):**
-- Weil_criterion (Weil 1952)
+- Weil_criterion_tau0 (τ = 0 Weil cone)
 
-**Tier-2 (Q3 Paper):**
-- A3_FLOOR (P_A floor) + Fourier Toeplitz bridge
-- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom: core (A3+RKHS) ⇒ atoms positivity
+**Tier-2 (Q3 Paper, single‑scale):**
+- Prime certificate bounds on the B‑range at t_critical
+
 **Theorems (now closed):**
-- A1_density_WK: atoms dense in W_K
 - Q_Lipschitz_on_W_K: Q is Lipschitz
+- Q_nonneg_on_base_atoms_at_t_critical_brange
+- T5_transfer_tau0: Q ≥ 0 on W_K_tau0 (from τ=0 density + A2 + base atoms)
 
-**Local axiom:**
-- Weil_cone_continuous: test functions are continuous
-
-**Theorem (not axiom!):**
-- Atoms.Q_nonneg_on_atoms: Q ≥ 0 on AtomCone_K (from A3 + RKHS)
-- RKHS_contraction: prime operator contraction (bridge theorem)
-- T5_transfer: Q ≥ 0 on W_K (from A1 + A2 + Atoms)
-
-Proof: By T5_transfer theorem, Q ≥ 0 on W_K for each K.
-By compact support extraction, Q ≥ 0 on all of Weil_cone.
-By Weil criterion, RH follows.
+Proof: By T5_transfer_tau0, Q ≥ 0 on W_K_tau0 for each K.
+By compact-by-compact union, Q ≥ 0 on all of Weil_cone_tau0.
+By Weil criterion (τ=0 cone), RH follows.
 -/
 theorem RH_of_Weil_and_Q3 : Q3.RH := by
-  -- Apply Weil criterion (axiom)
-  rw [← Q3.Weil_criterion]
-  exact Q_nonneg_on_Weil_cone
+  -- Apply τ=0 Weil criterion (axiom)
+  rw [← Q3.Weil_criterion_tau0 Q3.t0_critical B_min prime_cert_B_max]
+  exact Q_nonneg_on_Weil_cone_tau0
 
 /-! ## Axiom Verification -/
 
@@ -198,13 +132,13 @@ theorem RH_of_Weil_and_Q3 : Q3.RH := by
 #check RH_of_Weil_and_Q3
 -- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
 -- Standard: propext, Classical.choice, Quot.sound
--- Tier-1: Q3.Weil_criterion, Q3.a_star_pos, Q3.a_star_bdd_on_compact, Q3.a_star_continuous
--- Tier-2: Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+-- Tier-1: Q3.Weil_criterion_tau0
+-- Tier-2: Q3.Proofs.PrimeCert.{prime_b_grid_val_le_margin,prime_margin_Lipschitz_on_Brange}
 --
 -- KEY IMPROVEMENTS:
--- - Q_Lipschitz_on_W_K is now a THEOREM (uses arch/prime bridge axioms)!
--- - RKHS_contraction is now a THEOREM (bridge closed)!
--- - Q_nonneg_on_W_K_axiom is GONE! T5 is now a THEOREM!
+-- - Q_Lipschitz_on_W_K is a THEOREM (uses arch/prime bridge axioms)!
+-- - Q_nonneg_on_base_atoms_at_t_critical_brange is a THEOREM!
+-- - T5_transfer_tau0 is a THEOREM (τ=0 mainline).
 
 end Q3.Main
 

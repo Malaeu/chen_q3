@@ -1,5 +1,21 @@
 # Анализ критических констант для высоко-ERS узлов
 
+> ⚠️ **STATUS (2026-01-24): legacy / ERS‑based spec.**
+> Основано на старом uniform/two‑scale графе и константах (t_sym, C_SB, M_0^{unif}).
+> **Не является каноном** для текущей single‑scale ветки.
+>
+> Канонические ссылки:
+> - `ACTIVE/chain_status.md`
+> - `ACTIVE/refs/SPECS_INDEX.md`
+> - `ACTIVE/refs/Q3_BLOCK_MAP.md`
+> - `ACTIVE/refs/ERS_SUMMARY.md` (консолидированный ERS‑обзор)
+
+## Конфликты с mainline (single‑scale)
+
+- Здесь ключевые константы: `t_sym`, `C_SB`, `M_0^{unif}`, `t^{unif}_{*,rkhs}` — это **legacy**.
+- Mainline использует `t_critical = 3/20` и закрывает кап через `rho_oneK_tcritical_le_cstar_quarter`.
+- Блоки ERS не отражают текущие *живые* аксиомы (см. `ACTIVE/chain_status.md`).
+
 ## Обзор
 
 Этот документ анализирует критические константы, от которых зависят узлы с наивысшим ERS в графе зависимостей RH_Q3.pdf. Понимание этих констант критически важно для успешной формализации в Lean.

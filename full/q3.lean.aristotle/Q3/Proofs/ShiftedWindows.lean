@@ -138,6 +138,65 @@ lemma g_shift_zero_of_large_m (B t tau theta : ℝ) (m : ℤ) (hB : 0 < B)
   exact g_shift_support B t tau (theta + m) hB (by
     simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using hB')
 
+lemma P_A_shift_locally_finite_sum (B t tau θ₀ : ℝ) (hB : 0 < B) :
+    ∃ N : ℕ, ∀ θ ∈ Set.Ioo (θ₀ - 1/2) (θ₀ + 1/2),
+      Q3.P_A_shift B t tau θ =
+        2 * Real.pi * ∑ m ∈ Finset.Icc (-(N : ℤ)) N, Q3.g_shift B t tau (θ + m) := by
+  let K : ℝ := |tau| + B
+  refine ⟨Nat.ceil (|θ₀| + K) + 4, ?_⟩
+  intro θ hθ
+  unfold Q3.P_A_shift
+  congr 1
+  apply tsum_eq_sum
+  intro m hm
+  simp only [Finset.mem_Icc, not_and, not_le] at hm
+  have hθ_bound : |θ| < |θ₀| + 1/2 := by
+    have h1 : θ₀ - 1/2 < θ := hθ.1
+    have h2 : θ < θ₀ + 1/2 := hθ.2
+    rw [abs_lt]
+    constructor
+    · by_cases hθ₀_neg : θ₀ ≤ 0
+      · have : |θ₀| = -θ₀ := abs_of_nonpos hθ₀_neg
+        linarith
+      · push_neg at hθ₀_neg
+        have : |θ₀| = θ₀ := abs_of_pos hθ₀_neg
+        linarith
+    · by_cases hθ₀_neg : θ₀ ≤ 0
+      · have : |θ₀| = -θ₀ := abs_of_nonpos hθ₀_neg
+        linarith
+      · push_neg at hθ₀_neg
+        have : |θ₀| = θ₀ := abs_of_pos hθ₀_neg
+        linarith
+  have hN : (Nat.ceil (|θ₀| + K) : ℤ) + 4 < |m| := by
+    by_cases h : m < -((Nat.ceil (|θ₀| + K) : ℤ) + 4)
+    · have hm_neg : m < 0 := by omega
+      simp only [abs_of_neg hm_neg]
+      omega
+    · push_neg at h
+      have hm' := hm h
+      have hm_nonneg : 0 ≤ m := by omega
+      simp only [abs_of_nonneg hm_nonneg]
+      exact hm'
+  have h_m_real : |θ₀| + K + 4 < |(m : ℝ)| := by
+    have h1 : (Nat.ceil (|θ₀| + K) : ℝ) + 4 < |m| := by exact_mod_cast hN
+    have hceil : |θ₀| + K ≤ (Nat.ceil (|θ₀| + K) : ℝ) := by
+      exact Nat.le_ceil (|θ₀| + K)
+    calc |θ₀| + K + 4 ≤ (Nat.ceil (|θ₀| + K) : ℝ) + 4 := by linarith
+      _ < |m| := h1
+      _ = |(m : ℝ)| := by simp [Int.cast_abs]
+  have h_tri : |(m : ℝ)| - |θ| ≤ |θ + (m : ℝ)| := by
+    have h1 := abs_sub_abs_le_abs_sub (m : ℝ) (-θ)
+    have h2 : |(m : ℝ)| - |θ| ≤ |(m : ℝ) + θ| := by
+      simpa [abs_neg, sub_eq_add_neg] using h1
+    simpa [add_comm] using h2
+  have h_final : K < |θ + (m : ℝ)| := by
+    have hmid : K < |(m : ℝ)| - |θ| := by
+      linarith [h_m_real, hθ_bound]
+    linarith [h_tri, hmid]
+  have h_final' : K < |θ + m| := by
+    simpa using h_final
+  exact g_shift_support_of_margin B t tau K hB (by simp [K, add_comm]) (θ + m) h_final'
+
 lemma P_A_shift_tsum_eq_finite_sum (B t tau theta : ℝ) (hB : 0 < B)
     (htheta : theta ∈ Set.Icc (-1/2 : ℝ) (1/2)) :
     ∑' (m : ℤ), Q3.g_shift B t tau (theta + m) =
@@ -160,6 +219,27 @@ lemma P_A_shift_tsum_eq_finite_sum (B t tau theta : ℝ) (hB : 0 < B)
       have hm_nonneg : 0 ≤ m := by linarith [hceil_pos, hm']
       simpa [abs_of_nonneg hm_nonneg] using hm'
   exact g_shift_zero_of_large_m B t tau theta m hB htheta h_large
+
+theorem P_A_shift_continuous (B t tau : ℝ) (hB : 0 < B) :
+    Continuous (Q3.P_A_shift B t tau) := by
+  rw [continuous_iff_continuousAt]
+  intro θ₀
+  obtain ⟨N, hN⟩ := P_A_shift_locally_finite_sum (B:=B) (t:=t) (tau:=tau) (θ₀:=θ₀) hB
+  let f := fun θ => 2 * Real.pi * ∑ m ∈ Finset.Icc (-(N : ℤ)) N, Q3.g_shift B t tau (θ + m)
+  have h_sum_cont : Continuous f := by
+    apply continuous_const.mul
+    apply continuous_finset_sum
+    intro m _
+    exact (continuous_g_shift B t tau).comp (continuous_id.add continuous_const)
+  have h_mem : Set.Ioo (θ₀ - 1/2) (θ₀ + 1/2) ∈ nhds θ₀ := by
+    apply Ioo_mem_nhds <;> linarith
+  have h_eq : ∀ θ ∈ Set.Ioo (θ₀ - 1/2) (θ₀ + 1/2), Q3.P_A_shift B t tau θ = f θ := hN
+  have h_f_cont : ContinuousAt f θ₀ := h_sum_cont.continuousAt
+  have h_eq_f : Q3.P_A_shift B t tau =ᶠ[nhds θ₀] f := by
+    apply Filter.eventuallyEq_of_mem h_mem
+    intro θ hθ
+    exact h_eq θ hθ
+  exact h_f_cont.congr h_eq_f.symm
 
 lemma arch_term_eq_two_pi_integral_g_shift (B t tau : ℝ) :
     Q3.arch_term (fun xi => Q3.phi_shift B t tau xi) =

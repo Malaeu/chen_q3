@@ -1,5 +1,6 @@
 % A3 Calibration: explicit value of \kappa_{A3}
-\subsection{A3 Calibration: The Constant \texorpdfstring{$\kappa_{\mathrm{A3}}(t_0)$}{κ\_A3(t₀)}}
+\input{sections/Notation/qstar_contract}
+\subsection{A3 Calibration: The Constant \texorpdfstring{$\kappa_{\mathrm{A3}}(t)$}{κ\_A3(t)}}
 \label{a3:sec:A3-calibration}
 \SeeAlso{Normalization T0 Lemma~\ref{t0:lem:T0}, Toeplitz bridge A3 Theorem~\ref{thm:A3}.}
 
@@ -20,7 +21,7 @@ and the Fourier coefficients with respect to the basis $e^{2\pi i k\theta}$ sati
   P_A(\theta)=A_0+2\sum_{k\ge1}A_k\cos(2\pi k\theta).
 \]
 In particular, with $g=a\,\Phi$ and $a_*(\xi)=2\pi a(\xi)$, the Rayleigh pairing matches
-the T0-normalized Weil functional $Q$ without further rescaling.
+the T0-normalized Weil functional $Q^\star$ without further rescaling.
 \end{lemma}
 \begin{proof}
 By Fubini and the change of variables $\xi=\theta+m$,
@@ -33,27 +34,27 @@ The Fourier coefficient computation is identical, yielding the stated $A_k$ and 
 \end{proof}
 
 \begin{lemma}[Calibration of $\kappa_{\mathrm{A3}}$]\label{a3:lem:A3-kappa}
-Let $\Phi(\xi)=(1-|\xi|/B)_+\,e^{-4\pi^2 t_0\,\xi^2}$ be an even Fej\'er$\times$heat window. Define the Arch coefficients
+Let $\Phi(\xi)=(1-|\xi|/B)_+\,e^{-4\pi^2 t\,\xi^2}$ be an even Fej\'er$\times$heat window. Define the Arch coefficients
 \begin{equation}\label{eq:A3_calibration_kappa-formula}
   A_k\ :=\ 2\pi\int_{\RR} a(\xi)\,\Phi(\xi)\,\cos(2\pi k\xi)\,d\xi,\quad
   P_A(\theta)\ :=\ A_0+2\sum_{k\ge1}A_k\cos(2\pi k\theta),
 \end{equation}
-with $a(\xi)=\log\pi-\Re\psi\big(\tfrac14+i\pi\xi\big)$, and let $T_P$ be the even prime sampling operator with weights $w(n)=\tfrac{2\Lambda(n)}{\sqrt n}$ at nodes $\xi_n=\tfrac{\log n}{2\pi}$. Then, in the Rayleigh identification of Theorem~\ref{thm:A3}, at the constant test $p\equiv1$ one has
+with $a(\xi)=\log\pi-\Re\psi\big(\tfrac14+i\pi\xi\big)$, and let $T_P^{\mathrm{Ray}}(t)$ be the even prime sampling operator with weights $w(n)=\tfrac{2\Lambda(n)}{\sqrt n}$ at nodes $\xi_n=\tfrac{\log n}{2\pi}$. Then, in the Rayleigh identification of Theorem~\ref{thm:A3}, at the constant test $p\equiv1$ one has
 \begin{equation}\label{eq:A3_calibration_kappa-formula-3}
   \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n)
   \ =\ \underbrace{\int_{\RR} a_*(\xi)\,\Phi(\xi)\,d\xi}_{\;=\ A_0}\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n).
 \end{equation}
 By the T0 normalization (Lemma~\ref{t0:lem:T0}), the Weil functional on our axis is
 \begin{equation}\label{eq:A3_calibration_kappa-q-functional-1}
-  Q(\Phi)\ =\ \int_{\RR} a_*(\xi)\,\Phi(\xi)\,d\xi\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n),\qquad a_*(\xi):=2\pi\,a(\xi).
+  Q^\star(t;\Phi)\ =\ \int_{\RR} a_*(\xi)\,\Phi(\xi)\,d\xi\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n),\qquad a_*(\xi):=2\pi\,a(\xi).
 \end{equation}
 Therefore
 \begin{equation}\label{eq:A3_calibration_kappa-q-functional}
-  Q(\Phi)\ =\ \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n),
+  Q^\star(t;\Phi)\ =\ \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,d\theta\ -\ \sum_{n\ge2}\frac{2\,\Lambda(n)}{\sqrt n}\,\Phi(\xi_n),
 \end{equation}
 and the bridge A3 introduces the fixed scale factor
 \begin{equation}\label{eq:A3_calibration_kappa-formula-2}
-\boxed{\ \kappa_{\mathrm{A3}}(t_0)\ =\ 1\ }\qquad\text{(independent of $t_0$)}.
+\boxed{\ \kappa_{\mathrm{A3}}(t)\ =\ 1\ }\qquad\text{(independent of $t$)}.
 \end{equation}
 Equivalently, the normalization in \eqref{eq:A3_calibration_kappa-formula} absorbs the Jacobian $2\pi$ into the symbol coefficients, so $\kappa_{\mathrm{A3}}\equiv1$.
 \end{lemma}
@@ -62,7 +63,7 @@ Equivalently, the normalization in \eqref{eq:A3_calibration_kappa-formula} absor
 \begin{lemma}[Rayleigh identification (infinite-dimensional)]\label{lem:rayleigh-sampling}
 For every even Fej\'er$\times$heat window $\Phi$ the operator form and the Weil functional satisfy
 \[
-  \Big\langle \bigl(T_M[P_A]-T_P\bigr) p,\,p\Big\rangle \;=\; Q(\Phi)
+  \Big\langle \bigl(T_M[P_A]-T_P^{\mathrm{Ray}}(t)\bigr) p,\,p\Big\rangle \;=\; Q^\star(t;\Phi)
 \]
 whenever $p$ corresponds to $\Phi$ via the standard Dirichlet sampling operator.
 \emph{Note:} This is the infinite-dimensional idealization.  For the finite-dimensional
@@ -85,29 +86,29 @@ The Dirichlet sampling operator maps $p(\theta)=\sum_{k\in\ZZ} \widehat \Phi(k)\
 where $A_k$ are the Arch coefficients from \eqref{eq:A3_calibration_kappa-formula}.  Likewise, the
 prime operator contributes
 \[
-  \Big\langle T_P p,\,p\Big\rangle
+  \Big\langle T_P^{\mathrm{Ray}}(t) p,\,p\Big\rangle
   = \sum_{n\ge2} \frac{2\,\Lambda(n)}{\sqrt{n}}\,\Phi(\xi_n)\,\overline{\Phi(\xi_n)}.
 \]
-Subtracting and recalling $Q(\Phi)$ from \eqref{eq:A3_calibration_kappa-q-functional-1} gives
+Subtracting and recalling $Q^\star(t;\Phi)$ from \eqref{eq:A3_calibration_kappa-q-functional-1} gives
 \[
-  \Big\langle (T_M[P_A]-T_P)p,\,p\Big\rangle
-  = Q(\Phi),
+  \Big\langle (T_M[P_A]-T_P^{\mathrm{Ray}}(t))p,\,p\Big\rangle
+  = Q^\star(t;\Phi),
 \]
 which is the desired identity.
 \end{proof}
 
 \begin{proposition}[Bridge margin calibration]\label{prop:a3-calib}
-Under the uniform floor $c_*>0$ from Lemma~\ref{lem:uniform-arch-floor} and the prime cap $\rho(t_{\mathrm{rkhs}})\le c_*/4$, the mixed Toeplitz block satisfies
+Under the uniform floor $c_*>0$ from Lemma~\ref{lem:uniform-arch-floor} and the prime cap $\rho(t)\le c_*/4$, the mixed Toeplitz block satisfies
 \[
-  \lammin\!\bigl(T_M[\Pa]-T_P\bigr)\ \ge\ \frac{c_*}{4}
+  \lammin\!\bigl(T_M[\Pa]-T_P^{\mathrm{Ray}}(t)\bigr)\ \ge\ \frac{c_*}{4}
 \]
 for every $M\ge M_0^{\mathrm{unif}}$ in Theorem~\ref{thm:A3}.
 \end{proposition}
 
 \begin{proof}
-Theorem~\ref{thm:A3} yields $\lammin(T_M[\Pa]-T_P)\ge c_*-C_{\mathrm{SB}}\omega_{\Pa}(1/(2M))-\|T_P\|_{\op}$.
+Theorem~\ref{thm:A3} yields $\lammin(T_M[\Pa]-T_P^{\mathrm{Ray}}(t))\ge c_*-C_{\mathrm{SB}}\omega_{\Pa}(1/(2M))-\|T_P^{\mathrm{Ray}}(t)\|_{\op}$.
 For $M\ge M_0^{\mathrm{unif}}$, Corollary~\ref{cor:uniform-discretisation} ensures $C_{\mathrm{SB}}\omega_{\Pa}(1/(2M))\le c_*/2$.
-Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P\|_{\op}\le \rho(t_{\mathrm{rkhs}}) \le c_*/4$.
+Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P^{\mathrm{RKHS}}(t)\|_{\op}\le \rho(t) \le c_*/4$.
 Thus $\lammin \ge c_* - c_*/2 - c_*/4 = c_*/4$.
 \end{proof}
 

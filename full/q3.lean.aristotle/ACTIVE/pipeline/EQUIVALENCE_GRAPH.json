@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-01-27",
+  "nodes": [
+    {
+      "id": "CCM_CF_EXTENSION_TOEPLITZ",
+      "type": "external_def",
+      "title": "Carathéodory–Fejér extension for Toeplitz matrices (self‑adjointness tool)",
+      "status": "speculative",
+      "source": {
+        "paper_id": "ZOTERO_H8ULBMAL",
+        "file": "literature/zotero/H8ULBMAL/fulltext.md",
+        "collection": "zotero"
+      },
+      "notes": "From Zeta Spectral Triples: CF‑extension used to guarantee self‑adjointness."
+    },
+    {
+      "id": "CCM_TOEPLITZ_SELFADJOINTNESS_TRUNC",
+      "type": "external_claim",
+      "title": "Toeplitz self‑adjointness for finite‑prime truncations",
+      "status": "speculative",
+      "source": {
+        "paper_id": "ZOTERO_H8ULBMAL",
+        "file": "literature/zotero/H8ULBMAL/fulltext.md",
+        "collection": "zotero"
+      },
+      "notes": "Potential bridge to Q3 Toeplitz/Rayleigh pipeline; requires formal stub before activation."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_CCM_CF_to_selfadjointness",
+      "from": "CCM_CF_EXTENSION_TOEPLITZ",
+      "to": "CCM_TOEPLITZ_SELFADJOINTNESS_TRUNC",
+      "type": "depends_on",
+      "status": "speculative",
+      "notes": "Self‑adjointness claim depends on CF‑extension."
+    }
+  ],
+  "notes": "Speculative by default. Promote to active_formal only when a Lean stub/proof exists."
+}

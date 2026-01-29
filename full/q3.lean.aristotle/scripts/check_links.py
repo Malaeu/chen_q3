@@ -45,7 +45,10 @@ def main() -> int:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    exclude_dirs = {".git", ".lake", "node_modules"}
+    # ACTIVE/ is a symlink hub; link targets are evaluated relative to their
+    # original locations, not the hub. Exclude it from link checks.
+    # Also exclude literature corpora (OCR/fulltext) to avoid false-positive links.
+    exclude_dirs = {".git", ".lake", "node_modules", "ACTIVE", "literature", "zotero"}
     missing: list[tuple[Path, str]] = []
 
     for path in iter_markdown_files(root, exclude_dirs):

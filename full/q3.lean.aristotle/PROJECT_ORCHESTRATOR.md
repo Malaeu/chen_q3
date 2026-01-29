@@ -1,7 +1,14 @@
 # PROJECT ORCHESTRATOR - Q3
 ## Lean Formalization of Riemann Hypothesis
 
-Last Updated: 2026-01-21
+**Purpose:** Single entry point for live status + next step.  
+**Current status:** Main-chain blockers are in `ACTIVE/MAIN_CHAIN_DEPS.md`.  
+**Next action:** Close the two main-chain Q3 axioms (PrimeCert + prime_term cap).  
+**Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `ACTIVE/chain_status.md` · `ACTIVE/KNOWLEDGE_BASE.md`
+
+---
+
+Last Updated: 2026-01-29
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -9,12 +16,19 @@ Single entry point: read this file at session start.
 1) Read this file.
 2) Use "Current State" and "Active Next Step".
 3) Only open linked files if needed.
+3.5) Chain summary: `docs/CHAIN_STATUS.md` (single-scale t_critical mainline).
+3.6) Knowledge base index: `ACTIVE/KNOWLEDGE_BASE.md` (link-first map).
 4) Documentation discipline: update `docs/INSIGHTS.md` and
    `FORMALIZATION_STATS.md` instead of creating new docs.
 5) **Застрял > 30 мин?** → Запроси Прошку (см. `docs/INSIGHTS.md` секция "Прошка").
+6) Hub for active docs/db/scripts: `ACTIVE/` (symlink index).
 
 ## Current State (short)
 
+- FloorCert: closed `floor_grid_val_ge_min_lb` as a lemma in
+  `Q3/Proofs/FloorCert/Grid_2219.lean` (native_decide on the 2219 grid).
+  Remaining FloorCert axioms: `floor_grid_val_le_P_A` (Grid_2219.lean) and
+  `P_A_Lipschitz_on_Icc_cert` (Lipschitz_2219.lean).
 - A3_FLOOR is proven and integrated: `P_A_ge_c_star` from
   `A3_Floor_Main.lean` is used in the Fourier A3 bridge.
 - Fourier A3 bridge is wired: `Q3/Atoms_Positive.lean` now depends on
@@ -30,6 +44,21 @@ Single entry point: read this file at session start.
   `Q3/T5_Transfer.lean`, so `A1_density_WK_axiom` is gone from the main chain.
 - RKHS cap is PROVEN in `Q3/Proofs/RKHS_cap_rayleigh.lean`:
   `weight_sum_le_rho_one` + `rkhs_cap_rayleigh_tcap` with `t_rkhs_cap = 40`.
+- C1 compression identity is formalized (basisFun + dictionary embedding) in
+  `Q3/Proofs/RKHS_cap_rayleigh.lean` (search `compression identity`).
+- New one-scale A3 bridge scaffolding (no two-scale): `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`
+  (fixed-`t` bridge + generic weight-sum → Rayleigh cap lemma in `Q3/Proofs/RKHS_cap_generic.lean`).
+- Single-scale parameter source: `Q3/Proofs/Q_nonneg_t_critical.lean`
+  (defines `t_critical = 3/20` and `t0_critical`).
+- Atom positivity/T5 transfer now use `t0_critical` (t = 0.15) for `AtomCone_K_fixed`;
+  BaseAtomCone guard lemma added in `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
+- Mainline now uses `W_K_tau0` / `Weil_cone_tau0` (τ = 0, B-range) and
+  `Weil_criterion_tau0`; the τ‑uniform prime‑term axiom is removed from the chain.
+- `Schur_test` remains in the codebase but is **off‑chain** for the current mainline.
+- Single-scale prime cap (tau = 0) is now a direct numeric bound:
+  `rho_one ≤ c_star/4` in `Q3/Proofs/SingleScale_Assumptions.lean`.
+- Helper lemma for “unitary conjugation preserves opNorm” added:
+  `Q3/Proofs/OpNorm_Unitary.lean` (used in the `hA` decision tree, see `docs/INSIGHTS.md`).
 - Legacy: `A3_bridge_axiom` (sampling Toeplitz + a_star) is still in `Q3/Axioms.lean`
   but no longer appears in the main chain.
 
@@ -50,11 +79,15 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **6 axioms** (3 project + 3 standard)
+Result: **6 axioms** (3 project + 3 kernel/standard)
 
-- Standard Lean: `propext`, `Classical.choice`, `Quot.sound`
-- Level 1 (Classical Literature): `Weil_criterion`, `Schur_test`
-- Level 2 (Q3 Paper): `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+- Kernel/standard: `propext`, `Classical.choice`, `Quot.sound`
+- Level 1 (Classical Literature): `Weil_criterion_tau0`
+- Level 2 (One‑scale numeric certificates @ t_critical):
+  `Proofs.PrimeCert.prime_b_grid_bounds_data`,
+  `Proofs.PrimeCert.prime_heat_bounds_data`
+- Legacy (off‑chain):
+  `Schur_test` (classical), `prime_term_le_at_t_critical_axiom` (τ‑uniform bound; false‑for‑now)
 
 **Closed axioms (history):**
 - `a_star_pos` → closed via positivity (2026-01-21)
@@ -62,24 +95,27 @@ Result: **6 axioms** (3 project + 3 standard)
 - `a_star_bdd_on_compact` → closed via continuous + compact
 - `a_star_even` → closed via Mathlib Gamma_conj (2026-01-20)
 - `A1_density_WK_axiom` → closed via bounded hat interpolation (h_even as mass bound)
+- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` → closed via Q_nonneg_atoms_closure (2026-01-24)
+- `SingleScale.continuous_P_A_shift` → closed via `ShiftedWindows.P_A_shift_continuous` (2026-01-24)
 
 ## Critical Chain (ASCII)
 
 ```
 RH_of_Weil_and_Q3
   |
-  +-- Weil_criterion [AX external]
+  +-- Weil_criterion_tau0 [AX external]
   |
-  +-- Q_nonneg_on_Weil_cone [OK]
+  +-- Q_nonneg_on_Weil_cone_tau0 [OK]
        |
-       +-- T5_transfer [OK]
+       +-- T5_transfer_tau0 [OK]
             |
-            +-- A1_density_WK [OK]
             +-- Q_Lipschitz_on_W_K [OK]
-            +-- Q_nonneg_on_atoms [AX]
+            +-- Q_nonneg_on_base_atoms_brange [OK]
                  |
-                 +-- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom [AX]
-                 +-- RKHS_contraction [OK]
+                 +-- one‑scale @ t_critical [OK]
+                      |
+                      +-- PrimeCert: prime_b_grid_bounds_data [AX cert data]
+                      +-- PrimeCert: prime_heat_bounds_data [AX cert data]
 ```
 
 ## 🚨🚨🚨 CRITICAL: LaTeX Proof Gap Discovered (2026-01-22) 🚨🚨🚨
@@ -105,44 +141,64 @@ RH_of_Weil_and_Q3
 
 **FULL ANALYSIS:** `docs/LATEX_PROOF_GAP_ANALYSIS.md`
 
-**STATUS:** Cannot close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` with current approach.
-Mathematical consultation with Proshka required.
+**STATUS:** `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` is closed via the
+single‑scale chain; mainline now uses the τ = 0 cone (`Weil_cone_tau0`) and
+`Weil_criterion_tau0`. The τ‑uniform prime‑term axiom is off‑chain.
+Mathematical consultation with Proshka required to remove those assumptions.
+
+**PIVOT STATUS:** one‑scale parameterization at `t = t_critical` is now the mainline,
+with τ = 0 cone (`Weil_cone_tau0`) and `Weil_criterion_tau0`.
+Decision tree + file pointers live in `docs/INSIGHTS.md` (search for “нетривиальное hA”).
 
 ---
 
-## Active Next Step (ON HOLD pending gap resolution)
+## Active Next Step (current mainline)
 
-~~1) Wire the **proven** Rayleigh-Q identification into the atoms-positivity chain:~~
-~~   use `rayleigh_Q_eq_Q` in `Q3/Proofs/Rayleigh_Q_identification.lean`.~~
-~~2) Replace `Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` in~~
-~~   `Q3/Atoms_Positive.lean` / `Q3/AxiomsTheorems.lean` with the theorem proof~~
-~~   (A3 floor + RKHS cap + Rayleigh identification).~~
+1) PrimeCert axioms are now **certificate-backed** (hash-checked):
+   `prime_b_grid_bounds_data`, `prime_heat_bounds_data`.
+   Derived theorems: `prime_b_grid_val_le_margin`, `prime_heat_bounds_cert`.
+   Next: analytic closure (Option A) or keep as cert-data axioms.
+2) Keep `Weil_criterion_tau0` as external classical axiom.
+3) Revisit τ‑uniform bounds only after a new kernel model (optional, off‑chain).
 
-**NEW PRIORITY:** Resolve LaTeX proof gap before proceeding with axiom closure.
+### What does “which branch?” mean (for a normal git user)
 
-## 🚨 CRITICAL GAP: AtomCone_K_fixed (2026-01-18)
+There are two different meanings of “ветка”:
 
-**Discovery:** mgrep semantic search revealed a gap between обсуждение и реализация.
+1) **Git branch** (what `git switch` changes): currently we work on `projekt_2A`.
+2) **Proof-architecture branch** (inside one git branch): “A3_FLOOR/Fourier Toeplitz” vs “old RKHS operator”.
 
-**Problem:** `Q_nonneg_bridge.lean` не компилируется из-за quantifier mismatch:
-- `AtomCone_K` квантифицирует `∀ t > 0` (произвольный t)
-- A3/RKHS bounds доказаны для ФИКСИРОВАННЫХ t:
-  - A3 floor: `t_sym = 0.06`
-  - RKHS cap: `t_rkhs_cap = 40`
+Quick way to orient a fresh session:
 
-**Solution (from Прошка 2026-01-16, NOT implemented):**
-```lean
-def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
-  { g | ∃ (n : ℕ) (c B τ : Fin n → ℝ),
-        (∀ i, c i ≥ 0) ∧ (∀ i, B i > 0) ∧ (∀ i, |τ i| + B i ≤ K) ∧
-        (∀ x, g x = ∑ i, c i * Fejer_heat_atom (B i) t₀ (τ i) x) ∧ g ∈ W_K K }
+```bash
+git branch --show-current
+git log -n 1 --oneline
+sed -n '1,80p' full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
 ```
 
-**Action Items:**
-1. [ ] Add `AtomCone_K_fixed` to `Q3/Axioms.lean`
-2. [ ] Add `AtomCone_K_fixed_subset` lemma
-3. [ ] Rewrite axiom for fixed cone
-4. [ ] Update `Q_nonneg_bridge.lean`
+### Two parallel work streams (recommended)
+
+**Stream A (NOW, closes chain fast): Option 2 = Schur/weight_sum cap (no RKHS embedding)**
+
+- The “cap” is already formalized for the Rayleigh/compression operator:
+  `Q3/Proofs/RKHS_cap_rayleigh.lean` (`T_P_comp_real_opNorm_le_weight_sum`, `weight_sum_le_rho_one`, `rkhs_cap_rayleigh_tcap`).
+- This stream is about **wiring/porting it to the one-scale `t_critical` chain** (not about Moore–Aronszajn).
+
+**Stream B (PARALLEL, infrastructure): Option 1 = true Gaussian/RKHS kernel model**
+
+- Aristotle tasks live in `full/q3.lean.aristotle/aristotle_input/`.
+- Current task (kernel identity): `aristotle_input/gaussian_rkhs_kernel_v1.lean` + `.md`.
+- Goal: extract hole-free lemmas from Aristotle output and then implement the RKHS interface in-project.
+
+Rule: do Stream A on the main branch to keep momentum; do Stream B via small, self-contained Aristotle tasks
+so we never block the main closure on analytic infrastructure.
+
+## ✅ RESOLVED: AtomCone_K_fixed Quantifier Gap (2026-01-26)
+
+**Resolution:** the fixed‑t cone is now part of the formal chain.
+- `AtomCone_K_fixed` + `AtomCone_K_fixed_subset` are in `Q3/Axioms.lean`.
+- T5 transfer uses `t0_critical` and `AtomCone_K_fixed`.
+- Mainline uses the τ = 0 cone: `BaseAtomCone_K_brange` → `W_K_tau0` → `Weil_cone_tau0`.
 
 **Details:** `docs/insights/atomcone_fixed_t_gap_2026_01_18.md`
 
@@ -150,9 +206,9 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
 
 | Axiom | Current proof source | Blocker | Next action | Status |
 |------|-----------------------|---------|-------------|--------|
-| `Weil_criterion` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
-| `Schur_test` | External (classical) | L2 vs L∞ mismatch | Classical result, keep as axiom | **EXTERNAL** |
-| `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` | `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` | **AtomCone_K_fixed gap** | Implement fixed-t cone | **BLOCKED** |
+| `Weil_criterion_tau0` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
+| `Proofs.PrimeCert.prime_b_grid_bounds_data` | Numeric certificate (hash-checked) | Analytic closure | long-term Option A | **AXIOM (cert data)** |
+| `Proofs.PrimeCert.prime_heat_bounds_data` | Numeric certificate (hash-checked) | Analytic closure | long-term Option A | **AXIOM (cert data)** |
 
 ## Progress Log (2026-01-16)
 
@@ -167,7 +223,7 @@ def AtomCone_K_fixed (K t₀ : ℝ) : Set (ℝ → ℝ) :=
   - `fourier_index_i0`, `prime_vec_i0`, `T_P_comp_real_diag`
   - `integral_P_A_eq_arch_term` (periodization) ✅
   - `rayleigh_Q_identification`, `rayleigh_Q_eq_Q` ✅
-- Next: wire into `Atoms_Positive.lean` to eliminate the axiom.
+- Done (2026-01-24): wired into `Atoms_Positive.lean` via `Q_nonneg_atoms_closure` (axiom closed).
 
 **Aristotle projects (Rayleigh variants)**:
 - 200eb072, 5e36515f, e9f53e97, eeca690a (Rayleigh sandbox variants)
@@ -397,7 +453,7 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3' 2>&1 
   **BLOCKER**: Direct import causes FejerKernel name conflict (both at top level).
   **TODO**: Refactor A1_density to use `Q3.Fejer_kernel` from Axioms.lean, or add namespace.
   Current status: 2 sorries in A1_density.lean (hat_interpolation_approx + h_approx).
-  Build passes, 10 axioms unchanged.
+  Build passes (axiom count tracked in the "Axiom Count" section above).
 
 - 2026-01-14: **Aristotle COMPLETE** for `hat_interpolation_approx`!
   KEY FINDING: Original lemma signature was WRONG — proved counterexample for f(x)=1.

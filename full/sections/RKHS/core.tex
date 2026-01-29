@@ -1,3 +1,4 @@
+\input{sections/Notation/qstar_contract}
 \subsection{RKHS Core}\label{sec:rkhs-core}
 
 Our RKHS setup follows the classical foundation laid by Aronszajn~\cite{Aronszajn1950} and the modern expositions of Berlinet--Thomas-Agnan and Paulsen--Raghupathi~\cite{BerlinetThomasAgnan2004,PaulsenRaghupathi2016,Berlinet2004,Paulsen2016}.
@@ -57,14 +58,14 @@ Lemma~\ref{lem:gram-min-eig-lb} yields the spectral bound. Any $g=\sum_i a_i k(\
 These statements provide the structural ingredients cited in Assumption~(A3.1) and in the proof of Theorem~\ref{thm:A3}: the diagonal floor produces $\czero$, the RKHS contraction supplies $\rhok$, and Lemma~\ref{lem:gram-min-eig-lb} transfers the margin to the finite Toeplitz block.
 
 \begin{lemma}[Rayleigh sampling identification]\label{lem:rkhs-rayleigh-sampling-id}
-For any Fej\'er$\times$heat window $\Phi$ with Dirichlet sampling polynomial $p(\theta)=\sum_{k\in\ZZ}\widehat\Phi(k)e^{2\pi i k\theta}$, one has
+For any Fej\'er$\times$heat window $\Phi=\Phi_{B,t}$ with Dirichlet sampling polynomial $p(\theta)=\sum_{k\in\ZZ}\widehat\Phi(k)e^{2\pi i k\theta}$, one has
 \[
   \big\langle T_M[P_A]\,p,\,p\big\rangle_{L^2(\TT)}
-  \;-\; (2M+1)\big\langle T_P^{(M)}\,p,\,p\big\rangle_{L^2(\TT)}
-  \;=\; Q(\Phi)
+  \;-\; (2M+1)\big\langle T_P^{\mathrm{Ray}}(t,M)\,p,\,p\big\rangle_{L^2(\TT)}
+  \;=\; Q^\star(t;\Phi)
 \]
 whenever $M$ is large enough that the Dirichlet coefficients of $\Phi$ lie in the span $\{|k_\tau\rangle\}$. In particular, any estimate on the two quadratic forms
-$\langle T_M[P_A]p,p\rangle$ and $\langle T_P^{(M)}p,p\rangle$ transfers directly to $Q(\Phi)$ via the displayed identity.
+$\langle T_M[P_A]p,p\rangle$ and $\langle T_P^{\mathrm{Ray}}(t,M)p,p\rangle$ transfers directly to $Q^\star(t;\Phi)$ via the displayed identity.
 \end{lemma}
 
 \begin{remark}[Finite support and the threshold $M$]

@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-01-27",
+  "risk_threshold": 1.0,
+  "kill_switch_on_risk": true,
+  "weights": {
+    "per_sorry": 0.5,
+    "numeric_fail": 5.0,
+    "speculative": 0.2
+  },
+  "speculative_files": [],
+  "intrinsic_overrides": {},
+  "notes": "risk_score = intrinsic_risk + sum(dependencies). If risk_score > threshold and kill_switch_on_risk, mark is_doomed."
+}

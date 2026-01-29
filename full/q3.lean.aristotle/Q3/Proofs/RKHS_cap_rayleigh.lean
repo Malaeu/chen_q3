@@ -11,6 +11,8 @@ import Q3.Proofs.Rayleigh_utils
 import Q3.Proofs.T_P_comp_utils
 import Q3.Proofs.A3_bridge_rayleigh_first
 import Q3.Proofs.Rayleigh_Q_identification
+import Q3.Proofs.C1_T_P_comp_dictEmbedding
+import Q3.Proofs.RKHS_Interface_C1
 
 set_option maxHeartbeats 0
 
@@ -879,6 +881,209 @@ lemma T_P_comp_real_opNorm_le_weight_sum (K B t : ℝ) (M : ℕ) [Fintype (Q3.No
     (C:=∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℂ)‖)
     hC_nonneg hrow
 
+/-! ### C1 compression identity (explicit basisFun model) -/
+
+/-- BasisFun model: `T_P_comp` is a compression with `ψ = basisFun`, `k = prime_vec`. -/
+lemma T_P_comp_toCLM_eq_compression_basisFun
+    (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] :
+    (Matrix.toEuclideanLin (Q3.T_P_comp K B t M)).toContinuousLinearMap =
+      Q3.Proofs.C1Embedding.compression
+        (ι := Q3.Proofs.RKHSInterfaceC1.iota (H := EuclideanSpace ℂ (Fin (2 * M + 1)))
+          (M := M)
+          (ψ := Q3.Proofs.RKHSInterfaceC1.psi_basis (M := M))
+          (Q3.Proofs.RKHSInterfaceC1.psi_basis_orthonormal (M := M)))
+        (T := Q3.Proofs.RKHSInterfaceC1.T_P_RKHS_like
+          (H := EuclideanSpace ℂ (Fin (2 * M + 1)))
+          (K := K) (B := B) (t := t)
+          (k := Q3.Proofs.RKHSInterfaceC1.k_basis (K := K) (M := M))) := by
+  simpa using
+    (Q3.Proofs.RKHSInterfaceC1.T_P_comp_toCLM_eq_compression_basisFun
+      (K := K) (B := B) (t := t) (M := M))
+
+/-- C1 (basisFun) opNorm bound: `‖T_P_comp‖ ≤ ‖T_P_RKHS_like‖`. -/
+lemma T_P_comp_opNorm_le_basisFun
+    (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)] :
+    ‖(Matrix.toEuclideanLin (Q3.T_P_comp K B t M)).toContinuousLinearMap‖ ≤
+      ‖Q3.Proofs.RKHSInterfaceC1.T_P_RKHS_like
+        (H := EuclideanSpace ℂ (Fin (2 * M + 1)))
+        (K := K) (B := B) (t := t)
+        (k := Q3.Proofs.RKHSInterfaceC1.k_basis (K := K) (M := M))‖ := by
+  simpa using
+    (Q3.Proofs.RKHSInterfaceC1.T_P_comp_opNorm_le_basisFun
+      (K := K) (B := B) (t := t) (M := M))
+
+/-! ### C1 compression identity (dictionary embedding) -/
+
+/-- C1 identity: `T_P_comp_real` is the compression of its lifted operator along the
+dictionary embedding. This is the formal “compression identity” used below. -/
+lemma T_P_comp_real_eq_compression_lift_dict
+    (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+    {n : ℕ} (d : Fin n → H)
+    (hdim : Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1) :
+    let ι :=
+      Q3.Proofs.C1Embedding.dictEmbeddingCast (𝕜 := ℝ) (d := d) (m := 2 * M + 1) hdim
+    let A :
+        (EuclideanSpace ℝ (Fin (2 * M + 1))) →L[ℝ]
+          (EuclideanSpace ℝ (Fin (2 * M + 1))) :=
+        (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t M)).toContinuousLinearMap
+    let T : H →L[ℝ] H := ι.toContinuousLinearMap.comp (A.comp ι.toContinuousLinearMap.adjoint)
+    (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t M)).toContinuousLinearMap =
+      Q3.Proofs.C1Embedding.compression ι T := by
+  classical
+  simpa using
+    (T_P_comp_real_eq_compression_lift_of_dictEmbedding (K := K) (B := B) (t := t) (M := M)
+      (d := d) (hdim := hdim))
+
+/-- C1 corollary (lifted operator): `‖T_P_comp_real‖ ≤ ‖T‖` for the compression lift. -/
+lemma T_P_comp_real_opNorm_le_lift_dict
+    (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+    {n : ℕ} (d : Fin n → H)
+    (hdim : Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1) :
+    let ι :=
+      Q3.Proofs.C1Embedding.dictEmbeddingCast (𝕜 := ℝ) (d := d) (m := 2 * M + 1) hdim
+    let A :
+        (EuclideanSpace ℝ (Fin (2 * M + 1))) →L[ℝ]
+          (EuclideanSpace ℝ (Fin (2 * M + 1))) :=
+        (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t M)).toContinuousLinearMap
+    let T : H →L[ℝ] H := ι.toContinuousLinearMap.comp (A.comp ι.toContinuousLinearMap.adjoint)
+    ‖A‖ ≤ ‖T‖ := by
+  classical
+  simpa using
+    (T_P_comp_real_opNorm_le_lift_of_dictEmbedding (K := K) (B := B) (t := t) (M := M)
+      (d := d) (hdim := hdim))
+
+lemma T_P_comp_real_opNorm_le_via_C1_dictEmbedding
+    (K B t : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+    {n : ℕ} (d : Fin n → H)
+    (hdim : Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1)
+    (T : H →L[ℝ] H)
+    (hA :
+      (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t M)).toContinuousLinearMap =
+        Q3.Proofs.C1Embedding.compression
+          (Q3.Proofs.C1Embedding.dictEmbeddingCast (𝕜 := ℝ) (d := d) (m := 2 * M + 1) hdim) T) :
+    ‖Q3.T_P_comp_real K B t M‖ ≤ ‖T‖ := by
+  have hC1 :
+      ‖(Matrix.toEuclideanLin (Q3.T_P_comp_real K B t M)).toContinuousLinearMap‖ ≤ ‖T‖ :=
+    T_P_comp_real_opNorm_le_of_dictEmbedding (K := K) (B := B) (t := t) (M := M)
+      (d := d) (hdim := hdim) (T := T) hA
+  simpa [Matrix.l2_opNorm_def, LinearEquiv.trans_apply] using hC1
+
+lemma rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding
+    (K B : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+    {n : ℕ} (d : Fin n → H)
+    (hdim : Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1)
+    (T : H →L[ℝ] H)
+    (hA :
+      (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t_rkhs_cap M)).toContinuousLinearMap =
+        Q3.Proofs.C1Embedding.compression
+          (Q3.Proofs.C1Embedding.dictEmbeddingCast (𝕜 := ℝ) (d := d) (m := 2 * M + 1) hdim) T)
+    (hT : ‖T‖ ≤ rho_one) :
+    ∀ (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
+      Q3.RayleighQuotient (Q3.T_P_comp_real K B t_rkhs_cap M) v ≤ rho_one := by
+  intro v hv
+  have hnorm' :
+      ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ ≤ ‖T‖ :=
+    T_P_comp_real_opNorm_le_via_C1_dictEmbedding (K := K) (B := B) (t := t_rkhs_cap)
+      (M := M) (d := d) (hdim := hdim) (T := T) hA
+  have hnorm :
+      ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ ≤ rho_one := by
+    exact le_trans hnorm' hT
+  have hRayleigh :
+      Q3.RayleighQuotient (Q3.T_P_comp_real K B t_rkhs_cap M) v ≤
+        ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ :=
+    RayleighQuotient_le_opNorm (A:=Q3.T_P_comp_real K B t_rkhs_cap M) (v:=v) hv
+  exact le_trans hRayleigh hnorm
+
+lemma rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding_lift
+    (K B : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+    {n : ℕ} (d : Fin n → H)
+    (hdim : Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1)
+    (h_weight_sum :
+      ∑ n : Q3.Nodes K,
+        ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖ ≤ rho_one) :
+    ∀ (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
+      Q3.RayleighQuotient (Q3.T_P_comp_real K B t_rkhs_cap M) v ≤ rho_one := by
+  classical
+  let ι :=
+    Q3.Proofs.C1Embedding.dictEmbeddingCast (𝕜 := ℝ) (d := d) (m := 2 * M + 1) hdim
+  let A : (EuclideanSpace ℝ (Fin (2 * M + 1))) →L[ℝ] (EuclideanSpace ℝ (Fin (2 * M + 1))) :=
+    (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t_rkhs_cap M)).toContinuousLinearMap
+  let T : H →L[ℝ] H := ι.toContinuousLinearMap.comp (A.comp ι.toContinuousLinearMap.adjoint)
+  have hA :
+      (Matrix.toEuclideanLin (Q3.T_P_comp_real K B t_rkhs_cap M)).toContinuousLinearMap =
+        Q3.Proofs.C1Embedding.compression ι T := by
+    simpa [ι, A, T] using
+      (T_P_comp_real_eq_compression_lift_of_dictEmbedding (K := K) (B := B) (t := t_rkhs_cap)
+        (M := M) (d := d) (hdim := hdim))
+  have hAop :
+      ‖A‖ ≤ rho_one := by
+    have hnorm :
+        ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ ≤
+          ∑ n : Q3.Nodes K,
+            ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖ :=
+      T_P_comp_real_opNorm_le_weight_sum (K:=K) (B:=B) (t:=t_rkhs_cap) (M:=M)
+    have hnorm' : ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ ≤ rho_one :=
+      le_trans hnorm h_weight_sum
+    simpa [A, Matrix.l2_opNorm_def, LinearEquiv.trans_apply] using hnorm'
+  have hT : ‖T‖ ≤ rho_one := by
+    have hTle : ‖T‖ ≤ ‖A‖ :=
+      Q3.Proofs.C1Embedding.opNorm_lift_le (ι := ι) (A := A)
+    exact le_trans hTle hAop
+  exact rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding (K := K) (B := B) (M := M)
+    (d := d) (hdim := hdim) (T := T) (hA := hA) (hT := hT)
+
+/-! ### Kernel-section dictionary (finite-dimensional model) -/
+
+private noncomputable def kernel_basis (M : ℕ) :
+    OrthonormalBasis (Fin (2 * M + 1)) ℝ (EuclideanSpace ℝ (Fin (2 * M + 1))) := by
+  classical
+  let E := EuclideanSpace ℝ (Fin (2 * M + 1))
+  have hfinrank : Module.finrank ℝ E = 2 * M + 1 :=
+    (finrank_euclideanSpace_fin (𝕜 := ℝ) (n := 2 * M + 1))
+  exact (stdOrthonormalBasis ℝ E).reindex (finCongr hfinrank)
+
+private noncomputable def kernel_dict (M : ℕ) :
+    Fin (2 * M + 1) → EuclideanSpace ℝ (Fin (2 * M + 1)) :=
+  kernel_basis M
+
+private lemma kernel_dict_finrank (M : ℕ) :
+    Module.finrank ℝ
+        (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) (kernel_dict M)) = 2 * M + 1 := by
+  classical
+  let E := EuclideanSpace ℝ (Fin (2 * M + 1))
+  have hspan :
+      Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) (kernel_dict M) = ⊤ := by
+    simpa [Q3.Proofs.C1Embedding.dictSubmodule, kernel_dict, kernel_basis] using
+      (kernel_basis M).toBasis.span_eq
+  have htop :
+      Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) (kernel_dict M)) =
+        Module.finrank ℝ E := by
+    rw [hspan]
+    exact (finrank_top (R := ℝ) (M := E))
+  exact htop.trans (finrank_euclideanSpace_fin (𝕜 := ℝ) (n := 2 * M + 1))
+
+lemma rkhs_cap_rayleigh_tcap_via_C1_kernel_dict
+    (K B : ℝ) (M : ℕ) [Fintype (Q3.Nodes K)]
+    (h_weight_sum :
+      ∑ n : Q3.Nodes K,
+        ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖ ≤ rho_one) :
+    ∀ (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
+      Q3.RayleighQuotient (Q3.T_P_comp_real K B t_rkhs_cap M) v ≤ rho_one := by
+  classical
+  let d := kernel_dict M
+  have hdim :
+      Module.finrank ℝ (Q3.Proofs.C1Embedding.dictSubmodule (𝕜 := ℝ) d) = 2 * M + 1 := by
+    simpa [d] using kernel_dict_finrank (M := M)
+  simpa [d] using
+    (rkhs_cap_rayleigh_tcap_via_C1_dictEmbedding_lift (K := K) (B := B) (M := M)
+      (H := EuclideanSpace ℝ (Fin (2 * M + 1))) (d := d) (hdim := hdim)
+      (h_weight_sum := h_weight_sum))
+
 lemma rkhs_cap_rayleigh_tcap (K B : ℝ) [Fintype (Q3.Nodes K)]
     (h_weight_sum :
       ∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖
@@ -886,15 +1091,8 @@ lemma rkhs_cap_rayleigh_tcap (K B : ℝ) [Fintype (Q3.Nodes K)]
     ∀ (M : ℕ) (v : Fin (2 * M + 1) → ℝ), v ≠ 0 →
       Q3.RayleighQuotient (Q3.T_P_comp_real K B t_rkhs_cap M) v ≤ rho_one := by
   intro M v hv
-  have hnorm :
-      ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ ≤
-        ∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window B t_rkhs_cap (Q3.xi_n n)) : ℂ)‖ :=
-    T_P_comp_real_opNorm_le_weight_sum (K:=K) (B:=B) (t:=t_rkhs_cap) (M:=M)
-  have hRayleigh :
-      Q3.RayleighQuotient (Q3.T_P_comp_real K B t_rkhs_cap M) v ≤
-        ‖Q3.T_P_comp_real K B t_rkhs_cap M‖ :=
-    RayleighQuotient_le_opNorm (A:=Q3.T_P_comp_real K B t_rkhs_cap M) (v:=v) hv
-  exact le_trans hRayleigh (le_trans hnorm h_weight_sum)
+  exact rkhs_cap_rayleigh_tcap_via_C1_kernel_dict (K := K) (B := B) (M := M)
+    (h_weight_sum := h_weight_sum) v hv
 
 /-- DEPRECATED: This lemma uses sampling Toeplitz with a_star.
     Use A3_bridge_rayleigh_from_weight_sum_P_A from P_A_Toeplitz_bridge.lean instead,

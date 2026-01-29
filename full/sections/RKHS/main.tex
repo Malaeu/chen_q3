@@ -2,30 +2,30 @@
 \subsection{RKHS Contraction Mechanism}
 \SeeAlso{Weight cap Lemma (w\_max $\le 2/e$)~\ref{rkhs:lem:wmax_cap},
 Node-gap lower bound Lemma~\ref{rkhs:lem:node_gap_lower_bound},
-Two-scale decoupling Corollary~\ref{rkhs:cor:rkhs_two_scale},
+Single-scale alignment Corollary~\ref{rkhs:cor:rkhs_two_scale},
 Mixed lower bound in A3 Theorem~\ref{thm:A3}.}
-We briefly record the RKHS framework that delivers operator positivity $T_A-T_P\succeq0$ on each compact without pointwise measure domination; comprehensive background may be found in \cite{Aronszajn1950,BerlinetThomasAgnan2004,PaulsenRaghupathi2016,Berlinet2004,Paulsen2016}.
+We briefly record the RKHS framework that delivers operator positivity $T_A-T_P^{\mathrm{RKHS}}(t)\succeq0$ on each compact without pointwise measure domination; comprehensive background may be found in \cite{Aronszajn1950,BerlinetThomasAgnan2004,PaulsenRaghupathi2016,Berlinet2004,Paulsen2016}.
 
 \subsection{Setup}
-Fix $K=[-K,K]$ and let $\{\alpha_n\}$ be the active nodes on $K$. Let $K_A^{(t)}(\alpha,\beta)$ be the Archimedean kernel associated to the heat scale $t>0$ (normalized $K_A^{(t)}(\alpha,\alpha)=1$). Define the Hilbert space $\mathcal H_K$ as the RKHS with kernel $K_A^{(t)}$ or a two--scale convex mixture in $t\in\{t_{\min},t_{\max}\}$. In the even setting (T0) we merge the symmetric nodes $\pm\alpha_n$ into a single reproducing vector and work with the effective weights
+Fix $K=[-K,K]$ and let $\{\alpha_n\}$ be the active nodes on $K$. Let $K_A^{(t)}(\alpha,\beta)$ be the Archimedean kernel associated to the heat scale $t>0$ (normalized $K_A^{(t)}(\alpha,\alpha)=1$). Define the Hilbert space $\mathcal H_K$ as the RKHS with kernel $K_A^{(t)}$ at the single scale $t$ (in the main line, $t=t_{\mathrm{crit}}=\tfrac{3}{20}=0.15$). In the even setting (T0) we merge the symmetric nodes $\pm\alpha_n$ into a single reproducing vector and work with the effective weights
 \begin{equation}\label{eq:RKHS_contraction-formula-8}
  \wRKHS(n)\ :=\ \frac{\Lambda(n)}{\sqrt n}\,\in(0,\infty),\qquad \sup_n \wRKHS(n)\le \sup_{x>0}\frac{\log x}{\sqrt x}=\frac{2}{e}<1.
 \end{equation}
-(This is the \emph{undoubled} operator weight; in $Q$ the evenization yields doubled weights $2\Lambda(n)/\sqrt n$ at positive nodes, equivalent to $\Lambda(n)/\sqrt n$ at $\pm$ nodes for even tests.)
+(This is the \emph{undoubled} operator weight; in $Q^\star(t;\Phi)$ the evenization yields doubled weights $2\Lambda(n)/\sqrt n$ at positive nodes, equivalent to $\Lambda(n)/\sqrt n$ at $\pm$ nodes for even tests.)
 The prime operator is
 \begin{equation}\label{eq:RKHS_contraction-formula-9}
-T_P\ :=\ \sum_{\alpha_n\in[-K,K]} \wRKHS(n)\, |k_{\alpha_n}\rangle\!\langle k_{\alpha_n}|,\qquad \|k_{\alpha}\|_{\mathcal H_K}=1,
+T_P^{\mathrm{RKHS}}(t)\ :=\ \sum_{\alpha_n\in[-K,K]} \wRKHS(n)\, |k_{\alpha_n}\rangle\!\langle k_{\alpha_n}|,\qquad \|k_{\alpha}\|_{\mathcal H_K}=1,
 \end{equation}
 and the Archimedean operator acts via this kernel and is positive semidefinite on $\mathcal H_K$.
 
 \subsection{Norm bound via weighted Gram}
-Let $G$ be the Gram matrix $G_{mn}=\langle k_{\alpha_m},k_{\alpha_n}\rangle_{\mathcal H_K}$. With $W=\mathrm{diag}(\wRKHS(n))$ one has $\|T_P\|_{\mathcal H_K}=\|W^{1/2}GW^{1/2}\|_{\ell^2\to\ell^2}$. Writing $\delta_K$ for the minimal node spacing on $[-K,K]$ and setting
+Let $G$ be the Gram matrix $G_{mn}=\langle k_{\alpha_m},k_{\alpha_n}\rangle_{\mathcal H_K}$. With $W=\mathrm{diag}(\wRKHS(n))$ one has $\|T_P^{\mathrm{RKHS}}(t)\|_{\mathcal H_K}=\|W^{1/2}GW^{1/2}\|_{\ell^2\to\ell^2}$. Writing $\delta_K$ for the minimal node spacing on $[-K,K]$ and setting
 \begin{equation}\label{eq:RKHS_contraction-formula-7}
 S_K(t)\ :=\ \sum_{m\ne n} e^{-\frac{(\alpha_m-\alpha_n)^2}{4t}}\ \le\ \frac{2e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}
 \end{equation}
 one obtains the Gershgorin--type bound
 \begin{equation}\label{rkhs:eq:rkhs-norm}
-\|T_P\|_{\mathcal H_K}\ \le\ \wmax\ +\ \sqrt{\wmax}\, S_K(t),\qquad \wmax:=\max_{\alpha_n\in[-K,K]} \wRKHS(n).
+\|T_P^{\mathrm{RKHS}}(t)\|_{\mathcal H_K}\ \le\ \wmax\ +\ \sqrt{\wmax}\, S_K(t),\qquad \wmax:=\max_{\alpha_n\in[-K,K]} \wRKHS(n).
 \end{equation}
 
 \begin{lemma}[Geometric tail bound for SK(t)]\label{rkhs:lem:geom-SK}
@@ -42,9 +42,9 @@ Fix $n$ and order the remaining nodes by increasing distance. The $j$-th nearest
 \end{proof}
 
 \begin{theorem}[Strict contraction]\label{rkhs:thm:rkhs-contraction}
-If $t=t_{\min}(K)$ is chosen so that $S_K(t_{\min})\le \dfrac{1-w_{\max}-\varepsilon_K}{\sqrt{w_{\max}}}$ for some $\varepsilon_K\in(0,1-w_{\max})$, then $\|T_P\|_{\mathcal H_K}\le \rho_K<1$ with $\rho_K=w_{\max}+\sqrt{w_{\max}}\,S_K(t_{\min})$, and hence
+If $t=t_{\min}(K)$ is chosen so that $S_K(t_{\min})\le \dfrac{1-w_{\max}-\varepsilon_K}{\sqrt{w_{\max}}}$ for some $\varepsilon_K\in(0,1-w_{\max})$, then $\|T_P^{\mathrm{RKHS}}(t)\|_{\mathcal H_K}\le \rho_K<1$ with $\rho_K=w_{\max}+\sqrt{w_{\max}}\,S_K(t_{\min})$, and hence
 \begin{equation}\label{eq:RKHS_contraction-formula-3}
-T_A-T_P\ \succeq\ (1-\rho_K)\,T_A\ \succeq\ 0\qquad\text{on }\mathcal H_K.
+T_A-T_P^{\mathrm{RKHS}}(t)\ \succeq\ (1-\rho_K)\,T_A\ \succeq\ 0\qquad\text{on }\mathcal H_K.
 \end{equation}
 Moreover, it suffices to enforce the geometric bound of Lemma~\ref{rkhs:lem:geom-SK}. Solving $\dfrac{2\,e^{-\delta_K^2/(4t)}}{1-e^{-\delta_K^2/(4t)}}\le \eta_K$ for $t$ gives
 \begin{equation}\label{eq:RKHS_contraction-formula-6}
@@ -53,7 +53,7 @@ Moreover, it suffices to enforce the geometric bound of Lemma~\ref{rkhs:lem:geom
 \end{theorem}
 
 \begin{remark}
-Because $\delta_K\downarrow0$ as the compact widens, the closed form \eqref{eq:RKHS_contraction-formula-6} shows that $t_{\min}(K)$ is automatically chosen monotone decreasing along the chain $K\nearrow$. This supports the optional adaptive cap, but the uniform branch fixes a single scale $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$.
+Because $\delta_K\downarrow0$ as the compact widens, the closed form \eqref{eq:RKHS_contraction-formula-6} shows that $t_{\min}(K)$ is automatically chosen monotone decreasing along the chain $K\nearrow$. This supports the optional adaptive cap, but the uniform branch fixes a single scale $t=t_{\mathrm{crit}}$.
 \end{remark}
 
 \begin{proposition}[Dataset-free RKHS schedule]\label{prop:rkhs-schedule}
@@ -67,14 +67,14 @@ t_{\min}(K)\;=\;\frac{\delta_K^2}{4\ln\!\bigl((2+\eta_K)/\eta_K\bigr)},\qquad \e
 \]
 Then $S_K\bigl(t_{\min}(K)\bigr)\le \eta_K$ and therefore
 \[
-\|T_P\|_{\mathcal H_K}\ \le\ w_{\max}+\sqrt{w_{\max}}\,S_K\bigl(t_{\min}(K)\bigr)
+\|T_P^{\mathrm{RKHS}}(t)\|_{\mathcal H_K}\ \le\ w_{\max}+\sqrt{w_{\max}}\,S_K\bigl(t_{\min}(K)\bigr)
 \ =:\ \rho_K\ < 1,
 \]
-so $T_A-T_P\succeq(1-\rho_K)\,T_A$ on the RKHS.
+so $T_A-T_P^{\mathrm{RKHS}}(t)\succeq(1-\rho_K)\,T_A$ on the RKHS.
 \end{proposition}
 
 \begin{proof}
-By the Gershgorin circle theorem applied to $W^{1/2}GW^{1/2}$ (see, e.g., \cite[Thm.~6.1.1]{HornJohnson2013}; also \cite{Varga2004}), each eigenvalue $\lambda$ of $T_P$ lies in a disc centered at $\wRKHS(n)$ with radius $\sqrt{\wRKHS(n)}\sum_{m\ne n} \sqrt{\wRKHS(m)}\,|G_{mn}|\le \sqrt{\wmax}\sum_{m\ne n}|G_{mn}|$. Using $G_{mn}=\langle k_{\alpha_m},k_{\alpha_n}\rangle\le e^{-(\alpha_m-\alpha_n)^2/(4t)}$ and Lemma~\ref{rkhs:lem:geom-SK} yields $\|T_P\|\le \wmax+\sqrt{\wmax}\,S_K(t)$. Imposing $S_K(t_{\min})\le (1-\wmax-\varepsilon_K)/\sqrt{\wmax}$ gives the claim. For the explicit $t_{\min}$, set $q:=e^{-\delta_K^2/(4t)}\in(0,1)$ and require $\dfrac{2q}{1-q}\le\eta_K$, i.e. $q\le\dfrac{\eta_K}{2+\eta_K}$. This is equivalent to $t\le \delta_K^2/\bigl(4\ln((2+\eta_K)/\eta_K)\bigr)$.
+By the Gershgorin circle theorem applied to $W^{1/2}GW^{1/2}$ (see, e.g., \cite[Thm.~6.1.1]{HornJohnson2013}; also \cite{Varga2004}), each eigenvalue $\lambda$ of $T_P^{\mathrm{RKHS}}(t)$ lies in a disc centered at $\wRKHS(n)$ with radius $\sqrt{\wRKHS(n)}\sum_{m\ne n} \sqrt{\wRKHS(m)}\,|G_{mn}|\le \sqrt{\wmax}\sum_{m\ne n}|G_{mn}|$. Using $G_{mn}=\langle k_{\alpha_m},k_{\alpha_n}\rangle\le e^{-(\alpha_m-\alpha_n)^2/(4t)}$ and Lemma~\ref{rkhs:lem:geom-SK} yields $\|T_P^{\mathrm{RKHS}}(t)\|\le \wmax+\sqrt{\wmax}\,S_K(t)$. Imposing $S_K(t_{\min})\le (1-\wmax-\varepsilon_K)/\sqrt{\wmax}$ gives the claim. For the explicit $t_{\min}$, set $q:=e^{-\delta_K^2/(4t)}\in(0,1)$ and require $\dfrac{2q}{1-q}\le\eta_K$, i.e. $q\le\dfrac{\eta_K}{2+\eta_K}$. This is equivalent to $t\le \delta_K^2/\bigl(4\ln((2+\eta_K)/\eta_K)\bigr)$.
 \end{proof}
 
 % Mini-lemmas: weight cap and node gap with explicit labels
@@ -87,18 +87,18 @@ Consider $f(x)=\log x/\sqrt{x}$ on $x>1$; $f'(x)=(1-\tfrac12\log x)/x^{3/2}$ van
 \end{proof}
 
 \begin{lemma}[Rayleigh lower bound for ||TP||]\label{rkhs:lem:rayleigh_lower}
-For the prime operator $T_P=\sum_{\alpha_n}\wRKHS(n)|k_{\alpha_n}\rangle\!\langle k_{\alpha_n}|$ with normalized kernel vectors $\|k_{\alpha}\|=1$, the operator norm satisfies
+For the prime operator $T_P^{\mathrm{RKHS}}(t)=\sum_{\alpha_n}\wRKHS(n)|k_{\alpha_n}\rangle\!\langle k_{\alpha_n}|$ with normalized kernel vectors $\|k_{\alpha}\|=1$, the operator norm satisfies
 \begin{equation}\label{eq:RKHS_contraction-rayleigh-lower}
-\|T_P\|\ \ge\ \sup_{n:\alpha_n\in[-K,K]} \wRKHS(n)\ =:\ \wmax.
+\|T_P^{\mathrm{RKHS}}(t)\|\ \ge\ \sup_{n:\alpha_n\in[-K,K]} \wRKHS(n)\ =:\ \wmax.
 \end{equation}
 \end{lemma}
 
 \begin{proof}
 For any node $m$ with $\alpha_m\in[-K,K]$, the Rayleigh quotient gives
 \begin{equation}
-\langle k_{\alpha_m}, T_P k_{\alpha_m}\rangle\ =\ \sum_n \wRKHS(n)\,|\langle k_{\alpha_n},k_{\alpha_m}\rangle|^2\ \ge\ \wRKHS(m)\,\|k_{\alpha_m}\|^2\ =\ \wRKHS(m).
+\langle k_{\alpha_m}, T_P^{\mathrm{RKHS}}(t) k_{\alpha_m}\rangle\ =\ \sum_n \wRKHS(n)\,|\langle k_{\alpha_n},k_{\alpha_m}\rangle|^2\ \ge\ \wRKHS(m)\,\|k_{\alpha_m}\|^2\ =\ \wRKHS(m).
 \end{equation}
-Hence $\|T_P\|\ge w(m)$ for every active node, implying $\|T_P\|\ge w_{\max}$.
+Hence $\|T_P^{\mathrm{RKHS}}(t)\|\ge w(m)$ for every active node, implying $\|T_P^{\mathrm{RKHS}}(t)\|\ge w_{\max}$.
 \end{proof}
 
 \begin{lemma}[Node gap on compacts]\label{rkhs:lem:node_gap_lower_bound}
@@ -112,17 +112,20 @@ For $\alpha_n=\tfrac{\log n}{2\pi}$ and fixed $K>0$ the active set is $\{2,\dots
 Mean value theorem on $\log x$ between consecutive integers.
 \end{proof}
 
-%% BEGIN PATCH: RKHS_contraction.tex (two-scale decoupling)
-\begin{corollary}[Two-scale decoupling (uniform)]\label{rkhs:cor:rkhs_two_scale}
-Let $t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ be the RKHS scale and let $t_{\mathrm{sym}}>0$ be the Fej\'er$\times$heat parameter. If $L_A(B,t_{\mathrm{sym}})\le L_A^*$ and $\min P_A\ge c_*>0$, then Corollary~\ref{a3:cor:A3_lock_formal} applies with the uniform cap $\|T_P\|\le\rho(t_{\mathrm{rkhs}})$ and modulus $L_A^*$. Thus the symbol parameter controls the modulus $\omega_{P_A}$ (symbol barrier), while the RKHS scale controls only $\|T_P\|$ (contraction); the effects are decoupled.
+%% BEGIN PATCH: RKHS_contraction.tex (single-scale alignment)
+\begin{corollary}[Single-scale alignment (uniform)]\label{rkhs:cor:rkhs_two_scale}
+Let $t=t_{\mathrm{crit}}$ be the fixed heat scale used to build $P_A$ and the RKHS kernel
+$K_A^{(t)}$. If $L_A(B,t)\le L_A^*$ and $\min P_A\ge c_*>0$, then Corollary~\ref{a3:cor:A3_lock_formal}
+applies with the uniform cap $\|T_P^{\mathrm{RKHS}}(t)\|\le\rho(t)$ and modulus $L_A^*$.
+Thus the symbol modulus and the RKHS contraction are evaluated at the same scale.
 \end{corollary}
 %% END PATCH
 
 \begin{remark}[Uniform vs.\ adaptive prime caps]\label{rem:prime-caps}
-Two complementary caps for $T_P$ are available. A \emph{uniform} trace cap at
-$t_{\mathrm{rkhs}}\ge t_{\star,\mathrm{rkhs}}^{\mathrm{unif}}$ gives $\|T_P\|\le \rho(t_{\mathrm{rkhs}})\le c_*/4$
-on every compact and suffices for the A3 budget. An \emph{adaptive} cap at $t_{\mathrm{rkhs}}(K)=t_{\min}(K)$
-uses the node gap $\delta_K$ and yields $\|T_P\|\le \wmax+\sqrt{\wmax}\,\eta_K$
+Two complementary caps for $T_P^{\mathrm{RKHS}}(t)$ are available. A \emph{uniform} trace cap at
+$t=t_{\mathrm{crit}}$ gives $\|T_P^{\mathrm{RKHS}}(t)\|\le \rho(t)\le c_*/4$
+on every compact and suffices for the A3 budget. An \emph{adaptive} cap at $t=t_{\min}(K)$
+uses the node gap $\delta_K$ and yields $\|T_P^{\mathrm{RKHS}}(t)\|\le \wmax+\sqrt{\wmax}\,\eta_K$
 for a prescribed off-diagonal level $\eta_K$. The mainline proof invokes
 the uniform cap; the adaptive one provides additional slack when needed.
 \end{remark}
@@ -130,9 +133,9 @@ the uniform cap; the adaptive one provides additional slack when needed.
 \begin{theorem}[One--prime induction]\label{rkhs:thm:rkhs-ind}
 Upon crossing an activity threshold that introduces a single new node with weight $w_{\mathrm{new}}$, the update is
 \begin{equation}\label{eq:RKHS_contraction-formula-1}
-\|T_P^{\mathrm{new}}\|\ \le\ \|T_P^{\mathrm{old}}\|\ +\ w_{\mathrm{new}}.
+\|T_P^{\mathrm{RKHS,new}}(t)\|\ \le\ \|T_P^{\mathrm{RKHS,old}}(t)\|\ +\ w_{\mathrm{new}}.
 \end{equation}
-Consequently, if $\|T_P^{\mathrm{old}}\|\le\rho_K^{\mathrm{old}}<1$ and $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$, then $T_A-T_P^{\mathrm{new}}\succeq0$ on $\mathcal H_K$.
+Consequently, if $\|T_P^{\mathrm{RKHS,old}}(t)\|\le\rho_K^{\mathrm{old}}<1$ and $\rho_K^{\mathrm{old}}+w_{\mathrm{new}}<1$, then $T_A-T_P^{\mathrm{RKHS,new}}(t)\succeq0$ on $\mathcal H_K$.
 \end{theorem}
 
 \begin{remark}[Boxed formulas and effective weight cap]

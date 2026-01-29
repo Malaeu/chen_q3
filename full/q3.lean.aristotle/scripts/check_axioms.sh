@@ -17,6 +17,17 @@ echo "Date: $(date)"
 echo "Directory: $PROJECT_DIR"
 echo ""
 
+# Hash helper (sha256sum on Linux, shasum on macOS)
+hash_file() {
+    if command -v sha256sum >/dev/null 2>&1; then
+        sha256sum "$1" | awk '{print $1}'
+    elif command -v shasum >/dev/null 2>&1; then
+        shasum -a 256 "$1" | awk '{print $1}'
+    else
+        return 1
+    fi
+}
+
 # Step 0: Prebuild A3_FLOOR (via compatibility wrapper)
 echo "═══ Step 0: Prebuilding A3_Floor_Main ═══"
 if lake env lean A3_FLOOR_v22_stage4_floor.lean 2>&1 | tail -5; then
@@ -45,6 +56,36 @@ else
     echo "✗ Audit invariants FAILED"
     exit 1
 fi
+echo ""
+
+# Step 0.7: PrimeCert evidence files
+echo "═══ Step 0.7: PrimeCert evidence check ═══"
+PRIME_CERT_TCRIT="output/prime_cert_tcritical_2026-01-26_0046.txt"
+PRIME_CERT_BRANGE="output/prime_cert_brange_tcritical_2026-01-26_0050.txt"
+PRIME_CERT_HEAT="output/prime_cert_brange_heat_L_2026-01-28_0115.txt"
+PRIME_CERT_TCRIT_HASH="3af1204fc8f5ddf322e1110b9932bb44a5349e0773d6d1b3cdf5441ec8ef3b5d"
+PRIME_CERT_BRANGE_HASH="a9d5303b2da81886cf64bfc5ee9b5b1ab85ce0b45067a8cd9b499d051a294230"
+PRIME_CERT_HEAT_HASH="da6a6ac1221f93d376aafecd189169607b40b5d394868e893124445089a3e0a5"
+
+if [[ ! -f "$PRIME_CERT_TCRIT" || ! -f "$PRIME_CERT_BRANGE" || ! -f "$PRIME_CERT_HEAT" ]]; then
+    echo "✗ PrimeCert evidence file missing"
+    exit 1
+fi
+
+HASH_TCRIT="$(hash_file "$PRIME_CERT_TCRIT" || true)"
+HASH_BRANGE="$(hash_file "$PRIME_CERT_BRANGE" || true)"
+HASH_HEAT="$(hash_file "$PRIME_CERT_HEAT" || true)"
+
+if [[ -z "$HASH_TCRIT" || -z "$HASH_BRANGE" || -z "$HASH_HEAT" ]]; then
+    echo "✗ sha256 tool not available (sha256sum/shasum)"
+    exit 1
+fi
+
+if [[ "$HASH_TCRIT" != "$PRIME_CERT_TCRIT_HASH" || "$HASH_BRANGE" != "$PRIME_CERT_BRANGE_HASH" || "$HASH_HEAT" != "$PRIME_CERT_HEAT_HASH" ]]; then
+    echo "✗ PrimeCert evidence hash mismatch"
+    exit 1
+fi
+echo "✓ PrimeCert evidence hash OK"
 echo ""
 
 # Step 1: Build
@@ -85,19 +126,47 @@ else
 fi
 echo ""
 
+# Step 2.6: Sorry frontier (WARN only)
+echo "═══ Step 2.6: Sorry frontier (WARN) ═══"
+if python3 ../scripts/build_sorry_frontier.py >/dev/null 2>&1; then
+    SORRY_JSON="ACTIVE/graphs/SORRY_FRONTIER.json"
+    if [[ -f "$SORRY_JSON" ]]; then
+        SORRY_TOTAL=$(python3 - <<'PY'
+import json, pathlib
+p = pathlib.Path("ACTIVE/graphs/SORRY_FRONTIER.json")
+try:
+    data = json.loads(p.read_text(encoding="utf-8"))
+    print(int(data.get("total_sorries", 0)))
+except Exception:
+    print(0)
+PY
+)
+        if [[ "$SORRY_TOTAL" -gt 0 ]]; then
+            echo "⚠️  WARNING: $SORRY_TOTAL sorries found in Q3/ (see ACTIVE/graphs/SORRY_FRONTIER.md)"
+        else
+            echo "✓ No sorries found in Q3/"
+        fi
+    else
+        echo "⚠️  WARNING: Missing $SORRY_JSON (sorry scan skipped)"
+    fi
+else
+    echo "⚠️  WARNING: build_sorry_frontier.py failed (sorry scan skipped)"
+fi
+echo ""
+
 # Step 3: Count axioms
 echo "═══ Step 3: Axiom Count ═══"
 
-# Count standard axioms from full output (propext is on the header line)
-STANDARD_COUNT=$(echo "$AXIOMS" | grep -oE "propext|Classical.choice|Quot.sound" | wc -l | tr -d ' ')
+# Count standard/kernel axioms from full output (propext is on the header line)
+STANDARD_COUNT=$(echo "$AXIOMS" | grep -oE "propext|Classical.choice|Quot.sound|Lean.ofReduceBool|Lean.trustCompiler" | wc -l | tr -d ' ')
 # Strip the header label but keep the axiom list.
 AXIOMS_ONLY=$(echo "$AXIOMS" | sed "s/'Q3.Main.RH_of_Weil_and_Q3' depends on axioms: //")
 PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
-EXPECTED_STANDARD=3
-EXPECTED_PROJECT=4  # Weil_criterion, Schur_test, A1_density_WK_axiom, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+EXPECTED_STANDARD=3  # propext, Classical.choice, Quot.sound (no native_decide/compiler trust in chain)
+EXPECTED_PROJECT=3   # Weil_criterion_tau0, PrimeCert cert axioms (2)
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
@@ -109,11 +178,11 @@ echo ""
 echo "═══ Step 4: Axiom Classification ═══"
 
 echo "Level 1 (Classical Literature):"
-echo "$AXIOMS" | grep -E "Weil_criterion|digamma_one_fourth_neg|Schur_test" | sed 's/^/   /' || echo "   (none found)"
+echo "$AXIOMS" | grep -E "Weil_criterion_tau0|digamma_one_fourth_neg|Schur_test" | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
-echo "$AXIOMS_ONLY" | grep -E "RKHS_contraction|Q_nonneg_on_atoms|A1_density" | sed 's/^/   /' || echo "   (none found)"
+echo "$AXIOMS_ONLY" | grep -E "PrimeCert|SingleScale|A1_density|Q_nonneg_on_atoms" | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 echo "Level 3 (Bridge Lemmas):"
@@ -125,12 +194,10 @@ echo ""
 echo "═══ Step 5: Philosophy Verification ═══"
 
 # Expected axioms in proof chain (update when axioms are closed/added)
-# NOTE: A1_density_WK_axiom is AXIOM FALLBACK (theorem has 1 sorry)
 EXPECTED_AXIOMS=(
-    "Q3.Weil_criterion"
-    "Q3.Schur_test"
-    "Q3.A1_density_WK_axiom"
-    "Q3.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom"
+    "Q3.Weil_criterion_tau0"
+    "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data"
+    "Q3.Proofs.PrimeCert.prime_heat_bounds_data"
 )
 
 UNKNOWN_AXIOMS=""

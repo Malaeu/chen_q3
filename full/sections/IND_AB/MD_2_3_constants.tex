@@ -33,18 +33,18 @@ N_{B,r}\ \le\ \int_{[-B,-r]\cup[r,B]} \big(\log^+\!\tfrac{1}{|\xi|}+C_1\big)\,d\
 In particular, for fixed $B$ and small $r$ one has $N_{B,r}=O\big(r\log\tfrac{1}{r}\big)$.
 
 \subsection{Core mass via \texorpdfstring{$\rho_t(r)$}{ρₜ(r)} and Fejér area}
-For any $|\tau|\le B$ and $r\in(0,B)$,
+For any $r\in(0,B)$,
 \begin{equation}\label{eq:MD_2_3_constants-formula-6}
- \int_{-r}^{r}\!\Lambda_B(\xi-\tau)\,\rho_t(\xi-\tau)\,d\xi\ \ge\ \rho_t(r)\int_{\tau-r}^{\tau+r}\!\Lambda_B(x)\,dx\ \ge\ \rho_t(r)\,\frac{r^2}{2B},
+ \int_{-r}^{r}\!\Lambda_B(\xi)\,\rho_t(\xi)\,d\xi\ \ge\ \rho_t(r)\int_{-r}^{r}\!\Lambda_B(\xi)\,d\xi\ \ge\ \rho_t(r)\,\frac{r^2}{B},
 \end{equation}
-with the last inequality minimizing the Fej\'er area over intervals of length $2r$ in $[-B,B]$. The symmetric term in $\Phi_{B,t,\tau}$ contributes another $\rho_t(r)\,\frac{r^2}{2B}$, hence a total core mass lower bound $\rho_t(r)\,\frac{r^2}{B}$.
+using $\rho_t(\xi)\ge \rho_t(r)$ on $[-r,r]$ and the Fej\'er area bound.
 
 \subsection{Sufficient criterion (reprise)}
 Combining the bounds gives the sufficient condition for MD$_{2,3}$ on $[B_3,B_4)$:
 \begin{equation}\label{eq:MD_2_3_constants-formula-5}
 \boxed{\ m_r\,\rho_t(r)\,\frac{r^2}{B}\ -\ 2\,(4\pi t)^{-1/2}\,N_{B,r}\ \ge\ \frac{\log 2}{\sqrt 2}+\frac{\log 3}{\sqrt 3}\, }
 \end{equation}
-with $m_r, N_{B,r}$ as above and $\rho_t(r)=(4\pi t)^{-1/2} e^{-(2\pi)^2 r^2/t}$. One may additionally fix $t\ge 1/\pi$ to ensure $\Phi_{B,t,\tau}(\xi_n)\le1$ on the prime side.
+with $m_r, N_{B,r}$ as above and $\rho_t(r)=(4\pi t)^{-1/2} e^{-(2\pi)^2 r^2/t}$. One may additionally fix $t\ge 1/\pi$ to ensure $\Phi_{B,t}(\xi_n)\le1$ on the prime side.
 
 \subsection{RKHS auxiliary bounds for the operator form}
 
@@ -79,6 +79,6 @@ t_{\min}(K)=\frac{\delta_K^2}{4\ln\!\big(\tfrac{2+\eta_K}{\eta_K}\big)}\,.
 \end{equation}
 Then $S_K(t_{\min})\le \eta_K$ and the de Branges/RKHS contraction holds:
 \begin{equation}\label{eq:MD_2_3_constants-formula-2}
-\|T_P\|_{\mathcal H_K}\ \le\ w_{\max}+\sqrt{w_{\max}}\,S_K(t_{\min})\ \le\ w_{\max}+\sqrt{w_{\max}}\,\eta_K\,.
+\|T_P^{\mathrm{RKHS}}(t)\|_{\mathcal H_K}\ \le\ w_{\max}+\sqrt{w_{\max}}\,S_K(t_{\min})\ \le\ w_{\max}+\sqrt{w_{\max}}\,\eta_K\,.
 \end{equation}
 \end{proposition}

@@ -7,10 +7,27 @@
 
 ---
 
+## Paths (OS‑specific)
+
+- **Linux root:** `/mnt/hdd01/Soft/GitHub/chen_q3`
+- **macOS root:** `/Users/emalam/Documents/GitHub/chen_q3`
+
+Prefer **repo‑relative** paths below (work on both OS). If you need absolute paths,
+prepend the correct root above.
+
+**Sandbox symlinks (projekt_2):**
+- **Linux:** `/mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.lake`, `/mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.venv`
+- **macOS:** `/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/.lake`, `/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/.venv`
+
+---
+
 ## SINGLE ENTRY POINT
-**START HERE:** `/full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+**START HERE:** `full/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 
 This is the ONLY file you need to read at session start. All other docs are linked from there.
+
+If resuming an in-progress session, read:
+`full/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
 
 ---
 
@@ -57,6 +74,11 @@ Be a bit more эмоциональный and supportive in replies:
 - Celebrate progress when we close steps.
 - Keep precision, but add encouragement.
 
+## UI Safety Note (Zed/CED)
+
+Avoid literal labels like **"Tool Call:"** or similar tool-call formatting in replies.
+Zed can mis-parse these as actual tool invocations and show “Tool call not found”.
+
 ---
 
 ## Philosophy Compliance
@@ -66,34 +88,84 @@ Before EVERY commit, verify:
 - [ ] No new `axiom` without citation
 - [ ] No `sorry` in main proof chain
 
-See: `/full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
+See: `full/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
+
+## Commit Message Format
+
+Before committing, check OS + branch. Format:
+- Linux: `[Linux][<branch>] Message`
+- macOS: `[MacOS][<branch>] Message`
+
+No sandbox tags; we don't work on Windows.
+
+OS check (mandatory): `uname -s` → "Linux" or "Darwin".
+Branch check: `git rev-parse --abbrev-ref HEAD`.
+If you also use the workflow categories, append them after the OS+branch prefix:
+`[Linux][<branch>][Docs] ...`
 
 ---
 
-## 🔍 Problem-Solving Workflow (mgrep)
+## 🔍 Problem-Solving Workflow (Embeddings)
 
 **Когда уперся в проблему:**
 
 ```
-1. q3search "описание проблемы" -c    ← СНАЧАЛА база (643 файла)
-2. websearch "мат. формулировка"      ← ПОТОМ веб (arxiv, MO, SE)
+1. Embedding search по нашей базе (3–5 запросов, цель ~75% уверенности)
+2. Внешний веб‑поиск через встроенный web tool (НЕ через websearch/mgrep)
 3. Анализ: что нашли? как применить?
 4. Aristotle (если нужен formal proof)
 ```
 
+Команда embedding‑поиска (из `full/q3.lean.aristotle`):
+```bash
+./scripts/research_oracle.py query "keyword" -c q3_docs
+```
+Для литературы: `-c math_papers` или `-c zotero_lib` (если индексирован).
+
 **Почему этот порядок:**
-- База содержит УЖЕ решённые проблемы — не повторяй ошибки!
-- Веб даёт проверенные мат. источники
+- Наша embedding‑база содержит УЖЕ решённые проблемы — не повторяй ошибки!
+- Веб даёт проверенные мат. источники (как подтверждение/альтернатива)
 - Aristotle дорогой — используй с готовой формулировкой
 
-**Guide:** `~/.claude/docs/MGREP_GUIDE.md`
+---
+
+## 🌳 Branching Decision-Tree Protocol (чтобы не держать всё в голове)
+
+Когда есть несколько реалистичных путей (и один может оказаться “false-for-now”), работаем так:
+
+**Правило “железобетона” (community-standard formalization):**
+- Всегда выбираем путь, который **формально правильный** и **нормально читается/признаётся математическим сообществом** без “спец‑объяснений” и костылей.
+- Если есть путь **сложнее, но единственный community‑standard** → идём им (даже если дольше).
+- Если есть несколько путей, и они **равносильные + формально правильные + community‑standard** → автоматически берём тот, который в текущей архитектуре **проще, быстрее, дешевле** и легче поддерживать (минимум новых определений/инфры/параметров).
+
+1. **Фиксируем точную цель**: 1 строка “Target lemma” + где она в цепочке (файл/импорт).
+2. **Сканируем базу**: embedding‑поиск (3–5 запросов) + 1 web‑поиск через web tool при нужде.
+3. **Пишем дерево в `full/q3.lean.aristotle/docs/INSIGHTS.md`**:
+   - Option 1 (основной): что доказываем, минимальные зависимости, “success check” (какая команда должна компилироваться).
+   - Option 2 (fallback): рабочий путь, который точно закрывается, даже если менее красивый.
+   - (опц.) Option 0: уже готовые “ядра” (factorization/bridge), которые сохраняем независимо от выбора.
+   - Для каждого: `Status = pending/active/OK/false-for-now` + короткая причина.
+4. **Стартуем Option 1** и держим “pivot rule” в явном виде (например: “без новых axioms” / “≤ 1 день infra”).
+5. **Если упёрлись**: сразу помечаем в INSIGHTS “false-for-now + почему” и переключаемся на fallback.
+
+Смысл: мозг держит только текущую ветку; все развилки и причины — в INSIGHTS.
+
+Шаблон (копировать как новый insight): `full/q3.lean.aristotle/docs/insights/decision_tree_template.md`
+
+---
+
+## Branching Safety (stable vs experimental)
+
+- Keep `projekt_2A` clean and stable.
+- Do experimental/probing math in a feature branch (e.g. `projekt_2A-compact-support`).
+- Merge back only after the math is validated and the chain compiles; otherwise cherry-pick the good pieces or drop the branch.
 
 ---
 
 ## 🚨 ERRORS DESTROYER (Работа над ошибками)
 
 **ОБЯЗАТЕЛЬНО прочитай перед любым PR:**
-- `/full/q3.lean.aristotle/docs/ERRORS_DESTROYER.md`
+- `full/q3.lean.aristotle/docs/ERRORS_DESTROYER.md`
 
 Там: разборы прошлых ошибок и чеклисты как их избежать.
 
@@ -180,7 +252,9 @@ repo:{username/repo_name} import
 
 ```
 Standard (3): propext, Classical.choice, Quot.sound
-Project (3):  Weil_criterion, a_star_pos, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom
+Project (3):  Weil_criterion_tau0,
+              PrimeCert.prime_b_grid_bounds_data,
+              PrimeCert.prime_heat_bounds_data
 ```
 
 **Closed axioms:**
@@ -188,18 +262,22 @@ Project (3):  Weil_criterion, a_star_pos, Q_nonneg_on_atoms_of_A3_Fourier_RKHS_a
 - a_star_bdd_on_compact → closed via continuous + compact
 - a_star_even → closed via Mathlib Gamma_conj
 - A1_density_WK_axiom → closed via bounded hat interpolation (h_even as mass bound)
-- Schur_test → not needed (L2 vs L-infinity norm insight)
+- Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom → closed via Q_nonneg_atoms_closure
 - A3_bridge_axiom → removed from chain (Fourier formulation)
 - RKHS contraction → closed
 
-**Target:** Close Q_nonneg_on_atoms to reach 5 project axioms
+**Target:** Close 2 PrimeCert axioms to reach 1 project axiom (Weil_criterion_tau0).
 
 ---
 
 ## Quick Commands
 
 ```bash
-cd /media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
+Linux:
+cd /mnt/hdd01/Soft/GitHub/chen_q3/full/q3.lean.aristotle
+
+macOS:
+cd /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle
 
 # Build
 lake build Q3.Main
@@ -210,9 +288,10 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 # Automated check
 ./scripts/check_axioms.sh
 
-# Semantic search (НОВОЕ!)
-q3search "твой запрос" -c       # поиск по базе (643 файла)
-websearch "вопрос"              # AI web search
+# Semantic search (Embeddings)
+# Команда embedding‑поиска (qmd wrapper):
+./scripts/research_oracle.py query "keyword" -c q3_docs
+# Внешний веб‑поиск — через встроенный web tool
 ```
 
 ---
@@ -247,15 +326,19 @@ websearch "вопрос"              # AI web search
 **Документация (читать в этом порядке):**
 | Doc | Path | Content |
 |-----|------|---------|
+| **Workflow (canonical)** | `full/q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md` | Единственный актуальный гайд |
 | **Guidelines** | `aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md` | **Prompt policy!** |
-| Skill | `~/.claude/skills/aristotle/skill.md` | API, workflows, limits |
-| Sandbox Guide | `ARISTOTLE_SANDBOX_GUIDE.md` | Как делать sandbox |
+| Skill | `~/.codex/skills/aristotle/SKILL.md` | API, workflows, limits |
 | Project IDs | `aristotle_input/project_ids.txt` | Все UUID |
 | Variants Analysis | `aristotle_output/weight_sum_variants/ANALYSIS.md` | 7-variant study |
 
 **Quick start:**
 ```bash
-source /media/chirurgie/hdd01/Soft/GitHub/chen_q3/.venv/bin/activate
+Linux:
+source /mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.venv/bin/activate
+
+macOS:
+source /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/.venv/bin/activate
 aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
 ```
 
@@ -314,7 +397,7 @@ Files created:
 
 ## LaTeX Source Files (for Proshka)
 
-**Base path:** `/media/chirurgie/hdd01/Soft/GitHub/chen_q3/full/sections/`
+**Base path:** `full/sections/` (relative to repo root)
 
 | Module | File | Description |
 |--------|------|-------------|
@@ -344,27 +427,31 @@ Files created:
 
 ## GIT COMMIT PROTOCOL
 
-- **COMMIT FORMAT:** `[AI-name] Clear message` (в root) или `[SandboxName][AI-name] Message` (в sandbox)
-  
-  | AI Tool | Tag |
-  |---------|-----|
-  | Claude Code | `AI-cc` |
-  | OpenAI Codex | `AI-codex` |
-  | Cursor | `AI-cursor` |
-  | Other | `AI-agent` |
+- **BEFORE COMMIT:** check OS and branch:
+  ```bash
+  uname -s
+  git branch --show-current
+  ```
+
+- **COMMIT FORMAT (mandatory):**
+  - Linux: `[Linux][<branch>] Message`
+  - macOS: `[MacOS][<branch>] Message`
 
 - **Examples:**
   ```bash
-  # Root repo:
-  git commit -m "[AI-cc] Close A1_density axiom (7->6)"
-  
-  # From sandbox:
-  git commit -m "[Linux][AI-cc] Fix HeatError lemma"
+  git commit -m "[Linux][projekt_2A] Close A1_density axiom (7->6)"
+  git commit -m "[MacOS][projekt_2A] Fix HeatError lemma"
   ```
 
 - **ALWAYS** include axiom count change in message if relevant: `(7->6 axioms)`
 - **ALWAYS** pull with rebase after committing: `git pull --rebase`
 - **ALWAYS** push after pulling: `git push`
+
+**OS tag rule (this repo):**
+- On Linux, use **`[Linux]`** as the leading tag.
+- On macOS, use **`[MacOS]`**.
+- The second tag **must** be the git branch name.
+- Do **not** use sandbox names (e.g. `[projekt_2]`) as tags.
 
 ---
 

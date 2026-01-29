@@ -82,7 +82,9 @@ Answer these before committing:
 ## Commit Message Template
 
 ```
-[Category] Brief description
+[OS][Branch][Category] Brief description
+
+# Example: [Linux][projekt_2A-compact-support][Docs] Update workflow notes
 
 Changes:
 - List specific changes
@@ -101,6 +103,10 @@ Philosophy Check: ✓
 - `[Theorem]` - Axiom converted to theorem
 - `[Docs]` - Documentation only
 - `[Refactor]` - Code reorganization, no logic change
+
+**OS/Branch check (mandatory):**
+- OS: `uname -s` → Linux/Darwin
+- Branch: `git rev-parse --abbrev-ref HEAD`
 
 ---
 

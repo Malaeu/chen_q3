@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-01-27",
+  "checks": [],
+  "notes": "Each check targets a node id or file path. Use numeric_sanity_check.py to produce a report."
+}
