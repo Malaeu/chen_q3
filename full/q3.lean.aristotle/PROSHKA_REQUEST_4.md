@@ -35,15 +35,15 @@
 **Главный индекс знаний:** `ACTIVE/KNOWLEDGE_BASE.md`
 
 **Спецификации и мэппинг:**
-- `ACTIVE/SPECS_INDEX.md`
-- `ACTIVE/Q3_BLOCK_MAP.md`
-- `ACTIVE/paper_lean_mapping.md`
-- `ACTIVE/q3_structure_mapping.md`
+- `ACTIVE/refs/SPECS_INDEX.md`
+- `ACTIVE/refs/Q3_BLOCK_MAP.md`
+- `ACTIVE/refs/paper_lean_mapping.md`
+- `ACTIVE/refs/q3_structure_mapping.md`
 
 **Проектные правила/контракт:**
 - `ACTIVE/chain_status.md`
 - `ACTIVE/orchestrator.md`
-- `ACTIVE/PROBLEM_SOLVER_PROMPT_RU.md`
+- `ACTIVE/pipeline/PROBLEM_SOLVER_PROMPT_RU.md`
 
 **Внимание (красные флаги):**
 - **НЕ** смешивать `t_sym` и `t_rkhs`.

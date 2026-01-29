@@ -15,7 +15,7 @@
 
 ## Legacy / optional
 
-- `ACTIVE/proshka_memory_pack.md` is a symlink to `ACTIVE/KNOWLEDGE_BASE.md`.
+- `ACTIVE/aristotle/proshka_memory_pack.md` is a symlink to `ACTIVE/KNOWLEDGE_BASE.md`.
 - Older requests (e.g., `PROSHKA_REQUEST_3.md`) are **archive only**.
 
 ## Rule of thumb

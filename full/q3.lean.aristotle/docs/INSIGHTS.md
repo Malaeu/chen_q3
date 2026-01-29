@@ -40,6 +40,14 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Audit (2026-01-29) — PDF vs Lean mainline divergence (in progress)
+
+- RH_Q3.pdf формулирует **классический Weil‑конус**; mainline Lean использует
+  **`Weil_cone_tau0` (τ=0 + фиксированный B‑range)**.
+- PDF использует two‑scale (`t_sym`, `t_rkhs`); mainline использует single‑scale `t_critical`.
+- Полная секция‑к‑Lean карта + сводка расхождений:  
+  `docs/struktura_q3_with_mapping_toLEAN.md` (раздел “2026-01-29 Audit — PDF vs Lean Mainline”).
+
 ## Synthesis (2026-01-28, in progress) — heat-weight integrability requires global a_star growth
 
 - Added Tier‑1 axiom `a_star_linear_growth` (global linear growth bound) to unblock
@@ -75,6 +83,17 @@
   combine tail bound with `a_star_bdd_on_compact` on `Icc (-R) R` and fix constants.
 - Connes/Toeplitz remarks are good context but **not needed** for heat integrability;
   keep as background only.
+
+## Synthesis (2026-01-29, in progress) — BMO Bellman check-mode + regularity gate
+
+- Added a lightweight `--check` mode to `bellman_bmo.py` to verify the closed‑form
+  answer numerically (balance residual + value check). Heavy concavity/optimizer
+  checks stay as future work.
+- Methodology takeaway for Q3: **regularity‑gate**. The Fejér×heat window has kinks
+  (|ξ| and cutoffs), so every step that assumes C² must be rejected unless
+  explicitly justified; stick to Lip/modulus control.
+- Future work capture: keep deeper BMO/Bellman formalization in `docs/INSIGHTS.md`
+  and only link it from `ACTIVE/insights.md` (short).
 
 ## Synthesis (2026-01-26, in progress) — τ-shift AtomCone fails; `prime_term_le_at_t_critical_axiom` is false-for-now
 
@@ -232,8 +251,8 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 
 ## Synthesis (2026-01-26, in progress) — close PrimeCert B‑range axioms
 
-- Target axioms: `prime_b_grid_val_le_margin`, `prime_margin_Lipschitz_on_Brange`
-  in `Q3/Proofs/PrimeCert/Brange_2046.lean`; used by
+- Target axioms (current): `prime_b_grid_bounds_data`, `prime_heat_bounds_data`
+  in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`; used by
   `prime_cert_margin_on_Brange_axiom` → `Q3/Proofs/Q_nonneg_t_critical.lean`.
 - q3search/websearch commands are **missing** in this sandbox (both return “command not found”),
   so no semantic scan done yet.
@@ -246,6 +265,8 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
   certificate module + hashes in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`,
   evidence files pinned in `Q3/Proofs/PrimeCert/README.md`,
   CI hash check added in `scripts/check_axioms.sh` (uses `output/prime_cert_*_2026-01-26_*`).
+- Status update (2026-01-29): `prime_b_grid_val_le_margin` and
+  `prime_heat_bounds_cert` are now theorems (derived from `*_data` axioms).
 - Success check: `lake env lean Q3/Proofs/PrimeCert/Brange_2046.lean`,
   then `./scripts/check_axioms.sh` (only `Weil_criterion_tau0` + PrimeCert remain).
 - Status: **Option B implemented**; Option A (analytic closure) remains long‑term.
@@ -254,7 +275,7 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 
 ## Synthesis (2026-01-26, in progress) — analytic Lipschitz closure for PrimeCert margin(B)
 
-- Target axioms: `prime_b_grid_val_le_margin`, `prime_margin_Lipschitz_on_Brange`
+- Target axioms: `prime_b_grid_bounds_data`, `prime_heat_bounds_data`
   (now in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`); goal is to **replace** them by proofs.
 - q3search/websearch are **missing** in this sandbox (both “command not found”); no semantic scan yet.
 - 2026-01-26 check: `q3search`/`websearch` still unavailable (127 / “Befehl nicht gefunden”).
@@ -530,7 +551,7 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 ## PrimeCert B-range Lipschitz (heat-weighted scaffold, 2026-01-28)
 
 **Why:** current main-chain axioms are
-`PrimeCert.prime_b_grid_val_le_margin` and `PrimeCert.prime_margin_Lipschitz_on_Brange`.
+`PrimeCert.prime_b_grid_bounds_data` and `PrimeCert.prime_heat_bounds_data`.
 The analytic bound in `Brange_Lipschitz_Analytic.lean` uses `W_sum_local` and is far too large;
 we need a *heat-weighted* Lipschitz constant to match the certificate scale (~0.3).
 

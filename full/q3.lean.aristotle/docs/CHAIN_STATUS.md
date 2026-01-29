@@ -2,7 +2,8 @@
 
 **Purpose:** Canonical, minimal chain summary for the current mainline.  
 **Current status:** Use `Q3/CheckAxioms.lean` as the authoritative dependency list.  
-**Next action:** Close the two main-chain Q3 axioms listed in `ACTIVE/MAIN_CHAIN_DEPS.md`.  
+**Next action:** Close the two main-chain Q3 data axioms listed in `ACTIVE/MAIN_CHAIN_DEPS.md`.  
+**Decision (2026-01-29):** Option A selected — keep cert‑data axioms (hash‑checked) and move on.
 **Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `Q3/CheckAxioms.lean` · `ACTIVE/orchestrator.md`
 
 ---
@@ -40,8 +41,8 @@ It is intended to stay aligned with the code after each refactor.
 
 These are the only Q3-specific axioms blocking the **current** main chain:
 
-- `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin`
-- `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange`
+- `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_data`
 
 Authoritative check:
 ```bash
@@ -66,7 +67,7 @@ The older SingleScale axioms list is **legacy** and no longer load-bearing in
 - `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
 - `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
 
-See `ACTIVE/legacy_two_scale_index.md` for legacy context.
+See `ACTIVE/refs/legacy_two_scale_index.md` for legacy context.
 
 ## Related entry points
 

@@ -8,10 +8,35 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
 Q3_DIR = ROOT / "Q3"
 ACTIVE_DIR = ROOT / "ACTIVE"
-RISK_MODEL_JSON = ACTIVE_DIR / "RISK_MODEL.json"
+RISK_MODEL_JSON = ACTIVE_DIR / "pipeline" / "RISK_MODEL.json"
 
 IMPORT_RE = re.compile(r"^\s*import\s+(?P<mods>.+)$")
 SORRY_RE = re.compile(r"\bsorry\b")
+
+
+def strip_comments(lines: list[str]) -> list[str]:
+    """Remove line/block comments while preserving line structure."""
+    out_lines: list[str] = []
+    depth = 0
+    for line in lines:
+        i = 0
+        out = []
+        while i < len(line):
+            if depth == 0 and line[i : i + 2] == "--":
+                break
+            if line[i : i + 2] == "/-":
+                depth += 1
+                i += 2
+                continue
+            if depth > 0 and line[i : i + 2] == "-/":
+                depth -= 1
+                i += 2
+                continue
+            if depth == 0:
+                out.append(line[i])
+            i += 1
+        out_lines.append("".join(out))
+    return out_lines
 
 
 def now_utc() -> str:
@@ -59,7 +84,8 @@ def scan_sorries(path: Path) -> list[int]:
     except Exception:
         return []
     lines = []
-    for i, line in enumerate(text.splitlines(), start=1):
+    cleaned = strip_comments(text.splitlines())
+    for i, line in enumerate(cleaned, start=1):
         if SORRY_RE.search(line):
             lines.append(i)
     return lines
@@ -78,14 +104,14 @@ def should_skip(path: Path, exclude_paths: list[tuple[str, ...]]) -> bool:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default=str(ACTIVE_DIR / "TAINT_GRAPH.md"))
-    ap.add_argument("--json", default=str(ACTIVE_DIR / "TAINT_GRAPH.json"))
-    ap.add_argument("--numeric", default=str(ACTIVE_DIR / "NUMERIC_CHECKS_REPORT.json"))
+    ap.add_argument("--out", default=str(ACTIVE_DIR / "graphs" / "TAINT_GRAPH.md"))
+    ap.add_argument("--json", default=str(ACTIVE_DIR / "graphs" / "TAINT_GRAPH.json"))
+    ap.add_argument("--numeric", default=str(ACTIVE_DIR / "graphs" / "NUMERIC_CHECKS_REPORT.json"))
     ap.add_argument("--risk", default=str(RISK_MODEL_JSON))
     ap.add_argument(
         "--exclude",
         action="append",
-        default=["Q3/Clean"],
+        default=["Q3/Clean", "Q3/Archive"],
         help="exclude subpaths (relative to repo root), can repeat",
     )
     args = ap.parse_args()

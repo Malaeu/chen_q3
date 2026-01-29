@@ -1,1 +1,0 @@
-../docs/AXIOM_CLOSURE_ANALYSIS.md

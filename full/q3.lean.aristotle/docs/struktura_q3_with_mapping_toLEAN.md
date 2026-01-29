@@ -9,6 +9,42 @@ Formal proof of the Riemann Hypothesis (RH) via Weil criterion:
 RH ⟺ Q(Φ) ≥ 0 for all Φ ∈ Weil_cone
 ```
 
+## 2026-01-29 Audit — PDF vs Lean Mainline (важно)
+
+**Ключевая развилка:** RH_Q3.pdf формулирует **классический Weil-конус** `W` и
+классический Weil‑критерий. Текущая Lean‑mainline использует **узкий τ=0 конус**
+`Weil_cone_tau0` с фиксированным диапазоном `B ∈ [B_min, B_max]`.
+
+**Это означает:** текущая Lean‑цепочка формализует **не точь‑в‑точь PDF**, а
+узкую “τ=0 / B‑range” версию, выбранную из‑за численных сертификатов.
+
+### Section‑level mapping (RH_Q3.tex → Lean)
+
+| PDF section (file) | Core claim in PDF | Lean module(s) | Status vs PDF |
+|---|---|---|---|
+| abstract.tex, introduction.tex, scope_notation.tex, Notation/* | обзор/контекст/нотация | — | doc‑only |
+| T0.tex, T0_AD_fix.tex | нормализация Guinand–Weil, Q = arch − prime | `Q3/Basic/Defs.lean`, `Q3/Main.lean` | **OK**, но `explicit_formula` остаётся AX |
+| A1prime.tex | плотность Fejér×heat в `W_K` | `Q3/Proofs/A1_density.lean` | **OK (theorem)** |
+| A2.tex | Lipschitz на компактах | `Q3/Proofs/Q_Lipschitz*.lean` | **OK (theorem)** |
+| A3/* | Toeplitz‑bridge, floor `c_*`, два масштаба | `Q3/Proofs/A3_Floor_Main.lean`, `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean` | **DIVERGED:** single‑scale `t_critical`, τ=0, B‑range |
+| RKHS/* | prime cap / RKHS operator | `Q3/Proofs/RKHS_cap_rayleigh.lean` | **PARTIAL:** Rayleigh cap OK, но операторный мост PDF‑версии разошёлся |
+| D3/* | Prime cancellation (D3) | — | **OFF‑CHAIN / archived** |
+| Weil_linkage.tex, Weil_pack.tex, Main_closure.tex | Weil criterion ⇒ RH | `Q3/Main.lean` | **DIVERGED:** uses `Weil_criterion_tau0` |
+
+### Mainline divergence summary
+
+1) **Конус тестов:** PDF использует полный `Weil_cone`; Lean mainline использует
+   `Weil_cone_tau0` (τ=0 + B‑range).
+2) **Масштабы:** PDF использует two‑scale (`t_sym`, `t_rkhs`), Lean mainline —
+   single‑scale `t_critical`.
+3) **Prime bounds:** Lean mainline опирается на **сертификаты** PrimeCert
+   (`prime_b_grid_bounds_data`, `prime_heat_bounds_data`), чего нет в PDF.
+4) **D3:** PDF содержит D3‑модуль, Lean mainline его не использует.
+
+**Итог:** текущая Lean‑цепочка — это **суженная “τ=0 / B‑range / t_critical” версия**,
+а не буквальная формализация RH_Q3.pdf. Для полного соответствия PDF нужен
+возврат к классическому Weil‑конусу и снятие ограничения по B.
+
 ## Paper Hypotheses (H1)-(H5)
 
 From the paper: "When we write under (T0) + (A1′) + (A2) + (A3) + (RKHS) we mean precisely the data enumerated above."

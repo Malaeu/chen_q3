@@ -2,8 +2,8 @@
 """Generate a lightweight Aristotle queue from open axioms + sorries.
 
 This script DOES NOT submit jobs. It only prepares:
-  - ACTIVE/ARISTOTLE_QUEUE.json + .md
-  - per-task prompt + brief files in ACTIVE/aristotle_queue/
+  - ACTIVE/aristotle/ARISTOTLE_QUEUE.json + .md
+  - per-task prompt + brief files in ACTIVE/aristotle/queue/
 
 Usage:
   python full/q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh
@@ -24,10 +24,10 @@ from typing import Iterable
 ROOT = Path(__file__).resolve().parents[1]  # full/q3.lean.aristotle
 REPO_ROOT = ROOT.parents[1]  # repo root
 ACTIVE_DIR = ROOT / "ACTIVE"
-QUEUE_DIR = ACTIVE_DIR / "aristotle_queue"
-QUEUE_JSON = ACTIVE_DIR / "ARISTOTLE_QUEUE.json"
-QUEUE_MD = ACTIVE_DIR / "ARISTOTLE_QUEUE.md"
-DEPS_JSON = ACTIVE_DIR / "DEPS_TREE_MAIN.json"
+QUEUE_DIR = ACTIVE_DIR / "aristotle" / "queue"
+QUEUE_JSON = ACTIVE_DIR / "aristotle" / "ARISTOTLE_QUEUE.json"
+QUEUE_MD = ACTIVE_DIR / "aristotle" / "ARISTOTLE_QUEUE.md"
+DEPS_JSON = ACTIVE_DIR / "graphs" / "DEPS_TREE_MAIN.json"
 
 DEFAULT_IGNORE_AXIOMS = {
     "propext",
@@ -37,9 +37,7 @@ DEFAULT_IGNORE_AXIOMS = {
 }
 
 SORRY_RE = re.compile(r"\bsorry\b")
-DECL_RE = re.compile(
-    r"^\s*(theorem|lemma|def|example|instance|abbrev)\s+([A-Za-z0-9_'.]+)"
-)
+DECL_RE = re.compile(r"^\s*(theorem|lemma|def|example|instance|abbrev)\s+([A-Za-z0-9_'.]+)")
 
 
 @dataclass
@@ -150,9 +148,7 @@ def build_queue(scan_paths: list[Path], ignore_axioms: set[str]) -> dict:
                 "file": str(rel),
                 "priority": 2 if "Q3/Proofs" in rel.as_posix() else 3,
                 "mode": "fill_sorries",
-                "sorries": [
-                    {"line": s.line, "decl": s.decl} for s in sorries
-                ],
+                "sorries": [{"line": s.line, "decl": s.decl} for s in sorries],
             }
         )
 
@@ -172,7 +168,7 @@ def write_queue(queue: dict) -> None:
     md.append(f"# Aristotle Queue (auto) - {queue['generated_at']}")
     md.append("")
     md.append("**Purpose:** Auto-generated queue for Aristotle runs (no submission).")
-    md.append("**Source:** `DEPS_TREE_MAIN.json` + sorry scan of Q3/ trees.")
+    md.append("**Source:** `ACTIVE/graphs/DEPS_TREE_MAIN.json` + sorry scan of Q3/ trees.")
     md.append("")
 
     for task in queue["tasks"]:
@@ -187,13 +183,7 @@ def write_queue(queue: dict) -> None:
         if task.get("sorries"):
             md.append(f"- Sorries: {len(task['sorries'])}")
             md.append(
-                "  - "
-                + ", ".join(
-                    [
-                        f"{s.get('decl','?')}@L{s['line']}"
-                        for s in task["sorries"]
-                    ]
-                )
+                "  - " + ", ".join([f"{s.get('decl', '?')}@L{s['line']}" for s in task["sorries"]])
             )
         md.append("")
 
@@ -225,9 +215,7 @@ If the statement is false or under-specified:
 
     # sorry-file task
     file_path = task.get("file", "<file>")
-    decls = ", ".join(
-        [s.get("decl") or "?" for s in task.get("sorries", [])]
-    )
+    decls = ", ".join([s.get("decl") or "?" for s in task.get("sorries", [])])
     return f"""Task
 Fill the remaining `sorry` in file `{file_path}`.
 
@@ -275,12 +263,7 @@ Replace axiom with theorem; no new axioms, no new imports.
 - Avoid heavy `aesop` unless non-terminal
 """
 
-    decls = "\n".join(
-        [
-            f"- {s.get('decl','?')} @ L{s['line']}"
-            for s in task.get("sorries", [])
-        ]
-    )
+    decls = "\n".join([f"- {s.get('decl', '?')} @ L{s['line']}" for s in task.get("sorries", [])])
     return f"""# NODE BRIEF - {file_path}
 
 ## Location
@@ -339,7 +322,7 @@ def main() -> int:
 
     if args.print_next:
         for task in queue["tasks"][: args.print_next]:
-            print(f"{task['id']} :: {task['type']} :: {task.get('file','')}")
+            print(f"{task['id']} :: {task['type']} :: {task.get('file', '')}")
     else:
         print(f"Wrote {QUEUE_JSON} and {QUEUE_MD}")
     return 0

@@ -6,9 +6,9 @@
 >
 > Канонические ссылки:
 > - `ACTIVE/chain_status.md`
-> - `ACTIVE/SPECS_INDEX.md`
-> - `ACTIVE/Q3_BLOCK_MAP.md`
-> - `ACTIVE/ERS_SUMMARY.md` (консолидированный ERS‑обзор)
+> - `ACTIVE/refs/SPECS_INDEX.md`
+> - `ACTIVE/refs/Q3_BLOCK_MAP.md`
+> - `ACTIVE/refs/ERS_SUMMARY.md` (консолидированный ERS‑обзор)
 
 ## Конфликты с mainline (single‑scale)
 

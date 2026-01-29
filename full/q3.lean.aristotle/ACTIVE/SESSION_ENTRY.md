@@ -6,7 +6,7 @@ Read order:
 1) full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
 2) full/q3.lean.aristotle/ACTIVE/requests/INDEX.md
 3) full/q3.lean.aristotle/ACTIVE/requests/proshka_floor_cert_tcritical_2026_01_25/node.md
-4) full/q3.lean.aristotle/ACTIVE/ARISTOTLE_WORKFLOW.md
+4) full/q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md
 
 Current mainline decisions:
 - Single-scale only: t_critical = 3/20, tau = 0, BaseAtomCone (B-range) only.
@@ -54,3 +54,17 @@ Next steps:
 1) Keep τ=0 mainline and close PrimeCert axioms formally.
 2) Keep documentation + `scripts/check_axioms.sh` in sync with the new axiom list.
 3) ✅ DONE: eliminated `native_decide` from PrimeCert tables (no `Lean.trustCompiler` / `Lean.ofReduceBool` in the chain).
+
+## Branching discipline (2026-01-29)
+
+- We keep `projekt_2A` as the stable baseline.
+- Experimental work happens on `projekt_2A-compact-support` only.
+- Goal of this branch: push the PrimeCert closure to the end and verify the math.
+- Merge back into `projekt_2A` **only if** the chain checks out; otherwise delete the branch.
+
+Status (compact-support branch):
+- Localized heat Lipschitz to `Icc (-B_max, B_max)` (no global Integrable/Summable).
+- Added cert axiom `prime_heat_bounds_cert` in
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`.
+- Replaced `prime_margin_Lipschitz_on_Brange` axiom by theorem in
+  `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`.

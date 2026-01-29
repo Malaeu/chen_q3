@@ -1,1 +1,0 @@
-../ARISTOTLE.md

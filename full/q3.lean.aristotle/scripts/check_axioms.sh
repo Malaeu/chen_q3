@@ -62,23 +62,26 @@ echo ""
 echo "═══ Step 0.7: PrimeCert evidence check ═══"
 PRIME_CERT_TCRIT="output/prime_cert_tcritical_2026-01-26_0046.txt"
 PRIME_CERT_BRANGE="output/prime_cert_brange_tcritical_2026-01-26_0050.txt"
+PRIME_CERT_HEAT="output/prime_cert_brange_heat_L_2026-01-28_0115.txt"
 PRIME_CERT_TCRIT_HASH="3af1204fc8f5ddf322e1110b9932bb44a5349e0773d6d1b3cdf5441ec8ef3b5d"
 PRIME_CERT_BRANGE_HASH="a9d5303b2da81886cf64bfc5ee9b5b1ab85ce0b45067a8cd9b499d051a294230"
+PRIME_CERT_HEAT_HASH="da6a6ac1221f93d376aafecd189169607b40b5d394868e893124445089a3e0a5"
 
-if [[ ! -f "$PRIME_CERT_TCRIT" || ! -f "$PRIME_CERT_BRANGE" ]]; then
+if [[ ! -f "$PRIME_CERT_TCRIT" || ! -f "$PRIME_CERT_BRANGE" || ! -f "$PRIME_CERT_HEAT" ]]; then
     echo "✗ PrimeCert evidence file missing"
     exit 1
 fi
 
 HASH_TCRIT="$(hash_file "$PRIME_CERT_TCRIT" || true)"
 HASH_BRANGE="$(hash_file "$PRIME_CERT_BRANGE" || true)"
+HASH_HEAT="$(hash_file "$PRIME_CERT_HEAT" || true)"
 
-if [[ -z "$HASH_TCRIT" || -z "$HASH_BRANGE" ]]; then
+if [[ -z "$HASH_TCRIT" || -z "$HASH_BRANGE" || -z "$HASH_HEAT" ]]; then
     echo "✗ sha256 tool not available (sha256sum/shasum)"
     exit 1
 fi
 
-if [[ "$HASH_TCRIT" != "$PRIME_CERT_TCRIT_HASH" || "$HASH_BRANGE" != "$PRIME_CERT_BRANGE_HASH" ]]; then
+if [[ "$HASH_TCRIT" != "$PRIME_CERT_TCRIT_HASH" || "$HASH_BRANGE" != "$PRIME_CERT_BRANGE_HASH" || "$HASH_HEAT" != "$PRIME_CERT_HEAT_HASH" ]]; then
     echo "✗ PrimeCert evidence hash mismatch"
     exit 1
 fi
@@ -123,6 +126,34 @@ else
 fi
 echo ""
 
+# Step 2.6: Sorry frontier (WARN only)
+echo "═══ Step 2.6: Sorry frontier (WARN) ═══"
+if python3 ../scripts/build_sorry_frontier.py >/dev/null 2>&1; then
+    SORRY_JSON="ACTIVE/graphs/SORRY_FRONTIER.json"
+    if [[ -f "$SORRY_JSON" ]]; then
+        SORRY_TOTAL=$(python3 - <<'PY'
+import json, pathlib
+p = pathlib.Path("ACTIVE/graphs/SORRY_FRONTIER.json")
+try:
+    data = json.loads(p.read_text(encoding="utf-8"))
+    print(int(data.get("total_sorries", 0)))
+except Exception:
+    print(0)
+PY
+)
+        if [[ "$SORRY_TOTAL" -gt 0 ]]; then
+            echo "⚠️  WARNING: $SORRY_TOTAL sorries found in Q3/ (see ACTIVE/graphs/SORRY_FRONTIER.md)"
+        else
+            echo "✓ No sorries found in Q3/"
+        fi
+    else
+        echo "⚠️  WARNING: Missing $SORRY_JSON (sorry scan skipped)"
+    fi
+else
+    echo "⚠️  WARNING: build_sorry_frontier.py failed (sorry scan skipped)"
+fi
+echo ""
+
 # Step 3: Count axioms
 echo "═══ Step 3: Axiom Count ═══"
 
@@ -135,7 +166,7 @@ TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
 EXPECTED_STANDARD=3  # propext, Classical.choice, Quot.sound (no native_decide/compiler trust in chain)
-EXPECTED_PROJECT=3   # Weil_criterion_tau0, PrimeCert grid axioms (2)
+EXPECTED_PROJECT=3   # Weil_criterion_tau0, PrimeCert cert axioms (2)
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
@@ -165,8 +196,8 @@ echo "═══ Step 5: Philosophy Verification ═══"
 # Expected axioms in proof chain (update when axioms are closed/added)
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion_tau0"
-    "Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin"
-    "Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange"
+    "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data"
+    "Q3.Proofs.PrimeCert.prime_heat_bounds_data"
 )
 
 UNKNOWN_AXIOMS=""

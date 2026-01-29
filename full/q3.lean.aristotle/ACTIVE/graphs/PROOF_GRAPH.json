@@ -1,0 +1,223 @@
+{
+  "generated_at": "2026-01-29 13:22 UTC",
+  "root": "Q3.Main.RH_of_Weil_and_Q3",
+  "nodes": [
+    {
+      "id": "propext",
+      "status": "classical",
+      "file": null,
+      "axioms_in_file": [],
+      "sorries_in_file": [],
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": null,
+      "risk_status": null,
+      "risk_exceeds": null,
+      "is_doomed": null
+    },
+    {
+      "id": "Classical.choice",
+      "status": "classical",
+      "file": null,
+      "axioms_in_file": [],
+      "sorries_in_file": [],
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": null,
+      "risk_status": null,
+      "risk_exceeds": null,
+      "is_doomed": null
+    },
+    {
+      "id": "Q3.Weil_criterion_tau0",
+      "status": "axiom",
+      "file": "Q3/Axioms.lean",
+      "axioms_in_file": [
+        [
+          51,
+          "Weil_criterion"
+        ],
+        [
+          60,
+          "explicit_formula"
+        ],
+        [
+          179,
+          "a_star_linear_growth"
+        ],
+        [
+          194,
+          "w_Q_heat_weight_summable"
+        ],
+        [
+          212,
+          "Szego_Bottcher_eigenvalue_bound"
+        ],
+        [
+          218,
+          "Szego_Bottcher_convergence"
+        ],
+        [
+          244,
+          "Szego_Rayleigh_lower_bound"
+        ],
+        [
+          256,
+          "Schur_test"
+        ],
+        [
+          274,
+          "c_arch_pos"
+        ],
+        [
+          311,
+          "c_star_le_c_arch"
+        ],
+        [
+          322,
+          "eigenvalue_le_norm"
+        ],
+        [
+          439,
+          "Weil_criterion_tau0"
+        ],
+        [
+          459,
+          "A1_density_WK_axiom"
+        ],
+        [
+          472,
+          "A1_density_axiom"
+        ],
+        [
+          493,
+          "W_sum_finite_axiom"
+        ],
+        [
+          503,
+          "Q_Lipschitz_on_W_K"
+        ],
+        [
+          515,
+          "RKHS_contraction_axiom"
+        ],
+        [
+          531,
+          "T_P_row_sum_bound_axiom"
+        ],
+        [
+          545,
+          "S_K_small_axiom"
+        ],
+        [
+          556,
+          "node_spacing_axiom"
+        ],
+        [
+          568,
+          "off_diag_exp_sum_axiom"
+        ],
+        [
+          583,
+          "A3_bridge_axiom"
+        ],
+        [
+          601,
+          "A3_bridge_uniform"
+        ],
+        [
+          614,
+          "A3_bridge_rayleigh_axiom"
+        ],
+        [
+          685,
+          "Q_nonneg_on_atoms_of_A3_RKHS_axiom"
+        ],
+        [
+          697,
+          "Q_nonneg_on_atoms_uniform"
+        ]
+      ],
+      "sorries_in_file": [],
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": 0.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Quot.sound",
+      "status": "classical",
+      "file": null,
+      "axioms_in_file": [],
+      "sorries_in_file": [],
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": null,
+      "risk_status": null,
+      "risk_exceeds": null,
+      "is_doomed": null
+    },
+    {
+      "id": "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data",
+      "status": "axiom",
+      "file": "Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
+      "axioms_in_file": [
+        [
+          32,
+          "prime_b_grid_bounds_data"
+        ]
+      ],
+      "sorries_in_file": [],
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": 0.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3.Proofs.PrimeCert.prime_heat_bounds_data",
+      "status": "axiom",
+      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+      "axioms_in_file": [
+        [
+          78,
+          "prime_heat_bounds_data"
+        ]
+      ],
+      "sorries_in_file": [],
+      "alternatives": [],
+      "direct_status": "VERIFIED",
+      "propagation_status": "VERIFIED",
+      "integrity_status": "VERIFIED",
+      "taint_source": [],
+      "numeric_check": "UNKNOWN",
+      "risk_score": 0.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
+    }
+  ]
+}

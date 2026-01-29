@@ -91,6 +91,11 @@ Before committing, check OS + branch. Format:
 
 No sandbox tags; we don't work on Windows.
 
+OS check (mandatory): `uname -s` → "Linux" or "Darwin".
+Branch check: `git rev-parse --abbrev-ref HEAD`.
+If you also use the workflow categories, append them after the OS+branch prefix:
+`[Linux][<branch>][Docs] ...`
+
 ---
 
 ## 🔍 Problem-Solving Workflow (Embeddings)
@@ -139,6 +144,14 @@ No sandbox tags; we don't work on Windows.
 Смысл: мозг держит только текущую ветку; все развилки и причины — в INSIGHTS.
 
 Шаблон (копировать как новый insight): `full/q3.lean.aristotle/docs/insights/decision_tree_template.md`
+
+---
+
+## Branching Safety (stable vs experimental)
+
+- Keep `projekt_2A` clean and stable.
+- Do experimental/probing math in a feature branch (e.g. `projekt_2A-compact-support`).
+- Merge back only after the math is validated and the chain compiles; otherwise cherry-pick the good pieces or drop the branch.
 
 ---
 
@@ -233,8 +246,8 @@ repo:{username/repo_name} import
 ```
 Standard (3): propext, Classical.choice, Quot.sound
 Project (3):  Weil_criterion_tau0,
-              PrimeCert.prime_b_grid_val_le_margin,
-              PrimeCert.prime_margin_Lipschitz_on_Brange
+              PrimeCert.prime_b_grid_bounds_data,
+              PrimeCert.prime_heat_bounds_data
 ```
 
 **Closed axioms:**
@@ -306,7 +319,7 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 **Документация (читать в этом порядке):**
 | Doc | Path | Content |
 |-----|------|---------|
-| **Workflow (canonical)** | `full/q3.lean.aristotle/ACTIVE/ARISTOTLE_WORKFLOW.md` | Единственный актуальный гайд |
+| **Workflow (canonical)** | `full/q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md` | Единственный актуальный гайд |
 | **Guidelines** | `aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md` | **Prompt policy!** |
 | Skill | `~/.codex/skills/aristotle/SKILL.md` | API, workflows, limits |
 | Project IDs | `aristotle_input/project_ids.txt` | Все UUID |

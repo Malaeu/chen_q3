@@ -5,7 +5,7 @@ Scope: Q3 Lean codebase - **ONLY code in proof chain counted**
 
 Notes:
 - Counts are from `./scripts/contribution_stats.sh`
-- Axiom status updated 2026-01-26; line counts last generated 2026-01-24
+- Axiom status updated 2026-01-29; line counts last generated 2026-01-24
 - Aristotle contribution = files actually USED in proof chain (not experiments)
 - Line counts include comments and whitespace
 
@@ -102,18 +102,18 @@ Database: `aristotle_db/aristotle_proofs.db`
 | a_star_continuous | ✅ CLOSED |
 | a_star_bdd_on_compact | ✅ CLOSED |
 | a_star_even | ✅ CLOSED |
-| a_star_linear_growth | ⚪ EXTERNAL |
-| w_Q_heat_weight_summable | ⚪ EXTERNAL |
+| a_star_linear_growth | ⚪ OFF-CHAIN (not in main axiom list) |
+| w_Q_heat_weight_summable | ⚪ OFF-CHAIN (not in main axiom list) |
 | A1_density_WK | ✅ CLOSED |
 | Q_Lipschitz_on_W_K | ✅ CLOSED |
 | RKHS_contraction | ✅ CLOSED |
 | P_A_continuous | ✅ CLOSED |
 | Weil_criterion_tau0 | ⚪ EXTERNAL |
-| PrimeCert.prime_b_grid_val_le_margin | ❌ OPEN (cert) |
-| PrimeCert.prime_margin_Lipschitz_on_Brange | ❌ OPEN (cert) |
+| PrimeCert.prime_b_grid_bounds_data | ❌ OPEN (cert data) |
+| PrimeCert.prime_heat_bounds_data | ❌ OPEN (cert data) |
 
-**Current: 8 axioms (5 standard + 3 project)**
-**Remaining closable: 2 (PrimeCert certificates)**
+**Current: 6 axioms (3 standard + 3 project)**
+**Remaining closable: 2 (PrimeCert cert-data)**
 
 ---
 

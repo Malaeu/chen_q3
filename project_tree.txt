@@ -163,7 +163,7 @@ aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.
 - Axioms: 11 (Standard: 3, Level 1: 6, Level 2: 2)
 - Lean files: ~30 в Q3/
 - LaTeX modules: ~20 в sections/
-- Embedding index: qmd (см. `full/q3.lean.aristotle/ACTIVE/RESEARCH_ORACLE.md`)
+- Embedding index: qmd (см. `full/q3.lean.aristotle/ACTIVE/pipeline/RESEARCH_ORACLE.md`)
 - Aristotle sessions: см. project_ids.txt
 
 ═══════════════════════════════════════════════════════════════

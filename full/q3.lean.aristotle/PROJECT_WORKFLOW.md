@@ -4,12 +4,12 @@ Entry point: `PROJECT_ORCHESTRATOR.md` (status + next steps).
 This file documents the workflow only.
 
 This file is the main project workflow; Aristotle is only one tool in the loop.
-Canonical Aristotle rules live in `ACTIVE/ARISTOTLE_WORKFLOW.md`.
+Canonical Aristotle rules live in `ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`.
 
 ## Aristotle Integration: Principles
 
 Aristotle берёт **informal математику** (markdown с LaTeX) и генерирует **Lean 4 код**.
-Полный гайд и актуальные правила: `ACTIVE/ARISTOTLE_WORKFLOW.md` (single source).
+Полный гайд и актуальные правила: `ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md` (single source).
 
 **Ключевое правило:** НЕ ссылаться на номера лемм/теорем из LaTeX файлов!
 Aristotle не знает про `lem:uniform-arch-floor` или `Theorem 8.17'`.
@@ -69,8 +69,8 @@ INPUT = ROOT / "Q3/Proofs/QSpec.lean"
 
 deps = gather_file_imports(INPUT, project_root=ROOT)
 context = [str(p) for p in deps] + [
-    str(ROOT / "ACTIVE/aristotle_queue/<task>/PROMPT.txt"),
-    str(ROOT / "ACTIVE/aristotle_queue/<task>/NODE_BRIEF.md"),
+    str(ROOT / "ACTIVE/aristotle/queue/<task>/PROMPT.txt"),
+    str(ROOT / "ACTIVE/aristotle/queue/<task>/NODE_BRIEF.md"),
 ]
 
 async def main():
@@ -156,9 +156,9 @@ python3 full/q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-n
 ```
 
 Он создаёт:
-- `ACTIVE/ARISTOTLE_QUEUE.json` + `ACTIVE/ARISTOTLE_QUEUE.md`
-- `ACTIVE/aristotle_queue/<task>/PROMPT.txt`
-- `ACTIVE/aristotle_queue/<task>/NODE_BRIEF.md`
+- `ACTIVE/aristotle/ARISTOTLE_QUEUE.json` + `ACTIVE/aristotle/ARISTOTLE_QUEUE.md`
+- `ACTIVE/aristotle/queue/<task>/PROMPT.txt`
+- `ACTIVE/aristotle/queue/<task>/NODE_BRIEF.md`
 
 **Смысл:** агенты берут top‑задачи из очереди и отправляют в Aristotle
 через Python API (см. шаблон выше).

@@ -1,1 +1,0 @@
-../docs/Q3_PDF_STRUCTURE.md

@@ -21,6 +21,10 @@ Semantic search workflow (before tackling a new blocker):
 - Synthesize a 5-10 line plan with concrete file/lemma pointers.
 - Record the synthesis in `full/q3.lean.aristotle/docs/INSIGHTS.md` and commit (label as in progress).
 - Commit message format: check OS + branch first, then use `[Linux][<branch>] Message` or `[MacOS][<branch>] Message` (no sandbox tags).
+  - OS check: `uname -s` → Linux/Darwin.
+  - Branch check: `git rev-parse --abbrev-ref HEAD`.
+  - Optional category suffix: `[Linux][<branch>][Docs] ...`
+  - Windows is not supported in this repo.
 - Implement; once resolved, update `docs/INSIGHTS.md` with the final result and any reusable lemma list.
 
 Coordination (decision transparency):
@@ -67,7 +71,7 @@ Aristotle guidelines (links):
 | ~/.codex/skills/aristotle/SKILL.md | Local Aristotle skill (CLI + workflow) |
 | /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md | Prompt policy for Q3 |
 | /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/aristotle_input/project_ids.txt | All project UUIDs |
-| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/ACTIVE/ARISTOTLE_WORKFLOW.md | Canonical workflow (single source) |
+| /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md | Canonical workflow (single source) |
 
 Project files (Q3):
 
