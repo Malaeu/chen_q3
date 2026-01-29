@@ -1,6 +1,8 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.PrimeCert.BrangeGrid_2046
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28
+import Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.ShiftedWindows
 
@@ -22,7 +24,7 @@ axiom prime_b_grid_val_le_margin :
         arch_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) -
           prime_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ)
 
-axiom prime_margin_Lipschitz_on_Brange :
+theorem prime_margin_Lipschitz_on_Brange :
     ∀ x y,
       x ∈ Set.Icc B_min prime_cert_B_max →
       y ∈ Set.Icc B_min prime_cert_B_max →
@@ -31,5 +33,20 @@ axiom prime_margin_Lipschitz_on_Brange :
        (arch_term (fun ξ => phi_shift y t_critical 0 ξ) -
         prime_term (fun ξ => phi_shift y t_critical 0 ξ))| ≤
         prime_cert_L_ub * |x - y|
+  := by
+  intro x y hx hy
+  have hcert := prime_heat_bounds_cert
+  have h_arch := hcert.h_arch
+  have h_prime := hcert.h_prime
+  have h_total := hcert.h_total
+  have h := Q3.Proofs.PrimeCert.margin_Lipschitz_heat_of_bounds
+    (B1:=x) (B2:=y) hx hy h_arch h_prime h_total
+  change |(arch_term (phi_shift_critical_tau0 x) -
+            prime_term (phi_shift_critical_tau0 x)) -
+          (arch_term (phi_shift_critical_tau0 y) -
+            prime_term (phi_shift_critical_tau0 y))| ≤
+        prime_cert_L_ub * |x - y|
+  simpa [Q3.Proofs.PrimeCert.margin_tau0, prime_cert_L_ub, prime_cert_L_total_heat_ub,
+    sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using h
 
 end Q3.Proofs.PrimeCert

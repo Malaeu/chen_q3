@@ -91,6 +91,11 @@ Before committing, check OS + branch. Format:
 
 No sandbox tags; we don't work on Windows.
 
+OS check (mandatory): `uname -s` → "Linux" or "Darwin".
+Branch check: `git rev-parse --abbrev-ref HEAD`.
+If you also use the workflow categories, append them after the OS+branch prefix:
+`[Linux][<branch>][Docs] ...`
+
 ---
 
 ## 🔍 Problem-Solving Workflow (Embeddings)
@@ -139,6 +144,14 @@ No sandbox tags; we don't work on Windows.
 Смысл: мозг держит только текущую ветку; все развилки и причины — в INSIGHTS.
 
 Шаблон (копировать как новый insight): `full/q3.lean.aristotle/docs/insights/decision_tree_template.md`
+
+---
+
+## Branching Safety (stable vs experimental)
+
+- Keep `projekt_2A` clean and stable.
+- Do experimental/probing math in a feature branch (e.g. `projekt_2A-compact-support`).
+- Merge back only after the math is validated and the chain compiles; otherwise cherry-pick the good pieces or drop the branch.
 
 ---
 
