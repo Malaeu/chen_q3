@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
 Q3_DIR = ROOT / "Q3"
 ACTIVE_DIR = ROOT / "ACTIVE"
-RISK_MODEL_JSON = ACTIVE_DIR / "RISK_MODEL.json"
+RISK_MODEL_JSON = ACTIVE_DIR / "pipeline" / "RISK_MODEL.json"
 
 IMPORT_RE = re.compile(r"^\s*import\s+(?P<mods>.+)$")
 SORRY_RE = re.compile(r"\bsorry\b")

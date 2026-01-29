@@ -126,6 +126,34 @@ else
 fi
 echo ""
 
+# Step 2.6: Sorry frontier (WARN only)
+echo "═══ Step 2.6: Sorry frontier (WARN) ═══"
+if python3 ../scripts/build_sorry_frontier.py >/dev/null 2>&1; then
+    SORRY_JSON="ACTIVE/graphs/SORRY_FRONTIER.json"
+    if [[ -f "$SORRY_JSON" ]]; then
+        SORRY_TOTAL=$(python3 - <<'PY'
+import json, pathlib
+p = pathlib.Path("ACTIVE/graphs/SORRY_FRONTIER.json")
+try:
+    data = json.loads(p.read_text(encoding="utf-8"))
+    print(int(data.get("total_sorries", 0)))
+except Exception:
+    print(0)
+PY
+)
+        if [[ "$SORRY_TOTAL" -gt 0 ]]; then
+            echo "⚠️  WARNING: $SORRY_TOTAL sorries found in Q3/ (see ACTIVE/graphs/SORRY_FRONTIER.md)"
+        else
+            echo "✓ No sorries found in Q3/"
+        fi
+    else
+        echo "⚠️  WARNING: Missing $SORRY_JSON (sorry scan skipped)"
+    fi
+else
+    echo "⚠️  WARNING: build_sorry_frontier.py failed (sorry scan skipped)"
+fi
+echo ""
+
 # Step 3: Count axioms
 echo "═══ Step 3: Axiom Count ═══"
 
