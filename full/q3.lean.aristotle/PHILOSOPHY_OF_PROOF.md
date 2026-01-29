@@ -65,8 +65,8 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ## Axiom Classification
 
-As of **2026-01-26**, `#print axioms Q3.Main.RH_of_Weil_and_Q3` reports **8 axioms** total:
-3 kernel/standard + 5 project.
+As of **2026-01-29**, `#print axioms Q3.Main.RH_of_Weil_and_Q3` reports **6 axioms** total:
+3 kernel/standard + 3 project.
 
 ### Level 0a: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
 - `propext` — propositional extensionality
@@ -94,7 +94,7 @@ These are well-known results. Citations:
 
 ### Level 2: One‑Scale Numeric Certificates @ `t_critical` (2) — TEMPORARY BRIDGE
 - `Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin` — table correctness at grid points, in `Q3/Proofs/PrimeCert/Brange_2046.lean`
-- `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` — Lipschitz certificate over B-range, in `Q3/Proofs/PrimeCert/Brange_2046.lean`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_cert` — arch/prime heat bounds over B‑range, in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
 
 These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt` and
 `output/prime_cert_brange_tcritical_2026-01-26_0050.txt`) and are expected to be replaced by a fully formal certificate proof.
@@ -132,7 +132,7 @@ Expected output:
   Quot.sound,                     -- Level 0a: Standard Lean
   Q3.Weil_criterion_tau0,          -- Level 1: Weil 1952 (τ=0 cone)
   Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin,       -- Level 2: one‑scale certificate
-  Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange  -- Level 2: one‑scale certificate
+  Q3.Proofs.PrimeCert.prime_heat_bounds_cert            -- Level 2: one‑scale certificate
 ]
 ```
 
