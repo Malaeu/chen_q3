@@ -109,11 +109,11 @@ Database: `aristotle_db/aristotle_proofs.db`
 | RKHS_contraction | ✅ CLOSED |
 | P_A_continuous | ✅ CLOSED |
 | Weil_criterion_tau0 | ⚪ EXTERNAL |
-| PrimeCert.prime_b_grid_val_le_margin | ❌ OPEN (cert) |
-| PrimeCert.prime_heat_bounds_cert | ❌ OPEN (cert) |
+| PrimeCert.prime_b_grid_bounds_data | ❌ OPEN (cert data) |
+| PrimeCert.prime_heat_bounds_data | ❌ OPEN (cert data) |
 
 **Current: 6 axioms (3 standard + 3 project)**
-**Remaining closable: 2 (PrimeCert certificates)**
+**Remaining closable: 2 (PrimeCert cert-data)**
 
 ---
 
