@@ -20,7 +20,8 @@ Goal: one clean workflow for Aristotle; all older Aristotle docs are archived.
 
 ## 1. Install / Run (official)
 
-Prereq: `uv` is required (we use uv globally; see `~/.claude/claude.md`).
+Prereq: install `uv` (Linux/macOS only; Windows is not used in this repo).
+We use uv globally; see `~/.claude/claude.md`.
 
 Preferred (no install, uses uvx):
 ```

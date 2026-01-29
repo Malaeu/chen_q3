@@ -56,6 +56,26 @@
 - Using this axiom to finish `prime_term_Lipschitz_heat` and
   `margin_Lipschitz_heat_of_bounds` in `Brange_Lipschitz_HeatProof.lean`.
 
+## Plan (future de-axiomization) — a_star growth + heat-weight summability
+
+- a_star growth: use digamma asymptotics (DLMF 5.11) to show
+  `|a_star ξ| <= C0 + C1 * log(1 + |ξ|)` on tails, and combine with
+  `a_star_bdd_on_compact` on `Icc (-R) R` to get a global bound.
+- heat-weight summability: use basic bound `vonMangoldt(n) <= log n` and
+  `xi_n = log n / (2*pi)` to show
+  `w_Q n * exp(-c * (log n)^2) * |log n|` is absolutely summable.
+- glue: `log(1+|ξ|) <= |ξ|` then Gaussian integrability of
+  `(1 + |ξ|) * exp(-c ξ^2) * |ξ|`.
+
+## Research note (2026-01-29) — digamma/trigamma asymptotics sanity check
+
+- Asymptotics (DLMF 5.11 / trigamma) imply `ψ(1/4 + iπξ) = log|πξ| + O(1/ξ)` on tails,
+  so `|a_star ξ| = O(log|ξ|)` and is strictly better than the current linear-growth axiom.
+- Formalization gap: asymptotics are tail-only; to get a global bound we must
+  combine tail bound with `a_star_bdd_on_compact` on `Icc (-R) R` and fix constants.
+- Connes/Toeplitz remarks are good context but **not needed** for heat integrability;
+  keep as background only.
+
 ## Synthesis (2026-01-26, in progress) — τ-shift AtomCone fails; `prime_term_le_at_t_critical_axiom` is false-for-now
 
 - Local numeric verification: `python3 verify_variant_b.py --direct` shows
@@ -73,7 +93,7 @@
 - Success check: after refactor, `#print axioms Q3.Main.RH_of_Weil_and_Q3` drops `prime_term_le_at_t_critical_axiom`.
 - **Status update (2026-01-26):** mainline now uses `Weil_cone_tau0` + `W_K_tau0`
   (τ=0, B-range), so the τ‑uniform prime‑term axiom is no longer in the RH chain.
-- Note: `q3search`/`websearch` are not available in this container; use `rg` + local docs as fallback.
+- Note: `q3search`/`websearch` are deprecated; use `./scripts/research_oracle.py ...` + web tool.
 
 ## Synthesis (2026-01-27, in progress) — Weil explicit formula ⇒ positivity criterion (Artin–Hecke)
 
