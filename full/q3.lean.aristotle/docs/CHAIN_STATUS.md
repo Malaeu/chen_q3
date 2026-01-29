@@ -3,6 +3,7 @@
 **Purpose:** Canonical, minimal chain summary for the current mainline.  
 **Current status:** Use `Q3/CheckAxioms.lean` as the authoritative dependency list.  
 **Next action:** Close the two main-chain Q3 data axioms listed in `ACTIVE/MAIN_CHAIN_DEPS.md`.  
+**Decision (2026-01-29):** Option A selected — keep cert‑data axioms (hash‑checked) and move on.
 **Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `Q3/CheckAxioms.lean` · `ACTIVE/orchestrator.md`
 
 ---
