@@ -8,7 +8,7 @@ ACTIVE/output files whose stem contains that key.
 import re
 from pathlib import Path
 
-ROOT = Path("/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/full/q3.lean.aristotle")
+ROOT = Path(__file__).resolve().parents[1]
 ACTIVE = ROOT / "ACTIVE"
 REQUESTS_DIR = ACTIVE / "requests"
 OUTPUT_DIR = ACTIVE / "output"

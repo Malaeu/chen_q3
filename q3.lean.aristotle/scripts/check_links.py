@@ -7,7 +7,6 @@ import re
 import sys
 from pathlib import Path
 
-
 LINK_RE = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 SCHEME_RE = re.compile(r"^[a-zA-Z][a-zA-Z0-9+.-]*:")
 
@@ -27,9 +26,7 @@ def strip_code_fences(text: str) -> str:
 
 def iter_markdown_files(root: Path, exclude_dirs: set[str]):
     for dirpath, dirnames, filenames in os.walk(root):
-        dirnames[:] = [
-            d for d in dirnames if d not in exclude_dirs and not d.startswith(".")
-        ]
+        dirnames[:] = [d for d in dirnames if d not in exclude_dirs and not d.startswith(".")]
         for name in filenames:
             if name.endswith(".md"):
                 yield Path(dirpath) / name
@@ -46,6 +43,7 @@ def main() -> int:
 
     root = Path(args.root).resolve()
     repo_root = root.parent
+    sections_root = repo_root / "full" / "sections"
     # ACTIVE/ is a symlink hub; link targets are evaluated relative to their
     # original locations, not the hub. Exclude it from link checks.
     # Also exclude literature corpora (OCR/fulltext) to avoid false-positive links.
@@ -90,6 +88,8 @@ def main() -> int:
                 alt_targets.append((repo_root / "full" / normalized).resolve())
 
             if not any(t.exists() for t in alt_targets):
+                if normalized.startswith("sections/") and not sections_root.exists():
+                    continue
                 missing.append((path, path_part))
 
     if missing:

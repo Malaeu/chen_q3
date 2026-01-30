@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import math
 from datetime import datetime
+from pathlib import Path
 
 import mpmath as mp
 
@@ -91,7 +92,8 @@ print("max_deriv", max_deriv)
 print("L_ub_up", L_ub_up)
 print("cert_margin", cert_margin)
 
-out_dir = "/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/full/q3.lean.aristotle/output"
+ROOT = Path(__file__).resolve().parents[1]
+out_dir = str(ROOT / "output")
 # write summary file
 out_path = f"{out_dir}/floor_cert_tcritical_{stamp}.txt"
 with open(out_path, "w", encoding="utf-8") as f:

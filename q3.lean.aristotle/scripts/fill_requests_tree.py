@@ -3,11 +3,13 @@
 
 Only replaces sections that contain a single "- TODO" line.
 """
+
 from __future__ import annotations
+
 import re
 from pathlib import Path
 
-ROOT = Path("/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/full/q3.lean.aristotle")
+ROOT = Path(__file__).resolve().parents[1]
 REQUESTS_DIR = ROOT / "ACTIVE" / "requests"
 
 REQUEST_RE = re.compile(r"^- request: `(?P<path>[^`]+)`", re.M)
@@ -34,8 +36,13 @@ def replace_section(text: str, header: str, new_lines: list[str]) -> str:
     body = m.group(2).rstrip()
     if not section_has_todo(body):
         return text
-    replacement = m.group(1) + "\n".join(new_lines) + "\n" + ("\n## " if m.group(3).startswith("\n## ") else "")
-    return text[:m.start()] + replacement + text[m.end():]
+    replacement = (
+        m.group(1)
+        + "\n".join(new_lines)
+        + "\n"
+        + ("\n## " if m.group(3).startswith("\n## ") else "")
+    )
+    return text[: m.start()] + replacement + text[m.end() :]
 
 
 def fill_node(node_path: Path) -> bool:
