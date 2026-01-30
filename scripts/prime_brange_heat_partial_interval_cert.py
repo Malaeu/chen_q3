@@ -11,6 +11,7 @@ This is a numeric certificate helper (not a formal proof).
 
 from __future__ import annotations
 
+import argparse
 from dataclasses import dataclass
 from datetime import datetime
 from decimal import ROUND_CEILING, Decimal, getcontext
@@ -25,7 +26,22 @@ N = 1_000_000
 B_MIN = Decimal("3.0")
 DIGITS = 12
 
-HEAT_CERT_SOURCE = Path("output/prime_cert_brange_heat_L_2026-01-28_0115.txt")
+DEFAULT_HEAT_CERT_SOURCE = Path("output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt")
+
+
+def parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser()
+    p.add_argument(
+        "--heat-source",
+        default=str(DEFAULT_HEAT_CERT_SOURCE),
+        help="Path to heat cert source (interval scaffold preferred).",
+    )
+    p.add_argument(
+        "--skip-heat-output",
+        action="store_true",
+        help="Skip writing the heat L interval output file.",
+    )
+    return p.parse_args()
 
 
 @dataclass
@@ -130,14 +146,16 @@ def arch_heat_integral(bmax: Decimal, tcrit: Decimal, dps: int) -> mp.mpf:
 
 
 def main() -> int:
-    if not HEAT_CERT_SOURCE.exists():
-        raise SystemExit(f"Missing source file: {HEAT_CERT_SOURCE}")
+    args = parse_args()
+    heat_source = Path(args.heat_source)
+    if not heat_source.exists():
+        raise SystemExit(f"Missing source file: {heat_source}")
 
     mp.mp.dps = DPS_PRIMARY
     getcontext().prec = max(50, DIGITS + 10)
     quant = Decimal(f"1e-{DIGITS}")
 
-    cert = parse_heat_cert(HEAT_CERT_SOURCE.read_text(encoding="utf-8"))
+    cert = parse_heat_cert(heat_source.read_text(encoding="utf-8"))
     tcrit_iv = iv.mpf(str(cert.t_critical))
     bmax_iv = iv.mpf(str(cert.b_max))
 
@@ -174,7 +192,7 @@ def main() -> int:
         "Prime-heat partial-sum interval certificate (t_critical, tau=0)",
         "===============================================================",
         "",
-        f"Source heat cert: {HEAT_CERT_SOURCE}",
+        f"Source heat cert: {heat_source}",
         f"N = {N}",
         f"t_critical = {cert.t_critical}",
         f"B_max = {cert.b_max}",
@@ -190,30 +208,31 @@ def main() -> int:
     out_path.write_text("\n".join(lines), encoding="utf-8")
     print(out_path)
 
-    heat_lines = [
-        "Heat-weighted Lipschitz certificate scaffold (t_critical, tau=0)",
-        "============================================================",
-        "",
-        f"B_min = {cert.b_min}",
-        f"B_max = {cert.b_max}",
-        f"t_critical = {cert.t_critical}",
-        f"N = {N}",
-        "",
-        f"primes <= N: {nprimes}",
-        f"tail_bound_heat = {cert.tail_bound}",
-        f"prime_heat_sum_up_to_ub = {sum_ub}",
-        f"L_prime_heat = {prime_heat_raw_ub}",
-        f"L_arch_heat = {arch_ub}",
-        f"L_arch_heat_input = {cert.arch_heat_raw}",
-        f"L_arch_heat_raw_primary = {arch_1}",
-        f"L_arch_heat_raw_verify = {arch_2}",
-        f"L_arch_heat_err = {arch_err}",
-        f"L_total = {l_total}",
-        "note: L_prime_heat uses interval sum_ub + tail_bound_heat",
-        "",
-    ]
-    heat_out_path.write_text("\n".join(heat_lines), encoding="utf-8")
-    print(heat_out_path)
+    if not args.skip_heat_output:
+        heat_lines = [
+            "Heat-weighted Lipschitz certificate scaffold (t_critical, tau=0)",
+            "============================================================",
+            "",
+            f"B_min = {cert.b_min}",
+            f"B_max = {cert.b_max}",
+            f"t_critical = {cert.t_critical}",
+            f"N = {N}",
+            "",
+            f"primes <= N: {nprimes}",
+            f"tail_bound_heat = {cert.tail_bound}",
+            f"prime_heat_sum_up_to_ub = {sum_ub}",
+            f"L_prime_heat = {prime_heat_raw_ub}",
+            f"L_arch_heat = {arch_ub}",
+            f"L_arch_heat_input = {cert.arch_heat_raw}",
+            f"L_arch_heat_raw_primary = {arch_1}",
+            f"L_arch_heat_raw_verify = {arch_2}",
+            f"L_arch_heat_err = {arch_err}",
+            f"L_total = {l_total}",
+            "note: L_prime_heat uses interval sum_ub + tail_bound_heat",
+            "",
+        ]
+        heat_out_path.write_text("\n".join(heat_lines), encoding="utf-8")
+        print(heat_out_path)
     return 0
 
 

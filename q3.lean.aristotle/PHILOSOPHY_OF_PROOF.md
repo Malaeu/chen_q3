@@ -95,12 +95,12 @@ These are well-known results. Citations:
 ### Level 2: One‑Scale Numeric Certificates @ `t_critical` (3) — TEMPORARY BRIDGE
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` — grid arch/prime bounds (data axiom), in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
 - `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data` — arch heat bound over B‑range (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`
-- `Q3.Proofs.PrimeCert.prime_heat_sum_data` — prime heat partial+tail data axiom, in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`
+- `Q3.Proofs.PrimeCert.prime_heat_sum_data` — prime heat partial+tail data axiom, in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Partial.lean`
 
 These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt`,
 `output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`, and
 `output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt`, plus
-`output/prime_cert_brange_heat_prime_partial_interval_2026-01-30_2309.txt`) and are expected to be replaced by a fully formal certificate proof.
+`output/prime_cert_brange_heat_prime_partial_interval_2026-01-31_0009.txt`) and are expected to be replaced by a fully formal certificate proof.
 The aggregate lemma `prime_heat_bounds_data` is now derived from the two heat bounds above.
 
 **Important:** The former “SingleScale axioms” are now THEOREMS and do not appear in `#print axioms`.

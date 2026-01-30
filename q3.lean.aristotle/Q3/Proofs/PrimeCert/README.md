@@ -35,8 +35,8 @@ Evidence files (sha256):
   - `05b044cbc035b285c453631af81eed8bd0a49b2f0866f6f7f3035c09732630d8`
   - Heat cert details: N = 1000000, primes ≤ N = 78498,
     tail_bound_heat = 0.00000000624018533524325430861606353873445952371208136593940599676748
-- `output/prime_cert_brange_heat_prime_partial_interval_2026-01-30_2309.txt`
-  - `1c9fe427476eb63cfa9e4eb57a23888bdbabf08afc5e1d59095f0a7bee80c1f8`
+- `output/prime_cert_brange_heat_prime_partial_interval_2026-01-31_0009.txt`
+  - `622070a7c1684049b1c9147ee39b2e1fdaebe657f4e22acc6490cd452e8493f8`
 
 Generators:
 - `scripts/prime_term_cert.py`
