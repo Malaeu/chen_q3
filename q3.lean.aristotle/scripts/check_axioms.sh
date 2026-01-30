@@ -62,29 +62,32 @@ echo ""
 echo "═══ Step 0.7: PrimeCert evidence check ═══"
 PRIME_CERT_TCRIT="output/prime_cert_tcritical_2026-01-26_0046.txt"
 PRIME_CERT_BRANGE="output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt"
+PRIME_CERT_BRANGE_PILOT_INTERVAL="output/prime_cert_brange_tcritical_pilot_interval_2026-01-30_2357.txt"
 PRIME_CERT_HEAT="output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt"
 PRIME_CERT_HEAT_PARTIAL="output/prime_cert_brange_heat_prime_partial_interval_2026-01-30_2309.txt"
 PRIME_CERT_TCRIT_HASH="3af1204fc8f5ddf322e1110b9932bb44a5349e0773d6d1b3cdf5441ec8ef3b5d"
 PRIME_CERT_BRANGE_HASH="451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48"
+PRIME_CERT_BRANGE_PILOT_INTERVAL_HASH="d2e51b9bea1eff7b50625f3e7c40aeae6a91f3eeab4eb33a5e12e948e460b5db"
 PRIME_CERT_HEAT_HASH="05b044cbc035b285c453631af81eed8bd0a49b2f0866f6f7f3035c09732630d8"
 PRIME_CERT_HEAT_PARTIAL_HASH="1c9fe427476eb63cfa9e4eb57a23888bdbabf08afc5e1d59095f0a7bee80c1f8"
 
-if [[ ! -f "$PRIME_CERT_TCRIT" || ! -f "$PRIME_CERT_BRANGE" || ! -f "$PRIME_CERT_HEAT" || ! -f "$PRIME_CERT_HEAT_PARTIAL" ]]; then
+if [[ ! -f "$PRIME_CERT_TCRIT" || ! -f "$PRIME_CERT_BRANGE" || ! -f "$PRIME_CERT_BRANGE_PILOT_INTERVAL" || ! -f "$PRIME_CERT_HEAT" || ! -f "$PRIME_CERT_HEAT_PARTIAL" ]]; then
     echo "✗ PrimeCert evidence file missing"
     exit 1
 fi
 
 HASH_TCRIT="$(hash_file "$PRIME_CERT_TCRIT" || true)"
 HASH_BRANGE="$(hash_file "$PRIME_CERT_BRANGE" || true)"
+HASH_BRANGE_PILOT_INTERVAL="$(hash_file "$PRIME_CERT_BRANGE_PILOT_INTERVAL" || true)"
 HASH_HEAT="$(hash_file "$PRIME_CERT_HEAT" || true)"
 HASH_HEAT_PARTIAL="$(hash_file "$PRIME_CERT_HEAT_PARTIAL" || true)"
 
-if [[ -z "$HASH_TCRIT" || -z "$HASH_BRANGE" || -z "$HASH_HEAT" || -z "$HASH_HEAT_PARTIAL" ]]; then
+if [[ -z "$HASH_TCRIT" || -z "$HASH_BRANGE" || -z "$HASH_BRANGE_PILOT_INTERVAL" || -z "$HASH_HEAT" || -z "$HASH_HEAT_PARTIAL" ]]; then
     echo "✗ sha256 tool not available (sha256sum/shasum)"
     exit 1
 fi
 
-if [[ "$HASH_TCRIT" != "$PRIME_CERT_TCRIT_HASH" || "$HASH_BRANGE" != "$PRIME_CERT_BRANGE_HASH" || "$HASH_HEAT" != "$PRIME_CERT_HEAT_HASH" || "$HASH_HEAT_PARTIAL" != "$PRIME_CERT_HEAT_PARTIAL_HASH" ]]; then
+if [[ "$HASH_TCRIT" != "$PRIME_CERT_TCRIT_HASH" || "$HASH_BRANGE" != "$PRIME_CERT_BRANGE_HASH" || "$HASH_BRANGE_PILOT_INTERVAL" != "$PRIME_CERT_BRANGE_PILOT_INTERVAL_HASH" || "$HASH_HEAT" != "$PRIME_CERT_HEAT_HASH" || "$HASH_HEAT_PARTIAL" != "$PRIME_CERT_HEAT_PARTIAL_HASH" ]]; then
     echo "✗ PrimeCert evidence hash mismatch"
     exit 1
 fi

@@ -29,6 +29,8 @@ Evidence files (sha256):
   - `451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48`
 - `output/prime_cert_brange_tcritical_pilot_2026-01-30_2208.txt`
   - `e721a55add5218fc50f01eda07d715c9f5621989ba6cda8abac11e3671b7b0f0`
+- `output/prime_cert_brange_tcritical_pilot_interval_2026-01-30_2357.txt`
+  - `d2e51b9bea1eff7b50625f3e7c40aeae6a91f3eeab4eb33a5e12e948e460b5db`
 - `output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt`
   - `05b044cbc035b285c453631af81eed8bd0a49b2f0866f6f7f3035c09732630d8`
   - Heat cert details: N = 1000000, primes ≤ N = 78498,
