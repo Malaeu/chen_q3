@@ -11,6 +11,7 @@ PrimeCert/
   BrangeGrid_PrimeSumTail.lean -- prime-term tail/summability scaffold
   BrangeGrid_Pilot_2026_01_30.lean -- pilot hypotheses (2 points)
   BrangeGrid_Pilot_2026_01_30_Data.lean -- pilot data (2 points)
+  BrangeGrid_PrimeSum_2026_01_30_UB.lean -- prime-term sum upper bounds (all points)
   BrangeGrid_PrimeSum_2026_01_30_Data.lean -- prime-term sum data (all points)
   BrangeGridBounds_2046.lean -- grid bounds lemma (arch/prime)
   BrangeHeatCert_2026_01_28_Data.lean -- heat cert data (constants + axioms)

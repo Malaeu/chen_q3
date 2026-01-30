@@ -1,5 +1,6 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSumTail
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_UB
 
 /-!
 Prime-term B-grid data (all 20 points) at t_critical, tau = 0.
@@ -28,14 +29,7 @@ def prime_cert_brange_sha256_full : String :=
 
 /-! ### Interval upper bounds for prime partial sums -/
 
-def prime_b_grid_prime_sum_ub (i : Fin prime_b_grid_size) : ℝ :=
-  prime_b_grid_prime_sum i
-
-lemma prime_b_grid_prime_sum_ub_le_table :
-    ∀ i : Fin prime_b_grid_size,
-      prime_b_grid_prime_sum_ub i ≤ prime_b_grid_prime_sum i := by
-  intro i
-  simp [prime_b_grid_prime_sum_ub]
+-- prime_b_grid_prime_sum_ub is defined in BrangeGrid_PrimeSum_2026_01_30_UB.lean
 
 /-! ### Numeric obligations (interval-certificate pipeline) -/
 
