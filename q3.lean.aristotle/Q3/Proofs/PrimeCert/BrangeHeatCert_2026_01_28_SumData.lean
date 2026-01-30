@@ -24,6 +24,14 @@ def prime_cert_heat_prime_partial_source : String :=
 def prime_cert_heat_prime_partial_sha256 : String :=
   "622070a7c1684049b1c9147ee39b2e1fdaebe657f4e22acc6490cd452e8493f8"
 
+def prime_cert_heat_prime_sum_up_to_ub : ℝ :=
+  4.004917232592
+
+lemma prime_cert_heat_prime_sum_up_to_ub_le_partial :
+    prime_cert_heat_prime_sum_up_to_ub ≤ prime_cert_L_prime_heat_partial := by
+  norm_num [prime_cert_heat_prime_sum_up_to_ub, prime_cert_L_prime_heat_partial,
+    prime_cert_heat_tail_bound, prime_cert_L_prime_heat_raw]
+
 structure PrimeHeatSumData where
   h_sum : prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_L_prime_heat_partial
   h_tail :

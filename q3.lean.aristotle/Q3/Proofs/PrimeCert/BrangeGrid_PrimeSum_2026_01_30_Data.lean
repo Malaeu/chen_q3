@@ -26,11 +26,28 @@ def prime_cert_brange_source_full : String :=
 def prime_cert_brange_sha256_full : String :=
   "451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48"
 
+/-! ### Interval upper bounds for prime partial sums -/
+
+def prime_b_grid_prime_sum_ub (i : Fin prime_b_grid_size) : ℝ :=
+  prime_b_grid_prime_sum i
+
+lemma prime_b_grid_prime_sum_ub_le_table :
+    ∀ i : Fin prime_b_grid_size,
+      prime_b_grid_prime_sum_ub i ≤ prime_b_grid_prime_sum i := by
+  intro i
+  simp [prime_b_grid_prime_sum_ub]
+
 /-! ### Numeric obligations (interval-certificate pipeline) -/
 
-axiom prime_b_grid_prime_sum_le_all :
+axiom prime_b_grid_prime_sum_le_all_ub :
   ∀ i : Fin prime_b_grid_size,
-    prime_b_grid_prime_sum_up_to i ≤ prime_b_grid_prime_sum i
+    prime_b_grid_prime_sum_up_to i ≤ prime_b_grid_prime_sum_ub i
+
+lemma prime_b_grid_prime_sum_le_all :
+  ∀ i : Fin prime_b_grid_size,
+    prime_b_grid_prime_sum_up_to i ≤ prime_b_grid_prime_sum i := by
+  intro i
+  exact (prime_b_grid_prime_sum_le_all_ub i).trans (prime_b_grid_prime_sum_ub_le_table i)
 
 axiom prime_b_grid_tail_term_sum_le_bound :
   ∑' n, prime_b_grid_tail_term (n + prime_b_grid_tail_N0) ≤
