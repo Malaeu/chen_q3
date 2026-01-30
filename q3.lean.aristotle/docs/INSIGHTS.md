@@ -701,3 +701,16 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
   now derived in `BrangeHeatCert_2026_01_28.lean`.
 - Success check: `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
   then `lake env lean Q3/CheckAxioms.lean`.
+
+## Pilot update (2026-01-30) — 2-point grid scaffolding
+
+- Added `Q3/Proofs/PrimeCert/BrangeGrid_Pilot_2026_01_30.lean`:
+  `PrimeBGridPilotHyp` packs the two required inequalities (partial sum + tail)
+  and provides pilot lemmas for `i=0` (B=3.0) and `i=19` (B=4.9) without adding
+  axioms or sorries.
+- Added `scripts/prime_brange_pilot_points.py` to extract the two rows from the
+  existing B-range certificate and emit a pilot trace file:
+  `output/prime_cert_brange_tcritical_pilot_2026-01-30_1820.txt`.
+- Next: supply `PrimeBGridPilotHyp` for the two points via interval‑certificate
+  inequalities (partial sum up to N and tail bound). Once that lands, we can
+  lift to all 20 points.

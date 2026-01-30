@@ -15,9 +15,9 @@ Notes:
 
 | Metric | Count |
 |--------|-------|
-| **Total lines** | 34,088 |
+| **Total lines** | 34,133 |
 | Theorems | 307 |
-| Lemmas | 760 |
+| Lemmas | 763 |
 | Definitions | 429 |
 
 ---
@@ -29,8 +29,8 @@ Notes:
 | Source | Lines | % of Q3/ |
 |--------|-------|----------|
 | **Aristotle (in proof chain)** | 5,421 | 15% |
-| **Human/Manual** | 29,434 | 86% |
-| **TOTAL Q3/** | **34,088** | 100% |
+| **Human/Manual** | 29,479 | 86% |
+| **TOTAL Q3/** | **34,133** | 100% |
 
 ### 🤖 Aristotle Contribution Details
 
