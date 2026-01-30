@@ -1,5 +1,6 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data
+import Q3.Proofs.Q_nonneg_lemmas
 
 /-!
 Prime-heat partial-sum scaffold (t_critical, tau = 0).
@@ -24,7 +25,6 @@ def prime_cert_heat_prime_partial_sha256 : String :=
   "1c9fe427476eb63cfa9e4eb57a23888bdbabf08afc5e1d59095f0a7bee80c1f8"
 
 structure PrimeHeatSumData where
-  hsum : Summable prime_heat_weight_term
   h_sum : prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_L_prime_heat_partial
   h_tail :
     ∑' n, prime_heat_weight_term (n + (prime_cert_heat_N + 1)) ≤
@@ -32,12 +32,30 @@ structure PrimeHeatSumData where
 
 axiom prime_heat_sum_data : PrimeHeatSumData
 
+lemma prime_heat_weight_term_summable :
+    Summable prime_heat_weight_term := by
+  let N := Nat.ceil (Real.exp (2 * Real.pi * prime_cert_B_max)) + 1
+  apply summable_of_ne_finset_zero (s := Finset.range N)
+  intro k hk
+  simp only [Finset.mem_range, not_lt] at hk
+  have h_xi_large : xi_n k > prime_cert_B_max := by
+    apply Q3.Proofs.Q_nonneg_lemmas.xi_n_large_of_k_large
+    omega
+  have hBmax_pos : 0 < prime_cert_B_max := by
+    norm_num [prime_cert_B_max]
+  have hpos : 0 < xi_n k := lt_trans hBmax_pos h_xi_large
+  have h_abs : |xi_n k| > prime_cert_B_max := by
+    simpa [abs_of_pos hpos] using h_xi_large
+  have hnot : ¬ |xi_n k| ≤ prime_cert_B_max := by
+    exact not_le_of_gt h_abs
+  simp [prime_heat_weight_term, hnot]
+
 lemma prime_heat_bounds_prime_data_of_data :
     ∑' n, (w_Q n * (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n n) ^ 2) * |xi_n n|)) *
         (if |xi_n n| ≤ prime_cert_B_max then (1 : ℝ) else 0)
       ≤ prime_cert_L_prime_heat_raw := by
   exact prime_heat_bounds_prime_data_of_sum_tail
-    prime_heat_sum_data.hsum
+    prime_heat_weight_term_summable
     prime_heat_sum_data.h_sum
     prime_heat_sum_data.h_tail
 
