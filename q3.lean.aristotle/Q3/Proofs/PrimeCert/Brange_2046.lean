@@ -8,7 +8,7 @@ import Q3.Proofs.ShiftedWindows
 
 /-!
 Prime-term B-range certificate at t_critical, tau = 0.
-Source: output/prime_cert_brange_tcritical_2026-01-26_0050.txt
+Source: output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt
 -/
 
 noncomputable section

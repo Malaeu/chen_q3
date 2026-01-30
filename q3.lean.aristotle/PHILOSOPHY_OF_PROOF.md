@@ -98,7 +98,7 @@ These are well-known results. Citations:
 - `Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data` — prime heat bound over B‑range (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`
 
 These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt`,
-`output/prime_cert_brange_tcritical_2026-01-26_0050.txt`, and
+`output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`, and
 `output/prime_cert_brange_heat_L_2026-01-28_0115.txt`) and are expected to be replaced by a fully formal certificate proof.
 The aggregate lemma `prime_heat_bounds_data` is now derived from the two heat bounds above.
 

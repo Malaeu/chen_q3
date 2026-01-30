@@ -61,10 +61,10 @@ echo ""
 # Step 0.7: PrimeCert evidence files
 echo "═══ Step 0.7: PrimeCert evidence check ═══"
 PRIME_CERT_TCRIT="output/prime_cert_tcritical_2026-01-26_0046.txt"
-PRIME_CERT_BRANGE="output/prime_cert_brange_tcritical_2026-01-26_0050.txt"
+PRIME_CERT_BRANGE="output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt"
 PRIME_CERT_HEAT="output/prime_cert_brange_heat_L_2026-01-28_0115.txt"
 PRIME_CERT_TCRIT_HASH="3af1204fc8f5ddf322e1110b9932bb44a5349e0773d6d1b3cdf5441ec8ef3b5d"
-PRIME_CERT_BRANGE_HASH="a9d5303b2da81886cf64bfc5ee9b5b1ab85ce0b45067a8cd9b499d051a294230"
+PRIME_CERT_BRANGE_HASH="451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48"
 PRIME_CERT_HEAT_HASH="da6a6ac1221f93d376aafecd189169607b40b5d394868e893124445089a3e0a5"
 
 if [[ ! -f "$PRIME_CERT_TCRIT" || ! -f "$PRIME_CERT_BRANGE" || ! -f "$PRIME_CERT_HEAT" ]]; then

@@ -11,6 +11,10 @@ if [[ ! -d "$SECTIONS_ROOT" ]]; then
     SECTIONS_ROOT="$FULL_ROOT/paper/sections"
   fi
 fi
+SECTIONS_MISSING=0
+if [[ ! -d "$SECTIONS_ROOT" ]]; then
+  SECTIONS_MISSING=1
+fi
 
 have_rg() {
   command -v rg >/dev/null 2>&1
@@ -31,6 +35,15 @@ check() {
   local file="$1"
   local pattern="$2"
   local desc="$3"
+  if [[ ! -f "$file" ]]; then
+    if [[ "$SECTIONS_MISSING" -eq 1 && "$file" == "$SECTIONS_ROOT"* ]]; then
+      echo "skip: $desc (missing sections in this worktree)"
+      return 0
+    fi
+    echo "missing file: $desc ($file)"
+    fail=1
+    return 0
+  fi
   if ! search_fixed "$pattern" "$file"; then
     echo "missing: $desc ($file)"
     fail=1

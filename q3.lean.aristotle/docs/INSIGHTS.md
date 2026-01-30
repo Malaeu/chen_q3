@@ -50,7 +50,7 @@ Plan (5–10 lines, concrete pointers):
    `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` by proving `h_arch`/`h_prime`
    using the numeric tables already in `BrangeGrid_2046.lean`.
 2) Create a small “grid evidence” file (if needed) with per‑index bounds extracted
-   from `output/prime_cert_brange_tcritical_2026-01-26_0050.txt`, keeping values as ℚ,
+   from `output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`, keeping values as ℚ,
    then use `fin_cases` + `norm_num` (no `native_decide`).
 3) Prime heat bound: in `BrangeHeatCert_2026_01_28_Data.lean`, use the new
    `prime_cert_heat_N` + tail bound to show

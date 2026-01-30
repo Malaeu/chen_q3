@@ -24,10 +24,10 @@ PrimeCert/
 Evidence files (sha256):
 - `output/prime_cert_tcritical_2026-01-26_0046.txt`
   - `3af1204fc8f5ddf322e1110b9932bb44a5349e0773d6d1b3cdf5441ec8ef3b5d`
-- `output/prime_cert_brange_tcritical_2026-01-26_0050.txt`
-  - `a9d5303b2da81886cf64bfc5ee9b5b1ab85ce0b45067a8cd9b499d051a294230`
-- `output/prime_cert_brange_tcritical_pilot_2026-01-30_2139.txt`
-  - `cd1fe25842152027154072b9378fa893d30ef1c3a62cb59cad4b55369eef7941`
+- `output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`
+  - `451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48`
+- `output/prime_cert_brange_tcritical_pilot_2026-01-30_2208.txt`
+  - `e721a55add5218fc50f01eda07d715c9f5621989ba6cda8abac11e3671b7b0f0`
 - `output/prime_cert_brange_heat_L_2026-01-28_0115.txt`
   - `da6a6ac1221f93d376aafecd189169607b40b5d394868e893124445089a3e0a5`
   - Heat cert details: N = 1000000, primes ≤ N = 78498,
@@ -36,6 +36,8 @@ Evidence files (sha256):
 Generators:
 - `scripts/prime_term_cert.py`
 - `scripts/prime_term_cert_brange.py`
+- `scripts/prime_brange_interval_cert.py`
+- `scripts/prime_brange_pilot_points.py`
 - `scripts/prime_brange_heat_lipschitz_cert.py`
 
 Integration point:

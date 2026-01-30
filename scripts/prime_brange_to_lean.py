@@ -35,11 +35,17 @@ def main() -> None:
     lines = inp.read_text().splitlines()
     margins = []
     prime_ubs = []
+    prime_sums = []
     arch_terms = []
+    tail_bound = None
     for line in lines:
         line = line.strip()
         if not line:
             continue
+        if "tail_bound" in line:
+            parts = line.split("=", 1)
+            if len(parts) == 2:
+                tail_bound = Decimal(parts[1].strip())
         if line.startswith("B,"):
             continue
         if line[0].isdigit():
@@ -47,12 +53,15 @@ def main() -> None:
             if len(parts) < 5:
                 continue
             # B, prime_sum, prime_ub, arch_term, margin
+            prime_sum = Decimal(parts[1])
             prime_ub = Decimal(parts[2])
             arch_term = Decimal(parts[3])
+            margin = Decimal(parts[4])
             prime_ub_q = prime_ub.quantize(quant, rounding=ROUND_CEILING)
             arch_term_q = arch_term.quantize(quant, rounding=ROUND_FLOOR)
-            # conservative margin lower bound derived from rounded arch/prime bounds
-            margin_q = (arch_term_q - prime_ub_q).quantize(quant, rounding=ROUND_FLOOR)
+            prime_sum_q = prime_sum.quantize(quant, rounding=ROUND_CEILING)
+            margin_q = margin.quantize(quant, rounding=ROUND_FLOOR)
+            prime_sums.append(prime_sum_q)
             prime_ubs.append(prime_ub_q)
             arch_terms.append(arch_term_q)
             margins.append(margin_q)
@@ -73,6 +82,7 @@ def main() -> None:
 
     table_margin = render_fin_table("prime_b_grid_val_q", margins)
     table_prime_ub = render_fin_table("prime_b_grid_prime_ub_q_get", prime_ubs)
+    table_prime_sum = render_fin_table("prime_b_grid_prime_sum_q_get", prime_sums)
     table_arch = render_fin_table("prime_b_grid_arch_term_q_get", arch_terms)
     ts = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
 
@@ -104,6 +114,9 @@ def prime_b_grid (i : Fin prime_b_grid_size) : ℝ :=
 /-- Grid prime upper bounds (same B grid). -/
 {table_prime_ub}
 
+/-- Grid prime partial sums (same B grid). -/
+{table_prime_sum}
+
 /-- Grid arch term lower bounds (same B grid). -/
 {table_arch}
 
@@ -113,8 +126,16 @@ def prime_b_grid_val (i : Fin prime_b_grid_size) : ℝ :=
 def prime_b_grid_prime_ub (i : Fin prime_b_grid_size) : ℝ :=
   (prime_b_grid_prime_ub_q_get i : ℝ)
 
+def prime_b_grid_prime_sum (i : Fin prime_b_grid_size) : ℝ :=
+  (prime_b_grid_prime_sum_q_get i : ℝ)
+
 def prime_b_grid_arch_term (i : Fin prime_b_grid_size) : ℝ :=
   (prime_b_grid_arch_term_q_get i : ℝ)
+
+def prime_b_grid_tail_bound_q : ℚ := {tail_bound if tail_bound is not None else Decimal("0")}
+
+def prime_b_grid_tail_bound : ℝ :=
+  (prime_b_grid_tail_bound_q : ℝ)
 
 def prime_cert_margin_lb_q : ℚ := (12 / 25)
 
@@ -182,6 +203,32 @@ lemma prime_b_grid_val_le_arch_sub_prime_ub :
         (prime_b_grid_arch_term_q_get i - prime_b_grid_prime_ub_q_get i : ℝ) := by
     exact_mod_cast hq
   simpa [prime_b_grid_val, prime_b_grid_arch_term, prime_b_grid_prime_ub] using hq'
+
+/-! Table arithmetic: prime partial sum + tail bound ≤ prime_ub. -/
+
+lemma prime_b_grid_prime_sum_add_tail_le_prime_ub_q :
+    ∀ i : Fin prime_b_grid_size,
+      prime_b_grid_prime_sum_q_get i + prime_b_grid_tail_bound_q ≤
+        prime_b_grid_prime_ub_q_get i := by
+  intro i
+  fin_cases i <;>
+    simp [prime_b_grid_prime_sum_q_get,
+          prime_b_grid_prime_ub_q_get,
+          prime_b_grid_tail_bound_q] <;> norm_num
+
+lemma prime_b_grid_prime_sum_add_tail_le_prime_ub :
+    ∀ i : Fin prime_b_grid_size,
+      prime_b_grid_prime_sum i + prime_b_grid_tail_bound ≤
+        prime_b_grid_prime_ub i := by
+  intro i
+  have hq :
+      prime_b_grid_prime_sum_q_get i + prime_b_grid_tail_bound_q ≤
+        prime_b_grid_prime_ub_q_get i := prime_b_grid_prime_sum_add_tail_le_prime_ub_q i
+  have hq' :
+      (prime_b_grid_prime_sum_q_get i + prime_b_grid_tail_bound_q : ℝ) ≤
+        (prime_b_grid_prime_ub_q_get i : ℝ) := by
+    exact_mod_cast hq
+  simpa [prime_b_grid_prime_sum, prime_b_grid_tail_bound, prime_b_grid_prime_ub] using hq'
 
 end Q3.Proofs.PrimeCert
 """

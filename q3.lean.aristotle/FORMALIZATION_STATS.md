@@ -137,10 +137,10 @@ cd /mnt/hdd01/Soft/GitHub/chen_q3/worktrees/rh_clean/q3.lean.aristotle
 ║              Q3 CONTRIBUTION STATISTICS                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
-Date: Fr 30. Jan 21:50:12 CET 2026
+Date: Fr 30. Jan 22:16:39 CET 2026
 
 ═══ Section 1: Total Q3/ Codebase ═══
-  Total lines:    34553
+  Total lines:    34551
   Theorems:       307
   Lemmas:         776
   Definitions:    437
@@ -172,10 +172,10 @@ B) Aristotle files imported from aristotle_output/:
 ╚══════════════════════════════════════════════════════════════╝
 
 ═══ Section 3: Human/Manual Contribution ═══
-  Q3/ total:              34553
+  Q3/ total:              34551
   - Aristotle integrated: 4654
   ─────────────────────────
-  Human-written in Q3/:   29899
+  Human-written in Q3/:   29897
 
 ═══ Section 4: Aristotle Experiments (NOT in proof chain) ═══
   Total aristotle_output/ files: 84
@@ -197,9 +197,9 @@ B) Aristotle files imported from aristotle_output/:
   │ Source                    │   Lines │   % of Q3/       │
   ├─────────────────────────────────────────────────────────┤
   │ Aristotle (in proof)      │    5421 │  15%             │
-  │ Human/Manual              │   29899 │  86%             │
+  │ Human/Manual              │   29897 │  86%             │
   ├─────────────────────────────────────────────────────────┤
-  │ TOTAL Q3/                 │   34553 │ 100%             │
+  │ TOTAL Q3/                 │   34551 │ 100%             │
   └─────────────────────────────────────────────────────────┘
 
   Aristotle experiments (not used): 20729 lines

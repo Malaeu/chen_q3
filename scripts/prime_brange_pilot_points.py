@@ -6,13 +6,14 @@ This is a lightweight helper to keep the pilot data traceable in this worktree.
 It does NOT recompute any numeric bounds; it only reprints the selected rows
 and the tail bound from the certificate file.
 """
+
 from __future__ import annotations
 
-from pathlib import Path
-from datetime import datetime
 import re
+from datetime import datetime
+from pathlib import Path
 
-SOURCE = Path("output/prime_cert_brange_tcritical_2026-01-26_0050.txt")
+SOURCE = Path("output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt")
 PILOT_BS = [3.0, 4.9]
 
 

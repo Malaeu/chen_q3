@@ -321,7 +321,7 @@ lemma arch_term_ge_at_t_critical (B τ : ℝ) (hB : B > 0)
 
 Prime certificate constants and basic lemmas live in `Q3.Proofs.PrimeCert.Defs`.
 See output/prime_cert_tcritical_2026-01-26_0046.txt and
-output/prime_cert_brange_tcritical_2026-01-26_0050.txt.
+output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt.
 -/
 
 /-- Prime-term ≤ arch-term at t_critical for B = B_min, τ = 0 (certificate-based). -/

@@ -14,7 +14,7 @@ def prime_cert_prime_ub : ℝ := (8714 / 1000) -- 8.714 (upper bound from sum+ta
 def prime_cert_arch_lb : ℝ := (957 / 100)    -- 9.57 (numeric arch_term lower bound)
 
 /-- B-range certificate parameters at t_critical (tau = 0).
-    See output/prime_cert_brange_tcritical_2026-01-26_0050.txt. -/
+    See output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt. -/
 def prime_cert_B_max : ℝ := (49 / 10) -- 4.9
 def prime_cert_B_h : ℝ := (1 / 10)    -- 0.1
 def prime_cert_margin_lb : ℝ := (12 / 25) -- conservative margin (loosened for heat Lipschitz)

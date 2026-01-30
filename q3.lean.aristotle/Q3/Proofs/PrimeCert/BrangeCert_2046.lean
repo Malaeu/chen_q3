@@ -14,10 +14,10 @@ namespace Q3.Proofs.PrimeCert
 open Q3
 
 def prime_cert_brange_source : String :=
-  "output/prime_cert_brange_tcritical_2026-01-26_0050.txt"
+  "output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt"
 
 def prime_cert_brange_sha256 : String :=
-  "a9d5303b2da81886cf64bfc5ee9b5b1ab85ce0b45067a8cd9b499d051a294230"
+  "451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48"
 
 structure PrimeBGridBounds where
   h_arch :
