@@ -45,6 +45,7 @@ def main() -> int:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
+    repo_root = root.parent
     # ACTIVE/ is a symlink hub; link targets are evaluated relative to their
     # original locations, not the hub. Exclude it from link checks.
     # Also exclude literature corpora (OCR/fulltext) to avoid false-positive links.
@@ -70,9 +71,25 @@ def main() -> int:
                 continue
             if path_part.startswith("/"):
                 target = Path(path_part)
-            else:
-                target = (path.parent / path_part).resolve()
-            if not target.exists():
+                if not target.exists():
+                    missing.append((path, path_part))
+                continue
+
+            target = (path.parent / path_part).resolve()
+            if target.exists():
+                continue
+
+            # Fallbacks for repo-root paths (e.g. full/sections, paper/sections).
+            alt_targets = []
+            alt_targets.append((repo_root / path_part).resolve())
+
+            normalized = path_part
+            while normalized.startswith("../"):
+                normalized = normalized[3:]
+            if normalized.startswith("sections/"):
+                alt_targets.append((repo_root / "full" / normalized).resolve())
+
+            if not any(t.exists() for t in alt_targets):
                 missing.append((path, path_part))
 
     if missing:

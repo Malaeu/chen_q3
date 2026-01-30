@@ -161,6 +161,7 @@ echo "═══ Step 3: Axiom Count ═══"
 STANDARD_COUNT=$(echo "$AXIOMS" | grep -oE "propext|Classical.choice|Quot.sound|Lean.ofReduceBool|Lean.trustCompiler" | wc -l | tr -d ' ')
 # Strip the header label but keep the axiom list.
 AXIOMS_ONLY=$(echo "$AXIOMS" | sed "s/'Q3.Main.RH_of_Weil_and_Q3' depends on axioms: //")
+AXIOMS_ONLY_CLEAN=$(echo "$AXIOMS_ONLY" | tr -d '[]')
 PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
@@ -178,16 +179,15 @@ echo ""
 echo "═══ Step 4: Axiom Classification ═══"
 
 echo "Level 1 (Classical Literature):"
-# Trim trailing ']' from Lean's list output so the last entry doesn't carry it.
-echo "$AXIOMS" | grep -E "Weil_criterion_tau0|digamma_one_fourth_neg|Schur_test" | sed 's/]$//' | sed 's/^/   /' || echo "   (none found)"
+echo "$AXIOMS" | tr -d '[]' | grep -E "Weil_criterion_tau0|digamma_one_fourth_neg|Schur_test" | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
-echo "$AXIOMS_ONLY" | grep -E "PrimeCert|SingleScale|A1_density|Q_nonneg_on_atoms" | sed 's/]$//' | sed 's/^/   /' || echo "   (none found)"
+echo "$AXIOMS_ONLY_CLEAN" | grep -E "PrimeCert|SingleScale|A1_density|Q_nonneg_on_atoms" | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 echo "Level 3 (Bridge Lemmas):"
-echo "$AXIOMS" | grep -E "Lipschitz_bridge" | sed 's/]$//' | sed 's/^/   /' || echo "   (none found)"
+echo "$AXIOMS" | tr -d '[]' | grep -E "Lipschitz_bridge" | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 

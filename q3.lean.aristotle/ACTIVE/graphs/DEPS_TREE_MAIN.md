@@ -1,4 +1,4 @@
-# Main Dependency Tree (auto) — 2026-01-30 11:56 UTC
+# Main Dependency Tree (auto) — 2026-01-30 17:11 UTC
 
 **Purpose:** Full chain of *actual* axioms used by `Q3.Main.RH_of_Weil_and_Q3`, with file locations and local sub-axioms/sorries.
 **Source:** `lake env lean Q3/CheckAxioms.lean`
@@ -27,12 +27,12 @@
 ## Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data
 - File: `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`
 - Axioms in file: 2
-  - prime_heat_bounds_arch_data@L66, prime_heat_bounds_prime_data@L74
+  - prime_heat_bounds_arch_data@L101, prime_heat_bounds_prime_data@L109
 - Sorries in file: 0
 
 ## Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data
 - File: `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`
 - Axioms in file: 2
-  - prime_heat_bounds_arch_data@L66, prime_heat_bounds_prime_data@L74
+  - prime_heat_bounds_arch_data@L101, prime_heat_bounds_prime_data@L109
 - Sorries in file: 0
 

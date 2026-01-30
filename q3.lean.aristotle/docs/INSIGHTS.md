@@ -652,6 +652,15 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
   at each grid point using the same arch/prime estimates, or (B) keep as cert-data but
   add a non-`native_decide` verification file that checks the finite inequalities with
   `norm_num` only.
+- Update (2026-01-30): added `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSumTail.lean`
+  to split the prime-term tsum into partial sum + tail and reduce the grid bound
+  to two explicit obligations: (i) `prime_b_grid_prime_sum_up_to` ≤ table sum and
+  (ii) tail ≤ `prime_b_grid_tail_bound`. This is the intended landing zone for the
+  interval-certificate pilot (2 points first, then full grid).
+- Update (2026-01-30): proved a pointwise analytic domination lemma
+  `prime_b_grid_weight_term_le_tail_term` (same file), reducing the tail proof to
+  bounding `∑' n, prime_b_grid_tail_term (n + (N+1))` by the tiny numeric constant.
+  This isolates the remaining work to a sum→integral comparison + numeric bound.
 - Constraint: keep everything one-scale (`t_critical`, `tau = 0`) and avoid two-scale bridges
   (`Q3/Proofs/ShiftedWindows.lean`, `Q3/Proofs/Params_Critical.lean` are the anchors).
 - External leads for explicit prime-sum bounds: Schoenfeld (1976), Dusart/Trudgian bounds,
