@@ -39,9 +39,12 @@ lemma prime_heat_bounds_prime_data_of_data :
     ∑' n, (w_Q n * (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n n) ^ 2) * |xi_n n|)) *
         (if |xi_n n| ≤ prime_cert_B_max then (1 : ℝ) else 0)
       ≤ prime_cert_L_prime_heat_raw := by
+  have h_sum :
+      prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_L_prime_heat_partial := by
+    exact (prime_heat_sum_data.h_sum_ub).trans prime_cert_heat_prime_sum_up_to_ub_le_partial
   exact prime_heat_bounds_prime_data_of_sum_tail
     prime_heat_weight_term_summable
-    prime_heat_sum_data.h_sum
+    h_sum
     prime_heat_sum_data.h_tail
 
 end Q3.Proofs.PrimeCert
