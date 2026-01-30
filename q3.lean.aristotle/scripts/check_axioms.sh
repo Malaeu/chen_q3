@@ -178,6 +178,7 @@ echo ""
 echo "═══ Step 4: Axiom Classification ═══"
 
 echo "Level 1 (Classical Literature):"
+# Trim trailing ']' from Lean's list output so the last entry doesn't carry it.
 echo "$AXIOMS" | grep -E "Weil_criterion_tau0|digamma_one_fourth_neg|Schur_test" | sed 's/]$//' | sed 's/^/   /' || echo "   (none found)"
 
 echo ""

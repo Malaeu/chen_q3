@@ -23,6 +23,8 @@ Evidence files (sha256):
   - `a9d5303b2da81886cf64bfc5ee9b5b1ab85ce0b45067a8cd9b499d051a294230`
 - `output/prime_cert_brange_heat_L_2026-01-28_0115.txt`
   - `da6a6ac1221f93d376aafecd189169607b40b5d394868e893124445089a3e0a5`
+  - Heat cert details: N = 1000000, primes ≤ N = 78498,
+    tail_bound_heat = 0.00000000624018533524325430861606353873445952371208136593940599676748
 
 Generators:
 - `scripts/prime_term_cert.py`
