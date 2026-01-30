@@ -723,3 +723,19 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
   `prime_b_grid_tail_term` using `Summable.tsum_le_tsum`.
 - Remaining inputs: summability of the tail term and the numeric inequality
   `∑' n, prime_b_grid_tail_term (n + (N+1)) ≤ prime_b_grid_tail_bound`.
+
+## IN PROGRESS — Log‑Gaussian tail bound (PrimeCert B‑grid)
+
+- Target: prove `prime_b_grid_tail_term` summability and the numeric tail bound in
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSumTail.lean` (feeds the pilot + full grid).
+- Use `Mathlib/Analysis/SumIntegralComparisons` (`AntitoneOn.sum_le_integral`) to show
+  `∑_{n≥N+1} f(n) ≤ ∫_{N}^∞ f(x) dx` for `f(x) = 2 log x / sqrt x * exp(-t (log x)^2)`.
+- Establish monotone/antitone + nonneg of `f` for `x ≥ N` in the same file
+  (or a helper lemma file under `Q3/Proofs/PrimeCert/`).
+- Substitute `u = log x` to rewrite the integral as
+  `∫_{log N}^∞ 2u * exp(-t u^2 + u/2) du`; then complete the square.
+- Numeric closure: bound the Gaussian tail explicitly (Mill’s ratio) or,
+  if Lean bounds get heavy, submit a focused Aristotle lemma for the tail integral
+  and then plug into `prime_b_grid_tail_bound_of_tail_term`.
+- Once tail is closed, finish the two pilot points in
+  `Q3/Proofs/PrimeCert/BrangeGrid_Pilot_2026_01_30.lean` and lift to all 20 grid points.
