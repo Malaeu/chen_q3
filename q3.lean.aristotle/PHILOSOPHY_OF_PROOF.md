@@ -92,12 +92,15 @@ These are well-known results. Citations:
 - `A1_density_WK_axiom` → closed (A1_density_WK_thm)
 - `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` → closed via Q_nonneg_atoms_closure
 
-### Level 2: One‑Scale Numeric Certificates @ `t_critical` (2) — TEMPORARY BRIDGE
+### Level 2: One‑Scale Numeric Certificates @ `t_critical` (3) — TEMPORARY BRIDGE
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` — grid arch/prime bounds (data axiom), in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_data` — arch/prime heat bounds over B‑range (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data` — arch heat bound over B‑range (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data` — prime heat bound over B‑range (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`
 
-These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt` and
-`output/prime_cert_brange_tcritical_2026-01-26_0050.txt`) and are expected to be replaced by a fully formal certificate proof.
+These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt`,
+`output/prime_cert_brange_tcritical_2026-01-26_0050.txt`, and
+`output/prime_cert_brange_heat_L_2026-01-28_0115.txt`) and are expected to be replaced by a fully formal certificate proof.
+The aggregate lemma `prime_heat_bounds_data` is now derived from the two heat bounds above.
 
 **Important:** The former “SingleScale axioms” are now THEOREMS and do not appear in `#print axioms`.
 
@@ -132,7 +135,8 @@ Expected output:
   Quot.sound,                     -- Level 0a: Standard Lean
   Q3.Weil_criterion_tau0,          -- Level 1: Weil 1952 (τ=0 cone)
   Q3.Proofs.PrimeCert.prime_b_grid_bounds_data,         -- Level 2: one‑scale cert data
-  Q3.Proofs.PrimeCert.prime_heat_bounds_data            -- Level 2: one‑scale cert data
+  Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data,      -- Level 2: one‑scale cert data
+  Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data      -- Level 2: one‑scale cert data
 ]
 ```
 

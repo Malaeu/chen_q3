@@ -38,7 +38,8 @@ RH ⟺ Q(Φ) ≥ 0 for all Φ ∈ Weil_cone
 2) **Масштабы:** PDF использует two‑scale (`t_sym`, `t_rkhs`), Lean mainline —
    single‑scale `t_critical`.
 3) **Prime bounds:** Lean mainline опирается на **сертификаты** PrimeCert
-   (`prime_b_grid_bounds_data`, `prime_heat_bounds_data`), чего нет в PDF.
+   (`prime_b_grid_bounds_data`, `prime_heat_bounds_arch_data`, `prime_heat_bounds_prime_data`),
+   чего нет в PDF.
 4) **D3:** PDF содержит D3‑модуль, Lean mainline его не использует.
 
 **Итог:** текущая Lean‑цепочка — это **суженная “τ=0 / B‑range / t_critical” версия**,

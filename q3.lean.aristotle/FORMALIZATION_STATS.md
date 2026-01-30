@@ -1,6 +1,6 @@
 # Formalization Stats (Snapshot)
 
-Last updated: 2026-01-29
+Last updated: 2026-01-30
 Scope: Q3 Lean codebase - **ONLY code in proof chain counted**
 
 Notes:
@@ -110,10 +110,11 @@ Database: `aristotle_db/aristotle_proofs.db`
 | P_A_continuous | ✅ CLOSED |
 | Weil_criterion_tau0 | ⚪ EXTERNAL |
 | PrimeCert.prime_b_grid_bounds_data | ❌ OPEN (cert data) |
-| PrimeCert.prime_heat_bounds_data | ❌ OPEN (cert data) |
+| PrimeCert.prime_heat_bounds_arch_data | ❌ OPEN (cert data) |
+| PrimeCert.prime_heat_bounds_prime_data | ❌ OPEN (cert data) |
 
-**Current: 6 axioms (3 standard + 3 project)**
-**Remaining closable: 2 (PrimeCert cert-data)**
+**Current: 7 axioms (3 standard + 4 project)**
+**Remaining closable: 3 (PrimeCert cert-data)**
 
 ---
 
@@ -136,30 +137,30 @@ cd /Users/emalam/Documents/GitHub/chen_q3/full/q3.lean.aristotle
 ║              Q3 CONTRIBUTION STATISTICS                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
-Date: Sat Jan 24 14:14:46 CET 2026
+Date: Fr 30. Jan 12:56:18 CET 2026
 
 ═══ Section 1: Total Q3/ Codebase ═══
-  Total lines:       27800
-  Theorems:            287
-  Lemmas:              623
-  Definitions:         333
+  Total lines:    33835
+  Theorems:       307
+  Lemmas:         751
+  Definitions:    420
 
 ═══ Section 2: Aristotle Contribution (IN PROOF CHAIN) ═══
 
 A) Aristotle-generated files in Q3/Proofs/:
-    1748  Q3/Proofs/A1_density.lean
+    2038  Q3/Proofs/A1_density.lean
      895  Q3/Proofs/A1_density_main.lean
      149  Q3/Proofs/A3_bridge.lean
      298  Q3/Proofs/Digamma_Aristotle.lean
      339  Q3/Proofs/HatInterpolation.lean
+     105  Q3/Proofs/node_spacing.lean
+     170  Q3/Proofs/off_diag_exp_sum.lean
      110  Q3/Proofs/Q_nonneg_on_atoms.lean
      371  Q3/Proofs/RKHS_contraction.lean
       57  Q3/Proofs/S_K_small.lean
      122  Q3/Proofs/W_sum_finite.lean
-     105  Q3/Proofs/node_spacing.lean
-     170  Q3/Proofs/off_diag_exp_sum.lean
    ─────
-    4364  SUBTOTAL (integrated into Q3/Proofs/)
+    4654  SUBTOTAL (integrated into Q3/Proofs/)
 
 B) Aristotle files imported from aristotle_output/:
      767  aristotle_output/d1524982_aristotle.lean
@@ -167,20 +168,20 @@ B) Aristotle files imported from aristotle_output/:
      767  SUBTOTAL (imported)
 
 ╔══════════════════════════════════════════════════════════════╗
-║  TOTAL ARISTOTLE IN PROOF CHAIN:  5131 lines              ║
+║  TOTAL ARISTOTLE IN PROOF CHAIN:  5421 lines              ║
 ╚══════════════════════════════════════════════════════════════╝
 
 ═══ Section 3: Human/Manual Contribution ═══
-  Q3/ total:                 27800
-  - Aristotle integrated: 4364
+  Q3/ total:              33835
+  - Aristotle integrated: 4654
   ─────────────────────────
-  Human-written in Q3/:   23436
+  Human-written in Q3/:   29181
 
 ═══ Section 4: Aristotle Experiments (NOT in proof chain) ═══
-  Total aristotle_output/ files:       72
-  Total aristotle_output/ lines:    18440
+  Total aristotle_output/ files: 84
+  Total aristotle_output/ lines: 21496
   Used in proof chain:           767
-  Unused (experiments):          17673
+  Unused (experiments):          20729
 
 ═══ Section 5: Q3/Proofs/A1prime/ (New Module) ═══
   Files:
@@ -195,13 +196,13 @@ B) Aristotle files imported from aristotle_output/:
   ┌─────────────────────────────────────────────────────────┐
   │ Source                    │   Lines │   % of Q3/       │
   ├─────────────────────────────────────────────────────────┤
-  │ Aristotle (in proof)      │    5131 │  18%             │
-  │ Human/Manual              │   23436 │  84%             │
+  │ Aristotle (in proof)      │    5421 │  16%             │
+  │ Human/Manual              │   29181 │  86%             │
   ├─────────────────────────────────────────────────────────┤
-  │ TOTAL Q3/                 │   27800 │ 100%             │
+  │ TOTAL Q3/                 │   33835 │ 100%             │
   └─────────────────────────────────────────────────────────┘
 
-  Aristotle experiments (not used): 17673 lines
+  Aristotle experiments (not used): 20729 lines
 
 ═══ Done ═══
 ```

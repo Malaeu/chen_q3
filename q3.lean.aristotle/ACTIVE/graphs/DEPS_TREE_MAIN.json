@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-29 13:21 UTC",
+  "generated_at": "2026-01-30 11:56 UTC",
   "root": "Q3.Main.RH_of_Weil_and_Q3",
   "deps": [
     {
@@ -143,12 +143,31 @@
       "sorries_in_file": []
     },
     {
-      "name": "Q3.Proofs.PrimeCert.prime_heat_bounds_data",
-      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
+      "name": "Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data",
+      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean",
       "axioms_in_file": [
         [
-          78,
-          "prime_heat_bounds_data"
+          66,
+          "prime_heat_bounds_arch_data"
+        ],
+        [
+          74,
+          "prime_heat_bounds_prime_data"
+        ]
+      ],
+      "sorries_in_file": []
+    },
+    {
+      "name": "Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data",
+      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean",
+      "axioms_in_file": [
+        [
+          66,
+          "prime_heat_bounds_arch_data"
+        ],
+        [
+          74,
+          "prime_heat_bounds_prime_data"
         ]
       ],
       "sorries_in_file": []

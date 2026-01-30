@@ -2,7 +2,7 @@
 
 **Purpose:** Canonical, minimal chain summary for the current mainline.  
 **Current status:** Use `Q3/CheckAxioms.lean` as the authoritative dependency list.  
-**Next action:** Close the two main-chain Q3 data axioms listed in `ACTIVE/MAIN_CHAIN_DEPS.md`.  
+**Next action:** Close the three main-chain Q3 data axioms listed in `ACTIVE/MAIN_CHAIN_DEPS.md`.  
 **Decision (2026-01-29):** Option A selected — keep cert‑data axioms (hash‑checked) and move on.
 **Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `Q3/CheckAxioms.lean` · `ACTIVE/orchestrator.md`
 
@@ -42,7 +42,8 @@ It is intended to stay aligned with the code after each refactor.
 These are the only Q3-specific axioms blocking the **current** main chain:
 
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_data`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data`
 
 Authoritative check:
 ```bash

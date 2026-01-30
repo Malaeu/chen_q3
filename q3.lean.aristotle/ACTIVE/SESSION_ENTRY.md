@@ -64,7 +64,8 @@ Next steps:
 
 Status (compact-support branch):
 - Localized heat Lipschitz to `Icc (-B_max, B_max)` (no global Integrable/Summable).
-- Added cert axiom `prime_heat_bounds_cert` in
-  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`.
+- Added heat cert-data in
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean` and derived
+  `prime_heat_bounds_cert` in `BrangeHeatCert_2026_01_28.lean`.
 - Replaced `prime_margin_Lipschitz_on_Brange` axiom by theorem in
   `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`.

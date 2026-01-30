@@ -166,7 +166,7 @@ TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
 EXPECTED_STANDARD=3  # propext, Classical.choice, Quot.sound (no native_decide/compiler trust in chain)
-EXPECTED_PROJECT=3   # Weil_criterion_tau0, PrimeCert cert axioms (2)
+EXPECTED_PROJECT=4   # Weil_criterion_tau0, PrimeCert cert axioms (3)
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
@@ -178,15 +178,15 @@ echo ""
 echo "═══ Step 4: Axiom Classification ═══"
 
 echo "Level 1 (Classical Literature):"
-echo "$AXIOMS" | grep -E "Weil_criterion_tau0|digamma_one_fourth_neg|Schur_test" | sed 's/^/   /' || echo "   (none found)"
+echo "$AXIOMS" | grep -E "Weil_criterion_tau0|digamma_one_fourth_neg|Schur_test" | sed 's/]$//' | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 echo "Level 2 (Q3 Paper Contributions):"
-echo "$AXIOMS_ONLY" | grep -E "PrimeCert|SingleScale|A1_density|Q_nonneg_on_atoms" | sed 's/^/   /' || echo "   (none found)"
+echo "$AXIOMS_ONLY" | grep -E "PrimeCert|SingleScale|A1_density|Q_nonneg_on_atoms" | sed 's/]$//' | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 echo "Level 3 (Bridge Lemmas):"
-echo "$AXIOMS" | grep -E "Lipschitz_bridge" | sed 's/^/   /' || echo "   (none found)"
+echo "$AXIOMS" | grep -E "Lipschitz_bridge" | sed 's/]$//' | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 
@@ -197,7 +197,8 @@ echo "═══ Step 5: Philosophy Verification ═══"
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion_tau0"
     "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data"
-    "Q3.Proofs.PrimeCert.prime_heat_bounds_data"
+    "Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data"
+    "Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data"
 )
 
 UNKNOWN_AXIOMS=""

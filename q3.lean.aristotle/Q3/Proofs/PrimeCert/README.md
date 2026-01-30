@@ -9,6 +9,7 @@ PrimeCert/
   Bmin_1826.lean       -- B = B_min certificate axioms
   BrangeGrid_2046.lean -- grid values (B-range)
   BrangeGridBounds_2046.lean -- grid bounds lemma (arch/prime)
+  BrangeHeatCert_2026_01_28_Data.lean -- heat cert data (constants + axioms)
   BrangeHeatCert_2026_01_28.lean -- heat-weighted bounds data
   BrangeCert_2046.lean -- B-range certificate data + theorems (provenance)
   Brange_2046.lean     -- grid cover + margin lemma
@@ -33,4 +34,5 @@ Integration point:
 
 Current cert-data axioms (main chain):
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_data`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data`

@@ -251,7 +251,8 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 
 ## Synthesis (2026-01-26, in progress) — close PrimeCert B‑range axioms
 
-- Target axioms (current): `prime_b_grid_bounds_data`, `prime_heat_bounds_data`
+- Target axioms (current): `prime_b_grid_bounds_data`,
+  `prime_heat_bounds_arch_data`, `prime_heat_bounds_prime_data`
   in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`; used by
   `prime_cert_margin_on_Brange_axiom` → `Q3/Proofs/Q_nonneg_t_critical.lean`.
 - q3search/websearch commands are **missing** in this sandbox (both return “command not found”),
@@ -275,7 +276,8 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 
 ## Synthesis (2026-01-26, in progress) — analytic Lipschitz closure for PrimeCert margin(B)
 
-- Target axioms: `prime_b_grid_bounds_data`, `prime_heat_bounds_data`
+- Target axioms: `prime_b_grid_bounds_data`,
+  `prime_heat_bounds_arch_data`, `prime_heat_bounds_prime_data`
   (now in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`); goal is to **replace** them by proofs.
 - q3search/websearch are **missing** in this sandbox (both “command not found”); no semantic scan yet.
 - 2026-01-26 check: `q3search`/`websearch` still unavailable (127 / “Befehl nicht gefunden”).
@@ -551,7 +553,8 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 ## PrimeCert B-range Lipschitz (heat-weighted scaffold, 2026-01-28)
 
 **Why:** current main-chain axioms are
-`PrimeCert.prime_b_grid_bounds_data` and `PrimeCert.prime_heat_bounds_data`.
+`PrimeCert.prime_b_grid_bounds_data`, `PrimeCert.prime_heat_bounds_arch_data`,
+and `PrimeCert.prime_heat_bounds_prime_data`.
 The analytic bound in `Brange_Lipschitz_Analytic.lean` uses `W_sum_local` and is far too large;
 we need a *heat-weighted* Lipschitz constant to match the certificate scale (~0.3).
 
@@ -591,7 +594,7 @@ but constants are too large (`W_sum_local`, `M_a_local`).
 
 **Option 1 (preferred):** formalize heat-weighted bounds using `phi_shift_lipschitz_B_exp`,
 then bound prime/arch contributions by numeric constants from
-`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`; instantiate
+`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`; instantiate
 `PrimeMarginHeatLipschitzCert` (file: `Brange_Lipschitz_HeatScaffold.lean`) and replace the axiom.
 
 **Option 2 (fallback):** keep the axiom but document the analytic bound path
@@ -605,7 +608,8 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
 ## Synthesis (2026-01-30, in progress) — PrimeCert cert-data axioms closure plan
 
 - Target axioms: `prime_b_grid_bounds_data` (`Q3/Proofs/PrimeCert/BrangeCert_2046.lean`)
-  and `prime_heat_bounds_data` (`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`);
+  and the heat cert-data axioms `prime_heat_bounds_arch_data`,
+  `prime_heat_bounds_prime_data` (`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`);
   these feed `prime_b_grid_val_le_margin` and `prime_margin_Lipschitz_on_Brange`.
 - Step 1: discharge `PrimeHeatBoundsData` by proving `h_arch` + `h_prime` and use
   `prime_heat_bounds_total` for `h_total` (files:
@@ -631,9 +635,13 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
 
 ## Synthesis (2026-01-30, in progress) — PrimeHeatBoundsData closure pass 1
 
-- Target axiom: `Q3.Proofs.PrimeCert.prime_heat_bounds_data` in
-  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`; it feeds
-  `prime_heat_bounds_cert` and then `prime_margin_Lipschitz_on_Brange`.
+- Target axioms: `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`,
+  `Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data` in
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`; they feed
+  `prime_heat_bounds_data` → `prime_heat_bounds_cert` → `prime_margin_Lipschitz_on_Brange`.
+- Update (2026-01-30): split cert-data into two axioms
+  (`prime_heat_bounds_arch_data`, `prime_heat_bounds_prime_data`);
+  `prime_heat_bounds_data` is now derived from these.
 - Embedding search (q3_docs): queries `prime_heat_bounds`, `BrangeHeatCert`,
   `heat Lipschitz`, `prime cert heat`, `brange heat` returned only generic
   prime-cert notes; no existing formal closure.
@@ -649,5 +657,8 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
   inequalities with `norm_num`.
 - Implementation: add a data file (e.g. `BrangeHeatCert_2026_01_28_Data.lean`)
   and replace the axiom with a theorem that composes the two bounds.
+- Status update (2026-01-30): added `BrangeHeatCert_2026_01_28_Data.lean` and
+  moved the heat cert axioms + raw constants there; `prime_heat_bounds_data` is
+  now derived in `BrangeHeatCert_2026_01_28.lean`.
 - Success check: `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
   then `lake env lean Q3/CheckAxioms.lean`.

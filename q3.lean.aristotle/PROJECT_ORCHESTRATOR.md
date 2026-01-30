@@ -3,12 +3,12 @@
 
 **Purpose:** Single entry point for live status + next step.  
 **Current status:** Main-chain blockers are in `ACTIVE/MAIN_CHAIN_DEPS.md`.  
-**Next action:** Close the two main-chain Q3 axioms (PrimeCert + prime_term cap).  
+**Next action:** Close the three main-chain Q3 axioms (PrimeCert cert-data).  
 **Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `ACTIVE/chain_status.md` · `ACTIVE/KNOWLEDGE_BASE.md`
 
 ---
 
-Last Updated: 2026-01-29
+Last Updated: 2026-01-30
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -79,13 +79,14 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **6 axioms** (3 project + 3 kernel/standard)
+Result: **7 axioms** (4 project + 3 kernel/standard)
 
 - Kernel/standard: `propext`, `Classical.choice`, `Quot.sound`
 - Level 1 (Classical Literature): `Weil_criterion_tau0`
 - Level 2 (One‑scale numeric certificates @ t_critical):
   `Proofs.PrimeCert.prime_b_grid_bounds_data`,
-  `Proofs.PrimeCert.prime_heat_bounds_data`
+  `Proofs.PrimeCert.prime_heat_bounds_arch_data`,
+  `Proofs.PrimeCert.prime_heat_bounds_prime_data`
 - Legacy (off‑chain):
   `Schur_test` (classical), `prime_term_le_at_t_critical_axiom` (τ‑uniform bound; false‑for‑now)
 
@@ -115,7 +116,8 @@ RH_of_Weil_and_Q3
                  +-- one‑scale @ t_critical [OK]
                       |
                       +-- PrimeCert: prime_b_grid_bounds_data [AX cert data]
-                      +-- PrimeCert: prime_heat_bounds_data [AX cert data]
+                      +-- PrimeCert: prime_heat_bounds_arch_data [AX cert data]
+                      +-- PrimeCert: prime_heat_bounds_prime_data [AX cert data]
 ```
 
 ## 🚨🚨🚨 CRITICAL: LaTeX Proof Gap Discovered (2026-01-22) 🚨🚨🚨
@@ -155,7 +157,8 @@ Decision tree + file pointers live in `docs/INSIGHTS.md` (search for “нетр
 ## Active Next Step (current mainline)
 
 1) PrimeCert axioms are now **certificate-backed** (hash-checked):
-   `prime_b_grid_bounds_data`, `prime_heat_bounds_data`.
+   `prime_b_grid_bounds_data`, `prime_heat_bounds_arch_data`,
+   `prime_heat_bounds_prime_data`.
    Derived theorems: `prime_b_grid_val_le_margin`, `prime_heat_bounds_cert`.
    Next: analytic closure (Option A) or keep as cert-data axioms.
 2) Keep `Weil_criterion_tau0` as external classical axiom.
@@ -208,7 +211,8 @@ so we never block the main closure on analytic infrastructure.
 |------|-----------------------|---------|-------------|--------|
 | `Weil_criterion_tau0` | External (classical) | None | Classical result, keep as axiom | **EXTERNAL** |
 | `Proofs.PrimeCert.prime_b_grid_bounds_data` | Numeric certificate (hash-checked) | Analytic closure | long-term Option A | **AXIOM (cert data)** |
-| `Proofs.PrimeCert.prime_heat_bounds_data` | Numeric certificate (hash-checked) | Analytic closure | long-term Option A | **AXIOM (cert data)** |
+| `Proofs.PrimeCert.prime_heat_bounds_arch_data` | Numeric certificate (hash-checked) | Analytic closure | long-term Option A | **AXIOM (cert data)** |
+| `Proofs.PrimeCert.prime_heat_bounds_prime_data` | Numeric certificate (hash-checked) | Analytic closure | long-term Option A | **AXIOM (cert data)** |
 
 ## Progress Log (2026-01-16)
 
