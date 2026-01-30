@@ -622,5 +622,9 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
   (`Q3/Proofs/ShiftedWindows.lean`, `Q3/Proofs/Params_Critical.lean` are the anchors).
 - External leads for explicit prime-sum bounds: Schoenfeld (1976), Dusart/Trudgian bounds,
   and the AFP entry `Chebyshev_Prime_Bounds` as a formalizable reference path.
+- Web scan (2026-01-30): AFP `Chebyshev_Prime_Bounds` gives explicit ψ/θ bounds and a
+  concrete proof structure; consider porting the tail bound pattern for
+  `∑ w_Q n * exp(-c (log n)^2) * |log n|`. Also note newer explicit ψ bounds (e.g., 2023 JMAA)
+  as a constants source, but likely too heavy to formalize directly.
 - Success check: `lake env lean Q3/Proofs/PrimeCert/BrangeCert_2046.lean`,
   then `lake env lean Q3/CheckAxioms.lean` once mathlib is healthy.
