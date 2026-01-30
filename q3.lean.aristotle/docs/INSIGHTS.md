@@ -628,3 +628,26 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
   as a constants source, but likely too heavy to formalize directly.
 - Success check: `lake env lean Q3/Proofs/PrimeCert/BrangeCert_2046.lean`,
   then `lake env lean Q3/CheckAxioms.lean` once mathlib is healthy.
+
+## Synthesis (2026-01-30, in progress) — PrimeHeatBoundsData closure pass 1
+
+- Target axiom: `Q3.Proofs.PrimeCert.prime_heat_bounds_data` in
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`; it feeds
+  `prime_heat_bounds_cert` and then `prime_margin_Lipschitz_on_Brange`.
+- Embedding search (q3_docs): queries `prime_heat_bounds`, `BrangeHeatCert`,
+  `heat Lipschitz`, `prime cert heat`, `brange heat` returned only generic
+  prime-cert notes; no existing formal closure.
+- Web leads (external bounds for prime sums): Schoenfeld (1976) explicit ψ/θ bounds;
+  newer explicit ψ bounds in JMAA 2023 (useful for tail control if formalized).
+- Arch bound plan: use `a_star_linear_growth` + closed-form Gaussian integrals to
+  upper-bound `∫_{Icc} |a_star ξ| * exp(-4π^2 t ξ^2) * |ξ|` by
+  `prime_cert_L_arch_heat_raw` (files: `Brange_Lipschitz_HeatIntegrable.lean`,
+  `BrangeHeatCert_2026_01_28.lean`).
+- Prime bound plan: split sum at `N = 10^6` (finite part imported with
+  directional rounding as data), plus a tail bound via the integral estimate
+  already used in `scripts/prime_brange_heat_lipschitz_cert.py`; wrap into Lean
+  inequalities with `norm_num`.
+- Implementation: add a data file (e.g. `BrangeHeatCert_2026_01_28_Data.lean`)
+  and replace the axiom with a theorem that composes the two bounds.
+- Success check: `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+  then `lake env lean Q3/CheckAxioms.lean`.
