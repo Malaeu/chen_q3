@@ -40,6 +40,28 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Synthesis (2026-01-30, in progress) — PrimeCert axiom closure plan (grid + heat)
+
+Goal: close the 3 main-chain PrimeCert axioms:
+`prime_b_grid_bounds_data`, `prime_heat_bounds_arch_data`, `prime_heat_bounds_prime_data`.
+
+Plan (5–10 lines, concrete pointers):
+1) Grid bounds: move `prime_b_grid_bounds_data` to a theorem in
+   `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` by proving `h_arch`/`h_prime`
+   using the numeric tables already in `BrangeGrid_2046.lean`.
+2) Create a small “grid evidence” file (if needed) with per‑index bounds extracted
+   from `output/prime_cert_brange_tcritical_2026-01-26_0050.txt`, keeping values as ℚ,
+   then use `fin_cases` + `norm_num` (no `native_decide`).
+3) Prime heat bound: in `BrangeHeatCert_2026_01_28_Data.lean`, use the new
+   `prime_cert_heat_N` + tail bound to show
+   `tsum = sum_{n≤N} + tail`, then prove `≤ L_prime_heat_raw`.
+4) Arch heat bound: build a dedicated lemma in
+   `BrangeHeatCert_2026_01_28_Data.lean` or a new file that upper‑bounds the
+   integral via interval arithmetic / numeric quadrature certificate; keep it
+   as a theorem (no new axioms).
+5) Wire results back: drop the three axioms, update `Q3/CheckAxioms.lean`,
+   `PHILOSOPHY_OF_PROOF.md`, and re‑run `./scripts/check_axioms.sh`.
+
 ## Audit (2026-01-29) — PDF vs Lean mainline divergence (in progress)
 
 - RH_Q3.pdf формулирует **классический Weil‑конус**; mainline Lean использует
