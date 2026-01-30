@@ -14,6 +14,7 @@ PrimeCert/
   BrangeGrid_PrimeSum_2026_01_30_Data.lean -- prime-term sum data (all points)
   BrangeGridBounds_2046.lean -- grid bounds lemma (arch/prime)
   BrangeHeatCert_2026_01_28_Data.lean -- heat cert data (constants + axioms)
+  BrangeHeatCert_2026_01_28_SumData.lean -- heat prime partial+tail data
   BrangeHeatCert_2026_01_28_Partial.lean -- prime-heat partial-sum scaffold
   BrangeHeatCert_2026_01_28.lean -- heat-weighted bounds data
   BrangeCert_2046.lean -- B-range certificate data + theorems (provenance)

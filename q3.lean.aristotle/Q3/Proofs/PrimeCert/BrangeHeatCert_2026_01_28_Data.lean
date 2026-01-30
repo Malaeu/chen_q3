@@ -104,6 +104,6 @@ axiom prime_heat_bounds_arch_data :
     ≤ prime_cert_L_arch_heat_raw
 
 -- Prime-heat bound is derived from the partial-sum data in
--- `BrangeHeatCert_2026_01_28_Partial.lean`.
+-- `BrangeHeatCert_2026_01_28_SumData.lean`.
 
 end Q3.Proofs.PrimeCert

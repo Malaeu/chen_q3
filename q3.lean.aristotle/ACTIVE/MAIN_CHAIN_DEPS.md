@@ -43,7 +43,7 @@ Standard Mathlib axioms (`propext`, `Classical.choice`, `Quot.sound`) are always
 |---|---|---|
 | `prime_b_grid_bounds_data` | `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` | Grid arch/prime bounds data |
 | `prime_heat_bounds_arch_data` | `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean` | Heat-weighted arch bound data |
-| `prime_heat_sum_data` | `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Partial.lean` | Heat-weighted prime partial+tail data |
+| `prime_heat_sum_data` | `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean` | Heat-weighted prime partial+tail data |
 | `Weil_criterion_tau0` | `Q3/Axioms.lean` | classical bridge `Q >= 0` ⇒ RH (τ = 0 mainline) |
 | `Schur_test` | `Q3/Axioms.lean` | legacy / off‑chain in current mainline |
 

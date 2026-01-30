@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-30 22:23 UTC",
+  "generated_at": "2026-01-30 22:50 UTC",
   "root": "Q3.Main.RH_of_Weil_and_Q3",
   "nodes": [
     {
@@ -222,7 +222,7 @@
     {
       "id": "Q3.Proofs.PrimeCert.prime_heat_sum_data",
       "status": "axiom",
-      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Partial.lean",
+      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean",
       "axioms_in_file": [
         [
           33,

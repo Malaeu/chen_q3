@@ -52,8 +52,9 @@ Plan (5–10 lines, concrete pointers):
 2) Create a small “grid evidence” file (if needed) with per‑index bounds extracted
    from `output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`, keeping values as ℚ,
    then use `fin_cases` + `norm_num` (no `native_decide`).
-3) Prime heat bound: in `BrangeHeatCert_2026_01_28_Data.lean`, use the new
-   `prime_cert_heat_N` + tail bound to show
+3) Prime heat bound: use the decomposition in
+   `BrangeHeatCert_2026_01_28_Data.lean` plus numeric evidence in
+   `BrangeHeatCert_2026_01_28_SumData.lean` to show
    `tsum = sum_{n≤N} + tail`, then prove `≤ L_prime_heat_raw`.
 4) Arch heat bound: build a dedicated lemma in
    `BrangeHeatCert_2026_01_28_Data.lean` or a new file that upper‑bounds the
@@ -65,7 +66,8 @@ Plan (5–10 lines, concrete pointers):
 Status (2026-01-30):
 - Added grid prime partial sums + tail bound in `PrimeCert/BrangeGrid_2046.lean`.
 - Added prime-heat tsum decomposition scaffold in
-  `PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`.
+  `PrimeCert/BrangeHeatCert_2026_01_28_Data.lean` and sum evidence in
+  `PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`.
 - Full closure still blocked on formal numeric certification of
   `arch_term` and `prime_term` values (needs interval/verified quadrature or
   a generated Lean proof pipeline).
@@ -639,7 +641,7 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
 
 - Target axioms: `prime_b_grid_bounds_data` (`Q3/Proofs/PrimeCert/BrangeCert_2046.lean`)
   and the heat cert-data axioms `prime_heat_bounds_arch_data`,
-  `prime_heat_sum_data` (`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Partial.lean`);
+  `prime_heat_sum_data` (`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`);
   these feed `prime_b_grid_val_le_margin` and `prime_margin_Lipschitz_on_Brange`.
 - Step 1: discharge `PrimeHeatBoundsData` by proving `h_arch` + `h_prime` and use
   `prime_heat_bounds_total` for `h_total` (files:
@@ -674,9 +676,10 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
 
 ## Synthesis (2026-01-30, in progress) — PrimeHeatBoundsData closure pass 1
 
-- Target axioms: `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`,
+- Target axioms: `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data` in
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean` and
   `Q3.Proofs.PrimeCert.prime_heat_sum_data` in
-  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`; they feed
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`; they feed
   `prime_heat_bounds_data` → `prime_heat_bounds_cert` → `prime_margin_Lipschitz_on_Brange`.
 - Update (2026-01-30): split cert-data into two axioms
   (`prime_heat_bounds_arch_data`, `prime_heat_sum_data`);
@@ -694,11 +697,13 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
   directional rounding as data), plus a tail bound via the integral estimate
   already used in `scripts/prime_brange_heat_lipschitz_cert.py`; wrap into Lean
   inequalities with `norm_num`.
-- Implementation: add a data file (e.g. `BrangeHeatCert_2026_01_28_Data.lean`)
-  and replace the axiom with a theorem that composes the two bounds.
-- Status update (2026-01-30): added `BrangeHeatCert_2026_01_28_Data.lean` and
-  moved the heat cert axioms + raw constants there; `prime_heat_bounds_data` is
-  now derived in `BrangeHeatCert_2026_01_28.lean`.
+- Implementation: add a dedicated sum-data file
+  (`BrangeHeatCert_2026_01_28_SumData.lean`) and replace the axiom with a
+  theorem that composes the two bounds.
+- Status update (2026-01-30): added `BrangeHeatCert_2026_01_28_Data.lean` for
+  constants + arch bound, and `BrangeHeatCert_2026_01_28_SumData.lean` for
+  partial+tail evidence; `prime_heat_bounds_data` is now derived in
+  `BrangeHeatCert_2026_01_28.lean`.
 - Success check: `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
   then `lake env lean Q3/CheckAxioms.lean`.
 

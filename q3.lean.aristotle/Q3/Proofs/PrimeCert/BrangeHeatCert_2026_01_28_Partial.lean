@@ -1,5 +1,6 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_SumData
 import Q3.Proofs.Q_nonneg_lemmas
 
 /-!
@@ -15,22 +16,6 @@ prime-heat sum via a finite partial sum plus a tail estimate.
 noncomputable section
 
 namespace Q3.Proofs.PrimeCert
-
-/-- Source file (prime-heat partial sum evidence). -/
-def prime_cert_heat_prime_partial_source : String :=
-  "output/prime_cert_brange_heat_prime_partial_interval_2026-01-30_2309.txt"
-
-/-- SHA256 of the partial-sum source file. -/
-def prime_cert_heat_prime_partial_sha256 : String :=
-  "1c9fe427476eb63cfa9e4eb57a23888bdbabf08afc5e1d59095f0a7bee80c1f8"
-
-structure PrimeHeatSumData where
-  h_sum : prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_L_prime_heat_partial
-  h_tail :
-    ∑' n, prime_heat_weight_term (n + (prime_cert_heat_N + 1)) ≤
-      prime_cert_heat_tail_bound
-
-axiom prime_heat_sum_data : PrimeHeatSumData
 
 lemma prime_heat_weight_term_summable :
     Summable prime_heat_weight_term := by
