@@ -394,4 +394,27 @@ lemma prime_b_grid_tail_term_summable :
     have hle := prime_b_grid_tail_term_le_rpow (m := n + prime_b_grid_tail_N0) hm
     simpa [mul_comm, mul_left_comm, mul_assoc] using hle
 
+lemma prime_b_grid_weight_term_summable (i : Fin prime_b_grid_size) :
+    Summable (prime_b_grid_weight_term i) := by
+  have hsum_tail :
+      Summable (fun n => prime_b_grid_tail_term (n + prime_b_grid_tail_N0)) :=
+    prime_b_grid_tail_term_summable
+  have hsum_shift :
+      Summable (fun n => prime_b_grid_weight_term i (n + prime_b_grid_tail_N0)) := by
+    refine Summable.of_nonneg_of_le ?_ ?_ hsum_tail
+    · intro n
+      have hw_nonneg : 0 ≤ w_Q (n + prime_b_grid_tail_N0) := by
+        simpa using (w_Q_nonneg (n + prime_b_grid_tail_N0))
+      have hphi_nonneg :
+          0 ≤
+            phi_shift (prime_b_grid i) t_critical 0 (xi_n (n + prime_b_grid_tail_N0)) := by
+        simpa [phi_shift] using
+          (fejer_heat_window_nonneg (B := prime_b_grid i) (t := t_critical)
+            (ξ := xi_n (n + prime_b_grid_tail_N0)))
+      simpa [prime_b_grid_weight_term] using mul_nonneg hw_nonneg hphi_nonneg
+    · intro n
+      simpa using prime_b_grid_weight_term_shift_le_tail_term i n
+  exact (summable_nat_add_iff (f := fun n => prime_b_grid_weight_term i n)
+    prime_b_grid_tail_N0).1 hsum_shift
+
 end Q3.Proofs.PrimeCert

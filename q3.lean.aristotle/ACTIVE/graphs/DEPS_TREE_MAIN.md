@@ -1,4 +1,4 @@
-# Main Dependency Tree (auto) — 2026-01-30 18:22 UTC
+# Main Dependency Tree (auto) — 2026-01-30 20:50 UTC
 
 **Purpose:** Full chain of *actual* axioms used by `Q3.Main.RH_of_Weil_and_Q3`, with file locations and local sub-axioms/sorries.
 **Source:** `lake env lean Q3/CheckAxioms.lean`

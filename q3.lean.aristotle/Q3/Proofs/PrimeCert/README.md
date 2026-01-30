@@ -8,8 +8,13 @@ PrimeCert/
   Defs.lean            -- numeric constants from prime cert runs
   Bmin_1826.lean       -- B = B_min certificate axioms
   BrangeGrid_2046.lean -- grid values (B-range)
+  BrangeGrid_PrimeSumTail.lean -- prime-term tail/summability scaffold
+  BrangeGrid_Pilot_2026_01_30.lean -- pilot hypotheses (2 points)
+  BrangeGrid_Pilot_2026_01_30_Data.lean -- pilot data (2 points)
+  BrangeGrid_PrimeSum_2026_01_30_Data.lean -- prime-term sum data (all points)
   BrangeGridBounds_2046.lean -- grid bounds lemma (arch/prime)
   BrangeHeatCert_2026_01_28_Data.lean -- heat cert data (constants + axioms)
+  BrangeHeatCert_2026_01_28_Partial.lean -- prime-heat partial-sum scaffold
   BrangeHeatCert_2026_01_28.lean -- heat-weighted bounds data
   BrangeCert_2046.lean -- B-range certificate data + theorems (provenance)
   Brange_2046.lean     -- grid cover + margin lemma
@@ -21,6 +26,8 @@ Evidence files (sha256):
   - `3af1204fc8f5ddf322e1110b9932bb44a5349e0773d6d1b3cdf5441ec8ef3b5d`
 - `output/prime_cert_brange_tcritical_2026-01-26_0050.txt`
   - `a9d5303b2da81886cf64bfc5ee9b5b1ab85ce0b45067a8cd9b499d051a294230`
+- `output/prime_cert_brange_tcritical_pilot_2026-01-30_2139.txt`
+  - `cd1fe25842152027154072b9378fa893d30ef1c3a62cb59cad4b55369eef7941`
 - `output/prime_cert_brange_heat_L_2026-01-28_0115.txt`
   - `da6a6ac1221f93d376aafecd189169607b40b5d394868e893124445089a3e0a5`
   - Heat cert details: N = 1000000, primes ≤ N = 78498,
