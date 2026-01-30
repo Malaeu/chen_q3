@@ -40,10 +40,37 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Synthesis (2026-01-31, in progress) — Interval-certificate closure (pilot → grid → heat)
+
+Target lemmas/axioms (PrimeCert):
+- `prime_b_grid_pilot_sum_le_0`, `prime_b_grid_pilot_sum_le_19`
+  (`Q3/Proofs/PrimeCert/BrangeGrid_Pilot_2026_01_30_Data.lean`)
+- `prime_b_grid_prime_sum_le_all`
+  (`Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`)
+- `prime_heat_sum_data`
+  (`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`)
+
+Embedding search: `scripts/research_oracle.py` blocked (qmd not on PATH).
+
+Plan (5–10 lines, concrete pointers):
+1) Generate a Lean cert file with per‑B interval upper bounds for
+   `prime_b_grid_prime_sum_up_to` and numeric proofs with `norm_num`
+   (no `native_decide`).
+2) Pilot: replace axioms with theorems `prime_b_grid_pilot_sum_le_0/19`
+   in `BrangeGrid_Pilot_2026_01_30_Data.lean`.
+3) Full grid: extend generator to all 20 points; prove
+   `prime_b_grid_prime_sum_le_all` by `fin_cases` in
+   `BrangeGrid_PrimeSum_2026_01_30_Data.lean`.
+4) Heat: use the same pattern to populate `prime_heat_sum_data.h_sum`
+   from `prime_cert_brange_heat_prime_partial_interval_2026-01-31_0009.txt`;
+   keep `h_tail` from `BrangeHeatCert_2026_01_28_Data.lean`.
+5) Success check: `lake env lean` on pilot/grid/heat files, then
+   `./scripts/check_axioms.sh` + refresh graphs/stats.
+
 ## Synthesis (2026-01-30, in progress) — PrimeCert axiom closure plan (grid + heat)
 
 Goal: close the 3 main-chain PrimeCert axioms:
-`prime_b_grid_bounds_data`, `prime_heat_bounds_arch_data`, `prime_heat_sum_data`.
+`prime_b_grid_bounds_data`, `prime_heat_bounds_arch_data`, `prime_heat_bounds_prime_data`.
 
 Plan (5–10 lines, concrete pointers):
 1) Grid bounds: move `prime_b_grid_bounds_data` to a theorem in
@@ -284,7 +311,7 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 ## Synthesis (2026-01-26, in progress) — close PrimeCert B‑range axioms
 
 - Target axioms (current): `prime_b_grid_bounds_data`,
-  `prime_heat_bounds_arch_data`, `prime_heat_sum_data`
+  `prime_heat_bounds_arch_data`, `prime_heat_bounds_prime_data`
   in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`; used by
   `prime_cert_margin_on_Brange_axiom` → `Q3/Proofs/Q_nonneg_t_critical.lean`.
 - q3search/websearch commands are **missing** in this sandbox (both return “command not found”),
@@ -309,7 +336,7 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 ## Synthesis (2026-01-26, in progress) — analytic Lipschitz closure for PrimeCert margin(B)
 
 - Target axioms: `prime_b_grid_bounds_data`,
-  `prime_heat_bounds_arch_data`, `prime_heat_sum_data`
+  `prime_heat_bounds_arch_data`, `prime_heat_bounds_prime_data`
   (now in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`); goal is to **replace** them by proofs.
 - q3search/websearch are **missing** in this sandbox (both “command not found”); no semantic scan yet.
 - 2026-01-26 check: `q3search`/`websearch` still unavailable (127 / “Befehl nicht gefunden”).
@@ -586,7 +613,7 @@ Carathéodory–Fejér theorem for Toeplitz matrices**.
 
 **Why:** current main-chain axioms are
 `PrimeCert.prime_b_grid_bounds_data`, `PrimeCert.prime_heat_bounds_arch_data`,
-and `PrimeCert.prime_heat_sum_data`.
+and `PrimeCert.prime_heat_bounds_prime_data`.
 The analytic bound in `Brange_Lipschitz_Analytic.lean` uses `W_sum_local` and is far too large;
 we need a *heat-weighted* Lipschitz constant to match the certificate scale (~0.3).
 
@@ -641,7 +668,7 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
 
 - Target axioms: `prime_b_grid_bounds_data` (`Q3/Proofs/PrimeCert/BrangeCert_2046.lean`)
   and the heat cert-data axioms `prime_heat_bounds_arch_data`,
-  `prime_heat_sum_data` (`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`);
+  `prime_heat_bounds_prime_data` (`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`);
   these feed `prime_b_grid_val_le_margin` and `prime_margin_Lipschitz_on_Brange`.
 - Step 1: discharge `PrimeHeatBoundsData` by proving `h_arch` + `h_prime` and use
   `prime_heat_bounds_total` for `h_total` (files:
