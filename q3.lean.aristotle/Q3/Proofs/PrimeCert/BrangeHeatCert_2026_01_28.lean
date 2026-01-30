@@ -4,6 +4,7 @@ import Q3.Proofs.A3_Floor_Bounds
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Partial
 
 /-!
 Heat-weighted Lipschitz certificate constants (t_critical, tau = 0).
@@ -58,7 +59,7 @@ Certificate bounds for heat-weighted Lipschitz estimates (t_critical, tau = 0).
 Numeric source: `output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt`.
 -/
 theorem prime_heat_bounds_data : PrimeHeatBoundsData := by
-  exact ⟨prime_heat_bounds_arch_data, prime_heat_bounds_prime_data⟩
+  exact ⟨prime_heat_bounds_arch_data, prime_heat_bounds_prime_data_of_data⟩
 
 theorem prime_heat_bounds_cert : PrimeHeatBounds := by
   refine ⟨prime_heat_bounds_data.h_arch, prime_heat_bounds_data.h_prime, ?_⟩

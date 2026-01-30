@@ -103,12 +103,7 @@ axiom prime_heat_bounds_arch_data :
       |a_star ξ| * (Real.exp (-4 * Real.pi ^ 2 * t_critical * ξ ^ 2) * |ξ|)
     ≤ prime_cert_L_arch_heat_raw
 
-/--
-Data axiom: prime heat sum bound over the B-range.
--/
-axiom prime_heat_bounds_prime_data :
-  ∑' n, (w_Q n * (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n n) ^ 2) * |xi_n n|)) *
-      (if |xi_n n| ≤ prime_cert_B_max then (1 : ℝ) else 0)
-    ≤ prime_cert_L_prime_heat_raw
+-- Prime-heat bound is derived from the partial-sum data in
+-- `BrangeHeatCert_2026_01_28_Partial.lean`.
 
 end Q3.Proofs.PrimeCert

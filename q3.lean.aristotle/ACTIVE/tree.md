@@ -59,7 +59,7 @@ ACTIVE/
 1) `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
    → `prime_b_grid_bounds_data`
 2) `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`
-   → `prime_heat_bounds_arch_data`, `prime_heat_bounds_prime_data`
+   → `prime_heat_bounds_arch_data`, `prime_heat_sum_data`
 3) `Q3/Axioms.lean`
    → `Weil_criterion_tau0`
 4) `Q3/CheckAxioms.lean`

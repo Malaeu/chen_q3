@@ -95,7 +95,7 @@ These are well-known results. Citations:
 ### Level 2: One‑Scale Numeric Certificates @ `t_critical` (3) — TEMPORARY BRIDGE
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` — grid arch/prime bounds (data axiom), in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
 - `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data` — arch heat bound over B‑range (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data` — prime heat bound over B‑range (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`
+- `Q3.Proofs.PrimeCert.prime_heat_sum_data` — prime heat partial+tail data axiom, in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Partial.lean`
 
 These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt`,
 `output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`, and
@@ -136,7 +136,7 @@ Expected output:
   Q3.Weil_criterion_tau0,          -- Level 1: Weil 1952 (τ=0 cone)
   Q3.Proofs.PrimeCert.prime_b_grid_bounds_data,         -- Level 2: one‑scale cert data
   Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data,      -- Level 2: one‑scale cert data
-  Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data      -- Level 2: one‑scale cert data
+  Q3.Proofs.PrimeCert.prime_heat_sum_data              -- Level 2: one‑scale cert data
 ]
 ```
 

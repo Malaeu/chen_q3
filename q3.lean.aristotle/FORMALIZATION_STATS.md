@@ -111,7 +111,7 @@ Database: `aristotle_db/aristotle_proofs.db`
 | Weil_criterion_tau0 | ⚪ EXTERNAL |
 | PrimeCert.prime_b_grid_bounds_data | ❌ OPEN (cert data) |
 | PrimeCert.prime_heat_bounds_arch_data | ❌ OPEN (cert data) |
-| PrimeCert.prime_heat_bounds_prime_data | ❌ OPEN (cert data) |
+| PrimeCert.prime_heat_sum_data | ❌ OPEN (cert data) |
 
 **Current: 7 axioms (3 standard + 4 project)**
 **Remaining closable: 3 (PrimeCert cert-data)**
@@ -137,13 +137,13 @@ cd /mnt/hdd01/Soft/GitHub/chen_q3/worktrees/rh_clean/q3.lean.aristotle
 ║              Q3 CONTRIBUTION STATISTICS                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
-Date: Fr 30. Jan 22:16:39 CET 2026
+Date: Fr 30. Jan 23:23:42 CET 2026
 
 ═══ Section 1: Total Q3/ Codebase ═══
-  Total lines:    34551
+  Total lines:    34558
   Theorems:       307
   Lemmas:         776
-  Definitions:    437
+  Definitions:    439
 
 ═══ Section 2: Aristotle Contribution (IN PROOF CHAIN) ═══
 
@@ -172,10 +172,10 @@ B) Aristotle files imported from aristotle_output/:
 ╚══════════════════════════════════════════════════════════════╝
 
 ═══ Section 3: Human/Manual Contribution ═══
-  Q3/ total:              34551
+  Q3/ total:              34558
   - Aristotle integrated: 4654
   ─────────────────────────
-  Human-written in Q3/:   29897
+  Human-written in Q3/:   29904
 
 ═══ Section 4: Aristotle Experiments (NOT in proof chain) ═══
   Total aristotle_output/ files: 84
@@ -197,9 +197,9 @@ B) Aristotle files imported from aristotle_output/:
   │ Source                    │   Lines │   % of Q3/       │
   ├─────────────────────────────────────────────────────────┤
   │ Aristotle (in proof)      │    5421 │  15%             │
-  │ Human/Manual              │   29897 │  86%             │
+  │ Human/Manual              │   29904 │  86%             │
   ├─────────────────────────────────────────────────────────┤
-  │ TOTAL Q3/                 │   34551 │ 100%             │
+  │ TOTAL Q3/                 │   34558 │ 100%             │
   └─────────────────────────────────────────────────────────┘
 
   Aristotle experiments (not used): 20729 lines

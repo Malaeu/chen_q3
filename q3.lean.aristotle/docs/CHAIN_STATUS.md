@@ -43,7 +43,7 @@ These are the only Q3-specific axioms blocking the **current** main chain:
 
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
 - `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data`
+- `Q3.Proofs.PrimeCert.prime_heat_sum_data`
 
 Authoritative check:
 ```bash

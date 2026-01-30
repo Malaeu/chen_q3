@@ -40,7 +40,7 @@ open Q3.Main
 -- PrimeCert (grid/heat bounds data + Lipschitz on B-range)
 #check Q3.Proofs.PrimeCert.prime_b_grid_bounds_data
 #check Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data
-#check Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data
+#check Q3.Proofs.PrimeCert.prime_heat_sum_data
 #check Q3.Proofs.PrimeCert.prime_heat_bounds_data
 #check Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange
 
@@ -74,7 +74,7 @@ open Q3.Main
 ### Tier-2 Q3 Paper Axioms (τ=0 mainline):
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` : grid arch/prime bounds
 - `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data` : heat-weighted arch bound
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_prime_data` : heat-weighted prime bound
+- `Q3.Proofs.PrimeCert.prime_heat_sum_data` : heat-weighted prime partial+tail data
 - `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` : Lipschitz control on B-range
 
 ### THEOREM (not axiom!):
