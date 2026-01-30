@@ -39,8 +39,6 @@
   2) потом внешний web‑поиск через встроенный web tool,
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
-- PrimeCert cert-data closure plan (2026-01-30, in progress):
-  `docs/INSIGHTS.md` (section “PrimeCert cert-data axioms closure plan”).
 
 ## Audit (2026-01-29) — PDF vs Lean mainline divergence (in progress)
 
@@ -602,3 +600,27 @@ then bound prime/arch contributions by numeric constants from
 **Immediate next actions:** (a) create Lean lemmas `h_arch`/`h_prime` using heat-weighted
 integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.lean`;
 (c) re-run `lake env lean` on the touched files.
+
+
+## Synthesis (2026-01-30, in progress) — PrimeCert cert-data axioms closure plan
+
+- Target axioms: `prime_b_grid_bounds_data` (`Q3/Proofs/PrimeCert/BrangeCert_2046.lean`)
+  and `prime_heat_bounds_data` (`Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`);
+  these feed `prime_b_grid_val_le_margin` and `prime_margin_Lipschitz_on_Brange`.
+- Step 1: discharge `PrimeHeatBoundsData` by proving `h_arch` + `h_prime` and use
+  `prime_heat_bounds_total` for `h_total` (files:
+  `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatProof.lean`,
+  `Q3/Proofs/PrimeCert/Brange_Lipschitz_HeatIntegrable.lean`).
+- Step 2: wire `prime_heat_bounds_cert` into
+  `margin_Lipschitz_heat_of_bounds` → `prime_margin_Lipschitz_on_Brange`
+  (`Q3/Proofs/PrimeCert/BrangeCert_2046.lean`).
+- Step 3 (grid data): either (A) replace `prime_b_grid_bounds_data` with analytic bounds
+  at each grid point using the same arch/prime estimates, or (B) keep as cert-data but
+  add a non-`native_decide` verification file that checks the finite inequalities with
+  `norm_num` only.
+- Constraint: keep everything one-scale (`t_critical`, `tau = 0`) and avoid two-scale bridges
+  (`Q3/Proofs/ShiftedWindows.lean`, `Q3/Proofs/Params_Critical.lean` are the anchors).
+- External leads for explicit prime-sum bounds: Schoenfeld (1976), Dusart/Trudgian bounds,
+  and the AFP entry `Chebyshev_Prime_Bounds` as a formalizable reference path.
+- Success check: `lake env lean Q3/Proofs/PrimeCert/BrangeCert_2046.lean`,
+  then `lake env lean Q3/CheckAxioms.lean` once mathlib is healthy.
