@@ -99,7 +99,7 @@ These are well-known results. Citations:
 
 These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt`,
 `output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`, and
-`output/prime_cert_brange_heat_L_interval_2026-01-30_2254.txt`) and are expected to be replaced by a fully formal certificate proof.
+`output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt`) and are expected to be replaced by a fully formal certificate proof.
 The aggregate lemma `prime_heat_bounds_data` is now derived from the two heat bounds above.
 
 **Important:** The former “SingleScale axioms” are now THEOREMS and do not appear in `#print axioms`.

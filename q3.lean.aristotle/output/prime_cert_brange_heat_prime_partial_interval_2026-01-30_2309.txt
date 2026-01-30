@@ -3,8 +3,8 @@ Prime-heat partial-sum interval certificate (t_critical, tau=0)
 
 Source heat cert: output/prime_cert_brange_heat_L_2026-01-28_0115.txt
 N = 1000000
-t_critical = 0.1500000000000000222
-B_max = [4.8999999999999994671, 4.9000000000000003553]
+t_critical = 0.15
+B_max = 4.9
 primes <= N: 78498
 
 tail_bound_heat = 6.24018533524325430861606353873445952371208136593940599676748E-9

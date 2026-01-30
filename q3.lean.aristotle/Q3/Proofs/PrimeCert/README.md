@@ -28,12 +28,12 @@ Evidence files (sha256):
   - `451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48`
 - `output/prime_cert_brange_tcritical_pilot_2026-01-30_2208.txt`
   - `e721a55add5218fc50f01eda07d715c9f5621989ba6cda8abac11e3671b7b0f0`
-- `output/prime_cert_brange_heat_L_interval_2026-01-30_2254.txt`
-  - `30cd0d411e4818e775f1308f1cf105239cd381c33823d2e61ebc034ed2f787bc`
+- `output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt`
+  - `05b044cbc035b285c453631af81eed8bd0a49b2f0866f6f7f3035c09732630d8`
   - Heat cert details: N = 1000000, primes ≤ N = 78498,
     tail_bound_heat = 0.00000000624018533524325430861606353873445952371208136593940599676748
-- `output/prime_cert_brange_heat_prime_partial_interval_2026-01-30_2254.txt`
-  - `15cde7c07bde5bd0cd0cc72dc0bbf6d8e72102eb111329596e78e96186cdc74f`
+- `output/prime_cert_brange_heat_prime_partial_interval_2026-01-30_2309.txt`
+  - `1c9fe427476eb63cfa9e4eb57a23888bdbabf08afc5e1d59095f0a7bee80c1f8`
 
 Generators:
 - `scripts/prime_term_cert.py`
