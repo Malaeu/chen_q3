@@ -39,6 +39,8 @@
   2) потом внешний web‑поиск через встроенный web tool,
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
+- PrimeCert cert-data closure plan (2026-01-30, in progress):
+  `docs/INSIGHTS.md` (section “PrimeCert cert-data axioms closure plan”).
 
 ## Audit (2026-01-29) — PDF vs Lean mainline divergence (in progress)
 
