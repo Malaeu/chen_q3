@@ -68,6 +68,30 @@ def prime_b_grid_prime_ub_q_get : Fin prime_b_grid_size -> ℚ
 | ⟨19, _⟩ => 9.231221445006
 | _ => 9.231221445006
 
+/-- Grid prime partial sums (same B grid). -/
+def prime_b_grid_prime_sum_q_get : Fin prime_b_grid_size -> ℚ
+| ⟨0, _⟩ => 8.713579078832
+| ⟨1, _⟩ => 8.756642704987
+| ⟨2, _⟩ => 8.797014854509
+| ⟨3, _⟩ => 8.834940207089
+| ⟨4, _⟩ => 8.870634656578
+| ⟨5, _⟩ => 8.904289423238
+| ⟨6, _⟩ => 8.936074480639
+| ⟨7, _⟩ => 8.966141426830
+| ⟨8, _⟩ => 8.994625902168
+| ⟨9, _⟩ => 9.021649635182
+| ⟨10, _⟩ => 9.047322181544
+| ⟨11, _⟩ => 9.071742408572
+| ⟨12, _⟩ => 9.094999767645
+| ⟨13, _⟩ => 9.117175389088
+| ⟨14, _⟩ => 9.138343027738
+| ⟨15, _⟩ => 9.158569882448
+| ⟨16, _⟩ => 9.177917308692
+| ⟨17, _⟩ => 9.196441440202
+| ⟨18, _⟩ => 9.214193732900
+| ⟨19, _⟩ => 9.231221442222
+| _ => 9.231221442222
+
 /-- Grid arch term lower bounds (same B grid). -/
 def prime_b_grid_arch_term_q_get : Fin prime_b_grid_size -> ℚ
 | ⟨0, _⟩ => 9.570036393390
@@ -92,14 +116,24 @@ def prime_b_grid_arch_term_q_get : Fin prime_b_grid_size -> ℚ
 | ⟨19, _⟩ => 9.745814253443
 | _ => 9.745814253443
 
+/-- Prime tail bound for n > N (shared across grid). -/
+def prime_b_grid_tail_bound_q : ℚ :=
+  0.0000000027839976842107422016355450099369076027548039881204
+
 def prime_b_grid_val (i : Fin prime_b_grid_size) : ℝ :=
   (prime_b_grid_val_q i : ℝ)
 
 def prime_b_grid_prime_ub (i : Fin prime_b_grid_size) : ℝ :=
   (prime_b_grid_prime_ub_q_get i : ℝ)
 
+def prime_b_grid_prime_sum (i : Fin prime_b_grid_size) : ℝ :=
+  (prime_b_grid_prime_sum_q_get i : ℝ)
+
 def prime_b_grid_arch_term (i : Fin prime_b_grid_size) : ℝ :=
   (prime_b_grid_arch_term_q_get i : ℝ)
+
+def prime_b_grid_tail_bound : ℝ :=
+  (prime_b_grid_tail_bound_q : ℝ)
 
 def prime_cert_margin_lb_q : ℚ := (12 / 25)
 
@@ -167,5 +201,31 @@ lemma prime_b_grid_val_le_arch_sub_prime_ub :
         (prime_b_grid_arch_term_q_get i - prime_b_grid_prime_ub_q_get i : ℝ) := by
     exact_mod_cast hq
   simpa [prime_b_grid_val, prime_b_grid_arch_term, prime_b_grid_prime_ub] using hq'
+
+/-! Table arithmetic: prime partial sum + tail bound ≤ prime_ub. -/
+
+lemma prime_b_grid_prime_sum_add_tail_le_prime_ub_q :
+    ∀ i : Fin prime_b_grid_size,
+      prime_b_grid_prime_sum_q_get i + prime_b_grid_tail_bound_q ≤
+        prime_b_grid_prime_ub_q_get i := by
+  intro i
+  fin_cases i <;>
+    simp [prime_b_grid_prime_sum_q_get,
+          prime_b_grid_prime_ub_q_get,
+          prime_b_grid_tail_bound_q] <;> norm_num
+
+lemma prime_b_grid_prime_sum_add_tail_le_prime_ub :
+    ∀ i : Fin prime_b_grid_size,
+      prime_b_grid_prime_sum i + prime_b_grid_tail_bound ≤
+        prime_b_grid_prime_ub i := by
+  intro i
+  have hq :
+      prime_b_grid_prime_sum_q_get i + prime_b_grid_tail_bound_q ≤
+        prime_b_grid_prime_ub_q_get i := prime_b_grid_prime_sum_add_tail_le_prime_ub_q i
+  have hq' :
+      (prime_b_grid_prime_sum_q_get i + prime_b_grid_tail_bound_q : ℝ) ≤
+        (prime_b_grid_prime_ub_q_get i : ℝ) := by
+    exact_mod_cast hq
+  simpa [prime_b_grid_prime_sum, prime_b_grid_tail_bound, prime_b_grid_prime_ub] using hq'
 
 end Q3.Proofs.PrimeCert

@@ -60,6 +60,41 @@ lemma prime_cert_L_prime_heat_raw_eq_partial_add_tail :
   dsimp [prime_cert_L_prime_heat_partial]
   ring
 
+/-! ### Helper scaffold for a future formal certificate -/
+
+def prime_heat_weight_term (n : ℕ) : ℝ :=
+  (w_Q n * (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n n) ^ 2) * |xi_n n|)) *
+    (if |xi_n n| ≤ prime_cert_B_max then (1 : ℝ) else 0)
+
+def prime_heat_prime_sum_up_to (N : ℕ) : ℝ :=
+  (Finset.range (N + 1)).sum (fun n => prime_heat_weight_term n)
+
+lemma prime_heat_tsum_eq_sum_add_tsum_nat_add
+    (hsum : Summable prime_heat_weight_term) :
+    (∑' n, prime_heat_weight_term n) =
+      prime_heat_prime_sum_up_to prime_cert_heat_N +
+        ∑' n, prime_heat_weight_term (n + (prime_cert_heat_N + 1)) := by
+  have h := (hsum.sum_add_tsum_nat_add (prime_cert_heat_N + 1)).symm
+  simpa [prime_heat_prime_sum_up_to, Finset.sum_range] using h
+
+lemma prime_heat_bounds_prime_data_of_sum_tail
+    (hsum : Summable prime_heat_weight_term)
+    (h_sum :
+      prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_L_prime_heat_partial)
+    (h_tail :
+      ∑' n, prime_heat_weight_term (n + (prime_cert_heat_N + 1)) ≤
+        prime_cert_heat_tail_bound) :
+    (∑' n, prime_heat_weight_term n) ≤ prime_cert_L_prime_heat_raw := by
+  have hsplit := prime_heat_tsum_eq_sum_add_tsum_nat_add hsum
+  calc
+    (∑' n, prime_heat_weight_term n) =
+        prime_heat_prime_sum_up_to prime_cert_heat_N +
+          ∑' n, prime_heat_weight_term (n + (prime_cert_heat_N + 1)) := hsplit
+    _ ≤ prime_cert_L_prime_heat_partial + prime_cert_heat_tail_bound := by
+        exact add_le_add h_sum h_tail
+    _ = prime_cert_L_prime_heat_raw := by
+        simp [prime_cert_L_prime_heat_raw_eq_partial_add_tail]
+
 /--
 Data axiom: arch heat integral bound over the B-range.
 -/

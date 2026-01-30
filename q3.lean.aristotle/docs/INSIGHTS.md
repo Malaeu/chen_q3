@@ -62,6 +62,14 @@ Plan (5–10 lines, concrete pointers):
 5) Wire results back: drop the three axioms, update `Q3/CheckAxioms.lean`,
    `PHILOSOPHY_OF_PROOF.md`, and re‑run `./scripts/check_axioms.sh`.
 
+Status (2026-01-30):
+- Added grid prime partial sums + tail bound in `PrimeCert/BrangeGrid_2046.lean`.
+- Added prime-heat tsum decomposition scaffold in
+  `PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`.
+- Full closure still blocked on formal numeric certification of
+  `arch_term` and `prime_term` values (needs interval/verified quadrature or
+  a generated Lean proof pipeline).
+
 ## Audit (2026-01-29) — PDF vs Lean mainline divergence (in progress)
 
 - RH_Q3.pdf формулирует **классический Weil‑конус**; mainline Lean использует
