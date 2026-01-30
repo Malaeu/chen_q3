@@ -155,4 +155,33 @@ lemma prime_b_grid_prime_term_le_prime_ub_of_sum_tail
     _ ≤ prime_b_grid_prime_ub i := by
           exact prime_b_grid_prime_sum_add_tail_le_prime_ub i
 
+/-! ### Tail bound reduction to the pure tail term -/
+
+lemma prime_b_grid_weight_term_shift_le_tail_term
+    (i : Fin prime_b_grid_size) (n : ℕ) :
+    prime_b_grid_weight_term i (n + (prime_cert_N + 1)) ≤
+      prime_b_grid_tail_term (n + (prime_cert_N + 1)) := by
+  simpa using prime_b_grid_weight_term_le_tail_term i (n + (prime_cert_N + 1))
+
+lemma prime_b_grid_tail_bound_of_tail_term
+    (i : Fin prime_b_grid_size)
+    (hsum : Summable (prime_b_grid_weight_term i))
+    (hsum_tail : Summable (fun n => prime_b_grid_tail_term (n + (prime_cert_N + 1))))
+    (h_tail :
+      ∑' n, prime_b_grid_tail_term (n + (prime_cert_N + 1)) ≤
+        prime_b_grid_tail_bound) :
+    ∑' n, prime_b_grid_weight_term i (n + (prime_cert_N + 1)) ≤
+      prime_b_grid_tail_bound := by
+  have hsum_shift :
+      Summable (fun n => prime_b_grid_weight_term i (n + (prime_cert_N + 1))) := by
+    exact (summable_nat_add_iff (f := fun n => prime_b_grid_weight_term i n)
+      (prime_cert_N + 1)).2 hsum
+  have hle :
+      ∑' n, prime_b_grid_weight_term i (n + (prime_cert_N + 1)) ≤
+        ∑' n, prime_b_grid_tail_term (n + (prime_cert_N + 1)) := by
+    exact Summable.tsum_le_tsum
+      (fun n => prime_b_grid_weight_term_shift_le_tail_term i n)
+      hsum_shift hsum_tail
+  exact hle.trans h_tail
+
 end Q3.Proofs.PrimeCert

@@ -714,3 +714,12 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
 - Next: supply `PrimeBGridPilotHyp` for the two points via interval‑certificate
   inequalities (partial sum up to N and tail bound). Once that lands, we can
   lift to all 20 points.
+
+## Tail bound reduction (2026-01-30)
+
+- Added `prime_b_grid_tail_bound_of_tail_term` in
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSumTail.lean`:
+  it reduces the prime‑term tail inequality to the **pure tail term**
+  `prime_b_grid_tail_term` using `Summable.tsum_le_tsum`.
+- Remaining inputs: summability of the tail term and the numeric inequality
+  `∑' n, prime_b_grid_tail_term (n + (N+1)) ≤ prime_b_grid_tail_bound`.
