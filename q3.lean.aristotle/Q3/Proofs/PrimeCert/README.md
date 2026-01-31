@@ -12,6 +12,7 @@ PrimeCert/
   BrangeGrid_PrimeSumTail.lean -- prime-term tail/summability scaffold
   BrangeGrid_Pilot_2026_01_30.lean -- pilot hypotheses (2 points)
   BrangeGrid_Pilot_2026_01_30_Data.lean -- pilot data (2 points)
+  BrangeGrid_Pilot_2026_01_30_Intervals.lean -- pilot bucketed interval sums
   BrangeGrid_PrimeSum_2026_01_30_UB.lean -- prime-term sum upper bounds (all points)
   BrangeGrid_PrimeSum_2026_01_30_Data.lean -- prime-term sum data (all points)
   BrangeGridBounds_2046.lean -- grid bounds lemma (arch/prime)
@@ -47,6 +48,7 @@ Generators:
 - `scripts/prime_brange_interval_to_lean_ub.py`
 - `scripts/prime_brange_pilot_points.py`
 - `scripts/prime_brange_pilot_interval_to_lean_ub.py`
+- `scripts/prime_brange_interval_checker_pilot.py`
 - `scripts/prime_brange_heat_lipschitz_cert.py`
 - `scripts/prime_brange_heat_partial_interval_cert.py`
 - `scripts/prime_brange_heat_partial_interval_to_lean.py`

@@ -90,6 +90,11 @@ Plan (5–10 lines, concrete pointers):
 5) Replace `prime_b_grid_pilot_sum_le_*_ub` with theorems using the checker; then
    `lake env lean` on pilot files + `./scripts/check_axioms.sh`.
 
+Status (2026-01-31):
+- Added generator `scripts/prime_brange_interval_checker_pilot.py` and produced
+  `Q3/Proofs/PrimeCert/BrangeGrid_Pilot_2026_01_30_Intervals.lean` (bucketed
+  interval sums + numeric sum ≤ pilot UB lemmas).
+
 ## Synthesis (2026-01-30, in progress) — PrimeCert axiom closure plan (grid + heat)
 
 Goal: close the 3 main-chain PrimeCert axioms:
