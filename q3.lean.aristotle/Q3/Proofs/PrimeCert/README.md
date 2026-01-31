@@ -43,9 +43,11 @@ Generators:
 - `scripts/prime_term_cert.py`
 - `scripts/prime_term_cert_brange.py`
 - `scripts/prime_brange_interval_cert.py`
+- `scripts/prime_brange_interval_to_lean_ub.py`
 - `scripts/prime_brange_pilot_points.py`
 - `scripts/prime_brange_heat_lipschitz_cert.py`
 - `scripts/prime_brange_heat_partial_interval_cert.py`
+- `scripts/prime_brange_heat_partial_interval_to_lean.py`
 
 Integration point:
 - `Q3/Proofs/Q_nonneg_t_critical.lean` (prime-term axioms and caps)
