@@ -6,6 +6,7 @@ ASCII map:
 ```
 PrimeCert/
   Defs.lean            -- numeric constants from prime cert runs
+  IntervalChecker.lean -- generic summation helpers for interval proofs
   Bmin_1826.lean       -- B = B_min certificate axioms
   BrangeGrid_2046.lean -- grid values (B-range)
   BrangeGrid_PrimeSumTail.lean -- prime-term tail/summability scaffold
