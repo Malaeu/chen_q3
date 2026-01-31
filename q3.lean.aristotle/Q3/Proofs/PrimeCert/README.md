@@ -12,6 +12,7 @@ PrimeCert/
   BrangeGrid_PrimeSumTail.lean -- prime-term tail/summability scaffold
   BrangeGrid_Pilot_2026_01_30.lean -- pilot hypotheses (2 points)
   BrangeGrid_Pilot_2026_01_30_Data.lean -- pilot data (2 points)
+  BrangeGrid_Pilot_2026_01_30_Checker.lean -- pilot bucket checker scaffold
   BrangeGrid_Pilot_2026_01_30_Intervals.lean -- pilot bucketed interval sums
   BrangeGrid_PrimeSum_2026_01_30_UB.lean -- prime-term sum upper bounds (all points)
   BrangeGrid_PrimeSum_2026_01_30_Data.lean -- prime-term sum data (all points)

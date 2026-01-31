@@ -1,6 +1,7 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_Data
 import Q3.Proofs.PrimeCert.BrangeGrid_Pilot_2026_01_30_UB
+import Q3.Proofs.PrimeCert.BrangeGrid_Pilot_2026_01_30_Checker
 import Q3.Proofs.PrimeCert.BrangeGrid_Pilot_2026_01_30
 
 /-!
@@ -39,11 +40,19 @@ lemma prime_b_grid_pilot_sum_ub_le_table_19 :
 
 /-! ### Numeric obligations (interval-certificate pipeline) -/
 
-axiom prime_b_grid_pilot_sum_le_0_ub :
-  prime_b_grid_prime_sum_up_to pilot_i0 ≤ prime_b_grid_pilot_sum_ub pilot_i0
+axiom prime_b_grid_pilot_bucket_data_0 :
+  PrimeBGridPilotBucketData pilot_i0
 
-axiom prime_b_grid_pilot_sum_le_19_ub :
-  prime_b_grid_prime_sum_up_to pilot_i19 ≤ prime_b_grid_pilot_sum_ub pilot_i19
+axiom prime_b_grid_pilot_bucket_data_19 :
+  PrimeBGridPilotBucketData pilot_i19
+
+lemma prime_b_grid_pilot_sum_le_0_ub :
+  prime_b_grid_prime_sum_up_to pilot_i0 ≤ prime_b_grid_pilot_sum_ub pilot_i0 := by
+  exact prime_b_grid_pilot_sum_le_of_bucket pilot_i0 prime_b_grid_pilot_bucket_data_0
+
+lemma prime_b_grid_pilot_sum_le_19_ub :
+  prime_b_grid_prime_sum_up_to pilot_i19 ≤ prime_b_grid_pilot_sum_ub pilot_i19 := by
+  exact prime_b_grid_pilot_sum_le_of_bucket pilot_i19 prime_b_grid_pilot_bucket_data_19
 
 lemma prime_b_grid_pilot_sum_le_0 :
   prime_b_grid_prime_sum_up_to pilot_i0 ≤ prime_b_grid_prime_sum pilot_i0 := by
