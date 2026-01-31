@@ -15,6 +15,8 @@ PrimeCert/
   BrangeGrid_Pilot_2026_01_30_Checker.lean -- pilot bucket checker scaffold
   BrangeGrid_Pilot_2026_01_30_Intervals.lean -- pilot bucketed interval sums
   BrangeGrid_PrimeSum_2026_01_30_UB.lean -- prime-term sum upper bounds (all points)
+  BrangeGrid_PrimeSum_2026_01_30_Intervals.lean -- bucketed interval sums (all points)
+  BrangeGrid_PrimeSum_2026_01_30_Checker.lean -- full-grid bucket checker scaffold
   BrangeGrid_PrimeSum_2026_01_30_Data.lean -- prime-term sum data (all points)
   BrangeGridBounds_2046.lean -- grid bounds lemma (arch/prime)
   BrangeHeatCert_2026_01_28_Data.lean -- heat cert data (constants + axioms)
@@ -50,6 +52,7 @@ Generators:
 - `scripts/prime_brange_pilot_points.py`
 - `scripts/prime_brange_pilot_interval_to_lean_ub.py`
 - `scripts/prime_brange_interval_checker_pilot.py`
+- `scripts/prime_brange_interval_checker_grid.py`
 - `scripts/prime_brange_heat_lipschitz_cert.py`
 - `scripts/prime_brange_heat_partial_interval_cert.py`
 - `scripts/prime_brange_heat_partial_interval_to_lean.py`

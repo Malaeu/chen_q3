@@ -1,6 +1,7 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSumTail
 import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_UB
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_Checker
 
 /-!
 Prime-term B-grid data (all 20 points) at t_critical, tau = 0.
@@ -33,9 +34,14 @@ def prime_cert_brange_sha256_full : String :=
 
 /-! ### Numeric obligations (interval-certificate pipeline) -/
 
-axiom prime_b_grid_prime_sum_le_all_ub :
+axiom prime_b_grid_bucket_data :
+  ∀ i : Fin prime_b_grid_size, PrimeBGridBucketData i
+
+lemma prime_b_grid_prime_sum_le_all_ub :
   ∀ i : Fin prime_b_grid_size,
-    prime_b_grid_prime_sum_up_to i ≤ prime_b_grid_prime_sum_ub i
+    prime_b_grid_prime_sum_up_to i ≤ prime_b_grid_prime_sum_ub i := by
+  intro i
+  exact prime_b_grid_prime_sum_le_of_bucket i (prime_b_grid_bucket_data i)
 
 lemma prime_b_grid_prime_sum_le_all :
   ∀ i : Fin prime_b_grid_size,
