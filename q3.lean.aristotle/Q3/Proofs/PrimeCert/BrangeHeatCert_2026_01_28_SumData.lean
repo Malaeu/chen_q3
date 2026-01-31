@@ -1,5 +1,6 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Checker
 
 /-!
 Prime-heat partial-sum evidence (t_critical, tau = 0).
@@ -33,12 +34,17 @@ lemma prime_cert_heat_prime_sum_up_to_ub_le_partial :
     prime_cert_heat_tail_bound, prime_cert_L_prime_heat_raw]
 
 structure PrimeHeatSumData where
-  h_sum_ub : prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_heat_prime_sum_up_to_ub
+  h_bucket : PrimeHeatBucketData prime_cert_heat_prime_sum_up_to_ub
   h_tail :
     ∑' n, prime_heat_weight_term (n + (prime_cert_heat_N + 1)) ≤
       prime_cert_heat_tail_bound
 
 axiom prime_heat_sum_data : PrimeHeatSumData
 
-end Q3.Proofs.PrimeCert
+lemma prime_heat_sum_data_sum_ub :
+    prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_heat_prime_sum_up_to_ub := by
+  exact prime_heat_sum_up_to_le_of_bucket
+    prime_cert_heat_prime_sum_up_to_ub
+    prime_heat_sum_data.h_bucket
 
+end Q3.Proofs.PrimeCert

@@ -20,6 +20,8 @@ PrimeCert/
   BrangeGrid_PrimeSum_2026_01_30_Data.lean -- prime-term sum data (all points)
   BrangeGridBounds_2046.lean -- grid bounds lemma (arch/prime)
   BrangeHeatCert_2026_01_28_Data.lean -- heat cert data (constants + axioms)
+  BrangeHeatCert_2026_01_28_Intervals.lean -- heat bucketed partial sums
+  BrangeHeatCert_2026_01_28_Checker.lean -- heat bucket checker scaffold
   BrangeHeatCert_2026_01_28_SumData.lean -- heat prime partial+tail data
   BrangeHeatCert_2026_01_28_Partial.lean -- prime-heat partial-sum scaffold
   BrangeHeatCert_2026_01_28.lean -- heat-weighted bounds data
@@ -56,6 +58,7 @@ Generators:
 - `scripts/prime_brange_heat_lipschitz_cert.py`
 - `scripts/prime_brange_heat_partial_interval_cert.py`
 - `scripts/prime_brange_heat_partial_interval_to_lean.py`
+- `scripts/prime_brange_heat_interval_checker.py`
 
 Integration point:
 - `Q3/Proofs/Q_nonneg_t_critical.lean` (prime-term axioms and caps)

@@ -41,7 +41,7 @@ lemma prime_heat_bounds_prime_data_of_data :
       ≤ prime_cert_L_prime_heat_raw := by
   have h_sum :
       prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_L_prime_heat_partial := by
-    exact (prime_heat_sum_data.h_sum_ub).trans prime_cert_heat_prime_sum_up_to_ub_le_partial
+    exact (prime_heat_sum_data_sum_ub).trans prime_cert_heat_prime_sum_up_to_ub_le_partial
   exact prime_heat_bounds_prime_data_of_sum_tail
     prime_heat_weight_term_summable
     h_sum
