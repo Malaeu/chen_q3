@@ -67,6 +67,29 @@ Plan (5–10 lines, concrete pointers):
 5) Success check: `lake env lean` on pilot/grid/heat files, then
    `./scripts/check_axioms.sh` + refresh graphs/stats.
 
+## Synthesis (2026-01-31, in progress) — Formal interval checker for pilot sums
+
+Target lemmas (PrimeCert):
+- `prime_b_grid_pilot_sum_le_0_ub`, `prime_b_grid_pilot_sum_le_19_ub`
+  (`Q3/Proofs/PrimeCert/BrangeGrid_Pilot_2026_01_30_Data.lean`)
+
+Embedding search: `scripts/research_oracle.py` blocked (qmd not on PATH).
+Web search: no obvious built‑in interval‑arithmetic tactic surfaced; results mostly point to
+`norm_num` for numeric goals and `interval_cases` for interval reasoning, so expect a custom
+interval checker if we want axiom‑free bounds.
+
+Plan (5–10 lines, concrete pointers):
+1) Add a generic “sum ≤ upper bound” lemma for finite/tsum bounds in a new file
+   `Q3/Proofs/PrimeCert/IntervalChecker.lean` (use `Finset.sum_le_sum` + `tsum_le_tsum`).
+2) Introduce a pilot‑specific certificate file (generated) with bucketed upper bounds for
+   `prime_b_grid_weight_term` over ranges of `n`, e.g. `BrangeGrid_Pilot_2026_01_30_Intervals.lean`.
+3) Provide monotonicity lemmas to justify bucket bounds (log/exp monotone, Fejér ≤ 1),
+   so each bucket proof is `linarith` + `norm_num` on rationals.
+4) Generate the bucket table + Lean proof skeleton via a new script
+   `scripts/prime_brange_interval_checker_pilot.py` (keeps numeric bounds reproducible).
+5) Replace `prime_b_grid_pilot_sum_le_*_ub` with theorems using the checker; then
+   `lake env lean` on pilot files + `./scripts/check_axioms.sh`.
+
 ## Synthesis (2026-01-30, in progress) — PrimeCert axiom closure plan (grid + heat)
 
 Goal: close the 3 main-chain PrimeCert axioms:
