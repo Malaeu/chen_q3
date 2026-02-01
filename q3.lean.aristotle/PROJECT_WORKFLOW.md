@@ -57,14 +57,21 @@ ERROR - Could not resolve import 'Q3.Basic.Defs'
 - `validate_lean_project=False`
 - `context_file_paths` = транзитивные импорты от **правильного root**
 
-Мини‑шаблон (Mac):
+Мини‑шаблон (path‑agnostic):
 ```python
 from pathlib import Path
 from aristotlelib import Project
 from aristotlelib.local_file_utils import gather_file_imports
 import asyncio
 
-ROOT = Path("/Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/full/q3.lean.aristotle")
+ROOT = Path.cwd().resolve()
+if not (ROOT / "Q3").is_dir():
+    if (ROOT / "q3.lean.aristotle").is_dir():
+        ROOT = (ROOT / "q3.lean.aristotle").resolve()
+    elif (ROOT / "full" / "q3.lean.aristotle").is_dir():
+        ROOT = (ROOT / "full" / "q3.lean.aristotle").resolve()
+    else:
+        raise RuntimeError("Set ROOT to your q3.lean.aristotle directory")
 INPUT = ROOT / "Q3/Proofs/QSpec.lean"
 
 deps = gather_file_imports(INPUT, project_root=ROOT)
@@ -86,8 +93,6 @@ async def main():
 
 asyncio.run(main())
 ```
-
-Linux путь менять на `/mnt/hdd01/Soft/GitHub/chen_q3/...`.
 
 ---
 

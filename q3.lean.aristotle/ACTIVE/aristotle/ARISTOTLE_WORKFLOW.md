@@ -129,14 +129,21 @@ aristotle prove-from-file path/to/file.lean --no-wait
 Reason: CLI auto-imports may pick the wrong outermost project root.
 Use Python API with explicit context and `auto_add_imports=False`.
 
-Template (Linux paths):
+Template (path-agnostic):
 ```
 from pathlib import Path
 from aristotlelib import Project
 from aristotlelib.local_file_utils import gather_file_imports
 import asyncio
 
-ROOT = Path("/mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/full/q3.lean.aristotle")
+ROOT = Path.cwd().resolve()
+if not (ROOT / "Q3").is_dir():
+    if (ROOT / "q3.lean.aristotle").is_dir():
+        ROOT = (ROOT / "q3.lean.aristotle").resolve()
+    elif (ROOT / "full" / "q3.lean.aristotle").is_dir():
+        ROOT = (ROOT / "full" / "q3.lean.aristotle").resolve()
+    else:
+        raise RuntimeError("Set ROOT to your q3.lean.aristotle directory")
 INPUT = ROOT / "Q3/Proofs/QSpec.lean"  # change to your file
 
 context = [str(p) for p in gather_file_imports(INPUT, project_root=ROOT)]
