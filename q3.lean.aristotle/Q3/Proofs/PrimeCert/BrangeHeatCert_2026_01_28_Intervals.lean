@@ -339,5 +339,11 @@ def prime_heat_bucket_ub_q_get : Fin prime_heat_bucket_count -> ℚ
 def prime_heat_bucket_ub (k : Fin prime_heat_bucket_count) : ℝ :=
   (prime_heat_bucket_ub_q_get k : ℝ)
 
+/-- Sum of bucket upper bounds (prime-heat partial sum). -/
+def prime_heat_bucket_ub_sum_q : ℚ := 4.00491723255781
+
+def prime_heat_bucket_ub_sum : ℝ :=
+  (prime_heat_bucket_ub_sum_q : ℝ)
+
 end Q3.Proofs.PrimeCert
 

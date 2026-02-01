@@ -68,6 +68,11 @@ Progress (2026-02-01):
   `prime_b_grid_bucket_ub_sum_le` in
   `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Intervals.lean`;
   this discharges the `h_sum_ub` part once `h_bucket` is available.
+- `scripts/prime_brange_heat_interval_checker.py` now emits
+  `prime_heat_bucket_ub_sum` in
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Intervals.lean`, and
+  `BrangeHeatCert_2026_01_28_SumData.lean` adds
+  `prime_heat_bucket_ub_sum_le_partial`.
 
 ---
 

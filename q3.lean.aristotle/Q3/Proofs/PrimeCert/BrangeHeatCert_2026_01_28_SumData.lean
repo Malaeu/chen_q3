@@ -33,6 +33,11 @@ lemma prime_cert_heat_prime_sum_up_to_ub_le_partial :
   norm_num [prime_cert_heat_prime_sum_up_to_ub, prime_cert_L_prime_heat_partial,
     prime_cert_heat_tail_bound, prime_cert_L_prime_heat_raw]
 
+lemma prime_heat_bucket_ub_sum_le_partial :
+    prime_heat_bucket_ub_sum ≤ prime_cert_heat_prime_sum_up_to_ub := by
+  norm_num [prime_heat_bucket_ub_sum, prime_heat_bucket_ub_sum_q,
+    prime_cert_heat_prime_sum_up_to_ub]
+
 structure PrimeHeatSumData where
   h_bucket : PrimeHeatBucketData prime_cert_heat_prime_sum_up_to_ub
   h_tail :

@@ -152,12 +152,12 @@ def main() -> None:
         return format(Decimal(mp.nstr(upper, 50)).quantize(quant, rounding=ROUND_CEILING), "f")
 
     bucket_ub = [round_up(s) for s in bucket_sums]
+    bucket_sum = sum(Decimal(v) for v in bucket_ub)
 
     # sanity check against the partial-sum upper bound
-    total = sum(Decimal(v) for v in bucket_ub)
     sum_ub = Decimal(sum_ub_raw)
-    if total > sum_ub:
-        raise SystemExit(f"Bucket total {total} exceeds prime_heat_sum_up_to_ub {sum_ub}")
+    if bucket_sum > sum_ub:
+        raise SystemExit(f"Bucket total {bucket_sum} exceeds prime_heat_sum_up_to_ub {sum_ub}")
 
     digest = sha256_hex(inp)
     src = source_label(inp)
@@ -220,6 +220,12 @@ def prime_heat_bucket_count : Nat := {bucket_count}
 /-- Bucket upper bounds (real). -/
 def prime_heat_bucket_ub (k : Fin prime_heat_bucket_count) : ℝ :=
   (prime_heat_bucket_ub_q_get k : ℝ)
+
+/-- Sum of bucket upper bounds (prime-heat partial sum). -/
+def prime_heat_bucket_ub_sum_q : ℚ := {bucket_sum}
+
+def prime_heat_bucket_ub_sum : ℝ :=
+  (prime_heat_bucket_ub_sum_q : ℝ)
 
 end Q3.Proofs.PrimeCert
 """
