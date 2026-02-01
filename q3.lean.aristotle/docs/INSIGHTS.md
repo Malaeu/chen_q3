@@ -29,6 +29,7 @@
 
 ## Tooling / Checks
 
+
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
 - check_axioms падает на A3_FLOOR: нужен предварительный build → `docs/insights/check_axioms_prebuild_a3_floor_2026_01_16.md`.
 - FloorCert grid min: `floor_grid_val_ge_min_lb` closed via `native_decide`;
@@ -39,6 +40,28 @@
   2) потом внешний web‑поиск через встроенный web tool,
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
+
+
+## Synthesis (2026-02-01, in progress) — Close `prime_b_grid_bounds_data` (grid cert)
+
+Target axiom:
+- `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
+
+Embedding search:
+- `./scripts/research_oracle.py` failed (qmd not on PATH).
+
+Web search:
+- No direct interval-arithmetic tactic found; only `interval_cases` and generic tactic docs.
+
+Plan (5–10 lines, concrete pointers):
+1) Prime-sum buckets: extend `BrangeGrid_PrimeSum_2026_01_30_Checker.lean` with a reusable lemma to reduce each bucket sum to a finite `Finset` sum and try `interval`/`linarith` on per-term bounds (no `native_decide`).
+2) Generator upgrade: extend `scripts/prime_brange_interval_checker_grid.py` to also emit per-term bounds (or per-subinterval bounds) so `Finset.sum_le_sum` can close each `prime_b_grid_bucket_sum i k ≤ prime_b_grid_bucket_ub i k`.
+3) Tail bound: prove `prime_b_grid_tail_term_sum_le_bound` analytically from `BrangeGrid_PrimeSumTail.lean` using the integral comparison and a numeric bound, possibly in a new `BrangeGrid_PrimeSum_2026_01_30_TailCert.lean`.
+4) Wire: replace axioms in `BrangeGrid_PrimeSum_2026_01_30_Data.lean` with the new proofs, then build `PrimeBGridBounds` in `BrangeCert_2046.lean`.
+5) Success check: `lake env lean` on grid files; then `./scripts/check_axioms.sh` expecting only `Weil_criterion_tau0` + `prime_heat_bounds_data`.
+
+---
+
 
 ## Synthesis (2026-01-31, in progress) — Interval-certificate closure (pilot → grid → heat)
 
