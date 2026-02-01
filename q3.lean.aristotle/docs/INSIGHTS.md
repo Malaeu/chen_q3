@@ -52,6 +52,7 @@ Embedding search:
 
 Web search:
 - No direct interval-arithmetic tactic found; only `interval_cases` and generic tactic docs.
+- Tactic check: `interval` is unknown with `import Mathlib` (stdin test).
 
 Plan (5–10 lines, concrete pointers):
 1) Prime-sum buckets: extend `BrangeGrid_PrimeSum_2026_01_30_Checker.lean` with a reusable lemma to reduce each bucket sum to a finite `Finset` sum and try `interval`/`linarith` on per-term bounds (no `native_decide`).
