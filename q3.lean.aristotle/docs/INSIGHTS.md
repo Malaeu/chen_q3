@@ -48,10 +48,12 @@ Target axiom:
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
 
 Embedding search:
-- `./scripts/research_oracle.py` failed (qmd not on PATH).
+- `qmd` is installed at `~/.bun/bin/qmd`; running with `PATH="$HOME/.bun/bin:$PATH"` works.
+- Top hit: `qmd://q3_docs/insights/prime-cert-brange-tcritical-2026-01-26.md` (goal: certify `margin(B) ≥ prime_cert_margin_lb`).
+- Other hits were low-signal or unrelated.
 
 Web search:
-- No direct interval-arithmetic tactic found; only `interval_cases` and generic tactic docs.
+- `interval_cases` is the canonical finite-range splitter for ℕ/ℤ; no dedicated numeric interval-arithmetic tactic found.
 - Tactic check: `interval` is unknown with `import Mathlib` (stdin test).
 
 Plan (5–10 lines, concrete pointers):
