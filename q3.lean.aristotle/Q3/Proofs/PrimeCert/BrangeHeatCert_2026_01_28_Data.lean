@@ -95,15 +95,7 @@ lemma prime_heat_bounds_prime_data_of_sum_tail
     _ = prime_cert_L_prime_heat_raw := by
         simp [prime_cert_L_prime_heat_raw_eq_partial_add_tail]
 
-/--
-Data axiom: arch heat integral bound over the B-range.
--/
-axiom prime_heat_bounds_arch_data :
-  ∫ ξ in Set.Icc (-prime_cert_B_max) prime_cert_B_max,
-      |a_star ξ| * (Real.exp (-4 * Real.pi ^ 2 * t_critical * ξ ^ 2) * |ξ|)
-    ≤ prime_cert_L_arch_heat_raw
-
--- Prime-heat bound is derived from the partial-sum data in
--- `BrangeHeatCert_2026_01_28_SumData.lean`.
+-- Prime-heat bounds are bundled in `BrangeHeatCert_2026_01_28.lean`
+-- to minimize the axiom count in the main chain.
 
 end Q3.Proofs.PrimeCert

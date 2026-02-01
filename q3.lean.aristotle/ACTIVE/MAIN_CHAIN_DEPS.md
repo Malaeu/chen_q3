@@ -1,10 +1,9 @@
 # Main Chain Dependencies vs Repo Legacy (2026-01-29 13:10)
 
 **Purpose:** Separate *actual main-chain blockers* from legacy/sandbox noise.  
-**Current status:** Main-chain depends on **3 Q3 data axioms** + 2 classical.  
+**Current status:** Main-chain depends on **2 Q3 data axioms** + 1 classical.  
 **Next action:** Close the PrimeCert cert‑data axioms
-`prime_b_grid_bounds_data`, `prime_heat_bounds_arch_data`, and
-`prime_heat_sum_data`.  
+`prime_b_grid_bounds_data` and `prime_heat_bounds_data`.  
 **Decision (2026-01-29):** Option A selected — keep cert‑data axioms in main chain,
 hash‑checked, and move on to other blockers.
 **Links:** `Q3/CheckAxioms.lean` · `Q3/Main.lean` · `ACTIVE/orchestrator.md`
@@ -32,8 +31,7 @@ From `#print axioms Q3.Main.RH_of_Weil_and_Q3`:
 
 - Tier-2 / Q3-specific (τ=0 mainline):
   - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
-  - `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
-  - `Q3.Proofs.PrimeCert.prime_heat_sum_data`
+  - `Q3.Proofs.PrimeCert.prime_heat_bounds_data`
 
 Standard Mathlib axioms (`propext`, `Classical.choice`, `Quot.sound`) are always present.
 
@@ -42,8 +40,7 @@ Standard Mathlib axioms (`propext`, `Classical.choice`, `Quot.sound`) are always
 | Node / Axiom | File | Why it blocks the chain |
 |---|---|---|
 | `prime_b_grid_bounds_data` | `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` | Grid arch/prime bounds data |
-| `prime_heat_bounds_arch_data` | `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean` | Heat-weighted arch bound data |
-| `prime_heat_sum_data` | `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean` | Heat-weighted prime partial+tail data |
+| `prime_heat_bounds_data` | `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean` | Heat-weighted arch+prime bound data |
 | `Weil_criterion_tau0` | `Q3/Axioms.lean` | classical bridge `Q >= 0` ⇒ RH (τ = 0 mainline) |
 | `Schur_test` | `Q3/Axioms.lean` | legacy / off‑chain in current mainline |
 

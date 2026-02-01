@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-01 08:06 UTC",
+  "generated_at": "2026-02-01 09:42 UTC",
   "root": "Q3.Main.RH_of_Weil_and_Q3",
   "nodes": [
     {
@@ -198,13 +198,13 @@
       "is_doomed": false
     },
     {
-      "id": "Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data",
+      "id": "Q3.Proofs.PrimeCert.prime_heat_bounds_data",
       "status": "axiom",
-      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean",
+      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
       "axioms_in_file": [
         [
-          101,
-          "prime_heat_bounds_arch_data"
+          60,
+          "prime_heat_bounds_data"
         ]
       ],
       "sorries_in_file": [],
@@ -214,32 +214,10 @@
       "integrity_status": "VERIFIED",
       "taint_source": [],
       "numeric_check": "UNKNOWN",
-      "risk_score": null,
-      "risk_status": null,
-      "risk_exceeds": null,
-      "is_doomed": null
-    },
-    {
-      "id": "Q3.Proofs.PrimeCert.prime_heat_sum_data",
-      "status": "axiom",
-      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean",
-      "axioms_in_file": [
-        [
-          42,
-          "prime_heat_sum_data"
-        ]
-      ],
-      "sorries_in_file": [],
-      "alternatives": [],
-      "direct_status": "VERIFIED",
-      "propagation_status": "VERIFIED",
-      "integrity_status": "VERIFIED",
-      "taint_source": [],
-      "numeric_check": "UNKNOWN",
-      "risk_score": null,
-      "risk_status": null,
-      "risk_exceeds": null,
-      "is_doomed": null
+      "risk_score": 0.0,
+      "risk_status": "OK",
+      "risk_exceeds": false,
+      "is_doomed": false
     }
   ]
 }

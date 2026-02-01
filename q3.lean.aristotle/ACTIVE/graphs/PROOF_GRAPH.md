@@ -1,4 +1,4 @@
-# Proof Graph (auto) — 2026-02-01 08:06 UTC
+# Proof Graph (auto) — 2026-02-01 09:42 UTC
 
 **Purpose:** Machine + human index of the main-chain proof nodes, with alternatives.
 **Sources:** `ACTIVE/graphs/DEPS_TREE_MAIN.json` + `ACTIVE/pipeline/ALTERNATIVE_PATHS.json`
@@ -43,21 +43,14 @@
 - Axioms in file: 1
   - prime_b_grid_bounds_data@L32
 
-## Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data
+## Q3.Proofs.PrimeCert.prime_heat_bounds_data
 - Status: `axiom`
 - Direct status: `VERIFIED`
 - Propagation status: `VERIFIED`
 - Numeric check: `UNKNOWN`
-- File: `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean`
+- Risk score: `0.0`
+- Risk status: `OK`
+- File: `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
 - Axioms in file: 1
-  - prime_heat_bounds_arch_data@L101
-
-## Q3.Proofs.PrimeCert.prime_heat_sum_data
-- Status: `axiom`
-- Direct status: `VERIFIED`
-- Propagation status: `VERIFIED`
-- Numeric check: `UNKNOWN`
-- File: `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`
-- Axioms in file: 1
-  - prime_heat_sum_data@L42
+  - prime_heat_bounds_data@L60
 

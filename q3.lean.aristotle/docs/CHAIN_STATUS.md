@@ -42,8 +42,7 @@ It is intended to stay aligned with the code after each refactor.
 These are the only Q3-specific axioms blocking the **current** main chain:
 
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
-- `Q3.Proofs.PrimeCert.prime_heat_sum_data`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_data`
 
 Authoritative check:
 ```bash
