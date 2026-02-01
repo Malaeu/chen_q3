@@ -63,6 +63,12 @@ Plan (5–10 lines, concrete pointers):
 4) Wire: replace axioms in `BrangeGrid_PrimeSum_2026_01_30_Data.lean` with the new proofs, then build `PrimeBGridBounds` in `BrangeCert_2046.lean`.
 5) Success check: `lake env lean` on grid files; then `./scripts/check_axioms.sh` expecting only `Weil_criterion_tau0` + `prime_heat_bounds_data`.
 
+Progress (2026-02-01):
+- `scripts/prime_brange_interval_checker_grid.py` now emits per-grid bucket sum totals and
+  `prime_b_grid_bucket_ub_sum_le` in
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Intervals.lean`;
+  this discharges the `h_sum_ub` part once `h_bucket` is available.
+
 ---
 
 

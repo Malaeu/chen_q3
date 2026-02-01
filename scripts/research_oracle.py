@@ -9,8 +9,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
 ACTIVE_DIR = ROOT / "ACTIVE"
-DEFAULT_CONFIG = ACTIVE_DIR / "RESEARCH_ORACLE.json"
-DEFAULT_EQUIV = ACTIVE_DIR / "EQUIVALENCE_GRAPH.json"
+PIPELINE_DIR = ACTIVE_DIR / "pipeline"
+DEFAULT_CONFIG = PIPELINE_DIR / "RESEARCH_ORACLE.json"
+DEFAULT_EQUIV = PIPELINE_DIR / "EQUIVALENCE_GRAPH.json"
 
 
 def now_utc() -> str:
@@ -27,11 +28,24 @@ def save_json(path: Path, data) -> None:
     path.write_text(json.dumps(data, indent=2), encoding="utf-8")
 
 
-def require_qmd(cmd: str) -> None:
-    if shutil.which(cmd) is None:
-        raise SystemExit(
-            f"qmd not found: expected '{cmd}' on PATH. Install via: bun install -g https://github.com/tobi/qmd"
-        )
+def resolve_qmd(cmd: str) -> str:
+    found = shutil.which(cmd)
+    if found is not None:
+        return found
+    bun_qmd = Path.home() / ".bun" / "bin" / "qmd"
+    if bun_qmd.exists():
+        return str(bun_qmd)
+    raise SystemExit(
+        f"qmd not found: expected '{cmd}' on PATH. Install via: bun install -g https://github.com/tobi/qmd"
+    )
+
+
+def resolve_default(path: Path, legacy: Path) -> Path:
+    if path.exists():
+        return path
+    if legacy.exists():
+        return legacy
+    return path
 
 
 def run(cmd: list[str], cwd: Path | None = None) -> str:
@@ -66,8 +80,7 @@ def make_ext_id(docid: str, snippet: str | None) -> str:
 
 
 def cmd_query(args, cfg) -> int:
-    qmd = cfg.get("qmd_command", "qmd")
-    require_qmd(qmd)
+    qmd = resolve_qmd(cfg.get("qmd_command", "qmd"))
     mode = args.mode
     collection = args.collection or cfg.get("collection", "")
     limit = args.limit or cfg.get("limit", 10)
@@ -100,8 +113,7 @@ def cmd_query(args, cfg) -> int:
 
 
 def cmd_ingest(args, cfg) -> int:
-    qmd = cfg.get("qmd_command", "qmd")
-    require_qmd(qmd)
+    qmd = resolve_qmd(cfg.get("qmd_command", "qmd"))
     collection = args.collection or cfg.get("collection", "math_papers")
     literature_dir = args.path or cfg.get("literature_dir", "literature")
     context = args.context or cfg.get("context", "")
@@ -116,8 +128,7 @@ def cmd_ingest(args, cfg) -> int:
 
 
 def cmd_add_speculative(args, cfg) -> int:
-    qmd = cfg.get("qmd_command", "qmd")
-    require_qmd(qmd)
+    qmd = resolve_qmd(cfg.get("qmd_command", "qmd"))
     collection = args.collection or cfg.get("collection", "")
     limit = args.limit or cfg.get("limit", 10)
     min_score = args.min_score if args.min_score is not None else cfg.get("min_score", 0)
@@ -223,7 +234,8 @@ def main() -> int:
     p_add.set_defaults(func=cmd_add_speculative)
 
     args = ap.parse_args()
-    cfg = load_json(Path(args.config), {})
+    cfg_path = resolve_default(Path(args.config), ACTIVE_DIR / "RESEARCH_ORACLE.json")
+    cfg = load_json(cfg_path, {})
     return args.func(args, cfg)
 
 

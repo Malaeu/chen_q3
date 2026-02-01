@@ -2341,5 +2341,41 @@ def prime_b_grid_bucket_ub_q_get :
 def prime_b_grid_bucket_ub (i : Fin prime_b_grid_size) (k : Fin prime_b_grid_bucket_count) : ℝ :=
   (prime_b_grid_bucket_ub_q_get i k : ℝ)
 
+/-- Sum of bucket upper bounds (by grid index). -/
+def prime_b_grid_bucket_ub_sum_q_get : Fin prime_b_grid_size -> ℚ
+| ⟨0, _⟩ => 8.713579078880
+| ⟨1, _⟩ => 8.756642705042
+| ⟨2, _⟩ => 8.797014854559
+| ⟨3, _⟩ => 8.834940207142
+| ⟨4, _⟩ => 8.870634656626
+| ⟨5, _⟩ => 8.904289423292
+| ⟨6, _⟩ => 8.936074480692
+| ⟨7, _⟩ => 8.966141426883
+| ⟨8, _⟩ => 8.994625902222
+| ⟨9, _⟩ => 9.021649635236
+| ⟨10, _⟩ => 9.047322181592
+| ⟨11, _⟩ => 9.071742408621
+| ⟨12, _⟩ => 9.094999767697
+| ⟨13, _⟩ => 9.117175389139
+| ⟨14, _⟩ => 9.138343027786
+| ⟨15, _⟩ => 9.158569882497
+| ⟨16, _⟩ => 9.177917308742
+| ⟨17, _⟩ => 9.196441440256
+| ⟨18, _⟩ => 9.214193732951
+| ⟨19, _⟩ => 9.231221442273
+| _ => 9.231221442273
+
+/-- Sum of bucket upper bounds (real). -/
+def prime_b_grid_bucket_ub_sum (i : Fin prime_b_grid_size) : ℝ :=
+  (prime_b_grid_bucket_ub_sum_q_get i : ℝ)
+
+lemma prime_b_grid_bucket_ub_sum_le :
+    ∀ i : Fin prime_b_grid_size,
+      prime_b_grid_bucket_ub_sum i ≤ prime_b_grid_prime_sum_ub i := by
+  intro i
+  fin_cases i <;>
+    norm_num [prime_b_grid_bucket_ub_sum, prime_b_grid_bucket_ub_sum_q_get,
+      prime_b_grid_prime_sum_ub, prime_b_grid_prime_sum_ub_q_get]
+
 end Q3.Proofs.PrimeCert
 

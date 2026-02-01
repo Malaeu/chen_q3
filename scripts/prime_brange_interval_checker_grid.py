@@ -196,6 +196,7 @@ def main() -> None:
         bucket_tables.append(
             render_bucket_table(f"prime_b_grid_bucket_ub_q_get_{idx}", bucket_ub[B])
         )
+    bucket_sum = [sum(Decimal(v) for v in bucket_ub[B]) for B in B_values]
 
     table_cases = []
     for idx in range(len(B_values)):
@@ -245,7 +246,28 @@ def prime_b_grid_bucket_ub_q_get :
     Fin prime_b_grid_size -> Fin prime_b_grid_bucket_count -> ℚ
 """
     lean += "\n".join(table_cases)
-    lean += "\n\n/-- Bucket upper bounds (real). -/\ndef prime_b_grid_bucket_ub (i : Fin prime_b_grid_size) (k : Fin prime_b_grid_bucket_count) : ℝ :=\n  (prime_b_grid_bucket_ub_q_get i k : ℝ)\n\nend Q3.Proofs.PrimeCert\n"
+    lean += "\n\n/-- Bucket upper bounds (real). -/\ndef prime_b_grid_bucket_ub (i : Fin prime_b_grid_size) (k : Fin prime_b_grid_bucket_count) : ℝ :=\n  (prime_b_grid_bucket_ub_q_get i k : ℝ)\n\n"
+
+    lean += "/-- Sum of bucket upper bounds (by grid index). -/\n"
+    lean += "def prime_b_grid_bucket_ub_sum_q_get : Fin prime_b_grid_size -> ℚ\n"
+    for idx, total in enumerate(bucket_sum):
+        lean += f"| ⟨{idx}, _⟩ => {total}\n"
+    lean += f"| _ => {bucket_sum[-1]}\n\n"
+
+    lean += """/-- Sum of bucket upper bounds (real). -/
+def prime_b_grid_bucket_ub_sum (i : Fin prime_b_grid_size) : ℝ :=
+  (prime_b_grid_bucket_ub_sum_q_get i : ℝ)
+
+lemma prime_b_grid_bucket_ub_sum_le :
+    ∀ i : Fin prime_b_grid_size,
+      prime_b_grid_bucket_ub_sum i ≤ prime_b_grid_prime_sum_ub i := by
+  intro i
+  fin_cases i <;>
+    norm_num [prime_b_grid_bucket_ub_sum, prime_b_grid_bucket_ub_sum_q_get,
+      prime_b_grid_prime_sum_ub, prime_b_grid_prime_sum_ub_q_get]
+
+end Q3.Proofs.PrimeCert
+"""
 
     outp.parent.mkdir(parents=True, exist_ok=True)
     outp.write_text(lean + "\n", encoding="utf-8")

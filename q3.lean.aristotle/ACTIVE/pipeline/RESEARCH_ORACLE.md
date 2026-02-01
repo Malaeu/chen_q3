@@ -19,6 +19,9 @@
 bun install -g https://github.com/tobi/qmd
 ```
 
+If qmd is installed via bun, ensure `~/.bun/bin` is on PATH
+or set `"qmd_command": "/home/<user>/.bun/bin/qmd"` in `RESEARCH_ORACLE.json`.
+
 ## Ingest
 
 ```bash
