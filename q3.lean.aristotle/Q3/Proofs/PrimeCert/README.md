@@ -22,6 +22,7 @@ PrimeCert/
   BrangeHeatCert_2026_01_28_Data.lean -- heat cert data (constants + axioms)
   BrangeHeatCert_2026_01_28_Intervals.lean -- heat bucketed partial sums
   BrangeHeatCert_2026_01_28_Checker.lean -- heat bucket checker scaffold
+  BrangeHeatCert_2026_01_28_Pilot.lean -- heat bucket pilot scaffold
   BrangeHeatCert_2026_01_28_SumData.lean -- heat prime partial+tail data
   BrangeHeatCert_2026_01_28_Tail.lean -- analytic heat tail bound
   BrangeHeatCert_2026_01_28_Partial.lean -- prime-heat partial-sum scaffold
