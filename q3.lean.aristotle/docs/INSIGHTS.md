@@ -41,6 +41,25 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Decision (2026-02-02) — PrimeCert closure: formal numeric certificates now, analytic path later
+
+Goal: close main chain fast **without axioms** and with kernel‑checked evidence.
+
+Decision:
+- Use **formal numeric certificates** in Lean (ℚ tables + `native_decide`/`norm_num`)
+  to close bucket bounds for `prime_heat_bucket_bounds` and `prime_b_grid_bucket_bounds`.
+- This is fully formal (Lean kernel checks), not a “trust the script” axiom.
+
+Alternative (documented for later cleanup):
+- Replace certificate bounds with **analytic** proofs:
+  monotonicity + `vonMangoldt ≤ log`, `sum ≤ integral`, and explicit tail bounds.
+- Target replacement points:
+  `BrangeHeatCert_2026_01_28_*` (heat buckets) and
+  `BrangeGrid_PrimeSum_2026_01_30_*` (grid buckets + tail).
+
+Plan: after mainline closure, revisit and swap cert‑based bounds with analytic lemmas
+to remove the computational layer.
+
 
 ## Synthesis (2026-02-02, in progress) — Prime-heat bucket bounds (no native_decide)
 
@@ -50,14 +69,17 @@ Target axioms/lemmas:
 - Wired into `prime_heat_sum_data` → `prime_heat_bounds_prime_data_of_data` →
   `prime_heat_bounds_data` in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`.
 
-Embedding search (q3_docs):
+Embedding search (q3_docs, vsearch):
 - Queries: "interval checker bucket", "primecert interval bucket bounds",
   "prime heat bucket", "interval arithmetic lean exp log".
-- Hits were low-signal (older prime-cert docs; nothing on interval arithmetic or bucket proofs).
+- Top hits: `docs/INSIGHTS.md` (PrimeCert closure notes) and
+  `docs/insights/primecert_closure_plan_2026_01_29.md`; nothing on interval arithmetic.
+- Note: `qmd query` pulls heavy expansion/reranker models and can break JSON;
+  use `--mode vsearch` for stable output.
 
 Web search:
-- Found `interval_cases` (finite case splitter) and interval lemmas in order/interval;
-  no dedicated interval-arithmetic tactic for exp/log.
+- `Mathlib.Tactic.IntervalCases` confirms `interval_cases` is finite case splitting (ℕ/ℤ).
+- No dedicated interval‑arithmetic tactic for exp/log found.
 
 Mathlib scan (Explore):
 - Tactics: `bound`, `linarith`, `norm_num`, `interval_cases`.

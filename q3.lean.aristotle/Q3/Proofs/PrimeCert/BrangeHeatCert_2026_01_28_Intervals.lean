@@ -345,5 +345,23 @@ def prime_heat_bucket_ub_sum_q : ℚ := 4.00491723255781
 def prime_heat_bucket_ub_sum : ℝ :=
   (prime_heat_bucket_ub_sum_q : ℝ)
 
-end Q3.Proofs.PrimeCert
+lemma prime_heat_bucket_ub_sum_q_eq :
+    (∑ k : Fin prime_heat_bucket_count, prime_heat_bucket_ub_q_get k) =
+      prime_heat_bucket_ub_sum_q := by
+  native_decide
 
+lemma prime_heat_bucket_ub_sum_eq :
+    (∑ k : Fin prime_heat_bucket_count, prime_heat_bucket_ub k) =
+      prime_heat_bucket_ub_sum := by
+  classical
+  have hq :
+      (∑ k : Fin prime_heat_bucket_count, prime_heat_bucket_ub_q_get k) =
+        prime_heat_bucket_ub_sum_q := by
+    exact prime_heat_bucket_ub_sum_q_eq
+  have hq' :
+      (∑ k : Fin prime_heat_bucket_count, (prime_heat_bucket_ub_q_get k : ℝ)) =
+        (prime_heat_bucket_ub_sum_q : ℝ) := by
+    exact_mod_cast hq
+  simpa [prime_heat_bucket_ub, prime_heat_bucket_ub_sum, prime_heat_bucket_ub_sum_q] using hq'
+
+end Q3.Proofs.PrimeCert

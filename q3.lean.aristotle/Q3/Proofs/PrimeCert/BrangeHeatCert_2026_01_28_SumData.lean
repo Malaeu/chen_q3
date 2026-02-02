@@ -49,9 +49,17 @@ axiom prime_heat_bucket_bounds :
   ∀ k : Fin prime_heat_bucket_count,
     prime_heat_bucket_sum k ≤ prime_heat_bucket_ub k
 
-axiom prime_heat_bucket_sum_ub :
-  (Finset.univ.sum (fun k => prime_heat_bucket_ub k)) ≤
-    prime_cert_heat_prime_sum_up_to_ub
+lemma prime_heat_bucket_sum_ub :
+    (Finset.univ.sum (fun k => prime_heat_bucket_ub k)) ≤
+      prime_cert_heat_prime_sum_up_to_ub := by
+  have hsum :
+      (Finset.univ.sum (fun k : Fin prime_heat_bucket_count => prime_heat_bucket_ub k)) =
+        prime_heat_bucket_ub_sum := by
+    simpa using
+      (prime_heat_bucket_ub_sum_eq :
+        (∑ k : Fin prime_heat_bucket_count, prime_heat_bucket_ub k) =
+          prime_heat_bucket_ub_sum)
+  simpa [hsum] using prime_heat_bucket_ub_sum_le_partial
 
 theorem prime_heat_bucket_data :
     PrimeHeatBucketData prime_cert_heat_prime_sum_up_to_ub := by
