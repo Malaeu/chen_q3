@@ -2,6 +2,7 @@ import Mathlib
 import Q3.Proofs.PrimeCert.IntervalChecker
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Intervals
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Tail
 
 /-!
 Bucketed interval checker scaffold for the prime-heat partial sum.
@@ -20,6 +21,16 @@ def prime_heat_bucket_range (k : Fin prime_heat_bucket_count) : Finset ℕ :=
 
 def prime_heat_bucket_sum (k : Fin prime_heat_bucket_count) : ℝ :=
   (prime_heat_bucket_range k).sum (fun n => prime_heat_weight_term n)
+
+def prime_heat_bucket_tail_sum (k : Fin prime_heat_bucket_count) : ℝ :=
+  (prime_heat_bucket_range k).sum (fun n => prime_heat_tail_term n)
+
+lemma prime_heat_bucket_sum_le_tail_sum (k : Fin prime_heat_bucket_count) :
+    prime_heat_bucket_sum k ≤ prime_heat_bucket_tail_sum k := by
+  classical
+  apply Finset.sum_le_sum
+  intro n hn
+  exact prime_heat_weight_term_le_tail_term n
 
 /-- Fixed bucket width for the prime-heat partial sum. -/
 def prime_heat_bucket_width : Nat := 10000

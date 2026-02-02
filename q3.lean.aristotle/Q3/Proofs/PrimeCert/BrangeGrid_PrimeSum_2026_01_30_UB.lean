@@ -18,7 +18,7 @@ def prime_cert_brange_sum_ub_source : String :=
 
 /-- SHA256 of the full source file. -/
 def prime_cert_brange_sum_ub_sha256 : String :=
-  "451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48"
+  "6b4d3534195471dfe797b1910afbd7068136abfedf3ea0389b9849f917404ddc"
 
 /-- Interval upper bounds for the prime partial sums (same B grid). -/
 def prime_b_grid_prime_sum_ub_q_get : Fin prime_b_grid_size -> ℚ

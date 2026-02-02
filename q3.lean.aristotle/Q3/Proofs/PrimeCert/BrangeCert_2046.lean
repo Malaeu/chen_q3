@@ -17,7 +17,7 @@ def prime_cert_brange_source : String :=
   "output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt"
 
 def prime_cert_brange_sha256 : String :=
-  "451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48"
+  "6b4d3534195471dfe797b1910afbd7068136abfedf3ea0389b9849f917404ddc"
 
 structure PrimeBGridBounds where
   h_arch :

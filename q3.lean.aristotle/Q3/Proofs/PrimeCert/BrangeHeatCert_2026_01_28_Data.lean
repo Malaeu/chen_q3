@@ -23,11 +23,11 @@ def prime_cert_heat_brange_source : String :=
 
 /-- SHA256 of the source file. -/
 def prime_cert_heat_brange_sha256 : String :=
-  "05b044cbc035b285c453631af81eed8bd0a49b2f0866f6f7f3035c09732630d8"
+  "55e945564c513cefec7d344b8db399214b6739666161c163c55ed5b78098ef77"
 
 /-- Raw numeric estimate for the prime-term heat Lipschitz constant. -/
 def prime_cert_L_prime_heat_raw : ℝ :=
-  4.004917238833
+  4.004920232592
 
 /-- Raw numeric estimate for the arch-term heat Lipschitz constant. -/
 def prime_cert_L_arch_heat_raw : ℝ :=
@@ -35,12 +35,12 @@ def prime_cert_L_arch_heat_raw : ℝ :=
 
 /-- Raw numeric estimate for the total heat Lipschitz constant. -/
 def prime_cert_L_total_heat_raw : ℝ :=
-  0.596143980090
+  0.596144312730
 
 /-!
 Auxiliary evidence from the same run (not yet wired into proofs):
 - primes ≤ N: 78498
-- tail_bound_heat approx 6.240185335243254e-9
+-- tail_bound_heat approx 3.0e-6
 - N = 1,000,000, B_min = 3.0, B_max = 4.9, t_critical = 0.15
 -/
 
@@ -49,7 +49,7 @@ def prime_cert_heat_N : ℕ := 1000000
 def prime_cert_heat_prime_count : ℕ := 78498
 
 def prime_cert_heat_tail_bound : ℝ :=
-  0.00000000624018533524325430861606353873445952371208136593940599676748
+  (3 / 1000000 : ℝ)
 
 def prime_cert_L_prime_heat_partial : ℝ :=
   prime_cert_L_prime_heat_raw - prime_cert_heat_tail_bound

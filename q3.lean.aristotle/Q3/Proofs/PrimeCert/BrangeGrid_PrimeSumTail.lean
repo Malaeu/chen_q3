@@ -417,4 +417,380 @@ lemma prime_b_grid_weight_term_summable (i : Fin prime_b_grid_size) :
   exact (summable_nat_add_iff (f := fun n => prime_b_grid_weight_term i n)
     prime_b_grid_tail_N0).1 hsum_shift
 
+/-! ### Coarse analytic tail bound (provable without interval arithmetic) -/
+
+def prime_b_grid_tail_eps : ℝ := (1 / 10 : ℝ)
+
+def prime_b_grid_tail_p0 : ℝ := (47 / 20 : ℝ)
+
+def prime_b_grid_tail_coeff : ℝ := (20 : ℝ)
+
+lemma prime_b_grid_tail_p0_le :
+    prime_b_grid_tail_p0 ≤
+      t_critical * Real.log (prime_b_grid_tail_N0 : ℝ) + (2 / 5 : ℝ) := by
+  have hlog : (13 : ℝ) ≤ Real.log (prime_b_grid_tail_N0 : ℝ) :=
+    prime_b_grid_tail_log_N0_ge_13
+  have ht : t_critical = (3 / 20 : ℝ) := by
+    simp [t_critical]
+  -- 13 * (3/20) + 2/5 = 47/20
+  have h' : (47 / 20 : ℝ) ≤
+      t_critical * Real.log (prime_b_grid_tail_N0 : ℝ) + (2 / 5 : ℝ) := by
+    nlinarith [hlog, ht]
+  simpa [prime_b_grid_tail_p0] using h'
+
+lemma prime_b_grid_tail_term_le_rpow_p0 {m : ℕ} (hm : prime_b_grid_tail_N0 ≤ m) :
+    prime_b_grid_tail_term m ≤
+      prime_b_grid_tail_coeff * (m : ℝ) ^ (-prime_b_grid_tail_p0) := by
+  have hm_pos : (0 : ℝ) < (m : ℝ) := by
+    have hN0_pos : 0 < prime_b_grid_tail_N0 := by
+      norm_num [prime_b_grid_tail_N0, prime_cert_N]
+    have hm_pos_nat : 0 < m := lt_of_lt_of_le hN0_pos hm
+    exact_mod_cast hm_pos_nat
+  have hlog_le :
+      Real.log (m : ℝ) ≤ (m : ℝ) ^ prime_b_grid_tail_eps / prime_b_grid_tail_eps := by
+    -- log n ≤ n^ε / ε
+    simpa [prime_b_grid_tail_eps] using
+      (Real.log_natCast_le_rpow_div m (by norm_num : (0 : ℝ) < (1 / 10 : ℝ)))
+  have hlog_mul :
+      (2 : ℝ) * Real.log (m : ℝ) ≤
+        prime_b_grid_tail_coeff * (m : ℝ) ^ prime_b_grid_tail_eps := by
+    -- 2 * log m ≤ (2/eps) * m^eps (coarse)
+    have hlog_le' :
+        Real.log (m : ℝ) ≤ (10 : ℝ) * (m : ℝ) ^ prime_b_grid_tail_eps := by
+      simpa [prime_b_grid_tail_eps, div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm] using
+        hlog_le
+    have h' :=
+      (mul_le_mul_of_nonneg_left hlog_le' (by norm_num : (0 : ℝ) ≤ 2))
+    have hcoeff : prime_b_grid_tail_coeff = (2 : ℝ) * 10 := by
+      norm_num [prime_b_grid_tail_coeff]
+    simpa [hcoeff, mul_assoc, mul_left_comm, mul_comm] using h'
+  have hsqrt_pos : 0 < Real.sqrt (m : ℝ) := Real.sqrt_pos.mpr hm_pos
+  have hfactor :
+      (2 * Real.log (m : ℝ)) / Real.sqrt (m : ℝ) ≤
+        prime_b_grid_tail_coeff * (m : ℝ) ^ prime_b_grid_tail_eps / Real.sqrt (m : ℝ) := by
+    exact (div_le_div_of_nonneg_right hlog_mul (le_of_lt hsqrt_pos))
+  have hsqrt : Real.sqrt (m : ℝ) = (m : ℝ) ^ (1 / 2 : ℝ) := by
+    simpa [one_div] using (Real.sqrt_eq_rpow (m : ℝ))
+  have hdiv :
+      (m : ℝ) ^ prime_b_grid_tail_eps / Real.sqrt (m : ℝ) =
+        (m : ℝ) ^ (prime_b_grid_tail_eps - (1 / 2 : ℝ)) := by
+    have hm_pos' : 0 < (m : ℝ) := hm_pos
+    -- x^(y - z) = x^y / x^z
+    have h := (Real.rpow_sub (x := (m : ℝ)) (y := prime_b_grid_tail_eps)
+      (z := (1 / 2 : ℝ)) hm_pos')
+    -- rearrange
+    simpa [hsqrt] using h.symm
+  have hfactor' :
+      (2 * Real.log (m : ℝ)) / Real.sqrt (m : ℝ) ≤
+        prime_b_grid_tail_coeff * (m : ℝ) ^ (prime_b_grid_tail_eps - (1 / 2 : ℝ)) := by
+    simpa [hdiv, mul_div_assoc] using hfactor
+  have hfactor'' :
+      (2 * Real.log (m : ℝ)) / Real.sqrt (m : ℝ) ≤
+        prime_b_grid_tail_coeff * (m : ℝ) ^ (-(2 / 5 : ℝ)) := by
+    -- eps = 1/10, so eps - 1/2 = -2/5
+    have h_eps : prime_b_grid_tail_eps - (2⁻¹ : ℝ) = (-(2 / 5 : ℝ)) := by
+      norm_num [prime_b_grid_tail_eps]
+    simpa [h_eps] using hfactor'
+  have hexp_le := prime_b_grid_tail_exp_le_rpow (m := m) hm
+  have hnonneg1 : 0 ≤ prime_b_grid_tail_coeff * (m : ℝ) ^ (-(2 / 5 : ℝ)) := by
+    have hm_nonneg : 0 ≤ (m : ℝ) := by exact_mod_cast (Nat.zero_le m)
+    have hrpow_nonneg :
+        0 ≤ (m : ℝ) ^ (-(2 / 5 : ℝ)) := Real.rpow_nonneg hm_nonneg _
+    have hcoeff_nonneg : 0 ≤ prime_b_grid_tail_coeff := by
+      norm_num [prime_b_grid_tail_coeff]
+    exact mul_nonneg hcoeff_nonneg hrpow_nonneg
+  have hmul :
+      ((2 * Real.log (m : ℝ)) / Real.sqrt (m : ℝ)) *
+          Real.exp (-t_critical * (Real.log (m : ℝ)) ^ 2) ≤
+        prime_b_grid_tail_coeff * (m : ℝ) ^ (-(2 / 5 : ℝ)) *
+          (m : ℝ) ^ (-(t_critical * Real.log (prime_b_grid_tail_N0 : ℝ))) := by
+    exact mul_le_mul hfactor'' hexp_le (Real.exp_nonneg _) hnonneg1
+  have hcombine :
+      (m : ℝ) ^ (-(2 / 5 : ℝ)) *
+          (m : ℝ) ^ (-(t_critical * Real.log (prime_b_grid_tail_N0 : ℝ))) =
+        (m : ℝ) ^ (-(t_critical * Real.log (prime_b_grid_tail_N0 : ℝ) + (2 / 5 : ℝ))) := by
+    have hm_pos' : 0 < (m : ℝ) := hm_pos
+    -- x^a * x^b = x^(a + b)
+    simpa [add_comm, add_left_comm, add_assoc] using
+      (Real.rpow_add (x := (m : ℝ)) hm_pos'
+        (-(2 / 5 : ℝ)) (-(t_critical * Real.log (prime_b_grid_tail_N0 : ℝ)))).symm
+  have hpow_le :
+      (m : ℝ) ^ (-(t_critical * Real.log (prime_b_grid_tail_N0 : ℝ) + (2 / 5 : ℝ))) ≤
+        (m : ℝ) ^ (-prime_b_grid_tail_p0) := by
+    have hm_one_nat : (1 : ℕ) ≤ m := by
+      have hN0_one : (1 : ℕ) ≤ prime_b_grid_tail_N0 := by
+        norm_num [prime_b_grid_tail_N0, prime_cert_N]
+      exact le_trans hN0_one hm
+    have hm_one : (1 : ℝ) ≤ (m : ℝ) := by
+      exact_mod_cast hm_one_nat
+    have h_exp_le :
+        -(t_critical * Real.log (prime_b_grid_tail_N0 : ℝ) + (2 / 5 : ℝ)) ≤
+          -prime_b_grid_tail_p0 := by
+      have h := prime_b_grid_tail_p0_le
+      nlinarith [h]
+    exact Real.rpow_le_rpow_of_exponent_le hm_one h_exp_le
+  calc
+    prime_b_grid_tail_term m
+        = ((2 * Real.log (m : ℝ)) / Real.sqrt (m : ℝ)) *
+            Real.exp (-t_critical * (Real.log (m : ℝ)) ^ 2) := by
+            simp [prime_b_grid_tail_term, div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc]
+    _ ≤ prime_b_grid_tail_coeff * (m : ℝ) ^ (-(2 / 5 : ℝ)) *
+          (m : ℝ) ^ (-(t_critical * Real.log (prime_b_grid_tail_N0 : ℝ))) := hmul
+    _ = prime_b_grid_tail_coeff *
+          (m : ℝ) ^ (-(t_critical * Real.log (prime_b_grid_tail_N0 : ℝ) + (2 / 5 : ℝ))) := by
+            simp [hcombine, mul_comm, mul_left_comm, mul_assoc]
+    _ ≤ prime_b_grid_tail_coeff * (m : ℝ) ^ (-prime_b_grid_tail_p0) := by
+            exact mul_le_mul_of_nonneg_left hpow_le (by norm_num [prime_b_grid_tail_coeff])
+
+lemma prime_b_grid_tail_rpow_sum_le (m : ℕ) :
+    (∑ i ∈ Finset.range m,
+        (i + prime_b_grid_tail_N0 : ℝ) ^ (-prime_b_grid_tail_p0)) ≤
+      (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) /
+        (prime_b_grid_tail_p0 - 1) := by
+  -- compare to integral of x^(-p0)
+  have hanti' :
+      AntitoneOn (fun x : ℝ => x ^ (-prime_b_grid_tail_p0)) (Set.Ioi 0) := by
+    apply Real.antitoneOn_rpow_Ioi_of_exponent_nonpos
+    have : (0 : ℝ) ≤ prime_b_grid_tail_p0 := by
+      norm_num [prime_b_grid_tail_p0]
+    nlinarith
+  have hanti :
+      AntitoneOn (fun x : ℝ => x ^ (-prime_b_grid_tail_p0))
+        (Set.Icc (prime_cert_N : ℝ) (prime_cert_N + m)) := by
+    refine hanti'.mono ?_
+    intro x hx
+    have hpos : (0 : ℝ) < (prime_cert_N : ℝ) := by
+      norm_num [prime_cert_N]
+    exact lt_of_lt_of_le hpos hx.1
+  have hsum_le :
+      (∑ i ∈ Finset.range m,
+          (i + prime_b_grid_tail_N0 : ℝ) ^ (-prime_b_grid_tail_p0)) ≤
+        ∫ x in (prime_cert_N : ℝ)..(prime_cert_N + m), x ^ (-prime_b_grid_tail_p0) := by
+    have h := (AntitoneOn.sum_le_integral
+      (x₀ := (prime_cert_N : ℝ)) (a := m)
+      (f := fun x : ℝ => x ^ (-prime_b_grid_tail_p0)) hanti)
+    simpa [prime_b_grid_tail_N0, add_assoc, add_comm, add_left_comm] using h
+  -- bound the integral using rpow formula
+  have h_integral :
+      (∫ x in (prime_cert_N : ℝ)..(prime_cert_N + m), x ^ (-prime_b_grid_tail_p0)) =
+        (((prime_cert_N + m : ℝ)) ^ (1 - prime_b_grid_tail_p0) -
+          (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0)) /
+          (1 - prime_b_grid_tail_p0) := by
+    have hne : (-prime_b_grid_tail_p0 : ℝ) ≠ -1 := by
+      norm_num [prime_b_grid_tail_p0]
+    have h0 : (0 : ℝ) ∉ Set.uIcc (prime_cert_N : ℝ) (prime_cert_N + m : ℝ) := by
+      intro hmem
+      have hpos : (0 : ℝ) < (prime_cert_N : ℝ) := by
+        norm_num [prime_cert_N]
+      have hab : (prime_cert_N : ℝ) ≤ (prime_cert_N + m : ℝ) := by
+        nlinarith
+      have hmem' :
+          (0 : ℝ) ∈ Set.Icc (prime_cert_N : ℝ) (prime_cert_N + m : ℝ) := by
+        simpa [Set.uIcc_of_le hab] using hmem
+      exact (not_le_of_gt hpos) hmem'.1
+    have hcond : (-1 : ℝ) < (-prime_b_grid_tail_p0) ∨
+        (-prime_b_grid_tail_p0) ≠ -1 ∧
+          (0 : ℝ) ∉ Set.uIcc (prime_cert_N : ℝ) (prime_cert_N + m : ℝ) := by
+      right; exact ⟨hne, h0⟩
+    simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using
+      (integral_rpow (a := (prime_cert_N : ℝ))
+        (b := (prime_cert_N + m : ℝ)) (r := -prime_b_grid_tail_p0) hcond)
+  have hpow_le :
+      (prime_cert_N + m : ℝ) ^ (1 - prime_b_grid_tail_p0) ≤
+        (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) := by
+    have hpos : (0 : ℝ) < (prime_cert_N : ℝ) := by
+      norm_num [prime_cert_N]
+    have hbase : (prime_cert_N : ℝ) ≤ (prime_cert_N + m : ℝ) := by
+      nlinarith
+    have h_exp_nonpos : (1 - prime_b_grid_tail_p0 : ℝ) ≤ 0 := by
+      norm_num [prime_b_grid_tail_p0]
+    -- exponent nonpositive => rpow is antitone in base
+    exact Real.rpow_le_rpow_of_exponent_nonpos hpos hbase h_exp_nonpos
+  have h_integral_le :
+      ∫ x in (prime_cert_N : ℝ)..(prime_cert_N + m), x ^ (-prime_b_grid_tail_p0) ≤
+        (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) /
+          (prime_b_grid_tail_p0 - 1) := by
+    have hden_neg : (1 - prime_b_grid_tail_p0 : ℝ) < 0 := by
+      norm_num [prime_b_grid_tail_p0]
+    have hden' : (prime_b_grid_tail_p0 - 1 : ℝ) = -(1 - prime_b_grid_tail_p0) := by
+      ring
+    have hb_nonneg :
+        0 ≤ (prime_cert_N + m : ℝ) ^ (1 - prime_b_grid_tail_p0) := by
+      have hbase_nonneg : 0 ≤ (prime_cert_N + m : ℝ) := by nlinarith
+      exact Real.rpow_nonneg hbase_nonneg _
+    have hdiff :
+        -(prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) ≤
+          (prime_cert_N + m : ℝ) ^ (1 - prime_b_grid_tail_p0) -
+            (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) := by
+      nlinarith [hb_nonneg]
+    calc
+      ∫ x in (prime_cert_N : ℝ)..(prime_cert_N + m), x ^ (-prime_b_grid_tail_p0)
+          = (((prime_cert_N + m : ℝ)) ^ (1 - prime_b_grid_tail_p0) -
+              (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0)) /
+              (1 - prime_b_grid_tail_p0) := h_integral
+      _ ≤ (-(prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0)) / (1 - prime_b_grid_tail_p0) := by
+            exact (div_le_div_of_nonpos_of_le (le_of_lt hden_neg) hdiff)
+      _ = (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) /
+            (prime_b_grid_tail_p0 - 1) := by
+            have hden'' : (1 - prime_b_grid_tail_p0 : ℝ) = -(prime_b_grid_tail_p0 - 1) := by
+              ring
+            calc
+              (-(prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0)) /
+                  (1 - prime_b_grid_tail_p0)
+                  = (-(prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0)) /
+                      (-(prime_b_grid_tail_p0 - 1)) := by
+                        rw [hden'']
+              _ = (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) /
+                    (prime_b_grid_tail_p0 - 1) := by
+                        simpa using
+                          (neg_div_neg_eq ((prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0))
+                            (prime_b_grid_tail_p0 - 1))
+  exact hsum_le.trans h_integral_le
+
+lemma prime_b_grid_tail_term_sum_le_bound :
+    ∑' n, prime_b_grid_tail_term (n + prime_b_grid_tail_N0) ≤
+      prime_b_grid_tail_bound := by
+  have hnonneg : ∀ n, 0 ≤ prime_b_grid_tail_term (n + prime_b_grid_tail_N0) := by
+    intro n
+    have hm : prime_b_grid_tail_N0 ≤ n + prime_b_grid_tail_N0 := by
+      exact Nat.le_add_left _ _
+    have hlog_nonneg : 0 ≤ Real.log (n + prime_b_grid_tail_N0 : ℝ) := by
+      simpa using (Real.log_natCast_nonneg (n + prime_b_grid_tail_N0))
+    have hsqrt_nonneg : 0 ≤ Real.sqrt (n + prime_b_grid_tail_N0 : ℝ) := by
+      exact Real.sqrt_nonneg _
+    have hexp_nonneg :
+        0 ≤ Real.exp (-t_critical * (Real.log (n + prime_b_grid_tail_N0 : ℝ)) ^ 2) :=
+      Real.exp_nonneg _
+    have hmul_nonneg :
+        0 ≤ (2 * Real.log (n + prime_b_grid_tail_N0 : ℝ)) / Real.sqrt
+            (n + prime_b_grid_tail_N0 : ℝ) := by
+      exact div_nonneg (mul_nonneg (by norm_num) hlog_nonneg) hsqrt_nonneg
+    simpa [prime_b_grid_tail_term, div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] using
+      mul_nonneg hmul_nonneg hexp_nonneg
+  have hsum_le :
+      ∀ m, (∑ i ∈ Finset.range m,
+        prime_b_grid_tail_term (i + prime_b_grid_tail_N0)) ≤
+          prime_b_grid_tail_bound := by
+    intro m
+    have hle_sum :
+        (∑ i ∈ Finset.range m,
+          prime_b_grid_tail_term (i + prime_b_grid_tail_N0)) ≤
+          ∑ i ∈ Finset.range m,
+            prime_b_grid_tail_coeff *
+              (i + prime_b_grid_tail_N0 : ℝ) ^ (-prime_b_grid_tail_p0) := by
+      -- pointwise comparison
+      refine Finset.sum_le_sum ?_
+      intro i hi
+      have hm : prime_b_grid_tail_N0 ≤ i + prime_b_grid_tail_N0 := by
+        exact Nat.le_add_left _ _
+      have h := prime_b_grid_tail_term_le_rpow_p0 (m := i + prime_b_grid_tail_N0) hm
+      simpa [prime_b_grid_tail_coeff, add_comm, add_left_comm, add_assoc, mul_comm, mul_left_comm,
+        mul_assoc] using h
+    have hle :
+        (∑ i ∈ Finset.range m,
+          prime_b_grid_tail_term (i + prime_b_grid_tail_N0)) ≤
+          prime_b_grid_tail_coeff *
+            (∑ i ∈ Finset.range m,
+              (i + prime_b_grid_tail_N0 : ℝ) ^ (-prime_b_grid_tail_p0)) := by
+      simpa [Finset.mul_sum, mul_comm, mul_left_comm, mul_assoc] using hle_sum
+    have hsum_rpow :=
+      prime_b_grid_tail_rpow_sum_le m
+    have hsum_rpow' :
+        prime_b_grid_tail_coeff *
+            (∑ i ∈ Finset.range m,
+              (i + prime_b_grid_tail_N0 : ℝ) ^ (-prime_b_grid_tail_p0)) ≤
+          prime_b_grid_tail_bound := by
+      -- bound the rpow sum by a numeric constant
+      have h1 :
+          (∑ i ∈ Finset.range m,
+              (i + prime_b_grid_tail_N0 : ℝ) ^ (-prime_b_grid_tail_p0)) ≤
+            (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) /
+              (prime_b_grid_tail_p0 - 1) := hsum_rpow
+      have hpow_le :
+          (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) ≤
+            (10 : ℝ) ^ (-8 : ℝ) := by
+        -- (10^6)^(1-p0) = 10^(6*(1-p0)) with 6*(1-p0) = -8.1 ≤ -8
+        have h10pos : (1 : ℝ) ≤ (10 : ℝ) := by norm_num
+        have hmul :
+            (6 : ℝ) * (1 - prime_b_grid_tail_p0) ≤ (-8 : ℝ) := by
+          norm_num [prime_b_grid_tail_p0]
+        have hpow :
+            (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) =
+              (10 : ℝ) ^ ((6 : ℝ) * (1 - prime_b_grid_tail_p0)) := by
+          -- rewrite prime_cert_N as 10^6 and use rpow_natCast_mul
+          have h10 : (prime_cert_N : ℝ) = (10 : ℝ) ^ (6 : ℕ) := by
+            norm_num [prime_cert_N]
+          calc
+            (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0)
+                = ((10 : ℝ) ^ (6 : ℕ)) ^ (1 - prime_b_grid_tail_p0) := by
+                    simpa [h10]
+            _ = (10 : ℝ) ^ ((6 : ℝ) * (1 - prime_b_grid_tail_p0)) := by
+                    simpa [mul_comm] using
+                      (Real.rpow_natCast_mul (x := (10 : ℝ)) (n := 6)
+                        (z := (1 - prime_b_grid_tail_p0)) (by norm_num)).symm
+        -- use monotonicity in the exponent
+        have hmono :
+            (10 : ℝ) ^ ((6 : ℝ) * (1 - prime_b_grid_tail_p0)) ≤
+              (10 : ℝ) ^ (-8 : ℝ) := by
+          exact Real.rpow_le_rpow_of_exponent_le h10pos hmul
+        simpa [hpow] using hmono
+      have hconst_le :
+          (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) /
+              (prime_b_grid_tail_p0 - 1) ≤ (1 / 100000000 : ℝ) * (20 / 27 : ℝ) := by
+        -- (p0-1)=27/20, so divide by it and use hpow_le
+        have hden : (prime_b_grid_tail_p0 - 1 : ℝ) = (27 / 20 : ℝ) := by
+          norm_num [prime_b_grid_tail_p0]
+        have hten : (10 : ℝ) ^ (-8 : ℝ) = (1 / 100000000 : ℝ) := by
+          have hpos : (0 : ℝ) ≤ (10 : ℝ) := by norm_num
+          calc
+            (10 : ℝ) ^ (-8 : ℝ) = ((10 : ℝ) ^ (8 : ℝ))⁻¹ := by
+              simpa using (Real.rpow_neg (x := (10 : ℝ)) (hx := hpos) (y := (8 : ℝ)))
+            _ = ((10 : ℝ) ^ (8 : ℕ))⁻¹ := by
+              simp [Real.rpow_natCast]
+            _ = (1 / 100000000 : ℝ) := by
+              norm_num
+        have hpow' :
+            (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) ≤ (1 / 100000000 : ℝ) := by
+          simpa [hten] using hpow_le
+        -- multiply by 20/27
+        calc
+          (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) /
+              (prime_b_grid_tail_p0 - 1)
+              = (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) / (27 / 20 : ℝ) := by
+                    simpa [hden]
+          _ = (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) * ((27 / 20 : ℝ))⁻¹ := by
+                    simp [div_eq_mul_inv]
+          _ = (prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) * (20 / 27 : ℝ) := by
+                    have hfrac : ((27 / 20 : ℝ))⁻¹ = (20 / 27 : ℝ) := by
+                      norm_num
+                    simpa [hfrac]
+          _ ≤ (1 / 100000000 : ℝ) * (20 / 27 : ℝ) := by
+                    have hnonneg : 0 ≤ (20 / 27 : ℝ) := by norm_num
+                    exact mul_le_mul_of_nonneg_right hpow' hnonneg
+      have hcoeff :
+          prime_b_grid_tail_coeff * ((1 / 100000000 : ℝ) * (20 / 27 : ℝ)) ≤
+            prime_b_grid_tail_bound := by
+        -- prime_b_grid_tail_coeff = 20, prime_b_grid_tail_bound = 2e-7
+        have hcoeff_q :
+            (20 : ℚ) * ((1 / 100000000 : ℚ) * (20 / 27 : ℚ)) ≤
+              prime_b_grid_tail_bound_q := by
+          norm_num [prime_b_grid_tail_bound_q]
+        have hcoeff_r := (Rat.cast_le (K := ℝ)).2 hcoeff_q
+        simpa [prime_b_grid_tail_coeff, prime_b_grid_tail_bound] using hcoeff_r
+      have hcoeff_nonneg : 0 ≤ prime_b_grid_tail_coeff := by
+        norm_num [prime_b_grid_tail_coeff]
+      calc
+        prime_b_grid_tail_coeff *
+            (∑ i ∈ Finset.range m,
+              (i + prime_b_grid_tail_N0 : ℝ) ^ (-prime_b_grid_tail_p0))
+            ≤ prime_b_grid_tail_coeff *
+              ((prime_cert_N : ℝ) ^ (1 - prime_b_grid_tail_p0) /
+                (prime_b_grid_tail_p0 - 1)) := by
+                    exact mul_le_mul_of_nonneg_left h1 hcoeff_nonneg
+        _ ≤ prime_b_grid_tail_coeff * ((1 / 100000000 : ℝ) * (20 / 27 : ℝ)) := by
+                    exact mul_le_mul_of_nonneg_left hconst_le hcoeff_nonneg
+        _ ≤ prime_b_grid_tail_bound := hcoeff
+    exact hle.trans hsum_rpow'
+  exact Real.tsum_le_of_sum_range_le hnonneg hsum_le
+
 end Q3.Proofs.PrimeCert

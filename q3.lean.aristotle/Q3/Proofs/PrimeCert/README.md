@@ -23,6 +23,7 @@ PrimeCert/
   BrangeHeatCert_2026_01_28_Intervals.lean -- heat bucketed partial sums
   BrangeHeatCert_2026_01_28_Checker.lean -- heat bucket checker scaffold
   BrangeHeatCert_2026_01_28_SumData.lean -- heat prime partial+tail data
+  BrangeHeatCert_2026_01_28_Tail.lean -- analytic heat tail bound
   BrangeHeatCert_2026_01_28_Partial.lean -- prime-heat partial-sum scaffold
   BrangeHeatCert_2026_01_28.lean -- heat-weighted bounds data
   BrangeCert_2046.lean -- B-range certificate data + theorems (provenance)
@@ -34,15 +35,15 @@ Evidence files (sha256):
 - `output/prime_cert_tcritical_2026-01-26_0046.txt`
   - `3af1204fc8f5ddf322e1110b9932bb44a5349e0773d6d1b3cdf5441ec8ef3b5d`
 - `output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`
-  - `451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48`
+  - `6b4d3534195471dfe797b1910afbd7068136abfedf3ea0389b9849f917404ddc`
 - `output/prime_cert_brange_tcritical_pilot_2026-01-30_2208.txt`
   - `e721a55add5218fc50f01eda07d715c9f5621989ba6cda8abac11e3671b7b0f0`
 - `output/prime_cert_brange_tcritical_pilot_interval_2026-01-30_2357.txt`
   - `d2e51b9bea1eff7b50625f3e7c40aeae6a91f3eeab4eb33a5e12e948e460b5db`
 - `output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt`
-  - `05b044cbc035b285c453631af81eed8bd0a49b2f0866f6f7f3035c09732630d8`
+  - `55e945564c513cefec7d344b8db399214b6739666161c163c55ed5b78098ef77`
   - Heat cert details: N = 1000000, primes ≤ N = 78498,
-    tail_bound_heat = 0.00000000624018533524325430861606353873445952371208136593940599676748
+    tail_bound_heat = 0.000003
 - `output/prime_cert_brange_heat_prime_partial_interval_2026-01-31_0009.txt`
   - `622070a7c1684049b1c9147ee39b2e1fdaebe657f4e22acc6490cd452e8493f8`
 
@@ -65,4 +66,5 @@ Integration point:
 
 Current cert-data axioms (main chain):
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_data`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
+- `Q3.Proofs.PrimeCert.prime_heat_sum_data`

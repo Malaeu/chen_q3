@@ -1,6 +1,6 @@
 # Formalization Stats (Snapshot)
 
-Last updated: 2026-02-01
+Last updated: 2026-02-02
 Scope: Q3 Lean codebase - **ONLY code in proof chain counted**
 
 Notes:
@@ -136,13 +136,13 @@ cd /mnt/hdd01/Soft/GitHub/chen_q3/worktrees/rh_clean/q3.lean.aristotle
 ║              Q3 CONTRIBUTION STATISTICS                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
-Date: So 1. Feb 10:42:24 CET 2026
+Date: Mo 2. Feb 07:53:07 CET 2026
 
 ═══ Section 1: Total Q3/ Codebase ═══
-  Total lines:    38507
-  Theorems:       308
-  Lemmas:         822
-  Definitions:    502
+  Total lines:    39718
+  Theorems:       311
+  Lemmas:         839
+  Definitions:    515
 
 ═══ Section 2: Aristotle Contribution (IN PROOF CHAIN) ═══
 
@@ -171,10 +171,10 @@ B) Aristotle files imported from aristotle_output/:
 ╚══════════════════════════════════════════════════════════════╝
 
 ═══ Section 3: Human/Manual Contribution ═══
-  Q3/ total:              38507
+  Q3/ total:              39718
   - Aristotle integrated: 4654
   ─────────────────────────
-  Human-written in Q3/:   33853
+  Human-written in Q3/:   35064
 
 ═══ Section 4: Aristotle Experiments (NOT in proof chain) ═══
   Total aristotle_output/ files: 84
@@ -195,10 +195,10 @@ B) Aristotle files imported from aristotle_output/:
   ┌─────────────────────────────────────────────────────────┐
   │ Source                    │   Lines │   % of Q3/       │
   ├─────────────────────────────────────────────────────────┤
-  │ Aristotle (in proof)      │    5421 │  14%             │
-  │ Human/Manual              │   33853 │  87%             │
+  │ Aristotle (in proof)      │    5421 │  13%             │
+  │ Human/Manual              │   35064 │  88%             │
   ├─────────────────────────────────────────────────────────┤
-  │ TOTAL Q3/                 │   38507 │ 100%             │
+  │ TOTAL Q3/                 │   39718 │ 100%             │
   └─────────────────────────────────────────────────────────┘
 
   Aristotle experiments (not used): 20729 lines

@@ -42,6 +42,40 @@
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
 
+## Synthesis (2026-02-02, in progress) — Prime-heat bucket bounds (no native_decide)
+
+Target axioms/lemmas:
+- `prime_heat_bucket_bounds` and `prime_heat_bucket_sum_ub` in
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`
+- Wired into `prime_heat_sum_data` → `prime_heat_bounds_prime_data_of_data` →
+  `prime_heat_bounds_data` in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`.
+
+Embedding search (q3_docs):
+- Queries: "interval checker bucket", "primecert interval bucket bounds",
+  "prime heat bucket", "interval arithmetic lean exp log".
+- Hits were low-signal (older prime-cert docs; nothing on interval arithmetic or bucket proofs).
+
+Web search:
+- Found `interval_cases` (finite case splitter) and interval lemmas in order/interval;
+  no dedicated interval-arithmetic tactic for exp/log.
+
+Mathlib scan (Explore):
+- Tactics: `bound`, `linarith`, `norm_num`, `interval_cases`.
+- Monotonicity lemmas: `Real.exp_*`, `Real.log_*`.
+- Useful bound: `ArithmeticFunction.vonMangoldt_le_log`
+  (`Mathlib/NumberTheory/VonMangoldt.lean`) to replace `w_Q` by `log`.
+
+Plan (5–10 lines, concrete pointers):
+1) Add `prime_heat_weight_term_le_envelope` using `vonMangoldt_le_log`,
+   `Real.exp_le_exp_of_le`, and monotonicity of `xi_n`; expose a monotone envelope `f(n)`.
+2) Prove `prime_heat_bucket_sum_le_envelope` via `Finset.sum_le_sum` and endpoint bounds.
+3) Extend `scripts/prime_brange_heat_interval_checker.py` (or new script) to emit
+   endpoint envelopes + a Lean file of `prime_heat_bucket_envelope_ub`.
+4) Replace `prime_heat_bucket_bounds` with a theorem using the envelope bounds;
+   keep `prime_heat_bucket_sum_ub` via `prime_heat_bucket_ub_sum`.
+5) Success check: `lake env lean` on `BrangeHeatCert_2026_01_28_SumData.lean`
+   and `BrangeHeatCert_2026_01_28_Partial.lean`, then `./scripts/check_axioms.sh`.
+
 ## Synthesis (2026-02-01, in progress) — Close `prime_b_grid_bounds_data` (grid cert)
 
 Target axiom:

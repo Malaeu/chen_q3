@@ -1,4 +1,4 @@
-# Proof Graph (auto) — 2026-02-01 09:42 UTC
+# Proof Graph (auto) — 2026-02-02 06:53 UTC
 
 **Purpose:** Machine + human index of the main-chain proof nodes, with alternatives.
 **Sources:** `ACTIVE/graphs/DEPS_TREE_MAIN.json` + `ACTIVE/pipeline/ALTERNATIVE_PATHS.json`

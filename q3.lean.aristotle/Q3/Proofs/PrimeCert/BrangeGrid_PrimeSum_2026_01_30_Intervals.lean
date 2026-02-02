@@ -19,7 +19,7 @@ def prime_cert_brange_bucket_source : String :=
 
 /-- SHA256 of the source file. -/
 def prime_cert_brange_bucket_sha256 : String :=
-  "451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48"
+  "6b4d3534195471dfe797b1910afbd7068136abfedf3ea0389b9849f917404ddc"
 
 /-- Number of buckets for the full grid certificate. -/
 def prime_b_grid_bucket_count : Nat := 100

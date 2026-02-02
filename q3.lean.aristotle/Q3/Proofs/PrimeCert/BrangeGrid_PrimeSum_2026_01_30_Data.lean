@@ -26,7 +26,7 @@ def prime_cert_brange_source_full : String :=
 
 /-- SHA256 of the full source file. -/
 def prime_cert_brange_sha256_full : String :=
-  "451637edeee5b073d7a4b0cfb8439dd6fdaebc9fc2878182cceea49737babc48"
+  "6b4d3534195471dfe797b1910afbd7068136abfedf3ea0389b9849f917404ddc"
 
 /-! ### Interval upper bounds for prime partial sums -/
 
@@ -34,8 +34,22 @@ def prime_cert_brange_sha256_full : String :=
 
 /-! ### Numeric obligations (interval-certificate pipeline) -/
 
-axiom prime_b_grid_bucket_data :
-  ∀ i : Fin prime_b_grid_size, PrimeBGridBucketData i
+axiom prime_b_grid_bucket_bounds :
+  ∀ i : Fin prime_b_grid_size, ∀ k : Fin prime_b_grid_bucket_count,
+    prime_b_grid_bucket_sum i k ≤ prime_b_grid_bucket_ub i k
+
+axiom prime_b_grid_bucket_sum_ub :
+  ∀ i : Fin prime_b_grid_size,
+    (Finset.univ.sum (fun k => prime_b_grid_bucket_ub i k)) ≤
+      prime_b_grid_prime_sum_ub i
+
+theorem prime_b_grid_bucket_data :
+  ∀ i : Fin prime_b_grid_size, PrimeBGridBucketData i := by
+  intro i
+  refine ⟨?h_bucket, ?h_sum_ub⟩
+  · intro k
+    exact prime_b_grid_bucket_bounds i k
+  · exact prime_b_grid_bucket_sum_ub i
 
 lemma prime_b_grid_prime_sum_le_all_ub :
   ∀ i : Fin prime_b_grid_size,
@@ -48,10 +62,6 @@ lemma prime_b_grid_prime_sum_le_all :
     prime_b_grid_prime_sum_up_to i ≤ prime_b_grid_prime_sum i := by
   intro i
   exact (prime_b_grid_prime_sum_le_all_ub i).trans (prime_b_grid_prime_sum_ub_le_table i)
-
-axiom prime_b_grid_tail_term_sum_le_bound :
-  ∑' n, prime_b_grid_tail_term (n + prime_b_grid_tail_N0) ≤
-    prime_b_grid_tail_bound
 
 /-! ### Consequence: prime-term bound on every grid point -/
 
