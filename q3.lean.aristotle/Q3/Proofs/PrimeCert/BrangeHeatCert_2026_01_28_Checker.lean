@@ -64,6 +64,15 @@ lemma prime_heat_weight_term_eq_zero_of_not_prime_pow {n : ℕ} (hn : ¬ IsPrime
     prime_heat_weight_term n = 0 := by
   simp [prime_heat_weight_term, Q3.w_Q, ArithmeticFunction.vonMangoldt, hn]
 
+lemma prime_heat_weight_term_eq_prime_pow (p k : ℕ) (hp : p.Prime) (hk : 0 < k) :
+    prime_heat_weight_term (p ^ k) =
+      (2 * Real.log p / Real.sqrt (p ^ k)) *
+        (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2) * |xi_n (p ^ k)|) *
+        (if |xi_n (p ^ k)| ≤ prime_cert_B_max then (1 : ℝ) else 0) := by
+  have hk' : k ≠ 0 := Nat.ne_of_gt hk
+  simp [prime_heat_weight_term, Q3.w_Q, ArithmeticFunction.vonMangoldt_apply_pow hk',
+    ArithmeticFunction.vonMangoldt_apply_prime hp, hk', mul_comm, mul_left_comm, mul_assoc]
+
 /-! Prime-power term upper bounds (certificate-backed). -/
 
 lemma prime_heat_pp_term_ub_nonneg (n : ℕ) : 0 ≤ prime_heat_pp_term_ub n := by
