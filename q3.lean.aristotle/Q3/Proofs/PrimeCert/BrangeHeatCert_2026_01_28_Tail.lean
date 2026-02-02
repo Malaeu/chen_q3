@@ -19,6 +19,11 @@ def prime_heat_tail_term (n : ℕ) : ℝ :=
   ((2 * Real.log (n : ℝ)) / Real.sqrt n) *
     Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n n) ^ 2) * |xi_n n|
 
+def prime_heat_envelope (n : ℕ) : ℝ :=
+  ((2 * Real.log (n : ℝ)) / Real.sqrt n) *
+    Real.exp (-t_critical * (Real.log (n : ℝ)) ^ 2) *
+    (Real.log (n : ℝ) / (2 * Real.pi))
+
 lemma xi_n_sq_scaled (n : ℕ) :
     4 * Real.pi ^ 2 * (xi_n n) ^ 2 = (Real.log n) ^ 2 := by
   have hpi : (Real.pi : ℝ) ≠ 0 := by
@@ -26,6 +31,42 @@ lemma xi_n_sq_scaled (n : ℕ) :
   simp [xi_n, pow_two, div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc]
   field_simp [hpi]
   ring
+
+lemma prime_heat_tail_term_eq_envelope (n : ℕ) :
+    prime_heat_tail_term n = prime_heat_envelope n := by
+  have hlog_nonneg : 0 ≤ Real.log (n : ℝ) := by
+    simpa using (Real.log_natCast_nonneg n)
+  have h2pi_pos : (0 : ℝ) < 2 * Real.pi := by
+    nlinarith [Real.pi_pos]
+  have hxi_nonneg : 0 ≤ xi_n n := by
+    exact div_nonneg hlog_nonneg (le_of_lt h2pi_pos)
+  have hxi_abs : |xi_n n| = xi_n n := by
+    exact abs_of_nonneg hxi_nonneg
+  have hpow' :
+      -4 * Real.pi ^ 2 * t_critical * (xi_n n) ^ 2 =
+        -t_critical * (Real.log n) ^ 2 := by
+    calc
+      -4 * Real.pi ^ 2 * t_critical * (xi_n n) ^ 2
+          = -t_critical * (4 * Real.pi ^ 2 * (xi_n n) ^ 2) := by
+              ring
+      _ = -t_critical * (Real.log n) ^ 2 := by
+              simp [xi_n_sq_scaled]
+  calc
+    prime_heat_tail_term n
+        = ((2 * Real.log (n : ℝ)) / Real.sqrt n) *
+            Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n n) ^ 2) *
+            xi_n n := by
+              simp [prime_heat_tail_term, hxi_abs]
+    _ = ((2 * Real.log (n : ℝ)) / Real.sqrt n) *
+            Real.exp (-t_critical * (Real.log n) ^ 2) *
+            xi_n n := by
+              rw [hpow']
+    _ = ((2 * Real.log (n : ℝ)) / Real.sqrt n) *
+            Real.exp (-t_critical * (Real.log n) ^ 2) *
+            (Real.log (n : ℝ) / (2 * Real.pi)) := by
+              simp [xi_n]
+    _ = prime_heat_envelope n := by
+              rfl
 
 lemma prime_heat_weight_term_le_tail_term (n : ℕ) :
     prime_heat_weight_term n ≤ prime_heat_tail_term n := by
@@ -67,6 +108,11 @@ lemma prime_heat_weight_term_le_tail_term (n : ℕ) :
             exact mul_le_mul_of_nonneg_right h_w hmul_nonneg
     _ = prime_heat_tail_term n := by
             simp [prime_heat_tail_term, mul_comm, mul_left_comm, mul_assoc]
+
+lemma prime_heat_weight_term_le_envelope (n : ℕ) :
+    prime_heat_weight_term n ≤ prime_heat_envelope n := by
+  simpa [prime_heat_tail_term_eq_envelope] using
+    (prime_heat_weight_term_le_tail_term n)
 
 lemma prime_heat_weight_term_shift_le_tail_term (n : ℕ) :
     prime_heat_weight_term (n + (prime_cert_heat_N + 1)) ≤

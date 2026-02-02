@@ -45,9 +45,9 @@ structure PrimeHeatSumData where
     ∑' n, prime_heat_weight_term (n + (prime_cert_heat_N + 1)) ≤
       prime_cert_heat_tail_bound
 
-axiom prime_heat_bucket_bounds :
-  ∀ k : Fin prime_heat_bucket_count,
-    prime_heat_bucket_sum k ≤ prime_heat_bucket_ub k
+lemma prime_heat_bucket_bounds (k : Fin prime_heat_bucket_count) :
+    prime_heat_bucket_sum k ≤ prime_heat_bucket_ub k := by
+  exact (prime_heat_bucket_sum_le_pp_ub k).trans (prime_heat_bucket_pp_sum_ub_le_bucket k)
 
 lemma prime_heat_bucket_sum_ub :
     (Finset.univ.sum (fun k => prime_heat_bucket_ub k)) ≤
