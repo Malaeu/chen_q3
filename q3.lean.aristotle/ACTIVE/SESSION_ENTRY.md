@@ -1,4 +1,4 @@
-# Session Entry (2026-02-02)
+# Session Entry (2026-02-03)
 
 Purpose: quick resume snapshot for current Q3 single-scale work.
 
@@ -13,13 +13,16 @@ Current mainline decisions:
 - Avoid two-scale t_sym/t_rkhs bridges.
 - T_P^{Ray} vs T_P^{RKHS} separated; C1 uses dictionary compression.
 
-Recent changes (2026-02-02):
-- Added bucket scaffold lemma `prime_heat_bucket_sum_le_tail_sum` in
-  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean` (prep for heat buckets).
-- Added INSIGHTS synthesis for prime-heat bucket bounds (no native_decide).
-- Refreshed `FORMALIZATION_STATS.md` + `ACTIVE/graphs/DEPS_TREE_MAIN.*` +
-  `ACTIVE/graphs/PROOF_GRAPH.*`.
-- `./scripts/check_axioms.sh` passes; main-chain axioms unchanged (3 project + 3 standard).
+Recent changes (2026-02-03):
+- Added `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_BucketDefs.lean` to isolate
+  bucket/partition lemmas from the heavy prime-power table.
+- Added sums-only pilot data `BrangeHeatCert_2026_01_28_PrimePowPilotSums.lean` and
+  proved pilot bounds for buckets 0/99 in `BrangeHeatCert_2026_01_28_Pilot.lean`
+  without `native_decide`.
+- Extended `scripts/prime_brange_heat_pp_interval_checker.py` with `--buckets` and
+  `--subnamespace`; generated full per-term pilot data
+  `BrangeHeatCert_2026_01_28_PrimePowPilot.lean` (not compiled yet; heavy).
+- Verified: `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
 
 Open blockers (main chain axioms):
 - `Q3.Weil_criterion_tau0`
@@ -27,16 +30,17 @@ Open blockers (main chain axioms):
 - `Q3.Proofs.PrimeCert.prime_heat_bounds_data`
 - Standard axioms: `propext`, `Classical.choice`, `Quot.sound`.
 
-Last check (2026-02-02):
-- `./scripts/check_axioms.sh` passes (includes `lake build Q3.Main`).
-- Axiom list matches: Weil_criterion_tau0 + PrimeCert (2) + standard 3.
+Last check (2026-02-03):
+- `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
+- `./scripts/check_axioms.sh` not re-run after the pilot refactor.
 
 Next steps:
-1) Prime-heat buckets: close `prime_heat_bucket_bounds` / `prime_heat_bucket_sum_ub`
-   (see `docs/INSIGHTS.md` 2026-02-02).
-2) Prime-grid buckets: close `prime_b_grid_bucket_bounds`
+1) Decide whether to keep the sums-only pilot or wire the per-term pilot table
+   (`BrangeHeatCert_2026_01_28_PrimePowPilot.lean`) with a fast checker.
+2) Scale prime-heat buckets from pilot to 20 buckets, then full 100.
+3) Prime-grid buckets: close `prime_b_grid_bucket_bounds`
    (see `docs/INSIGHTS.md` 2026-02-01).
-3) Re-run `./scripts/check_axioms.sh` and refresh stats/graphs after each closure.
+4) Re-run `./scripts/check_axioms.sh` and refresh stats/graphs after each closure.
 
 ## Branching discipline (2026-01-29)
 

@@ -24,6 +24,16 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--input", required=True)
     p.add_argument("--output", required=True)
     p.add_argument("--digits", type=int, default=30)
+    p.add_argument(
+        "--buckets",
+        default="",
+        help="Comma-separated bucket indices to include (default: all).",
+    )
+    p.add_argument(
+        "--subnamespace",
+        default="",
+        help="Optional sub-namespace for generated definitions.",
+    )
     return p.parse_args()
 
 
@@ -148,6 +158,8 @@ def main() -> None:
     lines.append("noncomputable section")
     lines.append("")
     lines.append("namespace Q3.Proofs.PrimeCert")
+    if args.subnamespace:
+        lines.append(f"namespace {args.subnamespace}")
     lines.append("")
     lines.append("/-- Source file (prime-heat partial interval certificate). -/")
     lines.append("def prime_cert_heat_pp_term_source : String :=")
@@ -159,18 +171,24 @@ def main() -> None:
     lines.append("")
     bucket_width = 10000
     bucket_count = (N + bucket_width - 1) // bucket_width
+    bucket_filter = None
+    if args.buckets:
+        bucket_filter = {int(x.strip()) for x in args.buckets.split(",") if x.strip()}
     buckets: dict[int, list[tuple[int, Decimal]]] = {}
     for n, ub in ub_map.items():
         k = (n - 1) // bucket_width
         buckets.setdefault(k, []).append((n, ub))
     for k in buckets:
         buckets[k].sort()
+    selected_buckets = list(range(bucket_count))
+    if bucket_filter is not None:
+        selected_buckets = [k for k in selected_buckets if k in bucket_filter]
 
     lines.append("/-- Common denominator for prime-power term bounds. -/")
     lines.append(f"def prime_heat_pp_term_ub_den : ℚ := {scale}")
     lines.append("")
     lines.append("/-- Upper bounds for prime-power terms (rational), per bucket. -/")
-    for k in range(bucket_count):
+    for k in selected_buckets:
         lines.append(f"def prime_heat_pp_term_ub_q_get_bucket_{k} : ℕ -> ℚ")
         for n, _ub in buckets.get(k, []):
             num = ub_num_map[n]
@@ -187,7 +205,7 @@ def main() -> None:
     lines.append("/-- Upper bounds for prime-power terms (rational). -/")
     lines.append("def prime_heat_pp_term_ub_q_get (n : ℕ) : ℚ :=")
     lines.append("  match prime_heat_pp_term_bucket_index n with")
-    for k in range(bucket_count):
+    for k in selected_buckets:
         lines.append(f"  | {k} => prime_heat_pp_term_ub_q_get_bucket_{k} n")
     lines.append("  | _ => 0")
     lines.append("")
@@ -195,6 +213,17 @@ def main() -> None:
     lines.append("def prime_heat_pp_term_ub (n : ℕ) : ℝ :=")
     lines.append("  (prime_heat_pp_term_ub_q_get n : ℝ)")
     lines.append("")
+    if selected_buckets:
+        lines.append("/-- Prime-power bucket sums (rational). -/")
+        for k in selected_buckets:
+            total = sum(ub_num_map[n] for n, _ in buckets.get(k, []))
+            lines.append(
+                f"def prime_heat_pp_term_ub_q_sum_bucket_{k} : ℚ := ({total} : ℚ) / prime_heat_pp_term_ub_den"
+            )
+        lines.append("")
+
+    if args.subnamespace:
+        lines.append(f"end {args.subnamespace}")
     lines.append("end Q3.Proofs.PrimeCert")
 
     outp.parent.mkdir(parents=True, exist_ok=True)
