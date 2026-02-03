@@ -948,3 +948,33 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
   (kept for later; not compiled yet).
 - Verified: `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_BucketDefs` and
   `...PrimePowPilotSums`; `lake env lean BrangeHeatCert_2026_01_28_Pilot.lean` passes.
+
+## Synthesis (2026-02-03, in progress) — План закрытия Level‑2 аксиом PrimeCert
+
+Target axioms:
+- `prime_heat_bucket_data` in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`
+- `prime_heat_bounds_arch_data` in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+- `prime_b_grid_bounds_data` in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
+
+Embedding search (q3_docs):
+- Queries: "prime_heat_bucket_data", "prime_b_grid_bounds_data", "prime_heat_bounds_arch_data".
+- Result: `qmd` query timed out on this host (120s/60s); no hits recorded.
+
+Web search:
+- Interval arithmetic in Lean / intervalIntegral numeric bounds: no drop‑in tactic found yet.
+
+Plan (5–10 lines, concrete pointers):
+1. `prime_heat_bucket_data`: move data into a proof file (e.g. `BrangeHeatCert_2026_01_28_BucketCheck.lean`)
+   and prove per‑bucket bounds via interval/endpoint envelopes emitted by
+   `scripts/prime_brange_heat_interval_checker.py` (Lean proofs over ℚ + `linarith`, no `native_decide`).
+2. `prime_heat_bounds_arch_data`: add `BrangeHeatCert_2026_01_28_ArchBounds.lean` with piecewise bounds on
+   `|a_star| * heat_weight_tc`, then discharge the integral bound in
+   `BrangeHeatCert_2026_01_28.lean` using `intervalIntegral` + certified endpoints.
+3. `prime_b_grid_bounds_data`: extend `BrangeGrid_PrimeSum_2026_01_30_Checker.lean` to reduce each grid bucket
+   to finite sums and close bounds using `BrangeGrid_PrimeSum_2026_01_30_Intervals.lean` data.
+4. Infrastructure: add a tiny ℚ‑endpoint lemma library in `Q3/Proofs/PrimeCert/IntervalLemmas.lean`
+   (monotonicity, exp/log bounds) reused by (1–3), still no `native_decide`.
+5. After each swap: `lake env lean` on touched files + `./scripts/check_axioms.sh`; log axiom count drop in
+   `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`.
+6. Guardrail: keep A3_FLOOR and RKHS proof strategies separated in these files.
+7. Success criteria: only remaining project axiom is `Q3.Weil_criterion_tau0`.
