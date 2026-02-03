@@ -27,6 +27,13 @@ Recent changes (2026-02-03):
   `BrangeHeatCert_2026_01_28_PrimePowPilotBucket0.lean`,
   `BrangeHeatCert_2026_01_28_PrimePowPilotBucket99.lean`,
   with `BrangeHeatCert_2026_01_28_PrimePowPilot.lean` as the small dispatcher.
+- Further split pilot buckets into parts (to reduce Lean compile time):
+  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket0Part2.lean`,
+  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket0Part3.lean`,
+  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket0Part4.lean`,
+  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket99Part2.lean`,
+  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket99Part3.lean`,
+  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket99Part4.lean`.
 - Rewired `BrangeHeatCert_2026_01_28_Pilot.lean` to use per-term pilot data
   (prime-power filter + pointwise axiom), replacing sums-only bounds.
 - Verified: `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
@@ -41,7 +48,8 @@ Last check (2026-02-03):
 - `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
 - `./scripts/check_axioms.sh` not re-run after the pilot refactor.
 - `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowPilotBase`
-  succeeds; builds for pilot bucket files still time out (>10 min).
+- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowPilotBucket0Part1`
+  and `...PrimePowPilotBucket99Part1` succeed; remaining parts not re-run yet.
 
 Next steps:
 1) Decide whether to keep the sums-only pilot or wire the per-term pilot table
