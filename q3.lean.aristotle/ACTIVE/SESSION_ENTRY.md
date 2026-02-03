@@ -48,8 +48,8 @@ Last check (2026-02-03):
 - `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
 - `./scripts/check_axioms.sh` not re-run after the pilot refactor.
 - `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowPilotBase`
-- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowPilotBucket0Part1`
-  and `...PrimePowPilotBucket99Part1` succeed; remaining parts not re-run yet.
+- All pilot bucket parts (0/99) build; bucket dispatchers + `PrimePowPilot` build.
+- `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Pilot.lean` succeeds.
 
 Next steps:
 1) Decide whether to keep the sums-only pilot or wire the per-term pilot table
