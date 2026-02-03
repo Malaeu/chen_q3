@@ -16,27 +16,15 @@ Current mainline decisions:
 Recent changes (2026-02-03):
 - Added `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_BucketDefs.lean` to isolate
   bucket/partition lemmas from the heavy prime-power table.
-- Added sums-only pilot data `BrangeHeatCert_2026_01_28_PrimePowPilotSums.lean` and
-  proved pilot bounds for buckets 0/99 in `BrangeHeatCert_2026_01_28_Pilot.lean`
-  without `native_decide`.
-- Extended `scripts/prime_brange_heat_pp_interval_checker.py` with `--buckets` and
-  `--subnamespace`; generated full per-term pilot data
-  `BrangeHeatCert_2026_01_28_PrimePowPilot.lean` (not compiled yet; heavy).
-- Split the pilot per-term table into base + bucket lookup files:
-  `BrangeHeatCert_2026_01_28_PrimePowPilotBase.lean`,
-  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket0.lean`,
-  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket99.lean`,
-  with `BrangeHeatCert_2026_01_28_PrimePowPilot.lean` as the small dispatcher.
-- Further split pilot buckets into parts (to reduce Lean compile time):
-  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket0Part2.lean`,
-  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket0Part3.lean`,
-  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket0Part4.lean`,
-  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket99Part2.lean`,
-  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket99Part3.lean`,
-  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket99Part4.lean`.
 - Rewired `BrangeHeatCert_2026_01_28_Pilot.lean` to use per-term pilot data
   (prime-power filter + pointwise axiom), replacing sums-only bounds.
+- Split pilot buckets 0/99 into 4 parts each (faster Lean builds).
+- Generated 20-bucket prime-power tables under `namespace Twenty` and split into
+  base + per-bucket part files (`BrangeHeatCert_2026_01_28_PrimePowTwenty*`).
+- Generated full 100-bucket prime-power tables under `namespace Full` and split into
+  base + per-bucket part files (`BrangeHeatCert_2026_01_28_PrimePowFull*`).
 - Verified: `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
+
 
 Open blockers (main chain axioms):
 - `Q3.Weil_criterion_tau0`
@@ -47,17 +35,17 @@ Open blockers (main chain axioms):
 Last check (2026-02-03):
 - `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
 - `./scripts/check_axioms.sh` not re-run after the pilot refactor.
-- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowPilotBase`
+- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowTwenty` succeeds.
+- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowFull` succeeds.
+- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowPilotBase` succeeds.
 - All pilot bucket parts (0/99) build; bucket dispatchers + `PrimePowPilot` build.
 - `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Pilot.lean` succeeds.
 
 Next steps:
-1) Decide whether to keep the sums-only pilot or wire the per-term pilot table
-   (`BrangeHeatCert_2026_01_28_PrimePowPilot.lean`) with a fast checker.
-2) Scale prime-heat buckets from pilot to 20 buckets, then full 100.
-3) Prime-grid buckets: close `prime_b_grid_bucket_bounds`
-   (see `docs/INSIGHTS.md` 2026-02-01).
-4) Re-run `./scripts/check_axioms.sh` and refresh stats/graphs after each closure.
+1) Wire `BrangeHeatCert_2026_01_28_PrimePowFull` into the bucket checker and
+   replace bucket-sum axioms with per-term bounds (no `native_decide`).
+2) Close `prime_heat_bounds_data` using the full bucket pipeline + tail bound.
+3) Re-run `./scripts/check_axioms.sh` and refresh stats.
 
 ## Branching discipline (2026-01-29)
 
