@@ -1,4 +1,4 @@
-# Sorry Frontier (auto) — 2026-02-02 19:37 UTC
+# Sorry Frontier (auto) — 2026-02-03 14:22 UTC
 
 **Purpose:** List every `sorry` occurrence in `Q3/` with file + line numbers.
 **Source:** regex scan of `Q3/**/*.lean`

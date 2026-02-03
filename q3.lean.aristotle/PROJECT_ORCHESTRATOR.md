@@ -79,13 +79,14 @@ echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v "^info:"
 ```
 
-Result: **6 axioms** (3 project + 3 kernel/standard)
+Result (2026-02-03): **7 axioms** (4 project + 3 kernel/standard)
 
 - Kernel/standard: `propext`, `Classical.choice`, `Quot.sound`
 - Level 1 (Classical Literature): `Weil_criterion_tau0`
 - Level 2 (One‑scale numeric certificates @ t_critical):
   `Proofs.PrimeCert.prime_b_grid_bounds_data`,
-  `Proofs.PrimeCert.prime_heat_bounds_data`
+  `Proofs.PrimeCert.prime_heat_bounds_arch_data`,
+  `Proofs.PrimeCert.prime_heat_bucket_data`
 - Legacy (off‑chain):
   `Schur_test` (classical), `prime_term_le_at_t_critical_axiom` (τ‑uniform bound; false‑for‑now)
 
@@ -115,7 +116,8 @@ RH_of_Weil_and_Q3
                  +-- one‑scale @ t_critical [OK]
                       |
                       +-- PrimeCert: prime_b_grid_bounds_data [AX cert data]
-                      +-- PrimeCert: prime_heat_bounds_data [AX cert data]
+                      +-- PrimeCert: prime_heat_bounds_arch_data [AX cert data]
+                      +-- PrimeCert: prime_heat_bucket_data [AX cert data]
 ```
 
 ## 🚨🚨🚨 CRITICAL: LaTeX Proof Gap Discovered (2026-01-22) 🚨🚨🚨

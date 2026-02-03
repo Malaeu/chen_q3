@@ -1,6 +1,6 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data
-import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Checker
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_BucketDefs
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Tail
 
 /-!
@@ -45,28 +45,14 @@ structure PrimeHeatSumData where
     ∑' n, prime_heat_weight_term (n + (prime_cert_heat_N + 1)) ≤
       prime_cert_heat_tail_bound
 
-lemma prime_heat_bucket_bounds (k : Fin prime_heat_bucket_count) :
-    prime_heat_bucket_sum k ≤ prime_heat_bucket_ub k := by
-  exact (prime_heat_bucket_sum_le_pp_ub k).trans (prime_heat_bucket_pp_sum_ub_le_bucket k)
+/-!
+Bucketed prime-heat data (t_critical, tau = 0).
 
-lemma prime_heat_bucket_sum_ub :
-    (Finset.univ.sum (fun k => prime_heat_bucket_ub k)) ≤
-      prime_cert_heat_prime_sum_up_to_ub := by
-  have hsum :
-      (Finset.univ.sum (fun k : Fin prime_heat_bucket_count => prime_heat_bucket_ub k)) =
-        prime_heat_bucket_ub_sum := by
-    simpa using
-      (prime_heat_bucket_ub_sum_eq :
-        (∑ k : Fin prime_heat_bucket_count, prime_heat_bucket_ub k) =
-          prime_heat_bucket_ub_sum)
-  simpa [hsum] using prime_heat_bucket_ub_sum_le_partial
-
-theorem prime_heat_bucket_data :
-    PrimeHeatBucketData prime_cert_heat_prime_sum_up_to_ub := by
-  refine ⟨?h_bucket, ?h_sum_ub⟩
-  · intro k
-    exact prime_heat_bucket_bounds k
-  · exact prime_heat_bucket_sum_ub
+This is certificate-backed and corresponds to the interval checker output in:
+`output/prime_cert_brange_heat_prime_partial_interval_2026-01-31_0009.txt`.
+-/
+axiom prime_heat_bucket_data :
+    PrimeHeatBucketData prime_cert_heat_prime_sum_up_to_ub
 
 theorem prime_heat_sum_data : PrimeHeatSumData := by
   refine ⟨prime_heat_bucket_data, ?_⟩

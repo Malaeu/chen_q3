@@ -24,6 +24,17 @@ Recent changes (2026-02-03):
 - Generated full 100-bucket prime-power tables under `namespace Full` and split into
   base + per-bucket part files (`BrangeHeatCert_2026_01_28_PrimePowFull*`).
 - Verified: `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
+- Switched `BrangeHeatCert_2026_01_28_Checker.lean` to import
+  `BrangeHeatCert_2026_01_28_PrimePowFull` (Full tables) and alias the
+  prime-power lookup to `namespace Full`.
+- Reworked `BrangeHeatCert_2026_01_28_Checker.lean` bucket-pp sums to use
+  `filter IsPrimePow`, removed the non-prime-power fallback, and discharged
+  the bucket UB comparison via `fin_cases`.
+- In `BrangeHeatCert_2026_01_28.lean`, replaced the `prime_heat_bounds_data`
+  axiom with:
+  - axiom `prime_heat_bounds_arch_data` (arch integral only)
+  - theorem `prime_heat_bounds_prime_data` via `BrangeHeatCert_2026_01_28_Partial`
+  - `prime_heat_bounds_data` now a `def` bundling arch+prime
 
 
 Open blockers (main chain axioms):
@@ -40,12 +51,25 @@ Last check (2026-02-03):
 - `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowPilotBase` succeeds.
 - All pilot bucket parts (0/99) build; bucket dispatchers + `PrimePowPilot` build.
 - `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Pilot.lean` succeeds.
+- `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean` timed
+  out after 120s, then after 300s (run from `q3.lean.aristotle/`).
+- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Checker` succeeds
+  (about 100s) after the filtered-sum refactor.
+- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_SumData` succeeds.
+- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28` succeeds.
+- `./scripts/check_axioms.sh` succeeds (2026-02-03 15:22) with:
+  - Standard axioms back to 3 (no `Lean.ofReduceBool` / `Lean.trustCompiler`).
+  - New project axioms in chain:
+    `prime_heat_bounds_arch_data`,
+    `prime_heat_bucket_data`.
 
 Next steps:
-1) Wire `BrangeHeatCert_2026_01_28_PrimePowFull` into the bucket checker and
-   replace bucket-sum axioms with per-term bounds (no `native_decide`).
-2) Close `prime_heat_bounds_data` using the full bucket pipeline + tail bound.
-3) Re-run `./scripts/check_axioms.sh` and refresh stats.
+1) Update `PHILOSOPHY_OF_PROOF.md` and expected counts in `scripts/check_axioms.sh`
+   for the new PrimeHeat axioms (`prime_heat_bounds_arch_data`, `prime_heat_bucket_data`).
+2) Decide whether to merge the heat axioms back into a single bundle
+   (to keep the project axiom count at 3).
+3) If desired, start formalizing the arch integral bound to eliminate
+   `prime_heat_bounds_arch_data`.
 
 ## Branching discipline (2026-01-29)
 

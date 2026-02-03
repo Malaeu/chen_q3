@@ -4,6 +4,7 @@ import Q3.Proofs.A3_Floor_Bounds
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Partial
 
 /-!
 Heat-weighted Lipschitz certificate constants (t_critical, tau = 0).
@@ -57,19 +58,19 @@ lemma prime_heat_bounds_total :
 Certificate bounds for heat-weighted Lipschitz estimates (t_critical, tau = 0).
 Numeric source: `output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt`.
 -/
-axiom prime_heat_bounds_data : PrimeHeatBoundsData
-
-theorem prime_heat_bounds_arch_data :
+axiom prime_heat_bounds_arch_data :
     ∫ ξ in Set.Icc (-prime_cert_B_max) prime_cert_B_max,
         |a_star ξ| * (Real.exp (-4 * Real.pi ^ 2 * t_critical * ξ ^ 2) * |ξ|)
-      ≤ prime_cert_L_arch_heat_raw := by
-  exact prime_heat_bounds_data.h_arch
+      ≤ prime_cert_L_arch_heat_raw
 
 theorem prime_heat_bounds_prime_data :
     ∑' n, (w_Q n * (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n n) ^ 2) * |xi_n n|)) *
         (if |xi_n n| ≤ prime_cert_B_max then (1 : ℝ) else 0)
       ≤ prime_cert_L_prime_heat_raw := by
-  exact prime_heat_bounds_data.h_prime
+  exact prime_heat_bounds_prime_data_of_data
+
+def prime_heat_bounds_data : PrimeHeatBoundsData :=
+  ⟨prime_heat_bounds_arch_data, prime_heat_bounds_prime_data⟩
 
 theorem prime_heat_bounds_cert : PrimeHeatBounds := by
   refine ⟨prime_heat_bounds_arch_data, prime_heat_bounds_prime_data, ?_⟩

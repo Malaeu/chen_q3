@@ -92,14 +92,17 @@ These are well-known results. Citations:
 - `A1_density_WK_axiom` → closed (A1_density_WK_thm)
 - `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` → closed via Q_nonneg_atoms_closure
 
-### Level 2: One‑Scale Numeric Certificates @ `t_critical` (2) — TEMPORARY BRIDGE
+### Level 2: One‑Scale Numeric Certificates @ `t_critical` (3) — TEMPORARY BRIDGE
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` — grid arch/prime bounds (data axiom), in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_data` — bundled heat arch+prime bound (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data` — heat arch integral bound (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+- `Q3.Proofs.PrimeCert.prime_heat_bucket_data` — bucketed prime‑heat partial sum (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`
 
 These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt`,
 `output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`, and
-`output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt`) and are expected to be replaced by a fully formal certificate proof.
-The partial+tail scaffold (`BrangeHeatCert_2026_01_28_SumData.lean`) remains available off‑chain for a future interval‑certificate proof.
+`output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt`,
+`output/prime_cert_brange_heat_prime_partial_interval_2026-01-31_0009.txt`) and are expected to be replaced by a fully formal certificate proof.
+The partial+tail scaffold (`BrangeHeatCert_2026_01_28_Partial.lean`) now proves the
+prime‑heat sum bound from `prime_heat_bucket_data` + tail.
 
 **Important:** The former “SingleScale axioms” are now THEOREMS and do not appear in `#print axioms`.
 
@@ -134,7 +137,8 @@ Expected output:
   Quot.sound,                     -- Level 0a: Standard Lean
   Q3.Weil_criterion_tau0,          -- Level 1: Weil 1952 (τ=0 cone)
   Q3.Proofs.PrimeCert.prime_b_grid_bounds_data,         -- Level 2: one‑scale cert data
-  Q3.Proofs.PrimeCert.prime_heat_bounds_data           -- Level 2: one‑scale cert data
+  Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data,     -- Level 2: one‑scale cert data
+  Q3.Proofs.PrimeCert.prime_heat_bucket_data           -- Level 2: one‑scale cert data
 ]
 ```
 
@@ -211,9 +215,10 @@ Our axioms can be eliminated one by one:
 |-------|------------------|------------|
 | `Weil_criterion_tau0` | Major project (Weil explicit formula, τ=0 cone) | Very High |
 | `prime_b_grid_bounds_data` | Fully formalize PrimeCert grid verification | High |
-| `prime_margin_Lipschitz_on_Brange` | Fully formalize PrimeCert Lipschitz margin | High |
+| `prime_heat_bounds_arch_data` | Formalize the arch integral bound | High |
+| `prime_heat_bucket_data` | Formalize bucketed prime‑heat partial sum | High |
 
-Each elimination makes the proof stronger. Current state: **6 axioms total (3 standard + 3 project)**.
+Each elimination makes the proof stronger. Current state: **7 axioms total (3 standard + 4 project)**.
 
 **Recently closed (now theorems):**
 - `digamma_one_fourth_neg` — proven via Aristotle (reflection/duplication formulas)
