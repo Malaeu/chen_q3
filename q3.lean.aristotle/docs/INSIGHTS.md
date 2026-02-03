@@ -919,3 +919,22 @@ integral/sum bounds; (b) wire `margin_Lipschitz_of_cert` into `BrangeCert_2046.l
   and then plug into `prime_b_grid_tail_bound_of_tail_term`.
 - Once tail is closed, finish the two pilot points in
   `Q3/Proofs/PrimeCert/BrangeGrid_Pilot_2026_01_30.lean` and lift to all 20 grid points.
+
+## Synthesis (2026-02-03, in progress) — Prime-heat bucket pilot without native_decide
+
+- Target: pilot lemmas `prime_heat_bucket_sum_le_ub_pilot_{0,99}` in
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Pilot.lean`; these mirror the eventual
+  `prime_heat_bucket_bounds` path in `BrangeHeatCert_2026_01_28_SumData.lean`.
+- Blocker: current `BrangeHeatCert_2026_01_28_Checker.lean` imports huge
+  `BrangeHeatCert_2026_01_28_PrimePowData.lean` and uses `native_decide`, which we want to
+  avoid for a clean axiom list (compiler-trust axioms).
+- Option 1 (preferred): refactor bucket/partition defs into
+  `BrangeHeatCert_2026_01_28_BucketDefs.lean`; generate a **pilot** prime-power table for
+  buckets 0 & 99 only (new `scripts/prime_brange_heat_pp_interval_checker.py --buckets 0,99`).
+- Option 1: prove `prime_heat_bucket_sum_le_pp_ub_pilot_{0,99}` and
+  `prime_heat_bucket_pp_sum_ub_le_bucket_pilot_{0,99}` using explicit rationals with
+  `norm_num`/`decide` (no `native_decide`).
+- Option 2 (fallback): keep full `PrimePowData` + `native_decide` off-chain and use pilot
+  lemmas only as structure checks (no numeric proof).
+- Success check: `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_BucketDefs.lean`
+  and `BrangeHeatCert_2026_01_28_Pilot.lean` compile without new axioms in `#print axioms`.
