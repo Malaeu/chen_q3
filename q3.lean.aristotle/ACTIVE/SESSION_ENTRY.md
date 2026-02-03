@@ -22,6 +22,13 @@ Recent changes (2026-02-03):
 - Extended `scripts/prime_brange_heat_pp_interval_checker.py` with `--buckets` and
   `--subnamespace`; generated full per-term pilot data
   `BrangeHeatCert_2026_01_28_PrimePowPilot.lean` (not compiled yet; heavy).
+- Split the pilot per-term table into base + bucket lookup files:
+  `BrangeHeatCert_2026_01_28_PrimePowPilotBase.lean`,
+  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket0.lean`,
+  `BrangeHeatCert_2026_01_28_PrimePowPilotBucket99.lean`,
+  with `BrangeHeatCert_2026_01_28_PrimePowPilot.lean` as the small dispatcher.
+- Rewired `BrangeHeatCert_2026_01_28_Pilot.lean` to use per-term pilot data
+  (prime-power filter + pointwise axiom), replacing sums-only bounds.
 - Verified: `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
 
 Open blockers (main chain axioms):
@@ -33,6 +40,8 @@ Open blockers (main chain axioms):
 Last check (2026-02-03):
 - `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
 - `./scripts/check_axioms.sh` not re-run after the pilot refactor.
+- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowPilotBase`
+  succeeds; builds for pilot bucket files still time out (>10 min).
 
 Next steps:
 1) Decide whether to keep the sums-only pilot or wire the per-term pilot table
