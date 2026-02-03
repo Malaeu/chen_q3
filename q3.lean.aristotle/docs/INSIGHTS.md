@@ -972,9 +972,8 @@ Plan (5–10 lines, concrete pointers):
    `BrangeHeatCert_2026_01_28.lean` using `intervalIntegral` + certified endpoints.
 3. `prime_b_grid_bounds_data`: extend `BrangeGrid_PrimeSum_2026_01_30_Checker.lean` to reduce each grid bucket
    to finite sums and close bounds using `BrangeGrid_PrimeSum_2026_01_30_Intervals.lean` data.
-4. Infrastructure: add a tiny ℚ‑endpoint lemma library in `Q3/Proofs/PrimeCert/IntervalLemmas.lean`
-   (monotonicity, exp/log bounds) reused by (1–3), still no `native_decide`.
-5. After each swap: `lake env lean` on touched files + `./scripts/check_axioms.sh`; log axiom count drop in
-   `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`.
-6. Guardrail: keep A3_FLOOR and RKHS proof strategies separated in these files.
-7. Success criteria: only remaining project axiom is `Q3.Weil_criterion_tau0`.
+4. Infrastructure + guardrail: add `Q3/Proofs/PrimeCert/IntervalLemmas.lean` (ℚ endpoint lemmas for exp/log
+   monotonicity), and keep A3_FLOOR vs RKHS strategies strictly separated in these files.
+5. Verification + success: after each swap run `lake env lean` on touched files and `./scripts/check_axioms.sh`,
+   log axiom count drop in `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`; success when only project axiom left is
+   `Q3.Weil_criterion_tau0`.
