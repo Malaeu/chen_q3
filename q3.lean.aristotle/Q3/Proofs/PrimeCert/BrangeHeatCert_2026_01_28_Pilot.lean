@@ -25,6 +25,28 @@ structure PrimeHeatBucketPilotData : Prop where
   h99 : prime_heat_bucket_sum prime_heat_bucket_pilot_99 ≤
     prime_heat_bucket_ub prime_heat_bucket_pilot_99
 
+lemma prime_heat_bucket_sum_le_pp_ub_pilot_0 :
+    prime_heat_bucket_sum prime_heat_bucket_pilot_0 ≤
+      prime_heat_bucket_pp_sum_ub prime_heat_bucket_pilot_0 := by
+  simpa using prime_heat_bucket_sum_le_pp_ub prime_heat_bucket_pilot_0
+
+lemma prime_heat_bucket_sum_le_pp_ub_pilot_99 :
+    prime_heat_bucket_sum prime_heat_bucket_pilot_99 ≤
+      prime_heat_bucket_pp_sum_ub prime_heat_bucket_pilot_99 := by
+  simpa using prime_heat_bucket_sum_le_pp_ub prime_heat_bucket_pilot_99
+
+lemma prime_heat_bucket_sum_le_ub_pilot_0 :
+    prime_heat_bucket_sum prime_heat_bucket_pilot_0 ≤
+      prime_heat_bucket_ub prime_heat_bucket_pilot_0 := by
+  exact (prime_heat_bucket_sum_le_pp_ub prime_heat_bucket_pilot_0).trans
+    (prime_heat_bucket_pp_sum_ub_le_bucket prime_heat_bucket_pilot_0)
+
+lemma prime_heat_bucket_sum_le_ub_pilot_99 :
+    prime_heat_bucket_sum prime_heat_bucket_pilot_99 ≤
+      prime_heat_bucket_ub prime_heat_bucket_pilot_99 := by
+  exact (prime_heat_bucket_sum_le_pp_ub prime_heat_bucket_pilot_99).trans
+    (prime_heat_bucket_pp_sum_ub_le_bucket prime_heat_bucket_pilot_99)
+
 /-!
 Numeric pilot data will be supplied by the interval checker output and
 formalized without `native_decide`. For now, we keep this file as a
