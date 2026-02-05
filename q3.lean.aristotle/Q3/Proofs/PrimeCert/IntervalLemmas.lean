@@ -26,6 +26,14 @@ lemma le_log_iff_exp_le {x y : ℝ} (hy : 0 < y) :
     x ≤ Real.log y ↔ Real.exp x ≤ y := by
   simpa using (Real.le_log_iff_exp_le hy)
 
+lemma log_le_of_le_exp {x y : ℝ} (hx : 0 < x) (h : x ≤ Real.exp y) :
+    Real.log x ≤ y := by
+  exact (log_le_iff_le_exp (x := x) hx).2 h
+
+lemma le_log_of_exp_le {x y : ℝ} (hy : 0 < y) (h : Real.exp x ≤ y) :
+    x ≤ Real.log y := by
+  exact (le_log_iff_exp_le (y := y) hy).2 h
+
 lemma exp_le_exp_iff {x y : ℝ} : Real.exp x ≤ Real.exp y ↔ x ≤ y := by
   exact Real.exp_le_exp
 
@@ -85,6 +93,21 @@ lemma exp_le_pow_of_taylor_bound_div {x b : ℝ} {n k : ℕ} (hn : 0 < n) (hk : 
   have hbound : Real.exp (x / n) ≤ b := by
     exact exp_le_of_taylor_bound (x := x / n) (b := b) hx0' hx1 (n := k) hk h
   exact exp_le_pow_of_div_le (x := x) (b := b) (n := n) hn hbound
+
+lemma exp_le_pow_of_taylor_bound_div_nat {x b : ℝ} {n k : ℕ} (hn : 0 < n) (hk : 0 < k)
+    (hx0 : 0 ≤ x) (hx1 : x ≤ n)
+    (h :
+      (∑ m ∈ Finset.range k, (x / n) ^ m / (Nat.factorial m)) +
+          (x / n) ^ k * (k + 1) / (Nat.factorial k * k) ≤ b) :
+    Real.exp x ≤ b ^ n := by
+  have hn' : (0 : ℝ) < (n : ℝ) := by exact_mod_cast hn
+  have hx1' : x / n ≤ 1 := by
+    have hx1' : x ≤ (n : ℝ) := by exact_mod_cast hx1
+    -- divide by positive denominator
+    have hdiv : x / (n : ℝ) ≤ (n : ℝ) / (n : ℝ) := by
+      exact div_le_div_of_nonneg_right hx1' (le_of_lt hn')
+    simpa [div_self (ne_of_gt hn')] using hdiv
+  exact exp_le_pow_of_taylor_bound_div (x := x) (b := b) (n := n) (k := k) hn hk hx0 hx1' h
 
 lemma exp_neg_mul_sq_le_of_le {t a b : ℝ} (ht : 0 ≤ t) (ha : 0 ≤ a) (hab : a ≤ b) :
     Real.exp (-t * b ^ 2) ≤ Real.exp (-t * a ^ 2) := by
