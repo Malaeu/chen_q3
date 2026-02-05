@@ -138,8 +138,8 @@ lemma exp_l3_le_three : Real.exp l3 ≤ (3 : ℝ) := by
   have hpow :
       Real.exp l3 ≤ b3 ^ 2 := by
     have hx0 : 0 ≤ l3 := by norm_num [l3]
-    have hx1 : l3 / 2 ≤ 1 := by norm_num [l3]
-    exact exp_le_pow_of_taylor_bound_div (x := l3) (b := b3) (n := 2) (k := 14)
+    have hx1 : l3 ≤ 2 := by norm_num [l3]
+    exact exp_le_pow_of_taylor_bound_div_nat (x := l3) (b := b3) (n := 2) (k := 14)
       (by decide) (by decide) hx0 hx1 (by
         have h' :
             (∑ m ∈ Finset.range 14, (l3 / 2) ^ m / (Nat.factorial m)) +
@@ -175,8 +175,8 @@ lemma exp_l5_le_five : Real.exp l5 ≤ (5 : ℝ) := by
   have hpow :
       Real.exp l5 ≤ b5 ^ 2 := by
     have hx0 : 0 ≤ l5 := by norm_num [l5]
-    have hx1 : l5 / 2 ≤ 1 := by norm_num [l5]
-    exact exp_le_pow_of_taylor_bound_div (x := l5) (b := b5) (n := 2) (k := 16)
+    have hx1 : l5 ≤ 2 := by norm_num [l5]
+    exact exp_le_pow_of_taylor_bound_div_nat (x := l5) (b := b5) (n := 2) (k := 16)
       (by decide) (by decide) hx0 hx1 (by
         have h' :
             (∑ m ∈ Finset.range 16, (l5 / 2) ^ m / (Nat.factorial m)) +
@@ -199,22 +199,22 @@ lemma five_le_exp_u5 : (5 : ℝ) ≤ Real.exp u5 := by
   exact le_trans hsum hle
 
 lemma l2_le_log_two : l2 ≤ Real.log 2 := by
-  exact le_log_nat_of_exp_le (n := 2) (by decide) exp_l2_le_two
+  exact le_log_of_exp_le (y := (2 : ℝ)) (by norm_num) exp_l2_le_two
 
 lemma log_two_le_u2 : Real.log 2 ≤ u2 := by
-  exact log_nat_le_of_le_exp (n := 2) (by decide) two_le_exp_u2
+  exact log_le_of_le_exp (x := (2 : ℝ)) (by norm_num) two_le_exp_u2
 
 lemma l3_le_log_three : l3 ≤ Real.log 3 := by
-  exact le_log_nat_of_exp_le (n := 3) (by decide) exp_l3_le_three
+  exact le_log_of_exp_le (y := (3 : ℝ)) (by norm_num) exp_l3_le_three
 
 lemma log_three_le_u3 : Real.log 3 ≤ u3 := by
-  exact log_nat_le_of_le_exp (n := 3) (by decide) three_le_exp_u3
+  exact log_le_of_le_exp (x := (3 : ℝ)) (by norm_num) three_le_exp_u3
 
 lemma l5_le_log_five : l5 ≤ Real.log 5 := by
-  exact le_log_nat_of_exp_le (n := 5) (by decide) exp_l5_le_five
+  exact le_log_of_exp_le (y := (5 : ℝ)) (by norm_num) exp_l5_le_five
 
 lemma log_five_le_u5 : Real.log 5 ≤ u5 := by
-  exact log_nat_le_of_le_exp (n := 5) (by decide) five_le_exp_u5
+  exact log_le_of_le_exp (x := (5 : ℝ)) (by norm_num) five_le_exp_u5
 
 lemma r2_sq_le : r2 ^ 2 ≤ (2 : ℝ) := by norm_num [r2]
 lemma r3_sq_le : r3 ^ 2 ≤ (3 : ℝ) := by norm_num [r3]

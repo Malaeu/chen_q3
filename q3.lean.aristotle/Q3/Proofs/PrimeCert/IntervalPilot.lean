@@ -52,9 +52,9 @@ lemma two_le_exp_seventy_hundredths : (2 : ℝ) ≤ Real.exp (7 / 10 : ℝ) := b
 lemma log_two_bounds :
     (69 / 100 : ℝ) ≤ Real.log 2 ∧ Real.log 2 ≤ (7 / 10 : ℝ) := by
   have hlow : (69 / 100 : ℝ) ≤ Real.log 2 := by
-    exact le_log_nat_of_exp_le (n := 2) (by decide) exp_sixty_nine_hundredths_le_two
+    exact le_log_of_exp_le (y := (2 : ℝ)) (by norm_num) exp_sixty_nine_hundredths_le_two
   have hhigh : Real.log 2 ≤ (7 / 10 : ℝ) := by
-    exact log_nat_le_of_le_exp (n := 2) (by decide) two_le_exp_seventy_hundredths
+    exact log_le_of_le_exp (x := (2 : ℝ)) (by norm_num) two_le_exp_seventy_hundredths
   exact ⟨hlow, hhigh⟩
 
 lemma exp_one_point_zero_nine_le_three : Real.exp (109 / 100 : ℝ) ≤ (3 : ℝ) := by
@@ -63,18 +63,16 @@ lemma exp_one_point_zero_nine_le_three : Real.exp (109 / 100 : ℝ) ≤ (3 : ℝ
           (109 / 200 : ℝ) ^ 4 * (4 + 1) / (Nat.factorial 4 * 4) ≤
         (173 / 100 : ℝ) := by
     norm_num
-  have hdiv : Real.exp ((109 / 100 : ℝ) / 2) ≤ (173 / 100 : ℝ) := by
-    have hx0 : (0 : ℝ) ≤ (109 / 200 : ℝ) := by norm_num
-    have hx1 : (109 / 200 : ℝ) ≤ 1 := by norm_num
-    have hdiv0 :
-        Real.exp (109 / 200 : ℝ) ≤ (173 / 100 : ℝ) := by
-      exact exp_le_of_taylor_bound (x := (109 / 200 : ℝ)) (b := (173 / 100 : ℝ))
-        hx0 hx1 (n := 4) (by decide) h'
-    have hrewrite : (109 / 100 : ℝ) / 2 = (109 / 200 : ℝ) := by norm_num
-    simpa [hrewrite] using hdiv0
-  have hpow :=
-    Q3.Proofs.PrimeCert.exp_le_pow_of_div_le
-      (x := (109 / 100 : ℝ)) (b := (173 / 100 : ℝ)) (n := 2) (by decide) hdiv
+  have hx0 : (0 : ℝ) ≤ (109 / 100 : ℝ) := by norm_num
+  have hx1 : (109 / 100 : ℝ) ≤ 2 := by norm_num
+  have hpow :
+      Real.exp (109 / 100 : ℝ) ≤ (173 / 100 : ℝ) ^ 2 := by
+    exact exp_le_pow_of_taylor_bound_div_nat
+      (x := (109 / 100 : ℝ)) (b := (173 / 100 : ℝ)) (n := 2) (k := 4)
+      (by decide) (by decide) hx0 hx1 (by
+        have hrewrite : ((109 / 100 : ℝ) / 2) = (109 / 200 : ℝ) := by
+          norm_num
+        simpa [hrewrite] using h')
   have hb : (173 / 100 : ℝ) ^ 2 ≤ (3 : ℝ) := by norm_num
   exact hpow.trans hb
 
@@ -91,9 +89,9 @@ lemma three_le_exp_eleven_tenths : (3 : ℝ) ≤ Real.exp (11 / 10 : ℝ) := by
 lemma log_three_bounds :
     (109 / 100 : ℝ) ≤ Real.log 3 ∧ Real.log 3 ≤ (11 / 10 : ℝ) := by
   have hlow : (109 / 100 : ℝ) ≤ Real.log 3 := by
-    exact le_log_nat_of_exp_le (n := 3) (by decide) exp_one_point_zero_nine_le_three
+    exact le_log_of_exp_le (y := (3 : ℝ)) (by norm_num) exp_one_point_zero_nine_le_three
   have hhigh : Real.log 3 ≤ (11 / 10 : ℝ) := by
-    exact log_nat_le_of_le_exp (n := 3) (by decide) three_le_exp_eleven_tenths
+    exact log_le_of_le_exp (x := (3 : ℝ)) (by norm_num) three_le_exp_eleven_tenths
   exact ⟨hlow, hhigh⟩
 
 lemma exp_one_point_six_le_five : Real.exp (8 / 5 : ℝ) ≤ (5 : ℝ) := by
@@ -102,18 +100,16 @@ lemma exp_one_point_six_le_five : Real.exp (8 / 5 : ℝ) ≤ (5 : ℝ) := by
           (4 / 5 : ℝ) ^ 4 * (4 + 1) / (Nat.factorial 4 * 4) ≤
         (223 / 100 : ℝ) := by
     norm_num
-  have hdiv : Real.exp ((8 / 5 : ℝ) / 2) ≤ (223 / 100 : ℝ) := by
-    have hx0 : (0 : ℝ) ≤ (4 / 5 : ℝ) := by norm_num
-    have hx1 : (4 / 5 : ℝ) ≤ 1 := by norm_num
-    have hdiv0 :
-        Real.exp (4 / 5 : ℝ) ≤ (223 / 100 : ℝ) := by
-      exact exp_le_of_taylor_bound (x := (4 / 5 : ℝ)) (b := (223 / 100 : ℝ))
-        hx0 hx1 (n := 4) (by decide) h'
-    have hrewrite : (8 / 5 : ℝ) / 2 = (4 / 5 : ℝ) := by norm_num
-    simpa [hrewrite] using hdiv0
-  have hpow :=
-    Q3.Proofs.PrimeCert.exp_le_pow_of_div_le
-      (x := (8 / 5 : ℝ)) (b := (223 / 100 : ℝ)) (n := 2) (by decide) hdiv
+  have hx0 : (0 : ℝ) ≤ (8 / 5 : ℝ) := by norm_num
+  have hx1 : (8 / 5 : ℝ) ≤ 2 := by norm_num
+  have hpow :
+      Real.exp (8 / 5 : ℝ) ≤ (223 / 100 : ℝ) ^ 2 := by
+    exact exp_le_pow_of_taylor_bound_div_nat
+      (x := (8 / 5 : ℝ)) (b := (223 / 100 : ℝ)) (n := 2) (k := 4)
+      (by decide) (by decide) hx0 hx1 (by
+        have hrewrite : ((8 / 5 : ℝ) / 2) = (4 / 5 : ℝ) := by
+          norm_num
+        simpa [hrewrite] using h')
   have hb : (223 / 100 : ℝ) ^ 2 ≤ (5 : ℝ) := by norm_num
   exact hpow.trans hb
 
@@ -130,9 +126,9 @@ lemma five_le_exp_one_point_six_one : (5 : ℝ) ≤ Real.exp (161 / 100 : ℝ) :
 lemma log_five_bounds :
     (8 / 5 : ℝ) ≤ Real.log 5 ∧ Real.log 5 ≤ (161 / 100 : ℝ) := by
   have hlow : (8 / 5 : ℝ) ≤ Real.log 5 := by
-    exact le_log_nat_of_exp_le (n := 5) (by decide) exp_one_point_six_le_five
+    exact le_log_of_exp_le (y := (5 : ℝ)) (by norm_num) exp_one_point_six_le_five
   have hhigh : Real.log 5 ≤ (161 / 100 : ℝ) := by
-    exact log_nat_le_of_le_exp (n := 5) (by decide) five_le_exp_one_point_six_one
+    exact log_le_of_le_exp (x := (5 : ℝ)) (by norm_num) five_le_exp_one_point_six_one
   exact ⟨hlow, hhigh⟩
 
 def prime_heat_envelope_ub (n : ℕ) (l u : ℝ) : ℝ :=
