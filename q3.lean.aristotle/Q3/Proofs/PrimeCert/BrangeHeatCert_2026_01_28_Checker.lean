@@ -3,6 +3,7 @@ import Q3.Proofs.PrimeCert.IntervalChecker
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_BucketDefs
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowFull
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowBucket0Auto
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000
 
 /-!
 Bucketed interval checker scaffold for the prime-heat partial sum.
@@ -18,11 +19,6 @@ namespace Q3.Proofs.PrimeCert
 
 /-! Prime-power term upper bounds (certificate-backed). -/
 
-/-- Pointwise bound from the prime-power interval certificate (n ≤ N). -/
-axiom prime_heat_weight_term_le_pp_ub_of_prime_pow_axiom {n : ℕ}
-    (hn : IsPrimePow n) (hN : n ≤ prime_cert_heat_N) :
-    prime_heat_weight_term n ≤ Full.prime_heat_pp_term_ub n
-
 /-- Pointwise bound from the prime-power interval certificate (n ≤ N),
 with bucket-0 closed by interval proofs. -/
 theorem prime_heat_weight_term_le_pp_ub_of_prime_pow {n : ℕ}
@@ -30,7 +26,9 @@ theorem prime_heat_weight_term_le_pp_ub_of_prime_pow {n : ℕ}
     prime_heat_weight_term n ≤ Full.prime_heat_pp_term_ub n := by
   by_cases hN0 : n ≤ 10000
   · exact prime_heat_weight_term_le_pp_ub_of_le_10000 (n := n) hN0
-  · exact prime_heat_weight_term_le_pp_ub_of_prime_pow_axiom hn hN
+  · have hgt : 10001 ≤ n := by
+      exact (Nat.succ_le_iff).2 (Nat.lt_of_not_ge hN0)
+    exact prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all hn hgt hN
 
 def prime_heat_bucket_pp_sum_ub_q (k : Fin prime_heat_bucket_count) : ℚ :=
   ((prime_heat_bucket_range k).filter IsPrimePow).sum Full.prime_heat_pp_term_ub_q_get

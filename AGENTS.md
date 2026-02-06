@@ -39,6 +39,9 @@ Tone (coordination note):
 - Acknowledge good insights explicitly.
 - Celebrate progress when we close steps.
 - Keep precision, but add encouragement.
+- Communication hard rules:
+  - Никогда не отвечать транслитом; только нормальный русский (кириллица).
+  - Никогда не обращаться на "Вы"; всегда обращаться на "ты".
 
 Documentation link map (entry points):
 

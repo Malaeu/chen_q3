@@ -98,6 +98,20 @@ Update (2026-02-06, blocker map refresh):
   2) then add theorem-producing generator for grid bucket sums,
   3) then remove `h_margin_cert` in `Q3/Main.lean`.
 
+Range clarification (2026-02-06):
+- Для heat-blocker в `prime_heat_weight_term_le_pp_ub_of_prime_pow` нам НЕ нужен
+  бесконечный хвост по `n`.
+- Точный целевой диапазон pointwise-доказательств:
+  `IsPrimePow n` и `10000 < n ≤ prime_cert_heat_N`, где
+  `prime_cert_heat_N = 1_000_000`.
+- Это следует из сигнатуры checker-леммы:
+  `... (hn : IsPrimePow n) (hN : n ≤ prime_cert_heat_N)`.
+- Для `n > prime_cert_heat_N` в main chain используется уже tail-ветка
+  (`prime_heat_tail_bound`), а не pointwise-сертификаты.
+- Практически это означает:
+  нужно закрыть конечное множество prime powers в диапазоне
+  `(10000, 1_000_000]` (не весь `ℕ`).
+
 ## Decision (2026-02-02) — PrimeCert closure: formal numeric certificates now, analytic path later
 
 Goal: close main chain fast **without axioms** and with kernel‑checked evidence.
