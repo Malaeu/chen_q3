@@ -109,6 +109,14 @@ lemma exp_le_pow_of_taylor_bound_div_nat {x b : ℝ} {n k : ℕ} (hn : 0 < n) (h
     simpa [div_self (ne_of_gt hn')] using hdiv
   exact exp_le_pow_of_taylor_bound_div (x := x) (b := b) (n := n) (k := k) hn hk hx0 hx1' h
 
+lemma exp_le_pow_of_taylor_bound_split {x b : ℝ} {n k : ℕ} (hn : 0 < n) (hk : 0 < k)
+    (hx0 : 0 ≤ x) (hx1 : x ≤ n)
+    (h :
+      (∑ m ∈ Finset.range k, (x / n) ^ m / (Nat.factorial m)) +
+          (x / n) ^ k * (k + 1) / (Nat.factorial k * k) ≤ b) :
+    Real.exp x ≤ b ^ n := by
+  exact exp_le_pow_of_taylor_bound_div_nat (x := x) (b := b) (n := n) (k := k) hn hk hx0 hx1 h
+
 lemma exp_neg_mul_sq_le_of_le {t a b : ℝ} (ht : 0 ≤ t) (ha : 0 ≤ a) (hab : a ≤ b) :
     Real.exp (-t * b ^ 2) ≤ Real.exp (-t * a ^ 2) := by
   have hsq : a ^ 2 ≤ b ^ 2 := by
@@ -172,5 +180,14 @@ lemma log_nat_le_of_le_exp {n : ℕ} (hn : 0 < n) {y : ℝ} (h : (n : ℝ) ≤ R
 lemma le_log_nat_of_exp_le {n : ℕ} (hn : 0 < n) {x : ℝ} (h : Real.exp x ≤ (n : ℝ)) :
     x ≤ Real.log (n : ℝ) := by
   exact (le_log_nat_iff_exp_le (n := n) hn).2 h
+
+lemma log_nat_bounds_of_exp_bounds {n : ℕ} (hn : 0 < n) {a b : ℝ}
+    (ha : Real.exp a ≤ (n : ℝ)) (hb : (n : ℝ) ≤ Real.exp b) :
+    a ≤ Real.log (n : ℝ) ∧ Real.log (n : ℝ) ≤ b := by
+  have hlow : a ≤ Real.log (n : ℝ) := by
+    exact le_log_nat_of_exp_le (n := n) hn ha
+  have hhigh : Real.log (n : ℝ) ≤ b := by
+    exact log_nat_le_of_le_exp (n := n) hn hb
+  exact ⟨hlow, hhigh⟩
 
 end Q3.Proofs.PrimeCert

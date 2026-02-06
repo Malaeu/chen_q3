@@ -32,7 +32,7 @@ lemma prime_heat_bucket_pp_sum_ub_eq_sum (k : Fin prime_heat_bucket_count) :
 
 end Full
 
-lemma prime_heat_bucket_sum_le_pp_ub
+lemma prime_heat_bucket_sum_le_pp_ub_of_pp_bounds
     (h_term_ub :
       ∀ n : ℕ, IsPrimePow n → n ≤ prime_cert_heat_N →
         prime_heat_weight_term n ≤ Full.prime_heat_pp_term_ub n)
@@ -58,7 +58,7 @@ lemma prime_heat_bucket_sum_le_pp_ub
           symm
           exact Full.prime_heat_bucket_pp_sum_ub_eq_sum k
 
-lemma prime_heat_bucket_sum_le_ub
+lemma prime_heat_bucket_sum_le_ub_of_pp_bounds
     (h_term_ub :
       ∀ n : ℕ, IsPrimePow n → n ≤ prime_cert_heat_N →
         prime_heat_weight_term n ≤ Full.prime_heat_pp_term_ub n)
@@ -67,7 +67,7 @@ lemma prime_heat_bucket_sum_le_ub
         Full.prime_heat_bucket_pp_sum_ub k ≤ prime_heat_bucket_ub k)
     (k : Fin prime_heat_bucket_count) :
     prime_heat_bucket_sum k ≤ prime_heat_bucket_ub k := by
-  exact (prime_heat_bucket_sum_le_pp_ub h_term_ub k).trans (h_bucket_ub k)
+  exact (prime_heat_bucket_sum_le_pp_ub_of_pp_bounds h_term_ub k).trans (h_bucket_ub k)
 
 theorem prime_heat_bucket_data_of_pp_bounds
     (bound : ℝ)
@@ -81,6 +81,6 @@ theorem prime_heat_bucket_data_of_pp_bounds
     PrimeHeatBucketData bound := by
   refine ⟨?_, h_sum_ub⟩
   intro k
-  exact prime_heat_bucket_sum_le_ub h_term_ub h_bucket_ub k
+  exact prime_heat_bucket_sum_le_ub_of_pp_bounds h_term_ub h_bucket_ub k
 
 end Q3.Proofs.PrimeCert

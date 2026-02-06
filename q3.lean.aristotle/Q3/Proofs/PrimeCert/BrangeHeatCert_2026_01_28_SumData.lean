@@ -1,6 +1,8 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_BucketDefs
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_BucketCheck
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Checker
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Tail
 
 /-!
@@ -51,8 +53,22 @@ Bucketed prime-heat data (t_critical, tau = 0).
 This is certificate-backed and corresponds to the interval checker output in:
 `output/prime_cert_brange_heat_prime_partial_interval_2026-01-31_0009.txt`.
 -/
-axiom prime_heat_bucket_data :
-    PrimeHeatBucketData prime_cert_heat_prime_sum_up_to_ub
+theorem prime_heat_bucket_data :
+    PrimeHeatBucketData prime_cert_heat_prime_sum_up_to_ub := by
+  refine prime_heat_bucket_data_of_pp_bounds
+    (bound := prime_cert_heat_prime_sum_up_to_ub)
+    (h_term_ub := ?_)
+    (h_bucket_ub := ?_)
+    (h_sum_ub := ?_)
+  · intro n hn hN
+    exact prime_heat_weight_term_le_pp_ub_of_prime_pow hn hN
+  · intro k
+    exact (prime_heat_bucket_pp_sum_ub_le_bucket k)
+  ·
+    calc
+      (Finset.univ.sum (fun k => prime_heat_bucket_ub k))
+          = prime_heat_bucket_ub_sum := prime_heat_bucket_ub_sum_eq
+      _ ≤ prime_cert_heat_prime_sum_up_to_ub := prime_heat_bucket_ub_sum_le_partial
 
 theorem prime_heat_sum_data : PrimeHeatSumData := by
   refine ⟨prime_heat_bucket_data, ?_⟩

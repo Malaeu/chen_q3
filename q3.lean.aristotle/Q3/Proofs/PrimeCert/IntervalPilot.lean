@@ -1,5 +1,6 @@
 import Mathlib
 import Q3.Proofs.Params_Critical
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_BucketDefs
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Tail
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowFull
 import Q3.Proofs.PrimeCert.IntervalLemmas
@@ -134,6 +135,27 @@ lemma log_five_bounds :
 def prime_heat_envelope_ub (n : ℕ) (l u : ℝ) : ℝ :=
   ((2 * u) / Real.sqrt n) * Real.exp (-t_critical * l ^ 2) * (u / (2 * Real.pi))
 
+def prime_heat_pp_envelope_ub (u r exp_ub pi_lb : ℝ) (k : ℕ) : ℝ :=
+  ((2 * (u / (k : ℝ))) / r) * exp_ub * (u / (2 * pi_lb))
+
+lemma log_nat_pow_le_div {p k : ℕ} (hk : 0 < k) {u : ℝ}
+    (hu : Real.log ((p ^ k : ℕ) : ℝ) ≤ u) :
+    Real.log (p : ℝ) ≤ u / (k : ℝ) := by
+  have hk' : (0 : ℝ) < (k : ℝ) := by exact_mod_cast hk
+  have hk'' : (k : ℝ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt hk)
+  have hlog_pow : Real.log ((p ^ k : ℕ) : ℝ) = (k : ℝ) * Real.log (p : ℝ) := by
+    simpa using (Real.log_pow (p : ℝ) k)
+  have hmul : (k : ℝ) * Real.log (p : ℝ) ≤ u := by
+    simpa [hlog_pow] using hu
+  have hmul' : Real.log (p : ℝ) * (k : ℝ) ≤ u := by
+    simpa [mul_comm] using hmul
+  calc
+    Real.log (p : ℝ) = (Real.log (p : ℝ) * (k : ℝ)) / (k : ℝ) := by
+      symm
+      exact mul_div_cancel_right₀ (Real.log (p : ℝ)) (b := (k : ℝ)) hk''
+    _ ≤ u / (k : ℝ) := by
+      exact div_le_div_of_nonneg_right hmul' (le_of_lt hk')
+
 lemma mul_mul_mul_le_mul_mul_mul {a b c a' b' c' : ℝ}
     (ha : a ≤ a') (hb : b ≤ b') (hc : c ≤ c')
     (ha0 : 0 ≤ a) (hb0 : 0 ≤ b) (ha'0 : 0 ≤ a') (hc'0 : 0 ≤ c') :
@@ -174,7 +196,7 @@ lemma prime_heat_envelope_ub_le_of_bounds {n : ℕ} {l u r exp_ub pi_lb : ℝ}
     have h2u : 0 ≤ 2 * u := by nlinarith [hu0]
     exact div_nonneg h2u (le_of_lt hr0)
   have hC'_nonneg : 0 ≤ u / (2 * pi_lb) := by
-    have hden : 0 ≤ (2 * pi_lb : ℝ) := by nlinarith [hpi_pos]
+    have hden : 0 ≤ (2 * pi_lb : ℝ) := by linarith [hpi_pos]
     exact div_nonneg hu0 hden
   have hmul :=
     mul_mul_mul_le_mul_mul_mul hA hexp hC hA_nonneg hB_nonneg hA'_nonneg hC'_nonneg
@@ -211,6 +233,169 @@ lemma prime_heat_envelope_le_of_log_bounds {n : ℕ} {l u : ℝ}
   have hmul :=
     mul_mul_mul_le_mul_mul_mul hA hB hC hA_nonneg hB_nonneg hA'_nonneg hC'_nonneg
   simpa [prime_heat_envelope_ub, prime_heat_envelope] using hmul
+
+lemma prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds {p k : ℕ} (hp : p.Prime) (hk : 0 < k)
+    {l u r exp_ub pi_lb : ℝ}
+    (hl0 : 0 ≤ l) (hu0 : 0 ≤ u)
+    (hlog_l : l ≤ Real.log ((p ^ k : ℕ) : ℝ))
+    (hlog_u : Real.log ((p ^ k : ℕ) : ℝ) ≤ u)
+    (hr0 : 0 < r) (hsqrt : r ^ 2 ≤ ((p ^ k : ℕ) : ℝ))
+    (hpi_pos : 0 < pi_lb) (hpi : pi_lb ≤ Real.pi)
+    (hexp : Real.exp (-t_critical * l ^ 2) ≤ exp_ub)
+    (hub :
+      prime_heat_pp_envelope_ub (u := u) (r := r) (exp_ub := exp_ub) (pi_lb := pi_lb) (k := k) ≤
+        Full.prime_heat_pp_term_ub (p ^ k)) :
+    prime_heat_weight_term (p ^ k) ≤ Full.prime_heat_pp_term_ub (p ^ k) := by
+  have hlog_nonneg : 0 ≤ Real.log ((p ^ k : ℕ) : ℝ) := by
+    exact Real.log_natCast_nonneg (p ^ k)
+  have h2pi_pos : 0 < (2 * Real.pi : ℝ) := by
+    nlinarith [Real.pi_pos]
+  have hxi_nonneg : 0 ≤ xi_n (p ^ k) := by
+    exact div_nonneg hlog_nonneg (le_of_lt h2pi_pos)
+  have hxi_abs : |xi_n (p ^ k)| = Real.log ((p ^ k : ℕ) : ℝ) / (2 * Real.pi) := by
+    calc
+      |xi_n (p ^ k)| = xi_n (p ^ k) := abs_of_nonneg hxi_nonneg
+      _ = Real.log ((p ^ k : ℕ) : ℝ) / (2 * Real.pi) := by
+        rfl
+  have hpow' :
+      -4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2 =
+        -t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2 := by
+    calc
+      -4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2
+          = -t_critical * (4 * Real.pi ^ 2 * (xi_n (p ^ k)) ^ 2) := by
+              ring
+      _ = -t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2 := by
+              simp [xi_n_sq_scaled]
+  have h_ind_le :
+      (if |xi_n (p ^ k)| ≤ prime_cert_B_max then (1 : ℝ) else 0) ≤ 1 := by
+    by_cases h : |xi_n (p ^ k)| ≤ prime_cert_B_max <;> simp [h]
+  have hfactor_nonneg :
+      0 ≤ ((2 * Real.log p) / Real.sqrt ((p ^ k : ℕ) : ℝ)) *
+            (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2) * |xi_n (p ^ k)|) := by
+    have hlogp_nonneg : 0 ≤ Real.log (p : ℝ) := by
+      simpa using (Real.log_natCast_nonneg p)
+    have hnum_nonneg : 0 ≤ 2 * Real.log (p : ℝ) := by
+      nlinarith [hlogp_nonneg]
+    have hden_nonneg : 0 ≤ Real.sqrt ((p ^ k : ℕ) : ℝ) := Real.sqrt_nonneg _
+    have hA_nonneg : 0 ≤ (2 * Real.log (p : ℝ)) / Real.sqrt ((p ^ k : ℕ) : ℝ) := by
+      exact div_nonneg hnum_nonneg hden_nonneg
+    have hB_nonneg :
+        0 ≤ Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2) * |xi_n (p ^ k)| := by
+      have hexp_nonneg :
+          0 ≤ Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2) :=
+        Real.exp_nonneg _
+      have hxi_abs_nonneg : 0 ≤ |xi_n (p ^ k)| := abs_nonneg _
+      exact mul_nonneg hexp_nonneg hxi_abs_nonneg
+    exact mul_nonneg hA_nonneg hB_nonneg
+  have hterm_le :
+      prime_heat_weight_term (p ^ k) ≤
+        ((2 * Real.log p) / Real.sqrt ((p ^ k : ℕ) : ℝ)) *
+          Real.exp (-t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2) *
+          (Real.log ((p ^ k : ℕ) : ℝ) / (2 * Real.pi)) := by
+    calc
+      prime_heat_weight_term (p ^ k)
+          = ((2 * Real.log p) / Real.sqrt ((p ^ k : ℕ) : ℝ)) *
+              (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2) * |xi_n (p ^ k)|) *
+              (if |xi_n (p ^ k)| ≤ prime_cert_B_max then (1 : ℝ) else 0) := by
+                simpa [mul_comm, mul_left_comm, mul_assoc] using
+                  (prime_heat_weight_term_eq_prime_pow p k hp hk)
+      _ ≤ ((2 * Real.log p) / Real.sqrt ((p ^ k : ℕ) : ℝ)) *
+              (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2) * |xi_n (p ^ k)|) * 1 := by
+                exact mul_le_mul_of_nonneg_left h_ind_le hfactor_nonneg
+      _ = ((2 * Real.log p) / Real.sqrt ((p ^ k : ℕ) : ℝ)) *
+              (Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2) * |xi_n (p ^ k)|) := by
+                simp
+      _ = ((2 * Real.log p) / Real.sqrt ((p ^ k : ℕ) : ℝ)) *
+              (Real.exp (-t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2) *
+                (Real.log ((p ^ k : ℕ) : ℝ) / (2 * Real.pi))) := by
+                have hpow'' :
+                    Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2) =
+                      Real.exp (-t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2) := by
+                  exact congrArg Real.exp hpow'
+                have hinner :
+                    Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2) * |xi_n (p ^ k)| =
+                      Real.exp (-t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2) *
+                        (Real.log ((p ^ k : ℕ) : ℝ) / (2 * Real.pi)) := by
+                  calc
+                    Real.exp (-4 * Real.pi ^ 2 * t_critical * (xi_n (p ^ k)) ^ 2) * |xi_n (p ^ k)|
+                        = Real.exp (-t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2) * |xi_n (p ^ k)| := by
+                            rw [hpow'']
+                    _ = Real.exp (-t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2) *
+                          (Real.log ((p ^ k : ℕ) : ℝ) / (2 * Real.pi)) := by
+                            rw [hxi_abs]
+                rw [hinner]
+      _ = ((2 * Real.log p) / Real.sqrt ((p ^ k : ℕ) : ℝ)) *
+              Real.exp (-t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2) *
+              (Real.log ((p ^ k : ℕ) : ℝ) / (2 * Real.pi)) := by
+                ring
+  have hlogp_le : Real.log (p : ℝ) ≤ u / (k : ℝ) :=
+    log_nat_pow_le_div (p := p) (k := k) hk hlog_u
+  have hmul2 : 2 * Real.log (p : ℝ) ≤ 2 * (u / (k : ℝ)) := by
+    nlinarith [hlogp_le]
+  have hA1 :
+      (2 * Real.log (p : ℝ)) / Real.sqrt ((p ^ k : ℕ) : ℝ) ≤
+        (2 * (u / (k : ℝ))) / Real.sqrt ((p ^ k : ℕ) : ℝ) := by
+    have hden : 0 ≤ Real.sqrt ((p ^ k : ℕ) : ℝ) := Real.sqrt_nonneg _
+    exact div_le_div_of_nonneg_right hmul2 hden
+  have hsqrt' : r ≤ Real.sqrt ((p ^ k : ℕ) : ℝ) := by
+    exact Real.le_sqrt_of_sq_le hsqrt
+  have hk' : (0 : ℝ) < (k : ℝ) := by exact_mod_cast hk
+  have hdiv_nonneg : 0 ≤ u / (k : ℝ) := by
+    exact div_nonneg hu0 (le_of_lt hk')
+  have hnum_nonneg : 0 ≤ 2 * (u / (k : ℝ)) := by
+    nlinarith [hdiv_nonneg]
+  have hA2 :
+      (2 * (u / (k : ℝ))) / Real.sqrt ((p ^ k : ℕ) : ℝ) ≤
+        (2 * (u / (k : ℝ))) / r := by
+    exact div_le_div_of_nonneg_left hnum_nonneg hr0 hsqrt'
+  have hA :
+      (2 * Real.log (p : ℝ)) / Real.sqrt ((p ^ k : ℕ) : ℝ) ≤
+        (2 * (u / (k : ℝ))) / r := by
+    exact hA1.trans hA2
+  have ht : 0 ≤ t_critical := by norm_num [t_critical]
+  have hB' :
+      Real.exp (-t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2) ≤
+        Real.exp (-t_critical * l ^ 2) := by
+    exact exp_neg_t_log_sq_le_of_log_lower (t := t_critical) (a := l) (n := p ^ k) ht hl0 hlog_l
+  have hB :
+      Real.exp (-t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2) ≤ exp_ub := by
+    exact hB'.trans hexp
+  have hC1 :
+      Real.log ((p ^ k : ℕ) : ℝ) / (2 * Real.pi) ≤ u / (2 * Real.pi) := by
+    have hden : 0 ≤ (2 * Real.pi : ℝ) := by nlinarith [Real.pi_pos]
+    exact div_le_div_of_nonneg_right hlog_u hden
+  have hC2 :
+      u / (2 * Real.pi) ≤ u / (2 * pi_lb) := by
+    have hden : (2 * pi_lb : ℝ) ≤ 2 * Real.pi := by
+      linarith [hpi]
+    have hden_pos : 0 < (2 * pi_lb : ℝ) := by
+      linarith [hpi_pos]
+    exact div_le_div_of_nonneg_left hu0 hden_pos hden
+  have hC :
+      Real.log ((p ^ k : ℕ) : ℝ) / (2 * Real.pi) ≤ u / (2 * pi_lb) := by
+    exact hC1.trans hC2
+  have hA_nonneg :
+      0 ≤ (2 * Real.log (p : ℝ)) / Real.sqrt ((p ^ k : ℕ) : ℝ) := by
+    have hlogp_nonneg : 0 ≤ Real.log (p : ℝ) := by
+      simpa using (Real.log_natCast_nonneg p)
+    have hnum_nonneg' : 0 ≤ 2 * Real.log (p : ℝ) := by
+      linarith [hlogp_nonneg]
+    exact div_nonneg hnum_nonneg' (Real.sqrt_nonneg _)
+  have hA'_nonneg :
+      0 ≤ (2 * (u / (k : ℝ))) / r := by
+    exact div_nonneg hnum_nonneg (le_of_lt hr0)
+  have hC'_nonneg : 0 ≤ u / (2 * pi_lb) := by
+    have hden : 0 ≤ (2 * pi_lb : ℝ) := by linarith [hpi_pos]
+    exact div_nonneg hu0 hden
+  have hmul :=
+    mul_mul_mul_le_mul_mul_mul hA hB hC hA_nonneg (Real.exp_nonneg _) hA'_nonneg hC'_nonneg
+  have h_ub :
+      ((2 * Real.log (p : ℝ)) / Real.sqrt ((p ^ k : ℕ) : ℝ)) *
+          Real.exp (-t_critical * (Real.log ((p ^ k : ℕ) : ℝ)) ^ 2) *
+          (Real.log ((p ^ k : ℕ) : ℝ) / (2 * Real.pi)) ≤
+        prime_heat_pp_envelope_ub (u := u) (r := r) (exp_ub := exp_ub) (pi_lb := pi_lb) (k := k) := by
+    simpa [prime_heat_pp_envelope_ub] using hmul
+  exact hterm_le.trans (h_ub.trans hub)
 
 lemma prime_heat_envelope_le_of_nat_bounds {n lo hi : ℕ}
     (hlo : 0 < lo) (hlo_n : lo ≤ n) (hn_hi : n ≤ hi) :

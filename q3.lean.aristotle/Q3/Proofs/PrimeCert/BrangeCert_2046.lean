@@ -2,6 +2,7 @@ import Mathlib
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.PrimeCert.BrangeGrid_2046
 import Q3.Proofs.PrimeCert.BrangeGridBounds_2046
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_Data
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28
 import Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof
 import Q3.Proofs.Params_Critical
@@ -29,10 +30,17 @@ structure PrimeBGridBounds where
       prime_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ) ≤
         prime_b_grid_prime_ub i
 
-axiom prime_b_grid_bounds_data : PrimeBGridBounds
+axiom prime_b_grid_arch_bounds_data :
+  ∀ i : Fin prime_b_grid_size,
+    prime_b_grid_arch_term i ≤
+      arch_term (fun ξ => phi_shift (prime_b_grid i) t_critical 0 ξ)
 
-theorem prime_b_grid_bounds_cert : PrimeBGridBounds :=
-  prime_b_grid_bounds_data
+theorem prime_b_grid_bounds_cert : PrimeBGridBounds := by
+  refine ⟨?_, ?_⟩
+  · intro i
+    exact prime_b_grid_arch_bounds_data i
+  · intro i
+    exact prime_b_grid_prime_term_le_prime_ub_all i
 
 theorem prime_b_grid_val_le_margin :
     ∀ i : Fin prime_b_grid_size,

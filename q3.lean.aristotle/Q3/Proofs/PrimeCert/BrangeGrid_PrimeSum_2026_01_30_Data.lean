@@ -38,10 +38,34 @@ axiom prime_b_grid_bucket_bounds :
   ∀ i : Fin prime_b_grid_size, ∀ k : Fin prime_b_grid_bucket_count,
     prime_b_grid_bucket_sum i k ≤ prime_b_grid_bucket_ub i k
 
-axiom prime_b_grid_bucket_sum_ub :
+lemma prime_b_grid_bucket_ub_sum_q_eq :
+  ∀ i : Fin prime_b_grid_size,
+    (Finset.univ.sum (fun k => prime_b_grid_bucket_ub_q_get i k)) =
+      prime_b_grid_bucket_ub_sum_q_get i := by
+  intro i
+  fin_cases i <;> native_decide
+
+lemma prime_b_grid_bucket_ub_sum_eq :
+  ∀ i : Fin prime_b_grid_size,
+    (Finset.univ.sum (fun k => prime_b_grid_bucket_ub i k)) =
+      prime_b_grid_bucket_ub_sum i := by
+  intro i
+  have hq := prime_b_grid_bucket_ub_sum_q_eq i
+  have hq' :
+      ((Finset.univ.sum (fun k => prime_b_grid_bucket_ub_q_get i k) : ℚ) : ℝ) =
+        (prime_b_grid_bucket_ub_sum_q_get i : ℚ) := by
+    exact congrArg (fun x : ℚ => (x : ℝ)) hq
+  simpa [prime_b_grid_bucket_ub, prime_b_grid_bucket_ub_sum, Rat.cast_sum] using hq'
+
+theorem prime_b_grid_bucket_sum_ub :
   ∀ i : Fin prime_b_grid_size,
     (Finset.univ.sum (fun k => prime_b_grid_bucket_ub i k)) ≤
-      prime_b_grid_prime_sum_ub i
+      prime_b_grid_prime_sum_ub i := by
+  intro i
+  calc
+    (Finset.univ.sum (fun k => prime_b_grid_bucket_ub i k))
+        = prime_b_grid_bucket_ub_sum i := prime_b_grid_bucket_ub_sum_eq i
+    _ ≤ prime_b_grid_prime_sum_ub i := prime_b_grid_bucket_ub_sum_le i
 
 theorem prime_b_grid_bucket_data :
   ∀ i : Fin prime_b_grid_size, PrimeBGridBucketData i := by

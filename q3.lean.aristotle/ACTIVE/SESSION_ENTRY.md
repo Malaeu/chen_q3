@@ -13,6 +13,34 @@ Current mainline decisions:
 - Avoid two-scale t_sym/t_rkhs bridges.
 - T_P^{Ray} vs T_P^{RKHS} separated; C1 uses dictionary compression.
 
+Update (2026-02-06):
+- Main theorem now has explicit margin hypothesis:
+  `Q3.Main.RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange) : Q3.RH`.
+- `./scripts/check_axioms.sh` for main-chain currently shows only one project axiom:
+  `Q3.Weil_criterion_tau0` (plus standard kernel axioms).
+- Next closure target is exactly `h_margin_cert`; work plan is synchronized with
+  `PROJECT_ORCHESTRATOR.md` section `Roadmap (2026-02-06)`.
+
+Roadmap for closing `h_margin_cert` (8 steps):
+1) Close `prime_heat_bucket_data` by theorem (`BucketCheck` + `Checker` + `SumData`).
+2) Remove `prime_heat_weight_term_le_pp_ub_of_prime_pow_axiom` for `n > 10000`.
+3) Remove `native_decide` dependency from critical checker lemmas (avoid trust axioms in target chain).
+4) Close `prime_heat_bounds_arch_data` with a formal arch integral bound.
+5) Close grid bucket axioms in `BrangeGrid_PrimeSum_2026_01_30_Data.lean`.
+6) Replace `prime_b_grid_bounds_data` with theorem in `BrangeCert_2046.lean`.
+7) Prove `PrimeCertMarginOnBrange` and remove `h_margin_cert` parameter in `Q3/Main.lean`.
+8) Re-run `lake env lean`, `#print axioms`, and `./scripts/check_axioms.sh`.
+
+Progress update (2026-02-06, current session):
+- Step 1: DONE in code path (`prime_heat_bucket_data` is theorem in `BrangeHeatCert_2026_01_28_SumData.lean`).
+- Step 8: DONE for current conditional chain:
+  - `lake env lean Q3/Main.lean` succeeds.
+  - `#print axioms Q3.Main.RH_of_Weil_and_Q3` -> `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`.
+  - `./scripts/check_axioms.sh` passes (1 project axiom: `Weil_criterion_tau0`).
+- Step 2: BLOCKED (no integrated hole-free theorem path yet for `n > 10000` pointwise bound).
+- Step 3: BLOCKED (checker still uses `native_decide` for per-bucket pp-sum inequality).
+- Steps 4-7: OPEN/BLOCKED by missing formal data theorems (arch integral + full grid bucket closure).
+
 Recent changes (2026-02-03):
 - Added `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_BucketDefs.lean` to isolate
   bucket/partition lemmas from the heavy prime-power table.

@@ -67,8 +67,10 @@ theorem A2_Lipschitz (K : ℝ) (hK : K > 0) :
 
 /-! ## T5: Transfer to τ = 0 Weil class -/
 
-/-- Q is nonnegative on W_K_tau0 for each K ≥ 1 (τ = 0 mainline). -/
-theorem Q_nonneg_on_W_K_tau0 (K : ℝ) (hK : K ≥ 1) :
+/-- Q is nonnegative on W_K_tau0 for each K ≥ 1 (τ = 0 mainline),
+with explicit PrimeCert margin hypothesis on the B-range. -/
+theorem Q_nonneg_on_W_K_tau0
+    (h_margin_cert : Q3.PrimeCertMarginOnBrange) (K : ℝ) (hK : K ≥ 1) :
     ∀ Φ ∈ Q3.W_K_tau0 K Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
   have hAtoms :
       ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min prime_cert_B_max,
@@ -76,7 +78,7 @@ theorem Q_nonneg_on_W_K_tau0 (K : ℝ) (hK : K ≥ 1) :
     intro g hg
     have hg' : g ∈ Q3.BaseAtomCone_critical_brange K := by
       simpa [Q3.BaseAtomCone_critical_brange, Q3.BaseAtomCone_K_brange] using hg
-    exact Q3.Q_nonneg_on_base_atoms_at_t_critical_brange K hK g hg'
+    exact Q3.Q_nonneg_on_base_atoms_at_t_critical_brange_of_margin K hK h_margin_cert g hg'
   exact
     Q3.T5.T5_transfer_tau0
       K hK Q3.t0_critical B_min prime_cert_B_max Q3.t0_critical_pos hAtoms
@@ -93,10 +95,12 @@ Proof outline:
 2. By τ=0 T5 transfer, Q(Φ) ≥ 0 on W_K_tau0
 -/
 theorem Q_nonneg_on_Weil_cone_tau0 :
+    Q3.PrimeCertMarginOnBrange →
     ∀ Φ ∈ Q3.Weil_cone_tau0 Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
+  intro h_margin_cert
   intro Φ hΦ
   rcases hΦ with ⟨K, hK, hΦK⟩
-  exact Q_nonneg_on_W_K_tau0 K hK Φ hΦK
+  exact Q_nonneg_on_W_K_tau0 h_margin_cert K hK Φ hΦK
 
 /-! ## Riemann Hypothesis -/
 
@@ -121,10 +125,10 @@ Proof: By T5_transfer_tau0, Q ≥ 0 on W_K_tau0 for each K.
 By compact-by-compact union, Q ≥ 0 on all of Weil_cone_tau0.
 By Weil criterion (τ=0 cone), RH follows.
 -/
-theorem RH_of_Weil_and_Q3 : Q3.RH := by
+theorem RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange) : Q3.RH := by
   -- Apply τ=0 Weil criterion (axiom)
   rw [← Q3.Weil_criterion_tau0 Q3.t0_critical B_min prime_cert_B_max]
-  exact Q_nonneg_on_Weil_cone_tau0
+  exact Q_nonneg_on_Weil_cone_tau0 h_margin_cert
 
 /-! ## Axiom Verification -/
 
@@ -133,7 +137,7 @@ theorem RH_of_Weil_and_Q3 : Q3.RH := by
 -- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
 -- Standard: propext, Classical.choice, Quot.sound
 -- Tier-1: Q3.Weil_criterion_tau0
--- Tier-2: Q3.Proofs.PrimeCert.{prime_b_grid_val_le_margin,prime_margin_Lipschitz_on_Brange}
+-- Tier-2 in main theorem: moved to explicit hypothesis `h_margin_cert`
 --
 -- KEY IMPROVEMENTS:
 -- - Q_Lipschitz_on_W_K is a THEOREM (uses arch/prime bridge axioms)!
