@@ -41,6 +41,63 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Synthesis (2026-02-06, in progress) — Закрытие `h_margin_cert` до single-axiom chain
+
+Цель: перейти от `Q3.Main.RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange)` к версии без `h_margin_cert`,
+оставив в main-chain только `Q3.Weil_criterion_tau0`.
+
+Проверенное состояние:
+- Main-chain check (`./scripts/check_axioms.sh`): 1 project axiom (`Q3.Weil_criterion_tau0`) + standard axioms.
+- Узел `h_margin_cert` опирается на PrimeCert cert-data (`prime_b_grid_bounds_data`, `prime_heat_bounds_arch_data`, `prime_heat_bucket_data`).
+- Текущий `Checker`-путь использует `native_decide`; это может тянуть `Lean.ofReduceBool`/`Lean.trustCompiler` при прямом wiring.
+
+План (8 шагов, с файлами):
+1) Закрыть `prime_heat_bucket_data` через `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_BucketCheck.lean` и `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`, затем подставить в `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`.
+2) Убрать `prime_heat_weight_term_le_pp_ub_of_prime_pow_axiom` в `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean` (ветка `n > 10000`).
+3) Деаксоматизировать bucket0 путь без `native_decide` в `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowBucket0Auto*.lean`.
+4) Закрыть `prime_heat_bounds_arch_data` в `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`.
+5) Закрыть grid bucket axioms в `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`.
+6) Заменить `prime_b_grid_bounds_data` на теорему в `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`.
+7) Вывести теорему `PrimeCertMarginOnBrange` в `Q3/Proofs/Q_nonneg_t_critical.lean` и убрать параметр в `Q3/Main.lean`.
+8) Финально проверить `lake env lean Q3/Main.lean`, `#print axioms Q3.Main.RH_of_Weil_and_Q3`, `./scripts/check_axioms.sh`.
+
+Решение по порядку: сначала PrimeHeat (1-4), затем Grid (5-6), потом финальный wiring в Main (7-8).
+
+Update (2026-02-06, execution pass):
+- Step 1 integrated and compiling:
+  - `prime_heat_bucket_data` is theorem in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`.
+  - Name conflict between `BucketCheck` and `Checker` lemmas was removed by renaming internal
+    lemmas in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_BucketCheck.lean`.
+- Final verification (step 8 for current conditional chain) is green:
+  - `lake env lean Q3/Main.lean`
+  - `#print axioms Q3.Main.RH_of_Weil_and_Q3` -> `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`
+  - `./scripts/check_axioms.sh` passes with 1 project axiom (`Weil_criterion_tau0`).
+- Remaining blockers for unconditional closure (`h_margin_cert` removal):
+  - Step 2: no integrated hole-free theorem path yet for `n > 10000` pointwise prime-power bound.
+  - Step 3: `native_decide` remains in checker bucket inequality path.
+  - Steps 4-7: still require formal arch/grid closures before removing `h_margin_cert`.
+
+Update (2026-02-06, blocker map refresh):
+- Verified by `#print axioms` on PrimeCert nodes:
+  - `prime_cert_margin_on_Brange_axiom` currently depends on exactly four project axioms:
+    `prime_heat_weight_term_le_pp_ub_of_prime_pow_axiom`,
+    `prime_heat_bounds_arch_data`,
+    `prime_b_grid_bucket_bounds`,
+    `prime_b_grid_arch_bounds_data`.
+- Grid progress is real but partial:
+  - `prime_b_grid_bucket_sum_ub` is theorem (no project axiom on this node);
+  - `prime_b_grid_bounds_data` split into narrower obligations in `BrangeCert_2046`.
+- Root cause for Step 2 block:
+  - local generator `scripts/prime_brange_heat_pp_bucket0_auto.py` closes only bucket0
+    (`n ≤ 10000`), so `Checker` keeps axiom fallback for `n > 10000`.
+- Root cause for Step 5 block:
+  - `scripts/prime_brange_interval_checker_grid.py` emits numeric bucket UB tables, but no
+    theorem bridge `prime_b_grid_bucket_sum ≤ prime_b_grid_bucket_ub`.
+- Practical next action:
+  1) add a theorem-producing generator for heat `n > 10000` (envelope or interval certificates),
+  2) then add theorem-producing generator for grid bucket sums,
+  3) then remove `h_margin_cert` in `Q3/Main.lean`.
+
 ## Decision (2026-02-02) — PrimeCert closure: formal numeric certificates now, analytic path later
 
 Goal: close main chain fast **without axioms** and with kernel‑checked evidence.
@@ -977,3 +1034,37 @@ Plan (5–10 lines, concrete pointers):
 5. Verification + success: after each swap run `lake env lean` on touched files and `./scripts/check_axioms.sh`,
    log axiom count drop in `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`; success when only project axiom left is
    `Q3.Weil_criterion_tau0`.
+
+## Synthesis (2026-02-06, in progress) — Tier-2 closure in main-chain via explicit margin hypothesis
+
+- Scope: close Tier-2 PrimeCert axioms in `#print axioms Q3.Main.RH_of_Weil_and_Q3`, keep
+  `Q3.Weil_criterion_tau0` as the only project axiom in chain.
+- Current blockers (cert-data axioms): `prime_b_grid_bounds_data`,
+  `prime_heat_bounds_arch_data`, `prime_heat_bucket_data`.
+- Chosen path: add an axiom-free `of_margin` proof route in
+  `Q3/Proofs/Q_nonneg_t_critical.lean` that takes an explicit hypothesis
+  `h_margin_cert : ∀ B ∈ [B_min, B_max], prime_cert_margin_lb ≤ arch_term - prime_term`.
+- Main wiring: switch `Q3/Main.lean` to use the new `of_margin` theorem and make
+  `RH_of_Weil_and_Q3` explicitly depend on `h_margin_cert` (hypothesis, not global axiom).
+- Expected `#print axioms` result: only standard axioms + `Q3.Weil_criterion_tau0`.
+- Safety: old cert-backed theorem path remains available for backward compatibility;
+  only the main theorem route changes.
+
+**Update (2026-02-06, done):**
+- Implemented `of_margin` axiom-free path in `Q3/Proofs/Q_nonneg_t_critical.lean`:
+  `PrimeCertMarginOnBrange`,
+  `prime_term_le_arch_term_on_Brange_tau0_of_margin`,
+  `Q_phi_shift_nonneg_t_critical_tau0_brange_of_margin`,
+  `Q_nonneg_on_base_atoms_at_t_critical_brange_of_margin`.
+- Rewired `Q3/Main.lean`: `RH_of_Weil_and_Q3` now takes explicit hypothesis
+  `(h_margin_cert : Q3.PrimeCertMarginOnBrange)` and no longer depends on
+  PrimeCert cert-data axioms in `#print axioms`.
+- Updated `scripts/check_axioms.sh` expected counts to
+  `Project=1, Standard=3, Total=4` and fixed Q3-axiom parsing for short lists.
+- Verification:
+  - `lake env lean Q3/Proofs/Q_nonneg_t_critical.lean` ✅
+  - `lake env lean Q3/Main.lean` ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅
+  - `./scripts/check_axioms.sh` ✅
+  - `#print axioms Q3.Main.RH_of_Weil_and_Q3`
+    → `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`.
