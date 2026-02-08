@@ -196,6 +196,34 @@ Plan (5–10 lines, concrete pointers):
 5) Success check: `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`
    then `./scripts/check_axioms.sh` (expect axiom count to drop, not increase).
 
+## Synthesis (2026-02-02, in progress) — Prime-heat PP pointwise bound
+
+Target lemma:
+- `prime_heat_weight_term_le_pp_ub_of_prime_pow` in
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`
+  (wired into `prime_heat_bucket_bounds` → `prime_heat_sum_data`).
+
+Embedding search:
+- `scripts/research_oracle.py query ... -c q3_docs` fails on this host (qmd/Metal context).
+- Fallback `qmd search -c q3_docs` only hits `docs/INSIGHTS.md` and older prime‑cert notes;
+  no interval‑arithmetic guidance.
+
+Web search:
+- No built‑in Mathlib interval‑arithmetic tactic for `exp/log` surfaced.
+- `ComputableReal` has `exp` support but no `log`, so it’s not a direct drop‑in.
+
+Plan (5–10 lines, concrete pointers):
+1) Keep the target lemma isolated in `BrangeHeatCert_2026_01_28_Checker.lean`;
+   do not change main‑chain wiring until we have a proof method.
+2) Prepare a pilot: add a new file
+   `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowPilot.lean`
+   with two buckets (0 and 99) and per‑prime‑power obligations.
+3) Extend `scripts/prime_brange_heat_pp_interval_checker.py` to emit those pilot obligations
+   (per‑n bounds + a list of prime powers in the bucket).
+4) Ask Proshka for a Lean‑compatible numeric proof strategy for `exp/log` inequalities
+   (interval arithmetic or monotone bounds) and validate it on the pilot.
+5) If the pilot closes, scale to all buckets and replace the axiom.
+
 ## Synthesis (2026-02-01, in progress) — Close `prime_b_grid_bounds_data` (grid cert)
 
 Target axiom:

@@ -13,6 +13,17 @@ WRONG:  T_P, Q, rho     ← ambiguous, caused the bug!
 RIGHT:  T_P(t,M), Q(t;Phi), rho(t)   ← explicit parameters
 ```
 
+## Notation Glossary (frozen, quick index)
+
+- `t = t_critical = 3/20`, `t0 = 1/(16π²t)`.
+- `Phi_{B,t}` = Fejér–heat window; base atom = `2 * Phi_{B,t}` at `tau = 0`.
+- `Q*(t;Phi) = arch_term(t;Phi) - prime_term(t;Phi)`.
+- `w_Q(n) = 2*Λ(n)/√n`, `xi_n = log n / (2π)`.
+- `T_P^{Ray}(t,M)` vs `T_P^{RKHS}(t)` are distinct operators (do not mix).
+
+**Change control:** any edits here require an entry in `docs/CHAIN_STATUS.md`
+“Revision Log (local)”.
+
 ---
 
 ## 1. Heat Scale Parameter t

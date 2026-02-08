@@ -17,6 +17,32 @@ It is intended to stay aligned with the code after each refactor.
 - Use the base-atom cone with tau = 0 (even functions only).
 - Avoid the old two-scale chain (t_sym vs t_rkhs_cap) in the mainline.
 
+## Statement Sheet (frozen)
+
+- Formal target (Lean): `Q3.Main.RH_of_Weil_and_Q3`.
+- Logical gate: `Q3.Weil_criterion_tau0` (Q ≥ 0 on `Weil_cone_tau0` ↔ RH).
+- Normalization: `t_critical = 3/20`, `tau = 0`, `B ∈ [B_min, B_max]`.
+
+## Assumption Stack (mainline)
+
+- Standard/kernel: `propext`, `Classical.choice`, `Quot.sound`.
+- External math: `Q3.Weil_criterion_tau0`.
+- Numeric cert data: `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`,
+  `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`,
+  `Q3.Proofs.PrimeCert.prime_heat_bucket_data`.
+- Everything else in the chain is a theorem.
+
+## Notation Glossary (frozen, minimal)
+
+- `Q*(t; Phi) = arch_term - prime_term` (see `Q_STAR_DEFINITIONS.md`).
+- `w_Q(n) = 2*Λ(n)/√n`, `xi_n = log n / (2π)`.
+- `Phi_{B,t}` = Fejér–heat window, `P_A` = symbol (period 1).
+
+## Revision Log (local)
+
+- 2026-02-03: added statement sheet, assumption stack, notation glossary.
+- 2026-02-04: align PrimeHeat axioms (`prime_heat_bounds_arch_data`, `prime_heat_bucket_data`).
+
 ## Current chain (code-level)
 
 1) A3 floor (archimedean lower bound)
@@ -42,7 +68,8 @@ It is intended to stay aligned with the code after each refactor.
 These are the only Q3-specific axioms blocking the **current** main chain:
 
 - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_data`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
+- `Q3.Proofs.PrimeCert.prime_heat_bucket_data`
 
 Authoritative check:
 ```bash

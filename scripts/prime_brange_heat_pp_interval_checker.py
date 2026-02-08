@@ -5,6 +5,10 @@ Generate prime-power upper bounds for prime-heat partial sums (t_critical, tau=0
 This emits a Lean file with a lookup table mapping n ↦ upper bound for
 prime_heat_weight_term n. Values are rounded *up* to a fixed number of
 decimal places to preserve the upper-bound property.
+
+The generated Lean file stores bucket data as `Array (Nat × Nat)` to
+avoid enormous match expressions that cause elaboration blow-ups. A
+fuelled binary search helper (`natArrayLookup`) is used to read values.
 """
 
 from __future__ import annotations
@@ -33,6 +37,16 @@ def parse_args() -> argparse.Namespace:
         "--subnamespace",
         default="",
         help="Optional sub-namespace for generated definitions.",
+    )
+    p.add_argument(
+        "--pilot-output",
+        default="",
+        help="Optional pilot output Lean file for selected buckets.",
+    )
+    p.add_argument(
+        "--pilot-buckets",
+        default="0,99",
+        help="Comma-separated bucket indices to include in the pilot output.",
     )
     return p.parse_args()
 
@@ -146,6 +160,7 @@ def main() -> None:
     lines: list[str] = []
     lines.append("import Mathlib")
     lines.append("import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data")
+    lines.append("import Q3.Proofs.PrimeCert.ArrayLookup")
     lines.append("set_option maxHeartbeats 0")
     lines.append("")
     lines.append("/-!")
@@ -187,14 +202,24 @@ def main() -> None:
     lines.append("/-- Common denominator for prime-power term bounds. -/")
     lines.append(f"def prime_heat_pp_term_ub_den : ℚ := {scale}")
     lines.append("")
-    lines.append("/-- Upper bounds for prime-power terms (rational), per bucket. -/")
-    for k in selected_buckets:
-        lines.append(f"def prime_heat_pp_term_ub_q_get_bucket_{k} : ℕ -> ℚ")
-        for n, _ub in buckets.get(k, []):
+    lines.append("/-- Upper bounds for prime-power terms (numerators), per bucket. -/")
+    for k in range(bucket_count):
+        lines.append(f"def prime_heat_pp_term_ub_bucket_{k} : Array (Nat × Nat) := #[")
+        bucket_entries = buckets.get(k, [])
+        if bucket_filter is not None and k not in bucket_filter:
+            bucket_entries = []
+        for n, _ub in bucket_entries:
             num = ub_num_map[n]
-            lines.append(f"| {n} => ({num} : ℚ) / prime_heat_pp_term_ub_den")
-        lines.append("| _ => 0")
+            lines.append(f"  ({n}, {num}),")
+        lines.append("]")
         lines.append("")
+
+    lines.append("/-- Prime-power bucket tables (indexed by `prime_heat_pp_term_bucket_index`). -/")
+    lines.append("def prime_heat_pp_term_ub_buckets : Array (Array (Nat × Nat)) := #[")
+    for k in range(bucket_count):
+        lines.append(f"  prime_heat_pp_term_ub_bucket_{k},")
+    lines.append("]")
+    lines.append("")
 
     lines.append("/-- Bucket index for prime-power term lookup. -/")
     lines.append("def prime_heat_pp_term_bucket_width : Nat := 10000")
@@ -202,12 +227,22 @@ def main() -> None:
     lines.append("  (n - 1) / prime_heat_pp_term_bucket_width")
     lines.append("")
 
+    lines.append("/-- Upper bounds for prime-power terms (rational), per bucket lookup. -/")
+    lines.append("def prime_heat_pp_term_ub_q_get_bucket (arr : Array (Nat × Nat)) (n : ℕ) : ℚ :=")
+    lines.append("  match natArrayLookup arr n with")
+    lines.append("  | some num => (num : ℚ) / prime_heat_pp_term_ub_den")
+    lines.append("  | none => 0")
+    lines.append("")
+    for k in range(bucket_count):
+        lines.append(f"def prime_heat_pp_term_ub_q_get_bucket_{k} (n : ℕ) : ℚ :=")
+        lines.append(f"  prime_heat_pp_term_ub_q_get_bucket prime_heat_pp_term_ub_bucket_{k} n")
+        lines.append("")
+
     lines.append("/-- Upper bounds for prime-power terms (rational). -/")
     lines.append("def prime_heat_pp_term_ub_q_get (n : ℕ) : ℚ :=")
-    lines.append("  match prime_heat_pp_term_bucket_index n with")
-    for k in selected_buckets:
-        lines.append(f"  | {k} => prime_heat_pp_term_ub_q_get_bucket_{k} n")
-    lines.append("  | _ => 0")
+    lines.append("  match prime_heat_pp_term_ub_buckets[prime_heat_pp_term_bucket_index n]? with")
+    lines.append("  | some arr => prime_heat_pp_term_ub_q_get_bucket arr n")
+    lines.append("  | none => 0")
     lines.append("")
     lines.append("/-- Upper bounds for prime-power terms (real). -/")
     lines.append("def prime_heat_pp_term_ub (n : ℕ) : ℝ :=")
@@ -229,6 +264,60 @@ def main() -> None:
     outp.parent.mkdir(parents=True, exist_ok=True)
     outp.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"Wrote {outp}")
+
+    if args.pilot_output:
+        pilot_buckets: list[int] = []
+        for raw in args.pilot_buckets.split(","):
+            raw = raw.strip()
+            if not raw:
+                continue
+            pilot_buckets.append(int(raw))
+        pilot_buckets = sorted(set(pilot_buckets))
+        for k in pilot_buckets:
+            if k < 0 or k >= bucket_count:
+                raise SystemExit(f"Pilot bucket index out of range: {k}")
+
+        pilot_lines: list[str] = []
+        pilot_lines.append("import Mathlib")
+        pilot_lines.append("import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowData")
+        pilot_lines.append("")
+        pilot_lines.append("/-!")
+        pilot_lines.append("Prime-heat prime-power pilot data (selected buckets).")
+        pilot_lines.append("")
+        pilot_lines.append(f"Source: {src}")
+        pilot_lines.append("Generated by: scripts/prime_brange_heat_pp_interval_checker.py")
+        pilot_lines.append("-/")
+        pilot_lines.append("")
+        pilot_lines.append("noncomputable section")
+        pilot_lines.append("")
+        pilot_lines.append("namespace Q3.Proofs.PrimeCert")
+        pilot_lines.append("")
+        pilot_lines.append("/-- Source file (prime-heat partial interval certificate). -/")
+        pilot_lines.append("def prime_cert_heat_pp_pilot_source : String :=")
+        pilot_lines.append(f'  "{src}"')
+        pilot_lines.append("")
+        pilot_lines.append("/-- SHA256 of the source file. -/")
+        pilot_lines.append("def prime_cert_heat_pp_pilot_sha256 : String :=")
+        pilot_lines.append(f'  "{digest}"')
+        pilot_lines.append("")
+        pilot_lines.append("/-- Selected pilot bucket indices. -/")
+        pilot_lines.append("def prime_heat_pp_pilot_bucket_indices : List Nat :=")
+        pilot_lines.append("  [" + ", ".join(str(k) for k in pilot_buckets) + "]")
+        pilot_lines.append("")
+        for k in pilot_buckets:
+            pilot_lines.append(f"/-- Prime-power bounds for bucket {k}. -/")
+            pilot_lines.append(f"def prime_heat_pp_pilot_bucket_{k}_data : List (Nat × Nat) := [")
+            for n, _ub in buckets.get(k, []):
+                num = ub_num_map[n]
+                pilot_lines.append(f"  ({n}, {num}),")
+            pilot_lines.append("]")
+            pilot_lines.append("")
+        pilot_lines.append("end Q3.Proofs.PrimeCert")
+
+        pilot_path = Path(args.pilot_output)
+        pilot_path.parent.mkdir(parents=True, exist_ok=True)
+        pilot_path.write_text("\n".join(pilot_lines) + "\n", encoding="utf-8")
+        print(f"Wrote {pilot_path}")
 
 
 if __name__ == "__main__":
