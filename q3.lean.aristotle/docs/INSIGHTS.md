@@ -1082,3 +1082,28 @@ Plan (5–10 lines, concrete pointers):
   - `./scripts/check_axioms.sh` ✅
   - `#print axioms Q3.Main.RH_of_Weil_and_Q3`
     → `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`.
+
+## Ops note (2026-02-08, done) — isolated heavy runs for Lean/Codex
+
+- Added executable helper: `scripts/run_heavy.sh`.
+- What it does:
+  1. Checks user-systemd availability.
+  2. Creates `codex-heavy.slice` (if missing) with defaults:
+     `MemoryHigh=20G`, `MemoryMax=28G`, `CPUWeight=80`,
+     `ManagedOOMPreference=avoid`.
+  3. Runs the command inside that slice via
+     `systemd-run --user --scope`.
+- Usage:
+  - Interactive shell in isolated slice:
+    `./scripts/run_heavy.sh`
+  - Run a command in isolated slice:
+    `./scripts/run_heavy.sh lake build Q3.Main`
+- Verified smoke checks:
+  - `./scripts/run_heavy.sh --help`
+  - `./scripts/run_heavy.sh bash -lc 'echo RUN_HEAVY_OK'`
+- Operational caveat:
+  - Very large PrimeCert builds can exceed default `MemoryMax=28G` and be
+    killed by `systemd-oomd` in that scope.
+  - For those runs only, start a one-off scope with higher limits
+    (e.g. `MemoryHigh=36G`, `MemoryMax=48G`) and keep the default slice
+    limits unchanged for regular work.
