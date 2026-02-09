@@ -1207,3 +1207,27 @@ Execution update:
 - Project id: `cdac2fb6-28aa-4e31-8916-7e966ae67f25` (status pending at note time).
 - Parallel follow-up submit for third blocker (`prime_b_grid_arch_bounds_data_target.lean`) launched with explicit context files.
 - Project id: `c26314f1-e4f2-4ff5-ae30-7f48c31aa75f` (status pending at note time).
+
+## Synthesis (2026-02-09, in progress) — `prime_b_grid_bucket_bounds` manual closure path (no Aristotle)
+
+Target and chain wiring:
+- Target lemma: `prime_b_grid_bucket_bounds` in `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`.
+- It feeds `prime_b_grid_bucket_data` -> `prime_b_grid_prime_sum_le_all` -> `prime_b_grid_prime_term_le_prime_ub_all` -> `prime_b_grid_bounds_cert`.
+- Neighbor blockers remain `prime_heat_bounds_arch_data` and `prime_b_grid_arch_bounds_data`.
+
+Embedding search (local index, 5 queries via `scripts/research_oracle.py`):
+- Strong signal repeats: current grid path has scaffold (`Checker` + bucket UB tables), but theorem bridge `bucket_sum ≤ bucket_ub` is missing.
+- Existing notes point to certificate-style closure (generated numeric Lean proofs), not ad-hoc analytic replacement.
+- Tooling caveat: qmd DB can lock on parallel queries (`SQLITE_BUSY_RECOVERY`), sequential queries are stable.
+
+External web search + repo check:
+- `lean-stat-learning-theory` confirms useful Lean proof style patterns (finite-sum/sup helper style) and uses `Lean v4.27.0-rc1 + mathlib master`.
+- But it has no drop-in PrimeCert certificate machinery (no reusable theorem to directly close our grid bucket node).
+- Conclusion: toolchain bump alone is unlikely to remove this blocker; missing piece is certificate generation for this specific node.
+
+Concrete plan (5 steps):
+1) Reuse the heat auto-proof architecture (`scripts/prime_brange_heat_pp_auto.py`) to build a grid variant that emits per-prime-power upper bounds for `prime_b_grid_weight_term`.
+2) Start with a pilot slice (`i = 19`, buckets `0` and `99`) to validate generated theorem shape and compile cost.
+3) Generate companion bucket-sum comparison lemmas (`pp_sum_bucket ≤ bucket_ub`) in the `PpSumBounds` style, then wire a checker theorem `prime_b_grid_bucket_sum_le_pp_ub`.
+4) Lift pilot to all `i : Fin 20` and all buckets, replace `axiom prime_b_grid_bucket_bounds` with theorem-backed `prime_b_grid_bucket_data`.
+5) Validate with `lake env lean Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`, `lake env lean Q3/CheckAxioms.lean`, `./scripts/check_axioms.sh`.
