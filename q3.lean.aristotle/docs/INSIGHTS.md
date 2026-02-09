@@ -1179,3 +1179,27 @@ Execution update (2026-02-09):
     both returned import-context failure (`unknown module prefix 'Q3'`) and left `sorry`.
   - Conclusion: for this node, current Aristotle infra path is blocked at project-context upload;
     no code integrated from these outputs.
+
+## Synthesis (2026-02-09, in progress) — `prime_heat_bounds_arch_data` unblock via minimal Aristotle context
+
+Target lemma and wiring:
+- `prime_heat_bounds_arch_data` in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean` is the arch-integral input for `prime_heat_bounds_cert`.
+- Next chain nodes remain `prime_b_grid_bucket_bounds` (`BrangeGrid_PrimeSum_2026_01_30_Data.lean`) and `prime_b_grid_arch_bounds_data` (`BrangeCert_2046.lean`).
+
+Embedding search (local index, 4 queries via `scripts/research_oracle.py`):
+- Hits reconfirm current state: checker modules are scaffold-complete, but theorem-level bridge for these data axioms is still missing.
+- Integrability infrastructure exists, but no local certified path from that infrastructure to the numeric constant `prime_cert_L_arch_heat_raw`.
+
+External web search synthesis:
+- `lean-stat-learning-theory` confirms reusable finite-set helper patterns (`sup' -> sum`, exp-of-sup bounds), matching our local helper direction.
+- No direct mathlib “drop-in” tactic/lemma was identified that would automatically certify this digamma-weighted numeric arch integral bound.
+
+Concrete plan (execution order):
+1. Run targeted Aristotle for only `prime_heat_bounds_arch_data` using explicit minimal context files (no auto-imports).
+2. Integrate only if output is hole-free (`rg -n "sorry|exact\\?|admit"`) and compiles with `lake env lean`.
+3. If still blocked, freeze this node as infra-limited and switch closure effort to `prime_b_grid_bucket_bounds` checker bridge.
+4. Keep `prime_b_grid_arch_bounds_data` last, after prime-grid bucket theorem is in place.
+
+Execution update:
+- New Aristotle submit path uses CLI workflow with explicit context files and no auto-imports.
+- Project id: `fb520402-fb98-477d-8bf5-3f7688af9939` (status pending at note time).

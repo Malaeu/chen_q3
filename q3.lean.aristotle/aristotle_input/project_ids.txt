@@ -55,3 +55,5 @@ rho_oneK_tcritical_le_cstar_quarter.md: b644c90d-9934-4c95-a857-221e38620134  20
 2026-01-27 qspec_phi_spec_in_w_k manual test (v2, ShiftedWindows import) :: 2137c67b-9e37-413a-a4ae-f98cbbda5d2a
 2026-02-09 prime_heat_bounds_arch_data_target.lean :: f296eef2-5f52-4560-a5b0-5a452718c495
 2026-02-09 prime_heat_bounds_arch_data_target.lean (context API) :: a64e2be8-7def-4d5c-8566-b4e2da9641c7
+2026-02-09 prime_heat_bounds_arch_data_target.lean (context API retry) :: bc87b055-be3c-4ab9-b1c2-f7018bf28b2c
+2026-02-09 prime_heat_bounds_arch_data_target.lean (CLI context-files minimal) :: fb520402-fb98-477d-8bf5-3f7688af9939
