@@ -1203,3 +1203,5 @@ Concrete plan (execution order):
 Execution update:
 - New Aristotle submit path uses CLI workflow with explicit context files and no auto-imports.
 - Project id: `fb520402-fb98-477d-8bf5-3f7688af9939` (status pending at note time).
+- Parallel follow-up submit for next blocker (`prime_b_grid_bucket_bounds_target.lean`) launched with explicit context files.
+- Project id: `cdac2fb6-28aa-4e31-8916-7e966ae67f25` (status pending at note time).
