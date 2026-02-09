@@ -53,3 +53,5 @@ rayleigh_basis0_shift_ge_cstar_quarter_tcritical.md: 7ac9a37e-c377-42a3-aa1b-fae
 rho_oneK_tcritical_le_cstar_quarter.md: b644c90d-9934-4c95-a857-221e38620134  2026-01-24 16:12
 2026-01-27 qspec_phi_spec_in_w_k manual test :: 5b60eab5-423c-4bf1-b468-a41d523c1bf0
 2026-01-27 qspec_phi_spec_in_w_k manual test (v2, ShiftedWindows import) :: 2137c67b-9e37-413a-a4ae-f98cbbda5d2a
+2026-02-09 prime_heat_bounds_arch_data_target.lean :: f296eef2-5f52-4560-a5b0-5a452718c495
+2026-02-09 prime_heat_bounds_arch_data_target.lean (context API) :: a64e2be8-7def-4d5c-8566-b4e2da9641c7

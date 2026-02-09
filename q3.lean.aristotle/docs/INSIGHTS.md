@@ -1147,3 +1147,30 @@ Plan (5–10 lines, concrete pointers):
   - For those runs only, start a one-off scope with higher limits
     (e.g. `MemoryHigh=36G`, `MemoryMax=48G`) and keep the default slice
     limits unchanged for regular work.
+
+## Synthesis (2026-02-09, in progress) — PrimeCert final 3 blockers (`prime_heat_bounds_arch_data`, `prime_b_grid_bucket_bounds`, `prime_b_grid_arch_bounds_data`)
+
+Target and chain wiring:
+- `prime_heat_bounds_arch_data` in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean` (feeds `prime_heat_bounds_cert`).
+- `prime_b_grid_bucket_bounds` in `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean` (feeds `prime_b_grid_prime_term_le_prime_ub_all`).
+- `prime_b_grid_arch_bounds_data` in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` (final grid arch node).
+
+Embedding search (local index, 4 queries via `scripts/research_oracle.py`):
+- Top hits reconfirm the same blocker map: interval checker files are scaffold-level; theorem bridges are still missing for these 3 nodes.
+- Prior notes indicate the intended closure route is theorem-generating cert/checker modules, not direct axioms.
+
+External web search (mathlib docs/github):
+- No immediate built-in interval tactic path was identified for this specific digamma/arch integral closure under current imports.
+
+Concrete plan:
+1) Keep `prime_heat_bounds_arch_data` as immediate target; build local helper block for reusable inequalities (`BrangeHeatCert_2026_01_28_ArchHelpers.lean`).
+2) Attempt targeted Aristotle iteration on a single theorem file for `prime_heat_bounds_arch_data` (formal mode, no `exact?`/`sorry` integration).
+3) If Aristotle output has holes or import-context failure: do not integrate; iterate only this lemma with explicit context API.
+4) After arch closure, apply same pattern to `prime_b_grid_bucket_bounds` (checker bridge in `BrangeGrid_PrimeSum_2026_01_30_Checker.lean`).
+5) Then close `prime_b_grid_arch_bounds_data` in `BrangeCert_2046.lean` and re-run `Q3/CheckAxioms.lean` + `scripts/check_axioms.sh`.
+
+Execution update (2026-02-09):
+- Added helper module: `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_ArchHelpers.lean` (sup->sum and integral-scaling helpers).
+- Added targeted Aristotle input: `aristotle_input/prime_heat_bounds_arch_data_target.lean`.
+- First Aristotle run failed on context import (`unknown module prefix Q3`); retried using Python API with explicit context files.
+- Active project id for context-aware run: `a64e2be8-7def-4d5c-8566-b4e2da9641c7`.

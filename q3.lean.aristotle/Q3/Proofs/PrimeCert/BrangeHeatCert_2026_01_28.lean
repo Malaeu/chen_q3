@@ -4,6 +4,7 @@ import Q3.Proofs.A3_Floor_Bounds
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_ArchHelpers
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Partial
 
 /-!
