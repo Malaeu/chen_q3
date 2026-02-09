@@ -112,6 +112,18 @@ Range clarification (2026-02-06):
   нужно закрыть конечное множество prime powers в диапазоне
   `(10000, 1_000_000]` (не весь `ℕ`).
 
+Update (2026-02-09) — GT10000 fallback removed
+- `BrangeHeatCert_2026_01_28_Checker.lean` switched from
+  `PrimePowAutoGT10000Fallback` to `PrimePowAutoGT10000`.
+- `prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all` is now a theorem
+  from the GT10000 shard chain (no fallback axiom in the mainline path).
+- Name-collision fix applied in bucket0 auto files:
+  `pi_lb* -> pi_lb_bucket0*` to avoid clashes with GT10000 base module.
+- Verification: `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`,
+  `lake env lean Q3/CheckAxioms.lean`, `./scripts/check_axioms.sh`.
+- Remaining PrimeCert blockers in the chain:
+  `prime_heat_bounds_arch_data`, `prime_b_grid_bucket_bounds`, `prime_b_grid_arch_bounds_data`.
+
 ## Decision (2026-02-02) — PrimeCert closure: formal numeric certificates now, analytic path later
 
 Goal: close main chain fast **without axioms** and with kernel‑checked evidence.

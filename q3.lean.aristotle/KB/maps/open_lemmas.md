@@ -19,13 +19,13 @@ Lean is primary for status; LaTeX is primary for meaning.
 | `prime_b_grid_arch_bounds_data` | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeCert_2046.lean` | `sections/IND_AB/*` | **axiom** | Arch-term lower bound at grid nodes |
 | `prime_b_grid_bucket_bounds` | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean` | `sections/IND_AB/*` | **axiom** | Bucketed prime-term upper bounds on grid |
 | `prime_heat_bounds_arch_data` | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean` | `sections/IND_AB/*` | **axiom** | Arch integral bound (split from heat bundle) |
-| `prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all` | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback.lean` | `sections/IND_AB/*` | **axiom** | Temporary fallback while GT10000 auto shards are fixed |
 
 ## Recently closed (keep track)
 | Item | Lean file | Status | Notes |
 | --- | --- | --- | --- |
 | `prime_margin_Lipschitz_on_Brange` | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeCert_2046.lean` | **theorem** | Replaced axiom in Feb 2026 |
 | `prime_heat_bucket_data` | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean` | **theorem** | Derived via `prime_heat_bucket_data_of_pp_bounds` |
+| `prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all` | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000.lean` | **theorem** | GT10000 shard chain integrated; fallback axiom removed |
 
 ## Off‑chain / legacy (not in τ=0 main chain)
 | Item | Lean file | Notes |
@@ -58,7 +58,6 @@ Format: `<file>` — `axioms=<n>` `holes=<m>` (names/line hints).
 - Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean — axioms=1 holes=0 (axioms: prime_b_grid_bucket_bounds)
 - Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean — axioms=1 holes=0 (axioms: prime_heat_bounds_arch_data)
 - Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Pilot.lean — axioms=3 holes=0 (axioms: prime_heat_bucket_pp_sum_ub_le_bucket_pilot_0, prime_heat_bucket_pp_sum_ub_le_bucket_pilot_99, prime_heat_weight_term_le_pp_ub_of_prime_pow_pilot)
-- Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback.lean — axioms=1 holes=0 (axioms: prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all)
 - Q3/Proofs/QSpec.lean — axioms=2 holes=0 (axioms: Q_criticalSpec_nonneg, Q_testSpec_negative)
 - Q3/Proofs/Q_nonneg_base_atoms.lean — axioms=1 holes=0 (axioms: Q_nonneg_on_BaseAtomCone_axiom)
 - Q3/Proofs/Q_nonneg_t_critical.lean — axioms=1 holes=0 (axioms: prime_term_le_at_t_critical_axiom)

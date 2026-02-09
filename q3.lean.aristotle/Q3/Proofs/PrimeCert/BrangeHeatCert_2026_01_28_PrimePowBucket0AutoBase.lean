@@ -14,14 +14,14 @@ noncomputable section
 
 namespace Q3.Proofs.PrimeCert
 
-def pi_lb : ℝ := (314159265358979323846 : ℝ) / (100000000000000000000 : ℝ)
-lemma pi_lb_le_pi : pi_lb ≤ Real.pi := by
-  have h' : (pi_lb : ℝ) = (3.14159265358979323846 : ℝ) := by
-    norm_num [pi_lb]
-  have h : (pi_lb : ℝ) < Real.pi := by
+def pi_lb_bucket0 : ℝ := (314159265358979323846 : ℝ) / (100000000000000000000 : ℝ)
+lemma pi_lb_bucket0_le_pi : pi_lb_bucket0 ≤ Real.pi := by
+  have h' : (pi_lb_bucket0 : ℝ) = (3.14159265358979323846 : ℝ) := by
+    norm_num [pi_lb_bucket0]
+  have h : (pi_lb_bucket0 : ℝ) < Real.pi := by
     simpa [h'] using Real.pi_gt_d20
   exact le_of_lt h
-lemma pi_lb_pos : 0 < pi_lb := by
-  norm_num [pi_lb]
+lemma pi_lb_bucket0_pos : 0 < pi_lb_bucket0 := by
+  norm_num [pi_lb_bucket0]
 
 end Q3.Proofs.PrimeCert

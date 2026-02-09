@@ -23,7 +23,6 @@ LaTeX is primary for meaning; Lean is primary for status.
 | `Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data` | cert | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeCert_2046.lean` | open | Formalize arch-term lower bound at grid nodes |
 | `Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds` | cert | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean` | open | Formalize bucketed prime-term upper bounds on grid |
 | `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data` | cert | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean` | open | Formalize arch integral bound |
-| `Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all` | cert | `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback.lean` | open | Discharge GT10000 auto shards and remove fallback axiom |
 
 ## Off-chain / legacy (not in tau=0 main chain)
 | Axiom | Lean file | Notes |

@@ -8,7 +8,7 @@
 
 ---
 
-Last Updated: 2026-02-06
+Last Updated: 2026-02-09
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -53,20 +53,20 @@ Single entry point: read this file at session start.
   - `lake env lean Q3/Main.lean` проходит;
   - `#print axioms Q3.Main.RH_of_Weil_and_Q3` показывает только `Q3.Weil_criterion_tau0` + стандартные аксиомы ядра.
   - `./scripts/check_axioms.sh` проходит.
-- `Steps 2-3`: **BLOCKED** (нет закрытия `n > 10000` и остаётся `native_decide` в checker-пути).
+- `Step 2`: **DONE** (GT10000 theorem-chain integrated, fallback removed from checker path).
+- `Step 3`: **PARTIAL/BLOCKED** (`native_decide` всё ещё используется в checker bucket-path).
 - `Steps 4-7`: **OPEN/BLOCKED** (нужны формальные данные для arch-integral и grid bucket closure).
 
-Текущие узкие project-аксиомы (по `#print axioms`, 2026-02-06):
-- `Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_prime_pow_axiom`
+Текущие узкие project-аксиомы (по `#print axioms`, 2026-02-09):
 - `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
 - `Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds`
 - `Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data`
 
-Почему Step 2 сейчас блокирован:
-- автоген `scripts/prime_brange_heat_pp_bucket0_auto.py` строит theorem-путь только
-  для bucket0 (`n ≤ 10000`);
-- для `n > 10000` в `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`
-  остается fallback на аксиому.
+Step 2 closure note (2026-02-09):
+- `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean` переключен на
+  `BrangeHeatCert_2026_01_28_PrimePowAutoGT10000`;
+- `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback.lean`
+  оставлен как compatibility shim без `axiom`.
 
 ## Current State (short)
 

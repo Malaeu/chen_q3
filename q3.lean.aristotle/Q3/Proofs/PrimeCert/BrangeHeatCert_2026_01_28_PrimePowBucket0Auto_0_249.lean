@@ -97,12 +97,12 @@ def bound_num_2 : ℚ := 4329458199019696677994771110425440213483847680000000000
 def bound_den_2 : ℚ := 430275099030634332074518033227811138026183300627503117283569597694361687674520817188315592273336473329510389517237563824920270593819948296810855095749567847571054420801571493915427052750273615350166902578653239928307729842668288428754612218565923400832977712920373580333880126368295589700744993032845812000659413026795431804187101607120518118184010511436161348470305258856259351569019270340141139930959752422702842471095824684078916036703689933776745325002345026763085290880550391108347817558988213
 
 lemma hub_2 :
-    prime_heat_pp_envelope_ub u_2 r_2 exp_ub_2 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_2 r_2 exp_ub_2 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 2 := by
   have hval :
-      prime_heat_pp_envelope_ub u_2 r_2 exp_ub_2 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_2 r_2 exp_ub_2 pi_lb_bucket0 1 =
         ((bound_num_2 : ℝ) / (bound_den_2 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_2, r_2, exp_ub_2, pi_lb, sum_num_2, sum_den_2, bound_num_2, bound_den_2]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_2, r_2, exp_ub_2, pi_lb_bucket0, sum_num_2, sum_den_2, bound_num_2, bound_den_2]
   have hrat : (bound_num_2 / bound_den_2) ≤ (100620700774307542113561453335 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_2 : ℝ) / (bound_den_2 : ℝ)) ≤ ((100620700774307542113561453335 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -118,11 +118,11 @@ lemma prime_heat_weight_term_le_pp_ub_2 :
   have hp : (2 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (2 ^ 1 : ℕ) = 2 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 1) (l := l_2) (u := u_2) (r := r_2) (exp_ub := exp_ub_2) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 1) (l := l_2) (u := u_2) (r := r_2) (exp_ub := exp_ub_2) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_2]) (hu0 := by norm_num [u_2])
     (hlog_l := by simpa using l_2_le_log) (hlog_u := by simpa using log_le_u_2)
     (hr0 := r_2_pos) (hsqrt := by simpa using r_2_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_2) (hub := by simpa using hub_2))
   simpa [hpk] using h
 
@@ -211,12 +211,12 @@ def bound_num_3 : ℚ := 9887325886976671562581822719120205692600320000000000000
 def bound_den_3 : ℚ := 534227370395781016475739586579026327748107425433417858325270809124112169444161629866845343894545930150158818447037869491620962298516655890832323882024051453855428579130841196532908952853507629305386216621522135587109139746775527895662221388473283060051327522545263605773314485287735294334394833117942905070896558305870937045869319232551595219187451701597895849327510466907516012340743275671933907619670720716388750698349991036064360448588624455365159938460558004445207312383700797125309866122634837
 
 lemma hub_3 :
-    prime_heat_pp_envelope_ub u_3 r_3 exp_ub_3 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_3 r_3 exp_ub_3 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 3 := by
   have hval :
-      prime_heat_pp_envelope_ub u_3 r_3 exp_ub_3 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_3 r_3 exp_ub_3 pi_lb_bucket0 1 =
         ((bound_num_3 : ℝ) / (bound_den_3 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_3, r_3, exp_ub_3, pi_lb, sum_num_3, sum_den_3, bound_num_3, bound_den_3]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_3, r_3, exp_ub_3, pi_lb_bucket0, sum_num_3, sum_den_3, bound_num_3, bound_den_3]
   have hrat : (bound_num_3 / bound_den_3) ≤ (185077112010410077536093353956 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_3 : ℝ) / (bound_den_3 : ℝ)) ≤ ((185077112010410077536093353956 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -232,11 +232,11 @@ lemma prime_heat_weight_term_le_pp_ub_3 :
   have hp : (3 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (3 ^ 1 : ℕ) = 3 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 3) (k := 1) (l := l_3) (u := u_3) (r := r_3) (exp_ub := exp_ub_3) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 3) (k := 1) (l := l_3) (u := u_3) (r := r_3) (exp_ub := exp_ub_3) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_3]) (hu0 := by norm_num [u_3])
     (hlog_l := by simpa using l_3_le_log) (hlog_u := by simpa using log_le_u_3)
     (hr0 := r_3_pos) (hsqrt := by simpa using r_3_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_3) (hub := by simpa using hub_3))
   simpa [hpk] using h
 
@@ -325,12 +325,12 @@ def bound_num_4 : ℚ := 3463566559215757342395816888340352170787078144000000000
 def bound_den_4 : ℚ := 302146344361858470182391628794882953711393845133385191450671654994677751909939043767153968919696385378695842272976489914505385030261149297839899439041113816478398724834767640761480496345898160424040502360021469762785956064388274351304682224318662013286180428565195830246337163132883741762878028141357600697274347310767461704147224462966985028909814303968507249187342469829541183540439459280031498467854842976020734049416922704955747723206331235858379146083353769220972071484962927
 
 lemma hub_4 :
-    prime_heat_pp_envelope_ub u_4 r_4 exp_ub_4 pi_lb 2 ≤
+    prime_heat_pp_envelope_ub u_4 r_4 exp_ub_4 pi_lb_bucket0 2 ≤
       Full.prime_heat_pp_term_ub 4 := by
   have hval :
-      prime_heat_pp_envelope_ub u_4 r_4 exp_ub_4 pi_lb 2 =
+      prime_heat_pp_envelope_ub u_4 r_4 exp_ub_4 pi_lb_bucket0 2 =
         ((bound_num_4 : ℝ) / (bound_den_4 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_4, r_4, exp_ub_4, pi_lb, sum_num_4, sum_den_4, bound_num_4, bound_den_4]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_4, r_4, exp_ub_4, pi_lb_bucket0, sum_num_4, sum_den_4, bound_num_4, bound_den_4]
   have hrat : (bound_num_4 / bound_den_4) ≤ (114632085538910230559928038475 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_4 : ℝ) / (bound_den_4 : ℝ)) ≤ ((114632085538910230559928038475 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -346,11 +346,11 @@ lemma prime_heat_weight_term_le_pp_ub_4 :
   have hp : (2 : ℕ).Prime := by native_decide
   have hk : 0 < 2 := by decide
   have hpk : (2 ^ 2 : ℕ) = 4 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 2) (l := l_4) (u := u_4) (r := r_4) (exp_ub := exp_ub_4) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 2) (l := l_4) (u := u_4) (r := r_4) (exp_ub := exp_ub_4) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_4]) (hu0 := by norm_num [u_4])
     (hlog_l := by simpa using l_4_le_log) (hlog_u := by simpa using log_le_u_4)
     (hr0 := r_4_pos) (hsqrt := by simpa using r_4_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_4) (hub := by simpa using hub_4))
   simpa [hpk] using h
 
@@ -439,12 +439,12 @@ def bound_num_5 : ℚ := 2597035941881225140379733052324137494976714843750000000
 def bound_den_5 : ℚ := 103873963611260494721483990018087131222461939275692771197512588861955238967241943615162393204418244711939889587590307615994998124369163469035010214356378633429322876608418979533954348071815335136093483884359713264019585334738977915982181052991940999652971487022835418084452432408783600956685836276272591172826506155563880707767173565256504164917885168747705120088062246726400225131349003498639700718317100116124595215293766323827070104832078625142113187707658261942263745177328630670050970381243622967221555169950147364738753434571841568557429195173
 
 lemma hub_5 :
-    prime_heat_pp_envelope_ub u_5 r_5 exp_ub_5 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_5 r_5 exp_ub_5 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 5 := by
   have hval :
-      prime_heat_pp_envelope_ub u_5 r_5 exp_ub_5 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_5 r_5 exp_ub_5 pi_lb_bucket0 1 =
         ((bound_num_5 : ℝ) / (bound_den_5 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_5, r_5, exp_ub_5, pi_lb, sum_num_5, sum_den_5, bound_num_5, bound_den_5]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_5, r_5, exp_ub_5, pi_lb_bucket0, sum_num_5, sum_den_5, bound_num_5, bound_den_5]
   have hrat : (bound_num_5 / bound_den_5) ≤ (250017988299783666672482240756 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_5 : ℝ) / (bound_den_5 : ℝ)) ≤ ((250017988299783666672482240756 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -460,11 +460,11 @@ lemma prime_heat_weight_term_le_pp_ub_5 :
   have hp : (5 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (5 ^ 1 : ℕ) = 5 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 5) (k := 1) (l := l_5) (u := u_5) (r := r_5) (exp_ub := exp_ub_5) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 5) (k := 1) (l := l_5) (u := u_5) (r := r_5) (exp_ub := exp_ub_5) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_5]) (hu0 := by norm_num [u_5])
     (hlog_l := by simpa using l_5_le_log) (hlog_u := by simpa using log_le_u_5)
     (hr0 := r_5_pos) (hsqrt := by simpa using r_5_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_5) (hub := by simpa using hub_5))
   simpa [hpk] using h
 
@@ -553,12 +553,12 @@ def bound_num_7 : ℚ := 2225704911212499849797230304317458319331514149502976000
 def bound_den_7 : ℚ := 86217145182041777763927848855656331482522271717190830965583545942213368473606571266610675942428995756130611836551701772422715498392448191290936876314913587099836196691921225678312832440286361781832678863083573051927663327693122937413147437764846465026143389674195919921004883921572922923762783506770005089706858554770002658505782888256129011109195019412144827358406908550803019578731981813886538612288193475410291401599616039075363285694449464497122456784955154883579401113151955257668684046449256438145162283600473742999652630314775922705297438340517048090409686206423196020920385909036444871386697283423511335438901871747333276246674029
 
 lemma hub_7 :
-    prime_heat_pp_envelope_ub u_7 r_7 exp_ub_7 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_7 r_7 exp_ub_7 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 7 := by
   have hval :
-      prime_heat_pp_envelope_ub u_7 r_7 exp_ub_7 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_7 r_7 exp_ub_7 pi_lb_bucket0 1 =
         ((bound_num_7 : ℝ) / (bound_den_7 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_7, r_7, exp_ub_7, pi_lb, sum_num_7, sum_den_7, bound_num_7, bound_den_7]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_7, r_7, exp_ub_7, pi_lb_bucket0, sum_num_7, sum_den_7, bound_num_7, bound_den_7]
   have hrat : (bound_num_7 / bound_den_7) ≤ (258151079638867075871644374275 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_7 : ℝ) / (bound_den_7 : ℝ)) ≤ ((258151079638867075871644374275 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -574,11 +574,11 @@ lemma prime_heat_weight_term_le_pp_ub_7 :
   have hp : (7 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (7 ^ 1 : ℕ) = 7 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 7) (k := 1) (l := l_7) (u := u_7) (r := r_7) (exp_ub := exp_ub_7) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 7) (k := 1) (l := l_7) (u := u_7) (r := r_7) (exp_ub := exp_ub_7) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_7]) (hu0 := by norm_num [u_7])
     (hlog_l := by simpa using l_7_le_log) (hlog_u := by simpa using log_le_u_7)
     (hr0 := r_7_pos) (hsqrt := by simpa using r_7_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_7) (hub := by simpa using hub_7))
   simpa [hpk] using h
 
@@ -667,12 +667,12 @@ def bound_num_8 : ℚ := 3052417649877843850326561814155444582037596613717136693
 def bound_den_8 : ℚ := 35996068590955303379385940204894402195838773506040775485486675684708359878984493285062308798745228573285361237121513534689143330373737069984170457815103032977136876348927747816911054464206020846573817597377788425237024340163906767654001939585045367757088992719945438412337394187550230036292571372610083794534325005972211263919170302366766627733828176594412233440678401456255026610732610549919491151188528882929346211202994852619473287956596839565711676599205426317908869309718006073943980089603585681229276765595453278423050864710248773768616831250553851085514863544556550500879869166583102155088717735702123119611145828725251
 
 lemma hub_8 :
-    prime_heat_pp_envelope_ub u_8 r_8 exp_ub_8 pi_lb 3 ≤
+    prime_heat_pp_envelope_ub u_8 r_8 exp_ub_8 pi_lb_bucket0 3 ≤
       Full.prime_heat_pp_term_ub 8 := by
   have hval :
-      prime_heat_pp_envelope_ub u_8 r_8 exp_ub_8 pi_lb 3 =
+      prime_heat_pp_envelope_ub u_8 r_8 exp_ub_8 pi_lb_bucket0 3 =
         ((bound_num_8 : ℝ) / (bound_den_8 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_8, r_8, exp_ub_8, pi_lb, sum_num_8, sum_den_8, bound_num_8, bound_den_8]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_8, r_8, exp_ub_8, pi_lb_bucket0, sum_num_8, sum_den_8, bound_num_8, bound_den_8]
   have hrat : (bound_num_8 / bound_den_8) ≤ (84798639667133690611677820926 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_8 : ℝ) / (bound_den_8 : ℝ)) ≤ ((84798639667133690611677820926 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -688,11 +688,11 @@ lemma prime_heat_weight_term_le_pp_ub_8 :
   have hp : (2 : ℕ).Prime := by native_decide
   have hk : 0 < 3 := by decide
   have hpk : (2 ^ 3 : ℕ) = 8 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 3) (l := l_8) (u := u_8) (r := r_8) (exp_ub := exp_ub_8) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 3) (l := l_8) (u := u_8) (r := r_8) (exp_ub := exp_ub_8) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_8]) (hu0 := by norm_num [u_8])
     (hlog_l := by simpa using l_8_le_log) (hlog_u := by simpa using log_le_u_8)
     (hr0 := r_8_pos) (hsqrt := by simpa using r_8_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_8) (hub := by simpa using hub_8))
   simpa [hpk] using h
 
@@ -781,12 +781,12 @@ def bound_num_9 : ℚ := 7094322430980663054234709175590428803896365285376000000
 def bound_den_9 : ℚ := 57143378499593438762743225435327211432883854816412534062214970967669882524931846784515869177871389508162914147138048773563004835506740400310442923057088587019300299425399766721733539400298839052071029755859107034583627535015843442789401241500331487900937702240274336268947675833316479782605482163485586321006652997800579658835225003541317654814399971365345792344984985709852611616075059529500392978587261710199203302279019090729197721378701158289490309038600864817398114555584936406304293831554983518411977742916223585565308436397437500328605669330679910669480206016995660162106448385345761111511673278694208635192174602067733890926004418473699772427
 
 lemma hub_9 :
-    prime_heat_pp_envelope_ub u_9 r_9 exp_ub_9 pi_lb 2 ≤
+    prime_heat_pp_envelope_ub u_9 r_9 exp_ub_9 pi_lb_bucket0 2 ≤
       Full.prime_heat_pp_term_ub 9 := by
   have hval :
-      prime_heat_pp_envelope_ub u_9 r_9 exp_ub_9 pi_lb 2 =
+      prime_heat_pp_envelope_ub u_9 r_9 exp_ub_9 pi_lb_bucket0 2 =
         ((bound_num_9 : ℝ) / (bound_den_9 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_9, r_9, exp_ub_9, pi_lb, sum_num_9, sum_den_9, bound_num_9, bound_den_9]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_9, r_9, exp_ub_9, pi_lb_bucket0, sum_num_9, sum_den_9, bound_num_9, bound_den_9]
   have hrat : (bound_num_9 / bound_den_9) ≤ (124149509833954702076042053705 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_9 : ℝ) / (bound_den_9 : ℝ)) ≤ ((124149509833954702076042053705 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -802,11 +802,11 @@ lemma prime_heat_weight_term_le_pp_ub_9 :
   have hp : (3 : ℕ).Prime := by native_decide
   have hk : 0 < 2 := by decide
   have hpk : (3 ^ 2 : ℕ) = 9 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 3) (k := 2) (l := l_9) (u := u_9) (r := r_9) (exp_ub := exp_ub_9) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 3) (k := 2) (l := l_9) (u := u_9) (r := r_9) (exp_ub := exp_ub_9) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_9]) (hu0 := by norm_num [u_9])
     (hlog_l := by simpa using l_9_le_log) (hlog_u := by simpa using log_le_u_9)
     (hr0 := r_9_pos) (hsqrt := by simpa using r_9_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_9) (hub := by simpa using hub_9))
   simpa [hpk] using h
 
@@ -895,12 +895,12 @@ def bound_num_11 : ℚ := 107019147700737749816257039866513004118323550484375000
 def bound_den_11 : ℚ := 4594305492637983004124731798738010462421332288640197820184016240479106203684838458342038495189672131856586110255474713776565358185419327500979382580987166686034937473183131706418565201183199539067835283841988336899515961579963267511088484703200545549755365632489348685750006982096679805972371124970517787323824797229278091678206455134570612044783681147106530472314438908009931501413664789770396253438373162688986436661806864314621922240949954755217920894665043287937211819098757363658866161537584873520042210501595468566831500454689366119116554543918515466978709756518678092497016842495747035502593777224702769556997878153575993944742655336989376089894519472610226843665499791665110537137526777580103900653805150729432125943655333788619598557879
 
 lemma hub_11 :
-    prime_heat_pp_envelope_ub u_11 r_11 exp_ub_11 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_11 r_11 exp_ub_11 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 11 := by
   have hval :
-      prime_heat_pp_envelope_ub u_11 r_11 exp_ub_11 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_11 r_11 exp_ub_11 pi_lb_bucket0 1 =
         ((bound_num_11 : ℝ) / (bound_den_11 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_11, r_11, exp_ub_11, pi_lb, sum_num_11, sum_den_11, bound_num_11, bound_den_11]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_11, r_11, exp_ub_11, pi_lb_bucket0, sum_num_11, sum_den_11, bound_num_11, bound_den_11]
   have hrat : (bound_num_11 / bound_den_11) ≤ (232938684360950193363848370610 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_11 : ℝ) / (bound_den_11 : ℝ)) ≤ ((232938684360950193363848370610 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -916,11 +916,11 @@ lemma prime_heat_weight_term_le_pp_ub_11 :
   have hp : (11 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (11 ^ 1 : ℕ) = 11 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 11) (k := 1) (l := l_11) (u := u_11) (r := r_11) (exp_ub := exp_ub_11) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 11) (k := 1) (l := l_11) (u := u_11) (r := r_11) (exp_ub := exp_ub_11) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_11]) (hu0 := by norm_num [u_11])
     (hlog_l := by simpa using l_11_le_log) (hlog_u := by simpa using log_le_u_11)
     (hr0 := r_11_pos) (hsqrt := by simpa using r_11_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_11) (hub := by simpa using hub_11))
   simpa [hpk] using h
 
@@ -1009,12 +1009,12 @@ def bound_num_13 : ℚ := 361408497558038258737655232615743628312927250867569093
 def bound_den_13 : ℚ := 166933524087169126807783412834774484321471599927342966328576771974031311636882366661388366968616597534796203078914626124806028659632800606368098572022575250613450175437183648844435668413718689360701038906561901970153086788362500999279553157462570402484492861279357330843455874851144661026094474414292125354091562968656432975095223221051778630861715346694356332530569970825502887713344255466964870188426268782778841844234040549466827712737349745218989814483598129371564247189701157489869158562853307876187609406305670984751558454014118087158963622754008268849149676041481725013618398498543167207122448273491150984542867612212919880701004880354959856383764154952016391815660135148805168604027545955807304430526093123007377138328313871
 
 lemma hub_13 :
-    prime_heat_pp_envelope_ub u_13 r_13 exp_ub_13 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_13 r_13 exp_ub_13 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 13 := by
   have hval :
-      prime_heat_pp_envelope_ub u_13 r_13 exp_ub_13 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_13 r_13 exp_ub_13 pi_lb_bucket0 1 =
         ((bound_num_13 : ℝ) / (bound_den_13 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_13, r_13, exp_ub_13, pi_lb, sum_num_13, sum_den_13, bound_num_13, bound_den_13]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_13, r_13, exp_ub_13, pi_lb_bucket0, sum_num_13, sum_den_13, bound_num_13, bound_den_13]
   have hrat : (bound_num_13 / bound_den_13) ≤ (216498453222205428092550505426 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_13 : ℝ) / (bound_den_13 : ℝ)) ≤ ((216498453222205428092550505426 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -1030,11 +1030,11 @@ lemma prime_heat_weight_term_le_pp_ub_13 :
   have hp : (13 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (13 ^ 1 : ℕ) = 13 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 13) (k := 1) (l := l_13) (u := u_13) (r := r_13) (exp_ub := exp_ub_13) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 13) (k := 1) (l := l_13) (u := u_13) (r := r_13) (exp_ub := exp_ub_13) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_13]) (hu0 := by norm_num [u_13])
     (hlog_l := by simpa using l_13_le_log) (hlog_u := by simpa using log_le_u_13)
     (hr0 := r_13_pos) (hsqrt := by simpa using r_13_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_13) (hub := by simpa using hub_13))
   simpa [hpk] using h
 
@@ -1123,12 +1123,12 @@ def bound_num_16 : ℚ := 182497074505491822401035783444184688795969295898437500
 def bound_den_16 : ℚ := 378036975723352990626372027216608621169683419365941648288034889017768936037034822644434451125844944214220772413283273433088079902650202182782012270969218986213392936752849924616084377175228268051381678252333090036951052821539416037038653288685162508421483693926139926264819279516531061868166335134135106440865168955722316616833318815236088913003727927243765889748204602959606905975400198700413446307431957250533592532213357511659462932435380670518649428959983705026682520007130422725875864640536125860438746017643151699572560361871857817638222248871488227316897540426346773486012236586680812427106181459620198298905280123363236375210040475016310542317243430587028350121855319036738277498417193696830043655600210738740478201
 
 lemma hub_16 :
-    prime_heat_pp_envelope_ub u_16 r_16 exp_ub_16 pi_lb 4 ≤
+    prime_heat_pp_envelope_ub u_16 r_16 exp_ub_16 pi_lb_bucket0 4 ≤
       Full.prime_heat_pp_term_ub 16 := by
   have hval :
-      prime_heat_pp_envelope_ub u_16 r_16 exp_ub_16 pi_lb 4 =
+      prime_heat_pp_envelope_ub u_16 r_16 exp_ub_16 pi_lb_bucket0 4 =
         ((bound_num_16 : ℝ) / (bound_den_16 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_16, r_16, exp_ub_16, pi_lb, sum_num_16, sum_den_16, bound_num_16, bound_den_16]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_16, r_16, exp_ub_16, pi_lb_bucket0, sum_num_16, sum_den_16, bound_num_16, bound_den_16]
   have hrat : (bound_num_16 / bound_den_16) ≤ (48274927116929204629069971589 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_16 : ℝ) / (bound_den_16 : ℝ)) ≤ ((48274927116929204629069971589 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -1144,11 +1144,11 @@ lemma prime_heat_weight_term_le_pp_ub_16 :
   have hp : (2 : ℕ).Prime := by native_decide
   have hk : 0 < 4 := by decide
   have hpk : (2 ^ 4 : ℕ) = 16 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 4) (l := l_16) (u := u_16) (r := r_16) (exp_ub := exp_ub_16) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 4) (l := l_16) (u := u_16) (r := r_16) (exp_ub := exp_ub_16) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_16]) (hu0 := by norm_num [u_16])
     (hlog_l := by simpa using l_16_le_log) (hlog_u := by simpa using log_le_u_16)
     (hr0 := r_16_pos) (hsqrt := by simpa using r_16_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_16) (hub := by simpa using hub_16))
   simpa [hpk] using h
 
@@ -1237,12 +1237,12 @@ def bound_num_17 : ℚ := 253098703958249193432455691602572545981509763185204471
 def bound_den_17 : ℚ := 13615209958835366334681980865385927572458345025306325525447087531576982469673707540118799726914181498595508166077678020579455506833867089900891802096718636553551416857544255991728842537946746486281365824309304932908837373051048241987409561127676241557867024971540156315661889632020071309445158208511805368409601960892804959725255578492886564402273355077957687708841092439773556717181404673169459713455848790248342802767233598964987431188068257173978499919766938281528133258542300030215480740820825373238410503347704495445620847351659599909755457019863386054514773973868929458499851114735835449717530799338148387690965654388675466786769659647105900428728991430989240124151062378450237844680954370187797474419617135078036135099
 
 lemma hub_17 :
-    prime_heat_pp_envelope_ub u_17 r_17 exp_ub_17 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_17 r_17 exp_ub_17 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 17 := by
   have hval :
-      prime_heat_pp_envelope_ub u_17 r_17 exp_ub_17 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_17 r_17 exp_ub_17 pi_lb_bucket0 1 =
         ((bound_num_17 : ℝ) / (bound_den_17 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_17, r_17, exp_ub_17, pi_lb, sum_num_17, sum_den_17, bound_num_17, bound_den_17]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_17, r_17, exp_ub_17, pi_lb_bucket0, sum_num_17, sum_den_17, bound_num_17, bound_den_17]
   have hrat : (bound_num_17 / bound_den_17) ≤ (185894088099614690490213320118 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_17 : ℝ) / (bound_den_17 : ℝ)) ≤ ((185894088099614690490213320118 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -1258,11 +1258,11 @@ lemma prime_heat_weight_term_le_pp_ub_17 :
   have hp : (17 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (17 ^ 1 : ℕ) = 17 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 17) (k := 1) (l := l_17) (u := u_17) (r := r_17) (exp_ub := exp_ub_17) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 17) (k := 1) (l := l_17) (u := u_17) (r := r_17) (exp_ub := exp_ub_17) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_17]) (hu0 := by norm_num [u_17])
     (hlog_l := by simpa using l_17_le_log) (hlog_u := by simpa using log_le_u_17)
     (hr0 := r_17_pos) (hsqrt := by simpa using r_17_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_17) (hub := by simpa using hub_17))
   simpa [hpk] using h
 
@@ -1351,12 +1351,12 @@ def bound_num_19 : ℚ := 218993763375669417223204594546630589540922182210937500
 def bound_den_19 : ℚ := 126979933542703792155259409048359546638285381188979435555067078393014868553113026475257142784877107706314090794516028686325849221437287502883076825209370813856173564514417506896903509605703565248335991561756576543696858153228524855788898591693912151571554988876115397773424450001456289218190038044763400443477336782873235389149207987399536092535747039222645827012680124582320091712819470611438574273952609333418619928876209247523780465333037850071892539197063224533229396520459889463640882971552092814620907319512192616526856333559754644025471441538634432015803767802907190205629368547758351279298320171661929947538320213016391077125831558555523918433660656053744893942882983095107056321866704875339148996494863121
 
 lemma hub_19 :
-    prime_heat_pp_envelope_ub u_19 r_19 exp_ub_19 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_19 r_19 exp_ub_19 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 19 := by
   have hval :
-      prime_heat_pp_envelope_ub u_19 r_19 exp_ub_19 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_19 r_19 exp_ub_19 pi_lb_bucket0 1 =
         ((bound_num_19 : ℝ) / (bound_den_19 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_19, r_19, exp_ub_19, pi_lb, sum_num_19, sum_den_19, bound_num_19, bound_den_19]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_19, r_19, exp_ub_19, pi_lb_bucket0, sum_num_19, sum_den_19, bound_num_19, bound_den_19]
   have hrat : (bound_num_19 / bound_den_19) ≤ (172463283973937120396868749595 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_19 : ℝ) / (bound_den_19 : ℝ)) ≤ ((172463283973937120396868749595 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -1372,11 +1372,11 @@ lemma prime_heat_weight_term_le_pp_ub_19 :
   have hp : (19 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (19 ^ 1 : ℕ) = 19 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 19) (k := 1) (l := l_19) (u := u_19) (r := r_19) (exp_ub := exp_ub_19) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 19) (k := 1) (l := l_19) (u := u_19) (r := r_19) (exp_ub := exp_ub_19) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_19]) (hu0 := by norm_num [u_19])
     (hlog_l := by simpa using l_19_le_log) (hlog_u := by simpa using log_le_u_19)
     (hr0 := r_19_pos) (hsqrt := by simpa using r_19_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_19) (hub := by simpa using hub_19))
   simpa [hpk] using h
 
@@ -1465,12 +1465,12 @@ def bound_num_23 : ℚ := 372004267086292662498026911606597557229251822633386836
 def bound_den_23 : ℚ := 2491168864511586010324755374567038549830712905907310574468947484822710298073322705717985006504440642291228785133326493017791940921174075494818909588304537333985259356603801785331192530037548290072030777771253446134750284183707927357212621332105369086764935870545120286210497216293047790459298345720634548848227932593464360899303893455758546531090635223233291621425067661982249181110420433851843224604682747619186621111360857489621341293845092918697840339641912713177887689888185407800963092908158571649658638177642775034072160317998968007992225996959601046330476867119392392222883708047177954518604881434907789045535201390229598641651034059351597348610252921663279971034953664160095941043073887401519824608591952938154147478946693724532003228380265310620929170758314617986373303
 
 lemma hub_23 :
-    prime_heat_pp_envelope_ub u_23 r_23 exp_ub_23 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_23 r_23 exp_ub_23 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 23 := by
   have hval :
-      prime_heat_pp_envelope_ub u_23 r_23 exp_ub_23 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_23 r_23 exp_ub_23 pi_lb_bucket0 1 =
         ((bound_num_23 : ℝ) / (bound_den_23 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_23, r_23, exp_ub_23, pi_lb, sum_num_23, sum_den_23, bound_num_23, bound_den_23]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_23, r_23, exp_ub_23, pi_lb_bucket0, sum_num_23, sum_den_23, bound_num_23, bound_den_23]
   have hrat : (bound_num_23 / bound_den_23) ≤ (149329205412667975760854233159 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_23 : ℝ) / (bound_den_23 : ℝ)) ≤ ((149329205412667975760854233159 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -1486,11 +1486,11 @@ lemma prime_heat_weight_term_le_pp_ub_23 :
   have hp : (23 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (23 ^ 1 : ℕ) = 23 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 23) (k := 1) (l := l_23) (u := u_23) (r := r_23) (exp_ub := exp_ub_23) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 23) (k := 1) (l := l_23) (u := u_23) (r := r_23) (exp_ub := exp_ub_23) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_23]) (hu0 := by norm_num [u_23])
     (hlog_l := by simpa using l_23_le_log) (hlog_u := by simpa using log_le_u_23)
     (hr0 := r_23_pos) (hsqrt := by simpa using r_23_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_23) (hub := by simpa using hub_23))
   simpa [hpk] using h
 
@@ -1579,12 +1579,12 @@ def bound_num_25 : ℚ := 512684194655749892323693401069481290913418245537513939
 def bound_den_25 : ℚ := 7354626971734286531830202610203402161962320112930538733036385892811461902122819258623251364507545282844274455959781969315763069357522624787773888270017975467180008290859129852791117279779906851516107265855733042880862690435634804663397930896566788570021180730185404812131640445026436829636166299839100791680159123365899573751793021500015581927033829926155628020484647937191497840843327787455157089683780391267396453840414027128346260953993725290503434814514118151273540389179921441289622620914920899006412345595134417297552238613937502138765559786936014574470962843675936268435676049508832155980477556433442983462300795939658703253602780199756547727007591269057452041108470151826695195282026266786121885855286257438055925363242058013792908291248324707561653
 
 lemma hub_25 :
-    prime_heat_pp_envelope_ub u_25 r_25 exp_ub_25 pi_lb 2 ≤
+    prime_heat_pp_envelope_ub u_25 r_25 exp_ub_25 pi_lb_bucket0 2 ≤
       Full.prime_heat_pp_term_ub 25 := by
   have hval :
-      prime_heat_pp_envelope_ub u_25 r_25 exp_ub_25 pi_lb 2 =
+      prime_heat_pp_envelope_ub u_25 r_25 exp_ub_25 pi_lb_bucket0 2 =
         ((bound_num_25 : ℝ) / (bound_den_25 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_25, r_25, exp_ub_25, pi_lb, sum_num_25, sum_den_25, bound_num_25, bound_den_25]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_25, r_25, exp_ub_25, pi_lb_bucket0, sum_num_25, sum_den_25, bound_num_25, bound_den_25]
   have hrat : (bound_num_25 / bound_den_25) ≤ (69709068403622273524256058864 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_25 : ℝ) / (bound_den_25 : ℝ)) ≤ ((69709068403622273524256058864 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -1600,11 +1600,11 @@ lemma prime_heat_weight_term_le_pp_ub_25 :
   have hp : (5 : ℕ).Prime := by native_decide
   have hk : 0 < 2 := by decide
   have hpk : (5 ^ 2 : ℕ) = 25 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 5) (k := 2) (l := l_25) (u := u_25) (r := r_25) (exp_ub := exp_ub_25) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 5) (k := 2) (l := l_25) (u := u_25) (r := r_25) (exp_ub := exp_ub_25) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_25]) (hu0 := by norm_num [u_25])
     (hlog_l := by simpa using l_25_le_log) (hlog_u := by simpa using log_le_u_25)
     (hr0 := r_25_pos) (hsqrt := by simpa using r_25_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_25) (hub := by simpa using hub_25))
   simpa [hpk] using h
 
@@ -1693,12 +1693,12 @@ def bound_num_27 : ℚ := 960342367499172105385696172301196584553283556332031250
 def bound_den_27 : ℚ := 2208405923683757851602955143287134005598264684570087434436698574879868435754847277440586259027870261602752176662756058055884009699551824107768073991248596391239977330324821407390761287517616076950932841058802949016591861536585244093828609011787052900824424141471282597085335634649636096775344100052213021459172327020304491901015614566173741532579486558895142148733838588259968785424524862450028780238842555558980681452011532318403471084344962156256444854892206301311509610333912533118232706382079773025870137727527872624940216462632199849323791746708305773000752177816967099913835189063220084491892155154230067251887969869561488467021162614820164357618855672410212876099438488493020121534915242146519529309386252528126426662230307920773937419773481149127426401174909564832495634862980956373856360560469264511457469279368330796287
 
 lemma hub_27 :
-    prime_heat_pp_envelope_ub u_27 r_27 exp_ub_27 pi_lb 3 ≤
+    prime_heat_pp_envelope_ub u_27 r_27 exp_ub_27 pi_lb_bucket0 3 ≤
       Full.prime_heat_pp_term_ub 27 := by
   have hval :
-      prime_heat_pp_envelope_ub u_27 r_27 exp_ub_27 pi_lb 3 =
+      prime_heat_pp_envelope_ub u_27 r_27 exp_ub_27 pi_lb_bucket0 3 =
         ((bound_num_27 : ℝ) / (bound_den_27 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_27, r_27, exp_ub_27, pi_lb, sum_num_27, sum_den_27, bound_num_27, bound_den_27]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_27, r_27, exp_ub_27, pi_lb_bucket0, sum_num_27, sum_den_27, bound_num_27, bound_den_27]
   have hrat : (bound_num_27 / bound_den_27) ≤ (43485772121877944162982032595 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_27 : ℝ) / (bound_den_27 : ℝ)) ≤ ((43485772121877944162982032595 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -1714,11 +1714,11 @@ lemma prime_heat_weight_term_le_pp_ub_27 :
   have hp : (3 : ℕ).Prime := by native_decide
   have hk : 0 < 3 := by decide
   have hpk : (3 ^ 3 : ℕ) = 27 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 3) (k := 3) (l := l_27) (u := u_27) (r := r_27) (exp_ub := exp_ub_27) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 3) (k := 3) (l := l_27) (u := u_27) (r := r_27) (exp_ub := exp_ub_27) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_27]) (hu0 := by norm_num [u_27])
     (hlog_l := by simpa using l_27_le_log) (hlog_u := by simpa using log_le_u_27)
     (hr0 := r_27_pos) (hsqrt := by simpa using r_27_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_27) (hub := by simpa using hub_27))
   simpa [hpk] using h
 
@@ -1807,12 +1807,12 @@ def bound_num_29 : ℚ := 152599751239421163742147673771290315231360012500000000
 def bound_den_29 : ℚ := 1247352363479456208073710582517712036022327936272098690188970154760564848447830251500395574001136175608717348219732374655081957197726373320674809384294903081373605673246042028167129484693713653766654630343492751454513750616975385057959304316322414442017110948159519071910298295410583917082564906217670879292249182539137419199352712575239883327699044985881459395540300206635510929096697902826817014347756608676638077004855535086058655096847130032211598741563919759584773436836528124888623638784689276349731651190181125657529377516515871602520782996431434002753707752176528364630663756053023172620788606027555050236630177465100118363735244994766473255818203551687996159999761157693046808471314068632657129113310541740869655558158598339640417384720427304525032699123703143547709666110258271536440450528004514214366709986185784395429586856689039365748537846360010072430854876639621507520842578665874811694681
 
 lemma hub_29 :
-    prime_heat_pp_envelope_ub u_29 r_29 exp_ub_29 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_29 r_29 exp_ub_29 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 29 := by
   have hval :
-      prime_heat_pp_envelope_ub u_29 r_29 exp_ub_29 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_29 r_29 exp_ub_29 pi_lb_bucket0 1 =
         ((bound_num_29 : ℝ) / (bound_den_29 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_29, r_29, exp_ub_29, pi_lb, sum_num_29, sum_den_29, bound_num_29, bound_den_29]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_29, r_29, exp_ub_29, pi_lb_bucket0, sum_num_29, sum_den_29, bound_num_29, bound_den_29]
   have hrat : (bound_num_29 / bound_den_29) ≤ (122338928202892577301597043516 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_29 : ℝ) / (bound_den_29 : ℝ)) ≤ ((122338928202892577301597043516 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -1828,11 +1828,11 @@ lemma prime_heat_weight_term_le_pp_ub_29 :
   have hp : (29 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (29 ^ 1 : ℕ) = 29 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 29) (k := 1) (l := l_29) (u := u_29) (r := r_29) (exp_ub := exp_ub_29) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 29) (k := 1) (l := l_29) (u := u_29) (r := r_29) (exp_ub := exp_ub_29) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_29]) (hu0 := by norm_num [u_29])
     (hlog_l := by simpa using l_29_le_log) (hlog_u := by simpa using log_le_u_29)
     (hr0 := r_29_pos) (hsqrt := by simpa using r_29_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_29) (hub := by simpa using hub_29))
   simpa [hpk] using h
 
@@ -1921,12 +1921,12 @@ def bound_num_31 : ℚ := 659883476466816963470049733291632718644731758393549559
 def bound_den_31 : ℚ := 573981869235536268272155419578175973582706864963320604865492144124026323586949129611664429449920667353644185226494573774457669171788362472921682896113973142263791336661002572404566486615566771061057436851843561797723900415925238017250576575460517252341868184714499223557100783125359806004417800756911660711112541803299996901258631529379579735822848905621429064554086540916813504252630933577285596915411029746271663847471748756310495222698672463670569872373458266592432787871054784147190763837384501759514663057383079161222206363810127591844017049097511506687183475762610982762219406508450237112611847120046358850821630807922950818671003444159214798173894251031643276463957087755963730919438879995189677365058521116254202637909885477326860713273512227643283467945264830006098475626305215654523016945001126861892491350912432159894929595928866081263208774343653498740264796549
 
 lemma hub_31 :
-    prime_heat_pp_envelope_ub u_31 r_31 exp_ub_31 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_31 r_31 exp_ub_31 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 31 := by
   have hval :
-      prime_heat_pp_envelope_ub u_31 r_31 exp_ub_31 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_31 r_31 exp_ub_31 pi_lb_bucket0 1 =
         ((bound_num_31 : ℝ) / (bound_den_31 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_31, r_31, exp_ub_31, pi_lb, sum_num_31, sum_den_31, bound_num_31, bound_den_31]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_31, r_31, exp_ub_31, pi_lb_bucket0, sum_num_31, sum_den_31, bound_num_31, bound_den_31]
   have hrat : (bound_num_31 / bound_den_31) ≤ (114965909523534470793038053671 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_31 : ℝ) / (bound_den_31 : ℝ)) ≤ ((114965909523534470793038053671 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -1942,11 +1942,11 @@ lemma prime_heat_weight_term_le_pp_ub_31 :
   have hp : (31 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (31 ^ 1 : ℕ) = 31 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 31) (k := 1) (l := l_31) (u := u_31) (r := r_31) (exp_ub := exp_ub_31) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 31) (k := 1) (l := l_31) (u := u_31) (r := r_31) (exp_ub := exp_ub_31) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_31]) (hu0 := by norm_num [u_31])
     (hlog_l := by simpa using l_31_le_log) (hlog_u := by simpa using log_le_u_31)
     (hr0 := r_31_pos) (hsqrt := by simpa using r_31_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_31) (hub := by simpa using hub_31))
   simpa [hpk] using h
 
@@ -2035,12 +2035,12 @@ def bound_num_32 : ℚ := 105634029039717543571198814169930781446947330070418313
 def bound_den_32 : ℚ := 473560671835811054335452756198007306028132108440679176700079505644531047547834439877331101704174219695299357780610240034913323393599908114006107961088116355522565594508630379969663530983997659962635562884620082697292070117674596455681609764661005116202837973211443176412942562476403233114189614274367256229265356234323042614962472922804832776910873893483453114923350079807879598423857981408762002063422912925407545191442981538590400754136256693601127115703273162523207227749886455978973705763708308776930913958060634786062150105606183540872740983387958954611802972118193389564475797397236951226201963590609744497215077469902918533242309542858729753113796033291623757825595394354885317141182106629334412136207933397924237119172518465091327487261756519617617448662725733006559336745902869951245466924907860469593964157580277298852308760140334316644332146644319947617188584473612891317393166565953017
 
 lemma hub_32 :
-    prime_heat_pp_envelope_ub u_32 r_32 exp_ub_32 pi_lb 5 ≤
+    prime_heat_pp_envelope_ub u_32 r_32 exp_ub_32 pi_lb_bucket0 5 ≤
       Full.prime_heat_pp_term_ub 32 := by
   have hval :
-      prime_heat_pp_envelope_ub u_32 r_32 exp_ub_32 pi_lb 5 =
+      prime_heat_pp_envelope_ub u_32 r_32 exp_ub_32 pi_lb_bucket0 5 =
         ((bound_num_32 : ℝ) / (bound_den_32 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_32, r_32, exp_ub_32, pi_lb, sum_num_32, sum_den_32, bound_num_32, bound_den_32]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_32, r_32, exp_ub_32, pi_lb_bucket0, sum_num_32, sum_den_32, bound_num_32, bound_den_32]
   have hrat : (bound_num_32 / bound_den_32) ≤ (22306334820882754710336115523 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_32 : ℝ) / (bound_den_32 : ℝ)) ≤ ((22306334820882754710336115523 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -2056,11 +2056,11 @@ lemma prime_heat_weight_term_le_pp_ub_32 :
   have hp : (2 : ℕ).Prime := by native_decide
   have hk : 0 < 5 := by decide
   have hpk : (2 ^ 5 : ℕ) = 32 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 5) (l := l_32) (u := u_32) (r := r_32) (exp_ub := exp_ub_32) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 5) (l := l_32) (u := u_32) (r := r_32) (exp_ub := exp_ub_32) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_32]) (hu0 := by norm_num [u_32])
     (hlog_l := by simpa using l_32_le_log) (hlog_u := by simpa using log_le_u_32)
     (hr0 := r_32_pos) (hsqrt := by simpa using r_32_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_32) (hub := by simpa using hub_32))
   simpa [hpk] using h
 
@@ -2149,12 +2149,12 @@ def bound_num_37 : ℚ := 534901736708277150837807519943641261400491084021524557
 def bound_den_37 : ℚ := 554225706576102692629609111654670708242734551796937735138810374053915277562264077496085037247270260448353527266781659567724205530495316303485924201215204584703721854341410549829166484523600196903939277371510325645535651118315472633841039751870526370803955850524868144461528206636376292210703232177819905772128934496640951552183866759577867544150455813656173446155321369316180313313037427783730354778183908113772776359641052411564024295683124524407495275579163411327379360668615749148603859138887466954158516200793668905586264552047640066419926587493689182993545309710061628420926553883378154057541962881020011814494043513793473740714309936875668692497346500939323494493878750372932698618871840163737962440564025313753185258776281339609167727245477797689306960855328192943342319500888581243877737150435063951866133557447604713596439150923704223577386243148211646493560386415271873461920158550322519
 
 lemma hub_37 :
-    prime_heat_pp_envelope_ub u_37 r_37 exp_ub_37 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_37 r_37 exp_ub_37 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 37 := by
   have hval :
-      prime_heat_pp_envelope_ub u_37 r_37 exp_ub_37 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_37 r_37 exp_ub_37 pi_lb_bucket0 1 =
         ((bound_num_37 : ℝ) / (bound_den_37 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_37, r_37, exp_ub_37, pi_lb, sum_num_37, sum_den_37, bound_num_37, bound_den_37]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_37, r_37, exp_ub_37, pi_lb_bucket0, sum_num_37, sum_den_37, bound_num_37, bound_den_37]
   have hrat : (bound_num_37 / bound_den_37) ≤ (96513339305893286468318592597 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_37 : ℝ) / (bound_den_37 : ℝ)) ≤ ((96513339305893286468318592597 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -2170,11 +2170,11 @@ lemma prime_heat_weight_term_le_pp_ub_37 :
   have hp : (37 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (37 ^ 1 : ℕ) = 37 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 37) (k := 1) (l := l_37) (u := u_37) (r := r_37) (exp_ub := exp_ub_37) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 37) (k := 1) (l := l_37) (u := u_37) (r := r_37) (exp_ub := exp_ub_37) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_37]) (hu0 := by norm_num [u_37])
     (hlog_l := by simpa using l_37_le_log) (hlog_u := by simpa using log_le_u_37)
     (hr0 := r_37_pos) (hsqrt := by simpa using r_37_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_37) (hub := by simpa using hub_37))
   simpa [hpk] using h
 
@@ -2263,12 +2263,12 @@ def bound_num_41 : ℚ := 355602811182005655638088435555724221662308072422363281
 def bound_den_41 : ℚ := 41048910602417660196146854824173865053299624449128338346499836313481434990300838482093812377152815043332692391494638196218365232202600211898178444518643776110970509367973905818758987163777294358814697067095524174010742488962376382619433217928145078792783356716985921189989850706405989565927347954668898265703254441204539825823763454560175447614691120819863763827862131996805417706923919631481172306583511753358723432004504903257622895702879395908398577885843841342770774084824786785810669528918056734168605228862592838368576177475323043706272752961227791546710446753704069603976743303079719309418755913506780475711667045257055572664552279961553375728884664314213092771725698330237634286178358576364834514046942470286195954300155224139992728156696240100579803926370279641514933339372419434352855114477122925936581105940429190088941070826892135530032235711708481388772758645861221024055299386233605295781121225589
 
 lemma hub_41 :
-    prime_heat_pp_envelope_ub u_41 r_41 exp_ub_41 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_41 r_41 exp_ub_41 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 41 := by
   have hval :
-      prime_heat_pp_envelope_ub u_41 r_41 exp_ub_41 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_41 r_41 exp_ub_41 pi_lb_bucket0 1 =
         ((bound_num_41 : ℝ) / (bound_den_41 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_41, r_41, exp_ub_41, pi_lb, sum_num_41, sum_den_41, bound_num_41, bound_den_41]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_41, r_41, exp_ub_41, pi_lb_bucket0, sum_num_41, sum_den_41, bound_num_41, bound_den_41]
   have hrat : (bound_num_41 / bound_den_41) ≤ (86629049580931469232147890125 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_41 : ℝ) / (bound_den_41 : ℝ)) ≤ ((86629049580931469232147890125 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -2284,11 +2284,11 @@ lemma prime_heat_weight_term_le_pp_ub_41 :
   have hp : (41 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (41 ^ 1 : ℕ) = 41 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 41) (k := 1) (l := l_41) (u := u_41) (r := r_41) (exp_ub := exp_ub_41) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 41) (k := 1) (l := l_41) (u := u_41) (r := r_41) (exp_ub := exp_ub_41) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_41]) (hu0 := by norm_num [u_41])
     (hlog_l := by simpa using l_41_le_log) (hlog_u := by simpa using log_le_u_41)
     (hr0 := r_41_pos) (hsqrt := by simpa using r_41_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_41) (hub := by simpa using hub_41))
   simpa [hpk] using h
 
@@ -2377,12 +2377,12 @@ def bound_num_43 : ℚ := 148092159473917753108654903892569707443830031857931727
 def bound_den_43 : ℚ := 180025301337919520497237533516767015658769104043041166340813368847514823245295475252718102986371760858492946021943174079340455374556502771609716996185556291197215512555872959105917569056453126143482432539572140267110001836704507643074295665837856160399695580060187568391043911681346487705618579560273527626676685334909241546028743008126678491427032660822655818340818703910111726997230910634691320238657211379241946875665010783709218841083506788073702811091869992627279674914128798911402033512917732833670284262014372504987112908786897356822169891229479808552892393206171457727277832526611977150307532709794284312797803000078493817437127329000195617230243570827833098602909195165699341332235810228939507620640337808514384338803059435569961850392535678272866397877194477473756142123745192648669518843394058040160283739547095687685446695304732465223986030886587431481013736154086764090042164133002985297902848760514116100109183
 
 lemma hub_43 :
-    prime_heat_pp_envelope_ub u_43 r_43 exp_ub_43 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_43 r_43 exp_ub_43 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 43 := by
   have hval :
-      prime_heat_pp_envelope_ub u_43 r_43 exp_ub_43 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_43 r_43 exp_ub_43 pi_lb_bucket0 1 =
         ((bound_num_43 : ℝ) / (bound_den_43 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_43, r_43, exp_ub_43, pi_lb, sum_num_43, sum_den_43, bound_num_43, bound_den_43]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_43, r_43, exp_ub_43, pi_lb_bucket0, sum_num_43, sum_den_43, bound_num_43, bound_den_43]
   have hrat : (bound_num_43 / bound_den_43) ≤ (82261858957224598398738635297 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_43 : ℝ) / (bound_den_43 : ℝ)) ≤ ((82261858957224598398738635297 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -2398,11 +2398,11 @@ lemma prime_heat_weight_term_le_pp_ub_43 :
   have hp : (43 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (43 ^ 1 : ℕ) = 43 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 43) (k := 1) (l := l_43) (u := u_43) (r := r_43) (exp_ub := exp_ub_43) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 43) (k := 1) (l := l_43) (u := u_43) (r := r_43) (exp_ub := exp_ub_43) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_43]) (hu0 := by norm_num [u_43])
     (hlog_l := by simpa using l_43_le_log) (hlog_u := by simpa using log_le_u_43)
     (hr0 := r_43_pos) (hsqrt := by simpa using r_43_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_43) (hub := by simpa using hub_43))
   simpa [hpk] using h
 
@@ -2491,12 +2491,12 @@ def bound_num_47 : ℚ := 116048090412314358922342054305768797023884097098038867
 def bound_den_47 : ℚ := 1557957389109825979392424960371034422681181691579530795809811688107488390166439928999546574750425743457784820597935424267448311788594821029444145161902917117230311187291494167697660195206240065009524470092008525826803785435888639762555340071512540286229891686945976262318355665910696423551760075650563504929548927582047241505359524437029138715695146260996434846537469846789101134355514541016966784357336287357332347846477200467943515473736715900925852737392591253072651893621874545701840042880594543813543916278817647672419757086812341035919924205517240238560954489976077375267492234470166313973704640093068642964986616034811363416716888563691770374660158062584728162488437676560890097908385899557171057038947814663891959016159566148308381868638529664472768207145146090645507379727320970713901444433786733055976321629370542185868501129316647808662684556793703253251560205054507076669576309919029133878095246044608711715941802590588506232495240229153227581693832061415516761921232110314461269723031
 
 lemma hub_47 :
-    prime_heat_pp_envelope_ub u_47 r_47 exp_ub_47 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_47 r_47 exp_ub_47 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 47 := by
   have hval :
-      prime_heat_pp_envelope_ub u_47 r_47 exp_ub_47 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_47 r_47 exp_ub_47 pi_lb_bucket0 1 =
         ((bound_num_47 : ℝ) / (bound_den_47 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_47, r_47, exp_ub_47, pi_lb, sum_num_47, sum_den_47, bound_num_47, bound_den_47]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_47, r_47, exp_ub_47, pi_lb_bucket0, sum_num_47, sum_den_47, bound_num_47, bound_den_47]
   have hrat : (bound_num_47 / bound_den_47) ≤ (74487332723920898769343068580 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_47 : ℝ) / (bound_den_47 : ℝ)) ≤ ((74487332723920898769343068580 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -2512,11 +2512,11 @@ lemma prime_heat_weight_term_le_pp_ub_47 :
   have hp : (47 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (47 ^ 1 : ℕ) = 47 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 47) (k := 1) (l := l_47) (u := u_47) (r := r_47) (exp_ub := exp_ub_47) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 47) (k := 1) (l := l_47) (u := u_47) (r := r_47) (exp_ub := exp_ub_47) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_47]) (hu0 := by norm_num [u_47])
     (hlog_l := by simpa using l_47_le_log) (hlog_u := by simpa using log_le_u_47)
     (hr0 := r_47_pos) (hsqrt := by simpa using r_47_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_47) (hub := by simpa using hub_47))
   simpa [hpk] using h
 
@@ -2605,12 +2605,12 @@ def bound_num_49 : ℚ := 595992181602301625059180095859977015779170729273700174
 def bound_den_49 : ℚ := 167843228657080788195916234374495745198095868291931944413382310217445492345618924735699849698200929011271021152769587267324312921716260179006713525007035539648712599014952585940642209146905158500190390117678810494132811685639456637739570876890153756625673219671733088845131048760578574792344315025491265135842859298333890208830127208497992244978346965459039724057386324286198620006117280613860847276504526064442543911634192569657860405829497813917354525897110424880216165187798648886846320187349400352409624613583189515064174923497655114607676656653702358322119696662421669169276324042767858924159615019855735805707217640746398980379834322047424315454369286247013033341840439167013336255308723267893631366825957805033613791210244262767569910486226925125181788835221743785911785645739751320384556973878005916919525077652285973936403135092374565280965380986605706455778213086905795803860387037347175031975557305266239055035566925774866239096178874217401478146798023884317923631127675388645427
 
 lemma hub_49 :
-    prime_heat_pp_envelope_ub u_49 r_49 exp_ub_49 pi_lb 2 ≤
+    prime_heat_pp_envelope_ub u_49 r_49 exp_ub_49 pi_lb_bucket0 2 ≤
       Full.prime_heat_pp_term_ub 49 := by
   have hval :
-      prime_heat_pp_envelope_ub u_49 r_49 exp_ub_49 pi_lb 2 =
+      prime_heat_pp_envelope_ub u_49 r_49 exp_ub_49 pi_lb_bucket0 2 =
         ((bound_num_49 : ℝ) / (bound_den_49 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_49, r_49, exp_ub_49, pi_lb, sum_num_49, sum_den_49, bound_num_49, bound_den_49]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_49, r_49, exp_ub_49, pi_lb_bucket0, sum_num_49, sum_den_49, bound_num_49, bound_den_49]
   have hrat : (bound_num_49 / bound_den_49) ≤ (35508860641615180853136735096 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_49 : ℝ) / (bound_den_49 : ℝ)) ≤ ((35508860641615180853136735096 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -2626,11 +2626,11 @@ lemma prime_heat_weight_term_le_pp_ub_49 :
   have hp : (7 : ℕ).Prime := by native_decide
   have hk : 0 < 2 := by decide
   have hpk : (7 ^ 2 : ℕ) = 49 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 7) (k := 2) (l := l_49) (u := u_49) (r := r_49) (exp_ub := exp_ub_49) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 7) (k := 2) (l := l_49) (u := u_49) (r := r_49) (exp_ub := exp_ub_49) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_49]) (hu0 := by norm_num [u_49])
     (hlog_l := by simpa using l_49_le_log) (hlog_u := by simpa using log_le_u_49)
     (hr0 := r_49_pos) (hsqrt := by simpa using r_49_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_49) (hub := by simpa using hub_49))
   simpa [hpk] using h
 
@@ -2719,12 +2719,12 @@ def bound_num_53 : ℚ := 315610440256378217635807066229566696743110248286132812
 def bound_den_53 : ℚ := 4871649912740744373269278073983808158963787642304822252491152269049419014880023986072655233497645132790106183484903065737188332638027566607330380686608185593647953588439320374512246414678747066871327655911417642692184145772454355374809069885337359131513361487405433161177601528843520227945846920811776048230969598200834411098723109299426811737902913467211682895685922678360793371007889519470014710313339505237316787192046568261047032482768311782097120287587307802390560093202475974408446533555875088292249483027014929639379105711177732127610802967267649343322137031634153278246564627585573808575104302298896581447856771970232053163739066613996456607683814446608569087992255831039859612193584944328182844434790517657224354063020247960645098461126561816720007689151936295971638283522832124322331294240250810493226140800107338457109575991261685099626809795384693687620414924874998563904704249476888632476206616296065432128629773039250233500584317594567750357570715080484870547273783417841755680537
 
 lemma hub_53 :
-    prime_heat_pp_envelope_ub u_53 r_53 exp_ub_53 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_53 r_53 exp_ub_53 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 53 := by
   have hval :
-      prime_heat_pp_envelope_ub u_53 r_53 exp_ub_53 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_53 r_53 exp_ub_53 pi_lb_bucket0 1 =
         ((bound_num_53 : ℝ) / (bound_den_53 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_53, r_53, exp_ub_53, pi_lb, sum_num_53, sum_den_53, bound_num_53, bound_den_53]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_53, r_53, exp_ub_53, pi_lb_bucket0, sum_num_53, sum_den_53, bound_num_53, bound_den_53]
   have hrat : (bound_num_53 / bound_den_53) ≤ (64785123296928273650685525809 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_53 : ℝ) / (bound_den_53 : ℝ)) ≤ ((64785123296928273650685525809 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -2740,11 +2740,11 @@ lemma prime_heat_weight_term_le_pp_ub_53 :
   have hp : (53 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (53 ^ 1 : ℕ) = 53 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 53) (k := 1) (l := l_53) (u := u_53) (r := r_53) (exp_ub := exp_ub_53) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 53) (k := 1) (l := l_53) (u := u_53) (r := r_53) (exp_ub := exp_ub_53) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_53]) (hu0 := by norm_num [u_53])
     (hlog_l := by simpa using l_53_le_log) (hlog_u := by simpa using log_le_u_53)
     (hr0 := r_53_pos) (hsqrt := by simpa using r_53_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_53) (hub := by simpa using hub_53))
   simpa [hpk] using h
 
@@ -2833,12 +2833,12 @@ def bound_num_59 : ℚ := 673472780818534642554515586676691220726083716757103709
 def bound_den_59 : ℚ := 1183606437273843520463297687102710581474534690077789498817236947597859672526322101930973778574382552246288657467381407316449614818620961638788835226678759037158129233141565011147832025564924815246112760334931885294501223068844392356293015987689134807869374020204513026803616445564662505107567433689002676468832554236309076999622841934226971598960444583713016763429232428219380097983821248805264387352795782637814711535015184540117454864235879631704395769411226251756072721575585397770786220740273583892183975498247115136083787015062273584588488406328005561972705988598011734321946634390125292608524252264697154101855511594594187258985298826590067685895474102648228573493648006486638650389857262891181995806063407879990522774500356354198497922152264501294819030246347234582010949379226441459188152320072612944562503501790477155841479482388051742599024096024252399162479491995187360249411128754069136574947232963438916553892896027169224847204358230008814439380952401602969036272364626725556025061379583397246287
 
 lemma hub_59 :
-    prime_heat_pp_envelope_ub u_59 r_59 exp_ub_59 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_59 r_59 exp_ub_59 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 59 := by
   have hval :
-      prime_heat_pp_envelope_ub u_59 r_59 exp_ub_59 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_59 r_59 exp_ub_59 pi_lb_bucket0 1 =
         ((bound_num_59 : ℝ) / (bound_den_59 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_59, r_59, exp_ub_59, pi_lb, sum_num_59, sum_den_59, bound_num_59, bound_den_59]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_59, r_59, exp_ub_59, pi_lb_bucket0, sum_num_59, sum_den_59, bound_num_59, bound_den_59]
   have hrat : (bound_num_59 / bound_den_59) ≤ (56900060662877220696298508074 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_59 : ℝ) / (bound_den_59 : ℝ)) ≤ ((56900060662877220696298508074 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -2854,11 +2854,11 @@ lemma prime_heat_weight_term_le_pp_ub_59 :
   have hp : (59 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (59 ^ 1 : ℕ) = 59 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 59) (k := 1) (l := l_59) (u := u_59) (r := r_59) (exp_ub := exp_ub_59) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 59) (k := 1) (l := l_59) (u := u_59) (r := r_59) (exp_ub := exp_ub_59) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_59]) (hu0 := by norm_num [u_59])
     (hlog_l := by simpa using l_59_le_log) (hlog_u := by simpa using log_le_u_59)
     (hr0 := r_59_pos) (hsqrt := by simpa using r_59_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_59) (hub := by simpa using hub_59))
   simpa [hpk] using h
 
@@ -2947,12 +2947,12 @@ def bound_num_61 : ℚ := 670232345670222636643673454634392040667545823132394545
 def bound_den_61 : ℚ := 122761372251245602725405181606065063674933472570534463430089441968409547947896705580529307870541600026059392576820181352317767033293999450255335246846774683127871050150946393943032521338516757130875365311109948238448272049839446599984174364045620676196530496510768202919913328785301312292484875916984007342909752907347472508841350703694435860996002416876833548271476191548376106541724630175181923029966026100834671594106683439227683313234151125902736164255506836375428420983998920976702949956180495704742495035009098006581947973454382432681229706102652252373910354974735266614394737468113936841385545226244698611870932572022614622375779796072534172460692279729060980871634285563840135114330121619596991237874089108285480932113508869220281497876070670155600787220517384389578209782756950602551349302050281773795548203318752823659079118342589462352859135469619113858501401740932660733376131135985065189648094303191
 
 lemma hub_61 :
-    prime_heat_pp_envelope_ub u_61 r_61 exp_ub_61 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_61 r_61 exp_ub_61 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 61 := by
   have hval :
-      prime_heat_pp_envelope_ub u_61 r_61 exp_ub_61 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_61 r_61 exp_ub_61 pi_lb_bucket0 1 =
         ((bound_num_61 : ℝ) / (bound_den_61 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_61, r_61, exp_ub_61, pi_lb, sum_num_61, sum_den_61, bound_num_61, bound_den_61]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_61, r_61, exp_ub_61, pi_lb_bucket0, sum_num_61, sum_den_61, bound_num_61, bound_den_61]
   have hrat : (bound_num_61 / bound_den_61) ≤ (54596354975449047641777866602 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_61 : ℝ) / (bound_den_61 : ℝ)) ≤ ((54596354975449047641777866602 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -2968,11 +2968,11 @@ lemma prime_heat_weight_term_le_pp_ub_61 :
   have hp : (61 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (61 ^ 1 : ℕ) = 61 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 61) (k := 1) (l := l_61) (u := u_61) (r := r_61) (exp_ub := exp_ub_61) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 61) (k := 1) (l := l_61) (u := u_61) (r := r_61) (exp_ub := exp_ub_61) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_61]) (hu0 := by norm_num [u_61])
     (hlog_l := by simpa using l_61_le_log) (hlog_u := by simpa using log_le_u_61)
     (hr0 := r_61_pos) (hsqrt := by simpa using r_61_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_61) (hub := by simpa using hub_61))
   simpa [hpk] using h
 
@@ -3061,12 +3061,12 @@ def bound_num_64 : ℚ := 246505923601774962525946905451072949980320508361042731
 def bound_den_64 : ℚ := 28775226318151645952337189306819060588949613612420305366153291888664111824335211555433378674196333655702070989015002847798937956633650648106876435738115108094536745511763761958034902606542391007801961005849826149385203349215904510458933822378698905880486723324766677890579000118307504726800867390760620799518981500564617867416063376125119335688446017449928540944150965819643265429887939970597899689904160848775068953180104906955947806860770360756250606248812406887573182115826939751973517209179678339149169018240128906118626144733443655475406221075038937278509604152690245548429404115485025628370159025250451402717694110065694783740007504982867851981583854731822095959759787084220873089739375246359237601607004448849196525770192848578638526792396568407444512235350599097835314786147436606788400381180486806895705945898216869790514862754239693879288455879084756401772294335409789733100586796888631215579790010897
 
 lemma hub_64 :
-    prime_heat_pp_envelope_ub u_64 r_64 exp_ub_64 pi_lb 6 ≤
+    prime_heat_pp_envelope_ub u_64 r_64 exp_ub_64 pi_lb_bucket0 6 ≤
       Full.prime_heat_pp_term_ub 64 := by
   have hval :
-      prime_heat_pp_envelope_ub u_64 r_64 exp_ub_64 pi_lb 6 =
+      prime_heat_pp_envelope_ub u_64 r_64 exp_ub_64 pi_lb_bucket0 6 =
         ((bound_num_64 : ℝ) / (bound_den_64 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_64, r_64, exp_ub_64, pi_lb, sum_num_64, sum_den_64, bound_num_64, bound_den_64]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_64, r_64, exp_ub_64, pi_lb_bucket0, sum_num_64, sum_den_64, bound_num_64, bound_den_64]
   have hrat : (bound_num_64 / bound_den_64) ≤ (8566602426555982793821009125 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_64 : ℝ) / (bound_den_64 : ℝ)) ≤ ((8566602426555982793821009125 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -3082,11 +3082,11 @@ lemma prime_heat_weight_term_le_pp_ub_64 :
   have hp : (2 : ℕ).Prime := by native_decide
   have hk : 0 < 6 := by decide
   have hpk : (2 ^ 6 : ℕ) = 64 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 6) (l := l_64) (u := u_64) (r := r_64) (exp_ub := exp_ub_64) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 6) (l := l_64) (u := u_64) (r := r_64) (exp_ub := exp_ub_64) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_64]) (hu0 := by norm_num [u_64])
     (hlog_l := by simpa using l_64_le_log) (hlog_u := by simpa using log_le_u_64)
     (hr0 := r_64_pos) (hsqrt := by simpa using r_64_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_64) (hub := by simpa using hub_64))
   simpa [hpk] using h
 
@@ -3175,12 +3175,12 @@ def bound_num_67 : ℚ := 252971045810047813237705487475057808953695560474579264
 def bound_den_67 : ℚ := 521797593615154248349461212629716184298463529137761296090268050062998562885687416513812642258609135077931387917868625664993786857596400840359711941666295258034661946594199180607149793863532333227641428757643276122544643820467738850060509827073281318099287525136335735372618740012870189283684057219105689023088896446450874056011749599958261187292148137411268836540041875344763212012021462659751344915671606555813488305443521969961978097924303326432299022049532440345279355312270611741289375234517369296263610995516117014215813201323851809758414401444348957795907535718806688018610638281545216722801002717892878975831274374352408909198725778509444380030099846784984009925243496573593700848905411249745450557578960308859229637977079229185011648742817177336332368891139358448634910178252962887142810470918248583982375260314773713001089899078226474958930423063242165296569411087094845507162099286636558839717033949668683896014035223018806269729820416451592102796430164609869131732464083378622803796737782603477761
 
 lemma hub_67 :
-    prime_heat_pp_envelope_ub u_67 r_67 exp_ub_67 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_67 r_67 exp_ub_67 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 67 := by
   have hval :
-      prime_heat_pp_envelope_ub u_67 r_67 exp_ub_67 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_67 r_67 exp_ub_67 pi_lb_bucket0 1 =
         ((bound_num_67 : ℝ) / (bound_den_67 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_67, r_67, exp_ub_67, pi_lb, sum_num_67, sum_den_67, bound_num_67, bound_den_67]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_67, r_67, exp_ub_67, pi_lb_bucket0, sum_num_67, sum_den_67, bound_num_67, bound_den_67]
   have hrat : (bound_num_67 / bound_den_67) ≤ (48480684638155718824137352386 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_67 : ℝ) / (bound_den_67 : ℝ)) ≤ ((48480684638155718824137352386 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -3196,11 +3196,11 @@ lemma prime_heat_weight_term_le_pp_ub_67 :
   have hp : (67 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (67 ^ 1 : ℕ) = 67 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 67) (k := 1) (l := l_67) (u := u_67) (r := r_67) (exp_ub := exp_ub_67) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 67) (k := 1) (l := l_67) (u := u_67) (r := r_67) (exp_ub := exp_ub_67) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_67]) (hu0 := by norm_num [u_67])
     (hlog_l := by simpa using l_67_le_log) (hlog_u := by simpa using log_le_u_67)
     (hr0 := r_67_pos) (hsqrt := by simpa using r_67_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_67) (hub := by simpa using hub_67))
   simpa [hpk] using h
 
@@ -3289,12 +3289,12 @@ def bound_num_71 : ℚ := 202147733844065867147652099044954271671414388270903994
 def bound_den_71 : ℚ := 44955283738719179093743606172071024429861159531425101373062788291228741663331782009992898048085467703343679101131582283835269673575824095976859327780666599580319338822043413148033538857650655842349268965776388527003246302880568184916072314660648162166238676869158525835780998681449598955931050768262269767830215946641847411005507873360198378929265459884408690087421152155609351899250530394353942750695122630744171827238751635498188180774158793204840081531365836993993789950279108753446964689114472906636968846928103767148916982936012894928814905312988248540484450198528474793266381481262343627593675994237083105785051132136615449174978154474134695521602254036474374430327580825374106181604668502709070224705090056963538245656957891644579091363766621829272740179237316514152413374384998599388699554958391587771953443477054509554745403624684169670152410705759699677378915989103150693186584714436600623102076362776505977750373842991652103573423451960872349533005260629310693869339523989
 
 lemma hub_71 :
-    prime_heat_pp_envelope_ub u_71 r_71 exp_ub_71 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_71 r_71 exp_ub_71 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 71 := by
   have hval :
-      prime_heat_pp_envelope_ub u_71 r_71 exp_ub_71 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_71 r_71 exp_ub_71 pi_lb_bucket0 1 =
         ((bound_num_71 : ℝ) / (bound_den_71 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_71, r_71, exp_ub_71, pi_lb, sum_num_71, sum_den_71, bound_num_71, bound_den_71]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_71, r_71, exp_ub_71, pi_lb_bucket0, sum_num_71, sum_den_71, bound_num_71, bound_den_71]
   have hrat : (bound_num_71 / bound_den_71) ≤ (44966401506650884034588244731 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_71 : ℝ) / (bound_den_71 : ℝ)) ≤ ((44966401506650884034588244731 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -3310,11 +3310,11 @@ lemma prime_heat_weight_term_le_pp_ub_71 :
   have hp : (71 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (71 ^ 1 : ℕ) = 71 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 71) (k := 1) (l := l_71) (u := u_71) (r := r_71) (exp_ub := exp_ub_71) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 71) (k := 1) (l := l_71) (u := u_71) (r := r_71) (exp_ub := exp_ub_71) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_71]) (hu0 := by norm_num [u_71])
     (hlog_l := by simpa using l_71_le_log) (hlog_u := by simpa using log_le_u_71)
     (hr0 := r_71_pos) (hsqrt := by simpa using r_71_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_71) (hub := by simpa using hub_71))
   simpa [hpk] using h
 
@@ -3403,12 +3403,12 @@ def bound_num_73 : ℚ := 367086451304579204651364687906924691442403728412373061
 def bound_den_73 : ℚ := 8467373754883958630061587280416172945109810739126635052924637950291094334836400639733181120865120890586790775304949423952015350416914272764281031760607942686801734427272096944599914882828759419462455168469453138274822406952101201187648101898247819627321049864391460993921585766014937942742027243789756274951321589346607569227747422627851997462189967786596611902309751594628744858078267691835937829964610765769927231393898637722035595768099140729919004044524857755726448362000558267260174088405735413678147788690965160974767910041745068483583565438660367722856373804789818175978576924032379028153085370517274889168011205008833964113167055120621395815425155167923962064454698575289508579796339517920980580970297319682571660464855414529036060016427957682951627650862817129361605893822059702972004816386492330004258814830299222875353013065383729622649566255050725752426490816973442656288787337064627848935392095681266531410541068903052424837234747670189820817017838215586595226481325214415703172795971719881447501785403855268132685105551116541454517507413079295987843437555579431646232258555664967
 
 lemma hub_73 :
-    prime_heat_pp_envelope_ub u_73 r_73 exp_ub_73 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_73 r_73 exp_ub_73 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 73 := by
   have hval :
-      prime_heat_pp_envelope_ub u_73 r_73 exp_ub_73 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_73 r_73 exp_ub_73 pi_lb_bucket0 1 =
         ((bound_num_73 : ℝ) / (bound_den_73 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_73, r_73, exp_ub_73, pi_lb, sum_num_73, sum_den_73, bound_num_73, bound_den_73]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_73, r_73, exp_ub_73, pi_lb_bucket0, sum_num_73, sum_den_73, bound_num_73, bound_den_73]
   have hrat : (bound_num_73 / bound_den_73) ≤ (43353046875112370706073505744 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_73 : ℝ) / (bound_den_73 : ℝ)) ≤ ((43353046875112370706073505744 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -3424,11 +3424,11 @@ lemma prime_heat_weight_term_le_pp_ub_73 :
   have hp : (73 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (73 ^ 1 : ℕ) = 73 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 73) (k := 1) (l := l_73) (u := u_73) (r := r_73) (exp_ub := exp_ub_73) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 73) (k := 1) (l := l_73) (u := u_73) (r := r_73) (exp_ub := exp_ub_73) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_73]) (hu0 := by norm_num [u_73])
     (hlog_l := by simpa using l_73_le_log) (hlog_u := by simpa using log_le_u_73)
     (hr0 := r_73_pos) (hsqrt := by simpa using r_73_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_73) (hub := by simpa using hub_73))
   simpa [hpk] using h
 
@@ -3517,12 +3517,12 @@ def bound_num_79 : ℚ := 820785555847732760476837434306301986719519269153763491
 def bound_den_79 : ℚ := 210415338509967980642393065528944576581448190265509587965378288311227914228022466086520751592205053867733672756276572614647154223073321798709267490785547770294816420987834993386782395959007138919433387384473065629464405721099442989550985131902968694515928881596296478057683817870781723997356309114606276082080105586727568479939764479483028993471920388890128194998885952893932900982697663756524405838156165902496417561112190053614181641672989695407162818142357422460106195848682131260532072544842976521172904531501344590351646148056941730595885612716398024005277153370406046991048688189159829831587006900845870748374450364995535567215702236720764100386443501572996028076354114224864792477114553299007123091612520485664199117144701841148443882598223070465466883809082918028930769019251466253914060115629684890392484831959743611719740914792319201416263260688814830709220651988344368093799043119211405846471550433546790705695098391256867580622261724311192842803434167147012761616879317984285934817756362824361293208264863904063305157708352169226172618753292244784254650176151096214311254067161
 
 lemma hub_79 :
-    prime_heat_pp_envelope_ub u_79 r_79 exp_ub_79 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_79 r_79 exp_ub_79 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 79 := by
   have hval :
-      prime_heat_pp_envelope_ub u_79 r_79 exp_ub_79 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_79 r_79 exp_ub_79 pi_lb_bucket0 1 =
         ((bound_num_79 : ℝ) / (bound_den_79 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_79, r_79, exp_ub_79, pi_lb, sum_num_79, sum_den_79, bound_num_79, bound_den_79]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_79, r_79, exp_ub_79, pi_lb_bucket0, sum_num_79, sum_den_79, bound_num_79, bound_den_79]
   have hrat : (bound_num_79 / bound_den_79) ≤ (39007876595881028902734755093 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_79 : ℝ) / (bound_den_79 : ℝ)) ≤ ((39007876595881028902734755093 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -3538,11 +3538,11 @@ lemma prime_heat_weight_term_le_pp_ub_79 :
   have hp : (79 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (79 ^ 1 : ℕ) = 79 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 79) (k := 1) (l := l_79) (u := u_79) (r := r_79) (exp_ub := exp_ub_79) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 79) (k := 1) (l := l_79) (u := u_79) (r := r_79) (exp_ub := exp_ub_79) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_79]) (hu0 := by norm_num [u_79])
     (hlog_l := by simpa using l_79_le_log) (hlog_u := by simpa using log_le_u_79)
     (hr0 := r_79_pos) (hsqrt := by simpa using r_79_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_79) (hub := by simpa using hub_79))
   simpa [hpk] using h
 
@@ -3631,12 +3631,12 @@ def bound_num_81 : ℚ := 269962909974767269625499697597547533245358404445490722
 def bound_den_81 : ℚ := 2863905234117141133841564659035541534101299857260767983271578361824246886372959981504570781626233345217665683339659937099411734843726606210292914145667943128239354840188646348485179243405946983158333872327128631807164427511073634960771220150003912396358228830988913942796833277415643665763326554573520112096496114250547328336800991847304459831013645125111087354725416813032410029222918102657548844607554027563001146157080579887659332475092781286567867749097346956674027774310562872388715937927150360019827316140370253433466127502203949470178856936927159042507515002578509950982831743899835609472302160055782158886460237504471887410866879213703268963597208161501759260180042053170263927672930906355445470841191276391044841331498003687206371243090707040432269398318404168981409318985351742599506042254507474848426549047623295828495874015935959613760634478575796984955120952034349085771550952147587272311088368396877280073090682492299920085702405742065350279692487756506547013453972228253351331790683092365635894894733478861979085140586586187590415436255029698207
 
 lemma hub_81 :
-    prime_heat_pp_envelope_ub u_81 r_81 exp_ub_81 pi_lb 4 ≤
+    prime_heat_pp_envelope_ub u_81 r_81 exp_ub_81 pi_lb_bucket0 4 ≤
       Full.prime_heat_pp_term_ub 81 := by
   have hval :
-      prime_heat_pp_envelope_ub u_81 r_81 exp_ub_81 pi_lb 4 =
+      prime_heat_pp_envelope_ub u_81 r_81 exp_ub_81 pi_lb_bucket0 4 =
         ((bound_num_81 : ℝ) / (bound_den_81 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_81, r_81, exp_ub_81, pi_lb, sum_num_81, sum_den_81, bound_num_81, bound_den_81]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_81, r_81, exp_ub_81, pi_lb_bucket0, sum_num_81, sum_den_81, bound_num_81, bound_den_81]
   have hrat : (bound_num_81 / bound_den_81) ≤ (9426391165418223500038763519 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_81 : ℝ) / (bound_den_81 : ℝ)) ≤ ((9426391165418223500038763519 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -3652,11 +3652,11 @@ lemma prime_heat_weight_term_le_pp_ub_81 :
   have hp : (3 : ℕ).Prime := by native_decide
   have hk : 0 < 4 := by decide
   have hpk : (3 ^ 4 : ℕ) = 81 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 3) (k := 4) (l := l_81) (u := u_81) (r := r_81) (exp_ub := exp_ub_81) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 3) (k := 4) (l := l_81) (u := u_81) (r := r_81) (exp_ub := exp_ub_81) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_81]) (hu0 := by norm_num [u_81])
     (hlog_l := by simpa using l_81_le_log) (hlog_u := by simpa using log_le_u_81)
     (hr0 := r_81_pos) (hsqrt := by simpa using r_81_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_81) (hub := by simpa using hub_81))
   simpa [hpk] using h
 
@@ -3745,12 +3745,12 @@ def bound_num_83 : ℚ := 361570294766836348386280041661957460788382369369978867
 def bound_den_83 : ℚ := 9914710095291609787613649888872337553730606395069546204696364367888995392337921209339020527283014128787556037609917778799610810139194169089269079531920940628453592458313403529690273615053333480182504338289635261342172392750768211385950866429129656846056672516036697498451648081267828503545560809872714519829802688064414189124665624500084575056387762381742118654403114952448580434432520995807224884734926583740480828179072874686680586123079189389482377690997487981515331712219079715107626074421137928444712874847785688702055476230507342996786426005272443772765387371364820771905107236891926573015170229031664573645007720842886254718848977852428994427730330428524721937973076188487219502886811796675606919982815877798374885365102623990768569219432363019682537908078128703540505068890441352333540538995488411266807534187227538986583335593186711128551357428693651742909482598290256697113992462466992708957301622774270378428513822172167441276402735332749461468542982325960553816833699749532203147925664466304330969099437023894238015840962259427361727992033434494735977842290345959930276718616476207
 
 lemma hub_83 :
-    prime_heat_pp_envelope_ub u_83 r_83 exp_ub_83 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_83 r_83 exp_ub_83 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 83 := by
   have hval :
-      prime_heat_pp_envelope_ub u_83 r_83 exp_ub_83 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_83 r_83 exp_ub_83 pi_lb_bucket0 1 =
         ((bound_num_83 : ℝ) / (bound_den_83 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_83, r_83, exp_ub_83, pi_lb, sum_num_83, sum_den_83, bound_num_83, bound_den_83]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_83, r_83, exp_ub_83, pi_lb_bucket0, sum_num_83, sum_den_83, bound_num_83, bound_den_83]
   have hrat : (bound_num_83 / bound_den_83) ≤ (36468065257757135977367823899 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_83 : ℝ) / (bound_den_83 : ℝ)) ≤ ((36468065257757135977367823899 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -3766,11 +3766,11 @@ lemma prime_heat_weight_term_le_pp_ub_83 :
   have hp : (83 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (83 ^ 1 : ℕ) = 83 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 83) (k := 1) (l := l_83) (u := u_83) (r := r_83) (exp_ub := exp_ub_83) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 83) (k := 1) (l := l_83) (u := u_83) (r := r_83) (exp_ub := exp_ub_83) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_83]) (hu0 := by norm_num [u_83])
     (hlog_l := by simpa using l_83_le_log) (hlog_u := by simpa using log_le_u_83)
     (hr0 := r_83_pos) (hsqrt := by simpa using r_83_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_83) (hub := by simpa using hub_83))
   simpa [hpk] using h
 
@@ -3859,12 +3859,12 @@ def bound_num_89 : ℚ := 221984108135550596633752220756996473596523140779665989
 def bound_den_89 : ℚ := 670584243374976009119439027455156795223734463764395486539886888496537738801789544434724491171741859546996092559663116568390725634188455782699832766335793441208033210715696729323398191403016273570526767804875207857023672825655164498028364914284061934728847303579154014978552314468400152513305407692811935429887138605537331956005268311008422400353315033715337673452740354106624655966202346867806507297889949655769277962888128777660462942363975256099490554124342284164726908403527832979003660521802637559789877064647249630474295307405874898198800892355927603684497142191476620680629080404404076559035820323304279116601155523535139764619147410608095264876045829518663829393733205752666081271216504717473935262449829188949057888251017754308168619100056333708132301256923579360210017396646703804773540474401692184682664902958782593141312853519903665545964464548370287073761543886688288911346831037998760212337366107146200197959579235978345061701751409352546709675967783104860964332934917687136944327947266882764633470357709282849015515068884964151226932468688332151024598627729775141870162386278106563
 
 lemma hub_89 :
-    prime_heat_pp_envelope_ub u_89 r_89 exp_ub_89 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_89 r_89 exp_ub_89 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 89 := by
   have hval :
-      prime_heat_pp_envelope_ub u_89 r_89 exp_ub_89 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_89 r_89 exp_ub_89 pi_lb_bucket0 1 =
         ((bound_num_89 : ℝ) / (bound_den_89 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_89, r_89, exp_ub_89, pi_lb, sum_num_89, sum_den_89, bound_num_89, bound_den_89]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_89, r_89, exp_ub_89, pi_lb_bucket0, sum_num_89, sum_den_89, bound_num_89, bound_den_89]
   have hrat : (bound_num_89 / bound_den_89) ≤ (33103090376584168308404798609 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_89 : ℝ) / (bound_den_89 : ℝ)) ≤ ((33103090376584168308404798609 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -3880,11 +3880,11 @@ lemma prime_heat_weight_term_le_pp_ub_89 :
   have hp : (89 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (89 ^ 1 : ℕ) = 89 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 89) (k := 1) (l := l_89) (u := u_89) (r := r_89) (exp_ub := exp_ub_89) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 89) (k := 1) (l := l_89) (u := u_89) (r := r_89) (exp_ub := exp_ub_89) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_89]) (hu0 := by norm_num [u_89])
     (hlog_l := by simpa using l_89_le_log) (hlog_u := by simpa using log_le_u_89)
     (hr0 := r_89_pos) (hsqrt := by simpa using r_89_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_89) (hub := by simpa using hub_89))
   simpa [hpk] using h
 
@@ -3973,12 +3973,12 @@ def bound_num_97 : ℚ := 352298430269763435277559473668759470327038462203435363
 def bound_den_97 : ℚ := 1202416964299591206297332351060867443739589489226952632097561271128370356095747734286736164644078397562083809601152028054625824917756485396056155288201015842296660226643009160888697214589092362776779355475545430056335965887583268800457933857080836823376351426228355731244104314052133177197050778276963004476967619525958445928426245657791999116840997397882936215806556969459330645286529504658368891575618989889945083602669867903255840090993261616763463322735347928739154834179578767383994365177455664493328866246858046111081564877736870829872695049955819001159808241816769854037157137169145048682774372883717405986335837981609376692425241537027667963335921172871573709057888961706841811478007854338590890834363867943537311153108830219854385056305625004891680035680726041074594920289407783953330519122194954120226589919737263491264560586606332596080004752024783158136278743510416993927245046574358758336896354892865613902386682200339782965508444670309528360381930269519499274842442541575334726317396535287263777804873114452211833550356729085045867301063068543893363281910194311939292939791244123
 
 lemma hub_97 :
-    prime_heat_pp_envelope_ub u_97 r_97 exp_ub_97 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_97 r_97 exp_ub_97 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 97 := by
   have hval :
-      prime_heat_pp_envelope_ub u_97 r_97 exp_ub_97 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_97 r_97 exp_ub_97 pi_lb_bucket0 1 =
         ((bound_num_97 : ℝ) / (bound_den_97 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_97, r_97, exp_ub_97, pi_lb, sum_num_97, sum_den_97, bound_num_97, bound_den_97]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_97, r_97, exp_ub_97, pi_lb_bucket0, sum_num_97, sum_den_97, bound_num_97, bound_den_97]
   have hrat : (bound_num_97 / bound_den_97) ≤ (29299189942398943392598553715 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_97 : ℝ) / (bound_den_97 : ℝ)) ≤ ((29299189942398943392598553715 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -3994,11 +3994,11 @@ lemma prime_heat_weight_term_le_pp_ub_97 :
   have hp : (97 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (97 ^ 1 : ℕ) = 97 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 97) (k := 1) (l := l_97) (u := u_97) (r := r_97) (exp_ub := exp_ub_97) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 97) (k := 1) (l := l_97) (u := u_97) (r := r_97) (exp_ub := exp_ub_97) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_97]) (hu0 := by norm_num [u_97])
     (hlog_l := by simpa using l_97_le_log) (hlog_u := by simpa using log_le_u_97)
     (hr0 := r_97_pos) (hsqrt := by simpa using r_97_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_97) (hub := by simpa using hub_97))
   simpa [hpk] using h
 
@@ -4087,12 +4087,12 @@ def bound_num_101 : ℚ := 33046705464209458447151884751954513144272503281454772
 def bound_den_101 : ℚ := 119563973763095465273060423548825591549648378881422458690459191546905811173506134707321277541288789657532471975584371425737837475954502014770660271971526107242121380661391284979941028416559182415766366087707928220638085896512407212893860155507799133515481181730842671550405582992763411354894649355616455402923812581978068602632619199070802874423917627052314275748830323613427367872828737896055389280368022336006246888389577291527077054361340097864437683104190835115488010785184674654204382399308939668004405259897071786633717765391111455543829327785182059970181744181914992028963918907940559226656335404545776837127170923472430288332924489218548303396345220116481506918377493283378073744087589743405023851184093323549079153129309120497504154308968701297861815188807416805129080384964512269880129099139818431499213640056095853612403405719794693416889111888708156827737516041362557003817467271783649486315383832510559083565302208497954137508931268847050076305252041562672214079
 
 lemma hub_101 :
-    prime_heat_pp_envelope_ub u_101 r_101 exp_ub_101 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_101 r_101 exp_ub_101 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 101 := by
   have hval :
-      prime_heat_pp_envelope_ub u_101 r_101 exp_ub_101 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_101 r_101 exp_ub_101 pi_lb_bucket0 1 =
         ((bound_num_101 : ℝ) / (bound_den_101 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_101, r_101, exp_ub_101, pi_lb, sum_num_101, sum_den_101, bound_num_101, bound_den_101]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_101, r_101, exp_ub_101, pi_lb_bucket0, sum_num_101, sum_den_101, bound_num_101, bound_den_101]
   have hrat : (bound_num_101 / bound_den_101) ≤ (27639350235789606619052349857 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_101 : ℝ) / (bound_den_101 : ℝ)) ≤ ((27639350235789606619052349857 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -4108,11 +4108,11 @@ lemma prime_heat_weight_term_le_pp_ub_101 :
   have hp : (101 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (101 ^ 1 : ℕ) = 101 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 101) (k := 1) (l := l_101) (u := u_101) (r := r_101) (exp_ub := exp_ub_101) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 101) (k := 1) (l := l_101) (u := u_101) (r := r_101) (exp_ub := exp_ub_101) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_101]) (hu0 := by norm_num [u_101])
     (hlog_l := by simpa using l_101_le_log) (hlog_u := by simpa using log_le_u_101)
     (hr0 := r_101_pos) (hsqrt := by simpa using r_101_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_101) (hub := by simpa using hub_101))
   simpa [hpk] using h
 
@@ -4201,12 +4201,12 @@ def bound_num_103 : ℚ := 43580548923271572492529077958390919432414124333257602
 def bound_den_103 : ℚ := 162239181944524334273734811145107826029193754040334943841127999376818372662230475224364440227217360552229146408401342939332092847903273268480311867689271943581125431593274862794065221127385739677131871820806348006296619726565143998082738320254228964366151155878277249193191236749467293093146560935733555201849172732804790856104538859039915235524353644117658414687693111681043946904983248547755546693998924455573376832860193036172412277992484407230679989267255847666249529703238950819991059758038993748683686686132747431581769809057168184134050884067427307864525962800297811695444454587967171395913749616843538072928962519975390425211664249575486477700345960728346248483983903796385305707440652224048130634090798142836450124555768131844929210448419639573968764518451101462986889923675732042645427865140538008332801446331564069744743425407667501748930239020608756771765085372314685676153142349393309129697935326238393772269030286412087027124087205574900118420829363538832591239480644366273480187125025249864425251771792102337738459487687403396426843604502185748089
 
 lemma hub_103 :
-    prime_heat_pp_envelope_ub u_103 r_103 exp_ub_103 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_103 r_103 exp_ub_103 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 103 := by
   have hval :
-      prime_heat_pp_envelope_ub u_103 r_103 exp_ub_103 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_103 r_103 exp_ub_103 pi_lb_bucket0 1 =
         ((bound_num_103 : ℝ) / (bound_den_103 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_103, r_103, exp_ub_103, pi_lb, sum_num_103, sum_den_103, bound_num_103, bound_den_103]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_103, r_103, exp_ub_103, pi_lb_bucket0, sum_num_103, sum_den_103, bound_num_103, bound_den_103]
   have hrat : (bound_num_103 / bound_den_103) ≤ (26861913627112279923103699276 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_103 : ℝ) / (bound_den_103 : ℝ)) ≤ ((26861913627112279923103699276 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -4222,11 +4222,11 @@ lemma prime_heat_weight_term_le_pp_ub_103 :
   have hp : (103 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (103 ^ 1 : ℕ) = 103 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 103) (k := 1) (l := l_103) (u := u_103) (r := r_103) (exp_ub := exp_ub_103) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 103) (k := 1) (l := l_103) (u := u_103) (r := r_103) (exp_ub := exp_ub_103) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_103]) (hu0 := by norm_num [u_103])
     (hlog_l := by simpa using l_103_le_log) (hlog_u := by simpa using log_le_u_103)
     (hr0 := r_103_pos) (hsqrt := by simpa using r_103_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_103) (hub := by simpa using hub_103))
   simpa [hpk] using h
 
@@ -4315,12 +4315,12 @@ def bound_num_107 : ℚ := 33880680707840489381942927527153109886191900213882388
 def bound_den_107 : ℚ := 133376279118768978840675356290081622011066654076768026601382196434681275989891424609345125263522184373211333437661526270563803268345142738214847361022214483542231878448647876118319255461451830564478751387582146814052885293413279229201009501865332913230326761184341335524525297010180587416636411666538199080940560383517822316908811989515367214675278306836704116433674561828551543632422224981846460011769936769224455711982577553266660235382289969610548881813530768021100260750971766539675580696753344888336082160251613159917986867797448667195647344383435082267401974796664602000596994551482852118563495357952322794309535362351199159349060472802728461814416578951046675011169793384446326376168137490988773150013683652339604368996736296092961600352158880087056945019228988543055509641292825356651613959450106359643173411274328790032204436593158135539510611687729444283215439171384798834535997477107387370821610701097099730921398562072253982930039484996043931407591755910799875806296962608381573973041537282222035269666748979735176660335524791
 
 lemma hub_107 :
-    prime_heat_pp_envelope_ub u_107 r_107 exp_ub_107 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_107 r_107 exp_ub_107 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 107 := by
   have hval :
-      prime_heat_pp_envelope_ub u_107 r_107 exp_ub_107 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_107 r_107 exp_ub_107 pi_lb_bucket0 1 =
         ((bound_num_107 : ℝ) / (bound_den_107 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_107, r_107, exp_ub_107, pi_lb, sum_num_107, sum_den_107, bound_num_107, bound_den_107]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_107, r_107, exp_ub_107, pi_lb_bucket0, sum_num_107, sum_den_107, bound_num_107, bound_den_107]
   have hrat : (bound_num_107 / bound_den_107) ≤ (25402328608725436437376643540 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_107 : ℝ) / (bound_den_107 : ℝ)) ≤ ((25402328608725436437376643540 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -4336,11 +4336,11 @@ lemma prime_heat_weight_term_le_pp_ub_107 :
   have hp : (107 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (107 ^ 1 : ℕ) = 107 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 107) (k := 1) (l := l_107) (u := u_107) (r := r_107) (exp_ub := exp_ub_107) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 107) (k := 1) (l := l_107) (u := u_107) (r := r_107) (exp_ub := exp_ub_107) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_107]) (hu0 := by norm_num [u_107])
     (hlog_l := by simpa using l_107_le_log) (hlog_u := by simpa using log_le_u_107)
     (hr0 := r_107_pos) (hsqrt := by simpa using r_107_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_107) (hub := by simpa using hub_107))
   simpa [hpk] using h
 
@@ -4429,12 +4429,12 @@ def bound_num_109 : ℚ := 29844543767035380403347500269893509551484176625805344
 def bound_den_109 : ℚ := 12074641943025688384628632197086646470815418343243721498407294029166811199176994626117373537102751549256418309916974274809568822396267212821472572300403368528954506889226781898730336439548952394194458997433826784177855417515421773311537123997866859197714541776597868322416430600006078851919507373918551776696870273939916856398191747088980990788800997561445101522674696234324008745200036847996590706933682809958649513208480417265895647635455764082080634216410307808145677267396787573505238693767275136261031094610812744878511948923329494970613698714943344145172017880269532460662366465491679659222060389623429773967621272984801585239310538824991035370359978065416514876633316972063087861686101688608078334751710440339098518815392861486147501285769730151053161303866014917542185203048680166220113382907821384337969903633783770274229345950387663700159723021234142489505901736391022240701750020357078079500701545261548949079204689472684353621982492192342158031506487070811579057137029640236341870633263162227988614960198411110993137034409269550518072463317987179189484035388559700956854637397308307
 
 lemma hub_109 :
-    prime_heat_pp_envelope_ub u_109 r_109 exp_ub_109 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_109 r_109 exp_ub_109 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 109 := by
   have hval :
-      prime_heat_pp_envelope_ub u_109 r_109 exp_ub_109 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_109 r_109 exp_ub_109 pi_lb_bucket0 1 =
         ((bound_num_109 : ℝ) / (bound_den_109 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_109, r_109, exp_ub_109, pi_lb, sum_num_109, sum_den_109, bound_num_109, bound_den_109]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_109, r_109, exp_ub_109, pi_lb_bucket0, sum_num_109, sum_den_109, bound_num_109, bound_den_109]
   have hrat : (bound_num_109 / bound_den_109) ≤ (24716711193472368918166992558 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_109 : ℝ) / (bound_den_109 : ℝ)) ≤ ((24716711193472368918166992558 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -4450,11 +4450,11 @@ lemma prime_heat_weight_term_le_pp_ub_109 :
   have hp : (109 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (109 ^ 1 : ℕ) = 109 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 109) (k := 1) (l := l_109) (u := u_109) (r := r_109) (exp_ub := exp_ub_109) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 109) (k := 1) (l := l_109) (u := u_109) (r := r_109) (exp_ub := exp_ub_109) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_109]) (hu0 := by norm_num [u_109])
     (hlog_l := by simpa using l_109_le_log) (hlog_u := by simpa using log_le_u_109)
     (hr0 := r_109_pos) (hsqrt := by simpa using r_109_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_109) (hub := by simpa using hub_109))
   simpa [hpk] using h
 
@@ -4543,12 +4543,12 @@ def bound_num_113 : ℚ := 85012019507660506287006959059055563249991545240136718
 def bound_den_113 : ℚ := 3628955709157602506435204041481804339767647218912080782595270108731341853844474105461121044698590306683532370385510914086157435640107026930191842977618686388902197105418989885492913492055964679337642800052332527426699255548875173321459501665124202312595527303877851968769689384167766476520183705026588225369087718517121806387521947795492779908042009042620530654398445728114739519625962017636280837615275587010670892640283567461345563569769347555341031390685099283988527055138140828696146096563405195003407707960004465546861581835399170058542018927018397148729751253602310723451247658583550348638922283994220090015749120402524503505636636955222174621014392804135643841159663565620328604038723444323364381255567402522928066161873575656258802386986204049811582424545308489904050659803169399904801144840541739002895126890046913738383314891460659368755333180494589158627698440505273906975195813296961221798927636531621406777270358667552465976423307829068466239864963085345752082003446476271233869762988296325955637935058000138592595693844358081455568838259980185421483716684849454091
 
 lemma hub_113 :
-    prime_heat_pp_envelope_ub u_113 r_113 exp_ub_113 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_113 r_113 exp_ub_113 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 113 := by
   have hval :
-      prime_heat_pp_envelope_ub u_113 r_113 exp_ub_113 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_113 r_113 exp_ub_113 pi_lb_bucket0 1 =
         ((bound_num_113 : ℝ) / (bound_den_113 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_113, r_113, exp_ub_113, pi_lb, sum_num_113, sum_den_113, bound_num_113, bound_den_113]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_113, r_113, exp_ub_113, pi_lb_bucket0, sum_num_113, sum_den_113, bound_num_113, bound_den_113]
   have hrat : (bound_num_113 / bound_den_113) ≤ (23426028400714365984569553803 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_113 : ℝ) / (bound_den_113 : ℝ)) ≤ ((23426028400714365984569553803 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -4564,11 +4564,11 @@ lemma prime_heat_weight_term_le_pp_ub_113 :
   have hp : (113 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (113 ^ 1 : ℕ) = 113 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 113) (k := 1) (l := l_113) (u := u_113) (r := r_113) (exp_ub := exp_ub_113) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 113) (k := 1) (l := l_113) (u := u_113) (r := r_113) (exp_ub := exp_ub_113) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_113]) (hu0 := by norm_num [u_113])
     (hlog_l := by simpa using l_113_le_log) (hlog_u := by simpa using log_le_u_113)
     (hr0 := r_113_pos) (hsqrt := by simpa using r_113_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_113) (hub := by simpa using hub_113))
   simpa [hpk] using h
 
@@ -4657,12 +4657,12 @@ def bound_num_121 : ℚ := 14765377971040626384637511589754753097747987155814223
 def bound_den_121 : ℚ := 13976134323931022226599400379755588612718892510698514951519545678926879515998429086200568637343600618898813508224990962148898804965568209056222080239042445800518515934541181400463609282234661459228453813840925141484884097363353618869485265940368519312339625688792064453234337630043042856932455672122334858328112539205252220895512879672534754154368990857546587090084881670269317740578271087799619115409610962200978870548414099106115749268596034503815115158823694552497335402582546199686613514199988791537210268306038886112107660021495692865386720362760649399184981519425163892290415665684585636781542730563218432267108177035407990632560014422437635225986831075643720295832132985537804250729941599814332361540687770997222864220307899106153184656105118305460861316757472110223718247497018842930215141485900870112913823684424710082923731743058801686911912819521394367634331726062935982225983073686630982480994088527147900976703305315868704940029445911265491654069767148993389891489098469917490283899482660645639033459479418101500170453390474331451482086245064717485053432733845251462129087219268124278909471868755260196891222525203
 
 lemma hub_121 :
-    prime_heat_pp_envelope_ub u_121 r_121 exp_ub_121 pi_lb 2 ≤
+    prime_heat_pp_envelope_ub u_121 r_121 exp_ub_121 pi_lb_bucket0 2 ≤
       Full.prime_heat_pp_term_ub 121 := by
   have hval :
-      prime_heat_pp_envelope_ub u_121 r_121 exp_ub_121 pi_lb 2 =
+      prime_heat_pp_envelope_ub u_121 r_121 exp_ub_121 pi_lb_bucket0 2 =
         ((bound_num_121 : ℝ) / (bound_den_121 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_121, r_121, exp_ub_121, pi_lb, sum_num_121, sum_den_121, bound_num_121, bound_den_121]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_121, r_121, exp_ub_121, pi_lb_bucket0, sum_num_121, sum_den_121, bound_num_121, bound_den_121]
   have hrat : (bound_num_121 / bound_den_121) ≤ (10564708115146160746777859175 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_121 : ℝ) / (bound_den_121 : ℝ)) ≤ ((10564708115146160746777859175 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -4678,11 +4678,11 @@ lemma prime_heat_weight_term_le_pp_ub_121 :
   have hp : (11 : ℕ).Prime := by native_decide
   have hk : 0 < 2 := by decide
   have hpk : (11 ^ 2 : ℕ) = 121 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 11) (k := 2) (l := l_121) (u := u_121) (r := r_121) (exp_ub := exp_ub_121) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 11) (k := 2) (l := l_121) (u := u_121) (r := r_121) (exp_ub := exp_ub_121) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_121]) (hu0 := by norm_num [u_121])
     (hlog_l := by simpa using l_121_le_log) (hlog_u := by simpa using log_le_u_121)
     (hr0 := r_121_pos) (hsqrt := by simpa using r_121_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_121) (hub := by simpa using hub_121))
   simpa [hpk] using h
 
@@ -4771,12 +4771,12 @@ def bound_num_125 : ℚ := 87742674786895312710952076691950530272796134392952880
 def bound_den_125 : ℚ := 1309263173147139186137215713182253682692148810536503933943655652518365182695840421268168620257876548539612338661731406541758986012129007185030288511149791981352227747142641716856010986580009879652932540121895327514203943614094341221070858362277020500256141758381843729425021200692461099280470219145610515023976799344389698585292038886450297174142759306876429699690529817756134681240608520295631828955065058516735741809188521442530041336621242357846887976297764324199040232707078071631985920727016767687202858477390527275700850646126883263633909733283138959636498416060495873915748065572591093339126217008775619955140981516992221640328569925656736198987041776955337549625073048219919973861365345879961660728666057506526485330531390695438360934679590929572934537729489569361690851267727167159158596905629360910845754902003818455407181178888537220029792239367967266449857981199014269691385190410196046751895732149253589168382150906755258665568641021899180690538837688387676137446363692782852739109103642024435751898245483280995167057122079723043671322532899141204419314851219496215301563566397897229406509242499
 
 lemma hub_125 :
-    prime_heat_pp_envelope_ub u_125 r_125 exp_ub_125 pi_lb 3 ≤
+    prime_heat_pp_envelope_ub u_125 r_125 exp_ub_125 pi_lb_bucket0 3 ≤
       Full.prime_heat_pp_term_ub 125 := by
   have hval :
-      prime_heat_pp_envelope_ub u_125 r_125 exp_ub_125 pi_lb 3 =
+      prime_heat_pp_envelope_ub u_125 r_125 exp_ub_125 pi_lb_bucket0 3 =
         ((bound_num_125 : ℝ) / (bound_den_125 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_125, r_125, exp_ub_125, pi_lb, sum_num_125, sum_den_125, bound_num_125, bound_den_125]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_125, r_125, exp_ub_125, pi_lb_bucket0, sum_num_125, sum_den_125, bound_num_125, bound_den_125]
   have hrat : (bound_num_125 / bound_den_125) ≤ (6701683556559861511259246214 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_125 : ℝ) / (bound_den_125 : ℝ)) ≤ ((6701683556559861511259246214 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -4792,11 +4792,11 @@ lemma prime_heat_weight_term_le_pp_ub_125 :
   have hp : (5 : ℕ).Prime := by native_decide
   have hk : 0 < 3 := by decide
   have hpk : (5 ^ 3 : ℕ) = 125 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 5) (k := 3) (l := l_125) (u := u_125) (r := r_125) (exp_ub := exp_ub_125) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 5) (k := 3) (l := l_125) (u := u_125) (r := r_125) (exp_ub := exp_ub_125) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_125]) (hu0 := by norm_num [u_125])
     (hlog_l := by simpa using l_125_le_log) (hlog_u := by simpa using log_le_u_125)
     (hr0 := r_125_pos) (hsqrt := by simpa using r_125_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_125) (hub := by simpa using hub_125))
   simpa [hpk] using h
 
@@ -4885,12 +4885,12 @@ def bound_num_127 : ℚ := 19676926964511669877420671716253068053118954407043980
 def bound_den_127 : ℚ := 1002882410316245818873874758591396338181967301076374663559182908360983299994923760534891314961272184650608448093409699546271325581636066219269127421770592750924731972081172540546246384814226803718550645492961889955982820443046027635342796248113343429002250353959537673044711958256925949993668236432970596820001579815421488717492290165394852043156742721384877504944971525707564751187758602573033562356423599532874125343287783540239391251424517008326905723848090636786972928049168772329959041823885716535025491001054996277707031087778802961135019633994874817762599878386026779465290387387779050690042426449987214916572931685575013720755326955831480976032412099804791090058858988176146467861578401363343886614694029375759576864620769855432852902571792154265219063528090952282891639870184880174611671480216515974825556776930973696852583311661237071486174038646369304349133153833956269458266204329241901091032657570184176737474714644025361106314792287293395960119986414664199288801692338550439028247359506789680942536613106746662035839984136460927375787070841040142195032067061749947181304258776310026508647030701755243740597701308073
 
 lemma hub_127 :
-    prime_heat_pp_envelope_ub u_127 r_127 exp_ub_127 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_127 r_127 exp_ub_127 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 127 := by
   have hval :
-      prime_heat_pp_envelope_ub u_127 r_127 exp_ub_127 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_127 r_127 exp_ub_127 pi_lb_bucket0 1 =
         ((bound_num_127 : ℝ) / (bound_den_127 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_127, r_127, exp_ub_127, pi_lb, sum_num_127, sum_den_127, bound_num_127, bound_den_127]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_127, r_127, exp_ub_127, pi_lb_bucket0, sum_num_127, sum_den_127, bound_num_127, bound_den_127]
   have hrat : (bound_num_127 / bound_den_127) ≤ (19620372998970909972360487928 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_127 : ℝ) / (bound_den_127 : ℝ)) ≤ ((19620372998970909972360487928 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -4906,11 +4906,11 @@ lemma prime_heat_weight_term_le_pp_ub_127 :
   have hp : (127 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (127 ^ 1 : ℕ) = 127 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 127) (k := 1) (l := l_127) (u := u_127) (r := r_127) (exp_ub := exp_ub_127) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 127) (k := 1) (l := l_127) (u := u_127) (r := r_127) (exp_ub := exp_ub_127) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_127]) (hu0 := by norm_num [u_127])
     (hlog_l := by simpa using l_127_le_log) (hlog_u := by simpa using log_le_u_127)
     (hr0 := r_127_pos) (hsqrt := by simpa using r_127_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_127) (hub := by simpa using hub_127))
   simpa [hpk] using h
 
@@ -4999,12 +4999,12 @@ def bound_num_128 : ℚ := 41243001712730212380393610042297125043787231568807315
 def bound_den_128 : ℚ := 14893375639985698764535490790348447586610440704769764544939710697008869955522586559574489957400058840392224208952058553569381323973678444252429035421089319789948669298522371396513913643627498616819444281337259353136319015440397659359852703734640672831867402147572654945404564447133954244171467156097813635362319654768016890140412141531828107042120432049610293508432681752425192665787205147585304306801809520803810925214842404012856552515152812961008129864218905532583835080852911887889027330738925971081550603929239333932762288999801251225500648802639528094114323234998749540782282789164047137769886891131655858986018573375610319107262419066142645143300390545759101138578467231358223043924599121257774830059259368913459708971696612903142840441205550012588017822374309874104821784148725996006309510900978079630801343834517790874899827463352837235717509989441359832388988154652607430296684932575786415522223153937007422686905965989505277720012599357535537709824849074250822245755749634334608384190633456434652993148261675403829055066670558281440195017448803998240906434885176937349567096971158747268489383659177687
 
 lemma hub_128 :
-    prime_heat_pp_envelope_ub u_128 r_128 exp_ub_128 pi_lb 7 ≤
+    prime_heat_pp_envelope_ub u_128 r_128 exp_ub_128 pi_lb_bucket0 7 ≤
       Full.prime_heat_pp_term_ub 128 := by
   have hval :
-      prime_heat_pp_envelope_ub u_128 r_128 exp_ub_128 pi_lb 7 =
+      prime_heat_pp_envelope_ub u_128 r_128 exp_ub_128 pi_lb_bucket0 7 =
         ((bound_num_128 : ℝ) / (bound_den_128 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_128, r_128, exp_ub_128, pi_lb, sum_num_128, sum_den_128, bound_num_128, bound_den_128]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_128, r_128, exp_ub_128, pi_lb_bucket0, sum_num_128, sum_den_128, bound_num_128, bound_den_128]
   have hrat : (bound_num_128 / bound_den_128) ≤ (2769217852935988797430377773 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_128 : ℝ) / (bound_den_128 : ℝ)) ≤ ((2769217852935988797430377773 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -5020,11 +5020,11 @@ lemma prime_heat_weight_term_le_pp_ub_128 :
   have hp : (2 : ℕ).Prime := by native_decide
   have hk : 0 < 7 := by decide
   have hpk : (2 ^ 7 : ℕ) = 128 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 7) (l := l_128) (u := u_128) (r := r_128) (exp_ub := exp_ub_128) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 2) (k := 7) (l := l_128) (u := u_128) (r := r_128) (exp_ub := exp_ub_128) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_128]) (hu0 := by norm_num [u_128])
     (hlog_l := by simpa using l_128_le_log) (hlog_u := by simpa using log_le_u_128)
     (hr0 := r_128_pos) (hsqrt := by simpa using r_128_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_128) (hub := by simpa using hub_128))
   simpa [hpk] using h
 
@@ -5113,12 +5113,12 @@ def bound_num_131 : ℚ := 38566030423329131032803856126670635939836579944927215
 def bound_den_131 : ℚ := 206216478448229546168492772076344946253806080694637761443961066472927300490862916760424857079187290844171977374942693727119441496215951716808428239370901586376458117640183936039222012550517986179394281297824695047560132436447090805199163647342879605403788089480004866776810655571323669045915026188582969112462227736534661598915338185611839312381084009626108701975581675338997472028883557654780846259702473454338821027366252885355717478698775366925037478040913345936050063032096813117643647024404973402107268365985261680636309323473515837995477130070324095309880669912162158887703947450279808540716952780502379776950869704887184247888341280223675996684580836170122411083940949683988689691341943559743740613776253993983681678800817457433098880043408000494469226908469381881195801554457806536347848282379309026396302313479213993891140515723963594775845676389842435925673397989919389323979596597986734971242591949969685865204070786614014407221068232153876435814188202988990220910892894366803549395244966976806116620740677437745565256442587138080311959900994237796277545538534272108353894969497022143428161960336399491313002461549470316737011411692677786170175526489
 
 lemma hub_131 :
-    prime_heat_pp_envelope_ub u_131 r_131 exp_ub_131 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_131 r_131 exp_ub_131 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 131 := by
   have hval :
-      prime_heat_pp_envelope_ub u_131 r_131 exp_ub_131 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_131 r_131 exp_ub_131 pi_lb_bucket0 1 =
         ((bound_num_131 : ℝ) / (bound_den_131 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_131, r_131, exp_ub_131, pi_lb, sum_num_131, sum_den_131, bound_num_131, bound_den_131]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_131, r_131, exp_ub_131, pi_lb_bucket0, sum_num_131, sum_den_131, bound_num_131, bound_den_131]
   have hrat : (bound_num_131 / bound_den_131) ≤ (18701720984441717182678033283 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_131 : ℝ) / (bound_den_131 : ℝ)) ≤ ((18701720984441717182678033283 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -5134,11 +5134,11 @@ lemma prime_heat_weight_term_le_pp_ub_131 :
   have hp : (131 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (131 ^ 1 : ℕ) = 131 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 131) (k := 1) (l := l_131) (u := u_131) (r := r_131) (exp_ub := exp_ub_131) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 131) (k := 1) (l := l_131) (u := u_131) (r := r_131) (exp_ub := exp_ub_131) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_131]) (hu0 := by norm_num [u_131])
     (hlog_l := by simpa using l_131_le_log) (hlog_u := by simpa using log_le_u_131)
     (hr0 := r_131_pos) (hsqrt := by simpa using r_131_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_131) (hub := by simpa using hub_131))
   simpa [hpk] using h
 
@@ -5227,12 +5227,12 @@ def bound_num_137 : ℚ := 11094639750516952197454231334237657699241847260841852
 def bound_den_137 : ℚ := 636194907292453270096102908030505150022820032536763122902138933936956638018689177631409615865265651262623523793268159739896343545039170198342960431011575944143201635252464636264513471145049763819762981021700900779340829896284082582912794456211686558250248049632418618718793664832568271542250690678152402319582800427027158406765092797705063115343105501774322363604347356746393342016186256391216408897745150851574383194254307283767180912122805704536516217571799646121901112415285503160598146721549585713878497924147121411664082817013726211274615931620713518843143156938012198709179144955119889590727312796498902759413526379613345917245645233283836058789253493967741668357065760606541467812225053423904967673100761674680739834242143792929316784787245077228430064955091480092406075619819316039304606476860270012231438344667901486007728190454757943481732759613315203257271730135001574457912010749684391922312428431439319948003115661269697075679301521278707100336179739564797039390372064507447259210078744534449182845720971317121765896385573391346287515578106379032129791472979488278209298239888183505212723524935333697681245788711277343509372201048495788707252431169198073596350800057
 
 lemma hub_137 :
-    prime_heat_pp_envelope_ub u_137 r_137 exp_ub_137 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_137 r_137 exp_ub_137 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 137 := by
   have hval :
-      prime_heat_pp_envelope_ub u_137 r_137 exp_ub_137 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_137 r_137 exp_ub_137 pi_lb_bucket0 1 =
         ((bound_num_137 : ℝ) / (bound_den_137 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_137, r_137, exp_ub_137, pi_lb, sum_num_137, sum_den_137, bound_num_137, bound_den_137]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_137, r_137, exp_ub_137, pi_lb_bucket0, sum_num_137, sum_den_137, bound_num_137, bound_den_137]
   have hrat : (bound_num_137 / bound_den_137) ≤ (17439057784561742825424346393 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_137 : ℝ) / (bound_den_137 : ℝ)) ≤ ((17439057784561742825424346393 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -5248,11 +5248,11 @@ lemma prime_heat_weight_term_le_pp_ub_137 :
   have hp : (137 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (137 ^ 1 : ℕ) = 137 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 137) (k := 1) (l := l_137) (u := u_137) (r := r_137) (exp_ub := exp_ub_137) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 137) (k := 1) (l := l_137) (u := u_137) (r := r_137) (exp_ub := exp_ub_137) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_137]) (hu0 := by norm_num [u_137])
     (hlog_l := by simpa using l_137_le_log) (hlog_u := by simpa using log_le_u_137)
     (hr0 := r_137_pos) (hsqrt := by simpa using r_137_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_137) (hub := by simpa using hub_137))
   simpa [hpk] using h
 
@@ -5341,12 +5341,12 @@ def bound_num_139 : ℚ := 23827307592368149990686078489213181976315938266674584
 def bound_den_139 : ℚ := 13978099461876097666696257682342265567901319591529777114852464136063740774825251974607337596449377695401288014689970048691352677220343648002114139683624349181178793779751176137875499958754967204823418301066652261536760134076760453419324075122952955479189204337696477548797637202398444056482401086751103453394062625361527360888139426277746636976454227023256104891906922046289870947387773461974514169168127025554989935745843060971138193709614990723809760861662464094631718605319365369165673654190603800422964381533274259064978308954279294944905315543291797326161564881118577723342422018925313150753855145649344137645243867142824445744147634459666622013985452724000522092685913078136376835031613449540721360980889983657218919266654769123375230460815784075602798427267367034442951010986362962084989759303250716202546024914618695591927669294650464025084769315112752532223220383284806544982066021812972759963632406939135805140578608380592685749369062755285228791627372407010958589506562437183915491355989152425859693242562404261739499604139060758956854747045584064958593257003026629053340469615829867159022256833537605292681159942246433279092106265103352405716895408297
 
 lemma hub_139 :
-    prime_heat_pp_envelope_ub u_139 r_139 exp_ub_139 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_139 r_139 exp_ub_139 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 139 := by
   have hval :
-      prime_heat_pp_envelope_ub u_139 r_139 exp_ub_139 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_139 r_139 exp_ub_139 pi_lb_bucket0 1 =
         ((bound_num_139 : ℝ) / (bound_den_139 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_139, r_139, exp_ub_139, pi_lb, sum_num_139, sum_den_139, bound_num_139, bound_den_139]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_139, r_139, exp_ub_139, pi_lb_bucket0, sum_num_139, sum_den_139, bound_num_139, bound_den_139]
   have hrat : (bound_num_139 / bound_den_139) ≤ (17046171160360452934146024973 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_139 : ℝ) / (bound_den_139 : ℝ)) ≤ ((17046171160360452934146024973 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -5362,11 +5362,11 @@ lemma prime_heat_weight_term_le_pp_ub_139 :
   have hp : (139 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (139 ^ 1 : ℕ) = 139 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 139) (k := 1) (l := l_139) (u := u_139) (r := r_139) (exp_ub := exp_ub_139) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 139) (k := 1) (l := l_139) (u := u_139) (r := r_139) (exp_ub := exp_ub_139) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_139]) (hu0 := by norm_num [u_139])
     (hlog_l := by simpa using l_139_le_log) (hlog_u := by simpa using log_le_u_139)
     (hr0 := r_139_pos) (hsqrt := by simpa using r_139_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_139) (hub := by simpa using hub_139))
   simpa [hpk] using h
 
@@ -5455,12 +5455,12 @@ def bound_num_149 : ℚ := 60402935848364509461969313077984041853865207743206242
 def bound_den_149 : ℚ := 395687091777837916907291275885161143395101859013739619989143716822263232064530133161785105976775713700727292582938535806597027010849381673522328979437945492096526219119252372728158065936742693208235093712336633181746462146021351412576174791008337886061887977942045561910523131336645363482125558695074537839452104598816813725990826524727626505655069532188523824197044468353820813298951663020651499574246884388479102566489310443871483635433136162832486900998762619437163850435865675758539959114393201780782698249937312943237823321538571599180095002855009561319431598517067588454170398963785196616356628616351086200847457214652512135835487195549331225193574673153479030936103449408403732172884400727291791761860520367213573503319468188830739275820208685289796407865926874167575205372893165446767344727803861027899971855373700464258980423373480980565728638596984627097791036841051078829494478340383031767445607698464560084123884004295147502680849849946923946742950861897330045114054247758725561785755239241921447009502614649987332563904826269256379731240734447924382231780743008489744650348680358841903193058150038246147907502598998719015053495087189804577740215085032729146525810997
 
 lemma hub_149 :
-    prime_heat_pp_envelope_ub u_149 r_149 exp_ub_149 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_149 r_149 exp_ub_149 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 149 := by
   have hval :
-      prime_heat_pp_envelope_ub u_149 r_149 exp_ub_149 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_149 r_149 exp_ub_149 pi_lb_bucket0 1 =
         ((bound_num_149 : ℝ) / (bound_den_149 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_149, r_149, exp_ub_149, pi_lb, sum_num_149, sum_den_149, bound_num_149, bound_den_149]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_149, r_149, exp_ub_149, pi_lb_bucket0, sum_num_149, sum_den_149, bound_num_149, bound_den_149]
   have hrat : (bound_num_149 / bound_den_149) ≤ (15265328868063889750095185605 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_149 : ℝ) / (bound_den_149 : ℝ)) ≤ ((15265328868063889750095185605 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -5476,11 +5476,11 @@ lemma prime_heat_weight_term_le_pp_ub_149 :
   have hp : (149 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (149 ^ 1 : ℕ) = 149 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 149) (k := 1) (l := l_149) (u := u_149) (r := r_149) (exp_ub := exp_ub_149) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 149) (k := 1) (l := l_149) (u := u_149) (r := r_149) (exp_ub := exp_ub_149) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_149]) (hu0 := by norm_num [u_149])
     (hlog_l := by simpa using l_149_le_log) (hlog_u := by simpa using log_le_u_149)
     (hr0 := r_149_pos) (hsqrt := by simpa using r_149_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_149) (hub := by simpa using hub_149))
   simpa [hpk] using h
 
@@ -5569,12 +5569,12 @@ def bound_num_151 : ℚ := 33637901571983612060421092278120710343168264095020521
 def bound_den_151 : ℚ := 22511848560202683890837002315979117401674058485752520663179849159348497619336975793608555140253595051226271266409286369566898413497455996299824270747843902435769555838900730470275436221404290491806870520007170186650280647963260460424640120562347863012153943640869701955703546556851988475173110776611413178824496955770371573443280644242973253851111170085195833413685496173260770432429831754552250165839142520643032669310132736210282771564769831257840230681081034137811603363583407840212462013486879897808379623184905252251022132703687310901185460416372109042869428290285891581541217123692274024747785372851820207140462141604249726795062980139470633641663375215506002674369157236142730991925675308646283423868248978548808399519255013170266431286470693711877568556422714532427095064050696584022367883259854138554523914248191342343658018295932324095789098474655282747375622427478543824783568015186729866877345439428391972482814237081373491292841904192001593541271945874709214277010574983682332811591271289099149482098642322581452633978462630381147859137652528894550251675257517104802839528743278838802856979476227684435280155501988731477296613603698177239743570184539292657736174249
 
 lemma hub_151 :
-    prime_heat_pp_envelope_ub u_151 r_151 exp_ub_151 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_151 r_151 exp_ub_151 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 151 := by
   have hval :
-      prime_heat_pp_envelope_ub u_151 r_151 exp_ub_151 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_151 r_151 exp_ub_151 pi_lb_bucket0 1 =
         ((bound_num_151 : ℝ) / (bound_den_151 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_151, r_151, exp_ub_151, pi_lb, sum_num_151, sum_den_151, bound_num_151, bound_den_151]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_151, r_151, exp_ub_151, pi_lb_bucket0, sum_num_151, sum_den_151, bound_num_151, bound_den_151]
   have hrat : (bound_num_151 / bound_den_151) ≤ (14942309816107281553176910905 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_151 : ℝ) / (bound_den_151 : ℝ)) ≤ ((14942309816107281553176910905 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -5590,11 +5590,11 @@ lemma prime_heat_weight_term_le_pp_ub_151 :
   have hp : (151 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (151 ^ 1 : ℕ) = 151 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 151) (k := 1) (l := l_151) (u := u_151) (r := r_151) (exp_ub := exp_ub_151) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 151) (k := 1) (l := l_151) (u := u_151) (r := r_151) (exp_ub := exp_ub_151) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_151]) (hu0 := by norm_num [u_151])
     (hlog_l := by simpa using l_151_le_log) (hlog_u := by simpa using log_le_u_151)
     (hr0 := r_151_pos) (hsqrt := by simpa using r_151_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_151) (hub := by simpa using hub_151))
   simpa [hpk] using h
 
@@ -5683,12 +5683,12 @@ def bound_num_157 : ℚ := 92923362855189307531454659416719931975413298041211962
 def bound_den_157 : ℚ := 66224626998754903949483422701676323336670978486322641780138586534354973579726397178217746934287706884322253844715652291161964374105792163844637943839705407831568681591048645552670397823464679747621762881788408444329668672095370795373322587456661628943991075386382361991232290537944128025591105466247151055734024843987661792451476622938928791914935514325329988406564261788391539922890187580888663521299012639821435470577964810004421761913993994920187226132473959291139798063258008450500551508631240378080461867625455068894949171131773299985366824035334465691048345045724501883262992513714997734035310339468078516052838835651832457431029894984438226743998650830601563744261806849785262497551622255019749723578437677176139629414324484524535469967678254860771937973504705756636810327916405732133007429612194877139361768487867411130676246565949431769668882985781097007011834454818363150799690208859556707349173837073606143021608408986096447964637627276692776406957407062771643250663428455608515224160172462037647364883370746129349630484388700782958502624537215454599358630074024221962709851877195002745345472425046122535803495822649520413088566548115592366105456544429
 
 lemma hub_157 :
-    prime_heat_pp_envelope_ub u_157 r_157 exp_ub_157 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_157 r_157 exp_ub_157 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 157 := by
   have hval :
-      prime_heat_pp_envelope_ub u_157 r_157 exp_ub_157 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_157 r_157 exp_ub_157 pi_lb_bucket0 1 =
         ((bound_num_157 : ℝ) / (bound_den_157 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_157, r_157, exp_ub_157, pi_lb, sum_num_157, sum_den_157, bound_num_157, bound_den_157]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_157, r_157, exp_ub_157, pi_lb_bucket0, sum_num_157, sum_den_157, bound_num_157, bound_den_157]
   have hrat : (bound_num_157 / bound_den_157) ≤ (14031541900105625256256480782 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_157 : ℝ) / (bound_den_157 : ℝ)) ≤ ((14031541900105625256256480782 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -5704,11 +5704,11 @@ lemma prime_heat_weight_term_le_pp_ub_157 :
   have hp : (157 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (157 ^ 1 : ℕ) = 157 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 157) (k := 1) (l := l_157) (u := u_157) (r := r_157) (exp_ub := exp_ub_157) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 157) (k := 1) (l := l_157) (u := u_157) (r := r_157) (exp_ub := exp_ub_157) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_157]) (hu0 := by norm_num [u_157])
     (hlog_l := by simpa using l_157_le_log) (hlog_u := by simpa using log_le_u_157)
     (hr0 := r_157_pos) (hsqrt := by simpa using r_157_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_157) (hub := by simpa using hub_157))
   simpa [hpk] using h
 
@@ -5797,12 +5797,12 @@ def bound_num_163 : ℚ := 16983505913877174453106847993129392622133891662016601
 def bound_den_163 : ℚ := 128660546980944088424142623793503313968511777545240651667441643624397979858110923761216874398194635654871557565023657192172085514829918914685612592549589764580935887481662723265500894583558456825816082278698678737496598774377555988007678701985287263571964377417139588543400199335209709069886395164402305985607810502373472883891910374825194119513638662713676926017760782068949673058169967477343228717891295320654943585655068416331568304851417135141407768320820090380663688494965512659337735463378007594397372734113027202737367592735644992915221009313100813570881321377890914739502411243719818695724614954884358504796788627079885444404319005772916985336995622361818446140777625412176314115030950443672992899143355426672199589761996212226534981758568810343946657985865826415572719530348965312533900103346359550474942767617356503001004756251327763410767352320347049398999573829119688258569567854706314638096794474184328450622627700643485139736813558860561605650989228744404059227485762340328065240074495844474209530103126422563255171722284131341598394612618636681245680757365338907266573309795625301205050652998772758092144125484600539908933124466437376676502385799
 
 lemma hub_163 :
-    prime_heat_pp_envelope_ub u_163 r_163 exp_ub_163 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_163 r_163 exp_ub_163 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 163 := by
   have hval :
-      prime_heat_pp_envelope_ub u_163 r_163 exp_ub_163 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_163 r_163 exp_ub_163 pi_lb_bucket0 1 =
         ((bound_num_163 : ℝ) / (bound_den_163 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_163, r_163, exp_ub_163, pi_lb, sum_num_163, sum_den_163, bound_num_163, bound_den_163]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_163, r_163, exp_ub_163, pi_lb_bucket0, sum_num_163, sum_den_163, bound_num_163, bound_den_163]
   have hrat : (bound_num_163 / bound_den_163) ≤ (13200243829518801264022442866 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_163 : ℝ) / (bound_den_163 : ℝ)) ≤ ((13200243829518801264022442866 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -5818,11 +5818,11 @@ lemma prime_heat_weight_term_le_pp_ub_163 :
   have hp : (163 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (163 ^ 1 : ℕ) = 163 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 163) (k := 1) (l := l_163) (u := u_163) (r := r_163) (exp_ub := exp_ub_163) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 163) (k := 1) (l := l_163) (u := u_163) (r := r_163) (exp_ub := exp_ub_163) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_163]) (hu0 := by norm_num [u_163])
     (hlog_l := by simpa using l_163_le_log) (hlog_u := by simpa using log_le_u_163)
     (hr0 := r_163_pos) (hsqrt := by simpa using r_163_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_163) (hub := by simpa using hub_163))
   simpa [hpk] using h
 
@@ -5911,12 +5911,12 @@ def bound_num_167 : ℚ := 16802913651163714354753139822221699930718909079019290
 def bound_den_167 : ℚ := 13245567274572501601710158248982862483660742063675074949177335650640179943007553295771213102289339390314794667733383013615430663758395246247808237521558985056846754023342036727311149217519173779668669098501965963997916494489348622552445933507678940270569714036353226139537044734805941034812984795149417910020571682752782899038103773021110890899629189202325789713452630469415229152709551835284479434824824124323793260736983838454408878741464866158081786500017003967894491727885897900983118750839692318781220925370115389211632761606563844664043930509669059440929416522248729599357840937849860852375664267706997554121285774939730175201916885820040236483068109161879432701931582483654058873339214023978462713615455948041101034101649943428460620658139797920903875496188142321632697024298410060416140328107156587030102467808098081372413329538206733038197103555193605121529343941257977737730870225926327531800210766055274211273502999943407569563539676570042579898605684113597930316258029617922130637317230151956122106089152583819419245560352962643602218451988005613499439312807588109928764324223517526277261
 
 lemma hub_167 :
-    prime_heat_pp_envelope_ub u_167 r_167 exp_ub_167 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_167 r_167 exp_ub_167 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 167 := by
   have hval :
-      prime_heat_pp_envelope_ub u_167 r_167 exp_ub_167 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_167 r_167 exp_ub_167 pi_lb_bucket0 1 =
         ((bound_num_167 : ℝ) / (bound_den_167 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_167, r_167, exp_ub_167, pi_lb, sum_num_167, sum_den_167, bound_num_167, bound_den_167]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_167, r_167, exp_ub_167, pi_lb_bucket0, sum_num_167, sum_den_167, bound_num_167, bound_den_167]
   have hrat : (bound_num_167 / bound_den_167) ≤ (12685688202588548886828867524 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_167 : ℝ) / (bound_den_167 : ℝ)) ≤ ((12685688202588548886828867524 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -5932,11 +5932,11 @@ lemma prime_heat_weight_term_le_pp_ub_167 :
   have hp : (167 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (167 ^ 1 : ℕ) = 167 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 167) (k := 1) (l := l_167) (u := u_167) (r := r_167) (exp_ub := exp_ub_167) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 167) (k := 1) (l := l_167) (u := u_167) (r := r_167) (exp_ub := exp_ub_167) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_167]) (hu0 := by norm_num [u_167])
     (hlog_l := by simpa using l_167_le_log) (hlog_u := by simpa using log_le_u_167)
     (hr0 := r_167_pos) (hsqrt := by simpa using r_167_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_167) (hub := by simpa using hub_167))
   simpa [hpk] using h
 
@@ -6025,12 +6025,12 @@ def bound_num_169 : ℚ := 46390665185281484101165575201083088289697469482442329
 def bound_den_169 : ℚ := 7458666879144128311446112852675419732802921151692606874861182402406156688576996645884975615986339559533985111695087578721559892215867244619099823461829033305605626094637407070769652604769885156445869156855019179343839268625938313467879205451824399543090866883164586199447835239987700549637905296310207867663495448044208128267058607421444212477809491960118857383928863793522020161108823600916921967025387292698630001248829890141355242567664004897730374676292916091195856875757884085070500525946274570079722627789182658943559414347904498763862727457525822769160312348656537820855284115030060217356469252955437580471247931289232929221684851253312692754937023794621915418984575536325560367755967325359987011808183381312308830342751260161357954187864470279678433274110973845463363490514032836861013074596020685099433098820352298404836026611855363116977332258374275174309391099585546299013100656997609488434632665734822140395385691432146493245916902273497165925483153110361962799646190530000919241296335904026192907318291389074296744838256759305108781112410284425352343836147105071167578565832932947939317596747
 
 lemma hub_169 :
-    prime_heat_pp_envelope_ub u_169 r_169 exp_ub_169 pi_lb 2 ≤
+    prime_heat_pp_envelope_ub u_169 r_169 exp_ub_169 pi_lb_bucket0 2 ≤
       Full.prime_heat_pp_term_ub 169 := by
   have hval :
-      prime_heat_pp_envelope_ub u_169 r_169 exp_ub_169 pi_lb 2 =
+      prime_heat_pp_envelope_ub u_169 r_169 exp_ub_169 pi_lb_bucket0 2 =
         ((bound_num_169 : ℝ) / (bound_den_169 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_169, r_169, exp_ub_169, pi_lb, sum_num_169, sum_den_169, bound_num_169, bound_den_169]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_169, r_169, exp_ub_169, pi_lb_bucket0, sum_num_169, sum_den_169, bound_num_169, bound_den_169]
   have hrat : (bound_num_169 / bound_den_169) ≤ (6219699302431486512277025725 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_169 : ℝ) / (bound_den_169 : ℝ)) ≤ ((6219699302431486512277025725 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -6046,11 +6046,11 @@ lemma prime_heat_weight_term_le_pp_ub_169 :
   have hp : (13 : ℕ).Prime := by native_decide
   have hk : 0 < 2 := by decide
   have hpk : (13 ^ 2 : ℕ) = 169 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 13) (k := 2) (l := l_169) (u := u_169) (r := r_169) (exp_ub := exp_ub_169) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 13) (k := 2) (l := l_169) (u := u_169) (r := r_169) (exp_ub := exp_ub_169) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_169]) (hu0 := by norm_num [u_169])
     (hlog_l := by simpa using l_169_le_log) (hlog_u := by simpa using log_le_u_169)
     (hr0 := r_169_pos) (hsqrt := by simpa using r_169_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_169) (hub := by simpa using hub_169))
   simpa [hpk] using h
 
@@ -6139,12 +6139,12 @@ def bound_num_173 : ℚ := 47221807061592427305192654444106548016040180733994927
 def bound_den_173 : ℚ := 39458604126076303733607717277666014793024813476381607475595920095662972746597534431136576010253537879546574803805195329013566546004401038880908383340168111941882051417756146865268740042476877227684724360304950993221972046452648086040818213790169593051910925621443811433006631977859524263441498306579934260998309362834094195440357614018860554273752224186873863495437619401093243419164297423826553602687215164867737083001924512741902599032730611696674174618741310695960235432386927444390982841596732163184224050497638791497381707876002053208848403478893921599852987319445515681777800792465979144759325652107515610942443266287353413317386605029637727656391608387302241576629240291837373088468855371230336223948174824400685228516116587237701550741993676746185598313935530083221104148799144063569768190454036622401379361485579109411664636431920820294361144198616475699730964743830716291067890992788728141701970476191705320742937982127261994303179295129106069831941557710036800811725358311154738641011934438060153809087450907950738587537176158024209934834903152805942723170592542074809812732365338633647997549404772395699044937945182334726852341542727090208218315391304245269877917231271992578376528226392241412622638832057429288557934910066001069238525644971356545481
 
 lemma hub_173 :
-    prime_heat_pp_envelope_ub u_173 r_173 exp_ub_173 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_173 r_173 exp_ub_173 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 173 := by
   have hval :
-      prime_heat_pp_envelope_ub u_173 r_173 exp_ub_173 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_173 r_173 exp_ub_173 pi_lb_bucket0 1 =
         ((bound_num_173 : ℝ) / (bound_den_173 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_173, r_173, exp_ub_173, pi_lb, sum_num_173, sum_den_173, bound_num_173, bound_den_173]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_173, r_173, exp_ub_173, pi_lb_bucket0, sum_num_173, sum_den_173, bound_num_173, bound_den_173]
   have hrat : (bound_num_173 / bound_den_173) ≤ (11967429691813653153120711182 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_173 : ℝ) / (bound_den_173 : ℝ)) ≤ ((11967429691813653153120711182 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -6160,11 +6160,11 @@ lemma prime_heat_weight_term_le_pp_ub_173 :
   have hp : (173 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (173 ^ 1 : ℕ) = 173 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 173) (k := 1) (l := l_173) (u := u_173) (r := r_173) (exp_ub := exp_ub_173) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 173) (k := 1) (l := l_173) (u := u_173) (r := r_173) (exp_ub := exp_ub_173) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_173]) (hu0 := by norm_num [u_173])
     (hlog_l := by simpa using l_173_le_log) (hlog_u := by simpa using log_le_u_173)
     (hr0 := r_173_pos) (hsqrt := by simpa using r_173_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_173) (hub := by simpa using hub_173))
   simpa [hpk] using h
 
@@ -6253,12 +6253,12 @@ def bound_num_179 : ℚ := 95834791947974610246846043267500599396473262338319160
 def bound_den_179 : ℚ := 847549689645793154510170097466637182344594198939144931104727513125667225785997990414095719866329181004017990191331231160230165294760418015615656253934936861615863085489965863235427053937658228766866717850401441913747773800379025092370554873745834941962730364104279977774372546541156892721800733398619593602483249867236405501163205555687714662212429568303250062728926520267113225760570765642738219471546086883048794088586331756678156421150540224917701595801922702728991778949982508531295387249465145697556813705306202415338633971290443207787093520493427489593641088031923457056530101745246689768285403412439277749188024399625439745545216793678833165357306193504307270835294963552475145369161578404193662844445149035994029192280670218420887828326136009785484386948428714782380402587890061902368663204037093482153453201952144986248221483340509343073824382807890671469551659843464804400850386626764419563898348788833915614819991079152223141153728812071409703227383897709738718819417197014967833959336720605511661162845652943942134939379459682901138757100708484391920351778087159369505959916284027731531032825376676554245421227504194923430214636159607482807694985055311994785435376985935917025314361564074100609035741031474429398690446245503963541685329088512236335133
 
 lemma hub_179 :
-    prime_heat_pp_envelope_ub u_179 r_179 exp_ub_179 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_179 r_179 exp_ub_179 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 179 := by
   have hval :
-      prime_heat_pp_envelope_ub u_179 r_179 exp_ub_179 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_179 r_179 exp_ub_179 pi_lb_bucket0 1 =
         ((bound_num_179 : ℝ) / (bound_den_179 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_179, r_179, exp_ub_179, pi_lb, sum_num_179, sum_den_179, bound_num_179, bound_den_179]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_179, r_179, exp_ub_179, pi_lb_bucket0, sum_num_179, sum_den_179, bound_num_179, bound_den_179]
   have hrat : (bound_num_179 / bound_den_179) ≤ (11307277097585411232416596761 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_179 : ℝ) / (bound_den_179 : ℝ)) ≤ ((11307277097585411232416596761 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -6274,11 +6274,11 @@ lemma prime_heat_weight_term_le_pp_ub_179 :
   have hp : (179 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (179 ^ 1 : ℕ) = 179 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 179) (k := 1) (l := l_179) (u := u_179) (r := r_179) (exp_ub := exp_ub_179) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 179) (k := 1) (l := l_179) (u := u_179) (r := r_179) (exp_ub := exp_ub_179) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_179]) (hu0 := by norm_num [u_179])
     (hlog_l := by simpa using l_179_le_log) (hlog_u := by simpa using log_le_u_179)
     (hr0 := r_179_pos) (hsqrt := by simpa using r_179_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_179) (hub := by simpa using hub_179))
   simpa [hpk] using h
 
@@ -6367,12 +6367,12 @@ def bound_num_181 : ℚ := 41889563665760488051875937234886038752699313051388526
 def bound_den_181 : ℚ := 37741547339955388755205176066222649344433813508201927167208909704317248462021891631351051849819050777609788566656712226777073470081844145272896139715378127383656171685244180724113411581245216416848997129631805924994617834294642104710684740795255769008130027946033802934051772666949245748078289883101773906033200239837317331781626283221168541950609621990046775481086693488012351485857358660554062772755994829428101491228448924957406747572238555163925612621421505152955101122718857873340413413309118672447415570311710764599882635002807717164992142788022160803879513088841924361262247561079075762811570239558003109300961420062097820743437048658574870558172918033679934530616018548221598491167300306213045158118744721964941068142181253668170079575716123882086678472261495744837116312896681165988003154238124667244355759760327942730884475899390371526474647152674053908632955163829337588245187279575816990240408454453551525029428992030713884255195476022232928964827096573074153816148259192587312288541883705749076204883438254536728769956281582336672671871779849478081728980297834680054240159426542396124464293120211988159713105477060465807951220767255205328346340925988059821717536805745359430106051533694454874920954602645562318056760909171498689955619089741483347363
 
 lemma hub_181 :
-    prime_heat_pp_envelope_ub u_181 r_181 exp_ub_181 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_181 r_181 exp_ub_181 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 181 := by
   have hval :
-      prime_heat_pp_envelope_ub u_181 r_181 exp_ub_181 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_181 r_181 exp_ub_181 pi_lb_bucket0 1 =
         ((bound_num_181 : ℝ) / (bound_den_181 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_181, r_181, exp_ub_181, pi_lb, sum_num_181, sum_den_181, bound_num_181, bound_den_181]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_181, r_181, exp_ub_181, pi_lb_bucket0, sum_num_181, sum_den_181, bound_num_181, bound_den_181]
   have hrat : (bound_num_181 / bound_den_181) ≤ (11099058363570050989022064414 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_181 : ℝ) / (bound_den_181 : ℝ)) ≤ ((11099058363570050989022064414 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -6388,11 +6388,11 @@ lemma prime_heat_weight_term_le_pp_ub_181 :
   have hp : (181 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (181 ^ 1 : ℕ) = 181 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 181) (k := 1) (l := l_181) (u := u_181) (r := r_181) (exp_ub := exp_ub_181) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 181) (k := 1) (l := l_181) (u := u_181) (r := r_181) (exp_ub := exp_ub_181) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_181]) (hu0 := by norm_num [u_181])
     (hlog_l := by simpa using l_181_le_log) (hlog_u := by simpa using log_le_u_181)
     (hr0 := r_181_pos) (hsqrt := by simpa using r_181_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_181) (hub := by simpa using hub_181))
   simpa [hpk] using h
 
@@ -6481,12 +6481,12 @@ def bound_num_191 : ℚ := 38025435090347061229827722410038874428390072536085424
 def bound_den_191 : ℚ := 37509194329994481277252277041789294472866083901725953664995843925727418407511266035571551589863378706555263593799159281585017920099213086420210083998950429593339973066070600976086502840416179101366803631254020638751576355874419331749944030564075952792016311468902649982213172564497786294581723463855983874916095445544890210088372153377592701518884418995445965932054330010707413992772876689341096648797692705172350296229828085779573401334164932949976351344346970278578612459237781669874678636679278615772984291335122230114375412944570427365058697591747527024482997595677155487946990623607293389842803536731873151065104424057790381493783162231563960340106838828015060913472847513231768548598670735441993198834786359342646974875732085497879094182484835283884820171073783474998960746601285317699880916180460450791136861369793031958139942129187140304676033226398434598724677174835054447707555272177475989893281371307255836666063837671096631120549108445534004419229516601643807474820594094471078982886272825584243096669193391877782622016474261092294648569563541904863678681291550676501724844418009847251396938619080954288214133095694753489994040616227481450299942298528111255870818932021775463384726644487695881077656606257815397632789
 
 lemma hub_191 :
-    prime_heat_pp_envelope_ub u_191 r_191 exp_ub_191 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_191 r_191 exp_ub_191 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 191 := by
   have hval :
-      prime_heat_pp_envelope_ub u_191 r_191 exp_ub_191 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_191 r_191 exp_ub_191 pi_lb_bucket0 1 =
         ((bound_num_191 : ℝ) / (bound_den_191 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_191, r_191, exp_ub_191, pi_lb, sum_num_191, sum_den_191, bound_num_191, bound_den_191]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_191, r_191, exp_ub_191, pi_lb_bucket0, sum_num_191, sum_den_191, bound_num_191, bound_den_191]
   have hrat : (bound_num_191 / bound_den_191) ≤ (10137630458231397176382948544 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_191 : ℝ) / (bound_den_191 : ℝ)) ≤ ((10137630458231397176382948544 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -6502,11 +6502,11 @@ lemma prime_heat_weight_term_le_pp_ub_191 :
   have hp : (191 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (191 ^ 1 : ℕ) = 191 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 191) (k := 1) (l := l_191) (u := u_191) (r := r_191) (exp_ub := exp_ub_191) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 191) (k := 1) (l := l_191) (u := u_191) (r := r_191) (exp_ub := exp_ub_191) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_191]) (hu0 := by norm_num [u_191])
     (hlog_l := by simpa using l_191_le_log) (hlog_u := by simpa using log_le_u_191)
     (hr0 := r_191_pos) (hsqrt := by simpa using r_191_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_191) (hub := by simpa using hub_191))
   simpa [hpk] using h
 
@@ -6595,12 +6595,12 @@ def bound_num_193 : ℚ := 49495484996683110757234676014390815354372238235188212
 def bound_den_193 : ℚ := 4969417751726637304263759803492461941326868470468523343301257089509561259207629165529139588409624287085485946719322495537328602392066768700432909718298810386682958303457754887451465583811501024327173689785594979221302131342297373115111985334190828883973061413301913574875970873665414166875027719519559464521445582873796069948595123213004001850139888049726719299931681176249085660005087152151995895885603344032811530094419102110250021016648355523117752477819045881637164599663880901956777420484570479350529669054486268998748279860967889052727779276571619294196373725557811227816346735953606492635386172995887667873716442150779148790302482977244110705078337554118456523197629895961534497416362059583085614168405610186826814488183953620011925408523374434052837653246711744836865449848018621495740635584104014203431304328853794327373311106712425478738624072683433171040829267463668810821431041497152604575248660588088122407615175422115055581512001052217773553618239319647073622246716025460636837362929997696262031995893424247894179960078945193624780893974729788808957267143761109426012576636191771427784922478824018152588725044018441109474683628294824491325713818757688607730756569719450696526669699732656944505593055057318201
 
 lemma hub_193 :
-    prime_heat_pp_envelope_ub u_193 r_193 exp_ub_193 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_193 r_193 exp_ub_193 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 193 := by
   have hval :
-      prime_heat_pp_envelope_ub u_193 r_193 exp_ub_193 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_193 r_193 exp_ub_193 pi_lb_bucket0 1 =
         ((bound_num_193 : ℝ) / (bound_den_193 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_193, r_193, exp_ub_193, pi_lb, sum_num_193, sum_den_193, bound_num_193, bound_den_193]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_193, r_193, exp_ub_193, pi_lb_bucket0, sum_num_193, sum_den_193, bound_num_193, bound_den_193]
   have hrat : (bound_num_193 / bound_den_193) ≤ (9960016941519165070695329689 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_193 : ℝ) / (bound_den_193 : ℝ)) ≤ ((9960016941519165070695329689 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -6616,11 +6616,11 @@ lemma prime_heat_weight_term_le_pp_ub_193 :
   have hp : (193 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (193 ^ 1 : ℕ) = 193 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 193) (k := 1) (l := l_193) (u := u_193) (r := r_193) (exp_ub := exp_ub_193) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 193) (k := 1) (l := l_193) (u := u_193) (r := r_193) (exp_ub := exp_ub_193) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_193]) (hu0 := by norm_num [u_193])
     (hlog_l := by simpa using l_193_le_log) (hlog_u := by simpa using log_le_u_193)
     (hr0 := r_193_pos) (hsqrt := by simpa using r_193_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_193) (hub := by simpa using hub_193))
   simpa [hpk] using h
 
@@ -6709,12 +6709,12 @@ def bound_num_197 : ℚ := 24442643989475782223999117831529980079707003953074609
 def bound_den_197 : ℚ := 25413023032086815132233368031180009844560968681186687571994320851654924368141943006293017491995277226489689652974370836580036702003575987939771145339478529639750041282370511691214809184070061340709965308673820829333590668532099134905159990644709407636484817943935008602002183285606149455240934984005219665023801051652628942859051210036936472466824863745664511057442072298647260511262743681091701237958751433616497543130201175891195969659431861452060028760135199247126024218081750288732845071960314947166215777901007187679415778824210787205392075801451708488651530813274840151457809049777770630110066121976916222737197599201622328294453525297702079376280290538910686184482251066046667602808590119756357626160465498397980350037805607109257411128568753924404070943247499385601908159747436688706526511804143323554981904613594990946782002283407829136030963108734553322088302794044088075614209206408218572107296120972071092944561973432107937456452302692072111325782351938974913757768586817176621420164266755296123563462268639982383294245319704651619456209580967070782451049557813930407179348692338712742894836191132707617643021810014220619507725124799581886292511969755698808364315983240604144220177530681856305440264438543601856971655397777640168295621404868266584139881
 
 lemma hub_197 :
-    prime_heat_pp_envelope_ub u_197 r_197 exp_ub_197 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_197 r_197 exp_ub_197 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 197 := by
   have hval :
-      prime_heat_pp_envelope_ub u_197 r_197 exp_ub_197 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_197 r_197 exp_ub_197 pi_lb_bucket0 1 =
         ((bound_num_197 : ℝ) / (bound_den_197 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_197, r_197, exp_ub_197, pi_lb, sum_num_197, sum_den_197, bound_num_197, bound_den_197]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_197, r_197, exp_ub_197, pi_lb_bucket0, sum_num_197, sum_den_197, bound_num_197, bound_den_197]
   have hrat : (bound_num_197 / bound_den_197) ≤ (9618156784658903057927403780 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_197 : ℝ) / (bound_den_197 : ℝ)) ≤ ((9618156784658903057927403780 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -6730,11 +6730,11 @@ lemma prime_heat_weight_term_le_pp_ub_197 :
   have hp : (197 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (197 ^ 1 : ℕ) = 197 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 197) (k := 1) (l := l_197) (u := u_197) (r := r_197) (exp_ub := exp_ub_197) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 197) (k := 1) (l := l_197) (u := u_197) (r := r_197) (exp_ub := exp_ub_197) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_197]) (hu0 := by norm_num [u_197])
     (hlog_l := by simpa using l_197_le_log) (hlog_u := by simpa using log_le_u_197)
     (hr0 := r_197_pos) (hsqrt := by simpa using r_197_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_197) (hub := by simpa using hub_197))
   simpa [hpk] using h
 
@@ -6823,12 +6823,12 @@ def bound_num_199 : ℚ := 10667912349923326369081398588649811834263750368644026
 def bound_den_199 : ℚ := 1128448004919444563231871531032669132351328071566928619468833109134492149319640917325351548726997935433646329339699268388768272483823745809959758893517614560240265961359378063942393668382865280269392247159014229448355818909705027007935142843736102083523862422116087160365745841057565483339529294159736882719911024957177459188429718134039085927671865353537295811059661974443289947370349894082648519486288494602792057371495035761347635704355443129899097310127714821683081811532414045943636888793092606350238551954926423512497792794711629813616741953057388587181024704754257249701438858388052130896752195377354973023858187368631337012904783611051226133982548937179073751342054962616816444399995936461547612242029120854110499405756081504738268307366739147247931906914740264583215707652211560310287479172619992841610440138364900242132726319315498244632332191057855026986689540197090860639026321272357270755197091987282900660560860033382217703368640672486561469219137597975174306928817957587113824129482874273778674185825916091219782331878382170609150425710018691404144459743985941600689421491769530809818700947907724446686435397717529249922312819572843398120084123460789836271292899205842350874100603843669513895414573059602450818390776489040915150058758193789157608879
 
 lemma hub_199 :
-    prime_heat_pp_envelope_ub u_199 r_199 exp_ub_199 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_199 r_199 exp_ub_199 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 199 := by
   have hval :
-      prime_heat_pp_envelope_ub u_199 r_199 exp_ub_199 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_199 r_199 exp_ub_199 pi_lb_bucket0 1 =
         ((bound_num_199 : ℝ) / (bound_den_199 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_199, r_199, exp_ub_199, pi_lb, sum_num_199, sum_den_199, bound_num_199, bound_den_199]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_199, r_199, exp_ub_199, pi_lb_bucket0, sum_num_199, sum_den_199, bound_num_199, bound_den_199]
   have hrat : (bound_num_199 / bound_den_199) ≤ (9453614436302638923681485040 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_199 : ℝ) / (bound_den_199 : ℝ)) ≤ ((9453614436302638923681485040 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -6844,11 +6844,11 @@ lemma prime_heat_weight_term_le_pp_ub_199 :
   have hp : (199 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (199 ^ 1 : ℕ) = 199 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 199) (k := 1) (l := l_199) (u := u_199) (r := r_199) (exp_ub := exp_ub_199) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 199) (k := 1) (l := l_199) (u := u_199) (r := r_199) (exp_ub := exp_ub_199) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_199]) (hu0 := by norm_num [u_199])
     (hlog_l := by simpa using l_199_le_log) (hlog_u := by simpa using log_le_u_199)
     (hr0 := r_199_pos) (hsqrt := by simpa using r_199_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_199) (hub := by simpa using hub_199))
   simpa [hpk] using h
 
@@ -6937,12 +6937,12 @@ def bound_num_211 : ℚ := 92459564100284893606871677529970168696030757676429767
 def bound_den_211 : ℚ := 108172844758378448156497034599472829327963927263740871107951010554535922788199966912802751370036808324226524553186627990489446891781073983308869136203485903590932930324737987386493143563526310093323328466276536114751965937222080158616592260889208200959330250934091512693631344952750009671611360670069124632975389735201413734489000433740958832361353953073092690447526047724967851893899118990374062636573735123469054935768259359341087932402215325513308471559875555332946369306423522408621749020981844050147706077106790380006980211460127512904688748159184997727517244255945218224966906416490944000482348947827916424207315918038183363292787820703797484204152920395305372123787928993108087412883568281266488378483129358149970759905432733659194047991228332992561205921028267670640506285647292184370435858460000961236722400369214708025220554180834136335844314143972854110773684258383151379549228111669375074019503911040687394752521058603081627088823093750440020531960834324213399991807561185479121755603748477839506024347820879398606406196980744640715531362349746337791855476182761948762378187827072045586121346679654380709787831328165132817407023864043676325636334406353610027762154689243854223797306410131866616933944589905873010604059546820001208923789
 
 lemma hub_211 :
-    prime_heat_pp_envelope_ub u_211 r_211 exp_ub_211 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_211 r_211 exp_ub_211 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 211 := by
   have hval :
-      prime_heat_pp_envelope_ub u_211 r_211 exp_ub_211 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_211 r_211 exp_ub_211 pi_lb_bucket0 1 =
         ((bound_num_211 : ℝ) / (bound_den_211 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_211, r_211, exp_ub_211, pi_lb, sum_num_211, sum_den_211, bound_num_211, bound_den_211]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_211, r_211, exp_ub_211, pi_lb_bucket0, sum_num_211, sum_den_211, bound_num_211, bound_den_211]
   have hrat : (bound_num_211 / bound_den_211) ≤ (8547391381525437648036813699 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_211 : ℝ) / (bound_den_211 : ℝ)) ≤ ((8547391381525437648036813699 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -6958,11 +6958,11 @@ lemma prime_heat_weight_term_le_pp_ub_211 :
   have hp : (211 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (211 ^ 1 : ℕ) = 211 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 211) (k := 1) (l := l_211) (u := u_211) (r := r_211) (exp_ub := exp_ub_211) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 211) (k := 1) (l := l_211) (u := u_211) (r := r_211) (exp_ub := exp_ub_211) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_211]) (hu0 := by norm_num [u_211])
     (hlog_l := by simpa using l_211_le_log) (hlog_u := by simpa using log_le_u_211)
     (hr0 := r_211_pos) (hsqrt := by simpa using r_211_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_211) (hub := by simpa using hub_211))
   simpa [hpk] using h
 
@@ -7051,12 +7051,12 @@ def bound_num_223 : ℚ := 45320069626086071952219761741883487949132967130950138
 def bound_den_223 : ℚ := 58385594302044846918280317234256622918352379767858469586898128771893118543898486254120511246062053463195644214887790214248194413918450137763742311138832702068772816070832649795659365410469491988122294914906582500666248249728295515230391718973593328625678518080805343913509586109484257188295639763923171328685306621331049699180229388142731768532740307277150113981703432900463841486175906244356235801627267509238003992126969586225487406600730973518570890222242358343282141608433377291753653912913605297112311823313660068447493514723909908197037314623229546319083496975036588185434502318868666461762739917449343452129343878342385642197898743376722292546663538503791051566076058597081201412716126255021710275165811557259012153087467143995497004813389901021105717441398183944145294779023780284013055287599365286592302391534602709170599240316461694421925191799292915667917795418827039082137354480550536726655668714561772548602615884158093401626520176521324303601812128771188567371153737397930413838645150819365020194749647213241473850098307886821541363539417853767309828800688567901309764014871146570332279048043118773374790624959925998633583892014744731740707765120833034394092428208572663920353120501943762843942262788519826119070246769062582267641212351894832510711
 
 lemma hub_223 :
-    prime_heat_pp_envelope_ub u_223 r_223 exp_ub_223 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_223 r_223 exp_ub_223 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 223 := by
   have hval :
-      prime_heat_pp_envelope_ub u_223 r_223 exp_ub_223 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_223 r_223 exp_ub_223 pi_lb_bucket0 1 =
         ((bound_num_223 : ℝ) / (bound_den_223 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_223, r_223, exp_ub_223, pi_lb, sum_num_223, sum_den_223, bound_num_223, bound_den_223]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_223, r_223, exp_ub_223, pi_lb_bucket0, sum_num_223, sum_den_223, bound_num_223, bound_den_223]
   have hrat : (bound_num_223 / bound_den_223) ≤ (7762200619494080515436973400 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_223 : ℝ) / (bound_den_223 : ℝ)) ≤ ((7762200619494080515436973400 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -7072,11 +7072,11 @@ lemma prime_heat_weight_term_le_pp_ub_223 :
   have hp : (223 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (223 ^ 1 : ℕ) = 223 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 223) (k := 1) (l := l_223) (u := u_223) (r := r_223) (exp_ub := exp_ub_223) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 223) (k := 1) (l := l_223) (u := u_223) (r := r_223) (exp_ub := exp_ub_223) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_223]) (hu0 := by norm_num [u_223])
     (hlog_l := by simpa using l_223_le_log) (hlog_u := by simpa using log_le_u_223)
     (hr0 := r_223_pos) (hsqrt := by simpa using r_223_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_223) (hub := by simpa using hub_223))
   simpa [hpk] using h
 
@@ -7165,12 +7165,12 @@ def bound_num_227 : ℚ := 35475368241801109377896395386344316951412211126580007
 def bound_den_227 : ℚ := 471516189054017131526145946524679835574643101818605830078329268482127531710150106505373123850389846047425409434094143033694287851998931284184289055169168153057560137913348131608540461101765160244705262900651351377098828600520586346995043232863631699228549272059850947684955647945509888101885176577811888983254836981221774336925279910403793909921284452687834170765372046108748196592836974067780060338812440897134867888947528099427637795150437857222591340532381485331297728766628243155777221233585653542577060141358760145324750467918237453651913663921013169390722480883361589154882054098309163676023888241839026815608658895122446740437137988928660276015772717485120966459637944855846838180036090455471988155443139013526948615812486551700058469894342498164180166489239075349036826989189209518149323108011928530158751516403007778411928558819242239649249631100502780454268895200793973976035203340158377354827687215166474383613999075598620111302833866672697247621973618308299462648883828587529195216329376047622676099015216380987511468478503887417623089268284060525591417764672253125798756638069869822032823929321196121521051695988319203273795134534133675596144019879516877656144675598171514574765317083281520572404514832473389053857362053885993981536589165922090328001
 
 lemma hub_227 :
-    prime_heat_pp_envelope_ub u_227 r_227 exp_ub_227 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_227 r_227 exp_ub_227 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 227 := by
   have hval :
-      prime_heat_pp_envelope_ub u_227 r_227 exp_ub_227 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_227 r_227 exp_ub_227 pi_lb_bucket0 1 =
         ((bound_num_227 : ℝ) / (bound_den_227 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_227, r_227, exp_ub_227, pi_lb, sum_num_227, sum_den_227, bound_num_227, bound_den_227]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_227, r_227, exp_ub_227, pi_lb_bucket0, sum_num_227, sum_den_227, bound_num_227, bound_den_227]
   have hrat : (bound_num_227 / bound_den_227) ≤ (7523679794107175980433233065 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_227 : ℝ) / (bound_den_227 : ℝ)) ≤ ((7523679794107175980433233065 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -7186,11 +7186,11 @@ lemma prime_heat_weight_term_le_pp_ub_227 :
   have hp : (227 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (227 ^ 1 : ℕ) = 227 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 227) (k := 1) (l := l_227) (u := u_227) (r := r_227) (exp_ub := exp_ub_227) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 227) (k := 1) (l := l_227) (u := u_227) (r := r_227) (exp_ub := exp_ub_227) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_227]) (hu0 := by norm_num [u_227])
     (hlog_l := by simpa using l_227_le_log) (hlog_u := by simpa using log_le_u_227)
     (hr0 := r_227_pos) (hsqrt := by simpa using r_227_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_227) (hub := by simpa using hub_227))
   simpa [hpk] using h
 
@@ -7279,12 +7279,12 @@ def bound_num_229 : ℚ := 15077674149397481395083659876002491261196991864184159
 def bound_den_229 : ℚ := 2035216588701032284896552924405168366145189811342384309909884305273241211378639748781992883703027620109923978653934752073109580922553520934193641216507297593860067704624059516353549472988504662500321043937577172936764179037558087535300527174648915194445297383130963157206567481782364649819701983940065954901117936557844370186022645539883111815649633219168116737313120773898286672426354696281336778043759815222528904226929884633741240357775953016538678300680956911869613882290991601729895295492003828665791327785815207797478873416822755565365216855094345272409488552495992472621201250164615790861589390915660913870213946059690398690151038500505224430591912997254975512303370421427595760790714543534252370516554154826978384325537299896053767867179854566577129270683820346806852362584517832919869638196505834397288297572219493820216878543034769080448360472003339306130842342638421215938881139810254056991027558999280389459742113451952576381085678593250926731706590278027279913135705193822421490769489012464062008140627709283593855649340469377586261256359311422683504996927273562962040707290899646473332760934766082731361643266843881490915296882683700856092300971260258677364459279400645699031477776587328910382937706768745040354193
 
 lemma hub_229 :
-    prime_heat_pp_envelope_ub u_229 r_229 exp_ub_229 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_229 r_229 exp_ub_229 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 229 := by
   have hval :
-      prime_heat_pp_envelope_ub u_229 r_229 exp_ub_229 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_229 r_229 exp_ub_229 pi_lb_bucket0 1 =
         ((bound_num_229 : ℝ) / (bound_den_229 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_229, r_229, exp_ub_229, pi_lb, sum_num_229, sum_den_229, bound_num_229, bound_den_229]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_229, r_229, exp_ub_229, pi_lb_bucket0, sum_num_229, sum_den_229, bound_num_229, bound_den_229]
   have hrat : (bound_num_229 / bound_den_229) ≤ (7408387998164271508183542637 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_229 : ℝ) / (bound_den_229 : ℝ)) ≤ ((7408387998164271508183542637 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -7300,11 +7300,11 @@ lemma prime_heat_weight_term_le_pp_ub_229 :
   have hp : (229 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (229 ^ 1 : ℕ) = 229 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 229) (k := 1) (l := l_229) (u := u_229) (r := r_229) (exp_ub := exp_ub_229) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 229) (k := 1) (l := l_229) (u := u_229) (r := r_229) (exp_ub := exp_ub_229) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_229]) (hu0 := by norm_num [u_229])
     (hlog_l := by simpa using l_229_le_log) (hlog_u := by simpa using log_le_u_229)
     (hr0 := r_229_pos) (hsqrt := by simpa using r_229_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_229) (hub := by simpa using hub_229))
   simpa [hpk] using h
 
@@ -7393,12 +7393,12 @@ def bound_num_233 : ℚ := 58979300226988269486307244767689770289840201516985365
 def bound_den_233 : ℚ := 820826144840708578036010299844989615881202594211639165935666506387990335230656616634948563878861299396700805855368322534253632117589532469365291324137131348047674050701722987428507820765878220937656492272855466852107372831923476327029086371955376064804515724637541634508454800068142343847221647755592890620303129251515464180838259062956314048796266032190642107627528266964879617524778097298218607772507383643005598310540576869655038620079948892999300518705972825769371985110950570784465369593688479909472911481908134503133222298813110482436085462975420084108509222450650690212349817474134439675453403455482284795500610281839347419354533910222475788767748174541201371323782270835341619713665188723171206318942855239029453489263884390321403429222650932753543377179163262510843840233856019413519358114114013870848735622424033358232620041904690061373388233744376447833138624756150507684035340242739158859355293590849860219744206606962172048598823986467761544891302814274719177047584496260184082818492920115152098018672668420036679640377358023184416275273278146444825014429060121255152119584406254028113236066971635820685602251105526159652377854388809353286617332591660738869014061051962713057302393929490370429
 
 lemma hub_233 :
-    prime_heat_pp_envelope_ub u_233 r_233 exp_ub_233 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_233 r_233 exp_ub_233 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 233 := by
   have hval :
-      prime_heat_pp_envelope_ub u_233 r_233 exp_ub_233 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_233 r_233 exp_ub_233 pi_lb_bucket0 1 =
         ((bound_num_233 : ℝ) / (bound_den_233 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_233, r_233, exp_ub_233, pi_lb, sum_num_233, sum_den_233, bound_num_233, bound_den_233]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_233, r_233, exp_ub_233, pi_lb_bucket0, sum_num_233, sum_den_233, bound_num_233, bound_den_233]
   have hrat : (bound_num_233 / bound_den_233) ≤ (7185358385292922762943579329 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_233 : ℝ) / (bound_den_233 : ℝ)) ≤ ((7185358385292922762943579329 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -7414,11 +7414,11 @@ lemma prime_heat_weight_term_le_pp_ub_233 :
   have hp : (233 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (233 ^ 1 : ℕ) = 233 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 233) (k := 1) (l := l_233) (u := u_233) (r := r_233) (exp_ub := exp_ub_233) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 233) (k := 1) (l := l_233) (u := u_233) (r := r_233) (exp_ub := exp_ub_233) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_233]) (hu0 := by norm_num [u_233])
     (hlog_l := by simpa using l_233_le_log) (hlog_u := by simpa using log_le_u_233)
     (hr0 := r_233_pos) (hsqrt := by simpa using r_233_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_233) (hub := by simpa using hub_233))
   simpa [hpk] using h
 
@@ -7507,12 +7507,12 @@ def bound_num_239 : ℚ := 17758007949206328741733940465203479502481831387850718
 def bound_den_239 : ℚ := 258537817610621958517992809012823873943284316474308332594719841064387484828255025440225486674116964792270635172305608134257119840327091338223084862413816851983186811979904201369090898007770334237806955650396410653070099776523511069365293599282830143003755318114119379556037586695946025499232336634386484906071598257666323881320083476427633162069607515546317229761380385742527524319264297856434587410954075120979906068322278746428555430143647109475216637227956318011167164604700844309371802985153834129747556535668217809536839364698173916868327079815416370361974472728872205735255044179068358517416142083261845168542052894663503856786823292018388883676101042694360373072992290301123046916415957882865010368450858983565245881812767392823584603908879580359805254733836031072035053308091911180630050378768882573131437755660066476984108118410799096901935158387591517303752241465821103638250175908437872356276091545294237129679511746009924839319235078137255540985488808677556121496559982904183944798827637476387969997597428750995259924766829839330903981785885637440799605602562385941911358682026751533434594907360927043917504426431956341310276313310276557194843457588639385526564110825314465478415893920287538277050031
 
 lemma hub_239 :
-    prime_heat_pp_envelope_ub u_239 r_239 exp_ub_239 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_239 r_239 exp_ub_239 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 239 := by
   have hval :
-      prime_heat_pp_envelope_ub u_239 r_239 exp_ub_239 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_239 r_239 exp_ub_239 pi_lb_bucket0 1 =
         ((bound_num_239 : ℝ) / (bound_den_239 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_239, r_239, exp_ub_239, pi_lb, sum_num_239, sum_den_239, bound_num_239, bound_den_239]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_239, r_239, exp_ub_239, pi_lb_bucket0, sum_num_239, sum_den_239, bound_num_239, bound_den_239]
   have hrat : (bound_num_239 / bound_den_239) ≤ (6868630714579372804895474048 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_239 : ℝ) / (bound_den_239 : ℝ)) ≤ ((6868630714579372804895474048 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -7528,11 +7528,11 @@ lemma prime_heat_weight_term_le_pp_ub_239 :
   have hp : (239 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (239 ^ 1 : ℕ) = 239 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 239) (k := 1) (l := l_239) (u := u_239) (r := r_239) (exp_ub := exp_ub_239) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 239) (k := 1) (l := l_239) (u := u_239) (r := r_239) (exp_ub := exp_ub_239) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_239]) (hu0 := by norm_num [u_239])
     (hlog_l := by simpa using l_239_le_log) (hlog_u := by simpa using log_le_u_239)
     (hr0 := r_239_pos) (hsqrt := by simpa using r_239_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_239) (hub := by simpa using hub_239))
   simpa [hpk] using h
 
@@ -7621,12 +7621,12 @@ def bound_num_241 : ℚ := 17029738862366826006404104391477005951690353109887451
 def bound_den_241 : ℚ := 25163858929632616595451602922925428325663294533895516571035150596733426841562853452274219750156407345937502851545843155850335643503464526733489205314806601896378866060869178574074625312884505922298622933736502714874845829284088002722273098828677834559248771987261526451698034642409864216017181878663114813767513501818101890242618616393248705325817752880375950396297941011571154197720358000023303608878610962675355782222720996991631974609240978436390807018294224341888507045809004186470325929492593043828521395566299368718627429606291256149140556647290285835774894153197973602722083520498869406588545046876460804810128646530450442504006369676249463122561551786881165893228996171285879724770407313186340847028487007704193636615020961194969285683251445130205526004717969434623343258586148068973801998249244938622392890443272232396826170137356582653842562320355834306910179825324835415659697254171398689954267024866020439930346538691982431540544724282031407021022907667092355190663682673615015289055800906859451190012317548335616938756576063900834069715764478937220997013890420605121752387862615976794975419312136115568993786089071801181637448459948368669309317383686877606996278525002091098562326228767379079146523740021257535516580334545230292819
 
 lemma hub_241 :
-    prime_heat_pp_envelope_ub u_241 r_241 exp_ub_241 pi_lb 1 ≤
+    prime_heat_pp_envelope_ub u_241 r_241 exp_ub_241 pi_lb_bucket0 1 ≤
       Full.prime_heat_pp_term_ub 241 := by
   have hval :
-      prime_heat_pp_envelope_ub u_241 r_241 exp_ub_241 pi_lb 1 =
+      prime_heat_pp_envelope_ub u_241 r_241 exp_ub_241 pi_lb_bucket0 1 =
         ((bound_num_241 : ℝ) / (bound_den_241 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_241, r_241, exp_ub_241, pi_lb, sum_num_241, sum_den_241, bound_num_241, bound_den_241]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_241, r_241, exp_ub_241, pi_lb_bucket0, sum_num_241, sum_den_241, bound_num_241, bound_den_241]
   have hrat : (bound_num_241 / bound_den_241) ≤ (6767538679178053233342904350 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_241 : ℝ) / (bound_den_241 : ℝ)) ≤ ((6767538679178053233342904350 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -7642,11 +7642,11 @@ lemma prime_heat_weight_term_le_pp_ub_241 :
   have hp : (241 : ℕ).Prime := by native_decide
   have hk : 0 < 1 := by decide
   have hpk : (241 ^ 1 : ℕ) = 241 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 241) (k := 1) (l := l_241) (u := u_241) (r := r_241) (exp_ub := exp_ub_241) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 241) (k := 1) (l := l_241) (u := u_241) (r := r_241) (exp_ub := exp_ub_241) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_241]) (hu0 := by norm_num [u_241])
     (hlog_l := by simpa using l_241_le_log) (hlog_u := by simpa using log_le_u_241)
     (hr0 := r_241_pos) (hsqrt := by simpa using r_241_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_241) (hub := by simpa using hub_241))
   simpa [hpk] using h
 
@@ -7735,12 +7735,12 @@ def bound_num_243 : ℚ := 44919126385868639729760161612634641157219195345534600
 def bound_den_243 : ℚ := 336796583518881514708064286884786527583916711065868097624159651899135001904173836361785336131292267190037731632768529300432940449101387107559128729916709917578906947069917345353238906491556523180019096529387692287191870314346853503254920477680601783414813972539127093899161949199145632519560479493572719264700991660163315219633923338016921774115863575426261995809848325474190722543018513209213209214367518677314506969770875893842251972630218210806808464122655734545567829826621985056443053239372150645509991828695526713206247858339107975225159750348187170732616628521762378576494393980872774878969711538234081155396123174039006208872802708534761947457283211213415678165556190919821212598013470858825839826491166798467483285944273518953275013274789387532580728348160180159672307405140899902523380059730201811871318378367068551324653640379200665070315532843505647470983652432651493672782944521265735547941335369174385201489975244571788022175064445655412610390032782578001673839844656418894583184325158878744441021149064257408440374439729385781622715787481893296339328089096300774519825395128672702251946025940995619553966728755316985381183745200761725513012906537549479952211723706823875136472565645643225131192805358966689962846526888388127631919660416126874090247669
 
 lemma hub_243 :
-    prime_heat_pp_envelope_ub u_243 r_243 exp_ub_243 pi_lb 5 ≤
+    prime_heat_pp_envelope_ub u_243 r_243 exp_ub_243 pi_lb_bucket0 5 ≤
       Full.prime_heat_pp_term_ub 243 := by
   have hval :
-      prime_heat_pp_envelope_ub u_243 r_243 exp_ub_243 pi_lb 5 =
+      prime_heat_pp_envelope_ub u_243 r_243 exp_ub_243 pi_lb_bucket0 5 =
         ((bound_num_243 : ℝ) / (bound_den_243 : ℝ)) := by
-    norm_num [prime_heat_pp_envelope_ub, t_critical, u_243, r_243, exp_ub_243, pi_lb, sum_num_243, sum_den_243, bound_num_243, bound_den_243]
+    norm_num [prime_heat_pp_envelope_ub, t_critical, u_243, r_243, exp_ub_243, pi_lb_bucket0, sum_num_243, sum_den_243, bound_num_243, bound_den_243]
   have hrat : (bound_num_243 / bound_den_243) ≤ (1333716806641848133183070325 : ℚ) / Full.prime_heat_pp_term_ub_den := by
     native_decide
   have hrat' : ((bound_num_243 : ℝ) / (bound_den_243 : ℝ)) ≤ ((1333716806641848133183070325 : ℚ) / Full.prime_heat_pp_term_ub_den : ℝ) := by
@@ -7756,11 +7756,11 @@ lemma prime_heat_weight_term_le_pp_ub_243 :
   have hp : (3 : ℕ).Prime := by native_decide
   have hk : 0 < 5 := by decide
   have hpk : (3 ^ 5 : ℕ) = 243 := by norm_num
-  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 3) (k := 5) (l := l_243) (u := u_243) (r := r_243) (exp_ub := exp_ub_243) (pi_lb := pi_lb) hp hk
+  have h := (prime_heat_weight_term_le_pp_ub_of_prime_pow_bounds (p := 3) (k := 5) (l := l_243) (u := u_243) (r := r_243) (exp_ub := exp_ub_243) (pi_lb := pi_lb_bucket0) hp hk
     (hl0 := by norm_num [l_243]) (hu0 := by norm_num [u_243])
     (hlog_l := by simpa using l_243_le_log) (hlog_u := by simpa using log_le_u_243)
     (hr0 := r_243_pos) (hsqrt := by simpa using r_243_sq_le)
-    (hpi_pos := pi_lb_pos) (hpi := pi_lb_le_pi)
+    (hpi_pos := pi_lb_bucket0_pos) (hpi := pi_lb_bucket0_le_pi)
     (hexp := by simpa using exp_bound_243) (hub := by simpa using hub_243))
   simpa [hpk] using h
 

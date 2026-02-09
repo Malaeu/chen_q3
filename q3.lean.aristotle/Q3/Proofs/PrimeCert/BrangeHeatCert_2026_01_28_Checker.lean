@@ -3,7 +3,7 @@ import Q3.Proofs.PrimeCert.IntervalChecker
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_BucketDefs
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowFull
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowBucket0Auto
-import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback
+import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000
 
 /-!
 Bucketed interval checker scaffold for the prime-heat partial sum.

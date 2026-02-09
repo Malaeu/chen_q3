@@ -66,12 +66,35 @@ def parse_entries(path: Path, min_n: int, max_n: int) -> Tuple[int, List[PPEntry
         raise SystemExit("Could not find prime_heat_pp_term_ub_den")
     den = int(m.group(1))
 
-    pattern = re.compile(r"\|\s+(\d+)\s+=>\s+\((\d+)\s+:\s+ℚ\)\s+/\s+prime_heat_pp_term_ub_den")
     entries: List[PPEntry] = []
-    for n_s, num_s in pattern.findall(text):
+
+    # Legacy format:
+    #   | 10007 => (123 : ℚ) / prime_heat_pp_term_ub_den
+    pattern_match = re.compile(
+        r"\|\s+(\d+)\s+=>\s+\((\d+)\s+:\s+ℚ\)\s+/\s+prime_heat_pp_term_ub_den"
+    )
+    for n_s, num_s in pattern_match.findall(text):
         n = int(n_s)
         if min_n <= n <= max_n:
             entries.append(PPEntry(n=n, ub_num=int(num_s)))
+
+    # Current bucket-array format:
+    #   def prime_heat_pp_term_ub_bucket_k : Array (Nat × Nat) := #[
+    #     (10007, 123),
+    #     ...
+    #   ]
+    if not entries:
+        bucket_block = re.compile(
+            r"def\s+prime_heat_pp_term_ub_bucket_\d+\s*:\s*Array\s*\(Nat\s*×\s*Nat\)\s*:=\s*#\[(.*?)\n\]",
+            re.DOTALL,
+        )
+        tuple_pat = re.compile(r"\(\s*(\d+)\s*,\s*(\d+)\s*\)")
+        for block in bucket_block.findall(text):
+            for n_s, num_s in tuple_pat.findall(block):
+                n = int(n_s)
+                if min_n <= n <= max_n:
+                    entries.append(PPEntry(n=n, ub_num=int(num_s)))
+
     entries.sort(key=lambda e: e.n)
     if not entries:
         raise SystemExit("No entries parsed in requested range")
@@ -237,8 +260,11 @@ def main() -> None:
 
     digits = args.digits
     scale = 10**digits
+    # Keep pi lower bound independent from decimal scale used for log/sqrt rounding.
+    # This literal corresponds to 3.14159265358979323846.
     pi_lb_num = 314159265358979323846
-    pi_lb = Fraction(pi_lb_num, scale)
+    pi_lb_den = 10**20
+    pi_lb = Fraction(pi_lb_num, pi_lb_den)
 
     tasks = [
         (
@@ -285,6 +311,8 @@ def main() -> None:
     base_lines.append("import Q3.Proofs.PrimeCert.IntervalPilot")
     base_lines.append("import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowFull")
     base_lines.append("set_option maxHeartbeats 0")
+    base_lines.append("set_option linter.unnecessarySimpa false")
+    base_lines.append("set_option linter.unusedSimpArgs false")
     base_lines.append("")
     base_lines.append("/-!")
     base_lines.append("Auto-generated prime-power interval bounds (base).")
@@ -298,7 +326,7 @@ def main() -> None:
     base_lines.append("")
     base_lines.append("namespace Q3.Proofs.PrimeCert")
     base_lines.append("")
-    base_lines.append(f"def pi_lb : ℝ := ({pi_lb_num} : ℝ) / ({scale} : ℝ)")
+    base_lines.append(f"def pi_lb : ℝ := ({pi_lb_num} : ℝ) / ({pi_lb_den} : ℝ)")
     base_lines.append("lemma pi_lb_le_pi : pi_lb ≤ Real.pi := by")
     base_lines.append("  have h' : (pi_lb : ℝ) = (3.14159265358979323846 : ℝ) := by")
     base_lines.append("    norm_num [pi_lb]")
@@ -322,6 +350,8 @@ def main() -> None:
         lines: List[str] = []
         lines.append(f"import {base_mod}")
         lines.append("set_option maxHeartbeats 0")
+        lines.append("set_option linter.unnecessarySimpa false")
+        lines.append("set_option linter.unusedSimpArgs false")
         lines.append("")
         lines.append("/-!")
         lines.append(f"Auto-generated prime-power interval bounds for [{lo}, {hi}].")
@@ -588,6 +618,8 @@ def main() -> None:
     for lo, hi in chunks:
         agg_lines.append(f"import {mod_prefix}{out_path.stem}_{lo}_{hi}")
     agg_lines.append("set_option maxHeartbeats 0")
+    agg_lines.append("set_option linter.unnecessarySimpa false")
+    agg_lines.append("set_option linter.unusedSimpArgs false")
     agg_lines.append("")
     agg_lines.append("/-!")
     agg_lines.append("Auto-generated prime-power interval bounds (aggregator).")

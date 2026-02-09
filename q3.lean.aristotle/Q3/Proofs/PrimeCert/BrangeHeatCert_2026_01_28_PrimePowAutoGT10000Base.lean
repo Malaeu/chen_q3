@@ -2,6 +2,8 @@ import Mathlib
 import Q3.Proofs.PrimeCert.IntervalPilot
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowFull
 set_option maxHeartbeats 0
+set_option linter.unnecessarySimpa false
+set_option linter.unusedSimpArgs false
 
 /-!
 Auto-generated prime-power interval bounds (base).
