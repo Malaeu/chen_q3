@@ -263,6 +263,13 @@ def main() -> None:
         lines.append(f"  ({total_k} : ℚ) / {prefix}_den")
         lines.append("")
 
+    if bucket_filter is None:
+        lines.append(f"def {prefix}_ub_q_sum_get : Fin {prefix}_bucket_count -> ℚ")
+        for k in range(bucket_count):
+            lines.append(f"| ⟨{k}, _⟩ => {prefix}_ub_q_sum_bucket_{k}")
+        lines.append(f"| _ => {prefix}_ub_q_sum_bucket_{bucket_count - 1}")
+        lines.append("")
+
     lines.append("end Q3.Proofs.PrimeCert")
 
     outp.parent.mkdir(parents=True, exist_ok=True)

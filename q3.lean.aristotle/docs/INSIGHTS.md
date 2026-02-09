@@ -1245,3 +1245,23 @@ Execution update (2026-02-09, pilot complete):
   - no holes in new Lean pilot files (`rg -n "sorry|exact\\?|admit"`) ✅
 - Status: infrastructure/pilot is now formalized, but main axiom
   `prime_b_grid_bucket_bounds` is still open until the same certificate bridge is lifted from pilot to all buckets and all 20 grid points.
+
+Execution update (2026-02-09, i19 full buckets complete):
+- Extended generator output to expose full-bucket sum accessor when no filter is used:
+  `prime_b_grid_pp_i19_all_ub_q_sum_get : Fin bucket_count -> ℚ`.
+- Generated full i19 data module (all `k = 0..99`):
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets.lean`.
+- Added full i19 sanity-check module:
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets_Check.lean`.
+  It proves:
+  - per-bucket q-inequalities against `prime_b_grid_bucket_ub_q_get` for all buckets;
+  - casted real inequalities for all buckets;
+  - summed inequality
+    `∑ generated_bucket_sum_q ≤ ∑ interval_bucket_ub_q` at `i=19`.
+- Validation:
+  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets_Check` ✅
+  - no holes in new full-bucket Lean files (`rg -n "sorry|exact\\?|admit"`) ✅
+- Status: `i=19` now has full-bucket certificate-style numeric consistency checks, but
+  `prime_b_grid_bucket_bounds` remains open because the formal bridge from
+  `prime_b_grid_bucket_sum` to generated per-prime-power UB (`h_term_ub` chain)
+  is not yet integrated for all `i`.
