@@ -58,3 +58,4 @@ rho_oneK_tcritical_le_cstar_quarter.md: b644c90d-9934-4c95-a857-221e38620134  20
 2026-02-09 prime_heat_bounds_arch_data_target.lean (context API retry) :: bc87b055-be3c-4ab9-b1c2-f7018bf28b2c
 2026-02-09 prime_heat_bounds_arch_data_target.lean (CLI context-files minimal) :: fb520402-fb98-477d-8bf5-3f7688af9939
 2026-02-09 prime_b_grid_bucket_bounds_target.lean (CLI context-files minimal) :: cdac2fb6-28aa-4e31-8916-7e966ae67f25
+2026-02-09 prime_b_grid_arch_bounds_data_target.lean (CLI context-files minimal) :: c26314f1-e4f2-4ff5-ae30-7f48c31aa75f
