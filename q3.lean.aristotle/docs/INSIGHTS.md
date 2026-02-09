@@ -1231,3 +1231,17 @@ Concrete plan (5 steps):
 3) Generate companion bucket-sum comparison lemmas (`pp_sum_bucket ≤ bucket_ub`) in the `PpSumBounds` style, then wire a checker theorem `prime_b_grid_bucket_sum_le_pp_ub`.
 4) Lift pilot to all `i : Fin 20` and all buckets, replace `axiom prime_b_grid_bucket_bounds` with theorem-backed `prime_b_grid_bucket_data`.
 5) Validate with `lake env lean Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`, `lake env lean Q3/CheckAxioms.lean`, `./scripts/check_axioms.sh`.
+
+Execution update (2026-02-09, pilot complete):
+- Added generator `scripts/prime_brange_grid_pp_interval_checker.py` (per-prime-power UB tables for a fixed grid index, bucket-filtered output, Lean `ArrayLookup` data format).
+- Generated pilot data module:
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePowPilot_i19_Buckets0_99.lean`
+  for `i = 19`, buckets `0, 99`.
+- Added pilot sanity-check module:
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePowPilot_i19_Check.lean`
+  proving generated bucket sums are within existing interval `bucket_ub` table for `k=0` and `k=99`.
+- Validation:
+  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePowPilot_i19_Check` ✅
+  - no holes in new Lean pilot files (`rg -n "sorry|exact\\?|admit"`) ✅
+- Status: infrastructure/pilot is now formalized, but main axiom
+  `prime_b_grid_bucket_bounds` is still open until the same certificate bridge is lifted from pilot to all buckets and all 20 grid points.
