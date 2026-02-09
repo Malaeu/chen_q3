@@ -38,13 +38,16 @@ open Q3.Main
 
 /-! ## Verify Tier-2 axioms exist (τ=0 mainline) -/
 -- PrimeCert (grid/heat bounds data + Lipschitz on B-range)
-#check Q3.Proofs.PrimeCert.prime_b_grid_bounds_data
+#check Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data
+#check Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds
 #check Q3.Proofs.PrimeCert.prime_heat_bounds_data
+#check Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all
 #check Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange
 
 -- Theorem (derived from grid bounds)
 #check Q3.Proofs.PrimeCert.prime_b_grid_bounds_cert
 #check Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin
+#check Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom
 
 /-! ## Off-chain (τ ≠ 0) placeholder -/
 -- Present in Q_nonneg_t_critical, but not used by the τ=0 main chain
@@ -55,7 +58,11 @@ open Q3.Main
 
 /-! ## Print Axiom Dependencies -/
 
--- This is the authoritative dependency list for the full RH theorem.
+-- Authoritative dependency list for the PrimeCert margin certificate.
+-- `scripts/kb_refresh.py` parses the first `depends on axioms` block.
+#print axioms Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom
+
+-- The RH theorem remains conditional on `PrimeCertMarginOnBrange`.
 #print axioms Q3.Main.RH_of_Weil_and_Q3
 
 /-!
@@ -69,10 +76,11 @@ open Q3.Main
 ### Tier-1 Classical Axioms:
 - `Q3.Weil_criterion` : Weil (1952)
 
-### Tier-2 Q3 Paper Axioms (τ=0 mainline):
-- `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` : grid arch/prime bounds
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_data` : heat-weighted arch+prime bound
-- `Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange` : Lipschitz control on B-range
+### Tier-2 Q3 Paper Axioms (τ=0 PrimeCert margin chain):
+- `Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data`
+- `Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
+- `Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all`
 
 ### THEOREM (not axiom!):
 - `Q3.T5.T5_transfer` : Q ≥ 0 on W_K

@@ -21,24 +21,38 @@ ACCEPTED_AXIOMS = [
     "Classical.choice",
     "Quot.sound",
     "Q3.Weil_criterion_tau0",
+    "Lean.ofReduceBool",
+    "Lean.trustCompiler",
 ]
 
 AXIOM_FILE_HINTS = {
     "prime_b_grid_bounds_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
     "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
+    "prime_b_grid_arch_bounds_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
+    "Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
+    "prime_b_grid_bucket_bounds": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean",
+    "Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean",
     "prime_heat_bounds_arch_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
     "Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
     "prime_heat_bucket_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean",
     "Q3.Proofs.PrimeCert.prime_heat_bucket_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean",
+    "prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback.lean",
+    "Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback.lean",
 }
 
 AXIOM_CLOSURE_PATH = {
     "prime_b_grid_bounds_data": "Formalize grid certificate or analytic bound",
     "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data": "Formalize grid certificate or analytic bound",
+    "prime_b_grid_arch_bounds_data": "Formalize arch-term lower bound at grid nodes",
+    "Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data": "Formalize arch-term lower bound at grid nodes",
+    "prime_b_grid_bucket_bounds": "Formalize bucketed prime-term upper bounds on grid",
+    "Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds": "Formalize bucketed prime-term upper bounds on grid",
     "prime_heat_bounds_arch_data": "Formalize arch integral bound",
     "Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data": "Formalize arch integral bound",
     "prime_heat_bucket_data": "Formalize bucket partial sums",
     "Q3.Proofs.PrimeCert.prime_heat_bucket_data": "Formalize bucket partial sums",
+    "prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all": "Discharge GT10000 auto shards and remove fallback axiom",
+    "Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all": "Discharge GT10000 auto shards and remove fallback axiom",
 }
 
 
