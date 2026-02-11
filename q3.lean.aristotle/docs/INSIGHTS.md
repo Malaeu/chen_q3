@@ -1265,3 +1265,21 @@ Execution update (2026-02-09, i19 full buckets complete):
   `prime_b_grid_bucket_bounds` remains open because the formal bridge from
   `prime_b_grid_bucket_sum` to generated per-prime-power UB (`h_term_ub` chain)
   is not yet integrated for all `i`.
+
+Execution update (2026-02-11, i19 bridge module):
+- Added bridge module:
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Bridge.lean`.
+- New proven links in Lean:
+  - `∑ pp_i19_all_bucket_sum_q ≤ prime_b_grid_prime_sum_ub_q_get i19`;
+  - casted real version of the same total inequality;
+  - reusable implication
+    `bucket_sum i19 k ≤ generated_pp_sum i19 k -> bucket_sum i19 k ≤ interval_bucket_ub i19 k`.
+- Added reusable local closure interface:
+  - `PrimeBGridBucketData i19` and
+  - `prime_b_grid_prime_sum_up_to i19 ≤ prime_b_grid_prime_sum_ub i19`
+  are now derivable from a single assumption:
+  `h_pp_cover : bucket_sum ≤ generated_pp_bucket_sum` (pointwise per bucket).
+- Status:
+  - for `i=19`, the `generated_pp <= interval_ub` side is fully wired into the checker chain;
+  - remaining blocker is explicit and isolated: prove `h_pp_cover` (pointwise cover from
+    actual bucket sums to generated pp sums), then lift from `i=19` to all 20 grid points.
