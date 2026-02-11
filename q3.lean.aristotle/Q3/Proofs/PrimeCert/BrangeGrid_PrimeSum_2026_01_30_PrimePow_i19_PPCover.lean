@@ -73,6 +73,19 @@ lemma prime_b_grid_pp_i19_all_bucket_sum_eq_sum
   simp [prime_b_grid_pp_i19_all_bucket_sum, prime_b_grid_pp_i19_all_bucket_q_sum,
     prime_b_grid_pp_i19_all_ub, Rat.cast_sum]
 
+lemma prime_b_grid_pp_i19_all_bucket_q_sum_le_get
+    (k : Fin prime_b_grid_bucket_count) :
+    prime_b_grid_pp_i19_all_bucket_q_sum k ≤ prime_b_grid_pp_i19_all_ub_q_sum_get k := by
+  fin_cases k <;> native_decide
+
+lemma prime_b_grid_pp_i19_all_bucket_sum_le_get
+    (k : Fin prime_b_grid_bucket_count) :
+    prime_b_grid_pp_i19_all_bucket_sum k ≤
+      ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ) := by
+  change ((prime_b_grid_pp_i19_all_bucket_q_sum k : ℚ) : ℝ) ≤
+    ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ)
+  exact (Rat.cast_le (K := ℝ)).2 (prime_b_grid_pp_i19_all_bucket_q_sum_le_get k)
+
 lemma prime_b_grid_bucket_sum_i19_le_pp_bucket_sum_of_term_bounds
     (h_term_ub :
       ∀ n : ℕ, IsPrimePow n → n ≤ prime_cert_N →
@@ -108,11 +121,7 @@ lemma prime_b_grid_bucket_sum_i19_le_pp_bucket_sum_of_term_bounds
 lemma prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds
     (h_term_ub :
       ∀ n : ℕ, IsPrimePow n → n ≤ prime_cert_N →
-        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n)
-    (h_pp_sum_get :
-      ∀ k : Fin prime_b_grid_bucket_count,
-        prime_b_grid_pp_i19_all_bucket_sum k ≤
-          ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ)) :
+        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n) :
     ∀ k : Fin prime_b_grid_bucket_count,
       prime_b_grid_bucket_sum prime_b_grid_i19 k ≤
         ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ) := by
@@ -121,59 +130,43 @@ lemma prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds
     prime_b_grid_bucket_sum prime_b_grid_i19 k ≤
         prime_b_grid_pp_i19_all_bucket_sum k :=
           prime_b_grid_bucket_sum_i19_le_pp_bucket_sum_of_term_bounds h_term_ub k
-    _ ≤ ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ) :=
-          h_pp_sum_get k
+    _ ≤ ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ) := by
+          exact prime_b_grid_pp_i19_all_bucket_sum_le_get k
 
 lemma prime_b_grid_bucket_bounds_i19_of_term_bounds
     (h_term_ub :
       ∀ n : ℕ, IsPrimePow n → n ≤ prime_cert_N →
-        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n)
-    (h_pp_sum_get :
-      ∀ k : Fin prime_b_grid_bucket_count,
-        prime_b_grid_pp_i19_all_bucket_sum k ≤
-          ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ)) :
+        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n) :
     ∀ k : Fin prime_b_grid_bucket_count,
       prime_b_grid_bucket_sum prime_b_grid_i19 k ≤
         prime_b_grid_bucket_ub prime_b_grid_i19 k := by
   exact prime_b_grid_bucket_bounds_i19_of_pp_cover
-    (prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds h_term_ub h_pp_sum_get)
+    (prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds h_term_ub)
 
 lemma prime_b_grid_bucket_data_i19_of_term_bounds
     (h_term_ub :
       ∀ n : ℕ, IsPrimePow n → n ≤ prime_cert_N →
-        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n)
-    (h_pp_sum_get :
-      ∀ k : Fin prime_b_grid_bucket_count,
-        prime_b_grid_pp_i19_all_bucket_sum k ≤
-          ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ)) :
+        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n) :
     PrimeBGridBucketData prime_b_grid_i19 := by
   exact prime_b_grid_bucket_data_i19_of_pp_cover
-    (prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds h_term_ub h_pp_sum_get)
+    (prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds h_term_ub)
 
 lemma prime_b_grid_prime_sum_up_to_i19_le_of_term_bounds
     (h_term_ub :
       ∀ n : ℕ, IsPrimePow n → n ≤ prime_cert_N →
-        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n)
-    (h_pp_sum_get :
-      ∀ k : Fin prime_b_grid_bucket_count,
-        prime_b_grid_pp_i19_all_bucket_sum k ≤
-          ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ)) :
+        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n) :
     prime_b_grid_prime_sum_up_to prime_b_grid_i19 ≤
       prime_b_grid_prime_sum_ub prime_b_grid_i19 := by
   exact prime_b_grid_prime_sum_up_to_i19_le_of_pp_cover
-    (prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds h_term_ub h_pp_sum_get)
+    (prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds h_term_ub)
 
 lemma prime_b_grid_prime_sum_up_to_i19_le_table_of_term_bounds
     (h_term_ub :
       ∀ n : ℕ, IsPrimePow n → n ≤ prime_cert_N →
-        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n)
-    (h_pp_sum_get :
-      ∀ k : Fin prime_b_grid_bucket_count,
-        prime_b_grid_pp_i19_all_bucket_sum k ≤
-          ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ)) :
+        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n) :
     prime_b_grid_prime_sum_up_to prime_b_grid_i19 ≤
       prime_b_grid_prime_sum prime_b_grid_i19 := by
   exact prime_b_grid_prime_sum_up_to_i19_le_table_of_pp_cover
-    (prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds h_term_ub h_pp_sum_get)
+    (prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds h_term_ub)
 
 end Q3.Proofs.PrimeCert

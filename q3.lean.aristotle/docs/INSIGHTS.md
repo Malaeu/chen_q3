@@ -1329,3 +1329,35 @@ Execution update (2026-02-11, i19 ppcover scaffold):
   the old `h_pp_cover` is now split into two explicit obligations:
   1) pointwise term bound on prime powers (`h_term_ub`);
   2) link from filtered sum definition to generated bucket-sum table (`h_pp_sum_get`).
+
+Execution update (2026-02-11, i19 `h_pp_sum_get` closed):
+- Reworked generator `scripts/prime_brange_grid_pp_interval_checker.py` to keep
+  executable array lookup declarations while avoiding global noncomputability:
+  - removed global `noncomputable section`;
+  - marked only real-valued defs (`..._B`, `..._ub`) as `noncomputable`;
+  - added `set_option maxRecDepth 200000` to compile large bucket arrays.
+- Regenerated:
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets.lean`.
+- Verified evaluator path is now executable:
+  - `#eval prime_b_grid_pp_i19_all_ub_q_get 2` and `#eval ... 6` run;
+  - `native_decide` on equalities with `prime_b_grid_pp_i19_all_ub_q_get` succeeds.
+- Closed the `h_pp_sum_get` side directly in
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean`:
+  - added
+    `prime_b_grid_pp_i19_all_bucket_q_sum_le_get` via
+    `fin_cases + native_decide` for all buckets;
+  - added casted real version
+    `prime_b_grid_pp_i19_all_bucket_sum_le_get`;
+  - removed `h_pp_sum_get` argument from all `..._of_term_bounds` wrappers.
+- Validation:
+  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets` ✅
+  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets_Check` ✅
+  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Bridge` ✅
+  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover` ✅
+  - `lake env lean` on all four chain files ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅
+- Status:
+  - for `i=19`, `h_pp_cover` is now reduced to the single analytic obligation
+    `h_term_ub` (pointwise prime-power term bound);
+  - global axiom `prime_b_grid_bucket_bounds` remains until this is lifted from
+    `i=19` to all grid points.
