@@ -1310,3 +1310,22 @@ Concrete implementation plan:
    `prime_b_grid_bucket_bounds_i19_of_pp_cover`.
 5) Only after hole-free integration, lift from `i=19` to all `i : Fin 20` and rerun
    `lake env lean Q3/CheckAxioms.lean` + `scripts/check_axioms.sh`.
+
+Execution update (2026-02-11, i19 ppcover scaffold):
+- Added module:
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean`.
+- New proven reductions:
+  - `prime_b_grid_bucket_sum_i19_le_pp_bucket_sum_of_term_bounds`:
+    reduces bucket cover to pointwise prime-power term bounds on `n ≤ prime_cert_N`.
+  - `..._of_term_bounds` variants for:
+    `prime_b_grid_bucket_bounds_i19`,
+    `PrimeBGridBucketData prime_b_grid_i19`,
+    `prime_b_grid_prime_sum_up_to i19 ≤ prime_b_grid_prime_sum_ub i19`,
+    and table version.
+- Important technical finding:
+  attempts to discharge `sum_def <= generated_sum_get` via `native_decide` fail because
+  generated declarations used here are `noncomputable` (no executable code for evaluator).
+- Current blocker shape (narrowed):
+  the old `h_pp_cover` is now split into two explicit obligations:
+  1) pointwise term bound on prime powers (`h_term_ub`);
+  2) link from filtered sum definition to generated bucket-sum table (`h_pp_sum_get`).
