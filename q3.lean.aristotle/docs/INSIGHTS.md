@@ -1283,3 +1283,30 @@ Execution update (2026-02-11, i19 bridge module):
   - for `i=19`, the `generated_pp <= interval_ub` side is fully wired into the checker chain;
   - remaining blocker is explicit and isolated: prove `h_pp_cover` (pointwise cover from
     actual bucket sums to generated pp sums), then lift from `i=19` to all 20 grid points.
+
+## Synthesis (2026-02-11, in progress) — closing `h_pp_cover` for `i=19`
+
+Target and chain:
+- Immediate blocker: `h_pp_cover` in
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Bridge.lean`
+  (`bucket_sum i19 k ≤ generated_pp_bucket_sum i19 k` for all `k`).
+- This is the missing implication before replacing
+  `axiom prime_b_grid_bucket_bounds` in
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`.
+
+Search synthesis:
+- Local embedding queries (4x via `scripts/research_oracle.py`) confirm the same pattern:
+  `prime_heat_bucket_data_of_pp_bounds` is the nearest reusable scaffold.
+- External check (mathlib docs + `YuanheZ/lean-stat-learning-theory`) gives style guidance,
+  but no drop-in theorem for our PrimeCert bucket-cover node.
+
+Concrete implementation plan:
+1) Add a grid analogue of the heat pp-bound scaffold:
+   `bucket_sum_le_pp_ub_of_pp_bounds` for fixed `i` and filtered prime powers.
+2) Add/verify the missing filter lemma for grid buckets (`sum over filter IsPrimePow` form).
+3) Build a small auto-proof pilot for `i=19` (first bucket slice) to validate theorem shape
+   and compile/heartbeat profile.
+4) If pilot compiles cleanly, scale generator path bucket-by-bucket and wire to
+   `prime_b_grid_bucket_bounds_i19_of_pp_cover`.
+5) Only after hole-free integration, lift from `i=19` to all `i : Fin 20` and rerun
+   `lake env lean Q3/CheckAxioms.lean` + `scripts/check_axioms.sh`.
