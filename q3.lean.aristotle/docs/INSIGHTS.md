@@ -1462,3 +1462,29 @@ Execution update (2026-02-12, in progress, shard-stabilized):
   This cleanly splits obligations into:
   1) closed low range (`n ≤ 2000`) via generated pointwise theorem;
   2) remaining high-range assumption (`2001 ≤ n ≤ prime_cert_N`).
+
+Execution update (2026-02-12, in progress, GT10000 narrowing):
+- Generated and built additional pointwise package for `2001 ≤ n ≤ 10000`:
+  - aggregator:
+    `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PointwiseGT2000.lean`
+  - shard files:
+    `...PointwiseGT2000_2001_2500.lean` through `...PointwiseGT2000_9501_10000.lean`
+  - theorem:
+    `prime_b_grid_weight_term_i19_le_pp_ub_of_2001_10000_primepow_all`.
+- During integration, found/closed a namespace collision with existing pointwise base
+  (`pi_ub`, `pi_le_pi_ub`, `pi_ub_pos`) by renaming GT2000-base constants/lemmas to:
+  `pi_ub_gt2000`, `pi_le_pi_ub_gt2000`, `pi_ub_gt2000_pos`.
+- Updated
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean`
+  with new wrappers:
+  - `prime_b_grid_weight_term_i19_le_pp_ub_of_term_bounds_gt10000`
+  - `prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds_gt10000`
+  so coverage is now:
+  1) `n ≤ 2000` (Pointwise),
+  2) `2001 ≤ n ≤ 10000` (PointwiseGT2000),
+  3) only `10001 ≤ n ≤ prime_cert_N` remains as assumption.
+- Validation:
+  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PointwiseGT2000` ✅
+  - `lake env lean Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean` ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅
+  - `./scripts/check_axioms.sh` ✅
