@@ -41,6 +41,33 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Synthesis (2026-02-12, in progress) — Закрытие grid `i19` узла `h_term_ub`
+
+Целевой блокер:
+- `h_term_ub` в `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean`,
+  который нужен для `prime_b_grid_bucket_bounds_i19_of_term_bounds`.
+- Без него `prime_b_grid_bucket_bounds` в `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`
+  остаётся аксиомой в mainline.
+
+Что подтвердили поиском:
+- Embedding-поиск (`scripts/research_oracle.py`, 5 запросов) дал в основном общие PrimeCert/IntervalChecker заметки,
+  прямого готового `i19` pointwise-helper не найдено.
+- Внешний обзор `https://github.com/YuanheZ/lean-stat-learning-theory`:
+  `lean-toolchain = v4.27.0-rc1`, `mathlib@master`, активное использование `Finset.sum_le_sum`,
+  но нет готовой инфраструктуры под наш PrimeCert prime-power cert chain.
+
+План (8 шагов, с указателями):
+1) Добавить отдельный узел `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise.lean`
+   с целевой леммой `∀ n, IsPrimePow n → n ≤ prime_cert_N → ... ≤ prime_b_grid_pp_i19_all_ub n`.
+2) Сначала поднять пилотный proof-shape на крайних бакетах (`k=0`, `k=99`) через
+   `BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets.lean` и `..._AllBuckets_Check.lean`.
+3) Сформировать узкий Aristotle-запрос только на эту точечную лемму (без `sorry`/`exact?`).
+4) Интегрировать proof в `..._Pointwise.lean` и провязать в `..._PPCover.lean`.
+5) Заменить ветку `i = 19` в `BrangeGrid_PrimeSum_2026_01_30_Data.lean` на теоремный путь.
+6) Прогнать `lake env lean` по `..._Pointwise.lean`, `..._PPCover.lean`, `..._Data.lean`.
+7) Прогнать `lake env lean Q3/CheckAxioms.lean` и `./scripts/check_axioms.sh`.
+8) Если интеграция ломается: откатить только провалившуюся лемму и повторить Aristotle-итерацию адресно.
+
 ## Synthesis (2026-02-06, in progress) — Закрытие `h_margin_cert` до single-axiom chain
 
 Цель: перейти от `Q3.Main.RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange)` к версии без `h_margin_cert`,
