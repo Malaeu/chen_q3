@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "${ROOT_DIR}"
+
+EXPORT_FILE="session_exports/chat_latest.md"
+OUTPUT_FILE="docs/insides_knowledge_base_personal.md"
+TITLE="Выжимка x-insider"
+MAX_INSIGHTS=8
+COUNT=""
+WINDOW_LABEL=""
+EXTRA_TAG_ARGS=()
+
+usage() {
+  cat <<'EOF'
+Usage:
+  ./scripts/x-insider [N] [--title TEXT] [--max-insights N] [--tag TAG] [--output FILE]
+
+Examples:
+  ./scripts/x-insider
+  ./scripts/x-insider 10
+  ./scripts/x-insider 5 --title "Выжимка за последние 5" --tag chat
+EOF
+}
+
+is_int() {
+  [[ "$1" =~ ^[0-9]+$ ]]
+}
+
+if [[ $# -gt 0 ]] && is_int "$1"; then
+  COUNT="$1"
+  shift
+fi
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --title)
+      TITLE="${2:?missing value for --title}"
+      shift 2
+      ;;
+    --max-insights)
+      MAX_INSIGHTS="${2:?missing value for --max-insights}"
+      shift 2
+      ;;
+    --tag)
+      EXTRA_TAG_ARGS+=("--tag" "${2:?missing value for --tag}")
+      shift 2
+      ;;
+    --output)
+      OUTPUT_FILE="${2:?missing value for --output}"
+      shift 2
+      ;;
+    --help|-h)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown argument: $1" >&2
+      usage >&2
+      exit 2
+      ;;
+  esac
+done
+
+if [[ -n "${COUNT}" ]]; then
+  ./scripts/x-export "${COUNT}" --output "${EXPORT_FILE}"
+else
+  ./scripts/x-export --output "${EXPORT_FILE}"
+fi
+
+SELECTED_COUNT="$(
+  rg -n '^Messages:' "${EXPORT_FILE}" \
+    | head -n1 \
+    | sed -E 's/.*Messages: ([0-9]+) of .*/\1/'
+)"
+
+if [[ -z "${SELECTED_COUNT}" ]]; then
+  if [[ -n "${COUNT}" ]]; then
+    SELECTED_COUNT="${COUNT}"
+  else
+    SELECTED_COUNT="1000000"
+  fi
+fi
+
+if [[ -n "${COUNT}" ]]; then
+  WINDOW_LABEL="последние ${COUNT} сообщений (через x-export)"
+else
+  WINDOW_LABEL="вся последняя сессия (${SELECTED_COUNT} сообщений, через x-export)"
+fi
+
+python3 skills/x-insider/scripts/append_chat_insights.py \
+  --from-chat-file "${EXPORT_FILE}" \
+  --messages-window "${SELECTED_COUNT}" \
+  --max-insights "${MAX_INSIGHTS}" \
+  --window "${WINDOW_LABEL}" \
+  --title "${TITLE}" \
+  --output "${OUTPUT_FILE}" \
+  "${EXTRA_TAG_ARGS[@]}"
+
+echo "[OK] x-insider done -> ${OUTPUT_FILE}"

@@ -1,5 +1,6 @@
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000_TestBase
 set_option maxHeartbeats 0
+set_option maxRecDepth 200000
 
 /-!
 Auto-generated prime-power interval bounds for [10001, 10200].
@@ -2643,32 +2644,31 @@ lemma prime_heat_pp_auto_list_10001_10200_spec :
 lemma prime_heat_weight_term_le_pp_ub_of_10001_10200_primepow_mem {n : ℕ}
     (hmem : n ∈ prime_heat_pp_auto_list_10001_10200) :
     prime_heat_weight_term n ≤ Full.prime_heat_pp_term_ub n := by
-  have hcases : n = 10007 ∨ n = 10009 ∨ n = 10037 ∨ n = 10039 ∨ n = 10061 ∨ n = 10067 ∨ n = 10069 ∨ n = 10079 ∨ n = 10091 ∨ n = 10093 ∨ n = 10099 ∨ n = 10103 ∨ n = 10111 ∨ n = 10133 ∨ n = 10139 ∨ n = 10141 ∨ n = 10151 ∨ n = 10159 ∨ n = 10163 ∨ n = 10169 ∨ n = 10177 ∨ n = 10181 ∨ n = 10193 := by
-    simpa [prime_heat_pp_auto_list_10001_10200] using hmem
-  rcases hcases with h0 | h1 | h2 | h3 | h4 | h5 | h6 | h7 | h8 | h9 | h10 | h11 | h12 | h13 | h14 | h15 | h16 | h17 | h18 | h19 | h20 | h21 | h22
-  · simpa [h0] using prime_heat_weight_term_le_pp_ub_10007
-  · simpa [h1] using prime_heat_weight_term_le_pp_ub_10009
-  · simpa [h2] using prime_heat_weight_term_le_pp_ub_10037
-  · simpa [h3] using prime_heat_weight_term_le_pp_ub_10039
-  · simpa [h4] using prime_heat_weight_term_le_pp_ub_10061
-  · simpa [h5] using prime_heat_weight_term_le_pp_ub_10067
-  · simpa [h6] using prime_heat_weight_term_le_pp_ub_10069
-  · simpa [h7] using prime_heat_weight_term_le_pp_ub_10079
-  · simpa [h8] using prime_heat_weight_term_le_pp_ub_10091
-  · simpa [h9] using prime_heat_weight_term_le_pp_ub_10093
-  · simpa [h10] using prime_heat_weight_term_le_pp_ub_10099
-  · simpa [h11] using prime_heat_weight_term_le_pp_ub_10103
-  · simpa [h12] using prime_heat_weight_term_le_pp_ub_10111
-  · simpa [h13] using prime_heat_weight_term_le_pp_ub_10133
-  · simpa [h14] using prime_heat_weight_term_le_pp_ub_10139
-  · simpa [h15] using prime_heat_weight_term_le_pp_ub_10141
-  · simpa [h16] using prime_heat_weight_term_le_pp_ub_10151
-  · simpa [h17] using prime_heat_weight_term_le_pp_ub_10159
-  · simpa [h18] using prime_heat_weight_term_le_pp_ub_10163
-  · simpa [h19] using prime_heat_weight_term_le_pp_ub_10169
-  · simpa [h20] using prime_heat_weight_term_le_pp_ub_10177
-  · simpa [h21] using prime_heat_weight_term_le_pp_ub_10181
-  · simpa [h22] using prime_heat_weight_term_le_pp_ub_10193
+  classical
+  fin_cases hmem
+  · simpa using prime_heat_weight_term_le_pp_ub_10007
+  · simpa using prime_heat_weight_term_le_pp_ub_10009
+  · simpa using prime_heat_weight_term_le_pp_ub_10037
+  · simpa using prime_heat_weight_term_le_pp_ub_10039
+  · simpa using prime_heat_weight_term_le_pp_ub_10061
+  · simpa using prime_heat_weight_term_le_pp_ub_10067
+  · simpa using prime_heat_weight_term_le_pp_ub_10069
+  · simpa using prime_heat_weight_term_le_pp_ub_10079
+  · simpa using prime_heat_weight_term_le_pp_ub_10091
+  · simpa using prime_heat_weight_term_le_pp_ub_10093
+  · simpa using prime_heat_weight_term_le_pp_ub_10099
+  · simpa using prime_heat_weight_term_le_pp_ub_10103
+  · simpa using prime_heat_weight_term_le_pp_ub_10111
+  · simpa using prime_heat_weight_term_le_pp_ub_10133
+  · simpa using prime_heat_weight_term_le_pp_ub_10139
+  · simpa using prime_heat_weight_term_le_pp_ub_10141
+  · simpa using prime_heat_weight_term_le_pp_ub_10151
+  · simpa using prime_heat_weight_term_le_pp_ub_10159
+  · simpa using prime_heat_weight_term_le_pp_ub_10163
+  · simpa using prime_heat_weight_term_le_pp_ub_10169
+  · simpa using prime_heat_weight_term_le_pp_ub_10177
+  · simpa using prime_heat_weight_term_le_pp_ub_10181
+  · simpa using prime_heat_weight_term_le_pp_ub_10193
 
 lemma prime_heat_weight_term_le_pp_ub_of_10001_10200_primepow {n : ℕ}
     (hn : IsPrimePow n) (hlo : 10001 ≤ n) (hhi : n ≤ 10200) :

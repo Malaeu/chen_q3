@@ -41,33 +41,6 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
-## Synthesis (2026-02-12, in progress) — Закрытие grid `i19` узла `h_term_ub`
-
-Целевой блокер:
-- `h_term_ub` в `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean`,
-  который нужен для `prime_b_grid_bucket_bounds_i19_of_term_bounds`.
-- Без него `prime_b_grid_bucket_bounds` в `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`
-  остаётся аксиомой в mainline.
-
-Что подтвердили поиском:
-- Embedding-поиск (`scripts/research_oracle.py`, 5 запросов) дал в основном общие PrimeCert/IntervalChecker заметки,
-  прямого готового `i19` pointwise-helper не найдено.
-- Внешний обзор `https://github.com/YuanheZ/lean-stat-learning-theory`:
-  `lean-toolchain = v4.27.0-rc1`, `mathlib@master`, активное использование `Finset.sum_le_sum`,
-  но нет готовой инфраструктуры под наш PrimeCert prime-power cert chain.
-
-План (8 шагов, с указателями):
-1) Добавить отдельный узел `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise.lean`
-   с целевой леммой `∀ n, IsPrimePow n → n ≤ prime_cert_N → ... ≤ prime_b_grid_pp_i19_all_ub n`.
-2) Сначала поднять пилотный proof-shape на крайних бакетах (`k=0`, `k=99`) через
-   `BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets.lean` и `..._AllBuckets_Check.lean`.
-3) Сформировать узкий Aristotle-запрос только на эту точечную лемму (без `sorry`/`exact?`).
-4) Интегрировать proof в `..._Pointwise.lean` и провязать в `..._PPCover.lean`.
-5) Заменить ветку `i = 19` в `BrangeGrid_PrimeSum_2026_01_30_Data.lean` на теоремный путь.
-6) Прогнать `lake env lean` по `..._Pointwise.lean`, `..._PPCover.lean`, `..._Data.lean`.
-7) Прогнать `lake env lean Q3/CheckAxioms.lean` и `./scripts/check_axioms.sh`.
-8) Если интеграция ломается: откатить только провалившуюся лемму и повторить Aristotle-итерацию адресно.
-
 ## Synthesis (2026-02-06, in progress) — Закрытие `h_margin_cert` до single-axiom chain
 
 Цель: перейти от `Q3.Main.RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange)` к версии без `h_margin_cert`,
@@ -138,18 +111,6 @@ Range clarification (2026-02-06):
 - Практически это означает:
   нужно закрыть конечное множество prime powers в диапазоне
   `(10000, 1_000_000]` (не весь `ℕ`).
-
-Update (2026-02-09) — GT10000 fallback removed
-- `BrangeHeatCert_2026_01_28_Checker.lean` switched from
-  `PrimePowAutoGT10000Fallback` to `PrimePowAutoGT10000`.
-- `prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all` is now a theorem
-  from the GT10000 shard chain (no fallback axiom in the mainline path).
-- Name-collision fix applied in bucket0 auto files:
-  `pi_lb* -> pi_lb_bucket0*` to avoid clashes with GT10000 base module.
-- Verification: `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`,
-  `lake env lean Q3/CheckAxioms.lean`, `./scripts/check_axioms.sh`.
-- Remaining PrimeCert blockers in the chain:
-  `prime_heat_bounds_arch_data`, `prime_b_grid_bucket_bounds`, `prime_b_grid_arch_bounds_data`.
 
 ## Decision (2026-02-02) — PrimeCert closure: formal numeric certificates now, analytic path later
 
@@ -1175,316 +1136,40 @@ Plan (5–10 lines, concrete pointers):
     (e.g. `MemoryHigh=36G`, `MemoryMax=48G`) and keep the default slice
     limits unchanged for regular work.
 
-## Synthesis (2026-02-09, in progress) — PrimeCert final 3 blockers (`prime_heat_bounds_arch_data`, `prime_b_grid_bucket_bounds`, `prime_b_grid_arch_bounds_data`)
+## Synthesis (2026-02-10, in progress) — Step 2 GT10000 blocker: deep disjunction elaboration
 
-Target and chain wiring:
-- `prime_heat_bounds_arch_data` in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean` (feeds `prime_heat_bounds_cert`).
-- `prime_b_grid_bucket_bounds` in `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean` (feeds `prime_b_grid_prime_term_le_prime_ub_all`).
-- `prime_b_grid_arch_bounds_data` in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` (final grid arch node).
+- Target: unblock `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`
+  by replacing the last fallback axiom path for `n > 10000`.
+- Root cause (code-level): GT10000 shard mem-lemmas generated a giant
+  `have hcases : n = ... ∨ ...` and `rcases hcases with ...` tree
+  (about 1k branches per shard), which is a recursion/elaboration hotspot.
+- Evidence pointers:
+  - `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000_10001_20000.lean`
+    (around `prime_heat_weight_term_le_pp_ub_of_10001_20000_primepow_mem`).
+  - Generator path in `scripts/prime_brange_heat_pp_auto.py` (mem-lemma emission block).
+- External cross-check: `lean-stat-learning-theory` (`7b82b13`) uses
+  small-lemma decomposition and local heartbeat tuning, and does not rely on
+  giant OR-dispatch chains for this kind of branching.
+- Applied workaround:
+  1. Generator now emits `classical; fin_cases hmem` for mem dispatch.
+  2. Existing GT10000 shard files were migrated from `hcases/rcases` to `fin_cases`.
+- Smoke verification:
+  - `timeout 240 lake build +Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000_10001_20000:olean`
+    reaches long compile phase without immediate recursion-depth crash (`EXIT=124`, timeout).
+  - `timeout 240 lake build +Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000:olean`
+    also proceeds without early compile errors (`EXIT=124`, timeout).
+- Next checkpoint:
+  - run isolated long build (`scripts/run_heavy.sh`) to completion and confirm
+    `.olean` for GT10000 shards + aggregator, then re-run
+    `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`.
 
-Embedding search (local index, 4 queries via `scripts/research_oracle.py`):
-- Top hits reconfirm the same blocker map: interval checker files are scaffold-level; theorem bridges are still missing for these 3 nodes.
-- Prior notes indicate the intended closure route is theorem-generating cert/checker modules, not direct axioms.
+### Strategy memo (фиксируем, чтобы не забыть)
 
-External web search (mathlib docs/github):
-- No immediate built-in interval tactic path was identified for this specific digamma/arch integral closure under current imports.
-
-Concrete plan:
-1) Keep `prime_heat_bounds_arch_data` as immediate target; build local helper block for reusable inequalities (`BrangeHeatCert_2026_01_28_ArchHelpers.lean`).
-2) Attempt targeted Aristotle iteration on a single theorem file for `prime_heat_bounds_arch_data` (formal mode, no `exact?`/`sorry` integration).
-3) If Aristotle output has holes or import-context failure: do not integrate; iterate only this lemma with explicit context API.
-4) After arch closure, apply same pattern to `prime_b_grid_bucket_bounds` (checker bridge in `BrangeGrid_PrimeSum_2026_01_30_Checker.lean`).
-5) Then close `prime_b_grid_arch_bounds_data` in `BrangeCert_2046.lean` and re-run `Q3/CheckAxioms.lean` + `scripts/check_axioms.sh`.
-
-Execution update (2026-02-09):
-- Added helper module: `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_ArchHelpers.lean` (sup->sum and integral-scaling helpers).
-- Added targeted Aristotle input: `aristotle_input/prime_heat_bounds_arch_data_target.lean`.
-- First Aristotle run failed on context import (`unknown module prefix Q3`); retried using Python API with explicit context files.
-- Active project id for context-aware run: `a64e2be8-7def-4d5c-8566-b4e2da9641c7`.
-- Aristotle outcome update (2026-02-09, same target):
-  - `f296eef2-5f52-4560-a5b0-5a452718c495` and `a64e2be8-7def-4d5c-8566-b4e2da9641c7`
-    both returned import-context failure (`unknown module prefix 'Q3'`) and left `sorry`.
-  - Conclusion: for this node, current Aristotle infra path is blocked at project-context upload;
-    no code integrated from these outputs.
-
-## Synthesis (2026-02-09, in progress) — `prime_heat_bounds_arch_data` unblock via minimal Aristotle context
-
-Target lemma and wiring:
-- `prime_heat_bounds_arch_data` in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean` is the arch-integral input for `prime_heat_bounds_cert`.
-- Next chain nodes remain `prime_b_grid_bucket_bounds` (`BrangeGrid_PrimeSum_2026_01_30_Data.lean`) and `prime_b_grid_arch_bounds_data` (`BrangeCert_2046.lean`).
-
-Embedding search (local index, 4 queries via `scripts/research_oracle.py`):
-- Hits reconfirm current state: checker modules are scaffold-complete, but theorem-level bridge for these data axioms is still missing.
-- Integrability infrastructure exists, but no local certified path from that infrastructure to the numeric constant `prime_cert_L_arch_heat_raw`.
-
-External web search synthesis:
-- `lean-stat-learning-theory` confirms reusable finite-set helper patterns (`sup' -> sum`, exp-of-sup bounds), matching our local helper direction.
-- No direct mathlib “drop-in” tactic/lemma was identified that would automatically certify this digamma-weighted numeric arch integral bound.
-
-Concrete plan (execution order):
-1. Run targeted Aristotle for only `prime_heat_bounds_arch_data` using explicit minimal context files (no auto-imports).
-2. Integrate only if output is hole-free (`rg -n "sorry|exact\\?|admit"`) and compiles with `lake env lean`.
-3. If still blocked, freeze this node as infra-limited and switch closure effort to `prime_b_grid_bucket_bounds` checker bridge.
-4. Keep `prime_b_grid_arch_bounds_data` last, after prime-grid bucket theorem is in place.
-
-Execution update:
-- New Aristotle submit path uses CLI workflow with explicit context files and no auto-imports.
-- Project id: `fb520402-fb98-477d-8bf5-3f7688af9939` (status pending at note time).
-- Parallel follow-up submit for next blocker (`prime_b_grid_bucket_bounds_target.lean`) launched with explicit context files.
-- Project id: `cdac2fb6-28aa-4e31-8916-7e966ae67f25` (status pending at note time).
-- Parallel follow-up submit for third blocker (`prime_b_grid_arch_bounds_data_target.lean`) launched with explicit context files.
-- Project id: `c26314f1-e4f2-4ff5-ae30-7f48c31aa75f` (status pending at note time).
-
-## Synthesis (2026-02-09, in progress) — `prime_b_grid_bucket_bounds` manual closure path (no Aristotle)
-
-Target and chain wiring:
-- Target lemma: `prime_b_grid_bucket_bounds` in `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`.
-- It feeds `prime_b_grid_bucket_data` -> `prime_b_grid_prime_sum_le_all` -> `prime_b_grid_prime_term_le_prime_ub_all` -> `prime_b_grid_bounds_cert`.
-- Neighbor blockers remain `prime_heat_bounds_arch_data` and `prime_b_grid_arch_bounds_data`.
-
-Embedding search (local index, 5 queries via `scripts/research_oracle.py`):
-- Strong signal repeats: current grid path has scaffold (`Checker` + bucket UB tables), but theorem bridge `bucket_sum ≤ bucket_ub` is missing.
-- Existing notes point to certificate-style closure (generated numeric Lean proofs), not ad-hoc analytic replacement.
-- Tooling caveat: qmd DB can lock on parallel queries (`SQLITE_BUSY_RECOVERY`), sequential queries are stable.
-
-External web search + repo check:
-- `lean-stat-learning-theory` confirms useful Lean proof style patterns (finite-sum/sup helper style) and uses `Lean v4.27.0-rc1 + mathlib master`.
-- But it has no drop-in PrimeCert certificate machinery (no reusable theorem to directly close our grid bucket node).
-- Conclusion: toolchain bump alone is unlikely to remove this blocker; missing piece is certificate generation for this specific node.
-
-Concrete plan (5 steps):
-1) Reuse the heat auto-proof architecture (`scripts/prime_brange_heat_pp_auto.py`) to build a grid variant that emits per-prime-power upper bounds for `prime_b_grid_weight_term`.
-2) Start with a pilot slice (`i = 19`, buckets `0` and `99`) to validate generated theorem shape and compile cost.
-3) Generate companion bucket-sum comparison lemmas (`pp_sum_bucket ≤ bucket_ub`) in the `PpSumBounds` style, then wire a checker theorem `prime_b_grid_bucket_sum_le_pp_ub`.
-4) Lift pilot to all `i : Fin 20` and all buckets, replace `axiom prime_b_grid_bucket_bounds` with theorem-backed `prime_b_grid_bucket_data`.
-5) Validate with `lake env lean Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`, `lake env lean Q3/CheckAxioms.lean`, `./scripts/check_axioms.sh`.
-
-Execution update (2026-02-09, pilot complete):
-- Added generator `scripts/prime_brange_grid_pp_interval_checker.py` (per-prime-power UB tables for a fixed grid index, bucket-filtered output, Lean `ArrayLookup` data format).
-- Generated pilot data module:
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePowPilot_i19_Buckets0_99.lean`
-  for `i = 19`, buckets `0, 99`.
-- Added pilot sanity-check module:
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePowPilot_i19_Check.lean`
-  proving generated bucket sums are within existing interval `bucket_ub` table for `k=0` and `k=99`.
-- Validation:
-  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePowPilot_i19_Check` ✅
-  - no holes in new Lean pilot files (`rg -n "sorry|exact\\?|admit"`) ✅
-- Status: infrastructure/pilot is now formalized, but main axiom
-  `prime_b_grid_bucket_bounds` is still open until the same certificate bridge is lifted from pilot to all buckets and all 20 grid points.
-
-Execution update (2026-02-09, i19 full buckets complete):
-- Extended generator output to expose full-bucket sum accessor when no filter is used:
-  `prime_b_grid_pp_i19_all_ub_q_sum_get : Fin bucket_count -> ℚ`.
-- Generated full i19 data module (all `k = 0..99`):
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets.lean`.
-- Added full i19 sanity-check module:
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets_Check.lean`.
-  It proves:
-  - per-bucket q-inequalities against `prime_b_grid_bucket_ub_q_get` for all buckets;
-  - casted real inequalities for all buckets;
-  - summed inequality
-    `∑ generated_bucket_sum_q ≤ ∑ interval_bucket_ub_q` at `i=19`.
-- Validation:
-  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets_Check` ✅
-  - no holes in new full-bucket Lean files (`rg -n "sorry|exact\\?|admit"`) ✅
-- Status: `i=19` now has full-bucket certificate-style numeric consistency checks, but
-  `prime_b_grid_bucket_bounds` remains open because the formal bridge from
-  `prime_b_grid_bucket_sum` to generated per-prime-power UB (`h_term_ub` chain)
-  is not yet integrated for all `i`.
-
-Execution update (2026-02-11, i19 bridge module):
-- Added bridge module:
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Bridge.lean`.
-- New proven links in Lean:
-  - `∑ pp_i19_all_bucket_sum_q ≤ prime_b_grid_prime_sum_ub_q_get i19`;
-  - casted real version of the same total inequality;
-  - reusable implication
-    `bucket_sum i19 k ≤ generated_pp_sum i19 k -> bucket_sum i19 k ≤ interval_bucket_ub i19 k`.
-- Added reusable local closure interface:
-  - `PrimeBGridBucketData i19` and
-  - `prime_b_grid_prime_sum_up_to i19 ≤ prime_b_grid_prime_sum_ub i19`
-  are now derivable from a single assumption:
-  `h_pp_cover : bucket_sum ≤ generated_pp_bucket_sum` (pointwise per bucket).
-- Status:
-  - for `i=19`, the `generated_pp <= interval_ub` side is fully wired into the checker chain;
-  - remaining blocker is explicit and isolated: prove `h_pp_cover` (pointwise cover from
-    actual bucket sums to generated pp sums), then lift from `i=19` to all 20 grid points.
-
-## Synthesis (2026-02-11, in progress) — closing `h_pp_cover` for `i=19`
-
-Target and chain:
-- Immediate blocker: `h_pp_cover` in
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Bridge.lean`
-  (`bucket_sum i19 k ≤ generated_pp_bucket_sum i19 k` for all `k`).
-- This is the missing implication before replacing
-  `axiom prime_b_grid_bucket_bounds` in
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`.
-
-Search synthesis:
-- Local embedding queries (4x via `scripts/research_oracle.py`) confirm the same pattern:
-  `prime_heat_bucket_data_of_pp_bounds` is the nearest reusable scaffold.
-- External check (mathlib docs + `YuanheZ/lean-stat-learning-theory`) gives style guidance,
-  but no drop-in theorem for our PrimeCert bucket-cover node.
-
-Concrete implementation plan:
-1) Add a grid analogue of the heat pp-bound scaffold:
-   `bucket_sum_le_pp_ub_of_pp_bounds` for fixed `i` and filtered prime powers.
-2) Add/verify the missing filter lemma for grid buckets (`sum over filter IsPrimePow` form).
-3) Build a small auto-proof pilot for `i=19` (first bucket slice) to validate theorem shape
-   and compile/heartbeat profile.
-4) If pilot compiles cleanly, scale generator path bucket-by-bucket and wire to
-   `prime_b_grid_bucket_bounds_i19_of_pp_cover`.
-5) Only after hole-free integration, lift from `i=19` to all `i : Fin 20` and rerun
-   `lake env lean Q3/CheckAxioms.lean` + `scripts/check_axioms.sh`.
-
-Execution update (2026-02-11, i19 ppcover scaffold):
-- Added module:
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean`.
-- New proven reductions:
-  - `prime_b_grid_bucket_sum_i19_le_pp_bucket_sum_of_term_bounds`:
-    reduces bucket cover to pointwise prime-power term bounds on `n ≤ prime_cert_N`.
-  - `..._of_term_bounds` variants for:
-    `prime_b_grid_bucket_bounds_i19`,
-    `PrimeBGridBucketData prime_b_grid_i19`,
-    `prime_b_grid_prime_sum_up_to i19 ≤ prime_b_grid_prime_sum_ub i19`,
-    and table version.
-- Important technical finding:
-  attempts to discharge `sum_def <= generated_sum_get` via `native_decide` fail because
-  generated declarations used here are `noncomputable` (no executable code for evaluator).
-- Current blocker shape (narrowed):
-  the old `h_pp_cover` is now split into two explicit obligations:
-  1) pointwise term bound on prime powers (`h_term_ub`);
-  2) link from filtered sum definition to generated bucket-sum table (`h_pp_sum_get`).
-
-Execution update (2026-02-11, i19 `h_pp_sum_get` closed):
-- Reworked generator `scripts/prime_brange_grid_pp_interval_checker.py` to keep
-  executable array lookup declarations while avoiding global noncomputability:
-  - removed global `noncomputable section`;
-  - marked only real-valued defs (`..._B`, `..._ub`) as `noncomputable`;
-  - added `set_option maxRecDepth 200000` to compile large bucket arrays.
-- Regenerated:
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets.lean`.
-- Verified evaluator path is now executable:
-  - `#eval prime_b_grid_pp_i19_all_ub_q_get 2` and `#eval ... 6` run;
-  - `native_decide` on equalities with `prime_b_grid_pp_i19_all_ub_q_get` succeeds.
-- Closed the `h_pp_sum_get` side directly in
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean`:
-  - added
-    `prime_b_grid_pp_i19_all_bucket_q_sum_le_get` via
-    `fin_cases + native_decide` for all buckets;
-  - added casted real version
-    `prime_b_grid_pp_i19_all_bucket_sum_le_get`;
-  - removed `h_pp_sum_get` argument from all `..._of_term_bounds` wrappers.
-- Validation:
-  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets` ✅
-  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_AllBuckets_Check` ✅
-  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Bridge` ✅
-  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover` ✅
-  - `lake env lean` on all four chain files ✅
-  - `lake env lean Q3/CheckAxioms.lean` ✅
-- Status:
-  - for `i=19`, `h_pp_cover` is now reduced to the single analytic obligation
-    `h_term_ub` (pointwise prime-power term bound);
-  - global axiom `prime_b_grid_bucket_bounds` remains until this is lifted from
-    `i=19` to all grid points.
-
-## Synthesis (2026-02-12, in progress) — `h_term_ub` for `i=19` and GT10000-free path
-
-Target and chain:
-- Immediate target is `h_term_ub` in
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean`,
-  required by `prime_b_grid_bucket_bounds_i19_of_term_bounds`.
-- This is the last analytic piece before replacing `prime_b_grid_bucket_bounds`
-  axiom path in `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`.
-
-Search synthesis:
-- Local embedding search (5 queries via `scripts/research_oracle.py`) confirms:
-  table/checker infrastructure is present; missing part is pointwise prime-power
-  inequality from `prime_b_grid_weight_term` to `prime_b_grid_pp_i19_all_ub`.
-- External web check (`YuanheZ/lean-stat-learning-theory`) gives style patterns
-  for finite-sum helper proofs, but no drop-in PrimeCert theorem for this node.
-
-Key technical finding:
-- The shortcut `prime_b_grid_weight_term ≤ prime_b_grid_tail_term` is too coarse
-  on prime powers (`k > 1`), so it cannot close `h_term_ub`.
-- Required path is explicit prime-power envelope (using `log p = (log n)/k`),
-  i.e. a grid analogue of heat pp-bound scaffolding, not tail domination.
-
-Concrete 5-step plan:
-1) Add a dedicated pointwise module:
-   `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise.lean`
-   with per-prime-power bounds and `n ≤ prime_cert_N` domain.
-2) Reuse/adapt generation logic from
-   `scripts/prime_brange_heat_pp_auto.py` into a grid-specific emitter for i19
-   (new script: `scripts/prime_brange_grid_pp_auto.py`).
-3) Wire generated lemmas into `...PrimePow_i19_PPCover.lean` to discharge
-   `h_term_ub` without adding fallback axioms.
-4) Rebuild the local chain:
-   `...PrimePow_i19_Pointwise.lean` -> `...PrimePow_i19_PPCover.lean` ->
-   `...PrimePow_i19_Bridge.lean` -> `...PrimeSum_2026_01_30_Data.lean`.
-5) Validate with `lake env lean` on touched files, then run
-   `lake env lean Q3/CheckAxioms.lean` and `./scripts/check_axioms.sh`.
-
-Execution update (2026-02-12, in progress):
-- Added pointwise core helper:
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PointwiseCore.lean`
-  with theorem
-  `prime_b_grid_weight_term_i19_le_pp_ub_of_prime_pow_bounds`
-  (log/k + exp + Fejér envelope, no new axioms).
-- Added generator:
-  `scripts/prime_brange_grid_pp_auto.py`
-  (grid analogue of heat auto-proof generator).
-- Generated pilot pointwise modules for `n ≤ 2000`:
-  `...PrimePow_i19_PointwiseBase.lean`,
-  `...PrimePow_i19_Pointwise_1_2000.lean`,
-  `...PrimePow_i19_Pointwise.lean`.
-- Hole scan on generated Lean files is clean (`rg -n "sorry|exact\\?|admit"`).
-- Build caveat: full `lake build` for the pilot chunk is currently runtime-heavy in this workspace;
-  next iteration should expand/compile in smaller batches and wire partial-range closure into `PPCover`.
-
-Execution update (2026-02-12, in progress, shard-stabilized):
-- Resolved the compile bottleneck by regenerating pointwise proofs in shards:
-  `scripts/prime_brange_grid_pp_auto.py --chunk-size 250`
-  now emits:
-  `...Pointwise_1_250.lean`, `..._251_500.lean`, ..., `..._1751_2000.lean`
-  plus aggregator `...Pointwise.lean`.
-- Removed obsolete monolithic file:
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_1_2000.lean`.
-- Validation:
-  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise` ✅
-  - `lake env lean Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise.lean` ✅
-  - `lake env lean Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean` ✅
-  - `lake env lean Q3/CheckAxioms.lean` ✅
-- Reusable closure bridge in `PPCover`:
-  - `prime_b_grid_weight_term_i19_le_pp_ub_of_term_bounds_gt2000`
-  - `prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds_gt2000`
-  This cleanly splits obligations into:
-  1) closed low range (`n ≤ 2000`) via generated pointwise theorem;
-  2) remaining high-range assumption (`2001 ≤ n ≤ prime_cert_N`).
-
-Execution update (2026-02-12, in progress, GT10000 narrowing):
-- Generated and built additional pointwise package for `2001 ≤ n ≤ 10000`:
-  - aggregator:
-    `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PointwiseGT2000.lean`
-  - shard files:
-    `...PointwiseGT2000_2001_2500.lean` through `...PointwiseGT2000_9501_10000.lean`
-  - theorem:
-    `prime_b_grid_weight_term_i19_le_pp_ub_of_2001_10000_primepow_all`.
-- During integration, found/closed a namespace collision with existing pointwise base
-  (`pi_ub`, `pi_le_pi_ub`, `pi_ub_pos`) by renaming GT2000-base constants/lemmas to:
-  `pi_ub_gt2000`, `pi_le_pi_ub_gt2000`, `pi_ub_gt2000_pos`.
-- Updated
-  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean`
-  with new wrappers:
-  - `prime_b_grid_weight_term_i19_le_pp_ub_of_term_bounds_gt10000`
-  - `prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds_gt10000`
-  so coverage is now:
-  1) `n ≤ 2000` (Pointwise),
-  2) `2001 ≤ n ≤ 10000` (PointwiseGT2000),
-  3) only `10001 ≤ n ≤ prime_cert_N` remains as assumption.
-- Validation:
-  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PointwiseGT2000` ✅
-  - `lake env lean Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean` ✅
-  - `lake env lean Q3/CheckAxioms.lean` ✅
-  - `./scripts/check_axioms.sh` ✅
+- Не лечить это как «системный баг»: первопричина в форме proof-term
+  (`hcases/rcases` на огромном дизъюнкте), а не в Ubuntu.
+- Базовый паттерн для GT10000: `classical; fin_cases hmem` вместо giant OR.
+- Держать проверку двухступенчато:
+  1. короткий smoke-timeout (ловит ранние ошибки/регрессии генерации),
+  2. длинный изолированный прогон в `codex-heavy.slice` до `.olean`.
+- После длинного прогона обязательный контрольный шаг:
+  `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`.

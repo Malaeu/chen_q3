@@ -57,3 +57,25 @@ git push origin main
 git status --short --branch
 git log --oneline -n 3
 ```
+
+## Страховка (sync 2026-02-12)
+- Ключевая фраза для поиска в будущих сессиях: **`у нас была страховка`**
+- Что было создано перед синхронизацией:
+  - backup-ветка: `backup/pre_sync_20260212_140841`
+  - stash: `stash@{0}` с сообщением `pre-sync-20260212_140841`
+- Что произошло:
+  - локальная ветка `rh_clean` синхронизирована с `origin/rh_clean` (ahead/behind = `0/0`);
+  - stash был применён обратно после rebase.
+
+### Как восстановить из backup-ветки
+```bash
+cd /mnt/hdd01/Soft/GitHub/chen_q3/worktrees/rh_clean
+git switch backup/pre_sync_20260212_140841
+```
+
+### Как поднять содержимое stash (если не удалён)
+```bash
+cd /mnt/hdd01/Soft/GitHub/chen_q3/worktrees/rh_clean
+git stash list
+git stash apply stash@{0}
+```

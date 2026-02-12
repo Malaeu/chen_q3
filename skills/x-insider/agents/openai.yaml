@@ -1,0 +1,4 @@
+interface:
+  display_name: "X Insider"
+  short_description: "Собирает инсайты из последних сообщений чата"
+  default_prompt: "Сделай выжимку инсайтов по последним 5-10 сообщениям нашего чата и запиши в docs/insides_knowledge_base_personal.md"

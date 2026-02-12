@@ -28,7 +28,9 @@ theorem prime_heat_weight_term_le_pp_ub_of_prime_pow {n : ℕ}
   · exact prime_heat_weight_term_le_pp_ub_of_le_10000 (n := n) hN0
   · have hgt : 10001 ≤ n := by
       exact (Nat.succ_le_iff).2 (Nat.lt_of_not_ge hN0)
-    exact prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all hn hgt hN
+    have hN' : n ≤ 1000000 := by
+      simpa [prime_cert_heat_N] using hN
+    exact prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all hn hgt hN'
 
 def prime_heat_bucket_pp_sum_ub_q (k : Fin prime_heat_bucket_count) : ℚ :=
   ((prime_heat_bucket_range k).filter IsPrimePow).sum Full.prime_heat_pp_term_ub_q_get

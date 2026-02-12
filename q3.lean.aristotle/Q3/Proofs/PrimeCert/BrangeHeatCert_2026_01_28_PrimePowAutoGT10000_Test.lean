@@ -1,6 +1,7 @@
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000_TestBase
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000_Test_10001_10200
 set_option maxHeartbeats 0
+set_option maxRecDepth 200000
 
 /-!
 Auto-generated prime-power interval bounds (aggregator).

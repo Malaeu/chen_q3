@@ -66,34 +66,24 @@ def parse_entries(path: Path, min_n: int, max_n: int) -> Tuple[int, List[PPEntry
         raise SystemExit("Could not find prime_heat_pp_term_ub_den")
     den = int(m.group(1))
 
+    pattern = re.compile(r"\|\s+(\d+)\s+=>\s+\((\d+)\s+:\s+ℚ\)\s+/\s+prime_heat_pp_term_ub_den")
     entries: List[PPEntry] = []
-
-    # Legacy format:
-    #   | 10007 => (123 : ℚ) / prime_heat_pp_term_ub_den
-    pattern_match = re.compile(
-        r"\|\s+(\d+)\s+=>\s+\((\d+)\s+:\s+ℚ\)\s+/\s+prime_heat_pp_term_ub_den"
-    )
-    for n_s, num_s in pattern_match.findall(text):
+    for n_s, num_s in pattern.findall(text):
         n = int(n_s)
         if min_n <= n <= max_n:
             entries.append(PPEntry(n=n, ub_num=int(num_s)))
 
-    # Current bucket-array format:
-    #   def prime_heat_pp_term_ub_bucket_k : Array (Nat × Nat) := #[
-    #     (10007, 123),
-    #     ...
-    #   ]
+    # Fallback for array-based sources:
+    #   (n, numerator)
+    # as used in PrimePowData bucket arrays.
     if not entries:
-        bucket_block = re.compile(
-            r"def\s+prime_heat_pp_term_ub_bucket_\d+\s*:\s*Array\s*\(Nat\s*×\s*Nat\)\s*:=\s*#\[(.*?)\n\]",
-            re.DOTALL,
-        )
         tuple_pat = re.compile(r"\(\s*(\d+)\s*,\s*(\d+)\s*\)")
-        for block in bucket_block.findall(text):
-            for n_s, num_s in tuple_pat.findall(block):
-                n = int(n_s)
-                if min_n <= n <= max_n:
-                    entries.append(PPEntry(n=n, ub_num=int(num_s)))
+        by_n: Dict[int, int] = {}
+        for n_s, num_s in tuple_pat.findall(text):
+            n = int(n_s)
+            if min_n <= n <= max_n:
+                by_n.setdefault(n, int(num_s))
+        entries = [PPEntry(n=n, ub_num=ub_num) for n, ub_num in by_n.items()]
 
     entries.sort(key=lambda e: e.n)
     if not entries:
@@ -171,7 +161,11 @@ def bound_for_n(
     u = Fraction(u_num, scale)
     r = Fraction(r_num, scale)
 
-    x = l / split
+    # Ensure x = l/split stays in [0, 1] for exp_le_of_taylor_bound.
+    # For large n, log n exceeds 10, so a fixed split=10 becomes invalid.
+    split_eff = max(split, int(l.numerator // l.denominator) + 1)
+
+    x = l / split_eff
     b_low = taylor_upper(x, k_low)
 
     k_high = ceil_log_bound(n, u)
@@ -194,7 +188,7 @@ def bound_for_n(
         if k_exp > 200:
             raise RuntimeError(f"k_exp too large for n={n}")
 
-    if b_low**split > n:
+    if b_low**split_eff > n:
         raise RuntimeError(f"exp(l) bound failed for n={n}")
 
     return Bounds(
@@ -203,7 +197,7 @@ def bound_for_n(
         r=r,
         b_low=b_low,
         k_low=k_low,
-        split=split,
+        split=split_eff,
         k_high=k_high,
         k_exp=k_exp,
         bound=bound,
@@ -260,11 +254,8 @@ def main() -> None:
 
     digits = args.digits
     scale = 10**digits
-    # Keep pi lower bound independent from decimal scale used for log/sqrt rounding.
-    # This literal corresponds to 3.14159265358979323846.
     pi_lb_num = 314159265358979323846
-    pi_lb_den = 10**20
-    pi_lb = Fraction(pi_lb_num, pi_lb_den)
+    pi_lb = Fraction(pi_lb_num, scale)
 
     tasks = [
         (
@@ -311,8 +302,7 @@ def main() -> None:
     base_lines.append("import Q3.Proofs.PrimeCert.IntervalPilot")
     base_lines.append("import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowFull")
     base_lines.append("set_option maxHeartbeats 0")
-    base_lines.append("set_option linter.unnecessarySimpa false")
-    base_lines.append("set_option linter.unusedSimpArgs false")
+    base_lines.append("set_option maxRecDepth 200000")
     base_lines.append("")
     base_lines.append("/-!")
     base_lines.append("Auto-generated prime-power interval bounds (base).")
@@ -326,7 +316,7 @@ def main() -> None:
     base_lines.append("")
     base_lines.append("namespace Q3.Proofs.PrimeCert")
     base_lines.append("")
-    base_lines.append(f"def pi_lb : ℝ := ({pi_lb_num} : ℝ) / ({pi_lb_den} : ℝ)")
+    base_lines.append(f"def pi_lb : ℝ := ({pi_lb_num} : ℝ) / ({scale} : ℝ)")
     base_lines.append("lemma pi_lb_le_pi : pi_lb ≤ Real.pi := by")
     base_lines.append("  have h' : (pi_lb : ℝ) = (3.14159265358979323846 : ℝ) := by")
     base_lines.append("    norm_num [pi_lb]")
@@ -350,8 +340,7 @@ def main() -> None:
         lines: List[str] = []
         lines.append(f"import {base_mod}")
         lines.append("set_option maxHeartbeats 0")
-        lines.append("set_option linter.unnecessarySimpa false")
-        lines.append("set_option linter.unusedSimpArgs false")
+        lines.append("set_option maxRecDepth 200000")
         lines.append("")
         lines.append("/-!")
         lines.append(f"Auto-generated prime-power interval bounds for [{lo}, {hi}].")
@@ -575,13 +564,10 @@ def main() -> None:
             lines.append(f"    simpa [{list_name}] using hmem")
             lines.append(f"  simpa [h0] using prime_heat_weight_term_le_pp_ub_{n0}")
         else:
-            disj = " ∨ ".join(f"n = {n}" for n in chunk_entries)
-            lines.append(f"  have hcases : {disj} := by")
-            lines.append(f"    simpa [{list_name}] using hmem")
-            rcases_vars = " | ".join(f"h{i}" for i in range(len(chunk_entries)))
-            lines.append(f"  rcases hcases with {rcases_vars}")
-            for i, n in enumerate(chunk_entries):
-                lines.append(f"  · simpa [h{i}] using prime_heat_weight_term_le_pp_ub_{n}")
+            lines.append("  classical")
+            lines.append("  fin_cases hmem")
+            for n in chunk_entries:
+                lines.append(f"  · simpa using prime_heat_weight_term_le_pp_ub_{n}")
         lines.append("")
 
         lines.append(f"lemma {core_lemma_name} {{n : ℕ}}")
@@ -618,8 +604,7 @@ def main() -> None:
     for lo, hi in chunks:
         agg_lines.append(f"import {mod_prefix}{out_path.stem}_{lo}_{hi}")
     agg_lines.append("set_option maxHeartbeats 0")
-    agg_lines.append("set_option linter.unnecessarySimpa false")
-    agg_lines.append("set_option linter.unusedSimpArgs false")
+    agg_lines.append("set_option maxRecDepth 200000")
     agg_lines.append("")
     agg_lines.append("/-!")
     agg_lines.append("Auto-generated prime-power interval bounds (aggregator).")

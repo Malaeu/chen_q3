@@ -38,6 +38,33 @@ Single entry point: read this file at session start.
 
 Рекомендуемый порядок: сначала PrimeHeat closure (1-4), потом Grid closure (5-6), затем wiring в `Main` (7-8).
 
+### Execution Roadmap (2026-02-10): как закрывать каждый шаг
+
+Ниже operational-план для доведения от текущего условного `RH_of_Weil_and_Q3 (h_margin_cert : ...)`
+до безусловного `RH_of_Weil_and_Q3 : RH` (с единственной внешней аксиомой `Weil_criterion_tau0`).
+
+| Step | Что закрываем | Обязательные файлы (минимум) | Как закрывать (конкретно) | Критерий закрытия |
+|---|---|---|---|---|
+| 2 | `prime_heat_weight_term_le_pp_ub_of_prime_pow_axiom` для ветки `n > 10000` | `scripts/prime_brange_heat_pp_auto.py`, `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000*.lean`, `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean` | Генератор должен выпускать theorem-path без giant disjunction (`classical; fin_cases hmem`), затем пересобрать GT10000-shards и агрегатор, затем интеграция в checker без fallback на аксиому. | В `Checker.lean` нет использования `prime_heat_weight_term_le_pp_ub_of_prime_pow_axiom`; `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean` проходит. |
+| 3 | Убрать зависимость critical checker path от `native_decide` | `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`, `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowBucket0Auto*.lean`, `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000*.lean`, `scripts/prime_brange_heat_pp_bucket0_auto.py` | Заменить `native_decide` в load-bearing леммах на явные theorem-data/finite proof scripts; `native_decide` допускается только в off-chain debug/генерации, но не в целевом checker пути. | В критичном пути (`Checker` + вызванные им theorem-файлы) нет `native_decide`; `#print axioms` не притягивает `Lean.ofReduceBool`/`Lean.trustCompiler`. |
+| 4 | Закрыть `prime_heat_bounds_arch_data` | `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`, `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Tail.lean`, `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean` | Доказать формальный верхний предел arch-integral (через уже имеющиеся envelope/tail леммы), затем заменить аксиому theorem-версией в основном файле heat-chain. | Аксиома `prime_heat_bounds_arch_data` удалена/не используется; `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28` проходит. |
+| 5 | Закрыть `prime_b_grid_bucket_bounds` (и финализировать bucket-level grid bounds) | `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`, `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Checker.lean`, `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Intervals.lean` | Довести bucket certificates до theorem-формы на каждом bucket и собрать в общий grid bucket bound; не оставлять data-axiom на bucket-level. | `prime_b_grid_bucket_bounds` перестает быть аксиомой; `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_Data` проходит. |
+| 6 | Закрыть `prime_b_grid_arch_bounds_data` и завершить замену grid data-аксиом theorem-путем | `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`, `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`, `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Checker.lean` | В `BrangeCert_2046.lean` заменить оставшийся `arch_bounds_data` theorem-выводом из закрытых bucket/arch/grid лемм; сохранить разделение новых A3_FLOOR и legacy RKHS стратегий. | В `BrangeCert_2046.lean` нет оставшихся grid cert-data axioms; `lake build Q3.Proofs.PrimeCert.BrangeCert_2046` проходит. |
+| 7 | Доказать `PrimeCertMarginOnBrange` и убрать параметр `h_margin_cert` | `Q3/Proofs/Q_nonneg_t_critical.lean`, `Q3/Main.lean`, `Q3/CheckAxioms.lean` | После закрытия Steps 2-6 собрать theorem `PrimeCertMarginOnBrange` внутри `Q_nonneg_t_critical.lean`, затем переписать `Q3.Main.RH_of_Weil_and_Q3` без аргумента `h_margin_cert`. | Сигнатура становится `theorem RH_of_Weil_and_Q3 : Q3.RH`; main theorem больше не требует margin-гипотезу. |
+| 8 | Финальная верификация main-chain | `Q3/Main.lean`, `Q3/CheckAxioms.lean`, `scripts/check_axioms.sh`, `FORMALIZATION_STATS.md`, `SESSION_ENTRY.md`, `docs/INSIGHTS.md` | Прогнать финальный build + axiom print + CI-check; зафиксировать обновленный axiom status и короткий postmortem по закрытым шагам. | `#print axioms Q3.Main.RH_of_Weil_and_Q3` содержит только `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`; `./scripts/check_axioms.sh` green. |
+
+Команды контроля прогресса по roadmap:
+
+```bash
+cd q3.lean.aristotle
+lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean
+lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28
+lake build Q3.Proofs.PrimeCert.BrangeCert_2046
+echo 'import Q3.Main
+#print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1 | rg -v '^info:'
+./scripts/check_axioms.sh
+```
+
 Статус выполнения (2026-02-06, текущая сессия):
 - `Step 1`: **DONE** (теорема `prime_heat_bucket_data` в `BrangeHeatCert_2026_01_28_SumData.lean`).
 - `Step 5`: **PARTIAL**:
