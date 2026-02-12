@@ -1425,3 +1425,20 @@ Concrete 5-step plan:
    `...PrimePow_i19_Bridge.lean` -> `...PrimeSum_2026_01_30_Data.lean`.
 5) Validate with `lake env lean` on touched files, then run
    `lake env lean Q3/CheckAxioms.lean` and `./scripts/check_axioms.sh`.
+
+Execution update (2026-02-12, in progress):
+- Added pointwise core helper:
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PointwiseCore.lean`
+  with theorem
+  `prime_b_grid_weight_term_i19_le_pp_ub_of_prime_pow_bounds`
+  (log/k + exp + Fejér envelope, no new axioms).
+- Added generator:
+  `scripts/prime_brange_grid_pp_auto.py`
+  (grid analogue of heat auto-proof generator).
+- Generated pilot pointwise modules for `n ≤ 2000`:
+  `...PrimePow_i19_PointwiseBase.lean`,
+  `...PrimePow_i19_Pointwise_1_2000.lean`,
+  `...PrimePow_i19_Pointwise.lean`.
+- Hole scan on generated Lean files is clean (`rg -n "sorry|exact\\?|admit"`).
+- Build caveat: full `lake build` for the pilot chunk is currently runtime-heavy in this workspace;
+  next iteration should expand/compile in smaller batches and wire partial-range closure into `PPCover`.
