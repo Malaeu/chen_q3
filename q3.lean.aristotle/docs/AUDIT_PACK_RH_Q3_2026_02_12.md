@@ -1,6 +1,20 @@
-# AUDIT PACK: RH_Q3 vs Lean (2026-02-12)
+# AUDIT PACK: RH_Q3 vs Lean (2026-02-12) — v1.1 (patched)
 
-Цель: зафиксировать, что из RH_Q3 уже формализовано в Lean, что остается узким горлышком, и в каком порядке это закрывать до безусловного `Q3.Main.RH_of_Weil_and_Q3 : Q3.RH`.
+Цель: зафиксировать, что из RH_Q3 уже формализовано в Lean, что остаётся узким горлышком, и в каком порядке это закрывать до безусловного
+`Q3.Main.RH_of_Weil_and_Q3 : Q3.RH`.
+
+## 0) Верификация по PDF (RH_Q3.pdf)
+
+В RH_Q3 (PDF) список гипотез H1..H5 явно записан так:
+
+- (H1) (T0) — Guinand–Weil normalization of Q (Proposition 5.1).
+- (H2) (A1′) — Density of the Fejér×heat cone on every WK (Theorem 6.3).
+- (H3) (A2) — Lipschitz continuity of Q on each WK (Lemma 7.3 and Corollary 7.4).
+- (H4) (A3) — Toeplitz bridge with explicit uniform floor c* > 0 (Lemma 8.19), plus RKHS cap (Theorem 8.35),
+  plus uniform discretisation threshold.
+- (H5) (RKHS) — prime contraction via the uniform RKHS cap (Corollary 8.22).
+
+Также указано, что closure Theorem 11.4 предполагает ровно (H1)–(H5), а Weil linkage (Theorem 11.2) использует (H1)–(H5) + Weil criterion.
 
 ## 1) Источники аудита
 
@@ -17,7 +31,7 @@
 ## 2) Сопоставление RH_Q3 -> Lean (по H1..H5)
 
 1. H1 (T0 + Weil criterion): в тексте `full/sections/scope_notation.tex:39`, `full/sections/Weil_linkage.tex:3`.
-   Статус в Lean: `Q3.Weil_criterion_tau0` остается внешней Tier-1 аксиомой (ожидаемо для текущей архитектуры).
+   Статус в Lean: `Q3.Weil_criterion_tau0` остаётся внешней Tier-1 аксиомой (ожидаемо для текущей архитектуры).
 
 2. H2 (A1' density): в тексте `full/sections/A1prime.tex:27`.
    Статус в Lean: закрыто теоремой `A1_density_WK_thm` в `q3.lean.aristotle/Q3/Proofs/A1_density.lean:955`.
@@ -25,15 +39,17 @@
 3. H3 (A2 Lipschitz continuity): в тексте `full/sections/A2.tex:36`, `full/sections/A2.tex:86`.
    Статус в Lean: закрыто теоремой `Q_Lipschitz_on_W_K_thm` в `q3.lean.aristotle/Q3/Proofs/Q_Lipschitz.lean:278`.
 
-4. H4 (A3 uniform bridge, floor + cap + discretization): в тексте `full/sections/scope_notation.tex:42`, `full/sections/A3/main.tex:81`.
+4. H4 (A3 uniform bridge: floor + RKHS cap + discretization): в тексте `full/sections/scope_notation.tex:42`, `full/sections/A3/main.tex:81`.
    Статус в Lean:
    - floor-часть закрыта теоремой `P_A_ge_c_star` в `q3.lean.aristotle/Q3/Proofs/A3_Floor_Main.lean:1012`;
+   - RKHS cap-цепочка закрыта:
+     - `weight_sum_le_rho_one` в `q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean:563`,
+     - `rkhs_cap_rayleigh_tcap` в `q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean:1055`;
    - но полный mainline closure по PrimeCert пока условный через `h_margin_cert` (см. пункт 4 ниже).
 
-5. H5 (uniform RKHS cap): в тексте `full/sections/scope_notation.tex:43`, `full/sections/A3/symbol_floor.tex:344`.
-   Статус в Lean: Rayleigh/RKHS cap-цепочка формализована:
-   - `weight_sum_le_rho_one` в `q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean:563`,
-   - `rkhs_cap_rayleigh_tcap` в `q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean:1055`.
+5. H5 (RKHS prime contraction / prime bound): в тексте `full/sections/scope_notation.tex:43`.
+   Статус в Lean: в текущей архитектуре “prime contraction / prime bound” фактически упакован в `PrimeCertMarginOnBrange`,
+   и поэтому остаётся условным до снятия `h_margin_cert`.
 
 ## 3) Что уже закрыто в mainline
 
@@ -41,20 +57,24 @@
    - `q3.lean.aristotle/Q3/Main.lean:128`
    - сигнатура: `RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange) : Q3.RH`.
 
-2. PrimeCert-margin введен как явная гипотеза:
+2. PrimeCert-margin введён как явная гипотеза:
    - `PrimeCertMarginOnBrange` в `q3.lean.aristotle/Q3/Proofs/Q_nonneg_t_critical.lean:341`.
 
 3. Step 1 (bucket-sum closure) закрыт:
    - `prime_heat_bucket_data` в `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean:56`.
 
 4. Step 2 (ветка `n > 10000`) интегрирован в checker-path:
-   - вызов `prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all` в `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean:33`;
-   - генератор переведен на устойчивый шаблон (`fin_cases hmem`, adaptive split, `maxRecDepth`) в `scripts/prime_brange_heat_pp_auto.py:164`, `scripts/prime_brange_heat_pp_auto.py:568`, `scripts/prime_brange_heat_pp_auto.py:305`.
+   - вызов `prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all` в
+     `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean:33`;
+   - генератор переведён на устойчивый шаблон (`fin_cases hmem`, adaptive split, `maxRecDepth`) в:
+     `scripts/prime_brange_heat_pp_auto.py:164`, `scripts/prime_brange_heat_pp_auto.py:568`, `scripts/prime_brange_heat_pp_auto.py:305`.
 
 5. Main-chain по `#print axioms` уже “чистый условный”:
-   - только `Weil_criterion_tau0` + kernel axioms.
+   - фактический вывод (2026-02-12): `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`.
+   - NB: если где-то есть “kernel axioms” как настоящие `axiom`, они должны появляться в этом списке.
+     Если они не появляются — лучше не писать “+ kernel axioms”, чтобы не плодить путаницу.
 
-## 4) Что еще открыто (узкие места)
+## 4) Что ещё открыто (узкие места)
 
 Оставшиеся project-аксиомы, реально блокирующие снятие `h_margin_cert`:
 
@@ -70,11 +90,11 @@
 Дополнительно (не аксиомный blocker, но quality-gate перед финалом):
 
 4. Убрать load-bearing `native_decide` из critical checker path:
-   - пример в `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean:51`.
+   - пример: `q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean:51`.
 
-## 5) Точный порядок закрытия узких мест
+## 5) Порядок закрытия узких мест (priority order)
 
-Рекомендуемый порядок (минимум риска, максимум прогресса к финальному theorem-chain):
+Номера “Step k” ниже — это номера из оркестратора/пайплайна; порядок — приоритетный (чтобы быстрее прийти к финальному theorem-chain).
 
 1. Закрыть Step 4: `prime_heat_bounds_arch_data`.
    Файлы:
@@ -135,9 +155,10 @@
 ## 7) Быстрый чек-лист перед следующим коммитом
 
 1. `git status --short` (чистота дерева/точный набор файлов).
-2. `rg -n '^axiom ' q3.lean.aristotle/Q3/Proofs/PrimeCert`.
+2. `rg -n '^axiom ' q3.lean.aristotle/Q3/Proofs/PrimeCert` (или `grep -RIn '^axiom ' ...`).
 3. `echo 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin`.
-4. Обновить:
+4. (Опционально, но полезно) `rg -n 'sorry|admit|by native_decide|trustCompiler' q3.lean.aristotle/Q3`.
+5. Обновить:
    - `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`,
    - `SESSION_ENTRY.md`,
    - `q3.lean.aristotle/docs/INSIGHTS.md`.
