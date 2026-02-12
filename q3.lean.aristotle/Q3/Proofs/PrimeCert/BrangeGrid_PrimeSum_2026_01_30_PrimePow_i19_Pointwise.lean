@@ -1,5 +1,12 @@
 import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PointwiseBase
-import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_1_2000
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_1_250
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_251_500
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_501_750
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_751_1000
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_1001_1250
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_1251_1500
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_1501_1750
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_1751_2000
 set_option maxRecDepth 200000
 set_option maxHeartbeats 0
 set_option linter.unnecessarySimpa false
@@ -20,6 +27,34 @@ namespace Q3.Proofs.PrimeCert
 lemma prime_b_grid_weight_term_i19_le_pp_ub_of_1_2000_primepow_all {n : ℕ}
     (hn : IsPrimePow n) (hlo : 1 ≤ n) (hhi : n ≤ 2000) :
     prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n := by
-  exact prime_b_grid_weight_term_i19_le_pp_ub_of_1_2000_primepow hn hlo hhi
+  by_cases h0 : n ≤ 250
+  · exact prime_b_grid_weight_term_i19_le_pp_ub_of_1_250_primepow hn hlo h0
+  have h0' : 251 ≤ n := by
+    exact (Nat.succ_le_iff).2 (Nat.lt_of_not_ge h0)
+  by_cases h1 : n ≤ 500
+  · exact prime_b_grid_weight_term_i19_le_pp_ub_of_251_500_primepow hn h0' h1
+  have h1' : 501 ≤ n := by
+    exact (Nat.succ_le_iff).2 (Nat.lt_of_not_ge h1)
+  by_cases h2 : n ≤ 750
+  · exact prime_b_grid_weight_term_i19_le_pp_ub_of_501_750_primepow hn h1' h2
+  have h2' : 751 ≤ n := by
+    exact (Nat.succ_le_iff).2 (Nat.lt_of_not_ge h2)
+  by_cases h3 : n ≤ 1000
+  · exact prime_b_grid_weight_term_i19_le_pp_ub_of_751_1000_primepow hn h2' h3
+  have h3' : 1001 ≤ n := by
+    exact (Nat.succ_le_iff).2 (Nat.lt_of_not_ge h3)
+  by_cases h4 : n ≤ 1250
+  · exact prime_b_grid_weight_term_i19_le_pp_ub_of_1001_1250_primepow hn h3' h4
+  have h4' : 1251 ≤ n := by
+    exact (Nat.succ_le_iff).2 (Nat.lt_of_not_ge h4)
+  by_cases h5 : n ≤ 1500
+  · exact prime_b_grid_weight_term_i19_le_pp_ub_of_1251_1500_primepow hn h4' h5
+  have h5' : 1501 ≤ n := by
+    exact (Nat.succ_le_iff).2 (Nat.lt_of_not_ge h5)
+  by_cases h6 : n ≤ 1750
+  · exact prime_b_grid_weight_term_i19_le_pp_ub_of_1501_1750_primepow hn h5' h6
+  have h6' : 1751 ≤ n := by
+    exact (Nat.succ_le_iff).2 (Nat.lt_of_not_ge h6)
+  exact prime_b_grid_weight_term_i19_le_pp_ub_of_1751_2000_primepow hn h6' hhi
 
 end Q3.Proofs.PrimeCert

@@ -1442,3 +1442,23 @@ Execution update (2026-02-12, in progress):
 - Hole scan on generated Lean files is clean (`rg -n "sorry|exact\\?|admit"`).
 - Build caveat: full `lake build` for the pilot chunk is currently runtime-heavy in this workspace;
   next iteration should expand/compile in smaller batches and wire partial-range closure into `PPCover`.
+
+Execution update (2026-02-12, in progress, shard-stabilized):
+- Resolved the compile bottleneck by regenerating pointwise proofs in shards:
+  `scripts/prime_brange_grid_pp_auto.py --chunk-size 250`
+  now emits:
+  `...Pointwise_1_250.lean`, `..._251_500.lean`, ..., `..._1751_2000.lean`
+  plus aggregator `...Pointwise.lean`.
+- Removed obsolete monolithic file:
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise_1_2000.lean`.
+- Validation:
+  - `lake build Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise` ✅
+  - `lake env lean Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise.lean` ✅
+  - `lake env lean Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean` ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅
+- Reusable closure bridge in `PPCover`:
+  - `prime_b_grid_weight_term_i19_le_pp_ub_of_term_bounds_gt2000`
+  - `prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds_gt2000`
+  This cleanly splits obligations into:
+  1) closed low range (`n ≤ 2000`) via generated pointwise theorem;
+  2) remaining high-range assumption (`2001 ≤ n ≤ prime_cert_N`).
