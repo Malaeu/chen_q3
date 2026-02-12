@@ -1388,3 +1388,40 @@ Execution update (2026-02-11, i19 `h_pp_sum_get` closed):
     `h_term_ub` (pointwise prime-power term bound);
   - global axiom `prime_b_grid_bucket_bounds` remains until this is lifted from
     `i=19` to all grid points.
+
+## Synthesis (2026-02-12, in progress) — `h_term_ub` for `i=19` and GT10000-free path
+
+Target and chain:
+- Immediate target is `h_term_ub` in
+  `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PPCover.lean`,
+  required by `prime_b_grid_bucket_bounds_i19_of_term_bounds`.
+- This is the last analytic piece before replacing `prime_b_grid_bucket_bounds`
+  axiom path in `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`.
+
+Search synthesis:
+- Local embedding search (5 queries via `scripts/research_oracle.py`) confirms:
+  table/checker infrastructure is present; missing part is pointwise prime-power
+  inequality from `prime_b_grid_weight_term` to `prime_b_grid_pp_i19_all_ub`.
+- External web check (`YuanheZ/lean-stat-learning-theory`) gives style patterns
+  for finite-sum helper proofs, but no drop-in PrimeCert theorem for this node.
+
+Key technical finding:
+- The shortcut `prime_b_grid_weight_term ≤ prime_b_grid_tail_term` is too coarse
+  on prime powers (`k > 1`), so it cannot close `h_term_ub`.
+- Required path is explicit prime-power envelope (using `log p = (log n)/k`),
+  i.e. a grid analogue of heat pp-bound scaffolding, not tail domination.
+
+Concrete 5-step plan:
+1) Add a dedicated pointwise module:
+   `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise.lean`
+   with per-prime-power bounds and `n ≤ prime_cert_N` domain.
+2) Reuse/adapt generation logic from
+   `scripts/prime_brange_heat_pp_auto.py` into a grid-specific emitter for i19
+   (new script: `scripts/prime_brange_grid_pp_auto.py`).
+3) Wire generated lemmas into `...PrimePow_i19_PPCover.lean` to discharge
+   `h_term_ub` without adding fallback axioms.
+4) Rebuild the local chain:
+   `...PrimePow_i19_Pointwise.lean` -> `...PrimePow_i19_PPCover.lean` ->
+   `...PrimePow_i19_Bridge.lean` -> `...PrimeSum_2026_01_30_Data.lean`.
+5) Validate with `lake env lean` on touched files, then run
+   `lake env lean Q3/CheckAxioms.lean` and `./scripts/check_axioms.sh`.
