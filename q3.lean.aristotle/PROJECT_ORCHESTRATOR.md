@@ -94,6 +94,9 @@ Step 2 closure note (2026-02-09):
   `BrangeHeatCert_2026_01_28_PrimePowAutoGT10000`;
 - `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback.lean`
   оставлен как compatibility shim без `axiom`.
+- Update (2026-02-17, ops): long-run GT10000 shard build завершен в `tmux`-сессии
+  `primepow`; финальные шарды `970001_980000`, `980001_990000`,
+  `990001_1000000` собраны (`[done] all GT10000 shards built`).
 
 ## Current State (short)
 

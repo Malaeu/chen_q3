@@ -1162,6 +1162,12 @@ Plan (5–10 lines, concrete pointers):
   - run isolated long build (`scripts/run_heavy.sh`) to completion and confirm
     `.olean` for GT10000 shards + aggregator, then re-run
     `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`.
+- Update (2026-02-17):
+  - Isolated long build was completed in `tmux` session `primepow`.
+  - Final GT10000 shards reported as built:
+    `970001_980000`, `980001_990000`, `990001_1000000`
+    (`[done] all GT10000 shards built`).
+  - This closes the long-run completion checkpoint for GT10000 shard compilation.
 
 ### Strategy memo (фиксируем, чтобы не забыть)
 

@@ -174,6 +174,14 @@ python3 full/q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-n
 
 This is the full project loop; Aristotle и Прошка — ключевые инструменты.
 
+### Compute policy (обязательно для долгих прогонов)
+
+- Если ожидаемый runtime вычисления > 1 часа (особенно multi-hour/multi-day),
+  запускать процесс только в `tmux`-сессии.
+- Для PrimePow/GT10000 использовать стандартную сессию `primepow`.
+- Не запускать такие прогоны в обычном терминале без `tmux`, чтобы не терять
+  процесс при разрыве SSH/терминала.
+
 ### Escape Hatch: Когда застрял → Прошка
 
 **ПРАВИЛО:** Если застрял > 30 минут ИЛИ Aristotle < 10% долго:
