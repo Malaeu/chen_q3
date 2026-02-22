@@ -108,7 +108,7 @@ lemma Q_add (f g : ℝ → ℝ)
         (fun k => w_Q k * f (xi_n k) + w_Q k * g (xi_n k)) := by
       ext k; ring
     rw [heq]
-    exact tsum_add hf_sum hg_sum
+    exact Summable.tsum_add hf_sum hg_sum
   rw [h_arch, h_prime]
   ring
 

@@ -154,7 +154,8 @@ lemma w_RKHS_aristotle_eq (n : ℕ) : _root_.w_RKHS n = Q3.w_RKHS n := rfl
 
 private noncomputable def extend_vec {ι κ : Type*} (f : κ → ι) (v : EuclideanSpace ℝ κ) :
     EuclideanSpace ℝ ι :=
-  fun i => if h : ∃ k, f k = i then v (Classical.choose h) else 0
+  (WithLp.toLp 2 (fun i => if h : ∃ k, f k = i then v (Classical.choose h) else 0) :
+    EuclideanSpace ℝ ι)
 
 private lemma extend_vec_apply {ι κ : Type*} [DecidableEq ι]
     (f : κ → ι) (hf : Function.Injective f) (v : EuclideanSpace ℝ κ) (k : κ) :
@@ -162,11 +163,8 @@ private lemma extend_vec_apply {ι κ : Type*} [DecidableEq ι]
   classical
   have h' : ∃ k', f k' = f k := ⟨k, rfl⟩
   have hk' : Classical.choose h' = k := hf (Classical.choose_spec h')
-  calc
-    extend_vec f v (f k) = v (Classical.choose h') := by
-      simp [extend_vec, h']
-    _ = v k := by
-      rw [hk']
+  change (if h : ∃ k', f k' = f k then v (Classical.choose h) else 0) = v k
+  simpa [h', hk']
 
 private lemma norm_restrict_le {ι κ : Type*} [Fintype ι] [Fintype κ] [DecidableEq ι]
     (f : κ → ι) (hf : Function.Injective f) (w : EuclideanSpace ℝ ι) :
@@ -237,7 +235,9 @@ private lemma norm_extend_eq {ι κ : Type*} [Fintype ι] [Fintype κ] [Decidabl
           rcases h with ⟨k, hk⟩
           exact Finset.mem_image.mpr ⟨k, Finset.mem_univ k, hk⟩
         exact hnot this
-      simp [extend_vec, hnot']
+      have hz : extend_vec f v i = 0 := by
+        simpa [extend_vec, hnot']
+      simpa [hz]
     have h := Finset.sum_subset hsubset hzero
     simpa using h.symm
   have hsum :
@@ -287,7 +287,9 @@ private lemma opNorm_submatrix_le {ι κ : Type*} [Fintype ι] [Fintype κ]
             rcases h with ⟨j, hj⟩
             exact Finset.mem_image.mpr ⟨j, Finset.mem_univ j, hj⟩
           exact hnot this
-        simp [extend_vec, hnot']
+        have hz : extend_vec f v i = 0 := by
+          simpa [extend_vec, hnot']
+        simpa [hz]
       have h := Finset.sum_subset hsubset hzero
       simpa using h
     calc

@@ -1,18 +1,19 @@
-/-!
-Analytic prime certificate gate (Step 3: numerical tables fallback removed).
+import Q3.Axioms
+import Q3.Proofs.Params_Critical
+import Q3.Proofs.PrimeCert.PrimeCert_Margin_PathB
+
+/-! Analytic prime certificate gate (Step 3: numerical tables fallback removed).
 
 This file provides a lightweight replacement for the legacy numeric certificate
 assumptions by exposing a single theorem name that can be replaced with an
 actual closed-form RKHS/convexity proof later.
 -/
 
-import Q3.Axioms
-import Q3.Proofs.Params_Critical
-import Q3.Proofs.PrimeCert.PrimeCert_Margin_PathB
-
 set_option maxHeartbeats 0
 
 namespace Q3.Proofs.PrimeCert
+
+noncomputable section
 
 /-- Analytical target constant used in Step 3: `ρ(1) < 1/25`. -/
 def rkhs_rho_one : ℝ := 1 / 25
@@ -40,6 +41,8 @@ for import-path stabilization. Once the analytic derivation is inserted in
 -/
 theorem prime_cert_margin_from_rkhs : PrimeCertMarginOnBrange :=
   Q3.Proofs.PrimeCert.prime_cert_margin_from_pathB
+
+end
 
 end Q3.Proofs.PrimeCert
 

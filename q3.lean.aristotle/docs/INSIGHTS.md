@@ -1173,3 +1173,11 @@ Plan (5–10 lines, concrete pointers):
   2. длинный изолированный прогон в `codex-heavy.slice` до `.olean`.
 - После длинного прогона обязательный контрольный шаг:
   `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`.
+
+## 2026-02-22 — Path A стабилизация: PrimeCert вынесен из критического пути
+
+- Исправлен `Q3/Proofs/RKHS_PrimeCap_Analytic.lean` (структура модуля/импорты), модуль собирается.
+- Исправлен `Q3/Proofs/Q_nonneg_atoms_closure.lean` (`tsum_add` -> `Summable.tsum_add`) для совместимости с текущим Mathlib API.
+- Исправлен `Q3/Proofs/Bridge.lean` (корректная `WithLp.toLp`-конструкция для `EuclideanSpace`).
+- Проверено: `lake build Q3.RKHS_Contraction`, `lake build Q3.T5_Transfer`, `lake env lean Q3/Main.lean`.
+- Результат: основной путь снова доходит до `Q3.Main.RH_of_Weil_and_Q3 : RH`; каскадный блокер по PrimeCert в main dependency path снят на Path A.
