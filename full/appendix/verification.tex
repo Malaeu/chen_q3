@@ -13,6 +13,14 @@
   \item \textbf{RKHS + Weil linkage.} Uniform prime cap and the Weil criterion linkage.
 \end{itemize}
 
+\paragraph{Lean gate mapping (Path A/B).}
+The mainline paper gate is mirrored in Lean as a single contract boundary:
+\texttt{Q3/Proofs/PrimeCert/PrimeCert\_Margin\_Spec.lean} (contract type),
+\texttt{Q3/Proofs/PrimeCert/PrimeCert\_Margin\_Gate.lean} (integration switch),
+and \texttt{Q3/Proofs/PrimeCert/PrimeCert\_Margin\_PathB.lean} (analytic closure target).
+The heavy certificate path remains isolated in
+\texttt{Q3/Proofs/PrimeCert/PrimeCert\_Margin\_Proof.lean} and is not required by the main theorem import path.
+
 % ---------------------------------------------------------------------------
 \paragraph{Elementary inequalities used in A3.}
 The A3 floor proof (Lemma~\ref{lem:uniform-arch-floor}) uses only fixed constant bounds and

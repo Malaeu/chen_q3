@@ -15,7 +15,13 @@
 \usepackage{bookmark}
 \usepackage[nameinlink,capitalize,noabbrev]{cleveref}
 \usepackage{url}
-\usepackage[hyphenbreaks]{breakurl}
+\usepackage{iftex}
+\ifPDFTeX
+  % breakurl is for DVI workflows; under pdfTeX map \burl to \url.
+  \let\burl\url
+\else
+  \usepackage[hyphenbreaks]{breakurl}
+\fi
 \def\UrlBreaks{\do\/\do-\do.}
 \input{preamble/constants}
 \newif\ifrkhroute

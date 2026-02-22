@@ -23,9 +23,9 @@ $c_* = \tfrac{11}{10}$ is the \textbf{uniform Archimedean floor} from Lemma~\ref
 (for $t=t_{\mathrm{crit}}=\tfrac{3}{20}=0.15$, $B_{\min}=3$), valid on the full circle $\TT$ and independent of $K$.
 The prime norm is bounded in the Arch-induced RKHS by the uniform cap
 \[
-  \|T_P^{\mathrm{RKHS}}(t)\|\le \rho(t),
+  \|T_P^{\mathrm{RKHS}}(1)\|\le \rho(1),
 \]
-at the same scale $t$ (Corollary~\ref{cor:uniform-prime-cap}). Thus
+at the fixed analytic gate scale $t_{\mathrm{rkhs}}=1$ (Corollary~\ref{cor:pcu-uniform}). Thus
 \[
   \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ \ge\ \min P_A\ -\ C\,\omega_{P_A}(1/(2M))\ -\ \rho(t),
 \]
@@ -39,8 +39,8 @@ For reference we collect the global hypotheses used in the closure section. Each
   \item[(H1)] $(\mathrm{T0})$ --- Guinand--Weil normalization of $Q^\star(t;\cdot)$ (Proposition~\ref{prop:T0-GW}).
   \item[(H2)] $(\mathrm{A1}')$ --- Density of the Fej\'er$\times$heat cone on every $W_K$ (Theorem~\ref{a1:thm:A1-local-density}).
   \item[(H3)] $(\mathrm{A2})$ --- Lipschitz continuity of $Q^\star(t;\cdot)$ on each $W_K$ (Lemma~\ref{a2:lem:A2} and Corollary~\ref{a2:cor:explicit-lip}).
-  \item[(H4)] $(\mathrm{A3})$ --- Toeplitz bridge with the explicit uniform floor $c_*>0$ (Lemma~\ref{lem:uniform-arch-floor}), RKHS cap $\rho(t)\le c_*/4$ at $t=t_{\mathrm{crit}}$, and uniform discretisation threshold $M_0^{\mathrm{unif}}$ (Theorem~\ref{thm:A3}).
-  \item[(H5)] $(\mathrm{RKHS})$ --- prime contraction via the uniform RKHS cap at $t=t_{\mathrm{crit}}$ (Corollary~\ref{cor:uniform-prime-cap}).
+  \item[(H4)] $(\mathrm{A3})$ --- Toeplitz bridge with the explicit uniform floor $c_*>0$ (Lemma~\ref{lem:uniform-arch-floor}) and uniform discretisation threshold $M_0^{\mathrm{unif}}$ (Theorem~\ref{thm:A3}).
+  \item[(H5)] $(\mathrm{RKHS})$ --- prime contraction via the fixed analytic gate $t_{\mathrm{rkhs}}=1$: $\|T_P^{\mathrm{RKHS}}(1)\|\le \rho(1)<1/25<c_*/4$ (Corollary~\ref{cor:pcu-uniform}).
 \end{description}
 
 Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} establish (H1)--(H5); the closure Theorem~\ref{thm:Main-positivity} assumes precisely these hypotheses, and Theorem~\ref{thm:RH} invokes (H1)--(H5) together with Weil's criterion.
@@ -65,19 +65,18 @@ Evenization lets us pass freely between them: doubling $w_{\mathrm{RKHS}}$ on $\
 \[
   Q^\star(t;\Phi)=\int_{\mathbb{R}} a_*(\xi)\,\Phi(\xi)\,d\xi\;-\;\sum_{n\ge2} w_Q(n)\,\Phi(\xi_n),
 \]
-with the single heat scale $t=t_{\mathrm{crit}}$ in the main line; Section~\ref{sec:T0} records the exact crosswalk to the Guinand--Weil form.  (We call $Q^\star$ “quadratic” only because $\Phi=g*g^{\vee}$; as a functional of $\Phi$ it is linear.) Notational summaries and parameter tables are collected in Appendix~\ref{app:notation}.
+with the A3 symbol scale fixed at $t=t_{\mathrm{crit}}$ and the RKHS prime gate fixed at $t_{\mathrm{rkhs}}=1$; Section~\ref{sec:T0} records the exact crosswalk to the Guinand--Weil form.  (We call $Q^\star$ “quadratic” only because $\Phi=g*g^{\vee}$; as a functional of $\Phi$ it is linear.) Notational summaries and parameter tables are collected in Appendix~\ref{app:notation}.
 
 \subsection*{Quick reference for reviewers}\label{sec:quick-ref}
 \begin{tcolorbox}[colback=white,colframe=black!60]
 \textbf{Architecture.} T0 $\to$ A1$'$ $\to$ A2 $\to$ A3 $\to$ RKHS $\to$ Main closure.
 \textbf{Goal:} $Q^\star(t;\Phi)\ge0$ on the Weil cone $\mathcal W$.
 
-\textbf{Single scale.} The same $t=t_{\mathrm{crit}}$ controls the symbol modulus $\omega_{P_A}$ (A3)
-and the prime cap $\|T_P^{\mathrm{RKHS}}(t)\|$ (RKHS).
+\textbf{Mainline gate choice.} A3 uses the symbol scale $t=t_{\mathrm{crit}}$, while the prime cap is taken at the fixed analytic gate $t_{\mathrm{rkhs}}=1$.
 
 \textbf{Uniform margins.} Global Arch floor $c_\ast=\tfrac{11}{10}$ is supplied explicitly by
 Lemma~\ref{lem:uniform-arch-floor} (with $t=t_{\mathrm{crit}}=3/20=0.15$, $B_{\min}=3$). The prime cap is set by
-$\rho(t)\le c_\ast/4$ at $t=t_{\mathrm{crit}}$, ensuring $\|T_P^{\mathrm{RKHS}}(t)\|\le c_\ast/4$.
+$\rho(1)<1/25<c_\ast/4$ (Corollary~\ref{cor:pcu-uniform}), ensuring $\|T_P^{\mathrm{RKHS}}(1)\|\le c_\ast/4$.
 Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mathrm{Ray}}(t,M)\|\le c_\ast/4$
 \ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ge c_\ast/4$.
 

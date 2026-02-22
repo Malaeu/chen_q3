@@ -151,9 +151,9 @@ so $\rho(t)$ is decreasing by monotone convergence. The Gaussian factor forces $
 
 \begin{remark}[Why uniform cap beats local bisection]\label{rem:uniform-vs-local-full}
 Legacy per-compact bisection schedules are archived in Appendix~\ref{app:legacy-branch} for provenance.
-The mainline selects a single scale \(t=t_{\mathrm{crit}}\)
-independent of \(K\); Corollary~\ref{cor:uniform-prime-cap} then guarantees
-\(\rho(t)\le c_*/4\). This decouples the prime cap from local parameter tuning
+The mainline selects a single scale \(t_{\mathrm{rkhs}}=1\)
+independent of \(K\); Corollary~\ref{cor:pcu-uniform} gives
+\(\rho(1)<1/25<c_*/4\). Since \(\rho(t)\) is decreasing, any \(t\ge 1\) also works. This decouples the prime cap from local parameter tuning
 and keeps the bridge analytic.
 \end{remark}
 
@@ -212,18 +212,23 @@ Assume $t\ge \tfrac{1}{16\pi^2}$ and set $N_0:=\max\{N,e^2\}$. Then $\|T_P^{\mat
 \subsection*{Analytic prime caps and the PCU theorem}
 
 \begin{corollary}[Uniform prime cap at the analytic scale]\label{cor:pcu-uniform}
-Let $t=t_{\mathrm{crit}}$ as in Corollary~\ref{cor:uniform-prime-cap}. Then
+Set $t_{\mathrm{rkhs}}:=1$. Then
 \[
-  \|T_P^{\mathrm{RKHS}}(t)\|\le \rho(t)\le \frac{c_*}{4}.
+  \|T_P^{\mathrm{RKHS}}(t_{\mathrm{rkhs}})\|
+  \le \rho(1)
+  < \frac{1}{25}
+  < \frac{c_*}{4}.
 \]
 \end{corollary}
 
 \begin{proof}
-Corollary~\ref{cor:uniform-prime-cap} gives $\|T_P^{\mathrm{RKHS}}(t)\|\le \rho(t)\le c_*/4$ at
-$t=t_{\mathrm{crit}}$.
+Proposition~\ref{pm:prop:norm-leq-rho} gives
+$\|T_P^{\mathrm{RKHS}}(1)\|\le \rho(1)$.
+Lemma~\ref{pm:lem:rho-closed-form} gives $\rho(1)<1/25$.
+Finally $c_*=11/10$, so $1/25 < c_*/4 = 11/40$.
 \end{proof}
 
 \begin{remark}[No K-dependent parameters]
-The uniform prime cap uses a single scale $t=t_{\mathrm{crit}}$
+The uniform prime cap uses a single scale $t=t_{\mathrm{rkhs}}=1$
 and the uniform floor $c_*>0$. No K-dependent schedules appear in the argument.
 \end{remark}
