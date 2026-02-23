@@ -81,20 +81,20 @@ Proof strategy from Aristotle:
 2. Fejér×heat atoms can approximate any function in W_K
 3. For any Φ ∈ W_K and ε > 0, construct g ∈ AtomCone_K with ‖Φ - g‖_∞ < ε
 -/
-theorem A1_density (K : ℝ) (hK : K > 0) :
+theorem A1_density (K : ℝ) (hK : K > 0) (t0 : ℝ) (ht0 : t0 > 0) :
     ∀ Φ ∈ Q3.W_K K, ∀ ε > 0,
-      ∃ g ∈ Q3.AtomCone_K K,
+      ∃ g ∈ Q3.AtomCone_K_fixed K t0,
         sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε :=
-  Q3.A1_density_WK_axiom K hK
+  Q3.A1_density_WK_axiom K hK t0 ht0
 
 /-! ## Connection to Q3 Axiom -/
 
 /-- This theorem closes A1_density_WK_axiom -/
-theorem closes_A1_density_axiom (K : ℝ) (hK : K > 0) :
+theorem closes_A1_density_axiom (K : ℝ) (hK : K > 0) (t0 : ℝ) (ht0 : t0 > 0) :
     ∀ Φ ∈ Q3.W_K K, ∀ ε > 0,
-      ∃ g ∈ Q3.AtomCone_K K,
+      ∃ g ∈ Q3.AtomCone_K_fixed K t0,
         sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε := by
-  exact A1_density K hK
+  exact A1_density K hK t0 ht0
 
 end Q3.Proofs.A1_Density
 

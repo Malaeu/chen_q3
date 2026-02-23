@@ -64,10 +64,29 @@ lemma ActiveNodes_finite (K : ℝ) : (ActiveNodes K).Finite := by
 W_sum K is equal to the sum of w_Q n over the finite set of active nodes.
 -/
 lemma W_sum_eq_sum (K : ℝ) : W_sum K = ∑ n ∈ (ActiveNodes_finite K).toFinset, w_Q n := by
-  convert tsum_eq_sum _;
-  · aesop;
-  · exact?;
-  · aesop
+  classical
+  letI : (SummationFilter.unconditional ℕ).LeAtTop :=
+    SummationFilter.instLeAtTopUnconditional ℕ
+  let s : Finset ℕ := (ActiveNodes_finite K).toFinset
+  have htsum :
+      (∑' n : ℕ, if n ∈ ActiveNodes K then w_Q n else 0) =
+        ∑ n ∈ s, if n ∈ ActiveNodes K then w_Q n else 0 := by
+    exact tsum_eq_sum (L := SummationFilter.unconditional ℕ) (s := s) (by
+      intro b hb
+      have hb_not_active : b ∉ ActiveNodes K := by
+        intro hmem
+        apply hb
+        simpa [s, Set.Finite.mem_toFinset] using hmem
+      simp [hb_not_active])
+  have hsimp :
+      (∑ n ∈ s, if n ∈ ActiveNodes K then w_Q n else 0) =
+        ∑ n ∈ s, w_Q n := by
+    refine Finset.sum_congr rfl ?_
+    intro n hn
+    have hmem : n ∈ ActiveNodes K := by
+      simpa [s, Set.Finite.mem_toFinset] using hn
+    simp [hmem]
+  simpa [W_sum, s] using htsum.trans hsimp
 
 #check ArithmeticFunction.vonMangoldt_le_log
 
@@ -79,7 +98,8 @@ lemma w_Q_bound (K : ℝ) (hK : K > 0) (n : ℕ) (hn : n ∈ ActiveNodes K) : w_
   -- We know that $\Lambda(n) \leq \log n$ for all $n$.
   have h_lambda_le_log : ∀ n, Λ n ≤ Real.log n := by
     unfold Λ;
-    exact?;
+    intro n
+    simpa using (ArithmeticFunction.vonMangoldt_le_log (n := n))
   -- Using the bound $\log n \leq 2\pi K$ from the active node condition.
   have h_log_le_2piK : Real.log n ≤ 2 * Real.pi * K := by
     unfold xi_n at hn; aesop;
@@ -108,7 +128,8 @@ Explicit bound for W_sum K.
 lemma W_sum_bound_explicit (K : ℝ) (hK : K > 0) : W_sum K ≤ (N_K K) * (2 * Real.sqrt 2 * Real.pi * K) := by
   -- Apply the lemma that bounds each term in the sum.
   have h_term_bound : ∀ n ∈ ActiveNodes K, w_Q n ≤ 2 * Real.sqrt 2 * Real.pi * K := by
-    exact?;
+    intro n hn
+    exact w_Q_bound K hK n hn
   rw [ W_sum_eq_sum ];
   refine' le_trans ( Finset.sum_le_sum fun n hn => h_term_bound n <| by simpa using hn ) _ ; norm_num;
   bound;

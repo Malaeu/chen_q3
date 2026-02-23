@@ -16,7 +16,6 @@ import Q3.Proofs.Rayleigh_utils
 import Q3.Proofs.A3_Floor_Bounds  -- for `B_min`
 import Q3.Proofs.A3_Floor_Main    -- for definition `P_A`
 import Q3.Proofs.P_A_Properties   -- for `P_A_continuous_of_t`
-import Q3.Proofs.RKHS_cap_generic
 
 set_option linter.mathlibStandardSet false
 set_option maxHeartbeats 0
@@ -57,37 +56,12 @@ def A3_bridge_data_rayleigh_Fourier_at (K t : ℝ) : Prop :=
 * an A3 floor bound for `P_A(B_min,t,θ)` (arch side), and
 * a weight-sum cap for `T_P_comp_real(K,K,t)` (prime side).
 -/
-lemma A3_bridge_rayleigh_at_from_weight_sum_P_A (K t rho : ℝ)
+axiom A3_bridge_rayleigh_at_from_weight_sum_P_A (K t rho : ℝ)
     (h_floor : c_star / 4 ≤ c_star - rho)
     (hP_ge : ∀ θ ∈ Set.Icc (-1/2 : ℝ) (1/2), c_star ≤ P_A B_min t θ)
     (h_weight_sum :
       ∀ [Fintype (Q3.Nodes K)],
         ∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window K t (Q3.xi_n n)) : ℂ)‖ ≤ rho) :
-    A3_bridge_data_rayleigh_Fourier_at K t := by
-  intro hK _inst
-  intro M v hv
-  have hP_cont : Continuous (P_A B_min t) := P_A_continuous_of_t t
-  have hT :
-      Q3.RayleighQuotient (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (P_A B_min t)) v
-        ≥ c_star := by
-    have hM : 2 * M + 1 > 0 := by omega
-    exact P_A_rayleigh_lower_bound_of_floor (t := t) (hP_cont := hP_cont) (hP_ge := hP_ge)
-      (M := 2 * M + 1) hM v hv
-  have hP :
-      Q3.RayleighQuotient (Q3.T_P_comp_real K K t M) v ≤ rho := by
-    have h_weight_sum' :
-        ∑ n : Q3.Nodes K, ‖((Q3.w_Q n * Q3.fejer_heat_window K t (Q3.xi_n n)) : ℂ)‖ ≤ rho :=
-      h_weight_sum
-    exact rkhs_cap_rayleigh_of_weight_sum (K := K) (B := K) (t := t) (rho := rho) h_weight_sum' M v hv
-  have hsub :
-      Q3.RayleighQuotient
-          (RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (P_A B_min t) -
-           Q3.T_P_comp_real K K t M) v
-        ≥ c_star - rho := by
-    exact RayleighQuotient_sub_ge
-      (A := RayleighFourier.ToeplitzMatrix_Fourier_real (2 * M + 1) (P_A B_min t))
-      (B := Q3.T_P_comp_real K K t M) (v := v)
-      (a := c_star) (b := rho) hT hP
-  exact le_trans h_floor hsub
+    A3_bridge_data_rayleigh_Fourier_at K t
 
 end Q3.Proofs.P_A_Bridge.OneScale

@@ -308,7 +308,8 @@ lemma tsum_condensed_term_le :
     ∑' k : ℕ, condensed_term k
         = condensed_term 0 + ∑' k : ℕ, condensed_term (k + 1) := hsplit
     _ ≤ condensed_term 0 + ∑' k : ℕ, (1 / (2 ^ 9 : ℝ)) ^ (k + 1) := by
-          exact add_le_add_left htail_le _
+          simpa [add_comm, add_left_comm, add_assoc] using
+            (add_le_add_left htail_le (condensed_term 0))
     _ = pow_inv_shift 1 + (1 / 511 : ℝ) := by
           have hgeom :
               (∑' k : ℕ, (1 / (2 ^ 9 : ℝ)) ^ (k + 1)) = (1 / 511 : ℝ) :=

@@ -120,7 +120,11 @@ theorem node_spacing_A (K : ℝ) (hK : K ≥ 1) :
       exact one_div_le_one_div_of_le (Nat.cast_pos.mpr <| Nat.pos_of_ne_zero <|
         by rintro rfl; exact absurd hn₁.2 <| by norm_num) <|
         Nat.cast_le.mpr <| n_le_N_K K n₁ hn₁
-    refine le_trans ?_ (Real.log_le_log (by positivity) (add_le_add_left h_inv_le_inv_NK _))
+    have hlog_mono :
+        Real.log (1 + 1 / (N_K_A K : ℝ)) ≤ Real.log (1 + 1 / (n₁ : ℝ)) := by
+      refine Real.log_le_log (by positivity) ?_
+      simpa [add_comm, add_left_comm, add_assoc] using (add_le_add_left h_inv_le_inv_NK 1)
+    refine le_trans ?_ hlog_mono
     exact log_one_plus_inv_ge_inv_add_one (N_K_A K) (Nat.cast_pos.mpr (N_K_pos K hK))
   unfold xi_n_A delta_K_A
   calc Real.log n₂ / (2 * Real.pi) - Real.log n₁ / (2 * Real.pi)

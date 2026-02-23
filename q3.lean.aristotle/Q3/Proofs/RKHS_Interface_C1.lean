@@ -137,7 +137,7 @@ theorem T_P_comp_toCLM_eq_compression
             (T := T_P_RKHS_like (K := K) (B := B) (t := t) (k := k))) : E →ₗ[ℂ] E) := by
     apply (EuclideanSpace.basisFun mDim ℂ).toBasis.ext
     intro j
-    funext i
+    ext i
     -- Left: matrix entry.
     have hL :
         (Matrix.toEuclideanLin (Q3.T_P_comp K B t M) (EuclideanSpace.basisFun mDim ℂ j)) i =
@@ -188,7 +188,7 @@ noncomputable def psi_basis : mDim → E :=
   fun i => EuclideanSpace.basisFun mDim ℂ i
 
 noncomputable def k_basis : Q3.Nodes K → E :=
-  fun n => fun i => Q3.prime_vec M (Q3.xi_n n) i
+  fun n => (EuclideanSpace.equiv mDim ℂ).symm (fun i => Q3.prime_vec M (Q3.xi_n n) i)
 
 lemma psi_basis_orthonormal : Orthonormal ℂ (psi_basis (M := M)) := by
   classical

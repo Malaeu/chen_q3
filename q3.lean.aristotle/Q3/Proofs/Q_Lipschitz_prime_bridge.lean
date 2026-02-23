@@ -262,7 +262,7 @@ theorem prime_term_Lipschitz (K : ℝ) (hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ)
   have h_diff : prime_term_local Φ₁ - prime_term_local Φ₂ =
       ∑' n, w_Q n * (Φ₁ (xi_n n) - Φ₂ (xi_n n)) := by
     unfold prime_term_local
-    rw [← tsum_sub hsum₁ hsum₂]
+    rw [← Summable.tsum_sub hsum₁ hsum₂]
     congr 1
     ext n
     ring
@@ -349,7 +349,7 @@ theorem prime_term_Lipschitz (K : ℝ) (hK : K > 0) (Φ₁ Φ₂ : ℝ → ℝ)
         -- Now use tsum_le_tsum
         calc ∑' n, w_Q n * |Φ₁ (xi_n n) - Φ₂ (xi_n n)|
             ≤ ∑' n, (if n ∈ ActiveNodes_local K then w_Q n else 0) * D :=
-              tsum_le_tsum h_term_bound h_summable_lhs h_summable_bound
+              Summable.tsum_le_tsum h_term_bound h_summable_lhs h_summable_bound
           _ = (∑' n, if n ∈ ActiveNodes_local K then w_Q n else 0) * D := tsum_mul_right
           _ = W_sum_local K * D := by unfold W_sum_local; rfl
 

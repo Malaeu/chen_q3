@@ -424,7 +424,7 @@ lemma GammaSeq_product_part_tendstoUniformlyOn (S : Set ℂ) (hS : IsCompact S) 
                 generalize_proofs at *;
                 exact ContinuousOn.sub ( continuousOn_id.div_const _ ) h_cont_term;
               exact continuousOn_finset_sum _ fun k hk => h_cont_term k;
-            exact h_unif_conv.continuousOn ( Filter.Eventually.of_forall h_cont ) |> fun h => h.mono <| by aesop_cat;
+            exact h_unif_conv.continuousOn ( Filter.Frequently.of_forall h_cont ) |> fun h => h.mono <| by aesop_cat;
           generalize_proofs at *; (
           exact h_cont)
         generalize_proofs at *; (
@@ -558,7 +558,7 @@ lemma GammaSeq_tendstoLocallyUniformlyOn (S : Set ℂ) (hS : S ⊆ {z | 0 < z.re
                 have h_cont : TendstoUniformlyOn (fun n z => ∑ k ∈ Finset.range n, (z / (k + 1 : ℂ) - Complex.log (1 + z / (k + 1 : ℂ)))) (fun z => ∑' k : ℕ, (z / (k + 1 : ℂ) - Complex.log (1 + z / (k + 1 : ℂ)))) Filter.atTop K := by
                   exact GammaSeq_log_term_summable_uniform K hK hK'
                 refine' h_cont.continuousOn _;
-                refine' Filter.Eventually.of_forall fun n => continuousOn_finset_sum _ fun i hi => ContinuousOn.sub _ _;
+                refine' Filter.Frequently.of_forall fun n => continuousOn_finset_sum _ fun i hi => ContinuousOn.sub _ _;
                 · exact continuousOn_id.div_const _;
                 · refine' ContinuousOn.clog _ _;
                   · exact ContinuousOn.add continuousOn_const ( ContinuousOn.div_const continuousOn_id _ );
@@ -654,7 +654,7 @@ lemma GammaSeq_tendstoUniformlyOn_Gamma_product_limit (K : Set ℂ) (hK : IsComp
                 · exact ContinuousOn.add continuousOn_const ( continuousOn_id.div_const _ );
                 · intro x hx; simp_all +decide [ Complex.slitPlane, Complex.div_re, Complex.div_im ];
                   exact Or.inl ( add_pos_of_pos_of_nonneg zero_lt_one ( div_nonneg ( mul_nonneg ( le_of_lt ( hK_pos hx ) ) ( by positivity ) ) ( Complex.normSq_nonneg _ ) ) )
-            exact h_uniform.continuousOn ( Filter.eventually_atTop.mpr ⟨ 0, fun n hn => h_cont n ⟩ );
+            exact h_uniform.continuousOn ( Filter.Frequently.of_forall h_cont );
           convert h_cont using 1;
       -- Since `GammaSeq` is equal to the product for `n ≥ 1`, we can conclude the proof.
       have h_eq : ∀ n ≥ 1, ∀ z ∈ K, Complex.GammaSeq z n = (1 / z) * Complex.exp (z * (Real.log (n : ℝ) - ∑ k ∈ Finset.range n, 1 / ((k : ℝ) + 1))) * ∏ k ∈ Finset.range n, ((1 + z / (k + 1 : ℂ))⁻¹ * Complex.exp (z / (k + 1 : ℂ))) := by

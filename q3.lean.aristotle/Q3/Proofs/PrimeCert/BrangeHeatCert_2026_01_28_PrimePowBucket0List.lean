@@ -287,7 +287,7 @@ def envelope_bounds_two : PrimeHeatEnvelopeBounds 2 :=
         norm_num [t_critical, l2, u2, r2, pi_lb, bound2_num, bound2_den]
       have hrat :
           (bound2_num / bound2_den) ≤ ub2_q := by
-        native_decide
+        decide
       have hrat' :
           ((bound2_num : ℝ) / (bound2_den : ℝ)) ≤ (ub2_q : ℝ) := by
         exact_mod_cast hrat
@@ -327,7 +327,7 @@ def envelope_bounds_three : PrimeHeatEnvelopeBounds 3 :=
         norm_num [t_critical, l3, u3, r3, pi_lb, bound3_num, bound3_den]
       have hrat :
           (bound3_num / bound3_den) ≤ ub3_q := by
-        native_decide
+        decide
       have hrat' :
           ((bound3_num : ℝ) / (bound3_den : ℝ)) ≤ (ub3_q : ℝ) := by
         exact_mod_cast hrat
@@ -367,7 +367,7 @@ def envelope_bounds_five : PrimeHeatEnvelopeBounds 5 :=
         norm_num [t_critical, l5, u5, r5, pi_lb, bound5_num, bound5_den]
       have hrat :
           (bound5_num / bound5_den) ≤ ub5_q := by
-        native_decide
+        decide
       have hrat' :
           ((bound5_num : ℝ) / (bound5_den : ℝ)) ≤ (ub5_q : ℝ) := by
         exact_mod_cast hrat

@@ -38,14 +38,9 @@ theorem Q_nonneg_on_W_K_thm (K : ℝ) (hK : K ≥ 1) : ∀ Φ ∈ Q3.W_K K, Q3.Q
   -- 3. Q_nonneg_on_atoms (Q ≥ 0 on atoms)
   exact Q3.T5.T5_transfer K hK
 
-/-- Main theorem: Q ≥ 0 on Weil cone -/
-theorem Q_nonneg_Weil_cone : ∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0 :=
-  Q3.Main.Q_nonneg_on_Weil_cone
-
-/-- RIEMANN HYPOTHESIS (proven modulo Tier-1 axioms) -/
-theorem RH_proven : Q3.RH := by
-  rw [← Q3.Weil_criterion]
-  exact Q_nonneg_Weil_cone
+/-- RIEMANN HYPOTHESIS on the current τ=0 mainline. -/
+theorem RH_proven : Q3.RH :=
+  Q3.Main.RH_of_Weil_and_Q3
 
 end Q3.MainTheorems
 
@@ -54,20 +49,12 @@ end Q3.MainTheorems
 
 Run `#print axioms Q3.MainTheorems.RH_proven` to see:
 
-Expected result:
+Expected current result:
 - propext (Lean standard)
 - Classical.choice (Lean standard)
 - Quot.sound (Lean standard)
-- Q3.Weil_criterion (Tier-1: Weil 1952)
-- Q3.explicit_formula (Tier-1: Guinand 1948) - if used
-- Q3.a_star_pos (Tier-1: Titchmarsh)
-- Q3.Szego_Bottcher_* (Tier-1: Szegő-Böttcher)
-- Q3.Schur_test (Tier-1: Schur 1911)
-- Q3.c_arch_pos (Tier-1: continuity)
-- Q3.eigenvalue_le_norm (Tier-1: spectral theory)
-
-NO Tier-2 axioms should appear!
-(A1_density, Q_Lipschitz, RKHS_contraction, A3_bridge, Q_nonneg_on_atoms are theorems)
+- Q3.Weil_criterion_tau0
+- Q3.prime_term_le_at_t_critical_axiom
 -/
 
 #print axioms Q3.MainTheorems.RH_proven

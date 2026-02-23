@@ -191,8 +191,8 @@ lemma Φ_spec_in_W_K (spec : QSpec) (hτ : spec.τ = 0) :
     have habs_ltB : |ξ - spec.τ| < spec.B := (div_lt_one spec.hB).1 habs_div
     have habs_tri : |ξ| ≤ |ξ - spec.τ| + |spec.τ| := by
       simpa [sub_add_cancel] using (abs_add_le (ξ - spec.τ) spec.τ)
-    have hsum_lt : |ξ - spec.τ| + |spec.τ| < spec.B + |spec.τ| :=
-      add_lt_add_right habs_ltB _
+    have hsum_lt : |ξ - spec.τ| + |spec.τ| < spec.B + |spec.τ| := by
+      linarith [habs_ltB]
     have habs_lt_sum : |ξ| < spec.B + |spec.τ| :=
       lt_of_le_of_lt habs_tri hsum_lt
     have habs_lt_sum' : |ξ| < |spec.τ| + spec.B := by

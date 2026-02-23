@@ -41,7 +41,7 @@ import Q3.Proofs.A_Star_Properties  -- For a_star_even_thm (Mathlib Gamma_conj)
 -- - Q_Lipschitz_bridge (a_star mismatch)
 -- - A3_bridge (Laurent polynomial → matrix form)
 -- - Q_nonneg_bridge (depends on RKHS/A3)
--- - A1_density_bridge (exact? holes + AtomCone mismatch)
+-- - A1_density_bridge (legacy tactic holes + AtomCone mismatch)
 
 set_option linter.mathlibStandardSet false
 set_option linter.unusedVariables false

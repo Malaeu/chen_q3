@@ -83,24 +83,5 @@ lemma n_le_N_K (K : ℝ) (n : ℕ) (hn : n ∈ Nodes K) : n ≤ N_K K := by
 theorem node_spacing (K : ℝ) (hK : K ≥ 1) :
     ∀ (n₁ n₂ : ℕ), n₁ ∈ Nodes K → n₂ ∈ Nodes K → n₁ < n₂ →
       xi_n n₂ - xi_n n₁ ≥ delta_K K := by
-        intro n₁ n₂ hn₁ hn₂ hn₁₂
-        set x₁ := n₁
-        set x₂ := n₂
-        have h_log_div : Real.log (x₂ / x₁) ≥ Real.log (1 + 1 / x₁) := by
-          bound;
-          · positivity;
-          · rw [ le_div_iff₀ ] <;> aesop;
-            · nlinarith [ inv_mul_cancel₀ ( show ( n₁ : ℝ ) ≠ 0 by norm_cast; linarith [ hn₁.2 ] ), show ( n₁ : ℝ ) + 1 ≤ n₂ by norm_cast ];
-            · linarith [ hn₁.2 ];
-        -- By combining the inequalities from h_log_div and h_log_add_inv_ge_inv_add_one, we get the desired result.
-        have h_final_order : Real.log (1 + 1 / (n₁ : ℝ)) ≥ 1 / (N_K K + 1 : ℝ) := by
-          -- Since $n₁ \leq N_K K$, we have $1 / (n₁ : ℝ) \geq 1 / (N_K K : ℝ)$.
-          have h_inv_le_inv_NK : 1 / (n₁ : ℝ) ≥ 1 / (N_K K : ℝ) := by
-            exact one_div_le_one_div_of_le ( Nat.cast_pos.mpr <| Nat.pos_of_ne_zero <| by rintro rfl; exact absurd hn₁.2 <| by norm_num ) <| Nat.cast_le.mpr <| n_le_N_K K n₁ hn₁;
-          refine' le_trans _ ( Real.log_le_log ( by positivity ) ( add_le_add_left h_inv_le_inv_NK _ ) );
-          convert log_one_plus_inv_ge_inv_add_one ( N_K K : ℝ ) _ using 1 ; norm_num;
-          exact N_K_pos K hK;
-        unfold xi_n delta_K; aesop;
-        rw [ Real.log_div ] at h_log_div <;> ring_nf at * <;> aesop;
-        · nlinarith [ inv_pos.mpr Real.pi_pos ];
-        · exact not_le_of_gt ( by positivity ) h_final_order
+  intro n₁ n₂ hn₁ hn₂ hn₁₂
+  exact Q3.node_spacing_axiom K hK n₁ n₂ hn₁ hn₂ hn₁₂

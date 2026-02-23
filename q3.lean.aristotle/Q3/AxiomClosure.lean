@@ -145,11 +145,11 @@ theorem A3_bridge_theorem (K : ℝ) (hK : K ≥ 1) :
 
 **Proof**: By Aristotle's A1_density_main.lean.
 Standard approximation theory + heat kernel concentration. -/
-theorem A1_density_theorem (K : ℝ) (hK : K > 0) :
+theorem A1_density_theorem (K : ℝ) (hK : K > 0) (t0 : ℝ) (ht0 : t0 > 0) :
     ∀ Φ ∈ Q3.W_K K, ∀ ε > 0,
-      ∃ g ∈ Q3.AtomCone_K K,
+      ∃ g ∈ Q3.AtomCone_K_fixed K t0,
         sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε := by
-  exact Q3.A1_density_WK_axiom K hK
+  exact Q3.A1_density_WK_axiom K hK t0 ht0
 
 /-! ## Q ≥ 0 on Atoms Closure -/
 

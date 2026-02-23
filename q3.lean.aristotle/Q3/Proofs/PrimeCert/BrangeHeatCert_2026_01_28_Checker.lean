@@ -48,7 +48,7 @@ lemma prime_heat_bucket_pp_sum_ub_eq_sum (k : Fin prime_heat_bucket_count) :
 lemma prime_heat_bucket_pp_sum_ub_q_le (k : Fin prime_heat_bucket_count) :
     prime_heat_bucket_pp_sum_ub_q k ≤ prime_heat_bucket_ub_q_get k := by
   classical
-  fin_cases k <;> native_decide
+  fin_cases k <;> decide
 
 lemma prime_heat_bucket_pp_sum_ub_le_bucket (k : Fin prime_heat_bucket_count) :
     prime_heat_bucket_pp_sum_ub k ≤ prime_heat_bucket_ub k := by

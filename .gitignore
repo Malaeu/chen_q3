@@ -53,6 +53,7 @@ sandboxes/
 
 # Python
 __pycache__/
+venv_djo/
 
 # Generated / local-only artifacts
 full/q3.lean.aristotle/ACTIVE/IMPORT_DEPS.dot

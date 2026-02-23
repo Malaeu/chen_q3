@@ -57,6 +57,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--chunk-size", type=int, default=5000)
     p.add_argument("--jobs", type=int, default=max(1, (os.cpu_count() or 1)))
     p.add_argument("--progress-step", type=int, default=1000)
+    p.add_argument("--name-suffix", type=str, default="")
     return p.parse_args()
 
 
@@ -265,6 +266,13 @@ def main() -> None:
     digits = args.digits
     scale = 10**digits
 
+    if args.name_suffix and not re.fullmatch(r"[_A-Za-z0-9]+", args.name_suffix):
+        raise SystemExit("name-suffix must match [_A-Za-z0-9]+")
+    suffix = args.name_suffix
+    pi_name = f"pi_ub{suffix}"
+    pi_le_name = f"pi_le_pi_ub{suffix}"
+    pi_pos_name = f"pi_ub{suffix}_pos"
+
     pi_ub_num = 314159265358979323847
     pi_ub_den = 10**20
     pi_ub = Fraction(pi_ub_num, pi_ub_den)
@@ -334,15 +342,15 @@ def main() -> None:
     base_lines.append("")
     base_lines.append("namespace Q3.Proofs.PrimeCert")
     base_lines.append("")
-    base_lines.append(f"def pi_ub : ℝ := ({pi_ub_num} : ℝ) / ({pi_ub_den} : ℝ)")
-    base_lines.append("lemma pi_le_pi_ub : Real.pi ≤ pi_ub := by")
-    base_lines.append("  have h' : (pi_ub : ℝ) = (3.14159265358979323847 : ℝ) := by")
-    base_lines.append("    norm_num [pi_ub]")
-    base_lines.append("  have h : (Real.pi : ℝ) < (pi_ub : ℝ) := by")
+    base_lines.append(f"def {pi_name} : ℝ := ({pi_ub_num} : ℝ) / ({pi_ub_den} : ℝ)")
+    base_lines.append(f"lemma {pi_le_name} : Real.pi ≤ {pi_name} := by")
+    base_lines.append(f"  have h' : ({pi_name} : ℝ) = (3.14159265358979323847 : ℝ) := by")
+    base_lines.append(f"    norm_num [{pi_name}]")
+    base_lines.append(f"  have h : (Real.pi : ℝ) < ({pi_name} : ℝ) := by")
     base_lines.append("    simpa [h'] using Real.pi_lt_d20")
     base_lines.append("  exact le_of_lt h")
-    base_lines.append("lemma pi_ub_pos : 0 < pi_ub := by")
-    base_lines.append("  norm_num [pi_ub]")
+    base_lines.append(f"lemma {pi_pos_name} : 0 < {pi_name} := by")
+    base_lines.append(f"  norm_num [{pi_name}]")
     base_lines.append("")
     base_lines.append("end Q3.Proofs.PrimeCert")
     write_file(base_path, base_lines)
@@ -390,7 +398,9 @@ def main() -> None:
             lines.append("")
 
             lines.append(f"lemma exp_l_{n}_div_le_b : Real.exp (l_{n} / {b.split}) ≤ b_{n} := by")
-            lines.append(f"  have hx0 : 0 ≤ l_{n} / {b.split} := by norm_num [l_{n}]")
+            lines.append(f"  have hx0 : 0 ≤ l_{n} / {b.split} := by")
+            lines.append(f"    dsimp [l_{n}]")
+            lines.append(f"    positivity")
             lines.append(f"  have hx1 : l_{n} / {b.split} ≤ 1 := by norm_num [l_{n}]")
             lines.append("  have h' :")
             lines.append(
@@ -509,9 +519,11 @@ def main() -> None:
             lines.append(f"def fejer_ub_{n} : ℝ := (fejer_num_{n} : ℝ) / (fejer_den_{n} : ℝ)")
             lines.append(f"lemma fejer_bound_{n} :")
             lines.append(
-                f"    max (0 : ℝ) (1 - l_{n} / (2 * pi_ub * prime_b_grid_i19_B)) ≤ fejer_ub_{n} := by"
+                f"    max (0 : ℝ) (1 - l_{n} / (2 * {pi_name} * prime_b_grid_i19_B)) ≤ fejer_ub_{n} := by"
             )
-            lines.append(f"  norm_num [l_{n}, pi_ub, prime_b_grid_i19_B, fejer_num_{n}, fejer_den_{n}, fejer_ub_{n}]")
+            lines.append(
+                f"  norm_num [l_{n}, {pi_name}, prime_b_grid_i19_B, fejer_num_{n}, fejer_den_{n}, fejer_ub_{n}]"
+            )
             lines.append("")
 
             lines.append(f"def bound_num_{n} : ℚ := {bound_num}")
@@ -564,7 +576,7 @@ def main() -> None:
                 f" (p := {p}) (k := {k}) hp hk"
             )
             lines.append(f"    (l := l_{n}) (u := u_{n}) (r := r_{n})")
-            lines.append(f"    (exp_ub := exp_ub_{n}) (pi_ub := pi_ub) (fejer_ub := fejer_ub_{n})")
+            lines.append(f"    (exp_ub := exp_ub_{n}) (pi_ub := {pi_name}) (fejer_ub := fejer_ub_{n})")
             lines.append(f"    (hl0 := by norm_num [l_{n}]) (hu0 := by norm_num [u_{n}])")
             lines.append(
                 f"    (hlog_l := by simpa using l_{n}_le_log)"
@@ -572,7 +584,7 @@ def main() -> None:
             )
             lines.append(f"    (hr0 := r_{n}_pos) (hsqrt := by simpa using r_{n}_sq_le)")
             lines.append(f"    (hexp := by simpa using exp_bound_{n})")
-            lines.append(f"    (hpi_pos := pi_ub_pos) (hpi := pi_le_pi_ub)")
+            lines.append(f"    (hpi_pos := {pi_pos_name}) (hpi := {pi_le_name})")
             lines.append(f"    (hfejer := by simpa using fejer_bound_{n})")
             lines.append(f"    (hub := by simpa using hub_{n}))")
             lines.append(f"  simpa [hpk] using h")

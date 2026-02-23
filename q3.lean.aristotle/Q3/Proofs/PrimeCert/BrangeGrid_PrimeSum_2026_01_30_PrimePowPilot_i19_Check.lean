@@ -22,12 +22,12 @@ def prime_b_grid_bucket99 : Fin prime_b_grid_bucket_count := ⟨99, by decide⟩
 lemma prime_b_grid_pp_i19_pilot_bucket0_sum_q_le_interval_q :
     prime_b_grid_pp_i19_pilot_ub_q_sum_bucket_0 ≤
       prime_b_grid_bucket_ub_q_get prime_b_grid_i19 prime_b_grid_bucket0 := by
-  native_decide
+  decide
 
 lemma prime_b_grid_pp_i19_pilot_bucket99_sum_q_le_interval_q :
     prime_b_grid_pp_i19_pilot_ub_q_sum_bucket_99 ≤
       prime_b_grid_bucket_ub_q_get prime_b_grid_i19 prime_b_grid_bucket99 := by
-  native_decide
+  decide
 
 lemma prime_b_grid_pp_i19_pilot_bucket0_sum_le_interval :
     ((prime_b_grid_pp_i19_pilot_ub_q_sum_bucket_0 : ℚ) : ℝ) ≤

@@ -70,7 +70,8 @@ lemma P_A_locally_finite_sum_of_t (t θ₀ : ℝ) :
         exact this
     have h_m_real : |θ₀| + 4 < |(m : ℝ)| := by
       have h1 : (Nat.ceil |θ₀| : ℝ) + 4 < |m| := by exact_mod_cast hN
-      calc |θ₀| + 4 ≤ (Nat.ceil |θ₀| : ℝ) + 4 := by linarith
+      calc |θ₀| + 4 ≤ (Nat.ceil |θ₀| : ℝ) + 4 := by
+            nlinarith [Nat.le_ceil |θ₀|]
         _ < |m| := h1
         _ = |(m : ℝ)| := by simp [Int.cast_abs]
     have h_tri : |(m : ℝ)| - |θ| ≤ |θ + (m : ℝ)| := by

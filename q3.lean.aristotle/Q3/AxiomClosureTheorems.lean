@@ -133,11 +133,11 @@ theorem A3_bridge_theorem (K : ℝ) (hK : K ≥ 1) :
 
 /-- Fejér×heat atoms dense in W_K
     Full proof: Q3/Proofs/A1_density_main.lean -/
-theorem A1_density_theorem (K : ℝ) (hK : K > 0) :
+theorem A1_density_theorem (K : ℝ) (hK : K > 0) (t0 : ℝ) (ht0 : t0 > 0) :
     ∀ Φ ∈ W_K K, ∀ ε > 0,
-      ∃ g ∈ AtomCone_K K,
+      ∃ g ∈ AtomCone_K_fixed K t0,
         sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε := by
-  exact A1_density_WK_axiom K hK
+  exact A1_density_WK_axiom K hK t0 ht0
 
 /-! ═══════════════════════════════════════════════════════════════════
     Q NONNEG ON ATOMS THEOREM (closes Q_nonneg_on_atoms_of_A3_RKHS_axiom)

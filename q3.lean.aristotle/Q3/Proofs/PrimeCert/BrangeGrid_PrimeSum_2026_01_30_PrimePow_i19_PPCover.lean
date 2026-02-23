@@ -2,6 +2,7 @@ import Mathlib
 import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Bridge
 import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_Pointwise
 import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PointwiseGT2000
+import Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_PrimePow_i19_PointwiseGT10000
 
 /-!
 `i = 19` prime-power cover scaffold.
@@ -78,7 +79,7 @@ lemma prime_b_grid_pp_i19_all_bucket_sum_eq_sum
 lemma prime_b_grid_pp_i19_all_bucket_q_sum_le_get
     (k : Fin prime_b_grid_bucket_count) :
     prime_b_grid_pp_i19_all_bucket_q_sum k ≤ prime_b_grid_pp_i19_all_ub_q_sum_get k := by
-  fin_cases k <;> native_decide
+  fin_cases k <;> decide
 
 lemma prime_b_grid_pp_i19_all_bucket_sum_le_get
     (k : Fin prime_b_grid_bucket_count) :
@@ -158,10 +159,7 @@ lemma prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds_gt2000
   exact prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds
     (prime_b_grid_weight_term_i19_le_pp_ub_of_term_bounds_gt2000 h_term_ub_gt2000)
 
-lemma prime_b_grid_weight_term_i19_le_pp_ub_of_term_bounds_gt10000
-    (h_term_ub_gt10000 :
-      ∀ n : ℕ, IsPrimePow n → 10001 ≤ n → n ≤ prime_cert_N →
-        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n) :
+lemma prime_b_grid_weight_term_i19_le_pp_ub_of_term_bounds_gt10000 :
     ∀ n : ℕ, IsPrimePow n → n ≤ prime_cert_N →
       prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n := by
   intro n hn hnN
@@ -172,17 +170,14 @@ lemma prime_b_grid_weight_term_i19_le_pp_ub_of_term_bounds_gt10000
     · have hgt2000 : 2001 ≤ n := Nat.succ_le_of_lt (Nat.lt_of_not_ge hsmall)
       exact prime_b_grid_weight_term_i19_le_pp_ub_of_2001_10000_primepow_all hn hgt2000 hmid
     · have hgt10000 : 10001 ≤ n := Nat.succ_le_of_lt (Nat.lt_of_not_ge hmid)
-      exact h_term_ub_gt10000 n hn hgt10000 hnN
+      exact prime_b_grid_weight_term_i19_le_pp_ub_of_10001_1000000_primepow_all hn hgt10000 hnN
 
-lemma prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds_gt10000
-    (h_term_ub_gt10000 :
-      ∀ n : ℕ, IsPrimePow n → 10001 ≤ n → n ≤ prime_cert_N →
-        prime_b_grid_weight_term prime_b_grid_i19 n ≤ prime_b_grid_pp_i19_all_ub n) :
+lemma prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds_gt10000 :
     ∀ k : Fin prime_b_grid_bucket_count,
       prime_b_grid_bucket_sum prime_b_grid_i19 k ≤
         ((prime_b_grid_pp_i19_all_ub_q_sum_get k : ℚ) : ℝ) := by
   exact prime_b_grid_bucket_sum_i19_le_pp_bucket_get_of_term_bounds
-    (prime_b_grid_weight_term_i19_le_pp_ub_of_term_bounds_gt10000 h_term_ub_gt10000)
+    prime_b_grid_weight_term_i19_le_pp_ub_of_term_bounds_gt10000
 
 lemma prime_b_grid_bucket_bounds_i19_of_term_bounds
     (h_term_ub :

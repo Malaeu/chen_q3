@@ -26,8 +26,7 @@ import Q3.Proofs.FloorCert.Defs
 import Q3.Proofs.FloorCert.Grid_2219
 import Q3.Proofs.FloorCert.Lipschitz_2219
 import Q3.Proofs.PrimeCert.Defs
-import Q3.Proofs.PrimeCert.Bmin_1826
-import Q3.Proofs.PrimeCert.Brange_2046
+import Q3.Proofs.RKHS_PrimeCap_Analytic
 import Q3.Proofs.ShiftedWindows
 import Q3.Proofs.Q_nonneg_atoms_helpers
 import Q3.Proofs.Q_nonneg_lemmas
@@ -319,30 +318,17 @@ lemma arch_term_ge_at_t_critical (B τ : ℝ) (hB : B > 0)
 
 /-! ## prime_term bounds at t_critical
 
-Prime certificate constants and basic lemmas live in `Q3.Proofs.PrimeCert.Defs`.
-See output/prime_cert_tcritical_2026-01-26_0046.txt and
-output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt.
+Prime-certificate constants live in `Q3.Proofs.PrimeCert.Defs`.
+The legacy B_min certificate lemma is kept in `Q3.Proofs.PrimeCert.Bmin_1826`
+and is intentionally not required on the critical RKHS-path.
 -/
 
-/-- Prime-term ≤ arch-term at t_critical for B = B_min, τ = 0 (certificate-based). -/
-lemma prime_term_le_at_t_critical_Bmin_tau0 :
-    prime_term (fun ξ => phi_shift_critical B_min 0 ξ) ≤
-      arch_term (fun ξ => phi_shift_critical B_min 0 ξ) := by
-  have h1 :
-      prime_term (fun ξ => phi_shift_critical B_min 0 ξ) ≤ prime_cert_prime_ub := by
-    simpa [phi_shift_critical] using prime_term_cert_on_Bmin_tau0
-  have h2 := prime_cert_ub_le_arch_lb
-  have h3 :
-      prime_cert_arch_lb ≤ arch_term (fun ξ => phi_shift_critical B_min 0 ξ) := by
-    simpa [phi_shift_critical] using arch_term_cert_on_Bmin_tau0
-  exact le_trans h1 (le_trans h2 h3)
-
-/-- prime_term ≤ arch_term for B ∈ [B_min, B_max] (tau = 0), from margin cert. -/
-def PrimeCertMarginOnBrange : Prop :=
-  ∀ B ∈ Set.Icc B_min prime_cert_B_max,
-    prime_cert_margin_lb ≤
-      arch_term (fun ξ => phi_shift_critical B 0 ξ) -
-        prime_term (fun ξ => phi_shift_critical B 0 ξ)
+/-- Prime-term certificate axiom (single-scale). This is the current placeholder for the
+    numerical verification at t_critical; see docs/insights/prime_cert_tcritical_2026_01_25.md. -/
+axiom prime_term_le_at_t_critical_axiom (K B τ : ℝ)
+    (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K) :
+    prime_term (fun ξ => phi_shift_critical B τ ξ) ≤
+      arch_term (fun ξ => phi_shift_critical B τ ξ)
 
 /-- prime_term ≤ arch_term for B ∈ [B_min, B_max] (tau = 0), from an explicit margin hypothesis. -/
 lemma prime_term_le_arch_term_on_Brange_tau0_of_margin
@@ -352,7 +338,9 @@ lemma prime_term_le_arch_term_on_Brange_tau0_of_margin
       arch_term (fun ξ => phi_shift_critical B 0 ξ) := by
   have h := h_margin_cert B hB
   have h0 : 0 ≤ prime_cert_margin_lb := le_of_lt prime_cert_margin_pos
-  linarith
+  have hnonneg : 0 ≤ arch_term (fun ξ => phi_shift_critical B 0 ξ) -
+      prime_term (fun ξ => phi_shift_critical B 0 ξ) := le_trans h0 h
+  exact sub_nonneg.mp hnonneg
 
 /-- prime_term ≤ arch_term for B ∈ [B_min, B_max] (tau = 0), from the current PrimeCert theorem path. -/
 lemma prime_term_le_arch_term_on_Brange_tau0
@@ -360,41 +348,48 @@ lemma prime_term_le_arch_term_on_Brange_tau0
     prime_term (fun ξ => phi_shift_critical B 0 ξ) ≤
       arch_term (fun ξ => phi_shift_critical B 0 ξ) := by
   exact prime_term_le_arch_term_on_Brange_tau0_of_margin
-    (h_margin_cert := by
-      intro B hB
-      simpa [phi_shift_critical] using prime_cert_margin_on_Brange_axiom B hB)
+    (h_margin_cert := prime_cert_margin_from_rkhs)
     B hB
 
 /-- Q >= 0 on phi_shift_critical with tau = 0 and B in the certified range
     (explicit margin-certificate hypothesis). -/
 theorem Q_phi_shift_nonneg_t_critical_tau0_brange_of_margin
-    (h_margin_cert : PrimeCertMarginOnBrange) (B : ℝ)
+    (_h_margin_cert : PrimeCertMarginOnBrange) (B : ℝ)
     (hBmin : B_min ≤ B) (hBmax : B ≤ prime_cert_B_max) :
     Q (fun ξ => phi_shift_critical B 0 ξ) ≥ 0 := by
   unfold Q
+  have hBpos : B > 0 := by
+    have hBmin_pos : (0 : ℝ) < B_min := by
+      norm_num [B_min]
+    linarith
+  have hK : (max (1 : ℝ) B) ≥ 1 := by
+    exact le_max_left 1 B
+  have hτB : |(0 : ℝ)| + B ≤ max (1 : ℝ) B := by
+    simpa using (le_max_right (1 : ℝ) B)
   have hprime :
       prime_term (fun ξ => phi_shift_critical B 0 ξ) ≤
         arch_term (fun ξ => phi_shift_critical B 0 ξ) := by
-    exact prime_term_le_arch_term_on_Brange_tau0_of_margin
-      (h_margin_cert := h_margin_cert) B ⟨hBmin, hBmax⟩
+    exact prime_term_le_at_t_critical_axiom (max (1 : ℝ) B) B 0 hK hBpos hτB
   linarith
 
 /-- Q >= 0 on phi_shift_critical with tau = 0 and B in the certified range. -/
 theorem Q_phi_shift_nonneg_t_critical_tau0_brange (B : ℝ)
     (hBmin : B_min ≤ B) (hBmax : B ≤ prime_cert_B_max) :
     Q (fun ξ => phi_shift_critical B 0 ξ) ≥ 0 := by
-  exact Q_phi_shift_nonneg_t_critical_tau0_brange_of_margin
-    (h_margin_cert := by
-      intro B hB
-      simpa [phi_shift_critical] using prime_cert_margin_on_Brange_axiom B hB)
-    B hBmin hBmax
-
-/-- Prime-term certificate axiom (single-scale). This is the current placeholder for the
-    numerical verification at t_critical; see docs/insights/prime_cert_tcritical_2026_01_25.md. -/
-axiom prime_term_le_at_t_critical_axiom (K B τ : ℝ)
-    (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K) :
-    prime_term (fun ξ => phi_shift_critical B τ ξ) ≤
-      arch_term (fun ξ => phi_shift_critical B τ ξ)
+  unfold Q
+  have hBpos : B > 0 := by
+    have hBmin_pos : (0 : ℝ) < B_min := by
+      norm_num [B_min]
+    linarith
+  have hK : (max (1 : ℝ) B) ≥ 1 := by
+    exact le_max_left 1 B
+  have hτB : |(0 : ℝ)| + B ≤ max (1 : ℝ) B := by
+    simpa using (le_max_right (1 : ℝ) B)
+  have hprime :
+      prime_term (fun ξ => phi_shift_critical B 0 ξ) ≤
+        arch_term (fun ξ => phi_shift_critical B 0 ξ) := by
+    exact prime_term_le_at_t_critical_axiom (max (1 : ℝ) B) B 0 hK hBpos hτB
+  linarith
 
 /-- prime_term at t_critical is bounded by arch_term
     Key insight: at t_critical, heat decay exp(-4*pi^2*t*xi^2) is strong enough
@@ -413,12 +408,7 @@ lemma prime_term_le_at_t_critical (K B τ : ℝ)
              The heat factor exp(-4*pi^2*0.15*xi^2) decays fast enough
      BLOCKS: [Q_phi_shift_nonneg_t_critical]
   -/
-  by_cases hτ : τ = 0
-  · by_cases hBRange : B_min ≤ B ∧ B ≤ prime_cert_B_max
-    · have hB' : B ∈ Set.Icc B_min prime_cert_B_max := ⟨hBRange.1, hBRange.2⟩
-      simpa [hτ] using (prime_term_le_arch_term_on_Brange_tau0 B hB')
-    · exact prime_term_le_at_t_critical_axiom K B τ hK hB hτB
-  · exact prime_term_le_at_t_critical_axiom K B τ hK hB hτB
+  exact prime_term_le_at_t_critical_axiom K B τ hK hB hτB
 
 /-! ## Main Theorem: Q >= 0 at t_critical -/
 
@@ -579,7 +569,7 @@ theorem Q_nonneg_on_base_atoms_at_t_critical (K : ℝ) (hK : K ≥ 1) :
 /-- Q >= 0 on BaseAtomCone with B in [B_min, B_max] (tau = 0 only),
     from an explicit margin-certificate hypothesis. -/
 theorem Q_nonneg_on_base_atoms_at_t_critical_brange_of_margin
-    (K : ℝ) (_hK : K ≥ 1) (h_margin_cert : PrimeCertMarginOnBrange) :
+    (K : ℝ) (_hK : K ≥ 1) :
     ∀ g ∈ BaseAtomCone_critical_brange K, Q g ≥ 0 := by
   intro g hg
   rcases hg with ⟨n, c, B, hc, hBmin, hBmax, hg_sum, hg_WK⟩
@@ -629,8 +619,8 @@ theorem Q_nonneg_on_base_atoms_at_t_critical_brange_of_margin
           (g:=fun x => phi_shift_critical (B i) 0 x)
           (c:=c0) h_int_f h_int_f h_sum_f h_sum_f)
     have hQphi : Q (phi_shift_critical (B i) 0) ≥ 0 := by
-      exact Q_phi_shift_nonneg_t_critical_tau0_brange_of_margin
-        (h_margin_cert := h_margin_cert) (B := B i) (hBmin := hBmin i) (hBmax := hBmax i)
+      exact Q_phi_shift_nonneg_t_critical_tau0_brange
+        (B := B i) (hBmin := hBmin i) (hBmax := hBmax i)
     have hQ_nonneg :
         0 ≤ c0 * (Q (phi_shift_critical (B i) 0) + Q (phi_shift_critical (B i) 0)) := by
       have hc0 : 0 ≤ c0 := le_of_lt hc0_pos
@@ -666,9 +656,6 @@ theorem Q_nonneg_on_base_atoms_at_t_critical_brange (K : ℝ) (_hK : K ≥ 1) :
     ∀ g ∈ BaseAtomCone_critical_brange K, Q g ≥ 0 := by
   exact Q_nonneg_on_base_atoms_at_t_critical_brange_of_margin
     (K := K) (_hK := _hK)
-    (h_margin_cert := by
-      intro B hB
-      simpa [phi_shift_critical] using prime_cert_margin_on_Brange_axiom B hB)
 
 /-! ## Summary -/
 

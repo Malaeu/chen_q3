@@ -12,6 +12,7 @@ import Q3.Proofs.Rayleigh_utils     -- for `RayleighQuotient_le_opNorm`
 set_option linter.mathlibStandardSet false
 
 open scoped BigOperators
+open scoped Matrix.Norms.L2Operator
 
 noncomputable section
 

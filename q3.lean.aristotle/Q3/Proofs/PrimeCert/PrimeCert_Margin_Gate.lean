@@ -20,9 +20,6 @@ end Q3.Proofs.PrimeCert
 
 namespace Q3
 
-/-- Compatibility alias kept for existing `Main` signatures. -/
-abbrev PrimeCertMarginOnBrange : Prop := Q3.Proofs.PrimeCert.PrimeCertMarginOnBrange
-
 /-- Compatibility alias for the same contract entry point. -/
 theorem prime_cert_margin_from_gate : PrimeCertMarginOnBrange :=
   Q3.Proofs.PrimeCert.prime_cert_margin_from_gate
