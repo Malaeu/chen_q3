@@ -1,4 +1,5 @@
 import Q3.Proofs.WeilCoreTau0_ExplicitFormulaTau0
+import Q3.Proofs.Q_nonneg_lemmas
 
 set_option linter.mathlibStandardSet false
 
@@ -173,6 +174,146 @@ theorem tau0_compact_approx_on_WK_tau0
 can be lifted into the τ=0 class `W_K_tau0`. -/
 def WKToTau0Bridge (t0 B_min B_max : ℝ) : Prop :=
   ∀ K, K ≥ Kfloor B_min → Q3.W_K K ⊆ Q3.W_K_tau0 K t0 B_min B_max
+
+/-- Any brange atom-cone witness vanishes at points with `|ξ| ≥ B_max`
+when `B_min > 0` (hence every component radius is positive). -/
+lemma baseAtomCone_brange_eval_zero_of_abs_ge_Bmax
+    (t0 B_min B_max K ξ : ℝ)
+    (hBmin_pos : 0 < B_min)
+    (hξ : B_max ≤ |ξ|)
+    {g : ℝ → ℝ}
+    (hg : g ∈ Q3.BaseAtomCone_K_brange K t0 B_min B_max) :
+    g ξ = 0 := by
+  rcases hg with ⟨n, c, B, hc, hBmin, hBmax, hg_sum, hgWK⟩
+  rw [hg_sum]
+  refine Finset.sum_eq_zero ?_
+  intro i hi
+  have hBi_pos : 0 < B i := lt_of_lt_of_le hBmin_pos (hBmin i)
+  have hBi_abs : B i ≤ |ξ| := le_trans (hBmax i) hξ
+  have hzero : Q3.Fejer_heat_atom (B i) t0 0 ξ = 0 := by
+    have h1 : B i ≤ |ξ - 0| := by simpa using hBi_abs
+    have h2 : B i ≤ |ξ + 0| := by simpa using hBi_abs
+    simpa using
+      Q3.Proofs.Q_nonneg_lemmas.Fejer_heat_atom_eq_zero_of_far
+        (B i) t0 0 ξ hBi_pos h1 h2
+  simp [hzero]
+
+private def farWitness (B_max : ℝ) : ℝ → ℝ :=
+  fun x => Q3.Fejer_kernel (B_max + 1) x
+
+private def farWindow (B_max : ℝ) : ℝ := B_max + 2
+
+lemma farWitness_mem_WK (B_max : ℝ) (hBmax_pos : 0 < B_max) :
+    farWitness B_max ∈ Q3.W_K (farWindow B_max) := by
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · simpa [farWitness] using
+      (Q3.Proofs.Q_nonneg_lemmas.Fejer_kernel_continuous (B_max + 1))
+  · intro x hx
+    by_contra hx_out
+    have hnot_abs_lt : ¬ |x| < farWindow B_max := by
+      intro hAbs
+      have h1 : -farWindow B_max < x := by
+        have h := (abs_lt.mp hAbs).1
+        linarith
+      have h2 : x < farWindow B_max := by
+        have h := (abs_lt.mp hAbs).2
+        linarith
+      exact hx_out ⟨h1, h2⟩
+    have hKabs : farWindow B_max ≤ |x| := le_of_not_gt hnot_abs_lt
+    have hBabs : B_max + 1 ≤ |x| := by
+      have hKabs' : B_max + 2 ≤ |x| := by
+        simpa [farWindow] using hKabs
+      linarith [hKabs']
+    have hBpos : 0 < B_max + 1 := by linarith
+    have hzero : farWitness B_max x = 0 := by
+      dsimp [farWitness]
+      exact
+        Q3.Proofs.Q_nonneg_lemmas.Fejer_kernel_eq_zero_of_abs_ge
+          (B_max + 1) x hBpos hBabs
+    exact hx hzero
+  · intro x
+    simp [farWitness, Q3.Fejer_kernel, abs_neg]
+  · intro x
+    simp [farWitness, Q3.Fejer_kernel]
+
+lemma farWitness_eval_pos_at_Bmax (B_max : ℝ) (hBmax_pos : 0 < B_max) :
+    0 < farWitness B_max B_max := by
+  have hden : 0 < B_max + 1 := by linarith
+  have habs : |B_max| = B_max := abs_of_nonneg (le_of_lt hBmax_pos)
+  have hratio_lt_one : B_max / (B_max + 1) < (1 : ℝ) := by
+    have hnum_lt : B_max < B_max + 1 := by linarith
+    have hnum_lt' : B_max < 1 * (B_max + 1) := by simpa using hnum_lt
+    exact (div_lt_iff₀ hden).2 hnum_lt'
+  have harg_pos : 0 < 1 - |B_max| / (B_max + 1) := by
+    rw [habs]
+    linarith [hratio_lt_one]
+  have harg_nonneg : 0 ≤ 1 - |B_max| / (B_max + 1) := le_of_lt harg_pos
+  dsimp [farWitness]
+  simp [Q3.Fejer_kernel, max_eq_right harg_nonneg, harg_pos]
+
+/-- Global bridge `W_K -> W_K_tau0` cannot hold on positive B-ranges:
+the class `W_K` contains witnesses with support beyond `B_max`, while
+`BaseAtomCone_K_brange` evaluations vanish there. -/
+theorem not_WKToTau0Bridge_of_positive_brange
+    (t0 B_min B_max : ℝ)
+    (hBmin_pos : 0 < B_min)
+    (hBmax_pos : 0 < B_max) :
+    ¬ WKToTau0Bridge t0 B_min B_max := by
+  intro hBridge
+  let K0 : ℝ := farWindow B_max
+  let K : ℝ := max (Kfloor B_min) K0
+  let Φ : ℝ → ℝ := farWitness B_max
+  have hK0_le_K : K0 ≤ K := by
+    exact le_max_right (Kfloor B_min) K0
+  have hK_ge_floor : K ≥ Kfloor B_min := by
+    exact le_max_left (Kfloor B_min) K0
+  have hΦWK0 : Φ ∈ Q3.W_K K0 := by
+    simpa [Φ, K0] using farWitness_mem_WK B_max hBmax_pos
+  have hΦWK : Φ ∈ Q3.W_K K := by
+    exact (W_K_mono hK0_le_K) hΦWK0
+  have hΦ_tau0 : Φ ∈ Q3.W_K_tau0 K t0 B_min B_max := hBridge K hK_ge_floor hΦWK
+  let ξ : ℝ := B_max
+  have hξ_mem : ξ ∈ Set.Icc (-K) K := by
+    have hξ_le_K0 : ξ ≤ K0 := by
+      dsimp [ξ, K0, farWindow]
+      linarith
+    have hξ_le_K : ξ ≤ K := le_trans hξ_le_K0 hK0_le_K
+    have hnegK_lt_ξ : -K ≤ ξ := by
+      linarith [hξ_le_K]
+    exact ⟨hnegK_lt_ξ, hξ_le_K⟩
+  have hξ_abs : B_max ≤ |ξ| := by
+    dsimp [ξ]
+    rw [abs_of_nonneg (le_of_lt hBmax_pos)]
+  have hΦξ_pos : 0 < Φ ξ := by
+    simpa [Φ, ξ] using farWitness_eval_pos_at_Bmax B_max hBmax_pos
+  let ε : ℝ := Φ ξ / 2
+  have hε_pos : 0 < ε := by
+    dsimp [ε]
+    linarith [hΦξ_pos]
+  rcases hΦ_tau0.2 ε hε_pos with ⟨g, hg, hsup⟩
+  have hgξ_zero : g ξ = 0 := by
+    exact baseAtomCone_brange_eval_zero_of_abs_ge_Bmax t0 B_min B_max K ξ hBmin_pos hξ_abs hg
+  let S : Set ℝ := {|Φ x - g x| | x ∈ Set.Icc (-K) K}
+  have hS_mem : |Φ ξ - g ξ| ∈ S := by
+    exact ⟨ξ, hξ_mem, rfl⟩
+  have hS_bdd : BddAbove S := by
+    have hΦ_cont : Continuous Φ := hΦWK.1
+    have hg_cont : Continuous g := by
+      rcases hg with ⟨_, _, _, _, _, _, _, hgWK⟩
+      exact hgWK.1
+    have hcont : Continuous (fun x => |Φ x - g x|) := (hΦ_cont.sub hg_cont).abs
+    have himg_bdd :
+        BddAbove ((fun x => |Φ x - g x|) '' Set.Icc (-K) K) := by
+      exact IsCompact.bddAbove (isCompact_Icc.image hcont)
+    simpa [S] using himg_bdd
+  have hle_sup : |Φ ξ - g ξ| ≤ sSup S := le_csSup hS_bdd hS_mem
+  have hlt_half : Φ ξ < Φ ξ / 2 := by
+    have habs_eq : |Φ ξ - g ξ| = Φ ξ := by
+      rw [hgξ_zero, sub_zero, abs_of_nonneg (le_of_lt hΦξ_pos)]
+    have hlt_eps : |Φ ξ - g ξ| < ε := lt_of_le_of_lt hle_sup hsup
+    dsimp [ε] at hlt_eps
+    simpa [habs_eq] using hlt_eps
+  linarith [hΦξ_pos, hlt_half]
 
 /-- Build the global compact approximation contract on `W_K` from the bridge
 `W_K -> W_K_tau0` and the already proved τ=0 adapter route. -/

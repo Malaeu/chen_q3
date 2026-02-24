@@ -1665,3 +1665,28 @@ Plan (5–10 lines, concrete pointers):
   - `lake env lean Q3/Main.lean` ✅
   - `lake env lean Q3/CheckAxioms.lean` ✅
   - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+
+### Update (2026-02-24, done) — closed `WKToTau0Bridge` debt by formal impossibility proof
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлены:
+  - `baseAtomCone_brange_eval_zero_of_abs_ge_Bmax`:
+    любой `g ∈ BaseAtomCone_K_brange` обнуляется в точках `|ξ| ≥ B_max`
+    (при `B_min > 0`);
+  - `farWitness_mem_WK`, `farWitness_eval_pos_at_Bmax`:
+    явный свидетель `Φ(x) = Fejer_kernel (B_max+1) x` в `W_K`;
+  - `not_WKToTau0Bridge_of_positive_brange`:
+    строгий контрпример, что глобальный мост
+    `WKToTau0Bridge t0 B_min B_max` ложен при `0 < B_min` и `0 < B_max`.
+- Вывод:
+  - долг «доказать глобальный `W_K -> W_K_tau0` мост» закрыт как
+    некорректная цель (математически невозможная в этой постановке),
+    а не как “недоделанный proof”.
+  - Рабочая и корректная линия остаётся: `W_K_tau0`-adapter route и mainline
+    через `Weil_criterion_tau0`.
+- Верификация:
+  - `lake env lean Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` ✅
+  - `lake env lean Q3/Proofs/WeilCoreTau0_CounterexampleAmplifier.lean` ✅
+  - `lake env lean Q3/Main.lean` ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+  - `./scripts/audit_nosorry_active_q3.sh --changed` ✅
