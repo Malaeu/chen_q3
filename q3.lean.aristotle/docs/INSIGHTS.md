@@ -1606,3 +1606,21 @@ Plan (5–10 lines, concrete pointers):
   - `lake env lean Q3/Main.lean` ✅
   - `lake env lean Q3/CheckAxioms.lean` ✅
   - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+
+### Update (2026-02-24, done) — unpack adapter for `W_K_tau0` approximation
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлены adapter-леммы:
+  - `BaseAtomCone_K_brange_mono` (монотонность по окну `K`),
+  - `baseAtomCone_brange_subset_testClass` (вложение brange-атомов в `TestClass`),
+  - `wk_tau0_exists_atomcone_approx` (чистая распаковка определения `W_K_tau0`),
+  - `tau0_compact_approx_on_WK_tau0` (ε-аппроксимация на τ=0 окне через `TestClass`).
+- Практический смысл:
+  - часть долга `Tau0CompactApproxOnWK` теперь формализована как
+    “definition-unpack route”, без новой тяжёлой аналитики;
+  - сильный global compact-контракт для всех `Φ ∈ W_K` остаётся отдельным
+    мостом (не закрыт этим шагом полностью).
+- Верификация:
+  - `lake env lean Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` ✅
+  - `lake env lean Q3/Proofs/WeilCoreTau0_CounterexampleAmplifier.lean` ✅
+  - `lake env lean Q3/Main.lean` ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅

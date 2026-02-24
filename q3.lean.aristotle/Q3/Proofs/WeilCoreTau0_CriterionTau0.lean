@@ -97,6 +97,78 @@ def Tau0CompactApproxOnWK (t0 B_min B_max : ℝ) : Prop :=
     ∃ Ψ, Ψ ∈ TestClass t0 B_min B_max ∧ Ψ ∈ Q3.W_K K ∧
       sSup {|Φ x - Ψ x| | x ∈ Set.Icc (-K) K} < ε
 
+/-- Monotonicity of `BaseAtomCone_K_brange` with respect to the window size:
+only the terminal `W_K` membership depends on `K`. -/
+lemma BaseAtomCone_K_brange_mono
+    (t0 B_min B_max K₁ K₂ : ℝ)
+    (hK : K₁ ≤ K₂) :
+    Q3.BaseAtomCone_K_brange K₁ t0 B_min B_max ⊆
+      Q3.BaseAtomCone_K_brange K₂ t0 B_min B_max := by
+  intro g hg
+  rcases hg with ⟨n, c, B, hc, hBmin, hBmax, hg_sum, hgWK₁⟩
+  refine ⟨n, c, B, hc, hBmin, hBmax, hg_sum, ?_⟩
+  exact (W_K_mono hK) hgWK₁
+
+/-- Any brange atom-cone witness on a safe compact window is a τ=0 test-class
+function (`Weil_cone_tau0`). -/
+lemma baseAtomCone_brange_subset_testClass
+    (t0 B_min B_max K : ℝ)
+    (hK : K ≥ Kfloor B_min) :
+    Q3.BaseAtomCone_K_brange K t0 B_min B_max ⊆
+      TestClass t0 B_min B_max := by
+  intro g hg
+  refine ⟨K, ?_, ?_⟩
+  · exact le_trans (one_le_Kfloor B_min) hK
+  · refine ⟨?_, ?_⟩
+    · rcases hg with ⟨_, _, _, _, _, _, _, hgWK⟩
+      exact hgWK
+    · intro ε hε
+      refine ⟨g, hg, ?_⟩
+      have hK_nonneg : 0 ≤ K := by
+        have hKge1 : (1 : ℝ) ≤ K := le_trans (one_le_Kfloor B_min) hK
+        linarith
+      have h0_mem : (0 : ℝ) ∈ Set.Icc (-K) K := by
+        exact ⟨by linarith, by linarith⟩
+      have hzeroSet :
+          {|g x - g x| | x ∈ Set.Icc (-K) K} = ({0} : Set ℝ) := by
+        ext y
+        constructor
+        · intro hy
+          rcases hy with ⟨x, hx, hyx⟩
+          simpa [eq_comm] using hyx
+        · intro hy
+          rcases hy with rfl
+          exact ⟨0, h0_mem, by simp⟩
+      rw [hzeroSet]
+      simpa using hε
+
+/-- Unpack lemma: on any safe compact window, τ=0 class membership already
+provides ε-approximation by brange atom-cone witnesses. -/
+theorem wk_tau0_exists_atomcone_approx
+    (t0 B_min B_max K : ℝ)
+    (_hK : K ≥ Kfloor B_min)
+    (Φ : ℝ → ℝ)
+    (hΦ : Φ ∈ Q3.W_K_tau0 K t0 B_min B_max)
+    (ε : ℝ) (hε : ε > 0) :
+    ∃ g, g ∈ Q3.BaseAtomCone_K_brange K t0 B_min B_max ∧
+      sSup {|Φ x - g x| | x ∈ Set.Icc (-K) K} < ε := by
+  exact hΦ.2 ε hε
+
+/-- The τ=0 compact approximation adapter obtained by unpacking `W_K_tau0`
+and embedding brange atom-cone witnesses into `TestClass`. -/
+theorem tau0_compact_approx_on_WK_tau0
+    (t0 B_min B_max : ℝ) :
+    ∀ K, K ≥ Kfloor B_min → ∀ Φ, Φ ∈ Q3.W_K_tau0 K t0 B_min B_max → ∀ ε > 0,
+      ∃ Ψ, Ψ ∈ TestClass t0 B_min B_max ∧ Ψ ∈ Q3.W_K K ∧
+        sSup {|Φ x - Ψ x| | x ∈ Set.Icc (-K) K} < ε := by
+  intro K hK Φ hΦ ε hε
+  rcases wk_tau0_exists_atomcone_approx t0 B_min B_max K hK Φ hΦ ε hε with
+    ⟨g, hg, hsup⟩
+  refine ⟨g, ?_, ?_, hsup⟩
+  · exact baseAtomCone_brange_subset_testClass t0 B_min B_max K hK hg
+  · rcases hg with ⟨_, _, _, _, _, _, _, hgWK⟩
+    exact hgWK
+
 /-- Generic criterion assembly from two independent obligations. -/
 theorem criterion_of_obligations (t0 B_min B_max : ℝ)
     (hNonnegOfRH : Q3.RH → NonnegOn t0 B_min B_max)
