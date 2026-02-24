@@ -169,6 +169,22 @@ theorem tau0_compact_approx_on_WK_tau0
   · rcases hg with ⟨_, _, _, _, _, _, _, hgWK⟩
     exact hgWK
 
+/-- Global bridge contract: on every safe compact window, every `W_K` witness
+can be lifted into the τ=0 class `W_K_tau0`. -/
+def WKToTau0Bridge (t0 B_min B_max : ℝ) : Prop :=
+  ∀ K, K ≥ Kfloor B_min → Q3.W_K K ⊆ Q3.W_K_tau0 K t0 B_min B_max
+
+/-- Build the global compact approximation contract on `W_K` from the bridge
+`W_K -> W_K_tau0` and the already proved τ=0 adapter route. -/
+theorem tau0_compact_approx_on_WK_of_bridge
+    (t0 B_min B_max : ℝ)
+    (hBridge : WKToTau0Bridge t0 B_min B_max) :
+    Tau0CompactApproxOnWK t0 B_min B_max := by
+  intro K hK Φ hΦ ε hε
+  have hΦ_tau0 : Φ ∈ Q3.W_K_tau0 K t0 B_min B_max :=
+    hBridge K hK hΦ
+  exact tau0_compact_approx_on_WK_tau0 t0 B_min B_max K hK Φ hΦ_tau0 ε hε
+
 /-- Generic criterion assembly from two independent obligations. -/
 theorem criterion_of_obligations (t0 B_min B_max : ℝ)
     (hNonnegOfRH : Q3.RH → NonnegOn t0 B_min B_max)
@@ -310,6 +326,15 @@ theorem criterion_of_global_weil_and_compact_approx (t0 B_min B_max : ℝ)
   exact criterion_of_global_weil_and_qapprox t0 B_min B_max
     (tau0_qapprox_of_compact_approx_global t0 B_min B_max hApproxWK)
 
+/-- Bridge-driven route: derive the global compact approximation contract from
+`WKToTau0Bridge`, then apply the compact criterion pipeline. -/
+theorem criterion_of_global_weil_and_compact_approx_via_bridge
+    (t0 B_min B_max : ℝ)
+    (hBridge : WKToTau0Bridge t0 B_min B_max) :
+    NonnegOn t0 B_min B_max ↔ Q3.RH := by
+  exact criterion_of_global_weil_and_compact_approx t0 B_min B_max
+    (tau0_compact_approx_on_WK_of_bridge t0 B_min B_max hBridge)
+
 /-- User-facing τ=0 criterion on `Weil_cone_tau0`, derived from the quantitative bridge contract. -/
 theorem criterion_on_weil_cone_tau0_of_qapprox (t0 B_min B_max : ℝ)
     (hApprox : Tau0QApproxBridge t0 B_min B_max) :
@@ -324,6 +349,15 @@ theorem criterion_on_weil_cone_tau0_of_compact_approx (t0 B_min B_max : ℝ)
     (∀ Φ ∈ Q3.Weil_cone_tau0 t0 B_min B_max, Q3.Q Φ ≥ 0) ↔ Q3.RH := by
   simpa [NonnegOn, TestClass] using
     (criterion_of_global_weil_and_compact_approx t0 B_min B_max hApproxWK)
+
+/-- User-facing τ=0 criterion obtained from the bridge contract
+`W_K -> W_K_tau0` on safe windows. -/
+theorem criterion_on_weil_cone_tau0_of_compact_approx_via_bridge
+    (t0 B_min B_max : ℝ)
+    (hBridge : WKToTau0Bridge t0 B_min B_max) :
+    (∀ Φ ∈ Q3.Weil_cone_tau0 t0 B_min B_max, Q3.Q Φ ≥ 0) ↔ Q3.RH := by
+  simpa [NonnegOn, TestClass] using
+    (criterion_of_global_weil_and_compact_approx_via_bridge t0 B_min B_max hBridge)
 
 /-- Temporary route (current status): `RH → NonnegOn` via τ=0 criterion axiom. -/
 theorem nonneg_of_RH_via_tau0_axiom (t0 B_min B_max : ℝ) :

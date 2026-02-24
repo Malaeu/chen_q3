@@ -1646,3 +1646,22 @@ Plan (5–10 lines, concrete pointers):
 - Success check:
   `lake env lean Q3/Proofs/WeilCoreTau0_CriterionTau0.lean`,
   `lake env lean Q3/Main.lean`, `lake env lean Q3/CheckAxioms.lean`.
+
+### Update (2026-02-24, done) — global compact bridge theorem over adapter-layer
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлен явный мост-контракт:
+  - `WKToTau0Bridge t0 B_min B_max`:
+    `∀ K ≥ Kfloor B_min, W_K K ⊆ W_K_tau0 K t0 B_min B_max`.
+- Поверх уже закрытого adapter-слоя добавлен theorem:
+  - `tau0_compact_approx_on_WK_of_bridge`:
+    из `WKToTau0Bridge` выводится глобальный контракт
+    `Tau0CompactApproxOnWK` (без нового тяжелого анализа).
+- Добавлены route-теоремы для прямого использования:
+  - `criterion_of_global_weil_and_compact_approx_via_bridge`,
+  - `criterion_on_weil_cone_tau0_of_compact_approx_via_bridge`.
+- Верификация:
+  - `lake env lean Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` ✅
+  - `lake env lean Q3/Proofs/WeilCoreTau0_CounterexampleAmplifier.lean` ✅
+  - `lake env lean Q3/Main.lean` ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
