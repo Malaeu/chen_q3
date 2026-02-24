@@ -10,8 +10,6 @@ Expected output: List of axioms used in RH_of_Weil_and_Q3
 
 import Q3.Main
 import Q3.Proofs.Q_nonneg_t_critical
-import Q3.Proofs.PrimeCert.Brange_2046
-import Q3.Proofs.PrimeCert.BrangeCert_2046
 
 /-!
 # Axiom Dependency Verification
@@ -36,18 +34,8 @@ open Q3.Main
 #check Q3.c_arch_pos
 #check Q3.eigenvalue_le_norm
 
-/-! ## Verify Tier-2 axioms exist (τ=0 mainline) -/
--- PrimeCert (grid/heat bounds data + Lipschitz on B-range)
-#check Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data
-#check Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds
-#check Q3.Proofs.PrimeCert.prime_heat_bounds_data
-#check Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all
-#check Q3.Proofs.PrimeCert.prime_margin_Lipschitz_on_Brange
-
--- Theorem (derived from grid bounds)
-#check Q3.Proofs.PrimeCert.prime_b_grid_bounds_cert
-#check Q3.Proofs.PrimeCert.prime_b_grid_val_le_margin
-#check Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom
+/-! ## Verify Tier-2 interfaces exist (τ=0 mainline) -/
+#check Q3.PrimeCertMarginOnBrange
 
 /-! ## Off-chain (τ ≠ 0) placeholder -/
 -- Present in Q_nonneg_t_critical, but not used by the τ=0 main chain
@@ -58,12 +46,22 @@ open Q3.Main
 
 /-! ## Print Axiom Dependencies -/
 
--- Authoritative dependency list for the PrimeCert margin certificate.
+-- Authoritative dependency list for the RH mainline.
 -- `scripts/kb_refresh.py` parses the first `depends on axioms` block.
-#print axioms Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom
-
--- The RH theorem remains conditional on `PrimeCertMarginOnBrange`.
 #print axioms Q3.Main.RH_of_Weil_and_Q3
+
+-- Forward-compatible route: replaces τ=0 criterion axiom with an explicit
+-- quantitative bridge hypothesis (`Tau0QApproxBridge`).
+#print axioms Q3.Main.RH_of_Weil_and_Q3_via_qapprox
+
+-- Same route, but with compact-approximation contracts on `W_K`.
+#print axioms Q3.Main.RH_of_Weil_and_Q3_via_compact_approx
+
+-- Amplifier route sanity check: should not depend on `Weil_criterion_tau0`.
+#print axioms Q3.Proofs.WeilCoreTau0.criterion_via_axiomatic_amplifier
+
+-- Auxiliary single-scale prime gate (off mainline while `h_margin_cert` is explicit).
+#print axioms Q3.prime_term_le_at_t_critical_axiom
 
 /-!
 ## Expected Dependencies
@@ -76,11 +74,9 @@ open Q3.Main
 ### Tier-1 Classical Axioms:
 - `Q3.Weil_criterion` : Weil (1952)
 
-### Tier-2 Q3 Paper Axioms (τ=0 PrimeCert margin chain):
-- `Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data`
-- `Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
-- `Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all`
+### Tier-2 interface (τ=0 mainline):
+- `Q3.PrimeCertMarginOnBrange` is an explicit theorem hypothesis in `Q3.Main.RH_of_Weil_and_Q3`.
+- `Q3.prime_term_le_at_t_critical_axiom` is tracked separately as the off-mainline prime gate.
 
 ### THEOREM (not axiom!):
 - `Q3.T5.T5_transfer` : Q ≥ 0 on W_K
