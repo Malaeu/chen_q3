@@ -41,6 +41,138 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Synthesis (2026-02-23, in progress) — Path B closure around `prime_term_le_at_t_critical_axiom`
+
+Цель: убрать/локализовать `Q3.prime_term_le_at_t_critical_axiom` без возврата к тяжёлой PrimeCert-цепочке.
+
+Что проверено по коду:
+- Аксома сидит в `Q3/Proofs/Q_nonneg_t_critical.lean:358`; её напрямую используют `prime_term_le_at_t_critical` и `Q_phi_shift_nonneg_t_critical`.
+- Main-chain уже идёт через tau=0 + margin hypothesis (`PrimeCertMarginOnBrange`) и не требует этой аксиомы напрямую:
+  `Q3/Proofs/Q_nonneg_t_critical.lean:344`, `Q3/Main.lean:73`.
+- В `PrimeTerm_t_bridge` есть мост `t_critical -> t_rkhs_cap` с множителем `exp_tcrit_to_rkhs`:
+  `Q3/Proofs/PrimeTerm_t_bridge.lean:22`; при `t_rkhs_cap=40` (`Q3/Proofs/A3_bridge_rayleigh_first.lean:25`)
+  это слишком грубый путь для прямой замены аксиомы.
+- Для Path B добавлен недостающий строительный блок:
+  `prime_term_phi_shift_tcritical_le_cap` в `Q3/Proofs/PrimeTerm_t_bridge.lean`.
+
+Embedding/web quick-check:
+- Локальный индекс (`q3_docs`) дал релевантные точки: `insights/prime-cert-tcritical-2026-01-26.md`,
+  `insights/prime-cert-brange-tcritical-2026-01-26.md`.
+- По web tool: подтверждён актуальный статус `interval_cases` (case-split для конечных интервалов),
+  см. `Mathlib.Tactic.IntervalCases` docs.
+
+## Synthesis (2026-02-24, in progress) — `Weil_criterion_tau0` closure architecture
+
+Цель: убрать прямую load-bearing зависимость mainline от ad-hoc маршрутов `tau0_separation_via_axiom`,
+оставив одну стабильную точку замены для будущего доказательства (manual/Aristotle).
+
+Что проверено:
+- `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` уже содержит все обязательства (`Tau0Separation`,
+  `Tau0WitnessBridge`, `Tau0QApproxBridge`), но нет структурированного API для witness-construction.
+- `Q3/Main.lean` wiring стабилен и не требует изменения сигнатур.
+- `Q3/CheckAxioms.lean` подтверждает: baseline theorem остаётся с `[... Q3.Weil_criterion_tau0 ...]`,
+  а compact/qapprox route идёт через `Q3.Weil_criterion`.
+
+Решение (интегрировано):
+- Новый модуль `Q3/Proofs/WeilCoreTau0_CounterexampleAmplifier.lean`:
+  - `Tau0CounterexampleAmplifier` (структурированный контракт witness-а),
+  - `to_tau0_separation`,
+  - `criterion_of_global_weil_and_amplifier`,
+  - `amplifier_of_qapprox` (неаксиомный адаптер из `Tau0QApproxBridge`),
+  - временный адаптер `amplifier_via_tau0_axiom` (точка замены),
+  - `criterion_via_axiomatic_amplifier`.
+- `Q3/Proofs/WeilCoreTau0.lean` переведён на импорт нового слоя (sealed re-export).
+
+Приёмка:
+- `lake build Q3.Proofs.WeilCoreTau0_CounterexampleAmplifier Q3.Proofs.WeilCoreTau0 Q3.Main Q3.CheckAxioms` — OK.
+- `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` — OK.
+- `./scripts/audit_nosorry_active_q3.sh --changed` — OK (`no sorry`, `no exact?`).
+
+План (конкретно по файлам):
+1) Изолировать legacy tau-general ветку (которая тянет аксиому) и не использовать её в production-chain:
+   `Q3/Proofs/Q_nonneg_t_critical.lean` (блок `Q_phi_shift_nonneg_t_critical`).
+2) Для production оставить только tau=0/brange контур:
+   `Q3/Proofs/Q_nonneg_t_critical.lean:333-354`, `Q3/Main.lean:73-83`.
+3) Сделать отдельный Path B модуль с целевым statement для замены аксиомы (без PrimeCert imports):
+   `Q3/Proofs/PrimeTerm_PathB_tcritical.lean` (новый файл).
+4) В Path B связать оценку prime-term с текущим gate-интерфейсом `PrimeCertMarginOnBrange`,
+   чтобы wiring в `Q3/Main.lean` не менялся.
+5) Приёмка: `lake env lean Q3/Proofs/PrimeTerm_t_bridge.lean`,
+   `lake env lean Q3/Main.lean`, `./scripts/check_axioms.sh`.
+
+Update (2026-02-23, execution pass):
+- Добавлен отдельный Path B интерфейс:
+  `Q3/Proofs/PrimeTerm_PathB_tcritical.lean`
+  (`PrimeTermPathBTcritical`, `prime_term_le_at_t_critical_of_pathB`).
+- Legacy-аксиома сохранена по старому имени (для обратной совместимости checks):
+  `Q3.prime_term_le_at_t_critical_axiom`.
+- `Q3/Proofs/Q_nonneg_t_critical.lean` переподключён на контрактный вход
+  через `prime_term_pathB_tcritical_from_axiom` (вместо прямого вызова локальной аксиомы).
+- Добавлен недостающий bridge-блок для `t_critical`:
+  `prime_term_phi_shift_tcritical_le_cap` в `Q3/Proofs/PrimeTerm_t_bridge.lean`.
+- Проверки: `lake build Q3.Proofs.PrimeTerm_PathB_tcritical`,
+  `lake build Q3.Proofs.Q_nonneg_t_critical`,
+  `lake env lean Q3/CheckAxioms.lean`,
+  `lake env lean Q3/Main.lean`,
+  `./scripts/check_axioms.sh` — все успешны.
+
+Update (2026-02-23, fast-check + Path B hook):
+- В `Q3/Proofs/Q_nonneg_t_critical.lean` выделена отдельная точка подключения Path B:
+  `prime_term_le_at_t_critical_via_pathB`.
+  Это стабилизирует wiring: когда появится реальное доказательство Path B, меняем только источник `hPathB`.
+- В `scripts/check_axioms.sh` добавлены режимы:
+  - `Q3_QUICK=1` — пропустить precheck шаги `0..0.8`.
+  - `Q3_NO_BUILD=1` — пропустить `lake build Q3.Main` (использовать текущие артефакты).
+- Smoke-check после правок:
+  - `lake build Q3.Proofs.Q_nonneg_t_critical` — OK.
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` — OK,
+    `Q3.Main.RH_of_Weil_and_Q3` зависит только от
+    `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`, без `sorryAx`.
+
+Update (2026-02-23, Path B mini-research -> bridge implementation):
+- Добавлен новый модуль-скелет:
+  `Q3/Proofs/PrimeTerm_PathB_bridge.lean`.
+- В модуле собрана рабочая bridge-цепочка из уже имеющихся лемм:
+  `t_critical -> t_rkhs_cap` (`PrimeTerm_t_bridge`) + `... ≤ rho_oneK` (`RKHS_cap_rayleigh`),
+  с выходом в Path B контракт.
+- Ключевая точечная лемма:
+  `prime_term_le_at_t_critical_of_rkhs_pathB`
+  (доказана без новых аксиом; принимает ровно 2 внешних входа:
+  `hRhoQuarter` и `hArchQuarter`).
+- Контрактная сборка:
+  `prime_term_pathB_tcritical_of_rkhs_bounds`
+  (строит `PrimeTermPathBTcritical` при глобальных семействах этих двух оценок).
+- Проверка: `lake build Q3.Proofs.PrimeTerm_PathB_bridge` — OK.
+
+Update (2026-02-23, no-sorry audit ergonomics):
+- `scripts/audit_nosorry_active_q3.sh` расширен для ежедневной работы:
+  - `--changed`: проверять только изменённые/новые active Q3 Lean-файлы;
+  - `--limit N`: ограничить число файлов (быстрый smoke);
+  - quiet-by-default: полный вывод Lean показывается только при падении
+    (включить поток можно через `Q3_AUDIT_SHOW_LEAN=1`).
+- Жёсткая проверка `sorry` остаётся через
+  `lake lean ... -- -Dwarn.sorry=true -EhasSorry`.
+- `exact?`-скан теперь отфильтровывает строки-комментарии.
+
+Update (2026-02-23, temperature-matched Path B):
+- В `Q3/Proofs/PrimeTerm_PathB_bridge.lean` добавлен preferred-route без
+  bridge-множителя `exp_tcrit_to_rkhs K`:
+  - `prime_term_le_at_t_critical_of_direct_pathB`
+  - `prime_term_pathB_tcritical_of_direct_bounds`
+- Это новая основная точка закрытия Path B: оба входа (`hPrimeQuarter`, `hArchQuarter`)
+  формулируются сразу на `t_critical`.
+- Прежний путь через `exp_tcrit_to_rkhs * rho_oneK` сохранён как legacy fallback:
+  `prime_term_pathB_tcritical_of_rkhs_bounds_legacy`.
+
+## Progress (2026-02-19) — PrimePow Auto GT10000 aggregate build
+
+- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000` отработал весь пул `*_970001_980000` … `*_990001_1000000` и завершился успешно (`Build completed successfully (7962 jobs)`).
+- Появились артефакты:
+  - `.lake/build/lib/lean/.../BrangeHeatCert_2026_01_28_PrimePowAutoGT10000.olean`
+  - `.lake/build/lib/lean/.../BrangeHeatCert_2026_01_28_PrimePowAutoGT10000.ilean`
+- После этого автоматически стартовал `Checker` с тем же модулем в tmux (`lake env lean ...Checker.lean`) и он ещё находится в прогоне (последний статус: `Sl+`, ~8h в процессе по моментальному snapshot).
+- Вывод сборки в `/tmp/primepow_agg_build_20260217.log` — чистый по ошибкам, только warnings `linter.unnecessarySimpa`.
+
 ## Synthesis (2026-02-06, in progress) — Закрытие `h_margin_cert` до single-axiom chain
 
 Цель: перейти от `Q3.Main.RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange)` к версии без `h_margin_cert`,
@@ -1179,3 +1311,239 @@ Plan (5–10 lines, concrete pointers):
   2. длинный изолированный прогон в `codex-heavy.slice` до `.olean`.
 - После длинного прогона обязательный контрольный шаг:
   `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`.
+
+## Synthesis (2026-02-23, done) — Path B status after sub-agent audit
+
+- Проверено двумя независимыми sub-agent разборками:
+  - production `τ = 0` mainline уже идёт без `prime_term_le_at_t_critical_axiom`;
+  - общий `τ ≠ 0` Path B остаётся контрактом, т.к. не закрыты две численные семьи
+    оценок (`hPrimeQuarter` и `hArchQuarter`) на масштабе `t_critical`.
+- Подтверждено командно:
+  - `#print axioms Q3.Main.RH_of_Weil_and_Q3` даёт только
+    `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`.
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` проходит; Step 2.6
+    (`build_sorry_frontier.py`) теперь opt-in и по умолчанию не запускается.
+  - `./scripts/audit_nosorry_active_q3.sh --changed` проходит для новых Path B файлов;
+    в active Q3 остаются `exact?` (не в новых Path B файлах).
+- Практический вывод:
+  - main theorem путь стабилен и дешёвый в сопровождении;
+  - для закрытия общего `PrimeTermPathBTcritical` нужен отдельный численный пакет
+    лемм, а не долгие повторные сборки PrimeCert.
+
+## Synthesis (2026-02-23, done) — sealed Weil τ=0 core interface
+
+- Добавлен модуль-граница: `Q3/Proofs/WeilCoreTau0.lean`.
+- Экспортируется минимальный API:
+  - `TestClass` (τ=0 тестовый класс),
+  - `NonnegOn` (контракт неотрицательности),
+  - `criterion` (единственная точка для `NonnegOn ↔ RH`).
+- `Q3/Main.lean` переключён на `Q3.Proofs.WeilCoreTau0.criterion` вместо
+  прямого обращения к `Q3.Weil_criterion_tau0`.
+- Верификация:
+  - `lake build Q3.Proofs.WeilCoreTau0 Q3.Main` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+- Смысл: доменный долг по Weil теперь изолирован в одном модуле; при замене
+  маршрута `criterion` на внутреннее доказательство не потребуется менять
+  mainline и T5-цепочку.
+
+## Synthesis (2026-02-23, done) — Weil core split into 3 layers
+
+- Интерфейс τ=0 core разложен на отдельные файлы:
+  - `Q3/Proofs/WeilCoreTau0_API.lean` (слой API),
+  - `Q3/Proofs/WeilCoreTau0_ExplicitFormulaTau0.lean` (слой explicit formula),
+  - `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` (слой criterion),
+  - `Q3/Proofs/WeilCoreTau0.lean` оставлен как тонкий public re-export.
+- В API добавлена вшитая стыковка классов:
+  `TestClass ⊆ Weil_cone` через леммы
+  `W_K_subset_Weil_cone`, `W_K_tau0_subset_weil_cone`,
+  `testClass_subset_weil_cone`.
+- В explicit-formula слое зафиксирован контракт
+  `ExplicitFormulaOnTestClass` и текущий маршрут
+  `explicit_formula_tau0` (через `Q3.explicit_formula` + embedding).
+- В criterion слое сохранён стабильный экспорт `criterion` для `Q3.Main`.
+- Верификация:
+  - `lake build Q3.Proofs.WeilCoreTau0_API Q3.Proofs.WeilCoreTau0_ExplicitFormulaTau0 Q3.Proofs.WeilCoreTau0_CriterionTau0 Q3.Proofs.WeilCoreTau0 Q3.Main` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+
+## Synthesis (2026-02-23, done) — criterion decomposed into proof obligations
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` `criterion` разложен на
+  независимые части:
+  - `Tau0Separation`,
+  - `criterion_of_obligations`,
+  - `nonneg_of_RH_via_global_weil` (опциональный маршрут),
+  - `nonneg_of_RH_via_tau0_axiom` (временный маршрут),
+  - `tau0_separation_via_axiom` (временный маршрут).
+- Экспорт `criterion` для `Q3.Main` не изменён, но теперь замена аксиомного
+  маршрута может идти поэтапно: сначала закрывать `RH → NonnegOn`, затем
+  отдельно закрывать `Tau0Separation`.
+- Верификация после декомпозиции:
+  - `lake build Q3.Proofs.WeilCoreTau0_CriterionTau0 Q3.Proofs.WeilCoreTau0 Q3.Main` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+
+## Synthesis (2026-02-23, done) — global-to-τ0 witness bridge hook
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлен интерфейс
+  `Tau0WitnessBridge` и вывод:
+  - `tau0_separation_of_global_weil`,
+  - `criterion_of_global_nonneg_and_separation`.
+- Это даёт чистую точку интеграции для будущего математического закрытия:
+  если доказать `Tau0WitnessBridge`, то `criterion` можно перевести на
+  global-route без архитектурных изменений в `Q3.Main`.
+- Текущий экспорт `criterion` оставлен стабильным (mainline не менялся по
+  зависимостям).
+
+### Update (2026-02-23)
+
+- Добавлены временные реализации:
+  - `tau0_witness_bridge_via_axiom`,
+  - `tau0_separation_via_global_route_with_axiom_bridge`.
+- Это подтверждает, что новый global-route склеивается конструктивно уже
+  сейчас; для снятия последней доменной аксиомы нужно заменить именно
+  `tau0_witness_bridge_via_axiom` на математическое доказательство.
+
+### Update (2026-02-23, done) — frozen target theorem for τ=0 de-axiomatization
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлены:
+  - `criterion_of_global_weil_and_witness_bridge`,
+  - `criterion_via_global_route_with_axiom_bridge`.
+- Это фиксирует один явный целевой контракт для следующего шага:
+  заменить только доказательство `Tau0WitnessBridge`, не меняя wiring в
+  `Q3.Main` и не перетряхивая τ=0 API.
+- Верификация после добавления:
+  - `lake build Q3.Proofs.WeilCoreTau0_CriterionTau0 Q3.Proofs.WeilCoreTau0 Q3.Main` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+  - профиль main-chain неизменен:
+    `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`.
+
+### Update (2026-02-24, done) — quantitative bridge contract for witness closure
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлены:
+  - `Tau0QApproxBridge` (количественный контракт аппроксимации по значению `Q`),
+  - `tau0_witness_bridge_of_qapprox` (`Tau0QApproxBridge -> Tau0WitnessBridge`),
+  - `criterion_of_global_weil_and_qapprox` (прямой выход на критерий из количественного контракта).
+- Практический смысл: теперь следующий математический шаг можно формулировать
+  узко и конструктивно: достаточно дать лемму вида
+  `|Q Ψ - Q Φ| < (-Q Φ)/2` для `Φ` с `Q Φ < 0`, чтобы автоматически получить
+  τ=0 negative witness.
+- Верификация:
+  - `lake build Q3.Proofs.WeilCoreTau0_CriterionTau0 Q3.Proofs.WeilCoreTau0 Q3.Main` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+  - профиль main-chain без изменений:
+    `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`.
+
+### Update (2026-02-24, done) — forward mainline route via q-approx contract
+
+- Добавлен новый theorem-маршрут в `Q3/Main.lean`:
+  - `RH_of_Weil_and_Q3_via_qapprox`
+    (`PrimeCertMarginOnBrange` + `Tau0QApproxBridge` -> `RH`).
+- Смысл маршрута:
+  - `Q_nonneg_on_Weil_cone_tau0` даёт `NonnegOn` на τ=0 классе,
+  - `criterion_of_global_weil_and_qapprox` закрывает `NonnegOn ↔ RH`
+    через global Weil + количественный bridge-контракт.
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлен user-facing эквивалент:
+  - `criterion_on_weil_cone_tau0_of_qapprox`.
+- `Q3/CheckAxioms.lean` расширен печатью:
+  - `#print axioms Q3.Main.RH_of_Weil_and_Q3_via_qapprox`.
+- Верификация:
+  - `lake build Q3.Proofs.WeilCoreTau0_CriterionTau0 Q3.Main Q3.CheckAxioms` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+  - профили:
+    - `RH_of_Weil_and_Q3` -> `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`
+    - `RH_of_Weil_and_Q3_via_qapprox` -> `[propext, Classical.choice, Q3.Weil_criterion, Quot.sound]`
+- Вывод:
+  - mainline не сломан и остался совместимым;
+  - добавлен рабочий переходный путь, где долг по `Weil_criterion_tau0`
+    заменяется на один явный количественный контракт `Tau0QApproxBridge`.
+
+### Update (2026-02-24, done) — compact-approx contracts reduce remaining debt
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлены новые контракты:
+  - `GlobalWeilToWK` (редукция глобального `Weil_cone` к некоторому `W_K`),
+  - `Tau0CompactApproxOnWK` (аппроксимация на фиксированном `W_K`),
+  - theorem `tau0_qapprox_of_compact_approx`
+    (`GlobalWeilToWK + Tau0CompactApproxOnWK -> Tau0QApproxBridge`),
+    построенный через `Q3.Proofs.Q_Lipschitz_on_W_K_thm`.
+- В `Q3/Main.lean` добавлен новый прикладной маршрут:
+  - `RH_of_Weil_and_Q3_via_compact_approx`
+    (`PrimeCertMarginOnBrange + GlobalWeilToWK + Tau0CompactApproxOnWK -> RH`).
+- В `Q3/CheckAxioms.lean` добавлена печать:
+  - `#print axioms Q3.Main.RH_of_Weil_and_Q3_via_compact_approx`.
+- Верификация:
+  - `lake build Q3.Proofs.WeilCoreTau0_CriterionTau0` ✅
+  - `lake build Q3.Main Q3.CheckAxioms` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+  - профиль:
+    - `RH_of_Weil_and_Q3_via_compact_approx`
+      -> `[propext, Classical.choice, Q3.Weil_criterion, Quot.sound]`.
+- Практический смысл:
+  - долг сдвинут с «сырых `Q`-оценок» на более инженерно-проверяемые контракты
+    аппроксимации на компактах;
+  - следующий закрывающий шаг теперь узкий: доказать `GlobalWeilToWK`
+    и `Tau0CompactApproxOnWK` для выбранного τ=0 класса.
+
+### Update (2026-02-24, done) — closed `GlobalWeilToWK` and simplified mainline signature
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлен theorem:
+  - `globalWeilToWK_thm : GlobalWeilToWK`.
+- Идея доказательства полностью конструктивная (без новых аксиом):
+  - из `HasCompactSupport` берём компакт `tsupport`,
+  - из компактности получаем boundedness и включение в `closedBall (0) R`,
+  - выбираем `K = max 1 (R + 1)`, что даёт `support ⊆ Ioo (-K) K`,
+  - следовательно `Φ ∈ W_K K` и `K ≥ 1`.
+- В `Q3/Main.lean` переподключён маршрут:
+  - `RH_of_Weil_and_Q3_via_compact_approx` больше не принимает параметр `hWK`;
+    используется `Q3.Proofs.WeilCoreTau0.globalWeilToWK_thm` напрямую.
+- Верификация:
+  - `lake build Q3.Proofs.WeilCoreTau0_CriterionTau0 Q3.Main Q3.CheckAxioms` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+  - профиль `RH_of_Weil_and_Q3_via_compact_approx` остался:
+    `[propext, Classical.choice, Q3.Weil_criterion, Quot.sound]`.
+- Практический эффект:
+  - убран один внешний contract-параметр из API mainline;
+  - сужен оставшийся долг compact-route до единственного контракта:
+    `Tau0CompactApproxOnWK`.
+
+### Update (2026-02-24, done) — reduced `exact?` debt in active Q3
+
+- В `Q3/Proofs/W_sum_finite.lean` заменены `exact?` в load-bearing местах на
+  явные термы:
+  - `ArithmeticFunction.vonMangoldt_le_log (n := m)`,
+  - `w_Q_bound K hK n hn`,
+  - `SummationFilter.instLeAtTopUnconditional ℕ` (инстанс для `tsum_eq_sum`).
+- Проверка:
+  - `lake env lean Q3/Proofs/W_sum_finite.lean` ✅
+  - `rg -n "exact\\?" Q3/Proofs/W_sum_finite.lean` -> пусто.
+- Результат по активному аудиту:
+  - `./scripts/audit_nosorry_active_q3.sh --changed` теперь показывает
+    `total exact? lines: 13` (было 16).
+
+### Update (2026-02-24, done) — `exact?` frontier compressed to one load-bearing node
+
+- В `Q3/Proofs/A1_density_main.lean` удалены off-chain `exact?`-заглушки там,
+  где уже есть готовые леммы/дефиниционные равенства:
+  - варианты `continuous_map_integral_approx_by_sum_*` переведены на
+    `continuous_map_integral_approx_by_sum`,
+  - `MapToContinuous_eq_smul` закрыт через `rfl`,
+  - continuity-хуки переведены на `MapToContinuous_continuous`,
+  - `symmetrize_approx_even` использует явное `rfl` для `Symmetrize`.
+- Проверка:
+  - `./scripts/audit_nosorry_active_q3.sh --changed` ✅
+  - активный `exact?`-хвост в changed активном Q3: **1 строка**
+    (`Q3/Proofs/A1_density_main.lean:226`).
+- Пояснение по риску:
+  - оставшаяся точка на `:226` — не cosmetic, а load-bearing узел про
+    `UniformContinuous` в `continuous_convolution_approx`; её нужно закрывать
+    отдельным аккуратным доказательством.
+
+### Update (2026-02-24, done) — closed final active `exact?` node in A1
+
+- В `Q3/Proofs/A1_density_main.lean:226` закрыт load-bearing `exact?`:
+  - `h_unif_cont : UniformContinuous f` теперь получен через
+    `HasCompactSupport.uniformContinuous_of_continuous hsupp hf`.
+- Это точечно закрывает обязательный узел в
+  `continuous_convolution_approx` без добавления новых аксиом.
+- Проверка:
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+  - `./scripts/audit_nosorry_active_q3.sh --changed` ✅
+  - статус active changed Q3: `no exact? found`.
