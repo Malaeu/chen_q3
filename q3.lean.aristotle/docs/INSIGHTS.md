@@ -88,6 +88,17 @@ Embedding/web quick-check:
 - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` — OK.
 - `./scripts/audit_nosorry_active_q3.sh --changed` — OK (`no sorry`, `no exact?`).
 
+Update (2026-02-24, execution pass):
+- `amplifier_via_tau0_axiom` переведён на конструктивный контрактный вход
+  `Tau0QApproxBridge` (legacy имя сохранено для совместимости API).
+- Внутри `Q3/Proofs/WeilCoreTau0_CounterexampleAmplifier.lean` больше нет
+  зависимости от `tau0_separation_via_axiom`; используется
+  `amplifier_of_qapprox`.
+- `criterion_via_axiomatic_amplifier` теперь также параметризован `hApprox`.
+- Проверки: `lake build Q3.Proofs.WeilCoreTau0_CounterexampleAmplifier Q3.Proofs.WeilCoreTau0 Q3.Main Q3.CheckAxioms`,
+  `./scripts/audit_nosorry_active_q3.sh --changed`,
+  `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` — OK.
+
 План (конкретно по файлам):
 1) Изолировать legacy tau-general ветку (которая тянет аксиому) и не использовать её в production-chain:
    `Q3/Proofs/Q_nonneg_t_critical.lean` (блок `Q_phi_shift_nonneg_t_critical`).

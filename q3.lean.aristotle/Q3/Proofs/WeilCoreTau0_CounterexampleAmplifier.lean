@@ -59,28 +59,22 @@ noncomputable def amplifier_of_qapprox
   · intro hNotRH
     exact (Classical.choose_spec (hSep hNotRH)).2
 
-/-- Temporary amplifier obtained from the current τ=0 criterion axiom route.
-Keeps the API stable while we replace this construction with a proof. -/
+/-- Legacy name kept for compatibility.
+Constructive implementation: build the amplifier from the quantitative bridge,
+without using `Weil_criterion_tau0`. -/
 noncomputable def amplifier_via_tau0_axiom
-    (t0 B_min B_max : ℝ) :
-    Tau0CounterexampleAmplifier t0 B_min B_max := by
-  classical
-  refine
-    { witness := fun hNotRH => Classical.choose (tau0_separation_via_axiom t0 B_min B_max hNotRH)
-      witness_mem := ?_
-      witness_neg := ?_ }
-  · intro hNotRH
-    exact (Classical.choose_spec (tau0_separation_via_axiom t0 B_min B_max hNotRH)).1
-  · intro hNotRH
-    exact (Classical.choose_spec (tau0_separation_via_axiom t0 B_min B_max hNotRH)).2
+    (t0 B_min B_max : ℝ)
+    (hApprox : Tau0QApproxBridge t0 B_min B_max) :
+    Tau0CounterexampleAmplifier t0 B_min B_max :=
+  amplifier_of_qapprox t0 B_min B_max hApprox
 
 /-- Temporary criterion theorem through the amplifier API.
-This is equivalent in strength to the current axiom-backed path, but isolates
-the replacement point to `amplifier_via_tau0_axiom`. -/
+This route is now constructive modulo `Tau0QApproxBridge`. -/
 theorem criterion_via_axiomatic_amplifier
-    (t0 B_min B_max : ℝ) :
+    (t0 B_min B_max : ℝ)
+    (hApprox : Tau0QApproxBridge t0 B_min B_max) :
     NonnegOn t0 B_min B_max ↔ Q3.RH := by
   exact criterion_of_global_weil_and_amplifier t0 B_min B_max
-    (amplifier_via_tau0_axiom t0 B_min B_max)
+    (amplifier_via_tau0_axiom t0 B_min B_max hApprox)
 
 end Q3.Proofs.WeilCoreTau0
