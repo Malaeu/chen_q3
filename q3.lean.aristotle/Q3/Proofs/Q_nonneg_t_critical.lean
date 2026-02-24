@@ -28,6 +28,7 @@ import Q3.Proofs.FloorCert.Lipschitz_2219
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.PrimeCert.Bmin_1826
 import Q3.Proofs.PrimeCert.Brange_2046
+import Q3.Proofs.PrimeTerm_PathB_legacy_provider
 import Q3.Proofs.ShiftedWindows
 import Q3.Proofs.Q_nonneg_atoms_helpers
 import Q3.Proofs.Q_nonneg_lemmas
@@ -324,25 +325,19 @@ See output/prime_cert_tcritical_2026-01-26_0046.txt and
 output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt.
 -/
 
-/-- Prime-term ≤ arch-term at t_critical for B = B_min, τ = 0 (certificate-based). -/
-lemma prime_term_le_at_t_critical_Bmin_tau0 :
-    prime_term (fun ξ => phi_shift_critical B_min 0 ξ) ≤
-      arch_term (fun ξ => phi_shift_critical B_min 0 ξ) := by
-  have h1 :
-      prime_term (fun ξ => phi_shift_critical B_min 0 ξ) ≤ prime_cert_prime_ub := by
-    simpa [phi_shift_critical] using prime_term_cert_on_Bmin_tau0
-  have h2 := prime_cert_ub_le_arch_lb
-  have h3 :
-      prime_cert_arch_lb ≤ arch_term (fun ξ => phi_shift_critical B_min 0 ξ) := by
-    simpa [phi_shift_critical] using arch_term_cert_on_Bmin_tau0
-  exact le_trans h1 (le_trans h2 h3)
-
 /-- prime_term ≤ arch_term for B ∈ [B_min, B_max] (tau = 0), from margin cert. -/
 def PrimeCertMarginOnBrange : Prop :=
   ∀ B ∈ Set.Icc B_min prime_cert_B_max,
     prime_cert_margin_lb ≤
       arch_term (fun ξ => phi_shift_critical B 0 ξ) -
         prime_term (fun ξ => phi_shift_critical B 0 ξ)
+
+/-- Certified B-range margin theorem (tau = 0, t_critical).
+This discharges `PrimeCertMarginOnBrange` from the concrete 2046-grid certificate. -/
+theorem prime_cert_margin_on_brange_thm : PrimeCertMarginOnBrange := by
+  intro B hB
+  simpa [phi_shift_critical] using
+    (Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom (B := B) hB)
 
 /-- prime_term ≤ arch_term for B ∈ [B_min, B_max] (tau = 0), from an explicit margin hypothesis. -/
 lemma prime_term_le_arch_term_on_Brange_tau0_of_margin
@@ -353,17 +348,6 @@ lemma prime_term_le_arch_term_on_Brange_tau0_of_margin
   have h := h_margin_cert B hB
   have h0 : 0 ≤ prime_cert_margin_lb := le_of_lt prime_cert_margin_pos
   linarith
-
-/-- prime_term ≤ arch_term for B ∈ [B_min, B_max] (tau = 0), from the current PrimeCert theorem path. -/
-lemma prime_term_le_arch_term_on_Brange_tau0
-    (B : ℝ) (hB : B ∈ Set.Icc B_min prime_cert_B_max) :
-    prime_term (fun ξ => phi_shift_critical B 0 ξ) ≤
-      arch_term (fun ξ => phi_shift_critical B 0 ξ) := by
-  exact prime_term_le_arch_term_on_Brange_tau0_of_margin
-    (h_margin_cert := by
-      intro B hB
-      simpa [phi_shift_critical] using prime_cert_margin_on_Brange_axiom B hB)
-    B hB
 
 /-- Q >= 0 on phi_shift_critical with tau = 0 and B in the certified range
     (explicit margin-certificate hypothesis). -/
@@ -379,22 +363,24 @@ theorem Q_phi_shift_nonneg_t_critical_tau0_brange_of_margin
       (h_margin_cert := h_margin_cert) B ⟨hBmin, hBmax⟩
   linarith
 
-/-- Q >= 0 on phi_shift_critical with tau = 0 and B in the certified range. -/
-theorem Q_phi_shift_nonneg_t_critical_tau0_brange (B : ℝ)
-    (hBmin : B_min ≤ B) (hBmax : B ≤ prime_cert_B_max) :
-    Q (fun ξ => phi_shift_critical B 0 ξ) ≥ 0 := by
-  exact Q_phi_shift_nonneg_t_critical_tau0_brange_of_margin
-    (h_margin_cert := by
-      intro B hB
-      simpa [phi_shift_critical] using prime_cert_margin_on_Brange_axiom B hB)
-    B hBmin hBmax
-
-/-- Prime-term certificate axiom (single-scale). This is the current placeholder for the
-    numerical verification at t_critical; see docs/insights/prime_cert_tcritical_2026_01_25.md. -/
-axiom prime_term_le_at_t_critical_axiom (K B τ : ℝ)
-    (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K) :
+/-- prime_term at t_critical is bounded by arch_term
+    Key insight: at t_critical, heat decay exp(-4*pi^2*t*xi^2) is strong enough
+    that prime_sum = Σ w(n)*Phi(xi_n) becomes small relative to arch_term -/
+lemma prime_term_le_at_t_critical_via_pathB
+    (hPathB : PrimeTermPathBTcritical)
+    (K B τ : ℝ) (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K) :
     prime_term (fun ξ => phi_shift_critical B τ ξ) ≤
-      arch_term (fun ξ => phi_shift_critical B τ ξ)
+      arch_term (fun ξ => phi_shift_critical B τ ξ) := by
+  simpa [phi_shift_critical] using
+    (prime_term_le_at_t_critical_of_pathB hPathB K B τ hK hB hτB)
+
+/-- Contract-first route for the `t_critical` prime gate. -/
+lemma prime_term_le_at_t_critical_of_pathB_contract
+    (hPathB : PrimeTermPathBTcritical)
+    (K B τ : ℝ) (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K) :
+    prime_term (fun ξ => phi_shift_critical B τ ξ) ≤
+      arch_term (fun ξ => phi_shift_critical B τ ξ) :=
+  prime_term_le_at_t_critical_via_pathB hPathB K B τ hK hB hτB
 
 /-- prime_term at t_critical is bounded by arch_term
     Key insight: at t_critical, heat decay exp(-4*pi^2*t*xi^2) is strong enough
@@ -413,22 +399,26 @@ lemma prime_term_le_at_t_critical (K B τ : ℝ)
              The heat factor exp(-4*pi^2*0.15*xi^2) decays fast enough
      BLOCKS: [Q_phi_shift_nonneg_t_critical]
   -/
-  by_cases hτ : τ = 0
-  · by_cases hBRange : B_min ≤ B ∧ B ≤ prime_cert_B_max
-    · have hB' : B ∈ Set.Icc B_min prime_cert_B_max := ⟨hBRange.1, hBRange.2⟩
-      simpa [hτ] using (prime_term_le_arch_term_on_Brange_tau0 B hB')
-    · exact prime_term_le_at_t_critical_axiom K B τ hK hB hτB
-  · exact prime_term_le_at_t_critical_axiom K B τ hK hB hτB
+  have hPathB : PrimeTermPathBTcritical := prime_term_pathB_tcritical_from_legacy
+  exact prime_term_le_at_t_critical_of_pathB_contract hPathB K B τ hK hB hτB
 
 /-! ## Main Theorem: Q >= 0 at t_critical -/
+
+/-- Main lemma from an explicit Path B contract input. -/
+theorem Q_phi_shift_nonneg_t_critical_of_pathB
+    (hPathB : PrimeTermPathBTcritical)
+    (K B τ : ℝ) (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K) :
+    Q (fun ξ => phi_shift_critical B τ ξ) ≥ 0 := by
+  unfold Q
+  have h := prime_term_le_at_t_critical_of_pathB_contract hPathB K B τ hK hB hτB
+  linarith
 
 /-- Main lemma: Q(phi_shift at t_critical) >= 0 -/
 theorem Q_phi_shift_nonneg_t_critical (K B τ : ℝ)
     (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K) :
     Q (fun ξ => phi_shift_critical B τ ξ) ≥ 0 := by
-  unfold Q
-  have h := prime_term_le_at_t_critical K B τ hK hB hτB
-  linarith
+  have hPathB : PrimeTermPathBTcritical := prime_term_pathB_tcritical_from_legacy
+  exact Q_phi_shift_nonneg_t_critical_of_pathB hPathB K B τ hK hB hτB
 
 /-! ## Connection to Fejer_heat_atom -/
 
@@ -662,13 +652,12 @@ theorem Q_nonneg_on_base_atoms_at_t_critical_brange_of_margin
   · exact h_atom i
 
 /-- Q >= 0 on BaseAtomCone with B in [B_min, B_max] (tau = 0 only). -/
-theorem Q_nonneg_on_base_atoms_at_t_critical_brange (K : ℝ) (_hK : K ≥ 1) :
+theorem Q_nonneg_on_base_atoms_at_t_critical_brange
+    (K : ℝ) (_hK : K ≥ 1) (h_margin_cert : PrimeCertMarginOnBrange) :
     ∀ g ∈ BaseAtomCone_critical_brange K, Q g ≥ 0 := by
   exact Q_nonneg_on_base_atoms_at_t_critical_brange_of_margin
     (K := K) (_hK := _hK)
-    (h_margin_cert := by
-      intro B hB
-      simpa [phi_shift_critical] using prime_cert_margin_on_Brange_axiom B hB)
+    (h_margin_cert := h_margin_cert)
 
 /-! ## Summary -/
 

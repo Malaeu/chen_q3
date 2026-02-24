@@ -1713,3 +1713,22 @@ Plan (5–10 lines, concrete pointers):
   - `lake env lean Q3/CheckAxioms.lean` ✅
   - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
   - `./scripts/audit_nosorry_active_q3.sh --changed` ✅
+
+### Update (2026-02-24, done) — removed pointwise Path B axiom symbol; switched to contract provider + legacy adapter
+
+- В `Q3/Proofs/PrimeTerm_PathB_tcritical.lean` удалён символ
+  `prime_term_le_at_t_critical_axiom`.
+- Вместо pointwise-аксиомы введён provider-интерфейс:
+  - `PrimeTermPathBProvider := PrimeTermPathBTcritical`,
+  - `prime_term_pathB_tcritical_from_provider`.
+- Добавлен отдельный legacy-адаптер
+  `Q3/Proofs/PrimeTerm_PathB_legacy_provider.lean`:
+  - `prime_term_pathB_tcritical_legacy : PrimeTermPathBProvider`,
+  - `prime_term_pathB_tcritical_from_legacy : PrimeTermPathBTcritical`.
+- В `Q3/Proofs/Q_nonneg_t_critical.lean` маршрут переведён на theorem-route:
+  - новый вход `Q_phi_shift_nonneg_t_critical_of_pathB`,
+  - совместимый wrapper `Q_phi_shift_nonneg_t_critical` использует только
+    `prime_term_pathB_tcritical_from_legacy`.
+- В `Q3/CheckAxioms.lean` обновлён off-mainline gate tracking:
+  - `#check/#print axioms` теперь на
+    `Q3.prime_term_pathB_tcritical_legacy`.

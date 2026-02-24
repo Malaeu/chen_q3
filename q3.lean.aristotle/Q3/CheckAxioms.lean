@@ -10,6 +10,7 @@ Expected output: List of axioms used in RH_of_Weil_and_Q3
 
 import Q3.Main
 import Q3.Proofs.Q_nonneg_t_critical
+import Q3.Proofs.PrimeTerm_PathB_legacy_provider
 
 /-!
 # Axiom Dependency Verification
@@ -39,7 +40,7 @@ open Q3.Main
 
 /-! ## Off-chain (τ ≠ 0) placeholder -/
 -- Present in Q_nonneg_t_critical, but not used by the τ=0 main chain
-#check Q3.prime_term_le_at_t_critical_axiom
+#check Q3.prime_term_pathB_tcritical_legacy
 
 /-! ## Verify T5 (τ=0) is a THEOREM -/
 #check Q3.T5.T5_transfer
@@ -65,7 +66,7 @@ open Q3.Main
 #print axioms Q3.Proofs.WeilCoreTau0.criterion_on_weil_cone_tau0_of_compact_approx
 
 -- Auxiliary single-scale prime gate (off mainline while `h_margin_cert` is explicit).
-#print axioms Q3.prime_term_le_at_t_critical_axiom
+#print axioms Q3.prime_term_pathB_tcritical_legacy
 
 /-!
 ## Expected Dependencies
@@ -80,7 +81,8 @@ open Q3.Main
 
 ### Tier-2 interface (τ=0 mainline):
 - `Q3.PrimeCertMarginOnBrange` is an explicit theorem hypothesis in `Q3.Main.RH_of_Weil_and_Q3`.
-- `Q3.prime_term_le_at_t_critical_axiom` is tracked separately as the off-mainline prime gate.
+- `Q3.prime_term_pathB_tcritical_legacy` is tracked separately as the off-mainline
+  provider for the Path B gate contract.
 
 ### THEOREM (not axiom!):
 - `Q3.T5.T5_transfer` : Q ≥ 0 on W_K
