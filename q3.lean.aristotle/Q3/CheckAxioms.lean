@@ -60,6 +60,10 @@ open Q3.Main
 -- Amplifier route sanity check: should not depend on `Weil_criterion_tau0`.
 #print axioms Q3.Proofs.WeilCoreTau0.criterion_via_axiomatic_amplifier
 
+-- Core compact-approx criterion sanity checks (generic τ=0 route).
+#print axioms Q3.Proofs.WeilCoreTau0.criterion_of_global_weil_and_compact_approx
+#print axioms Q3.Proofs.WeilCoreTau0.criterion_on_weil_cone_tau0_of_compact_approx
+
 -- Auxiliary single-scale prime gate (off mainline while `h_margin_cert` is explicit).
 #print axioms Q3.prime_term_le_at_t_critical_axiom
 

@@ -1558,3 +1558,29 @@ Plan (5–10 lines, concrete pointers):
   - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
   - `./scripts/audit_nosorry_active_q3.sh --changed` ✅
   - статус active changed Q3: `no exact? found`.
+
+### Update (2026-02-24, done) — compact-approx criterion wired through WeilCore and Main
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлены глобализованные
+  компактные маршруты:
+  - `tau0_qapprox_of_compact_approx_global`,
+  - `criterion_of_global_weil_and_compact_approx`,
+  - `criterion_on_weil_cone_tau0_of_compact_approx`.
+- В `Q3/Proofs/WeilCoreTau0_CounterexampleAmplifier.lean` добавлен thin-route:
+  - `criterion_via_compact_approx_amplifier`.
+- В `Q3/Main.lean` `RH_of_Weil_and_Q3_via_compact_approx` переведён на прямой
+  вызов `criterion_of_global_weil_and_compact_approx` (без промежуточной
+  ручной сборки `hQApprox`).
+- В `Q3/CheckAxioms.lean` добавлены `#print axioms` для новых compact-route
+  теорем в `WeilCoreTau0`.
+- Проверка:
+  - `lake env lean Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` ✅
+  - `lake build Q3.Proofs.WeilCoreTau0_CriterionTau0 Q3.Proofs.WeilCoreTau0_CounterexampleAmplifier` ✅
+  - `lake env lean Q3/Main.lean` ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+  - `./scripts/audit_nosorry_active_q3.sh --changed` ✅
+- Аксоматический профиль:
+  - `criterion_of_global_weil_and_compact_approx` и
+    `criterion_on_weil_cone_tau0_of_compact_approx` зависят только от
+    `[propext, Classical.choice, Q3.Weil_criterion, Quot.sound]`.

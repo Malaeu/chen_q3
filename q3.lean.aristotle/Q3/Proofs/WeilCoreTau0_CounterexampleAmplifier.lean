@@ -77,4 +77,12 @@ theorem criterion_via_axiomatic_amplifier
   exact criterion_of_global_weil_and_amplifier t0 B_min B_max
     (amplifier_via_tau0_axiom t0 B_min B_max hApprox)
 
+/-- Compact-approximation route to the amplifier criterion. -/
+theorem criterion_via_compact_approx_amplifier
+    (t0 B_min B_max : ℝ)
+    (hApproxWK : Tau0CompactApproxOnWK t0 B_min B_max) :
+    NonnegOn t0 B_min B_max ↔ Q3.RH := by
+  exact criterion_via_axiomatic_amplifier t0 B_min B_max
+    (tau0_qapprox_of_compact_approx_global t0 B_min B_max hApproxWK)
+
 end Q3.Proofs.WeilCoreTau0

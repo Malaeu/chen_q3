@@ -32,6 +32,7 @@ import Q3.Proofs.Params_Critical
 import Q3.Proofs.A3_Floor_Bounds
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.Q_nonneg_t_critical
+import Q3.Proofs.WeilCoreTau0
 
 set_option linter.mathlibStandardSet false
 
@@ -102,6 +103,47 @@ theorem Q_nonneg_on_Weil_cone_tau0 :
   rcases hΦ with ⟨K, hK, hΦK⟩
   exact Q_nonneg_on_W_K_tau0 h_margin_cert K hK Φ hΦK
 
+/-- RH route through the sealed Weil core using the quantitative τ=0 bridge contract.
+
+This theorem is the forward-compatible mainline entry:
+- it keeps PrimeCert as an explicit hypothesis (`h_margin_cert`);
+- it replaces direct use of `Weil_criterion_tau0` with a local bridge contract
+  (`Tau0QApproxBridge`) consumed by `WeilCoreTau0`.
+-/
+theorem RH_of_Weil_and_Q3_via_qapprox
+    (h_margin_cert : Q3.PrimeCertMarginOnBrange)
+    (h_qapprox :
+      Q3.Proofs.WeilCoreTau0.Tau0QApproxBridge Q3.t0_critical B_min prime_cert_B_max) :
+    Q3.RH := by
+  have hNonneg : Q3.Proofs.WeilCoreTau0.NonnegOn Q3.t0_critical B_min prime_cert_B_max :=
+    Q_nonneg_on_Weil_cone_tau0 h_margin_cert
+  have hCrit :
+      Q3.Proofs.WeilCoreTau0.NonnegOn Q3.t0_critical B_min prime_cert_B_max ↔ Q3.RH :=
+    Q3.Proofs.WeilCoreTau0.criterion_of_global_weil_and_qapprox
+      Q3.t0_critical B_min prime_cert_B_max h_qapprox
+  exact hCrit.mp hNonneg
+
+/-- RH route via compact approximation contracts on `W_K`.
+
+This is a more implementation-friendly entry than raw `Tau0QApproxBridge`:
+it factors the remaining work into
+1) `GlobalWeilToWK`, and
+2) `Tau0CompactApproxOnWK`.
+-/
+theorem RH_of_Weil_and_Q3_via_compact_approx
+    (h_margin_cert : Q3.PrimeCertMarginOnBrange)
+    (hApproxWK :
+      Q3.Proofs.WeilCoreTau0.Tau0CompactApproxOnWK
+        Q3.t0_critical B_min prime_cert_B_max) :
+    Q3.RH := by
+  have hNonneg : Q3.Proofs.WeilCoreTau0.NonnegOn Q3.t0_critical B_min prime_cert_B_max :=
+    Q_nonneg_on_Weil_cone_tau0 h_margin_cert
+  have hCrit :
+      Q3.Proofs.WeilCoreTau0.NonnegOn Q3.t0_critical B_min prime_cert_B_max ↔ Q3.RH :=
+    Q3.Proofs.WeilCoreTau0.criterion_of_global_weil_and_compact_approx
+      Q3.t0_critical B_min prime_cert_B_max hApproxWK
+  exact hCrit.mp hNonneg
+
 /-! ## Riemann Hypothesis -/
 
 /-- **RIEMANN HYPOTHESIS (conditional on Q3 axioms)**
@@ -127,7 +169,7 @@ By Weil criterion (τ=0 cone), RH follows.
 -/
 theorem RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange) : Q3.RH := by
   -- Apply τ=0 Weil criterion (axiom)
-  rw [← Q3.Weil_criterion_tau0 Q3.t0_critical B_min prime_cert_B_max]
+  rw [← Q3.Proofs.WeilCoreTau0.criterion Q3.t0_critical B_min prime_cert_B_max]
   exact Q_nonneg_on_Weil_cone_tau0 h_margin_cert
 
 /-! ## Axiom Verification -/
