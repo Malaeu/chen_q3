@@ -31,6 +31,7 @@ import Q3.T5_Transfer
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.A3_Floor_Bounds
 import Q3.Proofs.PrimeCert.Defs
+import Q3.Proofs.PrimeCert.Brange_2046
 import Q3.Proofs.Q_nonneg_t_critical
 import Q3.Proofs.WeilCoreTau0
 
@@ -69,10 +70,15 @@ theorem A2_Lipschitz (K : ℝ) (hK : K > 0) :
 /-! ## T5: Transfer to τ = 0 Weil class -/
 
 /-- Q is nonnegative on W_K_tau0 for each K ≥ 1 (τ = 0 mainline),
-with explicit PrimeCert margin hypothesis on the B-range. -/
+using the certified PrimeCert margin theorem on the B-range. -/
 theorem Q_nonneg_on_W_K_tau0
-    (h_margin_cert : Q3.PrimeCertMarginOnBrange) (K : ℝ) (hK : K ≥ 1) :
+    (K : ℝ) (hK : K ≥ 1) :
     ∀ Φ ∈ Q3.W_K_tau0 K Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
+  have h_margin_cert : Q3.PrimeCertMarginOnBrange :=
+    by
+      intro B hB
+      simpa [Q3.phi_shift_critical] using
+        (Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom (B := B) hB)
   have hAtoms :
       ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min prime_cert_B_max,
         Q3.Q g ≥ 0 := by
@@ -96,27 +102,23 @@ Proof outline:
 2. By τ=0 T5 transfer, Q(Φ) ≥ 0 on W_K_tau0
 -/
 theorem Q_nonneg_on_Weil_cone_tau0 :
-    Q3.PrimeCertMarginOnBrange →
     ∀ Φ ∈ Q3.Weil_cone_tau0 Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
-  intro h_margin_cert
   intro Φ hΦ
   rcases hΦ with ⟨K, hK, hΦK⟩
-  exact Q_nonneg_on_W_K_tau0 h_margin_cert K hK Φ hΦK
+  exact Q_nonneg_on_W_K_tau0 K hK Φ hΦK
 
 /-- RH route through the sealed Weil core using the quantitative τ=0 bridge contract.
 
 This theorem is the forward-compatible mainline entry:
-- it keeps PrimeCert as an explicit hypothesis (`h_margin_cert`);
 - it replaces direct use of `Weil_criterion_tau0` with a local bridge contract
   (`Tau0QApproxBridge`) consumed by `WeilCoreTau0`.
 -/
 theorem RH_of_Weil_and_Q3_via_qapprox
-    (h_margin_cert : Q3.PrimeCertMarginOnBrange)
     (h_qapprox :
       Q3.Proofs.WeilCoreTau0.Tau0QApproxBridge Q3.t0_critical B_min prime_cert_B_max) :
     Q3.RH := by
   have hNonneg : Q3.Proofs.WeilCoreTau0.NonnegOn Q3.t0_critical B_min prime_cert_B_max :=
-    Q_nonneg_on_Weil_cone_tau0 h_margin_cert
+    Q_nonneg_on_Weil_cone_tau0
   have hCrit :
       Q3.Proofs.WeilCoreTau0.NonnegOn Q3.t0_critical B_min prime_cert_B_max ↔ Q3.RH :=
     Q3.Proofs.WeilCoreTau0.criterion_of_global_weil_and_qapprox
@@ -131,13 +133,12 @@ it factors the remaining work into
 2) `Tau0CompactApproxOnWK`.
 -/
 theorem RH_of_Weil_and_Q3_via_compact_approx
-    (h_margin_cert : Q3.PrimeCertMarginOnBrange)
     (hApproxWK :
       Q3.Proofs.WeilCoreTau0.Tau0CompactApproxOnWK
         Q3.t0_critical B_min prime_cert_B_max) :
     Q3.RH := by
   have hNonneg : Q3.Proofs.WeilCoreTau0.NonnegOn Q3.t0_critical B_min prime_cert_B_max :=
-    Q_nonneg_on_Weil_cone_tau0 h_margin_cert
+    Q_nonneg_on_Weil_cone_tau0
   have hCrit :
       Q3.Proofs.WeilCoreTau0.NonnegOn Q3.t0_critical B_min prime_cert_B_max ↔ Q3.RH :=
     Q3.Proofs.WeilCoreTau0.criterion_of_global_weil_and_compact_approx
@@ -167,10 +168,10 @@ Proof: By T5_transfer_tau0, Q ≥ 0 on W_K_tau0 for each K.
 By compact-by-compact union, Q ≥ 0 on all of Weil_cone_tau0.
 By Weil criterion (τ=0 cone), RH follows.
 -/
-theorem RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange) : Q3.RH := by
+theorem RH_of_Weil_and_Q3 : Q3.RH := by
   -- Apply τ=0 Weil criterion (axiom)
   rw [← Q3.Proofs.WeilCoreTau0.criterion Q3.t0_critical B_min prime_cert_B_max]
-  exact Q_nonneg_on_Weil_cone_tau0 h_margin_cert
+  exact Q_nonneg_on_Weil_cone_tau0
 
 /-! ## Axiom Verification -/
 
@@ -179,7 +180,7 @@ theorem RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange) : Q3.RH :
 -- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
 -- Standard: propext, Classical.choice, Quot.sound
 -- Tier-1: Q3.Weil_criterion_tau0
--- Tier-2 in main theorem: moved to explicit hypothesis `h_margin_cert`
+-- Tier-2 in main theorem: discharged by `prime_cert_margin_on_brange_thm`
 --
 -- KEY IMPROVEMENTS:
 -- - Q_Lipschitz_on_W_K is a THEOREM (uses arch/prime bridge axioms)!

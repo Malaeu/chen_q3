@@ -1690,3 +1690,26 @@ Plan (5–10 lines, concrete pointers):
   - `lake env lean Q3/CheckAxioms.lean` ✅
   - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
   - `./scripts/audit_nosorry_active_q3.sh --changed` ✅
+
+### Update (2026-02-24, done) — closed PrimeCert margin route as theorem and removed `h_margin_cert` from Main
+
+- В `Q3/Proofs/Q_nonneg_t_critical.lean` добавлено:
+  - `prime_cert_margin_on_brange_thm : PrimeCertMarginOnBrange`,
+    полученный из уже существующего сертификатного доказательства
+    `Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom`
+    (файл `Q3/Proofs/PrimeCert/Brange_2046.lean`).
+- В `Q3/Main.lean` снят явный параметр
+  `h_margin_cert : Q3.PrimeCertMarginOnBrange` из mainline-теорем:
+  - `Q_nonneg_on_W_K_tau0`,
+  - `Q_nonneg_on_Weil_cone_tau0`,
+  - `RH_of_Weil_and_Q3_via_qapprox`,
+  - `RH_of_Weil_and_Q3_via_compact_approx`,
+  - `RH_of_Weil_and_Q3`.
+- Теперь margin берётся внутри `Main` из сертифицированного theorem-route
+  (через `PrimeCert/Brange_2046`), а не как внешний hypothesis.
+- Верификация:
+  - `lake env lean Q3/Proofs/Q_nonneg_t_critical.lean` ✅
+  - `lake env lean Q3/Main.lean` ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+  - `./scripts/audit_nosorry_active_q3.sh --changed` ✅
