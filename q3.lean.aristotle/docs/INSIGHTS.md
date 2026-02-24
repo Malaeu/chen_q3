@@ -1624,3 +1624,25 @@ Plan (5–10 lines, concrete pointers):
   - `lake env lean Q3/Proofs/WeilCoreTau0_CounterexampleAmplifier.lean` ✅
   - `lake env lean Q3/Main.lean` ✅
   - `lake env lean Q3/CheckAxioms.lean` ✅
+
+### Update (2026-02-24, in progress) — global compact bridge over `W_K_tau0` adapter
+
+- Target lemma:
+  `Tau0CompactApproxOnWK` в `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean`,
+  чтобы снять load-bearing контракт с прямого `∀ Φ ∈ W_K` и выразить его через
+  adapter-слой `W_K_tau0`.
+- Embedding scan (3 queries, `q3_docs`) + web-check:
+  готового моста `W_K -> W_K_tau0` в активном коде нет.
+- План Option 1 (main):
+  1. Ввести контракт-мост `WKToTau0Bridge` (`W_K` поднимается в `W_K_tau0`
+     на безопасном окне `K ≥ Kfloor B_min`);
+  2. Доказать theorem `tau0_compact_approx_on_WK_of_bridge` из
+     `tau0_compact_approx_on_WK_tau0` (чистый adapter-lift);
+  3. Добавить route theorem
+     `criterion_of_global_weil_and_compact_approx_via_bridge`.
+- План Option 2 (fallback):
+  оставить старый `Tau0CompactApproxOnWK`, но использовать новый theorem-route
+  как canonical API и мигрировать вызовы поэтапно.
+- Success check:
+  `lake env lean Q3/Proofs/WeilCoreTau0_CriterionTau0.lean`,
+  `lake env lean Q3/Main.lean`, `lake env lean Q3/CheckAxioms.lean`.
