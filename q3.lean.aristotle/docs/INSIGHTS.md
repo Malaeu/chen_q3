@@ -1732,3 +1732,28 @@ Plan (5–10 lines, concrete pointers):
 - В `Q3/CheckAxioms.lean` обновлён off-mainline gate tracking:
   - `#check/#print axioms` теперь на
     `Q3.prime_term_pathB_tcritical_legacy`.
+
+### Update (2026-02-24, done) — added fast Contract Sanity Gate
+
+- Добавлен быстрый sanity-модуль `Q3/CheckContracts.lean`.
+- Он печатает axiom-snapshot для ключевых τ=0 route-теорем:
+  - `criterion_of_global_weil_and_compact_approx`,
+  - `criterion_on_weil_cone_tau0_of_compact_approx`,
+  - `criterion_via_axiomatic_amplifier`,
+  - `criterion_via_compact_approx_amplifier`.
+- Добавлен скрипт `scripts/check_contracts.sh`:
+  1) `lake env lean -Dwarn.sorry=true -EhasSorry Q3/CheckContracts.lean`,
+  2) `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh`.
+- Результат: быстрый preflight для контрактов и axiom-drift без тяжелого `lake build Q3.Main`.
+
+### Update (2026-02-24, done) — decomposed Path B legacy gate into two explicit math obligations
+
+- В `Q3/Proofs/PrimeTerm_PathB_legacy_provider.lean` заменён единый legacy-gate
+  на две явные математические цели:
+  - `prime_term_tcritical_le_cstar_quarter_mathan`,
+  - `cstar_quarter_le_arch_term_tcritical_mathan`.
+- `PrimeTermPathBProvider` теперь собирается theorem-ом через
+  `prime_term_pathB_tcritical_of_direct_bounds` из `PrimeTerm_PathB_bridge`.
+- Практический эффект: вместо одного «чёрного ящика» остаются две прозрачные
+  аналитические задачи (prime-quarter + arch-quarter), которые можно закрывать
+  независимо и без ожидания heavy certificate rebuilds.
