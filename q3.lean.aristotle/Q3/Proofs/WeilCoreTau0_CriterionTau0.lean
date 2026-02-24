@@ -34,6 +34,36 @@ def Tau0QApproxBridge (t0 B_min B_max : ℝ) : Prop :=
     ∃ Ψ, Ψ ∈ TestClass t0 B_min B_max ∧
       |Q3.Q Ψ - Q3.Q Φ| < (-Q3.Q Φ) / 2
 
+/-- Lower window floor used by τ=0 compact-approx routes. -/
+def Kfloor (B_min : ℝ) : ℝ := max 1 B_min
+
+/-- Safe compact window: enlarges any `K` to satisfy the floor `Kfloor B_min`. -/
+def Ksafe (B_min K : ℝ) : ℝ := max (Kfloor B_min) K
+
+lemma one_le_Kfloor (B_min : ℝ) : (1 : ℝ) ≤ Kfloor B_min := by
+  exact le_max_left 1 B_min
+
+lemma Bmin_le_Kfloor (B_min : ℝ) : B_min ≤ Kfloor B_min := by
+  exact le_max_right 1 B_min
+
+lemma le_Ksafe (B_min K : ℝ) : K ≤ Ksafe B_min K := by
+  exact le_max_right (Kfloor B_min) K
+
+lemma Kfloor_le_Ksafe (B_min K : ℝ) : Kfloor B_min ≤ Ksafe B_min K := by
+  exact le_max_left (Kfloor B_min) K
+
+/-- Monotonicity of `W_K`: enlarging the window preserves membership. -/
+lemma W_K_mono {K₁ K₂ : ℝ} (hK : K₁ ≤ K₂) :
+    Q3.W_K K₁ ⊆ Q3.W_K K₂ := by
+  intro Φ hΦ
+  rcases hΦ with ⟨hCont, hSupp, hEven, hNonneg⟩
+  refine ⟨hCont, ?_, hEven, hNonneg⟩
+  intro x hx
+  have hx' := hSupp hx
+  refine ⟨?_, ?_⟩
+  · exact lt_of_le_of_lt (neg_le_neg hK) hx'.1
+  · exact lt_of_lt_of_le hx'.2 hK
+
 /-- Global compact-support reduction used by the quantitative bridge route. -/
 def GlobalWeilToWK : Prop :=
   ∀ Φ, Φ ∈ Q3.Weil_cone → ∃ K, K ≥ 1 ∧ Φ ∈ Q3.W_K K
@@ -61,9 +91,9 @@ theorem globalWeilToWK_thm : GlobalWeilToWK := by
     exact lt_of_lt_of_le hNeg (abs_le.mp hxAbs).1
   exact ⟨hxGtNegK, hxLtK⟩
 
-/-- Compact approximation on each fixed `W_K` window by τ=0 test functions. -/
+/-- Compact approximation on fixed `W_K` windows above the safe floor. -/
 def Tau0CompactApproxOnWK (t0 B_min B_max : ℝ) : Prop :=
-  ∀ K, K ≥ 1 → ∀ Φ, Φ ∈ Q3.W_K K → ∀ ε > 0,
+  ∀ K, K ≥ Kfloor B_min → ∀ Φ, Φ ∈ Q3.W_K K → ∀ ε > 0,
     ∃ Ψ, Ψ ∈ TestClass t0 B_min B_max ∧ Ψ ∈ Q3.W_K K ∧
       sSup {|Φ x - Ψ x| | x ∈ Set.Icc (-K) K} < ε
 
@@ -101,15 +131,23 @@ theorem tau0_qapprox_of_compact_approx
     (hApproxWK : Tau0CompactApproxOnWK t0 B_min B_max) :
     Tau0QApproxBridge t0 B_min B_max := by
   intro Φ hΦ hneg
-  rcases hWK Φ hΦ with ⟨K, hKge1, hΦWK⟩
+  rcases hWK Φ hΦ with ⟨K0, hK0ge1, hΦWK0⟩
+  let K : ℝ := Ksafe B_min K0
+  have hKgeFloor : K ≥ Kfloor B_min := by
+    simpa [K] using Kfloor_le_Ksafe B_min K0
+  have hKge1 : K ≥ 1 := by
+    exact le_trans (one_le_Kfloor B_min) hKgeFloor
   have hKpos : K > 0 := by linarith
+  have hK0leK : K0 ≤ K := by
+    simpa [K] using le_Ksafe B_min K0
+  have hΦWK : Φ ∈ Q3.W_K K := (W_K_mono hK0leK) hΦWK0
   rcases Q3.Proofs.Q_Lipschitz_on_W_K_thm K hKpos with ⟨L, hLpos, hLip⟩
   let ε : ℝ := ((-Q3.Q Φ) / 2) / (L + 1)
   have hε : ε > 0 := by
     have hhalf : 0 < (-Q3.Q Φ) / 2 := by linarith
     have hden : 0 < L + 1 := by linarith
     exact div_pos hhalf hden
-  rcases hApproxWK K hKge1 Φ hΦWK ε hε with ⟨Ψ, hΨtest, hΨWK, hsup⟩
+  rcases hApproxWK K hKgeFloor Φ hΦWK ε hε with ⟨Ψ, hΨtest, hΨWK, hsup⟩
   have hAbsLe :
       |Q3.Q Ψ - Q3.Q Φ| ≤ L * sSup {|Ψ x - Φ x| | x ∈ Set.Icc (-K) K} := by
     exact hLip Ψ hΨWK Φ hΦWK

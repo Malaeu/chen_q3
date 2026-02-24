@@ -1584,3 +1584,25 @@ Plan (5–10 lines, concrete pointers):
   - `criterion_of_global_weil_and_compact_approx` и
     `criterion_on_weil_cone_tau0_of_compact_approx` зависят только от
     `[propext, Classical.choice, Q3.Weil_criterion, Quot.sound]`.
+
+### Update (2026-02-24, done) — Ksafe calibration for compact route
+
+- В `Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` добавлены window-инварианты:
+  - `Kfloor (B_min) := max 1 B_min`,
+  - `Ksafe (B_min, K) := max (Kfloor B_min) K`,
+  - леммы порядка (`one_le_Kfloor`, `Bmin_le_Kfloor`, `le_Ksafe`,
+    `Kfloor_le_Ksafe`) и монотонность `W_K` (`W_K_mono`).
+- Контракт `Tau0CompactApproxOnWK` усиленно-нормализован по домену:
+  - было: `∀ K, K ≥ 1 -> ...`
+  - стало: `∀ K, K ≥ Kfloor B_min -> ...`.
+  Это убирает проблемный диапазон `1 ≤ K < B_min` из load-bearing ветки.
+- В `tau0_qapprox_of_compact_approx` маршрут переведён на безопасное окно:
+  - из `K0` от `GlobalWeilToWK` строится `K := Ksafe B_min K0`,
+  - `Φ ∈ W_K K0` поднимается до `Φ ∈ W_K K` через `W_K_mono`,
+  - Lipschitz и compact-approx применяются на `K`.
+- Верификация:
+  - `lake env lean Q3/Proofs/WeilCoreTau0_CriterionTau0.lean` ✅
+  - `lake env lean Q3/Proofs/WeilCoreTau0_CounterexampleAmplifier.lean` ✅
+  - `lake env lean Q3/Main.lean` ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
