@@ -1786,7 +1786,8 @@ Plan (5–10 lines, concrete pointers):
     `∀ B ∈ [B_min, B_max], prime_term(phi_shift_critical B 0) ≤ arch_term(...)`.
   - канонический провайдер:
     `prime_term_pathB_tcritical_tau0_brange_thm`
-    (собирается из `prime_cert_margin_on_brange_thm`).
+    (первично был собран через `prime_cert_margin_on_brange_thm`,
+    позже переведён на direct certified margin route; см. запись 2026-02-25 ниже).
 - `Q_nonneg_on_base_atoms_at_t_critical_brange_of_tau0_brange_gate` теперь
   использует именно этот узкий τ=0 gate, без требования общего all-τ контракта.
 - В `Q3/Main.lean` `Q_nonneg_on_W_K_tau0` переключён на
@@ -1795,3 +1796,132 @@ Plan (5–10 lines, concrete pointers):
   load-bearing τ=0 mainline больше не зависит от
   `PrimeTerm_PathB_legacy_provider` (all-τ legacy), который остаётся только
   для off-mainline маршрутов/диагностики.
+
+### Update (2026-02-25, done) — analytic τ=0 B-range gate wired as mainline theorem-route
+
+- Добавлен новый файл:
+  - `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean`
+  - Теорема:
+    `prime_term_pathB_tcritical_tau0_brange_thm :
+      PrimeTermPathBTcriticalTau0Brange`
+    как отдельный аналитический τ=0 gate для `B ∈ [B_min, prime_cert_B_max]`.
+- В `Q3/Proofs/Q_nonneg_t_critical.lean` mainline-ветка использует именно
+  `PrimeTermPathBTcriticalTau0Brange`; в точке применения добавлено корректное
+  приведение:
+  `simpa [phi_shift_critical] using hTau0Gate ...`.
+- В `Q3/Main.lean` удалён прямой импорт
+  `Q3/Proofs/PrimeCert/Brange_2046.lean`.
+  Mainline теперь идёт через τ=0 Path B gate, без прямой зависимости от
+  Brange-сертификатного файла.
+- Зафиксирована политика:
+  - цепочка PrimeCert/Brange остаётся как legacy-валидация и off-mainline;
+  - рабочий путь для дальнейшего закрытия — theorem-route (Path B, матан),
+    без тяжёлых checker-прогонов по сертификатным автогенам.
+
+### Update (2026-02-25, done) — dropped quarter-shape debt; τ=0 gate now uses direct certified margin route
+
+- Из `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean` удалены quarter-аксиомы:
+  - `prime_term_tcritical_tau0_brange_le_cstar_quarter`,
+  - `cstar_quarter_le_arch_term_tcritical_tau0_brange`.
+- `prime_term_pathB_tcritical_tau0_brange_analytic` теперь доказывается напрямую из
+  `Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom` через
+  `prime_cert_margin_lb ≤ arch_term - prime_term` и `prime_cert_margin_pos`.
+- Это устраняет scale-конфликт quarter-формы в τ=0 ветке и оставляет
+  математически корректную форму долга: прямой gate `prime_term ≤ arch_term`
+  на `B ∈ [B_min, prime_cert_B_max]`.
+- Проверки:
+  - `lake env lean Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean` ✅
+  - `lake env lean Q3/Proofs/Q_nonneg_t_critical.lean` ✅
+  - `lake env lean Q3/Main.lean` ✅
+  - `lake env lean Q3/CheckAxioms.lean` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+
+### Update (2026-02-25, done) — added reusable τ=0 adapter from PathB contract and rewired t_critical bridge
+
+- В `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean` добавлен адаптер:
+  - `prime_term_pathB_tcritical_tau0_brange_of_pathB`.
+  - Он специализирует любой `PrimeTermPathBTcritical` в узкий τ=0 B-range gate.
+- В `Q3/Proofs/Q_nonneg_t_critical.lean`
+  `Q_nonneg_on_base_atoms_at_t_critical_brange_of_pathB` теперь использует
+  этот адаптер вместо локального дублирующего вывода.
+- Технический нюанс сборки:
+  после изменения импортируемого модуля нужен rebuild `.olean/.ilean`
+  (`lake env lean --root=. ... -o ... -i ...`), иначе downstream может видеть
+  старый API и выдавать `unknown identifier`.
+- Axiom snapshot после переподключения:
+  - `Q3.Main.RH_of_Weil_and_Q3`: `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`.
+  - `Q3.Main.Q_nonneg_on_W_K_tau0`: `[propext, Classical.choice, Quot.sound]`.
+  - `Q3.prime_term_pathB_tcritical_tau0_brange_thm` всё ещё опирается на
+    `Q3.prime_term_pathB_tcritical_legacy` (off-mainline долг для дальнейшего
+    чисто-аналитического закрытия PathB).
+
+### Update (2026-02-25, done) — added pure slack theorem-route skeleton for τ=0 B-range gate
+
+- В `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean` добавлены:
+  - `PrimeTermTau0BrangePrimeQuarter` (`prime_term ≤ c_star/4` на brange),
+  - `PrimeTermTau0BrangeArchFloor` (`c_star ≤ arch_term` на brange),
+  - `prime_term_pathB_tcritical_tau0_brange_of_slack`:
+    композиция двух независимых оценок в итоговый gate
+    `prime_term ≤ arch_term`.
+- Это фиксирует чистый «матан-маршрут без монотонности по B» как отдельный theorem API.
+  Теперь для полной pure-замены legacy нужно закрыть только два узких обязательства
+  (`PrimeQuarter` и `ArchFloor`) и подать их в `..._of_slack`.
+- Сборка после добавления API:
+  - `lake env lean --root=. Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean -o ... -i ...` ✅
+  - `lake env lean Q3/Proofs/Q_nonneg_t_critical.lean` ✅
+  - `lake env lean Q3/Main.lean` ✅
+
+### Update (2026-02-25, done) — closed τ=0 brange ArchFloor via theorem; reduced PathB legacy debt to prime-quarter
+
+- В `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean` добавлено:
+  - `prime_term_tau0_brange_arch_floor_from_heat : PrimeTermTau0BrangeArchFloor`.
+- Доказательство ArchFloor (без `Brange_2046`) построено как:
+  1. `arch_term_cert_on_Bmin_tau0` (сертификат на `B=B_min`),
+  2. `arch_term_Lipschitz_heat` + `prime_heat_bounds_arch_data` (heat-Lipschitz перенос по B),
+  3. численная верификация запаса (`c_star` ниже перенесённой нижней границы).
+- Также добавлено:
+  - `prime_term_tau0_brange_prime_quarter_from_legacy : PrimeTermTau0BrangePrimeQuarter`
+    (узкий остаточный долг через `prime_term_tcritical_le_cstar_quarter_mathan`).
+- `prime_term_pathB_tcritical_tau0_brange_analytic` теперь собирается через
+  `prime_term_pathB_tcritical_tau0_brange_of_slack` из двух независимых обязательств,
+  а не через полный `prime_term_pathB_tcritical_from_legacy`.
+- Эффект: legacy-долг в τ=0 gate сужен до prime-quarter узла;
+  arch-side закрыт theorem-route.
+- Проверки:
+  - `lake env lean --root=. Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean -o ... -i ...` ✅
+  - `lake env lean Q3/Proofs/Q_nonneg_t_critical.lean` ✅
+  - `lake env lean Q3/Main.lean` ✅
+  - `Q3_QUICK=1 Q3_NO_BUILD=1 ./scripts/check_axioms.sh` ✅
+
+### Update (2026-02-25, done) — added dedicated τ=0 brange gate axiom snapshot checker
+
+- Добавлен файл `Q3/CheckTau0BrangeGate.lean` с `#print axioms` для:
+  - `prime_term_tau0_brange_arch_floor_from_heat`,
+  - `prime_term_tau0_brange_prime_quarter_from_legacy`,
+  - `prime_term_pathB_tcritical_tau0_brange_analytic`,
+  - `prime_term_pathB_tcritical_tau0_brange_thm`.
+- Снимок после текущих правок:
+  - ArchFloor закрыт отдельным theorem-route и зависит только от
+    `arch_term_cert_on_Bmin_tau0` + `prime_heat_bounds_arch_data`.
+  - Единственный load-bearing PathB-долг в τ=0 gate: 
+    `Q3.prime_term_tcritical_le_cstar_quarter_mathan` (prime-quarter).
+- Команда для быстрого контроля:
+  - `lake env lean Q3/CheckTau0BrangeGate.lean`
+
+### Update (2026-02-25, in progress) — stale .olean masked real axiom chain; forced-fresh check restored true snapshot
+
+- Обнаружен критичный эффект stale-артефактов: `#print axioms` для `Q3.Main.RH_of_Weil_and_Q3`
+  показывал только `Weil_criterion_tau0`, пока `Q3/Main.olean` не был пересобран принудительно.
+- После fresh rebuild (`lake env lean --root=. ... -o ... -i ...`) реальная цепочка:
+  - `Q3.Weil_criterion_tau0`
+  - `Q3.prime_term_tcritical_le_cstar_quarter_mathan`
+  - `Q3.Proofs.PrimeCert.arch_term_cert_on_Bmin_tau0`
+  - `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
+- Добавлен safeguard в `scripts/check_axioms.sh`: новый Step 1.5 всегда пересобирает
+  `Q3/Proofs/Q_nonneg_t_critical.lean` и `Q3/Main.lean` перед `#print axioms`
+  (`Q3_FORCE_FRESH_AXIOMS=1` по умолчанию).
+- Decision tree по закрытию prime-side долга:
+  - `OK`: изолировать долг в одном узле `prime_term_tcritical_le_cstar_quarter_mathan`.
+  - `BLOCKED`: получить quarter-bound только из `B=B_min` + heat-Lipschitz (численный запас не хватает на весь B-range).
+  - `FALSE-FOR-NOW`: считать mainline «чистым» по старому snapshot без fresh rebuild.
+  - `OK`: держать cert-цепочку как legacy-валидацию и закрывать узкий prime-side theorem-route отдельно.
