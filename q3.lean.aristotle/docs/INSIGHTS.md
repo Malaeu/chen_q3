@@ -1938,3 +1938,29 @@ Plan (5–10 lines, concrete pointers):
 - В `Q3/CheckTau0BrangeGate.lean` добавлен `#print axioms` для нового closure-point;
   снимок показывает: у `..._of_prime_quarter` нет `prime_term_tcritical_le_cstar_quarter_mathan`
   (он зависит только от arch-side сертификатных узлов).
+
+### Update (2026-02-25, done) — `prime_term_tcritical_le_cstar_quarter_mathan` removed from mainline via direct margin route
+
+- `prime_term_pathB_tcritical_tau0_brange_analytic` переключён на прямой theorem-route через
+  `Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom` (из `Brange_2046`), без использования
+  `prime_term_tcritical_le_cstar_quarter_mathan`.
+- После fresh rebuild и `#print axioms`:
+  - `Q3.Main.RH_of_Weil_and_Q3` больше **не** содержит
+    `Q3.prime_term_tcritical_le_cstar_quarter_mathan`.
+  - Текущий mainline-зависимый хвост: `prime_b_grid_arch_bounds_data`,
+    `prime_b_grid_bucket_bounds`, `prime_heat_bounds_arch_data`,
+    `prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all` +
+    `Lean.ofReduceBool`, `Lean.trustCompiler`.
+
+Decision tree (fast/robust):
+- `OK`: убрать quarter-аксиому из mainline немедленно через direct margin route.
+- `BLOCKED`: закрыть `PrimeTermTau0BrangePrimeQuarter` из текущих cert-лемм (недостаточно данных/не тот тип оценки).
+- `FALSE-FOR-NOW`: держать canonical τ=0 gate на quarter-аксиоме при наличии прямого margin-route.
+- `NEXT`: закрывать cert-хвост (`prime_b_grid_*`, `prime_heat_*`) theorem-ами, затем возвращаться к полностью data-free PathB.
+
+Numeric sanity (вне Lean, для диагностики модели):
+- Прямой подсчёт prime-power суммы для
+  `prime_term (fun ξ => phi_shift B t_critical 0 ξ)` даёт ~8.71..9.23 на `B∈[3,4.9]`
+  (partial до `10^6` уже стабилизирован).
+- Это объясняет, почему quarter-form (`≤ c_star/4 = 0.275`) не является рабочим
+  closure target в текущей спецификации mainline.

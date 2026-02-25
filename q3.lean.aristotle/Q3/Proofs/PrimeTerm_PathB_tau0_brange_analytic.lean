@@ -4,6 +4,7 @@ import Q3.Proofs.A3_Floor_Bounds
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.PrimeCert.Bmin_1826
 import Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof
+import Q3.Proofs.PrimeCert.Brange_2046
 import Q3.Proofs.PrimeTerm_PathB_legacy_provider
 
 set_option linter.mathlibStandardSet false
@@ -162,10 +163,15 @@ theorem prime_term_pathB_tcritical_tau0_brange_of_pathB
 
 /-- Tau-0 B-range gate by specializing the stable Path B contract. -/
 theorem prime_term_pathB_tcritical_tau0_brange_analytic :
-    PrimeTermPathBTcriticalTau0Brange :=
-  prime_term_pathB_tcritical_tau0_brange_of_slack
-    prime_term_tau0_brange_prime_quarter_from_legacy
-    prime_term_tau0_brange_arch_floor_from_heat
+    PrimeTermPathBTcriticalTau0Brange := by
+  intro B hBmin hBmax
+  have hmargin :
+      prime_cert_margin_lb ≤
+        arch_term (fun ξ => phi_shift B t_critical 0 ξ) -
+          prime_term (fun ξ => phi_shift B t_critical 0 ξ) := by
+    exact Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom B ⟨hBmin, hBmax⟩
+  have hmargin_nonneg : 0 ≤ prime_cert_margin_lb := le_of_lt prime_cert_margin_pos
+  linarith
 
 /-- Closure point for the analytic route:
 once the τ=0 prime-quarter obligation is proved as a theorem, the full τ=0

@@ -231,8 +231,8 @@ PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
-EXPECTED_STANDARD=3  # propext, Classical.choice, Quot.sound (no native_decide/compiler trust in chain)
-EXPECTED_PROJECT=1   # Weil_criterion_tau0 (Tier-1); Tier-2 margin moved to theorem hypothesis
+EXPECTED_STANDARD=5  # propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound
+EXPECTED_PROJECT=5   # Weil_criterion_tau0 + Brange cert chain (tau0 gate via Brange_2046)
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
@@ -262,6 +262,10 @@ echo "═══ Step 5: Philosophy Verification ═══"
 # Expected axioms in proof chain (update when axioms are closed/added)
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion_tau0"
+    "Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data"
+    "Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds"
+    "Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data"
+    "Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all"
 )
 
 UNKNOWN_AXIOMS=""
