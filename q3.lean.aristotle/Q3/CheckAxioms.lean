@@ -42,6 +42,9 @@ open Q3.Main
 -- Present in Q_nonneg_t_critical, but not used by the τ=0 main chain
 #check Q3.prime_term_pathB_tcritical_legacy
 
+/-! ## τ=0 B-range gate (mainline-facing) -/
+#check Q3.prime_term_pathB_tcritical_tau0_brange_thm
+
 /-! ## Verify T5 (τ=0) is a THEOREM -/
 #check Q3.T5.T5_transfer
 
@@ -67,6 +70,9 @@ open Q3.Main
 
 -- Auxiliary single-scale prime gate (off mainline while `h_margin_cert` is explicit).
 #print axioms Q3.prime_term_pathB_tcritical_legacy
+
+-- τ=0 B-range gate used by the τ=0 mainline atom route.
+#print axioms Q3.prime_term_pathB_tcritical_tau0_brange_thm
 
 /-!
 ## Expected Dependencies
