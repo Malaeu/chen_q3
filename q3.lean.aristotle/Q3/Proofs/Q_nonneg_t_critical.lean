@@ -363,6 +363,25 @@ theorem Q_phi_shift_nonneg_t_critical_tau0_brange_of_margin
       (h_margin_cert := h_margin_cert) B ⟨hBmin, hBmax⟩
   linarith
 
+/-- Tau-0 Path B gate on the certified B-range. -/
+def PrimeTermPathBTcriticalTau0Brange : Prop :=
+  ∀ B : ℝ, B_min ≤ B → B ≤ prime_cert_B_max →
+    prime_term (fun ξ => phi_shift_critical B 0 ξ) ≤
+      arch_term (fun ξ => phi_shift_critical B 0 ξ)
+
+/-- Build the tau-0 Path B gate from an explicit margin hypothesis. -/
+theorem prime_term_pathB_tcritical_tau0_brange_of_margin
+    (h_margin_cert : PrimeCertMarginOnBrange) :
+    PrimeTermPathBTcriticalTau0Brange := by
+  intro B hBmin hBmax
+  exact prime_term_le_arch_term_on_Brange_tau0_of_margin
+    (h_margin_cert := h_margin_cert) B ⟨hBmin, hBmax⟩
+
+/-- Canonical tau-0 Path B gate provider from the certified B-range theorem. -/
+theorem prime_term_pathB_tcritical_tau0_brange_thm :
+    PrimeTermPathBTcriticalTau0Brange :=
+  prime_term_pathB_tcritical_tau0_brange_of_margin prime_cert_margin_on_brange_thm
+
 /-- prime_term at t_critical is bounded by arch_term
     Key insight: at t_critical, heat decay exp(-4*pi^2*t*xi^2) is strong enough
     that prime_sum = Σ w(n)*Phi(xi_n) becomes small relative to arch_term -/
@@ -419,6 +438,20 @@ theorem Q_phi_shift_nonneg_t_critical (K B τ : ℝ)
     Q (fun ξ => phi_shift_critical B τ ξ) ≥ 0 := by
   have hPathB : PrimeTermPathBTcritical := prime_term_pathB_tcritical_from_legacy
   exact Q_phi_shift_nonneg_t_critical_of_pathB hPathB K B τ hK hB hτB
+
+/-- Tau-0 specialization of the Path B gate, with an auto-chosen admissible `K`.
+This avoids threading an external `K` assumption when proving positivity on
+`BaseAtomCone_critical_brange` atoms. -/
+theorem Q_phi_shift_nonneg_t_critical_tau0_of_pathB_any_B
+    (hPathB : PrimeTermPathBTcritical)
+    (B : ℝ) (hB : B > 0) :
+    Q (fun ξ => phi_shift_critical B 0 ξ) ≥ 0 := by
+  let K0 : ℝ := max 1 B
+  have hK0 : K0 ≥ 1 := by
+    exact le_max_left (1 : ℝ) B
+  have hτB0 : |(0 : ℝ)| + B ≤ K0 := by
+    simpa [K0] using (le_max_right (1 : ℝ) B)
+  exact Q_phi_shift_nonneg_t_critical_of_pathB hPathB K0 B 0 hK0 hB hτB0
 
 /-! ## Connection to Fejer_heat_atom -/
 
@@ -651,6 +684,116 @@ theorem Q_nonneg_on_base_atoms_at_t_critical_brange_of_margin
   · exact hc i
   · exact h_atom i
 
+/-- Q >= 0 on BaseAtomCone with B in [B_min, B_max] (tau = 0 only),
+    from a tau-0 B-range Path B gate. -/
+theorem Q_nonneg_on_base_atoms_at_t_critical_brange_of_tau0_brange_gate
+    (hTau0Gate : PrimeTermPathBTcriticalTau0Brange)
+    (K : ℝ) (_hK : K ≥ 1) :
+    ∀ g ∈ BaseAtomCone_critical_brange K, Q g ≥ 0 := by
+  intro g hg
+  rcases hg with ⟨n, c, B, hc, hBmin, hBmax, hg_sum, hg_WK⟩
+  have hBmin_pos : (0 : ℝ) < B_min := by
+    norm_num [B_min]
+  -- integrability / summability for each atom
+  have h_int : ∀ i, MeasureTheory.Integrable
+      (fun x => a_star x * Fejer_heat_atom (B i) t0_critical 0 x) := by
+    intro i
+    have hBpos : B i > 0 := by nlinarith [hBmin i, hBmin_pos]
+    exact Q3.Proofs.Q_nonneg_lemmas.fejer_heat_atom_integrable_with_a_star
+      (B i) t0_critical 0 hBpos t0_critical_pos
+  have h_sum : ∀ i, Summable
+      (fun k => w_Q k * Fejer_heat_atom (B i) t0_critical 0 (xi_n k)) := by
+    intro i
+    have hBpos : B i > 0 := by nlinarith [hBmin i, hBmin_pos]
+    exact Q3.Proofs.Q_nonneg_lemmas.fejer_heat_atom_prime_summable
+      (B i) t0_critical 0 hBpos t0_critical_pos
+  -- linearity of Q over finite sums
+  have hQ_sum :
+      Q (fun x => ∑ i, c i * Fejer_heat_atom (B i) t0_critical 0 x) =
+        ∑ i, c i * Q (Fejer_heat_atom (B i) t0_critical 0) := by
+    exact Q3.Proofs.Q_nonneg_lemmas.Q_finset_sum (atoms := fun i => Fejer_heat_atom (B i) t0_critical 0)
+      (coeffs := c) h_int h_sum
+  -- each atom is nonnegative via Path B at tau = 0
+  have h_atom : ∀ i, Q (Fejer_heat_atom (B i) t0_critical 0) ≥ 0 := by
+    intro i
+    obtain ⟨c0, hc0_pos, hdecomp⟩ := Fejer_heat_atom_eq_phi_shifts (B := B i) (τ := 0)
+    have h_int_f :
+        MeasureTheory.Integrable (fun x => a_star x * phi_shift_critical (B i) 0 x) := by
+      have hBpos : B i > 0 := by nlinarith [hBmin i, hBmin_pos]
+      simpa [phi_shift_critical] using
+        (Q3.Proofs.QNonnegAtoms.phi_shift_integrable_with_a_star
+          (B:=B i) (t:=t_critical) (tau:=0) hBpos)
+    have h_sum_f :
+        Summable (fun k => w_Q k * phi_shift_critical (B i) 0 (xi_n k)) := by
+      have hBpos : B i > 0 := by nlinarith [hBmin i, hBmin_pos]
+      simpa [phi_shift_critical] using
+        (Q3.Proofs.QNonnegAtoms.phi_shift_prime_summable
+          (B:=B i) (t:=t_critical) (tau:=0) hBpos)
+    have hQ_scale_add :
+        Q (fun x => c0 * (phi_shift_critical (B i) 0 x + phi_shift_critical (B i) 0 x)) =
+          c0 * (Q (phi_shift_critical (B i) 0) + Q (phi_shift_critical (B i) 0)) := by
+      simpa using
+        (Q3.Proofs.QNonnegAtoms.Q_scale_add
+          (f:=fun x => phi_shift_critical (B i) 0 x)
+          (g:=fun x => phi_shift_critical (B i) 0 x)
+          (c:=c0) h_int_f h_int_f h_sum_f h_sum_f)
+    have hQphi : Q (phi_shift_critical (B i) 0) ≥ 0 := by
+      have hprime_tau0 :
+          prime_term (fun ξ => phi_shift_critical (B i) 0 ξ) ≤
+            arch_term (fun ξ => phi_shift_critical (B i) 0 ξ) := by
+        exact hTau0Gate (B i) (hBmin i) (hBmax i)
+      unfold Q
+      linarith
+    have hQ_nonneg :
+        0 ≤ c0 * (Q (phi_shift_critical (B i) 0) + Q (phi_shift_critical (B i) 0)) := by
+      have hc0 : 0 ≤ c0 := le_of_lt hc0_pos
+      have hsum : 0 ≤ Q (phi_shift_critical (B i) 0) + Q (phi_shift_critical (B i) 0) := by
+        nlinarith [hQphi]
+      exact mul_nonneg hc0 hsum
+    have h_eq :
+        Q (Fejer_heat_atom (B i) t0_critical 0) =
+          c0 * (Q (phi_shift_critical (B i) 0) + Q (phi_shift_critical (B i) 0)) := by
+      have hfun :
+          (fun x => Fejer_heat_atom (B i) t0_critical 0 x) =
+            fun x => c0 * (phi_shift_critical (B i) 0 x + phi_shift_critical (B i) 0 x) := by
+        funext x
+        simpa using hdecomp x
+      simpa [hfun] using hQ_scale_add
+    simpa [h_eq] using hQ_nonneg
+  -- finish: Q(g) = sum c_i * Q(atom_i) ≥ 0
+  have hQ : Q g = ∑ i, c i * Q (Fejer_heat_atom (B i) t0_critical 0) := by
+    have hfun :
+        g = (fun x => ∑ i, c i * Fejer_heat_atom (B i) t0_critical 0 x) := by
+      funext x
+      exact hg_sum x
+    simpa [hfun] using hQ_sum
+  rw [hQ]
+  apply Finset.sum_nonneg
+  intro i _
+  apply mul_nonneg
+  · exact hc i
+  · exact h_atom i
+
+/-- Q >= 0 on BaseAtomCone with B in [B_min, B_max] (tau = 0 only),
+    from the full Path B `t_critical` gate (all `τ`) by specialization to `τ=0`. -/
+theorem Q_nonneg_on_base_atoms_at_t_critical_brange_of_pathB
+    (hPathB : PrimeTermPathBTcritical)
+    (K : ℝ) (_hK : K ≥ 1) :
+    ∀ g ∈ BaseAtomCone_critical_brange K, Q g ≥ 0 := by
+  have hTau0Gate : PrimeTermPathBTcriticalTau0Brange := by
+    intro B hBmin _hBmax
+    have hB : B > 0 := by
+      have hBmin_pos : (0 : ℝ) < B_min := by norm_num [B_min]
+      linarith
+    let K0 : ℝ := max 1 B
+    have hK0 : K0 ≥ 1 := by
+      exact le_max_left (1 : ℝ) B
+    have hτB0 : |(0 : ℝ)| + B ≤ K0 := by
+      simpa [K0] using (le_max_right (1 : ℝ) B)
+    simpa [phi_shift_critical] using hPathB K0 B 0 hK0 hB hτB0
+  exact Q_nonneg_on_base_atoms_at_t_critical_brange_of_tau0_brange_gate
+    hTau0Gate K _hK
+
 /-- Q >= 0 on BaseAtomCone with B in [B_min, B_max] (tau = 0 only). -/
 theorem Q_nonneg_on_base_atoms_at_t_critical_brange
     (K : ℝ) (_hK : K ≥ 1) (h_margin_cert : PrimeCertMarginOnBrange) :
@@ -658,6 +801,20 @@ theorem Q_nonneg_on_base_atoms_at_t_critical_brange
   exact Q_nonneg_on_base_atoms_at_t_critical_brange_of_margin
     (K := K) (_hK := _hK)
     (h_margin_cert := h_margin_cert)
+
+/-- Path-B-backed default for B-range atoms (tau = 0 mainline). -/
+theorem Q_nonneg_on_base_atoms_at_t_critical_brange_via_pathB
+    (K : ℝ) (_hK : K ≥ 1) :
+    ∀ g ∈ BaseAtomCone_critical_brange K, Q g ≥ 0 := by
+  have hPathB : PrimeTermPathBTcritical := prime_term_pathB_tcritical_from_legacy
+  exact Q_nonneg_on_base_atoms_at_t_critical_brange_of_pathB hPathB K _hK
+
+/-- Tau-0 mainline default for B-range atoms via the certified tau-0 gate. -/
+theorem Q_nonneg_on_base_atoms_at_t_critical_brange_via_tau0_brange_gate
+    (K : ℝ) (_hK : K ≥ 1) :
+    ∀ g ∈ BaseAtomCone_critical_brange K, Q g ≥ 0 := by
+  exact Q_nonneg_on_base_atoms_at_t_critical_brange_of_tau0_brange_gate
+    prime_term_pathB_tcritical_tau0_brange_thm K _hK
 
 /-! ## Summary -/
 

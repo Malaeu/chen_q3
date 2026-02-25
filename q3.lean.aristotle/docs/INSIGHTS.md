@@ -1757,3 +1757,41 @@ Plan (5–10 lines, concrete pointers):
 - Практический эффект: вместо одного «чёрного ящика» остаются две прозрачные
   аналитические задачи (prime-quarter + arch-quarter), которые можно закрывать
   независимо и без ожидания heavy certificate rebuilds.
+
+### Update (2026-02-24, in progress) — switched τ=0 mainline atoms to Path B gate route
+
+- В `Q3/Proofs/Q_nonneg_t_critical.lean` добавлены:
+  - `Q_phi_shift_nonneg_t_critical_tau0_of_pathB_any_B`:
+    τ=0 specialization, где допустимый `K` выбирается автоматически как `max 1 B`.
+  - `Q_nonneg_on_base_atoms_at_t_critical_brange_of_pathB`:
+    positivity на `BaseAtomCone_critical_brange` из `PrimeTermPathBTcritical`,
+    без `PrimeCertMarginOnBrange`.
+  - `Q_nonneg_on_base_atoms_at_t_critical_brange_via_pathB`:
+    default-wrapper через `prime_term_pathB_tcritical_from_legacy`.
+- В `Q3/Main.lean` `Q_nonneg_on_W_K_tau0` переключён с
+  `..._brange_of_margin` на `..._brange_via_pathB`.
+  Это убирает load-bearing использование `h_margin_cert` в τ=0 mainline route
+  (остаётся Path B legacy provider как явный математический долг).
+- Важный инженерный эффект:
+  mainline перестаёт быть привязан к прямому margin-сертификату в этом узле и
+  продолжает работать через тонкий Path B contract-gate.
+- Проверка в этой сессии частично заблокирована фоновым долгим процессом
+  `BrangeHeatCert_2026_01_28_Checker.lean` (идёт >40 мин, не прерывался);
+  `lake env lean` на затронутых файлах запускается, но завершается медленно.
+
+### Update (2026-02-24, in progress) — decoupled τ=0 mainline from all-τ PathB legacy provider
+
+- В `Q3/Proofs/Q_nonneg_t_critical.lean` добавлен отдельный контракт:
+  - `PrimeTermPathBTcriticalTau0Brange`:
+    `∀ B ∈ [B_min, B_max], prime_term(phi_shift_critical B 0) ≤ arch_term(...)`.
+  - канонический провайдер:
+    `prime_term_pathB_tcritical_tau0_brange_thm`
+    (собирается из `prime_cert_margin_on_brange_thm`).
+- `Q_nonneg_on_base_atoms_at_t_critical_brange_of_tau0_brange_gate` теперь
+  использует именно этот узкий τ=0 gate, без требования общего all-τ контракта.
+- В `Q3/Main.lean` `Q_nonneg_on_W_K_tau0` переключён на
+  `Q_nonneg_on_base_atoms_at_t_critical_brange_via_tau0_brange_gate`.
+- Эффект:
+  load-bearing τ=0 mainline больше не зависит от
+  `PrimeTerm_PathB_legacy_provider` (all-τ legacy), который остаётся только
+  для off-mainline маршрутов/диагностики.

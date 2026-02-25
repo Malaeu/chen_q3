@@ -70,22 +70,17 @@ theorem A2_Lipschitz (K : ℝ) (hK : K > 0) :
 /-! ## T5: Transfer to τ = 0 Weil class -/
 
 /-- Q is nonnegative on W_K_tau0 for each K ≥ 1 (τ = 0 mainline),
-using the certified PrimeCert margin theorem on the B-range. -/
+using the Path B `t_critical` gate route on the B-range. -/
 theorem Q_nonneg_on_W_K_tau0
     (K : ℝ) (hK : K ≥ 1) :
     ∀ Φ ∈ Q3.W_K_tau0 K Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
-  have h_margin_cert : Q3.PrimeCertMarginOnBrange :=
-    by
-      intro B hB
-      simpa [Q3.phi_shift_critical] using
-        (Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom (B := B) hB)
   have hAtoms :
       ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min prime_cert_B_max,
         Q3.Q g ≥ 0 := by
     intro g hg
     have hg' : g ∈ Q3.BaseAtomCone_critical_brange K := by
       simpa [Q3.BaseAtomCone_critical_brange, Q3.BaseAtomCone_K_brange] using hg
-    exact Q3.Q_nonneg_on_base_atoms_at_t_critical_brange_of_margin K hK h_margin_cert g hg'
+    exact Q3.Q_nonneg_on_base_atoms_at_t_critical_brange_via_tau0_brange_gate K hK g hg'
   exact
     Q3.T5.T5_transfer_tau0
       K hK Q3.t0_critical B_min prime_cert_B_max Q3.t0_critical_pos hAtoms
