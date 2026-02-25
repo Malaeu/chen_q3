@@ -1,0 +1,12 @@
+import Q3.Proofs.PrimeTerm_PathB_tau0_brange_analytic
+
+namespace Q3.CheckTau0BrangeGate
+
+-- Core tau0 brange route pieces
+#print axioms Q3.prime_term_tau0_brange_arch_floor_from_heat
+#print axioms Q3.prime_term_tau0_brange_prime_quarter_from_legacy
+#print axioms Q3.prime_term_pathB_tcritical_tau0_brange_of_prime_quarter
+#print axioms Q3.prime_term_pathB_tcritical_tau0_brange_analytic
+#print axioms Q3.prime_term_pathB_tcritical_tau0_brange_thm
+
+end Q3.CheckTau0BrangeGate

@@ -1925,3 +1925,16 @@ Plan (5–10 lines, concrete pointers):
   - `BLOCKED`: получить quarter-bound только из `B=B_min` + heat-Lipschitz (численный запас не хватает на весь B-range).
   - `FALSE-FOR-NOW`: считать mainline «чистым» по старому snapshot без fresh rebuild.
   - `OK`: держать cert-цепочку как legacy-валидацию и закрывать узкий prime-side theorem-route отдельно.
+
+### Update (2026-02-25, done) — added clean closure API for τ=0 Path B (single prime-side obligation)
+
+- В `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean` добавлена теорема:
+  `prime_term_pathB_tcritical_tau0_brange_of_prime_quarter`.
+- Смысл: arch-side уже закрыт theorem-ом (`prime_term_tau0_brange_arch_floor_from_heat`),
+  поэтому для полного τ=0 gate теперь достаточно одного входа
+  `hPrimeQuarter : PrimeTermTau0BrangePrimeQuarter`.
+- Это фиксирует чистый API для mathan-closure: один load-bearing prime-side узел,
+  без необходимости тащить full PathB-legacy provider в этот closure-point.
+- В `Q3/CheckTau0BrangeGate.lean` добавлен `#print axioms` для нового closure-point;
+  снимок показывает: у `..._of_prime_quarter` нет `prime_term_tcritical_le_cstar_quarter_mathan`
+  (он зависит только от arch-side сертификатных узлов).
