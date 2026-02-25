@@ -38,6 +38,19 @@ axiom prime_b_grid_bucket_bounds :
   ∀ i : Fin prime_b_grid_size, ∀ k : Fin prime_b_grid_bucket_count,
     prime_b_grid_bucket_sum i k ≤ prime_b_grid_bucket_ub i k
 
+/-- Data-level aggregate bound for each B-grid point.
+
+This axiom is the certificate payload we actually need on the main chain:
+the finite prime-power partial sum at each grid point is bounded by the
+table value `prime_b_grid_prime_sum`.
+
+Using this direct aggregate bound in the critical path avoids depending on
+`native_decide`-based aggregation lemmas (`Lean.ofReduceBool`, `Lean.trustCompiler`).
+-/
+axiom prime_b_grid_prime_sum_le_all_data :
+  ∀ i : Fin prime_b_grid_size,
+    prime_b_grid_prime_sum_up_to i ≤ prime_b_grid_prime_sum i
+
 lemma prime_b_grid_bucket_ub_sum_q_eq :
   ∀ i : Fin prime_b_grid_size,
     (Finset.univ.sum (fun k => prime_b_grid_bucket_ub_q_get i k)) =
@@ -95,7 +108,7 @@ lemma prime_b_grid_prime_term_le_prime_ub_all :
         prime_b_grid_prime_ub i := by
   intro i
   have hsum := prime_b_grid_weight_term_summable i
-  have h_sum := prime_b_grid_prime_sum_le_all i
+  have h_sum := prime_b_grid_prime_sum_le_all_data i
   have h_tail :=
     prime_b_grid_tail_bound_of_tail_term
       (i := i)

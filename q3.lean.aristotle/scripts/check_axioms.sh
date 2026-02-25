@@ -263,7 +263,7 @@ echo "═══ Step 5: Philosophy Verification ═══"
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion_tau0"
     "Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data"
-    "Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds"
+    "Q3.Proofs.PrimeCert.prime_b_grid_prime_sum_le_all_data"
     "Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data"
     "Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all"
 )

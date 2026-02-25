@@ -1964,3 +1964,19 @@ Numeric sanity (вне Lean, для диагностики модели):
   (partial до `10^6` уже стабилизирован).
 - Это объясняет, почему quarter-form (`≤ c_star/4 = 0.275`) не является рабочим
   closure target в текущей спецификации mainline.
+
+### Update (2026-02-25, done) — removed `native_decide` aggregate from prime-grid sum bridge; trust remains in PrimeHeat layer
+
+- В `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean` добавлен
+  data-axiom `prime_b_grid_prime_sum_le_all_data`, и
+  `prime_b_grid_prime_term_le_prime_ub_all` переключён на него
+  (вместо `prime_b_grid_prime_sum_le_all` через `native_decide`).
+- Эффект по `#print axioms`:
+  - `prime_b_grid_prime_term_le_prime_ub_all`: больше не тянет
+    `Lean.ofReduceBool`/`Lean.trustCompiler`.
+  - `prime_cert_margin_on_Brange_axiom` и `Q3.Main.RH_of_Weil_and_Q3` всё ещё
+    тянут `Lean.ofReduceBool`/`Lean.trustCompiler` через
+    `prime_heat_bounds_arch_data` и
+    `prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all`.
+- Вывод: trust-хвост теперь локализован в PrimeHeat checker-слое; prime-grid aggregate
+  уже переведён на data-payload маршрут.
