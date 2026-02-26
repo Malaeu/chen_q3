@@ -9,6 +9,7 @@ Files:
 - a3_symbol_mismatch_reverse_engineering.md
 - a_star_even_closure_2026_01_20.md
 - a_star_vs_p_a_dossier.md
+- ALIAS_MAP_2026_02_26.md
 - aristotle_error_recovery.md
 - aristotle_strategy_pure_informal.md
 - atomcone_fixed_t_gap_2026_01_18.md
@@ -29,6 +30,14 @@ Files:
 - heat_localization_kills_primes_2026_01_16 2.md
 - heat_localization_kills_primes_2026_01_16.md
 - heat_parameter_mismatch_2026_01_14.md
+- HUB_A3_FLOOR_DENSITY_2026_02_26.md
+- HUB_DECISIONS_ROADMAP_2026_02_26.md
+- HUB_OPS_CHECKERS_2026_02_26.md
+- HUB_PRIMECERT_PATHB_2026_02_26.md
+- HUB_SECTION_MAP_2026_02_26.md
+- HUB_STATUS_2026_02_26.md
+- HUB_WEIL_TAU0_2026_02_26.md
+- INSIGHTS_legacy_2026_02_26.md
 - key_constants_reference.md
 - lean_simpa_performance_fix_2026_01_19.md
 - localization_argument_full_analysis_2026_01_16 2.md

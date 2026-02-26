@@ -1,0 +1,230 @@
+# Hub: A3 Floor Rayleigh Density
+
+Источник: `docs/insights/INSIGHTS_legacy_2026_02_26.md`.
+A1/A3/FLOOR/Rayleigh/density блоки и их критические узлы.
+
+## Included Sections
+
+- line 547: Synthesis (2026-01-26, in progress) — τ-shift AtomCone fails; `prime_term_le_at_t_critical_axiom` is false-for-now
+- line 682: Synthesis (2026-01-24, in progress) — `rayleigh_basis0_shift_ge_cstar_quarter` (t_critical, tau = 0)
+- line 773: A3/Rayleigh: критический путь
+- line 967: A3_FLOOR @ one-scale `t_critical` (BLOCKER, 2026-01-23)
+
+<!-- wave2_related_start -->
+## Related Legacy Files (Wave 2)
+
+Связанные standalone-файлы по домену `a3`:
+
+- `docs/insights/a3_bridge_math_rkhs_bound.md`
+- `docs/insights/a3_fourier_atoms_axiom_2026_01_16.md`
+- `docs/insights/a3_symbol_mismatch_reverse_engineering.md`
+- `docs/insights/a_star_even_closure_2026_01_20.md`
+- `docs/insights/a_star_vs_p_a_dossier.md`
+- `docs/insights/atomcone_fixed_t_gap_2026_01_18.md`
+- `docs/insights/check_axioms_prebuild_a3_floor_2026_01_16.md`
+- `docs/insights/rayleigh_q_identification_2026_01_17.md`
+- `docs/insights/rayleigh_q_identification_2026_01_17.md`
+- `docs/insights/rescaled_density_lemma_variants_2026_01_16.md`
+- `docs/insights/rescaled_density_lemma_variants_2026_01_16.md`
+- `docs/insights/t_p_comp_mismatch.md`
+- `docs/insights/t_p_compression_fix_2026_01_14.md`
+- `docs/insights/v3_success_a3_bridge_rayleigh_2026_01_14.md`
+<!-- wave2_related_end -->
+
+## Content
+
+<!-- legacy_line:547 -->
+
+## Synthesis (2026-01-26, in progress) — τ-shift AtomCone fails; `prime_term_le_at_t_critical_axiom` is false-for-now
+
+- Local numeric verification: `python3 verify_variant_b.py --direct` shows
+  `min Q = -911.2678` at `τ = 1.689` for `t = 0.15` (so full `AtomCone_K_fixed` is not safe).
+- Target axiom: `Q3.prime_term_le_at_t_critical_axiom` in `Q3/Proofs/Q_nonneg_t_critical.lean`
+  is currently the only thing making τ-uniform positivity go through in Lean.
+- Wiring (main chain): `prime_term_le_at_t_critical` → `Q_phi_shift_nonneg_t_critical` →
+  `QNonnegClosure.Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm` →
+  `Atoms_Positive.Q_nonneg_on_atoms` → `T5.T5_transfer`.
+- Decision tree:
+  - Option A: keep the current cone (`AtomCone_K_fixed`) and accept this axiom permanently (not credible).
+  - Option B (recommended): refactor the cone/criterion target so τ-shift atoms are not required
+    (likely move to a Fourier-positive/PD cone; then BaseAtomCone τ=0 becomes the generator).
+  - Option C: replace A1/A2/T5 with a different positivity transfer (fallback; expensive).
+- Success check: after refactor, `#print axioms Q3.Main.RH_of_Weil_and_Q3` drops `prime_term_le_at_t_critical_axiom`.
+- **Status update (2026-01-26):** mainline now uses `Weil_cone_tau0` + `W_K_tau0`
+  (τ=0, B-range), so the τ‑uniform prime‑term axiom is no longer in the RH chain.
+- Note: `q3search`/`websearch` are deprecated; use `./scripts/research_oracle.py ...` + web tool.
+
+
+<!-- legacy_line:682 -->
+
+## Synthesis (2026-01-24, in progress) — `rayleigh_basis0_shift_ge_cstar_quarter` (t_critical, tau = 0)
+
+- q3search "rayleigh_basis0_shift_ge_cstar_quarter" failed: 403 Spend limit exceeded.
+- websearch "Toeplitz Rayleigh lower bound t_critical" failed: 403 Spend limit exceeded.
+- Target lemma: `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter` in `Q3/Proofs/SingleScale_Assumptions.lean`.
+- Option A (primary): reduce to floor at t_critical via
+  `P_A_shift_tau_zero` (`Q3/Proofs/Q_nonneg_base_atoms_proof.lean`) +
+  `P_A_rayleigh_lower_bound_of_floor` (`Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`) +
+  `A3FloorCritical.FloorGoal` (`Q3/Proofs/A3_Floor_Critical_Goal.lean`), then weaken to `c_star/4`.
+- Option B (fallback): use `arch_rayleigh_eq_shift` (`Q3/Proofs/Rayleigh_Q_identification.lean`) +
+  `integral_P_A_shift_eq_arch_term` (`Q3/Proofs/ShiftedWindows.lean`) and prove
+  `arch_term ≥ c_star/4` via a numeric/interval lemma in `Q3/Proofs/Q_nonneg_t_critical.lean`.
+- Success check: `lake env lean Q3/Proofs/SingleScale_Assumptions.lean`
+  then `./scripts/check_axioms.sh` (only `Weil_criterion_tau0` + PrimeCert axioms remain).
+- Blocker: no current floor lemma at `t_critical`; likely needs numeric/interval proof
+  or a monotonicity lemma for `P_A` in `t`.
+
+---
+
+
+<!-- legacy_line:773 -->
+
+## A3/Rayleigh: критический путь
+
+- Символы `a_star` vs `P_A`: признаки рассогласования, reverse‑engineering → `docs/insights/a3_symbol_mismatch_reverse_engineering.md`.
+- Досье по различиям `a_star` и `P_A` → `docs/insights/a_star_vs_p_a_dossier.md`.
+
+- Rayleigh без SB: пытаемся тащить Szego‑Bottcher → `docs/insights/rayleigh_vs_sb_optional.md`.
+- SB не нужен (краткая формулировка) → `docs/insights/szego_bottcher_not_needed.md`.
+
+- RKHS cap: видим несходимость по ρ=0.868 → `docs/insights/a3_bridge_math_rkhs_bound.md`.
+- RKHS cap реализация (t_rkhs_cap=40, rho_one=1/25) → `docs/insights/rkhs_cap_implementation_2026_01_15.md`.
+- Tau-shift: варианты RKHS cap/A3 floor + выбор Variant 1 (риски/план) → `docs/insights/tau_shift_variants_rkhs_a3_2026_01_18.md`.
+- Floor cert (t_critical): grid+Lipschitz numbers + script → `docs/insights/floor_cert_tcritical_2026_01_25.md`
+- Prime-term cert (t_critical): prime_sum + tail bound + arch_term numeric → `docs/insights/prime_cert_tcritical_2026_01_25.md`
+- Prime-term cert (B-range): grid + margin Lipschitz over B → `docs/insights/prime_cert_brange_tcritical_2026_01_25.md`
+- C1 basisFun model wired (machine `h_eval`) + compression remark in `Q3/Proofs/RKHS_cap_rayleigh.lean`.
+- Single-scale RKHS contraction at `t_critical` wired into `Q3/AxiomsTheorems.lean` (via `SingleScale_Assumptions`).
+- `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom` closed via `Q_nonneg_atoms_closure`; remaining blocker is
+  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`.
+
+- Реальные bounds для T_P (V1 surprise): путаем direct‑indexed vs compression → `docs/insights/v1_surprise_real_tp_bounds_2026_01_14.md`.
+- Успешный Rayleigh‑bridge (V3) → `docs/insights/v3_success_a3_bridge_rayleigh_2026_01_14.md`.
+- Полный bound T_P (V4) → `docs/insights/v4_success_full_tp_bound_2026_01_14.md`.
+
+- Несовпадение T_P_comp в Lean: упираемся в дефиницию → `docs/insights/t_p_comp_mismatch.md`.
+- Фикс compression‑формулы T_P (план) → `docs/insights/t_p_compression_fix_2026_01_14.md`.
+- Контракт RH_Q3 (инварианты + дрейф‑точки): быстрый аудит `a_star`/`P_A`, Toeplitz, `t_sym`/`t_rkhs`, веса → `docs/insights/rh_q3_invariants_contract_2026_01_16.md`.
+- Drift report M1–M4: a_star vs P_A, sampling vs Fourier, T_P, parameters → `docs/insights/drift_report_m1_m4.md`.
+- Атомы: переход на Fourier A3 и новую аксиому → `docs/insights/a3_fourier_atoms_axiom_2026_01_16.md`.
+- Closure synthesis (from q3search + websearch) for `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`:
+  базовая информация уже в базе. Используем скелет `aristotle_input/Q_nonneg_A6_final.md`,
+  идентификацию `Q3/Proofs/Rayleigh_Q_identification.lean` (`rayleigh_Q_eq_Q` или `_shift`),
+  RKHS cap из `Q3/Proofs/RKHS_cap_rayleigh.lean` (`weight_sum_le_rho_one`),
+  A3 bridge из `Q3/Proofs/P_A_Toeplitz_bridge.lean`.
+  Действия: доказать теорему `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` через
+  `Q_nonneg_on_atomcone_of_atoms` + `Q_nonneg_fejer_heat_window` + `rayleigh_basis0_of_A3`
+  + кап; затем заменить аксиому в `Q3/Atoms_Positive.lean` и `Q3/AxiomsTheorems.lean`,
+  проверить `lake env lean Q3/Atoms_Positive.lean` и `#print axioms`.
+- Blocker (2026-01-18): A1–A5 helper lemmas are still missing in code.
+  План: 1) в `Q3/Proofs/Q_nonneg_atoms_helpers.lean` добавить линейность `Q_finset_sum`
+  и `prime_sum_nonneg` (см. `aristotle_input/Q_nonneg_A1_linear.md`/`Q_nonneg_A2_prime_sum_nonneg.md`);
+  2) `rayleigh_basis0_of_A3` и `Q_nonneg_fejer_heat_window` собрать из
+  `Q3/Proofs/Rayleigh_Q_identification.lean` (`honest_formula`) + A3/RKHS cap;
+  3) `Q_nonneg_on_atomcone_of_atoms` из формы `AtomCone_K` (finite sum of atoms);
+  4) подключить в `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
+- Synthesis (2026-01-18): wiring plan + import conflict.
+  1) Sandbox: `sandboxes/measure_dom/full/q3.lean.aristotle/Q3/Proofs/Q_nonneg_lemmas.lean`
+     содержит A1/A2/A5 + integrability/summability; скопировано в `Q3/Proofs/Q_nonneg_lemmas.lean`
+     (компилируется, предупреждение: `integral_mul_left` deprecated).
+  2) Import conflict: `Q_nonneg_atoms_helpers.lean` не может импортировать одновременно
+     `Q3.Proofs.Rayleigh_Q_identification` и `Q3.Proofs.P_A_Toeplitz_bridge`
+     (B_min collision из `A3_Floor_Bounds`).
+  3) Mitigation: держать Rayleigh‑леммы в файле, который импортирует только
+     `Rayleigh_Q_identification`; для `rho_one` подключать `Q3.Proofs.A3_bridge_rayleigh_first`.
+  4) Дальше: `rayleigh_basis0_of_A3` вынести в файл с `P_A_Toeplitz_bridge` (без Rayleigh),
+     затем связать с `Q_nonneg_fejer_heat_window` при wiring в
+     `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`.
+  5) Проверка: `lake env lean Q3/Proofs/Q_nonneg_atoms_helpers.lean` и
+     `lake env lean Q3/Proofs/Q_nonneg_lemmas.lean`.
+- Synthesis (2026-01-18, in progress): AtomCone_K_fixed wiring plan.
+  1) Fix t0: define `t0_A1 = 1 / (16 * Real.pi^2 * t_sym)` in `Q3/Proofs/HeatKernelParams.lean`
+     with `t0_A1_pos`; use this for all fixed-t atoms.
+  2) Add atom rewrite: in `Q3/Proofs/ShiftedWindows.lean`, prove
+     `Fejer_heat_atom = const * (phi_shift B t_sym tau + phi_shift B t_sym (-tau))`.
+  3) Port fixed-t chain from sandbox `sandboxes/measure_dom/.../Q_nonneg_atoms_proof.lean` into
+     `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`:
+     `Q_nonneg_on_atomcone_fixed_of_atoms`, `Q_single_atom_fixed_nonneg`, `Q_nonneg_on_atoms_fixed`.
+  4) Prove `Q (phi_shift ...) ≥ 0` via `rayleigh_Q_eq_Q_shift` + `A3_bridge_data_rayleigh_Fourier`
+     + `rkhs_cap_rayleigh_tcap`; use `rayleigh_basis0_of_A3` as the arch lower bound.
+  5) Wire fixed-t theorem in `Q3/Atoms_Positive.lean` and `Q3/AxiomsTheorems.lean`;
+     keep `AtomCone_K` for density and use `AtomCone_K_fixed_subset`.
+  6) Checks: `lake env lean Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`,
+     `lake env lean Q3/Atoms_Positive.lean`, then `#print axioms`.
+- Synthesis (2026-01-19, in progress): A1–A5 helpers + fixed‑t wiring checklist.
+  1) A1/A2 already in `Q3/Proofs/Q_nonneg_lemmas.lean` (`Q_finset_sum`, `prime_sum_nonneg`);
+     import/reuse in `Q3/Proofs/Q_nonneg_atoms_helpers.lean` for A5.
+  2) A4 in `Q3/Proofs/Rayleigh_basis0_of_A3.lean`; keep imports minimal
+     (`Q3/Proofs/Rayleigh_basis0.lean`, `Q3/Proofs/P_A_Toeplitz_bridge.lean`).
+  3) A3 in `Q3/Proofs/Q_nonneg_atoms_helpers.lean` via
+     `Q3.Proofs.RayleighQId.honest_formula` + RKHS cap (`weight_sum_le_rho_one`/`rkhs_cap_rayleigh_tcap`).
+  4) Use fixed‑t cone lemma from sandbox
+     `sandboxes/measure_dom/full/q3.lean.aristotle/Q3/Proofs/Q_nonneg_atoms_proof.lean`
+     (`Q_nonneg_on_atomcone_fixed_of_atoms`) with `AtomCone_K_fixed` (see
+     `docs/insights/atomcone_fixed_t_gap_2026_01_18.md`).
+  5) Wire `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` in
+     `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean` using A1–A4 + fixed‑t cone.
+  6) Replace axiom usage in `Q3/Atoms_Positive.lean` and `Q3/AxiomsTheorems.lean`.
+  7) Checks: `lake env lean Q3/Proofs/Q_nonneg_atoms_helpers.lean`,
+     `lake env lean Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`,
+     `lake env lean Q3/Atoms_Positive.lean`.
+- Synthesis (2026-01-24, in progress): Close `Q3/Proofs/Q_nonneg_atoms_closure.lean` sorries (fixed‑t chain).
+  1) `Q_nonneg_phi_shift_tsym`: use `Q3.Proofs.QNonnegAtoms.Q_phi_shift_nonneg`
+     from `Q3/Proofs/Q_nonneg_atoms_helpers.lean` with cap
+     `prime_term_phi_shift_le_rho_oneK` (in `Q3/Proofs/RKHS_cap_rayleigh.lean`)
+     + `rayleigh_basis0_of_A3`; **need** explicit `hpos : 0 ≤ c_star/4 - exp_tsym_to_rkhs K * R`.
+  2) Replace scaling/half‑atom steps with the fixed‑t identity
+     `Fejer_heat_atom_eq_const_mul_phi_shift_sum` from `Q3/Proofs/ShiftedWindows_t0.lean`.
+  3) For `Q_nonneg_Fejer_heat_atom`, prefer `Q_single_atom_nonneg_of_phi_shift_basic`
+     (in `Q3/Proofs/Q_nonneg_atoms_helpers.lean`) + prove `htsym` for `t0_A1`.
+  4) Finish with `Q_nonneg_on_atomcone_fixed_of_atoms` (same file) to get
+     `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_thm`.
+  5) Searches attempted: `q3search` + `websearch` failed (403 spend limit); proceed with local lemmas.
+- Synthesis (2026-01-23, in progress): close `Q_nonneg_on_atoms_of_A3_Fourier_RKHS_axiom`
+  via the one-scale chain (Stream A).
+  1) q3search/websearch were attempted but failed with spend-limit 403.
+  2) Implement `AtomCone_K_fixed` + `AtomCone_K_fixed_subset` in `Q3/Axioms.lean`
+     and update the fixed-t cone plumbing (see `docs/insights/atomcone_fixed_t_gap_2026_01_18.md`).
+  3) In `Q3/Proofs/Q_nonneg_atoms_helpers.lean`, import A1/A2 from
+     `Q3/Proofs/Q_nonneg_lemmas.lean` and add the missing A3/A4/A5 steps with minimal imports.
+  4) In `Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean`, use the fixed-t cone lemma,
+     `rayleigh_Q_eq_Q`/`rayleigh_Q_eq_Q_shift`, and the one-scale bridge from
+     `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean` plus the cap in
+     `Q3/Proofs/RKHS_cap_rayleigh.lean`.
+  5) Replace the axiom in `Q3/Atoms_Positive.lean` and `Q3/AxiomsTheorems.lean`,
+     then run `lake env lean` on the touched files and `./scripts/check_axioms.sh`.
+- Последний мост к Q3.Q: для Phi с compact support (например, fejer_heat_window) показать, что prime_term (tsum по n) равен конечной сумме по Nodes K при K >= B; тогда rayleigh_Q_identification переписывается в Q3.Q (см. `Q3/Proofs/Rayleigh_Q_identification.lean`).
+- P_A_continuous: доказательство через локальную конечность суммы и периодичность, без `sorry` (см. `A3_Floor_Main.lean`).
+
+---
+
+
+<!-- legacy_line:967 -->
+
+## A3_FLOOR @ one-scale `t_critical` (BLOCKER, 2026-01-23)
+
+**Target (exact):**
+- Prove (no axioms/sorry): `∀ θ ∈ Set.Icc (-1/2) (1/2), Q3.c_star ≤ P_A B_min Q3.t_critical θ`.
+- This is the missing input `hP_ge` for the one-scale bridge in `Q3/Proofs/P_A_Toeplitz_bridge_one_scale.lean`.
+
+**Why it’s hard right now (root cause, not vibes):**
+- The old proof `Q3/Proofs/A3_Floor_Main.lean` works at `t_sym = 3/50` because it can lower-bound the key
+  “two big terms” using the strong pointwise bound `a(1/2) ≥ 5/8` (log2 is large enough) and then crush all tails.
+- At `t_critical = 3/20`, the bottleneck becomes controlling `g B_min t (1-θ)` for `θ` close to `1/2`,
+  i.e. `a(x)` for `x` slightly **above** `1/2` (e.g. `x = 11/20 = 0.55`).
+- With the current remainder lemma `Q3.re_digamma_remainder_bound_stieltjes` (constant `1/4`),
+  the best “pure-inequality” lower bounds for `a(11/20)` appear too weak to close the numeric gap cleanly;
+  the dead-code path in `Q3/Proofs/A3_Floor_Bounds.lean` explicitly notes that a sharper
+  `re_digamma_remainder_bound` (constant `1/12`) would unlock the needed strength.
+
+**Decision tree (next moves):**
+1) **OK / recommended:** implement a sharper digamma remainder bound (the missing `re_digamma_remainder_bound`)
+   and resurrect `a_lower_bound_from_remainder` in `Q3/Proofs/A3_Floor_Bounds.lean`.
+   - Pointers: `full/q3.lean.aristotle/Q3/Proofs/A3_Floor_Bounds.lean` (dead code blocks around `re_digamma_remainder_bound`),
+     `full/q3.lean.aristotle/Q3/DigammaRemainder.lean` (current `…_stieltjes` bound).
+   - This is the most “community-standard” fix: better explicit remainder ⇒ better pointwise `a(x)` bounds ⇒ floor.
+2) **OK but larger infra:** prove a *local* control of `a` on `[1/2, 11/20]` (e.g. via trigamma bounds)
+   and use it to transfer the known `a(1/2)` lower bound to `a(1-θ)` when `θ≈1/2`.
+   - Risk: introduces heavy special-functions analysis in Lean.
+3) **False-for-now (policy):** silently mix two-scale (`t_sym` floor + `t_critical` prime cap) in the *same* proof chain.
+   - If we go two-scale, we must write an explicit comparison lemma and document the spec change; otherwise it’s drift.

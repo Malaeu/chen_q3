@@ -47,23 +47,35 @@ def _extract_insights_links(text: str) -> list[str]:
     return pattern.findall(text)
 
 
-def _validate_links(insights_dir: Path, insights_md: Path) -> list[str]:
+def _collect_referenced_graph(insights_dir: Path, insights_md: Path) -> tuple[set[str], list[str]]:
+    """Follow docs/insights links transitively from docs/INSIGHTS.md."""
+    if not insights_md.exists():
+        return set(), [str(insights_md)]
+
+    referenced: set[str] = set()
     missing: list[str] = []
-    if not insights_md.exists():
-        missing.append(str(insights_md))
-        return missing
+    queue: list[Path] = [insights_md]
+    visited: set[Path] = set()
 
-    for rel in _extract_insights_links(_read_text(insights_md)):
-        target = insights_dir / rel
-        if not target.exists():
-            missing.append(str(target))
-    return missing
+    while queue:
+        current = queue.pop(0)
+        if current in visited or not current.exists():
+            continue
+        visited.add(current)
+        for rel in _extract_insights_links(_read_text(current)):
+            referenced.add(rel)
+            target = insights_dir / rel
+            if not target.exists():
+                missing.append(str(target))
+                continue
+            # Recurse only into markdown docs under docs/insights.
+            # Legacy full snapshots are treated as read-only archives and are not scanned transitively.
+            if target.suffix.lower() == ".md" and not target.name.startswith("INSIGHTS_legacy_"):
+                queue.append(target)
+    return referenced, sorted(set(missing))
 
 
-def _orphan_files(insights_dir: Path, insights_md: Path) -> list[str]:
-    if not insights_md.exists():
-        return []
-    referenced = set(_extract_insights_links(_read_text(insights_md)))
+def _orphan_files(insights_dir: Path, referenced: set[str]) -> list[str]:
     orphans: list[str] = []
     for path in _collect_insight_files(insights_dir):
         if path.name not in referenced:
@@ -89,16 +101,16 @@ def main() -> int:
     index_lines = _generate_index_lines(files)
     index_text = "\n".join(index_lines) + "\n"
 
-    missing = _validate_links(insights_dir, insights_md)
+    referenced, missing = _collect_referenced_graph(insights_dir, insights_md)
     if missing:
-        print("Missing insight files referenced from INSIGHTS.md:")
+        print("Missing insight files referenced from INSIGHTS graph:")
         for path in missing:
             print(f"- {path}")
         return 3
 
-    orphans = _orphan_files(insights_dir, insights_md)
+    orphans = _orphan_files(insights_dir, referenced)
     if orphans:
-        print("Orphaned insight files (not referenced from INSIGHTS.md):")
+        print("Orphaned insight files (not referenced from INSIGHTS graph):")
         for name in orphans:
             print(f"- {name}")
 
@@ -116,7 +128,7 @@ def main() -> int:
     _write_text(index_path, index_text)
     print(f"Wrote index: {index_path}")
     if orphans:
-        print("Note: some insight files are not referenced in INSIGHTS.md.")
+        print("Note: some insight files are not referenced in INSIGHTS graph.")
     return 0
 
 
