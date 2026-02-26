@@ -231,8 +231,8 @@ PROJECT_COUNT=$(echo "$AXIOMS_ONLY" | grep -E "Q3\." | wc -l | tr -d ' ')
 TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
-EXPECTED_STANDARD=5  # propext, Classical.choice, Lean.ofReduceBool, Lean.trustCompiler, Quot.sound
-EXPECTED_PROJECT=5   # Weil_criterion_tau0 + Brange cert chain (tau0 gate via Brange_2046)
+EXPECTED_STANDARD=3  # propext, Classical.choice, Quot.sound
+EXPECTED_PROJECT=4   # Weil_criterion_tau0 + Brange grid axioms + PrimeHeat margin witness
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
@@ -264,8 +264,7 @@ EXPECTED_AXIOMS=(
     "Q3.Weil_criterion_tau0"
     "Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data"
     "Q3.Proofs.PrimeCert.prime_b_grid_prime_sum_le_all_data"
-    "Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data"
-    "Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all"
+    "Q3.Proofs.PrimeCert.prime_heat_margin_cert_2026_01_28"
 )
 
 UNKNOWN_AXIOMS=""

@@ -75,13 +75,11 @@ As of **2026-01-29**, `#print axioms Q3.Main.RH_of_Weil_and_Q3` reports **6 axio
 
 These are part of Lean's foundation. Most Mathlib proofs use them.
 
-### Level 0b: Computation Trust (2) — ACTIVE
+### Level 0b: Computation Trust (0) — CLOSED (for current main chain)
 
-- `Lean.ofReduceBool`
-- `Lean.trustCompiler`
-
-These appear in the current main chain through the generated PrimeHeat checker
-stack (`native_decide`-based proofs inside the imported certificate modules).
+`Lean.ofReduceBool` / `Lean.trustCompiler` are not in the current
+`RH_of_Weil_and_Q3` chain after switching tau-0 B-range margin routing to the
+PrimeHeat margin kernel witness.
 
 ### Level 1: Classical Results from Literature (1) — ESTABLISHED MATHEMATICS
 - `Weil_criterion_tau0` — Weil 1952, τ=0 mainline cone: `Q ≥ 0` on `Weil_cone_tau0` ⟺ RH
@@ -95,11 +93,10 @@ These are well-known results. Citations:
 - `A1_density_WK_axiom` → closed (A1_density_WK_thm)
 - `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` → closed via Q_nonneg_atoms_closure
 
-### Level 2: One‑Scale Numeric Certificates @ `t_critical` (4) — TEMPORARY BRIDGE
+### Level 2: One‑Scale Numeric Certificates @ `t_critical` (3) — TEMPORARY BRIDGE
 - `Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data` — grid arch lower-bound payload, in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
 - `Q3.Proofs.PrimeCert.prime_b_grid_prime_sum_le_all_data` — grid prime-sum aggregate payload, in `Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data` — heat arch integral bound payload, in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
-- `Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all` — prime-power bound payload, in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+- `Q3.Proofs.PrimeCert.prime_heat_margin_cert_2026_01_28` — единый witness для prime-heat margin kernel, in `Q3/Proofs/PrimeCert/PrimeHeatMarginWitness_2026_01_28.lean`
 
 These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt`,
 `output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`, and
@@ -138,14 +135,11 @@ Expected output:
 'Q3.Main.RH_of_Weil_and_Q3' depends on axioms: [
   propext,                        -- Level 0a: Standard Lean
   Classical.choice,               -- Level 0a: Standard Lean
-  Lean.ofReduceBool,              -- Level 0b: computation trust
-  Lean.trustCompiler,             -- Level 0b: computation trust
   Quot.sound,                     -- Level 0a: Standard Lean
   Q3.Weil_criterion_tau0,          -- Level 1: Weil 1952 (τ=0 cone)
   Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data,    -- Level 2: one‑scale cert data
   Q3.Proofs.PrimeCert.prime_b_grid_prime_sum_le_all_data, -- Level 2: one‑scale cert data
-  Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data,     -- Level 2: one‑scale cert data
-  Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all -- Level 2
+  Q3.Proofs.PrimeCert.prime_heat_margin_cert_2026_01_28 -- Level 2: one‑scale cert witness
 ]
 ```
 
@@ -221,9 +215,9 @@ Our axioms can be eliminated one by one:
 | Axiom | How to Eliminate | Difficulty |
 |-------|------------------|------------|
 | `Weil_criterion_tau0` | Major project (Weil explicit formula, τ=0 cone) | Very High |
-| `prime_b_grid_bounds_data` | Fully formalize PrimeCert grid verification | High |
-| `prime_heat_bounds_arch_data` | Formalize the arch integral bound | High |
-| `prime_heat_bucket_data` | Formalize bucketed prime‑heat partial sum | High |
+| `prime_b_grid_arch_bounds_data` | Fully formalize arch bound on B-grid | High |
+| `prime_b_grid_prime_sum_le_all_data` | Fully formalize grid prime-sum aggregate bound | High |
+| `prime_heat_margin_cert_2026_01_28` | Replace witness with fully formal checker+soundness theorem | High |
 
 Each elimination makes the proof stronger. Current state: **7 axioms total (3 standard + 4 project)**.
 

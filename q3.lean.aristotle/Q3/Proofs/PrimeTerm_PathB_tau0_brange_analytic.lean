@@ -169,7 +169,7 @@ theorem prime_term_pathB_tcritical_tau0_brange_analytic :
       prime_cert_margin_lb ≤
         arch_term (fun ξ => phi_shift B t_critical 0 ξ) -
           prime_term (fun ξ => phi_shift B t_critical 0 ξ) := by
-    exact Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom B ⟨hBmin, hBmax⟩
+    exact Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_kernel_shadow B ⟨hBmin, hBmax⟩
   have hmargin_nonneg : 0 ≤ prime_cert_margin_lb := le_of_lt prime_cert_margin_pos
   linarith
 

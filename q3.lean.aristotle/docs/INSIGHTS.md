@@ -1980,3 +1980,28 @@ Numeric sanity (вне Lean, для диагностики модели):
     `prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all`.
 - Вывод: trust-хвост теперь локализован в PrimeHeat checker-слое; prime-grid aggregate
   уже переведён на data-payload маршрут.
+
+### Update (2026-02-26, done) — PrimeHeatMarginKernel integrated and tau0 mainline switched to witness route
+
+- Добавлен kernel-модуль:
+  - `Q3/Proofs/PrimeCert/PrimeHeatMarginKernel.lean`
+  - API: `checkPrimeHeatMarginCert` + `margin_lb_on_brange_of_checked_cert`.
+- Добавлен witness-модуль:
+  - `Q3/Proofs/PrimeCert/PrimeHeatMarginWitness_2026_01_28.lean`
+  - единый load-bearing witness axiom:
+    `prime_heat_margin_cert_2026_01_28`.
+- В `Q3/Proofs/PrimeCert/Brange_2046.lean` добавлен theorem-route:
+  - `prime_cert_margin_on_Brange_kernel_shadow`.
+- Mainline τ=0 gate переключён на kernel-route:
+  - `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean` теперь использует
+    `prime_cert_margin_on_Brange_kernel_shadow`.
+- Итог по `#print axioms Q3.Main.RH_of_Weil_and_Q3`:
+  - удалены из main chain:
+    `prime_heat_bounds_arch_data`,
+    `prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all`,
+    а также `Lean.ofReduceBool` и `Lean.trustCompiler`.
+  - новая цепочка:
+    `Q3.Weil_criterion_tau0`,
+    `prime_b_grid_arch_bounds_data`,
+    `prime_b_grid_prime_sum_le_all_data`,
+    `prime_heat_margin_cert_2026_01_28`.

@@ -84,10 +84,10 @@ echo 'import Q3.Main
 - `Step 3`: **PARTIAL/BLOCKED** (`native_decide` всё ещё используется в checker bucket-path).
 - `Steps 4-7`: **OPEN/BLOCKED** (нужны формальные данные для arch-integral и grid bucket closure).
 
-Текущие узкие project-аксиомы (по `#print axioms`, 2026-02-09):
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
-- `Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds`
+Текущие узкие project-аксиомы (по `#print axioms`, 2026-02-26):
 - `Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data`
+- `Q3.Proofs.PrimeCert.prime_b_grid_prime_sum_le_all_data`
+- `Q3.Proofs.PrimeCert.prime_heat_margin_cert_2026_01_28`
 
 Step 2 closure note (2026-02-09):
 - `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean` переключен на

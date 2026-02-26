@@ -38,6 +38,8 @@ AXIOM_FILE_HINTS = {
     "Q3.Proofs.PrimeCert.prime_heat_bucket_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean",
     "prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback.lean",
     "Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback.lean",
+    "prime_heat_margin_cert_2026_01_28": "q3.lean.aristotle/Q3/Proofs/PrimeCert/PrimeHeatMarginWitness_2026_01_28.lean",
+    "Q3.Proofs.PrimeCert.prime_heat_margin_cert_2026_01_28": "q3.lean.aristotle/Q3/Proofs/PrimeCert/PrimeHeatMarginWitness_2026_01_28.lean",
 }
 
 AXIOM_CLOSURE_PATH = {
@@ -53,6 +55,8 @@ AXIOM_CLOSURE_PATH = {
     "Q3.Proofs.PrimeCert.prime_heat_bucket_data": "Formalize bucket partial sums",
     "prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all": "Discharge GT10000 auto shards and remove fallback axiom",
     "Q3.Proofs.PrimeCert.prime_heat_weight_term_le_pp_ub_of_10001_1000000_primepow_all": "Discharge GT10000 auto shards and remove fallback axiom",
+    "prime_heat_margin_cert_2026_01_28": "Replace witness with fully formal PrimeHeat margin checker soundness",
+    "Q3.Proofs.PrimeCert.prime_heat_margin_cert_2026_01_28": "Replace witness with fully formal PrimeHeat margin checker soundness",
 }
 
 

@@ -2,6 +2,8 @@ import Mathlib
 import Q3.Proofs.PrimeCert.Defs
 import Q3.Proofs.PrimeCert.BrangeGrid_2046
 import Q3.Proofs.PrimeCert.BrangeCert_2046
+import Q3.Proofs.PrimeCert.PrimeHeatMarginKernel
+import Q3.Proofs.PrimeCert.PrimeHeatMarginWitness_2026_01_28
 import Q3.Proofs.A3_Floor_Main
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.ShiftedWindows
@@ -147,5 +149,32 @@ lemma prime_cert_margin_on_Brange_axiom :
       nlinarith [hgrid_ge, hL]
     exact le_trans this hmargin_ge
   simpa [margin] using hfinal
+
+/-- Kernel-backed margin certificate on B-range at `t_critical`, `tau = 0`.
+
+This is the proof-carrying route consumed by the mainline tau-0 gate.
+-/
+lemma prime_cert_margin_on_Brange_kernel_shadow :
+    ∀ B ∈ Set.Icc B_min prime_cert_B_max,
+      prime_cert_margin_lb ≤
+        arch_term (fun ξ => phi_shift B t_critical 0 ξ) -
+          prime_term (fun ξ => phi_shift B t_critical 0 ξ) := by
+  have hcheck :
+      checkPrimeHeatMarginCert prime_heat_margin_cert_2026_01_28 = true :=
+    prime_heat_margin_cert_2026_01_28_checked
+  have hgrid_margin :
+      ∀ i : Fin prime_b_grid_size, prime_b_grid_val i ≤ margin_tau0 (prime_b_grid i) := by
+    intro i
+    simpa [margin_tau0, phi_shift_critical_tau0] using prime_b_grid_val_le_margin i
+  have hcore :
+      ∀ B ∈ Set.Icc B_min prime_cert_B_max,
+        prime_cert_margin_lb ≤ margin_tau0 B := by
+    exact margin_lb_on_brange_of_checked_cert
+      (cert := prime_heat_margin_cert_2026_01_28)
+      (hcheck := hcheck)
+      (h_cover := prime_b_grid_cover_cert)
+      (h_grid_margin := hgrid_margin)
+  intro B hB
+  simpa [margin_tau0, phi_shift_critical_tau0] using hcore B hB
 
 end Q3.Proofs.PrimeCert
