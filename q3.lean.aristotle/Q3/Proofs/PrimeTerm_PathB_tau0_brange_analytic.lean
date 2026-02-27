@@ -40,6 +40,11 @@ def PrimeTermTau0BrangeArchFloor : Prop :=
   ∀ B : ℝ, B_min ≤ B → B ≤ prime_cert_B_max →
     c_star ≤ arch_term (fun ξ => phi_shift B t_critical 0 ξ)
 
+/-- Slack route (arch side): quarter-bound on the certified τ=0 B-range. -/
+def PrimeTermTau0BrangeArchQuarter : Prop :=
+  ∀ B : ℝ, B_min ≤ B → B ≤ prime_cert_B_max →
+    c_star / 4 ≤ arch_term (fun ξ => phi_shift B t_critical 0 ξ)
+
 /-- Pure slack composition for τ=0 gate:
 `prime_term ≤ c_star/4` and `c_star ≤ arch_term` imply `prime_term ≤ arch_term`. -/
 theorem prime_term_pathB_tcritical_tau0_brange_of_slack
@@ -57,6 +62,17 @@ theorem prime_term_pathB_tcritical_tau0_brange_of_slack
       nlinarith [c_star_pos]
     exact le_trans hquarter_le_cstar harch_floor
   exact le_trans hprime hquarter_le_arch
+
+/-- Pure quarter-slack composition for τ=0 gate:
+`prime_term ≤ c_star/4` and `c_star/4 ≤ arch_term` imply `prime_term ≤ arch_term`. -/
+theorem prime_term_pathB_tcritical_tau0_brange_of_quarter_slack
+    (hPrimeQuarter : PrimeTermTau0BrangePrimeQuarter)
+    (hArchQuarter : PrimeTermTau0BrangeArchQuarter) :
+    PrimeTermPathBTcriticalTau0Brange := by
+  intro B hBmin hBmax
+  exact le_trans
+    (hPrimeQuarter B hBmin hBmax)
+    (hArchQuarter B hBmin hBmax)
 
 /-- Certified arch-floor on the full τ=0 B-range, from:
 `B=B_min` arch certificate + heat-Lipschitz transport. -/
@@ -142,6 +158,24 @@ theorem prime_term_tau0_brange_prime_quarter_from_legacy :
     simpa using hB_le
   exact Q3.prime_term_tcritical_le_cstar_quarter_mathan K0 B 0 hK0 hB hτB0
 
+/-- Arch-quarter on τ=0 brange via the current Path B math-facing axiom.
+This isolates the remaining debt to a single arch-side obligation. -/
+theorem prime_term_tau0_brange_arch_quarter_from_legacy :
+    PrimeTermTau0BrangeArchQuarter := by
+  intro B hBmin _hBmax
+  have hBmin_pos : (0 : ℝ) < B_min := by
+    norm_num [B_min]
+  have hB : B > 0 := by
+    linarith
+  let K0 : ℝ := max 1 B
+  have hK0 : K0 ≥ 1 := by
+    exact le_max_left (1 : ℝ) B
+  have hτB0 : |(0 : ℝ)| + B ≤ K0 := by
+    have hB_le : B ≤ K0 := by
+      simpa [K0] using (le_max_right (1 : ℝ) B)
+    simpa using hB_le
+  exact Q3.cstar_quarter_le_arch_term_tcritical_mathan K0 B 0 hK0 hB hτB0
+
 /-- Tau-0 B-range gate by specializing any Path B `t_critical` contract. -/
 theorem prime_term_pathB_tcritical_tau0_brange_of_pathB
     (hPathB : PrimeTermPathBTcritical) :
@@ -170,12 +204,13 @@ theorem prime_term_pathB_tcritical_tau0_brange_of_prime_quarter
     hPrimeQuarter
     prime_term_tau0_brange_arch_floor_from_heat
 
-/-- Tau-0 B-range gate by the direct Path B quarter-route:
-specialize the global `t_critical` Path B provider at `τ = 0`. -/
+/-- Tau-0 B-range gate by direct quarter-route composition.
+This keeps the mainline contract on the narrowed τ=0 brange interface. -/
 theorem prime_term_pathB_tcritical_tau0_brange_analytic :
     PrimeTermPathBTcriticalTau0Brange :=
-  prime_term_pathB_tcritical_tau0_brange_of_pathB
-    prime_term_pathB_tcritical_from_legacy
+  prime_term_pathB_tcritical_tau0_brange_of_quarter_slack
+    prime_term_tau0_brange_prime_quarter_from_legacy
+    prime_term_tau0_brange_arch_quarter_from_legacy
 
 /-- Canonical tau-0 Path B gate provider for mainline routing. -/
 theorem prime_term_pathB_tcritical_tau0_brange_thm :
