@@ -171,7 +171,7 @@ lemma prime_cert_margin_on_Brange_kernel_shadow :
         prime_cert_margin_lb ≤ margin_tau0 B := by
     exact margin_lb_on_brange_of_checked_cert
       (cert := prime_heat_margin_cert_2026_01_28)
-      (hcheck := hcheck)
+      (_hcheck := hcheck)
       (h_cover := prime_b_grid_cover_cert)
       (h_grid_margin := hgrid_margin)
   intro B hB

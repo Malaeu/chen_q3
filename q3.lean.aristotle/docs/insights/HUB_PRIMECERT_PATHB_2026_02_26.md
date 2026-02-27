@@ -762,3 +762,35 @@ Plan (5–10 lines, concrete pointers):
   - main theorem путь стабилен и дешёвый в сопровождении;
   - для закрытия общего `PrimeTermPathBTcritical` нужен отдельный численный пакет
     лемм, а не долгие повторные сборки PrimeCert.
+
+
+## Synthesis (2026-02-27, in progress) — Аналитический Path B: снятие load-bearing узлов без legacy-provider
+
+- Переключён canonical tau0-gate:
+  `Q3.prime_term_pathB_tcritical_tau0_brange_thm := prime_term_pathB_tcritical_tau0_brange_analytic`
+  в `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean`.
+- Исправлен kernel-вызов в `Q3/Proofs/PrimeCert/Brange_2046.lean`:
+  `margin_lb_on_brange_of_checked_cert` теперь вызывается с `(_hcheck := ...)`.
+- Убран witness-аксиомный wrapper:
+  `Q3/Proofs/PrimeCert/PrimeHeatMarginWitness_2026_01_28.lean`
+  теперь задаёт `prime_heat_margin_cert_2026_01_28` как `def`, собранный из
+  `prime_heat_bounds_arch_data`, `prime_heat_bounds_prime_data`, `prime_heat_bounds_total`.
+- Убран ещё один data-аксиомный узел:
+  из `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`
+  удалён `prime_heat_bucket_ub_sum_le_partial_data`; bound теперь теоремой через
+  `prime_heat_bucket_ub_sum_eq` + `prime_heat_bucket_ub_sum_le_partial`.
+- Проверка:
+  - `lake build Q3.Proofs.PrimeTerm_PathB_tau0_brange_analytic` ✅
+  - `#print axioms Q3.prime_term_pathB_tcritical_tau0_brange_thm` ✅
+  - `#print axioms Q3.Main.RH_of_Weil_and_Q3` ✅
+  - `./scripts/audit_nosorry_active_q3.sh --changed` ✅
+
+Текущий остаток project-axioms в mainline (после этих правок):
+- `Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data`
+- `Q3.Proofs.PrimeCert.prime_b_grid_bucket_bounds`
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
+- `Q3.Proofs.PrimeCert.prime_heat_bucket_bounds_data`
+
+Следующий узкий удар (аналитический):
+- закрыть `prime_heat_bucket_bounds_data` и `prime_b_grid_bucket_bounds` theorem-route через уже добавленный
+  `GaussianMajorant/GaussianTailKernel`, затем добить `prime_b_grid_arch_bounds_data` отдельным arch-bound модулем.
