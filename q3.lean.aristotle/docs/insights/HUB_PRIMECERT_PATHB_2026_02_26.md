@@ -794,3 +794,23 @@ Plan (5–10 lines, concrete pointers):
 Следующий узкий удар (аналитический):
 - закрыть `prime_heat_bucket_bounds_data` и `prime_b_grid_bucket_bounds` theorem-route через уже добавленный
   `GaussianMajorant/GaussianTailKernel`, затем добить `prime_b_grid_arch_bounds_data` отдельным arch-bound модулем.
+
+## Synthesis (2026-02-27, in progress) — Tau0 gate rewired to quarter-route (Path B only)
+
+- В `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean` канонический
+  `prime_term_pathB_tcritical_tau0_brange_analytic` переподключён на
+  `prime_term_pathB_tcritical_tau0_brange_of_prime_quarter
+    prime_term_tau0_brange_prime_quarter_from_legacy`.
+- Это сняло из mainline-зависимостей tau0-gate:
+  - `prime_b_grid_arch_bounds_data`
+  - `prime_b_grid_bucket_bounds`
+  - `prime_heat_bucket_bounds_data`
+  - `Lean.trustCompiler`/`Lean.ofReduceBool` след от data/checker route.
+- Проверка (`lake env lean Q3/CheckAxioms.lean`):
+  `Q3.Main.RH_of_Weil_and_Q3` теперь зависит от
+  `Q3.prime_term_tcritical_le_cstar_quarter_mathan`,
+  `Q3.Proofs.PrimeCert.arch_term_cert_on_Bmin_tau0`,
+  `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
+  (и `Q3.Weil_criterion_tau0` как top-level доменный аксиоматический узел).
+- Это переводит остаток в узкий аналитический backlog из трёх теорем-замен,
+  без возврата к Brange grid/bucket legacy-цепочке.
