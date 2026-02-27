@@ -171,11 +171,11 @@ theorem prime_term_pathB_tcritical_tau0_brange_of_prime_quarter
     prime_term_tau0_brange_arch_floor_from_heat
 
 /-- Tau-0 B-range gate by the direct Path B quarter-route:
-prime quarter (math-facing) + arch-floor transport on the certified brange. -/
+specialize the global `t_critical` Path B provider at `τ = 0`. -/
 theorem prime_term_pathB_tcritical_tau0_brange_analytic :
     PrimeTermPathBTcriticalTau0Brange :=
-  prime_term_pathB_tcritical_tau0_brange_of_prime_quarter
-    prime_term_tau0_brange_prime_quarter_from_legacy
+  prime_term_pathB_tcritical_tau0_brange_of_pathB
+    prime_term_pathB_tcritical_from_legacy
 
 /-- Canonical tau-0 Path B gate provider for mainline routing. -/
 theorem prime_term_pathB_tcritical_tau0_brange_thm :

@@ -809,8 +809,7 @@ Plan (5–10 lines, concrete pointers):
 - Проверка (`lake env lean Q3/CheckAxioms.lean`):
   `Q3.Main.RH_of_Weil_and_Q3` теперь зависит от
   `Q3.prime_term_tcritical_le_cstar_quarter_mathan`,
-  `Q3.Proofs.PrimeCert.arch_term_cert_on_Bmin_tau0`,
-  `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
+  `Q3.cstar_quarter_le_arch_term_tcritical_mathan`
   (и `Q3.Weil_criterion_tau0` как top-level доменный аксиоматический узел).
-- Это переводит остаток в узкий аналитический backlog из трёх теорем-замен,
+- Это переводит остаток в узкий аналитический backlog из двух Path B obligations,
   без возврата к Brange grid/bucket legacy-цепочке.
