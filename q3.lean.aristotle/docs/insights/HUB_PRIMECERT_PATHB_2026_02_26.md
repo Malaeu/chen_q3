@@ -795,12 +795,12 @@ Plan (5–10 lines, concrete pointers):
 - закрыть `prime_heat_bucket_bounds_data` и `prime_b_grid_bucket_bounds` theorem-route через уже добавленный
   `GaussianMajorant/GaussianTailKernel`, затем добить `prime_b_grid_arch_bounds_data` отдельным arch-bound модулем.
 
-## Synthesis (2026-02-27, in progress) — Tau0 gate rewired to quarter-route (Path B only)
+## Synthesis (2026-02-27, in progress) — Tau0 gate rewired to provider-route (Path B only)
 
 - В `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean` канонический
   `prime_term_pathB_tcritical_tau0_brange_analytic` переподключён на
-  `prime_term_pathB_tcritical_tau0_brange_of_prime_quarter
-    prime_term_tau0_brange_prime_quarter_from_legacy`.
+  `prime_term_pathB_tcritical_tau0_brange_of_pathB
+    prime_term_pathB_tcritical_from_legacy`.
 - Это сняло из mainline-зависимостей tau0-gate:
   - `prime_b_grid_arch_bounds_data`
   - `prime_b_grid_bucket_bounds`

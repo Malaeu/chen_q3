@@ -26,7 +26,7 @@
 
 - Текущий тяжёлый checker-процесс можно ждать в фоне; docs-рефактор не блокирует сборку.
 
-## Synthesis (2026-02-27, in progress) — Path B tau0 gate switched to quarter-route
+## Synthesis (2026-02-27, in progress) — Path B tau0 gate switched to provider-route
 
 - Переключён `Q3.prime_term_pathB_tcritical_tau0_brange_thm` на quarter-route
   в `Q3/Proofs/PrimeTerm_PathB_tau0_brange_analytic.lean` (без `Brange_2046` в каноническом доказательстве).
