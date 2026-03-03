@@ -268,7 +268,7 @@ lemma arch_term_eq_two_pi_integral_g (B t : ℝ) :
     simp only [Q3.a_star]
     ring
   simp_rw [h]
-  rw [MeasureTheory.integral_mul_left]
+  rw [MeasureTheory.integral_const_mul]
 
 /-- Periodization theorem: integral of P_A over one period equals arch_term.
 

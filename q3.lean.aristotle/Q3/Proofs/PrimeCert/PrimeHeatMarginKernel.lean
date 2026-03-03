@@ -82,7 +82,8 @@ theorem margin_lb_on_brange_of_checked_cert
         mul_le_mul_of_nonneg_right hi hBh0
       have hbound : prime_b_grid i ≤ B_min + (19 : ℝ) * prime_cert_B_h := by
         have : B_min + (i.1 : ℝ) * prime_cert_B_h ≤ B_min + (19 : ℝ) * prime_cert_B_h :=
-          add_le_add_left hmul B_min
+          by
+            simpa [add_comm, add_left_comm, add_assoc] using add_le_add_right hmul B_min
         simpa [prime_b_grid] using this
       have h19 : B_min + (19 : ℝ) * prime_cert_B_h = prime_cert_B_max := by
         norm_num [B_min, prime_cert_B_h, prime_cert_B_max]

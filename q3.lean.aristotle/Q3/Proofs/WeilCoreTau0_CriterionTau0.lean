@@ -1,5 +1,6 @@
 import Q3.Proofs.WeilCoreTau0_ExplicitFormulaTau0
 import Q3.Proofs.Q_nonneg_lemmas
+import Q3.Proofs.Q_Lipschitz
 
 set_option linter.mathlibStandardSet false
 
