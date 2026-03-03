@@ -1200,7 +1200,7 @@ lemma stieltjes_integral_hasDerivAt (z : ℂ) (hz : 0 < z.re) :
   -- apply dominated differentiation lemma
   have hmain :=
     hasDerivAt_integral_of_dominated_loc_of_deriv_le (μ := μ) (F := stieltjesF)
-      (x₀ := z) (bound := stieltjesBound ε) hε
+      (x₀ := z) (bound := stieltjesBound ε) (Metric.ball_mem_nhds z hε)
       hF_meas hF_int hF'_meas h_bound h_bound_int h_diff
   rcases hmain with ⟨_, hmain⟩
   -- Convert ∫ stieltjesF' to the target `-∫ ...` form.

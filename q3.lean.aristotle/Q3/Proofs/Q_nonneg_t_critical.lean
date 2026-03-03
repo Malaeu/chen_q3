@@ -26,9 +26,9 @@ import Q3.Proofs.FloorCert.Defs
 import Q3.Proofs.FloorCert.Grid_2219
 import Q3.Proofs.FloorCert.Lipschitz_2219
 import Q3.Proofs.PrimeCert.Defs
-import Q3.Proofs.PrimeCert.Bmin_1826
 import Q3.Proofs.PrimeCert.Brange_2046
 import Q3.Proofs.PrimeTerm_PathB_legacy_provider
+import Q3.Proofs.PrimeTerm_PathB_tau0_brange_analytic
 import Q3.Proofs.ShiftedWindows
 import Q3.Proofs.Q_nonneg_atoms_helpers
 import Q3.Proofs.Q_nonneg_lemmas
@@ -332,13 +332,6 @@ def PrimeCertMarginOnBrange : Prop :=
       arch_term (fun ξ => phi_shift_critical B 0 ξ) -
         prime_term (fun ξ => phi_shift_critical B 0 ξ)
 
-/-- Certified B-range margin theorem (tau = 0, t_critical).
-This discharges `PrimeCertMarginOnBrange` from the concrete 2046-grid certificate. -/
-theorem prime_cert_margin_on_brange_thm : PrimeCertMarginOnBrange := by
-  intro B hB
-  simpa [phi_shift_critical] using
-    (Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_axiom (B := B) hB)
-
 /-- prime_term ≤ arch_term for B ∈ [B_min, B_max] (tau = 0), from an explicit margin hypothesis. -/
 lemma prime_term_le_arch_term_on_Brange_tau0_of_margin
     (h_margin_cert : PrimeCertMarginOnBrange)
@@ -363,24 +356,19 @@ theorem Q_phi_shift_nonneg_t_critical_tau0_brange_of_margin
       (h_margin_cert := h_margin_cert) B ⟨hBmin, hBmax⟩
   linarith
 
-/-- Tau-0 Path B gate on the certified B-range. -/
-def PrimeTermPathBTcriticalTau0Brange : Prop :=
-  ∀ B : ℝ, B_min ≤ B → B ≤ prime_cert_B_max →
-    prime_term (fun ξ => phi_shift_critical B 0 ξ) ≤
-      arch_term (fun ξ => phi_shift_critical B 0 ξ)
-
 /-- Build the tau-0 Path B gate from an explicit margin hypothesis. -/
 theorem prime_term_pathB_tcritical_tau0_brange_of_margin
     (h_margin_cert : PrimeCertMarginOnBrange) :
     PrimeTermPathBTcriticalTau0Brange := by
   intro B hBmin hBmax
-  exact prime_term_le_arch_term_on_Brange_tau0_of_margin
+  simpa [phi_shift_critical] using prime_term_le_arch_term_on_Brange_tau0_of_margin
     (h_margin_cert := h_margin_cert) B ⟨hBmin, hBmax⟩
 
-/-- Canonical tau-0 Path B gate provider from the certified B-range theorem. -/
-theorem prime_term_pathB_tcritical_tau0_brange_thm :
-    PrimeTermPathBTcriticalTau0Brange :=
-  prime_term_pathB_tcritical_tau0_brange_of_margin prime_cert_margin_on_brange_thm
+/-- Canonical checker-free margin witness for the certified τ=0 B-range. -/
+theorem prime_cert_margin_on_brange_thm : PrimeCertMarginOnBrange := by
+  intro B hB
+  simpa [phi_shift_critical] using
+    (Q3.Proofs.PrimeCert.prime_cert_margin_on_Brange_kernel_shadow B hB)
 
 /-- prime_term at t_critical is bounded by arch_term
     Key insight: at t_critical, heat decay exp(-4*pi^2*t*xi^2) is strong enough
@@ -741,7 +729,7 @@ theorem Q_nonneg_on_base_atoms_at_t_critical_brange_of_tau0_brange_gate
       have hprime_tau0 :
           prime_term (fun ξ => phi_shift_critical (B i) 0 ξ) ≤
             arch_term (fun ξ => phi_shift_critical (B i) 0 ξ) := by
-        exact hTau0Gate (B i) (hBmin i) (hBmax i)
+        simpa [phi_shift_critical] using hTau0Gate (B i) (hBmin i) (hBmax i)
       unfold Q
       linarith
     have hQ_nonneg :
@@ -780,17 +768,8 @@ theorem Q_nonneg_on_base_atoms_at_t_critical_brange_of_pathB
     (hPathB : PrimeTermPathBTcritical)
     (K : ℝ) (_hK : K ≥ 1) :
     ∀ g ∈ BaseAtomCone_critical_brange K, Q g ≥ 0 := by
-  have hTau0Gate : PrimeTermPathBTcriticalTau0Brange := by
-    intro B hBmin _hBmax
-    have hB : B > 0 := by
-      have hBmin_pos : (0 : ℝ) < B_min := by norm_num [B_min]
-      linarith
-    let K0 : ℝ := max 1 B
-    have hK0 : K0 ≥ 1 := by
-      exact le_max_left (1 : ℝ) B
-    have hτB0 : |(0 : ℝ)| + B ≤ K0 := by
-      simpa [K0] using (le_max_right (1 : ℝ) B)
-    simpa [phi_shift_critical] using hPathB K0 B 0 hK0 hB hτB0
+  have hTau0Gate : PrimeTermPathBTcriticalTau0Brange :=
+    prime_term_pathB_tcritical_tau0_brange_of_pathB hPathB
   exact Q_nonneg_on_base_atoms_at_t_critical_brange_of_tau0_brange_gate
     hTau0Gate K _hK
 

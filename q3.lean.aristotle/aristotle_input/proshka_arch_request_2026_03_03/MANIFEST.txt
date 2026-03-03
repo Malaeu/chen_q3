@@ -1,0 +1,32 @@
+Base files:
+MANIFEST.txt
+REQUEST.md
+SEED_REQUEST_ARCH_2026_03_03.md
+START_HERE.md
+WEEKLY_CONTEXT.md
+
+sources_core:
+sources_core/RH_Q3.pdf
+sources_core/SKILL.md
+sources_core/extracted_structure.md
+sources_core/Анализ критических констант для высоко-ERS узлов.md
+sources_core/Декомпозиция RH_Q3.pdf для формализации в Lean.md
+sources_core/Критические константы из RH_Q3.pdf (страницы 32-36).md
+sources_core/План формализации RH_Q3.pdf в Lean.md
+
+context_files:
+context_files/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md
+context_files/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md
+context_files/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
+context_files/q3.lean.aristotle/PROJECT_WORKFLOW.md
+context_files/q3.lean.aristotle/Q3/Basic/Defs.lean
+context_files/q3.lean.aristotle/Q3/DigammaRemainder.lean
+context_files/q3.lean.aristotle/Q3/DigammaSeries.lean
+context_files/q3.lean.aristotle/Q3/Proofs/Digamma_One_Fourth.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/ArchHeatMajorant.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/PrimeHeatArchPiecewiseKernel.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/PrimeHeatDigammaShift.lean
+context_files/q3.lean.aristotle/aristotle_input/prime_heat_bounds_arch_data_target.lean
+context_files/q3.lean.aristotle/docs/INSIGHTS.md

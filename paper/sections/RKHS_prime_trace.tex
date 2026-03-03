@@ -33,9 +33,10 @@ For $t > 0$ one has
 \end{equation}
 With $a = 4\pi^2 t$ and $b = \tfrac{1}{2}$ this implies
 \begin{equation}\label{eq:rho-closed-form}
-  \rho(t) \leq \frac{1}{4\pi^2 t} + \frac{\sqrt{\pi}}{2 \, (4\pi^2 t)^{3/2}} \exp\!\Big(\frac{1}{16\pi^2 t}\Big).
+  \rho(t) \leq \frac{1}{4\pi^2 t} + \frac{\sqrt{\pi}}{2 \, (4\pi^2 t)^{3/2}} \exp\!\Big(\frac{1}{64\pi^2 t}\Big).
 \end{equation}
-In particular, at $t = 1$ this yields the unconditional bound $\rho(1) < \tfrac{1}{25}$, hence $\|T_P\| \leq \rho(1) < \tfrac{1}{25}$ for all compacts.
+In particular, at $t = 1$ this yields $\rho(1) < \tfrac{1}{25}$, hence $\|T_P\| \leq \rho(1) < \tfrac{1}{25}$ for all compacts.
+This is a constructive parameter choice in the proof pipeline, not an additional hypothesis.
 \end{lemma}
 
 \begin{proof}[Sketch]
@@ -47,9 +48,9 @@ Using $1 + \operatorname{erf}(x) \leq 2$ gives the upper bound \eqref{eq:rho-clo
 
 For $t = 1$:
 \begin{align}
-  \rho(1) &\leq \frac{1}{4\pi^2} + \frac{\sqrt{\pi}}{2(4\pi^2)^{3/2}} \exp\!\Big(\frac{1}{16\pi^2}\Big) \\
-  &\approx 0.0253 + 0.0071 \times 1.0063 \\
-  &\approx 0.0325 < \frac{1}{25} = 0.04.
+  \rho(1) &\leq \frac{1}{4\pi^2} + \frac{\sqrt{\pi}}{2(4\pi^2)^{3/2}} \exp\!\Big(\frac{1}{64\pi^2}\Big) \\
+  &\approx 0.0253 + 0.0036 \times 1.0016 \\
+  &\approx 0.0289 < \frac{1}{25} = 0.04.
 \end{align}
 \end{proof}
 
@@ -112,9 +113,9 @@ This is satisfied for $t > C e^{2\pi K}$ with an explicit constant $C$.
 $t$ & $\rho(t)$ upper bound & $\|T_P\|$ cap \\
 \midrule
 0.5 & $< 0.065$ & $< 0.07$ \\
-0.7 & $< 0.042$ & $< 0.045$ \\
-1.0 & $< 0.033$ & $< 0.04$ \\
-1.5 & $< 0.020$ & $< 0.025$ \\
+0.7 & $< 0.043$ & $< 0.045$ \\
+1.0 & $< 0.029$ & $< 0.04$ \\
+1.5 & $< 0.019$ & $< 0.025$ \\
 2.0 & $< 0.014$ & $< 0.02$ \\
 \bottomrule
 \end{tabular}
@@ -140,3 +141,4 @@ The limits follow from dominated convergence.
 \end{proof}
 
 This monotonicity is crucial for the T5 transfer: as we move to larger compacts, we can always find a heat scale $t$ that makes the prime contribution arbitrarily small, at the cost of requiring finer Toeplitz grids.
+In particular, once $t=1$ is fixed as a valid cap point, any $t \ge 1$ keeps the same inequality by monotonicity.

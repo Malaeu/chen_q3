@@ -21,8 +21,7 @@ The theorems in Q3.Theorems have the same types as the axioms in Q3.Axioms.
 This means any proof using the axioms can be replicated using the theorems.
 -/
 
--- Re-export the main theorem (it uses axioms internally, but we've proven them)
-#check Q3.Main.RH_of_Weil_and_Q3
+-- Re-export note: `Q3.Main.RH_of_Weil_and_Q3` remains the canonical theorem.
 
 /-!
 # Direct proof using theorems

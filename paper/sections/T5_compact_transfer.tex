@@ -9,6 +9,11 @@ This section establishes the mechanism for transferring positivity from finite c
 The T5 construction and its lemmas are proved in detail in RH\_Q3 (Section 12). We retain the formulations and the monotone schedules here; all dependencies on $c_0$, $L_A$, $t_{\min}$, and $M^\star$ are explicit.
 \end{remark}
 
+\begin{remark}[Current mainline vs legacy schedules]
+For the current Lean-aligned mainline, the prime cap is fixed by a constructive point $t=1$ with $\rho(1)<1/25$.
+The $K$-dependent heat schedules in this section are retained as an alternative/legacy parameterization and do not replace the fixed-cap route.
+\end{remark}
+
 \subsection{Standing Analytic Inputs}
 
 For each $K > 0$ we assume the analytic data from Sections~\ref{sec:A3} and~\ref{sec:rkhs}:
@@ -27,6 +32,13 @@ For each $K > 0$ we assume the analytic data from Sections~\ref{sec:A3} and~\ref
     \|T_P\| \leq \rho(t) \leq \rho(t^\star(K)).
   \end{equation}
 \end{itemize}
+
+\noindent\textbf{Mainline fixed-cap form.}
+Using monotonicity of $\rho$, one may equivalently work with a fixed cap point:
+\[
+  \|T_P\| \le \rho(1) < \tfrac{1}{25},
+\]
+and keep $t^\star(K)$ only as a legacy/alternate schedule.
 
 We also recall the density/continuity interface on $W_K$:
 \begin{itemize}

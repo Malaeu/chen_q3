@@ -223,7 +223,7 @@ theorem continuous_convolution_approx (f : ℝ → ℝ) (hf : Continuous f) (hsu
     -- Since $f$ is continuous and has compact support, it is uniformly continuous.
     obtain ⟨δ, hδ_pos, hδ⟩ : ∃ δ > 0, ∀ x y, abs (x - y) < δ → abs (f x - f y) < ε / 2 := by
       have h_unif_cont : UniformContinuous f := by
-        exact?;
+        exact HasCompactSupport.uniformContinuous_of_continuous hsupp hf
       exact Metric.uniformContinuous_iff.mp h_unif_cont ( ε / 2 ) ( half_pos hε );
     -- Choose t small enough so that the integral of the heat kernel over |y| ≥ δ is less than ε / (4 * ‖f‖_∞).
     obtain ⟨t, ht_pos, ht⟩ : ∃ t > 0, ∫ y in {y | abs y ≥ δ}, HeatKernel t y < ε / (4 * (sSup (abs '' Set.range f)) + 1) := by
@@ -671,7 +671,7 @@ The integral of a continuous function can be approximated by a Riemann sum.
 theorem continuous_map_integral_approx_by_sum' {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
   {a b : ℝ} (hab : a ≤ b) {f : ℝ → E} (hf : ContinuousOn f (Set.Icc a b)) {ε : ℝ} (hε : ε > 0) :
   ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, y ∈ Set.Icc a b) ∧ (∀ y ∈ s, w y > 0) ∧ ‖(∫ y in Set.Icc a b, f y) - ∑ y ∈ s, w y • f y‖ < ε := by
-    exact?
+    exact continuous_map_integral_approx_by_sum hab hf hε
 
 /-
 The integral of a continuous function can be approximated by a Riemann sum.
@@ -679,7 +679,7 @@ The integral of a continuous function can be approximated by a Riemann sum.
 theorem continuous_map_integral_approx_by_sum_v2 {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
   {a b : ℝ} (hab : a ≤ b) {f : ℝ → E} (hf : ContinuousOn f (Set.Icc a b)) {ε : ℝ} (hε : ε > 0) :
   ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, y ∈ Set.Icc a b) ∧ (∀ y ∈ s, w y > 0) ∧ ‖(∫ y in Set.Icc a b, f y) - ∑ y ∈ s, w y • f y‖ < ε := by
-    exact?
+    exact continuous_map_integral_approx_by_sum hab hf hε
 
 /-
 The integral of a continuous function can be approximated by a Riemann sum.
@@ -696,7 +696,7 @@ The integral of a continuous function can be approximated by a Riemann sum.
 theorem continuous_map_integral_approx_by_sum_v4 {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
   {a b : ℝ} (hab : a ≤ b) {f : ℝ → E} (hf : ContinuousOn f (Set.Icc a b)) {ε : ℝ} (hε : ε > 0) :
   ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, y ∈ Set.Icc a b) ∧ (∀ y ∈ s, w y > 0) ∧ ‖(∫ y in Set.Icc a b, f y) - ∑ y ∈ s, w y • f y‖ < ε := by
-    exact?
+    exact continuous_map_integral_approx_by_sum hab hf hε
 
 /-
 If g approximates an even function f on [-K, K], then the symmetrization of g also approximates f on [-K, K].
@@ -708,7 +708,8 @@ theorem symmetrize_approx_even (K : ℝ) (f g : ℝ → ℝ) (hf_even : ∀ x, f
   ∀ x ∈ Set.Icc (-K) K, |f x - Symmetrize g x| < ε := by
     -- By definition of Symmetrize, we have Symmetrize g x = (g x + g (-x)) / 2.
     have h_symm : ∀ x, Symmetrize g x = (g x + g (-x)) / 2 := by
-      exact?;
+      intro x
+      rfl
     aesop;
     exact abs_lt.mpr ⟨ by linarith [ abs_lt.mp ( h_approx x left right ), abs_lt.mp ( h_approx ( -x ) ( by linarith ) ( by linarith ) ), hf_even x ], by linarith [ abs_lt.mp ( h_approx x left right ), abs_lt.mp ( h_approx ( -x ) ( by linarith ) ( by linarith ) ), hf_even x ] ⟩
 
@@ -735,7 +736,7 @@ The integral of a continuous function can be approximated by a Riemann sum.
 theorem continuous_map_integral_approx_by_sum_v5 {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
   {a b : ℝ} (hab : a ≤ b) {f : ℝ → E} (hf : ContinuousOn f (Set.Icc a b)) {ε : ℝ} (hε : ε > 0) :
   ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, y ∈ Set.Icc a b) ∧ (∀ y ∈ s, w y > 0) ∧ ‖(∫ y in Set.Icc a b, f y) - ∑ y ∈ s, w y • f y‖ < ε := by
-    exact?
+    exact continuous_map_integral_approx_by_sum hab hf hε
 
 /-
 Checking if continuous_map_integral_approx_by_sum exists.
@@ -773,7 +774,7 @@ The integral of a continuous function can be approximated by a Riemann sum.
 theorem continuous_map_integral_approx_by_sum_v6 {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
   {a b : ℝ} (hab : a ≤ b) {f : ℝ → E} (hf : ContinuousOn f (Set.Icc a b)) {ε : ℝ} (hε : ε > 0) :
   ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, y ∈ Set.Icc a b) ∧ (∀ y ∈ s, w y > 0) ∧ ‖(∫ y in Set.Icc a b, f y) - ∑ y ∈ s, w y • f y‖ < ε := by
-    exact?
+    exact continuous_map_integral_approx_by_sum hab hf hε
 
 /-
 Definition of G_map and its continuity.
@@ -790,7 +791,7 @@ theorem G_map_continuous (K t : ℝ) (ht : t > 0) (Φ : ℝ → ℝ) (hΦ : Cont
       · exact Set.Icc_subset_Icc ( by linarith [ hx.1, hx.2 ] ) le_rfl;
     · refine' ContinuousWithinAt.add _ _;
       · have h_cont : ContinuousOn (MapToContinuous K t ht Φ) (Set.Icc (-K) K) := by
-          exact?;
+          exact MapToContinuous_continuous K t ht Φ hΦ
         exact h_cont.continuousWithinAt ( by constructor <;> linarith [ hx.1, hx.2 ] ) |> ContinuousWithinAt.mono <| Set.Icc_subset_Icc ( by linarith [ hx.1, hx.2 ] ) le_rfl;
       · refine' ContinuousWithinAt.comp ( MapToContinuous_continuous K t ht Φ hΦ |> ContinuousOn.continuousWithinAt <| _ ) ( continuousWithinAt_id.neg ) _ <;> aesop;
         · linarith;
@@ -827,7 +828,7 @@ MapToContinuous is the scalar multiplication of Phi(y) and KernelMap(y).
 -/
 theorem MapToContinuous_eq_smul (K t : ℝ) (ht : t > 0) (Φ : ℝ → ℝ) (y : ℝ) :
   MapToContinuous K t ht Φ y = (Φ y) • KernelMap K t ht y := by
-    exact?
+    rfl
 
 /-
 Definition of H_map and its continuity.
@@ -837,8 +838,8 @@ noncomputable def H_map (K t : ℝ) (ht : t > 0) (Φ : ℝ → ℝ) (hΦ : Conti
 
 theorem H_map_continuous (K t : ℝ) (ht : t > 0) (Φ : ℝ → ℝ) (hΦ : ContinuousOn Φ (Set.Icc (-K) K)) :
   ContinuousOn (H_map K t ht Φ hΦ) (Set.Icc (-K) K) := by
-    apply_rules [ ContinuousOn.add, ContinuousOn.smul, continuousOn_const, hΦ ];
-    · exact?;
+  apply_rules [ ContinuousOn.add, ContinuousOn.smul, continuousOn_const, hΦ ];
+  · exact MapToContinuous_continuous K t ht Φ hΦ
     · exact ContinuousOn.comp ( MapToContinuous_continuous K t ht Φ hΦ ) ( continuousOn_id.neg ) fun x hx => ⟨ by linarith [ hx.1, hx.2 ], by linarith [ hx.1, hx.2 ] ⟩
 
 /-
@@ -857,7 +858,7 @@ theorem G_map_continuous_v2 (K t : ℝ) (ht : t > 0) (Φ : ℝ → ℝ) (hΦ : C
       · exact ContinuousOn.mono ( MapToContinuous_continuous K t ht Φ hΦ ) fun x hx => ⟨ by linarith [ hx.1, hx.2 ], by linarith [ hx.1, hx.2 ] ⟩;
       · -- The function MapToContinuous K t ht Φ is continuous on [-K, K], and the negation of x is continuous on [0, K]. Therefore, the composition is continuous on [0, K].
         have h_cont : ContinuousOn (MapToContinuous K t ht Φ) (Set.Icc (-K) K) := by
-          exact?;
+          exact MapToContinuous_continuous K t ht Φ hΦ
         exact h_cont.comp ( continuousOn_id.neg ) fun x hx => ⟨ by linarith [ hx.1, hx.2 ], by linarith [ hx.1, hx.2 ] ⟩
 
 /-
@@ -866,7 +867,7 @@ The integral of a continuous function can be approximated by a Riemann sum.
 theorem continuous_map_integral_approx_by_sum_v7 {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
   {a b : ℝ} (hab : a ≤ b) {f : ℝ → E} (hf : ContinuousOn f (Set.Icc a b)) {ε : ℝ} (hε : ε > 0) :
   ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, y ∈ Set.Icc a b) ∧ (∀ y ∈ s, w y > 0) ∧ ‖(∫ y in Set.Icc a b, f y) - ∑ y ∈ s, w y • f y‖ < ε := by
-    exact?
+    exact continuous_map_integral_approx_by_sum hab hf hε
 
 /-
 Helper lemma: A uniform Riemann sum can be represented as a weighted sum over a finite set.
@@ -887,7 +888,7 @@ The integral of a continuous function can be approximated by a Riemann sum.
 theorem continuous_map_integral_approx_by_sum_v8 {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
   {a b : ℝ} (hab : a ≤ b) {f : ℝ → E} (hf : ContinuousOn f (Set.Icc a b)) {ε : ℝ} (hε : ε > 0) :
   ∃ (s : Finset ℝ) (w : ℝ → ℝ), (∀ y ∈ s, y ∈ Set.Icc a b) ∧ (∀ y ∈ s, w y > 0) ∧ ‖(∫ y in Set.Icc a b, f y) - ∑ y ∈ s, w y • f y‖ < ε := by
-    exact?
+    exact continuous_map_integral_approx_by_sum hab hf hε
 
 /-
 Checking ContinuousMap.evalCLM

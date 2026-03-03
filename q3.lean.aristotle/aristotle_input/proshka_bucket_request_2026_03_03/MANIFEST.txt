@@ -1,0 +1,35 @@
+Base files:
+MANIFEST.txt
+REQUEST.md
+SEED_REQUEST_BUCKET_2026_03_02.md
+SEED_REQUEST_BUCKET_2026_03_03.md
+START_HERE.md
+WEEKLY_CONTEXT.md
+
+sources_core:
+sources_core/RH_Q3.pdf
+sources_core/SKILL.md
+sources_core/dependency_graph.json
+sources_core/extracted_structure.md
+sources_core/План формализации RH_Q3.pdf в Lean.md
+
+context_files:
+context_files/q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md
+context_files/q3.lean.aristotle/ACTIVE/aristotle/queue/manual_prime_heat_bucket_pp_sum_ub_q_le_kernel/PROMPT.txt
+context_files/q3.lean.aristotle/ACTIVE/aristotle/queue/manual_prime_heat_bucket_pp_sum_ub_q_le_kernel/TARGET.lean
+context_files/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md
+context_files/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md
+context_files/q3.lean.aristotle/PROJECT_WORKFLOW.md
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_BucketCheck.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_BucketDefs.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Intervals.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Partial.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PpSumBounds.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowFull.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/GaussianMajorant.lean
+context_files/q3.lean.aristotle/Q3/Proofs/PrimeCert/GaussianTailKernel.lean
+context_files/q3.lean.aristotle/aristotle_input/prime_heat_bucket_pp_sum_ub_q_le_kernel_target.lean
+context_files/q3.lean.aristotle/docs/INSIGHTS.md

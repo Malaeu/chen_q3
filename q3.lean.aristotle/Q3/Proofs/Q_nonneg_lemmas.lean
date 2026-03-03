@@ -53,7 +53,7 @@ lemma arch_term_sum {n : ℕ} (atoms : Fin n → ℝ → ℝ) (coeffs : Fin n �
   rw [hsum, MeasureTheory.integral_finset_sum]
   · congr 1
     ext i
-    rw [MeasureTheory.integral_mul_left]
+    rw [MeasureTheory.integral_const_mul]
   · intro i _
     exact (h i).const_mul (coeffs i)
 

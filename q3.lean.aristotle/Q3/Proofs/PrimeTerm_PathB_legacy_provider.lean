@@ -1,5 +1,4 @@
 import Q3.Proofs.PrimeTerm_PathB_tcritical
-import Q3.Proofs.PrimeTerm_PathB_bridge
 
 set_option linter.mathlibStandardSet false
 
@@ -23,9 +22,11 @@ axiom cstar_quarter_le_arch_term_tcritical_mathan
 
 /-- Legacy provider packaged from two explicit math obligations. -/
 theorem prime_term_pathB_tcritical_legacy : PrimeTermPathBProvider :=
-  prime_term_pathB_tcritical_of_direct_bounds
-    (hPrimeQuarter := prime_term_tcritical_le_cstar_quarter_mathan)
-    (hArchQuarter := cstar_quarter_le_arch_term_tcritical_mathan)
+  by
+    intro K B τ hK hB hτB
+    exact le_trans
+      (prime_term_tcritical_le_cstar_quarter_mathan K B τ hK hB hτB)
+      (cstar_quarter_le_arch_term_tcritical_mathan K B τ hK hB hτB)
 
 /-- Compatibility bridge: recover the stable Path B contract from the legacy provider. -/
 theorem prime_term_pathB_tcritical_from_legacy : PrimeTermPathBTcritical :=

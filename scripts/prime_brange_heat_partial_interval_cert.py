@@ -20,11 +20,13 @@ from pathlib import Path
 import mpmath as mp
 from mpmath import iv
 
-DPS_PRIMARY = 80
-DPS_VERIFY = 120
+# Target reporting precision is 15 digits after decimal point.
+# Keep a modest guard in working precision to stabilize interval arithmetic.
+DPS_PRIMARY = 40
+DPS_VERIFY = 60
 N = 1_000_000
 B_MIN = Decimal("3.0")
-DIGITS = 12
+DIGITS = 15
 
 DEFAULT_HEAT_CERT_SOURCE = Path("output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt")
 

@@ -1,0 +1,54 @@
+name: Q3 Build
+
+on:
+  push:
+    branches:
+      - main
+      - upgrade/lean-4.28-pilot
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  q3-build-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Scoped hygiene guard (production surface)
+        run: |
+          set -euo pipefail
+          files_no_check=(
+            q3.lean.aristotle/Q3/Main.lean
+            q3.lean.aristotle/Q3/Main_DataProfile.lean
+            q3.lean.aristotle/Q3/MainTheorems.lean
+            q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean
+            q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Partial.lean
+            q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean
+          )
+          files_no_mathlib=(
+            q3.lean.aristotle/Q3/Main.lean
+            q3.lean.aristotle/Q3/Main_DataProfile.lean
+            q3.lean.aristotle/Q3/MainTheorems.lean
+          )
+          ! rg -n "^[[:space:]]*#check" "${files_no_check[@]}"
+          ! rg -n "^[[:space:]]*import[[:space:]]+Mathlib[[:space:]]*$" "${files_no_mathlib[@]}"
+
+      - name: Build Q3.Main (Lean action)
+        uses: leanprover/lean-action@c544e89643240c6b398f14a431bcdc6309e36b3e # v1.4.0
+        with:
+          lake-package-directory: q3.lean.aristotle
+          use-github-cache: false
+          mk_all-check: true
+
+      - name: Quick axiom check
+        working-directory: q3.lean.aristotle
+        run: |
+          set -euo pipefail
+          Q3_QUICK=1 Q3_NO_BUILD=1 Q3_FORCE_FRESH_AXIOMS=0 ./scripts/check_axioms.sh

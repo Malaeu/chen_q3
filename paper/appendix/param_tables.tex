@@ -5,6 +5,14 @@
 
 This appendix records the numerical parameters used in the A3 bridge verification for various compact windows.
 
+\begin{center}
+\fbox{\parbox{0.94\linewidth}{
+\textbf{Archive note.} These tables are reproducibility-oriented diagnostics.
+The live formal status is generated in \texttt{appendix/lean\_status\_snapshot.tex}.
+If any status/value statement conflicts with the generated snapshot, the snapshot is authoritative.
+}}
+\end{center}
+
 \subsection{Archimedean Parameters}\label{ptab:arch}
 
 \begin{center}
@@ -59,7 +67,7 @@ $K$ & $N(K) = \lfloor e^{2\pi K}\rfloor$ & $\delta_K$ (minimal gap) & $\|T_P\|$ 
 \end{tabular}
 \end{center}
 
-\noindent The bound $\|T_P\| < 0.04 < 1/25$ is uniform across all compacts by Lemma~\ref{lem:rho-closed-form}.
+\noindent The bound $\|T_P\| \le \rho(1) < 0.029 < 1/25$ is uniform across all compacts by Lemma~\ref{lem:rho-closed-form}.
 
 \subsection{Toeplitz Matrix Dimensions}\label{ptab:toeplitz}
 
@@ -95,10 +103,10 @@ $K$ & $M_{\min}$ & $M_{\mathrm{rec}}$ & Matrix size & Eigenvalue margin \\
 $K$ & $t^*(K)$ & $\rho(t^*)$ & Contraction factor $\theta_K$ \\
 \midrule
 0.5 & 0.70 & 0.042 & 0.15 \\
-1.0 & 0.70 & 0.042 & 0.25 \\
+1.0 & 0.70 & 0.043 & 0.25 \\
 1.5 & 0.80 & 0.035 & 0.30 \\
-2.0 & 0.90 & 0.030 & 0.35 \\
-2.5 & 1.00 & 0.025 & 0.40 \\
+2.0 & 0.90 & 0.033 & 0.35 \\
+2.5 & 1.00 & 0.029 & 0.40 \\
 \bottomrule
 \end{tabular}
 \end{center}

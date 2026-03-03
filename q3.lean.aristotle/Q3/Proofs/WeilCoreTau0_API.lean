@@ -1,4 +1,4 @@
-import Q3.AxiomsTheorems
+import Q3.Axioms
 
 set_option linter.mathlibStandardSet false
 
@@ -43,4 +43,3 @@ lemma testClass_subset_weil_cone (t0 B_min B_max : ℝ) :
   exact W_K_tau0_subset_weil_cone K t0 B_min B_max hΦK
 
 end Q3.Proofs.WeilCoreTau0
-

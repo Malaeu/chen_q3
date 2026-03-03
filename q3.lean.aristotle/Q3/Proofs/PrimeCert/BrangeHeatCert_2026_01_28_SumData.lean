@@ -1,8 +1,7 @@
 import Mathlib
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data
-import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_BucketDefs
 import Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Tail
-import Q3.Proofs.PrimeCert.GaussianTailKernel
+import Q3.ForMathlib.GaussianTailKernel
 
 /-!
 Prime-heat partial-sum evidence (t_critical, tau = 0).
@@ -35,50 +34,30 @@ lemma prime_cert_heat_prime_sum_up_to_ub_le_partial :
   norm_num [prime_cert_heat_prime_sum_up_to_ub, prime_cert_L_prime_heat_partial,
     prime_cert_heat_tail_bound, prime_cert_L_prime_heat_raw]
 
-lemma prime_heat_bucket_ub_sum_le_partial :
-    prime_heat_bucket_ub_sum ≤ prime_cert_heat_prime_sum_up_to_ub := by
-  norm_num [prime_heat_bucket_ub_sum, prime_heat_bucket_ub_sum_q,
-    prime_cert_heat_prime_sum_up_to_ub]
-
-/-! ### Data payload (checker-independent) -/
-
-/-- Per-bucket prime-heat upper bounds from the interval data payload. -/
-axiom prime_heat_bucket_bounds_data :
-  ∀ k : Fin prime_heat_bucket_count,
-    prime_heat_bucket_sum k ≤ prime_heat_bucket_ub k
+/-! ### Data payload -/
 
 structure PrimeHeatSumData where
-  h_bucket : PrimeHeatBucketData prime_cert_heat_prime_sum_up_to_ub
+  h_sum_ub :
+    prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_heat_prime_sum_up_to_ub
   h_tail :
     ∑' n, prime_heat_weight_term (n + (prime_cert_heat_N + 1)) ≤
       prime_cert_heat_tail_bound
 
 /-!
-Bucketed prime-heat data (t_critical, tau = 0).
+Prime-heat sum data (t_critical, tau = 0).
 
-This is certificate-backed and corresponds to the interval checker output in:
+This is certificate-backed and corresponds to the interval checker output:
 `output/prime_cert_brange_heat_prime_partial_interval_2026-01-31_0009.txt`.
 -/
-theorem prime_heat_bucket_data :
-    PrimeHeatBucketData prime_cert_heat_prime_sum_up_to_ub := by
-  refine ⟨?_, ?_⟩
-  · intro k
-    exact prime_heat_bucket_bounds_data k
-  ·
-    calc
-      (Finset.univ.sum (fun k => prime_heat_bucket_ub k))
-          = prime_heat_bucket_ub_sum := by
-            simpa using prime_heat_bucket_ub_sum_eq
-      _ ≤ prime_cert_heat_prime_sum_up_to_ub := prime_heat_bucket_ub_sum_le_partial
+axiom prime_heat_sum_data_sum_ub :
+    prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_heat_prime_sum_up_to_ub
 
 theorem prime_heat_sum_data : PrimeHeatSumData := by
-  refine ⟨prime_heat_bucket_data, ?_⟩
+  refine ⟨prime_heat_sum_data_sum_ub, ?_⟩
   exact prime_heat_tail_bound_kernel
 
-lemma prime_heat_sum_data_sum_ub :
-    prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_heat_prime_sum_up_to_ub := by
-  exact prime_heat_sum_up_to_le_of_bucket
-    prime_cert_heat_prime_sum_up_to_ub
-    prime_heat_sum_data.h_bucket
+lemma prime_heat_sum_data_sum_ub_le_partial :
+    prime_heat_prime_sum_up_to prime_cert_heat_N ≤ prime_cert_L_prime_heat_partial := by
+  exact prime_heat_sum_data_sum_ub.trans prime_cert_heat_prime_sum_up_to_ub_le_partial
 
 end Q3.Proofs.PrimeCert

@@ -1,0 +1,41 @@
+name: Update Dependencies
+
+on:
+  schedule:
+    - cron: "0 8 */7 * *"
+  workflow_dispatch:
+
+jobs:
+  check-for-updates:
+    runs-on: ubuntu-latest
+    outputs:
+      is-update-available: ${{ steps.check-for-updates.outputs.is-update-available }}
+      new-tags: ${{ steps.check-for-updates.outputs.new-tags }}
+    steps:
+      - name: Check available updates
+        id: check-for-updates
+        uses: leanprover-community/mathlib-update-action@00cf1601bcc8f6faafa30a04ca1fc7bd0399fee2 # 2025-08-20
+        with:
+          path: q3.lean.aristotle
+
+  do-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    needs: check-for-updates
+    if: ${{ needs.check-for-updates.outputs.is-update-available == 'true' }}
+    strategy:
+      max-parallel: 1
+      matrix:
+        tag: ${{ fromJSON(needs.check-for-updates.outputs.new-tags) }}
+    steps:
+      - name: Create update PR/issue
+        id: update-the-repo
+        uses: leanprover-community/mathlib-update-action/do-update@00cf1601bcc8f6faafa30a04ca1fc7bd0399fee2 # 2025-08-20
+        with:
+          path: q3.lean.aristotle
+          tag: ${{ matrix.tag }}
+          on_update_succeeds: pr
+          on_update_fails: issue

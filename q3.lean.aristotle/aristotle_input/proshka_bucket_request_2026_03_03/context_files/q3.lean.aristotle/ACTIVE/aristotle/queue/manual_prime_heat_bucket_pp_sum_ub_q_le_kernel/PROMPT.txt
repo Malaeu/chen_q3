@@ -1,0 +1,6 @@
+Goal: prove theorem `prime_heat_bucket_pp_sum_ub_q_le_kernel` in TARGET.lean.
+Constraints:
+- Do NOT use native_decide.
+- Do NOT leave sorry/admit/exact?.
+- Keep imports unchanged.
+- Use explicit case split on `k` and existing lemmas from `BrangeHeatCert_2026_01_28_PpSumBounds`.

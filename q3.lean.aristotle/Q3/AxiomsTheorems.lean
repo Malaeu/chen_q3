@@ -227,9 +227,10 @@ theorem Q_nonneg_on_atoms : ∀ (K : ℝ) (hK : K ≥ 1) [Fintype (Q3.Nodes K)],
 -/
 theorem Q_nonneg_on_base_atoms_brange :
     ∀ (K : ℝ) (hK : K ≥ 1),
+      Q3.PrimeCertMarginOnBrange →
       ∀ g ∈ Q3.BaseAtomCone_critical_brange K, Q3.Q g ≥ 0 := by
-  intro K hK g hg
-  exact Q3.Q_nonneg_on_base_atoms_brange_tcritical K hK g hg
+  intro K hK h_margin_cert g hg
+  exact Q3.Q_nonneg_on_base_atoms_brange_tcritical K hK h_margin_cert g hg
 
 end Q3.Theorems
 

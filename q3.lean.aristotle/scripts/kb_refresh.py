@@ -26,6 +26,10 @@ ACCEPTED_AXIOMS = [
 ]
 
 AXIOM_FILE_HINTS = {
+    "prime_term_tcritical_le_cstar_quarter_mathan": "q3.lean.aristotle/Q3/Proofs/PrimeTerm_PathB_legacy_provider.lean",
+    "Q3.prime_term_tcritical_le_cstar_quarter_mathan": "q3.lean.aristotle/Q3/Proofs/PrimeTerm_PathB_legacy_provider.lean",
+    "cstar_quarter_le_arch_term_tcritical_mathan": "q3.lean.aristotle/Q3/Proofs/PrimeTerm_PathB_legacy_provider.lean",
+    "Q3.cstar_quarter_le_arch_term_tcritical_mathan": "q3.lean.aristotle/Q3/Proofs/PrimeTerm_PathB_legacy_provider.lean",
     "prime_b_grid_bounds_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
     "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
     "prime_b_grid_arch_bounds_data": "q3.lean.aristotle/Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
@@ -43,6 +47,10 @@ AXIOM_FILE_HINTS = {
 }
 
 AXIOM_CLOSURE_PATH = {
+    "prime_term_tcritical_le_cstar_quarter_mathan": "Prove Path B prime-quarter bound at t_critical (tau0 route)",
+    "Q3.prime_term_tcritical_le_cstar_quarter_mathan": "Prove Path B prime-quarter bound at t_critical (tau0 route)",
+    "cstar_quarter_le_arch_term_tcritical_mathan": "Prove Path B arch-quarter bound at t_critical (tau0 route)",
+    "Q3.cstar_quarter_le_arch_term_tcritical_mathan": "Prove Path B arch-quarter bound at t_critical (tau0 route)",
     "prime_b_grid_bounds_data": "Formalize grid certificate or analytic bound",
     "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data": "Formalize grid certificate or analytic bound",
     "prime_b_grid_arch_bounds_data": "Formalize arch-term lower bound at grid nodes",

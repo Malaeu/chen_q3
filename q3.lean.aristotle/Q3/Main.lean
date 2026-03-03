@@ -16,22 +16,19 @@ Final result: RH is true.
 
 Key axiom dependencies:
 - Tier-1: Weil_criterion_tau0 (τ = 0 Weil cone)
-- Tier-2: Prime certificate bounds on B-range at t_critical
+- Tier-2: Path B τ=0 B-range gate at t_critical
 - THEOREM: Q_Lipschitz_on_W_K_thm (real proof via arch/prime bridge axioms!)
 - THEOREM: Q_nonneg_on_base_atoms_at_t_critical_brange
 -/
 
 import Q3.Basic.Defs
-import Q3.AxiomsTheorems
 import Q3.Proofs.Q_Lipschitz  -- For Q_Lipschitz_on_W_K_thm (real proof!)
 import Q3.A1_Density
-import Q3.RKHS_Contraction
 import Q3.A3_Bridge
 import Q3.T5_Transfer
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.A3_Floor_Bounds
 import Q3.Proofs.PrimeCert.Defs
-import Q3.Proofs.PrimeCert.Brange_2046
 import Q3.Proofs.Q_nonneg_t_critical
 import Q3.Proofs.WeilCoreTau0
 
@@ -70,7 +67,7 @@ theorem A2_Lipschitz (K : ℝ) (hK : K > 0) :
 /-! ## T5: Transfer to τ = 0 Weil class -/
 
 /-- Q is nonnegative on W_K_tau0 for each K ≥ 1 (τ = 0 mainline),
-using the Path B `t_critical` gate route on the B-range. -/
+using the sealed τ=0 B-range gate route. -/
 theorem Q_nonneg_on_W_K_tau0
     (K : ℝ) (hK : K ≥ 1) :
     ∀ Φ ∈ Q3.W_K_tau0 K Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
@@ -80,7 +77,25 @@ theorem Q_nonneg_on_W_K_tau0
     intro g hg
     have hg' : g ∈ Q3.BaseAtomCone_critical_brange K := by
       simpa [Q3.BaseAtomCone_critical_brange, Q3.BaseAtomCone_K_brange] using hg
-    exact Q3.Q_nonneg_on_base_atoms_at_t_critical_brange_via_tau0_brange_gate K hK g hg'
+    exact Q3.Q_nonneg_on_base_atoms_at_t_critical_brange_via_tau0_brange_gate
+      K hK g hg'
+  exact
+    Q3.T5.T5_transfer_tau0
+      K hK Q3.t0_critical B_min prime_cert_B_max Q3.t0_critical_pos hAtoms
+
+/-- Q is nonnegative on `W_K_tau0` for each `K ≥ 1`, using an explicit
+margin certificate on the full B-range (checker-free contract route). -/
+theorem Q_nonneg_on_W_K_tau0_of_margin
+    (K : ℝ) (hK : K ≥ 1)
+    (h_margin_cert : Q3.PrimeCertMarginOnBrange) :
+    ∀ Φ ∈ Q3.W_K_tau0 K Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
+  have hAtoms :
+      ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min prime_cert_B_max,
+        Q3.Q g ≥ 0 := by
+    intro g hg
+    have hg' : g ∈ Q3.BaseAtomCone_critical_brange K := by
+      simpa [Q3.BaseAtomCone_critical_brange, Q3.BaseAtomCone_K_brange] using hg
+    exact Q3.Q_nonneg_on_base_atoms_at_t_critical_brange K hK h_margin_cert g hg'
   exact
     Q3.T5.T5_transfer_tau0
       K hK Q3.t0_critical B_min prime_cert_B_max Q3.t0_critical_pos hAtoms
@@ -101,6 +116,14 @@ theorem Q_nonneg_on_Weil_cone_tau0 :
   intro Φ hΦ
   rcases hΦ with ⟨K, hK, hΦK⟩
   exact Q_nonneg_on_W_K_tau0 K hK Φ hΦK
+
+/-- Margin-contract variant of positivity on the Weil cone. -/
+theorem Q_nonneg_on_Weil_cone_tau0_of_margin
+    (h_margin_cert : Q3.PrimeCertMarginOnBrange) :
+    ∀ Φ ∈ Q3.Weil_cone_tau0 Q3.t0_critical B_min prime_cert_B_max, Q3.Q Φ ≥ 0 := by
+  intro Φ hΦ
+  rcases hΦ with ⟨K, hK, hΦK⟩
+  exact Q_nonneg_on_W_K_tau0_of_margin K hK h_margin_cert Φ hΦK
 
 /-- RH route through the sealed Weil core using the quantitative τ=0 bridge contract.
 
@@ -140,6 +163,14 @@ theorem RH_of_Weil_and_Q3_via_compact_approx
       Q3.t0_critical B_min prime_cert_B_max hApproxWK
   exact hCrit.mp hNonneg
 
+/-- RH route from an explicit B-range margin contract (no legacy quarter-gate in
+this theorem's dependency chain). -/
+theorem RH_of_Weil_and_Q3_of_margin
+    (h_margin_cert : Q3.PrimeCertMarginOnBrange) :
+    Q3.RH := by
+  rw [← Q3.Proofs.WeilCoreTau0.criterion Q3.t0_critical B_min prime_cert_B_max]
+  exact Q_nonneg_on_Weil_cone_tau0_of_margin h_margin_cert
+
 /-! ## Riemann Hypothesis -/
 
 /-- **RIEMANN HYPOTHESIS (conditional on Q3 axioms)**
@@ -152,7 +183,7 @@ This theorem depends on:
 - Weil_criterion_tau0 (τ = 0 Weil cone)
 
 **Tier-2 (Q3 Paper, single‑scale):**
-- Prime certificate bounds on the B‑range at t_critical
+- Path B τ=0 B-range gate at t_critical
 
 **Theorems (now closed):**
 - Q_Lipschitz_on_W_K: Q is Lipschitz
@@ -170,12 +201,10 @@ theorem RH_of_Weil_and_Q3 : Q3.RH := by
 
 /-! ## Axiom Verification -/
 
--- Check what axioms the proof depends on
-#check RH_of_Weil_and_Q3
 -- Axiom dependencies (run #print axioms RH_of_Weil_and_Q3):
 -- Standard: propext, Classical.choice, Quot.sound
 -- Tier-1: Q3.Weil_criterion_tau0
--- Tier-2 in main theorem: discharged by `prime_cert_margin_on_brange_thm`
+-- Tier-2 in main theorem: discharged by `prime_term_pathB_tcritical_tau0_brange_thm`
 --
 -- KEY IMPROVEMENTS:
 -- - Q_Lipschitz_on_W_K is a THEOREM (uses arch/prime bridge axioms)!

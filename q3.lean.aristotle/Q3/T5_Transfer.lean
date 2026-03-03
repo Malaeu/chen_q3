@@ -15,7 +15,7 @@ implies limit preservation of nonnegativity.
 -/
 
 import Q3.Basic.Defs
-import Q3.AxiomsTheorems
+import Q3.Axioms
 import Q3.Atoms_Positive
 import Q3.Proofs.HeatKernelParams
 import Q3.Proofs.Params_Critical
@@ -96,7 +96,7 @@ theorem T5_transfer_of_atoms (K : ℝ) (hK : K ≥ 1) (t0 : ℝ) (ht0 : 0 < t0)
 
   -- Fixed-t₀ density (A1' with fixed t₀)
   obtain ⟨g, hg_atom, hg_approx⟩ :=
-    Q3.Theorems.A1_density_WK K hK_pos t0 ht0 Φ hΦ ε hε_pos
+    Q3.A1_density_WK_axiom K hK_pos t0 ht0 Φ hΦ ε hε_pos
 
   -- g ∈ AtomCone_K_fixed ⊆ W_K
   have hg_W_K : g ∈ W_K K := AtomCone_subset_W_K K t0 hg_atom

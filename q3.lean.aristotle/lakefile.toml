@@ -5,18 +5,86 @@ defaultTargets = ["Q3"]
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
+rev = "v4.28.0"
 
 [[require]]
 name = "doc-gen4"
 scope = "leanprover"
 git = "https://github.com/leanprover/doc-gen4.git"
-rev = "v4.24.0"
+rev = "v4.28.0"
 
 [[lean_lib]]
 name = "Q3"
 moreLeanArgs = ["-j", "1", "-s", "65536"]
-globs = ["Q3"]
+roots = [
+  "Q3.Main",
+  "Q3.A1_Density",
+  "Q3.A3_Bridge",
+  "Q3.Atoms_Positive",
+  "Q3.Axioms",
+  "Q3.Basic.Defs",
+  "Q3.DigammaRemainder",
+  "Q3.DigammaSeries",
+  "Q3.ForMathlib.GaussianTailKernel",
+  "Q3.T5_Transfer",
+  "Q3.Proofs.A3_Floor_Bounds",
+  "Q3.Proofs.A3_Floor_Main",
+  "Q3.Proofs.A3_Floor_Monotonicity",
+  "Q3.Proofs.A3_bridge_rayleigh_first",
+  "Q3.Proofs.A_Star_Properties",
+  "Q3.Proofs.Digamma_Aristotle",
+  "Q3.Proofs.Digamma_One_Fourth",
+  "Q3.Proofs.FloorCert.Defs",
+  "Q3.Proofs.FloorCert.Grid_2219",
+  "Q3.Proofs.FloorCert.Lipschitz_2219",
+  "Q3.Proofs.HeatKernelParams",
+  "Q3.Proofs.Params_Critical",
+  "Q3.Proofs.PrimeCert.Bmin_1826",
+  "Q3.Proofs.PrimeCert.BrangeCert_2046",
+  "Q3.Proofs.PrimeCert.BrangeGridBounds_2046",
+  "Q3.Proofs.PrimeCert.BrangeGrid_2046",
+  "Q3.Proofs.PrimeCert.BrangeGrid_PrimeSumTail",
+  "Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_BucketScaffold",
+  "Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_Data",
+  "Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_Intervals",
+  "Q3.Proofs.PrimeCert.BrangeGrid_PrimeSum_2026_01_30_UB",
+  "Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28",
+  "Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_ArchHelpers",
+  "Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Data",
+  "Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Partial",
+  "Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_SumData",
+  "Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Tail",
+  "Q3.Proofs.PrimeCert.Brange_2046",
+  "Q3.Proofs.PrimeCert.Brange_Lipschitz_Analytic",
+  "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatIntegrable",
+  "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatProof",
+  "Q3.Proofs.PrimeCert.Brange_Lipschitz_HeatScaffold",
+  "Q3.Proofs.PrimeCert.Defs",
+  "Q3.Proofs.PrimeCert.GaussianMajorant",
+  "Q3.Proofs.PrimeCert.GaussianTailKernel",
+  "Q3.Proofs.PrimeCert.PrimeHeatMarginKernel",
+  "Q3.Proofs.PrimeCert.PrimeHeatMarginWitness_2026_01_28",
+  "Q3.Proofs.PrimeTerm_PathB_legacy_provider",
+  "Q3.Proofs.PrimeTerm_PathB_tau0_brange_analytic",
+  "Q3.Proofs.PrimeTerm_PathB_tcritical",
+  "Q3.Proofs.PrimeTerm_t_bridge",
+  "Q3.Proofs.Q_Lipschitz",
+  "Q3.Proofs.Q_Lipschitz_arch_bridge",
+  "Q3.Proofs.Q_Lipschitz_prime_bridge",
+  "Q3.Proofs.Q_nonneg_atoms_helpers",
+  "Q3.Proofs.Q_nonneg_lemmas",
+  "Q3.Proofs.Q_nonneg_t_critical",
+  "Q3.Proofs.Rayleigh_Fourier",
+  "Q3.Proofs.Rayleigh_Q_identification",
+  "Q3.Proofs.Rayleigh_basis0",
+  "Q3.Proofs.Rayleigh_utils",
+  "Q3.Proofs.ShiftedWindows",
+  "Q3.Proofs.WeilCoreTau0",
+  "Q3.Proofs.WeilCoreTau0_API",
+  "Q3.Proofs.WeilCoreTau0_CounterexampleAmplifier",
+  "Q3.Proofs.WeilCoreTau0_CriterionTau0",
+  "Q3.Proofs.WeilCoreTau0_ExplicitFormulaTau0"
+]
 
 [[lean_lib]]
 name = "aristotle_output"

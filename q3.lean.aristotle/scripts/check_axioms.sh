@@ -125,6 +125,20 @@ else
     echo ""
 fi
 
+# Step 0.9: Ensure active PrimeCert data modules stay checker-free
+echo "═══ Step 0.9: PrimeCert checker-free guard ═══"
+if rg -n "^[[:space:]]*import[[:space:]].*Checker" \
+    Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Partial.lean \
+    Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean \
+    Q3/Proofs/PrimeCert/BrangeGrid_PrimeSum_2026_01_30_Data.lean >/dev/null 2>&1; then
+    echo "✗ Active PrimeCert data module imports a Checker file"
+    echo "  Remove Checker imports from *_SumData/*_Data mainline modules."
+    exit 1
+else
+    echo "✓ Active PrimeCert data modules are checker-free"
+fi
+echo ""
+
 # Step 1: Build
 echo "═══ Step 1: Building Q3.Main ═══"
 if [[ "$Q3_NO_BUILD" == "1" ]]; then
@@ -156,6 +170,14 @@ if [[ "$Q3_FORCE_FRESH_AXIOMS" == "1" ]]; then
         echo "✗ Fresh rebuild failed: Q3/Main.lean"
         exit 1
     fi
+    if lake env lean --root=. Q3/Main_DataProfile.lean \
+        -o .lake/build/lib/lean/Q3/Main_DataProfile.olean \
+        -i .lake/build/lib/lean/Q3/Main_DataProfile.ilean 2>&1 | tail -5; then
+        echo "✓ Refreshed Q3/Main_DataProfile.olean"
+    else
+        echo "✗ Fresh rebuild failed: Q3/Main_DataProfile.lean"
+        exit 1
+    fi
     echo ""
 fi
 
@@ -165,6 +187,19 @@ AXIOMS=$(echo 'import Q3.Main
 #print axioms Q3.Main.RH_of_Weil_and_Q3' | lake env lean --stdin 2>&1)
 
 echo "$AXIOMS"
+echo ""
+
+# Step 2.1: Margin-route smoke check (bridge-free RH entrypoint)
+echo "═══ Step 2.1: Margin-route smoke check ═══"
+AXIOMS_MARGIN=$(echo 'import Q3.Main
+#print axioms Q3.Main.RH_of_Weil_and_Q3_of_margin' | lake env lean --stdin 2>&1)
+echo "$AXIOMS_MARGIN"
+if echo "$AXIOMS_MARGIN" | grep -qE "prime_term_tcritical_le_cstar_quarter_mathan|cstar_quarter_le_arch_term_tcritical_mathan"; then
+    echo "✗ Margin-route theorem still depends on legacy quarter bridge axioms"
+    exit 1
+else
+    echo "✓ Margin-route theorem is quarter-bridge free"
+fi
 echo ""
 
 # Step 2.5: Check for sorryAx (indicates incomplete proofs)
@@ -184,6 +219,19 @@ if echo "$AXIOMS" | grep -q "sorryAx"; then
     exit 1
 else
     echo "✓ No sorryAx detected"
+fi
+echo ""
+
+# Step 2.2: Margin-cert profile check (data-route; no quarter-bridge axioms)
+echo "═══ Step 2.2: Margin-cert profile check ═══"
+AXIOMS_MARGIN_CERT=$(echo 'import Q3.Main_DataProfile
+#print axioms Q3.Main.RH_of_Weil_and_Q3_via_margin_cert' | lake env lean --stdin 2>&1)
+echo "$AXIOMS_MARGIN_CERT"
+if echo "$AXIOMS_MARGIN_CERT" | grep -qE "prime_term_tcritical_le_cstar_quarter_mathan|cstar_quarter_le_arch_term_tcritical_mathan"; then
+    echo "✗ Margin-cert theorem unexpectedly depends on legacy quarter bridge axioms"
+    exit 1
+else
+    echo "✓ Margin-cert theorem is quarter-bridge free (data-route profile)"
 fi
 echo ""
 
@@ -232,7 +280,7 @@ TOTAL=$((STANDARD_COUNT + PROJECT_COUNT))
 
 # Expected counts (update when axioms change)
 EXPECTED_STANDARD=3  # propext, Classical.choice, Quot.sound
-EXPECTED_PROJECT=4   # Weil_criterion_tau0 + Brange grid axioms + PrimeHeat margin witness
+EXPECTED_PROJECT=3   # Weil_criterion_tau0 + two Path B quarter obligations
 EXPECTED_TOTAL=$((EXPECTED_STANDARD + EXPECTED_PROJECT))
 
 echo "Standard Lean: $STANDARD_COUNT (expected: $EXPECTED_STANDARD)"
@@ -252,7 +300,7 @@ echo "$AXIOMS_ONLY_CLEAN" | grep -E "PrimeCert|SingleScale|A1_density|Q_nonneg_o
 
 echo ""
 echo "Level 3 (Bridge Lemmas):"
-echo "$AXIOMS" | tr -d '[]' | grep -E "Lipschitz_bridge" | sed 's/^/   /' || echo "   (none found)"
+echo "$AXIOMS" | tr -d '[]' | grep -E "Lipschitz_bridge|prime_term_tcritical_le_cstar_quarter_mathan|cstar_quarter_le_arch_term_tcritical_mathan" | sed 's/^/   /' || echo "   (none found)"
 
 echo ""
 
@@ -262,9 +310,8 @@ echo "═══ Step 5: Philosophy Verification ═══"
 # Expected axioms in proof chain (update when axioms are closed/added)
 EXPECTED_AXIOMS=(
     "Q3.Weil_criterion_tau0"
-    "Q3.Proofs.PrimeCert.prime_b_grid_arch_bounds_data"
-    "Q3.Proofs.PrimeCert.prime_b_grid_prime_sum_le_all_data"
-    "Q3.Proofs.PrimeCert.prime_heat_margin_cert_2026_01_28"
+    "Q3.prime_term_tcritical_le_cstar_quarter_mathan"
+    "Q3.cstar_quarter_le_arch_term_tcritical_mathan"
 )
 
 UNKNOWN_AXIOMS=""

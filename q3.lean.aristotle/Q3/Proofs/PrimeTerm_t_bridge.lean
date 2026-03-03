@@ -314,4 +314,22 @@ lemma prime_term_phi_shift_tsym_le_cap (K B tau R : ℝ)
     exact mul_le_mul_of_nonneg_left hcap hexp_nonneg
   exact le_trans hprime hcap'
 
+lemma prime_term_phi_shift_tcritical_le_cap (K B tau R : ℝ)
+    [Fintype (Q3.Nodes K)] (hB : 0 < B) (hK : |tau| + B ≤ K)
+    (hcap :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) ≤ R) :
+    Q3.prime_term (fun ξ => Q3.phi_shift B t_critical tau ξ) ≤
+      exp_tcrit_to_rkhs K * R := by
+  have hprime :=
+    prime_term_phi_shift_tcritical_le (K:=K) (B:=B) (tau:=tau) hB hK
+  have hexp_nonneg : 0 ≤ exp_tcrit_to_rkhs K := by
+    unfold exp_tcrit_to_rkhs
+    exact (Real.exp_pos _).le
+  have hcap' :
+      exp_tcrit_to_rkhs K *
+          ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) ≤
+        exp_tcrit_to_rkhs K * R := by
+    exact mul_le_mul_of_nonneg_left hcap hexp_nonneg
+  exact le_trans hprime hcap'
+
 end Q3.Proofs.PrimeTermBridge

@@ -8,6 +8,8 @@ set_option maxHeartbeats 0
 set_option maxRecDepth 4000
 
 noncomputable section
+
+local notation "digamma" => (_root_.digamma)
 lemma Gamma_continuousAt_of_re_pos {z : ℂ} (hz : 0 < z.re) :
     ContinuousAt Complex.Gamma z := by
   apply (Complex.differentiableAt_Gamma z ?_).continuousAt
