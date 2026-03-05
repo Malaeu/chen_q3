@@ -79,6 +79,14 @@
 3) Closure formalized в `Q3/Proofs/CompatibilityReduction.lean`.
 4) Следующий настоящий математический узел: отдельный scalar theorem на shifted evenized atom.
 
+Update (2026-03-06, pair reduction):
+- В `Q3/Proofs/CompatibilityReduction.lean` добавлен ещё более слабый и правильный bridge:
+  достаточно pair-условия
+  `0 ≤ Q (phi_shift_critical B τ) + Q (phi_shift_critical B (-τ))`,
+  а не отдельного `Q (phi_shift_critical B τ) ≥ 0`.
+- Это важное сжатие цели:
+  теперь evenized atom positivity можно закрывать через симметричную пару, что ближе к бумажному генератору A1'.
+
 ## Synthesis (2026-02-06, in progress) — Закрытие `h_margin_cert` до single-axiom chain
 
 Цель: перейти от `Q3.Main.RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange)` к версии без `h_margin_cert`,

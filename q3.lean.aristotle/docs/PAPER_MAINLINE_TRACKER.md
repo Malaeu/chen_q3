@@ -47,7 +47,7 @@ Updated: 2026-03-06
 
 ## Exact Missing Theorem
 
-For each compact `K ≥ 1`, prove:
+For each compact `K ≥ 1`, the paper can be closed once one has either:
 
 ```lean
 theorem Q_fejer_heat_atom_nonneg_tcritical
@@ -55,11 +55,19 @@ theorem Q_fejer_heat_atom_nonneg_tcritical
     Q (Fejer_heat_atom B t0_critical τ) ≥ 0
 ```
 
+or, in the weaker pair form already isolated in Lean:
+
+```lean
+∀ B τ, B > 0 → |τ| + B ≤ K →
+  0 ≤ Q (phi_shift_critical B τ) + Q (phi_shift_critical B (-τ))
+```
+
 Once this theorem exists, the rest of the compact closure is already formalized:
 
 1. `Q_nonneg_on_atomcone_fixed_tcritical_of_shifted_evenized_atoms`
 2. `Q_nonneg_on_WK_tcritical_of_shifted_evenized_atoms`
-3. Weil linkage
+3. `Q_nonneg_on_WK_tcritical_of_phi_pair_nonneg`
+4. Weil linkage
 
 ## Lean Realization Already Present
 
@@ -70,7 +78,10 @@ File:
 Theorems:
 
 - `Q_nonneg_on_atomcone_fixed_tcritical_of_shifted_evenized_atoms`
+- `Q_fejer_heat_atom_nonneg_of_phi_pair_nonneg_tcritical`
 - `Q_nonneg_on_WK_tcritical_of_shifted_evenized_atoms`
+- `Q_nonneg_on_WK_tcritical_of_phi_pair_nonneg`
+- `Q_nonneg_on_WK_tcritical_of_phi_nonneg`
 
 These two theorems are the formal version of the paper compatibility proposition.
 They deliberately isolate the remaining scalar inequality instead of smearing it
@@ -80,11 +91,12 @@ across `Main.lean` or legacy prime certificates.
 
 1. Keep `Q3/Proofs/CompatibilityReduction.lean` as the canonical closure hub.
 2. Introduce a new dedicated scalar module for shifted evenized atoms, not for `τ=0` only.
-3. Refactor `Q3/Proofs/Q_nonneg_t_critical.lean` so that:
+3. Target the pair condition first if individual `phi_shift` positivity is too strong.
+4. Refactor `Q3/Proofs/Q_nonneg_t_critical.lean` so that:
    - it stops advertising the false `τ=0` density story;
    - it targets `Fejer_heat_atom` directly;
    - any `phi_shift` lemmas are treated only as auxiliary decomposition tools.
-4. Only after the scalar theorem is real, rewire `Main.lean` onto this route.
+5. Only after the scalar theorem is real, rewire `Main.lean` onto this route.
 
 ## Progress Labels
 
@@ -99,6 +111,6 @@ Each node should be tracked with:
 
 ## Immediate Priority
 
-1. Design the scalar proof for `Q (Fejer_heat_atom B t0_critical τ) ≥ 0`.
+1. Design the scalar proof for `Q (Fejer_heat_atom B t0_critical τ) ≥ 0`, or first for the weaker symmetric pair condition.
 2. Avoid the false detour “prove positivity of each `phi_shift`”.
 3. Reuse `A1' + A2 + T5_transfer_of_atoms` exactly as packaged now.
