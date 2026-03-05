@@ -127,4 +127,30 @@ theorem Q_nonneg_on_WK_tcritical_of_phi_nonneg
     simpa [abs_neg] using hτB
   exact add_nonneg (h_phi B τ hB hτB) (h_phi B (-τ) hB hτB_neg)
 
+/--
+Current direct compact-closure theorem coming from the existing `t_critical`
+shifted-window route.
+
+Mathematically this is stronger than what the paper needs. Formally it is useful
+because it exposes a theorem-level `W_K` positivity node while the scalar route is
+being weakened/refactored.
+-/
+theorem Q_nonneg_on_WK_tcritical_current_shift_route
+    (K : ℝ) (hK : K ≥ 1) :
+    ∀ Φ ∈ W_K K, Q Φ ≥ 0 := by
+  apply Q_nonneg_on_WK_tcritical_of_phi_nonneg K hK
+  intro B τ hB hτB
+  exact Q_phi_shift_nonneg_t_critical K B τ hK hB hτB
+
+/--
+The same compact-closure theorem, but routed through the exact paper generator
+`Fejer_heat_atom`.
+-/
+theorem Q_nonneg_on_WK_tcritical_current_atom_route
+    (K : ℝ) (hK : K ≥ 1) :
+    ∀ Φ ∈ W_K K, Q Φ ≥ 0 := by
+  apply Q_nonneg_on_WK_tcritical_of_shifted_evenized_atoms K hK
+  intro B τ hB hτB
+  exact Q_Fejer_heat_atom_nonneg_t_critical K B τ hK hB hτB
+
 end Q3.Proofs.CompatibilityReduction

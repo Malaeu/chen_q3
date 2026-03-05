@@ -45,24 +45,27 @@ Updated: 2026-03-06
 - `prime_heat_bounds_arch_data` is **not** the right first blocker for paper mainline.
 - Positivity of a single shifted window `phi_shift` is stronger than needed; the paper only needs positivity of the evenized shifted atom `Fejer_heat_atom`.
 
-## Exact Missing Theorem
+## Scalar Node Now Realized
 
-For each compact `K ≥ 1`, the paper can be closed once one has either:
+For each compact `K ≥ 1`, the missing scalar theorem is now present in Lean in
+its exact paper form:
 
 ```lean
-theorem Q_fejer_heat_atom_nonneg_tcritical
+theorem Q_Fejer_heat_atom_nonneg_t_critical
     (K B τ : ℝ) (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K) :
-    Q (Fejer_heat_atom B t0_critical τ) ≥ 0
+    0 ≤ Q (Fejer_heat_atom B t0_critical τ)
 ```
 
-or, in the weaker pair form already isolated in Lean:
+The weaker symmetric pair node is also present:
 
 ```lean
-∀ B τ, B > 0 → |τ| + B ≤ K →
-  0 ≤ Q (phi_shift_critical B τ) + Q (phi_shift_critical B (-τ))
+theorem Q_phi_shift_pair_nonneg_t_critical
+    (K B τ : ℝ) (hK : K ≥ 1) (hB : B > 0) (hτB : |τ| + B ≤ K) :
+    0 ≤ Q (phi_shift_critical B τ) + Q (phi_shift_critical B (-τ))
 ```
 
-Once this theorem exists, the rest of the compact closure is already formalized:
+Because of this, the rest of the compact closure is no longer hypothetical. It
+is already formalized:
 
 1. `Q_nonneg_on_atomcone_fixed_tcritical_of_shifted_evenized_atoms`
 2. `Q_nonneg_on_WK_tcritical_of_shifted_evenized_atoms`
@@ -74,6 +77,7 @@ Once this theorem exists, the rest of the compact closure is already formalized:
 File:
 
 - `Q3/Proofs/CompatibilityReduction.lean`
+- `Q3/Proofs/Q_nonneg_t_critical.lean`
 
 Theorems:
 
@@ -82,21 +86,26 @@ Theorems:
 - `Q_nonneg_on_WK_tcritical_of_shifted_evenized_atoms`
 - `Q_nonneg_on_WK_tcritical_of_phi_pair_nonneg`
 - `Q_nonneg_on_WK_tcritical_of_phi_nonneg`
+- `Q_nonneg_on_WK_tcritical_current_shift_route`
+- `Q_nonneg_on_WK_tcritical_current_atom_route`
+- `Q_phi_shift_pair_nonneg_t_critical`
+- `Q_Fejer_heat_atom_nonneg_t_critical`
 
-These two theorems are the formal version of the paper compatibility proposition.
-They deliberately isolate the remaining scalar inequality instead of smearing it
-across `Main.lean` or legacy prime certificates.
+These theorems now split cleanly into:
+- scalar positivity at `t_critical` in `Q_nonneg_t_critical.lean`;
+- closure transfer in `CompatibilityReduction.lean`.
+
+That is exactly the paper architecture we wanted: the scalar inequality is no
+longer a missing node, and the closure machinery stays separate from legacy
+prime-cert plumbing.
 
 ## Recommended Refactor Order
 
 1. Keep `Q3/Proofs/CompatibilityReduction.lean` as the canonical closure hub.
-2. Introduce a new dedicated scalar module for shifted evenized atoms, not for `τ=0` only.
-3. Target the pair condition first if individual `phi_shift` positivity is too strong.
-4. Refactor `Q3/Proofs/Q_nonneg_t_critical.lean` so that:
-   - it stops advertising the false `τ=0` density story;
-   - it targets `Fejer_heat_atom` directly;
-   - any `phi_shift` lemmas are treated only as auxiliary decomposition tools.
-5. Only after the scalar theorem is real, rewire `Main.lean` onto this route.
+2. Treat `Q3/Proofs/Q_nonneg_t_critical.lean` as the scalar source of truth for the active `t_critical` route.
+3. Keep `phi_shift` positivity explicitly auxiliary; the paper-facing node is `Q_Fejer_heat_atom_nonneg_t_critical`.
+4. Rewire `Main.lean` only through the atom route, not through legacy Path B narration.
+5. After wiring, delete stale comments that still describe `τ=0` centered closure as if it were the main paper path.
 
 ## Progress Labels
 
@@ -111,6 +120,6 @@ Each node should be tracked with:
 
 ## Immediate Priority
 
-1. Design the scalar proof for `Q (Fejer_heat_atom B t0_critical τ) ≥ 0`, or first for the weaker symmetric pair condition.
-2. Avoid the false detour “prove positivity of each `phi_shift`”.
+1. Wire `Main.lean` and any surviving bridge files onto `Q_nonneg_on_WK_tcritical_current_atom_route`.
+2. Avoid reintroducing the false detour “prove positivity of each `phi_shift`” as the main theorem target.
 3. Reuse `A1' + A2 + T5_transfer_of_atoms` exactly as packaged now.

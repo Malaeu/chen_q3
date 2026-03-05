@@ -87,6 +87,18 @@ Update (2026-03-06, pair reduction):
 - Это важное сжатие цели:
   теперь evenized atom positivity можно закрывать через симметричную пару, что ближе к бумажному генератору A1'.
 
+Final result (2026-03-06, scalar node closed):
+- В `Q3/Proofs/Q_nonneg_t_critical.lean` теперь выделены две явные теоремы:
+  `Q_phi_shift_pair_nonneg_t_critical` и
+  `Q_Fejer_heat_atom_nonneg_t_critical`.
+- Вторая из них и есть точный paper-level scalar target:
+  nonnegativity для одного shifted evenized atom `Fejer_heat_atom B t0_critical τ`.
+- `Q_nonneg_on_base_atoms_at_t_critical` теперь больше не дублирует длинную decomposition-аргументацию, а переиспользует этот новый узел.
+- В `Q3/Proofs/CompatibilityReduction.lean` добавлены прямые closure-routes:
+  `Q_nonneg_on_WK_tcritical_current_shift_route` и
+  `Q_nonneg_on_WK_tcritical_current_atom_route`.
+- Практический вывод: active Lean chain теперь уже содержит не только reduction, но и сам scalar theorem на правильном paper generator. Следующий шаг не “искать ещё один compute-cert”, а честно перевести mainline wiring на atom-route.
+
 ## Synthesis (2026-02-06, in progress) — Закрытие `h_margin_cert` до single-axiom chain
 
 Цель: перейти от `Q3.Main.RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange)` к версии без `h_margin_cert`,
