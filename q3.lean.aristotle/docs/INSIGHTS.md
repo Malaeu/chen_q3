@@ -1181,3 +1181,59 @@ Plan (5–10 lines, concrete pointers):
 - Исправлен `Q3/Proofs/Bridge.lean` (корректная `WithLp.toLp`-конструкция для `EuclideanSpace`).
 - Проверено: `lake build Q3.RKHS_Contraction`, `lake build Q3.T5_Transfer`, `lake env lean Q3/Main.lean`.
 - Результат: основной путь снова доходит до `Q3.Main.RH_of_Weil_and_Q3 : RH`; каскадный блокер по PrimeCert в main dependency path снят на Path A.
+
+## Synthesis (2026-03-05, in progress) — PrimeHeat arch-bound blocker under current toolchain
+
+Target lemma / axiom:
+- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data` in
+  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`.
+- Wiring: this feeds `prime_heat_bounds_data` -> `prime_heat_bounds_cert` ->
+  `prime_margin_Lipschitz_on_Brange` in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`,
+  and from there the current τ=0 PrimeCert margin chain.
+
+Embedding search (q3_docs, 3 successful queries):
+- `prime_heat_bounds_arch_data heat arch integral bound`
+- `BrangeHeatCert arch bound a_star heat_weight intervalIntegral`
+- `a_star linear growth Gaussian integral prime cert`
+- Consistent hits: previous plans already converge on the same route:
+  use `a_star_linear_growth` together with Gaussian integrability/interval-integral
+  lemmas; no existing hole-free closure was found in the repo index.
+
+Web / external scan:
+- No drop-in Mathlib tactic path for this numeric interval bound was identified.
+- This strengthens the local conclusion that the next productive move is not a
+  fresh theorem sketch in isolation, but restoring the PrimeHeat build chain first.
+
+Local build diagnosis (current machine, 2026-03-05):
+1. `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
+   fails because `..._Partial.olean` is missing.
+2. `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Partial.lean`
+   fails because `..._SumData.olean` is missing.
+3. `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`
+   fails because `..._Checker.olean` is missing.
+4. `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`
+   fails on incompatible header for
+   `BrangeHeatCert_2026_01_28_PrimePowAutoGT10000.olean`.
+5. Timestamp check shows that incompatible artifact still dates to 2026-02-09,
+   while current project toolchain is `mathlib v4.26.0`; this is a stale-build,
+   not a new theorem regression.
+
+Decision tree:
+- Option 1 (active): rebuild `BrangeHeatCert_2026_01_28_PrimePowAutoGT10000`
+  and then the chain `Checker -> SumData -> Partial -> BrangeHeatCert_2026_01_28`,
+  only after that return to `prime_heat_bounds_arch_data`.
+- Option 2 (fallback): if the rebuild still fails after the stale `.olean` layer is
+  removed, isolate the first source-level error in the GT10000 aggregator and fix
+  that before touching arch bounds.
+- Option 3 (false-for-now): sending a fresh Aristotle request for
+  `prime_heat_bounds_arch_data` immediately. Rejected for now because all prior
+  2026-02-09 outputs were empty stubs with `sorry` due missing Q3 context, and the
+  current blocker is upstream build integrity.
+
+Concrete next steps:
+1. Finish targeted rebuild of `Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000`.
+2. Re-run `lake env lean` on `Checker`, `SumData`, `Partial`, and the main
+   `BrangeHeatCert_2026_01_28.lean` in that order.
+3. Once the chain compiles again, either prove `prime_heat_bounds_arch_data`
+   locally from existing heat-integrability infrastructure or prepare a new
+   Aristotle request with explicit Q3 context files and no import ambiguity.
