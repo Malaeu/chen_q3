@@ -11,6 +11,16 @@
 
 ## Навигация (кратко)
 
+## Синхронизационный статус (2026-02-28)
+
+- Проверка последнего плана: mainline формально описывает τ=0 маршрут через
+  `prime_cert_margin_from_rkhs`; legacy `prime_term_le_at_t_critical_axiom` сейчас
+  офлайн/τ≠0 placeholder.
+- Следующая цель: ввести чистый τ=0 brange-модуль без PathB в критическом пути,
+  сохранить PathB/legacy как отдельный архив, и зафиксировать прогресс только через
+  `#print axioms` + синхронизированные статусы в `CHAIN_STATUS.md` и
+  `ACTIVE/MAIN_CHAIN_DEPS.md`.
+
 - Текущая цепочка (single-scale t_critical): `docs/CHAIN_STATUS.md`.
 - Hub для активных доков/скриптов/DB: `ACTIVE/`.
 - Прошка как ускоритель: застряли >30 минут или <10% прогресса в Aristotle → `docs/insights/proshka_key_resource.md`.
@@ -40,6 +50,34 @@
   2) потом внешний web‑поиск через встроенный web tool,
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
+
+## Synthesis (2026-03-06, in progress) — Compatibility theorem via shifted evenized atoms
+
+Цель: вернуть mainline к бумаге и убрать ложный `τ=0` closure-нарратив.
+
+Проверенное состояние:
+- Бумага после правок в `full/sections/A1prime.tex` требует shifted evenized density, а не centered cone.
+- В Lean уже есть весь closure-механизм:
+  `A1prime.A1_density_WK_fixed_t0`,
+  `Q_Lipschitz_on_W_K_thm`,
+  `Q_nonneg_on_atomcone_fixed_of_atoms`,
+  `T5_transfer_of_atoms`.
+- Значит главный недостающий узел не matrix-level, а scalar-level:
+  нужно доказать `Q (Fejer_heat_atom B t0_critical τ) ≥ 0` для всех admissible `(B, τ)`.
+
+Локальный поиск:
+- `scripts/research_oracle.py` запускался из корня репо, но qmd-база на этой машине сейчас отвечает `SQLITE_BUSY_RECOVERY` (`database is locked`), так что embedding-search в этом проходе технически заблокирован.
+- Поэтому синтез пришлось собрать напрямую по живым Lean- и TeX-узлам:
+  `Q3/Proofs/A1prime/A1_density_fixed_t0.lean`,
+  `Q3/Proofs/Q_nonneg_lemmas.lean`,
+  `Q3/T5_Transfer.lean`,
+  `full/sections/Main_closure.tex`.
+
+Вывод:
+1) Не надо доказывать positivity каждого `phi_shift`: это сильнее бумаги и не является правильной целью.
+2) Правильный генератор closure уже есть в Lean: `Fejer_heat_atom B t0_critical τ`.
+3) Closure formalized в `Q3/Proofs/CompatibilityReduction.lean`.
+4) Следующий настоящий математический узел: отдельный scalar theorem на shifted evenized atom.
 
 ## Synthesis (2026-02-06, in progress) — Закрытие `h_margin_cert` до single-axiom chain
 
@@ -1182,6 +1220,53 @@ Plan (5–10 lines, concrete pointers):
 - Проверено: `lake build Q3.RKHS_Contraction`, `lake build Q3.T5_Transfer`, `lake env lean Q3/Main.lean`.
 - Результат: основной путь снова доходит до `Q3.Main.RH_of_Weil_and_Q3 : RH`; каскадный блокер по PrimeCert в main dependency path снят на Path A.
 
+## Synthesis (2026-02-23, in progress) — Sub-agent split for final active axioms
+
+Target blockers in active Q3 main-chain:
+- `Q3.prime_term_le_at_t_critical_axiom` (`Q3/Proofs/Q_nonneg_t_critical.lean`)
+- `Q3.Weil_criterion_tau0` (`Q3/Axioms.lean`)
+
+Step-by-step execution:
+1) Created two focused Aristotle requests:
+   - `aristotle_input/subagent_prime_term_tcritical_2026_02_23.md`
+   - `aristotle_input/subagent_weil_tau0_2026_02_23.md`
+2) Strategy split:
+   - Sub-agent A: close or strictly strengthen/replace `prime_term_le_at_t_critical_axiom` via Path B-compatible analytic route.
+   - Sub-agent B: close `Weil_criterion_tau0` directly, or return strongest derivable theorem + minimal missing lemma set.
+3) Immediate acceptance criterion:
+   - produced Lean patch has no `sorry|exact?|admit`,
+   - preserves active API names used by `Q3/Main.lean`.
+4) After download: run `rg -n "sorry|exact\\?|admit"` on outputs, then integrate only hole-free fragments.
+
+Update (2026-02-23, local bridge rewrite):
+- Rewired `Q3.Q_phi_shift_nonneg_t_critical_tau0_brange[_of_margin]` in
+  `Q3/Proofs/Q_nonneg_t_critical.lean` to use:
+  - `prime_term_le_arch_term_on_Brange_tau0_of_margin`
+  - `prime_term_le_arch_term_on_Brange_tau0`
+  instead of `prime_term_le_at_t_critical_axiom`.
+- Resulting active main-chain axiom status (`#print axioms` on `Q3.Main.RH_of_Weil_and_Q3`):
+  - standard: `propext`, `Classical.choice`, `Quot.sound`
+  - project gates: `Q3.Weil_criterion_tau0`, `Q3.Proofs.PrimeCert.prime_cert_margin_from_pathB`
+  - `Q3.prime_term_le_at_t_critical_axiom` no longer appears in RH chain.
+- Strict executable-hole scan (active Q3, excluding Archive/Clean):
+  - no matches for `^\s*(sorry|admit)` and no `exact?` hits.
+
+Update (2026-02-23, Aristotle context fix):
+- Initial Aristotle jobs without explicit context returned non-actionable stubs (model could not see Q3 files).
+- Re-submitted the same three sub-agent requests with `--no-auto-add-imports` + explicit `--context-files`:
+  - `fab26ba2-c4c8-438d-911f-30970145e35a` (prime_term gate)
+  - `750bb959-5f7e-4e5f-919c-c4af2d818949` (Weil tau0)
+  - `17375b4f-0025-4b66-b309-f6f4bb7774f2` (PrimeCert PathB margin)
+- Expected acceptance criterion unchanged: no `sorry|exact?|admit`, then integrate only hole-free lemmas.
+
+Update (2026-02-23, PrimeCert legacy rebuild):
+- Root blocker for legacy chain remains stale/invalid PrimePow `.olean` artifacts.
+- Started targeted rebuild:
+  `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowAutoGT10000`
+- Current state: chunk modules `..._10001_20000` etc are actively recompiling under current toolchain; after completion re-test:
+  1) `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean`
+  2) `lake env lean Q3/Proofs/PrimeCert/Brange_2046.lean`
+
 ## Synthesis (2026-03-05, in progress) — PrimeHeat arch-bound blocker under current toolchain
 
 Target lemma / axiom:
@@ -1237,3 +1322,56 @@ Concrete next steps:
 3. Once the chain compiles again, either prove `prime_heat_bounds_arch_data`
    locally from existing heat-integrability infrastructure or prepare a new
    Aristotle request with explicit Q3 context files and no import ambiguity.
+
+## Synthesis (2026-03-05, in progress) — full paper mainline vs live Lean mainline
+
+Source read completely enough to reconstruct the live proof spine:
+- `full/RH_Q3.tex` and the active main sections
+  `T0`, `A1prime`, `A2`, `A3/*`, `RKHS/*`, `D3/*`, `Weil_linkage`, `Weil_pack`,
+  `Main_closure`.
+- Active paper mainline is explicitly:
+  `T0 + A1' + A2 + A3 + RKHS -> Main positivity -> Weil criterion`.
+- `D3`, `T5`, and `IND_AB` are archived/legacy in the paper and are not meant to
+  be part of the critical proof path.
+
+What this changes for Lean:
+- Live `Q3.Main.RH_of_Weil_and_Q3` currently depends on
+  `Q3.Weil_criterion_tau0` and `Q3.Proofs.PrimeCert.prime_cert_margin_from_pathB`,
+  not on the paper-mainline analytic chain.
+- So the repo now has a structural mismatch:
+  the paper advertises an analytic uniform route, while Lean mainline still closes
+  via a legacy PrimeCert gate.
+
+Paper mainline nodes that already have serious Lean support:
+- `T0`: normalization crosswalk is already wired in `Q3/AxiomsTheorems.lean`.
+- `A1'`: density is largely wired/theorem-level in the current transfer stack.
+- `A2`: continuity/Lipschitz is theorem-level in current Lean.
+- `C1`: compression-by-isometry is already formalized in
+  `Q3/Proofs/C1_Embedding_Bridge.lean` and `Q3/Proofs/C1_T_P_comp_bridge.lean`.
+- `A3_FLOOR`: monotonicity/sample-point infrastructure exists (`A3_Floor_*`).
+
+Critical mismatches discovered while reading the paper:
+- The paper claims “single-scale alignment”, but the active text mixes
+  `t = t_critical = 3/20`, `t_sym = 3/50`, and `t_rkhs = 1`.
+- `full/sections/A3/symbol_floor.tex` states the uniform Arch floor at `t = 3/50`,
+  while `full/sections/A3/main.tex` consumes it as if it were the A3 bridge floor
+  at `t = 3/20`.
+- `full/sections/RKHS/prime_cap.tex` uses the uniform cap at `t_rkhs = 1`,
+  which directly conflicts with the “single-scale” language in `A3/main.tex`.
+- `A1'` in the main paper still defers its proof to the archived shifted-atom
+  density argument instead of giving a fresh in-line proof.
+
+Recommended Lean refactor:
+- Stop treating PrimeHeat/Grid certificate closure as the only mainline plan.
+- Introduce a paper-mainline migration track:
+  `A3_Digamma_Symbol -> A3_Uniform_Bridge -> RKHS_rho_cap -> tau0_bridge -> Main`.
+- Keep legacy `PrimeCert` certificate closure as a separate branch of work, not as
+  the blocker for the theorem-first mainline.
+
+Recommended progress tracking:
+- Track by paper theorem, not by legacy axiom name.
+- Minimal columns:
+  paper statement, Lean target file, current proof status, wired into mainline?,
+  axiom impact, parameter contract frozen?
+- Highest-priority blocker is now not “compute PrimeHeat again”, but
+  “freeze the scale contract of the paper mainline”.

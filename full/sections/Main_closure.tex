@@ -5,17 +5,23 @@
 Throughout this section we rely only on the following analytic inputs:
 \begin{itemize}
   \item \textbf{(T0) Normalization.} Guinand--Weil crosswalk and our conventions, cf.\ Proposition~\ref{prop:T0-GW} (Section~\ref{sec:T0}).
-  \item \textbf{(A1$'$) Density.} The Fej\'er$\times$heat cone is dense in $W_K$, cf.\ Theorem~\ref{a1:thm:A1-local-density}.
+  \item \textbf{(A1$'$) Density.} The shifted evenized Fej\'er$\times$heat cone is dense in $W_K$, cf.\ Theorem~\ref{a1:thm:A1-local-density}.
   \item \textbf{(A2) Continuity.} The Weil functional $Q^\star(t;\cdot)$ is continuous on $W_K$ with a modulus $L_Q(K)$ (Section~\ref{sec:A2}).
   \item \textbf{(A3) Uniform Toeplitz bridge.} Theorem~\ref{thm:A3} provides: for all $M\ge M_0^{\mathrm{unif}}$,
   \[
     \lambda_{\min}\!\big(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)\big)\ \ge\ \frac{c_*}{4}\ >\ 0,
   \]
   where $c_*$ is the uniform Archimedean floor from Lemma~\ref{lem:uniform-arch-floor}.
+  \item \textbf{(C) Compatibility hypothesis.} For every compact $W_K$ there exists a cone $\mathcal G_K\subseteq W_K$ such that
+  \[
+    \overline{\mathcal G_K}^{\|\cdot\|_\infty}=W_K
+    \qquad\text{and}\qquad
+    Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal G_K.
+  \]
 \end{itemize}
 
-\begin{theorem}[Main positivity on $\mathcal W$]\label{thm:Main-positivity}
-Assume \textup{(T0)}, \textup{(A1$'$)}, \textup{(A2)}, and the uniform A3 bridge inequality (Theorem~\ref{thm:A3}).
+\begin{theorem}[Conditional main positivity on $\mathcal W$]\label{thm:Main-positivity}
+Assume \textup{(T0)}, \textup{(A2)}, and the compatibility hypothesis \textup{(C)}.
 Then
 \[
   Q^\star(t;\Phi)\ \ge\ 0\qquad\text{for every even, real, compactly supported }\Phi\in \mathcal W,
@@ -24,13 +30,56 @@ where $\mathcal W=\bigcup_{K>0}\mathcal W_K$ is the Weil cone from Section~\ref{
 \end{theorem}
 
 \begin{proof}
-Fix $K>0$. By Theorem~\ref{thm:A3} we have $Q^\star(t;\Phi)\ge 0$ on the Fej\'er$\times$heat generator cone inside $\mathcal W_K$.
-By \textup{(A1$'$)} density and \textup{(A2)} continuity, this extends to all of $\mathcal W_K$.
+Fix $K>0$. By \textup{(C)} we have $Q^\star(t;\Phi)\ge 0$ on the dense cone $\mathcal G_K\subseteq \mathcal W_K$.
+By \textup{(A2)} continuity, this extends to all of $\mathcal W_K$.
 Since $\mathcal W=\bigcup_{K>0}\mathcal W_K$, we obtain $Q^\star(t;\Phi)\ge 0$ on $\mathcal W$.
 This completes the proof of $Q^\star(t;\Phi)\ge0$ on the Weil cone; the RH follows in Section~\ref{sec:Weil-linkage}.
 \end{proof}
 
-\begin{remark}[Uniform input only]
-The proof of Theorem~\ref{thm:Main-positivity} uses only the uniform analytic bounds built into Theorem~\ref{thm:A3}.
-No K-dependent schedules or numerical certificates enter the main argument.
+\begin{remark}[Where the present draft stops]
+The current analytic core supplies two separate ingredients:
+\begin{enumerate}
+  \item the density theorem A1$'$ for the shifted evenized Fej\'er$\times$heat cone;
+  \item the centered positivity theorem coming from A3 and the single-scale RKHS cap.
+\end{enumerate}
+What is not yet identified in the paper is a \emph{single} cone $\mathcal G_K$ that is both dense in $W_K$
+and covered by the positivity theorem. The compatibility hypothesis \textup{(C)} isolates exactly this remaining closure step.
+\end{remark}
+
+\begin{proposition}[Compatibility reduction to shifted evenized atoms]\label{prop:compatibility-reduction-shifted-atoms}
+Fix $K=[-R,R]$ with $R\ge 1$, and keep the critical heat scale $t_0=t_{0,\mathrm{crit}}$.
+Assume that for every bandwidth $B>0$ and every shift $\tau\in\mathbb R$ with $|\tau|+B\le R$ one has
+\[
+  Q^\star\!\bigl(t_{\mathrm{crit}};\Phi_{B,t_{\mathrm{crit}},\tau}^{\mathrm{even}}\bigr)\ \ge\ 0,
+\]
+where
+\[
+  \Phi_{B,t_{\mathrm{crit}},\tau}^{\mathrm{even}}(\xi)
+  := \frac12\Bigl[
+      \Lambda_B(\xi-\tau)\rho_{t_{\mathrm{crit}}}(\xi-\tau)
+      + \Lambda_B(\xi+\tau)\rho_{t_{\mathrm{crit}}}(\xi+\tau)
+    \Bigr].
+\]
+Then
+\[
+  Q^\star(t_{\mathrm{crit}};\Phi)\ge 0 \qquad \text{for every }\Phi\in W_K.
+\]
+\end{proposition}
+
+\begin{proof}
+By Theorem~\ref{a1:thm:A1-local-density}, finite nonnegative combinations of the shifted evenized atoms
+$\Phi_{B,t_{\mathrm{crit}},\tau}^{\mathrm{even}}$ are dense in $W_K$ in the uniform norm.
+By the assumed atomwise inequality and linearity of $Q^\star$, the functional is nonnegative on this cone.
+By Corollary~\ref{cor:A2-Lip}, $Q^\star(t_{\mathrm{crit}};\cdot)$ is continuous on $W_K$.
+Passing to the uniform limit gives $Q^\star(t_{\mathrm{crit}};\Phi)\ge 0$ for every $\Phi\in W_K$.
+\end{proof}
+
+\begin{remark}[Exact remaining mathematical task]\label{rem:compatibility-missing-scalar}
+Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that no new matrix-level theorem is needed for closure.
+The unresolved point is purely scalar: prove the inequality
+\[
+  Q^\star\!\bigl(t_{\mathrm{crit}};\Phi_{B,t_{\mathrm{crit}},\tau}^{\mathrm{even}}\bigr)\ge 0
+\]
+uniformly for all admissible pairs $(B,\tau)$ with $|\tau|+B\le R$.
+Equivalently, the closure problem is reduced to a family of one-window inequalities on the generator family from A1$'$.
 \end{remark}
