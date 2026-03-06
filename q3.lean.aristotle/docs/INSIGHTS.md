@@ -99,6 +99,25 @@ Final result (2026-03-06, scalar node closed):
   `Q_nonneg_on_WK_tcritical_current_atom_route`.
 - Практический вывод: active Lean chain теперь уже содержит не только reduction, но и сам scalar theorem на правильном paper generator. Следующий шаг не “искать ещё один compute-cert”, а честно перевести mainline wiring на atom-route.
 
+Final result (2026-03-06, full-Weil route):
+- Добавлен новый модуль `Q3/Proofs/PaperMainlineAtomRoute.lean`.
+- В нём доказана лемма `exists_WK_of_mem_Weil_cone`: из `Φ ∈ Weil_cone`
+  извлекается `K ≥ 1` с `Φ ∈ W_K K` через boundedness compact support.
+- На этой базе доказаны:
+  `Q_nonneg_on_Weil_cone_current_atom_route`
+  и
+  `RH_of_shifted_atom_route`.
+- Ключевая проверка:
+  `#print axioms Q3.RH_of_shifted_atom_route`
+  даёт только
+  `Q3.Weil_criterion` и `Q3.prime_term_le_at_t_critical_axiom`
+  плюс стандартные `propext`, `Classical.choice`, `Quot.sound`.
+- Это реальный structural win:
+  в новой вершине RH-цепочки больше нет
+  `Weil_criterion_tau0` и нет
+  `Q3.Proofs.PrimeCert.prime_cert_margin_from_pathB`
+  в собственном axiom list.
+
 ## Synthesis (2026-02-06, in progress) — Закрытие `h_margin_cert` до single-axiom chain
 
 Цель: перейти от `Q3.Main.RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange)` к версии без `h_margin_cert`,

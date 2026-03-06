@@ -78,6 +78,7 @@ File:
 
 - `Q3/Proofs/CompatibilityReduction.lean`
 - `Q3/Proofs/Q_nonneg_t_critical.lean`
+- `Q3/Proofs/PaperMainlineAtomRoute.lean`
 
 Theorems:
 
@@ -90,6 +91,9 @@ Theorems:
 - `Q_nonneg_on_WK_tcritical_current_atom_route`
 - `Q_phi_shift_pair_nonneg_t_critical`
 - `Q_Fejer_heat_atom_nonneg_t_critical`
+- `exists_WK_of_mem_Weil_cone`
+- `Q_nonneg_on_Weil_cone_current_atom_route`
+- `RH_of_shifted_atom_route`
 
 These theorems now split cleanly into:
 - scalar positivity at `t_critical` in `Q_nonneg_t_critical.lean`;
@@ -98,6 +102,27 @@ These theorems now split cleanly into:
 That is exactly the paper architecture we wanted: the scalar inequality is no
 longer a missing node, and the closure machinery stays separate from legacy
 prime-cert plumbing.
+
+## New Mainline Vertex
+
+The new module `Q3/Proofs/PaperMainlineAtomRoute.lean` now packages the full
+paper-style route:
+
+1. extract `K ≥ 1` and `Φ ∈ W_K K` from `Φ ∈ Weil_cone`,
+2. apply `Q_nonneg_on_WK_tcritical_current_atom_route`,
+3. conclude `Q ≥ 0` on all of `Weil_cone`,
+4. apply the full `Weil_criterion`.
+
+Current axiom profile of the new top theorem:
+
+```lean
+#print axioms Q3.RH_of_shifted_atom_route
+-- [propext, Classical.choice, Quot.sound,
+--  Q3.Weil_criterion, Q3.prime_term_le_at_t_critical_axiom]
+```
+
+This is the first top-level RH theorem in the tree that no longer mentions
+`Weil_criterion_tau0` or `prime_cert_margin_from_pathB` in its own axiom list.
 
 ## Recommended Refactor Order
 
@@ -120,6 +145,6 @@ Each node should be tracked with:
 
 ## Immediate Priority
 
-1. Wire `Main.lean` and any surviving bridge files onto `Q_nonneg_on_WK_tcritical_current_atom_route`.
+1. Decide whether to replace `Q3/Main.lean` with the new `PaperMainlineAtomRoute` route or keep the old `τ=0` file as archival compatibility.
 2. Avoid reintroducing the false detour “prove positivity of each `phi_shift`” as the main theorem target.
 3. Reuse `A1' + A2 + T5_transfer_of_atoms` exactly as packaged now.
