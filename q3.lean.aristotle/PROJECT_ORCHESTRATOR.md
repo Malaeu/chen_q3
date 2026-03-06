@@ -117,6 +117,12 @@ echo 'import Q3.Main
 ./scripts/check_axioms.sh
 ```
 
+> Historical note (2026-03-06):
+> разделы ниже до `## Legacy / History` описывают в основном старую
+> `τ=0` / PrimeCert ветку и полезны как архивный контекст.
+> Активный source of truth для current mainline находится в верхнем summary,
+> `ACTIVE/MAIN_CHAIN_DEPS.md`, `docs/CHAIN_STATUS.md` и `docs/PAPER_MAINLINE_TRACKER.md`.
+
 Статус выполнения (2026-02-06, текущая сессия):
 - `Step 1`: **DONE** (теорема `prime_heat_bucket_data` в `BrangeHeatCert_2026_01_28_SumData.lean`).
 - `Step 5`: **PARTIAL**:
@@ -147,7 +153,7 @@ Step 2 closure note (2026-02-09):
 - `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowAutoGT10000Fallback.lean`
   оставлен как compatibility shim без `axiom`.
 
-## Current State (short)
+## Legacy Snapshot (τ=0 / PrimeCert branch)
 
 - FloorCert: closed `floor_grid_val_ge_min_lb` as a lemma in
   `Q3/Proofs/FloorCert/Grid_2219.lean` (native_decide on the 2219 grid).
@@ -275,7 +281,7 @@ Decision tree + file pointers live in `docs/INSIGHTS.md` (search for “нетр
 
 ---
 
-## Active Next Step (current mainline)
+## Legacy Next Step (τ=0 / PrimeCert branch)
 
 1) PrimeCert axioms are now **certificate-backed** (hash-checked):
    `prime_b_grid_bounds_data`, `prime_heat_bounds_data`.
