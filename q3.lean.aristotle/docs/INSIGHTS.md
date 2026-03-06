@@ -1461,3 +1461,66 @@ Recommended progress tracking:
   axiom impact, parameter contract frozen?
 - Highest-priority blocker is now not “compute PrimeHeat again”, but
   “freeze the scale contract of the paper mainline”.
+
+## Synthesis (2026-03-07, in progress) — honest target is pair/evenized `t_critical`, not scalar `phi_shift`
+
+Exact live blocker and wiring:
+- Active chain is still
+  `Q3.Main -> PaperMainlineAtomRoute -> CompatibilityReduction -> Q_nonneg_t_critical`.
+- The only nonstandard project axiom in the live scalar node remains
+  `Q3.prime_term_le_at_t_critical_axiom`, as confirmed by
+  `#print axioms Q3.Main.RH_of_Weil_and_Q3`.
+- This axiom is consumed in `Q3/Proofs/Q_nonneg_t_critical.lean` by
+  `prime_term_le_at_t_critical -> Q_phi_shift_nonneg_t_critical ->
+   Q_phi_shift_pair_nonneg_t_critical -> Q_Fejer_heat_atom_nonneg_t_critical`.
+
+Local search / blocker audit:
+- Semantic search must be run from the repo root. Running
+  `./scripts/research_oracle.py` from `q3.lean.aristotle/` fails because the
+  script only exists at the top level.
+- Five local embedding queries were attempted for the new blocker. Three failed
+  with `SQLiteError: database is locked / SQLITE_BUSY_RECOVERY`; the two that
+  returned results only surfaced stale `tau=0` / old-axiom notes and did not
+  produce a direct pair/evenized closure lemma.
+- External web search (primary-source oriented) found only general Weil-criterion
+  structure results, e.g. Connes--Consani on restricting to compactly supported
+  convolution-square test functions. Useful philosophically, but not a direct
+  proof of our shifted-evenized `t_critical` lemma.
+
+New local theorem support added:
+- `Q3/Proofs/PrimeTerm_t_bridge.lean` now contains:
+  `PrimeTermBridge.prime_term_phi_shift_tcritical_le_cap`
+  and
+  `PrimeTermBridge.prime_term_phi_shift_tcritical_le_exp_rho_oneK`.
+- These compile and expose the honest bridge
+  `prime_term(phi_shift at t_critical) <= exp_tcrit_to_rkhs(K) * R`,
+  with the RKHS cap route providing `R = rho_oneK K`.
+
+Critical no-go discovered immediately:
+- `rho_oneK` is defined as
+  `exp(8 * pi^2 * t_rkhs_cap * K^2) * rho_one`, so the `t_critical -> t_rkhs_cap`
+  transport carries a huge exponential penalty.
+- Numerically,
+  `t_rkhs_cap = 40/(16*pi^2) ≈ 0.2533029591`,
+  and already at `K = 1` we have
+  `exp_tcrit_to_rkhs(1) ≈ 1.2151333e7`.
+- Therefore the old single-scale budget
+  `rho_one <= c_star / 4`
+  does **not** control
+  `exp_tcrit_to_rkhs(K) * rho_oneK(K)`;
+  the bridge explodes instead of closing the scalar inequality.
+- So the plan item “prove the same-signature scalar theorem by combining RKHS cap
+  with the existing `c_star` floor” is false as an implementation path.
+
+Consequence for the active proof strategy:
+- Do **not** send Aristotle after the old target
+  `prime_term_le_at_t_critical_axiom` with the same signature.
+- The honest next target is one of:
+  1. `Q_phi_shift_pair_nonneg_t_critical`,
+  2. `Q_Fejer_heat_atom_nonneg_t_critical`,
+  3. or a minimal new assumption that closes exactly one of those two theorems.
+- The right request should explicitly reuse the new bridge lemmas and the existing
+  decomposition
+  `Fejer_heat_atom_eq_phi_shifts`,
+  but it must allow Aristotle to return a weaker theorem or an explicit obstruction
+  if pair/evenized positivity still needs one extra ingredient.

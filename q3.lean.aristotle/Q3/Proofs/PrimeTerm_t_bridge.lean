@@ -3,6 +3,7 @@ import Q3.Proofs.Params_Critical
 import Q3.Proofs.ShiftedWindows
 import Q3.Proofs.A3_bridge_rayleigh_first
 import Q3.Proofs.Rayleigh_Q_identification
+import Q3.Proofs.RKHS_cap_rayleigh
 
 set_option linter.mathlibStandardSet false
 
@@ -295,6 +296,45 @@ lemma prime_term_phi_shift_tcritical_le (K B tau : ℝ)
           Q3.w_Q n * (exp_tcrit_to_rkhs K * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n)) := hsum_le
     _ = exp_tcrit_to_rkhs K *
         ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) := hfactor
+
+lemma prime_term_phi_shift_tcritical_le_cap (K B tau R : ℝ)
+    [Fintype (Q3.Nodes K)] (hB : 0 < B) (hK : |tau| + B ≤ K)
+    (hcap :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) ≤ R) :
+    Q3.prime_term (fun ξ => Q3.phi_shift B t_critical tau ξ) ≤
+      exp_tcrit_to_rkhs K * R := by
+  have hprime :=
+    prime_term_phi_shift_tcritical_le (K := K) (B := B) (tau := tau) hB hK
+  have hexp_nonneg : 0 ≤ exp_tcrit_to_rkhs K := by
+    unfold exp_tcrit_to_rkhs
+    exact (Real.exp_pos _).le
+  have hcap' :
+      exp_tcrit_to_rkhs K *
+          ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) ≤
+        exp_tcrit_to_rkhs K * R := by
+    exact mul_le_mul_of_nonneg_left hcap hexp_nonneg
+  exact le_trans hprime hcap'
+
+lemma prime_term_phi_shift_tcritical_le_exp_rho_oneK (K B tau : ℝ)
+    [Fintype (Q3.Nodes K)] (hB : 0 < B) (hK : |tau| + B ≤ K) :
+    Q3.prime_term (fun ξ => Q3.phi_shift B t_critical tau ξ) ≤
+      exp_tcrit_to_rkhs K * Q3.Proofs.rho_oneK K := by
+  have hcap :
+      ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) ≤
+        Q3.Proofs.rho_oneK K := by
+    have hprime_eq :
+        Q3.prime_term (fun ξ => Q3.phi_shift B t_rkhs_cap tau ξ) =
+          ∑ n : Q3.Nodes K, Q3.w_Q n * Q3.phi_shift B t_rkhs_cap tau (Q3.xi_n n) := by
+      simpa using
+        (Q3.Proofs.RayleighQId.prime_term_eq_nodes_sum_shift
+          (B := B) (t := t_rkhs_cap) (tau := tau) (K := K) hB hK)
+    have hprime_le :
+        Q3.prime_term (fun ξ => Q3.phi_shift B t_rkhs_cap tau ξ) ≤
+          Q3.Proofs.rho_oneK K :=
+      Q3.Proofs.prime_term_phi_shift_le_rho_oneK (K := K) (B := B) (tau := tau) hB hK
+    simpa [hprime_eq] using hprime_le
+  exact prime_term_phi_shift_tcritical_le_cap
+    (K := K) (B := B) (tau := tau) (R := Q3.Proofs.rho_oneK K) hB hK hcap
 
 lemma prime_term_phi_shift_tsym_le_cap (K B tau R : ℝ)
     [Fintype (Q3.Nodes K)] (hB : 0 < B) (hK : |tau| + B ≤ K)
