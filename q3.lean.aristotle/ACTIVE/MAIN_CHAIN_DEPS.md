@@ -1,12 +1,15 @@
-# Main Chain Dependencies vs Repo Legacy (2026-02-03 15:18)
+# Main Chain Dependencies vs Repo Legacy (2026-03-06 16:40)
 
 **Purpose:** Separate *actual main-chain blockers* from legacy/sandbox noise.  
-**Current status:** Main-chain depends on **3 Q3 data axioms** + 1 classical.
-Standard axioms are back to the usual 3 (no `native_decide` in the chain).  
-**Next action:** Decide whether to merge the two heat cert axioms back into
-a single bundle to keep the project axiom count at 3.
-**Decision (2026-01-29):** Option A selected — keep cert‑data axioms in main chain,
-hash‑checked, and move on to other blockers.
+**Current status:** compiled `Q3.Main.RH_of_Weil_and_Q3` now depends on
+**2 project axioms**:
+`Q3.Weil_criterion` and `Q3.prime_term_le_at_t_critical_axiom`.
+Standard axioms are the usual 3:
+`propext`, `Classical.choice`, `Quot.sound`.  
+**Next action:** repair the scalar shifted-atom node honestly and stop treating
+old `τ=0`/PathB dashboards as if they were still the active RH chain.
+**Decision (2026-03-06):** source of truth is the live shifted-atom route
+coming from `Q3/Main.lean`, not the older `τ=0` certificate branch.
 **Links:** `Q3/CheckAxioms.lean` · `Q3/Main.lean` · `ACTIVE/orchestrator.md`
 
 ---
@@ -23,17 +26,28 @@ This prints the *actual axioms used by* `Q3.Main.RH_of_Weil_and_Q3`.
 
 ## 2) Main-chain dependencies (current)
 
-From `#print axioms Q3.Main.RH_of_Weil_and_Q3`:
+From
+`printf 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3\n' | lake env lean --stdin`:
 
 - Tier-1 / classical:
-  - `Q3.Weil_criterion_tau0`
-  - (Note) `Q3.Schur_test` exists in `Q3/Axioms.lean`, but is **not** in the current
-    `#print axioms Q3.Main.RH_of_Weil_and_Q3` output (verify via `Q3/CheckAxioms.lean`).
+  - `Q3.Weil_criterion`
 
-- Tier-2 / Q3-specific (τ=0 mainline):
-  - `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
-  - `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
-  - `Q3.Proofs.PrimeCert.prime_heat_bucket_data`
+- Tier-2 / Q3-specific (active shifted-atom route):
+  - `Q3.prime_term_le_at_t_critical_axiom`
+
+Notes (2026-03-06):
+- Активная цепочка идёт через
+  `Q3.Main -> Q3.RH_of_shifted_atom_route -> PaperMainlineAtomRoute ->
+   CompatibilityReduction -> Q_nonneg_t_critical`.
+- `Q3.Weil_criterion_tau0`, `Q3.prime_cert_margin_from_pathB`,
+  `Q3.prime_cert_margin_from_rkhs` и PrimeCert cert-data
+  **не входят** в текущий `#print axioms Q3.Main.RH_of_Weil_and_Q3`.
+- Теоремы `Q_phi_shift_pair_nonneg_t_critical` и
+  `Q_Fejer_heat_atom_nonneg_t_critical` уже экспортированы, но пока разворачиваются
+  в тот же scalar placeholder.
+- Локальная численная запись в `docs/INSIGHTS.md` уже помечает полный
+  `τ`-uniform scalar claim как false-for-now, так что чинить надо контракт,
+  а не только имя аксиомы.
 
 Standard Mathlib axioms (`propext`, `Classical.choice`, `Quot.sound`) are always present.
 
@@ -41,11 +55,11 @@ Standard Mathlib axioms (`propext`, `Classical.choice`, `Quot.sound`) are always
 
 | Node / Axiom | File | Why it blocks the chain |
 |---|---|---|
-| `prime_b_grid_bounds_data` | `Q3/Proofs/PrimeCert/BrangeCert_2046.lean` | Grid arch/prime bounds data |
-| `prime_heat_bounds_arch_data` | `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean` | Heat-weighted arch integral bound |
-| `prime_heat_bucket_data` | `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean` | Bucketed prime-heat partial sum certificate |
-| `Weil_criterion_tau0` | `Q3/Axioms.lean` | classical bridge `Q >= 0` ⇒ RH (τ = 0 mainline) |
-| `Schur_test` | `Q3/Axioms.lean` | legacy / off‑chain in current mainline |
+| `prime_term_le_at_t_critical_axiom` | `Q3/Proofs/Q_nonneg_t_critical.lean` | единственный project placeholder в active shifted-atom scalar node |
+| `Weil_criterion` | `Q3/Axioms.lean` | classical bridge `Q >= 0` on `Weil_cone` ⇒ RH |
+| `Q_phi_shift_nonneg_t_critical` | `Q3/Proofs/Q_nonneg_t_critical.lean` | theorem wrapper directly fed by the scalar axiom |
+| `Q_Fejer_heat_atom_nonneg_t_critical` | `Q3/Proofs/Q_nonneg_t_critical.lean` | paper-facing scalar theorem name, but not yet independent |
+| `CompatibilityReduction` | `Q3/Proofs/CompatibilityReduction.lean` | closure machinery is theoremized and ready once scalar node is honest |
 
 ## 4) Why raw counts look huge
 
@@ -59,8 +73,10 @@ These are **not** imported by `Q3/Main.lean` and do not affect the current main 
 
 ## 6) Off‑chain notes
 
-- `Q3.prime_term_le_at_t_critical_axiom` lives in `Q3/Proofs/Q_nonneg_t_critical.lean`
-  for the **τ ≠ 0** path; the τ=0 mainline does **not** depend on it.
+- The older `τ=0` branch (`Weil_criterion_tau0`, `prime_cert_margin_from_pathB`,
+  `prime_cert_margin_from_rkhs`, PrimeCert data axioms) remains useful as
+  archive / fallback analysis, but is **not** the active `Q3.Main` chain anymore.
+- Raw repo references to those names are expected in legacy files and notes.
 
 ## 5) Quick commands (sanity check)
 

@@ -51,6 +51,39 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Synthesis (2026-03-06, in progress) — source-of-truth reset for the active shifted-atom mainline
+
+Цель: перестать путать старый `τ=0` narrative с реально compiled RH-цепочкой.
+
+Проверенное состояние:
+- `printf 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3\n' | lake env lean --stdin`
+  сейчас даёт
+  `Q3.Weil_criterion` и `Q3.prime_term_le_at_t_critical_axiom`
+  плюс стандартные `propext`, `Classical.choice`, `Quot.sound`.
+- Активная route уже не `τ=0`:
+  `Q3.Main -> PaperMainlineAtomRoute -> CompatibilityReduction -> Q_nonneg_t_critical`.
+- `Q_Fejer_heat_atom_nonneg_t_critical` и
+  `Q_phi_shift_pair_nonneg_t_critical` существуют как theorem names, но не закрыты
+  математически: они всё ещё разворачиваются в
+  `Q_phi_shift_nonneg_t_critical`, а тот прямо сидит на
+  `prime_term_le_at_t_critical_axiom`.
+- Старый локальный numeric note по-прежнему действует:
+  full `τ`-uniform scalar statement behind that axiom marked false-for-now
+  (`min Q = -911.2678` at `τ = 1.689` for `t = 0.15`).
+
+Tooling status:
+- embedding-search по локальной qmd-базе в этом проходе был технически заблокирован:
+  четыре запуска `./scripts/research_oracle.py query ... -c q3_docs`
+  вернули `SQLiteError: database is locked` / `SQLITE_BUSY_RECOVERY`.
+- Внешний web search был выполнен как fallback, но не дал решающего theorem-path.
+
+Вывод:
+1) Нельзя честно считать scalar node уже закрытым только потому, что есть theorem wrappers.
+2) Нельзя переписывать paper как already-closed chain, пока active scalar contract не исправлен.
+3) Правильная следующая цель: не “доказать любой ценой старый сильный `phi_shift`-claim”,
+   а заменить его honest weaker theorem на правильном paper-generator
+   (`phi_shift`-pair / shifted evenized atom).
+
 ## Synthesis (2026-03-06, in progress) — Compatibility theorem via shifted evenized atoms
 
 Цель: вернуть mainline к бумаге и убрать ложный `τ=0` closure-нарратив.

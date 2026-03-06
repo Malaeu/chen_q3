@@ -2,13 +2,25 @@
 ## Lean Formalization of Riemann Hypothesis
 
 **Purpose:** Single entry point for live status + next step.  
-**Current status:** `Q3.Main.RH_of_Weil_and_Q3` доказан условно через `h_margin_cert`; в main-chain по `check_axioms` остается только `Weil_criterion_tau0`.  
-**Next action:** Закрыть `h_margin_cert` по 8-шаговому плану в секции `Roadmap (2026-02-06)` ниже.  
+**Current status:** активная вершина уже переведена на shifted-atom route
+`Q3.Main -> PaperMainlineAtomRoute -> CompatibilityReduction -> Q_nonneg_t_critical`,
+и живой `#print axioms Q3.Main.RH_of_Weil_and_Q3` сейчас даёт
+`Q3.Weil_criterion` и `Q3.prime_term_le_at_t_critical_axiom`
++ стандартные `propext`, `Classical.choice`, `Quot.sound`.
+Это лучше старого `τ=0`/PathB narrative, но scalar-узел ещё не закрыт честно:
+`Q_Fejer_heat_atom_nonneg_t_critical` остаётся theorem-wrapper поверх
+`prime_term_le_at_t_critical_axiom`, а локальные численные заметки уже помечают
+полный `τ`-uniform scalar claim как false-for-now.  
+**Next action:** сначала заморозить этот source of truth во всех статусах и не
+переписывать paper как уже закрытую theorem-chain. Дальше целиться не в старый
+сильный `phi_shift`-claim, а в честный weaker scalar contract на правильном
+paper-generator (`phi_shift`-pair / shifted evenized atom), и только после этого
+делать полный paper rewrite.
 **Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `ACTIVE/chain_status.md` · `ACTIVE/KNOWLEDGE_BASE.md` · `docs/INSIGHTS.md`
 
 ---
 
-Last Updated: 2026-02-09
+Last Updated: 2026-03-06
 Single entry point: read this file at session start.
 
 ## Quick Start
@@ -23,7 +35,47 @@ Single entry point: read this file at session start.
 5) **Застрял > 30 мин?** → Запроси Прошку (см. `docs/INSIGHTS.md` секция "Прошка").
 6) Hub for active docs/db/scripts: `ACTIVE/` (symlink index).
 
-## Roadmap (2026-02-06): закрытие Tier-2/Tier-3 (Tier-1 Weil оставляем)
+## Recommended Roadmap (2026-03-06): lean-first source-of-truth reset
+
+Цель: сначала честно синхронизировать live Lean, dashboards и paper narrative,
+а уже потом делать большой rewrite.
+
+0) **Freeze the live chain.**
+   - Активной считать именно текущую compiled route:
+     `Q3.Main -> PaperMainlineAtomRoute -> CompatibilityReduction -> Q_nonneg_t_critical`.
+   - Актуальный axiom profile:
+     `Q3.Weil_criterion` + `Q3.prime_term_le_at_t_critical_axiom`
+     + стандартные аксиомы ядра.
+   - Любые старые записи про `Weil_criterion_tau0` / `prime_cert_margin_from_pathB`
+     как будто они всё ещё active mainline, считать устаревшими.
+
+1) **Do not oversell the scalar node.**
+   - Теоремы `Q_phi_shift_pair_nonneg_t_critical` и
+     `Q_Fejer_heat_atom_nonneg_t_critical` существуют как имена,
+     но пока не закрывают основной математический риск, потому что
+     разворачиваются в `prime_term_le_at_t_critical_axiom`.
+   - Значит paper ещё нельзя честно объявлять как “полностью закрытую”
+     shifted-atom theorem-chain.
+
+2) **Repair the scalar contract, not the old false strong claim.**
+   - Полный `τ`-uniform scalar placeholder уже отмечен в локальных численных notes
+     как false-for-now, так что цель не “доказать тот же axiom как theorem любой ценой”.
+   - Правильная цель: найти честный weaker theorem на нужном paper generator:
+     либо symmetric pair
+     `Q(phi_shift_critical B τ) + Q(phi_shift_critical B (-τ)) ≥ 0`,
+     либо сразу
+     `Q(Fejer_heat_atom B t0_critical τ) ≥ 0`.
+
+3) **Only after scalar closure, rewrite the paper mainline.**
+   - Тогда уже вводить paper-contract `W_R`, `D_R`, `C_R`,
+     переписывать `A1prime.tex` и `Main_closure.tex`,
+     и вычищать provisional compatibility language.
+
+4) **Keep legacy routes explicitly legacy.**
+   - `τ=0`, PathB, PrimeHeat/Grid cert tables и старые dashboards полезны как архив
+     и для fallback-анализа, но не должны описываться как active RH route.
+
+## Legacy Roadmap (2026-02-06): закрытие Tier-2/Tier-3 через PrimeCert certificates
 
 Цель: получить `RH_of_Weil_and_Q3 : Q3.RH` без параметра `h_margin_cert`, оставив внешним только `Weil_criterion_tau0`.
 

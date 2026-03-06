@@ -35,7 +35,7 @@ Updated: 2026-03-06
 | A1' shifted density | `full/sections/A1prime.tex` | `Q3/Proofs/A1prime/A1_density_fixed_t0.lean` | theorem exists | reuse directly |
 | A2 continuity | `full/sections/A2.tex` | `Q3/Proofs/Q_Lipschitz.lean` | theorem exists | reuse directly |
 | Compatibility reduction | `full/sections/Main_closure.tex` | `Q3/Proofs/CompatibilityReduction.lean` | theoremized on 2026-03-06 | keep as canonical reduction node |
-| Scalar generator positivity | `full/sections/Main_closure.tex`, new Prop. `compatibility-reduction-shifted-atoms` | currently no dedicated Lean theorem | missing | prove `Q (Fejer_heat_atom B t0_critical τ) ≥ 0` |
+| Scalar generator positivity | `full/sections/Main_closure.tex`, new Prop. `compatibility-reduction-shifted-atoms` | `Q3.Q_Fejer_heat_atom_nonneg_t_critical` | theorem name exists, but still inherits scalar placeholder | replace the placeholder by an honest weaker theorem |
 | Weil linkage | `full/sections/Weil_linkage.tex` | `Q3/Main.lean` | stable | wire only after scalar node is closed |
 
 ## What We No Longer Pretend
@@ -45,10 +45,9 @@ Updated: 2026-03-06
 - `prime_heat_bounds_arch_data` is **not** the right first blocker for paper mainline.
 - Positivity of a single shifted window `phi_shift` is stronger than needed; the paper only needs positivity of the evenized shifted atom `Fejer_heat_atom`.
 
-## Scalar Node Now Realized
+## Scalar Node Exported But Not Closed
 
-For each compact `K ≥ 1`, the missing scalar theorem is now present in Lean in
-its exact paper form:
+For each compact `K ≥ 1`, the paper-facing scalar theorem name is now exported in Lean:
 
 ```lean
 theorem Q_Fejer_heat_atom_nonneg_t_critical
@@ -64,8 +63,18 @@ theorem Q_phi_shift_pair_nonneg_t_critical
     0 ≤ Q (phi_shift_critical B τ) + Q (phi_shift_critical B (-τ))
 ```
 
-Because of this, the rest of the compact closure is no longer hypothetical. It
-is already formalized:
+But this is not yet a mathematical closure of the scalar node.
+Right now the dependency chain is:
+
+1. `Q_phi_shift_nonneg_t_critical`
+2. `Q_phi_shift_pair_nonneg_t_critical`
+3. `Q_Fejer_heat_atom_nonneg_t_critical`
+
+and step 1 is still just a wrapper around
+`prime_term_le_at_t_critical_axiom`.
+
+So the compact closure machinery below is theoremized and reusable, but it is
+not yet fed by an honest scalar theorem:
 
 1. `Q_nonneg_on_atomcone_fixed_tcritical_of_shifted_evenized_atoms`
 2. `Q_nonneg_on_WK_tcritical_of_shifted_evenized_atoms`
@@ -95,13 +104,13 @@ Theorems:
 - `Q_nonneg_on_Weil_cone_current_atom_route`
 - `RH_of_shifted_atom_route`
 
-These theorems now split cleanly into:
+These theorems split cleanly into:
 - scalar positivity at `t_critical` in `Q_nonneg_t_critical.lean`;
 - closure transfer in `CompatibilityReduction.lean`.
 
-That is exactly the paper architecture we wanted: the scalar inequality is no
-longer a missing node, and the closure machinery stays separate from legacy
-prime-cert plumbing.
+That separation is the right paper architecture. The remaining problem is that
+the scalar file still closes through the old placeholder, so the architecture is
+ready but the last mathematical gate is not yet honest.
 
 ## New Mainline Vertex
 
@@ -123,13 +132,15 @@ Current axiom profile of the new top theorem:
 
 This is the first top-level RH theorem in the tree that no longer mentions
 `Weil_criterion_tau0` or `prime_cert_margin_from_pathB` in its own axiom list.
+But it still depends on `prime_term_le_at_t_critical_axiom`, so this must be
+read as a structural source-of-truth win, not as the final closure of the paper.
 
 ## Recommended Refactor Order
 
 1. Keep `Q3/Proofs/CompatibilityReduction.lean` as the canonical closure hub.
-2. Treat `Q3/Proofs/Q_nonneg_t_critical.lean` as the scalar source of truth for the active `t_critical` route.
+2. Treat `Q3/Proofs/Q_nonneg_t_critical.lean` as the scalar source of truth for the active `t_critical` route, but do not confuse theorem wrappers with closure.
 3. Keep `phi_shift` positivity explicitly auxiliary; the paper-facing node is `Q_Fejer_heat_atom_nonneg_t_critical`.
-4. `Q3/Main.lean` is now rewired through the atom route and simply re-exports the shifted-atom theorem.
+4. `Q3/Main.lean` is already rewired through the atom route; the remaining job is to replace its scalar placeholder, not to rewire the top theorem again.
 5. Continue deleting stale comments and docs that still describe `τ=0` centered closure as if it were the active main paper path.
 
 ## Progress Labels
@@ -147,4 +158,5 @@ Each node should be tracked with:
 
 1. Propagate the new axiom profile into every remaining status/dashboard file that still claims the active chain uses `Weil_criterion_tau0` or `prime_cert_margin_from_pathB`.
 2. Avoid reintroducing the false detour “prove positivity of each `phi_shift`” as the main theorem target.
-3. Reuse `A1' + A2 + T5_transfer_of_atoms` exactly as packaged now.
+3. Replace `prime_term_le_at_t_critical_axiom` by an honest weaker scalar contract on the paper generator before any full paper rewrite.
+4. Reuse `A1' + A2 + T5_transfer_of_atoms` exactly as packaged now.

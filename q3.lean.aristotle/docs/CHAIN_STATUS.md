@@ -1,9 +1,14 @@
-# Chain Status (single-scale t_critical)
+# Chain Status (shifted evenized `t_critical` route)
 
 **Purpose:** Canonical, minimal chain summary for the current mainline.  
 **Current status:** Use `Q3/CheckAxioms.lean` as the authoritative dependency list.  
-**Next action:** Close the three main-chain Q3 data axioms listed in `ACTIVE/MAIN_CHAIN_DEPS.md`.  
-**Decision (2026-01-29):** Option A selected — keep cert‑data axioms (hash‑checked) and move on.
+**Bridge note (2026-03-06):** active `Q3.Main` no longer uses the old `τ=0`
+margin gate; it now goes through the shifted-atom route and inherits a single
+scalar placeholder `Q3.prime_term_le_at_t_critical_axiom`.  
+**Next action:** close or replace that scalar placeholder honestly, then only
+afterwards rewrite the paper as a fully closed theorem-chain.  
+**Decision (2026-03-06):** source of truth is the live compiled shifted-atom
+route, not the older `τ=0` certificate branch.
 **Links:** `ACTIVE/MAIN_CHAIN_DEPS.md` · `Q3/CheckAxioms.lean` · `ACTIVE/orchestrator.md`
 
 ---
@@ -14,85 +19,88 @@ It is intended to stay aligned with the code after each refactor.
 ## Mainline parameters
 
 - Use single-scale t_critical = 3/20.
-- Use the base-atom cone with tau = 0 (even functions only).
-- Avoid the old two-scale chain (t_sym vs t_rkhs_cap) in the mainline.
+- Use shifted evenized atoms `Fejer_heat_atom B t0_critical τ`.
+- Use the full `Weil_cone` / `W_K` route, not `Weil_cone_tau0`.
+- Avoid the old two-scale chain and the old `τ=0` certificate route in the mainline.
 
 ## Statement Sheet (frozen)
 
 - Formal target (Lean): `Q3.Main.RH_of_Weil_and_Q3`.
-- Logical gate: `Q3.Weil_criterion_tau0` (Q ≥ 0 on `Weil_cone_tau0` ↔ RH).
-- Normalization: `t_critical = 3/20`, `tau = 0`, `B ∈ [B_min, B_max]`.
+- Logical gate: `Q3.Weil_criterion` (Q ≥ 0 on `Weil_cone` ↔ RH).
+- Normalization: `t_critical = 3/20`, `t0_critical = 1/(16π² t_critical)`,
+  generator `Fejer_heat_atom B t0_critical τ`, support condition `|τ| + B ≤ K`.
 
 ## Assumption Stack (mainline)
 
 - Standard/kernel: `propext`, `Classical.choice`, `Quot.sound`.
-- External math: `Q3.Weil_criterion_tau0`.
-- Numeric cert data: `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`,
-  `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`,
-  `Q3.Proofs.PrimeCert.prime_heat_bucket_data`.
+- External math: `Q3.Weil_criterion`.
+- Scalar placeholder: `Q3.prime_term_le_at_t_critical_axiom`.
 - Everything else in the chain is a theorem.
 
 ## Notation Glossary (frozen, minimal)
 
 - `Q*(t; Phi) = arch_term - prime_term` (see `Q_STAR_DEFINITIONS.md`).
 - `w_Q(n) = 2*Λ(n)/√n`, `xi_n = log n / (2π)`.
-- `Phi_{B,t}` = Fejér–heat window, `P_A` = symbol (period 1).
+- `phi_shift_critical B τ` = shifted Fejér×heat window at `t_critical`.
+- `Fejer_heat_atom B t0_critical τ` = evenized shifted atom used by A1'.
+- `P_A` = symbol (period 1).
 
 ## Revision Log (local)
 
 - 2026-02-03: added statement sheet, assumption stack, notation glossary.
 - 2026-02-04: align PrimeHeat axioms (`prime_heat_bounds_arch_data`, `prime_heat_bucket_data`).
+- 2026-03-06: source-of-truth reset to active shifted-atom route.
 
 ## Current chain (code-level)
 
-1) A3 floor (archimedean lower bound)
-- Target: Rayleigh lower bound at t_critical for P_A_shift.
-- Status: axiomatized as
-  `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
-  in `Q3/Proofs/SingleScale_Assumptions.lean`.
+1) Scalar positivity node
+- File: `Q3/Proofs/Q_nonneg_t_critical.lean`.
+- Exported theorem names:
+  `Q_phi_shift_pair_nonneg_t_critical`,
+  `Q_Fejer_heat_atom_nonneg_t_critical`.
+- Reality: both still inherit
+  `prime_term_le_at_t_critical_axiom` through
+  `Q_phi_shift_nonneg_t_critical`.
 
-2) RKHS prime cap
-- Implemented in `Q3/Proofs/RKHS_cap_rayleigh.lean`.
-- Includes C1 compression identity (basisFun and dictionary embedding) and
-  RKHS cap wiring at t_rkhs_cap.
+2) Compact closure node
+- File: `Q3/Proofs/CompatibilityReduction.lean`.
+- Status: theoremized.
+- Content: A1' density + A2 continuity + scalar positivity on shifted evenized atoms
+  imply positivity on every `W_K K`.
 
-3) Prime sum cap at t_critical
-- Theorem `prime_sum_phi_shift_le_cstar_quarter` (proved) in
-  `Q3/Proofs/SingleScale_Assumptions.lean`.
-- Uses the t-bridge `exp_tcrit_to_rkhs` from
-  `Q3/Proofs/PrimeTerm_t_bridge.lean` and the numeric axiom
-  `SingleScale.rho_oneK_tcritical_le_cstar_quarter`.
+3) Global Weil node
+- File: `Q3/Proofs/PaperMainlineAtomRoute.lean`.
+- Status: theoremized.
+- Content: extract `K ≥ 1` from `Φ ∈ Weil_cone`, apply compact closure, then `Weil_criterion`.
 
 ## Main-chain blockers (authoritative)
 
-These are the only Q3-specific axioms blocking the **current** main chain:
+These are the only nonstandard axioms blocking the **current** main chain:
 
-- `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data`
-- `Q3.Proofs.PrimeCert.prime_heat_bucket_data`
+- `Q3.Weil_criterion`
+- `Q3.prime_term_le_at_t_critical_axiom`
 
 Authoritative check:
 ```bash
 lake env lean Q3/CheckAxioms.lean
 ```
 
-Off-chain / legacy (not in `#print axioms Q3.Main.RH_of_Weil_and_Q3`):
-- `Q3.prime_term_le_at_t_critical_axiom` (τ ≠ 0 path placeholder)
+Important note:
+- `Q3.prime_term_le_at_t_critical_axiom` is in the active chain, but local repo notes
+  already mark the full `τ`-uniform scalar claim as false-for-now.
+- So the current mainline is structurally informative, but not yet the final honest proof object.
 
 ## Note on Tier-1 axioms
 
 The authoritative `#print axioms Q3.Main.RH_of_Weil_and_Q3` output currently includes
-`Q3.Weil_criterion_tau0` (τ = 0 mainline). It does **not** include `Q3.Schur_test`,
-even though `Q3/CheckAxioms.lean` still `#check`s that constant exists.
+`Q3.Weil_criterion`. It does **not** include `Q3.Weil_criterion_tau0`,
+`Q3.prime_cert_margin_from_pathB`, or `Q3.Schur_test`,
+even though those names still exist elsewhere in the tree.
 
 ## Legacy (not in the current main chain)
 
-The older SingleScale axioms list is **legacy** and no longer load-bearing in
-`Q3/Main.lean`. Keep it only for reference/archival:
-
-- `SingleScale.continuous_P_A_shift`
-- `SingleScale.rayleigh_basis0_shift_ge_cstar_quarter`
-- `SingleScale.rho_oneK_tcritical_le_cstar_quarter`
+The older `τ=0` / PathB / PrimeCert mainline descriptions are **legacy** and no
+longer load-bearing in `Q3/Main.lean`. Keep them only for reference/archival.
 
 See `ACTIVE/refs/legacy_two_scale_index.md` for legacy context.
 

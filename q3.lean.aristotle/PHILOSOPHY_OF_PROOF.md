@@ -2,7 +2,7 @@
 
 **Author:** Eugen Malamutmann
 **Project:** Q3 - Formal Verification of Riemann Hypothesis Proof Structure
-**Last Updated:** 2026-01-26
+**Last Updated:** 2026-03-06
 
 ---
 
@@ -41,11 +41,11 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│  IF these 5 mathematical statements are true (2 classical + 3 Q3)  │
+│  IF these 5 mathematical statements are true (1 classical + 1 project + 3 standard)  │
 │  THEN RH is true.                                                  │
 │                                                                    │
 │  Lean verifies: the logical implication is CORRECT.                │
-│  Human verifies: the 5 statements match what's in the paper.       │
+│  Human verifies: the nonstandard statements match the paper route. │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -65,8 +65,16 @@ The risk: If we just `axiom` everything, critics can say "you just assumed the a
 
 ## Axiom Classification
 
-As of **2026-01-29**, `#print axioms Q3.Main.RH_of_Weil_and_Q3` reports **6 axioms** total:
-3 kernel/standard + 3 project.
+As of **2026-03-06**, `#print axioms Q3.Main.RH_of_Weil_and_Q3` reports **5 axioms** total:
+3 kernel/standard + 2 project.
+
+Important honesty note:
+- the active top-level route is now the shifted-atom paper route, not the old `τ=0` branch;
+- the remaining project placeholder is
+  `Q3.prime_term_le_at_t_critical_axiom`;
+- local repo notes already mark the full `τ`-uniform scalar claim behind that
+  placeholder as false-for-now, so the current theorem chain is structurally useful
+  but not yet the final credible closed proof object.
 
 ### Level 0a: Standard Lean/Mathlib (3) — UNIVERSALLY ACCEPTED
 - `propext` — propositional extensionality
@@ -81,7 +89,7 @@ We eliminated `native_decide` from the PrimeCert table checks, so
 `Lean.ofReduceBool` / `Lean.trustCompiler` no longer appear in the main chain.
 
 ### Level 1: Classical Results from Literature (1) — ESTABLISHED MATHEMATICS
-- `Weil_criterion_tau0` — Weil 1952, τ=0 mainline cone: `Q ≥ 0` on `Weil_cone_tau0` ⟺ RH
+- `Weil_criterion` — Weil criterion on the full `Weil_cone`: `Q ≥ 0` on `Weil_cone` ⟺ RH
 
 These are well-known results. Citations:
 - Weil, A. (1952). "Sur les 'formules explicites' de la théorie des nombres premiers"
@@ -92,26 +100,33 @@ These are well-known results. Citations:
 - `A1_density_WK_axiom` → closed (A1_density_WK_thm)
 - `Q_nonneg_on_atoms_of_A3_Fourier_RKHS` → closed via Q_nonneg_atoms_closure
 
-### Level 2: One‑Scale Numeric Certificates @ `t_critical` (3) — TEMPORARY BRIDGE
-- `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data` — grid arch/prime bounds (data axiom), in `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data` — heat arch integral bound (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean`
-- `Q3.Proofs.PrimeCert.prime_heat_bucket_data` — bucketed prime‑heat partial sum (data axiom), in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_SumData.lean`
+### Level 2: Active Project Placeholder (1) — TEMPORARY AND MATHEMATICALLY UNSTABLE
+- `Q3.prime_term_le_at_t_critical_axiom` — scalar placeholder in
+  `Q3/Proofs/Q_nonneg_t_critical.lean` asserting
+  `prime_term (phi_shift_critical B τ) ≤ arch_term (phi_shift_critical B τ)`
+  for all admissible `(B, τ)`.
 
-These are certificate-backed axioms (see `output/prime_cert_tcritical_2026-01-26_0046.txt`,
-`output/prime_cert_brange_tcritical_interval_2026-01-30_2206.txt`, and
-`output/prime_cert_brange_heat_L_interval_2026-01-30_2309.txt`,
-`output/prime_cert_brange_heat_prime_partial_interval_2026-01-31_0009.txt`) and are expected to be replaced by a fully formal certificate proof.
-The partial+tail scaffold (`BrangeHeatCert_2026_01_28_Partial.lean`) now proves the
-prime‑heat sum bound from `prime_heat_bucket_data` + tail.
+This is the only remaining project-specific nonclassical placeholder in the active
+shifted-atom RH chain. It currently feeds:
+- `Q_phi_shift_nonneg_t_critical`,
+- `Q_phi_shift_pair_nonneg_t_critical`,
+- `Q_Fejer_heat_atom_nonneg_t_critical`,
+- `CompatibilityReduction`,
+- `PaperMainlineAtomRoute`,
+- `Q3.Main.RH_of_Weil_and_Q3`.
 
-**Important:** The former “SingleScale axioms” are now THEOREMS and do not appear in `#print axioms`.
+**Important:** theorem names above exist, but they are not yet independent of the
+placeholder. So theorem-level packaging is not the same as closure.
 
 ### Level 3: Technical Bridge Lemmas (0) — CLOSED
 
 arch/prime Lipschitz bridges are now proven in Lean (no longer axioms).
 
-### Off‑Chain Classical Axioms (0 in main chain)
-- `Schur_test` remains defined as an axiom in the codebase, but is **not** in the current main chain.
+### Off‑Chain / Legacy Axioms (0 in active main chain)
+- `Weil_criterion_tau0`, `prime_cert_margin_from_pathB`, `prime_cert_margin_from_rkhs`
+  and the PrimeCert data axioms remain in the tree for legacy `τ=0` and certificate
+  branches, but are **not** in the current `Q3.Main` axiom print.
+- `Schur_test` remains defined as an axiom in the codebase, but is also off-chain.
 
 ---
 
@@ -135,10 +150,8 @@ Expected output:
   propext,                        -- Level 0a: Standard Lean
   Classical.choice,               -- Level 0a: Standard Lean
   Quot.sound,                     -- Level 0a: Standard Lean
-  Q3.Weil_criterion_tau0,          -- Level 1: Weil 1952 (τ=0 cone)
-  Q3.Proofs.PrimeCert.prime_b_grid_bounds_data,         -- Level 2: one‑scale cert data
-  Q3.Proofs.PrimeCert.prime_heat_bounds_arch_data,     -- Level 2: one‑scale cert data
-  Q3.Proofs.PrimeCert.prime_heat_bucket_data           -- Level 2: one‑scale cert data
+  Q3.Weil_criterion,               -- Level 1: full Weil criterion
+  Q3.prime_term_le_at_t_critical_axiom
 ]
 ```
 
@@ -151,33 +164,29 @@ Expected output:
                                     ▲
                                     │
                         ┌───────────┴───────────┐
-                        │  Weil_criterion_tau0  │ ← Level 1 (Weil 1952, τ=0)
-                        │  Q≥0 on Weil_tau0 ⟺ RH│
+                        │   Weil_criterion      │ ← Level 1 (full Weil cone)
+                        │  Q≥0 on Weil_cone ⟺ RH│
                         └───────────┬───────────┘
                                     │
                         ┌───────────┴───────────┐
-                        │ Q_nonneg_on_Weil_cone │ ← THEOREM (τ=0)
-                        │        _tau0          │
+                        │ PaperMainlineAtomRoute│ ← THEOREM
+                        │  Weil_cone → W_K      │
                         └───────────┬───────────┘
                                     │
                         ┌───────────┴───────────┐
-                        │   T5_transfer_tau0    │ ← THEOREM
-                        │ BaseAtoms → W_K_tau0  │
+                        │ CompatibilityReduction│ ← THEOREM
+                        │ shifted atoms → W_K   │
                         └───────────┬───────────┘
                                     │
-              ┌─────────────────────┴─────────────────────┐
-              │                                           │
-    ┌─────────┴─────────┐                       ┌────────┴────────┐
-    │  Q_Lipschitz      │                       │ Q_nonneg_on     │
-    │   (THEOREM!)      │                       │ base_atoms      │
-    └─────────┬─────────┘                       │   _brange       │
-              │                                  └────────────────┘
-              │
-      ┌───────┴────────┐
-      │  arch + prime  │
-      │  Lipschitz     │
-      │  (THEOREM)     │
-      └────────────────┘
+                        ┌───────────┴───────────┐
+                        │ Q_Fejer_heat_atom_    │ ← theorem name
+                        │ nonneg_t_critical     │    but still inherits
+                        └───────────┬───────────┘    scalar placeholder
+                                    │
+                        ┌───────────┴───────────┐
+                        │ prime_term_le_at_     │ ← Level 2 project placeholder
+                        │ t_critical_axiom      │
+                        └───────────────────────┘
 ```
 
 **Key insight:** The boxes marked "THEOREM" are fully machine-checked. The boxes marked "Level X" are our explicit assumptions.
@@ -213,12 +222,10 @@ Our axioms can be eliminated one by one:
 
 | Axiom | How to Eliminate | Difficulty |
 |-------|------------------|------------|
-| `Weil_criterion_tau0` | Major project (Weil explicit formula, τ=0 cone) | Very High |
-| `prime_b_grid_bounds_data` | Fully formalize PrimeCert grid verification | High |
-| `prime_heat_bounds_arch_data` | Formalize the arch integral bound | High |
-| `prime_heat_bucket_data` | Formalize bucketed prime‑heat partial sum | High |
+| `Weil_criterion` | Major project (full Weil explicit formula / full cone normalization) | Very High |
+| `prime_term_le_at_t_critical_axiom` | Replace false strong scalar contract by an honest weaker theorem on the paper generator | High |
 
-Each elimination makes the proof stronger. Current state: **7 axioms total (3 standard + 4 project)**.
+Each elimination makes the proof stronger. Current state: **5 axioms total (3 standard + 2 project)**.
 
 **Recently closed (now theorems):**
 - `digamma_one_fourth_neg` — proven via Aristotle (reflection/duplication formulas)
