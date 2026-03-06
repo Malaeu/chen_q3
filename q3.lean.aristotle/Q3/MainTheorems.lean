@@ -11,6 +11,7 @@ to see the minimal axiom set.
 
 import Q3.AxiomsTheorems
 import Q3.Main
+import Q3.Proofs.PaperMainlineAtomRoute
 
 namespace Q3.MainTheorems
 
@@ -21,8 +22,9 @@ The theorems in Q3.Theorems have the same types as the axioms in Q3.Axioms.
 This means any proof using the axioms can be replicated using the theorems.
 -/
 
--- Re-export the main theorem (it uses axioms internally, but we've proven them)
+-- Re-export the active main theorem
 #check Q3.Main.RH_of_Weil_and_Q3
+#check Q3.RH_of_shifted_atom_route
 
 /-!
 # Direct proof using theorems
@@ -38,9 +40,9 @@ theorem Q_nonneg_on_W_K_thm (K : ℝ) (hK : K ≥ 1) : ∀ Φ ∈ Q3.W_K K, Q3.Q
   -- 3. Q_nonneg_on_atoms (Q ≥ 0 on atoms)
   exact Q3.T5.T5_transfer K hK
 
-/-- RIEMANN HYPOTHESIS on the current τ=0 mainline. -/
+/-- RIEMANN HYPOTHESIS on the active shifted-atom mainline. -/
 theorem RH_proven : Q3.RH :=
-  Q3.Main.RH_of_Weil_and_Q3
+  Q3.RH_of_shifted_atom_route
 
 end Q3.MainTheorems
 
@@ -49,11 +51,11 @@ end Q3.MainTheorems
 
 Run `#print axioms Q3.MainTheorems.RH_proven` to see:
 
-Expected current result:
+Expected current result (main-chain):
 - propext (Lean standard)
 - Classical.choice (Lean standard)
 - Quot.sound (Lean standard)
-- Q3.Weil_criterion_tau0
+- Q3.Weil_criterion
 - Q3.prime_term_le_at_t_critical_axiom
 -/
 

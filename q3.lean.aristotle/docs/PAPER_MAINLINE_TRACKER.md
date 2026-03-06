@@ -129,8 +129,8 @@ This is the first top-level RH theorem in the tree that no longer mentions
 1. Keep `Q3/Proofs/CompatibilityReduction.lean` as the canonical closure hub.
 2. Treat `Q3/Proofs/Q_nonneg_t_critical.lean` as the scalar source of truth for the active `t_critical` route.
 3. Keep `phi_shift` positivity explicitly auxiliary; the paper-facing node is `Q_Fejer_heat_atom_nonneg_t_critical`.
-4. Rewire `Main.lean` only through the atom route, not through legacy Path B narration.
-5. After wiring, delete stale comments that still describe `τ=0` centered closure as if it were the main paper path.
+4. `Q3/Main.lean` is now rewired through the atom route and simply re-exports the shifted-atom theorem.
+5. Continue deleting stale comments and docs that still describe `τ=0` centered closure as if it were the active main paper path.
 
 ## Progress Labels
 
@@ -145,6 +145,6 @@ Each node should be tracked with:
 
 ## Immediate Priority
 
-1. Decide whether to replace `Q3/Main.lean` with the new `PaperMainlineAtomRoute` route or keep the old `τ=0` file as archival compatibility.
+1. Propagate the new axiom profile into every remaining status/dashboard file that still claims the active chain uses `Weil_criterion_tau0` or `prime_cert_margin_from_pathB`.
 2. Avoid reintroducing the false detour “prove positivity of each `phi_shift`” as the main theorem target.
 3. Reuse `A1' + A2 + T5_transfer_of_atoms` exactly as packaged now.

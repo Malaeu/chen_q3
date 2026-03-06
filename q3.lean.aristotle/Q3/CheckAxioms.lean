@@ -5,11 +5,11 @@ Q3 Formalization: Axiom Dependency Check
 This file verifies all axiom dependencies for CI.
 Run: `lake env lean Q3/CheckAxioms.lean`
 
-Expected output: List of axioms used in RH_of_Weil_and_Q3
+Expected output: List of axioms used by the active RH theorem
 -/
 
 import Q3.Main
-import Q3.Proofs.Q_nonneg_t_critical
+import Q3.Proofs.PaperMainlineAtomRoute
 
 /-!
 # Axiom Dependency Verification
@@ -34,21 +34,22 @@ open Q3.Main
 #check Q3.c_arch_pos
 #check Q3.eigenvalue_le_norm
 
-/-! ## Verify Tier-2 τ=0 mainline axioms exist -/
-#check Q3.Weil_criterion_tau0
+/-! ## Verify Tier-2 shifted-atom mainline bridge exists -/
+#check Q3.Weil_criterion
 #check Q3.prime_term_le_at_t_critical_axiom
 
-/-! ## Off-chain (τ ≠ 0) placeholder -/
--- Present in Q_nonneg_t_critical, but not used by the τ=0 main chain
-#check Q3.prime_term_le_at_t_critical_axiom
+/-! ## Current shifted-atom bridge witnesses -/
+#check Q3.Q_Fejer_heat_atom_nonneg_t_critical
+#check Q3.Q_nonneg_on_Weil_cone_current_atom_route
 
-/-! ## Verify T5 (τ=0) is a THEOREM -/
-#check Q3.T5.T5_transfer
+/-! ## Verify compact transfer on the active route is a THEOREM -/
+#check Q3.Proofs.CompatibilityReduction.Q_nonneg_on_WK_tcritical_current_atom_route
 
 /-! ## Print Axiom Dependencies -/
 
--- Authoritative dependency list for the RH theorem on the τ=0 mainline.
+-- Authoritative dependency lists for the active RH theorems.
 #print axioms Q3.Main.RH_of_Weil_and_Q3
+#print axioms Q3.RH_of_shifted_atom_route
 
 /-!
 ## Expected Dependencies
@@ -59,11 +60,12 @@ open Q3.Main
 - `Quot.sound` : Quotient soundness
 
 ### Tier-1/Tier-2 domain axioms on current mainline:
-- `Q3.Weil_criterion_tau0`
+- `Q3.Weil_criterion`
 - `Q3.prime_term_le_at_t_critical_axiom`
 
 ### THEOREM (not axiom!):
-- `Q3.T5.T5_transfer` : Q ≥ 0 on W_K
+- `Q3.Q_Fejer_heat_atom_nonneg_t_critical`
+- `Q3.Q_nonneg_on_Weil_cone_current_atom_route`
 
 ## Verification
 

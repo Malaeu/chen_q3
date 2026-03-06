@@ -118,6 +118,20 @@ Final result (2026-03-06, full-Weil route):
   `Q3.Proofs.PrimeCert.prime_cert_margin_from_pathB`
   в собственном axiom list.
 
+Final result (2026-03-06, official main rewired):
+- `Q3/Main.lean` переписан в тонкий официальный entry поверх
+  `Q3.Proofs.PaperMainlineAtomRoute`.
+- `Q3.Main.RH_of_Weil_and_Q3` теперь просто переэкспортирует
+  `Q3.RH_of_shifted_atom_route`.
+- `Q3/MainTheorems.lean` и `Q3/CheckAxioms.lean` тоже синхронизированы
+  с этим новым mainline.
+- Проверка после обновления `.olean`:
+  `#print axioms Q3.Main.RH_of_Weil_and_Q3`
+  даёт тот же новый профиль:
+  `Q3.Weil_criterion` и `Q3.prime_term_le_at_t_critical_axiom`
+  плюс стандартные `propext`, `Classical.choice`, `Quot.sound`.
+- Это уже не параллельная ветка, а официальный theorem-entry проекта.
+
 ## Synthesis (2026-02-06, in progress) — Закрытие `h_margin_cert` до single-axiom chain
 
 Цель: перейти от `Q3.Main.RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange)` к версии без `h_margin_cert`,
