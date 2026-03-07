@@ -317,12 +317,23 @@ corrected closure route without reopening the LF or Weil tail.
 At the current state of the draft there are two honest ways to attack
 Theorem~\ref{thm:PSD-pd}.
 \begin{enumerate}
-  \item \textbf{Herglotz/Bochner route.} Reinterpret the packet-kernel coefficients
-  as Fourier data of a positive-definite sequence or measure, and deduce positive
-  semidefiniteness of every finite packet-kernel matrix from that representation.
-  \item \textbf{New prime-factorization / kernel route.} Keep the exact packet
-  identity on the pre-packet space and prove directly that the Archimedean and
-  prime pieces combine into a positive semidefinite kernel on that same space.
+  \item \textbf{Herglotz/Bochner route (secondary diagnostic route).} Reinterpret
+  the packet-kernel coefficients as Fourier data of a positive-definite sequence
+  or measure, and deduce positive semidefiniteness of every finite packet-kernel
+  matrix from that representation. This is the clean equivalence language for the
+  target theorem, but by itself it does not yet provide the project-local
+  dominance mechanism for the packet prime block.
+  \item \textbf{New prime-factorization / kernel route (primary constructive route).}
+  Keep the exact packet sesquilinear form on the dense pre-packet space and build
+  a direct PSD factorization for the packet kernel itself. The live theorem stack
+  is:
+  exact packet sesquilinear identity
+  $\Longrightarrow$
+  prime-block PSD factorization or Hilbert lift
+  $\Longrightarrow$
+  Archimedean domination criterion
+  $\Longrightarrow$
+  Theorem~\ref{thm:PSD-pd}.
 \end{enumerate}
 Neither route is yet written in the current draft, but these are now the exact
 two strategy families that survive the rejection of the old uniform-gap theorem

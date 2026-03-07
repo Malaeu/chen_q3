@@ -2328,3 +2328,30 @@ Concrete synthesis:
   -> PSD of the full packet kernel.
 - Therefore the next public theorem package should be organized around:
   `packet sesquilinear identity -> prime-block PSD factorization -> Archimedean domination -> PSD-pd`.
+
+## Synthesis (2026-03-07, final) — `Route P` frozen primary, `Herglotz` secondary
+
+Final verdict:
+- `Herglotz/Bochner` survives as the clean diagnostic equivalence language for
+  `PSD-pd`.
+- `Route P` is now the primary constructive route in the active control plane.
+
+Active theorem package:
+- exact packet sesquilinear identity;
+- prime-block PSD factorization or Hilbert lift;
+- Archimedean domination criterion;
+- `PSD-pd` on the same dense pre-packet space.
+
+Manuscript/control-plane effect:
+- orchestrator, queue, tracker, `Weil_pack`, `Main_closure`, introduction, and
+  abstract now all treat `Route P` as primary and `Herglotz/Bochner` as
+  secondary diagnostic.
+
+Aristotle status:
+- the `Herglotz/Bochner` probe
+  `76e1f0f3-47e9-4cb0-b57e-7e64bac1fffb`
+  already returned a generic moment-sequence -> Toeplitz-PSD theorem package;
+  it is useful as secondary diagnostic payload, but not a mainline integration.
+- the `prime-factorization / kernel` probe
+  `2f2aff04-379c-4698-a238-a9798417b3b6`
+  remains the more important live Aristotle route.

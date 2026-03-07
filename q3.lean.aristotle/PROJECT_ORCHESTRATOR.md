@@ -106,7 +106,10 @@ Interpretation after `T0.1`:
   4. reject `A3-pd` in the old uniform-gap sense on the dense packet dictionary;
   5. make `PSD-pd` the single live knife-edge: prove positive semidefiniteness
      of the packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})`
-     on the same exact dense pre-packet space.
+     on the same exact dense pre-packet space;
+  6. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
+  7. make the new `prime-factorization / kernel route` the primary constructive
+     route for the next theorem package.
 
 ## Active Milestone
 
@@ -124,8 +127,9 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
    `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets,
 8. record the two surviving strategy families for `PSD-pd`
    (Herglotz/Bochner versus prime-factorization / kernel route),
-9. choose one of them as the primary proof route for the next mathematical sprint,
-10. keep Aristotle `G1.6` as background lemma-mining only.
+9. freeze `Route P` (prime-factorization / kernel) as the primary proof route,
+10. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
+11. keep Aristotle `G1.6` as background lemma-mining only.
 
 ## Hard Blockers
 
@@ -140,6 +144,13 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
   but no proof yet establishes positive semidefiniteness of the associated packet
   kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the same dense
   pre-packet space.
+- `Herglotz/Bochner` explains what `PSD-pd` means, but it does not yet provide a
+  project-local dominance mechanism for the packet prime block.
+- The primary remaining theorem package is now `Route P`:
+  exact packet sesquilinear identity
+  -> prime-block PSD factorization or Hilbert lift
+  -> Archimedean domination criterion
+  -> `PSD-pd`.
 - On dense packet dictionaries with arbitrarily fine translates, a uniform lower
   bound of the form `Q^\star(t;\Psi * \widetilde\Psi)\ge c_K\|c\|_2^2` is impossible:
   packets `\Psi_\Delta=g-g(\cdot-\Delta)` collapse to zero and force
@@ -202,3 +213,6 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-07: the public frontier therefore pivots again from `A3-pd` to
   `PSD-pd`: prove positive semidefiniteness of the packet kernel
   `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the dense pre-packet space.
+- 2026-03-07: inside `PSD-pd`, `Herglotz/Bochner` is now frozen as the clean
+  diagnostic equivalence route, while the new packet-level
+  `prime-factorization / kernel route` becomes the primary constructive route.

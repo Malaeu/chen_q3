@@ -63,10 +63,27 @@ def run_qmd(
     cwd: Path | None = None,
     retries: int = 4,
     base_delay_s: float = 0.5,
+    timeout_s: float = 90.0,
 ) -> str:
     last_output = ""
     for attempt in range(retries + 1):
-        proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, check=False)
+        try:
+            proc = subprocess.run(
+                cmd,
+                cwd=cwd,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=timeout_s,
+            )
+        except subprocess.TimeoutExpired:
+            last_output = (
+                f"qmd command timed out after {timeout_s:.0f}s: {' '.join(cmd)}"
+            )
+            if attempt >= retries:
+                raise RuntimeError(last_output)
+            time.sleep(base_delay_s * (2**attempt))
+            continue
         output = (proc.stderr or "").strip() or (proc.stdout or "").strip()
         if proc.returncode == 0:
             return proc.stdout
