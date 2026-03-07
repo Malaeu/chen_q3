@@ -104,12 +104,16 @@ Interpretation after `T0.1`:
   3. freeze exact packet-Rayleigh on autocorrelation packets
      `\Psi_c * \widetilde{\Psi_c}`;
   4. reject `A3-pd` in the old uniform-gap sense on the dense packet dictionary;
-  5. make `PSD-pd` the single live knife-edge: prove positive semidefiniteness
-     of the packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})`
+  5. reject the literal `Route P` theorem shape
+     `prime-block PSD factorization or Hilbert lift -> Archimedean domination`
+     on packet space;
+  6. make `PSD-pd` the single live knife-edge: prove positive semidefiniteness
+     of the full packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})`
      on the same exact dense pre-packet space;
-  6. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
-  7. make the new `prime-factorization / kernel route` the primary constructive
-     route for the next theorem package.
+  7. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
+  8. make direct full-symbol domination
+     `A_{g,\Delta}(\theta)\ge P_{g,\Delta}(\theta)` or a new full-kernel operator
+     package the primary constructive route for the next theorem package.
 
 ## Active Milestone
 
@@ -123,13 +127,16 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
 5. keep the packet-symbol decomposition
    `S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}`,
 6. reject the old `A3-pd` uniform-floor route on the dense packet family,
-7. make `PSD-pd` explicit as the packet-kernel theorem
+7. reject the literal `Route P` theorem shape
+   `prime-block PSD factorization or Hilbert lift -> Archimedean domination`,
+8. make `PSD-pd` explicit as the packet-kernel theorem
    `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets,
-8. record the two surviving strategy families for `PSD-pd`
-   (Herglotz/Bochner versus prime-factorization / kernel route),
-9. freeze `Route P` (prime-factorization / kernel) as the primary proof route,
-10. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
-11. keep Aristotle `G1.6` as background lemma-mining only.
+9. record the two surviving strategy families for `PSD-pd`
+   (Herglotz/Bochner versus direct full-kernel PSD),
+10. freeze full-symbol domination or a new full-kernel operator package as the
+    primary constructive route,
+11. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
+12. keep Aristotle `G1.6` as background lemma-mining only.
 
 ## Hard Blockers
 
@@ -145,11 +152,15 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
   kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the same dense
   pre-packet space.
 - `Herglotz/Bochner` explains what `PSD-pd` means, but it does not yet provide a
-  project-local dominance mechanism for the packet prime block.
-- The primary remaining theorem package is now `Route P`:
+  project-local constructive proof.
+- The literal packet-level `prime-block PSD factorization or Hilbert lift`
+  theorem shape is false on dense packet spaces: the packet prime block is not
+  positive semidefinite in general.
+- The primary remaining theorem package is now:
   exact packet sesquilinear identity
-  -> prime-block PSD factorization or Hilbert lift
-  -> Archimedean domination criterion
+  -> prime-block obstruction
+  -> direct full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}` or a new
+     operator package for the full kernel
   -> `PSD-pd`.
 - On dense packet dictionaries with arbitrarily fine translates, a uniform lower
   bound of the form `Q^\star(t;\Psi * \widetilde\Psi)\ge c_K\|c\|_2^2` is impossible:
@@ -213,6 +224,8 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-07: the public frontier therefore pivots again from `A3-pd` to
   `PSD-pd`: prove positive semidefiniteness of the packet kernel
   `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the dense pre-packet space.
-- 2026-03-07: inside `PSD-pd`, `Herglotz/Bochner` is now frozen as the clean
-  diagnostic equivalence route, while the new packet-level
-  `prime-factorization / kernel route` becomes the primary constructive route.
+- 2026-03-07: the stronger packet-space audit shows that the literal
+  `prime-block PSD factorization or Hilbert lift -> Archimedean domination`
+  theorem shape is false on dense packet dictionaries. The active constructive
+  route is now direct PSD of the full kernel `K_Q`, with `Herglotz/Bochner`
+  kept only as diagnostic equivalence language.

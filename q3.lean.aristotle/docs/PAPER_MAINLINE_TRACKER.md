@@ -48,7 +48,7 @@ Lean compatibility note:
 | `SF-pd` | same-family bridge through the naive family `\mathcal G_{K,\mathrm{Ray}}^{pd}` | rejected as mainline route | historical note only |
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` with symbol `S_{g,\Delta}` | frozen theorem block | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | rejected-too-strong route | `sections/Main_closure.tex`, `sections/scope_notation.tex` |
-| `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets | active frontier; `Route P` primary, `Herglotz/Bochner` secondary diagnostic | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
+| `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets | active frontier; direct full-kernel PSD primary, `Herglotz/Bochner` secondary diagnostic | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
 | `A2-pd` | continuity on the corrected cone | inherited input | `sections/A2.tex`, `sections/Main_closure.tex` |
 | `LF-pd` | LF lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}` | skeleton available, still conditional | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
@@ -78,7 +78,7 @@ Lean compatibility note:
 | `packet-Rayleigh-naive` (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive quadratic-form bridge on an overlarge family | background candidate only |
 | `packet-Rayleigh-pd` (`thm:packet-rayleigh-pd`) | theorem target on `\mathcal G_K^{pd}` | exact Toeplitz form on autocorrelation packets | aligned as theorem block |
 | `A3-pd` (`prop:a3-pd-too-strong`) | old theorem target on the same dense packet family `\mathcal G_K^{pd}` | uniform packet-symbol floor on dense packets | rejected-too-strong route |
-| `PSD-pd` (`thm:PSD-pd`) | theorem target on the dense pre-packet space behind `\mathcal G_K^{pd}` | positive semidefiniteness of `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` | active blocker; pursue through `Route P` first |
+| `PSD-pd` (`thm:PSD-pd`) | theorem target on the dense pre-packet space behind `\mathcal G_K^{pd}` | positive semidefiniteness of `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` | active blocker; pursue through direct full-kernel PSD / full-symbol domination |
 | A2 continuity | theorem on ambient admissible compact tests | inherited input on `\mathcal W_K^{pd}` | aligned |
 | conditional main positivity (`thm:Main-positivity`) | positivity on corrected global cone | conditional on centered packet density in `\mathcal W_K^{pd}` | aligned after pivot |
 | local closure proposition | compact closure from a dense positive family inside `\mathcal W_K^{pd}` | theorem on `\mathcal W_K^{pd}` | aligned after pivot |
@@ -138,15 +138,19 @@ Interpretation rule after `T0.1`:
 6. `PSD-pd`: prove positive semidefiniteness of the packet kernel
    `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the same dense pre-packet
    space that feeds `\mathcal G_K^{pd}`.
-7. Freeze `Route P` as the primary theorem package:
+7. Record the prime-block obstruction on packet space:
+   standalone PSD factorization of the packet prime block is false on dense
+   packet dictionaries containing an active node.
+8. Freeze the direct full-kernel theorem package:
    exact packet sesquilinear identity
-   -> prime-block PSD factorization or Hilbert lift
-   -> Archimedean domination criterion
+   -> prime-block obstruction
+   -> full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}` or a new operator
+      package for the full kernel
    -> `PSD-pd`.
-8. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
+9. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
    equivalence between positive-definite sequence, Toeplitz-section PSD, and
    positive measure representation for the packet coefficients.
-9. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
+10. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
 
 ## Background Broad-Cone Branch
 

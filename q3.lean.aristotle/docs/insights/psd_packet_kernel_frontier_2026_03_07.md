@@ -50,6 +50,7 @@ arbitrarily fine translates.
 1. Herglotz/Bochner route:
    interpret the packet-kernel coefficients as a positive-definite sequence or
    measure-theoretic Fourier data.
-2. New prime-factorization / kernel route:
-   prove PSD of `K_Q` directly from a new structural decomposition of the prime
-   and Archimedean pieces on the pre-packet space.
+2. Direct full-kernel route:
+   prove PSD of `K_Q` directly from the full-kernel structure, using the
+   prime-block obstruction as a constraint and pursuing either full-symbol
+   domination or a new operator package for the whole kernel.

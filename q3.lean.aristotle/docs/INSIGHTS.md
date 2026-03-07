@@ -2394,3 +2394,33 @@ Concrete synthesis:
   `full-symbol domination A_{g,\Delta}>=P_{g,\Delta}`
   or
   `a new operator package representing the full kernel as a PSD form`.
+
+## Synthesis (2026-03-07, final) — literal `Route P` rejected, full-kernel PSD primary
+
+Final verdict:
+- exact packet sesquilinear identity survives;
+- standalone PSD factorization of the packet prime block is false on dense packet
+  spaces containing an active node;
+- the honest theorem target remains `PSD-pd`, but its primary constructive route
+  is now direct PSD of the full kernel `K_Q`, not literal `Route P`.
+
+Public theorem stack after the rewrite:
+- exact packet sesquilinear identity;
+- prime-block obstruction;
+- full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}` or a new full-kernel
+  operator package;
+- `PSD-pd`.
+
+Control-plane/manuscript effect:
+- orchestrator, queue, tracker, abstract, introduction, `Weil_pack`, and
+  `Main_closure` now all treat direct full-kernel PSD as the active route;
+- `Herglotz/Bochner` stays explicit, but only as diagnostic equivalence;
+- old `Route P` notes are marked superseded, and a new canonical note/reviewed
+  note record the full-kernel frontier.
+
+Reusable file pointers:
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Main_closure.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Weil_pack.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/full_kernel_psd_frontier_2026_03_07.md`
