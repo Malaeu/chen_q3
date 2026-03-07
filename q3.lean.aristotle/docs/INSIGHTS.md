@@ -2288,3 +2288,10 @@ Surviving strategy families:
 - У обоих packet-ов одна и та же hard policy:
   не возвращать broad-cone route, не resurrect `A3-pd` uniform gap, не
   claim RH closure, and do not widen the target beyond `PSD-pd`.
+
+Launched Aristotle probes:
+- `subagent_psd_pd_herglotz_2026_03_07.md`
+  -> `76e1f0f3-47e9-4cb0-b57e-7e64bac1fffb`
+- `subagent_psd_pd_kernel_route_2026_03_07.md`
+  -> `2f2aff04-379c-4698-a238-a9798417b3b6`
+- initial status for both: `QUEUED`
