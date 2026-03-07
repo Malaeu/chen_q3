@@ -47,7 +47,13 @@ This rebuilds `q3_docs` as a curated live KB:
 - control/workflow docs,
 - active manuscript TeX,
 - live Q3 Lean files,
+- reviewed notes from `docs/reviewed_notes/`,
 - excluding archives, transcript dumps, and heavy `PrimeCert` shards.
+
+Incoming markdown workflow:
+- raw chats / Proshka dumps / unchecked notes go to `docs/incoming_notes/`
+- only reviewed distilled notes go to `docs/reviewed_notes/`
+- raw inbox notes are not embedded directly
 
 ### Zotero export (.bib)
 ```bash

@@ -85,6 +85,7 @@ Source of truth:
 - `ACTIVE/pipeline/RISK_MODEL.json` — risk aggregation + kill switch
 - `ACTIVE/pipeline/RESEARCH_ORACLE.md` — qmd-based semantic search wrapper
 - `ACTIVE/pipeline/PIPELINE_GUIDE.md` — end-to-end agent checklist
+- `docs/EMBEDDING_INGEST_WORKFLOW.md` — raw markdown -> reviewed note -> embeddings workflow
 
 ## 7) Editing policy (keep this stable)
 
@@ -95,6 +96,8 @@ Source of truth:
 ## 8) Embeddings + Knowledge Graphs (how we use)
 
 - **Embeddings (fast recall):**
+  - Raw markdown goes first to `docs/incoming_notes/`.
+  - Distilled reviewed extracts go to `docs/reviewed_notes/`.
   - Refresh the live collection when the repo changed materially:
     `./scripts/refresh_q3_docs.py`
   - Run: `./scripts/research_oracle.py query "keyword" -c q3_docs`

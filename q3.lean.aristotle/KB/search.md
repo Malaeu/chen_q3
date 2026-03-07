@@ -17,6 +17,8 @@ last_updated: 2026-02-08
 
 ## Embeddings (semi-auto)
 - From `q3.lean.aristotle/`:
+  0. Raw markdown goes to `docs/incoming_notes/`; reviewed extracts go to
+     `docs/reviewed_notes/`
   1. `./scripts/refresh_q3_docs.py`
   2. `./scripts/research_oracle.py query "keyword" -c q3_docs`
 

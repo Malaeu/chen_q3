@@ -37,6 +37,7 @@ DIRECT_FILES = [
 
 GLOB_PATTERNS = [
     "q3.lean.aristotle/docs/insights/**/*.md",
+    "q3.lean.aristotle/docs/reviewed_notes/**/*.md",
     "q3.lean.aristotle/ACTIVE/**/*.md",
     "full/sections/**/*.tex",
     "full/appendix/*.tex",
@@ -46,6 +47,7 @@ GLOB_PATTERNS = [
 EXCLUDE_PATTERNS = [
     "q3.lean.aristotle/docs/legacy/**",
     "q3.lean.aristotle/docs/ChatGPT_*.md",
+    "q3.lean.aristotle/docs/incoming_notes/**",
     "q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_QUEUE.md",
     "q3.lean.aristotle/ACTIVE/aristotle/proshka_context_single_scale.md",
     "q3.lean.aristotle/ACTIVE/aristotle/queue/**",
@@ -121,6 +123,8 @@ def build_stage(files: list[Path]) -> Counter:
         "- current control and workflow docs,",
         "- active manuscript TeX,",
         "- live Q3 Lean files excluding `Archive`, `Clean`, and heavy `PrimeCert` shards,",
+        "- reviewed external notes promoted into `docs/reviewed_notes/`,",
+        "- raw inbox notes under `docs/incoming_notes/` are excluded until distilled,",
         "- no transcript dumps or old queue artifacts.",
         "",
         f"Total files: `{len(files)}`",

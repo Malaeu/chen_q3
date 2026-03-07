@@ -29,7 +29,18 @@ or set `"qmd_command": "/home/<user>/.bun/bin/qmd"` in `RESEARCH_ORACLE.json`.
 ```
 
 This rebuilds `q3_docs` from the current control docs, active TeX, and live Lean
-files while excluding archives and heavy `PrimeCert` shards.
+files while excluding archives, raw inbox markdown, and heavy `PrimeCert` shards.
+
+Incoming markdown workflow:
+
+- raw notes / Proshka dumps / unchecked chats:
+  `docs/incoming_notes/`
+- reviewed searchable extracts:
+  `docs/reviewed_notes/`
+
+Only `docs/reviewed_notes/` is promoted into `q3_docs`.
+See:
+`docs/EMBEDDING_INGEST_WORKFLOW.md`
 
 ## Ingest literature
 
