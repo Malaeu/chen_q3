@@ -9,15 +9,13 @@ as the live mathematical contract for the public manuscript.
 
 ## Update
 
-This note is now partially superseded by:
+This note is now superseded by:
 
-- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/same_family_bridge_2026_03_07.md`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/naive_rayleigh_family_obstruction_2026_03_07.md`
 
-The corrected-cone pivot still survives, but the weaker phrase
-`A1-pd + packet-Rayleigh`
-has been replaced by the stricter blocker:
-the same-family bridge between the dense autocorrelation family and the centered
-Rayleigh family.
+The corrected-cone pivot still survives, but the intermediate blocker
+`SF-pd` has also been superseded. The live blocker is now the design of a
+smaller exact operator-controlled family on the corrected cone.
 
 ## Local search and repo evidence
 

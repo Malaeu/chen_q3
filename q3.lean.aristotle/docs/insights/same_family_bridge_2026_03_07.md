@@ -4,7 +4,8 @@ Date: 2026-03-07
 
 ## Status
 
-This note is accepted as a live architectural correction.
+This note is superseded by the later obstruction note:
+`naive_rayleigh_family_obstruction_2026_03_07.md`.
 
 ## Core point
 
@@ -31,7 +32,7 @@ These are both centered and both plausible, but they are not yet the same exact 
   which explicitly phrases Weil positivity on convolution squares
   `W(\psi * \widetilde\psi)`.
 
-## Honest blocker
+## Former blocker
 
 The public missing theorem is now:
 
@@ -49,8 +50,11 @@ The phrase
 “A1-pd + packet-Rayleigh closes the corrected route”
 is too strong and must be retired from active docs.
 
-The honest public phrasing is:
+The note correctly led to the intermediate phrasing:
 
 - `A1-pd` = corrected density input,
 - packet-Rayleigh = corrected positivity/identification input,
 - `SF-pd` = same-family bridge between them.
+
+That phrasing is no longer the live frontier, because the naive family
+`\Phi_{B,t}|p|^2` was later shown to be too large for the public closure route.

@@ -1,16 +1,16 @@
 ---
 title: 2026-03-07 same-family bridge review
-review status: reviewed
-safe for embeddings: `yes`
+review status: superseded
+safe for embeddings: `no`
 source: inline user note
 date: 2026-03-07
 ---
 
 # Summary
 
-This note sharpens the corrected-cone route after the `T0.1` pivot.
+This note is now historical.
 
-The important point survives review:
+Its surviving point was:
 
 - `A1-pd` and packet-Rayleigh do **not** currently close RH by themselves.
 - They naturally land on **two different centered families**:
@@ -83,11 +83,9 @@ One still needs one of:
 # Repo impact
 
 - This note is consistent with the corrected-cone pivot.
-- It supersedes the weaker phrasing
-  “the unresolved pair is exactly `A1-pd + packet-Rayleigh`”.
-- The public manuscript/control-plane should now say:
-  `A1-pd` and packet-Rayleigh are separate corrected inputs,
-  while the real knife-edge is the same-family bridge.
+- It was itself superseded later on 2026-03-07 by the stronger obstruction:
+  the naive family `\Phi_{B,t}|p|^2` is too large to serve as the closure family.
+- Current source of truth therefore no longer treats `SF-pd` as the live frontier.
 
 # File pointers
 

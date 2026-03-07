@@ -10,7 +10,7 @@
 
 - review status: `reviewed`
 - scope: `math`
-- safe for embeddings: `yes`
+- safe for embeddings: `no`
 - superseded by: `docs/reviewed_notes/2026_03_07_target_cone_reset_review.md`
 
 ## Extracted files

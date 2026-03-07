@@ -16,18 +16,17 @@ It is **not** a session log and **not** a microtask queue.
 
 ## Mainline Chain
 
-`T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh -> centered A3/RKHS -> SF-pd -> A2 closure -> LF-pd -> G6 -> RH`
+`T0-pd -> corrected cone -> A1-pd -> OP-pd -> centered A3/RKHS -> A2 closure -> LF-pd -> G6 -> RH`
 
 - `T0-pd`: Guinand--Weil crosswalk with the corrected positive-definite target cone.
 - `corrected cone`: local/global positive-definite Weil cone
   `\mathcal W_K^{pd} / \mathcal W^{pd}`.
 - `A1-pd`: density of the centered autocorrelation family
   `\mathcal G_{K,\mathrm{dens}}^{pd}` in `\mathcal W_K^{pd}`.
-- `packet-Rayleigh`: exact identification of `Q^\star(t;\Phi_{B,t,p})` with the
-  Toeplitz/RKHS quadratic form on the centered Rayleigh family
-  `\mathcal G_{K,\mathrm{Ray}}^{pd}`.
-- `SF-pd`: same-family bridge between the dense family and the positive family,
-  or an enlarged operator model acting directly on the dense family.
+- `OP-pd`: exact operator-controlled family on the corrected cone. The live task is
+  to build a smaller centered packet family inside `\mathcal W_K^{pd}` on which the
+  Toeplitz/RKHS quadratic form acts directly; the naive family
+  `\Phi_{B,t}|p|^2` is background only because it is too large for closure.
 - `centered A3/RKHS`: positivity engine on centered packets.
 - `A2 closure`: continuity transfer on the corrected local cone.
 - `LF-pd`: inductive-limit lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}`.
@@ -81,8 +80,9 @@ Interpretation after `T0.1`:
 | `T0.1` | target-cone audit | `done` | one binary verdict written: `pivot required` |
 | `T0-pd` | corrected public target cone | `done` | control docs + manuscript use the positive-definite cone as the public RH target |
 | `A1-pd` | density of `\mathcal G_{K,\mathrm{dens}}^{pd}` in `\mathcal W_K^{pd}` | `active input` | pre-square density route + autocorrelation continuity prove `\overline{\mathcal G_{K,\mathrm{dens}}^{pd}}=\mathcal W_K^{pd}` |
-| `packet-Rayleigh` | quadratic-form bridge on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | `active input` | exact theorem statement on `\Phi_{B,t,p}` is frozen and later proved |
-| `SF-pd` | same-family bridge on the corrected cone | `active` | either `\overline{\operatorname{cone}(\mathcal G_{K,\mathrm{Ray}}^{pd})}=\mathcal W_K^{pd}` or an enlarged operator model acts directly on `\mathcal G_{K,\mathrm{dens}}^{pd}` |
+| `packet-Rayleigh` | naive quadratic-form bridge on `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}` | `background candidate` | keep only as an auxiliary identity; do not reuse it as the public closure family |
+| `SF-pd` | same-family bridge through `\mathcal G_{K,\mathrm{Ray}}^{pd}` | `rejected as mainline route` | rejected because the naive Rayleigh family is too large and would force false broad local positivity |
+| `OP-pd` | exact operator-controlled family on the corrected cone | `active` | freeze a smaller centered packet family inside `\mathcal W_K^{pd}` and an exact quadratic-form identity on that same family |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | reused on the exact packet family chosen by `A1-pd` |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
@@ -95,33 +95,38 @@ Interpretation after `T0.1`:
 - Current `G1.6` Aristotle work stays background only. It may still land local support lemmas,
   but it no longer determines the architectural frontier.
 - New live frontier:
-  1. freeze the density family `\mathcal G_{K,\mathrm{dens}}^{pd}` and the
-     Rayleigh family `\mathcal G_{K,\mathrm{Ray}}^{pd}`;
-  2. record the exact same-family blocker between them;
-  3. choose the first honest closure route:
-     same-family density on the Rayleigh family, or enlarged operator model on
-     the dense family.
+  1. keep `A1-pd` as the dense corrected-cone input on
+     `\mathcal G_{K,\mathrm{dens}}^{pd}`;
+  2. demote the naive Rayleigh family
+     `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}`
+     to background-only status;
+  3. freeze the first honest post-obstruction route:
+     an exact smaller operator-controlled family inside `\mathcal W_K^{pd}`
+     whose quadratic-form positivity does not overgenerate broad local bumps.
 
 ## Active Milestone
 
 Turn the corrected target-cone audit into the honest post-pivot contract:
 
 1. freeze `\mathcal W_K^{pd}` and `\mathcal W^{pd}` in control docs and manuscript,
-2. freeze the density family `\mathcal G_{K,\mathrm{dens}}^{pd}` and the
-   Rayleigh family `\mathcal G_{K,\mathrm{Ray}}^{pd}`,
-3. replace the old missing-theorem framing
-   (`same shifted family dense and positive`)
-   by the corrected same-family bridge `SF-pd`,
-4. keep Aristotle `G1.6` as background lemma-mining only.
+2. keep `\mathcal G_{K,\mathrm{dens}}^{pd}` as the density family,
+3. record that the naive centered Rayleigh family
+   `\mathcal G_{K,\mathrm{Ray}}^{pd}` is too large for the public closure route,
+4. replace the old missing-theorem framing by the exact operator-family task
+   `OP-pd`,
+5. keep Aristotle `G1.6` as background lemma-mining only.
 
 ## Hard Blockers
 
 - `A1'` is a density theorem on the broad restriction cone `R_K`; it does not feed
   the corrected positive-definite mainline directly.
 - No proof yet closes the pre-square density route that would prove `A1-pd`.
-- No proof yet closes packet-Rayleigh on the centered Rayleigh family in live Q3.
-- No proof yet identifies the dense family with the positive family, nor supplies
-  an enlarged operator model that acts directly on the dense family.
+- The naive Rayleigh family `\mathcal G_{K,\mathrm{Ray}}^{pd}` is too large to serve
+  as the mainline closure family: on compacts `K<\pi` it would combine with the full
+  quadratic-form meaning of Lemma 8.8 and A3 positivity to force false broad local
+  positivity on even nonnegative bumps.
+- No proof yet freezes a smaller exact operator-controlled family inside
+  `\mathcal W_K^{pd}` or supplies a quadratic-form identity on that same family.
 - The broad-cone compiled route in Lean still exists and may generate useful local
   lemmas, but it cannot be used as public evidence for RH after `T0.1`.
 - The compiled Lean route still inherits `Q3.prime_term_le_at_t_critical_axiom`.
@@ -165,3 +170,8 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-07: the corrected-cone theorem blocks `A1-pd` and `packet-Rayleigh`
   were refined further: they currently target two different centered families,
   so the live knife-edge is now the same-family bridge `SF-pd`.
+- 2026-03-07: pushing the naive same-family route one step further exposed a
+  contradiction: the family `\Phi_{B,t}|p|^2` is too large to serve as the
+  closure family, because on `K<\pi` it overgenerates broad local positivity.
+  The live frontier is now `OP-pd`, i.e. a smaller operator-controlled packet
+  family inside the corrected cone.

@@ -2,19 +2,19 @@
 The sufficiency argument now uses the corrected chain:
 \[
   \text{(T0-pd)} \;\Longrightarrow\; \text{(A1-pd)}
-  \;\Longrightarrow\; \text{(packet-Rayleigh)}
+  \;\Longrightarrow\; \text{(OP-pd)}
   \;\Longrightarrow\; \text{centered (A3)+(RKHS)}
-  \;\Longrightarrow\; \text{(same-family bridge)}
   \;\Longrightarrow\; \text{(A2-pd)}
   \;\Longrightarrow\; \text{(LF-pd)}
   \;\Longrightarrow\; \text{(G6)} \;\Longrightarrow\; \text{RH}.
 \]
 Here \textup{(A1-pd)} is the centered packet density theorem on the corrected local
-cone $\mathcal W_K^{\mathrm{pd}}$, \textup{(packet-Rayleigh)} identifies the centered
-Rayleigh family with the quadratic forms already controlled by the Toeplitz/RKHS
-engine, the \textup{(same-family bridge)} closes the gap between the dense family and
-the positive family, centered \textup{(A3)+(RKHS)} supplies positivity on the
-Rayleigh-controlled family,
+cone $\mathcal W_K^{\mathrm{pd}}$, while \textup{(OP-pd)} is the exact
+operator-controlled packet theorem on a smaller centered family inside
+$\mathcal W_K^{\mathrm{pd}}$. The naive family $\Phi_{B,t}|p|^2$ remains available as
+background quadratic-form evidence, but it is too large to serve as the public
+closure family. Centered \textup{(A3)+(RKHS)} supplies positivity on the exact
+operator-controlled family,
 \textup{(A2-pd)} is continuity on the corrected local cone,
 \textup{(LF-pd)} is the inductive-limit lift to the global positive-definite cone
 $\mathcal W^{\mathrm{pd}}$, and \textup{(G6)} is Weil's criterion.
@@ -31,11 +31,12 @@ Riemann Hypothesis follows from Weil's positivity criterion.
 \begin{proof}
 By Lemma~\ref{lem:rkhs-weil-isometry} the RKHS and Weil pictures are isometric on
 the working subspace. Together with Lemmas~\ref{lem:rkhs-rayleigh-sampling-id} and
-\ref{a3:lem:prime-L2-trace} and the packet-Rayleigh bridge of
-Lemma~\ref{lem:packet-rayleigh-identification}, we transfer the mixed lower bound of
+\ref{a3:lem:prime-L2-trace} and the exact operator-family theorem from
+Section~\ref{sec:Main-closure}, we transfer the mixed lower bound of
 Theorem~\ref{thm:A3} to the quadratic functional $Q^\star(t;\cdot)$ on the exact
-Rayleigh family, while the single-scale prime cap provides the centered positivity
-input. Theorem~\ref{thm:Main-positivity} then supplies positivity on the full
-corrected Weil cone $\mathcal W^{\mathrm{pd}}$ once the density route and same-family
-bridge are assumed. Weil's criterion then yields the stated implication.
+operator-controlled family, while the single-scale prime cap provides the centered
+positivity input. Theorem~\ref{thm:Main-positivity} then supplies positivity on the
+full corrected Weil cone $\mathcal W^{\mathrm{pd}}$ once the dense corrected route
+and exact operator-family theorem are assumed. Weil's criterion then yields the
+stated implication.
 \end{proof}

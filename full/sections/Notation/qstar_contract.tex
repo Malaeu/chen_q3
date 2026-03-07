@@ -19,7 +19,8 @@ $\mathcal W_K^{\mathrm{pd}}$ & corrected local Weil cone & $\overline{\operatorn
 $\mathcal W^{\mathrm{pd}}$ & corrected global Weil cone & $\varinjlim_{K\to\infty}\mathcal W_K^{\mathrm{pd}}$ \\
 $\mathcal P_K(t_0)$ & pre-square packet span & $\operatorname{span}\{g_{\delta,\tau}: |\tau|+\delta\le K/2\}$ \\
 $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ & dense autocorrelation packet family & $\operatorname{cone}\{\Psi*\widetilde\Psi:\ \Psi\in\mathcal P_K(t_0)\}$ \\
-$\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ & centered Rayleigh family & $\operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}$ \\
+$\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ & naive centered Rayleigh family & background candidate $\operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}$ \\
+$\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}$ & exact operator-controlled packet family & centered family to be frozen inside $\mathcal W_K^{\mathrm{pd}}$ \\
 $\Phi_{B,t,p}$ & centered Rayleigh test & element of $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ \\
 $\Phi_{B,t,\tau}$ & shifted evenized Fej\'er$\times$heat window & bandwidth $B$, heat scale $t$, shift $\tau$ \\
 $Q^\star(t;\Phi)$ & Weil functional with explicit $t$ & $\Phi$ on the ambient/support side or on the corrected cone \\
@@ -40,13 +41,12 @@ Weil criterion. Accordingly:
   $\mathcal W_K^{\mathrm{pd}}$ in particular;
   \item the density theorem A1-pd concerns the family
   $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ inside $\mathcal W_K^{\mathrm{pd}}$;
-  \item the companion bridge theorem is packet-Rayleigh identification on the
-  centered Rayleigh family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$:
-  $Q^\star(t;\Phi_{B,t,p})$ must be identified with the quadratic form already
-  controlled by the centered Toeplitz/RKHS engine;
-  \item the honest remaining knife-edge is the same-family bridge between
-  $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ and
-  $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$;
+  \item the naive packet-Rayleigh identity on
+  $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is background-only, because that family
+  is too large to serve as the public closure family;
+  \item the honest remaining knife-edge is `OP-pd`: an exact operator-controlled
+  packet family $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq\mathcal W_K^{\mathrm{pd}}$
+  on which the centered Toeplitz/RKHS engine acts directly;
   \item the centered A3/RKHS positivity mechanism is kept as the positivity engine
   for that corrected cone.
 \end{itemize}

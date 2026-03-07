@@ -2070,31 +2070,44 @@ Recommendation:
   - no parallel local query fan-out,
   - refresh and query now share the same lock layer.
 
-## Synthesis (2026-03-07, in progress) — corrected-cone route after the same-family note
+## Synthesis (2026-03-07, in progress) — naive Rayleigh-family obstruction
 
 Target node and wiring:
 - The corrected-cone pivot survives.
-- But the previous shorthand
-  `A1-pd + packet-Rayleigh`
-  was still too optimistic.
-- The live knife-edge is now the same-family bridge `SF-pd`.
+- But the previous same-family blocker `SF-pd` was still one step too optimistic.
+- The family `\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}
+   = \operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}` is too large to serve
+  as the public closure family.
+
+Local semantic search:
+- Query `same-family bridge Phi_{B,t}|p|^2 broad positivity local bumps`
+  returned the live tracker and orchestrator, confirming that the repo still
+  treated `SF-pd` as the active frontier.
+- Query `packet Rayleigh Phi_{B,t}|p|^2 density too large counterexample a(2)`
+  returned the centered Rayleigh bridge sources in A3 and the corrected-cone
+  packaging, which is exactly where the overlarge-family risk bites.
+- External confirmation of the positive-definite Weil target remains the same
+  Cambridge/Suzuki source already recorded in the corrected-cone notes.
 
 Concrete synthesis:
-- `A1-pd` feeds the dense family
-  `\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}
-   = \operatorname{cone}\{\Psi*\widetilde\Psi:\Psi\in\mathcal P_K(t_0)\}`.
-- packet-Rayleigh feeds the positive family
-  `\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}
-   = \operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}`.
-- These two families are both centered but not yet identified.
-- Honest blocker:
-  either prove
-  `\overline{\operatorname{cone}(\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}})}=\mathcal W_K^{\mathrm{pd}}`,
-  or enlarge the operator model so that it acts directly on
+- `A1-pd` still feeds the dense autocorrelation family
   `\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}`.
+- The naive packet-Rayleigh candidate feeds
+  `\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}} = \operatorname{cone}\{\Phi_{B,t}|p|^2\}`.
+- On compacts `K<\pi`, the family `\Phi_{B,t} r^2` with `r` an even real
+  trigonometric polynomial is already dense in the broad local cone of even
+  nonnegative bumps because `\Phi_{B,t}>0` on `[-K,K]` and Stone--Weierstrass
+  gives `r_n^2 \to h`.
+- Combined with the full quadratic-form meaning of Lemma 8.8 and the centered
+  A3 positivity engine, that would force false broad local positivity.
+- Therefore the live blocker is no longer a bridge from
+  `\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}` to
+  `\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}`.
+- The honest next theorem is `OP-pd`: a smaller operator-controlled packet
+  family inside `\mathcal W_K^{\mathrm{pd}}`, ideally acting directly on
+  autocorrelation packets `\Psi*\widetilde\Psi`.
 
 Recommendation:
-- Stop phrasing the corrected route as if `A1-pd` and packet-Rayleigh already
-  live on one exact common family.
-- Freeze `SF-pd` as the new active blocker in manuscript + control docs.
-- Keep the broad-cone Aristotle branch background-only.
+- Retire `SF-pd` as the active mainline blocker.
+- Keep the naive `\Phi_{B,t}|p|^2` route as background-only.
+- Freeze `OP-pd` as the new frontier in manuscript + control docs.

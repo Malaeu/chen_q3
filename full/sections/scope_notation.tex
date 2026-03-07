@@ -4,7 +4,7 @@ This work introduces a quantitative, modular operator framework for the Weil cri
 
 \begin{itemize}
   \item \textbf{What this is:} A unified analytic program with explicit constants (symbol modulus, RKHS cap, node spacing, tail control) whose current output is a typed conditional route to positivity on the corrected positive-definite Weil cone.
-  \item \textbf{What this is not:} This draft does not yet claim that the corrected closure chain is fully closed. The unresolved knife-edge is now the same-family bridge between the dense autocorrelation family and the centered Rayleigh family.
+  \item \textbf{What this is not:} This draft does not yet claim that the corrected closure chain is fully closed. The unresolved knife-edge is now the construction of an exact smaller operator-controlled family inside the corrected cone. The naive centered family $\Phi_{B,t}|p|^2$ is too large to serve as the public closure family.
   \item \textbf{Modularity:} Local improvements in the Archimedean symbol, the RKHS cap, or the packet density theorem feed only the corresponding module and do not change the rest of the chain.
   \item \textbf{Test class:} For each $K>0$ we distinguish
   \[
@@ -38,12 +38,16 @@ This work introduces a quantitative, modular operator framework for the Weil cri
       \operatorname{supp}\Psi\subset[-K/2,K/2]
     \Bigr\}
   \]
-  feeds the corrected mainline density theorem A1-pd, while the centered Rayleigh family
+  feeds the corrected mainline density theorem A1-pd, while the naive centered Rayleigh family
   \[
     \mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}
     := \operatorname{cone}\!\bigl\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\bigr\}
   \]
-  is the family currently controlled by the Toeplitz/RKHS quadratic form.
+  is only a background quadratic-form candidate. The live frontier is a smaller
+  operator-controlled packet family
+  $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq\mathcal W_K^{\mathrm{pd}}$
+  on which the Toeplitz/RKHS quadratic form acts directly without overgenerating
+  broad local bumps.
   \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} now packages the corrected positive-definite closure route. Appendix~\ref{app:legacy-branch} keeps legacy broad-cone branches as read-only provenance only.
   \item \textbf{Computation:} Symbol scans, ATP logs, and certificate tables are reproducibility aids only; they do not enter the logical core of the active proof chain.
 \end{itemize}
@@ -58,6 +62,7 @@ at the bridge scale $t_{\mathrm{crit}}=3/20$ (Corollary~\ref{cor:uniform-prime-c
   \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ \ge\ \min P_A\ -\ C\,\omega_{P_A}(1/(2M))\ -\ \rho(t),
 \]
 closing the centered A3/RKHS analytic bridge. What remains is not another shifted positivity theorem but the correct density route from centered packets to the positive-definite Weil cone.
+What remains is not another shifted positivity theorem and not a same-family bridge through $\Phi_{B,t}|p|^2$. The live missing theorem is an exact smaller operator-controlled packet family that stays inside the corrected positive-definite cone.
 
 \section{Gate Contract}\label{sec:global-hyp}
 
@@ -66,8 +71,8 @@ For reference we collect the live proof contract used after the target-cone audi
 \begin{description}
   \item[(T0-pd)] Guinand--Weil normalization of $Q^\star(t;\cdot)$ together with the corrected positive-definite target cone.
   \item[(A1-pd)] Density of the centered autocorrelation family $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ in $\mathcal W_K^{\mathrm{pd}}$.
-  \item[(packet-Rayleigh)] Identification of $Q^\star(t;\Phi_{B,t,p})$ with the quadratic form already controlled by the Toeplitz/RKHS engine on $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$.
-  \item[(same-family bridge)] Equality or dense transfer between the density family and the positive family, or an enlarged operator model acting directly on the dense family.
+  \item[(packet-Rayleigh)] Naive quadratic-form identity on the background family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}$.
+  \item[(OP-pd)] Exact smaller operator-controlled packet family $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq\mathcal W_K^{\mathrm{pd}}$ on which the centered Toeplitz/RKHS engine acts directly.
   \item[(A3)+(RKHS)] Centered positivity mechanism at the critical scale.
   \item[(A2-pd)] Continuity of $Q^\star(t;\cdot)$ on the ambient compact-support class, hence on $\mathcal W_K^{\mathrm{pd}}$ in particular.
   \item[(LF-pd)] Inductive-limit lift from all $\mathcal W_K^{\mathrm{pd}}$ to $\mathcal W^{\mathrm{pd}}$.
@@ -83,7 +88,7 @@ The present manuscript establishes the analytic inputs behind this chain as foll
   \item `A3` and `RKHS` as the centered positivity mechanism in Sections~\ref{sec:A3} and \ref{sec:RKHS}.
 \end{itemize}
 
-What remains unresolved in the present draft is not just the pair `A1-pd + packet-Rayleigh`. These two theorems point to two different centered families. The actual knife-edge is the same-family bridge joining the density family to the positive family. Once that bridge is supplied, the rest of the route is the routine closure / LF / Weil tail.
+What remains unresolved in the present draft is not just the pair `A1-pd + packet-Rayleigh`. Pushing the naive Rayleigh route further shows that the family $\Phi_{B,t}|p|^2$ is too large to serve as the closure family. The actual knife-edge is therefore `OP-pd`: a smaller exact operator-controlled packet family inside the corrected cone. Once that theorem is supplied, the rest of the route is the routine closure / LF / Weil tail.
 
 \section{Notation and Conventions}\label{sec:notation}
 
@@ -109,8 +114,8 @@ with the bridge scale fixed at $t=t_{\mathrm{crit}}$; Section~\ref{sec:T0} recor
 
 \subsection*{Quick reference for reviewers}\label{sec:quick-ref}
 \begin{tcolorbox}[colback=white,colframe=black!60]
-\textbf{Architecture.} `T0-pd -> corrected cone -> A1-pd + packet-Rayleigh -> centered A3/RKHS -> same-family bridge -> A2 closure -> LF-pd -> G6`.
-\textbf{Goal.} After the same-family bridge is closed, obtain $Q^\star(t;\Phi)\ge0$ on the positive-definite Weil cone $\mathcal W^{\mathrm{pd}}$ and conclude RH via `G6`.
+\textbf{Architecture.} `T0-pd -> corrected cone -> A1-pd -> OP-pd -> centered A3/RKHS -> A2 closure -> LF-pd -> G6`.
+\textbf{Goal.} After the exact operator-family theorem `OP-pd` is closed, obtain $Q^\star(t;\Phi)\ge0$ on the positive-definite Weil cone $\mathcal W^{\mathrm{pd}}$ and conclude RH via `G6`.
 
 \textbf{Analytic modules already written.} A1$'$ is auxiliary density on $R_K$; A2 is continuity on the ambient compact-support class; A3 and RKHS feed the centered positivity engine.
 
@@ -120,7 +125,7 @@ $\rho(t_{\mathrm{crit}})\le c_\ast/4$ (Corollary~\ref{cor:uniform-prime-cap}).
 Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mathrm{Ray}}(t,M)\|\le c_\ast/4$
 \ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ge c_\ast/4$ on the centered bridge family.
 
-\textbf{Current knife-edge.} The unresolved issue is no longer “one shifted family that is both dense and positive” on the broad cone. On the corrected cone the density family and the positive family have both become centered, but they are still not the same exact family. The new knife-edge is the same-family bridge between $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ and $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$.
+\textbf{Current knife-edge.} The unresolved issue is no longer “one shifted family that is both dense and positive” on the broad cone. On the corrected cone the dense autocorrelation family survives, but the naive quadratic-form family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is too large. The new knife-edge is an exact smaller operator-controlled family inside $\mathcal W_K^{\mathrm{pd}}$.
 \end{tcolorbox}
 
 \begin{center}
@@ -134,9 +139,9 @@ Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mat
     \hline
     $\mathrm{T0\!-\!pd}$ & Theorem~\ref{thm:Weil-criterion} (corrected Weil linkage) & $\mathrm{G6}$ \\
     $\mathrm{A1'}$ & Theorem~\ref{a1:thm:A1-local-density} (auxiliary density on $R_K$) & auxiliary only \\
-    $\mathrm{A1\!-\!pd}$ & density of $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ on $\mathcal W_K^{\mathrm{pd}}$ & same-family bridge \\
-    packet-Rayleigh & Lemma~\ref{lem:packet-rayleigh-identification} on $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ & same-family bridge \\
-    same-family bridge & identify/transfer from dense family to positive family & local closure \\
+    $\mathrm{A1\!-\!pd}$ & density of $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ on $\mathcal W_K^{\mathrm{pd}}$ & $\mathrm{OP\!-\!pd}$ \\
+    packet-Rayleigh & Lemma~\ref{lem:packet-rayleigh-identification} on the naive family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ & background-only \\
+    $\mathrm{OP\!-\!pd}$ & exact operator-controlled packet family inside $\mathcal W_K^{\mathrm{pd}}$ & local closure \\
     $\mathrm{A2}$ & Lemma~\ref{a2:lem:A2} / Corollary~\ref{cor:A2-Lip} (continuity) & local closure, LF \\
     $\mathrm{A3}$ & Theorem~\ref{thm:A3} (centered Toeplitz bridge) & centered positivity \\
     RKHS & Corollary~\ref{cor:uniform-prime-cap} (centered prime cap) & centered positivity \\
@@ -146,7 +151,7 @@ Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mat
   \end{tabular}
 \end{center}
 
-\noindent\textbf{Assumption stack.} When we write ``under the analytic modules $(\mathrm{T0})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{RKHS})$'' we mean the analytic inputs already established in the draft. The public route to RH additionally requires the corrected local density theorem `A1-pd`, the packet-Rayleigh bridge on the centered positive family, the same-family bridge between those families, and the corresponding local/global closure on $\mathcal W_K^{\mathrm{pd}} / \mathcal W^{\mathrm{pd}}$.
+\noindent\textbf{Assumption stack.} When we write ``under the analytic modules $(\mathrm{T0})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{RKHS})$'' we mean the analytic inputs already established in the draft. The public route to RH additionally requires the corrected local density theorem `A1-pd`, the exact operator-family theorem `OP-pd` on the corrected cone, and the corresponding local/global closure on $\mathcal W_K^{\mathrm{pd}} / \mathcal W^{\mathrm{pd}}$.
 
 \noindent\textbf{Verification aids.} Appendix~\ref{app:verification} records reproducibility collateral; Appendix~\ref{app:digamma-computation} records an analytic framework and optional numerical exploration. These materials are not used as premises in any theorem. All bounds invoked in the active chain are proved in-line from explicit analytic estimates.
 

@@ -131,11 +131,14 @@ Theorem~\ref{thm:A1-pd} produces density for the cone
   \mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}
   = \operatorname{cone}\{\Psi*\widetilde{\Psi}:\ \Psi\in\mathcal P_K(t_0)\}.
 \]
-This is not yet the same as the packet family controlled by the current centered
-Toeplitz/RKHS quadratic-form technology, which is built from centered windows times
-periodic modulus squares. Hence A1-pd is a correct density theorem for the corrected
-cone, but by itself it does not yet identify the exact positive family needed to
-close RH.
+This theorem does not yet construct the exact operator-controlled packet family
+needed for the corrected closure route. The naive centered family
+$\Phi_{B,t}|p|^2$ is mathematically natural, but it is too large to serve as that
+exact family: combined with the full quadratic-form meaning of Lemma~8.8 and the
+centered A3 positivity engine, it would overgenerate false broad local positivity
+on compact bumps. Thus A1-pd is the correct density theorem for the corrected cone,
+but the remaining work is now `OP-pd`, not a same-family bridge through
+$\Phi_{B,t}|p|^2$.
 \end{remark}
 
 \begin{lemma}[Compact support convolution reduction]\label{lem:convolution-compact-support}
