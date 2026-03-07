@@ -6,6 +6,7 @@ import fnmatch
 import os
 import shutil
 import subprocess
+import sys
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
@@ -61,6 +62,12 @@ EXCLUDE_PATTERNS = [
     "q3.lean.aristotle/Q3/Clean/**",
     "q3.lean.aristotle/Q3/Proofs/PrimeCert/**",
 ]
+
+ROOT_SCRIPTS = REPO_ROOT / "scripts"
+if str(ROOT_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(ROOT_SCRIPTS))
+
+from qmd_ops import cleanup_stale_stage_dirs, qmd_lock, run_qmd  # noqa: E402
 
 
 def resolve_qmd() -> str:
@@ -163,21 +170,22 @@ def build_stage(stage_root: Path, files: list[Path]) -> Counter:
 
 
 def run(cmd: list[str], cwd: Path | None = None) -> str:
-    proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, check=False)
-    if proc.returncode != 0:
-        raise SystemExit(proc.stderr.strip() or proc.stdout.strip())
-    return proc.stdout
+    try:
+        return run_qmd(cmd, cwd=cwd)
+    except RuntimeError as exc:
+        raise SystemExit(str(exc)) from exc
 
 
 def rebuild_collection(qmd: str, stage_root: Path, embed: bool) -> None:
-    listing = run([qmd, "collection", "list"])
-    if f"{COLLECTION} (qmd://{COLLECTION}/)" in listing:
-        run([qmd, "collection", "remove", COLLECTION])
+    with qmd_lock("refresh_q3_docs"):
+        listing = run([qmd, "collection", "list"])
+        if f"{COLLECTION} (qmd://{COLLECTION}/)" in listing:
+            run([qmd, "collection", "remove", COLLECTION])
 
-    run([qmd, "collection", "add", str(stage_root), "--name", COLLECTION, "--mask", "**/*"])
-    if embed:
-        run([qmd, "embed", "-f"])
-    run([qmd, "cleanup"])
+        run([qmd, "collection", "add", str(stage_root), "--name", COLLECTION, "--mask", "**/*"])
+        if embed:
+            run([qmd, "embed", "-f"])
+        run([qmd, "cleanup"])
 
 
 def main() -> int:
@@ -189,6 +197,7 @@ def main() -> int:
     qmd = resolve_qmd()
     files = collect_sources()
     CACHE_ROOT.mkdir(parents=True, exist_ok=True)
+    cleanup_stale_stage_dirs(CACHE_ROOT)
     stage_root = stage_root_for_run()
 
     try:
@@ -203,7 +212,8 @@ def main() -> int:
             f"{counts['.md']} md, {counts['.tex']} tex, {counts['.lean']} lean"
         )
         rebuild_collection(qmd=qmd, stage_root=stage_root, embed=not args.no_embed)
-        print(run([qmd, "status"]).strip())
+        with qmd_lock("refresh_q3_docs_status"):
+            print(run([qmd, "status"]).strip())
     finally:
         if stage_root.exists():
             shutil.rmtree(stage_root, ignore_errors=True)

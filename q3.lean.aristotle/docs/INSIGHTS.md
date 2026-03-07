@@ -2053,3 +2053,48 @@ Recommendation:
 - Freeze these theorem blocks in the public manuscript and in the control plane.
 - Make the next active step the proof skeleton behind `A1-pd`, not another broad-cone patch.
 - Keep packet-Rayleigh as the next queued bridge theorem on the same exact packet cone.
+
+## Update (2026-03-07, in progress) — qmd serialization fix
+
+- Root cause of the recurring `SQLITE_BUSY_RECOVERY` noise: our `qmd` entrypoints
+  were not serialized at all. `scripts/research_oracle.py` and
+  `q3.lean.aristotle/scripts/refresh_q3_docs.py` could hit the same SQLite-backed
+  qmd state concurrently.
+- Fix introduced:
+  - shared helper `/Users/emalam/Documents/GitHub/rh_lean_01_2026/scripts/qmd_ops.py`
+  - one file lock at `q3.lean.aristotle/.qmd_cache/qmd_ops.lock`
+  - retry/backoff on `SQLITE_BUSY*`
+  - stale `q3_docs_stage*` cleanup during refresh
+- Operational rule after the fix:
+  - run qmd queries sequentially,
+  - no parallel local query fan-out,
+  - refresh and query now share the same lock layer.
+
+## Synthesis (2026-03-07, in progress) — corrected-cone route after the same-family note
+
+Target node and wiring:
+- The corrected-cone pivot survives.
+- But the previous shorthand
+  `A1-pd + packet-Rayleigh`
+  was still too optimistic.
+- The live knife-edge is now the same-family bridge `SF-pd`.
+
+Concrete synthesis:
+- `A1-pd` feeds the dense family
+  `\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}
+   = \operatorname{cone}\{\Psi*\widetilde\Psi:\Psi\in\mathcal P_K(t_0)\}`.
+- packet-Rayleigh feeds the positive family
+  `\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}
+   = \operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}`.
+- These two families are both centered but not yet identified.
+- Honest blocker:
+  either prove
+  `\overline{\operatorname{cone}(\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}})}=\mathcal W_K^{\mathrm{pd}}`,
+  or enlarge the operator model so that it acts directly on
+  `\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}`.
+
+Recommendation:
+- Stop phrasing the corrected route as if `A1-pd` and packet-Rayleigh already
+  live on one exact common family.
+- Freeze `SF-pd` as the new active blocker in manuscript + control docs.
+- Keep the broad-cone Aristotle branch background-only.

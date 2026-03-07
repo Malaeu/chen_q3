@@ -96,6 +96,10 @@ cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
 ./scripts/research_oracle.py query "your blocker query" -c q3_docs -n 5
 ```
 
+The local qmd layer is serialized through
+`q3.lean.aristotle/.qmd_cache/qmd_ops.lock`.
+Run refresh/query sequentially on this host; do not stack parallel qmd queries.
+
 ## Practical rule
 
 Do **not** dump raw chats or raw zip extracts directly into the embeddings base.

@@ -10,7 +10,7 @@
 
 - review status: `reviewed`
 - scope: `math`
-- safe for embeddings: `yes`
+- safe for embeddings: `no`
 
 ## Core claim
 
@@ -87,8 +87,14 @@ but should freeze three exact mathematical interfaces:
 
 ## Notes
 
-Best current reading:
+This note is now **superseded** by:
 
-- this note fully matches the corrected-cone line adopted after `T0.1`;
-- it improves the mathematical precision of the mainline rather than changing the direction;
-- the active unresolved pair is now exactly `A1-pd + packet-Rayleigh`.
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/reviewed_notes/2026_03_07_same_family_bridge_review.md`
+
+Reason:
+
+- the newer review keeps the corrected-cone pivot,
+- but replaces the weaker phrase
+  `A1-pd + packet-Rayleigh`
+  by the stricter and more accurate blocker:
+  the same-family bridge between the dense family and the positive family.

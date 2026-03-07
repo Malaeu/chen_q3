@@ -30,6 +30,9 @@ or set `"qmd_command": "/home/<user>/.bun/bin/qmd"` in `RESEARCH_ORACLE.json`.
 
 This rebuilds `q3_docs` from the current control docs, active TeX, and live Lean
 files while excluding archives, raw inbox markdown, and heavy `PrimeCert` shards.
+The refresh path is now serialized through
+`q3.lean.aristotle/.qmd_cache/qmd_ops.lock` and retries transient
+`SQLITE_BUSY_RECOVERY` failures.
 
 Incoming markdown workflow:
 
@@ -67,6 +70,8 @@ For docs/mainline search, use the refreshed `q3_docs` collection:
 ```bash
 ./scripts/research_oracle.py query "keyword" -c q3_docs
 ```
+This query path now uses the same lock and retry layer as refresh.
+Run local qmd queries sequentially; do not fan out parallel qmd queries on this host.
 
 ## Query
 
@@ -88,3 +93,5 @@ For docs/mainline search, use the refreshed `q3_docs` collection:
 - Speculative edges are **not** used by the planner until a Lean stub exists.
 - If `q3_docs` is older than the current refactor wave, refresh it before running a
   new blocker search.
+- If you still hit `SQLITE_BUSY_RECOVERY`, treat it as a backend contention issue.
+  Wait for the current qmd operation to finish instead of starting more local queries.

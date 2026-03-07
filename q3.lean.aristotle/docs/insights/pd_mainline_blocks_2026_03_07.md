@@ -7,6 +7,18 @@ Date: 2026-03-07
 The new theorem-block package matches the corrected-cone pivot and should be treated
 as the live mathematical contract for the public manuscript.
 
+## Update
+
+This note is now partially superseded by:
+
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/same_family_bridge_2026_03_07.md`
+
+The corrected-cone pivot still survives, but the weaker phrase
+`A1-pd + packet-Rayleigh`
+has been replaced by the stricter blocker:
+the same-family bridge between the dense autocorrelation family and the centered
+Rayleigh family.
+
 ## Local search and repo evidence
 
 Successful semantic hits:

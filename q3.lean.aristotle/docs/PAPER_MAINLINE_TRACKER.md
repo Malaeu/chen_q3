@@ -24,7 +24,9 @@ It is **not** the execution queue and **not** the master gate-state file.
 | `\mathcal W_{K,0}^{pd}` | seed set of local convolution squares `\psi*\widetilde\psi` with `\operatorname{supp}\psi\subset[-K/2,K/2]` | active public target seed |
 | `\mathcal W_K^{pd}` | local positive-definite / convolution-square Weil cone | active public target |
 | `\mathcal W^{pd} = \varinjlim_{K>0}\mathcal W_K^{pd}` | global positive-definite Weil cone | active public target |
-| `\mathcal P_K` | exact centered packet cone `\operatorname{cone}\{\Phi_\Psi=\Psi*\widetilde\Psi\}` with `\operatorname{supp}\Psi\subset[-K/2,K/2]` | active generator family, theorem still open |
+| `\mathcal P_K(t_0)` | pre-square packet span built from shifted Fej\'er$\times$heat atoms | active approximation engine |
+| `\mathcal G_{K,\mathrm{dens}}^{pd}` | dense autocorrelation family `\operatorname{cone}\{\Psi*\widetilde\Psi:\Psi\in\mathcal P_K(t_0)\}` | active density family |
+| `\mathcal G_{K,\mathrm{Ray}}^{pd}` | centered Rayleigh family `\operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}` | active positivity family |
 
 Lean compatibility note:
 
@@ -39,8 +41,9 @@ Lean compatibility note:
 | `T0` | Guinand--Weil crosswalk | done | `sections/T0.tex`, `sections/Weil_linkage.tex` |
 | `T0.1` | target-cone audit | done, verdict `pivot required` | audit memo + control plane |
 | `T0-pd` | corrected positive-definite target cone | done in docs/manuscript | `sections/scope_notation.tex`, `sections/Notation/qstar_contract.tex`, `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
-| `A1-pd` | density of the exact centered packet cone `\mathcal P_K` in `\mathcal W_K^{pd}` | active frontier | `sections/A1prime.tex`, `sections/Main_closure.tex` |
-| `packet-Rayleigh` | identify `Q^\star(t;\Phi_\Psi)` with the controlled Toeplitz/RKHS quadratic form | active frontier | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
+| `A1-pd` | density of `\mathcal G_{K,\mathrm{dens}}^{pd}` in `\mathcal W_K^{pd}` | active input | `sections/A1prime.tex`, `sections/Main_closure.tex` |
+| `packet-Rayleigh` | identify `Q^\star(t;\Phi_{B,t,p})` with the controlled Toeplitz/RKHS quadratic form on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | active input | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
+| `SF-pd` | same-family bridge between `\mathcal G_{K,\mathrm{dens}}^{pd}` and `\mathcal G_{K,\mathrm{Ray}}^{pd}` | active frontier | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
 | `A2-pd` | continuity on the corrected cone | inherited input | `sections/A2.tex`, `sections/Main_closure.tex` |
 | `LF-pd` | LF lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}` | skeleton available, still conditional | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
@@ -55,7 +58,7 @@ Lean compatibility note:
 | `sections/A2.tex` | continuity input for corrected local closure | aligned via ambient space | continuity on the broad ambient compact-support class feeds `\mathcal W_K^{pd}` |
 | `sections/A3/*` | centered positivity engine | aligned | should feed the exact centered packet family, not a broad shifted cone |
 | `sections/RKHS/*` | prime-control input for centered positivity | aligned | same role as before, but now on the corrected target |
-| `sections/Main_closure.tex` | corrected-cone packaging | aligned after `T0.1` | now conditional on `A1-pd + packet-Rayleigh` rather than on broad-cone `G1-G3` |
+| `sections/Main_closure.tex` | corrected-cone packaging | aligned after `T0.1` | now conditional on density family + positivity family + same-family bridge rather than on broad-cone `G1-G3` |
 | `sections/Weil_pack.tex` | dependency summary for corrected route | aligned after `T0.1` | broad-cone route demoted |
 | `sections/Weil_linkage.tex` | `G6` on the corrected cone | aligned after `T0.1` | RH theorem must remain conditional on corrected local positivity |
 | `sections/T5/*` | broad-cone LF skeleton only | archived/read-only | reference, not mainline |
@@ -65,12 +68,13 @@ Lean compatibility note:
 | Statement | Current typing | Required typing after `T0.1` | Status |
 | --- | --- | --- | --- |
 | A1' density (`thm:A1-density`, `a1:thm:A1-local-density`) | theorem on `R_K` | auxiliary theorem on `R_K` only | aligned after pivot |
-| packet cone definition (`def:pd-packet-cone`) | exact generator family on the corrected cone | definition of `\mathcal P_K` | aligned |
-| `A1-pd` (`thm:A1-pd`) | theorem target on `\mathcal W_K^{pd}` | density of `\mathcal P_K` in `\mathcal W_K^{pd}` | aligned as target theorem |
-| packet-Rayleigh (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal P_K` | exact quadratic-form bridge on the same family | aligned as target lemma |
+| packet-density definition (`def:pd-packet-cone`) | pre-square packet span plus dense autocorrelation family | definitions of `\mathcal P_K(t_0)` and `\mathcal G_{K,\mathrm{dens}}^{pd}` | aligned |
+| `A1-pd` (`thm:A1-pd`) | theorem target on `\mathcal W_K^{pd}` | density of `\mathcal G_{K,\mathrm{dens}}^{pd}` in `\mathcal W_K^{pd}` | aligned as target theorem |
+| packet-Rayleigh (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | exact quadratic-form bridge on the positive family | aligned as target lemma |
+| same-family bridge | theorem target linking density and positivity families | either density of `\mathcal G_{K,\mathrm{Ray}}^{pd}` or enlarged operator model on `\mathcal G_{K,\mathrm{dens}}^{pd}` | active blocker |
 | A2 continuity | theorem on ambient admissible compact tests | inherited input on `\mathcal W_K^{pd}` | aligned |
 | conditional main positivity (`thm:Main-positivity`) | positivity on corrected global cone | conditional on centered packet density in `\mathcal W_K^{pd}` | aligned after pivot |
-| local closure proposition | compact closure from a centered packet cone `\mathcal P_K` | theorem on `\mathcal W_K^{pd}` | aligned after pivot |
+| local closure proposition | compact closure from a dense positive family inside `\mathcal W_K^{pd}` | theorem on `\mathcal W_K^{pd}` | aligned after pivot |
 | Weil criterion (`thm:Weil-criterion`) | theorem on `\mathcal W^{pd}` | theorem on the corrected positive-definite cone | aligned after pivot |
 | RH theorem (`thm:RH`) | conditional | must stay conditional until `A1-pd` and `LF-pd` close | aligned after pivot |
 
@@ -84,7 +88,7 @@ These statements must stay explicitly conditional after the pivot:
 - `thm:RH` in `sections/Weil_linkage.tex`.
 
 Any wording implying unconditional positivity on the corrected cone before
-`A1-pd` closes is now a bug.
+the same-family bridge closes is now a bug.
 
 ## Target-Cone Audit Result
 
@@ -117,10 +121,13 @@ Interpretation rule after `T0.1`:
 
 1. Pre-square density theorem on `C_c^\infty([-K/2,K/2])` strong enough to feed
    `A1-pd` through autocorrelation continuity.
-2. `A1-pd`: proof of density of the exact packet cone `\mathcal P_K` in
+2. `A1-pd`: proof of density of `\mathcal G_{K,\mathrm{dens}}^{pd}` in
    `\mathcal W_K^{pd}`.
-3. packet-Rayleigh identification on the same family `\mathcal P_K`.
-4. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
+3. packet-Rayleigh identification on the centered Rayleigh family
+   `\mathcal G_{K,\mathrm{Ray}}^{pd}`.
+4. Same-family bridge between the dense family and the positive family, or an
+   enlarged operator model acting directly on the dense family.
+5. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
 
 ## Background Broad-Cone Branch
 

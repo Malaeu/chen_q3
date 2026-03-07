@@ -7,6 +7,8 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
+from qmd_ops import qmd_lock, run_qmd
+
 ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
 ACTIVE_DIR = ROOT / "ACTIVE"
 PIPELINE_DIR = ACTIVE_DIR / "pipeline"
@@ -49,6 +51,11 @@ def resolve_default(path: Path, legacy: Path) -> Path:
 
 
 def run(cmd: list[str], cwd: Path | None = None) -> str:
+    if cmd and Path(cmd[0]).name == "qmd":
+        try:
+            return run_qmd(cmd, cwd=cwd)
+        except (RuntimeError, TimeoutError) as exc:
+            raise SystemExit(str(exc)) from exc
     proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
     if proc.returncode != 0:
         raise SystemExit(proc.stderr.strip() or proc.stdout.strip())
@@ -99,7 +106,11 @@ def cmd_query(args, cfg) -> int:
     if index:
         cmd += ["--index", index]
 
-    raw = run(cmd)
+    try:
+        with qmd_lock("research_oracle_query"):
+            raw = run(cmd)
+    except TimeoutError as exc:
+        raise SystemExit(str(exc)) from exc
     facts = normalize_results(raw)
 
     if args.raw:
@@ -118,12 +129,16 @@ def cmd_ingest(args, cfg) -> int:
     literature_dir = args.path or cfg.get("literature_dir", "literature")
     context = args.context or cfg.get("context", "")
 
-    cmd = [qmd, "collection", "add", literature_dir, "--name", collection]
-    run(cmd)
-    if context:
-        run([qmd, "context", "add", f"qmd://{collection}", context])
-    if args.embed:
-        run([qmd, "embed"])
+    try:
+        with qmd_lock("research_oracle_ingest"):
+            cmd = [qmd, "collection", "add", literature_dir, "--name", collection]
+            run(cmd)
+            if context:
+                run([qmd, "context", "add", f"qmd://{collection}", context])
+            if args.embed:
+                run([qmd, "embed"])
+    except TimeoutError as exc:
+        raise SystemExit(str(exc)) from exc
     return 0
 
 
@@ -142,7 +157,11 @@ def cmd_add_speculative(args, cfg) -> int:
     if index:
         cmd += ["--index", index]
 
-    raw = run(cmd)
+    try:
+        with qmd_lock("research_oracle_add_speculative"):
+            raw = run(cmd)
+    except TimeoutError as exc:
+        raise SystemExit(str(exc)) from exc
     facts = normalize_results(raw)
     top_k = args.top_k or min(3, len(facts))
     selected = facts[:top_k]

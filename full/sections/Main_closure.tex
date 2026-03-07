@@ -18,8 +18,11 @@ and the corrected local Weil-positive cone
   \mathcal W_K^{\mathrm{pd}}
   := \overline{\operatorname{cone}\!\bigl(\mathcal W_{K,0}^{\mathrm{pd}}\bigr)}^{\|\cdot\|_\infty},
   \qquad
-  \mathcal P_K
-  := \operatorname{cone}\!\bigl\{\Phi_\Psi=\Psi*\widetilde{\Psi}:\ \operatorname{supp}\Psi\subset[-K/2,K/2]\bigr\},
+  \mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}
+  := \operatorname{cone}\!\bigl\{\Phi_\Psi=\Psi*\widetilde{\Psi}:\ \Psi\in \mathcal P_K(t_0)\bigr\},
+  \qquad
+  \mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}
+  := \operatorname{cone}\!\bigl\{\Phi_{B,t,p}=\Phi_{B,t}\,|p|^2:\ \Phi_{B,t}\ \text{centered Fej\'er$\times$heat},\ p\in\mathcal P_M\bigr\},
   \qquad
   \mathcal W^{\mathrm{pd}}:=\varinjlim_{K\to\infty}\mathcal W_K^{\mathrm{pd}}.
 \]
@@ -33,26 +36,27 @@ The current draft already supplies:
 
 What remains unresolved is the corrected density gate:
 \begin{itemize}
-  \item \textbf{(A1-pd)} Prove that the exact centered packet cone $\mathcal P_K$ is dense in $\mathcal W_K^{\mathrm{pd}}$.
-  \item \textbf{(packet-Rayleigh)} Identify $Q^\star(t;\Phi_\Psi)$ with the quadratic form already controlled by the centered Toeplitz/RKHS engine for every $\Phi_\Psi\in\mathcal P_K$.
+  \item \textbf{(A1-pd)} Prove that the centered density family $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ is dense in $\mathcal W_K^{\mathrm{pd}}$.
+  \item \textbf{(packet-Rayleigh)} Identify $Q^\star(t;\Phi_{B,t,p})$ with the quadratic form already controlled by the centered Toeplitz/RKHS engine for every $\Phi_{B,t,p}\in\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$.
+  \item \textbf{(same-family bridge)} Prove that the positive family controlled by packet-Rayleigh is itself dense in $\mathcal W_K^{\mathrm{pd}}$, or enlarge the operator model so that it acts directly on $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$.
   \item \textbf{(LF-pd)} Once local positivity on every $\mathcal W_K^{\mathrm{pd}}$ is available, lift it to the global cone $\mathcal W^{\mathrm{pd}}$.
 \end{itemize}
 
 \begin{lemma}[Target packet-Rayleigh identification]\label{lem:packet-rayleigh-identification}
-For every compact window $[-K,K]$ and every $\Phi_\Psi=\Psi*\widetilde{\Psi}\in\mathcal P_K$, where
+For every compact window $[-K,K]$, every centered Fej\'er$\times$heat window $\Phi_{B,t}$, and every trigonometric polynomial $p\in\mathcal P_M$, define
 \[
-  \Psi(\xi)=\sum_{j=1}^N c_j\,g_{B_j,t_j,\tau_j}(\xi)
+  \Phi_{B,t,p}(\xi):=\Phi_{B,t}(\xi)\,|p(\xi)|^2.
 \]
-is a finite Fej\'er$\times$heat packet supported in $[-K/2,K/2]$, there exist $M$ large enough and a trigonometric polynomial $p_\Psi\in\mathcal P_M$ such that
+Then
 \[
-  Q^\star(t;\Phi_\Psi)
+  Q^\star(t;\Phi_{B,t,p})
   =
   2\pi\,
-  \bigl\langle (T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\,p_\Psi,\ p_\Psi\bigr\rangle_{L^2(\mathbb T)}.
+  \bigl\langle (T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\,p,\ p\bigr\rangle_{L^2(\mathbb T)}.
 \]
 Equivalently, positivity of the centered Toeplitz/RKHS quadratic form on the packet span yields
 \[
-  Q^\star(t;\Phi)\ge 0\qquad\text{for every }\Phi\in\mathcal P_K.
+  Q^\star(t;\Phi)\ge 0\qquad\text{for every }\Phi\in\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}.
 \]
 \end{lemma}
 
@@ -61,16 +65,21 @@ The present draft already points toward Lemma~\ref{lem:packet-rayleigh-identific
 Lemma~\ref{lem:a3-rayleigh-quotient} gives the quadratic Rayleigh pairing for arbitrary
 trigonometric polynomials, while Theorem~\ref{thm:a3-rayleigh-identification} is the
 special case $p\equiv1$ for a single centered Fej\'er$\times$heat window. What is
-still missing is the exact identification on the packet autocorrelation cone
-$\mathcal P_K$.
+still missing is the bridge between the Rayleigh-controlled family
+$\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ and the density family
+$\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ from Theorem~\ref{thm:A1-pd}.
 \end{remark}
 
 \begin{theorem}[Conditional main positivity on $\mathcal W^{\mathrm{pd}}$]\label{thm:Main-positivity}
 Assume \textup{(T0)}, \textup{(A2)}, Theorem~\ref{thm:A1-pd}, and Lemma~\ref{lem:packet-rayleigh-identification}. Assume further that for every compact window $[-K,K]$ the centered Toeplitz/RKHS engine yields
 \[
-  Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal P_K.
+  Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}.
 \]
-Assume moreover that these local positivity statements are compatible with the natural embeddings $\mathcal W_K^{\mathrm{pd}}\hookrightarrow \mathcal W_{K'}^{\mathrm{pd}}$. Then
+Assume moreover that the same-family bridge closes locally, i.e. that positivity on
+$\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ transfers to a dense positive family in
+$\mathcal W_K^{\mathrm{pd}}$, and that these local positivity statements are compatible
+with the natural embeddings $\mathcal W_K^{\mathrm{pd}}\hookrightarrow \mathcal W_{K'}^{\mathrm{pd}}$.
+Then
 \[
   Q^\star(t;\Phi)\ \ge\ 0\qquad\text{for every }\Phi\in \mathcal W^{\mathrm{pd}},
 \]
@@ -78,7 +87,16 @@ where $\mathcal W^{\mathrm{pd}}=\bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}$ is the 
 \end{theorem}
 
 \begin{proof}
-Fix $K>0$. By Theorem~\ref{thm:A1-pd}, $\mathcal P_K$ is dense in $\mathcal W_K^{\mathrm{pd}}$. By Corollary~\ref{cor:A2-Lip}, $Q^\star(t;\cdot)$ is continuous on the ambient compact-support class $B_K$, hence on $\mathcal W_K^{\mathrm{pd}}\subseteq B_K$. Therefore the positivity assumption on $\mathcal P_K$ extends to all of $\mathcal W_K^{\mathrm{pd}}$. Now let $\Phi\in\mathcal W^{\mathrm{pd}}$. Choose $K$ with $\Phi\in\mathcal W_K^{\mathrm{pd}}$. Then $Q^\star(t;\Phi)\ge 0$, and the compatibility assumption ensures that this conclusion is independent of the chosen compact exhaustion.
+Fix $K>0$. By Theorem~\ref{thm:A1-pd}, the density family
+$\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ is dense in $\mathcal W_K^{\mathrm{pd}}$.
+By the same-family hypothesis, the positivity obtained on
+$\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ transfers to a dense positive family in
+$\mathcal W_K^{\mathrm{pd}}$. By Corollary~\ref{cor:A2-Lip}, $Q^\star(t;\cdot)$ is
+continuous on the ambient compact-support class $B_K$, hence on
+$\mathcal W_K^{\mathrm{pd}}\subseteq B_K$. Therefore the local positivity statement
+extends to all of $\mathcal W_K^{\mathrm{pd}}$. Now let $\Phi\in\mathcal W^{\mathrm{pd}}$.
+Choose $K$ with $\Phi\in\mathcal W_K^{\mathrm{pd}}$. Then $Q^\star(t;\Phi)\ge 0$, and
+the compatibility assumption ensures that this conclusion is independent of the chosen compact exhaustion.
 \end{proof}
 
 \begin{remark}[Where the present draft stops]
@@ -90,7 +108,8 @@ The current analytic core supplies two separate ingredients:
 The target-cone audit shows that these do \emph{not} yet close RH. The public missing pair is now:
 \begin{enumerate}
   \item the centered density theorem A1-pd on the corrected positive-definite cone $\mathcal W_K^{\mathrm{pd}}$;
-  \item the packet-Rayleigh identification on the same exact packet cone $\mathcal P_K$.
+  \item the packet-Rayleigh identification on the centered Rayleigh family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$;
+  \item the exact same-family bridge between the dense family and the positive family.
 \end{enumerate}
 \end{remark}
 
@@ -98,8 +117,10 @@ The target-cone audit shows that these do \emph{not} yet close RH. The public mi
 Fix a compact window $[-K,K]$ and assume Theorem~\ref{thm:A1-pd},
 Lemma~\ref{lem:packet-rayleigh-identification}, and
 \[
-  Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal P_K.
+  Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}.
 \]
+Assume moreover that this positivity transfers to a dense positive family in
+$\mathcal W_K^{\mathrm{pd}}$.
 Then
 \[
   Q^\star(t;\Phi)\ge 0 \qquad \text{for every }\Phi\in \mathcal W_K^{\mathrm{pd}}.
@@ -107,18 +128,29 @@ Then
 \end{proposition}
 
 \begin{proof}
-By the assumed packetwise inequality and linearity of $Q^\star$, the functional is nonnegative on the cone generated by $\mathcal P_K$.
+By the assumed packetwise inequality and linearity of $Q^\star$, the functional is
+nonnegative on the cone generated by $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$.
+By hypothesis this yields a dense positive family in $\mathcal W_K^{\mathrm{pd}}$.
 By Corollary~\ref{cor:A2-Lip}, $Q^\star(t;\cdot)$ is continuous on the ambient class $B_K$ in the uniform norm, hence on $\mathcal W_K^{\mathrm{pd}}$.
-Passing to the uniform limit along the dense packet cone $\mathcal P_K$ gives $Q^\star(t;\Phi)\ge 0$ for every $\Phi\in\mathcal W_K^{\mathrm{pd}}$.
+Passing to the uniform limit along that dense positive family gives
+$Q^\star(t;\Phi)\ge 0$ for every $\Phi\in\mathcal W_K^{\mathrm{pd}}$.
 \end{proof}
 
 \begin{remark}[Exact remaining mathematical task]\label{rem:compatibility-missing-scalar}
-Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corrected local closure step is routine once a centered dense positive cone $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ has been identified. The unresolved work is therefore:
+Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corrected local closure step is routine once a dense positive family inside $\mathcal W_K^{\mathrm{pd}}$ has been identified. The unresolved work is therefore:
 \begin{enumerate}
-  \item prove the centered density theorem A1-pd on $\mathcal W_K^{\mathrm{pd}}$;
-  \item prove the packet-Rayleigh identification on the same exact packet cone $\mathcal P_K$.
+  \item prove the centered density theorem A1-pd on $\mathcal W_K^{\mathrm{pd}}$ via the density family $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$;
+  \item prove the packet-Rayleigh identification on the centered Rayleigh family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$;
+  \item prove the same-family bridge
+  \[
+    \overline{\operatorname{cone}\!\bigl(\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}\bigr)}^{\|\cdot\|_\infty}
+    = \mathcal W_K^{\mathrm{pd}},
+  \]
+  or enlarge the operator model so that it acts directly on
+  $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$.
 \end{enumerate}
-Once this centered density theorem A1-pd exists together with packet-Rayleigh, the A3/RKHS positivity engine can feed the corrected closure route without reopening the LF or Weil tail.
+Once this same-family gap is closed, the A3/RKHS positivity engine can feed the
+corrected closure route without reopening the LF or Weil tail.
 \end{remark}
 
 \begin{remark}[Why shifted A1$'$ is now auxiliary]\label{rem:G1-frozen-target}

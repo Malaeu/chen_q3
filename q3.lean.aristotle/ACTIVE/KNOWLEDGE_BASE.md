@@ -104,6 +104,8 @@ Source of truth:
   - Refresh the live collection when the repo changed materially:
     `./scripts/refresh_q3_docs.py`
   - Run: `./scripts/research_oracle.py query "keyword" -c q3_docs`
+  - qmd operations are serialized through `.qmd_cache/qmd_ops.lock`; keep local
+    semantic queries sequential.
   - Then write a 5–10 line synthesis into `docs/INSIGHTS.md` and add a short pointer
     in `ACTIVE/insights.md` (link only).
 - **Knowledge graphs (dependency/taint):**
