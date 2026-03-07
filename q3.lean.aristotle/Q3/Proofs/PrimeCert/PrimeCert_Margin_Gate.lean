@@ -5,10 +5,10 @@ namespace Q3.Proofs.PrimeCert
 
 /-- Single integration point for the `PrimeCertMarginOnBrange` contract.
 
-`prime_cert_margin_from_gate` is now a single switch between implementations.
-Today it is wired to Path B for a controlled bypass of certificate tables in the
-main import chain.
--/
+`prime_cert_margin_from_gate` is the primary switch used by the mainline:
+it currently points directly at the active Path B bridge so the mainline does not
+depend on the stale heat-cert build chain.
+--/
 theorem prime_cert_margin_from_gate : PrimeCertMarginOnBrange :=
   prime_cert_margin_from_pathB
 

@@ -7,7 +7,7 @@ Mixed lower bound in A3 Theorem~\ref{thm:A3}.}
 We briefly record the RKHS framework that delivers operator positivity $T_A-T_P^{\mathrm{RKHS}}(t)\succeq0$ on each compact without pointwise measure domination; comprehensive background may be found in \cite{Aronszajn1950,BerlinetThomasAgnan2004,PaulsenRaghupathi2016,Berlinet2004,Paulsen2016}.
 
 \subsection{Setup}
-Fix $K=[-K,K]$ and let $\{\alpha_n\}$ be the active nodes on $K$. Let $K_A^{(t)}(\alpha,\beta)$ be the Archimedean kernel associated to the heat scale $t>0$ (normalized $K_A^{(t)}(\alpha,\alpha)=1$). Define the Hilbert space $\mathcal H_K$ as the RKHS with kernel $K_A^{(t)}$. In the mainline prime cap we fix a single analytic scale $t_{\mathrm{rkhs}}:=1$ (independent of $K$), while the A3 symbol floor may be evaluated at its own heat scale. In the even setting (T0) we merge the symmetric nodes $\pm\alpha_n$ into a single reproducing vector and work with the effective weights
+Fix $K=[-K,K]$ and let $\{\alpha_n\}$ be the active nodes on $K$. Let $K_A^{(t)}(\alpha,\beta)$ be the Archimedean kernel associated to the heat scale $t>0$ (normalized $K_A^{(t)}(\alpha,\alpha)=1$). Define the Hilbert space $\mathcal H_K$ as the RKHS with kernel $K_A^{(t)}$. In the bridge theorem A3 we evaluate the RKHS cap at the same scale $t=t_{\mathrm{crit}}$ as the symbol floor. The stronger fixed-scale estimate at $t=1$ is recorded later as an auxiliary uniform bound. In the even setting (T0) we merge the symmetric nodes $\pm\alpha_n$ into a single reproducing vector and work with the effective weights
 \begin{equation}\label{eq:RKHS_contraction-formula-8}
  \wRKHS(n)\ :=\ \frac{\Lambda(n)}{\sqrt n}\,\in(0,\infty),\qquad \sup_n \wRKHS(n)\le \sup_{x>0}\frac{\log x}{\sqrt x}=\frac{2}{e}<1.
 \end{equation}
@@ -53,7 +53,7 @@ Moreover, it suffices to enforce the geometric bound of Lemma~\ref{rkhs:lem:geom
 \end{theorem}
 
 \begin{remark}
-Because $\delta_K\downarrow0$ as the compact widens, the closed form \eqref{eq:RKHS_contraction-formula-6} shows that $t_{\min}(K)$ is automatically chosen monotone decreasing along the chain $K\nearrow$. This supports the optional adaptive cap, but the uniform branch fixes a single scale $t=t_{\mathrm{rkhs}}=1$.
+Because $\delta_K\downarrow0$ as the compact widens, the closed form \eqref{eq:RKHS_contraction-formula-6} shows that $t_{\min}(K)$ is automatically chosen monotone decreasing along the chain $K\nearrow$. This supports the optional adaptive cap. In the present paper the A3 bridge is run at the single scale $t=t_{\mathrm{crit}}$, while the stronger fixed-scale cap at $t=1$ is kept as an auxiliary estimate.
 \end{remark}
 
 \begin{proposition}[Dataset-free RKHS schedule]\label{prop:rkhs-schedule}
@@ -113,21 +113,20 @@ Mean value theorem on $\log x$ between consecutive integers.
 \end{proof}
 
 %% BEGIN PATCH: RKHS_contraction.tex (single-scale alignment)
-\begin{corollary}[Fixed-scale RKHS gate (uniform)]\label{rkhs:cor:rkhs_two_scale}
-Set $t_{\mathrm{rkhs}}:=1$. If $L_A(B,t)\le L_A^*$ and $\min P_A\ge c_*>0$, then Corollary~\ref{a3:cor:A3_lock_formal}
+\begin{corollary}[Auxiliary fixed-scale RKHS gate]\label{rkhs:cor:rkhs_two_scale}
+Set $t_{\mathrm{aux}}:=1$. If $L_A(B,t)\le L_A^*$ and $\min P_A\ge c_*>0$, then Corollary~\ref{a3:cor:A3_lock_formal}
 applies once the prime term is supplied through the uniform bound
-$\|T_P^{\mathrm{RKHS}}(t_{\mathrm{rkhs}})\|\le\rho(1)\le c_*/4$.
-Hence the mainline bridge consumes a single analytic RKHS gate and does not require table-driven prime certificates.
+$\|T_P^{\mathrm{RKHS}}(t_{\mathrm{aux}})\|\le\rho(1)\le c_*/4$.
+This gives a stronger K-independent gate than the one needed in the single-scale A3 bridge and does not require table-driven prime certificates.
 \end{corollary}
 %% END PATCH
 
 \begin{remark}[Uniform vs.\ adaptive prime caps]\label{rem:prime-caps}
 Two complementary caps for $T_P^{\mathrm{RKHS}}(t)$ are available. A \emph{uniform} trace cap at
-$t=t_{\mathrm{rkhs}}=1$ gives $\|T_P^{\mathrm{RKHS}}(1)\|\le \rho(1)\le c_*/4$
-on every compact and suffices for the A3 budget. An \emph{adaptive} cap at $t=t_{\min}(K)$
+$t=t_{\mathrm{aux}}=1$ gives $\|T_P^{\mathrm{RKHS}}(1)\|\le \rho(1)\le c_*/4$
+on every compact. A \emph{single-scale} cap at $t=t_{\mathrm{crit}}$ is the one consumed by Theorem~\ref{thm:A3}. An \emph{adaptive} cap at $t=t_{\min}(K)$
 uses the node gap $\delta_K$ and yields $\|T_P^{\mathrm{RKHS}}(t)\|\le \wmax+\sqrt{\wmax}\,\eta_K$
-for a prescribed off-diagonal level $\eta_K$. The mainline proof invokes
-the uniform cap; the adaptive one provides additional slack when needed.
+for a prescribed off-diagonal level $\eta_K$. The fixed-scale and adaptive caps provide additional slack beyond the bridge scale when needed.
 \end{remark}
 
 \begin{theorem}[One--prime induction]\label{rkhs:thm:rkhs-ind}

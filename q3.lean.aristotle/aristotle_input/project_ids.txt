@@ -59,3 +59,9 @@ rho_oneK_tcritical_le_cstar_quarter.md: b644c90d-9934-4c95-a857-221e38620134  20
 2026-02-09 prime_heat_bounds_arch_data_target.lean (CLI context-files minimal) :: fb520402-fb98-477d-8bf5-3f7688af9939
 2026-02-09 prime_b_grid_bucket_bounds_target.lean (CLI context-files minimal) :: cdac2fb6-28aa-4e31-8916-7e966ae67f25
 2026-02-09 prime_b_grid_arch_bounds_data_target.lean (CLI context-files minimal) :: c26314f1-e4f2-4ff5-ae30-7f48c31aa75f
+2026-02-23 subagent_prime_term_tcritical_2026_02_23.md: 68c5c30e-2c4b-41fe-91cf-645c4ae751a5
+2026-02-23 subagent_weil_tau0_2026_02_23.md: d8dd75f3-13a3-4863-b94b-0bca2476d844
+2026-02-23 subagent_primecert_margin_pathb_2026_02_23.md: c7e68a02-148c-4a7d-93a4-e87efdc556f7
+2026-02-23 subagent_prime_term_tcritical_2026_02_23.md (with context-files): fab26ba2-c4c8-438d-911f-30970145e35a
+2026-02-23 subagent_weil_tau0_2026_02_23.md (with context-files): 750bb959-5f7e-4e5f-919c-c4af2d818949
+2026-02-23 subagent_primecert_margin_pathb_2026_02_23.md (with context-files): 17375b4f-0025-4b66-b309-f6f4bb7774f2

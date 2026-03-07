@@ -13,8 +13,8 @@ $\langle u,v\rangle$ is the inner product, $A^\ast$ the adjoint,
 $\operatorname{tr}(M)$ the trace, $\|T\|_{\mathrm{op}}$ the operator norm.
 
 \paragraph{Parameterized operator contract.}
-We keep heat scale $t$ explicit, with $t_0=1/(16\pi^2 t)$, and write the Fej\'er$\times$heat windows
-$\Phi_{B,t}$ (with $\tau=0$). The Weil functional is denoted $Q^\ast(t;\Phi)$, the Toeplitz block is
+We keep heat scale $t$ explicit, with $t_0=1/(16\pi^2 t)$, and write the shifted evenized Fej\'er$\times$heat windows
+$\Phi_{B,t,\tau}$. The centered A3 bridge specializes to $\Phi_{B,t,0}$. The Weil functional is denoted $Q^\ast(t;\Phi)$, the Toeplitz block is
 $T_M[P_A](t,B,M)$ on $\CC^{2M+1}$, the Rayleigh prime block is $T_P^{\mathrm{Ray}}(t,M)$ on
 $\CC^{2M+1}$, and the RKHS prime operator is $T_P^{\mathrm{RKHS}}(t)$ on $\mathcal H_t$ with cap
 $\rho(t)$. These fully parameterized names are the authoritative contract; bare $T_P$, $Q$, or $\rho$
@@ -26,11 +26,12 @@ $r\lesssim s$ means $r\le C s$ with an absolute constant $C$ independent of the 
 \paragraph{Critical constants.}
 $c_* = \tfrac{11}{10}$ is the \textbf{uniform} archimedean floor (Lemma~\ref{lem:uniform-arch-floor}), valid for all $K\ge 1$ on the full circle $\TT$ (parameters $t=3/20=0.15$, $B_{\min}=3$).
 \textbf{Note:} The legacy value $\CarchOne$ from Theorem~8.16 is obsolete (contains a scale error); the main proof uses $c_*$ exclusively.
-The mainline RKHS prime gate is fixed at $t_{\mathrm{rkhs}}=1$, where
-$\rho(1)<1/25<c_*/4$ (Corollary~\ref{cor:pcu-uniform}).
+The bridge uses the single-scale bound at $t=t_{\mathrm{crit}}=3/20$, where
+$\rho(t_{\mathrm{crit}})\le c_*/4$ (Corollary~\ref{cor:uniform-prime-cap}). The stronger auxiliary gate
+$\rho(1)<1/25<c_*/4$ is recorded in Corollary~\ref{cor:pcu-uniform}.
 
 \paragraph{Fej\'er$\times$heat atoms.}
-The mainline proof fixes the shift parameter to $\tau=0$ in the generator $\Phi_{B,t}$; any $\tau$-shifted atoms are confined to the legacy appendix.
+The centered A3 bridge is written for the unshifted generator $\Phi_{B,t,0}$, whereas the density theorem A1$'$ uses shifted evenized atoms $\Phi_{B,t,\tau}$. The closure section isolates the compatibility needed to reconcile these two families.
 
 \paragraph{Uniform constants (mainline).}
 \begin{center}
@@ -42,7 +43,7 @@ $t_{\mathrm{A3}}$ & $3/20=0.15$ & Lemma~\ref{lem:uniform-arch-floor} \\
 $B_{\min}$ & $3$ & Lemma~\ref{lem:uniform-arch-floor} \\
 $c_*$ & $\tfrac{11}{10}$ & Lemma~\ref{lem:uniform-arch-floor} \\
 $M_0^{\mathrm{unif}}$ & $\left\lceil C_{\mathrm{SB}}\,L_*(t_{\mathrm{A3}})/c_*\right\rceil$ & Corollary~\ref{cor:uniform-discretisation} \\
-$t_{\mathrm{rkhs}}$ & $1$ & Corollary~\ref{cor:pcu-uniform} \\
+$t_{\mathrm{aux}}$ & $1$ & Corollary~\ref{cor:pcu-uniform} \\
 \bottomrule
 \end{tabular}
 \end{center}

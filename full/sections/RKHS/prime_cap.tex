@@ -151,10 +151,10 @@ so $\rho(t)$ is decreasing by monotone convergence. The Gaussian factor forces $
 
 \begin{remark}[Why uniform cap beats local bisection]\label{rem:uniform-vs-local-full}
 Legacy per-compact bisection schedules are archived in Appendix~\ref{app:legacy-branch} for provenance.
-The mainline selects a single scale \(t_{\mathrm{rkhs}}=1\)
-independent of \(K\); Corollary~\ref{cor:pcu-uniform} gives
-\(\rho(1)<1/25<c_*/4\). Since \(\rho(t)\) is decreasing, any \(t\ge 1\) also works. This decouples the prime cap from local parameter tuning
-and keeps the bridge analytic.
+The mainline bridge uses the single scale \(t=t_{\mathrm{crit}}\), where
+Corollary~\ref{cor:uniform-prime-cap} gives
+\(\rho(t_{\mathrm{crit}})\le c_*/4\). Corollary~\ref{cor:pcu-uniform} records the stronger auxiliary fixed-scale estimate
+\(\rho(1)<1/25<c_*/4\). Since \(\rho(t)\) is decreasing, any \(t\ge 1\) also works as an auxiliary gate. This keeps the prime control analytic and decouples the optional stronger cap from local parameter tuning.
 \end{remark}
 
 \subsection*{Early/tail calculus (tables-free)}
@@ -211,10 +211,10 @@ Assume $t\ge \tfrac{1}{16\pi^2}$ and set $N_0:=\max\{N,e^2\}$. Then $\|T_P^{\mat
 
 \subsection*{Analytic prime caps and the PCU theorem}
 
-\begin{corollary}[Uniform prime cap at the analytic scale]\label{cor:pcu-uniform}
-Set $t_{\mathrm{rkhs}}:=1$. Then
+\begin{corollary}[Auxiliary fixed-scale prime cap]\label{cor:pcu-uniform}
+Set $t_{\mathrm{aux}}:=1$. Then
 \[
-  \|T_P^{\mathrm{RKHS}}(t_{\mathrm{rkhs}})\|
+  \|T_P^{\mathrm{RKHS}}(t_{\mathrm{aux}})\|
   \le \rho(1)
   < \frac{1}{25}
   < \frac{c_*}{4}.
@@ -229,6 +229,6 @@ Finally $c_*=11/10$, so $1/25 < c_*/4 = 11/40$.
 \end{proof}
 
 \begin{remark}[No K-dependent parameters]
-The uniform prime cap uses a single scale $t=t_{\mathrm{rkhs}}=1$
+The auxiliary uniform prime cap uses the fixed scale $t=t_{\mathrm{aux}}=1$
 and the uniform floor $c_*>0$. No K-dependent schedules appear in the argument.
 \end{remark}

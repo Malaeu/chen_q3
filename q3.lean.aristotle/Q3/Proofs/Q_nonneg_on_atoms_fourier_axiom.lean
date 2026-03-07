@@ -14,7 +14,7 @@ import Q3.Proofs.HeatKernelParams
 import Q3.Proofs.Params_Critical
 import Q3.Proofs.Rayleigh_basis0_of_A3
 import Q3.Proofs.Q_nonneg_atoms_closure
-import Q3.Proofs.Q_nonneg_t_critical
+import Q3.Proofs.Q_nonneg_t_critical_tau0_bridge
 import Q3.Proofs.W_Sum_Finite_Bridge
 
 set_option linter.mathlibStandardSet false
@@ -71,8 +71,8 @@ theorem Q_nonneg_on_base_atoms_of_A3_Fourier_RKHS :
 
 theorem Q_nonneg_on_base_atoms_brange_tcritical :
   ∀ (K : ℝ) (_hK : K ≥ 1),
-    ∀ g ∈ BaseAtomCone_critical_brange K, Q g ≥ 0 := by
+    ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min prime_cert_B_max, Q g ≥ 0 := by
   intro K _hK g hg
-  exact Q_nonneg_on_base_atoms_at_t_critical_brange K _hK g hg
+  exact Q3.Proofs.QNonnegTau0Bridge.Q_nonneg_on_base_atoms_brange_tcritical K _hK g hg
 
 end Q3

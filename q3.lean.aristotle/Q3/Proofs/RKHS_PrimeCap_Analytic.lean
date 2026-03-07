@@ -1,6 +1,6 @@
 import Q3.Axioms
 import Q3.Proofs.Params_Critical
-import Q3.Proofs.PrimeCert.PrimeCert_Margin_PathB
+import Q3.Proofs.PrimeCert.PrimeCert_Margin_Gate
 
 /-! Analytic prime certificate gate (Step 3: numerical tables fallback removed).
 
@@ -33,14 +33,14 @@ lemma rkhs_rho_one_lt_one : rkhs_rho_one < 1 := by
 lemma rkhs_prime_cap_margin_pos : 0 < rkhs_prime_cap_margin := by
   norm_num [rkhs_prime_cap_margin, Q3.c_star, rkhs_rho_one]
 
-/-- Step-3 analytical gate placeholder.
+/-- Step-3 analytical gate.
 
-`prime_cert_margin_from_rkhs` is currently wired to `PrimeCert_Margin_PathB`
-for import-path stabilization. Once the analytic derivation is inserted in
-`PrimeCert_Margin_PathB`, this theorem follows automatically.
--/
+`prime_cert_margin_from_rkhs` is wired to `prime_cert_margin_from_gate`, the
+current single-gate entry point. At the moment that gate forwards to the active
+Path B bridge, while certificate-data closure is tracked separately in `PrimeCert`.
+--/
 theorem prime_cert_margin_from_rkhs : PrimeCertMarginOnBrange :=
-  Q3.Proofs.PrimeCert.prime_cert_margin_from_pathB
+  Q3.Proofs.PrimeCert.prime_cert_margin_from_gate
 
 end
 

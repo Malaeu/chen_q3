@@ -1,6 +1,6 @@
 # Formalization Stats (Snapshot)
 
-Last updated: 2026-02-02
+Last updated: 2026-02-28
 Scope: Q3 Lean codebase - **ONLY code in proof chain counted**
 
 Notes:
@@ -109,11 +109,18 @@ Database: `aristotle_db/aristotle_proofs.db`
 | RKHS_contraction | ✅ CLOSED |
 | P_A_continuous | ✅ CLOSED |
 | Weil_criterion_tau0 | ⚪ EXTERNAL |
-| PrimeCert.prime_b_grid_bounds_data | ❌ OPEN (cert data) |
-| PrimeCert.prime_heat_bounds_data | ❌ OPEN (cert data) |
+| PrimeCert.prime_b_grid_arch_bounds_data | ❌ OPEN (cert data) |
+| PrimeCert.prime_heat_bounds_arch_data | ❌ OPEN (cert data) |
+| PrimeCert.prime_b_grid_bucket_bounds | ❌ OPEN (cert data) |
 
 **Current: 6 axioms (3 standard + 3 project)**
-**Remaining closable: 2 (PrimeCert cert-data)**
+**Remaining closable: 3 (PrimeCert cert-data)**
+
+Bridge note (2026-02-28):
+- The current τ=0 chain uses the exported certificate contract
+  `Q3.prime_cert_margin_from_rkhs` as the main bridge.
+- `Q3.prime_term_le_at_t_critical_axiom` is retained only as a legacy
+  τ≠0 placeholder.
 
 ---
 
