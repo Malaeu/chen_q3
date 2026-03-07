@@ -197,6 +197,55 @@ Interpretation:
 - it does not claim global density on `W_K`,
 - it keeps `G2` and `G3` blocked until the resulting local theorem actually compiles.
 
+## G1.4 Result Triage
+
+The completed Aristotle project `c315e2a4-5923-44fa-a18c-4ed90cb08375` did not land.
+
+Reason:
+
+- the downloaded file contains holes (`exact?`),
+- it redefines sandbox-local dummy objects (`Q3.W_K`, `Atom`, `IsEven`, `IsNonneg`)
+  instead of using the real project context,
+- so it cannot count as an admissible replacement theorem in the mainline.
+
+Consequence:
+
+- no patch from that file may be integrated,
+- `G1` stays active,
+- the next honest step is to extract the first blocked local theorem directly from the
+  real `hg_mem` block and only then prepare a narrower sibling packet.
+
+## G1.5 Blocker Extraction
+
+The refreshed local theorem-shape search now targets the real support-membership block
+inside `Q3/Proofs/A1prime/A1_density_fixed_t0.lean`.
+
+Current preferred next statement:
+
+- fallback-first route:
+  `atom_sum_mem_W_K_of_margin`
+
+Frozen exact Lean shape:
+
+```lean
+lemma atom_sum_mem_W_K_of_margin
+    (K t0 δ : ℝ) (hK : K > 0) (ht0 : 0 < t0) (hδ : 0 < δ)
+    (n : ℕ) (c : Fin n → ℝ) (τ : Fin n → ℝ)
+    (hc_nonneg : ∀ i, 0 ≤ c i)
+    (hmargin : ∀ i, |τ i| + δ ≤ K) :
+    let g : ℝ → ℝ := fun x => ∑ i, c i * Atom δ t0 (τ i) x
+    g ∈ Q3.W_K K := by
+```
+
+Interpretation:
+
+- prove that the finite nonnegative atom sum built under the margin condition
+  already lies in the admissible `W_K`,
+- then use that theorem as the honest membership brick inside the stronger
+  `AtomCone_K_fixed` statement,
+- only after this lands do we reopen a stronger packet such as
+  `atom_sum_mem_atomcone_fixed_of_margin`.
+
 ## Legacy Read-Only Surface
 
 The following are retained for provenance only and do not drive the active paper map:

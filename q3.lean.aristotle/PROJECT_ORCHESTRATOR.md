@@ -77,23 +77,25 @@ This route is structurally useful, but it is **not** yet an honest closed proof 
 - `G1.2` is now closed: the finite reuse list and exact file pointers for the frozen `G1` statement have been extracted.
 - `G1.3` is now closed: one small Aristotle-ready packet exists for the local support-replacement brick.
 - `G1.4` is now closed: the prepared packet was user-approved and submitted to Aristotle as project `c315e2a4-5923-44fa-a18c-4ed90cb08375`.
-- Current active task: `G1.5` in `IMPLEMENTATION_PLAN.md`
-- Current frontier: monitor, download, and integrate the Aristotle result for the local support-replacement brick without accepting any partial or hole-bearing patch
+- `G1.5` is now closed: `q3_docs` was rebuilt as a curated live KB and the first honest fallback theorem shape was frozen from the real `hg_mem` block.
+- Current active task: prepare, review, and then submit one narrow Aristotle packet for `atom_sum_mem_W_K_of_margin`.
+- Current frontier: attack the exact `W_K`-membership brick first, and only afterwards reopen the stronger `AtomCone_K_fixed` wrapper.
 
 ## Active Milestone
 
-Turn the submitted `G1.4` packet into one actual theorem or one honest narrowed blocker:
+Turn the refreshed blocker extraction into one honest theorem packet:
 
-1. poll Aristotle project `c315e2a4-5923-44fa-a18c-4ed90cb08375`,
-2. download and scan the result for holes,
-3. integrate only a clean local theorem or else narrow the next task to the first blocked local sublemma,
-4. keep the downstream A2 error-budget step manual unless the local theorem lands cleanly.
+1. keep `q3_docs` fresh as the live blocker-search base,
+2. packetize the fallback theorem `atom_sum_mem_W_K_of_margin`,
+3. send only that exact local target through the review gate,
+4. keep the stronger `AtomCone_K_fixed` statement as a downstream wrapper, not as the next ask.
 
 ## Hard Blockers
 
 - `A1'` is naturally a theorem on the restriction cone `R_K`, not yet on admissible `W_K`.
-- The exact shape of `G1` is frozen and the first Aristotle packet is now running externally.
-- Until that job returns, there is still no integrated local theorem for the support-replacement brick.
+- The completed Aristotle draft for `G1.4` is unusable: it contains holes and sandbox-local fake definitions, so no theorem landed.
+- There is still no integrated local theorem for the support-replacement brick.
+- The exact fallback theorem `atom_sum_mem_W_K_of_margin` is now frozen, but it still exists only as an inline proof shape inside `hg_mem`, not as a standalone mainline lemma.
 - No exact common admissible family `G_K` is fixed yet.
 - No positivity theorem is proved yet on a final admissible `G_K`.
 - The compiled Lean route still inherits `Q3.prime_term_le_at_t_critical_axiom`.
@@ -136,3 +138,7 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-07: `G1.2` closed; reusable lemmas, structure-only templates, and do-not-reuse legacy claims have been separated cleanly.
 - 2026-03-07: `G1.3` closed; a small Aristotle-ready prompt now targets only the local support-replacement brick `atom_sum_mem_atomcone_fixed_of_margin` with an honest fallback.
 - 2026-03-07: `G1.4` closed; `subagent_g1_support_replacement_2026_03_07.md` was approved and submitted to Aristotle as project `c315e2a4-5923-44fa-a18c-4ed90cb08375`.
+- 2026-03-07: the completed `G1.4` Aristotle draft was rejected: it contained holes and redefined dummy local objects instead of using the real Q3 project context.
+- 2026-03-07: `q3_docs` refresh became a required blocker-workflow step; the collection must track live control docs, active TeX, and selected live Lean files rather than stale markdown-only snapshots.
+- 2026-03-07: refreshed `q3_docs` now uses a curated live corpus after excluding stale legacy snapshots, transcript dumps, and queue artifacts.
+- 2026-03-07: the next exact local theorem target is frozen as `atom_sum_mem_W_K_of_margin`; the stronger `atom_sum_mem_atomcone_fixed_of_margin` is downstream.

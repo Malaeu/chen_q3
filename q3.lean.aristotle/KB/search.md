@@ -15,8 +15,10 @@ last_updated: 2026-02-08
 - LaTeX section list: `rg -n '\\(input|include)\{' full/RH_Q3.tex`
 - Map: `KB/maps/latex_to_lean.md`
 
-## Embeddings (semi‑auto)
-- From `q3.lean.aristotle/`: `./scripts/research_oracle.py query "keyword" -c q3_docs`
+## Embeddings (semi-auto)
+- From `q3.lean.aristotle/`:
+  1. `./scripts/refresh_q3_docs.py`
+  2. `./scripts/research_oracle.py query "keyword" -c q3_docs`
 
 ## Axiom status
 - `lake env lean Q3/CheckAxioms.lean`

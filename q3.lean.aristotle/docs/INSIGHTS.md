@@ -1693,6 +1693,81 @@ Consequence for the next loop:
 - `G0` is now closed.
 - The next honest frontier is `G1.1`: freeze the first support-upgrade theorem on admissible `W_K`.
 
+## Synthesis (2026-03-07, in progress) — q3_docs refresh + first honest post-Aristotle blocker
+
+Live infra audit:
+- `qmd status` showed the old `q3_docs` collection was stale: 91 indexed files,
+  475 vectors, updated 33 days ago.
+- That old collection indexed only `**/*.md`, so current TeX and live Lean files were
+  absent from semantic search.
+- The documented entrypoint `./scripts/research_oracle.py` from inside
+  `q3.lean.aristotle/` was also broken: the real backend script lived only at the repo
+  root (`/Users/emalam/Documents/GitHub/rh_lean_01_2026/scripts/research_oracle.py`).
+
+Cleanup decision:
+- `q3_docs` should not stay as a stale markdown dump.
+- It is now rebuilt as a curated live KB containing:
+  - current control/workflow docs,
+  - active manuscript TeX (`full/sections`, `full/appendix`, `RH_Q3.tex`),
+  - live Q3 Lean files,
+  - while excluding `Archive`, `Clean`, transcript dumps, and heavy `PrimeCert` shards.
+- A local wrapper `q3.lean.aristotle/scripts/research_oracle.py` now delegates to the
+  repo-root backend, and `q3.lean.aristotle/scripts/refresh_q3_docs.py` rebuilds the
+  staged source tree plus the `q3_docs` collection repeatably.
+
+Reason this matters for `G1`:
+- The completed Aristotle result for `c315e2a4-5923-44fa-a18c-4ed90cb08375` cannot be
+  integrated: it contains holes and sandbox-local fake definitions instead of real Q3
+  objects.
+- So the next correct step is not “retry the same packet blindly”, but extract the
+  first honest blocked local theorem from the real `hg_mem` support-membership block.
+- Fresh embeddings are now part of the blocker workflow, not optional garnish.
+
+Refresh result:
+- After tightening the curated scope and excluding legacy snapshots, transcript dumps,
+  and queue artifacts, `q3_docs` now indexes a curated live corpus rather than the old
+  markdown-only dump.
+- The refreshed top hits for
+  `hg_mem AtomCone_K_fixed hmargin Atom_eq_zero_outside_open`
+  now point directly to:
+  - `Q3/Proofs/A1_density.lean`,
+  - `Q3/Axioms.lean`,
+  - `Q3/Proofs/A1prime/A1_density_fixed_t0.lean`.
+- The refreshed top hits for
+  `atom_sum_mem_W_K_of_margin support subset continuity even nonnegative`
+  now surface the exact local neighborhood we need:
+  - `docs/PAPER_MAINLINE_TRACKER.md`,
+  - `Q3/Axioms.lean`,
+  - `Q3/Proofs/Q_Lipschitz.lean`,
+  - plus the already inspected inline proof block in
+    `Q3/Proofs/A1prime/A1_density_fixed_t0.lean`.
+
+Exact next theorem shape frozen from the real `hg_mem` block:
+
+```lean
+lemma atom_sum_mem_W_K_of_margin
+    (K t0 δ : ℝ) (hK : K > 0) (ht0 : 0 < t0) (hδ : 0 < δ)
+    (n : ℕ) (c : Fin n → ℝ) (τ : Fin n → ℝ)
+    (hc_nonneg : ∀ i, 0 ≤ c i)
+    (hmargin : ∀ i, |τ i| + δ ≤ K) :
+    let g : ℝ → ℝ := fun x => ∑ i, c i * Atom δ t0 (τ i) x
+    g ∈ Q3.W_K K := by
+```
+
+Supporting pointers:
+- `Q3/Proofs/A1prime/A1_density_fixed_t0.lean:176-240` already contains the exact
+  continuity / support / even / nonnegative subproof shape.
+- `Q3/Proofs/A1_density.lean:248` provides `Atom_eq_zero_outside_open`, which is the
+  real support-vanishing brick under the margin condition.
+- `Q3/Basic/Defs.lean:148-152` fixes the real definition of `Q3.W_K`.
+- `Q3/T5_Transfer.lean:55-59` shows the downstream wrapper pattern once `g ∈ W_K` is available.
+
+Web + local mathlib check:
+- External search on Lean/mathlib support machinery pointed to `Function.support_sum`.
+- Local grep confirmed generic support lemmas such as `Function.support_subset_iff'`
+  are available in Mathlib, so the support subproof can be kept on a standard path if
+  the pointwise `Atom_eq_zero_outside_open` route needs a small helper.
+
 ## Synthesis (2026-03-07, in progress) — G1.1 support-upgrade theorem shape
 
 Target node and wiring:

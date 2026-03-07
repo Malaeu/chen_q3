@@ -46,9 +46,14 @@ bun pm -g untrusted
 
 ### Docs (project knowledge base)
 ```bash
-qmd collection add ./docs --name q3_docs
-qmd embed
+./scripts/refresh_q3_docs.py
 ```
+
+This rebuilds `q3_docs` as a curated live KB:
+- control/workflow docs,
+- active manuscript TeX,
+- live Q3 Lean files,
+- excluding archives, transcript dumps, and heavy `PrimeCert` shards.
 
 ### Zotero export (.bib)
 ```bash
@@ -80,6 +85,8 @@ requires the **Zotero Web API** (api.zotero.org) with an API key.
 Notes:
 - `qmd embed` downloads models on first run.
 - Embeddings are stored in `~/.cache/qmd`.
+- If `q3_docs` feels stale after a large refactor, rerun
+  `./scripts/refresh_q3_docs.py` before trusting semantic-search hits.
 
 ---
 

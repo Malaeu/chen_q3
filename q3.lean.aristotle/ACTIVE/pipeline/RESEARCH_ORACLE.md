@@ -1,10 +1,10 @@
 # Research Oracle (qmd)
 
-**Purpose:** Local semantic search over markdown literature for speculative edges.
+**Purpose:** Local semantic search over the curated Q3 KB and external markdown literature.
 **Current status (1–3 lines):**
-- Wrapper script available: `scripts/research_oracle.py`
+- Wrapper script available from `q3.lean.aristotle/`: `scripts/research_oracle.py`
 **Next action (1–2 lines):**
-- Add markdown literature and run first query → `add-speculative`.
+- Refresh `q3_docs`, then run the blocker query on the current live KB.
 **Links (3–6):**
 - `ACTIVE/pipeline/RESEARCH_ORACLE.json`
 - `ACTIVE/pipeline/EQUIVALENCE_GRAPH.json`
@@ -22,10 +22,19 @@ bun install -g https://github.com/tobi/qmd
 If qmd is installed via bun, ensure `~/.bun/bin` is on PATH
 or set `"qmd_command": "/home/<user>/.bun/bin/qmd"` in `RESEARCH_ORACLE.json`.
 
-## Ingest
+## Refresh `q3_docs`
 
 ```bash
-./scripts/research_oracle.py ingest --embed
+./scripts/refresh_q3_docs.py
+```
+
+This rebuilds `q3_docs` from the current control docs, active TeX, and live Lean
+files while excluding archives and heavy `PrimeCert` shards.
+
+## Ingest literature
+
+```bash
+/Users/emalam/Documents/GitHub/rh_lean_01_2026/scripts/research_oracle.py ingest --embed
 ```
 
 Ensure literature lives under `full/q3.lean.aristotle/literature/`.
@@ -38,7 +47,7 @@ Ensure literature lives under `full/q3.lean.aristotle/literature/`.
   --collection zotero_lib --embed
 ```
 
-For docs-only search, use the `q3_docs` collection:
+For docs/mainline search, use the refreshed `q3_docs` collection:
 ```bash
 ./scripts/research_oracle.py query "keyword" -c q3_docs
 ```
@@ -61,3 +70,5 @@ For docs-only search, use the `q3_docs` collection:
 
 - Output is JSON with `docid`, `file`, `score`, `snippet`, etc.
 - Speculative edges are **not** used by the planner until a Lean stub exists.
+- If `q3_docs` is older than the current refactor wave, refresh it before running a
+  new blocker search.
