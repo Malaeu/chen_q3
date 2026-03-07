@@ -258,6 +258,27 @@ frontier не “в общем”, а по точным живым узлам re
 - `Q3/Proofs/CompatibilityReduction.lean` уже изолирует правильную compact-level стрелку:
   если есть positivity на shifted evenized atoms `Fejer_heat_atom B t0_critical τ`,
   то дальше routine closure на всём `W_K` уже готов.
+
+## Final result (2026-03-07) — reviewed note ingested from zipped Theorem 12.4 conversation
+
+В `docs/incoming_notes/2026-03-07-conversations.zip` был большой markdown note про
+Theorem 12.4 / closure architecture. После review surviving core такой:
+
+- note полезен как architectural memo, а не как current-status snapshot;
+- endgame через classical Weil criterion остаётся фиксированным;
+- реальный unresolved middle block по-прежнему `G1 -> G2 -> G3`, а не LF/Weil tail;
+- старый diagnosis “нужна одна и та же family, которая dense и positive” остаётся
+  правильным по смыслу и совпадает с текущим mainline contract;
+- утверждения note о pending `G0` и о December-2025 manuscript как live state
+  нужно ослаблять: после reset `G0` уже закрыт и source-of-truth живёт в
+  `PROJECT_ORCHESTRATOR.md` и `PAPER_MAINLINE_TRACKER.md`.
+
+Workflow result:
+
+- raw zip stays only as inbox/archive material;
+- reviewed synthesis moved to
+  `docs/reviewed_notes/2026_03_07_conversations_review.md`;
+- only the reviewed note is allowed into `q3_docs`.
 - `Q3/Proofs/Q_nonneg_t_critical.lean` уже содержит pair form
   `Q_phi_shift_pair_nonneg_t_critical` и exact atom theorem
   `Q_Fejer_heat_atom_nonneg_t_critical`, но обе по-прежнему опираются на
