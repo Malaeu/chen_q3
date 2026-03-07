@@ -2258,3 +2258,33 @@ Public chain after the pivot:
 Surviving strategy families:
 - Herglotz/Bochner route.
 - New prime-factorization / kernel route.
+
+## Synthesis (2026-03-07, in progress) — Aristotle packet split for `PSD-pd`
+
+Цель:
+- не “доказывать RH целиком”, а выбрать первый честный proof-route для
+  `PSD-pd`: PSD packet-kernel theorem on the dense pre-packet space.
+
+Локальный semantic search:
+- Query `Herglotz Bochner positive definite Toeplitz sequence finite sections`
+  поднял `Main_closure.tex` именно на remark with the two live strategy families,
+  то есть база уже подтверждает правильный theorem neighborhood.
+- Query `prime factorization kernel route packet kernel Q(g_i * g_j_tilde)`
+  упёрся в те же corrected-cone files; значит второй route пока живёт как
+  theorem-shape, а не как готовый lemma stack.
+
+Внешний theorem-shape search:
+- внешний поиск подтверждает classical positive-definite representation language
+  (`Herglotz/Bochner`) и не даёт готового broad-cone shortcut.
+- это согласуется с live manuscript: uniform-gap revival не выглядит честным.
+
+Конкретный план:
+- запустить два узких Aristotle packet-а внутри одного gate `PSD-pd`:
+  1. `Herglotz/Bochner` packet: exact reduction of finite PSD packet-kernel
+     matrices to a positive-definite sequence / measure representation;
+  2. `prime-factorization / kernel` packet: exact decomposition stack for
+     `K_Q(g_i,g_j)` into Archimedean and prime pieces on the same dense
+     pre-packet family.
+- У обоих packet-ов одна и та же hard policy:
+  не возвращать broad-cone route, не resurrect `A3-pd` uniform gap, не
+  claim RH closure, and do not widen the target beyond `PSD-pd`.
