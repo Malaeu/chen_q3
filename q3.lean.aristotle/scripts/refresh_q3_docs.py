@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import fnmatch
+import os
 import shutil
 import subprocess
 from collections import Counter
@@ -12,7 +13,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 Q3_ROOT = REPO_ROOT / "q3.lean.aristotle"
-STAGE_ROOT = Q3_ROOT / ".qmd_cache" / "q3_docs_stage"
+CACHE_ROOT = Q3_ROOT / ".qmd_cache"
 COLLECTION = "q3_docs"
 
 DIRECT_FILES = [
@@ -44,6 +45,9 @@ GLOB_PATTERNS = [
     "q3.lean.aristotle/Q3/**/*.lean",
 ]
 
+REVIEWED_NOTES_PREFIX = "q3.lean.aristotle/docs/reviewed_notes/"
+REVIEWED_SAFE_MARKER = "- safe for embeddings: `yes`"
+
 EXCLUDE_PATTERNS = [
     "q3.lean.aristotle/docs/legacy/**",
     "q3.lean.aristotle/docs/ChatGPT_*.md",
@@ -74,13 +78,28 @@ def matches_any(rel: str, patterns: list[str]) -> bool:
     return any(fnmatch.fnmatch(rel, pattern) for pattern in patterns)
 
 
+def reviewed_note_is_safe(path: Path, rel: str) -> bool:
+    rel = rel.replace("\\", "/")
+    if not rel.startswith(REVIEWED_NOTES_PREFIX):
+        return True
+    if path.name in {"README.md", "TEMPLATE.md"}:
+        return False
+    text = path.read_text(encoding="utf-8")
+    return REVIEWED_SAFE_MARKER in text
+
+
 def collect_sources() -> list[Path]:
     seen: set[str] = set()
     files: list[Path] = []
 
     for rel in DIRECT_FILES:
         path = REPO_ROOT / rel
-        if path.is_file() and rel not in seen and not matches_any(rel, EXCLUDE_PATTERNS):
+        if (
+            path.is_file()
+            and rel not in seen
+            and not matches_any(rel, EXCLUDE_PATTERNS)
+            and reviewed_note_is_safe(path, rel)
+        ):
             seen.add(rel)
             files.append(path)
 
@@ -89,7 +108,7 @@ def collect_sources() -> list[Path]:
             if not path.is_file():
                 continue
             rel = str(path.relative_to(REPO_ROOT))
-            if rel in seen or matches_any(rel, EXCLUDE_PATTERNS):
+            if rel in seen or matches_any(rel, EXCLUDE_PATTERNS) or not reviewed_note_is_safe(path, rel):
                 continue
             seen.add(rel)
             files.append(path)
@@ -97,34 +116,40 @@ def collect_sources() -> list[Path]:
     return files
 
 
-def build_stage(files: list[Path]) -> Counter:
-    if STAGE_ROOT.exists():
-        shutil.rmtree(STAGE_ROOT)
-    STAGE_ROOT.mkdir(parents=True, exist_ok=True)
+def stage_root_for_run() -> Path:
+    stamp = datetime.now().astimezone().strftime("%Y%m%d_%H%M%S_%f")
+    return CACHE_ROOT / f"q3_docs_stage_{stamp}_{os.getpid()}"
+
+
+def build_stage(stage_root: Path, files: list[Path]) -> Counter:
+    if stage_root.exists():
+        shutil.rmtree(stage_root)
+    stage_root.mkdir(parents=True, exist_ok=True)
 
     counts: Counter[str] = Counter()
     for src in files:
         rel = src.relative_to(REPO_ROOT)
-        dst = STAGE_ROOT / rel
+        dst = stage_root / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
         counts[src.suffix or "<none>"] += 1
 
-    manifest = STAGE_ROOT / "_manifest.md"
+    manifest = stage_root / "_manifest.md"
     lines = [
         "# q3_docs manifest",
         "",
         f"Generated: {datetime.now().astimezone().isoformat(timespec='seconds')}",
         f"Collection: `{COLLECTION}`",
         f"Repo root: `{REPO_ROOT}`",
+        f"Stage root: `{stage_root}`",
         "",
         "Curated scope:",
         "",
         "- current control and workflow docs,",
         "- active manuscript TeX,",
         "- live Q3 Lean files excluding `Archive`, `Clean`, and heavy `PrimeCert` shards,",
-        "- reviewed external notes promoted into `docs/reviewed_notes/`,",
-        "- raw inbox notes under `docs/incoming_notes/` are excluded until distilled,",
+        "- only reviewed notes marked `safe for embeddings: yes` are promoted from `docs/reviewed_notes/`,",
+        "- raw inbox notes, extracted zip payloads, and archived sources under `docs/incoming_notes/` are excluded until distilled,",
         "- no transcript dumps or old queue artifacts.",
         "",
         f"Total files: `{len(files)}`",
@@ -144,12 +169,12 @@ def run(cmd: list[str], cwd: Path | None = None) -> str:
     return proc.stdout
 
 
-def rebuild_collection(qmd: str, embed: bool) -> None:
+def rebuild_collection(qmd: str, stage_root: Path, embed: bool) -> None:
     listing = run([qmd, "collection", "list"])
     if f"{COLLECTION} (qmd://{COLLECTION}/)" in listing:
         run([qmd, "collection", "remove", COLLECTION])
 
-    run([qmd, "collection", "add", str(STAGE_ROOT), "--name", COLLECTION, "--mask", "**/*"])
+    run([qmd, "collection", "add", str(stage_root), "--name", COLLECTION, "--mask", "**/*"])
     if embed:
         run([qmd, "embed", "-f"])
     run([qmd, "cleanup"])
@@ -163,18 +188,25 @@ def main() -> int:
 
     qmd = resolve_qmd()
     files = collect_sources()
-    counts = build_stage(files)
+    CACHE_ROOT.mkdir(parents=True, exist_ok=True)
+    stage_root = stage_root_for_run()
 
-    if args.print_files:
-        for path in files:
-            print(path.relative_to(REPO_ROOT))
+    try:
+        counts = build_stage(stage_root, files)
 
-    print(
-        f"Prepared {len(files)} files for {COLLECTION}: "
-        f"{counts['.md']} md, {counts['.tex']} tex, {counts['.lean']} lean"
-    )
-    rebuild_collection(qmd=qmd, embed=not args.no_embed)
-    print(run([qmd, "status"]).strip())
+        if args.print_files:
+            for path in files:
+                print(path.relative_to(REPO_ROOT))
+
+        print(
+            f"Prepared {len(files)} files for {COLLECTION}: "
+            f"{counts['.md']} md, {counts['.tex']} tex, {counts['.lean']} lean"
+        )
+        rebuild_collection(qmd=qmd, stage_root=stage_root, embed=not args.no_embed)
+        print(run([qmd, "status"]).strip())
+    finally:
+        if stage_root.exists():
+            shutil.rmtree(stage_root, ignore_errors=True)
     return 0
 
 

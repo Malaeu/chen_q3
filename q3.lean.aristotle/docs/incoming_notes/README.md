@@ -1,6 +1,6 @@
 # Incoming Notes Inbox
 
-This folder is for raw incoming markdown material that is not yet trusted as a
+This folder is for raw incoming markdown or zip material that is not yet trusted as a
 search-ready knowledge source.
 
 Examples:
@@ -15,8 +15,11 @@ Rules:
 1. Put the raw markdown here first.
 2. Do **not** treat files here as source of truth.
 3. Do **not** rely on these files directly in mainline decisions.
-4. Review them and extract only the reusable claims into `docs/reviewed_notes/`.
-5. Only reviewed notes are promoted into `q3_docs` embeddings by `refresh_q3_docs.py`.
+4. Run `./scripts/ingest_incoming_notes.py prepare <file>` to extract zip inputs and create a review stub.
+5. Review them and extract only the reusable claims into `docs/reviewed_notes/`.
+6. After review, archive the raw source with `./scripts/ingest_incoming_notes.py archive ...`.
+7. Only reviewed notes marked `safe for embeddings: yes` are promoted into `q3_docs`
+   by `refresh_q3_docs.py`.
 
 Suggested filename pattern:
 
@@ -25,3 +28,4 @@ Suggested filename pattern:
 Example:
 
 - `2026_03_07_proshka_common_family_gap.md`
+- `2026_03_07_conversations.zip`

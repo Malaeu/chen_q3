@@ -96,8 +96,11 @@ Source of truth:
 ## 8) Embeddings + Knowledge Graphs (how we use)
 
 - **Embeddings (fast recall):**
-  - Raw markdown goes first to `docs/incoming_notes/`.
+  - Raw markdown or zip goes first to `docs/incoming_notes/`.
+  - Prepare it with `./scripts/ingest_incoming_notes.py prepare ...`.
   - Distilled reviewed extracts go to `docs/reviewed_notes/`.
+  - Only reviewed notes marked `safe for embeddings: yes` enter `q3_docs`.
+  - After review, archive the raw payload with `./scripts/ingest_incoming_notes.py archive ...`.
   - Refresh the live collection when the repo changed materially:
     `./scripts/refresh_q3_docs.py`
   - Run: `./scripts/research_oracle.py query "keyword" -c q3_docs`

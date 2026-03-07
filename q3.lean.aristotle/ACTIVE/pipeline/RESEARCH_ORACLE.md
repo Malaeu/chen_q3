@@ -33,12 +33,17 @@ files while excluding archives, raw inbox markdown, and heavy `PrimeCert` shards
 
 Incoming markdown workflow:
 
-- raw notes / Proshka dumps / unchecked chats:
+- raw notes / Proshka dumps / unchecked chats or zip drops:
   `docs/incoming_notes/`
+- prepare zip/raw inputs:
+  `./scripts/ingest_incoming_notes.py prepare docs/incoming_notes/<file-or-zip>`
 - reviewed searchable extracts:
   `docs/reviewed_notes/`
+- archive processed raw inputs:
+  `./scripts/ingest_incoming_notes.py archive ...`
 
 Only `docs/reviewed_notes/` is promoted into `q3_docs`.
+Within that folder, only notes marked `safe for embeddings: yes` are embedded.
 See:
 `docs/EMBEDDING_INGEST_WORKFLOW.md`
 

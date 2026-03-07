@@ -19,10 +19,16 @@ What does **not** belong here:
 
 Workflow:
 
-1. Raw markdown enters `docs/incoming_notes/`.
-2. We review it against Lean / TeX / control docs.
-3. We extract the reusable core into one reviewed note here.
-4. We refresh `q3_docs` so the reviewed note becomes searchable by embeddings.
+1. Raw markdown or zip enters `docs/incoming_notes/`.
+2. `./scripts/ingest_incoming_notes.py prepare <file>` creates a reviewed stub here.
+3. We review it against Lean / TeX / control docs.
+4. We extract the reusable core into one reviewed note here.
+5. We mark it:
+   - `review status: reviewed`
+   - `safe for embeddings: yes`
+6. We archive the raw source from `incoming_notes/`.
+7. We refresh `q3_docs` so the reviewed note becomes searchable by embeddings.
+   Only notes marked `safe for embeddings: yes` are indexed.
 
 If a reviewed note later becomes stale, either:
 

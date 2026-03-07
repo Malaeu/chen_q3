@@ -42,7 +42,8 @@ Use this for:
 - file/lemma maps
 - verified mathematical synthesis
 
-These files **are** embedded into `q3_docs`.
+These files are embedded into `q3_docs` only after the reviewed note says
+`safe for embeddings: yes`.
 
 ### 3. Canonical project memory
 
@@ -57,18 +58,39 @@ These remain the main project memory and control plane.
 
 ## Workflow
 
-1. Drop the raw markdown into `docs/incoming_notes/`.
-2. Review it against live Lean / TeX / control docs.
-3. Distill the reusable part into `docs/reviewed_notes/`.
-4. If the result affects the active project state, also write a short synthesis into `docs/INSIGHTS.md`.
-5. Rebuild embeddings:
+1. Drop the raw markdown or zip into `docs/incoming_notes/`.
+2. Prepare it with the ingest helper:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
+./scripts/ingest_incoming_notes.py prepare docs/incoming_notes/<file-or-zip>
+```
+
+This creates:
+
+- extracted markdown under `docs/incoming_notes/extracted/` for zip inputs,
+- a reviewed-note stub under `docs/reviewed_notes/`.
+
+3. Review the extracted text against live Lean / TeX / control docs.
+4. Distill the reusable part into the reviewed note and flip:
+   - `review status: reviewed`
+   - `safe for embeddings: yes`
+5. Archive the raw source after review:
+
+```bash
+./scripts/ingest_incoming_notes.py archive docs/incoming_notes/<file-or-zip> \
+  --reviewed docs/reviewed_notes/<reviewed-note>.md
+```
+
+6. If the result affects the active project state, also write a short synthesis into `docs/INSIGHTS.md`.
+7. Rebuild embeddings:
 
 ```bash
 cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
 ./scripts/refresh_q3_docs.py
 ```
 
-6. Query the refreshed collection:
+8. Query the refreshed collection:
 
 ```bash
 ./scripts/research_oracle.py query "your blocker query" -c q3_docs -n 5
@@ -76,7 +98,7 @@ cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
 
 ## Practical rule
 
-Do **not** dump raw chats directly into the embeddings base.
+Do **not** dump raw chats or raw zip extracts directly into the embeddings base.
 
 Reason:
 
@@ -87,6 +109,8 @@ Reason:
 
 Instead:
 
-- inbox for raw,
-- reviewed notes for searchable memory,
+- `incoming_notes/` for raw,
+- `incoming_notes/extracted/` for temporary unzip output,
+- `incoming_notes/archive/` for processed raw sources,
+- `reviewed_notes/` for searchable memory,
 - canonical docs for project state.
