@@ -107,6 +107,30 @@ Interpretation rule:
 2. `G2`: no exact admissible family `G_K` has been fixed as the unique mainline generator family.
 3. `G3`: positivity is not yet proved on that exact `G_K`.
 
+## Frozen G1.1 Statement
+
+The first honest `G1` target is now frozen as a replacement theorem, not as a vague density slogan:
+
+For every compact window `[-K,K]`, every `ε > 0`, and every finite nonnegative combination
+`h` of shifted evenized Fejér×heat windows from the A1' restriction-level cone
+(with fixed heat scale and admissible margin `|τ| + B ≤ K`), there exists an
+admissible replacement `\widetilde h ∈ W_K` such that
+
+- `||h - \widetilde h||_{L^\infty([-K,K])} < ε`,
+- `\widetilde h` is even, nonnegative, and compactly supported in `[-K,K]`.
+
+Consequent closure use:
+
+- if `Φ ∈ W_K` and A1' gives a restriction-level approximant `h` with
+  `||Φ - h||_{L^\infty([-K,K])} < ε`,
+- then the replacement theorem gives `\widetilde h ∈ W_K` with
+  `||h - \widetilde h||_{L^\infty([-K,K])} < ε`,
+- hence `||Φ - \widetilde h||_{L^\infty([-K,K])} < 2ε`,
+- and A2 yields `|Q^\star(t;Φ) - Q^\star(t;\widetilde h)| ≤ 2 L_Q(K) ε`.
+
+This freezes `G1` without yet choosing the exact final family `G_K`; `G2` will
+name `G_K` as the class of admissible replacements produced by this theorem.
+
 ## Legacy Read-Only Surface
 
 The following are retained for provenance only and do not drive the active paper map:

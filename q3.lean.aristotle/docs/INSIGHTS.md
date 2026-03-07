@@ -1584,3 +1584,47 @@ Verification bundle completed:
 Consequence for the next loop:
 - `G0` is now closed.
 - The next honest frontier is `G1.1`: freeze the first support-upgrade theorem on admissible `W_K`.
+
+## Synthesis (2026-03-07, in progress) — G1.1 support-upgrade theorem shape
+
+Target node and wiring:
+- `G1` sits strictly between A1' density on `R_K` and the future admissible family `G_K`.
+- The frozen contract must therefore avoid choosing `G_K` too early, but it must be strong enough to feed A2 on admissible tests.
+
+Local semantic search:
+- Query `AtomCone_K_fixed subset support admissible W_K closure gap` returned the old
+  `atomcone-fixed-t-gap-2026-01-18` insight and the earlier note that `A1_density_WK_thm`
+  depended on a missing `h_approx` / support-control step.
+- Query `support containment hat interpolation margin condition hg_supp admissible support stays in [-K,K]`
+  pointed to the old support-margin route: `hg_supp`, `hmargin`, and hat interpolation with support staying in `[-K,K]`.
+- Query `A1_density_WK_thm h_approx AtomCone_K_fixed support containment` pointed directly to the theorem shape
+  `∀ Φ ∈ W_K, ∀ ε>0, ∃ g ∈ AtomCone_K_fixed, ||Φ-g||∞<ε`, which is useful as structure guidance
+  but too strong to quote as already-honest paper math after the March reset.
+- Three parallel semantic-search queries failed with the known local issue
+  `SQLITE_BUSY_RECOVERY`; only the successful results above should be treated as actual evidence.
+
+Concrete file/lemma pointers from the repo:
+- `Q3/Proofs/A1_density.lean`: `hat_interpolation_approx_bounded`, `hmargin`, `hg_supp`,
+  and the old `A1_density_WK_thm` skeleton.
+- `Q3/Proofs/A1prime/A1_density_fixed_t0.lean`: old strong theorem on `W_K`, useful as a construction template.
+- `Q3/T5_Transfer.lean`: shows exactly how A2 consumes admissible approximants once one has
+  `g ∈ W_K`.
+- `Q3/AxiomsTheorems.lean`: current legacy-strength `A1_density_WK` export, which should now be read
+  as old structure guidance rather than as the active paper contract.
+
+External web search:
+- Rutgers Math 573 notes on piecewise linear approximation / hat functions support the hat-interpolation side.
+- MIT 18.155 notes on mollification support the compact-support-preserving smoothing side:
+  if `f ∈ C_c^0(U)`, then for small mollifier radius one has `f_ε ∈ C_c^\infty(U)` and `f_ε → f`
+  uniformly on compacts.
+
+Recommendation:
+- Freeze `G1.1` as a replacement theorem, not as a direct density theorem on `W_K`.
+- Exact shape:
+  for every finite nonnegative restriction-level shifted-evenized approximant `h` from A1' and every `ε>0`,
+  there exists an admissible replacement `\widetilde h ∈ W_K` with
+  `||h-\widetilde h||_{L^\infty([-K,K])} < ε`.
+- Then for `Φ ∈ W_K`, combine A1' with the replacement theorem and A2:
+  `||Φ-h||<ε`, `||h-\widetilde h||<ε` implies `||Φ-\widetilde h||<2ε`, hence
+  `|Q^\star(t;Φ)-Q^\star(t;\widetilde h)| ≤ 2L_Q(K)ε`.
+- This is the minimal honest `G1` contract. `G2` can then name `G_K` as the class of admissible replacements produced by that theorem, and `G3` can attack positivity on that exact family.

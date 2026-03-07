@@ -73,21 +73,22 @@ This route is structurally useful, but it is **not** yet an honest closed proof 
 ## Current Frontier
 
 - `G0` is closed and verified across control docs, manuscript, Lean narrative, and builds.
-- Current active task: `G1.1` in `IMPLEMENTATION_PLAN.md`
-- Current frontier: freeze the first honest support-upgrade theorem on admissible `W_K`
+- `G1.1` is frozen: the first honest support-upgrade target is now a replacement theorem for restriction-level shifted approximants.
+- Current active task: `G1.2` in `IMPLEMENTATION_PLAN.md`
+- Current frontier: collect the finite reuse list and exact file pointers needed to attack that frozen `G1` statement
 
 ## Active Milestone
 
-Fix the first honest `G1` theorem statement:
+Turn the frozen `G1` statement into a concrete proof-search packet:
 
-1. choose between support-density inside admissible `W_K` and restriction-to-support replacement,
-2. write that theorem as the exact `G1` contract in the tracker/manuscript,
-3. keep `G2/G3` frozen behind that statement choice.
+1. extract the exact reusable lemmas from the old hat-interpolation/support-margin route,
+2. separate reusable structure from legacy overclaiming,
+3. keep `G2/G3` frozen behind that reuse map.
 
 ## Hard Blockers
 
 - `A1'` is naturally a theorem on the restriction cone `R_K`, not yet on admissible `W_K`.
-- The exact shape of `G1` is still unfrozen: support-density theorem versus restriction-to-support replacement with explicit `Q^*`-error control.
+- The exact shape of `G1` is now frozen, but the reusable proof packet is not yet isolated cleanly from the old overstrong `A1_density_WK` route.
 - No exact common admissible family `G_K` is fixed yet.
 - No positivity theorem is proved yet on a final admissible `G_K`.
 - The compiled Lean route still inherits `Q3.prime_term_le_at_t_critical_axiom`.
@@ -126,3 +127,4 @@ Legacy narrative surfaces are reference-only:
   `cd q3.lean.aristotle && lake env lean Q3/Main.lean`,
   `printf 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3\n' | lake env lean --stdin`.
 - 2026-03-07: next active frontier is `G1.1`, i.e. freeze the first honest support-upgrade theorem on admissible `W_K`.
+- 2026-03-07: `G1.1` frozen as a replacement theorem for restriction-level shifted approximants; `G1.2` is now the active reuse-mapping step.
