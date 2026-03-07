@@ -72,6 +72,11 @@ This route is structurally useful, but it is **not** yet an honest closed proof 
 
 ## Current Frontier
 
+- A new architectural challenger has appeared at the `T0/G6` boundary:
+  the current target cone `W_K` may be too broad for honest Weil positivity.
+- This challenger does not yet replace the mainline, but it is strong enough to
+  require an explicit target-cone audit before more narrative capital is spent on
+  the current `W_K`-closure story.
 - `G0` is closed and verified across control docs, manuscript, Lean narrative, and builds.
 - `G1.1` is frozen: the first honest support-upgrade target is now a replacement theorem for restriction-level shifted approximants.
 - `G1.2` is now closed: the finite reuse list and exact file pointers for the frozen `G1` statement have been extracted.
@@ -79,8 +84,14 @@ This route is structurally useful, but it is **not** yet an honest closed proof 
 - `G1.4` is now closed: the prepared packet was user-approved and submitted to Aristotle as project `c315e2a4-5923-44fa-a18c-4ed90cb08375`.
 - `G1.5` is now closed: `q3_docs` was rebuilt as a curated live KB and the first honest fallback theorem shape was frozen from the real `hg_mem` block.
 - `G1.6` is now in flight: the updated exact?-tolerant `W_K` packet was approved and submitted to Aristotle as project `ad4c74f1-764f-4cfb-a229-2bc0b2905b67`.
-- Current active task: monitor/download/triage project `ad4c74f1-764f-4cfb-a229-2bc0b2905b67`.
-- Current frontier: attack the exact `W_K`-membership brick first, and only afterwards reopen the stronger `AtomCone_K_fixed` wrapper.
+- Current active task is no longer “push G1 blindly”.
+  A target-cone audit now takes priority, while Aristotle project
+  `ad4c74f1-764f-4cfb-a229-2bc0b2905b67` remains background work.
+- Current frontier:
+  1. audit whether current `W_K` / `\mathcal W` is mathematically too broad for the
+     Weil criterion interface;
+  2. only if the current target survives, return to the exact `W_K`-membership brick
+     and then reopen the stronger `AtomCone_K_fixed` wrapper.
 
 ## Active Milestone
 
@@ -94,6 +105,13 @@ Turn the refreshed blocker extraction into one honest landed theorem packet:
 
 ## Hard Blockers
 
+- Current `W_K` may be too broad: the project contract presently asks for
+  positivity on all even, nonnegative, compactly supported tests, while the
+  classical Weil criterion may require a narrower positive-definite /
+  convolution-square cone.
+- The project Archimedean density `a(ξ)` is already negative for moderate `|ξ|`,
+  so broad positivity on all of current `W_K` is mathematically suspect and must
+  be audited before further closure spending.
 - `A1'` is naturally a theorem on the restriction cone `R_K`, not yet on admissible `W_K`.
 - The completed Aristotle draft for `G1.4` is unusable: it does not integrate in the
   real project context and introduces sandbox-local fake definitions, so no theorem landed.
@@ -148,3 +166,7 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-07: refreshed `q3_docs` now uses a curated live corpus after excluding stale legacy snapshots, transcript dumps, and queue artifacts.
 - 2026-03-07: the next exact local theorem target is frozen as `atom_sum_mem_W_K_of_margin`; the stronger `atom_sum_mem_atomcone_fixed_of_margin` is downstream.
 - 2026-03-07: `G1.6` submitted the updated exact?-tolerant packet `subagent_g1_wk_membership_2026_03_07.md` to Aristotle as project `ad4c74f1-764f-4cfb-a229-2bc0b2905b67`.
+- 2026-03-07: a reviewed target-cone reset note raised a stronger blocker:
+  current `W_K` / `\mathcal W` may be too broad for honest Weil positivity.
+  The project now requires an explicit target-cone audit before spending more
+  narrative capital on the current `W_K`-based closure route.

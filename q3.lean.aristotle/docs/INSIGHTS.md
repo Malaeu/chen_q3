@@ -279,6 +279,40 @@ Workflow result:
 - reviewed synthesis moved to
   `docs/reviewed_notes/2026_03_07_conversations_review.md`;
 - only the reviewed note is allowed into `q3_docs`.
+
+## Final result (2026-03-07) — target-cone reset note is a real challenger to the current pipeline
+
+Новый reviewed note:
+- `docs/reviewed_notes/2026_03_07_target_cone_reset_review.md`
+
+Surviving core after repo cross-check:
+
+- live repo действительно использует широкий current target cone:
+  `W_K = {Φ : even, nonnegative, compactly supported in [-K,K]}`,
+  both in Lean (`Q3/Basic/Defs.lean`) and in the reset manuscript
+  (`full/sections/Main_closure.tex`, `scope_notation.tex`);
+- Archimedean density in the project normalization
+  `a(ξ)=log π - Re ψ(1/4+iπξ)` becomes negative already around `|ξ| ≈ 1.5`;
+  direct local check in the root venv gave
+  `a(1.5) ≈ -0.405`, `a(2) ≈ -0.693`, `a(3) ≈ -1.098`;
+- for each fixed compact `[-K,K]`, active prime nodes are finite and discrete, so
+  there exist node-free subintervals where a compact bump has zero prime term but
+  negative Archimedean contribution.
+
+Practical consequence:
+
+- this is not a small `G1/G2/G3` refinement;
+- it is a plausible blocker at the target-contract layer (`T0/G6` boundary);
+- continuing the current `W_K`-closure pipeline blindly would be bad engineering.
+
+Current stance:
+
+- do **not** yet rewrite the whole project around a positive-definite cone;
+- first run a focused target-cone audit:
+  compare the current `W_K`/`\mathcal W` contract with the classical
+  convolution-square / positive-definite formulation of the Weil criterion;
+- until that audit is done, treat `G1.6` as background work, not as the sole
+  decisive mainline frontier.
 - `Q3/Proofs/Q_nonneg_t_critical.lean` уже содержит pair form
   `Q_phi_shift_pair_nonneg_t_critical` и exact atom theorem
   `Q_Fejer_heat_atom_nonneg_t_critical`, но обе по-прежнему опираются на

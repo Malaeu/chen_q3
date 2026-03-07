@@ -103,6 +103,10 @@ Interpretation rule:
 
 ## Unresolved Dependencies
 
+0. Target-cone audit: current `W_K` / `\mathcal W` may be too broad for honest
+   Weil positivity, because the live contract asks for positivity on all even,
+   nonnegative, compactly supported tests rather than on an explicitly
+   positive-definite / convolution-square cone.
 1. `G1`: there is no fixed support-upgrade theorem from `R_K` to admissible `W_K`.
 2. `G2`: no exact admissible family `G_K` has been fixed as the unique mainline generator family.
 3. `G3`: positivity is not yet proved on that exact `G_K`.
@@ -113,6 +117,14 @@ Preferred post-`G1` direction:
 - freeze `G_K` as the support-compatible realization of shifted evenized atoms;
 - then attack `G3` through the already isolated pair/atom route in
   `Q3/Proofs/Q_nonneg_t_critical.lean` and `Q3/Proofs/CompatibilityReduction.lean`.
+
+Audit note:
+
+- the reviewed note `docs/reviewed_notes/2026_03_07_target_cone_reset_review.md`
+  is strong enough that the project must first verify whether the current
+  `W_K` contract itself is mathematically sound;
+- until that audit is resolved, all `G1-G3` work should be interpreted as
+  conditional on the present target cone surviving.
 
 ## Frozen G1.1 Statement
 
