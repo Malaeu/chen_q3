@@ -16,13 +16,15 @@ It is **not** a session log and **not** a microtask queue.
 
 ## Mainline Chain
 
-`T0-corr -> corrected cone -> A1-pd -> centered A3/RKHS -> A2 closure -> LF-pd -> G6 -> RH`
+`T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh -> centered A3/RKHS -> A2 closure -> LF-pd -> G6 -> RH`
 
-- `T0-corr`: Guinand--Weil crosswalk with the corrected positive-definite target cone.
+- `T0-pd`: Guinand--Weil crosswalk with the corrected positive-definite target cone.
 - `corrected cone`: local/global positive-definite Weil cone
   `\mathcal W_K^{pd} / \mathcal W^{pd}`.
-- `A1-pd`: density of centered Fejér×heat / autocorrelation packets in
+- `A1-pd`: density of the exact centered packet cone `\mathcal P_K` in
   `\mathcal W_K^{pd}`.
+- `packet-Rayleigh`: exact identification of `Q^\star(t;\Phi_\Psi)` with the
+  Toeplitz/RKHS quadratic form on the same packet family.
 - `centered A3/RKHS`: positivity engine on centered packets.
 - `A2 closure`: continuity transfer on the corrected local cone.
 - `LF-pd`: inductive-limit lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}`.
@@ -74,8 +76,9 @@ Interpretation after `T0.1`:
 | --- | --- | --- | --- |
 | `T0` | Guinand--Weil crosswalk | `done` | normalization remains locked |
 | `T0.1` | target-cone audit | `done` | one binary verdict written: `pivot required` |
-| `T0-corr` | corrected public target cone | `done` | control docs + manuscript use the positive-definite cone as the public RH target |
-| `A1-pd` | centered packet density in `\mathcal W_K^{pd}` | `active` | one exact dense centered packet family and one exact density theorem statement |
+| `T0-pd` | corrected public target cone | `done` | control docs + manuscript use the positive-definite cone as the public RH target |
+| `A1-pd` | centered packet density in `\mathcal W_K^{pd}` | `active` | pre-square density route + autocorrelation continuity prove `\overline{\mathcal P_K}=\mathcal W_K^{pd}` |
+| `packet-Rayleigh` | packetwise quadratic-form bridge on `\mathcal P_K` | `active` | exact theorem statement on `\Phi_\Psi=\Psi*\widetilde\Psi` is frozen and later proved |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | reused on the exact packet family chosen by `A1-pd` |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
@@ -88,29 +91,29 @@ Interpretation after `T0.1`:
 - Current `G1.6` Aristotle work stays background only. It may still land local support lemmas,
   but it no longer determines the architectural frontier.
 - New live frontier:
-  1. freeze the corrected local/global positive-definite cone contract
-     `\mathcal W_K^{pd} / \mathcal W^{pd}`;
-  2. write the exact theorem statement for `A1-pd`;
-  3. keep centered `A3 + RKHS` as the positivity engine for that corrected cone.
+  1. freeze the exact centered packet cone `\mathcal P_K` on the corrected target;
+  2. write the exact theorem blocks for `A1-pd` and packet-Rayleigh;
+  3. prove the pre-square density route and then bind centered `A3 + RKHS`
+     to that same packet cone.
 
 ## Active Milestone
 
 Turn the target-cone audit into the corrected public contract:
 
 1. freeze `\mathcal W_K^{pd}` and `\mathcal W^{pd}` in control docs and manuscript,
-2. demote broad `W_K / \mathcal W` to auxiliary / background status,
+2. freeze the exact centered packet cone `\mathcal P_K`,
 3. replace the old missing-theorem framing
    (`same shifted family dense and positive`)
-   by the new missing theorem `A1-pd`,
+   by the pair `A1-pd + packet-Rayleigh`,
 4. keep Aristotle `G1.6` as background lemma-mining only.
 
 ## Hard Blockers
 
-- No exact theorem has yet identified the corrected local cone
-  `\mathcal W_K^{pd}` in project-native terms strong enough for the mainline.
 - `A1'` is a density theorem on the broad restriction cone `R_K`; it does not feed
   the corrected positive-definite mainline directly.
-- No exact centered packet family has yet been frozen as the `A1-pd` generator family.
+- No proof yet supplies the pre-square density route that would close `A1-pd`.
+- No proof yet supplies packet-Rayleigh identification on the exact packet family
+  `\mathcal P_K`.
 - The broad-cone compiled route in Lean still exists and may generate useful local
   lemmas, but it cannot be used as public evidence for RH after `T0.1`.
 - The compiled Lean route still inherits `Q3.prime_term_le_at_t_critical_axiom`.

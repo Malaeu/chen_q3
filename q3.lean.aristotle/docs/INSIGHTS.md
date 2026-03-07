@@ -2016,3 +2016,40 @@ Recommendation:
 - Treat this as a tooling/backend lock, not as evidence that the refreshed embeddings are stale.
   When the lock appears, use successful semantic-query hits plus the refresh summary as the
   practical confirmation signal, and avoid parallel pressure on the local qmd database.
+
+## Synthesis (2026-03-07, in progress) — exact theorem blocks after the corrected-cone pivot
+
+Target node and wiring:
+- After `T0.1`, the public mainline is no longer “broad `W_K` + shifted density”.
+- The next honest mathematical contract is the trio
+  `T0-pd + A1-pd + packet-Rayleigh`.
+
+Local semantic search:
+- Query `A1-pd centered packet density positive definite cone autocorrelation`
+  returned `full/sections/A1prime.tex` and the active implementation plan, confirming
+  that the live corrected route is already centered-packet based.
+- Query `Rayleigh pairing quadratic form Fejer heat packet autocorrelation`
+  returned `full/sections/A3/rayleigh_bridge.tex` and `full/sections/RKHS/core.tex`,
+  which is exactly the repo evidence needed for the packet-level quadratic-form bridge.
+- Two sibling queries hit the known local lock
+  `SQLITE_BUSY_RECOVERY`; treat the successful hits above as the usable evidence.
+
+Concrete synthesis:
+- The corrected local cone should be frozen via
+  `\mathcal W_{K,0}^{pd} = { \psi * \widetilde{\psi} }` and
+  `\mathcal W_K^{pd} = \overline{\operatorname{cone}(\mathcal W_{K,0}^{pd})}`.
+- The exact centered generator family should be frozen as
+  `\mathcal P_K = \operatorname{cone}{\Phi_\Psi = \Psi * \widetilde{\Psi}}`
+  with `\Psi` a finite Fej\'er$\times$heat packet supported in `[-K/2,K/2]`.
+- The exact missing pair is:
+  1. `A1-pd`: `\overline{\mathcal P_K}^{\|\cdot\|_\infty} = \mathcal W_K^{pd}`;
+  2. packet-Rayleigh: `Q^\star(t;\Phi_\Psi)` equals the quadratic form already
+     controlled by the centered Toeplitz/RKHS engine.
+- The right proof skeleton for `A1-pd` is now explicit:
+  pre-square density in `C_c^\infty([-K/2,K/2])` plus the autocorrelation continuity inequality
+  `||\psi*\widetilde{\psi}-\varphi*\widetilde{\varphi}||_\infty <= (||\psi||_1+||\varphi||_1)||\psi-\varphi||_1`.
+
+Recommendation:
+- Freeze these theorem blocks in the public manuscript and in the control plane.
+- Make the next active step the proof skeleton behind `A1-pd`, not another broad-cone patch.
+- Keep packet-Rayleigh as the next queued bridge theorem on the same exact packet cone.

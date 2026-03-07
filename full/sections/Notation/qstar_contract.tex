@@ -12,10 +12,13 @@ Symbol & Meaning & Space/parameters \\
 \midrule
 $t$ & single heat scale & $t_0=1/(16\pi^2 t)$ \\
 $R_K$ & broad restriction cone & $C^+_{\mathrm{even}}([-K,K])$ \\
-$B_K$ & broad ambient support cone & even, nonnegative, compactly supported tests in $[-K,K]$ \\
-$\mathcal W_K^{\mathrm{pd}}$ & corrected local Weil cone & positive-definite / convolution-square cone inside $B_K$ \\
-$\mathcal W^{\mathrm{pd}}$ & corrected global Weil cone & $\bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}$ \\
-$\mathcal P_K$ & future centered packet cone & $\subseteq \mathcal W_K^{\mathrm{pd}}$ \\
+$B_K$ & broad ambient support class & even, compactly supported tests in $[-K,K]$ \\
+$\widetilde\psi$ & reflected conjugate test & $\widetilde\psi(x)=\overline{\psi(-x)}$ \\
+$\mathcal W_{K,0}^{\mathrm{pd}}$ & local positive-definite seed set & $\{\psi*\widetilde\psi:\ \operatorname{supp}\psi\subset[-K/2,K/2]\}$ \\
+$\mathcal W_K^{\mathrm{pd}}$ & corrected local Weil cone & $\overline{\operatorname{cone}(\mathcal W_{K,0}^{\mathrm{pd}})}^{\|\cdot\|_\infty}\subset B_K$ \\
+$\mathcal W^{\mathrm{pd}}$ & corrected global Weil cone & $\varinjlim_{K\to\infty}\mathcal W_K^{\mathrm{pd}}$ \\
+$\mathcal P_K$ & exact centered packet cone & $\operatorname{cone}\{\Phi_\Psi=\Psi*\widetilde\Psi:\ \operatorname{supp}\Psi\subset[-K/2,K/2]\}$ \\
+$\Phi_\Psi$ & centered packet autocorrelation test & element of $\mathcal P_K$ \\
 $\Phi_{B,t,\tau}$ & shifted evenized Fej\'er$\times$heat window & bandwidth $B$, heat scale $t$, shift $\tau$ \\
 $Q^\star(t;\Phi)$ & Weil functional with explicit $t$ & $\Phi$ on the ambient/support side or on the corrected cone \\
 $T_M[P_A](t,B,M)$ & Toeplitz block for $P_A$ & $\CC^{2M+1}$ \\
@@ -33,8 +36,11 @@ Weil criterion. Accordingly:
   \item A1$'$ remains a theorem on the broad restriction cone $R_K$;
   \item A2 supplies continuity on the ambient compact-support side and therefore on
   $\mathcal W_K^{\mathrm{pd}}$ in particular;
-  \item the new missing theorem is A1-pd: density of centered packet generators
+  \item the new missing theorem is A1-pd: density of the exact centered packet cone
   inside $\mathcal W_K^{\mathrm{pd}}$;
+  \item the companion bridge theorem is packet-Rayleigh identification:
+  $Q^\star(t;\Phi_\Psi)$ must be identified with the quadratic form already
+  controlled by the centered Toeplitz/RKHS engine;
   \item the centered A3/RKHS positivity mechanism is kept as the positivity engine
   for that corrected cone.
 \end{itemize}

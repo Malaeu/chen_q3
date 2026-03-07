@@ -5,7 +5,7 @@ We study the Guinand--Weil quadratic form through the analytic module stack \tex
 
 \subsection*{Main result}
 \begin{theorem}[Main result, informal]\label{thm:intro-main-informal}
-Let $\mathcal W^{\mathrm{pd}}$ be the corrected positive-definite Weil cone from Section~\ref{sec:scope}. Assume that the local centered packet density theorem \textup{(A1-pd)} and the corresponding LF closure on $\mathcal W^{\mathrm{pd}}$ have been established in addition to the analytic modules written in the present draft. Then
+Let $\mathcal W^{\mathrm{pd}}$ be the corrected positive-definite Weil cone from Section~\ref{sec:scope}. Assume that the local centered packet density theorem \textup{(A1-pd)}, the packet-Rayleigh identification, and the corresponding LF closure on $\mathcal W^{\mathrm{pd}}$ have been established in addition to the analytic modules written in the present draft. Then
 \[
   Q^\star(t;\Phi)\ \ge\ 0\qquad\text{for all }\Phi\in\mathcal W^{\mathrm{pd}},
 \]
@@ -18,9 +18,11 @@ Our proof is organized as a controlled-limit program: a small number of analytic
 \begin{center}
   \small
   \begin{tabular}{c}
-    `T0-corr` normalization and corrected target cone \\
+    `T0-pd` normalization and corrected target cone \\
     $\Downarrow$ \\
     `A1-pd` centered packet density in $\mathcal W_K^{\mathrm{pd}}$ \\
+    $\Downarrow$ \\
+    `packet-Rayleigh` on the exact packet cone $\mathcal P_K$ \\
     $\Downarrow$ \\
     centered `A3/RKHS` positivity $\Longrightarrow$ `A2` local closure on $\mathcal W_K^{\mathrm{pd}}$ \\
     $\Downarrow$ \\
@@ -28,7 +30,7 @@ Our proof is organized as a controlled-limit program: a small number of analytic
   \end{tabular}
 \end{center}
 
-The present draft fully develops the analytic inputs that feed this chain, but it still leaves `A1-pd` open.
+The present draft fully develops the analytic inputs that feed this chain, but it still leaves the pair `A1-pd + packet-Rayleigh` open.
 
 \subsection*{Archimedean bridge}
 \emph{(A3) Archimedean Toeplitz barrier.} The Toeplitz component $T_M[P_A]$ in the Rayleigh decomposition of $Q^\star(t;\Phi_{B,t})$ is bounded from below by the explicit uniform Archimedean floor $c_*$ (Lemma~\ref{lem:uniform-arch-floor}), up to the controllable Lipschitz loss $C\,\omega_{P_A}(1/(2M))$. Szeg\H{o}--B\"ottcher asymptotics together with an explicit modulus of continuity for $P_A$ yield
@@ -43,14 +45,16 @@ as developed in Section~\ref{sec:A3}.
 \subsection*{Target-cone correction}
 The target-cone audit of the current reset has one hard outcome: the broad cone
 \[
-  B_K=\{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even},\ \Phi\ge0\}
+  B_K=\{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even}\}
 \]
 is too wide to serve as the public RH target. The classical Weil criterion is quadratic / positive-definite in nature, so the corrected local object is
 \[
+  \widetilde{\psi}(x):=\overline{\psi(-x)},
+  \qquad
   \mathcal W_K^{\mathrm{pd}}
-  := \overline{\{\psi * \check\psi:\ \psi\in C_c^\infty(\mathbb R),\ \operatorname{supp}(\psi * \check\psi)\subset[-K,K]\}}^{\|\cdot\|_\infty},
+  := \overline{\operatorname{cone}\{\psi * \widetilde{\psi}:\ \psi\in C_c^\infty(\mathbb R),\ \operatorname{supp}\psi\subset[-K/2,K/2]\}}^{\|\cdot\|_\infty},
 \]
-and the global target is $\mathcal W^{\mathrm{pd}}=\bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}$.
+and the global target is $\mathcal W^{\mathrm{pd}}=\varinjlim_{K>0}\mathcal W_K^{\mathrm{pd}}$.
 
 \subsection*{Compact extension}
 \emph{(A1$'$ vs. A1-pd).} The shifted density theorem A1$'$ is naturally a theorem on the broad restriction cone
@@ -71,14 +75,14 @@ choosing $t=t_{\mathrm{crit}}=3/20$ yields $\rho(t_{\mathrm{crit}})\le c_*/4$, s
 \[
   \lambda_{\min}\!\big(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)\big)\ \ge\ \frac{c_*}{4}\ >\ 0.
 \]
-Hence the analytic core already produces a centered positivity mechanism. The remaining work is to identify the correct local cone and prove `A1-pd`; only after that do the local closure, LF lift, and Weil criterion finish RH.
+Hence the analytic core already produces a centered positivity mechanism. The remaining work is to identify the correct local cone, prove `A1-pd`, and write the exact packet-Rayleigh bridge from centered packet autocorrelations to the quadratic forms already controlled by the Toeplitz/RKHS engine; only after that do the local closure, LF lift, and Weil criterion finish RH.
 
 \subsection*{What is new}
 
 Two features distinguish the present work.
 \begin{enumerate}
   \item \textbf{A consistent centered positivity engine.} The Archimedean symbol is defined once via periodization of the Fej\'er$\times$heat window, and its Lipschitz modulus is proved directly for that same object, eliminating mixed definitions.
-  \item \textbf{A corrected RH target.} The draft now separates the broad ambient compact-support cone from the corrected positive-definite Weil cone, making the missing theorem precise: centered packet density inside the latter.
+  \item \textbf{A corrected RH target.} The draft now separates the broad ambient compact-support cone from the corrected positive-definite Weil cone, making the missing pair precise: centered packet density plus packet-Rayleigh identification inside the latter.
 \end{enumerate}
 
 \subsection*{Organization of the paper}

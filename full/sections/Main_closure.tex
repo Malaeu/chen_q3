@@ -6,14 +6,22 @@ For each compact window $[-K,K]$ we distinguish:
 \[
   R_K := C^+_{\mathrm{even}}([-K,K]),
   \qquad
-  B_K := \{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even},\ \Phi\ge 0\},
+  B_K := \{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even}\},
 \]
 and the corrected local Weil-positive cone
 \[
-  \mathcal W_K^{\mathrm{pd}}
-  := \overline{\bigl\{\psi * \check\psi:\ \psi\in C_c^\infty(\mathbb R),\ \operatorname{supp}(\psi * \check\psi)\subset[-K,K]\bigr\}}^{\|\cdot\|_\infty},
+  \widetilde{\psi}(x):=\overline{\psi(-x)},
   \qquad
-  \check\psi(x):=\psi(-x).
+  \mathcal W_{K,0}^{\mathrm{pd}}
+  := \bigl\{\psi * \widetilde{\psi}:\ \psi\in C_c^\infty(\mathbb R),\ \operatorname{supp}\psi\subset[-K/2,K/2]\bigr\},
+  \qquad
+  \mathcal W_K^{\mathrm{pd}}
+  := \overline{\operatorname{cone}\!\bigl(\mathcal W_{K,0}^{\mathrm{pd}}\bigr)}^{\|\cdot\|_\infty},
+  \qquad
+  \mathcal P_K
+  := \operatorname{cone}\!\bigl\{\Phi_\Psi=\Psi*\widetilde{\Psi}:\ \operatorname{supp}\Psi\subset[-K/2,K/2]\bigr\},
+  \qquad
+  \mathcal W^{\mathrm{pd}}:=\varinjlim_{K\to\infty}\mathcal W_K^{\mathrm{pd}}.
 \]
 The current draft already supplies:
 \begin{itemize}
@@ -25,15 +33,41 @@ The current draft already supplies:
 
 What remains unresolved is the corrected density gate:
 \begin{itemize}
-  \item \textbf{(A1-pd)} Identify one centered packet cone $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ that is dense in $\mathcal W_K^{\mathrm{pd}}$ and already covered by the centered positivity mechanism.
+  \item \textbf{(A1-pd)} Prove that the exact centered packet cone $\mathcal P_K$ is dense in $\mathcal W_K^{\mathrm{pd}}$.
+  \item \textbf{(packet-Rayleigh)} Identify $Q^\star(t;\Phi_\Psi)$ with the quadratic form already controlled by the centered Toeplitz/RKHS engine for every $\Phi_\Psi\in\mathcal P_K$.
   \item \textbf{(LF-pd)} Once local positivity on every $\mathcal W_K^{\mathrm{pd}}$ is available, lift it to the global cone $\mathcal W^{\mathrm{pd}}$.
 \end{itemize}
 
-\begin{theorem}[Conditional main positivity on $\mathcal W^{\mathrm{pd}}$]\label{thm:Main-positivity}
-Assume \textup{(T0)}, \textup{(A2)}, and for every compact window $[-K,K]$ a centered packet cone $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ such that
+\begin{lemma}[Target packet-Rayleigh identification]\label{lem:packet-rayleigh-identification}
+For every compact window $[-K,K]$ and every $\Phi_\Psi=\Psi*\widetilde{\Psi}\in\mathcal P_K$, where
 \[
-  \overline{\mathcal P_K}^{\|\cdot\|_\infty}=\mathcal W_K^{\mathrm{pd}}
-  \qquad\text{and}\qquad
+  \Psi(\xi)=\sum_{j=1}^N c_j\,g_{B_j,t_j,\tau_j}(\xi)
+\]
+is a finite Fej\'er$\times$heat packet supported in $[-K/2,K/2]$, there exist $M$ large enough and a trigonometric polynomial $p_\Psi\in\mathcal P_M$ such that
+\[
+  Q^\star(t;\Phi_\Psi)
+  =
+  2\pi\,
+  \bigl\langle (T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\,p_\Psi,\ p_\Psi\bigr\rangle_{L^2(\mathbb T)}.
+\]
+Equivalently, positivity of the centered Toeplitz/RKHS quadratic form on the packet span yields
+\[
+  Q^\star(t;\Phi)\ge 0\qquad\text{for every }\Phi\in\mathcal P_K.
+\]
+\end{lemma}
+
+\begin{remark}[Why this is the exact missing bridge]
+The present draft already points toward Lemma~\ref{lem:packet-rayleigh-identification}:
+Lemma~\ref{lem:a3-rayleigh-quotient} gives the quadratic Rayleigh pairing for arbitrary
+trigonometric polynomials, while Theorem~\ref{thm:a3-rayleigh-identification} is the
+special case $p\equiv1$ for a single centered Fej\'er$\times$heat window. What is
+still missing is the exact identification on the packet autocorrelation cone
+$\mathcal P_K$.
+\end{remark}
+
+\begin{theorem}[Conditional main positivity on $\mathcal W^{\mathrm{pd}}$]\label{thm:Main-positivity}
+Assume \textup{(T0)}, \textup{(A2)}, Theorem~\ref{thm:A1-pd}, and Lemma~\ref{lem:packet-rayleigh-identification}. Assume further that for every compact window $[-K,K]$ the centered Toeplitz/RKHS engine yields
+\[
   Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal P_K.
 \]
 Assume moreover that these local positivity statements are compatible with the natural embeddings $\mathcal W_K^{\mathrm{pd}}\hookrightarrow \mathcal W_{K'}^{\mathrm{pd}}$. Then
@@ -44,7 +78,7 @@ where $\mathcal W^{\mathrm{pd}}=\bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}$ is the 
 \end{theorem}
 
 \begin{proof}
-Fix $K>0$. By construction, $\mathcal P_K$ is dense in $\mathcal W_K^{\mathrm{pd}}$ and $Q^\star(t;\cdot)$ is continuous on the ambient compact-support class $B_K$, hence on $\mathcal W_K^{\mathrm{pd}}\subseteq B_K$. Therefore the positivity assumption on $\mathcal P_K$ extends to all of $\mathcal W_K^{\mathrm{pd}}$. Now let $\Phi\in\mathcal W^{\mathrm{pd}}$. Choose $K$ with $\Phi\in\mathcal W_K^{\mathrm{pd}}$. Then $Q^\star(t;\Phi)\ge 0$, and the compatibility assumption ensures that this conclusion is independent of the chosen compact exhaustion.
+Fix $K>0$. By Theorem~\ref{thm:A1-pd}, $\mathcal P_K$ is dense in $\mathcal W_K^{\mathrm{pd}}$. By Corollary~\ref{cor:A2-Lip}, $Q^\star(t;\cdot)$ is continuous on the ambient compact-support class $B_K$, hence on $\mathcal W_K^{\mathrm{pd}}\subseteq B_K$. Therefore the positivity assumption on $\mathcal P_K$ extends to all of $\mathcal W_K^{\mathrm{pd}}$. Now let $\Phi\in\mathcal W^{\mathrm{pd}}$. Choose $K$ with $\Phi\in\mathcal W_K^{\mathrm{pd}}$. Then $Q^\star(t;\Phi)\ge 0$, and the compatibility assumption ensures that this conclusion is independent of the chosen compact exhaustion.
 \end{proof}
 
 \begin{remark}[Where the present draft stops]
@@ -53,14 +87,17 @@ The current analytic core supplies two separate ingredients:
   \item the centered positivity mechanism coming from A3 and the single-scale RKHS cap;
   \item the shifted density theorem A1$'$ on the broad restriction cone $R_K$.
 \end{enumerate}
-The target-cone audit shows that these do \emph{not} yet close RH. The public missing theorem is no longer a support upgrade for the broad cone, but a centered density theorem on the corrected positive-definite cone $\mathcal W_K^{\mathrm{pd}}$.
+The target-cone audit shows that these do \emph{not} yet close RH. The public missing pair is now:
+\begin{enumerate}
+  \item the centered density theorem A1-pd on the corrected positive-definite cone $\mathcal W_K^{\mathrm{pd}}$;
+  \item the packet-Rayleigh identification on the same exact packet cone $\mathcal P_K$.
+\end{enumerate}
 \end{remark}
 
 \begin{proposition}[Local closure on the corrected cone]\label{prop:compatibility-reduction-shifted-atoms}
-Fix a compact window $[-K,K]$ and assume that $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ satisfies
+Fix a compact window $[-K,K]$ and assume Theorem~\ref{thm:A1-pd},
+Lemma~\ref{lem:packet-rayleigh-identification}, and
 \[
-  \overline{\mathcal P_K}^{\|\cdot\|_\infty}=\mathcal W_K^{\mathrm{pd}}
-  \qquad\text{and}\qquad
   Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal P_K.
 \]
 Then
@@ -78,11 +115,10 @@ Passing to the uniform limit along the dense packet cone $\mathcal P_K$ gives $Q
 \begin{remark}[Exact remaining mathematical task]\label{rem:compatibility-missing-scalar}
 Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corrected local closure step is routine once a centered dense positive cone $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ has been identified. The unresolved work is therefore:
 \begin{enumerate}
-  \item define the corrected positive-definite local cone $\mathcal W_K^{\mathrm{pd}}$ in the exact topology consumed by A2;
-  \item identify one exact centered packet family $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$;
-  \item prove density of $\mathcal P_K$ in $\mathcal W_K^{\mathrm{pd}}$.
+  \item prove the centered density theorem A1-pd on $\mathcal W_K^{\mathrm{pd}}$;
+  \item prove the packet-Rayleigh identification on the same exact packet cone $\mathcal P_K$.
 \end{enumerate}
-Once this centered density theorem A1-pd exists, the A3/RKHS positivity engine can feed the corrected closure route without reopening the LF or Weil tail.
+Once this centered density theorem A1-pd exists together with packet-Rayleigh, the A3/RKHS positivity engine can feed the corrected closure route without reopening the LF or Weil tail.
 \end{remark}
 
 \begin{remark}[Why shifted A1$'$ is now auxiliary]\label{rem:G1-frozen-target}

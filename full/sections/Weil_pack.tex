@@ -1,15 +1,18 @@
 \begin{remark}[Dependency map]\label{rem:weil-dependency}
 The sufficiency argument now uses the corrected chain:
 \[
-  \text{(T0-corr)} \;\Longrightarrow\; \text{(A1-pd)}
+  \text{(T0-pd)} \;\Longrightarrow\; \text{(A1-pd)}
+  \;\Longrightarrow\; \text{(packet-Rayleigh)}
   \;\Longrightarrow\; \text{centered (A3)+(RKHS)}
   \;\Longrightarrow\; \text{(A2-pd)}
   \;\Longrightarrow\; \text{(LF-pd)}
   \;\Longrightarrow\; \text{(G6)} \;\Longrightarrow\; \text{RH}.
 \]
 Here \textup{(A1-pd)} is the centered packet density theorem on the corrected local
-cone $\mathcal W_K^{\mathrm{pd}}$, centered \textup{(A3)+(RKHS)} supplies positivity
-on that packet family, \textup{(A2-pd)} is continuity on the corrected local cone,
+cone $\mathcal W_K^{\mathrm{pd}}$, \textup{(packet-Rayleigh)} identifies the packet
+autocorrelation tests with the quadratic forms already controlled by the Toeplitz/RKHS
+engine, centered \textup{(A3)+(RKHS)} supplies positivity on that packet family,
+\textup{(A2-pd)} is continuity on the corrected local cone,
 \textup{(LF-pd)} is the inductive-limit lift to the global positive-definite cone
 $\mathcal W^{\mathrm{pd}}$, and \textup{(G6)} is Weil's criterion.
 The shifted theorem A1$'$ on $R_K$ remains available as auxiliary density on a
@@ -25,10 +28,11 @@ Riemann Hypothesis follows from Weil's positivity criterion.
 \begin{proof}
 By Lemma~\ref{lem:rkhs-weil-isometry} the RKHS and Weil pictures are isometric on
 the working subspace. Together with Lemmas~\ref{lem:rkhs-rayleigh-sampling-id} and
-\ref{a3:lem:prime-L2-trace} we transfer the mixed lower bound of
-Theorem~\ref{thm:A3} to the quadratic functional $Q^\star(t;\cdot)$, while the
-single-scale prime cap provides the centered positivity input. Theorem~\ref{thm:Main-positivity}
-then supplies positivity on the full corrected Weil cone $\mathcal W^{\mathrm{pd}}$
-once the centered packet density route is assumed. Weil's criterion then yields the
-stated implication.
+\ref{a3:lem:prime-L2-trace} and the packet-Rayleigh bridge of
+Lemma~\ref{lem:packet-rayleigh-identification}, we transfer the mixed lower bound of
+Theorem~\ref{thm:A3} to the quadratic functional $Q^\star(t;\cdot)$ on the exact
+packet cone $\mathcal P_K$, while the single-scale prime cap provides the centered
+positivity input. Theorem~\ref{thm:Main-positivity} then supplies positivity on the
+full corrected Weil cone $\mathcal W^{\mathrm{pd}}$ once the centered packet density
+route is assumed. Weil's criterion then yields the stated implication.
 \end{proof}

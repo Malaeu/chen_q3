@@ -10,20 +10,35 @@ This work introduces a quantitative, modular operator framework for the Weil cri
   \[
     R_K := C^+_{\mathrm{even}}([-K,K]),
     \qquad
-    B_K := \bigl\{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even},\ \Phi\ge 0\bigr\},
+    B_K := \bigl\{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even}\bigr\},
   \]
-  and the corrected local Weil-positive cone
+  and, writing
+  \[
+    \widetilde{\psi}(x):=\overline{\psi(-x)},
+    \qquad
+    \mathcal W_{K,0}^{\mathrm{pd}}
+    :=\bigl\{\psi*\widetilde{\psi}:\ \psi\in C_c^\infty(\mathbb R),\ \operatorname{supp}\psi\subset[-K/2,K/2]\bigr\},
+  \]
+  the corrected local Weil-positive cone
   \[
     \mathcal W_K^{\mathrm{pd}}
-    := \overline{\bigl\{\psi * \check\psi:\ \psi\in C_c^\infty(\mathbb R),\ \operatorname{supp}(\psi * \check\psi)\subset[-K,K]\bigr\}}^{\|\cdot\|_\infty},
-    \qquad
-    \check\psi(x):=\psi(-x).
+    := \overline{\operatorname{cone}\!\bigl(\mathcal W_{K,0}^{\mathrm{pd}}\bigr)}^{\|\cdot\|_\infty}
+    \subset B_K.
   \]
   The public global target is
   \[
-    \mathcal W^{\mathrm{pd}} := \bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}.
+    \mathcal W^{\mathrm{pd}} := \varinjlim_{K\to\infty}\mathcal W_K^{\mathrm{pd}}.
   \]
-  The theorem A1$'$ is now auxiliary density on the broad restriction cone $R_K$, whereas the future centered packet family $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ is the missing local object for RH.
+  The theorem A1$'$ is now auxiliary density on the broad restriction cone $R_K$, whereas the exact centered packet cone
+  \[
+    \mathcal P_K
+    := \operatorname{cone}\!\Bigl\{
+      \Phi_\Psi=\Psi*\widetilde{\Psi}:
+      \Psi \text{ finite Fej\'er}\times\text{heat packet with }
+      \operatorname{supp}\Psi\subset[-K/2,K/2]
+    \Bigr\}
+  \]
+  is the exact local generator family for the corrected mainline density theorem A1-pd.
   \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} now packages the corrected positive-definite closure route. Appendix~\ref{app:legacy-branch} keeps legacy broad-cone branches as read-only provenance only.
   \item \textbf{Computation:} Symbol scans, ATP logs, and certificate tables are reproducibility aids only; they do not enter the logical core of the active proof chain.
 \end{itemize}
@@ -44,8 +59,9 @@ closing the centered A3/RKHS analytic bridge. What remains is not another shifte
 For reference we collect the live proof contract used after the target-cone audit.
 
 \begin{description}
-  \item[(T0-corr)] Guinand--Weil normalization of $Q^\star(t;\cdot)$ together with the corrected positive-definite target cone.
-  \item[(A1-pd)] Density of centered Fej\'er$\times$heat / autocorrelation packets in $\mathcal W_K^{\mathrm{pd}}$.
+  \item[(T0-pd)] Guinand--Weil normalization of $Q^\star(t;\cdot)$ together with the corrected positive-definite target cone.
+  \item[(A1-pd)] Density of the exact centered packet cone $\mathcal P_K$ in $\mathcal W_K^{\mathrm{pd}}$.
+  \item[(packet-Rayleigh)] Identification of $Q^\star(t;\Phi_\Psi)$ with the quadratic form already controlled by the Toeplitz/RKHS engine.
   \item[(A3)+(RKHS)] Centered positivity mechanism at the critical scale.
   \item[(A2-pd)] Continuity of $Q^\star(t;\cdot)$ on the ambient compact-support class, hence on $\mathcal W_K^{\mathrm{pd}}$ in particular.
   \item[(LF-pd)] Inductive-limit lift from all $\mathcal W_K^{\mathrm{pd}}$ to $\mathcal W^{\mathrm{pd}}$.
@@ -61,7 +77,7 @@ The present manuscript establishes the analytic inputs behind this chain as foll
   \item `A3` and `RKHS` as the centered positivity mechanism in Sections~\ref{sec:A3} and \ref{sec:RKHS}.
 \end{itemize}
 
-What remains unresolved in the present draft is exactly `A1-pd`: a centered density theorem on the corrected cone. Once that theorem is supplied, the rest of the route is the routine closure / LF / Weil tail.
+What remains unresolved in the present draft is the pair `A1-pd + packet-Rayleigh`: a centered density theorem on the corrected cone and the exact quadratic-form identification on the packet cone. Once these two statements are supplied, the rest of the route is the routine closure / LF / Weil tail.
 
 \section{Notation and Conventions}\label{sec:notation}
 
@@ -87,7 +103,7 @@ with the bridge scale fixed at $t=t_{\mathrm{crit}}$; Section~\ref{sec:T0} recor
 
 \subsection*{Quick reference for reviewers}\label{sec:quick-ref}
 \begin{tcolorbox}[colback=white,colframe=black!60]
-\textbf{Architecture.} `T0-corr -> corrected cone -> A1-pd -> centered A3/RKHS -> A2 closure -> LF-pd -> G6`.
+\textbf{Architecture.} `T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh -> centered A3/RKHS -> A2 closure -> LF-pd -> G6`.
 \textbf{Goal.} After `A1-pd` is closed, obtain $Q^\star(t;\Phi)\ge0$ on the positive-definite Weil cone $\mathcal W^{\mathrm{pd}}$ and conclude RH via `G6`.
 
 \textbf{Analytic modules already written.} A1$'$ is auxiliary density on $R_K$; A2 is continuity on the ambient compact-support class; A3 and RKHS feed the centered positivity engine.
@@ -98,7 +114,7 @@ $\rho(t_{\mathrm{crit}})\le c_\ast/4$ (Corollary~\ref{cor:uniform-prime-cap}).
 Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mathrm{Ray}}(t,M)\|\le c_\ast/4$
 \ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ge c_\ast/4$ on the centered bridge family.
 
-\textbf{Current knife-edge.} The unresolved theorem is no longer “one shifted family that is both dense and positive” on the broad cone. The new knife-edge is `A1-pd`: centered packet density in the corrected positive-definite cone.
+\textbf{Current knife-edge.} The unresolved pair is no longer “one shifted family that is both dense and positive” on the broad cone. The new knife-edge is `A1-pd + packet-Rayleigh`: centered packet density in the corrected positive-definite cone together with the exact quadratic-form bridge on that same packet cone.
 \end{tcolorbox}
 
 \begin{center}
@@ -110,10 +126,11 @@ Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mat
     \hline
     Module / gate & Key statement & Consumed by \\
     \hline
-    $\mathrm{T0}$ & Proposition~\ref{prop:T0-GW} (Guinand--Weil normalization) & $\mathrm{G6}$ \\
+    $\mathrm{T0\!-\!pd}$ & Theorem~\ref{thm:Weil-criterion} (corrected Weil linkage) & $\mathrm{G6}$ \\
     $\mathrm{A1'}$ & Theorem~\ref{a1:thm:A1-local-density} (auxiliary density on $R_K$) & auxiliary only \\
     $\mathrm{A1\!-\!pd}$ & centered packet density on $\mathcal W_K^{\mathrm{pd}}$ & local closure \\
-    $\mathrm{A2}$ & Lemma~\ref{a2:lem:A2} / Corollary~\ref{a2:cor:explicit-lip} (continuity) & local closure, LF \\
+    packet-Rayleigh & Lemma~\ref{lem:packet-rayleigh-identification} & centered positivity \\
+    $\mathrm{A2}$ & Lemma~\ref{a2:lem:A2} / Corollary~\ref{cor:A2-Lip} (continuity) & local closure, LF \\
     $\mathrm{A3}$ & Theorem~\ref{thm:A3} (centered Toeplitz bridge) & centered positivity \\
     RKHS & Corollary~\ref{cor:uniform-prime-cap} (centered prime cap) & centered positivity \\
     LF-pd & LF lift to $\mathcal W^{\mathrm{pd}}$ & $\mathrm{G6}$ \\

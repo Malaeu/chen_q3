@@ -19,10 +19,12 @@ It is **not** the execution queue and **not** the master gate-state file.
 | Symbol | Meaning | Status |
 | --- | --- | --- |
 | `R_K` | broad restriction cone `C^+_{\mathrm{even}}([-K,K])` | auxiliary |
-| `B_K` | broad ambient support cone of even, nonnegative, compactly supported tests in `[-K,K]` | auxiliary ambient space |
+| `B_K` | broad ambient class of even, compactly supported tests in `[-K,K]` | auxiliary ambient space |
+| `\widetilde\psi(x)=\overline{\psi(-x)}` | reflected conjugate test | active notation |
+| `\mathcal W_{K,0}^{pd}` | seed set of local convolution squares `\psi*\widetilde\psi` with `\operatorname{supp}\psi\subset[-K/2,K/2]` | active public target seed |
 | `\mathcal W_K^{pd}` | local positive-definite / convolution-square Weil cone | active public target |
-| `\mathcal W^{pd} = \bigcup_{K>0}\mathcal W_K^{pd}` | global positive-definite Weil cone | active public target |
-| `\mathcal P_K` | future centered Fejér×heat / autocorrelation packet cone inside `\mathcal W_K^{pd}` | active but unresolved |
+| `\mathcal W^{pd} = \varinjlim_{K>0}\mathcal W_K^{pd}` | global positive-definite Weil cone | active public target |
+| `\mathcal P_K` | exact centered packet cone `\operatorname{cone}\{\Phi_\Psi=\Psi*\widetilde\Psi\}` with `\operatorname{supp}\Psi\subset[-K/2,K/2]` | active generator family, theorem still open |
 
 Lean compatibility note:
 
@@ -36,8 +38,9 @@ Lean compatibility note:
 | --- | --- | --- | --- |
 | `T0` | Guinand--Weil crosswalk | done | `sections/T0.tex`, `sections/Weil_linkage.tex` |
 | `T0.1` | target-cone audit | done, verdict `pivot required` | audit memo + control plane |
-| `T0-corr` | corrected positive-definite target cone | done in docs/manuscript | `sections/scope_notation.tex`, `sections/Notation/qstar_contract.tex`, `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
-| `A1-pd` | density of centered packets in `\mathcal W_K^{pd}` | active frontier | `sections/A1prime.tex`, `sections/Main_closure.tex` |
+| `T0-pd` | corrected positive-definite target cone | done in docs/manuscript | `sections/scope_notation.tex`, `sections/Notation/qstar_contract.tex`, `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
+| `A1-pd` | density of the exact centered packet cone `\mathcal P_K` in `\mathcal W_K^{pd}` | active frontier | `sections/A1prime.tex`, `sections/Main_closure.tex` |
+| `packet-Rayleigh` | identify `Q^\star(t;\Phi_\Psi)` with the controlled Toeplitz/RKHS quadratic form | active frontier | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
 | `A2-pd` | continuity on the corrected cone | inherited input | `sections/A2.tex`, `sections/Main_closure.tex` |
 | `LF-pd` | LF lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}` | skeleton available, still conditional | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
@@ -52,7 +55,7 @@ Lean compatibility note:
 | `sections/A2.tex` | continuity input for corrected local closure | aligned via ambient space | continuity on the broad ambient compact-support class feeds `\mathcal W_K^{pd}` |
 | `sections/A3/*` | centered positivity engine | aligned | should feed the exact centered packet family, not a broad shifted cone |
 | `sections/RKHS/*` | prime-control input for centered positivity | aligned | same role as before, but now on the corrected target |
-| `sections/Main_closure.tex` | corrected-cone packaging | aligned after `T0.1` | now conditional on `A1-pd` rather than on broad-cone `G1-G3` |
+| `sections/Main_closure.tex` | corrected-cone packaging | aligned after `T0.1` | now conditional on `A1-pd + packet-Rayleigh` rather than on broad-cone `G1-G3` |
 | `sections/Weil_pack.tex` | dependency summary for corrected route | aligned after `T0.1` | broad-cone route demoted |
 | `sections/Weil_linkage.tex` | `G6` on the corrected cone | aligned after `T0.1` | RH theorem must remain conditional on corrected local positivity |
 | `sections/T5/*` | broad-cone LF skeleton only | archived/read-only | reference, not mainline |
@@ -62,6 +65,9 @@ Lean compatibility note:
 | Statement | Current typing | Required typing after `T0.1` | Status |
 | --- | --- | --- | --- |
 | A1' density (`thm:A1-density`, `a1:thm:A1-local-density`) | theorem on `R_K` | auxiliary theorem on `R_K` only | aligned after pivot |
+| packet cone definition (`def:pd-packet-cone`) | exact generator family on the corrected cone | definition of `\mathcal P_K` | aligned |
+| `A1-pd` (`thm:A1-pd`) | theorem target on `\mathcal W_K^{pd}` | density of `\mathcal P_K` in `\mathcal W_K^{pd}` | aligned as target theorem |
+| packet-Rayleigh (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal P_K` | exact quadratic-form bridge on the same family | aligned as target lemma |
 | A2 continuity | theorem on ambient admissible compact tests | inherited input on `\mathcal W_K^{pd}` | aligned |
 | conditional main positivity (`thm:Main-positivity`) | positivity on corrected global cone | conditional on centered packet density in `\mathcal W_K^{pd}` | aligned after pivot |
 | local closure proposition | compact closure from a centered packet cone `\mathcal P_K` | theorem on `\mathcal W_K^{pd}` | aligned after pivot |
@@ -109,11 +115,11 @@ Interpretation rule after `T0.1`:
 
 ## Unresolved Dependencies
 
-1. Exact theorem-level definition of the corrected cone `\mathcal W_K^{pd}`
-   and its topology in the paper mainline.
-2. `A1-pd`: density of centered Fejér×heat / autocorrelation packets in
+1. Pre-square density theorem on `C_c^\infty([-K/2,K/2])` strong enough to feed
+   `A1-pd` through autocorrelation continuity.
+2. `A1-pd`: proof of density of the exact packet cone `\mathcal P_K` in
    `\mathcal W_K^{pd}`.
-3. Exact centered packet family `\mathcal P_K` to be used by both density and positivity.
+3. packet-Rayleigh identification on the same family `\mathcal P_K`.
 4. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
 
 ## Background Broad-Cone Branch
