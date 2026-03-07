@@ -24,6 +24,7 @@ $\Psi_c$ & finite pre-packet & $\Psi_c(x)=\sum_{j=-M}^M c_j g(x-j\Delta)$ \\
 $h$ & packet autocorrelation kernel & $h=g*\widetilde g$ \\
 $\kappa_m$ & Toeplitz coefficient sequence & $\kappa_m=Q^\star(t;h(\cdot-m\Delta))$ \\
 $S_{g,\Delta}$ & packet Toeplitz symbol & $S_{g,\Delta}(\theta)=\sum_{m\in\mathbb Z}\kappa_m e^{-im\theta}$ \\
+$K_Q(g_i,g_j)$ & packet kernel on pre-packets & $Q^\star(t;g_i * \widetilde{g_j})$ \\
 $A_{g,\Delta}$ & Archimedean packet symbol part & $\sum_m e^{-im\theta}\int a(\xi)\,h(\xi-m\Delta)\,d\xi$ \\
 $P_{g,\Delta}$ & prime packet symbol part & $\sum_m e^{-im\theta}\sum_n w(n)\,h(\xi_n-m\Delta)$ \\
 $H_{g,\Delta,\theta}$ & twisted periodization of $h$ & $\sum_m h(\xi-m\Delta)e^{-im\theta}$ \\
@@ -51,9 +52,11 @@ Weil criterion. Accordingly:
   is too large to serve as the public closure family;
   \item the exact packet-Rayleigh theorem lives on autocorrelation packets
   $\Psi_c * \widetilde{\Psi_c}$ with Toeplitz symbol $S_{g,\Delta}$;
-  \item the honest remaining knife-edge is `A3-pd`: prove packet-symbol positivity
-  $S_{g,\Delta}(\theta)=A_{g,\Delta}(\theta)-P_{g,\Delta}(\theta)\ge c_K>0$
-  on that same exact dense packet family;
+  \item the old route `A3-pd` --- one uniform packet-symbol floor on the full dense
+  packet dictionary --- is too strong and therefore rejected as the public theorem shape;
+  \item the honest remaining knife-edge is `PSD-pd`: prove that the packet kernel
+  $K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})$ is positive semidefinite on the
+  same exact dense pre-packet space;
   \item the centered A3/RKHS positivity mechanism is kept as the positivity engine
   for that corrected cone.
 \end{itemize}

@@ -3,8 +3,9 @@ The sufficiency argument now uses the corrected chain:
 \[
   \text{(T0-pd)} \;\Longrightarrow\; \text{(A1-pd)}
   \;\Longrightarrow\; \text{(packet-Rayleigh-pd)}
-  \;\Longrightarrow\; \text{(A3-pd)}
-  \;\Longrightarrow\; \text{centered (A3)+(RKHS)}
+  \quad\text{and}\quad
+  \text{centered (A3)+(RKHS)} + \text{(packet-Rayleigh-pd)}
+  \;\Longrightarrow\; \text{(PSD-pd)}
   \;\Longrightarrow\; \text{(A2-pd)}
   \;\Longrightarrow\; \text{(LF-pd)}
   \;\Longrightarrow\; \text{(G6)} \;\Longrightarrow\; \text{RH}.
@@ -14,9 +15,12 @@ cone $\mathcal W_K^{\mathrm{pd}}$, while \textup{(packet-Rayleigh-pd)} is the ex
 Toeplitz quadratic-form identity on autocorrelation packets
 $\Psi_c * \widetilde{\Psi_c}$. The naive family $\Phi_{B,t}|p|^2$ remains available as
 background quadratic-form evidence, but it is too large to serve as the public
-closure family. The new hard theorem \textup{(A3-pd)} is positivity of the packet
-symbol $S_{g,\Delta}$ on that same exact dense family. Centered \textup{(A3)+(RKHS)}
-supplies the model estimates that must be upgraded to this packet-symbol positivity,
+closure family. The old uniform packet-symbol route \textup{(A3-pd)} is also too
+strong on a dense packet dictionary. The new hard theorem \textup{(PSD-pd)} is
+positive semidefiniteness of the packet kernel
+$K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})$ on that same exact dense pre-packet
+space. Centered \textup{(A3)+(RKHS)}
+supplies the model estimates that must be upgraded to this packet-kernel positivity,
 \textup{(A2-pd)} is continuity on the corrected local cone,
 \textup{(LF-pd)} is the inductive-limit lift to the global positive-definite cone
 $\mathcal W^{\mathrm{pd}}$, and \textup{(G6)} is Weil's criterion.
@@ -38,8 +42,8 @@ Section~\ref{sec:Main-closure}, we transfer the mixed lower bound of
 Theorem~\ref{thm:A3} to the quadratic functional $Q^\star(t;\cdot)$ on the exact
 packet family through Theorem~\ref{thm:packet-rayleigh-pd}, while the single-scale
 prime cap provides the centered positivity input that must be upgraded to
-Theorem~\ref{thm:A3-pd}. Theorem~\ref{thm:Main-positivity} then supplies positivity on
+Theorem~\ref{thm:PSD-pd}. Theorem~\ref{thm:Main-positivity} then supplies positivity on
 the full corrected Weil cone $\mathcal W^{\mathrm{pd}}$ once the dense corrected route
-and packet-symbol positivity theorem are assumed. Weil's criterion then yields the
+and PSD packet-kernel theorem are assumed. Weil's criterion then yields the
 stated implication.
 \end{proof}

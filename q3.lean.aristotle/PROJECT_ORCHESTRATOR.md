@@ -16,7 +16,7 @@ It is **not** a session log and **not** a microtask queue.
 
 ## Mainline Chain
 
-`T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh-pd -> A3-pd -> A2 closure -> LF-pd -> G6 -> RH`
+`T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh-pd -> PSD-pd -> A2 closure -> LF-pd -> G6 -> RH`
 
 - `T0-pd`: Guinand--Weil crosswalk with the corrected positive-definite target cone.
 - `corrected cone`: local/global positive-definite Weil cone
@@ -26,7 +26,8 @@ It is **not** a session log and **not** a microtask queue.
 - `packet-Rayleigh-pd`: exact Toeplitz quadratic-form identity on the same
   autocorrelation packet family `\Psi * \widetilde\Psi`; this is now part of the
   public theorem package.
-- `A3-pd`: packet-symbol positivity on that same exact family.
+- `PSD-pd`: positive semidefiniteness of the packet kernel
+  `K_Q(g_i,g_j):=Q^\star(t;g_i * \widetilde{g_j})` on that same dense pre-packet space.
 - `A2 closure`: continuity transfer on the corrected local cone.
 - `LF-pd`: inductive-limit lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}`.
 - `G6`: Weil linkage from positivity on `\mathcal W^{pd}` to RH.
@@ -82,8 +83,9 @@ Interpretation after `T0.1`:
 | `packet-Rayleigh-naive` | naive quadratic-form bridge on `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}` | `background candidate` | keep only as an auxiliary identity; do not reuse it as the public closure family |
 | `SF-pd` | same-family bridge through `\mathcal G_{K,\mathrm{Ray}}^{pd}` | `rejected as mainline route` | rejected because the naive Rayleigh family is too large and would force false broad local positivity |
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `Q^\star(t;\Psi_c * \widetilde{\Psi_c})` with `\langle T_M[S_{g,\Delta}]c,c\rangle` |
-| `A3-pd` | positivity of packet symbols `S_{g,\Delta}` on the same dense packet family | `active` | prove `S_{g,\Delta}(\theta)\ge c_K>0` on the exact packet family used by `A1-pd` |
-| `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-symbol positivity |
+| `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
+| `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets | `active` | prove that every finite matrix `[K_Q(g_i,g_j)]` on the `A1-pd` pre-packet space is positive semidefinite |
+| `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
 | `G6` | Weil linkage to RH | `frozen` | available once positivity on `\mathcal W^{pd}` is honest |
@@ -101,22 +103,26 @@ Interpretation after `T0.1`:
      background-only after the local-bump obstruction;
   3. freeze exact packet-Rayleigh on autocorrelation packets
      `\Psi_c * \widetilde{\Psi_c}`;
-  4. make `A3-pd` the single live knife-edge: positivity of the packet symbol
-     `S_{g,\Delta}` on the same exact packet family.
+  4. reject `A3-pd` in the old uniform-gap sense on the dense packet dictionary;
+  5. make `PSD-pd` the single live knife-edge: prove positive semidefiniteness
+     of the packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})`
+     on the same exact dense pre-packet space.
 
 ## Active Milestone
 
-Turn the frozen corrected theorem package into a proof-ready `A3-pd` stack:
+Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
 
 1. keep `\mathcal W_K^{pd}` and `\mathcal W^{pd}` fixed in control docs and manuscript,
 2. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}`,
 3. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 4. keep the naive centered Rayleigh family
    `\mathcal G_{K,\mathrm{Ray}}^{pd}` background-only after the obstruction,
-5. decompose the packet symbol as
+5. keep the packet-symbol decomposition
    `S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}`,
-6. make `A3-pd` explicit as one estimate package for a uniform symbol floor,
-7. keep Aristotle `G1.6` as background lemma-mining only.
+6. reject the old `A3-pd` uniform-floor route on the dense packet family,
+7. make `PSD-pd` explicit as the packet-kernel theorem
+   `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets,
+8. keep Aristotle `G1.6` as background lemma-mining only.
 
 ## Hard Blockers
 
@@ -128,8 +134,13 @@ Turn the frozen corrected theorem package into a proof-ready `A3-pd` stack:
   quadratic-form meaning of Lemma 8.8 and A3 positivity to force false broad local
   positivity on even nonnegative bumps.
 - Exact packet-Rayleigh on autocorrelation packets is now the honest theorem shape,
-  but no proof yet establishes positivity of the associated packet symbol
-  `S_{g,\Delta}` on the same dense family.
+  but no proof yet establishes positive semidefiniteness of the associated packet
+  kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the same dense
+  pre-packet space.
+- On dense packet dictionaries with arbitrarily fine translates, a uniform lower
+  bound of the form `Q^\star(t;\Psi * \widetilde\Psi)\ge c_K\|c\|_2^2` is impossible:
+  packets `\Psi_\Delta=g-g(\cdot-\Delta)` collapse to zero and force
+  `Q^\star(t;\Psi_\Delta * \widetilde{\Psi_\Delta})\to0` by A2 continuity.
 - The broad-cone compiled route in Lean still exists and may generate useful local
   lemmas, but it cannot be used as public evidence for RH after `T0.1`.
 - The compiled Lean route still inherits `Q3.prime_term_le_at_t_critical_axiom`.
@@ -181,3 +192,10 @@ Legacy narrative surfaces are reference-only:
   exact packet-Rayleigh on `\Psi_c * \widetilde{\Psi_c}`,
   and the new hard theorem `A3-pd` asserting positivity of the packet symbol
   `S_{g,\Delta}` on that same exact family.
+- 2026-03-07: pushing `A3-pd` one step further shows that the old theorem shape
+  is too strong on a dense packet dictionary: the exact packet identity survives,
+  but a uniform packet-symbol floor / uniform positive gap cannot hold on the full
+  family.
+- 2026-03-07: the public frontier therefore pivots again from `A3-pd` to
+  `PSD-pd`: prove positive semidefiniteness of the packet kernel
+  `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the dense pre-packet space.

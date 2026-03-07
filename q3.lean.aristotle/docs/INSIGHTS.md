@@ -2235,3 +2235,26 @@ Recommendation:
 - Demote `A3-pd` to a rejected-too-strong route on the dense packet family.
 - Keep `S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}` as useful structure, but not as
   the public theorem shape.
+
+## Synthesis (2026-03-07, final) — PSD packet kernel frontier
+
+Final verdict:
+- `A1-pd` survives.
+- Exact packet-Rayleigh survives.
+- The old theorem shape `A3-pd` does not survive on the dense packet dictionary.
+- The honest missing theorem is now `PSD-pd`: positive semidefiniteness of the
+  packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the dense
+  pre-packet space.
+
+Reusable theorem payload:
+- `thm:A1-pd` stays as the density theorem block.
+- `thm:packet-rayleigh-pd` stays as the exact Toeplitz / packet identity.
+- `prop:a3-pd-too-strong` records why the old uniform-gap route fails.
+- `thm:PSD-pd` is the new theorem target for the public RH chain.
+
+Public chain after the pivot:
+- `T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh-pd -> PSD-pd -> A2 closure -> LF-pd -> G6 -> RH`.
+
+Surviving strategy families:
+- Herglotz/Bochner route.
+- New prime-factorization / kernel route.

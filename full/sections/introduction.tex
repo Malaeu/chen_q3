@@ -5,7 +5,7 @@ We study the Guinand--Weil quadratic form through the analytic module stack \tex
 
 \subsection*{Main result}
 \begin{theorem}[Main result, informal]\label{thm:intro-main-informal}
-Let $\mathcal W^{\mathrm{pd}}$ be the corrected positive-definite Weil cone from Section~\ref{sec:scope}. Assume that the local centered packet density theorem \textup{(A1-pd)}, the exact packet-Rayleigh theorem on autocorrelation packets, the packet-symbol positivity theorem \textup{(A3-pd)} on the same corrected cone, and the corresponding LF closure on $\mathcal W^{\mathrm{pd}}$ have been established in addition to the analytic modules written in the present draft. Then
+Let $\mathcal W^{\mathrm{pd}}$ be the corrected positive-definite Weil cone from Section~\ref{sec:scope}. Assume that the local centered packet density theorem \textup{(A1-pd)}, the exact packet-Rayleigh theorem on autocorrelation packets, the PSD packet-kernel theorem \textup{(PSD-pd)} on the same corrected cone, and the corresponding LF closure on $\mathcal W^{\mathrm{pd}}$ have been established in addition to the analytic modules written in the present draft. Then
 \[
   Q^\star(t;\Phi)\ \ge\ 0\qquad\text{for all }\Phi\in\mathcal W^{\mathrm{pd}},
 \]
@@ -24,13 +24,13 @@ Our proof is organized as a controlled-limit program: a small number of analytic
     $\Downarrow$ \\
     exact packet-Rayleigh on autocorrelation packets $\Psi_c * \widetilde{\Psi_c}$ \\
     $\Downarrow$ \\
-    `A3-pd` packet-symbol positivity on that same family $\Longrightarrow$ `A2` local closure on $\mathcal W_K^{\mathrm{pd}}$ \\
+    `PSD-pd` packet-kernel positivity on that same family $\Longrightarrow$ `A2` local closure on $\mathcal W_K^{\mathrm{pd}}$ \\
     $\Downarrow$ \\
     `LF-pd` lift to $\mathcal W^{\mathrm{pd}}$ $\Longrightarrow$ `G6` Weil criterion $\Longrightarrow$ RH
   \end{tabular}
 \end{center}
 
-The present draft fully develops the analytic inputs that feed this chain, but it still leaves open the packet-symbol positivity theorem `A3-pd`. The naive centered family $\Phi_{B,t}|p|^2$ is now background-only, because as a closure family it is too large.
+The present draft fully develops the analytic inputs that feed this chain, but it still leaves open the PSD packet-kernel theorem `PSD-pd`. The naive centered family $\Phi_{B,t}|p|^2$ is now background-only, because as a closure family it is too large, and the old `A3-pd` uniform-gap route on the dense packet family is also too strong.
 
 \subsection*{Archimedean bridge}
 \emph{(A3) Archimedean Toeplitz barrier.} The Toeplitz component $T_M[P_A]$ in the Rayleigh decomposition of $Q^\star(t;\Phi_{B,t})$ is bounded from below by the explicit uniform Archimedean floor $c_*$ (Lemma~\ref{lem:uniform-arch-floor}), up to the controllable Lipschitz loss $C\,\omega_{P_A}(1/(2M))$. Szeg\H{o}--B\"ottcher asymptotics together with an explicit modulus of continuity for $P_A$ yield
@@ -61,7 +61,7 @@ and the global target is $\mathcal W^{\mathrm{pd}}=\varinjlim_{K>0}\mathcal W_K^
 \[
   R_K = C^+_{\mathrm{even}}([-K,K]).
 \]
-It is still useful as auxiliary approximation technology, but it no longer feeds the RH mainline directly. The new theorem package is: A1-pd on the dense autocorrelation side, exact packet-Rayleigh on that same packet side, and then `A3-pd` as the single live knife-edge. Once packet-symbol positivity is closed, continuity from A2 gives the local closure step, and the LF tail becomes routine.
+It is still useful as auxiliary approximation technology, but it no longer feeds the RH mainline directly. The new theorem package is: A1-pd on the dense autocorrelation side, exact packet-Rayleigh on that same packet side, and then `PSD-pd` as the single live knife-edge. Once packet-kernel positivity is closed, continuity from A2 gives the local closure step, and the LF tail becomes routine.
 
 \subsection*{Outline of the proof}
 
@@ -75,19 +75,19 @@ choosing $t=t_{\mathrm{crit}}=3/20$ yields $\rho(t_{\mathrm{crit}})\le c_*/4$, s
 \[
   \lambda_{\min}\!\big(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)\big)\ \ge\ \frac{c_*}{4}\ >\ 0.
 \]
-Hence the analytic core already produces a centered positivity mechanism. The remaining work is to identify the correct local cone, prove `A1-pd`, freeze exact packet-Rayleigh on the same autocorrelation packet family, and then prove the packet-symbol positivity theorem `A3-pd`; only after that do the local closure, LF lift, and Weil criterion finish RH.
+Hence the analytic core already produces a centered positivity mechanism. The remaining work is to identify the correct local cone, prove `A1-pd`, freeze exact packet-Rayleigh on the same autocorrelation packet family, and then prove the PSD packet-kernel theorem `PSD-pd`; only after that do the local closure, LF lift, and Weil criterion finish RH.
 
 \subsection*{What is new}
 
 Two features distinguish the present work.
 \begin{enumerate}
   \item \textbf{A consistent centered positivity engine.} The Archimedean symbol is defined once via periodization of the Fej\'er$\times$heat window, and its Lipschitz modulus is proved directly for that same object, eliminating mixed definitions.
-  \item \textbf{A corrected RH target.} The draft now separates the broad ambient compact-support cone from the corrected positive-definite Weil cone, and it isolates the exact knife-edge: the dense autocorrelation family survives, exact packet-Rayleigh survives on that same packet side, while the naive quadratic-form family $\Phi_{B,t}|p|^2$ is demoted to background-only because it is too large. The live blocker is now the packet-symbol positivity theorem `A3-pd`.
+  \item \textbf{A corrected RH target.} The draft now separates the broad ambient compact-support cone from the corrected positive-definite Weil cone, and it isolates the exact knife-edge: the dense autocorrelation family survives, exact packet-Rayleigh survives on that same packet side, while the naive quadratic-form family $\Phi_{B,t}|p|^2$ is demoted to background-only because it is too large and the old `A3-pd` uniform-gap route is too strong. The live blocker is now the PSD packet-kernel theorem `PSD-pd`.
 \end{enumerate}
 
 \subsection*{Organization of the paper}
 
-Section~\ref{sec:T0} recalls the Weil class, the quadratic form $Q^\star(t;\cdot)$, and the Guinand--Weil normalization. Section~\ref{sec:A3} establishes the Archimedean Toeplitz barrier (A3). Section~\ref{sec:rkhs-prime-cap} develops the analytic RKHS prime cap. Section~\ref{sec:Weil} records the conditional implication from positivity on the corrected positive-definite cone to RH. Section~\ref{sec:Main-closure} isolates the corrected closure route, including A1-pd, exact packet-Rayleigh on autocorrelation packets, the naive Rayleigh obstruction, and the live theorem `A3-pd`. Appendix~\ref{app:legacy-branch} archives the legacy broad-cone branches and reproducibility data.
+Section~\ref{sec:T0} recalls the Weil class, the quadratic form $Q^\star(t;\cdot)$, and the Guinand--Weil normalization. Section~\ref{sec:A3} establishes the Archimedean Toeplitz barrier (A3). Section~\ref{sec:rkhs-prime-cap} develops the analytic RKHS prime cap. Section~\ref{sec:Weil} records the conditional implication from positivity on the corrected positive-definite cone to RH. Section~\ref{sec:Main-closure} isolates the corrected closure route, including A1-pd, exact packet-Rayleigh on autocorrelation packets, the naive Rayleigh obstruction, the rejection of the old `A3-pd` uniform-gap route, and the live theorem `PSD-pd`. Appendix~\ref{app:legacy-branch} archives the legacy broad-cone branches and reproducibility data.
 
 \subsection*{Notation}
 

@@ -27,7 +27,8 @@ It is **not** the execution queue and **not** the master gate-state file.
 | `\mathcal P_K(t_0)` | pre-square packet span built from shifted Fej\'er$\times$heat atoms | active approximation engine |
 | `\mathcal G_K^{pd}` | dense autocorrelation packet family `\operatorname{cone}\{\Psi*\widetilde\Psi:\Psi\in\mathcal P_K(t_0)\}` | active density family |
 | `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive centered Rayleigh family `\operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}` | background candidate; too large for closure |
-| `S_{g,\Delta}(\theta)` | packet Toeplitz symbol built from `\kappa_m=Q^\star(t;h(\cdot-m\Delta))` | active hard-theorem object |
+| `S_{g,\Delta}(\theta)` | packet Toeplitz symbol built from `\kappa_m=Q^\star(t;h(\cdot-m\Delta))` | structural object; no longer the public theorem target by itself |
+| `K_Q(g_i,g_j)` | packet kernel `Q^\star(t;g_i * \widetilde{g_j})` on the dense pre-packet space | active hard-theorem object |
 
 Lean compatibility note:
 
@@ -46,7 +47,8 @@ Lean compatibility note:
 | `packet-Rayleigh-naive` | identify `Q^\star(t;\Phi_{B,t,p})` with the controlled Toeplitz/RKHS quadratic form on the naive family `\mathcal G_{K,\mathrm{Ray}}^{pd}` | background candidate | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `SF-pd` | same-family bridge through the naive family `\mathcal G_{K,\mathrm{Ray}}^{pd}` | rejected as mainline route | historical note only |
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` with symbol `S_{g,\Delta}` | frozen theorem block | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
-| `A3-pd` | positivity of packet symbols `S_{g,\Delta}` on the same exact packet family | active frontier | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex` |
+| `A3-pd` | uniform packet-symbol floor on the dense packet family | rejected-too-strong route | `sections/Main_closure.tex`, `sections/scope_notation.tex` |
+| `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets | active frontier | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
 | `A2-pd` | continuity on the corrected cone | inherited input | `sections/A2.tex`, `sections/Main_closure.tex` |
 | `LF-pd` | LF lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}` | skeleton available, still conditional | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
@@ -61,7 +63,7 @@ Lean compatibility note:
 | `sections/A2.tex` | continuity input for corrected local closure | aligned via ambient space | continuity on the broad ambient compact-support class feeds `\mathcal W_K^{pd}` |
 | `sections/A3/*` | centered positivity engine | aligned | should feed the exact centered packet family, not a broad shifted cone |
 | `sections/RKHS/*` | prime-control input for centered positivity | aligned | same role as before, but now on the corrected target |
-| `sections/Main_closure.tex` | corrected-cone packaging | aligned after `T0.1` | now conditional on `A1-pd` + exact packet-Rayleigh + `A3-pd`, with the naive Rayleigh route kept background-only |
+| `sections/Main_closure.tex` | corrected-cone packaging | aligned after `T0.1` | now conditional on `A1-pd` + exact packet-Rayleigh + `PSD-pd`, with the naive Rayleigh route kept background-only and the uniform-gap route rejected |
 | `sections/Weil_pack.tex` | dependency summary for corrected route | aligned after `T0.1` | broad-cone route demoted |
 | `sections/Weil_linkage.tex` | `G6` on the corrected cone | aligned after `T0.1` | RH theorem must remain conditional on corrected local positivity |
 | `sections/T5/*` | broad-cone LF skeleton only | archived/read-only | reference, not mainline |
@@ -75,7 +77,8 @@ Lean compatibility note:
 | `A1-pd` (`thm:A1-pd`) | theorem target on `\mathcal W_K^{pd}` | density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}` | aligned as theorem block |
 | `packet-Rayleigh-naive` (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive quadratic-form bridge on an overlarge family | background candidate only |
 | `packet-Rayleigh-pd` (`thm:packet-rayleigh-pd`) | theorem target on `\mathcal G_K^{pd}` | exact Toeplitz form on autocorrelation packets | aligned as theorem block |
-| `A3-pd` (`thm:A3-pd`) | theorem target on the same dense packet family `\mathcal G_K^{pd}` | positivity of packet symbols `S_{g,\Delta}` | active blocker |
+| `A3-pd` (`prop:a3-pd-too-strong`) | old theorem target on the same dense packet family `\mathcal G_K^{pd}` | uniform packet-symbol floor on dense packets | rejected-too-strong route |
+| `PSD-pd` (`thm:PSD-pd`) | theorem target on the dense pre-packet space behind `\mathcal G_K^{pd}` | positive semidefiniteness of `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` | active blocker |
 | A2 continuity | theorem on ambient admissible compact tests | inherited input on `\mathcal W_K^{pd}` | aligned |
 | conditional main positivity (`thm:Main-positivity`) | positivity on corrected global cone | conditional on centered packet density in `\mathcal W_K^{pd}` | aligned after pivot |
 | local closure proposition | compact closure from a dense positive family inside `\mathcal W_K^{pd}` | theorem on `\mathcal W_K^{pd}` | aligned after pivot |
@@ -92,7 +95,8 @@ These statements must stay explicitly conditional after the pivot:
 - `thm:RH` in `sections/Weil_linkage.tex`.
 
 Any wording implying unconditional positivity on the corrected cone before
-`A3-pd` is closed is now a bug.
+`PSD-pd` is closed is now a bug. Any wording implying that a uniform packet-symbol
+floor on the full dense packet family is the live theorem shape is also a bug.
 
 ## Target-Cone Audit Result
 
@@ -130,9 +134,11 @@ Interpretation rule after `T0.1`:
    `\Psi_c * \widetilde{\Psi_c}` with symbol `S_{g,\Delta}`.
 4. Naive packet-Rayleigh on `\mathcal G_{K,\mathrm{Ray}}^{pd}` is too large to serve
    as the closure family; this must remain background-only.
-5. `A3-pd`: prove positivity of the packet symbol `S_{g,\Delta}` on the same exact
-   packet family that is dense in `\mathcal W_K^{pd}`.
-6. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
+5. Reject the old `A3-pd` route as too strong on a dense packet dictionary.
+6. `PSD-pd`: prove positive semidefiniteness of the packet kernel
+   `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the same dense pre-packet
+   space that feeds `\mathcal G_K^{pd}`.
+7. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
 
 ## Background Broad-Cone Branch
 
