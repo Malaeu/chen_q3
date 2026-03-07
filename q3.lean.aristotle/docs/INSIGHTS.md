@@ -2295,3 +2295,36 @@ Launched Aristotle probes:
 - `subagent_psd_pd_kernel_route_2026_03_07.md`
   -> `2f2aff04-379c-4698-a238-a9798417b3b6`
 - initial status for both: `QUEUED`
+
+## Synthesis (2026-03-07, in progress) — `Route P` is the primary `PSD-pd` candidate
+
+Target node and wiring:
+- The live theorem is still `PSD-pd`: positive semidefiniteness of the packet
+  kernel `K_Q(\Psi,\Phi)=Q^\star(t;\Psi * \widetilde{\Phi})` on the dense
+  pre-packet space behind `A1-pd`.
+- The user’s new note sharpens this further: the honest theorem is not a revived
+  packet-symbol floor but PSD of the full sesquilinear packet kernel.
+
+Local semantic search:
+- The strongest local hits remain `Main_closure.tex`, `Weil_pack.tex`, the
+  packet-package notes, and the tracker/orchestrator entries around `PSD-pd`.
+- Nothing in the live corpus currently supplies a real PSD factorization of the
+  prime packet block; this matches the note’s diagnosis that the current
+  centered A3/RKHS engine stops too early.
+
+External theorem-shape search:
+- External search again supports `Herglotz/Bochner` as the clean equivalence
+  language for positive-definite sequences / Toeplitz sections.
+- But it still does not supply a project-local mechanism that would dominate the
+  prime packet block directly.
+
+Concrete synthesis:
+- `Herglotz/Bochner` survives as the diagnostic / equivalence route:
+  it tells us exactly what `PSD-pd` means.
+- The realistic primary route is now `Route P`:
+  exact packet sesquilinear identity
+  -> PSD factorization or Hilbert lift of the prime block
+  -> Archimedean domination criterion
+  -> PSD of the full packet kernel.
+- Therefore the next public theorem package should be organized around:
+  `packet sesquilinear identity -> prime-block PSD factorization -> Archimedean domination -> PSD-pd`.
