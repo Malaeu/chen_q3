@@ -84,6 +84,71 @@ Tooling status:
    а заменить его honest weaker theorem на правильном paper-generator
    (`phi_shift`-pair / shifted evenized atom).
 
+## Synthesis (2026-03-07, final) — G1.2 finite reuse packet for the frozen support-upgrade route
+
+Цель: превратить замороженную формулировку `G1.1` в конечный proof-search packet без
+возврата к старому overclaiming про “density in admissible `W_K` already done”.
+
+Точный target:
+- доказать replacement theorem для restriction-level shifted approximants:
+  любой конечный неотрицательный shifted-evenized A1'-approximant `h` на `[-K,K]`
+  имеет admissible replacement `\\widetilde h ∈ W_K`, близкий в `L^\\infty([-K,K])`,
+  после чего A2 даёт controlled `Q^*`-error.
+
+Reuse list: structure and lemmas we can actually mine
+- `Q3/Proofs/A1_density.lean:70` — `Atom_eq_q3`
+  Нужен как мост между локальным `Atom`-языком и глобальным `Q3.Fejer_heat_atom`.
+- `Q3/Proofs/A1_density.lean:248` — `Atom_eq_zero_outside_open`
+  Это главный support-control brick: при `|τ| + B ≤ K` атом зануляется вне `(-K,K)`.
+- `Q3/Proofs/A1_density.lean:424` — `HeatKernel_LipschitzOn`
+  Даёт локальный Lipschitz control для heat-part и нужен в approximation budget.
+- `Q3/Proofs/A1_density.lean:465` — `hat_interpolation_approx`
+  Полезен как базовый unrestricted hat-interpolation skeleton.
+- `Q3/Proofs/A1prime/HatInterpBounded.lean:31` — `hat_interpolation_approx_bounded`
+  Это ключевой bounded-grid input: сразу выдаёт `δ`, `τ`, grid-in-window и margin control.
+- `Q3/Proofs/A1prime/HeatError.lean:29` — `FejerKernel_support_bound`
+  Полезен для явного support bookkeeping на Fejér side.
+- `Q3/Proofs/A1prime/HeatError.lean:43` — `heat_error_bound`
+  Полезен как чистый heat approximation budget.
+- `Q3/Proofs/A1prime/HeatError.lean:101` — `total_atom_error`
+  Суммирует approximation error по finite atom family.
+- `Q3/Proofs/A1prime/HeatError.lean:189` — `total_atom_error_even`
+  То же для evenized family, ближе к текущему paper generator.
+- `Q3/Proofs/Q_Lipschitz.lean:278` — `Q_Lipschitz_on_W_K_thm`
+  Это честный admissible continuity input, который должен потребляться только после
+  того, как replacement уже лежит в `W_K`.
+- `Q3/T5_Transfer.lean:56` — `AtomCone_subset_W_K`
+  Полезно как напоминание, какой membership-свидетель нужен downstream closure-слою.
+
+Structure guidance only: полезно читать, но не переиспользовать как честное mainline theorem
+- `Q3/Proofs/A1prime/A1_density_fixed_t0.lean:37` — старый
+  `A1_density_WK_fixed_t0`. Это сильная legacy theorem-shape. Полезен как
+  construction template:
+  hat interpolation -> support margin -> build `g` -> prove `g ∈ W_K` -> show sup-error.
+- `Q3/T5_Transfer.lean:78` — `T5_transfer_of_atoms`.
+  Полезен только как closure skeleton:
+  contradiction setup, choose `ε`, call A2 after admissible membership, conclude by limit.
+
+Do-not-reuse as honest active theorem claims
+- `Q3/AxiomsTheorems.lean:148` — `A1_density_WK`.
+  После мартовского reset это нельзя использовать как source-of-truth mainline theorem:
+  он по-прежнему упаковывает старый сильный claim “Fejér-heat atoms dense in `W_K`”.
+- File header / theorem prose in `Q3/T5_Transfer.lean`.
+  Там closure описан как уже закрытый theorem on all of `W_K`; это legacy packaging,
+  а не честный post-reset paper state.
+
+Практический вывод для `G1.3`
+- Не просить Aristotle “докажи A1_density_WK”.
+- Просить только два узких subtargets:
+  1) support-preserving replacement skeleton from bounded hat data,
+  2) error-budget lemma turning
+     `||Φ - h||_∞ < ε` and `||h - \\widetilde h||_∞ < ε`
+     into admissible A2 transfer on `W_K`.
+
+Tooling note
+- Локальный embedding search в этом проходе частично упёрся в `SQLITE_BUSY_RECOVERY`,
+  но нужный reuse packet всё равно удалось собрать из живых Lean-файлов.
+
 ## Synthesis (2026-03-06, in progress) — Compatibility theorem via shifted evenized atoms
 
 Цель: вернуть mainline к бумаге и убрать ложный `τ=0` closure-нарратив.

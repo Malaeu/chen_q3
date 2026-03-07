@@ -131,6 +131,54 @@ Consequent closure use:
 This freezes `G1` without yet choosing the exact final family `G_K`; `G2` will
 name `G_K` as the class of admissible replacements produced by this theorem.
 
+## G1.2 Reuse Packet
+
+The frozen `G1.1` statement now has a finite reuse packet.
+
+Reusable local inputs
+
+- `Q3/Proofs/A1_density.lean:70` — `Atom_eq_q3`
+  bridges local `Atom` notation to `Q3.Fejer_heat_atom`.
+- `Q3/Proofs/A1_density.lean:248` — `Atom_eq_zero_outside_open`
+  gives the main support-vanishing step from the margin condition `|τ| + B ≤ K`.
+- `Q3/Proofs/A1_density.lean:424` — `HeatKernel_LipschitzOn`
+  supplies the local heat Lipschitz control used in the approximation budget.
+- `Q3/Proofs/A1prime/HatInterpBounded.lean:31` — `hat_interpolation_approx_bounded`
+  is the bounded-grid source for `δ`, `τ`, and `hmargin`.
+- `Q3/Proofs/A1prime/HeatError.lean:29` — `FejerKernel_support_bound`
+  is a clean support bookkeeping input on the Fejér side.
+- `Q3/Proofs/A1prime/HeatError.lean:43` — `heat_error_bound`
+  is the heat-side approximation brick.
+- `Q3/Proofs/A1prime/HeatError.lean:101` — `total_atom_error`
+  and `Q3/Proofs/A1prime/HeatError.lean:189` — `total_atom_error_even`
+  package finite error accumulation, especially for evenized families.
+- `Q3/Proofs/Q_Lipschitz.lean:278` — `Q_Lipschitz_on_W_K_thm`
+  remains the admissible continuity input consumed only after the replacement lies in `W_K`.
+- `Q3/T5_Transfer.lean:56` — `AtomCone_subset_W_K`
+  is reusable as a downstream membership pattern.
+
+Structure guidance only
+
+- `Q3/Proofs/A1prime/A1_density_fixed_t0.lean:37` — `A1_density_WK_fixed_t0`
+  may be mined only as a construction template for
+  `hat interpolation -> support margin -> build admissible object -> sup-error`.
+- `Q3/T5_Transfer.lean:78` — `T5_transfer_of_atoms`
+  may be mined only as a closure skeleton once an admissible replacement theorem exists.
+
+Do-not-reuse as active truth
+
+- `Q3/AxiomsTheorems.lean:148` — `A1_density_WK`
+  is legacy overpackaging and cannot serve as the honest post-reset `G1` theorem.
+- Legacy prose in `Q3/T5_Transfer.lean` describing full closure on `W_K`
+  remains archived/read-only.
+
+Handoff to `G1.3`
+
+- The next packet should split into:
+  1. a support-preserving replacement lemma packet,
+  2. an A2-facing error-budget packet.
+- `G2` must stay blocked until that packet exists.
+
 ## Legacy Read-Only Surface
 
 The following are retained for provenance only and do not drive the active paper map:

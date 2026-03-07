@@ -74,21 +74,23 @@ This route is structurally useful, but it is **not** yet an honest closed proof 
 
 - `G0` is closed and verified across control docs, manuscript, Lean narrative, and builds.
 - `G1.1` is frozen: the first honest support-upgrade target is now a replacement theorem for restriction-level shifted approximants.
-- Current active task: `G1.2` in `IMPLEMENTATION_PLAN.md`
-- Current frontier: collect the finite reuse list and exact file pointers needed to attack that frozen `G1` statement
+- `G1.2` is now closed: the finite reuse list and exact file pointers for the frozen `G1` statement have been extracted.
+- Current active task: `G1.3` in `IMPLEMENTATION_PLAN.md`
+- Current frontier: turn that finite reuse packet into one small Aristotle-ready packet or one manual proof packet without reviving the old `A1_density_WK` overclaim
 
 ## Active Milestone
 
-Turn the frozen `G1` statement into a concrete proof-search packet:
+Turn the finite `G1.2` reuse map into a concrete proof-search packet:
 
-1. extract the exact reusable lemmas from the old hat-interpolation/support-margin route,
-2. separate reusable structure from legacy overclaiming,
-3. keep `G2/G3` frozen behind that reuse map.
+1. split the route into a support-preserving replacement packet and an A2-facing error-budget packet,
+2. keep all legacy strong density claims read-only,
+3. leave `G2/G3` blocked behind the resulting honest `G1` packet.
 
 ## Hard Blockers
 
 - `A1'` is naturally a theorem on the restriction cone `R_K`, not yet on admissible `W_K`.
 - The exact shape of `G1` is now frozen, but the reusable proof packet is not yet isolated cleanly from the old overstrong `A1_density_WK` route.
+- The finite reuse list is now isolated, but it still needs to be turned into a single proof packet with no legacy overclaiming.
 - No exact common admissible family `G_K` is fixed yet.
 - No positivity theorem is proved yet on a final admissible `G_K`.
 - The compiled Lean route still inherits `Q3.prime_term_le_at_t_critical_axiom`.
@@ -128,3 +130,4 @@ Legacy narrative surfaces are reference-only:
   `printf 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3\n' | lake env lean --stdin`.
 - 2026-03-07: next active frontier is `G1.1`, i.e. freeze the first honest support-upgrade theorem on admissible `W_K`.
 - 2026-03-07: `G1.1` frozen as a replacement theorem for restriction-level shifted approximants; `G1.2` is now the active reuse-mapping step.
+- 2026-03-07: `G1.2` closed; reusable lemmas, structure-only templates, and do-not-reuse legacy claims have been separated cleanly.
