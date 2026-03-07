@@ -2355,3 +2355,42 @@ Aristotle status:
 - the `prime-factorization / kernel` probe
   `2f2aff04-379c-4698-a238-a9798417b3b6`
   remains the more important live Aristotle route.
+
+## Synthesis (2026-03-07, in progress) — full-kernel PSD replaces literal `Route P`
+
+Target node and wiring:
+- The live theorem remains `PSD-pd`: positive semidefiniteness of the packet
+  kernel `K_Q(\Psi,\Phi)=Q^\star(t;\Psi * \widetilde{\Phi})` on the dense
+  pre-packet space behind `A1-pd`.
+- The new note sharpens the obstruction further: the literal `Route P` package
+  "`prime block PSD factorization or Hilbert lift -> Archimedean domination`"
+  is not merely unproved; on packet space the standalone prime block is not PSD,
+  so that theorem shape is false.
+
+Local semantic search:
+- Query `direct full kernel PSD full symbol domination S_{g,Delta} packet kernel`
+  hits the corrected-cone manuscript files and the packet-kernel insight layer.
+  The active corpus already knows the right target object is `K_Q`.
+- Query `Herglotz diagnostic equivalence full kernel PSD route P false prime block`
+  returns the orchestrator/manuscript surfaces where the old `Route P` wording is
+  still active. This confirms the next task is a source-of-truth rewrite, not
+  another speculative estimate.
+
+External theorem-shape search:
+- External references still support `Herglotz/Bochner` as the clean equivalence
+  between Toeplitz-section PSD, positive-definite sequences, and measure data.
+- They do not rescue a project-local PSD factorization of the packet prime block.
+
+Concrete synthesis:
+- Exact packet sesquilinear identity survives.
+- Standalone PSD factorization of the packet prime block fails on dense packet
+  spaces containing an active node.
+- Therefore the honest frontier theorem is now:
+  direct PSD of the full packet kernel,
+  equivalently positivity of the full symbol
+  `S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}`.
+- `Herglotz/Bochner` stays as secondary diagnostic language.
+- The primary constructive line must now be phrased as either:
+  `full-symbol domination A_{g,\Delta}>=P_{g,\Delta}`
+  or
+  `a new operator package representing the full kernel as a PSD form`.
