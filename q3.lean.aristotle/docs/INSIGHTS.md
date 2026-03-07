@@ -149,6 +149,31 @@ Tooling note
 - Локальный embedding search в этом проходе частично упёрся в `SQLITE_BUSY_RECOVERY`,
   но нужный reuse packet всё равно удалось собрать из живых Lean-файлов.
 
+## Final result (2026-03-07) — G1.3 Aristotle packet prepared for the support-replacement brick
+
+Собран новый узкий Aristotle prompt:
+- `q3.lean.aristotle/aristotle_input/subagent_g1_support_replacement_2026_03_07.md`
+
+Ключевое решение:
+- не просить старый `A1_density_WK`,
+- не просить полный bridge `R_K -> W_K`,
+- просить только локальный membership brick
+  `atom_sum_mem_atomcone_fixed_of_margin`
+  с честным fallback
+  `atom_sum_mem_W_K_of_margin`.
+
+Это правильно, потому что:
+- theorem shape совпадает с buried `hg_mem` block inside
+  `Q3/Proofs/A1prime/A1_density_fixed_t0.lean`,
+- target малый и локальный,
+- он не обещает closure больше, чем уже реально закрыто по `G0`,
+- downstream `G1` потом можно достроить вручную через A2 error budget.
+
+Workflow note
+- Prompt подготовлен, но не отправлен:
+  по проектному workflow Aristotle request надо сначала показать пользователю,
+  и только после OK отправлять.
+
 ## Synthesis (2026-03-06, in progress) — Compatibility theorem via shifted evenized atoms
 
 Цель: вернуть mainline к бумаге и убрать ложный `τ=0` closure-нарратив.

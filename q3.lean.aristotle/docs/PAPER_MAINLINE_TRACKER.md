@@ -179,6 +179,24 @@ Handoff to `G1.3`
   2. an A2-facing error-budget packet.
 - `G2` must stay blocked until that packet exists.
 
+## G1.3 Packet
+
+Prepared Aristotle-ready packet:
+
+- `q3.lean.aristotle/aristotle_input/subagent_g1_support_replacement_2026_03_07.md`
+
+Packet target:
+
+- preferred: `atom_sum_mem_atomcone_fixed_of_margin`
+- fallback: `atom_sum_mem_W_K_of_margin`
+
+Interpretation:
+
+- this packet extracts only the local admissible-membership brick buried in the old
+  `hg_mem` block,
+- it does not claim global density on `W_K`,
+- it keeps `G2` and `G3` blocked until the resulting local theorem actually compiles.
+
 ## Legacy Read-Only Surface
 
 The following are retained for provenance only and do not drive the active paper map:

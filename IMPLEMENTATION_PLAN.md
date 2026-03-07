@@ -12,7 +12,7 @@ Updated: 2026-03-07
 
 ## ACTIVE
 
-`G1.3 | gate=G1 | target=Write the finite reuse map for the frozen replacement theorem as a small Aristotle-ready packet or manual proof packet | files=q3.lean.aristotle/docs/INSIGHTS.md; q3.lean.aristotle/aristotle_input/; q3.lean.aristotle/Q3/Proofs/A1_density.lean; q3.lean.aristotle/Q3/Proofs/A1prime/A1_density_fixed_t0.lean | verify=rg -n "G1.1|replacement theorem|hmargin|hg_supp|hat interpolation|support-preserving replacement|error-budget" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/Q3/Proofs/A1_density.lean q3.lean.aristotle/Q3/Proofs/A1prime/A1_density_fixed_t0.lean | done_when=one proof packet exists with exact target, reuse list, and no overclaiming | if_fail_then=split the packet into a support lemma packet and an error-budget packet`
+`G1.4 | gate=G1 | target=Review the prepared support-replacement packet with the user and submit it to Aristotle if approved | files=q3.lean.aristotle/aristotle_input/subagent_g1_support_replacement_2026_03_07.md; q3.lean.aristotle/aristotle_input/project_ids.txt; q3.lean.aristotle/docs/INSIGHTS.md | verify=sed -n "1,220p" q3.lean.aristotle/aristotle_input/subagent_g1_support_replacement_2026_03_07.md | done_when=the packet is user-approved and submitted, with project id recorded | if_fail_then=split the request into a pure membership packet and a separate A2 error-budget packet`
 
 ## QUEUED
 
