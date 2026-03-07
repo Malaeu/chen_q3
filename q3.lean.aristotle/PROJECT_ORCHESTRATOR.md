@@ -111,9 +111,10 @@ Interpretation after `T0.1`:
      of the full packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})`
      on the same exact dense pre-packet space;
   7. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
-  8. make direct full-symbol domination
-     `A_{g,\Delta}(\theta)\ge P_{g,\Delta}(\theta)` or a new full-kernel operator
-     package the primary constructive route for the next theorem package.
+  8. freeze the strict `P1--P8` theorem package;
+  9. make direct full-symbol domination
+     `A_{g,\Delta}(\theta)\ge P_{g,\Delta}(\theta)` the immediate constructive
+     target, with a new full-kernel operator package kept as fallback.
 
 ## Active Milestone
 
@@ -131,12 +132,20 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
    `prime-block PSD factorization or Hilbert lift -> Archimedean domination`,
 8. make `PSD-pd` explicit as the packet-kernel theorem
    `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets,
-9. record the two surviving strategy families for `PSD-pd`
-   (Herglotz/Bochner versus direct full-kernel PSD),
-10. freeze full-symbol domination or a new full-kernel operator package as the
-    primary constructive route,
-11. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
-12. keep Aristotle `G1.6` as background lemma-mining only.
+9. freeze the strict `P1--P8` chain:
+   exact packet sesquilinear identity
+   -> Toeplitz reduction
+   -> desired prime-factorization (rejected by obstruction)
+   -> full sequence split `\kappa=\alpha-\beta`
+   -> Toeplitz/Herglotz criterion
+   -> full-symbol domination criterion
+   -> `PSD-pd`,
+10. record the two surviving strategy families for `PSD-pd`
+    (Herglotz/Bochner versus direct full-kernel PSD),
+11. make full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}` the immediate
+    constructive target, with a new full-kernel operator package as fallback,
+12. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
+13. keep Aristotle `G1.6` as background lemma-mining only.
 
 ## Hard Blockers
 
@@ -159,6 +168,7 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
 - The primary remaining theorem package is now:
   exact packet sesquilinear identity
   -> prime-block obstruction
+  -> Toeplitz/Herglotz spectral criterion for the full sequence
   -> direct full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}` or a new
      operator package for the full kernel
   -> `PSD-pd`.
@@ -229,3 +239,8 @@ Legacy narrative surfaces are reference-only:
   theorem shape is false on dense packet dictionaries. The active constructive
   route is now direct PSD of the full kernel `K_Q`, with `Herglotz/Bochner`
   kept only as diagnostic equivalence language.
+- 2026-03-08: the strict packet theorem package is now frozen as
+  `P1 -> P2 -> P4 -> P5 -> P6 -> P7 -> PSD-pd`, where `P7`
+  (`A_{g,\Delta}\ge P_{g,\Delta}` or the measure/distribution analogue) is the
+  immediate constructive target and any new operator package for the full kernel
+  is fallback-only.

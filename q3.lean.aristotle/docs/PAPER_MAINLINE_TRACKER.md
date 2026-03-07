@@ -78,7 +78,7 @@ Lean compatibility note:
 | `packet-Rayleigh-naive` (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive quadratic-form bridge on an overlarge family | background candidate only |
 | `packet-Rayleigh-pd` (`thm:packet-rayleigh-pd`) | theorem target on `\mathcal G_K^{pd}` | exact Toeplitz form on autocorrelation packets | aligned as theorem block |
 | `A3-pd` (`prop:a3-pd-too-strong`) | old theorem target on the same dense packet family `\mathcal G_K^{pd}` | uniform packet-symbol floor on dense packets | rejected-too-strong route |
-| `PSD-pd` (`thm:PSD-pd`) | theorem target on the dense pre-packet space behind `\mathcal G_K^{pd}` | positive semidefiniteness of `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` | active blocker; pursue through direct full-kernel PSD / full-symbol domination |
+| `PSD-pd` (`thm:PSD-pd`) | theorem target on the dense pre-packet space behind `\mathcal G_K^{pd}` | positive semidefiniteness of `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` | active blocker; pursue through the strict `P1–P8` chain with `P7` as immediate constructive target |
 | A2 continuity | theorem on ambient admissible compact tests | inherited input on `\mathcal W_K^{pd}` | aligned |
 | conditional main positivity (`thm:Main-positivity`) | positivity on corrected global cone | conditional on centered packet density in `\mathcal W_K^{pd}` | aligned after pivot |
 | local closure proposition | compact closure from a dense positive family inside `\mathcal W_K^{pd}` | theorem on `\mathcal W_K^{pd}` | aligned after pivot |
@@ -141,16 +141,21 @@ Interpretation rule after `T0.1`:
 7. Record the prime-block obstruction on packet space:
    standalone PSD factorization of the packet prime block is false on dense
    packet dictionaries containing an active node.
-8. Freeze the direct full-kernel theorem package:
-   exact packet sesquilinear identity
-   -> prime-block obstruction
-   -> full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}` or a new operator
-      package for the full kernel
+8. Freeze the strict packet theorem package:
+   `P1` exact packet sesquilinear identity
+   -> `P2` Toeplitz reduction on translation packet dictionaries
+   -> `P3` desired prime-factorization theorem shape
+   -> `P4` prime-block obstruction
+   -> `P5` full sequence split `\kappa=\alpha-\beta`
+   -> `P6` Toeplitz/Herglotz criterion
+   -> `P7` full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}`
    -> `PSD-pd`.
 9. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
    equivalence between positive-definite sequence, Toeplitz-section PSD, and
    positive measure representation for the packet coefficients.
-10. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
+10. Treat `P7` as the immediate constructive target; any new full-kernel operator
+    package is fallback-only.
+11. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
 
 ## Background Broad-Cone Branch
 

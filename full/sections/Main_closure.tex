@@ -90,7 +90,39 @@ to salvage that overlarge family, but to prove PSD of the packet kernel on the
 exact dense autocorrelation packet family from A1-pd.
 \end{remark}
 
-\begin{theorem}[Exact packet-Rayleigh identification]\label{thm:packet-rayleigh-pd}
+\begin{lemma}[P1: exact packet sesquilinear identity]\label{lem:packet-sesquilinear}
+Fix $K>0$ and let $\Psi,\Phi\in C_c([-K/2,K/2])$. Set
+\[
+  \widetilde{\Phi}(x):=\overline{\Phi(-x)},
+  \qquad
+  K_Q(\Psi,\Phi):=Q^\star(t;\Psi * \widetilde{\Phi}).
+\]
+Then
+\[
+  K_Q(\Psi,\Phi)
+  =
+  \iint_{\mathbb R^2} a^*(x-y)\Psi(x)\overline{\Phi(y)}\,dx\,dy
+  -
+  \sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}
+  \int_{\mathbb R}\Psi(x)\overline{\Phi(x-\xi_n)}\,dx,
+\]
+where the prime sum is finite on the fixed compact window.
+\end{lemma}
+
+\begin{proof}
+By definition,
+\[
+  (\Psi * \widetilde{\Phi})(\xi)
+  =
+  \int_{\mathbb R}\Psi(x)\overline{\Phi(x-\xi)}\,dx.
+\]
+Substituting this into the compact-window formula for $Q^\star(t;\cdot)$ and
+interchanging integrals gives the Archimedean term. On the fixed compact only
+finitely many prime nodes $\xi_n$ are active, so the prime term is finite and
+the same substitution yields the displayed identity.
+\end{proof}
+
+\begin{theorem}[P2: Toeplitz reduction on a translation packet dictionary]\label{thm:packet-rayleigh-pd}
 Let $g\in C_c(\mathbb R)$, let $\Delta>0$, and let
 \[
   \Psi_c(x):=\sum_{j=-M}^M c_j\,g(x-j\Delta),
@@ -134,7 +166,28 @@ This is precisely the Toeplitz quadratic form associated with the symbol
 $S_{g,\Delta}(\theta)=\sum_{m\in\mathbb Z}\kappa_m e^{-im\theta}$.
 \end{proof}
 
-\begin{remark}[Packet-symbol decomposition]\label{rem:packet-symbol-decomposition}
+\begin{proposition}[P3: desired PSD factorization of the packet prime block]\label{prop:desired-prime-factorization}
+Fix a dense packet space $\mathcal P_K\subset C_c([-K/2,K/2])$ and define
+\[
+  K_P(\Psi,\Phi)
+  :=
+  \sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}\,(\Psi * \widetilde{\Phi})(\xi_n).
+\]
+If there exist a Hilbert space $\mathcal H_{P,K}$ and a map
+$J_K:\mathcal P_K\to\mathcal H_{P,K}$ such that
+\[
+  K_P(\Psi,\Phi)=\langle J_K\Psi,J_K\Phi\rangle_{\mathcal H_{P,K}}
+\]
+for all $\Psi,\Phi\in\mathcal P_K$, then the packet prime block is positive
+semidefinite on $\mathcal P_K$.
+\end{proposition}
+
+\begin{proof}
+This is immediate from the Hilbert-space representation: every finite matrix
+$[K_P(\Psi_i,\Psi_j)]$ is then a Gram matrix.
+\end{proof}
+
+\begin{lemma}[P5: decomposition of the full packet Toeplitz sequence]\label{lem:packet-symbol-decomposition}
 Writing
 \[
   \kappa_m
@@ -173,9 +226,16 @@ Thus the symbol decomposition $S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}$ remains a
 useful structural object on the packet side. But on a dense packet dictionary it
 is no longer honest to take one uniform lower bound for $S_{g,\Delta}$ as the
 public theorem shape.
-\end{remark}
+\end{lemma}
 
-\begin{proposition}[Prime-block obstruction on packet spaces]\label{prop:packet-prime-not-psd}
+\begin{proof}
+The identity $\kappa_m=\alpha_m-\beta_m$ is just the compact-window definition
+of $Q^\star(t;\cdot)$ applied to $h(\cdot-m\Delta)$. Summing against
+$e^{-im\theta}$ yields the displayed formulas for $S_{g,\Delta}$,
+$A_{g,\Delta}$, and $P_{g,\Delta}$.
+\end{proof}
+
+\begin{proposition}[P4: prime-block obstruction on packet spaces]\label{prop:packet-prime-not-psd}
 Fix a compact window $[-K,K]$ containing an active node $\xi_{n_0}>0$. Then on a
 translation packet space supported in $[-K/2,K/2]$ the packet prime block
 \[
@@ -258,7 +318,33 @@ single uniform positive gap cannot hold on a dense packet dictionary with
 arbitrarily fine translates.
 \end{proof}
 
-\begin{proposition}[Full-symbol domination criterion]\label{prop:full-symbol-domination}
+\begin{proposition}[P6: Toeplitz--Herglotz criterion]\label{prop:packet-herglotz}
+Fix $g$ and $\Delta$ and let $(\kappa_m)_{m\in\mathbb Z}$ be the corresponding
+packet Toeplitz sequence. The following are equivalent:
+\begin{enumerate}
+  \item every finite Toeplitz block $[\kappa_{i-j}]_{|i|,|j|\le M}$ is positive semidefinite;
+  \item $(\kappa_m)_{m\in\mathbb Z}$ is a positive-definite sequence on $\mathbb Z$;
+  \item there exists a finite positive measure $\mu_{g,\Delta}$ on $\mathbb T$
+  such that
+  \[
+    \kappa_m=\int_{\mathbb T} e^{-im\theta}\,d\mu_{g,\Delta}(\theta).
+  \]
+\end{enumerate}
+If in addition $(\kappa_m)\in\ell^1(\mathbb Z)$, these are also equivalent to
+pointwise nonnegativity of the continuous symbol
+\[
+  S_{g,\Delta}(\theta)=\sum_{m\in\mathbb Z}\kappa_m e^{-im\theta}.
+\]
+\end{proposition}
+
+\begin{proof}
+This is the classical Toeplitz--Herglotz equivalence for sequences on
+$\mathbb Z$. In the $\ell^1$ regime the Fourier series for $S_{g,\Delta}$
+converges uniformly, so positivity of the representing measure is equivalent to
+pointwise nonnegativity of the symbol.
+\end{proof}
+
+\begin{proposition}[P7: full-symbol domination criterion]\label{prop:full-symbol-domination}
 Fix an admissible packet dictionary generated by $g$ and $\Delta$. Assume that
 the Toeplitz coefficients $\kappa_m=Q^\star(t;h(\cdot-m\Delta))$ define a genuine
 circle symbol and that
@@ -289,7 +375,7 @@ $[\kappa_{i-j}]_{|i|,|j|\le M}$ are positive semidefinite. This is precisely the
 packet-kernel positivity statement on that translation packet space.
 \end{proof}
 
-\begin{theorem}[PSD packet-kernel route]\label{thm:PSD-pd}
+\begin{theorem}[P8: corrected compact positivity via the PSD packet kernel]\label{thm:PSD-pd}
 Fix a compact window $[-K,K]$ and the dense pre-packet space
 $\mathcal P_K(t_0)$ from Theorem~\ref{thm:A1-pd}. Assume that for every finite
 packet family $\{g_i\}_{i=1}^N\subset \mathcal P_K(t_0)$ the matrix
@@ -355,9 +441,10 @@ The current analytic core supplies two separate ingredients:
   \item the shifted density theorem A1$'$ on the broad restriction cone $R_K$;
   \item the exact packet-Rayleigh theorem on autocorrelation packets.
 \end{enumerate}
-The target-cone audit shows that these do \emph{not} yet close RH. The public theorem package now contains A1-pd and exact packet-Rayleigh, but the public missing theorem is now:
+The target-cone audit shows that these do \emph{not} yet close RH. The public theorem package now contains the strict packet chain
+\textup{(P1)}--\textup{(P6)}, but the public missing theorem is now:
 \begin{enumerate}
-  \item the PSD packet-kernel theorem PSD-pd on that same exact dense pre-packet space.
+  \item the PSD packet-kernel theorem PSD-pd on that same exact dense pre-packet space, with \textup{(P7)} as the clean sufficient criterion.
 \end{enumerate}
 \end{remark}
 
@@ -385,10 +472,13 @@ Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corr
   \item reject the old `A3-pd` uniform-gap route on the dense packet family;
   \item reject the literal `prime-block PSD factorization or Hilbert lift`
   theorem shape on packet space by Proposition~\ref{prop:packet-prime-not-psd};
+  \item freeze the strict packet package
+  \textup{(P1)} $\Rightarrow$ \textup{(P2)} $\Rightarrow$ \textup{(P4)}
+  $\Rightarrow$ \textup{(P5)} $\Rightarrow$ \textup{(P6)};
   \item prove the PSD packet-kernel theorem PSD-pd for the same exact dense
   pre-packet space, with the symbol-side decomposition
   $S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}$ kept as structural guidance and
-  Proposition~\ref{prop:full-symbol-domination} as the clean criterion.
+  Proposition~\ref{prop:full-symbol-domination} (\textup{P7}) as the clean criterion.
 \end{enumerate}
 Once that packet-kernel theorem is closed, the A3/RKHS positivity engine can feed the
 corrected closure route without reopening the LF or Weil tail.
@@ -409,11 +499,17 @@ Theorem~\ref{thm:PSD-pd}.
   Proposition~\ref{prop:packet-prime-not-psd} to rule out standalone PSD control
   of the prime block, and then attack positivity of the full kernel directly.
   The live theorem stack is:
-  exact packet sesquilinear identity
+  \textup{P1} exact packet sesquilinear identity
   $\Longrightarrow$
-  prime-block obstruction
+  \textup{P2} Toeplitz reduction
   $\Longrightarrow$
-  full-symbol domination criterion
+  \textup{P4} prime-block obstruction
+  $\Longrightarrow$
+  \textup{P5} full sequence split
+  $\Longrightarrow$
+  \textup{P6} Toeplitz--Herglotz criterion
+  $\Longrightarrow$
+  \textup{P7} full-symbol domination
   $A_{g,\Delta}\ge P_{g,\Delta}$ or a new operator package for the full kernel
   $\Longrightarrow$
   Theorem~\ref{thm:PSD-pd}.

@@ -2464,3 +2464,33 @@ Concrete synthesis:
   and make `A_{g,\Delta}\ge P_{g,\Delta}` the clean sufficient criterion.
 - The next public theorem package should therefore be written as:
   `P1 -> P2 -> P4 -> P5 -> P6 -> P7 -> PSD-pd -> A2 -> LF-pd -> G6`.
+
+## Synthesis (2026-03-08, final) — `P1–P8` frozen, `P7` is the immediate target
+
+Final verdict:
+- the exact constructive package is now frozen as
+  `P1 -> P2 -> P4 -> P5 -> P6 -> P7 -> PSD-pd`;
+- `P3` survives only as the desired theorem shape
+  `prime block PSD factorization`, but `P4` shows it is false on dense packet
+  spaces containing an active node;
+- the immediate constructive target is therefore `P7`:
+  full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}`, or the corresponding
+  positive-measure / distribution statement in the general Herglotz regime.
+
+Project effect:
+- the orchestrator, queue, tracker, abstract, introduction, `Weil_pack`, and
+  `Main_closure` now all expose the strict `P1–P8` package rather than the old
+  vague `Route P`;
+- the live theorem frontier is no longer `prime block PSD -> Arch dominates`,
+  but direct control of the full Toeplitz sequence `(\kappa_m)` via
+  `\kappa=\alpha-\beta` and the Toeplitz--Herglotz criterion;
+- a new full-kernel operator package remains explicitly available, but only as
+  fallback if `P7` cannot be proved directly.
+
+Reusable file pointers:
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Main_closure.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Weil_pack.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/introduction.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/p1_p8_full_symbol_package_2026_03_08.md`

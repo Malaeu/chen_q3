@@ -30,7 +30,8 @@ Our proof is organized as a controlled-limit program: a small number of analytic
   \end{tabular}
 \end{center}
 
-The present draft fully develops the analytic inputs that feed this chain, but it still leaves open the PSD packet-kernel theorem `PSD-pd`. The naive centered family $\Phi_{B,t}|p|^2$ is now background-only, because as a closure family it is too large, and the old `A3-pd` uniform-gap route on the dense packet family is also too strong. The clean `Herglotz/Bochner' reformulation survives as a diagnostic equivalence, but the literal packet-level `prime block PSD, then Arch dominates' route is now rejected on packet space. The primary constructive route is direct PSD of the full kernel: exact sesquilinear packet identity, then the prime-block obstruction, then full-symbol domination or a new operator package for the full packet kernel.
+The present draft fully develops the analytic inputs that feed this chain, but it still leaves open the PSD packet-kernel theorem `PSD-pd`. The naive centered family $\Phi_{B,t}|p|^2$ is now background-only, because as a closure family it is too large, and the old `A3-pd` uniform-gap route on the dense packet family is also too strong. The clean `Herglotz/Bochner' reformulation survives as a diagnostic equivalence, but the literal packet-level `prime block PSD, then Arch dominates' route is now rejected on packet space. The strict constructive package is now:
+exact packet sesquilinear identity (`P1`), Toeplitz reduction (`P2`), prime-block obstruction (`P4`), full sequence split (`P5`), Toeplitz--Herglotz criterion (`P6`), and then full-symbol domination (`P7`) or a new operator package for the full packet kernel.
 
 \subsection*{Archimedean bridge}
 \emph{(A3) Archimedean Toeplitz barrier.} The Toeplitz component $T_M[P_A]$ in the Rayleigh decomposition of $Q^\star(t;\Phi_{B,t})$ is bounded from below by the explicit uniform Archimedean floor $c_*$ (Lemma~\ref{lem:uniform-arch-floor}), up to the controllable Lipschitz loss $C\,\omega_{P_A}(1/(2M))$. Szeg\H{o}--B\"ottcher asymptotics together with an explicit modulus of continuity for $P_A$ yield
@@ -75,7 +76,7 @@ choosing $t=t_{\mathrm{crit}}=3/20$ yields $\rho(t_{\mathrm{crit}})\le c_*/4$, s
 \[
   \lambda_{\min}\!\big(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)\big)\ \ge\ \frac{c_*}{4}\ >\ 0.
 \]
-Hence the analytic core already produces a centered positivity mechanism. The remaining work is to identify the correct local cone, prove `A1-pd`, freeze exact packet-Rayleigh on the same autocorrelation packet family, and then prove the PSD packet-kernel theorem `PSD-pd`; only after that do the local closure, LF lift, and Weil criterion finish RH.
+Hence the analytic core already produces a centered positivity mechanism. The remaining work is to identify the correct local cone, prove `A1-pd`, freeze the exact packet package `P1--P6`, and then prove the full-symbol domination criterion `P7` (or a fallback full-kernel operator package) leading to the PSD packet-kernel theorem `PSD-pd`; only after that do the local closure, LF lift, and Weil criterion finish RH.
 
 \subsection*{What is new}
 
