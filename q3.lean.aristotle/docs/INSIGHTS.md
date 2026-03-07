@@ -174,6 +174,24 @@ Workflow note
   по проектному workflow Aristotle request надо сначала показать пользователю,
   и только после OK отправлять.
 
+## Final result (2026-03-07) — G1.4 submitted
+
+Пользователь подтвердил отправку без расширения назад до `A1_density_WK`.
+
+Submission:
+- prompt:
+  `q3.lean.aristotle/aristotle_input/subagent_g1_support_replacement_2026_03_07.md`
+- Aristotle project id:
+  `c315e2a4-5923-44fa-a18c-4ed90cb08375`
+- initial status after submission:
+  `ProjectStatus.QUEUED`
+
+Operational decision:
+- `G1.4` считаем закрытым как submit-step,
+- следующий active task это `G1.5`: monitor/download/scan/integrate,
+- если Aristotle вернёт только blocked local sublemma, именно он станет следующим
+  `ACTIVE` task без фейкового closure narrative.
+
 ## Synthesis (2026-03-06, in progress) — Compatibility theorem via shifted evenized atoms
 
 Цель: вернуть mainline к бумаге и убрать ложный `τ=0` closure-нарратив.

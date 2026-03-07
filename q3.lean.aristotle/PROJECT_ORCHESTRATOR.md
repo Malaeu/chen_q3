@@ -76,23 +76,24 @@ This route is structurally useful, but it is **not** yet an honest closed proof 
 - `G1.1` is frozen: the first honest support-upgrade target is now a replacement theorem for restriction-level shifted approximants.
 - `G1.2` is now closed: the finite reuse list and exact file pointers for the frozen `G1` statement have been extracted.
 - `G1.3` is now closed: one small Aristotle-ready packet exists for the local support-replacement brick.
-- Current active task: `G1.4` in `IMPLEMENTATION_PLAN.md`
-- Current frontier: review the prepared packet with the user and, if approved, submit it without reopening the old `A1_density_WK` overclaim
+- `G1.4` is now closed: the prepared packet was user-approved and submitted to Aristotle as project `c315e2a4-5923-44fa-a18c-4ed90cb08375`.
+- Current active task: `G1.5` in `IMPLEMENTATION_PLAN.md`
+- Current frontier: monitor, download, and integrate the Aristotle result for the local support-replacement brick without accepting any partial or hole-bearing patch
 
 ## Active Milestone
 
-Turn the prepared `G1.3` packet into one actual proof attempt:
+Turn the submitted `G1.4` packet into one actual theorem or one honest narrowed blocker:
 
-1. get user review on the prepared Aristotle packet,
-2. submit only that local support-replacement target,
-3. keep the downstream A2 error-budget step manual unless the small packet fails.
+1. poll Aristotle project `c315e2a4-5923-44fa-a18c-4ed90cb08375`,
+2. download and scan the result for holes,
+3. integrate only a clean local theorem or else narrow the next task to the first blocked local sublemma,
+4. keep the downstream A2 error-budget step manual unless the local theorem lands cleanly.
 
 ## Hard Blockers
 
 - `A1'` is naturally a theorem on the restriction cone `R_K`, not yet on admissible `W_K`.
-- The exact shape of `G1` is frozen and a local proof packet exists, but it still needs user review before Aristotle submission.
-- The finite reuse list is now isolated, but it still needs to be turned into a single proof packet with no legacy overclaiming.
-- The proof packet now exists, but it still needs user review before Aristotle submission.
+- The exact shape of `G1` is frozen and the first Aristotle packet is now running externally.
+- Until that job returns, there is still no integrated local theorem for the support-replacement brick.
 - No exact common admissible family `G_K` is fixed yet.
 - No positivity theorem is proved yet on a final admissible `G_K`.
 - The compiled Lean route still inherits `Q3.prime_term_le_at_t_critical_axiom`.
@@ -134,3 +135,4 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-07: `G1.1` frozen as a replacement theorem for restriction-level shifted approximants; `G1.2` is now the active reuse-mapping step.
 - 2026-03-07: `G1.2` closed; reusable lemmas, structure-only templates, and do-not-reuse legacy claims have been separated cleanly.
 - 2026-03-07: `G1.3` closed; a small Aristotle-ready prompt now targets only the local support-replacement brick `atom_sum_mem_atomcone_fixed_of_margin` with an honest fallback.
+- 2026-03-07: `G1.4` closed; `subagent_g1_support_replacement_2026_03_07.md` was approved and submitted to Aristotle as project `c315e2a4-5923-44fa-a18c-4ed90cb08375`.
