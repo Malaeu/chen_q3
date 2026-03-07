@@ -2184,3 +2184,54 @@ Recommendation:
 - Treat `OP-pd` as superseded wording, not as the live frontier.
 - Keep Aristotle `G1.6` background-only; the true mainline blocker is now
   packet-symbol positivity, not support upgrade on the broad cone.
+
+## Synthesis (2026-03-07, in progress) — PSD packet kernel frontier
+
+Target node and wiring:
+- The corrected-cone pivot survives.
+- `A1-pd` survives as the dense autocorrelation route on
+  `\mathcal G_K^{pd}\subset \mathcal W_K^{pd}`.
+- Exact packet-Rayleigh on autocorrelation packets also survives.
+- What fails is the current theorem shape of `A3-pd` as a uniform symbol-floor
+  statement on the full dense packet dictionary.
+
+Local semantic search:
+- Query `packet kernel PSD Q(g_i * g_j_tilde) Toeplitz sections`
+  hit the live corrected-cone packaging in `full/sections/Main_closure.tex`
+  and the current `A3-pd` insight notes, confirming that the repo still frames
+  the frontier as symbol positivity on `S_{g,\Delta}`.
+- Query `Herglotz Bochner positive semidefinite Toeplitz kernel packet space`
+  returned the old RKHS/kernel notes together with the corrected-cone files,
+  which is the right neighborhood for a PSD-kernel reformulation.
+- Query `Q(Psi * Psi_tilde) Toeplitz kappa i-j positive semidefinite`
+  surfaced `Main_closure.tex`, `scope_notation.tex`, and the packet package
+  note; these are exactly the files where the frontier wording must pivot.
+
+External search:
+- External search points back to the classical positive-definite viewpoint
+  (Suzuki / Weil distribution, Herglotz-Bochner language) rather than to any
+  broad-cone positivity statement. This supports the pivot away from a uniform
+  packet-symbol floor on the dense family.
+
+Concrete synthesis:
+- For packets `\Psi_c=\sum_j c_j g_j`, the exact identity
+  `Q^\star(t;\Psi_c * \widetilde{\Psi_c})=\sum_{i,j} c_i\overline{c_j}\kappa_{i-j}`
+  is still the honest bridge.
+- But if one takes a dense packet dictionary and asks for one uniform margin
+  `Q^\star(t;\Psi * \widetilde\Psi)\ge c_K \|c\|_2^2`, this is impossible:
+  packets of the form `\Psi_\Delta=g-g(\cdot-\Delta)` collapse to zero as
+  `\Delta\downarrow0`, and by A2 continuity the corresponding `Q` values also
+  collapse to zero.
+- Therefore the public missing theorem is no longer `A3-pd` in the old
+  uniform-gap sense.
+- The live theorem must instead be `PSD-pd`: positive semidefiniteness of the
+  packet kernel
+  `K_Q(g_i,g_j):=Q^\star(t;g_i * \widetilde{g_j})`
+  on the dense pre-packet space.
+
+Recommendation:
+- Replace the public chain by
+  `T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh-pd -> PSD-pd -> A2 closure -> LF-pd -> G6 -> RH`.
+- Demote `A3-pd` to a rejected-too-strong route on the dense packet family.
+- Keep `S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}` as useful structure, but not as
+  the public theorem shape.
