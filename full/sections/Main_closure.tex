@@ -1,105 +1,90 @@
 \input{sections/Notation/qstar_contract}
-\subsection{Main closure: from analytic modules to Weil positivity}\label{sec:Main-closure}
+\subsection{Main closure: from centered packets to Weil positivity}\label{sec:Main-closure}
 
 \subsection*{Standing contract}
 For each compact window $[-K,K]$ we distinguish:
 \[
   R_K := C^+_{\mathrm{even}}([-K,K]),
   \qquad
-  W_K := \{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even},\ \Phi\ge 0\}.
+  B_K := \{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even},\ \Phi\ge 0\},
+\]
+and the corrected local Weil-positive cone
+\[
+  \mathcal W_K^{\mathrm{pd}}
+  := \overline{\bigl\{\psi * \check\psi:\ \psi\in C_c^\infty(\mathbb R),\ \operatorname{supp}(\psi * \check\psi)\subset[-K,K]\bigr\}}^{\|\cdot\|_\infty},
+  \qquad
+  \check\psi(x):=\psi(-x).
 \]
 The current draft already supplies:
 \begin{itemize}
   \item \textbf{(T0)} the Guinand--Weil crosswalk, cf.\ Proposition~\ref{prop:T0-GW};
-  \item \textbf{(A1$'$)} density of shifted evenized Fej\'er$\times$heat atoms on the restriction cone $R_K$, cf.\ Theorem~\ref{a1:thm:A1-local-density};
-  \item \textbf{(A2)} continuity of $Q^\star(t;\cdot)$ on the admissible support cone $W_K$, cf.\ Section~\ref{sec:A2};
+  \item \textbf{(A1$'$)} auxiliary density of shifted evenized Fej\'er$\times$heat atoms on the broad restriction cone $R_K$, cf.\ Theorem~\ref{a1:thm:A1-local-density};
+  \item \textbf{(A2)} continuity of $Q^\star(t;\cdot)$ on the ambient compact-support class $B_K$, cf.\ Section~\ref{sec:A2};
   \item \textbf{(A3)+(RKHS)} the centered positivity mechanism at the critical scale.
 \end{itemize}
 
-What remains unresolved are the closure gates:
+What remains unresolved is the corrected density gate:
 \begin{itemize}
-  \item \textbf{(G1) Support upgrade.} Upgrade the density input from $R_K$ to admissible $W_K$.
-  \item \textbf{(G2) Common family.} Fix one exact admissible generator family $\mathcal G_K\subseteq W_K$ implementing the `G1` route.
-  \item \textbf{(G3) Positivity on $\mathcal G_K$.} Prove $Q^\star(t;\Phi)\ge 0$ on that same family.
-  \item \textbf{(G5) LF compatibility.} The compact-by-compact positivity statements must be compatible with the natural embeddings $W_K\hookrightarrow W_{K'}$.
+  \item \textbf{(A1-pd)} Identify one centered packet cone $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ that is dense in $\mathcal W_K^{\mathrm{pd}}$ and already covered by the centered positivity mechanism.
+  \item \textbf{(LF-pd)} Once local positivity on every $\mathcal W_K^{\mathrm{pd}}$ is available, lift it to the global cone $\mathcal W^{\mathrm{pd}}$.
 \end{itemize}
 
-\begin{theorem}[Conditional main positivity on $\mathcal W$]\label{thm:Main-positivity}
-Assume \textup{(T0)}, \textup{(A2)}, and for every compact window $[-K,K]$ a cone $\mathcal G_K\subseteq W_K$ such that
+\begin{theorem}[Conditional main positivity on $\mathcal W^{\mathrm{pd}}$]\label{thm:Main-positivity}
+Assume \textup{(T0)}, \textup{(A2)}, and for every compact window $[-K,K]$ a centered packet cone $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ such that
 \[
-  \overline{\mathcal G_K}^{\|\cdot\|_\infty}=W_K
+  \overline{\mathcal P_K}^{\|\cdot\|_\infty}=\mathcal W_K^{\mathrm{pd}}
   \qquad\text{and}\qquad
-  Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal G_K.
+  Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal P_K.
 \]
-Assume moreover that these local positivity statements are compatible with the natural embeddings $W_K\hookrightarrow W_{K'}$. Then
+Assume moreover that these local positivity statements are compatible with the natural embeddings $\mathcal W_K^{\mathrm{pd}}\hookrightarrow \mathcal W_{K'}^{\mathrm{pd}}$. Then
 \[
-  Q^\star(t;\Phi)\ \ge\ 0\qquad\text{for every even, real, compactly supported }\Phi\in \mathcal W,
+  Q^\star(t;\Phi)\ \ge\ 0\qquad\text{for every }\Phi\in \mathcal W^{\mathrm{pd}},
 \]
-where $\mathcal W=\bigcup_{K>0}W_K$ is the Weil cone from Section~\ref{sec:notation}.
+where $\mathcal W^{\mathrm{pd}}=\bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}$ is the corrected Weil cone from Section~\ref{sec:scope}.
 \end{theorem}
 
 \begin{proof}
-Fix $K>0$. By Proposition~\ref{prop:compatibility-reduction-shifted-atoms}, the assumptions imply
-\[
-  Q^\star(t;\Phi)\ge 0 \qquad \text{for every }\Phi\in W_K.
-\]
-Now let $\Phi\in\mathcal W$. Choose $K$ with $\operatorname{supp}\Phi\subset[-K,K]$. Then $\Phi\in W_K$, hence $Q^\star(t;\Phi)\ge 0$. The compatibility assumption ensures that the conclusion is independent of the chosen compact exhaustion. Therefore $Q^\star(t;\Phi)\ge0$ on the Weil cone $\mathcal W$.
+Fix $K>0$. By construction, $\mathcal P_K$ is dense in $\mathcal W_K^{\mathrm{pd}}$ and $Q^\star(t;\cdot)$ is continuous on the ambient compact-support class $B_K$, hence on $\mathcal W_K^{\mathrm{pd}}\subseteq B_K$. Therefore the positivity assumption on $\mathcal P_K$ extends to all of $\mathcal W_K^{\mathrm{pd}}$. Now let $\Phi\in\mathcal W^{\mathrm{pd}}$. Choose $K$ with $\Phi\in\mathcal W_K^{\mathrm{pd}}$. Then $Q^\star(t;\Phi)\ge 0$, and the compatibility assumption ensures that this conclusion is independent of the chosen compact exhaustion.
 \end{proof}
 
 \begin{remark}[Where the present draft stops]
 The current analytic core supplies two separate ingredients:
 \begin{enumerate}
-  \item the density theorem A1$'$ on the restriction cone $R_K$ for shifted evenized Fej\'er$\times$heat atoms;
-  \item the centered positivity mechanism coming from A3 and the single-scale RKHS cap.
+  \item the centered positivity mechanism coming from A3 and the single-scale RKHS cap;
+  \item the shifted density theorem A1$'$ on the broad restriction cone $R_K$.
 \end{enumerate}
-What is not yet identified in the paper is a \emph{single admissible} family $\mathcal G_K\subseteq W_K$ that both implements the support upgrade from $R_K$ and is already covered by the positivity theorem. The unresolved work is therefore exactly `G1-G3`, not another LF theorem.
+The target-cone audit shows that these do \emph{not} yet close RH. The public missing theorem is no longer a support upgrade for the broad cone, but a centered density theorem on the corrected positive-definite cone $\mathcal W_K^{\mathrm{pd}}$.
 \end{remark}
 
-\begin{proposition}[Compact closure from a common admissible family]\label{prop:compatibility-reduction-shifted-atoms}
-Fix a compact window $[-K,K]$ and assume that $\mathcal G_K\subseteq W_K$ satisfies
+\begin{proposition}[Local closure on the corrected cone]\label{prop:compatibility-reduction-shifted-atoms}
+Fix a compact window $[-K,K]$ and assume that $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ satisfies
 \[
-  \overline{\mathcal G_K}^{\|\cdot\|_\infty}=W_K
+  \overline{\mathcal P_K}^{\|\cdot\|_\infty}=\mathcal W_K^{\mathrm{pd}}
   \qquad\text{and}\qquad
-  Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal G_K.
+  Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal P_K.
 \]
 Then
 \[
-  Q^\star(t;\Phi)\ge 0 \qquad \text{for every }\Phi\in W_K.
+  Q^\star(t;\Phi)\ge 0 \qquad \text{for every }\Phi\in \mathcal W_K^{\mathrm{pd}}.
 \]
 \end{proposition}
 
 \begin{proof}
-By the assumed atomwise inequality and linearity of $Q^\star$, the functional is nonnegative on the cone generated by $\mathcal G_K$.
-By Corollary~\ref{cor:A2-Lip}, $Q^\star(t;\cdot)$ is continuous on $W_K$ in the uniform norm.
-Passing to the uniform limit along the dense cone $\mathcal G_K$ gives $Q^\star(t;\Phi)\ge 0$ for every $\Phi\in W_K$.
+By the assumed packetwise inequality and linearity of $Q^\star$, the functional is nonnegative on the cone generated by $\mathcal P_K$.
+By Corollary~\ref{cor:A2-Lip}, $Q^\star(t;\cdot)$ is continuous on the ambient class $B_K$ in the uniform norm, hence on $\mathcal W_K^{\mathrm{pd}}$.
+Passing to the uniform limit along the dense packet cone $\mathcal P_K$ gives $Q^\star(t;\Phi)\ge 0$ for every $\Phi\in\mathcal W_K^{\mathrm{pd}}$.
 \end{proof}
 
 \begin{remark}[Exact remaining mathematical task]\label{rem:compatibility-missing-scalar}
-Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the closure step on a fixed compact is routine once a common admissible family $\mathcal G_K$ has been identified. The unresolved work is therefore:
+Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corrected local closure step is routine once a centered dense positive cone $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ has been identified. The unresolved work is therefore:
 \begin{enumerate}
-  \item build the support upgrade from the restriction cone $R_K$ to admissible $W_K$;
-  \item freeze one exact admissible family $\mathcal G_K\subseteq W_K$ implementing that upgrade;
-  \item prove positivity on that same $\mathcal G_K$.
+  \item define the corrected positive-definite local cone $\mathcal W_K^{\mathrm{pd}}$ in the exact topology consumed by A2;
+  \item identify one exact centered packet family $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$;
+  \item prove density of $\mathcal P_K$ in $\mathcal W_K^{\mathrm{pd}}$.
 \end{enumerate}
-If future work chooses $\mathcal G_K$ to be a support-compatible realization of the shifted evenized atoms from A1$'$, then the remaining scalar task becomes positivity on those admissible generators. Until such a family is fixed, phrases like “density + continuity imply positivity on $W_K$” remain only a conditional template.
+Once this centered density theorem A1-pd exists, the A3/RKHS positivity engine can feed the corrected closure route without reopening the LF or Weil tail.
 \end{remark}
 
-\begin{remark}[Frozen target for \textup{(G1)}]\label{rem:G1-frozen-target}
-The first honest support-upgrade target is the following replacement theorem.
-Fix a compact window $[-K,K]$. Let $h$ be a finite nonnegative combination of shifted evenized
-Fej\'er$\times$heat windows from the A1$'$ restriction-level cone, with the same fixed heat scale
-and admissible margin condition $|\tau|+B\le K$. Then for every $\varepsilon>0$ there should exist
-an admissible replacement $\widetilde h\in W_K$ such that
-\[
-  \|h-\widetilde h\|_{L^\infty([-K,K])}<\varepsilon.
-\]
-This does \emph{not} yet choose the final generator family $\mathcal G_K$; it only supplies the
-support upgrade. Once such a replacement theorem is available, any A1$'$ approximant
-$h$ with $\|\Phi-h\|_{L^\infty([-K,K])}<\varepsilon$ for $\Phi\in W_K$ yields an admissible test
-$\widetilde h\in W_K$ with $\|\Phi-\widetilde h\|_{L^\infty([-K,K])}<2\varepsilon$, and then A2 gives
-\[
-  |Q^\star(t;\Phi)-Q^\star(t;\widetilde h)| \le 2L_Q(K)\varepsilon.
-\]
-Thus `G1` is frozen as a replacement theorem, while `G2` will later freeze $\mathcal G_K$ as the
-class of admissible replacements produced by that theorem.
+\begin{remark}[Why shifted A1$'$ is now auxiliary]\label{rem:G1-frozen-target}
+The shifted theorem A1$'$ remains mathematically valuable: it proves density on the broad restriction cone $R_K$ and it still supplies approximation technology. But after the target-cone audit it no longer serves as the public RH density theorem, because the corrected target is the positive-definite cone $\mathcal W_K^{\mathrm{pd}}$, not the full broad cone of even nonnegative compact-support tests.
 \end{remark}

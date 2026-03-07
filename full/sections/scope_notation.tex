@@ -1,67 +1,67 @@
 \section{Positioning and Scope}\label{sec:scope}
 
-This work introduces a quantitative, modular operator framework for the Weil criterion. The present draft closes the analytic modules \textup{(T0)}, \textup{(A1$'$)}, \textup{(A2)}, \textup{(A3)}, and \textup{(RKHS)}, but it does \emph{not} yet close the support/closure gates needed to pass from those modules to unconditional Weil positivity on the full cone. The scope and boundaries are as follows.
+This work introduces a quantitative, modular operator framework for the Weil criterion. The present draft closes the analytic modules \textup{(T0)}, \textup{(A2)}, \textup{(A3)}, and \textup{(RKHS)}, and it records the shifted density theorem \textup{(A1$'$)} on a broader restriction cone. The target-cone audit performed in the current reset shows that the public RH route cannot continue on the broad cone of all even nonnegative compactly supported tests. The live scope is therefore the corrected positive-definite Weil cone.
 
 \begin{itemize}
-  \item \textbf{What this is:} A unified analytic program with explicit constants (symbol modulus, RKHS cap, node spacing, tail control) whose current output is a typed conditional route to Weil positivity.
-  \item \textbf{What this is not:} This draft does not yet claim that the closure chain is fully closed. The unresolved gates are isolated explicitly in Section~\ref{sec:Main-closure}.
-  \item \textbf{Modularity:} Local improvements in the Archimedean symbol, the RKHS cap, or the support upgrade feed only the corresponding gate and do not change the rest of the chain.
+  \item \textbf{What this is:} A unified analytic program with explicit constants (symbol modulus, RKHS cap, node spacing, tail control) whose current output is a typed conditional route to positivity on the corrected positive-definite Weil cone.
+  \item \textbf{What this is not:} This draft does not yet claim that the corrected closure chain is fully closed. The unresolved knife-edge is now the centered density theorem A1-pd.
+  \item \textbf{Modularity:} Local improvements in the Archimedean symbol, the RKHS cap, or the packet density theorem feed only the corresponding module and do not change the rest of the chain.
   \item \textbf{Test class:} For each $K>0$ we distinguish
   \[
-    R_K := C^+_{\mathrm{even}}([-K,K])
-    \qquad\text{and}\qquad
-    W_K := \bigl\{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even},\ \Phi\ge 0\bigr\}.
+    R_K := C^+_{\mathrm{even}}([-K,K]),
+    \qquad
+    B_K := \bigl\{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even},\ \Phi\ge 0\bigr\},
   \]
-  The global Weil cone is
+  and the corrected local Weil-positive cone
   \[
-    \mathcal W := \bigcup_{K>0} W_K.
+    \mathcal W_K^{\mathrm{pd}}
+    := \overline{\bigl\{\psi * \check\psi:\ \psi\in C_c^\infty(\mathbb R),\ \operatorname{supp}(\psi * \check\psi)\subset[-K,K]\bigr\}}^{\|\cdot\|_\infty},
+    \qquad
+    \check\psi(x):=\psi(-x).
   \]
-  The density theorem A1$'$ is currently a theorem on the restriction cone $R_K$, while A2 and the LF route live on the admissible support cone $W_K$. The future common admissible generator family is denoted by $G_K\subseteq W_K$.
-  \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} packages the unresolved gates. Appendix~\ref{app:legacy-branch} keeps legacy branches as read-only provenance only.
+  The public global target is
+  \[
+    \mathcal W^{\mathrm{pd}} := \bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}.
+  \]
+  The theorem A1$'$ is now auxiliary density on the broad restriction cone $R_K$, whereas the future centered packet family $\mathcal P_K\subseteq \mathcal W_K^{\mathrm{pd}}$ is the missing local object for RH.
+  \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} now packages the corrected positive-definite closure route. Appendix~\ref{app:legacy-branch} keeps legacy broad-cone branches as read-only provenance only.
   \item \textbf{Computation:} Symbol scans, ATP logs, and certificate tables are reproducibility aids only; they do not enter the logical core of the active proof chain.
 \end{itemize}
 
 \medskip
-\noindent\emph{Bridge summary.} We split $Q^\star(t;\Phi_{B,t})$ via the Rayleigh identification into a Toeplitz block
-and a Rayleigh prime block, i.e., $T_M[P_A](t,B,M)$ versus $T_P^{\mathrm{Ray}}(t,M)$.
-The symbol barrier yields $\lambda_{\min}(T_M[P_A])\ge c_* - C\,\omega_{P_A}(1/(2M))$, where
-$c_* = \tfrac{11}{10}$ is the \textbf{uniform Archimedean floor} from Lemma~\ref{lem:uniform-arch-floor}
-(for $t=t_{\mathrm{crit}}=\tfrac{3}{20}=0.15$, $B_{\min}=3$), valid on the full circle $\TT$ and independent of $K$.
-The prime norm is bounded in the Arch-induced RKHS by the single-scale cap
+\noindent\emph{Bridge summary.} We split $Q^\star(t;\Phi_{B,t})$ via the Rayleigh identification into a Toeplitz block and a Rayleigh prime block, i.e., $T_M[P_A](t,B,M)$ versus $T_P^{\mathrm{Ray}}(t,M)$. The symbol barrier yields $\lambda_{\min}(T_M[P_A])\ge c_* - C\,\omega_{P_A}(1/(2M))$, where $c_* = \tfrac{11}{10}$ is the \textbf{uniform Archimedean floor} from Lemma~\ref{lem:uniform-arch-floor} (for $t=t_{\mathrm{crit}}=\tfrac{3}{20}=0.15$, $B_{\min}=3$), valid on the full circle $\TT$ and independent of $K$. The prime norm is bounded in the Arch-induced RKHS by the single-scale cap
 \[
   \|T_P^{\mathrm{RKHS}}(t_{\mathrm{crit}})\|\le \rho(t_{\mathrm{crit}})\le c_*/4,
 \]
-at the bridge scale $t_{\mathrm{crit}}=3/20$ (Corollary~\ref{cor:uniform-prime-cap}). A stronger auxiliary cap at $t=1$ is recorded in Corollary~\ref{cor:pcu-uniform}. Thus
+at the bridge scale $t_{\mathrm{crit}}=3/20$ (Corollary~\ref{cor:uniform-prime-cap}). Thus
 \[
   \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ \ge\ \min P_A\ -\ C\,\omega_{P_A}(1/(2M))\ -\ \rho(t),
 \]
-closing the A3/RKHS analytic bridge. What remains is to feed this centered positivity mechanism into the correct admissible closure gates.
+closing the centered A3/RKHS analytic bridge. What remains is not another shifted positivity theorem but the correct density route from centered packets to the positive-definite Weil cone.
 
 \section{Gate Contract}\label{sec:global-hyp}
 
-For reference we collect the live proof contract used in the closure section.
+For reference we collect the live proof contract used after the target-cone audit.
 
 \begin{description}
-  \item[(T0)] Guinand--Weil normalization of $Q^\star(t;\cdot)$ (Proposition~\ref{prop:T0-GW}).
-  \item[(G0)] Domain/type repair: explicitly distinguish the restriction cone $R_K$, the admissible support cone $W_K$, and the future generator family $G_K$.
-  \item[(G1)] Support upgrade: either density inside admissible $W_K$, or a restriction-to-support replacement theorem with explicit $Q^\star$-error control.
-  \item[(G2)] Common family: fix one exact admissible generator family $G_K\subseteq W_K$ implementing the `G1` route.
-  \item[(G3)] Positivity on that same family $G_K$.
-  \item[(G4)] Compact closure on each $W_K$ using `A2` continuity and the exact family from `G2/G3`.
-  \item[(G5)] LF lift from all $W_K$ to the global Weil cone $\mathcal W$.
-  \item[(G6)] Weil linkage: positivity on $\mathcal W$ implies RH.
+  \item[(T0-corr)] Guinand--Weil normalization of $Q^\star(t;\cdot)$ together with the corrected positive-definite target cone.
+  \item[(A1-pd)] Density of centered Fej\'er$\times$heat / autocorrelation packets in $\mathcal W_K^{\mathrm{pd}}$.
+  \item[(A3)+(RKHS)] Centered positivity mechanism at the critical scale.
+  \item[(A2-pd)] Continuity of $Q^\star(t;\cdot)$ on the ambient compact-support class, hence on $\mathcal W_K^{\mathrm{pd}}$ in particular.
+  \item[(LF-pd)] Inductive-limit lift from all $\mathcal W_K^{\mathrm{pd}}$ to $\mathcal W^{\mathrm{pd}}$.
+  \item[(G6)] Weil linkage: positivity on $\mathcal W^{\mathrm{pd}}$ implies RH.
 \end{description}
 
-The current manuscript establishes the analytic modules behind these gates:
+The present manuscript establishes the analytic inputs behind this chain as follows:
 
 \begin{itemize}
   \item `T0` in Section~\ref{sec:T0};
-  \item `A1$'$` as density on $R_K$ in Section~\ref{sec:A1};
+  \item `A1$'$` as an auxiliary density theorem on $R_K$ in Section~\ref{sec:A1};
   \item `A2` as continuity on admissible compact tests in Section~\ref{sec:A2};
   \item `A3` and `RKHS` as the centered positivity mechanism in Sections~\ref{sec:A3} and \ref{sec:RKHS}.
 \end{itemize}
 
-What remains unresolved in the present draft are exactly `G1`, `G2`, and `G3`; Section~\ref{sec:Main-closure} packages `G4` and `G5` conditionally on them, and Section~\ref{sec:Weil-linkage} supplies `G6`.
+What remains unresolved in the present draft is exactly `A1-pd`: a centered density theorem on the corrected cone. Once that theorem is supplied, the rest of the route is the routine closure / LF / Weil tail.
 
 \section{Notation and Conventions}\label{sec:notation}
 
@@ -70,7 +70,7 @@ On the frequency axis we write $\xi=\eta/(2\pi)$. In the Toeplitz bridge we work
 \[
   a(\xi)=\log\pi-\Re\psi\Big(\tfrac14+i\pi\xi\Big),\qquad a_*(\xi)=2\pi\,a(\xi),
 \]
-and prime nodes are at $\xi_n=\tfrac{\log n}{2\pi}$ with symmetric placement $\pm\xi_n$.  We distinguish two weight conventions:
+and prime nodes are at $\xi_n=\tfrac{\log n}{2\pi}$ with symmetric placement $\pm\xi_n$. We distinguish two weight conventions:
 \[
 \begin{aligned}
   w_Q(n) &= \frac{2\Lambda(n)}{\sqrt{n}}
@@ -83,22 +83,22 @@ Evenization lets us pass freely between them: doubling $w_{\mathrm{RKHS}}$ on $\
 \[
   Q^\star(t;\Phi)=\int_{\mathbb{R}} a_*(\xi)\,\Phi(\xi)\,d\xi\;-\;\sum_{n\ge2} w_Q(n)\,\Phi(\xi_n),
 \]
-with the bridge scale fixed at $t=t_{\mathrm{crit}}$; Section~\ref{sec:T0} records the exact crosswalk to the Guinand--Weil form.  (We call $Q^\star$ “quadratic” only because $\Phi=g*g^{\vee}$; as a functional of $\Phi$ it is linear.) Notational summaries and parameter tables are collected in Appendix~\ref{app:notation}.
+with the bridge scale fixed at $t=t_{\mathrm{crit}}$; Section~\ref{sec:T0} records the exact crosswalk to the Guinand--Weil form. For the public RH route the target is not the broad compact-support cone, but the positive-definite cone $\mathcal W^{\mathrm{pd}}$ generated locally by convolution squares.
 
 \subsection*{Quick reference for reviewers}\label{sec:quick-ref}
 \begin{tcolorbox}[colback=white,colframe=black!60]
-\textbf{Architecture.} `T0 -> G0 -> G1 -> G2 -> G3 -> G4 -> G5 -> G6`.
-\textbf{Goal.} After `G1-G5` are closed, obtain $Q^\star(t;\Phi)\ge0$ on the Weil cone $\mathcal W$ and conclude RH via `G6`.
+\textbf{Architecture.} `T0-corr -> corrected cone -> A1-pd -> centered A3/RKHS -> A2 closure -> LF-pd -> G6`.
+\textbf{Goal.} After `A1-pd` is closed, obtain $Q^\star(t;\Phi)\ge0$ on the positive-definite Weil cone $\mathcal W^{\mathrm{pd}}$ and conclude RH via `G6`.
 
-\textbf{Analytic modules already written.} A1$'$ is density on $R_K$; A2 is continuity on $W_K$; A3 and RKHS feed the future positivity gate `G3`.
+\textbf{Analytic modules already written.} A1$'$ is auxiliary density on $R_K$; A2 is continuity on the ambient compact-support class; A3 and RKHS feed the centered positivity engine.
 
 \textbf{Uniform margins.} Global Arch floor $c_\ast=\tfrac{11}{10}$ is supplied explicitly by
 Lemma~\ref{lem:uniform-arch-floor} (with $t=t_{\mathrm{crit}}=3/20=0.15$, $B_{\min}=3$). The prime cap used in the bridge is
-$\rho(t_{\mathrm{crit}})\le c_\ast/4$ (Corollary~\ref{cor:uniform-prime-cap}); the auxiliary bound $\rho(1)<1/25<c_\ast/4$ is recorded separately in Corollary~\ref{cor:pcu-uniform}.
+$\rho(t_{\mathrm{crit}})\le c_\ast/4$ (Corollary~\ref{cor:uniform-prime-cap}).
 Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mathrm{Ray}}(t,M)\|\le c_\ast/4$
 \ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ge c_\ast/4$ on the centered bridge family.
 
-\textbf{Uniform constants.} $t_{\mathrm{crit}}=3/20=0.15$, $B_{\min}=3$, $c_\ast=\tfrac{11}{10}$; see Appendix~\ref{app:notation} for $M_0^{\mathrm{unif}}$.
+\textbf{Current knife-edge.} The unresolved theorem is no longer “one shifted family that is both dense and positive” on the broad cone. The new knife-edge is `A1-pd`: centered packet density in the corrected positive-definite cone.
 \end{tcolorbox}
 
 \begin{center}
@@ -111,21 +111,18 @@ Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mat
     Module / gate & Key statement & Consumed by \\
     \hline
     $\mathrm{T0}$ & Proposition~\ref{prop:T0-GW} (Guinand--Weil normalization) & $\mathrm{G6}$ \\
-    $\mathrm{A1'}$ & Theorem~\ref{a1:thm:A1-local-density} (Density on $R_K$) & $\mathrm{G1}$ \\
-    $\mathrm{A2}$ & Lemma~\ref{a2:lem:A2} / Corollary~\ref{a2:cor:explicit-lip} (Continuity on $W_K$) & $\mathrm{G4}$, $\mathrm{G5}$ \\
-    $\mathrm{A3}$ & Theorem~\ref{thm:A3} (Centered Toeplitz bridge) & $\mathrm{G3}$ \\
-    RKHS & Corollary~\ref{cor:uniform-prime-cap} (Centered prime cap) & $\mathrm{G3}$ \\
-    $\mathrm{G1}$ & support upgrade to admissible $W_K$ & $\mathrm{G2}$, $\mathrm{G4}$ \\
-    $\mathrm{G2}$ & exact admissible family $G_K$ & $\mathrm{G3}$, $\mathrm{G4}$ \\
-    $\mathrm{G3}$ & positivity on $G_K$ & $\mathrm{G4}$ \\
-    $\mathrm{G4}$ & compact closure on each $W_K$ & $\mathrm{G5}$ \\
-    $\mathrm{G5}$ & LF lift to $\mathcal W$ & $\mathrm{G6}$ \\
+    $\mathrm{A1'}$ & Theorem~\ref{a1:thm:A1-local-density} (auxiliary density on $R_K$) & auxiliary only \\
+    $\mathrm{A1\!-\!pd}$ & centered packet density on $\mathcal W_K^{\mathrm{pd}}$ & local closure \\
+    $\mathrm{A2}$ & Lemma~\ref{a2:lem:A2} / Corollary~\ref{a2:cor:explicit-lip} (continuity) & local closure, LF \\
+    $\mathrm{A3}$ & Theorem~\ref{thm:A3} (centered Toeplitz bridge) & centered positivity \\
+    RKHS & Corollary~\ref{cor:uniform-prime-cap} (centered prime cap) & centered positivity \\
+    LF-pd & LF lift to $\mathcal W^{\mathrm{pd}}$ & $\mathrm{G6}$ \\
     $\mathrm{G6}$ & Theorem~\ref{thm:Weil-criterion} (Weil criterion) & RH \\
     \hline
   \end{tabular}
 \end{center}
 
-\noindent\textbf{Assumption stack.} When we write ``under the analytic modules $(\mathrm{T0})+(\mathrm{A1'})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{RKHS})$'' we mean only the analytic inputs already established in the draft. Any passage from those modules to positivity on the full Weil cone additionally requires the unresolved closure gates `G1-G5`.
+\noindent\textbf{Assumption stack.} When we write ``under the analytic modules $(\mathrm{T0})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{RKHS})$'' we mean the analytic inputs already established in the draft. The public route to RH additionally requires the corrected local density theorem `A1-pd` and the corresponding local/global closure on $\mathcal W_K^{\mathrm{pd}} / \mathcal W^{\mathrm{pd}}$.
 
 \noindent\textbf{Verification aids.} Appendix~\ref{app:verification} records reproducibility collateral; Appendix~\ref{app:digamma-computation} records an analytic framework and optional numerical exploration. These materials are not used as premises in any theorem. All bounds invoked in the active chain are proved in-line from explicit analytic estimates.
 
@@ -155,4 +152,4 @@ This work was inspired by several recent developments in analytic number theory,
   \item \textbf{Cautionary analyses.} Cairo's audit of proposed counterexamples~\cite{cairo2025counterexample} underlines how fragile heuristic arguments can be; we therefore keep every analytic assumption explicit and machine-checkable.
 \end{itemize}
 
-\noindent While these works influenced our methodology, our approach is fundamentally distinct: we construct a self-contained, verifiable chain from Toeplitz positivity to Weil positivity, with all critical steps amenable to formal verification.
+\noindent While these works influenced our methodology, our approach is fundamentally distinct: we construct a self-contained, verifiable chain from centered Toeplitz/RKHS positivity to Weil positivity on the corrected positive-definite cone, with all critical steps amenable to formal verification.

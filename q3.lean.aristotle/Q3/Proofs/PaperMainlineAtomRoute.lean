@@ -12,10 +12,10 @@ namespace Q3.Proofs.PaperMainlineAtomRoute
 open Q3
 
 /--
-Extract a compact window `W_K` from a Weil-cone test function.
+Extract a broad-cone compact window `W_K` from a `Weil_cone` test function.
 
-This is the only topological step needed to turn compact support into the
-compact-by-compact positivity route coming from `CompatibilityReduction`.
+After the 2026-03-07 target-cone audit this belongs to the compiled
+background route only; it no longer defines the public RH target.
 -/
 lemma exists_WK_of_mem_Weil_cone (Φ : ℝ → ℝ) (hΦ : Φ ∈ Weil_cone) :
     ∃ K ≥ 1, Φ ∈ W_K K := by
@@ -40,10 +40,12 @@ lemma exists_WK_of_mem_Weil_cone (Φ : ℝ → ℝ) (hΦ : Φ ∈ Weil_cone) :
   exact ⟨hleft, hright⟩
 
 /--
-Paper-style mainline positivity node for the current `t_critical` shifted-atom route.
+Paper-style broad-cone positivity node for the current `t_critical`
+shifted-atom route.
 
-This theorem packages the active compiled route to Weil-cone positivity. Its
-mathematical honesty still depends on the live scalar placeholder inherited from
+This theorem packages the compiled broad-cone route. After the target-cone
+audit it should be read as a background export only. Its mathematical honesty
+also still depends on the live scalar placeholder inherited from
 `Q_nonneg_t_critical`.
 -/
 theorem Q_nonneg_on_Weil_cone_current_atom_route :
@@ -55,11 +57,12 @@ theorem Q_nonneg_on_Weil_cone_current_atom_route :
       K hK Φ hWK
 
 /--
-Current RH theorem obtained from the shifted-atom mainline at `t_critical`.
+Current RH theorem obtained from the shifted-atom compiled broad-cone route at
+`t_critical`.
 
-This theorem bypasses the legacy `τ = 0` cone and uses the full Weil criterion,
-but it should be read as the current compiled route rather than as an already
-fully closed gate-by-gate proof.
+This theorem bypasses the legacy `τ = 0` cone and uses the broad `Weil_cone`
+export, but after the target-cone audit it should be read as background route
+structure rather than as the public gate-by-gate RH contract.
 -/
 theorem RH_of_shifted_atom_route : RH := by
   rw [← Weil_criterion]
@@ -69,12 +72,12 @@ end Q3.Proofs.PaperMainlineAtomRoute
 
 namespace Q3
 
-/-- Root-level wrapper for the current full-Weil shifted-atom route. -/
+/-- Root-level wrapper for the current compiled broad-cone shifted-atom route. -/
 theorem Q_nonneg_on_Weil_cone_current_atom_route :
     ∀ Φ ∈ Weil_cone, Q Φ ≥ 0 :=
   Q3.Proofs.PaperMainlineAtomRoute.Q_nonneg_on_Weil_cone_current_atom_route
 
-/-- Root-level RH theorem via the current shifted-atom paper mainline route. -/
+/-- Root-level RH wrapper via the current compiled broad-cone route. -/
 theorem RH_of_shifted_atom_route : RH :=
   Q3.Proofs.PaperMainlineAtomRoute.RH_of_shifted_atom_route
 

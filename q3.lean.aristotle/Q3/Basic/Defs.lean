@@ -134,17 +134,22 @@ def IsEven (Φ : ℝ → ℝ) : Prop := ∀ x, Φ (-x) = Φ x
 /-- A function is nonnegative if Φ(x) ≥ 0 for all x -/
 def IsNonneg (Φ : ℝ → ℝ) : Prop := ∀ x, 0 ≤ Φ x
 
-/-- Weil cone: even, nonnegative, continuous functions with compact support
-    Note: Continuous is required for test functions (Schwartz class, etc.) -/
+/-- Broad legacy Weil cone export: even, nonnegative, continuous functions with
+    compact support.
+
+    After the 2026-03-07 target-cone audit this is kept as a compiled background
+    object, not as the frozen public RH target. -/
 def Weil_cone : Set (ℝ → ℝ) :=
   {Φ | IsEven Φ ∧ IsNonneg Φ ∧ HasCompactSupport Φ ∧ Continuous Φ}
 
-/-- Weil cone restricted to support in [-K, K] -/
+/-- Broad legacy compact slice of `Weil_cone`. -/
 def Weil_cone_K (K : ℝ) : Set (ℝ → ℝ) :=
   {Φ | IsEven Φ ∧ IsNonneg Φ ∧ Function.support Φ ⊆ Set.Icc (-K) K}
 
-/-- W_K: space for T5 transfer theorem
-    This matches the paper: compactly supported continuous tests on [-K, K]. -/
+/-- Broad legacy local cone used by the current compiled route.
+
+    After the target-cone audit this remains useful for local lemma extraction,
+    but it is no longer the public paper target for RH. -/
 def W_K (K : ℝ) : Set (ℝ → ℝ) :=
   {Φ | Continuous Φ ∧
        Function.support Φ ⊆ Set.Ioo (-K) K ∧

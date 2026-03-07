@@ -1,23 +1,25 @@
-# Main Chain Dependencies vs Repo Legacy (2026-03-06 16:40)
+# Main Chain Dependencies vs Repo Legacy (2026-03-07)
 
 **Status:** support snapshot only; read this only after `PROJECT_ORCHESTRATOR.md`.
 This file does not decide the active frontier or queue state.
 
-**Purpose:** Supporting dependency snapshot separating *actual main-chain blockers* from legacy/sandbox noise.  
+**Purpose:** Supporting dependency snapshot separating *actual compiled-route blockers* from legacy/sandbox noise.
 **Current status:** compiled `Q3.Main.RH_of_Weil_and_Q3` now depends on
 **2 project axioms**:
 `Q3.Weil_criterion` and `Q3.prime_term_le_at_t_critical_axiom`.
 Standard axioms are the usual 3:
 `propext`, `Classical.choice`, `Quot.sound`.  
-**Next action:** repair the scalar shifted-atom node honestly and stop treating
-old `τ=0`/PathB dashboards as if they were still the active RH chain.
-**Decision (2026-03-06):** source of truth is the live shifted-atom route
-coming from `Q3/Main.lean`, not the older `τ=0` certificate branch.
+**Next action:** keep this as a compiled-route snapshot only; the public RH
+mainline has already pivoted to the corrected positive-definite cone and now
+needs `A1-pd`.
+**Decision (2026-03-07):** source of truth for RH mainline is no longer the
+compiled broad-cone route from `Q3/Main.lean`, but the corrected public
+contract recorded in `PROJECT_ORCHESTRATOR.md`.
 **Links:** `Q3/CheckAxioms.lean` · `Q3/Main.lean` · `ACTIVE/orchestrator.md`
 
 ---
 
-Purpose: separate *what actually blocks RH in the current main chain* from
+Purpose: separate *what actually blocks the current compiled route* from
 legacy/sandbox files that inflate raw axiom/sorry counts.
 
 ## 1) Source of truth (do this first)
@@ -27,7 +29,7 @@ Run:
 
 This prints the *actual axioms used by* `Q3.Main.RH_of_Weil_and_Q3`.
 
-## 2) Main-chain dependencies (current)
+## 2) Compiled-route dependencies (current)
 
 From
 `printf 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3\n' | lake env lean --stdin`:
@@ -42,6 +44,7 @@ Notes (2026-03-06):
 - Активная цепочка идёт через
   `Q3.Main -> Q3.RH_of_shifted_atom_route -> PaperMainlineAtomRoute ->
    CompatibilityReduction -> Q_nonneg_t_critical`.
+- После `T0.1` эта цепочка считается background-only для public RH contract.
 - `Q3.Weil_criterion_tau0`, `Q3.prime_cert_margin_from_pathB`,
   `Q3.prime_cert_margin_from_rkhs` и PrimeCert cert-data
   **не входят** в текущий `#print axioms Q3.Main.RH_of_Weil_and_Q3`.
@@ -55,6 +58,9 @@ Notes (2026-03-06):
 Standard Mathlib axioms (`propext`, `Classical.choice`, `Quot.sound`) are always present.
 
 ## 3) Load-bearing file map (what to close first)
+
+For the compiled route only. Public mainline work now starts one level earlier:
+freeze the corrected cone and prove `A1-pd`.
 
 | Node / Axiom | File | Why it blocks the chain |
 |---|---|---|

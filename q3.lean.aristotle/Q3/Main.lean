@@ -12,9 +12,10 @@ The current main entry follows the shifted-atom paper route:
 Legacy `τ = 0` developments remain elsewhere in the tree for comparison and
 compatibility, but they are no longer the active top-level route.
 
-Important: this is the current compiled route, not yet an honest fully closed
-proof object, because the scalar layer still inherits
-`Q3.prime_term_le_at_t_critical_axiom`.
+Important: this is the current compiled broad-cone route, not the frozen public
+RH contract after the 2026-03-07 target-cone audit. It is retained because the
+scalar layer still carries reusable local lemmas, but the public manuscript has
+pivoted to a corrected positive-definite target cone.
 -/
 
 import Q3.Proofs.PaperMainlineAtomRoute
@@ -25,19 +26,19 @@ noncomputable section
 
 namespace Q3.Main
 
-/-- Current top-level positivity theorem on the full Weil cone.
+/-- Current top-level broad-cone positivity export.
 
 This export reflects the active compiled route and its live axiom profile; it
-should not be read as saying that every closure gate `G0..G6` is already closed
-mathematically. -/
+should not be read as the frozen public RH contract after the target-cone audit. -/
 theorem Q_nonneg_on_Weil_cone :
     ∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0 :=
   Q3.Q_nonneg_on_Weil_cone_current_atom_route
 
-/-- Current top-level RH theorem for the project.
+/-- Current top-level RH wrapper for the compiled broad-cone route.
 
 Its present meaning is structural: it records the active route and axiom profile
-used by `Q3.Main`, while the scalar closure gate is still unresolved. -/
+used by `Q3.Main`, while the scalar closure gate is still unresolved and the
+public target cone has already been narrowed in the paper/control-doc layer. -/
 theorem RH_of_Weil_and_Q3 : Q3.RH :=
   Q3.RH_of_shifted_atom_route
 

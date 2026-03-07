@@ -47,6 +47,13 @@ The Weil explicit formula criterion:
 - Weil, A. (1952). "Sur les 'formules explicites' de la théorie des nombres premiers"
   Meddelanden Från Lunds Universitets Matematiska Seminarium, 252-265.
 - Bombieri, E. (2000). "The Riemann Hypothesis" Clay Mathematics Institute.
+
+Status note (2026-03-07):
+- this broad-cone axiom is retained as a compiled legacy export;
+- the public manuscript contract has pivoted to a positive-definite /
+  convolution-square cone;
+- no theorem-name rewrite is performed yet because the corrected contract is
+  being frozen upstream in the docs/manuscript layer first.
 -/
 axiom Weil_criterion : (∀ Φ ∈ Weil_cone, Q Φ ≥ 0) ↔ RH
 

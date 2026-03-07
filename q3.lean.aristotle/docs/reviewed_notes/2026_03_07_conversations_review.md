@@ -11,6 +11,7 @@
 - review status: `reviewed`
 - scope: `math`
 - safe for embeddings: `yes`
+- superseded by: `docs/reviewed_notes/2026_03_07_target_cone_reset_review.md`
 
 ## Extracted files
 
@@ -18,12 +19,12 @@
 
 ## Core claim
 
-Этот note полезен как жёсткий architectural diagnosis для closure-части Q3.
-Его главный surviving claim такой: target не меняется и по-прежнему идёт через
-классический Weil criterion, а реальный unresolved middle block сидит не в
-LF-lift и не в Weil linkage, а в локальной цепочке
-`G1 -> G2 -> G3`, то есть support-upgrade, one exact admissible family `G_K`,
-и positivity на этом же `G_K`.
+Этот note полезен как жёсткий architectural diagnosis для closure-части Q3,
+но после target-cone audit он уже не является live architectural verdict.
+Его surviving core теперь надо читать так:
+локальный closure-block `G1 -> G2 -> G3` действительно был правильно выделен,
+но только как \emph{условный broad-cone branch}. Публичный mainline с
+2026-03-07 уже сдвинут раньше — на corrected positive-definite cone.
 
 После мартовского reset это уже не “новый план”, а подтверждение текущего
 mainline contract. При этом исторические формулировки note про “ещё не закрытый
@@ -49,10 +50,9 @@ G0” и про manuscript December 2025 как live source of truth надо о
 
 ## What survived review
 
-- Endgame fixed by Weil remains correct: the project still aims at positivity on
-  the full Weil cone and then RH via the classical criterion.
-- The real unresolved middle block is still local closure, not LF-lift and not
-  the final Weil step.
+- Endgame fixed by Weil remains correct.
+- The note correctly isolated a real local closure block `G1 -> G2 -> G3` for
+  the old broad-cone route.
 - The useful gate split is exactly:
   `G1 = support upgrade`,
   `G2 = freeze one exact admissible family G_K`,
@@ -68,6 +68,9 @@ G0” и про manuscript December 2025 как live source of truth надо о
   closure in the live source-of-truth. That was true as diagnosis of the older
   paper state, but after the March 7 reset the active manuscript/control plane
   already treats `G1-G5` conditionally.
+- Rejected as current architectural verdict: “the target does not change”.
+  This was superseded by the later `T0.1` audit, which judged the broad cone
+  too wide and pivoted the public mainline to the corrected positive-definite cone.
 - Weakened: “G0 is the current first gate” is no longer live status. `G0` is
   already closed in the repo; the active frontier is inside `G1`.
 - Rejected as live status claim: anything implying that the current repo should
@@ -97,12 +100,12 @@ G0” и про manuscript December 2025 как live source of truth надо о
 Best use of this note:
 
 - as a reviewed architectural memo for why the project must go through
-  `G1 -> G2 -> G3`,
+  `G1 -> G2 -> G3` if one continues to study the broad-cone branch,
 - not as a literal current-status snapshot of the repo.
 
 Current live interpretation:
 
 - `T0` and Weil linkage stay fixed,
 - `G0` is already done,
-- the honest current frontier is still `G1`,
-- after `G1`, the next serious blocker is `G2/G3`, not LF/Weil tail work.
+- the broad-cone frontier `G1 -> G2 -> G3` is now background-only,
+- the public live frontier is the corrected-cone theorem `A1-pd`.

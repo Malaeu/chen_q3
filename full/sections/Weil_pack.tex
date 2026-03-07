@@ -1,26 +1,34 @@
 \begin{remark}[Dependency map]\label{rem:weil-dependency}
-The sufficiency argument uses the following chain:
+The sufficiency argument now uses the corrected chain:
 \[
-  \text{(T0)} \;\Longrightarrow\; \text{(G1)} \;\Longrightarrow\; \text{(G2)}
-  \;\Longrightarrow\; \text{(G3)} \;\Longrightarrow\; \text{(G4)}
-  \;\Longrightarrow\; \text{(G5)} \;\Longrightarrow\; \text{(G6)} \;\Longrightarrow\; \text{RH}.
+  \text{(T0-corr)} \;\Longrightarrow\; \text{(A1-pd)}
+  \;\Longrightarrow\; \text{centered (A3)+(RKHS)}
+  \;\Longrightarrow\; \text{(A2-pd)}
+  \;\Longrightarrow\; \text{(LF-pd)}
+  \;\Longrightarrow\; \text{(G6)} \;\Longrightarrow\; \text{RH}.
 \]
-Here \textup{(G1)} is the support upgrade from the restriction cone $R_K$ to admissible $W_K$,
-\textup{(G2)} fixes one exact admissible family $G_K\subseteq W_K$,
-\textup{(G3)} proves positivity on that same $G_K$,
-\textup{(G4)} is the compact closure step on each $W_K$,
-\textup{(G5)} is the LF lift to the Weil cone $\mathcal W$,
-and \textup{(G6)} is Weil's criterion.
-The analytic modules A1$'$, A2, A3, and RKHS feed these gates, but they do not by themselves close them.
+Here \textup{(A1-pd)} is the centered packet density theorem on the corrected local
+cone $\mathcal W_K^{\mathrm{pd}}$, centered \textup{(A3)+(RKHS)} supplies positivity
+on that packet family, \textup{(A2-pd)} is continuity on the corrected local cone,
+\textup{(LF-pd)} is the inductive-limit lift to the global positive-definite cone
+$\mathcal W^{\mathrm{pd}}$, and \textup{(G6)} is Weil's criterion.
+The shifted theorem A1$'$ on $R_K$ remains available as auxiliary density on a
+broader cone, but it is no longer the mainline RH density theorem.
 \end{remark}
 
 \begin{theorem}[Weil sufficiency pack]\label{thm:weil-sufficiency-pack}
-Assume the hypotheses of Theorem~\ref{thm:Main-positivity}. Then $Q^\star(t;\Phi)\ge0$ for all $\Phi\in\mathcal W$, and hence the Riemann Hypothesis follows from Weil's positivity criterion.
+Assume the hypotheses of Theorem~\ref{thm:Main-positivity}. Then
+$Q^\star(t;\Phi)\ge0$ for all $\Phi\in\mathcal W^{\mathrm{pd}}$, and hence the
+Riemann Hypothesis follows from Weil's positivity criterion.
 \end{theorem}
 
 \begin{proof}
-By Lemma~\ref{lem:rkhs-weil-isometry} the RKHS and Weil pictures are isometric on the working subspace.
-Together with Lemmas~\ref{lem:rkhs-rayleigh-sampling-id} and \ref{a3:lem:prime-L2-trace} we transfer the mixed lower bound of Theorem~\ref{thm:A3}
-to the quadratic functional $Q^\star(t;\cdot)$, while Corollary~\ref{a3:cor:A3_lock_formal} and the single-scale prime cap provide the centered positivity input that feeds the unresolved gate \textup{(G3)}. Theorem~\ref{thm:Main-positivity} then supplies positivity on the full Weil cone $\mathcal W$ once the closure gates are assumed.
-Weil's criterion then yields the stated implication.
+By Lemma~\ref{lem:rkhs-weil-isometry} the RKHS and Weil pictures are isometric on
+the working subspace. Together with Lemmas~\ref{lem:rkhs-rayleigh-sampling-id} and
+\ref{a3:lem:prime-L2-trace} we transfer the mixed lower bound of
+Theorem~\ref{thm:A3} to the quadratic functional $Q^\star(t;\cdot)$, while the
+single-scale prime cap provides the centered positivity input. Theorem~\ref{thm:Main-positivity}
+then supplies positivity on the full corrected Weil cone $\mathcal W^{\mathrm{pd}}$
+once the centered packet density route is assumed. Weil's criterion then yields the
+stated implication.
 \end{proof}

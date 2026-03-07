@@ -11,11 +11,13 @@
 Symbol & Meaning & Space/parameters \\
 \midrule
 $t$ & single heat scale & $t_0=1/(16\pi^2 t)$ \\
-$R_K$ & restriction cone & $C^+_{\mathrm{even}}([-K,K])$ \\
-$W_K$ & admissible support cone & even, nonnegative, compactly supported tests in $[-K,K]$ \\
-$G_K$ & future common admissible generator family & $\subseteq W_K$ \\
+$R_K$ & broad restriction cone & $C^+_{\mathrm{even}}([-K,K])$ \\
+$B_K$ & broad ambient support cone & even, nonnegative, compactly supported tests in $[-K,K]$ \\
+$\mathcal W_K^{\mathrm{pd}}$ & corrected local Weil cone & positive-definite / convolution-square cone inside $B_K$ \\
+$\mathcal W^{\mathrm{pd}}$ & corrected global Weil cone & $\bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}$ \\
+$\mathcal P_K$ & future centered packet cone & $\subseteq \mathcal W_K^{\mathrm{pd}}$ \\
 $\Phi_{B,t,\tau}$ & shifted evenized Fej\'er$\times$heat window & bandwidth $B$, heat scale $t$, shift $\tau$ \\
-$Q^\star(t;\Phi)$ & Weil functional with explicit $t$ & $\Phi$ on $R_K$ or on admissible $W_K$ depending on the gate \\
+$Q^\star(t;\Phi)$ & Weil functional with explicit $t$ & $\Phi$ on the ambient/support side or on the corrected cone \\
 $T_M[P_A](t,B,M)$ & Toeplitz block for $P_A$ & $\CC^{2M+1}$ \\
 $T_P^{\mathrm{Ray}}(t,M)$ & prime sampling block (Rayleigh) & $\CC^{2M+1}$ \\
 $T_P^{\mathrm{RKHS}}(t)$ & prime operator on RKHS & $\mathcal H_t$, cap $\rho(t)$ \\
@@ -23,10 +25,23 @@ $T_P^{\mathrm{RKHS}}(t)$ & prime operator on RKHS & $\mathcal H_t$, cap $\rho(t)
 \end{tabular}
 \end{table}
 
-\noindent The density module A1$'$ is currently formulated on the restriction cone $R_K$ using the shifted family $\Phi_{B,t,\tau}$, while A2 and the LF route live on the admissible support cone $W_K$. The unresolved closure gates are therefore: support upgrade from $R_K$ to $W_K$, identification of one exact admissible family $G_K\subseteq W_K$, and positivity on that same $G_K$.
+\noindent The target-cone audit of Section~\ref{sec:scope} demotes the broad compact-support cone
+to an ambient auxiliary space and promotes the positive-definite /
+convolution-square cone $\mathcal W_K^{\mathrm{pd}}$ as the public local target for the
+Weil criterion. Accordingly:
+\begin{itemize}
+  \item A1$'$ remains a theorem on the broad restriction cone $R_K$;
+  \item A2 supplies continuity on the ambient compact-support side and therefore on
+  $\mathcal W_K^{\mathrm{pd}}$ in particular;
+  \item the new missing theorem is A1-pd: density of centered packet generators
+  inside $\mathcal W_K^{\mathrm{pd}}$;
+  \item the centered A3/RKHS positivity mechanism is kept as the positivity engine
+  for that corrected cone.
+\end{itemize}
 
 \begin{tcolorbox}[colback=white,colframe=black!60]
-\textbf{WRONG:} $T_P$, $Q$, $\rho$ (naked, ambiguous).\\
-\textbf{RIGHT:} $T_P^{\mathrm{Ray}}(t,M)$ on $\CC^{2M+1}$, $T_P^{\mathrm{RKHS}}(t)$ on $\mathcal H_t$, $Q^\star(t;\Phi)$, $\rho(t)$.
+\textbf{WRONG public target:} broad positivity on every even nonnegative compactly supported test.\\
+\textbf{RIGHT public target:} positivity on the corrected positive-definite Weil cone
+$\mathcal W^{\mathrm{pd}}$, generated locally by convolution squares / centered packet cones.
 \end{tcolorbox}
 \fi

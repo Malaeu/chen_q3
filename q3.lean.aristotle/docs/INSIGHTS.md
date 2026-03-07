@@ -51,6 +51,43 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
   5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Final result (2026-03-07) — T0.1 target-cone audit
+
+Цель:
+- проверить, выдерживает ли текущий broad cone `W_K / \mathcal W` честный
+  Weil-interface, или mainline надо разворачивать раньше `G1`.
+
+Что проверено:
+- live Lean definitions в `Q3/Basic/Defs.lean` и live paper contract в
+  `full/sections/Main_closure.tex` / `full/sections/Weil_linkage.tex`
+  действительно формулируют public target как positivity на broad cone of even,
+  nonnegative, compactly supported tests;
+- локальный embedding-search по `q3_docs` подтвердил именно этот live contract и
+  подтянул reviewed challenger note;
+- внешний theorem-check по Bombieri/Weil positive-definite formulation
+  подтвердил, что classical criterion naturally lives in quadratic-form /
+  convolution-square language, а не как positivity on every nonnegative bump;
+- project-level Archimedean density already goes negative:
+  `a(1.5) ≈ -0.404995`, `a(2) ≈ -0.692883`, `a(3) ≈ -1.098495`;
+- active prime nodes on each compact are finite/discrete, so node-free gaps exist.
+
+Verdict:
+- `pivot required`.
+- Broad `W_K / \mathcal W` is too wide to remain the public RH target.
+- Public mainline now pivots to the corrected positive-definite /
+  convolution-square cone `\mathcal W_K^{pd} / \mathcal W^{pd}`.
+
+Consequences:
+1. current shifted A1' density on `R_K` becomes auxiliary, not mainline RH density;
+2. new knife-edge theorem is `A1-pd`: centered packet density in
+   `\mathcal W_K^{pd}`;
+3. centered `A3 + RKHS` stays the positivity engine;
+4. broad-cone `G1-G3` work becomes background-only until it can be reused inside
+   the corrected cone.
+
+Detailed memo:
+- `docs/insights/target_cone_audit_2026_03_07.md`
+
 ## Synthesis (2026-03-06, in progress) — source-of-truth reset for the active shifted-atom mainline
 
 Цель: перестать путать старый `τ=0` narrative с реально compiled RH-цепочкой.
@@ -1966,3 +2003,16 @@ Recommendation:
   `||Φ-h||<ε`, `||h-\widetilde h||<ε` implies `||Φ-\widetilde h||<2ε`, hence
   `|Q^\star(t;Φ)-Q^\star(t;\widetilde h)| ≤ 2L_Q(K)ε`.
 - This is the minimal honest `G1` contract. `G2` can then name `G_K` as the class of admissible replacements produced by that theorem, and `G3` can attack positivity on that exact family.
+
+## Update (2026-03-07, post-refresh) — q3_docs backend behavior
+
+- Full refresh of `q3_docs` succeeded after the target-cone pivot and the new reviewed note:
+  `Prepared 291 files for q3_docs: 124 md, 56 tex, 111 lean`.
+- `qmd search` / `research_oracle.py query` continue to work and immediately surfaced the
+  corrected-cone contract from active docs such as `full/sections/introduction.tex`,
+  `full/sections/abstract.tex`, `Q3/Basic/Defs.lean`, and `docs/CHAIN_STATUS.md`.
+- `qmd ls q3_docs` intermittently still hits the known local backend issue
+  `SQLiteError: database is locked` / `SQLITE_BUSY_RECOVERY`.
+- Treat this as a tooling/backend lock, not as evidence that the refreshed embeddings are stale.
+  When the lock appears, use successful semantic-query hits plus the refresh summary as the
+  practical confirmation signal, and avoid parallel pressure on the local qmd database.

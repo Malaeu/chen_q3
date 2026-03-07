@@ -1,13 +1,16 @@
-% Theorem A1' --- Local Cone Density on Frequency Compacts
+% Theorem A1' --- Auxiliary density on the broad restriction cone
 
-We work on the restriction cone
+This section is now \emph{auxiliary} for the RH mainline. It records the shifted
+density theorem on the broad restriction cone
 \[
   R_K := C^+_{\mathrm{even}}([-K,K])
 \]
-with the uniform norm $\|\cdot\|_\infty$.
-Convolution with the Fejér kernel and subsequent heat smoothing preserve evenness and nonnegativity.
+with the uniform norm $\|\cdot\|_\infty$. After the target-cone audit of
+Section~\ref{sec:scope}, this theorem no longer serves as the public density
+statement feeding RH; the corrected missing theorem is the centered positive-definite
+density statement A1-pd.
 
-\begin{theorem}[A1' --- density]\label{thm:A1-density}
+\begin{theorem}[A1' --- auxiliary density on $R_K$]\label{thm:A1-density}
 For every compact $[-K,K]$ the cone $\{\text{Fej\'er}*\text{heat approximants}\}$ is dense in $R_K$ in $\|\cdot\|_\infty$.
 \end{theorem}
 \begin{proof}
@@ -15,7 +18,7 @@ This is an immediate corollary of Theorem~\ref{a1:thm:A1-local-density}, which p
 \end{proof}
 
 \begin{remark}[PW reinforcement]
-On $[-K,K]$ the heat kernel satisfies $\widehat{\rho_t}(s)=e^{-4\pi^2 t s^2}\ge e^{-4\pi^2 t K^2}>0$, hence the convolution with $\rho_t$ is invertible on the compact in the PW metric. Together with the Fej\'er (positive) hat interpolation and a Weierstrass/Fej\'er--Riesz approximation step in $\|\cdot\|_{\infty}$, this yields the cone density in $W_{\mathrm{PW},K}$ with explicit error control; the constants enter only via $e^{-4\pi^2 t K^2}$ and the mesh parameter in the hat partition of unity.
+On $[-K,K]$ the heat kernel satisfies $\widehat{\rho_t}(s)=e^{-4\pi^2 t s^2}\ge e^{-4\pi^2 t K^2}>0$, hence the convolution with $\rho_t$ is invertible on the compact in the PW metric. Together with the Fej\'er (positive) hat interpolation and a Weierstrass/Fej\'er--Riesz approximation step in $\|\cdot\|_{\infty}$, this yields cone density in the broad restriction setting. These constants are still useful as auxiliary approximation data, but they do not by themselves identify the corrected positive-definite Weil cone.
 \end{remark}
 
 \begin{lemma}[Compact support convolution reduction]\label{lem:convolution-compact-support}
@@ -41,7 +44,7 @@ where $\Lambda_B(x)=(1-|x|/B)_+$ and $\rho_t(x)=(4\pi t)^{-1/2} e^{-x^2/(4t)}$ (
 in the uniform norm.
 \end{theorem}
 \begin{proof}
-This is exactly the shifted-atom density theorem proved in Appendix~\ref{app:legacy-a1-density}; we restate it here because it is the correct density statement on $C^+_{\mathrm{even}}([-R,R])$.
+This is exactly the shifted-atom density theorem proved in Appendix~\ref{app:legacy-a1-density}; we restate it here because it remains the correct auxiliary density statement on $C^+_{\mathrm{even}}([-R,R])$.
 \end{proof}
 
 \begin{remark}[Parameter scaling in A1']\label{rem:a1-scaling}
@@ -51,16 +54,16 @@ while the heat scale $t$ may be held fixed throughout the approximation. Accordi
 bandwidth and the shift grid vary with the compact and the target accuracy; no K-dependent heat schedule is required.
 \end{remark}
 
-\begin{remark}[Centered subcone is not dense]\label{rem:a1-centered-obstruction}
+\begin{remark}[Centered subcone is not dense in the broad restriction cone]\label{rem:a1-centered-obstruction}
 If one freezes $\tau=0$, then each generator $\Phi_{B,t,0}$ is even and nonincreasing on $[0,\infty)$.
 Finite nonnegative combinations and uniform limits preserve this monotonicity. Consequently the
 centered subcone cannot be dense in $R_K=C^+_{\mathrm{even}}([-R,R])$; for example, the even nonnegative
-function $\xi\mapsto 1+\xi^2$ on $[-R,R]$ is not nonincreasing on $[0,R]$. Any closure argument for
-the full Weil class must therefore either retain shifts in the generator family or supply a different
-dense positive cone.
+function $\xi\mapsto 1+\xi^2$ on $[-R,R]$ is not nonincreasing on $[0,R]$. This obstruction is about
+the broad cone $R_K$ only. It does \emph{not} rule out a centered density theorem on the corrected
+positive-definite cone $\mathcal W_K^{\mathrm{pd}}$, where the target geometry is different.
 \end{remark}
 
-\begin{remark}[What A1' does not yet provide]\label{rem:a1-support-gap}
-Theorem~\ref{a1:thm:A1-local-density} is a density theorem on the restriction cone $R_K$ only.
-It does \emph{not} by itself identify an admissible compactly supported cone inside $W_K$, and therefore does not close the support upgrade gate needed in Section~\ref{sec:Main-closure}.
+\begin{remark}[What A1' does and does not provide now]\label{rem:a1-support-gap}
+Theorem~\ref{a1:thm:A1-local-density} remains a valuable density theorem on the broad restriction cone $R_K$.
+What it does \emph{not} now provide is the mainline RH density theorem. After the target-cone audit, the missing theorem is A1-pd: density of centered Fej\'er$\times$heat / autocorrelation packets in the corrected positive-definite cone $\mathcal W_K^{\mathrm{pd}}$.
 \end{remark}
