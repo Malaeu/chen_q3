@@ -2424,3 +2424,43 @@ Reusable file pointers:
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/full_kernel_psd_frontier_2026_03_07.md`
+
+## Synthesis (2026-03-08, in progress) — `P1–P8` sharpens the live `PSD-pd` package
+
+Target node and wiring:
+- The live theorem is still `PSD-pd`: positive semidefiniteness of the full
+  packet kernel `K_Q(\Psi,\Phi)=Q^\star(t;\Psi * \widetilde{\Phi})`.
+- The new `P1–P8` note sharpens the constructive route further:
+  exact packet identity survives,
+  standalone PSD factorization of the packet prime block is false,
+  and the honest constructive target is now `P7`:
+  full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}` or an equivalent full
+  operator package for `K_Q`.
+
+Local semantic search:
+- Query `prime block obstruction dense translation packet space active node`
+  returns `Main_closure.tex` first, exactly on the new packet prime obstruction.
+- Query `P1 P2 P3 P4 P5 P6 P7 P8 packet sesquilinear Toeplitz Herglotz`
+  returns the orchestrator/tracker surfaces where the direct full-kernel route
+  is now active.
+- The live corpus therefore already supports the new theorem neighborhood:
+  `P1/P2` exact identity -> `P4` obstruction -> `P6/P7` spectral criterion.
+
+External theorem-shape search:
+- External references still support the Toeplitz/Herglotz equivalence:
+  Toeplitz-section PSD
+  <-> positive-definite sequence
+  <-> positive measure on the circle.
+- They still do not provide a project-local constructive proof of
+  `A_{g,\Delta}\ge P_{g,\Delta}`.
+
+Concrete synthesis:
+- `P1` exact packet sesquilinear identity should be public and explicit.
+- `P2` Toeplitz reduction should be the main algebraic reduction.
+- `P4` must be stated explicitly: packet prime PSD factorization is false.
+- `P5/P6/P7` are now the honest primary route:
+  decompose `\kappa=\alpha-\beta`,
+  use Herglotz as the equivalence language,
+  and make `A_{g,\Delta}\ge P_{g,\Delta}` the clean sufficient criterion.
+- The next public theorem package should therefore be written as:
+  `P1 -> P2 -> P4 -> P5 -> P6 -> P7 -> PSD-pd -> A2 -> LF-pd -> G6`.
