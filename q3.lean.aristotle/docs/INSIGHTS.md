@@ -49,7 +49,40 @@
      команда: `./scripts/research_oracle.py query "keyword" -c q3_docs`
   2) потом внешний web‑поиск через встроенный web tool,
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
-  5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
+ 5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
+
+## Final result (2026-03-07) — external Together AI repo integrated as corpus, not prover
+
+Проверен и локально клонирован внешний repo:
+
+- `https://github.com/togethercomputer/erdos-minimum-overlap`
+
+Честный вывод после inspection:
+
+- repo содержит `README.md`, `solutions/*.py` со статическими step-function arrays
+  и `analysis.ipynb` для верификации/визуализации;
+- он **не** содержит theorem-prover pipeline, Lean integration, prompt traces или
+  общую reusable proof-search framework;
+- значит его нельзя честно считать заменой Aristotle.
+
+Что всё же полезно:
+
+1. держать его как локальный vendor clone;
+2. индексировать как отдельную внешнюю qmd-коллекцию;
+3. использовать как retrieval corpus и методологический reference.
+
+Operational choice:
+
+- vendor clone lives at
+  `archive/subprojects/erdos-minimum-overlap/`
+- it is ignored from the main repo status;
+- refresh script:
+  `q3.lean.aristotle/scripts/refresh_erdos_overlap_kb.py`
+- collection name:
+  `erdos_minimum_overlap`
+
+Detailed note:
+- `docs/insights/erdos_minimum_overlap_repo_assessment_2026_03_07.md`
 
 ## Final result (2026-03-07) — T0.1 target-cone audit
 

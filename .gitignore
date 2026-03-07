@@ -64,3 +64,6 @@ full/q3.lean.aristotle/literature/quillen_working_papers/
 # Local cleanup buckets for transient untracked files
 q3.lean.aristotle/archive/untracked_cleanup_*/
 q3.lean.aristotle/.qmd_cache/
+
+# Local vendor clones for external AI/research artifacts
+archive/subprojects/erdos-minimum-overlap/

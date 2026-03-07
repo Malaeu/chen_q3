@@ -86,6 +86,8 @@ Source of truth:
 - `ACTIVE/pipeline/RESEARCH_ORACLE.md` — qmd-based semantic search wrapper
 - `ACTIVE/pipeline/PIPELINE_GUIDE.md` — end-to-end agent checklist
 - `docs/EMBEDDING_INGEST_WORKFLOW.md` — raw markdown -> reviewed note -> embeddings workflow
+- `docs/insights/erdos_minimum_overlap_repo_assessment_2026_03_07.md` — external
+  Together AI repo assessment and collection wiring
 
 ## 7) Editing policy (keep this stable)
 
@@ -104,6 +106,10 @@ Source of truth:
   - Refresh the live collection when the repo changed materially:
     `./scripts/refresh_q3_docs.py`
   - Run: `./scripts/research_oracle.py query "keyword" -c q3_docs`
+  - For the external Together AI corpus:
+    `./scripts/refresh_erdos_overlap_kb.py`
+    then
+    `./scripts/research_oracle.py query "keyword" -c erdos_minimum_overlap`
   - qmd operations are serialized through `.qmd_cache/qmd_ops.lock`; keep local
     semantic queries sequential.
   - Then write a 5–10 line synthesis into `docs/INSIGHTS.md` and add a short pointer

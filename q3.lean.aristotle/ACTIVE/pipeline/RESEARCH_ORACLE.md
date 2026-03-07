@@ -73,6 +73,14 @@ For docs/mainline search, use the refreshed `q3_docs` collection:
 This query path now uses the same lock and retry layer as refresh.
 Run local qmd queries sequentially; do not fan out parallel qmd queries on this host.
 
+For the external Together AI minimum-overlap corpus, use the separate collection:
+```bash
+./scripts/refresh_erdos_overlap_kb.py
+./scripts/research_oracle.py query "sequential linear programming" -c erdos_minimum_overlap -n 5
+```
+This corpus is retrieval-only. It is not a Lean prover and should not be treated
+as a replacement for Aristotle.
+
 ## Query
 
 ```bash
