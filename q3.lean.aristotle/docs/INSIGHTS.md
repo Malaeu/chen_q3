@@ -27,7 +27,7 @@
 - Пример «идеального» ответа Прошки: нужна опорная структура → `docs/insights/breakthrough_proshka_full_proof_2026_01_14.md`.
 
 - Aristotle стратегия: sandbox тупит/ломает сигнатуры → `docs/insights/aristotle_strategy_pure_informal.md`.
-- Aristotle recovery: получили `sorry`/`exact?` или не компилится → `docs/insights/aristotle_error_recovery.md`.
+- Aristotle recovery: получили `sorry`/`admit`, `exact?`-draft или не компилится → `docs/insights/aristotle_error_recovery.md`.
 - Организация входов/выходов Aristotle: путаемся в `aristotle_input`/`aristotle_output` → `docs/insights/file_organization_aristotle.md`.
 
 - Докдисциплина: распухают инсайды и хаос в документах → `docs/insights/documentation_discipline.md`.
@@ -191,6 +191,44 @@ Operational decision:
 - следующий active task это `G1.5`: monitor/download/scan/integrate,
 - если Aristotle вернёт только blocked local sublemma, именно он станет следующим
   `ACTIVE` task без фейкового closure narrative.
+
+## Final result (2026-03-07) — Aristotle tooling and `exact?` policy reset
+
+Проверено локально:
+- рабочий venv для этого repo находится в
+  `/Users/emalam/Documents/GitHub/rh_lean_01_2026/.venv`,
+  а не внутри `q3.lean.aristotle/`;
+- установленный Aristotle на этой машине уже совпадает с последним доступным
+  релизом: `aristotlelib 0.7.0`;
+- CLI подтверждает актуальный интерфейс `prove-from-file` с флагами
+  `--no-auto-add-imports`, `--formal-input-context`, `--context-folder`.
+
+Workflow correction:
+- старый жёсткий запрет на `exact?` был слишком сильным;
+- теперь hard holes — только `sorry` и `admit`;
+- `exact?` считается advisory-only и допускается, если результат
+  компилируется в реальном Q3-контексте и не подменяет project objects
+  sandbox-локальными определениями.
+
+Почему это важно:
+- предыдущий reject `G1.4` был вызван не самим `exact?`, а тем, что файл
+  не интегрировался в живой проект и переопределял `Q3.W_K`, `Atom`,
+  `IsEven`, `IsNonneg`;
+- значит следующий packet можно честно ослабить: не запрещать `exact?`,
+  но сохранять жёсткий compile gate и запрет на fake local replacements.
+
+Что обновлено:
+- `ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`
+- `PROJECT_WORKFLOW.md`
+- `aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+- `aristotle_input/subagent_g1_wk_membership_2026_03_07.md`
+- локальный Codex skill `~/.codex/skills/aristotle/SKILL.md`
+
+Новый operational rule:
+1) scan `rg -n "sorry|admit"`,
+2) advisory scan `rg -n "exact\\?" || true`,
+3) compile in the real project,
+4) reject only if the result does not compile or uses fake local context.
 
 ## Synthesis (2026-03-06, in progress) — Compatibility theorem via shifted evenized atoms
 

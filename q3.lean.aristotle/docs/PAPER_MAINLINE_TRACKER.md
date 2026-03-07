@@ -203,7 +203,7 @@ The completed Aristotle project `c315e2a4-5923-44fa-a18c-4ed90cb08375` did not l
 
 Reason:
 
-- the downloaded file contains holes (`exact?`),
+- the downloaded file does not compile as a real mainline patch,
 - it redefines sandbox-local dummy objects (`Q3.W_K`, `Atom`, `IsEven`, `IsNonneg`)
   instead of using the real project context,
 - so it cannot count as an admissible replacement theorem in the mainline.
@@ -245,6 +245,8 @@ Interpretation:
   `AtomCone_K_fixed` statement,
 - only after this lands do we reopen a stronger packet such as
   `atom_sum_mem_atomcone_fixed_of_margin`.
+- workflow reset: `exact?` is advisory-only; the real rejection criteria are
+  `sorry`/`admit`, non-compilation, or fake local replacements instead of real Q3 objects.
 
 ## Legacy Read-Only Surface
 

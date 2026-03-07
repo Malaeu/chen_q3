@@ -9,7 +9,7 @@ Source: Proshka analysis + empirical data.
 
 | Tactic | Why | Alternative |
 |--------|-----|-------------|
-| `exact?` | Auto-search, breaks on API changes | Explicit lemma names |
+| `exact?` | Useful for local search, but can be fragile if left everywhere | Explicit lemma names when stable |
 | `aesop` (heavy) | Proof search noise, slow, unauditable | `simp`, `linarith`, `nlinarith`, `gcongr` |
 | `simp +zetaDelta` | Obscure, fragile | Explicit subtype handling |
 | Long `have` chains | Duplicates infrastructure | `suffices` for goal reduction |
@@ -104,7 +104,8 @@ Prove: [exact Lean statement]
 
 ## Policy
 - Use `suffices` for goal reduction
-- Avoid `exact?` - use explicit lemma names
+- `exact?` is allowed for local search if it helps the prover close the goal
+- Prefer explicit lemma names in the final cleaned patch when stable
 - Minimize `aesop` - prefer `nlinarith`, `positivity`, `gcongr`
 - No π/ζ(2) unless necessary - prefer direct bounds
 

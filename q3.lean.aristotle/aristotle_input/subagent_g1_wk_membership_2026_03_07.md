@@ -30,7 +30,7 @@ lemma atom_sum_mem_W_K_of_margin
     (hmargin : ∀ i, |τ i| + δ ≤ K) :
     let g : ℝ → ℝ := fun x => ∑ i, c i * Atom δ t0 (τ i) x
     g ∈ Q3.W_K K := by
-  -- prove without sorry/exact?/admit
+  -- prove without sorry/admit; exact? is acceptable if it compiles
 ```
 
 If this exact target is still too large, return only the **first blocked local sublemma**
@@ -95,7 +95,9 @@ Relevant downstream file:
 
 ## Constraints
 
-- No `sorry`, no `exact?`, no `admit`.
+- No `sorry` or `admit`.
+- `exact?` is allowed if it helps close local subgoals and the resulting file
+  compiles in the real Q3 project context.
 - Do not define dummy local replacements for `Q3.W_K`, `Atom`, `IsEven`, or `IsNonneg`.
 - Do not import `Q3/Archive`, `Q3/Clean`, or heavy `PrimeCert` files.
 - Do not restate or prove any global density theorem on `W_K`.

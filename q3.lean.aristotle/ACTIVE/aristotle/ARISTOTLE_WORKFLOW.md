@@ -1,7 +1,7 @@
 # Aristotle workflow (Q3 canonical)
 
 Status: canonical single source of truth for Aristotle usage in this repo.
-Date: 2026-01-28
+Date: 2026-03-07
 
 Goal: one clean workflow for Aristotle; all older Aristotle docs are archived.
 
@@ -12,7 +12,7 @@ Goal: one clean workflow for Aristotle; all older Aristotle docs are archived.
 1) Decide: manual proof vs Aristotle.
 2) If Aristotle: prepare ONE target lemma/file. Keep it small.
 3) Show the prompt to user and wait for OK.
-4) Activate venv: `source .venv/bin/activate`.
+4) Activate venv: `source /Users/emalam/Documents/GitHub/rh_lean_01_2026/.venv/bin/activate`.
 5) Submit (CLI or Python API).
 6) Download result -> scan for holes -> integrate -> compile -> log to DB.
 
@@ -30,7 +30,7 @@ uvx --from aristotlelib@latest aristotle
 
 Alternate (install into venv):
 ```
-source .venv/bin/activate
+source /Users/emalam/Documents/GitHub/rh_lean_01_2026/.venv/bin/activate
 uv pip install -U aristotlelib
 # or: pip install -U aristotlelib
 aristotle  # opens TUI
@@ -97,16 +97,20 @@ Leaving sorries unfilled:
 ## 3. Q3-specific rules (must follow)
 
 - Always wait for user OK before submitting to Aristotle.
-- After download: scan for holes with
-  `rg -n "sorry|exact\\?" <file>`.
-- Treat any file with holes as DRAFT.
-- Extract only hole-free lemmas into Q3.
+- After download: run a hard-hole scan with
+  `rg -n "sorry|admit" <file>`.
+- Also run an advisory scan with
+  `rg -n "exact\\?" <file> || true`.
+- Treat any file with `sorry`/`admit` as DRAFT.
+- `exact?` alone is not a blocker anymore; accept it if the file compiles and uses
+  the real Q3 objects rather than sandbox-local replacements.
+- Extract only compiling lemmas into Q3.
 - Run `lake env lean <file>` after every integration.
 - Keep new kernel (A3_FLOOR) separate from old RKHS.
 - If lemma fails to integrate cleanly: revert that addition and re-request
   Aristotle for that lemma only.
 - Log proof status in DB:
-  `python3 full/q3.lean.aristotle/aristotle_db/parse_lean.py import <file>`
+  `python3 q3.lean.aristotle/aristotle_db/parse_lean.py import <file>`
 
 ---
 
@@ -179,10 +183,12 @@ Limits and quirks (from package inspection):
 ## 5. Download + verification
 
 - Use Aristotle TUI or Python API to download solutions.
-- Save outputs in `full/q3.lean.aristotle/aristotle_output/`.
-- Scan for holes:
-  `rg -n "sorry|exact\\?" aristotle_output/<file>.lean`
-- Only integrate hole-free lemmas.
+- Save outputs in `q3.lean.aristotle/aristotle_output/`.
+- Scan for hard holes:
+  `rg -n "sorry|admit" aristotle_output/<file>.lean`
+- Scan for advisory `exact?`:
+  `rg -n "exact\\?" aristotle_output/<file>.lean || true`
+- Integrate only compiling lemmas in the real project context.
 
 ---
 
@@ -190,14 +196,21 @@ Limits and quirks (from package inspection):
 
 Classify the outcome first, then act:
 
-**A) COMPLETE + hole‑free + compiles**
+**A) COMPLETE + no `sorry`/`admit` + compiles**
 - Integrate immediately (see checklist below).
 
-**B) PARTIAL (есть `sorry` / `exact?`)**
+**B) PARTIAL (есть `sorry` / `admit`)**
 - Treat as draft; extract only hole‑free lemmas.
 - Split the target lemma into smaller sub‑lemmas.
 - Replace unrelated `sorry` with `admit` to focus budget.
 - Add a short `PROVIDED SOLUTION` sketch and resubmit.
+
+**B2) EXACT-SEARCH OUTPUT (`exact?`, но без `sorry` / `admit`)**
+- Do not reject automatically.
+- First compile it in the real Q3 project context.
+- If it compiles and uses the real project objects, it is admissible for local
+  integration or cleanup.
+- If it only works with sandbox-local replacements, reject and narrow the target.
 
 **C) COUNTEREXAMPLE / NEGATION (false statement)**
 - Treat as *reformulation signal*.
@@ -206,7 +219,7 @@ Classify the outcome first, then act:
 
 **D) VALIDATION / IMPORT FAIL**
 - For Q3, use Python API with `auto_add_imports=False`.
-- Ensure the root is `.../full/q3.lean.aristotle`.
+- Ensure the root is `.../q3.lean.aristotle`.
 
 **E) “FILE NOT FOUND” in Aristotle output**
 - Cause: submitted informal `.md` that references a Lean file/path not included.
@@ -242,7 +255,7 @@ Only after A) do we integrate into the main chain.
 
 Queue generator:
 ```
-python3 full/q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 10
+python3 q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 10
 ```
 
 Outputs:
@@ -272,8 +285,8 @@ Outputs:
 
 ## 11. Repo locations
 
-- Inputs: `full/q3.lean.aristotle/aristotle_input/`
-- Outputs: `full/q3.lean.aristotle/aristotle_output/`
-- DB: `full/q3.lean.aristotle/aristotle_db/`
-- Queue: `full/q3.lean.aristotle/ACTIVE/aristotle/queue/`
-- Prompt policy: `full/q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+- Inputs: `q3.lean.aristotle/aristotle_input/`
+- Outputs: `q3.lean.aristotle/aristotle_output/`
+- DB: `q3.lean.aristotle/aristotle_db/`
+- Queue: `q3.lean.aristotle/ACTIVE/aristotle/queue/`
+- Prompt policy: `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`

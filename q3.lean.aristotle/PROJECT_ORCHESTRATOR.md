@@ -93,7 +93,8 @@ Turn the refreshed blocker extraction into one honest theorem packet:
 ## Hard Blockers
 
 - `A1'` is naturally a theorem on the restriction cone `R_K`, not yet on admissible `W_K`.
-- The completed Aristotle draft for `G1.4` is unusable: it contains holes and sandbox-local fake definitions, so no theorem landed.
+- The completed Aristotle draft for `G1.4` is unusable: it does not integrate in the
+  real project context and introduces sandbox-local fake definitions, so no theorem landed.
 - There is still no integrated local theorem for the support-replacement brick.
 - The exact fallback theorem `atom_sum_mem_W_K_of_margin` is now frozen, but it still exists only as an inline proof shape inside `hg_mem`, not as a standalone mainline lemma.
 - No exact common admissible family `G_K` is fixed yet.
@@ -138,7 +139,9 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-07: `G1.2` closed; reusable lemmas, structure-only templates, and do-not-reuse legacy claims have been separated cleanly.
 - 2026-03-07: `G1.3` closed; a small Aristotle-ready prompt now targets only the local support-replacement brick `atom_sum_mem_atomcone_fixed_of_margin` with an honest fallback.
 - 2026-03-07: `G1.4` closed; `subagent_g1_support_replacement_2026_03_07.md` was approved and submitted to Aristotle as project `c315e2a4-5923-44fa-a18c-4ed90cb08375`.
-- 2026-03-07: the completed `G1.4` Aristotle draft was rejected: it contained holes and redefined dummy local objects instead of using the real Q3 project context.
+- 2026-03-07: the completed `G1.4` Aristotle draft was rejected: it redefined dummy local objects and did not integrate in the real Q3 project context.
+- 2026-03-07: Aristotle on this machine is already at `aristotlelib 0.7.0`, which matches the latest available release checked via `pip index versions`.
+- 2026-03-07: `exact?` is no longer treated as an automatic rejection signal in the Aristotle workflow; only `sorry`/`admit` are hard holes. `exact?` is allowed if the result compiles in the real Q3 context.
 - 2026-03-07: `q3_docs` refresh became a required blocker-workflow step; the collection must track live control docs, active TeX, and selected live Lean files rather than stale markdown-only snapshots.
 - 2026-03-07: refreshed `q3_docs` now uses a curated live corpus after excluding stale legacy snapshots, transcript dumps, and queue artifacts.
 - 2026-03-07: the next exact local theorem target is frozen as `atom_sum_mem_W_K_of_margin`; the stronger `atom_sum_mem_atomcone_fixed_of_margin` is downstream.

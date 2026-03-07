@@ -157,7 +157,7 @@ Aristotle читает **английский скетч** только из **�
 
 Добавлен генератор очереди:
 ```
-python3 full/q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 10
+python3 q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 10
 ```
 
 Он создаёт:
@@ -291,7 +291,7 @@ theorem new_result : Q := by
 
 ```bash
 # Активация окружения
-cd /Users/emalam/Documents/GitHub/chen_q3
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
 source .venv/bin/activate
 
 # Безопасность:
@@ -329,9 +329,16 @@ PY
 
 ### После скачивания (обязательная проверка)
 
+`exact?` больше не считаем автоматическим браком. Браком считаем только
+`sorry`/`admit`; `exact?` остаётся advisory-сигналом и допускается, если файл
+компилируется в реальном проектном контексте.
+
 ```bash
-# Скан на “дыры” (в т.ч. exact?) — файлы с дырками считаем DRAFT
-rg -n "sorry|exact\\?" aristotle_output/<project_id>-output.lean
+# Жёсткие дырки: sorry/admit
+rg -n "sorry|admit" aristotle_output/<project_id>-output.lean
+
+# Advisory only: exact?
+rg -n "exact\\?" aristotle_output/<project_id>-output.lean || true
 
 # Быстрая компиляция в проекте (если интегрируем)
 lake env lean <file>
