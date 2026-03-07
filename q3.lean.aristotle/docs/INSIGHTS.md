@@ -1524,3 +1524,63 @@ Consequence for the active proof strategy:
   `Fejer_heat_atom_eq_phi_shifts`,
   but it must allow Aristotle to return a weaker theorem or an explicit obstruction
   if pair/evenized positivity still needs one extra ingredient.
+
+## Synthesis (2026-03-07) — G0 reset loop frozen as project contract
+
+Control-plane decisions:
+- We stay in the current repo; no new physical `work3` clone.
+- The canonical control plane is exactly four files:
+  `PROJECT_ORCHESTRATOR.md`,
+  `IMPLEMENTATION_PLAN.md`,
+  `docs/PAPER_MAINLINE_TRACKER.md`,
+  `docs/INSIGHTS.md`.
+- Precedence is fixed:
+  orchestrator > paper tracker > execution plan > insights.
+- Supporting snapshots such as `docs/CHAIN_STATUS.md` and `ACTIVE/MAIN_CHAIN_DEPS.md`
+  remain useful, but they are now explicitly read-only/supporting and no longer
+  define active frontier or queue state.
+
+Gate-contract decisions:
+- The active project chain is fixed as
+  `T0 -> G0 -> G1 -> G2 -> G3 -> G4 -> G5 -> G6 -> RH`.
+- `G3` is restored as its own gate. This matters operationally:
+  `G2` chooses and freezes the exact admissible family `G_K`,
+  while `G3` proves positivity on that same `G_K`.
+- The reset sprint was `G0`, i.e. a governance/typing sprint rather than new math:
+  `G0.0` numbering/precedence freeze,
+  `G0.1` vocabulary split,
+  `G0.2` closure typing pass,
+  `G0.3` narrative alignment.
+
+Concrete manuscript drift identified before edits:
+- `A1'` is genuinely a theorem on the restriction cone
+  `R_K = C^+_{even}([-K,K])`, not yet on admissible `W_K`.
+- `A2` and the LF route consume admissible `W_K`.
+- `Main_closure.tex` still phrases the density input as if it already lived on `W_K`,
+  so the closure section is ill-typed until `G0/G1` are made explicit.
+- `introduction.tex` still advertises a closed `PSD on each W_K => Weil positivity`
+  chain instead of the gate chain with unresolved `G1-G3`.
+- Lean wrappers in `Q3/Main.lean` and `PaperMainlineAtomRoute.lean` expose useful
+  theorem names, but their docstrings need to say explicitly that the current route
+  still inherits `Q3.prime_term_le_at_t_critical_axiom`.
+
+Result of the reset pass:
+- `PROJECT_ORCHESTRATOR.md`, `IMPLEMENTATION_PLAN.md`,
+  `docs/PAPER_MAINLINE_TRACKER.md`, and `docs/INSIGHTS.md`
+  now agree on the same gate chain, precedence rule, and active frontier.
+- Active manuscript sections now separate `R_K`, `W_K`, and future `G_K` explicitly.
+- `A1'` is now stated as density on `R_K`, while `Main_closure.tex` and the Weil-linkage text stay explicitly conditional on the unresolved closure gates.
+- Lean-facing docstrings in `Q3/Main.lean`, `PaperMainlineAtomRoute.lean`, and `CompatibilityReduction.lean`
+  now describe the exported route as the current compiled route rather than as an already fully closed proof.
+
+Verification bundle completed:
+- `cd full && latexmk -pdf RH_Q3.tex`
+- `cd q3.lean.aristotle && lake env lean Q3/Main.lean`
+- `printf 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3\n' | lake env lean --stdin`
+- Active axiom profile remains:
+  `Q3.Weil_criterion` + `Q3.prime_term_le_at_t_critical_axiom`
+  plus standard `propext`, `Classical.choice`, `Quot.sound`.
+
+Consequence for the next loop:
+- `G0` is now closed.
+- The next honest frontier is `G1.1`: freeze the first support-upgrade theorem on admissible `W_K`.

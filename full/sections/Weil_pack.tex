@@ -1,25 +1,26 @@
 \begin{remark}[Dependency map]\label{rem:weil-dependency}
 The sufficiency argument uses the following chain:
 \[
-  \text{(T0)} \;\Longrightarrow\; \text{(A1$'$)} \overset{\text{dens.}}{\Longrightarrow} \text{(A2)} \overset{\text{cap}}{\Longrightarrow} \mathrm{RKHS}
-  \overset{\text{bridge}}{\Longrightarrow} \text{(A3)} \Longrightarrow Q^\star(t;\Phi)\ge0 \Longrightarrow \text{RH}.
+  \text{(T0)} \;\Longrightarrow\; \text{(G1)} \;\Longrightarrow\; \text{(G2)}
+  \;\Longrightarrow\; \text{(G3)} \;\Longrightarrow\; \text{(G4)}
+  \;\Longrightarrow\; \text{(G5)} \;\Longrightarrow\; \text{(G6)} \;\Longrightarrow\; \text{RH}.
 \]
-Refer to Theorem~\ref{t0:lem:T0} for (T0), Theorem~\ref{a1:thm:A1-local-density} for (A1$'$), Lemma~\ref{a2:lem:A2} for (A2),
-Lemmas~\ref{lem:rkhs-weil-isometry} and \ref{lem:rkhs-rayleigh-sampling-id} for the RKHS/Weil transfer, and Theorem~\ref{thm:A3} for the uniform bridge.
-Every arrow is justified in the proof of Theorem~\ref{thm:weil-sufficiency-pack}.
+Here \textup{(G1)} is the support upgrade from the restriction cone $R_K$ to admissible $W_K$,
+\textup{(G2)} fixes one exact admissible family $G_K\subseteq W_K$,
+\textup{(G3)} proves positivity on that same $G_K$,
+\textup{(G4)} is the compact closure step on each $W_K$,
+\textup{(G5)} is the LF lift to the Weil cone $\mathcal W$,
+and \textup{(G6)} is Weil's criterion.
+The analytic modules A1$'$, A2, A3, and RKHS feed these gates, but they do not by themselves close them.
 \end{remark}
 
 \begin{theorem}[Weil sufficiency pack]\label{thm:weil-sufficiency-pack}
-Assume the hypotheses of Theorem~\ref{thm:Main-positivity}, namely (T0), density \textnormal{(A1$'$)} on each compact $[-K,K]$ (Theorem~\ref{a1:thm:A1-local-density}),
-continuity \textnormal{(A2)} (Lemma~\ref{a2:lem:A2}), the mixed bridge \textnormal{(A3)} (Theorem~\ref{thm:A3}) with uniform margin $c_*>0$, and
-prime control via the uniform RKHS cap (Corollary~\ref{cor:uniform-prime-cap}). Then $Q^\star(t;\Phi)\ge0$ for all $\Phi\in\mathcal W$, and hence the Riemann Hypothesis follows from Weil's positivity criterion.
+Assume the hypotheses of Theorem~\ref{thm:Main-positivity}. Then $Q^\star(t;\Phi)\ge0$ for all $\Phi\in\mathcal W$, and hence the Riemann Hypothesis follows from Weil's positivity criterion.
 \end{theorem}
 
 \begin{proof}
 By Lemma~\ref{lem:rkhs-weil-isometry} the RKHS and Weil pictures are isometric on the working subspace.
 Together with Lemmas~\ref{lem:rkhs-rayleigh-sampling-id} and \ref{a3:lem:prime-L2-trace} we transfer the mixed lower bound of Theorem~\ref{thm:A3}
-to the quadratic functional $Q^\star(t;\cdot)$, while Corollary~\ref{a3:cor:A3_lock_formal} and the uniform prime cap ensure the required margin on each
-compact window $W_K$. Density (Theorem~\ref{a1:thm:A1-local-density}) and continuity (Lemma~\ref{a2:lem:A2}) upgrade positivity from the Fej\'er$\times$heat cone to all of $W_K$,
-and taking the union over $K$ gives $Q^\star(t;\Phi)\ge0$ on the Weil cone $\mathcal W$.
+to the quadratic functional $Q^\star(t;\cdot)$, while Corollary~\ref{a3:cor:A3_lock_formal} and the single-scale prime cap provide the centered positivity input that feeds the unresolved gate \textup{(G3)}. Theorem~\ref{thm:Main-positivity} then supplies positivity on the full Weil cone $\mathcal W$ once the closure gates are assumed.
 Weil's criterion then yields the stated implication.
 \end{proof}

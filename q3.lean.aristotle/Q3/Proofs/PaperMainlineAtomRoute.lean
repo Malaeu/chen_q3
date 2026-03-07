@@ -40,8 +40,11 @@ lemma exists_WK_of_mem_Weil_cone (Φ : ℝ → ℝ) (hΦ : Φ ∈ Weil_cone) :
   exact ⟨hleft, hright⟩
 
 /--
-Paper-style mainline positivity: the current `t_critical` shifted-atom route
-already gives nonnegativity of `Q` on the full Weil cone.
+Paper-style mainline positivity node for the current `t_critical` shifted-atom route.
+
+This theorem packages the active compiled route to Weil-cone positivity. Its
+mathematical honesty still depends on the live scalar placeholder inherited from
+`Q_nonneg_t_critical`.
 -/
 theorem Q_nonneg_on_Weil_cone_current_atom_route :
     ∀ Φ ∈ Weil_cone, Q Φ ≥ 0 := by
@@ -52,9 +55,11 @@ theorem Q_nonneg_on_Weil_cone_current_atom_route :
       K hK Φ hWK
 
 /--
-Riemann Hypothesis from the shifted-atom mainline at `t_critical`.
+Current RH theorem obtained from the shifted-atom mainline at `t_critical`.
 
-This theorem bypasses the legacy `τ = 0` cone and uses the full Weil criterion.
+This theorem bypasses the legacy `τ = 0` cone and uses the full Weil criterion,
+but it should be read as the current compiled route rather than as an already
+fully closed gate-by-gate proof.
 -/
 theorem RH_of_shifted_atom_route : RH := by
   rw [← Weil_criterion]
@@ -64,14 +69,13 @@ end Q3.Proofs.PaperMainlineAtomRoute
 
 namespace Q3
 
-/-- Root-level wrapper for the new full-Weil shifted-atom route. -/
+/-- Root-level wrapper for the current full-Weil shifted-atom route. -/
 theorem Q_nonneg_on_Weil_cone_current_atom_route :
     ∀ Φ ∈ Weil_cone, Q Φ ≥ 0 :=
   Q3.Proofs.PaperMainlineAtomRoute.Q_nonneg_on_Weil_cone_current_atom_route
 
-/-- Root-level RH theorem via the shifted-atom paper mainline. -/
+/-- Root-level RH theorem via the current shifted-atom paper mainline route. -/
 theorem RH_of_shifted_atom_route : RH :=
   Q3.Proofs.PaperMainlineAtomRoute.RH_of_shifted_atom_route
 
 end Q3
-

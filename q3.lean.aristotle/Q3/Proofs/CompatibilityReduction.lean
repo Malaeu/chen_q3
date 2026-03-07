@@ -133,7 +133,8 @@ shifted-window route.
 
 Mathematically this is stronger than what the paper needs. Formally it is useful
 because it exposes a theorem-level `W_K` positivity node while the scalar route is
-being weakened/refactored.
+being weakened/refactored. It still inherits the live scalar placeholder through
+`Q_phi_shift_nonneg_t_critical`.
 -/
 theorem Q_nonneg_on_WK_tcritical_current_shift_route
     (K : ℝ) (hK : K ≥ 1) :
@@ -145,6 +146,9 @@ theorem Q_nonneg_on_WK_tcritical_current_shift_route
 /--
 The same compact-closure theorem, but routed through the exact paper generator
 `Fejer_heat_atom`.
+
+This is the correct paper-facing closure node, but at present it still inherits
+the live scalar placeholder through `Q_Fejer_heat_atom_nonneg_t_critical`.
 -/
 theorem Q_nonneg_on_WK_tcritical_current_atom_route
     (K : ℝ) (hK : K ≥ 1) :

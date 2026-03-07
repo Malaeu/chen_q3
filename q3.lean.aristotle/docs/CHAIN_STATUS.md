@@ -1,6 +1,9 @@
 # Chain Status (shifted evenized `t_critical` route)
 
-**Purpose:** Canonical, minimal chain summary for the current mainline.  
+**Status:** support snapshot only; read this only after the 4 canonical control-docs.
+Gate-state now lives in `PROJECT_ORCHESTRATOR.md`, not here.
+
+**Purpose:** Supporting chain summary for the current mainline.  
 **Current status:** Use `Q3/CheckAxioms.lean` as the authoritative dependency list.  
 **Bridge note (2026-03-06):** active `Q3.Main` no longer uses the old `τ=0`
 margin gate; it now goes through the shifted-atom route and inherits a single

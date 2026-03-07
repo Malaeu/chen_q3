@@ -1,18 +1,24 @@
 \section{Positioning and Scope}\label{sec:scope}
 
-This work introduces a quantitative, modular operator framework for the Weil criterion that transfers positive semidefiniteness (PSD) of structured Toeplitz forms to nonnegativity of the Weil functional on the full test class via symbol regularity, RKHS contraction, and compact-by-compact limits. The scope and boundaries are as follows.
+This work introduces a quantitative, modular operator framework for the Weil criterion. The present draft closes the analytic modules \textup{(T0)}, \textup{(A1$'$)}, \textup{(A2)}, \textup{(A3)}, and \textup{(RKHS)}, but it does \emph{not} yet close the support/closure gates needed to pass from those modules to unconditional Weil positivity on the full cone. The scope and boundaries are as follows.
 
 \begin{itemize}
-  \item \textbf{What this is:} A unified blueprint with explicit constants (modulus of continuity of the symbol, RKHS Gram tail, node spacing, tail cutoffs) that composes into a global positivity statement for $Q^\star(t;\cdot)$.
-  \item \textbf{What this is not:} No claim of new zero-free regions, density results for zeta zeros, or numerical hypotheses about zeros. The pathway works entirely through the Weil criterion.
-  \item \textbf{Modularity:} Local improvements (sharper symbol modulus, tighter spacing/tail estimates, smaller effective weights) increase the contraction slack and propagate to strengthen $Q^\star(t;\Phi)\ge0$ on the Weil class.
-  \item \textbf{Test class:} Even, nonnegative, compactly supported frequency tests.  On $W_K=[-K,K]$ we denote by $\mathcal W_K$ the Fej\'er$\times$heat cone, and by
+  \item \textbf{What this is:} A unified analytic program with explicit constants (symbol modulus, RKHS cap, node spacing, tail control) whose current output is a typed conditional route to Weil positivity.
+  \item \textbf{What this is not:} This draft does not yet claim that the closure chain is fully closed. The unresolved gates are isolated explicitly in Section~\ref{sec:Main-closure}.
+  \item \textbf{Modularity:} Local improvements in the Archimedean symbol, the RKHS cap, or the support upgrade feed only the corresponding gate and do not change the rest of the chain.
+  \item \textbf{Test class:} For each $K>0$ we distinguish
   \[
-    \mathcal W := \bigcup_{K>0} \mathcal W_K
+    R_K := C^+_{\mathrm{even}}([-K,K])
+    \qquad\text{and}\qquad
+    W_K := \bigl\{\Phi\in C_c(\mathbb R): \operatorname{supp}\Phi\subset[-K,K],\ \Phi\ \text{even},\ \Phi\ge 0\bigr\}.
   \]
-  the \textbf{Weil cone}; density and continuity are always invoked inside this cone before taking the inductive limit. In the mainline proof the Fej\'er$\times$heat atoms are fixed at $\tau=0$; shifted variants appear only in the legacy appendix.
-  \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written proofs for the main modules, with Appendix~\ref{app:verification} recording auxiliary machine-checks and Appendix~\ref{app:legacy-branch} archiving legacy branches.
-  \item \textbf{Computation:} Symbol scans and PSD checks are reproducibility aids only; they do not enter the logical core of the proofs.
+  The global Weil cone is
+  \[
+    \mathcal W := \bigcup_{K>0} W_K.
+  \]
+  The density theorem A1$'$ is currently a theorem on the restriction cone $R_K$, while A2 and the LF route live on the admissible support cone $W_K$. The future common admissible generator family is denoted by $G_K\subseteq W_K$.
+  \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} packages the unresolved gates. Appendix~\ref{app:legacy-branch} keeps legacy branches as read-only provenance only.
+  \item \textbf{Computation:} Symbol scans, ATP logs, and certificate tables are reproducibility aids only; they do not enter the logical core of the active proof chain.
 \end{itemize}
 
 \medskip
@@ -21,29 +27,41 @@ and a Rayleigh prime block, i.e., $T_M[P_A](t,B,M)$ versus $T_P^{\mathrm{Ray}}(t
 The symbol barrier yields $\lambda_{\min}(T_M[P_A])\ge c_* - C\,\omega_{P_A}(1/(2M))$, where
 $c_* = \tfrac{11}{10}$ is the \textbf{uniform Archimedean floor} from Lemma~\ref{lem:uniform-arch-floor}
 (for $t=t_{\mathrm{crit}}=\tfrac{3}{20}=0.15$, $B_{\min}=3$), valid on the full circle $\TT$ and independent of $K$.
-The prime norm is bounded in the Arch-induced RKHS by the uniform cap
+The prime norm is bounded in the Arch-induced RKHS by the single-scale cap
 \[
-  \|T_P^{\mathrm{RKHS}}(1)\|\le \rho(1),
+  \|T_P^{\mathrm{RKHS}}(t_{\mathrm{crit}})\|\le \rho(t_{\mathrm{crit}})\le c_*/4,
 \]
-at the fixed analytic gate scale $t_{\mathrm{rkhs}}=1$ (Corollary~\ref{cor:pcu-uniform}). Thus
+at the bridge scale $t_{\mathrm{crit}}=3/20$ (Corollary~\ref{cor:uniform-prime-cap}). A stronger auxiliary cap at $t=1$ is recorded in Corollary~\ref{cor:pcu-uniform}. Thus
 \[
   \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ \ge\ \min P_A\ -\ C\,\omega_{P_A}(1/(2M))\ -\ \rho(t),
 \]
-closing the bridge module and feeding the remaining steps.
+closing the A3/RKHS analytic bridge. What remains is to feed this centered positivity mechanism into the correct admissible closure gates.
 
-\section{Global Hypotheses}\label{sec:global-hyp}
+\section{Gate Contract}\label{sec:global-hyp}
 
-For reference we collect the global hypotheses used in the closure section. Each item is proved in the indicated place and recorded explicitly so that Theorem~\ref{thm:Main-positivity} and the Weil linkage (Section~\ref{sec:Weil}) invoke a single hypothesis list.
+For reference we collect the live proof contract used in the closure section.
 
 \begin{description}
-  \item[(H1)] $(\mathrm{T0})$ --- Guinand--Weil normalization of $Q^\star(t;\cdot)$ (Proposition~\ref{prop:T0-GW}).
-  \item[(H2)] $(\mathrm{A1}')$ --- Density of the Fej\'er$\times$heat cone on every $W_K$ (Theorem~\ref{a1:thm:A1-local-density}).
-  \item[(H3)] $(\mathrm{A2})$ --- Lipschitz continuity of $Q^\star(t;\cdot)$ on each $W_K$ (Lemma~\ref{a2:lem:A2} and Corollary~\ref{a2:cor:explicit-lip}).
-  \item[(H4)] $(\mathrm{A3})$ --- Toeplitz bridge with the explicit uniform floor $c_*>0$ (Lemma~\ref{lem:uniform-arch-floor}) and uniform discretisation threshold $M_0^{\mathrm{unif}}$ (Theorem~\ref{thm:A3}).
-  \item[(H5)] $(\mathrm{RKHS})$ --- prime contraction via the fixed analytic gate $t_{\mathrm{rkhs}}=1$: $\|T_P^{\mathrm{RKHS}}(1)\|\le \rho(1)<1/25<c_*/4$ (Corollary~\ref{cor:pcu-uniform}).
+  \item[(T0)] Guinand--Weil normalization of $Q^\star(t;\cdot)$ (Proposition~\ref{prop:T0-GW}).
+  \item[(G0)] Domain/type repair: explicitly distinguish the restriction cone $R_K$, the admissible support cone $W_K$, and the future generator family $G_K$.
+  \item[(G1)] Support upgrade: either density inside admissible $W_K$, or a restriction-to-support replacement theorem with explicit $Q^\star$-error control.
+  \item[(G2)] Common family: fix one exact admissible generator family $G_K\subseteq W_K$ implementing the `G1` route.
+  \item[(G3)] Positivity on that same family $G_K$.
+  \item[(G4)] Compact closure on each $W_K$ using `A2` continuity and the exact family from `G2/G3`.
+  \item[(G5)] LF lift from all $W_K$ to the global Weil cone $\mathcal W$.
+  \item[(G6)] Weil linkage: positivity on $\mathcal W$ implies RH.
 \end{description}
 
-Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} establish (H1)--(H5); the closure Theorem~\ref{thm:Main-positivity} assumes precisely these hypotheses, and Theorem~\ref{thm:RH} invokes (H1)--(H5) together with Weil's criterion.
+The current manuscript establishes the analytic modules behind these gates:
+
+\begin{itemize}
+  \item `T0` in Section~\ref{sec:T0};
+  \item `A1$'$` as density on $R_K$ in Section~\ref{sec:A1};
+  \item `A2` as continuity on admissible compact tests in Section~\ref{sec:A2};
+  \item `A3` and `RKHS` as the centered positivity mechanism in Sections~\ref{sec:A3} and \ref{sec:RKHS}.
+\end{itemize}
+
+What remains unresolved in the present draft are exactly `G1`, `G2`, and `G3`; Section~\ref{sec:Main-closure} packages `G4` and `G5` conditionally on them, and Section~\ref{sec:Weil-linkage} supplies `G6`.
 
 \section{Notation and Conventions}\label{sec:notation}
 
@@ -58,27 +76,83 @@ and prime nodes are at $\xi_n=\tfrac{\log n}{2\pi}$ with symmetric placement $\p
   w_Q(n) &= \frac{2\Lambda(n)}{\sqrt{n}}
   &&\text{(the one-sided weight inside $Q^\ast(t;\Phi)$)}, \\
   w_{\mathrm{RKHS}}(n) &= \frac{\Lambda(n)}{\sqrt{n}}
-  &&\text{(the operator weight on $W_K$)}.
+  &&\text{(the operator weight in the RKHS analysis)}.
 \end{aligned}
 \]
 Evenization lets us pass freely between them: doubling $w_{\mathrm{RKHS}}$ on $\xi_n>0$ gives $w_Q$, while placing both $\pm\xi_n$ leaves $w_{\mathrm{RKHS}}$ unchanged. All RKHS and operator bounds below use $w_{\mathrm{RKHS}}$; we abbreviate $w_{\max}:=\sup_n w_{\mathrm{RKHS}}(n)\le 2/e$. Throughout we use
 \[
   Q^\star(t;\Phi)=\int_{\mathbb{R}} a_*(\xi)\,\Phi(\xi)\,d\xi\;-\;\sum_{n\ge2} w_Q(n)\,\Phi(\xi_n),
 \]
-with the A3 symbol scale fixed at $t=t_{\mathrm{crit}}$ and the RKHS prime gate fixed at $t_{\mathrm{rkhs}}=1$; Section~\ref{sec:T0} records the exact crosswalk to the Guinand--Weil form.  (We call $Q^\star$ “quadratic” only because $\Phi=g*g^{\vee}$; as a functional of $\Phi$ it is linear.) Notational summaries and parameter tables are collected in Appendix~\ref{app:notation}.
+with the bridge scale fixed at $t=t_{\mathrm{crit}}$; Section~\ref{sec:T0} records the exact crosswalk to the Guinand--Weil form.  (We call $Q^\star$ “quadratic” only because $\Phi=g*g^{\vee}$; as a functional of $\Phi$ it is linear.) Notational summaries and parameter tables are collected in Appendix~\ref{app:notation}.
 
 \subsection*{Quick reference for reviewers}\label{sec:quick-ref}
 \begin{tcolorbox}[colback=white,colframe=black!60]
-\textbf{Architecture.} T0 $\to$ A1$'$ $\to$ A2 $\to$ A3 $\to$ RKHS $\to$ Main closure.
-\textbf{Goal:} $Q^\star(t;\Phi)\ge0$ on the Weil cone $\mathcal W$.
+\textbf{Architecture.} `T0 -> G0 -> G1 -> G2 -> G3 -> G4 -> G5 -> G6`.
+\textbf{Goal.} After `G1-G5` are closed, obtain $Q^\star(t;\Phi)\ge0$ on the Weil cone $\mathcal W$ and conclude RH via `G6`.
 
-\textbf{Mainline gate choice.} A3 uses the symbol scale $t=t_{\mathrm{crit}}$, while the prime cap is taken at the fixed analytic gate $t_{\mathrm{rkhs}}=1$.
+\textbf{Analytic modules already written.} A1$'$ is density on $R_K$; A2 is continuity on $W_K$; A3 and RKHS feed the future positivity gate `G3`.
 
 \textbf{Uniform margins.} Global Arch floor $c_\ast=\tfrac{11}{10}$ is supplied explicitly by
-Lemma~\ref{lem:uniform-arch-floor} (with $t=t_{\mathrm{crit}}=3/20=0.15$, $B_{\min}=3$). The prime cap is set by
-$\rho(1)<1/25<c_\ast/4$ (Corollary~\ref{cor:pcu-uniform}), ensuring $\|T_P^{\mathrm{RKHS}}(1)\|\le c_\ast/4$.
+Lemma~\ref{lem:uniform-arch-floor} (with $t=t_{\mathrm{crit}}=3/20=0.15$, $B_{\min}=3$). The prime cap used in the bridge is
+$\rho(t_{\mathrm{crit}})\le c_\ast/4$ (Corollary~\ref{cor:uniform-prime-cap}); the auxiliary bound $\rho(1)<1/25<c_\ast/4$ is recorded separately in Corollary~\ref{cor:pcu-uniform}.
 Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mathrm{Ray}}(t,M)\|\le c_\ast/4$
-\ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ge c_\ast/4$.
+\ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ge c_\ast/4$ on the centered bridge family.
 
 \textbf{Uniform constants.} $t_{\mathrm{crit}}=3/20=0.15$, $B_{\min}=3$, $c_\ast=\tfrac{11}{10}$; see Appendix~\ref{app:notation} for $M_0^{\mathrm{unif}}$.
 \end{tcolorbox}
+
+\begin{center}
+  \small\textbf{Dependency map for the active chain}
+\end{center}
+\begin{center}
+  \small
+  \begin{tabular}{lll}
+    \hline
+    Module / gate & Key statement & Consumed by \\
+    \hline
+    $\mathrm{T0}$ & Proposition~\ref{prop:T0-GW} (Guinand--Weil normalization) & $\mathrm{G6}$ \\
+    $\mathrm{A1'}$ & Theorem~\ref{a1:thm:A1-local-density} (Density on $R_K$) & $\mathrm{G1}$ \\
+    $\mathrm{A2}$ & Lemma~\ref{a2:lem:A2} / Corollary~\ref{a2:cor:explicit-lip} (Continuity on $W_K$) & $\mathrm{G4}$, $\mathrm{G5}$ \\
+    $\mathrm{A3}$ & Theorem~\ref{thm:A3} (Centered Toeplitz bridge) & $\mathrm{G3}$ \\
+    RKHS & Corollary~\ref{cor:uniform-prime-cap} (Centered prime cap) & $\mathrm{G3}$ \\
+    $\mathrm{G1}$ & support upgrade to admissible $W_K$ & $\mathrm{G2}$, $\mathrm{G4}$ \\
+    $\mathrm{G2}$ & exact admissible family $G_K$ & $\mathrm{G3}$, $\mathrm{G4}$ \\
+    $\mathrm{G3}$ & positivity on $G_K$ & $\mathrm{G4}$ \\
+    $\mathrm{G4}$ & compact closure on each $W_K$ & $\mathrm{G5}$ \\
+    $\mathrm{G5}$ & LF lift to $\mathcal W$ & $\mathrm{G6}$ \\
+    $\mathrm{G6}$ & Theorem~\ref{thm:Weil-criterion} (Weil criterion) & RH \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\noindent\textbf{Assumption stack.} When we write ``under the analytic modules $(\mathrm{T0})+(\mathrm{A1'})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{RKHS})$'' we mean only the analytic inputs already established in the draft. Any passage from those modules to positivity on the full Weil cone additionally requires the unresolved closure gates `G1-G5`.
+
+\noindent\textbf{Verification aids.} Appendix~\ref{app:verification} records reproducibility collateral; Appendix~\ref{app:digamma-computation} records an analytic framework and optional numerical exploration. These materials are not used as premises in any theorem. All bounds invoked in the active chain are proved in-line from explicit analytic estimates.
+
+\subsection{Contemporary Context and Inspiration}
+
+This work was inspired by several recent developments in analytic number theory, computational complexity, and mathematical logic:
+
+\begin{itemize}
+  \item \textbf{Analytic criteria.} Li's positivity sequence~\cite{Li1997} and the Jensen polynomial programme of Griffin--Ono--Rolen--Zagier~\cite{GriffinOnoRolenZagier2019} give logically equivalent restatements of RH; both inspire our insistence on keeping every cone generator and Lipschitz bound explicit.
+
+  \item \textbf{Zero-density breakthroughs.} The new Dirichlet-polynomial bounds of Guth and Maynard~\cite{GuthMaynard2024} illustrate how much can be gained by encoding the zeta problem as a spectral estimate, a viewpoint we adopt through the Toeplitz bridge.
+
+  \item \textbf{Near-miss invariants.} Rodgers and Tao's work on the de Bruijn--Newman constant~\cite{rodgers2020debruijn} shows that RH may be ``barely true'', motivating a watchdog table that certifies every slack we introduce along the chain.
+
+  \item \textbf{Geometric and noncommutative ideas.} Fesenko's two-dimensional adelic programme~\cite{Fesenko2008} and the Connes--Marcolli noncommutative approach~\cite{ConnesMarcolli2008} highlight how positivity hinges on careful operator factorizations, reinforcing our choice to stay within verifiable Toeplitz/RKHS settings.
+
+  \item \textbf{Physical operator heuristics.} PT-symmetric constructions such as Bender--Brody--M\"uller~\cite{BenderBrodyMuller2017} keep the Hilbert--P\'olya dream alive; our framework aims to supply the missing rigorous operator inequalities.
+
+  \item \textbf{Geometric flows and smoothing.} Perelman's Ricci-flow programme~\cite{Perelman2002,Perelman2003} shows how parabolic averaging can enforce global structure; we mirror that philosophy by pairing Fej\'er kernels with heat-flow smoothing in the Toeplitz bridge.
+
+  \item \textbf{Programmatic limit architectures.} Deng--Hani--Ma~\cite{DengHaniMa2025Hilbert6} present a two-step limiting program (Newtonian dynamics $\to$ Boltzmann $\to$ fluid equations) that highlights how long-time control stabilizes successive limits; our compact-by-compact transfer plays an analogous ``bridge'' role for the Weil criterion.
+
+  \item \textbf{Trace-formula-to-gap pipelines.} Anantharaman--Monk~\cite{AnantharamanMonk2025FR} use length-spectrum data and trace-formula technology to obtain asymptotic spectral gaps for random hyperbolic surfaces, a context that reinforces why spectral/trace language is a natural narrative for Weil-criterion positivity (here ``Weil--Petersson'' is unrelated to the Weil criterion).
+
+  \item \textbf{Massive computations.} Platt and Trudgian's verification of RH up to $3\cdot10^{12}$~\cite{PlattTrudgian2021}, together with surveys like Conrey's~\cite{Conrey2003}, emphasise the need for transparent, audit-friendly proofs rather than ever-larger numerics.
+
+  \item \textbf{Cautionary analyses.} Cairo's audit of proposed counterexamples~\cite{cairo2025counterexample} underlines how fragile heuristic arguments can be; we therefore keep every analytic assumption explicit and machine-checkable.
+\end{itemize}
+
+\noindent While these works influenced our methodology, our approach is fundamentally distinct: we construct a self-contained, verifiable chain from Toeplitz positivity to Weil positivity, with all critical steps amenable to formal verification.

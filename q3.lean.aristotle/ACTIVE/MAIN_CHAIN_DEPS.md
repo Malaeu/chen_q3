@@ -1,6 +1,9 @@
 # Main Chain Dependencies vs Repo Legacy (2026-03-06 16:40)
 
-**Purpose:** Separate *actual main-chain blockers* from legacy/sandbox noise.  
+**Status:** support snapshot only; read this only after `PROJECT_ORCHESTRATOR.md`.
+This file does not decide the active frontier or queue state.
+
+**Purpose:** Supporting dependency snapshot separating *actual main-chain blockers* from legacy/sandbox noise.  
 **Current status:** compiled `Q3.Main.RH_of_Weil_and_Q3` now depends on
 **2 project axioms**:
 `Q3.Weil_criterion` and `Q3.prime_term_le_at_t_critical_axiom`.

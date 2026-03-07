@@ -11,14 +11,19 @@
 Symbol & Meaning & Space/parameters \\
 \midrule
 $t$ & single heat scale & $t_0=1/(16\pi^2 t)$ \\
-$\Phi_{B,t}$ & Fej\'er$\times$heat window ($\tau=0$) & bandwidth $B$, heat scale $t$ \\
-$Q^\star(t;\Phi)$ & Weil functional with explicit $t$ & $\Phi$ on a compact window $W_K$ \\
+$R_K$ & restriction cone & $C^+_{\mathrm{even}}([-K,K])$ \\
+$W_K$ & admissible support cone & even, nonnegative, compactly supported tests in $[-K,K]$ \\
+$G_K$ & future common admissible generator family & $\subseteq W_K$ \\
+$\Phi_{B,t,\tau}$ & shifted evenized Fej\'er$\times$heat window & bandwidth $B$, heat scale $t$, shift $\tau$ \\
+$Q^\star(t;\Phi)$ & Weil functional with explicit $t$ & $\Phi$ on $R_K$ or on admissible $W_K$ depending on the gate \\
 $T_M[P_A](t,B,M)$ & Toeplitz block for $P_A$ & $\CC^{2M+1}$ \\
 $T_P^{\mathrm{Ray}}(t,M)$ & prime sampling block (Rayleigh) & $\CC^{2M+1}$ \\
 $T_P^{\mathrm{RKHS}}(t)$ & prime operator on RKHS & $\mathcal H_t$, cap $\rho(t)$ \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\noindent The density module A1$'$ is currently formulated on the restriction cone $R_K$ using the shifted family $\Phi_{B,t,\tau}$, while A2 and the LF route live on the admissible support cone $W_K$. The unresolved closure gates are therefore: support upgrade from $R_K$ to $W_K$, identification of one exact admissible family $G_K\subseteq W_K$, and positivity on that same $G_K$.
 
 \begin{tcolorbox}[colback=white,colframe=black!60]
 \textbf{WRONG:} $T_P$, $Q$, $\rho$ (naked, ambiguous).\\
