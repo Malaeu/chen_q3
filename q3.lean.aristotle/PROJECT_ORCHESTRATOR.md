@@ -122,7 +122,10 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
 6. reject the old `A3-pd` uniform-floor route on the dense packet family,
 7. make `PSD-pd` explicit as the packet-kernel theorem
    `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets,
-8. keep Aristotle `G1.6` as background lemma-mining only.
+8. record the two surviving strategy families for `PSD-pd`
+   (Herglotz/Bochner versus prime-factorization / kernel route),
+9. choose one of them as the primary proof route for the next mathematical sprint,
+10. keep Aristotle `G1.6` as background lemma-mining only.
 
 ## Hard Blockers
 
