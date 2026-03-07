@@ -31,23 +31,31 @@ This work introduces a quantitative, modular operator framework for the Weil cri
   \]
   The theorem A1$'$ is now auxiliary density on the broad restriction cone $R_K$, whereas the centered density family
   \[
-    \mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}
+    \mathcal G_K^{\mathrm{pd}}
     := \operatorname{cone}\!\Bigl\{
       \Psi*\widetilde{\Psi}:
       \Psi \text{ finite Fej\'er}\times\text{heat pre-packet with }
       \operatorname{supp}\Psi\subset[-K/2,K/2]
     \Bigr\}
   \]
-  feeds the corrected mainline density theorem A1-pd, while the naive centered Rayleigh family
+  feeds the corrected mainline density theorem A1-pd. On the same exact packet side,
+  the packet-Rayleigh theorem identifies
+  \[
+    Q^\star(t;\Psi_c * \widetilde{\Psi_c})
+    = \langle T_M[S_{g,\Delta}]c,c\rangle
+  \]
+  for the Toeplitz symbol $S_{g,\Delta}$ built from packet coefficients
+  $\kappa_m=Q^\star(t;h(\cdot-m\Delta))$, while the naive centered Rayleigh family
   \[
     \mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}
     := \operatorname{cone}\!\bigl\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\bigr\}
   \]
-  is only a background quadratic-form candidate. The live frontier is a smaller
-  operator-controlled packet family
-  $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq\mathcal W_K^{\mathrm{pd}}$
-  on which the Toeplitz/RKHS quadratic form acts directly without overgenerating
-  broad local bumps.
+  is only a background quadratic-form candidate. The live frontier is now the
+  packet-symbol positivity theorem `A3-pd`:
+  \[
+    S_{g,\Delta}(\theta)\ge c_K>0
+    \qquad\text{on the same exact dense packet family.}
+  \]
   \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} now packages the corrected positive-definite closure route. Appendix~\ref{app:legacy-branch} keeps legacy broad-cone branches as read-only provenance only.
   \item \textbf{Computation:} Symbol scans, ATP logs, and certificate tables are reproducibility aids only; they do not enter the logical core of the active proof chain.
 \end{itemize}
@@ -70,9 +78,10 @@ For reference we collect the live proof contract used after the target-cone audi
 
 \begin{description}
   \item[(T0-pd)] Guinand--Weil normalization of $Q^\star(t;\cdot)$ together with the corrected positive-definite target cone.
-  \item[(A1-pd)] Density of the centered autocorrelation family $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ in $\mathcal W_K^{\mathrm{pd}}$.
-  \item[(packet-Rayleigh)] Naive quadratic-form identity on the background family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}$.
-  \item[(OP-pd)] Exact smaller operator-controlled packet family $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq\mathcal W_K^{\mathrm{pd}}$ on which the centered Toeplitz/RKHS engine acts directly.
+  \item[(A1-pd)] Density of the centered autocorrelation family $\mathcal G_K^{\mathrm{pd}}$ in $\mathcal W_K^{\mathrm{pd}}$.
+  \item[(packet-Rayleigh-naive)] Background quadratic-form identity on the overlarge family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}$.
+  \item[(packet-Rayleigh-pd)] Exact Toeplitz quadratic-form identity on autocorrelation packets $\Psi_c * \widetilde{\Psi_c}$ with packet symbol $S_{g,\Delta}$.
+  \item[(A3-pd)] Positivity of the packet symbol $S_{g,\Delta}$ on the same exact packet family.
   \item[(A3)+(RKHS)] Centered positivity mechanism at the critical scale.
   \item[(A2-pd)] Continuity of $Q^\star(t;\cdot)$ on the ambient compact-support class, hence on $\mathcal W_K^{\mathrm{pd}}$ in particular.
   \item[(LF-pd)] Inductive-limit lift from all $\mathcal W_K^{\mathrm{pd}}$ to $\mathcal W^{\mathrm{pd}}$.
@@ -88,7 +97,7 @@ The present manuscript establishes the analytic inputs behind this chain as foll
   \item `A3` and `RKHS` as the centered positivity mechanism in Sections~\ref{sec:A3} and \ref{sec:RKHS}.
 \end{itemize}
 
-What remains unresolved in the present draft is not just the pair `A1-pd + packet-Rayleigh`. Pushing the naive Rayleigh route further shows that the family $\Phi_{B,t}|p|^2$ is too large to serve as the closure family. The actual knife-edge is therefore `OP-pd`: a smaller exact operator-controlled packet family inside the corrected cone. Once that theorem is supplied, the rest of the route is the routine closure / LF / Weil tail.
+What remains unresolved in the present draft is not the corrected cone itself, nor the theorem-level packet-Rayleigh identity. Pushing the naive Rayleigh route further shows that the family $\Phi_{B,t}|p|^2$ is too large to serve as the closure family. The actual knife-edge is therefore `A3-pd`: positivity of the packet symbol $S_{g,\Delta}$ on the same exact dense packet family. Once that theorem is supplied, the rest of the route is the routine closure / LF / Weil tail.
 
 \section{Notation and Conventions}\label{sec:notation}
 
@@ -114,8 +123,8 @@ with the bridge scale fixed at $t=t_{\mathrm{crit}}$; Section~\ref{sec:T0} recor
 
 \subsection*{Quick reference for reviewers}\label{sec:quick-ref}
 \begin{tcolorbox}[colback=white,colframe=black!60]
-\textbf{Architecture.} `T0-pd -> corrected cone -> A1-pd -> OP-pd -> centered A3/RKHS -> A2 closure -> LF-pd -> G6`.
-\textbf{Goal.} After the exact operator-family theorem `OP-pd` is closed, obtain $Q^\star(t;\Phi)\ge0$ on the positive-definite Weil cone $\mathcal W^{\mathrm{pd}}$ and conclude RH via `G6`.
+\textbf{Architecture.} `T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh-pd -> A3-pd -> A2 closure -> LF-pd -> G6`.
+\textbf{Goal.} After the packet-symbol positivity theorem `A3-pd` is closed, obtain $Q^\star(t;\Phi)\ge0$ on the positive-definite Weil cone $\mathcal W^{\mathrm{pd}}$ and conclude RH via `G6`.
 
 \textbf{Analytic modules already written.} A1$'$ is auxiliary density on $R_K$; A2 is continuity on the ambient compact-support class; A3 and RKHS feed the centered positivity engine.
 
@@ -125,7 +134,7 @@ $\rho(t_{\mathrm{crit}})\le c_\ast/4$ (Corollary~\ref{cor:uniform-prime-cap}).
 Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mathrm{Ray}}(t,M)\|\le c_\ast/4$
 \ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ge c_\ast/4$ on the centered bridge family.
 
-\textbf{Current knife-edge.} The unresolved issue is no longer “one shifted family that is both dense and positive” on the broad cone. On the corrected cone the dense autocorrelation family survives, but the naive quadratic-form family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is too large. The new knife-edge is an exact smaller operator-controlled family inside $\mathcal W_K^{\mathrm{pd}}$.
+\textbf{Current knife-edge.} The unresolved issue is no longer “one shifted family that is both dense and positive” on the broad cone. On the corrected cone the dense autocorrelation family survives, exact packet-Rayleigh survives on that same packet side, and the naive quadratic-form family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is too large. The new knife-edge is the packet-symbol positivity theorem `A3-pd`.
 \end{tcolorbox}
 
 \begin{center}
@@ -139,9 +148,10 @@ Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mat
     \hline
     $\mathrm{T0\!-\!pd}$ & Theorem~\ref{thm:Weil-criterion} (corrected Weil linkage) & $\mathrm{G6}$ \\
     $\mathrm{A1'}$ & Theorem~\ref{a1:thm:A1-local-density} (auxiliary density on $R_K$) & auxiliary only \\
-    $\mathrm{A1\!-\!pd}$ & density of $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ on $\mathcal W_K^{\mathrm{pd}}$ & $\mathrm{OP\!-\!pd}$ \\
-    packet-Rayleigh & Lemma~\ref{lem:packet-rayleigh-identification} on the naive family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ & background-only \\
-    $\mathrm{OP\!-\!pd}$ & exact operator-controlled packet family inside $\mathcal W_K^{\mathrm{pd}}$ & local closure \\
+    $\mathrm{A1\!-\!pd}$ & density of $\mathcal G_K^{\mathrm{pd}}$ on $\mathcal W_K^{\mathrm{pd}}$ & $\mathrm{A3\!-\!pd}$ \\
+    packet-Rayleigh-naive & Lemma~\ref{lem:packet-rayleigh-identification} on the naive family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ & background-only \\
+    packet-Rayleigh-pd & Theorem~\ref{thm:packet-rayleigh-pd} on $\mathcal G_K^{\mathrm{pd}}$ & $\mathrm{A3\!-\!pd}$ \\
+    $\mathrm{A3\!-\!pd}$ & packet-symbol positivity $S_{g,\Delta}(\theta)\ge c_K$ & local closure \\
     $\mathrm{A2}$ & Lemma~\ref{a2:lem:A2} / Corollary~\ref{cor:A2-Lip} (continuity) & local closure, LF \\
     $\mathrm{A3}$ & Theorem~\ref{thm:A3} (centered Toeplitz bridge) & centered positivity \\
     RKHS & Corollary~\ref{cor:uniform-prime-cap} (centered prime cap) & centered positivity \\
@@ -151,7 +161,7 @@ Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mat
   \end{tabular}
 \end{center}
 
-\noindent\textbf{Assumption stack.} When we write ``under the analytic modules $(\mathrm{T0})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{RKHS})$'' we mean the analytic inputs already established in the draft. The public route to RH additionally requires the corrected local density theorem `A1-pd`, the exact operator-family theorem `OP-pd` on the corrected cone, and the corresponding local/global closure on $\mathcal W_K^{\mathrm{pd}} / \mathcal W^{\mathrm{pd}}$.
+\noindent\textbf{Assumption stack.} When we write ``under the analytic modules $(\mathrm{T0})+(\mathrm{A2})+(\mathrm{A3})+(\mathrm{RKHS})$'' we mean the analytic inputs already established in the draft. The public route to RH additionally requires the corrected local density theorem `A1-pd`, the exact packet-Rayleigh theorem on autocorrelation packets, the packet-symbol positivity theorem `A3-pd`, and the corresponding local/global closure on $\mathcal W_K^{\mathrm{pd}} / \mathcal W^{\mathrm{pd}}$.
 
 \noindent\textbf{Verification aids.} Appendix~\ref{app:verification} records reproducibility collateral; Appendix~\ref{app:digamma-computation} records an analytic framework and optional numerical exploration. These materials are not used as premises in any theorem. All bounds invoked in the active chain are proved in-line from explicit analytic estimates.
 

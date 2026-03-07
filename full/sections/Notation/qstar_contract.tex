@@ -18,10 +18,15 @@ $\mathcal W_{K,0}^{\mathrm{pd}}$ & local positive-definite seed set & $\{\psi*\w
 $\mathcal W_K^{\mathrm{pd}}$ & corrected local Weil cone & $\overline{\operatorname{cone}(\mathcal W_{K,0}^{\mathrm{pd}})}^{\|\cdot\|_\infty}\subset B_K$ \\
 $\mathcal W^{\mathrm{pd}}$ & corrected global Weil cone & $\varinjlim_{K\to\infty}\mathcal W_K^{\mathrm{pd}}$ \\
 $\mathcal P_K(t_0)$ & pre-square packet span & $\operatorname{span}\{g_{\delta,\tau}: |\tau|+\delta\le K/2\}$ \\
-$\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ & dense autocorrelation packet family & $\operatorname{cone}\{\Psi*\widetilde\Psi:\ \Psi\in\mathcal P_K(t_0)\}$ \\
+$\mathcal G_K^{\mathrm{pd}}$ & dense autocorrelation packet family & $\operatorname{cone}\{\Psi*\widetilde\Psi:\ \Psi\in\mathcal P_K(t_0)\}$ \\
 $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ & naive centered Rayleigh family & background candidate $\operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}$ \\
-$\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}$ & exact operator-controlled packet family & centered family to be frozen inside $\mathcal W_K^{\mathrm{pd}}$ \\
-$\Phi_{B,t,p}$ & centered Rayleigh test & element of $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ \\
+$\Psi_c$ & finite pre-packet & $\Psi_c(x)=\sum_{j=-M}^M c_j g(x-j\Delta)$ \\
+$h$ & packet autocorrelation kernel & $h=g*\widetilde g$ \\
+$\kappa_m$ & Toeplitz coefficient sequence & $\kappa_m=Q^\star(t;h(\cdot-m\Delta))$ \\
+$S_{g,\Delta}$ & packet Toeplitz symbol & $S_{g,\Delta}(\theta)=\sum_{m\in\mathbb Z}\kappa_m e^{-im\theta}$ \\
+$A_{g,\Delta}$ & Archimedean packet symbol part & $\sum_m e^{-im\theta}\int a(\xi)\,h(\xi-m\Delta)\,d\xi$ \\
+$P_{g,\Delta}$ & prime packet symbol part & $\sum_m e^{-im\theta}\sum_n w(n)\,h(\xi_n-m\Delta)$ \\
+$H_{g,\Delta,\theta}$ & twisted periodization of $h$ & $\sum_m h(\xi-m\Delta)e^{-im\theta}$ \\
 $\Phi_{B,t,\tau}$ & shifted evenized Fej\'er$\times$heat window & bandwidth $B$, heat scale $t$, shift $\tau$ \\
 $Q^\star(t;\Phi)$ & Weil functional with explicit $t$ & $\Phi$ on the ambient/support side or on the corrected cone \\
 $T_M[P_A](t,B,M)$ & Toeplitz block for $P_A$ & $\CC^{2M+1}$ \\
@@ -40,13 +45,15 @@ Weil criterion. Accordingly:
   \item A2 supplies continuity on the ambient compact-support side and therefore on
   $\mathcal W_K^{\mathrm{pd}}$ in particular;
   \item the density theorem A1-pd concerns the family
-  $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ inside $\mathcal W_K^{\mathrm{pd}}$;
+  $\mathcal G_K^{\mathrm{pd}}$ inside $\mathcal W_K^{\mathrm{pd}}$;
   \item the naive packet-Rayleigh identity on
   $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is background-only, because that family
   is too large to serve as the public closure family;
-  \item the honest remaining knife-edge is `OP-pd`: an exact operator-controlled
-  packet family $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq\mathcal W_K^{\mathrm{pd}}$
-  on which the centered Toeplitz/RKHS engine acts directly;
+  \item the exact packet-Rayleigh theorem lives on autocorrelation packets
+  $\Psi_c * \widetilde{\Psi_c}$ with Toeplitz symbol $S_{g,\Delta}$;
+  \item the honest remaining knife-edge is `A3-pd`: prove packet-symbol positivity
+  $S_{g,\Delta}(\theta)=A_{g,\Delta}(\theta)-P_{g,\Delta}(\theta)\ge c_K>0$
+  on that same exact dense packet family;
   \item the centered A3/RKHS positivity mechanism is kept as the positivity engine
   for that corrected cone.
 \end{itemize}

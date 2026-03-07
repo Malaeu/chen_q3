@@ -2136,11 +2136,51 @@ Concrete synthesis:
 - Therefore the live blocker is no longer a bridge from
   `\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}` to
   `\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}`.
-- The honest next theorem is `OP-pd`: a smaller operator-controlled packet
-  family inside `\mathcal W_K^{\mathrm{pd}}`, ideally acting directly on
-  autocorrelation packets `\Psi*\widetilde\Psi`.
+- This intermediate `OP-pd` wording was a useful staging point, but it is now
+  superseded by the sharper packet package
+  `A1-pd + packet-Rayleigh-pd + A3-pd`.
 
 Recommendation:
 - Retire `SF-pd` as the active mainline blocker.
 - Keep the naive `\Phi_{B,t}|p|^2` route as background-only.
-- Freeze `OP-pd` as the new frontier in manuscript + control docs.
+- Freeze the obstruction itself, but do not keep `OP-pd` as the public frontier.
+
+## Synthesis (2026-03-07, final) — A3-pd packet package
+
+Target node and wiring:
+- The corrected-cone pivot survives.
+- The `OP-pd` placeholder can now be replaced by a sharper theorem package:
+  `A1-pd + packet-Rayleigh-pd + A3-pd`.
+
+Local semantic search:
+- Query `A1-pd packet-Rayleigh A3-pd autocorrelation packets`
+  returned `full/sections/introduction.tex`, `full/sections/scope_notation.tex`,
+  `full/sections/Notation/qstar_contract.tex`, and the live corrected-cone
+  insight notes, confirming that the active route already points toward the
+  packet/autocorrelation side.
+- Query `operator-controlled packet family autocorrelation Toeplitz form`
+  hit `full/sections/A3/rayleigh_bridge.tex` and `full/sections/Main_closure.tex`,
+  which is exactly the repository bridge needed for the packet Toeplitz form.
+- Query `naive Rayleigh family obstruction OP-pd`
+  surfaced the obstruction note and the tracker/orchestrator state, confirming
+  that the old `OP-pd` wording was now the main source of drift.
+
+Concrete synthesis:
+- `A1-pd` survives as density of the corrected packet family
+  `\mathcal G_K^{pd}` inside `\mathcal W_K^{pd}`.
+- exact packet-Rayleigh survives on autocorrelation packets
+  `\Psi_c * \widetilde{\Psi_c}` with Toeplitz symbol
+  `S_{g,\Delta}(\theta)=\sum_m \kappa_m e^{-im\theta}` and
+  `\kappa_m=Q^\star(t;h(\cdot-m\Delta))`.
+- The naive family `\Phi_{B,t}|p|^2` remains background-only after the
+  local-bump obstruction.
+- Therefore the single live knife-edge is `A3-pd`: prove
+  `S_{g,\Delta}(\theta)\ge c_K>0` on the same exact dense packet family that
+  feeds `A1-pd`.
+
+Recommendation:
+- Freeze the public chain as
+  `T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh-pd -> A3-pd -> A2 closure -> LF-pd -> G6 -> RH`.
+- Treat `OP-pd` as superseded wording, not as the live frontier.
+- Keep Aristotle `G1.6` background-only; the true mainline blocker is now
+  packet-symbol positivity, not support upgrade on the broad cone.

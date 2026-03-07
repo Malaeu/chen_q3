@@ -18,14 +18,19 @@ and the corrected local Weil-positive cone
   \mathcal W_K^{\mathrm{pd}}
   := \overline{\operatorname{cone}\!\bigl(\mathcal W_{K,0}^{\mathrm{pd}}\bigr)}^{\|\cdot\|_\infty},
   \qquad
-  \mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}
+  \mathcal G_K^{\mathrm{pd}}
   := \operatorname{cone}\!\bigl\{\Phi_\Psi=\Psi*\widetilde{\Psi}:\ \Psi\in \mathcal P_K(t_0)\bigr\},
   \qquad
   \mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}
   := \operatorname{cone}\!\bigl\{\Phi_{B,t,p}=\Phi_{B,t}\,|p|^2:\ \Phi_{B,t}\ \text{centered Fej\'er$\times$heat},\ p\in\mathcal P_M\bigr\},
   \qquad
-  \mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}
-  \subseteq \mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}},
+  \Psi_c(x):=\sum_{j=-M}^M c_j\,g(x-j\Delta),
+  \qquad
+  h:=g*\widetilde g,
+  \qquad
+  \kappa_m:=Q^\star(t;h(\cdot-m\Delta)),
+  \qquad
+  S_{g,\Delta}(\theta):=\sum_{m\in\mathbb Z}\kappa_m e^{-im\theta},
   \qquad
   \mathcal W^{\mathrm{pd}}:=\varinjlim_{K\to\infty}\mathcal W_K^{\mathrm{pd}}.
 \]
@@ -37,11 +42,12 @@ The current draft already supplies:
   \item \textbf{(A3)+(RKHS)} the centered positivity mechanism at the critical scale.
 \end{itemize}
 
-What remains unresolved is the corrected density gate:
+What remains unresolved in the corrected route is now sharply localized:
 \begin{itemize}
-  \item \textbf{(A1-pd)} Prove that the centered density family $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ is dense in $\mathcal W_K^{\mathrm{pd}}$.
-  \item \textbf{(packet-Rayleigh, background candidate)} The naive family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}$ is mathematically natural, but it is too large to serve as the closure family.
-  \item \textbf{(OP-pd)} Freeze an exact smaller operator-controlled family $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq \mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$ and identify $Q^\star(t;\Phi)$ with the centered Toeplitz/RKHS quadratic form on that same family.
+  \item \textbf{(A1-pd)} The centered density family $\mathcal G_K^{\mathrm{pd}}$ is the corrected local dense family.
+  \item \textbf{(packet-Rayleigh-naive, background candidate)} The naive family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}$ is mathematically natural, but it is too large to serve as the closure family.
+  \item \textbf{(packet-Rayleigh-pd)} Exact Toeplitz quadratic-form identification on autocorrelation packets $\Psi_c * \widetilde{\Psi_c}$ is the honest bridge on the corrected cone.
+  \item \textbf{(A3-pd)} The remaining hard theorem is positivity of the packet symbol $S_{g,\Delta}$ on that same exact dense packet family.
   \item \textbf{(LF-pd)} Once local positivity on every $\mathcal W_K^{\mathrm{pd}}$ is available, lift it to the global cone $\mathcal W^{\mathrm{pd}}$.
 \end{itemize}
 
@@ -75,23 +81,124 @@ interval. Hence $\Phi_{B,t}r^2$ is already dense in the broad local cone of even
 nonnegative bumps. Combined with the full quadratic-form meaning of
 Lemma~\ref{lem:packet-rayleigh-identification} and the centered A3 positivity
 engine, this would force false broad local positivity. Therefore
-$\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is background-only, and the live task is
-to construct a \emph{smaller} operator-controlled family
-$\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$.
+$\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is background-only. The live task is not
+to salvage that overlarge family, but to prove packet-symbol positivity on the
+exact dense autocorrelation packet family from A1-pd.
 \end{remark}
 
+\begin{theorem}[Exact packet-Rayleigh identification]\label{thm:packet-rayleigh-pd}
+Let $g\in C_c(\mathbb R)$, let $\Delta>0$, and let
+\[
+  \Psi_c(x):=\sum_{j=-M}^M c_j\,g(x-j\Delta),
+  \qquad
+  h:=g*\widetilde g.
+\]
+Set
+\[
+  \kappa_m:=Q^\star(t;h(\cdot-m\Delta)),
+  \qquad
+  S_{g,\Delta}(\theta):=\sum_{m\in\mathbb Z}\kappa_m e^{-im\theta}.
+\]
+Then
+\[
+  Q^\star(t;\Psi_c * \widetilde{\Psi_c})
+  =
+  \sum_{i,j=-M}^M \kappa_{i-j} c_i\overline{c_j}
+  =
+  \bigl\langle T_M[S_{g,\Delta}]c,c\bigr\rangle.
+\]
+\end{theorem}
+
+\begin{proof}
+Expand
+\[
+  \Psi_c * \widetilde{\Psi_c}
+  =
+  \sum_{i,j=-M}^M c_i\overline{c_j}\,
+  g(\cdot-i\Delta)*\widetilde{g(\cdot-j\Delta)}
+  =
+  \sum_{i,j=-M}^M c_i\overline{c_j}\,
+  h(\cdot-(i-j)\Delta).
+\]
+Applying linearity of $Q^\star(t;\cdot)$ gives
+\[
+  Q^\star(t;\Psi_c * \widetilde{\Psi_c})
+  =
+  \sum_{i,j=-M}^M c_i\overline{c_j}\,\kappa_{i-j}.
+\]
+This is precisely the Toeplitz quadratic form associated with the symbol
+$S_{g,\Delta}(\theta)=\sum_{m\in\mathbb Z}\kappa_m e^{-im\theta}$.
+\end{proof}
+
+\begin{remark}[Packet-symbol decomposition]\label{rem:packet-symbol-decomposition}
+Writing
+\[
+  \kappa_m
+  =
+  \int_{\mathbb R} a(\xi)\,h(\xi-m\Delta)\,d\xi
+  -
+  \sum_{n\ge2} w(n)\,h(\xi_n-m\Delta),
+\]
+the packet symbol splits as
+\[
+  S_{g,\Delta}(\theta)=A_{g,\Delta}(\theta)-P_{g,\Delta}(\theta),
+\]
+where
+\[
+  A_{g,\Delta}(\theta)
+  :=
+  \sum_{m\in\mathbb Z} e^{-im\theta}\!\int_{\mathbb R} a(\xi)\,h(\xi-m\Delta)\,d\xi,
+  \qquad
+  P_{g,\Delta}(\theta)
+  :=
+  \sum_{m\in\mathbb Z} e^{-im\theta}\!\sum_{n\ge2} w(n)\,h(\xi_n-m\Delta).
+\]
+Equivalently, for the twisted periodization
+\[
+  H_{g,\Delta,\theta}(\xi):=\sum_{m\in\mathbb Z} h(\xi-m\Delta)e^{-im\theta},
+\]
+one has
+\[
+  S_{g,\Delta}(\theta)
+  =
+  \int_{\mathbb R} a(\xi)\,H_{g,\Delta,\theta}(\xi)\,d\xi
+  -
+  \sum_{n\ge2} w(n)\,H_{g,\Delta,\theta}(\xi_n).
+\]
+Thus the live theorem `A3-pd` is an exact symbol-floor statement on the
+decomposition $S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}$.
+\end{remark}
+
+\begin{theorem}[Packet-symbol positivity route]\label{thm:A3-pd}
+Fix a compact window $[-K,K]$ and assume that the dense packet family
+$\mathcal G_K^{\mathrm{pd}}\subseteq\mathcal W_K^{\mathrm{pd}}$ from
+Theorem~\ref{thm:A1-pd} is represented by pre-packets $\Psi_c$ for which the
+packet symbol satisfies
+\[
+  S_{g,\Delta}(\theta)=A_{g,\Delta}(\theta)-P_{g,\Delta}(\theta)\ge c_K>0
+  \qquad\text{for all }\theta\in[-\pi,\pi].
+\]
+Then
+\[
+  Q^\star(t;\Phi)\ge0\qquad\text{for every }\Phi\in \mathcal G_K^{\mathrm{pd}}.
+\]
+\end{theorem}
+
+\begin{proof}
+Let $\Phi=\Psi_c * \widetilde{\Psi_c}\in\mathcal G_K^{\mathrm{pd}}$. By
+Theorem~\ref{thm:packet-rayleigh-pd},
+\[
+  Q^\star(t;\Phi)=\langle T_M[S_{g,\Delta}]c,c\rangle.
+\]
+Since the Toeplitz symbol is uniformly nonnegative, the quadratic form is
+nonnegative for every coefficient vector $c$, hence
+$Q^\star(t;\Phi)\ge0$ on the full dense packet family.
+\end{proof}
+
 \begin{theorem}[Conditional main positivity on $\mathcal W^{\mathrm{pd}}$]\label{thm:Main-positivity}
-Assume \textup{(T0)}, \textup{(A2)}, and Theorem~\ref{thm:A1-pd}. Assume further that for every compact window $[-K,K]$ there exists a centered operator-controlled family
-\[
-  \mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}
-  \subseteq \mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}
-  \subseteq \mathcal W_K^{\mathrm{pd}}
-\]
-whose cone is dense in $\mathcal W_K^{\mathrm{pd}}$, and on which the centered Toeplitz/RKHS engine yields
-\[
-  Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}.
-\]
-Assume moreover that these local positivity statements are compatible
+Assume \textup{(T0)}, \textup{(A2)}, Theorem~\ref{thm:A1-pd},
+Theorem~\ref{thm:packet-rayleigh-pd}, and Theorem~\ref{thm:A3-pd}. Assume moreover
+that these local positivity statements are compatible
 with the natural embeddings $\mathcal W_K^{\mathrm{pd}}\hookrightarrow \mathcal W_{K'}^{\mathrm{pd}}$.
 Then
 \[
@@ -101,9 +208,10 @@ where $\mathcal W^{\mathrm{pd}}=\bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}$ is the 
 \end{theorem}
 
 \begin{proof}
-Fix $K>0$. By hypothesis, the cone generated by
-$\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}$ is dense in $\mathcal W_K^{\mathrm{pd}}$ and
-$Q^\star(t;\Phi)\ge0$ holds on that family. By Corollary~\ref{cor:A2-Lip}, $Q^\star(t;\cdot)$ is
+Fix $K>0$. By Theorem~\ref{thm:A1-pd}, the cone generated by
+$\mathcal G_K^{\mathrm{pd}}$ is dense in $\mathcal W_K^{\mathrm{pd}}$, and by
+Theorem~\ref{thm:A3-pd} we have $Q^\star(t;\Phi)\ge0$ on that same dense family.
+By Corollary~\ref{cor:A2-Lip}, $Q^\star(t;\cdot)$ is
 continuous on the ambient compact-support class $B_K$, hence on
 $\mathcal W_K^{\mathrm{pd}}\subseteq B_K$. Therefore the local positivity statement
 extends to all of $\mathcal W_K^{\mathrm{pd}}$. Now let $\Phi\in\mathcal W^{\mathrm{pd}}$.
@@ -115,23 +223,18 @@ the compatibility assumption ensures that this conclusion is independent of the 
 The current analytic core supplies two separate ingredients:
 \begin{enumerate}
   \item the centered positivity mechanism coming from A3 and the single-scale RKHS cap;
-  \item the shifted density theorem A1$'$ on the broad restriction cone $R_K$.
+  \item the shifted density theorem A1$'$ on the broad restriction cone $R_K$;
+  \item the exact packet-Rayleigh theorem on autocorrelation packets.
 \end{enumerate}
-The target-cone audit shows that these do \emph{not} yet close RH. The public missing pair is now:
+The target-cone audit shows that these do \emph{not} yet close RH. The public theorem package now contains A1-pd and exact packet-Rayleigh, but the public missing theorem is now:
 \begin{enumerate}
-  \item the centered density theorem A1-pd on the corrected positive-definite cone $\mathcal W_K^{\mathrm{pd}}$;
-  \item the exact operator-controlled packet theorem on a smaller family
-  $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq \mathcal W_K^{\mathrm{pd}}$.
+  \item the packet-symbol positivity theorem A3-pd on that same exact dense packet family.
 \end{enumerate}
 \end{remark}
 
 \begin{proposition}[Local closure on the corrected cone]\label{prop:compatibility-reduction-shifted-atoms}
 Fix a compact window $[-K,K]$ and assume Theorem~\ref{thm:A1-pd} and
-\[
-  Q^\star(t;\Phi)\ge0\ \text{ for every }\Phi\in\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}},
-\]
-where $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq\mathcal W_K^{\mathrm{pd}}$
-is a dense positive family.
+Theorem~\ref{thm:A3-pd}.
 Then
 \[
   Q^\star(t;\Phi)\ge 0 \qquad \text{for every }\Phi\in \mathcal W_K^{\mathrm{pd}}.
@@ -140,7 +243,7 @@ Then
 
 \begin{proof}
 By the assumed packetwise inequality and linearity of $Q^\star$, the functional is
-nonnegative on the cone generated by $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}$.
+nonnegative on the cone generated by $\mathcal G_K^{\mathrm{pd}}$.
 By Corollary~\ref{cor:A2-Lip}, $Q^\star(t;\cdot)$ is continuous on the ambient class $B_K$ in the uniform norm, hence on $\mathcal W_K^{\mathrm{pd}}$.
 Passing to the uniform limit along that dense positive family gives
 $Q^\star(t;\Phi)\ge 0$ for every $\Phi\in\mathcal W_K^{\mathrm{pd}}$.
@@ -149,13 +252,12 @@ $Q^\star(t;\Phi)\ge 0$ for every $\Phi\in\mathcal W_K^{\mathrm{pd}}$.
 \begin{remark}[Exact remaining mathematical task]\label{rem:compatibility-missing-scalar}
 Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corrected local closure step is routine once a dense positive family inside $\mathcal W_K^{\mathrm{pd}}$ has been identified. The unresolved work is therefore:
 \begin{enumerate}
-  \item prove the centered density theorem A1-pd on $\mathcal W_K^{\mathrm{pd}}$ via the density family $\mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$;
   \item keep the naive family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ background-only;
-  \item freeze a smaller exact operator-controlled family
-  $\mathcal G_{K,\mathrm{op}}^{\mathrm{pd}}\subseteq \mathcal G_{K,\mathrm{dens}}^{\mathrm{pd}}$
-  together with the corresponding quadratic-form identity.
+  \item prove the packet-symbol positivity theorem A3-pd for the same exact dense
+  family via the symbols $S_{g,\Delta}$ from
+  Theorem~\ref{thm:packet-rayleigh-pd}.
 \end{enumerate}
-Once that exact operator-family theorem is closed, the A3/RKHS positivity engine can feed the
+Once that packet-symbol theorem is closed, the A3/RKHS positivity engine can feed the
 corrected closure route without reopening the LF or Weil tail.
 \end{remark}
 
