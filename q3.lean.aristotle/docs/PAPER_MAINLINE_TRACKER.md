@@ -248,6 +248,21 @@ Interpretation:
 - workflow reset: `exact?` is advisory-only; the real rejection criteria are
   `sorry`/`admit`, non-compilation, or fake local replacements instead of real Q3 objects.
 
+## G1.6 Live Aristotle Packet
+
+The updated packet
+`q3.lean.aristotle/aristotle_input/subagent_g1_wk_membership_2026_03_07.md`
+was user-approved and submitted as Aristotle project:
+
+- `ad4c74f1-764f-4cfb-a229-2bc0b2905b67`
+
+Current triage rule for this packet:
+
+- reject immediately only on `sorry`/`admit`,
+- treat `exact?` as advisory only,
+- then require compilation in the real project context,
+- reject if the draft redefines local fake replacements for real Q3 objects.
+
 ## Legacy Read-Only Surface
 
 The following are retained for provenance only and do not drive the active paper map:

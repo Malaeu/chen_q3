@@ -230,6 +230,23 @@ Workflow correction:
 3) compile in the real project,
 4) reject only if the result does not compile or uses fake local context.
 
+## Final result (2026-03-07) — G1.6 submitted with exact?-tolerant policy
+
+После policy reset пользователь подтвердил запуск обновлённого packet:
+- prompt:
+  `q3.lean.aristotle/aristotle_input/subagent_g1_wk_membership_2026_03_07.md`
+- Aristotle project id:
+  `ad4c74f1-764f-4cfb-a229-2bc0b2905b67`
+- initial status after submission:
+  `ProjectStatus.QUEUED`
+
+Operational decision:
+- `G1.6` больше не про “prepare prompt”; он теперь про monitor/download/triage;
+- triage этого проекта пойдёт уже по новой схеме:
+  hard holes = `sorry`/`admit`,
+  `exact?` = advisory only,
+  затем compile gate и запрет на fake local replacements.
+
 ## Synthesis (2026-03-06, in progress) — Compatibility theorem via shifted evenized atoms
 
 Цель: вернуть mainline к бумаге и убрать ложный `τ=0` closure-нарратив.

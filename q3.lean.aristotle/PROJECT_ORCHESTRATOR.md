@@ -78,16 +78,18 @@ This route is structurally useful, but it is **not** yet an honest closed proof 
 - `G1.3` is now closed: one small Aristotle-ready packet exists for the local support-replacement brick.
 - `G1.4` is now closed: the prepared packet was user-approved and submitted to Aristotle as project `c315e2a4-5923-44fa-a18c-4ed90cb08375`.
 - `G1.5` is now closed: `q3_docs` was rebuilt as a curated live KB and the first honest fallback theorem shape was frozen from the real `hg_mem` block.
-- Current active task: prepare, review, and then submit one narrow Aristotle packet for `atom_sum_mem_W_K_of_margin`.
+- `G1.6` is now in flight: the updated exact?-tolerant `W_K` packet was approved and submitted to Aristotle as project `ad4c74f1-764f-4cfb-a229-2bc0b2905b67`.
+- Current active task: monitor/download/triage project `ad4c74f1-764f-4cfb-a229-2bc0b2905b67`.
 - Current frontier: attack the exact `W_K`-membership brick first, and only afterwards reopen the stronger `AtomCone_K_fixed` wrapper.
 
 ## Active Milestone
 
-Turn the refreshed blocker extraction into one honest theorem packet:
+Turn the refreshed blocker extraction into one honest landed theorem packet:
 
 1. keep `q3_docs` fresh as the live blocker-search base,
 2. packetize the fallback theorem `atom_sum_mem_W_K_of_margin`,
-3. send only that exact local target through the review gate,
+3. triage project `ad4c74f1-764f-4cfb-a229-2bc0b2905b67` under the new
+   `sorry`/`admit` hard-hole policy with `exact?` advisory only,
 4. keep the stronger `AtomCone_K_fixed` statement as a downstream wrapper, not as the next ask.
 
 ## Hard Blockers
@@ -145,3 +147,4 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-07: `q3_docs` refresh became a required blocker-workflow step; the collection must track live control docs, active TeX, and selected live Lean files rather than stale markdown-only snapshots.
 - 2026-03-07: refreshed `q3_docs` now uses a curated live corpus after excluding stale legacy snapshots, transcript dumps, and queue artifacts.
 - 2026-03-07: the next exact local theorem target is frozen as `atom_sum_mem_W_K_of_margin`; the stronger `atom_sum_mem_atomcone_fixed_of_margin` is downstream.
+- 2026-03-07: `G1.6` submitted the updated exact?-tolerant packet `subagent_g1_wk_membership_2026_03_07.md` to Aristotle as project `ad4c74f1-764f-4cfb-a229-2bc0b2905b67`.
