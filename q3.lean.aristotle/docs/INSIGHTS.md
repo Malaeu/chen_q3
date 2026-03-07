@@ -247,6 +247,51 @@ Operational decision:
   `exact?` = advisory only,
   затем compile gate и запрет на fake local replacements.
 
+## Synthesis (2026-03-07, in progress) — G2/G3 blocker map after refreshed embeddings
+
+Цель: пока Aristotle считает `G1.6`, честно зафиксировать следующий architectural
+frontier не “в общем”, а по точным живым узлам repo.
+
+Локальный embedding-search по `q3_docs` дал устойчивую картину:
+- `A1_density.lean` и `full/sections/A1prime.tex` подтверждают: A1$'$ сейчас живёт
+  на restriction-level cone `R_K`, а не на final admissible `W_K`.
+- `Q3/Proofs/CompatibilityReduction.lean` уже изолирует правильную compact-level стрелку:
+  если есть positivity на shifted evenized atoms `Fejer_heat_atom B t0_critical τ`,
+  то дальше routine closure на всём `W_K` уже готов.
+- `Q3/Proofs/Q_nonneg_t_critical.lean` уже содержит pair form
+  `Q_phi_shift_pair_nonneg_t_critical` и exact atom theorem
+  `Q_Fejer_heat_atom_nonneg_t_critical`, но обе по-прежнему опираются на
+  `prime_term_le_at_t_critical_axiom`.
+- `Q3/Proofs/PaperMainlineAtomRoute.lean` и `Q3/T5_Transfer.lean` подтверждают:
+  LF/Weil tail уже собран как compiled route и не является главным bottleneck.
+
+Точный вывод:
+1) main unresolved theorem сидит не в `G4-G6`, а именно в future `G2/G3`;
+2) лучший post-`G1` маршрут — не centered transport first, а direct shifted-evenized route;
+3) после landing `G1` надо зафиксировать `G_K` как support-compatible realization
+   shifted evenized atoms и бить уже в positivity на этом exact family;
+4) если ослаблять scalar target, то сначала до pair form, потому что pair→evenized-atom
+   bridge уже зашит в `Q_nonneg_t_critical.lean` и `CompatibilityReduction.lean`.
+
+Concrete file/lemma pointers:
+- `Q3/Proofs/Q_nonneg_t_critical.lean:449` — `Q_phi_shift_pair_nonneg_t_critical`
+- `Q3/Proofs/Q_nonneg_t_critical.lean:461` — `Q_Fejer_heat_atom_nonneg_t_critical`
+- `Q3/Proofs/CompatibilityReduction.lean:13-20` — exact statement of the compact
+  reduction from shifted evenized atoms to `W_K`
+- `Q3/Proofs/Q_nonneg_lemmas.lean:296` — `Q_nonneg_on_atomcone_fixed_of_atoms`
+- `Q3/T5_Transfer.lean:78` — `T5_transfer_of_atoms`
+- `Q3/Proofs/PaperMainlineAtomRoute.lean:64` — current compiled RH wrapper
+
+External check:
+- official mathlib docs/search confirm the support-side proof tools are standard:
+  `Function.support_subset_iff'` and `continuous_finset_sum` exist and fit the live
+  `W_K`-membership style we are already using.
+
+Practical next step after `G1`:
+- `G2.1`: freeze one exact admissible `G_K` produced by the landed support-upgrade route;
+- `G3.1`: target shifted pair / shifted evenized atom positivity on that same `G_K`,
+  not LF transfer and not Weil linkage.
+
 ## Synthesis (2026-03-06, in progress) — Compatibility theorem via shifted evenized atoms
 
 Цель: вернуть mainline к бумаге и убрать ложный `τ=0` closure-нарратив.

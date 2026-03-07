@@ -107,6 +107,13 @@ Interpretation rule:
 2. `G2`: no exact admissible family `G_K` has been fixed as the unique mainline generator family.
 3. `G3`: positivity is not yet proved on that exact `G_K`.
 
+Preferred post-`G1` direction:
+
+- do not reopen LF/Weil infrastructure;
+- freeze `G_K` as the support-compatible realization of shifted evenized atoms;
+- then attack `G3` through the already isolated pair/atom route in
+  `Q3/Proofs/Q_nonneg_t_critical.lean` and `Q3/Proofs/CompatibilityReduction.lean`.
+
 ## Frozen G1.1 Statement
 
 The first honest `G1` target is now frozen as a replacement theorem, not as a vague density slogan:
