@@ -154,8 +154,13 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
     package as fallback,
 12. keep Gershgorin only as a sparse finite-block lemma and not as the dense
     public theorem,
-13. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
-14. keep Aristotle `G1.6` as background lemma-mining only.
+13. freeze the canonical centered half-atom
+    `g_{δ,t_0,0}=\Lambda_\delta\rho_{t_0}` as the first pilot packet,
+    together with the compact test case `K=0.2`, `J={0,1}`, `Δ=0.15`,
+    where prime collisions vanish and the finite symbol reduces to the
+    Archimedean gap `\alpha_0>2|\alpha_1|`,
+14. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
+15. keep Aristotle `G1.6` as background lemma-mining only.
 
 ## Hard Blockers
 
@@ -186,6 +191,9 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
      (with measure-level/full-symbol language retained only as secondary diagnostic notation)
      or a new operator package for the full kernel
   -> `PSD-pd`.
+- The canonical centered half-atom pilot already shows that this finite-symbol
+  criterion is genuinely nonvacuous on sparse compact dictionaries, while still
+  falling far short of dense closure.
 - On dense packet dictionaries with arbitrarily fine translates, a uniform lower
   bound of the form `Q^\star(t;\Psi * \widetilde\Psi)\ge c_K\|c\|_2^2` is impossible:
   packets `\Psi_\Delta=g-g(\cdot-\Delta)` collapse to zero and force
@@ -267,3 +275,8 @@ Legacy narrative surfaces are reference-only:
   explicit packet bounds on `\alpha_m,\beta_m` now drive the finite-dictionary
   package through inequalities `(C1)` / `(C1')`, while Poisson regularization
   stays only a verification device and Gershgorin stays sparse-only.
+- 2026-03-08: the canonical centered half-atom
+  `g_{δ,t_0,0}=\Lambda_\delta\rho_{t_0}` is now the first explicit pilot
+  packet. On the compact `K=0.2` with dictionary `J={0,1}`, `Δ=0.15`, prime
+  collisions vanish for `\delta<0.0124`, reducing positivity to a strictly
+  positive Archimedean gap.

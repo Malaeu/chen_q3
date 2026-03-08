@@ -78,7 +78,7 @@ Lean compatibility note:
 | `packet-Rayleigh-naive` (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive quadratic-form bridge on an overlarge family | background candidate only |
 | `packet-Rayleigh-pd` (`thm:packet-rayleigh-pd`) | theorem target on `\mathcal G_K^{pd}` | exact Toeplitz form on autocorrelation packets | aligned as theorem block |
 | `A3-pd` (`prop:a3-pd-too-strong`) | old theorem target on the same dense packet family `\mathcal G_K^{pd}` | uniform packet-symbol floor on dense packets | rejected-too-strong route |
-| `PSD-pd` (`thm:PSD-pd`) | theorem target on a dense translation-compatible packet subspace behind `\mathcal G_K^{pd}` | positive semidefiniteness / corrected compact positivity through the strict finite-dictionary `P7` package and explicit bounds on `\alpha_m,\beta_m` | active blocker; pursue through the strict `P1–P8` chain with finite-symbol `P7.3`--`P7.6`, coefficient inequalities `(C1)/(C1')`, and Poisson verification as backup |
+| `PSD-pd` (`thm:PSD-pd`) | theorem target on a dense translation-compatible packet subspace behind `\mathcal G_K^{pd}` | positive semidefiniteness / corrected compact positivity through the strict finite-dictionary `P7` package, explicit bounds on `\alpha_m,\beta_m`, and the canonical half-atom pilot | active blocker; pursue through the strict `P1–P8` chain with finite-symbol `P7.3`--`P7.6`, coefficient inequalities `(C1)/(C1')`, canonical pilot positivity, and Poisson verification as backup |
 | A2 continuity | theorem on ambient admissible compact tests | inherited input on `\mathcal W_K^{pd}` | aligned |
 | conditional main positivity (`thm:Main-positivity`) | positivity on corrected global cone | conditional on centered packet density in `\mathcal W_K^{pd}` | aligned after pivot |
 | local closure proposition | compact closure from a dense positive family inside `\mathcal W_K^{pd}` | theorem on `\mathcal W_K^{pd}` | aligned after pivot |
@@ -160,6 +160,13 @@ Interpretation rule after `T0.1`:
    -> finite-symbol envelope `(C0)`
    -> explicit sufficient inequalities `(C1)/(C1')`
    -> sparse regime `(C2)/(C2')`.
+10. Freeze the canonical centered half-atom pilot:
+    `g_{δ,t_0,0}=\Lambda_\delta\rho_{t_0}`
+    -> exact formulas for `\|g\|_1`, `\|h\|_1`, `\|h\|_\infty`
+    -> lower bound `H_r\ge M_g(r/2)^2`
+    -> pilot compact `K=0.2`, `J={0,1}`, `\Delta=0.15`
+    -> vanishing `\beta_0=\beta_1=0` for `\delta<0.0124`
+    -> positivity reduces to the Archimedean gap `\alpha_0>2|\alpha_1|`.
 10. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
    equivalence between positive-definite sequence, Toeplitz-section PSD, and
    positive measure representation for the packet coefficients.

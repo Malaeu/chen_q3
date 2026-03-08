@@ -30,6 +30,7 @@ $\kappa_m$ & packet Toeplitz coefficient & $\kappa_m=\mathcal Q(h(\cdot-m\Delta)
 $A_J,P_J,S_J$ & finite packet symbols & $\sum_{m\in D(J)} \alpha_m e^{-im\theta}$, $\sum_{m\in D(J)} \beta_m e^{-im\theta}$, $A_J-P_J$ \\
 $A_{J,r},P_{J,r},S_{J,r}$ & Poisson-regularized finite symbols & $P_r*A_J$, $P_r*P_J$, $P_r*S_J$ \\
 $R_g,R_h$ & packet support radii & $\operatorname{supp}g\subset[-R_g,R_g]$, $\operatorname{supp}h\subset[-R_h,R_h]$ \\
+$M_g(s)$ & canonical half-atom mass profile & $\int_{|x|\le s} g_{\delta,t_0,0}(x)\,dx$ \\
 $H_r,T_r,m_r^*,M_{r,K}^*$ & diagonal Archimedean core/tail data & core mass, tail mass, positive core floor, tail envelope \\
 $\Pi_K^{\mathrm{sym}}(s;R)$ & local symmetric prime mass & weighted active-node mass in the $\pm s$ bands of radius $R$ \\
 $p_c$ & trigonometric packet polynomial & $p_c(\theta)=\sum_{j\in J} c_j e^{ij\theta}$ \\
@@ -78,6 +79,9 @@ Weil criterion. Accordingly:
   localization/modulus bounds for $\alpha_m$, local symmetric prime-mass bounds
   for $\beta_m$, and the explicit sufficient inequalities \textup{(C1)} and
   \textup{(C1$'$)} on each finite admissible dictionary;
+  \item the canonical packet $g_{\delta,t_0,0}$ now serves as the first pilot
+  model: its support radii, exact norms, and lower bound $H_r\ge M_g(r/2)^2$
+  make the finite criterion numerically testable on small sparse dictionaries;
   \item the measure-level/full-symbol language $\mu_A-\mu_P\ge 0$ remains useful
   only as a secondary Herglotz-style equivalence, not as the first constructive
   target for compact positivity;

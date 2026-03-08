@@ -2671,3 +2671,47 @@ Reusable file pointers:
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/introduction.tex`
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+
+## Synthesis (2026-03-08, final) — canonical centered half-atom pilot
+
+Target node and wiring:
+- the live theorem is still `PSD-pd`, but the next honest micro-frontier is now
+  the canonical pilot packet `g_{\delta,t_0,0}=\Lambda_\delta\rho_{t_0}` on top
+  of the finite-dictionary package;
+- this sits exactly on the strict chain
+  `A1--A4, P1--P3 -> (C1)/(C1') -> P7.3--P7.6 -> PSD-pd`.
+
+Concrete synthesis:
+- for the centered half-atom,
+  `R_g=\delta`, `R_h=2\delta`,
+  `\|h\|_1=\|g\|_1^2`,
+  `\|h\|_\infty=h(0)=\|g\|_2^2`,
+  and there are closed formulas for `\|g\|_1`, `\|h\|_\infty`, and
+  `M_g(s)=\int_{|x|\le s} g(x)\,dx`;
+- the lower bound `H_r\ge M_g(r/2)^2` gives the first usable packet-level core
+  mass estimate without introducing any new abstract machinery;
+- on the pilot compact `K=0.2`, the active positive nodes are only
+  `\xi_2` and `\xi_3`;
+- with dictionary `J={0,1}` and `\Delta=0.15`, one has
+  `dist(0.15,\Xi_K)\approx 0.02485`, so for `\delta<0.0124` all prime
+  collisions vanish: `\beta_0=\beta_1=0`;
+- the finite symbol then reduces to `S_J(\theta)\ge \alpha_0-2|\alpha_1|`, and
+  the numerical Archimedean gap
+  `a^*(0)-2a^*(0.15)\approx 7.13>0` shows that positivity on this sparse
+  dictionary is genuinely attainable for small enough `\delta`.
+
+Verdict:
+- this is the first nonvacuous packet-level success case for the corrected
+  finite-symbol criterion;
+- it confirms that the packet package is mathematically alive on sparse
+  dictionaries;
+- it still does **not** close the dense mainline, because the same mechanism
+  collapses when `\Delta\downarrow0`.
+
+Reusable file pointers:
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Main_closure.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Notation/qstar_contract.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/scope_notation.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/introduction.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`

@@ -906,6 +906,201 @@ into Proposition~\ref{prop:packet-explicit-sufficient-criterion} yields the
 claim.
 \end{proof}
 
+\begin{proposition}[Canonical centered half-atom bounds]\label{prop:canonical-half-atom-bounds}
+Fix $\delta>0$ and $t_0>0$, and set
+\[
+  g_{\delta,t_0,0}(\xi)
+  :=
+  \Lambda_\delta(\xi)\rho_{t_0}(\xi)
+  =
+  \Bigl(1-\frac{|\xi|}{\delta}\Bigr)_+ e^{-4\pi^2 t_0 \xi^2}.
+\]
+Let
+\[
+  g:=g_{\delta,t_0,0},
+  \qquad
+  \widetilde g(x)=g(-x)=g(x),
+  \qquad
+  h:=g*\widetilde g=g*g.
+\]
+Then
+\[
+  R_g=\delta,
+  \qquad
+  R_h=2\delta,
+  \qquad
+  \|h\|_{L^1}=\|g\|_{L^1}^2,
+  \qquad
+  \|h\|_{L^\infty}=h(0)=\|g\|_{L^2}^2.
+\]
+Writing
+\[
+  a:=4\pi^2 t_0,
+  \qquad
+  b:=8\pi^2 t_0,
+\]
+one has the exact formulas
+\[
+  \|g\|_{L^1}
+  =
+  \frac{\sqrt{\pi}}{\sqrt a}\operatorname{erf}(\sqrt a\,\delta)
+  -
+  \frac{1-e^{-a\delta^2}}{a\delta}
+  =
+  \frac{1}{2\sqrt{\pi t_0}}\operatorname{erf}(2\pi\sqrt{t_0}\,\delta)
+  -
+  \frac{1-e^{-4\pi^2 t_0\delta^2}}{4\pi^2 t_0\delta},
+\]
+and
+\[
+  \|h\|_{L^\infty}
+  =
+  \frac{\sqrt{\pi}}{\sqrt b}\operatorname{erf}(\sqrt b\,\delta)
+  +
+  \frac{\sqrt{\pi}}{2b^{3/2}\delta^2}\operatorname{erf}(\sqrt b\,\delta)
+  -
+  \frac{2-e^{-b\delta^2}}{b\delta}.
+\]
+Moreover, for
+\[
+  M_g(s):=\int_{|x|\le s} g(x)\,dx
+  \qquad (0\le s\le \delta)
+\]
+one has
+\[
+  M_g(s)
+  =
+  \frac{\sqrt\pi}{\sqrt a}\operatorname{erf}(\sqrt a\,s)
+  -
+  \frac{1-e^{-a s^2}}{a\delta},
+\]
+and therefore
+\[
+  H_r:=\int_{|u|\le r} h(u)\,du
+  =
+  \iint_{|x-y|\le r} g(x)g(y)\,dx\,dy
+  \ge
+  M_g(r/2)^2.
+\]
+For small $\delta$ one has the asymptotic expansions
+\[
+  \|g\|_{L^1}
+  =
+  \delta-\frac{2}{3}\pi^2 t_0\,\delta^3+O(\delta^5),
+  \qquad
+  \|h\|_{L^1}
+  =
+  \delta^2+O(\delta^4),
+\]
+\[
+  \|h\|_{L^\infty}
+  =
+  \frac{2}{3}\delta-\frac{8}{15}\pi^2 t_0\,\delta^3+O(\delta^5),
+  \qquad
+  H_\delta\ge \frac{9}{16}\delta^2+O(\delta^4).
+\]
+\end{proposition}
+
+\begin{proof}
+The support statements are immediate from the triangular cutoff
+$\Lambda_\delta$. Since $g$ is even and nonnegative, so is $h=g*g$, and the
+convolution identities
+\[
+  \|h\|_{L^1}=\|g\|_{L^1}^2,
+  \qquad
+  h(0)=\int_{\mathbb R} g(x)^2\,dx=\|g\|_{L^2}^2
+\]
+follow directly. The displayed formulas for $\|g\|_{L^1}$,
+$\|h\|_{L^\infty}$, and $M_g(s)$ come from elementary Gaussian integration on
+$[0,\delta]$ and $[0,s]$. For the lower bound on $H_r$, restrict the double
+integral to the square $|x|,|y|\le r/2$, where automatically $|x-y|\le r$. The
+small-$\delta$ expansions follow from the Taylor expansions of
+$\operatorname{erf}$ and the Gaussian exponential factors.
+\end{proof}
+
+\begin{proposition}[Pilot compact for the canonical half-atom]\label{prop:canonical-half-atom-pilot}
+Let
+\[
+  K:=0.2,
+  \qquad
+  J:=\{0,1\},
+  \qquad
+  \Delta:=0.15.
+\]
+Then the active positive nodes in $[0,K]$ are exactly
+\[
+  \xi_2=\frac{\log 2}{2\pi}\approx 0.1103,
+  \qquad
+  \xi_3=\frac{\log 3}{2\pi}\approx 0.17485.
+\]
+Hence
+\[
+  \operatorname{dist}(0.15,\Xi_K)\approx 0.02485.
+\]
+For the canonical packet $g_{\delta,t_0,0}$, if
+\[
+  \delta<0.0124,
+\]
+then
+\[
+  \beta_0=\beta_1=0.
+\]
+Consequently, on this dictionary
+\[
+  S_J(\theta)\ge \alpha_0-2|\alpha_1|.
+\]
+Moreover,
+\[
+  a^*(0)\approx 33.75,
+  \qquad
+  a^*(0.15)\approx 13.31,
+  \qquad
+  a^*(0)-2a^*(0.15)\approx 7.13>0.
+\]
+Therefore, for $\delta$ small enough that the modulus error term from
+Lemma~\ref{lem:packet-alpha-modulus-bound} stays below this numerical gap, one
+has
+\[
+  \alpha_0>2|\alpha_1|,
+\]
+hence
+\[
+  S_J(\theta)\ge0
+  \qquad\text{for all }\theta\in[-\pi,\pi],
+\]
+and therefore
+\[
+  \mathcal Q(\Psi_c*\widetilde{\Psi_c})\ge0
+  \qquad\text{for all }c\in\mathbb C^2.
+\]
+\end{proposition}
+
+\begin{proof}
+Since $e^{2\pi K}<4$, the only active positive nodes are $\xi_2$ and $\xi_3$.
+If $2\delta<\operatorname{dist}(0.15,\Xi_K)$, then the off-diagonal prime
+coefficient vanishes by Lemma~\ref{lem:packet-beta-vanishing}, so $\beta_1=0$.
+If also $2\delta<\xi_2$, then the diagonal prime coefficient vanishes as well,
+so $\beta_0=0$. Both conditions hold for $\delta<0.0124$.
+
+The finite symbol for $J=\{0,1\}$ is
+\[
+  S_J(\theta)=\kappa_0+\kappa_1 e^{-i\theta}+\kappa_{-1}e^{i\theta}
+  =(\alpha_0-\beta_0)+2(\alpha_1-\beta_1)\cos\theta,
+\]
+so the previous vanishing gives
+\[
+  S_J(\theta)\ge \alpha_0-2|\alpha_1|.
+\]
+Finally, Lemma~\ref{lem:packet-alpha-modulus-bound} gives
+\[
+  \alpha_0=a^*(0)\|h\|_{L^1}+O(\omega_{a^*,K}(2\delta)\|h\|_{L^1}),
+  \qquad
+  \alpha_1=a^*(0.15)\|h\|_{L^1}+O(\omega_{a^*,K}(2\delta)\|h\|_{L^1}),
+\]
+and the numerical gap $a^*(0)-2a^*(0.15)>0$ therefore implies
+$\alpha_0>2|\alpha_1|$ once $\delta$ is sufficiently small.
+\end{proof}
+
 \begin{theorem}[P8 / PSD-pd: conditional corrected compact positivity via finite-symbol verification]\label{thm:PSD-pd}
 Fix a compact window $[-K,K]$ and let
 $\mathcal P_{K,\mathrm{tr}}(t_0)\subseteq \mathcal P_K(t_0)$ be a
@@ -983,7 +1178,9 @@ The current analytic core supplies two separate ingredients:
 \end{enumerate}
 The target-cone audit shows that these do \emph{not} yet close RH. The public theorem package now contains the strict packet chain
 \textup{(P1)}--\textup{(P6)} together with the finite-symbol verification package
-\textup{(P7.3)}--\textup{(P7.6)}, but the public missing theorem is now:
+\textup{(P7.3)}--\textup{(P7.6)} and the canonical-packet pilot
+Propositions~\ref{prop:canonical-half-atom-bounds} and
+\ref{prop:canonical-half-atom-pilot}, but the public missing theorem is now:
 \begin{enumerate}
   \item the packet-level coefficient bounds on $\alpha_m$ and $\beta_m$ needed
   to verify Proposition~\ref{prop:packet-explicit-sufficient-criterion} (or,
@@ -1026,7 +1223,10 @@ Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corr
   translation-compatible packet subspace, with the finite symbol-side decomposition
   $S_J=A_J-P_J$ kept as the constructive target and
   Corollary~\ref{cor:regularized-p7} as the clean Poisson-regularized
-  verification criterion on each admissible dictionary;
+  verification criterion on each admissible dictionary, while
+  Propositions~\ref{prop:canonical-half-atom-bounds} and
+  \ref{prop:canonical-half-atom-pilot} record the first nonvacuous pilot
+  regime where the finite criterion actually closes;
   \item close the packet-level bounding package
   \textup{A1}--\textup{A4}, \textup{P1}--\textup{P3}, and the explicit
   sufficient inequalities \textup{(C1)}--\textup{(C2$'$)}.
@@ -1064,6 +1264,8 @@ Theorem~\ref{thm:PSD-pd}.
   $\Longrightarrow$
   packet-level bounds \textup{A1}--\textup{A4}, \textup{P1}--\textup{P3},
   and \textup{(C1)}--\textup{(C2$'$)}
+  $\Longrightarrow$
+  canonical half-atom pilot positivity on a sparse dictionary
   $\Longrightarrow$
   \textup{P7.3}--\textup{P7.6} finite admissible dictionary positivity
   ($S_J\ge0$ with Poisson-regularized verification) or a new operator package for the full kernel

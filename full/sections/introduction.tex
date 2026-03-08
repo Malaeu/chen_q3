@@ -33,6 +33,15 @@ Our proof is organized as a controlled-limit program: a small number of analytic
 The present draft fully develops the analytic inputs that feed this chain, but it still leaves open the PSD packet-kernel theorem `PSD-pd`. The naive centered family $\Phi_{B,t}|p|^2$ is now background-only, because as a closure family it is too large, and the old `A3-pd` uniform-gap route on the dense packet family is also too strong. The clean `Herglotz/Bochner' reformulation survives as a diagnostic equivalence, but the literal packet-level `prime block PSD, then Arch dominates' route is now rejected on packet space. The strict constructive package is now:
 exact packet sesquilinear identity through the symmetrically extended compact functional (`P1`), Toeplitz reduction on each finite admissible dictionary (`P2`), prime-block obstruction (`P4`), full sequence split (`P5`), Toeplitz--Herglotz criterion (`P6`), and then the finite-symbol package (`P7.3`--`P7.6`): exact finite symbol identity, finite-symbol domination $S_J\ge0$, and Poisson-regularized verification with explicit error budget. Gershgorin survives only as a sparse finite-block lemma, while the measure-level/full-symbol language remains secondary diagnostic notation rather than the first constructive target.
 What is now concretely missing is a packet-level analogue of the old centered Arch floor / prime cap package: diagonal Archimedean core mass, off-diagonal Archimedean leakage, local symmetric prime-collision bounds, and the explicit sufficient inequalities \textup{(C1)} and \textup{(C1$'$)} on each admissible finite dictionary.
+The first canonical test case is now fixed as the centered half-atom
+\[
+  g_{\delta,t_0,0}(\xi)=\Lambda_\delta(\xi)\rho_{t_0}(\xi),
+\]
+with exact norms and core-mass bounds written in Section~\ref{sec:Main-closure}.
+On the pilot compact $K=0.2$ and the sparse dictionary $J=\{0,1\}$ with
+$\Delta=0.15$, the active prime set is only $\{\xi_2,\xi_3\}$, so for
+$\delta<0.0124$ all prime collisions vanish and the finite-symbol criterion
+reduces to a pure Archimedean comparison $\alpha_0>2|\alpha_1|$.
 
 \subsection*{Archimedean bridge}
 \emph{(A3) Archimedean Toeplitz barrier.} The Toeplitz component $T_M[P_A]$ in the Rayleigh decomposition of $Q^\star(t;\Phi_{B,t})$ is bounded from below by the explicit uniform Archimedean floor $c_*$ (Lemma~\ref{lem:uniform-arch-floor}), up to the controllable Lipschitz loss $C\,\omega_{P_A}(1/(2M))$. Szeg\H{o}--B\"ottcher asymptotics together with an explicit modulus of continuity for $P_A$ yield
@@ -78,6 +87,10 @@ choosing $t=t_{\mathrm{crit}}=3/20$ yields $\rho(t_{\mathrm{crit}})\le c_*/4$, s
   \lambda_{\min}\!\big(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)\big)\ \ge\ \frac{c_*}{4}\ >\ 0.
 \]
 Hence the analytic core already produces a centered positivity mechanism. The remaining work is to identify the correct local cone, prove `A1-pd`, freeze the exact packet package `P1--P6`, and then prove the finite-dictionary `P7` criterion on each admissible packet block: nonnegativity of the finite symbol $S_J(\theta)=A_J(\theta)-P_J(\theta)$, concretely driven by coefficient bounds on $\alpha_m$ and $\beta_m$, with Poisson-regularized finite symbols used only as a verification device and a fallback full-kernel operator package kept in reserve; only after that do the local closure, LF lift, and Weil criterion finish RH.
+The new pilot computation shows that this finite-dictionary criterion is not
+vacuous: for the canonical centered half-atom and a sparse compact packet
+dictionary one really does get $S_J\ge0$ from geometric prime avoidance and a
+positive Archimedean gap.
 
 \subsection*{What is new}
 

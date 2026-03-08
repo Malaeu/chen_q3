@@ -63,7 +63,11 @@ This work introduces a quantitative, modular operator framework for the Weil cri
   bounds, local symmetric prime-mass bounds, and the explicit sufficient
   inequalities \textup{(C1)} and \textup{(C1$'$)}. Poisson-regularized finite
   symbols remain a verification device, and Gershgorin is retained only as a
-  sparse finite-block criterion.
+  sparse finite-block criterion. The canonical centered half-atom
+  $g_{\delta,t_0,0}$ is now the first pilot packet: its exact norms, the lower
+  bound $H_r\ge M_g(r/2)^2$, and the compact test case $K=0.2$, $J=\{0,1\}$,
+  $\Delta=0.15$ show that the finite criterion is genuinely nonvacuous before
+  any dense-closure attempt.
   \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} now packages the corrected positive-definite closure route. Appendix~\ref{app:legacy-branch} keeps legacy broad-cone branches as read-only provenance only.
   \item \textbf{Computation:} Symbol scans, ATP logs, and certificate tables are reproducibility aids only; they do not enter the logical core of the active proof chain.
 \end{itemize}
@@ -111,6 +115,9 @@ What remains unresolved in the present draft is not the corrected cone itself, n
   S_J(\theta)=A_J(\theta)-P_J(\theta)\ge0,
 \]
 verified by Poisson-regularized finite symbols and an explicit error budget. The next explicit packet-level goal is to bound $\alpha_m$ and $\beta_m$ strongly enough to trigger \textup{(C1)} or \textup{(C1$'$)} on admissible finite dictionaries. Measure-level/full-symbol language remains secondary Herglotz notation, and the Gershgorin route survives only as a sparse finite-block lemma. Once that theorem package is supplied, the rest of the route is the routine closure / LF / Weil tail.
+The new pilot computation for $g_{\delta,t_0,0}$ confirms both sides of the
+story: sparse finite-dictionary positivity can really close, but the same
+diagonal-dominance mechanism still does not promise dense closure.
 
 \section{Notation and Conventions}\label{sec:notation}
 
