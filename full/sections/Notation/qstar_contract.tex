@@ -26,6 +26,9 @@ $D(J)$ & finite difference set & $\{i-j:\ i,j\in J\}$ \\
 $\Psi_c$ & finite pre-packet & $\Psi_c(x)=\sum_{j\in J} c_j g_j(x)$ \\
 $h$ & packet autocorrelation kernel & $h=g*\widetilde g$ \\
 $\mathcal Q(F)$ & symmetric compact extension of $Q^\star$ & agrees with $Q^\star(t;F)$ on even $F$ \\
+$a_K^*$ & compact Archimedean truncation & $a_K^*(\xi)=a^*(\xi)\mathbf 1_{[-K,K]}(\xi)$ \\
+$\Xi_K$ & active positive prime nodes on the compact & $\{\xi_n:0<\xi_n\le K\}$ \\
+$W_K(u)$ & scalar compact spectral weight & $\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K} w_Q(n)\cos(u\xi_n)$ \\
 $\kappa_m$ & packet Toeplitz coefficient & $\kappa_m=\mathcal Q(h(\cdot-m\Delta))$ for $m\in D(J)$ \\
 $A_J,P_J,S_J$ & finite packet symbols & $\sum_{m\in D(J)} \alpha_m e^{-im\theta}$, $\sum_{m\in D(J)} \beta_m e^{-im\theta}$, $A_J-P_J$ \\
 $A_{J,r},P_{J,r},S_{J,r}$ & Poisson-regularized finite symbols & $P_r*A_J$, $P_r*P_J$, $P_r*S_J$ \\
@@ -71,9 +74,11 @@ Weil criterion. Accordingly:
   \item the honest remaining knife-edge is `PSD-pd`: prove that the packet kernel
   $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ is positive semidefinite on a
   dense translation-compatible packet subspace;
-  \item the immediate constructive target is now the finite admissible dictionary
-  criterion $S_J(\theta)\ge0$ on each compact packet block, verified via
-  Poisson-regularized finite symbols $S_{J,r}$ and an explicit error budget;
+  \item the primary constructive target is now the scalar compact spectral inequality
+  $W_K(u)\ge0$ on each compact;
+  \item the finite admissible dictionary criterion $S_J(\theta)\ge0$ on each
+  compact packet block is retained as fallback discretization / verification,
+  together with Poisson-regularized finite symbols $S_{J,r}$ and an explicit error budget;
   \item the live quantitative frontier is the concrete packet bounding package:
   diagonal Archimedean core/tail bounds for $\alpha_0$, off-diagonal
   localization/modulus bounds for $\alpha_m$, local symmetric prime-mass bounds

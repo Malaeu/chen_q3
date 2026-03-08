@@ -1,47 +1,42 @@
 \begin{remark}[Dependency map]\label{rem:weil-dependency}
 The sufficiency argument now uses the corrected chain:
 \[
-  \text{(T0-pd)} \;\Longrightarrow\; \text{(A1-pd)}
-  \;\Longrightarrow\; \text{(packet-Rayleigh-pd)}
-  \quad\text{and}\quad
-  \text{centered (A3)+(RKHS)} + \text{(packet-Rayleigh-pd)}
-  \;\Longrightarrow\; \text{(PSD-pd)}
+  \text{(T0-pd)} \;\Longrightarrow\; \text{(S1/S2/S3 scalar compact route)}
   \;\Longrightarrow\; \text{(A2-pd)}
   \;\Longrightarrow\; \text{(LF-pd)}
   \;\Longrightarrow\; \text{(G6)} \;\Longrightarrow\; \text{RH}.
 \]
-Here \textup{(A1-pd)} is the centered packet density theorem on the corrected local
-cone $\mathcal W_K^{\mathrm{pd}}$, while \textup{(packet-Rayleigh-pd)} is the exact
+Here the scalar compact route means: define the compact spectral weight
+\[
+  W_K(u):=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}\cos(u\xi_n),
+\]
+prove the exact compact spectral identity
+\[
+  \mathcal Q(\Psi*\widetilde{\Psi})
+  =
+  \frac1{2\pi}\int_{\mathbb R}W_K(u)\,|\widehat\Psi(u)|^2\,du,
+\]
+and close corrected compact positivity from the scalar inequality $W_K(u)\ge0$.
+This is now the primary constructive route.
+
+The packet package remains active only as fallback discretization and verification:
+\textup{(A1-pd)} is the centered packet density theorem on the corrected local
+cone $\mathcal W_K^{\mathrm{pd}}$, \textup{(packet-Rayleigh-pd)} is the exact
 Toeplitz quadratic-form identity on autocorrelation packets
-$\Psi_c * \widetilde{\Psi_c}$. The naive family $\Phi_{B,t}|p|^2$ remains available as
-background quadratic-form evidence, but it is too large to serve as the public
-closure family. The old uniform packet-symbol route \textup{(A3-pd)} is also too
-strong on a dense packet dictionary. The new hard theorem \textup{(PSD-pd)} is
+$\Psi_c * \widetilde{\Psi_c}$, and \textup{(PSD-pd)} is
 positive semidefiniteness of the packet kernel
 $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ on a dense
-translation-compatible packet subspace. The clean Herglotz/Bochner language remains useful as a diagnostic
-equivalence for positive-definite packet coefficients, but the primary
-constructive route is now direct full-kernel positivity on each finite
-admissible packet dictionary: exact packet sesquilinear identity, then the
-prime-block obstruction on packet space, then the finite symbol
-$S_J(\theta)=A_J(\theta)-P_J(\theta)$ together with concrete coefficient bounds
-for $\alpha_m$ and $\beta_m$, the canonical centered half-atom pilot,
-Poisson-regularized verification, and an explicit error budget, or a new
-operator package for the full kernel. In the strict packet notation this is the chain
+translation-compatible packet subspace. In strict packet notation this fallback
+route is
 \textup{(P1)} $\Rightarrow$ \textup{(P2)} $\Rightarrow$ \textup{(P4)}
-\textup{$\Rightarrow$} \textup{(P5)} $\Rightarrow$ \textup{(P6)} $\Rightarrow$
-\textup{A1}--\textup{A4}, \textup{P1}--\textup{P3}, \textup{(C1)}--\textup{(C1$'$)} $\Rightarrow$
-\textup{(P7.3)}--\textup{(P7.6)} $\Rightarrow$ canonical pilot positivity
-$\Rightarrow$ \textup{(PSD-pd)}. Here
+$\Rightarrow$ \textup{(P5)} $\Rightarrow$ \textup{(P6)} $\Rightarrow$
+\textup{A1}--\textup{A4}, \textup{P1}--\textup{P3}, \textup{(C1)}--\textup{(C1$'$)}
+$\Rightarrow$ \textup{(P7.3)}--\textup{(P7.6)} $\Rightarrow$ canonical pilot positivity
+$\Rightarrow$ \textup{(PSD-pd)}.
 Gershgorin is retained only as a sparse finite-block criterion, while the
 measure-level/full-symbol language survives only as a secondary Herglotz-style
-equivalence. Centered \textup{(A3)+(RKHS)} supplies the model
-estimates that must be upgraded to this packet-kernel positivity,
-\textup{(A2-pd)} is continuity on the corrected local cone,
-\textup{(LF-pd)} is the inductive-limit lift to the global positive-definite cone
-$\mathcal W^{\mathrm{pd}}$, and \textup{(G6)} is Weil's criterion.
-The shifted theorem A1$'$ on $R_K$ remains available as auxiliary density on a
-broader cone, but it is no longer the mainline RH density theorem.
+equivalence. The shifted theorem A1$'$ on $R_K$ remains available as auxiliary
+density on a broader cone, but it is no longer the mainline RH density theorem.
 \end{remark}
 
 \begin{theorem}[Weil sufficiency pack]\label{thm:weil-sufficiency-pack}

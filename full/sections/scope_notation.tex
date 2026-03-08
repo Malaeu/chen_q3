@@ -4,8 +4,8 @@ This work introduces a quantitative, modular operator framework for the Weil cri
 
 \begin{itemize}
   \item \textbf{What this is:} A unified analytic program with explicit constants (symbol modulus, RKHS cap, node spacing, tail control) whose current output is a typed conditional route to positivity on the corrected positive-definite Weil cone.
-  \item \textbf{What this is not:} This draft does not yet claim that the corrected closure chain is fully closed. The unresolved knife-edge is now packet-kernel positivity on finite admissible packet dictionaries inside the corrected cone. The naive centered family $\Phi_{B,t}|p|^2$ is too large to serve as the public closure family.
-  \item \textbf{Modularity:} Local improvements in the Archimedean symbol, the RKHS cap, or the packet density theorem feed only the corresponding module and do not change the rest of the chain.
+  \item \textbf{What this is not:} This draft does not yet claim that the corrected closure chain is fully closed. The unresolved knife-edge is now the scalar compact spectral inequality $W_K(u)\ge0$ on every compact. The packet-kernel / finite-dictionary machinery survives as fallback discretization and verification. The naive centered family $\Phi_{B,t}|p|^2$ is too large to serve as the public closure family.
+  \item \textbf{Modularity:} Local improvements in the compact spectral weight, the Archimedean symbol, the RKHS cap, or the packet density theorem feed only the corresponding module and do not change the rest of the chain.
   \item \textbf{Test class:} For each $K>0$ we distinguish
   \[
     R_K := C^+_{\mathrm{even}}([-K,K]),
@@ -68,7 +68,7 @@ This work introduces a quantitative, modular operator framework for the Weil cri
   bound $H_r\ge M_g(r/2)^2$, and the compact test case $K=0.2$, $J=\{0,1\}$,
   $\Delta=0.15$ show that the finite criterion is genuinely nonvacuous before
   any dense-closure attempt.
-  \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} now packages the corrected positive-definite closure route. Appendix~\ref{app:legacy-branch} keeps legacy broad-cone branches as read-only provenance only.
+  \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} now packages the corrected positive-definite closure route, with the scalar compact spectral package as primary and the packet package as fallback. Appendix~\ref{app:legacy-branch} keeps legacy broad-cone branches as read-only provenance only.
   \item \textbf{Computation:} Symbol scans, ATP logs, and certificate tables are reproducibility aids only; they do not enter the logical core of the active proof chain.
 \end{itemize}
 
@@ -82,7 +82,7 @@ at the bridge scale $t_{\mathrm{crit}}=3/20$ (Corollary~\ref{cor:uniform-prime-c
   \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ \ge\ \min P_A\ -\ C\,\omega_{P_A}(1/(2M))\ -\ \rho(t),
 \]
 closing the centered A3/RKHS analytic bridge. What remains is not another shifted positivity theorem but the correct density route from centered packets to the positive-definite Weil cone.
-What remains is not another shifted positivity theorem and not a same-family bridge through $\Phi_{B,t}|p|^2$. The live missing theorem is an exact smaller operator-controlled packet family that stays inside the corrected positive-definite cone.
+What remains is not another shifted positivity theorem and not a same-family bridge through $\Phi_{B,t}|p|^2$. The live missing theorem is the scalar compact inequality $W_K(u)\ge0$ on every compact, with the exact smaller packet family retained as the fallback discretized route.
 
 \section{Gate Contract}\label{sec:global-hyp}
 
@@ -110,11 +110,16 @@ The present manuscript establishes the analytic inputs behind this chain as foll
   \item `A3` and `RKHS` as the centered positivity mechanism in Sections~\ref{sec:A3} and \ref{sec:RKHS}.
 \end{itemize}
 
-What remains unresolved in the present draft is not the corrected cone itself, nor the theorem-level packet-Rayleigh identity. Pushing the naive Rayleigh route further shows that the family $\Phi_{B,t}|p|^2$ is too large to serve as the closure family, and pushing the old `A3-pd` route further shows that one uniform packet-symbol floor cannot hold on a dense packet dictionary. The actual knife-edge is therefore `PSD-pd`: prove positive semidefiniteness of the packet kernel $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ on a dense translation-compatible packet subspace. The immediate constructive target is now finite-symbol domination on each admissible dictionary,
+What remains unresolved in the present draft is not the corrected cone itself, nor the theorem-level packet-Rayleigh identity. The primary constructive target is now the scalar compact inequality
+\[
+  W_K(u)\ge0
+  \qquad\text{for every }K>0\text{ and every }u\in\mathbb R.
+\]
+Pushing the naive Rayleigh route further shows that the family $\Phi_{B,t}|p|^2$ is too large to serve as the closure family, and pushing the old `A3-pd` route further shows that one uniform packet-symbol floor cannot hold on a dense packet dictionary. Therefore the packet theorem `PSD-pd` is retained as fallback: prove positive semidefiniteness of the packet kernel $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ on a dense translation-compatible packet subspace. The immediate fallback target is finite-symbol domination on each admissible dictionary,
 \[
   S_J(\theta)=A_J(\theta)-P_J(\theta)\ge0,
 \]
-verified by Poisson-regularized finite symbols and an explicit error budget. The next explicit packet-level goal is to bound $\alpha_m$ and $\beta_m$ strongly enough to trigger \textup{(C1)} or \textup{(C1$'$)} on admissible finite dictionaries. Measure-level/full-symbol language remains secondary Herglotz notation, and the Gershgorin route survives only as a sparse finite-block lemma. Once that theorem package is supplied, the rest of the route is the routine closure / LF / Weil tail.
+verified by Poisson-regularized finite symbols and an explicit error budget. The next explicit packet-level goal there is to bound $\alpha_m$ and $\beta_m$ strongly enough to trigger \textup{(C1)} or \textup{(C1$'$)}. Measure-level/full-symbol language remains secondary Herglotz notation, and the Gershgorin route survives only as a sparse finite-block lemma. Once either the scalar compact route or the fallback packet theorem package is supplied, the rest of the route is the routine closure / LF / Weil tail.
 The new pilot computation for $g_{\delta,t_0,0}$ confirms both sides of the
 story: sparse finite-dictionary positivity can really close, but the same
 diagonal-dominance mechanism still does not promise dense closure.
@@ -143,8 +148,8 @@ with the bridge scale fixed at $t=t_{\mathrm{crit}}$; Section~\ref{sec:T0} recor
 
 \subsection*{Quick reference for reviewers}\label{sec:quick-ref}
 \begin{tcolorbox}[colback=white,colframe=black!60]
-\textbf{Architecture.} `T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh-pd -> PSD-pd -> A2 closure -> LF-pd -> G6`.
-\textbf{Goal.} After the PSD packet-kernel theorem `PSD-pd` is closed, obtain $Q^\star(t;\Phi)\ge0$ on the positive-definite Weil cone $\mathcal W^{\mathrm{pd}}$ and conclude RH via `G6`.
+\textbf{Architecture.} `T0-pd -> compact spectral route -> A2 closure -> LF-pd -> G6`, with `A1-pd -> packet-Rayleigh-pd -> PSD-pd` retained as fallback packet route.
+\textbf{Goal.} After the scalar compact inequality $W_K(u)\ge0$ is closed on every compact, obtain $Q^\star(t;\Phi)\ge0$ on the positive-definite Weil cone $\mathcal W^{\mathrm{pd}}$ and conclude RH via G6.
 
 \textbf{Analytic modules already written.} A1$'$ is auxiliary density on $R_K$; A2 is continuity on the ambient compact-support class; A3 and RKHS feed the centered positivity engine.
 
@@ -154,7 +159,7 @@ $\rho(t_{\mathrm{crit}})\le c_\ast/4$ (Corollary~\ref{cor:uniform-prime-cap}).
 Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mathrm{Ray}}(t,M)\|\le c_\ast/4$
 \ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ge c_\ast/4$ on the centered bridge family.
 
-\textbf{Current knife-edge.} The unresolved issue is no longer “one shifted family that is both dense and positive” on the broad cone. On the corrected cone the dense autocorrelation family survives, exact packet-Rayleigh survives on that same packet side, and the naive quadratic-form family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is too large. The old `A3-pd` uniform-gap route is also too strong on a dense packet dictionary, while Gershgorin survives only on sparse finite blocks. The live knife-edge is now the PSD packet-kernel theorem `PSD-pd`, with finite-symbol domination on each admissible dictionary as the immediate constructive target and explicit packet bounds on $\alpha_m,\beta_m$ as the next concrete theorem package; measure-level/full-symbol language is demoted to secondary diagnostic notation.
+\textbf{Current knife-edge.} The unresolved issue is no longer “one shifted family that is both dense and positive” on the broad cone. On the corrected cone the dense autocorrelation family survives, exact packet-Rayleigh survives on that same packet side, and the naive quadratic-form family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is too large. The old A3-pd uniform-gap route is also too strong on a dense packet dictionary, while Gershgorin survives only on sparse finite blocks. The live primary knife-edge is now the scalar compact inequality $W_K(u)\ge0$; the packet-kernel theorem PSD-pd with finite-symbol domination on admissible dictionaries survives as the fallback constructive route. Measure-level/full-symbol language is demoted to secondary diagnostic notation.
 \end{tcolorbox}
 
 \begin{center}

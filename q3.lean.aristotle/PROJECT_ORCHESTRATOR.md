@@ -16,22 +16,28 @@ It is **not** a session log and **not** a microtask queue.
 
 ## Mainline Chain
 
-`T0-pd -> corrected cone -> A1-pd -> packet-Rayleigh-pd -> PSD-pd -> A2 closure -> LF-pd -> G6 -> RH`
+`T0-pd -> compact spectral route -> A2 closure -> LF-pd -> G6 -> RH`
 
 - `T0-pd`: Guinand--Weil crosswalk with the corrected positive-definite target cone.
 - `corrected cone`: local/global positive-definite Weil cone
   `\mathcal W_K^{pd} / \mathcal W^{pd}`.
-- `A1-pd`: density of the centered autocorrelation family
-  `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.
-- `packet-Rayleigh-pd`: exact finite Toeplitz quadratic-form identity on the
-  same autocorrelation packet family `\Psi * \widetilde\Psi`; this is now part
-  of the public theorem package.
-- `PSD-pd`: positive semidefiniteness of the packet kernel
-  `K_Q(g_i,g_j):=\mathcal Q(g_i * \widetilde{g_j})` on that same dense
-  pre-packet space.
+- `compact spectral route`: exact compact spectral identity plus the scalar
+  criterion
+  `W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)\ge0`
+  on every compact.
 - `A2 closure`: continuity transfer on the corrected local cone.
 - `LF-pd`: inductive-limit lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}`.
 - `G6`: Weil linkage from positivity on `\mathcal W^{pd}` to RH.
+
+Fallback packet route:
+
+- `A1-pd`: density of the centered autocorrelation family
+  `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.
+- `packet-Rayleigh-pd`: exact finite Toeplitz quadratic-form identity on the
+  same autocorrelation packet family `\Psi * \widetilde\Psi`.
+- `PSD-pd`: positive semidefiniteness of the packet kernel
+  `K_Q(g_i,g_j):=\mathcal Q(g_i * \widetilde{g_j})` on that same dense
+  pre-packet space.
 
 Broad-cone route status:
 
@@ -80,12 +86,13 @@ Interpretation after `T0.1`:
 | `T0` | Guinand--Weil crosswalk | `done` | normalization remains locked |
 | `T0.1` | target-cone audit | `done` | one binary verdict written: `pivot required` |
 | `T0-pd` | corrected public target cone | `done` | control docs + manuscript use the positive-definite cone as the public RH target |
+| `S-pd` | scalar compact spectral route `W_K(u)\ge0` | `active` | exact compact spectral identity + compact spectral positivity criterion are frozen, and the live blocker is the scalar inequality `W_K(u)\ge0` on every compact |
 | `A1-pd` | density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}` | `frozen theorem block` | pre-square density route + autocorrelation continuity prove `\overline{\mathcal G_K^{pd}}=\mathcal W_K^{pd}` |
 | `packet-Rayleigh-naive` | naive quadratic-form bridge on `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}` | `background candidate` | keep only as an auxiliary identity; do not reuse it as the public closure family |
 | `SF-pd` | same-family bridge through `\mathcal G_{K,\mathrm{Ray}}^{pd}` | `rejected as mainline route` | rejected because the naive Rayleigh family is too large and would force false broad local positivity |
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `\mathcal Q(\Psi_c * \widetilde{\Psi_c})` with the finite symbol integral `\frac{1}{2\pi}\int S_J(\theta)|p_c(\theta)|^2\,d\theta` on each admissible dictionary |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
-| `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `active` | prove finite-dictionary positivity via explicit coefficient bounds on `\alpha_m,\beta_m`, yielding `S_J=A_J-P_J\ge0` on each admissible block |
+| `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `fallback constructive route` | finite-dictionary positivity via explicit coefficient bounds on `\alpha_m,\beta_m`, yielding `S_J=A_J-P_J\ge0` on each admissible block |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
@@ -98,46 +105,54 @@ Interpretation after `T0.1`:
 - Current `G1.6` Aristotle work stays background only. It may still land local support lemmas,
   but it no longer determines the architectural frontier.
 - New live frontier:
-  1. keep `A1-pd` as the dense corrected-cone input on `\mathcal G_K^{pd}`;
-  2. keep the naive Rayleigh family
+  1. make the scalar compact spectral route primary:
+     exact compact spectral identity
+     -> scalar criterion `W_K(u)\ge0`
+     -> corrected compact positivity on `\mathcal W_K^{pd}`;
+  2. treat the finite-dictionary packet package only as fallback discretization /
+     verification for that scalar route;
+  3. keep `A1-pd` frozen as the dense corrected-cone input on `\mathcal G_K^{pd}`;
+  4. keep the naive Rayleigh family
      `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}`
      background-only after the local-bump obstruction;
-  3. freeze exact packet-Rayleigh on autocorrelation packets
+  5. freeze exact packet-Rayleigh on autocorrelation packets
      `\Psi_c * \widetilde{\Psi_c}`;
-  4. reject `A3-pd` in the old uniform-gap sense on the dense packet dictionary;
-  5. reject the literal `Route P` theorem shape
+  6. reject `A3-pd` in the old uniform-gap sense on the dense packet dictionary;
+  7. reject the literal `Route P` theorem shape
      `prime-block PSD factorization or Hilbert lift -> Archimedean domination`
      on packet space;
-  6. make `PSD-pd` the single live knife-edge: prove positive semidefiniteness
-     of the full packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})`
-     on a dense translation-compatible packet subspace;
-  7. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
-  8. freeze the strict `P1--P8` theorem package;
-  9. make finite admissible dictionary positivity the immediate constructive target:
+  8. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
+  9. freeze the strict `P1--P8` theorem package as the fallback packet route;
+ 10. keep finite admissible dictionary positivity as the immediate fallback constructive target:
      exact finite symbol `S_J(\theta)=A_J(\theta)-P_J(\theta)`,
      explicit coefficient bounds on `\alpha_m,\beta_m`,
      Poisson-regularized verification, and explicit error budget,
      with a new full-kernel operator package kept as fallback;
- 10. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
+ 11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
 
 ## Active Milestone
 
-Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
+Turn the corrected theorem package into a proof-ready compact spectral stack:
 
 1. keep `\mathcal W_K^{pd}` and `\mathcal W^{pd}` fixed in control docs and manuscript,
-2. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}`,
-3. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
-4. keep the naive centered Rayleigh family
+2. freeze the scalar compact spectral weight
+   `W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)`,
+3. make the theorem stack
+   `S1 exact compact spectral identity -> S2 spectral positivity criterion -> S3 corrected compact positivity`
+   the primary constructive route,
+4. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
+5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
+6. keep the naive centered Rayleigh family
    `\mathcal G_{K,\mathrm{Ray}}^{pd}` background-only after the obstruction,
-5. keep the packet-symbol decomposition
-   `S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}`,
-6. reject the old `A3-pd` uniform-floor route on the dense packet family,
-7. reject the literal `Route P` theorem shape
+7. keep the packet-symbol decomposition
+   `S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}` only as fallback packet notation,
+8. reject the old `A3-pd` uniform-floor route on the dense packet family,
+9. reject the literal `Route P` theorem shape
    `prime-block PSD factorization or Hilbert lift -> Archimedean domination`,
-8. make `PSD-pd` explicit as the packet-kernel theorem
+10. make `PSD-pd` explicit as the fallback packet-kernel theorem
    `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense
    translation-compatible packet subspace,
-9. freeze the strict `P1--P8` chain:
+11. freeze the strict `P1--P8` chain:
    exact packet sesquilinear identity
    -> Toeplitz reduction
    -> desired prime-factorization (rejected by obstruction)
@@ -145,22 +160,22 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
    -> Toeplitz/Herglotz criterion
    -> finite-dictionary `P7` package
    -> `PSD-pd`,
-10. record the two surviving strategy families for `PSD-pd`
+12. record the two surviving strategy families under the fallback packet route
     (Herglotz/Bochner versus direct full-kernel PSD),
-11. make the finite-dictionary `P7` package the immediate constructive target:
+13. keep the finite-dictionary `P7` package as the immediate fallback constructive target:
     `S_J=A_J-P_J\ge0` on each admissible packet block, driven by explicit
     coefficient bounds on `\alpha_m,\beta_m`, with Poisson-regularized finite
     symbols retained as verification device and a new full-kernel operator
     package as fallback,
-12. keep Gershgorin only as a sparse finite-block lemma and not as the dense
+14. keep Gershgorin only as a sparse finite-block lemma and not as the dense
     public theorem,
-13. freeze the canonical centered half-atom
+15. freeze the canonical centered half-atom
     `g_{δ,t_0,0}=\Lambda_\delta\rho_{t_0}` as the first pilot packet,
     together with the compact test case `K=0.2`, `J={0,1}`, `Δ=0.15`,
     where prime collisions vanish and the finite symbol reduces to the
     Archimedean gap `\alpha_0>2|\alpha_1|`,
-14. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
-15. keep Aristotle `G1.6` as background lemma-mining only.
+16. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
+17. keep Aristotle `G1.6` as background lemma-mining only.
 
 ## Hard Blockers
 
@@ -181,6 +196,10 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
   theorem shape is false on dense packet spaces: the packet prime block is not
   positive semidefinite in general.
 - The primary remaining theorem package is now:
+  scalar compact spectral identity
+  -> scalar compact criterion `W_K(u)\ge0`
+  -> corrected compact positivity on `\mathcal W_K^{pd}`;
+  the fallback packet package remains:
   exact packet sesquilinear identity
   -> prime-block obstruction
   -> Toeplitz/Herglotz spectral criterion for the full sequence
@@ -280,3 +299,9 @@ Legacy narrative surfaces are reference-only:
   packet. On the compact `K=0.2` with dictionary `J={0,1}`, `Δ=0.15`, prime
   collisions vanish for `\delta<0.0124`, reducing positivity to a strictly
   positive Archimedean gap.
+- 2026-03-08: the scalar compact spectral route is now primary:
+  exact compact spectral identity
+  -> scalar inequality `W_K(u)\ge0`
+  -> corrected compact positivity.
+  The finite-dictionary packet package remains active only as fallback
+  discretization / verification for that scalar route.

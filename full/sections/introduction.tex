@@ -12,6 +12,10 @@ Let $\mathcal W^{\mathrm{pd}}$ be the corrected positive-definite Weil cone from
 and via Theorem~\ref{thm:Weil-criterion} this positivity is equivalent to the Riemann Hypothesis.
 \end{theorem}
 
+\noindent In the current reset, this theorem has two honest local input routes:
+the \emph{primary} scalar compact route through the weight $W_K(u)$ and the
+\emph{fallback} packet route through `A1-pd` + `packet-Rayleigh-pd` + `PSD-pd`.
+
 \subsection*{Program diagram}
 Our proof is organized as a controlled-limit program: a small number of analytic bridges are composed, and each bridge is driven by explicit parameter schedules along a compact exhaustion. The active logical chain is:
 
@@ -20,19 +24,21 @@ Our proof is organized as a controlled-limit program: a small number of analytic
   \begin{tabular}{c}
     `T0-pd` normalization and corrected target cone \\
     $\Downarrow$ \\
-    `A1-pd` centered packet density in $\mathcal W_K^{\mathrm{pd}}$ \\
+    scalar compact spectral weight $W_K(u)$ \\
     $\Downarrow$ \\
-    exact packet-Rayleigh on autocorrelation packets $\Psi_c * \widetilde{\Psi_c}$ \\
+    `S1/S2/S3` exact compact spectral identity + spectral positivity criterion + corrected compact positivity \\
     $\Downarrow$ \\
-    `PSD-pd` packet-kernel positivity on that same family $\Longrightarrow$ `A2` local closure on $\mathcal W_K^{\mathrm{pd}}$ \\
+    `A2` local closure on $\mathcal W_K^{\mathrm{pd}}$ \\
     $\Downarrow$ \\
     `LF-pd` lift to $\mathcal W^{\mathrm{pd}}$ $\Longrightarrow$ `G6` Weil criterion $\Longrightarrow$ RH
   \end{tabular}
 \end{center}
 
-The present draft fully develops the analytic inputs that feed this chain, but it still leaves open the PSD packet-kernel theorem `PSD-pd`. The naive centered family $\Phi_{B,t}|p|^2$ is now background-only, because as a closure family it is too large, and the old `A3-pd` uniform-gap route on the dense packet family is also too strong. The clean `Herglotz/Bochner' reformulation survives as a diagnostic equivalence, but the literal packet-level `prime block PSD, then Arch dominates' route is now rejected on packet space. The strict constructive package is now:
-exact packet sesquilinear identity through the symmetrically extended compact functional (`P1`), Toeplitz reduction on each finite admissible dictionary (`P2`), prime-block obstruction (`P4`), full sequence split (`P5`), Toeplitz--Herglotz criterion (`P6`), and then the finite-symbol package (`P7.3`--`P7.6`): exact finite symbol identity, finite-symbol domination $S_J\ge0$, and Poisson-regularized verification with explicit error budget. Gershgorin survives only as a sparse finite-block lemma, while the measure-level/full-symbol language remains secondary diagnostic notation rather than the first constructive target.
-What is now concretely missing is a packet-level analogue of the old centered Arch floor / prime cap package: diagonal Archimedean core mass, off-diagonal Archimedean leakage, local symmetric prime-collision bounds, and the explicit sufficient inequalities \textup{(C1)} and \textup{(C1$'$)} on each admissible finite dictionary.
+The present draft fully develops the analytic inputs that feed this chain, but it still leaves open the scalar compact inequality
+\[
+  W_K(u)\ge0\qquad\text{for every compact }K>0\text{ and every }u\in\mathbb R.
+\]
+This is now the fastest plausible closure route inside the architecture. The naive centered family $\Phi_{B,t}|p|^2$ is background-only, because as a closure family it is too large, and the old `A3-pd` uniform-gap route on the dense packet family is also too strong. The clean `Herglotz/Bochner' reformulation survives as a diagnostic equivalence, but the literal packet-level `prime block PSD, then Arch dominates' route is rejected on packet space. The strict finite-dictionary package is retained as fallback discretization: exact packet sesquilinear identity through the symmetrically extended compact functional (`P1`), Toeplitz reduction on each finite admissible dictionary (`P2`), prime-block obstruction (`P4`), full sequence split (`P5`), Toeplitz--Herglotz criterion (`P6`), and then the finite-symbol package (`P7.3`--`P7.6`): exact finite symbol identity, finite-symbol domination $S_J\ge0$, and Poisson-regularized verification with explicit error budget. What is now concretely missing is either the scalar proof of $W_K\ge0$, or, on the fallback packet side, a packet-level analogue of the old centered Arch floor / prime cap package: diagonal Archimedean core mass, off-diagonal Archimedean leakage, local symmetric prime-collision bounds, and the explicit sufficient inequalities \textup{(C1)} and \textup{(C1$'$)} on each admissible finite dictionary.
 The first canonical test case is now fixed as the centered half-atom
 \[
   g_{\delta,t_0,0}(\xi)=\Lambda_\delta(\xi)\rho_{t_0}(\xi),
@@ -86,7 +92,7 @@ choosing $t=t_{\mathrm{crit}}=3/20$ yields $\rho(t_{\mathrm{crit}})\le c_*/4$, s
 \[
   \lambda_{\min}\!\big(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)\big)\ \ge\ \frac{c_*}{4}\ >\ 0.
 \]
-Hence the analytic core already produces a centered positivity mechanism. The remaining work is to identify the correct local cone, prove `A1-pd`, freeze the exact packet package `P1--P6`, and then prove the finite-dictionary `P7` criterion on each admissible packet block: nonnegativity of the finite symbol $S_J(\theta)=A_J(\theta)-P_J(\theta)$, concretely driven by coefficient bounds on $\alpha_m$ and $\beta_m$, with Poisson-regularized finite symbols used only as a verification device and a fallback full-kernel operator package kept in reserve; only after that do the local closure, LF lift, and Weil criterion finish RH.
+Hence the analytic core already produces a centered positivity mechanism. The remaining work is now organized in two layers. The primary layer is scalar: prove the exact compact spectral identity and then prove the compact spectral weight inequality $W_K(u)\ge0$ on every compact. The fallback layer keeps the packet package `P1--P6` and the finite-dictionary `P7` criterion on each admissible packet block: nonnegativity of the finite symbol $S_J(\theta)=A_J(\theta)-P_J(\theta)$, concretely driven by coefficient bounds on $\alpha_m$ and $\beta_m$, with Poisson-regularized finite symbols used only as a verification device and a fallback full-kernel operator package kept in reserve. Only after one of these compact routes is closed do the local closure, LF lift, and Weil criterion finish RH.
 The new pilot computation shows that this finite-dictionary criterion is not
 vacuous: for the canonical centered half-atom and a sparse compact packet
 dictionary one really does get $S_J\ge0$ from geometric prime avoidance and a

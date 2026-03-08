@@ -62,6 +62,19 @@ The current draft already supplies:
 
 What remains unresolved in the corrected route is now sharply localized:
 \begin{itemize}
+  \item \textbf{(compact spectral route, primary constructive target)} The fastest corrected compact route is now the scalar spectral package
+  \[
+    \textup{S1 exact compact spectral identity}
+    \Longrightarrow
+    \textup{S2 spectral positivity criterion}
+    \Longrightarrow
+    \textup{S3 corrected compact positivity from }W_K(u)\ge0.
+  \]
+  This route attacks one scalar spectral weight per compact,
+  \[
+    W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}\cos(u\xi_n),
+  \]
+  and is therefore the primary constructive theorem shape.
   \item \textbf{(A1-pd)} The centered density family $\mathcal G_K^{\mathrm{pd}}$ is the corrected local dense family.
   \item \textbf{(packet-Rayleigh-naive, background candidate)} The naive family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}$ is mathematically natural, but it is too large to serve as the closure family.
   \item \textbf{(packet-Rayleigh-pd)} Exact Toeplitz quadratic-form identification on autocorrelation packets $\Psi_c * \widetilde{\Psi_c}$ is the honest bridge on the corrected cone.
@@ -69,9 +82,9 @@ What remains unresolved in the corrected route is now sharply localized:
   \item \textbf{(PSD-pd)} The remaining hard theorem is positive semidefiniteness of the packet kernel
   $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ on a dense
   translation-compatible packet subspace feeding the corrected cone.
-  \item \textbf{(finite P7)} For a fixed finite admissible packet dictionary, the immediate constructive target is the finite symbol
+  \item \textbf{(finite P7, fallback discretization route)} For a fixed finite admissible packet dictionary, the fallback constructive target is the finite symbol
   $S_J(\theta)=A_J(\theta)-P_J(\theta)$ together with a Poisson-regularized
-  verification step and explicit error budget.
+  verification step and explicit error budget. This route is now retained as a dictionary-level approximation / stress-test package for the scalar spectral route.
   \item \textbf{(bound package)} The immediate quantitative task is now a packet-level analogue of the old centered bridge:
   diagonal Archimedean core mass, off-diagonal Archimedean leakage, local prime
   collision mass, and the resulting explicit finite-dictionary inequalities
@@ -1149,9 +1162,135 @@ hence on $\mathcal W_K^{\mathrm{pd}}\subseteq B_K$. Therefore positivity extends
 to all of $\mathcal W_K^{\mathrm{pd}}$.
 \end{proof}
 
+\begin{definition}[Compact spectral weight]\label{def:compact-spectral-weight}
+Fix $K>0$ and define
+\[
+  a_K^*(\xi):=a^*(\xi)\mathbf 1_{[-K,K]}(\xi),
+  \qquad
+  \Xi_K:=\{\xi_n:\ 0<\xi_n\le K\}.
+\]
+With the Fourier convention
+\[
+  \widehat f(u):=\int_{\mathbb R} f(x)e^{-iux}\,dx,
+  \qquad
+  f(x)=\frac1{2\pi}\int_{\mathbb R}\widehat f(u)e^{iux}\,du,
+\]
+define the compact spectral weight
+\[
+  W_K(u)
+  :=
+  \widehat{a_K^*}(u)
+  -
+  \sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}\cos(u\xi_n).
+\]
+\end{definition}
+
+\begin{proposition}[S1: exact compact spectral identity]\label{prop:compact-spectral-identity}
+Let $\Psi\in C_c([-K/2,K/2])$ and set
+\[
+  F_\Psi:=\Psi*\widetilde{\Psi}.
+\]
+Then
+\[
+  \widehat{F_\Psi}(u)=|\widehat\Psi(u)|^2
+\]
+and
+\[
+  \mathcal Q(F_\Psi)
+  =
+  \frac1{2\pi}\int_{\mathbb R} W_K(u)\,|\widehat\Psi(u)|^2\,du.
+\]
+\end{proposition}
+
+\begin{proof}
+Since $\Psi$ is compactly supported in $[-K/2,K/2]$, the convolution
+$F_\Psi=\Psi*\widetilde{\Psi}$ is supported in $[-K,K]$. Therefore
+\[
+  \mathcal Q(F_\Psi)
+  =
+  \int_{\mathbb R} a_K^*(\xi)F_\Psi(\xi)\,d\xi
+  -
+  \sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}F_\Psi(\xi_n),
+\]
+because $F_\Psi$ is even. The Fourier identity
+\[
+  \widehat{F_\Psi}(u)=\widehat\Psi(u)\,\overline{\widehat\Psi(u)}
+  =|\widehat\Psi(u)|^2
+\]
+is standard for autocorrelations. Applying Fourier inversion to the compactly
+supported Archimedean term gives
+\[
+  \int_{\mathbb R} a_K^*(\xi)F_\Psi(\xi)\,d\xi
+  =
+  \frac1{2\pi}\int_{\mathbb R}\widehat{a_K^*}(u)\,|\widehat\Psi(u)|^2\,du.
+\]
+For each active node $\xi_n\in\Xi_K$,
+\[
+  F_\Psi(\xi_n)
+  =
+  \frac1{2\pi}\int_{\mathbb R} e^{iu\xi_n}|\widehat\Psi(u)|^2\,du
+  =
+  \frac1{2\pi}\int_{\mathbb R} \cos(u\xi_n)\,|\widehat\Psi(u)|^2\,du,
+\]
+because $|\widehat\Psi(u)|^2$ is even. Substituting this into the prime sum
+gives the claimed identity.
+\end{proof}
+
+\begin{proposition}[S2: spectral positivity criterion on a compact]\label{prop:compact-spectral-positivity}
+If
+\[
+  W_K(u)\ge0
+  \qquad\text{for every }u\in\mathbb R,
+\]
+then
+\[
+  \mathcal Q(\Psi*\widetilde{\Psi})\ge0
+  \qquad\text{for every }\Psi\in C_c([-K/2,K/2]).
+\]
+Equivalently, the packet kernel
+\[
+  K_Q(\Psi,\Phi):=\mathcal Q(\Psi*\widetilde{\Phi})
+\]
+is positive semidefinite on $C_c([-K/2,K/2])$.
+\end{proposition}
+
+\begin{proof}
+The scalar inequality follows immediately from
+Proposition~\ref{prop:compact-spectral-identity}. Positive semidefiniteness of
+the sesquilinear kernel is then obtained by polarization.
+\end{proof}
+
+\begin{theorem}[S3: corrected compact positivity from the scalar spectral weight]\label{thm:compact-spectral-closure}
+Fix $K>0$. Assume
+\[
+  W_K(u)\ge0
+  \qquad\text{for every }u\in\mathbb R.
+\]
+Then
+\[
+  Q^\star(t;\Phi)\ge0
+  \qquad\text{for every }\Phi\in\mathcal W_K^{\mathrm{pd}}.
+\]
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{prop:compact-spectral-positivity},
+\[
+  \mathcal Q(\Psi*\widetilde{\Psi})\ge0
+  \qquad\text{for every }\Psi\in C_c([-K/2,K/2]).
+\]
+In particular, positivity holds on the seed cone
+$\mathcal W_{K,0}^{\mathrm{pd}}$, hence on its conic hull. Since
+$Q^\star(t;\cdot)=\mathcal Q(\cdot)$ on even tests and $Q^\star(t;\cdot)$ is
+continuous on the ambient compact-support class $B_K$ by Corollary~\ref{cor:A2-Lip},
+positivity extends to the closure
+$\mathcal W_K^{\mathrm{pd}}=\overline{\operatorname{cone}(\mathcal W_{K,0}^{\mathrm{pd}})}^{\|\cdot\|_\infty}$.
+\end{proof}
+
 \begin{theorem}[Conditional main positivity on $\mathcal W^{\mathrm{pd}}$]\label{thm:Main-positivity}
 Assume \textup{(T0)}, \textup{(A2)}, Theorem~\ref{thm:A1-pd},
-Theorem~\ref{thm:packet-rayleigh-pd}, and Theorem~\ref{thm:PSD-pd}. Assume moreover
+Theorem~\ref{thm:packet-rayleigh-pd}, and either Theorem~\ref{thm:PSD-pd} or
+Theorem~\ref{thm:compact-spectral-closure}. Assume moreover
 that these local positivity statements are compatible
 with the natural embeddings $\mathcal W_K^{\mathrm{pd}}\hookrightarrow \mathcal W_{K'}^{\mathrm{pd}}$.
 Then
@@ -1162,7 +1301,8 @@ where $\mathcal W^{\mathrm{pd}}=\bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}$ is the 
 \end{theorem}
 
 \begin{proof}
-Fix $K>0$. By Theorem~\ref{thm:PSD-pd} we have
+Fix $K>0$. By either Theorem~\ref{thm:PSD-pd} or
+Theorem~\ref{thm:compact-spectral-closure} we have
 $Q^\star(t;\Phi)\ge0$ for every $\Phi\in\mathcal W_K^{\mathrm{pd}}$. Now let
 $\Phi\in\mathcal W^{\mathrm{pd}}$.
 Choose $K$ with $\Phi\in\mathcal W_K^{\mathrm{pd}}$. Then $Q^\star(t;\Phi)\ge 0$, and
@@ -1180,11 +1320,26 @@ The target-cone audit shows that these do \emph{not} yet close RH. The public th
 \textup{(P1)}--\textup{(P6)} together with the finite-symbol verification package
 \textup{(P7.3)}--\textup{(P7.6)} and the canonical-packet pilot
 Propositions~\ref{prop:canonical-half-atom-bounds} and
-\ref{prop:canonical-half-atom-pilot}, but the public missing theorem is now:
+\ref{prop:canonical-half-atom-pilot}. The fastest public constructive theorem
+shape, however, is now the scalar compact spectral route
+\[
+  W_K(u)\ge0
+  \qquad\text{for every }u\in\mathbb R,
+\]
+because Propositions~\ref{prop:compact-spectral-identity} and
+\ref{prop:compact-spectral-positivity} then give positivity on all local
+convolution squares directly. The packet package remains valuable as the
+dictionary-level fallback route and verification layer. The public missing theorem is therefore:
 \begin{enumerate}
-  \item the packet-level coefficient bounds on $\alpha_m$ and $\beta_m$ needed
-  to verify Proposition~\ref{prop:packet-explicit-sufficient-criterion} (or,
-  equivalently, Corollary~\ref{cor:regularized-p7}) on every finite admissible
+  \item either the scalar spectral nonnegativity
+  \[
+    W_K(u)\ge0
+    \qquad\text{for every }u\in\mathbb R,
+  \]
+  on every compact;
+  \item or, failing that, the packet-level coefficient bounds on $\alpha_m$ and
+  $\beta_m$ needed to verify Proposition~\ref{prop:packet-explicit-sufficient-criterion}
+  (or, equivalently, Corollary~\ref{cor:regularized-p7}) on every finite admissible
   dictionary inside a dense translation-compatible packet subspace.
 \end{enumerate}
 \end{remark}
@@ -1209,6 +1364,12 @@ $Q^\star(t;\Phi)\ge 0$ for every $\Phi\in\mathcal W_K^{\mathrm{pd}}$.
 \begin{remark}[Exact remaining mathematical task]\label{rem:compatibility-missing-scalar}
 Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corrected local closure step is routine once a dense positive family inside $\mathcal W_K^{\mathrm{pd}}$ has been identified. The unresolved work is therefore:
 \begin{enumerate}
+  \item treat the scalar compact spectral route
+  \[
+    W_K(u)\ge0 \quad\text{for all }u
+  \]
+  as the primary constructive route, because it proves positivity on all local
+  convolution squares directly;
   \item keep the naive family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ background-only;
   \item reject the old `A3-pd` uniform-gap route on the dense packet family;
   \item reject the literal `prime-block PSD factorization or Hilbert lift`
@@ -1221,7 +1382,7 @@ Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corr
   Proposition~\ref{prop:a3-pd-too-strong};
   \item prove the PSD packet-kernel theorem PSD-pd for a dense
   translation-compatible packet subspace, with the finite symbol-side decomposition
-  $S_J=A_J-P_J$ kept as the constructive target and
+  $S_J=A_J-P_J$ kept as the fallback constructive target and
   Corollary~\ref{cor:regularized-p7} as the clean Poisson-regularized
   verification criterion on each admissible dictionary, while
   Propositions~\ref{prop:canonical-half-atom-bounds} and
@@ -1246,10 +1407,26 @@ Theorem~\ref{thm:PSD-pd}.
   target theorem, but by itself it does not yet provide the project-local
   constructive proof.
   \item \textbf{Direct full-kernel route (primary constructive route).}
-  Keep the exact packet sesquilinear form on a dense translation-compatible packet subspace, use
+  Keep the compact spectral weight
+  \[
+    W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}\cos(u\xi_n)
+  \]
+  as the first scalar target. By
+  Propositions~\ref{prop:compact-spectral-identity} and
+  \ref{prop:compact-spectral-positivity}, the nonnegativity of $W_K$ implies
+  positivity on all local convolution squares directly. The finite packet
+  apparatus then survives as a discretized fallback / verification route. In
+  that fallback route one keeps the exact packet sesquilinear form on a dense
+  translation-compatible packet subspace, uses
   Proposition~\ref{prop:packet-prime-not-psd} to rule out standalone PSD control
   of the prime block, and then attack positivity of the full kernel directly.
   The live theorem stack is:
+  compact spectral identity
+  $\Longrightarrow$
+  scalar spectral positivity criterion
+  $\Longrightarrow$
+  corrected compact positivity,
+  with the packet route kept as the secondary constructive reduction:
   \textup{P1} exact packet sesquilinear identity
   $\Longrightarrow$
   \textup{P2} Toeplitz reduction

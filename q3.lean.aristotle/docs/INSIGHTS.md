@@ -51,6 +51,28 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
  5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
+
+Новая развилка закрыта жёстко:
+
+- fastest plausible corrected route is now the scalar compact spectral package
+  `S1/S2/S3`, not the finite-dictionary packet package;
+- the core scalar object is
+  `W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)`;
+- proving `W_K(u)\ge0` on every compact would yield positivity on all local
+  convolution squares directly, hence corrected compact positivity without first
+  passing through a dense packet theorem;
+- the strict packet package `P1--P8`, the finite symbol `S_J=A_J-P_J`, the
+  coefficient bounds on `\alpha_m,\beta_m`, and the canonical centered
+  half-atom pilot now remain active only as fallback discretization /
+  verification for that scalar route;
+- `Main_closure.tex`, the abstract/introduction layer, and the control-plane
+  must all reflect this precedence, otherwise the repo drifts between two
+  incompatible “primary” frontiers.
+
+Detailed note:
+- `docs/insights/compact_spectral_weight_route_2026_03_08.md`
+
 ## Final result (2026-03-08) — finite-dictionary P7 replaces the measure-level immediate target
 
 Новый blocker уточнён жёстче:
