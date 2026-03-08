@@ -2966,3 +2966,31 @@ Verdict:
   basis/Gram engine for the same `H1^f`;
 - the active frontier is now exact two-sided filtered bulk matching, not
   generic construction of `S_{a,M}` and `J_a`.
+
+## Final result (2026-03-08) — theorem-ready four-block bulk stack is frozen
+
+Target node and wiring:
+- the public route remains `H1^f -> H2^f -> H3^f -> H4^f`;
+- `H2^f/H3^f/H4^f` stay structurally frozen;
+- the active `H1^f` brick is now written through the four Suzuki-side bulk
+  blocks `(++),(+-),(-+),(--)`.
+
+Concrete synthesis:
+- the Suzuki-side entries are now frozen as
+  `M_{mn}^{\sigma\tau}(a)=\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle`;
+- the antiderivative packets are explicitly
+  `\psi_n^+[a]=\chi_n[a]+\chi_{n+1}[a]` and
+  `\psi_n^-[a]=\chi_{-n}[a]+\chi_{-(n+1)}[a]`;
+- each block has an exact spectral formula through
+  `\widehat{\psi_n^\pm}`;
+- the live bulk checklist is now blockwise:
+  `M^{++}, M^{+-}, M^{-+}, M^{--}`
+  versus the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`;
+- after the bulk match, the only remaining H-bridge brick is the
+  finite-dimensional Suzuki cap.
+
+Verdict:
+- the next theorem is no longer “construct `S` and `J` in general”;
+- it is the exact four-block bulk comparison plus a separate cap-positivity
+  problem;
+- semilocal machinery stays engineering-only for this same `H1^f`.

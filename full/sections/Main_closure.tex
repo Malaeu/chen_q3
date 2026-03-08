@@ -1687,6 +1687,90 @@ $\sigma,\tau\in\{+,-\}$,
 \]
 \end{theorem}
 
+\begin{proposition}[The four filtered bulk blocks]\label{prop:H1-four-blocks}
+Define the antiderivative packets
+\[
+  \psi_n^+[a]:=I_0^{(a)}\phi_n^+[a]=\chi_n[a]+\chi_{n+1}[a],
+  \qquad
+  \psi_n^-[a]:=I_0^{(a)}\phi_n^-[a]=\chi_{-n}[a]+\chi_{-(n+1)}[a].
+\]
+For $\sigma,\tau\in\{+,-\}$ and $N<n,m\le M$, set
+\[
+  M_{mn}^{\sigma\tau}(a)
+  :=
+  \bigl\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\bigr\rangle_{L^2(-a,a)}
+  =
+  W\bigl(\psi_n^\sigma[a]*\widetilde{\psi_m^\tau[a]}\bigr).
+\]
+Then the Fourier transforms of the tail packets are
+\[
+  \widehat{\psi_n^+}(z)
+  =
+  (-1)^n\sqrt{\frac2a}\,\sin(az)
+  \left(
+    \frac{1}{z+\pi n/a}-\frac{1}{z+\pi(n+1)/a}
+  \right),
+\]
+\[
+  \widehat{\psi_n^-}(z)
+  =
+  (-1)^n\sqrt{\frac2a}\,\sin(az)
+  \left(
+    \frac{1}{z-\pi n/a}-\frac{1}{z-\pi(n+1)/a}
+  \right),
+\]
+and therefore each filtered block admits the exact spectral representation
+\[
+  M_{mn}^{\sigma\tau}(a)
+  =
+  \sum_{\gamma}
+  \widehat{\psi_n^\sigma}(-\gamma)\widehat{\psi_m^\tau}(\gamma),
+\]
+where $\gamma$ runs over the zeros of $\xi(1/2-iz)$ with multiplicity.
+Equivalently, if we write
+\[
+  \chi_k^+[a]:=\chi_k[a],
+  \qquad
+  \chi_k^-[a]:=\chi_{-k}[a],
+\]
+then bilinearity gives the exact four-term stencil
+\[
+  M_{mn}^{\sigma\tau}(a)
+  =
+  W\bigl(\chi_n^\sigma[a]*\widetilde{\chi_m^\tau[a]}\bigr)
+  +
+  W\bigl(\chi_{n+1}^\sigma[a]*\widetilde{\chi_m^\tau[a]}\bigr)
+  +
+  W\bigl(\chi_n^\sigma[a]*\widetilde{\chi_{m+1}^\tau[a]}\bigr)
+  +
+  W\bigl(\chi_{n+1}^\sigma[a]*\widetilde{\chi_{m+1}^\tau[a]}\bigr).
+\]
+\end{proposition}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|c|c|p{0.33\linewidth}|}
+\hline
+Suzuki bulk block & filtered Q3 target & exact bookkeeping target \\
+\hline
+$M^{++}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{++}$ & exact bulk match after one scalar normalization $\kappa(a)$ \\
+\hline
+$M^{+-}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{+-}$ & exact mixed-sign bulk match; no extra section-boundary defect once the filtered section $\widetilde Q_{M,N}$ is used \\
+\hline
+$M^{-+}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{-+}$ & exact mixed-sign bulk match; same scalar normalization as the positive block \\
+\hline
+$M^{--}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{--}$ & exact negative-tail bulk match; only the genuine finite-dimensional Suzuki cap remains outside the tail space \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+The live bulk theorem is therefore no longer the abstract existence of
+$S_{a,M,N}$ and $J_a$, but the exact equality of the four filtered blocks
+$(++),(+-),(-+),(--)$ with the corresponding blocks of
+$\kappa(a)\widetilde Q_{M,N}$. After that bulk identification, the only
+remaining bridge brick is the finite-dimensional Suzuki cap.
+
 \begin{theorem}[H2$^{\mathrm f}$: Suzuki tail/cap reduction]\label{thm:H2-filtered-cap}
 Fix $a>0$ and $N_a$ as in Theorem~\ref{thm:H1-filtered-bulk}. Define the closed tail space
 \[

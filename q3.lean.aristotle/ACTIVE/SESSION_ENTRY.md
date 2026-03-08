@@ -224,10 +224,10 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
   `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
 - next exact blocker:
-  four filtered bulk blocks
+  theorem-ready four filtered bulk blocks
   `(++), (+-), (-+), (--)`
-  in
-  `[\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle]`
+  with Suzuki-side entries
+  `M_{mn}^{\sigma\tau}(a)=\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle`
   versus the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`;
 - after the bulk match:
   separate finite-dimensional Suzuki cap positivity;

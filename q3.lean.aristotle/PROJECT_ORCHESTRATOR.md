@@ -142,11 +142,12 @@ New live frontier:
 11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
   12. move the active blocker away from the already-frozen theorem package `S1/S2/S3/S4`
      to the exact two-sided filtered bulk comparison:
-     match the four blocks
-     `(++), (+-), (-+), (--)`
-     of
-     `[ \langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle ]`
-     with the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`;
+     freeze the theorem-ready block entries
+     `M_{mn}^{\sigma\tau}(a)=\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle`
+     for the four blocks
+     `(++), (+-), (-+), (--)`,
+     and match them against the corresponding blocks of
+     `\kappa(a)\widetilde Q_{M,N}`;
   13. isolate the finite-dimensional Suzuki cap as the second and only other
      live brick after the bulk match:
      positivity of the cap matrix is a separate finite-dimensional problem.
@@ -179,6 +180,12 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     `B_{M,N}=S_{a,M,N}^*J_aS_{a,M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
     and the exact finite comparison object is
     `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`,
+4c. current implementation brick inside `H1^f`:
+    write the theorem-ready Suzuki-side bulk entries
+    `M_{mn}^{\sigma\tau}(a)=\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle`
+    and reduce the active work to exact blockwise equality
+    between those four entries and the blocks of
+    `\kappa(a)\widetilde Q_{M,N}`,
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family
