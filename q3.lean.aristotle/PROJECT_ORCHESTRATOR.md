@@ -85,7 +85,7 @@ Interpretation after `T0.1`:
 | `SF-pd` | same-family bridge through `\mathcal G_{K,\mathrm{Ray}}^{pd}` | `rejected as mainline route` | rejected because the naive Rayleigh family is too large and would force false broad local positivity |
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `\mathcal Q(\Psi_c * \widetilde{\Psi_c})` with the finite symbol integral `\frac{1}{2\pi}\int S_J(\theta)|p_c(\theta)|^2\,d\theta` on each admissible dictionary |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
-| `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `active` | prove that every finite matrix `[K_Q(g_i,g_j)]` on that packet subspace is positive semidefinite |
+| `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `active` | prove finite-dictionary positivity via explicit coefficient bounds on `\alpha_m,\beta_m`, yielding `S_J=A_J-P_J\ge0` on each admissible block |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
@@ -115,6 +115,7 @@ Interpretation after `T0.1`:
   8. freeze the strict `P1--P8` theorem package;
   9. make finite admissible dictionary positivity the immediate constructive target:
      exact finite symbol `S_J(\theta)=A_J(\theta)-P_J(\theta)`,
+     explicit coefficient bounds on `\alpha_m,\beta_m`,
      Poisson-regularized verification, and explicit error budget,
      with a new full-kernel operator package kept as fallback;
  10. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
@@ -147,9 +148,10 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
 10. record the two surviving strategy families for `PSD-pd`
     (Herglotz/Bochner versus direct full-kernel PSD),
 11. make the finite-dictionary `P7` package the immediate constructive target:
-    `S_J=A_J-P_J\ge0` on each admissible packet block, verified through
-    Poisson-regularized finite symbols and explicit error budget, with a new
-    full-kernel operator package as fallback,
+    `S_J=A_J-P_J\ge0` on each admissible packet block, driven by explicit
+    coefficient bounds on `\alpha_m,\beta_m`, with Poisson-regularized finite
+    symbols retained as verification device and a new full-kernel operator
+    package as fallback,
 12. keep Gershgorin only as a sparse finite-block lemma and not as the dense
     public theorem,
 13. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
@@ -179,7 +181,8 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
   -> Toeplitz/Herglotz spectral criterion for the full sequence
   -> finite admissible dictionary positivity
      `S_J(\theta)=A_J(\theta)-P_J(\theta)\ge0`
-     verified through Poisson-regularized finite symbols and explicit error budget
+     driven by explicit bounds on `\alpha_m,\beta_m`
+     and verified through Poisson-regularized finite symbols / explicit error budget
      (with measure-level/full-symbol language retained only as secondary diagnostic notation)
      or a new operator package for the full kernel
   -> `PSD-pd`.
@@ -260,3 +263,7 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-08: Poisson regularization is retained only as a finite verification
   device with explicit error budget, while measure-level/full-symbol language
   is demoted to secondary Herglotz-style notation.
+- 2026-03-08: the live quantitative frontier sharpened further:
+  explicit packet bounds on `\alpha_m,\beta_m` now drive the finite-dictionary
+  package through inequalities `(C1)` / `(C1')`, while Poisson regularization
+  stays only a verification device and Gershgorin stays sparse-only.

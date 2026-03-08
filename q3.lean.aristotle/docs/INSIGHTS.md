@@ -2621,3 +2621,53 @@ Reusable file pointers:
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/regularized_p7_package_2026_03_08.md`
+
+## Synthesis (2026-03-08, final) — concrete finite-dictionary bounds for `P7.6`
+
+Target node and wiring:
+- the live theorem is still `PSD-pd`, but the immediate constructive frontier is
+  now the explicit coefficient-bounding package behind finite admissible
+  dictionary positivity;
+- the right packet route is no longer “abstract `P7`”, but:
+  Archimedean coefficient bounds on `\alpha_m`,
+  prime-mass bounds on `\beta_m`,
+  finite-symbol envelope,
+  explicit sufficient inequalities `(C1)` / `(C1')`,
+  sparse regime `(C2)` / `(C2')`,
+  and only then `P7.6` as verification wrapper.
+
+Concrete synthesis:
+- `A1`: support-localization bound
+  `|\alpha_m|\le \|a^*\|_{L^\infty(I_m)}\|h\|_1`.
+- `A2`: approximate-identity refinement
+  `|\alpha_m-a^*(m\Delta)\|h\|_1|\le \omega_{a^*,K}(R_h)\|h\|_1`.
+- `A3/A4`: packet analogue of the old centered core/off-core lower bound for
+  the diagonal Archimedean term `\alpha_0`.
+- `P1`: local symmetric prime-mass bound
+  `\beta_m\le \|h\|_\infty \Pi_K^{sym}(|m|\Delta;R_h)`.
+- `P2/P3`: spacing simplification and off-diagonal prime vanishing.
+- finite-symbol envelope `(C0)` reduces positivity of `S_J` to domination of
+  the diagonal over off-diagonal leakage.
+- explicit sufficient inequalities `(C1)` / `(C1')` are the first honest
+  finite-dictionary closure criteria in the corrected route.
+
+Verdict:
+- this is a real packet-level analogue of the old centered bridge;
+- it is strong enough to close positivity on sparse finite dictionaries;
+- it still does **not** close the dense mainline by itself, because near
+  collisions and A2 continuity kill any uniform gap on dense packet families.
+
+Project effect:
+- `Main_closure` now contains the concrete coefficient package, not just the
+  abstract `P7` wrapper;
+- active summaries now say the next theorem is “bounds on `\alpha_m,\beta_m`”
+  rather than “regularized P7 in general”;
+- Poisson regularization stays only as a verification device.
+
+Reusable file pointers:
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Main_closure.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Notation/qstar_contract.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Weil_pack.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/introduction.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`

@@ -48,7 +48,7 @@ Lean compatibility note:
 | `SF-pd` | same-family bridge through the naive family `\mathcal G_{K,\mathrm{Ray}}^{pd}` | rejected as mainline route | historical note only |
 | `packet-Rayleigh-pd` | exact finite Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` with finite symbol `S_J` on each admissible dictionary | frozen theorem block | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | rejected-too-strong route | `sections/Main_closure.tex`, `sections/scope_notation.tex` |
-| `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active frontier; direct full-kernel PSD primary, `Herglotz/Bochner` secondary diagnostic | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
+| `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active frontier; direct full-kernel PSD primary, `Herglotz/Bochner` secondary diagnostic, coefficient-bounding package now explicit | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
 | `A2-pd` | continuity on the corrected cone | inherited input | `sections/A2.tex`, `sections/Main_closure.tex` |
 | `LF-pd` | LF lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}` | skeleton available, still conditional | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
@@ -78,7 +78,7 @@ Lean compatibility note:
 | `packet-Rayleigh-naive` (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive quadratic-form bridge on an overlarge family | background candidate only |
 | `packet-Rayleigh-pd` (`thm:packet-rayleigh-pd`) | theorem target on `\mathcal G_K^{pd}` | exact Toeplitz form on autocorrelation packets | aligned as theorem block |
 | `A3-pd` (`prop:a3-pd-too-strong`) | old theorem target on the same dense packet family `\mathcal G_K^{pd}` | uniform packet-symbol floor on dense packets | rejected-too-strong route |
-| `PSD-pd` (`thm:PSD-pd`) | theorem target on a dense translation-compatible packet subspace behind `\mathcal G_K^{pd}` | positive semidefiniteness / corrected compact positivity through the strict finite-dictionary `P7` package | active blocker; pursue through the strict `P1–P8` chain with finite-symbol `P7.3`--`P7.6` and Poisson verification as the immediate constructive target |
+| `PSD-pd` (`thm:PSD-pd`) | theorem target on a dense translation-compatible packet subspace behind `\mathcal G_K^{pd}` | positive semidefiniteness / corrected compact positivity through the strict finite-dictionary `P7` package and explicit bounds on `\alpha_m,\beta_m` | active blocker; pursue through the strict `P1–P8` chain with finite-symbol `P7.3`--`P7.6`, coefficient inequalities `(C1)/(C1')`, and Poisson verification as backup |
 | A2 continuity | theorem on ambient admissible compact tests | inherited input on `\mathcal W_K^{pd}` | aligned |
 | conditional main positivity (`thm:Main-positivity`) | positivity on corrected global cone | conditional on centered packet density in `\mathcal W_K^{pd}` | aligned after pivot |
 | local closure proposition | compact closure from a dense positive family inside `\mathcal W_K^{pd}` | theorem on `\mathcal W_K^{pd}` | aligned after pivot |
@@ -153,14 +153,22 @@ Interpretation rule after `T0.1`:
    -> `P7.5` Poisson-regularized verification
    -> `P7.6` explicit error-budget criterion
    -> `PSD-pd`.
-9. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
+9. Freeze the concrete finite-dictionary bounding package:
+   packet geometry `R_g,R_h`
+   -> Archimedean bounds `A1--A4` on `\alpha_m`
+   -> prime-mass bounds `P1--P3` on `\beta_m`
+   -> finite-symbol envelope `(C0)`
+   -> explicit sufficient inequalities `(C1)/(C1')`
+   -> sparse regime `(C2)/(C2')`.
+10. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
    equivalence between positive-definite sequence, Toeplitz-section PSD, and
    positive measure representation for the packet coefficients.
-10. Record Gershgorin diagonal dominance only as a sparse finite-block lemma;
+11. Record Gershgorin diagonal dominance only as a sparse finite-block lemma;
     it must not be presented as the dense main theorem.
-11. Treat finite-dictionary `P7` as the immediate constructive target; any new
-    full-kernel operator package is fallback-only.
-12. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
+12. Treat finite-dictionary `P7` as the immediate constructive target, now via
+    explicit coefficient bounds on `\alpha_m,\beta_m`; any new full-kernel
+    operator package is fallback-only.
+13. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
 
 ## Background Broad-Cone Branch
 

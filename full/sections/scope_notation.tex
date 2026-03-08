@@ -58,8 +58,12 @@ This work introduces a quantitative, modular operator framework for the Weil cri
   \]
   on a dense translation-compatible packet subspace, with finite-symbol domination
   $S_J=A_J-P_J\ge0$ on each admissible dictionary as the immediate constructive
-  target, verified by Poisson-regularized finite symbols and an explicit error
-  budget. Gershgorin is retained only as a sparse finite-block criterion.
+  target. The live quantitative frontier is the coefficient package for
+  $\alpha_m$ and $\beta_m$: Archimedean support/localization and core-tail
+  bounds, local symmetric prime-mass bounds, and the explicit sufficient
+  inequalities \textup{(C1)} and \textup{(C1$'$)}. Poisson-regularized finite
+  symbols remain a verification device, and Gershgorin is retained only as a
+  sparse finite-block criterion.
   \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} now packages the corrected positive-definite closure route. Appendix~\ref{app:legacy-branch} keeps legacy broad-cone branches as read-only provenance only.
   \item \textbf{Computation:} Symbol scans, ATP logs, and certificate tables are reproducibility aids only; they do not enter the logical core of the active proof chain.
 \end{itemize}
@@ -106,7 +110,7 @@ What remains unresolved in the present draft is not the corrected cone itself, n
 \[
   S_J(\theta)=A_J(\theta)-P_J(\theta)\ge0,
 \]
-verified by Poisson-regularized finite symbols and an explicit error budget. Measure-level/full-symbol language remains secondary Herglotz notation, and the Gershgorin route survives only as a sparse finite-block lemma. Once that theorem package is supplied, the rest of the route is the routine closure / LF / Weil tail.
+verified by Poisson-regularized finite symbols and an explicit error budget. The next explicit packet-level goal is to bound $\alpha_m$ and $\beta_m$ strongly enough to trigger \textup{(C1)} or \textup{(C1$'$)} on admissible finite dictionaries. Measure-level/full-symbol language remains secondary Herglotz notation, and the Gershgorin route survives only as a sparse finite-block lemma. Once that theorem package is supplied, the rest of the route is the routine closure / LF / Weil tail.
 
 \section{Notation and Conventions}\label{sec:notation}
 
@@ -143,7 +147,7 @@ $\rho(t_{\mathrm{crit}})\le c_\ast/4$ (Corollary~\ref{cor:uniform-prime-cap}).
 Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mathrm{Ray}}(t,M)\|\le c_\ast/4$
 \ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ge c_\ast/4$ on the centered bridge family.
 
-\textbf{Current knife-edge.} The unresolved issue is no longer “one shifted family that is both dense and positive” on the broad cone. On the corrected cone the dense autocorrelation family survives, exact packet-Rayleigh survives on that same packet side, and the naive quadratic-form family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is too large. The old `A3-pd` uniform-gap route is also too strong on a dense packet dictionary, while Gershgorin survives only on sparse finite blocks. The live knife-edge is now the PSD packet-kernel theorem `PSD-pd`, with finite-symbol domination on each admissible dictionary as the immediate constructive target and measure-level/full-symbol language demoted to secondary diagnostic notation.
+\textbf{Current knife-edge.} The unresolved issue is no longer “one shifted family that is both dense and positive” on the broad cone. On the corrected cone the dense autocorrelation family survives, exact packet-Rayleigh survives on that same packet side, and the naive quadratic-form family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is too large. The old `A3-pd` uniform-gap route is also too strong on a dense packet dictionary, while Gershgorin survives only on sparse finite blocks. The live knife-edge is now the PSD packet-kernel theorem `PSD-pd`, with finite-symbol domination on each admissible dictionary as the immediate constructive target and explicit packet bounds on $\alpha_m,\beta_m$ as the next concrete theorem package; measure-level/full-symbol language is demoted to secondary diagnostic notation.
 \end{tcolorbox}
 
 \begin{center}

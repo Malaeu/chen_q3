@@ -29,6 +29,9 @@ $\mathcal Q(F)$ & symmetric compact extension of $Q^\star$ & agrees with $Q^\sta
 $\kappa_m$ & packet Toeplitz coefficient & $\kappa_m=\mathcal Q(h(\cdot-m\Delta))$ for $m\in D(J)$ \\
 $A_J,P_J,S_J$ & finite packet symbols & $\sum_{m\in D(J)} \alpha_m e^{-im\theta}$, $\sum_{m\in D(J)} \beta_m e^{-im\theta}$, $A_J-P_J$ \\
 $A_{J,r},P_{J,r},S_{J,r}$ & Poisson-regularized finite symbols & $P_r*A_J$, $P_r*P_J$, $P_r*S_J$ \\
+$R_g,R_h$ & packet support radii & $\operatorname{supp}g\subset[-R_g,R_g]$, $\operatorname{supp}h\subset[-R_h,R_h]$ \\
+$H_r,T_r,m_r^*,M_{r,K}^*$ & diagonal Archimedean core/tail data & core mass, tail mass, positive core floor, tail envelope \\
+$\Pi_K^{\mathrm{sym}}(s;R)$ & local symmetric prime mass & weighted active-node mass in the $\pm s$ bands of radius $R$ \\
 $p_c$ & trigonometric packet polynomial & $p_c(\theta)=\sum_{j\in J} c_j e^{ij\theta}$ \\
 $K_Q(g_i,g_j)$ & packet kernel on pre-packets & $\mathcal Q(g_i * \widetilde{g_j})$ \\
 $A_{g,\Delta}$ & Archimedean packet symbol part & $\sum_m e^{-im\theta}\int a^*(\xi)\,h(\xi-m\Delta)\,d\xi$ \\
@@ -70,6 +73,11 @@ Weil criterion. Accordingly:
   \item the immediate constructive target is now the finite admissible dictionary
   criterion $S_J(\theta)\ge0$ on each compact packet block, verified via
   Poisson-regularized finite symbols $S_{J,r}$ and an explicit error budget;
+  \item the live quantitative frontier is the concrete packet bounding package:
+  diagonal Archimedean core/tail bounds for $\alpha_0$, off-diagonal
+  localization/modulus bounds for $\alpha_m$, local symmetric prime-mass bounds
+  for $\beta_m$, and the explicit sufficient inequalities \textup{(C1)} and
+  \textup{(C1$'$)} on each finite admissible dictionary;
   \item the measure-level/full-symbol language $\mu_A-\mu_P\ge 0$ remains useful
   only as a secondary Herglotz-style equivalence, not as the first constructive
   target for compact positivity;

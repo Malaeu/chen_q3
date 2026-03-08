@@ -72,6 +72,10 @@ What remains unresolved in the corrected route is now sharply localized:
   \item \textbf{(finite P7)} For a fixed finite admissible packet dictionary, the immediate constructive target is the finite symbol
   $S_J(\theta)=A_J(\theta)-P_J(\theta)$ together with a Poisson-regularized
   verification step and explicit error budget.
+  \item \textbf{(bound package)} The immediate quantitative task is now a packet-level analogue of the old centered bridge:
+  diagonal Archimedean core mass, off-diagonal Archimedean leakage, local prime
+  collision mass, and the resulting explicit finite-dictionary inequalities
+  \textup{(C1)} and \textup{(C1$'$)}.
   \item \textbf{(LF-pd)} Once local positivity on every $\mathcal W_K^{\mathrm{pd}}$ is available, lift it to the global cone $\mathcal W^{\mathrm{pd}}$.
 \end{itemize}
 
@@ -578,6 +582,330 @@ By Proposition~\ref{prop:poisson-regularized-p7},
 The final conclusion follows from Corollary~\ref{cor:finite-symbol-domination}.
 \end{proof}
 
+\begin{definition}[Packet geometry for explicit coefficient bounds]\label{def:packet-bound-geometry}
+Fix a compact window $[-K,K]$, a base packet $g\in C_c(\mathbb R)$, and an
+admissible translation step $\Delta>0$. Write
+\[
+  \operatorname{supp} g\subset[-R_g,R_g],
+  \qquad
+  h:=g*\widetilde g,
+  \qquad
+  R_h:=2R_g,
+\]
+so that $\operatorname{supp} h\subset[-R_h,R_h]$. For $m\in\mathbb Z$ define
+\[
+  I_m:=[m\Delta-R_h,\ m\Delta+R_h].
+\]
+For $r\in(0,R_h]$ set
+\[
+  H_r:=\int_{|u|\le r} h(u)\,du,
+  \qquad
+  T_r:=\|h\|_{L^1}-H_r,
+  \qquad
+  m_r^*:=\inf_{|x|\le r} a^*(x),
+  \qquad
+  M_{r,K}^*:=\sup_{r<|x|\le R_h}|a^*(x)|.
+\]
+Let
+\[
+  \Xi_K:=\{\xi_n:\ 0<\xi_n\le K\},
+  \qquad
+  \delta_K:=\min_{\substack{\xi_m,\xi_n\in\Xi_K\\ \xi_m\neq \xi_n}}
+  |\xi_m-\xi_n|,
+  \qquad
+  w_{\max}(K):=\max_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}.
+\]
+Finally, define the local symmetric prime mass
+\[
+  \Pi_K^{\mathrm{sym}}(s;R)
+  :=
+  \frac12\sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}
+  \Bigl(
+    \mathbf 1_{|\xi_n-s|\le R}
+    +
+    \mathbf 1_{|\xi_n+s|\le R}
+  \Bigr),
+  \qquad s\ge0.
+\]
+\end{definition}
+
+\begin{lemma}[A1: support-localization bound for the Archimedean coefficients]\label{lem:packet-alpha-support-bound}
+For every $m\in D(J)$ one has
+\[
+  |\alpha_m|
+  \le
+  \|a^*\|_{L^\infty(I_m)}\,\|h\|_{L^1}.
+\]
+\end{lemma}
+
+\begin{proof}
+Since $h$ is supported in $[-R_h,R_h]$,
+\[
+  \alpha_m
+  =
+  \int_{-R_h}^{R_h} a^*(m\Delta+u)\,h(u)\,du.
+\]
+Taking the supremum of $|a^*|$ on $I_m$ yields the claim.
+\end{proof}
+
+\begin{lemma}[A2: approximate-identity refinement for the Archimedean coefficients]\label{lem:packet-alpha-modulus-bound}
+Assume $I_m\subset[-K,K]$. Then
+\[
+  |\alpha_m-a^*(m\Delta)\|h\|_{L^1}|
+  \le
+  \omega_{a^*,K}(R_h)\,\|h\|_{L^1},
+\]
+where
+\[
+  \omega_{a^*,K}(\rho)
+  :=
+  \sup_{\substack{x,y\in[-K,K]\\ |x-y|\le\rho}}
+  |a^*(x)-a^*(y)|.
+\]
+Consequently,
+\[
+  |\alpha_m|
+  \le
+  \bigl(|a^*(m\Delta)|+\omega_{a^*,K}(R_h)\bigr)\|h\|_{L^1}.
+\]
+\end{lemma}
+
+\begin{proof}
+On $[-R_h,R_h]$ one has $|m\Delta+u-m\Delta|\le R_h$, so
+\[
+  |a^*(m\Delta+u)-a^*(m\Delta)|\le \omega_{a^*,K}(R_h).
+\]
+Integrating against $|h(u)|$ gives the first bound, and the second follows by
+the triangle inequality.
+\end{proof}
+
+\begin{lemma}[A3: packet core/off-core lower bound for the diagonal Archimedean term]\label{lem:packet-alpha-diagonal-core-tail}
+For every $r\in(0,R_h]$,
+\[
+  \alpha_0
+  \ge
+  m_r^*\,H_r - M_{r,K}^*\,T_r.
+\]
+\end{lemma}
+
+\begin{proof}
+Split the integral defining $\alpha_0$ into the core region $|u|\le r$ and the
+tail region $r<|u|\le R_h$:
+\[
+  \alpha_0
+  =
+  \int_{|u|\le r} a^*(u)h(u)\,du
+  +
+  \int_{r<|u|\le R_h} a^*(u)h(u)\,du.
+\]
+On the core, $a^*(u)\ge m_r^*$; on the tail,
+$a^*(u)\ge -M_{r,K}^*$. Since $h\ge0$ for nonnegative $g$, the displayed lower
+bound follows.
+\end{proof}
+
+\begin{lemma}[A4: crude positive-core diagonal bound]\label{lem:packet-alpha-diagonal-core}
+If $R_h\le r$, then
+\[
+  \alpha_0\ge m_r^*\,\|h\|_{L^1}.
+\]
+\end{lemma}
+
+\begin{proof}
+If $R_h\le r$, then the whole support of $h$ lies inside $[-r,r]$, so
+$a^*(u)\ge m_r^*$ on the support of $h$. Integrating gives the bound.
+\end{proof}
+
+\begin{lemma}[P1: local prime-mass bound]\label{lem:packet-beta-local-prime-mass}
+For every $m\in D(J)$ one has
+\[
+  0\le \beta_m \le \|h\|_{L^\infty}\,\Pi_K^{\mathrm{sym}}(|m|\Delta;R_h).
+\]
+\end{lemma}
+
+\begin{proof}
+Each summand in the definition of $\beta_m$ is nonnegative because $h\ge0$.
+Moreover, $h(\xi_n\mp m\Delta)$ can be nonzero only when
+$|\xi_n\mp m\Delta|\le R_h$, and in that case it is bounded by
+$\|h\|_{L^\infty}$. Summing over the active nodes yields the claim.
+\end{proof}
+
+\begin{lemma}[P2: spacing simplification for the prime mass]\label{lem:packet-beta-spacing}
+If $R_h<\delta_K/2$, then every interval $[s-R_h,s+R_h]$ contains at most one
+active node from $\Xi_K$. In particular,
+\[
+  \Pi_K^{\mathrm{sym}}(s;R_h)\le w_{\max}(K),
+  \qquad
+  \beta_m\le \|h\|_{L^\infty}\,w_{\max}(K).
+\]
+\end{lemma}
+
+\begin{proof}
+The spacing hypothesis implies that two distinct active nodes cannot both lie
+inside the same interval of radius $R_h$. The stated prime-mass and
+$\beta_m$-bounds then follow from Definition~\ref{def:packet-bound-geometry}
+and Lemma~\ref{lem:packet-beta-local-prime-mass}.
+\end{proof}
+
+\begin{lemma}[P3: off-diagonal prime vanishing criterion]\label{lem:packet-beta-vanishing}
+If $|m|\Delta>R_h$ and
+\[
+  \operatorname{dist}(|m|\Delta,\Xi_K)>R_h,
+\]
+then $\beta_m=0$.
+\end{lemma}
+
+\begin{proof}
+Under the stated distance condition, both
+$|\xi_n-|m|\Delta|>R_h$ and $|\xi_n+|m|\Delta|>R_h$ for every active node
+$\xi_n\in\Xi_K$. Hence all summands in the definition of $\beta_m$ vanish.
+\end{proof}
+
+\begin{proposition}[Finite-symbol envelope]\label{prop:finite-symbol-envelope}
+Let $D_+(J):=D(J)\cap\mathbb N$. Since $h$ and $a^*$ are even, one has
+$\alpha_{-m}=\alpha_m$ and $\beta_{-m}=\beta_m$, hence for every
+$\theta\in[-\pi,\pi]$,
+\[
+  S_J(\theta)
+  \ge
+  \alpha_0-\beta_0
+  -
+  2\sum_{m\in D_+(J)}\bigl(|\alpha_m|+\beta_m\bigr).
+\]
+In particular, it is sufficient to prove
+\[
+  \alpha_0-\beta_0
+  >
+  2\sum_{m\in D_+(J)}\bigl(|\alpha_m|+\beta_m\bigr).
+  \tag{C0}
+\]
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  S_J(\theta)
+  =
+  \kappa_0+\sum_{m\in D_+(J)}\kappa_m e^{-im\theta}
+  +\sum_{m\in D_+(J)}\kappa_{-m} e^{im\theta}.
+\]
+Using $\kappa_m=\alpha_m-\beta_m$ and the evenness relations gives
+\[
+  S_J(\theta)
+  =
+  \alpha_0-\beta_0
+  +
+  2\sum_{m\in D_+(J)}(\alpha_m-\beta_m)\cos(m\theta).
+\]
+Bounding $\cos(m\theta)$ by $1$ in absolute value yields the claimed envelope.
+\end{proof}
+
+\begin{proposition}[C1: explicit sufficient inequality for finite admissible dictionaries]\label{prop:packet-explicit-sufficient-criterion}
+Fix a finite admissible packet dictionary generated by $g$, $\Delta$, and
+$J\subset\mathbb Z$. If there exists $r\in(0,R_h]$ such that
+\[
+  m_r^*H_r - M_{r,K}^*T_r - \|h\|_{L^\infty}\Pi_K^{\mathrm{sym}}(0;R_h)
+  >
+  2\sum_{m\in D_+(J)}
+  \Bigl(
+    \|a^*\|_{L^\infty(I_m)}\|h\|_{L^1}
+    +
+    \|h\|_{L^\infty}\Pi_K^{\mathrm{sym}}(m\Delta;R_h)
+  \Bigr),
+  \tag{C1}
+\]
+then
+\[
+  S_J(\theta)\ge0
+  \qquad\text{for all }\theta\in[-\pi,\pi].
+\]
+Consequently,
+\[
+  \mathcal Q(\Psi_c*\widetilde{\Psi_c})\ge0
+  \qquad\text{for all }c\in\mathbb C^J.
+\]
+The sharpened approximate-identity version
+\[
+  m_r^*H_r - M_{r,K}^*T_r - \|h\|_{L^\infty}\Pi_K^{\mathrm{sym}}(0;R_h)
+  >
+  2\sum_{m\in D_+(J)}
+  \Bigl(
+    (|a^*(m\Delta)|+\omega_{a^*,K}(R_h))\|h\|_{L^1}
+    +
+    \|h\|_{L^\infty}\Pi_K^{\mathrm{sym}}(m\Delta;R_h)
+  \Bigr)
+  \tag{C1$'$}
+\]
+is also sufficient.
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:packet-alpha-diagonal-core-tail},
+\[
+  \alpha_0\ge m_r^*H_r - M_{r,K}^*T_r.
+\]
+By Lemma~\ref{lem:packet-beta-local-prime-mass},
+\[
+  \beta_0\le \|h\|_{L^\infty}\Pi_K^{\mathrm{sym}}(0;R_h).
+\]
+For $m\in D_+(J)$, Lemma~\ref{lem:packet-alpha-support-bound} and
+Lemma~\ref{lem:packet-beta-local-prime-mass} give
+\[
+  |\alpha_m|+\beta_m
+  \le
+  \|a^*\|_{L^\infty(I_m)}\|h\|_{L^1}
+  +
+  \|h\|_{L^\infty}\Pi_K^{\mathrm{sym}}(m\Delta;R_h).
+\]
+Thus \textup{(C1)} implies the sufficient condition \textup{(C0)} from
+Proposition~\ref{prop:finite-symbol-envelope}, and hence $S_J\ge0$.
+Corollary~\ref{cor:finite-symbol-domination} then gives positivity of
+$\mathcal Q(\Psi_c*\widetilde{\Psi_c})$ for all $c$.
+
+The sharpened form \textup{(C1$'$)} is the same argument with the off-diagonal
+Archimedean term estimated by Lemma~\ref{lem:packet-alpha-modulus-bound}.
+\end{proof}
+
+\begin{corollary}[Sparse-dictionary regime]\label{cor:packet-sparse-dictionary}
+Assume
+\[
+  R_h\le r,
+  \qquad
+  R_h<\frac{\delta_K}{2},
+  \qquad
+  \operatorname{dist}(m\Delta,\Xi_K)>R_h
+  \quad\text{for all }m\in D_+(J).
+\]
+Then $\beta_m=0$ for every $m\in D_+(J)$ and the sufficient criterion reduces
+to
+\[
+  m_r^*\,\|h\|_{L^1}
+  -
+  \|h\|_{L^\infty}\Pi_K^{\mathrm{sym}}(0;R_h)
+  >
+  2\sum_{m\in D_+(J)}
+  \|a^*\|_{L^\infty(I_m)}\|h\|_{L^1},
+  \tag{C2}
+\]
+or, in the approximate-identity form,
+\[
+  m_r^*\,\|h\|_{L^1}
+  -
+  \|h\|_{L^\infty}\Pi_K^{\mathrm{sym}}(0;R_h)
+  >
+  2\sum_{m\in D_+(J)}
+  \bigl(|a^*(m\Delta)|+\omega_{a^*,K}(R_h)\bigr)\|h\|_{L^1}.
+  \tag{C2$'$}
+\]
+\end{corollary}
+
+\begin{proof}
+The hypotheses imply the diagonal Archimedean bound of
+Lemma~\ref{lem:packet-alpha-diagonal-core} and the off-diagonal prime vanishing
+of Lemma~\ref{lem:packet-beta-vanishing}. Substituting these simplifications
+into Proposition~\ref{prop:packet-explicit-sufficient-criterion} yields the
+claim.
+\end{proof}
+
 \begin{theorem}[P8 / PSD-pd: conditional corrected compact positivity via finite-symbol verification]\label{thm:PSD-pd}
 Fix a compact window $[-K,K]$ and let
 $\mathcal P_{K,\mathrm{tr}}(t_0)\subseteq \mathcal P_K(t_0)$ be a
@@ -597,7 +925,10 @@ translation-compatible packet subspace such that:
 \end{enumerate}
 Assume moreover that for every finite admissible translation dictionary
 appearing in $\mathcal P_{K,\mathrm{tr}}(t_0)$ the hypotheses of
-Corollary~\ref{cor:regularized-p7} hold.
+Corollary~\ref{cor:regularized-p7} hold. Equivalently, it is enough to verify
+the explicit coefficient inequalities of Proposition~\ref{prop:packet-explicit-sufficient-criterion}
+or its sparse-dictionary Corollary~\ref{cor:packet-sparse-dictionary} on every
+such admissible dictionary.
 Then
 \[
   Q^\star(t;\Phi)\ge0\qquad\text{for every }\Phi\in \mathcal W_K^{\mathrm{pd}}.
@@ -654,9 +985,10 @@ The target-cone audit shows that these do \emph{not} yet close RH. The public th
 \textup{(P1)}--\textup{(P6)} together with the finite-symbol verification package
 \textup{(P7.3)}--\textup{(P7.6)}, but the public missing theorem is now:
 \begin{enumerate}
-  \item the packet-level bounds needed to make Corollary~\ref{cor:regularized-p7}
-  hold on every finite admissible dictionary inside a dense
-  translation-compatible packet subspace.
+  \item the packet-level coefficient bounds on $\alpha_m$ and $\beta_m$ needed
+  to verify Proposition~\ref{prop:packet-explicit-sufficient-criterion} (or,
+  equivalently, Corollary~\ref{cor:regularized-p7}) on every finite admissible
+  dictionary inside a dense translation-compatible packet subspace.
 \end{enumerate}
 \end{remark}
 
@@ -694,7 +1026,10 @@ Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corr
   translation-compatible packet subspace, with the finite symbol-side decomposition
   $S_J=A_J-P_J$ kept as the constructive target and
   Corollary~\ref{cor:regularized-p7} as the clean Poisson-regularized
-  verification criterion on each admissible dictionary.
+  verification criterion on each admissible dictionary;
+  \item close the packet-level bounding package
+  \textup{A1}--\textup{A4}, \textup{P1}--\textup{P3}, and the explicit
+  sufficient inequalities \textup{(C1)}--\textup{(C2$'$)}.
 \end{enumerate}
 Once that packet-kernel theorem is closed, the A3/RKHS positivity engine can feed the
 corrected closure route without reopening the LF or Weil tail.
@@ -726,6 +1061,9 @@ Theorem~\ref{thm:PSD-pd}.
   \textup{P5} full sequence split
   $\Longrightarrow$
   \textup{P6} Toeplitz--Herglotz criterion
+  $\Longrightarrow$
+  packet-level bounds \textup{A1}--\textup{A4}, \textup{P1}--\textup{P3},
+  and \textup{(C1)}--\textup{(C2$'$)}
   $\Longrightarrow$
   \textup{P7.3}--\textup{P7.6} finite admissible dictionary positivity
   ($S_J\ge0$ with Poisson-regularized verification) or a new operator package for the full kernel
