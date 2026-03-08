@@ -1511,9 +1511,14 @@ mainline.
   \[
     S_{a,M}^*G_g[a]S_{a,M}
     =
-    \kappa(a)\bigl(T_M[P_A]-T_P^{(M)}\bigr)+R_{a,M},
+    \kappa(a)\bigl(T_M[P_A]-T_P^{(M)}\bigr)+F_{a,M},
     \qquad
-    S_{a,M}^*J_aS_{a,M}=I.
+    S_{a,M}^*J_aS_{a,M}=B_{a,M},
+  \]
+  where the preferred first-pass target is the filtered Volterra realization
+  with
+  \[
+    B_{a,M}=T_M[|1+z|^2]\le 4I.
   \]
   The live theorem stack is:
   \[
@@ -1578,15 +1583,24 @@ must instead be a generalized form pair
 with finite-dimensional subspaces $E_{a,M}\subset L^2(-a,a)$, synthesis maps
 $S_{a,M}:P_M\to E_{a,M}$, and a positive injective metric operator $J_a$ such
 that one has exact or asymptotic pair-intertwining
-\[
-  S_{a,M}^*G_g[a]S_{a,M}
-  =
-  \kappa(a)\bigl(T_M[P_A]-T_P^{(M)}\bigr)+R_{a,M},
-  \qquad
-  S_{a,M}^*J_aS_{a,M}=I,
-\]
-with $R_{a,M}=0$ ideally or $R_{a,M}\to0$ in a usable sense. The resulting
-audited theorem stack is then:
+  \[
+    S_{a,M}^*G_g[a]S_{a,M}
+    =
+    \kappa(a)\bigl(T_M[P_A]-T_P^{(M)}\bigr)+F_{a,M},
+    \qquad
+    S_{a,M}^*J_aS_{a,M}=B_{a,M},
+  \]
+  with $B_{a,M}$ an explicit positive pullback metric. The preferred first-pass
+  realization is the filtered Volterra bridge
+  \[
+    J_a=(I_0^{(a)})^*I_0^{(a)},
+    \qquad
+    I_0^{(a)}S_{a,M}=U_aM_{1+z}\big|_{P_M},
+    \qquad
+    B_{a,M}=T_M[|1+z|^2]\le 4I,
+  \]
+  and with $F_{a,M}$ expected to be either zero or an explicit finite-rank cap
+  correction. The resulting audited theorem stack is then:
 \[
   \textup{H1 exact/asymptotic pair-intertwining}
   \Longrightarrow
@@ -1657,7 +1671,40 @@ compressed prime Gram vectors already present in Section~\ref{sec:A3} and
 Section~\ref{sec:rkhs-prime-cap}. This is the exact bridge point where the
 Suzuki route either lands or fails.
 
-The strongest current engineering refinement is to use a finite-prime
+The fastest current first-pass candidate sharpens this further to a filtered
+Volterra bridge. Define
+\[
+  (I_0^{(a)}\phi)(t):=\int_{-a}^t \phi(u)\,du,
+  \qquad
+  J_a:=(I_0^{(a)})^*I_0^{(a)},
+\]
+let $U_a:L^2(\mathbb T)\to L^2(-a,a)$ be the scaled Fourier unitary sending
+$z^n$ to $\chi_n[a]$, and write $M_+$ for multiplication by $1+z$ on
+$L^2(\mathbb T)$. The preferred synthesis candidate is then characterized by
+\[
+  I_0^{(a)}S_{a,M}=U_aM_+\big|_{P_M}.
+\]
+With this normalization one gets the explicit pullback metric
+\[
+  B_M:=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=T_M[2+z+z^{-1}]
+\]
+and therefore
+\[
+  0\le B_M\le 4I_{P_M}.
+\]
+So any existing Q3 lower bound of the form
+\[
+  Q_M:=T_M[P_A]-T_P^{(M)}\ge c(a)I
+\]
+automatically implies
+\[
+  Q_M\ge \frac{c(a)}4\,B_M.
+\]
+This is why the filtered Volterra bridge is now the preferred first attack on
+\textup{H1}: it turns the current raw Q3 gap into a usable $J_a$-gap without
+first whitening the packet metric.
+
+The strongest current secondary engineering refinement is to use a finite-prime
 semilocal layer only as a basis/Gram engine for this construction, not as a new
 RH endgame. Fix a finite prime set
 \[
@@ -1694,7 +1741,7 @@ The resulting semilocal-assisted target is still H1 and nothing more:
 \[
   (\widetilde S_{a,M}^{(S)})^*G_g[a]\widetilde S_{a,M}^{(S)}
   =
-  \kappa_{S,a}\bigl(T_M[P_A]-T_P^{(M)}\bigr)+R_{S,a,M}.
+  \kappa_{S,a}\bigl(T_M[P_A]-T_P^{(M)}\bigr)+F_{S,a,M}.
 \]
 This is useful precisely because it gives a canonical finite-prime packet basis
 and a natural Gram metric for H1; it would become counterproductive only if one

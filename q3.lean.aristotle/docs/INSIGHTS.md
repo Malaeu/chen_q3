@@ -2873,3 +2873,30 @@ Verdict:
    = \kappa_{S,a}(T_M[P_A]-T_P^{(M)}) + R_{S,a,M}`;
 - if promoted beyond that, it turns into a second heavy endgame and starts to
   hurt rather than help.
+
+## In-progress synthesis (2026-03-08) — filtered Volterra bridge preferred for H1
+
+Target node and wiring:
+- live public route stays `H1 -> H2 -> H3 -> H4`;
+- the current improvement is not a new endpoint, but a sharper first-pass
+  realization of `H1`;
+- the key change is to stop forcing `S_{a,M}^*J_aS_{a,M}=I` and instead use the
+  explicit pullback metric coming from Suzuki's Volterra operator.
+
+Concrete synthesis:
+- define `(I_0^{(a)}\phi)(t)=\int_{-a}^t \phi(u)\,du`;
+- take `J_a=(I_0^{(a)})^*I_0^{(a)}`;
+- define filtered synthesis by
+  `I_0^{(a)}S_{a,M}=U_aM_{1+z}|_{P_M}`;
+- then the pullback metric is explicit:
+  `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=T_M[2+z+z^{-1}]`;
+- hence `0\le B_M\le 4I`, so any current Q3 bulk bound
+  `Q_M\ge c(a)I` automatically implies `Q_M\ge (c(a)/4)B_M`.
+
+Verdict:
+- this is now the preferred first-pass `H1` candidate;
+- semilocal packets remain useful as a secondary basis/Gram refinement;
+- the real next theorem is exact or almost-exact matrix comparison on the
+  filtered basis:
+  `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)Q_M+F_{a,M}`,
+  with `F_{a,M}` zero or finite-rank cap.
