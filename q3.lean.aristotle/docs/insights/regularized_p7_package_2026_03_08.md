@@ -10,15 +10,17 @@ The live `PSD-pd` route has now been sharpened one level further.
   functional `\mathcal Q`, not directly through the even-only `Q^\star`.
 - The packet prime block still cannot be treated as PSD on dense packet spaces.
 - Gershgorin diagonal dominance survives only as a sparse finite-block lemma.
-- The immediate constructive target is now the regularized full-symbol
-  inequality
+- The immediate constructive target is now the measure-level/full-symbol
+  criterion
+  `\mu_A-\mu_P \ge 0`,
+  or in the stronger symbol regime
   `A_{g,\Delta}^{reg} \ge P_{g,\Delta}`.
 
 ## Core theorem package
 
 The honest constructive chain is now:
 
-`P1 -> P2 -> P4 -> sparse Gershgorin diagnostic -> P5 -> P6 -> regularized P7 -> PSD-pd`
+`P1 -> P2 -> P4 -> sparse Gershgorin diagnostic -> P5 -> P6 -> measure-level / regularized P7 -> PSD-pd`
 
 with the background theorem shape
 
@@ -31,8 +33,8 @@ kept only as the desired-but-false route.
 - It fixes the packet bilinear form at the correct level of generality.
 - It stops the project from pretending that diagonal-dominance estimates could
   close the dense main theorem.
-- It identifies the real next theorem as a regularization-plus-domination
-  theorem for the full symbol, not for the prime block alone.
+- It identifies the real next theorem as a measure-level/full-symbol
+  domination theorem for the full kernel, not for the prime block alone.
 
 ## File pointers
 

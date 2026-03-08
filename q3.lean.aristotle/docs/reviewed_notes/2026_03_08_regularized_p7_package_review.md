@@ -1,4 +1,4 @@
-# Reviewed Note: Regularized P7 Package
+# Reviewed Note: Measure-Level P7 Package
 
 - reviewed: `yes`
 - safe for embeddings: `yes`
@@ -10,9 +10,13 @@
 
 The strict packet route is now refined as follows:
 
-`P1 -> P2 -> P4 -> sparse Gershgorin diagnostic -> P5 -> P6 -> regularized P7 -> PSD-pd`
+`P1 -> P2 -> P4 -> sparse Gershgorin diagnostic -> P5 -> P6 -> measure-level / regularized P7 -> PSD-pd`
 
-where regularized `P7` means full-symbol domination
+where `P7` now means measure-level/full-symbol domination
+
+`\mu_A-\mu_P >= 0`,
+
+or in the stronger symbol regime
 
 `A_{g,\Delta}^{reg} >= P_{g,\Delta}`.
 
@@ -20,8 +24,8 @@ where regularized `P7` means full-symbol domination
 
 - Cross-kernels now use the symmetric extension `\mathcal Q`.
 - Gershgorin is explicit, but only as a sparse finite-block lemma.
-- The dense main theorem now clearly targets regularized full-symbol domination,
-  not standalone PSD of the prime block.
+- The dense main theorem now clearly targets measure-level/full-symbol
+  domination, not standalone PSD of the prime block.
 
 ## File pointers
 

@@ -2547,23 +2547,40 @@ Concrete synthesis:
   `A_{g,\Delta}^{reg}(\theta) - P_{g,\Delta}(\theta) >= 0`,
   with any new full-kernel operator package kept as fallback.
 
-## Synthesis (2026-03-08, final) — regularized `P7` is now the live constructive target
+## Synthesis (2026-03-08, final) — measure-level `P7/P8` integrated
 
 Final verdict:
-- cross-kernels on packet space should be written through the symmetric compact
-  extension `\mathcal Q`, not directly through the even-only `Q^\star`;
-- the packet prime block still cannot be isolated as a PSD operator on dense
-  packet spaces;
-- Gershgorin diagonal dominance is worth keeping, but only as a sparse
-  finite-block sufficient criterion;
-- the honest next theorem is now regularized full-symbol domination
-  `A_{g,\Delta}^{reg}\ge P_{g,\Delta}` feeding `PSD-pd`.
+- the packet cross-kernel should be written via the symmetric extension
+  `\mathcal Q(F)`, not only the even-restricted `Q^\star`;
+- the exact packet theorem package now has the public form
+  `P1` exact sesquilinear identity for `\mathcal Q`,
+  `P2` Toeplitz reduction,
+  `P3` desired prime PSD factorization,
+  `P4` obstruction,
+  `P5` coefficient split `\kappa=\alpha-\beta`,
+  `P6` Toeplitz--Herglotz criterion,
+  `P7` measure-level / regularized full-symbol domination,
+  `P8` conditional corrected compact positivity;
+- the immediate constructive target is now
+  `\mu_A-\mu_P\ge 0`, or in the stronger symbol regime
+  `A_{g,\Delta}^{reg}\ge P_{g,\Delta}`;
+- Gershgorin is worth keeping, but only as a sparse finite-block sufficient
+  criterion and explicitly not as the dense main theorem.
+
+External theorem-shape check:
+- the standard Toeplitz/Herglotz equivalence still matches the packet-kernel
+  route exactly;
+- the classical Weil positive-definite / convolution-square viewpoint still
+  matches the corrected target cone and compact closure step;
+- nothing external removes the need for a project-local regularization theorem
+  for the Archimedean packet symbol.
 
 Project effect:
-- `Main_closure`, `Weil_pack`, `introduction`, `abstract`, `scope_notation`, and
-  `qstar_contract` now expose the same refined packet route;
-- the queue and orchestrator now treat regularized `P7` as the immediate
-  constructive target and demote Gershgorin to background-only support;
+- `Main_closure` now contains the symmetric extension `\mathcal Q`, the
+  symmetrized packet identity, the prime-block obstruction, the sparse
+  Gershgorin lemma, the measure-level `P7` criterion, and `P8`;
+- `scope_notation`, `qstar_contract`, `abstract`, `introduction`, `Weil_pack`,
+  orchestrator, tracker, and queue all agree on the same sharpened frontier;
 - a new insight note plus reviewed note freeze the regularized `P7` package for
   embeddings and future blocker search.
 

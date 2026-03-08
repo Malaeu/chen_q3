@@ -173,7 +173,9 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
   exact packet sesquilinear identity
   -> prime-block obstruction
   -> Toeplitz/Herglotz spectral criterion for the full sequence
-  -> regularized full-symbol domination `A_{g,\Delta}^{reg}\ge P_{g,\Delta}`
+  -> measure-level/full-symbol domination `\mu_A-\mu_P\ge 0`
+     or, in the stronger symbol regime,
+     `A_{g,\Delta}^{reg}\ge P_{g,\Delta}`
      or a new operator package for the full kernel
   -> `PSD-pd`.
 - On dense packet dictionaries with arbitrarily fine translates, a uniform lower

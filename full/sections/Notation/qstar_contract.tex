@@ -28,6 +28,7 @@ $S_{g,\Delta}$ & packet Toeplitz symbol & $S_{g,\Delta}(\theta)=\sum_{m\in\mathb
 $K_Q(g_i,g_j)$ & packet kernel on pre-packets & $\mathcal Q(g_i * \widetilde{g_j})$ \\
 $A_{g,\Delta}$ & Archimedean packet symbol part & $\sum_m e^{-im\theta}\int a^*(\xi)\,h(\xi-m\Delta)\,d\xi$ \\
 $P_{g,\Delta}$ & prime packet symbol part & $\sum_m e^{-im\theta}\frac12\sum_n w_Q(n)\bigl(h(\xi_n-m\Delta)+h(\xi_n+m\Delta)\bigr)$ \\
+$\mu_A,\mu_P$ & packet-side Fourier measures & $\alpha_m=\widehat{\mu_A}(m),\ \beta_m=\widehat{\mu_P}(m)$ \\
 $H_{g,\Delta,\theta}$ & twisted periodization of $h$ & $\sum_m h(\xi-m\Delta)e^{-im\theta}$ \\
 $\Phi_{B,t,\tau}$ & shifted evenized Fej\'er$\times$heat window & bandwidth $B$, heat scale $t$, shift $\tau$ \\
 $Q^\star(t;\Phi)$ & Weil functional with explicit $t$ & $\Phi$ on the ambient/support side or on the corrected cone \\
@@ -60,7 +61,8 @@ Weil criterion. Accordingly:
   \item the honest remaining knife-edge is `PSD-pd`: prove that the packet kernel
   $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ is positive semidefinite on the
   same exact dense pre-packet space;
-  \item the immediate constructive target is now regularized full-symbol domination
+  \item the immediate constructive target is now the measure-level/full-symbol
+  domination criterion $\mu_A-\mu_P\ge 0$, or in the stronger symbol regime
   $A_{g,\Delta}^{\mathrm{reg}}\ge P_{g,\Delta}$;
   \item the centered A3/RKHS positivity mechanism is kept as the positivity engine
   for that corrected cone.

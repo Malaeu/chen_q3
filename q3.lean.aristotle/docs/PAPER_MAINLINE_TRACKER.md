@@ -148,7 +148,9 @@ Interpretation rule after `T0.1`:
    -> `P4` prime-block obstruction
    -> `P5` full sequence split `\kappa=\alpha-\beta`
    -> `P6` Toeplitz/Herglotz criterion
-   -> `P7` regularized full-symbol domination `A_{g,\Delta}^{reg}\ge P_{g,\Delta}`
+   -> `P7` measure-level / regularized full-symbol domination
+      `\mu_A-\mu_P\ge 0`, or in the stronger symbol regime
+      `A_{g,\Delta}^{reg}\ge P_{g,\Delta}`
    -> `PSD-pd`.
 9. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
    equivalence between positive-definite sequence, Toeplitz-section PSD, and
