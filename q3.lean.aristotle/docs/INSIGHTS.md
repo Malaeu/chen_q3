@@ -3027,3 +3027,26 @@ Verdict:
 - the old four-block note remains valid, but only as the filtered consequence
   layer and no longer as the narrowest active frontier;
 - semilocal machinery stays engineering-only for the same `H1^f`.
+
+## In progress (2026-03-08) — Proshka raw-formula data pack
+
+A targeted Proshka context pack was generated at
+`q3.lean.aristotle/docs/insights/proshka_h1_raw_formula_brief_2026_03_08.md`.
+
+Its purpose is to hand Proshka the exact local file-level data that is missing
+from chat:
+- the model-space and compression conventions from
+  `full/sections/A3/rayleigh_bridge.tex`;
+- the calibration `\kappa_{A3}=1` from
+  `full/sections/A3/calibration.tex`;
+- the RKHS/Gram operator language from `full/sections/RKHS/core.tex`;
+- and the current raw-entry target layer from
+  `full/sections/Main_closure.tex`.
+
+Key clarification:
+- `w_{rs}(a)=\kappa(a)q_{rs}` is currently a live bulk target, not an already
+  proved Q3 theorem;
+- what the old A3 files already provide explicitly is the quadratic-form /
+  compression machinery;
+- what still has to be extracted from those files is the exact raw Section 8
+  entry convention for `q_{rs}`.
