@@ -32,6 +32,7 @@ It is **not** the execution queue and **not** the master gate-state file.
 | `W_K(u)` | scalar compact spectral weight `\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)` | active primary frontier object |
 | `S_{g,\Delta}(\theta)` | packet Toeplitz symbol built from `\kappa_m=\mathcal Q(h(\cdot-m\Delta))` | structural object; no longer the public theorem target by itself |
 | `K_Q(g_i,g_j)` | packet kernel `\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active hard-theorem object |
+| `G_g[a], J_a, E_{a,M}, S_{a,M}` | Suzuki/Yoshida generalized form-pair bridge data | audited alternative operator notation |
 
 Lean compatibility note:
 
@@ -53,6 +54,7 @@ Lean compatibility note:
 | `packet-Rayleigh-pd` | exact finite Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` with finite symbol `S_J` on each admissible dictionary | frozen theorem block | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | rejected-too-strong route | `sections/Main_closure.tex`, `sections/scope_notation.tex` |
 | `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active fallback route; finite-dictionary reduction and coefficient-bounding package explicit | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
+| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `H1 -> H2 -> H3 -> H4` | audited alternative operator pivot | `sections/Main_closure.tex`, `docs/insights/suzuki_form_pair_bridge_2026_03_08.md` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
 | `A2-pd` | continuity on the corrected cone | inherited input | `sections/A2.tex`, `sections/Main_closure.tex` |
 | `LF-pd` | LF lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}` | skeleton available, still conditional | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
@@ -138,21 +140,28 @@ Interpretation rule after `T0.1`:
    all-`K` statement.
 2. Clean comparison between the new scalar compact spectral route and the old
    centered Toeplitz/RKHS bridge, so that reuse boundaries are explicit.
-3. Pre-square density theorem on `C_c^\infty([-K/2,K/2])` strong enough to feed
+3. Freeze the Suzuki/Yoshida generalized form-pair bridge as the leading
+   alternative operator pivot:
+   `H1` exact/asymptotic intertwining through `S_{a,M}` and `J_a`
+   -> `H2` Galerkin/recovery
+   -> `H3` kernel-exclusion transfer
+   -> `H4` Suzuki RH criterion.
+   The honest blocker there is `H1`, not a raw operator-gap theorem.
+4. Pre-square density theorem on `C_c^\infty([-K/2,K/2])` strong enough to feed
    `A1-pd` through autocorrelation continuity if the fallback packet route is needed.
-4. `A1-pd`: proof of density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.
-5. Exact packet-Rayleigh theorem on autocorrelation packets
+5. `A1-pd`: proof of density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.
+6. Exact packet-Rayleigh theorem on autocorrelation packets
    `\Psi_c * \widetilde{\Psi_c}` with finite symbols `S_J` on admissible dictionaries.
-6. Naive packet-Rayleigh on `\mathcal G_{K,\mathrm{Ray}}^{pd}` is too large to serve
+7. Naive packet-Rayleigh on `\mathcal G_{K,\mathrm{Ray}}^{pd}` is too large to serve
    as the closure family; this must remain background-only.
-7. Reject the old `A3-pd` route as too strong on a dense packet dictionary.
-8. `PSD-pd`: prove positive semidefiniteness of the packet kernel
+8. Reject the old `A3-pd` route as too strong on a dense packet dictionary.
+9. `PSD-pd`: prove positive semidefiniteness of the packet kernel
    `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense
    translation-compatible packet subspace feeding `\mathcal G_K^{pd}`.
-9. Record the prime-block obstruction on packet space:
+10. Record the prime-block obstruction on packet space:
    standalone PSD factorization of the packet prime block is false on dense
    packet dictionaries containing an active node.
-10. Freeze the strict packet theorem package:
+11. Freeze the strict packet theorem package:
    `P1` exact packet sesquilinear identity
    -> `P2` Toeplitz reduction on translation packet dictionaries
    -> `P3` desired prime-factorization theorem shape
@@ -164,29 +173,29 @@ Interpretation rule after `T0.1`:
    -> `P7.5` Poisson-regularized verification
    -> `P7.6` explicit error-budget criterion
    -> `PSD-pd`.
-11. Freeze the concrete finite-dictionary bounding package:
+12. Freeze the concrete finite-dictionary bounding package:
    packet geometry `R_g,R_h`
    -> Archimedean bounds `A1--A4` on `\alpha_m`
    -> prime-mass bounds `P1--P3` on `\beta_m`
    -> finite-symbol envelope `(C0)`
    -> explicit sufficient inequalities `(C1)/(C1')`
    -> sparse regime `(C2)/(C2')`.
-12. Freeze the canonical centered half-atom pilot:
+13. Freeze the canonical centered half-atom pilot:
     `g_{δ,t_0,0}=\Lambda_\delta\rho_{t_0}`
     -> exact formulas for `\|g\|_1`, `\|h\|_1`, `\|h\|_\infty`
     -> lower bound `H_r\ge M_g(r/2)^2`
     -> pilot compact `K=0.2`, `J={0,1}`, `\Delta=0.15`
     -> vanishing `\beta_0=\beta_1=0` for `\delta<0.0124`
     -> positivity reduces to the Archimedean gap `\alpha_0>2|\alpha_1|`.
-13. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
+14. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
    equivalence between positive-definite sequence, Toeplitz-section PSD, and
    positive measure representation for the packet coefficients.
-14. Record Gershgorin diagonal dominance only as a sparse finite-block lemma;
+15. Record Gershgorin diagonal dominance only as a sparse finite-block lemma;
     it must not be presented as the dense main theorem.
-15. Treat finite-dictionary `P7` as the immediate fallback constructive target, now via
+16. Treat finite-dictionary `P7` as the immediate fallback constructive target, now via
     explicit coefficient bounds on `\alpha_m,\beta_m`; any new full-kernel
     operator package is fallback-only.
-16. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
+17. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
 
 ## Background Broad-Cone Branch
 

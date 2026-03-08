@@ -97,6 +97,35 @@ Operational consequence:
 - any new manuscript sync should now serve the pilot inequality, not re-freeze the
   already-frozen structural stack.
 
+## Final result (2026-03-08) — Suzuki/Yoshida generalized form-pair bridge frozen as the leading alternative operator pivot
+
+Новая операторная развилка зафиксирована честно:
+
+- fastest live alternative route is not a new cone theorem and not compact
+  symbol positivity on truncated windows;
+- the strongest reusable Q3 asset is still the finite Hermitian block
+  `T_M[P_A]-T_P^{(M)}`;
+- the clean external RH-equivalent target is Suzuki's operator criterion
+  `0 \notin \sigma_p(G_g[a])` for every `a>0`;
+- but because `G_g[a]` is compact / trace class, the naive raw-operator
+  convergence + plain-`L^2` spectral-gap transfer is the wrong theorem shape.
+
+Correct audited package:
+
+- `H1`: exact/asymptotic pair-intertwining through `S_{a,M}` and `J_a`;
+- `H2`: Galerkin / recovery on the generalized pair `(G_g[a],J_a)`;
+- `H3`: kernel-exclusion / generalized gap transfer;
+- `H4`: RH via Suzuki Theorem 1.4.
+
+Operational consequence:
+
+- keep the scalar compact route as public mainline;
+- keep the Suzuki bridge as the leading alternative operator pivot under audit;
+- the real missing brick there is `H1`, not `H3`.
+
+Detailed note:
+- `docs/insights/suzuki_form_pair_bridge_2026_03_08.md`
+
 ## Final result (2026-03-08) — finite-dictionary P7 replaces the measure-level immediate target
 
 Новый blocker уточнён жёстче:

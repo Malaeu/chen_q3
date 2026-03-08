@@ -1547,6 +1547,50 @@ two strategy families that survive the rejection of the old uniform-gap theorem
 shape.
 \end{remark}
 
+\begin{remark}[Alternative operator pivot via Suzuki/Yoshida]\label{rem:suzuki-operator-pivot}
+There is one further route which is not the public mainline, but which is
+currently the strongest audited alternative operator pivot. The finite Q3 block
+\[
+  T_M[P_A]-T_P^{(M)}
+\]
+is already written in exactly the Hermitian finite-section language that one
+would want for Suzuki's RH-equivalent operator criterion
+\[
+  0\notin \sigma_p(G_g[a])\qquad\text{for every }a>0.
+\]
+However, because Suzuki's operator $G_g[a]$ is compact / trace class, the naive
+package ``finite sections converge in raw operator norm and keep a uniform
+plain-$L^2$ gap away from $0$'' is the wrong theorem shape. The honest bridge
+must instead be a generalized form pair
+\[
+  (G_g[a],J_a),
+\]
+with finite-dimensional subspaces $E_{a,M}\subset L^2(-a,a)$, synthesis maps
+$S_{a,M}:P_M\to E_{a,M}$, and a positive injective metric operator $J_a$ such
+that one has exact or asymptotic pair-intertwining
+\[
+  S_{a,M}^*G_g[a]S_{a,M}
+  =
+  \kappa(a)\bigl(T_M[P_A]-T_P^{(M)}\bigr)+R_{a,M},
+  \qquad
+  S_{a,M}^*J_aS_{a,M}=I,
+\]
+with $R_{a,M}=0$ ideally or $R_{a,M}\to0$ in a usable sense. The resulting
+audited theorem stack is then:
+\[
+  \textup{H1 exact/asymptotic pair-intertwining}
+  \Longrightarrow
+  \textup{H2 Galerkin/recovery}
+  \Longrightarrow
+  \textup{H3 kernel-exclusion transfer}
+  \Longrightarrow
+  \textup{H4 Suzuki Theorem 1.4}.
+\]
+This route is attractive because it reuses the strongest existing finite Q3
+brick directly and bypasses the slow cone-propagation burden; but it remains
+under audit, and the real missing brick is H1 rather than H3.
+\end{remark}
+
 \begin{remark}[Why shifted A1$'$ is now auxiliary]\label{rem:G1-frozen-target}
 The shifted theorem A1$'$ remains mathematically valuable: it proves density on the broad restriction cone $R_K$ and it still supplies approximation technology. But after the target-cone audit it no longer serves as the public RH density theorem, because the corrected target is the positive-definite cone $\mathcal W_K^{\mathrm{pd}}$, not the full broad cone of even nonnegative compact-support tests.
 \end{remark}

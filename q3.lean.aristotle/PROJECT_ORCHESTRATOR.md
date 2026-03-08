@@ -93,6 +93,7 @@ Interpretation after `T0.1`:
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `\mathcal Q(\Psi_c * \widetilde{\Psi_c})` with the finite symbol integral `\frac{1}{2\pi}\int S_J(\theta)|p_c(\theta)|^2\,d\theta` on each admissible dictionary |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
 | `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `fallback constructive route` | finite-dictionary positivity via explicit coefficient bounds on `\alpha_m,\beta_m`, yielding `S_J=A_J-P_J\ge0` on each admissible block |
+| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `(G_g[a],J_a)` from Q3 finite sections to the RH-equivalent operator criterion | `candidate alternative pivot under audit` | concrete construction of `S_{a,M}`, `J_a`, and the audited theorem package `H1 -> H2 -> H3 -> H4` |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
@@ -129,11 +130,16 @@ Interpretation after `T0.1`:
      Poisson-regularized verification, and explicit error budget,
      with a new full-kernel operator package kept as fallback;
 11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
- 12. move the active blocker from the already-frozen theorem package `S1/S2/S3/S4`
+12. move the active blocker from the already-frozen theorem package `S1/S2/S3/S4`
      to the first quantitative pilot for `W_K(u)` on a small compact:
      explicit lower/upper bounds on `\widehat{a_K^*}(u)` and the finite
      cosine prime sum, with one nonvacuous pilot regime frozen before any
      attempt at an all-`K` statement.
+ 13. keep the Suzuki generalized form-pair bridge as the leading alternative
+     operator pivot under audit:
+     the true missing brick there is `H1`, namely the construction of
+     `S_{a,M}` and `J_a`, not a fresh cone theorem and not a raw plain-`L^2`
+     spectral-gap transfer theorem.
 
 ## Active Milestone
 
@@ -183,7 +189,11 @@ Turn the corrected theorem package into a proof-ready compact spectral stack:
 17. keep Aristotle `G1.6` as background lemma-mining only,
 18. make the next honest theorem task quantitative:
     isolate one pilot compact and one explicit inequality proving
-    `W_K(u)\ge0` there before any general compact claim is attempted.
+    `W_K(u)\ge0` there before any general compact claim is attempted,
+19. keep the Suzuki generalized form-pair package
+    `H1 -> H2 -> H3 -> H4` frozen as the strongest alternative operator route,
+    with `H1` exact or asymptotic pair-intertwining as the only real missing
+    bridge theorem.
 
 ## Hard Blockers
 
@@ -218,6 +228,14 @@ Turn the corrected theorem package into a proof-ready compact spectral stack:
      (with measure-level/full-symbol language retained only as secondary diagnostic notation)
      or a new operator package for the full kernel
   -> `PSD-pd`.
+- The strongest alternative operator pivot is now the Suzuki/Yoshida generalized
+  form-pair bridge:
+  `H1` exact/asymptotic intertwining through `S_{a,M}` and `J_a`
+  -> `H2` Galerkin/recovery on the generalized pair
+  -> `H3` kernel-exclusion transfer
+  -> `H4` RH via Suzuki Theorem 1.4.
+  Until `H1` is concretely built, this route stays audited alternative, not the
+  public mainline.
 - The canonical centered half-atom pilot already shows that this finite-symbol
   criterion is genuinely nonvacuous on sparse compact dictionaries, while still
   falling far short of dense closure.
@@ -313,3 +331,7 @@ Legacy narrative surfaces are reference-only:
   -> corrected compact positivity.
   The finite-dictionary packet package remains active only as fallback
   discretization / verification for that scalar route.
+- 2026-03-08: Suzuki/Yoshida operator nondegeneracy is frozen as the leading
+  alternative pivot under audit, but only in the generalized form-pair shape
+  `(G_g[a],J_a)`. The naive raw-operator / plain-`L^2` gap transfer is rejected;
+  the real missing brick is `H1`, the construction of `S_{a,M}` and `J_a`.
