@@ -1285,13 +1285,30 @@ for a finite family $\Psi_1,\dots,\Psi_N$ and using
 \]
 \end{proof}
 
-\begin{theorem}[S3: corrected compact positivity from the scalar spectral weight]\label{thm:compact-spectral-closure}
-Fix $K>0$. Assume
+\begin{theorem}[S3: conditional corrected compact positivity]\label{thm:compact-spectral-closure}
+Define the corrected local positive-definite cone
+\[
+  \mathcal W_K^{\mathrm{pd}}
+  :=
+  \overline{
+    \operatorname{cone}\{\Psi*\widetilde\Psi:\ \Psi\in C_c([-K/2,K/2])\}
+  }^{\|\cdot\|_\infty}.
+\]
+Let $\mathcal P_K\subset C_c([-K/2,K/2])$ be a pre-packet space such that
+\[
+  \overline{
+    \operatorname{cone}\{\Psi*\widetilde\Psi:\ \Psi\in\mathcal P_K\}
+  }^{\|\cdot\|_\infty}
+  =
+  \mathcal W_K^{\mathrm{pd}}.
+\]
+Assume, moreover, that $\mathcal Q_K$ is continuous on
+$\mathcal W_K^{\mathrm{pd}}$ in the $\|\cdot\|_\infty$-topology. If
 \[
   W_K(u)\ge0
-  \qquad\text{for every }u\in\mathbb R.
+  \qquad\text{for every }u\in\mathbb R,
 \]
-Then
+then
 \[
   Q(\Phi)\ge0
   \qquad\text{for every }\Phi\in
@@ -1303,18 +1320,19 @@ Then
 By Proposition~\ref{prop:compact-spectral-positivity},
 \[
   \mathcal Q_K(\Psi*\widetilde{\Psi})\ge0
-  \qquad\text{for every }\Psi\in C_c([-K/2,K/2]).
+  \qquad\text{for every }\Psi\in \mathcal P_K.
 \]
-In particular, positivity holds on the seed cone
-$\mathcal W_{K,0}^{\mathrm{pd}}$, hence on its conic hull. Since
-$Q^\star(t;\cdot)$ is continuous on the ambient compact-support class $B_K$ by
-Corollary~\ref{cor:A2-Lip}, positivity extends to the closure
-$\mathcal W_K^{\mathrm{pd}}=\overline{\operatorname{cone}(\mathcal W_{K,0}^{\mathrm{pd}})}^{\|\cdot\|_\infty}$.
-For even $\Phi\in \mathcal W_K^{\mathrm{pd}}\cap C_c([-K,K])$, one has
+Hence $\mathcal Q_K\ge0$ on the generating cone
+\[
+  \operatorname{cone}\{\Psi*\widetilde\Psi:\ \Psi\in\mathcal P_K\}.
+\]
+By the assumed $\|\cdot\|_\infty$-continuity of $\mathcal Q_K$, positivity
+extends to the closure, i.e. to all of $\mathcal W_K^{\mathrm{pd}}$. For even
+$\Phi\in \mathcal W_K^{\mathrm{pd}}\cap C_c([-K,K])$, one has
 $\mathcal Q_K(\Phi)=Q(\Phi)$, so the claim follows.
 \end{proof}
 
-\begin{corollary}[S4: conditional global closure from compact spectral positivity]\label{cor:compact-spectral-global-closure}
+\begin{corollary}[S4: conditional global closure]\label{cor:compact-spectral-global-closure}
 Assume Theorem~\ref{thm:compact-spectral-closure} holds for every $K>0$, and
 assume the corrected compact-to-global transfer on the inductive limit
 \[
@@ -1326,11 +1344,21 @@ Then
   \qquad
   \text{for every }\Phi\in \mathcal W^{\mathrm{pd}}\cap C_c(\mathbb R)_{\mathrm{even}}.
 \]
+If, in addition, the corrected Weil linkage
+\[
+  \mathrm{RH}
+  \Longleftrightarrow
+  Q(\Phi)\ge0
+  \quad
+  \forall \Phi\in \mathcal W^{\mathrm{pd}}\cap C_c(\mathbb R)_{\mathrm{even}}
+\]
+holds, then the Riemann Hypothesis follows.
 \end{corollary}
 
 \begin{proof}
 Apply Theorem~\ref{thm:compact-spectral-closure} on each compact, then use the
-corrected inductive-limit transfer.
+corrected inductive-limit transfer. The final implication is the corrected
+Weil criterion.
 \end{proof}
 
 \begin{theorem}[Conditional main positivity on $\mathcal W^{\mathrm{pd}}$]\label{thm:Main-positivity}
