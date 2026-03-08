@@ -3190,3 +3190,20 @@ So the raw-compressed normalization brick is fixed, but the direct raw Suzuki
 match is still nontrivial.  This is good news operationally: the remaining
 bulk mismatch is now concrete and numerically testable instead of being a vague
 normalization fog.
+
+Follow-up probe with a convention search
+(`a=1.0`, `M=2`, `B=0.2`, `t=0.15`, `zeros=10`) tested the natural lightweight
+variants:
+
+- Q3 prime phase `e^{+2\pi i(s-r)\xi}` vs `e^{-2\pi i(s-r)\xi}`;
+- Suzuki raw entry swap `w_{rs}` vs `w_{sr}`;
+- complex conjugation on either side.
+
+All of these gave essentially the same residual scale
+(`relative max residual ~= 1.3e-2`).  So the remaining mismatch is not cured by
+the first obvious sign / conjugation / index-order flips.  The next suspects
+are deeper:
+
+- the exact Suzuki-side raw entry formula,
+- the precise Weil/Fourier normalization in the Suzuki package,
+- or a missing finite-rank / cap correction already at the raw-entry layer.
