@@ -32,19 +32,41 @@ normalization and matrix-entry data hidden in the following files:
 Crucially:
 
 - `w_{rs}(a)` comes from the Suzuki/Weil side.
-- the exact normalized Section 8 raw entry formula is
-  `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle=a_{r-s}-p_{r-s}^{(L)}`
+- for Proshka's work the useful operator is not the normalized finite block
+  `T_P^{Ray}(t,M)` by itself, but the raw compression
+  `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`;
+- the corresponding raw finite Section 8 operator is
+  `Q_M^{raw}:=T_M[P_A]-\Pi_M`;
+- its exact raw entries are
+  `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle=
+    A_{r-s}-\sum_{|\xi_n|\le B}\lambda_n e^{2\pi i (s-r)\xi_n}`
   with
-  `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`;
-- in the filtered bridge one writes `q_{rs}=q_{rs}^{(M+1)}` for the ambient
-  finite block;
-- the equality `w_{rs}(a)=\kappa(a)q_{rs}` is **not** an already proved Q3
-  theorem. It remains the exact bulk target for `H1`.
+  `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`;
+- this formula is stable in `M` as soon as `|r|,|s|\le M`;
+- the calibration section fixes `\kappa_{A3}=1`, so no extra Q3-side scalar is
+  hiding in the Archimedean coefficients;
+- the equality `w_{rs}(a)=\kappa(a)q_{rs}` is still **not** an already proved
+  Q3 theorem. It remains the exact bulk target for `H1`.
 
-So if Proshka asks for “the formula”, what he really needs is the exact raw
-Section 8 entry convention and its normalization, because the old A3 files
-spelled out the quadratic-form/compression machinery but not this `L`-local raw
-entry formula as one explicit line.
+So if Proshka asks for “the formula”, what he really needs is not the old
+normalized `L`-local shorthand, but the exact raw operator package
+`Q_M^{raw}`, `\Pi_M`, `A_k`, `\lambda_n`, and the statement that the only
+remaining bulk target is `w_{rs}(a)=\kappa(a)q_{rs}`.
+
+## Best hack for Proshka
+
+Do not ask Proshka to reconstruct the normalization from `v_n^{(M)}` and the
+Rayleigh pairing. Hand him the following package directly:
+
+- `\Pi_M=(2M+1)T_P^{Ray}(t,M)`;
+- `Q_M^{raw}=T_M[P_A]-\Pi_M`;
+- `q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`;
+- `\kappa_{A3}=1`;
+- the two raw bulk target families are `(+,+)` and `(+,-)`.
+
+That removes the annoying bookkeeping layer and lets him work immediately on
+the real bridge identity instead of re-deriving scale factors from the old A3
+files.
 
 ## Working tree
 ```text

@@ -10,10 +10,14 @@ It narrows the live bulk blocker inside `H1^f`.
 
 ## Frozen notation
 
-- exact normalized raw Section 8 entries:
-  `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle=a_{r-s}-p_{r-s}^{(L)}`
+- Proshka-facing exact raw finite operator:
+  `Q_M^{raw}:=T_M[P_A]-\Pi_M`,
+  `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`
+- exact raw Section 8 entries:
+  `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle=
+   A_{r-s}-\sum_{|\xi_n|\le B}\lambda_n e^{2\pi i(s-r)\xi_n}`
   with
-  `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`
+  `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`
 - raw Suzuki/Weil entries:
   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`
 - filtered finite section:
@@ -36,17 +40,19 @@ The narrowest active theorem target is now:
 
 ## Normalization caveat now frozen
 
-The old A3 files do not give a single `L`-independent global raw matrix whose
-finite sections are the normalized Section 8 blocks. The factor
-`(2L+1)^{-1}` on the prime side is forced by
-`\iota_L^*T_P^{Ray}(t)\iota_L=(2L+1)T_P^{Ray}(t,L)`.
+The old A3 files do not directly hand us one already-named raw matrix object.
+They give the normalized block `T_P^{Ray}(t,M)` together with the compression
+identity
+`\iota_M^*T_P^{Ray}(t)\iota_M=(2M+1)T_P^{Ray}(t,M)`.
 
-So the honest raw notation in the bridge is `L`-local:
-- `Q_L=T_L[P_A]-T_P^{(L)}`
-- `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle`
+So the good hack is to stop asking the bridge to work with the normalized prime
+compression and instead freeze the raw operator
+`Q_M^{raw}=T_M[P_A]-\Pi_M`, where
+`\Pi_M=(2M+1)T_P^{Ray}(t,M)`.
 
-This resolves the previous ambiguity in the shorthand `q_{rs}` used by the H1
-layer.
+With that choice the exact entries become stable in `M` as soon as
+`|r|,|s|\le M`, and the A3 calibration fixes `\kappa_{A3}=1`. That is the
+package Proshka actually wants.
 
 ## Symmetry reduction
 

@@ -3054,3 +3054,35 @@ Key clarification:
   `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`;
 - the remaining missing brick is no longer “find the formula”, but prove the
   raw bulk identity `w_{rs}(a)=\kappa(a)q_{rs}` in the matching normalization.
+
+## In progress (2026-03-08) — Proshka-facing raw-operator hack for H1
+
+New extraction from the old A3 files:
+
+- the normalized finite prime block `T_P^{Ray}(t,M)` is not the object Proshka
+  should work with directly;
+- the useful finite operator is the raw compression
+  `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`;
+- therefore the natural Section 8 bridge object for Proshka is
+  `Q_M^{raw}:=T_M[P_A]-\Pi_M`;
+- its exact entries are
+  `q_{rs}=A_{r-s}-\sum_{|\xi_n|\le B}\lambda_n e^{2\pi i(s-r)\xi_n}`,
+  where
+  `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`;
+- this entry formula is stable in `M` once `|r|,|s|\le M`;
+- the calibration section fixes `\kappa_{A3}=1`, so no extra scalar comes from
+  the Q3 side.
+
+Operational consequence:
+
+- for Proshka, hand over `Q_M^{raw}`, not the normalized `T_P^{Ray}(t,M)` block;
+- hand over the raw entry formula directly;
+- ask him to match `w_{rs}(a)=\kappa(a)q_{rs}` on the raw `(+,+)` and `(+,-)`
+  families;
+- let the filtered four-block layer remain a formal consequence after that.
+
+Important caveat:
+
+- this is a Proshka-facing extraction/hack layer for the bridge work;
+- it is not yet promoted blindly to the public theorem stack until the filtered
+  H1/H3 normalization is rechecked against the live manuscript.
