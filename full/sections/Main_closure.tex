@@ -1203,6 +1203,9 @@ Let $\Psi\in C_c([-K/2,K/2])$ and set
 \]
 Then
 \[
+  F_\Psi\in C_c([-K,K]),
+\]
+\[
   \widehat{F_\Psi}(u)=|\widehat\Psi(u)|^2
 \]
 and
@@ -1266,7 +1269,14 @@ Equivalently, the packet kernel
 \[
   K_{Q,K}(\Psi,\Phi):=\mathcal Q_K(\Psi*\widetilde{\Phi})
 \]
-is positive semidefinite on $C_c([-K/2,K/2])$.
+is positive semidefinite on $C_c([-K/2,K/2])$, i.e.
+\[
+  \sum_{i,j=1}^N c_i\overline{c_j}\,
+  \mathcal Q_K(\Psi_i*\widetilde{\Psi_j})
+  \ge0
+\]
+for every finite family $\Psi_1,\dots,\Psi_N\in C_c([-K/2,K/2])$ and every
+$c_1,\dots,c_N\in\mathbb C$.
 \end{proposition}
 
 \begin{proof}

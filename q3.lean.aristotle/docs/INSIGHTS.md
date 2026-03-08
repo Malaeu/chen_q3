@@ -73,6 +73,30 @@
 Detailed note:
 - `docs/insights/compact_spectral_weight_route_2026_03_08.md`
 
+## Final result (2026-03-08) — the frozen `S1/S2/S3/S4` package is no longer the live blocker
+
+Структурный пакет scalar route уже заморожен:
+
+- `S1` exact compact spectral identity;
+- `S2` compact positive-definite criterion;
+- `S3` corrected compact positivity on `\mathcal W_K^{pd}`;
+- `S4` corrected compact-to-global closure.
+
+Значит следующий честный шаг теперь не “ещё раз переписать theorem blocks”, а
+первый quantitative pilot:
+
+- выбрать один малый compact;
+- получить явные bounds на `\widehat{a_K^*}(u)`;
+- получить явные bounds на конечную cosine-prime sum over `\Xi_K`;
+- заморозить первый nonvacuous regime, где `W_K(u)\ge0` реально закрывается.
+
+Operational consequence:
+
+- `IMPLEMENTATION_PLAN.md` must move from `S-pd.1` to a new quantitative task;
+- packet route remains fallback verification, not the primary blocker;
+- any new manuscript sync should now serve the pilot inequality, not re-freeze the
+  already-frozen structural stack.
+
 ## Final result (2026-03-08) — finite-dictionary P7 replaces the measure-level immediate target
 
 Новый blocker уточнён жёстче:

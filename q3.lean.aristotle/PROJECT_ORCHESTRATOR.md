@@ -122,13 +122,18 @@ Interpretation after `T0.1`:
      `prime-block PSD factorization or Hilbert lift -> Archimedean domination`
      on packet space;
   8. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
-  9. freeze the strict `P1--P8` theorem package as the fallback packet route;
- 10. keep finite admissible dictionary positivity as the immediate fallback constructive target:
+ 9. freeze the strict `P1--P8` theorem package as the fallback packet route;
+10. keep finite admissible dictionary positivity as the immediate fallback constructive target:
      exact finite symbol `S_J(\theta)=A_J(\theta)-P_J(\theta)`,
      explicit coefficient bounds on `\alpha_m,\beta_m`,
      Poisson-regularized verification, and explicit error budget,
      with a new full-kernel operator package kept as fallback;
- 11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
+11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
+ 12. move the active blocker from the already-frozen theorem package `S1/S2/S3/S4`
+     to the first quantitative pilot for `W_K(u)` on a small compact:
+     explicit lower/upper bounds on `\widehat{a_K^*}(u)` and the finite
+     cosine prime sum, with one nonvacuous pilot regime frozen before any
+     attempt at an all-`K` statement.
 
 ## Active Milestone
 
@@ -175,7 +180,10 @@ Turn the corrected theorem package into a proof-ready compact spectral stack:
     where prime collisions vanish and the finite symbol reduces to the
     Archimedean gap `\alpha_0>2|\alpha_1|`,
 16. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
-17. keep Aristotle `G1.6` as background lemma-mining only.
+17. keep Aristotle `G1.6` as background lemma-mining only,
+18. make the next honest theorem task quantitative:
+    isolate one pilot compact and one explicit inequality proving
+    `W_K(u)\ge0` there before any general compact claim is attempted.
 
 ## Hard Blockers
 

@@ -132,8 +132,10 @@ Interpretation rule after `T0.1`:
 
 ## Unresolved Dependencies
 
-1. Proof of the scalar compact inequality
-   `W_K(u)\ge0` for every `K>0` and every `u\in\mathbb R`.
+1. First quantitative pilot for the scalar compact inequality:
+   prove `W_K(u)\ge0` on one small compact by explicit lower/upper bounds on
+   `\widehat{a_K^*}(u)` and the finite cosine prime sum, before attempting an
+   all-`K` statement.
 2. Clean comparison between the new scalar compact spectral route and the old
    centered Toeplitz/RKHS bridge, so that reuse boundaries are explicit.
 3. Pre-square density theorem on `C_c^\infty([-K/2,K/2])` strong enough to feed
@@ -147,10 +149,10 @@ Interpretation rule after `T0.1`:
 8. `PSD-pd`: prove positive semidefiniteness of the packet kernel
    `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense
    translation-compatible packet subspace feeding `\mathcal G_K^{pd}`.
-7. Record the prime-block obstruction on packet space:
+9. Record the prime-block obstruction on packet space:
    standalone PSD factorization of the packet prime block is false on dense
    packet dictionaries containing an active node.
-8. Freeze the strict packet theorem package:
+10. Freeze the strict packet theorem package:
    `P1` exact packet sesquilinear identity
    -> `P2` Toeplitz reduction on translation packet dictionaries
    -> `P3` desired prime-factorization theorem shape
@@ -162,29 +164,29 @@ Interpretation rule after `T0.1`:
    -> `P7.5` Poisson-regularized verification
    -> `P7.6` explicit error-budget criterion
    -> `PSD-pd`.
-9. Freeze the concrete finite-dictionary bounding package:
+11. Freeze the concrete finite-dictionary bounding package:
    packet geometry `R_g,R_h`
    -> Archimedean bounds `A1--A4` on `\alpha_m`
    -> prime-mass bounds `P1--P3` on `\beta_m`
    -> finite-symbol envelope `(C0)`
    -> explicit sufficient inequalities `(C1)/(C1')`
    -> sparse regime `(C2)/(C2')`.
-10. Freeze the canonical centered half-atom pilot:
+12. Freeze the canonical centered half-atom pilot:
     `g_{δ,t_0,0}=\Lambda_\delta\rho_{t_0}`
     -> exact formulas for `\|g\|_1`, `\|h\|_1`, `\|h\|_\infty`
     -> lower bound `H_r\ge M_g(r/2)^2`
     -> pilot compact `K=0.2`, `J={0,1}`, `\Delta=0.15`
     -> vanishing `\beta_0=\beta_1=0` for `\delta<0.0124`
     -> positivity reduces to the Archimedean gap `\alpha_0>2|\alpha_1|`.
-10. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
+13. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
    equivalence between positive-definite sequence, Toeplitz-section PSD, and
    positive measure representation for the packet coefficients.
-11. Record Gershgorin diagonal dominance only as a sparse finite-block lemma;
+14. Record Gershgorin diagonal dominance only as a sparse finite-block lemma;
     it must not be presented as the dense main theorem.
-12. Treat finite-dictionary `P7` as the immediate fallback constructive target, now via
+15. Treat finite-dictionary `P7` as the immediate fallback constructive target, now via
     explicit coefficient bounds on `\alpha_m,\beta_m`; any new full-kernel
     operator package is fallback-only.
-13. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
+16. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
 
 ## Background Broad-Cone Branch
 
