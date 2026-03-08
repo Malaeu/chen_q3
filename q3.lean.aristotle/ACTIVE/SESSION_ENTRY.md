@@ -1,117 +1,205 @@
-# Session Entry (2026-02-03)
+# Session Entry (2026-03-08)
 
-Purpose: quick resume snapshot for current Q3 single-scale work.
+Это главный session-entry файл для Q3. Начинать новую сессию надо с чтения
+именно его.
 
-Read order:
-1) full/q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md
-2) full/q3.lean.aristotle/ACTIVE/requests/INDEX.md
-3) full/q3.lean.aristotle/ACTIVE/requests/proshka_floor_cert_tcritical_2026_01_25/node.md
-4) full/q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md
+## Кто мы и что делаем
 
-Current mainline decisions:
-- Single-scale only: t_critical = 3/20, tau = 0, BaseAtomCone (B-range) only.
-- Avoid two-scale t_sym/t_rkhs bridges.
-- T_P^{Ray} vs T_P^{RKHS} separated; C1 uses dictionary compression.
+Мы ведём один проект:
 
-Update (2026-02-06):
-- Main theorem now has explicit margin hypothesis:
-  `Q3.Main.RH_of_Weil_and_Q3 (h_margin_cert : Q3.PrimeCertMarginOnBrange) : Q3.RH`.
-- `./scripts/check_axioms.sh` for main-chain currently shows only one project axiom:
-  `Q3.Weil_criterion_tau0` (plus standard kernel axioms).
-- Next closure target is exactly `h_margin_cert`; work plan is synchronized with
-  `PROJECT_ORCHESTRATOR.md` section `Roadmap (2026-02-06)`.
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026`
 
-Roadmap for closing `h_margin_cert` (8 steps):
-1) Close `prime_heat_bucket_data` by theorem (`BucketCheck` + `Checker` + `SumData`).
-2) Remove `prime_heat_weight_term_le_pp_ub_of_prime_pow_axiom` for `n > 10000`.
-3) Remove `native_decide` dependency from critical checker lemmas (avoid trust axioms in target chain).
-4) Close `prime_heat_bounds_arch_data` with a formal arch integral bound.
-5) Close grid bucket axioms in `BrangeGrid_PrimeSum_2026_01_30_Data.lean`.
-6) Replace `prime_b_grid_bounds_data` with theorem in `BrangeCert_2046.lean`.
-7) Prove `PrimeCertMarginOnBrange` and remove `h_margin_cert` parameter in `Q3/Main.lean`.
-8) Re-run `lake env lean`, `#print axioms`, and `./scripts/check_axioms.sh`.
+Цель сейчас не “заявить доказательство RH”, а максимально быстро двигать
+вперёд **правдоподобный и математически честный route** внутри Q3:
+текст, Lean, control-plane и embeddings должны оставаться синхронными.
 
-Progress update (2026-02-06, current session):
-- Step 1: DONE in code path (`prime_heat_bucket_data` is theorem in `BrangeHeatCert_2026_01_28_SumData.lean`).
-- Step 8: DONE for current conditional chain:
-  - `lake env lean Q3/Main.lean` succeeds.
-  - `#print axioms Q3.Main.RH_of_Weil_and_Q3` -> `[propext, Classical.choice, Q3.Weil_criterion_tau0, Quot.sound]`.
-  - `./scripts/check_axioms.sh` passes (1 project axiom: `Weil_criterion_tau0`).
-- Step 2: BLOCKED (no integrated hole-free theorem path yet for `n > 10000` pointwise bound).
-- Step 3: BLOCKED (checker still uses `native_decide` for per-bucket pp-sum inequality).
-- Steps 4-7: OPEN/BLOCKED by missing formal data theorems (arch integral + full grid bucket closure).
+## Обязательный read order
 
-Recent changes (2026-02-03):
-- Added `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_BucketDefs.lean` to isolate
-  bucket/partition lemmas from the heavy prime-power table.
-- Rewired `BrangeHeatCert_2026_01_28_Pilot.lean` to use per-term pilot data
-  (prime-power filter + pointwise axiom), replacing sums-only bounds.
-- Split pilot buckets 0/99 into 4 parts each (faster Lean builds).
-- Generated 20-bucket prime-power tables under `namespace Twenty` and split into
-  base + per-bucket part files (`BrangeHeatCert_2026_01_28_PrimePowTwenty*`).
-- Generated full 100-bucket prime-power tables under `namespace Full` and split into
-  base + per-bucket part files (`BrangeHeatCert_2026_01_28_PrimePowFull*`).
-- Verified: `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
-- Switched `BrangeHeatCert_2026_01_28_Checker.lean` to import
-  `BrangeHeatCert_2026_01_28_PrimePowFull` (Full tables) and alias the
-  prime-power lookup to `namespace Full`.
-- Reworked `BrangeHeatCert_2026_01_28_Checker.lean` bucket-pp sums to use
-  `filter IsPrimePow`, removed the non-prime-power fallback, and discharged
-  the bucket UB comparison via `fin_cases`.
-- In `BrangeHeatCert_2026_01_28.lean`, replaced the `prime_heat_bounds_data`
-  axiom with:
-  - axiom `prime_heat_bounds_arch_data` (arch integral only)
-  - theorem `prime_heat_bounds_prime_data` via `BrangeHeatCert_2026_01_28_Partial`
-  - `prime_heat_bounds_data` now a `def` bundling arch+prime
+1. `SESSION_ENTRY.md`
+2. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+3. `IMPLEMENTATION_PLAN.md`
+4. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+5. `q3.lean.aristotle/docs/INSIGHTS.md`
 
+Если работаешь с embeddings / incoming notes, потом ещё:
 
-Open blockers (main chain axioms):
-- `Q3.Weil_criterion_tau0`
-- `Q3.Proofs.PrimeCert.prime_b_grid_bounds_data`
-- `Q3.Proofs.PrimeCert.prime_heat_bounds_data`
-- Standard axioms: `propext`, `Classical.choice`, `Quot.sound`.
+6. `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
 
-Last check (2026-02-03):
-- `lake build` for BucketDefs + PrimePowPilotSums; `lake env lean` for Pilot.
-- `./scripts/check_axioms.sh` not re-run after the pilot refactor.
-- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowTwenty` succeeds.
-- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowFull` succeeds.
-- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_PrimePowPilotBase` succeeds.
-- All pilot bucket parts (0/99) build; bucket dispatchers + `PrimePowPilot` build.
-- `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Pilot.lean` succeeds.
-- `lake env lean Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Checker.lean` timed
-  out after 120s, then after 300s (run from `q3.lean.aristotle/`).
-- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_Checker` succeeds
-  (about 100s) after the filtered-sum refactor.
-- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28_SumData` succeeds.
-- `lake build Q3.Proofs.PrimeCert.BrangeHeatCert_2026_01_28` succeeds.
-- `./scripts/check_axioms.sh` succeeds (2026-02-03 15:22) with:
-  - Standard axioms back to 3 (no `Lean.ofReduceBool` / `Lean.trustCompiler`).
-  - New project axioms in chain:
-    `prime_heat_bounds_arch_data`,
-    `prime_heat_bucket_data`.
+Если работаешь с Aristotle:
 
-Next steps:
-1) Update `PHILOSOPHY_OF_PROOF.md` and expected counts in `scripts/check_axioms.sh`
-   for the new PrimeHeat axioms (`prime_heat_bounds_arch_data`, `prime_heat_bucket_data`).
-2) Decide whether to merge the heat axioms back into a single bundle
-   (to keep the project axiom count at 3).
-3) If desired, start formalizing the arch integral bound to eliminate
-   `prime_heat_bounds_arch_data`.
+6. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`
+7. `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
 
-## Branching discipline (2026-01-29)
+## Текущий public mainline
 
-- We keep `projekt_2A` as the stable baseline.
-- Experimental work happens on `projekt_2A-compact-support` only.
-- Goal of this branch: push the PrimeCert closure to the end and verify the math.
-- Merge back into `projekt_2A` **only if** the chain checks out; otherwise delete the branch.
+Текущий публичный маршрут проекта:
 
-Status (compact-support branch):
-- Localized heat Lipschitz to `Icc (-B_max, B_max)` (no global Integrable/Summable).
-- Heat cert data in `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Data.lean` and
-  derived `prime_heat_bounds_cert` in `BrangeHeatCert_2026_01_28.lean`.
-- Analytic heat tail bound (3e-6) in
-  `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_Tail.lean`;
-  `prime_heat_tail_bound` is a theorem (no axiom).
-- `prime_margin_Lipschitz_on_Brange` axiom replaced by theorem in
-  `Q3/Proofs/PrimeCert/BrangeCert_2046.lean`.
+`T0-pd -> compact spectral route -> A2 closure -> LF-pd -> G6 -> RH`
+
+Где активный живой blocker сейчас такой:
+
+`W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)\ge 0`
+для каждого компакта `K`.
+
+Точный theorem stack, который сейчас заморожен как mainline:
+
+- `S1` exact compact spectral identity
+- `S2` compact positive-definite criterion
+- `S3` corrected compact positivity
+- `S4` corrected global closure
+
+Fallback packet route сохраняется, но он больше не public mainline.
+
+## Самые важные правила мышления
+
+1. Не чинить то, что уже переведено в background-only.
+2. Не возвращать broad-cone `W_K / W` как публичный RH-contract.
+3. Не притворяться, что проект уже замкнут.
+4. Не открывать новый архитектурный pivot без явного theorem memo и sync в control docs.
+5. Самый быстрый путь — тот, который:
+   - математически честен,
+   - повторно использует уже доказанные модули,
+   - не плодит новые необязательные слои.
+
+## Что сейчас source of truth
+
+При конфликте файлов порядок такой:
+
+1. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+2. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+3. `IMPLEMENTATION_PLAN.md`
+4. `q3.lean.aristotle/docs/INSIGHTS.md`
+
+Коротко:
+
+- orchestrator решает frontier и gate-state;
+- tracker решает paper typing / theorem map;
+- implementation plan решает ровно текущую очередь;
+- insights ничего не переопределяет.
+
+## Как работать по сессии
+
+### Если задача математическая / theorem-level
+
+1. Прочитать `PROJECT_ORCHESTRATOR.md`.
+2. Найти active gate в `IMPLEMENTATION_PLAN.md`.
+3. Проверить, не решён ли уже этот кусок в `docs/INSIGHTS.md` или `docs/insights/`.
+4. Только потом писать новый theorem note / manuscript patch / Lean patch.
+5. После значимого шага:
+   - `lake env lean Q3/Main.lean`
+   - `#print axioms Q3.Main.RH_of_Weil_and_Q3`
+   - если менялся paper: `latexmk -pdf full/RH_Q3.tex`
+
+### Если задача про incoming notes / embeddings
+
+Сначала проверь статус inbox:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
+./scripts/ingest_incoming_notes.py status
+```
+
+Если inbox пуст:
+- ничего не инжестить;
+- это значит, что raw inbox уже разобран или заархивирован;
+- ждём новый материал.
+
+Если inbox не пуст, canonical loop такой:
+
+```bash
+./scripts/ingest_incoming_notes.py prepare docs/incoming_notes/<file-or-zip>
+python3 -u ./scripts/refresh_q3_docs.py
+python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
+```
+
+Но важно:
+
+- raw никогда не идёт в embeddings напрямую;
+- только reviewed note с
+  - `review status: reviewed`
+  - `safe for embeddings: yes`
+- после review raw уходит в archive, не удаляется.
+
+Для этого есть локальный skill:
+
+- `/Users/emalam/.codex/skills/q3-note-ingest/SKILL.md`
+
+## Repo map (только живой минимум)
+
+### Control plane
+
+- `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+- `IMPLEMENTATION_PLAN.md`
+- `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+- `q3.lean.aristotle/docs/INSIGHTS.md`
+
+### Manuscript
+
+- `full/RH_Q3.tex`
+- `full/sections/Main_closure.tex`
+- `full/sections/Weil_pack.tex`
+- `full/sections/Weil_linkage.tex`
+- `full/sections/Notation/qstar_contract.tex`
+- `full/sections/A1prime.tex`
+
+### Lean entry
+
+- `q3.lean.aristotle/Q3/Main.lean`
+
+### Active pipeline / KB
+
+- `q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md`
+- `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
+- `q3.lean.aristotle/scripts/ingest_incoming_notes.py`
+- `q3.lean.aristotle/scripts/refresh_q3_docs.py`
+- `q3.lean.aristotle/scripts/research_oracle.py`
+
+## Проверки, которые надо помнить
+
+### Lean
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
+lake env lean Q3/Main.lean
+printf 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3\n' | lake env lean --stdin
+```
+
+Ожидаемый current profile:
+
+- `propext`
+- `Classical.choice`
+- `Quot.sound`
+- `Q3.Weil_criterion`
+- `Q3.prime_term_le_at_t_critical_axiom`
+
+### TeX
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/full
+latexmk -pdf RH_Q3.tex
+```
+
+### Embeddings
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
+./scripts/ingest_incoming_notes.py status
+python3 -u ./scripts/refresh_q3_docs.py
+python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
+```
+
+## Что не делать
+
+- Не опираться на старый broad-cone route как на public RH contract.
+- Не возвращать в mainline T5/Acceptance/legacy status narratives.
+- Не засовывать raw chats или zip extracts напрямую в `q3_docs`.
+- Не создавать новый архитектурный pivot без sync в manuscript + control plane.
+- Не коммитить skill-файлы из `~/.codex/skills` в repo.
+
+## Текущий практический next step
+
+Если нет нового user redirect, текущий честный frontier такой:
+
+- quantitative bounds на `W_K(u)` сначала на pilot compact,
+- packet route держать как fallback verification layer,
+- incoming notes прогонять через `q3-note-ingest` и не путать historical memos с live source of truth.

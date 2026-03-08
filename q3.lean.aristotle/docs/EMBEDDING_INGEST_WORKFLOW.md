@@ -59,7 +59,16 @@ These remain the main project memory and control plane.
 ## Workflow
 
 1. Drop the raw markdown or zip into `docs/incoming_notes/`.
-2. Prepare it with the ingest helper:
+2. Check whether there is anything new to ingest:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
+./scripts/ingest_incoming_notes.py status
+```
+
+If the raw inbox is empty, stop there: everything is already processed or archived.
+
+3. Prepare it with the ingest helper:
 
 ```bash
 cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
@@ -71,26 +80,26 @@ This creates:
 - extracted markdown under `docs/incoming_notes/extracted/` for zip inputs,
 - a reviewed-note stub under `docs/reviewed_notes/`.
 
-3. Review the extracted text against live Lean / TeX / control docs.
-4. Distill the reusable part into the reviewed note and flip:
+4. Review the extracted text against live Lean / TeX / control docs.
+5. Distill the reusable part into the reviewed note and flip:
    - `review status: reviewed`
    - `safe for embeddings: yes`
-5. Archive the raw source after review:
+6. Archive the raw source after review:
 
 ```bash
 ./scripts/ingest_incoming_notes.py archive docs/incoming_notes/<file-or-zip> \
   --reviewed docs/reviewed_notes/<reviewed-note>.md
 ```
 
-6. If the result affects the active project state, also write a short synthesis into `docs/INSIGHTS.md`.
-7. Rebuild embeddings:
+7. If the result affects the active project state, also write a short synthesis into `docs/INSIGHTS.md`.
+8. Rebuild embeddings:
 
 ```bash
 cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
 ./scripts/refresh_q3_docs.py
 ```
 
-8. Query the refreshed collection:
+9. Query the refreshed collection:
 
 ```bash
 ./scripts/research_oracle.py query "your blocker query" -c q3_docs -n 5

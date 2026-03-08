@@ -262,15 +262,56 @@ def archive(source: Path, reviewed: Path) -> int:
 
 
 def status() -> int:
-    print("Incoming notes:")
-    for path in sorted(INCOMING_ROOT.iterdir()):
-        if path.name in {"README.md", "archive", "extracted"}:
-            continue
-        print(f"  - {repo_rel(path)}")
+    incoming = [
+        path
+        for path in sorted(INCOMING_ROOT.iterdir())
+        if path.name not in {"README.md", "archive", "extracted"}
+    ]
+    reviewed_drafts = []
+    if REVIEWED_ROOT.exists():
+        for path in sorted(REVIEWED_ROOT.glob("*.md")):
+            if path.name in {"README.md", "TEMPLATE.md"}:
+                continue
+            text = path.read_text(encoding="utf-8")
+            if "- review status: `draft`" in text:
+                reviewed_drafts.append(path)
+
+    extracted_sets = []
+    if EXTRACTED_ROOT.exists():
+        for path in sorted(EXTRACTED_ROOT.iterdir()):
+            if path.is_dir():
+                extracted_sets.append(path)
+
+    print("Incoming notes status")
     print("")
-    print("Archive root:")
+    if incoming:
+        print(f"- raw inbox: `{len(incoming)}` item(s) waiting")
+        for path in incoming:
+            print(f"  - {repo_rel(path)}")
+    else:
+        print("- raw inbox: empty")
+        print("  - все уже разобрано или заархивировано; ждём новый материал")
+
+    print("")
+    if extracted_sets:
+        print(f"- extracted folders: `{len(extracted_sets)}`")
+        for path in extracted_sets:
+            print(f"  - {repo_rel(path)}")
+    else:
+        print("- extracted folders: none")
+
+    print("")
+    if reviewed_drafts:
+        print(f"- reviewed drafts waiting: `{len(reviewed_drafts)}`")
+        for path in reviewed_drafts:
+            print(f"  - {repo_rel(path)}")
+    else:
+        print("- reviewed drafts waiting: none")
+
+    print("")
+    print("- archive root:")
     print(f"  - {repo_rel(ARCHIVE_ROOT)}")
-    print("Extracted root:")
+    print("- extracted root:")
     print(f"  - {repo_rel(EXTRACTED_ROOT)}")
     return 0
 
