@@ -168,6 +168,11 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
    use raw synthesis `S_{a,M}`,
    and take `J_a` as the Gram-pullback metric with matrix
    `\Gamma_{a,M}^{-1}` in packet coordinates,
+4a. strongest current engineering refinement of `H1`:
+    keep the finite-prime semilocal layer only as a basis/Gram engine,
+    with packet states `\eta_m^{(S,a)}`, semilocal spaces `E_{a,M}^{(S)}`,
+    Gram matrix `\Gamma_{a,M}^{(S)}`, and normalized synthesis
+    `\widetilde S_{a,M}^{(S)}` feeding the same Suzuki pair-intertwining target,
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family
@@ -213,7 +218,9 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     with `H1` exact or asymptotic pair-intertwining as the only real missing
     bridge theorem; the next subtask there is now explicit kernel-matrix
     comparison on the packet basis
-    `[ \langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle ]`.
+    `[ \langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle ]`,
+    preferably first on the semilocal-assisted packet family
+    `[ \langle G_g[a]\eta_i^{(S,a)},\eta_j^{(S,a)}\rangle ]`.
 
 ## Hard Blockers
 

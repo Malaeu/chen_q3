@@ -35,6 +35,10 @@ It is **not** the execution queue and **not** the master gate-state file.
 | `\varphi_{a,j}` | nonorthogonal packet states in `L^2(-a,a)` used to build the Suzuki bridge | active candidate notation |
 | `\Gamma_{a,M}` | packet Gram matrix `[ \langle \varphi_{a,i},\varphi_{a,j}\rangle ]` | active candidate notation |
 | `G_g[a], J_a, E_{a,M}, S_{a,M}` | Suzuki/Yoshida generalized form-pair bridge data | active primary operator notation |
+| `S(B)` | finite prime set `\{p: p\le e^{2\pi B}\}` feeding the semilocal engineering layer | active auxiliary operator notation |
+| `\eta_m^{(S,a)}` | semilocal cyclic/Jacobi packet states used only as a basis/Gram engine for `H1` | active engineering notation |
+| `\Gamma_{a,M}^{(S)}` | semilocal Gram matrix `[ \langle \eta_i^{(S,a)},\eta_j^{(S,a)}\rangle ]` | active engineering notation |
+| `E_{a,M}^{(S)}, S_{a,M}^{(S)}, \widetilde S_{a,M}^{(S)}` | semilocal-assisted synthesis data for the candidate `H1` bridge | active engineering notation |
 
 Lean compatibility note:
 
@@ -156,6 +160,11 @@ Interpretation rule after `T0.1`:
    The next theorem task is then the kernel-matrix comparison
    `[ \langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle ]=
    \kappa(a)(T_M[P_A]-T_P^{(M)})+R_{a,M}`.
+   The strongest current refinement is finite-prime semilocal:
+   use the packet basis `\eta_m^{(S,a)}` coming from cyclic/Jacobi machinery,
+   with semilocal Gram matrix `\Gamma_{a,M}^{(S)}` and normalized synthesis
+   `\widetilde S_{a,M}^{(S)}`, but keep this strictly as `H1` engineering
+   infrastructure and not as a separate RH endgame.
 4. Pre-square density theorem on `C_c^\infty([-K/2,K/2])` strong enough to feed
    `A1-pd` through autocorrelation continuity if the fallback packet route is needed.
 5. `A1-pd`: proof of density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.

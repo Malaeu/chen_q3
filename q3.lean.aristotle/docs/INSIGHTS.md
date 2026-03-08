@@ -2844,3 +2844,32 @@ Reusable file pointers:
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/introduction.tex`
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+
+## In-progress synthesis (2026-03-08) — semilocal layer as H1 engineering only
+
+Target node and wiring:
+- live public route stays `H1 -> H2 -> H3 -> H4`;
+- the semilocal Connes--Consani--Moscovici layer is **not** promoted to a new
+  RH endgame;
+- instead it is frozen only as the strongest current basis/Gram supplier for
+  `H1`.
+
+Concrete synthesis:
+- fix a finite prime window `S(B)=\{p:\ p\le e^{2\pi B}\}` matching the active
+  prime scale of the Q3 finite block;
+- let `\eta_m^{(S,a)}` be the packet dictionary supplied by the finite-prime
+  cyclic/Jacobi machinery on `L^2(-a,a)`;
+- define `E_{a,M}^{(S)}=\operatorname{span}\{\eta_m^{(S,a)}:0\le m\le M\}`;
+- use raw synthesis `S_{a,M}^{(S)}` and semilocal Gram matrix
+  `\Gamma_{a,M}^{(S)}`;
+- either keep the raw metric `J_a^{(S,M)}=\Gamma_{a,M}^{(S),-1}` or pass to the
+  normalized synthesis `\widetilde S_{a,M}^{(S)}`.
+
+Verdict:
+- this strengthens `H1` because it gives a canonical finite-prime packet basis
+  and a natural Gram metric;
+- it should only feed the matrix comparison
+  `(\widetilde S_{a,M}^{(S)})^*G_g[a]\widetilde S_{a,M}^{(S)}
+   = \kappa_{S,a}(T_M[P_A]-T_P^{(M)}) + R_{S,a,M}`;
+- if promoted beyond that, it turns into a second heavy endgame and starts to
+  hurt rather than help.

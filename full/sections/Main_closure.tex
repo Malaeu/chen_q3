@@ -1656,6 +1656,49 @@ reproduces the Toeplitz coefficients of $P_A$ and the prime side reproduces the
 compressed prime Gram vectors already present in Section~\ref{sec:A3} and
 Section~\ref{sec:rkhs-prime-cap}. This is the exact bridge point where the
 Suzuki route either lands or fails.
+
+The strongest current engineering refinement is to use a finite-prime
+semilocal layer only as a basis/Gram engine for this construction, not as a new
+RH endgame. Fix a finite prime set
+\[
+  S(B):=\{p:\ p\le e^{2\pi B}\}
+\]
+covering the active prime window, and let
+\[
+  \{\eta_m^{(S,a)}\}_{m\ge0}\subset L^2(-a,a)
+\]
+be the packet dictionary supplied by the semilocal cyclic/Jacobi machinery at
+that finite level. Then one should take
+\[
+  E_{a,M}^{(S)}:=\operatorname{span}\{\eta_m^{(S,a)}:0\le m\le M\},
+\]
+with raw synthesis
+\[
+  S_{a,M}^{(S)}e_m:=\eta_m^{(S,a)},
+\]
+and Gram matrix
+\[
+  \Gamma_{a,M}^{(S)}
+  :=
+  \bigl[\langle \eta_i^{(S,a)},\eta_j^{(S,a)}\rangle_{L^2(-a,a)}\bigr]_{0\le i,j\le M}.
+\]
+One may then either keep the raw metric
+\[
+  J_a^{(S,M)}:=\Gamma_{a,M}^{(S),-1}
+\]
+on coefficient space, or pass to the normalized synthesis
+\[
+  \widetilde S_{a,M}^{(S)}:=S_{a,M}^{(S)}\Gamma_{a,M}^{(S),-1/2}.
+\]
+The resulting semilocal-assisted target is still H1 and nothing more:
+\[
+  (\widetilde S_{a,M}^{(S)})^*G_g[a]\widetilde S_{a,M}^{(S)}
+  =
+  \kappa_{S,a}\bigl(T_M[P_A]-T_P^{(M)}\bigr)+R_{S,a,M}.
+\]
+This is useful precisely because it gives a canonical finite-prime packet basis
+and a natural Gram metric for H1; it would become counterproductive only if one
+tried to promote the semilocal layer itself to the final RH endgame.
 \end{remark}
 
 \begin{remark}[Compact scalar obstruction]\label{rem:compact-scalar-obstruction}

@@ -42,7 +42,10 @@
   `H1 -> H2 -> H3 -> H4`;
 - `H1` = построить `S_{a,M}` и `J_a` так, чтобы strongest finite Q3 block
   `T_M[P_A]-T_P^{(M)}` pulled back to the Suzuki operator side as a
-  generalized form pair.
+  generalized form pair;
+- strongest current engineering refinement for `H1`:
+  finite-prime semilocal cyclic/Jacobi machinery is used only as a canonical
+  basis/Gram supplier, not as a new RH endgame.
 
 Точный theorem stack, который сейчас заморожен как primary live route:
 
@@ -207,6 +210,10 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 Если нет нового user redirect, текущий честный frontier такой:
 
 - candidate construction of `S_{a,M}` and `J_a` in RKHS/Gram language;
+- semilocal-assisted refinement of that candidate:
+  finite-prime packet states `\eta_m^{(S,a)}`, Gram matrix
+  `\Gamma_{a,M}^{(S)}`, and normalized synthesis
+  `\widetilde S_{a,M}^{(S)}`;
 - затем exact matrix-element comparison for
   `S_{a,M}^* G_g[a] S_{a,M}` against `\kappa(a)(T_M[P_A]-T_P^{(M)})`;
 - packet route держать как fallback verification layer;
