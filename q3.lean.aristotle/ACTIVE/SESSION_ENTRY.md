@@ -81,7 +81,11 @@
   raw bulk identity
   `w_{rs}(a)=\kappa(a)q_{rs}`
   on the two raw families `(+,+)` and `(+,-)`,
-  where `q_{rs}=\langle Q e_s,e_r\rangle` on the Section 8 side and
+  where `q_{rs}=q_{rs}^{(M+1)}=\langle Q_{M+1} e_s,e_r\rangle` on the Section 8 side,
+  with exact extracted formula
+  `q_{rs}^{(L)}=a_{r-s}-p_{r-s}^{(L)}` and
+  `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`,
+  and
   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})` on the Suzuki side;
 - derived filtered consequence:
   the four bulk blocks
@@ -254,7 +258,11 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
   raw bulk identity
   `w_{rs}(a)=\kappa(a)q_{rs}`
   on the two raw families `(+,+)` and `(+,-)`,
-  where `q_{rs}=\langle Q e_s,e_r\rangle` on the Section 8 side and
+  where `q_{rs}=q_{rs}^{(M+1)}=\langle Q_{M+1} e_s,e_r\rangle` on the Section 8 side,
+  with exact extracted formula
+  `q_{rs}^{(L)}=a_{r-s}-p_{r-s}^{(L)}` and
+  `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`,
+  and
   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})` on the Suzuki side;
 - derived filtered consequence:
   the four bulk blocks

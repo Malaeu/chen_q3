@@ -3007,8 +3007,8 @@ Target node and wiring:
 - the live `H1^f` blocker is no longer “match all four filtered blocks directly”.
 
 Concrete refinement:
-- freeze the raw two-sided Section 8 entries
-  `q_{rs}=\langle Q e_s,e_r\rangle`;
+- freeze the normalized raw two-sided Section 8 entries
+  `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle=a_{r-s}-p_{r-s}^{(L)}`;
 - freeze the raw Suzuki/Weil entries
   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`;
 - reduce the primary raw bulk theorem to
@@ -3048,5 +3048,9 @@ Key clarification:
   proved Q3 theorem;
 - what the old A3 files already provide explicitly is the quadratic-form /
   compression machinery;
-- what still has to be extracted from those files is the exact raw Section 8
-  entry convention for `q_{rs}`.
+- the exact normalized raw Section 8 formula is now extracted as
+  `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle=a_{r-s}-p_{r-s}^{(L)}`
+  with
+  `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`;
+- the remaining missing brick is no longer “find the formula”, but prove the
+  raw bulk identity `w_{rs}(a)=\kappa(a)q_{rs}` in the matching normalization.

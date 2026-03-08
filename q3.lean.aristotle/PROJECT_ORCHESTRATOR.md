@@ -142,8 +142,11 @@ New live frontier:
 11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
   12. move the active blocker away from the already-frozen theorem package `S1/S2/S3/S4`
      to the raw-entry reduction of the exact two-sided filtered bulk match:
-     freeze the raw entries
-     `q_{rs}=\langle Q e_s,e_r\rangle`
+     freeze the raw Section 8 entries
+     `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle
+      = a_{r-s}-p_{r-s}^{(L)}`
+     with
+     `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`,
      and
      `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
      and reduce the live bulk identity to
@@ -182,8 +185,13 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     and the exact finite comparison object is
     `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`,
 4c. current implementation brick inside `H1^f`:
-    freeze the raw entry notation
-    `q_{rs}=\langle Q e_s,e_r\rangle`
+    the raw entry formula is now extracted:
+    `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle
+     = a_{r-s}-p_{r-s}^{(L)}`
+    with the exact normalization
+    `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`;
+    in the filtered bridge one writes `q_{rs}=q_{rs}^{(M+1)}` for the ambient
+    finite block,
     and
     `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
     then reduce the active work to the raw bulk identity
@@ -392,6 +400,8 @@ Legacy narrative surfaces are reference-only:
   `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}`.
   The active bulk theorem is now the raw identity
   `w_{rs}(a)=\kappa(a)q_{rs}`
-  on the two raw families `(+,+)` and `(+,-)`;
+  on the two raw families `(+,+)` and `(+,-)`, after extracting the exact
+  normalized Section 8 raw formula
+  `q_{rs}^{(L)}=a_{r-s}-p_{r-s}^{(L)}`;
   the filtered four-block package is the derived consequence layer, and the
   only second live brick after that is the finite-dimensional Suzuki cap.

@@ -1688,18 +1688,22 @@ $\sigma,\tau\in\{+,-\}$,
 \end{theorem}
 
 \paragraph{Raw Fourier--Weil notation.}
-For $r,s\in\mathbb Z$, let
+For an ambient cutoff $L\ge 0$ and indices $|r|,|s|\le L$, let
 \[
   e_r(z):=z^r,
   \qquad
-  q_{rs}:=\bigl\langle Q e_s,e_r\bigr\rangle,
+  q_{rs}^{(L)}:=\bigl\langle Q_L e_s,e_r\bigr\rangle,
   \qquad
   w_{rs}(a):=W\bigl(\chi_s[a]*\widetilde{\chi_r[a]}\bigr),
 \]
-where the raw two-sided Section~8 matrix is written as
+where
 \[
-  Q=(q_{rs})=(a_{r-s})-(p_{rs}).
+  Q_L:=T_L[P_A]-T_P^{(L)}
 \]
+is the normalized Section~8 finite block on $P_L\subset L^2(\mathbb T)$.  In the
+filtered bridge $\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}$ the
+ambient cutoff is $L=M+1$; in that context we suppress the superscript and
+write $q_{rs}:=q_{rs}^{(M+1)}$.
 Set
 \[
   \alpha_n:=\frac{\pi n}{a},
@@ -1708,6 +1712,98 @@ Set
   \qquad
   \varepsilon_-:=-1.
 \]
+
+\begin{proposition}[Exact raw Section~8 entry formula]\label{prop:H1-raw-q-formula}
+For every ambient cutoff $L\ge 0$ and every $|r|,|s|\le L$, the normalized
+Section~8 entry satisfies
+\[
+  q_{rs}^{(L)}=a_{r-s}-p_{r-s}^{(L)},
+\]
+where
+\[
+  a_k
+  :=
+  \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,e^{-2\pi i k\theta}\,d\theta
+  =
+  2\pi\int_{\mathbb R} a(\xi)\,\Phi_{B,t}(\xi)\,e^{-2\pi i k\xi}\,d\xi,
+\]
+and
+\[
+  p_k^{(L)}
+  :=
+  \frac{1}{2L+1}
+  \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
+  w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i k\xi_n}.
+\]
+Equivalently,
+\[
+  q_{rs}^{(L)}
+  =
+  a_{r-s}
+  -
+  \frac{1}{2L+1}
+  \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
+  w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i(r-s)\xi_n}.
+\]
+The factor $(2L+1)^{-1}$ is exactly the normalization coming from
+\[
+  \iota_L^*T_P^{\mathrm{Ray}}(t)\iota_L=(2L+1)\,T_P^{\mathrm{Ray}}(t,L),
+\]
+so the raw entry notation in the H1 layer is necessarily \emph{$L$-local} for
+the normalized Section~8 block and does not denote a single $L$-independent
+global operator matrix.
+\end{proposition}
+
+\begin{proof}
+Lemma~\ref{lem:a3-model-space} identifies $T_L[P_A]$ as the compression of the
+Fourier multiplier with symbol $P_A$, hence in the basis $e_r(z)=z^r$ its
+matrix entries are the Fourier coefficients
+\[
+  a_{r-s}
+  =
+  \int_{-\tfrac12}^{\tfrac12} P_A(\theta)\,e^{-2\pi i(r-s)\theta}\,d\theta.
+\]
+Lemma~\ref{lem:a3-period1-audit} rewrites the same coefficients as
+\[
+  a_k
+  =
+  2\pi\int_{\mathbb R} a(\xi)\,\Phi_{B,t}(\xi)\,e^{-2\pi i k\xi}\,d\xi.
+\]
+For the prime part, Lemma~\ref{lem:a3-model-space} gives
+\[
+  T_P^{\mathrm{Ray}}(t,L)
+  =
+  \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
+  w(n)\,\Phi_{B,t}(\xi_n)\,|v_n^{(L)}\rangle\!\langle v_n^{(L)}|,
+\]
+with
+\[
+  v_n^{(L)}(\theta)=\frac{1}{\sqrt{2L+1}}
+  \sum_{|k|\le L}e^{2\pi i k(\theta-\xi_n)}.
+\]
+Therefore
+\[
+  \langle e_s,v_n^{(L)}\rangle
+  =
+  \frac{1}{\sqrt{2L+1}}e^{2\pi i s\xi_n},
+  \qquad
+  \langle v_n^{(L)},e_r\rangle
+  =
+  \frac{1}{\sqrt{2L+1}}e^{-2\pi i r\xi_n},
+\]
+so the normalized prime entry is
+\[
+  p_{rs}^{(L)}
+  =
+  \frac{1}{2L+1}
+  \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
+  w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i(r-s)\xi_n}
+  =
+  p_{r-s}^{(L)}.
+\]
+Subtracting the prime block from the Toeplitz block gives the stated formula
+for $q_{rs}^{(L)}$.
+\end{proof}
 
 \begin{lemma}[Fourier transforms of the adjacent Suzuki tails]\label{lem:H1-adjacent-fourier}
 For $n\ge 1$,
@@ -1822,13 +1918,17 @@ Then the filtered finite section is exactly
 \]
 in the two-sided tail basis, with block entries
 $\widetilde q_{mn}^{\sigma\tau}$.
-If $q_{rs}=a_{r-s}-p_{rs}$, then
+By Proposition~\ref{prop:H1-raw-q-formula}, for the ambient cutoff $L=M+1$ one has
+\[
+  q_{rs}=q_{rs}^{(M+1)}=a_{r-s}-p_{r-s}^{(M+1)},
+\]
+and therefore
 \[
   \widetilde q_{mn}^{\sigma\tau}
   =
   \widetilde a_{mn}^{\sigma\tau}
   -
-  \widetilde p_{mn}^{\sigma\tau},
+  \widetilde p_{mn}^{\sigma\tau,(M+1)},
 \]
 where
 \[
@@ -1843,15 +1943,15 @@ where
   a_{d_{\sigma\tau}(m,n)+\varepsilon_\sigma-\varepsilon_\tau},
 \]
 \[
-  \widetilde p_{mn}^{\sigma\tau}
+  \widetilde p_{mn}^{\sigma\tau,(M+1)}
   =
-  p_{\varepsilon_\sigma m,\varepsilon_\tau n}
+  p_{d_{\sigma\tau}(m,n)}^{(M+1)}
   +
-  p_{\varepsilon_\sigma(m+1),\varepsilon_\tau n}
+  p_{d_{\sigma\tau}(m,n)+\varepsilon_\sigma}^{(M+1)}
   +
-  p_{\varepsilon_\sigma m,\varepsilon_\tau(n+1)}
+  p_{d_{\sigma\tau}(m,n)-\varepsilon_\tau}^{(M+1)}
   +
-  p_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)},
+  p_{d_{\sigma\tau}(m,n)+\varepsilon_\sigma-\varepsilon_\tau}^{(M+1)},
 \]
 and
 \[
@@ -1931,7 +2031,9 @@ $M^{--}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{--}$ & derived from $(+,+)$ by conju
 The live bulk theorem is therefore no longer the abstract existence of
 $S_{a,M,N}$ and $J_a$, nor the direct separate comparison of all four filtered
 blocks. The narrowest active target is the raw bulk identity
-$w_{rs}(a)=\kappa(a)q_{rs}$ on the two families $(+,+)$ and $(+,-)$; the
+$w_{rs}(a)=\kappa(a)q_{rs}$ on the two families $(+,+)$ and $(+,-)$, where the
+normalized Section~8 entries $q_{rs}=q_{rs}^{(M+1)}$ are now given explicitly
+by Proposition~\ref{prop:H1-raw-q-formula}; the
 four filtered block equalities are then formal consequences of the two-sided
 filter $\Delta_{M,N}$ and Hermitian symmetry. After that raw bulk
 identification, the only remaining bridge brick is the finite-dimensional

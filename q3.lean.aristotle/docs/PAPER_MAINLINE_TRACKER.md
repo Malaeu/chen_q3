@@ -174,12 +174,14 @@ Interpretation rule after `T0.1`:
    `B_{M,N}=S_{a,M,N}^*J_aS_{a,M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
    and filtered finite section
    `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`.
-   The next theorem task is the raw-entry reduction of that bulk match:
-   freeze
-   `q_{rs}=\langle Q e_s,e_r\rangle`
-   and
+   The raw Section 8 formula is now frozen as
+   `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle=a_{r-s}-p_{r-s}^{(L)}`
+   with
+   `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`;
+   in the filtered bridge one writes `q_{rs}=q_{rs}^{(M+1)}` for the ambient
+   finite block, and
    `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
-   prove
+   so the next theorem task is to prove
    `w_{rs}(a)=\kappa(a)q_{rs}`
    on the two raw families `(+,+)` and `(+,-)`,
    and then recover the four filtered block equalities

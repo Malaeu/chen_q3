@@ -10,8 +10,10 @@ It narrows the live bulk blocker inside `H1^f`.
 
 ## Frozen notation
 
-- raw Section 8 entries:
-  `q_{rs}=\langle Q e_s,e_r\rangle`
+- exact normalized raw Section 8 entries:
+  `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle=a_{r-s}-p_{r-s}^{(L)}`
+  with
+  `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`
 - raw Suzuki/Weil entries:
   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`
 - filtered finite section:
@@ -25,11 +27,26 @@ The narrowest active theorem target is now:
 
 - prove the raw identity
   `w_{rs}(a)=\kappa(a)q_{rs}`
-  on the two raw bulk families `(+,+)` and `(+,-)`;
+  on the two raw bulk families `(+,+)` and `(+,-)`,
+  with the ambient shorthand `q_{rs}=q_{rs}^{(M+1)}` in the filtered bridge;
 - then recover the filtered four-block equalities
   `(++), (+-), (-+), (--)`
   formally by applying the two-sided filter `\Delta_{M,N}` and the Hermitian
   symmetry on both sides.
+
+## Normalization caveat now frozen
+
+The old A3 files do not give a single `L`-independent global raw matrix whose
+finite sections are the normalized Section 8 blocks. The factor
+`(2L+1)^{-1}` on the prime side is forced by
+`\iota_L^*T_P^{Ray}(t)\iota_L=(2L+1)T_P^{Ray}(t,L)`.
+
+So the honest raw notation in the bridge is `L`-local:
+- `Q_L=T_L[P_A]-T_P^{(L)}`
+- `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle`
+
+This resolves the previous ambiguity in the shorthand `q_{rs}` used by the H1
+layer.
 
 ## Symmetry reduction
 

@@ -32,15 +32,19 @@ normalization and matrix-entry data hidden in the following files:
 Crucially:
 
 - `w_{rs}(a)` comes from the Suzuki/Weil side.
-- `q_{rs}` is our chosen raw Section 8 notation:
-  `q_{rs}:=\langle Q e_s,e_r\rangle`.
-- The equality `w_{rs}(a)=\kappa(a)q_{rs}` is **not** an already proved Q3
-  theorem. It is the remaining exact bulk target for `H1`.
+- the exact normalized Section 8 raw entry formula is
+  `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle=a_{r-s}-p_{r-s}^{(L)}`
+  with
+  `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`;
+- in the filtered bridge one writes `q_{rs}=q_{rs}^{(M+1)}` for the ambient
+  finite block;
+- the equality `w_{rs}(a)=\kappa(a)q_{rs}` is **not** an already proved Q3
+  theorem. It remains the exact bulk target for `H1`.
 
 So if Proshka asks for “the formula”, what he really needs is the exact raw
-Section 8 entry convention and its normalization, because that convention is not
-written out explicitly in the old A3 files even though the quadratic-form
-machinery is already there.
+Section 8 entry convention and its normalization, because the old A3 files
+spelled out the quadratic-form/compression machinery but not this `L`-local raw
+entry formula as one explicit line.
 
 ## Working tree
 ```text
