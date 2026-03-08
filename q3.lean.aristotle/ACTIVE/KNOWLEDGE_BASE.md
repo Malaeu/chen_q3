@@ -99,6 +99,8 @@ Source of truth:
 
 - **Embeddings (fast recall):**
   - Raw markdown or zip goes first to `docs/incoming_notes/`.
+  - Local skill for this loop:
+    `/Users/emalam/.codex/skills/q3-note-ingest/SKILL.md`
   - Prepare it with `./scripts/ingest_incoming_notes.py prepare ...`.
   - Distilled reviewed extracts go to `docs/reviewed_notes/`.
   - Only reviewed notes marked `safe for embeddings: yes` enter `q3_docs`.
