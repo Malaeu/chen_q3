@@ -2546,3 +2546,31 @@ Concrete synthesis:
   domination statement
   `A_{g,\Delta}^{reg}(\theta) - P_{g,\Delta}(\theta) >= 0`,
   with any new full-kernel operator package kept as fallback.
+
+## Synthesis (2026-03-08, final) — regularized `P7` is now the live constructive target
+
+Final verdict:
+- cross-kernels on packet space should be written through the symmetric compact
+  extension `\mathcal Q`, not directly through the even-only `Q^\star`;
+- the packet prime block still cannot be isolated as a PSD operator on dense
+  packet spaces;
+- Gershgorin diagonal dominance is worth keeping, but only as a sparse
+  finite-block sufficient criterion;
+- the honest next theorem is now regularized full-symbol domination
+  `A_{g,\Delta}^{reg}\ge P_{g,\Delta}` feeding `PSD-pd`.
+
+Project effect:
+- `Main_closure`, `Weil_pack`, `introduction`, `abstract`, `scope_notation`, and
+  `qstar_contract` now expose the same refined packet route;
+- the queue and orchestrator now treat regularized `P7` as the immediate
+  constructive target and demote Gershgorin to background-only support;
+- a new insight note plus reviewed note freeze the regularized `P7` package for
+  embeddings and future blocker search.
+
+Reusable file pointers:
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Main_closure.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Notation/qstar_contract.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/scope_notation.tex`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/regularized_p7_package_2026_03_08.md`

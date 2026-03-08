@@ -90,12 +90,24 @@ to salvage that overlarge family, but to prove PSD of the packet kernel on the
 exact dense autocorrelation packet family from A1-pd.
 \end{remark}
 
+\begin{definition}[Symmetric packet extension of the compact Weil functional]\label{def:Q-symmetric-extension}
+For a compactly supported test $F\in C_c(\mathbb R)$, define
+\[
+  \mathcal Q(F)
+  :=
+  \int_{\mathbb R} a^*(\xi)\,F(\xi)\,d\xi
+  -
+  \frac12\sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}\bigl(F(\xi_n)+F(-\xi_n)\bigr).
+\]
+If $F$ is even, then $\mathcal Q(F)=Q^\star(t;F)$.
+\end{definition}
+
 \begin{lemma}[P1: exact packet sesquilinear identity]\label{lem:packet-sesquilinear}
 Fix $K>0$ and let $\Psi,\Phi\in C_c([-K/2,K/2])$. Set
 \[
   \widetilde{\Phi}(x):=\overline{\Phi(-x)},
   \qquad
-  K_Q(\Psi,\Phi):=Q^\star(t;\Psi * \widetilde{\Phi}).
+  K_Q(\Psi,\Phi):=\mathcal Q(\Psi * \widetilde{\Phi}).
 \]
 Then
 \[
@@ -103,8 +115,12 @@ Then
   =
   \iint_{\mathbb R^2} a^*(x-y)\Psi(x)\overline{\Phi(y)}\,dx\,dy
   -
-  \sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}
-  \int_{\mathbb R}\Psi(x)\overline{\Phi(x-\xi_n)}\,dx,
+  \frac12\sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}
+  \Bigl(
+    \langle \Psi,T_{\xi_n}\Phi\rangle
+    +
+    \langle \Psi,T_{-\xi_n}\Phi\rangle
+  \Bigr),
 \]
 where the prime sum is finite on the fixed compact window.
 \end{lemma}
@@ -116,10 +132,10 @@ By definition,
   =
   \int_{\mathbb R}\Psi(x)\overline{\Phi(x-\xi)}\,dx.
 \]
-Substituting this into the compact-window formula for $Q^\star(t;\cdot)$ and
+Substituting this into the compact-window formula for $\mathcal Q(\cdot)$ and
 interchanging integrals gives the Archimedean term. On the fixed compact only
-finitely many prime nodes $\xi_n$ are active, so the prime term is finite and
-the same substitution yields the displayed identity.
+finitely many prime nodes $\pm\xi_n$ are active, so the prime term is finite
+and the same substitution yields the displayed identity.
 \end{proof}
 
 \begin{theorem}[P2: Toeplitz reduction on a translation packet dictionary]\label{thm:packet-rayleigh-pd}
@@ -131,13 +147,13 @@ Let $g\in C_c(\mathbb R)$, let $\Delta>0$, and let
 \]
 Set
 \[
-  \kappa_m:=Q^\star(t;h(\cdot-m\Delta)),
+  \kappa_m:=\mathcal Q(h(\cdot-m\Delta)),
   \qquad
   S_{g,\Delta}(\theta):=\sum_{m\in\mathbb Z}\kappa_m e^{-im\theta}.
 \]
 Then
 \[
-  Q^\star(t;\Psi_c * \widetilde{\Psi_c})
+  \mathcal Q(\Psi_c * \widetilde{\Psi_c})
   =
   \sum_{i,j=-M}^M \kappa_{i-j} c_i\overline{c_j}
   =
@@ -156,9 +172,9 @@ Expand
   \sum_{i,j=-M}^M c_i\overline{c_j}\,
   h(\cdot-(i-j)\Delta).
 \]
-Applying linearity of $Q^\star(t;\cdot)$ gives
+Applying linearity of $\mathcal Q(\cdot)$ gives
 \[
-  Q^\star(t;\Psi_c * \widetilde{\Psi_c})
+  \mathcal Q(\Psi_c * \widetilde{\Psi_c})
   =
   \sum_{i,j=-M}^M c_i\overline{c_j}\,\kappa_{i-j}.
 \]
@@ -171,7 +187,8 @@ Fix a dense packet space $\mathcal P_K\subset C_c([-K/2,K/2])$ and define
 \[
   K_P(\Psi,\Phi)
   :=
-  \sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}\,(\Psi * \widetilde{\Phi})(\xi_n).
+  \frac12\sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}
+  \bigl((\Psi * \widetilde{\Phi})(\xi_n)+(\Psi * \widetilde{\Phi})(-\xi_n)\bigr).
 \]
 If there exist a Hilbert space $\mathcal H_{P,K}$ and a map
 $J_K:\mathcal P_K\to\mathcal H_{P,K}$ such that
@@ -190,12 +207,12 @@ $[K_P(\Psi_i,\Psi_j)]$ is then a Gram matrix.
 \begin{lemma}[P5: decomposition of the full packet Toeplitz sequence]\label{lem:packet-symbol-decomposition}
 Writing
 \[
-  \kappa_m
-  =
-  \int_{\mathbb R} a(\xi)\,h(\xi-m\Delta)\,d\xi
-  -
-  \sum_{n\ge2} w(n)\,h(\xi_n-m\Delta),
+  \alpha_m:=\int_{\mathbb R} a^*(\xi)\,h(\xi-m\Delta)\,d\xi,
+  \qquad
+  \beta_m:=\frac12\sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}
+  \Bigl(h(\xi_n-m\Delta)+h(\xi_n+m\Delta)\Bigr),
 \]
+one has $\kappa_m=\alpha_m-\beta_m$, and
 the packet symbol splits as
 \[
   S_{g,\Delta}(\theta)=A_{g,\Delta}(\theta)-P_{g,\Delta}(\theta),
@@ -204,11 +221,11 @@ where
 \[
   A_{g,\Delta}(\theta)
   :=
-  \sum_{m\in\mathbb Z} e^{-im\theta}\!\int_{\mathbb R} a(\xi)\,h(\xi-m\Delta)\,d\xi,
+  \sum_{m\in\mathbb Z} \alpha_m e^{-im\theta},
   \qquad
   P_{g,\Delta}(\theta)
   :=
-  \sum_{m\in\mathbb Z} e^{-im\theta}\!\sum_{n\ge2} w(n)\,h(\xi_n-m\Delta).
+  \sum_{m\in\mathbb Z} \beta_m e^{-im\theta}.
 \]
 Equivalently, for the twisted periodization
 \[
@@ -218,9 +235,10 @@ one has
 \[
   S_{g,\Delta}(\theta)
   =
-  \int_{\mathbb R} a(\xi)\,H_{g,\Delta,\theta}(\xi)\,d\xi
+  \int_{\mathbb R} a^*(\xi)\,H_{g,\Delta,\theta}(\xi)\,d\xi
   -
-  \sum_{n\ge2} w(n)\,H_{g,\Delta,\theta}(\xi_n).
+  \frac12\sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}
+  \Bigl(H_{g,\Delta,\theta}(\xi_n)+H_{g,\Delta,\theta}(-\xi_n)\Bigr).
 \]
 Thus the symbol decomposition $S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}$ remains a
 useful structural object on the packet side. But on a dense packet dictionary it
@@ -230,7 +248,7 @@ public theorem shape.
 
 \begin{proof}
 The identity $\kappa_m=\alpha_m-\beta_m$ is just the compact-window definition
-of $Q^\star(t;\cdot)$ applied to $h(\cdot-m\Delta)$. Summing against
+of $\mathcal Q(\cdot)$ applied to $h(\cdot-m\Delta)$. Summing against
 $e^{-im\theta}$ yields the displayed formulas for $S_{g,\Delta}$,
 $A_{g,\Delta}$, and $P_{g,\Delta}$.
 \end{proof}
@@ -241,7 +259,8 @@ translation packet space supported in $[-K/2,K/2]$ the packet prime block
 \[
   K_P(\Psi,\Phi)
   :=
-  \sum_{n\ge2} w(n)\,(\Psi * \widetilde{\Phi})(\xi_n)
+  \frac12\sum_{n\ge2}\frac{2\Lambda(n)}{\sqrt n}
+  \bigl((\Psi * \widetilde{\Phi})(\xi_n)+(\Psi * \widetilde{\Phi})(-\xi_n)\bigr)
 \]
 is not positive semidefinite in general. In particular, no theorem of the form
 \[
@@ -254,10 +273,11 @@ can hold on every dense packet dictionary containing such translates.
 Since the active node set on $[-K,K]$ is finite and has positive minimum spacing,
 we may choose a nonzero real packet $g$ with support so small that the translates
 \[
-  g,\qquad g(\cdot-\xi_{n_0}),\qquad g(\cdot-2\xi_{n_0})
+  g,\qquad g(\cdot\pm\xi_{n_0}),\qquad g(\cdot-2\xi_{n_0})
 \]
 are pairwise disjoint and, moreover, for every other active node $\xi_n\neq\xi_{n_0}$
-all overlaps contributing to $(g-g(\cdot-\xi_{n_0}))*\widetilde{(g-g(\cdot-\xi_{n_0}))}(\xi_n)$
+all overlaps contributing to
+$(g-g(\cdot-\xi_{n_0}))*\widetilde{(g-g(\cdot-\xi_{n_0}))}(\pm\xi_n)$
 vanish. Set
 \[
   \Psi:=g-g(\cdot-\xi_{n_0}).
@@ -270,19 +290,46 @@ Then
   =
   -\|g\|_{L^2}^2<0,
 \]
-while $(\Psi * \widetilde{\Psi})(\xi_n)=0$ for every other active node $\xi_n$.
+while $(\Psi * \widetilde{\Psi})(-\xi_{n_0})=0$ and
+$(\Psi * \widetilde{\Psi})(\pm\xi_n)=0$ for every other active node $\xi_n$.
 Hence
 \[
   K_P(\Psi,\Psi)
   =
-  w(n_0)\,(\Psi * \widetilde{\Psi})(\xi_{n_0})
+  \frac12\frac{2\Lambda(n_0)}{\sqrt{n_0}}\,(\Psi * \widetilde{\Psi})(\xi_{n_0})
   <
   0.
 \]
 Therefore the packet prime block is not positive semidefinite on such packet spaces.
 \end{proof}
 
-\begin{proposition}[Why the uniform packet-symbol floor is too strong]\label{prop:a3-pd-too-strong}
+\begin{proposition}[Sparse Gershgorin criterion for packet Toeplitz blocks]\label{prop:packet-gershgorin}
+Assume that the base packet $g$ is real and nonnegative, so that
+$h=g*\widetilde g\ge0$ and hence $\beta_m\ge0$ for all $m$. Fix $M\ge1$. If
+\[
+  \kappa_0\ge \sum_{1\le |m|\le 2M} |\kappa_m|+\varepsilon
+  \qquad\text{for some }\varepsilon>0,
+\]
+then the Toeplitz block $[\kappa_{i-j}]_{|i|,|j|\le M}$ is positive semidefinite,
+indeed has least eigenvalue at least $\varepsilon$. In particular, it is enough
+to prove the stronger split inequality
+\[
+  \alpha_0
+  \ge
+  \beta_0+\sum_{1\le |m|\le 2M}\bigl(|\alpha_m|+\beta_m\bigr)+\varepsilon.
+\]
+\end{proposition}
+
+\begin{proof}
+The Toeplitz block has diagonal entry $\kappa_0$ and off-diagonal entries
+$\kappa_{i-j}$. The displayed diagonal-dominance hypothesis is exactly the
+strict Gershgorin criterion, so every Gershgorin disc lies in
+$[\varepsilon,\infty)$ and the block is positive semidefinite. Since
+$\kappa_m=\alpha_m-\beta_m$ and $\beta_m\ge0$, the stronger split inequality
+implies the diagonal-dominance bound immediately.
+\end{proof}
+
+\begin{proposition}[Why Gershgorin cannot be the dense main theorem]\label{prop:a3-pd-too-strong}
 Let $g\in C_c(\mathbb R)$ be nonzero and real-valued, and for $\Delta>0$ define
 \[
   \Psi_\Delta:=g-g(\cdot-\Delta),
@@ -344,17 +391,20 @@ converges uniformly, so positivity of the representing measure is equivalent to
 pointwise nonnegativity of the symbol.
 \end{proof}
 
-\begin{proposition}[P7: full-symbol domination criterion]\label{prop:full-symbol-domination}
+\begin{proposition}[P7: regularized full-symbol domination criterion]\label{prop:full-symbol-domination}
 Fix an admissible packet dictionary generated by $g$ and $\Delta$. Assume that
-the Toeplitz coefficients $\kappa_m=Q^\star(t;h(\cdot-m\Delta))$ define a genuine
-circle symbol and that
+the Archimedean coefficients admit a regularized circle symbol
+$A_{g,\Delta}^{\mathrm{reg}}$ and that the prime block is represented by a
+nonnegative symbol or positive measure $P_{g,\Delta}$ on $\mathbb T$. Assume that
 \[
-  A_{g,\Delta}(\theta)\ge P_{g,\Delta}(\theta)
+  A_{g,\Delta}^{\mathrm{reg}}(\theta)\ge P_{g,\Delta}(\theta)
   \qquad\text{for all }\theta\in[-\pi,\pi].
 \]
 Then
 \[
-  S_{g,\Delta}(\theta)=A_{g,\Delta}(\theta)-P_{g,\Delta}(\theta)\ge0
+  S_{g,\Delta}^{\mathrm{reg}}(\theta)
+  :=
+  A_{g,\Delta}^{\mathrm{reg}}(\theta)-P_{g,\Delta}(\theta)\ge0
   \qquad\text{for all }\theta,
 \]
 so every finite Toeplitz section of $(\kappa_m)_{m\in\mathbb Z}$ is positive
@@ -363,14 +413,15 @@ corresponding translation packet space.
 \end{proposition}
 
 \begin{proof}
-The pointwise domination gives a nonnegative symbol $S_{g,\Delta}$ on the circle.
+The pointwise domination gives a nonnegative regularized symbol
+$S_{g,\Delta}^{\mathrm{reg}}$ on the circle.
 Hence the associated Toeplitz quadratic form satisfies
 \[
-  \bigl\langle T_M[S_{g,\Delta}]c,c\bigr\rangle \ge 0
+  \bigl\langle T_M[S_{g,\Delta}^{\mathrm{reg}}]c,c\bigr\rangle \ge 0
   \qquad\text{for every }c\in\mathbb C^{2M+1}.
 \]
-By Theorem~\ref{thm:packet-rayleigh-pd} this quadratic form is exactly
-$Q^\star(t;\Psi_c * \widetilde{\Psi_c})$, so the Toeplitz sections
+By the regularized packet-symbol identification, this quadratic form recovers
+the same Toeplitz coefficients $\kappa_m$ attached to the packet kernel, so the Toeplitz sections
 $[\kappa_{i-j}]_{|i|,|j|\le M}$ are positive semidefinite. This is precisely the
 packet-kernel positivity statement on that translation packet space.
 \end{proof}
@@ -444,7 +495,7 @@ The current analytic core supplies two separate ingredients:
 The target-cone audit shows that these do \emph{not} yet close RH. The public theorem package now contains the strict packet chain
 \textup{(P1)}--\textup{(P6)}, but the public missing theorem is now:
 \begin{enumerate}
-  \item the PSD packet-kernel theorem PSD-pd on that same exact dense pre-packet space, with \textup{(P7)} as the clean sufficient criterion.
+  \item the PSD packet-kernel theorem PSD-pd on that same exact dense pre-packet space, with regularized \textup{(P7)} as the clean sufficient criterion.
 \end{enumerate}
 \end{remark}
 
@@ -475,10 +526,14 @@ Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corr
   \item freeze the strict packet package
   \textup{(P1)} $\Rightarrow$ \textup{(P2)} $\Rightarrow$ \textup{(P4)}
   $\Rightarrow$ \textup{(P5)} $\Rightarrow$ \textup{(P6)};
+  \item keep the Gershgorin route only as a sparse-dictionary lemma and not as
+  the dense main theorem, by Proposition~\ref{prop:packet-gershgorin} and
+  Proposition~\ref{prop:a3-pd-too-strong};
   \item prove the PSD packet-kernel theorem PSD-pd for the same exact dense
   pre-packet space, with the symbol-side decomposition
   $S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}$ kept as structural guidance and
-  Proposition~\ref{prop:full-symbol-domination} (\textup{P7}) as the clean criterion.
+  Proposition~\ref{prop:full-symbol-domination} (\textup{P7}) in its regularized
+  form as the clean criterion.
 \end{enumerate}
 Once that packet-kernel theorem is closed, the A3/RKHS positivity engine can feed the
 corrected closure route without reopening the LF or Weil tail.
@@ -505,12 +560,14 @@ Theorem~\ref{thm:PSD-pd}.
   $\Longrightarrow$
   \textup{P4} prime-block obstruction
   $\Longrightarrow$
+  sparse Gershgorin criterion / collapse obstruction
+  $\Longrightarrow$
   \textup{P5} full sequence split
   $\Longrightarrow$
   \textup{P6} Toeplitz--Herglotz criterion
   $\Longrightarrow$
-  \textup{P7} full-symbol domination
-  $A_{g,\Delta}\ge P_{g,\Delta}$ or a new operator package for the full kernel
+  \textup{P7} regularized full-symbol domination
+  $A_{g,\Delta}^{\mathrm{reg}}\ge P_{g,\Delta}$ or a new operator package for the full kernel
   $\Longrightarrow$
   Theorem~\ref{thm:PSD-pd}.
 \end{enumerate}

@@ -41,11 +41,11 @@ This work introduces a quantitative, modular operator framework for the Weil cri
   feeds the corrected mainline density theorem A1-pd. On the same exact packet side,
   the packet-Rayleigh theorem identifies
   \[
-    Q^\star(t;\Psi_c * \widetilde{\Psi_c})
+    \mathcal Q(\Psi_c * \widetilde{\Psi_c})
     = \langle T_M[S_{g,\Delta}]c,c\rangle
   \]
   for the Toeplitz symbol $S_{g,\Delta}$ built from packet coefficients
-  $\kappa_m=Q^\star(t;h(\cdot-m\Delta))$, while the naive centered Rayleigh family
+  $\kappa_m=\mathcal Q(h(\cdot-m\Delta))$, while the naive centered Rayleigh family
   \[
     \mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}
     := \operatorname{cone}\!\bigl\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\bigr\}
@@ -54,9 +54,11 @@ This work introduces a quantitative, modular operator framework for the Weil cri
   a uniform packet-symbol floor on the dense packet dictionary. The honest
   remaining theorem is `PSD-pd`: positive semidefiniteness of the packet kernel
   \[
-    K_Q(g_i,g_j):=Q^\star(t;g_i * \widetilde{g_j})
+    K_Q(g_i,g_j):=\mathcal Q(g_i * \widetilde{g_j})
   \]
-  on the same exact dense pre-packet space.
+  on the same exact dense pre-packet space, with regularized full-symbol
+  domination as the immediate constructive target and Gershgorin only as a
+  sparse finite-block criterion.
   \item \textbf{Verification path:} Sections~\ref{sec:T0}--\ref{sec:rkhs-prime-cap} supply the fully written analytic modules. Section~\ref{sec:Main-closure} now packages the corrected positive-definite closure route. Appendix~\ref{app:legacy-branch} keeps legacy broad-cone branches as read-only provenance only.
   \item \textbf{Computation:} Symbol scans, ATP logs, and certificate tables are reproducibility aids only; they do not enter the logical core of the active proof chain.
 \end{itemize}
@@ -83,7 +85,7 @@ For reference we collect the live proof contract used after the target-cone audi
   \item[(packet-Rayleigh-naive)] Background quadratic-form identity on the overlarge family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}$.
   \item[(packet-Rayleigh-pd)] Exact Toeplitz quadratic-form identity on autocorrelation packets $\Psi_c * \widetilde{\Psi_c}$ with packet symbol $S_{g,\Delta}$.
   \item[(A3-pd)] Rejected-too-strong route: one uniform packet-symbol floor on the full dense packet dictionary.
-  \item[(PSD-pd)] Positive semidefiniteness of the packet kernel $K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})$ on the same exact dense pre-packet space.
+  \item[(PSD-pd)] Positive semidefiniteness of the packet kernel $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ on the same exact dense pre-packet space.
   \item[(A3)+(RKHS)] Centered positivity mechanism at the critical scale.
   \item[(A2-pd)] Continuity of $Q^\star(t;\cdot)$ on the ambient compact-support class, hence on $\mathcal W_K^{\mathrm{pd}}$ in particular.
   \item[(LF-pd)] Inductive-limit lift from all $\mathcal W_K^{\mathrm{pd}}$ to $\mathcal W^{\mathrm{pd}}$.
@@ -99,7 +101,7 @@ The present manuscript establishes the analytic inputs behind this chain as foll
   \item `A3` and `RKHS` as the centered positivity mechanism in Sections~\ref{sec:A3} and \ref{sec:RKHS}.
 \end{itemize}
 
-What remains unresolved in the present draft is not the corrected cone itself, nor the theorem-level packet-Rayleigh identity. Pushing the naive Rayleigh route further shows that the family $\Phi_{B,t}|p|^2$ is too large to serve as the closure family, and pushing the old `A3-pd` route further shows that one uniform packet-symbol floor cannot hold on a dense packet dictionary. The actual knife-edge is therefore `PSD-pd`: prove positive semidefiniteness of the packet kernel $K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})$ on the same exact dense pre-packet space. Once that theorem is supplied, the rest of the route is the routine closure / LF / Weil tail.
+What remains unresolved in the present draft is not the corrected cone itself, nor the theorem-level packet-Rayleigh identity. Pushing the naive Rayleigh route further shows that the family $\Phi_{B,t}|p|^2$ is too large to serve as the closure family, and pushing the old `A3-pd` route further shows that one uniform packet-symbol floor cannot hold on a dense packet dictionary. The actual knife-edge is therefore `PSD-pd`: prove positive semidefiniteness of the packet kernel $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ on the same exact dense pre-packet space. The immediate constructive target is the regularized full-symbol inequality $A_{g,\Delta}^{\mathrm{reg}}\ge P_{g,\Delta}$; the Gershgorin route survives only as a sparse finite-block lemma. Once that theorem is supplied, the rest of the route is the routine closure / LF / Weil tail.
 
 \section{Notation and Conventions}\label{sec:notation}
 
@@ -136,7 +138,7 @@ $\rho(t_{\mathrm{crit}})\le c_\ast/4$ (Corollary~\ref{cor:uniform-prime-cap}).
 Budget split: $C_{\mathrm{SB}}\omega_{P_A}(1/(2M))\le c_\ast/2$ and $\|T_P^{\mathrm{Ray}}(t,M)\|\le c_\ast/4$
 \ $\Rightarrow\ \lambda_{\min}(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M))\ge c_\ast/4$ on the centered bridge family.
 
-\textbf{Current knife-edge.} The unresolved issue is no longer “one shifted family that is both dense and positive” on the broad cone. On the corrected cone the dense autocorrelation family survives, exact packet-Rayleigh survives on that same packet side, and the naive quadratic-form family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is too large. The old `A3-pd` uniform-gap route is also too strong on a dense packet dictionary. The live knife-edge is now the PSD packet-kernel theorem `PSD-pd`.
+\textbf{Current knife-edge.} The unresolved issue is no longer “one shifted family that is both dense and positive” on the broad cone. On the corrected cone the dense autocorrelation family survives, exact packet-Rayleigh survives on that same packet side, and the naive quadratic-form family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is too large. The old `A3-pd` uniform-gap route is also too strong on a dense packet dictionary, while Gershgorin survives only on sparse finite blocks. The live knife-edge is now the PSD packet-kernel theorem `PSD-pd`, with regularized full-symbol domination as the immediate constructive target.
 \end{tcolorbox}
 
 \begin{center}

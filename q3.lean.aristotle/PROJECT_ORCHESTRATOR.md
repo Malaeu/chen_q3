@@ -112,9 +112,10 @@ Interpretation after `T0.1`:
      on the same exact dense pre-packet space;
   7. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
   8. freeze the strict `P1--P8` theorem package;
-  9. make direct full-symbol domination
-     `A_{g,\Delta}(\theta)\ge P_{g,\Delta}(\theta)` the immediate constructive
-     target, with a new full-kernel operator package kept as fallback.
+  9. make regularized full-symbol domination
+     `A_{g,\Delta}^{reg}(\theta)\ge P_{g,\Delta}(\theta)` the immediate
+     constructive target, with a new full-kernel operator package kept as fallback;
+ 10. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
 
 ## Active Milestone
 
@@ -138,14 +139,17 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
    -> desired prime-factorization (rejected by obstruction)
    -> full sequence split `\kappa=\alpha-\beta`
    -> Toeplitz/Herglotz criterion
-   -> full-symbol domination criterion
+   -> regularized full-symbol domination criterion
    -> `PSD-pd`,
 10. record the two surviving strategy families for `PSD-pd`
     (Herglotz/Bochner versus direct full-kernel PSD),
-11. make full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}` the immediate
-    constructive target, with a new full-kernel operator package as fallback,
-12. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
-13. keep Aristotle `G1.6` as background lemma-mining only.
+11. make regularized full-symbol domination
+    `A_{g,\Delta}^{reg}\ge P_{g,\Delta}` the immediate constructive target,
+    with a new full-kernel operator package as fallback,
+12. keep Gershgorin only as a sparse finite-block lemma and not as the dense
+    public theorem,
+13. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
+14. keep Aristotle `G1.6` as background lemma-mining only.
 
 ## Hard Blockers
 
@@ -169,8 +173,8 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
   exact packet sesquilinear identity
   -> prime-block obstruction
   -> Toeplitz/Herglotz spectral criterion for the full sequence
-  -> direct full-symbol domination `A_{g,\Delta}\ge P_{g,\Delta}` or a new
-     operator package for the full kernel
+  -> regularized full-symbol domination `A_{g,\Delta}^{reg}\ge P_{g,\Delta}`
+     or a new operator package for the full kernel
   -> `PSD-pd`.
 - On dense packet dictionaries with arbitrarily fine translates, a uniform lower
   bound of the form `Q^\star(t;\Psi * \widetilde\Psi)\ge c_K\|c\|_2^2` is impossible:
@@ -244,3 +248,7 @@ Legacy narrative surfaces are reference-only:
   (`A_{g,\Delta}\ge P_{g,\Delta}` or the measure/distribution analogue) is the
   immediate constructive target and any new operator package for the full kernel
   is fallback-only.
+- 2026-03-08: `P7` is now sharpened further to regularized full-symbol
+  domination `A_{g,\Delta}^{reg}\ge P_{g,\Delta}` after introducing the
+  symmetric packet extension `\mathcal Q`; Gershgorin survives only as a sparse
+  finite-block lemma and not as the dense main theorem.
