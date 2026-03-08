@@ -238,6 +238,34 @@ python3 -u ./scripts/refresh_q3_docs.py
 python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 ```
 
+### Python sanity / code location
+
+Новый Python-код для быстрых sanity-check / numerical audit по Q3 держим в:
+
+- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/src`
+
+Запускать такие проверки надо от repo-root и через локальную `.venv`:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+source .venv/bin/activate
+python src/h1_raw_operator_sanity.py
+```
+
+Для текущего H1 bulk-normalization brick canonical script такой:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+source .venv/bin/activate
+python src/h1_raw_operator_sanity.py --M 4 --M-big 7 --B 0.2 --t 0.15
+```
+
+Этот скрипт проверяет three-in-one:
+
+- scaling identity `\Pi_M=(2M+1)T_P^{Ray}(t,M)`;
+- raw entry formula for `Q_M^{raw}`;
+- stability of the raw entries under `M -> M_big`.
+
 ## Что не делать
 
 - Не опираться на старый broad-cone route как на public RH contract.
@@ -254,14 +282,20 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
   `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
   `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
+- Proshka-facing raw operator hack:
+  use
+  `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+  `\Pi_M=(2M+1)T_P^{Ray}(t,M)`,
+  with
+  `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle`;
 - next exact blocker:
   raw bulk identity
   `w_{rs}(a)=\kappa(a)q_{rs}`
   on the two raw families `(+,+)` and `(+,-)`,
-  where `q_{rs}=q_{rs}^{(M+1)}=\langle Q_{M+1} e_s,e_r\rangle` on the Section 8 side,
-  with exact extracted formula
-  `q_{rs}^{(L)}=a_{r-s}-p_{r-s}^{(L)}` and
-  `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`,
+  where on the raw Section 8 side
+  `q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
+  `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
+  and `\kappa_{A3}=1`,
   and
   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})` on the Suzuki side;
 - derived filtered consequence:

@@ -3086,3 +3086,35 @@ Important caveat:
 - this is a Proshka-facing extraction/hack layer for the bridge work;
 - it is not yet promoted blindly to the public theorem stack until the filtered
   H1/H3 normalization is rechecked against the live manuscript.
+
+## In progress (2026-03-08) — Python sanity check for the raw H1 operator package
+
+A repo-local sanity script now lives at:
+
+- `src/h1_raw_operator_sanity.py`
+
+It is meant to be run from the repo root with the local virtualenv:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+source .venv/bin/activate
+python src/h1_raw_operator_sanity.py --M 4 --M-big 7 --B 0.2 --t 0.15
+```
+
+What it checks:
+
+- the scaling identity `\Pi_M=(2M+1)T_P^{Ray}(t,M)`;
+- the raw entry formula for
+  `Q_M^{raw}=T_M[P_A]-\Pi_M`;
+- overlap stability of the raw entries under `M -> M_big`.
+
+Current sample run passes with errors at the `1e-16` level:
+
+- prime scaling error (M): `1.777e-16`
+- prime scaling error (M_big): `8.636e-16`
+- raw entry error (M): `4.578e-16`
+- overlap stability error: `4.475e-16`
+
+This does not prove the Suzuki raw bulk identity
+`w_{rs}(a)=\kappa(a)q_{rs}`, but it removes the local Q3-side
+normalization ambiguity and gives a fast executable check for future sessions.
