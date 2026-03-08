@@ -61,29 +61,35 @@ admissible dictionary \textup{(P2)}, prime-block obstruction \textup{(P4)}, full
 \textup{(P5)}, Toeplitz--Herglotz criterion \textup{(P6)}, and then the finite-symbol package
 \textup{(P7.3)}--\textup{(P7.6)}: exact finite symbol identity, finite-symbol domination $S_J\ge0$,
 and Poisson-regularized verification with explicit error budget. What is now
-concretely missing is \textup{H1}: build $S_{a,M}$ and $J_a$ so that the finite
-Hermitian Q3 energy is pulled back as a generalized form pair for Suzuki's
-operator criterion. The first candidate is already clear: use a nonorthogonal
-packet synthesis on $(-a,a)$ extracted from the same centered
-Fej\'er$\times$heat / RKHS geometry as the Q3 finite block, and let $J_a$ be
-the corresponding Gram-pullback metric on the synthesized packet span.
-The preferred first-pass refinement is filtered Volterra: use
-$J_a=(I_0^{(a)})^*I_0^{(a)}$ and characterize $S_{a,M}$ by
-$I_0^{(a)}S_{a,M}=U_aM_{1+z}|_{P_M}$. Then the pullback metric is the explicit
-Toeplitz block
+concretely missing is \textup{H1}$^{\mathrm f}$: build the symmetric two-sided
+filtered tail bridge so that the finite Hermitian Q3 energy is pulled back as a
+generalized Suzuki form pair. The preferred first-pass refinement is no longer
+one-sided `$(1+z)$'-filtering on all of $P_M$, but the two-sided tail package
 \[
-  B_M=T_M[|1+z|^2]=\Delta_+^*\Delta_+,
-  \qquad
-  \Delta_+=I+L,
+  \mathcal P_{M,N},\qquad
+  \Delta_{M,N},\qquad
+  B_{M,N}:=\Delta_{M,N}^*\Delta_{M,N},\qquad
+  \widetilde Q_{M,N}:=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N},
 \]
-and the correct filtered finite section is
+where the positive tail uses the filter $1+z$ and the negative tail uses the
+filter $1+z^{-1}$. On the Suzuki side one takes
 \[
-  \widetilde Q_M:=\Delta_+^*Q_{M+1}\Delta_+.
+  J_a=(I_0^{(a)})^*I_0^{(a)},
+  \qquad
+  S_{a,M,N}z^n=\phi_n^+[a],\qquad
+  S_{a,M,N}z^{-n}=\phi_n^-[a],
+\]
+so that the exact metric pullback is
+\[
+  S_{a,M,N}^*J_aS_{a,M,N}=B_{M,N}.
 \]
 Hence any bulk bound $Q_{M+1}\ge c(a)I$ transfers directly to
-$\widetilde Q_M\ge c(a)B_M$, with no loss of the old factor $1/4$. Finite-prime
-semilocal data remain useful only as a secondary basis/Gram engine for
-\textup{H1}, not as a new RH endgame in their own right.
+\[
+  \widetilde Q_{M,N}\ge c(a)B_{M,N},
+\]
+with no loss of the old factor $1/4$. Finite-prime semilocal data remain useful
+only as a secondary basis/Gram engine for \textup{H1}$^{\mathrm f}$, not as a
+new RH endgame in their own right.
 The first canonical test case is now fixed as the centered half-atom
 \[
   g_{\delta,t_0,0}(\xi)=\Lambda_\delta(\xi)\rho_{t_0}(\xi),

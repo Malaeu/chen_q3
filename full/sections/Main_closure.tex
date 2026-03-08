@@ -1378,8 +1378,9 @@ Assume \textup{(T0)}, \textup{(A2)}, and one of the following routes:
   Theorem~\ref{thm:A1-pd}, Theorem~\ref{thm:packet-rayleigh-pd}, and
   Theorem~\ref{thm:PSD-pd}, together with corrected local/global closure;
   \item[\textup{(ii)}] the Suzuki/Yoshida generalized form-pair bridge
-  \textup{H1} $\Rightarrow$ \textup{H2} $\Rightarrow$ \textup{H3} $\Rightarrow$
-  \textup{H4}.
+  \textup{H1}$^{\mathrm f}$ $\Rightarrow$ \textup{H2}$^{\mathrm f}$
+  $\Rightarrow$ \textup{H3}$^{\mathrm f}$ $\Rightarrow$
+  \textup{H4}$^{\mathrm f}$.
 \end{enumerate}
 Then
 \[
@@ -1389,14 +1390,14 @@ where $\mathcal W^{\mathrm{pd}}=\bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}$ is the 
 \end{theorem}
 
 \begin{proof}
-If \textup{(i)} holds, then Corollary~\ref{cor:compact-spectral-global-closure}
-gives $Q(\Phi)\ge0$ on $\mathcal W^{\mathrm{pd}}\cap C_c(\mathbb R)_{\mathrm{even}}$,
-hence $Q^\star(t;\Phi)\ge0$ on $\mathcal W^{\mathrm{pd}}$. Assume \textup{(ii)}.
-Fix $K>0$. By Theorem~\ref{thm:PSD-pd} we have $Q^\star(t;\Phi)\ge0$ for every
-$\Phi\in\mathcal W_K^{\mathrm{pd}}$. Now let $\Phi\in\mathcal W^{\mathrm{pd}}$.
-Choose $K$ with $\Phi\in\mathcal W_K^{\mathrm{pd}}$. Then $Q^\star(t;\Phi)\ge 0$, and
-the compatibility assumption ensures that this conclusion is independent of the
-chosen compact exhaustion.
+If \textup{(i)} holds, then the fallback packet route together with corrected
+local/global closure gives $Q(\Phi)\ge0$ on
+$\mathcal W^{\mathrm{pd}}\cap C_c(\mathbb R)_{\mathrm{even}}$, hence
+$Q^\star(t;\Phi)\ge0$ on $\mathcal W^{\mathrm{pd}}$. Assume \textup{(ii)}.
+By Corollary~\ref{cor:H4-filtered-RH}, the Suzuki bridge implies RH. The
+corrected Weil linkage on the positive-definite cone then yields
+$Q(\Phi)\ge0$ on $\mathcal W^{\mathrm{pd}}\cap C_c(\mathbb R)_{\mathrm{even}}$,
+hence $Q^\star(t;\Phi)\ge0$ on $\mathcal W^{\mathrm{pd}}$.
 \end{proof}
 
 \begin{remark}[Where the present draft stops]
@@ -1406,33 +1407,37 @@ The current analytic core supplies two separate ingredients:
   \item the shifted density theorem A1$'$ on the broad restriction cone $R_K$;
   \item the exact packet-Rayleigh theorem on autocorrelation packets.
 \end{enumerate}
-The target-cone audit shows that these do \emph{not} yet close RH. The public theorem package now contains the scalar compact stack
-\textup{(S1)}--\textup{(S4)} as primary route, plus the strict packet chain
-\textup{(P1)}--\textup{(P6)} together with the finite-symbol verification package
-\textup{(P7.3)}--\textup{(P7.6)} and the canonical-packet pilot
-Propositions~\ref{prop:canonical-half-atom-bounds} and
-\ref{prop:canonical-half-atom-pilot}. The fastest public constructive theorem
-shape, however, is now the scalar compact spectral route
-\[
-  W_K(u)\ge0
-  \qquad\text{for every }u\in\mathbb R,
-\]
-because \textup{(S1)} and \textup{(S2)} give positivity on all local
-convolution squares directly, \textup{(S3)} closes the compact step, and
-\textup{(S4)} packages the corrected compact-to-global transfer. The packet
-package remains valuable as the dictionary-level fallback route and
-verification layer. The public missing theorem is therefore:
+The target-cone audit shows that these do \emph{not} yet close RH. The public
+theorem package now contains three layers:
 \begin{enumerate}
-  \item either the scalar spectral nonnegativity
+  \item the scalar compact stack \textup{(S1)}--\textup{(S4)} as a correct but
+  diagnostic compact-truncation package;
+  \item the strict packet chain \textup{(P1)}--\textup{(P6)} together with the
+  finite-symbol verification package \textup{(P7.3)}--\textup{(P7.6)} and the
+  canonical-packet pilot
+  Propositions~\ref{prop:canonical-half-atom-bounds} and
+  \ref{prop:canonical-half-atom-pilot} as the honest fallback Weil-side route;
+  \item the primary live operator route
+  \textup{H1}$^{\mathrm f}\Rightarrow$\textup{H2}$^{\mathrm f}
+  \Rightarrow$\textup{H3}$^{\mathrm f}\Rightarrow$\textup{H4}$^{\mathrm f}$,
+  where the finite Q3 Hermitian block is compared to Suzuki's
+  RH-equivalent operator through a symmetric two-sided filtered tail bridge.
+\end{enumerate}
+So the public missing theorem is no longer a scalar compact inequality. It is:
+\begin{enumerate}
+  \item on the primary live route, the exact filtered bulk intertwining
   \[
-    W_K(u)\ge0
-    \qquad\text{for every }u\in\mathbb R,
+    S_{a,M,N}^*G_g[a]S_{a,M,N}
+    =
+    \kappa(a)\,\widetilde Q_{M,N}
+    \,+\, F_{a,M,N},
   \]
-  on every compact;
-  \item or, failing that, the packet-level coefficient bounds on $\alpha_m$ and
-  $\beta_m$ needed to verify Proposition~\ref{prop:packet-explicit-sufficient-criterion}
-  (or, equivalently, Corollary~\ref{cor:regularized-p7}) on every finite admissible
-  dictionary inside a dense translation-compatible packet subspace.
+  together with the explicit finite-dimensional Suzuki cap;
+  \item on the fallback packet route, the packet-level coefficient bounds on
+  $\alpha_m$ and $\beta_m$ needed to verify
+  Proposition~\ref{prop:packet-explicit-sufficient-criterion}
+  (or, equivalently, Corollary~\ref{cor:regularized-p7}) on every finite
+  admissible dictionary inside a dense translation-compatible packet subspace.
 \end{enumerate}
 \end{remark}
 
@@ -1454,8 +1459,25 @@ $Q^\star(t;\Phi)\ge 0$ for every $\Phi\in\mathcal W_K^{\mathrm{pd}}$.
 \end{proof}
 
 \begin{remark}[Exact remaining mathematical task]\label{rem:compatibility-missing-scalar}
-Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corrected local closure step is routine once a dense positive family inside $\mathcal W_K^{\mathrm{pd}}$ has been identified. The unresolved work is therefore:
+Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the
+corrected local closure step is routine once one has either a primary operator
+bridge or a fallback dense positive family inside $\mathcal W_K^{\mathrm{pd}}$.
+The unresolved work is therefore:
 \begin{enumerate}
+  \item keep the symmetric filtered Suzuki bridge as the primary live route:
+  the correct finite object is the two-sided filtered tail section
+  $\widetilde Q_{M,N}:=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}$ with exact pullback
+  metric $B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}$;
+  \item close the exact four-block bulk comparison
+  \[
+    \bigl\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\bigr\rangle
+    \quad\text{vs.}\quad
+    \kappa(a)\bigl(\widetilde Q_{M,N}^{\sigma\tau}\bigr)_{mn},
+    \qquad
+    \sigma,\tau\in\{+,-\},
+  \]
+  and isolate the genuine finite-dimensional Suzuki cap as a separate second
+  brick;
   \item treat the scalar compact package
   \[
     \textup{(S1)}\Rightarrow\textup{(S2)}\Rightarrow\textup{(S3)}\Rightarrow\textup{(S4)}
@@ -1489,8 +1511,10 @@ Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corr
   \textup{A1}--\textup{A4}, \textup{P1}--\textup{P3}, and the explicit
   sufficient inequalities \textup{(C1)}--\textup{(C2$'$)}.
 \end{enumerate}
-Once that packet-kernel theorem is closed, the A3/RKHS positivity engine can feed the
-corrected closure route without reopening the LF or Weil tail.
+If the filtered Suzuki bridge closes, it bypasses the slow cone-propagation
+burden. If it stalls, the packet-kernel theorem remains the honest fallback
+that can still feed the corrected closure route without reopening the LF or
+Weil tail.
 \end{remark}
 
 \begin{remark}[Two surviving strategy families for PSD-pd]\label{rem:psd-pd-strategies}
@@ -1503,35 +1527,36 @@ mainline.
   \[
     T_M[P_A]-T_P^{(M)}
   \]
-  by building a generalized form-pair bridge
+  by building a generalized form-pair bridge on a symmetric two-sided tail
   \[
-    (G_g[a],J_a),\qquad S_{a,M}:P_M\to E_{a,M}\subset L^2(-a,a),
+    (G_g[a],J_a),\qquad S_{a,M,N}:\mathcal P_{M,N}\to V_a^{\mathrm{tail}}\subset L^2(-a,a),
   \]
-  with exact or asymptotic pair-intertwining
+  with exact or asymptotic filtered pair-intertwining
   \[
-    S_{a,M}^*G_g[a]S_{a,M}
+    S_{a,M,N}^*G_g[a]S_{a,M,N}
     =
-    \kappa(a)\bigl(T_M[P_A]-T_P^{(M)}\bigr)+F_{a,M},
+    \kappa(a)\,\widetilde Q_{M,N}+F_{a,M,N},
     \qquad
-    S_{a,M}^*J_aS_{a,M}=B_{a,M},
+    S_{a,M,N}^*J_aS_{a,M,N}=B_{M,N},
   \]
-  where the preferred first-pass target is the filtered Volterra realization
-  with
+  where the preferred first-pass target is the exact filtered-tail realization
   \[
-    B_{a,M}=T_M[|1+z|^2]\le 4I.
+    B_{M,N}=\Delta_{M,N}^*\Delta_{M,N},
+    \qquad
+    \widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}.
   \]
   The live theorem stack is:
   \[
-    \textup{H1 exact/asymptotic pair-intertwining}
+    \textup{H1}^{\mathrm f}\ \textup{exact filtered bulk intertwining}
     \Longrightarrow
-    \textup{H2 Galerkin/recovery}
+    \textup{H2}^{\mathrm f}\ \textup{Suzuki tail/cap reduction}
     \Longrightarrow
-    \textup{H3 kernel-exclusion transfer}
+    \textup{H3}^{\mathrm f}\ \textup{filtered gap transfer}
     \Longrightarrow
-    \textup{H4 Suzuki Theorem 1.4}.
+    \textup{H4}^{\mathrm f}\ \textup{Suzuki Theorem 1.4}.
   \]
-  The honest blocker is H1: the construction of $S_{a,M}$ and $J_a$ in
-  RKHS/Gram language.
+  The honest blocker is now the exact four-block bulk comparison on the
+  filtered tail together with the finite-dimensional Suzuki cap.
   \item \textbf{Fallback packet route.} Keep the exact packet sesquilinear form
   on a dense translation-compatible packet subspace, use
   Proposition~\ref{prop:packet-prime-not-psd} to rule out standalone PSD control
@@ -1563,209 +1588,190 @@ These are now the exact two strategy families that survive the rejection of the
 old uniform-gap theorem shape and the compact scalar obstruction.
 \end{remark}
 
-\begin{remark}[Alternative operator pivot via Suzuki/Yoshida]\label{rem:suzuki-operator-pivot}
-There is one further route which is now the primary live operator pivot. The finite Q3 block
+\paragraph{Standing notation for the filtered Suzuki bridge.}
+Fix $a>0$. Let
 \[
-  T_M[P_A]-T_P^{(M)}
-\]
-is already written in exactly the Hermitian finite-section language that one
-would want for Suzuki's RH-equivalent operator criterion
-\[
-  0\notin \sigma_p(G_g[a])\qquad\text{for every }a>0.
-\]
-However, because Suzuki's operator $G_g[a]$ is compact / trace class, the naive
-package ``finite sections converge in raw operator norm and keep a uniform
-plain-$L^2$ gap away from $0$'' is the wrong theorem shape. The honest bridge
-must instead be a generalized form pair
-\[
-  (G_g[a],J_a),
-\]
-with finite-dimensional subspaces $E_{a,M}\subset L^2(-a,a)$, synthesis maps
-$S_{a,M}:P_M\to E_{a,M}$, and a positive injective metric operator $J_a$ such
-that one has exact or asymptotic pair-intertwining
-  \[
-    S_{a,M}^*G_g[a]S_{a,M}
-    =
-    \kappa(a)\bigl(T_M[P_A]-T_P^{(M)}\bigr)+F_{a,M},
-    \qquad
-    S_{a,M}^*J_aS_{a,M}=B_{a,M},
-  \]
-  with $B_{a,M}$ an explicit positive pullback metric. The preferred first-pass
-  realization is the filtered Volterra bridge
-  \[
-    J_a=(I_0^{(a)})^*I_0^{(a)},
-    \qquad
-    I_0^{(a)}S_{a,M}=U_aM_{1+z}\big|_{P_M},
-    \qquad
-    B_{a,M}=T_M[|1+z|^2]\le 4I,
-  \]
-  and with $F_{a,M}$ expected to be either zero or an explicit finite-rank cap
-  correction. The resulting audited theorem stack is then:
-\[
-  \textup{H1 exact/asymptotic pair-intertwining}
-  \Longrightarrow
-  \textup{H2 Galerkin/recovery}
-  \Longrightarrow
-  \textup{H3 kernel-exclusion transfer}
-  \Longrightarrow
-  \textup{H4 Suzuki Theorem 1.4}.
-\]
-This route is attractive because it reuses the strongest existing finite Q3
-brick directly and bypasses the slow cone-propagation burden. The real missing
-brick is H1 rather than H3.
-\end{remark}
-
-\begin{remark}[Candidate H1 construction in RKHS/Gram language]\label{rem:h1-candidate-gram}
-The first concrete candidate for \textup{H1} should not start from raw
-orthonormal Fourier restriction on $L^2(-a,a)$. The strongest alignment with
-the existing Q3 energy is instead a nonorthogonal packet synthesis extracted
-from the same finite Hermitian model that already underlies
-\[
-  T_M[P_A]-T_P^{(M)}.
-\]
-Choose a packet family
-\[
-  \{\varphi_{a,j}\}_{j\in\mathbb Z}\subset L^2(-a,a)
-\]
-adapted to the centered Fej\'er$\times$heat / RKHS geometry, and define the
-finite packet spaces
-\[
-  E_{a,M}:=\operatorname{span}\{\varphi_{a,j}:|j|\le M\}.
-\]
-For
-\[
-  p(\theta)=\sum_{|j|\le M} c_j e^{ij\theta}\in P_M,
-\]
-let the raw synthesis map be
-\[
-  S_{a,M}p:=\sum_{|j|\le M} c_j\,\varphi_{a,j}.
-\]
-Writing
-\[
-  \Gamma_{a,M}:=
-  \bigl[\langle \varphi_{a,i},\varphi_{a,j}\rangle_{L^2(-a,a)}\bigr]_{|i|,|j|\le M},
-\]
-the natural metric candidate is the Gram-pullback operator $J_a$ on
-$\bigcup_M E_{a,M}$ defined by
-\[
-  \langle J_a S_{a,M}p,\;S_{a,M}q\rangle_{L^2(-a,a)}
-  :=
-  \langle p,q\rangle_{L^2(\mathbb T)}.
-\]
-Equivalently, in the packet basis $\{\varphi_{a,j}\}_{|j|\le M}$ the matrix of
-$J_a|_{E_{a,M}}$ is $\Gamma_{a,M}^{-1}$. With this choice one gets
-\[
-  S_{a,M}^*J_aS_{a,M}=I_{P_M}
-\]
-by construction, so the whole content of \textup{H1} is reduced to matching the
-Suzuki kernel matrix on the packet span:
-\[
-  \bigl[\langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle\bigr]_{|j|,|k|\le M}
-  =
-  \kappa(a)\bigl(T_M[P_A]-T_P^{(M)}\bigr)+R_{a,M}.
-\]
-Thus the next honest subproblem is not a new cone theorem but an explicit
-matrix-element comparison: choose $\varphi_{a,j}$ so that the Archimedean side
-reproduces the Toeplitz coefficients of $P_A$ and the prime side reproduces the
-compressed prime Gram vectors already present in Section~\ref{sec:A3} and
-Section~\ref{sec:rkhs-prime-cap}. This is the exact bridge point where the
-Suzuki route either lands or fails.
-
-The fastest current first-pass candidate sharpens this further to a filtered
-Volterra bridge. Define
-\[
+  q_{G,a}(f):=\langle G_g[a]f,f\rangle_{L^2(-a,a)},
+  \qquad
+  q_{J,a}(f):=\langle J_a f,f\rangle_{L^2(-a,a)},
+  \qquad
   (I_0^{(a)}\phi)(t):=\int_{-a}^t \phi(u)\,du,
   \qquad
   J_a:=(I_0^{(a)})^*I_0^{(a)},
 \]
-let $U_a:L^2(\mathbb T)\to L^2(-a,a)$ be the scaled Fourier unitary sending
-$z^n$ to $\chi_n[a]$, and write $M_+$ for multiplication by $1+z$ on
-$L^2(\mathbb T)$. The preferred synthesis candidate is then characterized by
+and define the Q3 finite-section form
 \[
-  I_0^{(a)}S_{a,M}=U_aM_+\big|_{P_M}.
+  Q_M:=T_M[P_A]-T_P^{(M)}
+  \qquad\text{on }P_M\subset L^2(\mathbb T).
 \]
-With this normalization one gets the explicit pullback metric
+For integers $M>N\ge 0$, define the two-sided tail model space
 \[
-  B_M:=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=T_M[2+z+z^{-1}]
-\]
-\[
-  B_M=\Delta_+^*\Delta_+,
-  \qquad
-  \Delta_+:=I+L,
-\]
-where $L$ is the coefficient-side shift, equivalently multiplication by $z$ on
-$P_M$. In particular,
-\[
-  0\le B_M\le 4I_{P_M}.
-\]
-Therefore the correct filtered finite-section object is not the raw
-\[
-  Q_M:=T_M[P_A]-T_P^{(M)},
-\]
-but rather
-\[
-  \widetilde Q_M:=\Delta_+^*Q_{M+1}\Delta_+.
-\]
-If the existing Q3 bulk bound is
-\[
-  Q_{M+1}\ge c(a)I,
-\]
-then the filtered section satisfies
-\[
-  \widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+\ge c(a)\,\Delta_+^*\Delta_+=c(a)\,B_M.
-\]
-Thus the filtered Volterra bridge no longer loses the old factor $1/4$: the
-preferred first-pass \textup{H1} comparison is now
-\[
-  S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)\,\widetilde Q_M+F_{a,M},
-\]
-with $F_{a,M}$ either zero or an explicit finite-rank cap. This is why the
-filtered Volterra bridge is now the preferred first attack on \textup{H1}: the
-bulk Q3 gap transfers to $J_a$-coercivity at the filtered level without first
-whitening the packet metric and without losing a constant.
-
-The strongest current secondary engineering refinement is to use a finite-prime
-semilocal layer only as a basis/Gram engine for this construction, not as a new
-RH endgame. Fix a finite prime set
-\[
-  S(B):=\{p:\ p\le e^{2\pi B}\}
-\]
-covering the active prime window, and let
-\[
-  \{\eta_m^{(S,a)}\}_{m\ge0}\subset L^2(-a,a)
-\]
-be the packet dictionary supplied by the semilocal cyclic/Jacobi machinery at
-that finite level. Then one should take
-\[
-  E_{a,M}^{(S)}:=\operatorname{span}\{\eta_m^{(S,a)}:0\le m\le M\},
-\]
-with raw synthesis
-\[
-  S_{a,M}^{(S)}e_m:=\eta_m^{(S,a)},
-\]
-and Gram matrix
-\[
-  \Gamma_{a,M}^{(S)}
+  \mathcal P_{M,N}
   :=
-  \bigl[\langle \eta_i^{(S,a)},\eta_j^{(S,a)}\rangle_{L^2(-a,a)}\bigr]_{0\le i,j\le M}.
+  \operatorname{span}\{z^n,z^{-n}:N<n\le M\}\subset P_M.
 \]
-One may then either keep the raw metric
+Define the symmetric filtered shift
 \[
-  J_a^{(S,M)}:=\Gamma_{a,M}^{(S),-1}
+  \Delta_{M,N}:\mathcal P_{M,N}\to \mathcal P_{M+1,N}
 \]
-on coefficient space, or pass to the normalized synthesis
+on the basis of $\mathcal P_{M,N}$ by
 \[
-  \widetilde S_{a,M}^{(S)}:=S_{a,M}^{(S)}\Gamma_{a,M}^{(S),-1/2}.
+  \Delta_{M,N} z^n = z^n+z^{n+1},
+  \qquad
+  \Delta_{M,N} z^{-n}=z^{-n}+z^{-(n+1)}
+  \qquad (N<n\le M).
 \]
-The resulting semilocal-assisted target is still H1 and nothing more:
+Set
 \[
-  (\widetilde S_{a,M}^{(S)})^*G_g[a]\widetilde S_{a,M}^{(S)}
+  B_{M,N}:=\Delta_{M,N}^*\Delta_{M,N},
+  \qquad
+  \widetilde Q_{M,N}:=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}.
+\]
+Finally, let
+\[
+  \phi_n^+[a]:=\chi_{n,n+1}[a],
+  \qquad
+  \phi_n^-[a]:=\chi_{-n,-(n+1)}[a],
+\]
+and define
+\[
+  S_{a,M,N}:\mathcal P_{M,N}\to L^2(-a,a)
+\]
+by
+\[
+  S_{a,M,N} z^n=\phi_n^+[a],
+  \qquad
+  S_{a,M,N} z^{-n}=\phi_n^-[a].
+\]
+
+\begin{proposition}[Exact $J_a$-metric pullback]\label{prop:Ja-pullback-filtered-tail}
+For every $M>N\ge 0$ one has
+\[
+  I_0^{(a)}S_{a,M,N} z^n=\chi_n[a]+\chi_{n+1}[a],
+  \qquad
+  I_0^{(a)}S_{a,M,N} z^{-n}=\chi_{-n}[a]+\chi_{-(n+1)}[a].
+\]
+Consequently,
+\[
+  S_{a,M,N}^*J_aS_{a,M,N}=B_{M,N}.
+\]
+Moreover, $B_{M,N}$ is block diagonal with respect to the decomposition
+\[
+  \mathcal P_{M,N}
   =
-  \kappa_{S,a}\bigl(T_M[P_A]-T_P^{(M)}\bigr)+F_{S,a,M}.
+  \operatorname{span}\{z^n:N<n\le M\}
+  \oplus
+  \operatorname{span}\{z^{-n}:N<n\le M\},
 \]
-This is useful precisely because it gives a canonical finite-prime packet basis
-and a natural Gram metric for H1; it would become counterproductive only if one
-tried to promote the semilocal layer itself to the final RH endgame.
+and on each block it is the tridiagonal Toeplitz matrix
+\[
+  (2\delta_{mn}+\delta_{m,n+1}+\delta_{m+1,n})_{N<n,m\le M}.
+\]
+\end{proposition}
+
+\begin{theorem}[H1$^{\mathrm f}$: exact filtered bulk intertwining]\label{thm:H1-filtered-bulk}
+Fix $a>0$. There exist an integer $N_a\ge 0$ and a scalar $\kappa(a)>0$
+such that for every $M>N_a$,
+\[
+  S_{a,M,N_a}^*\,G_g[a]\,S_{a,M,N_a}
+  =
+  \kappa(a)\,\widetilde Q_{M,N_a}.
+\]
+Equivalently, for every $N_a<n,m\le M$ and every
+$\sigma,\tau\in\{+,-\}$,
+\[
+  \bigl\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\bigr\rangle_{L^2(-a,a)}
+  =
+  \kappa(a)\,
+  \bigl(\widetilde Q_{M,N_a}^{\sigma\tau}\bigr)_{mn}.
+\]
+\end{theorem}
+
+\begin{theorem}[H2$^{\mathrm f}$: Suzuki tail/cap reduction]\label{thm:H2-filtered-cap}
+Fix $a>0$ and $N_a$ as in Theorem~\ref{thm:H1-filtered-bulk}. Define the closed tail space
+\[
+  V_a^{\mathrm{tail}}
+  :=
+  \overline{\bigcup_{M>N_a} S_{a,M,N_a}\mathcal P_{M,N_a}}^{\,L^2(-a,a)}.
+\]
+Assume there exists a finite-dimensional subspace
+$A_a^{\mathrm{cap}}\subset L^2(-a,a)$ such that
+\[
+  L^2(-a,a)=V_a^{\mathrm{tail}}\oplus A_a^{\mathrm{cap}},
+\]
+and the decomposition is $q_{G,a}$-orthogonal:
+\[
+  \langle G_g[a]v,w\rangle_{L^2(-a,a)}=0
+  \qquad
+  (v\in V_a^{\mathrm{tail}},\ w\in A_a^{\mathrm{cap}}).
+\]
+Assume moreover that $A_a^{\mathrm{cap}}$ is spanned by finitely many
+annihilator vectors
+\[
+  u_n[a]-v_n[a],
+  \qquad |n|\le N_a+1,
+\]
+with $v_n[a]\in V_a^{\mathrm{tail}}$,
+so that the restriction of $q_{G,a}$ to $A_a^{\mathrm{cap}}$
+is represented by a finite Hermitian matrix
+\[
+  H_a^{\mathrm{cap}}.
+\]
+\end{theorem}
+
+\begin{theorem}[H3$^{\mathrm f}$: filtered gap transfer]\label{thm:H3-filtered-transfer}
+Assume Theorems~\ref{thm:H1-filtered-bulk}
+and~\ref{thm:H2-filtered-cap}.
+Suppose there exists $c(a)>0$ such that
+\[
+  Q_M\ge c(a)\,I_{P_M}
+  \qquad\text{for every }M\ge N_a+1.
+\]
+Then for every $M>N_a$,
+\[
+  \widetilde Q_{M,N_a}\ge c(a)\,B_{M,N_a}.
+\]
+Hence,
+\[
+  q_{G,a}(v)\ge \kappa(a)c(a)\,q_{J,a}(v)
+  \qquad\text{for every }v\in V_a^{\mathrm{tail}}.
+\]
+If, in addition, the finite cap matrix $H_a^{\mathrm{cap}}$ is positive definite,
+then
+\[
+  \ker G_g[a]=\{0\}.
+\]
+Equivalently, $0$ is not an eigenvalue of $G_g[a]$.
+\end{theorem}
+
+\begin{corollary}[H4$^{\mathrm f}$: RH from the filtered Suzuki--Q3 bridge]\label{cor:H4-filtered-RH}
+Assume that for every $a>0$ the hypotheses of
+Theorems~\ref{thm:H1-filtered-bulk},
+\ref{thm:H2-filtered-cap},
+and~\ref{thm:H3-filtered-transfer}
+hold.
+Then $0$ is not an eigenvalue of $G_g[a]$ for every $a>0$.
+Hence the Riemann Hypothesis is true.
+\end{corollary}
+
+\begin{remark}[Semilocal layer as an engineering refinement only]\label{rem:h1-semilocal-engine}
+The semilocal Connes--Consani--Moscovici machinery remains useful only as a
+finite-prime basis/Gram supplier for \textup{H1}$^{\mathrm f}$. It may provide a
+canonical packet family, a Jacobi basis, or auxiliary Gram data feeding the
+matrix comparison
+\[
+  \bigl[\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle\bigr]
+  \qquad\text{vs.}\qquad
+  \kappa(a)\widetilde Q_{M,N}^{\sigma\tau},
+\]
+but it is not a separate RH endgame. The live bridge remains the two-sided
+filtered Suzuki package
+\[
+  \textup{H1}^{\mathrm f}\Longrightarrow \textup{H2}^{\mathrm f}
+  \Longrightarrow \textup{H3}^{\mathrm f}\Longrightarrow \textup{H4}^{\mathrm f},
+\]
+with the finite-dimensional Suzuki cap handled only after the bulk
+intertwining is in place.
 \end{remark}
 
 \begin{remark}[Compact scalar obstruction]\label{rem:compact-scalar-obstruction}

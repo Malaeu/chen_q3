@@ -2899,7 +2899,11 @@ Verdict:
 - the real next theorem is exact or almost-exact matrix comparison on the
   filtered basis:
 
-## In-progress synthesis (2026-03-08) — filtered finite section kills the old 1/4 loss
+## Historical synthesis (2026-03-08) — one-sided filtered finite section killed the old 1/4 loss
+
+Superseded by the final two-sided filtered tail package
+`\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}`.
+Keep this note only as a stepping stone in the evolution of `H1`.
 
 Target node and wiring:
 - live public route stays `H1 -> H2 -> H3 -> H4`;
@@ -2926,5 +2930,39 @@ Verdict:
   matrix and an explicit finite-rank cap;
 - semilocal packets remain useful only as secondary finite-prime basis/Gram
   data for this filtered comparison.
-  `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)Q_M+F_{a,M}`,
-  with `F_{a,M}` zero or finite-rank cap.
+
+## Final result (2026-03-08) — two-sided filtered Suzuki bridge replaces the one-sided Volterra package
+
+Target node and wiring:
+- the live public route remains `H1^f -> H2^f -> H3^f -> H4^f`;
+- the earlier one-sided filtered Volterra notes
+  `h1_filtered_volterra_bridge_2026_03_08.md`
+  and
+  `h1_filtered_finite_section_2026_03_08.md`
+  are now superseded stepping stones;
+- the active finite bridge-object is the symmetric two-sided filtered tail
+  section
+  `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`.
+
+Concrete synthesis:
+- exact tail geometry now uses
+  `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`;
+- the metric side is exact:
+  `S_{a,M,N}^*J_aS_{a,M,N}=B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`;
+- the plus-tail carries the filter `1+z`, the minus-tail carries `1+z^{-1}`;
+- if `Q_{M+1}\ge c(a)I`, then
+  `\widetilde Q_{M,N}\ge c(a)B_{M,N}` with no `1/4` loss;
+- the only remaining bulk theorem is exact four-block comparison
+  `(++), (+-), (-+), (--)`
+  between
+  `[ \langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle ]`
+  and the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`;
+- after the bulk match, the only other live brick is the finite-dimensional
+  Suzuki cap.
+
+Verdict:
+- the one-sided `\Delta_+` bridge is no longer the active H1 package;
+- semilocal machinery remains strictly secondary, only as a finite-prime
+  basis/Gram engine for the same `H1^f`;
+- the active frontier is now exact two-sided filtered bulk matching, not
+  generic construction of `S_{a,M}` and `J_a`.

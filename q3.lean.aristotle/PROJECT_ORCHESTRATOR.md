@@ -22,7 +22,7 @@ It is **not** a session log and **not** a microtask queue.
 - `corrected cone`: local/global positive-definite Weil cone
   `\mathcal W_K^{pd} / \mathcal W^{pd}`.
 - `H-bridge`: Suzuki/Yoshida generalized form-pair bridge
-  `H1 -> H2 -> H3 -> H4`.
+  `H1^f -> H2^f -> H3^f -> H4^f`.
 - `H4`: Suzuki Theorem 1.4 endpoint
   `0 \notin \sigma_p(G_g[a])` for every `a>0`.
 
@@ -93,7 +93,7 @@ Interpretation after `T0.1`:
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `\mathcal Q(\Psi_c * \widetilde{\Psi_c})` with the finite symbol integral `\frac{1}{2\pi}\int S_J(\theta)|p_c(\theta)|^2\,d\theta` on each admissible dictionary |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
 | `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `fallback constructive route` | finite-dictionary positivity via explicit coefficient bounds on `\alpha_m,\beta_m`, yielding `S_J=A_J-P_J\ge0` on each admissible block |
-| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `(G_g[a],J_a)` from Q3 finite sections to the RH-equivalent operator criterion | `active primary live route` | concrete construction of `S_{a,M}`, `J_a`, and the theorem package `H1 -> H2 -> H3 -> H4` |
+| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `(G_g[a],J_a)` from Q3 finite sections to the RH-equivalent operator criterion | `active primary live route` | freeze the two-sided filtered tail package `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}` and close `H1^f -> H2^f -> H3^f -> H4^f` |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
@@ -107,15 +107,16 @@ Interpretation after `T0.1`:
   but it no longer determines the architectural frontier.
 New live frontier:
   1. promote the Suzuki/Yoshida generalized form-pair bridge to the primary
-     live route:
-     `H1` exact/asymptotic pair-intertwining through `S_{a,M}` and `J_a`
-     -> `H2` Galerkin/recovery
-     -> `H3` kernel-exclusion transfer
-     -> `H4` RH via Suzuki Theorem 1.4;
-     the current constructive candidate is a nonorthogonal packet synthesis
-     `S_{a,M}:P_M\to E_{a,M}\subset L^2(-a,a)` built from packet states
-     `\varphi_{a,j}`, with Gram matrix `\Gamma_{a,M}` and Gram-pullback metric
-     `J_a` so that `S_{a,M}^*J_aS_{a,M}=I`;
+     live route in its final filtered-tail form:
+     `H1^f` exact filtered bulk intertwining
+     -> `H2^f` Suzuki tail/cap reduction
+     -> `H3^f` filtered gap transfer
+     -> `H4^f` RH via Suzuki Theorem 1.4;
+     the active finite object is now
+     `\widetilde Q_{M,N}:=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`
+     on the two-sided tail space `\mathcal P_{M,N}`,
+     with exact metric pullback
+     `S_{a,M,N}^*J_aS_{a,M,N}=B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`;
   2. freeze the compact scalar package `S1/S2/S3/S4` only as a correct
      diagnostic reduction, and reject its pointwise target `W_K(u)\ge0` as a
      public compact mainline whenever `\Xi_K\neq\varnothing`;
@@ -139,17 +140,16 @@ New live frontier:
      Poisson-regularized verification, and explicit error budget,
      with a new full-kernel operator package kept as fallback;
 11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
-12. move the active blocker away from the already-frozen theorem package `S1/S2/S3/S4`
-     to the explicit `H1` candidate construction:
-     choose packet states `\varphi_{a,j}`,
-     define the packet spaces `E_{a,M}`,
-     build raw synthesis `S_{a,M}`,
-     and let `J_a` be the Gram-pullback metric on the packet span.
- 13. keep the Suzuki generalized form-pair bridge as the leading alternative
-     operator pivot under audit:
-     the true missing brick there is `H1`, namely the construction of
-     `S_{a,M}` and `J_a`, not a fresh cone theorem and not a raw plain-`L^2`
-     spectral-gap transfer theorem.
+  12. move the active blocker away from the already-frozen theorem package `S1/S2/S3/S4`
+     to the exact two-sided filtered bulk comparison:
+     match the four blocks
+     `(++), (+-), (-+), (--)`
+     of
+     `[ \langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle ]`
+     with the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`;
+  13. isolate the finite-dimensional Suzuki cap as the second and only other
+     live brick after the bulk match:
+     positivity of the cap matrix is a separate finite-dimensional problem.
 
 ## Active Milestone
 
@@ -159,28 +159,26 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
 2. freeze the compact scalar package `S1/S2/S3/S4` only as a rejected public
    compact-truncation route and diagnostic formal reduction,
 3. make the theorem stack
-   `H1 exact/asymptotic pair-intertwining -> H2 Galerkin/recovery -> H3 kernel-exclusion transfer -> H4 Suzuki Theorem 1.4`
+   `H1^f exact filtered bulk intertwining -> H2^f Suzuki tail/cap reduction -> H3^f filtered gap transfer -> H4^f Suzuki Theorem 1.4`
    the primary live route,
-4. build the first candidate construction of `S_{a,M}` and `J_a` in RKHS/Gram
-   language, before attempting any abstract operator-limit theorem:
-   choose packet states `\varphi_{a,j}`,
-   define `E_{a,M}=\operatorname{span}\{\varphi_{a,j}:|j|\le M\}`,
-   use raw synthesis `S_{a,M}`,
-   and take `J_a` as the Gram-pullback metric with matrix
-   `\Gamma_{a,M}^{-1}` in packet coordinates,
+4. freeze the symmetric two-sided filtered tail package as the exact
+   preferred `H1^f` geometry:
+   `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
+   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
+   `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`,
 4a. strongest current engineering refinement of `H1`:
     keep the finite-prime semilocal layer only as a basis/Gram engine,
     with packet states `\eta_m^{(S,a)}`, semilocal spaces `E_{a,M}^{(S)}`,
     Gram matrix `\Gamma_{a,M}^{(S)}`, and normalized synthesis
     `\widetilde S_{a,M}^{(S)}` feeding the same Suzuki pair-intertwining target,
-4b. preferred first-pass refinement of `H1`:
-    use the filtered Volterra bridge
+4b. preferred first-pass refinement of `H1^f`:
+    use the symmetric filtered Volterra bridge
     `J_a=(I_0^{(a)})^*I_0^{(a)}`,
-    `I_0^{(a)}S_{a,M}=U_aM_{1+z}|_{P_M}`,
-    with explicit pullback metric
-    `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=\Delta_+^*\Delta_+`,
-    and filtered finite section
-    `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`,
+    with `1+z` on the positive tail and `1+z^{-1}` on the negative tail,
+    so that the exact pullback metric is
+    `B_{M,N}=S_{a,M,N}^*J_aS_{a,M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
+    and the exact finite comparison object is
+    `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`,
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family
@@ -218,21 +216,16 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
 16. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
 17. keep Aristotle `G1.6` as background lemma-mining only,
 18. make the next honest theorem task explicit at the matrix-element level:
-    identify which Archimedean Toeplitz coefficients and which prime Gram
-    vectors must match the Suzuki kernel matrix on the packet basis, and what
-    remainder `R_{a,M}` is acceptable before any abstract recovery theorem is attempted,
+    compare the four filtered tail blocks
+    `(++), (+-), (-+), (--)`
+    of
+    `[ \langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle ]`
+    with the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`,
 19. keep the Suzuki generalized form-pair package
-    `H1 -> H2 -> H3 -> H4` frozen as the strongest alternative operator route,
-    with `H1` exact or asymptotic pair-intertwining as the only real missing
-    bridge theorem; the next subtask there is now explicit kernel-matrix
-    comparison on the packet basis
-    `[ \langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle ]`,
-    preferably via the filtered Volterra realization
-    `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)\widetilde Q_M+F_{a,M}`,
-    `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`,
-    `S_{a,M}^*J_aS_{a,M}=B_M=T_M[|1+z|^2]=\Delta_+^*\Delta_+`,
-    preferably first on the semilocal-assisted packet family
-    `[ \langle G_g[a]\eta_i^{(S,a)},\eta_j^{(S,a)}\rangle ]`.
+    `H1^f -> H2^f -> H3^f -> H4^f` frozen as the strongest alternative operator route,
+    with `H1^f` exact filtered bulk intertwining as the only real missing
+    bridge theorem; the second and only other live brick after that is the
+    finite-dimensional Suzuki cap.
 
 ## Hard Blockers
 
@@ -259,10 +252,10 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
   `\widehat{a_K^*}(u)\to0`, while the finite cosine prime sum recurs arbitrarily
   close to its full positive mass.
 - The primary remaining theorem package is now:
-  `H1` exact/asymptotic pair-intertwining through `S_{a,M}` and `J_a`
-  -> `H2` Galerkin/recovery on the generalized form pair
-  -> `H3` kernel-exclusion transfer
-  -> `H4` Suzuki Theorem 1.4;
+  `H1^f` exact filtered bulk intertwining
+  -> `H2^f` Suzuki tail/cap reduction
+  -> `H3^f` filtered gap transfer
+  -> `H4^f` Suzuki Theorem 1.4;
   the fallback packet package remains:
   exact packet sesquilinear identity
   -> prime-block obstruction
@@ -275,11 +268,11 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
      or a new operator package for the full kernel
   -> `PSD-pd`.
 - The Suzuki/Yoshida generalized form-pair bridge is now the strongest live route:
-  `H1` exact/asymptotic intertwining through `S_{a,M}` and `J_a`
-  -> `H2` Galerkin/recovery on the generalized pair
-  -> `H3` kernel-exclusion transfer
-  -> `H4` RH via Suzuki Theorem 1.4.
-  Until `H1` is concretely built, the route remains incomplete, but it is now
+  `H1^f` exact filtered bulk intertwining
+  -> `H2^f` Suzuki tail/cap reduction
+  -> `H3^f` filtered gap transfer
+  -> `H4^f` RH via Suzuki Theorem 1.4.
+  Until `H1^f` is concretely built, the route remains incomplete, but it is now
   the primary live frontier.
 - The canonical centered half-atom pilot already shows that this finite-symbol
   criterion is genuinely nonvacuous on sparse compact dictionaries, while still
@@ -380,3 +373,9 @@ Legacy narrative surfaces are reference-only:
   primary live route. The naive raw-operator / plain-`L^2` gap transfer is
   rejected; the real missing brick is `H1`, the construction of `S_{a,M}` and
   `J_a`.
+- 2026-03-08: the one-sided filtered Volterra bridge is superseded by the
+  symmetric two-sided filtered tail package
+  `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}`.
+  The active bulk theorem is now exact four-block comparison on
+  `\phi_n^\pm[a]`, and the only second live brick after that is the
+  finite-dimensional Suzuki cap.

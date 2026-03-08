@@ -32,10 +32,12 @@ It is **not** the execution queue and **not** the master gate-state file.
 | `W_K(u)` | scalar compact spectral weight `\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)` | diagnostic compact-truncation object; rejected as public frontier once `\Xi_K\neq\varnothing` |
 | `S_{g,\Delta}(\theta)` | packet Toeplitz symbol built from `\kappa_m=\mathcal Q(h(\cdot-m\Delta))` | structural object; no longer the public theorem target by itself |
 | `K_Q(g_i,g_j)` | packet kernel `\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active hard-theorem object |
-| `\varphi_{a,j}` | nonorthogonal packet states in `L^2(-a,a)` used to build the Suzuki bridge | active candidate notation |
-| `\Gamma_{a,M}` | packet Gram matrix `[ \langle \varphi_{a,i},\varphi_{a,j}\rangle ]` | active candidate notation |
-| `G_g[a], J_a, E_{a,M}, S_{a,M}` | Suzuki/Yoshida generalized form-pair bridge data | active primary operator notation |
-| `I_0^{(a)}, U_a, M_{1+z}, \Delta_+, B_M, \widetilde Q_M` | filtered Volterra bridge data with explicit pullback metric `B_M=T_M[|1+z|^2]=\Delta_+^*\Delta_+` and filtered finite section `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+` | active preferred H1 notation |
+| `G_g[a], J_a` | Suzuki/Yoshida generalized form-pair data on `L^2(-a,a)` | active primary operator notation |
+| `\mathcal P_{M,N}` | two-sided tail model space `\operatorname{span}\{z^n,z^{-n}:N<n\le M\}` | active filtered-tail notation |
+| `\Delta_{M,N}` | symmetric filtered shift: `1+z` on the positive tail and `1+z^{-1}` on the negative tail | active filtered-tail notation |
+| `\phi_n^\pm[a], S_{a,M,N}` | filtered Suzuki tail states and synthesis map | active preferred H1 notation |
+| `B_{M,N}` | exact pullback metric `S_{a,M,N}^*J_aS_{a,M,N}=\Delta_{M,N}^*\Delta_{M,N}` | active preferred H1 notation |
+| `\widetilde Q_{M,N}` | filtered finite section `\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}` | active preferred H1 notation |
 | `S(B)` | finite prime set `\{p: p\le e^{2\pi B}\}` feeding the semilocal engineering layer | active auxiliary operator notation |
 | `\eta_m^{(S,a)}` | semilocal cyclic/Jacobi packet states used only as a basis/Gram engine for `H1` | active engineering notation |
 | `\Gamma_{a,M}^{(S)}` | semilocal Gram matrix `[ \langle \eta_i^{(S,a)},\eta_j^{(S,a)}\rangle ]` | active engineering notation |
@@ -46,6 +48,16 @@ Lean compatibility note:
 - live Lean still exports the old broad names `W_K` and `Weil_cone`;
 - after the `T0.1` audit these are frozen broad-cone exports, not the public
   paper contract.
+
+Filtered-bridge note:
+
+- the earlier one-sided notes
+  `docs/insights/h1_filtered_volterra_bridge_2026_03_08.md`
+  and
+  `docs/insights/h1_filtered_finite_section_2026_03_08.md`
+  are now superseded stepping stones;
+- the active H1 package is the symmetric two-sided filtered bridge recorded in
+  `docs/insights/h1_two_sided_filtered_bridge_2026_03_08.md`.
 
 ## Gate Map
 
@@ -61,7 +73,7 @@ Lean compatibility note:
 | `packet-Rayleigh-pd` | exact finite Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` with finite symbol `S_J` on each admissible dictionary | frozen theorem block | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | rejected-too-strong route | `sections/Main_closure.tex`, `sections/scope_notation.tex` |
 | `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active fallback route; finite-dictionary reduction and coefficient-bounding package explicit | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
-| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `H1 -> H2 -> H3 -> H4` | active primary live route | `sections/Main_closure.tex`, `docs/insights/suzuki_form_pair_bridge_2026_03_08.md` |
+| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `H1^f -> H2^f -> H3^f -> H4^f` | active primary live route | `sections/Main_closure.tex`, `docs/insights/h1_two_sided_filtered_bridge_2026_03_08.md` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
 | `A2-pd` | continuity on the corrected cone | inherited input | `sections/A2.tex`, `sections/Main_closure.tex` |
 | `LF-pd` | LF lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}` | skeleton available, still conditional | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
@@ -76,8 +88,8 @@ Lean compatibility note:
 | `sections/A2.tex` | continuity input for corrected local closure | aligned via ambient space | continuity on the broad ambient compact-support class feeds `\mathcal W_K^{pd}` |
 | `sections/A3/*` | centered positivity engine | aligned | should feed the exact centered packet family, not a broad shifted cone |
 | `sections/RKHS/*` | prime-control input for centered positivity | aligned | same role as before, but now on the corrected target |
-| `sections/Main_closure.tex` | corrected-cone packaging plus operator-pivot audit | aligned after compact-spectral obstruction | Suzuki/Yoshida `H-bridge` is now the primary live route; scalar compact package is diagnostic-only; packet route remains fallback |
-| `sections/Weil_pack.tex` | dependency summary for corrected route | aligned after `T0.1` | broad-cone route demoted; scalar spectral route primary |
+| `sections/Main_closure.tex` | corrected-cone packaging plus operator-pivot audit | aligned after compact-spectral obstruction | Suzuki/Yoshida `H-bridge` is now the primary live route in its symmetric two-sided filtered-tail form; scalar compact package is diagnostic-only; packet route remains fallback |
+| `sections/Weil_pack.tex` | dependency summary for corrected route | aligned after `T0.1` | broad-cone route demoted; `H-bridge` primary; scalar spectral package diagnostic-only |
 | `sections/Weil_linkage.tex` | `G6` on the corrected cone | aligned after `T0.1` | RH theorem must remain conditional on corrected local positivity |
 | `sections/T5/*` | broad-cone LF skeleton only | archived/read-only | reference, not mainline |
 
@@ -146,36 +158,32 @@ Interpretation rule after `T0.1`:
    because `a_K^*\in L^1` forces `\widehat{a_K^*}(u)\to0` while the finite cosine
    prime sum returns arbitrarily close to its full positive mass.
 2. Freeze the Suzuki/Yoshida generalized form-pair bridge as the primary live route:
-   `H1` exact/asymptotic intertwining through `S_{a,M}` and `J_a`
-   -> `H2` Galerkin/recovery
-   -> `H3` kernel-exclusion transfer
-   -> `H4` Suzuki RH criterion.
-   The honest blocker there is `H1`, not a raw operator-gap theorem.
-3. Candidate construction of `S_{a,M}` and `J_a` in RKHS/Gram language:
-   choose packet states `\varphi_{a,j}` in `L^2(-a,a)`,
-   define `E_{a,M}=\operatorname{span}\{\varphi_{a,j}:|j|\le M\}`,
-   use raw synthesis
-   `S_{a,M}(\sum c_j e^{ij\theta})=\sum c_j\varphi_{a,j}`,
-   and let `J_a` be the Gram-pullback metric, i.e. matrix `\Gamma_{a,M}^{-1}`
-   in the packet basis, so that `S_{a,M}^*J_aS_{a,M}=I`.
-   The next theorem task is then the kernel-matrix comparison
-   `[ \langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle ]=
-   \kappa(a)(T_M[P_A]-T_P^{(M)})+R_{a,M}`.
+   `H1^f` exact filtered bulk intertwining
+   -> `H2^f` Suzuki tail/cap reduction
+   -> `H3^f` filtered gap transfer
+   -> `H4^f` Suzuki RH criterion.
+   The honest blocker there is `H1^f`, not a raw operator-gap theorem.
+3. Preferred exact bridge geometry:
+   use the symmetric two-sided filtered tail package
+   `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
+   with
+   `J_a=(I_0^{(a)})^*I_0^{(a)}`,
+   exact pullback metric
+   `B_{M,N}=S_{a,M,N}^*J_aS_{a,M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
+   and filtered finite section
+   `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`.
+   The next theorem task is the exact four-block comparison
+   `(++), (+-), (-+), (--)`
+   between
+   `[ \langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle ]`
+   and the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`.
+   After the bulk match, the only remaining bridge brick is the
+   finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:
    use the packet basis `\eta_m^{(S,a)}` coming from cyclic/Jacobi machinery,
    with semilocal Gram matrix `\Gamma_{a,M}^{(S)}` and normalized synthesis
-   `\widetilde S_{a,M}^{(S)}`, but keep this strictly as `H1` engineering
+   `\widetilde S_{a,M}^{(S)}`, but keep this strictly as `H1^f` engineering
    infrastructure and not as a separate RH endgame.
-   Preferred first-pass refinement:
-   use the filtered Volterra bridge
-   `J_a=(I_0^{(a)})^*I_0^{(a)}`,
-   `I_0^{(a)}S_{a,M}=U_aM_{1+z}|_{P_M}`,
-   with explicit pullback metric
-   `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=\Delta_+^*\Delta_+`,
-   and filtered finite section
-   `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`,
-   so the real comparison target becomes
-   `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)\widetilde Q_M+F_{a,M}`.
 4. Pre-square density theorem on `C_c^\infty([-K/2,K/2])` strong enough to feed
    `A1-pd` through autocorrelation continuity if the fallback packet route is needed.
 5. `A1-pd`: proof of density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.

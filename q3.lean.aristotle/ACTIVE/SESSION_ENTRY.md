@@ -39,27 +39,30 @@
 Где
 
 - `H-bridge` = Suzuki/Yoshida generalized form-pair bridge
-  `H1 -> H2 -> H3 -> H4`;
-- `H1` = построить `S_{a,M}` и `J_a` так, чтобы strongest finite Q3 block
-  `T_M[P_A]-T_P^{(M)}` pulled back to the Suzuki operator side as a
-  generalized form pair;
-- preferred first-pass candidate for `H1`:
-  filtered Volterra bridge with
+  `H1^f -> H2^f -> H3^f -> H4^f`;
+- `H1^f` = exact filtered bulk intertwining on the symmetric two-sided tail
+  package, so that strongest finite Q3 block is compared not to raw `Q_M`, but
+  to the filtered tail section `\widetilde Q_{M,N}`;
+- preferred first-pass candidate for `H1^f`:
+  two-sided filtered Volterra bridge with
   `J_a=(I_0^{(a)})^*I_0^{(a)}`,
-  `I_0^{(a)}S_{a,M}=U_a M_{1+z}|_{P_M}`,
-  pullback metric
-  `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=\Delta_+^*\Delta_+`,
+  tail model space `\mathcal P_{M,N}`,
+  symmetric filtered shift `\Delta_{M,N}`,
+  packet states `\phi_n^\pm[a]`,
+  synthesis `S_{a,M,N}`,
+  exact pullback metric
+  `B_{M,N}=S_{a,M,N}^*J_aS_{a,M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
   and preferred filtered bridge-object
-  `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`;
+  `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
 - semilocal cyclic/Jacobi machinery stays useful, but only as a secondary
-  basis/Gram supplier for `H1`, not as a new RH endgame.
+  finite-prime basis/Gram supplier for `H1^f`, not as a new RH endgame.
 
 Точный theorem stack, который сейчас заморожен как primary live route:
 
-- `H1` exact/asymptotic pair-intertwining
-- `H2` Galerkin / recovery on the generalized pair
-- `H3` kernel-exclusion transfer
-- `H4` RH via Suzuki Theorem 1.4
+- `H1^f` exact filtered bulk intertwining
+- `H2^f` Suzuki tail/cap reduction
+- `H3^f` filtered gap transfer
+- `H4^f` RH via Suzuki Theorem 1.4
 
 Что сейчас не является public mainline:
 
@@ -216,20 +219,22 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 
 Если нет нового user redirect, текущий честный frontier такой:
 
-- candidate construction of `S_{a,M}` and `J_a` in RKHS/Gram language;
-- filtered Volterra refinement of that candidate:
-  `J_a=(I_0^{(a)})^*I_0^{(a)}`,
-  `I_0^{(a)}S_{a,M}=U_a M_{1+z}|_{P_M}`,
-  `B_M=T_M[|1+z|^2]=\Delta_+^*\Delta_+`,
-  `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`,
-  and the next exact target becomes
-  `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)\widetilde Q_M+F_{a,M}`;
+- symmetric two-sided filtered H-bridge:
+  `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
+  `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
+  `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
+- next exact blocker:
+  four filtered bulk blocks
+  `(++), (+-), (-+), (--)`
+  in
+  `[\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle]`
+  versus the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`;
+- after the bulk match:
+  separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:
   finite-prime packet states `\eta_m^{(S,a)}`, Gram matrix
   `\Gamma_{a,M}^{(S)}`, and normalized synthesis
-  `\widetilde S_{a,M}^{(S)}`;
-- затем exact matrix-element comparison for
-  `S_{a,M}^* G_g[a] S_{a,M}` against `\kappa(a)(T_M[P_A]-T_P^{(M)})`;
+  `\widetilde S_{a,M}^{(S)}` only as engineering support for the same `H1^f`;
 - packet route держать как fallback verification layer;
 - compact scalar package держать только как diagnostic reduction;
 - incoming notes прогонять через `q3-note-ingest` и не путать historical memos с live source of truth.
