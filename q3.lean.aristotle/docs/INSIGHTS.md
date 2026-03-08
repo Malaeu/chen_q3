@@ -3161,3 +3161,32 @@ Operational consequence:
 - the only real bulk brick remains the raw match on `(+,+)` and `(+,-)`;
 - after that, filtered four-block identities are formal and the finite Suzuki
   cap is the only second brick.
+
+## In progress (2026-03-08) — executable raw bulk checker
+
+Added `/Users/emalam/Documents/GitHub/rh_lean_01_2026/src/h1_raw_bulk_match.py`
+as the first executable probe for the remaining H1 bulk brick. The script
+compares raw Q3 entries
+\[
+q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}
+\]
+against Suzuki raw Weil entries
+\[
+w_{rs}(a)=\frac{2}{a}(-1)^{r+s}\sum_\gamma
+\frac{\sin^2(a\gamma)}{(\gamma-\alpha_r)(\gamma+\alpha_s)}
+\]
+on the two primary families `(+,+)` and `(+,-)`, fits a numerical
+`\kappa(a)`, and reports residuals. This does not prove H1; it is a fast local
+mismatch detector for signs, Fourier conventions, and hidden scaling.
+
+First probe result at
+`a=1.0`, `M=3`, `B=0.2`, `t=0.15`, `zeros=30`:
+
+- `(++): max residual ~= 6.07e-02`, fitted `kappa ~= 1.4598e-03`
+- `(+-): max residual ~= 1.21e-01`, fitted `kappa ~= 3.4740e-03 + 2.04e-04 i`
+- joint fit does not collapse the two families to one obvious common scalar
+
+So the raw-compressed normalization brick is fixed, but the direct raw Suzuki
+match is still nontrivial.  This is good news operationally: the remaining
+bulk mismatch is now concrete and numerically testable instead of being a vague
+normalization fog.

@@ -195,6 +195,18 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 - в prompt напрямую вставлять `Q_M^{raw}`, `\Pi_M`, exact `q_{rs}`,
   `\kappa_{A3}=1`, и target `w_{rs}(a)=\kappa(a)q_{rs}`;
 - не ожидать, что Прошка сам восстановит normalization из старых A3 файлов.
+- для локального быстрого check использовать:
+  ```bash
+  cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+  source .venv/bin/activate
+  python src/h1_raw_bulk_match.py --a 1.0 --M 3 --B 0.2 --t 0.15 --zeros 50
+  ```
+
+## Python / src rule
+
+Если пишем executable sanity-check или numerical bridge probe, код кладём в
+`/Users/emalam/Documents/GitHub/rh_lean_01_2026/src/`, а запуск в новых сессиях
+делаем из корня repo после активации `.venv`.
 
 ## Repo map (только живой минимум)
 
