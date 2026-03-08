@@ -1601,6 +1601,63 @@ brick directly and bypasses the slow cone-propagation burden. The real missing
 brick is H1 rather than H3.
 \end{remark}
 
+\begin{remark}[Candidate H1 construction in RKHS/Gram language]\label{rem:h1-candidate-gram}
+The first concrete candidate for \textup{H1} should not start from raw
+orthonormal Fourier restriction on $L^2(-a,a)$. The strongest alignment with
+the existing Q3 energy is instead a nonorthogonal packet synthesis extracted
+from the same finite Hermitian model that already underlies
+\[
+  T_M[P_A]-T_P^{(M)}.
+\]
+Choose a packet family
+\[
+  \{\varphi_{a,j}\}_{j\in\mathbb Z}\subset L^2(-a,a)
+\]
+adapted to the centered Fej\'er$\times$heat / RKHS geometry, and define the
+finite packet spaces
+\[
+  E_{a,M}:=\operatorname{span}\{\varphi_{a,j}:|j|\le M\}.
+\]
+For
+\[
+  p(\theta)=\sum_{|j|\le M} c_j e^{ij\theta}\in P_M,
+\]
+let the raw synthesis map be
+\[
+  S_{a,M}p:=\sum_{|j|\le M} c_j\,\varphi_{a,j}.
+\]
+Writing
+\[
+  \Gamma_{a,M}:=
+  \bigl[\langle \varphi_{a,i},\varphi_{a,j}\rangle_{L^2(-a,a)}\bigr]_{|i|,|j|\le M},
+\]
+the natural metric candidate is the Gram-pullback operator $J_a$ on
+$\bigcup_M E_{a,M}$ defined by
+\[
+  \langle J_a S_{a,M}p,\;S_{a,M}q\rangle_{L^2(-a,a)}
+  :=
+  \langle p,q\rangle_{L^2(\mathbb T)}.
+\]
+Equivalently, in the packet basis $\{\varphi_{a,j}\}_{|j|\le M}$ the matrix of
+$J_a|_{E_{a,M}}$ is $\Gamma_{a,M}^{-1}$. With this choice one gets
+\[
+  S_{a,M}^*J_aS_{a,M}=I_{P_M}
+\]
+by construction, so the whole content of \textup{H1} is reduced to matching the
+Suzuki kernel matrix on the packet span:
+\[
+  \bigl[\langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle\bigr]_{|j|,|k|\le M}
+  =
+  \kappa(a)\bigl(T_M[P_A]-T_P^{(M)}\bigr)+R_{a,M}.
+\]
+Thus the next honest subproblem is not a new cone theorem but an explicit
+matrix-element comparison: choose $\varphi_{a,j}$ so that the Archimedean side
+reproduces the Toeplitz coefficients of $P_A$ and the prime side reproduces the
+compressed prime Gram vectors already present in Section~\ref{sec:A3} and
+Section~\ref{sec:rkhs-prime-cap}. This is the exact bridge point where the
+Suzuki route either lands or fails.
+\end{remark}
+
 \begin{remark}[Compact scalar obstruction]\label{rem:compact-scalar-obstruction}
 The compact spectral package \textup{(S1)}--\textup{(S4)} is mathematically
 correct as a compact-truncation reduction, but it is no longer a viable public

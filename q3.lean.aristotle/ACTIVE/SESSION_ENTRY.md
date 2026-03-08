@@ -34,21 +34,27 @@
 
 Текущий публичный маршрут проекта:
 
-`T0-pd -> compact spectral route -> A2 closure -> LF-pd -> G6 -> RH`
+`T0-pd -> H-bridge -> H4 -> RH`
 
-Где активный живой blocker сейчас такой:
+Где
 
-`W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)\ge 0`
-для каждого компакта `K`.
+- `H-bridge` = Suzuki/Yoshida generalized form-pair bridge
+  `H1 -> H2 -> H3 -> H4`;
+- `H1` = построить `S_{a,M}` и `J_a` так, чтобы strongest finite Q3 block
+  `T_M[P_A]-T_P^{(M)}` pulled back to the Suzuki operator side as a
+  generalized form pair.
 
-Точный theorem stack, который сейчас заморожен как mainline:
+Точный theorem stack, который сейчас заморожен как primary live route:
 
-- `S1` exact compact spectral identity
-- `S2` compact positive-definite criterion
-- `S3` corrected compact positivity
-- `S4` corrected global closure
+- `H1` exact/asymptotic pair-intertwining
+- `H2` Galerkin / recovery on the generalized pair
+- `H3` kernel-exclusion transfer
+- `H4` RH via Suzuki Theorem 1.4
 
-Fallback packet route сохраняется, но он больше не public mainline.
+Что сейчас не является public mainline:
+
+- `S1/S2/S3/S4` — правильный, но diagnostic-only compact-truncation package;
+- `PSD-pd` — честный fallback Weil-side route, если `H1` stalled.
 
 ## Самые важные правила мышления
 
@@ -200,6 +206,9 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 
 Если нет нового user redirect, текущий честный frontier такой:
 
-- quantitative bounds на `W_K(u)` сначала на pilot compact,
-- packet route держать как fallback verification layer,
+- candidate construction of `S_{a,M}` and `J_a` in RKHS/Gram language;
+- затем exact matrix-element comparison for
+  `S_{a,M}^* G_g[a] S_{a,M}` against `\kappa(a)(T_M[P_A]-T_P^{(M)})`;
+- packet route держать как fallback verification layer;
+- compact scalar package держать только как diagnostic reduction;
 - incoming notes прогонять через `q3-note-ingest` и не путать historical memos с live source of truth.

@@ -150,6 +150,36 @@ Operational consequence:
 - the real top-level blocker is now `H1`, the construction of
   `S_{a,M}` and `J_a` in RKHS/Gram language.
 
+## In-progress synthesis (2026-03-08) — H1 candidate construction frozen
+
+Local embedding search confirms that the live manuscript/control-plane already
+concentrate the operator pivot at one missing brick:
+`H1` exact or asymptotic pair-intertwining through `S_{a,M}` and `J_a`.
+
+Primary-source check on the Suzuki/Yoshida side is consistent with that shape:
+the external target is operator-theoretic and compact / trace-class, so the
+honest bridge should be a generalized form pair, not a raw plain-`L^2`
+operator-gap transfer.
+
+Current candidate:
+- choose packet states `\varphi_{a,j}\subset L^2(-a,a)` from the same centered
+  Fejér×heat / RKHS geometry as the finite Q3 block;
+- define `E_{a,M}=\operatorname{span}\{\varphi_{a,j}:|j|\le M\}`;
+- define raw synthesis
+  `S_{a,M}(\sum c_j e^{ij\theta})=\sum c_j\varphi_{a,j}`;
+- let `J_a` be the Gram-pullback metric, i.e. matrix `\Gamma_{a,M}^{-1}` in the
+  packet basis, so that `S_{a,M}^*J_aS_{a,M}=I`.
+
+This reduces `H1` to one explicit matrix-comparison target:
+`[\langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle]
+ = \kappa(a)(T_M[P_A]-T_P^{(M)}) + R_{a,M}`.
+
+Recommendation:
+- treat this as the primary live route;
+- move the next blocker from abstract `H1` language to exact matrix elements of
+  the Suzuki kernel on the packet basis;
+- keep `PSD-pd` only as fallback constructive verification.
+
 ## Final result (2026-03-08) — finite-dictionary P7 replaces the measure-level immediate target
 
 Новый blocker уточнён жёстче:

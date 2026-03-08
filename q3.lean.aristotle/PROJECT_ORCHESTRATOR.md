@@ -112,6 +112,10 @@ New live frontier:
      -> `H2` Galerkin/recovery
      -> `H3` kernel-exclusion transfer
      -> `H4` RH via Suzuki Theorem 1.4;
+     the current constructive candidate is a nonorthogonal packet synthesis
+     `S_{a,M}:P_M\to E_{a,M}\subset L^2(-a,a)` built from packet states
+     `\varphi_{a,j}`, with Gram matrix `\Gamma_{a,M}` and Gram-pullback metric
+     `J_a` so that `S_{a,M}^*J_aS_{a,M}=I`;
   2. freeze the compact scalar package `S1/S2/S3/S4` only as a correct
      diagnostic reduction, and reject its pointwise target `W_K(u)\ge0` as a
      public compact mainline whenever `\Xi_K\neq\varnothing`;
@@ -135,11 +139,12 @@ New live frontier:
      Poisson-regularized verification, and explicit error budget,
      with a new full-kernel operator package kept as fallback;
 11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
-12. move the active blocker from the already-frozen theorem package `S1/S2/S3/S4`
-     to the first quantitative pilot for `W_K(u)` on a small compact:
-     explicit lower/upper bounds on `\widehat{a_K^*}(u)` and the finite
-     cosine prime sum, with one nonvacuous pilot regime frozen before any
-     attempt at an all-`K` statement.
+12. move the active blocker away from the already-frozen theorem package `S1/S2/S3/S4`
+     to the explicit `H1` candidate construction:
+     choose packet states `\varphi_{a,j}`,
+     define the packet spaces `E_{a,M}`,
+     build raw synthesis `S_{a,M}`,
+     and let `J_a` be the Gram-pullback metric on the packet span.
  13. keep the Suzuki generalized form-pair bridge as the leading alternative
      operator pivot under audit:
      the true missing brick there is `H1`, namely the construction of
@@ -157,7 +162,12 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
    `H1 exact/asymptotic pair-intertwining -> H2 Galerkin/recovery -> H3 kernel-exclusion transfer -> H4 Suzuki Theorem 1.4`
    the primary live route,
 4. build the first candidate construction of `S_{a,M}` and `J_a` in RKHS/Gram
-   language, before attempting any abstract operator-limit theorem,
+   language, before attempting any abstract operator-limit theorem:
+   choose packet states `\varphi_{a,j}`,
+   define `E_{a,M}=\operatorname{span}\{\varphi_{a,j}:|j|\le M\}`,
+   use raw synthesis `S_{a,M}`,
+   and take `J_a` as the Gram-pullback metric with matrix
+   `\Gamma_{a,M}^{-1}` in packet coordinates,
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family
@@ -194,13 +204,16 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     Archimedean gap `\alpha_0>2|\alpha_1|`,
 16. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
 17. keep Aristotle `G1.6` as background lemma-mining only,
-18. make the next honest theorem task quantitative:
-    isolate one pilot compact and one explicit inequality proving
-    `W_K(u)\ge0` there before any general compact claim is attempted,
+18. make the next honest theorem task explicit at the matrix-element level:
+    identify which Archimedean Toeplitz coefficients and which prime Gram
+    vectors must match the Suzuki kernel matrix on the packet basis, and what
+    remainder `R_{a,M}` is acceptable before any abstract recovery theorem is attempted,
 19. keep the Suzuki generalized form-pair package
     `H1 -> H2 -> H3 -> H4` frozen as the strongest alternative operator route,
     with `H1` exact or asymptotic pair-intertwining as the only real missing
-    bridge theorem.
+    bridge theorem; the next subtask there is now explicit kernel-matrix
+    comparison on the packet basis
+    `[ \langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle ]`.
 
 ## Hard Blockers
 

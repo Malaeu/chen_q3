@@ -32,7 +32,9 @@ It is **not** the execution queue and **not** the master gate-state file.
 | `W_K(u)` | scalar compact spectral weight `\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)` | diagnostic compact-truncation object; rejected as public frontier once `\Xi_K\neq\varnothing` |
 | `S_{g,\Delta}(\theta)` | packet Toeplitz symbol built from `\kappa_m=\mathcal Q(h(\cdot-m\Delta))` | structural object; no longer the public theorem target by itself |
 | `K_Q(g_i,g_j)` | packet kernel `\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active hard-theorem object |
-| `G_g[a], J_a, E_{a,M}, S_{a,M}` | Suzuki/Yoshida generalized form-pair bridge data | audited alternative operator notation |
+| `\varphi_{a,j}` | nonorthogonal packet states in `L^2(-a,a)` used to build the Suzuki bridge | active candidate notation |
+| `\Gamma_{a,M}` | packet Gram matrix `[ \langle \varphi_{a,i},\varphi_{a,j}\rangle ]` | active candidate notation |
+| `G_g[a], J_a, E_{a,M}, S_{a,M}` | Suzuki/Yoshida generalized form-pair bridge data | active primary operator notation |
 
 Lean compatibility note:
 
@@ -144,9 +146,16 @@ Interpretation rule after `T0.1`:
    -> `H3` kernel-exclusion transfer
    -> `H4` Suzuki RH criterion.
    The honest blocker there is `H1`, not a raw operator-gap theorem.
-3. Candidate construction of `S_{a,M}` and `J_a` in RKHS/Gram language,
-   rather than raw orthonormal Fourier restriction, so that the finite
-   Q3 energy is pulled back as a generalized form pair.
+3. Candidate construction of `S_{a,M}` and `J_a` in RKHS/Gram language:
+   choose packet states `\varphi_{a,j}` in `L^2(-a,a)`,
+   define `E_{a,M}=\operatorname{span}\{\varphi_{a,j}:|j|\le M\}`,
+   use raw synthesis
+   `S_{a,M}(\sum c_j e^{ij\theta})=\sum c_j\varphi_{a,j}`,
+   and let `J_a` be the Gram-pullback metric, i.e. matrix `\Gamma_{a,M}^{-1}`
+   in the packet basis, so that `S_{a,M}^*J_aS_{a,M}=I`.
+   The next theorem task is then the kernel-matrix comparison
+   `[ \langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle ]=
+   \kappa(a)(T_M[P_A]-T_P^{(M)})+R_{a,M}`.
 4. Pre-square density theorem on `C_c^\infty([-K/2,K/2])` strong enough to feed
    `A1-pd` through autocorrelation continuity if the fallback packet route is needed.
 5. `A1-pd`: proof of density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.
