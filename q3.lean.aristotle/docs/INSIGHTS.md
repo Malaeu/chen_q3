@@ -3127,3 +3127,37 @@ Current sample run passes with errors at the `1e-16` level:
 This does not prove the Suzuki raw bulk identity
 `w_{rs}(a)=\kappa(a)q_{rs}`, but it removes the local Q3-side
 normalization ambiguity and gives a fast executable check for future sessions.
+
+## In progress (2026-03-08) — Incoming H1 theorem skeleton landed
+
+The `incoming_notes` H1 package is worth keeping, but only after adapting it to
+the already-frozen raw-compressed notation.
+
+What survives:
+
+- `H1^f` should explicitly assume the two raw bulk identities
+  `w_{mn}(a)=\kappa(a)q_{mn}` and `w_{m,-n}(a)=\kappa(a)q_{m,-n}`;
+- the filtered operator equality
+  `S_{a,M,N_a}^*G_g[a]S_{a,M,N_a}=\kappa(a)\widetilde Q_{M,N_a}` should then be
+  presented as a consequence of:
+  the common four-term stencil, the two raw families `(+,+)` and `(+,-)`, and
+  the symmetry reduction giving `(--),(-+)`;
+- the exact `J_a` pullback
+  `S_{a,M,N_a}^*J_aS_{a,M,N_a}=B_{M,N_a}` remains a separate already-frozen
+  metric input, not part of the remaining bulk proof burden.
+
+What had to be corrected before integration:
+
+- the incoming text still used the old transitional local-`L` notation for the
+  raw entries;
+- active mainline now uses only the raw-compressed notation
+  `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+  `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle`.
+
+Operational consequence:
+
+- the live `H1^f` theorem block can now be written honestly with a proof
+  skeleton;
+- the only real bulk brick remains the raw match on `(+,+)` and `(+,-)`;
+- after that, filtered four-block identities are formal and the finite Suzuki
+  cap is the only second brick.

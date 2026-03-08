@@ -1525,7 +1525,7 @@ mainline.
   \item \textbf{Suzuki/Yoshida generalized form-pair route (primary live route).}
   Reuse the strongest existing Q3 brick
   \[
-    T_M[P_A]-T_P^{(M)}
+    T_M[P_A]-\iota_M^*T_P^{\mathrm{Ray}}(t)\iota_M
   \]
   by building a generalized form-pair bridge on a symmetric two-sided tail
   \[
@@ -1599,9 +1599,9 @@ Fix $a>0$. Let
   \qquad
   J_a:=(I_0^{(a)})^*I_0^{(a)},
 \]
-and define the Q3 finite-section form
+and define the raw compressed Q3 finite-section form
 \[
-  \Pi_M:=(2M+1)\,T_P^{\mathrm{Ray}}(t,M)=\iota_M^*T_P^{\mathrm{Ray}}(t)\iota_M,
+  \Pi_M:=\iota_M^*T_P^{\mathrm{Ray}}(t)\iota_M=(2M+1)T_P^{\mathrm{Ray}}(t,M),
   \qquad
   Q_M:=T_M[P_A]-\Pi_M
   \qquad\text{on }P_M\subset L^2(\mathbb T).
@@ -1671,6 +1671,7 @@ and on each block it is the tridiagonal Toeplitz matrix
 \]
 \end{proposition}
 
+% Replace the current H1^f theorem block by the following.
 \begin{theorem}[H1$^{\mathrm f}$: exact filtered bulk intertwining]\label{thm:H1-filtered-bulk}
 Fix $a>0$. Assume there exist an integer $N_a\ge 0$ and a scalar
 $\kappa(a)>0$ such that the two raw bulk identities
@@ -1683,12 +1684,12 @@ and
   w_{m,-n}(a)=\kappa(a)\,q_{m,-n},
   \qquad m,n>N_a,
 \end{equation}
-hold, where $q_{rs}$ denotes the stable raw-compressed Section~8 entry from
-Proposition~\ref{prop:H1-raw-q-formula}.
+hold, where $q_{rs}=q_{rs}^{(L)}$ denotes the stable raw compressed Section~8
+entry from Proposition~\ref{prop:H1-raw-q-formula}.
 
 Then for every $M>N_a$ one has the exact filtered operator identity
 \[
-  S_{a,M,N_a}^*\,G_g[a]\,S_{a,M,N_a}
+  S_{a,M,N_a}^*\,G_g[a] \,S_{a,M,N_a}
   =
   \kappa(a)\,\widetilde Q_{M,N_a}.
 \]
@@ -1718,7 +1719,7 @@ obtained from the corresponding raw Weil entries by the same four-term stencil:
   +w_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)}(a).
 \]
 By Proposition~\ref{prop:H1-filtered-q-blocks}, the filtered Q3 block entries are
-obtained from the same raw-compressed Section~8 entries by the same stencil:
+obtained from the raw compressed Section~8 entries by the same stencil:
 \[
   \widetilde q_{mn}^{\sigma\tau}
   =
@@ -1727,17 +1728,18 @@ obtained from the same raw-compressed Section~8 entries by the same stencil:
   +q_{\varepsilon_\sigma m,\varepsilon_\tau(n+1)}
   +q_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)}.
 \]
+
 The hypotheses \eqref{eq:H1-raw-bulk-plus-plus}--\eqref{eq:H1-raw-bulk-plus-minus}
 cover the raw families $(+,+)$ and $(+,-)$. By
 Corollary~\ref{cor:H1-bulk-symmetry-reduction}, the remaining raw families
-$(-,-)$ and $(-,+)$ follow from conjugation and self-adjoint symmetry. Hence
+$(-,-)$ and $(-,+)$ follow from conjugation and self-adjoint symmetry. Hence,
 for every $\sigma,\tau\in\{+,-\}$ and every $N_a<n,m\le M$,
 \[
   M_{mn}^{\sigma\tau}(a)=\kappa(a)\,\widetilde q_{mn}^{\sigma\tau}.
 \]
 Thus the matrices of $S_{a,M,N_a}^*G_g[a]S_{a,M,N_a}$ and
-$\kappa(a)\widetilde Q_{M,N_a}$ agree entrywise in the two-sided tail basis of
-$\mathcal P_{M,N_a}$, so the corresponding operators are equal.
+$\kappa(a)\widetilde Q_{M,N_a}$ agree entrywise in the two-sided tail basis
+of $\mathcal P_{M,N_a}$, so the corresponding operators are equal.
 
 The exact metric pullback
 \[
@@ -1755,18 +1757,20 @@ For an ambient cutoff $L\ge 0$ and indices $|r|,|s|\le L$, let
 \[
   e_r(z):=z^r,
   \qquad
-  \Pi_L:=(2L+1)\,T_P^{\mathrm{Ray}}(t,L)=\iota_L^*T_P^{\mathrm{Ray}}(t)\iota_L,
-  \qquad
-  Q_L^{\mathrm{raw}}:=T_L[P_A]-\Pi_L,
-  \qquad
-  q_{rs}:=\bigl\langle Q_L^{\mathrm{raw}} e_s,e_r\bigr\rangle,
+  q_{rs}^{(L)}:=\bigl\langle Q_L e_s,e_r\bigr\rangle,
   \qquad
   w_{rs}(a):=W\bigl(\chi_s[a]*\widetilde{\chi_r[a]}\bigr),
 \]
-where $Q_L^{\mathrm{raw}}$ is the raw Section~8 finite operator on
-$P_L\subset L^2(\mathbb T)$. In the filtered bridge
-$\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}^{\mathrm{raw}}\Delta_{M,N}$ the
-ambient cutoff is $L=M+1$.
+where
+\[
+  \Pi_L:=\iota_L^*T_P^{\mathrm{Ray}}(t)\iota_L=(2L+1)T_P^{\mathrm{Ray}}(t,L),
+  \qquad
+  Q_L:=T_L[P_A]-\Pi_L
+\]
+is the raw compressed Section~8 block on $P_L\subset L^2(\mathbb T)$. In the
+filtered bridge $\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}$ the
+ambient cutoff is $L=M+1$; in that context we suppress the superscript and
+write $q_{rs}:=q_{rs}^{(M+1)}$.
 Set
 \[
   \alpha_n:=\frac{\pi n}{a},
@@ -1777,10 +1781,10 @@ Set
 \]
 
 \begin{proposition}[Exact raw Section~8 entry formula]\label{prop:H1-raw-q-formula}
-For every ambient cutoff $L\ge 0$ and every $|r|,|s|\le L$, the raw
+For every ambient cutoff $L\ge 0$ and every $|r|,|s|\le L$, the raw compressed
 Section~8 entry satisfies
 \[
-  q_{rs}=a_{r-s}-p_{rs},
+  q_{rs}^{(L)}=a_{r-s}-p_{r-s},
 \]
 where
 \[
@@ -1792,25 +1796,22 @@ where
 \]
 and
 \[
-  p_{rs}
+  p_k
   :=
   \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
-  w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i(r-s)\xi_n}.
+  w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i k\xi_n}.
 \]
 Equivalently,
 \[
-  q_{rs}
+  q_{rs}^{(L)}
   =
   a_{r-s}
   -
   \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
   w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i(r-s)\xi_n}.
 \]
-These entries are stable in $L$ as soon as $|r|,|s|\le L$, because the raw
-compression already absorbs the normalization factor
-\[
-  \Pi_L=(2L+1)\,T_P^{\mathrm{Ray}}(t,L)=\iota_L^*T_P^{\mathrm{Ray}}(t)\iota_L.
-\]
+In particular, these raw compressed entries are stable in $L$ as soon as
+$|r|,|s|\le L$.
 \end{proposition}
 
 \begin{proof}
@@ -1830,25 +1831,24 @@ Lemma~\ref{lem:a3-period1-audit} rewrites the same coefficients as
 \]
 For the prime part, Lemma~\ref{lem:a3-model-space} gives
 \[
-  T_P^{\mathrm{Ray}}(t,L)
+  \Pi_L
   =
   \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
-  w(n)\,\Phi_{B,t}(\xi_n)\,|v_n^{(L)}\rangle\!\langle v_n^{(L)}|,
+  w(n)\,\Phi_{B,t}(\xi_n)\,|\tilde v_n^{(L)}\rangle\!\langle \tilde v_n^{(L)}|,
 \]
 with
 \[
-  v_n^{(L)}(\theta)=\frac{1}{\sqrt{2L+1}}
-  \sum_{|k|\le L}e^{2\pi i k(\theta-\xi_n)}.
+  \tilde v_n^{(L)}(\theta)=\sum_{|k|\le L}e^{2\pi i k(\theta-\xi_n)}.
 \]
 Therefore
 \[
-  \langle e_s,v_n^{(L)}\rangle
+  \langle e_s,\tilde v_n^{(L)}\rangle
   =
-  \frac{1}{\sqrt{2L+1}}e^{2\pi i s\xi_n},
+  e^{2\pi i s\xi_n},
   \qquad
-  \langle v_n^{(L)},e_r\rangle
+  \langle \tilde v_n^{(L)},e_r\rangle
   =
-  \frac{1}{\sqrt{2L+1}}e^{-2\pi i r\xi_n},
+  e^{-2\pi i r\xi_n},
 \]
 so the raw compressed prime entry is
 \[
@@ -1856,9 +1856,11 @@ so the raw compressed prime entry is
   =
   \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
   w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i(r-s)\xi_n}
+  =
+  p_{r-s}.
 \]
-Subtracting the raw compressed prime block from the Toeplitz block gives the
-stated formula for $q_{rs}$.
+Subtracting the prime block from the Toeplitz block gives the stated formula
+for $q_{rs}^{(L)}$.
 \end{proof}
 
 \begin{lemma}[Fourier transforms of the adjacent Suzuki tails]\label{lem:H1-adjacent-fourier}
@@ -1974,18 +1976,11 @@ Then the filtered finite section is exactly
 \]
 in the two-sided tail basis, with block entries
 $\widetilde q_{mn}^{\sigma\tau}$.
-If one writes
+By Proposition~\ref{prop:H1-raw-q-formula}, for the ambient cutoff $L=M+1$ one has
 \[
-  q_{rs}=a_{r-s}-p_{rs},
+  q_{rs}=q_{rs}^{(M+1)}=a_{r-s}-p_{r-s},
 \]
-with
-\[
-  p_{rs}
-  :=
-  \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
-  w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i(r-s)\xi_n},
-\]
-then
+and therefore
 \[
   \widetilde q_{mn}^{\sigma\tau}
   =
@@ -2008,13 +2003,13 @@ where
 \[
   \widetilde p_{mn}^{\sigma\tau}
   =
-  p_{\varepsilon_\sigma m,\varepsilon_\tau n}
+  p_{d_{\sigma\tau}(m,n)}
   +
-  p_{\varepsilon_\sigma(m+1),\varepsilon_\tau n}
+  p_{d_{\sigma\tau}(m,n)+\varepsilon_\sigma}
   +
-  p_{\varepsilon_\sigma m,\varepsilon_\tau(n+1)}
+  p_{d_{\sigma\tau}(m,n)-\varepsilon_\tau}
   +
-  p_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)},
+  p_{d_{\sigma\tau}(m,n)+\varepsilon_\sigma-\varepsilon_\tau},
 \]
 and
 \[
@@ -2039,8 +2034,28 @@ In particular,
 \[
   \widetilde a_{mn}^{--}
   =
-  2a_{n-m}+a_{n-m+1}+a_{n-m-1}.
+  2a_{n-m}+a_{n-m+1}+a_{n-m-1},
 \]
+while the prime blocks satisfy
+\[
+  \widetilde p_{mn}^{++}
+  =
+  \sum_{\substack{k\ge2\\ |\xi_k|\le B}}
+  w(k)\,\Phi_{B,t}(\xi_k)
+  e^{-2\pi i(m-n)\xi_k}
+  \bigl|1+e^{-2\pi i\xi_k}\bigr|^2,
+\]
+\[
+  \widetilde p_{mn}^{+-}
+  =
+  \sum_{\substack{k\ge2\\ |\xi_k|\le B}}
+  w(k)\,\Phi_{B,t}(\xi_k)
+  e^{-2\pi i(m+n)\xi_k}
+  \bigl(1+e^{-2\pi i\xi_k}\bigr)^2,
+\]
+with $\widetilde p_{mn}^{--}=\overline{\widetilde p_{nm}^{++}}$ and
+$\widetilde p_{mn}^{-+}=\overline{\widetilde p_{nm}^{+-}}$ under the Hermitian
+normalization of the Q3 side.
 \end{proposition}
 
 \begin{corollary}[Symmetry reduction of the bulk match]\label{cor:H1-bulk-symmetry-reduction}
@@ -2095,10 +2110,10 @@ The live bulk theorem is therefore no longer the abstract existence of
 $S_{a,M,N}$ and $J_a$, nor the direct separate comparison of all four filtered
 blocks. The narrowest active target is the raw bulk identity
 $w_{rs}(a)=\kappa(a)q_{rs}$ on the two families $(+,+)$ and $(+,-)$, where the
-raw-compressed Section~8 entries $q_{rs}$ are now given explicitly by
-Proposition~\ref{prop:H1-raw-q-formula}; the four filtered block equalities are
-then formal consequences of the two-sided filter $\Delta_{M,N}$ and Hermitian
-symmetry. After that raw bulk
+raw compressed Section~8 entries $q_{rs}=q_{rs}^{(M+1)}$ are now given explicitly
+by Proposition~\ref{prop:H1-raw-q-formula}; the
+four filtered block equalities are then formal consequences of the two-sided
+filter $\Delta_{M,N}$ and Hermitian symmetry. After that raw bulk
 identification, the only remaining bridge brick is the finite-dimensional
 Suzuki cap.
 

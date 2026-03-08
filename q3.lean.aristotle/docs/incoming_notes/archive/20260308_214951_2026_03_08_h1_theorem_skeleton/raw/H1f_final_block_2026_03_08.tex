@@ -1,0 +1,80 @@
+% Replace the current H1^f theorem block by the following.
+\begin{theorem}[H1$^{\mathrm f}$: exact filtered bulk intertwining]\label{thm:H1-filtered-bulk}
+Fix $a>0$. Assume there exist an integer $N_a\ge 0$ and a scalar
+$\kappa(a)>0$ such that the two raw bulk identities
+\begin{equation}\label{eq:H1-raw-bulk-plus-plus}
+  w_{mn}(a)=\kappa(a)\,q_{mn},
+  \qquad m,n>N_a,
+\end{equation}
+and
+\begin{equation}\label{eq:H1-raw-bulk-plus-minus}
+  w_{m,-n}(a)=\kappa(a)\,q_{m,-n},
+  \qquad m,n>N_a,
+\end{equation}
+hold, where $q_{rs}=q_{rs}^{(L)}$ denotes the stable raw compressed Section~8
+entry from Proposition~\ref{prop:H1-raw-q-formula}.
+
+Then for every $M>N_a$ one has the exact filtered operator identity
+\[
+  S_{a,M,N_a}^*\,G_g[a] \,S_{a,M,N_a}
+  =
+  \kappa(a)\,\widetilde Q_{M,N_a}.
+\]
+Equivalently, for every $N_a<n,m\le M$ and every $\sigma,\tau\in\{+,-\}$,
+\[
+  \bigl\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\bigr\rangle_{L^2(-a,a)}
+  =
+  \kappa(a)\,\bigl(\widetilde Q_{M,N_a}^{\sigma\tau}\bigr)_{mn}.
+\]
+\end{theorem}
+
+\begin{proof}[Proof skeleton]
+Write
+\[
+  M_{mn}^{\sigma\tau}(a)
+  :=
+  \bigl\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\bigr\rangle_{L^2(-a,a)}.
+\]
+By Proposition~\ref{prop:H1-raw-entry-reduction}, each filtered Suzuki block is
+obtained from the corresponding raw Weil entries by the same four-term stencil:
+\[
+  M_{mn}^{\sigma\tau}(a)
+  =
+  w_{\varepsilon_\sigma m,\varepsilon_\tau n}(a)
+  +w_{\varepsilon_\sigma(m+1),\varepsilon_\tau n}(a)
+  +w_{\varepsilon_\sigma m,\varepsilon_\tau(n+1)}(a)
+  +w_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)}(a).
+\]
+By Proposition~\ref{prop:H1-filtered-q-blocks}, the filtered Q3 block entries are
+obtained from the raw compressed Section~8 entries by the same stencil:
+\[
+  \widetilde q_{mn}^{\sigma\tau}
+  =
+  q_{\varepsilon_\sigma m,\varepsilon_\tau n}
+  +q_{\varepsilon_\sigma(m+1),\varepsilon_\tau n}
+  +q_{\varepsilon_\sigma m,\varepsilon_\tau(n+1)}
+  +q_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)}.
+\]
+
+The hypotheses \eqref{eq:H1-raw-bulk-plus-plus}--\eqref{eq:H1-raw-bulk-plus-minus}
+cover the raw families $(+,+)$ and $(+,-)$. By
+Corollary~\ref{cor:H1-bulk-symmetry-reduction}, the remaining raw families
+$(-,-)$ and $(-,+)$ follow from conjugation and self-adjoint symmetry. Hence,
+for every $\sigma,\tau\in\{+,-\}$ and every $N_a<n,m\le M$,
+\[
+  M_{mn}^{\sigma\tau}(a)=\kappa(a)\,\widetilde q_{mn}^{\sigma\tau}.
+\]
+Thus the matrices of $S_{a,M,N_a}^*G_g[a]S_{a,M,N_a}$ and
+$\kappa(a)\widetilde Q_{M,N_a}$ agree entrywise in the two-sided tail basis
+of $\mathcal P_{M,N_a}$, so the corresponding operators are equal.
+
+The exact metric pullback
+\[
+  S_{a,M,N_a}^*J_aS_{a,M,N_a}=B_{M,N_a}=\Delta_{M,N_a}^*\Delta_{M,N_a}
+\]
+is already provided by Proposition~\ref{prop:Ja-pullback-filtered-tail}; it is
+not part of the present bulk-intertwining step, but is the metric input used in
+Theorem~\ref{thm:H3-filtered-transfer}. Therefore the whole burden of
+Theorem~\ref{thm:H1-filtered-bulk} is exactly the pair of raw bulk identities
+\eqref{eq:H1-raw-bulk-plus-plus}--\eqref{eq:H1-raw-bulk-plus-minus}.
+\end{proof}
