@@ -18,6 +18,7 @@ $\mathcal W_{K,0}^{\mathrm{pd}}$ & local positive-definite seed set & $\{\psi*\w
 $\mathcal W_K^{\mathrm{pd}}$ & corrected local Weil cone & $\overline{\operatorname{cone}(\mathcal W_{K,0}^{\mathrm{pd}})}^{\|\cdot\|_\infty}\subset B_K$ \\
 $\mathcal W^{\mathrm{pd}}$ & corrected global Weil cone & $\varinjlim_{K\to\infty}\mathcal W_K^{\mathrm{pd}}$ \\
 $\mathcal P_K(t_0)$ & pre-square packet span & $\operatorname{span}\{g_{\delta,\tau}: |\tau|+\delta\le K/2\}$ \\
+$\mathcal P_{K,\mathrm{tr}}(t_0)$ & translation-compatible dense packet subspace & subspace of $\mathcal P_K(t_0)$ realized by finite admissible translation dictionaries \\
 $\mathcal G_K^{\mathrm{pd}}$ & dense autocorrelation packet family & $\operatorname{cone}\{\Psi*\widetilde\Psi:\ \Psi\in\mathcal P_K(t_0)\}$ \\
 $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ & naive centered Rayleigh family & background candidate $\operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}$ \\
 $J$ & finite admissible translation dictionary & $J\subset\mathbb Z$ with $\operatorname{supp}(g_j)\subset[-K/2,K/2]$ \\
@@ -64,8 +65,8 @@ Weil criterion. Accordingly:
   \item the sparse Gershgorin route is kept only as a local finite-block lemma
   and explicitly not as the dense main theorem;
   \item the honest remaining knife-edge is `PSD-pd`: prove that the packet kernel
-  $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ is positive semidefinite on the
-  same exact dense pre-packet space;
+  $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ is positive semidefinite on a
+  dense translation-compatible packet subspace;
   \item the immediate constructive target is now the finite admissible dictionary
   criterion $S_J(\theta)\ge0$ on each compact packet block, verified via
   Poisson-regularized finite symbols $S_{J,r}$ and an explicit error budget;

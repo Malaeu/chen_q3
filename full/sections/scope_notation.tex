@@ -56,7 +56,7 @@ This work introduces a quantitative, modular operator framework for the Weil cri
   \[
     K_Q(g_i,g_j):=\mathcal Q(g_i * \widetilde{g_j})
   \]
-  on the same exact dense pre-packet space, with finite-symbol domination
+  on a dense translation-compatible packet subspace, with finite-symbol domination
   $S_J=A_J-P_J\ge0$ on each admissible dictionary as the immediate constructive
   target, verified by Poisson-regularized finite symbols and an explicit error
   budget. Gershgorin is retained only as a sparse finite-block criterion.
@@ -86,7 +86,7 @@ For reference we collect the live proof contract used after the target-cone audi
   \item[(packet-Rayleigh-naive)] Background quadratic-form identity on the overlarge family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}$.
   \item[(packet-Rayleigh-pd)] Exact Toeplitz quadratic-form identity on autocorrelation packets $\Psi_c * \widetilde{\Psi_c}$ with packet symbol $S_{g,\Delta}$.
   \item[(A3-pd)] Rejected-too-strong route: one uniform packet-symbol floor on the full dense packet dictionary.
-  \item[(PSD-pd)] Positive semidefiniteness of the packet kernel $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ on the same exact dense pre-packet space.
+  \item[(PSD-pd)] Positive semidefiniteness of the packet kernel $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ on a dense translation-compatible packet subspace.
   \item[(A3)+(RKHS)] Centered positivity mechanism at the critical scale.
   \item[(A2-pd)] Continuity of $Q^\star(t;\cdot)$ on the ambient compact-support class, hence on $\mathcal W_K^{\mathrm{pd}}$ in particular.
   \item[(LF-pd)] Inductive-limit lift from all $\mathcal W_K^{\mathrm{pd}}$ to $\mathcal W^{\mathrm{pd}}$.
@@ -102,7 +102,7 @@ The present manuscript establishes the analytic inputs behind this chain as foll
   \item `A3` and `RKHS` as the centered positivity mechanism in Sections~\ref{sec:A3} and \ref{sec:RKHS}.
 \end{itemize}
 
-What remains unresolved in the present draft is not the corrected cone itself, nor the theorem-level packet-Rayleigh identity. Pushing the naive Rayleigh route further shows that the family $\Phi_{B,t}|p|^2$ is too large to serve as the closure family, and pushing the old `A3-pd` route further shows that one uniform packet-symbol floor cannot hold on a dense packet dictionary. The actual knife-edge is therefore `PSD-pd`: prove positive semidefiniteness of the packet kernel $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ on the same exact dense pre-packet space. The immediate constructive target is now finite-symbol domination on each admissible dictionary,
+What remains unresolved in the present draft is not the corrected cone itself, nor the theorem-level packet-Rayleigh identity. Pushing the naive Rayleigh route further shows that the family $\Phi_{B,t}|p|^2$ is too large to serve as the closure family, and pushing the old `A3-pd` route further shows that one uniform packet-symbol floor cannot hold on a dense packet dictionary. The actual knife-edge is therefore `PSD-pd`: prove positive semidefiniteness of the packet kernel $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ on a dense translation-compatible packet subspace. The immediate constructive target is now finite-symbol domination on each admissible dictionary,
 \[
   S_J(\theta)=A_J(\theta)-P_J(\theta)\ge0,
 \]

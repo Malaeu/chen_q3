@@ -70,6 +70,13 @@
 Operational consequence:
 - active frontier is now to bound `\alpha_m` and `\beta_m` strongly enough to
   close Corollary `P7.6` on every finite admissible packet dictionary.
+- fresh review then exposed one more structural point:
+  the finite-dictionary `P7` package acts first on a dense
+  translation-compatible packet subspace, not automatically on all of
+  `\mathcal P_K(t_0)`;
+  the public `P8` statement must say this explicitly.
+- the prime-block obstruction proof also had to be corrected at the symmetrized
+  node pair `\pm\xi_{n_0}`: both contributions are negative, not just one.
 
 Detailed note:
 - `docs/insights/regularized_p7_package_2026_03_08.md`

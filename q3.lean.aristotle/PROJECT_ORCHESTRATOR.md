@@ -85,7 +85,7 @@ Interpretation after `T0.1`:
 | `SF-pd` | same-family bridge through `\mathcal G_{K,\mathrm{Ray}}^{pd}` | `rejected as mainline route` | rejected because the naive Rayleigh family is too large and would force false broad local positivity |
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `\mathcal Q(\Psi_c * \widetilde{\Psi_c})` with the finite symbol integral `\frac{1}{2\pi}\int S_J(\theta)|p_c(\theta)|^2\,d\theta` on each admissible dictionary |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
-| `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets | `active` | prove that every finite matrix `[K_Q(g_i,g_j)]` on the `A1-pd` pre-packet space is positive semidefinite |
+| `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `active` | prove that every finite matrix `[K_Q(g_i,g_j)]` on that packet subspace is positive semidefinite |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
@@ -110,7 +110,7 @@ Interpretation after `T0.1`:
      on packet space;
   6. make `PSD-pd` the single live knife-edge: prove positive semidefiniteness
      of the full packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})`
-     on the same exact dense pre-packet space;
+     on a dense translation-compatible packet subspace;
   7. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
   8. freeze the strict `P1--P8` theorem package;
   9. make finite admissible dictionary positivity the immediate constructive target:
@@ -134,14 +134,15 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
 7. reject the literal `Route P` theorem shape
    `prime-block PSD factorization or Hilbert lift -> Archimedean domination`,
 8. make `PSD-pd` explicit as the packet-kernel theorem
-   `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on dense pre-packets,
+   `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense
+   translation-compatible packet subspace,
 9. freeze the strict `P1--P8` chain:
    exact packet sesquilinear identity
    -> Toeplitz reduction
    -> desired prime-factorization (rejected by obstruction)
    -> full sequence split `\kappa=\alpha-\beta`
    -> Toeplitz/Herglotz criterion
-   -> regularized full-symbol domination criterion
+   -> finite-dictionary `P7` package
    -> `PSD-pd`,
 10. record the two surviving strategy families for `PSD-pd`
     (Herglotz/Bochner versus direct full-kernel PSD),
@@ -246,7 +247,7 @@ Legacy narrative surfaces are reference-only:
   family.
 - 2026-03-07: the public frontier therefore pivots again from `A3-pd` to
   `PSD-pd`: prove positive semidefiniteness of the packet kernel
-  `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on the dense pre-packet space.
+  `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace.
 - 2026-03-07: the stronger packet-space audit shows that the literal
   `prime-block PSD factorization or Hilbert lift -> Archimedean domination`
   theorem shape is false on dense packet dictionaries. The active constructive
