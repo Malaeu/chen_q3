@@ -174,6 +174,24 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 
 - `/Users/emalam/.codex/skills/q3-note-ingest/SKILL.md`
 
+## Правило для Прошки
+
+Если готовим пакет для Прошки, не рассчитываем, что он будет читать наши
+локальные `.tex` или произвольные text files как source of truth.
+
+Правильный формат по умолчанию:
+
+- один короткий self-contained markdown/prompt;
+- все ключевые формулы, константы и target identity вписаны прямо внутрь;
+- архивы с source files можно давать только как secondary attachment, не как
+  основной carrier смысла.
+
+Для H1 это означает:
+
+- в prompt напрямую вставлять `Q_M^{raw}`, `\Pi_M`, exact `q_{rs}`,
+  `\kappa_{A3}=1`, и target `w_{rs}(a)=\kappa(a)q_{rs}`;
+- не ожидать, что Прошка сам восстановит normalization из старых A3 файлов.
+
 ## Repo map (только живой минимум)
 
 ### Control plane
