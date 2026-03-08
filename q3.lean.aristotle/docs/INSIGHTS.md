@@ -56,7 +56,7 @@
 Новая развилка закрыта жёстко:
 
 - fastest plausible corrected route is now the scalar compact spectral package
-  `S1/S2/S3`, not the finite-dictionary packet package;
+  `S1/S2/S3/S4`, not the finite-dictionary packet package;
 - the core scalar object is
   `W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)`;
 - proving `W_K(u)\ge0` on every compact would yield positivity on all local

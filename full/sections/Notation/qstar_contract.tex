@@ -25,7 +25,8 @@ $J$ & finite admissible translation dictionary & $J\subset\mathbb Z$ with $\oper
 $D(J)$ & finite difference set & $\{i-j:\ i,j\in J\}$ \\
 $\Psi_c$ & finite pre-packet & $\Psi_c(x)=\sum_{j\in J} c_j g_j(x)$ \\
 $h$ & packet autocorrelation kernel & $h=g*\widetilde g$ \\
-$\mathcal Q(F)$ & symmetric compact extension of $Q^\star$ & agrees with $Q^\star(t;F)$ on even $F$ \\
+$\mathcal Q(F)$ & symmetric packet-side extension of $Q^\star$ & global evenized functional used in the packet fallback route \\
+$\mathcal Q_K(F)$ & compact-localized evenized functional & agrees with $\mathcal Q(F)$ on tests supported in $[-K,K]$ and with $Q^\star(t;F)$ on even such tests \\
 $a_K^*$ & compact Archimedean truncation & $a_K^*(\xi)=a^*(\xi)\mathbf 1_{[-K,K]}(\xi)$ \\
 $\Xi_K$ & active positive prime nodes on the compact & $\{\xi_n:0<\xi_n\le K\}$ \\
 $W_K(u)$ & scalar compact spectral weight & $\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K} w_Q(n)\cos(u\xi_n)$ \\
@@ -38,6 +39,7 @@ $H_r,T_r,m_r^*,M_{r,K}^*$ & diagonal Archimedean core/tail data & core mass, tai
 $\Pi_K^{\mathrm{sym}}(s;R)$ & local symmetric prime mass & weighted active-node mass in the $\pm s$ bands of radius $R$ \\
 $p_c$ & trigonometric packet polynomial & $p_c(\theta)=\sum_{j\in J} c_j e^{ij\theta}$ \\
 $K_Q(g_i,g_j)$ & packet kernel on pre-packets & $\mathcal Q(g_i * \widetilde{g_j})$ \\
+$K_{Q,K}(\Psi,\Phi)$ & compact-localized packet kernel & $\mathcal Q_K(\Psi * \widetilde{\Phi})$ \\
 $A_{g,\Delta}$ & Archimedean packet symbol part & $\sum_m e^{-im\theta}\int a^*(\xi)\,h(\xi-m\Delta)\,d\xi$ \\
 $P_{g,\Delta}$ & prime packet symbol part & $\sum_m e^{-im\theta}\frac12\sum_n w_Q(n)\bigl(h(\xi_n-m\Delta)+h(\xi_n+m\Delta)\bigr)$ \\
 $\mu_A,\mu_P$ & packet-side Fourier measures & secondary Herglotz notation for $(\alpha_m),(\beta_m)$ \\
@@ -67,6 +69,10 @@ Weil criterion. Accordingly:
   \item the exact packet-Rayleigh theorem lives on autocorrelation packets
   $\Psi_c * \widetilde{\Psi_c}$ with finite Toeplitz block $T_J(\kappa)$ and
   finite symbol $S_J$ on each admissible dictionary;
+  \item the scalar compact route uses the compact-localized functional
+  $\mathcal Q_K$ and the spectral weight $W_K(u)$; on tests supported in
+  $[-K,K]$ one has $\mathcal Q_K=\mathcal Q$, and on even such tests
+  $\mathcal Q_K=Q^\star(t;\cdot)$;
   \item the old route `A3-pd` --- one uniform packet-symbol floor on the full dense
   packet dictionary --- is too strong and therefore rejected as the public theorem shape;
   \item the sparse Gershgorin route is kept only as a local finite-block lemma

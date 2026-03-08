@@ -1165,10 +1165,19 @@ to all of $\mathcal W_K^{\mathrm{pd}}$.
 \begin{definition}[Compact spectral weight]\label{def:compact-spectral-weight}
 Fix $K>0$ and define
 \[
+  \mathcal Q_K(F)
+  :=
+  \int_{\mathbb R} a_K^*(\xi)F(\xi)\,d\xi
+  -
+  \frac12\sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}\bigl(F(\xi_n)+F(-\xi_n)\bigr),
+\]
+\[
   a_K^*(\xi):=a^*(\xi)\mathbf 1_{[-K,K]}(\xi),
   \qquad
   \Xi_K:=\{\xi_n:\ 0<\xi_n\le K\}.
 \]
+If $\operatorname{supp}F\subset[-K,K]$, then $\mathcal Q_K(F)=\mathcal Q(F)$, and
+if $F$ is even, then $\mathcal Q_K(F)=Q^\star(t;F)$.
 With the Fourier convention
 \[
   \widehat f(u):=\int_{\mathbb R} f(x)e^{-iux}\,dx,
@@ -1188,6 +1197,8 @@ define the compact spectral weight
 \begin{proposition}[S1: exact compact spectral identity]\label{prop:compact-spectral-identity}
 Let $\Psi\in C_c([-K/2,K/2])$ and set
 \[
+  \widetilde\Psi(x):=\overline{\Psi(-x)},
+  \qquad
   F_\Psi:=\Psi*\widetilde{\Psi}.
 \]
 Then
@@ -1196,7 +1207,7 @@ Then
 \]
 and
 \[
-  \mathcal Q(F_\Psi)
+  \mathcal Q_K(F_\Psi)
   =
   \frac1{2\pi}\int_{\mathbb R} W_K(u)\,|\widehat\Psi(u)|^2\,du.
 \]
@@ -1206,11 +1217,12 @@ and
 Since $\Psi$ is compactly supported in $[-K/2,K/2]$, the convolution
 $F_\Psi=\Psi*\widetilde{\Psi}$ is supported in $[-K,K]$. Therefore
 \[
-  \mathcal Q(F_\Psi)
+  \mathcal Q_K(F_\Psi)
   =
   \int_{\mathbb R} a_K^*(\xi)F_\Psi(\xi)\,d\xi
   -
-  \sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}F_\Psi(\xi_n),
+  \frac12\sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}
+  \bigl(F_\Psi(\xi_n)+F_\Psi(-\xi_n)\bigr),
 \]
 because $F_\Psi$ is even. The Fourier identity
 \[
@@ -1226,14 +1238,17 @@ supported Archimedean term gives
 \]
 For each active node $\xi_n\in\Xi_K$,
 \[
-  F_\Psi(\xi_n)
+  F_\Psi(\pm\xi_n)
   =
-  \frac1{2\pi}\int_{\mathbb R} e^{iu\xi_n}|\widehat\Psi(u)|^2\,du
-  =
-  \frac1{2\pi}\int_{\mathbb R} \cos(u\xi_n)\,|\widehat\Psi(u)|^2\,du,
+  \frac1{2\pi}\int_{\mathbb R} e^{\pm iu\xi_n}|\widehat\Psi(u)|^2\,du.
 \]
-because $|\widehat\Psi(u)|^2$ is even. Substituting this into the prime sum
-gives the claimed identity.
+Hence
+\[
+  \frac12\bigl(F_\Psi(\xi_n)+F_\Psi(-\xi_n)\bigr)
+  =
+  \frac1{2\pi}\int_{\mathbb R} \cos(u\xi_n)\,|\widehat\Psi(u)|^2\,du.
+\]
+Summing over $\Xi_K$ gives the claimed identity.
 \end{proof}
 
 \begin{proposition}[S2: spectral positivity criterion on a compact]\label{prop:compact-spectral-positivity}
@@ -1244,12 +1259,12 @@ If
 \]
 then
 \[
-  \mathcal Q(\Psi*\widetilde{\Psi})\ge0
+  \mathcal Q_K(\Psi*\widetilde{\Psi})\ge0
   \qquad\text{for every }\Psi\in C_c([-K/2,K/2]).
 \]
 Equivalently, the packet kernel
 \[
-  K_Q(\Psi,\Phi):=\mathcal Q(\Psi*\widetilde{\Phi})
+  K_{Q,K}(\Psi,\Phi):=\mathcal Q_K(\Psi*\widetilde{\Phi})
 \]
 is positive semidefinite on $C_c([-K/2,K/2])$.
 \end{proposition}
@@ -1257,7 +1272,17 @@ is positive semidefinite on $C_c([-K/2,K/2])$.
 \begin{proof}
 The scalar inequality follows immediately from
 Proposition~\ref{prop:compact-spectral-identity}. Positive semidefiniteness of
-the sesquilinear kernel is then obtained by polarization.
+the sesquilinear kernel follows by letting
+\[
+  \Psi_c:=\sum_{i=1}^N c_i\Psi_i
+\]
+for a finite family $\Psi_1,\dots,\Psi_N$ and using
+\[
+  \sum_{i,j=1}^N c_i\overline{c_j}\,
+  \mathcal Q_K(\Psi_i*\widetilde{\Psi_j})
+  =
+  \mathcal Q_K(\Psi_c*\widetilde{\Psi_c})\ge0.
+\]
 \end{proof}
 
 \begin{theorem}[S3: corrected compact positivity from the scalar spectral weight]\label{thm:compact-spectral-closure}
@@ -1268,31 +1293,55 @@ Fix $K>0$. Assume
 \]
 Then
 \[
-  Q^\star(t;\Phi)\ge0
-  \qquad\text{for every }\Phi\in\mathcal W_K^{\mathrm{pd}}.
+  Q(\Phi)\ge0
+  \qquad\text{for every }\Phi\in
+  \mathcal W_K^{\mathrm{pd}}\cap C_c([-K,K])_{\mathrm{even}}.
 \]
 \end{theorem}
 
 \begin{proof}
 By Proposition~\ref{prop:compact-spectral-positivity},
 \[
-  \mathcal Q(\Psi*\widetilde{\Psi})\ge0
+  \mathcal Q_K(\Psi*\widetilde{\Psi})\ge0
   \qquad\text{for every }\Psi\in C_c([-K/2,K/2]).
 \]
 In particular, positivity holds on the seed cone
 $\mathcal W_{K,0}^{\mathrm{pd}}$, hence on its conic hull. Since
-$Q^\star(t;\cdot)=\mathcal Q(\cdot)$ on even tests and $Q^\star(t;\cdot)$ is
-continuous on the ambient compact-support class $B_K$ by Corollary~\ref{cor:A2-Lip},
-positivity extends to the closure
+$Q^\star(t;\cdot)$ is continuous on the ambient compact-support class $B_K$ by
+Corollary~\ref{cor:A2-Lip}, positivity extends to the closure
 $\mathcal W_K^{\mathrm{pd}}=\overline{\operatorname{cone}(\mathcal W_{K,0}^{\mathrm{pd}})}^{\|\cdot\|_\infty}$.
+For even $\Phi\in \mathcal W_K^{\mathrm{pd}}\cap C_c([-K,K])$, one has
+$\mathcal Q_K(\Phi)=Q(\Phi)$, so the claim follows.
+\end{proof}
+
+\begin{corollary}[S4: conditional global closure from compact spectral positivity]\label{cor:compact-spectral-global-closure}
+Assume Theorem~\ref{thm:compact-spectral-closure} holds for every $K>0$, and
+assume the corrected compact-to-global transfer on the inductive limit
+\[
+  \mathcal W^{\mathrm{pd}}:=\varinjlim_{K\to\infty}\mathcal W_K^{\mathrm{pd}}.
+\]
+Then
+\[
+  Q(\Phi)\ge0
+  \qquad
+  \text{for every }\Phi\in \mathcal W^{\mathrm{pd}}\cap C_c(\mathbb R)_{\mathrm{even}}.
+\]
+\end{corollary}
+
+\begin{proof}
+Apply Theorem~\ref{thm:compact-spectral-closure} on each compact, then use the
+corrected inductive-limit transfer.
 \end{proof}
 
 \begin{theorem}[Conditional main positivity on $\mathcal W^{\mathrm{pd}}$]\label{thm:Main-positivity}
-Assume \textup{(T0)}, \textup{(A2)}, Theorem~\ref{thm:A1-pd},
-Theorem~\ref{thm:packet-rayleigh-pd}, and either Theorem~\ref{thm:PSD-pd} or
-Theorem~\ref{thm:compact-spectral-closure}. Assume moreover
-that these local positivity statements are compatible
-with the natural embeddings $\mathcal W_K^{\mathrm{pd}}\hookrightarrow \mathcal W_{K'}^{\mathrm{pd}}$.
+Assume \textup{(T0)}, \textup{(A2)}, and one of the following routes:
+\begin{enumerate}
+  \item[\textup{(i)}] the scalar compact route \textup{(S1)}--\textup{(S4)};
+  \item[\textup{(ii)}] Theorem~\ref{thm:A1-pd},
+  Theorem~\ref{thm:packet-rayleigh-pd}, Theorem~\ref{thm:PSD-pd}, and
+  compatibility of these local positivity statements with the natural
+  embeddings $\mathcal W_K^{\mathrm{pd}}\hookrightarrow \mathcal W_{K'}^{\mathrm{pd}}$.
+\end{enumerate}
 Then
 \[
   Q^\star(t;\Phi)\ \ge\ 0\qquad\text{for every }\Phi\in \mathcal W^{\mathrm{pd}},
@@ -1301,12 +1350,14 @@ where $\mathcal W^{\mathrm{pd}}=\bigcup_{K>0}\mathcal W_K^{\mathrm{pd}}$ is the 
 \end{theorem}
 
 \begin{proof}
-Fix $K>0$. By either Theorem~\ref{thm:PSD-pd} or
-Theorem~\ref{thm:compact-spectral-closure} we have
-$Q^\star(t;\Phi)\ge0$ for every $\Phi\in\mathcal W_K^{\mathrm{pd}}$. Now let
-$\Phi\in\mathcal W^{\mathrm{pd}}$.
+If \textup{(i)} holds, then Corollary~\ref{cor:compact-spectral-global-closure}
+gives $Q(\Phi)\ge0$ on $\mathcal W^{\mathrm{pd}}\cap C_c(\mathbb R)_{\mathrm{even}}$,
+hence $Q^\star(t;\Phi)\ge0$ on $\mathcal W^{\mathrm{pd}}$. Assume \textup{(ii)}.
+Fix $K>0$. By Theorem~\ref{thm:PSD-pd} we have $Q^\star(t;\Phi)\ge0$ for every
+$\Phi\in\mathcal W_K^{\mathrm{pd}}$. Now let $\Phi\in\mathcal W^{\mathrm{pd}}$.
 Choose $K$ with $\Phi\in\mathcal W_K^{\mathrm{pd}}$. Then $Q^\star(t;\Phi)\ge 0$, and
-the compatibility assumption ensures that this conclusion is independent of the chosen compact exhaustion.
+the compatibility assumption ensures that this conclusion is independent of the
+chosen compact exhaustion.
 \end{proof}
 
 \begin{remark}[Where the present draft stops]
@@ -1316,7 +1367,8 @@ The current analytic core supplies two separate ingredients:
   \item the shifted density theorem A1$'$ on the broad restriction cone $R_K$;
   \item the exact packet-Rayleigh theorem on autocorrelation packets.
 \end{enumerate}
-The target-cone audit shows that these do \emph{not} yet close RH. The public theorem package now contains the strict packet chain
+The target-cone audit shows that these do \emph{not} yet close RH. The public theorem package now contains the scalar compact stack
+\textup{(S1)}--\textup{(S4)} as primary route, plus the strict packet chain
 \textup{(P1)}--\textup{(P6)} together with the finite-symbol verification package
 \textup{(P7.3)}--\textup{(P7.6)} and the canonical-packet pilot
 Propositions~\ref{prop:canonical-half-atom-bounds} and
@@ -1326,10 +1378,11 @@ shape, however, is now the scalar compact spectral route
   W_K(u)\ge0
   \qquad\text{for every }u\in\mathbb R,
 \]
-because Propositions~\ref{prop:compact-spectral-identity} and
-\ref{prop:compact-spectral-positivity} then give positivity on all local
-convolution squares directly. The packet package remains valuable as the
-dictionary-level fallback route and verification layer. The public missing theorem is therefore:
+because \textup{(S1)} and \textup{(S2)} give positivity on all local
+convolution squares directly, \textup{(S3)} closes the compact step, and
+\textup{(S4)} packages the corrected compact-to-global transfer. The packet
+package remains valuable as the dictionary-level fallback route and
+verification layer. The public missing theorem is therefore:
 \begin{enumerate}
   \item either the scalar spectral nonnegativity
   \[
@@ -1368,8 +1421,10 @@ Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corr
   \[
     W_K(u)\ge0 \quad\text{for all }u
   \]
-  as the primary constructive route, because it proves positivity on all local
-  convolution squares directly;
+  together with the exact stack \textup{(S1)} $\Rightarrow$ \textup{(S2)}
+  $\Rightarrow$ \textup{(S3)} $\Rightarrow$ \textup{(S4)} as the primary
+  constructive route, because it proves positivity on all local convolution
+  squares directly and then closes the corrected compact-to-global transfer;
   \item keep the naive family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ background-only;
   \item reject the old `A3-pd` uniform-gap route on the dense packet family;
   \item reject the literal `prime-block PSD factorization or Hilbert lift`

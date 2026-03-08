@@ -86,7 +86,7 @@ Interpretation after `T0.1`:
 | `T0` | Guinand--Weil crosswalk | `done` | normalization remains locked |
 | `T0.1` | target-cone audit | `done` | one binary verdict written: `pivot required` |
 | `T0-pd` | corrected public target cone | `done` | control docs + manuscript use the positive-definite cone as the public RH target |
-| `S-pd` | scalar compact spectral route `W_K(u)\ge0` | `active` | exact compact spectral identity + compact spectral positivity criterion are frozen, and the live blocker is the scalar inequality `W_K(u)\ge0` on every compact |
+| `S-pd` | scalar compact spectral route `W_K(u)\ge0` | `active` | the exact stack `S1/S2/S3/S4` is frozen, and the live blocker is the scalar inequality `W_K(u)\ge0` on every compact |
 | `A1-pd` | density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}` | `frozen theorem block` | pre-square density route + autocorrelation continuity prove `\overline{\mathcal G_K^{pd}}=\mathcal W_K^{pd}` |
 | `packet-Rayleigh-naive` | naive quadratic-form bridge on `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}` | `background candidate` | keep only as an auxiliary identity; do not reuse it as the public closure family |
 | `SF-pd` | same-family bridge through `\mathcal G_{K,\mathrm{Ray}}^{pd}` | `rejected as mainline route` | rejected because the naive Rayleigh family is too large and would force false broad local positivity |
@@ -137,8 +137,8 @@ Turn the corrected theorem package into a proof-ready compact spectral stack:
 1. keep `\mathcal W_K^{pd}` and `\mathcal W^{pd}` fixed in control docs and manuscript,
 2. freeze the scalar compact spectral weight
    `W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)`,
-3. make the theorem stack
-   `S1 exact compact spectral identity -> S2 spectral positivity criterion -> S3 corrected compact positivity`
+  3. make the theorem stack
+     `S1 exact compact spectral identity -> S2 spectral positivity criterion -> S3 corrected compact positivity -> S4 corrected global closure`
    the primary constructive route,
 4. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,

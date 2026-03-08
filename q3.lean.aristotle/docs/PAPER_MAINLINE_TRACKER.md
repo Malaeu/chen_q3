@@ -67,7 +67,7 @@ Lean compatibility note:
 | `sections/A2.tex` | continuity input for corrected local closure | aligned via ambient space | continuity on the broad ambient compact-support class feeds `\mathcal W_K^{pd}` |
 | `sections/A3/*` | centered positivity engine | aligned | should feed the exact centered packet family, not a broad shifted cone |
 | `sections/RKHS/*` | prime-control input for centered positivity | aligned | same role as before, but now on the corrected target |
-| `sections/Main_closure.tex` | corrected-cone packaging | aligned after `T0.1` | scalar compact spectral route `S1/S2/S3` is now primary, packet route fallback-only |
+| `sections/Main_closure.tex` | corrected-cone packaging | aligned after `T0.1` | scalar compact spectral route `S1/S2/S3/S4` is now primary, packet route fallback-only |
 | `sections/Weil_pack.tex` | dependency summary for corrected route | aligned after `T0.1` | broad-cone route demoted; scalar spectral route primary |
 | `sections/Weil_linkage.tex` | `G6` on the corrected cone | aligned after `T0.1` | RH theorem must remain conditional on corrected local positivity |
 | `sections/T5/*` | broad-cone LF skeleton only | archived/read-only | reference, not mainline |
@@ -82,7 +82,7 @@ Lean compatibility note:
 | `packet-Rayleigh-naive` (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive quadratic-form bridge on an overlarge family | background candidate only |
 | `packet-Rayleigh-pd` (`thm:packet-rayleigh-pd`) | theorem target on `\mathcal G_K^{pd}` | exact Toeplitz form on autocorrelation packets | aligned as theorem block |
 | `A3-pd` (`prop:a3-pd-too-strong`) | old theorem target on the same dense packet family `\mathcal G_K^{pd}` | uniform packet-symbol floor on dense packets | rejected-too-strong route |
-| `S1/S2/S3` (`def:compact-spectral-weight`, `prop:compact-spectral-identity`, `prop:compact-spectral-positivity`, `thm:compact-spectral-closure`) | theorem package on the corrected local cone | scalar compact spectral route through `W_K(u)` | active primary blocker; prove `W_K(u)\ge0` on every compact |
+| `S1/S2/S3/S4` (`def:compact-spectral-weight`, `prop:compact-spectral-identity`, `prop:compact-spectral-positivity`, `thm:compact-spectral-closure`, `cor:compact-spectral-global-closure`) | theorem package on the corrected local/global cone | scalar compact spectral route through `W_K(u)` | active primary blocker; prove `W_K(u)\ge0` on every compact |
 | `PSD-pd` (`thm:PSD-pd`) | theorem target on a dense translation-compatible packet subspace behind `\mathcal G_K^{pd}` | positive semidefiniteness / corrected compact positivity through the strict finite-dictionary `P7` package, explicit bounds on `\alpha_m,\beta_m`, and the canonical half-atom pilot | active fallback blocker; pursue through the strict `P1–P8` chain with finite-symbol `P7.3`--`P7.6`, coefficient inequalities `(C1)/(C1')`, canonical pilot positivity, and Poisson verification as backup |
 | A2 continuity | theorem on ambient admissible compact tests | inherited input on `\mathcal W_K^{pd}` | aligned |
 | conditional main positivity (`thm:Main-positivity`) | positivity on corrected global cone | conditional on centered packet density in `\mathcal W_K^{pd}` | aligned after pivot |
