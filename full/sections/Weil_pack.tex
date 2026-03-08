@@ -1,12 +1,12 @@
 \begin{remark}[Dependency map]\label{rem:weil-dependency}
 The sufficiency argument now uses the corrected chain:
 \[
-  \text{(T0-pd)} \;\Longrightarrow\; \text{(S1/S2/S3/S4 scalar compact route)}
+  \text{(T0-pd)} \;\Longrightarrow\; \text{(fallback Weil-side packet route)}
   \;\Longrightarrow\; \text{(A2-pd)}
   \;\Longrightarrow\; \text{(LF-pd)}
   \;\Longrightarrow\; \text{(G6)} \;\Longrightarrow\; \text{RH}.
 \]
-Here the scalar compact route means: define the compact spectral weight
+The compact scalar package
 \[
   W_K(u):=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}\cos(u\xi_n),
 \]
@@ -16,8 +16,21 @@ prove the exact compact spectral identity
   =
   \frac1{2\pi}\int_{\mathbb R}W_K(u)\,|\widehat\Psi(u)|^2\,du,
 \]
-and close corrected compact positivity from the scalar inequality $W_K(u)\ge0$.
-This is now the primary constructive route.
+but this package is now retained only as a correct diagnostic compact-truncation
+reduction: once $\Xi_K\neq\varnothing$, $a_K^*\in L^1$ and the finite positive
+cosine prime sum obstruct the pointwise target $W_K(u)\ge0$.
+
+The fastest live route is instead the Suzuki/Yoshida generalized form-pair
+bridge
+\[
+  \text{H1 exact/asymptotic pair-intertwining}
+  \Longrightarrow
+  \text{H2 Galerkin/recovery}
+  \Longrightarrow
+  \text{H3 kernel-exclusion transfer}
+  \Longrightarrow
+  \text{H4 Suzuki Theorem 1.4}.
+\]
 
 The packet package remains active only as fallback discretization and verification:
 \textup{(A1-pd)} is the centered packet density theorem on the corrected local

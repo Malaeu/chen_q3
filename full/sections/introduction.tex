@@ -12,9 +12,17 @@ Let $\mathcal W^{\mathrm{pd}}$ be the corrected positive-definite Weil cone from
 and via Theorem~\ref{thm:Weil-criterion} this positivity is equivalent to the Riemann Hypothesis.
 \end{theorem}
 
-\noindent In the current reset, this theorem has two honest local input routes:
-the \emph{primary} scalar compact route through the weight $W_K(u)$ and the
-\emph{fallback} packet route through `A1-pd` + `packet-Rayleigh-pd` + `PSD-pd`.
+\noindent In the current reset, the fastest live new-theorem route is the
+Suzuki/Yoshida generalized form-pair bridge
+\[
+  \textup{H1} \Longrightarrow \textup{H2} \Longrightarrow \textup{H3} \Longrightarrow \textup{H4}.
+\]
+The fallback Weil-side route remains
+\[
+  \textup{A1-pd} + \textup{packet-Rayleigh-pd} + \textup{PSD-pd}.
+\]
+The compact scalar package through $W_K(u)$ is retained only as a correct
+diagnostic reduction, not as the live public route.
 
 \subsection*{Program diagram}
 Our proof is organized as a controlled-limit program: a small number of analytic bridges are composed, and each bridge is driven by explicit parameter schedules along a compact exhaustion. The active logical chain is:
@@ -22,23 +30,40 @@ Our proof is organized as a controlled-limit program: a small number of analytic
 \begin{center}
   \small
   \begin{tabular}{c}
-    `T0-pd` normalization and corrected target cone \\
+    \textup{T0-pd} normalization and corrected target cone \\
     $\Downarrow$ \\
-    scalar compact spectral weight $W_K(u)$ \\
+    Suzuki/Yoshida generalized form-pair bridge \textup{H1} $\to$ \textup{H2} $\to$ \textup{H3} $\to$ \textup{H4} \\
     $\Downarrow$ \\
-    `S1/S2/S3/S4` exact compact spectral identity + spectral positivity criterion + corrected local/global closure \\
+    no zero eigenvalue for $G_g[a]$ for every $a>0$ \\
     $\Downarrow$ \\
-    `A2` local closure on $\mathcal W_K^{\mathrm{pd}}$ \\
-    $\Downarrow$ \\
-    `LF-pd` lift to $\mathcal W^{\mathrm{pd}}$ $\Longrightarrow$ `G6` Weil criterion $\Longrightarrow$ RH
+    RH by Suzuki Theorem 1.4
   \end{tabular}
 \end{center}
 
-The present draft fully develops the analytic inputs that feed this chain, but it still leaves open the scalar compact inequality
+The present draft fully develops the analytic inputs that feed this chain, but
+the live blocker is no longer the scalar compact inequality
 \[
   W_K(u)\ge0\qquad\text{for every compact }K>0\text{ and every }u\in\mathbb R.
 \]
-This is now the fastest plausible closure route inside the architecture. The naive centered family $\Phi_{B,t}|p|^2$ is background-only, because as a closure family it is too large, and the old `A3-pd` uniform-gap route on the dense packet family is also too strong. The clean `Herglotz/Bochner' reformulation survives as a diagnostic equivalence, but the literal packet-level `prime block PSD, then Arch dominates' route is rejected on packet space. The strict finite-dictionary package is retained as fallback discretization: exact packet sesquilinear identity through the symmetrically extended compact functional (`P1`), Toeplitz reduction on each finite admissible dictionary (`P2`), prime-block obstruction (`P4`), full sequence split (`P5`), Toeplitz--Herglotz criterion (`P6`), and then the finite-symbol package (`P7.3`--`P7.6`): exact finite symbol identity, finite-symbol domination $S_J\ge0$, and Poisson-regularized verification with explicit error budget. What is now concretely missing is either the scalar proof of $W_K\ge0$, or, on the fallback packet side, a packet-level analogue of the old centered Arch floor / prime cap package: diagonal Archimedean core mass, off-diagonal Archimedean leakage, local symmetric prime-collision bounds, and the explicit sufficient inequalities \textup{(C1)} and \textup{(C1$'$)} on each admissible finite dictionary.
+On nontrivial compacts this pointwise target is obstructed: $a_K^*\in L^1$
+forces $\widehat{a_K^*}(u)\to0$, while the finite positive cosine prime sum
+over $\Xi_K$ returns arbitrarily close to its full mass infinitely often. So the
+compact spectral package `S1/S2/S3/S4` is kept only as a correct diagnostic
+reduction. The naive centered family $\Phi_{B,t}|p|^2$ is background-only,
+because as a closure family it is too large, and the old \textup{A3-pd} uniform-gap
+route on the dense packet family is also too strong. The clean
+`Herglotz/Bochner' reformulation survives as a diagnostic equivalence, but the
+literal packet-level ``prime block PSD, then Arch dominates'' route is rejected on
+packet space. The strict finite-dictionary package is retained as fallback
+discretization: exact packet sesquilinear identity through the symmetrically
+extended compact functional (`P1`), Toeplitz reduction on each finite
+admissible dictionary \textup{(P2)}, prime-block obstruction \textup{(P4)}, full sequence split
+\textup{(P5)}, Toeplitz--Herglotz criterion \textup{(P6)}, and then the finite-symbol package
+\textup{(P7.3)}--\textup{(P7.6)}: exact finite symbol identity, finite-symbol domination $S_J\ge0$,
+and Poisson-regularized verification with explicit error budget. What is now
+concretely missing is \textup{H1}: build $S_{a,M}$ and $J_a$ so that the finite
+Hermitian Q3 energy is pulled back as a generalized form pair for Suzuki's
+operator criterion.
 The first canonical test case is now fixed as the centered half-atom
 \[
   g_{\delta,t_0,0}(\xi)=\Lambda_\delta(\xi)\rho_{t_0}(\xi),
@@ -92,7 +117,20 @@ choosing $t=t_{\mathrm{crit}}=3/20$ yields $\rho(t_{\mathrm{crit}})\le c_*/4$, s
 \[
   \lambda_{\min}\!\big(T_M[P_A]-T_P^{\mathrm{Ray}}(t,M)\big)\ \ge\ \frac{c_*}{4}\ >\ 0.
 \]
-Hence the analytic core already produces a centered positivity mechanism. The remaining work is now organized in two layers. The primary layer is scalar: prove the exact compact spectral identity and then prove the compact spectral weight inequality $W_K(u)\ge0$ on every compact. The fallback layer keeps the packet package `P1--P6` and the finite-dictionary `P7` criterion on each admissible packet block: nonnegativity of the finite symbol $S_J(\theta)=A_J(\theta)-P_J(\theta)$, concretely driven by coefficient bounds on $\alpha_m$ and $\beta_m$, with Poisson-regularized finite symbols used only as a verification device and a fallback full-kernel operator package kept in reserve. Only after one of these compact routes is closed do the local closure, LF lift, and Weil criterion finish RH.
+Hence the analytic core already produces a centered positivity mechanism. The
+remaining work is now organized in two layers. The primary layer is operator
+theoretic: build the generalized form-pair bridge
+\[
+  \textup{H1} \Longrightarrow \textup{H2} \Longrightarrow \textup{H3} \Longrightarrow \textup{H4}
+\]
+from our finite Hermitian block to Suzuki's RH-equivalent nondegeneracy
+criterion. The fallback layer keeps the packet package `P1--P6` and the
+finite-dictionary `P7` criterion on each admissible packet block:
+nonnegativity of the finite symbol $S_J(\theta)=A_J(\theta)-P_J(\theta)$,
+concretely driven by coefficient bounds on $\alpha_m$ and $\beta_m$, with
+Poisson-regularized finite symbols used only as a verification device and a
+fallback full-kernel operator package kept in reserve. The compact scalar
+package remains only as a rejected diagnostic reduction.
 The new pilot computation shows that this finite-dictionary criterion is not
 vacuous: for the canonical centered half-atom and a sparse compact packet
 dictionary one really does get $S_J\ge0$ from geometric prime avoidance and a
@@ -103,12 +141,12 @@ positive Archimedean gap.
 Two features distinguish the present work.
 \begin{enumerate}
   \item \textbf{A consistent centered positivity engine.} The Archimedean symbol is defined once via periodization of the Fej\'er$\times$heat window, and its Lipschitz modulus is proved directly for that same object, eliminating mixed definitions.
-  \item \textbf{A corrected RH target.} The draft now separates the broad ambient compact-support cone from the corrected positive-definite Weil cone, and it isolates the exact knife-edge: the dense autocorrelation family survives, exact packet-Rayleigh survives on that same packet side, while the naive quadratic-form family $\Phi_{B,t}|p|^2$ is demoted to background-only because it is too large and the old `A3-pd` uniform-gap route is too strong. The live blocker is now the PSD packet-kernel theorem `PSD-pd`.
+  \item \textbf{A corrected RH target and a cleaner operator pivot.} The draft now separates the broad ambient compact-support cone from the corrected positive-definite Weil cone, rejects the compact scalar route as a public mainline on nontrivial compacts, and isolates two honest survivors: the fallback packet-kernel theorem \textup{PSD-pd} on the Weil side, and the primary live Suzuki/Yoshida bridge \textup{H1} $\to$ \textup{H2} $\to$ \textup{H3} $\to$ \textup{H4} on the operator side.
 \end{enumerate}
 
 \subsection*{Organization of the paper}
 
-Section~\ref{sec:T0} recalls the Weil class, the quadratic form $Q^\star(t;\cdot)$, and the Guinand--Weil normalization. Section~\ref{sec:A3} establishes the Archimedean Toeplitz barrier (A3). Section~\ref{sec:rkhs-prime-cap} develops the analytic RKHS prime cap. Section~\ref{sec:Weil} records the conditional implication from positivity on the corrected positive-definite cone to RH. Section~\ref{sec:Main-closure} isolates the corrected closure route, including A1-pd, exact packet-Rayleigh on autocorrelation packets, the naive Rayleigh obstruction, the rejection of the old `A3-pd` uniform-gap route, and the live theorem `PSD-pd`. Appendix~\ref{app:legacy-branch} archives the legacy broad-cone branches and reproducibility data.
+Section~\ref{sec:T0} recalls the Weil class, the quadratic form $Q^\star(t;\cdot)$, and the Guinand--Weil normalization. Section~\ref{sec:A3} establishes the Archimedean Toeplitz barrier (A3). Section~\ref{sec:rkhs-prime-cap} develops the analytic RKHS prime cap. Section~\ref{sec:Weil} records the conditional implication from positivity on the corrected positive-definite cone to RH. Section~\ref{sec:Main-closure} isolates the corrected closure route, the compact scalar obstruction, the fallback packet theorem package, and the live Suzuki/Yoshida bridge \textup{H1} $\to$ \textup{H2} $\to$ \textup{H3} $\to$ \textup{H4}. Appendix~\ref{app:legacy-branch} archives the legacy broad-cone branches and reproducibility data.
 
 \subsection*{Notation}
 

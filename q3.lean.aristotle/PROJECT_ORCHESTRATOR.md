@@ -16,20 +16,17 @@ It is **not** a session log and **not** a microtask queue.
 
 ## Mainline Chain
 
-`T0-pd -> compact spectral route -> A2 closure -> LF-pd -> G6 -> RH`
+`T0-pd -> H-bridge -> H4 -> RH`
 
 - `T0-pd`: Guinand--Weil crosswalk with the corrected positive-definite target cone.
 - `corrected cone`: local/global positive-definite Weil cone
   `\mathcal W_K^{pd} / \mathcal W^{pd}`.
-- `compact spectral route`: exact compact spectral identity plus the scalar
-  criterion
-  `W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)\ge0`
-  on every compact.
-- `A2 closure`: continuity transfer on the corrected local cone.
-- `LF-pd`: inductive-limit lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}`.
-- `G6`: Weil linkage from positivity on `\mathcal W^{pd}` to RH.
+- `H-bridge`: Suzuki/Yoshida generalized form-pair bridge
+  `H1 -> H2 -> H3 -> H4`.
+- `H4`: Suzuki Theorem 1.4 endpoint
+  `0 \notin \sigma_p(G_g[a])` for every `a>0`.
 
-Fallback packet route:
+Fallback corrected-cone route:
 
 - `A1-pd`: density of the centered autocorrelation family
   `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.
@@ -38,6 +35,9 @@ Fallback packet route:
 - `PSD-pd`: positive semidefiniteness of the packet kernel
   `K_Q(g_i,g_j):=\mathcal Q(g_i * \widetilde{g_j})` on that same dense
   pre-packet space.
+- `A2 closure`: continuity transfer on the corrected local cone.
+- `LF-pd`: inductive-limit lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}`.
+- `G6`: Weil linkage from positivity on `\mathcal W^{pd}` to RH.
 
 Broad-cone route status:
 
@@ -86,14 +86,14 @@ Interpretation after `T0.1`:
 | `T0` | Guinand--Weil crosswalk | `done` | normalization remains locked |
 | `T0.1` | target-cone audit | `done` | one binary verdict written: `pivot required` |
 | `T0-pd` | corrected public target cone | `done` | control docs + manuscript use the positive-definite cone as the public RH target |
-| `S-pd` | scalar compact spectral route `W_K(u)\ge0` | `active` | the exact stack `S1/S2/S3/S4` is frozen, and the live blocker is the scalar inequality `W_K(u)\ge0` on every compact |
+| `S-pd` | scalar compact spectral route `W_K(u)\ge0` | `rejected as public mainline route` | retained only as a correct diagnostic compact-truncation package `S1/S2/S3/S4`; rejected because `a_K^*\in L^1` forces `\widehat{a_K^*}(u)\to0` while the finite cosine prime sum recurs near its full positive mass whenever `\Xi_K\neq\varnothing` |
 | `A1-pd` | density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}` | `frozen theorem block` | pre-square density route + autocorrelation continuity prove `\overline{\mathcal G_K^{pd}}=\mathcal W_K^{pd}` |
 | `packet-Rayleigh-naive` | naive quadratic-form bridge on `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}` | `background candidate` | keep only as an auxiliary identity; do not reuse it as the public closure family |
 | `SF-pd` | same-family bridge through `\mathcal G_{K,\mathrm{Ray}}^{pd}` | `rejected as mainline route` | rejected because the naive Rayleigh family is too large and would force false broad local positivity |
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `\mathcal Q(\Psi_c * \widetilde{\Psi_c})` with the finite symbol integral `\frac{1}{2\pi}\int S_J(\theta)|p_c(\theta)|^2\,d\theta` on each admissible dictionary |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
 | `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `fallback constructive route` | finite-dictionary positivity via explicit coefficient bounds on `\alpha_m,\beta_m`, yielding `S_J=A_J-P_J\ge0` on each admissible block |
-| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `(G_g[a],J_a)` from Q3 finite sections to the RH-equivalent operator criterion | `candidate alternative pivot under audit` | concrete construction of `S_{a,M}`, `J_a`, and the audited theorem package `H1 -> H2 -> H3 -> H4` |
+| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `(G_g[a],J_a)` from Q3 finite sections to the RH-equivalent operator criterion | `active primary live route` | concrete construction of `S_{a,M}`, `J_a`, and the theorem package `H1 -> H2 -> H3 -> H4` |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
@@ -105,14 +105,19 @@ Interpretation after `T0.1`:
 - The broad target cone `W_K / \mathcal W` is too wide for the honest Weil interface.
 - Current `G1.6` Aristotle work stays background only. It may still land local support lemmas,
   but it no longer determines the architectural frontier.
-- New live frontier:
-  1. make the scalar compact spectral route primary:
-     exact compact spectral identity
-     -> scalar criterion `W_K(u)\ge0`
-     -> corrected compact positivity on `\mathcal W_K^{pd}`;
-  2. treat the finite-dictionary packet package only as fallback discretization /
-     verification for that scalar route;
-  3. keep `A1-pd` frozen as the dense corrected-cone input on `\mathcal G_K^{pd}`;
+New live frontier:
+  1. promote the Suzuki/Yoshida generalized form-pair bridge to the primary
+     live route:
+     `H1` exact/asymptotic pair-intertwining through `S_{a,M}` and `J_a`
+     -> `H2` Galerkin/recovery
+     -> `H3` kernel-exclusion transfer
+     -> `H4` RH via Suzuki Theorem 1.4;
+  2. freeze the compact scalar package `S1/S2/S3/S4` only as a correct
+     diagnostic reduction, and reject its pointwise target `W_K(u)\ge0` as a
+     public compact mainline whenever `\Xi_K\neq\varnothing`;
+  3. treat the finite-dictionary packet package only as fallback discretization /
+     verification after the scalar-route obstruction;
+  4. keep `A1-pd` frozen as the dense corrected-cone input on `\mathcal G_K^{pd}`;
   4. keep the naive Rayleigh family
      `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}`
      background-only after the local-bump obstruction;
@@ -143,15 +148,17 @@ Interpretation after `T0.1`:
 
 ## Active Milestone
 
-Turn the corrected theorem package into a proof-ready compact spectral stack:
+Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
 
 1. keep `\mathcal W_K^{pd}` and `\mathcal W^{pd}` fixed in control docs and manuscript,
-2. freeze the scalar compact spectral weight
-   `W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)`,
-  3. make the theorem stack
-     `S1 exact compact spectral identity -> S2 spectral positivity criterion -> S3 corrected compact positivity -> S4 corrected global closure`
-   the primary constructive route,
-4. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
+2. freeze the compact scalar package `S1/S2/S3/S4` only as a rejected public
+   compact-truncation route and diagnostic formal reduction,
+3. make the theorem stack
+   `H1 exact/asymptotic pair-intertwining -> H2 Galerkin/recovery -> H3 kernel-exclusion transfer -> H4 Suzuki Theorem 1.4`
+   the primary live route,
+4. build the first candidate construction of `S_{a,M}` and `J_a` in RKHS/Gram
+   language, before attempting any abstract operator-limit theorem,
+5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family
    `\mathcal G_{K,\mathrm{Ray}}^{pd}` background-only after the obstruction,
@@ -213,10 +220,17 @@ Turn the corrected theorem package into a proof-ready compact spectral stack:
 - The literal packet-level `prime-block PSD factorization or Hilbert lift`
   theorem shape is false on dense packet spaces: the packet prime block is not
   positive semidefinite in general.
+- The compact scalar package
+  `S1 exact compact spectral identity -> S2 scalar compact criterion -> S3 corrected compact positivity -> S4 corrected global closure`
+  is mathematically correct as a compact-truncation reduction, but it is no longer
+  a viable public mainline once `\Xi_K\neq\varnothing`: `a_K^*\in L^1` implies
+  `\widehat{a_K^*}(u)\to0`, while the finite cosine prime sum recurs arbitrarily
+  close to its full positive mass.
 - The primary remaining theorem package is now:
-  scalar compact spectral identity
-  -> scalar compact criterion `W_K(u)\ge0`
-  -> corrected compact positivity on `\mathcal W_K^{pd}`;
+  `H1` exact/asymptotic pair-intertwining through `S_{a,M}` and `J_a`
+  -> `H2` Galerkin/recovery on the generalized form pair
+  -> `H3` kernel-exclusion transfer
+  -> `H4` Suzuki Theorem 1.4;
   the fallback packet package remains:
   exact packet sesquilinear identity
   -> prime-block obstruction
@@ -228,14 +242,13 @@ Turn the corrected theorem package into a proof-ready compact spectral stack:
      (with measure-level/full-symbol language retained only as secondary diagnostic notation)
      or a new operator package for the full kernel
   -> `PSD-pd`.
-- The strongest alternative operator pivot is now the Suzuki/Yoshida generalized
-  form-pair bridge:
+- The Suzuki/Yoshida generalized form-pair bridge is now the strongest live route:
   `H1` exact/asymptotic intertwining through `S_{a,M}` and `J_a`
   -> `H2` Galerkin/recovery on the generalized pair
   -> `H3` kernel-exclusion transfer
   -> `H4` RH via Suzuki Theorem 1.4.
-  Until `H1` is concretely built, this route stays audited alternative, not the
-  public mainline.
+  Until `H1` is concretely built, the route remains incomplete, but it is now
+  the primary live frontier.
 - The canonical centered half-atom pilot already shows that this finite-symbol
   criterion is genuinely nonvacuous on sparse compact dictionaries, while still
   falling far short of dense closure.
@@ -325,13 +338,13 @@ Legacy narrative surfaces are reference-only:
   packet. On the compact `K=0.2` with dictionary `J={0,1}`, `Δ=0.15`, prime
   collisions vanish for `\delta<0.0124`, reducing positivity to a strictly
   positive Archimedean gap.
-- 2026-03-08: the scalar compact spectral route is now primary:
-  exact compact spectral identity
-  -> scalar inequality `W_K(u)\ge0`
-  -> corrected compact positivity.
-  The finite-dictionary packet package remains active only as fallback
-  discretization / verification for that scalar route.
-- 2026-03-08: Suzuki/Yoshida operator nondegeneracy is frozen as the leading
-  alternative pivot under audit, but only in the generalized form-pair shape
-  `(G_g[a],J_a)`. The naive raw-operator / plain-`L^2` gap transfer is rejected;
-  the real missing brick is `H1`, the construction of `S_{a,M}` and `J_a`.
+- 2026-03-08: the compact scalar route `W_K(u)\ge0` is rejected as a public
+  mainline on any compact with active nodes: `a_K^*\in L^1` forces
+  `\widehat{a_K^*}(u)\to0`, while the finite cosine prime sum over `\Xi_K`
+  returns arbitrarily close to its full positive mass. The package
+  `S1/S2/S3/S4` is kept only as a correct diagnostic compact-truncation reduction.
+- 2026-03-08: Suzuki/Yoshida operator nondegeneracy in the generalized
+  form-pair shape `(G_g[a],J_a)` is promoted from alternative pivot to the
+  primary live route. The naive raw-operator / plain-`L^2` gap transfer is
+  rejected; the real missing brick is `H1`, the construction of `S_{a,M}` and
+  `J_a`.

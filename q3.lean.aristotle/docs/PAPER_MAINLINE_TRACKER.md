@@ -29,7 +29,7 @@ It is **not** the execution queue and **not** the master gate-state file.
 | `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive centered Rayleigh family `\operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}` | background candidate; too large for closure |
 | `a_K^*` | compact truncation `a^*1_{[-K,K]}` | active spectral notation |
 | `\Xi_K` | active positive prime nodes on `[0,K]` | active spectral notation |
-| `W_K(u)` | scalar compact spectral weight `\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)` | active primary frontier object |
+| `W_K(u)` | scalar compact spectral weight `\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)` | diagnostic compact-truncation object; rejected as public frontier once `\Xi_K\neq\varnothing` |
 | `S_{g,\Delta}(\theta)` | packet Toeplitz symbol built from `\kappa_m=\mathcal Q(h(\cdot-m\Delta))` | structural object; no longer the public theorem target by itself |
 | `K_Q(g_i,g_j)` | packet kernel `\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active hard-theorem object |
 | `G_g[a], J_a, E_{a,M}, S_{a,M}` | Suzuki/Yoshida generalized form-pair bridge data | audited alternative operator notation |
@@ -47,14 +47,14 @@ Lean compatibility note:
 | `T0` | Guinand--Weil crosswalk | done | `sections/T0.tex`, `sections/Weil_linkage.tex` |
 | `T0.1` | target-cone audit | done, verdict `pivot required` | audit memo + control plane |
 | `T0-pd` | corrected positive-definite target cone | done in docs/manuscript | `sections/scope_notation.tex`, `sections/Notation/qstar_contract.tex`, `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
-| `S-pd` | scalar compact spectral route through `W_K(u)` | active primary route | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/introduction.tex`, `sections/abstract.tex` |
+| `S-pd` | scalar compact spectral route through `W_K(u)` | rejected compact-truncation route | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/introduction.tex`, `sections/abstract.tex` |
 | `A1-pd` | density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}` | frozen theorem block | `sections/A1prime.tex`, `sections/Main_closure.tex` |
 | `packet-Rayleigh-naive` | identify `Q^\star(t;\Phi_{B,t,p})` with the controlled Toeplitz/RKHS quadratic form on the naive family `\mathcal G_{K,\mathrm{Ray}}^{pd}` | background candidate | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `SF-pd` | same-family bridge through the naive family `\mathcal G_{K,\mathrm{Ray}}^{pd}` | rejected as mainline route | historical note only |
 | `packet-Rayleigh-pd` | exact finite Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` with finite symbol `S_J` on each admissible dictionary | frozen theorem block | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | rejected-too-strong route | `sections/Main_closure.tex`, `sections/scope_notation.tex` |
 | `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active fallback route; finite-dictionary reduction and coefficient-bounding package explicit | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
-| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `H1 -> H2 -> H3 -> H4` | audited alternative operator pivot | `sections/Main_closure.tex`, `docs/insights/suzuki_form_pair_bridge_2026_03_08.md` |
+| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `H1 -> H2 -> H3 -> H4` | active primary live route | `sections/Main_closure.tex`, `docs/insights/suzuki_form_pair_bridge_2026_03_08.md` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
 | `A2-pd` | continuity on the corrected cone | inherited input | `sections/A2.tex`, `sections/Main_closure.tex` |
 | `LF-pd` | LF lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}` | skeleton available, still conditional | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
@@ -69,7 +69,7 @@ Lean compatibility note:
 | `sections/A2.tex` | continuity input for corrected local closure | aligned via ambient space | continuity on the broad ambient compact-support class feeds `\mathcal W_K^{pd}` |
 | `sections/A3/*` | centered positivity engine | aligned | should feed the exact centered packet family, not a broad shifted cone |
 | `sections/RKHS/*` | prime-control input for centered positivity | aligned | same role as before, but now on the corrected target |
-| `sections/Main_closure.tex` | corrected-cone packaging | aligned after `T0.1` | scalar compact spectral route `S1/S2/S3/S4` is now primary, packet route fallback-only |
+| `sections/Main_closure.tex` | corrected-cone packaging plus operator-pivot audit | aligned after compact-spectral obstruction | Suzuki/Yoshida `H-bridge` is now the primary live route; scalar compact package is diagnostic-only; packet route remains fallback |
 | `sections/Weil_pack.tex` | dependency summary for corrected route | aligned after `T0.1` | broad-cone route demoted; scalar spectral route primary |
 | `sections/Weil_linkage.tex` | `G6` on the corrected cone | aligned after `T0.1` | RH theorem must remain conditional on corrected local positivity |
 | `sections/T5/*` | broad-cone LF skeleton only | archived/read-only | reference, not mainline |
@@ -84,8 +84,8 @@ Lean compatibility note:
 | `packet-Rayleigh-naive` (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive quadratic-form bridge on an overlarge family | background candidate only |
 | `packet-Rayleigh-pd` (`thm:packet-rayleigh-pd`) | theorem target on `\mathcal G_K^{pd}` | exact Toeplitz form on autocorrelation packets | aligned as theorem block |
 | `A3-pd` (`prop:a3-pd-too-strong`) | old theorem target on the same dense packet family `\mathcal G_K^{pd}` | uniform packet-symbol floor on dense packets | rejected-too-strong route |
-| `S1/S2/S3/S4` (`def:compact-spectral-weight`, `prop:compact-spectral-identity`, `prop:compact-spectral-positivity`, `thm:compact-spectral-closure`, `cor:compact-spectral-global-closure`) | theorem package on the corrected local/global cone | scalar compact spectral route through `W_K(u)` | active primary blocker; prove `W_K(u)\ge0` on every compact |
-| `PSD-pd` (`thm:PSD-pd`) | theorem target on a dense translation-compatible packet subspace behind `\mathcal G_K^{pd}` | positive semidefiniteness / corrected compact positivity through the strict finite-dictionary `P7` package, explicit bounds on `\alpha_m,\beta_m`, and the canonical half-atom pilot | active fallback blocker; pursue through the strict `P1–P8` chain with finite-symbol `P7.3`--`P7.6`, coefficient inequalities `(C1)/(C1')`, canonical pilot positivity, and Poisson verification as backup |
+| `S1/S2/S3/S4` (`def:compact-spectral-weight`, `prop:compact-spectral-identity`, `prop:compact-spectral-positivity`, `thm:compact-spectral-closure`, `cor:compact-spectral-global-closure`) | theorem package on the corrected local/global cone | compact-truncation scalar reduction through `W_K(u)` | frozen as a correct diagnostic package; rejected as the live public route once `\Xi_K\neq\varnothing` |
+| `PSD-pd` (`thm:PSD-pd`) | theorem target on a dense translation-compatible packet subspace behind `\mathcal G_K^{pd}` | positive semidefiniteness / corrected compact positivity through the strict finite-dictionary `P7` package, explicit bounds on `\alpha_m,\beta_m`, and the canonical half-atom pilot | active fallback blocker; pursue through the strict `P1–P8` chain with finite-symbol `P7.3`--`P7.6`, coefficient inequalities `(C1)/(C1')`, canonical pilot positivity, and Poisson verification as backup if `H1` stalls |
 | A2 continuity | theorem on ambient admissible compact tests | inherited input on `\mathcal W_K^{pd}` | aligned |
 | conditional main positivity (`thm:Main-positivity`) | positivity on corrected global cone | conditional on centered packet density in `\mathcal W_K^{pd}` | aligned after pivot |
 | local closure proposition | compact closure from a dense positive family inside `\mathcal W_K^{pd}` | theorem on `\mathcal W_K^{pd}` | aligned after pivot |
@@ -134,19 +134,19 @@ Interpretation rule after `T0.1`:
 
 ## Unresolved Dependencies
 
-1. First quantitative pilot for the scalar compact inequality:
-   prove `W_K(u)\ge0` on one small compact by explicit lower/upper bounds on
-   `\widehat{a_K^*}(u)` and the finite cosine prime sum, before attempting an
-   all-`K` statement.
-2. Clean comparison between the new scalar compact spectral route and the old
-   centered Toeplitz/RKHS bridge, so that reuse boundaries are explicit.
-3. Freeze the Suzuki/Yoshida generalized form-pair bridge as the leading
-   alternative operator pivot:
+1. Freeze the compact spectral obstruction in the paper-facing dependency map:
+   `W_K(u)\ge0` cannot be the public compact mainline once `\Xi_K\neq\varnothing`,
+   because `a_K^*\in L^1` forces `\widehat{a_K^*}(u)\to0` while the finite cosine
+   prime sum returns arbitrarily close to its full positive mass.
+2. Freeze the Suzuki/Yoshida generalized form-pair bridge as the primary live route:
    `H1` exact/asymptotic intertwining through `S_{a,M}` and `J_a`
    -> `H2` Galerkin/recovery
    -> `H3` kernel-exclusion transfer
    -> `H4` Suzuki RH criterion.
    The honest blocker there is `H1`, not a raw operator-gap theorem.
+3. Candidate construction of `S_{a,M}` and `J_a` in RKHS/Gram language,
+   rather than raw orthonormal Fourier restriction, so that the finite
+   Q3 energy is pulled back as a generalized form pair.
 4. Pre-square density theorem on `C_c^\infty([-K/2,K/2])` strong enough to feed
    `A1-pd` through autocorrelation continuity if the fallback packet route is needed.
 5. `A1-pd`: proof of density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.

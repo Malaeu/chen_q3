@@ -62,7 +62,7 @@ The current draft already supplies:
 
 What remains unresolved in the corrected route is now sharply localized:
 \begin{itemize}
-  \item \textbf{(compact spectral route, primary constructive target)} The fastest corrected compact route is now the scalar spectral package
+  \item \textbf{(compact spectral route, diagnostic package)} The scalar spectral package
   \[
     \textup{S1 exact compact spectral identity}
     \Longrightarrow
@@ -1374,11 +1374,12 @@ Weil criterion.
 \begin{theorem}[Conditional main positivity on $\mathcal W^{\mathrm{pd}}$]\label{thm:Main-positivity}
 Assume \textup{(T0)}, \textup{(A2)}, and one of the following routes:
 \begin{enumerate}
-  \item[\textup{(i)}] the scalar compact route \textup{(S1)}--\textup{(S4)};
-  \item[\textup{(ii)}] Theorem~\ref{thm:A1-pd},
-  Theorem~\ref{thm:packet-rayleigh-pd}, Theorem~\ref{thm:PSD-pd}, and
-  compatibility of these local positivity statements with the natural
-  embeddings $\mathcal W_K^{\mathrm{pd}}\hookrightarrow \mathcal W_{K'}^{\mathrm{pd}}$.
+  \item[\textup{(i)}] the fallback packet route given by
+  Theorem~\ref{thm:A1-pd}, Theorem~\ref{thm:packet-rayleigh-pd}, and
+  Theorem~\ref{thm:PSD-pd}, together with corrected local/global closure;
+  \item[\textup{(ii)}] the Suzuki/Yoshida generalized form-pair bridge
+  \textup{H1} $\Rightarrow$ \textup{H2} $\Rightarrow$ \textup{H3} $\Rightarrow$
+  \textup{H4}.
 \end{enumerate}
 Then
 \[
@@ -1455,14 +1456,17 @@ $Q^\star(t;\Phi)\ge 0$ for every $\Phi\in\mathcal W_K^{\mathrm{pd}}$.
 \begin{remark}[Exact remaining mathematical task]\label{rem:compatibility-missing-scalar}
 Proposition~\ref{prop:compatibility-reduction-shifted-atoms} shows that the corrected local closure step is routine once a dense positive family inside $\mathcal W_K^{\mathrm{pd}}$ has been identified. The unresolved work is therefore:
 \begin{enumerate}
-  \item treat the scalar compact spectral route
+  \item treat the scalar compact package
+  \[
+    \textup{(S1)}\Rightarrow\textup{(S2)}\Rightarrow\textup{(S3)}\Rightarrow\textup{(S4)}
+  \]
+  only as a correct compact-truncation reduction, not as the live public route:
+  once $\Xi_K\neq\varnothing$, the pointwise target
   \[
     W_K(u)\ge0 \quad\text{for all }u
   \]
-  together with the exact stack \textup{(S1)} $\Rightarrow$ \textup{(S2)}
-  $\Rightarrow$ \textup{(S3)} $\Rightarrow$ \textup{(S4)} as the primary
-  constructive route, because it proves positivity on all local convolution
-  squares directly and then closes the corrected compact-to-global transfer;
+  is obstructed by $a_K^*\in L^1$ together with recurrence of the finite cosine
+  prime sum;
   \item keep the naive family $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ background-only;
   \item reject the old `A3-pd` uniform-gap route on the dense packet family;
   \item reject the literal `prime-block PSD factorization or Hilbert lift`
@@ -1490,36 +1494,44 @@ corrected closure route without reopening the LF or Weil tail.
 \end{remark}
 
 \begin{remark}[Two surviving strategy families for PSD-pd]\label{rem:psd-pd-strategies}
-At the current state of the draft there are two honest ways to attack
-Theorem~\ref{thm:PSD-pd}.
+At the current state of the draft there are two honest surviving constructive
+families after the rejection of the compact scalar route as a live public
+mainline.
 \begin{enumerate}
-  \item \textbf{Herglotz/Bochner route (secondary diagnostic route).} Reinterpret
-  the packet-kernel coefficients as Fourier data of a positive-definite sequence
-  or measure, and deduce positive semidefiniteness of every finite packet-kernel
-  matrix from that representation. This is the clean equivalence language for the
-  target theorem, but by itself it does not yet provide the project-local
-  constructive proof.
-  \item \textbf{Direct full-kernel route (primary constructive route).}
-  Keep the compact spectral weight
+  \item \textbf{Suzuki/Yoshida generalized form-pair route (primary live route).}
+  Reuse the strongest existing Q3 brick
   \[
-    W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}\cos(u\xi_n)
+    T_M[P_A]-T_P^{(M)}
   \]
-  as the first scalar target. By
-  Propositions~\ref{prop:compact-spectral-identity} and
-  \ref{prop:compact-spectral-positivity}, the nonnegativity of $W_K$ implies
-  positivity on all local convolution squares directly. The finite packet
-  apparatus then survives as a discretized fallback / verification route. In
-  that fallback route one keeps the exact packet sesquilinear form on a dense
-  translation-compatible packet subspace, uses
+  by building a generalized form-pair bridge
+  \[
+    (G_g[a],J_a),\qquad S_{a,M}:P_M\to E_{a,M}\subset L^2(-a,a),
+  \]
+  with exact or asymptotic pair-intertwining
+  \[
+    S_{a,M}^*G_g[a]S_{a,M}
+    =
+    \kappa(a)\bigl(T_M[P_A]-T_P^{(M)}\bigr)+R_{a,M},
+    \qquad
+    S_{a,M}^*J_aS_{a,M}=I.
+  \]
+  The live theorem stack is:
+  \[
+    \textup{H1 exact/asymptotic pair-intertwining}
+    \Longrightarrow
+    \textup{H2 Galerkin/recovery}
+    \Longrightarrow
+    \textup{H3 kernel-exclusion transfer}
+    \Longrightarrow
+    \textup{H4 Suzuki Theorem 1.4}.
+  \]
+  The honest blocker is H1: the construction of $S_{a,M}$ and $J_a$ in
+  RKHS/Gram language.
+  \item \textbf{Fallback packet route.} Keep the exact packet sesquilinear form
+  on a dense translation-compatible packet subspace, use
   Proposition~\ref{prop:packet-prime-not-psd} to rule out standalone PSD control
   of the prime block, and then attack positivity of the full kernel directly.
-  The live theorem stack is:
-  compact spectral identity
-  $\Longrightarrow$
-  scalar spectral positivity criterion
-  $\Longrightarrow$
-  corrected compact positivity,
-  with the packet route kept as the secondary constructive reduction:
+  The fallback theorem stack is:
   \textup{P1} exact packet sesquilinear identity
   $\Longrightarrow$
   \textup{P2} Toeplitz reduction
@@ -1542,14 +1554,12 @@ Theorem~\ref{thm:PSD-pd}.
   $\Longrightarrow$
   Theorem~\ref{thm:PSD-pd}.
 \end{enumerate}
-Neither route is yet written in the current draft, but these are now the exact
-two strategy families that survive the rejection of the old uniform-gap theorem
-shape.
+These are now the exact two strategy families that survive the rejection of the
+old uniform-gap theorem shape and the compact scalar obstruction.
 \end{remark}
 
 \begin{remark}[Alternative operator pivot via Suzuki/Yoshida]\label{rem:suzuki-operator-pivot}
-There is one further route which is not the public mainline, but which is
-currently the strongest audited alternative operator pivot. The finite Q3 block
+There is one further route which is now the primary live operator pivot. The finite Q3 block
 \[
   T_M[P_A]-T_P^{(M)}
 \]
@@ -1587,8 +1597,26 @@ audited theorem stack is then:
   \textup{H4 Suzuki Theorem 1.4}.
 \]
 This route is attractive because it reuses the strongest existing finite Q3
-brick directly and bypasses the slow cone-propagation burden; but it remains
-under audit, and the real missing brick is H1 rather than H3.
+brick directly and bypasses the slow cone-propagation burden. The real missing
+brick is H1 rather than H3.
+\end{remark}
+
+\begin{remark}[Compact scalar obstruction]\label{rem:compact-scalar-obstruction}
+The compact spectral package \textup{(S1)}--\textup{(S4)} is mathematically
+correct as a compact-truncation reduction, but it is no longer a viable public
+mainline once $\Xi_K\neq\varnothing$. Indeed, $a_K^*\in L^1(\mathbb R)$, so
+\[
+  \widehat{a_K^*}(u)\to0 \qquad (|u|\to\infty)
+\]
+by the Riemann--Lebesgue lemma. On the other hand, the prime contribution
+\[
+  \sum_{\xi_n\in\Xi_K}\frac{2\Lambda(n)}{\sqrt n}\cos(u\xi_n)
+\]
+is a finite positive cosine sum, and by simultaneous approximation it returns
+arbitrarily close to its full positive mass infinitely often. Therefore the
+pointwise target $W_K(u)\ge0$ cannot serve as the live compact mainline on any
+compact with active nodes. In the current draft \textup{(S1)}--\textup{(S4)}
+are retained only as a correct diagnostic reduction.
 \end{remark}
 
 \begin{remark}[Why shifted A1$'$ is now auxiliary]\label{rem:G1-frozen-target}

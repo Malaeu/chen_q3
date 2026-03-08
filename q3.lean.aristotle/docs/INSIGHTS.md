@@ -119,12 +119,36 @@ Correct audited package:
 
 Operational consequence:
 
-- keep the scalar compact route as public mainline;
-- keep the Suzuki bridge as the leading alternative operator pivot under audit;
+- reject the scalar compact route as a public mainline on nontrivial compacts;
+- promote the Suzuki bridge to the primary live route;
 - the real missing brick there is `H1`, not `H3`.
 
 Detailed note:
 - `docs/insights/suzuki_form_pair_bridge_2026_03_08.md`
+
+## Final result (2026-03-08) — compact scalar route rejected; Suzuki H-bridge promoted to the primary live route
+
+Новая развилка уже жёсткая, а не stylistic:
+
+- compact spectral package `S1/S2/S3/S4` is mathematically correct as a compact-truncation reduction;
+- but its live target
+  `W_K(u)=\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K} w_n\cos(u\xi_n)\ge0`
+  cannot be the public compact mainline once `\Xi_K\neq\varnothing`;
+- reason: `a_K^*\in L^1`, so `\widehat{a_K^*}(u)\to0`, while by simultaneous
+  approximation the finite positive cosine sum over `\Xi_K` returns arbitrarily
+  close to its full mass infinitely often;
+- therefore the scalar route is retained only as a correct diagnostic package,
+  not as the live RH-closing target.
+
+Operational consequence:
+
+- the Suzuki/Yoshida generalized form-pair bridge
+  `H1 -> H2 -> H3 -> H4`
+  is now the primary live route;
+- the fallback corrected-cone route remains
+  `A1-pd -> packet-Rayleigh-pd -> PSD-pd -> A2 closure -> LF-pd -> G6 -> RH`;
+- the real top-level blocker is now `H1`, the construction of
+  `S_{a,M}` and `J_a` in RKHS/Gram language.
 
 ## Final result (2026-03-08) — finite-dictionary P7 replaces the measure-level immediate target
 
