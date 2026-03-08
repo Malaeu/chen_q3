@@ -2952,11 +2952,12 @@ Concrete synthesis:
 - the plus-tail carries the filter `1+z`, the minus-tail carries `1+z^{-1}`;
 - if `Q_{M+1}\ge c(a)I`, then
   `\widetilde Q_{M,N}\ge c(a)B_{M,N}` with no `1/4` loss;
-- the only remaining bulk theorem is exact four-block comparison
+- the narrowest remaining bulk theorem is the raw-entry identity
+  `w_{rs}(a)=\kappa(a)q_{rs}`
+  on the two families `(+,+)` and `(+,-)`,
+  while the four filtered blocks
   `(++), (+-), (-+), (--)`
-  between
-  `[ \langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle ]`
-  and the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`;
+  stay as the derived consequence layer;
 - after the bulk match, the only other live brick is the finite-dimensional
   Suzuki cap.
 
@@ -2972,8 +2973,8 @@ Verdict:
 Target node and wiring:
 - the public route remains `H1^f -> H2^f -> H3^f -> H4^f`;
 - `H2^f/H3^f/H4^f` stay structurally frozen;
-- the active `H1^f` brick is now written through the four Suzuki-side bulk
-  blocks `(++),(+-),(-+),(--)`.
+- the active `H1^f` brick is now strictly narrower than the old four-block
+  formulation.
 
 Concrete synthesis:
 - the Suzuki-side entries are now frozen as
@@ -2983,14 +2984,46 @@ Concrete synthesis:
   `\psi_n^-[a]=\chi_{-n}[a]+\chi_{-(n+1)}[a]`;
 - each block has an exact spectral formula through
   `\widehat{\psi_n^\pm}`;
-- the live bulk checklist is now blockwise:
+- the live bulk checklist is now:
+  raw `(+,+)` and `(+,-)` identities first,
+  then the filtered block equalities
   `M^{++}, M^{+-}, M^{-+}, M^{--}`
-  versus the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`;
+  as formal consequences against the corresponding blocks of
+  `\kappa(a)\widetilde Q_{M,N}`;
 - after the bulk match, the only remaining H-bridge brick is the
   finite-dimensional Suzuki cap.
 
 Verdict:
 - the next theorem is no longer “construct `S` and `J` in general”;
-- it is the exact four-block bulk comparison plus a separate cap-positivity
+- it is the raw bulk identity on two families plus a separate cap-positivity
   problem;
 - semilocal machinery stays engineering-only for this same `H1^f`.
+
+## Final result (2026-03-08) — raw-entry reduction narrows `H1^f` to two bulk families
+
+Target node and wiring:
+- the public route remains `H1^f -> H2^f -> H3^f -> H4^f`;
+- `H2^f/H3^f/H4^f` stay structurally frozen;
+- the live `H1^f` blocker is no longer “match all four filtered blocks directly”.
+
+Concrete refinement:
+- freeze the raw two-sided Section 8 entries
+  `q_{rs}=\langle Q e_s,e_r\rangle`;
+- freeze the raw Suzuki/Weil entries
+  `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`;
+- reduce the primary raw bulk theorem to
+  `w_{rs}(a)=\kappa(a)q_{rs}`
+  on the two families `(+,+)` and `(+,-)`;
+- keep the four filtered block equalities
+  `(++), (+-), (-+), (--)`
+  only as the filtered consequence layer obtained from `\Delta_{M,N}` plus
+  Hermitian symmetry;
+- keep the finite-dimensional Suzuki cap as the only second brick after the raw
+  bulk match.
+
+Verdict:
+- the active theorem target is now strictly narrower than the previous
+  four-block formulation;
+- the old four-block note remains valid, but only as the filtered consequence
+  layer and no longer as the narrowest active frontier;
+- semilocal machinery stays engineering-only for the same `H1^f`.

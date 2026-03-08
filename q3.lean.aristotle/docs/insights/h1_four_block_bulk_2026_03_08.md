@@ -6,7 +6,9 @@ Active refinement of the symmetric two-sided filtered Suzuki bridge.
 
 This note does not change the public theorem stack
 `H1^f -> H2^f -> H3^f -> H4^f`.
-It freezes the next exact bulk object inside `H1^f`.
+It freezes the filtered consequence layer inside `H1^f`.
+The narrower live theorem target is now recorded separately in
+`h1_raw_entry_reduction_2026_03_08.md`.
 
 ## Frozen notation
 
@@ -39,7 +41,7 @@ and
 
 ## Matching target
 
-The live bulk theorem is now:
+The filtered consequence layer is now:
 
 - `M^{++}(a)` vs `\kappa(a)\widetilde Q_{M,N}^{++}`
 - `M^{+-}(a)` vs `\kappa(a)\widetilde Q_{M,N}^{+-}`
@@ -50,6 +52,8 @@ The only acceptable normalization freedom is the common scalar `\kappa(a)`.
 No extra section-boundary bookkeeping should remain inside the filtered bulk,
 because the active Q3-side object is already
 `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`.
+However, these four filtered equalities are no longer the narrowest active
+frontier once the raw-entry reduction is frozen.
 
 ## Remaining brick after bulk
 

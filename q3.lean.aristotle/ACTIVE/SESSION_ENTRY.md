@@ -69,6 +69,33 @@
 - `S1/S2/S3/S4` — правильный, но diagnostic-only compact-truncation package;
 - `PSD-pd` — честный fallback Weil-side route, если `H1` stalled.
 
+## Текущий практический next step
+
+Если нет нового user redirect, текущий честный frontier такой:
+
+- symmetric two-sided filtered H-bridge:
+  `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
+  `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
+  `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
+- next exact blocker:
+  raw bulk identity
+  `w_{rs}(a)=\kappa(a)q_{rs}`
+  on the two raw families `(+,+)` and `(+,-)`,
+  where `q_{rs}=\langle Q e_s,e_r\rangle` on the Section 8 side and
+  `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})` on the Suzuki side;
+- derived filtered consequence:
+  the four bulk blocks
+  `M^{++}, M^{+-}, M^{-+}, M^{--}`
+  versus the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`,
+  with `(--),(-+)` obtained from `(++),(+-)` by
+  conjugation/self-adjoint symmetry;
+- after the raw bulk match:
+  separate finite-dimensional Suzuki cap positivity;
+- semilocal-assisted refinement after that:
+  finite-prime packet states `\eta_m^{(S,a)}`, Gram matrix
+  `\Gamma_{a,M}^{(S)}`, and normalized synthesis
+  `\widetilde S_{a,M}^{(S)}` only as engineering support for the same `H1^f`.
+
 ## Самые важные правила мышления
 
 1. Не чинить то, что уже переведено в background-only.
@@ -224,11 +251,17 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
   `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
 - next exact blocker:
-  theorem-ready four filtered bulk blocks
-  `(++), (+-), (-+), (--)`
-  with Suzuki-side entries
-  `M_{mn}^{\sigma\tau}(a)=\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle`
-  versus the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`;
+  raw bulk identity
+  `w_{rs}(a)=\kappa(a)q_{rs}`
+  on the two raw families `(+,+)` and `(+,-)`,
+  where `q_{rs}=\langle Q e_s,e_r\rangle` on the Section 8 side and
+  `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})` on the Suzuki side;
+- derived filtered consequence:
+  the four bulk blocks
+  `M^{++}, M^{+-}, M^{-+}, M^{--}`
+  versus the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`,
+  with `(--),(-+)` obtained from `(++),(+-)` by
+  conjugation/self-adjoint symmetry;
 - after the bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:

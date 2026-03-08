@@ -1687,7 +1687,59 @@ $\sigma,\tau\in\{+,-\}$,
 \]
 \end{theorem}
 
-\begin{proposition}[The four filtered bulk blocks]\label{prop:H1-four-blocks}
+\paragraph{Raw Fourier--Weil notation.}
+For $r,s\in\mathbb Z$, let
+\[
+  e_r(z):=z^r,
+  \qquad
+  q_{rs}:=\bigl\langle Q e_s,e_r\bigr\rangle,
+  \qquad
+  w_{rs}(a):=W\bigl(\chi_s[a]*\widetilde{\chi_r[a]}\bigr),
+\]
+where the raw two-sided Section~8 matrix is written as
+\[
+  Q=(q_{rs})=(a_{r-s})-(p_{rs}).
+\]
+Set
+\[
+  \alpha_n:=\frac{\pi n}{a},
+  \qquad
+  \varepsilon_+:=+1,
+  \qquad
+  \varepsilon_-:=-1.
+\]
+
+\begin{lemma}[Fourier transforms of the adjacent Suzuki tails]\label{lem:H1-adjacent-fourier}
+For $n\ge 1$,
+\[
+  \widehat{\chi_n[a]}(z)
+  =
+  (-1)^n\sqrt{\frac2a}\,\frac{\sin(az)}{z+\alpha_n},
+\]
+and hence
+\[
+  \widehat{\psi_n^\sigma[a]}(z)
+  =
+  (-1)^n\sqrt{\frac2a}\,\sin(az)
+  \left(
+    \frac{1}{z+\varepsilon_\sigma\alpha_n}
+    -
+    \frac{1}{z+\varepsilon_\sigma\alpha_{n+1}}
+  \right),
+  \qquad
+  \sigma\in\{+,-\}.
+\]
+Equivalently,
+\[
+  \widehat{\psi_n^\sigma[a]}(z)
+  =
+  (-1)^n\sqrt{\frac2a}\,\frac{\pi}{a}\,
+  \frac{\sin(az)}
+  {(z+\varepsilon_\sigma\alpha_n)(z+\varepsilon_\sigma\alpha_{n+1})}.
+\]
+\end{lemma}
+
+\begin{proposition}[Raw-entry reduction of the filtered bulk match]\label{prop:H1-raw-entry-reduction}
 Define the antiderivative packets
 \[
   \psi_n^+[a]:=I_0^{(a)}\phi_n^+[a]=\chi_n[a]+\chi_{n+1}[a],
@@ -1702,74 +1754,188 @@ For $\sigma,\tau\in\{+,-\}$ and $N<n,m\le M$, set
   =
   W\bigl(\psi_n^\sigma[a]*\widetilde{\psi_m^\tau[a]}\bigr).
 \]
-Then the Fourier transforms of the tail packets are
-\[
-  \widehat{\psi_n^+}(z)
-  =
-  (-1)^n\sqrt{\frac2a}\,\sin(az)
-  \left(
-    \frac{1}{z+\pi n/a}-\frac{1}{z+\pi(n+1)/a}
-  \right),
-\]
-\[
-  \widehat{\psi_n^-}(z)
-  =
-  (-1)^n\sqrt{\frac2a}\,\sin(az)
-  \left(
-    \frac{1}{z-\pi n/a}-\frac{1}{z-\pi(n+1)/a}
-  \right),
-\]
-and therefore each filtered block admits the exact spectral representation
+Then
 \[
   M_{mn}^{\sigma\tau}(a)
   =
+  w_{\varepsilon_\sigma m,\varepsilon_\tau n}(a)
+  +
+  w_{\varepsilon_\sigma(m+1),\varepsilon_\tau n}(a)
+  +
+  w_{\varepsilon_\sigma m,\varepsilon_\tau(n+1)}(a)
+  +
+  w_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)}(a).
+\]
+Equivalently, each filtered bulk block is the $(1+z)$ / $(1+z^{-1})$
+four-term stencil of the corresponding raw Weil entries.
+\end{proposition}
+
+\begin{corollary}[Raw $\gamma$-sum form of the Suzuki blocks]\label{cor:H1-raw-gamma-blocks}
+For $m,n\ge 1$ and $\sigma,\tau\in\{+,-\}$,
+\[
+  M_{mn}^{\sigma\tau}(a)
+  =
+  \frac{2\pi^2}{a^3}(-1)^{m+n}
   \sum_{\gamma}
-  \widehat{\psi_n^\sigma}(-\gamma)\widehat{\psi_m^\tau}(\gamma),
+  \frac{\sin^2(a\gamma)}
+  {(\gamma-\varepsilon_\sigma\alpha_m)
+   (\gamma-\varepsilon_\sigma\alpha_{m+1})
+   (\gamma+\varepsilon_\tau\alpha_n)
+   (\gamma+\varepsilon_\tau\alpha_{n+1})},
 \]
 where $\gamma$ runs over the zeros of $\xi(1/2-iz)$ with multiplicity.
-Equivalently, if we write
+In particular,
 \[
-  \chi_k^+[a]:=\chi_k[a],
-  \qquad
-  \chi_k^-[a]:=\chi_{-k}[a],
-\]
-then bilinearity gives the exact four-term stencil
-\[
-  M_{mn}^{\sigma\tau}(a)
+  M_{mn}^{++}(a)
   =
-  W\bigl(\chi_n^\sigma[a]*\widetilde{\chi_m^\tau[a]}\bigr)
+  \frac{2\pi^2}{a^3}(-1)^{m+n}
+  \sum_\gamma
+  \frac{\sin^2(a\gamma)}
+  {(\gamma-\alpha_m)(\gamma-\alpha_{m+1})(\gamma+\alpha_n)(\gamma+\alpha_{n+1})},
+\]
+\[
+  M_{mn}^{+-}(a)
+  =
+  \frac{2\pi^2}{a^3}(-1)^{m+n}
+  \sum_\gamma
+  \frac{\sin^2(a\gamma)}
+  {(\gamma-\alpha_m)(\gamma-\alpha_{m+1})(\gamma-\alpha_n)(\gamma-\alpha_{n+1})}.
+\]
+\end{corollary}
+
+\begin{proposition}[Exact filtered Section~8 blocks]\label{prop:H1-filtered-q-blocks}
+For $m,n\ge 1$ and $\sigma,\tau\in\{+,-\}$, define
+\[
+  \widetilde q_{mn}^{\sigma\tau}
+  :=
+  q_{\varepsilon_\sigma m,\varepsilon_\tau n}
   +
-  W\bigl(\chi_{n+1}^\sigma[a]*\widetilde{\chi_m^\tau[a]}\bigr)
+  q_{\varepsilon_\sigma(m+1),\varepsilon_\tau n}
   +
-  W\bigl(\chi_n^\sigma[a]*\widetilde{\chi_{m+1}^\tau[a]}\bigr)
+  q_{\varepsilon_\sigma m,\varepsilon_\tau(n+1)}
   +
-  W\bigl(\chi_{n+1}^\sigma[a]*\widetilde{\chi_{m+1}^\tau[a]}\bigr).
+  q_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)}.
+\]
+Then the filtered finite section is exactly
+\[
+  \widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}
+\]
+in the two-sided tail basis, with block entries
+$\widetilde q_{mn}^{\sigma\tau}$.
+If $q_{rs}=a_{r-s}-p_{rs}$, then
+\[
+  \widetilde q_{mn}^{\sigma\tau}
+  =
+  \widetilde a_{mn}^{\sigma\tau}
+  -
+  \widetilde p_{mn}^{\sigma\tau},
+\]
+where
+\[
+  \widetilde a_{mn}^{\sigma\tau}
+  =
+  a_{d_{\sigma\tau}(m,n)}
+  +
+  a_{d_{\sigma\tau}(m,n)+\varepsilon_\sigma}
+  +
+  a_{d_{\sigma\tau}(m,n)-\varepsilon_\tau}
+  +
+  a_{d_{\sigma\tau}(m,n)+\varepsilon_\sigma-\varepsilon_\tau},
+\]
+\[
+  \widetilde p_{mn}^{\sigma\tau}
+  =
+  p_{\varepsilon_\sigma m,\varepsilon_\tau n}
+  +
+  p_{\varepsilon_\sigma(m+1),\varepsilon_\tau n}
+  +
+  p_{\varepsilon_\sigma m,\varepsilon_\tau(n+1)}
+  +
+  p_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)},
+\]
+and
+\[
+  d_{\sigma\tau}(m,n):=\varepsilon_\sigma m-\varepsilon_\tau n.
+\]
+In particular,
+\[
+  \widetilde a_{mn}^{++}
+  =
+  2a_{m-n}+a_{m-n+1}+a_{m-n-1},
+\]
+\[
+  \widetilde a_{mn}^{+-}
+  =
+  a_{m+n}+2a_{m+n+1}+a_{m+n+2},
+\]
+\[
+  \widetilde a_{mn}^{-+}
+  =
+  a_{-(m+n)}+2a_{-(m+n+1)}+a_{-(m+n+2)},
+\]
+\[
+  \widetilde a_{mn}^{--}
+  =
+  2a_{n-m}+a_{n-m+1}+a_{n-m-1}.
 \]
 \end{proposition}
+
+\begin{corollary}[Symmetry reduction of the bulk match]\label{cor:H1-bulk-symmetry-reduction}
+One has
+\[
+  \phi_n^-[a]=\overline{\phi_n^+[a]},
+  \qquad
+  \psi_n^-[a]=\overline{\psi_n^+[a]}.
+\]
+Since $G_g[a]$ is self-adjoint with Hermitian kernel,
+\[
+  M_{mn}^{--}(a)=\overline{M_{nm}^{++}(a)},
+  \qquad
+  M_{mn}^{-+}(a)=\overline{M_{nm}^{+-}(a)}.
+\]
+Assuming the same Hermitian normalization on the Q3 side,
+\[
+  \widetilde q_{mn}^{--}=\overline{\widetilde q_{nm}^{++}},
+  \qquad
+  \widetilde q_{mn}^{-+}=\overline{\widetilde q_{nm}^{+-}}.
+\]
+Therefore the primary raw bulk target may be reduced to the two raw index
+families
+\[
+  w_{rs}(a)=\kappa(a)\,q_{rs}
+  \qquad
+  \text{for }(r,s)=(m,n)\text{ and }(r,s)=(m,-n),\ m,n>N_a,
+\]
+and then all four filtered block identities follow formally after applying the
+two-sided filter $\Delta_{M,N}$.
+\end{corollary}
 
 \begin{center}
 \renewcommand{\arraystretch}{1.15}
 \begin{tabular}{|c|c|p{0.33\linewidth}|}
 \hline
-Suzuki bulk block & filtered Q3 target & exact bookkeeping target \\
+bulk family & filtered consequence & exact bookkeeping target \\
 \hline
-$M^{++}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{++}$ & exact bulk match after one scalar normalization $\kappa(a)$ \\
+$w_{mn}(a)$ on $(+,+)$ & $M^{++}(a)=\kappa(a)\widetilde Q_{M,N}^{++}$ & primary raw bulk identity \\
 \hline
-$M^{+-}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{+-}$ & exact mixed-sign bulk match; no extra section-boundary defect once the filtered section $\widetilde Q_{M,N}$ is used \\
+$w_{m,-n}(a)$ on $(+,-)$ & $M^{+-}(a)=\kappa(a)\widetilde Q_{M,N}^{+-}$ & primary raw bulk identity; no extra section-boundary defect once $\widetilde Q_{M,N}$ is used \\
 \hline
-$M^{-+}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{-+}$ & exact mixed-sign bulk match; same scalar normalization as the positive block \\
+$M^{-+}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{-+}$ & derived from $(+,-)$ by conjugation/self-adjoint symmetry \\
 \hline
-$M^{--}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{--}$ & exact negative-tail bulk match; only the genuine finite-dimensional Suzuki cap remains outside the tail space \\
+$M^{--}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{--}$ & derived from $(+,+)$ by conjugation/self-adjoint symmetry; only the genuine finite-dimensional Suzuki cap remains outside the tail space \\
 \hline
 \end{tabular}
 \end{center}
 
 \noindent
 The live bulk theorem is therefore no longer the abstract existence of
-$S_{a,M,N}$ and $J_a$, but the exact equality of the four filtered blocks
-$(++),(+-),(-+),(--)$ with the corresponding blocks of
-$\kappa(a)\widetilde Q_{M,N}$. After that bulk identification, the only
-remaining bridge brick is the finite-dimensional Suzuki cap.
+$S_{a,M,N}$ and $J_a$, nor the direct separate comparison of all four filtered
+blocks. The narrowest active target is the raw bulk identity
+$w_{rs}(a)=\kappa(a)q_{rs}$ on the two families $(+,+)$ and $(+,-)$; the
+four filtered block equalities are then formal consequences of the two-sided
+filter $\Delta_{M,N}$ and Hermitian symmetry. After that raw bulk
+identification, the only remaining bridge brick is the finite-dimensional
+Suzuki cap.
 
 \begin{theorem}[H2$^{\mathrm f}$: Suzuki tail/cap reduction]\label{thm:H2-filtered-cap}
 Fix $a>0$ and $N_a$ as in Theorem~\ref{thm:H1-filtered-bulk}. Define the closed tail space

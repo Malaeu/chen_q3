@@ -11,8 +11,10 @@ Volterra stepping stones:
 Those earlier notes remain useful as historical scaffolding, but they are no
 longer the live bridge contract.
 
-The current bulk-cycle refinement of this bridge is recorded in
-`h1_four_block_bulk_2026_03_08.md`.
+The current bulk-cycle refinements of this bridge are recorded in
+`h1_four_block_bulk_2026_03_08.md`
+and
+`h1_raw_entry_reduction_2026_03_08.md`.
 
 ## Core correction
 

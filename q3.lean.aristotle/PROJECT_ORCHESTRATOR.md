@@ -141,13 +141,14 @@ New live frontier:
      with a new full-kernel operator package kept as fallback;
 11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
   12. move the active blocker away from the already-frozen theorem package `S1/S2/S3/S4`
-     to the exact two-sided filtered bulk comparison:
-     freeze the theorem-ready block entries
-     `M_{mn}^{\sigma\tau}(a)=\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle`
-     for the four blocks
-     `(++), (+-), (-+), (--)`,
-     and match them against the corresponding blocks of
-     `\kappa(a)\widetilde Q_{M,N}`;
+     to the raw-entry reduction of the exact two-sided filtered bulk match:
+     freeze the raw entries
+     `q_{rs}=\langle Q e_s,e_r\rangle`
+     and
+     `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
+     and reduce the live bulk identity to
+     `w_{rs}(a)=\kappa(a)q_{rs}`
+     on the two raw families `(+,+)` and `(+,-)`;
   13. isolate the finite-dimensional Suzuki cap as the second and only other
      live brick after the bulk match:
      positivity of the cap matrix is a separate finite-dimensional problem.
@@ -181,11 +182,17 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     and the exact finite comparison object is
     `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`,
 4c. current implementation brick inside `H1^f`:
-    write the theorem-ready Suzuki-side bulk entries
-    `M_{mn}^{\sigma\tau}(a)=\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle`
-    and reduce the active work to exact blockwise equality
-    between those four entries and the blocks of
-    `\kappa(a)\widetilde Q_{M,N}`,
+    freeze the raw entry notation
+    `q_{rs}=\langle Q e_s,e_r\rangle`
+    and
+    `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
+    then reduce the active work to the raw bulk identity
+    `w_{rs}(a)=\kappa(a)q_{rs}`
+    on the two families `(+,+)` and `(+,-)`,
+    with the four filtered blocks
+    `(++), (+-), (-+), (--)`
+    becoming formal consequences after applying `\Delta_{M,N}` and
+    Hermitian symmetry,
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family
@@ -383,6 +390,8 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-08: the one-sided filtered Volterra bridge is superseded by the
   symmetric two-sided filtered tail package
   `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}`.
-  The active bulk theorem is now exact four-block comparison on
-  `\phi_n^\pm[a]`, and the only second live brick after that is the
-  finite-dimensional Suzuki cap.
+  The active bulk theorem is now the raw identity
+  `w_{rs}(a)=\kappa(a)q_{rs}`
+  on the two raw families `(+,+)` and `(+,-)`;
+  the filtered four-block package is the derived consequence layer, and the
+  only second live brick after that is the finite-dimensional Suzuki cap.

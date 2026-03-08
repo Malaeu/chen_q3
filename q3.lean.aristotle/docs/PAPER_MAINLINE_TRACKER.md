@@ -75,7 +75,7 @@ Filtered-bridge note:
 | `packet-Rayleigh-pd` | exact finite Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` with finite symbol `S_J` on each admissible dictionary | frozen theorem block | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | rejected-too-strong route | `sections/Main_closure.tex`, `sections/scope_notation.tex` |
 | `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active fallback route; finite-dictionary reduction and coefficient-bounding package explicit | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
-| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `H1^f -> H2^f -> H3^f -> H4^f` | active primary live route | `sections/Main_closure.tex`, `docs/insights/h1_two_sided_filtered_bridge_2026_03_08.md`, `docs/insights/h1_four_block_bulk_2026_03_08.md` |
+| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `H1^f -> H2^f -> H3^f -> H4^f` | active primary live route | `sections/Main_closure.tex`, `docs/insights/h1_two_sided_filtered_bridge_2026_03_08.md`, `docs/insights/h1_four_block_bulk_2026_03_08.md`, `docs/insights/h1_raw_entry_reduction_2026_03_08.md` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
 | `A2-pd` | continuity on the corrected cone | inherited input | `sections/A2.tex`, `sections/Main_closure.tex` |
 | `LF-pd` | LF lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}` | skeleton available, still conditional | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
@@ -174,12 +174,17 @@ Interpretation rule after `T0.1`:
    `B_{M,N}=S_{a,M,N}^*J_aS_{a,M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
    and filtered finite section
    `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`.
-   The next theorem task is the exact four-block comparison
-   `(++), (+-), (-+), (--)`,
-   now written in theorem-ready form through the Suzuki-side entries
-   `M_{mn}^{\sigma\tau}(a)=\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle`,
-   and matched against the corresponding blocks of
-   `\kappa(a)\widetilde Q_{M,N}`.
+   The next theorem task is the raw-entry reduction of that bulk match:
+   freeze
+   `q_{rs}=\langle Q e_s,e_r\rangle`
+   and
+   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
+   prove
+   `w_{rs}(a)=\kappa(a)q_{rs}`
+   on the two raw families `(+,+)` and `(+,-)`,
+   and then recover the four filtered block equalities
+   `(++), (+-), (-+), (--)`
+   as formal consequences of `\Delta_{M,N}` and Hermitian symmetry.
    After the bulk match, the only remaining bridge brick is the
    finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:
