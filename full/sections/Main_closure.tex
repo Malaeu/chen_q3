@@ -1688,21 +1688,41 @@ With this normalization one gets the explicit pullback metric
 \[
   B_M:=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=T_M[2+z+z^{-1}]
 \]
-and therefore
+\[
+  B_M=\Delta_+^*\Delta_+,
+  \qquad
+  \Delta_+:=I+L,
+\]
+where $L$ is the coefficient-side shift, equivalently multiplication by $z$ on
+$P_M$. In particular,
 \[
   0\le B_M\le 4I_{P_M}.
 \]
-So any existing Q3 lower bound of the form
+Therefore the correct filtered finite-section object is not the raw
 \[
-  Q_M:=T_M[P_A]-T_P^{(M)}\ge c(a)I
+  Q_M:=T_M[P_A]-T_P^{(M)},
 \]
-automatically implies
+but rather
 \[
-  Q_M\ge \frac{c(a)}4\,B_M.
+  \widetilde Q_M:=\Delta_+^*Q_{M+1}\Delta_+.
 \]
-This is why the filtered Volterra bridge is now the preferred first attack on
-\textup{H1}: it turns the current raw Q3 gap into a usable $J_a$-gap without
-first whitening the packet metric.
+If the existing Q3 bulk bound is
+\[
+  Q_{M+1}\ge c(a)I,
+\]
+then the filtered section satisfies
+\[
+  \widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+\ge c(a)\,\Delta_+^*\Delta_+=c(a)\,B_M.
+\]
+Thus the filtered Volterra bridge no longer loses the old factor $1/4$: the
+preferred first-pass \textup{H1} comparison is now
+\[
+  S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)\,\widetilde Q_M+F_{a,M},
+\]
+with $F_{a,M}$ either zero or an explicit finite-rank cap. This is why the
+filtered Volterra bridge is now the preferred first attack on \textup{H1}: the
+bulk Q3 gap transfers to $J_a$-coercivity at the filtered level without first
+whitening the packet metric and without losing a constant.
 
 The strongest current secondary engineering refinement is to use a finite-prime
 semilocal layer only as a basis/Gram engine for this construction, not as a new

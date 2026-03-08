@@ -69,10 +69,21 @@ Fej\'er$\times$heat / RKHS geometry as the Q3 finite block, and let $J_a$ be
 the corresponding Gram-pullback metric on the synthesized packet span.
 The preferred first-pass refinement is filtered Volterra: use
 $J_a=(I_0^{(a)})^*I_0^{(a)}$ and characterize $S_{a,M}$ by
-$I_0^{(a)}S_{a,M}=U_aM_{1+z}|_{P_M}$, so that the pullback metric is the
-explicit Toeplitz block $B_M=T_M[|1+z|^2]\le 4I$. Finite-prime semilocal data
-remain useful only as a secondary basis/Gram engine for \textup{H1}, not as a
-new RH endgame in their own right.
+$I_0^{(a)}S_{a,M}=U_aM_{1+z}|_{P_M}$. Then the pullback metric is the explicit
+Toeplitz block
+\[
+  B_M=T_M[|1+z|^2]=\Delta_+^*\Delta_+,
+  \qquad
+  \Delta_+=I+L,
+\]
+and the correct filtered finite section is
+\[
+  \widetilde Q_M:=\Delta_+^*Q_{M+1}\Delta_+.
+\]
+Hence any bulk bound $Q_{M+1}\ge c(a)I$ transfers directly to
+$\widetilde Q_M\ge c(a)B_M$, with no loss of the old factor $1/4$. Finite-prime
+semilocal data remain useful only as a secondary basis/Gram engine for
+\textup{H1}, not as a new RH endgame in their own right.
 The first canonical test case is now fixed as the centered half-atom
 \[
   g_{\delta,t_0,0}(\xi)=\Lambda_\delta(\xi)\rho_{t_0}(\xi),

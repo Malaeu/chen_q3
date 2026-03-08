@@ -35,7 +35,7 @@ It is **not** the execution queue and **not** the master gate-state file.
 | `\varphi_{a,j}` | nonorthogonal packet states in `L^2(-a,a)` used to build the Suzuki bridge | active candidate notation |
 | `\Gamma_{a,M}` | packet Gram matrix `[ \langle \varphi_{a,i},\varphi_{a,j}\rangle ]` | active candidate notation |
 | `G_g[a], J_a, E_{a,M}, S_{a,M}` | Suzuki/Yoshida generalized form-pair bridge data | active primary operator notation |
-| `I_0^{(a)}, U_a, M_{1+z}, B_M` | filtered Volterra bridge data with explicit pullback metric `B_M=T_M[|1+z|^2]` | active preferred H1 notation |
+| `I_0^{(a)}, U_a, M_{1+z}, \Delta_+, B_M, \widetilde Q_M` | filtered Volterra bridge data with explicit pullback metric `B_M=T_M[|1+z|^2]=\Delta_+^*\Delta_+` and filtered finite section `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+` | active preferred H1 notation |
 | `S(B)` | finite prime set `\{p: p\le e^{2\pi B}\}` feeding the semilocal engineering layer | active auxiliary operator notation |
 | `\eta_m^{(S,a)}` | semilocal cyclic/Jacobi packet states used only as a basis/Gram engine for `H1` | active engineering notation |
 | `\Gamma_{a,M}^{(S)}` | semilocal Gram matrix `[ \langle \eta_i^{(S,a)},\eta_j^{(S,a)}\rangle ]` | active engineering notation |
@@ -170,9 +170,12 @@ Interpretation rule after `T0.1`:
    use the filtered Volterra bridge
    `J_a=(I_0^{(a)})^*I_0^{(a)}`,
    `I_0^{(a)}S_{a,M}=U_aM_{1+z}|_{P_M}`,
-   and `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]\le 4I`,
+   with explicit pullback metric
+   `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=\Delta_+^*\Delta_+`,
+   and filtered finite section
+   `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`,
    so the real comparison target becomes
-   `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)(T_M[P_A]-T_P^{(M)})+F_{a,M}`.
+   `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)\widetilde Q_M+F_{a,M}`.
 4. Pre-square density theorem on `C_c^\infty([-K/2,K/2])` strong enough to feed
    `A1-pd` through autocorrelation continuity if the fallback packet route is needed.
 5. `A1-pd`: proof of density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.

@@ -2898,5 +2898,33 @@ Verdict:
 - semilocal packets remain useful as a secondary basis/Gram refinement;
 - the real next theorem is exact or almost-exact matrix comparison on the
   filtered basis:
+
+## In-progress synthesis (2026-03-08) — filtered finite section kills the old 1/4 loss
+
+Target node and wiring:
+- live public route stays `H1 -> H2 -> H3 -> H4`;
+- the filtered Volterra bridge survives, but its correct bridge-object is not
+  the raw `Q_M`;
+- the preferred finite object is now
+  `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`,
+  with `\Delta_+=I+L`.
+
+Concrete synthesis:
+- keep `J_a=(I_0^{(a)})^*I_0^{(a)}`;
+- keep `I_0^{(a)}S_{a,M}=U_aM_{1+z}|_{P_M}`;
+- then
+  `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=\Delta_+^*\Delta_+`;
+- if the current Q3 bulk gap gives `Q_{M+1}\ge c(a)I`, then
+  `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+\ge c(a)\Delta_+^*\Delta_+=c(a)B_M`;
+- hence the old coarse transfer `Q_M\ge(c(a)/4)B_M` is superseded by the
+  no-loss filtered relation.
+
+Verdict:
+- the preferred first-pass `H1` target is now
+  `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)\widetilde Q_M+F_{a,M}`;
+- the real remaining brick is exact entrywise comparison with the Suzuki tail
+  matrix and an explicit finite-rank cap;
+- semilocal packets remain useful only as secondary finite-prime basis/Gram
+  data for this filtered comparison.
   `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)Q_M+F_{a,M}`,
   with `F_{a,M}` zero or finite-rank cap.

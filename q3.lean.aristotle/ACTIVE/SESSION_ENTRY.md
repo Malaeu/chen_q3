@@ -47,8 +47,10 @@
   filtered Volterra bridge with
   `J_a=(I_0^{(a)})^*I_0^{(a)}`,
   `I_0^{(a)}S_{a,M}=U_a M_{1+z}|_{P_M}`,
-  and pullback metric
-  `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]`;
+  pullback metric
+  `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=\Delta_+^*\Delta_+`,
+  and preferred filtered bridge-object
+  `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`;
 - semilocal cyclic/Jacobi machinery stays useful, but only as a secondary
   basis/Gram supplier for `H1`, not as a new RH endgame.
 
@@ -218,9 +220,10 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 - filtered Volterra refinement of that candidate:
   `J_a=(I_0^{(a)})^*I_0^{(a)}`,
   `I_0^{(a)}S_{a,M}=U_a M_{1+z}|_{P_M}`,
-  `B_M=T_M[|1+z|^2]\le 4I`,
+  `B_M=T_M[|1+z|^2]=\Delta_+^*\Delta_+`,
+  `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`,
   and the next exact target becomes
-  `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)Q_M+F_{a,M}`;
+  `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)\widetilde Q_M+F_{a,M}`;
 - semilocal-assisted refinement after that:
   finite-prime packet states `\eta_m^{(S,a)}`, Gram matrix
   `\Gamma_{a,M}^{(S)}`, and normalized synthesis

@@ -177,8 +177,10 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     use the filtered Volterra bridge
     `J_a=(I_0^{(a)})^*I_0^{(a)}`,
     `I_0^{(a)}S_{a,M}=U_aM_{1+z}|_{P_M}`,
-    and the explicit pullback metric
-    `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]\le 4I`,
+    with explicit pullback metric
+    `B_M=S_{a,M}^*J_aS_{a,M}=T_M[|1+z|^2]=\Delta_+^*\Delta_+`,
+    and filtered finite section
+    `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`,
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family
@@ -226,8 +228,9 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     comparison on the packet basis
     `[ \langle G_g[a]\varphi_{a,j},\varphi_{a,k}\rangle ]`,
     preferably via the filtered Volterra realization
-    `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)Q_M+F_{a,M}`,
-    `S_{a,M}^*J_aS_{a,M}=B_M=T_M[|1+z|^2]`,
+    `S_{a,M}^*G_g[a]S_{a,M}=\kappa(a)\widetilde Q_M+F_{a,M}`,
+    `\widetilde Q_M=\Delta_+^*Q_{M+1}\Delta_+`,
+    `S_{a,M}^*J_aS_{a,M}=B_M=T_M[|1+z|^2]=\Delta_+^*\Delta_+`,
     preferably first on the semilocal-assisted packet family
     `[ \langle G_g[a]\eta_i^{(S,a)},\eta_j^{(S,a)}\rangle ]`.
 
