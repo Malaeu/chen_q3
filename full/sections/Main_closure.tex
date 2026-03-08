@@ -1692,18 +1692,18 @@ For an ambient cutoff $L\ge 0$ and indices $|r|,|s|\le L$, let
 \[
   e_r(z):=z^r,
   \qquad
-  q_{rs}^{(L)}:=\bigl\langle Q_L e_s,e_r\bigr\rangle,
+  \Pi_L:=(2L+1)\,T_P^{\mathrm{Ray}}(t,L)=\iota_L^*T_P^{\mathrm{Ray}}(t)\iota_L,
+  \qquad
+  Q_L^{\mathrm{raw}}:=T_L[P_A]-\Pi_L,
+  \qquad
+  q_{rs}:=\bigl\langle Q_L^{\mathrm{raw}} e_s,e_r\bigr\rangle,
   \qquad
   w_{rs}(a):=W\bigl(\chi_s[a]*\widetilde{\chi_r[a]}\bigr),
 \]
-where
-\[
-  Q_L:=T_L[P_A]-T_P^{(L)}
-\]
-is the normalized Section~8 finite block on $P_L\subset L^2(\mathbb T)$.  In the
-filtered bridge $\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}$ the
-ambient cutoff is $L=M+1$; in that context we suppress the superscript and
-write $q_{rs}:=q_{rs}^{(M+1)}$.
+where $Q_L^{\mathrm{raw}}$ is the raw Section~8 finite operator on
+$P_L\subset L^2(\mathbb T)$. In the filtered bridge
+$\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}^{\mathrm{raw}}\Delta_{M,N}$ the
+ambient cutoff is $L=M+1$.
 Set
 \[
   \alpha_n:=\frac{\pi n}{a},
@@ -1714,10 +1714,10 @@ Set
 \]
 
 \begin{proposition}[Exact raw Section~8 entry formula]\label{prop:H1-raw-q-formula}
-For every ambient cutoff $L\ge 0$ and every $|r|,|s|\le L$, the normalized
+For every ambient cutoff $L\ge 0$ and every $|r|,|s|\le L$, the raw
 Section~8 entry satisfies
 \[
-  q_{rs}^{(L)}=a_{r-s}-p_{r-s}^{(L)},
+  q_{rs}=a_{r-s}-p_{rs},
 \]
 where
 \[
@@ -1729,29 +1729,25 @@ where
 \]
 and
 \[
-  p_k^{(L)}
+  p_{rs}
   :=
-  \frac{1}{2L+1}
-  \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
-  w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i k\xi_n}.
-\]
-Equivalently,
-\[
-  q_{rs}^{(L)}
-  =
-  a_{r-s}
-  -
-  \frac{1}{2L+1}
   \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
   w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i(r-s)\xi_n}.
 \]
-The factor $(2L+1)^{-1}$ is exactly the normalization coming from
+Equivalently,
 \[
-  \iota_L^*T_P^{\mathrm{Ray}}(t)\iota_L=(2L+1)\,T_P^{\mathrm{Ray}}(t,L),
+  q_{rs}
+  =
+  a_{r-s}
+  -
+  \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
+  w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i(r-s)\xi_n}.
 \]
-so the raw entry notation in the H1 layer is necessarily \emph{$L$-local} for
-the normalized Section~8 block and does not denote a single $L$-independent
-global operator matrix.
+These entries are stable in $L$ as soon as $|r|,|s|\le L$, because the raw
+compression already absorbs the normalization factor
+\[
+  \Pi_L=(2L+1)\,T_P^{\mathrm{Ray}}(t,L)=\iota_L^*T_P^{\mathrm{Ray}}(t)\iota_L.
+\]
 \end{proposition}
 
 \begin{proof}
@@ -1791,18 +1787,15 @@ Therefore
   =
   \frac{1}{\sqrt{2L+1}}e^{-2\pi i r\xi_n},
 \]
-so the normalized prime entry is
+so the raw compressed prime entry is
 \[
-  p_{rs}^{(L)}
+  \langle \Pi_L e_s,e_r\rangle
   =
-  \frac{1}{2L+1}
   \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
   w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i(r-s)\xi_n}
-  =
-  p_{r-s}^{(L)}.
 \]
-Subtracting the prime block from the Toeplitz block gives the stated formula
-for $q_{rs}^{(L)}$.
+Subtracting the raw compressed prime block from the Toeplitz block gives the
+stated formula for $q_{rs}$.
 \end{proof}
 
 \begin{lemma}[Fourier transforms of the adjacent Suzuki tails]\label{lem:H1-adjacent-fourier}

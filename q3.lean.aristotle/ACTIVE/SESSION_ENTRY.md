@@ -81,10 +81,14 @@
   raw bulk identity
   `w_{rs}(a)=\kappa(a)q_{rs}`
   on the two raw families `(+,+)` and `(+,-)`,
-  where `q_{rs}=q_{rs}^{(M+1)}=\langle Q_{M+1} e_s,e_r\rangle` on the Section 8 side,
-  with exact extracted formula
-  `q_{rs}^{(L)}=a_{r-s}-p_{r-s}^{(L)}` and
-  `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`,
+  where on the Section 8 side
+  `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+  `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
+  and
+  `q_{rs}=\langle Q_M^{raw} e_s,e_r\rangle
+   =A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
+  `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
+  with `\kappa_{A3}=1`,
   and
   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})` on the Suzuki side;
 - derived filtered consequence:

@@ -142,11 +142,14 @@ New live frontier:
 11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
   12. move the active blocker away from the already-frozen theorem package `S1/S2/S3/S4`
      to the raw-entry reduction of the exact two-sided filtered bulk match:
-     freeze the raw Section 8 entries
-     `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle
-      = a_{r-s}-p_{r-s}^{(L)}`
-     with
-     `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`,
+     freeze the raw Section 8 operator
+     `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+     `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
+     and the exact raw entries
+     `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle
+      = A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
+     `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
+     with Q3-side normalization fixed by `\kappa_{A3}=1`,
      and
      `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
      and reduce the live bulk identity to
@@ -185,13 +188,16 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     and the exact finite comparison object is
     `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`,
 4c. current implementation brick inside `H1^f`:
-    the raw entry formula is now extracted:
-    `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle
-     = a_{r-s}-p_{r-s}^{(L)}`
-    with the exact normalization
-    `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`;
-    in the filtered bridge one writes `q_{rs}=q_{rs}^{(M+1)}` for the ambient
-    finite block,
+    the raw entry formula is now extracted in the raw-compressed notation:
+    `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+    `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
+    and
+    `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle
+     = A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
+    `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
+    with `\kappa_{A3}=1`;
+    in the filtered bridge the ambient raw finite block is
+    `Q_{M+1}^{raw}`,
     and
     `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
     then reduce the active work to the raw bulk identity
@@ -401,7 +407,10 @@ Legacy narrative surfaces are reference-only:
   The active bulk theorem is now the raw identity
   `w_{rs}(a)=\kappa(a)q_{rs}`
   on the two raw families `(+,+)` and `(+,-)`, after extracting the exact
-  normalized Section 8 raw formula
-  `q_{rs}^{(L)}=a_{r-s}-p_{r-s}^{(L)}`;
+  raw-compressed Section 8 formula
+  `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+  `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
+  and
+  `q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`;
   the filtered four-block package is the derived consequence layer, and the
   only second live brick after that is the finite-dimensional Suzuki cap.

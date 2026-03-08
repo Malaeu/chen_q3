@@ -3007,8 +3007,14 @@ Target node and wiring:
 - the live `H1^f` blocker is no longer “match all four filtered blocks directly”.
 
 Concrete refinement:
-- freeze the normalized raw two-sided Section 8 entries
-  `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle=a_{r-s}-p_{r-s}^{(L)}`;
+- freeze the raw-compressed two-sided Section 8 operator
+  `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+  `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
+  with exact entries
+  `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle
+   =A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
+  `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
+  and `\kappa_{A3}=1`;
 - freeze the raw Suzuki/Weil entries
   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`;
 - reduce the primary raw bulk theorem to
@@ -3048,10 +3054,13 @@ Key clarification:
   proved Q3 theorem;
 - what the old A3 files already provide explicitly is the quadratic-form /
   compression machinery;
-- the exact normalized raw Section 8 formula is now extracted as
-  `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle=a_{r-s}-p_{r-s}^{(L)}`
-  with
-  `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`;
+- the exact raw-compressed Section 8 formula is now extracted as
+  `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+  `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
+  and
+  `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle
+   =A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
+  where `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`;
 - the remaining missing brick is no longer “find the formula”, but prove the
   raw bulk identity `w_{rs}(a)=\kappa(a)q_{rs}` in the matching normalization.
 

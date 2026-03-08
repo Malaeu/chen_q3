@@ -174,12 +174,15 @@ Interpretation rule after `T0.1`:
    `B_{M,N}=S_{a,M,N}^*J_aS_{a,M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
    and filtered finite section
    `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`.
-   The raw Section 8 formula is now frozen as
-   `q_{rs}^{(L)}=\langle Q_L e_s,e_r\rangle=a_{r-s}-p_{r-s}^{(L)}`
-   with
-   `p_k^{(L)}=(2L+1)^{-1}\sum w(n)\Phi_{B,t}(\xi_n)e^{-2\pi i k\xi_n}`;
-   in the filtered bridge one writes `q_{rs}=q_{rs}^{(M+1)}` for the ambient
-   finite block, and
+   The raw Section 8 operator is now frozen as
+   `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+   `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
+   with exact entries
+   `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle
+    =A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
+   `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
+   and Q3-side normalization fixed by `\kappa_{A3}=1`;
+   in the filtered bridge the ambient raw finite block is `Q_{M+1}^{raw}`, and
    `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
    so the next theorem task is to prove
    `w_{rs}(a)=\kappa(a)q_{rs}`
