@@ -2494,3 +2494,55 @@ Reusable file pointers:
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
 - `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/p1_p8_full_symbol_package_2026_03_08.md`
+
+## Synthesis (2026-03-08, in progress) — regularized `P7` sharpens the packet route
+
+Target node and wiring:
+- the live theorem is still `PSD-pd`: positive semidefiniteness of the full
+  packet kernel `K_Q(\Psi,\Phi)=\mathcal Q(\Psi * \widetilde{\Phi})` on a dense
+  pre-packet space;
+- the new sharpening is not another route change, but a refinement of the
+  immediate constructive target `P7`;
+- the honest package is now:
+  exact packet sesquilinear identity with the symmetrically extended functional
+  `\mathcal Q`,
+  Toeplitz reduction,
+  desired prime-block PSD factorization (false),
+  sparse Gershgorin rescue as a local lemma only,
+  and then regularized full-symbol domination as the real theorem target.
+
+Local semantic search:
+- query `prime block obstruction dense packet space shift translate` points back
+  to `Main_closure.tex`, confirming that the old prime-block PSD theorem shape
+  is already dead in the live manuscript;
+- query `Toeplitz Herglotz criterion packet kernel full symbol` returns the
+  current tracker/orchestrator surfaces where the full-kernel route is already
+  active;
+- query `regularized full symbol domination A_g Delta P_g Delta` is the right
+  retrieval neighborhood for the next constructive step, not the old `Route P`
+  phrasing;
+- query `Gershgorin packet Toeplitz diagonal dominance dense dictionary` is
+  useful only as a sparse-dictionary diagnostic, not as the public mainline.
+
+External theorem-shape search:
+- the classical external support is still the same: Toeplitz/Herglotz
+  equivalence for positive-definite sequences and the standard matrix
+  Gershgorin criterion;
+- nothing external currently supplies the project-local regularization theorem
+  needed to turn `A_{g,\Delta}` into a clean symbol on the packet side.
+
+Concrete synthesis:
+- `P1` must be rewritten with the symmetrically extended compact functional
+  `\mathcal Q`, not just the even-restricted `Q^\star(t;\cdot)`;
+- the packet prime contribution must be symmetrized at `\pm \xi_n`;
+- the old theorem shape
+  `prime block PSD -> Arch dominates`
+  remains false and should stay rejected;
+- Gershgorin diagonal dominance is worth recording as the first strict
+  sufficient criterion on finite sparse packet dictionaries, but it cannot be
+  the dense main theorem because near-collisions force the quadratic form to
+  collapse to zero by A2 continuity;
+- the real constructive target is therefore the regularized full-symbol
+  domination statement
+  `A_{g,\Delta}^{reg}(\theta) - P_{g,\Delta}(\theta) >= 0`,
+  with any new full-kernel operator package kept as fallback.
