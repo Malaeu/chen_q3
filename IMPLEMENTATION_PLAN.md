@@ -1,6 +1,6 @@
 # Implementation Plan
 
-Updated: 2026-03-07
+Updated: 2026-03-08
 
 ## Queue Rules
 
@@ -12,7 +12,7 @@ Updated: 2026-03-07
 
 ## ACTIVE
 
-`PSD-pd.8 | gate=PSD-pd | target=Sharpen the strict packet package to the measure-level P7 form: symmetric packet extension `\\mathcal Q` -> exact sesquilinear identity -> Toeplitz reduction -> desired prime-factorization (rejected by obstruction) -> sparse Gershgorin criterion/background-only -> Toeplitz/Herglotz criterion -> measure-level domination `\\mu_A-\\mu_P>=0` or, in the stronger symbol regime, `A_{g,Delta}^{reg}>=P_{g,Delta}` -> PSD-pd | files=full/sections/Main_closure.tex; full/sections/Weil_pack.tex; full/sections/introduction.tex; full/sections/abstract.tex; full/sections/scope_notation.tex; full/sections/Notation/qstar_contract.tex; q3.lean.aristotle/PROJECT_ORCHESTRATOR.md; q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md; q3.lean.aristotle/docs/INSIGHTS.md | verify=rg -n \"\\\\mathcal Q|Gershgorin|mu_A|mu_P|regularized full-symbol|A_\\{g,\\\\Delta\\}\\^\\{reg\\}|prime-block obstruction|Toeplitz--Herglotz\" full/sections/Main_closure.tex full/sections/Weil_pack.tex full/sections/introduction.tex full/sections/abstract.tex full/sections/scope_notation.tex full/sections/Notation/qstar_contract.tex q3.lean.aristotle/PROJECT_ORCHESTRATOR.md q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md q3.lean.aristotle/docs/INSIGHTS.md | done_when=all active files use the symmetric packet extension, keep Gershgorin sparse-only, and present measure-level `P7` (`\\mu_A-\\mu_P>=0`) plus the stronger symbol regime as the immediate constructive target for PSD-pd | if_fail_then=split into `measure-level P7`, `symbol-regime P7`, and `P8 compact closure wording` subtasks`
+`PSD-pd.9 | gate=PSD-pd | target=Sharpen the strict packet package to the finite-dictionary P7 form: symmetric packet extension `\\mathcal Q` -> exact sesquilinear identity -> finite Toeplitz reduction on admissible dictionaries -> desired prime-factorization (rejected by obstruction) -> sparse Gershgorin criterion/background-only -> Toeplitz/Herglotz criterion -> exact finite symbol `S_J=A_J-P_J` -> Poisson-regularized verification with explicit error budget -> PSD-pd | files=full/sections/Main_closure.tex; full/sections/Weil_pack.tex; full/sections/introduction.tex; full/sections/abstract.tex; full/sections/scope_notation.tex; full/sections/Notation/qstar_contract.tex; q3.lean.aristotle/PROJECT_ORCHESTRATOR.md; q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md; q3.lean.aristotle/docs/INSIGHTS.md | verify=rg -n \"\\\\mathcal Q|S_J|A_J|P_J|A_\\{J,r\\}|P_\\{J,r\\}|Poisson|Gershgorin|prime-block obstruction|Toeplitz--Herglotz\" full/sections/Main_closure.tex full/sections/Weil_pack.tex full/sections/introduction.tex full/sections/abstract.tex full/sections/scope_notation.tex full/sections/Notation/qstar_contract.tex q3.lean.aristotle/PROJECT_ORCHESTRATOR.md q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md q3.lean.aristotle/docs/INSIGHTS.md | done_when=all active files present finite admissible dictionary `P7` as the immediate constructive target, with Poisson regularization only as a finite verification device and measure-level language demoted to secondary diagnostic notation | if_fail_then=split into `finite symbol identity`, `Poisson error budget`, and `compact closure wording` subtasks`
 
 ## QUEUED
 

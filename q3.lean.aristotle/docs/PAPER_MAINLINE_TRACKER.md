@@ -1,6 +1,6 @@
 # Paper Mainline Tracker
 
-Updated: 2026-03-07
+Updated: 2026-03-08
 
 ## Role
 
@@ -28,7 +28,7 @@ It is **not** the execution queue and **not** the master gate-state file.
 | `\mathcal G_K^{pd}` | dense autocorrelation packet family `\operatorname{cone}\{\Psi*\widetilde\Psi:\Psi\in\mathcal P_K(t_0)\}` | active density family |
 | `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive centered Rayleigh family `\operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}` | background candidate; too large for closure |
 | `S_{g,\Delta}(\theta)` | packet Toeplitz symbol built from `\kappa_m=Q^\star(t;h(\cdot-m\Delta))` | structural object; no longer the public theorem target by itself |
-| `K_Q(g_i,g_j)` | packet kernel `Q^\star(t;g_i * \widetilde{g_j})` on the dense pre-packet space | active hard-theorem object |
+| `K_Q(g_i,g_j)` | packet kernel `\mathcal Q(g_i * \widetilde{g_j})` on the dense pre-packet space | active hard-theorem object |
 
 Lean compatibility note:
 
@@ -46,7 +46,7 @@ Lean compatibility note:
 | `A1-pd` | density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}` | frozen theorem block | `sections/A1prime.tex`, `sections/Main_closure.tex` |
 | `packet-Rayleigh-naive` | identify `Q^\star(t;\Phi_{B,t,p})` with the controlled Toeplitz/RKHS quadratic form on the naive family `\mathcal G_{K,\mathrm{Ray}}^{pd}` | background candidate | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `SF-pd` | same-family bridge through the naive family `\mathcal G_{K,\mathrm{Ray}}^{pd}` | rejected as mainline route | historical note only |
-| `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` with symbol `S_{g,\Delta}` | frozen theorem block | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
+| `packet-Rayleigh-pd` | exact finite Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` with finite symbol `S_J` on each admissible dictionary | frozen theorem block | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | rejected-too-strong route | `sections/Main_closure.tex`, `sections/scope_notation.tex` |
 | `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets | active frontier; direct full-kernel PSD primary, `Herglotz/Bochner` secondary diagnostic | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
@@ -78,7 +78,7 @@ Lean compatibility note:
 | `packet-Rayleigh-naive` (`lem:packet-rayleigh-identification`) | theorem target on `\mathcal G_{K,\mathrm{Ray}}^{pd}` | naive quadratic-form bridge on an overlarge family | background candidate only |
 | `packet-Rayleigh-pd` (`thm:packet-rayleigh-pd`) | theorem target on `\mathcal G_K^{pd}` | exact Toeplitz form on autocorrelation packets | aligned as theorem block |
 | `A3-pd` (`prop:a3-pd-too-strong`) | old theorem target on the same dense packet family `\mathcal G_K^{pd}` | uniform packet-symbol floor on dense packets | rejected-too-strong route |
-| `PSD-pd` (`thm:PSD-pd`) | theorem target on the dense pre-packet space behind `\mathcal G_K^{pd}` | positive semidefiniteness of `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` | active blocker; pursue through the strict `P1–P8` chain with regularized `P7` as immediate constructive target |
+| `PSD-pd` (`thm:PSD-pd`) | theorem target on the dense pre-packet space behind `\mathcal G_K^{pd}` | positive semidefiniteness / corrected compact positivity through the strict finite-dictionary `P7` package | active blocker; pursue through the strict `P1–P8` chain with finite-symbol `P7.3`--`P7.6` and Poisson verification as the immediate constructive target |
 | A2 continuity | theorem on ambient admissible compact tests | inherited input on `\mathcal W_K^{pd}` | aligned |
 | conditional main positivity (`thm:Main-positivity`) | positivity on corrected global cone | conditional on centered packet density in `\mathcal W_K^{pd}` | aligned after pivot |
 | local closure proposition | compact closure from a dense positive family inside `\mathcal W_K^{pd}` | theorem on `\mathcal W_K^{pd}` | aligned after pivot |
@@ -148,16 +148,17 @@ Interpretation rule after `T0.1`:
    -> `P4` prime-block obstruction
    -> `P5` full sequence split `\kappa=\alpha-\beta`
    -> `P6` Toeplitz/Herglotz criterion
-   -> `P7` measure-level / regularized full-symbol domination
-      `\mu_A-\mu_P\ge 0`, or in the stronger symbol regime
-      `A_{g,\Delta}^{reg}\ge P_{g,\Delta}`
+   -> `P7.3` exact finite symbol identity
+   -> `P7.4` finite-symbol domination `S_J\ge0`
+   -> `P7.5` Poisson-regularized verification
+   -> `P7.6` explicit error-budget criterion
    -> `PSD-pd`.
 9. Keep `Herglotz/Bochner` only as the secondary diagnostic route:
    equivalence between positive-definite sequence, Toeplitz-section PSD, and
    positive measure representation for the packet coefficients.
 10. Record Gershgorin diagonal dominance only as a sparse finite-block lemma;
     it must not be presented as the dense main theorem.
-11. Treat regularized `P7` as the immediate constructive target; any new
+11. Treat finite-dictionary `P7` as the immediate constructive target; any new
     full-kernel operator package is fallback-only.
 12. Explicit LF statement phrased only on the corrected cone `\mathcal W^{pd}`.
 

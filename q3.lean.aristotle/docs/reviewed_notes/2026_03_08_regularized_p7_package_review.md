@@ -1,4 +1,4 @@
-# Reviewed Note: Measure-Level P7 Package
+# Reviewed Note: Finite-Dictionary P7 Package
 
 - reviewed: `yes`
 - safe for embeddings: `yes`
@@ -10,22 +10,24 @@
 
 The strict packet route is now refined as follows:
 
-`P1 -> P2 -> P4 -> sparse Gershgorin diagnostic -> P5 -> P6 -> measure-level / regularized P7 -> PSD-pd`
+`P1 -> P2 -> P4 -> sparse Gershgorin diagnostic -> P5 -> P6 -> finite P7.3--P7.6 -> PSD-pd`
 
-where `P7` now means measure-level/full-symbol domination
+where `P7` now means finite admissible dictionary positivity through the exact
+symbol
 
-`\mu_A-\mu_P >= 0`,
+`S_J(\theta)=A_J(\theta)-P_J(\theta)`,
 
-or in the stronger symbol regime
+verified by Poisson-regularized finite symbols and an explicit error budget.
 
-`A_{g,\Delta}^{reg} >= P_{g,\Delta}`.
+Measure-level/full-symbol language remains only as secondary diagnostic
+notation.
 
 ## Why this matters
 
 - Cross-kernels now use the symmetric extension `\mathcal Q`.
 - Gershgorin is explicit, but only as a sparse finite-block lemma.
-- The dense main theorem now clearly targets measure-level/full-symbol
-  domination, not standalone PSD of the prime block.
+- The dense main theorem now clearly targets finite-symbol domination on each
+  admissible dictionary, not standalone PSD of the prime block.
 
 ## File pointers
 

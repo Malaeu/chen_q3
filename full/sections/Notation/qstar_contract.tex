@@ -20,15 +20,19 @@ $\mathcal W^{\mathrm{pd}}$ & corrected global Weil cone & $\varinjlim_{K\to\inft
 $\mathcal P_K(t_0)$ & pre-square packet span & $\operatorname{span}\{g_{\delta,\tau}: |\tau|+\delta\le K/2\}$ \\
 $\mathcal G_K^{\mathrm{pd}}$ & dense autocorrelation packet family & $\operatorname{cone}\{\Psi*\widetilde\Psi:\ \Psi\in\mathcal P_K(t_0)\}$ \\
 $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ & naive centered Rayleigh family & background candidate $\operatorname{cone}\{\Phi_{B,t,p}=\Phi_{B,t}|p|^2\}$ \\
-$\Psi_c$ & finite pre-packet & $\Psi_c(x)=\sum_{j=-M}^M c_j g(x-j\Delta)$ \\
+$J$ & finite admissible translation dictionary & $J\subset\mathbb Z$ with $\operatorname{supp}(g_j)\subset[-K/2,K/2]$ \\
+$D(J)$ & finite difference set & $\{i-j:\ i,j\in J\}$ \\
+$\Psi_c$ & finite pre-packet & $\Psi_c(x)=\sum_{j\in J} c_j g_j(x)$ \\
 $h$ & packet autocorrelation kernel & $h=g*\widetilde g$ \\
 $\mathcal Q(F)$ & symmetric compact extension of $Q^\star$ & agrees with $Q^\star(t;F)$ on even $F$ \\
-$\kappa_m$ & Toeplitz coefficient sequence & $\kappa_m=\mathcal Q(h(\cdot-m\Delta))$ \\
-$S_{g,\Delta}$ & packet Toeplitz symbol & $S_{g,\Delta}(\theta)=\sum_{m\in\mathbb Z}\kappa_m e^{-im\theta}$ \\
+$\kappa_m$ & packet Toeplitz coefficient & $\kappa_m=\mathcal Q(h(\cdot-m\Delta))$ for $m\in D(J)$ \\
+$A_J,P_J,S_J$ & finite packet symbols & $\sum_{m\in D(J)} \alpha_m e^{-im\theta}$, $\sum_{m\in D(J)} \beta_m e^{-im\theta}$, $A_J-P_J$ \\
+$A_{J,r},P_{J,r},S_{J,r}$ & Poisson-regularized finite symbols & $P_r*A_J$, $P_r*P_J$, $P_r*S_J$ \\
+$p_c$ & trigonometric packet polynomial & $p_c(\theta)=\sum_{j\in J} c_j e^{ij\theta}$ \\
 $K_Q(g_i,g_j)$ & packet kernel on pre-packets & $\mathcal Q(g_i * \widetilde{g_j})$ \\
 $A_{g,\Delta}$ & Archimedean packet symbol part & $\sum_m e^{-im\theta}\int a^*(\xi)\,h(\xi-m\Delta)\,d\xi$ \\
 $P_{g,\Delta}$ & prime packet symbol part & $\sum_m e^{-im\theta}\frac12\sum_n w_Q(n)\bigl(h(\xi_n-m\Delta)+h(\xi_n+m\Delta)\bigr)$ \\
-$\mu_A,\mu_P$ & packet-side Fourier measures & $\alpha_m=\widehat{\mu_A}(m),\ \beta_m=\widehat{\mu_P}(m)$ \\
+$\mu_A,\mu_P$ & packet-side Fourier measures & secondary Herglotz notation for $(\alpha_m),(\beta_m)$ \\
 $H_{g,\Delta,\theta}$ & twisted periodization of $h$ & $\sum_m h(\xi-m\Delta)e^{-im\theta}$ \\
 $\Phi_{B,t,\tau}$ & shifted evenized Fej\'er$\times$heat window & bandwidth $B$, heat scale $t$, shift $\tau$ \\
 $Q^\star(t;\Phi)$ & Weil functional with explicit $t$ & $\Phi$ on the ambient/support side or on the corrected cone \\
@@ -53,7 +57,8 @@ Weil criterion. Accordingly:
   $\mathcal G_{K,\mathrm{Ray}}^{\mathrm{pd}}$ is background-only, because that family
   is too large to serve as the public closure family;
   \item the exact packet-Rayleigh theorem lives on autocorrelation packets
-  $\Psi_c * \widetilde{\Psi_c}$ with Toeplitz symbol $S_{g,\Delta}$;
+  $\Psi_c * \widetilde{\Psi_c}$ with finite Toeplitz block $T_J(\kappa)$ and
+  finite symbol $S_J$ on each admissible dictionary;
   \item the old route `A3-pd` --- one uniform packet-symbol floor on the full dense
   packet dictionary --- is too strong and therefore rejected as the public theorem shape;
   \item the sparse Gershgorin route is kept only as a local finite-block lemma
@@ -61,9 +66,12 @@ Weil criterion. Accordingly:
   \item the honest remaining knife-edge is `PSD-pd`: prove that the packet kernel
   $K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})$ is positive semidefinite on the
   same exact dense pre-packet space;
-  \item the immediate constructive target is now the measure-level/full-symbol
-  domination criterion $\mu_A-\mu_P\ge 0$, or in the stronger symbol regime
-  $A_{g,\Delta}^{\mathrm{reg}}\ge P_{g,\Delta}$;
+  \item the immediate constructive target is now the finite admissible dictionary
+  criterion $S_J(\theta)\ge0$ on each compact packet block, verified via
+  Poisson-regularized finite symbols $S_{J,r}$ and an explicit error budget;
+  \item the measure-level/full-symbol language $\mu_A-\mu_P\ge 0$ remains useful
+  only as a secondary Herglotz-style equivalence, not as the first constructive
+  target for compact positivity;
   \item the centered A3/RKHS positivity mechanism is kept as the positivity engine
   for that corrected cone.
 \end{itemize}

@@ -1,6 +1,6 @@
 # PROJECT ORCHESTRATOR - Q3
 
-Updated: 2026-03-07
+Updated: 2026-03-08
 
 ## Role
 
@@ -23,11 +23,12 @@ It is **not** a session log and **not** a microtask queue.
   `\mathcal W_K^{pd} / \mathcal W^{pd}`.
 - `A1-pd`: density of the centered autocorrelation family
   `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.
-- `packet-Rayleigh-pd`: exact Toeplitz quadratic-form identity on the same
-  autocorrelation packet family `\Psi * \widetilde\Psi`; this is now part of the
-  public theorem package.
+- `packet-Rayleigh-pd`: exact finite Toeplitz quadratic-form identity on the
+  same autocorrelation packet family `\Psi * \widetilde\Psi`; this is now part
+  of the public theorem package.
 - `PSD-pd`: positive semidefiniteness of the packet kernel
-  `K_Q(g_i,g_j):=Q^\star(t;g_i * \widetilde{g_j})` on that same dense pre-packet space.
+  `K_Q(g_i,g_j):=\mathcal Q(g_i * \widetilde{g_j})` on that same dense
+  pre-packet space.
 - `A2 closure`: continuity transfer on the corrected local cone.
 - `LF-pd`: inductive-limit lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}`.
 - `G6`: Weil linkage from positivity on `\mathcal W^{pd}` to RH.
@@ -82,7 +83,7 @@ Interpretation after `T0.1`:
 | `A1-pd` | density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}` | `frozen theorem block` | pre-square density route + autocorrelation continuity prove `\overline{\mathcal G_K^{pd}}=\mathcal W_K^{pd}` |
 | `packet-Rayleigh-naive` | naive quadratic-form bridge on `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}` | `background candidate` | keep only as an auxiliary identity; do not reuse it as the public closure family |
 | `SF-pd` | same-family bridge through `\mathcal G_{K,\mathrm{Ray}}^{pd}` | `rejected as mainline route` | rejected because the naive Rayleigh family is too large and would force false broad local positivity |
-| `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `Q^\star(t;\Psi_c * \widetilde{\Psi_c})` with `\langle T_M[S_{g,\Delta}]c,c\rangle` |
+| `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `\mathcal Q(\Psi_c * \widetilde{\Psi_c})` with the finite symbol integral `\frac{1}{2\pi}\int S_J(\theta)|p_c(\theta)|^2\,d\theta` on each admissible dictionary |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
 | `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets | `active` | prove that every finite matrix `[K_Q(g_i,g_j)]` on the `A1-pd` pre-packet space is positive semidefinite |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
@@ -108,13 +109,14 @@ Interpretation after `T0.1`:
      `prime-block PSD factorization or Hilbert lift -> Archimedean domination`
      on packet space;
   6. make `PSD-pd` the single live knife-edge: prove positive semidefiniteness
-     of the full packet kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})`
+     of the full packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})`
      on the same exact dense pre-packet space;
   7. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
   8. freeze the strict `P1--P8` theorem package;
-  9. make regularized full-symbol domination
-     `A_{g,\Delta}^{reg}(\theta)\ge P_{g,\Delta}(\theta)` the immediate
-     constructive target, with a new full-kernel operator package kept as fallback;
+  9. make finite admissible dictionary positivity the immediate constructive target:
+     exact finite symbol `S_J(\theta)=A_J(\theta)-P_J(\theta)`,
+     Poisson-regularized verification, and explicit error budget,
+     with a new full-kernel operator package kept as fallback;
  10. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
 
 ## Active Milestone
@@ -132,7 +134,7 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
 7. reject the literal `Route P` theorem shape
    `prime-block PSD factorization or Hilbert lift -> Archimedean domination`,
 8. make `PSD-pd` explicit as the packet-kernel theorem
-   `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on dense pre-packets,
+   `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on dense pre-packets,
 9. freeze the strict `P1--P8` chain:
    exact packet sesquilinear identity
    -> Toeplitz reduction
@@ -143,9 +145,10 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
    -> `PSD-pd`,
 10. record the two surviving strategy families for `PSD-pd`
     (Herglotz/Bochner versus direct full-kernel PSD),
-11. make regularized full-symbol domination
-    `A_{g,\Delta}^{reg}\ge P_{g,\Delta}` the immediate constructive target,
-    with a new full-kernel operator package as fallback,
+11. make the finite-dictionary `P7` package the immediate constructive target:
+    `S_J=A_J-P_J\ge0` on each admissible packet block, verified through
+    Poisson-regularized finite symbols and explicit error budget, with a new
+    full-kernel operator package as fallback,
 12. keep Gershgorin only as a sparse finite-block lemma and not as the dense
     public theorem,
 13. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
@@ -162,7 +165,7 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
   positivity on even nonnegative bumps.
 - Exact packet-Rayleigh on autocorrelation packets is now the honest theorem shape,
   but no proof yet establishes positive semidefiniteness of the associated packet
-  kernel `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the same dense
+  kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on the same dense
   pre-packet space.
 - `Herglotz/Bochner` explains what `PSD-pd` means, but it does not yet provide a
   project-local constructive proof.
@@ -173,9 +176,10 @@ Turn the frozen corrected theorem package into a proof-ready `PSD-pd` stack:
   exact packet sesquilinear identity
   -> prime-block obstruction
   -> Toeplitz/Herglotz spectral criterion for the full sequence
-  -> measure-level/full-symbol domination `\mu_A-\mu_P\ge 0`
-     or, in the stronger symbol regime,
-     `A_{g,\Delta}^{reg}\ge P_{g,\Delta}`
+  -> finite admissible dictionary positivity
+     `S_J(\theta)=A_J(\theta)-P_J(\theta)\ge0`
+     verified through Poisson-regularized finite symbols and explicit error budget
+     (with measure-level/full-symbol language retained only as secondary diagnostic notation)
      or a new operator package for the full kernel
   -> `PSD-pd`.
 - On dense packet dictionaries with arbitrarily fine translates, a uniform lower
@@ -215,6 +219,9 @@ Legacy narrative surfaces are reference-only:
   `G2` chooses and freezes `G_K`,
   `G3` proves positivity on that exact `G_K`.
 - 2026-03-07: `G0` closed and verified across control docs, manuscript, Lean narrative, and builds.
+- 2026-03-08: `P7` sharpened from measure-level/full-symbol wording to the
+  finite admissible dictionary package: exact finite symbol `S_J`, Poisson
+  regularization, and explicit error budget.
 - 2026-03-07: `G1.1-G1.6` prepared the broad-cone support-upgrade branch and moved the
   Aristotle `W_K` packet into background-only status.
 - 2026-03-07: a reviewed target-cone reset note raised a stronger blocker:
@@ -239,18 +246,16 @@ Legacy narrative surfaces are reference-only:
   family.
 - 2026-03-07: the public frontier therefore pivots again from `A3-pd` to
   `PSD-pd`: prove positive semidefiniteness of the packet kernel
-  `K_Q(g_i,g_j)=Q^\star(t;g_i * \widetilde{g_j})` on the dense pre-packet space.
+  `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on the dense pre-packet space.
 - 2026-03-07: the stronger packet-space audit shows that the literal
   `prime-block PSD factorization or Hilbert lift -> Archimedean domination`
   theorem shape is false on dense packet dictionaries. The active constructive
   route is now direct PSD of the full kernel `K_Q`, with `Herglotz/Bochner`
   kept only as diagnostic equivalence language.
 - 2026-03-08: the strict packet theorem package is now frozen as
-  `P1 -> P2 -> P4 -> P5 -> P6 -> P7 -> PSD-pd`, where `P7`
-  (`A_{g,\Delta}\ge P_{g,\Delta}` or the measure/distribution analogue) is the
-  immediate constructive target and any new operator package for the full kernel
-  is fallback-only.
-- 2026-03-08: `P7` is now sharpened further to regularized full-symbol
-  domination `A_{g,\Delta}^{reg}\ge P_{g,\Delta}` after introducing the
-  symmetric packet extension `\mathcal Q`; Gershgorin survives only as a sparse
-  finite-block lemma and not as the dense main theorem.
+  `P1 -> P2 -> P4 -> P5 -> P6 -> P7.3 -> P7.4 -> P7.5 -> P7.6 -> PSD-pd`,
+  where the immediate constructive target is finite admissible dictionary
+  positivity `S_J(\theta)=A_J(\theta)-P_J(\theta)\ge0`.
+- 2026-03-08: Poisson regularization is retained only as a finite verification
+  device with explicit error budget, while measure-level/full-symbol language
+  is demoted to secondary Herglotz-style notation.

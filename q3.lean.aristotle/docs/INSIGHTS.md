@@ -51,6 +51,29 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
  5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Final result (2026-03-08) — finite-dictionary P7 replaces the measure-level immediate target
+
+Новый blocker уточнён жёстче:
+
+- для compact-step не нужен distribution-level symbol;
+- на фиксированном admissible packet dictionary `J` реальный объект уже конечный:
+  `S_J(\theta)=A_J(\theta)-P_J(\theta)`;
+- конструктивный пакет теперь такой:
+  exact finite Toeplitz reduction
+  -> exact finite symbol identity
+  -> finite-symbol domination `S_J\ge0`
+  -> Poisson-regularized verification with explicit error budget;
+- measure-level/full-symbol language (`\mu_A-\mu_P\ge0`) остаётся только как
+  secondary Herglotz-style equivalence;
+- Gershgorin survives only as sparse finite-block evidence, not as the dense theorem.
+
+Operational consequence:
+- active frontier is now to bound `\alpha_m` and `\beta_m` strongly enough to
+  close Corollary `P7.6` on every finite admissible packet dictionary.
+
+Detailed note:
+- `docs/insights/regularized_p7_package_2026_03_08.md`
+
 ## Final result (2026-03-07) — external Together AI repo integrated as corpus, not prover
 
 Проверен и локально клонирован внешний repo:

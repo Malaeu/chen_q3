@@ -1,4 +1,4 @@
-# Regularized P7 Package
+# Finite-Dictionary P7 Package
 
 Date: 2026-03-08
 
@@ -10,17 +10,18 @@ The live `PSD-pd` route has now been sharpened one level further.
   functional `\mathcal Q`, not directly through the even-only `Q^\star`.
 - The packet prime block still cannot be treated as PSD on dense packet spaces.
 - Gershgorin diagonal dominance survives only as a sparse finite-block lemma.
-- The immediate constructive target is now the measure-level/full-symbol
-  criterion
-  `\mu_A-\mu_P \ge 0`,
-  or in the stronger symbol regime
-  `A_{g,\Delta}^{reg} \ge P_{g,\Delta}`.
+- The immediate constructive target is now the finite admissible dictionary
+  symbol
+  `S_J(\theta)=A_J(\theta)-P_J(\theta)`,
+  together with Poisson-regularized verification and an explicit error budget.
+- Measure-level/full-symbol language remains only as secondary Herglotz-style
+  diagnostic notation.
 
 ## Core theorem package
 
 The honest constructive chain is now:
 
-`P1 -> P2 -> P4 -> sparse Gershgorin diagnostic -> P5 -> P6 -> measure-level / regularized P7 -> PSD-pd`
+`P1 -> P2 -> P4 -> sparse Gershgorin diagnostic -> P5 -> P6 -> finite P7.3--P7.6 -> PSD-pd`
 
 with the background theorem shape
 
@@ -33,8 +34,9 @@ kept only as the desired-but-false route.
 - It fixes the packet bilinear form at the correct level of generality.
 - It stops the project from pretending that diagonal-dominance estimates could
   close the dense main theorem.
-- It identifies the real next theorem as a measure-level/full-symbol
-  domination theorem for the full kernel, not for the prime block alone.
+- It identifies the real next theorem as finite-symbol domination on each
+  admissible packet dictionary, with Poisson regularization used only as a
+  verification device.
 
 ## File pointers
 
