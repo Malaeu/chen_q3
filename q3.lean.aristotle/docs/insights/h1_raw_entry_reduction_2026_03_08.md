@@ -6,7 +6,8 @@ Active refinement of the symmetric two-sided filtered Suzuki bridge.
 
 This note does not change the public theorem stack
 `H1^f -> H2^f -> H3^f -> H4^f`.
-It narrows the live bulk blocker inside `H1^f`.
+It now records the raw diagnostic layer and the reason the raw theorem target
+fails.
 
 ## Frozen notation
 
@@ -25,18 +26,19 @@ It narrows the live bulk blocker inside `H1^f`.
 - filtered Suzuki blocks:
   `M_{mn}^{\sigma\tau}(a)=\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle`
 
-## Active bulk target
+## Raw diagnostic layer
 
-The narrowest active theorem target is now:
+The raw-compressed Section 8 layer is still worth freezing explicitly:
 
-- prove the raw identity
-  `w_{rs}(a)=\kappa(a)q_{rs}`
-  on the two raw bulk families `(+,+)` and `(+,-)`,
-  with the ambient shorthand `q_{rs}=q_{rs}^{(M+1)}` in the filtered bridge;
-- then recover the filtered four-block equalities
-  `(++), (+-), (-+), (--)`
-  formally by applying the two-sided filter `\Delta_{M,N}` and the Hermitian
-  symmetry on both sides.
+- `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+- `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
+- `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle=
+   A_{r-s}-\sum_{|\xi_n|\le B}\lambda_n e^{2\pi i(s-r)\xi_n}`,
+- `\kappa_{A3}=1`.
+
+But the exact raw identity
+`w_{rs}(a)=\kappa(a)q_{rs}`
+is no longer the active theorem target.
 
 ## Normalization caveat now frozen
 
@@ -54,6 +56,34 @@ With that choice the exact entries become stable in `M` as soon as
 `|r|,|s|\le M`, and the A3 calibration fixes `\kappa_{A3}=1`. That is the
 package Proshka actually wants.
 
+## Why the raw theorem target fails
+
+The raw Q3 matrix is Toeplitz:
+
+- `q_{rs}=q(r-s)`,
+- in particular the diagonal `q_{rr}` is constant.
+
+The raw Suzuki/Weil matrix in the basis `\chi_n[a]` is not Toeplitz and has
+logarithmically growing diagonal:
+
+- `w_{nn}(a)\sim \log|n|`.
+
+So no scalar `\kappa(a)` can make
+`w_{rs}(a)=\kappa(a)q_{rs}`
+hold on the bulk. This is a structural mismatch, not a sign or scaling bug.
+
+## Active bulk target
+
+The narrowest active theorem target is now:
+
+- prove the direct filtered bulk identities
+  `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}`
+  and
+  `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`;
+- then recover the remaining filtered blocks
+  `(-+), (--)`
+  formally by Hermitian symmetry.
+
 ## Symmetry reduction
 
 Because
@@ -68,11 +98,11 @@ Assuming the same Hermitian normalization on the Q3 side,
 - `\widetilde q_{mn}^{--}=\overline{\widetilde q_{nm}^{++}}`
 - `\widetilde q_{mn}^{-+}=\overline{\widetilde q_{nm}^{+-}}`
 
-So only the `(+,+)` and `(+,-)` raw families must be matched independently.
+So only the `(+,+)` and `(+,-)` filtered families must be matched independently.
 
 ## Remaining brick after bulk
 
-After the raw bulk identity is matched, the only other live H-bridge problem is
+After the filtered bulk identities are matched, the only other live H-bridge problem is
 the finite-dimensional Suzuki cap:
 
 - define `A_a^{cap}`

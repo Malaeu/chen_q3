@@ -152,9 +152,14 @@ New live frontier:
      with Q3-side normalization fixed by `\kappa_{A3}=1`,
      and
      `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
-     and reduce the live bulk identity to
+     and keep the raw identity
      `w_{rs}(a)=\kappa(a)q_{rs}`
-     on the two raw families `(+,+)` and `(+,-)`;
+     only as a diagnostic mismatch layer:
+     the raw Q3 matrix is Toeplitz with constant diagonal while the Suzuki raw
+     Weil matrix in the `\chi_n[a]` basis has diagonal growth of order
+     `\log|n|`;
+     the live bulk target is therefore the direct filtered match on the two
+     families `(+,+)` and `(+,-)`;
   13. isolate the finite-dimensional Suzuki cap as the second and only other
      live brick after the bulk match:
      positivity of the cap matrix is a separate finite-dimensional problem.
@@ -200,13 +205,15 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     `Q_{M+1}^{raw}`,
     and
     `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
-    then reduce the active work to the raw bulk identity
+    then keep the raw identity
     `w_{rs}(a)=\kappa(a)q_{rs}`
-    on the two families `(+,+)` and `(+,-)`,
-    with the four filtered blocks
-    `(++), (+-), (-+), (--)`
-    becoming formal consequences after applying `\Delta_{M,N}` and
-    Hermitian symmetry,
+    only as a rejected diagnostic theorem shape;
+    the active work is the direct filtered bulk match
+    `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}` and
+    `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`,
+    with the remaining filtered blocks
+    `(-+), (--)`
+    becoming formal consequences of Hermitian symmetry,
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family
@@ -404,13 +411,15 @@ Legacy narrative surfaces are reference-only:
 - 2026-03-08: the one-sided filtered Volterra bridge is superseded by the
   symmetric two-sided filtered tail package
   `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}`.
-  The active bulk theorem is now the raw identity
-  `w_{rs}(a)=\kappa(a)q_{rs}`
-  on the two raw families `(+,+)` and `(+,-)`, after extracting the exact
-  raw-compressed Section 8 formula
+  After extracting the exact raw-compressed Section 8 formula
   `Q_M^{raw}=T_M[P_A]-\Pi_M`,
   `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
   and
-  `q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`;
-  the filtered four-block package is the derived consequence layer, and the
-  only second live brick after that is the finite-dimensional Suzuki cap.
+  `q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
+  the raw identity `w_{rs}(a)=\kappa(a)q_{rs}` is now rejected as an exact
+  theorem shape, because the raw Q3 matrix is Toeplitz with constant diagonal
+  while the Suzuki raw Weil matrix on the `\chi_n[a]` basis has logarithmically
+  growing diagonal. The live bulk theorem is therefore the direct filtered
+  match on `(++),(+-)`, the filtered four-block package remains the derived
+  consequence layer, and the only second live brick after that is the
+  finite-dimensional Suzuki cap.

@@ -46,12 +46,18 @@ Crucially:
 - the calibration section fixes `\kappa_{A3}=1`, so no extra Q3-side scalar is
   hiding in the Archimedean coefficients;
 - the equality `w_{rs}(a)=\kappa(a)q_{rs}` is still **not** an already proved
-  Q3 theorem. It remains the exact bulk target for `H1`.
+  Q3 theorem, and should now be treated only as a rejected raw theorem shape:
+  the raw Q3 matrix is Toeplitz with constant diagonal, while the raw
+  Suzuki/Weil matrix in the basis `\chi_n[a]` has diagonal growth of order
+  `\log|n|`;
+- the live exact target is therefore the direct filtered bulk match on the
+  filtered adjacent tails `(++),(+-)`.
 
 So if Proshka asks for “the formula”, what he really needs is not the old
 normalized `L`-local shorthand, but the exact raw operator package
-`Q_M^{raw}`, `\Pi_M`, `A_k`, `\lambda_n`, and the statement that the only
-remaining bulk target is `w_{rs}(a)=\kappa(a)q_{rs}`.
+`Q_M^{raw}`, `\Pi_M`, `A_k`, `\lambda_n`, plus the warning that the raw
+identity itself fails structurally and should only be used as a diagnostic
+normalization layer.
 
 ## Best hack for Proshka
 
@@ -62,7 +68,8 @@ Rayleigh pairing. Hand him the following package directly:
 - `Q_M^{raw}=T_M[P_A]-\Pi_M`;
 - `q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`;
 - `\kappa_{A3}=1`;
-- the two raw bulk target families are `(+,+)` and `(+,-)`.
+- the filtered bulk target families are `(+,+)` and `(+,-)`, after passing to
+  the adjacent filtered tails.
 
 That removes the annoying bookkeeping layer and lets him work immediately on
 the real bridge identity instead of re-deriving scale factors from the old A3

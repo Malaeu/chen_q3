@@ -78,9 +78,11 @@
   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
   `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
 - next exact blocker:
-  raw bulk identity
-  `w_{rs}(a)=\kappa(a)q_{rs}`
-  on the two raw families `(+,+)` and `(+,-)`,
+  direct filtered bulk identities
+  `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}`
+  and
+  `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`
+  on the two filtered families `(+,+)` and `(+,-)`,
   where on the Section 8 side
   `Q_M^{raw}=T_M[P_A]-\Pi_M`,
   `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
@@ -91,13 +93,15 @@
   with `\kappa_{A3}=1`,
   and
   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})` on the Suzuki side;
+- raw diagnostic layer:
+  the raw identity `w_{rs}(a)=\kappa(a)q_{rs}` is rejected as an exact theorem
+  shape, because the raw Q3 matrix is Toeplitz with constant diagonal while the
+  Suzuki raw Weil matrix in the `\chi_n[a]` basis has diagonal growth of order
+  `\log|n|`;
 - derived filtered consequence:
-  the four bulk blocks
-  `M^{++}, M^{+-}, M^{-+}, M^{--}`
-  versus the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`,
-  with `(--),(-+)` obtained from `(++),(+-)` by
-  conjugation/self-adjoint symmetry;
-- after the raw bulk match:
+  the remaining filtered blocks `M^{-+}, M^{--}` are obtained from
+  `M^{++}, M^{+-}` by conjugation/self-adjoint symmetry;
+- after the filtered bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:
   finite-prime packet states `\eta_m^{(S,a)}`, Gram matrix
@@ -193,7 +197,8 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 Для H1 это означает:
 
 - в prompt напрямую вставлять `Q_M^{raw}`, `\Pi_M`, exact `q_{rs}`,
-  `\kappa_{A3}=1`, и target `w_{rs}(a)=\kappa(a)q_{rs}`;
+  `\kappa_{A3}=1`, raw mismatch diagnostic, и direct filtered target on
+  `(++),(+-)`;
 - не ожидать, что Прошка сам восстановит normalization из старых A3 файлов.
 - для локального быстрого check использовать:
   ```bash
@@ -323,20 +328,21 @@ python src/h1_raw_operator_sanity.py --M 4 --M-big 7 --B 0.2 --t 0.15
   with
   `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle`;
 - next exact blocker:
-  raw bulk identity
-  `w_{rs}(a)=\kappa(a)q_{rs}`
-  on the two raw families `(+,+)` and `(+,-)`,
-  where on the raw Section 8 side
+  direct filtered bulk identities
+  `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}` and
+  `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`;
+- raw diagnostic layer:
   `q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
   `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
-  and `\kappa_{A3}=1`,
-  and
-  `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})` on the Suzuki side;
+  `\kappa_{A3}=1`,
+  and `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`
+  remain frozen only as normalization/reference data;
+- rejected theorem shape:
+  `w_{rs}(a)=\kappa(a)q_{rs}` cannot be the exact bulk bridge because the raw
+  Q3 matrix is Toeplitz with constant diagonal while the raw Suzuki matrix has
+  diagonal growth of order `\log|n|`;
 - derived filtered consequence:
-  the four bulk blocks
-  `M^{++}, M^{+-}, M^{-+}, M^{--}`
-  versus the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`,
-  with `(--),(-+)` obtained from `(++),(+-)` by
+  the remaining filtered blocks follow from `(++),(+-)` by
   conjugation/self-adjoint symmetry;
 - after the bulk match:
   separate finite-dimensional Suzuki cap positivity;

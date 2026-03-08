@@ -3017,19 +3017,21 @@ Concrete refinement:
   and `\kappa_{A3}=1`;
 - freeze the raw Suzuki/Weil entries
   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`;
-- reduce the primary raw bulk theorem to
+- freeze the raw identity
   `w_{rs}(a)=\kappa(a)q_{rs}`
-  on the two families `(+,+)` and `(+,-)`;
-- keep the four filtered block equalities
-  `(++), (+-), (-+), (--)`
-  only as the filtered consequence layer obtained from `\Delta_{M,N}` plus
-  Hermitian symmetry;
+  only as a diagnostic normalization layer;
+- the live bulk theorem is now the direct filtered match
+  `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}` and
+  `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`;
+- keep the remaining filtered blocks
+  `(-+), (--)`
+  only as the filtered consequence layer obtained from Hermitian symmetry;
 - keep the finite-dimensional Suzuki cap as the only second brick after the raw
   bulk match.
 
 Verdict:
 - the active theorem target is now strictly narrower than the previous
-  four-block formulation;
+  four-block formulation and no longer lives on the raw `\chi_n[a]` matrix;
 - the old four-block note remains valid, but only as the filtered consequence
   layer and no longer as the narrowest active frontier;
 - semilocal machinery stays engineering-only for the same `H1^f`.
@@ -3050,8 +3052,8 @@ from chat:
   `full/sections/Main_closure.tex`.
 
 Key clarification:
-- `w_{rs}(a)=\kappa(a)q_{rs}` is currently a live bulk target, not an already
-  proved Q3 theorem;
+- `w_{rs}(a)=\kappa(a)q_{rs}` is not an already proved Q3 theorem and is now
+  treated only as a rejected raw theorem shape;
 - what the old A3 files already provide explicitly is the quadratic-form /
   compression machinery;
 - the exact raw-compressed Section 8 formula is now extracted as
@@ -3062,7 +3064,7 @@ Key clarification:
    =A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
   where `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`;
 - the remaining missing brick is no longer “find the formula”, but prove the
-  raw bulk identity `w_{rs}(a)=\kappa(a)q_{rs}` in the matching normalization.
+  direct filtered bulk identities on `(++),(+-)` in the matching normalization.
 
 ## In progress (2026-03-08) — Proshka-facing raw-operator hack for H1
 
@@ -3086,9 +3088,9 @@ Operational consequence:
 
 - for Proshka, hand over `Q_M^{raw}`, not the normalized `T_P^{Ray}(t,M)` block;
 - hand over the raw entry formula directly;
-- ask him to match `w_{rs}(a)=\kappa(a)q_{rs}` on the raw `(+,+)` and `(+,-)`
-  families;
-- let the filtered four-block layer remain a formal consequence after that.
+- ask him to use the raw formulas only as normalization data and match the
+  direct filtered bulk identities on `(+,+)` and `(+,-)`;
+- let the remaining filtered blocks stay a formal consequence after that.
 
 Important caveat:
 
@@ -3124,9 +3126,43 @@ Current sample run passes with errors at the `1e-16` level:
 - raw entry error (M): `4.578e-16`
 - overlap stability error: `4.475e-16`
 
-This does not prove the Suzuki raw bulk identity
-`w_{rs}(a)=\kappa(a)q_{rs}`, but it removes the local Q3-side
-normalization ambiguity and gives a fast executable check for future sessions.
+This does not prove the direct filtered bulk bridge, but it removes the local
+Q3-side normalization ambiguity and gives a fast executable check for future
+sessions.
+
+## Final result (2026-03-08) — raw bulk identity is structurally false; direct filtered H1 is the live brick
+
+The normalization audit succeeded, but the old narrowed target was still too
+optimistic:
+
+- the raw-compressed Section 8 layer is now stable and explicit:
+  `Q_M^{raw}=T_M[P_A]-\Pi_M`,
+  `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
+  `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle
+   =A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
+  `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
+  with `\kappa_{A3}=1`;
+- however the raw theorem target
+  `w_{rs}(a)=\kappa(a)q_{rs}` is structurally false:
+  the Q3 raw matrix is Toeplitz with constant diagonal, while the raw
+  Suzuki/Weil matrix in the basis `\chi_n[a]` has diagonal growth of order
+  `\log|n|`;
+- this is not a sign bug, not a `2\pi` bug, not a `(2M+1)` bug, and not a cap
+  effect;
+- therefore the raw layer is now diagnostic-only;
+- the exact live bulk theorem is the direct filtered match on the adjacent
+  Suzuki tails:
+  `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}` and
+  `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`,
+  with `(-+), (--)` coming from Hermitian symmetry;
+- after that, the only remaining bridge brick is the finite-dimensional Suzuki cap.
+
+Operational consequence:
+
+- do not ask Proshka to prove the raw identity as the end theorem;
+- do give him the raw formulas as normalization/reference data;
+- the next exact comparison should happen on the filtered adjacent-tail blocks,
+  not on the raw `\chi_n[a]` matrix.
 
 ## In progress (2026-03-08) — Incoming H1 theorem skeleton landed
 

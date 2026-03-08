@@ -1673,18 +1673,20 @@ and on each block it is the tridiagonal Toeplitz matrix
 
 \begin{theorem}[H1$^{\mathrm f}$: exact filtered bulk intertwining]\label{thm:H1-filtered-bulk}
 Fix $a>0$. Assume there exist an integer $N_a\ge 0$ and a scalar
-$\kappa(a)>0$ such that the two raw bulk identities
-\begin{equation}\label{eq:H1-raw-bulk-plus-plus}
-  w_{mn}(a)=\kappa(a)\,q_{mn},
+$\kappa(a)>0$ such that the two direct filtered bulk identities
+\begin{equation}\label{eq:H1-filtered-bulk-plus-plus}
+  M_{mn}^{++}(a)=\kappa(a)\,\widetilde q_{mn}^{++},
   \qquad m,n>N_a,
 \end{equation}
 and
-\begin{equation}\label{eq:H1-raw-bulk-plus-minus}
-  w_{m,-n}(a)=\kappa(a)\,q_{m,-n},
+\begin{equation}\label{eq:H1-filtered-bulk-plus-minus}
+  M_{mn}^{+-}(a)=\kappa(a)\,\widetilde q_{mn}^{+-},
   \qquad m,n>N_a,
 \end{equation}
-hold, where $q_{rs}$ denotes the stable raw-compressed Section~8 entry from
-Proposition~\ref{prop:H1-raw-q-formula}.
+hold, where the filtered Suzuki entries $M_{mn}^{\sigma\tau}(a)$ and the
+filtered Section~8 entries $\widetilde q_{mn}^{\sigma\tau}$ are defined by
+Proposition~\ref{prop:H1-raw-entry-reduction} and
+Proposition~\ref{prop:H1-filtered-q-blocks}.
 
 Then for every $M>N_a$ one has the exact filtered operator identity
 \[
@@ -1701,37 +1703,19 @@ Equivalently, for every $N_a<n,m\le M$ and every $\sigma,\tau\in\{+,-\}$,
 \end{theorem}
 
 \begin{proof}[Proof skeleton]
-Write
+The hypotheses \eqref{eq:H1-filtered-bulk-plus-plus}
+and~\eqref{eq:H1-filtered-bulk-plus-minus} cover the filtered families
+$(+,+)$ and $(+,-)$. By Corollary~\ref{cor:H1-bulk-symmetry-reduction}, the
+remaining filtered families $(-,-)$ and $(-,+)$ follow from conjugation and
+self-adjoint symmetry:
 \[
-  M_{mn}^{\sigma\tau}(a)
-  :=
-  \bigl\langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\bigr\rangle_{L^2(-a,a)}.
+  M_{mn}^{--}(a)=\overline{M_{nm}^{++}(a)},
+  \qquad
+  M_{mn}^{-+}(a)=\overline{M_{nm}^{+-}(a)},
 \]
-By Proposition~\ref{prop:H1-raw-entry-reduction}, each filtered Suzuki block is
-obtained from the corresponding raw Weil entries by the same four-term stencil:
-\[
-  M_{mn}^{\sigma\tau}(a)
-  =
-  w_{\varepsilon_\sigma m,\varepsilon_\tau n}(a)
-  +w_{\varepsilon_\sigma(m+1),\varepsilon_\tau n}(a)
-  +w_{\varepsilon_\sigma m,\varepsilon_\tau(n+1)}(a)
-  +w_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)}(a).
-\]
-By Proposition~\ref{prop:H1-filtered-q-blocks}, the filtered Q3 block entries are
-obtained from the same raw-compressed Section~8 entries by the same stencil:
-\[
-  \widetilde q_{mn}^{\sigma\tau}
-  =
-  q_{\varepsilon_\sigma m,\varepsilon_\tau n}
-  +q_{\varepsilon_\sigma(m+1),\varepsilon_\tau n}
-  +q_{\varepsilon_\sigma m,\varepsilon_\tau(n+1)}
-  +q_{\varepsilon_\sigma(m+1),\varepsilon_\tau(n+1)}.
-\]
-The hypotheses \eqref{eq:H1-raw-bulk-plus-plus}--\eqref{eq:H1-raw-bulk-plus-minus}
-cover the raw families $(+,+)$ and $(+,-)$. By
-Corollary~\ref{cor:H1-bulk-symmetry-reduction}, the remaining raw families
-$(-,-)$ and $(-,+)$ follow from conjugation and self-adjoint symmetry. Hence
-for every $\sigma,\tau\in\{+,-\}$ and every $N_a<n,m\le M$,
+and the same Hermitian relations hold on the Q3 side for the filtered entries
+$\widetilde q_{mn}^{\sigma\tau}$.
+Hence for every $\sigma,\tau\in\{+,-\}$ and every $N_a<n,m\le M$,
 \[
   M_{mn}^{\sigma\tau}(a)=\kappa(a)\,\widetilde q_{mn}^{\sigma\tau}.
 \]
@@ -1746,8 +1730,9 @@ The exact metric pullback
 is already provided by Proposition~\ref{prop:Ja-pullback-filtered-tail}; it is
 not part of the present bulk-intertwining step, but is the metric input used in
 Theorem~\ref{thm:H3-filtered-transfer}. Therefore the whole burden of
-Theorem~\ref{thm:H1-filtered-bulk} is exactly the pair of raw bulk identities
-\eqref{eq:H1-raw-bulk-plus-plus}--\eqref{eq:H1-raw-bulk-plus-minus}.
+Theorem~\ref{thm:H1-filtered-bulk} is exactly the pair of direct filtered bulk
+identities \eqref{eq:H1-filtered-bulk-plus-plus}
+and~\eqref{eq:H1-filtered-bulk-plus-minus}.
 \end{proof}
 
 \paragraph{Raw Fourier--Weil notation.}
@@ -1859,6 +1844,100 @@ so the raw compressed prime entry is
 \]
 Subtracting the raw compressed prime block from the Toeplitz block gives the
 stated formula for $q_{rs}$.
+\end{proof}
+
+\begin{lemma}[Exact raw Suzuki entries in the chi-basis]\label{lem:H1-raw-suzuki-entries}
+Fix $a>0$ and set
+\[
+  \chi_n[a](t):=(2a)^{-1/2}e^{\pi i n t/a},
+  \qquad
+  \alpha_n:=\frac{\pi n}{a}.
+\]
+With the current hermitian reverse convention
+\[
+  \widetilde{\Psi}(x):=\overline{\Psi(-x)},
+\]
+define
+\[
+  w_{rs}(a):=W\bigl(\chi_s[a]*\widetilde{\chi_r[a]}\bigr).
+\]
+Then
+\[
+  \widehat{\chi_n[a]}(z)=(-1)^n\sqrt{\frac2a}\,\frac{\sin(az)}{z+\alpha_n},
+\]
+and hence
+\[
+  w_{rs}(a)
+  =
+  \frac{2(-1)^{r+s}}{a}
+  \sum_{\gamma\in\Gamma}
+  \frac{\sin^2(a\gamma)}
+  {(\gamma+\alpha_r)(\gamma+\alpha_s)}.
+\]
+In particular,
+\[
+  w_{mn}(a)
+  =
+  \frac{2(-1)^{m+n}}{a}
+  \sum_{\gamma\in\Gamma}
+  \frac{\sin^2(a\gamma)}
+  {(\gamma+\alpha_m)(\gamma+\alpha_n)},
+\]
+\[
+  w_{m,-n}(a)
+  =
+  \frac{2(-1)^{m+n}}{a}
+  \sum_{\gamma\in\Gamma}
+  \frac{\sin^2(a\gamma)}
+  {(\gamma+\alpha_m)(\gamma-\alpha_n)}.
+\]
+\end{lemma}
+
+\begin{proposition}[Raw bulk mismatch]\label{prop:H1-raw-bulk-mismatch}
+Let
+\[
+  q_{rs}
+  =
+  a_{r-s}
+  -
+  \sum_{\substack{n\ge2\\ |\xi_n|\le B}}
+  w(n)\,\Phi_{B,t}(\xi_n)\,e^{-2\pi i(r-s)\xi_n}
+\]
+be the stable raw-compressed Section~8 entries from
+Proposition~\ref{prop:H1-raw-q-formula}. Then there is no scalar $\kappa(a)$
+and no integer $N_a$ such that
+\[
+  w_{mn}(a)=\kappa(a)\,q_{mn}
+  \qquad\text{for all }m,n>N_a.
+\]
+Consequently, the raw bulk target
+\[
+  w_{mn}(a)=\kappa(a)q_{mn},
+  \qquad
+  w_{m,-n}(a)=\kappa(a)q_{m,-n},
+\]
+cannot serve as the exact bulk hypothesis for Theorem~\ref{thm:H1-filtered-bulk}.
+\end{proposition}
+
+\begin{proof}
+The raw Q3 matrix is Toeplitz:
+\[
+  q_{rs}=q(r-s),
+\]
+hence its diagonal is constant:
+\[
+  q_{rr}=a_0-\sum_{\substack{n\ge2\\ |\xi_n|\le B}}
+  w(n)\,\Phi_{B,t}(\xi_n).
+\]
+On the Suzuki--Yoshida side, the raw Weil matrix in the basis
+$\{\chi_n[a]\}_{n\in\mathbb Z}$ has logarithmically growing diagonal and
+decaying off-diagonal tails; in particular,
+\[
+  |w_{nn}(a)|\sim \log|n|
+  \qquad(|n|\to\infty).
+\]
+Therefore no fixed scalar multiple of the constant diagonal of $q_{rs}$ can
+match the unbounded diagonal of $w_{rs}(a)$ on the bulk.
 \end{proof}
 
 \begin{lemma}[Fourier transforms of the adjacent Suzuki tails]\label{lem:H1-adjacent-fourier}
@@ -2062,15 +2141,16 @@ Assuming the same Hermitian normalization on the Q3 side,
   \qquad
   \widetilde q_{mn}^{-+}=\overline{\widetilde q_{nm}^{+-}}.
 \]
-Therefore the primary raw bulk target may be reduced to the two raw index
+Therefore the direct filtered bulk target may be reduced to the two filtered
 families
 \[
-  w_{rs}(a)=\kappa(a)\,q_{rs}
+  M_{mn}^{++}(a)=\kappa(a)\,\widetilde q_{mn}^{++},
   \qquad
-  \text{for }(r,s)=(m,n)\text{ and }(r,s)=(m,-n),\ m,n>N_a,
+  M_{mn}^{+-}(a)=\kappa(a)\,\widetilde q_{mn}^{+-},
+  \qquad
+  m,n>N_a,
 \]
-and then all four filtered block identities follow formally after applying the
-two-sided filter $\Delta_{M,N}$.
+and then the remaining filtered blocks follow formally by Hermitian symmetry.
 \end{corollary}
 
 \begin{center}
@@ -2079,9 +2159,9 @@ two-sided filter $\Delta_{M,N}$.
 \hline
 bulk family & filtered consequence & exact bookkeeping target \\
 \hline
-$w_{mn}(a)$ on $(+,+)$ & $M^{++}(a)=\kappa(a)\widetilde Q_{M,N}^{++}$ & primary raw bulk identity \\
+$M^{++}(a)$ & $M^{++}(a)=\kappa(a)\widetilde Q_{M,N}^{++}$ & primary direct filtered bulk identity \\
 \hline
-$w_{m,-n}(a)$ on $(+,-)$ & $M^{+-}(a)=\kappa(a)\widetilde Q_{M,N}^{+-}$ & primary raw bulk identity; no extra section-boundary defect once $\widetilde Q_{M,N}$ is used \\
+$M^{+-}(a)$ & $M^{+-}(a)=\kappa(a)\widetilde Q_{M,N}^{+-}$ & primary direct filtered bulk identity; no extra section-boundary defect once $\widetilde Q_{M,N}$ is used \\
 \hline
 $M^{-+}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{-+}$ & derived from $(+,-)$ by conjugation/self-adjoint symmetry \\
 \hline
@@ -2092,15 +2172,13 @@ $M^{--}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{--}$ & derived from $(+,+)$ by conju
 
 \noindent
 The live bulk theorem is therefore no longer the abstract existence of
-$S_{a,M,N}$ and $J_a$, nor the direct separate comparison of all four filtered
-blocks. The narrowest active target is the raw bulk identity
-$w_{rs}(a)=\kappa(a)q_{rs}$ on the two families $(+,+)$ and $(+,-)$, where the
-raw-compressed Section~8 entries $q_{rs}$ are now given explicitly by
-Proposition~\ref{prop:H1-raw-q-formula}; the four filtered block equalities are
-then formal consequences of the two-sided filter $\Delta_{M,N}$ and Hermitian
-symmetry. After that raw bulk
-identification, the only remaining bridge brick is the finite-dimensional
-Suzuki cap.
+$S_{a,M,N}$ and $J_a$, nor any raw $\chi_n[a]$-level identity. By
+Proposition~\ref{prop:H1-raw-bulk-mismatch}, the raw basis is only a diagnostic
+layer and cannot support the exact bridge. The narrowest active target is now
+the direct filtered bulk identity on the two families $(+,+)$ and $(+,-)$; the
+remaining filtered block equalities are formal consequences of Hermitian
+symmetry, and after that filtered bulk identification the only remaining bridge
+brick is the finite-dimensional Suzuki cap.
 
 \begin{theorem}[H2$^{\mathrm f}$: Suzuki tail/cap reduction]\label{thm:H2-filtered-cap}
 Fix $a>0$ and $N_a$ as in Theorem~\ref{thm:H1-filtered-bulk}. Define the closed tail space

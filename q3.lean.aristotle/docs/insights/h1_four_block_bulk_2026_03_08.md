@@ -9,6 +9,8 @@ This note does not change the public theorem stack
 It freezes the filtered consequence layer inside `H1^f`.
 The narrower live theorem target is now recorded separately in
 `h1_raw_entry_reduction_2026_03_08.md`.
+This note stays valid only as the filtered consequence layer after the direct
+filtered bulk match on `(++),(+-)`.
 
 ## Frozen notation
 
@@ -53,7 +55,8 @@ No extra section-boundary bookkeeping should remain inside the filtered bulk,
 because the active Q3-side object is already
 `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`.
 However, these four filtered equalities are no longer the narrowest active
-frontier once the raw-entry reduction is frozen.
+frontier once the raw layer is demoted to a diagnostic mismatch lemma and the
+direct filtered bulk match on `(++),(+-)` becomes the live target.
 
 ## Remaining brick after bulk
 

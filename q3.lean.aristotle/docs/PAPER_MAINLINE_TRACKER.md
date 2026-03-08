@@ -183,13 +183,16 @@ Interpretation rule after `T0.1`:
    `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
    and Q3-side normalization fixed by `\kappa_{A3}=1`;
    in the filtered bridge the ambient raw finite block is `Q_{M+1}^{raw}`, and
-   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
-   so the next theorem task is to prove
-   `w_{rs}(a)=\kappa(a)q_{rs}`
-   on the two raw families `(+,+)` and `(+,-)`,
-   and then recover the four filtered block equalities
-   `(++), (+-), (-+), (--)`
-   as formal consequences of `\Delta_{M,N}` and Hermitian symmetry.
+   `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})` remains a diagnostic raw
+   comparison layer only. The exact raw identity
+   `w_{rs}(a)=\kappa(a)q_{rs}` is now rejected as a theorem shape, because the
+   raw Q3 matrix is Toeplitz with constant diagonal while the Suzuki raw Weil
+   matrix in the `\chi_n[a]` basis has diagonal growth of order `\log|n|`.
+   The next theorem task is therefore the direct filtered bulk match
+   `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}` and
+   `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`,
+   after which `(-+), (--)` follow as formal consequences of Hermitian
+   symmetry.
    After the bulk match, the only remaining bridge brick is the
    finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:
