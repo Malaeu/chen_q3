@@ -3274,3 +3274,52 @@ It does **not** prove H1, but it confirms the direction of the pivot:
 - direct filtered bulk match on `(++),(+-)` is the correct executable frontier;
 - next narrowing should attack the exact filtered formulas, not raw normalization
   or sign bookkeeping.
+
+## In progress (2026-03-09) — entrywise filtered mismatch map and small sweep
+
+Extended `/Users/emalam/Documents/GitHub/rh_lean_01_2026/src/h1_filtered_bulk_match.py`
+from a one-number checker into a second-level diagnostic tool:
+
+- entrywise CSV dump with `run_id`, family, `(m,n)`, raw complex entries,
+  family/joint fitted kappas, absolute and relative residuals, and diagonal /
+  low-strip metadata;
+- terminal summary with separate `++`, `+-`, and joint fits;
+- bucket stats for diagonal vs off-diagonal, near-diagonal vs far, and
+  low-strip share;
+- built-in small grid sweep over
+  `a in {0.75, 1.0, 1.25}`,
+  `M in {2,3,4}`,
+  `zeros in {10,20}`.
+
+Canonical outputs now go to `tmp/`, not tracked docs. First sweep:
+
+- single-run CSV:
+  `/Users/emalam/Documents/GitHub/rh_lean_01_2026/tmp/h1_filtered_mismatch_map_2026_03_09_233351.csv`
+- sweep CSV:
+  `/Users/emalam/Documents/GitHub/rh_lean_01_2026/tmp/h1_filtered_mismatch_map_2026_03_09_233359.csv`
+
+What the sweep says structurally:
+
+- `++` is consistently much better than `+-`;
+- increasing zeta zeros from `10` to `20` changes almost nothing, so current
+  mismatch is not a truncation artifact from too few zeros;
+- best region in this cheap sweep is near `a=1.25`, where
+  `++` reaches relative max residuals around `5e-5` to `3e-4`, and `+-`
+  around `2.6e-4` to `2e-2`;
+- `a=0.75` is clearly bad, especially for `+-`;
+- `a=1.0` starts well at `M=2`, but `+-` degrades sharply by `M=4`;
+- dominant error in `+-` is diagonal / near-diagonal, but not low-mode:
+  by `M=4` the low-strip share drops to about `0.06` to `0.09`, so this does
+  not numerically look like a tiny finite-rank low-mode correction;
+- `++` mismatch is more spread across off-diagonal / far entries, especially as
+  `M` grows.
+
+Operational consequence:
+
+- the remaining issue is not “one scalar kappa fits everything”;
+- the remaining issue also does not look like a simple first-row/first-column
+  cap;
+- the sharp next question is whether the exact filtered bridge needs an
+  additional structured correction in the `+-` family, or whether the
+  current filtered `+-` formula still has a convention-level mismatch deeper
+  than the lightweight sign/index checks already ruled out.

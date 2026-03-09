@@ -212,12 +212,26 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
   source .venv/bin/activate
   python src/h1_raw_bulk_match.py --a 1.0 --M 3 --B 0.2 --t 0.15 --zeros 50
   ```
+- для текущего live bulk-frontier использовать уже filtered checker:
+  ```bash
+  cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+  source .venv/bin/activate
+  python -u src/h1_filtered_bulk_match.py --a 1.0 --M 2 --B 0.2 --t 0.15 --zeros 10
+  ```
+- для первого diagnostic sweep:
+  ```bash
+  cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+  source .venv/bin/activate
+  python -u src/h1_filtered_bulk_match.py --sweep --B 0.2 --t 0.15
+  ```
 
 ## Python / src rule
 
 Если пишем executable sanity-check или numerical bridge probe, код кладём в
 `/Users/emalam/Documents/GitHub/rh_lean_01_2026/src/`, а запуск в новых сессиях
-делаем из корня repo после активации `.venv`.
+делаем из корня repo после активации `.venv`. CSV и прочие одноразовые
+diagnostic outputs по умолчанию писать в
+`/Users/emalam/Documents/GitHub/rh_lean_01_2026/tmp/`, не в tracked docs.
 
 ## Repo map (только живой минимум)
 
