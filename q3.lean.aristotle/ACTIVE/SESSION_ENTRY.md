@@ -112,6 +112,15 @@
   (`++`: `~7.81e-1`, `~5.96e-1`, `~4.04e-1`;
    `+-`: `~9.97e-1`, `~9.85e-1`, `~9.32e-1`
    for unions of the first `1/2/3` rows-columns);
+  the stronger cap-defect classifier now shows a sharper verdict:
+  toy `M=2` runs are misleadingly tiny and give trivial rank-2 agreement,
+  but on real bulk-size runs (`M>=3`) the `++` and `+-` defect spaces are only
+  partially aligned, not identical; in the canonical case
+  `a=1.25, M=4, zeros=20`, cross-family column/row alignment is only
+  `~0.606 / ~0.606`, with transfer residual `++ -> +- ~2.69e-2` and reverse
+  transfer `+- -> ++ ~6.79e-1`, so the current honest live verdict is
+  `structured small-rank defect yes`, but `one obvious shared cap-space`
+  not yet established;
 - after the filtered bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:
@@ -243,6 +252,17 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
   `union<=1/2/3 rel resid` и `share`,
   чтобы быстро отличать low-rank structured correction от genuinely
   low-mode-supported defect.
+- для cap-defect classifier на canonical case:
+  ```bash
+  cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+  source .venv/bin/activate
+  python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 20 --defect-rank 2
+  ```
+  Здесь уже смотрим не только `rank-2 residual`, но и
+  cross-family defect-basis report:
+  `col_align`, `row_align`, `transfer_rel_resid`,
+  чтобы понять, похож ли найденный small-rank defect на один и тот же
+  конечномерный cap-space для `++` и `+-`.
 
 ## Python / src rule
 

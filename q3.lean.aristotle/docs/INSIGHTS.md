@@ -3379,3 +3379,32 @@ Sharper verdict:
   `exact / exact+small-rank structured correction / dead`,
   and the phrase “pure low-mode defect” should be treated only as a candidate
   until proved mathematically.
+
+Follow-up cap-defect classifier (2026-03-10, same checker, now comparing the
+leading defect subspaces for `++` and `+-`):
+
+- checker extended with SVD-basis comparison:
+  `column_alignment`, `row_alignment`, and `transfer_relative_residual`,
+  plus a sweep-level anchor-stability report;
+- tiny `M=2` runs are misleading:
+  both residual matrices are only `2x2`, so rank-2 agreement is automatic and
+  cross-family alignment comes out trivially `~1.000`;
+- decisive canonical run `a=1.25, M=4, zeros=20` gives:
+  - `++`: rank-2 residual `~6.32e-3`;
+  - `+-`: rank-2 residual `~1.99e-3`;
+  - cross-family defect basis comparison:
+    `++ -> +-`: column/row alignment `~0.606 / ~0.606`,
+    transfer residual `~2.69e-2`;
+    `+- -> ++`: same alignment but much worse reverse transfer
+    `~6.79e-1`.
+
+Sharper live verdict after the cap-defect check:
+
+- the filtered mismatch still looks **small-rank structured**;
+- it still does **not** look like pure low-mode support;
+- but it also does **not yet** look like one trivially shared finite-dimensional
+  cap-space for `++` and `+-` on real bulk-size runs;
+- the honest next classifier is therefore:
+  `structured small-rank defect with shared cap-space?`
+  vs
+  `family-dependent structured correction`.

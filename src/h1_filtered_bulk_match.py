@@ -25,6 +25,15 @@ families:
     (+-): M_{mn}^{+-}(a) = kappa(a) \tilde q_{mn}^{+-}
 
 The remaining filtered blocks are formal Hermitian consequences.
+
+This script now has two diagnostic layers:
+
+1. entrywise mismatch maps and low-rank / low-mode summaries;
+2. cap-defect classifier:
+   compare the leading defect subspaces between `++` and `+-`,
+   and across runs in `(a,M,zeros)`, to see whether the residual behaves like
+   a common finite-dimensional cap-space or only like a family-dependent
+   structured correction.
 """
 
 from __future__ import annotations
@@ -58,6 +67,7 @@ DEFAULT_SWEEP_M = (2, 3, 4)
 DEFAULT_SWEEP_ZEROS = (10, 20)
 TOP_K = 5
 LOW_MODE_CUTOFF = 1
+DEFAULT_DEFECT_RANK = 2
 
 
 @dataclass(frozen=True)
@@ -101,6 +111,27 @@ class LowModeStats:
     low_union_3_share: float
 
 
+@dataclass
+class DefectBasis:
+    family: str
+    size: int
+    rank: int
+    singular_values: np.ndarray
+    left_basis: np.ndarray
+    right_basis: np.ndarray
+    matrix: np.ndarray
+
+
+@dataclass(frozen=True)
+class DefectSubspaceStats:
+    source_family: str
+    target_family: str
+    defect_rank: int
+    column_alignment: float
+    row_alignment: float
+    transfer_relative_residual: float
+
+
 @dataclass(frozen=True)
 class RunResult:
     run_id: str
@@ -111,6 +142,8 @@ class RunResult:
     family_metrics: dict[str, dict[str, float]]
     family_low_rank: dict[str, LowRankStats]
     family_low_mode: dict[str, LowModeStats]
+    family_defect_basis: dict[str, DefectBasis]
+    cross_family_stats: list[DefectSubspaceStats]
     joint_kappa: complex
     joint_metrics: dict[str, float]
 
@@ -298,6 +331,81 @@ def low_mode_stats(samples: list[FilteredSample], family: str, kappa: complex) -
     )
 
 
+def defect_basis(
+    samples: list[FilteredSample],
+    family: str,
+    kappa: complex,
+    defect_rank: int,
+) -> DefectBasis:
+    matrix = family_residual_matrix(samples, family, kappa)
+    U, singular_values, Vh = np.linalg.svd(matrix, full_matrices=False)
+    rank = min(defect_rank, len(singular_values))
+    return DefectBasis(
+        family=family,
+        size=matrix.shape[0],
+        rank=rank,
+        singular_values=singular_values,
+        left_basis=U[:, :rank],
+        right_basis=Vh.conj().T[:, :rank],
+        matrix=matrix,
+    )
+
+
+def resize_basis(basis: np.ndarray, target_size: int) -> np.ndarray:
+    rows, cols = basis.shape
+    if rows == target_size:
+        return basis
+    if rows < target_size:
+        pad = np.zeros((target_size - rows, cols), dtype=basis.dtype)
+        return np.vstack([basis, pad])
+    truncated = basis[:target_size, :]
+    if truncated.size == 0:
+        return truncated
+    q, r = np.linalg.qr(truncated)
+    diag = np.abs(np.diag(r))
+    keep = diag > 1e-12
+    if not np.any(keep):
+        return np.zeros((target_size, 0), dtype=basis.dtype)
+    return q[:, keep]
+
+
+def subspace_alignment_score(source: np.ndarray, target: np.ndarray) -> float:
+    common = min(source.shape[1], target.shape[1])
+    if common == 0:
+        return 0.0
+    gram = source.conj().T @ target
+    singular_values = np.linalg.svd(gram, compute_uv=False)
+    return float(np.sum(np.abs(singular_values[:common]) ** 2) / common)
+
+
+def transfer_relative_residual(
+    source_left: np.ndarray,
+    source_right: np.ndarray,
+    target_matrix: np.ndarray,
+) -> float:
+    if source_left.shape[1] == 0 or source_right.shape[1] == 0:
+        return 1.0
+    approx = source_left @ (source_left.conj().T @ target_matrix @ source_right) @ source_right.conj().T
+    target_norm = float(np.linalg.norm(target_matrix, ord="fro"))
+    if target_norm == 0.0:
+        return 0.0
+    residual_norm = float(np.linalg.norm(target_matrix - approx, ord="fro"))
+    return residual_norm / target_norm
+
+
+def compare_defect_bases(source: DefectBasis, target: DefectBasis) -> DefectSubspaceStats:
+    left = resize_basis(source.left_basis, target.size)
+    right = resize_basis(source.right_basis, target.size)
+    return DefectSubspaceStats(
+        source_family=source.family,
+        target_family=target.family,
+        defect_rank=min(source.rank, target.rank),
+        column_alignment=subspace_alignment_score(left, target.left_basis),
+        row_alignment=subspace_alignment_score(right, target.right_basis),
+        transfer_relative_residual=transfer_relative_residual(left, right, target.matrix),
+    )
+
+
 def print_bucket_report(label: str, stats: BucketStats) -> None:
     print(
         f"  {label:<18s} count={stats.count:3d}  "
@@ -362,6 +470,17 @@ def print_family_report(
         )
 
 
+def print_cross_family_report(stats: list[DefectSubspaceStats]) -> None:
+    print("[cross-family defect basis]")
+    for stat in stats:
+        print(
+            f"  {stat.source_family} -> {stat.target_family}: "
+            f"col_align={stat.column_alignment:.3f}  "
+            f"row_align={stat.row_alignment:.3f}  "
+            f"transfer_rel_resid={stat.transfer_relative_residual:.3e}"
+        )
+
+
 def search_conventions(
     M: int,
     a: float,
@@ -383,6 +502,10 @@ def search_conventions(
 def default_csv_path() -> Path:
     timestamp = datetime.now().strftime("%Y_%m_%d_%H%M%S_%f")
     return Path("/Users/emalam/Documents/GitHub/rh_lean_01_2026/tmp") / f"h1_filtered_mismatch_map_{timestamp}.csv"
+
+
+def default_subspace_csv_path(csv_path: Path) -> Path:
+    return csv_path.with_name(f"{csv_path.stem}_subspace{csv_path.suffix}")
 
 
 def build_rows(run: RunResult) -> list[dict[str, object]]:
@@ -418,6 +541,65 @@ def build_rows(run: RunResult) -> list[dict[str, object]]:
     return rows
 
 
+def build_subspace_rows(
+    runs: list[RunResult],
+    anchor_by_family: dict[str, str] | None = None,
+) -> list[dict[str, object]]:
+    rows: list[dict[str, object]] = []
+    if not runs:
+        return rows
+
+    if anchor_by_family is None:
+        anchor_by_family = {}
+        for family in ("++", "+-"):
+            best = min(runs, key=lambda run: run.family_low_rank[family].rank2_relative_residual)
+            anchor_by_family[family] = best.run_id
+
+    run_map = {run.run_id: run for run in runs}
+    for run in runs:
+        for family in ("++", "+-"):
+            anchor_run = run_map[anchor_by_family[family]]
+            anchor_basis = anchor_run.family_defect_basis[family]
+            current_basis = run.family_defect_basis[family]
+            stats = compare_defect_bases(anchor_basis, current_basis)
+            rows.append(
+                {
+                    "kind": "anchor_stability",
+                    "run_id": run.run_id,
+                    "family": family,
+                    "anchor_run_id": anchor_run.run_id,
+                    "defect_rank": stats.defect_rank,
+                    "column_alignment": stats.column_alignment,
+                    "row_alignment": stats.row_alignment,
+                    "transfer_relative_residual": stats.transfer_relative_residual,
+                    "rank1_relative_residual": run.family_low_rank[family].rank1_relative_residual,
+                    "rank2_relative_residual": run.family_low_rank[family].rank2_relative_residual,
+                    "low_union_1_relative_residual": run.family_low_mode[family].low_union_1_relative_residual,
+                    "low_union_2_relative_residual": run.family_low_mode[family].low_union_2_relative_residual,
+                    "low_union_3_relative_residual": run.family_low_mode[family].low_union_3_relative_residual,
+                }
+            )
+        for stat in run.cross_family_stats:
+            rows.append(
+                {
+                    "kind": "cross_family",
+                    "run_id": run.run_id,
+                    "family": f"{stat.source_family}->{stat.target_family}",
+                    "anchor_run_id": "",
+                    "defect_rank": stat.defect_rank,
+                    "column_alignment": stat.column_alignment,
+                    "row_alignment": stat.row_alignment,
+                    "transfer_relative_residual": stat.transfer_relative_residual,
+                    "rank1_relative_residual": "",
+                    "rank2_relative_residual": "",
+                    "low_union_1_relative_residual": "",
+                    "low_union_2_relative_residual": "",
+                    "low_union_3_relative_residual": "",
+                }
+            )
+    return rows
+
+
 def write_rows_csv(path: Path, rows: list[dict[str, object]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if not rows:
@@ -438,6 +620,7 @@ def run_check(
     zeros: int,
     dps: int,
     grid_size: int,
+    defect_rank: int,
     q_convention: QConvention,
     w_convention: WConvention,
 ) -> RunResult:
@@ -461,6 +644,14 @@ def run_check(
         family: low_mode_stats(samples, family, family_kappa[family])
         for family in ("++", "+-")
     }
+    family_defect_basis = {
+        family: defect_basis(samples, family, family_kappa[family], defect_rank)
+        for family in ("++", "+-")
+    }
+    cross_family_stats = [
+        compare_defect_bases(family_defect_basis["++"], family_defect_basis["+-"]),
+        compare_defect_bases(family_defect_basis["+-"], family_defect_basis["++"]),
+    ]
     joint_kappa = fit_kappa(samples)
     joint_metrics = residual_metrics(samples, joint_kappa)
     return RunResult(
@@ -472,15 +663,27 @@ def run_check(
         family_metrics=family_metrics,
         family_low_rank=family_low_rank,
         family_low_mode=family_low_mode,
+        family_defect_basis=family_defect_basis,
+        cross_family_stats=cross_family_stats,
         joint_kappa=joint_kappa,
         joint_metrics=joint_metrics,
     )
 
 
-def print_run_report(result: RunResult, *, a: float, M: int, B: float, t: float, zeros: int, dps: int) -> None:
+def print_run_report(
+    result: RunResult,
+    *,
+    a: float,
+    M: int,
+    B: float,
+    t: float,
+    zeros: int,
+    dps: int,
+    defect_rank: int,
+) -> None:
     print(f"\n[run {result.run_id}]")
     print("=" * (6 + len(result.run_id)))
-    print(f"a={a}  M={M}  B={B}  t={t}  zeros={zeros}  dps={dps}")
+    print(f"a={a}  M={M}  B={B}  t={t}  zeros={zeros}  dps={dps}  defect-rank={defect_rank}")
     print(f"baseline conventions: {result.q_convention} vs {result.w_convention}")
     print_family_report(
         result.samples,
@@ -501,6 +704,29 @@ def print_run_report(result: RunResult, *, a: float, M: int, B: float, t: float,
     print(f"  max |residual|:         {result.joint_metrics['max_abs_residual']:.3e}")
     print(f"  RMS residual:           {result.joint_metrics['rms_residual']:.3e}")
     print(f"  relative max residual:  {result.joint_metrics['relative_max_residual']:.3e}")
+    print_cross_family_report(result.cross_family_stats)
+
+
+def print_anchor_stability_report(runs: list[RunResult]) -> None:
+    if not runs:
+        return
+    print("\n[anchor stability]")
+    print("==================")
+    for family in ("++", "+-"):
+        anchor = min(runs, key=lambda run: run.family_low_rank[family].rank2_relative_residual)
+        print(
+            f"  family {family}: anchor={anchor.run_id}  "
+            f"rank2_rel={anchor.family_low_rank[family].rank2_relative_residual:.3e}"
+        )
+        anchor_basis = anchor.family_defect_basis[family]
+        for run in runs:
+            stats = compare_defect_bases(anchor_basis, run.family_defect_basis[family])
+            print(
+                f"    {run.run_id:<24s} "
+                f"col_align={stats.column_alignment:.3f}  "
+                f"row_align={stats.row_alignment:.3f}  "
+                f"transfer_rel_resid={stats.transfer_relative_residual:.3e}"
+            )
 
 
 def parse_args() -> argparse.Namespace:
@@ -512,6 +738,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--zeros", type=int, default=50, help="Number of positive zeta zeros to use.")
     parser.add_argument("--grid-size", type=int, default=20001, help="Integration grid size for A_k.")
     parser.add_argument("--dps", type=int, default=80, help="mpmath precision in decimal digits.")
+    parser.add_argument(
+        "--defect-rank",
+        type=int,
+        default=DEFAULT_DEFECT_RANK,
+        help="Rank used for the defect-subspace classifier.",
+    )
     parser.add_argument(
         "--search-conventions",
         action="store_true",
@@ -539,12 +771,14 @@ def main() -> int:
         raise SystemExit("--search-conventions is only supported in single-run mode.")
 
     csv_path = args.csv_out or default_csv_path()
+    subspace_csv_path = default_subspace_csv_path(csv_path)
     baseline_q = q_conventions()[0]
     baseline_w = w_conventions()[0]
 
     if args.sweep:
         print("H1 filtered-bulk mismatch map (small grid sweep)")
         print("===============================================")
+        sweep_runs: list[RunResult] = []
         all_rows: list[dict[str, object]] = []
         for a in DEFAULT_SWEEP_A:
             for M in DEFAULT_SWEEP_M:
@@ -559,13 +793,27 @@ def main() -> int:
                         zeros=zeros,
                         dps=args.dps,
                         grid_size=args.grid_size,
+                        defect_rank=args.defect_rank,
                         q_convention=baseline_q,
                         w_convention=baseline_w,
                     )
-                    print_run_report(result, a=a, M=M, B=args.B, t=args.t, zeros=zeros, dps=args.dps)
+                    sweep_runs.append(result)
+                    print_run_report(
+                        result,
+                        a=a,
+                        M=M,
+                        B=args.B,
+                        t=args.t,
+                        zeros=zeros,
+                        dps=args.dps,
+                        defect_rank=args.defect_rank,
+                    )
                     all_rows.extend(build_rows(result))
+        print_anchor_stability_report(sweep_runs)
         write_rows_csv(csv_path, all_rows)
+        write_rows_csv(subspace_csv_path, build_subspace_rows(sweep_runs))
         print(f"\nCSV written to: {csv_path}")
+        print(f"Subspace CSV written to: {subspace_csv_path}")
         return 0
 
     print("H1 filtered-bulk match check")
@@ -579,13 +827,25 @@ def main() -> int:
         zeros=args.zeros,
         dps=args.dps,
         grid_size=args.grid_size,
+        defect_rank=args.defect_rank,
         q_convention=baseline_q,
         w_convention=baseline_w,
     )
-    print_run_report(result, a=args.a, M=args.M, B=args.B, t=args.t, zeros=args.zeros, dps=args.dps)
+    print_run_report(
+        result,
+        a=args.a,
+        M=args.M,
+        B=args.B,
+        t=args.t,
+        zeros=args.zeros,
+        dps=args.dps,
+        defect_rank=args.defect_rank,
+    )
     rows = build_rows(result)
     write_rows_csv(csv_path, rows)
+    write_rows_csv(subspace_csv_path, build_subspace_rows([result]))
     print(f"\nCSV written to: {csv_path}")
+    print(f"Subspace CSV written to: {subspace_csv_path}")
 
     if args.search_conventions:
         print("\nconvention search")

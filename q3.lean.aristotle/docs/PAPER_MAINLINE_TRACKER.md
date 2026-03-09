@@ -197,7 +197,10 @@ Interpretation rule after `T0.1`:
    after which `(-+), (--)` follow as formal consequences of Hermitian
    symmetry.
    Current executable evidence favors a structured small-rank correction over a
-   pure low-mode-only defect.
+   pure low-mode-only defect; the sharper cap-defect classifier, however, does
+   not yet identify one trivially shared finite-dimensional cap-space between
+   `++` and `+-`, so the live sub-question is whether the defect is
+   family-dependent or can still be absorbed into one augmented Suzuki cap.
    After the bulk match, the only remaining bridge brick is the
    finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:

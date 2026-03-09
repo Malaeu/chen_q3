@@ -219,7 +219,11 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     the `++` residual has rank-2 relative residual `~6.32e-3` and the `+-`
     residual has rank-2 relative residual `~1.99e-3`,
     while low-mode support tests remain large and therefore do not support a
-    pure low-mode-only defect,
+    pure low-mode-only defect;
+    stronger cap-defect checks now also show that the `++` and `+-` defect
+    spaces are only partially aligned on real bulk-size runs, so the live
+    narrow distinction is no longer “small-rank or not”, but
+    `shared cap-space vs family-dependent structured correction`,
     with the remaining filtered blocks
     `(-+), (--)`
     becoming formal consequences of Hermitian symmetry,
