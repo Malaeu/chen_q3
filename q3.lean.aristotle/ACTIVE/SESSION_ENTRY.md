@@ -120,7 +120,14 @@
   `~0.606 / ~0.606`, with transfer residual `++ -> +- ~2.69e-2` and reverse
   transfer `+- -> ++ ~6.79e-1`, so the current honest live verdict is
   `structured small-rank defect yes`, but `one obvious shared cap-space`
-  not yet established;
+  not yet established at rank `2`;
+  however, a stronger joint-basis test with `defect-rank=3` already looks much
+  more promising: in the canonical run `a=1.25, M=4, zeros=20`, the shared
+  cap-defect candidate gives `proj_rel_resid ~7.88e-3` for `++` and
+  `~1.10e-3` for `+-`, and in the second real bulk-size run
+  `a=1.0, M=4, zeros=20` it gives `~1.92e-2` for `++` and `~1.67e-3` for `+-`;
+  so the live sub-question is now whether the correct theorem shape is
+  a shared rank-`3` cap-defect after the right basis/Gram projection;
 - after the filtered bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:
@@ -263,6 +270,16 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
   `col_align`, `row_align`, `transfer_rel_resid`,
   чтобы понять, похож ли найденный small-rank defect на один и тот же
   конечномерный cap-space для `++` и `+-`.
+- для joint shared-cap candidate на rank `3`:
+  ```bash
+  cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+  source .venv/bin/activate
+  python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 20 --defect-rank 3
+  ```
+  Здесь смотрим уже блок `[shared cap-defect candidate]` и сравниваем
+  `proj_rel_resid` между `++` и `+-`: если обе семьи хорошо сидят на одном
+  joint projector, значит theorem shape “filtered intertwining modulo
+  finite-rank cap defect” реально становится живым.
 
 ## Python / src rule
 

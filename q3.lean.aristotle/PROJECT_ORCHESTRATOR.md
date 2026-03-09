@@ -221,9 +221,11 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     while low-mode support tests remain large and therefore do not support a
     pure low-mode-only defect;
     stronger cap-defect checks now also show that the `++` and `+-` defect
-    spaces are only partially aligned on real bulk-size runs, so the live
-    narrow distinction is no longer “small-rank or not”, but
-    `shared cap-space vs family-dependent structured correction`,
+    spaces are only partially aligned at rank `2` on real bulk-size runs, so
+    the live narrow distinction is no longer “small-rank or not”, but
+    `shared cap-space vs family-dependent structured correction`;
+    current joint-basis numerics make a shared rank-`3` cap-defect a serious
+    live candidate, but not yet a frozen theorem fact,
     with the remaining filtered blocks
     `(-+), (--)`
     becoming formal consequences of Hermitian symmetry,

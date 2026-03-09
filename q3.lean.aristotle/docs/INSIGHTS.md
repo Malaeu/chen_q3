@@ -3408,3 +3408,28 @@ Sharper live verdict after the cap-defect check:
   `structured small-rank defect with shared cap-space?`
   vs
   `family-dependent structured correction`.
+
+Joint shared-basis / Gram-projection follow-up (2026-03-10):
+
+- checker extended again to build a **joint shared defect basis** from both
+  residual families and test each family against the same projector;
+- canonical rank-`2` shared projector still fails as a common cap-space:
+  in `a=1.25, M=4, zeros=20`, the shared candidate gives
+  `proj_rel_resid ~3.26e-1` for `++` but only `~1.76e-2` for `+-`;
+- however, rank-`3` changes the picture sharply:
+  - canonical run `a=1.25, M=4, zeros=20`:
+    shared candidate gives `proj_rel_resid ~7.88e-3` for `++` and
+    `~1.10e-3` for `+-`;
+  - second real bulk-size run `a=1.0, M=4, zeros=20`:
+    shared candidate gives `~1.92e-2` for `++` and `~1.67e-3` for `+-`.
+
+New sharper verdict:
+
+- the data no longer support the naive phrase “one obvious shared cap-space”;
+- but they now **do** support a much more focused candidate:
+  after the right joint basis / Gram projection, the defect may become a
+  **shared finite-rank cap defect of very small rank (currently rank `~3`
+  looks plausible)**;
+- this is now the best live theorem-shape candidate to ask Proshka about:
+  filtered kernel intertwining modulo finite-rank cap defect, not raw equality
+  and not pure low-mode support.

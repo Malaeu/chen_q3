@@ -133,6 +133,15 @@ class DefectSubspaceStats:
 
 
 @dataclass(frozen=True)
+class SharedDefectStats:
+    family: str
+    defect_rank: int
+    column_alignment: float
+    row_alignment: float
+    projection_relative_residual: float
+
+
+@dataclass(frozen=True)
 class RunResult:
     run_id: str
     q_convention: str
@@ -144,6 +153,7 @@ class RunResult:
     family_low_mode: dict[str, LowModeStats]
     family_defect_basis: dict[str, DefectBasis]
     cross_family_stats: list[DefectSubspaceStats]
+    shared_defect_stats: list[SharedDefectStats]
     joint_kappa: complex
     joint_metrics: dict[str, float]
 
@@ -406,6 +416,46 @@ def compare_defect_bases(source: DefectBasis, target: DefectBasis) -> DefectSubs
     )
 
 
+def joint_shared_basis(
+    bases: list[DefectBasis],
+    defect_rank: int,
+) -> tuple[np.ndarray, np.ndarray]:
+    if not bases:
+        return np.zeros((0, 0), dtype=np.complex128), np.zeros((0, 0), dtype=np.complex128)
+    size = max(base.size for base in bases)
+    left_cov = np.zeros((size, size), dtype=np.complex128)
+    right_cov = np.zeros((size, size), dtype=np.complex128)
+    for base in bases:
+        matrix = base.matrix
+        if base.size < size:
+            padded = np.zeros((size, size), dtype=np.complex128)
+            padded[: base.size, : base.size] = matrix
+            matrix = padded
+        left_cov += matrix @ matrix.conj().T
+        right_cov += matrix.conj().T @ matrix
+    left_vals, left_vecs = np.linalg.eigh(left_cov)
+    right_vals, right_vecs = np.linalg.eigh(right_cov)
+    left_idx = np.argsort(left_vals)[::-1][:defect_rank]
+    right_idx = np.argsort(right_vals)[::-1][:defect_rank]
+    return left_vecs[:, left_idx], right_vecs[:, right_idx]
+
+
+def compare_to_shared_basis(
+    shared_left: np.ndarray,
+    shared_right: np.ndarray,
+    target: DefectBasis,
+) -> SharedDefectStats:
+    left = resize_basis(shared_left, target.size)
+    right = resize_basis(shared_right, target.size)
+    return SharedDefectStats(
+        family=target.family,
+        defect_rank=min(left.shape[1], right.shape[1], target.rank),
+        column_alignment=subspace_alignment_score(left, target.left_basis),
+        row_alignment=subspace_alignment_score(right, target.right_basis),
+        projection_relative_residual=transfer_relative_residual(left, right, target.matrix),
+    )
+
+
 def print_bucket_report(label: str, stats: BucketStats) -> None:
     print(
         f"  {label:<18s} count={stats.count:3d}  "
@@ -478,6 +528,17 @@ def print_cross_family_report(stats: list[DefectSubspaceStats]) -> None:
             f"col_align={stat.column_alignment:.3f}  "
             f"row_align={stat.row_alignment:.3f}  "
             f"transfer_rel_resid={stat.transfer_relative_residual:.3e}"
+        )
+
+
+def print_shared_defect_report(stats: list[SharedDefectStats]) -> None:
+    print("[shared cap-defect candidate]")
+    for stat in stats:
+        print(
+            f"  family {stat.family}: "
+            f"col_align={stat.column_alignment:.3f}  "
+            f"row_align={stat.row_alignment:.3f}  "
+            f"proj_rel_resid={stat.projection_relative_residual:.3e}"
         )
 
 
@@ -597,6 +658,24 @@ def build_subspace_rows(
                     "low_union_3_relative_residual": "",
                 }
             )
+        for stat in run.shared_defect_stats:
+            rows.append(
+                {
+                    "kind": "shared_cap",
+                    "run_id": run.run_id,
+                    "family": stat.family,
+                    "anchor_run_id": "",
+                    "defect_rank": stat.defect_rank,
+                    "column_alignment": stat.column_alignment,
+                    "row_alignment": stat.row_alignment,
+                    "transfer_relative_residual": stat.projection_relative_residual,
+                    "rank1_relative_residual": "",
+                    "rank2_relative_residual": "",
+                    "low_union_1_relative_residual": "",
+                    "low_union_2_relative_residual": "",
+                    "low_union_3_relative_residual": "",
+                }
+            )
     return rows
 
 
@@ -652,6 +731,14 @@ def run_check(
         compare_defect_bases(family_defect_basis["++"], family_defect_basis["+-"]),
         compare_defect_bases(family_defect_basis["+-"], family_defect_basis["++"]),
     ]
+    shared_left, shared_right = joint_shared_basis(
+        [family_defect_basis["++"], family_defect_basis["+-"]],
+        defect_rank,
+    )
+    shared_defect_stats = [
+        compare_to_shared_basis(shared_left, shared_right, family_defect_basis["++"]),
+        compare_to_shared_basis(shared_left, shared_right, family_defect_basis["+-"]),
+    ]
     joint_kappa = fit_kappa(samples)
     joint_metrics = residual_metrics(samples, joint_kappa)
     return RunResult(
@@ -665,6 +752,7 @@ def run_check(
         family_low_mode=family_low_mode,
         family_defect_basis=family_defect_basis,
         cross_family_stats=cross_family_stats,
+        shared_defect_stats=shared_defect_stats,
         joint_kappa=joint_kappa,
         joint_metrics=joint_metrics,
     )
@@ -705,6 +793,7 @@ def print_run_report(
     print(f"  RMS residual:           {result.joint_metrics['rms_residual']:.3e}")
     print(f"  relative max residual:  {result.joint_metrics['relative_max_residual']:.3e}")
     print_cross_family_report(result.cross_family_stats)
+    print_shared_defect_report(result.shared_defect_stats)
 
 
 def print_anchor_stability_report(runs: list[RunResult]) -> None:
