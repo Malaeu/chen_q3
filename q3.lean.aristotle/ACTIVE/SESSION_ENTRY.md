@@ -224,6 +224,12 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
   source .venv/bin/activate
   python -u src/h1_filtered_bulk_match.py --sweep --B 0.2 --t 0.15
   ```
+  Скрипт теперь печатает не только bucket-статистики, но и SVD-based
+  classifier signal:
+  `rank-1 rel residual`, `rank-2 rel residual`,
+  `sv1 share`, `sv1+sv2 share`,
+  чтобы быстро отличать low-rank structured correction от размазанного bulk
+  mismatch.
 
 ## Python / src rule
 

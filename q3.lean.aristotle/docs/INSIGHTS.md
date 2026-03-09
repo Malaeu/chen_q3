@@ -3323,3 +3323,32 @@ Operational consequence:
   additional structured correction in the `+-` family, or whether the
   current filtered `+-` formula still has a convention-level mismatch deeper
   than the lightweight sign/index checks already ruled out.
+
+Follow-up classifier diagnostic (2026-03-09, same script, now with SVD /
+rank-1-rank-2 residual fits) sharpened the picture further:
+
+- canonical run
+  `a=1.0, M=2, zeros=10`
+  is too small to say much except that both `++` and `+-` residual matrices are
+  already nearly rank-1;
+- the more meaningful “good region” run
+  `a=1.25, M=4, zeros=20`
+  shows:
+  - `++`: rank-1 residual about `2.94e-1`, but rank-2 residual about
+    `6.32e-3`, so the error is very close to rank-2;
+  - `+-`: rank-1 residual about `2.34e-2`, rank-2 residual about
+    `1.99e-3`, with singular-value energy essentially saturated by the first
+    two modes;
+  - top-left `1x1` and `2x2` energy shares are tiny (`~0.000` / `~0.001` for
+    `+-`, `~0.004` / `~0.019` for `++`), so this does **not** numerically look
+    like a low-mode cap-only defect.
+
+Updated verdict:
+
+- filtered mismatch still does not look scalar-only;
+- but it now looks much more like a **structured low-rank correction**
+  than like a dead route or a purely local low-mode defect;
+- best next theorem classifier is therefore no longer just
+  `exact / low-mode-finite-rank / dead`,
+  but more specifically
+  `exact / exact+small-rank structured correction / dead`.

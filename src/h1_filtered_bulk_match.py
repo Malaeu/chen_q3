@@ -37,6 +37,7 @@ from datetime import datetime
 from pathlib import Path
 
 import mpmath as mp
+import numpy as np
 
 from h1_raw_bulk_match import (
     QConvention,
@@ -77,6 +78,18 @@ class BucketStats:
 
 
 @dataclass(frozen=True)
+class LowRankStats:
+    size: int
+    fro_norm: float
+    rank1_relative_residual: float
+    rank2_relative_residual: float
+    sv1_energy_share: float
+    sv12_energy_share: float
+    top_left_1_share: float
+    top_left_2_share: float
+
+
+@dataclass(frozen=True)
 class RunResult:
     run_id: str
     q_convention: str
@@ -84,6 +97,7 @@ class RunResult:
     samples: list[FilteredSample]
     family_kappa: dict[str, complex]
     family_metrics: dict[str, dict[str, float]]
+    family_low_rank: dict[str, LowRankStats]
     joint_kappa: complex
     joint_metrics: dict[str, float]
 
@@ -203,6 +217,44 @@ def format_complex(z: complex) -> str:
     return f"{z.real:.12e}  + {z.imag:.12e}i"
 
 
+def family_residual_matrix(samples: list[FilteredSample], family: str, kappa: complex) -> np.ndarray:
+    family_samples = [sample for sample in samples if sample.family == family]
+    size = max(sample.m for sample in family_samples)
+    matrix = np.zeros((size, size), dtype=np.complex128)
+    for sample in family_samples:
+        matrix[sample.m - 1, sample.n - 1] = sample.w - kappa * sample.q
+    return matrix
+
+
+def safe_ratio(num: float, den: float) -> float:
+    return num / den if den else 0.0
+
+
+def low_rank_stats(samples: list[FilteredSample], family: str, kappa: complex) -> LowRankStats:
+    matrix = family_residual_matrix(samples, family, kappa)
+    size = matrix.shape[0]
+    fro_sq = float(np.linalg.norm(matrix, ord="fro") ** 2)
+    if fro_sq == 0.0:
+        return LowRankStats(size, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    singular_values = np.linalg.svd(matrix, compute_uv=False)
+    sv_sq = np.abs(singular_values) ** 2
+    rank1_sq = float(sv_sq[0]) if len(sv_sq) >= 1 else 0.0
+    rank2_sq = float(np.sum(sv_sq[:2])) if len(sv_sq) >= 2 else rank1_sq
+    top_left_1_sq = float(np.linalg.norm(matrix[:1, :1], ord="fro") ** 2)
+    block2 = min(2, size)
+    top_left_2_sq = float(np.linalg.norm(matrix[:block2, :block2], ord="fro") ** 2)
+    return LowRankStats(
+        size=size,
+        fro_norm=math.sqrt(fro_sq),
+        rank1_relative_residual=math.sqrt(max(fro_sq - rank1_sq, 0.0) / fro_sq),
+        rank2_relative_residual=math.sqrt(max(fro_sq - rank2_sq, 0.0) / fro_sq),
+        sv1_energy_share=safe_ratio(rank1_sq, fro_sq),
+        sv12_energy_share=safe_ratio(rank2_sq, fro_sq),
+        top_left_1_share=safe_ratio(top_left_1_sq, fro_sq),
+        top_left_2_share=safe_ratio(top_left_2_sq, fro_sq),
+    )
+
+
 def print_bucket_report(label: str, stats: BucketStats) -> None:
     print(
         f"  {label:<18s} count={stats.count:3d}  "
@@ -210,7 +262,12 @@ def print_bucket_report(label: str, stats: BucketStats) -> None:
     )
 
 
-def print_family_report(samples: list[FilteredSample], family: str, kappa: complex) -> None:
+def print_family_report(
+    samples: list[FilteredSample],
+    family: str,
+    kappa: complex,
+    low_rank: LowRankStats,
+) -> None:
     family_samples = [sample for sample in samples if sample.family == family]
     metrics = residual_metrics(family_samples, kappa)
     print(f"[{family}]")
@@ -218,6 +275,19 @@ def print_family_report(samples: list[FilteredSample], family: str, kappa: compl
     print(f"  max |residual|:         {metrics['max_abs_residual']:.3e}")
     print(f"  RMS residual:           {metrics['rms_residual']:.3e}")
     print(f"  relative max residual:  {metrics['relative_max_residual']:.3e}")
+    print("  low-rank residual fit:")
+    print(
+        f"    rank-1 rel residual:  {low_rank.rank1_relative_residual:.3e}  "
+        f"(sv1 share={low_rank.sv1_energy_share:.3f})"
+    )
+    print(
+        f"    rank-2 rel residual:  {low_rank.rank2_relative_residual:.3e}  "
+        f"(sv1+sv2 share={low_rank.sv12_energy_share:.3f})"
+    )
+    print(
+        f"    top-left 1x1 share:   {low_rank.top_left_1_share:.3f}  "
+        f"top-left 2x2 share: {low_rank.top_left_2_share:.3f}"
+    )
     print("  buckets:")
     print_bucket_report("diagonal", bucket_stats(family_samples, kappa, lambda s: s.m == s.n))
     print_bucket_report("off-diagonal", bucket_stats(family_samples, kappa, lambda s: s.m != s.n))
@@ -326,6 +396,10 @@ def run_check(
         family: residual_metrics([sample for sample in samples if sample.family == family], family_kappa[family])
         for family in ("++", "+-")
     }
+    family_low_rank = {
+        family: low_rank_stats(samples, family, family_kappa[family])
+        for family in ("++", "+-")
+    }
     joint_kappa = fit_kappa(samples)
     joint_metrics = residual_metrics(samples, joint_kappa)
     return RunResult(
@@ -335,6 +409,7 @@ def run_check(
         samples=samples,
         family_kappa=family_kappa,
         family_metrics=family_metrics,
+        family_low_rank=family_low_rank,
         joint_kappa=joint_kappa,
         joint_metrics=joint_metrics,
     )
@@ -345,8 +420,8 @@ def print_run_report(result: RunResult, *, a: float, M: int, B: float, t: float,
     print("=" * (6 + len(result.run_id)))
     print(f"a={a}  M={M}  B={B}  t={t}  zeros={zeros}  dps={dps}")
     print(f"baseline conventions: {result.q_convention} vs {result.w_convention}")
-    print_family_report(result.samples, "++", result.family_kappa["++"])
-    print_family_report(result.samples, "+-", result.family_kappa["+-"])
+    print_family_report(result.samples, "++", result.family_kappa["++"], result.family_low_rank["++"])
+    print_family_report(result.samples, "+-", result.family_kappa["+-"], result.family_low_rank["+-"])
     print("[joint]")
     print(f"  fitted kappa:           {format_complex(result.joint_kappa)}")
     print(f"  max |residual|:         {result.joint_metrics['max_abs_residual']:.3e}")
