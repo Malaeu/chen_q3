@@ -3171,13 +3171,13 @@ the already-frozen raw-compressed notation.
 
 What survives:
 
-- `H1^f` should explicitly assume the two raw bulk identities
-  `w_{mn}(a)=\kappa(a)q_{mn}` and `w_{m,-n}(a)=\kappa(a)q_{m,-n}`;
+- `H1^f` should now be written directly in filtered form, with primary bulk
+  identities on the two filtered families `(+,+)` and `(+,-)`;
 - the filtered operator equality
-  `S_{a,M,N_a}^*G_g[a]S_{a,M,N_a}=\kappa(a)\widetilde Q_{M,N_a}` should then be
-  presented as a consequence of:
-  the common four-term stencil, the two raw families `(+,+)` and `(+,-)`, and
-  the symmetry reduction giving `(--),(-+)`;
+  `S_{a,M,N_a}^*G_g[a]S_{a,M,N_a}=\kappa(a)\widetilde Q_{M,N_a}` remains the
+  correct exact target, but the raw identities
+  `w_{mn}(a)=\kappa(a)q_{mn}` and `w_{m,-n}(a)=\kappa(a)q_{m,-n}` are now only
+  diagnostic normalization data and not theorem hypotheses;
 - the exact `J_a` pullback
   `S_{a,M,N_a}^*J_aS_{a,M,N_a}=B_{M,N_a}` remains a separate already-frozen
   metric input, not part of the remaining bulk proof burden.
@@ -3194,7 +3194,8 @@ Operational consequence:
 
 - the live `H1^f` theorem block can now be written honestly with a proof
   skeleton;
-- the only real bulk brick remains the raw match on `(+,+)` and `(+,-)`;
+- the only real bulk brick is the direct filtered match on `(+,+)` and
+  `(+,-)`, while the raw layer is a diagnostic mismatch check only;
 - after that, filtered four-block identities are formal and the finite Suzuki
   cap is the only second brick.
 
