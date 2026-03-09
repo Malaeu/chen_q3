@@ -3352,3 +3352,30 @@ Updated verdict:
   `exact / low-mode-finite-rank / dead`,
   but more specifically
   `exact / exact+small-rank structured correction / dead`.
+
+Follow-up low-mode support diagnostic (2026-03-10, same checker, now with
+union-mask support tests):
+
+- script extended to measure how much residual Frobenius energy sits in the
+  union of the first `k` rows/columns (`k=1,2,3`), not just in the top-left
+  `k×k` corner and not just in the first singular directions;
+- canonical small case (`a=1.0, M=2, zeros=10`) is too tiny to decide
+  anything: `union<=2` already covers the whole matrix;
+- decisive case (`a=1.25, M=4, zeros=20`) shows:
+  - `++`: rank-2 residual `~6.32e-3`, but low-mode union residuals stay much
+    larger:
+    `union<=1 ~7.81e-1`, `union<=2 ~5.96e-1`, `union<=3 ~4.04e-1`;
+  - `+-`: rank-2 residual `~1.99e-3`, while low-mode union residuals are still
+    enormous:
+    `union<=1 ~9.97e-1`, `union<=2 ~9.85e-1`, `union<=3 ~9.32e-1`.
+
+Sharper verdict:
+
+- the residual is strongly compatible with **small-rank structured
+  correction**;
+- it is **not** numerically compatible with a defect supported only on the
+  first few rows/columns of the filtered tail basis;
+- therefore the honest live classifier is now:
+  `exact / exact+small-rank structured correction / dead`,
+  and the phrase “pure low-mode defect” should be treated only as a candidate
+  until proved mathematically.

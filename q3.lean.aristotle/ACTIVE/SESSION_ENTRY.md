@@ -228,8 +228,10 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
   classifier signal:
   `rank-1 rel residual`, `rank-2 rel residual`,
   `sv1 share`, `sv1+sv2 share`,
-  чтобы быстро отличать low-rank structured correction от размазанного bulk
-  mismatch.
+  а также low-mode support signal:
+  `union<=1/2/3 rel resid` и `share`,
+  чтобы быстро отличать low-rank structured correction от genuinely
+  low-mode-supported defect.
 
 ## Python / src rule
 

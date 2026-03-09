@@ -90,6 +90,18 @@ class LowRankStats:
 
 
 @dataclass(frozen=True)
+class LowModeStats:
+    size: int
+    fro_norm: float
+    low_union_1_relative_residual: float
+    low_union_2_relative_residual: float
+    low_union_3_relative_residual: float
+    low_union_1_share: float
+    low_union_2_share: float
+    low_union_3_share: float
+
+
+@dataclass(frozen=True)
 class RunResult:
     run_id: str
     q_convention: str
@@ -98,6 +110,7 @@ class RunResult:
     family_kappa: dict[str, complex]
     family_metrics: dict[str, dict[str, float]]
     family_low_rank: dict[str, LowRankStats]
+    family_low_mode: dict[str, LowModeStats]
     joint_kappa: complex
     joint_metrics: dict[str, float]
 
@@ -255,6 +268,36 @@ def low_rank_stats(samples: list[FilteredSample], family: str, kappa: complex) -
     )
 
 
+def low_mode_stats(samples: list[FilteredSample], family: str, kappa: complex) -> LowModeStats:
+    matrix = family_residual_matrix(samples, family, kappa)
+    size = matrix.shape[0]
+    fro_sq = float(np.linalg.norm(matrix, ord="fro") ** 2)
+    if fro_sq == 0.0:
+        return LowModeStats(size, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+
+    def union_share(k: int) -> float:
+        cutoff = min(k, size)
+        mask = np.zeros((size, size), dtype=bool)
+        mask[:cutoff, :] = True
+        mask[:, :cutoff] = True
+        masked_sq = float(np.linalg.norm(matrix * mask, ord="fro") ** 2)
+        return safe_ratio(masked_sq, fro_sq)
+
+    share1 = union_share(1)
+    share2 = union_share(2)
+    share3 = union_share(3)
+    return LowModeStats(
+        size=size,
+        fro_norm=math.sqrt(fro_sq),
+        low_union_1_relative_residual=math.sqrt(max(1.0 - share1, 0.0)),
+        low_union_2_relative_residual=math.sqrt(max(1.0 - share2, 0.0)),
+        low_union_3_relative_residual=math.sqrt(max(1.0 - share3, 0.0)),
+        low_union_1_share=share1,
+        low_union_2_share=share2,
+        low_union_3_share=share3,
+    )
+
+
 def print_bucket_report(label: str, stats: BucketStats) -> None:
     print(
         f"  {label:<18s} count={stats.count:3d}  "
@@ -267,6 +310,7 @@ def print_family_report(
     family: str,
     kappa: complex,
     low_rank: LowRankStats,
+    low_mode: LowModeStats,
 ) -> None:
     family_samples = [sample for sample in samples if sample.family == family]
     metrics = residual_metrics(family_samples, kappa)
@@ -287,6 +331,19 @@ def print_family_report(
     print(
         f"    top-left 1x1 share:   {low_rank.top_left_1_share:.3f}  "
         f"top-left 2x2 share: {low_rank.top_left_2_share:.3f}"
+    )
+    print("  low-mode support fit:")
+    print(
+        f"    union<=1 rel resid:  {low_mode.low_union_1_relative_residual:.3e}  "
+        f"(share={low_mode.low_union_1_share:.3f})"
+    )
+    print(
+        f"    union<=2 rel resid:  {low_mode.low_union_2_relative_residual:.3e}  "
+        f"(share={low_mode.low_union_2_share:.3f})"
+    )
+    print(
+        f"    union<=3 rel resid:  {low_mode.low_union_3_relative_residual:.3e}  "
+        f"(share={low_mode.low_union_3_share:.3f})"
     )
     print("  buckets:")
     print_bucket_report("diagonal", bucket_stats(family_samples, kappa, lambda s: s.m == s.n))
@@ -324,7 +381,7 @@ def search_conventions(
 
 
 def default_csv_path() -> Path:
-    timestamp = datetime.now().strftime("%Y_%m_%d_%H%M%S")
+    timestamp = datetime.now().strftime("%Y_%m_%d_%H%M%S_%f")
     return Path("/Users/emalam/Documents/GitHub/rh_lean_01_2026/tmp") / f"h1_filtered_mismatch_map_{timestamp}.csv"
 
 
@@ -400,6 +457,10 @@ def run_check(
         family: low_rank_stats(samples, family, family_kappa[family])
         for family in ("++", "+-")
     }
+    family_low_mode = {
+        family: low_mode_stats(samples, family, family_kappa[family])
+        for family in ("++", "+-")
+    }
     joint_kappa = fit_kappa(samples)
     joint_metrics = residual_metrics(samples, joint_kappa)
     return RunResult(
@@ -410,6 +471,7 @@ def run_check(
         family_kappa=family_kappa,
         family_metrics=family_metrics,
         family_low_rank=family_low_rank,
+        family_low_mode=family_low_mode,
         joint_kappa=joint_kappa,
         joint_metrics=joint_metrics,
     )
@@ -420,8 +482,20 @@ def print_run_report(result: RunResult, *, a: float, M: int, B: float, t: float,
     print("=" * (6 + len(result.run_id)))
     print(f"a={a}  M={M}  B={B}  t={t}  zeros={zeros}  dps={dps}")
     print(f"baseline conventions: {result.q_convention} vs {result.w_convention}")
-    print_family_report(result.samples, "++", result.family_kappa["++"], result.family_low_rank["++"])
-    print_family_report(result.samples, "+-", result.family_kappa["+-"], result.family_low_rank["+-"])
+    print_family_report(
+        result.samples,
+        "++",
+        result.family_kappa["++"],
+        result.family_low_rank["++"],
+        result.family_low_mode["++"],
+    )
+    print_family_report(
+        result.samples,
+        "+-",
+        result.family_kappa["+-"],
+        result.family_low_rank["+-"],
+        result.family_low_mode["+-"],
+    )
     print("[joint]")
     print(f"  fitted kappa:           {format_complex(result.joint_kappa)}")
     print(f"  max |residual|:         {result.joint_metrics['max_abs_residual']:.3e}")
