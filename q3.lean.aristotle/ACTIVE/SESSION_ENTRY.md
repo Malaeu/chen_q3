@@ -78,11 +78,13 @@
   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
   `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
 - next exact blocker:
-  direct filtered bulk identities
-  `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}`
-  and
-  `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`
-  on the two filtered families `(+,+)` and `(+,-)`,
+  filtered bulk classifier on the two primary families `(+,+)` and `(+,-)`,
+  with preferred theorem shape
+  `M_{mn}^{\sigma\tau}(a)=\kappa(a)\widetilde q_{mn}^{\sigma\tau}+F_a^{\sigma\tau}`,
+  where `F_a` is tested as a structured small-rank correction;
+  the diagnostic classes are now
+  `exact / exact+structured small-rank correction / dead`,
+  and the current numerics strongly favor the middle class,
   where on the Section 8 side
   `Q_M^{raw}=T_M[P_A]-\Pi_M`,
   `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
@@ -101,6 +103,15 @@
 - derived filtered consequence:
   the remaining filtered blocks `M^{-+}, M^{--}` are obtained from
   `M^{++}, M^{+-}` by conjugation/self-adjoint symmetry;
+- current numerical classifier verdict:
+  filtered mismatch is compatible with small-rank structure but not with a
+  purely low-mode-supported defect; in the canonical case
+  `a=1.25, M=4, zeros=20`, the `++` residual has rank-2 relative residual
+  `~6.32e-3` and the `+-` residual has rank-2 relative residual `~1.99e-3`,
+  while low-mode union-mask residuals stay large
+  (`++`: `~7.81e-1`, `~5.96e-1`, `~4.04e-1`;
+   `+-`: `~9.97e-1`, `~9.85e-1`, `~9.32e-1`
+   for unions of the first `1/2/3` rows-columns);
 - after the filtered bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:

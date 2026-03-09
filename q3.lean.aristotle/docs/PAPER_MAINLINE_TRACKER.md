@@ -188,11 +188,16 @@ Interpretation rule after `T0.1`:
    `w_{rs}(a)=\kappa(a)q_{rs}` is now rejected as a theorem shape, because the
    raw Q3 matrix is Toeplitz with constant diagonal while the Suzuki raw Weil
    matrix in the `\chi_n[a]` basis has diagonal growth of order `\log|n|`.
-   The next theorem task is therefore the direct filtered bulk match
-   `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}` and
-   `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`,
+   The next theorem task is therefore the filtered bulk classifier on the two
+   primary families:
+   `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}+F_a^{++}` and
+   `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}+F_a^{+-}`,
+   with diagnostic outcomes
+   `exact / exact+structured small-rank correction / dead`,
    after which `(-+), (--)` follow as formal consequences of Hermitian
    symmetry.
+   Current executable evidence favors a structured small-rank correction over a
+   pure low-mode-only defect.
    After the bulk match, the only remaining bridge brick is the
    finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:

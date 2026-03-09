@@ -1735,6 +1735,32 @@ identities \eqref{eq:H1-filtered-bulk-plus-plus}
 and~\eqref{eq:H1-filtered-bulk-plus-minus}.
 \end{proof}
 
+\begin{remark}[Working classifier version of $H1^{\mathrm f}$]\label{rem:H1-structured-correction}
+The exact theorem shape above remains the cleanest endpoint, but current
+executable evidence suggests that the live classifier should be phrased more
+honestly as
+\[
+  M_{mn}^{\sigma\tau}(a)
+  =
+  \kappa(a)\,\widetilde q_{mn}^{\sigma\tau}
+  +
+  F_a^{\sigma\tau}(m,n),
+\]
+with diagnostic outcomes
+\[
+  \text{exact},
+  \qquad
+  \text{exact + structured small-rank correction},
+  \qquad
+  \text{dead}.
+\]
+The present numerics favor the middle class, not a pure low-mode-supported
+defect. In particular, the role of the filtered bulk classifier is now to
+decide whether the bridge closes exactly on the tail or only modulo a
+structured small-rank correction that should then be absorbed into the
+finite-dimensional Suzuki cap.
+\end{remark}
+
 \paragraph{Raw Fourier--Weil notation.}
 For an ambient cutoff $L\ge 0$ and indices $|r|,|s|\le L$, let
 \[
@@ -2157,15 +2183,15 @@ and then the remaining filtered blocks follow formally by Hermitian symmetry.
 \renewcommand{\arraystretch}{1.15}
 \begin{tabular}{|c|c|p{0.33\linewidth}|}
 \hline
-bulk family & filtered consequence & exact bookkeeping target \\
+bulk family & filtered consequence & live classifier target \\
 \hline
-$M^{++}(a)$ & $M^{++}(a)=\kappa(a)\widetilde Q_{M,N}^{++}$ & primary direct filtered bulk identity \\
+$M^{++}(a)$ & $M^{++}(a)=\kappa(a)\widetilde Q_{M,N}^{++}+F_a^{++}$ & primary filtered classifier; exact if $F_a^{++}=0$ \\
 \hline
-$M^{+-}(a)$ & $M^{+-}(a)=\kappa(a)\widetilde Q_{M,N}^{+-}$ & primary direct filtered bulk identity; no extra section-boundary defect once $\widetilde Q_{M,N}$ is used \\
+$M^{+-}(a)$ & $M^{+-}(a)=\kappa(a)\widetilde Q_{M,N}^{+-}+F_a^{+-}$ & primary filtered classifier; numerically the hardest family, no extra section-boundary defect once $\widetilde Q_{M,N}$ is used \\
 \hline
-$M^{-+}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{-+}$ & derived from $(+,-)$ by conjugation/self-adjoint symmetry \\
+$M^{-+}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{-+}+F_a^{-+}$ & derived from $(+,-)$ by conjugation/self-adjoint symmetry \\
 \hline
-$M^{--}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{--}$ & derived from $(+,+)$ by conjugation/self-adjoint symmetry; only the genuine finite-dimensional Suzuki cap remains outside the tail space \\
+$M^{--}(a)$ & $\kappa(a)\widetilde Q_{M,N}^{--}+F_a^{--}$ & derived from $(+,+)$ by conjugation/self-adjoint symmetry; only the finite-dimensional Suzuki cap and any structured correction remain outside the exact tail identity \\
 \hline
 \end{tabular}
 \end{center}
@@ -2175,10 +2201,11 @@ The live bulk theorem is therefore no longer the abstract existence of
 $S_{a,M,N}$ and $J_a$, nor any raw $\chi_n[a]$-level identity. By
 Proposition~\ref{prop:H1-raw-bulk-mismatch}, the raw basis is only a diagnostic
 layer and cannot support the exact bridge. The narrowest active target is now
-the direct filtered bulk identity on the two families $(+,+)$ and $(+,-)$; the
+the filtered bulk classifier on the two families $(+,+)$ and $(+,-)$; the
 remaining filtered block equalities are formal consequences of Hermitian
-symmetry, and after that filtered bulk identification the only remaining bridge
-brick is the finite-dimensional Suzuki cap.
+symmetry, and after that filtered bulk classification the only remaining bridge
+brick is the finite-dimensional Suzuki cap, possibly augmented by the same
+structured small-rank correction.
 
 \begin{theorem}[H2$^{\mathrm f}$: Suzuki tail/cap reduction]\label{thm:H2-filtered-cap}
 Fix $a>0$ and $N_a$ as in Theorem~\ref{thm:H1-filtered-bulk}. Define the closed tail space

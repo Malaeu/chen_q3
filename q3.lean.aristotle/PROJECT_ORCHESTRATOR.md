@@ -208,9 +208,18 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     then keep the raw identity
     `w_{rs}(a)=\kappa(a)q_{rs}`
     only as a rejected diagnostic theorem shape;
-    the active work is the direct filtered bulk match
-    `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}` and
-    `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`,
+    the active work is no longer plain exact equality, but the filtered bulk
+    classifier on the two primary families:
+    `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}+F_a^{++}` and
+    `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}+F_a^{+-}`,
+    with diagnostic outcomes
+    `exact / exact+structured small-rank correction / dead`;
+    current executable checks strongly favor the middle class:
+    in the canonical run `a=1.25, M=4, zeros=20`,
+    the `++` residual has rank-2 relative residual `~6.32e-3` and the `+-`
+    residual has rank-2 relative residual `~1.99e-3`,
+    while low-mode support tests remain large and therefore do not support a
+    pure low-mode-only defect,
     with the remaining filtered blocks
     `(-+), (--)`
     becoming formal consequences of Hermitian symmetry,
