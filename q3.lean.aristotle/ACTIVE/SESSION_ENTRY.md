@@ -193,6 +193,12 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 - все ключевые формулы, константы и target identity вписаны прямо внутрь;
 - архивы с source files можно давать только как secondary attachment, не как
   основной carrier смысла.
+- имена таких пакетов делать с понятным topic-prefix и точным timestamp suffix,
+  например
+  `proshka_q3_rh_route_state_YYYY_MM_DD_HHMM.md`
+  и
+  `proshka_q3_rh_route_state_YYYY_MM_DD_HHMM.tar.gz`,
+  чтобы новые пакеты не перетирали старые и их было легко различать глазами.
 
 Для H1 это означает:
 
