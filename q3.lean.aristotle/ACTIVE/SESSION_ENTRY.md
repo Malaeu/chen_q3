@@ -305,6 +305,20 @@ python src/h1_raw_operator_sanity.py --M 4 --M-big 7 --B 0.2 --t 0.15
 - raw entry formula for `Q_M^{raw}`;
 - stability of the raw entries under `M -> M_big`.
 
+Для текущего live `H1^f` brick canonical filtered checker такой:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+source .venv/bin/activate
+python -u src/h1_filtered_bulk_match.py --a 1.0 --M 2 --B 0.2 --t 0.15 --zeros 10
+```
+
+Этот скрипт уже не проверяет убитый raw-target `w_{rs}(a)=\kappa(a)q_{rs}`, а
+сравнивает именно live filtered families `(++),(+-)`:
+
+- `M_{mn}^{++}(a)` vs `\kappa(a)\widetilde q_{mn}^{++}`;
+- `M_{mn}^{+-}(a)` vs `\kappa(a)\widetilde q_{mn}^{+-}`.
+
 ## Что не делать
 
 - Не опираться на старый broad-cone route как на public RH contract.

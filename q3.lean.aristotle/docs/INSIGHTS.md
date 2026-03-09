@@ -3243,3 +3243,33 @@ are deeper:
 - the exact Suzuki-side raw entry formula,
 - the precise Weil/Fourier normalization in the Suzuki package,
 - or a missing finite-rank / cap correction already at the raw-entry layer.
+
+## In progress (2026-03-09) — filtered H1 checker is the first live executable test
+
+Added `/Users/emalam/Documents/GitHub/rh_lean_01_2026/src/h1_filtered_bulk_match.py`
+to test the current live target directly, not the rejected raw theorem shape.
+The script compares the filtered Suzuki blocks
+\[
+M_{mn}^{++}(a),\qquad M_{mn}^{+-}(a)
+\]
+against the filtered Q3 blocks
+\[
+\widetilde q_{mn}^{++},\qquad \widetilde q_{mn}^{+-}
+\]
+using the already frozen two-sided filter.
+
+First cheap probe at
+`a=1.0`, `M=2`, `B=0.2`, `t=0.15`, `zeros=10` gave:
+
+- `(++): relative max residual ~= 1.57e-4`
+- `(+-): relative max residual ~= 1.47e-3`
+- joint filtered fit: relative max residual ~= `9.26e-4`
+
+This is dramatically better than the raw-layer mismatch and is the first strong
+numerical sign that the filtered theorem shape is the right live object.
+It does **not** prove H1, but it confirms the direction of the pivot:
+
+- raw identity `w_{rs}(a)=\kappa(a)q_{rs}` stays dead;
+- direct filtered bulk match on `(++),(+-)` is the correct executable frontier;
+- next narrowing should attack the exact filtered formulas, not raw normalization
+  or sign bookkeeping.
