@@ -75,7 +75,7 @@ Filtered-bridge note:
 | `packet-Rayleigh-pd` | exact finite Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` with finite symbol `S_J` on each admissible dictionary | frozen theorem block | `sections/Main_closure.tex`, `sections/Weil_pack.tex` |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | rejected-too-strong route | `sections/Main_closure.tex`, `sections/scope_notation.tex` |
 | `PSD-pd` | positive semidefiniteness of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active fallback route; finite-dictionary reduction and coefficient-bounding package explicit | `sections/Main_closure.tex`, `sections/scope_notation.tex`, `sections/introduction.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
-| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `H1^f -> H2^f -> H3^f -> H4^f` | active primary live route | `sections/Main_closure.tex`, `docs/insights/h1_two_sided_filtered_bridge_2026_03_08.md`, `docs/insights/h1_four_block_bulk_2026_03_08.md`, `docs/insights/h1_raw_entry_reduction_2026_03_08.md` |
+| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `H1^f -> H2^f -> H3^f -> H4^f` | active primary live route | `sections/Main_closure.tex`, `docs/insights/h1_two_sided_filtered_bridge_2026_03_08.md`, `docs/insights/h1_four_block_bulk_2026_03_08.md`, `docs/insights/h1_raw_entry_reduction_2026_03_08.md`, `docs/insights/h1_cap_defect_theorem_shape_2026_03_10.md` |
 | `centered A3/RKHS` | positivity on centered packets | reusable input | `sections/A3/*`, `sections/RKHS/*`, `sections/Main_closure.tex` |
 | `A2-pd` | continuity on the corrected cone | inherited input | `sections/A2.tex`, `sections/Main_closure.tex` |
 | `LF-pd` | LF lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}` | skeleton available, still conditional | `sections/Main_closure.tex`, `sections/Weil_pack.tex`, `sections/Weil_linkage.tex` |
@@ -160,7 +160,7 @@ Interpretation rule after `T0.1`:
    because `a_K^*\in L^1` forces `\widehat{a_K^*}(u)\to0` while the finite cosine
    prime sum returns arbitrarily close to its full positive mass.
 2. Freeze the Suzuki/Yoshida generalized form-pair bridge as the primary live route:
-   `H1^f` exact filtered bulk intertwining
+   `H1^f` filtered intertwining modulo finite-rank cap defect
    -> `H2^f` Suzuki tail/cap reduction
    -> `H3^f` filtered gap transfer
    -> `H4^f` Suzuki RH criterion.
@@ -200,9 +200,13 @@ Interpretation rule after `T0.1`:
    pure low-mode-only defect; the sharper cap-defect classifier, however, does
    not yet identify one trivially shared finite-dimensional cap-space between
    `++` and `+-` at rank `2`, while a joint-basis rank-`3` candidate already
-   looks numerically plausible; so the live sub-question is whether the defect
-   is family-dependent or can still be absorbed into one augmented Suzuki cap
-   after the right basis / Gram projection.
+   looks numerically plausible; the honest freeze is now
+   `filtered kernel intertwining modulo joint finite-rank cap defect after the right joint basis / Gram projection`,
+   with exact `H1^f` treated as the zero-defect special case and
+   `rank <= 3` kept only as a working conjectural target.
+   The live sub-question is therefore no longer literal exact equality, but
+   whether the defect is family-dependent or can still be absorbed into one
+   augmented Suzuki cap after the right basis / Gram projection.
    After the bulk match, the only remaining bridge brick is the
    finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:

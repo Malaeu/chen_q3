@@ -41,6 +41,7 @@ from __future__ import annotations
 import argparse
 import csv
 import math
+from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -97,6 +98,13 @@ class LowRankStats:
     sv12_energy_share: float
     top_left_1_share: float
     top_left_2_share: float
+    defect_rank: int
+    defect_rank_relative_residual: float
+    defect_rank_energy_share: float
+    sigma_at_rank: float
+    sigma_next: float
+    sigma_next_over_rank: float
+    top_singular_values: tuple[float, ...]
 
 
 @dataclass(frozen=True)
@@ -129,6 +137,8 @@ class DefectSubspaceStats:
     defect_rank: int
     column_alignment: float
     row_alignment: float
+    column_principal_angles_deg: tuple[float, ...]
+    row_principal_angles_deg: tuple[float, ...]
     transfer_relative_residual: float
 
 
@@ -138,12 +148,40 @@ class SharedDefectStats:
     defect_rank: int
     column_alignment: float
     row_alignment: float
+    column_principal_angles_deg: tuple[float, ...]
+    row_principal_angles_deg: tuple[float, ...]
+    projection_relative_residual: float
+
+
+@dataclass(frozen=True)
+class SharedBasisNeighborStats:
+    relation: str
+    source_run_id: str
+    target_run_id: str
+    defect_rank: int
+    column_alignment: float
+    row_alignment: float
+    column_principal_angles_deg: tuple[float, ...]
+    row_principal_angles_deg: tuple[float, ...]
+
+
+@dataclass(frozen=True)
+class SharedBasisTransferStats:
+    relation: str
+    source_run_id: str
+    target_run_id: str
+    family: str
+    defect_rank: int
     projection_relative_residual: float
 
 
 @dataclass(frozen=True)
 class RunResult:
     run_id: str
+    a: float
+    M: int
+    zeros: int
+    defect_rank: int
     q_convention: str
     w_convention: str
     samples: list[FilteredSample]
@@ -154,6 +192,8 @@ class RunResult:
     family_defect_basis: dict[str, DefectBasis]
     cross_family_stats: list[DefectSubspaceStats]
     shared_defect_stats: list[SharedDefectStats]
+    shared_left_basis: np.ndarray
+    shared_right_basis: np.ndarray
     joint_kappa: complex
     joint_metrics: dict[str, float]
 
@@ -286,16 +326,41 @@ def safe_ratio(num: float, den: float) -> float:
     return num / den if den else 0.0
 
 
-def low_rank_stats(samples: list[FilteredSample], family: str, kappa: complex) -> LowRankStats:
+def low_rank_stats(
+    samples: list[FilteredSample],
+    family: str,
+    kappa: complex,
+    defect_rank: int,
+) -> LowRankStats:
     matrix = family_residual_matrix(samples, family, kappa)
     size = matrix.shape[0]
     fro_sq = float(np.linalg.norm(matrix, ord="fro") ** 2)
     if fro_sq == 0.0:
-        return LowRankStats(size, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+        return LowRankStats(
+            size=size,
+            fro_norm=0.0,
+            rank1_relative_residual=0.0,
+            rank2_relative_residual=0.0,
+            sv1_energy_share=0.0,
+            sv12_energy_share=0.0,
+            top_left_1_share=0.0,
+            top_left_2_share=0.0,
+            defect_rank=min(defect_rank, size),
+            defect_rank_relative_residual=0.0,
+            defect_rank_energy_share=0.0,
+            sigma_at_rank=0.0,
+            sigma_next=0.0,
+            sigma_next_over_rank=0.0,
+            top_singular_values=tuple(),
+        )
     singular_values = np.linalg.svd(matrix, compute_uv=False)
     sv_sq = np.abs(singular_values) ** 2
     rank1_sq = float(sv_sq[0]) if len(sv_sq) >= 1 else 0.0
     rank2_sq = float(np.sum(sv_sq[:2])) if len(sv_sq) >= 2 else rank1_sq
+    effective_rank = min(defect_rank, len(singular_values))
+    defect_rank_sq = float(np.sum(sv_sq[:effective_rank])) if effective_rank else 0.0
+    sigma_at_rank = float(singular_values[effective_rank - 1]) if effective_rank else 0.0
+    sigma_next = float(singular_values[effective_rank]) if len(singular_values) > effective_rank else 0.0
     top_left_1_sq = float(np.linalg.norm(matrix[:1, :1], ord="fro") ** 2)
     block2 = min(2, size)
     top_left_2_sq = float(np.linalg.norm(matrix[:block2, :block2], ord="fro") ** 2)
@@ -308,6 +373,13 @@ def low_rank_stats(samples: list[FilteredSample], family: str, kappa: complex) -
         sv12_energy_share=safe_ratio(rank2_sq, fro_sq),
         top_left_1_share=safe_ratio(top_left_1_sq, fro_sq),
         top_left_2_share=safe_ratio(top_left_2_sq, fro_sq),
+        defect_rank=effective_rank,
+        defect_rank_relative_residual=math.sqrt(max(fro_sq - defect_rank_sq, 0.0) / fro_sq),
+        defect_rank_energy_share=safe_ratio(defect_rank_sq, fro_sq),
+        sigma_at_rank=sigma_at_rank,
+        sigma_next=sigma_next,
+        sigma_next_over_rank=safe_ratio(sigma_next, sigma_at_rank),
+        top_singular_values=tuple(float(value) for value in singular_values[:TOP_K]),
     )
 
 
@@ -388,6 +460,16 @@ def subspace_alignment_score(source: np.ndarray, target: np.ndarray) -> float:
     return float(np.sum(np.abs(singular_values[:common]) ** 2) / common)
 
 
+def principal_angles_degrees(source: np.ndarray, target: np.ndarray) -> tuple[float, ...]:
+    common = min(source.shape[1], target.shape[1])
+    if common == 0:
+        return tuple()
+    gram = source.conj().T @ target
+    singular_values = np.linalg.svd(gram, compute_uv=False)
+    clipped = np.clip(np.abs(singular_values[:common]), 0.0, 1.0)
+    return tuple(float(np.degrees(np.arccos(value))) for value in clipped)
+
+
 def transfer_relative_residual(
     source_left: np.ndarray,
     source_right: np.ndarray,
@@ -412,6 +494,8 @@ def compare_defect_bases(source: DefectBasis, target: DefectBasis) -> DefectSubs
         defect_rank=min(source.rank, target.rank),
         column_alignment=subspace_alignment_score(left, target.left_basis),
         row_alignment=subspace_alignment_score(right, target.right_basis),
+        column_principal_angles_deg=principal_angles_degrees(left, target.left_basis),
+        row_principal_angles_deg=principal_angles_degrees(right, target.right_basis),
         transfer_relative_residual=transfer_relative_residual(left, right, target.matrix),
     )
 
@@ -452,8 +536,105 @@ def compare_to_shared_basis(
         defect_rank=min(left.shape[1], right.shape[1], target.rank),
         column_alignment=subspace_alignment_score(left, target.left_basis),
         row_alignment=subspace_alignment_score(right, target.right_basis),
+        column_principal_angles_deg=principal_angles_degrees(left, target.left_basis),
+        row_principal_angles_deg=principal_angles_degrees(right, target.right_basis),
         projection_relative_residual=transfer_relative_residual(left, right, target.matrix),
     )
+
+
+def basis_pair_stats(source: np.ndarray, target: np.ndarray) -> tuple[float, tuple[float, ...]]:
+    size = max(source.shape[0], target.shape[0])
+    source_resized = resize_basis(source, size)
+    target_resized = resize_basis(target, size)
+    return (
+        subspace_alignment_score(source_resized, target_resized),
+        principal_angles_degrees(source_resized, target_resized),
+    )
+
+
+def compare_shared_basis_runs(
+    source: RunResult,
+    target: RunResult,
+    relation: str,
+) -> SharedBasisNeighborStats:
+    column_alignment, column_angles = basis_pair_stats(source.shared_left_basis, target.shared_left_basis)
+    row_alignment, row_angles = basis_pair_stats(source.shared_right_basis, target.shared_right_basis)
+    return SharedBasisNeighborStats(
+        relation=relation,
+        source_run_id=source.run_id,
+        target_run_id=target.run_id,
+        defect_rank=min(source.defect_rank, target.defect_rank),
+        column_alignment=column_alignment,
+        row_alignment=row_alignment,
+        column_principal_angles_deg=column_angles,
+        row_principal_angles_deg=row_angles,
+    )
+
+
+def compare_shared_basis_transfer(
+    source: RunResult,
+    target: RunResult,
+    relation: str,
+) -> list[SharedBasisTransferStats]:
+    rows: list[SharedBasisTransferStats] = []
+    for family in ("++", "+-"):
+        stat = compare_to_shared_basis(
+            source.shared_left_basis,
+            source.shared_right_basis,
+            target.family_defect_basis[family],
+        )
+        rows.append(
+            SharedBasisTransferStats(
+                relation=relation,
+                source_run_id=source.run_id,
+                target_run_id=target.run_id,
+                family=family,
+                defect_rank=stat.defect_rank,
+                projection_relative_residual=stat.projection_relative_residual,
+            )
+        )
+    return rows
+
+
+def collect_shared_neighbor_stats(
+    runs: list[RunResult],
+) -> tuple[list[SharedBasisNeighborStats], list[SharedBasisTransferStats]]:
+    neighbor_rows: list[SharedBasisNeighborStats] = []
+    transfer_rows: list[SharedBasisTransferStats] = []
+
+    by_a_zeros: dict[tuple[float, int], list[RunResult]] = defaultdict(list)
+    by_a_m: dict[tuple[float, int], list[RunResult]] = defaultdict(list)
+    by_m_zeros: dict[tuple[int, int], list[RunResult]] = defaultdict(list)
+    for run in runs:
+        by_a_zeros[(run.a, run.zeros)].append(run)
+        by_a_m[(run.a, run.M)].append(run)
+        by_m_zeros[(run.M, run.zeros)].append(run)
+
+    for grouped in by_a_zeros.values():
+        ordered = sorted(grouped, key=lambda run: run.M)
+        for source, target in zip(ordered, ordered[1:]):
+            neighbor_rows.append(compare_shared_basis_runs(source, target, "M_step"))
+            transfer_rows.extend(compare_shared_basis_transfer(source, target, "M_step"))
+
+    for grouped in by_a_m.values():
+        ordered = sorted(grouped, key=lambda run: run.zeros)
+        for source, target in zip(ordered, ordered[1:]):
+            neighbor_rows.append(compare_shared_basis_runs(source, target, "zeros_step"))
+            transfer_rows.extend(compare_shared_basis_transfer(source, target, "zeros_step"))
+
+    for grouped in by_m_zeros.values():
+        ordered = sorted(grouped, key=lambda run: run.a)
+        for source, target in zip(ordered, ordered[1:]):
+            neighbor_rows.append(compare_shared_basis_runs(source, target, "a_step"))
+            transfer_rows.extend(compare_shared_basis_transfer(source, target, "a_step"))
+
+    return neighbor_rows, transfer_rows
+
+
+def format_angles(angles: tuple[float, ...]) -> str:
+    if not angles:
+        return "-"
+    return "/".join(f"{angle:.1f}" for angle in angles)
 
 
 def print_bucket_report(label: str, stats: BucketStats) -> None:
@@ -490,6 +671,23 @@ def print_family_report(
         f"    top-left 1x1 share:   {low_rank.top_left_1_share:.3f}  "
         f"top-left 2x2 share: {low_rank.top_left_2_share:.3f}"
     )
+    if low_rank.defect_rank not in (1, 2):
+        print(
+            f"    rank-{low_rank.defect_rank} rel residual:  "
+            f"{low_rank.defect_rank_relative_residual:.3e}  "
+            f"(energy share={low_rank.defect_rank_energy_share:.3f}, "
+            f"sigma_next/sigma_rank={low_rank.sigma_next_over_rank:.3e})"
+        )
+    else:
+        print(
+            f"    defect-rank gap:       sigma_next/sigma_rank="
+            f"{low_rank.sigma_next_over_rank:.3e}"
+        )
+    if low_rank.top_singular_values:
+        print(
+            "    top singular values:  "
+            + ", ".join(f"{value:.3e}" for value in low_rank.top_singular_values)
+        )
     print("  low-mode support fit:")
     print(
         f"    union<=1 rel resid:  {low_mode.low_union_1_relative_residual:.3e}  "
@@ -527,6 +725,8 @@ def print_cross_family_report(stats: list[DefectSubspaceStats]) -> None:
             f"  {stat.source_family} -> {stat.target_family}: "
             f"col_align={stat.column_alignment:.3f}  "
             f"row_align={stat.row_alignment:.3f}  "
+            f"col_angles={format_angles(stat.column_principal_angles_deg)}  "
+            f"row_angles={format_angles(stat.row_principal_angles_deg)}  "
             f"transfer_rel_resid={stat.transfer_relative_residual:.3e}"
         )
 
@@ -538,8 +738,35 @@ def print_shared_defect_report(stats: list[SharedDefectStats]) -> None:
             f"  family {stat.family}: "
             f"col_align={stat.column_alignment:.3f}  "
             f"row_align={stat.row_alignment:.3f}  "
+            f"col_angles={format_angles(stat.column_principal_angles_deg)}  "
+            f"row_angles={format_angles(stat.row_principal_angles_deg)}  "
             f"proj_rel_resid={stat.projection_relative_residual:.3e}"
         )
+
+
+def print_shared_neighbor_report(
+    neighbor_rows: list[SharedBasisNeighborStats],
+    transfer_rows: list[SharedBasisTransferStats],
+) -> None:
+    if not neighbor_rows and not transfer_rows:
+        return
+    print("\n[shared-basis stability]")
+    print("=======================")
+    for row in neighbor_rows:
+        print(
+            f"  {row.relation:<10s} {row.source_run_id} -> {row.target_run_id}: "
+            f"col_align={row.column_alignment:.3f}  "
+            f"row_align={row.row_alignment:.3f}  "
+            f"col_angles={format_angles(row.column_principal_angles_deg)}  "
+            f"row_angles={format_angles(row.row_principal_angles_deg)}"
+        )
+    if transfer_rows:
+        print("  embedded-shared-basis transfer:")
+        for row in transfer_rows:
+            print(
+                f"    {row.relation:<10s} {row.source_run_id} -> {row.target_run_id}  "
+                f"family {row.family}: proj_rel_resid={row.projection_relative_residual:.3e}"
+            )
 
 
 def search_conventions(
@@ -629,12 +856,20 @@ def build_subspace_rows(
                     "run_id": run.run_id,
                     "family": family,
                     "anchor_run_id": anchor_run.run_id,
+                    "source_run_id": anchor_run.run_id,
+                    "target_run_id": run.run_id,
                     "defect_rank": stats.defect_rank,
                     "column_alignment": stats.column_alignment,
                     "row_alignment": stats.row_alignment,
+                    "column_angles_deg": format_angles(stats.column_principal_angles_deg),
+                    "row_angles_deg": format_angles(stats.row_principal_angles_deg),
                     "transfer_relative_residual": stats.transfer_relative_residual,
                     "rank1_relative_residual": run.family_low_rank[family].rank1_relative_residual,
                     "rank2_relative_residual": run.family_low_rank[family].rank2_relative_residual,
+                    "defect_rank_relative_residual": run.family_low_rank[family].defect_rank_relative_residual,
+                    "sigma_at_rank": run.family_low_rank[family].sigma_at_rank,
+                    "sigma_next": run.family_low_rank[family].sigma_next,
+                    "sigma_next_over_rank": run.family_low_rank[family].sigma_next_over_rank,
                     "low_union_1_relative_residual": run.family_low_mode[family].low_union_1_relative_residual,
                     "low_union_2_relative_residual": run.family_low_mode[family].low_union_2_relative_residual,
                     "low_union_3_relative_residual": run.family_low_mode[family].low_union_3_relative_residual,
@@ -647,12 +882,20 @@ def build_subspace_rows(
                     "run_id": run.run_id,
                     "family": f"{stat.source_family}->{stat.target_family}",
                     "anchor_run_id": "",
+                    "source_run_id": stat.source_family,
+                    "target_run_id": stat.target_family,
                     "defect_rank": stat.defect_rank,
                     "column_alignment": stat.column_alignment,
                     "row_alignment": stat.row_alignment,
+                    "column_angles_deg": format_angles(stat.column_principal_angles_deg),
+                    "row_angles_deg": format_angles(stat.row_principal_angles_deg),
                     "transfer_relative_residual": stat.transfer_relative_residual,
                     "rank1_relative_residual": "",
                     "rank2_relative_residual": "",
+                    "defect_rank_relative_residual": "",
+                    "sigma_at_rank": "",
+                    "sigma_next": "",
+                    "sigma_next_over_rank": "",
                     "low_union_1_relative_residual": "",
                     "low_union_2_relative_residual": "",
                     "low_union_3_relative_residual": "",
@@ -665,17 +908,78 @@ def build_subspace_rows(
                     "run_id": run.run_id,
                     "family": stat.family,
                     "anchor_run_id": "",
+                    "source_run_id": run.run_id,
+                    "target_run_id": stat.family,
                     "defect_rank": stat.defect_rank,
                     "column_alignment": stat.column_alignment,
                     "row_alignment": stat.row_alignment,
+                    "column_angles_deg": format_angles(stat.column_principal_angles_deg),
+                    "row_angles_deg": format_angles(stat.row_principal_angles_deg),
                     "transfer_relative_residual": stat.projection_relative_residual,
                     "rank1_relative_residual": "",
                     "rank2_relative_residual": "",
+                    "defect_rank_relative_residual": "",
+                    "sigma_at_rank": "",
+                    "sigma_next": "",
+                    "sigma_next_over_rank": "",
                     "low_union_1_relative_residual": "",
                     "low_union_2_relative_residual": "",
                     "low_union_3_relative_residual": "",
                 }
             )
+    neighbor_rows, transfer_rows = collect_shared_neighbor_stats(runs)
+    for stat in neighbor_rows:
+        rows.append(
+            {
+                "kind": f"shared_{stat.relation}",
+                "run_id": stat.target_run_id,
+                "family": "shared",
+                "anchor_run_id": "",
+                "source_run_id": stat.source_run_id,
+                "target_run_id": stat.target_run_id,
+                "defect_rank": stat.defect_rank,
+                "column_alignment": stat.column_alignment,
+                "row_alignment": stat.row_alignment,
+                "column_angles_deg": format_angles(stat.column_principal_angles_deg),
+                "row_angles_deg": format_angles(stat.row_principal_angles_deg),
+                "transfer_relative_residual": "",
+                "rank1_relative_residual": "",
+                "rank2_relative_residual": "",
+                "defect_rank_relative_residual": "",
+                "sigma_at_rank": "",
+                "sigma_next": "",
+                "sigma_next_over_rank": "",
+                "low_union_1_relative_residual": "",
+                "low_union_2_relative_residual": "",
+                "low_union_3_relative_residual": "",
+            }
+        )
+    for stat in transfer_rows:
+        rows.append(
+            {
+                "kind": f"shared_transfer_{stat.relation}",
+                "run_id": stat.target_run_id,
+                "family": stat.family,
+                "anchor_run_id": "",
+                "source_run_id": stat.source_run_id,
+                "target_run_id": stat.target_run_id,
+                "defect_rank": stat.defect_rank,
+                "column_alignment": "",
+                "row_alignment": "",
+                "column_angles_deg": "",
+                "row_angles_deg": "",
+                "transfer_relative_residual": stat.projection_relative_residual,
+                "rank1_relative_residual": "",
+                "rank2_relative_residual": "",
+                "defect_rank_relative_residual": "",
+                "sigma_at_rank": "",
+                "sigma_next": "",
+                "sigma_next_over_rank": "",
+                "low_union_1_relative_residual": "",
+                "low_union_2_relative_residual": "",
+                "low_union_3_relative_residual": "",
+            }
+        )
     return rows
 
 
@@ -702,10 +1006,14 @@ def run_check(
     defect_rank: int,
     q_convention: QConvention,
     w_convention: WConvention,
+    A: dict[int, complex] | None = None,
+    nodes=None,
 ) -> RunResult:
     mp.mp.dps = dps
-    nodes = active_prime_nodes(B, t)
-    A = arch_coefficients(B, t, max_k=2 * M + 2, grid_size=grid_size)
+    if nodes is None:
+        nodes = active_prime_nodes(B, t)
+    if A is None:
+        A = arch_coefficients(B, t, max_k=2 * M + 2, grid_size=grid_size)
     samples = collect_filtered_samples(M, a, A, nodes, zeros, q_convention, w_convention)
     family_kappa = {
         family: fit_kappa([sample for sample in samples if sample.family == family])
@@ -716,7 +1024,7 @@ def run_check(
         for family in ("++", "+-")
     }
     family_low_rank = {
-        family: low_rank_stats(samples, family, family_kappa[family])
+        family: low_rank_stats(samples, family, family_kappa[family], defect_rank)
         for family in ("++", "+-")
     }
     family_low_mode = {
@@ -743,6 +1051,10 @@ def run_check(
     joint_metrics = residual_metrics(samples, joint_kappa)
     return RunResult(
         run_id=run_id,
+        a=a,
+        M=M,
+        zeros=zeros,
+        defect_rank=defect_rank,
         q_convention=q_convention.name,
         w_convention=w_convention.name,
         samples=samples,
@@ -753,6 +1065,8 @@ def run_check(
         family_defect_basis=family_defect_basis,
         cross_family_stats=cross_family_stats,
         shared_defect_stats=shared_defect_stats,
+        shared_left_basis=shared_left,
+        shared_right_basis=shared_right,
         joint_kappa=joint_kappa,
         joint_metrics=joint_metrics,
     )
@@ -814,8 +1128,24 @@ def print_anchor_stability_report(runs: list[RunResult]) -> None:
                 f"    {run.run_id:<24s} "
                 f"col_align={stats.column_alignment:.3f}  "
                 f"row_align={stats.row_alignment:.3f}  "
+                f"col_angles={format_angles(stats.column_principal_angles_deg)}  "
+                f"row_angles={format_angles(stats.row_principal_angles_deg)}  "
                 f"transfer_rel_resid={stats.transfer_relative_residual:.3e}"
             )
+
+
+def parse_float_csv(value: str) -> tuple[float, ...]:
+    entries = tuple(float(item.strip()) for item in value.split(",") if item.strip())
+    if not entries:
+        raise argparse.ArgumentTypeError("Need at least one float value.")
+    return entries
+
+
+def parse_int_csv(value: str) -> tuple[int, ...]:
+    entries = tuple(int(item.strip()) for item in value.split(",") if item.strip())
+    if not entries:
+        raise argparse.ArgumentTypeError("Need at least one integer value.")
+    return entries
 
 
 def parse_args() -> argparse.Namespace:
@@ -844,6 +1174,24 @@ def parse_args() -> argparse.Namespace:
         help="Run the built-in small grid sweep over a, M, and zeros.",
     )
     parser.add_argument(
+        "--sweep-a-values",
+        type=parse_float_csv,
+        default=None,
+        help="Comma-separated a-values for sweep mode, e.g. 0.8,1.0,1.25,1.5.",
+    )
+    parser.add_argument(
+        "--sweep-M-values",
+        type=parse_int_csv,
+        default=None,
+        help="Comma-separated M-values for sweep mode, e.g. 4,5,6,7.",
+    )
+    parser.add_argument(
+        "--sweep-zero-values",
+        type=parse_int_csv,
+        default=None,
+        help="Comma-separated zero-counts for sweep mode, e.g. 20,40,80.",
+    )
+    parser.add_argument(
         "--csv-out",
         type=Path,
         default=None,
@@ -867,11 +1215,16 @@ def main() -> int:
     if args.sweep:
         print("H1 filtered-bulk mismatch map (small grid sweep)")
         print("===============================================")
+        sweep_a = args.sweep_a_values or DEFAULT_SWEEP_A
+        sweep_M = args.sweep_M_values or DEFAULT_SWEEP_M
+        sweep_zeros = args.sweep_zero_values or DEFAULT_SWEEP_ZEROS
+        nodes = active_prime_nodes(args.B, args.t)
+        A = arch_coefficients(args.B, args.t, max_k=2 * max(sweep_M) + 2, grid_size=args.grid_size)
         sweep_runs: list[RunResult] = []
         all_rows: list[dict[str, object]] = []
-        for a in DEFAULT_SWEEP_A:
-            for M in DEFAULT_SWEEP_M:
-                for zeros in DEFAULT_SWEEP_ZEROS:
+        for a in sweep_a:
+            for M in sweep_M:
+                for zeros in sweep_zeros:
                     run_id = f"a={a:.2f}|M={M}|zeros={zeros}"
                     result = run_check(
                         run_id=run_id,
@@ -885,6 +1238,8 @@ def main() -> int:
                         defect_rank=args.defect_rank,
                         q_convention=baseline_q,
                         w_convention=baseline_w,
+                        A=A,
+                        nodes=nodes,
                     )
                     sweep_runs.append(result)
                     print_run_report(
@@ -899,6 +1254,8 @@ def main() -> int:
                     )
                     all_rows.extend(build_rows(result))
         print_anchor_stability_report(sweep_runs)
+        neighbor_rows, transfer_rows = collect_shared_neighbor_stats(sweep_runs)
+        print_shared_neighbor_report(neighbor_rows, transfer_rows)
         write_rows_csv(csv_path, all_rows)
         write_rows_csv(subspace_csv_path, build_subspace_rows(sweep_runs))
         print(f"\nCSV written to: {csv_path}")

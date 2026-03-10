@@ -40,9 +40,12 @@
 
 - `H-bridge` = Suzuki/Yoshida generalized form-pair bridge
   `H1^f -> H2^f -> H3^f -> H4^f`;
-- `H1^f` = exact filtered bulk intertwining on the symmetric two-sided tail
-  package, so that strongest finite Q3 block is compared not to raw `Q_M`, but
-  to the filtered tail section `\widetilde Q_{M,N}`;
+- `H1^f` = filtered bulk bridge on the symmetric two-sided tail package, so
+  that the strongest finite Q3 block is compared not to raw `Q_M`, but to the
+  filtered tail section `\widetilde Q_{M,N}`; the exact identity is now treated
+  as the zero-defect special case, while the live working theorem-shape is
+  filtered intertwining modulo a joint finite-rank cap defect after the right
+  joint basis / Gram projection;
 - preferred first-pass candidate for `H1^f`:
   two-sided filtered Volterra bridge with
   `J_a=(I_0^{(a)})^*I_0^{(a)}`,
@@ -59,7 +62,7 @@
 
 Точный theorem stack, который сейчас заморожен как primary live route:
 
-- `H1^f` exact filtered bulk intertwining
+- `H1^f` filtered intertwining modulo finite-rank cap defect
 - `H2^f` Suzuki tail/cap reduction
 - `H3^f` filtered gap transfer
 - `H4^f` RH via Suzuki Theorem 1.4
@@ -77,7 +80,7 @@
   `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
   `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
-- next exact blocker:
+- next live blocker:
   filtered bulk classifier on the two primary families `(+,+)` and `(+,-)`,
   with preferred theorem shape
   `M_{mn}^{\sigma\tau}(a)=\kappa(a)\widetilde q_{mn}^{\sigma\tau}+F_a^{\sigma\tau}`,
@@ -126,8 +129,13 @@
   cap-defect candidate gives `proj_rel_resid ~7.88e-3` for `++` and
   `~1.10e-3` for `+-`, and in the second real bulk-size run
   `a=1.0, M=4, zeros=20` it gives `~1.92e-2` for `++` and `~1.67e-3` for `+-`;
-  so the live sub-question is now whether the correct theorem shape is
-  a shared rank-`3` cap-defect after the right basis/Gram projection;
+  on the canonical run the rank-`3` gap proxy is already nontrivial
+  (`sigma_4/sigma_3 ~1.66e-1` for `++`, `~3.48e-1` for `+-`), and the shared
+  projector keeps the third principal angle moderate rather than chaotic
+  (`++`: `~26.1°/23.1°`, `+-`: `~17.6°/17.6°`);
+  so the honest live freeze is now:
+  filtered intertwining modulo joint finite-rank cap defect after the right
+  basis / Gram projection, with working conjectural target `rank <= 3`;
 - after the filtered bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:
@@ -389,6 +397,34 @@ source .venv/bin/activate
 python -u src/h1_filtered_bulk_match.py --a 1.0 --M 2 --B 0.2 --t 0.15 --zeros 10
 ```
 
+Для рабочего `rank <= 3` theorem-shape canonical case теперь такой:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+source .venv/bin/activate
+python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 20 --defect-rank 3
+```
+
+А для честного Gate A stability harness:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+source .venv/bin/activate
+python -u src/h1_filtered_bulk_match.py \
+  --sweep \
+  --sweep-a-values 0.8,1.0,1.25,1.5 \
+  --sweep-M-values 4,5,6,7 \
+  --sweep-zero-values 20,40,80 \
+  --defect-rank 3
+```
+
+Здесь уже надо смотреть не только `rank-k residual`, но и:
+
+- `sigma_next/sigma_rank` как rank-stability proxy;
+- principal angles в cross-family/shared-basis comparisons;
+- `[shared cap-defect candidate]` для same-space test;
+- `embedded-shared-basis transfer` для `M -> M+1` consistency.
+
 Этот скрипт уже не проверяет убитый raw-target `w_{rs}(a)=\kappa(a)q_{rs}`, а
 сравнивает именно live filtered families `(++),(+-)`:
 
@@ -417,10 +453,12 @@ python -u src/h1_filtered_bulk_match.py --a 1.0 --M 2 --B 0.2 --t 0.15 --zeros 1
   `\Pi_M=(2M+1)T_P^{Ray}(t,M)`,
   with
   `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle`;
-- next exact blocker:
-  direct filtered bulk identities
-  `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}` and
-  `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}`;
+- next live blocker:
+  defect-aware filtered bulk bridge
+  `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}+F_a^{++}` and
+  `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}+F_a^{+-}`,
+  with one joint finite-rank cap defect as the honest target and exact
+  equality retained only as the zero-defect special case;
 - raw diagnostic layer:
   `q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
   `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,

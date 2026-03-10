@@ -93,7 +93,7 @@ Interpretation after `T0.1`:
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `\mathcal Q(\Psi_c * \widetilde{\Psi_c})` with the finite symbol integral `\frac{1}{2\pi}\int S_J(\theta)|p_c(\theta)|^2\,d\theta` on each admissible dictionary |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
 | `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `fallback constructive route` | finite-dictionary positivity via explicit coefficient bounds on `\alpha_m,\beta_m`, yielding `S_J=A_J-P_J\ge0` on each admissible block |
-| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `(G_g[a],J_a)` from Q3 finite sections to the RH-equivalent operator criterion | `active primary live route` | freeze the two-sided filtered tail package `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}` and close `H1^f -> H2^f -> H3^f -> H4^f` |
+| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `(G_g[a],J_a)` from Q3 finite sections to the RH-equivalent operator criterion | `active primary live route` | freeze the two-sided filtered tail package `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}` and close `H1^f -> H2^f -> H3^f -> H4^f`, with `H1^f` now interpreted as filtered intertwining modulo finite-rank cap defect |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
@@ -108,7 +108,7 @@ Interpretation after `T0.1`:
 New live frontier:
   1. promote the Suzuki/Yoshida generalized form-pair bridge to the primary
      live route in its final filtered-tail form:
-     `H1^f` exact filtered bulk intertwining
+     `H1^f` filtered intertwining modulo finite-rank cap defect
      -> `H2^f` Suzuki tail/cap reduction
      -> `H3^f` filtered gap transfer
      -> `H4^f` RH via Suzuki Theorem 1.4;
@@ -116,7 +116,8 @@ New live frontier:
      `\widetilde Q_{M,N}:=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`
      on the two-sided tail space `\mathcal P_{M,N}`,
      with exact metric pullback
-     `S_{a,M,N}^*J_aS_{a,M,N}=B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`;
+     `S_{a,M,N}^*J_aS_{a,M,N}=B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
+     and with exact equality retained only as the zero-defect special case;
   2. freeze the compact scalar package `S1/S2/S3/S4` only as a correct
      diagnostic reduction, and reject its pointwise target `W_K(u)\ge0` as a
      public compact mainline whenever `\Xi_K\neq\varnothing`;
@@ -172,7 +173,7 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
 2. freeze the compact scalar package `S1/S2/S3/S4` only as a rejected public
    compact-truncation route and diagnostic formal reduction,
 3. make the theorem stack
-   `H1^f exact filtered bulk intertwining -> H2^f Suzuki tail/cap reduction -> H3^f filtered gap transfer -> H4^f Suzuki Theorem 1.4`
+   `H1^f filtered intertwining modulo finite-rank cap defect -> H2^f Suzuki tail/cap reduction -> H3^f filtered gap transfer -> H4^f Suzuki Theorem 1.4`
    the primary live route,
 4. freeze the symmetric two-sided filtered tail package as the exact
    preferred `H1^f` geometry:
@@ -225,7 +226,11 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     the live narrow distinction is no longer “small-rank or not”, but
     `shared cap-space vs family-dependent structured correction`;
     current joint-basis numerics make a shared rank-`3` cap-defect a serious
-    live candidate, but not yet a frozen theorem fact,
+    live candidate, but not yet a frozen theorem fact;
+    the honest theorem-shape freeze is now
+    `filtered kernel intertwining modulo joint finite-rank cap defect after the right joint basis / Gram projection`,
+    with exact `H1^f` treated as the special case where the defect vanishes and
+    with `rank <= 3` kept only as a working conjectural target;
     with the remaining filtered blocks
     `(-+), (--)`
     becoming formal consequences of Hermitian symmetry,
@@ -273,9 +278,9 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     with the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`,
 19. keep the Suzuki generalized form-pair package
     `H1^f -> H2^f -> H3^f -> H4^f` frozen as the strongest alternative operator route,
-    with `H1^f` exact filtered bulk intertwining as the only real missing
-    bridge theorem; the second and only other live brick after that is the
-    finite-dimensional Suzuki cap.
+    with `H1^f` now frozen as filtered intertwining modulo finite-rank cap
+    defect as the only real missing bridge theorem; the second and only other
+    live brick after that is the finite-dimensional Suzuki cap.
 
 ## Hard Blockers
 
@@ -302,7 +307,7 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
   `\widehat{a_K^*}(u)\to0`, while the finite cosine prime sum recurs arbitrarily
   close to its full positive mass.
 - The primary remaining theorem package is now:
-  `H1^f` exact filtered bulk intertwining
+  `H1^f` filtered intertwining modulo finite-rank cap defect
   -> `H2^f` Suzuki tail/cap reduction
   -> `H3^f` filtered gap transfer
   -> `H4^f` Suzuki Theorem 1.4;
@@ -318,7 +323,7 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
      or a new operator package for the full kernel
   -> `PSD-pd`.
 - The Suzuki/Yoshida generalized form-pair bridge is now the strongest live route:
-  `H1^f` exact filtered bulk intertwining
+  `H1^f` filtered intertwining modulo finite-rank cap defect
   -> `H2^f` Suzuki tail/cap reduction
   -> `H3^f` filtered gap transfer
   -> `H4^f` RH via Suzuki Theorem 1.4.

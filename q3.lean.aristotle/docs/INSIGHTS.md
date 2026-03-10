@@ -3433,3 +3433,45 @@ New sharper verdict:
 - this is now the best live theorem-shape candidate to ask Proshka about:
   filtered kernel intertwining modulo finite-rank cap defect, not raw equality
   and not pure low-mode support.
+
+## In-progress synthesis (2026-03-10) — freeze the defect-aware `H1` theorem shape, not literal exact equality
+
+Embedding search only reinforced the current control-plane picture: the repo
+already had the right raw-vs-filtered audit, the right two-family live bulk
+target, and the right suspicion that the defect is structured but not low-mode.
+
+The new freeze is sharper:
+
+- public stack stays `H1^f -> H2^f -> H3^f -> H4^f`;
+- but inside `H1^f` the honest working theorem-shape is now
+  `filtered intertwining modulo joint finite-rank cap defect after the right joint basis / Gram projection`;
+- exact `H1^f` is demoted to the zero-defect special case;
+- `rank <= 3` is kept only as the working implementation target, not a theorem fact.
+
+Operationally this compresses the live bridge to two gates:
+
+- Gate A: prove `M=\kappa(a)\widetilde Q + F_{a,N}` with one joint cap-type
+  defect for `(++),(+-)`;
+- Gate B: prove positivity of the augmented Suzuki cap after adjoining that
+  defect block.
+
+Checker status:
+
+- `src/h1_filtered_bulk_match.py` now reports `sigma_next/sigma_rank`,
+  principal angles, same-space shared-projector residuals, and embedded
+  shared-basis transfer across neighboring runs;
+- canonical rank-`3` case still reproduces the live signal:
+  `a=1.25, M=4, zeros=20` gives
+  `proj_rel_resid ~7.88e-3` for `++` and `~1.10e-3` for `+-`,
+  with third principal angles still moderate rather than chaotic.
+
+External sanity check:
+
+- finite-section literature treats a stable gap after the first `k` singular
+  values as the right kind of low-rank / finite-codimension signal;
+- subspace perturbation literature treats principal angles as the honest metric
+  for testing whether the same defect space persists across runs.
+
+Detailed note:
+
+- `docs/insights/h1_cap_defect_theorem_shape_2026_03_10.md`
