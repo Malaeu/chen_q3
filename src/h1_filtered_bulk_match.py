@@ -34,6 +34,13 @@ This script now has two diagnostic layers:
    and across runs in `(a,M,zeros)`, to see whether the residual behaves like
    a common finite-dimensional cap-space or only like a family-dependent
    structured correction.
+
+It also supports a split-classifier mode:
+
+- fit or freeze one common `kappa(a)`,
+- use that fixed scale on both live families,
+- then compare `shared-joint`, `family-specific`, and `anchor-transfer`
+  basis choices, with the main focus on the hard `++` family.
 """
 
 from __future__ import annotations
@@ -196,6 +203,37 @@ class RunResult:
     shared_right_basis: np.ndarray
     joint_kappa: complex
     joint_metrics: dict[str, float]
+
+
+@dataclass(frozen=True)
+class SplitClassifierRun:
+    run_id: str
+    a: float
+    M: int
+    zeros: int
+    defect_rank: int
+    analysis_kappa: complex
+    analysis_kappa_label: str
+    samples: list[FilteredSample]
+    family_metrics: dict[str, dict[str, float]]
+    family_low_rank: dict[str, LowRankStats]
+    family_low_mode: dict[str, LowModeStats]
+    family_defect_basis: dict[str, DefectBasis]
+    shared_left_basis: np.ndarray
+    shared_right_basis: np.ndarray
+
+
+@dataclass(frozen=True)
+class BasisChoiceStats:
+    basis_choice: str
+    family: str
+    source_run_id: str
+    defect_rank: int
+    column_alignment: float
+    row_alignment: float
+    column_principal_angles_deg: tuple[float, ...]
+    row_principal_angles_deg: tuple[float, ...]
+    projection_relative_residual: float
 
 
 def filtered_block_q(
@@ -1072,6 +1110,264 @@ def run_check(
     )
 
 
+def fit_split_kappa(
+    samples: list[FilteredSample],
+    fit_from_family: str | None,
+    frozen_kappa: complex | None,
+) -> tuple[complex, str]:
+    if frozen_kappa is not None:
+        return frozen_kappa, "frozen"
+    source = fit_from_family or "+-"
+    if source == "joint":
+        return fit_kappa(samples), "joint"
+    source_samples = [sample for sample in samples if sample.family == source]
+    return fit_kappa(source_samples), f"family:{source}"
+
+
+def build_split_classifier_run(
+    *,
+    run_id: str,
+    a: float,
+    M: int,
+    zeros: int,
+    defect_rank: int,
+    samples: list[FilteredSample],
+    analysis_kappa: complex,
+    analysis_kappa_label: str,
+) -> SplitClassifierRun:
+    family_metrics = {
+        family: residual_metrics([sample for sample in samples if sample.family == family], analysis_kappa)
+        for family in ("++", "+-")
+    }
+    family_low_rank = {
+        family: low_rank_stats(samples, family, analysis_kappa, defect_rank)
+        for family in ("++", "+-")
+    }
+    family_low_mode = {
+        family: low_mode_stats(samples, family, analysis_kappa)
+        for family in ("++", "+-")
+    }
+    family_defect_basis = {
+        family: defect_basis(samples, family, analysis_kappa, defect_rank)
+        for family in ("++", "+-")
+    }
+    shared_left, shared_right = joint_shared_basis(
+        [family_defect_basis["++"], family_defect_basis["+-"]],
+        defect_rank,
+    )
+    return SplitClassifierRun(
+        run_id=run_id,
+        a=a,
+        M=M,
+        zeros=zeros,
+        defect_rank=defect_rank,
+        analysis_kappa=analysis_kappa,
+        analysis_kappa_label=analysis_kappa_label,
+        samples=samples,
+        family_metrics=family_metrics,
+        family_low_rank=family_low_rank,
+        family_low_mode=family_low_mode,
+        family_defect_basis=family_defect_basis,
+        shared_left_basis=shared_left,
+        shared_right_basis=shared_right,
+    )
+
+
+def choose_anchor_run(
+    runs: list[SplitClassifierRun],
+    *,
+    target: SplitClassifierRun,
+    anchor_M: int | None,
+) -> SplitClassifierRun | None:
+    candidates = [run for run in runs if run.a == target.a and run.zeros == target.zeros and run.defect_rank == target.defect_rank]
+    if not candidates:
+        return None
+    desired_M = anchor_M if anchor_M is not None else min(run.M for run in candidates)
+    exact = [run for run in candidates if run.M == desired_M]
+    if exact:
+        return exact[0]
+    ordered = sorted(candidates, key=lambda run: (abs(run.M - desired_M), run.M))
+    return ordered[0]
+
+
+def evaluate_basis_choice(
+    run: SplitClassifierRun,
+    family: str,
+    basis_choice: str,
+    *,
+    all_runs: list[SplitClassifierRun],
+    anchor_M: int | None,
+) -> BasisChoiceStats | None:
+    target_basis = run.family_defect_basis[family]
+    if basis_choice == "family-specific":
+        return BasisChoiceStats(
+            basis_choice=basis_choice,
+            family=family,
+            source_run_id=run.run_id,
+            defect_rank=target_basis.rank,
+            column_alignment=1.0,
+            row_alignment=1.0,
+            column_principal_angles_deg=tuple(0.0 for _ in range(target_basis.rank)),
+            row_principal_angles_deg=tuple(0.0 for _ in range(target_basis.rank)),
+            projection_relative_residual=run.family_low_rank[family].defect_rank_relative_residual,
+        )
+    if basis_choice == "shared-joint":
+        stat = compare_to_shared_basis(run.shared_left_basis, run.shared_right_basis, target_basis)
+        return BasisChoiceStats(
+            basis_choice=basis_choice,
+            family=family,
+            source_run_id=run.run_id,
+            defect_rank=stat.defect_rank,
+            column_alignment=stat.column_alignment,
+            row_alignment=stat.row_alignment,
+            column_principal_angles_deg=stat.column_principal_angles_deg,
+            row_principal_angles_deg=stat.row_principal_angles_deg,
+            projection_relative_residual=stat.projection_relative_residual,
+        )
+    if basis_choice == "anchor-transfer":
+        anchor = choose_anchor_run(all_runs, target=run, anchor_M=anchor_M)
+        if anchor is None:
+            return None
+        stat = compare_defect_bases(anchor.family_defect_basis[family], target_basis)
+        return BasisChoiceStats(
+            basis_choice=basis_choice,
+            family=family,
+            source_run_id=anchor.run_id,
+            defect_rank=stat.defect_rank,
+            column_alignment=stat.column_alignment,
+            row_alignment=stat.row_alignment,
+            column_principal_angles_deg=stat.column_principal_angles_deg,
+            row_principal_angles_deg=stat.row_principal_angles_deg,
+            projection_relative_residual=stat.transfer_relative_residual,
+        )
+    raise ValueError(f"Unknown basis choice: {basis_choice}")
+
+
+def collect_split_kappas(
+    sample_cache: dict[tuple[float, int, int], list[FilteredSample]],
+    *,
+    fit_from_family: str | None,
+    frozen_kappa: complex | None,
+    fit_scope: str,
+) -> tuple[dict[tuple[float, int, int], complex], dict[tuple[float, int, int], str]]:
+    kappa_map: dict[tuple[float, int, int], complex] = {}
+    label_map: dict[tuple[float, int, int], str] = {}
+    if frozen_kappa is not None:
+        for spec in sample_cache:
+            kappa_map[spec] = frozen_kappa
+            label_map[spec] = "frozen"
+        return kappa_map, label_map
+
+    source = fit_from_family or "+-"
+    if fit_scope == "run":
+        for spec, samples in sample_cache.items():
+            kappa, label = fit_split_kappa(samples, source, None)
+            kappa_map[spec] = kappa
+            label_map[spec] = label
+        return kappa_map, label_map
+
+    if fit_scope != "a-grid":
+        raise ValueError(f"Unknown fit scope: {fit_scope}")
+
+    grouped_specs: dict[float, list[tuple[float, int, int]]] = defaultdict(list)
+    for spec in sample_cache:
+        grouped_specs[spec[0]].append(spec)
+    for a, specs in grouped_specs.items():
+        pooled: list[FilteredSample] = []
+        for spec in sorted(specs, key=lambda item: (item[1], item[2])):
+            samples = sample_cache[spec]
+            if source == "joint":
+                pooled.extend(samples)
+            else:
+                pooled.extend(sample for sample in samples if sample.family == source)
+        kappa = fit_kappa(pooled)
+        label = f"{source}|scope=a-grid"
+        for spec in specs:
+            kappa_map[spec] = kappa
+            label_map[spec] = label
+    return kappa_map, label_map
+
+
+def split_basis_choices(choice: str) -> tuple[str, ...]:
+    if choice == "all":
+        return ("family-specific", "shared-joint", "anchor-transfer")
+    return (choice,)
+
+
+def print_split_classifier_run(
+    run: SplitClassifierRun,
+    *,
+    families: tuple[str, ...],
+    basis_choices: tuple[str, ...],
+    all_runs: list[SplitClassifierRun],
+    anchor_M: int | None,
+) -> None:
+    print(f"\n[split classifier {run.run_id}]")
+    print("=" * (19 + len(run.run_id)))
+    print(
+        f"a={run.a}  M={run.M}  zeros={run.zeros}  defect-rank={run.defect_rank}  "
+        f"kappa-source={run.analysis_kappa_label}"
+    )
+    print(f"common kappa: {format_complex(run.analysis_kappa)}")
+    for family in ("++", "+-"):
+        low_rank = run.family_low_rank[family]
+        metrics = run.family_metrics[family]
+        print(
+            f"  family {family}: rel_max={metrics['relative_max_residual']:.3e}  "
+            f"rank-{low_rank.defect_rank} rel={low_rank.defect_rank_relative_residual:.3e}  "
+            f"sigma_next/sigma_rank={low_rank.sigma_next_over_rank:.3e}"
+        )
+    for family in families:
+        print(f"  [{family} basis choices]")
+        for basis_choice in basis_choices:
+            stat = evaluate_basis_choice(
+                run,
+                family,
+                basis_choice,
+                all_runs=all_runs,
+                anchor_M=anchor_M,
+            )
+            if stat is None:
+                continue
+            print(
+                f"    {basis_choice:<16s} src={stat.source_run_id:<24s} "
+                f"proj_rel_resid={stat.projection_relative_residual:.3e}  "
+                f"col_align={stat.column_alignment:.3f}  "
+                f"row_align={stat.row_alignment:.3f}  "
+                f"col_angles={format_angles(stat.column_principal_angles_deg)}"
+            )
+
+
+def print_split_classifier_summary(
+    runs: list[SplitClassifierRun],
+    *,
+    families: tuple[str, ...],
+    basis_choices: tuple[str, ...],
+    anchor_M: int | None,
+) -> None:
+    print("\n[split classifier summary]")
+    print("=========================")
+    for family in families:
+        print(f"  family {family}")
+        for basis_choice in basis_choices:
+            values: list[float] = []
+            for run in runs:
+                stat = evaluate_basis_choice(
+                    run,
+                    family,
+                    basis_choice,
+                    all_runs=runs,
+                    anchor_M=anchor_M,
+                )
+                if stat is not None:
+                    values.append(stat.projection_relative_residual)
+            if values:
+                print(
+                    f"    {basis_choice:<16s} "
+                    f"min={min(values):.3e}  max={max(values):.3e}  avg={sum(values)/len(values):.3e}"
+                )
+
+
 def print_run_report(
     result: RunResult,
     *,
@@ -1148,6 +1444,24 @@ def parse_int_csv(value: str) -> tuple[int, ...]:
     return entries
 
 
+def parse_complex_value(value: str) -> complex:
+    text = value.strip().replace(" ", "")
+    if not text:
+        raise argparse.ArgumentTypeError("Need a complex value.")
+    if "," in text:
+        parts = text.split(",")
+        if len(parts) != 2:
+            raise argparse.ArgumentTypeError("Use freeze-kappa as REAL,IMAG or Python complex syntax.")
+        try:
+            return complex(float(parts[0]), float(parts[1]))
+        except ValueError as exc:
+            raise argparse.ArgumentTypeError(str(exc)) from exc
+    try:
+        return complex(text.replace("i", "j"))
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(str(exc)) from exc
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Numerically test the filtered H1^f bulk identities.")
     parser.add_argument("--a", type=float, default=1.0, help="Suzuki interval parameter a > 0.")
@@ -1197,6 +1511,53 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Write the entrywise mismatch map to this CSV path (defaults to tmp/ with timestamp).",
     )
+    parser.add_argument(
+        "--split-classifier",
+        action="store_true",
+        help="Run the split H1^split classifier with one common fitted/frozen kappa and basis-choice comparisons.",
+    )
+    parser.add_argument(
+        "--classifier-family",
+        choices=("++", "+-", "both"),
+        default="++",
+        help="Family to emphasize in split-classifier mode.",
+    )
+    parser.add_argument(
+        "--fit-kappa-from-family",
+        choices=("++", "+-", "joint"),
+        default=None,
+        help="In split-classifier mode, fit one common kappa from this source family (defaults to +-).",
+    )
+    parser.add_argument(
+        "--fit-kappa-scope",
+        choices=("run", "a-grid"),
+        default="run",
+        help="In split-classifier mode, fit kappa separately per run or pool by fixed a across the sweep grid.",
+    )
+    parser.add_argument(
+        "--freeze-kappa",
+        type=parse_complex_value,
+        default=None,
+        help="In split-classifier mode, freeze one common kappa as REAL,IMAG or Python complex syntax.",
+    )
+    parser.add_argument(
+        "--basis-choice",
+        choices=("family-specific", "shared-joint", "anchor-transfer", "all"),
+        default="all",
+        help="Which basis model to compare in split-classifier mode.",
+    )
+    parser.add_argument(
+        "--rank-sweep-values",
+        type=parse_int_csv,
+        default=None,
+        help="Comma-separated defect ranks for split-classifier mode, e.g. 3,4,5,6.",
+    )
+    parser.add_argument(
+        "--anchor-M",
+        type=int,
+        default=None,
+        help="Anchor M used for anchor-transfer basis comparisons in split-classifier mode.",
+    )
     return parser.parse_args()
 
 
@@ -1206,11 +1567,86 @@ def main() -> int:
         raise SystemExit("Need a, M, B, t, and zeros to be positive.")
     if args.sweep and args.search_conventions:
         raise SystemExit("--search-conventions is only supported in single-run mode.")
+    if args.anchor_M is not None and args.anchor_M <= 0:
+        raise SystemExit("--anchor-M must be positive.")
 
     csv_path = args.csv_out or default_csv_path()
     subspace_csv_path = default_subspace_csv_path(csv_path)
     baseline_q = q_conventions()[0]
     baseline_w = w_conventions()[0]
+
+    if args.split_classifier:
+        print("H1 split classifier")
+        print("===================")
+        sweep_a = args.sweep_a_values or (args.a,)
+        sweep_M = args.sweep_M_values or (args.M,)
+        sweep_zeros = args.sweep_zero_values or (args.zeros,)
+        sweep_ranks = args.rank_sweep_values or (args.defect_rank,)
+        nodes = active_prime_nodes(args.B, args.t)
+        A = arch_coefficients(args.B, args.t, max_k=2 * max(sweep_M) + 2, grid_size=args.grid_size)
+
+        sample_cache: dict[tuple[float, int, int], list[FilteredSample]] = {}
+        for a in sweep_a:
+            for M in sweep_M:
+                for zeros in sweep_zeros:
+                    sample_cache[(a, M, zeros)] = collect_filtered_samples(
+                        M,
+                        a,
+                        A,
+                        nodes,
+                        zeros,
+                        baseline_q,
+                        baseline_w,
+                    )
+
+        kappa_map, label_map = collect_split_kappas(
+            sample_cache,
+            fit_from_family=args.fit_kappa_from_family,
+            frozen_kappa=args.freeze_kappa,
+            fit_scope=args.fit_kappa_scope,
+        )
+        families = ("++", "+-") if args.classifier_family == "both" else (args.classifier_family,)
+        basis_choices = split_basis_choices(args.basis_choice)
+        split_runs: list[SplitClassifierRun] = []
+        for defect_rank in sweep_ranks:
+            for a in sweep_a:
+                for M in sweep_M:
+                    for zeros in sweep_zeros:
+                        spec = (a, M, zeros)
+                        run = build_split_classifier_run(
+                            run_id=f"a={a:.2f}|M={M}|zeros={zeros}|rank={defect_rank}",
+                            a=a,
+                            M=M,
+                            zeros=zeros,
+                            defect_rank=defect_rank,
+                            samples=sample_cache[spec],
+                            analysis_kappa=kappa_map[spec],
+                            analysis_kappa_label=label_map[spec],
+                        )
+                        split_runs.append(run)
+
+        print("[kappa map]")
+        for spec in sorted(sample_cache):
+            a, M, zeros = spec
+            print(
+                f"  a={a:.2f}|M={M}|zeros={zeros}: "
+                f"{label_map[spec]:<16s} {format_complex(kappa_map[spec])}"
+            )
+        for run in split_runs:
+            print_split_classifier_run(
+                run,
+                families=families,
+                basis_choices=basis_choices,
+                all_runs=split_runs,
+                anchor_M=args.anchor_M,
+            )
+        print_split_classifier_summary(
+            split_runs,
+            families=families,
+            basis_choices=basis_choices,
+            anchor_M=args.anchor_M,
+        )
+        return 0
 
     if args.sweep:
         print("H1 filtered-bulk mismatch map (small grid sweep)")

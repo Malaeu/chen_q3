@@ -136,6 +136,19 @@
   `structured finite-rank correction yes`, but `shared rank-3 joint cap defect`
   is `false-for-now` beyond the local `M=4` window, and the immediate split is
   `(++ ) classifier` versus `(+-) classifier`;
+  the first fixed-scale split-classifier run now sharpens this further:
+  freezing `zeros=40` and fitting one pooled `\kappa_{+-}(a)` across
+  `M=4,5,6` for each fixed `a in {1.0,1.25}` keeps `(+,-)` stable and shows
+  that `(++ )` is still compatible with a family-specific small-rank defect,
+  but not with naive `M`-stable basis transfer;
+  nontrivially, `rank=4` already works well at `M=5`,
+  and `rank=5` works well at `M=6`,
+  while anchor-transfer from the `M=4` basis stays bad
+  (`~5.4e-1` to `~6.8e-1`);
+  so the live object is now best thought of as `H1^{split}`:
+  one common `\kappa(a)` and separate defect structures for `(++ )` and
+  `(+,-)`, with the whole remaining risk concentrated in finding a better
+  `(++ )` basis / Gram projection across `M`;
 - after the filtered bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:
@@ -463,6 +476,32 @@ python -u src/h1_filtered_bulk_match.py \
 `filtered intertwining with structured finite-rank correction`,
 а immediate next step — split `(++ ) classifier` versus `(+-) classifier`,
 не augmented cap positivity.
+
+Для первого fixed-scale split-classifier run использовать:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+source .venv/bin/activate
+python -u src/h1_filtered_bulk_match.py \
+  --split-classifier \
+  --classifier-family ++ \
+  --fit-kappa-from-family +- \
+  --fit-kappa-scope a-grid \
+  --sweep-a-values 1.0,1.25 \
+  --sweep-M-values 4,5,6 \
+  --sweep-zero-values 40 \
+  --rank-sweep-values 3,4,5,6 \
+  --basis-choice all
+```
+
+Здесь ключевой decision rule уже такой:
+
+- `(+,-)` должен оставаться стабильным при одном и том же `\kappa_{+-}(a)`;
+- для `(++ )` nontrivial evidence сидит в `rank < M`,
+  то есть особенно в `rank=4` на `M=5,6` и `rank=5` на `M=6`;
+- если family-specific residual остаётся малым, а anchor-transfer basis
+  продолжает ломаться, следующий ход — не cap positivity, а поиск лучшего
+  `(++ )` family-specific basis / Gram projection.
 
 Этот скрипт уже не проверяет убитый raw-target `w_{rs}(a)=\kappa(a)q_{rs}`, а
 сравнивает именно live filtered families `(++),(+-)`:

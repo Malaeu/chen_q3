@@ -218,6 +218,15 @@ Interpretation rule after `T0.1`:
    `(++ ) classifier` versus `(+-) classifier`:
    determine whether `++` needs a higher-rank / different-basis correction or
    a genuinely family-dependent defect.
+   The first fixed-scale split-classifier run now makes the surviving shared
+   structure explicit:
+   with `zeros=40` frozen and one pooled `\kappa_{+-}(a)` fitted across
+   `M=4,5,6` for each fixed `a in {1.0,1.25}`, the `(+,-)` family stays stable
+   while `(++ )` remains compatible with a family-specific low-rank defect of
+   effective size about `4` through `M=5` and about `5` at `M=6`;
+   naive anchor-transfer of the `M=4` basis to `M=5,6` stays bad, so the next
+   theorem-level question is `(++ )` basis stabilization under fixed
+   `\kappa(a)`, not a return to one shared rank-`3` defect space.
    After the bulk match, the only remaining bridge brick is the
    finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:

@@ -3526,3 +3526,48 @@ New honest verdict:
 Detailed note:
 
 - `docs/insights/h1_rank3_reduced_sweep_2026_03_11.md`
+
+## Follow-up result (2026-03-11) — split classifier with fixed `\kappa_{+-}(a)` keeps the route alive
+
+We upgraded `src/h1_filtered_bulk_match.py` with a dedicated split-classifier
+mode:
+
+- fit one common `\kappa(a)` from `(+,-)` or freeze it;
+- apply that same scale to both live families;
+- compare `family-specific`, `shared-joint`, and `anchor-transfer` basis
+  choices.
+
+First real split run:
+
+- `zeros=40` frozen;
+- `a in {1.0, 1.25}`;
+- `M in {4,5,6}`;
+- `rank in {3,4,5,6}`;
+- pooled `\kappa_{+-}(a)` fit across `M=4,5,6` for each fixed `a`.
+
+What survived:
+
+- one common `\kappa(a)` per fixed `a` is stable across `M`;
+- `(+,-)` remains the easy calibration family under that same `\kappa(a)`;
+- `(++ )` still looks like a structured low-rank defect, but now clearly in a
+  split, family-specific sense.
+
+What the new classifier says about `(++ )`:
+
+- `rank=3` is not enough to stabilize the family cleanly across `M`;
+- `rank=4` is already good at `M=5` and still reasonable at `M=6`;
+- `rank=5` becomes good at `M=6`;
+- but the naive `M=4 -> M=5,6` anchor-transfer basis is bad
+  (`~5.4e-1` to `~6.8e-1`), so no theorem-grade embedded basis is visible yet.
+
+Interpretation:
+
+- the filtered route is still alive in split form;
+- the surviving shared object is `\kappa(a)`, not a joint rank-`3` cap-space;
+- the true hard question is now whether `(++ )` admits a better
+  higher-rank / better-adapted basis or whether the theorem must allow a more
+  explicitly family-dependent defect space.
+
+Detailed note:
+
+- `docs/insights/h1_split_classifier_fixed_kappa_2026_03_11.md`
