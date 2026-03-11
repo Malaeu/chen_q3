@@ -27,6 +27,7 @@ Files:
 - floor_cert_tcritical_2026_01_25.md
 - h_cap_numerical_estimates_2026_01_14.md
 - h1_cap_defect_theorem_shape_2026_03_10.md
+- h1_rank3_reduced_sweep_2026_03_11.md
 - heat_localization_kills_primes_2026_01_16 2.md
 - heat_localization_kills_primes_2026_01_16.md
 - heat_parameter_mismatch_2026_01_14.md

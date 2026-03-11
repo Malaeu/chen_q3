@@ -3440,7 +3440,8 @@ Embedding search only reinforced the current control-plane picture: the repo
 already had the right raw-vs-filtered audit, the right two-family live bulk
 target, and the right suspicion that the defect is structured but not low-mode.
 
-The new freeze is sharper:
+The new freeze was sharper at that stage, but is now superseded by the reduced
+2026-03-11 sweep:
 
 - public stack stays `H1^f -> H2^f -> H3^f -> H4^f`;
 - but inside `H1^f` the honest working theorem-shape is now
@@ -3475,3 +3476,53 @@ External sanity check:
 Detailed note:
 
 - `docs/insights/h1_cap_defect_theorem_shape_2026_03_10.md`
+
+## Final result (2026-03-11) — shared rank-3 cap defect is false-for-now as a global theorem-shape
+
+Reduced Gate A sweep completed on the decisive grid:
+
+- core: `a in {1.0, 1.25}`, `M in {4,5}`, `zeros in {20,40}`;
+- edges: `a in {0.8, 1.5}`, `M=4`, `zeros in {20,40}`;
+- always with `defect-rank=3`.
+
+What survived:
+
+- pure low-mode support is still false;
+- structured low-rank correction is still very plausible;
+- `zeros 20 -> 40` barely changes the verdicts, so this is not a zero-count
+  artifact.
+
+What failed:
+
+- `a=0.8, M=4` is stably bad:
+  `proj_rel_resid(++) ~ 8.24e-1`,
+  `proj_rel_resid(+-) ~ 2.04e-3`;
+- `a=1.5, M=4` is stably good:
+  `proj_rel_resid(++) ~ 3.7e-3`,
+  `proj_rel_resid(+-) ~ 1.1e-3`;
+- `a=1.0, M=4` is good, but `a=1.0, M=5` breaks sharply:
+  `proj_rel_resid(++) ~ 8.32e-1`,
+  `proj_rel_resid(+-) ~ 2.42e-3`;
+- `a=1.25, M=4` is good, but `a=1.25, M=5` degrades beyond a small shared cap:
+  `proj_rel_resid(++) ~ 1.51e-1`,
+  `proj_rel_resid(+-) ~ 3.31e-3`.
+
+Shared-basis `M_step` stability also fails exactly where a theorem-grade shared
+cap should persist:
+
+- `a=1.0`, `M:4 -> 5`: third angle `~79.3°`;
+- `a=1.25`, `M:4 -> 5`: third angle `~79.7°`.
+
+New honest verdict:
+
+- `shared rank-3 joint cap defect after the right joint basis / Gram projection`
+  is now `false-for-now` as a **global** theorem-shape;
+- the strongest surviving live statement is
+  `structured finite-rank correction yes`,
+  but likely family-dependent or requiring a larger/different common space;
+- immediate next step is therefore not augmented cap positivity, but the split
+  `(++ ) classifier` versus `(+-) classifier`.
+
+Detailed note:
+
+- `docs/insights/h1_rank3_reduced_sweep_2026_03_11.md`

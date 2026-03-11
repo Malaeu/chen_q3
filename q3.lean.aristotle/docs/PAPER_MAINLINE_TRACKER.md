@@ -196,17 +196,28 @@ Interpretation rule after `T0.1`:
    `exact / exact+structured small-rank correction / dead`,
    after which `(-+), (--)` follow as formal consequences of Hermitian
    symmetry.
-   Current executable evidence favors a structured small-rank correction over a
-   pure low-mode-only defect; the sharper cap-defect classifier, however, does
-   not yet identify one trivially shared finite-dimensional cap-space between
-   `++` and `+-` at rank `2`, while a joint-basis rank-`3` candidate already
-   looks numerically plausible; the honest freeze is now
-   `filtered kernel intertwining modulo joint finite-rank cap defect after the right joint basis / Gram projection`,
-   with exact `H1^f` treated as the zero-defect special case and
-   `rank <= 3` kept only as a working conjectural target.
-   The live sub-question is therefore no longer literal exact equality, but
-   whether the defect is family-dependent or can still be absorbed into one
-   augmented Suzuki cap after the right basis / Gram projection.
+   Current executable evidence still favors a structured small-rank correction
+   over a pure low-mode-only defect, but the reduced rank-`3` sweep sharpens
+   the verdict in a decisive way.
+   `zeros`-stability is excellent, so the signal is not a zero-count artifact;
+   however, one globally shared rank-`3` cap-space does not survive the
+   natural stress tests.
+   On the local `M=4` window the joint candidate behaves well for
+   `a=1.0,1.25,1.5`, but `a=0.8, M=4` is stably bad in the `++` family
+   (`proj_rel_resid(++) ~8.24e-1`, `proj_rel_resid(+-) ~2.04e-3`), and the
+   `M:4 -> 5` transfer breaks the shared-basis geometry even in the core band:
+   third principal angles are around `79°`, while the `++` projected residual
+   jumps to `~8.32e-1` at `a=1.0` and `~1.51e-1` at `a=1.25`, with `+-`
+   staying small.
+   So the honest freeze is now weaker and more robust:
+   `filtered intertwining with structured finite-rank correction`,
+   with exact `H1^f` treated as the zero-defect special case and any shared
+   rank bound kept only as a local working hypothesis.
+   The live sub-question is therefore no longer literal exact equality and not
+   yet augmented-cap positivity, but the split
+   `(++ ) classifier` versus `(+-) classifier`:
+   determine whether `++` needs a higher-rank / different-basis correction or
+   a genuinely family-dependent defect.
    After the bulk match, the only remaining bridge brick is the
    finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:

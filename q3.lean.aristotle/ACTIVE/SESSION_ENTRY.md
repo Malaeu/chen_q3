@@ -42,10 +42,11 @@
   `H1^f -> H2^f -> H3^f -> H4^f`;
 - `H1^f` = filtered bulk bridge on the symmetric two-sided tail package, so
   that the strongest finite Q3 block is compared not to raw `Q_M`, but to the
-  filtered tail section `\widetilde Q_{M,N}`; the exact identity is now treated
-  as the zero-defect special case, while the live working theorem-shape is
-  filtered intertwining modulo a joint finite-rank cap defect after the right
-  joint basis / Gram projection;
+  filtered tail section `\widetilde Q_{M,N}`; the exact identity is treated as
+  the zero-defect special case, while the current honest global working
+  theorem-shape is filtered intertwining with structured finite-rank
+  correction; a shared rank-`3` joint cap defect survives only as a local
+  `M=4` mid-`a` phenomenon and is now false-for-now as a global theorem-shape;
 - preferred first-pass candidate for `H1^f`:
   two-sided filtered Volterra bridge with
   `J_a=(I_0^{(a)})^*I_0^{(a)}`,
@@ -62,7 +63,7 @@
 
 Точный theorem stack, который сейчас заморожен как primary live route:
 
-- `H1^f` filtered intertwining modulo finite-rank cap defect
+- `H1^f` filtered intertwining with structured finite-rank correction
 - `H2^f` Suzuki tail/cap reduction
 - `H3^f` filtered gap transfer
 - `H4^f` RH via Suzuki Theorem 1.4
@@ -115,27 +116,26 @@
   (`++`: `~7.81e-1`, `~5.96e-1`, `~4.04e-1`;
    `+-`: `~9.97e-1`, `~9.85e-1`, `~9.32e-1`
    for unions of the first `1/2/3` rows-columns);
-  the stronger cap-defect classifier now shows a sharper verdict:
-  toy `M=2` runs are misleadingly tiny and give trivial rank-2 agreement,
-  but on real bulk-size runs (`M>=3`) the `++` and `+-` defect spaces are only
-  partially aligned, not identical; in the canonical case
-  `a=1.25, M=4, zeros=20`, cross-family column/row alignment is only
-  `~0.606 / ~0.606`, with transfer residual `++ -> +- ~2.69e-2` and reverse
-  transfer `+- -> ++ ~6.79e-1`, so the current honest live verdict is
-  `structured small-rank defect yes`, but `one obvious shared cap-space`
-  not yet established at rank `2`;
-  however, a stronger joint-basis test with `defect-rank=3` already looks much
-  more promising: in the canonical run `a=1.25, M=4, zeros=20`, the shared
-  cap-defect candidate gives `proj_rel_resid ~7.88e-3` for `++` and
-  `~1.10e-3` for `+-`, and in the second real bulk-size run
-  `a=1.0, M=4, zeros=20` it gives `~1.92e-2` for `++` and `~1.67e-3` for `+-`;
-  on the canonical run the rank-`3` gap proxy is already nontrivial
-  (`sigma_4/sigma_3 ~1.66e-1` for `++`, `~3.48e-1` for `+-`), and the shared
-  projector keeps the third principal angle moderate rather than chaotic
-  (`++`: `~26.1°/23.1°`, `+-`: `~17.6°/17.6°`);
-  so the honest live freeze is now:
-  filtered intertwining modulo joint finite-rank cap defect after the right
-  basis / Gram projection, with working conjectural target `rank <= 3`;
+  the stronger reduced sweep on the rank-`3` joint-basis candidate now gives a
+  sharper and more honest verdict:
+  the shared rank-`3` cap-defect is real on a local `M=4` mid-`a` window
+  (`a=1.0,1.25`), stable in `zeros`, and still much better than any low-mode
+  story;
+  but it does **not** survive as a global theorem-shape:
+  `a=0.8, M=4` is stably bad
+  (`proj_rel_resid(++) ~8.24e-1`, `proj_rel_resid(+-) ~2.04e-3` at both
+   `zeros=20,40`),
+  `a=1.5, M=4` is stably good
+  (`~3.7e-3`, `~1.1e-3`),
+  and the `M:4 -> 5` step breaks the shared-basis geometry even in the core
+  band:
+  for `a=1.0`, `proj_rel_resid(++) ~8.32e-1`, `proj_rel_resid(+-) ~2.42e-3`;
+  for `a=1.25`, `proj_rel_resid(++) ~1.51e-1`, `proj_rel_resid(+-) ~3.31e-3`,
+  with third `M_step` angles around `79°`;
+  so the honest live global freeze is now:
+  `structured finite-rank correction yes`, but `shared rank-3 joint cap defect`
+  is `false-for-now` beyond the local `M=4` window, and the immediate split is
+  `(++ ) classifier` versus `(+-) classifier`;
 - after the filtered bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:
@@ -397,7 +397,8 @@ source .venv/bin/activate
 python -u src/h1_filtered_bulk_match.py --a 1.0 --M 2 --B 0.2 --t 0.15 --zeros 10
 ```
 
-Для рабочего `rank <= 3` theorem-shape canonical case теперь такой:
+Для локального mid-`a` probe, где joint rank-`3` выглядит лучше всего, теперь
+такой canonical case:
 
 ```bash
 cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
@@ -405,7 +406,7 @@ source .venv/bin/activate
 python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 20 --defect-rank 3
 ```
 
-А для честного Gate A stability harness:
+A для честного Gate A stability harness полный command-line target такой:
 
 ```bash
 cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
@@ -418,12 +419,50 @@ python -u src/h1_filtered_bulk_match.py \
   --defect-rank 3
 ```
 
+Но practically на этой машине такой full sweep уже тяжёлый; рабочий reduced
+Gate A verdict лучше получать двумя урезанными прогонами:
+
+```bash
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+source .venv/bin/activate
+python -u src/h1_filtered_bulk_match.py \
+  --sweep \
+  --sweep-a-values 1.0,1.25 \
+  --sweep-M-values 4,5 \
+  --sweep-zero-values 20,40 \
+  --defect-rank 3
+python -u src/h1_filtered_bulk_match.py \
+  --sweep \
+  --sweep-a-values 0.8,1.5 \
+  --sweep-M-values 4 \
+  --sweep-zero-values 20,40 \
+  --defect-rank 3
+```
+
 Здесь уже надо смотреть не только `rank-k residual`, но и:
 
 - `sigma_next/sigma_rank` как rank-stability proxy;
 - principal angles в cross-family/shared-basis comparisons;
 - `[shared cap-defect candidate]` для same-space test;
 - `embedded-shared-basis transfer` для `M -> M+1` consistency.
+
+Сейчас честный reduced-sweep verdict такой:
+
+- `zeros`-stability очень сильная, значит это не zero-count artifact;
+- `+-` семья ведёт себя стабильно хорошо почти на всей reduced grid;
+- `++` семья ломает глобальный shared rank-`3` shape:
+  на `a=0.8, M=4` получаем `proj_rel_resid(++) ~8.24e-1`,
+  а на `M:4 -> 5` в core-band residual резко растёт
+  (`a=1.0`: `~8.32e-1`, `a=1.25`: `~1.51e-1`);
+- third principal angles for `M_step` сидят около `79°`, так что общий
+  rank-`3` defect-space не переносится честно по `M`.
+
+Итог: глобальная theorem-shape
+`shared rank-3 joint cap defect after the right joint basis / Gram projection`
+сейчас `false-for-now`; живым остаётся более слабый и честный freeze:
+`filtered intertwining with structured finite-rank correction`,
+а immediate next step — split `(++ ) classifier` versus `(+-) classifier`,
+не augmented cap positivity.
 
 Этот скрипт уже не проверяет убитый raw-target `w_{rs}(a)=\kappa(a)q_{rs}`, а
 сравнивает именно live filtered families `(++),(+-)`:

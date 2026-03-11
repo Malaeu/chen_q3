@@ -1,6 +1,6 @@
 # PROJECT ORCHESTRATOR - Q3
 
-Updated: 2026-03-08
+Updated: 2026-03-11
 
 ## Role
 
@@ -215,25 +215,29 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}+F_a^{+-}`,
     with diagnostic outcomes
     `exact / exact+structured small-rank correction / dead`;
-    current executable checks strongly favor the middle class:
-    in the canonical run `a=1.25, M=4, zeros=20`,
-    the `++` residual has rank-2 relative residual `~6.32e-3` and the `+-`
-    residual has rank-2 relative residual `~1.99e-3`,
-    while low-mode support tests remain large and therefore do not support a
-    pure low-mode-only defect;
-    stronger cap-defect checks now also show that the `++` and `+-` defect
-    spaces are only partially aligned at rank `2` on real bulk-size runs, so
-    the live narrow distinction is no longer “small-rank or not”, but
-    `shared cap-space vs family-dependent structured correction`;
-    current joint-basis numerics make a shared rank-`3` cap-defect a serious
-    live candidate, but not yet a frozen theorem fact;
-    the honest theorem-shape freeze is now
-    `filtered kernel intertwining modulo joint finite-rank cap defect after the right joint basis / Gram projection`,
-    with exact `H1^f` treated as the special case where the defect vanishes and
-    with `rank <= 3` kept only as a working conjectural target;
-    with the remaining filtered blocks
-    `(-+), (--)`
-    becoming formal consequences of Hermitian symmetry,
+    current executable checks still strongly favor the middle class, but the
+    sharper reduced rank-`3` sweep now makes the theorem boundary much more
+    precise:
+    `zeros`-stability is excellent, so the signal is not a zero-count artifact,
+    yet one globally shared rank-`3` defect space does not survive the natural
+    stress tests.
+    On the local `M=4` window the joint candidate behaves well for
+    `a=1.0,1.25,1.5`, but `a=0.8, M=4` is stably bad in the `++` family
+    (`proj_rel_resid(++) ~8.24e-1`, `proj_rel_resid(+-) ~2.04e-3`), and the
+    `M:4 -> 5` step breaks the shared-basis geometry even in the core band:
+    third principal angles are around `79°`, while the `++` projected residual
+    jumps to `~8.32e-1` at `a=1.0` and `~1.51e-1` at `a=1.25`, with `+-`
+    staying small.
+    So the honest global theorem-shape freeze is now weaker and more robust:
+    `filtered intertwining with structured finite-rank correction`,
+    with exact `H1^f` treated as the zero-defect special case and any shared
+    rank bound kept only as a local working hypothesis.
+    The remaining filtered blocks `(-+), (--)` are still formal Hermitian
+    consequences, but the immediate live sub-question is now the split
+    `(++ ) classifier` versus `(+-) classifier`:
+    determine whether `++` needs a higher-rank / different-basis correction or
+    a genuinely family-dependent defect before trying to absorb anything into
+    an augmented Suzuki cap,
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family
