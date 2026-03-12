@@ -242,11 +242,13 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     refinement of that question:
     with `zeros=40` frozen and one pooled `\kappa_{+-}(a)` fitted across
     `M=4,5,6` for each fixed `a in {1.0,1.25}`, the `(+,-)` family stays
-    stable, while `(++ )` is still compatible with a family-specific
-    small-rank defect of effective size about `4` through `M=5` and about `5`
-    at `M=6`;
-    however, naive anchor-transfer of the `M=4` `++` basis to `M=5,6` remains
-    bad (`~5.4e-1` to `~6.8e-1`), so the next live task is explicitly
+    stable, low-mode is decisively bad, joint-Gram is intermediate, and
+    `(++ )` is still compatible with a family-specific small-rank defect of
+    effective size about `4` through `M=5` and about `5` at `M=6`;
+    however, the explicit `M -> M+1` transfer residuals for both
+    family-specific and joint-Gram bases remain large
+    (`~4.5e-1` to `~5.6e-1`), so the current classifier verdict is case `B`
+    rather than case `A`, and the next live task is explicitly
     `(++ ) higher-rank / alternative-basis stabilization under fixed
     \kappa_{+-}(a)`,
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,

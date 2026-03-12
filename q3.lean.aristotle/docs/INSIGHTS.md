@@ -3554,15 +3554,21 @@ What survived:
 
 What the new classifier says about `(++ )`:
 
+- low-mode remains decisively bad even after freezing `\kappa_{+-}(a)`;
+- `joint-Gram` is much better than low-mode, but still weaker than the optimal
+  family-specific basis;
 - `rank=3` is not enough to stabilize the family cleanly across `M`;
 - `rank=4` is already good at `M=5` and still reasonable at `M=6`;
 - `rank=5` becomes good at `M=6`;
-- but the naive `M=4 -> M=5,6` anchor-transfer basis is bad
-  (`~5.4e-1` to `~6.8e-1`), so no theorem-grade embedded basis is visible yet.
+- but the explicit `M -> M+1` transfer residuals for both family-specific and
+  joint-Gram bases stay around `4.5e-1 .. 5.6e-1`, so no theorem-grade
+  embedded basis is visible yet.
 
 Interpretation:
 
 - the filtered route is still alive in split form;
+- the current classifier verdict is `B`, not `A` and not `C`:
+  family-dependent finite-rank defect plausible;
 - the surviving shared object is `\kappa(a)`, not a joint rank-`3` cap-space;
 - the true hard question is now whether `(++ )` admits a better
   higher-rank / better-adapted basis or whether the theorem must allow a more

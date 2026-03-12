@@ -222,11 +222,14 @@ Interpretation rule after `T0.1`:
    structure explicit:
    with `zeros=40` frozen and one pooled `\kappa_{+-}(a)` fitted across
    `M=4,5,6` for each fixed `a in {1.0,1.25}`, the `(+,-)` family stays stable
-   while `(++ )` remains compatible with a family-specific low-rank defect of
-   effective size about `4` through `M=5` and about `5` at `M=6`;
-   naive anchor-transfer of the `M=4` basis to `M=5,6` stays bad, so the next
-   theorem-level question is `(++ )` basis stabilization under fixed
-   `\kappa(a)`, not a return to one shared rank-`3` defect space.
+   while low-mode is decisively bad, joint-Gram is intermediate, and `(++ )`
+   remains compatible with a family-specific low-rank defect of effective size
+   about `4` through `M=5` and about `5` at `M=6`;
+   the explicit `M -> M+1` transfer residuals for both family-specific and
+   joint-Gram bases stay large, so the current classifier verdict is case `B`
+   rather than case `A`, and the next theorem-level question is `(++ )` basis
+   stabilization under fixed `\kappa(a)`, not a return to one shared
+   rank-`3` defect space.
    After the bulk match, the only remaining bridge brick is the
    finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:

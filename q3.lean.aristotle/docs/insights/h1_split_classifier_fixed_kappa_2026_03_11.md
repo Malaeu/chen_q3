@@ -8,7 +8,8 @@ mode:
 - fit one common `\kappa(a)` from a chosen source family or freeze it;
 - apply that same scale to both live families `(++),(+-)`;
 - compare three basis choices for the hard family:
-  `family-specific`, `shared-joint`, `anchor-transfer`.
+  `low-mode`, `joint-gram`, `family-specific`,
+  together with explicit `M -> M+1` embedding/transfer checks.
 
 Canonical command used for the first real split run:
 
@@ -59,6 +60,28 @@ This is fully compatible with the working picture:
 
 ## `(++ )` is the only hard family
 
+### Low-mode basis
+
+The standard low-mode basis is decisively bad in every nontrivial case.
+
+At `rank=3`:
+
+- `a=1.0`: `6.25e-1`, `7.61e-1`, `8.15e-1` for `M=4,5,6`;
+- `a=1.25`: `6.19e-1`, `7.50e-1`, `8.15e-1`.
+
+At `rank=4`:
+
+- `a=1.0`: `M=5 -> 5.57e-1`, `M=6 -> 6.71e-1`;
+- `a=1.25`: `M=5 -> 5.41e-1`, `M=6 -> 6.75e-1`.
+
+At `rank=5`, still nontrivial on `M=6`:
+
+- `a=1.0 -> 4.51e-1`;
+- `a=1.25 -> 4.80e-1`.
+
+So the old “low-mode defect” story is dead even after freezing
+`\kappa_{+-}(a)`.
+
 ### Family-specific basis
 
 For `(++ )`, the family-specific rank-`r` basis is clearly the strongest model.
@@ -94,10 +117,10 @@ The nontrivial evidence is therefore:
 This points to a plausible split-form defect of effective rank about `4` through
 `M=5`, and about `5` through `M=6`.
 
-### Shared-joint basis
+### Joint-Gram basis
 
-The same-run shared joint basis is weaker than the family-specific one, but not
-completely hopeless:
+The same-run joint-Gram basis is weaker than the family-specific one, but still
+far better than low-mode:
 
 - `a=1.0`, `rank=4`, `M=5 -> 5.65e-2`, `M=6 -> 7.28e-2`;
 - `a=1.25`, `rank=4`, `M=5 -> 1.11e-2`, `M=6 -> 1.60e-2`;
@@ -107,22 +130,35 @@ completely hopeless:
 So a joint same-run basis is not absurd, but it is consistently worse than the
 family-specific `++` basis and is not yet theorem-grade.
 
-### Anchor-transfer basis
+### `M -> M+1` embedding stability
 
-Naive embedding stability is the real failure.
+This is where the theorem-grade obstruction still sits.
 
-Using the `M=4` `++` basis as an anchor and transferring it to `M=5,6` gives:
+For `(++ )`, the embedded transfer residuals remain large:
 
-- `a=1.0`: about `5.57e-1` at `M=5`, `6.71e-1` at `M=6`;
-- `a=1.25`: about `5.41e-1` at `M=5`, `6.75e-1` at `M=6`.
+- `rank=3`:
+  family-specific and joint-Gram both stay around `4.5e-1 .. 5.6e-1`;
+- `rank=4`:
+  again about `4.5e-1 .. 5.6e-1`;
+- `rank=5`:
+  about `4.5e-1 .. 4.8e-1` on the only nontrivial `M=5 -> 6` step.
 
-This remains bad even when the rank is increased.
+The corresponding principal angles are moderate-to-large, not theorem-clean:
 
-So the current honest verdict is:
+- family-specific:
+  third/fourth/fifth angles typically land between `~40°` and `~80°`;
+- joint-Gram:
+  same scale, often still with a large last angle between `~38°` and `~87°`;
+- low-mode:
+  trivial subspace alignment under embedding, but the transfer residual stays
+  bad because the basis itself is wrong.
+
+So the current honest classifier verdict is:
 
 ```text
-small-rank family-specific defect: plausible;
-naive M-stable embedded basis: false-for-now.
+Case A (stable shared small-rank defect-space): not seen.
+Case B (family-dependent finite-rank defect): plausible and currently live.
+Case C (genuine bulk mismatch): not supported by the current numbers.
 ```
 
 ## Working theorem consequence
@@ -153,4 +189,6 @@ Next executable task:
 3. continue only on `(++ )`;
 4. test alternative `++` basis choices / Gram projections beyond the current
    joint and naive embedded models;
-5. treat `rank=4` and `rank=5` as the real live window.
+5. treat `rank=4` and `rank=5` as the real live window;
+6. keep Branch A provisionally blessed in split form unless this higher-rank
+   `(++ )` story collapses at the next `M`.

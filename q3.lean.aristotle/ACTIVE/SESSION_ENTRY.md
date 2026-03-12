@@ -139,16 +139,20 @@
   the first fixed-scale split-classifier run now sharpens this further:
   freezing `zeros=40` and fitting one pooled `\kappa_{+-}(a)` across
   `M=4,5,6` for each fixed `a in {1.0,1.25}` keeps `(+,-)` stable and shows
-  that `(++ )` is still compatible with a family-specific small-rank defect,
-  but not with naive `M`-stable basis transfer;
+  that low-mode is decisively dead, joint-Gram is much better but still weaker
+  than the optimal family-specific basis, and `(++ )` is still compatible with
+  a family-specific small-rank defect, but not with naive `M`-stable basis
+  transfer;
   nontrivially, `rank=4` already works well at `M=5`,
   and `rank=5` works well at `M=6`,
-  while anchor-transfer from the `M=4` basis stays bad
-  (`~5.4e-1` to `~6.8e-1`);
+  while the explicit `M -> M+1` transfer residuals for both family-specific
+  and joint-Gram bases stay around `~4.5e-1` to `~5.6e-1`;
   so the live object is now best thought of as `H1^{split}`:
   one common `\kappa(a)` and separate defect structures for `(++ )` and
-  `(+,-)`, with the whole remaining risk concentrated in finding a better
-  `(++ )` basis / Gram projection across `M`;
+  `(+,-)`, with the current classifier verdict equal to case `B`
+  (family-dependent finite-rank defect plausible), and with the whole
+  remaining risk concentrated in finding a better `(++ )` basis / Gram
+  projection across `M`;
 - after the filtered bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:
@@ -499,9 +503,10 @@ python -u src/h1_filtered_bulk_match.py \
 - `(+,-)` должен оставаться стабильным при одном и том же `\kappa_{+-}(a)`;
 - для `(++ )` nontrivial evidence сидит в `rank < M`,
   то есть особенно в `rank=4` на `M=5,6` и `rank=5` на `M=6`;
-- если family-specific residual остаётся малым, а anchor-transfer basis
-  продолжает ломаться, следующий ход — не cap positivity, а поиск лучшего
-  `(++ )` family-specific basis / Gram projection.
+- если low-mode остаётся плохим, joint-Gram остаётся промежуточным, а
+  family-specific residual остаётся малым при `rank=4,5`,
+  но `M -> M+1` transfer всё ещё ломается, следующий ход — не cap positivity,
+  а поиск лучшего `(++ )` family-specific basis / Gram projection.
 
 Этот скрипт уже не проверяет убитый raw-target `w_{rs}(a)=\kappa(a)q_{rs}`, а
 сравнивает именно live filtered families `(++),(+-)`:

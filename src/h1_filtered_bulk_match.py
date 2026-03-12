@@ -236,6 +236,20 @@ class BasisChoiceStats:
     projection_relative_residual: float
 
 
+@dataclass(frozen=True)
+class BasisEmbeddingStats:
+    basis_choice: str
+    family: str
+    source_run_id: str
+    target_run_id: str
+    defect_rank: int
+    column_alignment: float
+    row_alignment: float
+    column_principal_angles_deg: tuple[float, ...]
+    row_principal_angles_deg: tuple[float, ...]
+    transfer_relative_residual: float
+
+
 def filtered_block_q(
     m: int,
     n: int,
@@ -580,6 +594,13 @@ def compare_to_shared_basis(
     )
 
 
+def low_mode_basis(size: int, defect_rank: int) -> np.ndarray:
+    rank = min(size, defect_rank)
+    if rank <= 0:
+        return np.zeros((size, 0), dtype=np.complex128)
+    return np.eye(size, rank, dtype=np.complex128)
+
+
 def basis_pair_stats(source: np.ndarray, target: np.ndarray) -> tuple[float, tuple[float, ...]]:
     size = max(source.shape[0], target.shape[0])
     source_resized = resize_basis(source, size)
@@ -673,6 +694,12 @@ def format_angles(angles: tuple[float, ...]) -> str:
     if not angles:
         return "-"
     return "/".join(f"{angle:.1f}" for angle in angles)
+
+
+def format_metric(value: float) -> str:
+    if math.isinf(value):
+        return "inf"
+    return f"{value:.3e}"
 
 
 def print_bucket_report(label: str, stats: BucketStats) -> None:
@@ -1190,6 +1217,38 @@ def choose_anchor_run(
     return ordered[0]
 
 
+def normalize_basis_choice_name(basis_choice: str) -> str:
+    if basis_choice == "joint-gram":
+        return "shared-joint"
+    return basis_choice
+
+
+def basis_choice_matrices(
+    run: SplitClassifierRun,
+    family: str,
+    basis_choice: str,
+    *,
+    all_runs: list[SplitClassifierRun],
+    anchor_M: int | None,
+) -> tuple[str, np.ndarray, np.ndarray] | None:
+    normalized = normalize_basis_choice_name(basis_choice)
+    target_basis = run.family_defect_basis[family]
+    if normalized == "family-specific":
+        return run.run_id, target_basis.left_basis, target_basis.right_basis
+    if normalized == "shared-joint":
+        return run.run_id, run.shared_left_basis, run.shared_right_basis
+    if normalized == "low-mode":
+        basis = low_mode_basis(target_basis.size, target_basis.rank)
+        return f"low-mode:r={target_basis.rank}", basis, basis
+    if normalized == "anchor-transfer":
+        anchor = choose_anchor_run(all_runs, target=run, anchor_M=anchor_M)
+        if anchor is None:
+            return None
+        source_basis = anchor.family_defect_basis[family]
+        return anchor.run_id, source_basis.left_basis, source_basis.right_basis
+    raise ValueError(f"Unknown basis choice: {basis_choice}")
+
+
 def evaluate_basis_choice(
     run: SplitClassifierRun,
     family: str,
@@ -1199,48 +1258,99 @@ def evaluate_basis_choice(
     anchor_M: int | None,
 ) -> BasisChoiceStats | None:
     target_basis = run.family_defect_basis[family]
-    if basis_choice == "family-specific":
-        return BasisChoiceStats(
-            basis_choice=basis_choice,
-            family=family,
-            source_run_id=run.run_id,
-            defect_rank=target_basis.rank,
-            column_alignment=1.0,
-            row_alignment=1.0,
-            column_principal_angles_deg=tuple(0.0 for _ in range(target_basis.rank)),
-            row_principal_angles_deg=tuple(0.0 for _ in range(target_basis.rank)),
-            projection_relative_residual=run.family_low_rank[family].defect_rank_relative_residual,
-        )
-    if basis_choice == "shared-joint":
-        stat = compare_to_shared_basis(run.shared_left_basis, run.shared_right_basis, target_basis)
-        return BasisChoiceStats(
-            basis_choice=basis_choice,
-            family=family,
-            source_run_id=run.run_id,
-            defect_rank=stat.defect_rank,
-            column_alignment=stat.column_alignment,
-            row_alignment=stat.row_alignment,
-            column_principal_angles_deg=stat.column_principal_angles_deg,
-            row_principal_angles_deg=stat.row_principal_angles_deg,
-            projection_relative_residual=stat.projection_relative_residual,
-        )
-    if basis_choice == "anchor-transfer":
-        anchor = choose_anchor_run(all_runs, target=run, anchor_M=anchor_M)
-        if anchor is None:
-            return None
-        stat = compare_defect_bases(anchor.family_defect_basis[family], target_basis)
-        return BasisChoiceStats(
-            basis_choice=basis_choice,
-            family=family,
-            source_run_id=anchor.run_id,
-            defect_rank=stat.defect_rank,
-            column_alignment=stat.column_alignment,
-            row_alignment=stat.row_alignment,
-            column_principal_angles_deg=stat.column_principal_angles_deg,
-            row_principal_angles_deg=stat.row_principal_angles_deg,
-            projection_relative_residual=stat.transfer_relative_residual,
-        )
-    raise ValueError(f"Unknown basis choice: {basis_choice}")
+    matrices = basis_choice_matrices(
+        run,
+        family,
+        basis_choice,
+        all_runs=all_runs,
+        anchor_M=anchor_M,
+    )
+    if matrices is None:
+        return None
+    source_run_id, left_basis, right_basis = matrices
+    left = resize_basis(left_basis, target_basis.size)
+    right = resize_basis(right_basis, target_basis.size)
+    return BasisChoiceStats(
+        basis_choice=basis_choice,
+        family=family,
+        source_run_id=source_run_id,
+        defect_rank=min(left.shape[1], right.shape[1], target_basis.rank),
+        column_alignment=subspace_alignment_score(left, target_basis.left_basis),
+        row_alignment=subspace_alignment_score(right, target_basis.right_basis),
+        column_principal_angles_deg=principal_angles_degrees(left, target_basis.left_basis),
+        row_principal_angles_deg=principal_angles_degrees(right, target_basis.right_basis),
+        projection_relative_residual=transfer_relative_residual(left, right, target_basis.matrix),
+    )
+
+
+def collect_basis_embedding_stats(
+    runs: list[SplitClassifierRun],
+    *,
+    families: tuple[str, ...],
+    basis_choices: tuple[str, ...],
+    anchor_M: int | None,
+) -> list[BasisEmbeddingStats]:
+    rows: list[BasisEmbeddingStats] = []
+    grouped: dict[tuple[float, int, int], list[SplitClassifierRun]] = defaultdict(list)
+    for run in runs:
+        grouped[(run.a, run.zeros, run.defect_rank)].append(run)
+    for grouped_runs in grouped.values():
+        ordered = sorted(grouped_runs, key=lambda run: run.M)
+        for source, target in zip(ordered, ordered[1:]):
+            for family in families:
+                target_basis = target.family_defect_basis[family]
+                for basis_choice in basis_choices:
+                    source_matrices = basis_choice_matrices(
+                        source,
+                        family,
+                        basis_choice,
+                        all_runs=runs,
+                        anchor_M=anchor_M,
+                    )
+                    target_matrices = basis_choice_matrices(
+                        target,
+                        family,
+                        basis_choice,
+                        all_runs=runs,
+                        anchor_M=anchor_M,
+                    )
+                    if source_matrices is None or target_matrices is None:
+                        continue
+                    source_run_id, source_left_basis, source_right_basis = source_matrices
+                    _, target_left_basis, target_right_basis = target_matrices
+                    source_left = resize_basis(source_left_basis, target_basis.size)
+                    source_right = resize_basis(source_right_basis, target_basis.size)
+                    rows.append(
+                        BasisEmbeddingStats(
+                            basis_choice=basis_choice,
+                            family=family,
+                            source_run_id=source_run_id,
+                            target_run_id=target.run_id,
+                            defect_rank=target.defect_rank,
+                            column_alignment=subspace_alignment_score(
+                                resize_basis(source_left_basis, max(source_left_basis.shape[0], target_left_basis.shape[0])),
+                                resize_basis(target_left_basis, max(source_left_basis.shape[0], target_left_basis.shape[0])),
+                            ),
+                            row_alignment=subspace_alignment_score(
+                                resize_basis(source_right_basis, max(source_right_basis.shape[0], target_right_basis.shape[0])),
+                                resize_basis(target_right_basis, max(source_right_basis.shape[0], target_right_basis.shape[0])),
+                            ),
+                            column_principal_angles_deg=principal_angles_degrees(
+                                resize_basis(source_left_basis, max(source_left_basis.shape[0], target_left_basis.shape[0])),
+                                resize_basis(target_left_basis, max(source_left_basis.shape[0], target_left_basis.shape[0])),
+                            ),
+                            row_principal_angles_deg=principal_angles_degrees(
+                                resize_basis(source_right_basis, max(source_right_basis.shape[0], target_right_basis.shape[0])),
+                                resize_basis(target_right_basis, max(source_right_basis.shape[0], target_right_basis.shape[0])),
+                            ),
+                            transfer_relative_residual=transfer_relative_residual(
+                                source_left,
+                                source_right,
+                                target_basis.matrix,
+                            ),
+                        )
+                    )
+    return rows
 
 
 def collect_split_kappas(
@@ -1290,7 +1400,7 @@ def collect_split_kappas(
 
 def split_basis_choices(choice: str) -> tuple[str, ...]:
     if choice == "all":
-        return ("family-specific", "shared-joint", "anchor-transfer")
+        return ("low-mode", "joint-gram", "family-specific")
     return (choice,)
 
 
@@ -1312,10 +1422,15 @@ def print_split_classifier_run(
     for family in ("++", "+-"):
         low_rank = run.family_low_rank[family]
         metrics = run.family_metrics[family]
+        sigma_rank_over_next = (
+            math.inf if low_rank.sigma_next == 0.0 and low_rank.sigma_at_rank > 0.0
+            else safe_ratio(low_rank.sigma_at_rank, low_rank.sigma_next)
+        )
         print(
             f"  family {family}: rel_max={metrics['relative_max_residual']:.3e}  "
             f"rank-{low_rank.defect_rank} rel={low_rank.defect_rank_relative_residual:.3e}  "
-            f"sigma_next/sigma_rank={low_rank.sigma_next_over_rank:.3e}"
+            f"sigma_next/sigma_rank={low_rank.sigma_next_over_rank:.3e}  "
+            f"sigma_rank/sigma_next={format_metric(sigma_rank_over_next)}"
         )
     for family in families:
         print(f"  [{family} basis choices]")
@@ -1334,7 +1449,8 @@ def print_split_classifier_run(
                 f"proj_rel_resid={stat.projection_relative_residual:.3e}  "
                 f"col_align={stat.column_alignment:.3f}  "
                 f"row_align={stat.row_alignment:.3f}  "
-                f"col_angles={format_angles(stat.column_principal_angles_deg)}"
+                f"col_angles={format_angles(stat.column_principal_angles_deg)}  "
+                f"row_angles={format_angles(stat.row_principal_angles_deg)}"
             )
 
 
@@ -1366,6 +1482,22 @@ def print_split_classifier_summary(
                     f"    {basis_choice:<16s} "
                     f"min={min(values):.3e}  max={max(values):.3e}  avg={sum(values)/len(values):.3e}"
                 )
+
+
+def print_basis_embedding_report(rows: list[BasisEmbeddingStats]) -> None:
+    if not rows:
+        return
+    print("\n[basis embedding M->M+1]")
+    print("========================")
+    for row in rows:
+        print(
+            f"  {row.family} {row.basis_choice:<16s} {row.source_run_id} -> {row.target_run_id}: "
+            f"col_align={row.column_alignment:.3f}  "
+            f"row_align={row.row_alignment:.3f}  "
+            f"col_angles={format_angles(row.column_principal_angles_deg)}  "
+            f"row_angles={format_angles(row.row_principal_angles_deg)}  "
+            f"transfer_rel_resid={row.transfer_relative_residual:.3e}"
+        )
 
 
 def print_run_report(
@@ -1542,7 +1674,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--basis-choice",
-        choices=("family-specific", "shared-joint", "anchor-transfer", "all"),
+        choices=("low-mode", "joint-gram", "shared-joint", "family-specific", "anchor-transfer", "all"),
         default="all",
         help="Which basis model to compare in split-classifier mode.",
     )
@@ -1645,6 +1777,14 @@ def main() -> int:
             families=families,
             basis_choices=basis_choices,
             anchor_M=args.anchor_M,
+        )
+        print_basis_embedding_report(
+            collect_basis_embedding_stats(
+                split_runs,
+                families=families,
+                basis_choices=basis_choices,
+                anchor_M=args.anchor_M,
+            )
         )
         return 0
 
