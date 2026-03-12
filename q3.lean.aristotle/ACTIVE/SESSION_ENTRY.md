@@ -153,6 +153,19 @@
   (family-dependent finite-rank defect plausible), and with the whole
   remaining risk concentrated in finding a better `(++ )` basis / Gram
   projection across `M`;
+  the next pooled attempt `family-gram-a`, built jointly across the tested
+  `M`-grid for fixed `(a, zeros, rank)`, is the first strong in-sample common
+  basis signal for `(++ )`: on the live window `a in {1.0,1.25}`,
+  `zeros=40`, `rank in {4,5}`, it gives projected residuals around
+  `~1.08e-2 .. 7.53e-2`;
+  but the honest holdout `family-gram-prefix`, where the target `M` only sees
+  a basis pooled from smaller `M` values, stays bad on `M=5,6,7`:
+  direct projected residuals remain around `~4.35e-1 .. 5.46e-1`, and the
+  `M -> M+1` transfer residuals sit around `~6.10e-1 .. 6.75e-1`;
+  so Branch A stays alive only in split case `B`, but there is still no
+  theorem-grade prefix-stable common `(++ )` basis visible on the tested grid,
+  and the immediate next task is alternative weighted Gram / higher-rank /
+  basis redesign under the same frozen `\kappa_{+-}(a)`, not cap positivity;
 - after the filtered bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:

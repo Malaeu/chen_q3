@@ -230,6 +230,18 @@ Interpretation rule after `T0.1`:
    rather than case `A`, and the next theorem-level question is `(++ )` basis
    stabilization under fixed `\kappa(a)`, not a return to one shared
    rank-`3` defect space.
+   The next pooled refinement `family-gram-a`, built jointly across the tested
+   `M`-grid for fixed `(a, zeros, rank)`, is the first strong in-sample common
+   basis signal for `(++ )`, with projected residuals around
+   `~1.08e-2 .. 7.53e-2` on the live rank-`4/5` window.
+   But the honest prefix holdout `family-gram-prefix`, where the target `M`
+   only sees a basis pooled from smaller `M` values, stays bad on `M=5,6,7`:
+   direct projected residuals remain around `~4.35e-1 .. 5.46e-1`, and the
+   `M -> M+1` transfer residuals stay around `~6.10e-1 .. 6.75e-1`.
+   So the paper-level freeze does **not** upgrade beyond split case `B` yet:
+   there is still no theorem-grade prefix-stable common `(++ )` basis visible
+   on the tested grid, and cap positivity remains downstream of a better
+   `(++ )` basis/Gram redesign.
    After the bulk match, the only remaining bridge brick is the
    finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:

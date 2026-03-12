@@ -3573,7 +3573,22 @@ Interpretation:
 - the true hard question is now whether `(++ )` admits a better
   higher-rank / better-adapted basis or whether the theorem must allow a more
   explicitly family-dependent defect space.
+- the next pooled refinement `family-gram-a`, built jointly across the tested
+  `M`-grid for fixed `(a, zeros, rank)`, is the first strong in-sample common
+  `(++ )` basis signal:
+  on `a in {1.0,1.25}`, `zeros=40`, `rank in {4,5}`, the projected residuals
+  sit around `~1.08e-2 .. 7.53e-2`;
+- but the honest holdout `family-gram-prefix`, where the target `M` only sees
+  a basis pooled from smaller `M` values, stays bad on `M=5,6,7`:
+  direct projected residuals remain around `~4.35e-1 .. 5.46e-1`, and the
+  `M -> M+1` transfer residuals remain around `~6.10e-1 .. 6.75e-1`;
+- so Branch A stays alive only in split case `B`:
+  no theorem-grade prefix-stable common `(++ )` basis is visible yet, and the
+  next task is alternative weighted Gram / higher-rank / basis redesign under
+  frozen `\kappa_{+-}(a)`, not cap positivity.
 
 Detailed note:
 
 - `docs/insights/h1_split_classifier_fixed_kappa_2026_03_11.md`
+- `docs/insights/h1_family_gram_a_basis_2026_03_12.md`
+- `docs/insights/h1_family_gram_prefix_holdout_2026_03_12.md`

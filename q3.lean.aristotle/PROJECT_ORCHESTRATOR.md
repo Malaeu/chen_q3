@@ -1,6 +1,6 @@
 # PROJECT ORCHESTRATOR - Q3
 
-Updated: 2026-03-11
+Updated: 2026-03-12
 
 ## Role
 
@@ -250,7 +250,19 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     (`~4.5e-1` to `~5.6e-1`), so the current classifier verdict is case `B`
     rather than case `A`, and the next live task is explicitly
     `(++ ) higher-rank / alternative-basis stabilization under fixed
-    \kappa_{+-}(a)`,
+    \kappa_{+-}(a)`;
+    the pooled `family-gram-a` refinement, built jointly across the tested
+    `M`-grid for fixed `(a, zeros, rank)`, is the first strong in-sample
+    common-basis signal for `(++ )`, with projected residuals around
+    `~1.08e-2 .. 7.53e-2` on the live rank-`4/5` window;
+    but the honest prefix holdout `family-gram-prefix`, where the target `M`
+    only sees a basis pooled from smaller `M` values, stays bad on `M=5,6,7`:
+    direct projected residuals remain around `~4.35e-1 .. 5.46e-1`, and the
+    `M -> M+1` transfer residuals stay around `~6.10e-1 .. 6.75e-1`;
+    so Branch A remains alive only in split case `B`, with no theorem-grade
+    prefix-stable common `(++ )` basis yet visible, and the immediate next
+    task is alternative weighted Gram / higher-rank / basis redesign rather
+    than cap positivity,
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family

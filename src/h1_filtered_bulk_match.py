@@ -39,8 +39,9 @@ It also supports a split-classifier mode:
 
 - fit or freeze one common `kappa(a)`,
 - use that fixed scale on both live families,
-- then compare `shared-joint`, `family-specific`, and `anchor-transfer`
-  basis choices, with the main focus on the hard `++` family.
+- then compare `low-mode`, `joint-Gram`, pooled family-gram, prefix-holdout,
+  and `family-specific` basis choices, with the main focus on the hard `++`
+  family.
 """
 
 from __future__ import annotations
@@ -319,6 +320,10 @@ def collect_filtered_samples(
                 )
             )
     return samples
+
+
+def truncate_filtered_samples(samples: list[FilteredSample], M: int) -> list[FilteredSample]:
+    return [sample for sample in samples if sample.m <= M and sample.n <= M]
 
 
 def sample_abs_residual(sample: FilteredSample, kappa: complex) -> float:
@@ -1223,6 +1228,55 @@ def normalize_basis_choice_name(basis_choice: str) -> str:
     return basis_choice
 
 
+def build_split_basis_cache(
+    runs: list[SplitClassifierRun],
+    *,
+    families: tuple[str, ...],
+    basis_choices: tuple[str, ...],
+) -> dict[tuple[str, str, float, int, int], tuple[str, np.ndarray, np.ndarray]]:
+    cache: dict[tuple[str, str, float, int, int], tuple[str, np.ndarray, np.ndarray]] = {}
+    normalized_choices = {normalize_basis_choice_name(choice) for choice in basis_choices}
+    if "family-gram-a" not in normalized_choices:
+        return cache
+    for family in families:
+        grouped: dict[tuple[float, int, int], list[DefectBasis]] = defaultdict(list)
+        for run in runs:
+            grouped[(run.a, run.zeros, run.defect_rank)].append(run.family_defect_basis[family])
+        for (a, zeros, defect_rank), bases in grouped.items():
+            left_basis, right_basis = joint_shared_basis(bases, defect_rank)
+            cache[("family-gram-a", family, a, zeros, defect_rank)] = (
+                f"family-gram-a:a={a:.2f}|zeros={zeros}|rank={defect_rank}",
+                left_basis,
+                right_basis,
+            )
+    return cache
+
+
+def build_prefix_family_basis(
+    runs: list[SplitClassifierRun],
+    *,
+    target: SplitClassifierRun,
+    family: str,
+) -> tuple[str, np.ndarray, np.ndarray] | None:
+    prefix_bases = [
+        run.family_defect_basis[family]
+        for run in sorted(runs, key=lambda item: item.M)
+        if run.a == target.a
+        and run.zeros == target.zeros
+        and run.defect_rank == target.defect_rank
+        and run.M < target.M
+    ]
+    if not prefix_bases:
+        return None
+    left_basis, right_basis = joint_shared_basis(prefix_bases, target.defect_rank)
+    source_label = ",".join(str(base.size) for base in prefix_bases)
+    return (
+        f"family-gram-prefix:a={target.a:.2f}|zeros={target.zeros}|rank={target.defect_rank}|sizes={source_label}",
+        left_basis,
+        right_basis,
+    )
+
+
 def basis_choice_matrices(
     run: SplitClassifierRun,
     family: str,
@@ -1230,6 +1284,7 @@ def basis_choice_matrices(
     *,
     all_runs: list[SplitClassifierRun],
     anchor_M: int | None,
+    basis_cache: dict[tuple[str, str, float, int, int], tuple[str, np.ndarray, np.ndarray]] | None = None,
 ) -> tuple[str, np.ndarray, np.ndarray] | None:
     normalized = normalize_basis_choice_name(basis_choice)
     target_basis = run.family_defect_basis[family]
@@ -1240,6 +1295,13 @@ def basis_choice_matrices(
     if normalized == "low-mode":
         basis = low_mode_basis(target_basis.size, target_basis.rank)
         return f"low-mode:r={target_basis.rank}", basis, basis
+    if normalized == "family-gram-a":
+        key = ("family-gram-a", family, run.a, run.zeros, run.defect_rank)
+        if basis_cache is None or key not in basis_cache:
+            return None
+        return basis_cache[key]
+    if normalized == "family-gram-prefix":
+        return build_prefix_family_basis(all_runs, target=run, family=family)
     if normalized == "anchor-transfer":
         anchor = choose_anchor_run(all_runs, target=run, anchor_M=anchor_M)
         if anchor is None:
@@ -1256,6 +1318,7 @@ def evaluate_basis_choice(
     *,
     all_runs: list[SplitClassifierRun],
     anchor_M: int | None,
+    basis_cache: dict[tuple[str, str, float, int, int], tuple[str, np.ndarray, np.ndarray]] | None = None,
 ) -> BasisChoiceStats | None:
     target_basis = run.family_defect_basis[family]
     matrices = basis_choice_matrices(
@@ -1264,6 +1327,7 @@ def evaluate_basis_choice(
         basis_choice,
         all_runs=all_runs,
         anchor_M=anchor_M,
+        basis_cache=basis_cache,
     )
     if matrices is None:
         return None
@@ -1289,6 +1353,7 @@ def collect_basis_embedding_stats(
     families: tuple[str, ...],
     basis_choices: tuple[str, ...],
     anchor_M: int | None,
+    basis_cache: dict[tuple[str, str, float, int, int], tuple[str, np.ndarray, np.ndarray]] | None = None,
 ) -> list[BasisEmbeddingStats]:
     rows: list[BasisEmbeddingStats] = []
     grouped: dict[tuple[float, int, int], list[SplitClassifierRun]] = defaultdict(list)
@@ -1306,6 +1371,7 @@ def collect_basis_embedding_stats(
                         basis_choice,
                         all_runs=runs,
                         anchor_M=anchor_M,
+                        basis_cache=basis_cache,
                     )
                     target_matrices = basis_choice_matrices(
                         target,
@@ -1313,6 +1379,7 @@ def collect_basis_embedding_stats(
                         basis_choice,
                         all_runs=runs,
                         anchor_M=anchor_M,
+                        basis_cache=basis_cache,
                     )
                     if source_matrices is None or target_matrices is None:
                         continue
@@ -1400,7 +1467,7 @@ def collect_split_kappas(
 
 def split_basis_choices(choice: str) -> tuple[str, ...]:
     if choice == "all":
-        return ("low-mode", "joint-gram", "family-specific")
+        return ("low-mode", "joint-gram", "family-gram-a", "family-gram-prefix", "family-specific")
     return (choice,)
 
 
@@ -1411,6 +1478,7 @@ def print_split_classifier_run(
     basis_choices: tuple[str, ...],
     all_runs: list[SplitClassifierRun],
     anchor_M: int | None,
+    basis_cache: dict[tuple[str, str, float, int, int], tuple[str, np.ndarray, np.ndarray]] | None = None,
 ) -> None:
     print(f"\n[split classifier {run.run_id}]")
     print("=" * (19 + len(run.run_id)))
@@ -1441,6 +1509,7 @@ def print_split_classifier_run(
                 basis_choice,
                 all_runs=all_runs,
                 anchor_M=anchor_M,
+                basis_cache=basis_cache,
             )
             if stat is None:
                 continue
@@ -1460,6 +1529,7 @@ def print_split_classifier_summary(
     families: tuple[str, ...],
     basis_choices: tuple[str, ...],
     anchor_M: int | None,
+    basis_cache: dict[tuple[str, str, float, int, int], tuple[str, np.ndarray, np.ndarray]] | None = None,
 ) -> None:
     print("\n[split classifier summary]")
     print("=========================")
@@ -1474,6 +1544,7 @@ def print_split_classifier_summary(
                     basis_choice,
                     all_runs=runs,
                     anchor_M=anchor_M,
+                    basis_cache=basis_cache,
                 )
                 if stat is not None:
                     values.append(stat.projection_relative_residual)
@@ -1674,7 +1745,16 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--basis-choice",
-        choices=("low-mode", "joint-gram", "shared-joint", "family-specific", "anchor-transfer", "all"),
+        choices=(
+            "low-mode",
+            "joint-gram",
+            "family-gram-a",
+            "family-gram-prefix",
+            "shared-joint",
+            "family-specific",
+            "anchor-transfer",
+            "all",
+        ),
         default="all",
         help="Which basis model to compare in split-classifier mode.",
     )
@@ -1719,17 +1799,19 @@ def main() -> int:
 
         sample_cache: dict[tuple[float, int, int], list[FilteredSample]] = {}
         for a in sweep_a:
-            for M in sweep_M:
-                for zeros in sweep_zeros:
-                    sample_cache[(a, M, zeros)] = collect_filtered_samples(
-                        M,
-                        a,
-                        A,
-                        nodes,
-                        zeros,
-                        baseline_q,
-                        baseline_w,
-                    )
+            max_M = max(sweep_M)
+            for zeros in sweep_zeros:
+                full_samples = collect_filtered_samples(
+                    max_M,
+                    a,
+                    A,
+                    nodes,
+                    zeros,
+                    baseline_q,
+                    baseline_w,
+                )
+                for M in sweep_M:
+                    sample_cache[(a, M, zeros)] = truncate_filtered_samples(full_samples, M)
 
         kappa_map, label_map = collect_split_kappas(
             sample_cache,
@@ -1756,6 +1838,11 @@ def main() -> int:
                             analysis_kappa_label=label_map[spec],
                         )
                         split_runs.append(run)
+        basis_cache = build_split_basis_cache(
+            split_runs,
+            families=families,
+            basis_choices=basis_choices,
+        )
 
         print("[kappa map]")
         for spec in sorted(sample_cache):
@@ -1771,12 +1858,14 @@ def main() -> int:
                 basis_choices=basis_choices,
                 all_runs=split_runs,
                 anchor_M=args.anchor_M,
+                basis_cache=basis_cache,
             )
         print_split_classifier_summary(
             split_runs,
             families=families,
             basis_choices=basis_choices,
             anchor_M=args.anchor_M,
+            basis_cache=basis_cache,
         )
         print_basis_embedding_report(
             collect_basis_embedding_stats(
@@ -1784,6 +1873,7 @@ def main() -> int:
                 families=families,
                 basis_choices=basis_choices,
                 anchor_M=args.anchor_M,
+                basis_cache=basis_cache,
             )
         )
         return 0
