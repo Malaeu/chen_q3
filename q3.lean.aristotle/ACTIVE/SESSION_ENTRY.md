@@ -44,7 +44,7 @@
   that the strongest finite Q3 block is compared not to raw `Q_M`, but to the
   filtered tail section `\widetilde Q_{M,N}`; the exact identity is treated as
   the zero-defect special case, while the current honest global working
-  theorem-shape is filtered intertwining with structured finite-rank
+  theorem-shape is filtered intertwining modulo explicit boundary/cap
   correction; a shared rank-`3` joint cap defect survives only as a local
   `M=4` mid-`a` phenomenon and is now false-for-now as a global theorem-shape;
 - preferred first-pass candidate for `H1^f`:
@@ -63,7 +63,7 @@
 
 Точный theorem stack, который сейчас заморожен как primary live route:
 
-- `H1^f` filtered intertwining with structured finite-rank correction
+- `H1^f` filtered intertwining modulo explicit boundary/cap correction
 - `H2^f` Suzuki tail/cap reduction
 - `H3^f` filtered gap transfer
 - `H4^f` RH via Suzuki Theorem 1.4
@@ -163,9 +163,20 @@
   direct projected residuals remain around `~4.35e-1 .. 5.46e-1`, and the
   `M -> M+1` transfer residuals sit around `~6.10e-1 .. 6.75e-1`;
   so Branch A stays alive only in split case `B`, but there is still no
-  theorem-grade prefix-stable common `(++ )` basis visible on the tested grid,
-  and the immediate next task is alternative weighted Gram / higher-rank /
-  basis redesign under the same frozen `\kappa_{+-}(a)`, not cap positivity;
+  theorem-grade prefix-stable common `(++ )` basis visible on the tested grid;
+  the 2026-03-14 reset therefore demotes the whole rank/basis ladder to
+  diagnostic-only status and replaces the live question by an operator one:
+  classify
+  `D_{a,M,N}=S_{a,M,N}^*G_g[a]S_{a,M,N}-\kappa(a)\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`
+  as the shadow of an explicit boundary/cap correction.
+  Best current guess:
+  `D_{a,M,N}` is not a genuine bulk mismatch and not one fixed shared
+  low-rank cap-space, but an explicit boundary/cap term whose finite-matrix
+  shadow looks like a moving Toeplitz-Hankel / commutator / near-edge defect;
+  the immediate next task is therefore:
+  prove or disprove an exact filtered reformulation for the `(+,-)` block,
+  and derive the surviving same-sign boundary term in the `(++ )` block,
+  before any further basis hunt or cap positivity;
 - after the filtered bulk match:
   separate finite-dimensional Suzuki cap positivity;
 - semilocal-assisted refinement after that:

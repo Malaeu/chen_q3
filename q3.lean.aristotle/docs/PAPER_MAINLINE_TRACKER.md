@@ -160,7 +160,7 @@ Interpretation rule after `T0.1`:
    because `a_K^*\in L^1` forces `\widehat{a_K^*}(u)\to0` while the finite cosine
    prime sum returns arbitrarily close to its full positive mass.
 2. Freeze the Suzuki/Yoshida generalized form-pair bridge as the primary live route:
-   `H1^f` filtered intertwining modulo finite-rank cap defect
+   `H1^f` filtered intertwining modulo explicit boundary/cap correction
    -> `H2^f` Suzuki tail/cap reduction
    -> `H3^f` filtered gap transfer
    -> `H4^f` Suzuki RH criterion.
@@ -210,7 +210,7 @@ Interpretation rule after `T0.1`:
    jumps to `~8.32e-1` at `a=1.0` and `~1.51e-1` at `a=1.25`, with `+-`
    staying small.
    So the honest freeze is now weaker and more robust:
-   `filtered intertwining with structured finite-rank correction`,
+   `filtered intertwining with structured correction`,
    with exact `H1^f` treated as the zero-defect special case and any shared
    rank bound kept only as a local working hypothesis.
    The live sub-question is therefore no longer literal exact equality and not
@@ -240,8 +240,17 @@ Interpretation rule after `T0.1`:
    `M -> M+1` transfer residuals stay around `~6.10e-1 .. 6.75e-1`.
    So the paper-level freeze does **not** upgrade beyond split case `B` yet:
    there is still no theorem-grade prefix-stable common `(++ )` basis visible
-   on the tested grid, and cap positivity remains downstream of a better
-   `(++ )` basis/Gram redesign.
+   on the tested grid.
+   The 2026-03-14 reset therefore demotes the whole rank/basis ladder to
+   diagnostic status and asks a simpler theorem-level question:
+   whether the filtered defect is really an explicit boundary/cap correction,
+   whose finite-matrix shadow looks like a moving Toeplitz-Hankel /
+   commutator / near-edge term.
+   The next paper-level target is no longer `(++ ) basis redesign` as theorem
+   content, but:
+   first test whether `(+,-)` admits an exact filtered reformulation,
+   then isolate the surviving same-sign boundary term in `(++ )`.
+   Cap positivity remains downstream of that structural classification.
    After the bulk match, the only remaining bridge brick is the
    finite-dimensional Suzuki cap.
    The strongest current refinement is finite-prime semilocal:

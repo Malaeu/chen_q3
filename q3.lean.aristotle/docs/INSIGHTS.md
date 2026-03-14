@@ -3623,3 +3623,24 @@ The drafted prompt explicitly asks Proshka to classify the defect as one of:
 Prompt file:
 
 - `docs/insights/proshka_h1_reset_prompt_2026_03_14.md`
+
+## In progress (2026-03-14) — H1 boundary/cap reset synced into control-plane
+
+The reset is now explicit in the source-of-truth files:
+
+- rank/basis scans remain useful only as diagnostics;
+- the front-door theorem language is no longer
+  `find the right low-rank basis`;
+- the live object is now
+  `D_{a,M,N}=S^*GS-\kappa\Delta^*Q\Delta`
+  as a candidate boundary/cap defect;
+- best current guess:
+  explicit boundary/cap correction with a moving Toeplitz-Hankel /
+  commutator / near-edge matrix shadow;
+- immediate next tasks:
+  test exact filtered reformulation in the `(+,-)` block and derive the
+  surviving same-sign boundary term in the `(++ )` block.
+
+Reset note:
+
+- `docs/insights/h1_boundary_cap_reset_2026_03_14.md`

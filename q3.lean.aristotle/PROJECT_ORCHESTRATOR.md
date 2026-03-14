@@ -1,6 +1,6 @@
 # PROJECT ORCHESTRATOR - Q3
 
-Updated: 2026-03-12
+Updated: 2026-03-14
 
 ## Role
 
@@ -93,7 +93,7 @@ Interpretation after `T0.1`:
 | `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `\mathcal Q(\Psi_c * \widetilde{\Psi_c})` with the finite symbol integral `\frac{1}{2\pi}\int S_J(\theta)|p_c(\theta)|^2\,d\theta` on each admissible dictionary |
 | `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
 | `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `fallback constructive route` | finite-dictionary positivity via explicit coefficient bounds on `\alpha_m,\beta_m`, yielding `S_J=A_J-P_J\ge0` on each admissible block |
-| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `(G_g[a],J_a)` from Q3 finite sections to the RH-equivalent operator criterion | `active primary live route` | freeze the two-sided filtered tail package `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}` and close `H1^f -> H2^f -> H3^f -> H4^f`, with `H1^f` now interpreted as filtered intertwining modulo finite-rank cap defect |
+| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `(G_g[a],J_a)` from Q3 finite sections to the RH-equivalent operator criterion | `active primary live route` | freeze the two-sided filtered tail package `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}` and close `H1^f -> H2^f -> H3^f -> H4^f`, with `H1^f` now interpreted as filtered intertwining modulo explicit boundary/cap correction |
 | `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
 | `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
 | `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
@@ -108,7 +108,7 @@ Interpretation after `T0.1`:
 New live frontier:
   1. promote the Suzuki/Yoshida generalized form-pair bridge to the primary
      live route in its final filtered-tail form:
-     `H1^f` filtered intertwining modulo finite-rank cap defect
+     `H1^f` filtered intertwining modulo explicit boundary/cap correction
      -> `H2^f` Suzuki tail/cap reduction
      -> `H3^f` filtered gap transfer
      -> `H4^f` RH via Suzuki Theorem 1.4;
@@ -173,7 +173,7 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
 2. freeze the compact scalar package `S1/S2/S3/S4` only as a rejected public
    compact-truncation route and diagnostic formal reduction,
 3. make the theorem stack
-   `H1^f filtered intertwining modulo finite-rank cap defect -> H2^f Suzuki tail/cap reduction -> H3^f filtered gap transfer -> H4^f Suzuki Theorem 1.4`
+   `H1^f filtered intertwining modulo explicit boundary/cap correction -> H2^f Suzuki tail/cap reduction -> H3^f filtered gap transfer -> H4^f Suzuki Theorem 1.4`
    the primary live route,
 4. freeze the symmetric two-sided filtered tail package as the exact
    preferred `H1^f` geometry:
@@ -229,40 +229,26 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     jumps to `~8.32e-1` at `a=1.0` and `~1.51e-1` at `a=1.25`, with `+-`
     staying small.
     So the honest global theorem-shape freeze is now weaker and more robust:
-    `filtered intertwining with structured finite-rank correction`,
+    `filtered intertwining with structured correction`,
     with exact `H1^f` treated as the zero-defect special case and any shared
-    rank bound kept only as a local working hypothesis.
-    The remaining filtered blocks `(-+), (--)` are still formal Hermitian
-    consequences, but the immediate live sub-question is now the split
-    `(++ ) classifier` versus `(+-) classifier`:
-    determine whether `++` needs a higher-rank / different-basis correction or
-    a genuinely family-dependent defect before trying to absorb anything into
-    an augmented Suzuki cap.
-    The first fixed-scale split-classifier run already gives a strong local
-    refinement of that question:
-    with `zeros=40` frozen and one pooled `\kappa_{+-}(a)` fitted across
-    `M=4,5,6` for each fixed `a in {1.0,1.25}`, the `(+,-)` family stays
-    stable, low-mode is decisively bad, joint-Gram is intermediate, and
-    `(++ )` is still compatible with a family-specific small-rank defect of
-    effective size about `4` through `M=5` and about `5` at `M=6`;
-    however, the explicit `M -> M+1` transfer residuals for both
-    family-specific and joint-Gram bases remain large
-    (`~4.5e-1` to `~5.6e-1`), so the current classifier verdict is case `B`
-    rather than case `A`, and the next live task is explicitly
-    `(++ ) higher-rank / alternative-basis stabilization under fixed
-    \kappa_{+-}(a)`;
-    the pooled `family-gram-a` refinement, built jointly across the tested
-    `M`-grid for fixed `(a, zeros, rank)`, is the first strong in-sample
-    common-basis signal for `(++ )`, with projected residuals around
-    `~1.08e-2 .. 7.53e-2` on the live rank-`4/5` window;
-    but the honest prefix holdout `family-gram-prefix`, where the target `M`
-    only sees a basis pooled from smaller `M` values, stays bad on `M=5,6,7`:
-    direct projected residuals remain around `~4.35e-1 .. 5.46e-1`, and the
-    `M -> M+1` transfer residuals stay around `~6.10e-1 .. 6.75e-1`;
-    so Branch A remains alive only in split case `B`, with no theorem-grade
-    prefix-stable common `(++ )` basis yet visible, and the immediate next
-    task is alternative weighted Gram / higher-rank / basis redesign rather
-    than cap positivity,
+    rank bound kept only as a local diagnostic hypothesis.
+    But the 2026-03-14 reset changes the front-door language further:
+    the recent rank/basis scans were useful diagnostics, not the right theorem
+    content.
+    The strongest negative facts are now:
+    low-mode is dead, global shared rank-`3` is dead, the `(+,-)` block stays
+    much more stable than `(++ )`, pooled in-sample common bases for `(++ )`
+    can look good, and honest prefix holdout across `M` still fails badly.
+    That pattern fits much better with an explicit boundary/cap correction than
+    with either genuine bulk mismatch or one fixed shared finite-rank cap-space
+    across `M`.
+    So the immediate live task is no longer `basis redesign` as primary
+    mathematics.
+    It is the operator decomposition reset:
+    first decide whether the `(+,-)` block satisfies an exact filtered
+    identity after the right reformulation, then derive the surviving same-sign
+    boundary / Toeplitz-Hankel / commutator term in the `(++ )` block, and only
+    then return to finite compression and cap absorption.
 5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
 5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
 6. keep the naive centered Rayleigh family
@@ -336,7 +322,7 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
   `\widehat{a_K^*}(u)\to0`, while the finite cosine prime sum recurs arbitrarily
   close to its full positive mass.
 - The primary remaining theorem package is now:
-  `H1^f` filtered intertwining modulo finite-rank cap defect
+  `H1^f` filtered intertwining modulo explicit boundary/cap correction
   -> `H2^f` Suzuki tail/cap reduction
   -> `H3^f` filtered gap transfer
   -> `H4^f` Suzuki Theorem 1.4;
@@ -352,7 +338,7 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
      or a new operator package for the full kernel
   -> `PSD-pd`.
 - The Suzuki/Yoshida generalized form-pair bridge is now the strongest live route:
-  `H1^f` filtered intertwining modulo finite-rank cap defect
+  `H1^f` filtered intertwining modulo explicit boundary/cap correction
   -> `H2^f` Suzuki tail/cap reduction
   -> `H3^f` filtered gap transfer
   -> `H4^f` RH via Suzuki Theorem 1.4.

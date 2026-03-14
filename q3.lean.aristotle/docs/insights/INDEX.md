@@ -27,6 +27,7 @@ Files:
 - floor_cert_tcritical_2026_01_25.md
 - h_cap_numerical_estimates_2026_01_14.md
 - h1_cap_defect_theorem_shape_2026_03_10.md
+- h1_boundary_cap_reset_2026_03_14.md
 - h1_family_gram_a_basis_2026_03_12.md
 - h1_family_gram_prefix_holdout_2026_03_12.md
 - h1_rank3_reduced_sweep_2026_03_11.md
