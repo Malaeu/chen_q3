@@ -82,13 +82,18 @@
   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
   `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
 - next live blocker:
-  filtered bulk classifier on the two primary families `(+,+)` and `(+,-)`,
-  with preferred theorem shape
-  `M_{mn}^{\sigma\tau}(a)=\kappa(a)\widetilde q_{mn}^{\sigma\tau}+F_a^{\sigma\tau}`,
-  where `F_a` is tested as a structured small-rank correction;
-  the diagnostic classes are now
-  `exact / exact+structured small-rank correction / dead`,
-  and the current numerics strongly favor the middle class,
+  operator-level defect calculus for the filtered bridge:
+  define
+  `D_{a,M,N}=S_{a,M,N}^*G_g[a]S_{a,M,N}
+   -\kappa(a)\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`,
+  then separate exact bulk from boundary/cap/compression terms;
+  the new theorem ladder is
+  `H1^\infty -> H1^\partial -> H1^f`,
+  where the first live subquestions are:
+  does `(+,-)` admit an exact filtered reformulation,
+  and what same-sign boundary / Toeplitz-Hankel / commutator term survives in
+  `(++ )`?
+  The old rank/basis stories stay only as diagnostics,
   where on the Section 8 side
   `Q_M^{raw}=T_M[P_A]-\Pi_M`,
   `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,

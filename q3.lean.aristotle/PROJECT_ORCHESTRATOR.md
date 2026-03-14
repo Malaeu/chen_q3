@@ -293,9 +293,12 @@ Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
     with the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`,
 19. keep the Suzuki generalized form-pair package
     `H1^f -> H2^f -> H3^f -> H4^f` frozen as the strongest alternative operator route,
-    with `H1^f` now frozen as filtered intertwining modulo finite-rank cap
-    defect as the only real missing bridge theorem; the second and only other
-    live brick after that is the finite-dimensional Suzuki cap.
+    with `H1^f` now frozen as filtered intertwining modulo explicit
+    boundary/cap correction as the only real missing bridge theorem;
+    the immediate internal order there is
+    `H1^\infty -> H1^\partial -> H1^f`,
+    and the second and only other live brick after that is the
+    finite-dimensional Suzuki cap.
 
 ## Hard Blockers
 
