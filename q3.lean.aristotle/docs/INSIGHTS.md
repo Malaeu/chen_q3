@@ -3592,3 +3592,34 @@ Detailed note:
 - `docs/insights/h1_split_classifier_fixed_kappa_2026_03_11.md`
 - `docs/insights/h1_family_gram_a_basis_2026_03_12.md`
 - `docs/insights/h1_family_gram_prefix_holdout_2026_03_12.md`
+
+## In progress (2026-03-14) — Proshka reset prompt for H1
+
+The current `H1` numerics now look useful mainly as negative information:
+
+- raw exact equality is dead;
+- low-mode defect is dead;
+- global shared rank-`3` defect is dead;
+- pooled in-sample common-basis signals exist for `(++ )`, but the honest
+  prefix holdout still fails badly.
+
+So the next Proshka-facing request should **not** be another rank/basis hunt.
+
+It should ask for a reset to the simpler operator question:
+
+```text
+what is the natural structural class of
+S^* G S - \kappa \Delta^* Q \Delta ?
+```
+
+The drafted prompt explicitly asks Proshka to classify the defect as one of:
+
+- exact filtered intertwining;
+- explicit boundary/cap correction;
+- short-range local correction
+  (commutator / Toeplitz-Hankel / banded strip);
+- genuine bulk mismatch.
+
+Prompt file:
+
+- `docs/insights/proshka_h1_reset_prompt_2026_03_14.md`
