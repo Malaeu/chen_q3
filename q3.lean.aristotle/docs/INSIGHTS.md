@@ -55,8 +55,11 @@
 
 - активный operational status file:
   `ACTIVE/SPRINT_MONITOR.md`
-- текущий Day 2 artifact:
-  `docs/insights/plus_minus_cancellation_ledger_2026_03_15.md`
+- текущий Day 3 artifact:
+  `docs/insights/plus_plus_boundary_inventory_2026_03_15.md`
+- `A2` landed: `(+,-)` note now separates infinite-tail defect,
+  cap/boundary channels, and pure compression bookkeeping, so the next theorem
+  attempt is no longer basis-shaped but a clean exact/corrected adapter fork.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 

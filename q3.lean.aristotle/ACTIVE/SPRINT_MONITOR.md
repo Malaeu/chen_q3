@@ -7,17 +7,17 @@ mode: two-lane
 mainline: T0-pd -> H-bridge -> H4 -> RH
 lane_A: H1 defect calculus
 lane_B: PSD-pd finite certificates
-current_day: 2
+current_day: 3
 current_lane: A
-current_step_id: A2
-current_step_title: plus-minus cancellation ledger
+current_step_id: A3
+current_step_title: plus-plus boundary inventory
 current_owner: local-agent
-current_artifact: docs/insights/plus_minus_cancellation_ledger_2026_03_15.md
-last_completed_step_id: A1
-last_completed_step_title: plus-minus adapter ledger
-last_completed_commit: 10d23998
-next_deliverable: refine the exact vanishing/surviving table inside docs/insights/plus_minus_cancellation_ledger_2026_03_15.md
-next_verify: rg -n -e "\\(\\+,-\\).*cancellation" -e "vanish|survive|cap|boundary" q3.lean.aristotle/docs/insights/plus_minus_cancellation_ledger_2026_03_15.md
+current_artifact: docs/insights/plus_plus_boundary_inventory_2026_03_15.md
+last_completed_step_id: A2
+last_completed_step_title: plus-minus cancellation ledger
+last_completed_commit: pending current sprint commit
+next_deliverable: turn docs/insights/plus_plus_boundary_inventory_2026_03_15.md into a named same-sign channel inventory with a sharp route-kill criterion
+next_verify: rg -n -e "\\(\\+\\+\\).*boundary" -e "same-sign|cap|bulk|compression|SS[1-4]" q3.lean.aristotle/docs/insights/plus_plus_boundary_inventory_2026_03_15.md
 proshka_prompt: q3.lean.aristotle/docs/insights/proshka_q_zeta_core_adapter_prompt_2026_03_15.md
 proshka_context: tmp/proshka_q_zeta_core_adapter_context_2026_03_15.md
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -90,48 +90,49 @@ Template:
 | Step | Lane | Status | Deliverable |
 | --- | --- | --- | --- |
 | `A1` | `A` | `done` | `docs/insights/plus_minus_adapter_ledger_2026_03_15.md` |
-| `A2` | `A` | `active (draft started)` | `docs/insights/plus_minus_cancellation_ledger_2026_03_15.md` |
-| `A3` | `A` | `queued` | `(++)` boundary inventory |
+| `A2` | `A` | `done` | `docs/insights/plus_minus_cancellation_ledger_2026_03_15.md` |
+| `A3` | `A` | `active (draft started)` | `docs/insights/plus_plus_boundary_inventory_2026_03_15.md` |
 | `A4` | `A` | `queued` | proof-obligation table `H1^\infty -> H1^\partial -> H1^f` |
 | `B1` | `B` | `queued` | smallest admissible finite-block `PSD-pd` step |
-| `P1` | `P` | `sent` | `ACTIVE/requests/proshka_q_zeta_a2_plus_minus_2026_03_15/node.md` -> `report.md` |
+| `P1` | `P` | `completed (ingested)` | `ACTIVE/requests/proshka_q_zeta_a2_plus_minus_2026_03_15/node.md` -> `report.md` |
 
 ## Current step
 
-### `A2` — plus-minus cancellation ledger
+### `A3` — plus-plus boundary inventory
 
 Goal:
 
-- turn the Day 1 formula ledger into a cancellation ledger;
-- separate what must vanish in `(+,-)` from what can only survive in `(++)`;
-- make the first exact/corrected theorem target explicit.
+- turn the asymmetry from `A2` into an explicit same-sign inventory;
+- separate boundary/cap candidates from genuine bulk mismatch;
+- make the next `(++)` theorem attempt explicit without any basis language.
 
 Required output:
 
-- named bulk term;
-- named boundary term;
-- named cap term;
-- named compression term;
-- expected vanishing / surviving table.
+- named same-sign boundary channel;
+- named cap channel;
+- explicit bulk-exclusion target;
+- explicit compression-bookkeeping target;
+- route-kill criterion for any unnamed residue.
 
 Exact success criterion:
 
 - after reading the new note, the next theorem attempt is unambiguously
-  `M^{+-}(a)=\kappa_{+-}(a)\widetilde Q^{+-}+E_a^{+-}`,
-  with a clear statement of which pieces of `E_a^{+-}` are expected to vanish.
+  `M^{++}(a)-\kappa_{+-}(a)\widetilde Q^{++}=H_a^{\mathrm{ss}}+C_a^{\mathrm{cap}}`,
+  with a clear statement of what counts as admissible survival and what kills
+  the theorem picture.
 
 ## Next after current step
 
-If `A2` lands:
+If `A3` lands:
 
-- switch `current_step_id` to `A3`;
-- build `(++)` boundary inventory;
+- switch `current_step_id` to `A4`;
+- build the proof-obligation table `H1^\infty -> H1^\partial -> H1^f`;
 - keep lane B alive but secondary.
 
-If `A2` fails:
+If `A3` fails:
 
 - do not open a new route;
-- mark `A2` as `blocked`;
+- mark `A3` as `blocked`;
 - write the exact obstruction in `docs/INSIGHTS.md`;
 - reduce the target to a weaker corrected theorem or to a named unresolved term.
 

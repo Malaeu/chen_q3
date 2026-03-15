@@ -41,6 +41,7 @@ Files:
 - localization_argument_full_analysis_2026_01_16.md
 - mgrep_websearch_discovery_2026_01_18.md
 - PERIODIZATION_BOTTLENECK_FIX.md
+- plus_plus_boundary_inventory_2026_03_15.md
 - plus_minus_adapter_ledger_2026_03_15.md
 - plus_minus_cancellation_ledger_2026_03_15.md
 - prime_cert_brange_tcritical_2026_01_25.md
