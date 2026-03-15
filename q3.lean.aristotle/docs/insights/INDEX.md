@@ -48,6 +48,7 @@ Files:
 - prime_term_shift_K_dependent_2026_01_19.md
 - primecert_closure_plan_2026_01_29.md
 - proshka_h1_reset_prompt_2026_03_14.md
+- proshka_q_zeta_core_adapter_prompt_2026_03_15.md
 - proshka_key_resource.md
 - proven_assets_inventory_2026_01_14.md
 - quillen_ktheory_toeplitz_2026_01_29.md
