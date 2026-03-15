@@ -3770,6 +3770,10 @@ Execution decision:
 - put machine-readable current-step fields at the top;
 - make `SESSION_ENTRY.md` and `ACTIVE/KNOWLEDGE_BASE.md` point to it at startup;
 - require that every meaningful sprint move updates this file first.
+- tighten the startup contract:
+  when the sprint is active, a fresh session should read only
+  `SESSION_ENTRY.md`, `ACTIVE/SPRINT_MONITOR.md`, and `current_artifact`
+  unless a blocker appears.
 
 ## In progress (2026-03-15) — Day 2 `(+,-)` cancellation ledger started
 

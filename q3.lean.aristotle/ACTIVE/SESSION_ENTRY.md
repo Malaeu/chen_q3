@@ -82,6 +82,7 @@
 является оперативным sprint single source of truth:
 
 - продолжать ровно `current_step_id`;
+- открывать только `current_artifact`, если он указан;
 - не пересобирать frontier заново;
 - обновлять сперва `SPRINT_MONITOR.md`, потом уже `INSIGHTS/PLAN` при нужде.
 

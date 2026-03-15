@@ -27,9 +27,38 @@ proshka_context: tmp/proshka_q_zeta_core_adapter_context_2026_03_15.md
 
 1. открыть `SESSION_ENTRY.md`;
 2. сразу открыть `ACTIVE/SPRINT_MONITOR.md`;
-3. если `status: ACTIVE`, продолжать ровно `current_step_id`;
-4. не перепридумывать frontier, пока `SPRINT_MONITOR.md` не переведён в
+3. если `status: ACTIVE`, открыть только `current_artifact`;
+4. не читать `PROJECT_ORCHESTRATOR.md`, `IMPLEMENTATION_PLAN.md`,
+   `docs/INSIGHTS.md` заново, если `current_artifact` не даёт blocker;
+5. продолжать ровно `current_step_id`;
+6. не перепридумывать frontier, пока `SPRINT_MONITOR.md` не переведён в
    `DONE`, `BLOCKED` или `ABORTED`.
+
+## Startup response contract
+
+Первое сообщение новой сессии должно быть коротким и operational.
+
+Оно должно содержать только:
+
+1. подтверждение активного спринта;
+2. `current_step_id` и `current_step_title`;
+3. какой файл открывается сейчас;
+4. какой exact output будет добиваться текущим ходом.
+
+Оно не должно:
+
+- пересказывать весь frontier;
+- заново перечислять старые route decisions;
+- описывать длинный self-sync по 5-10 файлам;
+- читать extra docs без blocker.
+
+Template:
+
+```text
+Спринт активен: <sprint>, текущий шаг <current_step_id> — <current_step_title>.
+Сейчас открываю <current_artifact> и добиваю <next_deliverable>; если blocker
+не появится, другие control docs не перечитываю.
+```
 
 ## Sprint contract
 
