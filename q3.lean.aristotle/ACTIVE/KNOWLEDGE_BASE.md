@@ -12,10 +12,11 @@ Keep this file short. Put details in linked docs.
 
 ## 0) Start here (order matters)
 
-1) `ACTIVE/orchestrator.md` — current status + next steps
-2) `ACTIVE/chain_status.md` — single-scale chain summary
-2.1) `ACTIVE/MAIN_CHAIN_DEPS.md` — **actual** RH dependencies vs repo legacy
-3) `ACTIVE/insights.md` — live insights index (links only)
+1) `ACTIVE/SPRINT_MONITOR.md` — active sprint state if present
+2) `ACTIVE/orchestrator.md` — current status + next steps
+3) `ACTIVE/chain_status.md` — single-scale chain summary
+3.1) `ACTIVE/MAIN_CHAIN_DEPS.md` — **actual** RH dependencies vs repo legacy
+4) `ACTIVE/insights.md` — live insights index (links only)
 4) `ACTIVE/workflow.md` — workflow rules
 5) `ACTIVE/tree.md` — navigation tree (what depends on what)
 6) `ACTIVE/refs/SPECS_INDEX.md` — curated spec pointers + constants checklist

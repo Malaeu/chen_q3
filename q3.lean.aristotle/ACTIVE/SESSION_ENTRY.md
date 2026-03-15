@@ -16,19 +16,20 @@
 ## Обязательный read order
 
 1. `SESSION_ENTRY.md`
-2. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
-3. `IMPLEMENTATION_PLAN.md`
-4. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
-5. `q3.lean.aristotle/docs/INSIGHTS.md`
+2. `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md` if it exists and is `ACTIVE`
+3. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+4. `IMPLEMENTATION_PLAN.md`
+5. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+6. `q3.lean.aristotle/docs/INSIGHTS.md`
 
 Если работаешь с embeddings / incoming notes, потом ещё:
 
-6. `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
+7. `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
 
 Если работаешь с Aristotle:
 
-6. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`
-7. `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+7. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`
+8. `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
 
 ## Текущий public mainline
 
@@ -76,6 +77,13 @@
   `H-bridge` и `PSD-pd`.
 
 ## Текущий практический next step
+
+Если `ACTIVE/SPRINT_MONITOR.md` существует и имеет `status: ACTIVE`, то он
+является оперативным sprint single source of truth:
+
+- продолжать ровно `current_step_id`;
+- не пересобирать frontier заново;
+- обновлять сперва `SPRINT_MONITOR.md`, потом уже `INSIGHTS/PLAN` при нужде.
 
 Если нет нового user redirect, текущий честный frontier такой:
 

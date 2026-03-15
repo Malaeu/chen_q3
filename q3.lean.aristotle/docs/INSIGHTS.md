@@ -51,6 +51,13 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
  5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+## Текущий sprint-hub
+
+- активный operational status file:
+  `ACTIVE/SPRINT_MONITOR.md`
+- текущий Day 2 artifact:
+  `docs/insights/plus_minus_cancellation_ledger_2026_03_15.md`
+
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 
 Новая развилка закрыта жёстко:
@@ -3739,3 +3746,38 @@ Notes:
 
 - `docs/insights/q_zeta_core_short_circuit_sprint_2026_03_15.md`
 - `docs/insights/plus_minus_adapter_ledger_2026_03_15.md`
+
+## Synthesis (2026-03-15, in progress) — sprint monitor as operational single source of truth
+
+New blocker is not mathematical but operational:
+
+- the sprint is now real, so a new session must resume the current step without
+  re-deriving the frontier from scratch;
+- `SESSION_ENTRY.md` is too broad for that job;
+- `IMPLEMENTATION_PLAN.md` keeps the active task, but not the live substep,
+  last completed step, next deliverable, or sprint invariants.
+
+Local oracle support:
+
+- repo process docs already separate architectural truth, execution queue, and
+  insight logs;
+- that strongly suggests one additional operational file rather than more
+  duplicated status prose.
+
+Execution decision:
+
+- introduce `ACTIVE/SPRINT_MONITOR.md` as sprint single source of truth;
+- put machine-readable current-step fields at the top;
+- make `SESSION_ENTRY.md` and `ACTIVE/KNOWLEDGE_BASE.md` point to it at startup;
+- require that every meaningful sprint move updates this file first.
+
+## In progress (2026-03-15) — Day 2 `(+,-)` cancellation ledger started
+
+The sprint monitor is now live and the current step is no longer just text in
+the plan:
+
+- `ACTIVE/SPRINT_MONITOR.md` records `A2` as the active step;
+- the Day 2 artifact already exists:
+  `docs/insights/plus_minus_cancellation_ledger_2026_03_15.md`;
+- so a fresh session can now resume directly from the current theorem receiver
+  instead of re-deriving the frontier.
