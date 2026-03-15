@@ -3644,3 +3644,30 @@ The reset is now explicit in the source-of-truth files:
 Reset note:
 
 - `docs/insights/h1_boundary_cap_reset_2026_03_14.md`
+
+## Synthesis (2026-03-15, in progress) — `Q_\zeta`-core as the canonical coordination layer
+
+The strongest additive move now is **not** a third RH route and not another
+local `H1` trick, but a single capital layer that can absorb the already-live
+work:
+
+- keep the public route exactly as it is:
+  `T0-pd -> H-bridge -> H4 -> RH`;
+- keep `PSD-pd` exactly as it is:
+  fallback constructive route;
+- introduce a thin canonical coordination object
+  `Q_\zeta`-core built from the explicit-form / Weil quadratic-operator layer,
+  with two immediate backends only:
+  `H-bridge` as the primary operator backend and `PSD-pd` as the strict
+  finite-shadow / certificate backend;
+- do **not** widen the active scope to Li / Nyman--Beurling / de Branges as
+  live routes yet; those are future adapters only;
+- first theorem-sized target inside this core remains the same:
+  close the `(+,-)` block as exact-or-explicitly-corrected filtered identity,
+  then identify the surviving same-sign boundary term in `(++ )`.
+
+Interpretation:
+
+- `Q_\zeta`-core is not a new endgame;
+- it is the project layer that decides whether a new idea strengthens the
+  canonical object, translates into it, or produces a kill certificate.
