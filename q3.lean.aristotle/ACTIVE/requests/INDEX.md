@@ -7,13 +7,16 @@
 
 ---
 
-Total nodes: 6
+Total nodes: 7
 
 ## Active (PrimeCert)
 - proshka_primecert_closure_2026_01_27: `requests/proshka_primecert_closure_2026_01_27/node.md`
 - proshka_primecert_lipschitz_2026_01_26: `requests/proshka_primecert_lipschitz_2026_01_26/node.md`
 - proshka_prime_cap_tcritical_2026_01_25: `requests/proshka_prime_cap_tcritical_2026_01_25/node.md`
 - proshka_heat_pp_pilot_2026_02_03: `requests/proshka_heat_pp_pilot_2026_02_03/node.md`
+
+## Active (Sprint)
+- proshka_q_zeta_a2_plus_minus_2026_03_15: `requests/proshka_q_zeta_a2_plus_minus_2026_03_15/node.md`
 
 ## Infrastructure
 - aristotle_prompt_guidelines: `requests/aristotle_prompt_guidelines/node.md`

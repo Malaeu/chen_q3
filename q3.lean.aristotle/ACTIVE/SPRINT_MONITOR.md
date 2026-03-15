@@ -20,6 +20,9 @@ next_deliverable: refine the exact vanishing/surviving table inside docs/insight
 next_verify: rg -n -e "\\(\\+,-\\).*cancellation" -e "vanish|survive|cap|boundary" q3.lean.aristotle/docs/insights/plus_minus_cancellation_ledger_2026_03_15.md
 proshka_prompt: q3.lean.aristotle/docs/insights/proshka_q_zeta_core_adapter_prompt_2026_03_15.md
 proshka_context: tmp/proshka_q_zeta_core_adapter_context_2026_03_15.md
+worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
+worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_q_zeta_a2_plus_minus_2026_03_15/node.md
+worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_q_zeta_a2_plus_minus_2026_03_15/report.md
 
 Этот файл — оперативный single source of truth для спринта.
 
@@ -91,7 +94,7 @@ Template:
 | `A3` | `A` | `queued` | `(++)` boundary inventory |
 | `A4` | `A` | `queued` | proof-obligation table `H1^\infty -> H1^\partial -> H1^f` |
 | `B1` | `B` | `queued` | smallest admissible finite-block `PSD-pd` step |
-| `P1` | `P` | `sent` | Proshka adapter theorem-shape / blockwise cancellation request |
+| `P1` | `P` | `sent` | `ACTIVE/requests/proshka_q_zeta_a2_plus_minus_2026_03_15/node.md` -> `report.md` |
 
 ## Current step
 

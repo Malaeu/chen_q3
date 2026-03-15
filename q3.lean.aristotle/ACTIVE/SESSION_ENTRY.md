@@ -83,6 +83,9 @@
 
 - продолжать ровно `current_step_id`;
 - открывать только `current_artifact`, если он указан;
+- для второго агента использовать
+  `ACTIVE/AGENT_PROTOCOL.md` + `worker_request` / `worker_report` из
+  `SPRINT_MONITOR.md`;
 - не пересобирать frontier заново;
 - обновлять сперва `SPRINT_MONITOR.md`, потом уже `INSIGHTS/PLAN` при нужде.
 

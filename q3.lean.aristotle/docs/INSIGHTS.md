@@ -3785,3 +3785,19 @@ the plan:
   `docs/insights/plus_minus_cancellation_ledger_2026_03_15.md`;
 - so a fresh session can now resume directly from the current theorem receiver
   instead of re-deriving the frontier.
+
+## Synthesis (2026-03-15, in progress) — orchestrator / worker loop frozen
+
+Parallel-agent communication is now fixed operationally rather than ad hoc:
+
+- `ACTIVE/AGENT_PROTOCOL.md` defines one stable loop:
+  orchestrator writes the request node, worker writes the report;
+- the current sprint request is now a real node:
+  `ACTIVE/requests/proshka_q_zeta_a2_plus_minus_2026_03_15/node.md`;
+- the worker write-back target is fixed:
+  `ACTIVE/requests/proshka_q_zeta_a2_plus_minus_2026_03_15/report.md`;
+- `SPRINT_MONITOR.md` now stores `worker_protocol`, `worker_request`, and
+  `worker_report`, so a new session can see the whole loop immediately;
+- the prompt contract is now file-based:
+  use `ACTIVE/AGENT_PROTOCOL.md` plus the current request node, rather than
+  improvising persona-heavy prompts each time.

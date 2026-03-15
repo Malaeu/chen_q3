@@ -13,6 +13,7 @@ Keep this file short. Put details in linked docs.
 ## 0) Start here (order matters)
 
 1) `ACTIVE/SPRINT_MONITOR.md` — active sprint state if present
+1.1) `ACTIVE/AGENT_PROTOCOL.md` — orchestrator/worker loop for parallel agent
 2) `ACTIVE/orchestrator.md` — current status + next steps
 3) `ACTIVE/chain_status.md` — single-scale chain summary
 3.1) `ACTIVE/MAIN_CHAIN_DEPS.md` — **actual** RH dependencies vs repo legacy
