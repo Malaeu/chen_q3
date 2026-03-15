@@ -3671,3 +3671,30 @@ Interpretation:
 - `Q_\zeta`-core is not a new endgame;
 - it is the project layer that decides whether a new idea strengthens the
   canonical object, translates into it, or produces a kill certificate.
+
+## Final result (2026-03-15) — `Q_\zeta`-core skeleton synced into source-of-truth
+
+The project now has a thin canonical coordination layer:
+
+- `Q_\zeta`-core = the explicit-form / Weil quadratic-operator hub above the
+  live routes;
+- it is **not** a third RH route and does **not** replace the public mainline
+  `T0-pd -> H-bridge -> H4 -> RH`;
+- its two immediate backends are now frozen explicitly:
+  `H-bridge` as the primary operator backend and `PSD-pd` as the strict
+  finite-shadow / certificate backend;
+- future criteria such as Li / Nyman--Beurling / de Branges are demoted to
+  future adapters only until these two backends become fully explicit.
+
+Operational consequence:
+
+- the first theorem-sized target still sits inside `H1`:
+  close the `(+,-)` block as exact-or-explicitly-corrected filtered identity;
+- then isolate the surviving same-sign boundary/cap term in `(++ )`;
+- evaluate any new idea by one question only:
+  does it improve the canonical layer, improve a translation into it, or yield
+  a kill certificate?
+
+Skeleton note:
+
+- `docs/insights/q_zeta_core_skeleton_2026_03_15.md`

@@ -1,6 +1,6 @@
 # PROJECT ORCHESTRATOR - Q3
 
-Updated: 2026-03-14
+Updated: 2026-03-15
 
 ## Role
 
@@ -165,10 +165,43 @@ New live frontier:
      live brick after the bulk match:
      positivity of the cap matrix is a separate finite-dimensional problem.
 
+## Canonical Coordination Layer
+
+The project now freezes a thin `Q_\zeta`-core above the live routes.
+
+It is:
+
+- the canonical explicit-form / Weil quadratic-operator layer of the project;
+- a coordination object, not a third RH route;
+- the place where a new idea must either strengthen the canonical layer,
+  translate into it, or produce a kill certificate.
+
+Immediate backends:
+
+1. primary operator backend:
+   `H-bridge`, through the filtered defect calculus
+   `D_{a,M,N}=S_{a,M,N}^*G_g[a]S_{a,M,N}
+   -\kappa(a)\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
+2. explicit finite-shadow / certificate backend:
+   `PSD-pd`, through the packet kernel
+   `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})`,
+   finite symbols `S_J=A_J-P_J`,
+   coefficient bounds, and Poisson-regularized verification.
+
+Operational rule:
+
+- do not widen the active frontier to Li / Nyman--Beurling / de Branges as
+  live routes yet;
+- treat those only as future adapters into `Q_\zeta`-core after the two live
+  backends are explicit.
+
 ## Active Milestone
 
 Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
 
+0. freeze `Q_\zeta`-core as the canonical coordination layer above the live
+   routes, with `H-bridge` as the primary operator backend and `PSD-pd` as the
+   explicit fallback certificate backend, without changing the public mainline,
 1. keep `\mathcal W_K^{pd}` and `\mathcal W^{pd}` fixed in control docs and manuscript,
 2. freeze the compact scalar package `S1/S2/S3/S4` only as a rejected public
    compact-truncation route and diagnostic formal reduction,

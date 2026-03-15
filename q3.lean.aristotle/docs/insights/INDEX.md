@@ -51,6 +51,7 @@ Files:
 - proshka_key_resource.md
 - proven_assets_inventory_2026_01_14.md
 - quillen_ktheory_toeplitz_2026_01_29.md
+- q_zeta_core_skeleton_2026_03_15.md
 - rayleigh_q_identification_2026_01_17 2.md
 - rayleigh_q_identification_2026_01_17.md
 - rayleigh_vs_sb_optional.md

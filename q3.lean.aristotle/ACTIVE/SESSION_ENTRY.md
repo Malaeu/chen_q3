@@ -72,11 +72,22 @@
 
 - `S1/S2/S3/S4` — правильный, но diagnostic-only compact-truncation package;
 - `PSD-pd` — честный fallback Weil-side route, если `H1` stalled.
+- `Q_\zeta`-core — не третья RH-ветка, а координационный слой над уже живыми
+  `H-bridge` и `PSD-pd`.
 
 ## Текущий практический next step
 
 Если нет нового user redirect, текущий честный frontier такой:
 
+- thin project-level coordination layer:
+  `Q_\zeta`-core = canonical explicit-form / Weil quadratic-operator layer;
+  immediate backends only:
+  `H-bridge` as the primary operator backend and `PSD-pd` as the explicit
+  finite-shadow / certificate backend;
+  this layer is not a new RH route and does not replace the public mainline,
+  but it is now the right capital object for deciding whether a new idea
+  improves the canonical operator layer, improves a translation into it, or
+  produces a kill certificate;
 - symmetric two-sided filtered H-bridge:
   `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,

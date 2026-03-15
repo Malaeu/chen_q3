@@ -1,6 +1,6 @@
 # Paper Mainline Tracker
 
-Updated: 2026-03-08
+Updated: 2026-03-15
 
 ## Role
 
@@ -32,6 +32,7 @@ It is **not** the execution queue and **not** the master gate-state file.
 | `W_K(u)` | scalar compact spectral weight `\widehat{a_K^*}(u)-\sum_{\xi_n\in\Xi_K}(2\Lambda(n)/\sqrt n)\cos(u\xi_n)` | diagnostic compact-truncation object; rejected as public frontier once `\Xi_K\neq\varnothing` |
 | `S_{g,\Delta}(\theta)` | packet Toeplitz symbol built from `\kappa_m=\mathcal Q(h(\cdot-m\Delta))` | structural object; no longer the public theorem target by itself |
 | `K_Q(g_i,g_j)` | packet kernel `\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | active hard-theorem object |
+| `Q_\zeta`-core | canonical explicit-form / Weil quadratic-operator coordination layer above the live routes | active coordination notation; not a separate RH route |
 | `G_g[a], J_a` | Suzuki/Yoshida generalized form-pair data on `L^2(-a,a)` | active primary operator notation |
 | `\mathcal P_{M,N}` | two-sided tail model space `\operatorname{span}\{z^n,z^{-n}:N<n\le M\}` | active filtered-tail notation |
 | `\Delta_{M,N}` | symmetric filtered shift: `1+z` on the positive tail and `1+z^{-1}` on the negative tail | active filtered-tail notation |
@@ -155,17 +156,24 @@ Interpretation rule after `T0.1`:
 
 ## Unresolved Dependencies
 
-1. Freeze the compact spectral obstruction in the paper-facing dependency map:
+1. Freeze `Q_\zeta`-core as the paper-facing coordination layer:
+   it is not a third route, but the canonical explicit-form /
+   quadratic-operator hub above the already-live backends
+   `H-bridge` and `PSD-pd`;
+   current manuscript-facing work should therefore be judged by whether it
+   improves the canonical layer itself, improves a translation into it, or
+   sharpens a certificate / obstruction.
+2. Freeze the compact spectral obstruction in the paper-facing dependency map:
    `W_K(u)\ge0` cannot be the public compact mainline once `\Xi_K\neq\varnothing`,
    because `a_K^*\in L^1` forces `\widehat{a_K^*}(u)\to0` while the finite cosine
    prime sum returns arbitrarily close to its full positive mass.
-2. Freeze the Suzuki/Yoshida generalized form-pair bridge as the primary live route:
+3. Freeze the Suzuki/Yoshida generalized form-pair bridge as the primary live route:
    `H1^f` filtered intertwining modulo explicit boundary/cap correction
    -> `H2^f` Suzuki tail/cap reduction
    -> `H3^f` filtered gap transfer
    -> `H4^f` Suzuki RH criterion.
    The honest blocker there is `H1^f`, not a raw operator-gap theorem.
-3. Preferred exact bridge geometry:
+4. Preferred exact bridge geometry:
    use the symmetric two-sided filtered tail package
    `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
    with
