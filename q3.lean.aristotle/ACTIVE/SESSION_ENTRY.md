@@ -88,6 +88,15 @@
   but it is now the right capital object for deciding whether a new idea
   improves the canonical operator layer, improves a translation into it, or
   produces a kill certificate;
+- current execution mode:
+  `Q_\zeta`-core short-circuit sprint;
+  lane A = `H1` defect calculus,
+  lane B = finite-dictionary `PSD-pd`,
+  with the first theorem-sized target frozen as the `(+,-)` adapter theorem
+  `M^{+-}(a)=\kappa_{+-}(a)\widetilde Q^{+-}+E_a^{+-}`;
+  Day 1 local artifact is now the `(+,-)` adapter ledger,
+  while Proshka is used only for structural theorem-shape and blockwise
+  cancellations;
 - symmetric two-sided filtered H-bridge:
   `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,

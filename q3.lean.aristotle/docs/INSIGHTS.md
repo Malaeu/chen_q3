@@ -3698,3 +3698,44 @@ Operational consequence:
 Skeleton note:
 
 - `docs/insights/q_zeta_core_skeleton_2026_03_15.md`
+
+## Synthesis (2026-03-15, in progress) — short-circuit sprint and first `(+,-)` adapter
+
+Exact blocker definition for the next micro-frontier:
+
+- public route stays
+  `T0-pd -> H-bridge -> H4 -> RH`;
+- active hard blocker still sits only inside `H1^f`;
+- fastest theorem-sized target is now the first adapter theorem in `(+,-)`,
+  not the whole defect at once.
+
+Local oracle / note audit:
+
+- `Main_closure.tex` still records the older strongest filtered thesis
+  `M^{+-}(a)=\kappa(a)\widetilde Q_{M,N}^{+-}`
+  with no extra section-boundary defect once `\widetilde Q_{M,N}` is used;
+- `h1_raw_entry_reduction_2026_03_08.md` confirms that only `(++),(+-)` are
+  independent live bulk families;
+- the 2026-03-14 reset still forces the new question to be symbolic defect
+  calculus, not rank language.
+
+External sanity-check:
+
+- standard finite-section / Toeplitz-Hankel operator theory treats boundary
+  corrections as natural finite-section phenomena rather than evidence of
+  genuine bulk mismatch; this supports the current project guess that any
+  surviving correction should be boundary/cap, not basis-defined.
+
+Execution decision:
+
+- freeze the two-lane short-circuit sprint:
+  lane A = `H1` defect calculus;
+  lane B = finite-dictionary `PSD-pd`;
+- hand structural math to Proshka;
+- keep deterministic exact formula / compression / proof-obligation work local;
+- first local artifact is now the `(+,-)` adapter ledger.
+
+Notes:
+
+- `docs/insights/q_zeta_core_short_circuit_sprint_2026_03_15.md`
+- `docs/insights/plus_minus_adapter_ledger_2026_03_15.md`

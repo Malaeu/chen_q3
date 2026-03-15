@@ -194,6 +194,9 @@ Operational rule:
   live routes yet;
 - treat those only as future adapters into `Q_\zeta`-core after the two live
   backends are explicit.
+- current execution mode is a short-circuit sprint:
+  lane A = `H1` defect calculus through the first `(+,-)` adapter theorem;
+  lane B = finite-dictionary `PSD-pd` certificates in parallel.
 
 ## Active Milestone
 

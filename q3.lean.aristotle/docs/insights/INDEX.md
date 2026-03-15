@@ -41,6 +41,7 @@ Files:
 - localization_argument_full_analysis_2026_01_16.md
 - mgrep_websearch_discovery_2026_01_18.md
 - PERIODIZATION_BOTTLENECK_FIX.md
+- plus_minus_adapter_ledger_2026_03_15.md
 - prime_cert_brange_tcritical_2026_01_25.md
 - prime_cert_tcritical_2026_01_25.md
 - prime_term_nodes_bridge_2026_01_17 2.md
@@ -53,6 +54,7 @@ Files:
 - proven_assets_inventory_2026_01_14.md
 - quillen_ktheory_toeplitz_2026_01_29.md
 - q_zeta_core_skeleton_2026_03_15.md
+- q_zeta_core_short_circuit_sprint_2026_03_15.md
 - rayleigh_q_identification_2026_01_17 2.md
 - rayleigh_q_identification_2026_01_17.md
 - rayleigh_vs_sb_optional.md
