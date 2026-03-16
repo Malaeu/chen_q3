@@ -55,8 +55,8 @@
 
 - активный operational status file:
   `ACTIVE/SPRINT_MONITOR.md`
-- текущий Day 5 artifact:
-  `docs/insights/psd_pd_smallest_block_step_2026_03_16.md`
+- sprint decision artifact:
+  `docs/insights/q_zeta_core_sprint_decision_2026_03_16.md`
 - `A2` landed: `(+,-)` note now separates infinite-tail defect,
   cap/boundary channels, and pure compression bookkeeping, so the next theorem
   attempt is no longer basis-shaped but a clean exact/corrected adapter fork.
@@ -68,6 +68,11 @@
   `PO1 -> ... -> PO7`, with the first real attack packet equal to
   `PO1 -> PO3`, and with a rigid handoff contract both to `H2^f` and to the
   fallback certificate lane `B`.
+- `B1` landed: the fallback route now has one canonical smallest-block
+  certificate receiver,
+  `J_{\min}=\{0,1\}`, `K=0.2`, `\Delta=0.15`, with the degree-1 symbol
+  `S_{J_{\min}}(\theta)=(\alpha_0-\beta_0)+2(\alpha_1-\beta_1)\cos\theta`
+  and the current viable pilot regime `\delta<0.0124`.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 

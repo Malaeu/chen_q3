@@ -1,23 +1,23 @@
 # Sprint Monitor
 
-status: ACTIVE
+status: DONE
 sprint: Q_zeta_core_short_circuit
 started: 2026-03-15
 mode: two-lane
 mainline: T0-pd -> H-bridge -> H4 -> RH
 lane_A: H1 defect calculus
 lane_B: PSD-pd finite certificates
-current_day: 5
-current_lane: B
-current_step_id: B1
-current_step_title: PSD-pd smallest-block step
+current_day: 7
+current_lane: D
+current_step_id: D1
+current_step_title: sprint decision
 current_owner: local-agent
-current_artifact: docs/insights/psd_pd_smallest_block_step_2026_03_16.md
-last_completed_step_id: A4
-last_completed_step_title: H1 proof-obligation table
-last_completed_commit: 89eb15f5
-next_deliverable: freeze one explicit admissible finite dictionary J_min and one exact certificate checklist for PSD-pd
-next_verify: rg -n -e "J_\\{\\\\min\\}|finite symbol|Poisson|error budget|certificate" q3.lean.aristotle/docs/insights/psd_pd_smallest_block_step_2026_03_16.md
+current_artifact: docs/insights/q_zeta_core_sprint_decision_2026_03_16.md
+last_completed_step_id: B1
+last_completed_step_title: PSD-pd smallest-block step
+last_completed_commit: pending current sprint commit
+next_deliverable: start the post-sprint theorem/certificate phase from PO1->PO3 and the canonical J_min certificate
+next_verify: rg -n -e "Outputs achieved|Decision|Recommended next phase" q3.lean.aristotle/docs/insights/q_zeta_core_sprint_decision_2026_03_16.md
 proshka_prompt: q3.lean.aristotle/docs/insights/proshka_q_zeta_core_adapter_prompt_2026_03_15.md
 proshka_context: tmp/proshka_q_zeta_core_adapter_context_2026_03_15.md
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -93,46 +93,44 @@ Template:
 | `A2` | `A` | `done` | `docs/insights/plus_minus_cancellation_ledger_2026_03_15.md` |
 | `A3` | `A` | `done` | `docs/insights/plus_plus_boundary_inventory_2026_03_15.md` |
 | `A4` | `A` | `done` | `docs/insights/h1_proof_obligation_table_2026_03_16.md` |
-| `B1` | `B` | `active (draft started)` | `docs/insights/psd_pd_smallest_block_step_2026_03_16.md` |
+| `B1` | `B` | `done` | `docs/insights/psd_pd_smallest_block_step_2026_03_16.md` |
 | `P1` | `P` | `completed (ingested)` | `ACTIVE/requests/proshka_q_zeta_a2_plus_minus_2026_03_15/node.md` -> `report.md` |
 
-## Current step
+## Decision state
 
-### `B1` — PSD-pd smallest-block step
+### `D1` — sprint decision
 
 Goal:
 
-- keep lane `B` alive with one smallest explicit finite certificate step;
-- freeze one admissible finite dictionary and one exact symbol target;
-- avoid letting the fallback route explode into a second free-form project.
+- record whether the sprint produced the required outputs;
+- freeze the route decision after those outputs;
+- point the next phase at theorem/certificate work instead of more
+  coordination.
 
 Required output:
 
-- one explicit admissible dictionary `J_min`;
-- one exact symbol `S_{J_{\min}}(\theta)`;
-- one certificate checklist;
-- one explicit error-budget route;
-- one binary viability verdict.
+- one decision note;
+- one frozen statement of achieved outputs;
+- one next-phase recommendation.
 
 Exact success criterion:
 
-- after reading the new note, the next theorem attempt is unambiguously
-  one explicit finite certificate task rather than “continue PSD-pd somehow”.
+- the sprint can be closed without losing its outputs or reopening its stop
+  list.
 
 ## Next after current step
 
-If `B1` lands:
+If `D1` lands:
 
-- keep both lane outputs frozen;
-- move to the sprint binary decision phase:
-  adapter theorem viable versus route needs narrowing.
+- leave this sprint as `DONE`;
+- start the next phase from the decision note rather than from broad
+  re-synchronization.
 
-If `B1` fails:
+If `D1` fails:
 
-- do not open a new route;
-- mark `B1` as `blocked`;
-- write the exact obstruction in `docs/INSIGHTS.md`;
-- reduce the target to a weaker corrected theorem or to a named unresolved term.
+- do not reopen the old sprint;
+- write the missing output explicitly;
+- restart only with a narrower follow-up sprint.
 
 ## Update protocol
 

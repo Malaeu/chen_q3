@@ -59,6 +59,7 @@ Files:
 - quillen_ktheory_toeplitz_2026_01_29.md
 - q_zeta_core_skeleton_2026_03_15.md
 - q_zeta_core_short_circuit_sprint_2026_03_15.md
+- q_zeta_core_sprint_decision_2026_03_16.md
 - rayleigh_q_identification_2026_01_17 2.md
 - rayleigh_q_identification_2026_01_17.md
 - rayleigh_vs_sb_optional.md
