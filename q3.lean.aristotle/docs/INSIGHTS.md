@@ -86,6 +86,14 @@
   second agent can now enter directly through
   `ACTIVE/PHASE_MONITOR.md -> ACTIVE/AGENT_PROTOCOL.md -> ACTIVE/requests/proshka_h1_po1_tail_defect_2026_03_16/node.md`
   without rereading the closed sprint state.
+- `P1` is now frozen as landed and the active local step is `P2`: the new
+  receiver is
+  `docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md`,
+  where the exact next claim is
+  `\mathcal D_{a,\mathrm{bulk}}^{+-}=0`,
+  equivalently that the only admissible remainder channels are boundary/cap,
+  with unnamed cross-sign bulk residue promoted to an explicit route-kill
+  condition.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 
