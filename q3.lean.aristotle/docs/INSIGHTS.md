@@ -99,6 +99,12 @@
   `Main_closure.tex` still point to exact filtered `(+,-)` bulk, raw mismatch
   remains irrelevant to this filtered claim, and any non-bulk survivor should
   be treated as boundary/cap rather than as a new floating bulk defect.
+- worker ingest on `P2` came back clean and useful: it confirms the best
+  theorem posture as
+  `primary lemma = \mathcal D_{a,\mathrm{bulk}}^{+-}=0`,
+  `fallback = boundary/cap-only remainder`,
+  `compression out of scope until PO6`,
+  and `PO3 = \mathcal D_{a,\partial}^{+-}=0` as the one-line next handoff.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 

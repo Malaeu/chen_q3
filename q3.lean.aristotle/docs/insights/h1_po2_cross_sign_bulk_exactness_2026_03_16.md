@@ -55,6 +55,25 @@ It says:
 - whatever remains must already belong to the later
   boundary/cap classification problem.
 
+## Worker-ingested refinement
+
+The first worker pass on `P2` confirmed the right asymmetry and sharpened one
+important policy decision:
+
+- the **primary** `PO2` lemma must stay pure:
+  `\mathcal D_{a,\mathrm{bulk}}^{+-}=0`;
+- the **fallback** form must already name both admissible remainder channels:
+  boundary and cap;
+- compression must stay out of `PO2` entirely and remain deferred to `PO6`.
+
+So the correct theorem posture is:
+
+```text
+prove pure bulk vanishing in PO2;
+name boundary/cap in the equivalent fallback;
+do not let compression or same-sign language leak into this stage.
+```
+
 ## Strongest existing anchors
 
 ### 1. Old strongest filtered thesis
@@ -232,6 +251,9 @@ with preferred stronger version
 where `\mathcal D_{a,\partial}^{+-}` is now a named residual targeted next by
 `PO3`.
 
+This is also the right place to name cap explicitly without letting the cap
+analysis consume the `PO2` proof itself.
+
 ### Failure case
 
 ```tex
@@ -255,6 +277,9 @@ So the correct handoff contract is:
 - `PO3` is required to kill it;
 - the cap channel may remain explicit throughout this handoff;
 - compression stays out of scope until `PO6`.
+
+This is exactly the part of the worker report worth keeping: the handoff should
+remain one-line and asymmetric, not reopen the full cross-sign classifier.
 
 ## Ingest checklist for worker input
 
