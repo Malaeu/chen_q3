@@ -20,6 +20,36 @@ So `P3` is now very sharp:
 \text{kill the cross-sign boundary channel.}
 ```
 
+## Mandatory research synthesis
+
+The required research pass for this blocker points in one direction rather than
+opening a new branch.
+
+1. Local oracle recall again pulls the route back to `Main_closure.tex`: the
+   old filtered classifier still records `M^{+-}(a)` as the calibration block
+   and explicitly says that no extra section-boundary defect should survive
+   once `\widetilde Q_{M,N}` is used correctly.
+2. The frozen `h1_four_block_bulk_2026_03_08.md` note says the same thing in
+   operator language: filtered bulk is exact first, and section-boundary
+   bookkeeping is not allowed to leak back in at the bulk stage.
+3. The Day-2 `(+,-)` cancellation ledger already singled out
+   `\mathcal D_{a,\partial}^{+-}=0` as the strongest structural guess, with
+   cap-only as the only admissible corrected fallback.
+4. The worker contract for `P3` therefore should not ask for a new
+   classification tree; it should ask for one exact boundary-cancellation lemma
+   and one cap-only corollary.
+5. External sanity-check material on Toeplitz/Hankel finite sections supports
+   exactly this style of theorem packaging: boundary, commutator, and cap
+   corrections are natural operator channels, while basis-hunt language is not
+   a theorem shape.
+
+So the honest `P3` plan is now:
+
+- attack one exact boundary-cancellation lemma;
+- allow only cap-only survival on the `(+,-)` side;
+- treat any non-cap cross-sign boundary residue as a route-kill or
+  near-route-kill event.
+
 ## Exact target
 
 The primary `PO3` statement should be
@@ -85,6 +115,18 @@ not in `(+,-)`.
 
 So any surviving cross-sign boundary term is already suspicious and should be
 treated as a near-route-kill, not as a routine weakened theorem.
+
+### 4. Macro place of `P3`
+
+`P3` is not an isolated micro-lemma anymore.
+It is the boundary half of Door 1 in the compressed route
+
+```tex
+\text{Door 1} \to \text{Door 2} \to \text{Door 3} \to H2^f \to H3^f \to H4^f.
+```
+
+That is good news: if `P3` lands, Door 1 is very close to closure, and the
+whole route becomes visibly asymmetric in the intended way.
 
 ## Proof-facing packet
 

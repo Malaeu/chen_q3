@@ -6,6 +6,20 @@ This file documents the workflow only.
 This file is the main project workflow; Aristotle is only one tool in the loop.
 Canonical Aristotle rules live in `ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`.
 
+## Native subagents
+
+If native Codex subagents are used, they must still respect the existing Q3
+control-plane:
+
+- orchestrator remains the main local session;
+- subagents must enter through `SESSION_ENTRY.md` and the active
+  `PHASE_MONITOR.md` or `SPRINT_MONITOR.md`;
+- all parallel math work still flows through
+  `ACTIVE/AGENT_PROTOCOL.md` plus `request node -> report file`;
+- custom project-scoped agents live in `.codex/agents/`;
+- subagents are for parallelization, not for replacing the file-based source of
+  truth.
+
 ## Aristotle Integration: Principles
 
 Aristotle берёт **informal математику** (markdown с LaTeX) и генерирует **Lean 4 код**.

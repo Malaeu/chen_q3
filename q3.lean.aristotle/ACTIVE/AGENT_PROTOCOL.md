@@ -13,6 +13,29 @@ phase/sprint работе.
 - коммуникация идёт не через свободный чат-хаос, а через
   `request node -> report file -> orchestrator ingest`.
 
+## Native subagent mode
+
+Теперь у проекта есть и нативный Codex subagent слой.
+
+Project-scoped agent config:
+
+- `.codex/config.toml`
+- `.codex/agents/q3-worker.toml`
+- `.codex/agents/q3-researcher.toml`
+- `.codex/agents/q3-lean-worker.toml`
+
+Это не новый workflow, а тот же самый loop в более удобной форме:
+
+- нативный subagent не заменяет request/report contract;
+- он просто снимает ручной prompt boilerplate;
+- source of truth всё равно остаётся file-based.
+
+Рекомендуемое соответствие:
+
+- `q3_worker` = theorem/block worker по active request node;
+- `q3_researcher` = semantic search + source synthesis по одному blocker-у;
+- `q3_lean_worker` = Aristotle/Lean integration worker.
+
 ## Roles
 
 ### 1. Orchestrator
@@ -49,6 +72,8 @@ Worker agent читает ровно это:
 
 Если blocker не возник, worker agent не должен заново перечитывать весь
 control-plane.
+
+То же правило действует и для нативных subagents.
 
 ## File contract
 
@@ -142,6 +167,35 @@ Every worker report must contain:
 
 Твоя задача сейчас:
 <ONE_SENTENCE_TASK>
+```
+
+## Prompt template for native subagents
+
+Если используем нативный subagent workflow, parent prompt должен быть таким же
+узким:
+
+```text
+Spawn q3_worker for the active request node
+q3.lean.aristotle/ACTIVE/requests/<request_id>/node.md.
+Have it read the request node, the files it lists, and write only to
+q3.lean.aristotle/ACTIVE/requests/<request_id>/report.md.
+Do not let it re-map the whole project.
+```
+
+Для research pass:
+
+```text
+Spawn q3_researcher for blocker <blocker_name>.
+Have it use the active monitor plus the request node, run the local oracle and
+one external sanity-check, and write the synthesis only to the report file.
+```
+
+Для Lean/Aristotle:
+
+```text
+Spawn q3_lean_worker for lemma <lemma_name>.
+Have it follow the Aristotle workflow exactly, keep the request narrow, and
+report compile status plus any hole-free extracted lemmas.
 ```
 
 ## Persona note

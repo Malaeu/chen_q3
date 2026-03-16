@@ -111,6 +111,31 @@
   intended post-`PO3` picture explicit:
   `(+,-)` should collapse to exactness or cap-only, and only then should proof
   energy move to same-sign `PO4/PO5`.
+- mandatory research-pass for `P3` comes back aligned rather than branching:
+  local oracle recall again points to `Main_closure.tex`,
+  `h1_four_block_bulk_2026_03_08.md`, and the Day-2 `(+,-)` ledger as the
+  right support stack for the statement
+  `\mathcal D_{a,\partial}^{+-}=0`,
+  while external Toeplitz/Hankel sanity-check keeps supporting
+  boundary/commutator/cap language rather than any return to basis-hunt
+  theorem shapes.
+- the macro route is now frozen explicitly as “three doors plus final” in
+  [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
+  Door 1 = `(+,-)` adapter,
+  Door 2 = `(++)` boundary-plus-cap theorem,
+  Door 3 = compression neutrality,
+  Final = `H2^f -> H3^f -> H4^f -> RH`;
+  this now gives the phase monitor a clean macro position:
+  we are inside Door 1, on its boundary half `P3`.
+- project-level native subagent support is now wired in without breaking the
+  existing file contract:
+  `.codex/agents/q3-worker.toml`,
+  `.codex/agents/q3-researcher.toml`,
+  `.codex/agents/q3-lean-worker.toml`,
+  plus `.codex/config.toml`;
+  this means we can spawn focused workers natively, but they still must enter
+  through `SESSION_ENTRY.md`, the active monitor, and the same
+  `request node -> report file -> orchestrator ingest` loop.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 

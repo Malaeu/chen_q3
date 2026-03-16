@@ -4,6 +4,9 @@ status: ACTIVE
 phase: H1_PO1_direct_attack
 started: 2026-03-16
 mainline: T0-pd -> H-bridge -> H4 -> RH
+macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
+macro_position: Door1 / boundary half / P3
+main_kill_gate: Door2 same-sign boundary-vs-cap separation, with earlier near-route-kill if non-cap cross-sign boundary survives at P3
 current_lane: A
 current_step_id: P3
 current_step_title: cross-sign boundary cancellation
@@ -75,3 +78,19 @@ Exact success criterion:
 - the next theorem attempt is no longer “classify cross-sign remainders”, but
   one exact boundary-cancellation lemma plus a cap-only theorem fork for the
   final `(+,-)` package.
+
+## Macro view
+
+This phase should now be read in the compressed route language:
+
+- Door 1 = `(+,-)` adapter:
+  `P1` tail defect setup, `P2` bulk exactness, `P3` boundary cancellation;
+- Door 2 = `(++)` boundary-plus-cap theorem block;
+- Door 3 = compression neutrality;
+- Final = `H2^f -> H3^f -> H4^f -> RH`.
+
+Current position:
+
+- `P3` is not a standalone global gate;
+- it is the boundary half of Door 1;
+- if it lands, Door 1 becomes very close to closure.

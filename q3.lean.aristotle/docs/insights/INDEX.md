@@ -31,6 +31,7 @@ Files:
 - h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 - h1_po3_cross_sign_boundary_cancellation_2026_03_16.md
 - h1_proof_obligation_table_2026_03_16.md
+- h_bridge_three_doors_macro_map_2026_03_16.md
 - h1_boundary_cap_reset_2026_03_14.md
 - h1_family_gram_a_basis_2026_03_12.md
 - h1_family_gram_prefix_holdout_2026_03_12.md
