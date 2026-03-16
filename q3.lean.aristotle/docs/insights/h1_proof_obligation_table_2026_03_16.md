@@ -165,6 +165,40 @@ This is intentionally asymmetric: the cross-sign block is still the
 calibration block, and the same-sign block is attacked only after that
 calibration is frozen.
 
+## First live attack packet
+
+The next real lemma attack should not start from the whole table at once.
+It should start from the smallest asymmetric packet:
+
+1. `PO1a`: define `\mathcal D_{a,N}` cleanly at the tail level.
+2. `PO1b`: split `\mathcal D_{a,N}` blockwise into `(++),(+-)` plus Hermitian
+   mirrors.
+3. `PO2`: prove cross-sign bulk exactness.
+4. `PO3`: prove cross-sign boundary cancellation.
+
+Only after that packet lands should the local route spend proof energy on
+`PO4` and `PO5`.
+
+Reason:
+
+- `PO1 -> PO3` is exactly where the current sprint asymmetry pays rent;
+- without `PO3`, the same-sign story is still contaminated by a possible
+  cross-sign boundary leak;
+- once `PO3` lands, the same-sign block becomes a clean operator target rather
+  than a classifier cloud.
+
+## Execution routing
+
+This table is also a routing decision for how to use our resources.
+
+- local deterministic work:
+  `PO1`, `PO6`, theorem packaging, notation freeze, compression bookkeeping;
+- structural math / worker-agent style work:
+  `PO3`, `PO4`, `PO5`;
+- Aristotle only after the target is small and exact enough:
+  typically sublemmas extracted from `PO1` or compression-level restatements,
+  not the whole `H1` package at once.
+
 ## Handoff to `H2^f`
 
 The entire point of `A4` is to make the post-`H1` interface rigid.
@@ -194,6 +228,16 @@ So after `A4` the correct parallel posture is:
 - lane `A`: continue with `PO1 -> PO3` as the first real lemma attack;
 - lane `B`: continue the smallest explicit certificate block without touching
   the `H1` theorem shape.
+
+The first exact `B1` receiver should be:
+
+```tex
+S_{J_{\min}}(\theta)=A_{J_{\min}}(\theta)-P_{J_{\min}}(\theta)\ge 0
+```
+
+for one smallest explicit admissible finite dictionary `J_{\min}`, together
+with the coefficient bounds and Poisson-regularized error budget needed to make
+that check theorem-relevant rather than merely experimental.
 
 ## Success criterion for `A4`
 

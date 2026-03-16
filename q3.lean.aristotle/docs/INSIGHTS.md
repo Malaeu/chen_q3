@@ -55,8 +55,8 @@
 
 - активный operational status file:
   `ACTIVE/SPRINT_MONITOR.md`
-- текущий Day 4 artifact:
-  `docs/insights/h1_proof_obligation_table_2026_03_16.md`
+- текущий Day 5 artifact:
+  `docs/insights/psd_pd_smallest_block_step_2026_03_16.md`
 - `A2` landed: `(+,-)` note now separates infinite-tail defect,
   cap/boundary channels, and pure compression bookkeeping, so the next theorem
   attempt is no longer basis-shaped but a clean exact/corrected adapter fork.
@@ -64,6 +64,10 @@
   the same-sign boundary operator `H_a^{ss}` and the finite cap term
   `C_a^{cap}`; any extra bulk or unnamed moving residue is now a route-kill
   signal rather than a prompt for new basis hunting.
+- `A4` landed: the remaining `H1` work is now frozen as an exact lemma ladder
+  `PO1 -> ... -> PO7`, with the first real attack packet equal to
+  `PO1 -> PO3`, and with a rigid handoff contract both to `H2^f` and to the
+  fallback certificate lane `B`.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 

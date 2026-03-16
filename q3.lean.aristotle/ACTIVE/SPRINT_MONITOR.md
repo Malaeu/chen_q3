@@ -7,17 +7,17 @@ mode: two-lane
 mainline: T0-pd -> H-bridge -> H4 -> RH
 lane_A: H1 defect calculus
 lane_B: PSD-pd finite certificates
-current_day: 4
-current_lane: A
-current_step_id: A4
-current_step_title: H1 proof-obligation table
+current_day: 5
+current_lane: B
+current_step_id: B1
+current_step_title: PSD-pd smallest-block step
 current_owner: local-agent
-current_artifact: docs/insights/h1_proof_obligation_table_2026_03_16.md
-last_completed_step_id: A3
-last_completed_step_title: plus-plus boundary inventory
-last_completed_commit: 1637a56b
-next_deliverable: refine docs/insights/h1_proof_obligation_table_2026_03_16.md into the exact lemma order and the handoff contract to H2^f / lane B
-next_verify: rg -n -e "PO[1-7]" -e "H1\\^\\\\infty|H1\\^\\\\partial|H1\\^f|Kill condition|Success criterion" q3.lean.aristotle/docs/insights/h1_proof_obligation_table_2026_03_16.md
+current_artifact: docs/insights/psd_pd_smallest_block_step_2026_03_16.md
+last_completed_step_id: A4
+last_completed_step_title: H1 proof-obligation table
+last_completed_commit: pending current sprint commit
+next_deliverable: freeze one explicit admissible finite dictionary J_min and one exact certificate checklist for PSD-pd
+next_verify: rg -n -e "J_\\{\\\\min\\}|finite symbol|Poisson|error budget|certificate" q3.lean.aristotle/docs/insights/psd_pd_smallest_block_step_2026_03_16.md
 proshka_prompt: q3.lean.aristotle/docs/insights/proshka_q_zeta_core_adapter_prompt_2026_03_15.md
 proshka_context: tmp/proshka_q_zeta_core_adapter_context_2026_03_15.md
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -92,46 +92,45 @@ Template:
 | `A1` | `A` | `done` | `docs/insights/plus_minus_adapter_ledger_2026_03_15.md` |
 | `A2` | `A` | `done` | `docs/insights/plus_minus_cancellation_ledger_2026_03_15.md` |
 | `A3` | `A` | `done` | `docs/insights/plus_plus_boundary_inventory_2026_03_15.md` |
-| `A4` | `A` | `active (draft started)` | `docs/insights/h1_proof_obligation_table_2026_03_16.md` |
-| `B1` | `B` | `queued` | smallest admissible finite-block `PSD-pd` step |
+| `A4` | `A` | `done` | `docs/insights/h1_proof_obligation_table_2026_03_16.md` |
+| `B1` | `B` | `active (draft started)` | `docs/insights/psd_pd_smallest_block_step_2026_03_16.md` |
 | `P1` | `P` | `completed (ingested)` | `ACTIVE/requests/proshka_q_zeta_a2_plus_minus_2026_03_15/node.md` -> `report.md` |
 
 ## Current step
 
-### `A4` — H1 proof-obligation table
+### `B1` — PSD-pd smallest-block step
 
 Goal:
 
-- convert the landed `A2`/`A3` note pair into an exact lemma ladder;
-- separate tail-level operator claims from finite-section descent claims;
-- make the handoff to `H2^f` and lane `B` explicit.
+- keep lane `B` alive with one smallest explicit finite certificate step;
+- freeze one admissible finite dictionary and one exact symbol target;
+- avoid letting the fallback route explode into a second free-form project.
 
 Required output:
 
-- exact proof-obligation table;
-- exact next-lemma order;
-- exact stage split `H1^\infty -> H1^\partial -> H1^f`;
-- explicit route-kill criteria;
-- explicit handoff after `A4`.
+- one explicit admissible dictionary `J_min`;
+- one exact symbol `S_{J_{\min}}(\theta)`;
+- one certificate checklist;
+- one explicit error-budget route;
+- one binary viability verdict.
 
 Exact success criterion:
 
 - after reading the new note, the next theorem attempt is unambiguously
-  a finite ordered list of lemmas rather than another free-form exploration.
+  one explicit finite certificate task rather than “continue PSD-pd somehow”.
 
 ## Next after current step
 
-If `A4` lands:
+If `B1` lands:
 
-- switch `current_step_id` to `B1`;
-- build the smallest explicit `PSD-pd` finite-block step while keeping the
-  `H1` lemma order frozen;
-- keep lane B alive but secondary.
+- keep both lane outputs frozen;
+- move to the sprint binary decision phase:
+  adapter theorem viable versus route needs narrowing.
 
-If `A4` fails:
+If `B1` fails:
 
 - do not open a new route;
-- mark `A4` as `blocked`;
+- mark `B1` as `blocked`;
 - write the exact obstruction in `docs/INSIGHTS.md`;
 - reduce the target to a weaker corrected theorem or to a named unresolved term.
 
