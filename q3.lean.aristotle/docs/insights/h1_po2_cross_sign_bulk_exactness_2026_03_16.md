@@ -256,6 +256,42 @@ So the correct handoff contract is:
 - the cap channel may remain explicit throughout this handoff;
 - compression stays out of scope until `PO6`.
 
+## Ingest checklist for worker input
+
+If a parallel worker report arrives on `PO2`, it should be judged against the
+following checklist rather than absorbed wholesale.
+
+### Keep immediately
+
+- an exact theorem-shaped statement equivalent to
+  `\mathcal D_{a,\mathrm{bulk}}^{+-}=0`;
+- an equivalent `boundary/cap-only` reformulation;
+- a sharper route-kill condition than the one already recorded here;
+- a cleaner handoff contract from `PO2` to `PO3`.
+
+### Keep only as supporting rationale
+
+- operator-theoretic explanation of why cross-sign bulk should vanish;
+- comparison with the same-sign block that sharpens the asymmetry;
+- clarification of whether the cap channel should already be named in `PO2`.
+
+### Reject on sight
+
+- anything that reopens rank/basis language;
+- anything that introduces finite-section numerics into `PO2`;
+- anything that treats a surviving unnamed bulk residue as “still acceptable”;
+- any attempt to turn `PO2` into a same-sign `(++)` theorem.
+
+## Local next move if no worker result lands
+
+If the worker remains silent, the next local tightening should be:
+
+1. rewrite `PO2a` as one exact lemma statement plus one equivalent finite-shadow
+   corollary;
+2. make explicit whether the preferred theorem output is exact cross-sign
+   identity or cap-only fallback;
+3. only then advance to `PO3`.
+
 ## What `PO2` must not do
 
 - no finite-section compression bookkeeping;
