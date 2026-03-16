@@ -15,7 +15,7 @@ current_owner: local-agent
 current_artifact: docs/insights/psd_pd_smallest_block_step_2026_03_16.md
 last_completed_step_id: A4
 last_completed_step_title: H1 proof-obligation table
-last_completed_commit: pending current sprint commit
+last_completed_commit: 89eb15f5
 next_deliverable: freeze one explicit admissible finite dictionary J_min and one exact certificate checklist for PSD-pd
 next_verify: rg -n -e "J_\\{\\\\min\\}|finite symbol|Poisson|error budget|certificate" q3.lean.aristotle/docs/insights/psd_pd_smallest_block_step_2026_03_16.md
 proshka_prompt: q3.lean.aristotle/docs/insights/proshka_q_zeta_core_adapter_prompt_2026_03_15.md
