@@ -25,8 +25,9 @@ Current CLI note:
 - interactive Codex is the preferred place for native subagent spawning;
 - in local non-interactive `codex exec`, custom-agent files are visible, but
   explicit custom-agent selection is not yet fully ergonomic/reliable;
-- if needed, run a second narrow `codex exec` worker with the same
-  request/report contract instead of waiting for perfect native spawn UX.
+- if needed, run a second narrow `codex exec` worker, take its final payload
+  from stdout or `--output-last-message`, and let the main orchestrator write
+  the `report.md` itself instead of relying on child write-back.
 
 ## Aristotle Integration: Principles
 

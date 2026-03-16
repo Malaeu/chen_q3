@@ -51,8 +51,9 @@ Operational consequence:
 
 - preferred native custom-agent usage = interactive Codex app / interactive CLI;
 - reliable non-interactive fallback = launch a second `codex exec` process with
-  the exact worker contract in the prompt, then keep the same
-  `request node -> report file -> orchestrator ingest` loop.
+  the exact worker contract in the prompt, but let the child return its result
+  through stdout / `--output-last-message`, and then let the orchestrator write
+  the final `report.md`.
 
 ## Roles
 
@@ -224,7 +225,7 @@ non-interactive CLI, use this fallback:
 ```text
 codex exec --dangerously-bypass-approvals-and-sandbox -C <repo> "
 Ты worker agent внутри active phase/sprint ...
-<same narrow request/report contract as the manual worker prompt>
+<same narrow worker contract, but return the payload in the final message>
 "
 ```
 
@@ -232,8 +233,9 @@ This is still a real second Codex process.
 It is acceptable as long as:
 
 - the read set stays narrow;
-- the worker writes only to the designated report file;
-- orchestrator still performs the ingest.
+- the child does not re-map the whole project;
+- the orchestrator writes the designated `report.md` after ingesting the child
+  output.
 
 ## Persona note
 

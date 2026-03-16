@@ -141,7 +141,9 @@
   custom agent files are discoverable and `codex exec` itself is healthy, but
   non-interactive custom-agent forcing via plain-language `Spawn q3_worker`
   is not yet deterministic enough; the reliable fallback is to launch a second
-  narrow `codex exec` worker process with the same request/report contract.
+  narrow `codex exec` worker process and ingest its final stdout payload back
+  into the canonical `report.md` from the main orchestrator, because direct
+  child write-back proved less reliable in the smoke test.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 
