@@ -7,7 +7,7 @@
 
 ---
 
-Total nodes: 10
+Total nodes: 12
 
 ## Active (PrimeCert)
 - proshka_primecert_closure_2026_01_27: `requests/proshka_primecert_closure_2026_01_27/node.md`
@@ -16,9 +16,10 @@ Total nodes: 10
 - proshka_heat_pp_pilot_2026_02_03: `requests/proshka_heat_pp_pilot_2026_02_03/node.md`
 
 ## Active (Phase)
-- proshka_h1_po2_cross_sign_bulk_2026_03_16: `requests/proshka_h1_po2_cross_sign_bulk_2026_03_16/node.md`
+- proshka_h1_po3_cross_sign_boundary_2026_03_16: `requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/node.md`
 
 ## Recent (Phase)
+- proshka_h1_po2_cross_sign_bulk_2026_03_16: `requests/proshka_h1_po2_cross_sign_bulk_2026_03_16/node.md`
 - proshka_h1_po1_tail_defect_2026_03_16: `requests/proshka_h1_po1_tail_defect_2026_03_16/node.md`
 
 ## Active (Sprint)

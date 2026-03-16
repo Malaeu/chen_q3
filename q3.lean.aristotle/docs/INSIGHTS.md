@@ -105,6 +105,12 @@
   `fallback = boundary/cap-only remainder`,
   `compression out of scope until PO6`,
   and `PO3 = \mathcal D_{a,\partial}^{+-}=0` as the one-line next handoff.
+- `P3` is now activated as the next direct theorem receiver:
+  [h1_po3_cross_sign_boundary_cancellation_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md)
+  freezes the boundary-cancellation gate on the cross-sign block and makes the
+  intended post-`PO3` picture explicit:
+  `(+,-)` should collapse to exactness or cap-only, and only then should proof
+  energy move to same-sign `PO4/PO5`.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 
