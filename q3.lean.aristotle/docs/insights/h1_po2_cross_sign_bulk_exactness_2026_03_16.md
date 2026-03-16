@@ -98,6 +98,80 @@ w_{rs}(a)=\kappa(a)q_{rs}
 does not obstruct `PO2`, because `PO2` is already formulated on the filtered
 tail object `\mathcal D_{a,N}^{+-}`, not on the raw Toeplitz-vs-Weil entries.
 
+## Research synthesis for this blocker
+
+Local embedding search on `q3_docs` keeps returning the same four anchors:
+
+- `h1_four_block_bulk_2026_03_08.md` as the exact filtered bulk formula layer;
+- `Main_closure.tex` as the strongest older finite receiver for exact `(+,-)`;
+- `h1_raw_entry_reduction_2026_03_08.md` as the place where raw mismatch is
+  explicitly separated from the filtered target;
+- `IMPLEMENTATION_PLAN.md` / `PROJECT_ORCHESTRATOR.md` as confirmation that
+  the direct filtered bulk identities are still the live mathematical route.
+
+External sanity-check from the finite-section / Toeplitz-Hankel side does not
+push against this picture: the natural place for any non-bulk remainder is a
+boundary/finite-section channel, not a mysterious floating bulk defect. So the
+working `PO2` posture stays aggressive:
+
+```tex
+\text{either cross-sign bulk vanishes, or the current reset is wrong.}
+```
+
+## Proof-facing reduction
+
+The note is only useful if it shrinks to a short local packet.
+
+### PO2.1. Entrywise filtered bulk receiver
+
+For `n,m>N`, freeze the cross-sign filtered entries as
+
+```tex
+M_{mn}^{+-}(a)
+=
+\left\langle G_g[a]\phi_n^+[a],\phi_m^-[a]\right\rangle
+=
+W(\psi_n^+[a]*\widetilde{\psi_m^-[a]}).
+```
+
+This is the exact Suzuki-side bulk object that must be compared to the
+corresponding entries of `\kappa_{+-}(a)Q_\infty^{+-}`.
+
+### PO2.2. Bulk exactness lemma
+
+The first real theorem attempt inside `P2` should be the tail-level statement
+
+```tex
+\mathcal D_{a,\mathrm{bulk}}^{+-}=0.
+```
+
+Equivalent receiver:
+
+```tex
+\mathcal D_{a,N}^{+-}
+=
+\mathcal D_{a,\partial}^{+-}
++ \mathcal D_{a,\mathrm{cap}}^{+-}.
+```
+
+That is the narrowest acceptable theorem output before `PO3`.
+
+### PO2.3. Bulk route-kill lemma
+
+Any statement of the form
+
+```tex
+\mathcal D_{a,N}^{+-}
+=
+\mathcal D_{a,\mathrm{bulk}}^{+-}
++ \cdots,
+\qquad
+\mathcal D_{a,\mathrm{bulk}}^{+-}\neq 0,
+```
+
+with no operator reclassification into boundary or cap, is not a weakened win.
+It is the explicit route-kill event for the current boundary/cap reset.
+
 ## Admissible remainder channels after `PO2`
 
 If `PO2` lands, only these channels may still remain in `(+,-)`:
@@ -165,6 +239,22 @@ where `\mathcal D_{a,\partial}^{+-}` is now a named residual targeted next by
 ```
 
 This is not “one more correction channel”. It is the exact route-kill event.
+
+## Exact handoff to `PO3`
+
+If `PO2` lands in acceptable form, the next note should not reopen the whole
+cross-sign story. It should read only:
+
+```tex
+\mathcal D_{a,\partial}^{+-}=0.
+```
+
+So the correct handoff contract is:
+
+- `PO2` is allowed to leave a named boundary term;
+- `PO3` is required to kill it;
+- the cap channel may remain explicit throughout this handoff;
+- compression stays out of scope until `PO6`.
 
 ## What `PO2` must not do
 

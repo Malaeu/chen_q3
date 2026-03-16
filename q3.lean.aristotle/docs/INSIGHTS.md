@@ -94,6 +94,11 @@
   equivalently that the only admissible remainder channels are boundary/cap,
   with unnamed cross-sign bulk residue promoted to an explicit route-kill
   condition.
+- mandatory research-pass for `P2` confirms the same local picture from both
+  oracle recall and external sanity-check: `h1_four_block_bulk` and
+  `Main_closure.tex` still point to exact filtered `(+,-)` bulk, raw mismatch
+  remains irrelevant to this filtered claim, and any non-bulk survivor should
+  be treated as boundary/cap rather than as a new floating bulk defect.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 
