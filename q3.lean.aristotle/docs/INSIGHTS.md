@@ -136,6 +136,12 @@
   this means we can spawn focused workers natively, but they still must enter
   through `SESSION_ENTRY.md`, the active monitor, and the same
   `request node -> report file -> orchestrator ingest` loop.
+- smoke-testing of the new agent layer on local `codex-cli 0.98.0` gave one
+  useful operational split:
+  custom agent files are discoverable and `codex exec` itself is healthy, but
+  non-interactive custom-agent forcing via plain-language `Spawn q3_worker`
+  is not yet deterministic enough; the reliable fallback is to launch a second
+  narrow `codex exec` worker process with the same request/report contract.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 

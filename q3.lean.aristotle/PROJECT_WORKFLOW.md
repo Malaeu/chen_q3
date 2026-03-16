@@ -20,6 +20,14 @@ control-plane:
 - subagents are for parallelization, not for replacing the file-based source of
   truth.
 
+Current CLI note:
+
+- interactive Codex is the preferred place for native subagent spawning;
+- in local non-interactive `codex exec`, custom-agent files are visible, but
+  explicit custom-agent selection is not yet fully ergonomic/reliable;
+- if needed, run a second narrow `codex exec` worker with the same
+  request/report contract instead of waiting for perfect native spawn UX.
+
 ## Aristotle Integration: Principles
 
 Aristotle берёт **informal математику** (markdown с LaTeX) и генерирует **Lean 4 код**.

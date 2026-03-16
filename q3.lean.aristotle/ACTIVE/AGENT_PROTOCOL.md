@@ -36,6 +36,24 @@ Project-scoped agent config:
 - `q3_researcher` = semantic search + source synthesis по одному blocker-у;
 - `q3_lean_worker` = Aristotle/Lean integration worker.
 
+### Current reliability note
+
+Observed on local `codex-cli 0.98.0`:
+
+- project-scoped agent files in `.codex/agents/` are visible and usable as
+  configuration assets;
+- but non-interactive `codex exec` does not expose a simple explicit
+  `--agent <name>` selector;
+- plain-language prompts like `Spawn q3_worker ...` are therefore not yet a
+  fully reliable way to force native custom-agent delegation.
+
+Operational consequence:
+
+- preferred native custom-agent usage = interactive Codex app / interactive CLI;
+- reliable non-interactive fallback = launch a second `codex exec` process with
+  the exact worker contract in the prompt, then keep the same
+  `request node -> report file -> orchestrator ingest` loop.
+
 ## Roles
 
 ### 1. Orchestrator
@@ -197,6 +215,25 @@ Spawn q3_lean_worker for lemma <lemma_name>.
 Have it follow the Aristotle workflow exactly, keep the request narrow, and
 report compile status plus any hole-free extracted lemmas.
 ```
+
+## Reliable fallback runner
+
+When native custom-agent selection is not deterministic enough in
+non-interactive CLI, use this fallback:
+
+```text
+codex exec --dangerously-bypass-approvals-and-sandbox -C <repo> "
+Ты worker agent внутри active phase/sprint ...
+<same narrow request/report contract as the manual worker prompt>
+"
+```
+
+This is still a real second Codex process.
+It is acceptable as long as:
+
+- the read set stays narrow;
+- the worker writes only to the designated report file;
+- orchestrator still performs the ingest.
 
 ## Persona note
 
