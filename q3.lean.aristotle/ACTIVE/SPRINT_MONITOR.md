@@ -15,7 +15,7 @@ current_owner: local-agent
 current_artifact: docs/insights/q_zeta_core_sprint_decision_2026_03_16.md
 last_completed_step_id: B1
 last_completed_step_title: PSD-pd smallest-block step
-last_completed_commit: pending current sprint commit
+last_completed_commit: 6752a732
 next_deliverable: start the post-sprint theorem/certificate phase from PO1->PO3 and the canonical J_min certificate
 next_verify: rg -n -e "Outputs achieved|Decision|Recommended next phase" q3.lean.aristotle/docs/insights/q_zeta_core_sprint_decision_2026_03_16.md
 proshka_prompt: q3.lean.aristotle/docs/insights/proshka_q_zeta_core_adapter_prompt_2026_03_15.md
