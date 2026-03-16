@@ -23,6 +23,8 @@ Project-scoped agent config:
 - `.codex/agents/q3-worker.toml`
 - `.codex/agents/q3-researcher.toml`
 - `.codex/agents/q3-lean-worker.toml`
+- supporting app playbook:
+  `q3.lean.aristotle/docs/insights/codex_app_subagent_playbook_2026_03_16.md`
 
 Это не новый workflow, а тот же самый loop в более удобной форме:
 
@@ -54,6 +56,12 @@ Operational consequence:
   the exact worker contract in the prompt, but let the child return its result
   through stdout / `--output-last-message`, and then let the orchestrator write
   the final `report.md`.
+
+Short version:
+
+- app / interactive CLI first;
+- file-based request/report loop stays canonical;
+- use the playbook note for Mac-native launch details and pasteable prompts.
 
 ## Roles
 

@@ -15,6 +15,7 @@ Files:
 - breakthrough_proshka_full_proof_2026_01_14.md
 - C3_prime_cap_correctness_2026_01_19.md
 - C3_RKHS_vs_window_approach_2026_01_19.md
+- codex_app_subagent_playbook_2026_03_16.md
 - carleson_implicit_proof_2026_01_17 2.md
 - carleson_implicit_proof_2026_01_17.md
 - check_axioms_prebuild_a3_floor_2026_01_16.md
@@ -27,6 +28,7 @@ Files:
 - floor_cert_tcritical_2026_01_25.md
 - h_cap_numerical_estimates_2026_01_14.md
 - h1_cap_defect_theorem_shape_2026_03_10.md
+- h1_external_foundations_split_2026_03_16.md
 - h1_po1_tail_defect_attack_2026_03_16.md
 - h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 - h1_po3_cross_sign_boundary_cancellation_2026_03_16.md

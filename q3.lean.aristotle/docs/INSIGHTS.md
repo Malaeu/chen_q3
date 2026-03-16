@@ -144,6 +144,19 @@
   narrow `codex exec` worker process and ingest its final stdout payload back
   into the canonical `report.md` from the main orchestrator, because direct
   child write-back proved less reliable in the smoke test.
+- a new supporting foundations note now freezes the clean boundary between
+  what is externally proved and what is still our live theorem target in `H1`:
+  Suzuki already supplies the endpoint and tail/cap geometry, classical
+  Toeplitz/Hankel theory supplies the right boundary language, paired operators
+  support the mixed-block asymmetry, but the exact filtered split theorem is
+  still ours to prove; see
+  `docs/insights/h1_external_foundations_split_2026_03_16.md`.
+- a new supporting Mac playbook now standardizes native Codex subagent usage
+  without turning undocumented `codex exec` behavior into infrastructure:
+  app / interactive CLI is the preferred launch surface, the request/report
+  loop stays canonical, and the reliable non-interactive fallback is still
+  orchestrator-ingests-child-stdout; see
+  `docs/insights/codex_app_subagent_playbook_2026_03_16.md`.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 
