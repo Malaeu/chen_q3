@@ -7,17 +7,17 @@ mode: two-lane
 mainline: T0-pd -> H-bridge -> H4 -> RH
 lane_A: H1 defect calculus
 lane_B: PSD-pd finite certificates
-current_day: 3
+current_day: 4
 current_lane: A
-current_step_id: A3
-current_step_title: plus-plus boundary inventory
+current_step_id: A4
+current_step_title: H1 proof-obligation table
 current_owner: local-agent
-current_artifact: docs/insights/plus_plus_boundary_inventory_2026_03_15.md
-last_completed_step_id: A2
-last_completed_step_title: plus-minus cancellation ledger
+current_artifact: docs/insights/h1_proof_obligation_table_2026_03_16.md
+last_completed_step_id: A3
+last_completed_step_title: plus-plus boundary inventory
 last_completed_commit: pending current sprint commit
-next_deliverable: turn docs/insights/plus_plus_boundary_inventory_2026_03_15.md into a named same-sign channel inventory with a sharp route-kill criterion
-next_verify: rg -n -e "\\(\\+\\+\\).*boundary" -e "same-sign|cap|bulk|compression|SS[1-4]" q3.lean.aristotle/docs/insights/plus_plus_boundary_inventory_2026_03_15.md
+next_deliverable: refine docs/insights/h1_proof_obligation_table_2026_03_16.md into the exact lemma order and the handoff contract to H2^f / lane B
+next_verify: rg -n -e "PO[1-7]" -e "H1\\^\\\\infty|H1\\^\\\\partial|H1\\^f|Kill condition|Success criterion" q3.lean.aristotle/docs/insights/h1_proof_obligation_table_2026_03_16.md
 proshka_prompt: q3.lean.aristotle/docs/insights/proshka_q_zeta_core_adapter_prompt_2026_03_15.md
 proshka_context: tmp/proshka_q_zeta_core_adapter_context_2026_03_15.md
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -91,48 +91,47 @@ Template:
 | --- | --- | --- | --- |
 | `A1` | `A` | `done` | `docs/insights/plus_minus_adapter_ledger_2026_03_15.md` |
 | `A2` | `A` | `done` | `docs/insights/plus_minus_cancellation_ledger_2026_03_15.md` |
-| `A3` | `A` | `active (draft started)` | `docs/insights/plus_plus_boundary_inventory_2026_03_15.md` |
-| `A4` | `A` | `queued` | proof-obligation table `H1^\infty -> H1^\partial -> H1^f` |
+| `A3` | `A` | `done` | `docs/insights/plus_plus_boundary_inventory_2026_03_15.md` |
+| `A4` | `A` | `active (draft started)` | `docs/insights/h1_proof_obligation_table_2026_03_16.md` |
 | `B1` | `B` | `queued` | smallest admissible finite-block `PSD-pd` step |
 | `P1` | `P` | `completed (ingested)` | `ACTIVE/requests/proshka_q_zeta_a2_plus_minus_2026_03_15/node.md` -> `report.md` |
 
 ## Current step
 
-### `A3` — plus-plus boundary inventory
+### `A4` — H1 proof-obligation table
 
 Goal:
 
-- turn the asymmetry from `A2` into an explicit same-sign inventory;
-- separate boundary/cap candidates from genuine bulk mismatch;
-- make the next `(++)` theorem attempt explicit without any basis language.
+- convert the landed `A2`/`A3` note pair into an exact lemma ladder;
+- separate tail-level operator claims from finite-section descent claims;
+- make the handoff to `H2^f` and lane `B` explicit.
 
 Required output:
 
-- named same-sign boundary channel;
-- named cap channel;
-- explicit bulk-exclusion target;
-- explicit compression-bookkeeping target;
-- route-kill criterion for any unnamed residue.
+- exact proof-obligation table;
+- exact next-lemma order;
+- exact stage split `H1^\infty -> H1^\partial -> H1^f`;
+- explicit route-kill criteria;
+- explicit handoff after `A4`.
 
 Exact success criterion:
 
 - after reading the new note, the next theorem attempt is unambiguously
-  `M^{++}(a)-\kappa_{+-}(a)\widetilde Q^{++}=H_a^{\mathrm{ss}}+C_a^{\mathrm{cap}}`,
-  with a clear statement of what counts as admissible survival and what kills
-  the theorem picture.
+  a finite ordered list of lemmas rather than another free-form exploration.
 
 ## Next after current step
 
-If `A3` lands:
+If `A4` lands:
 
-- switch `current_step_id` to `A4`;
-- build the proof-obligation table `H1^\infty -> H1^\partial -> H1^f`;
+- switch `current_step_id` to `B1`;
+- build the smallest explicit `PSD-pd` finite-block step while keeping the
+  `H1` lemma order frozen;
 - keep lane B alive but secondary.
 
-If `A3` fails:
+If `A4` fails:
 
 - do not open a new route;
-- mark `A3` as `blocked`;
+- mark `A4` as `blocked`;
 - write the exact obstruction in `docs/INSIGHTS.md`;
 - reduce the target to a weaker corrected theorem or to a named unresolved term.
 

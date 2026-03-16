@@ -55,11 +55,15 @@
 
 - активный operational status file:
   `ACTIVE/SPRINT_MONITOR.md`
-- текущий Day 3 artifact:
-  `docs/insights/plus_plus_boundary_inventory_2026_03_15.md`
+- текущий Day 4 artifact:
+  `docs/insights/h1_proof_obligation_table_2026_03_16.md`
 - `A2` landed: `(+,-)` note now separates infinite-tail defect,
   cap/boundary channels, and pure compression bookkeeping, so the next theorem
   attempt is no longer basis-shaped but a clean exact/corrected adapter fork.
+- `A3` landed: `(++)` note now allows only two live theorem channels,
+  the same-sign boundary operator `H_a^{ss}` and the finite cap term
+  `C_a^{cap}`; any extra bulk or unnamed moving residue is now a route-kill
+  signal rather than a prompt for new basis hunting.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 
