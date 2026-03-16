@@ -2,8 +2,8 @@
 
 ## Purpose
 
-Этот файл фиксирует один и тот же loop для параллельного агента в активном
-спринте.
+Этот файл фиксирует один и тот же loop для параллельного агента в активной
+phase/sprint работе.
 
 Идея простая:
 
@@ -19,7 +19,8 @@
 
 Обязан:
 
-- держать `ACTIVE/SPRINT_MONITOR.md` как operational single source of truth;
+- держать активный `ACTIVE/PHASE_MONITOR.md` или `ACTIVE/SPRINT_MONITOR.md`
+  как operational single source of truth;
 - создавать текущий request node для второго агента;
 - принимать его report и переводить результат в local sprint state;
 - решать, что идёт в source-of-truth, а что остаётся candidate.
@@ -39,10 +40,12 @@
 Worker agent читает ровно это:
 
 1. `q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
-2. `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md`
-3. `q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md`
-4. текущий request node из `q3.lean.aristotle/ACTIVE/requests/.../node.md`
-5. только те supporting files, которые перечислены в request node
+2. `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md`, если он существует и `ACTIVE`
+3. `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md`, если phase-monitor неактивен,
+   а sprint-monitor активен
+4. `q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md`
+5. текущий request node из `q3.lean.aristotle/ACTIVE/requests/.../node.md`
+6. только те supporting files, которые перечислены в request node
 
 Если blocker не возник, worker agent не должен заново перечитывать весь
 control-plane.
@@ -51,7 +54,9 @@ control-plane.
 
 ### Orchestrator writes
 
-- sprint state:
+- active state:
+  `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md`
+  or
   `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md`
 - current request:
   `q3.lean.aristotle/ACTIVE/requests/<request_id>/node.md`
@@ -71,7 +76,7 @@ Every active request node must contain:
 
 - `Status`
 - `Source`
-- `Sprint link`
+- `Phase/Sprint link`
 - `Why we are here`
 - `Exact task`
 - `Required deliverables`
@@ -95,7 +100,7 @@ Every worker report must contain:
 Первое сообщение worker agent должно быть коротким:
 
 ```text
-Спринт активен, беру request <request_id>.
+Активная фаза/спринт видна, беру request <request_id>.
 Читаю request node и указанные supporting files, результат пишу в report.md.
 Если blocker не возникнет, остальные control docs не трогаю.
 ```
@@ -105,10 +110,10 @@ Every worker report must contain:
 После получения worker report orchestrator делает ровно это:
 
 1. проверяет report и новые артефакты;
-2. обновляет `ACTIVE/SPRINT_MONITOR.md` first;
+2. обновляет активный `PHASE_MONITOR.md` или `SPRINT_MONITOR.md` first;
 3. коротко логирует synthesis в `docs/INSIGHTS.md`;
 4. только потом меняет `IMPLEMENTATION_PLAN.md` / `SESSION_ENTRY.md`, если
-   реально изменилась стадия спринта.
+   реально изменилась стадия работы.
 
 ## Prompt template for the worker
 
@@ -116,7 +121,7 @@ Every worker report must contain:
 только request path и supporting files.
 
 ```text
-Ты второй агент внутри active sprint в repo
+Ты второй агент внутри active phase/sprint в repo
 /Users/emalam/Documents/GitHub/rh_lean_01_2026.
 
 Работай не как оркестратор, а как worker agent.
@@ -124,7 +129,8 @@ Every worker report must contain:
 Протокол:
 1. Прочитай только:
    - q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md
-   - q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md
+   - q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md if active
+   - q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md if no active phase monitor
    - q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
    - <REQUEST_NODE>
 2. Потом прочитай только supporting files, перечисленные в request node.

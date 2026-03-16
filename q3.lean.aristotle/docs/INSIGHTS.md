@@ -73,6 +73,19 @@
   `J_{\min}=\{0,1\}`, `K=0.2`, `\Delta=0.15`, with the degree-1 symbol
   `S_{J_{\min}}(\theta)=(\alpha_0-\beta_0)+2(\alpha_1-\beta_1)\cos\theta`
   and the current viable pilot regime `\delta<0.0124`.
+- post-sprint active phase is now frozen separately: `PO1` starts with the
+  tail-level defect
+  `\mathcal D_{a,N}=S_{a,\infty,N}^*G_g[a]S_{a,\infty,N}
+   -\kappa_{+-}(a)\Delta_N^*Q_\infty\Delta_N`
+  and reduces the next theorem attempt to one definition lemma plus one
+  block-splitting lemma; see
+  `docs/insights/h1_po1_tail_defect_attack_2026_03_16.md`.
+- the `PO1` receiver is now strengthened to theorem-shaped `PO1a/PO1b` on the
+  algebraic two-sided tail space, and the parallel-worker loop has been
+  generalized from the closed sprint monitor to the active phase monitor, so a
+  second agent can now enter directly through
+  `ACTIVE/PHASE_MONITOR.md -> ACTIVE/AGENT_PROTOCOL.md -> ACTIVE/requests/proshka_h1_po1_tail_defect_2026_03_16/node.md`
+  without rereading the closed sprint state.
 
 ## Final result (2026-03-08) — scalar compact spectral route becomes the primary constructive frontier
 

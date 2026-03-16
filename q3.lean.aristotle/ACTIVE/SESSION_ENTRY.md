@@ -16,20 +16,21 @@
 ## Обязательный read order
 
 1. `SESSION_ENTRY.md`
-2. `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md` if it exists and is `ACTIVE`
-3. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
-4. `IMPLEMENTATION_PLAN.md`
-5. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
-6. `q3.lean.aristotle/docs/INSIGHTS.md`
+2. `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md` if it exists and is `ACTIVE`
+3. `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md` if it exists and is `ACTIVE`
+4. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+5. `IMPLEMENTATION_PLAN.md`
+6. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+7. `q3.lean.aristotle/docs/INSIGHTS.md`
 
 Если работаешь с embeddings / incoming notes, потом ещё:
 
-7. `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
+8. `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
 
 Если работаешь с Aristotle:
 
-7. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`
-8. `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+8. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`
+9. `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
 
 ## Текущий public mainline
 
@@ -78,8 +79,20 @@
 
 ## Текущий практический next step
 
-Если `ACTIVE/SPRINT_MONITOR.md` существует и имеет `status: ACTIVE`, то он
-является оперативным sprint single source of truth:
+Если `ACTIVE/PHASE_MONITOR.md` существует и имеет `status: ACTIVE`, то он
+является оперативным post-sprint single source of truth:
+
+- продолжать ровно `current_step_id`;
+- открывать только `current_artifact`, если он указан;
+- для второго агента использовать
+  `ACTIVE/AGENT_PROTOCOL.md` + `worker_request` / `worker_report` из
+  `PHASE_MONITOR.md`;
+- не пересобирать frontier заново;
+- обновлять сперва `PHASE_MONITOR.md`, потом уже `INSIGHTS/PLAN` при нужде.
+
+Если `ACTIVE/PHASE_MONITOR.md` неактивен, а `ACTIVE/SPRINT_MONITOR.md`
+существует и имеет `status: ACTIVE`, то он является оперативным sprint single
+source of truth:
 
 - продолжать ровно `current_step_id`;
 - открывать только `current_artifact`, если он указан;
@@ -101,14 +114,15 @@
   improves the canonical operator layer, improves a translation into it, or
   produces a kill certificate;
 - current execution mode:
-  `Q_\zeta`-core short-circuit sprint;
-  lane A = `H1` defect calculus,
-  lane B = finite-dictionary `PSD-pd`,
-  with the first theorem-sized target frozen as the `(+,-)` adapter theorem
-  `M^{+-}(a)=\kappa_{+-}(a)\widetilde Q^{+-}+E_a^{+-}`;
-  Day 1 local artifact is now the `(+,-)` adapter ledger,
-  while Proshka is used only for structural theorem-shape and blockwise
-  cancellations;
+  post-sprint direct theorem/certificate phase;
+  lane A starts from the frozen `H1` lemma ladder and attacks
+  `PO1 -> PO3`, beginning with the tail-defect definition note
+  `docs/insights/h1_po1_tail_defect_attack_2026_03_16.md`;
+  lane B keeps the canonical smallest-block certificate alive through
+  `J_{\min}=\{0,1\}`, `K=0.2`, `\Delta=0.15`,
+  and the degree-1 finite symbol
+  `S_{J_{\min}}(\theta)=(\alpha_0-\beta_0)+2(\alpha_1-\beta_1)\cos\theta`;
+  Proshka remains structural support only, not control-plane;
 - symmetric two-sided filtered H-bridge:
   `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,

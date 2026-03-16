@@ -12,17 +12,19 @@ Keep this file short. Put details in linked docs.
 
 ## 0) Start here (order matters)
 
-1) `ACTIVE/SPRINT_MONITOR.md` — active sprint state if present
-1.1) `ACTIVE/AGENT_PROTOCOL.md` — orchestrator/worker loop for parallel agent
-2) `ACTIVE/orchestrator.md` — current status + next steps
-3) `ACTIVE/chain_status.md` — single-scale chain summary
-3.1) `ACTIVE/MAIN_CHAIN_DEPS.md` — **actual** RH dependencies vs repo legacy
-4) `ACTIVE/insights.md` — live insights index (links only)
-4) `ACTIVE/workflow.md` — workflow rules
-5) `ACTIVE/tree.md` — navigation tree (what depends on what)
-6) `ACTIVE/refs/SPECS_INDEX.md` — curated spec pointers + constants checklist
-7) `ACTIVE/refs/Q3_BLOCK_MAP.md` — Lean ↔ paper block map
-8) `ACTIVE/refs/ERS_SUMMARY.md` — consolidated ERS legacy summary
+1) `ACTIVE/PHASE_MONITOR.md` — active post-sprint theorem/certificate phase if present
+1.1) `ACTIVE/AGENT_PROTOCOL.md` — if a second agent is used in the active phase
+2) `ACTIVE/SPRINT_MONITOR.md` — active sprint state if present
+3) `ACTIVE/AGENT_PROTOCOL.md` — orchestrator/worker loop for parallel agent
+4) `ACTIVE/orchestrator.md` — current status + next steps
+5) `ACTIVE/chain_status.md` — single-scale chain summary
+5.1) `ACTIVE/MAIN_CHAIN_DEPS.md` — **actual** RH dependencies vs repo legacy
+6) `ACTIVE/insights.md` — live insights index (links only)
+7) `ACTIVE/workflow.md` — workflow rules
+8) `ACTIVE/tree.md` — navigation tree (what depends on what)
+9) `ACTIVE/refs/SPECS_INDEX.md` — curated spec pointers + constants checklist
+10) `ACTIVE/refs/Q3_BLOCK_MAP.md` — Lean ↔ paper block map
+11) `ACTIVE/refs/ERS_SUMMARY.md` — consolidated ERS legacy summary
 
 Note: spec sources are legacy/background. For mainline decisions, return to
 `ACTIVE/chain_status.md` and `ACTIVE/orchestrator.md`.
