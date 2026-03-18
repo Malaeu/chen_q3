@@ -50,6 +50,68 @@ So the honest `P3` plan is now:
 - treat any non-cap cross-sign boundary residue as a route-kill or
   near-route-kill event.
 
+## Refined source map (2026-03-18)
+
+The 2026-03-18 research refresh makes the `P3` support stack more exact.
+
+### 1. `Main_closure.tex` still gives the primary filtered receiver
+
+The main manuscript still points to the same mixed-block calibration story:
+
+- `full/sections/Main_closure.tex` — `eq:H1-filtered-bulk-plus-minus`
+- `full/sections/Main_closure.tex` — `prop:H1-raw-entry-reduction`
+- `full/sections/Main_closure.tex` — `prop:H1-filtered-q-blocks`
+- `full/sections/Main_closure.tex` — `cor:H1-bulk-symmetry-reduction`
+
+Operational reading:
+
+- `(+,-)` is still the filtered calibration block;
+- once `\widetilde Q_{M,N}` is used correctly, no extra section-boundary
+  defect should survive as theorem content;
+- any leftover mixed-block channel therefore has to be cap-only or route-kill.
+
+### 2. The reviewed H1 skeleton confirms the theorem map
+
+`docs/reviewed_notes/2026_03_08_h1_theorem_skeleton_review.md` keeps the same
+order:
+
+- raw entry reduction first;
+- filtered consequence second;
+- finite cap last.
+
+That is exactly the `P2 -> P3 -> cap-only fork` posture, not a return to a
+free-floating remainder classifier.
+
+### 3. The old four-block note still survives as consequence-layer support
+
+`docs/insights/h1_four_block_bulk_2026_03_08.md` remains useful in one narrow
+sense:
+
+- it still freezes the filtered consequence language for `(+,+)`, `(+,-)`,
+  `(-,+)`, `(-,-)`;
+- it still says that no extra section-boundary bookkeeping belongs inside the
+  filtered mixed block once `\widetilde Q_{M,N}` is the comparison object.
+
+So the old four-block note is not the active frontier, but it still supports
+`PO3a`.
+
+### 4. External sanity-check keeps supporting asymmetry, not symmetry
+
+The external foundation stack now reads cleanly:
+
+- paired-operator language supports the special status of the mixed block;
+- Toeplitz/Hankel operator language supports same-sign boundary/commutator
+  residue as the natural surviving channel;
+- nothing in that stack argues for a genuinely new mixed-block boundary term.
+
+So `P3` still points in one direction:
+
+```tex
+\mathcal D_{a,\partial}^{+-}=0
+\quad\text{or at worst}\quad
+\mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}.
+```
+
 ## Exact target
 
 The primary `PO3` statement should be
@@ -159,6 +221,38 @@ After `PO3`, the acceptable `(+,-)` theorem outputs are only:
 2. cap-only corrected cross-sign identity.
 
 Nothing else should survive.
+
+### PO3.4. Symmetry handoff
+
+If `PO3a` lands on `(+,-)`, the `(-,+)` block should not become a new theorem
+problem.
+
+The expected handoff is:
+
+```tex
+\mathcal D_{a,\partial}^{-+}=0
+```
+
+by conjugation / self-adjoint symmetry, so the cross-sign side closes as one
+package rather than two unrelated lemmas.
+
+## Reusable lemma list
+
+The reusable `P3` packet is now:
+
+1. `PO3a`:
+   ```tex
+   \mathcal D_{a,\partial}^{+-}=0.
+   ```
+2. `PO3b`:
+   ```tex
+   \mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}.
+   ```
+3. `PO3c`:
+   ```tex
+   \mathcal D_{a,\partial}^{-+}=0
+   ```
+   by symmetry once `PO3a` is in place.
 
 ## Route-kill condition
 

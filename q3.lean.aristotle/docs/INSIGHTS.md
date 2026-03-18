@@ -133,6 +133,15 @@
   `arXiv:1501.04271`, so the honest next move remains:
   one exact `PO3a` boundary-cancellation lemma, one cap-only corollary, and no
   return to new basis language.
+- the `P3` artifact itself is now tightened into a cleaner theorem packet:
+  it now contains an exact refined source map back to
+  `Main_closure.tex`, the reviewed H1 theorem skeleton, and the old four-block
+  consequence note, plus a reusable lemma list
+  `PO3a = \mathcal D_{a,\partial}^{+-}=0`,
+  `PO3b = \mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}`,
+  `PO3c = \mathcal D_{a,\partial}^{-+}=0` by symmetry;
+  this is the right proof-facing shape for closing Door 1 without letting
+  same-sign boundary language leak back into the mixed block.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
