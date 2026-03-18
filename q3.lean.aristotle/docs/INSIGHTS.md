@@ -119,6 +119,20 @@
   while external Toeplitz/Hankel sanity-check keeps supporting
   boundary/commutator/cap language rather than any return to basis-hunt
   theorem shapes.
+- in-progress targeted `P3` refresh on 2026-03-18 tightens the same picture
+  with more exact file pointers: the local oracle again pulls to
+  `full/sections/Main_closure.tex` for the filtered `(+,-)` calibration block,
+  to `docs/reviewed_notes/2026_03_08_h1_theorem_skeleton_review.md` for the
+  theorem-map labels
+  `prop:H1-raw-entry-reduction`, `prop:H1-filtered-q-blocks`,
+  `cor:H1-bulk-symmetry-reduction`, and to
+  `docs/insights/h1_four_block_bulk_2026_03_08.md` for the filtered
+  consequence layer; the external sanity-check is still supportive rather than
+  miraculous, namely the paired-operator classification on
+  `arXiv:2404.05435` and generalized Toeplitz-plus-Hankel operator language on
+  `arXiv:1501.04271`, so the honest next move remains:
+  one exact `PO3a` boundary-cancellation lemma, one cap-only corollary, and no
+  return to new basis language.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
