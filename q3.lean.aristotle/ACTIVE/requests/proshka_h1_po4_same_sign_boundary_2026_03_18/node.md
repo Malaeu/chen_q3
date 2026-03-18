@@ -69,8 +69,13 @@ Provide the cleanest theorem-grade receiver for `PO4`:
 
 ## Write-back contract
 
-Write result only to:
+Preferred native-worker mode:
+
+- return a narrow theorem-shaped summary to the parent/orchestrator thread;
+- let the orchestrator write the canonical report file.
+
+Canonical report target:
 
 `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/proshka_h1_po4_same_sign_boundary_2026_03_18/report.md`
 
-If you create extra artifacts, list exact absolute paths in the report.
+If you create extra artifacts, list exact absolute paths in the summary/report.

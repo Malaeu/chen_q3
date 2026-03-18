@@ -151,6 +151,12 @@
   `docs/insights/h1_po4_same_sign_boundary_identification_2026_03_18.md`
   and the current route-kill condition shifted to any unnamed same-sign moving
   residue in Door 2.
+- the native worker loop is now simplified on purpose: `q3_worker` is treated
+  explicitly as a native Codex agent profile rather than a shell command, and
+  the default contract is now
+  `request node -> worker summary -> orchestrator ingest -> canonical report`,
+  because direct child-write through fallback `codex exec` kept hanging in
+  practice; the app playbook and active `P4` request node now reflect that.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,

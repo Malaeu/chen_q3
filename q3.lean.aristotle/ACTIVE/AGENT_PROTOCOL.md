@@ -11,7 +11,7 @@ phase/sprint работе.
 - **второй агент** меняется по задаче, но protocol не меняется;
 - оба агента читают одни и те же общие опорные файлы;
 - коммуникация идёт не через свободный чат-хаос, а через
-  `request node -> report file -> orchestrator ingest`.
+  `request node -> worker summary -> orchestrator ingest -> canonical report`.
 
 ## Native subagent mode
 
@@ -31,6 +31,8 @@ Project-scoped agent config:
 - нативный subagent не заменяет request/report contract;
 - он просто снимает ручной prompt boilerplate;
 - source of truth всё равно остаётся file-based.
+- `q3_worker` не является shell-командой или отдельным бинарём; это profile
+  layer для нативного Codex subagent запуска внутри app / interactive CLI.
 
 Рекомендуемое соответствие:
 
@@ -82,8 +84,12 @@ Short version:
 - не переизобретать frontier;
 - не менять mainline contract;
 - читать только минимальный набор файлов;
-- писать результат в заранее заданный report file;
-- если делает новые артефакты, перечислить их в report.
+- по умолчанию возвращать узкий результат оркестратору, а не строить
+  дополнительную CLI-обвязку;
+- если делает новые артефакты, перечислить их в summary/report.
+
+Direct child-write в `report.md` теперь считается не дефолтом, а специальным
+режимом только если родитель явно этого хочет и среда ведёт себя стабильно.
 
 ## Minimal read set for worker agent
 
@@ -115,12 +121,18 @@ control-plane.
 - source-of-truth updates after ingest:
   `SESSION_ENTRY.md`, `IMPLEMENTATION_PLAN.md`, `docs/INSIGHTS.md`, etc.
 
-### Worker writes
+### Worker default output
 
-- report:
+- concise theorem-shaped summary in the parent thread
+- optional artifacts, if parent explicitly asked for them
+
+### Orchestrator canonical write-back
+
+- canonical report:
   `q3.lean.aristotle/ACTIVE/requests/<request_id>/report.md`
-- optional artifacts:
-  usually `q3.lean.aristotle/docs/insights/<artifact>.md`
+- optional source-of-truth updates:
+  usually `q3.lean.aristotle/docs/insights/<artifact>.md`,
+  `docs/INSIGHTS.md`, and monitor files
 
 ## Request node schema
 
@@ -135,6 +147,9 @@ Every active request node must contain:
 - `Supporting files`
 - `Non-goals`
 - `Write-back contract`
+
+The write-back contract names the canonical target file for the orchestrator.
+It does not force the native worker to do direct child-write by default.
 
 ## Report schema
 
@@ -153,7 +168,8 @@ Every worker report must contain:
 
 ```text
 Активная фаза/спринт видна, беру request <request_id>.
-Читаю request node и указанные supporting files, результат пишу в report.md.
+Читаю request node и указанные supporting files, результат возвращаю коротким
+summary; канонический report оформит оркестратор.
 Если blocker не возникнет, остальные control docs не трогаю.
 ```
 
@@ -188,9 +204,10 @@ Every worker report must contain:
 2. Потом прочитай только supporting files, перечисленные в request node.
 3. Не пересобирай общий frontier и не предлагай новую RH-архитектуру.
 4. Не делай rank/basis hunt как theorem content.
-5. Пиши результат в:
-   <REPORT_FILE>
-6. Если создаёшь новые артефакты, перечисли точные пути в report.
+5. Верни узкий theorem-shaped результат в финальном сообщении.
+6. Не запускай дополнительные CLI-обвязки и не пиши в файлы сам, если это не
+   запрошено явно.
+7. Если создаёшь новые артефакты, перечисли точные пути в summary.
 
 Твоя задача сейчас:
 <ONE_SENTENCE_TASK>
@@ -204,9 +221,10 @@ Every worker report must contain:
 ```text
 Spawn q3_worker for the active request node
 q3.lean.aristotle/ACTIVE/requests/<request_id>/node.md.
-Have it read the request node, the files it lists, and write only to
-q3.lean.aristotle/ACTIVE/requests/<request_id>/report.md.
+Have it read the request node, the files it lists, and return a concise
+theorem-shaped summary to the parent thread.
 Do not let it re-map the whole project.
+The parent orchestrator will write the canonical report.md.
 ```
 
 Для research pass:
@@ -214,7 +232,7 @@ Do not let it re-map the whole project.
 ```text
 Spawn q3_researcher for blocker <blocker_name>.
 Have it use the active monitor plus the request node, run the local oracle and
-one external sanity-check, and write the synthesis only to the report file.
+one external sanity-check, and return the synthesis to the parent thread.
 ```
 
 Для Lean/Aristotle:
@@ -242,8 +260,9 @@ It is acceptable as long as:
 
 - the read set stays narrow;
 - the child does not re-map the whole project;
-- the orchestrator writes the designated `report.md` after ingesting the child
-  output.
+- the child returns payload through stdout / final message;
+- the orchestrator writes the designated `report.md` after ingesting that
+  payload.
 
 ## Persona note
 

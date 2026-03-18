@@ -27,7 +27,14 @@ Local smoke-test result:
 - non-interactive `codex exec` is healthy, but explicit custom-agent forcing is
   not reliable enough to be our primary orchestration layer;
 - the canonical contract still remains
-  `request node -> report file -> orchestrator ingest`.
+  `request node -> worker summary -> orchestrator ingest -> canonical report`.
+
+Important clarification:
+
+- `q3_worker` is not a shell command and not a standalone executable;
+- `which q3_worker` should return nothing, and that is normal;
+- it is a custom agent profile that the Codex app / interactive CLI can spawn
+  natively by name.
 
 ## Mac setup checklist
 
@@ -54,7 +61,7 @@ Local smoke-test result:
 Use for:
 
 - one theorem/block request node;
-- one exact artifact receiver;
+- one exact theorem receiver;
 - no frontier remapping.
 
 ### `q3_researcher`
@@ -76,22 +83,22 @@ Use for:
 
 ## Ready prompts
 
-### Prompt A — `q3_worker` on active `P3`
+### Prompt A — `q3_worker` on active `P4`
 
 ```text
 Use parallel subagents for the active phase.
 
 Spawn one q3_worker for
-q3.lean.aristotle/ACTIVE/requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/node.md.
+q3.lean.aristotle/ACTIVE/requests/proshka_h1_po4_same_sign_boundary_2026_03_18/node.md.
 
 Have it:
 - read SESSION_ENTRY.md, PHASE_MONITOR.md, AGENT_PROTOCOL.md, the request node,
   and only the supporting files listed there;
 - avoid remapping the whole project;
-- write only to
-  q3.lean.aristotle/ACTIVE/requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/report.md.
+- return a concise theorem-shaped summary to the parent thread.
 
-Wait for the worker and then summarize what changed in the report.
+After it returns, write the canonical report.md yourself and then summarize
+what changed.
 ```
 
 ### Prompt B — `q3_researcher` for Door 2 groundwork
