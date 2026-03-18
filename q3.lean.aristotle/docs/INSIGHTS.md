@@ -142,6 +142,15 @@
   `PO3c = \mathcal D_{a,\partial}^{-+}=0` by symmetry;
   this is the right proof-facing shape for closing Door 1 without letting
   same-sign boundary language leak back into the mixed block.
+- `P3` is now closed operationally: Door 1 is treated as tight enough for the
+  direct phase to move on, because the mixed block is frozen as bulk-exact,
+  boundary-cancelled, and cap-only at worst; the active local gate is now
+  `P4`, namely
+  `\mathcal D_{a,\partial}^{++}=H_a^{\mathrm{ss}}`,
+  with the new active artifact
+  `docs/insights/h1_po4_same_sign_boundary_identification_2026_03_18.md`
+  and the current route-kill condition shifted to any unnamed same-sign moving
+  residue in Door 2.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,

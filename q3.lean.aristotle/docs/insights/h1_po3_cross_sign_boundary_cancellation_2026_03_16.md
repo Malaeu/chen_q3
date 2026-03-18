@@ -4,6 +4,10 @@
 
 Direct successor to `P2` in lane `A`.
 
+Operationally closed on 2026-03-18 as the Door-1 boundary gate.
+This note remains the source artifact for why the mixed block is now treated as
+bulk-exact, boundary-cancelled, and cap-only at worst.
+
 `P2` already froze the right cross-sign posture:
 
 - primary lemma:
