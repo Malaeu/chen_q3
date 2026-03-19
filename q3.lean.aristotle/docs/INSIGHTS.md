@@ -184,6 +184,13 @@
   sanity-check did not produce a ready-made theorem that closes our exact
   split, but it also did not open a competing route, so the honest next move
   is to tighten `P5` locally rather than call Прошка immediately.
+- the `P5` artifact is now tighter in exactly the right way: it has a refined
+  source map back to the filtered finite-section note, raw-entry reduction,
+  and the old four-block consequence layer; notation is frozen at theorem
+  level as `C_a^{\mathrm{cap}}`; and the proof-facing packet is now explicit:
+  `PO5a = \mathcal D_{a,\mathrm{cap}}^{++}=C_a^{\mathrm{cap}}`,
+  `PO5b = \mathcal D_{a,N}^{++}=H_a^{\mathrm{ss}}+C_a^{\mathrm{cap}}`,
+  `PO5c =` no third theorem-shaped channel.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
