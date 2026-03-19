@@ -239,6 +239,17 @@
   `PO7a = M^{+-}(a)=\kappa_{+-}(a)\widetilde Q^{+-}+E_{a,\mathrm{cap}}^{+-}`,
   `PO7b = M^{++}(a)=\kappa_{+-}(a)\widetilde Q^{++}+H_a^{\mathrm{ss}}+C_a^{\mathrm{cap}}`,
   `PO7c =` the remaining two blocks come only from Hermitian symmetry.
+- in-progress `H2^f` research-pass on 2026-03-19 is already coming back
+  aligned rather than branching: local oracle recall points to the
+  `H2^f` theorem slot in `full/sections/Main_closure.tex`, to the rigid handoff
+  contract in
+  `docs/insights/h1_proof_obligation_table_2026_03_16.md`,
+  and to the earlier Suzuki bridge notes saying the same thing:
+  once `H1^f` is packaged, `H2^f` should read only the cleaned interface
+  `(+,-)` exact-or-cap-only, `H_a^{\mathrm{ss}}`, `C_a^{\mathrm{cap}}`,
+  and no extra compression defect; the external sanity-check does not open a
+  competing route, so the honest next move is to close `P7` and activate
+  `H2^f`, not to call Прошка yet.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
