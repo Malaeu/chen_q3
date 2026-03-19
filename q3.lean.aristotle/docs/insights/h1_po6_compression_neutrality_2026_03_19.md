@@ -4,6 +4,10 @@
 
 Direct successor to `P5` in lane `A`.
 
+Operationally closed on 2026-03-19 as the Door-3 gate.
+This note remains the source artifact for why finite descent is now treated as
+bookkeeping-only rather than as a new theorem channel.
+
 `P5` already froze the same-sign theorem package as:
 
 ```tex
@@ -101,6 +105,58 @@ The filtered finite-section and raw-entry notes support the same route order:
 - finite compression second;
 - no new theorem-shaped channel introduced by sectioning.
 
+## Refined source map (2026-03-19)
+
+The 2026-03-19 research refresh makes the `P6` support stack more exact.
+
+### 1. The filtered finite-section note already demotes the finite part
+
+`docs/insights/h1_filtered_finite_section_2026_03_08.md` already packages the
+filtered bridge as
+
+```tex
+S_{a,M}^* G_g[a] S_{a,M}
+=
+\kappa(a)\widetilde Q_M + F_{a,M},
+```
+
+with `F_{a,M}` zero or an explicit finite-rank Suzuki cap.
+
+Operational reading:
+
+- finite descent is not supposed to create a new bulk theorem;
+- the only admissible finite survivor is explicit and section-level.
+
+### 2. The raw-entry reduction note already fixes the theorem order
+
+`docs/insights/h1_raw_entry_reduction_2026_03_08.md` again says:
+
+- filtered bulk first;
+- then only the finite-dimensional Suzuki cap remains;
+- no return to raw mismatch language.
+
+That is strong support for treating `P6` as compression bookkeeping rather
+than as another classification gate.
+
+### 3. The two-sided bridge note already freezes the metric/compression setup
+
+`docs/insights/h1_two_sided_filtered_bridge_2026_03_08.md` already freezes the
+exact metric side and the symmetric filtered finite object. This matters for
+`P6` because finite descent should only compress an already-frozen infinite
+object, not invent a new one.
+
+### 4. External support is sanity-check only
+
+The external sanity-check through finite sections of Toeplitz+Hankel operators
+supports the same moral picture:
+
+- section-level stability is its own layer;
+- finite sections can fail in general if extra structure is missing;
+- therefore our route must explicitly prove compression neutrality rather than
+  assume it.
+
+So `P6` remains our local theorem gate, but not a blind one.
+
 ## Proof-facing packet
 
 ### PO6.1. Compression neutrality statement
@@ -139,6 +195,26 @@ C_a^{\mathrm{cap}}.
 ```
 
 Compression is not allowed to create a third structural term.
+
+## Reusable theorem packet
+
+The reusable `P6` packet is now:
+
+1. `PO6a`:
+   ```tex
+   E_{a,\mathrm{comp}}^{+-}=0,
+   \qquad
+   E_{a,\mathrm{comp}}^{++}=0.
+   ```
+2. `PO6b`:
+   ```tex
+   D_{a,M,N}
+   =
+   P_{M,N}\mathcal D_{a,N}P_{M,N}+\mathcal E_{a,M,N},
+   ```
+   with `\mathcal E_{a,M,N}` explicit bookkeeping only.
+3. `PO6c`:
+   there is no new theorem-shaped channel created by finite compression.
 
 ## Route-kill condition
 

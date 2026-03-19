@@ -33,6 +33,7 @@ Files:
 - h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 - h1_po3_cross_sign_boundary_cancellation_2026_03_16.md
 - h1_po6_compression_neutrality_2026_03_19.md
+- h1_po7_final_filtered_package_2026_03_19.md
 - h1_proof_obligation_table_2026_03_16.md
 - h_bridge_three_doors_macro_map_2026_03_16.md
 - h1_boundary_cap_reset_2026_03_14.md

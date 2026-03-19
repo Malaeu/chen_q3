@@ -212,6 +212,14 @@
   section-level stability is a separate finite-section layer, not a reason to
   reopen Door 2, so the honest next move is to tighten `P6` locally rather
   than call Прошка immediately.
+- `P6` is now closed operationally: finite descent is treated as compression
+  bookkeeping only, not as a new theorem channel, so the active local gate
+  moves to `P7`, namely the final filtered `H1^f` package; the new active
+  artifact is
+  `docs/insights/h1_po7_final_filtered_package_2026_03_19.md`,
+  and the current route-kill condition shifts to any final packaging that
+  reopens Door 1, Door 2, or Door 3 instead of simply assembling the already
+  won theorem pieces.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
