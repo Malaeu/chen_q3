@@ -263,6 +263,16 @@
   closed tail space, orthogonal tail/cap split, and finite Hermitian cap
   matrix; the current bad forms are also explicit now, namely infinite
   remainder complement or loss of `q_{G,a}`-orthogonality.
+- in-progress `H3^f` research-pass on 2026-03-19 is also coming back aligned:
+  `Main_closure.tex` already freezes the exact theorem shell
+  `\widetilde Q_{M,N_a}\ge c(a)B_{M,N_a}`
+  and hence
+  `q_{G,a}(v)\ge \kappa(a)c(a)\,q_{J,a}(v)` on `V_a^{\mathrm{tail}}`,
+  with positivity of the finite cap matrix forcing
+  `\ker G_g[a]=\{0\}`; local oracle recall does not open a competing upper
+  route, and the external sanity-check only reinforces that coercivity/gap
+  transfer is its own upper-bridge layer rather than a reason to reopen `H2`,
+  so the honest next move is to close `H2` and activate `H3`.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
