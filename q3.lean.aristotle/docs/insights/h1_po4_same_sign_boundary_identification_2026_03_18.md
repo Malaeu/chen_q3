@@ -24,6 +24,17 @@ The narrowest `P4` statement should be:
 Here `H_a^{\mathrm{ss}}` must be a named operator, not a numerical residual and
 not a floating matrix-fit remainder.
 
+Notation freeze for the current direct phase:
+
+```tex
+H_a^{\mathrm{ss}}
+```
+
+is the canonical theorem symbol.
+If some underlying construction still carries cutoff dependence, that may live
+inside the definition, but the theorem receiver should not let the notation
+float between `H_a^{\mathrm{ss}}` and `H_{a,N}^{\mathrm{ss}}`.
+
 Admissible theorem language:
 
 - Toeplitz-Hankel residue;
@@ -83,6 +94,17 @@ The external foundation stack remains aligned with the route:
   survivor;
 - nothing in that support stack asks us to reopen mixed-block ambiguity.
 
+### 4. Worker-ingested `P4` report sharpens the receiver
+
+The active worker report adds one useful tightening:
+
+- `PO4` should name the boundary object and stop there;
+- the clean post-`PO4` split should be
+  `\mathcal D_{a,N}^{++}=H_a^{\mathrm{ss}}+\mathcal D_{a,\mathrm{cap}}^{++}`;
+- cap separation belongs entirely to `PO5`;
+- the real Door-2 kill gate is not merely nonzero residue, but residue that
+  remains unnamed as an operator source.
+
 ## Proof-facing packet
 
 ### PO4.1. Same-sign boundary identification
@@ -106,6 +128,38 @@ The current acceptable shapes for `H_a^{\mathrm{ss}}` are:
 
 The route does not currently need to choose among these three in advance, but
 it must land on one named operator channel.
+
+## Exact post-`PO4` split
+
+The cleanest post-`PO4` receiver is now frozen as:
+
+```tex
+\mathcal D_{a,N}^{++}
+=
+H_a^{\mathrm{ss}}
++ \mathcal D_{a,\mathrm{cap}}^{++}.
+```
+
+This is deliberately stronger than a vague “boundary plus something” package
+and deliberately weaker than jumping early to
+`H_a^{\mathrm{ss}}+C_a^{\mathrm{cap}}`.
+
+Meaning:
+
+- `PO4` names the same-sign boundary survivor;
+- the only remaining unnamed channel is cap;
+- bulk and compression stay out of the theorem receiver at this step.
+
+## Admissible-source table
+
+| Candidate source for `H_a^{\mathrm{ss}}` | Status at `PO4` | Meaning |
+| --- | --- | --- |
+| Toeplitz-Hankel residue | admissible | cleanest classical same-sign boundary mechanism |
+| commutator with cutoff / filtered shift | admissible | keeps the survivor operator-theoretic |
+| short-range near-edge boundary term | admissible | matches the observed Door-2 phenotype |
+| unnamed moving matrix residual | route-kill | no theorem-grade operator content |
+| rank/basis-fit explanation | route-kill | forbidden as theorem content |
+| generic bulk mismatch | route-kill | contradicts the boundary/cap picture |
 
 ### PO4.3. Bulk exclusion contrast
 
@@ -133,6 +187,20 @@ Operationally:
 ```text
 an unnamed same-sign moving residue is a Door-2 route-kill or near-route-kill.
 ```
+
+More explicitly, the bad form is:
+
+```tex
+\mathcal D_{a,N}^{++}
+=
+\mathcal R_{a,N}^{++}
++ \mathcal D_{a,\mathrm{cap}}^{++},
+\qquad
+\mathcal R_{a,N}^{++}\neq 0,
+```
+
+with `\mathcal R_{a,N}^{++}` not identifiable as Toeplitz-Hankel,
+commutator, or near-edge boundary operator.
 
 ## What `P4` must not do
 

@@ -157,6 +157,14 @@
   `request node -> worker summary -> orchestrator ingest -> canonical report`,
   because direct child-write through fallback `codex exec` kept hanging in
   practice; the app playbook and active `P4` request node now reflect that.
+- worker-ingest on `P4` came back clean and actually useful: it confirms the
+  minimal same-sign receiver
+  `\mathcal D_{a,\partial}^{++}=H_a^{\mathrm{ss}}`,
+  freezes the clean post-`PO4` split
+  `\mathcal D_{a,N}^{++}=H_a^{\mathrm{ss}}+\mathcal D_{a,\mathrm{cap}}^{++}`,
+  and sharpens the Door-2 kill gate to the real bad case:
+  an unnamed same-sign moving residual with no operator source;
+  notation is now frozen at the theorem level as `H_a^{\mathrm{ss}}`.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
