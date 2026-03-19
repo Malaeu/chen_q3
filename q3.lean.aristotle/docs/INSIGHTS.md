@@ -220,6 +220,19 @@
   and the current route-kill condition shifts to any final packaging that
   reopens Door 1, Door 2, or Door 3 instead of simply assembling the already
   won theorem pieces.
+- in-progress targeted `P7` research-pass on 2026-03-19 is also coming back
+  aligned rather than branching: local oracle recall points mainly to
+  `docs/insights/h1_proof_obligation_table_2026_03_16.md` together with the
+  already-landed gate notes
+  `h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`,
+  `h1_po4_same_sign_boundary_identification_2026_03_18.md`,
+  `h1_po5_cap_separation_2026_03_19.md`,
+  `h1_po6_compression_neutrality_2026_03_19.md`,
+  all saying the same thing: by `P7` no new structure should be discovered,
+  only the final mixed-line / same-sign-line / symmetry package should be
+  frozen; the external sanity-check does not produce a ready-made theorem that
+  replaces this package, so the honest next move is to tighten `P7` locally
+  rather than call Прошка yet.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
