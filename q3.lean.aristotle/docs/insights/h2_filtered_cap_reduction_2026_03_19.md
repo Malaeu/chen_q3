@@ -4,6 +4,10 @@
 
 Direct successor to `P7`.
 
+Operationally closed on 2026-03-19 as the first upper-bridge gate.
+This note remains the source artifact for why the filtered block package is
+now treated as a closed tail space plus finite-dimensional cap complement.
+
 `H1^f` is now treated as packaged enough to hand upward:
 
 - exact-or-cap-only mixed block;

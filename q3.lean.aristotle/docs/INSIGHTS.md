@@ -273,6 +273,13 @@
   route, and the external sanity-check only reinforces that coercivity/gap
   transfer is its own upper-bridge layer rather than a reason to reopen `H2`,
   so the honest next move is to close `H2` and activate `H3`.
+- `H2` is now closed operationally: the upper bridge now treats the cleaned
+  filtered package as already absorbed into a closed tail space plus
+  finite-dimensional cap complement, so the active local gate moves to `H3^f`,
+  namely filtered gap transfer; the new active artifact is
+  `docs/insights/h3_filtered_gap_transfer_2026_03_19.md`,
+  and the current route-kill condition shifts to failure of the filtered Q3
+  gap plus cap positivity to eliminate `\ker G_g[a]`.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
