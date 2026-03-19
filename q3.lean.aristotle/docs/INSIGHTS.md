@@ -233,6 +233,12 @@
   frozen; the external sanity-check does not produce a ready-made theorem that
   replaces this package, so the honest next move is to tighten `P7` locally
   rather than call Прошка yet.
+- the `P7` artifact is now tighter in exactly the right way: it has a refined
+  source map back to the proof-obligation table and the already-landed
+  `P3/P4/P5/P6` gate notes, and the proof-facing packet is now explicit:
+  `PO7a = M^{+-}(a)=\kappa_{+-}(a)\widetilde Q^{+-}+E_{a,\mathrm{cap}}^{+-}`,
+  `PO7b = M^{++}(a)=\kappa_{+-}(a)\widetilde Q^{++}+H_a^{\mathrm{ss}}+C_a^{\mathrm{cap}}`,
+  `PO7c =` the remaining two blocks come only from Hermitian symmetry.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
