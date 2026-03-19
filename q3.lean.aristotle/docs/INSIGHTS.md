@@ -191,6 +191,14 @@
   `PO5a = \mathcal D_{a,\mathrm{cap}}^{++}=C_a^{\mathrm{cap}}`,
   `PO5b = \mathcal D_{a,N}^{++}=H_a^{\mathrm{ss}}+C_a^{\mathrm{cap}}`,
   `PO5c =` no third theorem-shaped channel.
+- `P5` is now closed operationally: Door 2 is treated as tight enough once the
+  same-sign receiver is frozen as
+  `\mathcal D_{a,N}^{++}=H_a^{\mathrm{ss}}+C_a^{\mathrm{cap}}`
+  with no third channel, so the active local gate moves to `P6`,
+  namely compression neutrality; the new active artifact is
+  `docs/insights/h1_po6_compression_neutrality_2026_03_19.md`,
+  and the current route-kill condition shifts to any new theorem-shaped
+  compression residue beyond explicit bookkeeping.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,

@@ -4,6 +4,10 @@
 
 Direct successor to `P4` in lane `A`.
 
+Operationally closed on 2026-03-19 as the second Door-2 gate.
+This note remains the source artifact for why the same-sign receiver is now
+treated as a clean boundary-plus-cap theorem package.
+
 `P4` already froze the same-sign survivor as a named operator object:
 
 ```tex
