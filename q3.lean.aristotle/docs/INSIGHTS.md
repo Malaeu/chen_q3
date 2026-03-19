@@ -173,6 +173,17 @@
   `docs/insights/h1_po5_cap_separation_2026_03_19.md`
   and the current Door-2 route-kill condition shifted to any drifting cap term
   or third independent finite remainder channel.
+- in-progress targeted `P5` research-pass on 2026-03-19 comes back supportive
+  rather than branching: local oracle recall points straight to
+  `docs/insights/h1_filtered_finite_section_2026_03_08.md`,
+  `docs/insights/h1_raw_entry_reduction_2026_03_08.md`,
+  `docs/insights/h1_four_block_bulk_2026_03_08.md`,
+  and `full/sections/Main_closure.tex`, all saying the same thing in slightly
+  different language: once the filtered bulk is fixed, the only remaining
+  honest H-bridge obstruction is the finite-dimensional Suzuki cap; external
+  sanity-check did not produce a ready-made theorem that closes our exact
+  split, but it also did not open a competing route, so the honest next move
+  is to tighten `P5` locally rather than call Прошка immediately.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
