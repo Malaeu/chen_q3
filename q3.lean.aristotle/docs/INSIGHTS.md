@@ -199,6 +199,19 @@
   `docs/insights/h1_po6_compression_neutrality_2026_03_19.md`,
   and the current route-kill condition shifts to any new theorem-shaped
   compression residue beyond explicit bookkeeping.
+- in-progress targeted `P6` research-pass on 2026-03-19 is coming back
+  aligned rather than branching: local oracle recall points to
+  `docs/insights/h1_filtered_finite_section_2026_03_08.md`,
+  `docs/insights/h1_raw_entry_reduction_2026_03_08.md`,
+  `docs/insights/h1_two_sided_filtered_bridge_2026_03_08.md`,
+  and `docs/insights/h1_proof_obligation_table_2026_03_16.md`, all pushing the
+  same order
+  `\mathcal D_{a,N}` first, finite sectioning second, and no new theorem
+  channel after compression; the external sanity-check through Basor–Ehrhardt
+  on Toeplitz+Hankel finite sections supports the same moral picture:
+  section-level stability is a separate finite-section layer, not a reason to
+  reopen Door 2, so the honest next move is to tighten `P6` locally rather
+  than call Прошка immediately.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
