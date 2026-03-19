@@ -5,24 +5,24 @@ phase: H1_PO1_direct_attack
 started: 2026-03-16
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: Door2 / boundary identification / P4
+macro_position: Door2 / cap separation / P5
 main_kill_gate: Door2 same-sign boundary-vs-cap separation, with earlier near-route-kill if non-cap cross-sign boundary survives at P3
 current_lane: A
-current_step_id: P4
-current_step_title: same-sign boundary identification
+current_step_id: P5
+current_step_title: cap separation
 current_owner: local-agent
-current_artifact: docs/insights/h1_po4_same_sign_boundary_identification_2026_03_18.md
+current_artifact: docs/insights/h1_po5_cap_separation_2026_03_19.md
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
-worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po4_same_sign_boundary_2026_03_18/node.md
-worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po4_same_sign_boundary_2026_03_18/report.md
+worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po5_cap_separation_2026_03_19/node.md
+worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po5_cap_separation_2026_03_19/report.md
 last_completed_phase: Q_zeta_core_short_circuit
 last_completed_artifact: docs/insights/q_zeta_core_sprint_decision_2026_03_16.md
 last_completed_commit: 6752a732
-last_completed_step_id: P3
-last_completed_step_artifact: docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md
-last_completed_step_commit: 28d6c255
-next_deliverable: freeze the exact same-sign boundary identification claim, the admissible operator shapes for H_a^{ss}, and the route-kill condition for any unnamed same-sign moving residue
-next_verify: rg -n -e "PO4|same-sign boundary|H_a\\^\\{\\\\mathrm\\{ss\\}\\}|route-kill" q3.lean.aristotle/docs/insights/h1_po4_same_sign_boundary_identification_2026_03_18.md
+last_completed_step_id: P4
+last_completed_step_artifact: docs/insights/h1_po4_same_sign_boundary_identification_2026_03_18.md
+last_completed_step_commit: 89db6f3e
+next_deliverable: freeze the exact cap-identification claim, the boundary-plus-cap split, and the route-kill condition for any drifting or unnamed finite remainder channel
+next_verify: rg -n -e "PO5|cap separation|C_a\\^\\{\\\\mathrm\\{cap\\}\\}|third channel|route-kill" q3.lean.aristotle/docs/insights/h1_po5_cap_separation_2026_03_19.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -56,28 +56,31 @@ If a parallel worker is used during this phase, it should:
 - read this phase monitor;
 - read `AGENT_PROTOCOL.md`;
 - read `worker_request`;
-- write only to `worker_report`.
+- return a narrow result to the orchestrator;
+- let the orchestrator maintain the canonical `worker_report`.
 
 ## Current step
 
-### `P4` — same-sign boundary identification
+### `P5` — cap separation
 
 Goal:
 
-- freeze the exact same-sign boundary identification claim;
-- force the surviving `(++)` correction into one named operator channel;
-- prepare a clean handoff to cap separation.
+- freeze the exact cap-identification claim;
+- separate the finite cap term from the named same-sign boundary operator;
+- prepare a clean handoff to compression neutrality.
 
 Required output:
 
-- one theorem-shaped statement of `\mathcal D_{a,\partial}^{++}=H_a^{\mathrm{ss}}`;
-- one admissible list of operator shapes for `H_a^{\mathrm{ss}}`;
-- one explicit kill condition for an unnamed same-sign moving residue.
+- one theorem-shaped statement of `\mathcal D_{a,\mathrm{cap}}^{++}=C_a^{\mathrm{cap}}`;
+- one exact boundary-plus-cap split for the same-sign block;
+- one explicit kill condition for any drifting or third finite remainder
+  channel.
 
 Exact success criterion:
 
-- the next theorem attempt is no longer “what survives in `(++)`?”, but one
-  exact operator-identification lemma plus a clean handoff to `PO5`.
+- the next theorem attempt is no longer “what remains after the boundary is
+  named?”, but one exact cap-identification lemma plus a clean handoff to
+  `PO6`.
 
 ## Macro view
 
@@ -91,7 +94,7 @@ This phase should now be read in the compressed route language:
 
 Current position:
 
-- Door 1 is now treated as closed tightly enough for local theorem work;
-- `P4` is the first gate inside Door 2;
-- if `P4` lands, the route can move from same-sign boundary identification to
-  cap separation without reopening the mixed block.
+- Door 1 stays closed;
+- `P5` is the second gate inside Door 2;
+- if `P5` lands, Door 2 has the intended boundary-plus-cap theorem shape and
+  the route can move to compression neutrality.

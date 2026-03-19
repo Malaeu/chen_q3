@@ -4,6 +4,10 @@
 
 Direct successor to `P3` in lane `A`.
 
+Operationally closed on 2026-03-19 as the first Door-2 gate.
+This note remains the source artifact for why the same-sign survivor is now
+treated as a named operator object `H_a^{\mathrm{ss}}`.
+
 `P3` already froze the right mixed-block asymmetry:
 
 - `(+,-)` bulk is exact;

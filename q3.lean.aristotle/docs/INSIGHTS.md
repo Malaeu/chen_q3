@@ -165,6 +165,14 @@
   and sharpens the Door-2 kill gate to the real bad case:
   an unnamed same-sign moving residual with no operator source;
   notation is now frozen at the theorem level as `H_a^{\mathrm{ss}}`.
+- `P4` is now closed operationally: Door 2 no longer asks what the same-sign
+  survivor is, only whether the remaining finite piece is genuinely cap;
+  the active local gate is now `P5`, namely
+  `\mathcal D_{a,\mathrm{cap}}^{++}=C_a^{\mathrm{cap}}`,
+  with the new active artifact
+  `docs/insights/h1_po5_cap_separation_2026_03_19.md`
+  and the current Door-2 route-kill condition shifted to any drifting cap term
+  or third independent finite remainder channel.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
