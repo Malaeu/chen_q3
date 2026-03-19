@@ -4,6 +4,10 @@
 
 Direct successor to `P6` in lane `A`.
 
+Operationally closed on 2026-03-19 as the final local `H1` gate.
+This note remains the source artifact for why `H1^f` is now treated as a
+packaged theorem interface rather than an open defect-classification problem.
+
 `P6` already froze compression as bookkeeping-only:
 
 ```tex

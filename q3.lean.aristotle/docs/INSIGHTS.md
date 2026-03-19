@@ -250,6 +250,12 @@
   and no extra compression defect; the external sanity-check does not open a
   competing route, so the honest next move is to close `P7` and activate
   `H2^f`, not to call Прошка yet.
+- `P7` is now closed operationally: `H1^f` is treated as packaged enough for
+  the upper bridge, so the active local gate moves to `H2^f`, namely Suzuki
+  tail/cap reduction; the new active artifact is
+  `docs/insights/h2_filtered_cap_reduction_2026_03_19.md`,
+  and the current route-kill condition shifts to failure of the closed tail
+  space plus finite-dimensional cap complement geometry.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
