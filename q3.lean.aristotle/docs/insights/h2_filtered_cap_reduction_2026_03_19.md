@@ -134,6 +134,24 @@ receiver we currently have for `H2^f`.
 
 So `H2^f` really is the next honest gate.
 
+### 4. The macro map already says the same thing operationally
+
+`docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md` compresses the
+entire local route into:
+
+```tex
+(+,-)\checkmark
+\to
+(++)=H^{\mathrm{ss}}+C^{\mathrm{cap}}
+\to
+\text{compression neutrality}
+\to
+H2^f\to H3^f\to H4^f.
+```
+
+So once `P7` lands, the first upper-bridge gate is exactly `H2^f`, not a
+return to any earlier local classification.
+
 ## Proof-facing packet
 
 ### H2.1. Tail-space definition
@@ -172,6 +190,40 @@ A_a^{\mathrm{cap}}
 with a finite Hermitian matrix `H_a^{\mathrm{cap}}` representing the
 restricted form.
 
+### H2.4. Exact `H1 -> H2` input package
+
+At theorem level `H2^f` should consume only:
+
+- exact-or-cap-only cross-sign adapter;
+- same-sign boundary term `H_a^{\mathrm{ss}}`;
+- finite cap term `C_a^{\mathrm{cap}}`;
+- no extra independent compression defect.
+
+This should be treated as a rigid interface, not as soft guidance.
+
+## Reusable theorem packet
+
+The reusable `H2` packet is now:
+
+1. `H2a`:
+   ```tex
+   V_a^{\mathrm{tail}}
+   :=
+   \overline{\bigcup_{M>N_a} S_{a,M,N_a}\mathcal P_{M,N_a}}^{\,L^2(-a,a)}.
+   ```
+2. `H2b`:
+   ```tex
+   L^2(-a,a)=V_a^{\mathrm{tail}}\oplus A_a^{\mathrm{cap}},
+   ```
+   with `q_{G,a}`-orthogonality.
+3. `H2c`:
+   ```tex
+   A_a^{\mathrm{cap}}
+   =
+   \operatorname{span}\{u_n[a]-v_n[a]: |n|\le N_a+1\},
+   ```
+   with finite Hermitian cap matrix `H_a^{\mathrm{cap}}`.
+
 ## Route-kill condition
 
 `H2^f` is in serious trouble if:
@@ -187,6 +239,23 @@ Operationally:
 if H2 cannot isolate a closed tail space plus finite-dimensional cap
 complement, the upper Suzuki bridge stops being a theorem route and reverts to
 an unnamed geometric cloud.
+```
+
+More explicitly, the bad forms are:
+
+```tex
+L^2(-a,a)=V_a^{\mathrm{tail}}\oplus \mathcal R_a,
+\qquad
+\dim \mathcal R_a=\infty,
+```
+
+or
+
+```tex
+\langle G_g[a]v,w\rangle \neq 0
+\quad
+\text{for some }
+v\in V_a^{\mathrm{tail}},\ w\in A_a^{\mathrm{cap}}.
 ```
 
 ## What `H2` must not do

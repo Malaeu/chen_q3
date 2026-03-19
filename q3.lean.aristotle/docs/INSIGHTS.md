@@ -256,6 +256,13 @@
   `docs/insights/h2_filtered_cap_reduction_2026_03_19.md`,
   and the current route-kill condition shifts to failure of the closed tail
   space plus finite-dimensional cap complement geometry.
+- the `H2` artifact is now tighter in exactly the right way: it keeps the
+  frozen theorem shell from `Main_closure.tex`, adds the exact `H1 -> H2`
+  input contract, and now exposes a reusable packet
+  `H2a/H2b/H2c` for
+  closed tail space, orthogonal tail/cap split, and finite Hermitian cap
+  matrix; the current bad forms are also explicit now, namely infinite
+  remainder complement or loss of `q_{G,a}`-orthogonality.
 - the macro route is now frozen explicitly as “three doors plus final” in
   [h_bridge_three_doors_macro_map_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md):
   Door 1 = `(+,-)` adapter,
