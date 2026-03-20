@@ -62,6 +62,12 @@
   brick is a single raw mixed Weil comparison
   `\Omega_{mn}^{+-}(a) = \kappa_{+-}(a)(A_{m+n}-\sum_j \lambda_j e^{-2\pi i(m+n)\xi_j})`
   modulo cap; this is the real bulk target inside `H1^\infty`.
+- the active `PO2` notation is now frozen one step further:
+  `\Omega_{mn}^{+-}(a):=w_{m,-n}(a)` on the Weil side and
+  `\Theta_{mn}^{+-}:=A_{m+n}-\sum_j\lambda_j e^{-2\pi i(m+n)\xi_j}` on the Q
+  side; the filtered theorem now reduces to the common four-term stencil on
+  this single raw mixed comparison, with only three outcomes left:
+  exact identity, cap-only remainder, or route-kill.
 
 ## Текущий sprint-hub
 

@@ -552,15 +552,53 @@ current filtered theorem shape is wrong.
 After `L1`–`L3''''''`, the whole `PO2` problem collapses to one explicit
 comparison:
 
+Define the raw mixed Weil block by
+
+```tex
+\Omega_{mn}^{+-}(a):=w_{m,-n}(a)=W(\chi_{-n}[a]*\widetilde{\chi_m[a]}),
+\qquad m,n>N.
+```
+
+Then the already-frozen filtered cross-sign block is exactly
+
+```tex
+M_{mn}^{+-}(a)
+=
+\Omega_{mn}^{+-}(a)
++ \Omega_{m+1,n}^{+-}(a)
++ \Omega_{m,n+1}^{+-}(a)
++ \Omega_{m+1,n+1}^{+-}(a).
+```
+
+On the Q side, if we set
+
+```tex
+\Theta_{mn}^{+-}
+:=
+A_{m+n}-\sum_j\lambda_j e^{-2\pi i(m+n)\xi_j},
+```
+
+then
+
+```tex
+\widetilde q_{mn}^{+-}
+=
+\Theta_{mn}^{+-}
++ \Theta_{m+1,n}^{+-}
++ \Theta_{m,n+1}^{+-}
++ \Theta_{m+1,n+1}^{+-}.
+```
+
+So the live raw comparison can be written in the cleanest possible form:
+
 ```tex
 \Omega_{mn}^{+-}(a)
 \stackrel{?}{=}
-\kappa_{+-}(a)\Bigl(
-A_{m+n}-\sum_j\lambda_j e^{-2\pi i(m+n)\xi_j}
-\Bigr)
+\kappa_{+-}(a)\Theta_{mn}^{+-}
 ```
 
-at the raw mixed-block level, equivalently
+for all sufficiently large tail indices `m,n`.
+Equivalently, after applying the common four-term stencil,
 
 ```tex
 M^{+-}(a)=\kappa_{+-}(a)\widetilde Q^{+-}+C_a^{+-,\mathrm{cap}}.
@@ -569,6 +607,24 @@ M^{+-}(a)=\kappa_{+-}(a)\widetilde Q^{+-}+C_a^{+-,\mathrm{cap}}.
 That is the first real bulk identity still missing on the path to RH.
 Everything else in the current `H`-bridge route is now conditional on this
 one comparison.
+
+### L3''''''''. Exact proof fork after the raw mixed block
+
+Once the notation `\Omega_{mn}^{+-}` and `\Theta_{mn}^{+-}` is frozen, the
+remaining proof fork is brutally rigid:
+
+1. exact raw identity:
+   ```tex
+   \Omega_{mn}^{+-}(a)=\kappa_{+-}(a)\Theta_{mn}^{+-};
+   ```
+2. cap-only weakened identity:
+   the four-term filtered residual built from
+   `\Omega_{mn}^{+-}(a)-\kappa_{+-}(a)\Theta_{mn}^{+-}`
+   lands entirely in `C_a^{+-,\mathrm{cap}}`;
+3. route-kill:
+   a genuine non-cap mixed bulk residual survives.
+
+There is no fourth honest option inside the current theorem shape.
 
 ### What not to do inside these lemmas
 
