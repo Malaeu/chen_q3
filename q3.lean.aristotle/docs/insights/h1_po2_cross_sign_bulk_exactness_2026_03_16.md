@@ -911,6 +911,64 @@ cannot come from any finite-level automatic collapse:
 - in particular, there is no remaining soft route in which the mixed defect
   quietly becomes low-rank for local algebraic reasons alone.
 
+### L3'''''''''''. Meromorphic residue profiles
+
+There is a further exact sharpening if one analytically continues the first
+tail index. Define
+
+```tex
+\mathbf p_\gamma(z)
+:=
+\frac{e^{i\pi z}}
+{(\gamma-\pi z/a)(\gamma-\pi(z+1)/a)(\gamma-\pi(z+2)/a)},
+\qquad
+\mathbf u_\gamma(z):=\frac{\pi z}{a}\mathbf p_\gamma(z),
+\qquad
+\mathbf v_\gamma(z):=\mathbf p_\gamma(z).
+```
+
+Then for fixed tail index `n>N` the mixed anti-diagonal defect has the
+meromorphic continuation
+
+```tex
+\mathbf K^{+-}(z,n)
+:=
+\frac{4\pi^3}{a^4}
+\sum_\gamma \sin^2(a\gamma)\,
+\bigl(\mathbf u_\gamma(z)v_\gamma(n)-\mathbf v_\gamma(z)u_\gamma(n)\bigr),
+```
+
+which converges locally normally away from its pole set because the summand is
+`O(\gamma^{-6})` uniformly on compact `z`-sets.
+
+For any zero `\gamma` that is nonresonant with all the others in the first
+variable, the residue at `z=x_\gamma=a\gamma/\pi` is explicit:
+
+```tex
+\operatorname*{Res}_{z=x_\gamma}\mathbf K^{+-}(z,n)
+=
+-\frac{2a}{\pi^2}\sin^2(a\gamma)e^{ia\gamma}
+\frac{(-1)^n}{(x_\gamma-n-1)(x_\gamma-n-2)}.
+```
+
+So every such zero leaves a genuine two-pole residue profile in the second
+tail index `n`. Finite-support nonresonant packets therefore produce not only
+rank growth, but also explicitly distinguishable residue channels.
+
+This isolates the only serious hard wall now left inside `PO2`:
+
+- the finite-support algebra is no longer the issue;
+- the remaining question is whether finite rank on the **discrete** tail can be
+  upgraded to a finite-dimensional statement on these meromorphic residue
+  profiles;
+- if that upgrade is valid, then the existence of infinitely many nonresonant
+  zeros with `\sin^2(a\gamma)\neq 0` kills the mixed theorem shape
+  immediately.
+
+So the route is now squeezed to one exact meta-lemma, not to a vague cloud:
+bridge finite rank on the integer tail to finite-dimensional meromorphic
+residue data for `\mathbf K^{+-}`.
+
 ### L3''''''''''. Numerical smoke test for the finite-rank test
 
 As a quick diagnostic only, using the local fixed list of the first 20

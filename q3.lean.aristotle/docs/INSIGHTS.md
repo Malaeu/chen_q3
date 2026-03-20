@@ -102,6 +102,12 @@
   nonresonant zero packets of arbitrarily large finite size with nonzero
   weights, so the mixed defect admits finite partial contributions of
   arbitrarily large rank before any infinite-tail cancellation is invoked.
+- the last hard point inside `PO2` is now completely isolated: the mixed
+  anti-diagonal defect admits an explicit meromorphic continuation in the
+  first tail index, and every nonresonant zero contributes a two-pole residue
+  profile in the second index; so the open question is no longer local
+  algebra, but whether discrete finite rank can be upgraded to
+  finite-dimensional residue data.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
