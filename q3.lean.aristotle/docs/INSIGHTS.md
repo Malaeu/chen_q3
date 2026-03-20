@@ -74,6 +74,11 @@
   `K_{mn}^{+-}(a):=M_{m+1,n}^{+-}(a)-M_{m,n+1}^{+-}(a)=0`;
   if this quantity survives outside cap, the current `H-bridge` theorem shape
   dies honestly.
+- this anti-diagonal defect is now sharper than a generic residual:
+  using `\alpha_k=\pi k/a`, its rational kernel difference factorizes exactly
+  with an explicit `(m-n)` factor, so off-diagonal vanishing would require a
+  real six-denominator zero-sum cancellation miracle, not a soft boundary
+  explanation.
 
 ## Текущий sprint-hub
 

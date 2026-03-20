@@ -680,6 +680,48 @@ where
 {(\gamma-\alpha_m)(\gamma-\alpha_{m+1})(\gamma-\alpha_{n+1})(\gamma-\alpha_{n+2})}.
 ```
 
+Because `\alpha_k=\pi k/a` is an arithmetic progression, this difference
+actually simplifies exactly. Writing `h:=\pi/a`, one gets
+
+```tex
+\Xi_{mn}(\gamma)
+=
+\frac{2h(\alpha_m-\alpha_n)}
+{(\gamma-\alpha_m)(\gamma-\alpha_{m+1})(\gamma-\alpha_{m+2})
+ (\gamma-\alpha_n)(\gamma-\alpha_{n+1})(\gamma-\alpha_{n+2})}
+```
+
+and therefore
+
+```tex
+\Xi_{mn}(\gamma)
+=
+\frac{2\pi^2}{a^2}(m-n)\,
+\frac{1}
+{(\gamma-\alpha_m)(\gamma-\alpha_{m+1})(\gamma-\alpha_{m+2})
+ (\gamma-\alpha_n)(\gamma-\alpha_{n+1})(\gamma-\alpha_{n+2})}.
+```
+
+So the anti-diagonal defect itself factorizes as
+
+```tex
+K_{mn}^{+-}(a)
+=
+\frac{4\pi^4}{a^5}(-1)^{m+n+1}(m-n)
+\sum_\gamma
+\frac{\sin^2(a\gamma)}
+{(\gamma-\alpha_m)(\gamma-\alpha_{m+1})(\gamma-\alpha_{m+2})
+ (\gamma-\alpha_n)(\gamma-\alpha_{n+1})(\gamma-\alpha_{n+2})}.
+```
+
+This is a much sharper form of the kill-test:
+
+- `K_{mn}^{+-}(a)` vanishes automatically on the diagonal `m=n`;
+- off the diagonal, vanishing requires a genuine six-denominator cancellation
+  across the zero sum;
+- so any exact mixed Hankel symmetry in the deep tail is already a highly
+  rigid arithmetic statement, not a soft boundary effect.
+
 So the live mixed-block question can be sharpened one step further:
 
 - either `K_{mn}^{+-}(a)` vanishes in the deep tail, consistent with a
