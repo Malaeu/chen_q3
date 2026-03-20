@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: exploit the exact factorization of the anti-diagonal defect K_{mn}^{+-}(a), especially the explicit (m-n)-factor, to decide whether the mixed-block anti-diagonal defect can be finite-rank modulo cap
-next_verify: rg -n -e "finite rank|K_\\{mn\\}\\^\\{\\+\\-\\}|\\(m-n\\)|six-denominator|route-kill" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: freeze the wedge decomposition of K^{+-} into rank-2 zero contributions and decide whether that infinite family can collapse to finite rank modulo cap
+next_verify: rg -n -e "finite rank|wedge|u_\\\\gamma|v_\\\\gamma|K_\\{mn\\}\\^\\{\\+\\-\\}|route-kill" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

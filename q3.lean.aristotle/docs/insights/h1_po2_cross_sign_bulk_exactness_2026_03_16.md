@@ -748,6 +748,37 @@ This is a much sharper form of the kill-test:
 - so any exact mixed Hankel symmetry in the deep tail is already a highly
   rigid arithmetic statement, not a soft boundary effect.
 
+There is also a useful exact rank-2 decomposition. Set
+
+```tex
+p_\gamma(m)
+:=
+\frac{(-1)^m}
+{(\gamma-\alpha_m)(\gamma-\alpha_{m+1})(\gamma-\alpha_{m+2})},
+\qquad
+u_\gamma(m):=\alpha_m p_\gamma(m),
+\qquad
+v_\gamma(m):=p_\gamma(m).
+```
+
+Then the factorized formula can be rewritten as
+
+```tex
+K_{mn}^{+-}(a)
+=
+\frac{4\pi^3}{a^4}
+\sum_\gamma \sin^2(a\gamma)\,
+\bigl(u_\gamma(m)v_\gamma(n)-v_\gamma(m)u_\gamma(n)\bigr).
+```
+
+So each zero contributes a rank-at-most-2 antisymmetric wedge kernel, and the
+whole finite-rank question becomes brutally precise:
+
+- if the infinite family of pairs `(u_\gamma,v_\gamma)` collapses to a finite
+  span after summation, the mixed theorem shape might survive;
+- if these wedge contributions remain genuinely independent in the tail, then
+  `K^{+-}` cannot be finite rank and the route dies.
+
 So the live mixed-block question can be sharpened one step further:
 
 - either `K^{+-}` is finite rank, consistent with a Hankel-type comparator
@@ -820,7 +851,8 @@ So the exact burden remains unchanged:
 
 - either prove that the full infinite zero sum makes `K^{+-}` finite rank
   modulo cap;
-- or use a future exact obstruction to kill the current theorem shape.
+- or prove that the wedge family above cannot collapse to finite rank, which
+  kills the current theorem shape.
 
 ### What not to do inside these lemmas
 

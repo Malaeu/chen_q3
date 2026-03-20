@@ -89,6 +89,10 @@
   truncated `K^{+-}` matrix keeps substantial energy beyond the first few
   singular values, so the mixed-block obstruction is looking more serious, not
   less.
+- the anti-diagonal defect now has an exact zero-by-zero rank-2 wedge
+  decomposition; this is a real structural tightening, because the survival of
+  the mixed theorem shape is now equivalent to a highly nontrivial collapse of
+  an infinite family of wedge contributions to finite rank.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
