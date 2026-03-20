@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: freeze the wedge decomposition of K^{+-} into rank-2 zero contributions and decide whether that infinite family can collapse to finite rank modulo cap
-next_verify: rg -n -e "finite rank|wedge|u_\\\\gamma|v_\\\\gamma|K_\\{mn\\}\\^\\{\\+\\-\\}|route-kill" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: use the wedge decomposition and the generic rank-growth lemma to isolate the last hard question, namely whether the infinite tail can cancel finite packets of arbitrarily large rank down to finite rank modulo cap
+next_verify: rg -n -e "finite-support generic rank growth|rank K_\\{\\\\Gamma_0\\}\\^\\{\\+\\-\\}=2L|arbitrarily large|global cancellations|finite rank" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

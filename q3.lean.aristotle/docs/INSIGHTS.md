@@ -93,6 +93,15 @@
   decomposition; this is a real structural tightening, because the survival of
   the mixed theorem shape is now equivalent to a highly nontrivial collapse of
   an infinite family of wedge contributions to finite rank.
+- more is now rigidly true: any finite nonresonant zero packet with
+  `\sin^2(a\gamma)\neq 0` already contributes rank exactly `2` per zero to the
+  mixed anti-diagonal defect, so a surviving finite-rank theorem would need
+  genuinely global cancellations across infinitely many zero directions rather
+  than any finite-level automatic collapse.
+- even stronger: by zero counting, for each fixed `a` one can choose
+  nonresonant zero packets of arbitrarily large finite size with nonzero
+  weights, so the mixed defect admits finite partial contributions of
+  arbitrarily large rank before any infinite-tail cancellation is invoked.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

@@ -788,6 +788,129 @@ So the live mixed-block question can be sharpened one step further:
 
 This is the cleanest exact route-kill test now available inside `PO2`.
 
+There is also a rigorous finite-support rank-growth lemma behind this
+decomposition. Write
+
+```tex
+h:=\pi/a,
+\qquad
+x_\gamma:=\gamma/h=a\gamma/\pi.
+```
+
+For a finite zero set `\Gamma_0`, let
+
+```tex
+K_{\Gamma_0}^{+-}(m,n)
+:=
+\frac{4\pi^3}{a^4}
+\sum_{\gamma\in\Gamma_0}\sin^2(a\gamma)\,
+\bigl(u_\gamma(m)v_\gamma(n)-v_\gamma(m)u_\gamma(n)\bigr).
+```
+
+### L3'''''''''. Finite-support generic rank growth
+
+Assume that `\Gamma_0=\{\gamma_1,\dots,\gamma_L\}` satisfies:
+
+1. `\sin^2(a\gamma_\ell)\neq 0` for every `\ell`;
+2. there are no short resonances
+   `\gamma_i-\gamma_j\in\{\pm h,\pm 2h\}` for `i\neq j`.
+
+Then the sequence family
+
+```tex
+\{u_{\gamma_\ell},v_{\gamma_\ell}\}_{\ell=1}^L
+```
+
+is linearly independent on the tail `m>N`, and therefore
+
+```tex
+\operatorname{rank} K_{\Gamma_0}^{+-}=2L.
+```
+
+#### Proof
+
+Suppose
+
+```tex
+\sum_{\ell=1}^L
+\bigl(A_\ell u_{\gamma_\ell}(m)+B_\ell v_{\gamma_\ell}(m)\bigr)=0
+\qquad(m>N).
+```
+
+Using `u_\gamma(m)=\alpha_m p_\gamma(m)=hm\,p_\gamma(m)` and the explicit
+formula for `p_\gamma(m)`, this becomes
+
+```tex
+\sum_{\ell=1}^L
+\frac{a_\ell m+b_\ell}
+{(x_{\gamma_\ell}-m)(x_{\gamma_\ell}-m-1)(x_{\gamma_\ell}-m-2)}
+=0
+\qquad(m>N),
+```
+
+for suitable constants `a_\ell,b_\ell`. The left-hand side is a rational
+function of the complex variable `z` with finitely many poles, and it vanishes
+for infinitely many integers `z=m>N`, so it is identically zero.
+
+Under the short-resonance exclusion, the pole triples
+
+```tex
+\{x_{\gamma_\ell},x_{\gamma_\ell}-1,x_{\gamma_\ell}-2\}
+```
+
+are pairwise disjoint. Hence the residues at `z=x_{\gamma_\ell}` and
+`z=x_{\gamma_\ell}-1` must vanish separately for each `\ell`, giving
+
+```tex
+a_\ell x_{\gamma_\ell}+b_\ell=0,
+\qquad
+a_\ell(x_{\gamma_\ell}-1)+b_\ell=0,
+```
+
+and therefore `a_\ell=b_\ell=0`. So all `A_\ell,B_\ell` vanish, proving the
+independence of the `2L` sequences.
+
+Now form the infinite column matrix
+
+```tex
+W_{\Gamma_0}
+:=
+\bigl[\sqrt{c_\gamma}\,u_\gamma\ \ \sqrt{c_\gamma}\,v_\gamma\bigr]_{\gamma\in\Gamma_0},
+\qquad
+c_\gamma:=\frac{4\pi^3}{a^4}\sin^2(a\gamma).
+```
+
+Then
+
+```tex
+K_{\Gamma_0}^{+-}=W_{\Gamma_0}J_LW_{\Gamma_0}^*,
+```
+
+where `J_L` is the block-diagonal symplectic matrix with `L` copies of
+`\begin{psmallmatrix}0&1\\-1&0\end{psmallmatrix}`. Since `J_L` is invertible
+and the columns of `W_{\Gamma_0}` are independent, `K_{\Gamma_0}^{+-}` has
+rank `2L`. Done.
+
+#### Consequence
+
+Every finite nonresonant zero packet with nonzero weights already contributes
+two genuinely new mixed directions. So the survival of the mixed theorem shape
+cannot come from any finite-level automatic collapse:
+
+- finite packets generically increase rank by `2` per zero;
+- for each fixed `a`, the zero-counting asymptotic `N(T)\sim T\log T/(2\pi)`
+  implies there are infinitely many zeros with `\sin^2(a\gamma)\neq 0`, since
+  the bad lattice `(\pi/a)\mathbb Z` has only `O(T)` points up to height `T`;
+- after choosing finitely many such zeros, avoiding new short resonances costs
+  only finitely many forbidden values `\gamma_i\pm h,\gamma_i\pm 2h`, so one
+  can greedily build nonresonant packets of arbitrary finite size;
+- therefore there exist finite packets `\Gamma_0` for which
+  `\operatorname{rank}K_{\Gamma_0}^{+-}` is arbitrarily large;
+- therefore a finite-rank full defect would require genuinely global
+  cancellations across infinitely many zero directions;
+- in particular, there is no remaining soft route in which the mixed defect
+  quietly becomes low-rank for local algebraic reasons alone.
+
 ### L3''''''''''. Numerical smoke test for the finite-rank test
 
 As a quick diagnostic only, using the local fixed list of the first 20
