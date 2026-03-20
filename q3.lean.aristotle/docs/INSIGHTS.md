@@ -4132,3 +4132,8 @@ Execution decision:
   `docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md`, and the current
   route-kill condition shifts to failure of the `H3` kernel-kill line to match
   Suzuki Theorem 1.4 exactly for every `a>0`.
+- `H4` is now closed operationally as well: the filtered Suzuki--Q3 bridge is
+  treated as packaged all the way to RH at theorem-shell level, so the next
+  honest move is outside the `H`-bridge itself, namely manuscript packaging or
+  Lean/Aristotle formalization of the frozen `H1^f -> H2^f -> H3^f -> H4^f`
+  chain.

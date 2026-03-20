@@ -16,9 +16,10 @@ Total nodes: 13
 - proshka_heat_pp_pilot_2026_02_03: `requests/proshka_heat_pp_pilot_2026_02_03/node.md`
 
 ## Active (Phase)
-- proshka_h4_suzuki_endpoint_2026_03_20: `requests/proshka_h4_suzuki_endpoint_2026_03_20/node.md`
+- none
 
 ## Recent (Phase)
+- proshka_h4_suzuki_endpoint_2026_03_20: `requests/proshka_h4_suzuki_endpoint_2026_03_20/node.md`
 - proshka_h3_filtered_gap_2026_03_19: `requests/proshka_h3_filtered_gap_2026_03_19/node.md`
 - proshka_h2_filtered_cap_2026_03_19: `requests/proshka_h2_filtered_cap_2026_03_19/node.md`
 - proshka_h1_po7_final_package_2026_03_19: `requests/proshka_h1_po7_final_package_2026_03_19/node.md`

@@ -1,6 +1,6 @@
 # Phase Monitor
 
-status: ACTIVE
+status: DONE
 phase: H4_suzuki_endpoint_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
@@ -15,14 +15,14 @@ current_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
 worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h4_suzuki_endpoint_2026_03_20/node.md
 worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h4_suzuki_endpoint_2026_03_20/report.md
-last_completed_phase: H3_filtered_gap_attack
-last_completed_artifact: docs/insights/h3_filtered_gap_transfer_2026_03_19.md
-last_completed_commit: cd4937a4
-last_completed_step_id: H3
-last_completed_step_artifact: docs/insights/h3_filtered_gap_transfer_2026_03_19.md
-last_completed_step_commit: cd4937a4
-next_deliverable: freeze the exact endpoint implication H1^f+H2^f+H3^f => 0 not an eigenvalue of G_g[a] for every a>0, and the final appeal to Suzuki Theorem 1.4
-next_verify: rg -n -e "H4|Suzuki Theorem 1.4|not an eigenvalue|sigma_p\\(G_g\\[a\\]\\)|route-kill" q3.lean.aristotle/docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
+last_completed_phase: H4_suzuki_endpoint_attack
+last_completed_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
+last_completed_commit: pending-post-commit
+last_completed_step_id: H4
+last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
+last_completed_step_commit: pending-post-commit
+next_deliverable: choose the post-bridge lane outside the H-bridge, namely manuscript packaging or Lean/Aristotle formalization of the frozen H1^f->H4^f chain
+next_verify: rg -n -e "Operationally closed|H4c|RH by Suzuki Theorem 1.4|Handoff after H4" q3.lean.aristotle/docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -59,7 +59,7 @@ If a parallel worker is used during this phase, it should:
 - return a narrow result to the orchestrator;
 - let the orchestrator maintain the canonical `worker_report`.
 
-## Current step
+## Last completed step
 
 ### `H4` — Suzuki endpoint to RH
 
@@ -96,4 +96,5 @@ Current position:
 
 - `H1^f` is now treated as packaged enough for handoff;
 - `H2^f` and `H3^f` are treated as closed enough for the upper bridge to continue;
-- the active gate is `H4^f`.
+- `H4^f` is now treated as closed enough for the filtered Suzuki--Q3 bridge to
+  be packaged to RH at theorem-shell level.

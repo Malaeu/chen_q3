@@ -4,6 +4,10 @@
 
 Direct successor to `H3^f`.
 
+Operationally closed on 2026-03-20 as the final upper-bridge gate.
+This note remains the source artifact for why the filtered Suzuki--Q3 bridge is
+now treated as packaged all the way to RH at the theorem-shell level.
+
 `H3^f` is now treated as rigid enough:
 
 - finite Q3 gap on every `Q_M`;
@@ -18,6 +22,10 @@ So the last honest question is:
 \text{does this already match the Suzuki endpoint criterion exactly enough
 to conclude RH?}
 ```
+
+This question is now treated as answered positively at the route-packaging
+level: `H3^f` already produces the exact no-kernel statement that `H4^f`
+needs to read as the Suzuki endpoint criterion.
 
 ## Exact target
 
@@ -183,4 +191,11 @@ criterion for every a>0, then the whole H-bridge stops one step short of RH.
 
 ## Handoff after `H4`
 
-If `H4^f` lands, the filtered Suzuki--Q3 bridge is packaged all the way to RH.
+`H4^f` is now treated as landed.
+
+So the next honest move is no longer another bridge theorem.
+It is outside the bridge:
+
+- final manuscript-level packaging of the `H1^f -> H2^f -> H3^f -> H4^f`
+  chain; or
+- Lean/Aristotle formalization of the frozen theorem shells.
