@@ -199,6 +199,88 @@ Any statement of the form
 with no operator reclassification into boundary or cap, is not a weakened win.
 It is the explicit route-kill event for the current boundary/cap reset.
 
+## Compact proof plan
+
+The next real attack on `PO2` should stay brutally short.
+
+### Step 1. Freeze the exact cross-sign tail object
+
+Work only with
+
+```tex
+\mathcal D_{a,N}^{+-}
+=
+P_{+,N}\mathcal D_{a,N}P_{-,N},
+```
+
+not with finite-section diagnostics and not with the same-sign block.
+
+### Step 2. Expand the filtered Suzuki side entrywise
+
+Use only the exact filtered bulk formulas from the four-block note:
+
+```tex
+M_{mn}^{+-}(a)
+=
+\bigl\langle G_g[a]\phi_n^+[a],\phi_m^-[a]\bigr\rangle
+=
+W(\psi_n^+[a]*\widetilde{\psi_m^-[a]}).
+```
+
+So the left-hand side is already a genuine filtered bulk object.
+
+### Step 3. Expand the Q3 side through the pulled-back block
+
+Compare against
+
+```tex
+\kappa(a)\widetilde Q_{N}^{+-}
+\quad\text{or finite shadows }\quad
+\kappa(a)\widetilde Q_{M,N}^{+-},
+```
+
+using only the frozen two-sided filter `\Delta_N`.
+The key point is that both sides must be read through the same four-term
+stencil induced by the two-sided adjacent-packet filter.
+
+### Step 4. Kill the common bulk stencil first
+
+The first theorem attempt is not “classify all remainders”, but:
+
+```tex
+\mathcal D_{a,\mathrm{bulk}}^{+-}=0.
+```
+
+So the shared filtered stencil must cancel before any cap analysis.
+If it does not, the route is not weakened; it is killed.
+
+### Step 5. Name the only admissible remainder channels
+
+After bulk cancellation, the only allowed output is
+
+```tex
+\mathcal D_{a,N}^{+-}
+=
+\mathcal D_{a,\partial}^{+-}
+\mathcal D_{a,\mathrm{cap}}^{+-}.
+```
+
+No compression term belongs here.
+No same-sign operator belongs here.
+No unnamed matrix residue belongs here.
+
+### Step 6. Immediate handoff
+
+If bulk vanishing lands, the next theorem attempt is forced:
+
+```tex
+PO3:\qquad
+\mathcal D_{a,\partial}^{+-}=0.
+```
+
+If bulk vanishing does not land, do not climb back to `H2/H3/H4`.
+Treat the current `H`-bridge as still conditional and unresolved.
+
 ## Admissible remainder channels after `PO2`
 
 If `PO2` lands, only these channels may still remain in `(+,-)`:
