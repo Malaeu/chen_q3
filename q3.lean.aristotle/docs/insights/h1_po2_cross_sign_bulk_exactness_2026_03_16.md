@@ -983,6 +983,45 @@ packaging:
 So no off-the-shelf theorem currently closes the gap. The residue-upgrade
 lemma is a genuinely new bridge that still has to be proved or refuted.
 
+### Exact remaining bridge lemma
+
+The last unresolved step can now be stated cleanly.
+
+```tex
+\textbf{Residue-upgrade lemma (target).}
+```
+
+Let `F(z,n)` be a kernel of the same class as `\mathbf K^{+-}(z,n)` above:
+
+- meromorphic in `z` with poles only at the triples
+  `x_\gamma,x_\gamma-1,x_\gamma-2`;
+- locally normally convergent off its poles;
+- of the form
+  `\sum_\gamma (A_\gamma(n) \mathbf u_\gamma(z)+B_\gamma(n)\mathbf v_\gamma(z))`
+  with the same Cauchy-type profiles.
+
+Assume the discrete tail matrix
+
+```tex
+\bigl(F(m,n)\bigr)_{m,n>N}
+```
+
+has finite rank `r`. Then the residue profile family
+
+```tex
+n\longmapsto \operatorname*{Res}_{z=x_\gamma}F(z,n)
+```
+
+should lie in an `r`-dimensional subspace of tail sequences.
+
+If this lemma is true, `PO2` dies immediately: the explicit residue profiles
+above are linearly independent for arbitrarily large nonresonant zero packets,
+so `K^{+-}` cannot be finite rank.
+
+If this lemma is false, then the current route has located its exact hard
+failure mode: discrete low rank on the tail does not control the meromorphic
+residue data strongly enough to kill the mixed block.
+
 ### L3''''''''''. Numerical smoke test for the finite-rank test
 
 As a quick diagnostic only, using the local fixed list of the first 20

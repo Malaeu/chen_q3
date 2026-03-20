@@ -114,6 +114,11 @@
   entire function of small type, but our mixed kernel is meromorphic and only
   Hankel modulo cap, so there is no standard theorem here that closes the gap
   for free.
+- the exact remaining theorem is now named cleanly: the only live bridge is a
+  residue-upgrade lemma saying that finite rank of the discrete mixed tail
+  should force the residue profiles of the meromorphic continuation to live in
+  a finite-dimensional sequence space. If that lemma lands, the current
+  `H`-bridge mixed block dies immediately.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
