@@ -108,6 +108,12 @@
   profile in the second index; so the open question is no longer local
   algebra, but whether discrete finite rank can be upgraded to
   finite-dimensional residue data.
+- a quick oracle + external sanity-check says this is a genuine new bridge:
+  Kronecker/Hankel finite-rank theory supports finite rank as the right
+  benchmark, and Carlson-type uniqueness explains why integer data can fix an
+  entire function of small type, but our mixed kernel is meromorphic and only
+  Hankel modulo cap, so there is no standard theorem here that closes the gap
+  for free.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

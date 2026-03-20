@@ -969,6 +969,20 @@ So the route is now squeezed to one exact meta-lemma, not to a vague cloud:
 bridge finite rank on the integer tail to finite-dimensional meromorphic
 residue data for `\mathbf K^{+-}`.
 
+External sanity-check says this wall is real and not an artifact of bad
+packaging:
+
+- classical Kronecker/Hankel theory explains why finite rank is the correct
+  structural benchmark once a mixed block is Hankel modulo cap;
+- Carlson-type uniqueness theorems explain why values on the integers can
+  determine an entire function of sufficiently small exponential type;
+- but `\mathbf K^{+-}` sits strictly between these languages: it is not a pure
+  Hankel symbol problem, and its column kernels are meromorphic rather than
+  entire.
+
+So no off-the-shelf theorem currently closes the gap. The residue-upgrade
+lemma is a genuinely new bridge that still has to be proved or refuted.
+
 ### L3''''''''''. Numerical smoke test for the finite-rank test
 
 As a quick diagnostic only, using the local fixed list of the first 20
