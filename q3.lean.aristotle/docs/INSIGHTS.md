@@ -79,6 +79,16 @@
   with an explicit `(m-n)` factor, so off-diagonal vanishing would require a
   real six-denominator zero-sum cancellation miracle, not a soft boundary
   explanation.
+- important correction: the right structural mixed-block test is not
+  pointwise tail vanishing of `K_{mn}^{+-}`, but finite-rank anti-diagonal
+  defect modulo cap; if
+  `M^{+-}=\kappa_{+-}\widetilde Q^{+-}+C^{\mathrm{cap}}`
+  with finite-rank cap, then `K^{+-}` must also be finite rank.
+- quick low-rank smoke-test on the first 20 embedded zeros is not friendly to
+  the finite-rank story: for several sample `a` and moderate windows, the
+  truncated `K^{+-}` matrix keeps substantial energy beyond the first few
+  singular values, so the mixed-block obstruction is looking more serious, not
+  less.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

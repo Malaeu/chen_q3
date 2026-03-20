@@ -652,8 +652,34 @@ K_{mn}^{+-}(a)
 M_{m+1,n}^{+-}(a)-M_{m,n+1}^{+-}(a).
 ```
 
-If the cap support is finite-dimensional, then for all sufficiently deep tail
-indices away from that cap support one must have
+If the mixed block has theorem shape
+
+```tex
+M^{+-}(a)=\kappa_{+-}(a)\widetilde Q^{+-}+C_a^{+-,\mathrm{cap}}
+```
+
+with `C_a^{+-,\mathrm{cap}}` finite rank `r`, then the defect matrix
+`K^{+-}=(K_{mn}^{+-})_{m,n>N}` must also be finite rank, in fact of rank at
+most `2r`. Indeed, `\widetilde Q^{+-}` contributes zero to `K`, and the
+remaining matrix is
+
+```tex
+K_{mn}^{+-}
+=
+C_{m+1,n}^{+-,\mathrm{cap}}-C_{m,n+1}^{+-,\mathrm{cap}},
+```
+
+which is the difference of two shifted copies of a rank-`r` matrix.
+So the correct structural test is not pointwise vanishing in the deep tail,
+but **finite-rank anti-diagonal defect**.
+
+In particular, if one can prove that the matrix `K^{+-}` is not finite rank,
+then the current mixed-block theorem shape is killed.
+
+The earlier “deep tail pointwise zero” reading is too strong and should not be
+used as the real theorem test.
+
+For a pure Hankel block with no cap one would have the stronger identity
 
 ```tex
 K_{mn}^{+-}(a)=0.
@@ -724,14 +750,14 @@ This is a much sharper form of the kill-test:
 
 So the live mixed-block question can be sharpened one step further:
 
-- either `K_{mn}^{+-}(a)` vanishes in the deep tail, consistent with a
-  Hankel-type comparator modulo cap;
-- or a genuine non-cap anti-diagonal defect survives, and the current
-  theorem shape is killed.
+- either `K^{+-}` is finite rank, consistent with a Hankel-type comparator
+  modulo finite cap;
+- or `K^{+-}` is genuinely infinite-rank / not low-rank in the tail, and the
+  current theorem shape is killed.
 
 This is the cleanest exact route-kill test now available inside `PO2`.
 
-### L3''''''''''. Numerical smoke test for the kill-test
+### L3''''''''''. Numerical smoke test for the finite-rank test
 
 As a quick diagnostic only, using the local fixed list of the first 20
 positive zeta zeros already embedded in `src/q3_corrected_model.py`, the
@@ -769,10 +795,31 @@ Interpretation:
   the mixed block does not appear to satisfy automatic anti-diagonal symmetry
   for free.
 
+A stronger smoke test is the singular-value profile of the truncated
+anti-diagonal defect matrix `K^{+-}` built from the same short zero list.
+For example:
+
+```text
+a = 0.5, M = 16:
+  top singular values ≈ 10.26, 10.26, 7.35, 7.35, 4.74, 4.74
+  top-6 energy share ≈ 0.964
+
+a = 1.0, M = 16:
+  top singular values ≈ 9.16, 9.16, 7.17, 7.17, 5.50, 5.50
+  top-6 energy share ≈ 0.862
+
+a = 1.7, M = 16:
+  top singular values ≈ 7.29, 7.29, 5.89, 5.89, 5.60, 5.60
+  top-6 energy share ≈ 0.882
+```
+
+So at least on this short diagnostic sample, the truncated mixed
+anti-diagonal defect does not behave like an obviously tiny-rank perturbation.
+
 So the exact burden remains unchanged:
 
-- either prove that the full infinite zero sum kills `K_{mn}^{+-}` in the
-  deep tail modulo cap;
+- either prove that the full infinite zero sum makes `K^{+-}` finite rank
+  modulo cap;
 - or use a future exact obstruction to kill the current theorem shape.
 
 ### What not to do inside these lemmas
