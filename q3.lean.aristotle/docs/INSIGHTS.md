@@ -4084,3 +4084,45 @@ Local consequence:
 - the honest next question is no longer “what geometry should `H3` use?” but
   only whether this packet is already rigid enough to hand off to the Suzuki
   endpoint step `H4^f`.
+
+## Synthesis (2026-03-20, in progress) — `H4^f` research-pass
+
+New blocker definition:
+
+- if `H3^f` is really tight enough, the next gate is no longer another bridge
+  search but the endpoint handoff
+  `0 \notin \sigma_p(G_g[a]) for every a>0 => RH`;
+- so the exact question is whether `H4^f` is only Suzuki endpoint packaging or
+  whether it secretly needs extra spectral structure not already frozen by
+  `H1^f -> H2^f -> H3^f`.
+
+Local oracle recall on `q3_docs`:
+
+- query `H4 Suzuki endpoint RH filtered cap matrix kernel G_g[a]` points back
+  to `h1_two_sided_filtered_bridge_2026_03_08.md`, which already freezes
+  `H4^f` as “RH via Suzuki Theorem 1.4”;
+- query `H4 filtered bridge endpoint theorem 1.4 RH` returns the same public
+  stack plus `Main_closure.tex` as the best local shell;
+- query `kernel G_g[a] zero eigenvalue Suzuki theorem 1.4 endpoint` hits
+  `full/sections/introduction.tex`, where the compressed chain is already
+  written as
+  `H1 -> H2 -> H3 -> H4 -> no zero eigenvalue for G_g[a] -> RH by Suzuki Theorem 1.4`;
+- query `RH equivalent 0 not eigenvalue G_g[a] Suzuki` hits
+  `suzuki_form_pair_bridge_2026_03_08.md`, which already treats
+  `0 \notin \sigma_p(G_g[a])` as the endpoint criterion.
+
+External sanity-check:
+
+- Clay still lists RH as open on 2026-03-20, so `H4^f` must remain an endpoint
+  handoff inside our route, not a claim that RH is already closed externally;
+- the Clay event pages for the 2025 zeta/L-functions workshop and the
+  2025-2026 Millennium lecture series still treat RH as an active frontier,
+  which is consistent with our use of Suzuki only as an endpoint criterion
+  inside the internal bridge.
+
+Execution decision:
+
+- `H4^f` looks like a genuine final endpoint packet, not a new geometric gate;
+- the honest next move is to close `H3` operationally and activate a dedicated
+  `H4` artifact, with the only live question being whether the `H3` kernel-kill
+  output matches Suzuki Theorem 1.4 cleanly for every `a>0`.
