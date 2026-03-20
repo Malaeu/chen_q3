@@ -1,28 +1,28 @@
 # Phase Monitor
 
 status: ACTIVE
-phase: H3_filtered_gap_attack
-started: 2026-03-19
+phase: H4_suzuki_endpoint_attack
+started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: Upper bridge / H3 filtered gap transfer
-main_kill_gate: H3 fails if the filtered Q3 gap plus cap positivity does not kill the kernel of G_g[a]
+macro_position: Final upper bridge / H4 Suzuki endpoint to RH
+main_kill_gate: H4 fails if the H3 kernel-kill output does not match Suzuki Theorem 1.4 cleanly for every a>0
 current_lane: A
-current_step_id: H3
-current_step_title: filtered gap transfer
+current_step_id: H4
+current_step_title: Suzuki endpoint to RH
 current_owner: local-agent
-current_artifact: docs/insights/h3_filtered_gap_transfer_2026_03_19.md
+current_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
-worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h3_filtered_gap_2026_03_19/node.md
-worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h3_filtered_gap_2026_03_19/report.md
-last_completed_phase: H2_filtered_cap_attack
-last_completed_artifact: docs/insights/h2_filtered_cap_reduction_2026_03_19.md
-last_completed_commit: 1ba3c44d
-last_completed_step_id: H2
-last_completed_step_artifact: docs/insights/h2_filtered_cap_reduction_2026_03_19.md
-last_completed_step_commit: 1ba3c44d
-next_deliverable: freeze the finite Q3 gap hypothesis, the filtered transfer to B_{M,N_a}, the tail-space coercive lower bound, and the cap-matrix-to-kernel-kill line
-next_verify: rg -n -e "H3|filtered gap transfer|ker G_g\\[a\\]|q_\\{G,a\\}|route-kill" q3.lean.aristotle/docs/insights/h3_filtered_gap_transfer_2026_03_19.md
+worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h4_suzuki_endpoint_2026_03_20/node.md
+worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h4_suzuki_endpoint_2026_03_20/report.md
+last_completed_phase: H3_filtered_gap_attack
+last_completed_artifact: docs/insights/h3_filtered_gap_transfer_2026_03_19.md
+last_completed_commit: cd4937a4
+last_completed_step_id: H3
+last_completed_step_artifact: docs/insights/h3_filtered_gap_transfer_2026_03_19.md
+last_completed_step_commit: cd4937a4
+next_deliverable: freeze the exact endpoint implication H1^f+H2^f+H3^f => 0 not an eigenvalue of G_g[a] for every a>0, and the final appeal to Suzuki Theorem 1.4
+next_verify: rg -n -e "H4|Suzuki Theorem 1.4|not an eigenvalue|sigma_p\\(G_g\\[a\\]\\)|route-kill" q3.lean.aristotle/docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -41,8 +41,8 @@ be:
 ## Phase contract
 
 - no return to coordination-first work unless the theorem phase stalls;
-- lane `A` has now closed `H2^f` tightly enough and continues the upper
-  bridge through `H3^f`;
+- lane `A` has now closed `H3^f` tightly enough and continues the upper
+  bridge through `H4^f`;
 - lane `B` stays frozen at the canonical smallest-block certificate;
 - no rank/basis language as theorem content;
 - no new RH architecture.
@@ -61,25 +61,26 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `H3` — filtered gap transfer
+### `H4` — Suzuki endpoint to RH
 
 Goal:
 
-- freeze the finite Q3 gap hypothesis in the upper bridge language;
-- transfer that gap to the filtered metric side on the tail space;
-- prepare a clean handoff to `H4^f`.
+- freeze the exact endpoint implication
+  `H1^f + H2^f + H3^f => 0 \notin \sigma_p(G_g[a])` for every `a>0`;
+- make the final appeal to Suzuki Theorem 1.4 explicit;
+- close the filtered Suzuki--Q3 bridge without reopening earlier gates.
 
 Required output:
 
-- one theorem-shaped filtered gap hypothesis;
-- one theorem-shaped transfer to `\widetilde Q_{M,N_a}\ge c(a)B_{M,N_a}`;
-- one coercive lower bound on `V_a^{\mathrm{tail}}`;
-- one explicit kernel-elimination line using cap positivity.
+- one theorem-shaped endpoint hypothesis;
+- one theorem-shaped no-zero-eigenvalue conclusion;
+- one explicit final implication to RH;
+- one explicit route-kill condition if the endpoint does not read exactly.
 
 Exact success criterion:
 
-- the next theorem attempt is no longer “can the gap transfer work?”, but the
-  endpoint step `H4^f`.
+- the next theorem attempt is no longer inside the `H`-bridge, but outside it:
+  either final manuscript packaging or formalization of the bridge.
 
 ## Macro view
 
@@ -94,5 +95,5 @@ This phase should now be read in the compressed route language:
 Current position:
 
 - `H1^f` is now treated as packaged enough for handoff;
-- `H2^f` is treated as closed enough for the upper bridge to continue;
-- the active gate is `H3^f`.
+- `H2^f` and `H3^f` are treated as closed enough for the upper bridge to continue;
+- the active gate is `H4^f`.

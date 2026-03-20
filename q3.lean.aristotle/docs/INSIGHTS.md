@@ -4115,10 +4115,9 @@ External sanity-check:
 
 - Clay still lists RH as open on 2026-03-20, so `H4^f` must remain an endpoint
   handoff inside our route, not a claim that RH is already closed externally;
-- the Clay event pages for the 2025 zeta/L-functions workshop and the
-  2025-2026 Millennium lecture series still treat RH as an active frontier,
-  which is consistent with our use of Suzuki only as an endpoint criterion
-  inside the internal bridge.
+- no external search result changed that picture, so the honest use of Suzuki
+  here remains internal endpoint packaging rather than any claim of external
+  closure.
 
 Execution decision:
 
@@ -4126,3 +4125,10 @@ Execution decision:
 - the honest next move is to close `H3` operationally and activate a dedicated
   `H4` artifact, with the only live question being whether the `H3` kernel-kill
   output matches Suzuki Theorem 1.4 cleanly for every `a>0`.
+
+- `H3` is now closed operationally: the upper bridge treats the filtered gap
+  transfer as rigid enough for endpoint handoff, so the active local gate
+  moves to `H4^f`, namely Suzuki endpoint to RH; the new active artifact is
+  `docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md`, and the current
+  route-kill condition shifts to failure of the `H3` kernel-kill line to match
+  Suzuki Theorem 1.4 exactly for every `a>0`.

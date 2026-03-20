@@ -4,6 +4,11 @@
 
 Direct successor to `H2^f`.
 
+Operationally closed on 2026-03-20 as the second upper-bridge gate.
+This note remains the source artifact for why the filtered finite Q3 gap plus
+finite cap positivity are now treated as rigid enough to hand upward into the
+Suzuki endpoint step.
+
 `H2^f` is now treated as rigid enough:
 
 - closed tail space `V_a^{\mathrm{tail}}`;
@@ -11,10 +16,12 @@ Direct successor to `H2^f`.
 - `q_{G,a}`-orthogonal split;
 - finite Hermitian cap matrix `H_a^{\mathrm{cap}}`.
 
-So the next honest question is:
+The next honest question is therefore no longer internal to `H3^f`, but the
+endpoint handoff:
 
 ```tex
-\text{does the filtered Q3 gap transfer to } \ker G_g[a]=\{0\}\ ?
+\text{does this kernel-kill output match Suzuki Theorem 1.4 cleanly enough
+to imply RH?}
 ```
 
 ## Exact target
