@@ -4187,3 +4187,19 @@ Execution decision:
   bulk exactness;
 - treat `H2^f -> H3^f -> H4^f` as conditional consumers until `PO2` and then
   `PO3` are genuinely discharged.
+
+Compact mixed-block plan:
+
+- work on the infinite-tail object first:
+  `\mathcal D_{a,N}^{+-}=P_{+,N}\mathcal D_{a,N}P_{-,N}`;
+- expand both sides through the exact filtered four-block formulas
+  `M_{mn}^{+-}(a)=W(\psi_n^+[a]*\widetilde{\psi_m^-[a]})`
+  and the pulled-back Q3 block `\kappa(a)\widetilde Q^{+-}`;
+- isolate the common four-term stencil coming from the two-sided filter
+  `\Delta_N`, and force exact cancellation there before any cap discussion;
+- allow only two named remainder channels after that cancellation:
+  `\mathcal D_{a,\partial}^{+-}` and `\mathcal D_{a,\mathrm{cap}}^{+-}`;
+- if any residual term survives that is neither boundary nor cap, kill the
+  current theorem shape immediately;
+- if the bulk cancels, move directly to `PO3` and keep `(++)` frozen until the
+  cross-sign boundary question is also closed.
