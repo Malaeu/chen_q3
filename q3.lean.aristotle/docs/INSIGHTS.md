@@ -56,6 +56,12 @@
   `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md`, rollback to the last real branch
   point already frozen in `PROJECT_ORCHESTRATOR.md`, and move to the next live
   branch instead of reopening dead branches by rhetoric.
+- `PO2` is now narrowed even harder than before: the Q-side mixed block has an
+  exact filtered Hankel-type formula in the index `m+n`, sign-pure boundary
+  algebra cannot contribute to `(+,-)`, and therefore the first honest missing
+  brick is a single raw mixed Weil comparison
+  `\Omega_{mn}^{+-}(a) = \kappa_{+-}(a)(A_{m+n}-\sum_j \lambda_j e^{-2\pi i(m+n)\xi_j})`
+  modulo cap; this is the real bulk target inside `H1^\infty`.
 
 ## Текущий sprint-hub
 
