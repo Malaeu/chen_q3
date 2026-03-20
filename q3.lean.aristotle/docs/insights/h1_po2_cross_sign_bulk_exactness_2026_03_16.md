@@ -393,6 +393,36 @@ After `L3'`, the theorem fork becomes brutally explicit:
 3. route-kill:
    a genuine tail bulk contribution survives in this stencil.
 
+### L3'''. Why the mixed block is the right first target
+
+The formulas already show a special algebraic simplification in the cross-sign
+channel.
+
+On the Suzuki side, `Main_closure.tex` gives
+
+```tex
+M_{mn}^{+-}(a)
+=
+\frac{2\pi^2}{a^3}(-1)^{m+n}
+\sum_\gamma
+\frac{\sin^2(a\gamma)}
+{(\gamma-\alpha_m)(\gamma-\alpha_{m+1})(\gamma-\alpha_n)(\gamma-\alpha_{n+1})}.
+```
+
+On the Q3 side, the explicit filtered Toeplitz term is
+
+```tex
+\widetilde a_{mn}^{+-}
+=
+a_{m+n}+2a_{m+n+1}+a_{m+n+2}.
+```
+
+So unlike the same-sign block, the mixed block is already naturally organized
+by the combined index `m+n` and by a same-sign denominator pattern on the
+Suzuki side.
+This is exactly why `(+,-)` should be attacked before `(++)`: it has the
+cleanest algebraic symmetry and the strongest chance of exact cancellation.
+
 ### What not to do inside these lemmas
 
 - do not revive the dead global raw identity `w_{rs}(a)=\kappa(a)q_{rs}`;
