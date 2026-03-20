@@ -346,6 +346,53 @@ which upgrades directly to
 The only acceptable weaker output is that the whole residual operator already
 belongs to the named boundary/cap channels.
 
+### L3'. Explicit entrywise residual formula
+
+Combining `L1` and `L2`, define the raw mixed residuals
+
+```tex
+\delta_{r,s}(a):=w_{r,s}(a)-\kappa(a)q_{r,s}.
+```
+
+Then the cross-sign filtered residual is exactly
+
+```tex
+R_{mn}^{+-}(a)
+:=
+M_{mn}^{+-}(a)-\kappa(a)\widetilde q_{mn}^{+-}
+```
+
+with the four-term representation
+
+```tex
+R_{mn}^{+-}(a)
+=
+\delta_{m,-n}(a)
++ \delta_{m+1,-n}(a)
++ \delta_{m,-(n+1)}(a)
++ \delta_{m+1,-(n+1)}(a).
+```
+
+This is the most concrete local target we currently have for `PO2`.
+
+It is also the right reason not to resurrect the dead global raw identity:
+we do **not** need each raw defect `\delta_{r,s}` to vanish.
+We only need the specific cross-sign four-term stencil above to cancel, or to
+collapse into named boundary/cap channels.
+
+### L3''. Sharp local theorem fork
+
+After `L3'`, the theorem fork becomes brutally explicit:
+
+1. exact cancellation:
+   ```tex
+   R_{mn}^{+-}(a)=0 \quad (m,n>N);
+   ```
+2. structured fallback:
+   the operator built from `R_{mn}^{+-}(a)` is already boundary/cap only;
+3. route-kill:
+   a genuine tail bulk contribution survives in this stencil.
+
 ### What not to do inside these lemmas
 
 - do not revive the dead global raw identity `w_{rs}(a)=\kappa(a)q_{rs}`;

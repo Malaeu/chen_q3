@@ -4203,3 +4203,18 @@ Compact mixed-block plan:
   current theorem shape immediately;
 - if the bulk cancels, move directly to `PO3` and keep `(++)` frozen until the
   cross-sign boundary question is also closed.
+
+First exact proof-facing refinement:
+
+- `PO2` now has an explicit entrywise mixed residual
+  `R_{mn}^{+-}(a)=M_{mn}^{+-}(a)-\kappa(a)\widetilde q_{mn}^{+-}`;
+- by combining the two frozen filtered-block propositions from
+  `Main_closure.tex`, this residual is exactly the four-term stencil of the
+  raw mixed defects
+  `\delta_{r,s}(a)=w_{r,s}(a)-\kappa(a)q_{r,s}`;
+- this is the right local target because it does **not** ask for the dead
+  global raw identity, only for cancellation of the specific cross-sign
+  stencil;
+- so the next proof move is now completely sharp:
+  prove this stencil vanishes, or prove it is already boundary/cap-only, or
+  kill the route.
