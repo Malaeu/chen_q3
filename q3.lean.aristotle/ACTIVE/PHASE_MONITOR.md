@@ -21,7 +21,7 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: freeze the exact theorem attack for PO2, namely prove pure cross-sign bulk vanishing or reduce the entire remainder to named boundary/cap channels only
+next_deliverable: land the exact PO2 lemma packet L1/L2/L3, namely the common filtered stencil on both sides and the resulting cross-sign bulk cancellation criterion
 next_verify: rg -n -e "PO2|bulk vanishing|boundary/cap-only|route-kill" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is

@@ -281,6 +281,87 @@ PO3:\qquad
 If bulk vanishing does not land, do not climb back to `H2/H3/H4`.
 Treat the current `H`-bridge as still conditional and unresolved.
 
+## Exact lemma package for the next attack
+
+The next proof-facing move should no longer say “work on `PO2`”.
+It should say exactly which three local lemmas we are trying to land.
+
+### L1. Common filtered stencil on the Suzuki side
+
+From `Main_closure.tex`, Proposition `prop:H1-raw-entry-reduction`, we already
+have for `N<n,m\le M`:
+
+```tex
+M_{mn}^{+-}(a)
+=
+w_{m,-n}(a)
++ w_{m+1,-n}(a)
++ w_{m,-(n+1)}(a)
++ w_{m+1,-(n+1)}(a).
+```
+
+This is the exact four-term filtered stencil on the Weil/Suzuki side.
+So there is no ambiguity left about what the cross-sign bulk object is.
+
+### L2. Common filtered stencil on the Q3 side
+
+From `Main_closure.tex`, Proposition `prop:H1-filtered-q-blocks`, we already
+have:
+
+```tex
+\widetilde q_{mn}^{+-}
+=
+q_{m,-n}
++ q_{m+1,-n}
++ q_{m,-(n+1)}
++ q_{m+1,-(n+1)}.
+```
+
+So the pulled-back Q3 block is built from the exact same four-term stencil.
+This is the key local reason `PO2` is even plausible.
+
+### L3. Cross-sign bulk cancellation lemma
+
+The real theorem attempt is now reduced to:
+
+```tex
+M_{mn}^{+-}(a)-\kappa(a)\widetilde q_{mn}^{+-}
+```
+
+for all tail indices `m,n>N`.
+
+The cleanest target is:
+
+```tex
+M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}
+\qquad (m,n>N),
+```
+
+which upgrades directly to
+
+```tex
+\mathcal D_{a,\mathrm{bulk}}^{+-}=0.
+```
+
+The only acceptable weaker output is that the whole residual operator already
+belongs to the named boundary/cap channels.
+
+### What not to do inside these lemmas
+
+- do not revive the dead global raw identity `w_{rs}(a)=\kappa(a)q_{rs}`;
+- do not move to finite sections first;
+- do not let `(++)` leak into the argument;
+- do not accept a “small numerically” cross-sign residue.
+
+### Immediate theorem fork
+
+After `L1` and `L2`, the proof splits cleanly:
+
+1. either `L3` lands exactly and `PO2` is done;
+2. or `L3` fails but the residual is already theorem-grade
+   `\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`;
+3. or an unnamed bulk residue survives and kills the route.
+
 ## Admissible remainder channels after `PO2`
 
 If `PO2` lands, only these channels may still remain in `(+,-)`:
