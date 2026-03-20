@@ -1022,6 +1022,68 @@ If this lemma is false, then the current route has located its exact hard
 failure mode: discrete low rank on the tail does not control the meromorphic
 residue data strongly enough to kill the mixed block.
 
+### Reduction to a scalar uniqueness principle
+
+The residue-upgrade lemma itself reduces to a one-variable uniqueness
+statement. Let `\mathcal M_a` denote the class of meromorphic functions of the
+form
+
+```tex
+H(z)
+=
+\sum_\gamma \bigl(A_\gamma \mathbf u_\gamma(z)+B_\gamma \mathbf v_\gamma(z)\bigr),
+```
+
+with locally normal convergence off the pole set and with the same pole
+triples `x_\gamma,x_\gamma-1,x_\gamma-2`.
+
+Then the whole `PO2` bridge is reduced to:
+
+```tex
+\textbf{Scalar uniqueness principle (target).}
+```
+
+If `H\in\mathcal M_a` and
+
+```tex
+H(m)=0\qquad\forall m>N,
+```
+
+then `H\equiv 0`.
+
+Indeed, assume this scalar principle. If the discrete matrix `F(m,n)` has rank
+`r`, choose tail columns `n_1,\dots,n_r` spanning all others. For each `n`
+there exist coefficients `c_j(n)` such that
+
+```tex
+F(m,n)=\sum_{j=1}^r c_j(n)F(m,n_j)
+\qquad\forall m>N.
+```
+
+So the meromorphic difference
+
+```tex
+H_n(z):=
+F(z,n)-\sum_{j=1}^r c_j(n)F(z,n_j)
+```
+
+lies in `\mathcal M_a` and vanishes on every integer `m>N`. By scalar
+uniqueness, `H_n\equiv 0`. Taking residues at `z=x_\gamma` shows that every
+residue profile `n\mapsto \operatorname*{Res}_{z=x_\gamma}F(z,n)` lies in the
+span of the `r` basis residue profiles coming from `n_1,\dots,n_r`. This is
+exactly the residue-upgrade lemma.
+
+So one more compression is now available:
+
+- finite rank on the tail `\Longrightarrow` residue-upgrade
+  **provided** scalar uniqueness holds in `\mathcal M_a`;
+- finite-support scalar uniqueness is already true by the rational-function
+  proof above;
+- therefore the real unresolved core is no longer matrix rank, but the
+  infinite-support scalar uniqueness problem for `\mathcal M_a`.
+
+This is the cleanest exact statement of the remaining mixed-block difficulty.
+
 ### L3''''''''''. Numerical smoke test for the finite-rank test
 
 As a quick diagnostic only, using the local fixed list of the first 20

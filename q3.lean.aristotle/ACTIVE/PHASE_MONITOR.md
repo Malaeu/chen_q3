@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: formulate and attack the exact residue-upgrade lemma: finite rank on the discrete tail should force the residue profiles to lie in a finite-dimensional sequence space
-next_verify: rg -n -e "Exact remaining bridge lemma|Residue-upgrade lemma|finite-dimensional subspace|Res_\\{z=x_\\\\gamma\\}" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: formulate and attack the scalar uniqueness principle for the meromorphic class M_a, since the residue-upgrade lemma now reduces exactly to that one-variable statement
+next_verify: rg -n -e "Scalar uniqueness principle|H\\\\in\\\\mathcal M_a|H\\(m\\)=0|residue-upgrade lemma" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

@@ -119,6 +119,12 @@
   should force the residue profiles of the meromorphic continuation to live in
   a finite-dimensional sequence space. If that lemma lands, the current
   `H`-bridge mixed block dies immediately.
+- there is now one more exact compression: the residue-upgrade lemma itself
+  reduces to a scalar uniqueness principle for the meromorphic class
+  `\mathcal M_a`; finite-support uniqueness is already covered by the rational
+  function argument, so the real unresolved point is the infinite-support
+  uniqueness statement
+  `H\in\mathcal M_a,\ H(m)=0\ \forall m>N \Rightarrow H\equiv 0`.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
