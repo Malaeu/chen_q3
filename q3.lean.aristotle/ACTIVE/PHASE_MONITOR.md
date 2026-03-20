@@ -17,10 +17,10 @@ worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h4_suzuki_endpoint_202
 worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h4_suzuki_endpoint_2026_03_20/report.md
 last_completed_phase: H4_suzuki_endpoint_attack
 last_completed_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
-last_completed_commit: pending-post-commit
+last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
-last_completed_step_commit: pending-post-commit
+last_completed_step_commit: 83e973ac
 next_deliverable: choose the post-bridge lane outside the H-bridge, namely manuscript packaging or Lean/Aristotle formalization of the frozen H1^f->H4^f chain
 next_verify: rg -n -e "Operationally closed|H4c|RH by Suzuki Theorem 1.4|Handoff after H4" q3.lean.aristotle/docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 
