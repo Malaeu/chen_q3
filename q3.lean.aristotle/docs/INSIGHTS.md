@@ -4062,3 +4062,25 @@ Parallel-agent communication is now fixed operationally rather than ad hoc:
 - the prompt contract is now file-based:
   use `ACTIVE/AGENT_PROTOCOL.md` plus the current request node, rather than
   improvising persona-heavy prompts each time.
+
+## Synthesis (2026-03-20, in progress) — `H3^f` theorem packet tightened
+
+The active upper bridge no longer looks fuzzy at the `H3` layer:
+
+- `docs/insights/h3_filtered_gap_transfer_2026_03_19.md` now freezes the exact
+  `H2 -> H3` input package:
+  closed tail space `V_a^{\mathrm{tail}}`, finite cap complement
+  `A_a^{\mathrm{cap}}`, `q_{G,a}`-orthogonal split, and finite Hermitian cap
+  matrix `H_a^{\mathrm{cap}}`;
+- the `H3` receiver is now expressed as the four-line packet
+  `finite gap -> filtered transfer -> tail coercivity -> kernel kill`;
+- the bad forms are explicit now:
+  failure of `\widetilde Q_{M,N_a}\ge c(a)B_{M,N_a}` for arbitrarily large
+  `M`, collapse of a `q_{J,a}`-normalized tail sequence, or a surviving cap
+  null vector when `H_a^{\mathrm{cap}}` should already be positive.
+
+Local consequence:
+
+- the honest next question is no longer “what geometry should `H3` use?” but
+  only whether this packet is already rigid enough to hand off to the Suzuki
+  endpoint step `H4^f`.

@@ -107,6 +107,18 @@ exact metric side and the no-loss relation
 
 That is precisely the mechanism `H3` needs.
 
+### 4. The macro route already isolates this as the next honest upper gate
+
+`docs/insights/h_bridge_three_doors_macro_map_2026_03_16.md` already says the
+local three-door work should collapse into:
+
+```tex
+H2^f\to H3^f\to H4^f.
+```
+
+So `H3` should be read as a genuine upper-bridge transfer theorem, not as a
+return to local defect bookkeeping.
+
 ## Refined source map (2026-03-19)
 
 The 2026-03-19 research refresh makes the `H3` support stack more exact.
@@ -166,6 +178,17 @@ H_a^{\mathrm{cap}}>0
 \ker G_g[a]=\{0\}.
 ```
 
+### H3.5. Exact `H2 -> H3` input package
+
+At theorem level `H3^f` should consume only:
+
+- closed tail space `V_a^{\mathrm{tail}}`;
+- finite-dimensional cap complement `A_a^{\mathrm{cap}}`;
+- `q_{G,a}`-orthogonal split;
+- finite Hermitian cap matrix `H_a^{\mathrm{cap}}`.
+
+No new geometric object is allowed to appear here.
+
 ## Reusable theorem packet
 
 The reusable `H3` packet is now:
@@ -194,6 +217,27 @@ Operationally:
 if H3 cannot turn the filtered Q3 gap plus cap positivity into
 \ker G_g[a]=\{0\}, then the upper bridge no longer looks like a real
 spectral transfer theorem.
+```
+
+More explicitly, the bad forms are:
+
+```tex
+\widetilde Q_{M,N_a}\not\ge c(a)B_{M,N_a}
+\quad\text{for arbitrarily large }M,
+```
+
+or
+
+```tex
+q_{G,a}(v_j)\to 0
+\quad\text{for a }q_{J,a}\text{-normalized tail sequence }v_j\in V_a^{\mathrm{tail}},
+```
+
+or
+
+```tex
+H_a^{\mathrm{cap}}\nsucc 0
+\quad\text{with a surviving cap null vector.}
 ```
 
 ## What `H3` must not do
