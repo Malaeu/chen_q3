@@ -79,6 +79,10 @@
   with an explicit `(m-n)` factor, so off-diagonal vanishing would require a
   real six-denominator zero-sum cancellation miracle, not a soft boundary
   explanation.
+- quick local smoke-test on the first 20 embedded zeta zeros says the new
+  anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
+  tail indices for several sample `a`; this is not a proof, but it confirms
+  that the kill-test is real and not vacuous.
 
 ## Текущий sprint-hub
 

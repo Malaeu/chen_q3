@@ -731,6 +731,50 @@ So the live mixed-block question can be sharpened one step further:
 
 This is the cleanest exact route-kill test now available inside `PO2`.
 
+### L3''''''''''. Numerical smoke test for the kill-test
+
+As a quick diagnostic only, using the local fixed list of the first 20
+positive zeta zeros already embedded in `src/q3_corrected_model.py`, the
+anti-diagonal defect
+
+```tex
+K_{mn}^{+-}(a)=M_{m+1,n}^{+-}(a)-M_{m,n+1}^{+-}(a)
+```
+
+does **not** look automatically zero on moderate tail indices.
+Representative values from the raw zero-sum formula are:
+
+```text
+a = 0.5:
+  K_{20,18}^{+-} ≈ -4.29e-06
+  K_{30,25}^{+-} ≈  2.23e-07
+  K_{40,39}^{+-} ≈  2.21e-09
+
+a = 1.0:
+  K_{20,18}^{+-} ≈ -1.02e+00
+  K_{30,25}^{+-} ≈  4.96e-03
+  K_{40,39}^{+-} ≈  4.69e-08
+
+a = 1.7:
+  K_{20,18}^{+-} ≈ -2.73e+00
+  K_{30,25}^{+-} ≈  1.10e-01
+  K_{40,39}^{+-} ≈ -3.87e+00.
+```
+
+Interpretation:
+
+- this is **not** a theorem and not a kill certificate by itself;
+- it is only a smoke test on a short zero list;
+- but it does show that the new `K_{mn}^{+-}` test is not vacuous:
+  the mixed block does not appear to satisfy automatic anti-diagonal symmetry
+  for free.
+
+So the exact burden remains unchanged:
+
+- either prove that the full infinite zero sum kills `K_{mn}^{+-}` in the
+  deep tail modulo cap;
+- or use a future exact obstruction to kill the current theorem shape.
+
 ### What not to do inside these lemmas
 
 - do not revive the dead global raw identity `w_{rs}(a)=\kappa(a)q_{rs}`;
