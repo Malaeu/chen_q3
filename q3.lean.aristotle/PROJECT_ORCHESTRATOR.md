@@ -61,6 +61,14 @@ Interpretation:
 - `IMPLEMENTATION_PLAN.md` decides only the current execution queue.
 - `docs/INSIGHTS.md` is non-normative and never overrides the other three.
 
+Route-level dead-end handling:
+
+- `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` is the canonical companion ledger for
+  killed theorem shapes and rejected route branches;
+- when a live route dies, record the exact kill certificate there, roll back to
+  the last real branch point, and activate the next live branch;
+- do not reopen a killed branch without a new explicit obstruction-killer.
+
 ## Current Compiled Route
 
 Compiled Lean route still exported today:
@@ -173,6 +181,12 @@ New live frontier:
        =\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`;
       treat `H2^f/H3^f/H4^f` as conditional consumers until `PO2` and then
       `PO3` are genuinely discharged.
+  15. if `PO2` or a later `H-bridge` gate produces a genuine unnamed
+      obstruction rather than a boundary/cap/compression reclassification,
+      record that as a route kill in
+      `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` and rollback to the already-frozen
+      branch point `H-bridge` versus `PSD-pd`, instead of inventing a fourth
+      architecture on the fly.
 
 ## Canonical Coordination Layer
 

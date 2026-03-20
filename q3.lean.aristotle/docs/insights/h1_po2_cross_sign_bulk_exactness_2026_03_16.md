@@ -62,6 +62,9 @@ It says:
 - no genuine bulk mismatch survives in `(+,-)`;
 - whatever remains must already belong to the later
   boundary/cap classification problem.
+- if even this weaker boundary/cap-only form fails, the current `H-bridge`
+  theorem shape is killed and must be written to
+  `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` before rollback to `PSD-pd`.
 
 ## Worker-ingested refinement
 

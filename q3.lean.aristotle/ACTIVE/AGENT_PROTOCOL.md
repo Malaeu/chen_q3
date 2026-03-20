@@ -179,8 +179,10 @@ summary; канонический report оформит оркестратор.
 
 1. проверяет report и новые артефакты;
 2. обновляет активный `PHASE_MONITOR.md` или `SPRINT_MONITOR.md` first;
-3. коротко логирует synthesis в `docs/INSIGHTS.md`;
-4. только потом меняет `IMPLEMENTATION_PLAN.md` / `SESSION_ENTRY.md`, если
+3. если worker фактически убил theorem shape, записывает kill certificate в
+   `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md`;
+4. коротко логирует synthesis в `docs/INSIGHTS.md`;
+5. только потом меняет `IMPLEMENTATION_PLAN.md` / `SESSION_ENTRY.md`, если
    реально изменилась стадия работы.
 
 ## Prompt template for the worker

@@ -7,6 +7,8 @@ mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
 macro_position: Real proof-critical reset / H1 cross-sign bulk exactness
 main_kill_gate: the route fails if PO2 leaves a genuine unnamed cross-sign bulk residue
+kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
+rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO2
 current_step_title: cross-sign bulk exactness
@@ -84,6 +86,13 @@ Exact success criterion:
 
 - the next theorem attempt is no longer “is the mixed block bulk-exact?”, but
   only `PO3`: cross-sign boundary cancellation.
+
+Exact failure criterion:
+
+- if `PO2` leaves a genuine unnamed cross-sign bulk residue that cannot be
+  reclassified as boundary/cap, then the current `H-bridge` theorem shape is
+  killed and must be written back to `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md`
+  before rollback to the `PSD-pd` branch.
 
 ## Macro view
 

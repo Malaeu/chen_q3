@@ -51,6 +51,12 @@
   3) синтез в 5-10 строк, 4) обновить `docs/INSIGHTS.md` + коммит "in progress",
  5) по завершении добавить итоговый инсайт. НЕ использовать mgrep/websearch.
 
+- route-level dead ends are now frozen by protocol rather than by mood:
+  if a live theorem shape dies, we record the exact kill certificate in
+  `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md`, rollback to the last real branch
+  point already frozen in `PROJECT_ORCHESTRATOR.md`, and move to the next live
+  branch instead of reopening dead branches by rhetoric.
+
 ## Текущий sprint-hub
 
 - активный operational status file:

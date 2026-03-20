@@ -197,6 +197,34 @@ python3 q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 1
 
 This is the full project loop; Aristotle и Прошка — ключевые инструменты.
 
+## Route-kill protocol
+
+Если активная доказательная ветка упирается не во временный technical blocker,
+а в настоящий математический тупик, мы больше не зависаем в мета-разговорах.
+Делаем ровно это:
+
+1. формулируем точный **kill statement**:
+   какая именно theorem-shape ломается и при каком obstruction;
+2. записываем это как **kill certificate** в текущий theorem artifact и в
+   `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md`;
+3. помечаем ветку как `killed` или `rejected` в route registry с pointer на
+   exact file/lemma/obstruction;
+4. откатываемся к последней реальной развилке из
+   `PROJECT_ORCHESTRATOR.md`;
+5. активируем следующий лучший живой путь без повторного обсуждения уже
+   убитой theorem-shape.
+
+Жёсткое правило:
+
+- убитая ветка остаётся в истории как доказанный тупик;
+- её нельзя тихо воскресить без нового explicit obstruction-killer;
+- если в route graph есть следующая живая ветка, идём в неё сразу.
+
+Это не означает “перебирать бесконечно все мыслимые пути”.
+Это означает: честно прорабатывать **все явные живые ветки** текущего
+compiled route graph проекта, пока одна не доведена до RH или не убита
+строгим certificate.
+
 ### Escape Hatch: Когда застрял → Прошка
 
 **ПРАВИЛО:** Если застрял > 30 минут ИЛИ Aristotle < 10% долго:
