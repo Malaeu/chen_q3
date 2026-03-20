@@ -4,6 +4,14 @@
 
 First post-`P1` direct theorem receiver in lane `A`.
 
+Reactivated on 2026-03-20 as the first undischarged proof-critical gate on the
+actual path to RH.
+
+The upper bridge `H2^f -> H3^f -> H4^f` is now packaged tightly enough at the
+theorem-shell level, but it is still conditional on the unresolved `H1^f`
+input. So the honest blocker is no longer route description. It is whether the
+cross-sign tail block is bulk-exact in the strong sense required by `PO2`.
+
 `P1` already froze:
 
 - the tail defect object `\mathcal D_{a,N}`;

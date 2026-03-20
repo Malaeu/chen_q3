@@ -4137,3 +4137,53 @@ Execution decision:
   honest move is outside the `H`-bridge itself, namely manuscript packaging or
   Lean/Aristotle formalization of the frozen `H1^f -> H2^f -> H3^f -> H4^f`
   chain.
+
+## Synthesis (2026-03-20, in progress) — reset to the first real blocker `PO2`
+
+New blocker definition:
+
+- packaging the chain `H1^f -> H2^f -> H3^f -> H4^f` did not prove RH;
+- it only proved that the route has a clean theorem shell if its lower inputs
+  are genuinely discharged;
+- the first still-undischarged proof-critical brick on that route is therefore
+  not `H4`, but `PO2`: cross-sign bulk exactness inside `H1^\infty`.
+
+Local oracle recall:
+
+- query `mixed block paired operator Toeplitz Hankel cross-sign boundary exactness`
+  comes back to `Main_closure.tex` with the same verdict: the honest blocker is
+  still the exact four-block bulk comparison on the filtered tail together with
+  the finite-dimensional Suzuki cap;
+- query `D_{a,N}^{+-} boundary cap only remainder` points back to the older
+  filtered H1 notes and again supports the cap-only or boundary-plus-cap
+  fallback picture, not a new upper-bridge blocker;
+- query `PO2 theorem packet mixed block exact four-block bulk comparison`
+  points back to the frozen mainline block notes and tracker, reinforcing that
+  the public route still depends on a real `H1` proof input rather than on
+  further endpoint packaging.
+
+Direct file check:
+
+- `docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md` already
+  isolates the exact theorem target
+  `\mathcal D_{a,\mathrm{bulk}}^{+-}=0`;
+- `docs/insights/h1_proof_obligation_table_2026_03_16.md` still makes `PO2`
+  the first proof-critical asymmetry gate inside `H1^\infty`;
+- `full/sections/Main_closure.tex` still treats `H2/H3/H4` as consumers of a
+  successfully landed `H1`, not as replacements for it.
+
+External sanity-check:
+
+- no external source gave a ready-made theorem closing our exact filtered
+  split;
+- the external operator-theory support still only justifies the language:
+  mixed block should be exact-or-cap-only, same-sign should carry the boundary
+  residue.
+
+Execution decision:
+
+- the next fastest move toward an actual RH proof is not more `H4` packaging;
+- it is to reopen the theorem phase at `PO2`, namely the proof of cross-sign
+  bulk exactness;
+- treat `H2^f -> H3^f -> H4^f` as conditional consumers until `PO2` and then
+  `PO3` are genuinely discharged.

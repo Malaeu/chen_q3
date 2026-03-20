@@ -1,6 +1,6 @@
 # PROJECT ORCHESTRATOR - Q3
 
-Updated: 2026-03-15
+Updated: 2026-03-20
 
 ## Role
 
@@ -164,6 +164,15 @@ New live frontier:
   13. isolate the finite-dimensional Suzuki cap as the second and only other
      live brick after the bulk match:
      positivity of the cap matrix is a separate finite-dimensional problem.
+  14. after the theorem-shell packaging of `H1^f -> H2^f -> H3^f -> H4^f`,
+      the first still-undischarged proof-critical gate remains the real
+      `H1^\infty` mixed-block theorem `PO2`:
+      prove `\mathcal D_{a,\mathrm{bulk}}^{+-}=0`,
+      with admissible fallback only
+      `\mathcal D_{a,N}^{+-}
+       =\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`;
+      treat `H2^f/H3^f/H4^f` as conditional consumers until `PO2` and then
+      `PO3` are genuinely discharged.
 
 ## Canonical Coordination Layer
 

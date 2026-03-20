@@ -1,28 +1,28 @@
 # Phase Monitor
 
-status: DONE
-phase: H4_suzuki_endpoint_attack
+status: ACTIVE
+phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: Final upper bridge / H4 Suzuki endpoint to RH
-main_kill_gate: H4 fails if the H3 kernel-kill output does not match Suzuki Theorem 1.4 cleanly for every a>0
+macro_position: Real proof-critical reset / H1 cross-sign bulk exactness
+main_kill_gate: the route fails if PO2 leaves a genuine unnamed cross-sign bulk residue
 current_lane: A
-current_step_id: H4
-current_step_title: Suzuki endpoint to RH
+current_step_id: PO2
+current_step_title: cross-sign bulk exactness
 current_owner: local-agent
-current_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
+current_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
-worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h4_suzuki_endpoint_2026_03_20/node.md
-worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h4_suzuki_endpoint_2026_03_20/report.md
+worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po2_cross_sign_bulk_2026_03_20/node.md
+worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po2_cross_sign_bulk_2026_03_20/report.md
 last_completed_phase: H4_suzuki_endpoint_attack
 last_completed_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: choose the post-bridge lane outside the H-bridge, namely manuscript packaging or Lean/Aristotle formalization of the frozen H1^f->H4^f chain
-next_verify: rg -n -e "Operationally closed|H4c|RH by Suzuki Theorem 1.4|Handoff after H4" q3.lean.aristotle/docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
+next_deliverable: freeze the exact theorem attack for PO2, namely prove pure cross-sign bulk vanishing or reduce the entire remainder to named boundary/cap channels only
+next_verify: rg -n -e "PO2|bulk vanishing|boundary/cap-only|route-kill" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -41,8 +41,9 @@ be:
 ## Phase contract
 
 - no return to coordination-first work unless the theorem phase stalls;
-- lane `A` has now closed `H3^f` tightly enough and continues the upper
-  bridge through `H4^f`;
+- lane `A` now treats the upper bridge `H2^f -> H3^f -> H4^f` as packaged but
+  conditional, and therefore attacks the first unresolved proof-critical gate
+  back in `H1`, namely `PO2`;
 - lane `B` stays frozen at the canonical smallest-block certificate;
 - no rank/basis language as theorem content;
 - no new RH architecture.
@@ -59,28 +60,30 @@ If a parallel worker is used during this phase, it should:
 - return a narrow result to the orchestrator;
 - let the orchestrator maintain the canonical `worker_report`.
 
-## Last completed step
+## Current step
 
-### `H4` — Suzuki endpoint to RH
+### `PO2` — cross-sign bulk exactness
 
 Goal:
 
-- freeze the exact endpoint implication
-  `H1^f + H2^f + H3^f => 0 \notin \sigma_p(G_g[a])` for every `a>0`;
-- make the final appeal to Suzuki Theorem 1.4 explicit;
-- close the filtered Suzuki--Q3 bridge without reopening earlier gates.
+- prove that the cross-sign filtered tail block carries no genuine bulk residue;
+- keep the primary theorem target pure:
+  `\mathcal D_{a,\mathrm{bulk}}^{+-}=0`;
+- allow only the explicit fallback
+  `\mathcal D_{a,N}^{+-}=\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`;
+- prepare a clean handoff to `PO3`, not a return to upper-bridge packaging.
 
 Required output:
 
-- one theorem-shaped endpoint hypothesis;
-- one theorem-shaped no-zero-eigenvalue conclusion;
-- one explicit final implication to RH;
-- one explicit route-kill condition if the endpoint does not read exactly.
+- one theorem-shaped bulk-vanishing statement;
+- one theorem-shaped boundary/cap-only fallback statement;
+- one explicit route-kill condition for a surviving unnamed bulk residue;
+- one clean handoff to `PO3`.
 
 Exact success criterion:
 
-- the next theorem attempt is no longer inside the `H`-bridge, but outside it:
-  either final manuscript packaging or formalization of the bridge.
+- the next theorem attempt is no longer “is the mixed block bulk-exact?”, but
+  only `PO3`: cross-sign boundary cancellation.
 
 ## Macro view
 
@@ -94,7 +97,7 @@ This phase should now be read in the compressed route language:
 
 Current position:
 
-- `H1^f` is now treated as packaged enough for handoff;
-- `H2^f` and `H3^f` are treated as closed enough for the upper bridge to continue;
-- `H4^f` is now treated as closed enough for the filtered Suzuki--Q3 bridge to
-  be packaged to RH at theorem-shell level.
+- `H1^f -> H2^f -> H3^f -> H4^f` is packaged tightly enough at theorem-shell level;
+- RH is still not proved because that bridge remains conditional on unresolved
+  `H1` proof input;
+- the first real proof-critical gate on the route is therefore back at `PO2`.

@@ -7,7 +7,7 @@
 
 ---
 
-Total nodes: 13
+Total nodes: 14
 
 ## Active (PrimeCert)
 - proshka_primecert_closure_2026_01_27: `requests/proshka_primecert_closure_2026_01_27/node.md`
@@ -16,7 +16,7 @@ Total nodes: 13
 - proshka_heat_pp_pilot_2026_02_03: `requests/proshka_heat_pp_pilot_2026_02_03/node.md`
 
 ## Active (Phase)
-- none
+- proshka_h1_po2_cross_sign_bulk_2026_03_20: `requests/proshka_h1_po2_cross_sign_bulk_2026_03_20/node.md`
 
 ## Recent (Phase)
 - proshka_h4_suzuki_endpoint_2026_03_20: `requests/proshka_h4_suzuki_endpoint_2026_03_20/node.md`
