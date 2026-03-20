@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: freeze the raw mixed Weil block Omega_{mn}^{+-}(a), its Q-side Hankel comparator Theta_{mn}^{+-}, and the exact route-kill fork Omega_{mn}^{+-}(a)=kappa_{+-}(a)Theta_{mn}^{+-} modulo cap
-next_verify: rg -n -e "Omega_\\{mn\\}\\^\\{\\+\\-\\}|Theta_\\{mn\\}\\^\\{\\+\\-\\}|route-kill|cap-only" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: freeze the anti-diagonal Hankel symmetry test K_{mn}^{+-}(a)=M_{m+1,n}^{+-}(a)-M_{m,n+1}^{+-}(a) and use it as the exact deep-tail kill-test for the mixed block modulo cap
+next_verify: rg -n -e "K_\\{mn\\}\\^\\{\\+\\-\\}|anti-diagonal|Hankel symmetry|route-kill" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

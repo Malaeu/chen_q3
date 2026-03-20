@@ -68,6 +68,12 @@
   side; the filtered theorem now reduces to the common four-term stencil on
   this single raw mixed comparison, with only three outcomes left:
   exact identity, cap-only remainder, or route-kill.
+- the next exact kill-test inside `PO2` is now explicit and local:
+  because the Q-side mixed block is Hankel in `m+n`, any valid mixed adapter
+  modulo finite cap must satisfy deep-tail anti-diagonal symmetry
+  `K_{mn}^{+-}(a):=M_{m+1,n}^{+-}(a)-M_{m,n+1}^{+-}(a)=0`;
+  if this quantity survives outside cap, the current `H-bridge` theorem shape
+  dies honestly.
 
 ## Текущий sprint-hub
 

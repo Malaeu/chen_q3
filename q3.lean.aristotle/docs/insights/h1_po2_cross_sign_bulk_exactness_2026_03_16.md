@@ -626,6 +626,69 @@ remaining proof fork is brutally rigid:
 
 There is no fourth honest option inside the current theorem shape.
 
+### L3'''''''''. Hankel symmetry kill-test
+
+Because the Q-side mixed block depends only on `m+n`, it satisfies the exact
+anti-diagonal identity
+
+```tex
+\Theta_{m+1,n}^{+-}=\Theta_{m,n+1}^{+-},
+\qquad
+\widetilde q_{m+1,n}^{+-}=\widetilde q_{m,n+1}^{+-}.
+```
+
+Therefore any theorem of the form
+
+```tex
+M^{+-}(a)=\kappa_{+-}(a)\widetilde Q^{+-}+C_a^{+-,\mathrm{cap}}
+```
+
+forces the filtered mixed block to satisfy the same anti-diagonal symmetry
+outside the finite cap channel. The exact local test is:
+
+```tex
+K_{mn}^{+-}(a)
+:=
+M_{m+1,n}^{+-}(a)-M_{m,n+1}^{+-}(a).
+```
+
+If the cap support is finite-dimensional, then for all sufficiently deep tail
+indices away from that cap support one must have
+
+```tex
+K_{mn}^{+-}(a)=0.
+```
+
+Using the explicit zero formulas, this becomes
+
+```tex
+K_{mn}^{+-}(a)
+=
+\frac{2\pi^2}{a^3}(-1)^{m+n+1}
+\sum_\gamma \sin^2(a\gamma)\,\Xi_{mn}(\gamma),
+```
+
+where
+
+```tex
+\Xi_{mn}(\gamma)
+:=
+\frac{1}
+{(\gamma-\alpha_{m+1})(\gamma-\alpha_{m+2})(\gamma-\alpha_n)(\gamma-\alpha_{n+1})}
+-
+\frac{1}
+{(\gamma-\alpha_m)(\gamma-\alpha_{m+1})(\gamma-\alpha_{n+1})(\gamma-\alpha_{n+2})}.
+```
+
+So the live mixed-block question can be sharpened one step further:
+
+- either `K_{mn}^{+-}(a)` vanishes in the deep tail, consistent with a
+  Hankel-type comparator modulo cap;
+- or a genuine non-cap anti-diagonal defect survives, and the current
+  theorem shape is killed.
+
+This is the cleanest exact route-kill test now available inside `PO2`.
+
 ### What not to do inside these lemmas
 
 - do not revive the dead global raw identity `w_{rs}(a)=\kappa(a)q_{rs}`;
