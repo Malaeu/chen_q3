@@ -1240,6 +1240,80 @@ This is now the sharpest clean formulation of the mixed-block hard wall: not a
 three-pole theorem, but a shifted equality problem for simple Cauchy
 transforms on the integer tail.
 
+### Cauchy-operator reformulation
+
+The shift-uniqueness principle can be rewritten as plain injectivity of an
+infinite Cauchy transform. Set
+
+```tex
+Y_a:=\{x_\gamma:\gamma\in\mathcal Z_+\}\cup\{x_\gamma-1:\gamma\in\mathcal Z_+\},
+```
+
+and define coefficients on this merged support by
+
+```tex
+e(x_\gamma):=a_\gamma,
+\qquad
+e(x_\gamma-1):=-b_\gamma.
+```
+
+Then
+
+```tex
+R(z):=P(z)-Q(z+1)=\sum_{y\in Y_a}\frac{e(y)}{y-z}.
+```
+
+So the shift-uniqueness target is equivalent to:
+
+```tex
+\textbf{Cauchy-tail injectivity principle (target).}
+```
+
+If
+
+```tex
+\sum_{y\in Y_a}\frac{e(y)}{y-m}=0
+\qquad\forall m>N,
+```
+
+then `e\equiv 0`.
+
+This immediately splits the problem into a solved finite-support piece and the
+genuine infinite-support wall.
+
+#### Finite-support case
+
+If `e` is supported on distinct points `y_1,\dots,y_L\in\mathbb R\setminus\mathbb Z`,
+then choosing any distinct integers `m_1,\dots,m_L>N`, the system
+
+```tex
+\sum_{j=1}^L \frac{e_j}{y_j-m_k}=0
+\qquad(k=1,\dots,L)
+```
+
+has coefficient matrix
+
+```tex
+\Bigl(\frac{1}{y_j-m_k}\Bigr)_{k,j},
+```
+
+whose determinant is the classical Cauchy determinant
+
+```tex
+\frac{\prod_{i<j}(y_j-y_i)\prod_{i<j}(m_i-m_j)}
+{\prod_{i,j}(y_j-m_i)},
+```
+
+and is therefore nonzero. Hence all `e_j=0`.
+
+So the finite-support version of the shift-uniqueness principle is already
+completely closed. The only unresolved issue is:
+
+- does injectivity of these finite Cauchy sections survive under our
+  infinite support `Y_a` and the coefficient class inherited from `PO2`?
+
+That is now the plainest exact statement of the live wall.
+
 This gives a strict descent:
 
 - if `H(m)=0` for all `m>N`, then `\Delta G(m)=0` for all `m>N`;

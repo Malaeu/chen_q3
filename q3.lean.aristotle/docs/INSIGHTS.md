@@ -139,6 +139,11 @@
   simple Cauchy transforms:
   `P(m)=Q(m+1)` on the tail should force `P(z)=Q(z+1)` identically. So the
   mixed-block wall is no longer hiding in three-pole notation at all.
+- and this already has a fully explicit finite-support shadow: after merging
+  the supports `x_\gamma` and `x_\gamma-1`, the problem becomes injectivity of
+  an infinite Cauchy transform on the integer tail; finite-support injectivity
+  is closed immediately by the Cauchy determinant, so the live obstruction is
+  purely the passage from finite to infinite support.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
