@@ -1314,6 +1314,61 @@ completely closed. The only unresolved issue is:
 
 That is now the plainest exact statement of the live wall.
 
+### Moment-side sufficient criterion
+
+There is also a genuinely useful side theorem here, but it is important not to
+confuse it with the live wall.
+
+Suppose `Y\subset\mathbb R` satisfies `|y|>1` for all `y\in Y`, and let
+
+```tex
+S_m:=\sum_{y\in Y}\frac{c_y}{y^m},
+\qquad
+\sum_{y\in Y}|c_y|<\infty.
+```
+
+Then the following is true:
+
+```tex
+\textbf{Tail-moment injectivity.}
+```
+
+If `S_m=0` for all `m>N`, then all coefficients `c_y` vanish.
+
+The proof is clean: set `x_y:=1/y`, push the atomic measure
+`\mu:=\sum_y c_y\delta_{x_y}` onto the compact `K=\overline{\{x_y\}}\subset
+[-1,1]`, multiply by `x^{N+1}`, and reduce to vanishing of all polynomial
+moments of a finite signed measure; Stone--Weierstrass then gives `\mu=0`.
+
+This theorem is real and useful. But it does **not** yet settle the current
+`PO2` wall by itself, because our live hypothesis is not tail-moment vanishing.
+What we actually know in `PO2` is the Cauchy-tail identity
+
+```tex
+\sum_{y\in Y_a}\frac{e(y)}{y-m}=0
+\qquad\forall m>N.
+```
+
+So the exact missing implication is still:
+
+```tex
+\text{Cauchy-tail vanishing}
+\quad\Longrightarrow\quad
+\text{tail-moment vanishing}.
+```
+
+If one could prove that implication for our `\ell^1(Y_a)` class, the
+tail-moment theorem above would finish the job immediately. But that
+implication is precisely the current hard wall: after inversion the support
+accumulates at `0`, so a naive large-`m` geometric-series expansion is not
+uniform enough to justify the passage to moments.
+
+So the moment theorem should be treated as:
+
+- a correct and powerful sufficient criterion;
+- a good sanity-check for bounded-support or already-momentized variants;
+- but not yet a proof of the live `\ell^1`-Cauchy-tail injectivity problem.
+
 #### Coefficient class actually inherited from `PO2`
 
 The live `PO2` coefficients are not arbitrary. In the original meromorphic

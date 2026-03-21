@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: exploit the fact that the live coefficient class is actually l1 on Y_a, and decide whether this l1-Cauchy-tail injectivity is true or whether the current H-bridge route needs to be killed
-next_verify: rg -n -e "ell\\^1-Cauchy-tail injectivity|l1\\(Y_a\\)|O\\(\\\\gamma\\^-3\\)|finite-support case" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: decide whether the live l1-Cauchy-tail identities can be upgraded to tail-moment vanishing, because that bridge would let the new compact moment theorem finish PO2 immediately
+next_verify: rg -n -e "Tail-moment injectivity|Cauchy-tail vanishing|tail-moment vanishing|ell\\^1\\(Y_a\\)|Stone--Weierstrass" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

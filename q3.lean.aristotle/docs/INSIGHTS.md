@@ -149,6 +149,19 @@
   `O(\gamma^{-3})`, so after merging supports the live class sits in
   `\ell^1(Y_a)`. The remaining question is therefore not arbitrary Cauchy-tail
   injectivity, but `\ell^1`-Cauchy-tail injectivity.
+- a new auxiliary theorem is now frozen cleanly inside `PO2`: if one already
+  has tail-moment vanishing
+  `\sum_{y\in Y} c_y y^{-m}=0` for all large `m`, then absolute summability
+  and the compact moment problem force all coefficients to vanish. This is a
+  real gain, because it converts the infinite-support uniqueness problem into
+  a finite signed measure argument on `K=\overline{\{1/y\}}\subset[-1,1]`.
+- but this does **not** by itself close the live `PO2` wall: our actual input
+  is still Cauchy-tail vanishing
+  `\sum_{y\in Y_a} e(y)/(y-m)=0` on large integers, so the exact missing bridge
+  is now frozen more sharply as
+  `\ell^1`-Cauchy-tail vanishing `\Rightarrow` tail-moment vanishing. If that
+  bridge lands, the moment theorem finishes `PO2` immediately; if not, this is
+  the honest hard wall of the current `H`-bridge shape.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
