@@ -1369,6 +1369,65 @@ So the moment theorem should be treated as:
 - a good sanity-check for bounded-support or already-momentized variants;
 - but not yet a proof of the live `\ell^1`-Cauchy-tail injectivity problem.
 
+### Why a direct Carlson shortcut does not yet close `PO2`
+
+There is a tempting stronger shortcut:
+
+```tex
+F(z):=\sum_{y\in Y_a}\frac{e(y)}{y-z},
+\qquad
+F(m)=0 \quad \forall m>N.
+```
+
+Since `e\in\ell^1(Y_a)`, one indeed expects `F(z)=O(|z|^{-1})` along rays away
+from the pole set, so it is natural to ask whether a Carlson theorem could
+kill `F` directly and bypass the moment reduction.
+
+This observation is good, but the direct Carlson step is still blocked at the
+level of hypotheses.
+
+Carlson's theorem in the form used in the external sanity-checks applies to
+functions holomorphic in `\Re z\ge 0` (or entire variants), with controlled
+exponential type on the imaginary axis, and vanishing on `\mathbb N`.
+Our live object `F` is not in that class:
+
+- `F` is meromorphic, not holomorphic, because it has poles at the points
+  `y\in Y_a`;
+- for the actual merged support in `PO2`, these poles lie on the positive real
+  axis and therefore inside the right half-plane where Carlson needs
+  holomorphy;
+- decay of `F(z)` at infinity does **not** repair this: it does not turn a
+  meromorphic function into an entire or half-plane-holomorphic one, and it
+  does not by itself place `F` in Carlson's uniqueness class.
+
+So the exact missing bridge is not "apply Carlson to `F`". The missing bridge
+would be one of the following stronger statements:
+
+```tex
+\text{either }
+\sum_{y\in Y_a}\frac{e(y)}{y-m}=0 \ \forall m>N
+\Longrightarrow
+\text{tail moments vanish},
+```
+
+or else a genuine pole-killing regularization theorem:
+
+```tex
+\text{construct } \Phi_{Y_a}(z)
+\text{ so that } \Phi_{Y_a}(z)F(z)
+\text{ is holomorphic in } \Re z\ge 0
+```
+
+with growth still below the Carlson barrier.
+
+At the moment we have neither of these two upgrades. Therefore the direct
+Carlson shortcut should be treated as:
+
+- a very good diagnostic insight;
+- evidence that the remaining wall is about holomorphic regularization rather
+  than local algebra;
+- but not yet a completed proof step inside `PO2`.
+
 #### Coefficient class actually inherited from `PO2`
 
 The live `PO2` coefficients are not arbitrary. In the original meromorphic

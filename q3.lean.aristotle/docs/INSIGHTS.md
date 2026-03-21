@@ -162,6 +162,14 @@
   `\ell^1`-Cauchy-tail vanishing `\Rightarrow` tail-moment vanishing. If that
   bridge lands, the moment theorem finishes `PO2` immediately; if not, this is
   the honest hard wall of the current `H`-bridge shape.
+- the tempting direct Carlson shortcut has now been checked at the hypothesis
+  level and does **not** yet close `PO2`: the external Carlson theorem used as
+  sanity-check applies to functions holomorphic in `\Re z\ge 0`, whereas our
+  live Cauchy transform
+  `F(z)=\sum_{y\in Y_a} e(y)/(y-z)` is meromorphic with poles on the positive
+  real axis inside that half-plane. So the remaining work is either to upgrade
+  Cauchy-tail vanishing to tail moments, or to build a genuine pole-killing
+  regularization with Carlson-compatible growth.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
