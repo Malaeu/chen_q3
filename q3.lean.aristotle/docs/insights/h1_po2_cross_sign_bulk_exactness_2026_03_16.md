@@ -1314,6 +1314,69 @@ completely closed. The only unresolved issue is:
 
 That is now the plainest exact statement of the live wall.
 
+#### Coefficient class actually inherited from `PO2`
+
+The live `PO2` coefficients are not arbitrary. In the original meromorphic
+kernel
+
+```tex
+\mathbf K^{+-}(z,n)
+=
+\frac{4\pi^3}{a^4}
+\sum_\gamma \sin^2(a\gamma)\,
+\bigl(\mathbf u_\gamma(z)v_\gamma(n)-\mathbf v_\gamma(z)u_\gamma(n)\bigr),
+```
+
+for each fixed tail index `n` one has
+
+```tex
+u_\gamma(n),v_\gamma(n)=O(\gamma^{-3})
+\qquad(\gamma\to+\infty),
+```
+
+because each carries three Cauchy denominators in `\gamma`. Hence every
+scalar combination produced in the residue-upgrade reduction has coefficients
+
+```tex
+c_\gamma,d_\gamma=O(\gamma^{-3}),
+```
+
+uniformly up to the finite column-span coefficients coming from the discrete
+rank assumption.
+
+Since the positive zero counting law is
+
+```tex
+N_\zeta(T)\sim \frac{T\log T}{2\pi},
+```
+
+this decay is absolutely summable:
+
+```tex
+\sum_{\gamma>0} |c_\gamma|+\sum_{\gamma>0}|d_\gamma|<\infty.
+```
+
+Equivalently, in the Cauchy-tail formulation the coefficient function on
+`Y_a` belongs to `\ell^1(Y_a)`.
+
+So the live infinite-support wall is now narrower than a completely arbitrary
+Cauchy transform problem. What remains is:
+
+```tex
+\textbf{\ell^1-Cauchy-tail injectivity (target).}
+```
+
+If `e\in \ell^1(Y_a)` and
+
+```tex
+\sum_{y\in Y_a}\frac{e(y)}{y-m}=0
+\qquad\forall m>N,
+```
+
+must one have `e\equiv 0`?
+
+This is the exact infinite-support hypothesis still needed by `PO2`.
+
 This gives a strict descent:
 
 - if `H(m)=0` for all `m>N`, then `\Delta G(m)=0` for all `m>N`;

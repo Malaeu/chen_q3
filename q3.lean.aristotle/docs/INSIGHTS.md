@@ -144,6 +144,11 @@
   an infinite Cauchy transform on the integer tail; finite-support injectivity
   is closed immediately by the Cauchy determinant, so the live obstruction is
   purely the passage from finite to infinite support.
+- the infinite-support wall is now also narrowed on the coefficient side:
+  the actual mixed-block coefficients inherited from `PO2` decay like
+  `O(\gamma^{-3})`, so after merging supports the live class sits in
+  `\ell^1(Y_a)`. The remaining question is therefore not arbitrary Cauchy-tail
+  injectivity, but `\ell^1`-Cauchy-tail injectivity.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

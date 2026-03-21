@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: exploit the Cauchy-operator reformulation, where finite-support injectivity is already closed by the Cauchy determinant, and isolate the exact infinite-support hypothesis still needed for PO2
-next_verify: rg -n -e "Cauchy-tail injectivity principle|Cauchy determinant|finite-support case|infinite support" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: exploit the fact that the live coefficient class is actually l1 on Y_a, and decide whether this l1-Cauchy-tail injectivity is true or whether the current H-bridge route needs to be killed
+next_verify: rg -n -e "ell\\^1-Cauchy-tail injectivity|l1\\(Y_a\\)|O\\(\\\\gamma\\^-3\\)|finite-support case" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
