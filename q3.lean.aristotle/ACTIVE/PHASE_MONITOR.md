@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: exploit the simple-pole rewrite of M_a, so that the scalar uniqueness wall is expressed directly in terms of the Cauchy family f_gamma and its discrete differences
-next_verify: rg -n -e "Delta f_\\\\gamma|Delta\\^2 f_\\\\gamma|single pole family|Cauchy family|mathcal M_a" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: attack the shift-uniqueness principle for the simple Cauchy class C_a, namely whether P(m)=Q(m+1) on the tail forces P(z)=Q(z+1) identically
+next_verify: rg -n -e "Shift-uniqueness principle|P\\(m\\)=Q\\(m\\+1\\)|mathcal C_a|simple Cauchy class" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

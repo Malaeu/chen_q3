@@ -135,6 +135,10 @@
   every basis element is an `e^{i\pi z}`-weighted combination of
   `\Delta f_\gamma` and `\Delta^2 f_\gamma`. So the remaining uniqueness wall
   is now visibly a one-pole Cauchy-transform wall in disguise.
+- the cleanest version so far is now a shift-equality statement for plain
+  simple Cauchy transforms:
+  `P(m)=Q(m+1)` on the tail should force `P(z)=Q(z+1)` identically. So the
+  mixed-block wall is no longer hiding in three-pole notation at all.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
