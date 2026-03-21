@@ -1428,6 +1428,97 @@ Carlson shortcut should be treated as:
   than local algebra;
 - but not yet a completed proof step inside `PO2`.
 
+### First direct attack: why naive momentization still does not close
+
+The first natural move after the Cauchy-tail formulation is to try to convert
+
+```tex
+\sum_{y\in Y_a}\frac{e(y)}{y-m}=0
+\qquad (m>N)
+```
+
+into tail-moment identities by geometric expansion.
+
+That naive route is still blocked for a concrete reason. The merged support
+`Y_a` is unbounded, so for a fixed large integer `m` there is no uniform
+expansion of the kernel `1/(y-m)` that is simultaneously valid on all of
+`Y_a`: the regions `y<m` and `y>m` require different expansions, and the
+support crosses both regions for every large `m`.
+
+After inversion `x=1/y`, this becomes the same obstruction in another form:
+the support accumulates at `0`, so there is no uniform positive radius on
+which one can justify a single power-series argument and then exchange the
+sum over `y` with the expansion.
+
+So the first route is still open, but now in a much sharper form:
+
+```tex
+\textbf{Open sublemma.}\quad
+\ell^1\text{-Cauchy-tail vanishing}
+\Longrightarrow
+\text{tail-moment vanishing}
+```
+
+must be proved by something more structural than a naive geometric-series
+exchange.
+
+### Second direct attack: naive Weierstrass regularization looks too large
+
+The second natural move is to cancel the poles of
+
+```tex
+F(z)=\sum_{y\in Y_a}\frac{e(y)}{y-z}
+```
+
+by multiplying with an entire factor vanishing on `Y_a`.
+
+Here the raw density of the pole set already gives a serious obstruction. The
+merged support is
+
+```tex
+Y_a=\{x_\gamma:\gamma\in\mathcal Z_+\}\cup\{x_\gamma-1:\gamma\in\mathcal Z_+\},
+\qquad x_\gamma=\frac{a\gamma}{\pi},
+```
+
+so by the zeta zero counting law
+
+```tex
+N_\zeta(T)\sim \frac{T\log T}{2\pi},
+```
+
+the support counting function satisfies heuristically
+
+```tex
+n_{Y_a}(R)\asymp \frac{R\log R}{a}.
+```
+
+Consequently,
+
+```tex
+\sum_{y\in Y_a,\ y\le R}\frac1y
+\asymp
+(\log R)^2,
+```
+
+so the zero set is not genus-0 summable. A naive pole-killing entire factor
+would therefore have to be at least genus 1, and the corresponding
+exponential compensation suggests real-axis growth on the scale
+
+```tex
+\log |\Phi_{Y_a}(x)|
+\sim
+x\sum_{y\le 2x}\frac1y
+\asymp
+x(\log x)^2,
+```
+
+which is already larger than the `x\log x` Carlson/Pila barrier.
+
+This does not yet kill every imaginable regularization, but it does kill the
+naive canonical-product route. Any surviving Carlson strategy would need a
+highly structured regularizer with cancellations far beyond the bare
+Weierstrass construction.
+
 #### Coefficient class actually inherited from `PO2`
 
 The live `PO2` coefficients are not arbitrary. In the original meromorphic

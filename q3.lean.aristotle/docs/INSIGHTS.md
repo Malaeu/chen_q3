@@ -170,6 +170,19 @@
   real axis inside that half-plane. So the remaining work is either to upgrade
   Cauchy-tail vanishing to tail moments, or to build a genuine pole-killing
   regularization with Carlson-compatible growth.
+- after attacking those two routes one-by-one, the picture is now sharper:
+  the first route is still blocked because naive geometric expansion of
+  `1/(y-m)` is not uniform on the unbounded mixed support `Y_a`, and after
+  inversion the support accumulates at `0`, so the needed bridge
+  `\ell^1`-Cauchy-tail `\Rightarrow` tail moments must come from a more
+  structural argument, not from termwise power-series exchange.
+- the second route also narrowed honestly: a naive Weierstrass regularizer
+  for the pole set `Y_a` looks too large. Using the zero-counting law,
+  `n_{Y_a}(R)\asymp (R\log R)/a`, one gets
+  `\sum_{y\le R} 1/y \asymp (\log R)^2`, so the bare genus-1 canonical product
+  is expected to carry real-axis growth on the scale `x(\log x)^2`, already
+  above the Carlson/Pila `x\log x` window. So only a highly structured
+  regularizer with extra cancellations remains live.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

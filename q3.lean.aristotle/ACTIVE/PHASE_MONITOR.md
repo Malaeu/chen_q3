@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: decide whether the live l1-Cauchy-tail identities can be upgraded to tail-moment vanishing, or whether a genuine pole-killing Carlson regularization exists; direct Carlson on the raw meromorphic F is not an available theorem step
-next_verify: rg -n -e "Tail-moment injectivity|Cauchy-tail vanishing|tail-moment vanishing|Carlson shortcut|pole-killing regularization|Stone--Weierstrass" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: beat one of the two remaining structured walls inside PO2: either prove a non-naive upgrade from l1-Cauchy-tail vanishing to tail moments, or build a Carlson regularizer that avoids the naive Weierstrass x(log x)^2 growth barrier
+next_verify: rg -n -e "Open sublemma|tail-moment vanishing|naive Weierstrass regularization looks too large|x\\(\\\\log x\\)\\^2|Carlson/Pila barrier|Stone--Weierstrass" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
