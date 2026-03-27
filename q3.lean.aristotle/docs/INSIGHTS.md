@@ -190,6 +190,15 @@
   `H_a(z)=\Xi_a(z)\Xi_a(z+1)F(z)`, which may still fit the Carlson/Pila window
   since along the positive real axis it inherits critical-line Gamma decay and
   along the imaginary axis only `\exp(O(|t|\log|t|))`-type growth is expected.
+- this candidate already has one genuine boundary estimate in hand: because the
+  pole set `Y_a` lives in a fixed horizontal strip and `e\in\ell^1(Y_a)`, the
+  raw Cauchy transform satisfies `F(it)=O(|t|^{-1})`, while Stirling on
+  `\xi(1/2+\pi t/a)` gives
+  `\log |\Xi_a(it)\Xi_a(it+1)| = (\pi/a)|t|\log|t| + O_a(|t|)`. Hence
+  `H_a(it)=\Xi_a(it)\Xi_a(it+1)F(it)` already lands on the correct
+  Carlson/Pila `x\log x` scale along the imaginary boundary. The surviving
+  second-route wall is now narrower: only the positive-real-axis boundary
+  control after pole cancellation is still missing.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

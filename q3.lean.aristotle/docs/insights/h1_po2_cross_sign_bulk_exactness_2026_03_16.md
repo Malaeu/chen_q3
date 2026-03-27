@@ -1394,7 +1394,7 @@ Our live object `F` is not in that class:
 
 - `F` is meromorphic, not holomorphic, because it has poles at the points
   `y\in Y_a`;
-- for the actual merged support in `PO2`, these poles lie in the right
+- for the actual merged support in `PO2`, this pole set meets the right
   half-plane itself, so the raw Cauchy transform fails Carlson's holomorphy
   hypothesis before any growth estimate even begins;
 - decay of `F(z)` at infinity does **not** repair this: it does not turn a
@@ -1584,6 +1584,97 @@ entire factor". It is now:
 - prove that the resulting `H_a` is holomorphic in the right half-plane;
 - prove the required `x\log x`-scale growth bounds on the boundary data so
   that a Carlson/Pila theorem can actually fire.
+
+### First boundary estimates for the structured `\xi`-regularizer
+
+This new route is already sharper than a mere name, because the pole geometry
+and the `\xi`-growth line up correctly.
+
+Write a zero of `\xi(1/2-iz)` as
+
+```tex
+\gamma=\tau+i(\beta-\tfrac12),
+```
+
+where `\rho=\beta+i\tau` is a nontrivial zero of the zeta function. Hence
+
+```tex
+|\Im \gamma|\le \frac12,
+\qquad
+\Re \gamma=\tau>0,
+```
+
+so after scaling
+
+```tex
+x_\gamma=\frac{a\gamma}{\pi}
+```
+
+the pole set `Y_a=\{x_\gamma,x_\gamma-1\}` lies in a fixed horizontal strip:
+
+```tex
+\Re y > -1,
+\qquad
+|\Im y|\le \frac{a}{2\pi}.
+```
+
+Because `e\in \ell^1(Y_a)`, this already gives a uniform imaginary-axis bound
+for the raw Cauchy transform:
+
+```tex
+|F(it)|
+\le
+\sum_{y\in Y_a}\frac{|e(y)|}{|y-it|}
+\ll_a
+\frac{\|e\|_{\ell^1(Y_a)}}{1+|t|}.
+```
+
+Now look at the structured factor
+
+```tex
+\Xi_a(it)=\xi\!\left(\frac12+\frac{\pi t}{a}\right).
+```
+
+Along the imaginary axis of `z`, the argument of `\xi` is real. So Stirling on
+the Gamma factor in
+
+```tex
+\xi(s)=\frac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)
+```
+
+gives
+
+```tex
+\log |\Xi_a(it)|
+=
+\frac{\pi}{2a}|t|\log|t| + O_a(|t|),
+```
+
+and therefore
+
+```tex
+\log |\Phi_a(it)|
+=
+\frac{\pi}{a}|t|\log|t| + O_a(|t|).
+```
+
+Combining this with the `O(|t|^{-1})` decay of `F(it)` yields the first real
+Carlson-side estimate:
+
+```tex
+\log |H_a(it)|
+\le
+\frac{\pi}{a}|t|\log|t| + O_a(|t|).
+```
+
+So the structured regularizer is not merely pole-killing. It already lands in
+the correct `x\log x` growth scale on the imaginary boundary, unlike the naive
+Weierstrass factor.
+
+What remains open is the positive-real-axis side: on `x>0`, each `\Xi_a(x)`
+inherits critical-line Gamma decay, but one still has to prove that the pole
+cancellation in `H_a(x)=\Phi_a(x)F(x)` converts this into a genuine global
+boundary bound rather than only a local removable-singularity statement.
 
 #### Coefficient class actually inherited from `PO2`
 
