@@ -195,10 +195,13 @@
   raw Cauchy transform satisfies `F(it)=O(|t|^{-1})`, while Stirling on
   `\xi(1/2+\pi t/a)` gives
   `\log |\Xi_a(it)\Xi_a(it+1)| = (\pi/a)|t|\log|t| + O_a(|t|)`. Hence
-  `H_a(it)=\Xi_a(it)\Xi_a(it+1)F(it)` already lands on the correct
-  Carlson/Pila `x\log x` scale along the imaginary boundary. The surviving
-  second-route wall is now narrower: only the positive-real-axis boundary
-  control after pole cancellation is still missing.
+  `H_a(it)=\Xi_a(it)\Xi_a(it+1)F(it)` has `x\log x`-scale growth on the
+  imaginary axis. The next correction is important: this is **not** yet the
+  right axis for a direct Pila application. What does land cleanly is the
+  positive-real-axis side: using `\Phi_a(y)=0` and a divided-difference bound,
+  one gets `H_a(x)=O_a(1)` for `x\ge 0`. So the second route is now narrowed
+  to one very precise issue: find a transport/uniqueness theorem that matches
+  the boundary pattern `bounded on \mathbb R_+` plus `x\log x` on `i\mathbb R`.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

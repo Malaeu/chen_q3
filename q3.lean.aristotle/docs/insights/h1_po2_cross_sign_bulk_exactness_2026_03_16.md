@@ -1659,7 +1659,7 @@ and therefore
 ```
 
 Combining this with the `O(|t|^{-1})` decay of `F(it)` yields the first real
-Carlson-side estimate:
+imaginary-axis estimate:
 
 ```tex
 \log |H_a(it)|
@@ -1667,14 +1667,63 @@ Carlson-side estimate:
 \frac{\pi}{a}|t|\log|t| + O_a(|t|).
 ```
 
-So the structured regularizer is not merely pole-killing. It already lands in
-the correct `x\log x` growth scale on the imaginary boundary, unlike the naive
-Weierstrass factor.
+This is already much better than the naive Weierstrass route. But it is
+important not to overstate what it gives: in the Pila theorem we are using as
+sanity-check, the `x\log x` growth is allowed on the positive real axis,
+whereas the imaginary axis still needs sub-Carlson linear type. So the bound
+above is on the wrong axis for a direct application of Pila.
 
-What remains open is the positive-real-axis side: on `x>0`, each `\Xi_a(x)`
-inherits critical-line Gamma decay, but one still has to prove that the pole
-cancellation in `H_a(x)=\Phi_a(x)F(x)` converts this into a genuine global
-boundary bound rather than only a local removable-singularity statement.
+The positive-real-axis side can nevertheless be controlled very cleanly.
+
+Indeed, for real `x\ge 0`, every pole `y\in Y_a` lies in the strip
+
+```tex
+\Sigma_a:=\{\zeta\in\mathbb C:\ \Re \zeta\ge -1,\ |\Im \zeta|\le a/(2\pi)\}.
+```
+
+Since `\Phi_a(y)=0`, one has
+
+```tex
+\frac{\Phi_a(x)}{x-y}
+=
+\frac{\Phi_a(x)-\Phi_a(y)}{x-y}
+=
+\int_0^1 \Phi_a'(y+t(x-y))\,dt.
+```
+
+The segment from `y` to the real point `x` stays inside `\Sigma_a`, and
+standard strip bounds for `\xi` plus Cauchy estimates give
+
+```tex
+M_a:=\sup_{\zeta\in\Sigma_a}|\Phi_a'(\zeta)|<\infty.
+```
+
+Therefore
+
+```tex
+|H_a(x)|
+\le
+\sum_{y\in Y_a}|e(y)|\,\left|\frac{\Phi_a(x)}{x-y}\right|
+\le
+M_a\|e\|_{\ell^1(Y_a)}
+\qquad(x\ge 0).
+```
+
+So the structured route now has a complementary boundary package:
+
+```tex
+H_a(x)=O_a(1)\quad (x\to+\infty),
+\qquad
+\log|H_a(it)|\le \frac{\pi}{a}|t|\log|t|+O_a(|t|).
+```
+
+This is real progress, but it is not yet a direct Carlson/Pila theorem. The
+remaining second-route wall is now very precise:
+
+- either find a transport that moves the `x\log x` burden from the imaginary
+  axis to the positive real axis;
+- or use a different uniqueness theorem adapted to exactly this boundary
+  pattern.
 
 #### Coefficient class actually inherited from `PO2`
 
