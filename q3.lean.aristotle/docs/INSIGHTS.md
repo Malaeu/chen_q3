@@ -183,6 +183,13 @@
   is expected to carry real-axis growth on the scale `x(\log x)^2`, already
   above the Carlson/Pila `x\log x` window. So only a highly structured
   regularizer with extra cancellations remains live.
+- that structured survivor is now named cleanly: instead of an ad hoc
+  Weierstrass factor, the natural pole-killer is the built-in xi-factor
+  `\Xi_a(z)=\xi(1/2-i\pi z/a)` and its shift `\Xi_a(z+1)`, because the pole
+  set itself comes from zeros of `\xi(1/2-iz)`. This gives a new candidate
+  `H_a(z)=\Xi_a(z)\Xi_a(z+1)F(z)`, which may still fit the Carlson/Pila window
+  since along the positive real axis it inherits critical-line Gamma decay and
+  along the imaginary axis only `\exp(O(|t|\log|t|))`-type growth is expected.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

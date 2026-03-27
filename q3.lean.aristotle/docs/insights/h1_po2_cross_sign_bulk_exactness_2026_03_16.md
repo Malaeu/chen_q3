@@ -1283,7 +1283,8 @@ genuine infinite-support wall.
 
 #### Finite-support case
 
-If `e` is supported on distinct points `y_1,\dots,y_L\in\mathbb R\setminus\mathbb Z`,
+If `e` is supported on distinct points
+`y_1,\dots,y_L\in\mathbb C\setminus\mathbb Z`,
 then choosing any distinct integers `m_1,\dots,m_L>N`, the system
 
 ```tex
@@ -1393,9 +1394,9 @@ Our live object `F` is not in that class:
 
 - `F` is meromorphic, not holomorphic, because it has poles at the points
   `y\in Y_a`;
-- for the actual merged support in `PO2`, these poles lie on the positive real
-  axis and therefore inside the right half-plane where Carlson needs
-  holomorphy;
+- for the actual merged support in `PO2`, these poles lie in the right
+  half-plane itself, so the raw Cauchy transform fails Carlson's holomorphy
+  hypothesis before any growth estimate even begins;
 - decay of `F(z)` at infinity does **not** repair this: it does not turn a
   meromorphic function into an entire or half-plane-holomorphic one, and it
   does not by itself place `F` in Carlson's uniqueness class.
@@ -1518,6 +1519,71 @@ This does not yet kill every imaginable regularization, but it does kill the
 naive canonical-product route. Any surviving Carlson strategy would need a
 highly structured regularizer with cancellations far beyond the bare
 Weierstrass construction.
+
+### Structured regularizer candidate: the built-in `\xi` factor
+
+The second route is not dead. What dies is only the naive ad hoc Weierstrass
+factor. There is a much more structured candidate already sitting inside the
+Suzuki block formulas.
+
+Indeed the raw sums are indexed by zeros of the entire function
+
+```tex
+z\longmapsto \xi(1/2-iz),
+```
+
+and the pole locations in the Cauchy reformulation are
+
+```tex
+x_\gamma=\frac{a\gamma}{\pi},
+\qquad
+x_\gamma-1.
+```
+
+So define
+
+```tex
+\Xi_a(z):=\xi\!\left(\frac12-\frac{i\pi z}{a}\right),
+\qquad
+\Phi_a(z):=\Xi_a(z)\Xi_a(z+1).
+```
+
+Then `\Xi_a(z)` vanishes at `z=x_\gamma`, and `\Xi_a(z+1)` vanishes at
+`z=x_\gamma-1`. Therefore `\Phi_a` is the first genuinely natural pole-killing
+candidate for the Cauchy transform
+
+```tex
+F(z)=\sum_{y\in Y_a}\frac{e(y)}{y-z}.
+```
+
+This candidate is qualitatively different from a bare Weierstrass product:
+
+- along the positive real axis, `\Xi_a(x)=\xi(1/2-i\pi x/a)` sits on the
+  critical line and inherits the strong Gamma decay there;
+- along the imaginary axis, `\Xi_a(it)=\xi(1/2+\pi t/a)` is controlled by the
+  real-axis Stirling regime of `\xi`, hence of `\exp(O(|t|\log|t|))` type
+  rather than the naive `\exp(O(|t|(\log|t|)^2))` suggested by the genus-1
+  canonical product;
+- the zero set is not imposed externally: it is exactly the zero set that the
+  Suzuki-side meromorphic kernel already sees.
+
+So the second route now has a clean new form:
+
+```tex
+\textbf{Structured Carlson candidate.}\quad
+H_a(z):=\Phi_a(z)F(z)
+```
+
+and the live question is whether `H_a` can be shown to lie in a Carlson/Pila
+uniqueness class on `\Re z\ge 0`.
+
+That is a real advance. The regularization problem is no longer "invent some
+entire factor". It is now:
+
+- prove that the built-in `\xi`-factor really cancels the poles of `F`;
+- prove that the resulting `H_a` is holomorphic in the right half-plane;
+- prove the required `x\log x`-scale growth bounds on the boundary data so
+  that a Carlson/Pila theorem can actually fire.
 
 #### Coefficient class actually inherited from `PO2`
 
