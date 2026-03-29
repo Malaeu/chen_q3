@@ -223,6 +223,16 @@
   that counterexample mechanism for the real pole geometry
   `Y_a=\{x_\gamma,x_\gamma-1\}` or else accept that the mixed `H`-bridge
   subroute is in serious danger.
+- there is now one honest split inside that `Y_a`-specific task. Finite
+  Gamma-quotient counterexamples are already globally excluded for the bulk
+  support: a finite Gamma quotient has poles on a finite union of affine unit
+  lattices, hence only `O(R)` poles up to height `R`, while
+  `n_{Y_a}(R)\asymp (R\log R)/a`. So the only surviving first-route danger is
+  a sparse affine-lattice subfamily of `Y_a`. But that is already close to a
+  deep arithmetic-progression problem for zeta zeros, not a cheap closure
+  lemma. So the fastest live route should now prioritize the second wall:
+  genuinely two-sided transport / uniqueness for the structured class
+  `H_a=\Phi_a F`.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

@@ -1409,6 +1409,67 @@ If that `Y_a`-specific exclusion lands, the first route stays alive in a form
 strong enough to matter for RH. If it fails, then the mixed `H`-bridge route
 is in much deeper trouble than a mere missing lemma.
 
+There is also an immediate first split inside this `Y_a`-specific task.
+
+```tex
+\textbf{Finite gamma-quotient exclusion.}
+```
+
+Any counterexample built from a **finite** quotient of Gamma factors has pole
+divisor supported on a finite union of affine unit lattices
+
+```tex
+\alpha_j+\mathbb Z_{\ge 0},
+```
+
+up to finitely many exceptional rational factors. This is exactly the Euler /
+gamma-quotient mechanism behind the generic half-shifted-lattice example.
+
+By contrast, the full structured support
+
+```tex
+Y_a=\{x_\gamma,\ x_\gamma-1\}
+```
+
+has counting law
+
+```tex
+n_{Y_a}(R)\asymp \frac{R\log R}{a},
+```
+
+whereas any finite union of affine unit lattices has only `O(R)` points up to
+height `R`. So one immediate theorem-grade consequence is:
+
+- no finite Gamma-quotient mechanism can realize **all but finitely many** of
+  the poles of `Y_a`;
+- any surviving first-route counterexample must therefore live on a genuinely
+  sparse affine-lattice subfamily of `Y_a`, not on the bulk of the pole set.
+
+This is good news, but it also changes the tactical picture.
+
+The remaining sparse-subfamily question is already very close to arithmetic
+progression questions for zeta zeros themselves: an infinite affine lattice
+inside `Y_a` would mean an infinite progression
+
+```tex
+\gamma_0+\frac{\pi}{a}\mathbb Z_{\ge 0}
+```
+
+of zero ordinates at a fixed imaginary offset. External sanity-check says this
+territory is genuinely deep and should not be mistaken for a routine closure
+lemma.
+
+So the first-route conclusion is now:
+
+1. finite Gamma-quotient / finite shifted-lattice mechanisms are excluded on
+   density grounds for the full `Y_a`;
+2. the only remaining first-route danger is a sparse affine-lattice subfamily;
+3. that sparse question is likely not the fastest critical-path move toward RH.
+
+Therefore, after this split, the preferred live attack moves to the second
+route unless a very sharp `Y_a`-specific exclusion of sparse affine-lattice
+subfamilies appears unexpectedly.
+
 ### Why a direct Carlson shortcut does not yet close `PO2`
 
 There is a tempting stronger shortcut:
@@ -1915,11 +1976,17 @@ Find either
 Together with the first-route correction above, this means the remaining
 honest fork is now:
 
-1. `Y_a`-specific exclusion of the Gamma-ratio / half-shift mechanism;
+1. `Y_a`-specific exclusion of the **sparse** affine-lattice / Gamma-ratio
+   mechanism;
 2. or a genuinely two-sided transport / uniqueness theorem for the structured
    class `H_a=\Phi_a F`.
 
 Nothing more generic should remain on the critical path.
+
+At the current information level, branch 2 is the preferred fast route:
+branch 1 now appears to touch deep arithmetic-progression questions for zeta
+zeros, while branch 2 stays within the structured analytic package already
+native to `PO2`.
 
 #### Coefficient class actually inherited from `PO2`
 

@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: beat one of the two remaining structured walls inside PO2: either prove a Y_a-specific no-counterexample lemma excluding the half-shift / Gamma-ratio mechanism for the actual pole geometry Y_a={x_gamma,x_gamma-1}, or replace the now-killed single-Gamma transport by a genuinely two-sided transport or uniqueness theorem adapted directly to the boundary pattern H_a(x)=O(1) on R_+ and log|H_a(it)|=O_a(|t| log|t|) on iR
-next_verify: rg -n -e "Y_a-specific no-counterexample lemma|half-shifted-lattice Gamma-ratio mechanism|Remaining second-route wall|Killed subroute|single-Gamma rotated transport|two-sided transport" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: prioritize the fastest remaining PO2 route: after excluding generic momentization and single-Gamma transport, beat the second wall by finding a genuinely two-sided transport or uniqueness theorem for H_a=Phi_a F with boundary pattern H_a(x)=O(1) on R_+ and log|H_a(it)|=O_a(|t| log|t|) on iR; keep the first wall only as the narrower backup target of excluding sparse affine-lattice / Gamma-ratio mechanisms inside Y_a={x_gamma,x_gamma-1}
+next_verify: rg -n -e "Finite gamma-quotient exclusion|sparse affine-lattice subfamily|preferred fast route|Remaining second-route wall|two-sided transport" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
