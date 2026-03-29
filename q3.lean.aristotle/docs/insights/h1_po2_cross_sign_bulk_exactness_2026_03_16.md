@@ -1725,6 +1725,101 @@ remaining second-route wall is now very precise:
 - or use a different uniqueness theorem adapted to exactly this boundary
   pattern.
 
+### Rotated Gamma transport candidate
+
+There is a natural way to attack exactly that remaining wall. Pila's proof
+uses powers of `\Gamma(z+1)` to move `x\log x` growth on the positive real
+axis into linear type on the imaginary axis. Here the heavy axis is reversed,
+so the natural rotated transport is:
+
+```tex
+G_{a,k}(z):=H_a(z)\,\Gamma(1-iz)^{-k},
+```
+
+with an integer `k` chosen large enough.
+
+This is a serious candidate rather than a slogan:
+
+- `\Gamma(1-iz)^{-1}` is entire, so this transport introduces no new poles;
+- if `H_a(n)=0` for all integers `n>N`, then automatically
+  `G_{a,k}(n)=0` for all `n>N`, because `\Gamma(1-in)` is finite and nonzero;
+- along the imaginary axis `z=it`, the factor becomes
+  `\Gamma(1+t)^{-k}` on the positive side and, by the reflection formula,
+  still decays superexponentially on the negative side.
+
+Using the previous bound
+
+```tex
+\log |H_a(it)|
+\le
+\frac{\pi}{a}|t|\log|t| + O_a(|t|),
+```
+
+one gets for any integer `k>\pi/a`:
+
+```tex
+\log |G_{a,k}(it)|
+\le
+-\Bigl(k-\frac{\pi}{a}\Bigr)|t|\log|t| + O_a(|t|).
+```
+
+So after this transport the imaginary-axis growth is not merely linear; it is
+actually strongly decaying, which is more than enough for the Carlson side.
+
+On the positive real axis, the previous bound `H_a(x)=O_a(1)` together with
+the vertical-line Stirling estimate
+
+```tex
+\log |\Gamma(1-ix)^{-k}| = \frac{k\pi}{2}x + O(\log x)
+```
+
+gives
+
+```tex
+\log |G_{a,k}(x)| = O_a(x),
+```
+
+which is still `c=0` in Pila's `x\log x` scale.
+
+Therefore the second route now compresses to one new theorem-shaped target:
+
+```tex
+\textbf{Gamma-transport closure target.}
+```
+
+Show that for some integer `k>\pi/a`, the function `G_{a,k}` is holomorphic in
+`\Re z\ge 0` and satisfies the routine global growth hypothesis
+
+```tex
+\log |G_{a,k}(z)| = O(|z|^{2-\delta})
+\qquad (\Re z\ge 0)
+```
+
+for some `\delta>0`.
+
+If that closure target lands, Pila's theorem applies directly to `G_{a,k}`,
+hence `G_{a,k}\equiv 0`, hence `H_a\equiv 0`, hence `F\equiv 0`, and finally
+all residues vanish:
+
+```tex
+e\equiv 0.
+```
+
+So the second route is no longer “find another theorem”. It is now one exact
+Gamma-transport closure lemma.
+
+The external sanity-check from Pila's note supports exactly this shape:
+
+- Pila's transport step is `g(z)=f(z)/\Gamma(z+1)^{2c'}` on the same
+  right half-plane, used to exchange `x\log x` growth on `\mathbb R_+` for
+  Carlson-type growth on the imaginary axis;
+- our candidate `G_{a,k}(z)=H_a(z)\Gamma(1-iz)^{-k}` is the axis-rotated
+  analogue of that move, designed for a boundary pattern where the heavy
+  `|t|\log|t|` term currently sits on `i\mathbb R` instead of `\mathbb R_+`;
+- so the remaining work is not to guess another uniqueness theorem, but to
+  verify that this rotated Gamma transport really fits the same
+  holomorphy-plus-growth template after the axis swap.
+
 #### Coefficient class actually inherited from `PO2`
 
 The live `PO2` coefficients are not arbitrary. In the original meromorphic

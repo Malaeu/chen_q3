@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: beat one of the two remaining structured walls inside PO2: either prove a non-naive upgrade from l1-Cauchy-tail vanishing to tail moments, or finish the xi-regularizer route by finding a uniqueness/transport theorem adapted to the new boundary pattern H_a(x)=O(1) on R_+ and log|H_a(it)|=O_a(|t| log|t|) on iR
-next_verify: rg -n -e "Open sublemma|tail-moment vanishing|Structured regularizer candidate|First boundary estimates for the structured xi-regularizer|H_a\\(x\\)=O_a\\(1\\)|H_a\\(it\\)|wrong axis for a direct application of Pila" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: beat one of the two remaining structured walls inside PO2: either prove a non-naive upgrade from l1-Cauchy-tail vanishing to tail moments, or close the rotated Gamma transport by proving that for some integer k>pi/a the function G_{a,k}(z)=H_a(z)Gamma(1-iz)^(-k) is holomorphic in Re z>=0 and satisfies the Pila-admissible global growth package
+next_verify: rg -n -e "Open sublemma|tail-moment vanishing|Structured regularizer candidate|First boundary estimates for the structured xi-regularizer|Rotated Gamma transport candidate|Gamma-transport closure target|G_\\{a,k\\}|Gamma\\(1-iz\\)\\^\\(-k\\)" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

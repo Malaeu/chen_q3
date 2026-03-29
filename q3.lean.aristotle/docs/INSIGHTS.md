@@ -202,6 +202,16 @@
   one gets `H_a(x)=O_a(1)` for `x\ge 0`. So the second route is now narrowed
   to one very precise issue: find a transport/uniqueness theorem that matches
   the boundary pattern `bounded on \mathbb R_+` plus `x\log x` on `i\mathbb R`.
+- the next compression is now very sharp and uses Pila in the right way:
+  Pila's own proof transports `x\log x` growth on `\mathbb R_+` by dividing by
+  a Gamma power, so for our axis-swapped boundary geometry the natural move is
+  the rotated factor `\Gamma(1-iz)^{-k}`. For
+  `G_{a,k}(z):=H_a(z)\Gamma(1-iz)^{-k}` with any integer `k>\pi/a`, the heavy
+  imaginary-axis term becomes strongly decaying, while on `\mathbb R_+` one
+  still has only `O_a(x)` growth. So the second route is no longer “find some
+  uniqueness theorem”, but one exact closure target: prove `G_{a,k}` is
+  holomorphic in `\Re z\ge 0` and satisfies the global `O(|z|^{2-\delta})`
+  bound needed to re-enter Pila's theorem directly.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
