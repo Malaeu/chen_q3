@@ -1725,7 +1725,7 @@ remaining second-route wall is now very precise:
 - or use a different uniqueness theorem adapted to exactly this boundary
   pattern.
 
-### Rotated Gamma transport candidate
+### Rotated Gamma transport candidate and its exact obstruction
 
 There is a natural way to attack exactly that remaining wall. Pila's proof
 uses powers of `\Gamma(z+1)` to move `x\log x` growth on the positive real
@@ -1781,34 +1781,8 @@ gives
 
 which is still `c=0` in Pila's `x\log x` scale.
 
-Therefore the second route now compresses to one new theorem-shaped target:
-
-```tex
-\textbf{Gamma-transport closure target.}
-```
-
-Show that for some integer `k>\pi/a`, the function `G_{a,k}` is holomorphic in
-`\Re z\ge 0` and satisfies the routine global growth hypothesis
-
-```tex
-\log |G_{a,k}(z)| = O(|z|^{2-\delta})
-\qquad (\Re z\ge 0)
-```
-
-for some `\delta>0`.
-
-If that closure target lands, Pila's theorem applies directly to `G_{a,k}`,
-hence `G_{a,k}\equiv 0`, hence `H_a\equiv 0`, hence `F\equiv 0`, and finally
-all residues vanish:
-
-```tex
-e\equiv 0.
-```
-
-So the second route is no longer “find another theorem”. It is now one exact
-Gamma-transport closure lemma.
-
-The external sanity-check from Pila's note supports exactly this shape:
+The external sanity-check from Pila's note explains why this move looked
+natural:
 
 - Pila's transport step is `g(z)=f(z)/\Gamma(z+1)^{2c'}` on the same
   right half-plane, used to exchange `x\log x` growth on `\mathbb R_+` for
@@ -1816,9 +1790,88 @@ The external sanity-check from Pila's note supports exactly this shape:
 - our candidate `G_{a,k}(z)=H_a(z)\Gamma(1-iz)^{-k}` is the axis-rotated
   analogue of that move, designed for a boundary pattern where the heavy
   `|t|\log|t|` term currently sits on `i\mathbb R` instead of `\mathbb R_+`;
-- so the remaining work is not to guess another uniqueness theorem, but to
-  verify that this rotated Gamma transport really fits the same
-  holomorphy-plus-growth template after the axis swap.
+- so it was reasonable to test whether a single rotated Gamma factor could
+  fit the same holomorphy-plus-growth template after the axis swap.
+
+But the test fails on the lower imaginary half-axis.
+
+Indeed, for `z=it` with `t<0`, one has
+
+```tex
+G_{a,k}(it)=H_a(it)\,\Gamma(1+t)^{-k}.
+```
+
+Now the reflection formula gives
+
+```tex
+\Gamma(1+t)\Gamma(-t)=\frac{\pi}{\sin(\pi(1+t))},
+```
+
+hence
+
+```tex
+\Gamma(1+t)^{-1}
+=
+\frac{\sin(\pi t)}{\pi}\Gamma(-t).
+```
+
+So on any sequence `t\to-\infty` staying a fixed distance away from the
+negative integers, Stirling yields
+
+```tex
+\log |\Gamma(1+t)^{-k}|
+=
+k|t|\log|t|+O_k(|t|).
+```
+
+That is the wrong sign: on the lower half of `i\mathbb R` the single rotated
+Gamma factor does **not** damp the heavy `|t|\log|t|` term, it amplifies it.
+So the candidate `G_{a,k}` is not in a Pila/Carlson class on the full
+imaginary axis.
+
+The obvious symmetric rescue also fails. If one tries
+
+```tex
+H_a(z)\,\Gamma(1-iz)^{-k}\Gamma(1+iz)^{-k},
+```
+
+then on `z=it` the reflection formula collapses the Gamma pair to
+
+```tex
+\frac{\sin(\pi t)^k}{(\pi t)^k},
+```
+
+which gives only polynomial control and therefore cannot cancel the
+`\exp((\pi/a)|t|\log|t|)` scale coming from `H_a(it)`.
+
+So this subroute is now honestly killed:
+
+```tex
+\textbf{Killed subroute.}\quad
+\text{single-Gamma rotated transport } H_a(z)\Gamma(1-iz)^{-k}.
+```
+
+Its exact kill certificate is:
+
+- it improves the upper half of `i\mathbb R`;
+- it blows up on the lower half of `i\mathbb R` like
+  `\exp(k|t|\log|t|+O(|t|))`;
+- the naive symmetric Gamma pair only gives polynomial decay and is still far
+  too weak.
+
+Therefore the second route remains alive only in the following reduced form:
+
+```tex
+\textbf{Remaining second-route wall.}
+```
+
+Find either
+
+- a genuinely two-sided transport that damps both halves of `i\mathbb R`
+  without spoiling the positive-real-axis bound, or
+- a uniqueness theorem adapted directly to the boundary pattern
+  `H_a(x)=O_a(1)` on `\mathbb R_+` and
+  `\log |H_a(it)|\le (\pi/a)|t|\log|t|+O_a(|t|)` on `i\mathbb R`.
 
 #### Coefficient class actually inherited from `PO2`
 

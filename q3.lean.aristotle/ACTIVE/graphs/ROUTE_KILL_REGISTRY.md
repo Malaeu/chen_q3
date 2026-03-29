@@ -32,6 +32,7 @@ When a live route dies, write five things:
 | `A3-pd` uniform packet-symbol floor on full dense dictionary | killed as theorem shape | collapsing packets destroy any uniform positive floor on the full dense family; see `PROJECT_ORCHESTRATOR.md` gate table | `PSD-pd` certificate backend | `H-bridge` primary route |
 | raw identity `w_{rs}(a)=\kappa(a)q_{rs}` | killed as theorem shape | raw Toeplitz-vs-Weil mismatch is structural, with incompatible diagonal behavior; see `PROJECT_ORCHESTRATOR.md` current frontier item 12 | filtered two-sided tail package | `PO2` mixed-block attack |
 | shared rank/basis hunt for filtered defect | killed as theorem language | basis/rank stories are diagnostics only, not admissible theorem content in the reset route | `Q_zeta` filtered defect calculus | `PO2` mixed-block attack |
+| single-Gamma rotated transport `H_a(z)\Gamma(1-iz)^{-k}` | killed as `PO2` subroute | it damps only the upper half of `i\mathbb R`; on the lower half reflection gives `\Gamma(1+t)^{-1}=(\sin \pi t/\pi)\Gamma(-t)`, so the factor blows up like `\exp(k|t|\log|t|)` on generic negative `t`, while the naive symmetric Gamma pair gives only polynomial control | structured `\xi`-regularizer boundary pattern for `H_a` | remaining `PO2` wall: non-naive momentization or a genuinely two-sided transport / uniqueness theorem |
 | `H-bridge` filtered route through `PO2 -> PO3 -> ... -> H4` | live | current first proof-critical gate is `PO2`: cross-sign bulk exactness | n/a | active in `PHASE_MONITOR.md` |
 
 ## Current live rollback point
