@@ -233,6 +233,15 @@
   lemma. So the fastest live route should now prioritize the second wall:
   genuinely two-sided transport / uniqueness for the structured class
   `H_a=\Phi_a F`.
+- and the second wall is now narrower too: the single-Gamma failure was not an
+  isolated accident. A finite product of shifted inverse Gamma factors
+  `\Gamma(\alpha_j-iz)^{-u_j}\Gamma(\beta_\ell+iz)^{-v_\ell}` has upper and
+  lower `|t|\log|t|` coefficients of opposite sign, governed only by the total
+  imbalance `U-V`. So no finite shifted-Gamma product can damp both halves of
+  `i\mathbb R`; the balanced case cancels the transport entirely down to at
+  most `O(t)` and still leaves the `(\pi/a)|t|\log|t|` wall of `H_a`. This
+  promotes the real second-route target to a **non-Gamma** two-sided transport
+  or a direct uniqueness theorem for the boundary pattern of `H_a`.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

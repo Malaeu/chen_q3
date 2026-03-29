@@ -1973,20 +1973,101 @@ Find either
   `H_a(x)=O_a(1)` on `\mathbb R_+` and
   `\log |H_a(it)|\le (\pi/a)|t|\log|t|+O_a(|t|)` on `i\mathbb R`.
 
+There is one more useful compression here. The failure is not special to the
+single factor `\Gamma(1-iz)^{-k}`; it propagates to the whole obvious finite
+Gamma family.
+
+```tex
+\textbf{Finite shifted-Gamma transport obstruction.}
+```
+
+Consider any transport built from finitely many inverse Gamma factors
+
+```tex
+\Psi(z)
+=
+\prod_{j=1}^p \Gamma(\alpha_j-iz)^{-u_j}
+\prod_{\ell=1}^q \Gamma(\beta_\ell+iz)^{-v_\ell},
+```
+
+with fixed shifts `\alpha_j,\beta_\ell\in\mathbb C` and nonnegative weights
+`u_j,v_\ell`.
+
+Let
+
+```tex
+U:=\sum_{j=1}^p u_j,
+\qquad
+V:=\sum_{\ell=1}^q v_\ell.
+```
+
+Then Stirling on the positive-real arguments and reflection on the negative
+ones give:
+
+- on the upper half of the imaginary axis,
+  ```tex
+  \log |\Psi(it)|
+  =
+  -(U-V)t\log t+O(t)
+  \qquad (t\to+\infty);
+  ```
+- on the lower half,
+  ```tex
+  \log |\Psi(-it)|
+  =
+  +(U-V)t\log t+O(t)
+  \qquad (t\to+\infty).
+  ```
+
+So there are only three possibilities:
+
+1. `U>V`: the transport damps the upper half but blows up on the lower half;
+2. `U<V`: it damps the lower half but blows up on the upper half;
+3. `U=V`: the `t\log t` terms cancel on both halves, leaving at best
+   `O(t)` or smaller, which is too weak to kill the
+   `(\pi/a)|t|\log|t|` growth of `H_a(it)`.
+
+Therefore no **finite shifted-Gamma product** can supply the genuinely
+two-sided damping required for the structured second route.
+
+This is an exact family-level kill certificate, not just a failure of one
+pretty formula.
+
+So the live second-route target sharpens again:
+
+```tex
+\textbf{Non-Gamma two-sided transport target.}
+```
+
+Find either
+
+- a zero-free holomorphic factor `\Omega_a` on `\Re z\ge 0` with
+  ```tex
+  \log |\Omega_a(it)|
+  \le
+  -\Bigl(\frac{\pi}{a}+\varepsilon\Bigr)|t|\log|t|+O_a(|t|),
+  \qquad
+  \log |\Omega_a(x)|=O_a(x),
+  ```
+  for some `\varepsilon>0`, together with the routine global
+  `O(|z|^{2-\delta})` bound needed by Pila;
+- or a uniqueness theorem that reads the boundary pattern of `H_a` directly,
+  without any Gamma-product transport at all.
+
 Together with the first-route correction above, this means the remaining
 honest fork is now:
 
 1. `Y_a`-specific exclusion of the **sparse** affine-lattice / Gamma-ratio
    mechanism;
-2. or a genuinely two-sided transport / uniqueness theorem for the structured
-   class `H_a=\Phi_a F`.
+2. or a genuinely non-Gamma two-sided transport / uniqueness theorem for the
+   structured class `H_a=\Phi_a F`.
 
 Nothing more generic should remain on the critical path.
 
 At the current information level, branch 2 is the preferred fast route:
 branch 1 now appears to touch deep arithmetic-progression questions for zeta
 zeros, while branch 2 stays within the structured analytic package already
-native to `PO2`.
+native to `PO2` even after the whole finite Gamma-family is removed.
 
 #### Coefficient class actually inherited from `PO2`
 
