@@ -242,6 +242,19 @@
   most `O(t)` and still leaves the `(\pi/a)|t|\log|t|` wall of `H_a`. This
   promotes the real second-route target to a **non-Gamma** two-sided transport
   or a direct uniqueness theorem for the boundary pattern of `H_a`.
+- external search finally makes the second wall more precise rather than more
+  vague. The closest real theorems are Yoshino's right-half-plane Carlson
+  theorem for functions with
+  `|F(z)|\ll \exp(x\log x+k|y|+\varepsilon|z|)` and `k<\pi/2`, and Pila's 2003
+  refinement with `c+\gamma<1`, where `x\log x` is allowed on `\mathbb R_+`
+  and only linear/exponential-type growth on `i\mathbb R`. Both have the same
+  orientation. Our structured object `H_a=\Phi_aF` has the **transposed**
+  boundary pattern: it is bounded on `\mathbb R_+` and has
+  `(\pi/a)|t|\log|t|` on `i\mathbb R`. So the real remaining theorem target is
+  now a **rotated Pila--Yoshino problem**: either build a zero-free factor
+  `\Omega_a` that pushes `H_a` into the Pila/Yoshino orientation, or prove a
+  Poisson/Herglotz obstruction showing that no such factor can keep `O_a(x)`
+  growth on `\mathbb R_+` while damping both halves of `i\mathbb R`.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

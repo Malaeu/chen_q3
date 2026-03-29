@@ -2069,6 +2069,70 @@ branch 1 now appears to touch deep arithmetic-progression questions for zeta
 zeros, while branch 2 stays within the structured analytic package already
 native to `PO2` even after the whole finite Gamma-family is removed.
 
+#### External uniqueness scan: the real gap is now an orientation gap
+
+The closest actual uniqueness theorems found so far are not generic folklore
+claims but two concrete right-half-plane results:
+
+- Yoshino's Carlson-type theorem for holomorphic functions on `\Re z>0`
+  satisfying
+  ```tex
+  |F(z)|\le C_{\varepsilon,\varepsilon'}\exp(x\log x+k|y|+\varepsilon|z|)
+  \qquad (x=\Re z>\varepsilon'),
+  ```
+  with `k<\pi/2`, from which `F(n)=0` on all natural numbers forces
+  `F\equiv 0`;
+- Pila's 2003 refinement, where one allows
+  ```tex
+  \limsup_{x\to+\infty}\frac{\log|f(x)|}{2x\log x}\le c,
+  \qquad
+  \limsup_{|y|\to\infty}\frac{\log|f(iy)|}{\pi|y|}\le \gamma,
+  ```
+  with `c+\gamma<1` and a routine global `O(|z|^{2-\delta})` bound.
+
+The important point is structural: both theorems have the **same orientation**.
+They allow the heavy `x\log x` growth on the **positive real axis** and only
+linear/exponential-type control on the **imaginary axis**. Our structured
+object `H_a=\Phi_a F` has the **transposed** boundary pattern:
+
+```tex
+H_a(x)=O_a(1)\quad (x\ge 0),
+\qquad
+\log|H_a(it)|\le \frac{\pi}{a}|t|\log|t|+O_a(|t|).
+```
+
+So the remaining second wall is no longer "find some Carlson theorem". It is
+now much sharper:
+
+```tex
+\textbf{Rotated Pila--Yoshino target.}
+```
+
+Find either
+
+1. a zero-free holomorphic factor `\Omega_a` on `\Re z\ge 0` such that
+   `\Omega_a H_a` is pushed into the **Pila/Yoshino orientation**, i.e.
+   heavy growth is moved from `i\mathbb R` to `\mathbb R_+`;
+2. or a new uniqueness theorem that reads the **transposed** boundary pattern
+   of `H_a` directly, without reducing to Pila/Yoshino.
+
+This also sharpens the transport side. Since the entire finite shifted-Gamma
+family is already dead, the only remaining transport mechanism would have to be
+genuinely non-Gamma and genuinely two-sided. In practice this means the next
+honest subtarget is one of:
+
+- produce an explicit `\Omega_a` for which `\Omega_a H_a` satisfies a theorem
+  of Pila/Yoshino type;
+- or prove a half-plane Poisson/Herglotz obstruction showing that no zero-free
+  holomorphic factor can simultaneously
+  ```tex
+  \text{damp } |t|\log|t| \text{ on both halves of } i\mathbb R
+  ```
+  and still keep only `O_a(x)` growth on `\mathbb R_+`.
+
+At the current information level, this Poisson-style obstruction is the
+fastest exact theorem target inside branch 2.
+
 #### Coefficient class actually inherited from `PO2`
 
 The live `PO2` coefficients are not arbitrary. In the original meromorphic

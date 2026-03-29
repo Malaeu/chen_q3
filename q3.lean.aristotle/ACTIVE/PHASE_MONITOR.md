@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: prioritize the fastest remaining PO2 route: after excluding generic momentization and the full finite shifted-Gamma transport family, beat the second wall by finding a genuinely non-Gamma two-sided transport or uniqueness theorem for H_a=Phi_a F with boundary pattern H_a(x)=O(1) on R_+ and log|H_a(it)|=O_a(|t| log|t|) on iR; keep the first wall only as the narrower backup target of excluding sparse affine-lattice / Gamma-ratio mechanisms inside Y_a={x_gamma,x_gamma-1}
-next_verify: rg -n -e "Finite gamma-quotient exclusion|Finite shifted-Gamma transport obstruction|Non-Gamma two-sided transport target|preferred fast route|Remaining second-route wall" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: prioritize the fastest remaining PO2 route by sharpening the second wall into a rotated Pila--Yoshino problem: either construct a genuinely non-Gamma zero-free factor Omega_a that moves the |t|log|t| burden of H_a=Phi_a F from iR to R_+, so that a Pila/Yoshino theorem becomes applicable, or prove a half-plane Poisson/Herglotz obstruction showing that no such zero-free factor can damp both halves of iR while keeping only O_a(x) growth on R_+; keep the first wall only as the narrower backup target of excluding sparse affine-lattice / Gamma-ratio mechanisms inside Y_a={x_gamma,x_gamma-1}
+next_verify: rg -n -e "Rotated Pila--Yoshino target|Poisson/Herglotz obstruction|External uniqueness scan" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
