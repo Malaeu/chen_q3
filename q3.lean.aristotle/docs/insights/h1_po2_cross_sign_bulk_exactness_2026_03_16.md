@@ -1370,6 +1370,45 @@ So the moment theorem should be treated as:
 - a good sanity-check for bounded-support or already-momentized variants;
 - but not yet a proof of the live `\ell^1`-Cauchy-tail injectivity problem.
 
+There is now one more decisive correction: the generic bridge
+
+```tex
+\ell^1\text{-Cauchy-tail vanishing}
+\Longrightarrow
+\text{tail-moment vanishing}
+```
+
+should no longer be treated as a live global theorem target at all.
+A half-shifted-lattice Gamma-ratio mechanism provides a nonzero
+`\ell^1` simple-Cauchy sum vanishing on every sufficiently large integer,
+while the coefficients are not zero and therefore cannot have all tail
+moments vanishing. So even if the full counterexample is written elsewhere,
+the route-level conclusion for `PO2` is already clear:
+
+- generic momentization is not the theorem we need;
+- the first route can only survive in a **`Y_a`-specific** form.
+
+This changes the live first-route target to:
+
+```tex
+\textbf{Y}_a\textbf{-specific no-counterexample lemma.}
+```
+
+Prove that the actual pole geometry
+
+```tex
+Y_a=\{x_\gamma,\ x_\gamma-1\},
+\qquad
+x_\gamma=\frac{a\gamma}{\pi},
+```
+
+does **not** admit the half-shifted-lattice / Gamma-ratio mechanism that kills
+the generic bridge.
+
+If that `Y_a`-specific exclusion lands, the first route stays alive in a form
+strong enough to matter for RH. If it fails, then the mixed `H`-bridge route
+is in much deeper trouble than a mere missing lemma.
+
 ### Why a direct Carlson shortcut does not yet close `PO2`
 
 There is a tempting stronger shortcut:
@@ -1872,6 +1911,15 @@ Find either
 - a uniqueness theorem adapted directly to the boundary pattern
   `H_a(x)=O_a(1)` on `\mathbb R_+` and
   `\log |H_a(it)|\le (\pi/a)|t|\log|t|+O_a(|t|)` on `i\mathbb R`.
+
+Together with the first-route correction above, this means the remaining
+honest fork is now:
+
+1. `Y_a`-specific exclusion of the Gamma-ratio / half-shift mechanism;
+2. or a genuinely two-sided transport / uniqueness theorem for the structured
+   class `H_a=\Phi_a F`.
+
+Nothing more generic should remain on the critical path.
 
 #### Coefficient class actually inherited from `PO2`
 

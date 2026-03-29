@@ -213,6 +213,16 @@
   second wall is still open, but now in a much cleaner form: we need either a
   genuinely two-sided transport on `i\mathbb R`, or a uniqueness theorem that
   reads the boundary pattern of `H_a` directly without Gamma transport.
+- the first wall is now narrower too, and this is important for the real
+  proof route: the generic bridge
+  `\ell^1`-Cauchy-tail vanishing `\Rightarrow` tail-moment vanishing should no
+  longer be treated as a live theorem target. A half-shifted-lattice
+  Gamma-ratio mechanism yields a nonzero `\ell^1` Cauchy sum vanishing on all
+  sufficiently large integers, so generic momentization is off the critical
+  path. The actual first-route target is therefore `Y_a`-specific: exclude
+  that counterexample mechanism for the real pole geometry
+  `Y_a=\{x_\gamma,x_\gamma-1\}` or else accept that the mixed `H`-bridge
+  subroute is in serious danger.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
