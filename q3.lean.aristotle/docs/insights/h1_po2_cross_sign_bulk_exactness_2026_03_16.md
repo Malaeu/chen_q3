@@ -2212,11 +2212,74 @@ So the second wall sharpens once more:
 \textbf{Remaining second-route wall.}
 ```
 
+At this point one more generic temptation must be killed immediately.
+
+```tex
+\textbf{Generic rotated uniqueness is false.}
+```
+
+The bare statement
+
+```tex
+H \text{ holomorphic on } \Re z>0,\quad
+H(n)=0\ \forall n\in\mathbb N,\quad
+H(x)=O(1)\text{ on }\mathbb R_+,\quad
+\log|H(it)|=O(|t|\log|t|)
+```
+
+does **not** force `H\equiv 0`. A trivial counterexample is
+
+```tex
+H(z)=\sin(\pi z),
+```
+
+which is holomorphic on the whole plane, vanishes on every integer, stays
+bounded on the positive real axis, and satisfies
+
+```tex
+\log|\sin(\pi it)|
+=
+\log|\sinh(\pi t)|
+=
+\pi|t|+O(1),
+```
+
+which is far below the allowed `|t|\log|t|` ceiling.
+
+So option 1 cannot mean a theorem for **all** holomorphic functions with this
+boundary pattern. The Cauchy/xi structure must now be consumed explicitly.
+
+The real direct target is therefore a theorem for the structured class
+
+```tex
+\mathcal H_a^{\mathrm{str}}
+:=
+\left\{
+H(z)=\Phi_a(z)\sum_{y\in Y_a}\frac{e(y)}{y-z}
+:\ e\in \ell^1(Y_a)
+\right\},
+\qquad
+Y_a=\{x_\gamma,\ x_\gamma-1\}.
+```
+
+In the actual `PO2` application this class is even smaller, because the
+coefficients inherited from the mixed defect have the stronger decay coming
+from three Cauchy denominators in `\gamma`; but already the class
+`\mathcal H_a^{\mathrm{str}}` is the correct theorem-sized receiver.
+
+So the remaining second-route wall should be rewritten as:
+
 Either
 
-1. prove a rotated uniqueness theorem for functions holomorphic on
-   `\Re z>0` with zeros on `\mathbb N`, bounded on `\mathbb R_+`, and
-   `|t|\log|t|` growth on `i\mathbb R`;
+1. prove a rotated uniqueness theorem for the structured class
+   `\mathcal H_a^{\mathrm{str}}`, namely
+   ```tex
+   H\in \mathcal H_a^{\mathrm{str}},
+   \qquad
+   H(n)=0\ \forall n>N
+   \Longrightarrow
+   H\equiv 0;
+   ```
 2. or exhibit an explicit transport mechanism outside the standard
    outer/Nevanlinna/Herglotz class.
 

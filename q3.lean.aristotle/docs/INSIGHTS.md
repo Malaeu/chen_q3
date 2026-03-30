@@ -268,6 +268,16 @@
   outer/Herglotz regime, or a direct rotated uniqueness theorem for `H_a`
   itself. At the current information level, the direct uniqueness theorem is
   now the preferred fast route.
+- one more false generic target is now eliminated too. A theorem of the form
+  "holomorphic on `\Re z>0`, zeros on `\mathbb N`, bounded on `\mathbb R_+`,
+  and `|t|\log|t|` growth on `i\mathbb R` implies zero" is simply false:
+  `\sin(\pi z)` already satisfies the boundary template and vanishes on every
+  integer. So the direct second-route target must be stated for the
+  **structured class**
+  `\mathcal H_a^{\mathrm{str}}=\{\Phi_a(z)\sum_{y\in Y_a}e(y)/(y-z):e\in\ell^1(Y_a)\}`,
+  not for arbitrary holomorphic functions. This is a useful compression, not a
+  setback: the remaining direct theorem now has one exact receiver and no fake
+  generic version left on the critical path.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: prioritize the fastest remaining PO2 route by recording the standard outer/Herglotz transport obstruction: two-sided -|t|log|t| damping on iR is incompatible with any zero-free factor Omega_a in the standard half-plane outer/Nevanlinna/Herglotz class if one also wants only finite linear harmonic drift and O_a(x)-scale behavior on R_+; after this kill, treat the direct rotated uniqueness theorem for H_a itself as the preferred fast route, and keep the first wall only as the narrower backup target of excluding sparse affine-lattice / Gamma-ratio mechanisms inside Y_a={x_gamma,x_gamma-1}
-next_verify: rg -n -e "Outer/Herglotz obstruction|Remaining second-route wall|direct rotated uniqueness theorem" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: prioritize the fastest remaining PO2 route by keeping only the structured direct theorem on the critical path: after killing standard outer/Herglotz transport and the generic rotated uniqueness fantasy, the preferred target is now a rotated uniqueness theorem for the structured class H_a^str={Phi_a(z) * sum_{y in Y_a} e(y)/(y-z) : e in l1(Y_a)}, with H(n)=0 for all large integers implying H≡0; keep the first wall only as the narrower backup target of excluding sparse affine-lattice / Gamma-ratio mechanisms inside Y_a={x_gamma,x_gamma-1}
+next_verify: rg -n -e "Generic rotated uniqueness is false|mathcal H_a\\^\\{\\\\mathrm\\{str\\}\\}|structured class" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
