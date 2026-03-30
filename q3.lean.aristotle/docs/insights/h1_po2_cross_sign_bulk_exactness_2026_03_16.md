@@ -2267,19 +2267,53 @@ coefficients inherited from the mixed defect have the stronger decay coming
 from three Cauchy denominators in `\gamma`; but already the class
 `\mathcal H_a^{\mathrm{str}}` is the correct theorem-sized receiver.
 
-So the remaining second-route wall should be rewritten as:
+But even this is not yet the **minimal** direct receiver. Earlier in the
+reduction we already reached the sharper form
+
+```tex
+H(z)=e^{i\pi z}\Delta J(z),
+\qquad
+J(z)=P(z)-Q(z+1),
+\qquad
+P,Q\in \mathcal C_a,
+```
+
+with
+
+```tex
+\mathcal C_a
+:=
+\left\{
+\sum_\gamma c_\gamma f_\gamma(z)
+\right\},
+\qquad
+f_\gamma(z)=\frac{1}{x_\gamma-z}.
+```
+
+So for the actual `PO2` wall, the theorem does not need to mention arbitrary
+elements of `\mathcal H_a^{\mathrm{str}}`. The proof-critical core is already
+the simple-pole shift equality problem.
+
+Hence the remaining second-route wall should be rewritten one step more
+economically:
 
 Either
 
-1. prove a rotated uniqueness theorem for the structured class
-   `\mathcal H_a^{\mathrm{str}}`, namely
+1. prove the **minimal shift-uniqueness receiver**
    ```tex
-   H\in \mathcal H_a^{\mathrm{str}},
+   P,Q\in \mathcal C_a,
    \qquad
-   H(n)=0\ \forall n>N
+   P(m)=Q(m+1)\ \forall m>N
    \Longrightarrow
-   H\equiv 0;
+   P(z)=Q(z+1)\ \text{ identically};
    ```
+   equivalently, in Cauchy-tail form,
+   ```tex
+   \sum_{y\in Y_a}\frac{e(y)}{y-m}=0\ \forall m>N
+   \Longrightarrow e\equiv 0,
+   ```
+   but now understood only for the actual structured support/coefficients
+   inherited from `PO2`;
 2. or exhibit an explicit transport mechanism outside the standard
    outer/Nevanlinna/Herglotz class.
 

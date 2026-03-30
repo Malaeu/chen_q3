@@ -278,6 +278,15 @@
   not for arbitrary holomorphic functions. This is a useful compression, not a
   setback: the remaining direct theorem now has one exact receiver and no fake
   generic version left on the critical path.
+- there is one more honest compression available, and it matters. Even the
+  class `\mathcal H_a^{\mathrm{str}}` is still a packaging layer. The actual
+  `PO2` reductions already land in the simpler receiver
+  `H=e^{i\pi z}\Delta J` with `J=P-Q(\cdot+1)` and `P,Q\in\mathcal C_a`, where
+  `\mathcal C_a` is the simple-pole Cauchy class on `x_\gamma`. So the
+  preferred direct target is now the **minimal shift-uniqueness receiver**
+  `P(m)=Q(m+1)` on the integer tail. This is equivalent to the Cauchy-tail
+  injectivity statement, but it keeps the theorem phrasing aligned with the
+  actual algebra produced inside `PO2` rather than with a broader wrapper.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
