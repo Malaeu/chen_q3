@@ -2133,6 +2133,96 @@ honest subtarget is one of:
 At the current information level, this Poisson-style obstruction is the
 fastest exact theorem target inside branch 2.
 
+#### Standard outer/Herglotz transports are already incompatible
+
+The Poisson/Herglotz obstruction can already be made precise for the entire
+standard outer-function class on the right half-plane.
+
+Assume `\Omega` is zero-free and holomorphic on `\Re z>0`, and that
+`u(z):=\log |\Omega(z)|` lies in the standard half-plane outer/Nevanlinna
+regime, so that `u` admits a Poisson-Herglotz representation with at most a
+linear harmonic term:
+
+```tex
+u(x+iy)
+=
+\sigma x+c
++\frac{x}{\pi}\int_{\mathbb R}\frac{g(t)}{x^2+(y-t)^2}\,dt,
+\qquad x>0,
+```
+
+where `g(t)` is the boundary log-modulus on `i\mathbb R` and
+`\sigma,c\in\mathbb R` are finite.
+
+Now impose the transport requirement needed for `PO2`:
+
+```tex
+g(t)\le
+-\Bigl(\frac{\pi}{a}+\varepsilon\Bigr)|t|\log(2+|t|)+C_a|t|
+\qquad (|t|\gg 1).
+```
+
+Then already on the positive real axis `y=0` the truncated Poisson tail is
+forced negative with quadratic logarithmic size. For `T>R\gg 1`,
+
+```tex
+\frac{x}{\pi}\int_{R<|t|<T}\frac{g(t)}{x^2+t^2}\,dt
+\le
+-\frac{2x}{\pi}\Bigl(\frac{\pi}{a}+\varepsilon\Bigr)
+\int_R^T \frac{t\log t}{x^2+t^2}\,dt
++ O_a\!\left(x\int_R^T \frac{dt}{t}\right).
+```
+
+But for fixed `x>0`,
+
+```tex
+\int_R^T \frac{t\log t}{x^2+t^2}\,dt
+\sim
+\frac12(\log T)^2,
+\qquad
+\int_R^T \frac{dt}{t}\sim \log T.
+```
+
+So the negative `(\log T)^2` contribution dominates the positive `O_a(\log T)`
+drift. Letting `T\to+\infty`, the Poisson integral forces `u(x)=-\infty`,
+impossible for a finite-valued holomorphic function.
+
+Therefore:
+
+```tex
+\textbf{Outer/Herglotz obstruction.}
+```
+
+No zero-free transport factor `\Omega_a` with the required two-sided
+`-|t|\log|t|` damping on `i\mathbb R` can lie in the standard
+outer/Nevanlinna/Herglotz class while still having only finite linear harmonic
+drift on `\Re z>0`.
+
+This is already a meaningful family-level kill:
+
+- the remaining transport, if any, must be genuinely **non-Gamma** and also
+  genuinely **non-outer** in the standard half-plane sense;
+- equivalently, branch 2 is no longer "find some outer factor". It is now:
+  either an exotic zero-free transport outside the standard Herglotz regime,
+  or a direct rotated uniqueness theorem for `H_a` itself.
+
+So the second wall sharpens once more:
+
+```tex
+\textbf{Remaining second-route wall.}
+```
+
+Either
+
+1. prove a rotated uniqueness theorem for functions holomorphic on
+   `\Re z>0` with zeros on `\mathbb N`, bounded on `\mathbb R_+`, and
+   `|t|\log|t|` growth on `i\mathbb R`;
+2. or exhibit an explicit transport mechanism outside the standard
+   outer/Nevanlinna/Herglotz class.
+
+At the present information level, option 1 is now the preferred fast route
+inside branch 2.
+
 #### Coefficient class actually inherited from `PO2`
 
 The live `PO2` coefficients are not arbitrary. In the original meromorphic

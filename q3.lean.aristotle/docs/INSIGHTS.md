@@ -255,6 +255,19 @@
   `\Omega_a` that pushes `H_a` into the Pila/Yoshino orientation, or prove a
   Poisson/Herglotz obstruction showing that no such factor can keep `O_a(x)`
   growth on `\mathbb R_+` while damping both halves of `i\mathbb R`.
+- this Poisson/Herglotz attack already lands on one honest family-level kill:
+  if a zero-free factor `\Omega` belongs to the standard half-plane
+  outer/Nevanlinna/Herglotz class, so that `u=\log|\Omega|` has a Poisson
+  representation with only a finite linear harmonic drift, then boundary
+  damping
+  `u(it)\le-(\pi/a+\varepsilon)|t|\log(2+|t|)+O_a(|t|)` makes the Poisson tail
+  diverge negatively like `-x\int^\infty (\log t)/t\,dt`, hence forces
+  `u(x)=-\infty` for every fixed `x>0`. So the whole **standard outer
+  transport** route is already dead. The surviving branch-2 target is now even
+  narrower: either an exotic zero-free transport outside the standard
+  outer/Herglotz regime, or a direct rotated uniqueness theorem for `H_a`
+  itself. At the current information level, the direct uniqueness theorem is
+  now the preferred fast route.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
