@@ -287,6 +287,16 @@
   `P(m)=Q(m+1)` on the integer tail. This is equivalent to the Cauchy-tail
   injectivity statement, but it keeps the theorem phrasing aligned with the
   actual algebra produced inside `PO2` rather than with a broader wrapper.
+- there is now also a concrete external analogue for this minimal receiver:
+  De Micheli--Viano prove a meromorphic interpolation / pole-recovery theorem
+  for suitable Carlson-type half-plane functions from samples on the positive
+  real axis (their paper uses positive half-integers). That does not solve our
+  case out of the box, but it converts the direct wall into a sharply testable
+  **adaptation problem**: check whether
+  `R(z)=P(z)-Q(z+1)=\sum_{y\in Y_a}e(y)/(y-z)` belongs to an admissible class,
+  whether tail integers can replace the paper's sampling grid, and whether the
+  structured pole set `Y_a={x_\gamma,x_\gamma-1}` with `\ell^1` residues is
+  allowed. If yes, tail vanishing forces all residues to vanish immediately.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

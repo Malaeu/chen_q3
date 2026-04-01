@@ -2320,6 +2320,56 @@ Either
 At the present information level, option 1 is now the preferred fast route
 inside branch 2.
 
+#### External pole-recovery analogue: the direct wall is now an adaptation wall
+
+There is already a close external theorem pattern for the minimal receiver.
+De Micheli--Viano prove that, for a suitable Carlson-type class of functions
+meromorphic in a half-plane, the positions and residues of the poles can be
+recovered from samples on the positive real axis (in their formulation, on the
+positive half-integers), and the function can then be reconstructed by an
+interpolation formula that explicitly includes the poles.
+
+This does **not** solve our wall as stated, but it sharpens it further. The
+actual direct target is no longer "some uniqueness theorem for `\mathcal C_a`".
+It is now an adaptation problem:
+
+```tex
+\textbf{Pole-recovery adaptation target.}
+```
+
+Adapt a meromorphic interpolation / pole-recovery theorem from a generic
+Carlson-type half-plane class to the actual receiver
+
+```tex
+R(z)=P(z)-Q(z+1)=\sum_{y\in Y_a}\frac{e(y)}{y-z},
+\qquad
+Y_a=\{x_\gamma,\ x_\gamma-1\},
+```
+
+with the special input
+
+```tex
+R(m)=0\qquad \forall m>N.
+```
+
+If such an adaptation lands, then the conclusion is immediate: the pole
+recovery theorem forces all residues to vanish, hence `e\equiv 0`, hence
+`P(z)=Q(z+1)` identically.
+
+So the direct route is now best read as three concrete subchecks:
+
+1. verify that the actual receiver `R` lies in an admissible meromorphic
+   half-plane class with the needed growth;
+2. replace the paper's positive half-integer sampling set by our tail-integer
+   set (or reduce one to the other by a harmless shift/rescaling);
+3. check that the theorem tolerates the structured real pole set
+   `Y_a=\{x_\gamma,x_\gamma-1\}` and our `\ell^1` residue class.
+
+At the current information level, this is the cleanest external bridge to the
+minimal shift-uniqueness receiver. It does not prove `PO2`, but it converts
+the remaining wall into a sharply testable adaptation problem rather than a
+free-form uniqueness guess.
+
 #### Coefficient class actually inherited from `PO2`
 
 The live `PO2` coefficients are not arbitrary. In the original meromorphic
