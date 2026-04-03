@@ -4676,3 +4676,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   the demoted Krein branch: prove a direct divisor-rigidity statement saying
   such a long tail-zero tower cannot persist in the `Y_a`-paired class unless
   `e\equiv 0`.
+- the user’s `L_k` idea is a genuinely good backup refinement for the demoted
+  Krein branch. On the algebraic spans
+  `\mathcal A_k=\operatorname{span}_{fin}\{G_k/(z-\lambda):\lambda\in Z(G_k)\}`,
+  the coefficient-sum functional
+  `L_k(\sum c_\lambda G_k/(z-\lambda)):=\sum c_\lambda` is well defined, has
+  the asymptotic form `L_k(f)=\lim_{z\to\infty} z f(z)/G_k(z)`, and satisfies
+  `\mathcal A_{k+1}=\ker L_k\cap \mathcal A_k`. So if `L_k` extends boundedly
+  to the closed space `H_{G_k}`, strict inclusion
+  `H_{G_{k+1}}\subsetneq H_{G_k}` follows almost for free. This is a real
+  analytic brick inside the backup branch, but it still does not bypass the
+  earlier strategic verdict: the active critical path remains the direct
+  divisor-rigidity target `D2`, while `L_k` boundedness is a serious reserve
+  sublemma if we come back to Krein.

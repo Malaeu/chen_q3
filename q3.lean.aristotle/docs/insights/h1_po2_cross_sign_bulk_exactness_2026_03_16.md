@@ -2642,6 +2642,111 @@ tail-zero division eventually changes the associated `H_G`-subspace in a
 provable way. In practice this is now a multiplicity-exhaustion problem at the
 first few tail integers, not a search for an unrelated companion subspace.
 
+There is now a sharper algebraic skeleton behind this strictness problem.
+Let
+
+```tex
+\mathcal A_k
+:=
+\operatorname{span}_{\mathrm{fin}}
+\left\{
+\frac{G_k(z)}{z-\lambda}:\ \lambda\in Z(G_k)
+\right\},
+```
+
+so that `H_{G_k}` is the closure of `\mathcal A_k` in the ambient
+Cauchy-de Branges norm whenever the construction is legitimate.
+
+For any finite combination
+
+```tex
+f(z)=\sum_{\lambda\in Z(G_k)} c_\lambda \frac{G_k(z)}{z-\lambda},
+```
+
+define the algebraic coefficient-sum functional
+
+```tex
+L_k(f):=\sum_{\lambda} c_\lambda.
+```
+
+This is well defined on `\mathcal A_k`, because the family
+`\{G_k(z)/(z-\lambda)\}_{\lambda\in Z(G_k)}` is linearly independent on finite
+combinations: if
+
+```tex
+\sum_{\lambda\in F} c_\lambda \frac{G_k(z)}{z-\lambda}\equiv 0,
+```
+
+then dividing by the nonzero entire function `G_k` and taking residues at the
+simple poles shows `c_\lambda=0` for all `\lambda\in F`.
+
+Now let `a_k=N+k+1`. Each generator of `\mathcal A_{k+1}` has the form
+
+```tex
+\frac{G_{k+1}(z)}{z-\mu}
+=
+\frac{G_k(z)}{(z-a_k)(z-\mu)}
+=
+\frac{1}{a_k-\mu}
+\left(
+\frac{G_k(z)}{z-a_k}-\frac{G_k(z)}{z-\mu}
+\right),
+```
+
+so every such generator lies in `\mathcal A_k` and has coefficient sum zero.
+Conversely, any finite combination in `\mathcal A_k` with zero coefficient sum
+can be rewritten against the distinguished pole `a_k` and therefore belongs to
+`\mathcal A_{k+1}`. Thus
+
+```tex
+\mathcal A_{k+1}
+=
+\ker L_k \cap \mathcal A_k.
+```
+
+There is also an asymptotic expression for `L_k`. For finite combinations,
+
+```tex
+\frac{f(z)}{G_k(z)}
+=
+\sum_{\lambda}\frac{c_\lambda}{z-\lambda}
+=
+\frac{1}{z}\sum_{\lambda} c_\lambda + O(z^{-2}),
+\qquad z\to\infty,
+```
+
+so
+
+```tex
+L_k(f)=\lim_{z\to\infty} z\,\frac{f(z)}{G_k(z)}.
+```
+
+This produces a very concrete strictness mechanism:
+
+```tex
+\textbf{CB2a3e.}
+```
+
+Can `L_k` be extended to a nonzero bounded linear functional on the closed
+space `H_{G_k}`?
+
+If yes, then `\ker L_k` is a proper closed hyperplane in `H_{G_k}` containing
+`H_{G_{k+1}}`, while
+
+```tex
+L_k\!\left(\frac{G_k(z)}{z-a_k}\right)=1,
+```
+
+so one gets
+
+```tex
+H_{G_{k+1}}\subsetneq H_{G_k}.
+```
+
+This does **not** close `PO2` by itself, but it isolates the true analytic
+brick inside the backup Krein branch: boundedness of the first asymptotic
+coefficient functional, rather than the mere existence of a second subspace.
+
 However, this observation comes with an important logical correction.
 A strict descending chain
 
