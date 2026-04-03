@@ -4639,3 +4639,30 @@ First exact proof-facing refinement:
 - so the next proof move is now completely sharp:
   prove this stencil vanishes, or prove it is already boundary/cap-only, or
   kill the route.
+
+Direct `PO2` receiver plan after demoting the Krein/localization branch:
+
+- exact live target is the structured shift-uniqueness lemma from
+  [h1_po2_cross_sign_bulk_exactness_2026_03_16.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md):
+  if `P,Q\in\mathcal C_a` and `P(m)=Q(m+1)` for all `m>N`, prove
+  `P(z)=Q(z+1)` identically;
+- this is wired directly into `PO2`: once this receiver is injective, the
+  cross-sign bulk exactness obstruction disappears and the route climbs again
+  to `PO3 -> H2^f -> H3^f -> H4^f -> RH`;
+- local embedding search gave essentially no signal: four direct queries on
+  `q3_docs` all timed out, which is itself evidence that the repo does not yet
+  contain a ready-made theorem for this receiver;
+- external search also gave no usable primary-source theorem for the infinite
+  paired-pole class, only generic Cauchy-transform and interpolation material;
+- the concrete attack packet is now:
+  1. exploit the exact paired support `Y_a=\{x_\gamma,x_\gamma-1\}` and the
+     inherited `O(\gamma^{-3})` coefficients rather than the generic
+     `\ell^1` Cauchy class;
+  2. test residue identities obtained from contour formulas with
+     `\pi\cot(\pi z)` or related integer-sampling kernels against the tail-zero
+     condition;
+  3. isolate a possible one-point divisor rigidity statement for the direct
+     receiver, not for the Krein backend;
+  4. if a global theorem still does not emerge, prepare only a tiny Aristotle
+     request for a contour/interpolation sublemma, never for the whole
+     uniqueness statement at once.
