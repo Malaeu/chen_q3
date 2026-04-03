@@ -439,6 +439,17 @@
   exhausting one tail zero really changes the associated `H_G`-subspace.
   This reframes `CB2a3` as a multiplicity/exhaustion problem at the first few
   tail integers rather than a search for a totally different companion space.
+- but this needed one logical correction right away: even a strict nested chain
+  `H_{G_{k+1}}\subsetneq H_{G_k}` does **not** contradict the strip-case
+  ordering theorem, because Theorem 1.4 only gives total order. So `CB2a3d`
+  is preparatory, not closing. The real next interface question is whether
+  such a strict chain can be fed into an ordered-attraction contradiction for
+  the actual support `T_a`. Right now that still runs into the old blockage:
+  the 2022 localization backend orders attraction sets only inside the
+  localization class, and our import there is still blocked by missing
+  power-separation control on `Y_a`. If this cannot be weakened for the
+  special tail-zero chain, the direct shift-uniqueness receiver regains
+  priority as the fastest route.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

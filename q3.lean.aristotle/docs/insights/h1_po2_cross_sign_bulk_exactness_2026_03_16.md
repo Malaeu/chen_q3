@@ -2556,6 +2556,49 @@ tail-zero division eventually changes the associated `H_G`-subspace in a
 provable way. In practice this is now a multiplicity-exhaustion problem at the
 first few tail integers, not a search for an unrelated companion subspace.
 
+However, this observation comes with an important logical correction.
+A strict descending chain
+
+```tex
+H_{G_{k+1}}\subsetneq H_{G_k}
+```
+
+is still perfectly compatible with the strip-case ordering theorem: Theorem 1.4
+asserts total order, not collapse. So `CB2a3d` is **not** by itself a closure
+lemma for `PO2`. It is only a preparatory interface statement.
+
+The genuine contradiction would still have to come from an additional bridge,
+for example:
+
+- a localization/attraction theorem that reads the changing tail-zero chain and
+  forces an impossible support-attraction pattern; or
+- a second construction producing two candidate subspaces that are not already
+  locked into the same nested chain.
+
+This means the honest status is now:
+
+```tex
+\textbf{CB2a3d}
+```
+
+is useful only as input to
+
+```tex
+\textbf{CB3a.}
+```
+
+Can the strict tail-zero subspace chain be converted into an
+ordered-attraction contradiction for the actual support `T_a`?
+
+At present this is exactly where the Krein branch meets the previously
+recorded localization obstruction: the 2022 localization paper orders
+attraction sets for measures in the localization class, but our import of that
+class is still blocked by the missing power-separation control on `Y_a`.
+
+So unless this gap is weakened for our very special tail-zero chain, the
+receiver-native Krein route remains structurally attractive but not yet
+proof-bearing.
+
 ```tex
 \textbf{CB2b. Localization branch.}
 ```
