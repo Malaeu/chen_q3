@@ -1367,6 +1367,81 @@ Tail-zero division preserves the structured simple Cauchy class.
 Can an arbitrarily long tail-zero divisor tower exist in this paired support
 class without forcing `e\equiv 0`?
 
+There is now a more support-sensitive refinement of this direct tower.
+Write the receiver in paired-pole form
+
+```tex
+R(z)=\sum_\gamma \frac{a_\gamma}{x_\gamma-z}
+      -\sum_\gamma \frac{b_\gamma}{x_\gamma-1-z}.
+```
+
+After dividing by the first `k` tail zeros `N+1,\dots,N+k`, one still has a
+paired-pole representation
+
+```tex
+R_k(z)
+=
+\sum_\gamma \frac{a_\gamma^{(k)}}{x_\gamma-z}
+-
+\sum_\gamma \frac{b_\gamma^{(k)}}{x_\gamma-1-z},
+```
+
+with
+
+```tex
+a_\gamma^{(k)}
+=
+\frac{a_\gamma}{\prod_{j=1}^k (x_\gamma-N-j)},
+\qquad
+b_\gamma^{(k)}
+=
+\frac{b_\gamma}{\prod_{j=1}^k (x_\gamma-N-j-1)}.
+```
+
+These two coefficient towers are not symmetric. Factoring out the same
+denominator from both members of each pair gives
+
+```tex
+b_\gamma^{(k)}
+=
+\theta_{k,\gamma}
+\frac{b_\gamma}{\prod_{j=1}^k (x_\gamma-N-j)},
+\qquad
+\theta_{k,\gamma}
+:=
+\frac{x_\gamma-N-1}{x_\gamma-N-k-1}.
+```
+
+For every fixed `\gamma`,
+
+```tex
+\theta_{k,\gamma}\longrightarrow 0
+\qquad (k\to\infty).
+```
+
+So repeated tail-zero division asymptotically suppresses the shifted pole
+`x_\gamma-1` relative to the leading pole `x_\gamma` inside each pair.
+
+This produces a sharper direct theorem target:
+
+```tex
+\textbf{D3. Asymptotic one-sided decoupling.}
+```
+
+Can one normalize the divisor tower `R_k` so that a nonzero subsequential limit
+survives and lives on the one-sided support `X_a=\{x_\gamma\}` only?
+
+If yes, the direct `PO2` problem would reduce from the paired support
+`Y_a=\{x_\gamma,x_\gamma-1\}` to a one-sided critical-line support class, where
+the earlier arithmetic obstructions are already much stronger.
+
+Thus the active direct route is now split very concretely:
+
+- either prove `D2` directly as a rigidity statement for the whole paired
+  support;
+- or prove `D3`, meaning that divisor exhaustion forces a one-sided limit and
+  then attack that limit with the already-existing critical-line barriers.
+
 #### Finite-support case
 
 If `e` is supported on distinct points

@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, so the active critical path is now the direct structured shift-uniqueness receiver for PO2; the first new proof-bearing brick on this path is D1/D2: tail-zero division preserves the same simple Cauchy class, hence the live theorem target is a direct divisor-rigidity statement for the paired support `Y_a`, namely that an arbitrarily long tail-zero divisor tower cannot persist unless `e ≡ 0`
-next_verify: rg -n -F "D1. Direct divisor closure." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D2. Direct divisor-rigidity target." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "So the direct receiver has" q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: the Krein/localization branch remains demoted to backup, so the active critical path is the direct structured shift-uniqueness receiver for PO2; after D1 the next live brick is now split into D2/D3: either prove direct divisor-rigidity for the whole paired support `Y_a`, or normalize the divisor tower and extract an asymptotically one-sided limit on `X_a={x_gamma}` using the exact suppression factor `theta_{k,gamma}=(x_gamma-N-1)/(x_gamma-N-k-1) -> 0`
+next_verify: rg -n -F "D1. Direct divisor closure." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D3. Asymptotic one-sided decoupling." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "divisor exhaustion asymptotically suppresses the shifted pole" q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

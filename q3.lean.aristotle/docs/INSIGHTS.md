@@ -4676,6 +4676,20 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   the demoted Krein branch: prove a direct divisor-rigidity statement saying
   such a long tail-zero tower cannot persist in the `Y_a`-paired class unless
   `e\equiv 0`.
+- the direct tower now has a genuinely paired-support asymmetry built into it.
+  Writing
+  `R(z)=\sum a_\gamma/(x_\gamma-z)-\sum b_\gamma/(x_\gamma-1-z)`, after `k`
+  tail-zero divisions one gets new paired residues
+  `a_\gamma^{(k)}` and `b_\gamma^{(k)}`, with
+  `b_\gamma^{(k)} = \theta_{k,\gamma} b_\gamma / \prod_{j=1}^k(x_\gamma-N-j)`
+  and
+  `\theta_{k,\gamma}=(x_\gamma-N-1)/(x_\gamma-N-k-1) -> 0` for fixed
+  `\gamma`. So divisor exhaustion asymptotically suppresses the shifted pole
+  inside each pair. This creates a sharper active subtarget:
+  normalize `R_k` and try to extract a nonzero one-sided limit supported only
+  on `X_a={x_\gamma}`. If that works, `PO2` reduces from the paired support to
+  a one-sided critical-line support class where the earlier arithmetic
+  obstructions are stronger.
 - the user’s `L_k` idea is a genuinely good backup refinement for the demoted
   Krein branch. On the algebraic spans
   `\mathcal A_k=\operatorname{span}_{fin}\{G_k/(z-\lambda):\lambda\in Z(G_k)\}`,
