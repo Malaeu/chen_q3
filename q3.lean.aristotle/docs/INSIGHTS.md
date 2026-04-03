@@ -4743,3 +4743,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   a slogan. But this remains a backup branch only: to use it for `PO2` one
   would still need to verify the actual vertical jet for the real `G_0`, and
   the active path is still the direct `D2/D3` divisor route.
+- there is now an even more route-native reading of this backup theorem. For
+  the actual `PO2` branch, `G_0` comes from a tail-zero witness inside the
+  ambient Cauchy-de Branges space, so the native asymptotic object is
+  `z\,G_0/A`, not immediately `A/G_0`. Writing
+  `G_0(z)/A(z)=\sum_n b_n/(z-t_n)`, one gets
+  `z\,G_0(iy)/A(iy)=\alpha_0+\alpha_1/(iy)+\cdots` with
+  `\alpha_r=\sum_n b_n t_n^r` under the same strip-moment assumptions. If
+  `\alpha_s` is the first nonzero moment, then `A(iy)/G_0(iy)\asymp(iy)^{s+1}`,
+  so the leading degree of `Q_k=A/G_k` is `k+s+1`, not automatically `k`.
+  Hence the honest route-specific backup target is now:
+  determine whether `\alpha_0(G_0)` or `\alpha_1(G_0)` vanishes. In the
+  generic case `\alpha_0\neq 0`, the old bridge becomes degree `k+1`; if
+  `\alpha_0=0`, the backup branch shifts upward and needs more moment
+  functionals. This sharpens the reserve route without changing the active
+  critical path, which still runs through direct `D3b1`.

@@ -3113,6 +3113,119 @@ This is a real theorem inside the backup branch. But it is still conditional:
 to use it in `PO2`, one would still have to verify the strip moments and the
 vertical jet for the actual ambient data and the actual `G_0`.
 
+There is now a more route-native reading of this same criterion.
+In the actual `PO2` backup branch, the starting generator `G_0` is not an
+arbitrary outer quotient but a `*`-symmetric element of the ambient
+Cauchy-de Branges space, obtained from a tail-zero witness
+`F\in \mathcal H_a^{\mathrm{tail}}` by taking
+
+```tex
+G_0=F+F^*
+\qquad\text{or}\qquad
+G_0=\frac{F-F^*}{i}.
+```
+
+Therefore one has the genuine Cauchy representation
+
+```tex
+\frac{G_0(z)}{A(z)}
+=
+\sum_n \frac{b_n}{z-t_n},
+\qquad
+b_n:=a_n\mu_n^{1/2},
+```
+
+and the natural asymptotic object is not initially `A/G_0`, but
+
+```tex
+z\,\frac{G_0(z)}{A(z)}.
+```
+
+Under the same strip and moment hypotheses, one gets the expansion
+
+```tex
+z\,\frac{G_0(iy)}{A(iy)}
+=
+\alpha_0+\frac{\alpha_1}{iy}+\cdots+\frac{\alpha_m}{(iy)^m}
++O(|y|^{-m-1}),
+```
+
+where
+
+```tex
+\alpha_r=\sum_n b_n t_n^r.
+```
+
+Indeed, this is just the direct Cauchy expansion
+
+```tex
+\frac{z}{z-t}
+=
+1+\frac{t}{z}+\cdots+\frac{t^m}{z^m}
++\frac{t^{m+1}}{z^m(z-t)},
+```
+
+summed against the coefficients `b_n`, with the remainder controlled by the
+moment bound at order `m+1`.
+
+This exposes the true route-specific subtarget:
+
+```tex
+\textbf{CB2a3e2.}
+```
+
+Determine the first nonzero moment
+
+```tex
+\alpha_s=\sum_n b_n t_n^s.
+```
+
+If `s` is the smallest index with `\alpha_s\neq 0`, then
+
+```tex
+z\,\frac{G_0(iy)}{A(iy)}
+\asymp
+\frac{\alpha_s}{(iy)^s},
+```
+
+so
+
+```tex
+\frac{A(iy)}{G_0(iy)}
+\asymp
+(iy)^{s+1}.
+```
+
+Consequently, for
+
+```tex
+Q_k(z):=\frac{A(z)}{G_k(z)}=P_k(z)\frac{A(z)}{G_0(z)},
+```
+
+the leading asymptotic degree is not generically `k`, but
+
+```tex
+k+s+1.
+```
+
+In the generic case `\alpha_0\neq 0`, one gets degree `k+1`; if
+`\alpha_0=0`, the bridge shifts upward and one needs correspondingly more
+moment functionals `\Lambda_r` in the boundedness theorem for `L_k`.
+
+So the actual route-specific backup brick is sharper than the abstract jet
+criterion:
+
+```tex
+\alpha_0(G_0)\stackrel{?}{=}0,
+\qquad
+\alpha_1(G_0)\stackrel{?}{=}0.
+```
+
+This does not change the active critical path, which remains direct `D2/D3`.
+But it makes the backup branch far less vague: the first real computational
+question there is to identify the first nonzero moment of
+`z\,G_0/A`.
+
 However, this observation comes with an important logical correction.
 A strict descending chain
 
