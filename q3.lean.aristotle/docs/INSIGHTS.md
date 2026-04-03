@@ -4730,6 +4730,29 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   effect; `D3c` is dead as a nonzero one-sided extraction mechanism under
   uniform `\ell^1` control; and the active burden shifts back toward `D2`,
   unless a radically different non-`\ell^1` normalization is found.
+- such a radically different normalization now exists. Because the direct
+  paired-support coefficients already lie in `\ell^2(Y_a)`, the divisor tower
+  can be normalized in `\ell^2`, producing discrete Gibbs probability measures
+  \[
+  \nu_k(y)=
+  \frac{|e(y)|^2\prod_{j=1}^k |y-\lambda_j|^{-2}}
+       {\sum_{v\in Y_a}|e(v)|^2\prod_{j=1}^k |v-\lambda_j|^{-2}}.
+  \]
+  Tightness of `\nu_k` is exactly a non-`\ell^1` version of `D3b1`.
+- this is a real revival of `D3`, not a resurrection of the dead `D3c`.
+  Tightness of `\nu_k` gives precompactness of the normalized coefficient
+  vectors in `\ell^2(Y_a)`, and strong `\ell^2` convergence then gives locally
+  uniform convergence of the normalized Cauchy transforms off `Y_a` because
+  `\{1/(y-z)\}_{y\in Y_a}` is uniformly in `\ell^2(Y_a)` on compacta away from
+  the support. Combined with finite-packet suppression of the shifted member
+  in each pair, this yields the right new live target:
+  prove a finite anchor block for the Gibbs measures `\nu_k`.
+- so the active dichotomy is now sharper again:
+  `D3c` stays killed in the `\ell^1` compactness regime, but `D3e` is alive as
+  a genuinely new `\ell^2`-Gibbs route. The next honest brick is an
+  anchor-block criterion
+  `\inf_k \sum_{y\in E}\nu_k(y)\ge \eta`
+  for some finite packet `E\subset Y_a`.
 - the user’s `L_k` idea is a genuinely good backup refinement for the demoted
   Krein branch. On the algebraic spans
   `\mathcal A_k=\operatorname{span}_{fin}\{G_k/(z-\lambda):\lambda\in Z(G_k)\}`,

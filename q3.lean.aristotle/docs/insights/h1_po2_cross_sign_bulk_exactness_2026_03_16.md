@@ -1673,6 +1673,140 @@ Thus the route status sharpens again:
 - the active direct burden shifts back to `D2`, unless a radically different
   non-`\ell^1` extraction mechanism is identified.
 
+There is now exactly such a radically different extraction mechanism.
+
+```tex
+\textbf{D3e. \ell^2-Gibbs tower on direct coefficients.}
+```
+
+The direct divisor tower is diagonal on coefficients, not only in the backup
+Hilbert model but already in the native paired Cauchy class itself. If
+
+```tex
+R(z)=\sum_{y\in Y_a}\frac{e(y)}{y-z},
+```
+
+and `R(\lambda)=0` for some tail integer `\lambda>N`, then
+
+```tex
+\frac{R(z)}{z-\lambda}
+=
+\sum_{y\in Y_a}\frac{e(y)}{y-\lambda}\frac{1}{y-z}.
+```
+
+Iterating at `\lambda_j=N+j` gives
+
+```tex
+R_k(z)
+=
+\sum_{y\in Y_a}
+\frac{e^{(k)}(y)}{y-z},
+\qquad
+e^{(k)}(y):=
+\frac{e(y)}{\prod_{j=1}^k (y-\lambda_j)}.
+```
+
+Since the inherited direct coefficients satisfy `e\in \ell^1(Y_a)` and hence
+also `e\in \ell^2(Y_a)`, one may normalize in `\ell^2(Y_a)`:
+
+```tex
+u_k(y):=
+\frac{e^{(k)}(y)}
+{\left(\sum_{v\in Y_a}|e^{(k)}(v)|^2\right)^{1/2}},
+```
+
+and define discrete probability measures
+
+```tex
+\nu_k(y):=|u_k(y)|^2
+=
+\frac{|e(y)|^2\prod_{j=1}^k |y-\lambda_j|^{-2}}
+{\sum_{v\in Y_a}|e(v)|^2\prod_{j=1}^k |v-\lambda_j|^{-2}}.
+```
+
+So the true non-`\ell^1` reformulation of `D3b1` is:
+
+```tex
+\textbf{D3e1.}
+```
+
+Can one prove that the family `\{\nu_k\}` is tight on the discrete support
+`Y_a`?
+
+This has a clean functional-analytic consequence.
+
+```tex
+\textbf{D3e2. Tightness implies precompactness in }\ell^2(Y_a).
+```
+
+If the probability measures `\nu_k(y)=|u_k(y)|^2` are tight, then the unit
+vectors `u_k` are precompact in `\ell^2(Y_a)`. The proof is standard: for any
+`\varepsilon>0`, tightness gives a finite packet `E\subset Y_a` with
+
+```tex
+\sup_k \sum_{y\notin E}|u_k(y)|^2<\varepsilon^2;
+```
+
+the projections of `u_k` to the finite-dimensional space `\mathbb C^E` are
+precompact; and the tails outside `E` are uniformly small. Hence every
+subsequence of `u_k` contains a further subsequence converging strongly in
+`\ell^2(Y_a)`.
+
+There is then a direct passage back to Cauchy transforms.
+
+```tex
+\textbf{D3e3. \ell^2 coefficient limits give locally uniform transform limits.}
+```
+
+For any compact set `K\Subset \mathbb C\setminus Y_a`, the kernel family
+
+```tex
+\kappa_y(z):=\frac{1}{y-z}
+```
+
+lies in `\ell^2(Y_a)` uniformly in `z\in K`, because the support points
+`y\in Y_a` escape to `+\infty` and
+
+```tex
+\sum_{y\in Y_a}\frac{1}{|y-z|^2}<\infty
+```
+
+uniformly on `K`. Therefore, if `u_{k_\nu}\to u` strongly in `\ell^2(Y_a)`,
+then
+
+```tex
+\sum_{y\in Y_a}\frac{u_{k_\nu}(y)}{y-z}
+\longrightarrow
+\sum_{y\in Y_a}\frac{u(y)}{y-z}
+```
+
+locally uniformly on compact subsets of `\mathbb C\setminus Y_a`.
+
+Finally, the finite-packet suppression from `D3a` now interacts correctly with
+this `\ell^2` normalization. If `u_{k_\nu}` is tight, then after passing to a
+strongly convergent subsequence, the contribution of the shifted member
+`x_\gamma-1` on every fixed packet dies because `\theta_{k_\nu,\gamma}\to 0`,
+while the tail outside that packet is small in `\ell^2` by tightness. So the
+new live theorem target is:
+
+```tex
+\textbf{D3e4. Anchor-block criterion.}
+```
+
+Find a finite packet `E\subset Y_a` and `\eta>0` such that
+
+```tex
+\inf_k \sum_{y\in E}\nu_k(y)\ge \eta.
+```
+
+Equivalently, prove tightness of the discrete Gibbs family `\{\nu_k\}`.
+
+This revives `D3`, but in a genuinely new form:
+
+- `D3d` killed only the uniform-`\ell^1` compactness extraction;
+- `D3e` is a different, `\ell^2`-normalized Gibbs route;
+- the exact open brick is now a finite anchor-block theorem for `\nu_k`.
+
 #### Finite-support case
 
 If `e` is supported on distinct points
