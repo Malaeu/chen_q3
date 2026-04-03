@@ -410,6 +410,16 @@
   whether the tail-zero quotient after division by
   `E_N(z)=\Gamma(N+1-z)^{-1}` actually forms a nontrivial nearly invariant
   `*`-closed subspace without common zeros.
+- the next refinement of `CB2a3` is genuinely useful. After checking the exact
+  wording of Theorem 1.4 and Remark 5.3 in the 2018 Krein/Cauchy-de Branges
+  paper, it is now clear that explicit division by
+  `E_N(z)=\Gamma(N+1-z)^{-1}` is only bookkeeping: Remark 5.3 already extends
+  the strip-case ordering theorem to nearly invariant `*`-closed subspaces
+  having the same common zeros. So the common-zero package is no longer the
+  hard point. The real remaining wall is sharper:
+  build a **second** nontrivial nearly invariant `*`-closed tail-zero subspace
+  from the `PO2` counterexample data. With only the natural subspace
+  `\mathcal H_a^{tail}`, ordering is vacuous.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

@@ -2386,6 +2386,85 @@ hard point inside branch `CB2a` is no longer `*`-symmetry. It is:
 nearly invariant `*`-closed subspace without common zeros?}
 ```
 
+There is now a useful intermediate receiver before taking the quotient.
+Define the ambient Cauchy-de Branges space
+
+```tex
+\mathcal H_a:=\mathcal H(T_a,A_a,\mu_a),
+```
+
+and the tail-zero subspace
+
+```tex
+\mathcal H_a^{\mathrm{tail}}
+:=
+\{f\in \mathcal H_a:\ f(m)=0\ \forall m>N\}.
+```
+
+Under the `PO2` counterexample hypothesis this space is nontrivial, because
+`F_a(z)=A_a(z)R(z)` belongs to it and is not identically zero.
+
+This subspace already has the three formal properties one wants:
+
+1. it is **closed**, being the intersection of kernels of the bounded
+   evaluation functionals `f\mapsto f(m)`;
+2. it is `*`-closed, because the tail integers are real and the ambient space
+   is `*`-closed;
+3. it is **nearly invariant**: if `w_0` is any point outside the common-zero
+   set of `\mathcal H_a^{\mathrm{tail}}` and outside the tail integers, then
+   for every `f\in \mathcal H_a^{\mathrm{tail}}` with `f(w_0)=0` one has
+   `f/(z-w_0)\in\mathcal H_a` by the ambient division property, and this
+   quotient still vanishes at every integer `m>N` because `w_0\neq m`.
+
+So the live issue in `CB2a3` is no longer whether a natural candidate subspace
+exists. It does. The real question is subtler:
+
+```tex
+\textbf{CB2a3'.}
+```
+
+Can one combine this tail-zero subspace with either
+
+- the exact common-zero factor `E_N(z)=\Gamma(N+1-z)^{-1}`, or
+- Remark 5.3 on nearly invariant subspaces with the same common zeros,
+
+to produce the **second comparable subspace** needed for the strip-case
+ordering theorem to force a contradiction?
+
+There is now a further refinement. The exact wording of Theorem 1.4 and
+Remark 5.3 from the 2018 Cauchy-de Branges paper shows that the bookkeeping
+role of `E_N` is weaker than it first appeared:
+
+- Theorem 1.4 orders nearly invariant `*`-closed subspaces **without common
+  zeros** in the strip case.
+- Remark 5.3 says the same proof extends to nearly invariant subspaces having
+  the **same** sets of common zeros (counted with multiplicities).
+
+So explicit division by `E_N` is not the conceptual bottleneck. One may divide
+by `E_N` to pass to a no-common-zero model if this is technically convenient,
+but the ordering theorem can also be applied directly once two candidate
+subspaces are known to carry the same tail-zero set.
+
+This sharpens the live wall inside the Krein branch:
+
+```tex
+\textbf{CB2a3a.}
+```
+
+The common-zero package is formally benign: the tail-zero set
+`\{N+1,N+2,\dots\}` can be handled either by explicit factorization through
+`E_N` or directly via Remark 5.3.
+
+```tex
+\textbf{CB2a3b.}
+```
+
+The actual missing ingredient is the construction of a **second**
+nontrivial nearly invariant `*`-closed tail-zero subspace from the `PO2`
+counterexample data. Without this second subspace, ordering is vacuous: the
+theorem only says any two such subspaces are comparable, but a single natural
+subspace `\mathcal H_a^{\mathrm{tail}}` gives no contradiction by itself.
+
 ```tex
 \textbf{CB2b. Localization branch.}
 ```
