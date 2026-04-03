@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: prioritize the fastest remaining PO2 route by attacking the minimal shift-uniqueness receiver through a pole-recovery adaptation problem: test whether the actual meromorphic receiver R(z)=P(z)-Q(z+1)=sum_{y in Y_a} e(y)/(y-z) falls under a De Micheli--Viano style interpolation/pole-recovery theorem after adjusting the sampling grid from positive half-integers to our tail integers, while keeping the first wall only as the narrower backup target of excluding sparse affine-lattice / Gamma-ratio mechanisms inside Y_a={x_gamma,x_gamma-1}
-next_verify: rg -n -e "Pole-recovery adaptation target|De Micheli--Viano|minimal shift-uniqueness receiver" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: prioritize the fastest remaining PO2 route by attacking the minimal shift-uniqueness receiver through the first real sublemma inside the De Micheli--Viano bridge: prove a tail-to-full sample reduction for the actual meromorphic receiver R(z)=P(z)-Q(z+1)=sum_{y in Y_a} e(y)/(y-z), after freezing the harmless half-integer shift and the sample-pole collision side-condition; keep the first wall only as the narrower backup target of excluding sparse affine-lattice / Gamma-ratio mechanisms inside Y_a={x_gamma,x_gamma-1}
+next_verify: rg -n -e "Tail-to-full sample reduction|A1\\. Grid normalization|A3\\. The real hard point" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

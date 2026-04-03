@@ -2370,6 +2370,103 @@ minimal shift-uniqueness receiver. It does not prove `PO2`, but it converts
 the remaining wall into a sharply testable adaptation problem rather than a
 free-form uniqueness guess.
 
+#### The adaptation wall already splits into one easy side and one hard side
+
+The De Micheli--Viano bridge is not uniformly hard. Once written against the
+actual receiver `R(z)=\sum_{y\in Y_a} e(y)/(y-z)`, the checks separate rather
+cleanly:
+
+```tex
+\textbf{A1. Grid normalization.}
+```
+
+Their theorem is stated for samples on the positive half-integers, whereas our
+input is
+
+```tex
+R(m)=0\qquad (m>N,\ m\in\mathbb N).
+```
+
+This part is harmless: after the shift
+
+```tex
+S(z):=R\!\left(z-\frac12\right),
+```
+
+one has
+
+```tex
+S\!\left(n+\frac12\right)=R(n),
+```
+
+so the sample lattice mismatch is only a translation, not a structural wall.
+
+```tex
+\textbf{A2. Meromorphic class and growth.}
+```
+
+Because `e\in\ell^1(Y_a)`, the receiver is a simple-pole Cauchy transform and
+on every vertical line away from the poles one has `R(z)=O(|z|^{-1})`. So the
+raw growth side also looks friendlier than the Carlson-type asymptotic window
+appearing in the De Micheli--Viano setup; nothing here currently looks like
+the main blocker.
+
+```tex
+\textbf{A3. The real hard point: tail data versus full sample data.}
+```
+
+The external theorem recovers poles/residues from the **full** sample sequence
+on the positive semi-axis. Our actual input is only a tail condition:
+
+```tex
+R(m)=0\qquad \forall m>N.
+```
+
+So the direct adaptation is blocked by one exact gap:
+
+```tex
+\textbf{Tail-to-full sample reduction (target).}
+```
+
+Show that, for the structured receiver class, vanishing on all sufficiently
+large sample nodes already forces the finite initial sample packet to be
+harmless, or can be peeled off canonically. Without such a lemma, pole
+recovery from full data does not immediately imply residue vanishing from tail
+data.
+
+```tex
+\textbf{A4. Sample-pole collisions.}
+```
+
+The theorem also silently assumes that the sampling lattice does not hit the
+poles. For our support this means we must understand whether
+
+```tex
+x_\gamma\in \mathbb N
+\qquad\text{or}\qquad
+x_\gamma-1\in\mathbb N
+```
+
+can occur for the active values of `a`. The shifted lattice
+`n+\tfrac12` helps operationally, but the collision issue still has to be
+written down and controlled explicitly.
+
+So the adaptation picture is now genuinely sharper:
+
+- `A1` looks easy;
+- `A2` looks plausible;
+- `A3` is the first real theorem wall;
+- `A4` is a structural side-condition that must be frozen, not ignored.
+
+At the current information level, the fastest direct attack is therefore no
+longer "adapt De Micheli--Viano" in one jump. It is:
+
+```tex
+\textbf{prove the tail-to-full sample reduction for the minimal receiver,}
+```
+
+and only then plug the result into the external pole-recovery theorem.
+
 #### Coefficient class actually inherited from `PO2`
 
 The live `PO2` coefficients are not arbitrary. In the original meromorphic
