@@ -4703,3 +4703,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   earlier strategic verdict: the active critical path remains the direct
   divisor-rigidity target `D2`, while `L_k` boundedness is a serious reserve
   sublemma if we come back to Krein.
+- this backup `L_k` criterion is now corrected and made theorem-grade. The
+  valid chain is `G_k=G_0/P_k` with
+  `P_k(z)=\prod_{j=1}^k(z-(N+j))`, not `G_0 P_k`; and the needed asymptotic
+  input is a negative-power vertical jet for `A/G_0`,
+  `A(iy)/G_0(iy)=\beta_0+\beta_1/(iy)+\cdots+\beta_k/(iy)^k+o(|y|^{-k})`.
+  Under strip moments `\sum \mu_n |t_n|^{2r}<\infty` up to order `k+1`, this
+  implies a polynomial asymptotic for `Q_k=A/G_k`, namely
+  `Q_k(iy)=\sum_{r=0}^k q_r^{(k)}(iy)^r+o(1)` with
+  `q_r^{(k)}=\sum_{n=0}^{k-r} p_{r+n}^{(k)}\beta_n`, and hence gives a bounded
+  extension of `L_k` via
+  `L_k(f)=\sum_{r=0}^k q_r^{(k)}\Lambda_r(f)`. So
+  `H_{G_{k+1}}\subsetneq H_{G_k}` becomes a real conditional theorem, not just
+  a slogan. But this remains a backup branch only: to use it for `PO2` one
+  would still need to verify the actual vertical jet for the real `G_0`, and
+  the active path is still the direct `D2/D3` divisor route.

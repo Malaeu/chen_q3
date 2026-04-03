@@ -2822,6 +2822,166 @@ This does **not** close `PO2` by itself, but it isolates the true analytic
 brick inside the backup Krein branch: boundedness of the first asymptotic
 coefficient functional, rather than the mere existence of a second subspace.
 
+There is now a corrected conditional theorem behind this mechanism.
+The earlier informal version had two sign/orientation mistakes:
+
+- the tail-zero chain must be
+  ```tex
+  G_k(z)=\frac{G_0(z)}{P_k(z)},
+  \qquad
+  P_k(z):=\prod_{j=1}^k (z-(N+j)),
+  ```
+  not `G_0(z)P_k(z)`;
+- the needed vertical jet is a negative-power expansion for `A/G_0` along
+  `iy`, not a positive-power one.
+
+So the honest theorem-shape is:
+
+```tex
+\textbf{CB2a3e1.}
+```
+
+Let the ambient Cauchy-de Branges space be
+
+```tex
+\mathcal H(T,A,\mu)
+=
+\left\{
+f(z)=A(z)\sum_n \frac{a_n\mu_n^{1/2}}{z-t_n}:\ a\in \ell^2
+\right\},
+```
+
+with `T=\{t_n\}` contained in a horizontal strip `|\Im t_n|\le h`, and assume
+the weighted moments
+
+```tex
+M_r^2:=\sum_n \mu_n |t_n|^{2r}<\infty
+\qquad (0\le r\le k+1).
+```
+
+Fix the division chain
+
+```tex
+G_k(z)=\frac{G_0(z)}{P_k(z)},
+\qquad
+P_k(z)=\sum_{m=0}^k p_m^{(k)} z^m
+=\prod_{j=1}^k (z-(N+j)).
+```
+
+Assume that along the imaginary axis one has the vertical jet
+
+```tex
+\frac{A(iy)}{G_0(iy)}
+=
+\beta_0+\frac{\beta_1}{iy}+\cdots+\frac{\beta_k}{(iy)^k}
++o(|y|^{-k}).
+```
+
+Then, for
+
+```tex
+Q_k(z):=\frac{A(z)}{G_k(z)}=P_k(z)\frac{A(z)}{G_0(z)},
+```
+
+one gets a polynomial asymptotic
+
+```tex
+Q_k(iy)
+=
+q_0^{(k)}+q_1^{(k)}(iy)+\cdots+q_k^{(k)}(iy)^k+o(1),
+```
+
+with explicit coefficients
+
+```tex
+q_r^{(k)}
+=
+\sum_{n=0}^{k-r} p_{r+n}^{(k)}\,\beta_n
+\qquad (0\le r\le k).
+```
+
+For
+
+```tex
+f(z)=A(z)\sum_n \frac{a_n\mu_n^{1/2}}{z-t_n},
+```
+
+define the moment functionals
+
+```tex
+\Lambda_r(f):=\sum_n a_n\mu_n^{1/2} t_n^r.
+```
+
+By Cauchy-Schwarz, each `\Lambda_r` is bounded on `\mathcal H(T,A,\mu)`:
+
+```tex
+|\Lambda_r(f)|
+\le
+M_r \|f\|_{\mathcal H}.
+```
+
+Moreover, for `f\in \mathcal A_k` one has
+
+```tex
+L_k(f)
+=
+\sum_{r=0}^k q_r^{(k)} \Lambda_r(f).
+```
+
+Indeed, along `z=iy` one expands
+
+```tex
+\frac{z}{z-t}
+=
+1+\frac{t}{z}+\cdots+\frac{t^k}{z^k}
++\frac{t^{k+1}}{z^k(z-t)},
+```
+
+so
+
+```tex
+\frac{z\,f(iy)}{A(iy)}
+=
+\Lambda_0(f)+\frac{\Lambda_1(f)}{iy}+\cdots+\frac{\Lambda_k(f)}{(iy)^k}
++O\!\left(\|f\|_{\mathcal H}|y|^{-(k+1)}\right).
+```
+
+Multiplying by `Q_k(iy)` and taking the constant term gives
+`\sum_{r=0}^k q_r^{(k)}\Lambda_r(f)`. On the other hand, for
+
+```tex
+f(z)=\sum_{\lambda} c_\lambda \frac{G_k(z)}{z-\lambda}\in \mathcal A_k,
+```
+
+one has
+
+```tex
+\frac{z\,f(z)}{G_k(z)}
+=
+\sum_{\lambda} c_\lambda \frac{z}{z-\lambda}
+\longrightarrow
+\sum_{\lambda} c_\lambda
+=
+L_k(f).
+```
+
+Hence `L_k` agrees on `\mathcal A_k` with the bounded functional
+
+```tex
+\widetilde L_k(f):=\sum_{r=0}^k q_r^{(k)} \Lambda_r(f),
+```
+
+and therefore extends continuously to the closed space `H_{G_k}`.
+Consequently,
+
+```tex
+H_{G_{k+1}}\subsetneq H_{G_k}.
+```
+
+This is a real theorem inside the backup branch. But it is still conditional:
+to use it in `PO2`, one would still have to verify the strip moments and the
+vertical jet for the actual ambient data and the actual `G_0`.
+
 However, this observation comes with an important logical correction.
 A strict descending chain
 
