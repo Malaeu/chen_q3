@@ -2412,27 +2412,35 @@ appearing in the De Micheli--Viano setup; nothing here currently looks like
 the main blocker.
 
 ```tex
-\textbf{A3. The real hard point: tail data versus full sample data.}
+\textbf{A3. Tail-to-full sample reduction actually collapses by translation.}
 ```
 
-The external theorem recovers poles/residues from the **full** sample sequence
-on the positive semi-axis. Our actual input is only a tail condition:
+The external theorem reads the **full** sample sequence on the positive
+half-integers, while our input is only
 
 ```tex
 R(m)=0\qquad \forall m>N.
 ```
 
-So the direct adaptation is blocked by one exact gap:
+But for the actual receiver this is not a genuine wall. Define the translated
+function
 
 ```tex
-\textbf{Tail-to-full sample reduction (target).}
+R_N(z):=R\!\left(z+N+\frac12\right).
 ```
 
-Show that, for the structured receiver class, vanishing on all sufficiently
-large sample nodes already forces the finite initial sample packet to be
-harmless, or can be peeled off canonically. Without such a lemma, pole
-recovery from full data does not immediately imply residue vanishing from tail
-data.
+Then for every integer `n\ge 0`,
+
+```tex
+R_N\!\left(n+\frac12\right)=R(n+N+1)=0.
+```
+
+So tail vanishing on integers becomes full vanishing on the positive
+half-integer grid after one fixed translation. Since our receiver class is
+stable under real shifts of the variable, the passage from tail data to full
+sample data is operationally free.
+
+Therefore the former `A3` blocker is no longer the right hard wall.
 
 ```tex
 \textbf{A4. Sample-pole collisions.}
@@ -2451,21 +2459,27 @@ can occur for the active values of `a`. The shifted lattice
 `n+\tfrac12` helps operationally, but the collision issue still has to be
 written down and controlled explicitly.
 
+Under the active hypothesis itself, there are also no collisions on the
+sampled tail: if `R(m)=0` is a finite value for every `m>N`, then those tail
+integers are automatically not poles. After the same translation, the sampled
+positive half-integers for `R_N` are likewise pole-free.
+
 So the adaptation picture is now genuinely sharper:
 
 - `A1` looks easy;
 - `A2` looks plausible;
-- `A3` is the first real theorem wall;
-- `A4` is a structural side-condition that must be frozen, not ignored.
+- `A3` collapses by translation;
+- `A4` is controlled on the active hypothesis at least on the sampled tail.
 
 At the current information level, the fastest direct attack is therefore no
-longer "adapt De Micheli--Viano" in one jump. It is:
+longer "adapt De Micheli--Viano" in one jump, and no longer the tail/full
+reduction either. It is:
 
 ```tex
-\textbf{prove the tail-to-full sample reduction for the minimal receiver,}
+\textbf{verify the admissible Carlson-type meromorphic class for the shifted receiver } R_N,
 ```
 
-and only then plug the result into the external pole-recovery theorem.
+and then plug the result into the external pole-recovery theorem.
 
 #### Coefficient class actually inherited from `PO2`
 

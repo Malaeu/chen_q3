@@ -297,15 +297,16 @@
   whether tail integers can replace the paper's sampling grid, and whether the
   structured pole set `Y_a={x_\gamma,x_\gamma-1}` with `\ell^1` residues is
   allowed. If yes, tail vanishing forces all residues to vanish immediately.
-- that adaptation problem is now split more honestly. The grid mismatch is
-  easy: after shifting by `1/2`, integer-tail vanishing becomes vanishing on
-  positive half-integers. The growth side also looks friendly, since our
-  `\ell^1` Cauchy receiver decays like `O(|z|^{-1})` away from the poles. The
-  first real hard point is different: De Micheli--Viano recover poles from the
-  **full** sample sequence, while we only know tail vanishing. So the live
-  direct subtarget is now the **tail-to-full sample reduction** for the
-  minimal receiver. Sample-pole collisions are the remaining structural
-  side-condition that must also be frozen explicitly.
+- that adaptation problem is now split more honestly, and one part already
+  collapses. The grid mismatch is easy: after shifting by `1/2`, integer-tail
+  vanishing becomes vanishing on positive half-integers. More importantly, the
+  former tail-vs-full gap is also harmless for the actual receiver: after the
+  fixed translation `R_N(z)=R(z+N+1/2)`, tail zeros of `R` become the full
+  positive half-integer sample sequence for `R_N`. So the first real remaining
+  check is not tail-to-full reduction anymore, but whether the shifted receiver
+  belongs to the admissible Carlson-type meromorphic class required by
+  De Micheli--Viano. Tail sample-pole collisions are automatically excluded by
+  the active hypothesis `R(m)=0` on the tail.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
