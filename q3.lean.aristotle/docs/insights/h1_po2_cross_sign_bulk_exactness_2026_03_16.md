@@ -1367,6 +1367,118 @@ Tail-zero division preserves the structured simple Cauchy class.
 Can an arbitrarily long tail-zero divisor tower exist in this paired support
 class without forcing `e\equiv 0`?
 
+There is now a much sharper theorem-shape for `D2`.
+
+Fix any `z_0\notin Y_a`, and define the Gamma-profile family
+
+```tex
+u_k(x)
+:=
+\frac{1}{\prod_{j=1}^k (x-(N+j))}
+=
+(-1)^k\frac{\Gamma(N+1-x)}{\Gamma(k+N+1-x)}.
+```
+
+Since
+
+```tex
+R_k(z)=\frac{R(z)}{\prod_{j=1}^k (z-(N+j))},
+```
+
+evaluating at `z_0` gives for every `k\ge 0`
+
+```tex
+R(z_0)\,u_k(z_0)
+=
+\sum_{y\in Y_a}\frac{e(y)}{y-z_0}\,u_k(y).
+```
+
+So the direct receiver problem is equivalent to a profile-rigidity statement:
+
+```tex
+\textbf{D2a. Gamma-profile rigidity.}
+```
+
+Can one have an identity
+
+```tex
+u_k(z_0)
+=
+\sum_{y\in Y_a} c_y\,u_k(y)
+\qquad \forall k\gg 1,
+```
+
+with `c\in \ell^1(Y_a)` and `z_0\notin Y_a`, without forcing all
+`c_y=0`?
+
+The finite-support shadow is immediate from asymptotics: by DLMF §5.11.13,
+
+```tex
+\frac{\Gamma(k+a)}{\Gamma(k+b)}
+\sim
+k^{a-b},
+```
+
+hence for fixed `x`
+
+```tex
+u_k(x)\sim C(x)\,k^{x-N-1},
+\qquad
+C(x):=(-1)^k\Gamma(N+1-x).
+```
+
+So distinct support points give distinct power exponents. If the coefficient
+support had a rightmost point, that maximal exponent would dominate and force
+its coefficient to vanish.
+
+This shows exactly where the infinite-support difficulty sits:
+
+```tex
+\textbf{D2b. Right-tail obstruction.}
+```
+
+Any genuine infinite-support counterexample to `D2a` must use support points
+running arbitrarily far to the right, so that no maximal exponent exists.
+Therefore the real theorem is not a finite Vandermonde statement, but a
+no-cancellation result for an `\ell^1` superposition of profiles with
+unbounded exponents.
+
+The next honest split inside `D2` is now:
+
+```tex
+\textbf{D2c. Finite right-packet dominance.}
+```
+
+For fixed `y>y'`,
+
+```tex
+\frac{u_k(y)}{u_k(y')}
+\sim
+\frac{\Gamma(N+1-y)}{\Gamma(N+1-y')}\,k^{y-y'}.
+```
+
+So every fixed support point farther to the right eventually dominates every
+fixed support point to its left.
+
+```tex
+\textbf{D2d. Tail-integral upgrade.}
+```
+
+To close `D2`, one would need to upgrade this finite-packet dominance to a
+statement about the whole unbounded support, using the actual inherited
+coefficient decay `e(y)=O(\gamma^{-3})` and the zero-density geometry of
+`Y_a=\{x_\gamma,x_\gamma-1\}`.
+
+In other words, the direct route is no longer “show the tower cannot exist”
+in the abstract. It is:
+
+```tex
+\boxed{
+\text{prove that an }\ell^1\text{-superposition of Gamma profiles with support in }Y_a
+\text{ cannot represent one external profile }u_k(z_0).
+}
+```
+
 There is now a more support-sensitive refinement of this direct tower.
 Write the receiver in paired-pole form
 

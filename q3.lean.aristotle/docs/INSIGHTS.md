@@ -4773,6 +4773,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   => local transform convergence` remain true, but the route never reaches
   its own tightness input. Honest status now: both nice compactness versions
   of `D3` are dead, and the active direct burden returns entirely to `D2`.
+- the main `D2` theorem target is now frozen in a much cleaner Gamma-profile
+  form. For any `z_0\notin Y_a`, the direct tower identity rewrites as
+  \[
+  R(z_0)\,u_k(z_0)=\sum_{y\in Y_a}\frac{e(y)}{y-z_0}\,u_k(y),
+  \qquad
+  u_k(x)=(-1)^k\frac{\Gamma(N+1-x)}{\Gamma(k+N+1-x)}.
+  \]
+  So `PO2` reduces to a profile-rigidity question: can one external profile
+  `u_k(z_0)` be represented by an `\ell^1` superposition of support profiles
+  `u_k(y)` on `Y_a`?
+- DLMF gamma-ratio asymptotics give the finite-support shadow immediately:
+  `u_k(y)/u_k(y')\sim C(y,y')k^{y-y'}`. Hence if the coefficient support had a
+  rightmost point, that maximal exponent would dominate and force its
+  coefficient to vanish. So any genuine infinite-support counterexample must
+  exploit support points running arbitrarily far to the right.
+- this isolates the real unresolved upgrade: turn finite right-packet
+  dominance into a theorem for the whole unbounded support using the actual
+  inherited decay `e(y)=O(\gamma^{-3})` and the zero-density geometry of
+  `Y_a=\{x_\gamma,x_\gamma-1\}`. That is now the exact active plan. No ready
+  theorem appeared in local search; the useful external sanity-check was DLMF
+  §5.11 on Gamma ratios.
 - the user’s `L_k` idea is a genuinely good backup refinement for the demoted
   Krein branch. On the algebraic spans
   `\mathcal A_k=\operatorname{span}_{fin}\{G_k/(z-\lambda):\lambda\in Z(G_k)\}`,
