@@ -431,6 +431,14 @@
   invariant `*`-closed subspaces `H_{G_k}` and show that at least two of them
   are genuinely distinct. If that works, the strip-case ordering theorem stops
   being vacuous.
+- this has now tightened one step further. Once the `H_{G_k}` are legitimate,
+  division invariance gives a natural descending chain
+  `H_{G_{k+1}}\subset H_{G_k}`. So the existential part of the problem is no
+  longer the main wall either. The real live point is sharper:
+  prove that the chain is **strict** for at least one step, i.e. that
+  exhausting one tail zero really changes the associated `H_G`-subspace.
+  This reframes `CB2a3` as a multiplicity/exhaustion problem at the first few
+  tail integers rather than a search for a totally different companion space.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

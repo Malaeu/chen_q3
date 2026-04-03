@@ -2515,6 +2515,47 @@ second subspace", because the candidate is now internal and receiver-native:
 it comes directly from tail-zero division in `\mathcal H_a`, not from an
 external interpolation theorem.
 
+There is also a first structural consequence available almost for free once the
+spaces `H_{G_k}` are known to be legitimate nearly invariant subspaces.
+Put
+
+```tex
+a_k:=N+k+1,
+\qquad
+G_k(z)=(z-a_k)G_{k+1}(z).
+```
+
+Take any zero `\lambda` of `G_{k+1}`.
+
+- If `\lambda\neq a_k`, then `\lambda` is also a zero of `G_k`, so
+  `G_k/(z-\lambda)\in H_{G_k}` by definition; this function vanishes at
+  `a_k`, hence division invariance of `H_{G_k}` gives
+  ```tex
+  \frac{G_k(z)}{(z-\lambda)(z-a_k)}=\frac{G_{k+1}(z)}{z-\lambda}\in H_{G_k}.
+  ```
+- If `\lambda=a_k` is also a zero of `G_{k+1}`, then
+  `G_k/(z-a_k)=G_{k+1}\in H_{G_k}` already, and one divides further at `a_k`
+  as many times as needed.
+
+Thus, modulo the legitimacy of each `H_{G_k}`, one gets a natural descending
+chain
+
+```tex
+H_{G_{k+1}}\subset H_{G_k}\qquad (k\ge 0).
+```
+
+So the existential part of "find a second subspace" is no longer the real
+issue either. The live obstruction sharpens yet again:
+
+```tex
+\textbf{CB2a3d.}
+```
+
+Show that this chain is **strict** for at least one step, or equivalently that
+tail-zero division eventually changes the associated `H_G`-subspace in a
+provable way. In practice this is now a multiplicity-exhaustion problem at the
+first few tail integers, not a search for an unrelated companion subspace.
+
 ```tex
 \textbf{CB2b. Localization branch.}
 ```
