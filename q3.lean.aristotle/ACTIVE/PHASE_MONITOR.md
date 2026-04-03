@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and D3 is now revived only in a genuinely new non-ell1 form: prove the anchor-block / tightness criterion D3e4 for the ell2-normalized Gibbs measures of the direct divisor tower on paired support `Y_a`
-next_verify: rg -n -F "D3e. \\ell^2-Gibbs tower on direct coefficients." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D3e4. Anchor-block criterion." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D3e is alive as a genuinely new `\\ell^2`-Gibbs route" q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path returns fully to D2, namely direct divisor-rigidity on the whole paired support `Y_a`, unless a genuinely new noncompact extraction mechanism appears
+next_verify: rg -n -F "D3f. No finite anchor block on unbounded support." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D3e4 is false for every infinite-support counterexample." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "the active direct burden returns entirely to `D2`" q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

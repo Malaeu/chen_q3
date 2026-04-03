@@ -4753,6 +4753,26 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   anchor-block criterion
   `\inf_k \sum_{y\in E}\nu_k(y)\ge \eta`
   for some finite packet `E\subset Y_a`.
+- this new `D3e` route is now also blocked in its finite-anchor form. For any
+  two fixed nonzero support points `y>y'`, the Gibbs weights satisfy
+  \[
+  \frac{W_k(y)}{W_k(y')}
+  \sim
+  C(y,y')\,k^{2(y-y')}
+  \qquad (k\to\infty),
+  \]
+  by the Gamma-product identity and the standard asymptotic
+  `\Gamma(k+a)/\Gamma(k+b)\sim k^{a-b}`. So every fixed support point farther
+  to the right eventually dominates every fixed support point to its left.
+  Consequently, if the counterexample support is unbounded, then for any
+  finite packet `E` one can pick `y_*>max E` with `e(y_*)\neq 0`, and then
+  `\nu_k(E)\to 0`. Hence no finite anchor block exists, `\nu_k` is not tight,
+  and `D3e4` is false on every infinite-support counterexample.
+- this is a strong partial kill: `D3e1` remains a correct coefficient
+  reformulation and the conditional implications `tightness => precompactness
+  => local transform convergence` remain true, but the route never reaches
+  its own tightness input. Honest status now: both nice compactness versions
+  of `D3` are dead, and the active direct burden returns entirely to `D2`.
 - the user’s `L_k` idea is a genuinely good backup refinement for the demoted
   Krein branch. On the algebraic spans
   `\mathcal A_k=\operatorname{span}_{fin}\{G_k/(z-\lambda):\lambda\in Z(G_k)\}`,

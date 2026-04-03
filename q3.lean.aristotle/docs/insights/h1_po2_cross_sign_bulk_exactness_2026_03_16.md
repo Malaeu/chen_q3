@@ -1807,6 +1807,118 @@ This revives `D3`, but in a genuinely new form:
 - `D3e` is a different, `\ell^2`-normalized Gibbs route;
 - the exact open brick is now a finite anchor-block theorem for `\nu_k`.
 
+This finite-anchor version now also meets a direct obstruction.
+
+```tex
+\textbf{D3f. No finite anchor block on unbounded support.}
+```
+
+Let
+
+```tex
+W_k(y):=
+|e(y)|^2\prod_{j=1}^k |y-\lambda_j|^{-2},
+\qquad
+\nu_k(y)=\frac{W_k(y)}{\sum_{v\in Y_a}W_k(v)}.
+```
+
+Take any two fixed support points `y>y'` with `e(y)e(y')\neq 0`. Then
+
+```tex
+\frac{W_k(y)}{W_k(y')}
+=
+\frac{|e(y)|^2}{|e(y')|^2}
+\prod_{j=1}^k
+\left|\frac{y'-\lambda_j}{y-\lambda_j}\right|^2.
+```
+
+Using
+
+```tex
+\prod_{j=1}^k (x-\lambda_j)
+=
+(-1)^k\frac{\Gamma(k+N+1-x)}{\Gamma(N+1-x)},
+```
+
+this becomes
+
+```tex
+\frac{W_k(y)}{W_k(y')}
+=
+C(y,y')
+\frac{\Gamma(k+N+1-y')^2}{\Gamma(k+N+1-y)^2},
+```
+
+where
+
+```tex
+C(y,y')
+:=
+\frac{|e(y)|^2}{|e(y')|^2}
+\left|\frac{\Gamma(N+1-y)}{\Gamma(N+1-y')}\right|^2.
+```
+
+By the standard Gamma-ratio asymptotic
+`\Gamma(k+a)/\Gamma(k+b)\sim k^{a-b}` (DLMF §5.11),
+one gets
+
+```tex
+\frac{W_k(y)}{W_k(y')}
+\sim
+C(y,y')\,k^{2(y-y')}
+\qquad (k\to\infty).
+```
+
+Hence every fixed support point farther to the right eventually dominates every
+fixed support point to its left.
+
+Now let `E\subset Y_a` be any finite packet, and let
+
+```tex
+M_E:=\max E.
+```
+
+If the counterexample has unbounded nonzero support, choose a support point
+`y_*>M_E` with `e(y_*)\neq 0`. Then for every `y\in E`,
+
+```tex
+\frac{W_k(y)}{W_k(y_*)}\longrightarrow 0,
+```
+
+so
+
+```tex
+\nu_k(E)
+=
+\frac{\sum_{y\in E}W_k(y)}{\sum_{v\in Y_a}W_k(v)}
+\le
+\frac{\sum_{y\in E}W_k(y)}{W_k(y_*)}
+\longrightarrow 0.
+```
+
+Therefore:
+
+```tex
+\textbf{D3e4 is false for every infinite-support counterexample.}
+```
+
+No fixed finite anchor block can carry uniformly positive Gibbs mass.
+Equivalently, the probability measures `\nu_k` are not tight on `Y_a`.
+
+This kills the new `\ell^2` extraction route as a path to a one-sided limit:
+
+- `D3e1` remains a correct coefficient reformulation;
+- `D3e2` and `D3e3` remain true conditional implications;
+- but `D3e4` fails on any unbounded nonzero support, so the route never
+  reaches its own compactness input.
+
+So the `D3` diagnosis is now brutally sharp:
+
+- finite-packet suppression is true;
+- uniform-`\ell^1` compactness is dead;
+- finite-anchor `\ell^2` Gibbs tightness is dead;
+- the active direct burden returns entirely to `D2`.
+
 #### Finite-support case
 
 If `e` is supported on distinct points
