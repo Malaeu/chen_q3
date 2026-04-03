@@ -4715,6 +4715,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   not toward the crucial scale-sensitive tightness statement. So the no-escape
   brick should be treated as genuinely new, not as a theorem we merely failed
   to remember.
+- `D3` has now hit a serious internal obstruction. If the normalized divisor
+  tower had the natural compactness control
+  `\sup_k \sum_\gamma (|\alpha_\gamma^{(k)}|+|\beta_\gamma^{(k)}|)<\infty`,
+  then every fixed packet coefficient would actually have to tend to zero on
+  an infinite-support counterexample. The reason is Gamma-growth: boundedness
+  at arbitrarily far-right nonzero support points forces
+  `s_k=O(\Gamma(k-M))` for every `M`, and comparing this with the fixed-packet
+  denominator `\Gamma(k+N+1-x)` kills each fixed coefficient. So the planned
+  compactness extraction `D3c` cannot yield a nonzero one-sided limit on
+  `X_a` for infinite support.
+- this does not kill the whole direct route, but it does kill the nicest
+  compactness version of `D3`. Honest status now: `D3a` is a real finite-packet
+  effect; `D3c` is dead as a nonzero one-sided extraction mechanism under
+  uniform `\ell^1` control; and the active burden shifts back toward `D2`,
+  unless a radically different non-`\ell^1` normalization is found.
 - the user’s `L_k` idea is a genuinely good backup refinement for the demoted
   Krein branch. On the algebraic spans
   `\mathcal A_k=\operatorname{span}_{fin}\{G_k/(z-\lambda):\lambda\in Z(G_k)\}`,

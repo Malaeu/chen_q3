@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, so the active critical path is the direct structured shift-uniqueness receiver for PO2; after D1 the next live brick is now sharper inside D3: prove the no-escape/tightness lemma D3b1 for a normalized divisor tower, since finite-packet suppression is already available but global one-sided decoupling fails without control of mass drifting to scales `x_gamma ~ k` or `x_gamma >> k`
-next_verify: rg -n -F "D3a. Finite-packet suppression." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D3b1." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "the exact live brick is now the tightness / no-escape statement" q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and the natural compactness version of D3 is now blocked by the new uniform-ell1 obstruction; so the active critical path returns to the direct structured shift-uniqueness receiver D2 for the whole paired support `Y_a`, unless a genuinely new non-ell1 extraction mechanism is found
+next_verify: rg -n -F "D3d. Uniform-\\ell^1 obstruction." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D3c is dead for infinite support." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "the active burden shifts back toward `D2`" q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

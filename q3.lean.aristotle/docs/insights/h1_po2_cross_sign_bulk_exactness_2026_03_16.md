@@ -1573,6 +1573,106 @@ So `D3` has now reduced to a very sharp dichotomy:
   poles, in which case `D3` does not close and the active burden returns
   entirely to `D2`.
 
+There is now a strong obstruction against the natural compactness version of
+`D3`.
+
+```tex
+\textbf{D3d. Uniform-\ell^1\ obstruction.}
+```
+
+Assume the direct receiver is an infinite-support counterexample, so at least
+one of the paired coefficient families `\{a_\gamma\}` or `\{b_\gamma\}` is
+nonzero on an unbounded set of indices. Let `s_k>0` be any normalization and
+write
+
+```tex
+\alpha_\gamma^{(k)}
+:=
+s_k\frac{a_\gamma}{\prod_{j=1}^k (x_\gamma-N-j)},
+\qquad
+\beta_\gamma^{(k)}
+:=
+s_k\frac{b_\gamma}{\prod_{j=1}^k (x_\gamma-N-j)}.
+```
+
+If
+
+```tex
+\sup_k \sum_\gamma
+\bigl(|\alpha_\gamma^{(k)}|+|\beta_\gamma^{(k)}|\bigr)<\infty,
+```
+
+then for every fixed `\gamma`,
+
+```tex
+\alpha_\gamma^{(k)}\longrightarrow 0,
+\qquad
+\beta_\gamma^{(k)}\longrightarrow 0.
+```
+
+Indeed, for any fixed support point `x` one has
+
+```tex
+\prod_{j=1}^k (x-N-j)
+=
+(-1)^k\frac{\Gamma(k+N+1-x)}{\Gamma(N+1-x)}.
+```
+
+Hence boundedness of a single normalized coefficient with nonzero numerator
+forces
+
+```tex
+s_k
+=
+O\!\bigl(\Gamma(k+N+1-x)\bigr).
+```
+
+Now use the unboundedness of the nonzero support: for every `M>0` there exists
+a support point `y>N+1+M` with nonzero numerator. Applying the previous bound
+to that `y` gives
+
+```tex
+s_k
+=
+O(\Gamma(k-M)).
+```
+
+Therefore, for any fixed support point `x`,
+
+```tex
+\left|
+s_k\frac{1}{\prod_{j=1}^k (x-N-j)}
+\right|
+\ll
+\frac{\Gamma(k-M)}{\Gamma(k+N+1-x)}
+\asymp
+k^{-M-N-1+x}.
+```
+
+Since `M` is arbitrary, choosing `M>x-N-1` forces the right-hand side to tend
+to `0`. Multiplying by the fixed coefficient `a_\gamma` or `b_\gamma` proves
+the claim.
+
+This kills the planned compactness extraction:
+
+```tex
+\textbf{D3c is dead for infinite support.}
+```
+
+The whole point of `D3c` was to obtain a nonzero one-sided limit on `X_a`
+from a normalized tower with uniform `\ell^1` control and tightness. But the
+obstruction above shows that under exactly this natural compactness regime,
+every fixed packet coefficient tends to zero. So no nonzero pointwise limit on
+the one-sided support can survive.
+
+Thus the route status sharpens again:
+
+- `D3a` remains a true finite-packet phenomenon;
+- `D3c` is killed as a method for producing a nonzero one-sided limit from an
+  infinite-support counterexample;
+- the active direct burden shifts back to `D2`, unless a radically different
+  non-`\ell^1` extraction mechanism is identified.
+
 #### Finite-support case
 
 If `e` is supported on distinct points
