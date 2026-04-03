@@ -322,6 +322,17 @@
   either prove an infinite-pole extension of the De Micheli--Viano bridge for
   our `\ell^1` simple-Cauchy class, or demote that bridge from the critical
   path and return to the direct structured shift-uniqueness receiver.
+- a useful refinement of `A2` is now also fixed: the proposal to split it into
+  analyticity/pole geometry, Carlson growth, imaginary-axis `L^2`, and
+  weighted `L^2` for the consistency branch is mathematically sound as a
+  diagnostic decomposition. What does **not** survive for our actual geometry
+  is the tempting move “choose one larger shift and push all poles left”.
+  Because `x_\gamma=a\gamma/\pi` is unbounded to the right, every finite shift
+  leaves infinitely many poles in `\Re z>0`. So the analytic branch of
+  De Micheli--Viano is not reachable by a one-time translation. The only live
+  uses of that paper are now: either an honest infinite-pole extension for our
+  `\ell^1` Cauchy class, or a softer heuristic telling us what analytic
+  sublemmas would be needed if such an extension were ever built.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

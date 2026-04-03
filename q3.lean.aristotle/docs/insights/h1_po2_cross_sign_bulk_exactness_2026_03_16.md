@@ -2455,6 +2455,31 @@ unbounded real part, infinitely many shifted poles still remain in
 adaptation target is now an infinite-pole extension for an `\ell^1`
 simple-Cauchy class.
 
+This also kills the most tempting normalization shortcut. It is true in
+general that a large real translation can push a **finite** right-half-plane
+pole set into the left half-plane, thereby reducing a meromorphic sampling
+problem to an analytic Carlson-type one. But our actual support is not
+right-bounded:
+
+```tex
+x_\gamma=\frac{a\gamma}{\pi}\to+\infty
+\qquad (\gamma\in\mathcal Z_+),
+```
+
+so for every fixed translation parameter `M` the shifted set
+
+```tex
+\{x_\gamma-M-\tfrac12,\ x_\gamma-M-\tfrac32\}
+```
+
+still contains infinitely many points with positive real part. Therefore the
+analytic De Micheli--Viano branch cannot be reached by a one-time shift. Any
+route through that paper must either:
+
+1. genuinely extend the finite-pole meromorphic theorem to our infinite-pole
+   `\ell^1` Cauchy class; or
+2. be abandoned as a critical-path tool.
+
 ```tex
 \textbf{A3. Tail-to-full sample reduction collapses only as a grid issue.}
 ```
@@ -2516,6 +2541,29 @@ So the adaptation picture is now genuinely sharper:
 - `A2b` is the real new wall;
 - `A3` collapses as sampling geometry only;
 - `A4` is controlled on the active hypothesis at least on the sampled tail.
+
+There is still one useful lesson from the finer `A2` split. If an eventual
+infinite-pole extension is pursued, the remaining analytic work should itself
+be split into:
+
+```tex
+\textbf{A2c. }L^2\text{ control on the imaginary axis;}
+\qquad
+\textbf{A2d. weighted }L^2\text{ control for }h(k;z)\text{ if the consistency
+branch is used.}
+```
+
+For a simple Cauchy transform with `\ell^1` residues, the bare bound
+`R(\sigma+iy)=O(|y|^{-1})` is enough for the unweighted `L^2` part, while the
+weighted `L^2` control for
+
+```tex
+h(k;iy)=\Bigl(iy-k-\frac12\Bigr)R(\sigma+iy)
+```
+
+would require one more cancellation moment, namely decay of size
+`O(|y|^{-2})`. This is useful only after the finite-vs-infinite pole wall is
+honestly addressed; it is not itself a way around `A2b`.
 
 At the current information level, the fastest direct attack is therefore no
 longer "verify the admissible class" as a routine check. The honest target is
