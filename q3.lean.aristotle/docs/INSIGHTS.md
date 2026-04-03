@@ -307,6 +307,21 @@
   belongs to the admissible Carlson-type meromorphic class required by
   De Micheli--Viano. Tail sample-pole collisions are automatically excluded by
   the active hypothesis `R(m)=0` on the tail.
+- the De Micheli--Viano bridge is now pinned down more sharply, and this is
+  real progress. After reading the theorem packet itself, the soft conditions
+  look mostly compatible with our shifted receiver `R_N`: on the active
+  hypothesis the sample-sum condition is automatic, and the `\ell^1`
+  Cauchy-transform structure suggests the right `L^2`/decay behaviour away from
+  poles. But the cited external theorem is written for one simple pole in the
+  right half-plane, with only a finite-pole extension indicated by the authors.
+  Our actual receiver has a countably infinite pole set
+  `Y_a=\{x_\gamma,x_\gamma-1\}`; after the translation used to normalize the
+  sample grid, infinitely many poles still remain in `\Re z>0`. So the live
+  wall is no longer “verify Carlson-type admissibility” in a routine way. It is
+  the finite-vs-infinite pole gap. The next honest decision is therefore:
+  either prove an infinite-pole extension of the De Micheli--Viano bridge for
+  our `\ell^1` simple-Cauchy class, or demote that bridge from the critical
+  path and return to the direct structured shift-uniqueness receiver.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

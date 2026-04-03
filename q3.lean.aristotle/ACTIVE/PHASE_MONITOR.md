@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: prioritize the fastest remaining PO2 route by moving past the now-collapsed tail-to-full issue and checking the first real De Micheli--Viano adaptation wall: verify that the shifted receiver R_N(z)=R(z+N+1/2), with R(z)=P(z)-Q(z+1)=sum_{y in Y_a} e(y)/(y-z), belongs to the admissible Carlson-type meromorphic class needed for pole recovery; keep the first wall only as the narrower backup target of excluding sparse affine-lattice / Gamma-ratio mechanisms inside Y_a={x_gamma,x_gamma-1}
-next_verify: rg -n -e "Tail-to-full sample reduction actually collapses|verify the admissible Carlson-type meromorphic class|A2\\. Meromorphic class and growth" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
+next_deliverable: prioritize the fastest remaining PO2 route by moving past the now-collapsed tail-to-full issue and the now-sharpened A2 picture: the real De Micheli--Viano adaptation wall is no longer a routine Carlson-type class check, but the finite-vs-infinite pole gap for the shifted receiver R_N(z)=R(z+N+1/2), with R(z)=P(z)-Q(z+1)=sum_{y in Y_a} e(y)/(y-z); decide whether to pursue an infinite-pole extension for this `\ell^1` Cauchy class or to demote the external bridge and return to the direct structured shift-uniqueness receiver; keep the first wall only as the narrower backup target of excluding sparse affine-lattice / Gamma-ratio mechanisms inside Y_a={x_gamma,x_gamma-1}
+next_verify: rg -n -e "A2a\\. Soft class hypotheses|A2b\\. The actual hard wall is finite poles|finite-vs-infinite pole gap|direct structured shift-uniqueness" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

@@ -2405,14 +2405,58 @@ so the sample lattice mismatch is only a translation, not a structural wall.
 \textbf{A2. Meromorphic class and growth.}
 ```
 
-Because `e\in\ell^1(Y_a)`, the receiver is a simple-pole Cauchy transform and
-on every vertical line away from the poles one has `R(z)=O(|z|^{-1})`. So the
-raw growth side also looks friendlier than the Carlson-type asymptotic window
-appearing in the De Micheli--Viano setup; nothing here currently looks like
-the main blocker.
+This wall is now sharper than before, and it splits into two very different
+subchecks.
 
 ```tex
-\textbf{A3. Tail-to-full sample reduction actually collapses by translation.}
+\textbf{A2a. Soft class hypotheses look compatible.}
+```
+
+Because `e\in\ell^1(Y_a)`, the receiver is a simple-pole Cauchy transform.
+After the translation
+
+```tex
+R_N(z):=R\!\left(z+N+\frac12\right),
+```
+
+the positive half-integer sample values vanish identically, so the weighted
+sample condition in the De Micheli--Viano theorem packet is automatic:
+
+```tex
+\sum_{n\ge 0}\frac{|R_N(n+\frac12)|}{n+1}=0.
+```
+
+Moreover, away from the shifted pole set one still has sectorial
+`R_N(z)=O(|z|^{-1})`, and provided no shifted pole lies on the imaginary axis,
+the boundary trace `t\mapsto R_N(it)` is still an `L^2` sum of simple Cauchy
+atoms. So the soft growth/integrability side does not look like the real
+obstruction.
+
+```tex
+\textbf{A2b. The actual hard wall is finite poles versus the real receiver.}
+```
+
+The external theorem packet we are trying to import is written for one simple
+pole in the right half-plane, with the authors explicitly noting that the
+extension to several first-order poles is straightforward. This is therefore a
+finite-pole theorem shape.
+
+Our actual shifted receiver is not of that type:
+
+```tex
+R_N(z)=\sum_{y\in Y_a}\frac{e(y)}{(y-N-\frac12)-z},
+\qquad
+Y_a=\{x_\gamma,\ x_\gamma-1\},
+```
+
+and the pole set is countably infinite. Since `x_\gamma=a\gamma/\pi` has
+unbounded real part, infinitely many shifted poles still remain in
+`\Re z>0`. So the bridge is not "just a Carlson bound check". The genuine
+adaptation target is now an infinite-pole extension for an `\ell^1`
+simple-Cauchy class.
+
+```tex
+\textbf{A3. Tail-to-full sample reduction collapses only as a grid issue.}
 ```
 
 The external theorem reads the **full** sample sequence on the positive
@@ -2436,11 +2480,12 @@ R_N\!\left(n+\frac12\right)=R(n+N+1)=0.
 ```
 
 So tail vanishing on integers becomes full vanishing on the positive
-half-integer grid after one fixed translation. Since our receiver class is
-stable under real shifts of the variable, the passage from tail data to full
-sample data is operationally free.
+half-integer grid after one fixed translation. At the level of sample geometry,
+the former tail/full gap really does collapse.
 
-Therefore the former `A3` blocker is no longer the right hard wall.
+But this does **not** finish admissibility by itself, because the same
+translation also moves the entire infinite pole set. So `A3` is no longer a
+hard wall, but its collapse must now be read under the new `A2b` obstruction.
 
 ```tex
 \textbf{A4. Sample-pole collisions.}
@@ -2466,20 +2511,24 @@ positive half-integers for `R_N` are likewise pole-free.
 
 So the adaptation picture is now genuinely sharper:
 
-- `A1` looks easy;
-- `A2` looks plausible;
-- `A3` collapses by translation;
+- `A1` is easy;
+- `A2a` looks compatible;
+- `A2b` is the real new wall;
+- `A3` collapses as sampling geometry only;
 - `A4` is controlled on the active hypothesis at least on the sampled tail.
 
 At the current information level, the fastest direct attack is therefore no
-longer "adapt De Micheli--Viano" in one jump, and no longer the tail/full
-reduction either. It is:
+longer "verify the admissible class" as a routine check. The honest target is
+now:
 
 ```tex
-\textbf{verify the admissible Carlson-type meromorphic class for the shifted receiver } R_N,
+\textbf{decide whether the De Micheli--Viano bridge extends from finite-pole
+meromorphic functions to our infinite-pole `\ell^1` Cauchy class.}
 ```
 
-and then plug the result into the external pole-recovery theorem.
+If yes, this becomes a powerful direct receiver. If not, the external
+pole-recovery bridge should be removed from the critical path and treated only
+as a diagnostic analogy.
 
 #### Coefficient class actually inherited from `PO2`
 
