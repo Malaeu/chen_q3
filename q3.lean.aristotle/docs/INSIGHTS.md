@@ -310,6 +310,13 @@
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
   that the kill-test is real and not vacuous.
+- the external Suzuki stack is now mapped cleanly to our own route in
+  `docs/insights/suzuki_stack_alignment_2026_04_03.md`: 2023 matches the
+  endpoint `H4^f`, 2019 is the right future Fredholm backend, 2012 is
+  structural canonical-system packaging, and none of them bypass the active
+  `PO2` blocker. This is useful because it kills the temptation of an
+  operator-pivot while confirming that our current filtered bridge is aimed at
+  the right hard positivity brick.
 
 ## Текущий sprint-hub
 
