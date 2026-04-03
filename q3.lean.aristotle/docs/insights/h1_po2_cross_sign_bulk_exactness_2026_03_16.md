@@ -2179,6 +2179,67 @@ Y_a=\{x_\gamma,\ x_\gamma-1\}
 with the inherited `\ell^2` residue class sits inside one of the admissible
 discrete-support frameworks of the Cauchy-de Branges literature.
 
+This now looks essentially positive.
+
+First, after merging any coincident points of `Y_a` into a single support point
+with summed residue, the actual pole support is a discrete set `T_a\subset\CC`
+with pairwise distinct points and `|t|\to\infty`.
+
+Second, we already know from the `\xi`-side geometry that `T_a` lies in a
+fixed strip:
+
+```tex
+\Re t\ge -1,
+\qquad
+|\Im t|\le \frac{a}{2\pi}.
+```
+
+Third, the counting law
+
+```tex
+n_{Y_a}(R)\asymp \frac{R\log R}{a}
+```
+
+implies finite convergence exponent. In particular,
+
+```tex
+\sum_{t\in T_a}\frac{1}{|t|^{2}+1}<\infty.
+```
+
+Therefore the natural Cauchy-de Branges spectral datum with unit weights
+
+```tex
+\mu_a:=\sum_{t\in T_a}\delta_t
+```
+
+already satisfies the basic summability requirement
+
+```tex
+\sum_{t\in T_a}\frac{\mu_a(\{t\})}{|t|^2+1}<\infty.
+```
+
+Choosing any canonical product `A_a` with simple zero set `T_a`, we land in a
+space `\mathcal H(T_a,A_a,\mu_a)` of the exact type treated in the
+Baranov--Abakumov--Belov framework. Moreover, because the `PO2` coefficients
+obey `e(t)=O(|t|^{-3})`, the receiver actually satisfies
+
+```tex
+e\in \ell^2(T_a,\mu_a),
+```
+
+so the coefficient class is comfortably inside the native Hilbert-space input
+of that theory.
+
+Thus the honest status of `CB1` is no longer “unknown”. It is:
+
+```tex
+\textbf{CB1a. Krein/ordering admissibility is essentially positive.}
+```
+
+What remains is not support admissibility itself, but whether the available
+localization/ordering theorems apply to a tail of prescribed real zeros in the
+way `PO2` needs.
+
 ```tex
 \textbf{CB2. Tail-zero localization.}
 ```
@@ -2192,6 +2253,79 @@ R(m)=0\qquad (m>N)
 into the language of zero localization for discrete Cauchy transforms:
 does a whole tail of real zeros force a corresponding attraction set of the
 support near that tail?
+
+Here one new obstruction must already be written down explicitly. The
+localization paper of Abakumov--Baranov--Belov assumes that the support `T` is
+**power separated**:
+
+```tex
+\operatorname{dist}(t_n,T\setminus\{t_n\})\ge C|t_n|^{-N}.
+```
+
+For the actual zeta-derived support `Y_a=\{x_\gamma,\ x_\gamma-1\}` we do not
+currently have such a theorem. It would amount to a polynomial lower bound on
+all mutual gaps between the scaled ordinates `x_\gamma` and their shifted copy,
+which is far stronger than anything presently frozen in `PO2`.
+
+So the second analytic branch now splits again:
+
+```tex
+\textbf{CB2a. Krein/ordering branch.}
+```
+
+This remains genuinely live because the 2018 Cauchy-de Branges Krein theory
+only needs the strip/finite-exponent geometry already available in case `\Pi`.
+
+Moreover, the tail-zero structure itself has a clean entire divider:
+
+```tex
+E_N(z):=\Gamma(N+1-z)^{-1}.
+```
+
+Since `1/\Gamma` is entire with simple zeros at the nonpositive integers,
+`E_N` is entire with simple zero set exactly
+
+```tex
+\{N+1,N+2,\dots\}.
+```
+
+So if the ambient entire function
+
+```tex
+F_a(z):=A_a(z)R(z)
+```
+
+vanishes on the integer tail, then the quotient
+
+```tex
+\widetilde F_a(z):=\frac{F_a(z)}{E_N(z)}
+```
+
+is again entire. This gives the first concrete theorem-shaped entry point into
+the ordering machinery: factor out the common tail-zero set exactly, then ask
+whether the quotient class defines a `*`-closed nearly invariant subspace
+without common zeros, to which the strip-case ordering theorem can apply.
+
+Thus the live Krein/ordering packet should now be read as:
+
+```tex
+\textbf{CB2a1. } *\textbf{-symmetry of the ambient } \mathcal H(T_a,A_a,\mu_a);
+```
+
+```tex
+\textbf{CB2a2. exact tail-zero factorization by } E_N(z)=\Gamma(N+1-z)^{-1};
+```
+
+```tex
+\textbf{CB2a3. nearly-invariant quotient subspace and ordering applicability.}
+```
+
+```tex
+\textbf{CB2b. Localization branch.}
+```
+
+This is **not** a routine next lemma, because it imports the extra power
+separation hypothesis, which is not currently available for `Y_a`.
 
 ```tex
 \textbf{CB3. Ordered-attraction contradiction.}

@@ -368,6 +368,36 @@
   `CB3` combine that attraction with the already-dead critical-line
   affine-lattice branch. This is the first genuinely receiver-native external
   backend we have found for `PO2`.
+- `CB1` is now essentially positive. After merging coincident support points,
+  the actual pole set `T_a` is discrete, lies in a fixed strip, and has finite
+  convergence exponent because `n_{Y_a}(R)\asymp R\log R/a`. Hence with unit
+  weights `\mu_a=\sum_{t\in T_a}\delta_t` one has
+  `\sum_{t\in T_a} (|t|^2+1)^{-1}<\infty`, exactly the base summability needed
+  for a Cauchy-de Branges space `\mathcal H(T_a,A_a,\mu_a)`. Since the
+  inherited `PO2` coefficients satisfy `O(|t|^{-3})`, they are automatically
+  in `\ell^2(T_a,\mu_a)`. So the live difficulty is no longer support
+  admissibility; it has moved to `CB2`: whether the available localization or
+  ordering theorems can read an eventual tail of real zeros strongly enough to
+  force support attraction or global shift equality.
+- this `CB2` gate is now split more honestly. The 2018 Krein/ordering
+  Cauchy-de Branges backend really is compatible with our support geometry in
+  the strip case `\Pi`. But the 2022 localization paper adds a new geometric
+  hypothesis: the support must be **power separated**, i.e. all pairwise gaps
+  are bounded below by a negative power of the modulus. We do not currently
+  have such a theorem for `Y_a={x_\gamma,x_\gamma-1}`; proving it would amount
+  to a polynomial lower gap bound for scaled zeta ordinates and shifted
+  cross-gaps. So localization is not a routine next import. The live second
+  route has therefore split into a genuinely live Krein/ordering branch and a
+  non-routine localization branch with a new arithmetic spacing obstruction.
+- the Krein/ordering branch now has its first concrete algebraic handle. If the
+  ambient entire function is `F_a(z)=A_a(z)R(z)` and `R(m)=0` for all `m>N`,
+  then `F_a` has the same tail zeros and these can be factored out exactly by
+  the entire function `E_N(z)=\Gamma(N+1-z)^{-1}`, whose zero set is precisely
+  `{N+1,N+2,\dots}`. So the next receiver-native subtargets are no longer
+  abstract: prove `*`-symmetry of the ambient Cauchy-de Branges space, divide
+  by `E_N`, and check whether the resulting quotient class forms a nearly
+  invariant `*`-closed subspace without common zeros, where the strip-case
+  ordering theorem could actually fire.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
