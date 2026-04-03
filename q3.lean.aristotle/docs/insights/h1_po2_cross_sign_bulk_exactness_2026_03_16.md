@@ -2595,9 +2595,41 @@ recorded localization obstruction: the 2022 localization paper orders
 attraction sets for measures in the localization class, but our import of that
 class is still blocked by the missing power-separation control on `Y_a`.
 
+This obstruction is now sharper after re-reading the exact theorem package of
+the 2022 paper. The setup there is not merely "assume localization"; the paper
+explicitly fixes throughout a **power separated** support sequence `T`, then
+defines localization for `H(T,A,\mu)` in that regime, proves Theorem 1.1 only
+for such `T`, and derives the attraction-set ordering theorem (Theorem 1.3)
+inside the same framework.
+
+So there is currently no imported theorem saying that our special tail-zero
+chain alone weakens the power-separation requirement. The known attraction-set
+machinery still lives strictly on the other side of the same arithmetic wall.
+
 So unless this gap is weakened for our very special tail-zero chain, the
 receiver-native Krein route remains structurally attractive but not yet
 proof-bearing.
+
+At the current evidence level the honest strategic verdict is therefore:
+
+```tex
+\textbf{CB3a is blocked by the same power-separation wall.}
+```
+
+This demotes the Krein/ordering branch from active critical path to
+well-motivated backup. The fastest live route for `PO2` returns to the direct
+receiver:
+
+```tex
+P,Q\in \mathcal C_a,\qquad
+P(m)=Q(m+1)\ \forall m>N
+\Longrightarrow
+P(z)=Q(z+1).
+```
+
+That is, after all these reductions, the direct structured shift-uniqueness
+problem is again the main theorem-sized target rather than the
+localization/Krein backend.
 
 ```tex
 \textbf{CB2b. Localization branch.}

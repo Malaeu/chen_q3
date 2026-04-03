@@ -450,6 +450,16 @@
   power-separation control on `Y_a`. If this cannot be weakened for the
   special tail-zero chain, the direct shift-uniqueness receiver regains
   priority as the fastest route.
+- re-checking the exact theorem package of the 2022 localization paper makes
+  this sharper, not softer: the paper globally fixes `T` to be **power
+  separated**, then defines localization in that regime, proves Theorem 1.1
+  only there, and derives the attraction-set ordering theorem (Theorem 1.3)
+  inside the same framework. So there is currently no imported result saying
+  that our special tail-zero chain weakens the power-separation requirement.
+  This demotes the Krein/localization branch from active critical path to
+  mathematically motivated backup. The fastest live target for `PO2` is again
+  the direct structured shift-uniqueness receiver
+  `P(m)=Q(m+1) for all m>N => P(z)=Q(z+1)`.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
