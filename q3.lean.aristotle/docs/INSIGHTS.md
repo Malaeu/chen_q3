@@ -420,6 +420,17 @@
   build a **second** nontrivial nearly invariant `*`-closed tail-zero subspace
   from the `PO2` counterexample data. With only the natural subspace
   `\mathcal H_a^{tail}`, ordering is vacuous.
+- there is now a receiver-native candidate for this missing second subspace.
+  If `F\in\mathcal H_a^{tail}` is nonzero, then because the tail-zero subspace
+  is `*`-closed at least one of `F+F^*` or `(F-F^*)/i` is a nonzero
+  `*`-symmetric tail-zero function `G_0`. Repeated division by the real tail
+  zeros gives
+  `G_k(z)=G_0(z)/\prod_{j=1}^k (z-(N+j))`, still inside the ambient
+  Cauchy-de Branges space. So the live target is now even more concrete:
+  promote this internal division chain to a chain of nontrivial nearly
+  invariant `*`-closed subspaces `H_{G_k}` and show that at least two of them
+  are genuinely distinct. If that works, the strip-case ordering theorem stops
+  being vacuous.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
