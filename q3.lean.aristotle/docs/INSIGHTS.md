@@ -398,6 +398,18 @@
   by `E_N`, and check whether the resulting quotient class forms a nearly
   invariant `*`-closed subspace without common zeros, where the strip-case
   ordering theorem could actually fire.
+- `CB2a1` now looks essentially positive. The support `T_a={x_\gamma,x_\gamma-1}`
+  is conjugation-symmetric because the zero set of `\xi(1/2-iz)` is stable
+  under `\gamma\mapsto\bar\gamma`. With unit symmetric weights and a canonical
+  product `A_a` normalized so that `A_a^*=A_a`, the involution
+  `f\mapsto f^*(z)=\overline{f(\bar z)}` acts on the coefficient sequence by
+  `c_s^\sharp=\overline{c_{\bar s}}`, which preserves the inherited `\ell^2`
+  class. So the ambient Cauchy-de Branges space is `*`-closed at the natural
+  support/coefficient level. This is another real collapse: the live wall in
+  the Krein/ordering branch is no longer `*`-symmetry, but `CB2a3`, namely
+  whether the tail-zero quotient after division by
+  `E_N(z)=\Gamma(N+1-z)^{-1}` actually forms a nontrivial nearly invariant
+  `*`-closed subspace without common zeros.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

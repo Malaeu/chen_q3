@@ -2320,6 +2320,72 @@ Thus the live Krein/ordering packet should now be read as:
 \textbf{CB2a3. nearly-invariant quotient subspace and ordering applicability.}
 ```
 
+The first of these subtargets now looks essentially positive too.
+
+Indeed, the zero set of `\xi(1/2-iz)` is stable under complex conjugation,
+because `\xi(\bar s)=\overline{\xi(s)}`. Therefore
+
+```tex
+\gamma\in\mathcal Z_+\Longrightarrow \bar\gamma\in\mathcal Z_+,
+\qquad
+x_{\bar\gamma}=\overline{x_\gamma},
+```
+
+and the merged support
+
+```tex
+T_a=\{x_\gamma,\ x_\gamma-1\}
+```
+
+is invariant under `t\mapsto \bar t`.
+
+Choose symmetric weights `\mu_a(\{t\})=1` and choose the canonical product
+`A_a` with zero set `T_a` in a conjugation-symmetric normalization, so that
+
+```tex
+A_a^*(z):=\overline{A_a(\bar z)}=A_a(z).
+```
+
+Then for
+
+```tex
+f(z)=A_a(z)\sum_{t\in T_a}\frac{c_t}{z-t}
+```
+
+one has
+
+```tex
+f^*(z)
+=
+\overline{f(\bar z)}
+=
+A_a(z)\sum_{s\in T_a}\frac{\overline{c_{\bar s}}}{z-s},
+```
+
+after reindexing by `s=\bar t`. Since the involution
+
+```tex
+c\mapsto c^\sharp,\qquad c^\sharp_s:=\overline{c_{\bar s}},
+```
+
+preserves `\ell^2(T_a,\mu_a)`, the ambient Cauchy-de Branges space is
+`*`-closed at the natural support/coefficient level.
+
+So the honest status is now:
+
+```tex
+\textbf{CB2a1 is essentially positive under the natural symmetric choice of }
+(T_a,\mu_a,A_a).
+```
+
+This means the live Krein/ordering wall has narrowed again. The next actual
+hard point inside branch `CB2a` is no longer `*`-symmetry. It is:
+
+```tex
+\textbf{CB2a3. Can the tail-zero quotient class be organized into a nontrivial
+nearly invariant `*`-closed subspace without common zeros?}
+```
+
 ```tex
 \textbf{CB2b. Localization branch.}
 ```
