@@ -4837,3 +4837,28 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `\alpha_0=0`, the backup branch shifts upward and needs more moment
   functionals. This sharpens the reserve route without changing the active
   critical path, which still runs through direct `D3b1`.
+- the moving Gamma-profile form of `D2` now collapses to one fixed reweighted
+  Cauchy transform. Defining
+  `\widetilde R_N(z):=\sum_{y\in Y_a}((y-N)e(y))/(y-z)`, one has the exact
+  forward-difference identity
+  `\sum_{y\in Y_a} e(y)u_k(y)=(1/k!)\Delta^k \widetilde R_N(N)` for
+  `u_k(y)=\prod_{j=1}^k (y-(N+j))^{-1}`. By Newton's formula this is
+  equivalent to
+  `\widetilde R_N(N+m)=0` for every `m\ge 0`.
+- this is a real reduction, not just repackaging. The active `D2` burden is no
+  longer “exclude an `\ell^1` superposition of moving Gamma profiles,” but the
+  static tail-zero uniqueness statement
+  `\widetilde R_N(N+m)=0\ \forall m\ge 0 \Rightarrow \widetilde R_N\equiv 0`
+  in the paired support class. The theorem statement is cleaner because the
+  moving family disappears from the final target.
+- admissibility survives this reweighting on the actual `PO2` data: the
+  inherited coefficients satisfy `e(y)=O(\gamma^{-3})`, while
+  `y=x_\gamma` or `x_\gamma-1` grows only linearly in `\gamma`, so the new
+  coefficients `(y-N)e(y)=O(\gamma^{-2})` still lie in `\ell^1`.
+- research pass for this blocker was again low-signal on the local side: the
+  `q3_docs` oracle returned mostly irrelevant `DigammaSeries` /
+  hat-interpolation noise and nothing close to a ready-made tail-zero
+  uniqueness theorem. External web search was useful only as sanity-check for
+  standard Gamma-ratio / Newton-difference formulas, not as a source of the
+  missing rigidity theorem. So the new static `D2e` target should be treated
+  as genuinely ours, not as a known theorem we merely failed to locate.

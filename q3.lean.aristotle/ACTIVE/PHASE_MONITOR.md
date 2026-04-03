@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is the new D2 Gamma-profile rigidity target, namely to show that one external profile `u_k(z_0)` cannot be represented as an `\ell^1` superposition of support profiles `u_k(y)` on the paired support `Y_a`
-next_verify: rg -n -F "D2a. Gamma-profile rigidity." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D2b. Right-tail obstruction." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "the main `D2` theorem target is now frozen in a much cleaner Gamma-profile form" q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now the static D2e target, namely to prove tail-zero uniqueness for the reweighted transform `\widetilde R_N(z)=\sum_{y\in Y_a}((y-N)e(y))/(y-z)` from the hypothesis `\widetilde R_N(N+m)=0` for all `m\ge 0`
+next_verify: rg -n -F "D2e. Static reweighted Cauchy uniqueness." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "moving Gamma-profile form of `D2` now collapses to one fixed reweighted" q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

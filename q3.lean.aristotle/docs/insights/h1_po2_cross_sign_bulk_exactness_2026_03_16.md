@@ -1479,6 +1479,89 @@ in the abstract. It is:
 }
 ```
 
+There is now an even cleaner static reformulation of this same `D2` burden.
+Define the reweighted Cauchy transform
+
+```tex
+\widetilde R_N(z)
+:=
+\sum_{y\in Y_a}\frac{(y-N)e(y)}{y-z}.
+```
+
+This is still admissible on the actual `PO2` data: the inherited coefficients
+satisfy `e(y)=O(\gamma^{-3})` while `y=x_\gamma` or `x_\gamma-1` grows like
+`O(\gamma)`, so the reweighted coefficients `(y-N)e(y)=O(\gamma^{-2})` remain
+in `\ell^1`.
+
+Now fix `y\notin \{N,N+1,\dots\}` and set `g_y(x):=1/(y-x)`. A direct
+induction on the forward difference operator
+`\Delta f(x):=f(x+1)-f(x)` gives
+
+```tex
+\Delta^k g_y(N)
+=
+\frac{k!}{\prod_{j=0}^k (y-(N+j))}.
+```
+
+Hence for the Gamma-profile family
+
+```tex
+u_k(y):=\frac{1}{\prod_{j=1}^k (y-(N+j))},
+\qquad
+u_0(y):=1,
+```
+
+one has the exact avatar
+
+```tex
+u_k(y)
+=
+\frac{y-N}{k!}\,\Delta^k\!\left(\frac{1}{y-x}\right)\Big|_{x=N}.
+```
+
+Summing against the coefficients `e(y)` therefore yields
+
+```tex
+\sum_{y\in Y_a} e(y)\,u_k(y)
+=
+\frac{1}{k!}\,\Delta^k \widetilde R_N(N).
+```
+
+By Newton's forward formula,
+
+```tex
+f(N+m)=\sum_{k=0}^m \binom{m}{k}\Delta^k f(N),
+```
+
+so the whole moving Gamma-profile tower is equivalent to tail vanishing of one
+fixed reweighted transform:
+
+```tex
+\sum_{y\in Y_a} e(y)\,u_k(y)=0\ \forall k\ge 0
+\iff
+\widetilde R_N(N+m)=0\ \forall m\ge 0.
+```
+
+This collapses the main direct theorem target to a static uniqueness problem.
+
+```tex
+\textbf{D2e. Static reweighted Cauchy uniqueness.}
+```
+
+Prove that for the paired support `Y_a=\{x_\gamma,x_\gamma-1\}` and inherited
+coefficient class,
+
+```tex
+\widetilde R_N(N+m)=0\ \forall m\ge 0
+\Longrightarrow
+\widetilde R_N\equiv 0.
+```
+
+This is stronger than a cosmetic reformulation: it removes the moving
+Gamma-profile family from the theorem statement entirely. What remains live is
+no longer a tower compactness problem, but tail-zero uniqueness for one fixed
+simple Cauchy transform in the actual structured class.
+
 There is now a more support-sensitive refinement of this direct tower.
 Write the receiver in paired-pole form
 
