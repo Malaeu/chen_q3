@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch is now demoted from active critical path to mathematically motivated backup, because the 2022 attraction-set theorems remain inside the power-separated localization framework and no weakening for our special tail-zero chain is currently available; therefore the next honest theorem target is again the direct structured shift-uniqueness receiver for PO2: prove `P,Q in C_a` with `P(m)=Q(m+1)` for all `m>N` implies `P(z)=Q(z+1)` identically
-next_verify: rg -n -F "power separated" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "P(m)=Q(m+1)" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "The fastest live target for `PO2` is again" q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: the Krein/localization branch remains demoted to backup, so the active critical path is now the direct structured shift-uniqueness receiver for PO2; the first new proof-bearing brick on this path is D1/D2: tail-zero division preserves the same simple Cauchy class, hence the live theorem target is a direct divisor-rigidity statement for the paired support `Y_a`, namely that an arbitrarily long tail-zero divisor tower cannot persist unless `e ≡ 0`
+next_verify: rg -n -F "D1. Direct divisor closure." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D2. Direct divisor-rigidity target." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "So the direct receiver has" q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

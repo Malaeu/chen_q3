@@ -1281,6 +1281,92 @@ then `e\equiv 0`.
 This immediately splits the problem into a solved finite-support piece and the
 genuine infinite-support wall.
 
+#### Direct divisor closure inside the simple Cauchy class
+
+There is now a receiver-native divisibility lemma that stays entirely inside
+the direct `PO2` class.
+
+Let
+
+```tex
+R(z)=\sum_{y\in Y_a}\frac{e(y)}{y-z},
+```
+
+with the inherited `\ell^1` coefficient class, and assume that `a\in\mathbb Z`
+is one of the tail zeros:
+
+```tex
+R(a)=0,
+\qquad
+a>N.
+```
+
+Then division by `(z-a)` preserves the same simple Cauchy class. Indeed,
+partial fractions give
+
+```tex
+\frac{1}{(y-z)(z-a)}
+=
+\frac{1}{y-a}\left(\frac{1}{y-z}+\frac{1}{z-a}\right).
+```
+
+Hence
+
+```tex
+\frac{R(z)}{z-a}
+=
+\sum_{y\in Y_a}\frac{e(y)}{y-a}\frac{1}{y-z}
+\frac{1}{z-a}\sum_{y\in Y_a}\frac{e(y)}{y-a}.
+```
+
+But the last sum is exactly `R(a)=0`, so
+
+```tex
+\frac{R(z)}{z-a}
+=
+\sum_{y\in Y_a}\frac{e(y)}{y-a}\frac{1}{y-z}.
+```
+
+Thus every tail zero yields a new coefficient sequence
+
+```tex
+e^{(a)}(y):=\frac{e(y)}{y-a}
+```
+
+inside the same simple-pole receiver class.
+
+Repeating this at the first `k` tail integers gives
+
+```tex
+R_k(z)
+:=
+\frac{R(z)}{\prod_{j=1}^k (z-(N+j))}
+=
+\sum_{y\in Y_a}
+\frac{e(y)}{\prod_{j=1}^k (y-(N+j))}\frac{1}{y-z},
+```
+
+and `R_k(m)=0` for every integer `m>N+k`.
+
+So the direct route has acquired its own intrinsic divisor tower, parallel to
+the earlier `G_k`-tower but staying completely inside the original
+simple Cauchy receiver.
+
+This sharpens the active direct branch:
+
+```tex
+\textbf{D1. Direct divisor closure.}
+```
+
+Tail-zero division preserves the structured simple Cauchy class.
+
+```tex
+\textbf{D2. Direct divisor-rigidity target.}
+```
+
+Can an arbitrarily long tail-zero divisor tower exist in this paired support
+class without forcing `e\equiv 0`?
+
 #### Finite-support case
 
 If `e` is supported on distinct points

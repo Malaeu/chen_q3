@@ -4666,3 +4666,13 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   4. if a global theorem still does not emerge, prepare only a tiny Aristotle
      request for a contour/interpolation sublemma, never for the whole
      uniqueness statement at once.
+- the first genuinely new direct lemma is now explicit and useful: if
+  `R(z)=\sum_{y\in Y_a} e(y)/(y-z)` and `R(a)=0` at a tail integer `a>N`, then
+  division by `(z-a)` stays in the **same** simple Cauchy class:
+  `R(z)/(z-a)=\sum_{y\in Y_a} e(y)/(y-a)/(y-z)`. So the direct receiver has
+  its own internal divisor tower
+  `R_k(z)=R(z)/\prod_{j=1}^k(z-(N+j))`, with updated coefficients still living
+  on the same paired support. This creates a much more native next target than
+  the demoted Krein branch: prove a direct divisor-rigidity statement saying
+  such a long tail-zero tower cannot persist in the `Y_a`-paired class unless
+  `e\equiv 0`.
