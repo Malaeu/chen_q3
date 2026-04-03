@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, so the active critical path is the direct structured shift-uniqueness receiver for PO2; after D1 the next live brick is now split into D2/D3: either prove direct divisor-rigidity for the whole paired support `Y_a`, or normalize the divisor tower and extract an asymptotically one-sided limit on `X_a={x_gamma}` using the exact suppression factor `theta_{k,gamma}=(x_gamma-N-1)/(x_gamma-N-k-1) -> 0`
-next_verify: rg -n -F "D1. Direct divisor closure." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D3. Asymptotic one-sided decoupling." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "divisor exhaustion asymptotically suppresses the shifted pole" q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: the Krein/localization branch remains demoted to backup, so the active critical path is the direct structured shift-uniqueness receiver for PO2; after D1 the next live brick is now sharper inside D3: prove the no-escape/tightness lemma D3b1 for a normalized divisor tower, since finite-packet suppression is already available but global one-sided decoupling fails without control of mass drifting to scales `x_gamma ~ k` or `x_gamma >> k`
+next_verify: rg -n -F "D3a. Finite-packet suppression." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D3b1." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "the exact live brick is now the tightness / no-escape statement" q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

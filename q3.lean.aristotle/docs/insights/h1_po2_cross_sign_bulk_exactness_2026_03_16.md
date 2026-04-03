@@ -1442,6 +1442,137 @@ Thus the active direct route is now split very concretely:
 - or prove `D3`, meaning that divisor exhaustion forces a one-sided limit and
   then attack that limit with the already-existing critical-line barriers.
 
+There is now a sharper internal split inside `D3`.
+
+```tex
+\textbf{D3a. Finite-packet suppression.}
+```
+
+For every fixed finite packet `F\subset\Gamma`,
+
+```tex
+\sup_{\gamma\in F} |\theta_{k,\gamma}|\longrightarrow 0
+\qquad (k\to\infty).
+```
+
+So after any normalization `s_k`, the shifted part on a fixed finite packet
+dies provided the normalized packet coefficients stay bounded:
+
+```tex
+\widetilde R_k(z)
+:=
+s_k R_k(z)
+=
+\sum_\gamma \frac{\alpha_\gamma^{(k)}}{x_\gamma-z}
+\;-\;
+\sum_\gamma \theta_{k,\gamma}\frac{\beta_\gamma^{(k)}}{x_\gamma-1-z},
+```
+
+where
+
+```tex
+\alpha_\gamma^{(k)}
+:=
+s_k\frac{a_\gamma}{\prod_{j=1}^k (x_\gamma-N-j)},
+\qquad
+\beta_\gamma^{(k)}
+:=
+s_k\frac{b_\gamma}{\prod_{j=1}^k (x_\gamma-N-j)}.
+```
+
+Thus the one-sided decoupling mechanism is genuinely present, but only
+packetwise.
+
+```tex
+\textbf{D3b. No-escape / tightness brick.}
+```
+
+This packetwise suppression is **not** uniform in `\gamma`, so it does not by
+itself imply a global one-sided limit. In fact:
+
+- for fixed `\gamma`, `\theta_{k,\gamma}\to 0`;
+- if
+  ```tex
+  \frac{x_{\gamma(k)}-N-1}{k}\to c\in (1,\infty),
+  ```
+  then
+  ```tex
+  \theta_{k,\gamma(k)}\to \frac{c}{c-1};
+  ```
+- if
+  ```tex
+  \frac{x_{\gamma(k)}-N-1}{k}\to\infty,
+  ```
+  then
+  ```tex
+  \theta_{k,\gamma(k)}\to 1.
+  ```
+
+So divisor exhaustion only suppresses the shifted member of each pair on
+fixed low-lying packets; high-index mass can still survive with essentially no
+decoupling. Therefore the real `D3` wall is now:
+
+```tex
+\textbf{D3b1.}
+```
+
+Can one choose a normalization and subsequence for which the normalized
+coefficient mass does not escape to scales `x_\gamma\asymp k` or
+`x_\gamma\gg k`?
+
+Equivalently, the live theorem target is a tightness statement for the
+normalized direct tower.
+
+This gives a clean conditional one-sided extraction lemma.
+
+```tex
+\textbf{D3c. Conditional one-sided extraction.}
+```
+
+Assume there exist a normalization `s_k>0` and a subsequence `k_\nu` such
+that:
+
+1. the normalized coefficients satisfy a uniform `\ell^1` bound
+   ```tex
+   \sup_\nu \sum_\gamma
+   \bigl(|\alpha_\gamma^{(\nu)}|+|\beta_\gamma^{(\nu)}|\bigr)<\infty;
+   ```
+2. they are tight:
+   for every `\varepsilon>0` there exists a finite packet `F` with
+   ```tex
+   \sup_\nu \sum_{\gamma\notin F}
+   \bigl(|\alpha_\gamma^{(\nu)}|+|\beta_\gamma^{(\nu)}|\bigr)<\varepsilon;
+   ```
+3. for every fixed `\gamma`,
+   ```tex
+   \alpha_\gamma^{(\nu)}\to \alpha_\gamma;
+   ```
+4. some limit coefficient is nonzero.
+
+Then
+
+```tex
+\widetilde R_{k_\nu}(z)
+\longrightarrow
+\sum_\gamma \frac{\alpha_\gamma}{x_\gamma-z}
+```
+
+locally uniformly on compact subsets of
+`\mathbb C\setminus (X_a\cup (X_a-1))`.
+
+Indeed, one splits the sums into a finite packet `F` and its complement.
+On `F`, the shifted part vanishes because `\sup_{\gamma\in F}|\theta_{k_\nu,\gamma}|\to 0`.
+Outside `F`, the tails are uniformly small by tightness and the compact-set
+distance to the pole set. Thus the only genuine missing ingredient in `D3` is
+not compactness or Montel, but the no-escape/tightness statement.
+
+So `D3` has now reduced to a very sharp dichotomy:
+
+- either prove `D3b1` and get a one-sided limit;
+- or accept that the direct divisor tower may leak its mass to high-index
+  poles, in which case `D3` does not close and the active burden returns
+  entirely to `D2`.
+
 #### Finite-support case
 
 If `e` is supported on distinct points

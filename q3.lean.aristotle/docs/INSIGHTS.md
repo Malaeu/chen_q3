@@ -4690,6 +4690,31 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   on `X_a={x_\gamma}`. If that works, `PO2` reduces from the paired support to
   a one-sided critical-line support class where the earlier arithmetic
   obstructions are stronger.
+- the real shape of `D3` is now much clearer and much tighter. The suppression
+  factor `\theta_{k,\gamma}` only decays on fixed finite packets:
+  `\sup_{\gamma\in F}|\theta_{k,\gamma}|\to 0` for each finite `F`, but not
+  uniformly in `\gamma`. In fact, if
+  `(x_{\gamma(k)}-N-1)/k\to c\in(1,\infty)`, then
+  `\theta_{k,\gamma(k)}\to c/(c-1)`, and if
+  `(x_{\gamma(k)}-N-1)/k\to\infty`, then `\theta_{k,\gamma(k)}\to 1`. So the
+  one-sided decoupling mechanism is only packetwise; globally it needs an
+  extra no-escape lemma saying the normalized divisor mass does not drift to
+  scales `x_\gamma\asymp k` or larger.
+- this yields a clean conditional extraction theorem on the active direct
+  route. If one can find a normalization `s_k` and subsequence such that the
+  normalized direct-tower coefficients are uniformly `\ell^1`-bounded, tight,
+  and pointwise convergent on fixed `\gamma`, then the normalized receivers
+  converge locally uniformly off `X_a\cup(X_a-1)` to a one-sided Cauchy
+  transform `\sum \alpha_\gamma/(x_\gamma-z)`. So `D3` is no longer a vague
+  compactness hope: the exact live brick is now the tightness / no-escape
+  statement, while all generic compactness is secondary.
+- local embedding search was low-signal again: the `q3_docs` hits were mostly
+  irrelevant noise from unrelated `D3`/A3 materials, and no internal note
+  contained a ready-made no-escape argument. External web sanity-check only
+  pointed toward generic meromorphic compactness / Cauchy-transform folklore,
+  not toward the crucial scale-sensitive tightness statement. So the no-escape
+  brick should be treated as genuinely new, not as a theorem we merely failed
+  to remember.
 - the user’s `L_k` idea is a genuinely good backup refinement for the demoted
   Krein branch. On the algebraic spans
   `\mathcal A_k=\operatorname{span}_{fin}\{G_k/(z-\lambda):\lambda\in Z(G_k)\}`,
