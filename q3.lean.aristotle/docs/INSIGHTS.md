@@ -333,6 +333,19 @@
   uses of that paper are now: either an honest infinite-pole extension for our
   `\ell^1` Cauchy class, or a softer heuristic telling us what analytic
   sublemmas would be needed if such an extension were ever built.
+- the direct first-route receiver is now narrowed one step further in a useful
+  way. The old sparse affine-lattice / Gamma-ratio danger can be split into a
+  critical-line branch and an off-critical branch. The critical-line branch is
+  already dead: if a real affine unit lattice sat inside `Y_a`, then after
+  undoing the scaling `x_\gamma=a\gamma/\pi` it would give an infinite
+  arithmetic progression of zeros of `\zeta(1/2+it)`. But Putnam ruled out
+  infinite arithmetic progressions of positive critical-line zeros, and
+  Li--Radziwi{\l}{\l} showed more generally that every vertical arithmetic
+  progression on the critical line misses at least one-third of its points. So
+  any surviving affine-lattice mechanism must come from the off-critical part
+  of `Y_a`, not from its real axis. This does not prove the direct receiver,
+  but it removes the easiest sparse-lattice threat and makes the remaining
+  obstruction explicitly conditional on off-critical zeros.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms

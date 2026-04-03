@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: prioritize the fastest remaining PO2 route by moving past the now-collapsed tail-to-full issue and the now-sharpened A2 picture: the real De Micheli--Viano adaptation wall is no longer a routine Carlson-type class check, but the finite-vs-infinite pole gap for the shifted receiver R_N(z)=R(z+N+1/2), with R(z)=P(z)-Q(z+1)=sum_{y in Y_a} e(y)/(y-z); decide whether to pursue an infinite-pole extension for this `\ell^1` Cauchy class or to demote the external bridge and return to the direct structured shift-uniqueness receiver; keep the first wall only as the narrower backup target of excluding sparse affine-lattice / Gamma-ratio mechanisms inside Y_a={x_gamma,x_gamma-1}
-next_verify: rg -n -e "A2a\\. Soft class hypotheses|A2b\\. The actual hard wall is finite poles|finite-vs-infinite pole gap|direct structured shift-uniqueness" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: prioritize the fastest remaining PO2 route by demoting the naive De Micheli--Viano bridge and returning to the direct structured shift-uniqueness receiver; use the now-recorded sharpening that the critical-line affine-lattice danger inside Y_a={x_gamma,x_gamma-1} is already dead by arithmetic-progression theorems for zeta zeros, so the only remaining sparse-lattice threat is the off-critical branch; the next honest task is therefore to decide whether PO2 should attack this off-critical sparse-lattice exclusion directly or switch fully to the second analytic branch
+next_verify: rg -n -e "Critical-line affine-lattice exclusion|off-critical branch|direct structured shift-uniqueness receiver|finite-vs-infinite pole gap" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

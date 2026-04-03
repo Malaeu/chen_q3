@@ -1466,6 +1466,41 @@ So the first-route conclusion is now:
 2. the only remaining first-route danger is a sparse affine-lattice subfamily;
 3. that sparse question is likely not the fastest critical-path move toward RH.
 
+There is, however, one more clean sharpening inside this sparse danger.
+
+```tex
+\textbf{Critical-line affine-lattice exclusion.}
+```
+
+If an infinite affine unit lattice sits inside the **real** part of `Y_a`, then
+after undoing the scaling `x_\gamma=a\gamma/\pi` it gives an infinite vertical
+arithmetic progression of zeta zeros on the critical line:
+
+```tex
+\gamma=\gamma_0+\frac{\pi}{a}n,
+\qquad
+\zeta\!\left(\frac12+i\gamma\right)=0
+\qquad (n\ge 0).
+```
+
+This is already ruled out by the known arithmetic-progression theorems for
+critical-line zeros. Putnam proved the absence of infinite arithmetic
+progressions of positive zeros on `\zeta(\tfrac12+it)`, and Li--Radziwi{\l}{\l}
+showed more generally that in every vertical arithmetic progression on the
+critical line, at least one-third of the points are not zeros.
+
+So the exact sparse danger does **not** live on the real axis of `Y_a`.
+Any surviving affine-lattice mechanism must therefore come from points of
+`Y_a` with nonzero imaginary part, i.e. from genuinely off-critical zeros.
+
+This is a meaningful narrowing:
+
+1. the critical-line lattice branch is already dead;
+2. the only remaining sparse affine-lattice danger is the off-critical branch;
+3. that remaining branch is automatically conditional on RH failing in the
+   first place, which makes it much less attractive as the next critical-path
+   move.
+
 Therefore, after this split, the preferred live attack moves to the second
 route unless a very sharp `Y_a`-specific exclusion of sparse affine-lattice
 subfamilies appears unexpectedly.
