@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now the static D2e target, namely to prove tail-zero uniqueness for the reweighted transform `\widetilde R_N(z)=\sum_{y\in Y_a}((y-N)e(y))/(y-z)` from the hypothesis `\widetilde R_N(N+m)=0` for all `m\ge 0`
-next_verify: rg -n -F "D2e. Static reweighted Cauchy uniqueness." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "moving Gamma-profile form of `D2` now collapses to one fixed reweighted" q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is the corrected static D2e target, namely to prove augmented tail-zero uniqueness for `\widehat R_{N,z_0}(z)=\sum_{w\in \widehat Y_{a,z_0}}((w-N)\widehat e_{z_0}(w))/(w-z)` on `\widehat Y_{a,z_0}=Y_a\cup\{z_0\}` from the hypothesis `\widehat R_{N,z_0}(N+m)=0` for all `m\ge 0`
+next_verify: rg -n -F "D2e. Static augmented Cauchy uniqueness." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "the moving Gamma-profile form of `D2` now collapses to one fixed reweighted" q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

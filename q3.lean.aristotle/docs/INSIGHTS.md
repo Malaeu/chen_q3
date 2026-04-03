@@ -4838,23 +4838,29 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   functionals. This sharpens the reserve route without changing the active
   critical path, which still runs through direct `D3b1`.
 - the moving Gamma-profile form of `D2` now collapses to one fixed reweighted
-  Cauchy transform. Defining
-  `\widetilde R_N(z):=\sum_{y\in Y_a}((y-N)e(y))/(y-z)`, one has the exact
-  forward-difference identity
-  `\sum_{y\in Y_a} e(y)u_k(y)=(1/k!)\Delta^k \widetilde R_N(N)` for
-  `u_k(y)=\prod_{j=1}^k (y-(N+j))^{-1}`. By Newton's formula this is
-  equivalent to
-  `\widetilde R_N(N+m)=0` for every `m\ge 0`.
-- this is a real reduction, not just repackaging. The active `D2` burden is no
-  longer “exclude an `\ell^1` superposition of moving Gamma profiles,” but the
-  static tail-zero uniqueness statement
-  `\widetilde R_N(N+m)=0\ \forall m\ge 0 \Rightarrow \widetilde R_N\equiv 0`
-  in the paired support class. The theorem statement is cleaner because the
-  moving family disappears from the final target.
-- admissibility survives this reweighting on the actual `PO2` data: the
-  inherited coefficients satisfy `e(y)=O(\gamma^{-3})`, while
-  `y=x_\gamma` or `x_\gamma-1` grows only linearly in `\gamma`, so the new
-  coefficients `(y-N)e(y)=O(\gamma^{-2})` still lie in `\ell^1`.
+  Cauchy transform, but only after adjoining the external profile point
+  `z_0`. If
+  `u_k(z_0)=\sum_{y\in Y_a} c_y(z_0)u_k(y)`, then on the enlarged support
+  `\widehat Y_{a,z_0}=Y_a\cup\{z_0\}` with coefficients
+  `\widehat e_{z_0}(z_0)=-1` and `\widehat e_{z_0}(y)=c_y(z_0)`, the exact
+  forward-difference identity becomes
+  `\sum_{w\in \widehat Y_{a,z_0}} \widehat e_{z_0}(w)u_k(w)
+   =(1/k!)\Delta^k \widehat R_{N,z_0}(N)`,
+  where
+  `\widehat R_{N,z_0}(z)=\sum_{w\in \widehat Y_{a,z_0}}((w-N)\widehat e_{z_0}(w))/(w-z)`.
+- by Newton's formula this is equivalent to
+  `\widehat R_{N,z_0}(N+m)=0` for every `m\ge 0`. So the active `D2` burden is
+  no longer “exclude an `\ell^1` superposition of moving Gamma profiles,” but
+  the static augmented tail-zero uniqueness statement
+  `\widehat R_{N,z_0}(N+m)=0\ \forall m\ge 0 \Rightarrow \widehat R_{N,z_0}\equiv 0`.
+- this correction matters: the earlier unreweighted static reduction was too
+  naive for the actual profile identity. The honest theorem target must retain
+  the external point `z_0` as one additional pole of the static transform.
+- admissibility still survives on the actual `PO2` data. On `Y_a`,
+  `e(y)=O(\gamma^{-3})`; dividing by `y-z_0` improves this to `O(\gamma^{-4})`;
+  multiplying by `y-N` returns only `O(\gamma^{-3})`. So the enlarged
+  coefficient family on `\widehat Y_{a,z_0}` remains in `\ell^1` after adding
+  the single point `z_0`.
 - research pass for this blocker was again low-signal on the local side: the
   `q3_docs` oracle returned mostly irrelevant `DigammaSeries` /
   hat-interpolation noise and nothing close to a ready-made tail-zero

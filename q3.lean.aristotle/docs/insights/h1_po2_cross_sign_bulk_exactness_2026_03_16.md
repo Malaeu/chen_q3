@@ -1479,52 +1479,82 @@ in the abstract. It is:
 }
 ```
 
-There is now an even cleaner static reformulation of this same `D2` burden.
-Define the reweighted Cauchy transform
+There is now a cleaner static reformulation of the actual profile-rigidity
+statement itself, but it must include the external profile point `z_0`.
+
+Fix `z_0\notin Y_a` and assume `R(z_0)\neq 0`. Normalize the profile identity
+by dividing through by `R(z_0)`:
 
 ```tex
-\widetilde R_N(z)
-:=
-\sum_{y\in Y_a}\frac{(y-N)e(y)}{y-z}.
+u_k(z_0)
+=
+\sum_{y\in Y_a} c_y(z_0)\,u_k(y),
+\qquad
+c_y(z_0):=\frac{e(y)}{R(z_0)(y-z_0)}.
 ```
 
-This is still admissible on the actual `PO2` data: the inherited coefficients
-satisfy `e(y)=O(\gamma^{-3})` while `y=x_\gamma` or `x_\gamma-1` grows like
-`O(\gamma)`, so the reweighted coefficients `(y-N)e(y)=O(\gamma^{-2})` remain
-in `\ell^1`.
+Now augment the support by the external point:
 
-Now fix `y\notin \{N,N+1,\dots\}` and set `g_y(x):=1/(y-x)`. A direct
+```tex
+\widehat Y_{a,z_0}:=Y_a\cup\{z_0\},
+```
+
+and define coefficients on this enlarged support by
+
+```tex
+\widehat e_{z_0}(z_0):=-1,
+\qquad
+\widehat e_{z_0}(y):=c_y(z_0)\quad (y\in Y_a).
+```
+
+Then the profile identity is exactly the vanishing tower
+
+```tex
+\sum_{w\in \widehat Y_{a,z_0}} \widehat e_{z_0}(w)\,u_k(w)=0
+\qquad \forall k\ge 0.
+```
+
+Now fix `w\notin \{N,N+1,\dots\}` and set `g_w(x):=1/(w-x)`. A direct
 induction on the forward difference operator
 `\Delta f(x):=f(x+1)-f(x)` gives
 
 ```tex
-\Delta^k g_y(N)
+\Delta^k g_w(N)
 =
-\frac{k!}{\prod_{j=0}^k (y-(N+j))}.
+\frac{k!}{\prod_{j=0}^k (w-(N+j))}.
 ```
 
 Hence for the Gamma-profile family
 
 ```tex
-u_k(y):=\frac{1}{\prod_{j=1}^k (y-(N+j))},
+u_k(w):=\frac{1}{\prod_{j=1}^k (w-(N+j))},
 \qquad
-u_0(y):=1,
+u_0(w):=1,
 ```
 
 one has the exact avatar
 
 ```tex
-u_k(y)
+u_k(w)
 =
-\frac{y-N}{k!}\,\Delta^k\!\left(\frac{1}{y-x}\right)\Big|_{x=N}.
+\frac{w-N}{k!}\,\Delta^k\!\left(\frac{1}{w-x}\right)\Big|_{x=N}.
 ```
 
-Summing against the coefficients `e(y)` therefore yields
+Define the static reweighted transform on the augmented support
 
 ```tex
-\sum_{y\in Y_a} e(y)\,u_k(y)
+\widehat R_{N,z_0}(z)
+:=
+\sum_{w\in \widehat Y_{a,z_0}}
+\frac{(w-N)\widehat e_{z_0}(w)}{w-z}.
+```
+
+Then summing the difference formula against `\widehat e_{z_0}(w)` yields
+
+```tex
+\sum_{w\in \widehat Y_{a,z_0}} \widehat e_{z_0}(w)\,u_k(w)
 =
-\frac{1}{k!}\,\Delta^k \widetilde R_N(N).
+\frac{1}{k!}\,\Delta^k \widehat R_{N,z_0}(N).
 ```
 
 By Newton's forward formula,
@@ -1533,34 +1563,38 @@ By Newton's forward formula,
 f(N+m)=\sum_{k=0}^m \binom{m}{k}\Delta^k f(N),
 ```
 
-so the whole moving Gamma-profile tower is equivalent to tail vanishing of one
-fixed reweighted transform:
+so the moving profile identity is equivalent to tail vanishing of one fixed
+transform:
 
 ```tex
-\sum_{y\in Y_a} e(y)\,u_k(y)=0\ \forall k\ge 0
+u_k(z_0)=\sum_{y\in Y_a} c_y(z_0)\,u_k(y)\ \forall k\ge 0
 \iff
-\widetilde R_N(N+m)=0\ \forall m\ge 0.
+\widehat R_{N,z_0}(N+m)=0\ \forall m\ge 0.
 ```
 
-This collapses the main direct theorem target to a static uniqueness problem.
+This is the correct static direct target.
 
 ```tex
-\textbf{D2e. Static reweighted Cauchy uniqueness.}
+\textbf{D2e. Static augmented Cauchy uniqueness.}
 ```
 
-Prove that for the paired support `Y_a=\{x_\gamma,x_\gamma-1\}` and inherited
-coefficient class,
+Prove that for every `z_0\notin Y_a`, the augmented transform satisfies
 
 ```tex
-\widetilde R_N(N+m)=0\ \forall m\ge 0
+\widehat R_{N,z_0}(N+m)=0\ \forall m\ge 0
 \Longrightarrow
-\widetilde R_N\equiv 0.
+\widehat R_{N,z_0}\equiv 0.
 ```
 
-This is stronger than a cosmetic reformulation: it removes the moving
-Gamma-profile family from the theorem statement entirely. What remains live is
-no longer a tower compactness problem, but tail-zero uniqueness for one fixed
-simple Cauchy transform in the actual structured class.
+This is now perfectly aligned with the actual `D2` burden. The moving
+Gamma-profile family disappears from the theorem statement, but the external
+point `z_0` is retained as one extra pole of the static transform.
+
+Admissibility also survives: on `Y_a` the coefficients satisfy
+`e(y)=O(\gamma^{-3})`, division by `y-z_0` improves this to `O(\gamma^{-4})`,
+and reweighting by `y-N` returns only `O(\gamma^{-3})`, so the enlarged
+coefficient family still lies in `\ell^1` after adjoining the single point
+`z_0`.
 
 There is now a more support-sensitive refinement of this direct tower.
 Write the receiver in paired-pole form
