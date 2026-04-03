@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: prioritize the fastest remaining PO2 route by demoting the naive De Micheli--Viano bridge and returning to the direct structured shift-uniqueness receiver; use the now-recorded sharpening that the critical-line affine-lattice danger inside Y_a={x_gamma,x_gamma-1} is already dead by arithmetic-progression theorems for zeta zeros, so the only remaining sparse-lattice threat is the off-critical branch; the next honest task is therefore to decide whether PO2 should attack this off-critical sparse-lattice exclusion directly or switch fully to the second analytic branch
-next_verify: rg -n -e "Critical-line affine-lattice exclusion|off-critical branch|direct structured shift-uniqueness receiver|finite-vs-infinite pole gap" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: switch fully to the second analytic branch and probe the new Cauchy-de Branges backend candidate for the direct receiver R(z)=sum_{y in Y_a} e(y)/(y-z); keep the first route only as the narrowed backup target where the critical-line affine-lattice danger is already dead and only the off-critical sparse branch survives; the active theorem packet is now CB1/CB2/CB3: support admissibility of Y_a={x_gamma,x_gamma-1}, tail-zero localization for eventual integer zeros, and ordered-attraction contradiction against the already-killed critical-line lattice branch
+next_verify: rg -n -e "Cauchy-de Branges backend probe|CB1\\. Support admissibility|CB2\\. Tail-zero localization|CB3\\. Ordered-attraction contradiction|Critical-line affine-lattice exclusion" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

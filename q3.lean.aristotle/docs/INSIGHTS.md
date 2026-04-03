@@ -346,6 +346,28 @@
   of `Y_a`, not from its real axis. This does not prove the direct receiver,
   but it removes the easiest sparse-lattice threat and makes the remaining
   obstruction explicitly conditional on off-critical zeros.
+- the preferred second analytic route now has a better native external backend
+  than either De Micheli--Viano or the rotated Carlson literature: the
+  Cauchy-de Branges / discrete Cauchy transform line of Baranov--Abakumov--
+  Belov. This matters because our live receiver is already exactly a discrete
+  Cauchy transform on the structured support `Y_a={x_\gamma,x_\gamma-1}` with
+  inherited `O(\gamma^{-3})` coefficients; in particular, these coefficients
+  are automatically in `\ell^2`, which is exactly the natural data class in the
+  localization side of that literature. The right next probe is therefore no
+  longer “some uniqueness theorem for holomorphic functions”, but whether this
+  structured class falls under a localization or Krein-type theorem for ratios
+  of discrete Cauchy transforms. If yes, eventual zeros on the integer tail
+  may force support attraction or global shift equality directly at the
+  receiver level. This is materially closer to `PO2` than the finite-pole DMV
+  bridge and cleaner than the rotated Pila/Yoshino orientation gap.
+- current second-route theorem packet is now frozen as:
+  `CB1` support admissibility of `Y_a={x_\gamma,x_\gamma-1}` for a
+  Cauchy-de Branges framework;
+  `CB2` tail-zero localization from `R(m)=0` for all large integers to an
+  attraction statement for the support;
+  `CB3` combine that attraction with the already-dead critical-line
+  affine-lattice branch. This is the first genuinely receiver-native external
+  backend we have found for `PO2`.
 - quick local smoke-test on the first 20 embedded zeta zeros says the new
   anti-diagonal defect `K_{mn}^{+-}` is numerically nontrivial on moderate
   tail indices for several sample `a`; this is not a proof, but it confirms
