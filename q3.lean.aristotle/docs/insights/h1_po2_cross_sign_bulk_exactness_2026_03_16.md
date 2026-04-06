@@ -1646,6 +1646,93 @@ Upgrade the obvious finite-support pole-separation argument to the actual
 infinite paired support `Y_a=\{x_\gamma,x_\gamma-1\}` with inherited
 coefficient decay.
 
+The next live split inside `D2f1` is now very concrete. Write
+
+```tex
+d_y(z_0):=(y-N)c_y(z_0),
+\qquad
+K_{z_0}(m):=\frac{z_0-N}{z_0-(N+m)}.
+```
+
+Then the static representation reads
+
+```tex
+K_{z_0}(m)=\sum_{y\in Y_a}\frac{d_y(z_0)}{y-(N+m)}.
+```
+
+Because the inherited coefficients satisfy `e(y)=O(\gamma^{-3})`, we also
+have
+
+```tex
+d_y(z_0)=O(\gamma^{-3}),
+```
+
+and the local zero count on the critical line gives the natural packet bound
+
+```tex
+\#\bigl(Y_a\cap [t-1,t+1]\bigr)\ll_a \log(2+t).
+```
+
+So for every unit packet around the tail integer `N+m`,
+
+```tex
+\sum_{\substack{y\in Y_a\\ |y-(N+m)|<1}} |d_y(z_0)|
+\ll_a \frac{\log(2+m)}{m^3}.
+```
+
+This produces the next exact theorem packet.
+
+```tex
+\textbf{D2f2. No-resonance asymptotic lemma.}
+```
+
+If a subsequence `m_r\to\infty` satisfies the lower-gap condition
+
+```tex
+\rho_{m_r}:=
+\min\bigl\{|y-(N+m_r)|:\ y\in Y_a,\ |y-(N+m_r)|<1\bigr\}
+\gg \frac{\log m_r}{m_r^2},
+```
+
+then the near packet contributes only `o(m_r^{-1})`, and the whole
+representation should collapse to the first-order asymptotic
+
+```tex
+K_{z_0}(m_r)
+\sim
+-\frac{1}{m_r}\sum_{y\in Y_a} d_y(z_0).
+```
+
+Since the left side satisfies
+
+```tex
+K_{z_0}(m)
+\sim
+-\frac{z_0-N}{m},
+```
+
+this would force the moment identity
+
+```tex
+\sum_{y\in Y_a} d_y(z_0)=z_0-N.
+```
+
+Conversely, any failure of this clean first-order picture must be carried by
+infinitely many ultra-near resonances.
+
+```tex
+\textbf{D2f3. Ultra-near resonance obstruction.}
+```
+
+Any genuine infinite-support counterexample to `D2f1` must produce infinitely
+many integers `m` for which some support point of `Y_a` approaches `N+m`
+at scale at most `\ll (\log m)/m^2`.
+
+This is now the sharpest honest reduction on the direct route: either prove
+the no-resonance asymptotic lemma and continue from static moments, or prove
+that such an ultra-near resonance regime is impossible for
+`Y_a=\{x_\gamma,x_\gamma-1\}`.
+
 There is now a more support-sensitive refinement of this direct tower.
 Write the receiver in paired-pole form
 

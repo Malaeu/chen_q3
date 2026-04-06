@@ -4882,6 +4882,26 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   use pole separation to kill the finite packet exactly;
   then try to upgrade this to the whole tail using the actual decay
   `e(y)=O(\gamma^{-3})` and the geometry `Y_a=\{x_\gamma,x_\gamma-1\}`.
+- this upgrade now has a much sharper internal split. Writing
+  `d_y(z_0):=(y-N)c_y(z_0)`, the static identity is
+  `K_{z_0}(m)=\sum_{y\in Y_a} d_y(z_0)/(y-(N+m))` with
+  `K_{z_0}(m)=(z_0-N)/(z_0-(N+m))`. Because `d_y(z_0)=O(\gamma^{-3})` and
+  local zero counting gives `#(Y_a\cap[t-1,t+1])\ll_a \log(2+t)`, the unit
+  packet around `N+m` has total coefficient mass only `\ll_a (\log m)/m^3`.
+- therefore the next theorem packet is:
+  `D2f2` = no-resonance asymptotic lemma;
+  if the nearest support point to `N+m` stays farther than
+  `\gg (\log m)/m^2`, then the local packet is negligible and one should get
+  the first-order asymptotic
+  `K_{z_0}(m)\sim -(1/m)\sum_y d_y(z_0)`, hence the moment identity
+  `\sum_y d_y(z_0)=z_0-N`.
+- equivalently, any failure of this first-order asymptotic must be carried by
+  infinitely many ultra-near resonances
+  `|y-(N+m)|\ll (\log m)/m^2`.
+- this is a strong narrowing: `D2f1` is no longer a vague infinite-support
+  uniqueness problem. The live burden is now a dichotomy between a clean
+  no-resonance asymptotic route and an ultra-near resonance obstruction on the
+  actual support `Y_a`.
 - research pass for this blocker was again low-signal on the local side: the
   `q3_docs` oracle returned mostly irrelevant `DigammaSeries` /
   hat-interpolation noise and nothing close to a ready-made tail-zero
