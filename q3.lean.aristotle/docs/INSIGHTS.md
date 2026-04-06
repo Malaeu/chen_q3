@@ -4861,6 +4861,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   multiplying by `y-N` returns only `O(\gamma^{-3})`. So the enlarged
   coefficient family on `\widehat Y_{a,z_0}` remains in `\ell^1` after adding
   the single point `z_0`.
+- the next exact simplification is already static and sharper than `D2e`
+  itself. Evaluating `\widehat R_{N,z_0}(N+m)=0` gives
+  `((z_0-N)/(z_0-(N+m))) = \sum_{y\in Y_a} ((y-N)c_y(z_0))/(y-(N+m))`
+  for every `m\ge 0`. So the live theorem target is now a kernel-representation
+  uniqueness statement on the integer tail: one external Cauchy kernel cannot
+  be represented by an `\ell^1` superposition of support kernels.
+- this is the right place to attack. The finite-support case is trivial by
+  pole separation: both sides are rational in `m`, and the left pole at
+  `m=z_0-N` cannot come from poles at `m=y-N` with `y\in Y_a`. Therefore any
+  real obstruction is purely infinite-support.
+- exact target / wiring:
+  `D2f1` = infinite-support tail uniqueness for the static kernel
+  representation above;
+  if `D2f1` falls, then `D2e` falls; if `D2e` falls, then Gamma-profile
+  rigidity falls; if `D2` falls, `PO2` cracks and the `H-bridge` route comes
+  back to life.
+- concrete plan now:
+  isolate a finite right packet and tail in the static representation;
+  use pole separation to kill the finite packet exactly;
+  then try to upgrade this to the whole tail using the actual decay
+  `e(y)=O(\gamma^{-3})` and the geometry `Y_a=\{x_\gamma,x_\gamma-1\}`.
 - research pass for this blocker was again low-signal on the local side: the
   `q3_docs` oracle returned mostly irrelevant `DigammaSeries` /
   hat-interpolation noise and nothing close to a ready-made tail-zero
