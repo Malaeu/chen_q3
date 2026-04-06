@@ -4895,9 +4895,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   the first-order asymptotic
   `K_{z_0}(m)\sim -(1/m)\sum_y d_y(z_0)`, hence the moment identity
   `\sum_y d_y(z_0)=z_0-N`.
+- there is now a clean proof skeleton for `D2f2`: multiply the identity by
+  `M=N+m` and write
+  `M K_{z_0}(m)= -\sum_y d_y(z_0) + \sum_y d_y(z_0)\,y/(y-M)`. Then split the
+  second sum into `y\le M/2`, `M/2<y` with `|y-M|\ge 1`, and the resonant
+  packet `|y-M|<1`. The first two pieces die by absolute convergence of
+  `\sum_y |d_y(z_0)|\,y`, and the packet dies under the lower-gap condition
+  because its total coefficient mass is only `\ll (\log M)/M^3`.
 - equivalently, any failure of this first-order asymptotic must be carried by
   infinitely many ultra-near resonances
   `|y-(N+m)|\ll (\log m)/m^2`.
+- this already yields a real corollary, not just a shape theorem. Since
+  `d_y(z_0)=((y-N)e(y))/(R(z_0)(y-z_0))`, the identity
+  `\sum_y d_y(z_0)=z_0-N` simplifies to
+  `\sum_{y\in Y_a} e(y)=0`. So every no-resonance counterexample would force
+  zeroth-moment cancellation of the original receiver coefficients.
 - this is a strong narrowing: `D2f1` is no longer a vague infinite-support
   uniqueness problem. The live burden is now a dichotomy between a clean
   no-resonance asymptotic route and an ultra-near resonance obstruction on the

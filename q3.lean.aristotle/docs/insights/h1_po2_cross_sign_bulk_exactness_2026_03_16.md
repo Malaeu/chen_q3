@@ -1717,6 +1717,117 @@ this would force the moment identity
 \sum_{y\in Y_a} d_y(z_0)=z_0-N.
 ```
 
+There is now a clean proof skeleton for this claim. Set `M_r:=N+m_r`. Then
+
+```tex
+M_r\,K_{z_0}(m_r)
+=
+\sum_{y\in Y_a} d_y(z_0)\,\frac{M_r}{y-M_r}
+=
+-\sum_{y\in Y_a} d_y(z_0)
++\sum_{y\in Y_a} d_y(z_0)\,\frac{y}{y-M_r}.
+```
+
+The second sum can be split into three regions:
+
+```tex
+\{y\le M_r/2\},
+\qquad
+\{M_r/2<y,\ |y-M_r|\ge 1\},
+\qquad
+\{|y-M_r|<1\}.
+```
+
+For the left region,
+
+```tex
+\left|\frac{y}{y-M_r}\right|
+\le
+\frac{2y}{M_r},
+```
+
+so absolute convergence of `\sum_y |d_y(z_0)|\,y` gives an `O(M_r^{-1})` tail.
+For the middle region one simply uses `|y-M_r|\ge 1` and
+`y\asymp M_r`, so the contribution is bounded by the first-moment tail
+
+```tex
+\sum_{y\ge M_r/2} |d_y(z_0)|\,y,
+```
+
+which tends to zero because `d_y(z_0)=O(\gamma^{-3})` and the local counting
+bound imply `\sum_y |d_y(z_0)|\,y<\infty`.
+
+For the resonant packet,
+
+```tex
+\left|\sum_{\substack{y\in Y_a\\ |y-M_r|<1}}
+d_y(z_0)\,\frac{y}{y-M_r}\right|
+\ll
+M_r\,
+\frac{(\log M_r)/M_r^3}{\rho_{m_r}}
+=
+\frac{\log M_r}{M_r^2\,\rho_{m_r}}
+=
+o(1)
+```
+
+under the lower-gap assumption
+`\rho_{m_r}\gg (\log m_r)/m_r^2`. Hence
+
+```tex
+M_r\,K_{z_0}(m_r)\longrightarrow -\sum_{y\in Y_a} d_y(z_0).
+```
+
+Since also
+
+```tex
+M_r\,K_{z_0}(m_r)\longrightarrow -(z_0-N),
+```
+
+the moment identity follows.
+
+This already yields a concrete structural consequence for any no-resonance
+counterexample:
+
+```tex
+\textbf{D2f2a. Zeroth-moment cancellation.}
+```
+
+Because
+
+```tex
+d_y(z_0)=\frac{(y-N)e(y)}{R(z_0)(y-z_0)},
+```
+
+the identity `\sum_y d_y(z_0)=z_0-N` is equivalent to
+
+```tex
+\sum_{y\in Y_a}\frac{(y-N)e(y)}{y-z_0}
+=
+(z_0-N)R(z_0).
+```
+
+Expanding `y-N=(y-z_0)+(z_0-N)` gives
+
+```tex
+\sum_{y\in Y_a} e(y)
++
+(z_0-N)\sum_{y\in Y_a}\frac{e(y)}{y-z_0}
+=
+(z_0-N)R(z_0),
+```
+
+and therefore
+
+```tex
+\boxed{
+\sum_{y\in Y_a} e(y)=0.
+}
+```
+
+So the no-resonance branch does not merely give an asymptotic; it already
+forces zeroth-moment cancellation for the original paired receiver.
+
 Conversely, any failure of this clean first-order picture must be carried by
 infinitely many ultra-near resonances.
 
