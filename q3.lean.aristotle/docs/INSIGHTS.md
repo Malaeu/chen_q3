@@ -4920,6 +4920,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   us exactly one generic moment layer, namely `\sum_y e(y)=0`. To go further,
   we now need either genuinely pairwise cancellation from the shifted support
   `\{x_\gamma,x_\gamma-1\}`, or the resonance branch `D2f3`.
+- that “pairwise cancellation” is now named precisely. Writing
+  `e_\gamma^+=e(x_\gamma)` and `e_\gamma^-=e(x_\gamma-1)`, the tail-zero
+  identity becomes
+  `0=\sum_\gamma p_\gamma/(x_\gamma-M) + \sum_\gamma q_\gamma/((x_\gamma-M)(x_\gamma-1-M))`
+  with `p_\gamma=e_\gamma^+ + e_\gamma^-` and `q_\gamma=e_\gamma^-`.
+- because `\sum_y e(y)=0`, the one-sided main coefficients satisfy
+  `\sum_\gamma p_\gamma=0`. So the whole missing no-resonance upgrade is now
+  concentrated in the paired correction term
+  `\sum_\gamma q_\gamma/((x_\gamma-M)(x_\gamma-1-M))`.
+- exact next brick:
+  `D2g1` = prove that the resonant packet of this correction term is
+  `o(M^{-1})` on a no-resonance subsequence using actual pairwise residue
+  structure; otherwise the route collapses entirely into `D2f3`.
+- this is good compression: we no longer say “some new pairwise structure is
+  needed”; we now know exactly which series has to cancel and where.
 - this is a strong narrowing: `D2f1` is no longer a vague infinite-support
   uniqueness problem. The live burden is now a dichotomy between a clean
   no-resonance asymptotic route and an ultra-near resonance obstruction on the

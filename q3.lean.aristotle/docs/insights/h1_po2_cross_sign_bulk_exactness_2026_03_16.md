@@ -1868,6 +1868,98 @@ decay alone. Any further upgrade now has to use genuinely new structure:
 either pairwise cancellation between `x_\gamma` and `x_\gamma-1`, or the
 ultra-near resonance branch `D2f3`.
 
+That missing “new structure” can now be isolated exactly. Write
+
+```tex
+e_\gamma^+:=e(x_\gamma),
+\qquad
+e_\gamma^-:=e(x_\gamma-1).
+```
+
+Then the original tail-zero identity
+
+```tex
+0=\sum_{y\in Y_a}\frac{e(y)}{y-M}
+```
+
+becomes
+
+```tex
+0=
+\sum_\gamma \frac{e_\gamma^+}{x_\gamma-M}
++
+\sum_\gamma \frac{e_\gamma^-}{x_\gamma-1-M}.
+```
+
+Using
+
+```tex
+\frac{1}{u-1}=\frac{1}{u}+\frac{1}{u(u-1)},
+```
+
+with `u=x_\gamma-M`, this rewrites exactly as
+
+```tex
+0=
+\sum_\gamma \frac{p_\gamma}{x_\gamma-M}
++
+\sum_\gamma \frac{q_\gamma}{(x_\gamma-M)(x_\gamma-1-M)},
+```
+
+where
+
+```tex
+p_\gamma:=e_\gamma^+ + e_\gamma^-,
+\qquad
+q_\gamma:=e_\gamma^-.
+```
+
+Because `\sum_{y\in Y_a} e(y)=0`, the one-sided main coefficients satisfy
+
+```tex
+\sum_\gamma p_\gamma=0.
+```
+
+This is the exact paired upgrade of `D2f2`.
+
+```tex
+\textbf{D2g. Paired main-term / correction-term split.}
+```
+
+The first series now lives on the one-sided support `X_a=\{x_\gamma\}` and has
+zero total mass, so under no-resonance one expects
+
+```tex
+M\sum_\gamma \frac{p_\gamma}{x_\gamma-M}\longrightarrow 0
+```
+
+from first-moment summability alone.
+
+The whole obstruction to pushing beyond zeroth-moment cancellation is
+therefore concentrated in the paired correction term
+
+```tex
+\sum_\gamma \frac{q_\gamma}{(x_\gamma-M)(x_\gamma-1-M)}.
+```
+
+This yields the next exact theorem packet.
+
+```tex
+\textbf{D2g1. Local paired-correction control.}
+```
+
+Either prove that the resonant packet contribution of the correction term is
+`o(M^{-1})` on some no-resonance subsequence by using actual pairwise residue
+structure, or else the route is forced back into `D2f3`.
+
+So the direct route is now split with no ambiguity:
+
+- `D2f2` gives the generic zeroth-moment cancellation `\sum e(y)=0`;
+- `D2f2b` kills the naive second generic layer;
+- `D2g1` names the only remaining no-resonance upgrade: local cancellation in
+  the paired correction term;
+- failing that, only the ultra-near resonance obstruction `D2f3` remains live.
+
 Conversely, any failure of this clean first-order picture must be carried by
 infinitely many ultra-near resonances.
 
