@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is D2f2/D2f3, namely to turn the no-resonance proof skeleton into a rigorous first-order asymptotic forcing `\sum_y e(y)=0`, or else prove that every counterexample must generate infinitely many ultra-near resonances `|y-(N+m)|\ll (\log m)/m^2`
-next_verify: rg -n -F "D2f2a. Zeroth-moment cancellation." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "there is now a clean proof skeleton for `D2f2`" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "ultra-near resonances" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is D2f2/D2f3, namely to finish the first-order no-resonance route forcing `\sum_y e(y)=0`, while treating naive second-order moment extraction as blocked, or else prove that every counterexample must generate infinitely many ultra-near resonances `|y-(N+m)|\ll (\log m)/m^2`
+next_verify: rg -n -F "D2f2a. Zeroth-moment cancellation." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D2f2b. Naive second-order moment extraction is blocked." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "there is also now a clean obstruction to the next naive upgrade" q3.lean.aristotle/docs/INSIGHTS.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

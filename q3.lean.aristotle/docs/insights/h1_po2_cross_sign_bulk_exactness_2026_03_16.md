@@ -1828,6 +1828,46 @@ and therefore
 So the no-resonance branch does not merely give an asymptotic; it already
 forces zeroth-moment cancellation for the original paired receiver.
 
+There is also now a useful negative result about the next obvious upgrade.
+Trying to push the same argument one order further would require the formal
+expansion
+
+```tex
+\frac{1}{y-M}
+=
+-\frac{1}{M}-\frac{y}{M^2}+O\!\left(\frac{y^2}{M^2|y-M|}\right),
+```
+
+and after summing this would naturally demand absolute control of the second
+moment tail
+
+```tex
+\sum_{y\in Y_a} |d_y(z_0)|\,y^2.
+```
+
+But with the inherited decay `d_y(z_0)=O(\gamma^{-3})` and the local counting
+bound `\#(Y_a\cap[t-1,t+1])\ll_a \log(2+t)`, the unit packet at height `t`
+contributes only
+
+```tex
+\sum_{y\in Y_a\cap[t-1,t+1]} |d_y(z_0)|\,y^2
+\ll_a
+\frac{\log(2+t)}{t},
+```
+
+and the sum over packets diverges. So there is no routine absolute-convergence
+path from `D2f2` to a second-order asymptotic or a first-moment identity.
+
+```tex
+\textbf{D2f2b. Naive second-order moment extraction is blocked.}
+```
+
+This is a good kill certificate, not a setback. It means the first-order
+no-resonance asymptotic is the last generic layer available from the current
+decay alone. Any further upgrade now has to use genuinely new structure:
+either pairwise cancellation between `x_\gamma` and `x_\gamma-1`, or the
+ultra-near resonance branch `D2f3`.
+
 Conversely, any failure of this clean first-order picture must be carried by
 infinitely many ultra-near resonances.
 

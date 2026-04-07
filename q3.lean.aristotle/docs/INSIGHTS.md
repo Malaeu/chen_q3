@@ -4910,6 +4910,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `\sum_y d_y(z_0)=z_0-N` simplifies to
   `\sum_{y\in Y_a} e(y)=0`. So every no-resonance counterexample would force
   zeroth-moment cancellation of the original receiver coefficients.
+- there is also now a clean obstruction to the next naive upgrade. A
+  second-order asymptotic would naturally require absolute control of
+  `\sum_y |d_y(z_0)|\,y^2`, but with `d_y(z_0)=O(\gamma^{-3})` and
+  `#(Y_a\cap[t-1,t+1])\ll_a \log(2+t)`, the packet at height `t` contributes
+  only `\ll_a (\log t)/t`, whose sum diverges. So there is no routine
+  absolute-convergence route from `D2f2` to a first-moment identity.
+- this is a useful kill, not bad news. It means the no-resonance branch gives
+  us exactly one generic moment layer, namely `\sum_y e(y)=0`. To go further,
+  we now need either genuinely pairwise cancellation from the shifted support
+  `\{x_\gamma,x_\gamma-1\}`, or the resonance branch `D2f3`.
 - this is a strong narrowing: `D2f1` is no longer a vague infinite-support
   uniqueness problem. The live burden is now a dichotomy between a clean
   no-resonance asymptotic route and an ultra-near resonance obstruction on the
