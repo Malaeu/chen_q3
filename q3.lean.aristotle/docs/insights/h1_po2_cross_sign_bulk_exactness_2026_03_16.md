@@ -1691,7 +1691,7 @@ If a subsequence `m_r\to\infty` satisfies the lower-gap condition
 ```tex
 \rho_{m_r}:=
 \min\bigl\{|y-(N+m_r)|:\ y\in Y_a,\ |y-(N+m_r)|<1\bigr\}
-\gg \frac{\log m_r}{m_r^2},
+\gg_\omega \frac{\log m_r}{m_r^2},
 ```
 
 then the near packet contributes only `o(m_r^{-1})`, and the whole
@@ -1772,7 +1772,14 @@ o(1)
 ```
 
 under the lower-gap assumption
-`\rho_{m_r}\gg (\log m_r)/m_r^2`. Hence
+`\rho_{m_r}\gg_\omega (\log m_r)/m_r^2`, meaning
+
+```tex
+\frac{m_r^2\,\rho_{m_r}}{\log m_r}\longrightarrow \infty.
+```
+
+The weaker condition `\rho_{m_r}\gg (\log m_r)/m_r^2` would give only
+`O(1)`, not `o(1)`, for the resonant packet after multiplying by `M_r`. Hence
 
 ```tex
 M_r\,K_{z_0}(m_r)\longrightarrow -\sum_{y\in Y_a} d_y(z_0).
@@ -1867,6 +1874,14 @@ no-resonance asymptotic is the last generic layer available from the current
 decay alone. Any further upgrade now has to use genuinely new structure:
 either pairwise cancellation between `x_\gamma` and `x_\gamma-1`, or the
 ultra-near resonance branch `D2f3`.
+
+So the threshold scale `(\log m)/m^2` is now the exact borderline:
+
+- above this scale by a diverging factor, the generic first-order asymptotic
+  works and forces `\sum_{y\in Y_a} e(y)=0`;
+- at this scale itself, the generic argument no longer closes, and the only
+  remaining hope is the paired correction-term mechanism `D2g1`;
+- below this scale, the route is already inside the resonance branch `D2f3`.
 
 That missing “new structure” can now be isolated exactly. Write
 

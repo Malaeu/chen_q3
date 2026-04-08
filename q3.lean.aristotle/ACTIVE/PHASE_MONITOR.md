@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now the split D2g1/D2f3, namely to use the already-forced cancellation `\sum_y e(y)=0` and prove local cancellation of the paired correction term `\sum_\gamma q_\gamma/((x_\gamma-M)(x_\gamma-1-M))`, or else show that every counterexample must generate infinitely many ultra-near resonances `|y-(N+m)|\ll (\log m)/m^2`
-next_verify: rg -n -F "D2g. Paired main-term / correction-term split." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "D2g1. Local paired-correction control." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "that “pairwise cancellation” is now named precisely" q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now the split D2g1/D2f3 on the borderline scale `(\log m)/m^2`, namely to use the already-forced cancellation `\sum_y e(y)=0` and prove local cancellation of the paired correction term `\sum_\gamma q_\gamma/((x_\gamma-M)(x_\gamma-1-M))` at the threshold scale, or else show that every counterexample must generate infinitely many resonances at that scale
+next_verify: rg -n -F "gg_\\omega" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "the exact borderline scale" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "borderline scale" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

@@ -4891,7 +4891,8 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - therefore the next theorem packet is:
   `D2f2` = no-resonance asymptotic lemma;
   if the nearest support point to `N+m` stays farther than
-  `\gg (\log m)/m^2`, then the local packet is negligible and one should get
+  `\gg_\omega (\log m)/m^2`, meaning
+  `m^2\rho_m/\log m\to\infty`, then the local packet is negligible and one should get
   the first-order asymptotic
   `K_{z_0}(m)\sim -(1/m)\sum_y d_y(z_0)`, hence the moment identity
   `\sum_y d_y(z_0)=z_0-N`.
@@ -4901,7 +4902,10 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   second sum into `y\le M/2`, `M/2<y` with `|y-M|\ge 1`, and the resonant
   packet `|y-M|<1`. The first two pieces die by absolute convergence of
   `\sum_y |d_y(z_0)|\,y`, and the packet dies under the lower-gap condition
-  because its total coefficient mass is only `\ll (\log M)/M^3`.
+  because its total coefficient mass is only `\ll (\log M)/M^3`. Important
+  correction: to get `o(1)` after multiplying by `M`, one needs the stronger
+  gap `m^2\rho_m/\log m\to\infty`; the weaker bound
+  `\rho_m\gg (\log m)/m^2` gives only `O(1)`.
 - equivalently, any failure of this first-order asymptotic must be carried by
   infinitely many ultra-near resonances
   `|y-(N+m)|\ll (\log m)/m^2`.
@@ -4920,6 +4924,10 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   us exactly one generic moment layer, namely `\sum_y e(y)=0`. To go further,
   we now need either genuinely pairwise cancellation from the shifted support
   `\{x_\gamma,x_\gamma-1\}`, or the resonance branch `D2f3`.
+- this also identifies the exact borderline scale. Above
+  `(\log m)/m^2` by a diverging factor, the generic first-order route works;
+  at the borderline scale itself, the generic argument stalls and the whole
+  burden moves into the paired correction term `D2g1`.
 - that “pairwise cancellation” is now named precisely. Writing
   `e_\gamma^+=e(x_\gamma)` and `e_\gamma^-=e(x_\gamma-1)`, the tail-zero
   identity becomes
