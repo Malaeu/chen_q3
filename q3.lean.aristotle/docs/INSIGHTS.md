@@ -4935,6 +4935,19 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   structure; otherwise the route collapses entirely into `D2f3`.
 - this is good compression: we no longer say “some new pairwise structure is
   needed”; we now know exactly which series has to cancel and where.
+- a new user-proposed reduction is logically correct but currently too strong
+  to be the mainline. In operator form, with
+  `(\mathcal T_N e)_m=\sum_y e(y)/(y-(N+m))`, full `PO2` would follow from:
+  every nonzero `e\in\ker \mathcal T_N` yields another nonzero
+  `\widetilde e\in\ker \mathcal T_N` with support bounded above, provided the
+  one-sided bounded-above theorem is already available.
+- this is a legitimate meta-reduction, but not the fastest current route. It
+  asks for global support extraction while preserving the whole infinite tail
+  of sampling equations. That looks at least as hard as the current direct
+  brick, and local / external search gave no sign of a ready-made extremal
+  support principle for this Cauchy-tail kernel.
+- practical verdict: keep the bounded-above extraction theorem as backup
+  `D2h`, but do not demote the sharper live split `D2g1` versus `D2f3`.
 - this is a strong narrowing: `D2f1` is no longer a vague infinite-support
   uniqueness problem. The live burden is now a dichotomy between a clean
   no-resonance asymptotic route and an ultra-near resonance obstruction on the

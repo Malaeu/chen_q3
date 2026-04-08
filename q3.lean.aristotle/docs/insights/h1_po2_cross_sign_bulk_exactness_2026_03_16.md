@@ -1960,6 +1960,39 @@ So the direct route is now split with no ambiguity:
   the paired correction term;
 - failing that, only the ultra-near resonance obstruction `D2f3` remains live.
 
+There is also a valid but more global meta-reduction in terms of the tail
+sampling operator
+
+```tex
+\mathcal T_N e :=
+\left(
+\sum_{y\in Y}\frac{e(y)}{y-(N+m)}
+\right)_{m\ge 1}.
+```
+
+If one already has a one-sided tail-zero rigidity theorem for receivers whose
+support is bounded above, then the full paired problem would follow from the
+following extraction statement:
+
+```tex
+\textbf{D2h. Bounded-above extraction meta-reduction.}
+```
+
+Every nonzero element of `\ker \mathcal T_N` on the paired support class
+should yield another nonzero element of `\ker \mathcal T_N` with support
+bounded above.
+
+This reduction is logically correct, but it is not currently the fastest live
+route. The reason is structural: `D2h` asks for global support surgery that
+preserves the entire infinite tail of sampling equations, whereas the direct
+mainline `D2g1/D2f3` already works on the exact analytic shape of those
+equations. No concrete extraction mechanism is visible at present, and local
+search did not reveal any ready-made extremal-support principle for this
+Cauchy-tail kernel.
+
+So `D2h` should be kept as a legitimate backup reduction, but not promoted
+above the sharper active split `D2g1` versus `D2f3`.
+
 Conversely, any failure of this clean first-order picture must be carried by
 infinitely many ultra-near resonances.
 
