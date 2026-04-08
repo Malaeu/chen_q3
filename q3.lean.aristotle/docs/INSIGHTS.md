@@ -5006,3 +5006,19 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `paired correction` versus `ultra-near resonance`; it is now
   `paired correction with a log-sized microcluster requirement` versus
   `ultra-near resonance below the threshold scale`.
+- new in-progress synthesis for the next step:
+  a logarithmic microcluster in the paired support `Y_a=\{x_\gamma,x_\gamma-1\}`
+  should immediately force a compressed microcluster in the one-sided support
+  `X_a=\{x_\gamma\}` near either `M` or `M+1`, because a microscopic window
+  around `M` cannot contain both members of a pair separated by distance `1`;
+  by pigeonhole, half of the packet must come from one side.
+- once that reduction is written cleanly, a packet
+  `\#\mathcal P_M(c,C)\gtrsim \log M` in width `\asymp (\log M)/M^2`
+  yields a block of `\gg \log M` one-sided support points in an interval of the
+  same width, hence at least one consecutive gap of size `O(M^{-2})`.
+- external search was still only sanity-level useful here:
+  Hall's paper on distinct zeros in short intervals and Hall--Hayman on small
+  regions confirm that this is the right geometric direction, and Rodgers'
+  tail-bound paper gives local-statistics background at the much coarser
+  `1/\log T` scale under RH, but none of these gives the missing theorem at
+  the `1/M^2` scale.
