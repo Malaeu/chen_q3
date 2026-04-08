@@ -4981,3 +4981,28 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   show that at the threshold scale it is bounded by `#packet / \log M`, so a
   nontrivial obstruction would force a logarithmic microcluster of support
   points inside a window of width `\asymp (\log M)/M^2`.
+- this is now done in the first honest quantitative form. Fix
+  `0<c<C<\infty` and define the threshold packet
+  `\mathcal P_M(c,C)=\{\gamma: c(\log M)/M^2 \le |x_\gamma-M|
+  \le C(\log M)/M^2\}`.
+  Outside the ultra-near branch `D2f3`, one has
+  `|x_\gamma-1-M|\ge 1/2` on this packet for large `M`, and the inherited
+  decay still gives `|q_\gamma|\ll_a M^{-3}`.
+- therefore
+  `\left|M\sum_{\gamma\in\mathcal P_M(c,C)}
+  q_\gamma/((x_\gamma-M)(x_\gamma-1-M))\right|
+  \ll_{a,c,C} \#\mathcal P_M(c,C)/\log M`.
+  So if the packet cardinality is `o(\log M)`, then the borderline packet is
+  already `o(1)` after multiplying by `M`, hence `o(M^{-1})` on the original
+  scale.
+- this creates a new sharp obstruction:
+  any genuine failure of `D2g1` outside `D2f3` must produce packets with
+  `\#\mathcal P_M(c,C)\gtrsim \log M`.
+  Since the old local count on the whole unit interval is only
+  `\#(Y_a\cap[M-1,M+1])\ll_a \log M`, a counterexample would need a
+  near-maximal logarithmic microcluster inside the microscopic window
+  `\asymp (\log M)/M^2`.
+- this is real progress. The active direct split is no longer only
+  `paired correction` versus `ultra-near resonance`; it is now
+  `paired correction with a log-sized microcluster requirement` versus
+  `ultra-near resonance below the threshold scale`.

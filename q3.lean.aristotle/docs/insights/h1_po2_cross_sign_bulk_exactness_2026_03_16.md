@@ -1967,12 +1967,82 @@ Either prove that the resonant packet contribution of the correction term is
 `o(M^{-1})` on some no-resonance subsequence by using actual pairwise residue
 structure, or else the route is forced back into `D2f3`.
 
+There is now a sharper quantitative form of this borderline problem. Fix
+constants `0<c<C<\infty`, let `M=N+m`, and define the threshold packet
+
+```tex
+\mathcal P_M(c,C):=
+\left\{
+\gamma:
+c\,\frac{\log M}{M^2}
+\le |x_\gamma-M|
+\le C\,\frac{\log M}{M^2}
+\right\}.
+```
+
+Assume we are outside the ultra-near branch `D2f3`, so that along the
+subsequence under study no support point enters the smaller scale
+`o((\log M)/M^2)`. Then for every `\gamma\in\mathcal P_M(c,C)` one has
+
+```tex
+|x_\gamma-1-M|\ge 1-C\frac{\log M}{M^2}\ge \frac12
+```
+
+for all large `M`, while
+
+```tex
+|q_\gamma|=|e_\gamma^-|\ll_a x_\gamma^{-3}\ll_a M^{-3}.
+```
+
+Therefore the borderline packet of the paired correction term satisfies
+
+```tex
+\left|
+M\sum_{\gamma\in\mathcal P_M(c,C)}
+\frac{q_\gamma}{(x_\gamma-M)(x_\gamma-1-M)}
+\right|
+\ll_{a,c,C}
+\frac{\#\mathcal P_M(c,C)}{\log M}.
+```
+
+This has an immediate consequence:
+
+```tex
+\textbf{D2g2. Borderline microcluster obstruction.}
+```
+
+If along some subsequence one has
+
+```tex
+\#\mathcal P_M(c,C)=o(\log M),
+```
+
+then the whole threshold packet is already `o(1)` after multiplying by `M`,
+hence `o(M^{-1})` before rescaling. So any genuine failure of `D2g1` outside
+`D2f3` must produce packets with
+
+```tex
+\#\mathcal P_M(c,C)\gtrsim \log M.
+```
+
+Since local zero counting still gives only
+
+```tex
+\#(Y_a\cap [M-1,M+1])\ll_a \log M,
+```
+
+this means that a borderline counterexample would need a near-maximal
+logarithmic microcluster of support points inside a microscopic window of width
+`\asymp (\log M)/M^2`.
+
 So the direct route is now split with no ambiguity:
 
 - `D2f2` gives the generic zeroth-moment cancellation `\sum e(y)=0`;
 - `D2f2b` kills the naive second generic layer;
 - `D2g1` names the only remaining no-resonance upgrade: local cancellation in
   the paired correction term;
+- `D2g2` sharpens this: unless there is a logarithmic microcluster on the
+  exact threshold scale, the borderline packet is already negligible;
 - failing that, only the ultra-near resonance obstruction `D2f3` remains live.
 
 There is also a valid but more global meta-reduction in terms of the tail

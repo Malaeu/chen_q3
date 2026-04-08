@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now the split D2g1/D2f3 on the borderline scale `(\log m)/m^2`, namely to use the already-forced cancellation `\sum_y e(y)=0` and prove local cancellation of the paired correction term `\sum_\gamma q_\gamma/((x_\gamma-M)(x_\gamma-1-M))` at the threshold scale, or else show that every counterexample must generate infinitely many resonances at that scale
-next_verify: rg -n -F "gg_\\omega" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "the exact borderline scale" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "borderline scale" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is the sharpened split D2g1/D2f3 on the borderline scale `(\log m)/m^2`, where the new quantitative fact is that any failure of local paired-correction control outside `D2f3` must produce a log-sized microcluster `#\mathcal P_M(c,C)\gtrsim \log M` inside a window of width `\asymp (\log M)/M^2`; the next attack is therefore to kill that microcluster geometry or force the route into ultra-near resonance below the threshold scale
+next_verify: rg -n -F "D2g2. Borderline microcluster obstruction." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "logarithmic microcluster" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "log-sized microcluster" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
