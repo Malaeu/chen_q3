@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is the sharpened split D2g1/D2f3 on the borderline scale `(\log m)/m^2`, where the new quantitative fact is that any failure of local paired-correction control outside `D2f3` must produce a log-sized microcluster `#\mathcal P_M(c,C)\gtrsim \log M` inside a window of width `\asymp (\log M)/M^2`; the next attack is therefore to kill that microcluster geometry or force the route into ultra-near resonance below the threshold scale
-next_verify: rg -n -F "D2g2. Borderline microcluster obstruction." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "logarithmic microcluster" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "log-sized microcluster" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened once more: outside `D2f3`, any failure of `D2g1` must first produce a log-sized paired microcluster on the threshold scale and then, by `D2g3`, infinitely many one-sided critical-line gaps `x_{\\gamma+1}-x_\\gamma\\ll M^{-2}` (equivalently `\\gamma_{n+1}-\\gamma_n\\ll \\gamma_n^{-2}`); the next attack is therefore to kill this compressed-gap geometry or else force the route fully into ultra-near resonance below the threshold scale
+next_verify: rg -n -F "D2g3. Gap-extraction from borderline microclusters." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "absurdly compressed one-sided critical-line gaps" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "one-sided critical-line gaps" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

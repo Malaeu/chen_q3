@@ -5022,3 +5022,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   tail-bound paper gives local-statistics background at the much coarser
   `1/\log T` scale under RH, but none of these gives the missing theorem at
   the `1/M^2` scale.
+- this reduction is now frozen as `D2g3`:
+  because the pair support is `Y_a=\{x_\gamma,x_\gamma-1\}`, a microscopic
+  packet around `M` splits into two disjoint one-sided packets around `M` and
+  `M+1`; if the total packet has size `\ge \eta \log M`, then one of those
+  one-sided packets has size `\ge (\eta/2)\log M`, still inside width
+  `\asymp (\log M)/M^2`.
+- ordering that packet immediately gives a consecutive one-sided support gap
+  `x_{\gamma+1}-x_\gamma\ll_{\eta,C} M^{-2}`, hence a zeta-zero ordinate gap
+  `\gamma_{n+1}-\gamma_n\ll \gamma_n^{-2}` along an infinite subsequence.
+- this is a strong compression. The active direct route is now:
+  `D2g1` or else `D2g2` or else `D2g3` or else `D2f3`.
+  So outside the ultra-near branch, any surviving counterexample must force
+  infinitely many absurdly compressed one-sided critical-line gaps.

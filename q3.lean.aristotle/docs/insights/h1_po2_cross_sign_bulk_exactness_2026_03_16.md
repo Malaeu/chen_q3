@@ -2035,6 +2035,88 @@ this means that a borderline counterexample would need a near-maximal
 logarithmic microcluster of support points inside a microscopic window of width
 `\asymp (\log M)/M^2`.
 
+There is now a further reduction from the paired support `Y_a` to the
+one-sided support `X_a=\{x_\gamma\}`. Write
+
+```tex
+\mathcal P_M(c,C)=\mathcal P_M^{(+)}(c,C)\sqcup \mathcal P_M^{(-)}(c,C),
+```
+
+where
+
+```tex
+\mathcal P_M^{(+)}(c,C):=
+\left\{
+\gamma:\ c\,\frac{\log M}{M^2}
+\le |x_\gamma-M|
+\le C\,\frac{\log M}{M^2}
+\right\},
+```
+
+and
+
+```tex
+\mathcal P_M^{(-)}(c,C):=
+\left\{
+\gamma:\ c\,\frac{\log M}{M^2}
+\le |x_\gamma-(M+1)|
+\le C\,\frac{\log M}{M^2}
+\right\}.
+```
+
+Since the paired poles are separated by exactly `1`, these two packets are
+disjoint for all large `M`, and
+
+```tex
+\#\mathcal P_M(c,C)
+=
+\#\mathcal P_M^{(+)}(c,C)+\#\mathcal P_M^{(-)}(c,C).
+```
+
+Hence any packet with `\#\mathcal P_M(c,C)\gtrsim \log M` forces one of the
+two one-sided packets to satisfy
+
+```tex
+\max\{\#\mathcal P_M^{(+)}(c,C),\#\mathcal P_M^{(-)}(c,C)\}\gtrsim \log M.
+```
+
+This gives the next direct consequence.
+
+```tex
+\textbf{D2g3. Gap-extraction from borderline microclusters.}
+```
+
+If along some subsequence
+
+```tex
+\#\mathcal P_M(c,C)\ge \eta \log M
+```
+
+for some `\eta>0`, then for infinitely many such `M` there exists a block of
+at least `( \eta/2)\log M` points of `X_a` inside an interval of length
+`\ll_C (\log M)/M^2` around either `M` or `M+1`. Ordering those points and
+using the pigeonhole principle, one obtains a consecutive one-sided gap
+
+```tex
+x_{\gamma+1}-x_\gamma \ll_{\eta,C} \frac{1}{M^2}.
+```
+
+Since `x_\gamma=(a/\pi)\gamma`, this is equivalent to an actual zeta-zero
+spacing
+
+```tex
+\gamma_{n+1}-\gamma_n \ll_{a,\eta,C} \frac{1}{\gamma_n^2}
+```
+
+along an infinite subsequence.
+
+So the current direct route has sharpened again:
+
+- either `D2g1` is true and the borderline packet is negligible;
+- or `D2g2` forces a logarithmic microcluster on the paired support;
+- and then `D2g3` forces infinitely many one-sided critical-line gaps of order
+  `O(M^{-2})`.
+
 So the direct route is now split with no ambiguity:
 
 - `D2f2` gives the generic zeroth-moment cancellation `\sum e(y)=0`;
@@ -2043,6 +2125,8 @@ So the direct route is now split with no ambiguity:
   the paired correction term;
 - `D2g2` sharpens this: unless there is a logarithmic microcluster on the
   exact threshold scale, the borderline packet is already negligible;
+- `D2g3` pushes any such microcluster down to one-sided gaps
+  `x_{\gamma+1}-x_\gamma\ll M^{-2}`;
 - failing that, only the ultra-near resonance obstruction `D2f3` remains live.
 
 There is also a valid but more global meta-reduction in terms of the tail
