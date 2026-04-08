@@ -4967,3 +4967,17 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   standard Gamma-ratio / Newton-difference formulas, not as a source of the
   missing rigidity theorem. So the new static `D2e` target should be treated
   as genuinely ours, not as a known theorem we merely failed to locate.
+- in-progress synthesis for the next `D2g1` attack:
+  the exact target is now the resonant packet of
+  `\sum_\gamma q_\gamma/((x_\gamma-M)(x_\gamma-1-M))` on the borderline scale
+  `(\log M)/M^2`;
+  local oracle search was still low-signal, while direct `qmd` calls only
+  returned generic corrected-cone / Digamma noise or timed out on the new
+  packet queries, so there is still no sign of a ready-made theorem;
+  external web search was likewise low-yield and gave only sanity-check level
+  background on arithmetic-progressions / localization, not the missing local
+  correction lemma;
+  the concrete plan is therefore to quantify the packet contribution directly:
+  show that at the threshold scale it is bounded by `#packet / \log M`, so a
+  nontrivial obstruction would force a logarithmic microcluster of support
+  points inside a window of width `\asymp (\log M)/M^2`.
