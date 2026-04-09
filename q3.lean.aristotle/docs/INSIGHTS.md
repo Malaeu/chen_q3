@@ -5124,3 +5124,20 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   on bounded-size windows neither `\kappa` nor `\beta` can collapse without
   genuine geometric degeneration, so any local obstruction must either enlarge
   the packet size or enter the resonance/compressed-gap branch.
+- this is now frozen as `D2g7/D2g8`.
+  For the incidence side, `\beta(G)` is the square root of the smallest
+  positive Laplacian eigenvalue. Standard spectral graph theory gives that
+  among connected simple graphs on `r` vertices the path graph minimizes
+  algebraic connectivity, hence
+  `\beta(G)\ge 2\sin(\pi/(2r))`; multiedges only increase the Laplacian.
+- therefore if a local packet touches at most `L` active vertices, then
+  `\beta(G)\ge 2\sin(\pi/(2L))>0`. Combined with `D2g6`, this yields a full
+  bounded-size barrier:
+  if the packet size is bounded and the Cauchy-side geometry stays nondegenerate,
+  then `\kappa(V,B)\beta(G)` cannot collapse at all.
+- practical consequence:
+  bounded-size local packets are now completely out of the mystery zone.
+  Any surviving local obstruction must either force genuine geometric
+  degeneration on the Cauchy side, or make the active packet size tend to
+  infinity, or both. That is exactly the right funnel into the
+  `D2g3/D2f3` branch.

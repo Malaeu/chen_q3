@@ -2433,6 +2433,80 @@ So the stability-collapse branch now has a genuine internal split:
 - `\kappa`-collapse, at least on bounded-size windows, already forces
   resonance or geometric compression.
 
+The graph side also admits a clean bounded-size barrier.
+
+```tex
+\textbf{D2g7. Bounded-size incidence stability.}
+```
+
+Let `G` be a finite oriented multigraph and let `r` be the number of vertices
+in the union of its nontrivial connected components (equivalently: the
+vertices touched by at least one edge of the packet). Then the nonzero
+singular values of the incidence matrix `B_G` are the square roots of the
+positive eigenvalues of the graph Laplacian `L_G=B_GB_G^*`.
+
+Hence
+
+```tex
+\beta(G)=\sigma_{\min}(B_G|_{\ker(B_G)^\perp})
+=\sqrt{\lambda_*(L_G)},
+```
+
+where `\lambda_*(L_G)` is the smallest positive Laplacian eigenvalue.
+
+For a connected simple graph on `r` vertices, the algebraic connectivity is
+minimized by the path graph, so
+
+```tex
+\lambda_*(L_G)\ge 2-2\cos(\pi/r),
+```
+
+and therefore
+
+```tex
+\beta(G)\ge 2\sin(\pi/(2r)).
+```
+
+Passing from a simple graph to a multigraph only increases the Laplacian in
+the positive-semidefinite order, so the same lower bound remains valid for the
+packet graphs arising here. In particular, if the local packet size is bounded
+by `L`, then every local graph built on at most `L` active vertices satisfies
+
+```tex
+\beta(G)\ge 2\sin(\pi/(2L))>0.
+```
+
+This gives the next exact corollary.
+
+```tex
+\textbf{D2g8. No bounded-size stability collapse.}
+```
+
+If both:
+
+- the packet size is bounded by a fixed `L`, and
+- the geometric hypotheses of `D2g6` hold with uniform parameters,
+
+then
+
+```tex
+\kappa(V,B)\beta(G)\ge c(L,\rho,\delta,D)>0.
+```
+
+So on bounded-size local windows there is no genuine stability collapse at
+all.
+
+Therefore any surviving local obstruction must do at least one of the
+following:
+
+1. force `\kappa`-collapse through resonance or compressed support geometry;
+2. make the active local packet size tend to infinity;
+3. combine both phenomena.
+
+This is a strong narrowing of branch B: bounded-size packets are no longer a
+source of mystery, and the only remaining routes are large packets or genuine
+geometric degeneration, both already aligned with the `D2g3/D2f3` branch.
+
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
 
