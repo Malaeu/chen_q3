@@ -5171,3 +5171,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   Any genuine local obstruction must now pass through
   `\delta(V_n)\to 0` or `\#V_n\to\infty`.
   That is already exactly the funnel we wanted into `D2g3/D2f3`.
+- next in-progress reduction:
+  once bounded-size packets are dead, the remaining packet-growth branch should
+  be cut against the old local counting bound
+  `\#(Y_a\cap[t-1,t+1])\ll_a \log(2+t)`.
+  If a large local packet stays inside a fixed near-tail slab around `M`, then
+  pigeonhole on that slab forces a microscopic subinterval containing
+  `\gg \log M` active vertices, hence a microcluster and then a compressed-gap
+  output by the already-frozen `D2g2/D2g3` mechanism.
+- so the clean next theorem-shape is:
+  after excluding drift, unbounded packet growth inside a fixed near-tail slab
+  cannot remain diffuse; it must concentrate into the same short-scale
+  microcluster geometry that already feeds `D2f3`.
