@@ -5052,3 +5052,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   out of the full infinite correction term while preserving the whole tail of
   zeros. So `D2g4` is a strong local structural theorem, not yet the mainline
   endgame.
+- in-progress synthesis for the next brick:
+  replace exact local forest/cycle dichotomy by a quantitative finite-window
+  statement on sample defects;
+  work with a finite vertex set `V`, the finite Cauchy sample matrix `C_V`,
+  and the incidence matrix `B_G` of the local pair-graph;
+  prove the exact factorization `s(c)=C_V B_G c`, invertibility of `C_V`, and
+  then the estimate
+  `\operatorname{dist}(c,\ker B_G)\le (\kappa(V,N)\beta(G))^{-1}\|s(c)\|_2`;
+  this would show that approximate local packets are forced toward cycle-space,
+  and any surviving obstruction must come from collapse of the stability
+  constants `\kappa(V,N)\beta(G)`, which is exactly the right entry point into
+  the resonance branch `D2f3`.
