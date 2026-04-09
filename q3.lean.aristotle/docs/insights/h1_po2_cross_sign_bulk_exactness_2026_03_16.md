@@ -2194,6 +2194,135 @@ Important boundary of applicability:
   how to exact-truncate the full infinite paired correction term to such a
   finite packet while preserving all tail zeros.
 
+There is now a stronger finite-window upgrade of this local picture. Fix
+distinct vertices
+
+```tex
+V=\{v_1,\dots,v_L\}\subset (-\infty,N+1),
+```
+
+let `x_m:=N+m` for `m=1,\dots,L`, and consider a finite oriented pair-graph
+`G` on `V` with edges `e_j:a_j\to b_j` and coefficients `c=(c_1,\dots,c_M)^T`.
+Define the local paired packet
+
+```tex
+K_c(z):=\sum_{j=1}^M c_j\left(\frac{1}{a_j-z}-\frac{1}{b_j-z}\right),
+```
+
+and its first `L` tail samples
+
+```tex
+s(c):=\bigl(K_c(N+1),\dots,K_c(N+L)\bigr)^T\in \mathbb C^L.
+```
+
+Introduce:
+
+- the finite Cauchy sample matrix
+
+```tex
+C_V:=\left(\frac{1}{v_i-(N+m)}\right)_{m=1,\dots,L}^{i=1,\dots,L},
+```
+
+- and the incidence matrix `B_G\in M_{L\times M}(\mathbb C)`, whose `j`-th
+  column has `+1` at `a_j`, `-1` at `b_j`, and `0` elsewhere.
+
+Then the divergence vector on vertices is exactly
+
+```tex
+d=B_G c,
+```
+
+and regrouping gives the exact factorization
+
+```tex
+\textbf{D2g5. Quantitative finite-window cycle-space rigidity.}
+```
+
+```tex
+s(c)=C_V B_G c.
+```
+
+Moreover:
+
+1. `C_V` is invertible.
+
+   Indeed, if `C_V d=0`, then the ordinary receiver
+
+   ```tex
+   R_d(z):=\sum_{i=1}^L \frac{d_i}{v_i-z}
+   ```
+
+   vanishes at the `L` distinct tail points `N+1,\dots,N+L`. After
+   multiplication by `\prod_i (v_i-z)`, one gets a polynomial of degree at
+   most `L-1` with `L` distinct zeros, hence zero; therefore `d=0`.
+
+2. Writing
+
+   ```tex
+   \kappa(V,N):=\sigma_{\min}(C_V)>0,
+   ```
+
+   one has
+
+   ```tex
+   \|s(c)\|_2\ge \kappa(V,N)\,\|B_G c\|_2.
+   ```
+
+3. Let `Z_G:=\ker B_G` be the cycle space. On `Z_G^\perp`,
+
+   ```tex
+   \beta(G):=\sigma_{\min}(B_G|_{Z_G^\perp})>0,
+   ```
+
+   and therefore
+
+   ```tex
+   \|B_G c\|_2\ge \beta(G)\,\operatorname{dist}(c,Z_G).
+   ```
+
+Combining these estimates yields the finite-window rigidity inequality
+
+```tex
+\operatorname{dist}(c,\ker B_G)
+\le
+\frac{1}{\kappa(V,N)\beta(G)}\,\|s(c)\|_2.
+```
+
+So approximate local packets with tiny tail defect are quantitatively forced
+toward the cycle space.
+
+Two corollaries are immediate.
+
+First, if `s(c)=0`, then
+
+```tex
+c\in \ker B_G.
+```
+
+Hence every exact finite local packet lies in the cycle space, and because
+`B_G c=0` means zero divergence, the corresponding paired correction term is
+actually identically zero.
+
+Second, if `G` is a forest, then `\ker B_G=\{0\}`, so one gets the uniform
+lower bound
+
+```tex
+\|s(c)\|_2\ge \kappa(V,N)\beta(G)\,\|c\|_2.
+```
+
+Thus finite forest packets are not only exact-dead (`D2g4`), but
+quantitatively dead: they cannot even approximately annihilate the first `L`
+tail samples unless the packet itself is small.
+
+This sharpens the live branch point:
+
+- if `\kappa(V,N)\beta(G)` stays bounded below on the relevant local windows,
+  then `D2g1` collapses into the cycle space and there is no surviving local
+  obstruction;
+- if a local obstruction survives, it must do so through collapse of the
+  stability constants `\kappa(V,N)\beta(G)`, which is exactly the right
+  birthplace for the resonance branch `D2f3`.
+
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
 

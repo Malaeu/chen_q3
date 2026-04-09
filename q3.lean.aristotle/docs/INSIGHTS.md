@@ -5064,3 +5064,24 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   and any surviving obstruction must come from collapse of the stability
   constants `\kappa(V,N)\beta(G)`, which is exactly the right entry point into
   the resonance branch `D2f3`.
+- this is now frozen as `D2g5`. For a finite window
+  `V=\{v_1,\dots,v_L\}\subset(-\infty,N+1)`, local pair-graph `G`, and packet
+  coefficients `c`, the first `L` tail samples satisfy the exact factorization
+  `s(c)=C_V B_G c`, where `C_V` is the finite Cauchy sample matrix and `B_G`
+  is the incidence matrix.
+- `C_V` is invertible by the usual polynomial argument for a finite ordinary
+  receiver vanishing at `L` tail points, so with
+  `\kappa(V,N)=\sigma_{\min}(C_V)>0` and
+  `\beta(G)=\sigma_{\min}(B_G|_{\ker(B_G)^\perp})>0` one gets
+  `\operatorname{dist}(c,\ker B_G)\le (\kappa(V,N)\beta(G))^{-1}\|s(c)\|_2`.
+- this is the clean quantitative version of the old local picture:
+  approximate finite packets with tiny sample defect are forced toward the
+  cycle space. In particular, exact finite packets lie in the cycle space and
+  therefore define the zero paired correction term; forests are even
+  quantitatively dead because then `\ker B_G=\{0\}`.
+- practical verdict:
+  branch B is now mathematically clean.
+  If `\kappa(V,N)\beta(G)` stays uniformly bounded below on relevant windows,
+  then `D2g1` dies locally.
+  So any surviving local obstruction must come from collapse of these
+  stability constants, and that is now the right hard brick feeding `D2f3`.
