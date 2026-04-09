@@ -5109,3 +5109,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   stability-collapse branch is now cleanly split:
   `\beta`-collapse is graph/combinatorial, while `\kappa`-collapse on bounded
   windows already means “resonance or compressed geometry”.
+- next in-progress sharpened target:
+  bounded-size windows should also kill the `\beta`-channel.
+  For an oriented graph `G`, the nonzero singular values of the incidence
+  matrix are the square roots of the positive Laplacian eigenvalues; in
+  particular `\beta(G)` is the square root of the smallest positive Laplacian
+  eigenvalue on the relevant support components.
+- standard spectral graph theory then says that among connected simple graphs
+  on `r` vertices, the path minimizes algebraic connectivity, so
+  `\beta(G)\ge 2\sin(\pi/(2r))`; multiedges can only increase the Laplacian.
+  Therefore if the local packet size is bounded by `L`, then
+  `\beta(G)\ge 2\sin(\pi/(2L))>0`.
+- if this is written cleanly, the surviving obstruction is squeezed again:
+  on bounded-size windows neither `\kappa` nor `\beta` can collapse without
+  genuine geometric degeneration, so any local obstruction must either enlarge
+  the packet size or enter the resonance/compressed-gap branch.
