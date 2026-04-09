@@ -2323,6 +2323,116 @@ This sharpens the live branch point:
   stability constants `\kappa(V,N)\beta(G)`, which is exactly the right
   birthplace for the resonance branch `D2f3`.
 
+There is also now a clean first split of this stability-collapse problem.
+
+```tex
+\textbf{D2g6. Bounded-window Cauchy stability split.}
+```
+
+Fix a bounded-size local window
+
+```tex
+V=\{v_1,\dots,v_L\}\subset (-\infty,B+1),
+\qquad
+x_m:=B+m,\ m=1,\dots,L,
+```
+
+and let `C_{V,B}` be the corresponding finite Cauchy matrix
+
+```tex
+\left(\frac{1}{v_i-x_m}\right)_{m=1,\dots,L}^{i=1,\dots,L}.
+```
+
+Assume:
+
+1. `L` is fixed;
+2. sample separation:
+
+   ```tex
+   \min_{i,m}|v_i-x_m|\ge \rho>0;
+   ```
+
+3. pairwise vertex separation:
+
+   ```tex
+   \min_{i\ne j}|v_i-v_j|\ge \delta>0;
+   ```
+
+4. coarse diameter control:
+
+   ```tex
+   \max_{i,m}|v_i-x_m|\le D.
+   ```
+
+Then `\kappa(V,B)=\sigma_{\min}(C_{V,B})` admits a positive lower bound
+depending only on `(L,\rho,\delta,D)`.
+
+Indeed, the Cauchy determinant formula gives
+
+```tex
+|\det C_{V,B}|
+=
+\frac{
+\prod_{1\le i<j\le L}|v_j-v_i|
+\prod_{1\le m<n\le L}|x_n-x_m|
+}{
+\prod_{i,m}|v_i-x_m|
+}.
+```
+
+Since the sample grid is consecutive, the second product is a fixed positive
+constant depending only on `L`; the numerator is bounded below by
+`\delta^{L(L-1)/2}`; and the denominator is bounded above by `D^{L^2}`.
+Hence
+
+```tex
+|\det C_{V,B}|\ge c_L\,\delta^{L(L-1)/2} D^{-L^2}
+```
+
+for some `c_L>0`.
+
+On the other hand,
+
+```tex
+\|C_{V,B}\| \le \frac{L}{\rho}.
+```
+
+Using
+
+```tex
+\sigma_{\min}(C)\ge \frac{|\det C|}{\|C\|^{L-1}},
+```
+
+we obtain
+
+```tex
+\kappa(V,B)\ge
+c'_L\,
+\delta^{L(L-1)/2}
+\rho^{\,L-1}
+D^{-L^2}
+>0.
+```
+
+Therefore, on bounded-size local windows, collapse of `\kappa(V,B)` forces at
+least one geometric pathology:
+
+- either the window approaches the tail sample grid:
+  `\min_{i,m}|v_i-x_m|\to 0`;
+- or two vertices of the window collide:
+  `\min_{i\ne j}|v_i-v_j|\to 0`;
+- or the window escapes so far that the crude diameter control `D` itself
+  degenerates.
+
+In the actual `D2` setting the first two are the meaningful cases: resonance
+to the integer tail, or compressed support gaps.
+
+So the stability-collapse branch now has a genuine internal split:
+
+- `\beta`-collapse is the graph/combinatorial side;
+- `\kappa`-collapse, at least on bounded-size windows, already forces
+  resonance or geometric compression.
+
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
 

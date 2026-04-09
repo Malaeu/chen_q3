@@ -5097,3 +5097,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   either some vertex approaches the sample grid (resonance), or some pair of
   vertices approaches each other (compressed support gap).
   This is exactly the sort of “impossible geometry” we want.
+- this is now frozen as `D2g6`. Using the Cauchy determinant formula plus the
+  crude norm bound `\|C\|\le L/\rho`, one gets a positive lower bound for
+  `\kappa(V,B)` on every bounded-size local window with uniform sample
+  separation `\rho`, pairwise vertex separation `\delta`, and coarse diameter
+  bound `D`.
+- therefore bounded-size `\kappa`-collapse already forces genuine geometric
+  degeneration: either resonance to the sampled tail grid, or compressed
+  vertex gaps, or escape of the whole window.
+- in our actual `D2` setting the first two are the meaningful cases. So the
+  stability-collapse branch is now cleanly split:
+  `\beta`-collapse is graph/combinatorial, while `\kappa`-collapse on bounded
+  windows already means “resonance or compressed geometry”.
