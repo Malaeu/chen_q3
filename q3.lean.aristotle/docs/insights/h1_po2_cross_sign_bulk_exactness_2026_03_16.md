@@ -2588,6 +2588,79 @@ This is exactly the right entry point into the `D2g3/D2f3` resonance branch:
 the first mode is compressed support geometry, and the second mode must be
 combined with the earlier microcluster machinery.
 
+The packet-growth branch can now be pushed into that same machinery.
+
+```tex
+\textbf{D2g10. Large-packet concentration reduction.}
+```
+
+Keep the drift-excluded setting of `D2g9`: suppose the active vertices satisfy
+
+```tex
+V_n\subset [N+1-R_0,\;N+1-\eta_0]
+```
+
+for fixed `R_0>\eta_0>0`, but now
+
+```tex
+\#V_n\to\infty.
+```
+
+Because this slab has fixed length `R_0-\eta_0`, partition it into unit
+interval packets
+
+```tex
+I_{n,\ell}:=[N-\ell,\;N-\ell+1],\qquad \ell=0,1,\dots,\lceil R_0\rceil.
+```
+
+By pigeonhole, for every `n` there exists at least one unit interval with
+
+```tex
+\#(V_n\cap I_{n,\ell_n})
+\ge
+\frac{\#V_n}{\lceil R_0\rceil+1}.
+```
+
+On the other hand, the ambient support still lies in `Y_a`, and we already
+have the inherited local counting estimate
+
+```tex
+\#(Y_a\cap [t-1,t+1])\ll_a \log(2+t).
+```
+
+So the only way that `\#V_n` can become large inside a fixed near-tail slab is
+that, along a subsequence, some unit interval already carries a packet of
+order comparable to the local logarithmic bound.
+
+Equivalently:
+
+- either `\#V_n` stays bounded after all, contradicting the packet-growth
+  assumption;
+- or the packet-growth branch necessarily produces a dense local unit packet of
+  size `\gtrsim \log M_n` along a subsequence.
+
+This is not yet identical to the threshold packet `\mathcal P_{M_n}(c,C)` of
+`D2g2`, but it is already the correct entry point: once a whole unit packet is
+forced to carry logarithmically many active vertices, the remaining work is to
+refine that density from unit scale down to the threshold scale
+`\asymp (\log M_n)/M_n^2`.
+
+So the honest current conclusion is:
+
+```tex
+\text{packet growth}
+\Longrightarrow
+\text{dense local unit packet}
+\Longrightarrow
+\text{threshold microcluster or direct compressed-gap output.}
+```
+
+Either way, there is no separate large-packet mystery branch after drift is
+excluded: packet growth already pushes the route toward the same compressed-gap
+/ resonance geometry isolated in `D2g3/D2f3`.
+
+This is the current strongest reduction of branch B.
+
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
 

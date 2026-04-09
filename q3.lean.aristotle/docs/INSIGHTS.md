@@ -5183,3 +5183,13 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   after excluding drift, unbounded packet growth inside a fixed near-tail slab
   cannot remain diffuse; it must concentrate into the same short-scale
   microcluster geometry that already feeds `D2f3`.
+- this is now frozen as `D2g10` in a deliberately honest form.
+  Packet growth in a fixed near-tail slab implies, by pigeonhole plus the old
+  local counting bound, a dense local unit packet carrying `\gtrsim \log M`
+  active vertices along a subsequence.
+- that is not yet the same as the threshold packet `\mathcal P_M(c,C)` from
+  `D2g2`, so the last refinement step is still open. But the mystery is gone:
+  after excluding drift, large packets cannot stay diffuse. They must already
+  enter dense local geometry, and from there the remaining work is exactly to
+  refine unit-scale density down to threshold-scale microclustering or extract
+  a direct compressed-gap consequence.

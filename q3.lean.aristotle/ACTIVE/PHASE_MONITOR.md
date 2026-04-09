@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g9` now shows that after excluding support drift there is no third bounded-size survival mode, so any genuine local obstruction must pass through compressed-gap geometry or unbounded packet growth; the next attack is therefore to combine packet-growth with the earlier microcluster/gap machinery and show that large packets themselves force the `D2g3/D2f3` resonance branch
-next_verify: rg -n -F "D2g9. Drift-excluded bounded-size collapse dichotomy." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "there is no third bounded-size survival mode" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "no third bounded-size survival mode" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g9` removes all bounded-size survival modes after drift exclusion, and `D2g10` shows that packet growth in a fixed near-tail slab already forces a dense local unit packet of size `\\gtrsim \\log M`; the next attack is to refine that unit-scale density into threshold-scale microclustering or a direct compressed-gap consequence, feeding the same `D2g3/D2f3` branch
+next_verify: rg -n -F "D2g10. Large-packet concentration reduction." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "large packets cannot stay diffuse" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "dense local unit packet" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
