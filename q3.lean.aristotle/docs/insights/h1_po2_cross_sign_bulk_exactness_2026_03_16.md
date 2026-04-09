@@ -2661,6 +2661,88 @@ excluded: packet growth already pushes the route toward the same compressed-gap
 
 This is the current strongest reduction of branch B.
 
+In fact, the drift-excluded branch can now be compressed even further.
+
+```tex
+\textbf{D2g11. Drift-excluded local obstruction forces compressed gaps.}
+```
+
+Let `(V_n,G_n,c_n)` be normalized local packets with
+
+```tex
+\|c_n\|_2=1,
+\qquad
+\|s_n(c_n)\|_2\to 0,
+```
+
+and assume all active vertices remain in one fixed near-tail slab:
+
+```tex
+V_n\subset [N+1-R_0,\;N+1-\eta_0]
+```
+
+for some fixed `R_0>\eta_0>0`.
+
+Suppose we are in the genuinely surviving branch, meaning that the packets do
+not collapse asymptotically into cycle space:
+
+```tex
+\operatorname{dist}(c_n,\ker B_{G_n})\not\to 0.
+```
+
+Then necessarily
+
+```tex
+\delta(V_n):=\min_{i<j}|v_i^{(n)}-v_j^{(n)}|\longrightarrow 0.
+```
+
+Proof. If not, then after passing to a subsequence there is `\delta_0>0` with
+`\delta(V_n)\ge \delta_0`. There are now two cases.
+
+1. `\#V_n` is bounded along a further subsequence. Then `D2g9` applies and
+   forces
+
+   ```tex
+   \operatorname{dist}(c_n,\ker B_{G_n})\to 0,
+   ```
+
+   contradicting the survival assumption.
+
+2. `\#V_n\to\infty` along a subsequence. But all vertices lie in an interval of
+   fixed length `R_0-\eta_0`, so the pigeonhole principle gives
+
+   ```tex
+   \delta(V_n)\le \frac{R_0-\eta_0}{\#V_n-1}\longrightarrow 0,
+   ```
+
+   again contradicting `\delta(V_n)\ge \delta_0`.
+
+So the only possible conclusion is `\delta(V_n)\to 0`.
+
+This is an important simplification:
+
+- after excluding support drift, branch B no longer splits into
+  “bounded-size packets” versus “large packets” as genuinely different
+  survival mechanisms;
+- bounded-size packets are killed by `D2g9` unless they already produce gap
+  compression;
+- large packets also automatically produce gap compression by elementary
+  pigeonhole.
+
+Hence the whole surviving drift-excluded branch B is now squeezed into one
+geometric mode:
+
+```tex
+\text{surviving local obstruction}
+\Longrightarrow
+\delta(V_n)\to 0.
+```
+
+So packet growth is no longer an independent mystery branch at all; it is just
+another route into compressed-gap geometry. The only real remaining task is to
+upgrade this generic gap-collapse from `\delta(V_n)\to 0` to the sharper
+threshold geometry already isolated in `D2g2/D2g3/D2f3`.
+
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
 

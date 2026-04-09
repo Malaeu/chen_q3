@@ -5203,3 +5203,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   theorem should therefore say that any genuinely surviving local obstruction
   in branch B forces `\delta(V_n)\to 0`; cycle-space collapse is the only
   alternative, and once that is excluded, compressed gaps are unavoidable.
+- this is now frozen as `D2g11`.
+  If normalized local packets stay in one fixed near-tail slab and do not
+  collapse into cycle space, then their minimal support gap must satisfy
+  `\delta(V_n)\to 0`.
+- proof is clean: bounded-size subsequences are killed by `D2g9`, while
+  unbounded-size subsequences give `\delta(V_n)\to 0` immediately by
+  pigeonhole in a fixed-length interval.
+- this is a strong simplification:
+  after excluding drift, packet growth is no longer a separate surviving mode.
+  The whole branch B is now funneled into one geometric output:
+  compressed-gap geometry. The only remaining hard part is quantitative:
+  upgrade `\delta(V_n)\to 0` to the sharper threshold-scale geometry already
+  isolated in `D2g2/D2g3/D2f3`.
