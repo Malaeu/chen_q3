@@ -5035,3 +5035,20 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `D2g1` or else `D2g2` or else `D2g3` or else `D2f3`.
   So outside the ultra-near branch, any surviving counterexample must force
   infinitely many absurdly compressed one-sided critical-line gaps.
+- there is now also a clean exact local theorem in the paired direction:
+  a finite one-sided paired correction term
+  `K(z)=\sum_j c_j(1/(a_j-z)-1/(b_j-z))` with all `a_j,b_j<N+1` and
+  tail zeros `K(N+m)=0` for all `m\ge 1` can be regrouped as an ordinary
+  one-sided receiver `K(z)=\sum_{v\in V} d(v)/(v-z)`, where `d(v)` is the
+  divergence of the weighted pair-graph.
+- one-sided rigidity then forces `d(v)=0` at every vertex. If the underlying
+  finite pair-graph is a forest, leaf-stripping kills all edge weights, so the
+  whole correction term is zero. This is now frozen as `D2g4`.
+- this is a real theorem, and it is a nice local kill: any nontrivial exact
+  finite local paired correction with tail zeros must already carry cycle
+  structure.
+- but it is still not the global closure of `D2g1`, because the missing step
+  is exact truncation: we do not yet know how to carve such a finite packet
+  out of the full infinite correction term while preserving the whole tail of
+  zeros. So `D2g4` is a strong local structural theorem, not yet the mainline
+  endgame.

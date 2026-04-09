@@ -2117,6 +2117,61 @@ So the current direct route has sharpened again:
 - and then `D2g3` forces infinitely many one-sided critical-line gaps of order
   `O(M^{-2})`.
 
+There is also now a clean local theorem for exact finite paired corrections.
+Consider a finite one-sided paired correction term
+
+```tex
+K(z)=\sum_{j=1}^L c_j\left(\frac{1}{a_j-z}-\frac{1}{b_j-z}\right),
+\qquad
+a_j<b_j<N+1,
+```
+
+and assume
+
+```tex
+K(N+m)=0\qquad \forall m\ge 1.
+```
+
+Let `V=\{a_1,b_1,\dots,a_L,b_L\}` and define the divergence on vertices by
+
+```tex
+d(v):=
+\sum_{j:a_j=v} c_j
+\;-\!
+\sum_{j:b_j=v} c_j.
+```
+
+Then exact regrouping gives
+
+```tex
+K(z)=\sum_{v\in V}\frac{d(v)}{v-z}.
+```
+
+Since all vertices lie in `(-\infty,N+1)`, one-sided tail-zero rigidity
+implies
+
+```tex
+d(v)=0\qquad \forall v\in V.
+```
+
+Now form the finite pair-graph with vertex set `V` and one oriented edge
+`a_j\to b_j` of weight `c_j` for each pair. If the underlying undirected graph
+is a forest, then every divergence-free flow on it is zero: strip a leaf,
+observe that its unique incident edge must have zero weight, delete that edge,
+and continue inductively.
+
+This yields:
+
+```tex
+\textbf{D2g4. Finite forest kill for exact local paired corrections.}
+```
+
+If a finite one-sided paired correction term has tail zeros and its pair-graph
+is acyclic, then all coefficients vanish.
+
+So any nontrivial exact finite local paired correction with one-sided tail
+zeros must carry cycle structure.
+
 So the direct route is now split with no ambiguity:
 
 - `D2f2` gives the generic zeroth-moment cancellation `\sum e(y)=0`;
@@ -2127,7 +2182,17 @@ So the direct route is now split with no ambiguity:
   exact threshold scale, the borderline packet is already negligible;
 - `D2g3` pushes any such microcluster down to one-sided gaps
   `x_{\gamma+1}-x_\gamma\ll M^{-2}`;
+- `D2g4` kills every exact finite aциклический local correction packet, so any
+  surviving exact local correction must already carry cycles;
 - failing that, only the ultra-near resonance obstruction `D2f3` remains live.
+
+Important boundary of applicability:
+
+- `D2g4` is a real theorem, but only for exact finite one-sided paired
+  corrections with tail zeros;
+- it does not yet close the live global `D2g1`, because we still do not know
+  how to exact-truncate the full infinite paired correction term to such a
+  finite packet while preserving all tail zeros.
 
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
