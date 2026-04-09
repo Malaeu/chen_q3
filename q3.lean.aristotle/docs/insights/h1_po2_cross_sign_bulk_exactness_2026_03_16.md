@@ -2507,6 +2507,87 @@ This is a strong narrowing of branch B: bounded-size packets are no longer a
 source of mystery, and the only remaining routes are large packets or genuine
 geometric degeneration, both already aligned with the `D2g3/D2f3` branch.
 
+This can now be packaged as a clean drift-excluded dichotomy.
+
+```tex
+\textbf{D2g9. Drift-excluded bounded-size collapse dichotomy.}
+```
+
+Let `(V_n,G_n,c_n)` be a sequence of finite local packets such that:
+
+```tex
+\|c_n\|_2=1,
+\qquad
+\|s_n(c_n)\|_2\to 0,
+```
+
+and assume there are fixed constants `R_0>\eta_0>0` and `L\in \mathbb N` with
+
+```tex
+V_n\subset [N+1-R_0,\;N+1-\eta_0],
+\qquad
+\#V_n\le L
+```
+
+for all `n`.
+
+Then exactly one of the following must happen:
+
+1. **compressed-gap geometry**
+
+   ```tex
+   \delta(V_n):=\min_{i<j}|v_i^{(n)}-v_j^{(n)}|\longrightarrow 0;
+   ```
+
+2. **asymptotic cycle-space collapse**
+
+   ```tex
+   \operatorname{dist}(c_n,\ker B_{G_n})\longrightarrow 0.
+   ```
+
+Indeed, if `\inf_n \delta(V_n)>0`, then `D2g6` gives a uniform lower bound
+for `\kappa(V_n,N)`, because the slab control yields uniform bounds on
+`\eta(V_n)` and `R(V_n)`, while `\#V_n\le L` and `\inf \delta(V_n)>0` provide
+the remaining determinant parameters. At the same time `D2g7/D2g8` give a
+uniform lower bound for `\beta(G_n)` from `\#V_n\le L`. Hence
+
+```tex
+\kappa(V_n,N)\beta(G_n)\ge c(R_0,\eta_0,L,\inf\delta)>0,
+```
+
+and `D2g5` forces
+
+```tex
+\operatorname{dist}(c_n,\ker B_{G_n})
+\le
+\frac{\|s_n(c_n)\|_2}{\kappa(V_n,N)\beta(G_n)}
+\longrightarrow 0.
+```
+
+So after excluding support drift, there is no third bounded-size mechanism.
+
+This is the cleanest current form of branch B:
+
+- if the packet size stays bounded and support gaps do not compress, then the
+  packet is forced into the cycle space;
+- therefore any genuinely surviving bounded-window obstruction must already
+  create compressed-gap geometry;
+- otherwise the only remaining possibility is growth of the active local
+  packet size.
+
+Equivalently, after excluding drift, any genuine local obstruction must flow
+into one of the two sharp modes
+
+```tex
+\delta(V_n)\to 0
+\qquad\text{or}\qquad
+\#V_n\to\infty.
+```
+
+This is exactly the right entry point into the `D2g3/D2f3` resonance branch:
+the first mode is compressed support geometry, and the second mode must be
+combined with the earlier microcluster machinery.
+
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
 

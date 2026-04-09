@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g6` and `D2g7/D2g8` together show that bounded-size local packets cannot generate stability collapse unless the Cauchy geometry itself degenerates; therefore the next attack is to combine packet-growth with the earlier microcluster/gap machinery and show that any surviving obstruction must pass into the large-packet compressed-gap / resonance branch `D2g3/D2f3`
-next_verify: rg -n -F "D2g7. Bounded-size incidence stability." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "bounded-size local packets are now completely out of the mystery zone" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "large-packet compressed-gap / resonance branch" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g9` now shows that after excluding support drift there is no third bounded-size survival mode, so any genuine local obstruction must pass through compressed-gap geometry or unbounded packet growth; the next attack is therefore to combine packet-growth with the earlier microcluster/gap machinery and show that large packets themselves force the `D2g3/D2f3` resonance branch
+next_verify: rg -n -F "D2g9. Drift-excluded bounded-size collapse dichotomy." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "there is no third bounded-size survival mode" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "no third bounded-size survival mode" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

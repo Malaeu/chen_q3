@@ -5156,3 +5156,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   near-tail slab with bounded packet size, then they cannot survive unless the
   support gaps compress. Equivalently, after excluding drift, any surviving
   obstruction must come from compressed-gap geometry or unbounded packet size.
+- this is now frozen as `D2g9`.
+  Let `(V_n,G_n,c_n)` be normalized finite local packets with
+  `\|s_n(c_n)\|_2\to 0`, all windows staying inside one fixed near-tail slab,
+  and `\#V_n\le L`. Then either the minimal support gap
+  `\delta(V_n)\to 0`, or the coefficients are forced into the cycle space:
+  `\operatorname{dist}(c_n,\ker B_{G_n})\to 0`.
+- proof is exactly the new finite-window machine:
+  if `\inf\delta(V_n)>0`, then `D2g6` gives a uniform lower bound for
+  `\kappa(V_n,N)` and `D2g7/D2g8` give a uniform lower bound for `\beta(G_n)`,
+  so `D2g5` forces asymptotic cycle-space collapse.
+- practical reading:
+  after excluding drift, there is no third bounded-size survival mode.
+  Any genuine local obstruction must now pass through
+  `\delta(V_n)\to 0` or `\#V_n\to\infty`.
+  That is already exactly the funnel we wanted into `D2g3/D2f3`.
