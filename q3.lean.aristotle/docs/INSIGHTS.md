@@ -5141,3 +5141,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   degeneration on the Cauchy side, or make the active packet size tend to
   infinity, or both. That is exactly the right funnel into the
   `D2g3/D2f3` branch.
+- in-progress synthesis after `D2g7`:
+  the next exact theorem should no longer talk about the product
+  `\kappa(V,N)\beta(G)` abstractly, but about a three-way collapse split:
+  drift of the whole window, compressed gaps inside the support, or packet-size
+  growth.
+- external sanity-check for this step stayed standard and low-risk:
+  Cauchy determinant formula, the identity between nonzero singular values of
+  incidence and positive Laplacian eigenvalues, and the path-graph lower bound
+  for algebraic connectivity. No ready-made theorem for our exact PO2 packet
+  route appeared, which is fine: the missing bridge is now genuinely ours.
+- exact next target:
+  if normalized local packets have tiny sample defect and remain in a
+  near-tail slab with bounded packet size, then they cannot survive unless the
+  support gaps compress. Equivalently, after excluding drift, any surviving
+  obstruction must come from compressed-gap geometry or unbounded packet size.
