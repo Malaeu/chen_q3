@@ -5193,3 +5193,13 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   enter dense local geometry, and from there the remaining work is exactly to
   refine unit-scale density down to threshold-scale microclustering or extract
   a direct compressed-gap consequence.
+- sharper in-progress observation:
+  for the branch-B dichotomy we do not actually need the full unit-packet
+  density statement to get compression. If all active vertices stay inside one
+  fixed near-tail slab and `\#V_n\to\infty`, then the minimal gap already
+  satisfies `\delta(V_n)\le (R_0-\eta_0)/(\#V_n-1)\to 0` by plain pigeonhole.
+- so after excluding drift, packet growth is not a separate mystery branch at
+  all: it automatically collapses into compressed-gap geometry. The next clean
+  theorem should therefore say that any genuinely surviving local obstruction
+  in branch B forces `\delta(V_n)\to 0`; cycle-space collapse is the only
+  alternative, and once that is excluded, compressed gaps are unavoidable.
