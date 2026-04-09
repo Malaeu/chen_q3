@@ -5085,3 +5085,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   then `D2g1` dies locally.
   So any surviving local obstruction must come from collapse of these
   stability constants, and that is now the right hard brick feeding `D2f3`.
+- next in-progress split of that brick:
+  separate `\kappa`-collapse from `\beta`-collapse.
+  On the Cauchy side, the determinant formula for a finite Cauchy matrix says
+  that if a local window has bounded size, stays a definite distance away from
+  the sampled tail grid, and its vertices remain pairwise separated, then
+  `\kappa(V,N)` is bounded below by an explicit positive function of those
+  parameters.
+- so at least on bounded-size local windows, `\kappa`-collapse already forces
+  one of two geometric pathologies:
+  either some vertex approaches the sample grid (resonance), or some pair of
+  vertices approaches each other (compressed support gap).
+  This is exactly the sort of “impossible geometry” we want.
