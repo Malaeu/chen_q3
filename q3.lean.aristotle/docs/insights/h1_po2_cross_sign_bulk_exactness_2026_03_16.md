@@ -4803,6 +4803,136 @@ S(T+u)-S(T-u)\ge \frac12,
 
 then the integer-resonance branch of `D2g24` is impossible.
 
+There is also a clean Fourier-theoretic sufficient criterion for killing this
+branch.
+
+```tex
+\textbf{D2g25. Shrinking-target modulo-one exclusion criterion.}
+```
+
+Let
+
+```tex
+\alpha:=\frac{a}{\pi},
+\qquad
+N(T):=\#\{0<\gamma\le T\},
+\qquad
+S_j(T):=\sum_{0<\gamma\le T} e^{2\pi i j\alpha\gamma}.
+```
+
+Let `\varepsilon(T)>0` be any function with `\varepsilon(T)\to 0`, and define
+the shrinking target count
+
+```tex
+\mathcal N_\alpha(T,\varepsilon)
+:=
+\#\bigl\{0<\gamma\le T:\ \|\alpha\gamma\|<\varepsilon(T)\bigr\},
+```
+
+where `\|x\|` denotes distance to the nearest integer. Fix
+
+```tex
+H(T)\asymp \frac{1}{\varepsilon(T)}.
+```
+
+Then the following implication is enough for the direct route:
+
+if
+
+```tex
+\sum_{1\le j\le H(T)}\frac{|S_j(T)|}{j}
+=
+o\!\bigl(N(T)\varepsilon(T)\bigr),
+```
+
+then
+
+```tex
+\mathcal N_\alpha(T,\varepsilon)=o\!\bigl(N(T)\varepsilon(T)\bigr).
+```
+
+In particular, if
+
+```tex
+\varepsilon(T)=o\!\left(\frac{\log T}{T^2}\right),
+```
+
+then
+
+```tex
+N(T)\varepsilon(T)\asymp T\log T\cdot \varepsilon(T)\to 0,
+```
+
+so the above estimate forces
+
+```tex
+\mathcal N_\alpha(T,\varepsilon)=0
+```
+
+for all sufficiently large `T`, excluding the integer-resonance branch.
+
+Sketch. Approximate the indicator of the arc
+
+```tex
+I_\varepsilon:=(-\varepsilon,\varepsilon)\subset \mathbb R/\mathbb Z
+```
+
+from above and below by Beurling--Selberg or Fej\'er/Erd\H{o}s--Tur\'an majorants
+of Fourier degree `H(T)`. Their zeroth coefficient is `2\varepsilon(T)+O(1/H(T))`,
+and their nonzero Fourier coefficients are `O(1/j)` for `1\le j\le H(T)`.
+Evaluating these majorants on the multiset `\{\alpha\gamma\}_{0<\gamma\le T}`
+gives
+
+```tex
+\mathcal N_\alpha(T,\varepsilon)
+\le
+2\varepsilon(T)N(T)
++
+O\!\left(\frac{N(T)}{H(T)}\right)
++
+O\!\left(\sum_{1\le j\le H(T)}\frac{|S_j(T)|}{j}\right),
+```
+
+and similarly from below. With `H(T)\asymp 1/\varepsilon(T)`, the middle term
+is `O(N(T)\varepsilon(T))`, so the stated high-frequency control yields the
+claim.
+
+Thus the live problem is no longer vague modulo-one distribution, but one
+precise high-frequency target:
+
+```tex
+\text{control }S_j(T)\text{ up to }j\lesssim \frac{1}{\varepsilon(T)}.
+```
+
+For the branch relevant to `D2g24`, this means frequencies as large as
+
+```tex
+j\lesssim \frac{T^2}{\log T}.
+```
+
+This is exactly the shrinking-target burden.
+
+```tex
+\textbf{D2g25a. Exceptional/nonexceptional split.}
+```
+
+The Ford--Zaharescu picture suggests a clean tactical fork:
+
+1. if `\alpha=a/\pi` lies in the exceptional set
+
+   ```tex
+   \alpha=\frac{r\log p}{2\pi q},
+   ```
+
+   then one should exploit the explicit resonant density defect near the
+   corresponding rational points;
+
+2. if `\alpha` is nonexceptional, then the natural live target is the
+   high-frequency estimate in `D2g25`.
+
+So `D2g25` is the right next theorem packet: it converts the integer-resonance
+branch into one explicit shrinking-target Fourier problem.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
