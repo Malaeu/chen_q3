@@ -5232,3 +5232,13 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - this would already be a real gain, because any defect bound smaller than the
   corresponding threshold power would force the packet directly into the sharp
   compressed-gap regime feeding `D2g2/D2g3/D2f3`.
+- this is now frozen as `D2g12`.
+  On any fixed-size drift-excluded cycle-reduced subsequence,
+  `D2g5 + D2g6 + D2g7` give the explicit defect-to-gap law
+  `\|s_n(c_n)\|_2 \ge A(L,R_0,\eta_0)\,\delta(V_n)^{L(L-1)/2}` and hence
+  `\delta(V_n)\ll \|s_n(c_n)\|_2^{2/(L(L-1))}`.
+- therefore the bounded-size branch no longer asks for vague “gap collapse”.
+  It is enough to prove an analytic defect estimate below the critical power
+  `((\log M_n)/M_n^2)^{L(L-1)/2}`; that immediately forces
+  `\delta(V_n)=o((\log M_n)/M_n^2)` and drops the packet into the already-live
+  threshold/compressed-gap branch `D2g2/D2g3/D2f3`.

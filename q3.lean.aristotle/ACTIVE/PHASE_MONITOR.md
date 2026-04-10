@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g11` collapses the whole drift-excluded branch B into compressed-gap geometry, so packet growth is no longer an independent survival mode; the next attack is now purely quantitative, namely to upgrade generic gap-collapse `\\delta(V_n)\\to 0` to the sharper threshold-scale microcluster/compressed-gap geometry already isolated in `D2g2/D2g3/D2f3`
-next_verify: rg -n -F "D2g11. Drift-excluded local obstruction forces compressed gaps." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "packet growth is no longer a separate surviving mode" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "compressed-gap geometry" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g12` gives an explicit defect-to-gap law on fixed-size drift-excluded packets, so the next attack is no longer “prove some gap collapse”, but rather derive an analytic local-defect estimate below the critical power `((\\log M_n)/M_n^2)^{L(L-1)/2}` and thereby force entry into the already-live threshold branch `D2g2/D2g3/D2f3`
+next_verify: rg -n -F "D2g12. Quantitative bounded-size gap compression." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "defect-to-gap law" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "critical power" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

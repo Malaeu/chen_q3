@@ -2743,6 +2743,119 @@ another route into compressed-gap geometry. The only real remaining task is to
 upgrade this generic gap-collapse from `\delta(V_n)\to 0` to the sharper
 threshold geometry already isolated in `D2g2/D2g3/D2f3`.
 
+There is now one clean quantitative bridge in the bounded-size regime.
+
+```tex
+\textbf{D2g12. Quantitative bounded-size gap compression.}
+```
+
+Fix constants `R_0>\eta_0>0` and an integer `L\ge 2`. Let `M_n\to\infty`, and
+for each `n` let `(V_n,G_n,c_n)` be a cycle-reduced local packet with
+
+```tex
+V_n\subset [M_n-R_0,\;M_n-\eta_0],
+\qquad
+\#V_n=L,
+\qquad
+c_n\in \ker(B_{G_n})^\perp,
+\qquad
+\|c_n\|_2=1.
+```
+
+Write
+
+```tex
+\delta_n:=\delta(V_n)=\min_{i<j}|v_i^{(n)}-v_j^{(n)}|,
+```
+
+and let `s_n(c_n)` denote the first `L` tail samples at the translated grid
+`M_n+1,\dots,M_n+L`.
+
+Then there exists a constant `A=A(L,R_0,\eta_0)>0` such that
+
+```tex
+\|s_n(c_n)\|_2 \ge A\,\delta_n^{L(L-1)/2}
+\qquad \forall n.
+```
+
+Equivalently,
+
+```tex
+\delta_n
+\le
+A^{-2/(L(L-1))}
+\,
+\|s_n(c_n)\|_2^{\,2/(L(L-1))}.
+```
+
+Proof. For each `n`, `D2g5` gives
+
+```tex
+\|s_n(c_n)\|_2\ge \kappa(V_n,M_n)\beta(G_n),
+```
+
+because `c_n\in \ker(B_{G_n})^\perp` and `\|c_n\|_2=1`. Since
+`V_n\subset [M_n-R_0,M_n-\eta_0]`, the translated sample block
+`M_n+1,\dots,M_n+L` stays at distance at least `1+\eta_0` to the right of the
+window, and the coarse diameter is bounded by `R_0+L`. Hence `D2g6` yields
+
+```tex
+\kappa(V_n,M_n)\ge a(L,R_0,\eta_0)\,\delta_n^{L(L-1)/2}
+```
+
+for some positive constant `a(L,R_0,\eta_0)`. On the graph side, `D2g7`
+gives the uniform floor
+
+```tex
+\beta(G_n)\ge 2\sin\!\frac{\pi}{2L}=:b(L)>0.
+```
+
+Therefore
+
+```tex
+\|s_n(c_n)\|_2
+\ge
+a(L,R_0,\eta_0)b(L)\,\delta_n^{L(L-1)/2}.
+```
+
+Setting `A:=a(L,R_0,\eta_0)b(L)` proves the claim.
+
+This immediately gives the sharp threshold corollary:
+
+```tex
+\textbf{D2g12a. Threshold-entry corollary.}
+```
+
+If along such a fixed-size subsequence one has
+
+```tex
+\|s_n(c_n)\|_2
+=
+o\!\left(
+\left(\frac{\log M_n}{M_n^2}\right)^{L(L-1)/2}
+\right),
+```
+
+then
+
+```tex
+\delta_n
+=
+o\!\left(\frac{\log M_n}{M_n^2}\right).
+```
+
+So any analytic defect estimate below that critical power already pushes the
+packet into the sharp compressed-gap / ultra-near resonance branch
+`D2g2/D2g3/D2f3`.
+
+This is a real gain. The bounded-size branch is no longer controlled only by
+qualitative collapse `\delta_n\to 0`; it now has an explicit defect-to-gap
+law. So the remaining burden is cleaner:
+
+- either extract such a defect rate from the analytic side;
+- or accept that no bounded-size local packet can reach the sharp threshold
+  regime without genuinely tiny sample defect.
+
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
 
