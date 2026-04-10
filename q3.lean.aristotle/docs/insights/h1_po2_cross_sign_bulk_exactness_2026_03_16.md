@@ -3808,7 +3808,173 @@ once a genuine packet realizes a near-collision support geometry, the only way
 to keep the paired local defect at the Hermite scale `h^{L-1}` is to force its
 coefficients into an `O(h)`-tube around the single barycentric/Hermite line.
 
-So the remaining live coefficient question is now extremely narrow:
+The next step is to remove the last artificial freeze: in `D2g16f` the
+normalized shape `(\xi_1,\dots,\xi_L)` is fixed in advance, while genuine
+packets on `X_a` carry whatever normalized profile the actual support gives.
+
+```tex
+\textbf{D2g17. Uniform genuine-microcluster capture.}
+```
+
+Fix `L\ge 2` and `0<\rho<1/(L-1)`. Define the compact normalized shape class
+
+```tex
+\mathcal K_{L,\rho}
+:=
+\left\{
+(\xi_1,\dots,\xi_L)\in\mathbb R^L:
+0=\xi_1<\xi_2<\cdots<\xi_L=1,\
+\xi_{i+1}-\xi_i\ge \rho
+\right\}.
+```
+
+For each `\xi\in\mathcal K_{L,\rho}`, let `w(\xi)` be the associated
+barycentric/Hermite vector.
+
+Then there exist constants
+
+```tex
+C_{L,\rho,\eta_0,R_0}>0,\qquad
+h_{L,\rho,\eta_0,R_0}>0
+```
+
+such that the following holds.
+
+Take any genuine one-sided cluster
+
+```tex
+y_1<\cdots<y_L\subset X_a
+```
+
+with diameter
+
+```tex
+h:=y_L-y_1,
+```
+
+base point `u:=y_1`, normalized profile
+
+```tex
+\xi_i:=\frac{y_i-u}{h}\in\mathcal K_{L,\rho},
+```
+
+and drift control
+
+```tex
+M-R_0\le u\le M-\eta_0,
+\qquad
+0<h<h_{L,\rho,\eta_0,R_0}.
+```
+
+For any coefficient vector `c\in\mathbb C^L`, define the genuine paired packet
+
+```tex
+K_y(c;z):=\sum_{i=1}^L c_i\left(\frac{1}{y_i-z}-\frac{1}{y_i-1-z}\right),
+```
+
+and the local defect on the right-tail block
+
+```tex
+P_y(c):=\bigl(K_y(c;M+1),\dots,K_y(c;M+L)\bigr).
+```
+
+Then
+
+```tex
+\operatorname{dist}(c,\mathbb C w(\xi))
+\le
+C_{L,\rho,\eta_0,R_0}
+\left(
+h+h^{-(L-2)}\|P_y(c)\|_2
+\right).
+```
+
+In particular, if `\|c\|_2=1` and
+
+```tex
+\|P_y(c)\|_2\le C h^{L-1},
+```
+
+then
+
+```tex
+\operatorname{dist}(c,\mathbb C w(\xi))
+\le
+C'_{L,\rho,\eta_0,R_0,C}\,h.
+```
+
+Proof. Write the exact geometry of the genuine cluster in normalized form:
+
+```tex
+y_i=u+h\xi_i.
+```
+
+Then the packet is literally of the form covered by `D2g16f`, with normalized
+shape `\xi`. So it remains only to check that the constants in `D2g16f` can be
+chosen uniformly over all `\xi\in\mathcal K_{L,\rho}`.
+
+This is immediate from compactness:
+
+- the barycentric vector `w(\xi)` depends continuously on `\xi`;
+- the smallest positive singular value `\beta_0(\xi)` of the moment map on
+  `(\mathbb C w(\xi))^\perp` depends continuously on `\xi`;
+- the smallest singular value `\gamma_0(\xi)` of the paired moment matrix
+  depends continuously on `\xi`;
+- the remainder constant in the convergent expansion depends continuously on
+  `\xi`.
+
+All these quantities stay positive on `\mathcal K_{L,\rho}`, so their
+minima/maxima are uniform. This yields the stated constants.
+
+Therefore the exact-model coefficient capture already transfers to every
+genuine one-sided cluster whose normalized shape avoids relative-gap collapse.
+
+This gives the clean branch split we wanted.
+
+```tex
+\textbf{D2g17a. Genuine packet dichotomy: compressed subgap or Hermite capture.}
+```
+
+Fix `L\ge 2`, `0<\rho<1/(L-1)`, and a drift-excluded slab. Let
+
+```tex
+y_1<\cdots<y_L\subset X_a,
+\qquad
+h:=y_L-y_1,
+```
+
+and let `c` be a unit coefficient vector for the corresponding genuine paired
+packet. Assume
+
+```tex
+\|P_y(c)\|_2\le C h^{L-1}.
+```
+
+Then exactly one of the following holds:
+
+1. **compressed subgap:** there exists `i<L` such that
+
+   ```tex
+   y_{i+1}-y_i<\rho h;
+   ```
+
+2. **Hermite capture:** the normalized profile belongs to
+   `\mathcal K_{L,\rho}` and
+
+   ```tex
+   \operatorname{dist}(c,\mathbb C w(\xi))
+   \le
+   C'_{L,\rho,\eta_0,R_0,C}\,h.
+   ```
+
+So the model-to-reality bridge is now explicit:
+
+- either the genuine packet already contains a smaller compressed subgap and
+  moves deeper into the resonance branch;
+- or its coefficients are quantitatively forced into the Hermite line of its
+  own exact local geometry.
+
+Now the remaining live coefficient question is extremely narrow:
 
 ```tex
 \textbf{D2g16d. Real support coefficient barrier.}

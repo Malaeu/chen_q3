@@ -5337,6 +5337,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - this is the exact bridge we wanted:
   small paired defect + microcluster geometry no longer implies only a vague
   coefficient preference; it forces quantitative coefficient capture.
+- this now transfers to genuine packets as `D2g17`.
+  Once a real cluster `y_1<\cdots<y_L\subset X_a` is written in normalized
+  form `y_i=u+h\xi_i`, the exact capture theorem applies uniformly over every
+  compact nondegenerate shape class
+  `\mathcal K_{L,\rho}=\{0=\xi_1<\cdots<\xi_L=1,\ \xi_{i+1}-\xi_i\ge\rho\}`.
+- consequence (`D2g17a`):
+  a genuine packet with Hermite-scale defect `\|P_y(c)\|_2\ll h^{L-1}` has
+  only two options:
+  either some relative subgap is already compressed (`y_{i+1}-y_i<\rho h`),
+  or the coefficients are forced into an `O(h)` tube around the Hermite line
+  of that exact local geometry.
+- this is the first real model-to-reality bridge in the coefficient branch.
+  After it, the remaining live question is no longer “do real packets look
+  Hermite-like?”, but “can the actual residues on `Y_a` realize that Hermite
+  capture without already collapsing into `D2f3`?”.
 
 ## In progress (2026-04-10): computational radar for `D2g16d`
 
