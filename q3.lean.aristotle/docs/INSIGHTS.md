@@ -5398,6 +5398,17 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   support counterexample route is dead. So the analytic residue problem has
   really been pushed all the way down to two explicit arithmetic geometry
   exclusions.
+- quick search verdict on the new arithmetic endpoint:
+  there is no routine external theorem in sight that kills the microscopic-gap
+  branch `\gamma_{n+1}-\gamma_n \ll \gamma_n^{-2}`. The visible literature
+  around small gaps studies gaps on the scale of the average spacing, not a
+  hard lower bound excluding a `\gamma^{-2}` regime. So this branch should
+  currently be treated as a hard arithmetic wall, not as a likely quick import.
+- consequence for tactics:
+  after `D2g23`, the faster live attack is not the gap branch but the
+  integer-resonance branch
+  `\operatorname{dist}(x_\gamma,\mathbb Z)=o((\log x_\gamma)/x_\gamma^2)`,
+  because that at least has a direct lattice target built into the scaling.
 - also sharpened the Hermite-capture fingerprint itself:
   `D2g18b` now shows that once a local packet enters an `O(h)`-tube around the
   Hermite line, every adjacent residue ratio must lie in an `O(h)`-tube around

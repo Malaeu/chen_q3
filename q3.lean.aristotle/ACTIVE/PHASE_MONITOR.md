@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g22` compresses the whole surviving direct obstruction to a fully explicit arithmetic dichotomy only, namely ultra-near resonance to the integer lattice after scaling or infinitely many microscopic one-sided gaps `\gamma_{n+1}-\gamma_n \ll \gamma_n^{-2}`; the next attack is therefore extremely narrow: prove that this arithmetic geometry is impossible in our setting or already absorbed by `D2f3`
-next_verify: rg -n -F "D2g22. Final arithmetic reduction of the direct branch." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "clean arithmetic dichotomy" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "fully explicit arithmetic dichotomy" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g22/D2g23` compress the whole surviving direct obstruction to a fully explicit arithmetic dichotomy only, but the microscopic-gap side currently has no visible routine kill from known spacing results; the fastest live attack is therefore now the integer-resonance branch `\operatorname{dist}(x_\gamma,\mathbb Z)=o((\log x_\gamma)/x_\gamma^2)` after scaling
+next_verify: rg -n -F "D2g23. Conditional closure of the direct route." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "faster live attack is not the gap branch but the integer-resonance branch" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "the fastest live attack is therefore now the integer-resonance branch" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
