@@ -2894,8 +2894,7 @@ Then one has the exact identity
 ```tex
 R_h(z)
 =
-(-1)^L\,
-\frac{h^{L-1}}{\prod_{i=1}^L (z-v_i(h))}.
+-\frac{h^{L-1}}{\prod_{i=1}^L (z-v_i(h))}.
 ```
 
 Proof. Set `t=(z-u)/h`. Then
@@ -2928,7 +2927,7 @@ R_h(z)
 =
 -\frac{1}{h}\frac{1}{P((z-u)/h)}
 =
-(-1)^L\frac{h^{L-1}}{\prod_{i=1}^L (z-v_i(h))}.
+-\frac{h^{L-1}}{\prod_{i=1}^L (z-v_i(h))}.
 ```
 
 This model has the expected discrete moment cancellation. Expanding at
@@ -2977,6 +2976,66 @@ If the answer is no, then the constructive enemy is understood and excluded.
 If the answer is yes, then we have identified the exact local shape that must
 be analyzed from the arithmetic side.
 
+There is also a very concrete equispaced specialization, which is useful as a
+toy model and matches the finite-difference intuition exactly.
+
+```tex
+\textbf{D2g13b. Equispaced finite-difference specialization.}
+```
+
+Take
+
+```tex
+\xi_i=i-1,\qquad v_i(h)=u+(i-1)h,\qquad i=1,\dots,L,
+```
+
+and define
+
+```tex
+d_i:=(-1)^{i-1}\binom{L-1}{i-1}.
+```
+
+Then
+
+```tex
+d_i=(-1)^{L-1}(L-1)!\,w_i,
+```
+
+so the ordinary receiver
+
+```tex
+\widetilde R_h(z):=\sum_{i=1}^L \frac{d_i}{v_i(h)-z}
+```
+
+satisfies the exact closed form
+
+```tex
+\widetilde R_h(z)
+=
+(-1)^L (L-1)!\,
+\frac{h^{L-1}}{\prod_{i=1}^L (z-v_i(h))}.
+```
+
+In particular, on every fixed translated tail block `x_m=M+m` one has
+
+```tex
+|\widetilde R_h(x_m)|\asymp h^{L-1}
+```
+
+uniformly for all sufficiently small `h`.
+
+The moment identities become the standard finite-difference cancellations:
+
+```tex
+\sum_{i=1}^L d_i(i-1)^r=0
+\qquad (r=0,\dots,L-2),
+\qquad
+\sum_{i=1}^L d_i(i-1)^{L-1}=(-1)^{L-1}(L-1)!.
+```
+
+So the equispaced binomial packet is the canonical toy version of the general
+Hermite extremizer.
+
 There is an even sharper point: this model enemy already lives naturally in
 the paired class.
 
@@ -3008,7 +3067,7 @@ Using the closed form from `D2g13`, one gets
 ```tex
 K_h(z)
 =
-(-1)^L h^{L-1}
+-h^{L-1}
 \left(
 \frac{1}{\prod_{i=1}^L (z-v_i(h))}
 -

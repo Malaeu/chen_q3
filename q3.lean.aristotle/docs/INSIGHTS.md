@@ -5247,8 +5247,11 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `D2g13`: a near-collision cluster
   `v_i(h)=u+h\xi_i` with barycentric weights
   `w_i=\prod_{j\ne i}(\xi_i-\xi_j)^{-1}`.
+- the equally spaced binomial finite-difference packet
+  `d_i=(-1)^{i-1}\binom{L-1}{i-1}` is exactly the special case `\xi_i=i-1` of
+  the same model, not a different construction.
 - its local receiver satisfies the exact identity
-  `\sum_i w_i/(v_i(h)-z)=(-1)^L h^{L-1}/\prod_i(z-v_i(h))`, so on a fixed
+  `\sum_i w_i/(v_i(h)-z)=-h^{L-1}/\prod_i(z-v_i(h))`, so on a fixed
   tail block its defect is of order `h^{L-1}`.
 - this is extremely useful conceptually:
   it shows what the strongest local survivor should look like, namely a
