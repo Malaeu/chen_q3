@@ -4380,6 +4380,44 @@ So the direct branch is now completely compressed to one explicit live enemy:
 In particular, there is no longer any separate bounded-size local mechanism
 left to analyze.
 
+This can now be stated as a single arithmetic dichotomy.
+
+```tex
+\textbf{D2g22. Final arithmetic reduction of the direct branch.}
+```
+
+Any genuine infinite-support counterexample to the direct tail-zero receiver
+problem forces at least one of the following two arithmetic scenarios along an
+infinite subsequence:
+
+1. **ultra-near integer resonance**
+
+   ```tex
+   \operatorname{dist}(x_\gamma,\mathbb Z)
+   =
+   o\!\left(\frac{\log x_\gamma}{x_\gamma^2}\right);
+   ```
+
+2. **microscopic one-sided zero gaps**
+
+   ```tex
+   x_{\gamma+1}-x_\gamma\ll \frac{1}{x_\gamma^2}.
+   ```
+
+Since `x_\gamma=(a/\pi)\gamma`, the second alternative is equivalent to
+
+```tex
+\gamma_{n+1}-\gamma_n\ll_a \frac{1}{\gamma_n^2}.
+```
+
+Proof. If the route enters `D2f3`, we are in the first case by definition.
+If not, then `D2g21` applies and forces the second case.
+
+So the direct route is no longer blocked by a vague analytic residue cloud.
+It is blocked only by an explicit arithmetic geometry of the zeta zero set:
+either ultra-near resonance to the integer lattice after scaling, or
+infinitely many microscopic consecutive gaps on the critical line.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

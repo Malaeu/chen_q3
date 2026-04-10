@@ -5388,6 +5388,11 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   outside `D2f3`, any surviving direct obstruction must be a logarithmic
   threshold microcluster, hence must force infinitely many one-sided gaps
   `x_{\gamma+1}-x_\gamma \ll M^{-2}`.
+- equivalently, the whole direct branch has now been reduced to a clean
+  arithmetic dichotomy:
+  either scaled ordinates hit the integer lattice at ultra-near scale
+  `o((\log x)/x^2)`, or there are infinitely many microscopic critical-line
+  gaps `\gamma_{n+1}-\gamma_n \ll \gamma_n^{-2}`.
 - in practical terms, the coefficient branch is now essentially burned off.
   The remaining live local mechanism is the noncompact large-packet /
   compressed-gap resonance branch `D2g2/D2g3/D2f3`.

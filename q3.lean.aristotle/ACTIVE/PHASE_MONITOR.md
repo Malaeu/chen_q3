@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g19` kills Hermite capture by amplitude scale, `D2g20` kills every bounded-size threshold packet by raw counting, and `D2g21` compresses the entire remaining direct obstruction to one explicit enemy only: a noncompact logarithmic threshold microcluster forcing one-sided gaps `O(M^{-2})`; the next attack is therefore extremely narrow: prove that this large-packet threshold microcluster geometry is impossible or already absorbed by `D2f3`
-next_verify: rg -n -F "D2g21. The only surviving direct obstruction is a logarithmic threshold microcluster." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "logarithmic threshold microcluster" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "one explicit enemy only" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g22` compresses the whole surviving direct obstruction to a fully explicit arithmetic dichotomy only, namely ultra-near resonance to the integer lattice after scaling or infinitely many microscopic one-sided gaps `\gamma_{n+1}-\gamma_n \ll \gamma_n^{-2}`; the next attack is therefore extremely narrow: prove that this arithmetic geometry is impossible in our setting or already absorbed by `D2f3`
+next_verify: rg -n -F "D2g22. Final arithmetic reduction of the direct branch." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "clean arithmetic dichotomy" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "fully explicit arithmetic dichotomy" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
