@@ -6684,3 +6684,52 @@ This note lands only if the next theorem attempt can be written as:
 - one exact bulk-vanishing lemma for `\mathcal D_{a,N}^{+-}`;
 - one explicit theorem fork saying the only admissible remainder is
   boundary/cap-only.
+
+## D2g16e. First real-support computational radar
+
+This step is not theorem content; it is a reconnaissance check for the new
+coefficient barrier `D2g16d`.
+
+Using the script
+`q3.lean.aristotle/scripts/d2g16_real_packet_scan.py`,
+we sampled actual zeta-zero ordinates `\gamma_n` via `mpmath.zetazero(n)` and
+formed the real support
+`X_a=\{x_\gamma=a\gamma/\pi\}`.
+For each consecutive window of length `L=2,3,4`, we built the local one-sided
+Cauchy sample matrix against the nearest right-tail block and computed:
+
+- the smallest singular value `\sigma_{\min}`;
+- the corresponding optimal unit coefficient vector;
+- its distance to the Hermite/barycentric line of that exact window.
+
+First scan (`n\le 120`) gives the following picture.
+
+- For `a=0.5`, the best windows already align strongly with the Hermite line:
+  overlaps are about `0.998` for `L=2`, `0.991--0.994` for `L=3`, and
+  `0.987--0.991` for `L=4`.
+- For `a=1`, the same phenomenon persists:
+  overlaps are about `0.99` for `L=2`, `0.976--0.989` for `L=3`, and
+  `0.943--0.983` for `L=4`.
+- For `a=2`, the best windows are less dense and have much larger arithmetic
+  deviation; the overlaps drop to roughly `0.978--0.982` for `L=2`,
+  `0.959--0.981` for `L=3`, and `0.943--0.955` for `L=4`.
+
+This is already a useful signal:
+
+- the numerically best local packets do **not** suggest an alternative
+  coefficient law;
+- instead, the small-defect windows are pulled toward the Hermite line exactly
+  when the support geometry looks closest to a microcluster;
+- when the geometry becomes visibly less cluster-like, the Hermite overlap
+  deteriorates in the expected direction.
+
+So the current live coefficient barrier sharpens again:
+
+> to defeat `D2g16d`, a genuine packet on `Y_a=\{x_\gamma,x_\gamma-1\}` would
+> need not only a one-sided microcluster in `X_a`, but a microcluster whose
+> local optimal coefficients remain close to the Hermite line at the same time.
+
+The next step is therefore clear:
+push the radar from qualitative overlap to a quantitative theorem-shape, i.e.
+prove that in the genuine paired class, small local defect plus microcluster
+geometry forces coefficient closeness to `\mathbb C w` with an explicit rate.

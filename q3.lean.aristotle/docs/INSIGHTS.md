@@ -5312,3 +5312,37 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   to that single Hermite line.
 - this is the new live coefficient barrier:
   the enemy is now explicit both geometrically and coefficient-wise.
+
+## In progress (2026-04-10): computational radar for `D2g16d`
+
+- exact target: test whether genuine local one-sided packets cut from the real
+  support `X_a=\{x_\gamma=a\gamma/\pi\}` look numerically like the
+  Hermite/barycentric extremizer from `D2g13--D2g16`.
+- local embedding search was run on 4 queries around Cauchy singular values,
+  barycentric/Hermite clusters, and finite-difference cancellation; the local
+  index returned only generic matrix references or timed out, so there is no
+  ready-made internal lemma for this step.
+- external web search gave only high-level sanity-check pointers on Cauchy
+  smallest-singular-value technology, not a direct bridge for our packet class.
+- working plan:
+  1. generate real support points `x_\gamma=a\gamma/\pi` from actual zeta zeros;
+  2. scan consecutive windows of lengths `L=2,3,4`;
+  3. for each window, build the local tail sample matrix at the nearest
+     right-tail block and compute the smallest-singular-value direction;
+  4. compare that optimal coefficient vector with the Hermite/barycentric line
+     of the same geometric window;
+  5. record whether the smallest-defect windows are actually close to the
+     Hermite line or whether real support geometry pushes them away.
+- success condition for the radar:
+  either the best real windows already align closely with the Hermite line
+  (then the enemy is concretely identified), or they stay uniformly away from
+  it (then `D2g16d` gets a much sharper theorem target).
+- first scan (`n\le 120`) already points in the first direction.
+  For `a=0.5` and `a=1`, the best real consecutive windows of lengths
+  `L=2,3,4` have Hermite overlaps around `0.99`, `0.99`, and `0.98`
+  respectively; for `a=2`, the overlap drops only when the windows themselves
+  stop looking like dense microclusters.
+- provisional verdict:
+  the computational radar supports the current theorem picture rather than
+  fighting it; the dangerous local packets appear to be genuinely Hermite-like,
+  not some different hidden extremizer.
