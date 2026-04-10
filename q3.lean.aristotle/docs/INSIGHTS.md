@@ -5393,6 +5393,13 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   either scaled ordinates hit the integer lattice at ultra-near scale
   `o((\log x)/x^2)`, or there are infinitely many microscopic critical-line
   gaps `\gamma_{n+1}-\gamma_n \ll \gamma_n^{-2}`.
+- also sharpened the Hermite-capture fingerprint itself:
+  `D2g18b` now shows that once a local packet enters an `O(h)`-tube around the
+  Hermite line, every adjacent residue ratio must lie in an `O(h)`-tube around
+  a negative real interval `[-A_{L,\rho},-a_{L,\rho}]`.
+  So the live coefficient enemy is no longer “some alternating block”, but an
+  almost literally phase-rotated finite-difference chain at the level of
+  neighboring ratios.
 - in practical terms, the coefficient branch is now essentially burned off.
   The remaining live local mechanism is the noncompact large-packet /
   compressed-gap resonance branch `D2g2/D2g3/D2f3`.

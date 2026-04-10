@@ -4067,6 +4067,168 @@ residue-level freedom. A genuine dangerous packet can no longer have arbitrary
 local coefficient texture: once it avoids immediate compressed-subgap collapse,
 its residues must locally look like a phase-rotated finite-difference block.
 
+This local fingerprint can be upgraded from signs/magnitudes to adjacent
+ratios.
+
+```tex
+\textbf{D2g18b. Hermite capture forces adjacent negative ratio geometry.}
+```
+
+Fix `L\ge 2` and `0<\rho<1/(L-1)`. For
+`\xi\in\mathcal K_{L,\rho}`, the normalized Hermite vector
+`\widehat w(\xi)` from `D2g18` has real alternating coordinates satisfying
+
+```tex
+m_{L,\rho}\le |\widehat w_i(\xi)|\le M_{L,\rho}.
+```
+
+Therefore for every `i=1,\dots,L-1`,
+
+```tex
+-A_{L,\rho}\le \frac{\widehat w_{i+1}(\xi)}{\widehat w_i(\xi)}
+\le -a_{L,\rho}<0,
+```
+
+where one may take
+
+```tex
+a_{L,\rho}:=\frac{m_{L,\rho}}{M_{L,\rho}},
+\qquad
+A_{L,\rho}:=\frac{M_{L,\rho}}{m_{L,\rho}}.
+```
+
+Now let `q\in\mathbb C^L` satisfy
+
+```tex
+\|q\|_2=1,
+\qquad
+\operatorname{dist}(q,\mathbb C\widehat w(\xi))\le \varepsilon.
+```
+
+Then there exist constants
+
+```tex
+\varepsilon_0=\varepsilon_0(L,\rho)>0,
+\qquad
+C_*=C_*(L,\rho)>0
+```
+
+such that for every `0<\varepsilon\le \varepsilon_0` and every
+`i=1,\dots,L-1`,
+
+```tex
+\left|
+\frac{q_{i+1}}{q_i}
+-
+\frac{\widehat w_{i+1}(\xi)}{\widehat w_i(\xi)}
+\right|
+\le
+C_*\varepsilon.
+```
+
+In particular,
+
+```tex
+\frac{q_{i+1}}{q_i}
+```
+
+lies in the `C_*\varepsilon`-neighborhood of the negative real segment
+
+```tex
+[-A_{L,\rho},-a_{L,\rho}].
+```
+
+Proof. Choose `\lambda\in\mathbb C` with
+
+```tex
+q=\lambda \widehat w(\xi)+e,
+\qquad
+\|e\|_2\le \varepsilon.
+```
+
+Since `\|q\|_2=1` and `\|\widehat w(\xi)\|_2=1`, one has
+
+```tex
+1\le |\lambda|+\varepsilon,
+```
+
+so for `\varepsilon\le 1/2`,
+
+```tex
+|\lambda|\ge 1/2.
+```
+
+Also `|e_i|\le \varepsilon` for every `i`. Therefore
+
+```tex
+|q_i|
+\ge
+|\lambda|\,|\widehat w_i(\xi)|-|e_i|
+\ge
+\frac12 m_{L,\rho}-\varepsilon.
+```
+
+If
+
+```tex
+\varepsilon_0\le \frac14 m_{L,\rho},
+```
+
+then for `\varepsilon\le \varepsilon_0`,
+
+```tex
+|q_i|\ge \frac14 m_{L,\rho}>0,
+```
+
+so all adjacent ratios are well defined. Now
+
+```tex
+\frac{q_{i+1}}{q_i}
+-
+\frac{\widehat w_{i+1}}{\widehat w_i}
+=
+\frac{(\lambda \widehat w_{i+1}+e_{i+1})\widehat w_i
+-\widehat w_{i+1}(\lambda \widehat w_i+e_i)}
+{\widehat w_i q_i}
+=
+\frac{\widehat w_i e_{i+1}-\widehat w_{i+1}e_i}
+{\widehat w_i q_i}.
+```
+
+Hence
+
+```tex
+\left|
+\frac{q_{i+1}}{q_i}
+-
+\frac{\widehat w_{i+1}}{\widehat w_i}
+\right|
+\le
+\frac{
+|\widehat w_i||e_{i+1}|+|\widehat w_{i+1}||e_i|
+}{
+|\widehat w_i|\,|q_i|
+}
+\le
+\frac{2M_{L,\rho}\varepsilon}{
+m_{L,\rho}\cdot (\frac14 m_{L,\rho})
+}
+=
+\frac{8M_{L,\rho}}{m_{L,\rho}^2}\,\varepsilon.
+```
+
+So one may take
+
+```tex
+C_*:=\frac{8M_{L,\rho}}{m_{L,\rho}^2}.
+```
+
+This proves the ratio estimate.
+
+Therefore Hermite capture does not merely force alternating signs after one
+global phase; it forces every adjacent residue ratio to be almost a negative
+real number of controlled size.
+
 There is now a decisive amplitude check against the actual residue decay.
 
 ```tex
