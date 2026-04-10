@@ -5409,6 +5409,12 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   integer-resonance branch
   `\operatorname{dist}(x_\gamma,\mathbb Z)=o((\log x_\gamma)/x_\gamma^2)`,
   because that at least has a direct lattice target built into the scaling.
+- packaged that branch more sharply as `D2g24/D2g24a`:
+  integer resonance is exactly an infinite near-arithmetic progression of
+  critical-line zeros
+  `\gamma_\nu = (\pi/a)m_\nu + o((\log m_\nu)/m_\nu^2)`.
+  So the live arithmetic target is no longer “numbers close to integers”, but
+  a super-accurate near-lattice-zero problem.
 - also sharpened the Hermite-capture fingerprint itself:
   `D2g18b` now shows that once a local packet enters an `O(h)`-tube around the
   Hermite line, every adjacent residue ratio must lie in an `O(h)`-tube around

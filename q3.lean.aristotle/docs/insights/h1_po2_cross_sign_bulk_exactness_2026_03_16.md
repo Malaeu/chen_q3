@@ -4614,6 +4614,90 @@ are themselves still open on the active route. But it is a real endpoint
 reduction: the direct analytic residue problem has now been completely pushed
 into two explicit arithmetic geometry statements about the zeta zero set.
 
+The faster remaining half of this endpoint reduction is the integer-resonance
+side, and it too can be rewritten in a sharper arithmetic form.
+
+```tex
+\textbf{D2g24. Integer resonance is a super-accurate near-progression branch.}
+```
+
+Assume there exists an infinite subsequence of scaled ordinates with
+
+```tex
+\operatorname{dist}(x_\gamma,\mathbb Z)
+=
+o\!\left(\frac{\log x_\gamma}{x_\gamma^2}\right).
+```
+
+Then there exist distinct integers `m_\nu\to\infty` and critical ordinates
+`\gamma_\nu` such that
+
+```tex
+x_{\gamma_\nu}=m_\nu+\varepsilon_\nu,
+\qquad
+\varepsilon_\nu=o\!\left(\frac{\log m_\nu}{m_\nu^2}\right),
+```
+
+equivalently
+
+```tex
+\gamma_\nu
+=
+\frac{\pi}{a}m_\nu
++ 
+o\!\left(\frac{\log m_\nu}{m_\nu^2}\right).
+```
+
+So the integer-resonance branch is not just “many scaled ordinates happen to
+be close to integers”. It is an infinite near-arithmetic progression of
+critical-line zeros with super-microscopic perturbation around the lattice
+
+```tex
+\frac{\pi}{a}\mathbb Z.
+```
+
+Proof. For each resonant `x_\gamma`, choose a nearest integer `m(x_\gamma)`.
+Because the error is `o(1)`, it is eventually `<1/2`, so `m(x_\gamma)` is
+uniquely defined. Since `x_\gamma\to\infty`, these integers tend to infinity,
+and by passing to a subsequence we may assume them strictly increasing.
+Writing
+
+```tex
+x_{\gamma_\nu}=m_\nu+\varepsilon_\nu
+```
+
+gives the first formula. Multiplying by `\pi/a` yields the second.
+
+This identifies the exact arithmetic target hidden inside the direct residue
+problem:
+
+- exact affine progression theorems of Putnam / Li--Radziwi{\l}{\l} already
+  kill the zero-error case;
+- the live missing input is now a \emph{stability upgrade}: can critical-line
+  zeros lie infinitely often within
+  `o((\log T)/T^2)` of one fixed arithmetic progression?
+
+So the integer-resonance branch is already a sharply quantified
+near-lattice-zero problem, not a vague approximation statement.
+
+```tex
+\textbf{D2g24a. Conditional closure via near-progression exclusion.}
+```
+
+If one can prove that no infinite sequence of critical-line zeros satisfies
+
+```tex
+\gamma_\nu
+=
+\frac{\pi}{a}m_\nu
++ 
+o\!\left(\frac{\log m_\nu}{m_\nu^2}\right)
+```
+
+with integers `m_\nu\to\infty`, then the integer-resonance branch of `D2g22`
+is excluded. Combined with any exclusion of the microscopic-gap branch, this
+would close the direct route by `D2g23`.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

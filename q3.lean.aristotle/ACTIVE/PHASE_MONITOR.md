@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g22/D2g23` compress the whole surviving direct obstruction to a fully explicit arithmetic dichotomy only, but the microscopic-gap side currently has no visible routine kill from known spacing results; the fastest live attack is therefore now the integer-resonance branch `\operatorname{dist}(x_\gamma,\mathbb Z)=o((\log x_\gamma)/x_\gamma^2)` after scaling
-next_verify: rg -n -F "D2g23. Conditional closure of the direct route." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "faster live attack is not the gap branch but the integer-resonance branch" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "the fastest live attack is therefore now the integer-resonance branch" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g24/D2g24a` identify the fast arithmetic half of the endpoint reduction, namely that integer resonance is exactly an infinite super-accurate near-progression of critical-line zeros around `(\pi/a)\mathbb Z`; the next attack is therefore extremely narrow: prove a quantitative near-progression exclusion on the critical line strong enough to kill this branch
+next_verify: rg -n -F "D2g24. Integer resonance is a super-accurate near-progression branch." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "super-accurate near-lattice-zero problem" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "super-accurate near-progression of critical-line zeros" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
