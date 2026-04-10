@@ -5262,3 +5262,13 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   show that genuine cycle-reduced paired packets cannot realize this
   Hermite-type extremizer unless they already fall into the ultra-near
   resonance branch `D2f3`.
+- this sharpens one step further as `D2g14`.
+  The same barycentric near-collision cluster already gives an exact paired
+  correction term:
+  `K_h(z)=\sum_i w_i(1/(v_i(h)-z)-1/(v_i(h)-1-z))=R_h(z)-R_h(z+1)`.
+- so the model enemy is not merely “similar” to our class.
+  It already lives in the paired class, with the one-sided cluster in `X_a`
+  plus its forced shifted copy.
+- this is great news strategically:
+  the remaining issue is now purely arithmetic/geometric realizability inside
+  the real support `Y_a`, not whether we guessed the right analytic toy model.

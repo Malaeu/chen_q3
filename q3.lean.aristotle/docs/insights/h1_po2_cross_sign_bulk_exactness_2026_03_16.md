@@ -2977,6 +2977,88 @@ If the answer is no, then the constructive enemy is understood and excluded.
 If the answer is yes, then we have identified the exact local shape that must
 be analyzed from the arithmetic side.
 
+There is an even sharper point: this model enemy already lives naturally in
+the paired class.
+
+```tex
+\textbf{D2g14. Paired Hermite-cluster realization.}
+```
+
+Keep the notation of `D2g13`, and define
+
+```tex
+K_h(z):=R_h(z)-R_h(z+1).
+```
+
+Then
+
+```tex
+K_h(z)
+=
+\sum_{i=1}^L
+w_i\left(\frac{1}{v_i(h)-z}-\frac{1}{v_i(h)-1-z}\right),
+```
+
+so `K_h` is an exact paired correction term supported on the one-sided cluster
+`\{v_1(h),\dots,v_L(h)\}` together with its shifted copy
+`\{v_1(h)-1,\dots,v_L(h)-1\}`.
+
+Using the closed form from `D2g13`, one gets
+
+```tex
+K_h(z)
+=
+(-1)^L h^{L-1}
+\left(
+\frac{1}{\prod_{i=1}^L (z-v_i(h))}
+-
+\frac{1}{\prod_{i=1}^L (z+1-v_i(h))}
+\right).
+```
+
+Hence on every fixed translated tail block
+
+```tex
+x_m:=M+m,\qquad m=1,\dots,L,
+```
+
+with `u\le M-\eta_0`, one has
+
+```tex
+|K_h(x_m)|\asymp h^{L-1}
+```
+
+uniformly for all sufficiently small `h`, with constants depending only on
+`(L,\eta_0,\xi_1,\dots,\xi_L)`.
+
+So the constructive enemy is not merely an ordinary clustered Cauchy sum. It
+is already an exact local paired packet with the natural unit shift built in.
+
+This is a strong clarification of branch B:
+
+- the worst local survivor is a one-sided near-collision cluster in `X_a`,
+  together with its forced shifted copy in `Y_a`;
+- its coefficients are exactly the barycentric/Hermite weights;
+- and its local defect is of order `h^{L-1}`.
+
+Thus the real next obstruction is no longer vague. It can be stated as:
+
+```tex
+\textbf{D2g14a. Realizability barrier.}
+```
+
+Show that genuine cycle-reduced packets coming from the actual support
+`Y_a=\{x_\gamma,x_\gamma-1\}` cannot realize, even approximately, these
+Hermite-cluster weights at scale `h` unless the underlying one-sided support
+`X_a` already enters the ultra-near resonance branch `D2f3`.
+
+Equivalently: the only genuinely dangerous local model left is now explicit,
+and it is already a paired object. So the route has become even more concrete:
+
+- either exclude Hermite-cluster realization in the real arithmetic support;
+- or accept that any surviving obstruction must come from actual one-sided
+  near-collision clusters in `X_a`.
+
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
 

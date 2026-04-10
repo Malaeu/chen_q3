@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g13` now gives an explicit constructive model enemy, a Hermite-type near-collision cluster with defect of order `h^{L-1}`; the next attack is to compare this extremizer against genuine cycle-reduced paired packets and show that such a model cannot be realized inside the real `Y_a` geometry without already collapsing into the ultra-near resonance branch `D2f3`
-next_verify: rg -n -F "D2g13. Hermite-type near-collision model adversary." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "constructive model enemy" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "Hermite-type near-collision cluster" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g14` shows that the Hermite-type near-collision extremizer already lives in the paired class, so the next attack is no longer to invent a toy model, but to prove a realizability barrier: genuine cycle-reduced packets from the actual support `Y_a` cannot approximate that paired Hermite cluster unless the one-sided support has already entered the ultra-near resonance branch `D2f3`
+next_verify: rg -n -F "D2g14. Paired Hermite-cluster realization." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "exact paired correction term" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "Hermite-type near-collision extremizer already lives in the paired class" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
