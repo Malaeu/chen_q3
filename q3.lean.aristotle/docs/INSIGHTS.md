@@ -5352,6 +5352,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   After it, the remaining live question is no longer “do real packets look
   Hermite-like?”, but “can the actual residues on `Y_a` realize that Hermite
   capture without already collapsing into `D2f3`?”.
+- this now sharpens once more as `D2g18`.
+  On every compact nondegenerate shape class, the normalized Hermite vector has
+  coordinates uniformly bounded away from `0` and with strict alternating sign
+  pattern. Therefore Hermite capture forces a very rigid local residue
+  fingerprint: after one global phase rotation, the coefficients must be
+  alternating and of comparable magnitude.
+- so the remaining residue-level burden is no longer “some complicated local
+  coefficients”. It is the much narrower question whether actual residues on
+  `Y_a` can form such a phase-rotated finite-difference block without already
+  collapsing into the resonance branch.
 
 ## In progress (2026-04-10): computational radar for `D2g16d`
 

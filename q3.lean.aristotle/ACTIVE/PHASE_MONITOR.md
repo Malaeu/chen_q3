@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g17` now transfers the exact Hermite-capture theorem to genuine one-sided microclusters on `X_a`, so Hermite-scale local defect already forces a clean dichotomy between a compressed relative subgap and an `O(h)` coefficient tube around the exact local barycentric line; the next attack is therefore extremely narrow: prove that the actual residues on `Y_a` cannot realize that Hermite capture without already collapsing into `D2f3`
-next_verify: rg -n -F "D2g17. Uniform genuine-microcluster capture." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "first real model-to-reality bridge" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "uniform genuine-microcluster capture" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g18` now turns genuine Hermite capture into a concrete residue fingerprint, namely a phase-rotated alternating finite-difference block with coefficients bounded away from zero and of comparable size; the next attack is therefore extremely narrow: prove that the actual residues on `Y_a` cannot realize that phase-rotated finite-difference block without already collapsing into `D2f3`
+next_verify: rg -n -F "D2g18. Hermite-capture fingerprint on genuine residues." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "phase-rotated finite-difference block" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "concrete residue fingerprint" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

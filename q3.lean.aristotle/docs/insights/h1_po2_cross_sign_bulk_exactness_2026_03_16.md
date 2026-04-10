@@ -3974,6 +3974,99 @@ So the model-to-reality bridge is now explicit:
 - or its coefficients are quantitatively forced into the Hermite line of its
   own exact local geometry.
 
+This already has a concrete residue-level fingerprint.
+
+```tex
+\textbf{D2g18. Hermite-capture fingerprint on genuine residues.}
+```
+
+Fix `L\ge 2` and `0<\rho<1/(L-1)`. For every
+`\xi\in\mathcal K_{L,\rho}`, let
+
+```tex
+\widehat w(\xi):=\frac{w(\xi)}{\|w(\xi)\|_2}.
+```
+
+Because `\xi_1<\cdots<\xi_L` are real and distinct, each coordinate of
+`\widehat w(\xi)` is real and has alternating sign:
+
+```tex
+\operatorname{sgn}\widehat w_i(\xi)=(-1)^{L-i}.
+```
+
+Moreover, by compactness of `\mathcal K_{L,\rho}` there exist constants
+
+```tex
+0<m_{L,\rho}\le M_{L,\rho}<\infty
+```
+
+such that for every `\xi\in\mathcal K_{L,\rho}` and every `i=1,\dots,L`,
+
+```tex
+m_{L,\rho}\le |\widehat w_i(\xi)|\le M_{L,\rho}.
+```
+
+Now let `c\in\mathbb C^L` be a unit vector satisfying
+
+```tex
+\operatorname{dist}(c,\mathbb C w(\xi))\le \varepsilon<m_{L,\rho}/2.
+```
+
+Then there exists a unimodular phase `\omega\in\mathbb C`, `|\omega|=1`, such
+that
+
+```tex
+\|c-\omega\widehat w(\xi)\|_2\le \varepsilon,
+```
+
+hence for each coordinate
+
+```tex
+\frac{m_{L,\rho}}{2}\le |c_i|\le M_{L,\rho}+\varepsilon
+```
+
+and
+
+```tex
+\Re\!\left((-1)^{L-i}\overline{\omega}\,c_i\right)\ge \frac{m_{L,\rho}}{2}.
+```
+
+So after one global phase rotation, every genuinely captured packet has:
+
+1. strict alternating phase/sign pattern across the cluster;
+2. all coefficients bounded away from `0`;
+3. all coefficients of comparable size.
+
+Combining this with `D2g17a`, we obtain the exact local residue fingerprint:
+
+```tex
+\textbf{D2g18a. Genuine local obstruction fingerprint.}
+```
+
+Fix `L`, `\rho`, and a drift-excluded slab. If a genuine paired packet on
+`Y_a=\{x_\gamma,x_\gamma-1\}` has Hermite-scale defect
+
+```tex
+\|P_y(c)\|_2\le C h^{L-1},
+```
+
+then either:
+
+1. some relative subgap is already compressed (`y_{i+1}-y_i<\rho h`), or
+2. after a single global phase rotation, the local coefficient block is
+   alternating and uniformly nondegenerate:
+
+   ```tex
+   \Re\!\left((-1)^{L-i}\overline{\omega}\,c_i\right)\ge c_{L,\rho}>0,
+   \qquad
+   |c_i|\asymp_{L,\rho} 1.
+   ```
+
+This is not yet the final contradiction, but it removes the last vague
+residue-level freedom. A genuine dangerous packet can no longer have arbitrary
+local coefficient texture: once it avoids immediate compressed-subgap collapse,
+its residues must locally look like a phase-rotated finite-difference block.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
