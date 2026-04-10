@@ -5294,3 +5294,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   cannot explain itself away by graph collapse. It must really realize the
   near-collision geometry in `X_a`, i.e. exactly the compressed-gap direction
   we already wanted to force.
+- coefficient side also sharpened cleanly as `D2g16`.
+  For a near-collision cluster `v_i(h)=u+h\xi_i`, the tail-sample defect admits
+  a confluent moment expansion
+  `S_h(c)_m=-\sum_{r\ge0} h^r \mu_r(c)/(x_m-u)^{r+1}` with
+  `\mu_r(c)=\sum_i c_i\xi_i^r`.
+- therefore the defect order is controlled by the first surviving moment of the
+  coefficient vector.
+  The unique direction that kills the first `L-1` moment layers is exactly the
+  barycentric/Hermite line `\mathbb C w`.
+- consequence:
+  to achieve the model defect rate `h^{L-1}`, a packet must not only realize
+  the support microcluster; its coefficients must also lie asymptotically close
+  to that single Hermite line.
+- this is the new live coefficient barrier:
+  the enemy is now explicit both geometrically and coefficient-wise.

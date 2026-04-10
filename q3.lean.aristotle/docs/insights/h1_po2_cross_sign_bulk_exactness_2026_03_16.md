@@ -3225,6 +3225,224 @@ small `\beta(G)`. The only surviving mechanism is actual realization of the
 one-sided near-collision geometry in `X_a`, which is exactly the compressed-gap
 / resonance direction already isolated in `D2f3`.
 
+There is now also a clean coefficient-side expansion for this model.
+
+```tex
+\textbf{D2g16. Confluent moment expansion for near-collision clusters.}
+```
+
+Keep the one-sided cluster
+
+```tex
+v_i(h)=u+h\xi_i,\qquad i=1,\dots,L,
+```
+
+with distinct real `\xi_i`, and define for a coefficient vector
+`c=(c_1,\dots,c_L)\in\mathbb C^L`
+
+```tex
+S_h(c)_m:=\sum_{i=1}^L \frac{c_i}{v_i(h)-x_m},
+\qquad
+x_m:=M+m,\quad m=1,\dots,L,
+```
+
+where `u\le M-\eta_0` and `h` is sufficiently small.
+
+For each `r\ge 0`, define the discrete moments
+
+```tex
+\mu_r(c):=\sum_{i=1}^L c_i\xi_i^r.
+```
+
+Then for every fixed `m=1,\dots,L` one has the absolutely convergent expansion
+
+```tex
+S_h(c)_m
+=
+-\sum_{r\ge 0}
+\frac{h^r\,\mu_r(c)}{(x_m-u)^{r+1}}.
+```
+
+Proof. Since `x_m-u\ge \eta_0+m\ge 1+\eta_0`, we have `|h\xi_i|<x_m-u` for all
+small `h`, so
+
+```tex
+\frac{1}{u+h\xi_i-x_m}
+=
+-\frac{1}{x_m-u}
+\frac{1}{1-\frac{h\xi_i}{x_m-u}}
+=
+-\sum_{r\ge 0}\frac{h^r\xi_i^r}{(x_m-u)^{r+1}}.
+```
+
+Summing over `i` gives the formula.
+
+This has an immediate order-of-vanishing consequence.
+
+```tex
+\textbf{D2g16a. First surviving moment controls the defect order.}
+```
+
+Let `s(c)` be the smallest index with `\mu_s(c)\neq 0`. Then
+
+```tex
+\|S_h(c)\|_2 \asymp h^{s(c)}
+```
+
+as `h\to 0`, with constants depending on `(L,\eta_0,\xi_1,\dots,\xi_L,c)`.
+
+Indeed, the expansion above gives
+
+```tex
+S_h(c)_m
+=
+-h^{s(c)}\frac{\mu_{s(c)}(c)}{(x_m-u)^{s(c)+1}}
++
+O(h^{s(c)+1}),
+```
+
+uniformly in `m=1,\dots,L`, and the leading vector
+
+```tex
+\left((x_m-u)^{-s(c)-1}\right)_{m=1}^L
+```
+
+is nonzero.
+
+Now the distinctness of the `\xi_i` implies a rigidity statement.
+
+```tex
+\textbf{D2g16b. Hermite weights are the unique maximal-cancellation direction.}
+```
+
+The linear map
+
+```tex
+T(c):=(\mu_0(c),\dots,\mu_{L-2}(c))
+```
+
+has one-dimensional kernel, and that kernel is exactly the barycentric line
+`\mathbb C w`, where
+
+```tex
+w_i=\frac{1}{\prod_{j\ne i}(\xi_i-\xi_j)}.
+```
+
+Equivalently:
+
+- `c` kills the first `L-1` moment layers iff `c\in \mathbb C w`;
+- for such `c`, the defect order is exactly `h^{L-1}`;
+- and no nonzero coefficient direction can do better.
+
+Proof. The matrix of `T` is the `(L-1)\times L` Vandermonde block
+
+```tex
+(\xi_i^r)_{r=0,\dots,L-2}^{i=1,\dots,L},
+```
+
+which has rank `L-1` because the `\xi_i` are distinct. So `\ker T` is
+one-dimensional. The barycentric weights `w` lie in the kernel by the standard
+partial-fraction identity used in `D2g13`, hence span it.
+
+This immediately yields the coefficient-side barrier we wanted.
+
+```tex
+\textbf{D2g16c. Coefficient rigidity toward Hermite weights.}
+```
+
+Fix `\varepsilon>0`. Then there exist constants `c_\varepsilon>0` and
+`h_\varepsilon>0` such that for every unit vector `c\in\mathbb C^L` with
+
+```tex
+\operatorname{dist}(c,\mathbb C w)\ge \varepsilon
+```
+
+one has
+
+```tex
+\|S_h(c)\|_2\ge c_\varepsilon h^{L-2}
+\qquad (0<h<h_\varepsilon).
+```
+
+Proof. On the compact set
+
+```tex
+\{c\in\mathbb C^L:\ \|c\|_2=1,\ \operatorname{dist}(c,\mathbb C w)\ge\varepsilon\},
+```
+
+suppose the claim fails. Then there exist `h_n\to 0` and unit vectors `c_n`
+with `\operatorname{dist}(c_n,\mathbb C w)\ge\varepsilon` such that
+
+```tex
+\|S_{h_n}(c_n)\|_2=o(h_n^{L-2}).
+```
+
+After passing to a subsequence, `c_n\to c_\infty` with
+`\|c_\infty\|_2=1` and `\operatorname{dist}(c_\infty,\mathbb C w)\ge\varepsilon`.
+Now use the truncated expansion
+
+```tex
+S_h(c)_m
+=
+-\sum_{r=0}^{L-2}\frac{h^r\mu_r(c)}{(x_m-u)^{r+1}}
++
+O(h^{L-1}).
+```
+
+Dividing by `h_n^{L-2}`, we obtain
+
+```tex
+h_n^{-(L-2)}S_{h_n}(c_n)_m
+=
+-\sum_{r=0}^{L-2}
+h_n^{r-(L-2)}
+\frac{\mu_r(c_n)}{(x_m-u)^{r+1}}
++
+O(h_n).
+```
+
+Since the left side tends to `0`, the coefficients of every negative power of
+`h_n` must vanish asymptotically. Therefore
+
+```tex
+\mu_r(c_n)=O(h_n^{L-2-r})\longrightarrow 0
+\qquad (r=0,\dots,L-2).
+```
+
+Passing to the limit gives
+
+```tex
+\mu_r(c_\infty)=0
+\qquad (r=0,\dots,L-2),
+```
+
+so `c_\infty\in \ker T=\mathbb C w`, contradicting
+`\operatorname{dist}(c_\infty,\mathbb C w)\ge\varepsilon`.
+
+Hence the stated lower bound must hold.
+
+Finally, this transfers back to the paired model. For
+
+```tex
+K_h(c;z):=\sum_{i=1}^L c_i\left(\frac{1}{v_i(h)-z}-\frac{1}{v_i(h)-1-z}\right),
+```
+
+the same coefficient line `\mathbb C w` is the unique direction that can
+produce the model defect order `h^{L-1}` on a fixed tail block. Any unit
+coefficient vector separated from `\mathbb C w` gives at best order
+`h^{L-2}`.
+
+So the remaining live coefficient question is now extremely narrow:
+
+```tex
+\textbf{D2g16d. Real support coefficient barrier.}
+```
+
+Can a genuine local packet on the real support `Y_a=\{x_\gamma,x_\gamma-1\}`
+carry coefficients asymptotically close to this single Hermite line
+`\mathbb C w` at the same time as it realizes the required one-sided
+near-collision geometry?
+
 Equivalently: the only genuinely dangerous local model left is now explicit,
 and it is already a paired object. So the route has become even more concrete:
 
