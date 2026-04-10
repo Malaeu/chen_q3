@@ -5283,3 +5283,14 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   can a genuine cycle-reduced paired packet on `Y_a` carry barycentric
   Hermite-like weights and achieve the model defect rate without already
   pushing `h` into the threshold branch?
+- there is also a clean graph-side simplification now.
+  The paired Hermite model `K_h(z)=\sum_i w_i(1/(v_i(h)-z)-1/(v_i(h)-1-z))`
+  lives on a matching graph, so `\ker B=0` and `\beta=\sqrt{2}` exactly.
+- this matters a lot:
+  the model enemy has no hidden cycle-space instability at all.
+  Its small-defect behavior comes purely from Cauchy-side geometric collapse of
+  the one-sided cluster `v_i(h)=u+h\xi_i`.
+- so any genuine packet on the real support `Y_a` that approximates this model
+  cannot explain itself away by graph collapse. It must really realize the
+  near-collision geometry in `X_a`, i.e. exactly the compressed-gap direction
+  we already wanted to force.

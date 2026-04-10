@@ -3153,6 +3153,78 @@ Hermite weights at some scale `h` while keeping the local tail defect as small
 as the model enemy, without already forcing `h` into the threshold branch
 `D2f3`?
 
+There is one more exact simplification here.
+
+```tex
+\textbf{D2g15. The paired Hermite enemy is forest-supported.}
+```
+
+Consider the local pair-graph of `K_h`: its vertex set is
+
+```tex
+\{v_1(h)-1,\dots,v_L(h)-1,\ v_1(h),\dots,v_L(h)\},
+```
+
+and its edges are exactly the `L` disjoint unit pairs
+
+```tex
+v_i(h)-1 \longrightarrow v_i(h),
+\qquad i=1,\dots,L.
+```
+
+So the graph is a matching, hence a forest. In particular:
+
+```tex
+\ker B_{G_h}=\{0\},
+\qquad
+\beta(G_h)=\sqrt{2}.
+```
+
+Proof. The incidence matrix is block-diagonal with `L` identical `2\times 1`
+edge blocks
+
+```tex
+\begin{pmatrix}1\\ -1\end{pmatrix},
+```
+
+up to row permutation. Each block has singular value `\sqrt{2}`, so all
+nonzero singular values of `B_{G_h}` equal `\sqrt{2}`. Since the graph is a
+forest, there is no cycle space.
+
+This has a very useful interpretation:
+
+- the model enemy does **not** survive through cycle-space collapse;
+- its graph-side stability is perfectly healthy;
+- all of its small-defect power comes from pure Cauchy-side geometric
+  degeneration, namely the one-sided near-collision cluster
+  `v_i(h)=u+h\xi_i`.
+
+So the constructive extremizer is even cleaner than it first looked:
+
+```tex
+\text{model enemy}
+=
+\text{forest packet}
++
+\text{near-collision geometry}
++
+\text{Hermite weights}.
+```
+
+There is no hidden combinatorial instability inside it.
+
+This sharpens the realizability problem once more.
+
+```tex
+\textbf{D2g15a. No cycle escape for the model enemy.}
+```
+
+If a genuine local obstruction on `Y_a` approximates the paired Hermite model,
+then its dangerous behavior cannot be blamed on cycle-space collapse or on
+small `\beta(G)`. The only surviving mechanism is actual realization of the
+one-sided near-collision geometry in `X_a`, which is exactly the compressed-gap
+/ resonance direction already isolated in `D2f3`.
+
 Equivalently: the only genuinely dangerous local model left is now explicit,
 and it is already a paired object. So the route has become even more concrete:
 
