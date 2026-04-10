@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g19` shows that Hermite capture is amplitude-harmless once the true residue scale `q_\gamma=O(M^{-3})` is reinstated, so in the bounded-size drift-excluded regime the coefficient branch is effectively burned off; the next attack is therefore extremely narrow: push the only remaining local mechanism, compressed relative subgaps, all the way into the sharp resonance/compressed-gap branch `D2f3`
-next_verify: rg -n -F "D2g19. Hermite-captured packets are amplitude-harmless." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "Hermite capture is not just rigid; it is harmless" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "amplitude-harmless" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g19` kills Hermite capture by amplitude scale and `D2g20` kills every bounded-size threshold packet by raw counting, so the bounded-size local regime is now effectively closed; the next attack is therefore extremely narrow: analyze only the remaining noncompact large-packet mechanism feeding `D2g2/D2g3/D2f3`
+next_verify: rg -n -F "D2g20. Bounded-size local obstruction already forces D2f3." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "bounded-size local packets are fully closed" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "bounded-size local regime is now effectively closed" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

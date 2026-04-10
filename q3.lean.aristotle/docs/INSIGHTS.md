@@ -5372,9 +5372,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   in the bounded-size drift-excluded regime, every genuine local obstruction
   must already lie in the other branch of `D2g17a`, namely compressed relative
   subgaps.
+- and now `D2g20` closes the rest of that bounded-size branch by raw scale
+  counting: an `O(1)`-packet with residues `q_\gamma=O(M^{-3})` cannot stay
+  non-negligible on the threshold scale `(\log M)/M^2`, because after the
+  `M`-rescaling each individual term is only `O(1/\log M)`.
+- so bounded-size local packets are fully closed:
+  either they are harmless by `D2g19`, or they already force
+  `o((\log M)/M^2)` proximity to `M` or `M+1`, i.e. direct entry into `D2f3`.
 - in practical terms, the coefficient branch is now essentially burned off.
-  The remaining live local mechanism is the compressed-gap / resonance branch
-  `D2f3`.
+  The remaining live local mechanism is the noncompact large-packet /
+  compressed-gap resonance branch `D2g2/D2g3/D2f3`.
 
 ## In progress (2026-04-10): computational radar for `D2g16d`
 

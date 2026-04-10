@@ -4207,6 +4207,115 @@ In words: once the coefficient branch is normalized correctly, Hermite capture
 is harmless. The only surviving local mechanism is immediate compressed-subgap
 collapse, i.e. direct entry into the resonance/compressed-gap branch.
 
+There is also a clean counting-scale closure of the bounded-size regime.
+
+```tex
+\textbf{D2g20. Bounded-size local obstruction already forces D2f3.}
+```
+
+Fix `L_0\ge 1`. Let
+
+```tex
+\Gamma_M^{\mathrm{loc}}
+\subset \Gamma
+```
+
+be a genuine local packet at height `M`, extracted from the actual paired
+correction term
+
+```tex
+\sum_\gamma \frac{q_\gamma}{(x_\gamma-z)(x_\gamma-1-z)},
+\qquad
+|q_\gamma|\ll_a x_\gamma^{-3},
+```
+
+and assume:
+
+1. the packet is bounded-size:
+
+   ```tex
+   \#\Gamma_M^{\mathrm{loc}}\le L_0;
+   ```
+
+2. it lives in a drift-excluded near-tail slab, so every participating
+   support point satisfies `x_\gamma\asymp M`.
+
+If along some subsequence the packet contribution is not `o(M^{-1})`, i.e.
+
+```tex
+M\left|
+\sum_{\gamma\in\Gamma_M^{\mathrm{loc}}}
+\frac{q_\gamma}{(x_\gamma-M)(x_\gamma-1-M)}
+\right|
+\not\to 0,
+```
+
+then after passing to a further subsequence there must exist
+`\gamma(M)\in\Gamma_M^{\mathrm{loc}}` such that
+
+```tex
+\min\{|x_{\gamma(M)}-M|,\ |x_{\gamma(M)}-(M+1)|\}
+=
+o\!\left(\frac{\log M}{M^2}\right).
+```
+
+So every genuine bounded-size local obstruction is already inside the
+ultra-near resonance branch `D2f3`.
+
+Proof. Argue by contrapositive. Assume the packet does \emph{not} enter
+`D2f3`. Then, after passing to a subsequence, there exists `c_0>0` such that
+for every `\gamma\in\Gamma_M^{\mathrm{loc}}`,
+
+```tex
+\min\{|x_\gamma-M|,\ |x_\gamma-(M+1)|\}
+\ge
+c_0\frac{\log M}{M^2}.
+```
+
+For large `M`, this lower bound is `<1/2`, hence the other factor among
+`|x_\gamma-M|` and `|x_\gamma-(M+1)|` is at least `1/2`. Therefore
+
+```tex
+\left|
+\frac{1}{(x_\gamma-M)(x_\gamma-1-M)}
+\right|
+\ll_{c_0}
+\frac{M^2}{\log M}.
+```
+
+Since also `|q_\gamma|\ll_a M^{-3}`, each single packet term satisfies
+
+```tex
+M\left|
+\frac{q_\gamma}{(x_\gamma-M)(x_\gamma-1-M)}
+\right|
+\ll_{a,c_0}
+\frac{1}{\log M}.
+```
+
+Summing over at most `L_0` indices gives
+
+```tex
+M\left|
+\sum_{\gamma\in\Gamma_M^{\mathrm{loc}}}
+\frac{q_\gamma}{(x_\gamma-M)(x_\gamma-1-M)}
+\right|
+\ll_{a,c_0,L_0}
+\frac{1}{\log M}
+\to 0,
+```
+
+contrary to the assumed non-negligible packet. Hence the contrapositive is
+proved.
+
+This closes the entire bounded-size branch:
+
+- `D2g19a` kills the Hermite-capture coefficient mechanism;
+- `D2g20` kills every `O(1)`-packet that stays at or above the threshold
+  scale;
+- therefore any remaining genuine local obstruction must be both
+  non-Hermite and noncompact in packet size, or else already lie in `D2f3`.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
