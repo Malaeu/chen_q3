@@ -5379,6 +5379,10 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - so bounded-size local packets are fully closed:
   either they are harmless by `D2g19`, or they already force
   `o((\log M)/M^2)` proximity to `M` or `M+1`, i.e. direct entry into `D2f3`.
+- equivalently, outside `D2f3` every surviving local obstruction must now have
+  packet size going to infinity. This is a very clean reduction: the direct
+  live branch is no longer “some local packet”, but specifically a noncompact
+  large-packet mechanism.
 - in practical terms, the coefficient branch is now essentially burned off.
   The remaining live local mechanism is the noncompact large-packet /
   compressed-gap resonance branch `D2g2/D2g3/D2f3`.

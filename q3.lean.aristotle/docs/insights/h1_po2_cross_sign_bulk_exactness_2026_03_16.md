@@ -4316,6 +4316,29 @@ This closes the entire bounded-size branch:
 - therefore any remaining genuine local obstruction must be both
   non-Hermite and noncompact in packet size, or else already lie in `D2f3`.
 
+Equivalently:
+
+```tex
+\textbf{D2g20a. Outside D2f3, surviving local packets must grow.}
+```
+
+If along a subsequence the local paired correction contribution is not
+`o(M^{-1})` and the route stays outside `D2f3`, then for every fixed `L_0`
+one has
+
+```tex
+\#\Gamma_M^{\mathrm{loc}}>L_0
+```
+
+for all sufficiently large `M` on that subsequence. In other words,
+
+```tex
+\#\Gamma_M^{\mathrm{loc}}\longrightarrow\infty.
+```
+
+So after `D2g19/D2g20`, the only live direct obstruction is a genuinely
+noncompact large-packet mechanism.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
