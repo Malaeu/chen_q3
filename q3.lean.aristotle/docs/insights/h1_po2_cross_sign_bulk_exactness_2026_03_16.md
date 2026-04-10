@@ -2856,6 +2856,127 @@ law. So the remaining burden is cleaner:
 - or accept that no bounded-size local packet can reach the sharp threshold
   regime without genuinely tiny sample defect.
 
+There is now also a constructive model for the most dangerous bounded-size
+survivor.
+
+```tex
+\textbf{D2g13. Hermite-type near-collision model adversary.}
+```
+
+Fix an integer `L\ge 2`, a translated tail block
+
+```tex
+x_m:=M+m,\qquad m=1,\dots,L,
+```
+
+and a center `u\le M-\eta_0` with some fixed `\eta_0>0`. Choose distinct real
+shape parameters `\xi_1,\dots,\xi_L`, and for `h>0` define a near-collision
+cluster
+
+```tex
+v_i(h):=u+h\xi_i,\qquad i=1,\dots,L.
+```
+
+Let
+
+```tex
+w_i:=\frac{1}{\prod_{j\ne i}(\xi_i-\xi_j)}
+```
+
+be the usual barycentric weights, and consider the ordinary local receiver
+
+```tex
+R_h(z):=\sum_{i=1}^L \frac{w_i}{v_i(h)-z}.
+```
+
+Then one has the exact identity
+
+```tex
+R_h(z)
+=
+(-1)^L\,
+\frac{h^{L-1}}{\prod_{i=1}^L (z-v_i(h))}.
+```
+
+Proof. Set `t=(z-u)/h`. Then
+
+```tex
+\frac{1}{v_i(h)-z}
+=
+-\frac{1}{h}\frac{1}{t-\xi_i}.
+```
+
+So
+
+```tex
+R_h(z)
+=
+-\frac{1}{h}\sum_{i=1}^L \frac{w_i}{t-\xi_i}.
+```
+
+By the standard barycentric identity for the monic polynomial
+`P(t)=\prod_{i=1}^L (t-\xi_i)`,
+
+```tex
+\sum_{i=1}^L \frac{w_i}{t-\xi_i}=\frac{1}{P(t)}.
+```
+
+Therefore
+
+```tex
+R_h(z)
+=
+-\frac{1}{h}\frac{1}{P((z-u)/h)}
+=
+(-1)^L\frac{h^{L-1}}{\prod_{i=1}^L (z-v_i(h))}.
+```
+
+This model has the expected discrete moment cancellation. Expanding at
+infinity gives
+
+```tex
+\sum_{i=1}^L w_i\xi_i^r=0\qquad (r=0,\dots,L-2),
+\qquad
+\sum_{i=1}^L w_i\xi_i^{L-1}=1.
+```
+
+So the cluster kills the first `L-1` moment layers and behaves like a
+discrete Hermite atom of order `L-1`.
+
+In particular, for the fixed sample block `x_m=M+m` one has
+
+```tex
+|R_h(x_m)|\asymp h^{L-1}
+```
+
+uniformly for all sufficiently small `h`, with constants depending only on
+`(L,\eta_0,\xi_1,\dots,\xi_L)`. Indeed, every denominator
+`|x_m-v_i(h)|=|m+(M-u)-h\xi_i|` stays between two positive constants once
+`u\le M-\eta_0` and `h` is small.
+
+This is a real conceptual gain:
+
+- it gives an explicit “worst enemy” for local tail-sampling;
+- it shows that near-collision packets can indeed manufacture very small local
+  defects by cancelling the first `L-1` moment layers;
+- and it suggests that the exponent in `D2g12` may not yet be sharp once
+  `L\ge 3`, since the model enemy has size `h^{L-1}` while `D2g12` only forces
+  a lower bound of order `h^{L(L-1)/2}`.
+
+So the next hard question is now much cleaner:
+
+```tex
+\textbf{D2g13a. Paired realization obstruction.}
+```
+
+Can a genuine cycle-reduced paired packet in the `Y_a=\{x_\gamma,x_\gamma-1\}`
+class approximate this Hermite-type near-collision extremizer without already
+falling into the ultra-near resonance branch `D2f3`?
+
+If the answer is no, then the constructive enemy is understood and excluded.
+If the answer is yes, then we have identified the exact local shape that must
+be analyzed from the arithmetic side.
+
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
 

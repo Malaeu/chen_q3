@@ -5242,3 +5242,23 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `((\log M_n)/M_n^2)^{L(L-1)/2}`; that immediately forces
   `\delta(V_n)=o((\log M_n)/M_n^2)` and drops the packet into the already-live
   threshold/compressed-gap branch `D2g2/D2g3/D2f3`.
+- constructive model enemy:
+  instead of only forbidding bad geometry, we now have an explicit model enemy
+  `D2g13`: a near-collision cluster
+  `v_i(h)=u+h\xi_i` with barycentric weights
+  `w_i=\prod_{j\ne i}(\xi_i-\xi_j)^{-1}`.
+- its local receiver satisfies the exact identity
+  `\sum_i w_i/(v_i(h)-z)=(-1)^L h^{L-1}/\prod_i(z-v_i(h))`, so on a fixed
+  tail block its defect is of order `h^{L-1}`.
+- this is extremely useful conceptually:
+  it shows what the strongest local survivor should look like, namely a
+  discrete Hermite atom obtained from a collapsing cluster that cancels the
+  first `L-1` moment layers.
+- it also sharpens the next question.
+  `D2g12` gives only the lower bound `\|s\|\gtrsim \delta^{L(L-1)/2}`, while
+  the constructive enemy achieves size `h^{L-1}`; so for `L\ge 3` the current
+  lower exponent may be nonsharp.
+- the new live brick is therefore `D2g13a`:
+  show that genuine cycle-reduced paired packets cannot realize this
+  Hermite-type extremizer unless they already fall into the ultra-near
+  resonance branch `D2f3`.
