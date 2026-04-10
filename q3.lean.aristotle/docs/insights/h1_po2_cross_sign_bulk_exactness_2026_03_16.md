@@ -3036,6 +3036,119 @@ The moment identities become the standard finite-difference cancellations:
 So the equispaced binomial packet is the canonical toy version of the general
 Hermite extremizer.
 
+There is also a very concrete consecutive-pair realization, which is useful
+because it writes the same enemy inside the finite-difference paired language
+directly, without using the unit-shift copy `z\mapsto z+1`.
+
+```tex
+\textbf{D2g13c. Consecutive-pair finite-difference realization.}
+```
+
+Keep the equispaced data of `D2g13b`:
+
+```tex
+v_j:=x_0+jh,\qquad d_j:=(-1)^j\binom{L-1}{j},
+\qquad j=0,\dots,L-1.
+```
+
+Define cumulative coefficients
+
+```tex
+c_j:=\sum_{i=0}^{j} d_i,\qquad j=0,\dots,L-2.
+```
+
+Then the binomial identity
+
+```tex
+\sum_{i=0}^{j}(-1)^i\binom{L-1}{i}
+=
+(-1)^j\binom{L-2}{j}
+```
+
+gives the closed form
+
+```tex
+c_j=(-1)^j\binom{L-2}{j}.
+```
+
+Now define the finite paired packet
+
+```tex
+K_h^{\mathrm{fd}}(z)
+:=
+\sum_{j=0}^{L-2}
+c_j\left(\frac{1}{v_j-z}-\frac{1}{v_{j+1}-z}\right).
+```
+
+Then one has the exact telescoping regrouping
+
+```tex
+K_h^{\mathrm{fd}}(z)
+=
+\sum_{j=0}^{L-1}\frac{d_j}{v_j-z}
+=
+\widetilde R_h(z).
+```
+
+Indeed, the coefficient of `1/(v_0-z)` is `c_0=d_0`, the coefficient of
+`1/(v_j-z)` for `1\le j\le L-2` is `c_j-c_{j-1}=d_j`, and the coefficient of
+`1/(v_{L-1}-z)` is `-c_{L-2}=d_{L-1}` because
+`\sum_{j=0}^{L-1} d_j=(1-1)^{L-1}=0`.
+
+Combining with `D2g13b`, we therefore get the explicit finite-difference
+paired formula
+
+```tex
+K_h^{\mathrm{fd}}(z)
+=
+(-1)^L (L-1)!\,
+\frac{h^{L-1}}{\prod_{j=0}^{L-1}(z-v_j)}.
+```
+
+Equivalently, if one prefers denominators in the form `(v_j-z)`, this is
+
+```tex
+K_h^{\mathrm{fd}}(z)
+=
+\frac{(L-1)!h^{L-1}}{\prod_{j=0}^{L-1}(v_j-z)}.
+```
+
+Hence for every fixed right-tail block `x_m=N+m`, `m=1,\dots,M`, and every
+small enough `h` with `x_0\le N+1-\eta`, one gets the two-sided estimate
+
+```tex
+(L-1)!\,A_M(x_0,N,L)\,h^{L-1}
+\le
+\|s^{(M)}(h)\|_2
+\le
+2^L (L-1)!\,A_M(x_0,N,L)\,h^{L-1},
+```
+
+where
+
+```tex
+A_M(x_0,N,L)
+:=
+\left(
+\sum_{m=1}^{M}\frac{1}{(N+m-x_0)^{2L}}
+\right)^{1/2}.
+```
+
+So this consecutive-pair packet is an exact finite paired enemy with defect
+size
+
+```tex
+\|s^{(M)}(h)\|_2\asymp h^{L-1}.
+```
+
+This is a strong complement to `D2g12`: the general theorem only gives the
+coarse lower bound `\|s\|\gtrsim \delta^{L(L-1)/2}`, while the explicit
+finite-difference/Hermite enemy realizes the much larger scale `h^{L-1}`.
+Therefore the exponent in `D2g12` is definitely nonsharp once `L\ge 3`, and
+the real remaining issue is not whether small-defect packets exist in
+principle, but whether genuine packets on the zeta-derived support can realize
+this very rigid finite-difference/Hermite structure.
+
 There is an even sharper point: this model enemy already lives naturally in
 the paired class.
 

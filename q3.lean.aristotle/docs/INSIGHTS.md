@@ -5250,6 +5250,20 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - the equally spaced binomial finite-difference packet
   `d_i=(-1)^{i-1}\binom{L-1}{i-1}` is exactly the special case `\xi_i=i-1` of
   the same model, not a different construction.
+- there is now also a fully explicit consecutive-pair realization of that same
+  enemy:
+  with `c_j=(-1)^j\binom{L-2}{j}` one gets
+  `K_h^{fd}(z)=\sum_{j=0}^{L-2} c_j(1/(v_j-z)-1/(v_{j+1}-z))`
+  and this regrouping is exactly the ordinary binomial packet again.
+- in particular, on every fixed right-tail block its defect satisfies
+  `\|s^{(M)}(h)\|_2\asymp h^{L-1}`.
+  This makes the comparison with `D2g12` completely explicit:
+  the general theorem gives only `\|s\|\gtrsim \delta^{L(L-1)/2}`, while the
+  model enemy realizes the much larger scale `h^{L-1}`.
+- so the exponent in `D2g12` is definitely nonsharp for `L\ge 3`, and the real
+  hard question is now very clean:
+  can genuine packets on the zeta-derived support realize this rigid
+  finite-difference/Hermite structure at all?
 - its local receiver satisfies the exact identity
   `\sum_i w_i/(v_i(h)-z)=-h^{L-1}/\prod_i(z-v_i(h))`, so on a fixed
   tail block its defect is of order `h^{L-1}`.
