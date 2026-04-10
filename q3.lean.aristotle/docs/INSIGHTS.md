@@ -5326,6 +5326,17 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   to that single Hermite line.
 - this is the new live coefficient barrier:
   the enemy is now explicit both geometrically and coefficient-wise.
+- this is now quantitative in the paired model as `D2g16f`.
+  For a near-collision packet
+  `K_h(c;z)=\sum_i c_i(1/(v_i(h)-z)-1/(v_i(h)-1-z))`, sampled on a fixed
+  right-tail block, one gets
+  `dist(c,\mathbb C w)\le C(h+h^{-(L-2)}\|P_h(c)\|_2)`.
+- in particular, if the paired local defect is already at the Hermite scale
+  `\|P_h(c)\|_2\ll h^{L-1}`, then the coefficients are forced into an `O(h)`
+  tube around the unique barycentric/Hermite line.
+- this is the exact bridge we wanted:
+  small paired defect + microcluster geometry no longer implies only a vague
+  coefficient preference; it forces quantitative coefficient capture.
 
 ## In progress (2026-04-10): computational radar for `D2g16d`
 

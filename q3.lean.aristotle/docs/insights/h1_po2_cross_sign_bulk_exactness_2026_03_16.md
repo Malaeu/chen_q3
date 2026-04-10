@@ -3604,6 +3604,210 @@ produce the model defect order `h^{L-1}` on a fixed tail block. Any unit
 coefficient vector separated from `\mathbb C w` gives at best order
 `h^{L-2}`.
 
+This can be made quantitative directly in the paired sampling language.
+
+```tex
+\textbf{D2g16f. Quantitative paired capture toward the Hermite line.}
+```
+
+Fix `R_0>\eta_0>0` and distinct real `\xi_1,\dots,\xi_L`. Let
+
+```tex
+v_i(h)=u+h\xi_i,\qquad i=1,\dots,L,
+```
+
+with
+
+```tex
+M-R_0\le u\le M-\eta_0,
+\qquad
+0<h<h_0(L,\eta_0,\xi),
+```
+
+and define the paired local receiver
+
+```tex
+K_h(c;z):=\sum_{i=1}^L c_i\left(\frac{1}{v_i(h)-z}-\frac{1}{v_i(h)-1-z}\right).
+```
+
+Sample it on the fixed right-tail block
+
+```tex
+x_m:=M+m,\qquad m=1,\dots,L,
+```
+
+and set
+
+```tex
+P_h(c):=\bigl(K_h(c;x_1),\dots,K_h(c;x_L)\bigr)\in\mathbb C^L.
+```
+
+Then there exist constants
+
+```tex
+\beta_0=\beta_0(\xi_1,\dots,\xi_L)>0,
+\qquad
+\gamma_0=\gamma_0(L,\eta_0,R_0,\xi_1,\dots,\xi_L)>0,
+\qquad
+C_0=C_0(L,\eta_0,R_0,\xi_1,\dots,\xi_L)>0
+```
+
+such that for every coefficient vector `c\in\mathbb C^L` and every sufficiently
+small `h`,
+
+```tex
+\operatorname{dist}(c,\mathbb C w)
+\le
+C_0\left(
+h + h^{-(L-2)}\|P_h(c)\|_2
+\right).
+```
+
+In particular, if `\|c\|_2=1` and the paired local defect satisfies
+
+```tex
+\|P_h(c)\|_2\le C\,h^{L-1},
+```
+
+then
+
+```tex
+\operatorname{dist}(c,\mathbb C w)\le C'(L,\eta_0,R_0,\xi,C)\,h.
+```
+
+Proof. Write the one-sided sample block as in `D2g16`:
+
+```tex
+S_h(c)_m:=\sum_{i=1}^L \frac{c_i}{v_i(h)-x_m},
+\qquad
+x_m=M+m.
+```
+
+Then
+
+```tex
+K_h(c;x_m)=S_h(c)_m-S_h(c)_{m+1},
+```
+
+so by the confluent expansion from `D2g16`,
+
+```tex
+P_h(c)_m
+=
+-\sum_{r\ge 0} h^r\mu_r(c)
+\left(
+\frac{1}{(x_m-u)^{r+1}}
+-
+\frac{1}{(x_{m+1}-u)^{r+1}}
+\right).
+```
+
+Define the paired moment matrix `B(u,M)\in M_{L\times (L-1)}(\mathbb C)` by
+
+```tex
+B(u,M)_{m,r}
+:=
+-\left(
+\frac{1}{(x_m-u)^{r+1}}
+-
+\frac{1}{(x_{m+1}-u)^{r+1}}
+\right),
+\qquad
+m=1,\dots,L,\ r=0,\dots,L-2.
+```
+
+Let `T(c)=(\mu_0(c),\dots,\mu_{L-2}(c))` and
+`D_h=\operatorname{diag}(1,h,\dots,h^{L-2})`. Then
+
+```tex
+P_h(c)=B(u,M)D_hT(c)+\mathcal R_h(c),
+```
+
+where the remainder satisfies
+
+```tex
+\|\mathcal R_h(c)\|_2\le C_1 h^{L-1}\|c\|_2
+```
+
+for all sufficiently small `h`, with `C_1=C_1(L,\eta_0,R_0,\xi)`.
+
+Now we need two uniform rank facts.
+
+First, the moment map `T` has kernel exactly `\mathbb C w` by `D2g16b`, so on
+the orthogonal complement of `\mathbb C w` there is a positive smallest
+singular value `\beta_0>0`:
+
+```tex
+\|T(c)\|_2\ge \beta_0\,\operatorname{dist}(c,\mathbb C w).
+```
+
+Second, `B(u,M)` has full column rank for every admissible `(u,M)`.
+Indeed, if `B(u,M)a=0`, then the rational function
+
+```tex
+F_a(t):=\sum_{r=0}^{L-2} a_r t^{-(r+1)}
+```
+
+takes the same value at the `L+1` distinct points
+`t_m:=x_m-u=M+m-u`, `m=1,\dots,L+1`.
+Hence the polynomial
+
+```tex
+Q_a(t):=\sum_{r=0}^{L-2} a_r t^{L-2-r}-C\,t^{L-1}
+```
+
+has at least `L+1` roots, where `C=F_a(t_1)`. Since `\deg Q_a\le L-1`, we get
+`Q_a\equiv 0`, so `C=0` and all `a_r=0`. Therefore `B(u,M)` has rank `L-1`.
+
+Because the admissible slab
+
+```tex
+\{u:\ M-R_0\le u\le M-\eta_0\}
+```
+
+is compact after shifting by `M`, the smallest singular value of `B(u,M)` is
+uniformly bounded below:
+
+```tex
+\sigma_{\min}(B(u,M))\ge \gamma_0>0.
+```
+
+Hence
+
+```tex
+\|P_h(c)\|_2
+\ge
+\gamma_0 \|D_hT(c)\|_2 - C_1 h^{L-1}\|c\|_2
+\ge
+\gamma_0 h^{L-2}\|T(c)\|_2 - C_1 h^{L-1}\|c\|_2.
+```
+
+Using the bound on `T(c)` gives
+
+```tex
+\gamma_0\beta_0\,h^{L-2}\operatorname{dist}(c,\mathbb C w)
+\le
+\|P_h(c)\|_2 + C_1 h^{L-1}\|c\|_2.
+```
+
+For unit `c` this rearranges to
+
+```tex
+\operatorname{dist}(c,\mathbb C w)
+\le
+\frac{1}{\gamma_0\beta_0}
+\left(
+h^{-(L-2)}\|P_h(c)\|_2 + C_1 h
+\right),
+```
+
+which is the stated estimate.
+
+So the coefficient barrier is now fully quantitative in the paired model:
+once a genuine packet realizes a near-collision support geometry, the only way
+to keep the paired local defect at the Hermite scale `h^{L-1}` is to force its
+coefficients into an `O(h)`-tube around the single barycentric/Hermite line.
+
 So the remaining live coefficient question is now extremely narrow:
 
 ```tex
