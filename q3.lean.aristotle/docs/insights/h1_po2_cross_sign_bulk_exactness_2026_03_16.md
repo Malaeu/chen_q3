@@ -4698,6 +4698,111 @@ with integers `m_\nu\to\infty`, then the integer-resonance branch of `D2g22`
 is excluded. Combined with any exclusion of the microscopic-gap branch, this
 would close the direct route by `D2g23`.
 
+This near-progression branch has one more clean reformulation through the
+zero-counting function.
+
+```tex
+\textbf{D2g24b. Integer resonance forces unit jumps of }S(T)\textbf{ on supertiny windows.}
+```
+
+Let
+
+```tex
+h:=\frac{\pi}{a}.
+```
+
+Assume there are integers `m_\nu\to\infty` and critical ordinates
+`\gamma_\nu` such that
+
+```tex
+\gamma_\nu = h m_\nu + \delta_\nu,
+\qquad
+\delta_\nu=o\!\left(\frac{\log m_\nu}{m_\nu^2}\right).
+```
+
+Set `T_\nu:=h m_\nu` and `u_\nu:=|\delta_\nu|`. Then
+`u_\nu=o((\log T_\nu)/T_\nu^2)` and the interval
+
+```tex
+[T_\nu-u_\nu,\ T_\nu+u_\nu]
+```
+
+contains a critical-line zero. Hence
+
+```tex
+N(T_\nu+u_\nu)-N(T_\nu-u_\nu)\ge 1.
+```
+
+Now use the Riemann--von Mangoldt decomposition
+
+```tex
+N(T)=\frac{\theta(T)}{\pi}+1+S(T),
+```
+
+where `\theta'(T)=\frac12\log(T/2\pi)+O(T^{-1})`. Then
+
+```tex
+N(T_\nu+u_\nu)-N(T_\nu-u_\nu)
+=
+\frac{\theta(T_\nu+u_\nu)-\theta(T_\nu-u_\nu)}{\pi}
++
+S(T_\nu+u_\nu)-S(T_\nu-u_\nu).
+```
+
+Because `u_\nu=o((\log T_\nu)/T_\nu^2)`, the smooth part satisfies
+
+```tex
+\theta(T_\nu+u_\nu)-\theta(T_\nu-u_\nu)
+=
+O(u_\nu\log T_\nu)
+=
+o(1).
+```
+
+Therefore
+
+```tex
+S(T_\nu+u_\nu)-S(T_\nu-u_\nu)\ge 1-o(1),
+```
+
+and in particular, for all sufficiently large `\nu`,
+
+```tex
+S(T_\nu+u_\nu)-S(T_\nu-u_\nu)\ge \frac12.
+```
+
+So the integer-resonance branch is equivalent to a very sharp local
+oscillation statement:
+
+```tex
+\text{on infinitely many windows of length }o\!\left(\frac{\log T}{T^2}\right),
+\text{ the argument term }S(T)\text{ must jump by size }\asymp 1.
+```
+
+This is a much cleaner target than the raw near-progression statement. The
+main term of `N(T)` is far too smooth on that scale; all the burden is pushed
+onto the local oscillation of `S(T)`.
+
+```tex
+\textbf{D2g24c. Conditional closure via supertiny }S\textbf{-jump exclusion.}
+```
+
+If one can prove that there are no infinitely many windows
+
+```tex
+[T-u,T+u],
+\qquad
+u=o\!\left(\frac{\log T}{T^2}\right),
+```
+
+on which
+
+```tex
+S(T+u)-S(T-u)\ge \frac12,
+```
+
+then the integer-resonance branch of `D2g24` is impossible.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
