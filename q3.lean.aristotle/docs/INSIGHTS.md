@@ -5362,6 +5362,19 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   coefficients”. It is the much narrower question whether actual residues on
   `Y_a` can form such a phase-rotated finite-difference block without already
   collapsing into the resonance branch.
+- this now gets an amplitude kill as `D2g19`.
+  Even if a genuine local packet enters Hermite capture, reinstating the true
+  residue scale `q_\gamma=e(x_\gamma-1)=O(M^{-3})` forces its actual paired
+  local contribution to be only `O(M^{-3}h^{L-1})`, hence `o(M^{-1})` on every
+  bounded near-tail slab.
+- so Hermite capture is not just rigid; it is harmless at the `D2g1` scale.
+  This is a big narrowing:
+  in the bounded-size drift-excluded regime, every genuine local obstruction
+  must already lie in the other branch of `D2g17a`, namely compressed relative
+  subgaps.
+- in practical terms, the coefficient branch is now essentially burned off.
+  The remaining live local mechanism is the compressed-gap / resonance branch
+  `D2f3`.
 
 ## In progress (2026-04-10): computational radar for `D2g16d`
 

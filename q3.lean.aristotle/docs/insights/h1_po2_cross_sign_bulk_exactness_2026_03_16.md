@@ -4067,6 +4067,146 @@ residue-level freedom. A genuine dangerous packet can no longer have arbitrary
 local coefficient texture: once it avoids immediate compressed-subgap collapse,
 its residues must locally look like a phase-rotated finite-difference block.
 
+There is now a decisive amplitude check against the actual residue decay.
+
+```tex
+\textbf{D2g19. Hermite-captured packets are amplitude-harmless.}
+```
+
+Keep the setting of `D2g17a` and `D2g18a`, and assume we are looking at a
+genuine local packet extracted from the actual paired correction term
+
+```tex
+\sum_\gamma \frac{q_\gamma}{(x_\gamma-z)(x_\gamma-1-z)},
+\qquad
+q_\gamma=e(x_\gamma-1).
+```
+
+For a local cluster
+
+```tex
+y_1<\cdots<y_L\subset X_a,
+\qquad
+h:=y_L-y_1,
+```
+
+write the local coefficient block as
+
+```tex
+q^{\mathrm{loc}}=(q_1,\dots,q_L)\in\mathbb C^L,
+```
+
+and assume `\|q^{\mathrm{loc}}\|_2\neq 0`. Normalize it by
+
+```tex
+c:=\frac{q^{\mathrm{loc}}}{\|q^{\mathrm{loc}}\|_2}.
+```
+
+Suppose we are in the Hermite-capture branch of `D2g17a`, so that
+
+```tex
+\operatorname{dist}(c,\mathbb C w(\xi))\le C_0 h.
+```
+
+Then there is a constant
+
+```tex
+C_{L,\rho,\eta_0,R_0}>0
+```
+
+such that the normalized local paired defect already satisfies
+
+```tex
+\|P_y(c)\|_2\le C_{L,\rho,\eta_0,R_0}\,h^{L-1}.
+```
+
+Proof. Choose `\omega` so that
+`\|c-\omega\widehat w(\xi)\|_2\ll h`, and write
+
+```tex
+c=\omega\widehat w(\xi)+r,
+\qquad
+\|r\|_2\ll h.
+```
+
+For the Hermite vector itself,
+
+```tex
+\|P_y(\omega\widehat w(\xi))\|_2\asymp h^{L-1}
+```
+
+by the exact model formula from `D2g13/D2g14`.
+
+For the remainder, use the paired expansion from `D2g16f`:
+the moment map `T` is bounded, the paired moment matrix is bounded on the
+drift-excluded slab, and the diagonal factor contributes at worst `h^{L-2}`.
+Hence
+
+```tex
+\|P_y(r)\|_2\ll h^{L-2}\|r\|_2 + h^{L-1}\|r\|_2\ll h^{L-1}.
+```
+
+So
+
+```tex
+\|P_y(c)\|_2\le \|P_y(\omega\widehat w(\xi))\|_2+\|P_y(r)\|_2
+\ll h^{L-1}.
+```
+
+Now reinstate the actual amplitude. Since `q_i=e(x_{\gamma_i}-1)` and the
+actual paired residues satisfy
+
+```tex
+|q_i|\ll_a y_i^{-3}\asymp_a M^{-3}
+```
+
+on a drift-excluded near-tail slab, we have
+
+```tex
+\|q^{\mathrm{loc}}\|_2\ll_{a,L} M^{-3}.
+```
+
+Therefore the actual local packet contribution obeys
+
+```tex
+\|P_y(q^{\mathrm{loc}})\|_2
+=
+\|q^{\mathrm{loc}}\|_2\,\|P_y(c)\|_2
+\ll_{a,L,\rho,\eta_0,R_0}
+M^{-3}h^{L-1}.
+```
+
+If the slab is fixed, then `h\ll 1`, hence
+
+```tex
+M\,\|P_y(q^{\mathrm{loc}})\|_2\ll M^{-2}\to 0.
+```
+
+So a Hermite-captured genuine packet is automatically `o(M^{-1})` after the
+same scaling used in `D2g1`.
+
+This yields the key corollary.
+
+```tex
+\textbf{D2g19a. Hermite capture cannot support D2g1 failure.}
+```
+
+In the bounded-size drift-excluded regime, any genuine local packet lying in
+the Hermite-capture branch of `D2g17a` is too small, after reinstating the true
+residue amplitudes `q_\gamma=O(M^{-3})`, to obstruct the desired
+`o(M^{-1})` bound for the paired correction term.
+
+Therefore every genuine local obstruction to `D2g1` must already lie in the
+other branch of `D2g17a`, namely:
+
+```tex
+\exists\, i<L:\quad y_{i+1}-y_i<\rho h.
+```
+
+In words: once the coefficient branch is normalized correctly, Hermite capture
+is harmless. The only surviving local mechanism is immediate compressed-subgap
+collapse, i.e. direct entry into the resonance/compressed-gap branch.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
