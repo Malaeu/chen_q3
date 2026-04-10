@@ -4580,6 +4580,40 @@ It is blocked only by an explicit arithmetic geometry of the zeta zero set:
 either ultra-near resonance to the integer lattice after scaling, or
 infinitely many microscopic consecutive gaps on the critical line.
 
+This yields the cleanest current closure criterion for the direct branch.
+
+```tex
+\textbf{D2g23. Conditional closure of the direct route.}
+```
+
+Assume one can rule out both of the following arithmetic scenarios:
+
+1. there is no infinite subsequence of ordinates with
+
+   ```tex
+   \operatorname{dist}(x_\gamma,\mathbb Z)
+   =
+   o\!\left(\frac{\log x_\gamma}{x_\gamma^2}\right);
+   ```
+
+2. there is no infinite subsequence of consecutive critical-line gaps with
+
+   ```tex
+   \gamma_{n+1}-\gamma_n\ll \frac{1}{\gamma_n^2}.
+   ```
+
+Then there is no genuine infinite-support counterexample to the direct
+tail-zero receiver problem.
+
+Proof. By `D2g22`, any genuine infinite-support counterexample forces at least
+one of these two scenarios. So if both are excluded, the counterexample
+cannot exist.
+
+This is not yet a full proof of `PO2`, because the two arithmetic exclusions
+are themselves still open on the active route. But it is a real endpoint
+reduction: the direct analytic residue problem has now been completely pushed
+into two explicit arithmetic geometry statements about the zeta zero set.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

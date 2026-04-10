@@ -5393,6 +5393,11 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   either scaled ordinates hit the integer lattice at ultra-near scale
   `o((\log x)/x^2)`, or there are infinitely many microscopic critical-line
   gaps `\gamma_{n+1}-\gamma_n \ll \gamma_n^{-2}`.
+- packaged that immediately into a conditional closure statement `D2g23`:
+  if both arithmetic scenarios are excluded, then the whole direct infinite
+  support counterexample route is dead. So the analytic residue problem has
+  really been pushed all the way down to two explicit arithmetic geometry
+  exclusions.
 - also sharpened the Hermite-capture fingerprint itself:
   `D2g18b` now shows that once a local packet enters an `O(h)`-tube around the
   Hermite line, every adjacent residue ratio must lie in an `O(h)`-tube around
