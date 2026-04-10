@@ -5216,3 +5216,19 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   compressed-gap geometry. The only remaining hard part is quantitative:
   upgrade `\delta(V_n)\to 0` to the sharper threshold-scale geometry already
   isolated in `D2g2/D2g3/D2f3`.
+- in-progress synthesis for the next brick:
+  the exact target is now a quantitative upgrade of `D2g11`, not a new branch.
+  Local embedding search mostly returns our own `D2g2/D2g3/D2g11` notes rather
+  than any hidden external theorem, which is good: the problem has become
+  internal and explicit.
+- external sanity-check only reinforces the existing matrix backend:
+  Cauchy-matrix determinant lower bounds and Laplacian/algebraic-connectivity
+  floors are the right tools, but there is no ready-made theorem turning
+  generic gap-collapse into the threshold `(\log M)/M^2` scale for us.
+- so the clean next move is:
+  on fixed-size drift-excluded subsequences, combine `D2g6` and `D2g7` into an
+  explicit power-law inequality
+  `\delta(V_n)\ll \|s_n(c_n)\|_2^{2/(L(L-1))}`.
+- this would already be a real gain, because any defect bound smaller than the
+  corresponding threshold power would force the packet directly into the sharp
+  compressed-gap regime feeding `D2g2/D2g3/D2f3`.
