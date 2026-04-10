@@ -4339,6 +4339,47 @@ for all sufficiently large `M` on that subsequence. In other words,
 So after `D2g19/D2g20`, the only live direct obstruction is a genuinely
 noncompact large-packet mechanism.
 
+This combines immediately with the earlier threshold packet reduction
+`D2g2/D2g3`.
+
+```tex
+\textbf{D2g21. The only surviving direct obstruction is a logarithmic threshold microcluster.}
+```
+
+Suppose along some subsequence the paired correction term is not `o(M^{-1})`
+and the route stays outside `D2f3`. Then:
+
+1. by `D2g19a`, the obstruction cannot come from the bounded-size
+   Hermite-capture branch;
+2. by `D2g20a`, any surviving local packet must be noncompact, i.e.
+   `\#\Gamma_M^{\mathrm{loc}}\to\infty`;
+3. by `D2g2`, the threshold packet must satisfy
+
+   ```tex
+   \#\mathcal P_M(c,C)\gtrsim \log M
+   ```
+
+   for some fixed `0<c<C<\infty`;
+4. by `D2g3`, one of the one-sided packets
+   `\mathcal P_M^{(+)}(c,C)` or `\mathcal P_M^{(-)}(c,C)` contains
+   `\gtrsim \log M` points inside an interval of length
+   `\asymp (\log M)/M^2`, and therefore there are infinitely many
+   consecutive one-sided gaps satisfying
+
+   ```tex
+   x_{\gamma+1}-x_\gamma \ll \frac{1}{M^2}.
+   ```
+
+So the direct branch is now completely compressed to one explicit live enemy:
+
+```tex
+\text{a noncompact logarithmic threshold microcluster, hence an }O(M^{-2})
+\text{ one-sided gap branch.}
+```
+
+In particular, there is no longer any separate bounded-size local mechanism
+left to analyze.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

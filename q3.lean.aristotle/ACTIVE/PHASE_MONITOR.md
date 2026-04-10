@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g19` kills Hermite capture by amplitude scale and `D2g20` kills every bounded-size threshold packet by raw counting, so the bounded-size local regime is now effectively closed; the next attack is therefore extremely narrow: analyze only the remaining noncompact large-packet mechanism feeding `D2g2/D2g3/D2f3`
-next_verify: rg -n -F "D2g20. Bounded-size local obstruction already forces D2f3." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "bounded-size local packets are fully closed" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "bounded-size local regime is now effectively closed" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g19` kills Hermite capture by amplitude scale, `D2g20` kills every bounded-size threshold packet by raw counting, and `D2g21` compresses the entire remaining direct obstruction to one explicit enemy only: a noncompact logarithmic threshold microcluster forcing one-sided gaps `O(M^{-2})`; the next attack is therefore extremely narrow: prove that this large-packet threshold microcluster geometry is impossible or already absorbed by `D2f3`
+next_verify: rg -n -F "D2g21. The only surviving direct obstruction is a logarithmic threshold microcluster." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "logarithmic threshold microcluster" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "one explicit enemy only" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
