@@ -5272,3 +5272,14 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - this is great news strategically:
   the remaining issue is now purely arithmetic/geometric realizability inside
   the real support `Y_a`, not whether we guessed the right analytic toy model.
+- and this has now split cleanly.
+  `D2g14a` proves that any approximate realization of the Hermite model at
+  scale `h` already forces an actual one-sided cluster in `X_a` of diameter
+  `O(h)`, hence a consecutive gap `O(h)`.
+- therefore if such a realization happens with
+  `h=o((\log M_n)/M_n^2)`, the route is already inside `D2f3`.
+- so the geometric half of realizability is no longer open.
+  The only live question is coefficient/defect realization:
+  can a genuine cycle-reduced paired packet on `Y_a` carry barycentric
+  Hermite-like weights and achieve the model defect rate without already
+  pushing `h` into the threshold branch?

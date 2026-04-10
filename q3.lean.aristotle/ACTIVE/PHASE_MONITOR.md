@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g14` shows that the Hermite-type near-collision extremizer already lives in the paired class, so the next attack is no longer to invent a toy model, but to prove a realizability barrier: genuine cycle-reduced packets from the actual support `Y_a` cannot approximate that paired Hermite cluster unless the one-sided support has already entered the ultra-near resonance branch `D2f3`
-next_verify: rg -n -F "D2g14. Paired Hermite-cluster realization." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "exact paired correction term" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "Hermite-type near-collision extremizer already lives in the paired class" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g14a/D2g14b` settle the support-geometry side of the model enemy, since any approximate Hermite realization at scale `h` already forces an actual one-sided microcluster of diameter `O(h)` and hence enters `D2f3` below threshold; the next attack is now purely on the coefficient side, namely to prove a coefficient-realization barrier for genuine cycle-reduced paired packets on the real support `Y_a`
+next_verify: rg -n -F "D2g14a. Geometric realization forces one-sided microclusters." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "geometric half of realizability is no longer open" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "support-geometry side of the model enemy" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

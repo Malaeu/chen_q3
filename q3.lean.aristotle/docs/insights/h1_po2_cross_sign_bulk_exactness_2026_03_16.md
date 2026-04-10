@@ -3041,23 +3041,126 @@ This is a strong clarification of branch B:
 - its coefficients are exactly the barycentric/Hermite weights;
 - and its local defect is of order `h^{L-1}`.
 
-Thus the real next obstruction is no longer vague. It can be stated as:
+Thus the next geometric bridge is already clean and explicit.
 
 ```tex
-\textbf{D2g14a. Realizability barrier.}
+\textbf{D2g14a. Geometric realization forces one-sided microclusters.}
 ```
 
-Show that genuine cycle-reduced packets coming from the actual support
-`Y_a=\{x_\gamma,x_\gamma-1\}` cannot realize, even approximately, these
-Hermite-cluster weights at scale `h` unless the underlying one-sided support
-`X_a` already enters the ultra-near resonance branch `D2f3`.
+Suppose there exist indices
+
+```tex
+\gamma_1<\cdots<\gamma_L,
+```
+
+real numbers
+
+```tex
+\xi_1<\cdots<\xi_L,
+```
+
+a center `u`, a scale `h>0`, and an error parameter `\varepsilon\ge 0` such
+that
+
+```tex
+\bigl|x_{\gamma_i}-(u+h\xi_i)\bigr|\le \varepsilon h
+\qquad (i=1,\dots,L).
+```
+
+Then the one-sided support cluster
+
+```tex
+\{x_{\gamma_1},\dots,x_{\gamma_L}\}\subset X_a
+```
+
+has diameter
+
+```tex
+x_{\gamma_L}-x_{\gamma_1}
+\le
+h(\xi_L-\xi_1+2\varepsilon),
+```
+
+and therefore some consecutive one-sided gap satisfies
+
+```tex
+\min_{1\le i<L}(x_{\gamma_{i+1}}-x_{\gamma_i})
+\le
+\frac{\xi_L-\xi_1+2\varepsilon}{L-1}\,h.
+```
+
+Proof. The diameter bound is immediate from the triangle inequality:
+
+```tex
+x_{\gamma_L}-x_{\gamma_1}
+\le
+|x_{\gamma_L}-(u+h\xi_L)|
++
+h(\xi_L-\xi_1)
++
+|(u+h\xi_1)-x_{\gamma_1}|
+\le
+h(\xi_L-\xi_1+2\varepsilon).
+```
+
+Now sum the consecutive gaps:
+
+```tex
+\sum_{i=1}^{L-1}(x_{\gamma_{i+1}}-x_{\gamma_i})
+=
+x_{\gamma_L}-x_{\gamma_1}.
+```
+
+So at least one of them is bounded by the average, which yields the stated
+gap estimate.
+
+This gives the immediate threshold corollary.
+
+```tex
+\textbf{D2g14b. Approximate Hermite realization below threshold implies D2f3.}
+```
+
+If such clusters occur along a subsequence at heights `M_n` with
+
+```tex
+h_n=o\!\left(\frac{\log M_n}{M_n^2}\right),
+```
+
+then
+
+```tex
+\min_{1\le i<L}(x_{\gamma_{i+1}^{(n)}}-x_{\gamma_i^{(n)}})
+=
+o\!\left(\frac{\log M_n}{M_n^2}\right),
+```
+
+and in particular the route has already entered the ultra-near resonance /
+compressed-gap branch `D2f3`.
+
+So the geometric part of realizability is now settled: any approximate
+realization of the paired Hermite model automatically produces the exact kind
+of one-sided microcluster we were trying to force anyway.
+
+The remaining issue is therefore narrower:
+
+```tex
+\textbf{D2g14c. Coefficient realization barrier.}
+```
+
+Can a genuine cycle-reduced paired packet on the real support
+`Y_a=\{x_\gamma,x_\gamma-1\}` carry coefficients close to the barycentric
+Hermite weights at some scale `h` while keeping the local tail defect as small
+as the model enemy, without already forcing `h` into the threshold branch
+`D2f3`?
 
 Equivalently: the only genuinely dangerous local model left is now explicit,
 and it is already a paired object. So the route has become even more concrete:
 
-- either exclude Hermite-cluster realization in the real arithmetic support;
-- or accept that any surviving obstruction must come from actual one-sided
-  near-collision clusters in `X_a`.
+- the support geometry part is done: realization already means one-sided
+  microclustering;
+- what remains is the coefficient/defect part;
+- and any successful realization below threshold is already absorbed by
+  `D2f3`.
 
 There is also a valid but more global meta-reduction in terms of the tail
 sampling operator
