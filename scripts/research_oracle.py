@@ -4,6 +4,7 @@ import hashlib
 import json
 import shutil
 import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -63,7 +64,10 @@ def run(cmd: list[str], cwd: Path | None = None) -> str:
 
 
 def normalize_results(raw: str) -> list[dict]:
-    data = json.loads(raw)
+    text = raw.strip()
+    if not text or text == "No results found.":
+        return []
+    data = json.loads(text)
     facts = []
     for item in data:
         facts.append(
@@ -77,6 +81,104 @@ def normalize_results(raw: str) -> list[dict]:
             }
         )
     return facts
+
+
+def build_query_cmd(
+    qmd: str,
+    mode: str,
+    query: str,
+    *,
+    collection: str,
+    limit: int,
+    min_score: float,
+    index: str | None,
+    full: bool,
+    line_numbers: bool,
+) -> list[str]:
+    cmd = [qmd, mode, query, "--json", "-n", str(limit)]
+    if collection:
+        cmd += ["-c", collection]
+    if min_score:
+        cmd += ["--min-score", str(min_score)]
+    if full:
+        cmd += ["--full"]
+    if line_numbers:
+        cmd += ["--line-numbers"]
+    if index:
+        cmd += ["--index", index]
+    return cmd
+
+
+def run_query_mode(
+    qmd: str,
+    mode: str,
+    query: str,
+    *,
+    collection: str,
+    limit: int,
+    min_score: float,
+    index: str | None,
+    full: bool,
+    line_numbers: bool,
+) -> list[dict]:
+    cmd = build_query_cmd(
+        qmd,
+        mode,
+        query,
+        collection=collection,
+        limit=limit,
+        min_score=min_score,
+        index=index,
+        full=full,
+        line_numbers=line_numbers,
+    )
+    with qmd_lock(f"research_oracle_{mode}"):
+        raw = run(cmd)
+    return normalize_results(raw)
+
+
+def merge_ranked_results(result_sets: dict[str, list[dict]], limit: int) -> list[dict]:
+    # Reciprocal-rank fusion is stable across heterogeneous score scales (BM25 vs vectors).
+    fused: dict[tuple[str | None, str | None, str | None], dict] = {}
+    k = 60.0
+    for mode, facts in result_sets.items():
+        for rank, fact in enumerate(facts, start=1):
+            key = (fact.get("docid"), fact.get("file"), fact.get("snippet"))
+            entry = fused.setdefault(
+                key,
+                {
+                    "docid": fact.get("docid"),
+                    "file": fact.get("file"),
+                    "score": fact.get("score"),
+                    "title": fact.get("title"),
+                    "context": fact.get("context"),
+                    "snippet": fact.get("snippet"),
+                    "rrf_score": 0.0,
+                    "sources": [],
+                },
+            )
+            if entry.get("score") is None or (
+                fact.get("score") is not None and fact.get("score", 0) > entry.get("score", 0)
+            ):
+                entry["score"] = fact.get("score")
+            if not entry.get("title") and fact.get("title"):
+                entry["title"] = fact.get("title")
+            if not entry.get("context") and fact.get("context"):
+                entry["context"] = fact.get("context")
+            entry["rrf_score"] += 1.0 / (k + rank)
+            entry["sources"].append(mode)
+
+    merged = sorted(
+        fused.values(),
+        key=lambda item: (
+            -item["rrf_score"],
+            -(item.get("score") or 0),
+            item.get("title") or "",
+        ),
+    )
+    for item in merged:
+        item["sources"] = sorted(set(item["sources"]))
+    return merged[:limit]
 
 
 def make_ext_id(docid: str, snippet: str | None) -> str:
@@ -94,27 +196,53 @@ def cmd_query(args, cfg) -> int:
     min_score = args.min_score if args.min_score is not None else cfg.get("min_score", 0)
     index = args.index or cfg.get("index")
 
-    cmd = [qmd, mode, args.query, "--json", "-n", str(limit)]
-    if collection:
-        cmd += ["-c", collection]
-    if min_score:
-        cmd += ["--min-score", str(min_score)]
-    if args.full:
-        cmd += ["--full"]
-    if args.line_numbers:
-        cmd += ["--line-numbers"]
-    if index:
-        cmd += ["--index", index]
+    if mode == "query":
+        per_backend = max(limit, 8)
+        result_sets: dict[str, list[dict]] = {}
+        backend_errors: list[str] = []
+        for backend in ("search", "vsearch"):
+            try:
+                result_sets[backend] = run_query_mode(
+                    qmd,
+                    backend,
+                    args.query,
+                    collection=collection,
+                    limit=per_backend,
+                    min_score=min_score,
+                    index=index,
+                    full=args.full,
+                    line_numbers=args.line_numbers,
+                )
+            except SystemExit as exc:
+                backend_errors.append(f"{backend}: {exc}")
 
-    try:
-        with qmd_lock("research_oracle_query"):
-            raw = run(cmd)
-    except TimeoutError as exc:
-        raise SystemExit(str(exc)) from exc
-    facts = normalize_results(raw)
+        if not result_sets:
+            raise SystemExit(
+                "hybrid query failed for both backends:\n" + "\n".join(backend_errors)
+            )
+
+        for message in backend_errors:
+            print(f"[research_oracle] degraded backend: {message}", file=sys.stderr)
+        facts = merge_ranked_results(result_sets, limit)
+    else:
+        qmd_mode = "query" if mode == "qmd-query" else mode
+        try:
+            facts = run_query_mode(
+                qmd,
+                qmd_mode,
+                args.query,
+                collection=collection,
+                limit=limit,
+                min_score=min_score,
+                index=index,
+                full=args.full,
+                line_numbers=args.line_numbers,
+            )
+        except TimeoutError as exc:
+            raise SystemExit(str(exc)) from exc
 
     if args.raw:
-        print(raw)
+        print(json.dumps(facts, indent=2))
     else:
         print(json.dumps(facts, indent=2))
 
@@ -227,7 +355,11 @@ def main() -> int:
 
     p_query = sub.add_parser("query")
     p_query.add_argument("query")
-    p_query.add_argument("--mode", default="query", choices=["query", "search", "vsearch"])
+    p_query.add_argument(
+        "--mode",
+        default="query",
+        choices=["query", "search", "vsearch", "qmd-query"],
+    )
     p_query.add_argument("-n", "--limit", type=int)
     p_query.add_argument("--min-score", type=float)
     p_query.add_argument("-c", "--collection")

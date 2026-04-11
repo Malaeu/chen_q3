@@ -1,6 +1,6 @@
 # Research Oracle (qmd)
 
-**Purpose:** Local semantic search over the curated Q3 KB and external markdown literature.
+**Purpose:** Local fast-recall search over the curated Q3 KB and external markdown literature.
 **Current status (1–3 lines):**
 - Wrapper script available from `q3.lean.aristotle/`: `scripts/research_oracle.py`
 **Next action (1–2 lines):**
@@ -70,7 +70,18 @@ For docs/mainline search, use the refreshed `q3_docs` collection:
 ```bash
 ./scripts/research_oracle.py query "keyword" -c q3_docs
 ```
-This query path now uses the same lock and retry layer as refresh.
+This `query` path is now the stable default:
+
+- it runs `qmd search` (BM25) and `qmd vsearch` (vector search) sequentially;
+- it merges results by reciprocal-rank fusion;
+- it avoids the heavier `qmd query` expansion/rerank path, which is less stable on this host.
+
+Use the legacy heavy backend only if you explicitly want it:
+```bash
+./scripts/research_oracle.py query "keyword" --mode qmd-query -c q3_docs
+```
+
+The wrapper still uses the same lock and retry layer as refresh.
 Run local qmd queries sequentially; do not fan out parallel qmd queries on this host.
 
 For the external Together AI minimum-overlap corpus, use the separate collection:
@@ -98,6 +109,8 @@ as a replacement for Aristotle.
 ## Notes
 
 - Output is JSON with `docid`, `file`, `score`, `snippet`, etc.
+- In wrapper mode `query`, results also include `rrf_score` and `sources`
+  (`search`, `vsearch`) so it is obvious which backend surfaced a hit.
 - Speculative edges are **not** used by the planner until a Lean stub exists.
 - If `q3_docs` is older than the current refactor wave, refresh it before running a
   new blocker search.

@@ -96,6 +96,13 @@ Notes:
 ```bash
 ./scripts/research_oracle.py query "Szego-Bottcher bound" -c q3_docs
 ```
+Default `query` is now a stable hybrid wrapper:
+
+- `qmd search` for lexical/BM25 hits
+- `qmd vsearch` for semantic hits
+- sequential execution + fused ranking
+
+Use `--mode qmd-query` only when you explicitly want the old heavy rerank path.
 
 ### Query literature (speculative edges)
 ```bash
@@ -150,4 +157,5 @@ Key outputs:
 
 - `qmd not found`: check PATH and bun global install.
 - `embed` slow: first download ~300MB model; reruns are faster.
-- Bad search: try `qmd search` (keyword) instead of `qmd query`.
+- If hybrid `query` still feels stale, refresh `q3_docs`; if you need direct lexical
+  debugging, run raw `qmd search` manually.

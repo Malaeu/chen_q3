@@ -5528,6 +5528,12 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   exceed `\log T`.
 - so the live brick is now no longer “bound the prime side somehow”, but one
   concrete weighted near-resonance counting problem for prime powers.
+- Research-oracle infrastructure was also tightened on this host: the old
+  `qmd query` path is too heavy/unreliable for blocker recall, so
+  `scripts/research_oracle.py query ...` now means a stable hybrid
+  `qmd search + qmd vsearch` merge. Functionally this keeps the same role
+  (fast recall over curated `q3_docs`) but drops the fragile expansion/rerank
+  backend from the default workflow.
 - this is cleaner than the older abstract majorant wording:
   the live question is now literally one explicit exponential-sum criterion on
   dyadic zero blocks.
