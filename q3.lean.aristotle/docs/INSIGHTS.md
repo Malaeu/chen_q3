@@ -5713,3 +5713,20 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `\mathcal M_{\alpha,w}(H(T);T)\ll T\log T`, so the strategic verdict is
   unchanged but cleaner: the gamma-factor is not merely bounded by the right
   scale, it is explicitly understood up to a lower-order harmonic tail.
+- integrated the next structural refinement of the prime-side packet:
+  the honest project reading is now
+  `D2g29b0 -> D2g29b1 -> D2g29b2 -> D2g29b3`.
+  Here
+  `b0` = choose an explicit-formula-admissible kernel/majorant,
+  `b1` = write the admissible decomposition
+  `\Sigma=\mathcal M+\mathcal P+\mathcal E`,
+  `b2` = note that it is enough to keep `\mathcal P` and `\mathcal E` on the
+  natural scale `T\log T`,
+  and `b3` = split exceptional vs nonexceptional prime-side resonance.
+- this is a good compression: it separates one honest analytic hygiene issue
+  (admissible kernel choice) from the real arithmetic burden.
+- project-control audit also found a live automation/protocol drift:
+  some active KB skill docs still contained old `aristotle prove-from-file`
+  commands even though the canonical workflow had already moved to
+  `formalize / submit / result`. That is not a kernel leak, but it is exactly
+  the kind of stale instruction that later causes automation misfires.

@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now fully arithmetic: `D2g25/D2g25b/D2g26/D2g26b/D2g27/D2g28/D2g29` reduce the endpoint first to a discrete exceptional-value gate `a=r\log p/(2q)` and then, in the nonexceptional case, to a Fejér-smoothed explicit-formula packet; `D2g29a` is effectively closed, while `D2g29b4` has now been identified as an over-strong positive majorant, so the honest live target is the signed kernel version `D2g29c` on the prime side
-next_verify: rg -n "D2g29c" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n "signed prime-side estimate" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "the active direct critical path is now fully arithmetic" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now fully arithmetic: `D2g25/D2g25b/D2g26/D2g26b/D2g27/D2g28/D2g29` reduce the endpoint first to a discrete exceptional-value gate `a=r\log p/(2q)` and then, in the nonexceptional case, to a Fejér-smoothed explicit-formula packet; `D2g29a` is effectively closed, the prime-side packet has been restructured as `D2g29b0/b1/b2/b3`, and the honest live target after the positive-majorant sanity correction is the signed kernel version `D2g29c`
+next_verify: rg -n "D2g29b0|D2g29b2'" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n "D2g29b0 -> D2g29b1 -> D2g29b2 -> D2g29b3" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "the active direct critical path is now fully arithmetic" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

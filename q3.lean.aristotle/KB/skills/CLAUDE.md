@@ -363,7 +363,7 @@ source /mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.venv/bin/activate
 
 macOS:
 source /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/.venv/bin/activate
-aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
+aristotle formalize input.md
 ```
 
 **Key insight:** Sandbox работает с `import Mathlib` + `def` + `theorem := by sorry` (НЕ axiom!)

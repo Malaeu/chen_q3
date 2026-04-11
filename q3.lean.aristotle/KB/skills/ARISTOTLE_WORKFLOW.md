@@ -122,12 +122,13 @@ Leaving sorries unfilled:
 
 Informal (markdown):
 ```
-aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
+aristotle formalize input.md
 ```
 
-Formal (Lean file with sorries):
+Status / list:
 ```
-aristotle prove-from-file path/to/file.lean --no-wait
+aristotle list
+aristotle result <project_id> --wait --destination out.tar.gz
 ```
 
 ### 4.2 Python API (preferred for Q3)

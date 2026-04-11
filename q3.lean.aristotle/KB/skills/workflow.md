@@ -305,7 +305,7 @@ source .venv/bin/activate
 # - Держи ключ в переменной окружения (например, ~/.bashrc) и просто `source ...`.
 
 # Отправить новый файл (informal markdown)
-aristotle prove-from-file --informal --no-validate-lean-project --no-wait problem.md
+aristotle formalize problem.md
 
 # Проверить статус проекта (Python API)
 python3 - <<'PY'

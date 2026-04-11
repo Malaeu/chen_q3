@@ -5830,6 +5830,30 @@ Then `\Sigma_{\alpha,w}(H(T);T)\ll T\log T`, hence `D2g25b` closes, and so
 does the shrinking-target branch.
 
 ```tex
+\textbf{D2g29b0. Explicit-formula-admissible kernel choice.}
+```
+
+There is one honest technical brick before the prime-side packet can be treated
+as fully rigorous: the raw cutoff `w\in C_c^\infty((1,2))` is perfect for
+bookkeeping and heuristics, but the explicit-formula step should ultimately be
+run with a test kernel whose Fourier transform and vertical decay sit exactly
+inside the admissible class of the chosen Guinand--Weil normalization.
+
+So the correct structural reading is:
+
+1. `D2g29b0`: replace the raw shrinking-target majorant by an
+   explicit-formula-admissible smoothed majorant `\phi_H` and an admissible
+   height cutoff `w_*`;
+2. `D2g29b1`: with this admissible pair, write the honest decomposition
+   `\Sigma=\mathcal M+\mathcal P+\mathcal E`;
+3. `D2g29b2`: prove that it is enough to keep `\mathcal P+\mathcal E` on the
+   natural scale `T\log T`;
+4. `D2g29b3`: split exceptional / nonexceptional arithmetic on the prime side.
+
+The current formulas below should therefore be read as the schematic model for
+that package, not yet as the final admissibility-clean implementation.
+
+```tex
 \textbf{D2g29b1. Schwartz-localization reduction.}
 ```
 
@@ -5907,6 +5931,28 @@ where
 
 This is the clean reduction from the whole Fourier packet to a single
 distance-to-resonance weight.
+
+```tex
+\textbf{D2g29b2'. Honest sufficiency target.}
+```
+
+At the structural level, once the admissible packet is in place, shrinking
+target exclusion follows as soon as one proves
+
+```tex
+\mathcal P_{\alpha,w_*}^{\phi}(H(T);T)\ll T\log T
+\qquad\text{and}\qquad
+\mathcal E_{\alpha,w_*}^{\phi}(H(T);T)\ll T\log T.
+```
+
+Indeed, `D2g29a` already gives the same bound for the archimedean part, so the
+entire packet sits at natural size:
+
+```tex
+\Sigma_{\alpha,w_*}^{\phi}(H(T);T)\ll T\log T.
+```
+
+This is the exact sufficient target for the prime-side branch.
 
 ```tex
 \textbf{D2g29b3. Exceptional/nonexceptional meaning on the prime side.}
