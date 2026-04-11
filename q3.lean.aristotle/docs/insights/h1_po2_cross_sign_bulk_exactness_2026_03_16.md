@@ -6698,6 +6698,95 @@ individually". It is: control one signed physical-space packet on the prime
 distribution, with the entire problem compressed into the exceptional /
 nonexceptional split for the windows `\log n\approx 2aj`.
 
+```tex
+\textbf{D2g29d1. Exceptional/nonexceptional split for the signed endpoint.}
+```
+
+The endpoint `D2g29d` should therefore be read as one arithmetic dichotomy,
+not as one monolithic estimate.
+
+For prime powers `n=p^m`, write the resonance defect
+
+```tex
+\Delta_a(p,m,j):=m\log p-2aj.
+```
+
+Then the signed packet
+
+```tex
+\mathcal S_{\alpha,H,T}(X)
+=
+-\frac{1}{\pi}\int_{\mathbb R}G_{\alpha,H,T}(u)\,D_X(u)\,du
+```
+
+is organized by the windows `|\Delta_a(p,m,j)|\lesssim 1/T`, because
+`G_{\alpha,H,T}` came from a kernel localized near `\log n\approx 2aj`.
+
+There are now two sharply different child branches.
+
+```tex
+\textbf{D2g29d1a. Exceptional exact-locking branch.}
+```
+
+If
+
+```tex
+a=\frac{r\log p_0}{2q}
+```
+
+for some prime `p_0` and integers `r,q\ge 1`, then
+
+```tex
+2aj=\frac{rj}{q}\log p_0.
+```
+
+Hence for infinitely many `j` with `q\mid rj`, the resonance equation
+
+```tex
+\Delta_a(p_0,m,j)=0
+```
+
+has exact prime-power solutions
+
+```tex
+m=\frac{rj}{q},
+\qquad
+n=p_0^{\,rj/q}.
+```
+
+So the exceptional branch is the exact-locking regime: the signed packet has a
+genuinely coherent resonant spine on one prime-power lattice. The live task in
+`D2g29d1a` is therefore to prove that even this exact resonant spine does not
+push `\mathcal S_{\alpha,H(T),T}(X)` above the natural `T\log T` scale.
+
+```tex
+\textbf{D2g29d1b. Nonexceptional incommensurate branch.}
+```
+
+If `a` is not of the form `r\log p/(2q)`, then for every prime `p` and every
+integers `m,j\ge 1` one has
+
+```tex
+\Delta_a(p,m,j)\neq 0.
+```
+
+So the nonexceptional branch has no exact prime-power locking at all. Its live
+task is different: prove that the incommensurate near-resonant windows
+`|\Delta_a(p,m,j)|\lesssim 1/T` cannot collectively build a signed
+contribution larger than `O(T\log T)`.
+
+Therefore the endpoint `D2g29d` is now compressed to the pair
+
+```tex
+\boxed{
+\text{D2g29d closes once both }D2g29d1a\text{ and }D2g29d1b
+\text{ are controlled at scale }T\log T.
+}
+```
+
+This is the right arithmetic split: exceptional means exact prime-power
+commensurability, nonexceptional means only approximate windows remain.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

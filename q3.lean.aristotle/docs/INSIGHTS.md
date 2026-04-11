@@ -5944,3 +5944,9 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   4. state what natural-scale estimate `\ll T\log T` is sufficient in each
      branch,
   5. make `d1a` / `d1b` the next honest child addresses.
+- result: `D2g29d1` is now written explicitly in the main note. The split is
+  no longer just verbal:
+  `d1a` = exact-locking branch on a resonant prime-power lattice,
+  `d1b` = incommensurate branch with no exact prime-power resonance.
+- verdict: this is a real compression. The remaining arithmetic burden under
+  `D2g29d` is now partitioned cleanly into two non-overlapping child tasks.
