@@ -6226,6 +6226,40 @@ So:
    not come close enough to this lattice often enough to make the weighted sum
    exceed the natural scale `T\log T`.
 
+After `D2g29c''` this same split has an equivalent physical-space reading.
+The signed endpoint is
+
+```tex
+\mathcal P^{\phi}_{\alpha,W_+}(H;T)
+=
+-\frac{2}{\pi}
+\int_{0}^{\infty} G_{\alpha,H,T}(u)
+\left(
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\cos(u\log n)
+\right)\,du.
+```
+
+For a fixed prime power `n=p^m`, the oscillation frequency is `m\log p`. The
+Fej\'er weight `G_{\alpha,H,T}(u)=W_+(u/T)\phi_H(\alpha u)` concentrates on
+the physical-space lattice `u\approx k/\alpha`. Along that lattice,
+
+```tex
+u\,m\log p \approx \frac{k\,m\log p}{\alpha}
+=
+2\pi k\,m\cdot\frac{q}{r}
+\qquad
+\text{when }
+a=\frac{r\log p}{2q}.
+```
+
+So the exceptional condition is exactly the commensurability condition saying
+that the prime-power frequency `m\log p` is rationally locked to the Fej\'er
+modulation frequency `2a=2\pi\alpha`. In that case one gets coherent cosine
+reinforcement on the active lattice. In the nonexceptional case this exact
+frequency locking is absent, and the live task becomes to prove that the
+remaining incommensurate oscillation cannot keep the weighted integral above
+the natural `T\log T` scale.
+
 ```tex
 \textbf{D2g29b4. Legacy unsigned sufficiency target.}
 ```

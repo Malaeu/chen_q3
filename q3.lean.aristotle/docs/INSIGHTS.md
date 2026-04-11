@@ -5822,3 +5822,9 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - verdict: the signed endpoint is now a single weighted prime-cosine integral.
   That is a much sharper and more usable object than the old unsigned
   near-lattice packet, and it isolates the real arithmetic burden cleanly.
+- this also sharpens `D2g29b3`: the exceptional condition
+  `a=r\log p/(2q)` is now literally the commensurability condition between the
+  Fejér modulation frequency `2a=2\pi\alpha` and the prime-power frequency
+  `m\log p`. So the split is no longer just a frequency-side lattice slogan;
+  it is the exact question of whether the cosine phase can lock coherently to
+  the physical-space Fejér lattice `u\approx k/\alpha`.
