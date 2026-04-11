@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now fully arithmetic: `D2g25/D2g26/D2g26b/D2g27` reduce the endpoint first to a discrete exceptional-value gate `a=r\log p/(2q)` and then, in the nonexceptional case, to high-frequency control of `S_\alpha(j;T)` on `j\asymp T^2/\log T`; the weakest direct sufficient condition remains the mean-`L^1` criterion, while the raw `L^2` condition is only a stronger surrogate
-next_verify: rg -n "D2g26b" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n "clean discrete arithmetic gate" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "the active direct critical path is now fully arithmetic" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now fully arithmetic: `D2g25/D2g26/D2g26b/D2g27/D2g28` reduce the endpoint first to a discrete exceptional-value gate `a=r\log p/(2q)` and then, in the nonexceptional case, to high-frequency control of `S_\alpha(j;T)` on `j\asymp T^2/\log T`; the weakest honest direct sufficient condition is the mean-`L^1` criterion, while the naive raw `L^2` route has now been killed by the unavoidable diagonal term, so any quadratic route must pass through an off-diagonal Fejér / pair-correlation estimate
+next_verify: rg -n "D2g28" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n "The diagonal term alone gives" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "the active direct critical path is now fully arithmetic" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

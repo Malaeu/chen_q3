@@ -5096,9 +5096,9 @@ O(1)\cdot o(1)
 o(1).
 ```
 
-### (ii) `L^2` criterion
+### (ii) The raw `L^2` route is vacuous
 
-If
+At first sight one might try to prove the stronger condition
 
 ```tex
 \sum_{1\le j\le H(T)} |S_\alpha(j;T)|^2
@@ -5106,22 +5106,65 @@ If
 o\!\bigl(H(T)\bigr),
 ```
 
-then `D2g26` holds.
+and then deduce (i) by Cauchy--Schwarz. But this is impossible on any dyadic
+block containing at least one zero.
 
-By Cauchy--Schwarz,
+Indeed,
 
 ```tex
-\sum_{1\le j\le H(T)} |S_\alpha(j;T)|
-\le
-H(T)^{1/2}
-\left(
-\sum_{1\le j\le H(T)} |S_\alpha(j;T)|^2
-\right)^{1/2}
+|S_\alpha(j;T)|^2
 =
-o\!\bigl(H(T)\bigr),
+\sum_{T<\gamma,\gamma'\le 2T}
+e\!\bigl(j\alpha(\gamma-\gamma')\bigr).
 ```
 
-so (i) applies.
+The diagonal terms `\gamma=\gamma'` contribute exactly `\mathcal N(T,2T]`, so
+for every `j`
+
+```tex
+|S_\alpha(j;T)|^2
+=
+\mathcal N(T,2T]
++
+\sum_{\substack{T<\gamma,\gamma'\le 2T\\ \gamma\ne\gamma'}}
+e\!\bigl(j\alpha(\gamma-\gamma')\bigr).
+```
+
+Since `|S_\alpha(j;T)|^2\ge 0`, summing over `1\le j\le H(T)` gives the trivial
+lower bound
+
+```tex
+\sum_{1\le j\le H(T)} |S_\alpha(j;T)|^2
+\ge
+H(T)\,\mathcal N(T,2T].
+```
+
+But `\mathcal N(T,2T]\asymp T\log T`, so the condition
+
+```tex
+\sum_{1\le j\le H(T)} |S_\alpha(j;T)|^2=o(H(T))
+```
+
+can never hold. Therefore the raw `L^2` criterion is not a genuine path to
+`D2g26`.
+
+### (ii') What a second-moment route would really have to control
+
+If one wants a second-moment route, it must be an \emph{off-diagonal} or
+\emph{centered} one. For example, the Fej\'er-weighted second moment satisfies
+
+```tex
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)|S_\alpha(j;T)|^2
+=
+H\,\mathcal N(T,2T]
++
+\sum_{\substack{T<\gamma,\gamma'\le 2T\\ \gamma\ne\gamma'}}
+F_H\!\bigl(\alpha(\gamma-\gamma')\bigr),
+```
+
+where `F_H` is the Fej\'er kernel. So any realistic `L^2`-type attack must
+control this off-diagonal pair-correlation object after removing the diagonal
+mass `H\,\mathcal N(T,2T]`.
 
 ### (iii) Uniform criterion
 
@@ -5163,39 +5206,52 @@ these become:
    \to 0;
    ```
 
-2. second-moment cancellation
-
-   ```tex
-   \sum_{j\le T^2/\log T} |S_\alpha(j;T)|^2
-   =
-   o\!\left(\frac{T^2}{\log T}\right);
-   ```
-
-3. the extremely strong uniform bound
+2. the extremely strong uniform bound
 
    ```tex
    \sup_{j\le T^2/\log T}|S_\alpha(j;T)|\to 0.
    ```
 
-So the live burden can now be read at three strengths. The weakest direct
-criterion is the mean-`L^1` one. The raw `L^2` condition is a stronger
-surrogate route, while the uniform bound is far stronger than needed.
+So the live burden can now be read at two honest strengths:
+the mean-`L^1` criterion, and the much stronger uniform bound.
+The naive raw `L^2` route is dead because of the diagonal term and must be
+replaced, if desired, by an off-diagonal / pair-correlation estimate.
 
 ```tex
 \textbf{D2g27a. Operational form of the shrinking-target brick.}
 ```
 
 To close the integer-resonance branch, it is enough to prove the mean-`L^1`
-criterion above. A stronger surrogate would be to prove
+criterion above. The uniform criterion is stronger still. Any second-moment
+variant has to be reformulated as an off-diagonal / pair-correlation bound
+after subtracting the diagonal mass. This is the cleanest quantitative version
+of the current arithmetic endpoint.
 
 ```tex
-\sum_{j\le H(T)} |S_\alpha(j;T)|^2=o(H(T)),
-\qquad
-H(T)\asymp \frac{T^2}{\log T}.
+\textbf{D2g28. Off-diagonal Fej\'er second-moment packet.}
 ```
 
-The uniform criterion is stronger still. This is the cleanest quantitative
-version of the current arithmetic endpoint.
+Let
+
+```tex
+\Sigma_\alpha(H;T):=
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)|S_\alpha(j;T)|^2.
+```
+
+Then
+
+```tex
+\Sigma_\alpha(H;T)
+=
+H\,\mathcal N(T,2T]
++
+\sum_{\substack{T<\gamma,\gamma'\le 2T\\ \gamma\ne\gamma'}}
+F_H\!\bigl(\alpha(\gamma-\gamma')\bigr).
+```
+
+So the only meaningful quadratic route to `D2g26` now runs through the
+off-diagonal Fej\'er-weighted pair-correlation sum, not through the raw square
+sum itself.
 
 Now the remaining live coefficient question is extremely narrow:
 

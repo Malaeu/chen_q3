@@ -5443,14 +5443,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   ```
   \frac{1}{H(T)}\sum_{j\le H(T)}|S_\alpha(j;T)|=o(1)
   ```
-  A stronger surrogate route is
-  ```
-  \sum_{j\le H(T)}|S_\alpha(j;T)|^2=o(H(T)),
-  \qquad H(T)\asymp T^2/\log T.
-  ```
   and the uniform bound is stronger still.
   So the endpoint is no longer just “high frequencies matter”, but one very
   concrete high-frequency cancellation threshold.
+- then pushed one step further again: the naive raw `L^2` surrogate is actually
+  dead, not just strong. The diagonal term alone gives
+  ```
+  \sum_{j\le H(T)} |S_\alpha(j;T)|^2 \ge H(T)\,\mathcal N(T,2T],
+  ```
+  so `o(H(T))` is impossible on nonempty dyadic blocks. This kills the fake
+  second-moment route cleanly.
+- the honest quadratic object is therefore the off-diagonal Fejér packet
+  ```
+  \Sigma_\alpha(H;T)
+  =
+  \sum_{|j|<H}(1-|j|/H)|S_\alpha(j;T)|^2
+  =
+  H\,\mathcal N(T,2T]
+  + \sum_{\gamma\ne\gamma'} F_H(\alpha(\gamma-\gamma')).
+  ```
+  So any surviving `L^2`-style attack must pass through pair-correlation /
+  off-diagonal control after subtracting the diagonal mass.
 - semantic search on `q3_docs` for the new endpoint mostly surfaced our own
   internal off-diagonal exponential-sum wrappers (`off_diag_exp_sum`,
   `off_diag_exp_sum_integrated`) and did not reveal a pre-existing local lemma
@@ -5472,9 +5485,10 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   exceptional density-defect branch, or else the whole endpoint is forced into
   the nonexceptional high-frequency route.
 - conclusion: `D2g26` is now a genuine external arithmetic input. The honest
-  next step is to split into exceptional/nonexceptional `\alpha=a/\pi` and then
-  attack the nonexceptional case via a new high-frequency estimate, not to hunt
-  for a hidden local theorem that already closes it.
+  next step is to split into exceptional/nonexceptional `\alpha=a/\pi`, kill
+  the vacuous raw-`L^2` branch, and then attack the nonexceptional case either
+  via the direct mean-`L^1` criterion or via a genuinely new off-diagonal
+  Fejér/pair-correlation estimate.
 - also sharpened the Hermite-capture fingerprint itself:
   `D2g18b` now shows that once a local packet enters an `O(h)`-tube around the
   Hermite line, every adjacent residue ratio must lie in an `O(h)`-tube around
