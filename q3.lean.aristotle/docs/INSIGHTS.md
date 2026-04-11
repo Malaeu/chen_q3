@@ -6023,3 +6023,26 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - conclusion: `D2g29c4` kills the naive Landau-compatibility shortcut. The live
   burden stays on the signed prime-distribution route `D2g29d1a/d1b` unless a
   genuinely new direct compatibility argument appears.
+
+## In progress (2026-04-11): D2g29d1a exceptional resonant spine
+
+- exact target: isolate the exact-locking contribution inside the signed
+  prime-distribution endpoint and see whether the exceptional branch already
+  simplifies because the resonant prime powers come with the geometric weight
+  `\Lambda(n)/\sqrt n`;
+- wiring point: this is the first active child of `D2g29d1`; after `c4` kills
+  the naive Landau-compatibility shortcut, the exceptional signed branch is the
+  cleanest remaining place to win honest ground;
+- local recall result: no hidden theorem closes it automatically, but the note
+  already contains the exact locking geometry
+  `a=r\log p_0/(2q) \iff m\log p_0 = 2aj` on one prime-power lattice;
+- concrete plan:
+  1. define the resonant spine using `g=\gcd(r,q)`,
+     `j_0=q/g`, `m_0=r/g`,
+  2. decompose the prime measure into `\mu_{\mathrm{exc}}+\mu_{\mathrm{off}}`,
+     where `\mu_{\mathrm{exc}}` is the exact `p_0^{m_0\ell}` spine,
+  3. prove the spine contribution is absolutely bounded by `O(T)` using the
+     exact prime-packet formula and the uniform bound `|\mathcal K|\ll 1`,
+  4. conclude that the live burden in the exceptional branch is only the
+     off-spine remainder,
+  5. record `d1a` as a real simplification, not just a restatement.
