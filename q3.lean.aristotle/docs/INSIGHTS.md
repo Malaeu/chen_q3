@@ -6333,3 +6333,46 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   get user review,
   and only then submit that one shell before touching downstream
   `PO4 -> H4` formalization.
+
+## In progress (2026-04-11): PO3a proof-packet audit after the receiver pass
+
+- exact target remains
+  `PO3a = \mathcal D_{a,\partial}^{+-}=0`,
+  with downstream shell
+  `PO3b = \mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}` and
+  `PO3c` by symmetry;
+- local oracle pass is now stable: every useful hit points back to the same
+  four files
+  [`h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md),
+  [`plus_minus_cancellation_ledger_2026_03_15.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/plus_minus_cancellation_ledger_2026_03_15.md),
+  [`h1_boundary_cap_reset_2026_03_14.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_boundary_cap_reset_2026_03_14.md),
+  and
+  [`h1_four_block_bulk_2026_03_08.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_four_block_bulk_2026_03_08.md);
+- external web sanity-check again gives no ready-made Toeplitz/Hankel theorem
+  that would close `PO3a` for us automatically; at best it supports the
+  general language “boundary / commutator / cap”, not the exact cancellation;
+- what we already have mathematically:
+  `PO2` kills the bulk channel,
+  the reset note fixes the theorem map `H1^\infty -> H1^\partial -> H1^f`,
+  the ledger fixes the decomposition
+  `\mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{bulk}}^{+-}+\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`,
+  and the four-block note freezes the filtered bulk formulas and says boundary
+  bookkeeping must not live inside the filtered bulk object;
+- what we do **not** have yet is the decisive mathematical step:
+  an explicit formula identifying the mixed boundary term
+  `\mathcal D_{a,\partial}^{+-}` as a concrete short-range
+  Toeplitz-Hankel/commutator operator together with the cancellation mechanism
+  that forces it to vanish in the `(+,-)` channel;
+- therefore the honest live blocker is not formalization but the missing proof
+  packet for `PO3a`;
+- current 5-line plan:
+  1. freeze the missing lemma as “explicit mixed-boundary formula for
+     `\mathcal D_{a,\partial}^{+-}`”;
+  2. derive that formula from the infinite-tail decomposition in
+     `h1_boundary_cap_reset_2026_03_14.md`;
+  3. compare it against the filtered `(+,-)` packet from
+     `h1_four_block_bulk_2026_03_08.md`;
+  4. isolate the exact sign / symmetry cancellation that should kill it;
+  5. only after that reuse
+     [`Q3/Proofs/HBridge_PO3_Shell.lean`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/HBridge_PO3_Shell.lean)
+     as the landing shell and reopen Aristotle.

@@ -178,9 +178,12 @@ New live frontier:
       `PO3a = \mathcal D_{a,\partial}^{+-}=0`,
       `PO3b = \mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}`,
       and `PO3c` by symmetry;
-      the active execution blocker is therefore the first executable
-      formalization receiver for `PO3a/PO3b/PO3c`, not another mixed-block
-      arithmetic search;
+      the active blocker is therefore not another broad mixed-block arithmetic
+      search, but the missing proof packet for `PO3a`: an explicit formula for
+      the mixed boundary channel together with the cancellation mechanism that
+      forces it to vanish;
+      the auxiliary Lean shell `Q3/Proofs/HBridge_PO3_Shell.lean` is useful,
+      but it does not replace that mathematics;
       treat `PO4/PO5` and `H2^f/H3^f/H4^f` as conditional consumers until that
       lower-shell interface is genuinely synchronized.
   15. if `PO3` or a later `H-bridge` gate produces a genuine non-cap
