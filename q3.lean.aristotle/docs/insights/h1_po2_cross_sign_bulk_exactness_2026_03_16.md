@@ -8008,6 +8008,66 @@ original vague microcluster:
 
 This is now the honest remaining shape of the direct residue problem.
 
+There is one more structural compression available on this train scenario.
+
+```tex
+\textbf{D2g31f. Overlapping Hermite-like blocks must phase-lock.}
+```
+
+Fix a bounded block length `L_0\ge 2`. Suppose along a one-sided microcluster
+we have a chain of consecutive blocks
+
+```tex
+B_r=(y_r,\dots,y_{r+L_0-1}),
+\qquad r=1,\dots,R,
+```
+
+with successive overlaps of size `L_0-1`, and suppose each block is
+Hermite-captured in the quantitative sense of `D2g17a/D2g18b`: after some
+block-dependent unimodular phase `\omega_r`, its normalized coefficient vector
+lies in an `O(h_r)`-tube around the local Hermite line, where the block
+diameters satisfy `h_r\ll M^{-2}`.
+
+Because neighboring blocks share `L_0-1` common coordinates and those shared
+coordinates are uniformly nondegenerate in the Hermite regime, the overlap
+forces
+
+```tex
+\omega_{r+1}=\omega_r+O(h_r+h_{r+1})
+```
+
+at the phase level. In particular, after telescoping along the chain, all
+block phases remain locked to one global unimodular phase `\omega_*` up to a
+small cumulative error.
+
+So a coherent bounded-block train is not free to rotate phase independently
+from block to block. It is forced into one global alternating profile.
+
+```tex
+\textbf{D2g31g. Surviving train obstruction = global phase-rotated alternating chain.}
+```
+
+Combining `D2g31e` with the phase-lock conclusion of `D2g31f`, any surviving
+direct obstruction after one-block transfer fails must look like this:
+
+```tex
+\boxed{
+\text{a mesoscopic consecutive chain whose local residues all follow one
+global phase-rotated alternating finite-difference pattern.}
+}
+```
+
+This is a much narrower object than the original logarithmic microcluster. In
+particular, the remaining direct burden is no longer “some large packet with
+many points”, but:
+
+```tex
+\text{can the genuine paired residues }q_\gamma=e(x_\gamma-1)
+\text{ support a long globally phase-locked alternating train?}
+```
+
+That is the next exact incompatibility question.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

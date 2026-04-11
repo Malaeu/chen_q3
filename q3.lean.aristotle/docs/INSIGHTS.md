@@ -6223,3 +6223,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - active consequence: the direct residue is no longer a vague big cluster, but
   either one dangerous bounded block or a phase-coherent train of Hermite-like
   bounded blocks.
+
+## In progress (2026-04-11): D2g31f/g phase-lock compression
+
+- exact gain: a coherent train of bounded Hermite-like blocks is still too
+  loose a shape; overlapping windows should force their local phases to lock;
+- because neighboring blocks share `L_0-1` coordinates and Hermite-captured
+  shared coordinates are uniformly nondegenerate, the block phases cannot
+  wander independently;
+- corrected live enemy: not “many local Hermite-like blocks”, but one global
+  phase-rotated alternating mesoscopic train;
+- active next question: can the genuine paired residues
+  `q_\gamma=e(x_\gamma-1)` support such a long globally phase-locked
+  alternating train?
