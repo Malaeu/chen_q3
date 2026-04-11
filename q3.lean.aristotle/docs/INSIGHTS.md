@@ -5860,3 +5860,25 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - verdict: the proof tree is now cleaner. The live arithmetic burden is no
   longer "all high Fourier modes"; it is one signed packet endpoint with one
   sharp arithmetic split.
+
+## In progress (2026-04-11): D2g29b1 explicit-formula decomposition tightened
+
+- exact target: upgrade `D2g29b1` from a generic localization slogan to the
+  actual packet-level decomposition with named pieces `M_j^+`, `P_j^+`,
+  `E_j^+` and the aggregated prime kernel `\Psi_{\alpha,W_+,H}`;
+- wiring point: this sits strictly below the already fixed kernel choice
+  `D2g29b0` and strictly above the arithmetic endpoint `D2g29b2/b3/d`, so it is
+  the right address to make the algebra-to-arithmetic bridge completely
+  explicit;
+- concrete upgrade:
+  1. record `M_j^+(T)=(2\pi)^{-1}\int W_+(u/T)e(j\alpha u)\Omega(u)\,du`,
+  2. keep `P_j^+(T)` in the explicit-formula normalization already used in the
+     packet,
+  3. set `E_j^+(T)=E(h_{j,T})`,
+  4. define the aggregated prime kernel
+     `\Psi_{\alpha,W_+,H}(T;\xi)=\sum_{|j|<H} a_j[\widehat W_+(T(\xi-j\alpha))+\widehat W_+(T(-\xi-j\alpha))]`,
+  5. rewrite the full prime side as
+     `-(T/2\pi)\sum_{n\ge2}\Lambda(n)\Psi(T;\log n/2\pi)/\sqrt n`.
+- verdict: `D2g29b1` is now a genuine named decomposition step, not just a
+  heuristic localization sentence. This makes the later `b2/b3/d` references
+  much cleaner.

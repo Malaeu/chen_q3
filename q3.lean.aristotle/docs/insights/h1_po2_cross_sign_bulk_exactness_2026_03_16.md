@@ -5914,7 +5914,7 @@ This is the concrete `D2g29b0` choice: Fej\'er on the periodic side, Schwartz
 majorant on the height side.
 
 ```tex
-\textbf{D2g29b1. Schwartz-localization reduction.}
+\textbf{D2g29b1. Explicit-formula decomposition for the Fej\'er packet.}
 ```
 
 With the concrete `D2g29b0` choice fixed, define
@@ -5954,7 +5954,16 @@ three-part decomposition
 Z_j^+(T)=M_j^+(T)+P_j^+(T)+E_j^+(T),
 ```
 
-where the prime-side term has the form
+where the archimedean term is
+
+```tex
+M_j^+(T)
+:=
+\frac{1}{2\pi}\int_{\mathbb R}
+W_+(u/T)e(j\alpha u)\,\Omega(u)\,du,
+```
+
+the prime-side term is
 
 ```tex
 P_j^+(T)
@@ -5967,6 +5976,15 @@ P_j^+(T)
 \widehat W_+\!\left(T\!\left(\frac{\log n}{2\pi}+j\alpha\right)\right)
 \right].
 ```
+
+and the residual term is simply
+
+```tex
+E_j^+(T):=E(h_{j,T}),
+```
+
+where `E(\cdot)` denotes the pole / trivial-zero remainder in the chosen
+explicit-formula normalization.
 
 Summing against the Fej\'er coefficients `a_j` yields the packet decomposition
 
@@ -5983,9 +6001,44 @@ Summing against the Fej\'er coefficients `a_j` yields the packet decomposition
 with
 
 ```tex
+\mathcal M^{\phi}_{\alpha,W_+}(H;T)
+:=
+\sum_{|j|<H} a_j M_j^+(T),
+```
+
+```tex
 \mathcal P^{\phi}_{\alpha,W_+}(H;T)
 :=
 \sum_{|j|<H} a_j P_j^+(T).
+```
+
+```tex
+\mathcal E^{\phi}_{\alpha,W_+}(H;T)
+:=
+\sum_{|j|<H} a_j E_j^+(T).
+```
+
+Equivalently, the prime packet can be rewritten as
+
+```tex
+\mathcal P^{\phi}_{\alpha,W_+}(H;T)
+=
+-\frac{T}{2\pi}
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,
+\Psi_{\alpha,W_+,H}\!\left(T;\frac{\log n}{2\pi}\right),
+```
+
+where
+
+```tex
+\Psi_{\alpha,W_+,H}(T;\xi)
+:=
+\sum_{|j|<H} a_j
+\left[
+\widehat W_+\!\bigl(T(\xi-j\alpha)\bigr)
++
+\widehat W_+\!\bigl(T(-\xi-j\alpha)\bigr)
+\right].
 ```
 
 Since `\widehat W_+` is rapidly decaying, the `n`-sum is localized to the
@@ -6005,9 +6058,9 @@ that is,
 |\log n+2aj|\lesssim \frac1T.
 ```
 
-So `D2g29b1` is the honest reduction from the smooth shrinking-target packet on
-the zero side to a localized prime-power packet near the resonance lattice
-`\log n\approx \pm 2aj`.
+So `D2g29b1` is the honest reduction from one Fej\'er-smoothed packet over
+zeros to one explicit-formula packet whose prime side is localized near the
+resonance lattice `\log n\approx \pm 2aj`.
 
 For later bookkeeping, the same rapid decay implies the pointwise majorant
 
