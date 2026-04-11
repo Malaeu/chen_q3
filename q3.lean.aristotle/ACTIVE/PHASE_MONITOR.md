@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now fully arithmetic: `D2g25/D2g25b/D2g26/D2g26b/D2g27/D2g28/D2g29` reduce the endpoint first to a discrete exceptional-value gate `a=r\log p/(2q)` and then, in the nonexceptional case, to a Fejér-smoothed explicit-formula packet; `D2g29a` is now effectively closed at the note level because the archimedean part is `\ll T\log T` and fixed-shift residual terms are only `O(T)`, so the live burden has compressed further to `D2g29b`: prime-side localization near `\log n\approx 2aj`
-next_verify: rg -n "D2g29a''" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n "is effectively closed at the note level" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "the active direct critical path is now fully arithmetic" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path is now fully arithmetic: `D2g25/D2g25b/D2g26/D2g26b/D2g27/D2g28/D2g29` reduce the endpoint first to a discrete exceptional-value gate `a=r\log p/(2q)` and then, in the nonexceptional case, to a Fejér-smoothed explicit-formula packet; `D2g29a` is effectively closed, and `D2g29b` has now been compressed to a single weighted near-lattice counting problem for prime powers with weight `\mathfrak R_{\alpha,H,T}(n)` around `\frac{\log n}{2\pi}\approx j\alpha`
+next_verify: rg -n "D2g29b4" q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n "weighted near-resonance counting problem for prime powers" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "the active direct critical path is now fully arithmetic" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

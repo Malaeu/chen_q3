@@ -5506,6 +5506,28 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - conclusion sharpened again: `D2g29a` is effectively closed at the note level.
   The only honest remaining obstacle in the `D2g29` packet is now
   `D2g29b`, i.e. the prime-side localization near `\log n \approx 2aj`.
+- pushed `D2g29b` one level further down: the prime-side packet can be reduced
+  schematically to
+  ```
+  T \sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}\,\mathfrak R_{\alpha,H,T}(n),
+  ```
+  where `\mathfrak R_{\alpha,H,T}(n)` is just a Schwartz-decaying
+  distance-to-lattice weight around
+  `\frac{\log n}{2\pi}\approx j\alpha`.
+- because the lattice spacing is fixed (`|\alpha|`) while the localization
+  width is `1/T`, each prime power has at most `O_\alpha(1)` genuinely relevant
+  resonant indices `j`. So the whole Fourier packet collapses to a single
+  near-lattice problem for the set of prime-power logarithms.
+- this makes the exceptional arithmetic meaning completely transparent:
+  `a=r\log p/(2q)` is exactly the condition that some prime-power logarithms
+  lie exactly on the lattice `2aj`. In the nonexceptional case, the burden is
+  to prove that prime powers cannot come close often enough to make
+  ```
+  \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\mathfrak R_{\alpha,H(T),T}(n)
+  ```
+  exceed `\log T`.
+- so the live brick is now no longer “bound the prime side somehow”, but one
+  concrete weighted near-resonance counting problem for prime powers.
 - this is cleaner than the older abstract majorant wording:
   the live question is now literally one explicit exponential-sum criterion on
   dyadic zero blocks.

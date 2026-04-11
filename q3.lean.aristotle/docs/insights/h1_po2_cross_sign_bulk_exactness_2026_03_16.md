@@ -5657,6 +5657,145 @@ Show that on the target range `H(T)\asymp T^2/\log T`,
 Then `\Sigma_{\alpha,w}(H(T);T)\ll T\log T`, hence `D2g25b` closes, and so
 does the shrinking-target branch.
 
+```tex
+\textbf{D2g29b1. Schwartz-localization reduction.}
+```
+
+Assume
+
+```tex
+|\widehat w(\xi)|\le C_A(w)(1+|\xi|)^{-A}
+\qquad (A\ge 2),
+```
+
+and write the prime-side packet schematically as
+
+```tex
+\mathcal P_{\alpha,w}(H;T)
+=
+\frac{T}{2\pi}
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)
+\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}
+\left[
+\widehat w\!\left(T\!\left(\frac{\log n}{2\pi}-j\alpha\right)\right)
++
+\widehat w\!\left(T\!\left(\frac{\log n}{2\pi}+j\alpha\right)\right)
+\right].
+```
+
+Then
+
+```tex
+|\mathcal P_{\alpha,w}(H;T)|
+\ll_{\alpha,w,A}
+T\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}\,
+\mathfrak R_{\alpha,H,T}(n),
+```
+
+where
+
+```tex
+\mathfrak R_{\alpha,H,T}(n)
+:=
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)
+\Bigl(1+T\bigl|\tfrac{\log n}{2\pi}-j\alpha\bigr|\Bigr)^{-A}
++
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)
+\Bigl(1+T\bigl|\tfrac{\log n}{2\pi}+j\alpha\bigr|\Bigr)^{-A}.
+```
+
+So `D2g29b` reduces to bounding a prime-power sum weighted only by
+distance-to-lattice.
+
+```tex
+\textbf{D2g29b2. One-resonance-per-prime-power heuristic.}
+```
+
+Because `\alpha\neq 0` is fixed, the lattice points `j\alpha` are spaced by
+`|\alpha|`. Once `T\gg_\alpha 1`, the localization width `1/T` is much smaller
+than that spacing. Hence for each fixed `n` there are at most `O_\alpha(1)`
+indices `j` contributing non-negligibly to `\mathfrak R_{\alpha,H,T}(n)`.
+
+Therefore the true size of `\mathfrak R_{\alpha,H,T}(n)` is governed by the
+single nearest lattice point, and one expects the reduction
+
+```tex
+\mathfrak R_{\alpha,H,T}(n)
+\ll_{\alpha,A}
+\Bigl(1+T\,\operatorname{dist}\!\bigl(\tfrac{\log n}{2\pi},\alpha\mathbb Z_H\bigr)\Bigr)^{-A}
++
+\Bigl(1+T\,\operatorname{dist}\!\bigl(\tfrac{\log n}{2\pi},-\alpha\mathbb Z_H\bigr)\Bigr)^{-A},
+```
+
+where
+
+```tex
+\alpha\mathbb Z_H:=\{j\alpha:\ |j|<H\}.
+```
+
+This is the clean reduction from the whole Fourier packet to a single
+distance-to-resonance weight.
+
+```tex
+\textbf{D2g29b3. Exceptional/nonexceptional meaning on the prime side.}
+```
+
+Exact resonance occurs when
+
+```tex
+\frac{\log n}{2\pi}=j\alpha
+\qquad\Longleftrightarrow\qquad
+\log n = 2aj.
+```
+
+If `n=p^m`, this becomes
+
+```tex
+m\log p = 2aj.
+```
+
+Thus the exceptional arithmetic condition
+
+```tex
+a=\frac{r\log p}{2q}
+```
+
+is precisely the condition that the logarithms of prime powers can sit exactly
+on the localization lattice `2aj`.
+
+So:
+
+1. in the exceptional case, exact prime-power resonances are available and must
+   be analyzed directly;
+2. in the nonexceptional case, the live burden is to show that prime powers do
+   not come close enough to this lattice often enough to make the weighted sum
+   exceed the natural scale `T\log T`.
+
+```tex
+\textbf{D2g29b4. Honest remaining target.}
+```
+
+After `D2g29a`, the arithmetic endpoint is reduced to proving
+
+```tex
+\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}\,
+\mathfrak R_{\alpha,H(T),T}(n)
+\ll \log T
+```
+
+for `H(T)\asymp T^2/\log T`.
+
+Indeed, this implies
+
+```tex
+\mathcal P_{\alpha,w}(H(T);T)\ll T\log T,
+```
+
+which is exactly what `D2g29b` needs.
+
+So the live obstruction is no longer “explicit formula in general”, but one
+very concrete prime-power near-lattice counting problem.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
