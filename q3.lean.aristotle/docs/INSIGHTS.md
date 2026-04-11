@@ -6560,11 +6560,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - but it still does **not** prove `H_{a,N}\in\mathcal B`: a rank-one brick
   built from an even left vector and the sign-split right functional
   `\ell_{+,N}P_+ + \ell_{-,N}P_-` can still contain genuine cross-sign pieces;
+- in fact there is now an exact local obstruction: for any nonzero vector `v`,
+  the rank-one brick
+  `K_v:=v\otimes(\ell_{+,N}P_+ + \ell_{-,N}P_-)`
+  is block-diagonal only if `P_+v=P_-v=0`, because its mixed blocks are exactly
+  `P_+v\otimes\ell_{-,N}` and `P_-v\otimes\ell_{+,N}`;
+- therefore a lone first-order endpoint brick of this type can never lie in the
+  sign-pure boundary algebra unless it is zero;
 - so the next exact theorem-target is now cleanly split:
   either prove a stronger one-sided purity/sign law for the paired sum
   `\sum_{\gamma>0}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)`,
   or derive the full first-order endpoint formula and show that the adjoint
-  companion terms cancel the cross-sign part;
+  companion terms cancel the cross-sign part exactly;
 - concrete file pointers for this step:
   `full/sections/Main_closure.tex` for raw `w_{rs}(a)`,
   `docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md` for

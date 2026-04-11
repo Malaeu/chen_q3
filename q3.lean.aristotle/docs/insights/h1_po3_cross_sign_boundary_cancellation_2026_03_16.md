@@ -679,6 +679,55 @@ So the exact next local theorem-target is now cleaner than before:
 cross-sign part after adjoining the adjoint companion terms.}
 ```
 
+There is also an exact obstruction lemma at this stage. Let
+
+```tex
+K_v:=v\otimes(\ell_{+,N}P_+ + \ell_{-,N}P_-),
+\qquad
+v=v_+ + v_-,
+\qquad
+v_\pm:=P_\pm v.
+```
+
+Relative to the decomposition
+`\mathcal H_N=\mathcal H_{+,N}\oplus\mathcal H_{-,N}`, the block form is
+
+```tex
+K_v=
+\begin{pmatrix}
+v_+\otimes \ell_{+,N} & v_+\otimes \ell_{-,N} \\
+v_-\otimes \ell_{+,N} & v_-\otimes \ell_{-,N}
+\end{pmatrix}.
+```
+
+Since `\ell_{+,N}` and `\ell_{-,N}` are nonzero, the sign-pure boundary lemma
+implies:
+
+```tex
+K_v\in\mathcal B
+\Longrightarrow
+v_+=0
+\text{ and }
+v_-=0
+\Longrightarrow
+K_v=0.
+```
+
+So a nonzero first-order endpoint brick of the form
+`v\otimes(\ell_{+,N}P_+ + \ell_{-,N}P_-)` can never belong to the sign-pure
+boundary algebra by itself.
+
+Combined with the reflection-evenness of `v_{a,N}`, this has a sharp
+consequence:
+
+```tex
+\text{either }v_{a,N}=0,
+\text{ or `PO3a` cannot be closed by a lone first-order endpoint brick;}
+```
+
+any surviving route must use exact cancellation with the adjoint companion
+terms (or a stronger structural collapse of the full boundary packet).
+
 ### `PO3a.2` Boundary expansion
 
 Expand the boundary correction in finite sign-pure form:
