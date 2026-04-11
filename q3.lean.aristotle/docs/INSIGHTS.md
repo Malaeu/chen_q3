@@ -6247,3 +6247,17 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   packet;
 - active next question: can the actual support `Y_a={x_\gamma,x_\gamma-1}`
   realize this canonical model enemy without already dropping into `D2f3`?
+
+## In progress (2026-04-11): D2g31i splice with D2g15a
+
+- exact gain: the remaining question from `D2g31h` is already answered by an
+  older packet;
+- `D2g15a` says there is no cycle/graph escape for the paired Hermite model,
+  and its only dangerous realization mechanism is the actual near-collision
+  geometry in `X_a`, i.e. exactly the compressed-gap/resonance direction
+  isolated as `D2f3`;
+- therefore the whole post-`D2g29e` direct arithmetic residue now compresses
+  to one branch only:
+  outside `D2f3` there is no remaining direct arithmetic enemy;
+- active consequence: the non-resonant direct route is effectively exhausted;
+  the only live residue is now `D2f3`.

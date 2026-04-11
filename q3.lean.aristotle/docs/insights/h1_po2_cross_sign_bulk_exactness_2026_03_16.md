@@ -8104,6 +8104,45 @@ without already forcing entry into }D2f3?
 
 That is the exact next theorem-shape.
 
+But there is now a direct splice with an older packet.
+
+```tex
+\textbf{D2g31i. `D2g31h` + `D2g15a` collapse the remaining direct residue into }D2f3.
+```
+
+`D2g31h` says that every surviving direct obstruction has been compressed all
+the way down to a genuine paired realization of the canonical finite-
+difference/Hermite model enemy.
+
+`D2g15a` says that for such a packet there is no cycle-space or graph-side
+escape: the only surviving dangerous mechanism is actual one-sided
+near-collision geometry in `X_a`, which is exactly the compressed-gap /
+resonance direction already isolated as `D2f3`.
+
+Therefore the whole post-`D2g29e` direct residue now compresses once more:
+
+```tex
+\boxed{
+\text{outside }D2f3,\ \text{there is no remaining direct arithmetic enemy.}
+}
+```
+
+Equivalently, if a genuine infinite-support counterexample to the direct branch
+survives after `D2g29e`, then it must already lie in the ultra-near resonance
+branch `D2f3`.
+
+So the honest current status is:
+
+```tex
+\text{direct arithmetic residue after }D2g29e
+\Longrightarrow
+D2f3.
+```
+
+This is not yet the full closure of `PO2`, because `D2f3` itself remains to be
+killed. But it does mean that every non-resonant alternative has now been
+compressed away.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
