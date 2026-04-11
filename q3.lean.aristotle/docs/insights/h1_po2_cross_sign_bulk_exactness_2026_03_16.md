@@ -4948,11 +4948,46 @@ A_\alpha(T,\varepsilon)
 H=\left\lfloor \frac{1}{2\varepsilon}\right\rfloor.
 ```
 
-So for shrinking-target exclusion it is enough to prove
+So for shrinking-target exclusion it is enough to prove any upper bound of size
+`o(H)`. But on the concrete shrinking-target scale relevant for `D2g24`, one
+can already weaken this substantially.
+
+Indeed, if
 
 ```tex
-\Sigma_\alpha(H(T);T)=o(H(T)).
+\varepsilon(T)=o\!\left(\frac{\log T}{T^2}\right),
+\qquad
+H(T)\asymp \frac{1}{\varepsilon(T)}\asymp \frac{T^2}{\log T},
 ```
+
+then, using `\mathcal N(T,2T]\asymp T\log T`, one has
+
+```tex
+\frac{\mathcal N(T,2T]}{H(T)}
+\asymp
+\frac{T\log T}{T^2/\log T}
+=
+\frac{\log^2 T}{T}
+\to 0.
+```
+
+Therefore the genuinely useful sufficient condition is already
+
+```tex
+\Sigma_\alpha(H(T);T)\ll \mathcal N(T,2T].
+```
+
+Since then
+
+```tex
+A_\alpha(T,\varepsilon(T))
+\ll
+\frac{\mathcal N(T,2T]}{H(T)}
+=
+o(1),
+```
+
+and hence eventually `A_\alpha(T,\varepsilon(T))=0`.
 
 This is strictly closer to explicit-formula technology than the sufficient
 condition in `D2g26`, because it asks for one signed/smoothed Fourier sum
@@ -4988,6 +5023,26 @@ explicit-formula machinery:
 3. if one can transfer `\Sigma_\alpha(H;T)` to a prime-side weighted sum, then
    the arithmetic endpoint becomes a single signed/smoothed explicit-formula
    problem rather than a termwise control problem for all `S_\alpha(j;T)`.
+
+```tex
+\textbf{D2g25d. Natural-scale version of the Fej\'er endpoint.}
+```
+
+On the target scale `\varepsilon(T)=o((\log T)/T^2)`, the correct endpoint is
+therefore not
+
+```tex
+\Sigma_\alpha(H(T);T)=o(H(T)),
+```
+
+but the weaker and more natural condition
+
+```tex
+\Sigma_\alpha(H(T);T)\ll \mathcal N(T,2T]
+\asymp T\log T.
+```
+
+This is the right quantitative target to feed into explicit-formula machinery.
 
 For the branch relevant to `D2g24`, take
 
@@ -5062,12 +5117,12 @@ j\lesssim \frac{T^2}{\log T}.
 But `D2g25b` shows that there is a potentially more natural route:
 
 ```tex
-\text{prove }\Sigma_\alpha(H(T);T)=o(H(T))
+\text{prove }\Sigma_\alpha(H(T);T)\ll \mathcal N(T,2T]
 \quad\text{with}\quad
 H(T)\asymp \frac{T^2}{\log T}.
 ```
 
-This is weaker than asking for
+This is much weaker than asking for
 
 ```tex
 \varepsilon(T)\sum_{j\le H(T)}|S_\alpha(j;T)|=o(1),
@@ -5335,6 +5390,133 @@ F_H\!\bigl(\alpha(\gamma-\gamma')\bigr).
 So the only meaningful quadratic route to `D2g26` now runs through the
 off-diagonal Fej\'er-weighted pair-correlation sum, not through the raw square
 sum itself.
+
+```tex
+\textbf{D2g29. Fej\'er-to-prime bridge (schematic explicit-formula packet).}
+```
+
+To attack `D2g25b` by explicit-formula methods, introduce a smooth dyadic cut
+off
+
+```tex
+w\in C_c^\infty((1,2)),
+\qquad
+w\ge 0,
+```
+
+and define the smoothed zero sum
+
+```tex
+\Sigma_{\alpha,w}(H;T)
+:=
+\sum_\gamma w(\gamma/T)\,F_H(\alpha\gamma).
+```
+
+Using the Fourier expansion of `F_H`,
+
+```tex
+\Sigma_{\alpha,w}(H;T)
+=
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right) Z_j(T),
+```
+
+where
+
+```tex
+Z_j(T):=\sum_\gamma w(\gamma/T)\,e(j\alpha\gamma).
+```
+
+Now set
+
+```tex
+h_{j,T}(u):=w(u/T)e(j\alpha u).
+```
+
+Its Fourier transform is the translated packet
+
+```tex
+\widehat{h_{j,T}}(\xi)
+=
+T\,\widehat w\bigl(T(\xi-j\alpha)\bigr).
+```
+
+So the Guinand--Weil explicit formula should rewrite `Z_j(T)` into a sum of
+three pieces:
+
+```tex
+Z_j(T)=\mathcal M_{j,T}+\mathcal P_{j,T}+\mathcal E_{j,T},
+```
+
+where:
+
+1. `\mathcal M_{j,T}` is the archimedean/main-term contribution;
+2. `\mathcal P_{j,T}` is the prime-power side, localized by
+   `\widehat w(T(\frac{\log n}{2\pi}-j\alpha))`;
+3. `\mathcal E_{j,T}` is the residual error/pole part.
+
+After summing with the Fej\'er weights one gets the schematic bridge
+
+```tex
+\Sigma_{\alpha,w}(H;T)
+=
+\mathcal M_{\alpha,w}(H;T)
++
+\mathcal P_{\alpha,w}(H;T)
++
+\mathcal E_{\alpha,w}(H;T),
+```
+
+with prime-side term of the form
+
+```tex
+\mathcal P_{\alpha,w}(H;T)
+\sim
+\frac{T}{2\pi}
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)
+\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}
+\left[
+\widehat w\!\left(T\!\left(\frac{\log n}{2\pi}-j\alpha\right)\right)
++
+\widehat w\!\left(T\!\left(\frac{\log n}{2\pi}+j\alpha\right)\right)
+\right].
+```
+
+Thus `D2g25b` is reduced to one explicit-formula problem in which the prime
+side is localized near
+
+```tex
+\frac{\log n}{2\pi}\approx j\alpha,
+\qquad\text{i.e.}\qquad
+\log n\approx 2aj.
+```
+
+This is the point where Landau--Gonek resonance and the Ford--Zaharescu
+exceptional/nonexceptional split enter naturally.
+
+```tex
+\textbf{D2g29a. Archimedean bookkeeping target.}
+```
+
+Show that the archimedean part satisfies the natural-scale bound
+
+```tex
+\mathcal M_{\alpha,w}(H(T);T)\ll T\log T.
+```
+
+This is the soft analytic bookkeeping piece of the packet.
+
+```tex
+\textbf{D2g29b. Prime-side localization target.}
+```
+
+Show that on the target range `H(T)\asymp T^2/\log T`,
+
+```tex
+\mathcal P_{\alpha,w}(H(T);T)+\mathcal E_{\alpha,w}(H(T);T)\ll T\log T.
+```
+
+Then `\Sigma_{\alpha,w}(H(T);T)\ll T\log T`, hence `D2g25b` closes, and so
+does the shrinking-target branch.
 
 Now the remaining live coefficient question is extremely narrow:
 

@@ -5456,6 +5456,35 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   ```
   so the live arithmetic endpoint is no longer forced to be termwise control of
   all high frequencies; it can be attacked as one single weighted signed sum.
+- sharpened this one step further: on the actual target scale
+  `\varepsilon(T)=o((\log T)/T^2)` we do not need
+  `\Sigma_\alpha(H(T);T)=o(H(T))`. Since
+  ```
+  \mathcal N(T,2T]/H(T)\asymp \log^2 T / T \to 0,
+  ```
+  it is already enough to prove the natural-scale bound
+  ```
+  \Sigma_\alpha(H(T);T)\ll \mathcal N(T,2T]\asymp T\log T.
+  ```
+  This is much softer and looks compatible with explicit-formula technology.
+- packaged the next bridge as `D2g29/D2g29a/D2g29b`:
+  after inserting a smooth dyadic cutoff `w(\gamma/T)`, the Fejér-smoothed zero
+  sum
+  ```
+  \Sigma_{\alpha,w}(H;T)=\sum_\gamma w(\gamma/T)F_H(\alpha\gamma)
+  ```
+  becomes a single weighted combination of
+  ```
+  Z_j(T)=\sum_\gamma w(\gamma/T)e(j\alpha\gamma),
+  ```
+  and the Guinand--Weil explicit formula should rewrite each `Z_j(T)` into
+  archimedean part + prime-power part + error, with prime localization near
+  `\log n \approx 2aj`.
+- this is the first place where the whole endpoint really lines up:
+  Ford–Zaharescu gives the exceptional/nonexceptional arithmetic fork,
+  Landau–Gonek gives the resonance geometry on the prime-power side,
+  and Suzuki/Fujii explains why a single smoothed signed sum is the right
+  object instead of `\sum |S_j|`.
 - this is cleaner than the older abstract majorant wording:
   the live question is now literally one explicit exponential-sum criterion on
   dyadic zero blocks.
@@ -5511,7 +5540,9 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   the vacuous raw-`L^2` branch, and then attack the nonexceptional case either
   via the direct mean-`L^1` criterion, or more naturally via the signed
   Fejér-majorant `\Sigma_\alpha(H;T)`, or via a genuinely new off-diagonal
-  Fejér/pair-correlation estimate.
+  Fejér/pair-correlation estimate. The strongest current formulation is now
+  `D2g29`: reduce the endpoint to proving that the smoothed prime-side packet is
+  at most natural size `T\log T`.
 - also sharpened the Hermite-capture fingerprint itself:
   `D2g18b` now shows that once a local packet enters an `O(h)`-tube around the
   Hermite line, every adjacent residue ratio must lie in an `O(h)`-tube around
