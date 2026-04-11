@@ -6498,6 +6498,153 @@ Therefore `D2g29b4` should be read as an over-strong positive majorant, not as
 the likely final endpoint. The honest object must preserve the signed Fej\'er
 superposition.
 
+There is a cleaner prime-first way to read this same correction.
+
+```tex
+\textbf{D2g29c0. Exact prime-first identity.}
+```
+
+Let
+
+```tex
+\Sigma_\alpha(H;T):=\sum_{T<\gamma\le 2T}F_H(\alpha\gamma),
+\qquad
+F_H(x)=\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)e(jx),
+\qquad
+\alpha=\frac{a}{\pi}.
+```
+
+For `j\ge 1` define
+
+```tex
+X_j:=e^{2aj},
+\qquad
+\Delta_\gamma(X;T):=\sum_{T<\gamma\le 2T}X^{i\gamma}.
+```
+
+Then
+
+```tex
+\boxed{
+\Sigma_\alpha(H;T)
+=
+N(T,2T]
++
+2\sum_{j=1}^{H-1}\left(1-\frac{j}{H}\right)\Re \Delta_\gamma(X_j;T).
+}
+```
+
+Indeed,
+
+```tex
+X_j^{\,i\gamma}=e^{i\gamma\log X_j}=e^{2iaj\gamma}=e(j\alpha\gamma),
+```
+
+and the Fej\'er coefficients are even, so the `\pm j` pair collapses to twice
+the real part.
+
+This is the exact algebraic replacement for the dead raw route `D2g29b`: no
+height-side strip growth is introduced, because the Fej\'er averaging is
+carried directly by the arithmetic family `X_j^{i\gamma}`.
+
+```tex
+\textbf{D2g29c1. Sufficient natural-scale criterion in prime-first form.}
+```
+
+If, for
+
+```tex
+H(T)\asymp \frac{1}{\varepsilon(T)},
+```
+
+one has
+
+```tex
+\sum_{j=1}^{H(T)-1}\left(1-\frac{j}{H(T)}\right)\left|\Delta_\gamma(X_j;T)\right|
+\ll T\log T,
+\qquad X_j=e^{2aj},
+```
+
+then
+
+```tex
+\Sigma_\alpha(H(T);T)\ll T\log T.
+```
+
+By the Fej\'er-majorant endpoint from `D2g25b/c`, this implies
+
+```tex
+A_\alpha(T,\varepsilon(T))
+\ll
+\frac{T\log T}{H(T)}.
+```
+
+Hence on the shrinking-target scale
+
+```tex
+\varepsilon(T)=o\!\left(\frac{\log T}{T^2}\right),
+\qquad
+H(T)\asymp \frac{T^2}{\log T},
+```
+
+one gets
+
+```tex
+\frac{T\log T}{H(T)}\asymp \frac{\log^2 T}{T}\to 0,
+```
+
+so eventually
+
+```tex
+A_\alpha(T,\varepsilon(T))=0.
+```
+
+Thus shrinking-target exclusion follows from a natural-scale average bound for
+the Landau--Gonek-type sums `\Delta_\gamma(X_j;T)` on the exponential grid
+`X_j=e^{2aj}`.
+
+```tex
+\textbf{D2g29c2. Exceptional/nonexceptional split in the }X\text{-language.}
+```
+
+If
+
+```tex
+a=\frac{r\log p}{2q},
+```
+
+then
+
+```tex
+X_j=e^{2aj}=p^{rj/q},
+```
+
+so whenever `q\mid rj` one gets exact prime-power resonance
+
+```tex
+X_j=p^m.
+```
+
+This is the exceptional branch in prime-first form.
+
+If `a` is not of that form, then the grid `X_j=e^{2aj}` does not land exactly
+on a prime-power lattice for infinitely many `j`, and the remaining burden is
+to control the corresponding incommensurate sums `\Delta_\gamma(X_j;T)`.
+
+```tex
+\textbf{D2g29c3. Remaining arithmetic wall.}
+```
+
+The live arithmetic burden may therefore be read equally well in either of the
+following equivalent forms:
+
+1. the signed physical-space prime-distribution pairing from `D2g29d`,
+2. the prime-first average bound for the Landau--Gonek-type sums
+   `\Delta_\gamma(e^{2aj};T)`.
+
+So `D2g29c` is the prime-first replacement in exact algebraic form, while
+`D2g29d` is its signed physical-space / prime-distribution avatar.
+
 ```tex
 \textbf{D2g29c'. Honest signed prime-side kernel.}
 ```

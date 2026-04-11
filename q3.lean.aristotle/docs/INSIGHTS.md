@@ -5950,3 +5950,25 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `d1b` = incommensurate branch with no exact prime-power resonance.
 - verdict: this is a real compression. The remaining arithmetic burden under
   `D2g29d` is now partitioned cleanly into two non-overlapping child tasks.
+
+## In progress (2026-04-11): D2g29c prime-first replacement sharpened
+
+- exact target: record the clean algebraic identity that replaces the dead raw
+  height-side route `D2g29b`: the Fejér packet over zeros can be rewritten
+  directly through Landau–Gonek-type sums
+  `\Delta_\gamma(X;T)=\sum_{T<\gamma\le 2T} X^{i\gamma}`;
+- wiring point: this does not replace the current signed endpoint `D2g29d`; it
+  sharpens `D2g29c` and explains why `d` is the physical-space / prime-pairing
+  form of the same prime-first route;
+- concrete plan:
+  1. define `D2g29c0` as the exact identity
+     `\Sigma_\alpha(H;T)=N(T,2T]+2\sum_{j=1}^{H-1}(1-j/H)\Re\Delta_\gamma(X_j;T)`
+     with `X_j=e^{2aj}`,
+  2. define `D2g29c1` as the sufficient natural-scale criterion
+     `\sum_{j\le H(T)}(1-j/H)|\Delta_\gamma(X_j;T)|\ll T\log T`,
+  3. define `D2g29c2` as the exceptional/nonexceptional split in the
+     `X_j=e^{2aj}` language,
+  4. define `D2g29c3` as the remaining arithmetic wall for these
+     Landau–Gonek-type sums on the exponential grid,
+  5. keep `D2g29d` as the equivalent signed physical-space endpoint rather than
+     a competing branch.
