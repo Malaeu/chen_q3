@@ -6432,3 +6432,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   expansion of `B_{a,N}` from the tail definitions in
   [`h1_po1_tail_defect_attack_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po1_tail_defect_attack_2026_03_16.md),
   not to reopen the whole `PO3` discussion.
+
+## Final result (2026-04-11): the exact algebraic start of `PO3a.1` is now frozen
+
+- there is now one exact non-speculative identity behind the bulk-boundary
+  split:
+  if `T_{a,\infty,N}` is the raw sign-pure synthesis
+  `T_{a,\infty,N} z^{\pm n}=\chi_{\pm n}[a]`, then the already frozen
+  `PO1` / `Main_closure` formulas give
+  `I_0^{(a)}S_{a,\infty,N}=T_{a,\infty,N}\Delta_N`
+  on the algebraic two-sided tail basis;
+- this matters because it shows that the sign geometry is already exact on the
+  Volterra-antiderivative side: `\Delta_N` is sign-separated and
+  `T_{a,\infty,N}` is sign-pure by construction;
+- therefore any genuine boundary layer in
+  `S_{a,\infty,N}^*G_g[a]S_{a,\infty,N}
+   - \kappa(a)\Delta_N^*Q_\infty\Delta_N`
+  must arise only when passing back from the antiderivative side to the actual
+  defect operator, not from a hidden mixed combinatorics inside the filtered
+  tail synthesis itself;
+- operational consequence:
+  the next sharp local attack is to exploit
+  `I_0^{(a)}S_{a,\infty,N}=T_{a,\infty,N}\Delta_N`
+  to write the boundary correction explicitly, then test sign-purity of each
+  resulting generator.

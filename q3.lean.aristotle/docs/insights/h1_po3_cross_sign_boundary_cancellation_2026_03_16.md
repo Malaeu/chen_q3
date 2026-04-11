@@ -445,6 +445,46 @@ B_{a,N}^*G_g[a]B_{a,N}
 
 So the boundary layer is generated entirely by the correction `B_{a,N}`.
 
+There is now also one exact algebraic starting identity behind this step.
+Define the raw sign-pure synthesis `T_{a,\infty,N}` on the algebraic tail basis
+by
+
+```tex
+T_{a,\infty,N} z^n=\chi_n[a],
+\qquad
+T_{a,\infty,N} z^{-n}=\chi_{-n}[a]
+\qquad (n>N).
+```
+
+Then the already frozen `PO1` / `Main_closure` formulas give on basis vectors
+
+```tex
+I_0^{(a)}S_{a,\infty,N} z^n=\chi_n[a]+\chi_{n+1}[a],
+\qquad
+I_0^{(a)}S_{a,\infty,N} z^{-n}=\chi_{-n}[a]+\chi_{-(n+1)}[a],
+```
+
+while
+
+```tex
+\Delta_N z^n=z^n+z^{n+1},
+\qquad
+\Delta_N z^{-n}=z^{-n}+z^{-(n+1)}.
+```
+
+So one has the exact tail-level factorization
+
+```tex
+I_0^{(a)}S_{a,\infty,N}=T_{a,\infty,N}\Delta_N.
+```
+
+This is the right entry point for `PO3a.1`: the sign geometry is already
+clean at the antiderivative level, so any boundary term must appear only when
+passing back from the Volterra-antiderivative side to the actual defect
+operator. In particular, the live source of `H_{a,N}` is no longer "some
+mixed tail combinatorics", but the Volterra undoing of the raw sign-pure
+filtered synthesis.
+
 ### `PO3a.2` Boundary expansion
 
 Expand the boundary correction in finite sign-pure form:
