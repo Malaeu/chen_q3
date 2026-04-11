@@ -5791,3 +5791,24 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - verdict: this strengthens, not weakens, the route hygiene. It confirms that
   the unsigned near-lattice packet is inherently lossy and that the real live
   endpoint remains the signed kernel branch `D2g29c`.
+
+## In progress (2026-04-11): D2g29c Fourier/physical-space sharpening
+
+- exact target: replace the schematic `D2g29c''` Fourier-inversion line by the
+  honest kernel identity for the signed packet after summing the Fejér weights;
+- wiring point: this is the next live step after the corrected unsigned packet
+  `D2g29b2`; it should make the cancellation structure in `D2g29c` explicit;
+- local recall again returns only our own packet notes plus the standard
+  Guinand--Weil crosswalk, which is a good sign: there is no hidden bypass and
+  the route really is to compute the kernel directly;
+- external search only confirms the generic explicit-formula Fourier template:
+  test functions are inserted through their Fourier transforms, and the prime
+  side is read by Fourier inversion back in physical space;
+- concrete plan:
+  1. use the repository Fourier convention from `T0`,
+  2. rewrite
+     `\sum_j a_j \widehat W_+(T(\xi-j\alpha))`
+     as a single oscillatory integral,
+  3. identify the inner Fourier packet with `\phi_H(\alpha u)`,
+  4. simplify the `+\alpha/-\alpha` duplication using `a_j=a_{-j}`,
+  5. record the exact signed kernel seen by prime powers.
