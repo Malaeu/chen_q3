@@ -7497,6 +7497,159 @@ D2g29d1a / D2g29d1b
 should now be read as a legitimate backup analysis of the signed prime packet,
 not as the live critical path.
 
+This shifts the remaining direct arithmetic burden to the only other branch
+left in `D2g22`.
+
+```tex
+\textbf{D2g30. Remaining arithmetic wall after closing D2g29.}
+```
+
+By `D2g22`, any genuine infinite-support counterexample to the direct branch
+forces at least one of two scenarios:
+
+1. ultra-near integer resonance;
+2. microscopic one-sided zero gaps.
+
+But `D2g29e` closes the first scenario. Therefore the only remaining direct
+arithmetic wall is:
+
+```tex
+\boxed{
+x_{\gamma+1}-x_\gamma \ll \frac{1}{x_\gamma^2}
+\qquad\text{along an infinite subsequence.}
+}
+```
+
+Equivalently,
+
+```tex
+\boxed{
+\gamma_{n+1}-\gamma_n \ll_a \frac{1}{\gamma_n^2}
+\qquad\text{infinitely often.}
+}
+```
+
+So `PO2` is not yet closed, but its arithmetic residue is now one-dimensional:
+the microscopic-gap branch only.
+
+```tex
+\textbf{D2g30a. Microscopic gaps force two-jumps of }S(T)\textbf{ on supertiny windows.}
+```
+
+Assume there are infinitely many consecutive critical ordinates
+
+```tex
+\gamma_\nu<\gamma_{\nu+1}
+```
+
+such that
+
+```tex
+\gamma_{\nu+1}-\gamma_\nu \ll \frac{1}{\gamma_\nu^2}.
+```
+
+Set
+
+```tex
+T_\nu:=\frac{\gamma_\nu+\gamma_{\nu+1}}{2},
+\qquad
+u_\nu:=\frac{\gamma_{\nu+1}-\gamma_\nu}{2}.
+```
+
+Then
+
+```tex
+u_\nu\ll \frac{1}{T_\nu^2},
+```
+
+and the closed interval
+
+```tex
+[T_\nu-u_\nu,\ T_\nu+u_\nu]
+```
+
+contains both zeros `\gamma_\nu` and `\gamma_{\nu+1}`. Hence
+
+```tex
+N(T_\nu+u_\nu)-N(T_\nu-u_\nu)\ge 2.
+```
+
+Using the Riemann--von Mangoldt decomposition
+
+```tex
+N(T)=\frac{\theta(T)}{\pi}+1+S(T),
+```
+
+with
+
+```tex
+\theta'(T)=\frac12\log(T/2\pi)+O(T^{-1}),
+```
+
+we get
+
+```tex
+N(T_\nu+u_\nu)-N(T_\nu-u_\nu)
+=
+\frac{\theta(T_\nu+u_\nu)-\theta(T_\nu-u_\nu)}{\pi}
++
+S(T_\nu+u_\nu)-S(T_\nu-u_\nu).
+```
+
+Because `u_\nu\ll T_\nu^{-2}`, the smooth part satisfies
+
+```tex
+\theta(T_\nu+u_\nu)-\theta(T_\nu-u_\nu)
+=
+O(u_\nu\log T_\nu)
+=
+O\!\left(\frac{\log T_\nu}{T_\nu^2}\right)
+=
+o(1).
+```
+
+Therefore
+
+```tex
+\boxed{
+S(T_\nu+u_\nu)-S(T_\nu-u_\nu)\ge 2-o(1).
+}
+```
+
+In particular, for all sufficiently large `\nu`,
+
+```tex
+\boxed{
+S(T_\nu+u_\nu)-S(T_\nu-u_\nu)\ge \frac32.
+}
+```
+
+So the microscopic-gap branch is equivalent to a supertiny two-jump statement
+for `S(T)` on windows of radius `\ll T^{-2}`.
+
+```tex
+\textbf{D2g30b. Conditional closure via supertiny two-jump exclusion.}
+```
+
+If one can prove that there are no infinitely many windows
+
+```tex
+[T-u,T+u],
+\qquad
+u\ll \frac{1}{T^2},
+```
+
+for which
+
+```tex
+S(T+u)-S(T-u)\ge \frac32,
+```
+
+then the microscopic-gap branch is impossible.
+
+So after `D2g29e`, the direct arithmetic residue of `PO2` is no longer a pair
+of branches. It is one explicit local oscillation target for `S(T)`.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

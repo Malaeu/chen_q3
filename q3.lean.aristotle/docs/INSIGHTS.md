@@ -6131,3 +6131,25 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - verdict: this is a genuine closure of `D2g29` through a stronger sibling
   route `D2g29e`; the older `D2g29d1a/d1b` arithmetic split is demoted from
   live critical path to backup/legacy analysis.
+
+## In progress (2026-04-11): D2g30 microscopic-gap branch after D2g29
+
+- exact target: update the `PO2` arithmetic reduction honestly after closing
+  the integer-resonance half `D2g29`;
+- exact gain: `D2g22` had two arithmetic enemies, but `D2g29e` kills the
+  ultra-near integer-resonance branch, so the only remaining direct arithmetic
+  wall is the microscopic one-sided gap branch
+  `x_{\gamma+1}-x_\gamma\ll x_\gamma^{-2}`;
+- oracle recall + external sanity-check agree on the right interpretation:
+  known small-gap literature works at average-spacing scale `1/\log T`, not at
+  the supertiny `1/T^2` scale forced here;
+- new theorem-packet: if such consecutive gaps exist infinitely often, then on
+  midpoint windows of radius `u_\nu\asymp \gamma_\nu^{-2}` the zero-counting
+  function must capture two zeros while the smooth Riemann--von Mangoldt part
+  contributes only `o(1)`;
+- therefore the remaining wall can be rewritten as a supertiny two-jump
+  problem for `S(T)`:
+  `S(T_\nu+u_\nu)-S(T_\nu-u_\nu)\ge 2-o(1)` on infinitely many windows with
+  `u_\nu\ll T_\nu^{-2}`;
+- result to record next: upgrade this to a clean `D2g30a/b` theorem-packet and
+  switch the active `PO2` burden from `D2g29` to this `S(T)` two-jump branch.
