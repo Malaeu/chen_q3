@@ -8143,6 +8143,125 @@ This is not yet the full closure of `PO2`, because `D2f3` itself remains to be
 killed. But it does mean that every non-resonant alternative has now been
 compressed away.
 
+There is, however, one last important correction to record here.
+
+```tex
+\textbf{D2f3a. `D2g29e` already kills the fixed-constant threshold scale.}
+```
+
+The positive-definite closure route `D2g29e3` proved the dyadic bound
+
+```tex
+A_\alpha(T,\varepsilon(T))
+\ll
+\frac{T\log T}{H(T)},
+\qquad
+H(T)\asymp \frac{1}{\varepsilon(T)}.
+```
+
+This estimate is valid whenever `0<\varepsilon(T)\le 1/4`; for every fixed
+`C>0` the model choice `\varepsilon_C(T)=C(\log T)/T^2` satisfies this
+automatically for all sufficiently large `T`.
+
+In the note this was read only at the little-`o` shrinking-target scale
+
+```tex
+\varepsilon(T)=o\!\left(\frac{\log T}{T^2}\right),
+```
+
+but the proof itself is stronger. Fix any constant `C>0` and take
+
+```tex
+\varepsilon_C(T):=C\frac{\log T}{T^2}.
+```
+
+Then
+
+```tex
+H_C(T)\asymp \frac{1}{\varepsilon_C(T)}
+\asymp
+\frac{T^2}{\log T},
+```
+
+with an implied constant depending on `C`, and therefore
+
+```tex
+A_\alpha(T,\varepsilon_C(T))
+\ll_C
+\frac{T\log T}{H_C(T)}
+\asymp
+C\,\frac{\log^2 T}{T}
+=
+o(1).
+```
+
+Because this counting function is integer-valued, it follows that
+
+```tex
+\boxed{
+A_\alpha(T,\varepsilon_C(T))=0
+\qquad\text{for all sufficiently large }T
+}
+```
+
+for every fixed `C>0`.
+
+So `D2g29e` does not merely kill the little-`o` resonance scale. It kills the
+entire fixed-constant threshold scale
+
+```tex
+\varepsilon(T)\asymp \frac{\log T}{T^2}.
+```
+
+But this is exactly the scale appearing in `D2f3`.
+
+```tex
+\textbf{D2f3b. The ultra-near resonance branch is already excluded.}
+```
+
+If `D2f3` held, then for some fixed `C>0` there would be infinitely many
+critical ordinates with
+
+```tex
+\operatorname{dist}(x_\gamma,\mathbb Z)
+\le
+C\frac{\log x_\gamma}{x_\gamma^2}.
+```
+
+Since `x_\gamma=\alpha\gamma`, for any dyadic block `T<\gamma\le 2T` we have
+`x_\gamma\asymp_\alpha T` and `\log x_\gamma\asymp_\alpha \log T`. Therefore
+there is another fixed constant `C'=C'(\alpha,C)>0` such that on infinitely
+many dyadic blocks `(T,2T]` one has
+
+```tex
+A_\alpha(T,\varepsilon_{C'}(T))\ge 1,
+\qquad
+\varepsilon_{C'}(T):=C'\frac{\log T}{T^2}.
+```
+
+But `D2f3a` gives `A_\alpha(T,\varepsilon_{C'}(T))=0` for all large `T`, a
+contradiction.
+
+Therefore
+
+```tex
+\boxed{
+D2f3 \text{ is false.}
+}
+```
+
+Combining this with `D2g31i`, we obtain the final direct arithmetic closure:
+
+```tex
+\textbf{D2g32. The direct arithmetic residue after }D2g29e\textbf{ is empty.}
+```
+
+There is no remaining direct arithmetic enemy after `D2g29e`: the non-resonant
+alternatives collapse into `D2f3` by `D2g31i`, and `D2f3` itself is excluded
+by `D2f3b`.
+
+So the direct tail-zero receiver route is arithmetically closed.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

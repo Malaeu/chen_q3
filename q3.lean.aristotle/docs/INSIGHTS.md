@@ -6261,3 +6261,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   outside `D2f3` there is no remaining direct arithmetic enemy;
 - active consequence: the non-resonant direct route is effectively exhausted;
   the only live residue is now `D2f3`.
+
+## Verified (2026-04-11): D2f3 fixed-constant threshold is already killed by D2g29e
+
+- exact correction: `D2g29e3` proves the dyadic estimate
+  `A_\alpha(T,\varepsilon)\ll T\log T/H` with `H\asymp 1/\varepsilon`; the
+  little-`o` scale was only one application, not the true limit of the proof;
+- therefore for every fixed `C>0`,
+  `\varepsilon_C(T)=C(\log T)/T^2` also gives
+  `A_\alpha(T,\varepsilon_C(T))\ll_C \log^2 T/T=o(1)`, hence eventually
+  `A_\alpha(T,\varepsilon_C(T))=0`;
+- the only honest care point is dyadic renormalization: from
+  `\operatorname{dist}(x_\gamma,\mathbb Z)\le C(\log x_\gamma)/x_\gamma^2`
+  on infinitely many ordinates one passes to
+  `A_\alpha(T,\varepsilon_{C'}(T))\ge 1` on infinitely many dyadic blocks for a
+  possibly different fixed constant `C'=C'(\alpha,C)`;
+- with that constant transfer made explicit, `D2f3` is excluded outright;
+- consequence: combining `D2f3b` with `D2g31i`, the whole post-`D2g29e`
+  direct arithmetic residue is empty.
