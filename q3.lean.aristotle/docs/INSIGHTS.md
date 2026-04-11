@@ -6407,3 +6407,28 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   attempt for the boundary-algebra membership lemma, and
   [`Q3/Proofs/HBridge_PO3_Shell.lean`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/HBridge_PO3_Shell.lean)
   remains auxiliary until that lemma is real.
+
+## Final result (2026-04-11): `PO3a` now has a rigid five-step proof skeleton
+
+- the live `PO3a` attack is now frozen as the packet
+  `PO3a.1 -> PO3a.5`, not as a generic boundary-cancellation cloud;
+- `PO3a.1`: decompose the tail synthesis as
+  `S_{a,\infty,N}=U_{a,N}+B_{a,N}` with the bulk identity
+  `U_{a,N}^*G_g[a]U_{a,N}=\kappa(a)\Delta_N^*Q_\infty\Delta_N`,
+  so that the whole boundary layer `H_{a,N}` is generated only by the
+  correction `B_{a,N}`;
+- `PO3a.2`: expand `B_{a,N}` into finitely many sign-pure boundary generators;
+- `PO3a.3`: prove kernel sign-preservation on those generators;
+- `PO3a.4`: conclude `H_{a,N}\in\mathcal B`;
+- `PO3a.5`: apply the already frozen sign-pure lemma
+  `P_+H_{a,N}P_-=0`, hence
+  `\mathcal D_{a,\partial}^{+-}=0`;
+- this refines the difficulty map sharply:
+  `PO3a.5` is already formal once membership is proved,
+  `PO3a.4` is only a closure step,
+  and the genuine hard bricks are exactly `PO3a.2` and `PO3a.3`;
+- operational consequence:
+  the next honest mathematical move is to extract the explicit boundary
+  expansion of `B_{a,N}` from the tail definitions in
+  [`h1_po1_tail_defect_attack_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po1_tail_defect_attack_2026_03_16.md),
+  not to reopen the whole `PO3` discussion.

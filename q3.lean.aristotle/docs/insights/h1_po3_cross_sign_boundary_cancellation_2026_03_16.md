@@ -407,3 +407,119 @@ The proof-packet audit is therefore complete.
 The next honest local task is not another search, but a direct attack on
 `PO3a-formula`: derive an explicit formula for `H_{a,N}` and prove that every
 boundary generator is sign-pure.
+
+## Proof skeleton for the live `PO3a` attack
+
+The next proof attempt should now be written as a rigid five-step packet rather
+than a generic "boundary cancellation" search.
+
+### `PO3a.1` Bulk-boundary decomposition
+
+Construct a decomposition
+
+```tex
+S_{a,\infty,N}=U_{a,N}+B_{a,N},
+```
+
+where `U_{a,N}` is the bulk piece already matched by
+`\kappa(a)\Delta_N^*Q_\infty\Delta_N`, and `B_{a,N}` is the genuine boundary
+correction.
+
+The intended identity is
+
+```tex
+U_{a,N}^*G_g[a]U_{a,N}
+=
+\kappa(a)\Delta_N^*Q_\infty\Delta_N.
+```
+
+Then
+
+```tex
+H_{a,N}
+=
+B_{a,N}^*G_g[a]B_{a,N}
++ U_{a,N}^*G_g[a]B_{a,N}
++ B_{a,N}^*G_g[a]U_{a,N}.
+```
+
+So the boundary layer is generated entirely by the correction `B_{a,N}`.
+
+### `PO3a.2` Boundary expansion
+
+Expand the boundary correction in finite sign-pure form:
+
+```tex
+B_{a,N}
+=
+\sum_r |b_{r,+}\rangle\langle \eta_{r,+}|
++ \sum_s |b_{s,-}\rangle\langle \eta_{s,-}|,
+```
+
+with every `b_{r,+}` supported in the positive tail channel and every
+`b_{s,-}` supported in the negative tail channel.
+
+This is the first genuinely nontrivial local brick: the route needs an
+explicit boundary expansion, not merely the abstract split
+`\mathcal D_{a,N}=H_{a,N}+C_{a,N}`.
+
+### `PO3a.3` Kernel sign-preservation on boundary generators
+
+Show that the kernel action preserves the sign purity of the boundary
+generators:
+
+```tex
+G_g[a]\,b_{r,+}\in \mathcal G_+,
+\qquad
+G_g[a]\,b_{s,-}\in \mathcal G_-,
+```
+
+for the corresponding sign-pure generator families `\mathcal G_\pm`.
+
+This is the real cancellation mechanism behind `PO3a`: once the surviving
+boundary generators never cross signs, the mixed block cannot be produced by
+the boundary layer.
+
+### `PO3a.4` Boundary algebra membership
+
+From `PO3a.2` and `PO3a.3`, conclude
+
+```tex
+H_{a,N}\in\mathcal B.
+```
+
+This is the exact missing lemma frozen above as `PO3a-formula`.
+
+### `PO3a.5` Mixed block dies
+
+Apply the sign-pure boundary lemma:
+
+```tex
+P_+H_{a,N}P_-=0.
+```
+
+Hence
+
+```tex
+\mathcal D_{a,\partial}^{+-}=0,
+```
+
+and therefore
+
+```tex
+\mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}.
+```
+
+## Honest difficulty map
+
+The route is now narrow enough that the difficulty split should be frozen
+explicitly:
+
+- `PO3a.5` is already formal once `H_{a,N}\in\mathcal B` is available;
+- `PO3a.4` is a closure step, not the real obstacle;
+- the genuine hard bricks are `PO3a.2` and `PO3a.3`:
+  explicit boundary expansion and sign-preservation on the surviving boundary
+  generators.
+
+So the next local attack should focus there, not on the final mixed-block
+implication.
