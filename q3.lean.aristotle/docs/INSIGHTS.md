@@ -5920,3 +5920,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   dead. The old positive-packet spacing estimate survives only as a legacy
   bookkeeping shadow (`D2g29b2a/b`), while the active burden moves to the
   signed prime-side endpoint `D2g29d`.
+
+## In progress (2026-04-11): D2g29d1 exceptional/nonexceptional split packet
+
+- exact target: turn the still-verbal split inside `D2g29d` into one explicit
+  child address, so the live endpoint is no longer “some arithmetic control of
+  the signed pairing,” but a precise dichotomy with separate burdens;
+- wiring point: after `D2g29b` was killed by strip growth, the tree now jumps
+  directly from the signed endpoint `D2g29d` to its first arithmetic split;
+- local recall result: no hidden internal theorem kills either branch; the KB
+  keeps returning our own packet plus the same frequency-commensurability
+  interpretation;
+- external primary-source signal is consistent with the same split: Ford–
+  Zaharescu support the exceptional arithmetic fork, while Suzuki/explicit
+  formula papers support the signed prime-pairing genre but do not close the
+  branch automatically;
+- concrete plan:
+  1. define `D2g29d1` as the arithmetic split for the signed packet
+     `\mathcal S_{\alpha,H,T}(X)`,
+  2. isolate the exceptional branch
+     `a=r\log p/(2q)` as exact prime-power commensurability,
+  3. isolate the nonexceptional branch as the no-exact-locking regime,
+  4. state what natural-scale estimate `\ll T\log T` is sufficient in each
+     branch,
+  5. make `d1a` / `d1b` the next honest child addresses.
