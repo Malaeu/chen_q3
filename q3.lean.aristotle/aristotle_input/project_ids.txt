@@ -69,3 +69,4 @@ rho_oneK_tcritical_le_cstar_quarter.md: b644c90d-9934-4c95-a857-221e38620134  20
 2026-03-07 subagent_g1_wk_membership_2026_03_07.md: ad4c74f1-764f-4cfb-a229-2bc0b2905b67
 2026-03-07 subagent_psd_pd_herglotz_2026_03_07.md: 76e1f0f3-47e9-4cb0-b57e-7e64bac1fffb
 2026-03-07 subagent_psd_pd_kernel_route_2026_03_07.md: 2f2aff04-379c-4698-a238-a9798417b3b6
+2026-04-11 d2g25_fejer_shrinking_target_2026_04_11.md: 37ae106c-0f73-4bbc-a6ed-f021a9513200

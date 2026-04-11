@@ -5439,17 +5439,32 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   dyadic zero blocks.
 - pushed this one step further to `D2g27/D2g27a`:
   `D2g26` now has three concrete sufficient forms.
-  The realistic live targets are
+  The weakest direct target is
   ```
   \frac{1}{H(T)}\sum_{j\le H(T)}|S_\alpha(j;T)|=o(1)
   ```
-  or, more robustly,
+  A stronger surrogate route is
   ```
   \sum_{j\le H(T)}|S_\alpha(j;T)|^2=o(H(T)),
   \qquad H(T)\asymp T^2/\log T.
   ```
-  So the endpoint is no longer just “high frequencies matter”, but a very
-  concrete mean/second-moment cancellation threshold.
+  and the uniform bound is stronger still.
+  So the endpoint is no longer just “high frequencies matter”, but one very
+  concrete high-frequency cancellation threshold.
+- semantic search on `q3_docs` for the new endpoint mostly surfaced our own
+  internal off-diagonal exponential-sum wrappers (`off_diag_exp_sum`,
+  `off_diag_exp_sum_integrated`) and did not reveal a pre-existing local lemma
+  that already controls `S_\alpha(j;T)` uniformly up to `j\asymp T^2/\log T`.
+- external primary-source search confirms the same shape: Ford–Zaharescu gives
+  modulo-one distribution and the exceptional-`alpha` density picture, while
+  Landau-Gonek style papers give explicit-formula / pair-correlation
+  background, but neither directly reaches the shrinking-target range
+  `\varepsilon(T)=o((\log T)/T^2)` with Fourier frequencies
+  `j\asymp T^2/\log T`.
+- conclusion: `D2g26` is now a genuine external arithmetic input. The honest
+  next step is to split into exceptional/nonexceptional `\alpha=a/\pi` and then
+  attack the nonexceptional case via a new high-frequency estimate, not to hunt
+  for a hidden local theorem that already closes it.
 - also sharpened the Hermite-capture fingerprint itself:
   `D2g18b` now shows that once a local packet enters an `O(h)`-tube around the
   Hermite line, every adjacent residue ratio must lie in an `O(h)`-tube around

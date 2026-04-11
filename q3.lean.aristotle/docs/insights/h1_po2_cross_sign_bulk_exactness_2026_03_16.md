@@ -5141,20 +5141,16 @@ these become:
    \sup_{j\le T^2/\log T}|S_\alpha(j;T)|\to 0.
    ```
 
-So the live burden can now be read at three strengths. The realistic next
-target is not the uniform criterion, but the mean or `L^2` one.
+So the live burden can now be read at three strengths. The weakest direct
+criterion is the mean-`L^1` one. The raw `L^2` condition is a stronger
+surrogate route, while the uniform bound is far stronger than needed.
 
 ```tex
 \textbf{D2g27a. Operational form of the shrinking-target brick.}
 ```
 
-To close the integer-resonance branch, it is enough to prove either
-
-```tex
-\frac{1}{H(T)}\sum_{j\le H(T)} |S_\alpha(j;T)|=o(1)
-```
-
-or
+To close the integer-resonance branch, it is enough to prove the mean-`L^1`
+criterion above. A stronger surrogate would be to prove
 
 ```tex
 \sum_{j\le H(T)} |S_\alpha(j;T)|^2=o(H(T)),
@@ -5162,7 +5158,8 @@ or
 H(T)\asymp \frac{T^2}{\log T}.
 ```
 
-This is the cleanest quantitative version of the current arithmetic endpoint.
+The uniform criterion is stronger still. This is the cleanest quantitative
+version of the current arithmetic endpoint.
 
 Now the remaining live coefficient question is extremely narrow:
 
