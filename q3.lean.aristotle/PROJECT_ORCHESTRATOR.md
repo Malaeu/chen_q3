@@ -1,6 +1,6 @@
 # PROJECT ORCHESTRATOR - Q3
 
-Updated: 2026-03-20
+Updated: 2026-04-11
 
 ## Role
 
@@ -172,16 +172,15 @@ New live frontier:
   13. isolate the finite-dimensional Suzuki cap as the second and only other
      live brick after the bulk match:
      positivity of the cap matrix is a separate finite-dimensional problem.
-  14. after the theorem-shell packaging of `H1^f -> H2^f -> H3^f -> H4^f`,
-      the first still-undischarged proof-critical gate remains the real
-      `H1^\infty` mixed-block theorem `PO2`:
-      prove `\mathcal D_{a,\mathrm{bulk}}^{+-}=0`,
-      with admissible fallback only
-      `\mathcal D_{a,N}^{+-}
-       =\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`;
-      treat `H2^f/H3^f/H4^f` as conditional consumers until `PO2` and then
-      `PO3` are genuinely discharged.
-  15. if `PO2` or a later `H-bridge` gate produces a genuine unnamed
+  14. after the direct `PO2` splice `D2g33`, the first still-undischarged
+      proof-critical gate is now the real `H1^\partial` boundary theorem
+      `PO3`:
+      prove `\mathcal D_{a,\partial}^{+-}=0`,
+      with admissible mixed-block corollary only
+      `\mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}`;
+      treat `H2^f/H3^f/H4^f` as conditional consumers until `PO3` and the
+      downstream Door-2 package are genuinely synchronized.
+  15. if `PO3` or a later `H-bridge` gate produces a genuine non-cap
       obstruction rather than a boundary/cap/compression reclassification,
       record that as a route kill in
       `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` and rollback to the already-frozen

@@ -39,19 +39,19 @@ When a live route dies, write five things:
 | `D3c` compactness extraction of a nonzero one-sided limit from the normalized direct divisor tower | killed as `PO2` subroute | on an infinite-support counterexample, any normalization with uniform `\ell^1` coefficient control forces every fixed packet coefficient to tend to `0` by the Gamma-growth comparison `\prod_{j=1}^k(x-N-j)=(-1)^k\Gamma(k+N+1-x)/\Gamma(N+1-x)`; hence the natural tightness/compactness regime cannot produce a nonzero one-sided limit on `X_a` | direct divisor tower split `D2/D3` in the `PO2` note | next live branch: direct paired-support divisor-rigidity `D2`, unless a genuinely new non-`\ell^1` extraction mechanism appears |
 | `D3e4` finite-anchor `\ell^2` Gibbs tightness for the normalized direct divisor tower | killed as `PO2` subroute | for any two fixed nonzero support points `y>y'`, the Gibbs weights satisfy `W_k(y)/W_k(y') \sim C(y,y') k^{2(y-y')}` by the same Gamma-product asymptotic; therefore every fixed support point farther to the right eventually dominates every fixed support point to its left, and on any unbounded nonzero support every finite packet `E` satisfies `\nu_k(E)\to 0` | direct divisor tower split `D2/D3` in the `PO2` note | next live branch: direct paired-support divisor-rigidity `D2`, unless a genuinely new noncompact extraction mechanism appears |
 | generic short-interval `S(T)` literature as a closure tool for `D2g30d` | killed as `PO2` subroute | the live enemy after `D2g29e` is a deterministic logarithmic spike `S(T+u)-S(T-u)\gtrsim \log T` on prescribed windows of radius `u\asymp (\log T)/T^2`; Korolev-type results are existence/omega statements on short intervals, while Selberg/Fujii-style technology is averaged and does not yield a deterministic exclusion theorem on this supertiny mesh | `D2g30c/D2g30d` logarithmic microcluster packet | next live branch: `D2g31` structural reduction to compressed-gap cascade (`D2f3`) or bounded Hermite-captured genuine packet |
-| `H-bridge` filtered route through `PO2 -> PO3 -> ... -> H4` | live | current first proof-critical gate is `PO2`: cross-sign bulk exactness | n/a | active in `PHASE_MONITOR.md` |
+| `H-bridge` filtered route through `PO2 -> PO3 -> ... -> H4` | live | `PO2` now hands off in admissible form via `D2g33`; current first proof-critical gate is `PO3`: cross-sign boundary cancellation | n/a | active in `PHASE_MONITOR.md` |
 
 ## Current live rollback point
 
-If the current `PO2` attack dies, the rollback target is not “back to H4”.
+If the current `PO3` attack dies, the rollback target is not “back to H4”.
 It is the last real branch point already frozen in `PROJECT_ORCHESTRATOR.md`:
 
 - live branch A: `H-bridge` primary route;
 - live branch B: `PSD-pd` fallback certificate backend.
 
-So a true `PO2` route-kill means:
+So a true `PO3` route-kill means:
 
-1. record the exact mixed-block obstruction;
+1. record the exact surviving non-cap cross-sign boundary obstruction;
 2. mark `H-bridge` as killed in its current theorem shape;
 3. rollback to the branch point `H-bridge vs PSD-pd`;
 4. activate `PSD-pd` as the main live route.
