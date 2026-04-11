@@ -6567,6 +6567,23 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `P_+v\otimes\ell_{-,N}` and `P_-v\otimes\ell_{+,N}`;
 - therefore a lone first-order endpoint brick of this type can never lie in the
   sign-pure boundary algebra unless it is zero;
+- there is also a sharp finite-section obstruction for the next route:
+  if a compressed first-order brick and its adjoint companion cancel exactly,
+  then the positive and negative pieces of `v_{a,N}` must each be proportional
+  to the alternating tail vectors
+  `\sum_{r=N+1}^{M}(-1)^r e_r^\pm`;
+- for the actual zero-mode column this means
+  `w_{r,0}(a)=c_{a,N,M}(-1)^r` on the whole compressed window
+  `N<r\le M`, equivalently the paired sum
+  `\sum_{\gamma>0}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)` would have to be
+  constant in `r` on that window;
+- there is now a natural next arithmetic target behind this:
+  if the paired sum
+  `F_a(\lambda):=\sum_{\gamma>0}\sin^2(a\gamma)/(\gamma^2-\lambda)`
+  can be justified as a Stieltjes-type transform with positive weights, then it
+  is strictly increasing between its poles, so such windowwise constancy would
+  force every interval `(\alpha_r^2,\alpha_{r+1}^2)` in the window to contain a
+  pole `\gamma^2` with `\sin(a\gamma)\neq 0`;
 - so the next exact theorem-target is now cleanly split:
   either prove a stronger one-sided purity/sign law for the paired sum
   `\sum_{\gamma>0}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)`,

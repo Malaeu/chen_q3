@@ -728,6 +728,138 @@ consequence:
 any surviving route must use exact cancellation with the adjoint companion
 terms (or a stronger structural collapse of the full boundary packet).
 
+There is a further finite-section rigidity if one allows exactly that
+companion-term cancellation. Fix a finite tail window `N<r\le M`, and let
+
+```tex
+u_{+,M,N}
+:=
+\frac{1}{\sqrt{2a}}\sum_{r=N+1}^{M}(-1)^r e_r^+,
+\qquad
+u_{-,M,N}
+:=
+\frac{1}{\sqrt{2a}}\sum_{r=N+1}^{M}(-1)^r e_r^-,
+```
+
+so that on the compressed window these are the Riesz vectors of
+`\ell_{+,N}P_+` and `\ell_{-,N}P_-`.
+
+If the surviving first-order packet on that window is exactly the symmetric
+companion pair
+
+```tex
+K_v^{(M)} + (K_v^{(M)})^*,
+\qquad
+K_v^{(M)}:=P_{M,N}\,v\otimes(\ell_{+,N}P_+ + \ell_{-,N}P_-)\,P_{M,N},
+```
+
+then its mixed block has the form
+
+```tex
+P_+\bigl(K_v^{(M)} + (K_v^{(M)})^*\bigr)P_-
+=
+x_M\otimes u_{-,M,N} + u_{+,M,N}\otimes y_M,
+```
+
+where `x_M:=P_+P_{M,N}v` and `y_M:=P_-P_{M,N}v`.
+
+For this sum of two rank-one operators to vanish, linear algebra forces
+`x_M` to be proportional to `u_{+,M,N}` and `y_M` to be proportional to
+`u_{-,M,N}`. So exact first-order companion cancellation implies:
+
+```tex
+x_M \in \mathbb C\,u_{+,M,N},
+\qquad
+y_M \in \mathbb C\,u_{-,M,N}.
+```
+
+Applied to `v=v_{a,N}` and using the reflection-evenness of its coordinates,
+this becomes the concrete alternating-tail rigidity condition
+
+```tex
+w_{r,0}(a)=c_{a,N,M}(-1)^r
+\qquad (N<r\le M),
+```
+
+for some scalar `c_{a,N,M}` depending on the window.
+
+Equivalently, the paired zero-sum
+
+```tex
+\sum_{\gamma>0}\frac{\sin^2(a\gamma)}{\gamma^2-\alpha_r^2}
+```
+
+would have to be constant in `r` on every compressed window where such a
+first-order cancellation is claimed.
+
+So the next arithmetic wall is now brutally explicit:
+
+```tex
+\text{can the zero-mode column }r\mapsto w_{r,0}(a)
+\text{ ever become windowwise proportional to }(-1)^r
+\text{ on arbitrarily long tails?}
+```
+
+There is also one natural monotonicity route hiding inside this formulation.
+Define the paired positive-zero transform
+
+```tex
+F_a(\lambda)
+:=
+\sum_{\gamma>0}
+\frac{\sin^2(a\gamma)}{\gamma^2-\lambda},
+```
+
+so that formally
+
+```tex
+w_{r,0}(a)=\frac{4(-1)^r}{a}F_a(\alpha_r^2).
+```
+
+If one can justify this as a genuine Stieltjes-type transform with positive
+weights, then on every interval avoiding the pole set
+`\{\gamma^2:\sin(a\gamma)\neq 0\}` one has the strict derivative sign
+
+```tex
+F_a'(\lambda)
+=
+\sum_{\gamma>0}
+\frac{\sin^2(a\gamma)}{(\gamma^2-\lambda)^2}
+>
+0.
+```
+
+So exact alternating rigidity
+
+```tex
+w_{r,0}(a)=c_{a,N,M}(-1)^r
+\qquad (N<r\le M)
+```
+
+would force `F_a(\alpha_r^2)` to be constant on that window, and hence would
+be impossible unless every adjacent interval
+
+```tex
+(\alpha_r^2,\alpha_{r+1}^2)
+```
+
+contains a pole `\gamma^2` with `\sin(a\gamma)\neq 0`.
+
+Equivalently, a successful first-order companion cancellation on a long window
+would force a dense interlacing condition:
+
+```tex
+\forall r\in(N,M)\ \exists \gamma>0
+\text{ such that }
+\alpha_r<\gamma<\alpha_{r+1}
+\text{ and }
+\sin(a\gamma)\neq 0.
+```
+
+This is not yet a proved theorem in the packet, because the Stieltjes
+justification for `F_a` still has to be made honest. But it is now the next
+clean arithmetic target after the linear-algebra rigidity above.
+
 ### `PO3a.2` Boundary expansion
 
 Expand the boundary correction in finite sign-pure form:
