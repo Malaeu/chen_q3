@@ -173,13 +173,16 @@ New live frontier:
      live brick after the bulk match:
      positivity of the cap matrix is a separate finite-dimensional problem.
   14. after the direct `PO2` splice `D2g33`, the first still-undischarged
-      proof-critical gate is now the real `H1^\partial` boundary theorem
-      `PO3`:
-      prove `\mathcal D_{a,\partial}^{+-}=0`,
-      with admissible mixed-block corollary only
-      `\mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}`;
-      treat `H2^f/H3^f/H4^f` as conditional consumers until `PO3` and the
-      downstream Door-2 package are genuinely synchronized.
+      proof-critical gate is still the real `H1^\partial` boundary theorem
+      `PO3`, but its mathematical shell is already frozen:
+      `PO3a = \mathcal D_{a,\partial}^{+-}=0`,
+      `PO3b = \mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}`,
+      and `PO3c` by symmetry;
+      the active execution blocker is therefore the first executable
+      formalization receiver for `PO3a/PO3b/PO3c`, not another mixed-block
+      arithmetic search;
+      treat `PO4/PO5` and `H2^f/H3^f/H4^f` as conditional consumers until that
+      lower-shell interface is genuinely synchronized.
   15. if `PO3` or a later `H-bridge` gate produces a genuine non-cap
       obstruction rather than a boundary/cap/compression reclassification,
       record that as a route kill in

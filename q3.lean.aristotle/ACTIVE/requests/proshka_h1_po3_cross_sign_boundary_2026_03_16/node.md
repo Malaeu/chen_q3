@@ -2,13 +2,13 @@
 
 ## Status
 
-Active phase worker request for `P3`.
+Active phase worker request for `PO3` formalization.
 
 ## Source
 
-- phase: `H1_PO1_direct_attack`
+- phase: `H1_real_proof_attack`
 - owner: local orchestrator
-- current step: `P3`
+- current step: `PO3`
 
 ## Phase/Sprint link
 
@@ -19,35 +19,39 @@ Active phase worker request for `P3`.
 
 ## Why we are here
 
-`P2` already killed the bulk part of the cross-sign defect as the intended
-theorem shape.
+`PO2` now lands in the admissible mixed-shell form
+`\mathcal D_{a,N}^{+-}=\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`,
+and the historical `PO3` note already freezes the right mathematical receiver.
 
 So the next narrow question is:
 
 ```tex
-\mathcal D_{a,\partial}^{+-}=0\ ?
+\text{what is the first honest executable formalization receiver for }
+PO3a/PO3b/PO3c\ ?
 ```
 
-If yes, `(+,-)` becomes exact-or-cap-only. If no, the current asymmetry of the
-route is in serious trouble.
+If that receiver is clean, the rest of Door 1 and the packaged `PO4 -> H4`
+chain can be synchronized. If not, we have a real formalization blocker rather
+than a new mathematical one.
 
 ## Exact task
 
-Provide the cleanest theorem-grade receiver for `PO3`:
+Provide the cleanest formalization-grade receiver for `PO3`:
 
-1. state the best exact boundary-cancellation lemma;
-2. state the exact cap-only corollary if that lemma lands;
-3. name the sharpest route-kill condition for a surviving non-cap cross-sign
-   boundary term;
-4. give the cleanest handoff from `PO3` to `PO4/PO5`.
+1. identify the smallest Lean landing zone or abstract shell file for
+   `PO3a/PO3b/PO3c`;
+2. state the exact theorem packet that should be sent to Aristotle first;
+3. name the sharpest blocker if the current Q3 Lean objects are not yet
+   aligned with the mathematical shell;
+4. give the cleanest handoff from this receiver to `PO4/PO5`.
 
 ## Required deliverables
 
-- one theorem-shaped `PO3` statement;
-- one cap-only corollary;
-- one short table:
-  `must vanish` / `may remain as cap-only` / `route-kill`;
-- one recommendation for the cleanest post-`PO3` split into `PO4` and `PO5`.
+- one exact receiver recommendation (file path or new shell target);
+- one smallest theorem packet to formalize first;
+- one short blocker table:
+  `already represented in Lean` / `needs shell` / `must not be invented ad hoc`;
+- one recommendation for the cleanest post-`PO3` sync into `PO4` and `PO5`.
 
 ## Supporting files
 
@@ -56,12 +60,14 @@ Provide the cleanest theorem-grade receiver for `PO3`:
 3. `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/plus_minus_cancellation_ledger_2026_03_15.md`
 4. `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_proof_obligation_table_2026_03_16.md`
 5. `/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/Main_closure.tex`
+6. `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/refs/q3_structure_mapping.md`
+7. `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`
 
 ## Non-goals
 
-- no same-sign `(++)` theorem work yet;
-- no compression/finite-section packaging;
-- no augmented-cap positivity;
+- no same-sign `(++)` theorem work beyond handoff checking;
+- no reopening of `PO2`;
+- no new RH architecture;
 - no numerics or basis-fit language.
 
 ## Write-back contract

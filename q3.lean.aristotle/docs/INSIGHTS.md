@@ -6301,3 +6301,35 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   already assume the mixed side is bulk-exact and boundary-killed, so the live burden is now purely `PO3`;
 - external web sanity-check gives only generic Toeplitz/Hankel boundary-language support; no external theorem closes `PO3` for us automatically;
 - immediate plan: keep one exact `PO3a` lemma, one cap-only corollary `PO3b`, and treat any surviving non-cap cross-sign boundary residue as a route-kill event.
+
+## In progress (2026-04-11): PO3 formalization receiver after the D2g33 splice
+
+- interface check is now clean: the historical `PO3` note already consumes
+  exactly the current `D2g33` output from `PO2`, namely the mixed
+  boundary/cap-only shell
+  `\mathcal D_{a,N}^{+-}=\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`;
+- downstream packets `PO4`, `PO5`, `PO6`, `PO7`, `H2^f`, `H3^f`, `H4^f`
+  remain consistent with that interface, so there is no newly opened
+  mathematical blocker between `D2g33` and the frozen upper bridge;
+- local oracle search on `q3_docs` for `PO3` formalization / theorem-shell
+  receivers returns the `PO3` note itself, structure-mapping docs, and the
+  general Lean formalization philosophy, but no existing Lean receiver and no
+  Aristotle-ready `PO3` request;
+- direct repo search confirms the same thing: there is no `PO3`-named Lean
+  theorem, no `PO3` artifact in `aristotle_input`, and no explicit lower-shell
+  landing zone in `Q3/`;
+- the first honest Lean landing zone is now fixed explicitly as
+  [`Q3/Proofs/HBridge_PO3_Shell.lean`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/HBridge_PO3_Shell.lean),
+  which already compiles and freezes the abstract algebraic handoff
+  `PO2 shell + PO3a => PO3b`, together with the symmetry transfer `PO3a => PO3c`;
+- external web sanity-check on Lean theorem-skeleton/formalization docs adds
+  only generic background and no ready-made closure trick for this shell;
+- the exact live execution blocker is therefore no longer fresh `PO3`
+  mathematics, but the first executable formalization receiver for
+  `PO3a/PO3b/PO3c`;
+- recommended order is now rigid:
+  freeze the `PO3` receiver boundary,
+  draft the smallest Aristotle markdown request,
+  get user review,
+  and only then submit that one shell before touching downstream
+  `PO4 -> H4` formalization.
