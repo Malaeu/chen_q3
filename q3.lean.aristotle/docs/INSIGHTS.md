@@ -6475,3 +6475,20 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - operationally this sharpens `PO3a.2` into one concrete test:
   do the endpoint-evaluation bricks produced by `R_a` remain sign-pure after
   the `P_+ / P_-` split, or do they force a genuine cross-sign generator?
+
+## In progress (2026-04-11): exact orthogonality squeeze on the endpoint-projector candidate
+
+- there is now one exact algebraic squeeze on the `R_a` candidate:
+  `R_a` outputs the constant function `1`, while the raw sign-pure tail
+  syntheses `T_{a,\infty,N}^\pm` use only the nonzero Fourier modes
+  `\chi_{\pm n}[a]` with `n>N\ge 0`;
+- therefore
+  `T_{a,\infty,N}^{+*} 1 = 0` and `T_{a,\infty,N}^{-*} 1 = 0`
+  exactly, by ordinary Fourier orthogonality on `[-a,a]`;
+- operational consequence:
+  any boundary brick where the endpoint projector lands on the left
+  raw-synthesis side dies immediately after pullback to the tail;
+- so the candidate `PO3a.2` problem is narrower than before:
+  only the domain-side endpoint-evaluation functionals can survive, which is
+  materially closer to the desired sign-pure picture than a generic
+  Toeplitz/Hankel cloud.

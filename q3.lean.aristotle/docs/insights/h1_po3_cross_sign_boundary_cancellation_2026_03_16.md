@@ -509,6 +509,35 @@ So the only obstruction to exact inversion is the rank-one endpoint projector
 This is not yet a proved theorem in the current packet, but it is now the
 first honest candidate formula to test in `PO3a.2`.
 
+There is also one exact orthogonality observation behind this candidate.
+Because
+
+```tex
+\chi_n[a](t)=(2a)^{-1/2}e^{\pi i n t/a},
+\qquad
+\mathbf 1=\sqrt{2a}\,\chi_0[a],
+```
+
+the constant function is orthogonal to every nonzero Fourier mode on `[-a,a]`.
+Since the raw tail syntheses `T_{a,\infty,N}^\pm` use only modes `\pm n` with
+`n>N\ge 0`, one has exactly
+
+```tex
+T_{a,\infty,N}^{+*}\mathbf 1=0,
+\qquad
+T_{a,\infty,N}^{-*}\mathbf 1=0.
+```
+
+So any boundary brick in which the endpoint projector `R_a` lands on the left
+raw-synthesis side dies immediately after pulling back to the tail.
+
+This does not finish `PO3a.2`, but it sharpens the local problem:
+
+```tex
+\text{the only surviving endpoint bricks can come from the domain-side
+evaluation functionals, not from a constant left output.}
+```
+
 ### `PO3a.2` Boundary expansion
 
 Expand the boundary correction in finite sign-pure form:
