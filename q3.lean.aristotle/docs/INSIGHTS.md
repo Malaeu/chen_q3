@@ -5759,3 +5759,26 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   this repo, background watchers exist only as opt-in utilities
   (`scripts/swarm start/watch`, `q3.lean.aristotle/scripts/tdd.sh watch`) and
   are not on the live mainline path.
+
+## In progress (2026-04-11): D2g29b2 honest lattice-sum correction
+
+- exact target: upgrade `D2g29b2` from heuristic prose to an honest spacing
+  lemma plus an actual bound for the near-lattice decay packet
+  `\mathfrak R_{\alpha,H,T}^+(n)`;
+- wiring point: this sits strictly between the now-closed admissible packet
+  decomposition `D2g29b1` and the live prime-side burden `D2g29b3 / D2g29c`;
+- local oracle recall found no hidden existing theorem, only our current
+  heuristic statement and generic node-spacing material;
+- external search also did not produce a ready-made citation-level lemma for
+  the exact weighted finite-lattice packet we use here;
+- key correction: the naive bound
+  `\mathfrak R \ll (1+T\,\mathrm{dist})^{-A}` is probably too strong for the
+  full positive packet, because summing a polynomial-decay kernel over a
+  lattice typically loses one power;
+- honest candidate shape:
+  `\mathfrak R \ll (1+Td)^{-A} + (T|\alpha|)^{-1}(1+Td)^{1-A}`,
+  hence in the spaced regime `T|\alpha|\gg 1` one gets
+  `\mathfrak R \ll_{\alpha,A} (1+Td)^{1-A}`;
+- plan: rewrite `D2g29b2` as an honest spacing lemma plus this two-term bound,
+  then explicitly record that this still leaves `D2g29c` as the real signed
+  endpoint and that the positive majorant route remains over-strong.
