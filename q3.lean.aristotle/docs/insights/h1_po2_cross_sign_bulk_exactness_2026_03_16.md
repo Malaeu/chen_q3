@@ -6426,42 +6426,59 @@ Substituting this into the prime packet gives
 \xi_n=\frac{\log n}{2\pi}.
 ```
 
-Since `e(-u\xi_n)=e^{-iu\log n}=n^{-iu}`, this becomes
+Equivalently, if one writes the discrete prime measure
+
+```tex
+\mu_P:=\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,\delta_{\xi_n},
+```
+
+then
 
 ```tex
 \mathcal P^{\phi}_{\alpha,W_+}(H;T)
 =
+-\frac{1}{\pi}\,\langle \mu_P,\widehat G_{\alpha,H,T}\rangle,
+```
+
+where
+
+```tex
+G_{\alpha,H,T}(u):=W_+(u/T)\phi_H(\alpha u).
+```
+
+This is already an honest exact reformulation: the prime packet is the pairing
+of the discrete prime measure with the Fourier transform of one physical-space
+weight `G_{\alpha,H,T}`.
+
+If one additionally introduces the truncated prime Dirichlet polynomials
+
+```tex
+D_X(u):=\sum_{2\le n\le X}\frac{\Lambda(n)}{\sqrt n}\,e^{-iu\log n},
+```
+
+then the same packet can be read formally, or after a justified truncation
+limit, as
+
+```tex
+\mathcal P^{\phi}_{\alpha,W_+}(H;T)
+\sim
 -\frac{1}{\pi}
-\int_{\mathbb R} W_+(u/T)\,\phi_H(\alpha u)
-\left(
-\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,n^{-iu}
-\right)\,du.
+\int_{\mathbb R} G_{\alpha,H,T}(u)\,D_X(u)\,du
+\qquad (X\to\infty).
 ```
 
-Because `W_+` and `\phi_H` are even, the weight
+Because `W_+` and `\phi_H` are even, `G_{\alpha,H,T}` is even as well, and the
+real part of the truncated model is the cosine packet
 
 ```tex
-G_{\alpha,H,T}(u):=W_+(u/T)\phi_H(\alpha u)
+\Re D_X(u)=\sum_{2\le n\le X}\frac{\Lambda(n)}{\sqrt n}\cos(u\log n).
 ```
 
-is even as well, so the odd sine part cancels and one can rewrite the same
-packet in purely real form:
-
-```tex
-\mathcal P^{\phi}_{\alpha,W_+}(H;T)
-=
--\frac{2}{\pi}
-\int_{0}^{\infty} G_{\alpha,H,T}(u)
-\left(
-\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\cos(u\log n)
-\right)\,du.
-```
-
-Hence the prime side is not an absolute near-lattice counting problem at all.
-It is exactly one oscillatory integral of the prime cosine sum against the
-Fej\'er-modulated physical-space weight `G_{\alpha,H,T}`. This is the clean
-signed endpoint and is much closer in shape to the Suzuki/Fujii genre than the
-positive majorant from `D2g29b4`.
+So the honest signed endpoint is: control the pairing of the Fej\'er-modulated
+physical-space weight `G_{\alpha,H,T}` with the prime distribution. This is
+much closer in shape to the Suzuki/Fujii genre than the positive majorant from
+`D2g29b4`, but it should be read distributionally / truncationally, not as a
+naive absolutely convergent critical-line Dirichlet series.
 
 Now the remaining live coefficient question is extremely narrow:
 

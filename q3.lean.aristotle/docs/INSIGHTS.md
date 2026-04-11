@@ -5815,12 +5815,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - result: `D2g29c''` is now upgraded from a schematic inversion line to the
   exact identity
   `\mathcal K(\xi)=\frac{2}{T}\int W_+(u/T)e(-u\xi)\phi_H(\alpha u)\,du`,
-  and the prime packet becomes
-  `-\pi^{-1}\int W_+(u/T)\phi_H(\alpha u)\sum_{n\ge2}\Lambda(n)n^{-1/2-iu}\,du`.
-- after choosing `W_+` even, this simplifies further to the real cosine form
-  `-(2/\pi)\int_0^\infty G_{\alpha,H,T}(u)\sum_{n\ge2}\Lambda(n)\cos(u\log n)/\sqrt n\,du`.
-- verdict: the signed endpoint is now a single weighted prime-cosine integral.
-  That is a much sharper and more usable object than the old unsigned
+  and the prime packet becomes the exact pairing
+  `-\pi^{-1}\langle \mu_P,\widehat G_{\alpha,H,T}\rangle` with the discrete
+  prime measure
+  `\mu_P=\sum_{n\ge2}\Lambda(n)\delta_{\log n/(2\pi)}/\sqrt n`.
+- after choosing `W_+` even, the associated truncated physical-space model is
+  the real cosine packet
+  `\Re D_X(u)=\sum_{2\le n\le X}\Lambda(n)\cos(u\log n)/\sqrt n`, so the signed
+  endpoint should be read distributionally / truncationally rather than as a
+  naive absolutely convergent critical-line Dirichlet integral.
+- verdict: the signed endpoint is now a single exact kernel identity on the
+  zero side plus an honest prime-distribution pairing on the arithmetic side.
+  That is still much sharper and more usable than the old unsigned
   near-lattice packet, and it isolates the real arithmetic burden cleanly.
 - this also sharpens `D2g29b3`: the exceptional condition
   `a=r\log p/(2q)` is now literally the commensurability condition between the
