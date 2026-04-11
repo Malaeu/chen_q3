@@ -6480,6 +6480,61 @@ much closer in shape to the Suzuki/Fujii genre than the positive majorant from
 `D2g29b4`, but it should be read distributionally / truncationally, not as a
 naive absolutely convergent critical-line Dirichlet series.
 
+This immediately isolates the next live arithmetic packet:
+
+```tex
+\textbf{D2g29d. Signed prime-distribution endpoint.}
+```
+
+Fix
+
+```tex
+H(T)\asymp \frac{T^2}{\log T},
+\qquad
+G_{\alpha,H,T}(u):=W_+(u/T)\phi_H(\alpha u),
+```
+
+and write the truncated prime model
+
+```tex
+D_X(u):=\sum_{2\le n\le X}\frac{\Lambda(n)}{\sqrt n}\,e^{-iu\log n}.
+```
+
+Then the live endpoint is to prove that the signed pairing
+
+```tex
+\mathcal S_{\alpha,H,T}(X)
+:=
+-\frac{1}{\pi}\int_{\mathbb R} G_{\alpha,H,T}(u)\,D_X(u)\,du
+```
+
+stays on the natural scale
+
+```tex
+\mathcal S_{\alpha,H(T),T}(X)\ll T\log T
+```
+
+uniformly in the truncation parameter `X`, or equivalently that the limiting
+prime-distribution pairing defining `\mathcal P^{\phi}_{\alpha,W_+}(H(T);T)`
+does not exceed `O(T\log T)`.
+
+After `D2g29b3`, this endpoint already splits arithmetically into two sharply
+different regimes:
+
+- `\textbf{exceptional}`:
+  `a=\frac{r\log p}{2q}`. Then the modulation frequency `2a` is rationally
+  commensurable with the prime-power frequency `m\log p`, so the prime packet
+  localizes near genuinely resonant windows `\log n\approx 2aj`;
+- `\textbf{nonexceptional}`:
+  no such prime-power commensurability exists, and the remaining burden is to
+  show that the same signed pairing still cannot build a contribution larger
+  than the natural `T\log T` scale.
+
+So the arithmetic endpoint is no longer "control every Fourier mode
+individually". It is: control one signed physical-space packet on the prime
+distribution, with the entire problem compressed into the exceptional /
+nonexceptional split for the windows `\log n\approx 2aj`.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

@@ -5834,3 +5834,29 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `m\log p`. So the split is no longer just a frequency-side lattice slogan;
   it is the exact question of whether the cosine phase can lock coherently to
   the physical-space Fejér lattice `u\approx k/\alpha`.
+
+## In progress (2026-04-11): D2g29d signed prime-distribution endpoint
+
+- exact target: replace the still-vague phrase "control the prime side" by one
+  explicit arithmetic endpoint after the signed correction `D2g29c''`;
+- wiring point: this is the live child of `D2g29b3`; after `D2g29a/b0/b1/b2/c`
+  the route no longer depends on unsigned near-lattice mass and depends only on
+  one signed prime-distribution pairing;
+- local oracle recall again returns only our own packet notes plus generic
+  explicit-formula infrastructure, which is good evidence that there is no
+  hidden theorem shortcut and that the endpoint must be formulated directly;
+- external search points the same way: Ford--Zaharescu give the arithmetic
+  exceptional/nonexceptional split, while Suzuki/explicit-formula papers
+  support the physical-space prime-pairing genre, not a termwise `|S_j|` route;
+- concrete plan:
+  1. define the truncated signed packet
+     `\mathcal S_{\alpha,H,T}(X)=-(1/\pi)\int G_{\alpha,H,T}(u)D_X(u)\,du`,
+  2. demand the natural-scale bound `\mathcal S_{\alpha,H(T),T}(X)\ll T\log T`,
+  3. record that this is uniform in `X` / equivalent to the limiting
+     prime-distribution pairing,
+  4. split the remaining arithmetic burden into the exceptional commensurable
+     case `a=r\log p/(2q)` and the nonexceptional case,
+  5. treat this as the single live endpoint below `D2g29`.
+- verdict: the proof tree is now cleaner. The live arithmetic burden is no
+  longer "all high Fourier modes"; it is one signed packet endpoint with one
+  sharp arithmetic split.
