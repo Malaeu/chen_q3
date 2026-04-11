@@ -6605,11 +6605,33 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `PO2` Cauchy-tail injectivity target, with one honest caveat:
   the support `Y_a={-a\gamma/\pi}` is complex, so the old one-sided real-line
   rigidity theorem is not enough by itself;
+- and the full direct divisor-closure package transfers verbatim:
+  dividing by tail factors `(w-(N+j))` keeps `\widetilde H_a` inside the same
+  simple Cauchy class and shifts the tail-zero set to the right, so the
+  remaining hard part is now only complex-support injectivity, not receiver
+  shape;
+- even more sharply, zero symmetry gives `e_a(-y)=-e_a(y)`, so the rescaled
+  receiver is even and factors as `\widetilde H_a(w)=J_a(w^2)` with a new
+  simple Cauchy transform
+  `J_a(z)=\sum_{\lambda\in\Lambda_a} b_a(\lambda)/(\lambda-z)` on the squared
+  support `\Lambda_a=\{y_\gamma^2\}`;
+- therefore the first-order `PO3a` wall narrows from generic integer-tail
+  injectivity to a square-tail problem
+  `J_a(r^2)=0` for all `r>N`, together with its own quadratic divisor tower
+  under division by `z-(N+j)^2`;
+- the square-tail set also has a canonical entire divider
+  `E_N^{sq}(z)=\prod_{m>N}(1-z/m^2)=\sin(\pi\sqrt z)/(\pi\sqrt z)` up to the
+  finite front factor, so the first-order wall admits an exact whole-tail
+  factorization by a square-lattice entire function of lower density than the
+  old integer-tail Gamma divider;
+- the honest caveat stays the same: `\Lambda_a` is still complex support, so
+  the old one-sided real-support rigidity theorem still does not fire; but the
+  live burden is now a smaller even square-support subclass of the old `PO2`
+  wall, not the whole class;
 - so the next exact theorem-target is now cleanly split:
-  either prove a stronger one-sided purity/sign law for the paired sum
-  `\sum_{\{\gamma,-\gamma\}\subset\Gamma}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)`,
-  or derive the full first-order endpoint formula and show that the adjoint
-  companion terms cancel the cross-sign part exactly;
+  either prove square-tail injectivity for this even complex-support Cauchy
+  subclass, or derive the full first-order endpoint formula and show that the
+  adjoint companion terms cancel the cross-sign part exactly;
 - concrete file pointers for this step:
   `full/sections/Main_closure.tex` for raw `w_{rs}(a)`,
   `docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md` for

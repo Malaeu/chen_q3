@@ -195,6 +195,13 @@ New live frontier:
       alternating-tail rigidity
       `w_{r,0}(a)=c_{a,N,M}(-1)^r`
       on every successful window;
+      after the exact rescaling by `w=\frac{a}{\pi}z`, the same route becomes
+      a simple Cauchy transform on the integer tail, and the zero symmetry
+      `\gamma\leftrightarrow-\gamma` then sharpens it once more to an even
+      square-support receiver `\widetilde H_a(w)=J_a(w^2)` with
+      `J_a(r^2)=0` on the square tail;
+      so the live first-order consumer is now the even complex-support
+      square-tail injectivity wall, not the full generic `PO2` class;
       the auxiliary Lean shell `Q3/Proofs/HBridge_PO3_Shell.lean` is useful,
       but it does not replace that mathematics;
       treat `PO4/PO5` and `H2^f/H3^f/H4^f` as conditional consumers until that

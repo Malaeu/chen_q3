@@ -972,6 +972,188 @@ one-sided rigidity theorem is not enough by itself. But the general
 `PO2` Cauchy-tail injectivity target is now the correct consumer for this
 first-order `PO3a` reduction.
 
+Moreover, the direct divisor closure from the `PO2` receiver route transfers
+verbatim. If `\widetilde H_a(r)=0` for all `r>N`, then for every `k\ge 1`
+
+```tex
+\widetilde H_{a,k}(w)
+:=
+\frac{\widetilde H_a(w)}{\prod_{j=1}^k (w-(N+j))}
+```
+
+still has the same simple Cauchy form
+
+```tex
+\widetilde H_{a,k}(w)
+=
+\sum_{\gamma\in\Gamma}
+\frac{e_a(y_\gamma)}
+{\prod_{j=1}^k (y_\gamma-(N+j))}
+\frac{1}{y_\gamma-w},
+```
+
+and vanishes on the shifted tail `w>N+k`.
+
+So the first-order `PO3a` wall now inherits the full direct-receiver package:
+
+```tex
+\text{simple Cauchy class}
+\Longrightarrow
+\text{tail-zero divisor closure}
+\Longrightarrow
+\text{tail injectivity target}.
+```
+
+This is a genuine structural gain: the remaining hard part is no longer the
+shape of the receiver, only the uniqueness problem for its complex support.
+
+There is one more exact structural gain coming from the same zero symmetry.
+Since `\Gamma` is closed under `\gamma\mapsto-\gamma`, the rescaled support
+`Y_a` is closed under `y\mapsto-y`. Moreover
+
+```tex
+e_a(-y_\gamma)
+=
+-e_a(y_\gamma),
+```
+
+because `\sin^2(a\gamma)` is even while the divisor `y_\gamma` is odd. Hence
+the rescaled receiver is actually even in the external variable:
+
+```tex
+\widetilde H_a(-w)=\widetilde H_a(w).
+```
+
+Choose one representative `\gamma` from each pair `\{\gamma,-\gamma\}` and set
+
+```tex
+\lambda_\gamma:=y_\gamma^2.
+```
+
+Then pairing the two simple poles gives the exact collapse
+
+```tex
+\frac{e_a(y_\gamma)}{y_\gamma-w}
+\;+\;
+\frac{e_a(-y_\gamma)}{-y_\gamma-w}
+=
+\frac{2a^2}{\pi^2}\,
+\frac{\sin^2(a\gamma)}{\lambda_\gamma-w^2}.
+```
+
+So there is a second exact receiver reformulation:
+
+```tex
+\widetilde H_a(w)=J_a(w^2),
+```
+
+where
+
+```tex
+J_a(z)
+:=
+\frac{2a^2}{\pi^2}
+\sum_{\gamma\in\Gamma^\sharp}
+\frac{\sin^2(a\gamma)}{\lambda_\gamma-z},
+```
+
+and `\Gamma^\sharp` is any transversal of the involution
+`\gamma\leftrightarrow-\gamma`.
+
+Therefore the integer-tail vanishing of `\widetilde H_a` is equivalent to a
+square-tail vanishing problem:
+
+```tex
+J_a(r^2)=0
+\qquad \forall r>N.
+```
+
+So the live first-order `PO3a` wall is actually narrower than the generic
+`PO2` target. It lands in a very special subclass:
+
+```tex
+\text{simple Cauchy transform on the squared support }
+\Lambda_a:=\{\lambda_\gamma:\gamma\in\Gamma^\sharp\},
+```
+
+with zeros on the quadratic tail `\{(N+1)^2,(N+2)^2,\dots\}`.
+
+This squared receiver also inherits its own direct divisor closure. If
+`J_a(r^2)=0` for all `r>N`, then for every `k\ge 1`
+
+```tex
+J_{a,k}(z)
+:=
+\frac{J_a(z)}{\prod_{j=1}^k (z-(N+j)^2)}
+```
+
+still has the same simple Cauchy form
+
+```tex
+J_{a,k}(z)
+=
+\frac{2a^2}{\pi^2}
+\sum_{\gamma\in\Gamma^\sharp}
+\frac{\sin^2(a\gamma)}
+{\prod_{j=1}^k (\lambda_\gamma-(N+j)^2)}
+\frac{1}{\lambda_\gamma-z},
+```
+
+and vanishes on the shifted square tail `z>(N+k)^2` along the samples
+`z=r^2`.
+
+So the strongest honest receiver now available for the first-order `PO3a`
+route is:
+
+```tex
+\text{even simple Cauchy class}
+\Longrightarrow
+\text{quadratic tail-zero divisor closure}
+\Longrightarrow
+\text{square-tail injectivity target}.
+```
+
+The same caveat remains honest: the squared support `\Lambda_a` is still a
+complex support, not a one-sided real support. So this does not yet prove
+injectivity. But it does cut the live burden further: the first-order route no
+longer feeds the full generic `PO2` wall, only its even square-support
+subclass.
+
+There is also a clean entire divider for this squared sample set. Since
+
+```tex
+\frac{\sin(\pi\sqrt z)}{\pi\sqrt z}
+=
+\prod_{m=1}^\infty \left(1-\frac{z}{m^2}\right),
+```
+
+the tail-zero set `\{(N+1)^2,(N+2)^2,\dots\}` admits the exact entire factor
+
+```tex
+E_N^{\mathrm{sq}}(z)
+:=
+\prod_{m=N+1}^\infty \left(1-\frac{z}{m^2}\right)
+=
+\frac{\sin(\pi\sqrt z)}{\pi\sqrt z}
+\prod_{m=1}^N \left(1-\frac{z}{m^2}\right)^{-1}.
+```
+
+Therefore, whenever `J_a(r^2)=0` for all `r>N`, the quotient
+
+```tex
+U_a(z):=\frac{J_a(z)}{E_N^{\mathrm{sq}}(z)}
+```
+
+is again meromorphic with the same pole support `\Lambda_a`.
+
+So the first-order `PO3a` wall has not only a quadratic divisor tower but also
+an exact whole-tail factorization by a canonical square-lattice entire
+function. This does not yet give injectivity, but it sharpens the analytic
+shape of the remaining problem: the unresolved uniqueness theorem is now for a
+complex-support simple Cauchy transform after removal of a low-density
+order-`1/2` square-tail divisor, rather than after removal of the denser
+integer-tail Gamma divisor.
+
 ### `PO3a.2` Boundary expansion
 
 Expand the boundary correction in finite sign-pure form:
