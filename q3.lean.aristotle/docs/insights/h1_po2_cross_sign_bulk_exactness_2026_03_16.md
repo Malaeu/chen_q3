@@ -7742,6 +7742,66 @@ So after sharpening `D2g30` by `D2g21`, the direct arithmetic residue is best
 read as a logarithmic local-spike exclusion problem for `S(T)`, with
 `D2g30a/D2g30b` retained only as weaker corollaries.
 
+There is one more useful cleanup to record here, because it kills a tempting
+but misleading shortcut.
+
+```tex
+\textbf{D2g30e. Standard short-interval }S(T)\textbf{-technology does not close the logarithmic spike branch.}
+```
+
+The post-`D2g29e` live target from `D2g30c/D2g30d` is:
+
+```tex
+\text{exclude infinitely many deterministic windows }
+[T-u,T+u],
+\qquad
+u\asymp \frac{\log T}{T^2},
+```
+
+on which
+
+```tex
+S(T+u)-S(T-u)\gtrsim \log T.
+```
+
+The standard literature around `S(T)` does not currently match this theorem
+shape.
+
+1. **Korolev-type short-interval results** prove the existence, under RH, of
+   large positive and negative values of `S(t)` on short intervals, but they
+   do not give a deterministic exclusion of spikes on a prescribed mesh of
+   windows of radius `(\log T)/T^2`.
+
+2. **Selberg/Fujii/second-moment technology** controls average behavior of
+   `S(T)` and its iterates, but again not a pointwise exclusion of
+   logarithmically large jumps on supertiny windows far below average spacing.
+
+So the naive hope
+
+```tex
+\text{“plug standard short-interval }S(T)\text{ literature into }D2g30d”}
+```
+
+should be marked false-for-now.
+
+This is a real route kill in our address system:
+
+```tex
+\boxed{
+\text{the generic short-interval }S(T)\text{ door is not the live mainline for }D2g30d.
+}
+```
+
+What survives is narrower:
+
+```tex
+\text{either a new structural exclusion specific to the Q3 microcluster
+geometry, or a route handoff beyond direct arithmetic.}
+```
+
+So `D2g30e` is not a closure theorem. It is a kill certificate for a false
+shortcut.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

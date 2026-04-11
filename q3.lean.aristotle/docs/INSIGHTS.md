@@ -6163,3 +6163,19 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - external sanity-check remains negative: standard short-interval technology
   for `S(T)` lives at average-spacing scales and does not touch this
   `(\log T)/T^2` local-spike regime.
+
+## In progress (2026-04-11): D2g30e kill-certificate for the generic S(T) short-interval door
+
+- exact target: test whether classical short-interval `S(T)` literature can
+  already kill the deterministic spike branch from `D2g30c/D2g30d`;
+- local oracle recall gives no hidden project theorem at this scale and keeps
+  pushing the live burden back to the same microcluster geometry;
+- external sanity-check is unfavorable in exactly the right way:
+  Korolev-type papers prove existence of large values of `S(t)` on short
+  intervals under RH, while Selberg/Fujii-style technology is averaged and not
+  a deterministic exclusion theorem on prescribed windows;
+- verdict: the generic “import standard short-interval `S(T)` bounds” route is
+  false-for-now for `D2g30d`;
+- active consequence: the live choice is now either a new Q3-specific
+  structural exclusion of logarithmic microclusters or an honest route handoff
+  beyond direct arithmetic.
