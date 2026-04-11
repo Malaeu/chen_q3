@@ -6492,3 +6492,37 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   only the domain-side endpoint-evaluation functionals can survive, which is
   materially closer to the desired sign-pure picture than a generic
   Toeplitz/Hankel cloud.
+
+## In progress (2026-04-11): endpoint evaluation on the raw tail already splits by sign
+
+- the endpoint functional is now explicit on the raw tail synthesis:
+  `\chi_{\pm n}[a](-a)=(2a)^{-1/2}(-1)^n`, so
+  `\operatorname{ev}_{-a}\circ T_{a,\infty,N}`
+  splits exactly as
+  `\ell_{+,N}P_+ + \ell_{-,N}P_-`
+  with two alternating one-sided functionals;
+- equivalently,
+  `R_a T_{a,\infty,N}
+   = \mathbf 1\otimes(\ell_{+,N}P_+ + \ell_{-,N}P_-)`
+  is already sign-split on the domain side;
+- this is an exact gain, not a conjecture:
+  the domain-side endpoint bricks do not mix `+` and `-` at all;
+- so the live `PO3a.2/PO3a.3` burden narrows one step further:
+  any possible mixed leakage can only come from the left vector produced after
+  `G_g[a]` acts on the constant output, not from the endpoint functionals
+  themselves.
+
+## In progress (2026-04-11): `PO3a.3` reduces to one vector-level sign test
+
+- after the exact split
+  `R_a T_{a,\infty,N}
+   = \mathbf 1\otimes(\ell_{+,N}P_+ + \ell_{-,N}P_-)`,
+  the first-order endpoint bricks are controlled by one concrete vector
+  `v_{a,N}:=T_{a,\infty,N}^*G_g[a]\mathbf 1`;
+- so the live `PO3a.3` question is no longer "understand all boundary
+  generators", but the sharper sign test:
+  is the relevant part of `v_{a,N}` sign-pure, or at least compatible with the
+  split one-sided functionals `\ell_{+,N}P_+`, `\ell_{-,N}P_-`?
+- this is still a reduction, not a theorem, but it is a real narrowing:
+  the possible mixed leakage is now concentrated in one vector-level object
+  rather than an uncontrolled boundary cloud.
