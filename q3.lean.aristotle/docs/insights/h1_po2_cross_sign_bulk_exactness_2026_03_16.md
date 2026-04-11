@@ -5609,6 +5609,178 @@ and so
 This proves the claim.
 
 ```tex
+\textbf{D2g29a*. Refined archimedean asymptotic.}
+```
+
+Under the more explicit standard normalization
+
+```tex
+M_j(T)
+:=
+\frac{1}{2\pi}\int_{\mathbb R} w(u/T)e(j\alpha u)\,\Omega(u)\,du,
+\qquad
+\mathcal M_{\alpha,w}(H;T)
+=
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)M_j(T),
+```
+
+assume in addition that on `|u|\ge 2` one has the usual Stirling bounds
+
+```tex
+\Omega(u)=\log|u|+O(1),
+\qquad
+\Omega'(u)=O(1/|u|).
+```
+
+Then
+
+```tex
+\boxed{
+\mathcal M_{\alpha,w}(H;T)
+=
+c_w\,T\log T
++
+O_w(T)
++
+O_{w,\alpha}\!\bigl(\log T\cdot \log(2H)\bigr),
+}
+```
+
+where
+
+```tex
+c_w:=\frac{1}{2\pi}\int_{\mathbb R} w(t)\,dt.
+```
+
+In particular, for every fixed `A>0`,
+
+```tex
+H\le T^A
+\qquad\Longrightarrow\qquad
+\mathcal M_{\alpha,w}(H;T)\ll_{w,\alpha,A} T\log T.
+```
+
+So on the target range `H(T)\asymp T^2/\log T` the archimedean packet still
+sits exactly at natural scale.
+
+### Proof
+
+Split the Fej\'er packet into the zero mode and the oscillatory tail:
+
+```tex
+\mathcal M_{\alpha,w}(H;T)=M_0(T)+
+\sum_{1\le |j|<H}\left(1-\frac{|j|}{H}\right)M_j(T).
+```
+
+For `j=0`,
+
+```tex
+M_0(T)=\frac{1}{2\pi}\int_{\mathbb R} w(u/T)\Omega(u)\,du.
+```
+
+Changing variables `u=Tt` gives
+
+```tex
+M_0(T)=\frac{T}{2\pi}\int_{\mathbb R} w(t)\Omega(Tt)\,dt.
+```
+
+Since `w` is supported in `(1,2)`, we have `t\asymp 1` on the support, hence
+
+```tex
+\Omega(Tt)=\log(Tt)+O(1)=\log T+\log t+O(1).
+```
+
+Therefore
+
+```tex
+M_0(T)
+=
+\frac{T\log T}{2\pi}\int w(t)\,dt
++
+\frac{T}{2\pi}\int w(t)\log t\,dt
++
+O_w(T)
+=
+c_w\,T\log T+O_w(T).
+```
+
+Now fix `j\neq 0` and write
+
+```tex
+A_T(u):=w(u/T)\Omega(u).
+```
+
+Then
+
+```tex
+M_j(T)=\frac{1}{2\pi}\int_{\mathbb R} A_T(u)e(j\alpha u)\,du.
+```
+
+Integrating by parts once and using compact support of `A_T` yields
+
+```tex
+M_j(T)
+=
+-\frac{1}{(2\pi)^2 i j\alpha}
+\int_{\mathbb R} A_T'(u)e(j\alpha u)\,du,
+```
+
+so
+
+```tex
+|M_j(T)|
+\ll_{\alpha}
+\frac{1}{|j|}\int_{\mathbb R}|A_T'(u)|\,du.
+```
+
+But
+
+```tex
+A_T'(u)=\frac1T w'(u/T)\Omega(u)+w(u/T)\Omega'(u).
+```
+
+On the support `u\asymp T`, the Stirling bounds give
+
+```tex
+\Omega(u)=O(\log T),
+\qquad
+\Omega'(u)=O(1/T),
+```
+
+hence
+
+```tex
+A_T'(u)=O_w\!\left(\frac{\log T}{T}\right)
+```
+
+uniformly on its support. Since that support has length `O(T)`,
+
+```tex
+\int_{\mathbb R}|A_T'(u)|\,du\ll_w \log T.
+```
+
+Thus
+
+```tex
+\boxed{
+|M_j(T)|\ll_{w,\alpha}\frac{\log T}{|j|}
+\qquad (j\neq 0).
+}
+```
+
+Summing over the Fej\'er weights,
+
+```tex
+\sum_{1\le |j|<H}\left(1-\frac{|j|}{H}\right)|M_j(T)|
+\ll_{w,\alpha}
+\log T \sum_{j=1}^{H-1}\frac1j
+\ll
+\log T\cdot \log(2H).
+```
+
+Combining this with the zero-mode formula proves the refined asymptotic.
+
+```tex
 \textbf{D2g29a'. Fixed-shift transform tails are harmless.}
 ```
 

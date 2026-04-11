@@ -5695,3 +5695,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - this is a real compression, not a retreat: it tells us exactly what not to
   do next. We should not spend cycles trying to prove an over-strong absolute
   near-lattice counting theorem that the natural heuristics themselves fight.
+- the archimedean packet was also sharpened beyond the crude
+  `O(T\log T)` closure: under the standard explicit-formula normalization
+  one can split off the `j=0` mode and prove
+  ```
+  \mathcal M_{\alpha,w}(H;T)
+  =
+  c_w\,T\log T
+  +
+  O_w(T)
+  +
+  O_{w,\alpha}(\log T\log(2H)).
+  ```
+  So the entire Fejér-weighted oscillatory tail of the gamma-factor is only a
+  harmonic-error term, while the main `T\log T` mass comes from the zero mode.
+- on the target range `H(T)\asymp T^2/\log T`, this still gives
+  `\mathcal M_{\alpha,w}(H(T);T)\ll T\log T`, so the strategic verdict is
+  unchanged but cleaner: the gamma-factor is not merely bounded by the right
+  scale, it is explicitly understood up to a lower-order harmonic tail.
