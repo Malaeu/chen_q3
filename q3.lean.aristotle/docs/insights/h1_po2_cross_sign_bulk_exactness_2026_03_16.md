@@ -7901,6 +7901,78 @@ into `D2f3`.
 If that extraction theorem lands, then the whole direct arithmetic residue
 after `D2g29e` collapses into the already-isolated resonance branch `D2f3`.
 
+There is also a concrete geometric gain available immediately from the
+microcluster itself.
+
+```tex
+\textbf{D2g31d. Logarithmic microclusters contain bounded consecutive blocks of diameter }O(M^{-2}).
+```
+
+Assume `D2g30c`: for some fixed `\eta,C>0` and infinitely many `M`, a
+one-sided packet contains at least
+
+```tex
+N_M\ge \eta \log M
+```
+
+points inside an interval of length
+
+```tex
+H_M\le C\frac{\log M}{M^2}.
+```
+
+Fix any bounded size `L_0\ge 2`. Enumerate those packet points in increasing
+order:
+
+```tex
+y_1<\cdots<y_{N_M}.
+```
+
+Consider the consecutive `L_0`-blocks
+
+```tex
+(y_i,\dots,y_{i+L_0-1}),
+\qquad
+1\le i\le N_M-L_0+1.
+```
+
+The average diameter of these blocks is bounded by
+
+```tex
+\frac{L_0-1}{N_M-1}\,H_M,
+```
+
+so at least one such block satisfies
+
+```tex
+\operatorname{diam}(y_i,\dots,y_{i+L_0-1})
+\le
+\frac{L_0-1}{N_M-1}H_M
+\ll_{\eta,C,L_0}
+\frac{1}{M^2}.
+```
+
+Thus every logarithmic microcluster contains a bounded-size consecutive
+subcluster with `O(M^{-2})` diameter.
+
+This does not by itself close `D2g31c`, because one still has to transfer
+non-negligible packet mass to such a block. But it removes any remaining
+geometric vagueness:
+
+```tex
+\boxed{
+\text{the only missing part of }D2g31c\text{ is now amplitude transfer, not
+support geometry.}
+}
+```
+
+So the extraction problem can be read in two layers:
+
+1. **geometry:** already done by `D2g31d`;
+2. **amplitude transfer:** prove that a surviving logarithmic microcluster
+   forces some bounded extracted block to remain non-negligible, which would
+   then feed into `D2g20` or `D2g19a`.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

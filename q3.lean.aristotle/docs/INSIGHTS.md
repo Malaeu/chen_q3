@@ -6207,3 +6207,14 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - active next address is now `D2g31c`: extraction-to-compressed-gap theorem;
 - if `D2g31c` lands, the whole post-`D2g29e` direct arithmetic residue
   collapses back into the already-isolated resonance branch `D2f3`.
+- quick numerical sanity-check on actual ordinates (`a=1`, first `80` zeros,
+  packet lengths `L=2,3,4`) still points the same way: the smallest-singular
+  local windows have Hermite overlaps around `0.995` for `L=2`,
+  `0.976–0.989` for `L=3`, and `0.970–0.983` for `L=4`, so the dangerous
+  bounded-size windows continue to look Hermite-like rather than suggesting a
+  new coefficient law.
+- concrete geometric gain: a `D2g30c` logarithmic microcluster with
+  `\gtrsim \log M` points in length `\asymp (\log M)/M^2` already contains,
+  for every fixed `L_0`, some consecutive `L_0`-block of diameter `O(M^{-2})`;
+- therefore the only genuinely missing part of `D2g31c` is amplitude transfer
+  to such a bounded extracted block, not support geometry anymore.
