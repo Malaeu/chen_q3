@@ -2,7 +2,7 @@
 
 ## Status
 
-Active phase worker request for the `PO3a` proof-packet audit.
+Active phase worker request for the exact `PO3a` boundary-algebra lemma.
 
 ## Source
 
@@ -22,13 +22,16 @@ Active phase worker request for the `PO3a` proof-packet audit.
 `PO2` now lands in the admissible mixed-shell form
 `\mathcal D_{a,N}^{+-}=\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`,
 and the historical `PO3` note freezes the right shell.
-But the actual proof packet for `PO3a` is still missing.
+But the audit has now frozen the real blocker more sharply:
+we still need the exact lemma that places the boundary layer inside the
+sign-pure boundary algebra.
 
 So the next narrow question is:
 
 ```tex
-\text{what exact mathematical input would really imply }
-\mathcal D_{a,\partial}^{+-}=0\ ?
+\text{can we prove that the boundary layer }H_{a,N}
+\text{ is sign-pure, so that }
+P_+H_{a,N}P_-=0\ ?
 ```
 
 If that packet is real, the rest of Door 1 and the packaged `PO4 -> H4`
@@ -37,22 +40,22 @@ live mathematical blocker.
 
 ## Exact task
 
-Provide the cleanest proof-grade packet for `PO3a`:
+Provide the cleanest proof-grade packet for the exact `PO3a` blocker:
 
-1. state the exact missing lemma that would identify the mixed boundary term
-   `\mathcal D_{a,\partial}^{+-}`;
+1. state the exact boundary-algebra membership lemma
+   `H_{a,N}\in\mathcal B`;
 2. list the minimal already-existing inputs that support this lemma;
-3. name the sharpest blocker if those inputs still stop short of exact
-   cancellation;
+3. name the sharpest blocker if those inputs still stop short of sign-pure
+   membership;
 4. give the cleanest handoff from a real `PO3a` packet to `PO3b/PO3c` and
    then `PO4/PO5`.
 
 ## Required deliverables
 
-- one exact missing-lemma recommendation;
+- one exact boundary-algebra membership recommendation;
 - one smallest theorem packet to attack first;
 - one short blocker table:
-  `already supported` / `missing explicit formula` / `route-kill if absent`;
+  `already supported` / `missing algebra formula` / `route-kill if absent`;
 - one recommendation for the cleanest post-`PO3` sync into `PO4` and `PO5`.
 
 ## Supporting files
