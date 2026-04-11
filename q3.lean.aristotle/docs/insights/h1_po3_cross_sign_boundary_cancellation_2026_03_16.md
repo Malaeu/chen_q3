@@ -1327,6 +1327,44 @@ complex-support simple Cauchy transform after removal of a low-density
 order-`1/2` square-tail divisor, rather than after removal of the denser
 integer-tail Gamma divisor.
 
+At this point the next honest split is already clear.
+
+```tex
+\textbf{SQ1. Direct square-tail rigidity.}
+```
+
+Use the new quadratic divisor tower / Newton-profile formulation and attack the
+remaining wall directly:
+
+```tex
+J_a(r^2)=0\ \forall r>N
+\Longrightarrow
+J_a\equiv 0.
+```
+
+```tex
+\textbf{SQ2. Square-support backend adaptation.}
+```
+
+Try to adapt the old `PO2` discrete-Cauchy backend to the squared support
+`\Lambda_a`, now that the support and the sample set are both order-`1/2`
+objects.
+
+The current search status is honest:
+
+- the local project index does not yet contain a ready-made square-tail
+  injectivity theorem beyond the generic `PO2` Cauchy-tail wall;
+- a short external probe did not reveal a clean imported uniqueness theorem
+  specialized to zeros on `m^2`.
+
+So this branch should now be treated exactly as it stands:
+
+```tex
+\text{no imported theorem yet;}
+\qquad
+\text{live attack } = \text{SQ1 or SQ2 only.}
+```
+
 ### `PO3a.2` Boundary expansion
 
 Expand the boundary correction in finite sign-pure form:

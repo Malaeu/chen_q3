@@ -6638,6 +6638,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   finite front factor, so the first-order wall admits an exact whole-tail
   factorization by a square-lattice entire function of lower density than the
   old integer-tail Gamma divider;
+- local semantic search on the new blocker `infinite-support square-tail
+  injectivity` did not surface any ready-made project theorem beyond the old
+  generic `PO2` Cauchy-tail wall; short external probing likewise did not
+  reveal a clean imported uniqueness theorem specialized to zeros on `m^2`;
+- so the next honest split is now explicit:
+  either attack the live wall directly through the Newton-profile /
+  quadratic-divisor formulation of `J_a`,
+  or try a fresh square-support adaptation of the old Cauchy-de Branges /
+  localization backend, but without pretending such an import already exists;
 - the honest caveat stays the same: `\Lambda_a` is still complex support, so
   the old one-sided real-support rigidity theorem still does not fire; but the
   live burden is now a smaller even square-support subclass of the old `PO2`
