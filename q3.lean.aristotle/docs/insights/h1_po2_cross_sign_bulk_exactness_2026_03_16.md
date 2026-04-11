@@ -4927,6 +4927,68 @@ C\,\varepsilon\sum_{j=1}^{H-1}|S_\alpha(j;T)|.
 
 This is the required shrinking-target bridge.
 
+```tex
+\textbf{D2g25b. Fej\'er-majorant form of the shrinking-target bridge.}
+```
+
+Keep the same notation and define the single smoothed Fourier object
+
+```tex
+\Sigma_\alpha(H;T):=
+\sum_{T<\gamma\le 2T} F_H(\alpha\gamma).
+```
+
+Then the proof above already gives the sharper point of view
+
+```tex
+A_\alpha(T,\varepsilon)
+\le
+\frac{\pi^2}{4H}\,\Sigma_\alpha(H;T),
+\qquad
+H=\left\lfloor \frac{1}{2\varepsilon}\right\rfloor.
+```
+
+So for shrinking-target exclusion it is enough to prove
+
+```tex
+\Sigma_\alpha(H(T);T)=o(H(T)).
+```
+
+This is strictly closer to explicit-formula technology than the sufficient
+condition in `D2g26`, because it asks for one signed/smoothed Fourier sum
+rather than a bound on the sum of absolute values of the individual modes.
+
+Expanding the Fej\'er kernel yields
+
+```tex
+\Sigma_\alpha(H;T)
+=
+\mathcal N(T,2T]
++
+2\sum_{j=1}^{H-1}\left(1-\frac{j}{H}\right)\Re S_\alpha(j;T).
+```
+
+So the shrinking-target branch can also be attacked through one single weighted
+linear combination of the exponential sums `S_\alpha(j;T)`, not only through
+the absolute-value majorant.
+
+```tex
+\textbf{D2g25c. Tactical meaning of }D2g25b\textbf{.}
+```
+
+The weighted object `\Sigma_\alpha(H;T)` is the more natural endpoint if one
+wants to connect the argument to Landau--Gonek or Suzuki/Fujii style
+explicit-formula machinery:
+
+1. `D2g26` remains a correct sufficient criterion, but it is an
+   `L^1`-type overestimate because it inserts absolute values after the
+   Fej\'er expansion;
+2. `D2g25b` keeps the oscillation and therefore preserves the possibility of
+   cancellation across frequencies `j`;
+3. if one can transfer `\Sigma_\alpha(H;T)` to a prime-side weighted sum, then
+   the arithmetic endpoint becomes a single signed/smoothed explicit-formula
+   problem rather than a termwise control problem for all `S_\alpha(j;T)`.
+
 For the branch relevant to `D2g24`, take
 
 ```tex
@@ -4997,6 +5059,22 @@ For our target scale, this means frequencies up to
 j\lesssim \frac{T^2}{\log T}.
 ```
 
+But `D2g25b` shows that there is a potentially more natural route:
+
+```tex
+\text{prove }\Sigma_\alpha(H(T);T)=o(H(T))
+\quad\text{with}\quad
+H(T)\asymp \frac{T^2}{\log T}.
+```
+
+This is weaker than asking for
+
+```tex
+\varepsilon(T)\sum_{j\le H(T)}|S_\alpha(j;T)|=o(1),
+```
+
+because it keeps the Fourier signs instead of discarding them.
+
 ```tex
 \textbf{D2g26a. Exceptional/nonexceptional split.}
 ```
@@ -5012,11 +5090,16 @@ The Ford--Zaharescu picture suggests the tactical fork:
    then one should exploit the explicit resonant density defect near the
    corresponding rational points;
 
-2. if `\alpha` is nonexceptional, then the natural live target is the
-   high-frequency estimate in `D2g26`.
+2. if `\alpha` is nonexceptional, then the natural live target is either the
+   high-frequency estimate in `D2g26` or, more softly, the Fej\'er-smoothed
+   estimate in `D2g25b`.
 
-So `D2g25/D2g26` is the right theorem packet: it converts the
-integer-resonance branch into one explicit shrinking-target Fourier problem.
+So `D2g25/D2g25b/D2g26` is the right theorem packet: it converts the
+integer-resonance branch first into one explicit shrinking-target Fourier
+majorant, and then into two possible endpoints:
+
+1. an `L^1`-type majorant (`D2g26`);
+2. a single Fej\'er-smoothed signed sum (`D2g25b`).
 
 ```tex
 \textbf{D2g26b. Discrete arithmetic gate before the Fourier branch.}

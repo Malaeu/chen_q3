@@ -5434,6 +5434,28 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   So the first term already dies on our scale, and the entire burden moves to
   `D2g26`: high-frequency control of `S_\alpha(j;T)` up to
   `j\asymp T^2/\log T`.
+- but there is already a better tactical reading built into the same proof:
+  define
+  ```
+  \Sigma_\alpha(H;T) := \sum_{T<\gamma\le 2T} F_H(\alpha\gamma).
+  ```
+  Then
+  ```
+  A_\alpha(T,\varepsilon) \le \frac{\pi^2}{4H}\Sigma_\alpha(H;T),
+  ```
+  so shrinking-target exclusion follows from the softer signed/smoothed goal
+  `\Sigma_\alpha(H(T);T)=o(H(T))`. This is closer to Landau--Gonek /
+  explicit-formula technology than the absolute-value majorant
+  `\sum |S_\alpha(j;T)|`.
+- after expansion,
+  ```
+  \Sigma_\alpha(H;T)
+  =
+  \mathcal N(T,2T]
+  + 2\sum_{j=1}^{H-1}(1-j/H)\Re S_\alpha(j;T),
+  ```
+  so the live arithmetic endpoint is no longer forced to be termwise control of
+  all high frequencies; it can be attacked as one single weighted signed sum.
 - this is cleaner than the older abstract majorant wording:
   the live question is now literally one explicit exponential-sum criterion on
   dyadic zero blocks.
@@ -5487,7 +5509,8 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - conclusion: `D2g26` is now a genuine external arithmetic input. The honest
   next step is to split into exceptional/nonexceptional `\alpha=a/\pi`, kill
   the vacuous raw-`L^2` branch, and then attack the nonexceptional case either
-  via the direct mean-`L^1` criterion or via a genuinely new off-diagonal
+  via the direct mean-`L^1` criterion, or more naturally via the signed
+  Fejér-majorant `\Sigma_\alpha(H;T)`, or via a genuinely new off-diagonal
   Fejér/pair-correlation estimate.
 - also sharpened the Hermite-capture fingerprint itself:
   `D2g18b` now shows that once a local packet enters an `O(h)`-tube around the
