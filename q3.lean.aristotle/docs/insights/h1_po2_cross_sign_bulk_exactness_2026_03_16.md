@@ -5497,13 +5497,152 @@ exceptional/nonexceptional split enter naturally.
 \textbf{D2g29a. Archimedean bookkeeping target.}
 ```
 
-Show that the archimedean part satisfies the natural-scale bound
+Assume the archimedean term of the explicit formula has the standard form
 
 ```tex
-\mathcal M_{\alpha,w}(H(T);T)\ll T\log T.
+\mathcal M_{\alpha,w}(H;T)
+:=
+\int_{\mathbb R}\Omega(u)\,w(u/T)\,F_H(\alpha u)\,du,
 ```
 
-This is the soft analytic bookkeeping piece of the packet.
+where `\Omega(u)` is the usual zeta archimedean weight satisfying
+
+```tex
+|\Omega(u)|\ll \log(2+|u|).
+```
+
+Then for every fixed `\alpha\neq 0` and every smooth compactly supported
+`w\in C_c^\infty((1,2))` one has the uniform bound
+
+```tex
+\boxed{
+\mathcal M_{\alpha,w}(H;T)\ll_{\alpha,w} T\log T
+}
+```
+
+uniformly in `H\ge 1`.
+
+### Proof
+
+Because `w(u/T)` is supported on `u\in [T,2T]`, one has
+
+```tex
+|\Omega(u)|\ll \log T
+\qquad
+\text{on the support of }w(u/T).
+```
+
+Therefore
+
+```tex
+|\mathcal M_{\alpha,w}(H;T)|
+\ll
+(\log T)\,I_{\alpha,w}(H;T),
+```
+
+where
+
+```tex
+I_{\alpha,w}(H;T):=
+\int_{\mathbb R}|w(u/T)|\,F_H(\alpha u)\,du.
+```
+
+Since `F_H\ge 0`, we may drop the absolute values on the kernel and use its
+Fourier expansion:
+
+```tex
+F_H(x)=\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)e(jx).
+```
+
+Write the Fourier transform in the convention
+
+```tex
+\widehat w(\xi):=\int_{\mathbb R} w(x)e(x\xi)\,dx.
+```
+
+Then, after the change of variables `u=Tx`,
+
+```tex
+\int_{\mathbb R} w(u/T)e(j\alpha u)\,du
+=
+T\widehat w(Tj\alpha).
+```
+
+Hence
+
+```tex
+I_{\alpha,w}(H;T)
+=
+T\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)\widehat w(Tj\alpha).
+```
+
+Now `w\in C_c^\infty`, so `\widehat w` is Schwartz. Thus for every `A\ge 1`
+there exists `C_A(w)` such that
+
+```tex
+|\widehat w(\xi)|\le C_A(w)(1+|\xi|)^{-A}.
+```
+
+Choose `A=2`. Since `\alpha\neq 0`,
+
+```tex
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)|\widehat w(Tj\alpha)|
+\le
+\sum_{j\in\mathbb Z} C_2(w)(1+T|j\alpha|)^{-2}
+\ll_{\alpha,w} 1,
+```
+
+uniformly in both `H` and `T`.
+
+Therefore
+
+```tex
+I_{\alpha,w}(H;T)\ll_{\alpha,w} T,
+```
+
+and so
+
+```tex
+\mathcal M_{\alpha,w}(H;T)\ll_{\alpha,w} T\log T.
+```
+
+This proves the claim.
+
+```tex
+\textbf{D2g29a'. Fixed-shift transform tails are harmless.}
+```
+
+Suppose the residual/pole part `\mathcal E_{\alpha,w}(H;T)` is a finite linear
+combination of terms of the shape
+
+```tex
+T\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)\widehat w\bigl(T(\xi_0-j\alpha)\bigr),
+```
+
+with fixed complex shifts `\xi_0`. Then the same Schwartz-decay argument gives
+
+```tex
+\boxed{
+\mathcal E_{\alpha,w}(H;T)\ll_{\alpha,w,\xi_0} T.
+}
+```
+
+So under the standard explicit-formula architecture, the archimedean and
+fixed-shift residual terms are already below the natural scale `T\log T`. They
+are not the live obstruction.
+
+```tex
+\textbf{D2g29a''. Consequence.}
+```
+
+Once the explicit formula is normalized in the standard way, the entire burden
+of `D2g29` sits on the prime-side localization packet:
+
+```tex
+\mathcal P_{\alpha,w}(H(T);T)\stackrel{?}{\ll} T\log T.
+```
+
+The archimedean bookkeeping is already closed.
 
 ```tex
 \textbf{D2g29b. Prime-side localization target.}

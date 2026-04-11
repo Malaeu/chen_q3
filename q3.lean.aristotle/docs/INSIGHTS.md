@@ -5485,6 +5485,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   Landau–Gonek gives the resonance geometry on the prime-power side,
   and Suzuki/Fujii explains why a single smoothed signed sum is the right
   object instead of `\sum |S_j|`.
+- then closed the soft analytic side of that packet: if the archimedean term is
+  written in the standard explicit-formula form
+  ```
+  \mathcal M_{\alpha,w}(H;T)=\int \Omega(u) w(u/T) F_H(\alpha u)\,du
+  ```
+  with `\Omega(u)\ll \log(2+|u|)`, then
+  ```
+  \mathcal M_{\alpha,w}(H;T)\ll T\log T
+  ```
+  uniformly in `H`. The reason is simple and robust:
+  `w(u/T)` localizes to `u\asymp T`, while the Fejér packet has total mass
+  `\asymp T` after Fourier expansion because
+  `T\sum_{|j|<H}(1-|j|/H)\widehat w(Tj\alpha)\ll T`
+  by Schwartz decay.
+- same argument shows that any residual explicit-formula terms coming from a
+  finite number of fixed Fourier shifts are only `O(T)`. So, under the
+  standard formula architecture, the archimedean side is no longer the live
+  burden.
+- conclusion sharpened again: `D2g29a` is effectively closed at the note level.
+  The only honest remaining obstacle in the `D2g29` packet is now
+  `D2g29b`, i.e. the prime-side localization near `\log n \approx 2aj`.
 - this is cleaner than the older abstract majorant wording:
   the live question is now literally one explicit exponential-sum criterion on
   dyadic zero blocks.
