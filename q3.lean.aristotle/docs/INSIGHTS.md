@@ -5742,3 +5742,20 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   nonnegative Schwartz majorant `W_+(\gamma/T)` with `W_+\ge 1` on `[1,2]`.
   This keeps the majorant logic we already want, while making the height-side
   test function honest for the explicit-formula step.
+- `D2g29b1` is now upgraded from schematic localization to an honest
+  admissible packet decomposition for that fixed pair `(\phi_H,W_+)`:
+  writing
+  `Z_j^+(T)=\sum_\gamma W_+(\gamma/T)e(j\alpha\gamma)` and
+  `h_{j,T}(u)=W_+(u/T)e(j\alpha u)`, the Guinand--Weil step gives
+  `Z_j^+=M_j^+ + P_j^+ + E_j^+`, hence
+  `\Sigma^{\phi}_{\alpha,W_+}=\mathcal M^{\phi}_{\alpha,W_+}+\mathcal P^{\phi}_{\alpha,W_+}+\mathcal E^{\phi}_{\alpha,W_+}`.
+  The prime side is localized by rapid decay of `\widehat W_+` to the windows
+  `|\log n \mp 2aj|\lesssim 1/T`, so the live burden really has moved to
+  `D2g29b2/b3` and then to the signed-kernel endpoint `D2g29c`.
+- quick automation/process audit: the repeated `64 unified exec processes`
+  warning does not appear to come from a repo-side leak in the active Q3
+  scripts. The obvious long-lived processes are app/session-level MCP helpers
+  plus external `mgrep watch` daemons already known from older notes; inside
+  this repo, background watchers exist only as opt-in utilities
+  (`scripts/swarm start/watch`, `q3.lean.aristotle/scripts/tdd.sh watch`) and
+  are not on the live mainline path.

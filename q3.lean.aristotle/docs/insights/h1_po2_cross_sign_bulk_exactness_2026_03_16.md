@@ -5915,51 +5915,123 @@ majorant on the height side.
 \textbf{D2g29b1. Schwartz-localization reduction.}
 ```
 
-Assume
+With the concrete `D2g29b0` choice fixed, define
 
 ```tex
-|\widehat w(\xi)|\le C_A(w)(1+|\xi|)^{-A}
-\qquad (A\ge 2),
-```
-
-and write the prime-side packet schematically as
-
-```tex
-\mathcal P_{\alpha,w}(H;T)
+Z_j^+(T):=\sum_\gamma W_+(\gamma/T)e(j\alpha\gamma),
+\qquad
+\Sigma^{\phi}_{\alpha,W_+}(H;T)
 =
-\frac{T}{2\pi}
-\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)
-\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}
-\left[
-\widehat w\!\left(T\!\left(\frac{\log n}{2\pi}-j\alpha\right)\right)
-+
-\widehat w\!\left(T\!\left(\frac{\log n}{2\pi}+j\alpha\right)\right)
-\right].
-```
-
-Then
-
-```tex
-|\mathcal P_{\alpha,w}(H;T)|
-\ll_{\alpha,w,A}
-T\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}\,
-\mathfrak R_{\alpha,H,T}(n),
+\sum_{|j|<H} a_j Z_j^+(T),
 ```
 
 where
 
 ```tex
-\mathfrak R_{\alpha,H,T}(n)
-:=
-\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)
-\Bigl(1+T\bigl|\tfrac{\log n}{2\pi}-j\alpha\bigr|\Bigr)^{-A}
-+
-\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)
-\Bigl(1+T\bigl|\tfrac{\log n}{2\pi}+j\alpha\bigr|\Bigr)^{-A}.
+a_j=\frac{\pi^2}{4H}\left(1-\frac{|j|}{H}\right)\ge 0.
 ```
 
-So `D2g29b` reduces to bounding a prime-power sum weighted only by
-distance-to-lattice.
+For each `j`, set the admissible test function
+
+```tex
+h_{j,T}(u):=W_+(u/T)e(j\alpha u).
+```
+
+Because `W_+\in\mathcal S(\mathbb R)`, every `h_{j,T}` lies in the standard
+Schwartz / explicit-formula admissible class. Its Fourier transform is the
+shifted packet
+
+```tex
+\widehat h_{j,T}(\xi)=T\,\widehat W_+\!\bigl(T(\xi-j\alpha)\bigr).
+```
+
+Applying the chosen Guinand--Weil normalization to `h_{j,T}` gives an honest
+three-part decomposition
+
+```tex
+Z_j^+(T)=M_j^+(T)+P_j^+(T)+E_j^+(T),
+```
+
+where the prime-side term has the form
+
+```tex
+P_j^+(T)
+=
+-\frac{T}{2\pi}
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+\left[
+\widehat W_+\!\left(T\!\left(\frac{\log n}{2\pi}-j\alpha\right)\right)
++
+\widehat W_+\!\left(T\!\left(\frac{\log n}{2\pi}+j\alpha\right)\right)
+\right].
+```
+
+Summing against the Fej\'er coefficients `a_j` yields the packet decomposition
+
+```tex
+\Sigma^{\phi}_{\alpha,W_+}(H;T)
+=
+\mathcal M^{\phi}_{\alpha,W_+}(H;T)
++
+\mathcal P^{\phi}_{\alpha,W_+}(H;T)
++
+\mathcal E^{\phi}_{\alpha,W_+}(H;T),
+```
+
+with
+
+```tex
+\mathcal P^{\phi}_{\alpha,W_+}(H;T)
+:=
+\sum_{|j|<H} a_j P_j^+(T).
+```
+
+Since `\widehat W_+` is rapidly decaying, the `n`-sum is localized to the
+windows
+
+```tex
+\left|\frac{\log n}{2\pi}-j\alpha\right|\lesssim \frac1T
+\qquad\text{or}\qquad
+\left|\frac{\log n}{2\pi}+j\alpha\right|\lesssim \frac1T,
+```
+
+that is,
+
+```tex
+|\log n-2aj|\lesssim \frac1T
+\qquad\text{or}\qquad
+|\log n+2aj|\lesssim \frac1T.
+```
+
+So `D2g29b1` is the honest reduction from the smooth shrinking-target packet on
+the zero side to a localized prime-power packet near the resonance lattice
+`\log n\approx \pm 2aj`.
+
+For later bookkeeping, the same rapid decay implies the pointwise majorant
+
+```tex
+|\mathcal P^{\phi}_{\alpha,W_+}(H;T)|
+\ll_{\alpha,W_+,A}
+T\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}\,
+\mathfrak R_{\alpha,H,T}^+(n),
+```
+
+where
+
+```tex
+\mathfrak R_{\alpha,H,T}^+(n)
+:=
+\sum_{|j|<H} a_j
+\Bigl(1+T\bigl|\tfrac{\log n}{2\pi}-j\alpha\bigr|\Bigr)^{-A}
++
+\sum_{|j|<H} a_j
+\Bigl(1+T\bigl|\tfrac{\log n}{2\pi}+j\alpha\bigr|\Bigr)^{-A}
+\qquad (A\ge 2).
+```
+
+This is the precise `D2g29b1` bridge: one smooth packet over zeros, one smooth
+packet over prime powers, and rapid-decay localization around the lattice
+`\log n\approx \pm 2aj`.
 
 ```tex
 \textbf{D2g29b2. One-resonance-per-prime-power heuristic.}
