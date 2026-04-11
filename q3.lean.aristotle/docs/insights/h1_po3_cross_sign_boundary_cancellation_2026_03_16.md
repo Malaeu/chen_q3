@@ -823,6 +823,51 @@ rigidity itself:
 \text{ on long compressed windows?}
 ```
 
+There is one more exact consequence once this is read at the operator level
+rather than for a single window. If the same first-order companion cancellation
+is required on every compression `P_{M,N}` of one fixed infinite-tail defect,
+then the window constants must glue.
+
+Indeed, if for every `M>N+1` one has
+
+```tex
+w_{r,0}(a)=c_{a,N,M}(-1)^r
+\qquad (N<r\le M),
+```
+
+then for `M_2>M_1>N+1` the overlap `N<r\le M_1` forces
+
+```tex
+c_{a,N,M_2}=c_{a,N,M_1}.
+```
+
+So there is a single scalar `c_{a,N}` such that
+
+```tex
+w_{r,0}(a)=c_{a,N}(-1)^r
+\qquad \forall r>N.
+```
+
+But `w_{r,0}(a)` is an off-diagonal raw entry with fixed second index `0`, and
+the frozen raw Suzuki packet already records decaying off-diagonal tails. Hence
+
+```tex
+w_{r,0}(a)\to 0
+\qquad (r\to+\infty),
+```
+
+which forces `c_{a,N}=0`. Therefore:
+
+```tex
+\text{nontrivial first-order companion cancellation on all compressions }
+\Longrightarrow
+w_{r,0}(a)=0 \text{ for every } r>N.
+```
+
+This is a very sharp route squeeze. It shows that the nonzero alternating-tail
+scenario can survive only as a one-window artifact; it cannot support the full
+infinite-tail operator identity.
+
 ### `PO3a.2` Boundary expansion
 
 Expand the boundary correction in finite sign-pure form:

@@ -6581,6 +6581,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   rejected: our `\gamma` are zeros of `\xi(1/2-iz)` in the complex plane, so
   the paired quotient sum is not currently an honest positive measure on real
   `\gamma^2`;
+- but there is a stronger operator-level squeeze: if the same first-order
+  companion cancellation is needed on every compression `P_{M,N}`, then the
+  window constants `c_{a,N,M}` glue on overlaps and force a single tail law
+  `w_{r,0}(a)=c_{a,N}(-1)^r` for all `r>N`;
+- since `w_{r,0}(a)` is an off-diagonal raw entry with fixed second index,
+  the already-frozen off-diagonal tail decay then forces `c_{a,N}=0`;
+- so a nontrivial alternating-tail pattern cannot support the full
+  infinite-tail operator identity: full first-order companion cancellation
+  would already imply `w_{r,0}(a)=0` on the whole tail;
 - so the next exact theorem-target is now cleanly split:
   either prove a stronger one-sided purity/sign law for the paired sum
   `\sum_{\{\gamma,-\gamma\}\subset\Gamma}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)`,
