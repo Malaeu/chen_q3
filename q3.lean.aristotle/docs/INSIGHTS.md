@@ -5736,3 +5736,9 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   if `D2g` dies, then `D2g29`, `D2g29b`, etc. die with it unless there is an
   explicit reopen with a new obstruction-killer. This should make both routing
   and clustered idea-search much cleaner.
+- `D2g29b0` is now fixed concretely rather than abstractly:
+  keep the periodic shrinking-target majorant in Fejér form
+  `\phi_H=(\pi^2/4H)F_H`, but replace the hard dyadic zero-window by a
+  nonnegative Schwartz majorant `W_+(\gamma/T)` with `W_+\ge 1` on `[1,2]`.
+  This keeps the majorant logic we already want, while making the height-side
+  test function honest for the explicit-formula step.

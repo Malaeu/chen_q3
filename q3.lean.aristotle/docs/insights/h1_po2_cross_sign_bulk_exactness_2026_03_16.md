@@ -5853,6 +5853,64 @@ So the correct structural reading is:
 The current formulas below should therefore be read as the schematic model for
 that package, not yet as the final admissibility-clean implementation.
 
+The engineering choice that best fits the current route is:
+
+1. keep the periodic shrinking-target majorant in Fej\'er form,
+   because it is already a finite Fourier packet;
+2. replace the hard dyadic zero-window by a nonnegative Schwartz majorant.
+
+More concretely, choose a fixed nonnegative Schwartz function
+
+```tex
+W_+\in \mathcal S(\mathbb R),
+\qquad
+W_+(t)\ge 1 \ \text{for } t\in[1,2].
+```
+
+Then define the height weight
+
+```tex
+w_{+,T}(u):=W_+(u/T).
+```
+
+This is explicit-formula admissible, and it majorizes the hard dyadic block:
+
+```tex
+\mathbf 1_{(T,2T]}(u)\le w_{+,T}(u).
+```
+
+For the periodic target, keep
+
+```tex
+\phi_H(x):=\frac{\pi^2}{4H}F_H(x),
+```
+
+with `H=\lfloor 1/(2\varepsilon)\rfloor`, so that
+
+```tex
+\mathbf 1_{\{\|x\|\le \varepsilon\}}\le \phi_H(x),
+```
+
+and
+
+```tex
+\phi_H(x)=\sum_{|j|<H} a_j e(jx),
+\qquad
+a_j=\frac{\pi^2}{4H}\left(1-\frac{|j|}{H}\right)\ge 0.
+```
+
+Hence the hard shrinking-target count on `(T,2T]` is dominated by the smooth
+packet
+
+```tex
+\Sigma^{\phi}_{\alpha,W_+}(H;T)
+:=
+\sum_{\gamma} W_+(\gamma/T)\,\phi_H(\alpha\gamma).
+```
+
+This is the concrete `D2g29b0` choice: Fej\'er on the periodic side, Schwartz
+majorant on the height side.
+
 ```tex
 \textbf{D2g29b1. Schwartz-localization reduction.}
 ```
