@@ -6100,3 +6100,34 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   that is exactly where the kernel escapes its rapid-decay regime;
 - result to record next: upgrade this from a clean theorem-packet to either a
   genuine near-window reduction or an explicit new arithmetic wall.
+
+## Result (2026-04-11): D2g29 closes on the normalized positive-definite route
+
+- important repair: once `D2g29b0` replaces `F_H` by the normalized majorant
+  `\phi_H=(\pi^2/4H)F_H`, the correct target scale is no longer `T\log T` but
+  `T\log T/H`;
+- this fixes a real normalization mismatch inside the old `D2g29b2b/d`
+  phrasing: for the normalized packet one needs
+  `\Sigma^{\phi}_{\alpha,W_+}(H(T);T)\ll T\log T/H`, not merely `\ll T\log T`;
+- decisive new move: choose the concrete even Schwartz majorant
+  `W_{\mathrm{pd}}(t):=e^{4\pi}e^{-\pi t^2}`, so `W_{\mathrm{pd}}\ge 1` on
+  `[1,2]` and `\widehat W_{\mathrm{pd}}(\xi)=e^{4\pi}e^{-\pi\xi^2}\ge 0`;
+- then the normalized prime kernel
+  `\mathcal K_{\alpha,W_{\mathrm{pd}},H,T}(\xi)` is pointwise nonnegative,
+  because it is a sum of Fejér coefficients `a_j\ge 0` against nonnegative
+  translates of `\widehat W_{\mathrm{pd}}`;
+- therefore the signed prime packet is automatically favorable:
+  `\mathcal P^{\phi}_{\alpha,W_{\mathrm{pd}}}(H;T)\le 0`;
+- meanwhile the normalized archimedean packet and fixed-shift residual packet
+  inherit an extra `1/H` from the coefficients `a_j`, so they satisfy
+  `\mathcal M^{\phi}_{\alpha,W_{\mathrm{pd}}}(H;T)\ll T\log T/H` and
+  `\mathcal E^{\phi}_{\alpha,W_{\mathrm{pd}}}(H;T)\ll T/H`;
+- hence
+  `\Sigma^{\phi}_{\alpha,W_{\mathrm{pd}}}(H(T);T)\ll T\log T/H`;
+- because `A_\alpha(T,\varepsilon(T))\le \Sigma^{\phi}_{\alpha,W_{\mathrm{pd}}}(H(T);T)`
+  and `H(T)\asymp T^2/\log T`, one gets
+  `A_\alpha(T,\varepsilon(T))\ll \log^2 T/T=o(1)`, so eventually
+  `A_\alpha(T,\varepsilon(T))=0`;
+- verdict: this is a genuine closure of `D2g29` through a stronger sibling
+  route `D2g29e`; the older `D2g29d1a/d1b` arithmetic split is demoted from
+  live critical path to backup/legacy analysis.

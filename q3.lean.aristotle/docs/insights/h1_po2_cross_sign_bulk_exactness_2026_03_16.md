@@ -7317,6 +7317,186 @@ So any future proof of `D2g29d1b` must ultimately show that these
 incommensurate near-resonant windows cannot collectively build a signed packet
 larger than `O(T\log T)`.
 
+There is, however, a stronger sibling route that bypasses this split
+altogether once the normalized packet from `D2g29b0` is taken seriously.
+
+```tex
+\textbf{D2g29e. Normalized positive-definite closure route.}
+```
+
+The key point is that after `D2g29b0` the shrinking-target count is controlled
+not by the raw Fej\'er packet `F_H`, but by the normalized majorant
+
+```tex
+\phi_H(x)=\frac{\pi^2}{4H}F_H(x)
+=
+\sum_{|j|<H} a_j e(jx),
+\qquad
+a_j=\frac{\pi^2}{4H}\left(1-\frac{|j|}{H}\right)\ge 0.
+```
+
+So the correct target scale for the normalized smooth packet
+
+```tex
+\Sigma^{\phi}_{\alpha,W_+}(H;T)
+:=
+\sum_\gamma W_+(\gamma/T)\phi_H(\alpha\gamma)
+```
+
+is not `T\log T`, but `T\log T/H`.
+
+```tex
+\textbf{D2g29e0. Scale repair for the normalized packet.}
+```
+
+Because the normalized coefficients carry an extra factor `1/H`, the already
+proved bookkeeping packets from `D2g29a` and `D2g29a'` immediately sharpen to
+
+```tex
+\boxed{
+\mathcal M^{\phi}_{\alpha,W_+}(H;T)\ll \frac{T\log T}{H},
+\qquad
+\mathcal E^{\phi}_{\alpha,W_+}(H;T)\ll \frac{T}{H}.
+}
+```
+
+Indeed, the zero mode now carries the coefficient
+`a_0=\pi^2/(4H)`, while every nonzero frequency term from `D2g29a*` and every
+fixed-shift residual term from `D2g29a'` is multiplied by the same `1/H`
+factor.
+
+```tex
+\textbf{D2g29e1. Concrete positive-definite majorant.}
+```
+
+Choose
+
+```tex
+W_{\mathrm{pd}}(t):=e^{4\pi}e^{-\pi t^2}.
+```
+
+Then:
+
+```tex
+W_{\mathrm{pd}}\in\mathcal S(\mathbb R),
+\qquad
+W_{\mathrm{pd}}(-t)=W_{\mathrm{pd}}(t),
+\qquad
+W_{\mathrm{pd}}(t)\ge 1 \ \text{for } t\in[1,2],
+```
+
+so `W_{\mathrm{pd}}` is an admissible `D2g29b0` height majorant. Moreover
+
+```tex
+\widehat W_{\mathrm{pd}}(\xi)=e^{4\pi}e^{-\pi \xi^2}\ge 0
+\qquad\forall \xi\in\mathbb R.
+```
+
+```tex
+\textbf{D2g29e2. Prime packet has favorable sign.}
+```
+
+For this choice of majorant, the exact kernel from `D2g29c''` satisfies
+
+```tex
+\mathcal K_{\alpha,W_{\mathrm{pd}},H,T}(\xi)
+=
+\sum_{|j|<H} a_j
+\left[
+\widehat W_{\mathrm{pd}}\!\left(T(\xi-j\alpha)\right)
++
+\widehat W_{\mathrm{pd}}\!\left(T(\xi+j\alpha)\right)
+\right]
+\ge 0
+```
+
+for every `\xi\in\mathbb R`, because each summand is nonnegative and
+`a_j\ge 0`.
+
+Therefore the signed prime packet is automatically nonpositive:
+
+```tex
+\boxed{
+\mathcal P^{\phi}_{\alpha,W_{\mathrm{pd}}}(H;T)
+=
+-\frac{T}{2\pi}
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,
+\mathcal K_{\alpha,W_{\mathrm{pd}},H,T}\!\left(\frac{\log n}{2\pi}\right)
+\le 0.
+}
+```
+
+So the entire arithmetic burden from `D2g29d/d1a/d1b` disappears on this
+route.
+
+```tex
+\textbf{D2g29e3. Closure of the shrinking-target packet.}
+```
+
+Combining `D2g29e0` and `D2g29e2`, we get
+
+```tex
+\Sigma^{\phi}_{\alpha,W_{\mathrm{pd}}}(H;T)
+=
+\mathcal M^{\phi}_{\alpha,W_{\mathrm{pd}}}(H;T)
++
+\mathcal P^{\phi}_{\alpha,W_{\mathrm{pd}}}(H;T)
++
+\mathcal E^{\phi}_{\alpha,W_{\mathrm{pd}}}(H;T)
+\ll
+\frac{T\log T}{H}.
+```
+
+Since `\mathbf 1_{\{\|\alpha\gamma\|\le \varepsilon\}}\le \phi_H(\alpha\gamma)`
+and `W_{\mathrm{pd}}(\gamma/T)\ge 1` on `(T,2T]`, this implies
+
+```tex
+A_\alpha(T,\varepsilon(T))
+\le
+\Sigma^{\phi}_{\alpha,W_{\mathrm{pd}}}(H(T);T)
+\ll
+\frac{T\log T}{H(T)}.
+```
+
+On the shrinking-target scale
+
+```tex
+H(T)\asymp \frac{T^2}{\log T},
+```
+
+this becomes
+
+```tex
+\boxed{
+A_\alpha(T,\varepsilon(T))
+\ll
+\frac{\log^2 T}{T}
+=
+o(1).
+}
+```
+
+Because `A_\alpha(T,\varepsilon(T))` is an integer, it follows that
+
+```tex
+\boxed{
+A_\alpha(T,\varepsilon(T))=0
+\qquad\text{for all sufficiently large }T.
+}
+```
+
+So `D2g25b`, and hence the full `D2g29` arithmetic packet, closes by this
+normalized positive-definite route.
+
+Consequently the older arithmetic split
+
+```tex
+D2g29d1a / D2g29d1b
+```
+
+should now be read as a legitimate backup analysis of the signed prime packet,
+not as the live critical path.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
