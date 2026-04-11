@@ -1078,6 +1078,45 @@ So the live first-order `PO3a` wall is actually narrower than the generic
 
 with zeros on the quadratic tail `\{(N+1)^2,(N+2)^2,\dots\}`.
 
+This is also a genuine density change, not just a cosmetic rewrite. Let
+
+```tex
+n_{\Lambda_a}(R):=\#\{\lambda_\gamma\in\Lambda_a:\ |\lambda_\gamma|\le R\}.
+```
+
+Since
+
+```tex
+\lambda_\gamma=y_\gamma^2=\frac{a^2}{\pi^2}\gamma^2,
+```
+
+and the classical zero-counting law gives
+
+```tex
+N_\xi(T)\asymp T\log T,
+```
+
+one gets
+
+```tex
+n_{\Lambda_a}(R)\asymp \sqrt R\,\log R.
+```
+
+So the squared support has exponent of convergence `1/2`:
+
+```tex
+\sum_{\lambda\in\Lambda_a}\frac{1}{|\lambda|^\sigma}
+\begin{cases}
+<\infty,& \sigma>\frac12,\\
+=\infty,& \sigma=\frac12 \text{ heuristically at the logarithmic threshold.}
+\end{cases}
+```
+
+This is exactly the same order as the sample set `\{m^2\}`. So the
+first-order `PO3a` wall is no longer a dense-support / sparse-sample mismatch
+of the old integer-tail type; after squaring, it becomes a density-matched
+problem on two order-`1/2` sets.
+
 This squared receiver also inherits its own direct divisor closure. If
 `J_a(r^2)=0` for all `r>N`, then for every `k\ge 1`
 

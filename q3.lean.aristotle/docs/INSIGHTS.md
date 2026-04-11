@@ -6619,6 +6619,9 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   injectivity to a square-tail problem
   `J_a(r^2)=0` for all `r>N`, together with its own quadratic divisor tower
   under division by `z-(N+j)^2`;
+- after squaring, the support density also matches the sample density:
+  `n_{\Lambda_a}(R)\asymp \sqrt R \log R`, so `\Lambda_a` has exponent of
+  convergence `1/2`, the same order as the square lattice `\{m^2\}`;
 - the quadratic divisor tower has an exact Newton avatar:
   with `s_j=(N+j)^2`, the weights
   `u_k(\lambda)=1/\prod_{j\le k}(\lambda-s_j)` are exactly the divided
