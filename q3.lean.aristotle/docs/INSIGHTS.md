@@ -6218,3 +6218,8 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   for every fixed `L_0`, some consecutive `L_0`-block of diameter `O(M^{-2})`;
 - therefore the only genuinely missing part of `D2g31c` is amplitude transfer
   to such a bounded extracted block, not support geometry anymore.
+- sharpened theorem-shape: if one-block amplitude transfer fails, then the
+  obstruction must live on a coherent mesoscopic chain of many bounded blocks;
+- active consequence: the direct residue is no longer a vague big cluster, but
+  either one dangerous bounded block or a phase-coherent train of Hermite-like
+  bounded blocks.

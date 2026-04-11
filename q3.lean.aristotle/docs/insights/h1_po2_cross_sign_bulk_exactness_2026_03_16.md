@@ -7973,6 +7973,41 @@ So the extraction problem can be read in two layers:
    forces some bounded extracted block to remain non-negligible, which would
    then feed into `D2g20` or `D2g19a`.
 
+There is also a sharper way to phrase this missing amplitude step.
+
+```tex
+\textbf{D2g31e. If one-block transfer fails, the residue must live on a coherent chain of bounded blocks.}
+```
+
+Partition a logarithmic microcluster into consecutive bounded windows of some
+fixed size `L_0`. By `D2g31d`, each block has diameter `O(M^{-2})`, hence
+each individual block lies in the bounded-size regime controlled by
+`D2g17a/D2g19a/D2g20`.
+
+If no single bounded block carries enough normalized mass to explain the whole
+non-negligible packet contribution, then the only remaining possibility is
+that many such bounded blocks contribute with coherent phases and add up over a
+mesoscopic chain of length `\asymp \log M`.
+
+So the missing amplitude theorem can be reformulated as:
+
+```tex
+\boxed{
+\text{either one bounded extracted block already carries the obstruction, or
+the obstruction is a coherent train of many bounded Hermite-like blocks.}
+}
+```
+
+This is useful because the second alternative is far more rigid than the
+original vague microcluster:
+
+- each dangerous block is already constrained by the ratio geometry from
+  `D2g18b`;
+- the bounded Hermite branch is individually harmless by `D2g19a`;
+- therefore only a long coherent phase-matched train can still survive.
+
+This is now the honest remaining shape of the direct residue problem.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
