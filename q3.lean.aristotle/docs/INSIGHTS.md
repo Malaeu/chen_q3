@@ -6642,6 +6642,12 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   injectivity` did not surface any ready-made project theorem beyond the old
   generic `PO2` Cauchy-tail wall; short external probing likewise did not
   reveal a clean imported uniqueness theorem specialized to zeros on `m^2`;
+- inside the direct `SQ1` branch, the quadratic divisor tower is now rewritten
+  as an exact Gibbs family on the squared support:
+  `\nu_k(\gamma)\propto |b_\gamma|^2\prod_{j\le k}|\lambda_\gamma-(N+j)^2|^{-2}`,
+  with explicit ratio control
+  `\nu_k(\gamma)/\nu_k(\eta)=|b_\gamma|^2/|b_\eta|^2 \cdot
+   \prod_{j\le k}|\lambda_\eta-s_j|^2/|\lambda_\gamma-s_j|^2`;
 - so the next honest split is now explicit:
   either attack the live wall directly through the Newton-profile /
   quadratic-divisor formulation of `J_a`,

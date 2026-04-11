@@ -1342,6 +1342,84 @@ J_a(r^2)=0\ \forall r>N
 J_a\equiv 0.
 ```
 
+Inside `SQ1`, the quadratic divisor tower has an exact Gibbs-profile
+description. Write
+
+```tex
+b_\gamma:=\frac{2a^2}{\pi^2}\sin^2(a\gamma),
+\qquad
+s_j:=(N+j)^2,
+\qquad
+\lambda_\gamma:=y_\gamma^2.
+```
+
+Then
+
+```tex
+J_a(z)=\sum_{\gamma\in\Gamma^\sharp}\frac{b_\gamma}{\lambda_\gamma-z},
+```
+
+and after dividing by the first `k` square-tail factors one gets
+
+```tex
+J_{a,k}(z)
+=
+\frac{J_a(z)}{\prod_{j=1}^k (z-s_j)}
+=
+\sum_{\gamma\in\Gamma^\sharp}
+\frac{b_\gamma^{(k)}}{\lambda_\gamma-z},
+\qquad
+b_\gamma^{(k)}
+:=
+\frac{b_\gamma}{\prod_{j=1}^k (\lambda_\gamma-s_j)}.
+```
+
+So the normalized coefficient mass is exactly
+
+```tex
+\nu_k(\gamma)
+:=
+\frac{|b_\gamma|^2\prod_{j=1}^k|\lambda_\gamma-s_j|^{-2}}
+{\sum_{\eta\in\Gamma^\sharp}|b_\eta|^2\prod_{j=1}^k|\lambda_\eta-s_j|^{-2}}.
+```
+
+For any two support points `\lambda_\gamma,\lambda_\eta` one has the exact
+ratio law
+
+```tex
+\frac{\nu_k(\gamma)}{\nu_k(\eta)}
+=
+\frac{|b_\gamma|^2}{|b_\eta|^2}
+\prod_{j=1}^k
+\frac{|\lambda_\eta-s_j|^2}{|\lambda_\gamma-s_j|^2}.
+```
+
+Equivalently, with the quadratic potential
+
+```tex
+\Phi_k(\lambda):=\sum_{j=1}^k \log|\lambda-s_j|,
+```
+
+the normalized divisor tower is the Gibbs family
+
+```tex
+\nu_k(\gamma)
+\propto
+|b_\gamma|^2 e^{-2\Phi_k(\lambda_\gamma)}.
+```
+
+So `SQ1` has now been converted into a precise question about a single moving
+weight system on the squared support:
+
+```tex
+\text{can the quadratic Gibbs mass }
+|b_\gamma|^2 e^{-2\Phi_k(\lambda_\gamma)}
+\text{ escape indefinitely as }k\to\infty?
+```
+
+This is still open, but it replaces the raw divisor tower by one exact
+normalized dynamics on `\Lambda_a`.
+
 ```tex
 \textbf{SQ2. Square-support backend adaptation.}
 ```
