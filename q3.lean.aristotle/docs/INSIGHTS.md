@@ -6590,6 +6590,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - so a nontrivial alternating-tail pattern cannot support the full
   infinite-tail operator identity: full first-order companion cancellation
   would already imply `w_{r,0}(a)=0` on the whole tail;
+- equivalently, with
+  `H_a(z):=\sum_{\gamma\in\Gamma}\sin^2(a\gamma)/(\gamma(\gamma+z))`,
+  the same route would force
+  `H_a(\alpha_r)=0` for every `r>N`, where `\alpha_r=\pi r/a`;
+- so the live first-order wall is now a scalar arithmetic-progression
+  uniqueness problem for one fixed meromorphic Cauchy-type profile `H_a`;
+- after the exact rescaling `\widetilde H_a(w):=H_a(\pi w/a)` with support
+  points `y_\gamma:=-a\gamma/\pi`, this becomes a literal simple Cauchy
+  transform
+  `\widetilde H_a(w)=\sum e_a(y_\gamma)/(y_\gamma-w)`
+  vanishing on every integer `r>N`;
+- so the first-order `PO3a` wall now feeds directly into the already isolated
+  `PO2` Cauchy-tail injectivity target, with one honest caveat:
+  the support `Y_a={-a\gamma/\pi}` is complex, so the old one-sided real-line
+  rigidity theorem is not enough by itself;
 - so the next exact theorem-target is now cleanly split:
   either prove a stronger one-sided purity/sign law for the paired sum
   `\sum_{\{\gamma,-\gamma\}\subset\Gamma}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)`,

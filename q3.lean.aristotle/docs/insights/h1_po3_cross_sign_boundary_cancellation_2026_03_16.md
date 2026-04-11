@@ -868,6 +868,110 @@ This is a very sharp route squeeze. It shows that the nonzero alternating-tail
 scenario can survive only as a one-window artifact; it cannot support the full
 infinite-tail operator identity.
 
+So the surviving first-order route is now reduced to a scalar tail-zero
+question for one fixed meromorphic profile. Set
+
+```tex
+H_a(z)
+:=
+\sum_{\gamma\in\Gamma}
+\frac{\sin^2(a\gamma)}{\gamma(\gamma+z)}.
+```
+
+Then the raw zero-mode column is exactly
+
+```tex
+w_{r,0}(a)=\frac{2(-1)^r}{a}H_a(\alpha_r),
+\qquad
+\alpha_r=\frac{\pi r}{a}.
+```
+
+Therefore the operator-level squeeze above gives:
+
+```tex
+\text{full first-order companion cancellation}
+\Longrightarrow
+H_a(\alpha_r)=0
+\qquad \forall r>N.
+```
+
+So the next exact local theorem-target can be stated as:
+
+```tex
+\textbf{Arithmetic-progression uniqueness target.}
+```
+
+Can a meromorphic function of the explicit Cauchy type `H_a(z)` vanish on the
+entire tail progression
+
+```tex
+\alpha_r=\frac{\pi r}{a}
+\qquad (r>N)
+```
+
+without being identically zero?
+
+This is now the cleanest scalar form of the live first-order `PO3a` wall.
+
+There is also an exact rescaling bridge back to the old `PO2` receiver
+language. Set
+
+```tex
+\widetilde H_a(w):=H_a\!\left(\frac{\pi}{a}w\right),
+\qquad
+y_\gamma:=-\frac{a}{\pi}\gamma.
+```
+
+Then
+
+```tex
+\widetilde H_a(w)
+=
+\sum_{\gamma\in\Gamma}
+\frac{\sin^2(a\gamma)}{\gamma(\gamma+\pi w/a)}
+=
+\sum_{\gamma\in\Gamma}
+\frac{a^2}{\pi^2}\frac{\sin^2(a\gamma)}{y_\gamma(y_\gamma-w)}.
+```
+
+So after defining
+
+```tex
+e_a(y_\gamma):=\frac{a^2}{\pi^2}\frac{\sin^2(a\gamma)}{y_\gamma},
+```
+
+we get the exact simple Cauchy form
+
+```tex
+\widetilde H_a(w)=\sum_{\gamma\in\Gamma}\frac{e_a(y_\gamma)}{y_\gamma-w}.
+```
+
+And since `\alpha_r=\pi r/a`, the tail-zero condition becomes
+
+```tex
+\widetilde H_a(r)=0
+\qquad \forall r>N.
+```
+
+Therefore the surviving first-order `PO3a` wall is not a brand-new scalar
+uniqueness problem after all. It embeds directly into the already isolated
+`PO2` hard wall:
+
+```tex
+\text{simple Cauchy transform vanishing on the integer tail.}
+```
+
+The honest caveat is that the rescaled support
+
+```tex
+Y_a:=\left\{-\frac{a}{\pi}\gamma:\gamma\in\Gamma\right\}
+```
+
+is a complex zero set, not an a priori one-sided real support. So the old
+one-sided rigidity theorem is not enough by itself. But the general
+`PO2` Cauchy-tail injectivity target is now the correct consumer for this
+first-order `PO3a` reduction.
+
 ### `PO3a.2` Boundary expansion
 
 Expand the boundary correction in finite sign-pure form:
