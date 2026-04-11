@@ -7650,6 +7650,98 @@ then the microscopic-gap branch is impossible.
 So after `D2g29e`, the direct arithmetic residue of `PO2` is no longer a pair
 of branches. It is one explicit local oscillation target for `S(T)`.
 
+The formulation above is honest, but it is still weaker than what the already
+proved `D2g21` microcluster packet actually gives. The live enemy is not just
+one tiny consecutive gap. It is a logarithmic local spike.
+
+```tex
+\textbf{D2g30c. The true surviving enemy from }D2g21\textbf{ is a logarithmic }S(T)\textbf{-spike on a supertiny window.}
+```
+
+By `D2g21`, outside `D2f3` any surviving direct obstruction produces, along an
+infinite subsequence of scales `M`, a one-sided packet containing
+
+```tex
+\#\mathcal P_M^{(\pm)}(c,C)\gtrsim \log M
+```
+
+points inside an interval of `x`-length
+
+```tex
+\asymp \frac{\log M}{M^2}.
+```
+
+Transporting this back to ordinates `\gamma=(\pi/a)x`, there exist infinitely
+many windows
+
+```tex
+[T_\nu-u_\nu,\ T_\nu+u_\nu],
+\qquad
+u_\nu\asymp \frac{\log T_\nu}{T_\nu^2},
+```
+
+such that
+
+```tex
+N(T_\nu+u_\nu)-N(T_\nu-u_\nu)\gtrsim \log T_\nu.
+```
+
+Using again
+
+```tex
+N(T)=\frac{\theta(T)}{\pi}+1+S(T),
+\qquad
+\theta'(T)=\frac12\log(T/2\pi)+O(T^{-1}),
+```
+
+the smooth contribution across such a window is
+
+```tex
+\frac{\theta(T_\nu+u_\nu)-\theta(T_\nu-u_\nu)}{\pi}
+=
+O(u_\nu\log T_\nu)
+=
+O\!\left(\frac{(\log T_\nu)^2}{T_\nu^2}\right)
+=
+o(1).
+```
+
+Therefore
+
+```tex
+\boxed{
+S(T_\nu+u_\nu)-S(T_\nu-u_\nu)\gtrsim \log T_\nu.
+}
+```
+
+So the real post-`D2g29e` residue is stronger than `D2g30a`: not a fixed
+two-jump, but a logarithmically large jump of `S(T)` on a window of radius
+`\asymp (\log T)/T^2`.
+
+```tex
+\textbf{D2g30d. Conditional closure via logarithmic spike exclusion.}
+```
+
+If one can prove that there are no infinitely many windows
+
+```tex
+[T-u,T+u],
+\qquad
+u\asymp \frac{\log T}{T^2},
+```
+
+for which
+
+```tex
+S(T+u)-S(T-u)\gtrsim \log T,
+```
+
+then the full residual microcluster branch from `D2g21/D2g22` is impossible.
+
+So after sharpening `D2g30` by `D2g21`, the direct arithmetic residue is best
+read as a logarithmic local-spike exclusion problem for `S(T)`, with
+`D2g30a/D2g30b` retained only as weaker corollaries.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

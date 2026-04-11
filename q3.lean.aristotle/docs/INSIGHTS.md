@@ -6151,5 +6151,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   problem for `S(T)`:
   `S(T_\nu+u_\nu)-S(T_\nu-u_\nu)\ge 2-o(1)` on infinitely many windows with
   `u_\nu\ll T_\nu^{-2}`;
-- result to record next: upgrade this to a clean `D2g30a/b` theorem-packet and
-  switch the active `PO2` burden from `D2g29` to this `S(T)` two-jump branch.
+- stronger correction from rereading `D2g21`: the true surviving enemy is not
+  merely one microscopic gap but a one-sided packet with `\gtrsim \log T`
+  ordinates inside a window of `x`-length `\asymp (\log T)/T^2`;
+- after transport back to ordinates and subtracting the negligible
+  Riemann--von Mangoldt smooth part, this forces a logarithmically large local
+  spike
+  `S(T_\nu+u_\nu)-S(T_\nu-u_\nu)\gtrsim \log T_\nu`
+  on windows of radius `u_\nu\asymp (\log T_\nu)/T_\nu^2`;
+- active next address: `D2g30c/D2g30d`, not the weaker `D2g30a/b` packaging;
+- external sanity-check remains negative: standard short-interval technology
+  for `S(T)` lives at average-spacing scales and does not touch this
+  `(\log T)/T^2` local-spike regime.
