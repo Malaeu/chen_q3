@@ -220,6 +220,55 @@ This is the full project loop; Aristotle и Прошка — ключевые и
 - её нельзя тихо воскресить без нового explicit obstruction-killer;
 - если в route graph есть следующая живая ветка, идём в неё сразу.
 
+## Address numbering / branch coordinates
+
+В проекте адреса вида `D2g29b` надо читать не как “просто номер”, а как
+координату внутри дерева доказательства.
+
+Каноническое чтение:
+
+```text
+D2g29b
+= route D -> layer 2 -> subbranch g -> packet 29 -> subpacket b
+```
+
+То есть это **адресная нумерация дерева доказательства**.
+
+### Operational rules
+
+1. Каждый новый нетривиальный theorem-packet получает адрес родителя, а не
+   свободное имя сбоку.
+2. Дети всегда наследуют адресный префикс родителя.
+3. Если parent-node killed, то его subtree killed по умолчанию тоже.
+
+### Kill inheritance
+
+Если killed `D2g`, то по умолчанию killed и все его потомки:
+
+```text
+D2g1, D2g2, ..., D2g29, D2g29a, D2g29b, ...
+```
+
+Продолжать их как live branch нельзя, пока не сделано одно из двух:
+
+1. rollback к последней живой развилке и переход в sibling-ветку;
+2. explicit reopen с новым obstruction-killer и явной записью в route-kill /
+   route-reopen history.
+
+### Why this matters
+
+- route-kill чистит не один файл, а целое поддерево;
+- live burden локализуется сразу по адресу;
+- можно строить дерево идей и смотреть кластеры близкой математики по веткам;
+- semantic recall становится быстрее, потому что поиск идёт по соседним
+  адресам, а не “по теме вообще”.
+
+Protocol rule:
+
+- в `PHASE_MONITOR`, `PROJECT_ORCHESTRATOR`, request nodes и `docs/INSIGHTS.md`
+  новые живые шаги надо именовать адресами дерева;
+- killed address трактуется как killed subtree, если не записано обратное.
+
 Это не означает “перебирать бесконечно все мыслимые пути”.
 Это означает: честно прорабатывать **все явные живые ветки** текущего
 compiled route graph проекта, пока одна не доведена до RH или не убита

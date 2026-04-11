@@ -126,6 +126,31 @@ control-plane.
 - concise theorem-shaped summary in the parent thread
 - optional artifacts, if parent explicitly asked for them
 
+## Addressed proof-tree discipline
+
+Theorem packets и route branches адресуются как узлы дерева, а не как
+свободные имена.
+
+Пример:
+
+```text
+D2g29b = route D -> layer 2 -> subbranch g -> packet 29 -> subpacket b
+```
+
+Это координата ветки.
+
+### Consequences
+
+1. Новый узел либо продолжает родительский адрес, либо явно открывает sibling.
+2. Killed parent means killed subtree by default.
+3. Возврат в killed descendants без explicit reopen reason запрещён.
+
+### Worker rule
+
+Если request node говорит, что killed `D2g`, worker не должен продолжать
+`D2g29` или `D2g29b` как будто ветка жива. Нужен либо rollback к живой
+развилке, либо explicit obstruction-killer для reopen.
+
 ### Orchestrator canonical write-back
 
 - canonical report:
@@ -181,6 +206,8 @@ summary; канонический report оформит оркестратор.
 2. обновляет активный `PHASE_MONITOR.md` или `SPRINT_MONITOR.md` first;
 3. если worker фактически убил theorem shape, записывает kill certificate в
    `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md`;
+3a. если killed node имеет потомков по адресной нумерации, это считается
+    killed subtree, пока нет explicit reopen;
 4. коротко логирует synthesis в `docs/INSIGHTS.md`;
 5. только потом меняет `IMPLEMENTATION_PLAN.md` / `SESSION_ENTRY.md`, если
    реально изменилась стадия работы.

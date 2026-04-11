@@ -5730,3 +5730,9 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   commands even though the canonical workflow had already moved to
   `formalize / submit / result`. That is not a kernel leak, but it is exactly
   the kind of stale instruction that later causes automation misfires.
+- branch naming has now been promoted from habit to protocol:
+  addresses like `D2g29b` are treated as proof-tree coordinates, not just
+  labels. That means route-kill propagates by default to the whole subtree:
+  if `D2g` dies, then `D2g29`, `D2g29b`, etc. die with it unless there is an
+  explicit reopen with a new obstruction-killer. This should make both routing
+  and clustered idea-search much cleaner.
