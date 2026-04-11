@@ -5999,3 +5999,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   burden is no longer "estimate the sums somehow", but "obtain an averaged
   Landau--Gonek input on the exponential grid, after isolating the exact
   exceptional main term".
+
+## In progress (2026-04-11): D2g29c4 compatibility obstruction
+
+- exact target: decide whether the apparently natural transfer
+  `\Delta_\rho(X;T) \rightsquigarrow \Delta_\gamma(X;T)` is a viable shortcut
+  or whether it already smuggles in near-RH-scale horizontal control;
+- wiring point: this sits directly below `D2g29c3a`; if the transfer is
+  obstructed, then the Landau--Gonek input remains only a formal sufficient
+  shape and not a practical route for the live mainline;
+- key exact identity:
+  `\Delta_\rho(X;T)-\Delta_\gamma(X;T)=\sum (X^{\beta-1/2}-1)X^{i\gamma}`;
+- on the mesh `X_j=e^{2aj}` the weighted compatibility bound would force a
+  lower-bound problem for
+  `\sum_j b_j |e^{2aj(\beta-1/2)}-1|`;
+- the basic real-exponential estimate gives
+  `\sum_j b_j |e^{\lambda j}-1| \gg \min(H,|\lambda|H^2)`,
+  hence a compatibility bound at scale `T\log T` would imply
+  `\sum_{T<\gamma\le 2T}\min(H,H^2|\beta-1/2|)\ll T\log T`;
+- verdict: on `H(T)\asymp T^2/\log T` this forces average horizontal control
+  `|\beta-1/2|\lesssim 1/H(T)\asymp \log T/T^2` for almost all zeros in the
+  dyadic block. That is far too strong to treat as a free compatibility step.
+- conclusion: `D2g29c4` kills the naive Landau-compatibility shortcut. The live
+  burden stays on the signed prime-distribution route `D2g29d1a/d1b` unless a
+  genuinely new direct compatibility argument appears.

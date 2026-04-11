@@ -6707,6 +6707,133 @@ This is the sharp form of the remaining question. The branch is no longer
 ```
 
 ```tex
+\textbf{D2g29c4. Compatibility wall between }\Delta_\gamma\text{ and }\Delta_\rho.
+```
+
+There is, however, one honest obstruction before Landau--Gonek can be used
+directly.
+
+The exact Fej\'er identity from `D2g29c0` involves
+
+```tex
+\Delta_\gamma(X;T):=\sum_{T<\gamma\le 2T} X^{i\gamma},
+```
+
+whereas Landau--Gonek naturally controls
+
+```tex
+\Delta_\rho(X;T):=\sum_{T<\gamma\le 2T} X^{\rho-\frac12}
+=
+\sum_{T<\gamma\le 2T} X^{\beta-\frac12}X^{i\gamma}.
+```
+
+So the compatibility gap is exact:
+
+```tex
+\Delta_\rho(X;T)-\Delta_\gamma(X;T)
+=
+\sum_{T<\gamma\le 2T}\bigl(X^{\beta-\frac12}-1\bigr)X^{i\gamma}.
+```
+
+For the exponential mesh `X_j=e^{2aj}` define
+
+```tex
+b_j:=1-\frac{j}{H(T)},
+\qquad
+\lambda_\rho:=2a\!\left(\beta-\frac12\right).
+```
+
+Then the weighted compatibility bound
+
+```tex
+\sum_{j=1}^{H(T)-1} b_j\,
+\left|\Delta_\rho(X_j;T)-\Delta_\gamma(X_j;T)\right|
+\ll T\log T
+```
+
+would force
+
+```tex
+\sum_{T<\gamma\le 2T}
+\sum_{j=1}^{H(T)-1} b_j\,\bigl|e^{\lambda_\rho j}-1\bigr|
+\ll T\log T.
+```
+
+But for real `\lambda` one has the lower bound
+
+```tex
+\sum_{j=1}^{H-1}\left(1-\frac{j}{H}\right)\bigl|e^{\lambda j}-1\bigr|
+\gg
+\min\!\bigl(H,\ |\lambda|H^2\bigr).
+```
+
+Indeed:
+
+1. if `|\lambda|\le 1/H`, then for `1\le j\le H/2` one has
+   `|\lambda|j\le 1/2`, hence
+   `|e^{\lambda j}-1|\gg |\lambda|j`, and summing gives
+   `\gg |\lambda|H^2`;
+2. if `|\lambda|>1/H`, then for all `j\gg 1/|\lambda|` up to `H/2`,
+   `|e^{\lambda j}-1|\gg 1`, and summing gives `\gg H`.
+
+Applying this with `\lambda=\lambda_\rho` yields the necessary condition
+
+```tex
+\sum_{T<\gamma\le 2T}
+\min\!\left(H(T),\ H(T)^2\left|\beta-\frac12\right|\right)
+\ll T\log T.
+```
+
+Since the number of zeros in `(T,2T]` is itself `\asymp T\log T`, this says
+that the average horizontal displacement must satisfy
+
+```tex
+\left|\beta-\frac12\right|
+\lesssim
+\frac{1}{H(T)}
+\asymp
+\frac{\log T}{T^2}
+```
+
+for almost all zeros in the dyadic block.
+
+So `D2g29c4` is a genuine route obstruction:
+
+```tex
+\boxed{
+\text{to transfer Landau--Gonek control from }\Delta_\rho
+\text{ to the exact Fej\'er object }\Delta_\gamma,
+\text{ one already needs near-critical-line control on the scale }1/H(T).
+}
+```
+
+On our shrinking-target range
+
+```tex
+H(T)\asymp \frac{T^2}{\log T},
+```
+
+this scale is exactly
+
+```tex
+\frac{1}{H(T)}\asymp \frac{\log T}{T^2},
+```
+
+which is far beyond the kind of horizontal information one can honestly import
+for free into the route.
+
+Therefore the Landau--Gonek shortcut should be read as follows:
+
+- `D2g29c3a` is the right sufficient input shape;
+- `D2g29c4` says that obtaining it by a naive compatibility transfer
+  `\Delta_\rho\rightsquigarrow\Delta_\gamma` is itself essentially as hard as
+  forcing zeros to lie extremely close to the critical line.
+
+This kills another fake shortcut. The live burden should therefore stay on the
+signed prime-distribution side `D2g29d1a/d1b`, unless a genuinely new direct
+argument for the compatibility step is found.
+
+```tex
 \textbf{D2g29c'. Honest signed prime-side kernel.}
 ```
 
