@@ -6619,6 +6619,12 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   injectivity to a square-tail problem
   `J_a(r^2)=0` for all `r>N`, together with its own quadratic divisor tower
   under division by `z-(N+j)^2`;
+- the quadratic divisor tower has an exact Newton avatar:
+  with `s_j=(N+j)^2`, the weights
+  `u_k(\lambda)=1/\prod_{j\le k}(\lambda-s_j)` are exactly the divided
+  differences of the Cauchy kernel on the square grid, so the whole moving
+  tower is equivalent to vanishing of the initial Newton-profile
+  `[J_a; s_1,\dots,s_k]`;
 - the square-tail set also has a canonical entire divider
   `E_N^{sq}(z)=\prod_{m>N}(1-z/m^2)=\sin(\pi\sqrt z)/(\pi\sqrt z)` up to the
   finite front factor, so the first-order wall admits an exact whole-tail

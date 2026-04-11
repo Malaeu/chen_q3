@@ -1119,6 +1119,83 @@ injectivity. But it does cut the live burden further: the first-order route no
 longer feeds the full generic `PO2` wall, only its even square-support
 subclass.
 
+The quadratic divisor tower also admits an exact static avatar via Newton
+divided differences. Let
+
+```tex
+s_j:=(N+j)^2,
+\qquad
+u_k(\lambda):=\frac{1}{\prod_{j=1}^k (\lambda-s_j)}.
+```
+
+For the basic Cauchy kernel
+
+```tex
+g_\lambda(z):=\frac{1}{\lambda-z},
+```
+
+the standard Newton identity on distinct nodes gives
+
+```tex
+[g_\lambda; s_1,\dots,s_k]
+=
+\frac{1}{\prod_{j=1}^k(\lambda-s_j)}
+=
+u_k(\lambda),
+```
+
+where `[\,\cdot\,; s_1,\dots,s_k]` denotes the `(k-1)`-st divided difference.
+
+Therefore the full quadratic divisor tower of `J_a` is encoded by one fixed
+static transform:
+
+```tex
+[J_a; s_1,\dots,s_k]
+=
+\frac{2a^2}{\pi^2}
+\sum_{\gamma\in\Gamma^\sharp}
+\frac{\sin^2(a\gamma)}{\prod_{j=1}^k(\lambda_\gamma-s_j)}
+=
+\frac{2a^2}{\pi^2}
+\sum_{\gamma\in\Gamma^\sharp}\sin^2(a\gamma)\,u_k(\lambda_\gamma).
+```
+
+Equivalently, if
+
+```tex
+J_{a,k}(z)
+:=
+\frac{J_a(z)}{\prod_{j=1}^k(z-s_j)},
+```
+
+then its residue coefficients are exactly the divided-difference weights
+`u_k(\lambda_\gamma)`.
+
+So the square-tail route has acquired the precise analogue of the earlier
+forward-difference avatar:
+
+```tex
+\text{quadratic tail-zero tower}
+\Longleftrightarrow
+\text{vanishing of Newton divided differences of one fixed receiver } J_a.
+```
+
+In particular, if `J_a(s_j)=0` for every `j\ge 1`, then every initial divided
+difference also vanishes:
+
+```tex
+[J_a; s_1,\dots,s_k]=0
+\qquad \forall k\ge 1.
+```
+
+So the remaining uniqueness wall can now be read in two equivalent ways:
+
+1. injectivity from the square-tail values `J_a((N+j)^2)=0`;
+2. injectivity from the full vanishing of the initial Newton-profile of `J_a`.
+
+This is not yet a proof, but it replaces the moving quadratic divisor tower by
+one fixed nonuniform-grid interpolation object.
+
 There is also a clean entire divider for this squared sample set. Since
 
 ```tex
