@@ -6646,6 +6646,67 @@ So `D2g29c` is the prime-first replacement in exact algebraic form, while
 `D2g29d` is its signed physical-space / prime-distribution avatar.
 
 ```tex
+\textbf{D2g29c3a. Landau--Gonek-type sufficient input on the exponential grid.}
+```
+
+The next honest theorem target is not "prove `D2g29c1` directly" but to state
+one arithmetic input strong enough to imply it.
+
+Let
+
+```tex
+X_j:=e^{2aj},
+\qquad
+\Delta_\gamma(X;T):=\sum_{T<\gamma\le 2T}X^{i\gamma},
+\qquad
+b_j:=1-\frac{j}{H(T)}.
+```
+
+Then a sufficient Landau--Gonek-type input is
+
+```tex
+\boxed{
+\sum_{j=1}^{H(T)-1} b_j\,\bigl|\Delta_\gamma(X_j;T)-\mathfrak M_a(X_j;T)\bigr|
+\ll T\log T,
+}
+```
+
+where the main term `\mathfrak M_a(X;T)` is chosen as follows:
+
+- in the exceptional branch, `\mathfrak M_a(X_j;T)` is the resonant
+  prime-power main term supported on those `j` for which `X_j=p^m`;
+- in the nonexceptional branch, `\mathfrak M_a(X_j;T)\equiv 0`.
+
+If, in addition, the weighted main term itself satisfies
+
+```tex
+\sum_{j=1}^{H(T)-1} b_j\,|\mathfrak M_a(X_j;T)|\ll T\log T,
+```
+
+then automatically
+
+```tex
+\sum_{j=1}^{H(T)-1} b_j\,|\Delta_\gamma(X_j;T)|\ll T\log T,
+```
+
+which is exactly the sufficient criterion from `D2g29c1`.
+
+So `D2g29c3a` is the right arithmetic input layer: obtain an averaged
+Landau--Gonek control for the dyadic zero sums on the exponential grid
+`X_j=e^{2aj}`, with the exceptional resonant main term isolated explicitly.
+
+This is the sharp form of the remaining question. The branch is no longer
+"bound every `\Delta_\gamma(X_j;T)` separately"; it is:
+
+```tex
+\boxed{
+\text{control the Fej\'er-weighted average of }
+\Delta_\gamma(e^{2aj};T)
+\text{ after removing the exact exceptional main term.}
+}
+```
+
+```tex
 \textbf{D2g29c'. Honest signed prime-side kernel.}
 ```
 

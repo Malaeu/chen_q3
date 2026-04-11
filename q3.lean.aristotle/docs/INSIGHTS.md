@@ -5972,3 +5972,30 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
      Landau–Gonek-type sums on the exponential grid,
   5. keep `D2g29d` as the equivalent signed physical-space endpoint rather than
      a competing branch.
+- result: `D2g29c0/c1/c2/c3` are now written explicitly in the main note. This
+  stabilizes the tree: `c` is the algebraic/prime-first face of the same live
+  endpoint whose physical-space face is `D2g29d`.
+
+## In progress (2026-04-11): D2g29c3a Landau--Gonek input layer
+
+- exact target: isolate the first genuinely arithmetic theorem input below
+  `D2g29c3`, namely an averaged Landau--Gonek-type estimate strong enough to
+  imply the sufficient criterion `D2g29c1`;
+- wiring point: this is the direct arithmetic child of the prime-first route,
+  parallel to the physical-space split `D2g29d1a/d1b`;
+- local recall + external search did not reveal a ready-made theorem that
+  already matches our Fejér-weighted exponential grid `X_j=e^{2aj}`; this is
+  again a good sign that the correct move is to formulate the needed input
+  precisely rather than pretend the literature already hands it to us;
+- concrete plan:
+  1. define an optional exceptional main term `\mathfrak M_a(X_j;T)`,
+  2. require
+     `\sum b_j |\Delta_\gamma(X_j;T)-\mathfrak M_a(X_j;T)|\ll T\log T`,
+  3. require separately
+     `\sum b_j |\mathfrak M_a(X_j;T)|\ll T\log T`,
+  4. conclude the `D2g29c1` criterion,
+  5. read the nonexceptional branch as `\mathfrak M_a\equiv 0`.
+- verdict: this cleanly identifies the next real theorem-shape. The live
+  burden is no longer "estimate the sums somehow", but "obtain an averaged
+  Landau--Gonek input on the exponential grid, after isolating the exact
+  exceptional main term".
