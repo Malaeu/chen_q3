@@ -5018,6 +5018,152 @@ The Ford--Zaharescu picture suggests the tactical fork:
 So `D2g25/D2g26` is the right theorem packet: it converts the
 integer-resonance branch into one explicit shrinking-target Fourier problem.
 
+The next useful step is to strip `D2g26` down to the simplest sufficient
+numerical thresholds.
+
+```tex
+\textbf{D2g27. Simple sufficient criteria for }D2g26\textbf{.}
+```
+
+Let
+
+```tex
+H(T):=\left\lfloor \frac{1}{2\varepsilon(T)}\right\rfloor.
+```
+
+Then any one of the following is sufficient to exclude the
+integer-resonance branch.
+
+### (i) Mean-`L^1` criterion
+
+If
+
+```tex
+\frac{1}{H(T)}
+\sum_{1\le j\le H(T)} |S_\alpha(j;T)|
+=
+o(1),
+```
+
+then `D2g26` holds.
+
+Indeed,
+
+```tex
+\varepsilon(T)\sum_{1\le j\le H(T)} |S_\alpha(j;T)|
+\asymp
+\bigl(\varepsilon(T)H(T)\bigr)\,
+\frac{1}{H(T)}\sum_{1\le j\le H(T)} |S_\alpha(j;T)|
+=
+O(1)\cdot o(1)
+=
+o(1).
+```
+
+### (ii) `L^2` criterion
+
+If
+
+```tex
+\sum_{1\le j\le H(T)} |S_\alpha(j;T)|^2
+=
+o\!\bigl(H(T)\bigr),
+```
+
+then `D2g26` holds.
+
+By Cauchy--Schwarz,
+
+```tex
+\sum_{1\le j\le H(T)} |S_\alpha(j;T)|
+\le
+H(T)^{1/2}
+\left(
+\sum_{1\le j\le H(T)} |S_\alpha(j;T)|^2
+\right)^{1/2}
+=
+o\!\bigl(H(T)\bigr),
+```
+
+so (i) applies.
+
+### (iii) Uniform criterion
+
+If
+
+```tex
+\sup_{1\le j\le H(T)} |S_\alpha(j;T)|=o(1),
+```
+
+then `D2g26` holds.
+
+Indeed,
+
+```tex
+\sum_{1\le j\le H(T)} |S_\alpha(j;T)|
+\le
+H(T)\sup_{1\le j\le H(T)} |S_\alpha(j;T)|
+=
+o\!\bigl(H(T)\bigr),
+```
+
+so again (i) applies.
+
+For our shrinking-target scale
+
+```tex
+\varepsilon(T)=o\!\left(\frac{\log T}{T^2}\right),
+\qquad
+H(T)\asymp \frac{T^2}{\log T},
+```
+
+these become:
+
+1. mean-`L^1` cancellation
+
+   ```tex
+   \frac{\log T}{T^2}
+   \sum_{j\le T^2/\log T} |S_\alpha(j;T)|
+   \to 0;
+   ```
+
+2. second-moment cancellation
+
+   ```tex
+   \sum_{j\le T^2/\log T} |S_\alpha(j;T)|^2
+   =
+   o\!\left(\frac{T^2}{\log T}\right);
+   ```
+
+3. the extremely strong uniform bound
+
+   ```tex
+   \sup_{j\le T^2/\log T}|S_\alpha(j;T)|\to 0.
+   ```
+
+So the live burden can now be read at three strengths. The realistic next
+target is not the uniform criterion, but the mean or `L^2` one.
+
+```tex
+\textbf{D2g27a. Operational form of the shrinking-target brick.}
+```
+
+To close the integer-resonance branch, it is enough to prove either
+
+```tex
+\frac{1}{H(T)}\sum_{j\le H(T)} |S_\alpha(j;T)|=o(1)
+```
+
+or
+
+```tex
+\sum_{j\le H(T)} |S_\alpha(j;T)|^2=o(H(T)),
+\qquad
+H(T)\asymp \frac{T^2}{\log T}.
+```
+
+This is the cleanest quantitative version of the current arithmetic endpoint.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

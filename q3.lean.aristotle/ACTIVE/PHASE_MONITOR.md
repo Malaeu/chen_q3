@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: H4
 last_completed_step_artifact: docs/insights/h4_suzuki_endpoint_to_rh_2026_03_20.md
 last_completed_step_commit: 83e973ac
-next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g25/D2g26` convert the integer-resonance branch into an explicit shrinking-target Fourier problem on dyadic zero blocks, with the entire burden concentrated in high-frequency control of `S_\alpha(j;T)` up to `j\asymp T^2/\log T`; the next attack is therefore extremely narrow: prove the `D2g26` exponential-sum criterion or split sharply into exceptional/nonexceptional `\alpha=a/\pi`
-next_verify: rg -n -F "D2g26. High-frequency exponential-sum criterion." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "the entire burden moves to D2g26" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "the next attack is therefore extremely narrow: prove the D2g26 exponential-sum criterion" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the Krein/localization branch remains demoted to backup, and both compactness versions of D3 are now blocked; the active direct critical path has sharpened again: `D2g27/D2g27a` reduce the shrinking-target endpoint to concrete mean/second-moment cancellation thresholds for `S_\alpha(j;T)` on the range `j\asymp T^2/\log T`; the next attack is therefore extremely narrow: prove either the mean-`L^1` or the `L^2` criterion, or split sharply into exceptional/nonexceptional `\alpha=a/\pi`
+next_verify: rg -n -F "D2g27. Simple sufficient criteria for D2g26." q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md && rg -n -F "mean/second-moment cancellation threshold" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "the next attack is therefore extremely narrow: prove either the mean-L^1 or the L^2 criterion" q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.

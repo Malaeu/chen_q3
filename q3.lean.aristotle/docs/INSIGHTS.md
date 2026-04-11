@@ -5437,6 +5437,19 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - this is cleaner than the older abstract majorant wording:
   the live question is now literally one explicit exponential-sum criterion on
   dyadic zero blocks.
+- pushed this one step further to `D2g27/D2g27a`:
+  `D2g26` now has three concrete sufficient forms.
+  The realistic live targets are
+  ```
+  \frac{1}{H(T)}\sum_{j\le H(T)}|S_\alpha(j;T)|=o(1)
+  ```
+  or, more robustly,
+  ```
+  \sum_{j\le H(T)}|S_\alpha(j;T)|^2=o(H(T)),
+  \qquad H(T)\asymp T^2/\log T.
+  ```
+  So the endpoint is no longer just “high frequencies matter”, but a very
+  concrete mean/second-moment cancellation threshold.
 - also sharpened the Hermite-capture fingerprint itself:
   `D2g18b` now shows that once a local packet enters an `O(h)`-tube around the
   Hermite line, every adjacent residue ratio must lie in an `O(h)`-tube around
