@@ -8262,7 +8262,9 @@ by `D2f3b`.
 
 So the direct tail-zero receiver route is arithmetically closed.
 
-Now the remaining live coefficient question is extremely narrow:
+The coefficient-shape discussion below is therefore archival structural backup,
+not the active direct frontier anymore. Before `D2f3a/b` landed, the remaining
+local model had narrowed to the following explicit packet shape:
 
 ```tex
 \textbf{D2g16d. Real support coefficient barrier.}
