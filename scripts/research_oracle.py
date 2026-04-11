@@ -65,8 +65,16 @@ def run(cmd: list[str], cwd: Path | None = None) -> str:
 
 def normalize_results(raw: str) -> list[dict]:
     text = raw.strip()
-    if not text or text == "No results found.":
+    if not text or text in {
+        "No results found.",
+        "No results found above minimum score threshold.",
+    }:
         return []
+    if not text.startswith("["):
+        start = text.find("[")
+        end = text.rfind("]")
+        if start != -1 and end != -1 and start < end:
+            text = text[start : end + 1]
     data = json.loads(text)
     facts = []
     for item in data:

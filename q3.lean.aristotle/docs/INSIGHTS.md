@@ -5636,3 +5636,40 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   the computational radar supports the current theorem picture rather than
   fighting it; the dangerous local packets appear to be genuinely Hermite-like,
   not some different hidden extremizer.
+
+## In progress (2026-04-11): refreshed recall layer and `D2g29b` source synthesis
+
+- refreshed `q3_docs`: the live local KB is now back in sync (`353` files,
+  `1810` vectors). This matters because the old blocker-search layer had become
+  stale and was blurring real math signal with index drift.
+- the local `research_oracle` protocol has been stabilized: default
+  `scripts/research_oracle.py query ...` is now a hybrid
+  `qmd search + qmd vsearch` wrapper with fused ranking, rather than the old
+  heavy `qmd query` path. Functionally the role stays the same: fast recall,
+  not proof and not source of truth.
+- after the refresh, 4 focused recall queries were run for the live block
+  (`prime power logarithms near lattice`, `Baker linear forms logarithms prime
+  powers`, `explicit formula Fejér kernel prime powers`,
+  `Landau Gonek prime power resonance`). The useful signal is narrow but clean:
+  the internal KB keeps returning the same packet and does not reveal any
+  pre-existing local theorem that already kills the weighted near-lattice
+  prime-power sum from `D2g29b4`.
+- external primary-source search confirms the current arithmetic split but also
+  removes one tempting false shortcut:
+  Ford–Zaharescu supports the exceptional/nonexceptional modulo-one fork, and
+  Suzuki confirms the smoothed explicit-formula/prime-side genre;
+  however Baker/Matveev linear-forms-in-logarithms machinery does **not**
+  automatically solve our nonexceptional branch, because the key quantity
+  `m \log p - 2aj` involves the ambient parameter `a`, and in the general route
+  `a` is just a fixed real number, not an algebraic-logarithmic input to which
+  Matveev can be applied for free.
+- so the honest next plan is:
+  1. keep the exceptional branch exactly where it already lives
+     (`a = r \log p /(2q)` with genuine prime-power resonance);
+  2. do **not** divert the generic nonexceptional branch into a fake
+     Baker/Matveev route;
+  3. continue directly on `D2g29b4`, i.e. the weighted prime-power near-lattice
+     counting problem that comes out of the Fejér-smoothed explicit formula.
+- bottom line: the active direct path stays arithmetic and explicit-formula
+  based. The refreshed recall layer is now stable enough to support that work,
+  but it did not uncover a hidden theorem that bypasses `D2g29b4`.
