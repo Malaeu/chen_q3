@@ -8262,6 +8262,47 @@ by `D2f3b`.
 
 So the direct tail-zero receiver route is arithmetically closed.
 
+```tex
+\textbf{D2g33. Post-}D2g32\textbf{ handoff to the }PO2\textbf{ theorem shell.}
+```
+
+Inside the direct receiver route fixed in this note, an acceptable `PO2`
+output allows only the named remainder channels
+
+```tex
+\mathcal D_{a,\partial}^{+-}
+\quad\text{and}\quad
+\mathcal D_{a,\mathrm{cap}}^{+-},
+```
+
+while any surviving unnamed bulk residue is the exact route-kill event.
+
+But `D2g32` says that after `D2g29e` there is no remaining direct arithmetic
+enemy at all. Therefore the direct route can no longer feed an unnamed
+persistent bulk mismatch into `PO2`.
+
+So the theorem-shell output of the direct route is now exactly the admissible
+fallback form
+
+```tex
+\boxed{
+\mathcal D_{a,N}^{+-}
+=
+\mathcal D_{a,\partial}^{+-}
+ \mathcal D_{a,\mathrm{cap}}^{+-}.
+}
+```
+
+This is the strongest acceptable pre-`PO3` conclusion from the direct branch.
+Hence the next forced packet is no longer another arithmetic reduction but the
+named boundary step
+
+```tex
+\boxed{
+PO3:\qquad \mathcal D_{a,\partial}^{+-}=0.
+}
+```
+
 The coefficient-shape discussion below is therefore archival structural backup,
 not the active direct frontier anymore. Before `D2f3a/b` landed, the remaining
 local model had narrowed to the following explicit packet shape:

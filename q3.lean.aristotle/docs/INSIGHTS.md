@@ -6279,3 +6279,7 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - with that constant transfer made explicit, `D2f3` is excluded outright;
 - consequence: combining `D2f3b` with `D2g31i`, the whole post-`D2g29e`
   direct arithmetic residue is empty.
+- next local splice: `D2g33` now turns that direct-route closure into the
+  admissible `PO2` theorem-shell output
+  `\mathcal D_{a,N}^{+-}=\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`,
+  so the next forced packet is `PO3`, not another arithmetic reduction.
