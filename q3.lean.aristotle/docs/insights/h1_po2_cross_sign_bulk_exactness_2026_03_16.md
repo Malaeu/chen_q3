@@ -7858,6 +7858,49 @@ So the next honest theorem target is no longer “generic control of
 `S(T)` on tiny intervals”, but a Q3-specific incompatibility theorem inside
 the paired class.
 
+There is an immediate sharpening here once we plug back in an older result
+that had temporarily disappeared behind the arithmetic repackaging.
+
+```tex
+\textbf{D2g31b. Inside }D2g31,\textbf{ the bounded Hermite branch is already harmless by }D2g19a.
+```
+
+Indeed, `D2g19a` already proves:
+
+```tex
+\text{bounded-size genuine packets in the Hermite-capture branch are }
+o(M^{-1})
+\text{ after reinstating the true amplitudes }q_\gamma=O(M^{-3}).
+```
+
+So after combining `D2g31` with `D2g19a`, the live structural enemy compresses
+again:
+
+```tex
+\boxed{
+\text{a surviving }D2g30c\text{ logarithmic microcluster must admit repeated
+compressed-subgap descent; the bounded Hermite alternative cannot carry the
+obstruction.}
+}
+```
+
+This means the actual next missing ingredient is narrower than the raw
+`D2g31a` fork suggested at first reading. The bounded Hermite branch does not
+need a new contradiction theorem from scratch; it is already dead. What
+remains is the extraction mechanism:
+
+```tex
+\textbf{D2g31c. Extraction-to-compressed-gap theorem target.}
+```
+
+Show that any surviving logarithmic microcluster from `D2g30c`, when passed
+through the bounded-size local extraction supplied by `D2g17a`, must keep
+falling into the compressed-subgap branch often enough to force genuine entry
+into `D2f3`.
+
+If that extraction theorem lands, then the whole direct arithmetic residue
+after `D2g29e` collapses into the already-isolated resonance branch `D2f3`.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

@@ -6195,3 +6195,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - live theorem target: prove paired Hermite incompatibility for such bounded
   genuine packets, or else show that every extraction chain necessarily falls
   into `D2f3`.
+
+## In progress (2026-04-11): D2g31b sharpened handoff via D2g19a
+
+- exact gain: `D2g19a` already kills the bounded Hermite-capture branch after
+  reinstating the true amplitude scale `q_\gamma=O(M^{-3})`;
+- therefore the first fork written in `D2g31a` was still too wide;
+- corrected live picture: a surviving `D2g30c` logarithmic microcluster must
+  support repeated compressed-subgap descent, because bounded Hermite-captured
+  packets are already amplitude-harmless;
+- active next address is now `D2g31c`: extraction-to-compressed-gap theorem;
+- if `D2g31c` lands, the whole post-`D2g29e` direct arithmetic residue
+  collapses back into the already-isolated resonance branch `D2f3`.
