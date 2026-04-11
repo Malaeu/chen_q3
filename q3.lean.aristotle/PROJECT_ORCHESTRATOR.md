@@ -187,6 +187,14 @@ New live frontier:
       one-sided tail operators;
       once that membership is real, the already-frozen sign-pure boundary
       lemma forces `P_+H_{a,N}P_-=0`, hence `PO3a`;
+      the current local receiver is now even sharper:
+      the live object is the zero-mode column
+      `v_{a,N}=T_{a,\infty,N}^*G_g[a]\mathbf 1`,
+      a lone first-order endpoint brick is already excluded unless it is zero,
+      and the remaining first-order companion route would force the
+      alternating-tail rigidity
+      `w_{r,0}(a)=c_{a,N,M}(-1)^r`
+      on every successful window;
       the auxiliary Lean shell `Q3/Proofs/HBridge_PO3_Shell.lean` is useful,
       but it does not replace that mathematics;
       treat `PO4/PO5` and `H2^f/H3^f/H4^f` as conditional consumers until that
