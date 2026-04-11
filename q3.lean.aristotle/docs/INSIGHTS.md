@@ -5782,3 +5782,12 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - plan: rewrite `D2g29b2` as an honest spacing lemma plus this two-term bound,
   then explicitly record that this still leaves `D2g29c` as the real signed
   endpoint and that the positive majorant route remains over-strong.
+- result: `D2g29b2` is now corrected at note level. The honest positive-packet
+  bound is not
+  `\mathfrak R \ll (1+Td)^{-A}`,
+  but rather
+  `\mathfrak R \ll (1+Td)^{-A} + (T|\alpha|)^{-1}(1+Td)^{1-A}`,
+  hence in the spaced regime `T|\alpha|\gg 1` one only gets exponent `1-A`.
+- verdict: this strengthens, not weakens, the route hygiene. It confirms that
+  the unsigned near-lattice packet is inherently lossy and that the real live
+  endpoint remains the signed kernel branch `D2g29c`.

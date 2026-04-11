@@ -6034,23 +6034,17 @@ packet over prime powers, and rapid-decay localization around the lattice
 `\log n\approx \pm 2aj`.
 
 ```tex
-\textbf{D2g29b2. One-resonance-per-prime-power heuristic.}
+\textbf{D2g29b2. Honest lattice-spacing bound for the positive packet.}
 ```
 
-Because `\alpha\neq 0` is fixed, the lattice points `j\alpha` are spaced by
-`|\alpha|`. Once `T\gg_\alpha 1`, the localization width `1/T` is much smaller
-than that spacing. Hence for each fixed `n` there are at most `O_\alpha(1)`
-indices `j` contributing non-negligibly to `\mathfrak R_{\alpha,H,T}(n)`.
-
-Therefore the true size of `\mathfrak R_{\alpha,H,T}(n)` is governed by the
-single nearest lattice point, and one expects the reduction
+Write, for one side of the packet,
 
 ```tex
-\mathfrak R_{\alpha,H,T}(n)
-\ll_{\alpha,A}
-\Bigl(1+T\,\operatorname{dist}\!\bigl(\tfrac{\log n}{2\pi},\alpha\mathbb Z_H\bigr)\Bigr)^{-A}
-+
-\Bigl(1+T\,\operatorname{dist}\!\bigl(\tfrac{\log n}{2\pi},-\alpha\mathbb Z_H\bigr)\Bigr)^{-A},
+R_{\alpha,H,T,A}^{+}(x)
+:=
+\sum_{|j|<H} a_j\Bigl(1+T|x-j\alpha|\Bigr)^{-A},
+\qquad
+d_{\alpha,H}(x):=\operatorname{dist}\!\bigl(x,\alpha\mathbb Z_H\bigr),
 ```
 
 where
@@ -6059,8 +6053,119 @@ where
 \alpha\mathbb Z_H:=\{j\alpha:\ |j|<H\}.
 ```
 
-This is the clean reduction from the whole Fourier packet to a single
-distance-to-resonance weight.
+Fix `A>1`. Since `0\le a_j\le \pi^2/(4H)\le 1`, it is enough to bound the
+unweighted lattice sum.
+
+Choose `j_*=j_*(x)` with
+
+```tex
+d_{\alpha,H}(x)=|x-j_*\alpha|.
+```
+
+There are two cases.
+
+\emph{Case 1:} `d_{\alpha,H}(x) > |\alpha|/2`. Then every lattice point in
+`\alpha\mathbb Z_H` is at distance `>|\alpha|/2`, hence trivially
+
+```tex
+R_{\alpha,H,T,A}^{+}(x)
+\ll
+\Bigl(1+T\,d_{\alpha,H}(x)\Bigr)^{-A}.
+```
+
+\emph{Case 2:} `d_{\alpha,H}(x)\le |\alpha|/2`. Then the nearest index `j_*` is
+unique, and for `j\neq j_*` we have by the reverse triangle inequality
+
+```tex
+|x-j\alpha|
+\ge
+\bigl||j-j_*|\,|\alpha|-d_{\alpha,H}(x)\bigr|.
+```
+
+Since `d_{\alpha,H}(x)\le |\alpha|/2`, this implies
+
+```tex
+|x-j\alpha|
+\ge
+d_{\alpha,H}(x)+\frac{|j-j_*|-1}{2}\,|\alpha|
+\qquad (j\neq j_*).
+```
+
+Therefore, putting `u:=T\,d_{\alpha,H}(x)` and `\lambda:=T|\alpha|/2`,
+
+```tex
+R_{\alpha,H,T,A}^{+}(x)
+\ll
+(1+u)^{-A}
++
+\sum_{m\ge 0}(1+u+m\lambda)^{-A}.
+```
+
+The tail is controlled by the integral test:
+
+```tex
+\sum_{m\ge 0}(1+u+m\lambda)^{-A}
+\le
+(1+u)^{-A}
++
+\int_0^\infty (1+u+\lambda t)^{-A}\,dt
+=
+(1+u)^{-A}
++
+\frac{(1+u)^{1-A}}{\lambda(A-1)}.
+```
+
+Hence
+
+```tex
+R_{\alpha,H,T,A}^{+}(x)
+\ll_A
+\Bigl(1+T\,d_{\alpha,H}(x)\Bigr)^{-A}
++
+\frac{1}{T|\alpha|}
+\Bigl(1+T\,d_{\alpha,H}(x)\Bigr)^{1-A}.
+```
+
+Applying the same estimate to the `-\alpha` branch gives the honest packet
+bound
+
+```tex
+\mathfrak R_{\alpha,H,T}^{+}(n)
+\ll_A
+\Bigl(1+T\,d_{\alpha,H}^{+}(n)\Bigr)^{-A}
++
+\frac{1}{T|\alpha|}
+\Bigl(1+T\,d_{\alpha,H}^{+}(n)\Bigr)^{1-A}
++
+\Bigl(1+T\,d_{\alpha,H}^{-}(n)\Bigr)^{-A}
++
+\frac{1}{T|\alpha|}
+\Bigl(1+T\,d_{\alpha,H}^{-}(n)\Bigr)^{1-A},
+```
+
+where
+
+```tex
+d_{\alpha,H}^{\pm}(n)
+:=
+\operatorname{dist}\!\bigl(\tfrac{\log n}{2\pi},\pm\alpha\mathbb Z_H\bigr).
+```
+
+So the positive packet is indeed controlled by the nearest resonance, but only
+with the honest two-term loss coming from summing a polynomial-decay kernel
+over a lattice. In particular, once `T|\alpha|\gg 1`,
+
+```tex
+\mathfrak R_{\alpha,H,T}^{+}(n)
+\ll_{\alpha,A}
+\Bigl(1+T\,d_{\alpha,H}^{+}(n)\Bigr)^{1-A}
++
+\Bigl(1+T\,d_{\alpha,H}^{-}(n)\Bigr)^{1-A}.
+```
+
+This is the correct positive-packet reduction. It is weaker than the earlier
+same-exponent heuristic and is exactly why the signed correction in `D2g29c`
+remains essential.
 
 ```tex
 \textbf{D2g29b2'. Honest sufficiency target.}
