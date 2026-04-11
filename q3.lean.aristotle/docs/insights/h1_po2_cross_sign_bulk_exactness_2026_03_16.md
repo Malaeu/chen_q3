@@ -5018,6 +5018,42 @@ The Ford--Zaharescu picture suggests the tactical fork:
 So `D2g25/D2g26` is the right theorem packet: it converts the
 integer-resonance branch into one explicit shrinking-target Fourier problem.
 
+```tex
+\textbf{D2g26b. Discrete arithmetic gate before the Fourier branch.}
+```
+
+Write
+
+```tex
+\mathcal E_\alpha:=
+\left\{
+\frac{r\log p}{2\pi q}:\ p\text{ prime},\ q\in\mathbb N,\ r\in\mathbb Z\setminus\{0\}
+\right\}.
+```
+
+Then the exceptional/nonexceptional split for `\alpha=a/\pi` is equivalent to
+the following explicit arithmetic gate on `a` itself:
+
+```tex
+\alpha\in \mathcal E_\alpha
+\iff
+a\in
+\left\{
+\frac{r\log p}{2q}:\ p\text{ prime},\ q\in\mathbb N,\ r\in\mathbb Z\setminus\{0\}
+\right\}.
+```
+
+So before attacking the high-frequency estimate in `D2g26`, one should first
+test whether the fixed spacing parameter `a` lands in this countable logarithmic
+set. If not, the entire integer-resonance branch is automatically forced into
+the nonexceptional Fourier route. If yes, then the right task is not generic
+equidistribution but the exceptional Ford--Zaharescu density-defect branch.
+
+This means the arithmetic endpoint now cleanly decomposes into:
+
+1. a discrete exceptional-value check for `a`;
+2. the genuine new high-frequency estimate only in the nonexceptional case.
+
 The next useful step is to strip `D2g26` down to the simplest sufficient
 numerical thresholds.
 

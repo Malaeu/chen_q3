@@ -5461,6 +5461,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   background, but neither directly reaches the shrinking-target range
   `\varepsilon(T)=o((\log T)/T^2)` with Fourier frequencies
   `j\asymp T^2/\log T`.
+- this also makes the fork fully explicit on the original spacing parameter:
+  exceptional `\alpha=a/\pi` means exactly
+  ```
+  a = \frac{r\log p}{2q}
+  ```
+  for some prime `p`, integer `r\neq 0`, and `q\in\mathbb N`.
+  So before any hard Fourier work, there is a clean discrete arithmetic gate:
+  either `a` lies in this countable logarithmic set and one must use the
+  exceptional density-defect branch, or else the whole endpoint is forced into
+  the nonexceptional high-frequency route.
 - conclusion: `D2g26` is now a genuine external arithmetic input. The honest
   next step is to split into exceptional/nonexceptional `\alpha=a/\pi` and then
   attack the nonexceptional case via a new high-frequency estimate, not to hunt
