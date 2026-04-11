@@ -29,6 +29,44 @@ Current CLI note:
   from stdout or `--output-last-message`, and let the main orchestrator write
   the `report.md` itself instead of relying on child write-back.
 
+## External local-first research sidecars
+
+Tools such as EurekaClaw may be attached to Q3, but only as sidecar research
+systems. They do **not** replace the canonical Q3 control-plane.
+
+Allowed sidecar roles:
+
+- literature survey and paper clustering around one exact blocker;
+- local memory/knowledge-graph storage for long research sessions;
+- candidate lemma extraction, proof-skeleton brainstorming, and skill drafts;
+- paper-style writeups or structured session summaries for later ingest.
+
+Forbidden sidecar roles:
+
+- direct write-back to source-of-truth files;
+- autonomous theorem-status changes in `ACTIVE/` monitors;
+- autonomous route-kill / route-reopen decisions;
+- direct Lean integration into the repo without the normal Aristotle/Lean loop.
+
+For Q3 the right integration model is:
+
+- keep Codex + file-based monitors as orchestrator;
+- keep Aristotle + `lake env lean` as the only formal proof gate;
+- use the sidecar in read-only / draft-output mode;
+- ingest its useful output back through the normal note-ingest / insight-review
+  workflow.
+
+Recommended artifact boundary:
+
+- sidecar raw outputs live outside canonical proof docs, e.g. under
+  `docs/incoming_notes/` or a temporary external run directory;
+- only reviewed extracts may enter `docs/INSIGHTS.md`,
+  `docs/insights/*.md`, or Lean files.
+
+If we later wire EurekaClaw concretely, the intended path is a dedicated
+domain plugin for Q3 (`q3_rh`) plus project-specific skills, not ad hoc prompt
+chatting.
+
 ## Aristotle Integration: Principles
 
 Aristotle берёт **informal математику** (markdown с LaTeX) и генерирует **Lean 4 код**.

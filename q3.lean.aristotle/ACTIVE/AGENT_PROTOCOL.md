@@ -65,6 +65,23 @@ Short version:
 - file-based request/report loop stays canonical;
 - use the playbook note for Mac-native launch details and pasteable prompts.
 
+## External sidecar agent mode
+
+External local-first research agents (for example EurekaClaw) are allowed only
+as sidecars under the same request/report discipline.
+
+Rules:
+
+- they are auxiliary workers, not orchestrators;
+- they may read the active request plus explicitly listed supporting files;
+- they must return drafts, surveys, or candidate theorem packets only;
+- they must not mutate canonical monitors or Lean artifacts directly;
+- every useful result must still be ingested by the local orchestrator into the
+  normal file-based source of truth.
+
+If an external sidecar maintains its own memory/skill system, that memory is
+treated as auxiliary cache, not as canonical project state.
+
 ## Roles
 
 ### 1. Orchestrator

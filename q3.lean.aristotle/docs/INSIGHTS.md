@@ -6054,3 +6054,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - verdict: this is a genuine gain. The exact-locking part of the exceptional
   branch is already harmless at scale `T\log T`; the only live burden in
   `D2g29d1a` is now the off-spine remainder.
+
+## In progress (2026-04-11): EurekaClaw sidecar integration for Q3
+
+- exact target: decide whether EurekaClaw should be attached to Q3 as a real
+  project tool, and if yes, fix the boundary so it strengthens the workflow
+  instead of polluting the canonical proof state;
+- official fit check: EurekaClaw has a multi-agent `MetaOrchestrator` with a
+  central `KnowledgeBus`, a four-tier memory system with a theorem dependency
+  graph, a skill registry/evolver, and a domain-plugin layer for custom tools,
+  skills, and workflow hints;
+- recommendation: use it only as a local-first sidecar, not as the main
+  orchestrator and not as a replacement for Aristotle/Lean verification;
+- concrete Q3 use cases: blocker-focused literature survey, branch-cluster
+  memory, candidate lemma mining, Aristotle prompt drafting, and paper-grade
+  writeups after a packet is closed;
+- concrete non-goals: no direct write-back to `ACTIVE/` monitors, no direct
+  Lean import, no autonomous route-kill decisions, no unreviewed skill
+  distillation into the canonical protocol;
+- implementation path: add a `q3_rh` EurekaClaw domain plugin with wrappers
+  around local oracle search, Aristotle submit/result polling, `lake env lean`,
+  and read-only branch lookup, then ingest sidecar outputs back through the
+  existing Q3 workflow;
+- detailed plan file:
+  `docs/insights/eurekaclaw_q3_sidecar_integration_2026_04_11.md`.
