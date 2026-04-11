@@ -6225,29 +6225,43 @@ So:
    exceed the natural scale `T\log T`.
 
 ```tex
-\textbf{D2g29b4. Honest remaining target.}
+\textbf{D2g29b4. Legacy unsigned sufficiency target.}
 ```
 
-After `D2g29a`, the arithmetic endpoint is reduced to proving
+If one still insists on closing the route through a purely positive packet,
+then after `D2g29a` and the corrected `D2g29b2` one would need an estimate of
+the shape
 
 ```tex
-\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}\,
-\mathfrak R_{\alpha,H(T),T}(n)
+\sum_{n\ge 2}\frac{\Lambda(n)}{\sqrt n}
+\left[
+\Bigl(1+T\,d_{\alpha,H(T)}^{+}(n)\Bigr)^{-A}
++
+\Bigl(1+T\,d_{\alpha,H(T)}^{-}(n)\Bigr)^{-A}
++
+\frac{1}{T|\alpha|}
+\Bigl(1+T\,d_{\alpha,H(T)}^{+}(n)\Bigr)^{1-A}
++
+\frac{1}{T|\alpha|}
+\Bigl(1+T\,d_{\alpha,H(T)}^{-}(n)\Bigr)^{1-A}
+\right]
 \ll \log T
 ```
 
 for `H(T)\asymp T^2/\log T`.
 
-Indeed, this implies
+Indeed, this would imply
 
 ```tex
 \mathcal P_{\alpha,w}(H(T);T)\ll T\log T,
 ```
 
-which is exactly what `D2g29b` needs.
+which is what the unsigned packet route would need.
 
-So the live obstruction is no longer “explicit formula in general”, but one
-very concrete prime-power near-lattice counting problem.
+But this target is now visibly stronger than the signed kernel endpoint:
+it keeps only absolute near-lattice mass and forgets the Fej\'er oscillation.
+So `D2g29b4` should be read only as the strongest remaining unsigned
+sufficiency target, not as the likely final live theorem shape.
 
 ```tex
 \textbf{D2g29c. Sanity correction: the absolute near-lattice majorant is too strong.}
