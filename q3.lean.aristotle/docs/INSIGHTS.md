@@ -5751,7 +5751,8 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `\Sigma^{\phi}_{\alpha,W_+}=\mathcal M^{\phi}_{\alpha,W_+}+\mathcal P^{\phi}_{\alpha,W_+}+\mathcal E^{\phi}_{\alpha,W_+}`.
   The prime side is localized by rapid decay of `\widehat W_+` to the windows
   `|\log n \mp 2aj|\lesssim 1/T`, so the live burden really has moved to
-  `D2g29b2/b3` and then to the signed-kernel endpoint `D2g29c`.
+  the legacy positive node `D2g29b2a`, then the arithmetic split `D2g29b3`,
+  and then to the signed-kernel endpoint `D2g29c`.
 - quick automation/process audit: the repeated `64 unified exec processes`
   warning does not appear to come from a repo-side leak in the active Q3
   scripts. The obvious long-lived processes are app/session-level MCP helpers
@@ -5760,9 +5761,10 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   (`scripts/swarm start/watch`, `q3.lean.aristotle/scripts/tdd.sh watch`) and
   are not on the live mainline path.
 
-## In progress (2026-04-11): D2g29b2 honest lattice-sum correction
+## In progress (2026-04-11): D2g29b2a honest lattice-sum correction
 
-- exact target: upgrade `D2g29b2` from heuristic prose to an honest spacing
+- exact target: upgrade the old positive-packet spacing node (now `D2g29b2a`)
+  from heuristic prose to an honest spacing
   lemma plus an actual bound for the near-lattice decay packet
   `\mathfrak R_{\alpha,H,T}^+(n)`;
 - wiring point: this sits strictly between the now-closed admissible packet
@@ -5779,10 +5781,11 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `\mathfrak R \ll (1+Td)^{-A} + (T|\alpha|)^{-1}(1+Td)^{1-A}`,
   hence in the spaced regime `T|\alpha|\gg 1` one gets
   `\mathfrak R \ll_{\alpha,A} (1+Td)^{1-A}`;
-- plan: rewrite `D2g29b2` as an honest spacing lemma plus this two-term bound,
+- plan: rewrite the positive-packet node as an honest spacing lemma plus this
+  two-term bound,
   then explicitly record that this still leaves `D2g29c` as the real signed
   endpoint and that the positive majorant route remains over-strong.
-- result: `D2g29b2` is now corrected at note level. The honest positive-packet
+- result: the legacy node `D2g29b2a` is now corrected at note level. The honest positive-packet
   bound is not
   `\mathfrak R \ll (1+Td)^{-A}`,
   but rather
@@ -5867,7 +5870,8 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   actual packet-level decomposition with named pieces `M_j^+`, `P_j^+`,
   `E_j^+` and the aggregated prime kernel `\Psi_{\alpha,W_+,H}`;
 - wiring point: this sits strictly below the already fixed kernel choice
-  `D2g29b0` and strictly above the arithmetic endpoint `D2g29b2/b3/d`, so it is
+  `D2g29b0` and strictly above the arithmetic endpoint
+  `D2g29b2a/b3/d`, so it is
   the right address to make the algebra-to-arithmetic bridge completely
   explicit;
 - concrete upgrade:
@@ -5907,3 +5911,12 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
      `T\log T` target,
   5. mark raw `D2g29b` as strip-growth blocked and promote the prime-first
      replacement as the active child.
+- result: the obstruction lands cleanly. The one-shot height-side packet
+  `h_{H,T}(u)=W_*(u/T)F_H(\alpha u)` has strip size
+  `|h_{H,T}(\pm i/2)|\gg H^{-1}e^{\pi |\alpha|H}`, so on
+  `H(T)\asymp T^2/\log T` the strip contribution is already superpolynomial in
+  `T` and cannot honestly fit inside a natural-scale `T\log T` bound.
+- verdict: `D2g29b` as a raw one-shot height-side explicit-formula route is
+  dead. The old positive-packet spacing estimate survives only as a legacy
+  bookkeeping shadow (`D2g29b2a/b`), while the active burden moves to the
+  signed prime-side endpoint `D2g29d`.

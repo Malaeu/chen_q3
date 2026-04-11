@@ -5846,9 +5846,10 @@ So the correct structural reading is:
    height cutoff `w_*`;
 2. `D2g29b1`: with this admissible pair, write the honest decomposition
    `\Sigma=\mathcal M+\mathcal P+\mathcal E`;
-3. `D2g29b2`: prove that it is enough to keep `\mathcal P+\mathcal E` on the
-   natural scale `T\log T`;
-4. `D2g29b3`: split exceptional / nonexceptional arithmetic on the prime side.
+3. `D2g29b2`: check whether the raw height-side Fej\'er packet is even honest
+   at the strip level on the target range `H(T)\asymp T^2/\log T`;
+4. `D2g29b3`: if the raw packet is blocked, move the live burden to the signed
+   prime-side split exceptional / nonexceptional.
 
 The current formulas below should therefore be read as the schematic model for
 that package, not yet as the final admissibility-clean implementation.
@@ -6089,7 +6090,116 @@ packet over prime powers, and rapid-decay localization around the lattice
 `\log n\approx \pm 2aj`.
 
 ```tex
-\textbf{D2g29b2. Honest lattice-spacing bound for the positive packet.}
+\textbf{D2g29b2. Strip-growth obstruction for the raw height-side Fej\'er route.}
+```
+
+There is a crucial honesty wall here. The one-shot height-side packet
+
+```tex
+h_{H,T}(u):=W_*(u/T)\,F_H(\alpha u)
+```
+
+is tempting as a direct input to the classical explicit formula, but at the
+shrinking-target range
+
+```tex
+H(T)\asymp \frac{T^2}{\log T}
+```
+
+its strip values explode too fast.
+
+Assume `\alpha\neq 0`, `H\ge 2`, and `W_*` is an entire height kernel such that
+
+- `W_*(t)\ge 1` on `[1,2]`,
+- `W_*` is bounded and nonvanishing in a neighborhood of `0`.
+
+Then
+
+```tex
+\boxed{
+|h_{H,T}(i/2)|+|h_{H,T}(-i/2)|
+\gg_{W_*,\alpha}
+\frac{1}{H}e^{\pi |\alpha| H}.
+}
+```
+
+### Proof
+
+For `x=iy` one has the exact identity
+
+```tex
+F_H(iy)
+=
+\frac1H\left(\frac{\sinh(\pi Hy)}{\sinh(\pi y)}\right)^2.
+```
+
+Substituting `y=\alpha/2` gives
+
+```tex
+F_H(\alpha i/2)
+=
+\frac1H
+\left(
+\frac{\sinh(\pi H\alpha/2)}{\sinh(\pi \alpha/2)}
+\right)^2.
+```
+
+Since `\alpha\neq 0`, the denominator is a fixed nonzero constant, while
+
+```tex
+|\sinh(\pi H\alpha/2)|\asymp e^{\pi |\alpha|H/2}.
+```
+
+Hence
+
+```tex
+|F_H(\alpha i/2)|\asymp_{\alpha}\frac1H e^{\pi |\alpha|H},
+\qquad
+|F_H(-\alpha i/2)|\asymp_{\alpha}\frac1H e^{\pi |\alpha|H}.
+```
+
+Now
+
+```tex
+h_{H,T}(\pm i/2)=W_*(\pm i/(2T))\,F_H(\pm \alpha i/2).
+```
+
+Because `W_*` is analytic and nonvanishing near `0`,
+`|W_*(\pm i/(2T))|\asymp 1` for large `T`. Therefore
+
+```tex
+|h_{H,T}(i/2)|+|h_{H,T}(-i/2)|
+\gg_{W_*,\alpha}
+\frac{1}{H}e^{\pi |\alpha| H}.
+```
+
+This proves the obstruction.
+
+In the classical Guinand--Weil normalizations relevant here, the residual /
+pole side is sensitive to these strip values (or to equivalent special-value
+data at the same strip height). Therefore, on the target range
+
+```tex
+H(T)\asymp \frac{T^2}{\log T},
+```
+
+the raw one-shot route through `h_{H,T}` cannot honestly be expected to close
+at the natural scale `T\log T`: the strip growth is already superpolynomial in
+`T`.
+
+So this branch should be marked as
+
+```tex
+\boxed{\text{raw height-side Fej\'er explicit-formula route = strip-growth blocked}.}
+```
+
+This does not invalidate the formal packet decomposition from `D2g29b1`; it
+kills the hope of closing the route by a direct one-shot height-side insertion
+of the full Fej\'er packet. The active burden must therefore move to the
+signed prime-side replacement.
+
+```tex
+\textbf{D2g29b2a. Honest lattice-spacing bound for the legacy positive packet.}
 ```
 
 Write, for one side of the packet,
@@ -6223,7 +6333,7 @@ same-exponent heuristic and is exactly why the signed correction in `D2g29c`
 remains essential.
 
 ```tex
-\textbf{D2g29b2'. Honest sufficiency target.}
+\textbf{D2g29b2b. Legacy unsigned sufficiency target.}
 ```
 
 At the structural level, once the admissible packet is in place, shrinking
@@ -6318,7 +6428,7 @@ the natural `T\log T` scale.
 ```
 
 If one still insists on closing the route through a purely positive packet,
-then after `D2g29a` and the corrected `D2g29b2` one would need an estimate of
+then after `D2g29a` and the legacy spacing control `D2g29b2a` one would need an estimate of
 the shape
 
 ```tex
