@@ -6625,6 +6625,11 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   differences of the Cauchy kernel on the square grid, so the whole moving
   tower is equivalent to vanishing of the initial Newton-profile
   `[J_a; s_1,\dots,s_k]`;
+- finite-support square-tail injectivity is now closed immediately by the same
+  rational-function argument as before: if
+  `J(z)=\sum_{m\le M} b_m/(\lambda_m-z)` vanishes at the first `M` square
+  nodes, then the associated square-Cauchy matrix is invertible and all
+  residues vanish;
 - the square-tail set also has a canonical entire divider
   `E_N^{sq}(z)=\prod_{m>N}(1-z/m^2)=\sin(\pi\sqrt z)/(\pi\sqrt z)` up to the
   finite front factor, so the first-order wall admits an exact whole-tail

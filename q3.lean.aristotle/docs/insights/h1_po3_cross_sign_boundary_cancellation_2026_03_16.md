@@ -1196,6 +1196,63 @@ So the remaining uniqueness wall can now be read in two equivalent ways:
 This is not yet a proof, but it replaces the moving quadratic divisor tower by
 one fixed nonuniform-grid interpolation object.
 
+The finite-support version of this squared wall is already dead.
+
+```tex
+\textbf{Finite-support square-tail injectivity.}
+```
+
+Let
+
+```tex
+J(z)=\sum_{m=1}^M \frac{b_m}{\lambda_m-z},
+```
+
+where the support points `\lambda_1,\dots,\lambda_M` are distinct and avoid
+the square nodes `s_j=(N+j)^2`. If
+
+```tex
+J(s_j)=0
+\qquad (j=1,\dots,M),
+```
+
+then `b_1=\cdots=b_M=0`.
+
+Indeed, multiplying by the common denominator gives
+
+```tex
+P(z):=\prod_{m=1}^M(\lambda_m-z)\,J(z),
+```
+
+which is a polynomial of degree at most `M-1`. The assumptions imply
+
+```tex
+P(s_j)=0
+\qquad (j=1,\dots,M).
+```
+
+Since the `s_j` are distinct, `P` has at least `M` distinct zeros. Therefore
+`P\equiv 0`, hence `J\equiv 0`, and taking residues at each `\lambda_m` gives
+`b_m=0`.
+
+Equivalently, the square-Cauchy matrix
+
+```tex
+C^{\mathrm{sq}}_{jm}:=\frac{1}{\lambda_m-s_j},
+\qquad 1\le j,m\le M,
+```
+
+is invertible.
+
+So the first-order `PO3a` wall has now been sharpened all the way down to its
+genuine infinite-support core:
+
+```tex
+\text{even square-support square-tail injectivity}
+=
+\text{purely infinite-support wall.}
+```
+
 There is also a clean entire divider for this squared sample set. Since
 
 ```tex
