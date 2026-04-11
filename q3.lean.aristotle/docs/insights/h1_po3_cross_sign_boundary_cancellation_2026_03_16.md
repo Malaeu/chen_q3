@@ -485,6 +485,30 @@ operator. In particular, the live source of `H_{a,N}` is no longer "some
 mixed tail combinatorics", but the Volterra undoing of the raw sign-pure
 filtered synthesis.
 
+This suggests one exact next candidate formula for the boundary layer.
+Let `D_a` denote the derivative on the Volterra domain with left endpoint
+basepoint `-a`. Formally one has
+
+```tex
+D_a I_0^{(a)} = I,
+\qquad
+I_0^{(a)} D_a = I - R_a,
+\qquad
+R_a := \mathbf 1\otimes \operatorname{ev}_{-a}.
+```
+
+So the only obstruction to exact inversion is the rank-one endpoint projector
+`R_a`. In the current bridge language this means:
+
+```tex
+\text{candidate source of }H_{a,N}
+\;=\;
+\text{endpoint-evaluation defects created when undoing }I_0^{(a)}.
+```
+
+This is not yet a proved theorem in the current packet, but it is now the
+first honest candidate formula to test in `PO3a.2`.
+
 ### `PO3a.2` Boundary expansion
 
 Expand the boundary correction in finite sign-pure form:
@@ -502,6 +526,34 @@ with every `b_{r,+}` supported in the positive tail channel and every
 This is the first genuinely nontrivial local brick: the route needs an
 explicit boundary expansion, not merely the abstract split
 `\mathcal D_{a,N}=H_{a,N}+C_{a,N}`.
+
+The most plausible current explicit form is therefore:
+
+```tex
+H_{a,N}
+\in
+\operatorname{alg}
+\bigl(
+P_+,\,
+P_-,\,
+T_{a,\infty,N}^+,\,
+T_{a,\infty,N}^-,\,
+R_a,\,
+R_a^*
+\bigr),
+```
+
+where `T_{a,\infty,N}^\pm` are the positive/negative raw syntheses and
+`R_a=\mathbf 1\otimes \operatorname{ev}_{-a}` is the endpoint projector coming
+from the Volterra undoing defect.
+
+So the sharp local test for `PO3a.2` is no longer "find any boundary
+expansion", but the narrower question:
+
+```tex
+\text{does every surviving endpoint-evaluation brick remain sign-pure after the }
+P_+ / P_- \text{ split?}
+```
 
 ### `PO3a.3` Kernel sign-preservation on boundary generators
 
