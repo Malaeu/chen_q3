@@ -7237,6 +7237,86 @@ Therefore the endpoint `D2g29d` is now compressed to the pair
 This is the right arithmetic split: exceptional means exact prime-power
 commensurability, nonexceptional means only approximate windows remain.
 
+This can be sharpened one step further.
+
+```tex
+\textbf{D2g29d1b0. No exact main term in the nonexceptional branch.}
+```
+
+If `a` is nonexceptional, then there are no prime powers `n=p^m` and no
+integers `j\ge 1` such that
+
+```tex
+\log n = m\log p = 2aj.
+```
+
+Indeed, any such identity would immediately imply
+
+```tex
+a=\frac{m\log p}{2j},
+```
+
+which is exactly the excluded exceptional form.
+
+So the nonexceptional branch carries no exact resonant spine at all. In
+particular, there is no Landau-type discrete main term to peel off before
+estimating the packet.
+
+```tex
+\textbf{D2g29d1b1. Pure incommensurate signed endpoint.}
+```
+
+In the nonexceptional branch the signed packet from `D2g29d` remains
+
+```tex
+\mathcal P^{\phi}_{\alpha,W_+}(H;T)
+=
+-\frac{T}{2\pi}
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,
+\mathcal K_{\alpha,W_+,H,T}\!\left(\xi_n\right),
+\qquad
+\xi_n=\frac{\log n}{2\pi},
+```
+
+but now with no exact resonant spine and no coherent positive main term hidden
+inside it. Therefore `D2g29d1b` is not a subtraction problem at all: it is one
+pure signed incommensurate estimate.
+
+The honest live target is thus:
+
+```tex
+\boxed{
+\mathcal P^{\phi}_{\alpha,W_+}(H(T);T)\ll T\log T
+\qquad
+\text{in the nonexceptional branch.}
+}
+```
+
+This is narrower than the old generic formulation. It says that once exact
+prime-power commensurability is excluded, the whole branch is already
+remainder-like from the start.
+
+```tex
+\textbf{D2g29d1b2. Thin-window interpretation.}
+```
+
+Although the packet is still global and signed, the only points where the
+kernel
+
+```tex
+\mathcal K_{\alpha,W_+,H,T}(\xi)
+```
+
+fails to sit in its rapid-decay regime are the thin windows
+
+```tex
+\left|\log n-2aj\right|\lesssim \frac{1}{T}.
+```
+
+So any future proof of `D2g29d1b` must ultimately show that these
+incommensurate near-resonant windows cannot collectively build a signed packet
+larger than `O(T\log T)`.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

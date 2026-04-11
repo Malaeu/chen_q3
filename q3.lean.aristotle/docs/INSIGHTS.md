@@ -6078,3 +6078,25 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   existing Q3 workflow;
 - detailed plan file:
   `docs/insights/eurekaclaw_q3_sidecar_integration_2026_04_11.md`.
+
+## In progress (2026-04-11): D2g29d1b nonexceptional incommensurate branch
+
+- exact target: compress the nonexceptional child of `D2g29d1` to its honest
+  arithmetic remainder, instead of leaving it as a vague “generic case”;
+- oracle + web recall verdict: no hidden theorem closes it automatically; the
+  useful external background only confirms the same split we already have,
+  namely exceptional prime-power commensurability versus nonexceptional
+  incommensurability;
+- exact gain: if `a` is not of the form `r \log p /(2q)`, then there is no
+  exact resonance equation `m \log p = 2aj` for any prime `p` and integers
+  `m,j\ge 1`;
+- consequence: unlike `D2g29d1a`, the nonexceptional branch has no exact
+  resonant spine and no Landau-type main term to subtract;
+- therefore `D2g29d1b` is a pure signed endpoint:
+  prove directly that the incommensurate packet
+  `\mathcal P^{\phi}_{\alpha,W_+}(H(T);T)` stays on the natural scale
+  `O(T\log T)`;
+- only the thin windows `|m\log p-2aj|\lesssim 1/T` can be dangerous, because
+  that is exactly where the kernel escapes its rapid-decay regime;
+- result to record next: upgrade this from a clean theorem-packet to either a
+  genuine near-window reduction or an explicit new arithmetic wall.
