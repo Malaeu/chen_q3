@@ -5812,3 +5812,13 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   3. identify the inner Fourier packet with `\phi_H(\alpha u)`,
   4. simplify the `+\alpha/-\alpha` duplication using `a_j=a_{-j}`,
   5. record the exact signed kernel seen by prime powers.
+- result: `D2g29c''` is now upgraded from a schematic inversion line to the
+  exact identity
+  `\mathcal K(\xi)=\frac{2}{T}\int W_+(u/T)e(-u\xi)\phi_H(\alpha u)\,du`,
+  and the prime packet becomes
+  `-\pi^{-1}\int W_+(u/T)\phi_H(\alpha u)\sum_{n\ge2}\Lambda(n)n^{-1/2-iu}\,du`.
+- after choosing `W_+` even, this simplifies further to the real cosine form
+  `-(2/\pi)\int_0^\infty G_{\alpha,H,T}(u)\sum_{n\ge2}\Lambda(n)\cos(u\log n)/\sqrt n\,du`.
+- verdict: the signed endpoint is now a single weighted prime-cosine integral.
+  That is a much sharper and more usable object than the old unsigned
+  near-lattice packet, and it isolates the real arithmetic burden cleanly.

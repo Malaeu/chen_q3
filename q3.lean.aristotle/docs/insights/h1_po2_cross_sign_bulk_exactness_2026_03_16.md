@@ -5859,10 +5859,12 @@ The engineering choice that best fits the current route is:
    because it is already a finite Fourier packet;
 2. replace the hard dyadic zero-window by a nonnegative Schwartz majorant.
 
-More concretely, choose a fixed nonnegative Schwartz function
+More concretely, choose a fixed nonnegative even Schwartz function
 
 ```tex
 W_+\in \mathcal S(\mathbb R),
+\qquad
+W_+(-t)=W_+(t),
 \qquad
 W_+(t)\ge 1 \ \text{for } t\in[1,2].
 ```
@@ -6347,19 +6349,85 @@ capture.
 \textbf{D2g29c''. Fourier inversion form.}
 ```
 
-By Fourier inversion, the inner kernel can be rewritten schematically as
+Under the repository Fourier convention
 
 ```tex
-\mathcal K_{\alpha,w,H,T}(\xi)
-=
-\int_{\mathbb R} w(u/T)\,e(-u\xi)\,F_H(\alpha u)\,du
-\quad\text{(up to normalization and the symmetric `+\alpha` mirror).}
+\widehat f(\xi)=\int_{\mathbb R} f(u)\,e(-u\xi)\,du,
+\qquad
+f(u)=\int_{\mathbb R}\widehat f(\xi)\,e(u\xi)\,d\xi,
 ```
 
-Hence the prime side is not an absolute near-lattice counting problem at all,
-but a prime sum against one oscillatory test function carrying the Fej\'er
-factor in physical space. This is much closer in shape to the Suzuki/Fujii
-genre than the positive majorant from `D2g29b4`.
+we have
+
+```tex
+T\,\widehat W_+\!\left(T(\xi-j\alpha)\right)
+=
+\int_{\mathbb R} W_+(u/T)\,e(-u\xi)\,e(uj\alpha)\,du.
+```
+
+Therefore the signed kernel from `D2g29c'` satisfies the exact identity
+
+```tex
+\mathcal K_{\alpha,W_+,H,T}(\xi)
+=
+\sum_{|j|<H} a_j
+\left[
+\widehat W_+\!\left(T(\xi-j\alpha)\right)
++
+\widehat W_+\!\left(T(\xi+j\alpha)\right)
+\right]
+=
+\frac{2}{T}\int_{\mathbb R} W_+(u/T)\,e(-u\xi)\,\phi_H(\alpha u)\,du.
+```
+
+Substituting this into the prime packet gives
+
+```tex
+\mathcal P^{\phi}_{\alpha,W_+}(H;T)
+=
+-\frac{1}{\pi}
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+\int_{\mathbb R} W_+(u/T)\,e(-u\xi_n)\,\phi_H(\alpha u)\,du,
+\qquad
+\xi_n=\frac{\log n}{2\pi}.
+```
+
+Since `e(-u\xi_n)=e^{-iu\log n}=n^{-iu}`, this becomes
+
+```tex
+\mathcal P^{\phi}_{\alpha,W_+}(H;T)
+=
+-\frac{1}{\pi}
+\int_{\mathbb R} W_+(u/T)\,\phi_H(\alpha u)
+\left(
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,n^{-iu}
+\right)\,du.
+```
+
+Because `W_+` and `\phi_H` are even, the weight
+
+```tex
+G_{\alpha,H,T}(u):=W_+(u/T)\phi_H(\alpha u)
+```
+
+is even as well, so the odd sine part cancels and one can rewrite the same
+packet in purely real form:
+
+```tex
+\mathcal P^{\phi}_{\alpha,W_+}(H;T)
+=
+-\frac{2}{\pi}
+\int_{0}^{\infty} G_{\alpha,H,T}(u)
+\left(
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\cos(u\log n)
+\right)\,du.
+```
+
+Hence the prime side is not an absolute near-lattice counting problem at all.
+It is exactly one oscillatory integral of the prime cosine sum against the
+Fej\'er-modulated physical-space weight `G_{\alpha,H,T}`. This is the clean
+signed endpoint and is much closer in shape to the Suzuki/Fujii genre than the
+positive majorant from `D2g29b4`.
 
 Now the remaining live coefficient question is extremely narrow:
 
