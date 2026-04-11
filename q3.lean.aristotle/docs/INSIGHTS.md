@@ -6526,3 +6526,50 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - this is still a reduction, not a theorem, but it is a real narrowing:
   the possible mixed leakage is now concentrated in one vector-level object
   rather than an uncontrolled boundary cloud.
+
+## In progress (2026-04-11): the vector-level object is exactly the raw zero-mode column
+
+- the vector
+  `v_{a,N}:=T_{a,\infty,N}^*G_g[a]\mathbf 1`
+  is no longer abstract:
+  since `\mathbf 1=\sqrt{2a}\,\chi_0[a]`, its tail coordinates are exactly
+  `\sqrt{2a}\,w_{r,0}(a)` for `|r|>N`;
+- using the frozen raw Weil formula, this gives the explicit zero-sum
+  expression
+  `w_{r,0}(a)
+   = (2(-1)^r/a)\sum_\gamma \sin^2(a\gamma)/((\gamma+\alpha_r)\gamma)`;
+- so the live `PO3a.3` problem is now reduced to the sign structure of one
+  zero-mode coupling column, not an unspecified vector in tail space.
+
+## In progress (2026-04-11): the zero-mode column is reflection-even, but this is weaker than sign-purity
+
+- the live synthesis/oracle pass for the new blocker did **not** return an
+  existing reusable lemma about `G_g[a]\mathbf 1` or `w_{r,0}(a)`; the sharp
+  object is still the raw zero-mode column itself;
+- however, the frozen raw formula from
+  `full/sections/Main_closure.tex` can be paired directly over the symmetric
+  zero set `\Gamma=-\Gamma`:
+  `w_{r,0}(a)
+   = (4(-1)^r/a)\sum_{\gamma>0}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)`;
+- in particular this gives the exact symmetry
+  `w_{-r,0}(a)=w_{r,0}(a)`, hence the boundary vector
+  `v_{a,N}=T_{a,\infty,N}^*G_g[a]\mathbf 1`
+  is reflection-even across the positive and negative tails;
+- this is the first exact structure theorem on the live `PO3a.3` object, and
+  it sharply narrows the search space;
+- but it still does **not** prove `H_{a,N}\in\mathcal B`: a rank-one brick
+  built from an even left vector and the sign-split right functional
+  `\ell_{+,N}P_+ + \ell_{-,N}P_-` can still contain genuine cross-sign pieces;
+- so the next exact theorem-target is now cleanly split:
+  either prove a stronger one-sided purity/sign law for the paired sum
+  `\sum_{\gamma>0}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)`,
+  or derive the full first-order endpoint formula and show that the adjoint
+  companion terms cancel the cross-sign part;
+- concrete file pointers for this step:
+  `full/sections/Main_closure.tex` for raw `w_{rs}(a)`,
+  `docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md` for
+  the reduction to `v_{a,N}`,
+  `docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md` for the
+  sign-pure boundary lemma `L3''''''`,
+  and `Q3/Proofs/HBridge_PO3_Shell.lean` remains only the landing shell after a
+  real mathematical proof packet exists.
