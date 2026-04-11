@@ -251,13 +251,13 @@ Only then proceed with the full dossier structure.
 ## ARISTOTLE COMMANDS
 
 ```bash
-cd /Users/emalam/Documents/GitHub/chen_q3
+cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
 source .venv/bin/activate
-aristotle prove-from-file --informal --no-validate-lean-project --no-wait file.md
+aristotle formalize q3.lean.aristotle/aristotle_input/file.md
 
 python3 - <<'PY'
 import asyncio
-from aristotlelib import Project
+from aristotlelib.project import Project
 
 async def main():
     p = await Project.from_id("<project_id>")

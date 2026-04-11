@@ -304,13 +304,13 @@ source .venv/bin/activate
 # - НЕ передавай ARISTOTLE_API_KEY через аргументы CLI (утечёт в history/logs).
 # - Держи ключ в переменной окружения (например, ~/.bashrc) и просто `source ...`.
 
-# Отправить новый файл (informal markdown)
-aristotle prove-from-file --informal --no-validate-lean-project --no-wait problem.md
+# Отправить новый файл (markdown / tex / txt / lean)
+aristotle formalize problem.md
 
 # Проверить статус проекта (Python API)
 python3 - <<'PY'
 import asyncio
-from aristotlelib import Project
+from aristotlelib.project import Project
 
 async def main():
     p = await Project.from_id("<project_id>")
@@ -319,18 +319,24 @@ async def main():
 asyncio.run(main())
 PY
 
-# Скачать результат (Python API)
+# Скачать результат (CLI или Python API; сохраняем tar.gz архив)
+aristotle result <project_id> --wait \
+  --destination aristotle_output/<project_id>.tar.gz
+
 python3 - <<'PY'
 import asyncio
-from aristotlelib import Project
+from aristotlelib.project import Project
 
 async def main():
     p = await Project.from_id("<project_id>")
-    path = await p.get_solution("aristotle_output/<project_id>-output.lean")
+    path = await p.get_solution("aristotle_output/<project_id>.tar.gz")
     print("Downloaded:", path)
 
 asyncio.run(main())
 PY
+
+mkdir -p aristotle_output/<project_id>
+tar -xzf aristotle_output/<project_id>.tar.gz -C aristotle_output/<project_id>
 ```
 
 ### После скачивания (обязательная проверка)

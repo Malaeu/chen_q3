@@ -116,67 +116,127 @@ Leaving sorries unfilled:
 
 ## 4. Submission options
 
-### 4.1 CLI (simple cases)
+### 4.1 CLI (current official surface, verified on 2026-04-11)
 
-Informal (markdown):
+The current CLI is:
 ```
-aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
-```
-
-Formal (Lean file with sorries):
-```
-aristotle prove-from-file path/to/file.lean --no-wait
+aristotle {submit,formalize,result,list,cancel}
 ```
 
-### 4.2 Python API (preferred for Q3)
-
-Reason: CLI auto-imports may pick the wrong outermost project root.
-Use Python API with explicit context and `auto_add_imports=False`.
-
-Template (path-agnostic):
+Single-file route:
 ```
-from pathlib import Path
-from aristotlelib import Project
-from aristotlelib.local_file_utils import gather_file_imports
+aristotle formalize input.md
+aristotle formalize path/to/file.lean
+```
+
+Important:
+- `formalize` uploads exactly one file, packed into a tar.gz archive;
+- for a markdown/tex/txt request file this is now the clean Q3 default;
+- Aristotle creates a project with prompt `Formalize <filename>`.
+
+Directory-context route:
+```
+aristotle submit "Formalize the target in the provided context" --project-dir /abs/path/to/context_dir
+```
+
+This is the right choice only when one file is not enough and a whole directory
+must be sent.
+
+### 4.2 Status / results
+
+Check status from CLI:
+```
+aristotle list --limit 10
+aristotle list --status IN_PROGRESS QUEUED --limit 20
+```
+
+Check one project from Python:
+```
 import asyncio
-
-ROOT = Path.cwd().resolve()
-if not (ROOT / "Q3").is_dir():
-    if (ROOT / "q3.lean.aristotle").is_dir():
-        ROOT = (ROOT / "q3.lean.aristotle").resolve()
-    elif (ROOT / "full" / "q3.lean.aristotle").is_dir():
-        ROOT = (ROOT / "full" / "q3.lean.aristotle").resolve()
-    else:
-        raise RuntimeError("Set ROOT to your q3.lean.aristotle directory")
-INPUT = ROOT / "Q3/Proofs/QSpec.lean"  # change to your file
-
-context = [str(p) for p in gather_file_imports(INPUT, project_root=ROOT)]
-context += [
-    str(ROOT / "ACTIVE/aristotle/queue/<task>/PROMPT.txt"),
-    str(ROOT / "ACTIVE/aristotle/queue/<task>/NODE_BRIEF.md"),
-]
+from aristotlelib.project import Project
 
 async def main():
-    pid = await Project.prove_from_file(
-        input_file_path=INPUT,
-        auto_add_imports=False,
-        context_file_paths=context,
-        validate_lean_project=False,
-        wait_for_completion=False,
-        output_file_path=ROOT / "aristotle_output/<task>_aristotle.lean",
-    )
-    print(pid)
+    p = await Project.from_id("<project_id>")
+    print(p.status, p.percent_complete)
 
 asyncio.run(main())
 ```
 
-Limits and quirks (from package inspection):
-- Max 10 files per request; use batched `add_context` for more.
-- Context file extensions allowed: .lean .md .txt .tex
-- `formal_input_context` works only in informal mode.
-- `auto_add_imports=True` requires `validate_lean_project=True`.
-- `context_is_folder=True` uploads all allowed files under a folder.
-- `find_lean_project_root` returns the OUTERMOST root (can break Q3 imports).
+Download result from CLI:
+```
+aristotle result <project_id> --wait --destination aristotle_output/<project_id>.tar.gz
+```
+
+Result format:
+- current Aristotle returns a tar.gz archive;
+- on our verified completed project the archive contained `output.lean`.
+
+Extract and inspect:
+```
+mkdir -p aristotle_output/<project_id>
+tar -xzf aristotle_output/<project_id>.tar.gz -C aristotle_output/<project_id>
+rg -n "sorry|admit" aristotle_output/<project_id>/output.lean
+rg -n "exact\\?" aristotle_output/<project_id>/output.lean || true
+```
+
+### 4.3 Python API (current, stable subset)
+
+Verified imports:
+```
+from aristotlelib import Project, ProjectStatus, set_api_key
+```
+or explicitly:
+```
+from aristotlelib.project import Project, ProjectStatus
+```
+
+Useful methods verified locally:
+- `Project.from_id`
+- `Project.create`
+- `Project.create_from_directory`
+- `Project.get_solution`
+- `Project.get_input`
+- `Project.refresh`
+- `Project.cancel`
+- `Project.list_projects`
+- `Project.wait_for_completion`
+
+Minimal status snippet:
+```
+import asyncio
+from aristotlelib.project import Project
+
+async def main():
+    p = await Project.from_id("<project_id>")
+    print(p.status, p.percent_complete)
+
+asyncio.run(main())
+```
+
+Minimal download snippet:
+```
+import asyncio
+from aristotlelib.project import Project
+
+async def main():
+    p = await Project.from_id("<project_id>")
+    path = await p.get_solution("aristotle_output/<project_id>.tar.gz")
+    print(path)
+
+asyncio.run(main())
+```
+
+### 4.4 Practical Q3 recommendation
+
+For Q3, the default route is now:
+1. prepare one request file in `aristotle_input/`;
+2. show it to the user;
+3. submit with `aristotle formalize <file>`;
+4. record `project_id`;
+5. later fetch with `aristotle result ... --destination <pid>.tar.gz`;
+6. extract `output.lean`, scan holes, compile, integrate.
+
+Use `submit --project-dir` only when extra context is genuinely needed.
 
 ---
 

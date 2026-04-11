@@ -12,7 +12,7 @@ Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy 
 
 Aristotle integration rules (project workflow):
 - Activate venv before any Aristotle command: `source .venv/bin/activate`.
-- Submit via `aristotle prove-from-file` and check/download via the Python API snippets in the Aristotle skill.
+- Submit via `aristotle formalize <request.md>` for single-file requests, or `aristotle submit "..." --project-dir <dir>` when directory context is needed; check/download via the current Aristotle skill snippets.
 - Always scan downloaded files for holes: `rg -n "sorry|exact\\?|admit" <file>`.
 - Treat files with holes as drafts; extract only hole-free lemmas or use as structure guidance.
 - Run `lake env lean <file>` after every integration to ensure the project still compiles.
