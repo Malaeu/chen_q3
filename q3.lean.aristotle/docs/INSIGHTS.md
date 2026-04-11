@@ -6179,3 +6179,19 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - active consequence: the live choice is now either a new Q3-specific
   structural exclusion of logarithmic microclusters or an honest route handoff
   beyond direct arithmetic.
+
+## In progress (2026-04-11): D2g31 structural handoff after killing the generic S(T) door
+
+- exact target: replace the dead generic `S(T)` shortcut by a Q3-internal
+  theorem shape that still attacks the residual `D2g30c` microcluster branch;
+- local oracle recall points back to the already-built geometry stack
+  `D2g17a/D2g18`: genuine packets with small defect either collapse by
+  compressed subgaps or are forced into an `O(h)`-tube around the Hermite line;
+- this means the post-`D2g30e` enemy is no longer an arbitrary logarithmic
+  spike, but one of two structured objects:
+  deep compressed-gap cascade (hence `D2f3`) or bounded Hermite-captured
+  genuine packet;
+- active next address: `D2g31/D2g31a`;
+- live theorem target: prove paired Hermite incompatibility for such bounded
+  genuine packets, or else show that every extraction chain necessarily falls
+  into `D2f3`.

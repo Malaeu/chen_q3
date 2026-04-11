@@ -7802,6 +7802,62 @@ geometry, or a route handoff beyond direct arithmetic.}
 So `D2g30e` is not a closure theorem. It is a kill certificate for a false
 shortcut.
 
+What remains alive is therefore a purely internal structural route, not a
+generic imported `S(T)` theorem.
+
+```tex
+\textbf{D2g31. Structural handoff: logarithmic microclusters reduce to bounded Hermite-captured packets or to }D2f3.
+```
+
+The genuine Q3 geometry already contains the needed local dichotomy.
+
+From `D2g17a`, every genuine packet with small local defect satisfies:
+
+1. either it contains a compressed relative subgap and therefore moves deeper
+   into the resonance/compressed-gap mechanism;
+2. or its coefficients are captured by the Hermite line of its exact local
+   normalized shape.
+
+Combined with `D2g21/D2g30c`, this gives the right next live reduction:
+
+- if the logarithmic one-sided microcluster from `D2g30c` keeps collapsing by
+  compressed subgaps, then the route is already flowing back into `D2f3`;
+- otherwise, after finitely many local extractions one reaches a bounded-size
+  genuine block with noncollapsed normalized shape and coefficient vector
+  `O(h)`-close to its Hermite/barycentric line.
+
+So the post-`D2g30e` live enemy should no longer be read as an arbitrary
+logarithmic spike of `S(T)`, but as one of two sharply structured objects:
+
+```tex
+\boxed{
+\text{either a deep compressed-gap cascade (hence }D2f3\text{), or a bounded
+Hermite-captured genuine packet.}
+}
+```
+
+This is exactly the route compression we wanted: the surviving direct enemy is
+no longer a free arithmetic cloud.
+
+```tex
+\textbf{D2g31a. Active theorem-shape after killing the generic }S(T)\textbf{ door.}
+```
+
+To close the direct arithmetic residue after `D2g30e`, it is now sufficient to
+prove one of the following:
+
+1. **compressed-gap closure:** every repeated local extraction from a
+   `D2g30c` microcluster eventually enters `D2f3`;
+2. **paired Hermite incompatibility:** a bounded-size genuine packet on
+   `Y_a=\{x_\gamma,x_\gamma-1\}` cannot simultaneously
+   - come from the logarithmic microcluster geometry forced by `D2g21`, and
+   - have coefficient vector `O(h)`-close to the Hermite line as in
+     `D2g17a/D2g18`.
+
+So the next honest theorem target is no longer “generic control of
+`S(T)` on tiny intervals”, but a Q3-specific incompatibility theorem inside
+the paired class.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
