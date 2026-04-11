@@ -6283,3 +6283,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   admissible `PO2` theorem-shell output
   `\mathcal D_{a,N}^{+-}=\mathcal D_{a,\partial}^{+-}+\mathcal D_{a,\mathrm{cap}}^{+-}`,
   so the next forced packet is `PO3`, not another arithmetic reduction.
+
+## In progress (2026-04-11): PO3 restart after the D2g33 splice
+
+- exact target is now frozen as
+  `PO3a = \mathcal D_{a,\partial}^{+-}=0`,
+  with `PO3b = \mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}` and
+  `PO3c = \mathcal D_{a,\partial}^{-+}=0` by symmetry;
+- local oracle recall is fully coherent: the active source stack is
+  [`h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md),
+  [`plus_minus_cancellation_ledger_2026_03_15.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/plus_minus_cancellation_ledger_2026_03_15.md),
+  and [`h1_boundary_cap_reset_2026_03_14.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_boundary_cap_reset_2026_03_14.md);
+- downstream notes
+  [`h1_po4_same_sign_boundary_identification_2026_03_18.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po4_same_sign_boundary_identification_2026_03_18.md)
+  and
+  [`h1_po5_cap_separation_2026_03_19.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po5_cap_separation_2026_03_19.md)
+  already assume the mixed side is bulk-exact and boundary-killed, so the live burden is now purely `PO3`;
+- external web sanity-check gives only generic Toeplitz/Hankel boundary-language support; no external theorem closes `PO3` for us automatically;
+- immediate plan: keep one exact `PO3a` lemma, one cap-only corollary `PO3b`, and treat any surviving non-cap cross-sign boundary residue as a route-kill event.
