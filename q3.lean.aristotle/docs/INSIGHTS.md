@@ -6046,3 +6046,11 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   4. conclude that the live burden in the exceptional branch is only the
      off-spine remainder,
   5. record `d1a` as a real simplification, not just a restatement.
+- result: the resonant-spine extraction now lands in the main note. With
+  `\phi_H=(\pi^2/4H)F_H` one has the uniform kernel bound
+  `|\mathcal K_{\alpha,W_+,H,T}(\xi)|\ll_{W_+}1`, hence the exact exceptional
+  spine contributes only
+  `|\mathcal P_{\mathrm{exc}}(H;T)|\ll T\sum_{\ell\ge1}\log p_0/p_0^{m_0\ell/2}\ll T`.
+- verdict: this is a genuine gain. The exact-locking part of the exceptional
+  branch is already harmless at scale `T\log T`; the only live burden in
+  `D2g29d1a` is now the off-spine remainder.

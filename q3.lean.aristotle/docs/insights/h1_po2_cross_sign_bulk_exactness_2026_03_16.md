@@ -7094,6 +7094,121 @@ genuinely coherent resonant spine on one prime-power lattice. The live task in
 `D2g29d1a` is therefore to prove that even this exact resonant spine does not
 push `\mathcal S_{\alpha,H(T),T}(X)` above the natural `T\log T` scale.
 
+This can already be sharpened substantially.
+
+Let
+
+```tex
+g:=\gcd(r,q),
+\qquad
+j_0:=\frac{q}{g},
+\qquad
+m_0:=\frac{r}{g}.
+```
+
+Then the exact-locking indices are precisely
+
+```tex
+j=\ell j_0,
+\qquad
+n_\ell:=p_0^{m_0\ell},
+\qquad
+\xi_\ell:=\frac{\log n_\ell}{2\pi}=\ell j_0\alpha
+\qquad (\ell\ge 1).
+```
+
+So the resonant prime-power spine is the discrete measure
+
+```tex
+\mu_{\mathrm{exc}}
+:=
+\sum_{\ell\ge 1}\frac{\log p_0}{p_0^{m_0\ell/2}}\,\delta_{\xi_\ell}.
+```
+
+Its contribution to the signed prime packet from `D2g29c'` is
+
+```tex
+\mathcal P_{\mathrm{exc}}(H;T)
+:=
+-\frac{T}{2\pi}
+\sum_{\ell\ge 1}
+\frac{\log p_0}{p_0^{m_0\ell/2}}\,
+\mathcal K_{\alpha,W_+,H,T}(\xi_\ell).
+```
+
+Because
+
+```tex
+\phi_H(x)=\frac{\pi^2}{4H}F_H(x)
+\qquad\text{and}\qquad
+0\le F_H(x)\le H,
+```
+
+one has the uniform bound
+
+```tex
+0\le \phi_H(x)\le \frac{\pi^2}{4}.
+```
+
+Hence from the exact kernel identity
+
+```tex
+\mathcal K_{\alpha,W_+,H,T}(\xi)
+=
+\frac{2}{T}\int_{\mathbb R}W_+(u/T)e(-u\xi)\phi_H(\alpha u)\,du
+```
+
+we obtain
+
+```tex
+|\mathcal K_{\alpha,W_+,H,T}(\xi)|
+\le
+\frac{2}{T}\cdot \frac{\pi^2}{4}
+\int_{\mathbb R}|W_+(u/T)|\,du
+=
+\frac{\pi^2}{2}\int_{\mathbb R}|W_+(t)|\,dt
+=: C_{W_+},
+```
+
+uniformly in `\xi,H,T`.
+
+Therefore
+
+```tex
+|\mathcal P_{\mathrm{exc}}(H;T)|
+\le
+\frac{T}{2\pi} C_{W_+}
+\sum_{\ell\ge 1}\frac{\log p_0}{p_0^{m_0\ell/2}}
+\ll_{p_0,r,q,W_+} T.
+```
+
+So the exact resonant spine is in fact harmless:
+
+```tex
+\boxed{
+|\mathcal P_{\mathrm{exc}}(H;T)|\ll T.
+}
+```
+
+This is much smaller than the allowed natural scale `T\log T`.
+
+Consequently the exceptional branch reduces to the off-spine remainder
+
+```tex
+\mu_{\mathrm{off}}:=\mu_P-\mu_{\mathrm{exc}},
+```
+
+and the live burden in `D2g29d1a` is only to prove
+
+```tex
+\boxed{
+|\mathcal P_{\mathrm{off}}(H(T);T)|\ll T\log T.
+}
+```
+
+So the dangerous exact-locking spine itself is already removed from the
+critical path.
+
 ```tex
 \textbf{D2g29d1b. Nonexceptional incommensurate branch.}
 ```
