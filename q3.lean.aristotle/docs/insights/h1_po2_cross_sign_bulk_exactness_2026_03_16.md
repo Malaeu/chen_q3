@@ -5796,6 +5796,104 @@ which is exactly what `D2g29b` needs.
 So the live obstruction is no longer “explicit formula in general”, but one
 very concrete prime-power near-lattice counting problem.
 
+```tex
+\textbf{D2g29c. Sanity correction: the absolute near-lattice majorant is too strong.}
+```
+
+There is a crucial practical correction here. The reduction in `D2g29b4`
+forgets the oscillatory structure of the Fej\'er packet and keeps only the
+positive majorant
+
+```tex
+\mathfrak R_{\alpha,H,T}(n)\ge 0.
+```
+
+At the natural scale `H(T)\asymp T^2/\log T`, this is likely far stronger than
+the actual explicit-formula endpoint. Indeed, a prime-number-theorem heuristic
+around the resonant locations
+
+```tex
+\log n \approx 2aj
+\qquad\Longleftrightarrow\qquad
+n \approx e^{2aj}
+```
+
+predicts that a purely positive near-lattice count would be much too large: a
+window of logarithmic width `1/T` around `e^{2aj}` has multiplicative length
+`e^{2aj}/T`, so its weighted prime mass is heuristically of size
+
+```tex
+\frac{e^{aj}}{T},
+```
+
+and summing this over many `j` is vastly larger than `\log T`.
+
+Therefore `D2g29b4` should be read as an over-strong positive majorant, not as
+the likely final endpoint. The honest object must preserve the signed Fej\'er
+superposition.
+
+```tex
+\textbf{D2g29c'. Honest signed prime-side kernel.}
+```
+
+Define
+
+```tex
+\mathcal K_{\alpha,w,H,T}(\xi)
+:=
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)
+\left[
+\widehat w\!\left(T(\xi-j\alpha)\right)
++
+\widehat w\!\left(T(\xi+j\alpha)\right)
+\right].
+```
+
+Then the actual prime packet is
+
+```tex
+\mathcal P_{\alpha,w}(H;T)
+=
+-\frac{T}{2\pi}
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,
+\mathcal K_{\alpha,w,H,T}\!\left(\frac{\log n}{2\pi}\right).
+```
+
+So the corrected live target is no longer to show
+
+```tex
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\mathfrak R_{\alpha,H(T),T}(n)\ll \log T,
+```
+
+but rather to prove the signed estimate
+
+```tex
+\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,
+\mathcal K_{\alpha,w,H(T),T}\!\left(\frac{\log n}{2\pi}\right)
+\ll \log T.
+```
+
+This keeps exactly the oscillation that the Fej\'er smoothing was introduced to
+capture.
+
+```tex
+\textbf{D2g29c''. Fourier inversion form.}
+```
+
+By Fourier inversion, the inner kernel can be rewritten schematically as
+
+```tex
+\mathcal K_{\alpha,w,H,T}(\xi)
+=
+\int_{\mathbb R} w(u/T)\,e(-u\xi)\,F_H(\alpha u)\,du
+\quad\text{(up to normalization and the symmetric `+\alpha` mirror).}
+```
+
+Hence the prime side is not an absolute near-lattice counting problem at all,
+but a prime sum against one oscillatory test function carrying the Fej\'er
+factor in physical space. This is much closer in shape to the Suzuki/Fujii
+genre than the positive majorant from `D2g29b4`.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex

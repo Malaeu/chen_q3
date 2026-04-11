@@ -5673,3 +5673,25 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - bottom line: the active direct path stays arithmetic and explicit-formula
   based. The refreshed recall layer is now stable enough to support that work,
   but it did not uncover a hidden theorem that bypasses `D2g29b4`.
+- one more correction falls out of the same pass: the positive majorant
+  `D2g29b4`
+  ```
+  \sum \frac{\Lambda(n)}{\sqrt n}\,\mathfrak R_{\alpha,H(T),T}(n)\ll \log T
+  ```
+  is likely too strong to be the true endpoint, because it throws away the very
+  Fejér oscillation we introduced on purpose. A PNT sanity check near
+  `n\approx e^{2aj}` suggests that the purely positive near-lattice mass would
+  be enormous at the natural range `H(T)\asymp T^2/\log T`.
+- so the honest live object is now the signed kernel
+  ```
+  \mathcal K_{\alpha,w,H,T}(\xi)
+  = \sum_{|j|<H}(1-|j|/H)\bigl[\widehat w(T(\xi-j\alpha))+\widehat w(T(\xi+j\alpha))\bigr],
+  ```
+  and the corrected `D2g29` target is the signed prime-side estimate
+  ```
+  \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,
+  \mathcal K_{\alpha,w,H(T),T}\!\left(\frac{\log n}{2\pi}\right)\ll \log T.
+  ```
+- this is a real compression, not a retreat: it tells us exactly what not to
+  do next. We should not spend cycles trying to prove an over-strong absolute
+  near-lattice counting theorem that the natural heuristics themselves fight.
