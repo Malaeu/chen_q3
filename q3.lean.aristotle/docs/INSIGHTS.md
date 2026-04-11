@@ -5882,3 +5882,28 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - verdict: `D2g29b1` is now a genuine named decomposition step, not just a
   heuristic localization sentence. This makes the later `b2/b3/d` references
   much cleaner.
+
+## In progress (2026-04-11): D2g29b2 strip-growth obstruction check
+
+- exact target: decide whether the raw height-side Fejér route below `D2g29b1`
+  is actually honest on the shrinking-target scale `H(T)\asymp T^2/\log T`, or
+  whether the test function itself explodes in the strip and kills the route;
+- wiring point: this is the next child under `D2g29b`; if it fails, then the
+  whole raw height-side explicit-formula subroute dies and the proof tree
+  should move to a prime-first replacement rather than keep polishing `b2`;
+- local oracle recall shows no hidden bypass theorem: it keeps returning only
+  our own `D2g29` packet and generic Guinand--Weil infrastructure;
+- the repository `T0` normalization is not the issue here: the obstruction is
+  about the external classical explicit formula used in `D2g29`, not about the
+  internal `Q^\star` functional;
+- web/background check matches the standard classical picture: the height-side
+  test in Guinand--Weil feels special values around `\pm i/2`, so strip growth
+  is the right quantity to inspect;
+- concrete plan:
+  1. compute the exact imaginary-axis growth of `F_H(\alpha u)` at `u=\pm i/2`,
+  2. show it is `\asymp H^{-1}e^{\pi |\alpha|H}`,
+  3. transfer this to the raw packet `h_{H,T}(u)=W_*(u/T)F_H(\alpha u)`,
+  4. record that on `H(T)\asymp T^2/\log T` this dwarfs every natural
+     `T\log T` target,
+  5. mark raw `D2g29b` as strip-growth blocked and promote the prime-first
+     replacement as the active child.
