@@ -4804,10 +4804,10 @@ S(T+u)-S(T-u)\ge \frac12,
 then the integer-resonance branch of `D2g24` is impossible.
 
 There is also a clean Fourier-theoretic sufficient criterion for killing this
-branch.
+branch, and it can be written in a completely explicit dyadic-block form.
 
 ```tex
-\textbf{D2g25. Shrinking-target modulo-one exclusion criterion.}
+\textbf{D2g25. Shrinking-target criterion via Fej\'er kernel.}
 ```
 
 Let
@@ -4815,108 +4815,193 @@ Let
 ```tex
 \alpha:=\frac{a}{\pi},
 \qquad
-N(T):=\#\{0<\gamma\le T\},
-\qquad
-S_j(T):=\sum_{0<\gamma\le T} e^{2\pi i j\alpha\gamma}.
+\mathcal N(T,2T]:=\#\{\gamma:\ T<\gamma\le 2T\},
 ```
 
-Let `\varepsilon(T)>0` be any function with `\varepsilon(T)\to 0`, and define
-the shrinking target count
+and for `0<\varepsilon\le 1/4` define
 
 ```tex
-\mathcal N_\alpha(T,\varepsilon)
+A_\alpha(T,\varepsilon)
 :=
-\#\bigl\{0<\gamma\le T:\ \|\alpha\gamma\|<\varepsilon(T)\bigr\},
+\#\{\gamma:\ T<\gamma\le 2T,\ \|\alpha\gamma\|\le \varepsilon\},
 ```
 
-where `\|x\|` denotes distance to the nearest integer. Fix
+as well as the dyadic exponential sums
 
 ```tex
-H(T)\asymp \frac{1}{\varepsilon(T)}.
+S_\alpha(j;T):=\sum_{T<\gamma\le 2T} e(j\alpha\gamma),
+\qquad
+e(x):=e^{2\pi i x}.
 ```
 
-Then the following implication is enough for the direct route:
-
-if
+Set
 
 ```tex
-\sum_{1\le j\le H(T)}\frac{|S_j(T)|}{j}
-=
-o\!\bigl(N(T)\varepsilon(T)\bigr),
+H:=\left\lfloor \frac{1}{2\varepsilon}\right\rfloor.
 ```
 
-then
+Then there exists an absolute constant `C>0` such that for every `T\ge 2`,
 
 ```tex
-\mathcal N_\alpha(T,\varepsilon)=o\!\bigl(N(T)\varepsilon(T)\bigr).
-```
-
-In particular, if
-
-```tex
-\varepsilon(T)=o\!\left(\frac{\log T}{T^2}\right),
-```
-
-then
-
-```tex
-N(T)\varepsilon(T)\asymp T\log T\cdot \varepsilon(T)\to 0,
-```
-
-so the above estimate forces
-
-```tex
-\mathcal N_\alpha(T,\varepsilon)=0
-```
-
-for all sufficiently large `T`, excluding the integer-resonance branch.
-
-Sketch. Approximate the indicator of the arc
-
-```tex
-I_\varepsilon:=(-\varepsilon,\varepsilon)\subset \mathbb R/\mathbb Z
-```
-
-from above and below by Beurling--Selberg or Fej\'er/Erd\H{o}s--Tur\'an majorants
-of Fourier degree `H(T)`. Their zeroth coefficient is `2\varepsilon(T)+O(1/H(T))`,
-and their nonzero Fourier coefficients are `O(1/j)` for `1\le j\le H(T)`.
-Evaluating these majorants on the multiset `\{\alpha\gamma\}_{0<\gamma\le T}`
-gives
-
-```tex
-\mathcal N_\alpha(T,\varepsilon)
+A_\alpha(T,\varepsilon)
 \le
-2\varepsilon(T)N(T)
+C\,\varepsilon\,\mathcal N(T,2T]
 +
-O\!\left(\frac{N(T)}{H(T)}\right)
-+
-O\!\left(\sum_{1\le j\le H(T)}\frac{|S_j(T)|}{j}\right),
+C\,\varepsilon\sum_{j=1}^{H-1}|S_\alpha(j;T)|.
 ```
 
-and similarly from below. With `H(T)\asymp 1/\varepsilon(T)`, the middle term
-is `O(N(T)\varepsilon(T))`, so the stated high-frequency control yields the
-claim.
-
-Thus the live problem is no longer vague modulo-one distribution, but one
-precise high-frequency target:
+Proof. Introduce the Fej\'er kernel
 
 ```tex
-\text{control }S_j(T)\text{ up to }j\lesssim \frac{1}{\varepsilon(T)}.
+F_H(x)
+:=
+\sum_{|j|<H}\left(1-\frac{|j|}{H}\right)e(jx)
+=
+\frac1H\left(\frac{\sin(\pi Hx)}{\sin(\pi x)}\right)^2.
 ```
 
-For the branch relevant to `D2g24`, this means frequencies as large as
+It is nonnegative. If `\|x\|\le \varepsilon`, then by the choice of `H` one
+has `H\|x\|\le 1/2`. Hence `0\le \pi H\|x\|\le \pi/2`, and the elementary
+estimates
+
+```tex
+\sin u\ge \frac{2}{\pi}u
+\qquad (0\le u\le \pi/2),
+\qquad
+|\sin(\pi x)|\le \pi \|x\|
+```
+
+give
+
+```tex
+|\sin(\pi Hx)|\ge 2H\|x\|.
+```
+
+Therefore
+
+```tex
+F_H(x)
+=
+\frac1H\left(\frac{\sin(\pi Hx)}{\sin(\pi x)}\right)^2
+\ge
+\frac1H\left(\frac{2H\|x\|}{\pi\|x\|}\right)^2
+=
+\frac{4}{\pi^2}H.
+```
+
+So
+
+```tex
+\mathbf 1_{\{\|x\|\le \varepsilon\}}
+\le
+\frac{\pi^2}{4H}F_H(x).
+```
+
+Summing this with `x=\alpha\gamma` over `T<\gamma\le 2T` yields
+
+```tex
+A_\alpha(T,\varepsilon)
+\le
+\frac{\pi^2}{4H}\sum_{T<\gamma\le 2T}F_H(\alpha\gamma).
+```
+
+Expanding `F_H` gives
+
+```tex
+\sum_{T<\gamma\le 2T}F_H(\alpha\gamma)
+\le
+\mathcal N(T,2T]
++
+2\sum_{j=1}^{H-1}\left(1-\frac{j}{H}\right)|S_\alpha(j;T)|.
+```
+
+Since `H\asymp 1/\varepsilon`, we obtain
+
+```tex
+A_\alpha(T,\varepsilon)
+\le
+C\,\varepsilon\,\mathcal N(T,2T]
++
+C\,\varepsilon\sum_{j=1}^{H-1}|S_\alpha(j;T)|.
+```
+
+This is the required shrinking-target bridge.
+
+For the branch relevant to `D2g24`, take
+
+```tex
+\varepsilon(T)=o\!\left(\frac{\log T}{T^2}\right).
+```
+
+Since classically
+
+```tex
+\mathcal N(T,2T]\ll T\log T,
+```
+
+the first term is already
+
+```tex
+\varepsilon(T)\mathcal N(T,2T]
+=
+o(1).
+```
+
+So only the high-frequency exponential sums remain.
+
+```tex
+\textbf{D2g26. High-frequency exponential-sum criterion.}
+```
+
+If
+
+```tex
+\varepsilon(T)\sum_{1\le j\le \lfloor 1/(2\varepsilon(T))\rfloor}
+|S_\alpha(j;T)|
+=
+o(1),
+```
+
+then
+
+```tex
+A_\alpha(T,\varepsilon(T))=o(1).
+```
+
+Because `A_\alpha(T,\varepsilon(T))` is an integer, it follows that for all
+sufficiently large `T`,
+
+```tex
+A_\alpha(T,\varepsilon(T))=0.
+```
+
+Hence there are no infinitely many zeros with
+
+```tex
+\|\alpha\gamma\|\le \varepsilon(\gamma),
+\qquad
+\varepsilon(T)=o\!\left(\frac{\log T}{T^2}\right).
+```
+
+This excludes the integer-resonance / near-progression branch.
+
+Thus the live burden is now completely explicit:
+
+```tex
+\text{control }S_\alpha(j;T)\text{ for }j\lesssim \frac{1}{\varepsilon(T)}.
+```
+
+For our target scale, this means frequencies up to
 
 ```tex
 j\lesssim \frac{T^2}{\log T}.
 ```
 
-This is exactly the shrinking-target burden.
-
 ```tex
-\textbf{D2g25a. Exceptional/nonexceptional split.}
+\textbf{D2g26a. Exceptional/nonexceptional split.}
 ```
 
-The Ford--Zaharescu picture suggests a clean tactical fork:
+The Ford--Zaharescu picture suggests the tactical fork:
 
 1. if `\alpha=a/\pi` lies in the exceptional set
 
@@ -4928,10 +5013,10 @@ The Ford--Zaharescu picture suggests a clean tactical fork:
    corresponding rational points;
 
 2. if `\alpha` is nonexceptional, then the natural live target is the
-   high-frequency estimate in `D2g25`.
+   high-frequency estimate in `D2g26`.
 
-So `D2g25` is the right next theorem packet: it converts the integer-resonance
-branch into one explicit shrinking-target Fourier problem.
+So `D2g25/D2g26` is the right theorem packet: it converts the
+integer-resonance branch into one explicit shrinking-target Fourier problem.
 
 Now the remaining live coefficient question is extremely narrow:
 

@@ -5421,16 +5421,22 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   negligible but `S(T)` must still jump by size `\asymp 1`.
   So the integer-resonance branch has been converted into a supertiny
   local-oscillation problem for the argument term `S(T)`.
-- now packaged the next exact burden as `D2g25/D2g25a`:
-  a shrinking-target modulo-one exclusion for `\alpha=a/\pi`, with a precise
-  sufficient Fourier criterion
-  `\sum_{j\le H(T)} |S_j(T)|/j = o(N(T)\varepsilon(T))` at frequencies
-  `H(T)\asymp 1/\varepsilon(T)`.
-  For our scale `\varepsilon(T)=o((\log T)/T^2)`, this means
-  `H(T)\asymp T^2/\log T`.
-- this is a very clean endpoint: the live question is no longer generic
-  equidistribution, but high-frequency control of exponential sums over zeros
-  on a shrinking-target scale.
+- upgraded that packet to the sharper `D2g25/D2g26` form:
+  on each dyadic block `(T,2T]`, the shrinking-target count
+  `A_\alpha(T,\varepsilon)` is controlled explicitly by a Fej\'er-kernel bridge
+  ```
+  A_\alpha(T,\varepsilon)
+  \ll
+  \varepsilon\,\mathcal N(T,2T]
+  +
+  \varepsilon\sum_{j\le 1/(2\varepsilon)}|S_\alpha(j;T)|.
+  ```
+  So the first term already dies on our scale, and the entire burden moves to
+  `D2g26`: high-frequency control of `S_\alpha(j;T)` up to
+  `j\asymp T^2/\log T`.
+- this is cleaner than the older abstract majorant wording:
+  the live question is now literally one explicit exponential-sum criterion on
+  dyadic zero blocks.
 - also sharpened the Hermite-capture fingerprint itself:
   `D2g18b` now shows that once a local packet enters an `O(h)`-tube around the
   Hermite line, every adjacent residue ratio must lie in an `O(h)`-tube around
