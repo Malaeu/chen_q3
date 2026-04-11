@@ -6236,3 +6236,14 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - active next question: can the genuine paired residues
   `q_\gamma=e(x_\gamma-1)` support such a long globally phase-locked
   alternating train?
+
+## In progress (2026-04-11): D2g31h identification with the canonical model enemy
+
+- exact gain: the phase-locked alternating train from `D2g31f/g` is not a new
+  species; it is exactly the same finite-difference/Hermite genre already
+  isolated in `D2g13b/D2g13c`;
+- therefore the direct frontier compresses again: the live enemy is no longer
+  an abstract train, but a genuine paired realization of the canonical model
+  packet;
+- active next question: can the actual support `Y_a={x_\gamma,x_\gamma-1}`
+  realize this canonical model enemy without already dropping into `D2f3`?

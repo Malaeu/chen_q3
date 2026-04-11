@@ -8068,6 +8068,42 @@ many points”, but:
 
 That is the next exact incompatibility question.
 
+There is also a natural identification of this train with the already-built
+canonical enemy.
+
+```tex
+\textbf{D2g31h. A long phase-locked alternating train is exactly the model-enemy genre.}
+```
+
+The model packet from `D2g13b/D2g13c` was already:
+
+- a dense near-arithmetic cluster,
+- with one global phase,
+- with alternating finite-difference/Hermite coefficients,
+- and with local defect of order `h^{L-1}`.
+
+But this is precisely the structural profile forced by `D2g31f/g` on any
+surviving bounded-block chain.
+
+So the direct route compresses again:
+
+```tex
+\boxed{
+\text{after }D2g31g,\ \text{the only remaining direct enemy is a genuine
+paired realization of the canonical finite-difference/Hermite model packet.}
+}
+```
+
+This is a strong gain. It means we are no longer searching over a large space
+of possible obstructions. The live question becomes:
+
+```tex
+\text{can }Y_a=\{x_\gamma,x_\gamma-1\}\text{ support the canonical model enemy
+without already forcing entry into }D2f3?
+```
+
+That is the exact next theorem-shape.
+
 Now the remaining live coefficient question is extremely narrow:
 
 ```tex
