@@ -6575,18 +6575,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - for the actual zero-mode column this means
   `w_{r,0}(a)=c_{a,N,M}(-1)^r` on the whole compressed window
   `N<r\le M`, equivalently the paired sum
-  `\sum_{\gamma>0}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)` would have to be
+  `\sum_{\{\gamma,-\gamma\}\subset\Gamma}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)` would have to be
   constant in `r` on that window;
-- there is now a natural next arithmetic target behind this:
-  if the paired sum
-  `F_a(\lambda):=\sum_{\gamma>0}\sin^2(a\gamma)/(\gamma^2-\lambda)`
-  can be justified as a Stieltjes-type transform with positive weights, then it
-  is strictly increasing between its poles, so such windowwise constancy would
-  force every interval `(\alpha_r^2,\alpha_{r+1}^2)` in the window to contain a
-  pole `\gamma^2` with `\sin(a\gamma)\neq 0`;
+- the tempting Stieltjes/monotonicity shortcut has now been explicitly
+  rejected: our `\gamma` are zeros of `\xi(1/2-iz)` in the complex plane, so
+  the paired quotient sum is not currently an honest positive measure on real
+  `\gamma^2`;
 - so the next exact theorem-target is now cleanly split:
   either prove a stronger one-sided purity/sign law for the paired sum
-  `\sum_{\gamma>0}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)`,
+  `\sum_{\{\gamma,-\gamma\}\subset\Gamma}\sin^2(a\gamma)/(\gamma^2-\alpha_r^2)`,
   or derive the full first-order endpoint formula and show that the adjoint
   companion terms cancel the cross-sign part exactly;
 - concrete file pointers for this step:

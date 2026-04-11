@@ -786,7 +786,8 @@ for some scalar `c_{a,N,M}` depending on the window.
 Equivalently, the paired zero-sum
 
 ```tex
-\sum_{\gamma>0}\frac{\sin^2(a\gamma)}{\gamma^2-\alpha_r^2}
+\sum_{\{\gamma,-\gamma\}\subset \Gamma}
+\frac{\sin^2(a\gamma)}{\gamma^2-\alpha_r^2}
 ```
 
 would have to be constant in `r` on every compressed window where such a
@@ -800,65 +801,27 @@ So the next arithmetic wall is now brutally explicit:
 \text{ on arbitrarily long tails?}
 ```
 
-There is also one natural monotonicity route hiding inside this formulation.
-Define the paired positive-zero transform
+At first glance one might try to turn this into a Stieltjes-type monotonicity
+argument in the variable `\lambda=\alpha_r^2`. But that would require treating
+the paired sum as a positive measure over real `\gamma^2`, and the current raw
+formula does **not** justify that: in this project `\gamma` runs over the zeros
+of `\xi(1/2-iz)` in the complex plane, not over an a priori positive real set.
+
+So the honest conclusion is sharper and more modest:
 
 ```tex
-F_a(\lambda)
-:=
-\sum_{\gamma>0}
-\frac{\sin^2(a\gamma)}{\gamma^2-\lambda},
+\text{the `\gamma\leftrightarrow-\gamma` pairing gives exact evenness,}
+\text{ but not a positive Stieltjes transform.}
 ```
 
-so that formally
+Hence the Stieltjes/monotonicity route is currently a killed subroute, not an
+active theorem. The live arithmetic target remains only the alternating-tail
+rigidity itself:
 
 ```tex
-w_{r,0}(a)=\frac{4(-1)^r}{a}F_a(\alpha_r^2).
+\text{can the paired quotient sum above really be constant in }r
+\text{ on long compressed windows?}
 ```
-
-If one can justify this as a genuine Stieltjes-type transform with positive
-weights, then on every interval avoiding the pole set
-`\{\gamma^2:\sin(a\gamma)\neq 0\}` one has the strict derivative sign
-
-```tex
-F_a'(\lambda)
-=
-\sum_{\gamma>0}
-\frac{\sin^2(a\gamma)}{(\gamma^2-\lambda)^2}
->
-0.
-```
-
-So exact alternating rigidity
-
-```tex
-w_{r,0}(a)=c_{a,N,M}(-1)^r
-\qquad (N<r\le M)
-```
-
-would force `F_a(\alpha_r^2)` to be constant on that window, and hence would
-be impossible unless every adjacent interval
-
-```tex
-(\alpha_r^2,\alpha_{r+1}^2)
-```
-
-contains a pole `\gamma^2` with `\sin(a\gamma)\neq 0`.
-
-Equivalently, a successful first-order companion cancellation on a long window
-would force a dense interlacing condition:
-
-```tex
-\forall r\in(N,M)\ \exists \gamma>0
-\text{ such that }
-\alpha_r<\gamma<\alpha_{r+1}
-\text{ and }
-\sin(a\gamma)\neq 0.
-```
-
-This is not yet a proved theorem in the packet, because the Stieltjes
-justification for `F_a` still has to be made honest. But it is now the next
-clean arithmetic target after the linear-algebra rigidity above.
 
 ### `PO3a.2` Boundary expansion
 
