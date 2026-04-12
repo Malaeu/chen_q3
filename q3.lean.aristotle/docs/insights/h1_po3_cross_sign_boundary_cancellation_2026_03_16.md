@@ -4662,6 +4662,98 @@ u_{2,+}=0.
 
 That is the second claim. ∎
 
+### Corollary `PO3a-rigidity in the identity-outer case`
+
+Assume the setup of
+`PO3a-two-by-two receiver under physical Volterra normal form`, and specialize
+to the identity outer operators
+
+```tex
+U=V=I.
+```
+
+Assume also the fixed endpoint data are nonzero:
+
+```tex
+h_{+,N}\neq 0,
+\qquad
+\ell_{-,N}P_-\neq 0.
+```
+
+If
+
+```tex
+P_+H_{a,N}^{\mathrm{Vol}}P_-=0,
+```
+
+then both side-pairs are automatically linearly dependent:
+
+```tex
+\{h_{+,N},\,P_+v_{a,N}\}\ \text{is linearly dependent},
+\qquad
+\{\langle P_-v_{a,N}|,\,\langle \ell_{-,N}P_-|\}\ \text{is linearly dependent}.
+```
+
+Equivalently, there exist scalars `\alpha_{+,N}(a),\alpha_{-,N}(a)\in\mathbb C`
+such that
+
+```tex
+\boxed{
+P_+v_{a,N}=\alpha_{+,N}(a)\,h_{+,N},
+\qquad
+P_-v_{a,N}=\alpha_{-,N}(a)\,h_{-,N},
+}
+```
+
+where `h_{-,N}:=(\ell_{-,N}P_-)^*`.
+
+#### Proof
+
+If the plus-side pair were linearly independent, then
+`PO3a-one-side independence forces opposite-side annihilation` would give
+
+```tex
+\langle P_-v_{a,N}|=0,
+\qquad
+\langle \ell_{-,N}P_-|=0,
+```
+
+contradicting the assumption `\ell_{-,N}P_-\neq 0`. So the plus-side pair must
+be linearly dependent.
+
+If the minus-side pair of functionals were linearly independent, the same
+corollary would give
+
+```tex
+h_{+,N}=0,
+\qquad
+P_+v_{a,N}=0,
+```
+
+contradicting `h_{+,N}\neq 0`. So the minus-side pair must also be linearly
+dependent.
+
+The vector relation
+
+```tex
+P_+v_{a,N}=\alpha_{+,N}(a)\,h_{+,N}
+```
+
+is just a rewriting of dependence of the plus-side pair. For the minus-side
+pair, dependence of the functionals means
+
+```tex
+\langle P_-v_{a,N}|=\beta\,\langle \ell_{-,N}P_-|.
+```
+
+Taking Riesz representatives gives
+
+```tex
+P_-v_{a,N}=\overline{\beta}\,h_{-,N},
+```
+
+which is the second displayed identity. ∎
+
 ### `PO3a.3` Kernel sign-preservation on boundary generators
 
 Show that the kernel action preserves the sign purity of the boundary

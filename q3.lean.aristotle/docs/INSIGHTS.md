@@ -7058,3 +7058,20 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `PO3a-Volterra-word admission criterion`,
   `PO3a-two-by-two receiver under physical Volterra normal form`,
   and `Q3/Proofs/HBridge_PO3_Shell.lean` as the formal shell consumer.
+
+## Final result (2026-04-12): identity-outer physical Volterra form forces zero-mode rigidity
+
+- in the specialization `U=V=I`, the `2\times 2` receiver sharpens further:
+  if the mixed block vanishes and the fixed endpoint data
+  `h_{+,N}` and `\ell_{-,N}P_-` are nonzero, then both side-pairs must be
+  linearly dependent;
+- equivalently, the zero-mode vector is forced to lie on the two fixed endpoint
+  lines:
+  `P_+v_{a,N}=\alpha_{+,N}(a)h_{+,N}` and
+  `P_-v_{a,N}=\alpha_{-,N}(a)h_{-,N}`;
+- this is much stronger than a generic boundary-algebra statement:
+  once the physical Volterra normal form lands, `PO3a` turns into a rigid
+  statement about the endpoint geometry of the single vector `v_{a,N}`;
+- so the live fork is now completely explicit:
+  either prove the real defect has the physical Volterra normal form, or show
+  this forced endpoint-line rigidity is impossible for the genuine `v_{a,N}`.
