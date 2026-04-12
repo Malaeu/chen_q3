@@ -2124,6 +2124,58 @@ subgoal:
 cancel the zero-endpoint antiderivative part.}
 ```
 
+This immediately splits the live bridge into two exact subtargets.
+
+### `PO3a-A` Finite antiderivative extraction target
+
+Produce a representation of the genuine boundary correction in the form
+
+```tex
+H_{a,N}
+=
+\sum_{j=1}^J
+U_j^*T^*
+\Bigl(
+(I-R_a)^*K_j(I-R_a)-L_j
+\Bigr)
+TV_j
+```
+
+with:
+
+- finitely many indices `j`;
+- sign-preserving outer tail operators `U_j,V_j`;
+- bounded middle kernels `K_j,L_j`.
+
+This is the endpoint-counting part of the bridge. It is already enough to show
+that every surviving boundary term is built from at most two endpoint
+insertions.
+
+### `PO3a-B` Zero-endpoint cancellation target
+
+Prove the no-endpoint part cancels in the total sum:
+
+```tex
+\sum_{j=1}^J U_j^*T^*(K_j-L_j)TV_j=0.
+```
+
+This is the only place where exact bulk matching still has to re-enter the
+story. Once it is shown, the whole boundary correction falls into the finite
+Volterra-word class and the endpoint receiver machinery applies automatically.
+
+So the live bridge is no longer one opaque theorem. It is the conjunction
+
+```tex
+\boxed{
+\text{finite antiderivative extraction}
+\;+\;
+\text{zero-endpoint cancellation}.
+}
+```
+
+Only after `PO3a-A + PO3a-B` are real does it become worth spending theorem
+energy on the stronger one-kernel physical Volterra identity.
+
 The domain-side evaluation is also explicit. Since
 
 ```tex

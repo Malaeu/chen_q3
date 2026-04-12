@@ -7163,3 +7163,19 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   plus global cancellation of the no-endpoint antiderivative part;
 - this should now be treated as the main theorem target for the bridge from the
   raw antiderivative factorization to the finite receiver.
+
+## Final result (2026-04-12): the weaker `PO3` bridge splits into two exact subgoals
+
+- the weaker bridge is now decomposed explicitly into:
+  `PO3a-A` finite antiderivative extraction and
+  `PO3a-B` zero-endpoint cancellation;
+- `PO3a-A` asks only for a finite representation
+  `\sum U_j^*T^*((I-R_a)^*K_j(I-R_a)-L_j)TV_j`
+  with sign-preserving outer tail operators and bounded middle kernels;
+- `PO3a-B` is the exact place where bulk exactness must re-enter:
+  prove the no-endpoint remainder
+  `\sum U_j^*T^*(K_j-L_j)TV_j`
+  cancels globally;
+- once `PO3a-A + PO3a-B` hold, the already-proved Volterra-word admission
+  criterion applies automatically, so the finite receiver follows without ever
+  needing the stronger one-kernel physical identity.
