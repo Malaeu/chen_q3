@@ -6645,6 +6645,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `P_+U^*Gb_{r,-}`, `P_-U^*Gb_{r,+}`, and
   `\langle b_{r,+},Gb_{s,-}\rangle`; so boundary cancellation is reduced from
   abstract algebra-membership to concrete coefficient vanishing;
+- `PO3a-core` now has one exact finite-dimensional sharpening:
+  if the boundary cap-vectors `\eta_{r,+},\eta_{s,-}` are independent and the
+  leakage vectors `u_s^-=P_+U^*Gb_{s,-}`, `v_r^+=P_-U^*Gb_{r,+}` already lie in
+  the finite cap spaces `E_\pm=\operatorname{span}\{\eta_{r,\pm}\}`, then
+  `P_+H_{a,N}P_-=0` is equivalent to one finite matrix identity `A+B+M=0`,
+  where `A,B` are the cap-coordinate matrices of the two leakage families and
+  `M_{rs}=\langle b_{r,+},Gb_{s,-}\rangle`;
+- this is stronger than the old coefficientwise kill packet: `PO3a` no longer
+  requires every leakage term to vanish separately, only that after projection
+  into the finite cap spaces the resulting matrices cancel exactly;
 - in the first-order endpoint model this `PO3a-core` formula collapses exactly
   to the old zero-mode object: the three families reduce to the two sign
   components of `U^*G\mathbf 1` plus the scalar `\langle\mathbf 1,G\mathbf 1\rangle`,

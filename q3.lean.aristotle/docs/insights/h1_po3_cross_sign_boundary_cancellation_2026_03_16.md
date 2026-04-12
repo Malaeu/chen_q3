@@ -625,6 +625,152 @@ Once the explicit boundary expansion is available, `PO3a` is no longer an
 abstract algebra-membership problem but a concrete vanishing problem for these
 three coefficient families.
 
+### Theorem `PO3a-finite reduction`
+
+There is a further exact sharpening: once the boundary channels themselves are
+known to live in finite-dimensional cap spaces, the mixed-block vanishing
+reduces to one finite matrix identity.
+
+Assume the sign-split families
+
+```tex
+\{\eta_{r,+}\}_{r=1}^{R_+}\subset\mathcal H_+,
+\qquad
+\{\eta_{s,-}\}_{s=1}^{R_-}\subset\mathcal H_-
+```
+
+are linearly independent, and define the finite boundary-cap spaces
+
+```tex
+E_+:=\operatorname{span}\{\eta_{r,+}\},
+\qquad
+E_-:=\operatorname{span}\{\eta_{s,-}\}.
+```
+
+Let `Q_\pm` be the orthogonal projectors onto `E_\pm`, and choose dual systems
+
+```tex
+\{\eta_{r,+}^\vee\}\subset E_+,
+\qquad
+\{\eta_{s,-}^\vee\}\subset E_-,
+```
+
+with
+
+```tex
+\langle \eta_{r,+}^\vee,\eta_{r',+}\rangle=\delta_{rr'},
+\qquad
+\langle \eta_{s',-},\eta_{s,-}^\vee\rangle=\delta_{s's}.
+```
+
+Now define the two bulk-to-boundary leakage families
+
+```tex
+u_s^-:=P_+U^*Gb_{s,-}\in\mathcal H_+,
+\qquad
+v_r^+:=P_-U^*Gb_{r,+}\in\mathcal H_-,
+```
+
+and the cross-sign boundary matrix
+
+```tex
+M_{rs}:=\langle b_{r,+},Gb_{s,-}\rangle.
+```
+
+Then:
+
+1. if `P_+HP_-=0`, automatically
+
+```tex
+u_s^-\in E_+ \quad \forall s,
+\qquad
+v_r^+\in E_- \quad \forall r;
+```
+
+2. conversely, once these leakage vectors are known to lie in the cap spaces,
+   the condition `P_+HP_-=0` is equivalent to the finite matrix identity
+
+```tex
+\boxed{
+A+B+M=0,
+}
+```
+
+where
+
+```tex
+A_{rs}:=\langle \eta_{r,+}^\vee,u_s^-\rangle,
+\qquad
+B_{rs}:=\langle v_r^+,\eta_{s,-}^\vee\rangle,
+\qquad
+M_{rs}:=\langle b_{r,+},Gb_{s,-}\rangle.
+```
+
+#### Proof
+
+Write
+
+```tex
+P_+HP_-=X+Y+Z,
+```
+
+with
+
+```tex
+X:=\sum_s |u_s^-\rangle\langle \eta_{s,-}|,
+\qquad
+Y:=\sum_r |\eta_{r,+}\rangle\langle v_r^+|,
+\qquad
+Z:=\sum_{r,s}M_{rs}|\eta_{r,+}\rangle\langle \eta_{s,-}|.
+```
+
+If `P_+HP_-=0`, then applying `(I-Q_+)` on the left and `Q_-` on the right
+kills `Y` and `Z`, leaving
+
+```tex
+\sum_s |(I-Q_+)u_s^-\rangle\langle \eta_{s,-}|=0.
+```
+
+Linear independence of `\{\eta_{s,-}\}` gives `(I-Q_+)u_s^-=0`, hence
+`u_s^-\in E_+`. The same argument with `Q_+` on the left and `(I-Q_-)` on the
+right gives `v_r^+\in E_-`.
+
+Now assume `u_s^-\in E_+` and `v_r^+\in E_-`. Expanding in the dual bases gives
+
+```tex
+u_s^-=\sum_r A_{rs}\eta_{r,+},
+\qquad
+v_r^+=\sum_s B_{rs}\eta_{s,-}.
+```
+
+So
+
+```tex
+X=\sum_{r,s}A_{rs}|\eta_{r,+}\rangle\langle \eta_{s,-}|,
+\qquad
+Y=\sum_{r,s}B_{rs}|\eta_{r,+}\rangle\langle \eta_{s,-}|,
+\qquad
+Z=\sum_{r,s}M_{rs}|\eta_{r,+}\rangle\langle \eta_{s,-}|.
+```
+
+Therefore
+
+```tex
+P_+HP_-=
+\sum_{r,s}(A_{rs}+B_{rs}+M_{rs})|\eta_{r,+}\rangle\langle \eta_{s,-}|.
+```
+
+Because the rank-one bricks `|\eta_{r,+}\rangle\langle \eta_{s,-}|` are
+linearly independent, this vanishes exactly when `A+B+M=0`. ∎
+
+So `PO3a` has now been reduced one step further:
+
+```tex
+\text{first force the leakage vectors into the finite cap spaces;}
+\qquad
+\text{then solve one finite matrix cancellation problem }A+B+M=0.
+```
+
 ### First-order endpoint specialization
 
 The abstract packet is not separate from the current live route; in the first
