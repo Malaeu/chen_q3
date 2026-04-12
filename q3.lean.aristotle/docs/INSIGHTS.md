@@ -6969,3 +6969,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   эквивалентный класс крайних слов;
 - после этого `PO3a` входит в уже замороженный каркас
   `P_+ H_{a,N} P_- = E_+ (A+B+M) E_-^*`.
+
+## Final result (2026-04-12): the finite mixing receiver is now canonical
+
+- `PO3a` strengthened one step further in
+  [`h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md):
+  the finite plus/minus spaces are no longer arbitrary spaces through which the
+  leakage must separately be shown to factor;
+  instead they are built canonically from
+  raw right-generators together with the two leakage ranges
+  `\operatorname{Ran}(P_+U^*GL_-^{\mathrm{raw}})` and
+  `\operatorname{Ran}(P_-U^*GL_+^{\mathrm{raw}})`;
+- with that choice, the finite receiver becomes automatic:
+  `P_+U^*GL_-=E_+\mathsf A`,
+  `L_+^*GUP_-=\mathsf B E_-^*`,
+  `\mathsf M=L_+^*GL_-`,
+  hence
+  `P_+H_{a,N}P_-=E_+(\mathsf A+\mathsf B+\mathsf M)E_-^*`;
+- so the live `PO3a` burden is now even narrower:
+  once the genuine boundary correction is reduced to finite row/column or
+  endpoint-word data, there is no separate leakage-placement lemma left;
+  the whole mixed-block question is one canonical finite matrix identity
+  `\mathsf A+\mathsf B+\mathsf M=0`;
+- this is the strongest current finite-dimensional receiver for the boundary
+  attack.

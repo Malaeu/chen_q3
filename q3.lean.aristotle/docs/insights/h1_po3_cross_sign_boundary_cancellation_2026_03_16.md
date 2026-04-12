@@ -1631,6 +1631,209 @@ So the fully compressed `PO3a` receiver is now:
 \text{check one finite matrix }A+B+M.
 ```
 
+### Theorem `PO3a-canonical finite matrix receiver`
+
+The previous receiver can be strengthened by building the finite plus/minus
+spaces so that the leakage vectors are included by definition, rather than by
+an extra factorization hypothesis.
+
+Keep the same corrected-column setup and the same raw sign-pure decomposition
+
+```tex
+B
+=
+L_+^{\mathrm{raw}}(G_+^{\mathrm{raw}})^*
+\;+\;
+L_-^{\mathrm{raw}}(G_-^{\mathrm{raw}})^*.
+```
+
+Define the finite plus and minus spaces by
+
+```tex
+E_+
+:=
+\operatorname{span}\Bigl(
+\operatorname{Ran}G_+^{\mathrm{raw}}
+\cup
+\operatorname{Ran}(P_+U^*GL_-^{\mathrm{raw}})
+\Bigr),
+```
+
+```tex
+E_-
+:=
+\operatorname{span}\Bigl(
+\operatorname{Ran}G_-^{\mathrm{raw}}
+\cup
+\operatorname{Ran}(P_-U^*GL_+^{\mathrm{raw}})
+\Bigr).
+```
+
+Choose orthonormal basis columns
+
+```tex
+E_+
+=
+\bigl[\,|\eta_1^+\rangle\ \cdots\ |\eta_{m_+}^+\rangle\,\bigr],
+\qquad
+E_-
+=
+\bigl[\,|\eta_1^-\rangle\ \cdots\ |\eta_{m_-}^-\rangle\,\bigr].
+```
+
+Since `\operatorname{Ran}G_\pm^{\mathrm{raw}}\subset E_\pm`, there exist
+finite coefficient matrices `C_\pm` such that
+
+```tex
+G_+^{\mathrm{raw}}=E_+C_+,
+\qquad
+G_-^{\mathrm{raw}}=E_-C_-.
+```
+
+Set
+
+```tex
+L_+:=L_+^{\mathrm{raw}}C_+^*,
+\qquad
+L_-:=L_-^{\mathrm{raw}}C_-^*.
+```
+
+Then
+
+```tex
+\boxed{
+B=L_+E_+^*+L_-E_-^*.
+}
+```
+
+Moreover, the leakage terms now factor automatically:
+
+```tex
+P_+U^*GL_-=E_+\mathsf A,
+\qquad
+L_+^*GUP_-=\mathsf B E_-^*,
+```
+
+with the canonical finite matrices
+
+```tex
+\mathsf A:=E_+^*U^*GL_-,
+\qquad
+\mathsf B:=L_+^*GUE_-,
+\qquad
+\mathsf M:=L_+^*GL_-.
+```
+
+Hence
+
+```tex
+\boxed{
+P_+HP_-=E_+(\mathsf A+\mathsf B+\mathsf M)E_-^*.
+}
+```
+
+In particular,
+
+```tex
+\boxed{
+P_+HP_-=0
+\qquad\Longleftrightarrow\qquad
+\mathsf A+\mathsf B+\mathsf M=0.
+}
+```
+
+#### Proof
+
+The identity
+
+```tex
+B=L_+E_+^*+L_-E_-^*
+```
+
+follows exactly as before:
+
+```tex
+L_+E_+^*
+=
+L_+^{\mathrm{raw}}C_+^*E_+^*
+=
+L_+^{\mathrm{raw}}(E_+C_+)^*
+=
+L_+^{\mathrm{raw}}(G_+^{\mathrm{raw}})^*,
+```
+
+and similarly on the minus side.
+
+By construction,
+
+```tex
+\operatorname{Ran}(P_+U^*GL_-^{\mathrm{raw}})\subset E_+.
+```
+
+Since `L_-=L_-^{\mathrm{raw}}C_-^*`, this implies
+
+```tex
+\operatorname{Ran}(P_+U^*GL_-)\subset E_+,
+```
+
+hence
+
+```tex
+P_+U^*GL_-
+=
+E_+(E_+^*U^*GL_-)
+=
+E_+\mathsf A.
+```
+
+The minus-side leakage is identical:
+
+```tex
+L_+^*GUP_-
+=
+(L_+^*GUE_-)E_-^*
+=
+\mathsf B E_-^*.
+```
+
+Now substitute `B=L_+E_+^*+L_-E_-^*` into
+
+```tex
+H=U^*GB+B^*GU+B^*GB.
+```
+
+Exactly as in the previous corollary, the mixed block keeps only the three
+cross-sign pieces:
+
+```tex
+P_+HP_-
+=
+P_+U^*GL_-E_-^*
+\;+\;
+E_+L_+^*GUP_-
+\;+\;
+E_+L_+^*GL_-E_-^*.
+```
+
+Substituting the canonical factorizations and writing
+`\mathsf M:=L_+^*GL_-` gives
+
+```tex
+P_+HP_-=E_+(\mathsf A+\mathsf B+\mathsf M)E_-^*.
+```
+
+Since `E_+^*E_+=I` and `E_-^*E_-=I`, this vanishes exactly when
+`\mathsf A+\mathsf B+\mathsf M=0`. ∎
+
+So the strongest current finite-dimensional receiver for `PO3a` is now:
+
+```tex
+\text{build the finite plus/minus spaces so that the leakage is already inside;}
+\quad
+\text{then solve one finite matrix identity }
+\mathsf A+\mathsf B+\mathsf M=0.
+```
+
 ### First-order endpoint specialization
 
 The abstract packet is not separate from the current live route; in the first
