@@ -84,6 +84,10 @@ P_+ v_{a,N} \notin E_{+,\partial},
 - Тогда живой witness становится буквальным:
   `f_+ := (I-\Pi_{+,\partial}) P_+ v_{a,N}`.
   Если `f_+ \neq 0`, plus-side collapse уже невозможен.
+- Формальная оболочка для этого узла уже вынесена в Lean:
+  в `q3/Proofs/HBridge_PO3_Shell.lean` добавлены абстрактные леммы
+  про отделение вектора от конечномерной граничной оболочки
+  и про перенос неколлинеарности через инъективное линейное отображение.
 - Главный источник: `q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`.
 - Формальная оболочка по-прежнему сидит в
   `q3.lean.aristotle/q3/Proofs/HBridge_PO3_Shell.lean`.
