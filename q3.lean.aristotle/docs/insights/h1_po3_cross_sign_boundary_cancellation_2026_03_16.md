@@ -2263,6 +2263,14 @@ G_k \in \mathbb C^\times G_{k+1}
 }
 ```
 
+Iterating gives the exact closed form
+
+```tex
+G_k(z)=\frac{(-1)^k}{s_1\cdots s_k}\,G_0(z),
+\qquad
+G_0(z):=\frac{J_a(z)}{E_0^{sq}(z)}.
+```
+
 This is a very strong route squeeze. It means the most natural internal
 square-division chain does **not** produce a second distinct quotient object
 after the common zeros are removed. So the naive `SQ2c` plan
@@ -2284,7 +2292,9 @@ accept that the natural internal chain is vacuous.}
 ```
 
 So `SQ2` remains mathematically cleaner than `SQ1`, but its most natural
-ordering candidate has now been killed exactly.
+ordering candidate has now been killed exactly. Equivalently: after quotienting
+by the full square-tail zero package, the branch is no longer a family
+question, but a one-object question about the single normalized quotient `G_0`.
 
 The current search status is honest:
 

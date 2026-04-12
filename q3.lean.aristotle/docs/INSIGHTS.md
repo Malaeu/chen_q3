@@ -6749,6 +6749,11 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   non-vacuous” plan inside SQ2; any live ordering import would now need a
   genuinely different second square-tail subspace, not the canonical internal
   chain;
+- equivalently, SQ2 is now compressed to a one-object quotient problem:
+  all normalized quotient generators are scalar multiples of
+  `G_0(z)=J_a(z)/E_0^{sq}(z)`, so any remaining square-support backend must
+  attack this single object directly rather than compare a family of internal
+  quotients;
 - external and local search are consistent with the same fork: the 2018
   Krein/ordering route still looks structurally compatible, while the 2022
   localization route remains non-routine because it needs power separation on
