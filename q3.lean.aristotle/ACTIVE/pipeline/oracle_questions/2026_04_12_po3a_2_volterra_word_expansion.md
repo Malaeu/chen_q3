@@ -57,6 +57,15 @@ neighbor_addresses: ["PO3a.3", "PO3a.4", "PO3a.5"]
 - Решающий decision note из `INSIGHTS`: не брать полную физическую
   вольтеррову нормальную форму как первый подшаг; сначала нужен более слабый
   мост.
+- Первый боевой oracle-проход по `q3_docs` уже подтвердил эту настройку:
+  все четыре локальные запроса возвращают один и тот же late packet,
+  а именно связку
+  `raw antiderivative factorization -> finite endpoint-projector count ->
+  Volterra-word admission -> endpoint receiver`,
+  плюс оболочку
+  `Q3/Proofs/HBridge_PO3_Shell.lean`.
+- Короткий внешний sanity-check не дал готовой внешней теоремы для этого
+  ослабленного моста; значит route остаётся внутренним, а не literature-plug-in.
 
 ## Что именно мы хотим узнать поиском
 
@@ -73,10 +82,10 @@ neighbor_addresses: ["PO3a.3", "PO3a.4", "PO3a.5"]
 
 | Запрос | Адрес | Зачем этот запрос | Какая ось варьируется | Сигнал | Куда привёл |
 | --- | --- | --- | --- | --- | --- |
-| `PO3a.2 Volterra-word admission criterion endpoint projector` | `PO3a.2` | Поднять точную формулировку критерия допуска в вольтерров класс | boundary formula → admission criterion | planned | должен вернуть поздние `PO3a`-записи от 2026-04-12 |
-| `weaker Volterra bridge finite endpoint-projector count PO3a.2` | `PO3a.2` | Проверить, где уже зафиксирован слабый вольтерров мост | full physical form → weaker bridge | planned | ожидаем decision note про отказ от полного подшага |
-| `raw antiderivative factorization endpoint defect R_a PO3a.2` | `PO3a.2` | Вернуть локальную антидифференциальную механику | factorization → endpoint defect | planned | должен указывать на кирпичи с `R_a` |
-| `PO3a.3 zero-mode column from PO3a.2 endpoint split` | `PO3a.2` | Проверить, как быстро этот адрес передаёт управление в `PO3a.3` | boundary words → one-vector test | planned | нужен мост вниз по дереву |
+| `PO3a.2 Volterra-word admission criterion endpoint projector` | `PO3a.2` | Поднять точную формулировку критерия допуска в вольтерров класс | boundary formula → admission criterion | strong hit | вернул `h1_po3_cross_sign_boundary_cancellation_2026_03_16.md` и late note про `PO3a-Volterra-word admission criterion` |
+| `weaker Volterra bridge finite endpoint-projector count PO3a.2` | `PO3a.2` | Проверить, где уже зафиксирован слабый вольтерров мост | full physical form → weaker bridge | strong hit | вернул decision note: active mainline уже зафиксирован как `raw antiderivative factorization -> finite endpoint-projector count -> Volterra-word admission -> endpoint receiver` |
+| `raw antiderivative factorization endpoint defect R_a PO3a.2` | `PO3a.2` | Вернуть локальную антидифференциальную механику | factorization → endpoint defect | hit | вернул exact algebraic rewriting и снова свёл всё к тому же `PO3a`-пакету |
+| `PO3a.3 zero-mode column from PO3a.2 endpoint split` | `PO3a.2` | Проверить, как быстро этот адрес передаёт управление в `PO3a.3` | boundary words → one-vector test | hit | вернул zero-mode collapse packet и `Q3/Proofs/HBridge_PO3_Shell.lean` как формальный потребитель |
 
 ## Пустые / шумовые слова
 
@@ -84,6 +93,8 @@ neighbor_addresses: ["PO3a.3", "PO3a.4", "PO3a.5"]
 - `physical Volterra normal form` без слова `weaker`
 - слишком широкое `commutator cloud`
 - общий `boundary formula` без `endpoint projector`
+- короткий внешний поиск без наших внутренних словарей: сигнала на готовую
+  внешнюю теорему не дал
 
 ## Новые возможные комбинации слов
 
@@ -99,6 +110,7 @@ neighbor_addresses: ["PO3a.3", "PO3a.4", "PO3a.5"]
 - В синтезе отдельно записать:
   какие слова реально возвращают ослабленный мост,
   а какие каждый раз заворачивают к полной физической форме.
+- Первый такой синтез уже добавлен 2026-04-12 после боевого oracle-прохода.
 
 ## Следующий адресный шаг
 

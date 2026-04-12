@@ -7193,3 +7193,33 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   instead of proving a full matrix formula for `B_{a,N}`, it is enough to
   rewrite it as a finite sum of boundary words through one finite endpoint
   layer.
+
+## In progress (2026-04-12): first oracle battle-test confirms the `PO3a.2` weaker-bridge vocabulary
+
+- exact address: `PO3a.2`, wired between `H-bridge.11` and `PO3a.3`;
+- local oracle pass on `q3_docs` with four queries gave one stable answer
+  rather than opening a new branch:
+  the KB keeps returning the same late `PO3a` packet and the same mainline
+  phrase
+  `raw antiderivative factorization -> finite endpoint-projector count ->
+  Volterra-word admission -> endpoint receiver`;
+- the strongest internal file pointers are still
+  `docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`,
+  `docs/INSIGHTS.md` itself, and
+  `Q3/Proofs/HBridge_PO3_Shell.lean`;
+- operationally this is good news:
+  the question journal is not scattering recall, it is tightening it around
+  the real theorem shape for `PO3a.2`;
+- vocabulary verdict:
+  “weaker Volterra bridge”, “finite endpoint-projector count”, and
+  “Volterra-word admission criterion” are strong;
+  “full physical Volterra normal form” remains a false first strike on this
+  address;
+- short external sanity-check did not reveal an off-the-shelf outside theorem
+  for this exact weaker bridge, so this subroute still has to be proved from
+  our internal packet rather than imported from the literature;
+- next local recommendation:
+  keep `H-bridge.11` as the upper address for the bridge statement itself, but
+  treat `PO3a.2` as the extraction layer and continue downward into `PO3a.3`
+  only after the weaker bridge statement is frozen in one reusable theorem
+  form.
