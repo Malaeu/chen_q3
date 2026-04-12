@@ -6741,6 +6741,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   prove that the genuine `H_{a,N}` is obtained from the Volterra undoing by
   such a two-endpoint bracket, after which endpoint normal form and the finite
   matrix reduction fire automatically;
+- there is now one more exact collapse under the natural self-adjointness
+  hypothesis `K_a=K_a^*`: the whole surviving boundary packet depends only on
+  the single tail vector `v_{K,a,N}:=T^*K_a\mathbf 1` and the single scalar
+  `c_{K,a}:=\langle \mathbf 1,K_a\mathbf 1\rangle`;
+- concretely, the three surviving terms from `PO3a-two-endpoint extraction`
+  rewrite entirely in terms of `U^*v_{K,a,N}`, `V^*v_{K,a,N}`,
+  `U^*h_{\pm,N}`, and the scalar `c_{K,a}`, so once the Volterra normal form is
+  real, `PO3a` is no longer a generic operator wall but a one-vector plus
+  one-scalar boundary problem;
 - local semantic search on the new blocker `infinite-support square-tail
   injectivity` did not surface any ready-made project theorem beyond the old
   generic `PO2` Cauchy-tail wall; short external probing likewise did not
