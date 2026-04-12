@@ -1979,6 +1979,35 @@ sanity-check only confirms the standard sine-product / Gamma-product
 identities, not any imported square-tail injectivity theorem. So `SQ1.4` is
 now the honest next theorem target inside the direct square-tail branch.
 
+There is also an immediate obstruction built into this sufficient criterion.
+Since `\mathfrak D_N(\lambda)\ge 1` for every support point, `SQ1.4` would
+already force
+
+```tex
+\sum_{\gamma\in\Gamma^\sharp}|b_\gamma|^2<\infty.
+```
+
+But here
+
+```tex
+b_\gamma=\frac{2a^2}{\pi^2}\sin^2(a\gamma),
+```
+
+so this route would require the very strong arithmetic input
+
+```tex
+\sum_{\gamma\in\Gamma^\sharp}\sin^4(a\gamma)<\infty.
+```
+
+Nothing in the current `PO3a` package provides such decay; on the contrary, the
+whole modulo-one / Ford--Zaharescu side story suggests that `a\gamma/\pi`
+should behave more like an equidistributed phase than like an `\ell^2` tail.
+Therefore `SQ1.2 + SQ1.3` should be read as a sharp diagnostic criterion, but
+not as the present mainline unless a radically stronger arithmetic theorem is
+inserted. In the current tree this demotes the direct Gibbs no-escape path to a
+backup route, and pushes the live burden back toward `SQ2` or another
+non-`\ell^2` square-tail mechanism.
+
 ```tex
 \textbf{SQ2. Square-support backend adaptation.}
 ```

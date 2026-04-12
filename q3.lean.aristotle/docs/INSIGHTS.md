@@ -6705,6 +6705,14 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - so the exact next blocker becomes `SQ1.4`: verify the support-side
   summability condition obtained by inserting this explicit envelope into
   `\sum |b_\lambda|^2\mathfrak D_N(\lambda)<\infty`;
+- but this same sufficient criterion immediately reveals an `\ell^2` barrier:
+  because `\mathfrak D_N(\lambda)\ge 1`, `SQ1.4` would already require
+  `\sum_{\gamma\in\Gamma^\sharp}|b_\gamma|^2<\infty`, i.e.
+  `\sum_{\gamma\in\Gamma^\sharp}\sin^4(a\gamma)<\infty`;
+- nothing in the current `PO3a` package gives that kind of decay, and it runs
+  against the expected modulo-one equidistribution picture for `a\gamma/\pi`,
+  so the Gibbs no-escape criterion should now be treated as a diagnostic /
+  backup route rather than the active mainline;
 - so the next honest split is now explicit:
   either attack the live wall directly through the Newton-profile /
   quadratic-divisor formulation of `J_a`,
