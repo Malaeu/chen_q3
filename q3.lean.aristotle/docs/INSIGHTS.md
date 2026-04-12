@@ -6713,6 +6713,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   against the expected modulo-one equidistribution picture for `a\gamma/\pi`,
   so the Gibbs no-escape criterion should now be treated as a diagnostic /
   backup route rather than the active mainline;
+- this pushes the live lower-shell burden onto `SQ2`, and the new exact
+  synthesis there is sharper than before: the backend should start from the
+  divided receivers `J_{a,k}`, not from raw `J_a`, because only after one
+  square-tail division do the coefficients automatically enter the natural
+  `\ell^2` class;
+- concretely, `b_\gamma^{(k)}=b_\gamma/\prod_{j\le k}(\lambda_\gamma-s_j)`
+  satisfies `|b_\gamma^{(k)}|\ll |\lambda_\gamma|^{-k}`, so already `k=1`
+  gives `\sum |b_\gamma^{(1)}|^2<\infty` thanks to
+  `n_{\Lambda_a}(R)\asymp \sqrt R\log R`;
+- the active `SQ2` packet is now:
+  `SQ2a` admissibility of `\Lambda_a` plus `\ell^2` membership for `J_{a,k}`,
+  `k\ge 1`;
+  `SQ2b` square-tail common-zero / nearly-invariant package via
+  `E_N^{sq}(z)=\prod_{m>N}(1-z/m^2)`;
+  `SQ2c` prove the resulting internal square-division chain yields at least two
+  genuinely distinct nearly invariant `*`-closed subspaces, so ordering is not
+  vacuous;
+- external and local search are consistent with the same fork: the 2018
+  Krein/ordering route still looks structurally compatible, while the 2022
+  localization route remains non-routine because it needs power separation on
+  the squared support;
 - so the next honest split is now explicit:
   either attack the live wall directly through the Newton-profile /
   quadratic-divisor formulation of `J_a`,

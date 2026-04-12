@@ -2016,6 +2016,109 @@ Try to adapt the old `PO2` discrete-Cauchy backend to the squared support
 `\Lambda_a`, now that the support and the sample set are both order-`1/2`
 objects.
 
+The exact `SQ2` synthesis is now sharper.
+
+First, the square-support backend should not start from the raw receiver
+`J_a(z)=\sum b_\gamma/(\lambda_\gamma-z)`. Unlike the old `PO2` mixed kernel,
+the coefficients
+
+```tex
+b_\gamma=\frac{2a^2}{\pi^2}\sin^2(a\gamma)
+```
+
+come with no inherited decay at `k=0`, so the natural `\ell^2` compatibility of
+the old `CB1` packet is not automatic for the undivided square receiver.
+
+However, after one square-tail division this changes completely. For every
+`k\ge 1`,
+
+```tex
+b_\gamma^{(k)}
+=
+\frac{b_\gamma}{\prod_{j=1}^k(\lambda_\gamma-(N+j)^2)}
+```
+
+obeys
+
+```tex
+|b_\gamma^{(k)}|
+\ll_{a,N,k}
+|\lambda_\gamma|^{-k}
+```
+
+on the support, because `|b_\gamma|` is bounded and
+`\lambda_\gamma\asymp \gamma^2`. Since
+
+```tex
+n_{\Lambda_a}(R)\asymp \sqrt R\log R,
+```
+
+already `k=1` gives
+
+```tex
+\sum_{\gamma\in\Gamma^\sharp}|b_\gamma^{(1)}|^2<\infty.
+```
+
+So the honest backend target is not the raw `J_a`, but the divided receivers
+`J_{a,k}` with `k\ge 1`.
+
+This yields the right `SQ2` packet:
+
+```tex
+\textbf{SQ2a. Admissibility after one square divisor.}
+```
+
+Show that the discrete support `\Lambda_a` with unit weights is admissible for a
+Cauchy-de Branges framework, and that each `J_{a,k}` with `k\ge 1` belongs to
+the natural `\ell^2` coefficient class over `\Lambda_a`.
+
+```tex
+\textbf{SQ2b. Square-tail common-zero package.}
+```
+
+Use the canonical square divider
+
+```tex
+E_N^{sq}(z)=\prod_{m>N}\left(1-\frac{z}{m^2}\right)
+```
+
+as the exact common-zero object for the tail `\{(N+1)^2,(N+2)^2,\dots\}`.
+The right question is whether the square-tail quotient class of the divided
+receivers forms a nontrivial nearly invariant `*`-closed subspace in the
+admissible Cauchy-de Branges ambient space.
+
+```tex
+\textbf{SQ2c. Non-vacuous ordering / second subspace.}
+```
+
+As in the old `CB2a3` analysis, ordering alone is useless unless one can
+produce at least two genuinely distinct nearly invariant `*`-closed square-tail
+subspaces. The natural candidate is the internal square-division chain coming
+from
+
+```tex
+J_{a,k+1}(z)=\frac{J_{a,k}(z)}{z-(N+k+1)^2}.
+```
+
+So the live question becomes: does exhausting one square-tail zero change the
+associated subspace strictly, or does the chain collapse trivially?
+
+The external signal is now consistent with this split. The 2018
+Krein/ordering theorem for Cauchy-de Branges spaces looks structurally
+compatible with the strip/parabolic support geometry, but the 2022 localization
+route still appears non-routine because it requires power separation; on the
+squared support this would mean a quantitative lower gap theorem for
+`\lambda_\gamma` or, equivalently, for the scaled ordinates `y_\gamma`.
+
+So the active `SQ2` mainline is now:
+
+```tex
+\boxed{
+\text{start at }J_{a,1}\text{ (not }J_a\text{), build the square-tail nearly
+invariant package, and test whether ordering becomes non-vacuous.}
+}
+```
+
 The current search status is honest:
 
 - the local project index does not yet contain a ready-made square-tail
