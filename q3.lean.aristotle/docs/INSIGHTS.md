@@ -6893,3 +6893,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   sign-pure boundary lemma `L3''''''`,
   and `Q3/Proofs/HBridge_PO3_Shell.lean` remains only the landing shell after a
   real mathematical proof packet exists.
+
+## In progress (2026-04-12): the concrete `PO3a` difference now sits one level lower
+
+- the filtered defect is now frozen as the exact pullback
+  `\mathcal D_{a,N}=\Delta_N^*\,\mathcal R_{a,N}^{\mathrm{raw}}\,\Delta_N`,
+  where the raw coefficients are simply
+  `\delta_{r,s}(a)=w_{r,s}(a)-\kappa(a)q_{r,s}`;
+- this removes the last vague phrasing from the current `PO3a` entry point:
+  first subtract the raw coefficients, then apply the common two-sided
+  four-term filter; there is no second hidden correction mechanism at this
+  stage;
+- therefore the live task is now explicitly lower than the filtered operator:
+  split the raw defect into bulk, boundary, and cap channels, and only then
+  pull that split through `\Delta_N`;
+- if the raw boundary part has finite row/column support, then the filtered
+  boundary part still has finite row/column support after the one-step filter,
+  so the corrected-column reduction and compressed receiver packet apply
+  automatically;
+- equivalently, the current local burden is no longer “understand the whole
+  filtered boundary operator”, but “show that the raw boundary defect lands in
+  the finite-support / endpoint-word class”, because that already forces the
+  finite matrix cancellation frame `A+B+M=0`;
+- detailed write-up:
+  [`h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md).

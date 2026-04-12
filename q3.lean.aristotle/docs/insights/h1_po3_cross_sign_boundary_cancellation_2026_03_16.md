@@ -338,6 +338,205 @@ with `\delta_{r,s}(a)=w_{r,s}(a)-\kappa(a)q_{r,s}`.
 So `PO3a` is no longer a vague cancellation wish. It reduces to proving that
 the boundary part of the infinite-tail defect is sign-pure.
 
+### Exact filtered pullback of the raw defect
+
+There is now also one exact algebraic rewriting of the filtered defect itself.
+
+Let the two-sided raw tail basis be written as
+
+```tex
+e_r:=z^r,
+\qquad
+|r|>N,
+```
+
+and define the raw defect coefficients by
+
+```tex
+\delta_{r,s}(a):=w_{r,s}(a)-\kappa(a)q_{r,s}.
+```
+
+Let `\mathcal R_{a,N}^{\mathrm{raw}}` be the operator (or sesquilinear form)
+on the raw tail model space with matrix entries
+
+```tex
+\langle \mathcal R_{a,N}^{\mathrm{raw}}e_s,e_r\rangle
+:=
+\delta_{r,s}(a).
+```
+
+Write the two-sided filtered shift on the raw tail basis as
+
+```tex
+\Delta_N e_r
+=
+e_r+e_{r+\operatorname{sgn}(r)},
+\qquad
+|r|>N,
+```
+
+so that on positive and negative modes this is exactly the old rules
+
+```tex
+\Delta_N z^n=z^n+z^{n+1},
+\qquad
+\Delta_N z^{-n}=z^{-n}+z^{-(n+1)}.
+```
+
+Then the filtered tail defect is exactly the filtered pullback of the raw
+defect:
+
+```tex
+\boxed{
+\mathcal D_{a,N}
+=
+\Delta_N^*\,\mathcal R_{a,N}^{\mathrm{raw}}\,\Delta_N.
+}
+```
+
+Equivalently, for every sign pair `\sigma,\tau\in\{+,-\}` and every `m,n>N`,
+
+```tex
+\bigl\langle \mathcal D_{a,N}e_{\varepsilon_\tau n},
+e_{\varepsilon_\sigma m}\bigr\rangle
+=
+\bigl\langle
+\mathcal R_{a,N}^{\mathrm{raw}}\Delta_N e_{\varepsilon_\tau n},
+\Delta_N e_{\varepsilon_\sigma m}
+\bigr\rangle,
+```
+
+which expands exactly to the four-term stencil already frozen in `PO2`.
+
+#### Proof
+
+For the mixed block, this is exactly `L3'` from `PO2`:
+
+```tex
+R_{mn}^{+-}(a)
+=
+\delta_{m,-n}(a)
++ \delta_{m+1,-n}(a)
++ \delta_{m,-(n+1)}(a)
++ \delta_{m+1,-(n+1)}(a).
+```
+
+But
+
+```tex
+\Delta_N e_m=e_m+e_{m+1},
+\qquad
+\Delta_N e_{-n}=e_{-n}+e_{-(n+1)},
+```
+
+so by the definition of `\mathcal R_{a,N}^{\mathrm{raw}}`,
+
+```tex
+\bigl\langle
+\mathcal R_{a,N}^{\mathrm{raw}}\Delta_N e_{-n},
+\Delta_N e_m
+\bigr\rangle
+```
+
+expands to the same four displayed terms. The same argument works for every
+sign pair, because both `\textup{prop:H1-raw-entry-reduction}` and
+`\textup{prop:H1-filtered-q-blocks}` were stated for all
+`\sigma,\tau\in\{+,-\}`. Hence every filtered block of `\mathcal D_{a,N}` is
+obtained from the corresponding block of `\mathcal R_{a,N}^{\mathrm{raw}}` by
+the same two-sided stencil, which is exactly the operator identity
+
+```tex
+\mathcal D_{a,N}=\Delta_N^*\,\mathcal R_{a,N}^{\mathrm{raw}}\,\Delta_N.
+```
+∎
+
+### Concrete meaning of the difference
+
+This removes one layer of fog completely.
+
+For every sign pair `\sigma,\tau\in\{+,-\}` and every `m,n>N`, the filtered
+Suzuki entry and the filtered model entry are both produced by the same
+two-sided four-term stencil:
+
+```tex
+M_{mn}^{\sigma\tau}(a)
+=
+\sum_{\epsilon_1,\epsilon_2\in\{0,1\}}
+w_{\varepsilon_\sigma(m+\epsilon_1),\,\varepsilon_\tau(n+\epsilon_2)}(a),
+```
+
+```tex
+\kappa(a)\,\widetilde q_{mn}^{\sigma\tau}
+=
+\sum_{\epsilon_1,\epsilon_2\in\{0,1\}}
+\kappa(a)\,q_{\varepsilon_\sigma(m+\epsilon_1),\,\varepsilon_\tau(n+\epsilon_2)}.
+```
+
+Subtracting gives
+
+```tex
+\bigl(\mathcal D_{a,N}\bigr)_{mn}^{\sigma\tau}
+=
+\sum_{\epsilon_1,\epsilon_2\in\{0,1\}}
+\delta_{\varepsilon_\sigma(m+\epsilon_1),\,\varepsilon_\tau(n+\epsilon_2)}(a),
+```
+
+with no extra correction term and no hidden second mechanism. In other words:
+
+```tex
+\text{first subtract raw coefficients, then apply the common filter.}
+```
+
+So the real lower-shell task is not to guess the filtered defect directly. It
+is to split the raw defect
+
+```tex
+\mathcal R_{a,N}^{\mathrm{raw}}
+=
+\mathcal R_{a,N}^{\mathrm{bulk}}
+\,+\,
+\mathcal R_{a,N}^{\partial}
+\,+\,
+\mathcal R_{a,N}^{\mathrm{cap}},
+```
+
+and then pull that split through `\Delta_N`.
+
+This is exactly where the finite row/column machinery becomes relevant. If the
+raw boundary part `\mathcal R_{a,N}^{\partial}` is supported on finitely many
+rows and columns, then `\Delta_N^*\mathcal R_{a,N}^{\partial}\Delta_N` is still
+a finite row/column boundary operator, because left and right multiplication by
+the one-step tail filter only enlarges the support by one adjacent index.
+
+Therefore the corrected-column reduction and the compressed receiver packet
+apply after the pullback:
+
+```tex
+\text{raw boundary defect with finite row/column support}
+\Longrightarrow
+\text{filtered boundary defect with a finite mixing matrix}.
+```
+
+So the concrete `PO3a` burden is now fully explicit:
+
+1. identify the raw coefficient difference `\delta_{r,s}(a)`;
+2. show that, after removing the bulk and cap channels, the remaining raw
+   defect has finite row/column support or an equivalent endpoint-word form;
+3. feed that finite boundary operator into the corrected-column reduction, and
+   then into the finite mixing matrix `A+B+M`.
+
+So the honest `PO3a` burden can be read one step lower:
+
+```tex
+\text{describe the raw defect }\mathcal R_{a,N}^{\mathrm{raw}}
+\text{, then pull it through }\Delta_N.
+```
+
+In particular, if the raw defect already splits into bulk, boundary, and cap
+channels in a class that is stable under left/right multiplication by the
+one-sided filtered shifts `\Delta_+,\Delta_-`, then the filtered defect
+inherits the same split automatically.
+
 ### Exact missing lemma
 
 The next theorem attempt should now be stated as:
