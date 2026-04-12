@@ -6917,3 +6917,34 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   finite matrix cancellation frame `A+B+M=0`;
 - detailed write-up:
   [`h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md).
+
+## In progress (2026-04-12): next exact `PO3a` blocker after the raw-defect pullback
+
+- точная цель теперь такая:
+  после отделения объёмной части и шапки доказать, что сырая граничная
+  поправка для коэффициентов `\delta_{r,s}(a)=w_{r,s}(a)-\kappa(a)q_{r,s}`
+  попадает в класс конечной поддержки по строкам и столбцам, либо в
+  эквивалентный класс крайних слов;
+- это место цепочки: `PO2` даёт точную четырёхчленную схему фильтра,
+  новый шаг переводит `\mathcal D_{a,N}` в
+  `\Delta_N^* \mathcal R_{a,N}^{\mathrm{raw}} \Delta_N`,
+  а дальше `PO3a` закроется через corrected-column reduction и конечную
+  матрицу смешивания `A+B+M=0`;
+- локальный embedding-поиск вернул именно наш внутренний стек:
+  [`h1_po2_cross_sign_bulk_exactness_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md),
+  [`h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md),
+  [`h1_boundary_cap_reset_2026_03_14.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_boundary_cap_reset_2026_03_14.md),
+  [`h1_proof_obligation_table_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1-proof-obligation-table-2026-03-16.md);
+- короткая внешняя проверка дала только общий операторный фон про конечный
+  ранг, конечные возмущения и почти-инвариантность; готовой внешней теоремы,
+  которая автоматически закрывает наш `PO3a`, нет;
+- поэтому следующий честный ход не внешний, а внутренний:
+  развернуть саму разность `w_{r,s}(a)-\kappa(a)q_{r,s}` так, чтобы было видно,
+  какие индексы дают объёмную часть, какие дают шапку, и какие остаются в
+  граничной поправке;
+- практический план на один узел:
+  1) взять точные формулы из `full/sections/Main_closure.tex`,
+  2) записать сырой дефект как «объём + граничная поправка + шапка» в
+  [`h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md),
+  3) после этого проверить, что граничная поправка действительно лежит в
+  конечной схеме corrected-column / endpoint-word.
