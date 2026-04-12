@@ -2119,6 +2119,98 @@ invariant package, and test whether ordering becomes non-vacuous.}
 }
 ```
 
+The first `SQ2` subbrick is therefore already concrete.
+
+```tex
+\textbf{SQ2a1. Base support admissibility on }\Lambda_a.
+```
+
+Let
+
+```tex
+\mu_a:=\sum_{\lambda\in\Lambda_a}\delta_\lambda.
+```
+
+Because
+
+```tex
+n_{\Lambda_a}(R)\asymp \sqrt R\log R,
+```
+
+the squared support has convergence exponent `1/2`, hence in particular
+
+```tex
+\sum_{\lambda\in\Lambda_a}\frac{1}{1+|\lambda|^2}<\infty.
+```
+
+So the bare discrete-support summability side of the old `CB1` package is
+actually easier on `\Lambda_a` than it was on the unsquared support. The
+conjugation symmetry also survives squaring:
+
+```tex
+\lambda\in\Lambda_a \Longrightarrow \bar\lambda\in\Lambda_a.
+```
+
+Thus the square support with unit weights satisfies the raw discrete Cauchy
+support admissibility conditions one would want before even asking for an
+ordering theorem.
+
+```tex
+\textbf{SQ2a2. Coefficient admissibility for divided receivers.}
+```
+
+For every `k\ge 1` define
+
+```tex
+J_{a,k}(z)=\sum_{\gamma\in\Gamma^\sharp}
+\frac{b_\gamma^{(k)}}{\lambda_\gamma-z},
+\qquad
+b_\gamma^{(k)}
+=
+\frac{b_\gamma}{\prod_{j=1}^k(\lambda_\gamma-(N+j)^2)}.
+```
+
+Then
+
+```tex
+\sum_{\gamma\in\Gamma^\sharp}|b_\gamma^{(k)}|^2<\infty
+\qquad (k\ge 1).
+```
+
+Indeed `|b_\gamma|` is bounded and
+
+```tex
+|b_\gamma^{(k)}|\ll |\lambda_\gamma|^{-k},
+```
+
+while the support counting law `n_{\Lambda_a}(R)\asymp \sqrt R\log R` gives
+absolute convergence already for
+
+```tex
+\sum_{\lambda\in\Lambda_a}|\lambda|^{-2}.
+```
+
+So the divided receivers `J_{a,k}` with `k\ge 1` automatically lie in the
+natural `\ell^2(\Lambda_a,\mu_a)` coefficient class.
+
+This is a real positive collapse. The old `PO2` backend had to fight for
+support admissibility and coefficient decay separately. On the square support,
+after one divisor both are automatic:
+
+```tex
+\boxed{
+\text{raw }J_a\text{ is too rough, but every }J_{a,k}\ (k\ge 1)
+\text{ sits in the native discrete Cauchy data class.}
+}
+```
+
+So `SQ2a` is no longer the blocker. The live wall moves one level deeper:
+
+```tex
+\textbf{SQ2b. Can the square-tail zero package be promoted to a nontrivial
+nearly invariant `*`-closed subspace framework?}
+```
+
 The current search status is honest:
 
 - the local project index does not yet contain a ready-made square-tail

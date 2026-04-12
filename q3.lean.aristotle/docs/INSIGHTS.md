@@ -6730,6 +6730,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `SQ2c` prove the resulting internal square-division chain yields at least two
   genuinely distinct nearly invariant `*`-closed subspaces, so ordering is not
   vacuous;
+- `SQ2a` itself now looks essentially positive:
+  `\Lambda_a` has exponent of convergence `1/2`, so
+  `\sum_{\lambda\in\Lambda_a}(1+|\lambda|^2)^{-1}<\infty`, and after one
+  square divisor the coefficients satisfy
+  `|b_\gamma^{(k)}|\ll |\lambda_\gamma|^{-k}`, hence
+  `\sum |b_\gamma^{(k)}|^2<\infty` already for `k=1`;
+- so the raw support/coefficient admissibility side is no longer the SQ2 wall:
+  the real remaining burden is `SQ2b`, namely to turn the square-tail common
+  zeros and the internal division chain `J_{a,k+1}=J_{a,k}/(z-(N+k+1)^2)` into
+  a nontrivial nearly invariant `*`-closed subspace package;
 - external and local search are consistent with the same fork: the 2018
   Krein/ordering route still looks structurally compatible, while the 2022
   localization route remains non-routine because it needs power separation on
