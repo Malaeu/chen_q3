@@ -7124,3 +7124,23 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   once the physical Volterra normal form lands, the only remaining obstruction
   is a structured arithmetic-progression uniqueness theorem for the explicit
   Cauchy-type function `H_a`.
+
+## Decision note (2026-04-12): do not take full physical Volterra normal form as the first subgoal
+
+- there is a real risk of looping if we keep alternating between
+  “prove physical Volterra normal form” and
+  “assume it and derive stronger rigidity” without changing the input;
+- the exact physical Volterra identity
+  `H_{a,N}=T^*((I-R_a)^*G_g[a](I-R_a)-G_g[a])T`
+  is the strongest possible form, but it is not the cheapest first target;
+- the cheaper and already-frozen route is the weaker admission statement:
+  prove only that the genuine boundary correction is a finite linear
+  combination of Volterra-undoing words with at most two endpoint projectors;
+- that weaker statement is sufficient for the endpoint normal form, the finite
+  receiver, and all downstream mixed-block reductions;
+- recommendation: treat the full physical Volterra normal form as a bonus
+  strengthening, but make the active mainline
+  `raw antiderivative factorization -> finite endpoint-projector count ->
+  Volterra-word admission -> endpoint receiver`;
+- only after that weaker bridge is real should we spend effort on proving the
+  sharper physical identity or on the tail-zero uniqueness wall.
