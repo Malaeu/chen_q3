@@ -3390,6 +3390,50 @@ v_{K,a,N}
 c_{K,a}.
 ```
 
+### Corollary `PO3a-return to the project zero-mode receiver`
+
+If the genuine Volterra normal form uses the physical kernel itself,
+
+```tex
+K_a=G_g[a],
+```
+
+then the generic vector from the previous corollary is exactly the already
+active project receiver
+
+```tex
+v_{K,a,N}=T^*G_g[a]\mathbf 1=v_{a,N},
+```
+
+and the scalar is
+
+```tex
+c_{K,a}
+=
+\langle \mathbf 1,G_g[a]\mathbf 1\rangle.
+```
+
+So in that natural specialization,
+
+```tex
+\text{`PO3a-zero-mode collapse' does not create a new object at all;}
+```
+
+it simply recovers the old lower-shell zero-mode vector together with one
+constant self-pairing.
+
+In particular, if the real boundary defect can be written in the Volterra
+normal form with `K_a=G_g[a]`, then the whole lower-shell `PO3a` burden
+compresses exactly to:
+
+1. the sign structure of `v_{a,N}=T^*G_g[a]\mathbf 1`;
+2. the scalar `\langle \mathbf 1,G_g[a]\mathbf 1\rangle`;
+3. the fixed endpoint vectors `h_{\pm,N}` and functionals
+   `\ell_{\pm,N}P_\pm`.
+
+So the new Volterra packets and the older zero-mode route are now frozen as two
+descriptions of the same receiver, not two competing backends.
+
 ### `PO3a.3` Kernel sign-preservation on boundary generators
 
 Show that the kernel action preserves the sign purity of the boundary

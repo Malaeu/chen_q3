@@ -6750,6 +6750,13 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `U^*h_{\pm,N}`, and the scalar `c_{K,a}`, so once the Volterra normal form is
   real, `PO3a` is no longer a generic operator wall but a one-vector plus
   one-scalar boundary problem;
+- in the natural specialization `K_a=G_g[a]`, this generic receiver is exactly
+  the old project zero-mode vector
+  `v_{a,N}=T^*G_g[a]\mathbf 1`, and the only extra scalar is the constant
+  self-pairing `\langle \mathbf 1,G_g[a]\mathbf 1\rangle`;
+- so the new Volterra route does not fork the proof: if it lands, it feeds
+  directly back into the already isolated lower-shell zero-mode receiver rather
+  than creating a second boundary backend;
 - local semantic search on the new blocker `infinite-support square-tail
   injectivity` did not surface any ready-made project theorem beyond the old
   generic `PO2` Cauchy-tail wall; short external probing likewise did not
