@@ -7075,3 +7075,31 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - so the live fork is now completely explicit:
   either prove the real defect has the physical Volterra normal form, or show
   this forced endpoint-line rigidity is impossible for the genuine `v_{a,N}`.
+
+## In progress (2026-04-12): impossibility route for the forced zero-mode rigidity
+
+- local search ties the new `2\times 2` receiver back to the older lower-shell
+  packet already present in
+  [h1_po3_cross_sign_boundary_cancellation_2026_03_16.md]:
+  for the zero-mode vector
+  `v_{a,N}=T_{a,\infty,N}^*G_g[a]\mathbf 1`, the coefficients are
+  `\langle v_{a,N},z^r\rangle=\sqrt{2a}\,w_{r,0}(a)`, and the earlier
+  first-order companion analysis already showed that exact mixed cancellation on
+  a window forces
+  `w_{r,0}(a)=c_{a,N,M}(-1)^r` on that window;
+- the new identity-outer rigidity
+  `P_+v_{a,N}=\alpha_{+,N}(a)h_{+,N}`, `P_-v_{a,N}=\alpha_{-,N}(a)h_{-,N}`
+  is exactly the same phenomenon in cleaner form: it says the zero-mode vector
+  must lie on the fixed alternating endpoint lines;
+- if such rigidity is required for all compressions, the window constants glue
+  to one tail constant `c_{a,N}`, and the frozen off-diagonal tail decay then
+  forces `c_{a,N}=0`; equivalently `H_a(\alpha_r)=0` for all `r>N`, where
+  `H_a(z)=\sum_{\gamma} \sin^2(a\gamma)/(\gamma(\gamma+z))`;
+- so the impossibility route is now sharply split:
+  either prove the structured arithmetic-progression uniqueness target for this
+  Cauchy-type `H_a`, or pass to the already-isolated even square-support
+  receiver `J_a(r^2)=0` and attack the square-tail injectivity wall;
+- the old naive Stieltjes monotonicity shortcut remains killed, and the old
+  direct Carlson shortcut also remains blocked without a structured
+  regularization; the honest external analogue is now the meromorphic
+  interpolation / pole-recovery adaptation wall from the `PO2` note.
