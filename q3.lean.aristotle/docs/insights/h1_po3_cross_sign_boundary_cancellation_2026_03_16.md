@@ -886,6 +886,144 @@ translation for `PO3a`: once the boundary layer is known to live on finitely
 many rows and columns, the mixed-block question is literally a finite linear
 algebra problem.
 
+### Theorem `PO3a-corrected-column reduction`
+
+There is also a cleaner equivalent version of the row/column packet in which
+the overlap subtraction is absorbed directly into corrected column vectors.
+
+Keep the same sign-adapted basis `\{e_\nu\}_{\nu\in I}` and the same finite
+row/column support assumption:
+
+```tex
+B_{\mu\nu}=0
+\qquad
+\text{whenever }\mu\notin R\text{ and }\nu\notin C.
+```
+
+Define the row bras by
+
+```tex
+\langle \rho_r|
+:=
+\sum_{\nu\in I} B_{r\nu}\,\langle e_\nu|,
+\qquad r\in R,
+```
+
+and define the corrected column kets by
+
+```tex
+|d_c\rangle
+:=
+B|e_c\rangle
+-\sum_{r\in R} B_{rc}|e_r\rangle,
+\qquad c\in C.
+```
+
+Then
+
+```tex
+\boxed{
+B
+=
+\sum_{r\in R}|e_r\rangle\langle \rho_r|
+\;+\;
+\sum_{c\in C}|d_c\rangle\langle e_c|.
+}
+```
+
+#### Proof
+
+Compute the `(\mu,\nu)` matrix coefficient of the first sum:
+
+```tex
+\left\langle e_\mu,
+\sum_{r\in R}|e_r\rangle\langle \rho_r|,
+e_\nu\right\rangle
+=
+\mathbf 1_{\mu\in R} B_{\mu\nu}.
+```
+
+For the second sum,
+
+```tex
+\left\langle e_\mu,
+\sum_{c\in C}|d_c\rangle\langle e_c|,
+e_\nu\right\rangle
+=
+\mathbf 1_{\nu\in C}\langle e_\mu,d_\nu\rangle.
+```
+
+But by definition of `d_\nu`,
+
+```tex
+\langle e_\mu,d_\nu\rangle
+=
+B_{\mu\nu}-\mathbf 1_{\mu\in R}B_{\mu\nu}.
+```
+
+So the total coefficient is
+
+```tex
+\mathbf 1_{\mu\in R}B_{\mu\nu}
++
+\mathbf 1_{\nu\in C}
+\bigl(B_{\mu\nu}-\mathbf 1_{\mu\in R}B_{\mu\nu}\bigr).
+```
+
+If `\mu\in R`, this is `B_{\mu\nu}`. If `\mu\notin R` and `\nu\in C`, this is
+again `B_{\mu\nu}`. If `\mu\notin R` and `\nu\notin C`, it is `0`, and the
+support assumption gives `B_{\mu\nu}=0`. Hence the decomposition is exact. ∎
+
+Now split the row data by sign:
+
+```tex
+\langle \rho_r|
+=
+\langle \rho_r^+|+\langle \rho_r^-|,
+\qquad
+\langle \rho_r^\sigma|:=\langle \rho_r|P_\sigma.
+```
+
+Because the basis is sign-adapted, every `e_c` already has a fixed sign
+`\tau(c)\in\{+,-\}`. So the corrected-column decomposition produces a finite
+sign-pure generator list with right vectors drawn from
+
+```tex
+\{\rho_r^+\}_{r\in R},
+\qquad
+\{\rho_r^-\}_{r\in R},
+\qquad
+\{e_c\in\mathcal H_+\}_{c\in C},
+\qquad
+\{e_c\in\mathcal H_-\}_{c\in C}.
+```
+
+Choosing bases `\eta_{1,+},\dots,\eta_{m_+,+}` of the plus span and
+`\eta_{1,-},\dots,\eta_{m_-,-}` of the minus span, every right vector in the
+decomposition expands in one of these two bases. Absorbing the coefficients
+into the left vectors gives
+
+```tex
+B
+=
+\sum_{r=1}^{m_+}|b_{r,+}\rangle\langle \eta_{r,+}|
+\;+\;
+\sum_{s=1}^{m_-}|b_{s,-}\rangle\langle \eta_{s,-}|.
+```
+
+So the mixed block again reduces to one finite matrix identity `A+B+M=0` as in
+`PO3a-finite reduction`.
+
+Operationally this is the cleanest receiver for actual calculations:
+
+1. extract the finite row set `R` and column set `C`;
+2. form the row bras `\rho_r`;
+3. form the corrected columns `d_c`;
+4. compress the right vectors into sign-pure bases
+   `\{\eta_{r,+}\}`, `\{\eta_{s,-}\}`;
+5. compute the leakage matrices `A,B` and the cross-pairing matrix `M`;
+6. check `A+B+M=0`.
+
 ### First-order endpoint specialization
 
 The abstract packet is not separate from the current live route; in the first

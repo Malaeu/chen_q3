@@ -6665,6 +6665,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - after sign-splitting `\rho_r,\kappa_c`, this gives a fully constructive
   finite generator list to feed into `PO3a-finite reduction`, so in the
   finite row/column regime `PO3a` is literally a finite matrix computation;
+- there is now also a sharper equivalent receiver
+  `PO3a-corrected-column reduction`: defining corrected columns
+  `d_c:=Be_c-\sum_{r\in R}B_{rc}e_r`, one gets the cleaner exact two-term
+  decomposition
+  `B=\sum_{r\in R}|e_r\rangle\langle \rho_r|
+    +\sum_{c\in C}|d_c\rangle\langle e_c|`,
+  so the overlap subtraction is absorbed once and for all into the `d_c`;
+- this is the best current finite-dimensional engineering form of `PO3a`,
+  because the right-vector side now consists only of row-sign pieces
+  `\rho_r^\pm` and basis vectors `e_c` with fixed sign, making the later
+  compression to sign-pure bases and the assembly of the finite mixed matrix
+  `A+B+M` completely mechanical;
 - in the first-order endpoint model this `PO3a-core` formula collapses exactly
   to the old zero-mode object: the three families reduce to the two sign
   components of `U^*G\mathbf 1` plus the scalar `\langle\mathbf 1,G\mathbf 1\rangle`,
