@@ -6650,6 +6650,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   components of `U^*G\mathbf 1` plus the scalar `\langle\mathbf 1,G\mathbf 1\rangle`,
   so the new upper-shell reduction and the old lower-shell `v_{a,N}` route are
   two descriptions of the same live obstruction, not competing forks;
+- there is now one more exact intermediate target between abstract
+  algebra-membership and a full raw formula for `B_{a,N}`:
+  the endpoint-projector calculus. Since
+  `E_{a,N}=R_aT_{a,\infty,N}=|\mathbf 1\rangle\langle \ell_{+,N}P_+|
+   +|\mathbf 1\rangle\langle \ell_{-,N}P_-|`,
+  any boundary term built from finitely many insertions of
+  `E_{a,N},E_{a,N}^*` and otherwise sign-preserving operators automatically
+  expands into finitely many sign-split rank-one bricks; so the real next
+  local brick is to prove that the surviving boundary words are endpoint-word
+  finite, not to guess `B_{a,N}` all at once;
 - local semantic search on the new blocker `infinite-support square-tail
   injectivity` did not surface any ready-made project theorem beyond the old
   generic `PO2` Cauchy-tail wall; short external probing likewise did not

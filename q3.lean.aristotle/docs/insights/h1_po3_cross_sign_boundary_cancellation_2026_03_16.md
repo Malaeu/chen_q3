@@ -1783,6 +1783,65 @@ expansion", but the narrower question:
 P_+ / P_- \text{ split?}
 ```
 
+There is now a sharper intermediate packet between this slogan and the full
+explicit formula.
+
+```tex
+\textbf{Endpoint-projector calculus target.}
+```
+
+Let
+
+```tex
+E_{a,N}:=R_aT_{a,\infty,N}
+=
+|\mathbf 1\rangle\langle \ell_{+,N}P_+|
+\;+\;
+|\mathbf 1\rangle\langle \ell_{-,N}P_-|.
+```
+
+By Riesz representation, write
+
+```tex
+h_{+,N}:=(\ell_{+,N}P_+)^*,
+\qquad
+h_{-,N}:=(\ell_{-,N}P_-)^*,
+```
+
+so
+
+```tex
+E_{a,N}^*
+=
+|h_{+,N}\rangle\langle \mathbf 1|
+\;+\;
+|h_{-,N}\rangle\langle \mathbf 1|,
+```
+
+with `h_{+,N}\in\mathcal H_+` and `h_{-,N}\in\mathcal H_-`.
+
+Now every operator word containing only finitely many endpoint insertions
+`E_{a,N},E_{a,N}^*` and otherwise only sign-preserving tail operators expands
+into finitely many sign-split rank-one terms. Concretely:
+
+1. one-endpoint words reduce to finitely many vectors paired with
+   `\ell_{+,N}P_+` and `\ell_{-,N}P_-`;
+2. one-adjoint-endpoint words reduce to finitely many `h_{+,N},h_{-,N}`
+   vectors against one physical-space functional;
+3. double-endpoint words reduce to finitely many scalar pairings multiplying
+   the four rank-one bricks
+   `|h_{\sigma,N}\rangle\langle \ell_{\tau,N}P_\tau|`.
+
+So the real next exact theorem-target for `PO3a.2` is narrower than “write
+down `B_{a,N}`”. It is:
+
+```tex
+\text{prove that every surviving boundary word is a finite sum of endpoint-generated words.}
+```
+
+If that lands, the finite sign-split expansion of `B_{a,N}` is automatic from
+the explicit rank-two split of `E_{a,N}`.
+
 ### `PO3a.3` Kernel sign-preservation on boundary generators
 
 Show that the kernel action preserves the sign purity of the boundary
