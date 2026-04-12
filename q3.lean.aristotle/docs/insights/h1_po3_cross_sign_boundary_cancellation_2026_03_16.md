@@ -4339,6 +4339,237 @@ compresses exactly to:
 So the new Volterra packets and the older zero-mode route are now frozen as two
 descriptions of the same receiver, not two competing backends.
 
+### Theorem `PO3a-two-by-two receiver under physical Volterra normal form`
+
+Under the physical Volterra normal form, the cross-sign boundary channel
+collapses to one explicit `2\times 2` coefficient matrix.
+
+Assume the setup of `PO3a-return to the project zero-mode receiver`, and assume
+in addition that the outer tail operators `U,V:\mathcal K_N\to\mathcal K_N`
+preserve the sign splitting:
+
+```tex
+UP_\pm=P_\pm U P_\pm,
+\qquad
+VP_\pm=P_\pm V P_\pm.
+```
+
+Define the plus-side generators
+
+```tex
+u_{1,+}:=U^*h_{+,N},
+\qquad
+u_{2,+}:=P_+U^*v_{a,N},
+```
+
+and the minus-side functionals
+
+```tex
+\beta_{1,-}:=\langle V^*P_-v_{a,N}|,
+\qquad
+\beta_{2,-}:=\langle \ell_{-,N}P_-V|.
+```
+
+Let
+
+```tex
+c_a:=\langle \mathbf 1,G_g[a]\mathbf 1\rangle.
+```
+
+Then
+
+```tex
+\boxed{
+P_+H_{a,N}^{\mathrm{Vol}}P_-
+=
+\begin{bmatrix}
+|u_{1,+}\rangle & |u_{2,+}\rangle
+\end{bmatrix}
+\begin{bmatrix}
+-1 & c_a \\
+0  & -1
+\end{bmatrix}
+\begin{bmatrix}
+\beta_{1,-} \\
+\beta_{2,-}
+\end{bmatrix}.
+}
+```
+
+Equivalently,
+
+```tex
+\boxed{
+P_+H_{a,N}^{\mathrm{Vol}}P_-
+=
+-\,|U^*h_{+,N}\rangle\langle V^*P_-v_{a,N}|
+\;-\;
+|P_+U^*v_{a,N}\rangle\langle \ell_{-,N}P_-V|
+\;+\;
+c_a\,|U^*h_{+,N}\rangle\langle \ell_{-,N}P_-V|.
+}
+```
+
+#### Proof
+
+Start from the exact formula of `PO3a-zero-mode collapse under two-endpoint
+extraction` specialized to `K_a=G_g[a]`:
+
+```tex
+H_{a,N}^{\mathrm{Vol}}
+=
+-\sum_{\sigma\in\{+,-\}}
+|U^*h_{\sigma,N}\rangle\langle V^*v_{a,N}|
+\;-\;
+\sum_{\tau\in\{+,-\}}
+|U^*v_{a,N}\rangle\langle \ell_{\tau,N}P_\tau V|
+\;+\;
+c_a
+\sum_{\sigma,\tau\in\{+,-\}}
+|U^*h_{\sigma,N}\rangle\langle \ell_{\tau,N}P_\tau V|.
+```
+
+Apply `P_+` on the left and `P_-` on the right.
+
+For the first sum, only the `\sigma=+` term survives on the left, because
+`U^*h_{+,N}\in\mathcal H_+` and `U^*h_{-,N}\in\mathcal H_-`. On the right,
+sign preservation of `V` gives
+
+```tex
+\langle V^*v_{a,N}|P_-
+=
+\langle P_-V^*v_{a,N}|
+=
+\langle V^*P_-v_{a,N}|.
+```
+
+So
+
+```tex
+P_+
+\left(
+\sum_{\sigma}
+|U^*h_{\sigma,N}\rangle\langle V^*v_{a,N}|
+\right)
+P_-
+=
+|U^*h_{+,N}\rangle\langle V^*P_-v_{a,N}|.
+```
+
+For the second sum, only the `\tau=-` term survives on the right, and the left
+projection turns `U^*v_{a,N}` into `P_+U^*v_{a,N}`:
+
+```tex
+P_+
+\left(
+\sum_{\tau}
+|U^*v_{a,N}\rangle\langle \ell_{\tau,N}P_\tau V|
+\right)
+P_-
+=
+|P_+U^*v_{a,N}\rangle\langle \ell_{-,N}P_-V|.
+```
+
+For the double-endpoint sum, the left projection forces `\sigma=+` and the
+right projection forces `\tau=-`, so
+
+```tex
+P_+
+\left(
+\sum_{\sigma,\tau}
+|U^*h_{\sigma,N}\rangle\langle \ell_{\tau,N}P_\tau V|
+\right)
+P_-
+=
+|U^*h_{+,N}\rangle\langle \ell_{-,N}P_-V|.
+```
+
+Substituting these three identities yields the displayed rank-two formula. The
+matrix form is just a regrouping of the same three rank-one terms. ∎
+
+### Corollary `PO3a-rigidity from the two-by-two receiver`
+
+Under the hypotheses of `PO3a-two-by-two receiver under physical Volterra
+normal form`, if
+
+```tex
+P_+H_{a,N}^{\mathrm{Vol}}P_-=0,
+```
+
+then at least one of the two pairs
+
+```tex
+\{U^*h_{+,N},\,P_+U^*v_{a,N}\}
+\qquad\text{or}\qquad
+\{\langle V^*P_-v_{a,N}|,\,\langle \ell_{-,N}P_-V|\}
+```
+
+is linearly dependent.
+
+In contrapositive form: if the plus-side pair is linearly independent and the
+minus-side pair of functionals is also linearly independent, then the mixed
+block cannot vanish.
+
+#### Proof
+
+Write
+
+```tex
+P_+H_{a,N}^{\mathrm{Vol}}P_-=E_+ K F_-,
+```
+
+with
+
+```tex
+E_+:=
+\begin{bmatrix}
+|u_{1,+}\rangle & |u_{2,+}\rangle
+\end{bmatrix},
+\qquad
+K:=
+\begin{bmatrix}
+-1 & c_a \\
+0  & -1
+\end{bmatrix},
+\qquad
+F_-:=
+\begin{bmatrix}
+\beta_{1,-} \\
+\beta_{2,-}
+\end{bmatrix}.
+```
+
+The coefficient matrix `K` is always invertible because
+
+```tex
+\det K = 1.
+```
+
+If the plus-side vectors are linearly independent, then `E_+` is injective on
+coefficient space. If the minus-side functionals are linearly independent, then
+the operator
+
+```tex
+F_-:\mathcal K_N\to\mathbb C^2,
+\qquad
+x\mapsto
+\begin{bmatrix}
+\beta_{1,-}(x)\\
+\beta_{2,-}(x)
+\end{bmatrix}
+```
+
+has rank `2`, hence is surjective onto `\mathbb C^2`.
+
+Therefore from `E_+KF_-=0` one first gets `KF_-=0` by injectivity of `E_+`.
+Since `F_-` is surjective, this implies `K=0`, contradicting
+`K=\left[\begin{smallmatrix}-1&c_a\\0&-1\end{smallmatrix}\right]`.
+
+So if both pairs were independent, the product `E_+KF_-` could not vanish.
+
+Therefore vanishing of the mixed block forces a degeneracy on at least one
+side. ∎
+
 ### `PO3a.3` Kernel sign-preservation on boundary generators
 
 Show that the kernel action preserves the sign purity of the boundary

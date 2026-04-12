@@ -7013,3 +7013,25 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   operator theory;
 - this is the cleanest current bridge from the real analytic defect to the
   finite matrix identity `\mathsf A+\mathsf B+\mathsf M=0`.
+
+## Final result (2026-04-12): the physical Volterra packet collapses to an explicit `2x2` receiver
+
+- under the physical Volterra normal form with `K_a=G_g[a]`, the mixed block
+  `P_+H_{a,N}^{\mathrm{Vol}}P_-` is no longer an arbitrary finite matrix
+  receiver: it is exactly
+  `E_+ K F_-` with one fixed coefficient matrix
+  `K=\left[\begin{smallmatrix}-1&c_a\\0&-1\end{smallmatrix}\right]`,
+  where `c_a=\langle \mathbf 1,G_g[a]\mathbf 1\rangle`,
+  the plus-side generators are `U^*h_{+,N}` and `P_+U^*v_{a,N}`,
+  and the minus-side generators are `\langle V^*P_-v_{a,N}|` and
+  `\langle \ell_{-,N}P_-V|`;
+- the determinant of this coefficient matrix is always `1`, so vanishing of the
+  mixed block cannot come from an accidental singular coefficient packet;
+- consequently, if the mixed block vanishes, then at least one side must
+  degenerate: either the plus pair
+  `\{U^*h_{+,N},P_+U^*v_{a,N}\}` is linearly dependent, or the minus pair
+  `\{\langle V^*P_-v_{a,N}|,\langle \ell_{-,N}P_-V|\}` is linearly dependent;
+- this sharpens the live `PO3a` burden again:
+  after the Volterra admission step, one no longer needs a general boundary
+  algebra argument; it is enough to analyze the rigidity forced by this
+  explicit `2\times 2` packet.
