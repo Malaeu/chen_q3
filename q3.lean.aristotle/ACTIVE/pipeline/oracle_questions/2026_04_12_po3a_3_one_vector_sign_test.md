@@ -13,10 +13,10 @@ collections: ["q3_docs", "math_papers"]
 tags: ["po3", "boundary", "zero_mode", "one_vector"]
 insight_links: ["q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md"]
 request_nodes: ["q3.lean.aristotle/ACTIVE/requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/node.md"]
-strong_terms: ["граничное слово (boundary word)", "одновекторный знаковый тест (one-vector sign test)"]
+strong_terms: ["граничная оболочка (boundary-cap space)", "двойственный функциональный критерий (dual functional criterion)", "одновекторный знаковый тест (one-vector sign test)"]
 empty_terms: ["общая классификация оператора"]
 false_friend_terms: ["стилтьесова монотонность (Stieltjes monotonicity)"]
-opens_new_branch_terms: ["физическая вольтеррова нормальная форма (physical Volterra normal form)"]
+opens_new_branch_terms: ["ортогональное дополнение граничной оболочки (orthogonal complement of the boundary-cap space)"]
 neighbor_addresses: ["PO3a.2", "PO3a.4", "PO3a.5"]
 ---
 
@@ -32,8 +32,16 @@ neighbor_addresses: ["PO3a.2", "PO3a.4", "PO3a.5"]
 После редукции `PO3a` до первого порядка живой вопрос больше не про всю
 граничную алгебру сразу. Он локализован в одном векторе:
 нужно понять, может ли реальный вектор граничной поправки после действия
-оператора `G_g[a]` породить запрещённую межзнаковую составляющую, или его знак
-вынужденно остаётся чистым.
+оператора `G_g[a]` породить запрещённую межзнаковую составляющую.
+
+После нового локального сжатия точный плюс-сторонний тест уже такой:
+
+```tex
+P_+ v_{a,N} \notin E_{+,\partial},
+```
+
+где `E_{+,\partial}` — конечномерная граничная оболочка
+`PO3a-finite reduction` на плюс-стороне.
 
 ## Почему этот поиск нужен сейчас
 
@@ -53,16 +61,33 @@ neighbor_addresses: ["PO3a.2", "PO3a.4", "PO3a.5"]
 - Первый порядок уже связан с нулевым режимом (zero mode)
   `v_{a,N} = T_{a,\infty,N}^* G_g[a] 1`, и старый shortcut через “общую
   монотонность” уже убит.
+- В основной `PO3a`-заметке уже определены конечные граничные оболочки
+  `E_+`, `E_-`; это даёт точную синергию с новым ходом:
+  плюс-стороннюю независимость можно проверять до применения `U^*`.
+- Если `U` сохраняет знак и `U^*|_{\mathcal H_+}` инъективен, то
+  коллинеарность
+  `U^* h_{+,N} \parallel P_+ U^* v_{a,N}`
+  эквивалентна коллинеарности
+  `h_{+,N} \parallel P_+ v_{a,N}`.
+- Так как `h_{+,N} \in E_{+,\partial}`, достаточно показать
+  `P_+ v_{a,N} \notin E_{+,\partial}`.
+- Ещё дешевле: достаточно найти функционал
+  `\Lambda_+`, который зануляет `E_{+,\partial}`, но не зануляет
+  `P_+ v_{a,N}`.
 - Главный источник: `q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`.
+- Формальная оболочка по-прежнему сидит в
+  `q3.lean.aristotle/q3/Proofs/HBridge_PO3_Shell.lean`.
 
 ## Что именно мы хотим узнать поиском
 
 - Какие формулировки лучше всего вытаскивают из нашей базы уже найденные
   локальные редукции про `PO3a.3`, а не возвращают весь `PO3` целиком.
 - Есть ли в reviewed notes или старых request nodes точный словарь для
-  “одновекторного” знакового теста.
+  “одновекторного” знакового теста и отделения от конечномерной граничной
+  оболочки.
 - Какие слова лучше переключают поиск с общей граничной алгебры на
-  язык граничных слов, концов и нулевого режима.
+  язык граничных оболочек, нулевого режима и двойственного функционального
+  критерия.
 - Какие соседние адреса (`PO3a.2`, `PO3a.4`, `PO3a.5`) уже дают полезные
   зацепки, которые стоит переносить сюда.
 
@@ -70,23 +95,25 @@ neighbor_addresses: ["PO3a.2", "PO3a.4", "PO3a.5"]
 
 | Запрос | Адрес | Зачем этот запрос | Какая ось варьируется | Сигнал | Куда привёл |
 | --- | --- | --- | --- | --- | --- |
-| `PO3a.3 one-vector sign test boundary word` | `PO3a.3` | Сжать поиск до локального векторного кирпича | theorem-packet → one-vector test | planned | должен вернуть поздние секции `PO3a`-note |
-| `zero-mode column sign-preserving boundary generator` | `PO3a.3` | Проверить словарь нулевого режима вместо общей граничной алгебры | boundary language → zero-mode language | planned | ожидаем связку с первым порядком и `v_{a,N}` |
-| `physical Volterra normal form endpoint word sign` | `PO3a.3` | Проверить, помогает ли вольтеррова лексика без возврата к полной физической форме | one-vector test → endpoint / Volterra words | planned | должно показать, усиливает ли этот словарь соседнюю ветку |
-| `PO3a.2 corrected-column reduction PO3a.3` | `PO3a.3` | Вытянуть ближайший родительский и соседний контекст | текущий адрес → соседние адреса | planned | нужен мост вверх-вниз по дереву |
+| `PO3a.3 boundary-cap space dual functional criterion zero-mode` | `PO3a.3` | Поднять новую узкую формулировку через отделение от конечномерной оболочки | one-vector test → boundary-cap separation | strong hit | вернул `PO3a-finite reduction` и те же late `PO3a` notes |
+| `PO3a.3 plus-side independence zero-mode boundary-cap space` | `PO3a.3` | Проверить, держится ли плюс-сторонняя независимость на нашей терминологии | zero-mode column → plus-side independence | strong hit | вернул exact `PO3a.3` packet про zero-mode column и reflection-evenness |
+| `PO3a.3 finite boundary-cap spaces U sign preserving injective functional criterion` | `PO3a.3` | Проверить синергию с конечными граничными оболочками и оболочкой `U^*` | finite receiver → functional criterion | hit | вернул boundary-cap packet и подтвердил, что route остаётся внутренним |
+| `PO3a.3 U star injective sign preserving zero-mode column boundary-cap` | `PO3a.3` | Проверить, есть ли уже готовый словарь для снятия `U^*` с плюсовой стороны | operator shell → before/after `U^*` | hit | вернул late `PO3a.3` notes и `HBridge_PO3_Shell.lean` как shell consumer |
 
 ## Пустые / шумовые слова
 
 - `generic operator classification`
 - слишком широкая `граничная алгебра (boundary algebra)` без адреса
 - глобальное `Cauchy injectivity` без привязки к `PO3a.3`
+- короткий внешний поиск по общим словам про Hahn-Banach и separation не дал
+  готовой внешней теоремы именно под наш маршрут
 
 ## Новые возможные комбинации слов
 
-- `boundary word + one-vector`
-- `zero-mode column + sign-preserving`
-- `corrected-column reduction + sign test`
-- `physical Volterra normal form + endpoint word`
+- `boundary-cap space + zero-mode`
+- `dual functional criterion + PO3a.3`
+- `plus-side independence + boundary-cap`
+- `annihilator functional + zero-mode column`
 
 ## Переход в INSIGHTS
 
@@ -95,11 +122,17 @@ neighbor_addresses: ["PO3a.2", "PO3a.4", "PO3a.5"]
 - В итоговом insight должно быть отдельно записано:
   какие слова реально усилили `PO3a.3`,
   а какие только возвращали нас в широкое `PO3`.
+- Первый боевой синтез по этой новой формулировке добавляется сейчас:
+  живой brick — это уже не просто знаковый тест одного вектора, а отделение
+  `P_+ v_{a,N}` от конечномерной граничной оболочки `E_{+,\partial}`.
 
 ## Следующий адресный шаг
 
-- Если локальный sign test закрывается, следующий прямой адрес — `PO3a.4`.
-- Если поиск показывает, что нужен возврат к форме кирпичей, откатиться к
-  `PO3a.2`, а не к общему `PO3`.
-- Если всплывает только physical-word route, отметить это как давление
-  соседней ветки на `PO3a.3` со связью на `PO3a.4/PO3a.5`.
+- Если удаётся построить функционал `\Lambda_+`, который зануляет
+  `E_{+,\partial}` и не зануляет `P_+ v_{a,N}`, это сразу усиливает `PO3a.3`
+  и даёт прямой ход в `PO3a.4`.
+- Если для `\Lambda_+` не хватает явной формы оболочки, откатиться на
+  `PO3a.2`, но только для извлечения `E_{+,\partial}`, а не для переоткрытия
+  всей граничной поправки.
+- Если снова всплывает только physical-word route, считать это побочной
+  синергией с `H-bridge.11`, а не заменой локального хода.

@@ -7223,3 +7223,34 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   treat `PO3a.2` as the extraction layer and continue downward into `PO3a.3`
   only after the weaker bridge statement is frozen in one reusable theorem
   form.
+
+## In progress (2026-04-12): `PO3a.3` compresses further to boundary-cap separation on the plus side
+
+- exact address: `PO3a.3`, downstream of `PO3a.2` and upstream of `PO3a.4`;
+- new local theorem shape:
+  if `U` preserves sign and `U^*|_{\mathcal H_+}` is injective, then plus-side
+  collinearity after `U^*` is equivalent to collinearity before `U^*`;
+- operationally this is a real compression:
+  instead of proving a vague sign statement about the whole zero-mode column,
+  it is enough to show
+  `P_+ v_{a,N} \notin E_{+,\partial}`,
+  where `E_{+,\partial}` is the finite plus-side boundary-cap space already
+  supplied by `PO3a-finite reduction`;
+- even better, the route admits a dual formulation:
+  it is enough to find one bounded functional `\Lambda_+` that kills the whole
+  finite boundary-cap space but does not kill `P_+ v_{a,N}`;
+- local oracle search on `q3_docs` supports exactly this compression:
+  the KB keeps returning the same `PO3a-finite reduction`, the same late
+  zero-mode-column packet, and the same shell consumer
+  `Q3/Proofs/HBridge_PO3_Shell.lean`;
+- no hidden internal theorem was found that closes the new step automatically,
+  but this is good news: the search is now stable and sharply localized,
+  rather than drifting back to the full `PO3` packet;
+- short external sanity-check on general separation vocabulary did not surface
+  an off-the-shelf theorem tailored to our route, so the real gain remains
+  internal:
+  finite receiver + finite boundary-cap space + one detecting functional;
+- next local strike:
+  extract `E_{+,\partial}` explicitly enough to search for `\Lambda_+`
+  through the orthogonal complement / annihilator viewpoint, instead of
+  attacking the full mixed block again.
