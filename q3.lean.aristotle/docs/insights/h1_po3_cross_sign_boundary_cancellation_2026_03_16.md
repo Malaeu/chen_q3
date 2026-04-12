@@ -1877,31 +1877,107 @@ So near-pole concentration is now visible in an explicit square-root metric:
 the limiting divisor can only blow up through small distance to the tail square
 lattice.
 
-The honest remaining blocker is therefore the second half:
+Even better, the second half also collapses cleanly.
 
 ```tex
 \textbf{SQ1.3b. Partial-to-envelope comparison.}
 ```
 
-Bound the full pole-envelope
+For `m\ge N+1` write the individual square factor as
 
 ```tex
-\mathfrak D_N(y^2)=\sup_{k\ge 0}D_{N,k}(y^2)
+f_m(y):=\left|1-\frac{y^2}{m^2}\right|^{-2}.
 ```
 
-by a comparable square-root distance expression, ideally by proving a reduction
-of the form
+Then
 
 ```tex
-\mathfrak D_N(y^2)\ll_{N,A} 1+D_{N,\infty}(y^2),
+f_m(y)\ge 1
+\iff
+\left|1-\frac{y^2}{m^2}\right|\le 1
+\iff
+|y|^4\le 2\Re(y^2)m^2.
 ```
 
-or any substitute strong enough to make the `SQ1.2` summability condition
-checkable on the actual support. Local oracle search only surfaced the
-project's own Gamma-ratio infrastructure; the short external sanity-check only
-confirms the standard sine-product / Gamma-product identities, not any imported
-square-tail injectivity theorem. So `SQ1.3b` is now the honest next theorem
-target inside the direct square-tail branch.
+Indeed
+
+```tex
+\left|1-\frac{y^2}{m^2}\right|^2
+=
+1-\frac{2\Re(y^2)}{m^2}+\frac{|y|^4}{m^4}.
+```
+
+So there are only two cases.
+
+If `\Re(y^2)\le 0`, then every factor satisfies `f_m(y)\le 1`, hence
+`k\mapsto D_{N,k}(y^2)` is nonincreasing and
+
+```tex
+\mathfrak D_N(y^2)=1.
+```
+
+If `\Re(y^2)>0`, define the threshold
+
+```tex
+m_*(y):=\frac{|y|^2}{\sqrt{2\Re(y^2)}}.
+```
+
+Then `f_m(y)\le 1` for `m<m_*(y)` and `f_m(y)\ge 1` for `m\ge m_*(y)`. Hence
+the partial products
+
+```tex
+D_{N,k}(y^2)=\prod_{j=1}^k f_{N+j}(y)
+```
+
+are first nonincreasing and then nondecreasing. Therefore their supremum can
+occur only at the endpoints:
+
+```tex
+\boxed{
+\mathfrak D_N(y^2)=\max\bigl(1,D_{N,\infty}(y^2)\bigr).
+}
+```
+
+Combining this exact identity with `SQ1.3a` gives the explicit envelope bound
+
+```tex
+\boxed{
+\mathfrak D_N(y^2)
+\le
+1+C_{N,A}(1+|y|)^{4N+2}\delta_N(y)^{-2}
+\qquad (|\Im y|\le A).
+}
+```
+
+So the full pole-envelope is now controlled by the same square-root
+near-lattice quantity as the limiting divisor, up to an inessential additive
+constant.
+
+At this point the direct `SQ1` burden is no longer dynamical at all. It has
+been reduced to one static summability check:
+
+```tex
+\textbf{SQ1.4. Support-side summability check.}
+```
+
+Using `\lambda_\gamma=y_\gamma^2`, it is now enough to prove
+
+```tex
+\sum_{\gamma\in\Gamma^\sharp}
+|b_\gamma|^2
+\left(
+1+
+(1+|y_\gamma|)^{4N+2}\delta_N(y_\gamma)^{-2}
+\right)
+<\infty.
+```
+
+If this support-side bound holds, then `SQ1.2 + SQ1.3a + SQ1.3b` close the
+entire no-escape wall for the quadratic Gibbs family. Local oracle search only
+surfaced the project's own Gamma-ratio infrastructure; the short external
+sanity-check only confirms the standard sine-product / Gamma-product
+identities, not any imported square-tail injectivity theorem. So `SQ1.4` is
+now the honest next theorem target inside the direct square-tail branch.
 
 ```tex
 \textbf{SQ2. Square-support backend adaptation.}

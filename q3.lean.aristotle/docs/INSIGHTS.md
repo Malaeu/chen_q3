@@ -6690,15 +6690,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - so near-pole concentration is no longer vague: the only way the limiting
   divisor can blow up is through small square-root distance to the tail square
   lattice, with only polynomial ambient loss from the finite front factor;
+- the second half `SQ1.3b` also closes exactly: for
+  `f_m(y)=|1-y^2/m^2|^{-2}`, the sign of `f_m(y)-1` changes at most once, so
+  `D_{N,k}(y^2)` is first nonincreasing and then nondecreasing; hence
+  `\mathfrak D_N(y^2)=\max(1,D_{N,\infty}(y^2))`;
 - so the live burden inside the direct square-tail route is no longer generic
   Gibbs motion, but one static arithmetic/geometric wall: estimate
   `\mathfrak D_N(\lambda)` on the actual support `\lambda=y_\gamma^2` in terms
   of the bounded-strip geometry of `y_\gamma=-a\gamma/\pi` and its distance to
   the tail square lattice `\pm\{N+1,N+2,\dots\}`;
-- the exact remaining subbrick is now `SQ1.3b`: compare the full envelope
-  `\mathfrak D_N(y^2)=\sup_k D_{N,k}(y^2)` to the already controlled limit
-  `D_{N,\infty}(y^2)`, or prove any substitute bound strong enough to make the
-  `SQ1.2` summability condition verifiable on the real support;
+- combining `SQ1.3a` and `SQ1.3b` yields the usable envelope
+  `\mathfrak D_N(y^2)\ll 1+(1+|y|)^{4N+2}
+   \operatorname{dist}(y,\pm\{N+1,N+2,\dots\})^{-2}`;
+- so the exact next blocker becomes `SQ1.4`: verify the support-side
+  summability condition obtained by inserting this explicit envelope into
+  `\sum |b_\lambda|^2\mathfrak D_N(\lambda)<\infty`;
 - so the next honest split is now explicit:
   either attack the live wall directly through the Newton-profile /
   quadratic-divisor formulation of `J_a`,
