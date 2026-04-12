@@ -7035,3 +7035,26 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   after the Volterra admission step, one no longer needs a general boundary
   algebra argument; it is enough to analyze the rigidity forced by this
   explicit `2\times 2` packet.
+
+## In progress (2026-04-12): next `PO3a` blocker after the `2x2` receiver
+
+- local embedding search points back to the same live stack:
+  [h1_po3_cross_sign_boundary_cancellation_2026_03_16.md],
+  [h1_boundary_cap_reset_2026_03_14.md], and the `PO2` bulk note;
+- short external search did not reveal an off-the-shelf theorem giving the
+  physical Volterra normal form for the genuine boundary correction, so this
+  bridge still has to be proved internally;
+- next exact target in
+  [h1_po3_cross_sign_boundary_cancellation_2026_03_16.md] is now:
+  prove that the real `H_{a,N}` belongs to the physical Volterra class
+  `U^*T^*((I-R_a)^*K_a(I-R_a)-K_a)TV`, ideally with `K_a=G_g[a]`;
+- once that lands, the mixed block is governed by the fixed `2\times 2`
+  coefficient matrix `K=[[-1,c_a],[0,-1]]`, so any vanishing must force a
+  genuine degeneracy on one side;
+- the most actionable sub-lemma is therefore:
+  show one side is independent or nonzero in a way that makes the opposite-side
+  annihilation impossible;
+- file pointers for the next strike:
+  `PO3a-Volterra-word admission criterion`,
+  `PO3a-two-by-two receiver under physical Volterra normal form`,
+  and `Q3/Proofs/HBridge_PO3_Shell.lean` as the formal shell consumer.

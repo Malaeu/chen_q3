@@ -4570,6 +4570,98 @@ So if both pairs were independent, the product `E_+KF_-` could not vanish.
 Therefore vanishing of the mixed block forces a degeneracy on at least one
 side. ∎
 
+### Corollary `PO3a-one-side independence forces opposite-side annihilation`
+
+Keep the hypotheses and notation of
+`PO3a-two-by-two receiver under physical Volterra normal form`.
+
+1. If the plus-side pair
+
+   ```tex
+   \{U^*h_{+,N},\,P_+U^*v_{a,N}\}
+   ```
+
+   is linearly independent and
+
+   ```tex
+   P_+H_{a,N}^{\mathrm{Vol}}P_-=0,
+   ```
+
+   then both minus-side functionals vanish:
+
+   ```tex
+   \langle V^*P_-v_{a,N}|=0,
+   \qquad
+   \langle \ell_{-,N}P_-V|=0.
+   ```
+
+2. If the minus-side pair of functionals
+
+   ```tex
+   \{\langle V^*P_-v_{a,N}|,\,\langle \ell_{-,N}P_-V|\}
+   ```
+
+   is linearly independent and
+
+   ```tex
+   P_+H_{a,N}^{\mathrm{Vol}}P_-=0,
+   ```
+
+   then both plus-side vectors vanish:
+
+   ```tex
+   U^*h_{+,N}=0,
+   \qquad
+   P_+U^*v_{a,N}=0.
+   ```
+
+#### Proof
+
+Use the factorization
+
+```tex
+P_+H_{a,N}^{\mathrm{Vol}}P_-=E_+ K F_-
+```
+
+from `PO3a-two-by-two receiver under physical Volterra normal form`, with
+
+```tex
+K=
+\begin{bmatrix}
+-1 & c_a \\
+0  & -1
+\end{bmatrix}.
+```
+
+If the plus-side pair is linearly independent, then `E_+` is injective, so
+from `E_+KF_-=0` one gets `KF_-=0`. Since `K` is invertible, this implies
+`F_-=0`, which is exactly the pair of identities
+
+```tex
+\beta_{1,-}=0,
+\qquad
+\beta_{2,-}=0.
+```
+
+That is the first claim.
+
+If instead the minus-side pair is linearly independent, then the map
+
+```tex
+F_-:\mathcal K_N\to\mathbb C^2
+```
+
+is surjective, so `E_+KF_-=0` implies `E_+K=0`. Again `K` is invertible, hence
+`E_+=0`, which is exactly
+
+```tex
+u_{1,+}=0,
+\qquad
+u_{2,+}=0.
+```
+
+That is the second claim. ∎
+
 ### `PO3a.3` Kernel sign-preservation on boundary generators
 
 Show that the kernel action preserves the sign purity of the boundary
