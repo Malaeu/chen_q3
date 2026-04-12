@@ -6993,3 +6993,23 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `\mathsf A+\mathsf B+\mathsf M=0`;
 - this is the strongest current finite-dimensional receiver for the boundary
   attack.
+
+## Final result (2026-04-12): exact admission criterion for the real boundary correction
+
+- the `PO3a` note now contains a clean sufficient criterion for the genuine
+  boundary correction:
+  if `H_{a,N}` is a finite linear combination of Volterra-undoing words
+  `U_0^*T^*X_0\Pi_1X_1\Pi_2X_2TV_0` with sign-preserving tail operators on the
+  outside, bounded middle operators, and at most two endpoint projectors
+  `\Pi_j \in \{R_a,R_a^*\}`, then it automatically reduces to the endpoint
+  normal-form families
+  `A E_{a,N}U`, `V^*E_{a,N}^*B`, `U_1^*E_{a,N}^*ME_{a,N}U_2`;
+- therefore the live `PO3a` burden is now narrower than “derive the whole
+  explicit formula for `B_{a,N}`”:
+  it is enough to prove that the real boundary correction lies in this finite
+  Volterra-word class;
+- once that admission step lands, outer-endpoint annihilation, endpoint normal
+  form, and the canonical finite mixing receiver all apply with no extra
+  operator theory;
+- this is the cleanest current bridge from the real analytic defect to the
+  finite matrix identity `\mathsf A+\mathsf B+\mathsf M=0`.

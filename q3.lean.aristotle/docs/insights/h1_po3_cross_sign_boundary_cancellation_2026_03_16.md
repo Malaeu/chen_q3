@@ -3953,6 +3953,101 @@ composites `R_aT=E_{a,N}` or `T^*R_a^*=E_{a,N}^*`, and any surviving
 two-endpoint word must contain both of them, which is exactly the displayed
 normal form. ∎
 
+### Theorem `PO3a-Volterra-word admission criterion`
+
+There is now one exact sufficient criterion for the real boundary correction to
+enter the endpoint-word / finite-matrix framework.
+
+Assume the genuine boundary defect `H_{a,N}` can be written as a finite linear
+combination of Volterra-undoing words of the form
+
+```tex
+U_0^*T^*X_0\Pi_1X_1\Pi_2X_2TV_0,
+```
+
+where
+
+- `U_0,V_0:\mathcal K_N\to\mathcal K_N` are sign-preserving tail operators;
+- each `X_j:L^2(-a,a)\to L^2(-a,a)` is bounded;
+- each `\Pi_j` is either `R_a` or `R_a^*`;
+- and every word contains at most two endpoint projectors.
+
+Then `H_{a,N}` is a finite linear combination of endpoint normal-form words
+
+```tex
+A E_{a,N}U,
+\qquad
+V^*E_{a,N}^*B,
+\qquad
+U_1^*E_{a,N}^*ME_{a,N}U_2,
+```
+
+and therefore admits a finite sign-split rank-one expansion. Equivalently, the
+canonical finite mixing receiver applies automatically.
+
+#### Proof
+
+Take one such word
+
+```tex
+W=U_0^*T^*X_0\Pi_1X_1\Pi_2X_2TV_0,
+```
+
+allowing one of `\Pi_1,\Pi_2` to be absent.
+
+If no endpoint projector is present, then `W` is not a boundary word at all; in
+the current `PO3a` split such terms belong to the bulk channel and therefore do
+not contribute to the genuine boundary defect.
+
+Assume exactly one endpoint projector is present. If it sits on the outer left
+or outer right synthesis side, the word vanishes by `PO3a-outer-endpoint
+annihilation`:
+
+```tex
+T^*R_a=0,
+\qquad
+R_a^*T=0.
+```
+
+So any surviving one-endpoint word must contain one of the composites
+
+```tex
+R_aT=E_{a,N},
+\qquad
+T^*R_a^*=E_{a,N}^*.
+```
+
+Hence every surviving one-endpoint word is of the form
+
+```tex
+A E_{a,N}U
+\qquad\text{or}\qquad
+V^*E_{a,N}^*B,
+```
+
+with sign-preserving tail operators on the outside.
+
+Now assume two endpoint projectors are present. If one of them sits on the
+outer synthesis side, the word again dies by the same annihilation lemma. So a
+surviving two-endpoint word must contain both composites
+
+```tex
+T^*R_a^*=E_{a,N}^*
+\qquad\text{and}\qquad
+R_aT=E_{a,N}.
+```
+
+Because there are at most two endpoint projectors, no further endpoint factor
+can remain. Therefore every surviving two-endpoint word is exactly of the form
+
+```tex
+U_1^*E_{a,N}^*ME_{a,N}U_2.
+```
+
+So every surviving boundary word belongs to the endpoint normal-form families,
+and `PO3a-endpoint normal form` yields a finite sign-split rank-one expansion.
+The canonical finite mixing receiver then applies automatically. ∎
+
 ### Theorem `PO3a-two-endpoint extraction`
 
 There is now one exact algebraic receiver that captures what the real
