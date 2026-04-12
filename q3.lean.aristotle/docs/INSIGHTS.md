@@ -6688,6 +6688,12 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - this is now the strongest finite-dimensional receiver in the file: once the
   real boundary defect yields finite row/column data, there is no remaining
   infinite-dimensional ambiguity at all;
+- the Lean shell is now synchronized with this receiver at the logical level:
+  `Q3/Proofs/HBridge_PO3_Shell.lean` contains
+  `po3_boundary_zero_of_matrix_receiver` and
+  `po3_cap_only_of_po2_and_matrix_receiver`, so the executable handoff now
+  matches the new docs-level packet “finite matrix cancellation
+  \Rightarrow boundary zero \Rightarrow cap-only mixed block”;
 - in the first-order endpoint model this `PO3a-core` formula collapses exactly
   to the old zero-mode object: the three families reduce to the two sign
   components of `U^*G\mathbf 1` plus the scalar `\langle\mathbf 1,G\mathbf 1\rangle`,

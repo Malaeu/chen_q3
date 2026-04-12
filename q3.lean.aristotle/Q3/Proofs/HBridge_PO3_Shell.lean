@@ -24,6 +24,20 @@ section PO3Shell
 
 variable {A : Type*} [AddGroup A]
 
+/-- Abstract finite-matrix receiver for `PO3a`: if the boundary channel is
+represented by a finite cancellation packet `A + B + M`, and that packet
+vanishes, then the boundary channel itself vanishes. -/
+theorem po3_boundary_zero_of_matrix_receiver
+    (D_partial_pm receiver A_mat B_mat M_mat : A)
+    (hreceiver : D_partial_pm = receiver)
+    (hmatrix : receiver = A_mat + B_mat + M_mat)
+    (hcancel : A_mat + B_mat + M_mat = 0) :
+    D_partial_pm = 0 := by
+  calc
+    D_partial_pm = receiver := hreceiver
+    _ = A_mat + B_mat + M_mat := hmatrix
+    _ = 0 := hcancel
+
 /-- Abstract `PO2` shell: the mixed block splits into boundary plus cap. -/
 theorem po3_cap_only_of_po2_shell
     (D_N_pm D_partial_pm D_cap_pm : A)
@@ -34,6 +48,20 @@ theorem po3_cap_only_of_po2_shell
     D_N_pm = D_partial_pm + D_cap_pm := hpo2
     _ = 0 + D_cap_pm := by simp [hpo3a]
     _ = D_cap_pm := zero_add _
+
+/-- Combined shell: `PO2` plus the finite-matrix receiver already implies the
+cap-only mixed block conclusion. -/
+theorem po3_cap_only_of_po2_and_matrix_receiver
+    (D_N_pm D_partial_pm D_cap_pm receiver A_mat B_mat M_mat : A)
+    (hpo2 : D_N_pm = D_partial_pm + D_cap_pm)
+    (hreceiver : D_partial_pm = receiver)
+    (hmatrix : receiver = A_mat + B_mat + M_mat)
+    (hcancel : A_mat + B_mat + M_mat = 0) :
+    D_N_pm = D_cap_pm := by
+  apply po3_cap_only_of_po2_shell
+  · exact hpo2
+  · exact po3_boundary_zero_of_matrix_receiver
+      D_partial_pm receiver A_mat B_mat M_mat hreceiver hmatrix hcancel
 
 end PO3Shell
 
