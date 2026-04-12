@@ -18,10 +18,10 @@ collections: ["q3_docs", "math_papers"]
 tags: ["po3", "boundary"]
 insight_links: ["q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md"]
 request_nodes: ["q3.lean.aristotle/ACTIVE/requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/node.md"]
-strong_terms: ["boundary word", "sign-pure"]
-empty_terms: ["generic classification"]
-false_friend_terms: ["stieltjes monotonicity"]
-opens_new_branch_terms: ["volterra word"]
+strong_terms: ["граничное слово (boundary word)", "алгебра знаковой чистоты (sign-pure algebra)"]
+empty_terms: ["общая классификация"]
+false_friend_terms: ["стилтьесова монотонность (Stieltjes monotonicity)"]
+opens_new_branch_terms: ["вольтеррово слово (Volterra word)"]
 neighbor_addresses: ["PO3a.2", "PO3a.4"]
 ---
 ```
@@ -43,3 +43,11 @@ neighbor_addresses: ["PO3a.2", "PO3a.4"]
 - `raw_address_notation` хранит буквальную рабочую запись;
 - `normalized_addresses` хранит явный список адресов без сокращений;
 - killed address трактуется как killed subtree, если не записано обратное.
+
+Правило терминов:
+
+- при первом упоминании писать термин по-русски;
+- если нужен английский эквивалент, добавлять его в скобках:
+  `граничное слово (boundary word)`,
+  `алгебра знаковой чистоты (sign-pure algebra)`,
+  `нулевой режим (zero mode)`.

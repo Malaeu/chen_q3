@@ -89,6 +89,8 @@ Operational rule:
 - `raw_address_notation` keeps the literal project shorthand;
 - `normalized_addresses` must expand shorthand like `D2Q3B5, 7` into the full
   explicit list;
+- in card titles, blocker descriptions, and vocabulary fields, write terms in
+  Russian first; if needed, add the English label in parentheses on first use;
 - after updating cards, run
   `python3 q3.lean.aristotle/scripts/oracle_questions.py reindex`.
 
