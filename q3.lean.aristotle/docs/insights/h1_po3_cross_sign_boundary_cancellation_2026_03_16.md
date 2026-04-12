@@ -408,6 +408,300 @@ The next honest local task is not another search, but a direct attack on
 `PO3a-formula`: derive an explicit formula for `H_{a,N}` and prove that every
 boundary generator is sign-pure.
 
+## `PO3a-core` — exact mixed-block expansion
+
+There is now a sharper abstract theorem packet sitting strictly between the
+sign-pure slogan
+
+```tex
+H_{a,N}\in \mathcal B
+```
+
+and the concrete zero-mode / square-tail reductions below. It does not prove
+`PO3a` by itself, but it shows exactly which coefficients must be killed once a
+finite sign-split boundary expansion is available.
+
+### Abstract setup
+
+Let
+
+```tex
+\mathcal H=\mathcal H_+\oplus \mathcal H_-,
+\qquad
+P_+,P_-
+```
+
+be the orthogonal sign projectors, let `G=G^*` be bounded and self-adjoint,
+and write
+
+```tex
+S=U+B.
+```
+
+Assume the bulk is already matched:
+
+```tex
+U^*GU=\kappa\,\Delta^*Q\Delta.
+```
+
+Define the boundary defect
+
+```tex
+H:=S^*GS-\kappa\,\Delta^*Q\Delta.
+```
+
+Assume also that the boundary correction has a finite sign-split rank-one
+expansion
+
+```tex
+B=
+\sum_{\sigma\in\{+,-\}}\sum_{r=1}^{R_\sigma}
+|b_{r,\sigma}\rangle\langle \eta_{r,\sigma}|,
+\qquad
+\eta_{r,\sigma}\in\mathcal H_\sigma.
+```
+
+### Theorem `PO3a-core`
+
+Under the setup above,
+
+```tex
+\boxed{
+P_+HP_-
+=
+\sum_{r=1}^{R_-}
+|P_+U^*Gb_{r,-}\rangle\langle \eta_{r,-}|
+\;+\;
+\sum_{r=1}^{R_+}
+|\eta_{r,+}\rangle\langle P_-U^*Gb_{r,+}|
+\;+\;
+\sum_{r=1}^{R_+}\sum_{s=1}^{R_-}
+\langle b_{r,+},Gb_{s,-}\rangle
+|\eta_{r,+}\rangle\langle \eta_{s,-}|.
+}
+```
+
+#### Proof
+
+Expand
+
+```tex
+S^*GS
+=
+U^*GU+U^*GB+B^*GU+B^*GB.
+```
+
+Since `U^*GU=\kappa\,\Delta^*Q\Delta`, one has
+
+```tex
+H=U^*GB+B^*GU+B^*GB,
+```
+
+hence
+
+```tex
+P_+HP_-
+=
+P_+U^*GBP_-+P_+B^*GUP_-+P_+B^*GBP_-.
+```
+
+For the first term,
+
+```tex
+U^*GB
+=
+\sum_{\sigma,r}|U^*Gb_{r,\sigma}\rangle\langle \eta_{r,\sigma}|,
+```
+
+so
+
+```tex
+P_+U^*GBP_-
+=
+\sum_{\sigma,r}|P_+U^*Gb_{r,\sigma}\rangle\langle P_-\eta_{r,\sigma}|.
+```
+
+Because `\eta_{r,+}\in\mathcal H_+` and `\eta_{r,-}\in\mathcal H_-`, only
+`\sigma=-` survives:
+
+```tex
+P_+U^*GBP_-
+=
+\sum_{r=1}^{R_-}|P_+U^*Gb_{r,-}\rangle\langle \eta_{r,-}|.
+```
+
+For the second term,
+
+```tex
+B^*
+=
+\sum_{\sigma,r}|\eta_{r,\sigma}\rangle\langle b_{r,\sigma}|,
+```
+
+so
+
+```tex
+P_+B^*GUP_-
+=
+\sum_{\sigma,r}|P_+\eta_{r,\sigma}\rangle\langle b_{r,\sigma},GUP_-\cdot\rangle.
+```
+
+Again only `\sigma=+` survives, and self-adjointness of `G` gives
+
+```tex
+\langle b_{r,+},GUP_-\cdot\rangle
+=
+\langle P_-U^*Gb_{r,+},\cdot\rangle.
+```
+
+Hence
+
+```tex
+P_+B^*GUP_-
+=
+\sum_{r=1}^{R_+}
+|\eta_{r,+}\rangle\langle P_-U^*Gb_{r,+}|.
+```
+
+For the third term,
+
+```tex
+B^*GB
+=
+\sum_{\sigma,\tau}\sum_{r,s}
+\langle b_{r,\sigma},Gb_{s,\tau}\rangle
+|\eta_{r,\sigma}\rangle\langle \eta_{s,\tau}|,
+```
+
+so after projecting by `P_+` on the left and `P_-` on the right only the
+`\sigma=+,\tau=-` block remains:
+
+```tex
+P_+B^*GBP_-
+=
+\sum_{r=1}^{R_+}\sum_{s=1}^{R_-}
+\langle b_{r,+},Gb_{s,-}\rangle
+|\eta_{r,+}\rangle\langle \eta_{s,-}|.
+```
+
+Summing the three displayed identities yields the formula. ∎
+
+### Corollary `PO3a-kill`
+
+If
+
+```tex
+P_+U^*Gb_{r,-}=0
+\qquad \forall r,
+```
+
+```tex
+P_-U^*Gb_{r,+}=0
+\qquad \forall r,
+```
+
+and
+
+```tex
+\langle b_{r,+},Gb_{s,-}\rangle=0
+\qquad \forall r,s,
+```
+
+then
+
+```tex
+P_+HP_-=0.
+```
+
+So `PO3a` is reduced to killing exactly three families of cross-sign
+coefficients:
+
+1. bulk leakage from minus-boundary generators into `\mathcal H_+`;
+2. bulk leakage from plus-boundary generators into `\mathcal H_-`;
+3. pure boundary-to-boundary cross-sign pairings.
+
+This is stronger operationally than the raw slogan `H_{a,N}\in\mathcal B`.
+Once the explicit boundary expansion is available, `PO3a` is no longer an
+abstract algebra-membership problem but a concrete vanishing problem for these
+three coefficient families.
+
+### First-order endpoint specialization
+
+The abstract packet is not separate from the current live route; in the first
+endpoint model it collapses exactly to the already active zero-mode vector.
+
+Assume the boundary correction has the single endpoint form
+
+```tex
+B
+=
+|\mathbf 1\rangle\langle \ell_{+,N}P_+ + \ell_{-,N}P_-|.
+```
+
+Equivalently, this is the sign-split rank-one expansion
+
+```tex
+B
+=
+|\mathbf 1\rangle\langle \ell_{+,N}P_+|
+\;+\;
+|\mathbf 1\rangle\langle \ell_{-,N}P_-|,
+```
+
+with
+
+```tex
+b_{1,+}=b_{1,-}=\mathbf 1,
+\qquad
+\eta_{1,+}=\ell_{+,N},
+\qquad
+\eta_{1,-}=\ell_{-,N}.
+```
+
+Then `PO3a-core` gives
+
+```tex
+P_+HP_-
+=
+|P_+U^*G\mathbf 1\rangle\langle \ell_{-,N}|
+\;+\;
+|\ell_{+,N}\rangle\langle P_-U^*G\mathbf 1|
+\;+\;
+\langle \mathbf 1,G\mathbf 1\rangle
+|\ell_{+,N}\rangle\langle \ell_{-,N}|.
+```
+
+So in the first-order endpoint model there are no hidden new mechanisms at all.
+The three general `PO3a-core` families collapse to:
+
+1. the positive component of the single vector `U^*G\mathbf 1`;
+2. the negative component of the same vector;
+3. one scalar self-pairing `\langle \mathbf 1,G\mathbf 1\rangle`.
+
+After pulling back along the raw tail synthesis, this is exactly the old
+zero-mode receiver
+
+```tex
+v_{a,N}:=T_{a,\infty,N}^*G_g[a]\mathbf 1.
+```
+
+So the abstract `PO3a-core` theorem is perfectly compatible with the current
+live route:
+
+```tex
+\text{general three-family cross-sign reduction}
+\Longrightarrow
+\text{first-order endpoint case}
+\Longrightarrow
+\text{zero-mode vector } v_{a,N}.
+```
+
+This is important because it shows we are not forking the proof. We now have
+the same live obstruction described in two equivalent languages:
+
+- upper-shell: three coefficient families from `PO3a-core`;
+- lower-shell: the zero-mode / square-tail receiver route.
+
 ## Proof skeleton for the live `PO3a` attack
 
 The next proof attempt should now be written as a rigid five-step packet rather

@@ -6638,6 +6638,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   finite front factor, so the first-order wall admits an exact whole-tail
   factorization by a square-lattice entire function of lower density than the
   old integer-tail Gamma divider;
+- independently of the lower square-tail route, `PO3a` now also has a clean
+  upper-shell reduction `PO3a-core`: once a finite sign-split boundary
+  expansion `B=\sum |b_{r,\sigma}\rangle\langle\eta_{r,\sigma}|` is available,
+  the bad block `P_+H_{a,N}P_-` expands into exactly three explicit families:
+  `P_+U^*Gb_{r,-}`, `P_-U^*Gb_{r,+}`, and
+  `\langle b_{r,+},Gb_{s,-}\rangle`; so boundary cancellation is reduced from
+  abstract algebra-membership to concrete coefficient vanishing;
+- in the first-order endpoint model this `PO3a-core` formula collapses exactly
+  to the old zero-mode object: the three families reduce to the two sign
+  components of `U^*G\mathbf 1` plus the scalar `\langle\mathbf 1,G\mathbf 1\rangle`,
+  so the new upper-shell reduction and the old lower-shell `v_{a,N}` route are
+  two descriptions of the same live obstruction, not competing forks;
 - local semantic search on the new blocker `infinite-support square-tail
   injectivity` did not surface any ready-made project theorem beyond the old
   generic `PO2` Cauchy-tail wall; short external probing likewise did not
