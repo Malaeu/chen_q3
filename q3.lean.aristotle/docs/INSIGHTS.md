@@ -6670,6 +6670,24 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   with explicit ratio control
   `\nu_k(\gamma)/\nu_k(\eta)=|b_\gamma|^2/|b_\eta|^2 \cdot
    \prod_{j\le k}|\lambda_\eta-s_j|^2/|\lambda_\gamma-s_j|^2`;
+- exact target for the next local blocker: prove `SQ1.3`, an explicit upper
+  bound on the pole-envelope
+  `\mathfrak D_N(\lambda)=\sup_k\prod_{j\le k}|1-\lambda/(N+j)^2|^{-2}`, and
+  wire it into the already isolated `SQ1` no-escape wall;
+- local semantic search on this blocker only surfaced in-project Gamma-ratio
+  infrastructure and no imported square-tail theorem; the short external check
+  likewise only confirms the standard sine-product / Gamma-product background,
+  not a ready-made uniqueness result on the square lattice;
+- two concrete `SQ1` gains are now closed mathematically:
+  `SQ1.1` fixed-anchor no-drift (`W_k(\lambda)/W_k(\mu)\to C_N(\lambda,\mu)`)
+  and `SQ1.2` the summable pole-envelope criterion
+  `\sum_{\lambda}|b_\lambda|^2\mathfrak D_N(\lambda)<\infty
+   \Rightarrow \nu_k\to\pi_N`;
+- so the live burden inside the direct square-tail route is no longer generic
+  Gibbs motion, but one static arithmetic/geometric wall: estimate
+  `\mathfrak D_N(\lambda)` on the actual support `\lambda=y_\gamma^2` in terms
+  of the bounded-strip geometry of `y_\gamma=-a\gamma/\pi` and its distance to
+  the tail square lattice `\pm\{N+1,N+2,\dots\}`;
 - so the next honest split is now explicit:
   either attack the live wall directly through the Newton-profile /
   quadratic-divisor formulation of `J_a`,

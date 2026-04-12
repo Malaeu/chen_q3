@@ -1711,8 +1711,117 @@ weight system on the squared support:
 \text{ escape indefinitely as }k\to\infty?
 ```
 
-This is still open, but it replaces the raw divisor tower by one exact
-normalized dynamics on `\Lambda_a`.
+There are now two clean structural gains inside this Gibbs picture.
+
+```tex
+\textbf{SQ1.1. Fixed-anchor no-drift.}
+```
+
+For any two fixed support points `\lambda,\mu\in\Lambda_a` choose square roots
+`w^2=\lambda`, `u^2=\mu`. Then
+
+```tex
+W_k(\lambda)
+:=
+|b_\lambda|^2\prod_{j=1}^k |\lambda-(N+j)^2|^{-2}
+```
+
+satisfies
+
+```tex
+\frac{W_k(\lambda)}{W_k(\mu)}
+=
+C_{N}(\lambda,\mu)\bigl(1+O_{N,\lambda,\mu}(1/k)\bigr),
+\qquad
+C_N(\lambda,\mu)\in(0,\infty).
+```
+
+Indeed
+
+```tex
+\prod_{j=1}^k\bigl((N+j)^2-\lambda\bigr)
+=
+\frac{\Gamma(N+k+1-w)\Gamma(N+k+1+w)}
+{\Gamma(N+1-w)\Gamma(N+1+w)},
+```
+
+and the same formula with `u` in place of `w` reduces the ratio to a paired
+Gamma quotient; the standard Stirling estimate for
+`\Gamma(z+a)\Gamma(z-a)/\Gamma(z)^2` then gives the stated limit. So the fatal
+linear-branch drift is absent here: fixed squared anchors do not asymptotically
+eat each other.
+
+```tex
+\textbf{SQ1.2. Summable pole-envelope criterion.}
+```
+
+Define
+
+```tex
+\Theta_k:=\prod_{j=1}^k (N+j)^{-4},
+\qquad
+D_{N,k}(\lambda):=\prod_{j=1}^k\left|1-\frac{\lambda}{(N+j)^2}\right|^{-2},
+\qquad
+\mathfrak D_N(\lambda):=\sup_{k\ge 0} D_{N,k}(\lambda).
+```
+
+Then `W_k(\lambda)=\Theta_k |b_\lambda|^2 D_{N,k}(\lambda)`. If
+
+```tex
+\sum_{\lambda\in\Lambda_a}|b_\lambda|^2\mathfrak D_N(\lambda)<\infty,
+```
+
+then for every fixed `\lambda`
+
+```tex
+D_{N,k}(\lambda)\to D_{N,\infty}(\lambda)
+:=
+\prod_{j=1}^\infty\left|1-\frac{\lambda}{(N+j)^2}\right|^{-2}\in(0,\infty),
+```
+
+and dominated convergence yields
+
+```tex
+\frac{Z_k}{\Theta_k}
+=
+\sum_{\lambda\in\Lambda_a}|b_\lambda|^2D_{N,k}(\lambda)
+\longrightarrow
+\sum_{\lambda\in\Lambda_a}|b_\lambda|^2D_{N,\infty}(\lambda)
+=:M_{N,\infty}\in(0,\infty).
+```
+
+Consequently the normalized Gibbs measures converge pointwise to
+
+```tex
+\pi_N(\lambda)
+:=
+\frac{|b_\lambda|^2D_{N,\infty}(\lambda)}{M_{N,\infty}},
+```
+
+so under this explicit summability condition there is not just an anchor, but a
+full limit law and hence no escape at all.
+
+So the live `SQ1` burden has become much narrower. It is no longer the raw
+Gibbs dynamics itself, but the explicit static summability wall
+
+```tex
+\sum_{\lambda\in\Lambda_a}|b_\lambda|^2\mathfrak D_N(\lambda)<\infty.
+```
+
+The next exact blocker is therefore:
+
+```tex
+\textbf{SQ1.3. Explicit pole-envelope bound.}
+```
+
+Bound `\mathfrak D_N(\lambda)` on the actual support in terms of the square-root
+coordinate `\lambda=y^2`, the bounded-strip geometry of `y_\gamma=-a\gamma/\pi`,
+and the distance from `y` to the tail square lattice
+`\pm\{N+1,N+2,\dots\}`. Local oracle search only surfaced the project's own
+Gamma-ratio infrastructure; a short external sanity-check only confirms the
+standard sine-product / Gamma-product identities, not any imported square-tail
+injectivity theorem. So `SQ1.3` is now the honest next theorem-target inside the
+direct square-tail branch.
 
 ```tex
 \textbf{SQ2. Square-support backend adaptation.}
