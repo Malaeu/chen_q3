@@ -6948,3 +6948,24 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   [`h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md),
   3) после этого проверить, что граничная поправка действительно лежит в
   конечной схеме corrected-column / endpoint-word.
+
+## Final result (2026-04-12): finite raw support survives the two-sided filter
+
+- точная транспортная лемма теперь зафиксирована в
+  [`h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md):
+  если сырой оператор на хвостовом базисе поддержан на конечных множествах
+  строк `R` и столбцов `C`, то после двухстороннего фильтра
+  `\Delta_N^* \mathcal B^{\mathrm{raw}} \Delta_N` он всё ещё поддержан на
+  конечных множествах строк и столбцов, только после одношагового утолщения
+  `R^\sharp`, `C^\sharp`;
+- это ровно недостающее звено между сырой разностью коэффициентов
+  `\delta_{r,s}(a)` и уже готовой corrected-column reduction:
+  конечная сырая поддержка теперь автоматически даёт конечную матрицу
+  смешивания после фильтра;
+- следовательно, текущая локальная цель стала ещё уже:
+  уже не нужно описывать весь фильтрованный оператор целиком; достаточно
+  показать, что после удаления объёмной части и шапки сырая граничная
+  поправка попадает в класс конечной поддержки по строкам и столбцам, либо в
+  эквивалентный класс крайних слов;
+- после этого `PO3a` входит в уже замороженный каркас
+  `P_+ H_{a,N} P_- = E_+ (A+B+M) E_-^*`.

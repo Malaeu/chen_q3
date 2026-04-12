@@ -525,6 +525,164 @@ So the concrete `PO3a` burden is now fully explicit:
 3. feed that finite boundary operator into the corrected-column reduction, and
    then into the finite mixing matrix `A+B+M`.
 
+### Finite raw support survives the filter
+
+The previous paragraph can be sharpened into one exact transport lemma.
+
+Let
+
+```tex
+I_N:=\{r\in\mathbb Z:\ |r|>N\}
+```
+
+be the two-sided tail index set, and let
+
+```tex
+\mathcal B_{a,N}^{\mathrm{raw}}
+```
+
+be any operator on the raw tail basis `\{e_r:r\in I_N\}` with matrix entries
+`b_{r,s}`. Assume there exist finite sets
+
+```tex
+R,\ C\subset I_N
+```
+
+such that
+
+```tex
+b_{r,s}=0
+\qquad
+\text{whenever } r\notin R \text{ and } s\notin C.
+```
+
+Define the one-step thickening of these sets by
+
+```tex
+R^\sharp
+:=
+R
+\cup
+\{r\in I_N:\ r+\operatorname{sgn}(r)\in R\},
+```
+
+```tex
+C^\sharp
+:=
+C
+\cup
+\{s\in I_N:\ s+\operatorname{sgn}(s)\in C\}.
+```
+
+Then the filtered pullback
+
+```tex
+\mathcal B_{a,N}^{\mathrm f}
+:=
+\Delta_N^*\,\mathcal B_{a,N}^{\mathrm{raw}}\,\Delta_N
+```
+
+again has finite row/column support:
+
+```tex
+\boxed{
+\langle \mathcal B_{a,N}^{\mathrm f}e_s,e_r\rangle=0
+\quad
+\text{whenever } r\notin R^\sharp \text{ and } s\notin C^\sharp.
+}
+```
+
+#### Proof
+
+For every `r,s\in I_N`,
+
+```tex
+\Delta_N e_r=e_r+e_{r+\operatorname{sgn}(r)},
+\qquad
+\Delta_N e_s=e_s+e_{s+\operatorname{sgn}(s)}.
+```
+
+So the filtered matrix entry is
+
+```tex
+\bigl\langle \mathcal B_{a,N}^{\mathrm f}e_s,e_r\bigr\rangle
+=
+\sum_{\epsilon_1,\epsilon_2\in\{0,1\}}
+b_{\,r+\epsilon_1\operatorname{sgn}(r),\,
+   s+\epsilon_2\operatorname{sgn}(s)}.
+```
+
+If this sum is nonzero, then at least one summand is nonzero. By the support
+hypothesis on `\mathcal B_{a,N}^{\mathrm{raw}}`, that nonzero summand forces
+
+```tex
+r+\epsilon_1\operatorname{sgn}(r)\in R
+\qquad\text{or}\qquad
+s+\epsilon_2\operatorname{sgn}(s)\in C.
+```
+
+If `\epsilon_1=0`, then `r\in R\subset R^\sharp`. If `\epsilon_1=1`, then
+`r+\operatorname{sgn}(r)\in R`, hence `r\in R^\sharp` by definition. The same
+argument on the column index gives `s\in C^\sharp`.
+
+Therefore a nonzero filtered entry can occur only when
+
+```tex
+r\in R^\sharp
+\qquad\text{or}\qquad
+s\in C^\sharp,
+```
+
+which is exactly the claimed row/column support statement. ∎
+
+### Immediate consequence for `PO3a`
+
+Apply the lemma to the raw boundary part
+
+```tex
+\mathcal R_{a,N}^{\partial}
+```
+
+in the decomposition
+
+```tex
+\mathcal R_{a,N}^{\mathrm{raw}}
+=
+\mathcal R_{a,N}^{\mathrm{bulk}}
+\,+\,
+\mathcal R_{a,N}^{\partial}
+\,+\,
+\mathcal R_{a,N}^{\mathrm{cap}}.
+```
+
+If `\mathcal R_{a,N}^{\partial}` has finite row/column support, then the
+filtered boundary operator
+
+```tex
+H_{a,N}
+:=
+\Delta_N^*\,\mathcal R_{a,N}^{\partial}\,\Delta_N
+```
+
+also has finite row/column support. So the corrected-column reduction applies
+directly to `H_{a,N}`, and the mixed block of `H_{a,N}` is forced into the
+finite cancellation frame
+
+```tex
+P_+H_{a,N}P_-
+=
+E_+\,(A+B+M)\,E_-^*.
+```
+
+Hence the raw-support problem and the finite mixing problem are now genuinely
+the same step:
+
+```tex
+\text{raw finite row/column support}
+\Longrightarrow
+\text{filtered finite mixing matrix}.
+```
+
 So the honest `PO3a` burden can be read one step lower:
 
 ```tex
