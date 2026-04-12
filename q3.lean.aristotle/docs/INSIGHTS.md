@@ -7179,3 +7179,17 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - once `PO3a-A + PO3a-B` hold, the already-proved Volterra-word admission
   criterion applies automatically, so the finite receiver follows without ever
   needing the stronger one-kernel physical identity.
+
+## Final result (2026-04-12): direct boundary-word criterion for the finite receiver
+
+- the `PO3a` note now contains an even cheaper sufficient criterion:
+  if the genuine boundary correction can be written as a finite sum of words
+  `\sum_{\ell=1}^M X_\ell P_J Y_\ell` with one finite boundary projector `P_J`,
+  then it automatically has a finite sign-split rank-one decomposition;
+- after that, the canonical finite receiver applies with no extra row/column
+  bookkeeping, and the mixed block again reduces to one finite matrix identity
+  `\mathsf A+\mathsf B+\mathsf M=0`;
+- this is now the cleanest operational interface for the live extraction step:
+  instead of proving a full matrix formula for `B_{a,N}`, it is enough to
+  rewrite it as a finite sum of boundary words through one finite endpoint
+  layer.

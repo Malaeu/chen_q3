@@ -1834,6 +1834,123 @@ So the strongest current finite-dimensional receiver for `PO3a` is now:
 \mathsf A+\mathsf B+\mathsf M=0.
 ```
 
+### Theorem `PO3a-boundary-word criterion`
+
+There is also a direct sufficient criterion that bypasses the row/column
+support bookkeeping entirely.
+
+Keep the setup of `PO3a-canonical finite matrix receiver`. Assume the boundary
+correction admits a finite word decomposition
+
+```tex
+\boxed{
+B=\sum_{\ell=1}^M X_\ell P_J Y_\ell,
+}
+```
+
+where
+
+- `J\subset I` is a finite boundary index set;
+- `P_J=\sum_{j\in J}|e_j\rangle\langle e_j|`;
+- `X_\ell,Y_\ell` are bounded operators.
+
+Then `B` automatically admits a finite sign-split rank-one decomposition.
+More precisely, if
+
+```tex
+x_{\ell,j}:=X_\ell e_j,
+\qquad
+y_{\ell,j}:=Y_\ell^*e_j,
+\qquad
+y_{\ell,j}^\pm:=P_\pm y_{\ell,j},
+```
+
+then
+
+```tex
+\boxed{
+B=
+\sum_{\ell=1}^M\sum_{j\in J}|x_{\ell,j}\rangle\langle y_{\ell,j}^+|
+\;+\;
+\sum_{\ell=1}^M\sum_{j\in J}|x_{\ell,j}\rangle\langle y_{\ell,j}^-|.
+}
+```
+
+In particular, the canonical finite matrix receiver applies automatically:
+
+```tex
+\boxed{
+P_+HP_-=E_+(\mathsf A+\mathsf B+\mathsf M)E_-^*,
+}
+```
+
+and hence
+
+```tex
+\boxed{
+P_+HP_-=0
+\qquad\Longleftrightarrow\qquad
+\mathsf A+\mathsf B+\mathsf M=0.
+}
+```
+
+#### Proof
+
+Expand the finite boundary projector:
+
+```tex
+P_J=\sum_{j\in J}|e_j\rangle\langle e_j|.
+```
+
+Therefore each word satisfies
+
+```tex
+X_\ell P_J Y_\ell
+=
+\sum_{j\in J}X_\ell|e_j\rangle\langle e_j|Y_\ell
+=
+\sum_{j\in J}|X_\ell e_j\rangle\langle Y_\ell^*e_j|
+=
+\sum_{j\in J}|x_{\ell,j}\rangle\langle y_{\ell,j}|.
+```
+
+Summing over `\ell` gives
+
+```tex
+B=\sum_{\ell=1}^M\sum_{j\in J}|x_{\ell,j}\rangle\langle y_{\ell,j}|.
+```
+
+Now split each right vector by sign:
+
+```tex
+y_{\ell,j}=y_{\ell,j}^+ + y_{\ell,j}^-,
+\qquad
+\langle y_{\ell,j}|=\langle y_{\ell,j}^+|+\langle y_{\ell,j}^-|.
+```
+
+Hence
+
+```tex
+|x_{\ell,j}\rangle\langle y_{\ell,j}|
+=
+|x_{\ell,j}\rangle\langle y_{\ell,j}^+|
+\;+\;
+|x_{\ell,j}\rangle\langle y_{\ell,j}^-|.
+```
+
+This yields the displayed finite sign-split decomposition. Since the number of
+raw generators is at most `2M|J|`, the construction of
+`PO3a-canonical finite matrix receiver` applies verbatim, giving the finite
+matrix identity for the mixed block. ∎
+
+So there is now an even cheaper sufficient interface for `PO3a`:
+
+```tex
+\text{finite sum of boundary words }X_\ell P_J Y_\ell
+\Longrightarrow
+\text{finite receiver automatically}.
+```
+
 ### First-order endpoint specialization
 
 The abstract packet is not separate from the current live route; in the first
