@@ -10,6 +10,7 @@
 - `ACTIVE/pipeline/EQUIVALENCE_GRAPH.json`
 - `ACTIVE/pipeline/PAPER_INDEX.json`
 - `ACTIVE/pipeline/EXTERNAL_GRAPH_SCHEMA.md`
+- `ACTIVE/pipeline/oracle_questions/INDEX.md`
 
 ---
 
@@ -70,6 +71,27 @@ For docs/mainline search, use the refreshed `q3_docs` collection:
 ```bash
 ./scripts/research_oracle.py query "keyword" -c q3_docs
 ```
+
+Before a new blocker search, open a question card:
+
+```bash
+python3 q3.lean.aristotle/scripts/oracle_questions.py new \
+  --main-address "PO3a.3" \
+  --ancestor-address "PO3a, H-bridge.11" \
+  --child-address "PO3a.4" \
+  --blocker "Знаковая структура одного вектора граничной поправки"
+```
+
+Operational rule:
+
+- question cards live in `ACTIVE/pipeline/oracle_questions/`;
+- each query series must be tied to one proof-tree address;
+- `raw_address_notation` keeps the literal project shorthand;
+- `normalized_addresses` must expand shorthand like `D2Q3B5, 7` into the full
+  explicit list;
+- after updating cards, run
+  `python3 q3.lean.aristotle/scripts/oracle_questions.py reindex`.
+
 This `query` path is now the stable default:
 
 - it runs `qmd search` (BM25) and `qmd vsearch` (vector search) sequentially;
@@ -116,3 +138,5 @@ as a replacement for Aristotle.
   new blocker search.
 - If you still hit `SQLITE_BUSY_RECOVERY`, treat it as a backend contention issue.
   Wait for the current qmd operation to finish instead of starting more local queries.
+- `ACTIVE/pipeline/oracle_questions/**` is intentionally excluded from `q3_docs`;
+  this journal is search memory, not retrieval corpus.

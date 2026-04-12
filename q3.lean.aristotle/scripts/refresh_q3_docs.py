@@ -56,6 +56,7 @@ EXCLUDE_PATTERNS = [
     "q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_QUEUE.md",
     "q3.lean.aristotle/ACTIVE/aristotle/proshka_context_single_scale.md",
     "q3.lean.aristotle/ACTIVE/aristotle/queue/**",
+    "q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/**",
     "q3.lean.aristotle/ACTIVE/refs/legacy_two_scale_index.md",
     "q3.lean.aristotle/ACTIVE/requests/**",
     "q3.lean.aristotle/Q3/Archive/**",

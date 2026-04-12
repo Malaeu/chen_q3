@@ -27,6 +27,12 @@
 
 8. `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
 
+Если работаешь именно с oracle-search / embeddings по новому blocker, потом ещё:
+
+8. `q3.lean.aristotle/ACTIVE/pipeline/RESEARCH_ORACLE.md`
+9. `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/INDEX.md`
+10. `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/BY_ADDRESS.md`
+
 Если работаешь с Aristotle:
 
 8. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`
@@ -113,6 +119,12 @@ source of truth:
   but it is now the right capital object for deciding whether a new idea
   improves the canonical operator layer, improves a translation into it, or
   produces a kill certificate;
+- oracle-search discipline:
+  every new search series must be attached to one proof-tree address through
+  `ACTIVE/pipeline/oracle_questions/`; keep both the literal working notation
+  (`raw_address_notation`) and the expanded explicit list
+  (`normalized_addresses`), so semantic recall can move up and down the local
+  tree instead of only “по теме вообще”;
 - current execution mode:
   post-sprint direct theorem/certificate phase;
   lane A starts from the frozen `H1` lemma ladder and attacks

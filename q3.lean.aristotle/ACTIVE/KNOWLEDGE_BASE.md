@@ -88,6 +88,9 @@ Source of truth:
 - `ACTIVE/pipeline/TAINT_ANALYSIS.md` — FRI-style taint propagation rules
 - `ACTIVE/pipeline/RISK_MODEL.json` — risk aggregation + kill switch
 - `ACTIVE/pipeline/RESEARCH_ORACLE.md` — qmd-based semantic search wrapper
+- `ACTIVE/pipeline/oracle_questions/INDEX.md` — журнал поисковых серий по адресам дерева
+- `ACTIVE/pipeline/oracle_questions/BY_ADDRESS.md` — навигация вверх-вниз по адресам
+- `ACTIVE/pipeline/oracle_questions/VOCAB_MAP.md` — адресный словарь сильных и пустых слов
 - `ACTIVE/pipeline/PIPELINE_GUIDE.md` — end-to-end agent checklist
 - `docs/EMBEDDING_INGEST_WORKFLOW.md` — raw markdown -> reviewed note -> embeddings workflow
 - `docs/insights/erdos_minimum_overlap_repo_assessment_2026_03_07.md` — external
@@ -111,6 +114,8 @@ Source of truth:
   - After review, archive the raw payload with `./scripts/ingest_incoming_notes.py archive ...`.
   - Refresh the live collection when the repo changed materially:
     `./scripts/refresh_q3_docs.py`
+  - Перед новой серией oracle-search завести карточку:
+    `python3 q3.lean.aristotle/scripts/oracle_questions.py new ...`
   - Run: `./scripts/research_oracle.py query "keyword" -c q3_docs`
   - For the external Together AI corpus:
     `./scripts/refresh_erdos_overlap_kb.py`
@@ -118,6 +123,9 @@ Source of truth:
     `./scripts/research_oracle.py query "keyword" -c erdos_minimum_overlap`
   - qmd operations are serialized through `.qmd_cache/qmd_ops.lock`; keep local
     semantic queries sequential.
+  - Каждая серия запросов должна быть привязана к адресу дерева доказательства;
+    killed address трактуется как killed subtree и в вопроснике тоже.
+  - После серии обновить карточку вопроса, затем сделать синтез в `docs/INSIGHTS.md`.
   - Then write a 5–10 line synthesis into `docs/INSIGHTS.md` and add a short pointer
     in `ACTIVE/insights.md` (link only).
 - **Knowledge graphs (dependency/taint):**
