@@ -771,6 +771,121 @@ So `PO3a` has now been reduced one step further:
 \text{then solve one finite matrix cancellation problem }A+B+M=0.
 ```
 
+### Theorem `PO3a-row-column reduction`
+
+There is also a more concrete special case that turns the abstract finite-rank
+packet into an explicit algorithm on boundary rows and columns.
+
+Fix a basis `\{e_\nu\}_{\nu\in I}` adapted to the sign splitting
+
+```tex
+\mathcal H=\mathcal H_+\oplus\mathcal H_-,
+```
+
+meaning every basis vector already lies in one sign sector. Assume the boundary
+correction matrix `B=(B_{\mu\nu})` has finite row/column support: there exist
+finite sets `R,C\subset I` such that
+
+```tex
+B_{\mu\nu}=0
+\qquad
+\text{whenever }\mu\notin R\text{ and }\nu\notin C.
+```
+
+For each `r\in R`, define the row functional
+
+```tex
+\rho_r:=\sum_{\nu\in I}\overline{B_{r\nu}}\,e_\nu,
+```
+
+so that `\langle \rho_r,x\rangle=\sum_\nu B_{r\nu}x_\nu`. For each `c\in C`,
+define the column vector
+
+```tex
+\kappa_c:=Be_c=\sum_{\mu\in I}B_{\mu c}e_\mu.
+```
+
+Then `B` has the exact finite decomposition
+
+```tex
+\boxed{
+B=
+\sum_{r\in R}|e_r\rangle\langle \rho_r|
+\;+\;
+\sum_{c\in C}|\kappa_c\rangle\langle e_c|
+\;-\;
+\sum_{r\in R}\sum_{c\in C}B_{rc}|e_r\rangle\langle e_c|.
+}
+```
+
+#### Proof
+
+Compare matrix coefficients in the basis `\{e_\nu\}`. The first sum contributes
+
+```tex
+\langle e_\mu,|e_r\rangle\langle \rho_r|e_\nu\rangle
+=
+\delta_{\mu r}B_{r\nu},
+```
+
+hence `\mathbf 1_{\mu\in R}B_{\mu\nu}` after summing over `r`. The second sum
+contributes
+
+```tex
+\langle e_\mu,|\kappa_c\rangle\langle e_c|e_\nu\rangle
+=
+B_{\mu c}\delta_{c\nu},
+```
+
+hence `\mathbf 1_{\nu\in C}B_{\mu\nu}` after summing over `c`. The double sum
+subtracts exactly `\mathbf 1_{\mu\in R,\nu\in C}B_{\mu\nu}`. So the total
+coefficient is
+
+```tex
+\mathbf 1_{\mu\in R}B_{\mu\nu}
++
+\mathbf 1_{\nu\in C}B_{\mu\nu}
+-
+\mathbf 1_{\mu\in R,\nu\in C}B_{\mu\nu},
+```
+
+which equals `B_{\mu\nu}` in all four cases
+`(\mu\in R/\notin R,\ \nu\in C/\notin C)`. ∎
+
+Now split the row and column vectors by sign:
+
+```tex
+\rho_r=\rho_r^++\rho_r^-,
+\qquad
+\kappa_c=\kappa_c^++\kappa_c^-,
+```
+
+with `\rho_r^\pm=P_\pm\rho_r` and `\kappa_c^\pm=P_\pm\kappa_c`. Because the
+basis is sign-adapted, each `e_r,e_c` also carries a fixed sign. Hence every
+rank-one brick in the decomposition of `B` can be rewritten as one of finitely
+many sign-split generators
+
+```tex
+|e_r\rangle\langle \rho_r^\sigma|,
+\qquad
+|\kappa_c^\sigma\rangle\langle e_c|,
+\qquad
+|e_r\rangle\langle e_c|.
+```
+
+So in the finite row/column regime, `PO3a` becomes completely constructive:
+
+1. extract the finite sets `R,C`;
+2. form the row data `\rho_r` and column data `\kappa_c`;
+3. split them by sign;
+4. feed the resulting finite generator list into `PO3a-finite reduction`;
+5. compute the finite mixed matrix `A+B+M`.
+
+This is the strongest currently available “operator-to-finite-matrix”
+translation for `PO3a`: once the boundary layer is known to live on finitely
+many rows and columns, the mixed-block question is literally a finite linear
+algebra problem.
+
 ### First-order endpoint specialization
 
 The abstract packet is not separate from the current live route; in the first

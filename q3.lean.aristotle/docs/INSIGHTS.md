@@ -6655,6 +6655,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - this is stronger than the old coefficientwise kill packet: `PO3a` no longer
   requires every leakage term to vanish separately, only that after projection
   into the finite cap spaces the resulting matrices cancel exactly;
+- there is now an algorithmic special case `PO3a-row-column reduction`:
+  if the boundary correction matrix is supported on finitely many rows `R` and
+  columns `C` in a sign-adapted basis, then
+  `B=\sum_{r\in R}|e_r\rangle\langle\rho_r|
+    +\sum_{c\in C}|\kappa_c\rangle\langle e_c|
+    -\sum_{r\in R,c\in C}B_{rc}|e_r\rangle\langle e_c|`,
+  with explicit row functionals `\rho_r` and column vectors `\kappa_c`;
+- after sign-splitting `\rho_r,\kappa_c`, this gives a fully constructive
+  finite generator list to feed into `PO3a-finite reduction`, so in the
+  finite row/column regime `PO3a` is literally a finite matrix computation;
 - in the first-order endpoint model this `PO3a-core` formula collapses exactly
   to the old zero-mode object: the three families reduce to the two sign
   components of `U^*G\mathbf 1` plus the scalar `\langle\mathbf 1,G\mathbf 1\rangle`,
