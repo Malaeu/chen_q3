@@ -7103,3 +7103,24 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   direct Carlson shortcut also remains blocked without a structured
   regularization; the honest external analogue is now the meromorphic
   interpolation / pole-recovery adaptation wall from the `PO2` note.
+
+## Final result (2026-04-12): identity-outer rigidity really reduces `PO3a` to tail zeros of `H_a`
+
+- the new identity-outer rigidity has now been explicitly connected back to the
+  older lower-shell packet:
+  after compressing `P_+v_{a,N}=\alpha_{+,N}(a)h_{+,N}` and
+  `P_-v_{a,N}=\alpha_{-,N}(a)h_{-,N}` to a finite window, one recovers the old
+  alternating-tail law
+  `w_{r,0}(a)=c_{a,N,M}(-1)^r` on that window;
+- if the physical Volterra normal form is the genuine infinite-tail boundary
+  identity, these window constants glue across overlaps to one tail constant
+  `c_{a,N}`, and the frozen off-diagonal tail decay forces `c_{a,N}=0`;
+- therefore the nontrivial rigidity scenario collapses to the exact tail-zero
+  target
+  `w_{r,0}(a)=0` for all `r>N`, equivalently
+  `H_a(\alpha_r)=0` on the whole tail progression
+  `\alpha_r=\pi r/a`;
+- this is the cleanest current “impossibility” reduction:
+  once the physical Volterra normal form lands, the only remaining obstruction
+  is a structured arithmetic-progression uniqueness theorem for the explicit
+  Cauchy-type function `H_a`.

@@ -4754,6 +4754,124 @@ P_-v_{a,N}=\overline{\beta}\,h_{-,N},
 
 which is the second displayed identity. ∎
 
+### Theorem `PO3a-identity-outer rigidity returns the tail-zero target`
+
+Assume the setup of `PO3a-rigidity in the identity-outer case`.
+
+Then on every finite tail window `N<r\le M` there is a scalar
+`c_{a,N,M}\in\mathbb C` such that
+
+```tex
+w_{r,0}(a)=c_{a,N,M}(-1)^r
+\qquad (N<r\le M).
+```
+
+If this rigidity is required for all `M>N+1`, then the window constants glue to
+one scalar `c_{a,N}` and the frozen off-diagonal tail decay forces
+
+```tex
+c_{a,N}=0.
+```
+
+Hence
+
+```tex
+w_{r,0}(a)=0
+\qquad \forall r>N.
+```
+
+Equivalently, for the Cauchy-type receiver
+
+```tex
+H_a(z):=
+\sum_{\gamma\in\Gamma}
+\frac{\sin^2(a\gamma)}{\gamma(\gamma+z)},
+\qquad
+\alpha_r=\frac{\pi r}{a},
+```
+
+one gets
+
+```tex
+\boxed{
+H_a(\alpha_r)=0
+\qquad \forall r>N.
+}
+```
+
+#### Proof
+
+By `PO3a-rigidity in the identity-outer case` there are scalars
+`\alpha_{+,N}(a),\alpha_{-,N}(a)` such that
+
+```tex
+P_+v_{a,N}=\alpha_{+,N}(a)h_{+,N},
+\qquad
+P_-v_{a,N}=\alpha_{-,N}(a)h_{-,N}.
+```
+
+Compress to the finite window `(N,M]`. Writing
+
+```tex
+x_M:=P_+P_{M,N}v_{a,N},
+\qquad
+y_M:=P_-P_{M,N}v_{a,N},
+```
+
+one gets
+
+```tex
+x_M=\alpha_{+,N}(a)\,P_{M,N}h_{+,N},
+\qquad
+y_M=\alpha_{-,N}(a)\,P_{M,N}h_{-,N}.
+```
+
+But the compressed endpoint Riesz vectors are exactly
+
+```tex
+u_{+,M,N}:=
+\frac{1}{\sqrt{2a}}\sum_{r=N+1}^{M}(-1)^r e_r^+,
+\qquad
+u_{-,M,N}:=
+\frac{1}{\sqrt{2a}}\sum_{r=N+1}^{M}(-1)^r e_r^-,
+```
+
+so
+
+```tex
+x_M\in \mathbb C\,u_{+,M,N},
+\qquad
+y_M\in \mathbb C\,u_{-,M,N}.
+```
+
+This is exactly the hypothesis of the earlier first-order companion rigidity
+packet, which yields
+
+```tex
+w_{r,0}(a)=c_{a,N,M}(-1)^r
+\qquad (N<r\le M).
+```
+
+If this holds for every `M`, then the overlap argument already frozen above
+forces the constants to glue:
+
+```tex
+c_{a,N,M}=c_{a,N}
+\qquad \text{for all sufficiently large }M.
+```
+
+The same earlier packet also records that the fixed off-diagonal column
+`w_{r,0}(a)` tends to `0` as `r\to+\infty`, so necessarily `c_{a,N}=0`.
+Therefore `w_{r,0}(a)=0` for every `r>N`.
+
+Finally,
+
+```tex
+w_{r,0}(a)=\frac{2(-1)^r}{a}H_a(\alpha_r),
+```
+
+so the tail-zero conclusion for `H_a` follows immediately. ∎
+
 ### `PO3a.3` Kernel sign-preservation on boundary generators
 
 Show that the kernel action preserves the sign purity of the boundary
