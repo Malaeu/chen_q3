@@ -6697,6 +6697,26 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `PO3a-core`, `PO3a-finite reduction`, and `PO3a-row-column reduction`
   become mechanical, so the remaining honest wall is only the word-level
   extraction of the real boundary defect from the Volterra undoing identity;
+- semantic search on the new blocker `Volterra undoing -> endpoint-word span`
+  did not surface any hidden ready-made theorem beyond the current `PO1/PO3`
+  notes; short external probing likewise did not reveal a useful imported
+  theorem, so this step remains an internal algebraic derivation rather than a
+  literature import;
+- two exact intermediate packets are now frozen above that wall:
+  `PO3a-endpoint normal form` says that after composing the endpoint bricks
+  with sign-preserving tail operators, the operator still admits a finite
+  sign-split rank-one expansion;
+- `PO3a-outer-endpoint annihilation` sharpens the Volterra route itself:
+  because `T_{a,\infty,N}^*\mathbf 1=0`, one gets
+  `T_{a,\infty,N}^*R_a=0` and `R_a^*T_{a,\infty,N}=0`, so any endpoint
+  insertion that lands directly on the outer synthesis side dies immediately;
+- therefore the real `PO3a` extraction problem is now narrower than before:
+  after a finite Volterra-undoing expansion, every surviving term must already
+  normalize to one of the three families
+  `A E_{a,N}U`, `V^*E_{a,N}^*B`, `U_1^*E_{a,N}^*ME_{a,N}U_2`;
+- this means the next honest local theorem is no longer “compute the whole
+  `H_{a,N}`”, but only “show that the actual defect expands into finitely many
+  such surviving normal-form words”;
 - local semantic search on the new blocker `infinite-support square-tail
   injectivity` did not surface any ready-made project theorem beyond the old
   generic `PO2` Cauchy-tail wall; short external probing likewise did not
