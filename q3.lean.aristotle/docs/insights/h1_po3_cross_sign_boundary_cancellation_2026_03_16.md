@@ -1024,6 +1024,256 @@ Operationally this is the cleanest receiver for actual calculations:
 5. compute the leakage matrices `A,B` and the cross-pairing matrix `M`;
 6. check `A+B+M=0`.
 
+### Theorem `PO3a-compressed matrix receiver`
+
+The corrected-column packet can be compressed one step further into a literal
+finite matrix receiver.
+
+Keep the setup of `PO3a-corrected-column reduction`. Form the finite plus and
+minus raw right-generator lists:
+
+```tex
+\{g_1^+,\dots,g_{n_+}^+\}
+:=
+\{\rho_r^+:r\in R,\ \rho_r^+\neq 0\}
+\cup
+\{e_c:c\in C,\ e_c\in\mathcal H_+\},
+```
+
+```tex
+\{g_1^-,\dots,g_{n_-}^-\}
+:=
+\{\rho_r^-:r\in R,\ \rho_r^-\neq 0\}
+\cup
+\{e_c:c\in C,\ e_c\in\mathcal H_-\}.
+```
+
+Attach to each raw right generator its raw left partner:
+
+- if `g_m^+=\rho_r^+`, set `\lambda_m^+:=e_r`;
+- if `g_m^+=e_c`, set `\lambda_m^+:=d_c`;
+- if `g_n^-=\rho_r^-`, set `\lambda_n^-:=e_r`;
+- if `g_n^-=e_c`, set `\lambda_n^-:=d_c`.
+
+Then
+
+```tex
+B
+=
+\sum_{m=1}^{n_+}|\lambda_m^+\rangle\langle g_m^+|
+\;+\;
+\sum_{n=1}^{n_-}|\lambda_n^-\rangle\langle g_n^-|.
+```
+
+Now let
+
+```tex
+E_+:=\operatorname{span}\{g_m^+\},
+\qquad
+E_-:=\operatorname{span}\{g_n^-\},
+```
+
+and choose orthonormal bases
+
+```tex
+\eta_1^+,\dots,\eta_{m_+}^+ \text{ of }E_+,
+\qquad
+\eta_1^-,\dots,\eta_{m_-}^- \text{ of }E_-.
+```
+
+Write
+
+```tex
+g_m^+=\sum_{i=1}^{m_+} C_{im}^+\eta_i^+,
+\qquad
+g_n^-=\sum_{j=1}^{m_-} C_{jn}^-\eta_j^-,
+```
+
+and define the compressed left vectors
+
+```tex
+b_i^+:=\sum_{m=1}^{n_+}\overline{C_{im}^+}\,\lambda_m^+,
+\qquad
+b_j^-:=\sum_{n=1}^{n_-}\overline{C_{jn}^-}\,\lambda_n^-.
+```
+
+Then
+
+```tex
+\boxed{
+B
+=
+\sum_{i=1}^{m_+}|b_i^+\rangle\langle \eta_i^+|
+\;+\;
+\sum_{j=1}^{m_-}|b_j^-\rangle\langle \eta_j^-|.
+}
+```
+
+Equivalently, with the operator-columns
+
+```tex
+E_+:=
+\bigl[\,|\eta_1^+\rangle\ \cdots\ |\eta_{m_+}^+\rangle\,\bigr],
+\qquad
+E_-:=
+\bigl[\,|\eta_1^-\rangle\ \cdots\ |\eta_{m_-}^-\rangle\,\bigr],
+```
+
+```tex
+L_+:=
+\bigl[\,|b_1^+\rangle\ \cdots\ |b_{m_+}^+\rangle\,\bigr],
+\qquad
+L_-:=
+\bigl[\,|b_1^-\rangle\ \cdots\ |b_{m_-}^-\rangle\,\bigr],
+```
+
+one has the compact factorization
+
+```tex
+\boxed{
+B=L_+E_+^*+L_-E_-^*.
+}
+```
+
+#### Proof
+
+Substitute the orthonormal-basis expansions of `g_m^+` and `g_n^-` into the
+raw sign-pure decomposition:
+
+```tex
+\sum_{m=1}^{n_+}|\lambda_m^+\rangle\langle g_m^+|
+=
+\sum_{m=1}^{n_+}\sum_{i=1}^{m_+}
+\overline{C_{im}^+}\,|\lambda_m^+\rangle\langle \eta_i^+|
+=
+\sum_{i=1}^{m_+}|b_i^+\rangle\langle \eta_i^+|.
+```
+
+The minus part is identical. This proves the compressed sign-pure form, and
+the matrix factorization `B=L_+E_+^*+L_-E_-^*` is just the same identity in
+operator-column notation. ∎
+
+### Corollary `PO3a finite mixed-matrix form`
+
+Under the compressed matrix receiver,
+
+```tex
+P_+HP_-
+=
+P_+U^*GL_-E_-^*
+\;+\;
+E_+L_+^*GUP_-
+\;+\;
+E_+L_+^*GL_-E_-^*.
+```
+
+If, in addition, the two leakage operators factor through the finite cap
+spaces,
+
+```tex
+P_+U^*GL_-=E_+A,
+\qquad
+L_+^*GUP_-=BE_-^*
+```
+
+for finite matrices `A,B`, and if
+
+```tex
+M:=L_+^*GL_-,
+```
+
+then
+
+```tex
+\boxed{
+P_+HP_-=E_+(A+B+M)E_-^*.
+}
+```
+
+In particular,
+
+```tex
+P_+HP_-=0
+\qquad\Longleftrightarrow\qquad
+A+B+M=0.
+```
+
+#### Proof
+
+Start from
+
+```tex
+H=U^*GB+B^*GU+B^*GB
+```
+
+and substitute `B=L_+E_+^*+L_-E_-^*`.
+
+For the first term,
+
+```tex
+P_+U^*GBP_-
+=
+P_+U^*G(L_+E_+^*+L_-E_-^*)P_-.
+```
+
+Because `E_+^*P_-=0`, only the minus part survives:
+
+```tex
+P_+U^*GBP_-=P_+U^*GL_-E_-^*.
+```
+
+For the second term,
+
+```tex
+P_+B^*GUP_-
+=
+P_+(E_+L_+^*+E_-L_-^*)GUP_-,
+```
+
+and now `P_+E_-=0`, so
+
+```tex
+P_+B^*GUP_-=E_+L_+^*GUP_-.
+```
+
+For the third term,
+
+```tex
+P_+B^*GBP_-
+=
+P_+(E_+L_+^*+E_-L_-^*)G(L_+E_+^*+L_-E_-^*)P_-.
+```
+
+Again the only surviving block is the cross-sign one:
+
+```tex
+P_+B^*GBP_-=E_+L_+^*GL_-E_-^*.
+```
+
+Summing the three displayed identities gives the first formula. If
+`P_+U^*GL_-=E_+A` and `L_+^*GUP_-=BE_-^*`, then substitution yields
+
+```tex
+P_+HP_-
+=
+E_+AE_-^* + E_+BE_-^* + E_+ME_-^*
+=
+E_+(A+B+M)E_-^*.
+```
+
+Since `E_+` and `E_-` are injective partial isometries on coefficient space,
+this vanishes exactly when `A+B+M=0`. ∎
+
+So the fully compressed `PO3a` receiver is now:
+
+```tex
+\text{extract }R,C,\rho_r,d_c;
+\quad
+\text{compress to }B=L_+E_+^*+L_-E_-^*;
+\quad
+\text{check one finite matrix }A+B+M.
+```
+
 ### First-order endpoint specialization
 
 The abstract packet is not separate from the current live route; in the first

@@ -6677,6 +6677,17 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `\rho_r^\pm` and basis vectors `e_c` with fixed sign, making the later
   compression to sign-pure bases and the assembly of the finite mixed matrix
   `A+B+M` completely mechanical;
+- the row/column packet has now been compressed one step further into a literal
+  matrix receiver `PO3a-compressed matrix receiver`: after orthonormalizing the
+  plus/minus right-generator spans, one gets
+  `B=L_+E_+^*+L_-E_-^*`;
+- under the finite leakage factorizations
+  `P_+U^*GL_-=E_+A` and `L_+^*GUP_-=BE_-^*`, the mixed block becomes exactly
+  `P_+HP_-=E_+(A+B+M)E_-^*` with `M=L_+^*GL_-`, so `PO3a` is literally
+  equivalent to one finite matrix identity `A+B+M=0`;
+- this is now the strongest finite-dimensional receiver in the file: once the
+  real boundary defect yields finite row/column data, there is no remaining
+  infinite-dimensional ambiguity at all;
 - in the first-order endpoint model this `PO3a-core` formula collapses exactly
   to the old zero-mode object: the three families reduce to the two sign
   components of `U^*G\mathbf 1` plus the scalar `\langle\mathbf 1,G\mathbf 1\rangle`,
