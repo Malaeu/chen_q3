@@ -2041,6 +2041,89 @@ This does not finish `PO3a.2`, but it sharpens the local problem:
 evaluation functionals, not from a constant left output.}
 ```
 
+There is also one weaker bridge which is enough for the active route and is
+strictly cheaper than the full physical Volterra normal form.
+
+### Theorem `PO3a-finite antiderivative mismatch criterion`
+
+Assume the genuine boundary defect can be written as a finite sum
+
+```tex
+H_{a,N}
+=
+\sum_{j=1}^J
+U_j^*T^*
+\Bigl(
+(I-R_a)^*K_j(I-R_a)-L_j
+\Bigr)
+TV_j,
+```
+
+where
+
+- `U_j,V_j:\mathcal K_N\to\mathcal K_N` are bounded sign-preserving tail
+  operators;
+- `K_j,L_j:L^2(-a,a)\to L^2(-a,a)` are bounded;
+- and the zero-endpoint part cancels in the total sum:
+
+  ```tex
+  \sum_{j=1}^J U_j^*T^*(K_j-L_j)TV_j=0.
+  ```
+
+Then `H_{a,N}` is a finite linear combination of Volterra-undoing words with at
+most two endpoint projectors. In particular,
+`PO3a-Volterra-word admission criterion` applies, so `H_{a,N}` enters the
+endpoint normal-form / finite-receiver framework automatically.
+
+If in addition `J=1` and `L_1=K_1`, then this collapses to the stronger
+physical Volterra normal form
+
+```tex
+H_{a,N}
+=
+U_1^*T^*
+\Bigl((I-R_a)^*K_1(I-R_a)-K_1\Bigr)
+TV_1.
+```
+
+#### Proof
+
+Expand each summand:
+
+```tex
+(I-R_a)^*K_j(I-R_a)-L_j
+=
+(K_j-L_j)
+-R_a^*K_j
+-K_jR_a
++R_a^*K_jR_a.
+```
+
+Therefore
+
+```tex
+H_{a,N}
+=
+\sum_{j=1}^J U_j^*T^*(K_j-L_j)TV_j
+-\sum_{j=1}^J U_j^*T^*R_a^*K_jTV_j
+-\sum_{j=1}^J U_j^*T^*K_jR_aTV_j
++\sum_{j=1}^J U_j^*T^*R_a^*K_jR_aTV_j.
+```
+
+By hypothesis, the first sum vanishes globally. Every remaining term is now a
+Volterra-undoing word with either one endpoint projector
+(`R_a` or `R_a^*`) or two endpoint projectors (`R_a^*` and `R_a`). So every
+surviving term lies in the class covered by
+`PO3a-Volterra-word admission criterion`, and the conclusion follows. ∎
+
+This is the exact reason the full physical identity is not the cheapest first
+subgoal:
+
+```tex
+\text{for }PO3a,\ \text{it is enough to control the endpoint count and to
+cancel the zero-endpoint antiderivative part.}
+```
+
 The domain-side evaluation is also explicit. Since
 
 ```tex

@@ -7144,3 +7144,22 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   Volterra-word admission -> endpoint receiver`;
 - only after that weaker bridge is real should we spend effort on proving the
   sharper physical identity or on the tail-zero uniqueness wall.
+
+## Final result (2026-04-12): exact weaker bridge for `PO3a`
+
+- the `PO3a` note now contains a precise weaker bridge that is sufficient for
+  the active route:
+  it is enough to write the genuine boundary correction as a finite sum
+  `\sum U_j^*T^*((I-R_a)^*K_j(I-R_a)-L_j)TV_j`
+  with sign-preserving outer tail operators and bounded middle kernels, as long
+  as the total zero-endpoint part
+  `\sum U_j^*T^*(K_j-L_j)TV_j`
+  cancels globally;
+- after that cancellation, every surviving term contains one or two endpoint
+  projectors and therefore automatically falls under
+  `PO3a-Volterra-word admission criterion`;
+- this is strictly cheaper than the full physical Volterra normal form:
+  for `PO3a` we do not need one exact kernel identity, only endpoint counting
+  plus global cancellation of the no-endpoint antiderivative part;
+- this should now be treated as the main theorem target for the bridge from the
+  raw antiderivative factorization to the finite receiver.
