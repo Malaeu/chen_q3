@@ -7254,3 +7254,45 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   extract `E_{+,\partial}` explicitly enough to search for `\Lambda_+`
   through the orthogonal complement / annihilator viewpoint, instead of
   attacking the full mixed block again.
+
+## In progress (2026-04-12): orthogonal-projection witness for the `PO3a.3` plus side
+
+- once the genuine boundary correction is written in boundary-word form
+  `B_{a,N}=\sum_{\ell=1}^M X_\ell P_J Y_\ell`,
+  the plus-side boundary-cap space becomes completely explicit:
+  define the raw right generators
+  `g_{\ell,j}^+ := P_+ Y_\ell^* e_j` for `j \in J`,
+  and set
+  `E_{+,\partial} := \operatorname{span}\{g_{\ell,j}^+\}`;
+- let
+  `G_{+,\partial}^{raw}` be the raw generator matrix,
+  `\Gamma_+ := (G_{+,\partial}^{raw})^* G_{+,\partial}^{raw}`
+  its Gram matrix, and
+  `\Pi_{+,\partial}
+    := G_{+,\partial}^{raw} \Gamma_+^\dagger (G_{+,\partial}^{raw})^*`
+  the orthogonal projector onto `E_{+,\partial}`;
+- then the natural plus-side witness is
+  `f_+ := (I-\Pi_{+,\partial}) P_+ v_{a,N}`;
+- exact meaning:
+  `f_+ = 0` iff `P_+ v_{a,N} \in E_{+,\partial}`;
+  so `f_+ \neq 0` is precisely the statement that the plus-side zero-mode
+  receiver has a component which the finite boundary-cap space cannot explain;
+- this gives a direct dual detector:
+  if `f_+ \neq 0`, then the functional
+  `\Lambda_+(x) := \langle x, f_+ \rangle`
+  annihilates `E_{+,\partial}` but not `P_+ v_{a,N}`;
+- if in addition `U` preserves sign and `U^*|_{\mathcal H_+}` is bounded below,
+  then
+  `\operatorname{dist}(P_+ U^* v_{a,N}, \mathbb C U^* h_{+,N})
+    \ge m_+ \|f_+\|`;
+  hence `f_+ \neq 0` rules out plus-side collapse immediately;
+- the same construction on the minus side gives
+  `f_- := (I-\Pi_{-,\partial}) P_- v_{a,N}`;
+  if both `f_+` and `f_-` are nonzero, the `2\times 2` Volterra receiver
+  cannot vanish on either side, so the corresponding Volterra-normal-form
+  branch is killed;
+- this is the sharpest current practical reduction:
+  `PO3a.3` is no longer “understand the whole mixed block”, and not even
+  “understand the whole zero-mode column”; it is now:
+  compute one finite Gram projector and test whether its orthogonal residual on
+  `P_+ v_{a,N}` vanishes.
