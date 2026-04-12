@@ -6717,6 +6717,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - this means the next honest local theorem is no longer “compute the whole
   `H_{a,N}`”, but only “show that the actual defect expands into finitely many
   such surviving normal-form words”;
+- that algebraic burden is now frozen even more sharply as
+  `PO3a-two-endpoint extraction`: if one can write the real boundary defect in
+  the Volterra normal form
+  `U^*T^*((I-R_a)^*K_a(I-R_a)-K_a)TV`
+  with sign-preserving tail operators `U,V`, then the defect expands exactly
+  into three terms
+  `-U^*E_{a,N}^*K_aTV`, `-U^*T^*K_aE_{a,N}V`,
+  `+U^*E_{a,N}^*K_aE_{a,N}V`;
+- so the remaining live wall is now a single exact extraction claim:
+  prove that the genuine `H_{a,N}` is obtained from the Volterra undoing by
+  such a two-endpoint bracket, after which endpoint normal form and the finite
+  matrix reduction fire automatically;
 - local semantic search on the new blocker `infinite-support square-tail
   injectivity` did not surface any ready-made project theorem beyond the old
   generic `PO2` Cauchy-tail wall; short external probing likewise did not

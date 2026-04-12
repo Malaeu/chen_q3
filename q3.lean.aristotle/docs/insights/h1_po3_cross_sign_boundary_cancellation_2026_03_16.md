@@ -3005,6 +3005,116 @@ composites `R_aT=E_{a,N}` or `T^*R_a^*=E_{a,N}^*`, and any surviving
 two-endpoint word must contain both of them, which is exactly the displayed
 normal form. ∎
 
+### Theorem `PO3a-two-endpoint extraction`
+
+There is now one exact algebraic receiver that captures what the real
+Volterra-undoing route would have to prove.
+
+Let `U,V:\mathcal K_N\to\mathcal K_N` be bounded sign-preserving tail
+operators, let `K_a:L^2(-a,a)\to L^2(-a,a)` be bounded, and assume the
+boundary defect admits the Volterra normal form
+
+```tex
+H_{a,N}^{\mathrm{Vol}}
+:=
+U^*T^*
+\Bigl(
+(I-R_a)^*K_a(I-R_a)-K_a
+\Bigr)
+TV.
+```
+
+Then one has the exact decomposition
+
+```tex
+\boxed{
+H_{a,N}^{\mathrm{Vol}}
+=
+-\,U^*E_{a,N}^*K_aTV
+\;-\;
+U^*T^*K_aE_{a,N}V
+\;+\;
+U^*E_{a,N}^*K_aE_{a,N}V.
+}
+```
+
+In particular, `H_{a,N}^{\mathrm{Vol}}` is a finite linear combination of the
+three endpoint normal-form families
+
+```tex
+A E_{a,N}U,
+\qquad
+V^*E_{a,N}^*B,
+\qquad
+U_1^*E_{a,N}^*ME_{a,N}U_2,
+```
+
+and therefore admits a finite sign-split rank-one expansion.
+
+#### Proof
+
+Expand the bracket:
+
+```tex
+(I-R_a)^*K_a(I-R_a)-K_a
+=
+K_a - R_a^*K_a - K_aR_a + R_a^*K_aR_a - K_a
+```
+
+so
+
+```tex
+(I-R_a)^*K_a(I-R_a)-K_a
+=
+-\,R_a^*K_a
+-\,K_aR_a
++\,R_a^*K_aR_a.
+```
+
+Multiplying on the outside by `U^*T^*` and `TV` gives
+
+```tex
+H_{a,N}^{\mathrm{Vol}}
+=
+-\,U^*T^*R_a^*K_aTV
+\;-\;
+U^*T^*K_aR_aTV
+\;+\;
+U^*T^*R_a^*K_aR_aTV.
+```
+
+Using the definitions
+
+```tex
+E_{a,N}=R_aT,
+\qquad
+E_{a,N}^*=T^*R_a^*,
+```
+
+this becomes exactly
+
+```tex
+H_{a,N}^{\mathrm{Vol}}
+=
+-\,U^*E_{a,N}^*K_aTV
+\;-\;
+U^*T^*K_aE_{a,N}V
+\;+\;
+U^*E_{a,N}^*K_aE_{a,N}V.
+```
+
+The first term is of the family `V^*E_{a,N}^*B`, the second is of the family
+`AE_{a,N}U`, and the third is of the family `U_1^*E_{a,N}^*ME_{a,N}U_2`.
+So `PO3a-endpoint normal form` applies and yields the finite sign-split
+rank-one expansion. ∎
+
+This is the sharpest current formulation of the live algebraic burden:
+
+```tex
+\text{it is enough to prove that the real }H_{a,N}
+\text{ admits exactly this Volterra normal form.}
+```
+
 ### `PO3a.3` Kernel sign-preservation on boundary generators
 
 Show that the kernel action preserves the sign purity of the boundary
