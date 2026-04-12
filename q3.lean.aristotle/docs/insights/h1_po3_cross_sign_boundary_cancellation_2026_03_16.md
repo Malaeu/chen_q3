@@ -1808,20 +1808,100 @@ Gibbs dynamics itself, but the explicit static summability wall
 \sum_{\lambda\in\Lambda_a}|b_\lambda|^2\mathfrak D_N(\lambda)<\infty.
 ```
 
-The next exact blocker is therefore:
+One honest half-step of this wall is already explicit.
 
 ```tex
-\textbf{SQ1.3. Explicit pole-envelope bound.}
+\textbf{SQ1.3a. Explicit bound for the limiting square divisor.}
 ```
 
-Bound `\mathfrak D_N(\lambda)` on the actual support in terms of the square-root
-coordinate `\lambda=y^2`, the bounded-strip geometry of `y_\gamma=-a\gamma/\pi`,
-and the distance from `y` to the tail square lattice
-`\pm\{N+1,N+2,\dots\}`. Local oracle search only surfaced the project's own
-Gamma-ratio infrastructure; a short external sanity-check only confirms the
-standard sine-product / Gamma-product identities, not any imported square-tail
-injectivity theorem. So `SQ1.3` is now the honest next theorem-target inside the
-direct square-tail branch.
+Write
+
+```tex
+L_N:=\pm\{N+1,N+2,\dots\},
+\qquad
+\delta_N(y):=\operatorname{dist}(y,L_N).
+```
+
+Then for every strip height `A>0` there is a constant `C_{N,A}` such that for
+all `y` with `|\Im y|\le A` and `y\notin L_N`,
+
+```tex
+D_{N,\infty}(y^2)
+=
+\prod_{j=1}^\infty\left|1-\frac{y^2}{(N+j)^2}\right|^{-2}
+=
+|E_N^{sq}(y^2)|^{-2}
+\le
+C_{N,A}(1+|y|)^{4N+2}\delta_N(y)^{-2}.
+```
+
+Indeed the canonical square-tail divider is
+
+```tex
+E_N^{sq}(y^2)
+=
+\prod_{m>N}\left(1-\frac{y^2}{m^2}\right)
+=
+\frac{\sin(\pi y)}{\pi y}\prod_{m=1}^N\left(1-\frac{y^2}{m^2}\right)^{-1}.
+```
+
+The front factor contributes only polynomial growth:
+
+```tex
+\left|y\prod_{m=1}^N\left(1-\frac{y^2}{m^2}\right)\right|
+\ll_N
+(1+|y|)^{2N+1}.
+```
+
+On the strip `|\Im y|\le A`, the numerator `\sin(\pi y)` has only simple zeros
+at the integers. Near any tail zero `m\in L_N`, periodicity plus bounded-strip
+compactness give
+
+```tex
+|\sin(\pi y)|\asymp_A |y-m|.
+```
+
+Away from the tail lattice, `\delta_N(y)\ge 1/2`, and after the cancellation of
+the finitely many front zeros `0,\pm1,\dots,\pm N` the same strip-compactness
+argument yields a uniform lower bound of the same shape. Thus
+
+```tex
+|E_N^{sq}(y^2)|
+\gg_{N,A}
+\delta_N(y)(1+|y|)^{-2N-1},
+```
+
+which is exactly the stated estimate for `D_{N,\infty}(y^2)`.
+
+So near-pole concentration is now visible in an explicit square-root metric:
+the limiting divisor can only blow up through small distance to the tail square
+lattice.
+
+The honest remaining blocker is therefore the second half:
+
+```tex
+\textbf{SQ1.3b. Partial-to-envelope comparison.}
+```
+
+Bound the full pole-envelope
+
+```tex
+\mathfrak D_N(y^2)=\sup_{k\ge 0}D_{N,k}(y^2)
+```
+
+by a comparable square-root distance expression, ideally by proving a reduction
+of the form
+
+```tex
+\mathfrak D_N(y^2)\ll_{N,A} 1+D_{N,\infty}(y^2),
+```
+
+or any substitute strong enough to make the `SQ1.2` summability condition
+checkable on the actual support. Local oracle search only surfaced the
+project's own Gamma-ratio infrastructure; the short external sanity-check only
+confirms the standard sine-product / Gamma-product identities, not any imported
+square-tail injectivity theorem. So `SQ1.3b` is now the honest next theorem
+target inside the direct square-tail branch.
 
 ```tex
 \textbf{SQ2. Square-support backend adaptation.}
