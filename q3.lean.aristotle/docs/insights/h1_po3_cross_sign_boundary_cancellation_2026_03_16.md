@@ -2211,6 +2211,81 @@ So `SQ2a` is no longer the blocker. The live wall moves one level deeper:
 nearly invariant `*`-closed subspace framework?}
 ```
 
+There is also an exact warning here, mirroring the old `CB2a3` lesson.
+
+Let
+
+```tex
+s_m:=(N+m)^2,
+\qquad
+E_k^{sq}(z):=\prod_{m>k}\left(1-\frac{z}{s_m}\right),
+```
+
+so `E_k^{sq}` is the canonical common-zero factor for the tail of `J_{a,k}`.
+Define the normalized quotient candidate
+
+```tex
+G_k(z):=\frac{J_{a,k}(z)}{E_k^{sq}(z)}.
+```
+
+Now use the exact relations
+
+```tex
+J_{a,k+1}(z)=\frac{J_{a,k}(z)}{z-s_{k+1}},
+```
+
+and
+
+```tex
+E_k^{sq}(z)=\left(1-\frac{z}{s_{k+1}}\right)E_{k+1}^{sq}(z)
+=
+-\frac{z-s_{k+1}}{s_{k+1}}E_{k+1}^{sq}(z).
+```
+
+Combining them gives
+
+```tex
+G_k(z)
+=
+\frac{J_{a,k}(z)}{E_k^{sq}(z)}
+=
+-s_{k+1}\frac{J_{a,k}(z)}{(z-s_{k+1})E_{k+1}^{sq}(z)}
+=
+-s_{k+1}G_{k+1}(z).
+```
+
+So all quotient generators are just scalar multiples:
+
+```tex
+\boxed{
+G_k \in \mathbb C^\times G_{k+1}
+\qquad\forall k\ge 0.
+}
+```
+
+This is a very strong route squeeze. It means the most natural internal
+square-division chain does **not** produce a second distinct quotient object
+after the common zeros are removed. So the naive `SQ2c` plan
+
+```tex
+\text{“use }J_{a,k}\text{ and }J_{a,k+1}\text{ to get two different ordered
+subspaces”}
+```
+
+is vacuous: after quotienting by the exact square-tail zero package, the chain
+collapses to one line.
+
+Therefore the square-support Krein/ordering branch now has the same honest
+interface as the old `CB2a3` branch, but in an even sharper form:
+
+```tex
+\textbf{SQ2c. Find a genuinely different second square-tail subspace, or
+accept that the natural internal chain is vacuous.}
+```
+
+So `SQ2` remains mathematically cleaner than `SQ1`, but its most natural
+ordering candidate has now been killed exactly.
+
 The current search status is honest:
 
 - the local project index does not yet contain a ready-made square-tail

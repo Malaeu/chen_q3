@@ -6740,6 +6740,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   the real remaining burden is `SQ2b`, namely to turn the square-tail common
   zeros and the internal division chain `J_{a,k+1}=J_{a,k}/(z-(N+k+1)^2)` into
   a nontrivial nearly invariant `*`-closed subspace package;
+- but the most natural internal `SQ2c` candidate now collapses exactly:
+  if `E_k^{sq}(z)=\prod_{m>k}(1-z/s_m)` is the common-zero factor of `J_{a,k}`,
+  then `G_k:=J_{a,k}/E_k^{sq}` satisfies `G_k=-s_{k+1}G_{k+1}`; so after
+  quotienting by common zeros the entire internal square-division chain is just
+  one line and does **not** produce a second distinct ordered subspace;
+- this kills the naive “use successive divided receivers to make ordering
+  non-vacuous” plan inside SQ2; any live ordering import would now need a
+  genuinely different second square-tail subspace, not the canonical internal
+  chain;
 - external and local search are consistent with the same fork: the 2018
   Krein/ordering route still looks structurally compatible, while the 2022
   localization route remains non-routine because it needs power separation on
