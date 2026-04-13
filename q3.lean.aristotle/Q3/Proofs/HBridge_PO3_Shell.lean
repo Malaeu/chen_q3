@@ -527,6 +527,114 @@ theorem po3_boundary_plus_bulk_of_double_telescoping
     _ = boundaryPacket + bulkPacket := by
           rw [← hboundary, ← hbulk]
 
+/-- `PO3a-A0` in named packet form with the user-facing notation
+`corner = c`, `row trace = α`, `column trace = β`, `mixed difference = K`,
+based at the tail origin `N+1`. -/
+theorem po3_double_telescoping_named_packets
+    (D : ℕ → ℕ → A) (N m n : ℕ)
+    (c : A) (α β : ℕ → A) (K : ℕ → ℕ → A)
+    (hc : c = D (N + 1) (N + 1))
+    (hα : ∀ r, α r = D (r + 1) (N + 1) - D r (N + 1))
+    (hβ : ∀ s, β s = D (N + 1) (s + 1) - D (N + 1) s)
+    (hK :
+      ∀ r s,
+        K r s =
+          D (r + 1) (s + 1) - D (r + 1) s - D r (s + 1) + D r s) :
+    D (N + 1 + m) (N + 1 + n)
+      =
+        c
+        + (∑ i ∈ Finset.range m, α (N + 1 + i))
+        + (∑ j ∈ Finset.range n, β (N + 1 + j))
+        + (∑ i ∈ Finset.range m,
+            ∑ j ∈ Finset.range n, K (N + 1 + i) (N + 1 + j)) := by
+  calc
+    D (N + 1 + m) (N + 1 + n)
+        =
+          D (N + 1) (N + 1)
+          + (∑ i ∈ Finset.range m,
+              (D (N + 1 + i + 1) (N + 1) - D (N + 1 + i) (N + 1)))
+          + (∑ j ∈ Finset.range n,
+              (D (N + 1) (N + 1 + j + 1) - D (N + 1) (N + 1 + j)))
+          + (∑ i ∈ Finset.range m,
+              ∑ j ∈ Finset.range n,
+                ((D (N + 1 + i + 1) (N + 1 + j + 1) - D (N + 1 + i) (N + 1 + j + 1))
+                  - (D (N + 1 + i + 1) (N + 1 + j) - D (N + 1 + i) (N + 1 + j)))) := by
+          simpa [Nat.add_assoc, Nat.add_left_comm, Nat.add_comm] using
+            po3_double_telescoping D (N + 1) m n
+    _ =
+          c
+          + (∑ i ∈ Finset.range m, α (N + 1 + i))
+          + (∑ j ∈ Finset.range n, β (N + 1 + j))
+          + (∑ i ∈ Finset.range m,
+              ∑ j ∈ Finset.range n, K (N + 1 + i) (N + 1 + j)) := by
+          rw [← hc]
+          have hrow :
+              (∑ i ∈ Finset.range m,
+                  (D (N + 1 + i + 1) (N + 1) - D (N + 1 + i) (N + 1)))
+                =
+              (∑ i ∈ Finset.range m, α (N + 1 + i)) := by
+            apply Finset.sum_congr rfl
+            intro i hi
+            rw [hα (N + 1 + i)]
+          have hcol :
+              (∑ j ∈ Finset.range n,
+                  (D (N + 1) (N + 1 + j + 1) - D (N + 1) (N + 1 + j)))
+                =
+              (∑ j ∈ Finset.range n, β (N + 1 + j)) := by
+            apply Finset.sum_congr rfl
+            intro j hj
+            rw [hβ (N + 1 + j)]
+          have hbulk' :
+              (∑ i ∈ Finset.range m,
+                  ∑ j ∈ Finset.range n,
+                    ((D (N + 1 + i + 1) (N + 1 + j + 1) - D (N + 1 + i) (N + 1 + j + 1))
+                      - (D (N + 1 + i + 1) (N + 1 + j) - D (N + 1 + i) (N + 1 + j))))
+                =
+              (∑ i ∈ Finset.range m,
+                  ∑ j ∈ Finset.range n, K (N + 1 + i) (N + 1 + j)) := by
+            apply Finset.sum_congr rfl
+            intro i hi
+            apply Finset.sum_congr rfl
+            intro j hj
+            rw [hK (N + 1 + i) (N + 1 + j)]
+            abel_nf
+          rw [hrow, hcol, hbulk']
+
+/-- `PO3a-A1` in the same named notation: once the corner plus strips are
+grouped into one boundary packet and the mixed difference packet is identified
+with one bulk packet, the defect has the form `boundary + bulk`. -/
+theorem po3_boundary_plus_bulk_of_named_packets
+    (D : ℕ → ℕ → A) (N m n : ℕ)
+    (c : A) (α β : ℕ → A) (K : ℕ → ℕ → A)
+    (boundaryPacket bulkPacket : A)
+    (hc : c = D (N + 1) (N + 1))
+    (hα : ∀ r, α r = D (r + 1) (N + 1) - D r (N + 1))
+    (hβ : ∀ s, β s = D (N + 1) (s + 1) - D (N + 1) s)
+    (hK :
+      ∀ r s,
+        K r s =
+          D (r + 1) (s + 1) - D (r + 1) s - D r (s + 1) + D r s)
+    (hboundary :
+      boundaryPacket =
+        c
+        + (∑ i ∈ Finset.range m, α (N + 1 + i))
+        + (∑ j ∈ Finset.range n, β (N + 1 + j)))
+    (hbulk :
+      bulkPacket =
+        ∑ i ∈ Finset.range m,
+          ∑ j ∈ Finset.range n, K (N + 1 + i) (N + 1 + j)) :
+    D (N + 1 + m) (N + 1 + n) = boundaryPacket + bulkPacket := by
+  calc
+    D (N + 1 + m) (N + 1 + n)
+        =
+          c
+          + (∑ i ∈ Finset.range m, α (N + 1 + i))
+          + (∑ j ∈ Finset.range n, β (N + 1 + j))
+          + (∑ i ∈ Finset.range m,
+              ∑ j ∈ Finset.range n, K (N + 1 + i) (N + 1 + j)) :=
+          po3_double_telescoping_named_packets D N m n c α β K hc hα hβ hK
+    _ = boundaryPacket + bulkPacket := by rw [← hboundary, ← hbulk]
+
 end PO3DoubleTelescoping
 
 section PO3Witness

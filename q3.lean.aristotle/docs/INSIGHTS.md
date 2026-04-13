@@ -7814,3 +7814,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - operational consequence:
   for the exact filtered bulk route one only has to classify the `(++), (+,-)`
   packets, while `(-,-)` and `(-,+)` become formal star-symmetric images.
+
+## In progress (2026-04-13): `PO3a-A0/A1` now also exist in the exact `c, α, β, K` notation
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the user-facing versions
+  `po3_double_telescoping_named_packets` and
+  `po3_boundary_plus_bulk_of_named_packets`;
+- these are exactly the discrete formulas
+  `defect = corner + row-strip + column-strip + bulk`
+  and
+  `defect = boundary correction + bulk`
+  with the named packets
+  `c`, `α`, `β`, `K` based at the tail origin `N+1`;
+- this means the next real step is no longer to search for a global magical
+  formula for the whole defect, but to compute the four concrete packets of the
+  real defect and then identify the mixed packet `K`.
