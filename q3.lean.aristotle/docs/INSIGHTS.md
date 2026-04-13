@@ -7590,3 +7590,23 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`;
   the only output remains the old non-blocking linter warning about the earlier
   section variable capture in the surjective functional lemma.
+
+## In progress (2026-04-13): `PO3a-A0` is the right upstream split before the Volterra kernel
+
+- the live upstream gap is now sharper than `PO3a-A` itself: before trying to
+  prove that the genuine defect has the Volterra form
+  `T^*((I-R_a)^*K_a(I-R_a)-L_a)T + boundary`,
+  one first needs a general two-variable extraction formula for the defect;
+- the correct shape is not a guessed final identity but a discrete
+  Newton–Leibniz / double telescoping packet:
+  `defect = corner + row strip + column strip + T^*(mixed interior difference)T`;
+- local oracle search did not surface any earlier reviewed theorem already
+  freezing this exact packet; it only returned the current `PO3` note, the
+  row/column finite receiver material, and the new shell file;
+- therefore `PO3a-A0` should be treated as a genuine new address:
+  first formalize the generic two-variable extraction, then in `PO3a-A1`
+  substitute the real defect and identify its mixed interior difference with
+  `(I-R_a)^*K_a(I-R_a)-L_a`;
+- only after that does the already formalized two-endpoint expansion become the
+  right downstream tool, because then the remaining row/column/corner pieces
+  are honest boundary strips rather than guessed leftovers.
