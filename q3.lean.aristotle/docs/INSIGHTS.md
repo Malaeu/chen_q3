@@ -7803,3 +7803,14 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   any genuinely non-Toeplitz raw mismatch cannot be blamed on the `q`-side
   alone, so the live source of the zero-endpoint packet must be sought on the
   Suzuki / transported bulk side.
+
+## In progress (2026-04-13): the filtered bulk target is now reduced to `(++), (+,-)` in Lean as well
+
+- `full/sections/main_closure.tex` already states that the raw bridge is only
+  diagnostic and that the exact bulk target lives on the filtered families
+  `M^{++}` and `M^{+-}`;
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now matches that reduction with the new
+  abstract lemma `po3_filtered_bulk_symmetry_reduction`;
+- operational consequence:
+  for the exact filtered bulk route one only has to classify the `(++), (+,-)`
+  packets, while `(-,-)` and `(-,+)` become formal star-symmetric images.

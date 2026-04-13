@@ -743,6 +743,31 @@ theorem po3_mirror_zero_of_symmetry
     _ = star (0 : A) := by simp [hpo3a]
     _ = 0 := by simp
 
+/-- Filtered bulk symmetry shell: once the `(+,+)` and `(+,-)` packets are
+identified, the `(-,-)` and `(-,+)` packets follow formally from star symmetry.
+This is the abstract Lean version of the symmetry reduction in the filtered
+bulk classifier. -/
+theorem po3_filtered_bulk_symmetry_reduction
+    (Mpp Mpm Mmp Mmm Qpp Qpm Qmp Qmm : A)
+    (hMmm : Mmm = star Mpp)
+    (hMmp : Mmp = star Mpm)
+    (hQmm : Qmm = star Qpp)
+    (hQmp : Qmp = star Qpm)
+    (hpp : Mpp = Qpp)
+    (hpm : Mpm = Qpm) :
+    Mmm = Qmm ∧ Mmp = Qmp := by
+  constructor
+  · calc
+      Mmm = star Mpp := hMmm
+      _ = star Qpp := by simp [hpp]
+      _ = star (star Qmm) := by simp [hQmm]
+      _ = Qmm := by simp
+  · calc
+      Mmp = star Mpm := hMmp
+      _ = star Qpm := by simp [hpm]
+      _ = star (star Qmp) := by simp [hQmp]
+      _ = Qmp := by simp
+
 end PO3Symmetry
 
 end HBridge
