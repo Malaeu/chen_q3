@@ -7897,7 +7897,10 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - it also contains the explicit filtered profile operators
   `po3_filtered_sum_profile` and
   `po3_filtered_difference_profile`,
-  together with the equalities
+  together with the named one-dimensional second-difference operators
+  `po3_forward_second_difference` and
+  `po3_centered_second_difference`,
+  and the equalities
   `po3_four_term_stencil_sum_kernel_as_sum_kernel` and
   `po3_four_term_stencil_difference_kernel_as_difference_kernel`;
 - it also records that the common filtered stencil preserves these one-variable
@@ -7908,6 +7911,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   after filtering, the `(+,-)` mixed packet becomes the step-`2` forward second
   difference on the sum variable, while the `(+,+)` mixed packet becomes the
   step-`2` centered second difference on the difference variable;
+- the exact Lean bridges are now present under the names
+  `po3_mixed_packet_of_four_term_stencil_sum_kernel_as_forward_second_difference`
+  and
+  `po3_mixed_packet_of_four_term_stencil_difference_kernel_as_centered_second_difference`;
+- there are also direct subtraction shells
+  `po3_mixed_packet_of_four_term_stencil_sum_kernel_sub_as_forward_second_difference`
+  and
+  `po3_mixed_packet_of_four_term_stencil_difference_kernel_sub_as_centered_second_difference`,
+  so the next step can substitute the real `a/p` profiles without reopening the
+  raw two-variable algebra;
 - this is the exact Lean-level form of the formulas already visible in
   `main_closure.tex`, and it sharply narrows the next substitution:
   compute the corresponding one-dimensional profiles on the `q` side and then

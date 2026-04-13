@@ -829,6 +829,34 @@ def po3_filtered_sum_profile (u : ℕ → A) : ℕ → A :=
 def po3_filtered_difference_profile (u : ℤ → A) : ℤ → A :=
   fun k => u k + u (k + 1) + u (k - 1) + u k
 
+/-- One-dimensional forward second difference on the sum variable. -/
+def po3_forward_second_difference (u : ℕ → A) : ℕ → A :=
+  fun t => u (t + 2) - u (t + 1) - u (t + 1) + u t
+
+/-- One-dimensional centered second difference on the difference variable. -/
+def po3_centered_second_difference (u : ℤ → A) : ℤ → A :=
+  fun k => u k - u (k + 1) - u (k - 1) + u k
+
+/-- The filtered `(+,-)` profile is additive with respect to subtraction. -/
+theorem po3_filtered_sum_profile_sub
+    (u v : ℕ → A) :
+    po3_filtered_sum_profile (fun t => u t - v t)
+      =
+        fun t => po3_filtered_sum_profile u t - po3_filtered_sum_profile v t := by
+  funext t
+  simp [po3_filtered_sum_profile]
+  abel_nf
+
+/-- The filtered `(+,+)` profile is additive with respect to subtraction. -/
+theorem po3_filtered_difference_profile_sub
+    (u v : ℤ → A) :
+    po3_filtered_difference_profile (fun k => u k - v k)
+      =
+        fun k => po3_filtered_difference_profile u k - po3_filtered_difference_profile v k := by
+  funext k
+  simp [po3_filtered_difference_profile]
+  abel_nf
+
 /-- Filtered four-term stencil preserves the sum-profile shape. -/
 theorem po3_four_term_stencil_sum_kernel
     (u : ℕ → A) (m n : ℕ) :
@@ -875,6 +903,29 @@ theorem po3_four_term_stencil_difference_kernel_as_difference_kernel
   rw [po3_four_term_stencil_difference_kernel]
   simp [po3_difference_kernel, po3_filtered_difference_profile]
 
+/-- Direct Q-side shell for the filtered `(+,-)` block: if the raw packet is a
+sum-profile difference `a - p`, then the filtered packet is the corresponding
+filtered sum-profile difference. -/
+theorem po3_four_term_stencil_sum_kernel_sub
+    (a p : ℕ → A) :
+    po3_four_term_stencil (po3_sum_kernel (fun t => a t - p t))
+      =
+        po3_sum_kernel (fun t => po3_filtered_sum_profile a t - po3_filtered_sum_profile p t) := by
+  rw [po3_four_term_stencil_sum_kernel_as_sum_kernel]
+  simp [po3_filtered_sum_profile_sub]
+
+/-- Direct Q-side shell for the filtered `(+,+)` block: if the raw packet is a
+difference-profile difference `a - p`, then the filtered packet is the
+corresponding filtered difference-profile difference. -/
+theorem po3_four_term_stencil_difference_kernel_sub
+    (a p : ℤ → A) :
+    po3_four_term_stencil (po3_difference_kernel (fun k => a k - p k))
+      =
+        po3_difference_kernel
+          (fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k) := by
+  rw [po3_four_term_stencil_difference_kernel_as_difference_kernel]
+  simp [po3_filtered_difference_profile_sub]
+
 /-- Mixed packet of a sum-profile kernel is the one-dimensional second forward
 difference on the sum variable. -/
 theorem po3_mixed_packet_of_sum_kernel
@@ -886,6 +937,16 @@ theorem po3_mixed_packet_of_sum_kernel
         - u (r + s + 1)
         + u (r + s) := by
   simp [po3_mixed_packet, po3_sum_kernel, Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
+
+/-- A sum-profile mixed packet is exactly the one-dimensional forward second
+difference evaluated at the sum variable. -/
+theorem po3_mixed_packet_of_sum_kernel_as_forward_second_difference
+    (u : ℕ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_sum_kernel u) r s
+      =
+        po3_forward_second_difference u (r + s) := by
+  simp [po3_forward_second_difference, po3_mixed_packet_of_sum_kernel,
+    Nat.add_assoc]
 
 /-- Mixed packet of a difference-profile kernel is the one-dimensional centered
 second difference on the difference variable. -/
@@ -901,6 +962,15 @@ theorem po3_mixed_packet_of_difference_kernel
   have h2 : ((r : ℤ) - ((s : ℤ) + 1)) = ((r : ℤ) - (s : ℤ)) - 1 := by ring
   have h3 : (((r : ℤ) + 1) - ((s : ℤ) + 1)) = ((r : ℤ) - (s : ℤ)) := by ring
   simp [po3_mixed_packet, po3_difference_kernel, h1, h2, h3]
+
+/-- A difference-profile mixed packet is exactly the one-dimensional centered
+second difference evaluated at the difference variable. -/
+theorem po3_mixed_packet_of_difference_kernel_as_centered_second_difference
+    (u : ℤ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_difference_kernel u) r s
+      =
+        po3_centered_second_difference u ((r : ℤ) - (s : ℤ)) := by
+  simp [po3_centered_second_difference, po3_mixed_packet_of_difference_kernel]
 
 /-- After the common four-term stencil, a sum-profile mixed packet becomes the
 step-`2` second difference on the sum variable. -/
@@ -928,6 +998,18 @@ theorem po3_mixed_packet_of_four_term_stencil_sum_kernel
           simp [po3_four_term_stencil_sum_kernel, Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
     _ = u (r + s + 4) - u (r + s + 2) - u (r + s + 2) + u (r + s) := by
           abel_nf
+
+/-- After filtering, the `(+,-)` mixed packet is the forward second difference
+of the filtered one-dimensional profile. -/
+theorem po3_mixed_packet_of_four_term_stencil_sum_kernel_as_forward_second_difference
+    (u : ℕ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (po3_sum_kernel u)) r s
+      =
+        po3_forward_second_difference (po3_filtered_sum_profile u) (r + s) := by
+  rw [po3_four_term_stencil_sum_kernel_as_sum_kernel]
+  simpa using
+    po3_mixed_packet_of_sum_kernel_as_forward_second_difference
+      (u := po3_filtered_sum_profile u) (r := r) (s := s)
 
 /-- After the common four-term stencil, a difference-profile mixed packet
 becomes the step-`2` centered second difference on the difference variable. -/
@@ -968,6 +1050,46 @@ theorem po3_mixed_packet_of_four_term_stencil_difference_kernel
           - u (((r : ℤ) - (s : ℤ)) + 2)
           - u (((r : ℤ) - (s : ℤ)) - 2) := by
           abel_nf
+
+/-- After filtering, the `(+,+)` mixed packet is the centered second
+difference of the filtered one-dimensional profile. -/
+theorem po3_mixed_packet_of_four_term_stencil_difference_kernel_as_centered_second_difference
+    (u : ℤ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (po3_difference_kernel u)) r s
+      =
+        po3_centered_second_difference (po3_filtered_difference_profile u)
+          ((r : ℤ) - (s : ℤ)) := by
+  rw [po3_four_term_stencil_difference_kernel_as_difference_kernel]
+  simpa using
+    po3_mixed_packet_of_difference_kernel_as_centered_second_difference
+      (u := po3_filtered_difference_profile u) (r := r) (s := s)
+
+/-- Direct filtered `(+,-)` shell for a raw profile difference `a - p`. -/
+theorem po3_mixed_packet_of_four_term_stencil_sum_kernel_sub_as_forward_second_difference
+    (a p : ℕ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (po3_sum_kernel (fun t => a t - p t))) r s
+      =
+        po3_forward_second_difference
+          (fun t => po3_filtered_sum_profile a t - po3_filtered_sum_profile p t) (r + s) := by
+  rw [po3_four_term_stencil_sum_kernel_sub]
+  simpa using
+    po3_mixed_packet_of_sum_kernel_as_forward_second_difference
+      (u := fun t => po3_filtered_sum_profile a t - po3_filtered_sum_profile p t)
+      (r := r) (s := s)
+
+/-- Direct filtered `(+,+)` shell for a raw profile difference `a - p`. -/
+theorem po3_mixed_packet_of_four_term_stencil_difference_kernel_sub_as_centered_second_difference
+    (a p : ℤ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (po3_difference_kernel (fun k => a k - p k))) r s
+      =
+        po3_centered_second_difference
+          (fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k)
+          ((r : ℤ) - (s : ℤ)) := by
+  rw [po3_four_term_stencil_difference_kernel_sub]
+  simpa using
+    po3_mixed_packet_of_difference_kernel_as_centered_second_difference
+      (u := fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k)
+      (r := r) (s := s)
 
 end PO3OneDimensionalProfiles
 
