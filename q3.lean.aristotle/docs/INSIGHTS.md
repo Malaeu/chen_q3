@@ -7921,7 +7921,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `po3_mixed_packet_of_four_term_stencil_difference_kernel_sub_as_centered_second_difference`,
   so the next step can substitute the real `a/p` profiles without reopening the
   raw two-variable algebra;
+- `full/sections/main_closure.tex` now matches this exactly on the manuscript
+  side: the raw formula is `q_{rs}=a_{r-s}-p_{rs}`, hence the live filtered
+  blocks are precisely a difference-profile packet for `\widetilde q^{++}` and
+  a sum-profile packet for `\widetilde q^{+-}`;
+- the Lean file now has manuscript-facing wrappers
+  `po3_q_pp_kernel`, `po3_q_pm_kernel` and the corresponding filtered/mixed
+  shells
+  `po3_four_term_stencil_q_pp_kernel`,
+  `po3_four_term_stencil_q_pm_kernel`,
+  `po3_mixed_packet_of_four_term_stencil_q_pp_kernel`,
+  `po3_mixed_packet_of_four_term_stencil_q_pm_kernel`;
 - this is the exact Lean-level form of the formulas already visible in
   `main_closure.tex`, and it sharply narrows the next substitution:
-  compute the corresponding one-dimensional profiles on the `q` side and then
-  compare them against the Suzuki-side filtered packets.
+  instantiate the actual one-dimensional `a/p` profiles from the raw Section~8
+  formula and then compare them against the Suzuki-side filtered packets.

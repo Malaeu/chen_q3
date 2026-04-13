@@ -837,6 +837,16 @@ def po3_forward_second_difference (u : ℕ → A) : ℕ → A :=
 def po3_centered_second_difference (u : ℤ → A) : ℤ → A :=
   fun k => u k - u (k + 1) - u (k - 1) + u k
 
+/-- Raw `q^{++}` / `q^{--}` model kernel: a difference-profile packet
+`a_k - p_k`. -/
+def po3_q_pp_kernel (a p : ℤ → A) : ℕ → ℕ → A :=
+  po3_difference_kernel (fun k => a k - p k)
+
+/-- Raw `q^{+-}` / `q^{-+}` model kernel: a sum-profile packet
+`a_t - p_t`. -/
+def po3_q_pm_kernel (a p : ℕ → A) : ℕ → ℕ → A :=
+  po3_sum_kernel (fun t => a t - p t)
+
 /-- The filtered `(+,-)` profile is additive with respect to subtraction. -/
 theorem po3_filtered_sum_profile_sub
     (u v : ℕ → A) :
@@ -1090,6 +1100,52 @@ theorem po3_mixed_packet_of_four_term_stencil_difference_kernel_sub_as_centered_
     po3_mixed_packet_of_difference_kernel_as_centered_second_difference
       (u := fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k)
       (r := r) (s := s)
+
+/-- Manuscript-facing shell: the filtered `q^{+-}` block remains a sum-profile
+with filtered one-dimensional packet. -/
+theorem po3_four_term_stencil_q_pm_kernel
+    (a p : ℕ → A) :
+    po3_four_term_stencil (po3_q_pm_kernel a p)
+      =
+        po3_sum_kernel
+          (fun t => po3_filtered_sum_profile a t - po3_filtered_sum_profile p t) := by
+  simpa [po3_q_pm_kernel] using po3_four_term_stencil_sum_kernel_sub (a := a) (p := p)
+
+/-- Manuscript-facing shell: the filtered `q^{++}` block remains a
+difference-profile with filtered one-dimensional packet. -/
+theorem po3_four_term_stencil_q_pp_kernel
+    (a p : ℤ → A) :
+    po3_four_term_stencil (po3_q_pp_kernel a p)
+      =
+        po3_difference_kernel
+          (fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k) := by
+  simpa [po3_q_pp_kernel] using
+    po3_four_term_stencil_difference_kernel_sub (a := a) (p := p)
+
+/-- Manuscript-facing shell: the filtered `q^{+-}` mixed packet is the forward
+second difference of the filtered one-dimensional packet. -/
+theorem po3_mixed_packet_of_four_term_stencil_q_pm_kernel
+    (a p : ℕ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (po3_q_pm_kernel a p)) r s
+      =
+        po3_forward_second_difference
+          (fun t => po3_filtered_sum_profile a t - po3_filtered_sum_profile p t) (r + s) := by
+  simpa [po3_q_pm_kernel] using
+    po3_mixed_packet_of_four_term_stencil_sum_kernel_sub_as_forward_second_difference
+      (a := a) (p := p) (r := r) (s := s)
+
+/-- Manuscript-facing shell: the filtered `q^{++}` mixed packet is the centered
+second difference of the filtered one-dimensional packet. -/
+theorem po3_mixed_packet_of_four_term_stencil_q_pp_kernel
+    (a p : ℤ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (po3_q_pp_kernel a p)) r s
+      =
+        po3_centered_second_difference
+          (fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k)
+          ((r : ℤ) - (s : ℤ)) := by
+  simpa [po3_q_pp_kernel] using
+    po3_mixed_packet_of_four_term_stencil_difference_kernel_sub_as_centered_second_difference
+      (a := a) (p := p) (r := r) (s := s)
 
 end PO3OneDimensionalProfiles
 
