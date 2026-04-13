@@ -1,5 +1,6 @@
 import Mathlib.Algebra.Star.Basic
 import Mathlib.LinearAlgebra.Span.Basic
+import Mathlib.Tactic
 
 /-!
 # H-bridge PO3 shell
@@ -166,6 +167,24 @@ theorem po3_boundary_zero_of_antiderivative_transport_and_matrix_receiver
     _ = 0 := hcancel
 
 end PO3AntiderivativeTransport
+
+section PO3VolterraExtraction
+
+variable {A : Type*} [Ring A]
+
+/-- Algebraic two-endpoint expansion behind `PO3a-two-endpoint extraction`:
+after expanding a left/right endpoint undoing defect, only the one-endpoint
+left brick, the one-endpoint right brick, and the two-endpoint brick survive. -/
+theorem po3_two_endpoint_expansion
+    (L K R_left R_right N : A) :
+    L * (((1 - R_left) * K * (1 - R_right)) - K) * N
+      =
+        -L * R_left * K * N
+        - L * K * R_right * N
+        + L * R_left * K * R_right * N := by
+  noncomm_ring
+
+end PO3VolterraExtraction
 
 section PO3Witness
 

@@ -7569,3 +7569,24 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - the matrix-level determinant criterion itself is not yet formalized in Lean;
   the shell now freezes the exact algebraic interface that such a finite-basis
   computation would feed into.
+
+## In progress (2026-04-13): Lean shell now contains the exact two-endpoint expansion
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now also formalizes the raw algebraic
+  expansion behind `PO3a-two-endpoint extraction`:
+  `po3_two_endpoint_expansion` proves that
+  `L * (((1 - R_left) * K * (1 - R_right)) - K) * N`
+  splits exactly into the three surviving terms
+  `- L R_left K N`, `- L K R_right N`, and
+  `+ L R_left K R_right N`;
+- this is the exact finite endpoint-count identity from the note: after
+  expansion, only the left one-endpoint brick, the right one-endpoint brick,
+  and the two-endpoint brick remain;
+- operationally this tightens the live `PO3a-A` burden:
+  the missing mathematics is no longer the algebra of the expansion itself,
+  but only the derivation that the genuine boundary defect really lands in this
+  transported Volterra form with the correct outer factors;
+- compilation check passes:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`;
+  the only output remains the old non-blocking linter warning about the earlier
+  section variable capture in the surjective functional lemma.
