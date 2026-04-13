@@ -698,6 +698,63 @@ theorem po3_named_packets_of_sub_smul
 
 end PO3NamedPacketLinearity
 
+section PO3FourTermStencil
+
+variable {A : Type*} [AddCommGroup A]
+
+/-- Common four-term filtered stencil on raw two-variable entries. -/
+def po3_four_term_stencil (D : ℕ → ℕ → A) : ℕ → ℕ → A :=
+  fun m n => D m n + D (m + 1) n + D m (n + 1) + D (m + 1) (n + 1)
+
+/-- Corner packet of the four-term stencil. -/
+theorem po3_corner_packet_of_four_term_stencil
+    (D : ℕ → ℕ → A) (N : ℕ) :
+    po3_corner_packet (po3_four_term_stencil D) N
+      =
+        D (N + 1) (N + 1)
+        + D (N + 2) (N + 1)
+        + D (N + 1) (N + 2)
+        + D (N + 2) (N + 2) := by
+  simp [po3_corner_packet, po3_four_term_stencil, Nat.add_left_comm, Nat.add_comm]
+
+/-- Row trace packet of the four-term stencil. -/
+theorem po3_row_trace_packet_of_four_term_stencil
+    (D : ℕ → ℕ → A) (N r : ℕ) :
+    po3_row_trace_packet (po3_four_term_stencil D) N r
+      =
+        D (r + 2) (N + 1)
+        + D (r + 2) (N + 2)
+        - D r (N + 1)
+        - D r (N + 2) := by
+  simp [po3_row_trace_packet, po3_four_term_stencil, Nat.add_left_comm, Nat.add_comm]
+  abel_nf
+
+/-- Column trace packet of the four-term stencil. -/
+theorem po3_column_trace_packet_of_four_term_stencil
+    (D : ℕ → ℕ → A) (N s : ℕ) :
+    po3_column_trace_packet (po3_four_term_stencil D) N s
+      =
+        D (N + 1) (s + 2)
+        + D (N + 2) (s + 2)
+        - D (N + 1) s
+        - D (N + 2) s := by
+  simp [po3_column_trace_packet, po3_four_term_stencil, Nat.add_left_comm, Nat.add_comm]
+  abel_nf
+
+/-- Mixed packet of the four-term stencil. -/
+theorem po3_mixed_packet_of_four_term_stencil
+    (D : ℕ → ℕ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil D) r s
+      =
+        D (r + 2) (s + 2)
+        - D (r + 2) s
+        - D r (s + 2)
+        + D r s := by
+  simp [po3_mixed_packet, po3_four_term_stencil, Nat.add_left_comm, Nat.add_comm]
+  abel_nf
+
+end PO3FourTermStencil
+
 section PO3Witness
 
 variable {𝕜 V W : Type*}

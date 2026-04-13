@@ -7844,3 +7844,34 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   the next concrete task completely sharp:
   instantiate the packet calculus with `X = M^{\sigma\tau}` and
   `Y = \widetilde q^{\sigma\tau}` on the live filtered families `(++), (+,-)`.
+
+## In progress (2026-04-14): next shell target is the four-term stencil packet calculus
+
+- local oracle recall points back to the exact filtered residual formula
+  `R_{mn}^{+-} = δ_{m,-n} + δ_{m+1,-n} + δ_{m,-(n+1)} + δ_{m+1,-(n+1)}`;
+- `main_closure.tex` and the frozen H1 notes agree on the same structural fact:
+  both the Suzuki filtered blocks `M^{\sigma\tau}` and the filtered Q-side
+  blocks `\widetilde q^{\sigma\tau}` are produced by one common four-term stencil
+  on raw entries;
+- external web search gave no relevant mathematics and was discarded as noise;
+- next implementation target:
+  add a general Lean shell computing the named packets `c, α, β, K` of a
+  four-term stencil in terms of the underlying raw defect;
+- after that, the real filtered defect can be handled by pure substitution:
+  first set `rawD = w - κq`, then set `filteredD = stencil(rawD)`, and finally
+  compute the four packets on the live families `(++), (+,-)`.
+
+## In progress (2026-04-14): the four-term stencil packet calculus now lives in Lean
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains
+  `po3_four_term_stencil`,
+  `po3_corner_packet_of_four_term_stencil`,
+  `po3_row_trace_packet_of_four_term_stencil`,
+  `po3_column_trace_packet_of_four_term_stencil`,
+  `po3_mixed_packet_of_four_term_stencil`;
+- this freezes the exact packet-level effect of the common filtered stencil on
+  raw entries;
+- combined with `po3_named_packets_of_sub_smul`, the next concrete substitution
+  step is now completely explicit:
+  start from `rawD = w - κq`, pass to `filteredD = po3_four_term_stencil rawD`,
+  and read off the filtered packets `c, α, β, K` from the raw ones.
