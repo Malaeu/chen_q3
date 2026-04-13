@@ -7405,3 +7405,29 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `mem_submodule_iff_projector_eq_self`,
   `not_mem_submodule_of_projector_residual_ne_zero`,
   `not_mem_span_singleton_map_of_projector_residual_ne_zero`.
+
+## In progress (2026-04-13): `PO3a.4` narrows to outer-factor stripping
+
+- the new oracle pass confirms the exact next bridge:
+  the `2x2` physical Volterra receiver already gives the right rigidity
+  mechanism, and the only extra step is to strip the outer factors `U,V`
+  without losing that rigidity;
+- the load-bearing split is asymmetric and this matters:
+  on the vector side, dependence descends through `U^*` by injectivity;
+  on the functional side, dependence of
+  `⟨V^* P_- v_{a,N}|` and `⟨\ell_{-,N} P_- V|`
+  descends to the identity-outer pair only if precomposition by `V` is
+  surjective on the relevant space;
+- so the real abstract shell is not “invertibility everywhere”, but the cheaper
+  pair of transfer lemmas:
+  injective postcomposition preserves vector non-collinearity, and surjective
+  precomposition preserves non-collinearity of linear functionals;
+- the vector half is already frozen in
+  `q3/Proofs/HBridge_PO3_Shell.lean`;
+  the missing half is the functional pullback lemma
+  `φ ∘ V ∈ 𝕜∙(ψ ∘ V) ⇒ φ ∈ 𝕜∙ψ`
+  under surjectivity of `V`;
+- once that lands, the real `U,V` route can be reduced back to the already
+  identified identity-outer rigidity target:
+  `PO3a` forces endpoint-line rigidity for the zero-mode receiver, and that
+  returns directly to the tail-zero target for `H_a`.
