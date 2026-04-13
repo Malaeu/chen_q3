@@ -7431,3 +7431,26 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   identified identity-outer rigidity target:
   `PO3a` forces endpoint-line rigidity for the zero-mode receiver, and that
   returns directly to the tail-zero target for `H_a`.
+
+## Final result (2026-04-13): the missing minus-side outer bridge is now frozen in Lean
+
+- the exact formal gap in `PO3a.4` was the right-hand transfer step:
+  if two functionals become collinear after precomposition with `V`, can that
+  collinearity be pulled back to the original pair;
+- the answer is now formalized in
+  `q3/Proofs/HBridge_PO3_Shell.lean`:
+  over a field, surjectivity of `V` is enough for the pullback lemma
+  `φ.comp V ∈ 𝕜∙(ψ.comp V) ⇒ φ ∈ 𝕜∙ψ`,
+  and therefore original non-collinearity of functionals survives
+  precomposition by a surjective outer map;
+- together with the already frozen injective vector-side lemma, this pins down
+  the exact abstract route from real outer factors back to the identity-outer
+  rigidity packet:
+  left side needs injectivity, right side needs surjectivity;
+- this is the real compression:
+  `PO3a.4` is no longer “understand arbitrary outer operators”, but only
+  “verify the relevant `U,V` satisfy those transfer hypotheses on the tail
+  spaces”;
+- reusable new lemma list now available in Lean:
+  `mem_span_singleton_of_comp_mem_span_singleton_of_surjective`,
+  `not_mem_span_singleton_comp_of_surjective`.
