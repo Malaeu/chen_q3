@@ -7454,3 +7454,31 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - reusable new lemma list now available in Lean:
   `mem_span_singleton_of_comp_mem_span_singleton_of_surjective`,
   `not_mem_span_singleton_comp_of_surjective`.
+
+## In progress (2026-04-13): `PO3a.4` is even cheaper after Riesz identification on the minus side
+
+- the new rigidity observation improves the current bridge:
+  once the minus-side endpoint functional is replaced by its Riesz vector
+  `h_-`, the real `2x2` receiver can be written with the pair
+  `V^* x_- , V^* h_-`
+  on the right, not only with pulled-back functionals;
+- that changes the cost of the bridge:
+  for the main route, we no longer need surjectivity of `V` as the first
+  hypothesis;
+  injectivity of `V^*` on the minus space is enough, because linear
+  independence of `x_- , h_-` then forces linear independence of
+  `V^* x_- , V^* h_-`, hence surjectivity of the two-functional receiver
+  follows automatically;
+- together with injectivity of `U^*` on the plus space and sign preservation,
+  vanishing of the physical Volterra `2x2` block already returns exactly the
+  same scalar rigidity as in the identity-outer case:
+  there exist `λ, μ` with
+  `P_+ v_{a,N} = λ h_{+,N}`,
+  `P_- v_{a,N} = μ h_{-,N}`,
+  and `λ + μ = c_a`;
+- this is the sharp compression:
+  the surjective pullback lemma remains valid as a backup route, but it is no
+  longer the cheapest mainline;
+  the cheapest mainline is now:
+  sign-preserving + injective `U^*` on `H_+` + injective `V^*` on `H_-`
+  + nonzero endpoint vectors.
