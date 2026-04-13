@@ -7875,3 +7875,17 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   step is now completely explicit:
   start from `rawD = w - κq`, pass to `filteredD = po3_four_term_stencil rawD`,
   and read off the filtered packets `c, α, β, K` from the raw ones.
+
+## In progress (2026-04-14): the filtered substitution shell `stencil(X - κY)` is now formal
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now also contains
+  `po3_four_term_stencil_of_sub_smul` and
+  `po3_named_packets_of_four_term_stencil_sub_smul`;
+- this is the direct Lean bridge from the raw defect
+  `rawD = X - κY`
+  to the filtered packet calculus;
+- for the live route this means the next substitution is literally:
+  set `X = w`, `Y = q`,
+  form the filtered defect by the common four-term stencil,
+  and then read off `c, α, β, K` on `(++), (+,-)` from the two sides
+  separately.

@@ -753,6 +753,59 @@ theorem po3_mixed_packet_of_four_term_stencil
   simp [po3_mixed_packet, po3_four_term_stencil, Nat.add_left_comm, Nat.add_comm]
   abel_nf
 
+/-- The common four-term stencil commutes with taking a defect of the form
+`X - κ • Y`. -/
+theorem po3_four_term_stencil_of_sub_smul
+    {𝕜 : Type*} [Ring 𝕜] [Module 𝕜 A]
+    (X Y D : ℕ → ℕ → A) (κ : 𝕜)
+    (hD : ∀ r s, D r s = X r s - κ • Y r s) :
+    ∀ m n,
+      po3_four_term_stencil D m n
+        =
+          po3_four_term_stencil X m n
+          - κ • po3_four_term_stencil Y m n := by
+  intro m n
+  simp [po3_four_term_stencil, hD, sub_eq_add_neg, smul_add]
+  abel_nf
+
+/-- Hence the named packets of a filtered defect `stencil(X - κY)` can be read
+off from the filtered packets of `X` and `Y` separately. This is the direct
+substitution shell for `X = w`, `Y = q`. -/
+theorem po3_named_packets_of_four_term_stencil_sub_smul
+    {𝕜 : Type*} [Ring 𝕜] [Module 𝕜 A]
+    (X Y D : ℕ → ℕ → A) (κ : 𝕜)
+    (hD : ∀ r s, D r s = X r s - κ • Y r s) :
+    (∀ N,
+      po3_corner_packet (po3_four_term_stencil D) N
+        =
+          po3_corner_packet (po3_four_term_stencil X) N
+          - κ • po3_corner_packet (po3_four_term_stencil Y) N)
+      ∧
+    (∀ N r,
+      po3_row_trace_packet (po3_four_term_stencil D) N r
+        =
+          po3_row_trace_packet (po3_four_term_stencil X) N r
+          - κ • po3_row_trace_packet (po3_four_term_stencil Y) N r)
+      ∧
+    (∀ N s,
+      po3_column_trace_packet (po3_four_term_stencil D) N s
+        =
+          po3_column_trace_packet (po3_four_term_stencil X) N s
+          - κ • po3_column_trace_packet (po3_four_term_stencil Y) N s)
+      ∧
+    (∀ r s,
+      po3_mixed_packet (po3_four_term_stencil D) r s
+        =
+          po3_mixed_packet (po3_four_term_stencil X) r s
+          - κ • po3_mixed_packet (po3_four_term_stencil Y) r s) := by
+  apply po3_named_packets_of_sub_smul
+    (X := po3_four_term_stencil X)
+    (Y := po3_four_term_stencil Y)
+    (D := po3_four_term_stencil D)
+    (κ := κ)
+  intro r s
+  exact po3_four_term_stencil_of_sub_smul X Y D κ hD r s
+
 end PO3FourTermStencil
 
 section PO3Witness
