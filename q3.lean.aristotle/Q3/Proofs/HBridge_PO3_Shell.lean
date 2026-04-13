@@ -1201,6 +1201,101 @@ theorem po3_mixed_packet_of_four_term_stencil_q_pp_kernel
     po3_mixed_packet_of_four_term_stencil_difference_kernel_sub_as_centered_second_difference
       (a := a) (p := p) (r := r) (s := s)
 
+/-- Integer-profile version of the filtered `q^{+-}` shell. -/
+theorem po3_four_term_stencil_q_pm_kernel_of_int
+    (a p : ℤ → A) :
+    po3_four_term_stencil (po3_q_pm_kernel_of_int a p)
+      =
+        po3_sum_kernel
+          (fun t =>
+            po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+              - po3_filtered_sum_profile (po3_nat_profile_of_int p) t) := by
+  simpa [po3_q_pm_kernel_of_int] using
+    po3_four_term_stencil_q_pm_kernel
+      (a := po3_nat_profile_of_int a) (p := po3_nat_profile_of_int p)
+
+/-- Integer-profile version of the filtered `q^{+-}` mixed-packet shell. -/
+theorem po3_mixed_packet_of_four_term_stencil_q_pm_kernel_of_int
+    (a p : ℤ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (po3_q_pm_kernel_of_int a p)) r s
+      =
+        po3_forward_second_difference
+          (fun t =>
+            po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+              - po3_filtered_sum_profile (po3_nat_profile_of_int p) t) (r + s) := by
+  simpa [po3_q_pm_kernel_of_int] using
+    po3_mixed_packet_of_four_term_stencil_q_pm_kernel
+      (a := po3_nat_profile_of_int a) (p := po3_nat_profile_of_int p) (r := r) (s := s)
+
+/-- If a raw Section 8 packet is given by the signed difference formula
+`q_{rs}=a_{r-s}-p_{r-s}`, then its filtered `(++ )` block is exactly the
+already packaged `q^{++}` kernel. -/
+theorem po3_four_term_stencil_of_raw_q_pp_formula
+    (q : ℤ → ℤ → A) (a p : ℤ → A)
+    (hq : ∀ r s, q r s = po3_signed_difference_kernel (fun k => a k - p k) r s) :
+    po3_four_term_stencil (fun m n => q (m : ℤ) (n : ℤ))
+      =
+        po3_difference_kernel
+          (fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k) := by
+  have hpp : (fun m n : ℕ => q (m : ℤ) (n : ℤ)) = po3_q_pp_kernel a p := by
+    funext m n
+    rw [hq]
+    exact po3_signed_difference_kernel_sub_pp (a := a) (p := p) (m := m) (n := n)
+  rw [hpp]
+  exact po3_four_term_stencil_q_pp_kernel (a := a) (p := p)
+
+/-- If a raw Section 8 packet is given by the signed difference formula
+`q_{rs}=a_{r-s}-p_{r-s}`, then its filtered `(+,-)` block is exactly the
+already packaged `q^{+-}` kernel. -/
+theorem po3_four_term_stencil_of_raw_q_pm_formula
+    (q : ℤ → ℤ → A) (a p : ℤ → A)
+    (hq : ∀ r s, q r s = po3_signed_difference_kernel (fun k => a k - p k) r s) :
+    po3_four_term_stencil (fun m n => q (m : ℤ) (-(n : ℤ)))
+      =
+        po3_sum_kernel
+          (fun t =>
+            po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+              - po3_filtered_sum_profile (po3_nat_profile_of_int p) t) := by
+  have hpm : (fun m n : ℕ => q (m : ℤ) (-(n : ℤ))) = po3_q_pm_kernel_of_int a p := by
+    funext m n
+    rw [hq]
+    exact po3_signed_difference_kernel_sub_pm (a := a) (p := p) (m := m) (n := n)
+  rw [hpm]
+  exact po3_four_term_stencil_q_pm_kernel_of_int (a := a) (p := p)
+
+/-- Mixed-packet bridge for the filtered raw `(++ )` Section 8 family. -/
+theorem po3_mixed_packet_of_raw_q_pp_formula
+    (q : ℤ → ℤ → A) (a p : ℤ → A)
+    (hq : ∀ r s, q r s = po3_signed_difference_kernel (fun k => a k - p k) r s)
+    (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (fun m n => q (m : ℤ) (n : ℤ))) r s
+      =
+        po3_centered_second_difference
+          (fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k)
+          ((r : ℤ) - (s : ℤ)) := by
+  rw [po3_four_term_stencil_of_raw_q_pp_formula (q := q) (a := a) (p := p) hq]
+  exact po3_mixed_packet_of_difference_kernel_as_centered_second_difference
+    (u := fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k)
+    (r := r) (s := s)
+
+/-- Mixed-packet bridge for the filtered raw `(+,-)` Section 8 family. -/
+theorem po3_mixed_packet_of_raw_q_pm_formula
+    (q : ℤ → ℤ → A) (a p : ℤ → A)
+    (hq : ∀ r s, q r s = po3_signed_difference_kernel (fun k => a k - p k) r s)
+    (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (fun m n => q (m : ℤ) (-(n : ℤ)))) r s
+      =
+        po3_forward_second_difference
+          (fun t =>
+            po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+              - po3_filtered_sum_profile (po3_nat_profile_of_int p) t) (r + s) := by
+  rw [po3_four_term_stencil_of_raw_q_pm_formula (q := q) (a := a) (p := p) hq]
+  exact po3_mixed_packet_of_sum_kernel_as_forward_second_difference
+    (u := fun t =>
+      po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+        - po3_filtered_sum_profile (po3_nat_profile_of_int p) t)
+    (r := r) (s := s)
+
 end PO3OneDimensionalProfiles
 
 section PO3Witness

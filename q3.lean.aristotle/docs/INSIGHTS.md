@@ -7975,3 +7975,18 @@ Update:
   `po3_q_pp_kernel` and `po3_q_pm_kernel_of_int`;
 - this closes the remaining algebraic gap between the raw Section~8 formula and
   the filtered Q-side profile calculus already formalized above.
+
+Update:
+
+- the bridge has now been pushed one full step further: from a single hypothesis
+  `q r s = po3_signed_difference_kernel (fun k => a k - p k) r s`, Lean now
+  derives the filtered `(++ )` and `(+,-)` Q-side families directly;
+- the key lemmas are
+  `po3_four_term_stencil_of_raw_q_pp_formula`,
+  `po3_four_term_stencil_of_raw_q_pm_formula`,
+  `po3_mixed_packet_of_raw_q_pp_formula`,
+  `po3_mixed_packet_of_raw_q_pm_formula`;
+- this means the remaining live substitution is now genuinely one-variable:
+  instantiate the actual raw Section~8 profiles `a` and `p`, then the filtered
+  mixed packets come for free from the shell rather than from fresh two-variable
+  algebra.
