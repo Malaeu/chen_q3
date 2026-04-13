@@ -266,6 +266,20 @@ theorem po3_delta_rewrite_of_q_split
   rw [hδ r s, hq r s]
   ring
 
+/-- If the model-side packet takes the same value at two coefficient positions,
+then the corresponding raw-defect difference is carried entirely by the Suzuki
+side `w`. This records the coefficient-level fact that a Toeplitz model packet
+cannot by itself generate raw boundary mismatch. -/
+theorem po3_raw_defect_difference_of_equal_model_packet
+    (w q δ : ι → ι → A)
+    (κ : A)
+    (r s r' s' : ι)
+    (hδ : ∀ x y, δ x y = w x y - κ * q x y)
+    (hq : q r s = q r' s') :
+    δ r s - δ r' s' = w r s - w r' s' := by
+  rw [hδ r s, hδ r' s', hq]
+  ring
+
 end PO3CoefficientRewritesCommRing
 
 section PO3VolterraExtraction

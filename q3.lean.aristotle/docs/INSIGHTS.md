@@ -7790,3 +7790,16 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   and try to match it against the already frozen bulk rewrite from
   `po3_difference_factorization_of_q_split` and
   `po3_delta_rewrite_of_q_split`.
+
+## In progress (2026-04-13): the coefficient shell now isolates raw mismatch from the model packet
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now also contains
+  `po3_raw_defect_difference_of_equal_model_packet`;
+- it says: whenever the model packet `q` takes the same value at two coefficient
+  positions, the corresponding raw-defect difference is exactly the difference
+  of the Suzuki side `w`;
+- together with the earlier Toeplitz rewrite for `q_{r,s}`, this freezes the
+  practical meaning of the current `A3b -> B` route:
+  any genuinely non-Toeplitz raw mismatch cannot be blamed on the `q`-side
+  alone, so the live source of the zero-endpoint packet must be sought on the
+  Suzuki / transported bulk side.
