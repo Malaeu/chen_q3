@@ -821,6 +821,16 @@ the filtered `(+,+)` Q-side shape. -/
 def po3_difference_kernel (u : ℤ → A) : ℕ → ℕ → A :=
   fun m n => u ((m : ℤ) - (n : ℤ))
 
+/-- The same one-variable profile, but read on nonnegative indices only. This
+is the natural way the raw difference packet restricts to the `(+,-)` block,
+where the difference variable becomes the sum `m+n`. -/
+def po3_nat_profile_of_int (u : ℤ → A) : ℕ → A :=
+  fun t => u (t : ℤ)
+
+/-- Raw signed Section 8 packet depending only on the index difference. -/
+def po3_signed_difference_kernel (u : ℤ → A) : ℤ → ℤ → A :=
+  fun r s => u (r - s)
+
 /-- One-dimensional filtered profile for the `(+,-)` Q-side family. -/
 def po3_filtered_sum_profile (u : ℕ → A) : ℕ → A :=
   fun t => u t + u (t + 1) + u (t + 1) + u (t + 2)
@@ -847,6 +857,11 @@ def po3_q_pp_kernel (a p : ℤ → A) : ℕ → ℕ → A :=
 def po3_q_pm_kernel (a p : ℕ → A) : ℕ → ℕ → A :=
   po3_sum_kernel (fun t => a t - p t)
 
+/-- Raw `q^{+-}` / `q^{-+}` model kernel, read from integer-valued profiles by
+restriction to the nonnegative sum variable. -/
+def po3_q_pm_kernel_of_int (a p : ℤ → A) : ℕ → ℕ → A :=
+  po3_q_pm_kernel (po3_nat_profile_of_int a) (po3_nat_profile_of_int p)
+
 /-- The filtered `(+,-)` profile is additive with respect to subtraction. -/
 theorem po3_filtered_sum_profile_sub
     (u v : ℕ → A) :
@@ -866,6 +881,45 @@ theorem po3_filtered_difference_profile_sub
   funext k
   simp [po3_filtered_difference_profile]
   abel_nf
+
+/-- The raw signed difference packet restricts to the `(++ )` block as the
+usual difference-profile kernel. -/
+theorem po3_signed_difference_kernel_pp
+    (u : ℤ → A) (m n : ℕ) :
+    po3_signed_difference_kernel u (m : ℤ) (n : ℤ)
+      =
+        po3_difference_kernel u m n := by
+  simp [po3_signed_difference_kernel, po3_difference_kernel]
+
+/-- The raw signed difference packet restricts to the `(+,-)` block as the
+corresponding sum-profile kernel. -/
+theorem po3_signed_difference_kernel_pm
+    (u : ℤ → A) (m n : ℕ) :
+    po3_signed_difference_kernel u (m : ℤ) (-(n : ℤ))
+      =
+        po3_sum_kernel (po3_nat_profile_of_int u) m n := by
+  simp [po3_signed_difference_kernel, po3_sum_kernel, po3_nat_profile_of_int,
+    Nat.cast_add]
+
+/-- Manuscript-facing raw `q^{++}` shell: if the signed raw packet is
+`a_{r-s}-p_{r-s}`, then its `(++ )` block is exactly `po3_q_pp_kernel`. -/
+theorem po3_signed_difference_kernel_sub_pp
+    (a p : ℤ → A) (m n : ℕ) :
+    po3_signed_difference_kernel (fun k => a k - p k) (m : ℤ) (n : ℤ)
+      =
+        po3_q_pp_kernel a p m n := by
+  simp [po3_signed_difference_kernel, po3_q_pp_kernel, po3_difference_kernel]
+
+/-- Manuscript-facing raw `q^{+-}` shell: if the signed raw packet is
+`a_{r-s}-p_{r-s}`, then its `(+,-)` block is exactly the restricted
+sum-profile kernel. -/
+theorem po3_signed_difference_kernel_sub_pm
+    (a p : ℤ → A) (m n : ℕ) :
+    po3_signed_difference_kernel (fun k => a k - p k) (m : ℤ) (-(n : ℤ))
+      =
+        po3_q_pm_kernel_of_int a p m n := by
+  simp [po3_signed_difference_kernel, po3_q_pm_kernel_of_int, po3_q_pm_kernel,
+    po3_sum_kernel, po3_nat_profile_of_int, Nat.cast_add]
 
 /-- Filtered four-term stencil preserves the sum-profile shape. -/
 theorem po3_four_term_stencil_sum_kernel

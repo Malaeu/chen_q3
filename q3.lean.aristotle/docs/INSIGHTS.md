@@ -7957,3 +7957,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - concrete next code step: introduce a signed raw difference kernel, prove its
   `(++), (+,-)` specializations, and then connect these specializations to the
   existing `po3_q_pp_kernel` / `po3_q_pm_kernel` wrappers.
+
+Update:
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the signed raw shell
+  `po3_signed_difference_kernel : (ℤ → A) → ℤ → ℤ → A`;
+- the block-specialization lemmas
+  `po3_signed_difference_kernel_pp` and
+  `po3_signed_difference_kernel_pm`
+  now show that this one signed packet restricts to the raw `(++ )` and
+  `(+,-)` families exactly as a difference-profile kernel and a sum-profile
+  kernel, respectively;
+- the manuscript-facing subtraction shells
+  `po3_signed_difference_kernel_sub_pp` and
+  `po3_signed_difference_kernel_sub_pm`
+  connect the raw formula `a_{r-s}-p_{r-s}` directly to the existing wrappers
+  `po3_q_pp_kernel` and `po3_q_pm_kernel_of_int`;
+- this closes the remaining algebraic gap between the raw Section~8 formula and
+  the filtered Q-side profile calculus already formalized above.
