@@ -7482,3 +7482,26 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   the cheapest mainline is now:
   sign-preserving + injective `U^*` on `H_+` + injective `V^*` on `H_-`
   + nonzero endpoint vectors.
+
+## In progress (2026-04-13): `PO3a.4` now splits cleanly into abstract outer-invariance and the real origin of `U,V`
+
+- the new local search on the exact address `PO3a.4` confirms a hard but useful
+  fact: inside the current reviewed notes, `U,V` do not yet appear as a
+  separately derived concrete formula for the genuine boundary difference;
+- the earliest live place where they enter is still theorem-shaped:
+  first in `PO3a-finite antiderivative mismatch criterion` through the family
+  `U_j,V_j`, then in `PO3a-two-endpoint extraction`, and only after that in the
+  physical `2x2` receiver;
+- therefore the current blocker must be stated honestly:
+  `PO3a.4` does not yet reduce to “check harmlessness of known `U,V`”;
+  before that, one still needs the upstream extraction layer that writes the
+  real defect in the form
+  `\sum U_j^*T^*((I-R_a)^*K_j(I-R_a)-L_j)TV_j`;
+- this is still progress, not drift:
+  the abstract outer-invariance lemma remains worth formalizing, because once
+  the extraction lands it will immediately strip the outer layer and return the
+  route to the already frozen identity-outer rigidity;
+- operationally the branch now splits into two exact subquestions:
+  `PO3a-A` = derive the outer-layer representation from the real difference,
+  and `PO3a.4` = prove that such an outer layer is harmless under local
+  sign-preserving and injective hypotheses.
