@@ -58,6 +58,15 @@ neighbor_addresses: ["PO3a.2", "PO3a.3", "PO3a.4"]
   и `PO3a.3`.
 - То есть этот адрес отвечает не за локальный знак одного вектора, а за мост
   от сырой антидифференциальной факторизации к конечной структуре.
+- Новый oracle-проход 2026-04-13 подтвердил, что весь рабочий сигнал по этому
+  адресу опять приходит из одного и того же внутреннего пакета:
+  `PO3a-finite antiderivative mismatch criterion`,
+  `PO3a-Volterra-word admission criterion`
+  и decision note про отказ от полной физической формы как первого шага.
+- Поэтому точная следующая цель на этом адресе уже заморожена:
+  не полная физическая вольтеррова нормальная форма, а именно связка
+  `PO3a-A` (конечная антидифференциальная extraction-форма)
+  + `PO3a-B` (глобальное зануление бесконцевой части).
 
 ## Что именно мы хотим узнать поиском
 
@@ -75,10 +84,10 @@ neighbor_addresses: ["PO3a.2", "PO3a.3", "PO3a.4"]
 
 | Запрос | Адрес | Зачем этот запрос | Какая ось варьируется | Сигнал | Куда привёл |
 | --- | --- | --- | --- | --- | --- |
-| `H-bridge.11 weaker Volterra bridge finite endpoint-projector count` | `H-bridge.11` | Поднять точную decision-лексику верхнего моста | full normal form → weaker bridge | planned | должен вернуть late notes от 2026-04-12 |
-| `Volterra-word admission criterion finite receiver H-bridge.11` | `H-bridge.11` | Связать мост сразу с конечным приёмником | bridge statement → finite receiver | planned | ожидаем прямую связку с `PO3a` |
-| `raw antiderivative factorization boundary correction endpoint counting` | `H-bridge.11` | Держать сырой аналитический вход рядом с верхним мостом | raw factorization → endpoint counting | planned | должен вернуть точный источник слов для `PO3a.2` |
-| `physical Volterra normal form bonus not first subgoal` | `H-bridge.11` | Зафиксировать отрицательный выбор, чтобы не зациклиться | strong route → decision note | planned | нужен как anti-loop anchor |
+| `H-bridge.11 weaker Volterra bridge finite endpoint-projector count` | `H-bridge.11` | Поднять точную decision-лексику верхнего моста | full normal form → weaker bridge | strong hit | вернул late `INSIGHTS` и decision note с mainline `raw antiderivative factorization -> finite endpoint-projector count -> Volterra-word admission -> endpoint receiver` |
+| `Volterra-word admission criterion finite receiver H-bridge.11` | `H-bridge.11` | Связать мост сразу с конечным приёмником | bridge statement → finite receiver | strong hit | вернул `PO3a-Volterra-word admission criterion` и ту же связку с `Q3/Proofs/HBridge_PO3_Shell.lean` |
+| `raw antiderivative factorization boundary correction endpoint counting` | `H-bridge.11` | Держать сырой аналитический вход рядом с верхним мостом | raw factorization → endpoint counting | hit | вернул weaker bridge и старый single-endpoint packet как источник конкретной антидифференциальной формы |
+| `physical Volterra normal form bonus not first subgoal` | `H-bridge.11` | Зафиксировать отрицательный выбор, чтобы не зациклиться | strong route → decision note | strong hit | вернул exact decision note: полную физическую форму держать как bonus-усиление, а не как первый удар |
 
 ## Пустые / шумовые слова
 
@@ -93,6 +102,7 @@ neighbor_addresses: ["PO3a.2", "PO3a.3", "PO3a.4"]
 - `критерий допуска в вольтерров класс + count of endpoint projectors`
 - `raw antiderivative factorization + weaker bridge`
 - `bonus strengthening + physical Volterra normal form`
+- `PO3a-A + PO3a-B`
 
 ## Переход в INSIGHTS
 

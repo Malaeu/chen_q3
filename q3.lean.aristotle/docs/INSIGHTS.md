@@ -7224,6 +7224,55 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   only after the weaker bridge statement is frozen in one reusable theorem
   form.
 
+## In progress (2026-04-13): second oracle pass freezes the exact `H-bridge.11 -> PO3a.2` bridge target
+
+- exact addresses: `H-bridge.11` and `PO3a.2`, still upstream of `PO3a.3`;
+- a fresh four-query local oracle pass again did not open a new branch:
+  every useful hit points back to the same packet
+  `h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`
+  together with the late `INSIGHTS` reductions;
+- the strongest internal anchors are now stable:
+  `PO3a-finite antiderivative mismatch criterion`,
+  `PO3a-Volterra-word admission criterion`,
+  and the decision note
+  “do not take full physical Volterra normal form as the first subgoal”;
+- operational conclusion:
+  the next real analytic target is no longer “prove the physical Volterra
+  normal form” and not “expand the whole boundary correction at once”;
+  it is the two-piece weaker bridge
+  `PO3a-A + PO3a-B`:
+  first extract a finite antiderivative-mismatch expansion, then prove global
+  cancellation of the zero-endpoint part;
+- once those two pieces land, endpoint counting and the already frozen
+  admission criterion push the real boundary defect automatically into the
+  finite receiver / boundary-cap framework;
+- short external sanity-check again produced no usable outside theorem for this
+  bridge shape, so the route remains strictly internal and vocabulary-driven.
+
+## In progress (2026-04-13): the weaker `PO3a-A + PO3a-B` bridge now has a Lean shell
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains an explicit abstract bridge
+  for the weaker Volterra route, not only for the downstream finite receiver;
+- the new theorem
+  `po3_endpoint_packet_of_weaker_bridge`
+  freezes the exact formal handoff
+  “boundary defect = zero-endpoint packet + endpoint-word packet” together with
+  global cancellation of the zero-endpoint part;
+- the companion theorem
+  `po3_boundary_zero_of_weaker_bridge_and_matrix_receiver`
+  shows that once the surviving endpoint-word packet enters the already frozen
+  finite mixing receiver, the whole boundary channel vanishes;
+- finally
+  `po3_cap_only_of_po2_and_weaker_bridge`
+  reconnects this weaker bridge directly back to the old `PO2 -> PO3b`
+  cap-only conclusion;
+- operational consequence:
+  the formal shell is now synchronized with the actual mainline wording
+  `PO3a-A + PO3a-B -> admission criterion -> finite receiver`,
+  so the next missing step is purely analytic:
+  extract the real finite antiderivative-mismatch expansion and prove the
+  zero-endpoint cancellation.
+
 ## In progress (2026-04-12): `PO3a.3` compresses further to boundary-cap separation on the plus side
 
 - exact address: `PO3a.3`, downstream of `PO3a.2` and upstream of `PO3a.4`;

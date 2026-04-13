@@ -66,6 +66,63 @@ theorem po3_cap_only_of_po2_and_matrix_receiver
 
 end PO3Shell
 
+section PO3WeakerBridge
+
+variable {A : Type*} [AddGroup A]
+
+/-- Abstract weaker bridge (`PO3a-A + PO3a-B`):
+if the genuine boundary packet splits into a zero-endpoint part and an
+endpoint-word part, and the zero-endpoint packet cancels globally, then only
+the endpoint-word packet remains. -/
+theorem po3_endpoint_packet_of_weaker_bridge
+    (D_partial_pm zero_endpoint_packet endpoint_word_packet : A)
+    (hsplit : D_partial_pm = zero_endpoint_packet + endpoint_word_packet)
+    (hzero : zero_endpoint_packet = 0) :
+    D_partial_pm = endpoint_word_packet := by
+  calc
+    D_partial_pm = zero_endpoint_packet + endpoint_word_packet := hsplit
+    _ = 0 + endpoint_word_packet := by simp [hzero]
+    _ = endpoint_word_packet := zero_add _
+
+/-- Once the weaker bridge lands and the surviving endpoint-word packet enters
+the finite receiver, the boundary channel already vanishes. -/
+theorem po3_boundary_zero_of_weaker_bridge_and_matrix_receiver
+    (D_partial_pm zero_endpoint_packet endpoint_word_packet receiver A_mat B_mat M_mat : A)
+    (hsplit : D_partial_pm = zero_endpoint_packet + endpoint_word_packet)
+    (hzero : zero_endpoint_packet = 0)
+    (hreceiver : endpoint_word_packet = receiver)
+    (hmatrix : receiver = A_mat + B_mat + M_mat)
+    (hcancel : A_mat + B_mat + M_mat = 0) :
+    D_partial_pm = 0 := by
+  calc
+    D_partial_pm = endpoint_word_packet := by
+      exact po3_endpoint_packet_of_weaker_bridge
+        D_partial_pm zero_endpoint_packet endpoint_word_packet hsplit hzero
+    _ = receiver := hreceiver
+    _ = A_mat + B_mat + M_mat := hmatrix
+    _ = 0 := hcancel
+
+/-- `PO2` plus the weaker bridge plus the finite receiver already imply the
+cap-only conclusion. This is the exact shell needed before plugging in the real
+Volterra/endpoint packet. -/
+theorem po3_cap_only_of_po2_and_weaker_bridge
+    (D_N_pm D_partial_pm D_cap_pm zero_endpoint_packet endpoint_word_packet
+      receiver A_mat B_mat M_mat : A)
+    (hpo2 : D_N_pm = D_partial_pm + D_cap_pm)
+    (hsplit : D_partial_pm = zero_endpoint_packet + endpoint_word_packet)
+    (hzero : zero_endpoint_packet = 0)
+    (hreceiver : endpoint_word_packet = receiver)
+    (hmatrix : receiver = A_mat + B_mat + M_mat)
+    (hcancel : A_mat + B_mat + M_mat = 0) :
+    D_N_pm = D_cap_pm := by
+  apply po3_cap_only_of_po2_shell
+  · exact hpo2
+  · exact po3_boundary_zero_of_weaker_bridge_and_matrix_receiver
+      D_partial_pm zero_endpoint_packet endpoint_word_packet
+      receiver A_mat B_mat M_mat hsplit hzero hreceiver hmatrix hcancel
+
+end PO3WeakerBridge
+
 section PO3Witness
 
 variable {𝕜 V W : Type*}
