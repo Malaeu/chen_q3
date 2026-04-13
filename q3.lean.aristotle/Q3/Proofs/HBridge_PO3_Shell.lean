@@ -207,6 +207,25 @@ theorem po3_filtered_named_split_of_raw_split
 
 end PO3RawSplitTransport
 
+section PO3EntrywiseRawSplit
+
+variable {Coeff RawOp : Type*} [AddGroup Coeff] [AddGroup RawOp]
+
+/-- Entrywise-to-operator packaging shell: if the raw coefficient defect has
+already been split into bulk, boundary, and cap coefficient channels, and the
+raw operator is additive in those coefficient packets, then the raw operator
+inherits the same three-way split. This is the abstract `PO3a-A2` bridge. -/
+theorem po3_raw_operator_split_of_entrywise_split
+    (assemble : Coeff →+ RawOp)
+    (δ rawBulk rawBoundary rawCap : Coeff) :
+    δ = rawBulk + rawBoundary + rawCap
+      →
+      assemble δ = assemble rawBulk + assemble rawBoundary + assemble rawCap := by
+  intro hsplit
+  rw [hsplit, map_add, map_add]
+
+end PO3EntrywiseRawSplit
+
 section PO3VolterraExtraction
 
 variable {A : Type*} [Ring A]

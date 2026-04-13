@@ -7687,3 +7687,34 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   very narrow:
   identify the actual raw channels of the real coefficient defect
   `δ_{r,s}(a)`, then identify the mixed interior bulk packet after transport.
+
+## In progress (2026-04-13): `PO3a-A2` is now explicitly coefficient-level
+
+- the next live object is no longer an abstract boundary operator but the raw
+  coefficient defect itself:
+  `δ_{r,s}(a) = w_{r,s}(a) - κ(a) q_{r,s}`;
+- the code path in [src/h1_raw_bulk_match.py](/Users/emalam/Documents/GitHub/rh_lean_01_2026/src/h1_raw_bulk_match.py)
+  is now important mathematically, not just numerically:
+  it freezes the exact contrast
+  `q_{r,s}` = Toeplitz in `r-s`,
+  while `w_{r,s}(a)` is built from the two-pole kernel
+  `((γ-α_r)(γ+α_s))^{-1}`;
+- therefore `PO3a-A2` should be treated as coefficient-level classification:
+  split `δ_{r,s}(a)` into raw bulk / raw boundary / raw cap pieces before any
+  further operator packaging;
+- the right next shell is now the entrywise bridge:
+  if `δ_{r,s}` splits entrywise, then the raw operator and hence the filtered
+  operator split automatically.
+
+## In progress (2026-04-13): Lean shell now reaches the entrywise `PO3a-A2` bridge
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now also contains
+  `po3_raw_operator_split_of_entrywise_split`;
+- this is the exact minimal abstract statement needed at the new level:
+  if the coefficient defect packet already splits entrywise and the
+  coefficient-to-operator packaging map is additive, then the raw operator
+  automatically splits into raw bulk / raw boundary / raw cap channels;
+- together with the already added filtered-transport lemma, this means the
+  remaining live mathematics is now completely exposed:
+  there is no further shell ambiguity, only the actual coefficient-level
+  classification of `δ_{r,s}(a)`.
