@@ -7610,3 +7610,26 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - only after that does the already formalized two-endpoint expansion become the
   right downstream tool, because then the remaining row/column/corner pieces
   are honest boundary strips rather than guessed leftovers.
+
+## In progress (2026-04-13): Lean shell now contains the discrete `PO3a-A0` double telescoping packet
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains three exact discrete
+  telescoping lemmas:
+  `po3_sum_range_succ_sub`,
+  `po3_telescoping_one_variable`,
+  and the new two-variable theorem
+  `po3_double_telescoping`;
+- the last theorem is the exact abstract `PO3a-A0` receiver:
+  for any defect `D`, it rewrites
+  `D (N+m) (N+n)` as
+  `corner + row strip + column strip + bulk mixed difference`,
+  with the bulk term written as a double sum of the mixed interior difference;
+- this means the algebraic part of the user’s proposed route is now frozen in
+  Lean, not only in notes:
+  the remaining live mathematics is strictly narrower, namely to substitute the
+  real defect into this generic packet and identify its bulk mixed difference
+  with `(I-R_a)^*K_a(I-R_a)-L_a`;
+- compilation check passes:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`;
+  the only remaining output is the earlier non-blocking section-variable
+  warning in the old surjective-functional lemma.

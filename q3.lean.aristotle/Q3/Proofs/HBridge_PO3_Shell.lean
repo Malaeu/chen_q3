@@ -1,4 +1,5 @@
 import Mathlib.Algebra.Star.Basic
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.LinearAlgebra.Span.Basic
 import Mathlib.Tactic
 
@@ -185,6 +186,114 @@ theorem po3_two_endpoint_expansion
   noncomm_ring
 
 end PO3VolterraExtraction
+
+section PO3DoubleTelescoping
+
+open Finset
+open scoped BigOperators
+
+variable {A : Type*} [AddCommGroup A]
+
+/-- One-dimensional telescoping identity on a tail written in `range` form. -/
+theorem po3_sum_range_succ_sub (F : ℕ → A) :
+    ∀ m, (∑ i ∈ Finset.range m, (F (i + 1) - F i)) = F m - F 0
+  | 0 => by simp
+  | m + 1 => by
+      rw [Finset.sum_range_succ, po3_sum_range_succ_sub F m]
+      abel_nf
+
+/-- One-dimensional Newton-Leibniz / telescoping form. -/
+theorem po3_telescoping_one_variable (F : ℕ → A) (m : ℕ) :
+    F m = F 0 + (∑ i ∈ Finset.range m, (F (i + 1) - F i)) := by
+  calc
+    F m = F 0 + (F m - F 0) := by abel_nf
+    _ = F 0 + (∑ i ∈ Finset.range m, (F (i + 1) - F i)) := by
+          rw [po3_sum_range_succ_sub]
+
+/-- Two-variable discrete telescoping identity: any defect on the tail splits
+into the corner term, the row strip, the column strip, and the bulk mixed
+difference term. This is the abstract `PO3a-A0` packet. -/
+theorem po3_double_telescoping
+    (D : ℕ → ℕ → A) (N m n : ℕ) :
+    D (N + m) (N + n)
+      =
+        D N N
+        + (∑ i ∈ Finset.range m, (D (N + i + 1) N - D (N + i) N))
+        + (∑ j ∈ Finset.range n, (D N (N + j + 1) - D N (N + j)))
+        + (∑ i ∈ Finset.range m,
+            ∑ j ∈ Finset.range n,
+              ((D (N + i + 1) (N + j + 1) - D (N + i) (N + j + 1))
+                - (D (N + i + 1) (N + j) - D (N + i) (N + j)))) := by
+  have hrow :
+      D (N + m) (N + n)
+        =
+          D N (N + n)
+          + ∑ i ∈ Finset.range m,
+              (D (N + i + 1) (N + n) - D (N + i) (N + n)) := by
+    simpa [Nat.add_assoc] using
+      (po3_telescoping_one_variable (fun i => D (N + i) (N + n)) m)
+  have hcol :
+      D N (N + n)
+        =
+          D N N
+          + ∑ j ∈ Finset.range n, (D N (N + j + 1) - D N (N + j)) := by
+    simpa [Nat.add_assoc] using
+      (po3_telescoping_one_variable (fun j => D N (N + j)) n)
+  have hbulk :
+      ∀ i,
+        D (N + i + 1) (N + n) - D (N + i) (N + n)
+          =
+            (D (N + i + 1) N - D (N + i) N)
+            + ∑ j ∈ Finset.range n,
+                ((D (N + i + 1) (N + j + 1) - D (N + i) (N + j + 1))
+                  - (D (N + i + 1) (N + j) - D (N + i) (N + j))) := by
+    intro i
+    simpa [Nat.add_assoc, sub_eq_add_neg, add_assoc, add_left_comm, add_comm] using
+      (po3_telescoping_one_variable
+        (fun j => D (N + i + 1) (N + j) - D (N + i) (N + j)) n)
+  calc
+    D (N + m) (N + n)
+        =
+          D N (N + n)
+          + ∑ i ∈ Finset.range m,
+              (D (N + i + 1) (N + n) - D (N + i) (N + n)) := hrow
+    _ =
+          D N (N + n)
+          + ∑ i ∈ Finset.range m,
+              ((D (N + i + 1) N - D (N + i) N)
+                + ∑ j ∈ Finset.range n,
+                    ((D (N + i + 1) (N + j + 1) - D (N + i) (N + j + 1))
+                      - (D (N + i + 1) (N + j) - D (N + i) (N + j)))) := by
+          simp_rw [hbulk]
+    _ =
+          D N N
+          + ∑ j ∈ Finset.range n, (D N (N + j + 1) - D N (N + j))
+          + ∑ i ∈ Finset.range m,
+              ((D (N + i + 1) N - D (N + i) N)
+                + ∑ j ∈ Finset.range n,
+                    ((D (N + i + 1) (N + j + 1) - D (N + i) (N + j + 1))
+                      - (D (N + i + 1) (N + j) - D (N + i) (N + j)))) := by
+          rw [hcol]
+    _ =
+          D N N
+          + ∑ j ∈ Finset.range n, (D N (N + j + 1) - D N (N + j))
+          + (∑ i ∈ Finset.range m, (D (N + i + 1) N - D (N + i) N)
+            + ∑ i ∈ Finset.range m,
+                ∑ j ∈ Finset.range n,
+                  ((D (N + i + 1) (N + j + 1) - D (N + i) (N + j + 1))
+                    - (D (N + i + 1) (N + j) - D (N + i) (N + j)))) := by
+          rw [Finset.sum_add_distrib]
+    _ =
+          D N N
+          + ∑ i ∈ Finset.range m, (D (N + i + 1) N - D (N + i) N)
+          + ∑ j ∈ Finset.range n, (D N (N + j + 1) - D N (N + j))
+          + ∑ i ∈ Finset.range m,
+              ∑ j ∈ Finset.range n,
+                ((D (N + i + 1) (N + j + 1) - D (N + i) (N + j + 1))
+                  - (D (N + i + 1) (N + j) - D (N + i) (N + j))) := by
+          simp [add_assoc, add_left_comm, add_comm]
+
+end PO3DoubleTelescoping
 
 section PO3Witness
 
