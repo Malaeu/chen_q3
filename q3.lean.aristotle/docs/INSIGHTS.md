@@ -7633,3 +7633,39 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`;
   the only remaining output is the earlier non-blocking section-variable
   warning in the old surjective-functional lemma.
+
+## In progress (2026-04-13): `PO3a-A1` is the substitution step, not a new guess
+
+- the next live step after `PO3a-A0` is now sharply identified:
+  `PO3a-A1` is the moment where one substitutes the real defect into the
+  generic double-telescoping packet and then identifies its bulk mixed
+  difference with the transported Volterra bulk term;
+- local search again did not surface any older standalone `A1` theorem;
+  the best internal anchor remains the early note language
+  `raw defect = bulk + boundary + cap`, followed by “pull that split through
+  `Δ_N`”;
+- this means the correct abstract shell is now:
+  if the `corner + row strip + column strip` part is collected into one
+  boundary packet and the mixed interior double sum is identified with one bulk
+  packet, then the real defect already has the desired `boundary + bulk` form;
+- that is the exact Lean bridge to add next, before any attempt to compute the
+  concrete `K_a` and `L_a` for the real defect.
+
+## In progress (2026-04-13): Lean shell now contains the abstract `PO3a-A1` bridge
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now also contains
+  `po3_boundary_plus_bulk_of_double_telescoping`;
+- this is the exact abstract `A1` bridge:
+  once the `corner + row strip + column strip` part from
+  `po3_double_telescoping` is collected into one boundary packet, and the
+  mixed interior double sum is identified with one bulk packet, the defect is
+  already rewritten as `boundaryPacket + bulkPacket`;
+- therefore the live mathematical task is narrowed once more:
+  for the real defect one no longer has to derive the full transported formula
+  in one leap, but only
+  1. identify the boundary packet from the corner/row/column traces, and
+  2. identify the bulk packet from the mixed interior difference;
+- compilation check passes:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`;
+  the only remaining output is still the old non-blocking section-variable
+  warning in the earlier surjective-functional lemma.

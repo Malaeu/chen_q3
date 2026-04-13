@@ -293,6 +293,39 @@ theorem po3_double_telescoping
                   - (D (N + i + 1) (N + j) - D (N + i) (N + j))) := by
           simp [add_assoc, add_left_comm, add_comm]
 
+/-- `PO3a-A1` shell: once the corner plus row/column strips are collected into a
+single boundary packet and the mixed interior double sum is identified with the
+transported bulk packet, the whole defect already has the form
+`boundary + bulk`. -/
+theorem po3_boundary_plus_bulk_of_double_telescoping
+    (D : ℕ → ℕ → A) (N m n : ℕ)
+    (boundaryPacket bulkPacket : A)
+    (hboundary :
+      boundaryPacket =
+        D N N
+        + (∑ i ∈ Finset.range m, (D (N + i + 1) N - D (N + i) N))
+        + (∑ j ∈ Finset.range n, (D N (N + j + 1) - D N (N + j))))
+    (hbulk :
+      bulkPacket =
+        ∑ i ∈ Finset.range m,
+          ∑ j ∈ Finset.range n,
+            ((D (N + i + 1) (N + j + 1) - D (N + i) (N + j + 1))
+              - (D (N + i + 1) (N + j) - D (N + i) (N + j)))) :
+    D (N + m) (N + n) = boundaryPacket + bulkPacket := by
+  calc
+    D (N + m) (N + n)
+        =
+          D N N
+          + (∑ i ∈ Finset.range m, (D (N + i + 1) N - D (N + i) N))
+          + (∑ j ∈ Finset.range n, (D N (N + j + 1) - D N (N + j)))
+          + (∑ i ∈ Finset.range m,
+              ∑ j ∈ Finset.range n,
+                ((D (N + i + 1) (N + j + 1) - D (N + i) (N + j + 1))
+                  - (D (N + i + 1) (N + j) - D (N + i) (N + j)))) := by
+          exact po3_double_telescoping D N m n
+    _ = boundaryPacket + bulkPacket := by
+          rw [← hboundary, ← hbulk]
+
 end PO3DoubleTelescoping
 
 section PO3Witness
