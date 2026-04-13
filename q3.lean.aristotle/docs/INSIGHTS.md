@@ -7936,3 +7936,24 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `main_closure.tex`, and it sharply narrows the next substitution:
   instantiate the actual one-dimensional `a/p` profiles from the raw Section~8
   formula and then compare them against the Suzuki-side filtered packets.
+
+## In progress (2026-04-14): raw Section 8 `q_{rs}` should be formalized as one signed difference packet before any further filtered comparison
+
+- exact local target: add a signed raw shell for the manuscript formula
+  `q_{rs}=a_{r-s}-p_{r-s}` / `q_{rs}=a_{r-s}-p_{rs}` in the difference-only
+  regime already visible in `main_closure.tex`;
+- this should not introduce new two-variable algebra: the point is to package
+  raw `q` once as a difference kernel on integer indices and then read off the
+  live families `(++), (+,-)` by specialization of the sign choices;
+- the filtered Q-side package just proved in Lean already handles the next
+  layer, so the missing bridge is now exactly the raw signed-to-block
+  specialization;
+- local oracle hits point back to the old raw-entry notes and confirm that this
+  is the right branch: do not reopen the dead global raw identity
+  `w_{rs}(a)=\kappa(a)q_{rs}`, only formalize the Section 8 packet shape needed
+  for the filtered bulk comparison;
+- external sanity check was low-signal; the actionable structure is entirely in
+  the project manuscript and existing notes;
+- concrete next code step: introduce a signed raw difference kernel, prove its
+  `(++), (+,-)` specializations, and then connect these specializations to the
+  existing `po3_q_pp_kernel` / `po3_q_pm_kernel` wrappers.
