@@ -7894,6 +7894,12 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the profile kernels
   `po3_sum_kernel` and `po3_difference_kernel`;
+- it also contains the explicit filtered profile operators
+  `po3_filtered_sum_profile` and
+  `po3_filtered_difference_profile`,
+  together with the equalities
+  `po3_four_term_stencil_sum_kernel_as_sum_kernel` and
+  `po3_four_term_stencil_difference_kernel_as_difference_kernel`;
 - it also records that the common filtered stencil preserves these one-variable
   shapes:
   the `(+,-)` family stays a sum-profile, and the `(+,+)` family stays a

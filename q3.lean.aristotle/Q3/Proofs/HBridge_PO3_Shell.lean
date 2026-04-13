@@ -821,6 +821,14 @@ the filtered `(+,+)` Q-side shape. -/
 def po3_difference_kernel (u : ℤ → A) : ℕ → ℕ → A :=
   fun m n => u ((m : ℤ) - (n : ℤ))
 
+/-- One-dimensional filtered profile for the `(+,-)` Q-side family. -/
+def po3_filtered_sum_profile (u : ℕ → A) : ℕ → A :=
+  fun t => u t + u (t + 1) + u (t + 1) + u (t + 2)
+
+/-- One-dimensional filtered profile for the `(+,+)` Q-side family. -/
+def po3_filtered_difference_profile (u : ℤ → A) : ℤ → A :=
+  fun k => u k + u (k + 1) + u (k - 1) + u k
+
 /-- Filtered four-term stencil preserves the sum-profile shape. -/
 theorem po3_four_term_stencil_sum_kernel
     (u : ℕ → A) (m n : ℕ) :
@@ -831,6 +839,17 @@ theorem po3_four_term_stencil_sum_kernel
         + u (m + n + 1)
         + u (m + n + 2) := by
   simp [po3_four_term_stencil, po3_sum_kernel, Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
+
+/-- The filtered `(+,-)` block is again a sum-profile kernel, now with the
+explicit filtered one-dimensional profile. -/
+theorem po3_four_term_stencil_sum_kernel_as_sum_kernel
+    (u : ℕ → A) :
+    po3_four_term_stencil (po3_sum_kernel u)
+      =
+        po3_sum_kernel (po3_filtered_sum_profile u) := by
+  funext m n
+  simp [po3_sum_kernel, po3_filtered_sum_profile, po3_four_term_stencil,
+    Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
 
 /-- Filtered four-term stencil preserves the difference-profile shape. -/
 theorem po3_four_term_stencil_difference_kernel
@@ -844,6 +863,17 @@ theorem po3_four_term_stencil_difference_kernel
   have h1 : ((m : ℤ) + 1 - (n : ℤ)) = ((m : ℤ) - (n : ℤ)) + 1 := by ring
   have h2 : ((m : ℤ) - ((n : ℤ) + 1)) = ((m : ℤ) - (n : ℤ)) - 1 := by ring
   simp [po3_four_term_stencil, po3_difference_kernel, h1, h2]
+
+/-- The filtered `(+,+)` block is again a difference-profile kernel, now with
+the explicit filtered one-dimensional profile. -/
+theorem po3_four_term_stencil_difference_kernel_as_difference_kernel
+    (u : ℤ → A) :
+    po3_four_term_stencil (po3_difference_kernel u)
+      =
+        po3_difference_kernel (po3_filtered_difference_profile u) := by
+  funext m n
+  rw [po3_four_term_stencil_difference_kernel]
+  simp [po3_difference_kernel, po3_filtered_difference_profile]
 
 /-- Mixed packet of a sum-profile kernel is the one-dimensional second forward
 difference on the sum variable. -/
