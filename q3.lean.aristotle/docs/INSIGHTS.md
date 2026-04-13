@@ -7737,3 +7737,24 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   form via
   `po3_difference_factorization_of_q_split` and
   `po3_delta_rewrite_of_q_split`.
+
+## In progress (2026-04-13): `PO3a-A3` is the old finite antiderivative mismatch criterion, now separated from `A1`
+
+- the old `PO3` note already contains the exact weaker bridge we need:
+  the genuine boundary defect may be written as a finite sum of terms
+  `U_j^* T^* ((I-R_a)^* K_j (I-R_a) - L_j) T V_j`,
+  provided the zero-endpoint part
+  `∑ U_j^* T^* (K_j - L_j) T V_j`
+  cancels globally;
+- this shows that `A3` is not the same as `A1`:
+  `A1` is only the generic `boundary + bulk` transport step,
+  while `A3` is the first place where one must identify whether the real mixed
+  interior term is exactly `K_a`, or a different packet `L_a`;
+- the current sharp fork is therefore:
+  either prove the physical specialization `L_a = K_a`,
+  or keep the weaker finite antiderivative mismatch route and prove only the
+  global zero-endpoint cancellation;
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains two new abstract shells for
+  this layer:
+  `po3_two_endpoint_mismatch_expansion` and
+  `po3_finite_antiderivative_mismatch_of_zero_endpoint_cancellation`.

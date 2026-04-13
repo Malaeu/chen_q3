@@ -286,6 +286,59 @@ theorem po3_two_endpoint_expansion
 
 end PO3VolterraExtraction
 
+section PO3FiniteAntiderivativeMismatch
+
+open Finset
+open scoped BigOperators
+
+variable {ι A : Type*} [DecidableEq ι] [Ring A]
+variable {ι A : Type*} [Ring A]
+
+/-- One summand of the finite antiderivative mismatch criterion: after
+expanding `((1-R_left) K (1-R_right) - Lmid)`, one gets the zero-endpoint term,
+the one-endpoint left/right bricks, and the two-endpoint brick. This is the
+algebraic core behind the old `PO3a-finite antiderivative mismatch criterion`. -/
+theorem po3_two_endpoint_mismatch_expansion
+    (L K R_left R_right Lmid N : A) :
+    L * (((1 - R_left) * K * (1 - R_right)) - Lmid) * N
+      =
+        L * (K - Lmid) * N
+        - L * R_left * K * N
+        - L * K * R_right * N
+        + L * R_left * K * R_right * N := by
+  noncomm_ring
+
+/-- Finite-sum shell for `PO3a-A3`: if each summand has already been expanded
+into zero-endpoint, one-endpoint, and two-endpoint packets, and the zero-endpoint
+sum cancels globally, then the total defect is built only from endpoint words. -/
+theorem po3_finite_antiderivative_mismatch_of_zero_endpoint_cancellation
+    (s : Finset ι)
+    (H zero left right two : ι → A)
+    (hexpand : ∀ i, H i = zero i - left i - right i + two i)
+    (hzero : Finset.sum s (fun i => zero i) = 0) :
+    Finset.sum s (fun i => H i)
+      =
+        -(Finset.sum s (fun i => left i))
+        - (Finset.sum s (fun i => right i))
+        + Finset.sum s (fun i => two i) := by
+  calc
+    Finset.sum s (fun i => H i)
+        = Finset.sum s (fun i => zero i - left i - right i + two i) := by
+            simp [hexpand]
+    _ = Finset.sum s (fun i => zero i)
+          - Finset.sum s (fun i => left i)
+          - Finset.sum s (fun i => right i)
+          + Finset.sum s (fun i => two i) := by
+            simp [Finset.sum_add_distrib, sub_eq_add_neg, add_assoc,
+              add_left_comm, add_comm]
+    _ = -(Finset.sum s (fun i => left i))
+          - (Finset.sum s (fun i => right i))
+          + Finset.sum s (fun i => two i) := by
+          rw [hzero]
+          abel_nf
+
+end PO3FiniteAntiderivativeMismatch
+
 section PO3DoubleTelescoping
 
 open Finset
