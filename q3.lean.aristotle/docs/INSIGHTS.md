@@ -7889,3 +7889,20 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   form the filtered defect by the common four-term stencil,
   and then read off `c, α, β, K` on `(++), (+,-)` from the two sides
   separately.
+
+## In progress (2026-04-14): the Q-side filtered profiles are now reduced to one-dimensional second differences
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the profile kernels
+  `po3_sum_kernel` and `po3_difference_kernel`;
+- it also records that the common filtered stencil preserves these one-variable
+  shapes:
+  the `(+,-)` family stays a sum-profile, and the `(+,+)` family stays a
+  difference-profile;
+- most importantly, the mixed packets are now explicit:
+  after filtering, the `(+,-)` mixed packet becomes the step-`2` forward second
+  difference on the sum variable, while the `(+,+)` mixed packet becomes the
+  step-`2` centered second difference on the difference variable;
+- this is the exact Lean-level form of the formulas already visible in
+  `main_closure.tex`, and it sharply narrows the next substitution:
+  compute the corresponding one-dimensional profiles on the `q` side and then
+  compare them against the Suzuki-side filtered packets.

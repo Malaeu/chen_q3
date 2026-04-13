@@ -808,6 +808,139 @@ theorem po3_named_packets_of_four_term_stencil_sub_smul
 
 end PO3FourTermStencil
 
+section PO3OneDimensionalProfiles
+
+variable {A : Type*} [AddCommGroup A]
+
+/-- Sum-profile kernel `u(m+n)`, matching the filtered `(+,-)` Q-side shape. -/
+def po3_sum_kernel (u : ℕ → A) : ℕ → ℕ → A :=
+  fun m n => u (m + n)
+
+/-- Difference-profile kernel `u(m-n)`, written on integer indices to match
+the filtered `(+,+)` Q-side shape. -/
+def po3_difference_kernel (u : ℤ → A) : ℕ → ℕ → A :=
+  fun m n => u ((m : ℤ) - (n : ℤ))
+
+/-- Filtered four-term stencil preserves the sum-profile shape. -/
+theorem po3_four_term_stencil_sum_kernel
+    (u : ℕ → A) (m n : ℕ) :
+    po3_four_term_stencil (po3_sum_kernel u) m n
+      =
+        u (m + n)
+        + u (m + n + 1)
+        + u (m + n + 1)
+        + u (m + n + 2) := by
+  simp [po3_four_term_stencil, po3_sum_kernel, Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
+
+/-- Filtered four-term stencil preserves the difference-profile shape. -/
+theorem po3_four_term_stencil_difference_kernel
+    (u : ℤ → A) (m n : ℕ) :
+    po3_four_term_stencil (po3_difference_kernel u) m n
+      =
+        u ((m : ℤ) - (n : ℤ))
+        + u (((m : ℤ) - (n : ℤ)) + 1)
+        + u (((m : ℤ) - (n : ℤ)) - 1)
+        + u ((m : ℤ) - (n : ℤ)) := by
+  have h1 : ((m : ℤ) + 1 - (n : ℤ)) = ((m : ℤ) - (n : ℤ)) + 1 := by ring
+  have h2 : ((m : ℤ) - ((n : ℤ) + 1)) = ((m : ℤ) - (n : ℤ)) - 1 := by ring
+  simp [po3_four_term_stencil, po3_difference_kernel, h1, h2]
+
+/-- Mixed packet of a sum-profile kernel is the one-dimensional second forward
+difference on the sum variable. -/
+theorem po3_mixed_packet_of_sum_kernel
+    (u : ℕ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_sum_kernel u) r s
+      =
+        u (r + s + 2)
+        - u (r + s + 1)
+        - u (r + s + 1)
+        + u (r + s) := by
+  simp [po3_mixed_packet, po3_sum_kernel, Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
+
+/-- Mixed packet of a difference-profile kernel is the one-dimensional centered
+second difference on the difference variable. -/
+theorem po3_mixed_packet_of_difference_kernel
+    (u : ℤ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_difference_kernel u) r s
+      =
+        u ((r : ℤ) - (s : ℤ))
+        - u (((r : ℤ) - (s : ℤ)) + 1)
+        - u (((r : ℤ) - (s : ℤ)) - 1)
+        + u ((r : ℤ) - (s : ℤ)) := by
+  have h1 : (((r : ℤ) + 1) - (s : ℤ)) = ((r : ℤ) - (s : ℤ)) + 1 := by ring
+  have h2 : ((r : ℤ) - ((s : ℤ) + 1)) = ((r : ℤ) - (s : ℤ)) - 1 := by ring
+  have h3 : (((r : ℤ) + 1) - ((s : ℤ) + 1)) = ((r : ℤ) - (s : ℤ)) := by ring
+  simp [po3_mixed_packet, po3_difference_kernel, h1, h2, h3]
+
+/-- After the common four-term stencil, a sum-profile mixed packet becomes the
+step-`2` second difference on the sum variable. -/
+theorem po3_mixed_packet_of_four_term_stencil_sum_kernel
+    (u : ℕ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (po3_sum_kernel u)) r s
+      =
+        u (r + s + 4)
+        - u (r + s + 2)
+        - u (r + s + 2)
+        + u (r + s) := by
+  calc
+    po3_mixed_packet (po3_four_term_stencil (po3_sum_kernel u)) r s
+        =
+          po3_four_term_stencil (po3_sum_kernel u) (r + 1) (s + 1)
+          - po3_four_term_stencil (po3_sum_kernel u) (r + 1) s
+          - po3_four_term_stencil (po3_sum_kernel u) r (s + 1)
+          + po3_four_term_stencil (po3_sum_kernel u) r s := by
+          simp [po3_mixed_packet, sub_eq_add_neg]
+    _ =
+          (u (r + s + 2) + u (r + s + 3) + u (r + s + 3) + u (r + s + 4))
+          - (u (r + s + 1) + u (r + s + 2) + u (r + s + 2) + u (r + s + 3))
+          - (u (r + s + 1) + u (r + s + 2) + u (r + s + 2) + u (r + s + 3))
+          + (u (r + s) + u (r + s + 1) + u (r + s + 1) + u (r + s + 2)) := by
+          simp [po3_four_term_stencil_sum_kernel, Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
+    _ = u (r + s + 4) - u (r + s + 2) - u (r + s + 2) + u (r + s) := by
+          abel_nf
+
+/-- After the common four-term stencil, a difference-profile mixed packet
+becomes the step-`2` centered second difference on the difference variable. -/
+theorem po3_mixed_packet_of_four_term_stencil_difference_kernel
+    (u : ℤ → A) (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (po3_difference_kernel u)) r s
+      =
+        u ((r : ℤ) - (s : ℤ))
+        + u ((r : ℤ) - (s : ℤ))
+        - u (((r : ℤ) - (s : ℤ)) + 2)
+        - u (((r : ℤ) - (s : ℤ)) - 2) := by
+  have h1 : (((r : ℤ) + 1) - ((s : ℤ) + 1)) = ((r : ℤ) - (s : ℤ)) := by ring
+  have h2 : (((r : ℤ) + 1) - (s : ℤ)) = ((r : ℤ) - (s : ℤ)) + 1 := by ring
+  have h3 : ((r : ℤ) - ((s : ℤ) + 1)) = ((r : ℤ) - (s : ℤ)) - 1 := by ring
+  have h4 : (((r : ℤ) - (s : ℤ)) + 1 + 1) = ((r : ℤ) - (s : ℤ)) + 2 := by ring
+  have h5 : (((r : ℤ) - (s : ℤ)) - 1 - 1) = ((r : ℤ) - (s : ℤ)) - 2 := by ring
+  calc
+    po3_mixed_packet (po3_four_term_stencil (po3_difference_kernel u)) r s
+        =
+          po3_four_term_stencil (po3_difference_kernel u) (r + 1) (s + 1)
+          - po3_four_term_stencil (po3_difference_kernel u) (r + 1) s
+          - po3_four_term_stencil (po3_difference_kernel u) r (s + 1)
+          + po3_four_term_stencil (po3_difference_kernel u) r s := by
+          simp [po3_mixed_packet, sub_eq_add_neg]
+    _ =
+          (u (((r : ℤ) - (s : ℤ))) + u (((r : ℤ) - (s : ℤ)) + 1)
+            + u (((r : ℤ) - (s : ℤ)) - 1) + u (((r : ℤ) - (s : ℤ))))
+          - (u (((r : ℤ) - (s : ℤ)) + 1) + u (((r : ℤ) - (s : ℤ)) + 2)
+            + u (((r : ℤ) - (s : ℤ))) + u (((r : ℤ) - (s : ℤ)) + 1))
+          - (u (((r : ℤ) - (s : ℤ)) - 1) + u (((r : ℤ) - (s : ℤ)))
+            + u (((r : ℤ) - (s : ℤ)) - 2) + u (((r : ℤ) - (s : ℤ)) - 1))
+          + (u (((r : ℤ) - (s : ℤ))) + u (((r : ℤ) - (s : ℤ)) + 1)
+            + u (((r : ℤ) - (s : ℤ)) - 1) + u (((r : ℤ) - (s : ℤ)))) := by
+          simp [po3_four_term_stencil_difference_kernel, h1, h2, h3, h4, h5]
+    _ =
+          u ((r : ℤ) - (s : ℤ))
+          + u ((r : ℤ) - (s : ℤ))
+          - u (((r : ℤ) - (s : ℤ)) + 2)
+          - u (((r : ℤ) - (s : ℤ)) - 2) := by
+          abel_nf
+
+end PO3OneDimensionalProfiles
+
 section PO3Witness
 
 variable {𝕜 V W : Type*}
