@@ -7505,3 +7505,26 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `PO3a-A` = derive the outer-layer representation from the real difference,
   and `PO3a.4` = prove that such an outer layer is harmless under local
   sign-preserving and injective hypotheses.
+
+## In progress (2026-04-13): `PO3a-A` now has one exact upstream anchor
+
+- a fresh address-bound oracle pass on `PO3a-A` did not uncover a hidden ready
+  formula for the outer layer `U_j,V_j`; it confirmed something sharper:
+  the earliest exact internal anchor is the antiderivative factorization
+  `I_0^{(a)}S_{a,\infty,N}=T_{a,\infty,N}\Delta_N`;
+- therefore the honest extraction problem is no longer “guess `U_j,V_j`” but
+  “transport the real defect to the Volterra-antiderivative side and isolate
+  the endpoint defect created by undoing `I_0^{(a)}`”;
+- the formal obstruction is already frozen in the note:
+  `D_a I_0^{(a)} = I` while `I_0^{(a)}D_a = I - R_a`,
+  so any genuine boundary word must come from the rank-one endpoint projector
+  `R_a`, not from hidden mixed combinatorics inside the filtered tail synthesis;
+- this sharpens the exact role of `PO3a-A`:
+  it should produce a word-level factorization of the real difference in terms
+  of `T`, bounded middle kernels, and finitely many endpoint insertions
+  `R_a, R_a^*`;
+- the right next local theorem target is therefore:
+  first transport both the Suzuki term and the comparison term to the
+  antiderivative side, then show that their difference expands into finitely
+  many Volterra-undoing words, after which `PO3a-B` handles the zero-endpoint
+  remainder and the existing admission criterion takes over.
