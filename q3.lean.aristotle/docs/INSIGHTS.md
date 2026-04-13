@@ -7770,3 +7770,23 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - therefore `A3b` is no longer hidden inside prose: the only remaining burden
   for the strong physical route is the actual identification `L_a = K_a`,
   not any further algebraic expansion.
+
+## In progress (2026-04-13): the old note shows that `A3b` feeds directly into `PO3a-B`
+
+- rereading the proof of
+  `PO3a-finite antiderivative mismatch criterion` pins down the exact source of
+  the `K_j` versus `L_j` split:
+  after expanding `((I-R_a)^*K_j(I-R_a)-L_j)`, the first surviving packet is
+  exactly `K_j-L_j`;
+- after transport, this becomes the global zero-endpoint term
+  `∑ U_j^*T^*(K_j-L_j)TV_j`, while all remaining packets already carry one or
+  two endpoint projectors and therefore lie on the endpoint-word route;
+- so the strong identity `L_a = K_a` is only a bonus specialization of `A3b`;
+  the minimal honest next target is the old `PO3a-B` cancellation statement for
+  the transported zero-endpoint part;
+- concrete plan:
+  read the real defect expansion where the family `K_j,L_j` is born,
+  isolate the transported no-endpoint packet,
+  and try to match it against the already frozen bulk rewrite from
+  `po3_difference_factorization_of_q_split` and
+  `po3_delta_rewrite_of_q_split`.
