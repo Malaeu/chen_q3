@@ -226,6 +226,48 @@ theorem po3_raw_operator_split_of_entrywise_split
 
 end PO3EntrywiseRawSplit
 
+section PO3CoefficientRewrites
+
+variable {ι Δ A : Type*} [AddGroup A]
+
+/-- If both pieces of the raw Q3 coefficient formula factor only through the
+index difference, then their difference also factors through the same
+difference. This is the abstract Toeplitz-persistence shell behind the raw
+`q_{r,s}` formula. -/
+theorem po3_difference_factorization_of_q_split
+    (diff : ι → ι → Δ)
+    (arch prime q : ι → ι → A)
+    (archCoeff primeCoeff : Δ → A)
+    (harch : ∀ r s, arch r s = archCoeff (diff r s))
+    (hprime : ∀ r s, prime r s = primeCoeff (diff r s))
+    (hq : ∀ r s, q r s = arch r s - prime r s) :
+    ∃ qCoeff : Δ → A, ∀ r s, q r s = qCoeff (diff r s) := by
+  refine ⟨fun k => archCoeff k - primeCoeff k, ?_⟩
+  intro r s
+  rw [hq r s, harch r s, hprime r s]
+
+end PO3CoefficientRewrites
+
+section PO3CoefficientRewritesCommRing
+
+variable {ι A : Type*} [CommRing A]
+
+/-- Once the model coefficients are rewritten as a Toeplitz packet minus a
+Toeplitz prime packet, the raw defect rewrites as the archimedean mismatch plus
+the prime packet. This isolates the only non-Toeplitz source on the raw side of
+`PO3a-A2`. -/
+theorem po3_delta_rewrite_of_q_split
+    (w q toeplitz prime δ : ι → ι → A)
+    (κ : A)
+    (hδ : ∀ r s, δ r s = w r s - κ * q r s)
+    (hq : ∀ r s, q r s = toeplitz r s - prime r s) :
+    ∀ r s, δ r s = κ * prime r s + w r s - κ * toeplitz r s := by
+  intro r s
+  rw [hδ r s, hq r s]
+  ring
+
+end PO3CoefficientRewritesCommRing
+
 section PO3VolterraExtraction
 
 variable {A : Type*} [Ring A]

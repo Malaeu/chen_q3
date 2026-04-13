@@ -7718,3 +7718,22 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   remaining live mathematics is now completely exposed:
   there is no further shell ambiguity, only the actual coefficient-level
   classification of `δ_{r,s}(a)`.
+
+## In progress (2026-04-13): the whole `q_{r,s}` side stays Toeplitz, so raw boundary cannot come from the model side
+
+- the exact raw formula in [full/sections/main_closure.tex](/Users/emalam/Documents/GitHub/rh_lean_01_2026/full/sections/main_closure.tex)
+  is
+  `q_{r,s} = a_{r-s} - p_{r,s}`, with
+  `p_{r,s} = p(r-s)` depending only on `r-s`;
+- therefore the full model-side packet `q_{r,s}` is still Toeplitz, not just
+  its archimedean part;
+- the raw defect can therefore be rewritten as
+  `δ_{r,s}(a) = (w_{r,s}(a) - κ(a) a_{r-s}) + κ(a) p_{r,s}`;
+- this is the first honest coefficient-level compression after `A2`:
+  any future raw boundary / raw cap channel cannot be blamed on the `q`-side
+  alone; it must come from the Suzuki two-pole side, or from an explicit
+  finite truncation / cap mechanism after transport;
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now records this reduction in abstract
+  form via
+  `po3_difference_factorization_of_q_split` and
+  `po3_delta_rewrite_of_q_split`.
