@@ -7829,3 +7829,18 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 - this means the next real step is no longer to search for a global magical
   formula for the whole defect, but to compute the four concrete packets of the
   real defect and then identify the mixed packet `K`.
+
+## In progress (2026-04-14): the named packets are now linear for defects of the form `X - κY`
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now also contains the definitions
+  `po3_corner_packet`, `po3_row_trace_packet`, `po3_column_trace_packet`,
+  `po3_mixed_packet`, and the linearity theorem
+  `po3_named_packets_of_sub_smul`;
+- operationally this is the exact bridge needed for the real defect:
+  once one writes
+  `D = X - κY`, the four packets `c, α, β, K` can be computed separately on
+  the Suzuki side `X` and the filtered Q-side `Y`, and then subtracted;
+- together with `po3_raw_defect_difference_of_equal_model_packet`, this makes
+  the next concrete task completely sharp:
+  instantiate the packet calculus with `X = M^{\sigma\tau}` and
+  `Y = \widetilde q^{\sigma\tau}` on the live filtered families `(++), (+,-)`.

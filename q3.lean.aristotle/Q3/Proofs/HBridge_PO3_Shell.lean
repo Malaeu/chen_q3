@@ -637,6 +637,67 @@ theorem po3_boundary_plus_bulk_of_named_packets
 
 end PO3DoubleTelescoping
 
+section PO3NamedPacketLinearity
+
+variable {𝕜 A : Type*} [Ring 𝕜] [AddCommGroup A] [Module 𝕜 A]
+
+/-- Named `PO3a-A0` packets for a two-variable defect based at `N+1`. -/
+def po3_corner_packet (D : ℕ → ℕ → A) (N : ℕ) : A :=
+  D (N + 1) (N + 1)
+
+def po3_row_trace_packet (D : ℕ → ℕ → A) (N r : ℕ) : A :=
+  D (r + 1) (N + 1) - D r (N + 1)
+
+def po3_column_trace_packet (D : ℕ → ℕ → A) (N s : ℕ) : A :=
+  D (N + 1) (s + 1) - D (N + 1) s
+
+def po3_mixed_packet (D : ℕ → ℕ → A) (r s : ℕ) : A :=
+  D (r + 1) (s + 1) - D (r + 1) s - D r (s + 1) + D r s
+
+/-- The four named packets are linear for defects of the form `X - κ • Y`. -/
+theorem po3_named_packets_of_sub_smul
+    (X Y D : ℕ → ℕ → A) (κ : 𝕜)
+    (hD : ∀ r s, D r s = X r s - κ • Y r s) :
+    (∀ N,
+      po3_corner_packet D N
+        =
+          po3_corner_packet X N
+          - κ • po3_corner_packet Y N)
+      ∧
+    (∀ N r,
+      po3_row_trace_packet D N r
+        =
+          po3_row_trace_packet X N r
+          - κ • po3_row_trace_packet Y N r)
+      ∧
+    (∀ N s,
+      po3_column_trace_packet D N s
+        =
+          po3_column_trace_packet X N s
+          - κ • po3_column_trace_packet Y N s)
+      ∧
+    (∀ r s,
+      po3_mixed_packet D r s
+        =
+          po3_mixed_packet X r s
+          - κ • po3_mixed_packet Y r s) := by
+  constructor
+  · intro N
+    simp [po3_corner_packet, hD]
+  constructor
+  · intro N r
+    simp [po3_row_trace_packet, hD, sub_eq_add_neg, smul_add]
+    abel_nf
+  constructor
+  · intro N s
+    simp [po3_column_trace_packet, hD, sub_eq_add_neg, smul_add]
+    abel_nf
+  · intro r s
+    simp [po3_mixed_packet, hD, sub_eq_add_neg, smul_add]
+    abel_nf
+
+end PO3NamedPacketLinearity
+
 section PO3Witness
 
 variable {𝕜 V W : Type*}
