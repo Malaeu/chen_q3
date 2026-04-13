@@ -177,6 +177,46 @@ theorem not_mem_submodule_of_linearForm
   intro hvE
   exact hvφ (show φ v = 0 from hEφ hvE)
 
+/-- Abstract projector criterion: if a linear projector `Π` has range `E`, then
+membership in `E` is equivalent to being fixed by `Π`. -/
+theorem mem_submodule_iff_projector_eq_self
+    {E : Submodule 𝕜 V} {Pproj : V →ₗ[𝕜] V}
+    (hPproj_idem : Pproj.comp Pproj = Pproj) (hPproj_range : LinearMap.range Pproj = E)
+    {w : V} :
+    w ∈ E ↔ Pproj w = w := by
+  constructor
+  · intro hwE
+    rw [← hPproj_range, LinearMap.mem_range] at hwE
+    rcases hwE with ⟨u, rfl⟩
+    simpa using LinearMap.congr_fun hPproj_idem u
+  · intro hw
+    rw [← hPproj_range, LinearMap.mem_range]
+    exact ⟨w, hw⟩
+
+/-- Hence a nonzero projector residual already proves that `w` is outside the
+boundary-cap subspace. -/
+theorem not_mem_submodule_of_projector_residual_ne_zero
+    {E : Submodule 𝕜 V} {Pproj : V →ₗ[𝕜] V}
+    (hPproj_idem : Pproj.comp Pproj = Pproj) (hPproj_range : LinearMap.range Pproj = E)
+    {w : V} (hres : w - Pproj w ≠ 0) :
+    w ∉ E := by
+  intro hwE
+  have hfix : Pproj w = w :=
+    (mem_submodule_iff_projector_eq_self hPproj_idem hPproj_range).1 hwE
+  exact hres (sub_eq_zero.mpr hfix.symm)
+
+/-- Projector-witness version of the `PO3a.3` receiver: once `h` lies in the
+boundary-cap subspace `E`, a nonzero projector residual for `v` excludes
+collinearity after any injective transport. -/
+theorem not_mem_span_singleton_map_of_projector_residual_ne_zero
+    {E : Submodule 𝕜 V} {Pproj : V →ₗ[𝕜] V} {f : V →ₗ[𝕜] W}
+    (hPproj_idem : Pproj.comp Pproj = Pproj) (hPproj_range : LinearMap.range Pproj = E)
+    (hf : Function.Injective f)
+    {h v : V} (hhE : h ∈ E) (hres : v - Pproj v ≠ 0) :
+    f v ∉ 𝕜 ∙ f h := by
+  apply not_mem_span_singleton_map_of_mem_submodule_of_not_mem hf hhE
+  exact not_mem_submodule_of_projector_residual_ne_zero hPproj_idem hPproj_range hres
+
 /-- Combined witness packet: if `h` lies in the boundary-cap subspace `E`, a
 single linear functional separates `v` from `E`, and the transport is
 injective, then the transported vectors are still non-collinear. -/

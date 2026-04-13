@@ -7375,3 +7375,33 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `not_mem_span_singleton_map_of_injective`,
   `not_mem_submodule_of_linearForm`,
   `not_mem_span_singleton_map_of_linearForm_witness`.
+
+## In progress (2026-04-13): projector-residual shell landed for the `PO3a.3` Gram route
+
+- the shell file
+  `q3/Proofs/HBridge_PO3_Shell.lean`
+  now also freezes the minimal projector step behind the Gram/projector route:
+  if a linear projector `Pproj` has range `E`, then
+  `w ∈ E ↔ Pproj w = w`;
+- as a direct corollary, a nonzero residual
+  `w - Pproj w ≠ 0`
+  already proves
+  `w ∉ E`;
+  this is exactly the abstract form needed for the concrete witness
+  `f_+ = (I-\Pi_{+,\partial}) P_+ v_{a,N}`;
+- the shell then pushes this one step further:
+  if `h ∈ E`, `f` is injective, and
+  `v - Pproj v ≠ 0`,
+  then
+  `f v ∉ 𝕜 ∙ f h`;
+  in the live route this is the formal bridge from
+  `P_+ v_{a,N} ∉ E_{+,\partial}`
+  to non-collinearity after transport by `U^*`;
+- this closes the abstract part of the projector route:
+  the remaining burden is no longer to formalize projector algebra itself, but
+  to instantiate the shell with the concrete boundary-cap projector
+  `\Pi_{+,\partial}` and the concrete residual witness;
+- reusable new lemma list now available in Lean:
+  `mem_submodule_iff_projector_eq_self`,
+  `not_mem_submodule_of_projector_residual_ne_zero`,
+  `not_mem_span_singleton_map_of_projector_residual_ne_zero`.

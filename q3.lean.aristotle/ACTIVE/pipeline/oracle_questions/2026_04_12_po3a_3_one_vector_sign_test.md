@@ -88,6 +88,18 @@ P_+ v_{a,N} \notin E_{+,\partial},
   в `q3/Proofs/HBridge_PO3_Shell.lean` добавлены абстрактные леммы
   про отделение вектора от конечномерной граничной оболочки
   и про перенос неколлинеарности через инъективное линейное отображение.
+- Этот формальный пакет теперь усилен ещё на один точный шаг:
+  если проектор `Pproj` имеет образ `E`, то
+  `w ∈ E ↔ Pproj w = w`,
+  а значит ненулевой остаток
+  `w - Pproj w ≠ 0`
+  автоматически даёт
+  `w ∉ E`.
+- Следовательно для projector / Gram route больше не нужно отдельно
+  формализовать всю геометрию ортогонального дополнения:
+  достаточно подставить конкретный проектор
+  `\Pi_{+,\partial}` и проверить, что
+  `(I-\Pi_{+,\partial}) P_+ v_{a,N} \neq 0`.
 - Главный источник: `q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`.
 - Формальная оболочка по-прежнему сидит в
   `q3.lean.aristotle/q3/Proofs/HBridge_PO3_Shell.lean`.
@@ -116,6 +128,10 @@ P_+ v_{a,N} \notin E_{+,\partial},
 | `PO3a.3 finite boundary-cap spaces U sign preserving injective functional criterion` | `PO3a.3` | Проверить синергию с конечными граничными оболочками и оболочкой `U^*` | finite receiver → functional criterion | hit | вернул boundary-cap packet и подтвердил, что route остаётся внутренним |
 | `PO3a.3 U star injective sign preserving zero-mode column boundary-cap` | `PO3a.3` | Проверить, есть ли уже готовый словарь для снятия `U^*` с плюсовой стороны | operator shell → before/after `U^*` | hit | вернул late `PO3a.3` notes и `HBridge_PO3_Shell.lean` как shell consumer |
 | `PO3a.3 Gram projector boundary-cap witness` | `PO3a.3` | Поднять вычислимую форму через ортопроектор и Gram matrix | functional criterion → projector witness | internal synthesis | это уже не найденная внешняя теорема, а наш следующий theorem-packet |
+| `PO3a.3 Gram projector boundary-cap residual` | `PO3a.3` | Проверить, поднимается ли route через остаток `w-\Pi w` как самостоятельный узел | projector witness → residual criterion | strong internal hit | снова привёл к late `PO3a.3` notes и подтвердил, что нужен свой Lean-shell |
+| `PO3a.3 response vector Gram matrix zero-mode` | `PO3a.3` | Зафиксировать язык через Грам-матрицу и вектор отклика нулевого режима | boundary-cap generators → response vector | hit | вернул ту же ветку и не открыл новый внешний маршрут |
+| `PO3a.3 orthogonal residual annihilator boundary-cap` | `PO3a.3` | Проверить переход от остатка ортопроекции к зануляющему функционалу | residual witness → annihilator witness | hit | подтвердил, что это внутренний переход в той же ветке |
+| `PO3a.3 pseudoinverse Gram projector zero-mode witness` | `PO3a.3` | Проверить, нужна ли внешняя теорема под псевдообратную или достаточно стандартной линейной алгебры | Gram projector → Moore-Penrose shell | weak external / strong internal | внешнего shortcut нет; правильный шаг — минимальный shell в Lean |
 
 ## Пустые / шумовые слова
 
@@ -133,6 +149,8 @@ P_+ v_{a,N} \notin E_{+,\partial},
 - `annihilator functional + zero-mode column`
 - `Gram projector + boundary-cap witness`
 - `orthogonal residual + zero-mode column`
+- `projector residual + boundary-cap`
+- `zero-mode response vector + Gram matrix`
 
 ## Переход в INSIGHTS
 
@@ -148,6 +166,11 @@ P_+ v_{a,N} \notin E_{+,\partial},
   искать надо не произвольный `\Lambda_+`, а сначала raw generators,
   потом `\Pi_{+,\partial}`, и уже затем witness
   `f_+ = (I-\Pi_{+,\partial}) P_+ v_{a,N}`.
+- Новая формальная фиксация на 2026-04-13:
+  в Lean уже заморожен минимальный переход
+  `v - Pproj v ≠ 0 ⇒ v ∉ E`,
+  поэтому следующий живой шаг здесь уже не про абстрактный проектор,
+  а про конкретный остаток для `\Pi_{+,\partial}`.
 
 ## Следующий адресный шаг
 
@@ -157,6 +180,9 @@ P_+ v_{a,N} \notin E_{+,\partial},
 - Ещё лучше: если удаётся вычислить `\Pi_{+,\partial}` и показать
   `f_+ \neq 0`, то этот functional идёт автоматически как
   `\Lambda_+(x)=\langle x, f_+ \rangle`.
+- Формально следующий подшаг для `PO3a.3` теперь можно писать жёстко:
+  подставить конкретный `\Pi_{+,\partial}` в уже готовую лемму
+  `not_mem_submodule_of_projector_residual_ne_zero`.
 - Если для `\Lambda_+` не хватает явной формы оболочки, откатиться на
   `PO3a.2`, но только для извлечения `E_{+,\partial}`, а не для переоткрытия
   всей граничной поправки.
