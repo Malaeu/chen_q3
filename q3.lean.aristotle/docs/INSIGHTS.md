@@ -7545,3 +7545,27 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`;
   the only output is the old non-blocking linter warning about an unused
   section variable in the earlier surjective functional lemma.
+
+## In progress (2026-04-13): `PO3a.4` now has a practical finite-dimensional outer criterion
+
+- the new practical criterion is now frozen conceptually:
+  once the real outer layer `U,V` is extracted, we do not need global control
+  of those operators;
+  it is enough to control their restrictions to the finite endpoint spaces on
+  which the `2×2` receiver actually lives;
+- the exact algebra behind this is now explicit in
+  `Q3/Proofs/HBridge_PO3_Shell.lean`:
+  injective transport preserves and reflects collinearity of vectors, and
+  surjective pullback preserves and reflects collinearity of linear functionals;
+- operationally this turns the live `PO3a.4` check into a finite-dimensional
+  one:
+  once endpoint spaces `F_+` and `F_-` are chosen, it is enough to show that
+  the induced outer maps are invertible there;
+- this is why the triangular / unitriangular scenario is the right practical
+  target:
+  on a chosen endpoint basis, triangular matrices with nonzero diagonal are
+  automatically invertible, so the outer layer becomes harmless without any
+  new global analysis;
+- the matrix-level determinant criterion itself is not yet formalized in Lean;
+  the shell now freezes the exact algebraic interface that such a finite-basis
+  computation would feed into.

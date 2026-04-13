@@ -203,6 +203,29 @@ theorem not_mem_span_singleton_map_of_injective
   intro hfv
   exact hv (mem_span_singleton_of_mem_span_singleton_map hf hfv)
 
+/-- Injective transport preserves and reflects collinearity with a fixed vector. -/
+theorem mem_span_singleton_map_iff_of_injective
+    {f : V →ₗ[𝕜] W} (hf : Function.Injective f) {h v : V} :
+    f v ∈ 𝕜 ∙ f h ↔ v ∈ 𝕜 ∙ h := by
+  constructor
+  · exact mem_span_singleton_of_mem_span_singleton_map hf
+  · intro hv
+    rcases Submodule.mem_span_singleton.mp hv with ⟨a, ha⟩
+    refine Submodule.mem_span_singleton.mpr ?_
+    refine ⟨a, ?_⟩
+    calc
+      a • f h = f (a • h) := by simp
+      _ = f v := by simp [ha]
+
+/-- Hence non-collinearity is also reflected exactly by an injective transport. -/
+theorem not_mem_span_singleton_map_iff_of_injective
+    {f : V →ₗ[𝕜] W} (hf : Function.Injective f) {h v : V} :
+    f v ∉ 𝕜 ∙ f h ↔ v ∉ 𝕜 ∙ h := by
+  constructor
+  · intro hfv hv
+    exact hfv ((mem_span_singleton_map_iff_of_injective hf).2 hv)
+  · exact not_mem_span_singleton_map_of_injective hf
+
 /-- Dually, dependence of linear functionals also descends through a surjective
 pullback. This is the minus-side outer-factor bridge behind `PO3a.4`. -/
 theorem mem_span_singleton_of_comp_mem_span_singleton_of_surjective
@@ -235,6 +258,41 @@ theorem not_mem_span_singleton_comp_of_surjective
     φ.comp g ∉ 𝕜 ∙ (ψ.comp g) := by
   intro hcomp
   exact hφ (mem_span_singleton_of_comp_mem_span_singleton_of_surjective hg hcomp)
+
+/-- Surjective pullback preserves and reflects collinearity of linear
+functionals. -/
+theorem mem_span_singleton_comp_iff_of_surjective
+    {V₁ V₂ : Type*}
+    [Field 𝕜]
+    [AddCommGroup V₁] [Module 𝕜 V₁]
+    [AddCommGroup V₂] [Module 𝕜 V₂]
+    {g : V₁ →ₗ[𝕜] V₂} (hg : Function.Surjective g)
+    {φ ψ : V₂ →ₗ[𝕜] 𝕜} :
+    φ.comp g ∈ 𝕜 ∙ (ψ.comp g) ↔ φ ∈ 𝕜 ∙ ψ := by
+  constructor
+  · exact mem_span_singleton_of_comp_mem_span_singleton_of_surjective hg
+  · intro hφ
+    rcases Submodule.mem_span_singleton.mp hφ with ⟨a, ha⟩
+    refine Submodule.mem_span_singleton.mpr ?_
+    refine ⟨a, ?_⟩
+    ext x
+    have hx := LinearMap.congr_fun ha (g x)
+    simpa using hx
+
+/-- Hence non-collinearity of functionals is also reflected exactly by a
+surjective pullback. -/
+theorem not_mem_span_singleton_comp_iff_of_surjective
+    {V₁ V₂ : Type*}
+    [Field 𝕜]
+    [AddCommGroup V₁] [Module 𝕜 V₁]
+    [AddCommGroup V₂] [Module 𝕜 V₂]
+    {g : V₁ →ₗ[𝕜] V₂} (hg : Function.Surjective g)
+    {φ ψ : V₂ →ₗ[𝕜] 𝕜} :
+    φ.comp g ∉ 𝕜 ∙ (ψ.comp g) ↔ φ ∉ 𝕜 ∙ ψ := by
+  constructor
+  · intro hcomp hφ
+    exact hcomp ((mem_span_singleton_comp_iff_of_surjective hg).2 hφ)
+  · exact not_mem_span_singleton_comp_of_surjective hg
 
 /-- Practical `PO3a.3` receiver: once `h` lives inside the finite boundary-cap
 space `E` but `v` does not, any injective transport keeps them non-collinear. -/
