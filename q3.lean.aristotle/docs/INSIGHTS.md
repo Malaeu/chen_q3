@@ -7669,3 +7669,21 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`;
   the only remaining output is still the old non-blocking section-variable
   warning in the earlier surjective-functional lemma.
+
+## In progress (2026-04-13): Lean shell now also freezes the raw-split transport step
+
+- the early note language
+  `raw defect = bulk + boundary + cap`, followed by “pull that split through
+  `Δ_N`”, is now formalized directly in
+  `Q3/Proofs/HBridge_PO3_Shell.lean`;
+- the new shell lemmas are
+  `po3_filtered_split_of_raw_split` and
+  `po3_filtered_named_split_of_raw_split`;
+- this closes another gap in the route:
+  the current shell no longer starts only from the transported Volterra side,
+  but already records the earlier algebraic bridge from a raw split to the
+  filtered split;
+- combined with the new `A0` and `A1` lemmas, the remaining live work is now
+  very narrow:
+  identify the actual raw channels of the real coefficient defect
+  `δ_{r,s}(a)`, then identify the mixed interior bulk packet after transport.

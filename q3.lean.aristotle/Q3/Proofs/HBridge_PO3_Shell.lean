@@ -169,6 +169,44 @@ theorem po3_boundary_zero_of_antiderivative_transport_and_matrix_receiver
 
 end PO3AntiderivativeTransport
 
+section PO3RawSplitTransport
+
+variable {A B : Type*} [AddGroup A] [AddGroup B]
+
+/-- Early raw-defect bridge: if the raw defect already splits into bulk,
+boundary, and cap channels, then any additive filtered pullback preserves that
+split. This is the exact shell behind “first split the raw defect, then pull it
+through `Δ_N`”. -/
+theorem po3_filtered_split_of_raw_split
+    (Φ : A →+ B)
+    (R_raw R_bulk R_boundary R_cap : A) :
+    R_raw = R_bulk + R_boundary + R_cap
+      →
+      Φ R_raw = Φ R_bulk + Φ R_boundary + Φ R_cap := by
+  intro hsplit
+  rw [hsplit, map_add, map_add]
+
+/-- Packaged version of the same bridge with named filtered bulk/boundary/cap
+channels. -/
+theorem po3_filtered_named_split_of_raw_split
+    (Φ : A →+ B)
+    (R_raw R_bulk R_boundary R_cap : A)
+    (D_filtered D_bulk D_boundary D_cap : B)
+    (hsplit : R_raw = R_bulk + R_boundary + R_cap)
+    (htransport : D_filtered = Φ R_raw)
+    (hbulk : D_bulk = Φ R_bulk)
+    (hboundary : D_boundary = Φ R_boundary)
+    (hcap : D_cap = Φ R_cap) :
+    D_filtered = D_bulk + D_boundary + D_cap := by
+  calc
+    D_filtered = Φ R_raw := htransport
+    _ = Φ R_bulk + Φ R_boundary + Φ R_cap :=
+      po3_filtered_split_of_raw_split Φ R_raw R_bulk R_boundary R_cap hsplit
+    _ = D_bulk + D_boundary + D_cap := by
+      rw [← hbulk, ← hboundary, ← hcap]
+
+end PO3RawSplitTransport
+
 section PO3VolterraExtraction
 
 variable {A : Type*} [Ring A]
