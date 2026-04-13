@@ -291,7 +291,6 @@ section PO3FiniteAntiderivativeMismatch
 open Finset
 open scoped BigOperators
 
-variable {ι A : Type*} [DecidableEq ι] [Ring A]
 variable {ι A : Type*} [Ring A]
 
 /-- One summand of the finite antiderivative mismatch criterion: after
@@ -336,6 +335,42 @@ theorem po3_finite_antiderivative_mismatch_of_zero_endpoint_cancellation
           + Finset.sum s (fun i => two i) := by
           rw [hzero]
           abel_nf
+
+/-- Finite-sum physical specialization of the mismatch shell: when the middle
+kernel already equals the model kernel, the zero-endpoint packet vanishes
+termwise and only endpoint words remain. This is the exact finite version of
+the old one-kernel physical Volterra reduction. -/
+theorem po3_finite_antiderivative_physical_specialization
+    (s : Finset ι)
+    (L K R_left R_right N : ι → A) :
+    Finset.sum s (fun i => L i * (((1 - R_left i) * K i * (1 - R_right i)) - K i) * N i)
+      =
+        -(Finset.sum s (fun i => L i * R_left i * K i * N i))
+        - (Finset.sum s (fun i => L i * K i * R_right i * N i))
+        + Finset.sum s (fun i => L i * R_left i * K i * R_right i * N i) := by
+  apply po3_finite_antiderivative_mismatch_of_zero_endpoint_cancellation
+    (s := s)
+    (H := fun i => L i * (((1 - R_left i) * K i * (1 - R_right i)) - K i) * N i)
+    (zero := fun _ => 0)
+    (left := fun i => L i * R_left i * K i * N i)
+    (right := fun i => L i * K i * R_right i * N i)
+    (two := fun i => L i * R_left i * K i * R_right i * N i)
+  · intro i
+    calc
+      L i * (((1 - R_left i) * K i * (1 - R_right i)) - K i) * N i
+          = -(L i * R_left i * K i * N i)
+              - (L i * K i * R_right i * N i)
+              + L i * R_left i * K i * R_right i * N i := by
+                simpa using
+                  (po3_two_endpoint_expansion
+                    (L := L i) (K := K i) (R_left := R_left i)
+                    (R_right := R_right i) (N := N i))
+      _ = 0
+            - (L i * R_left i * K i * N i)
+            - (L i * K i * R_right i * N i)
+            + L i * R_left i * K i * R_right i * N i := by
+              abel_nf
+  · simp
 
 end PO3FiniteAntiderivativeMismatch
 

@@ -7758,3 +7758,15 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   this layer:
   `po3_two_endpoint_mismatch_expansion` and
   `po3_finite_antiderivative_mismatch_of_zero_endpoint_cancellation`.
+
+## In progress (2026-04-13): `A3b` is now isolated as a formal physical specialization
+
+- the shell file now also contains the finite-sum corollary
+  `po3_finite_antiderivative_physical_specialization`;
+- this packages the exact statement we need for the strong one-kernel route:
+  if the middle packet really matches the model packet termwise
+  (`L_a = K_a` in the target specialization), then the whole finite mismatch
+  sum collapses immediately to endpoint words;
+- therefore `A3b` is no longer hidden inside prose: the only remaining burden
+  for the strong physical route is the actual identification `L_a = K_a`,
+  not any further algebraic expansion.
