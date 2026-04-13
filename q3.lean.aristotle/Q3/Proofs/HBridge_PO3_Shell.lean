@@ -123,6 +123,50 @@ theorem po3_cap_only_of_po2_and_weaker_bridge
 
 end PO3WeakerBridge
 
+section PO3AntiderivativeTransport
+
+variable {A : Type*} [AddGroup A]
+
+/-- `PO3a-A` shell: once the genuine boundary packet is transported to the
+Volterra-antiderivative side and expanded into a zero-endpoint part plus an
+endpoint-word part, the active weaker bridge reduces immediately to the
+endpoint packet. -/
+theorem po3_endpoint_packet_of_antiderivative_transport
+    (D_partial_pm antiderivative_packet zero_endpoint_packet endpoint_word_packet : A)
+    (htransport : D_partial_pm = antiderivative_packet)
+    (hexpand : antiderivative_packet = zero_endpoint_packet + endpoint_word_packet)
+    (hzero : zero_endpoint_packet = 0) :
+    D_partial_pm = endpoint_word_packet := by
+  calc
+    D_partial_pm = antiderivative_packet := htransport
+    _ = zero_endpoint_packet + endpoint_word_packet := hexpand
+    _ = 0 + endpoint_word_packet := by simp [hzero]
+    _ = endpoint_word_packet := zero_add _
+
+/-- Combined `PO3a-A -> PO3a-B -> finite receiver` shell: once the
+antiderivative transport packet collapses to the endpoint-word packet, the
+already frozen finite receiver kills the cross-sign boundary channel. -/
+theorem po3_boundary_zero_of_antiderivative_transport_and_matrix_receiver
+    (D_partial_pm antiderivative_packet zero_endpoint_packet endpoint_word_packet
+      receiver A_mat B_mat M_mat : A)
+    (htransport : D_partial_pm = antiderivative_packet)
+    (hexpand : antiderivative_packet = zero_endpoint_packet + endpoint_word_packet)
+    (hzero : zero_endpoint_packet = 0)
+    (hreceiver : endpoint_word_packet = receiver)
+    (hmatrix : receiver = A_mat + B_mat + M_mat)
+    (hcancel : A_mat + B_mat + M_mat = 0) :
+    D_partial_pm = 0 := by
+  calc
+    D_partial_pm = endpoint_word_packet := by
+      exact po3_endpoint_packet_of_antiderivative_transport
+        D_partial_pm antiderivative_packet zero_endpoint_packet endpoint_word_packet
+        htransport hexpand hzero
+    _ = receiver := hreceiver
+    _ = A_mat + B_mat + M_mat := hmatrix
+    _ = 0 := hcancel
+
+end PO3AntiderivativeTransport
+
 section PO3Witness
 
 variable {𝕜 V W : Type*}

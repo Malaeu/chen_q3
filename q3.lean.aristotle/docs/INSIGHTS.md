@@ -7528,3 +7528,20 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   antiderivative side, then show that their difference expands into finitely
   many Volterra-undoing words, after which `PO3a-B` handles the zero-endpoint
   remainder and the existing admission criterion takes over.
+
+## In progress (2026-04-13): Lean shell now covers the `PO3a-A` handoff
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the exact abstract handoff
+  for the new upstream picture:
+  after transporting the genuine boundary packet to the antiderivative side,
+  one expands it into a zero-endpoint packet plus an endpoint-word packet, and
+  the existing weaker bridge then takes over automatically;
+- the new shell lemmas are
+  `po3_endpoint_packet_of_antiderivative_transport` and
+  `po3_boundary_zero_of_antiderivative_transport_and_matrix_receiver`;
+- this does not solve the analytic content of `PO3a-A`, but it freezes the
+  exact formal interface that the real derivation now has to hit;
+- compilation check passes:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`;
+  the only output is the old non-blocking linter warning about an unused
+  section variable in the earlier surjective functional lemma.
