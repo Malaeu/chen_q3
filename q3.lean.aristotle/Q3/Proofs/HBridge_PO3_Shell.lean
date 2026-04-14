@@ -1372,6 +1372,91 @@ theorem po3_mixed_packet_of_raw_q_difference_formula_pm
       (q := q) (a := a) (p := p) hq)
     (r := r) (s := s)
 
+/-- Raw Section 8 split written in manuscript form: if both pieces depend only
+on the difference and `q = arch - prime`, then `q` itself has the one-variable
+difference formula. -/
+theorem po3_raw_q_difference_formula_of_split
+    (arch prime q : ℤ → ℤ → A) (a p : ℤ → A)
+    (harch : ∀ r s, arch r s = a (r - s))
+    (hprime : ∀ r s, prime r s = p (r - s))
+    (hq : ∀ r s, q r s = arch r s - prime r s) :
+    ∀ r s, q r s = a (r - s) - p (r - s) := by
+  intro r s
+  rw [hq r s, harch r s, hprime r s]
+
+/-- Filtered `(++ )` consequence of the manuscript raw split
+`q = arch - prime`, once both pieces factor through `r-s`. -/
+theorem po3_four_term_stencil_of_raw_q_split_formula_pp
+    (arch prime q : ℤ → ℤ → A) (a p : ℤ → A)
+    (harch : ∀ r s, arch r s = a (r - s))
+    (hprime : ∀ r s, prime r s = p (r - s))
+    (hq : ∀ r s, q r s = arch r s - prime r s) :
+    po3_four_term_stencil (fun m n => q (m : ℤ) (n : ℤ))
+      =
+        po3_difference_kernel
+          (fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k) := by
+  exact po3_four_term_stencil_of_raw_q_difference_formula_pp
+    (q := q) (a := a) (p := p)
+    (hq := po3_raw_q_difference_formula_of_split
+      (arch := arch) (prime := prime) (q := q) (a := a) (p := p) harch hprime hq)
+
+/-- Filtered `(+,-)` consequence of the manuscript raw split
+`q = arch - prime`, once both pieces factor through `r-s`. -/
+theorem po3_four_term_stencil_of_raw_q_split_formula_pm
+    (arch prime q : ℤ → ℤ → A) (a p : ℤ → A)
+    (harch : ∀ r s, arch r s = a (r - s))
+    (hprime : ∀ r s, prime r s = p (r - s))
+    (hq : ∀ r s, q r s = arch r s - prime r s) :
+    po3_four_term_stencil (fun m n => q (m : ℤ) (-(n : ℤ)))
+      =
+        po3_sum_kernel
+          (fun t =>
+            po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+              - po3_filtered_sum_profile (po3_nat_profile_of_int p) t) := by
+  exact po3_four_term_stencil_of_raw_q_difference_formula_pm
+    (q := q) (a := a) (p := p)
+    (hq := po3_raw_q_difference_formula_of_split
+      (arch := arch) (prime := prime) (q := q) (a := a) (p := p) harch hprime hq)
+
+/-- Filtered mixed packet of the raw `(++ )` family obtained from the split
+`q = arch - prime`. -/
+theorem po3_mixed_packet_of_raw_q_split_formula_pp
+    (arch prime q : ℤ → ℤ → A) (a p : ℤ → A)
+    (harch : ∀ r s, arch r s = a (r - s))
+    (hprime : ∀ r s, prime r s = p (r - s))
+    (hq : ∀ r s, q r s = arch r s - prime r s)
+    (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (fun m n => q (m : ℤ) (n : ℤ))) r s
+      =
+        po3_centered_second_difference
+          (fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k)
+          ((r : ℤ) - (s : ℤ)) := by
+  exact po3_mixed_packet_of_raw_q_difference_formula_pp
+    (q := q) (a := a) (p := p)
+    (hq := po3_raw_q_difference_formula_of_split
+      (arch := arch) (prime := prime) (q := q) (a := a) (p := p) harch hprime hq)
+    (r := r) (s := s)
+
+/-- Filtered mixed packet of the raw `(+,-)` family obtained from the split
+`q = arch - prime`. -/
+theorem po3_mixed_packet_of_raw_q_split_formula_pm
+    (arch prime q : ℤ → ℤ → A) (a p : ℤ → A)
+    (harch : ∀ r s, arch r s = a (r - s))
+    (hprime : ∀ r s, prime r s = p (r - s))
+    (hq : ∀ r s, q r s = arch r s - prime r s)
+    (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (fun m n => q (m : ℤ) (-(n : ℤ)))) r s
+      =
+        po3_forward_second_difference
+          (fun t =>
+            po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+              - po3_filtered_sum_profile (po3_nat_profile_of_int p) t) (r + s) := by
+  exact po3_mixed_packet_of_raw_q_difference_formula_pm
+    (q := q) (a := a) (p := p)
+    (hq := po3_raw_q_difference_formula_of_split
+      (arch := arch) (prime := prime) (q := q) (a := a) (p := p) harch hprime hq)
+    (r := r) (s := s)
+
 end PO3OneDimensionalProfiles
 
 section PO3Witness

@@ -8005,3 +8005,18 @@ Update:
 - this removes the last auxiliary wrapper from the user-facing bridge: the next
   formal step can quote the Section~8 raw formula almost verbatim and land
   immediately in the filtered `(++), (+,-)` packets.
+
+Update:
+
+- the bridge is now split-friendly as well: there is a direct shell from
+  separate archimedean and prime packets to the filtered `Q`-side families;
+- the entry lemma is `po3_raw_q_difference_formula_of_split`, taking hypotheses
+  `arch(r,s)=a(r-s)`, `prime(r,s)=p(r-s)`, and `q=arch-prime`;
+- the resulting filtered consequences are
+  `po3_four_term_stencil_of_raw_q_split_formula_pp`,
+  `po3_four_term_stencil_of_raw_q_split_formula_pm`,
+  `po3_mixed_packet_of_raw_q_split_formula_pp`,
+  `po3_mixed_packet_of_raw_q_split_formula_pm`;
+- this is the right interface for the manuscript proof: the Section~8 raw entry
+  proof can now be integrated piecewise, and once the two one-variable profile
+  facts are supplied, the filtered `(++), (+,-)` packets follow immediately.
