@@ -1296,6 +1296,82 @@ theorem po3_mixed_packet_of_raw_q_pm_formula
         - po3_filtered_sum_profile (po3_nat_profile_of_int p) t)
     (r := r) (s := s)
 
+/-- Manuscript-entry rewrite: a raw formula of the form
+`q_{rs}=a(r-s)-p(r-s)` is exactly the signed difference kernel shell used by
+the Q-side bridge. -/
+theorem po3_raw_q_difference_formula_as_signed_difference_kernel
+    (q : ℤ → ℤ → A) (a p : ℤ → A)
+    (hq : ∀ r s, q r s = a (r - s) - p (r - s)) :
+    ∀ r s, q r s = po3_signed_difference_kernel (fun k => a k - p k) r s := by
+  intro r s
+  rw [hq r s]
+  simp [po3_signed_difference_kernel]
+
+/-- Direct manuscript-facing filtered `(++ )` shell from
+`q_{rs}=a(r-s)-p(r-s)`. -/
+theorem po3_four_term_stencil_of_raw_q_difference_formula_pp
+    (q : ℤ → ℤ → A) (a p : ℤ → A)
+    (hq : ∀ r s, q r s = a (r - s) - p (r - s)) :
+    po3_four_term_stencil (fun m n => q (m : ℤ) (n : ℤ))
+      =
+        po3_difference_kernel
+          (fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k) := by
+  exact po3_four_term_stencil_of_raw_q_pp_formula
+    (q := q) (a := a) (p := p)
+    (hq := po3_raw_q_difference_formula_as_signed_difference_kernel
+      (q := q) (a := a) (p := p) hq)
+
+/-- Direct manuscript-facing filtered `(+,-)` shell from
+`q_{rs}=a(r-s)-p(r-s)`. -/
+theorem po3_four_term_stencil_of_raw_q_difference_formula_pm
+    (q : ℤ → ℤ → A) (a p : ℤ → A)
+    (hq : ∀ r s, q r s = a (r - s) - p (r - s)) :
+    po3_four_term_stencil (fun m n => q (m : ℤ) (-(n : ℤ)))
+      =
+        po3_sum_kernel
+          (fun t =>
+            po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+              - po3_filtered_sum_profile (po3_nat_profile_of_int p) t) := by
+  exact po3_four_term_stencil_of_raw_q_pm_formula
+    (q := q) (a := a) (p := p)
+    (hq := po3_raw_q_difference_formula_as_signed_difference_kernel
+      (q := q) (a := a) (p := p) hq)
+
+/-- Direct manuscript-facing filtered mixed packet for the `(++ )` family from
+`q_{rs}=a(r-s)-p(r-s)`. -/
+theorem po3_mixed_packet_of_raw_q_difference_formula_pp
+    (q : ℤ → ℤ → A) (a p : ℤ → A)
+    (hq : ∀ r s, q r s = a (r - s) - p (r - s))
+    (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (fun m n => q (m : ℤ) (n : ℤ))) r s
+      =
+        po3_centered_second_difference
+          (fun k => po3_filtered_difference_profile a k - po3_filtered_difference_profile p k)
+          ((r : ℤ) - (s : ℤ)) := by
+  exact po3_mixed_packet_of_raw_q_pp_formula
+    (q := q) (a := a) (p := p)
+    (hq := po3_raw_q_difference_formula_as_signed_difference_kernel
+      (q := q) (a := a) (p := p) hq)
+    (r := r) (s := s)
+
+/-- Direct manuscript-facing filtered mixed packet for the `(+,-)` family from
+`q_{rs}=a(r-s)-p(r-s)`. -/
+theorem po3_mixed_packet_of_raw_q_difference_formula_pm
+    (q : ℤ → ℤ → A) (a p : ℤ → A)
+    (hq : ∀ r s, q r s = a (r - s) - p (r - s))
+    (r s : ℕ) :
+    po3_mixed_packet (po3_four_term_stencil (fun m n => q (m : ℤ) (-(n : ℤ)))) r s
+      =
+        po3_forward_second_difference
+          (fun t =>
+            po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+              - po3_filtered_sum_profile (po3_nat_profile_of_int p) t) (r + s) := by
+  exact po3_mixed_packet_of_raw_q_pm_formula
+    (q := q) (a := a) (p := p)
+    (hq := po3_raw_q_difference_formula_as_signed_difference_kernel
+      (q := q) (a := a) (p := p) hq)
+    (r := r) (s := s)
+
 end PO3OneDimensionalProfiles
 
 section PO3Witness

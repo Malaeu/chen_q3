@@ -7990,3 +7990,18 @@ Update:
   instantiate the actual raw Section~8 profiles `a` and `p`, then the filtered
   mixed packets come for free from the shell rather than from fresh two-variable
   algebra.
+
+Update:
+
+- the shell has now been tightened one step further to the literal manuscript
+  notation `q_{rs}=a(r-s)-p(r-s)`;
+- the entry lemma is
+  `po3_raw_q_difference_formula_as_signed_difference_kernel`, and the direct
+  manuscript-facing consequences are
+  `po3_four_term_stencil_of_raw_q_difference_formula_pp`,
+  `po3_four_term_stencil_of_raw_q_difference_formula_pm`,
+  `po3_mixed_packet_of_raw_q_difference_formula_pp`,
+  `po3_mixed_packet_of_raw_q_difference_formula_pm`;
+- this removes the last auxiliary wrapper from the user-facing bridge: the next
+  formal step can quote the Section~8 raw formula almost verbatim and land
+  immediately in the filtered `(++), (+,-)` packets.
