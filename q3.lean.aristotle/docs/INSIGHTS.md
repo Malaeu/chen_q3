@@ -8047,3 +8047,15 @@ Update:
   than only abstract packets, and it means the next step is no longer to invent
   Section 8 notation, but to compare these concrete filtered profiles against
   the Suzuki-side filtered packets.
+
+Update:
+
+- the concrete filtered Section 8 profiles are now named as well:
+  `po3_section8_filtered_pp_profile` and
+  `po3_section8_filtered_pm_profile`;
+- the concrete filtered block/mixed-packet lemmas were rewritten to use these
+  names, so the next Suzuki comparison no longer has to carry long composite
+  expressions on the right-hand side;
+- this makes the next live step very clean: define the Suzuki filtered profile
+  candidates in matching one-variable notation and compare them directly against
+  `po3_section8_filtered_pp_profile` and `po3_section8_filtered_pm_profile`.

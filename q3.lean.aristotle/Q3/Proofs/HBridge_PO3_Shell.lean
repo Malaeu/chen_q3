@@ -1495,6 +1495,18 @@ profile `a_k - p_k`. -/
 noncomputable def po3_section8_raw_kernel (B t : ℝ) : ℤ → ℤ → ℂ :=
   po3_signed_difference_kernel (po3_section8_raw_profile B t)
 
+/-- Filtered one-variable profile for the concrete `(++ )` Section 8 block. -/
+noncomputable def po3_section8_filtered_pp_profile (B t : ℝ) : ℤ → ℂ :=
+  fun k =>
+    po3_filtered_difference_profile (po3_section8_arch_profile B t) k
+      - po3_filtered_difference_profile (po3_section8_prime_profile B t) k
+
+/-- Filtered one-variable profile for the concrete `(+,-)` Section 8 block. -/
+noncomputable def po3_section8_filtered_pm_profile (B t : ℝ) : ℕ → ℂ :=
+  fun u =>
+    po3_filtered_sum_profile (po3_nat_profile_of_int (po3_section8_arch_profile B t)) u
+      - po3_filtered_sum_profile (po3_nat_profile_of_int (po3_section8_prime_profile B t)) u
+
 /-- Pointwise raw split `q = arch - prime` for the manuscript Section 8
 profiles. -/
 theorem po3_section8_raw_kernel_split
@@ -1522,10 +1534,7 @@ theorem po3_four_term_stencil_of_section8_raw_kernel_pp
     (B t : ℝ) :
     po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (n : ℤ))
       =
-        po3_difference_kernel
-          (fun k =>
-            po3_filtered_difference_profile (po3_section8_arch_profile B t) k
-              - po3_filtered_difference_profile (po3_section8_prime_profile B t) k) := by
+        po3_difference_kernel (po3_section8_filtered_pp_profile B t) := by
   exact po3_four_term_stencil_of_raw_q_difference_formula_pp
     (q := po3_section8_raw_kernel B t)
     (a := po3_section8_arch_profile B t)
@@ -1537,10 +1546,7 @@ theorem po3_four_term_stencil_of_section8_raw_kernel_pm
     (B t : ℝ) :
     po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (-(n : ℤ)))
       =
-        po3_sum_kernel
-          (fun u =>
-            po3_filtered_sum_profile (po3_nat_profile_of_int (po3_section8_arch_profile B t)) u
-              - po3_filtered_sum_profile (po3_nat_profile_of_int (po3_section8_prime_profile B t)) u) := by
+        po3_sum_kernel (po3_section8_filtered_pm_profile B t) := by
   exact po3_four_term_stencil_of_raw_q_difference_formula_pm
     (q := po3_section8_raw_kernel B t)
     (a := po3_section8_arch_profile B t)
@@ -1553,10 +1559,7 @@ theorem po3_mixed_packet_of_section8_raw_kernel_pp
     po3_mixed_packet
         (po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (n : ℤ))) r s
       =
-        po3_centered_second_difference
-          (fun k =>
-            po3_filtered_difference_profile (po3_section8_arch_profile B t) k
-              - po3_filtered_difference_profile (po3_section8_prime_profile B t) k)
+        po3_centered_second_difference (po3_section8_filtered_pp_profile B t)
           ((r : ℤ) - (s : ℤ)) := by
   exact po3_mixed_packet_of_raw_q_difference_formula_pp
     (q := po3_section8_raw_kernel B t)
@@ -1571,10 +1574,7 @@ theorem po3_mixed_packet_of_section8_raw_kernel_pm
     po3_mixed_packet
         (po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (-(n : ℤ)))) r s
       =
-        po3_forward_second_difference
-          (fun u =>
-            po3_filtered_sum_profile (po3_nat_profile_of_int (po3_section8_arch_profile B t)) u
-              - po3_filtered_sum_profile (po3_nat_profile_of_int (po3_section8_prime_profile B t)) u)
+        po3_forward_second_difference (po3_section8_filtered_pm_profile B t)
           (r + s) := by
   exact po3_mixed_packet_of_raw_q_difference_formula_pm
     (q := po3_section8_raw_kernel B t)
