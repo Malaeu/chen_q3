@@ -8020,3 +8020,30 @@ Update:
 - this is the right interface for the manuscript proof: the Section~8 raw entry
   proof can now be integrated piecewise, and once the two one-variable profile
   facts are supplied, the filtered `(++), (+,-)` packets follow immediately.
+
+## In progress (2026-04-15): the shell now contains real manuscript-level Section 8 profiles
+
+- `HBridge_PO3_Shell.lean` now imports `Q3.Basic.Defs` and defines the actual
+  manuscript-facing Section 8 objects:
+  `po3_section8_phase`,
+  `po3_section8_arch_profile`,
+  `po3_section8_prime_profile`,
+  `po3_section8_raw_profile`,
+  together with the associated kernels
+  `po3_section8_arch_kernel`,
+  `po3_section8_prime_kernel`,
+  `po3_section8_raw_kernel`;
+- the raw identity
+  `po3_section8_raw_kernel_difference_formula`
+  now says directly that the raw Section 8 kernel has the form
+  `q_{rs}=a_{r-s}-p_{r-s}` for these concrete profiles;
+- from this, Lean now derives the filtered `(++), (+,-)` blocks and mixed
+  packets via
+  `po3_four_term_stencil_of_section8_raw_kernel_pp`,
+  `po3_four_term_stencil_of_section8_raw_kernel_pm`,
+  `po3_mixed_packet_of_section8_raw_kernel_pp`,
+  `po3_mixed_packet_of_section8_raw_kernel_pm`;
+- this is the first point where the shell touches actual Q3 definitions rather
+  than only abstract packets, and it means the next step is no longer to invent
+  Section 8 notation, but to compare these concrete filtered profiles against
+  the Suzuki-side filtered packets.

@@ -2,6 +2,7 @@ import Mathlib.Algebra.Star.Basic
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.LinearAlgebra.Span.Basic
 import Mathlib.Tactic
+import Q3.Basic.Defs
 
 /-!
 # H-bridge PO3 shell
@@ -1458,6 +1459,131 @@ theorem po3_mixed_packet_of_raw_q_split_formula_pm
     (r := r) (s := s)
 
 end PO3OneDimensionalProfiles
+
+section PO3Section8Profiles
+
+open MeasureTheory
+
+/-- Common Fourier phase used in the raw Section 8 coefficient formulas. -/
+noncomputable def po3_section8_phase (k : ℤ) (ξ : ℝ) : ℂ :=
+  Complex.exp (-2 * Real.pi * Complex.I * (k : ℂ) * (ξ : ℂ))
+
+/-- The one-variable archimedean profile from the raw Section 8 formula. -/
+noncomputable def po3_section8_arch_profile (B t : ℝ) (k : ℤ) : ℂ :=
+  ∫ ξ, (((Q3.a_star ξ) * Q3.fejer_heat_window B t ξ : ℝ) : ℂ) * po3_section8_phase k ξ
+
+/-- The one-variable prime profile from the raw Section 8 formula. -/
+noncomputable def po3_section8_prime_profile (B t : ℝ) (k : ℤ) : ℂ :=
+  ∑' n : ℕ,
+    (((Q3.w_Q n * Q3.fejer_heat_window B t (Q3.xi_n n)) : ℝ) : ℂ) *
+      po3_section8_phase k (Q3.xi_n n)
+
+/-- The one-variable raw Section 8 profile `a_k - p_k`. -/
+noncomputable def po3_section8_raw_profile (B t : ℝ) (k : ℤ) : ℂ :=
+  po3_section8_arch_profile B t k - po3_section8_prime_profile B t k
+
+/-- The raw archimedean kernel depends only on the index difference. -/
+noncomputable def po3_section8_arch_kernel (B t : ℝ) : ℤ → ℤ → ℂ :=
+  po3_signed_difference_kernel (po3_section8_arch_profile B t)
+
+/-- The raw prime kernel depends only on the index difference. -/
+noncomputable def po3_section8_prime_kernel (B t : ℝ) : ℤ → ℤ → ℂ :=
+  po3_signed_difference_kernel (po3_section8_prime_profile B t)
+
+/-- The raw Section 8 kernel is the signed difference packet attached to the
+profile `a_k - p_k`. -/
+noncomputable def po3_section8_raw_kernel (B t : ℝ) : ℤ → ℤ → ℂ :=
+  po3_signed_difference_kernel (po3_section8_raw_profile B t)
+
+/-- Pointwise raw split `q = arch - prime` for the manuscript Section 8
+profiles. -/
+theorem po3_section8_raw_kernel_split
+    (B t : ℝ) :
+    ∀ r s,
+      po3_section8_raw_kernel B t r s
+        = po3_section8_arch_kernel B t r s - po3_section8_prime_kernel B t r s := by
+  intro r s
+  simp [po3_section8_raw_kernel, po3_section8_arch_kernel, po3_section8_prime_kernel,
+    po3_section8_raw_profile, po3_signed_difference_kernel]
+
+/-- The raw Section 8 kernel in literal manuscript form `q_{rs}=a(r-s)-p(r-s)`. -/
+theorem po3_section8_raw_kernel_difference_formula
+    (B t : ℝ) :
+    ∀ r s,
+      po3_section8_raw_kernel B t r s
+        =
+          po3_section8_arch_profile B t (r - s)
+          - po3_section8_prime_profile B t (r - s) := by
+  intro r s
+  simp [po3_section8_raw_kernel, po3_section8_raw_profile, po3_signed_difference_kernel]
+
+/-- Filtered `(++ )` Section 8 block from the raw manuscript formula. -/
+theorem po3_four_term_stencil_of_section8_raw_kernel_pp
+    (B t : ℝ) :
+    po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (n : ℤ))
+      =
+        po3_difference_kernel
+          (fun k =>
+            po3_filtered_difference_profile (po3_section8_arch_profile B t) k
+              - po3_filtered_difference_profile (po3_section8_prime_profile B t) k) := by
+  exact po3_four_term_stencil_of_raw_q_difference_formula_pp
+    (q := po3_section8_raw_kernel B t)
+    (a := po3_section8_arch_profile B t)
+    (p := po3_section8_prime_profile B t)
+    (hq := po3_section8_raw_kernel_difference_formula B t)
+
+/-- Filtered `(+,-)` Section 8 block from the raw manuscript formula. -/
+theorem po3_four_term_stencil_of_section8_raw_kernel_pm
+    (B t : ℝ) :
+    po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (-(n : ℤ)))
+      =
+        po3_sum_kernel
+          (fun u =>
+            po3_filtered_sum_profile (po3_nat_profile_of_int (po3_section8_arch_profile B t)) u
+              - po3_filtered_sum_profile (po3_nat_profile_of_int (po3_section8_prime_profile B t)) u) := by
+  exact po3_four_term_stencil_of_raw_q_difference_formula_pm
+    (q := po3_section8_raw_kernel B t)
+    (a := po3_section8_arch_profile B t)
+    (p := po3_section8_prime_profile B t)
+    (hq := po3_section8_raw_kernel_difference_formula B t)
+
+/-- Mixed packet of the filtered raw `(++ )` Section 8 family. -/
+theorem po3_mixed_packet_of_section8_raw_kernel_pp
+    (B t : ℝ) (r s : ℕ) :
+    po3_mixed_packet
+        (po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (n : ℤ))) r s
+      =
+        po3_centered_second_difference
+          (fun k =>
+            po3_filtered_difference_profile (po3_section8_arch_profile B t) k
+              - po3_filtered_difference_profile (po3_section8_prime_profile B t) k)
+          ((r : ℤ) - (s : ℤ)) := by
+  exact po3_mixed_packet_of_raw_q_difference_formula_pp
+    (q := po3_section8_raw_kernel B t)
+    (a := po3_section8_arch_profile B t)
+    (p := po3_section8_prime_profile B t)
+    (hq := po3_section8_raw_kernel_difference_formula B t)
+    (r := r) (s := s)
+
+/-- Mixed packet of the filtered raw `(+,-)` Section 8 family. -/
+theorem po3_mixed_packet_of_section8_raw_kernel_pm
+    (B t : ℝ) (r s : ℕ) :
+    po3_mixed_packet
+        (po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (-(n : ℤ)))) r s
+      =
+        po3_forward_second_difference
+          (fun u =>
+            po3_filtered_sum_profile (po3_nat_profile_of_int (po3_section8_arch_profile B t)) u
+              - po3_filtered_sum_profile (po3_nat_profile_of_int (po3_section8_prime_profile B t)) u)
+          (r + s) := by
+  exact po3_mixed_packet_of_raw_q_difference_formula_pm
+    (q := po3_section8_raw_kernel B t)
+    (a := po3_section8_arch_profile B t)
+    (p := po3_section8_prime_profile B t)
+    (hq := po3_section8_raw_kernel_difference_formula B t)
+    (r := r) (s := s)
+
+end PO3Section8Profiles
 
 section PO3Witness
 
