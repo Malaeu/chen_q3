@@ -1735,6 +1735,39 @@ theorem po3_no_suzuki_filtered_pm_atom_candidate_of_affine_gap_20_11
     simpa [mul_assoc] using hmain
   exact hmain' hsub
 
+/-- The first anti-diagonal gap for a finite Suzuki `(+,-)` packet on the
+affine pole lattice is the sum of the atom-wise gaps. This is the exact finite
+`γ`-sum form of the neighboring anti-diagonal defect. -/
+theorem po3_suzuki_filtered_pm_finset_antidiagonal_gap_20_11
+    {ι : Type*} (S : Finset ι) (weight : ι → ℂ) (γ : ι → ℂ) (c : ℂ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_filtered_pm_finset S weight γ (po3_affine_alpha c)) 1
+      =
+        Finset.sum S (fun i =>
+          weight i *
+            (1 / (((γ i - 2 * c) * (γ i - 3 * c)) * ((γ i) * (γ i - c))) -
+              1 / (((γ i - c) * (γ i - 2 * c)) * ((γ i - c) * (γ i - 2 * c))))) := by
+  rw [po3_suzuki_filtered_pm_finset_adjacent_defect]
+  congr with i
+  rw [po3_suzuki_filtered_pm_atom_antidiagonal_gap_20_11]
+
+/-- If the first anti-diagonal gap of a finite affine-lattice Suzuki packet is
+already nonzero, then the packet cannot come from a one-variable `(+,-)`
+profile. -/
+theorem po3_no_suzuki_filtered_pm_finset_candidate_of_affine_gap_20_11
+    {ι : Type*} (S : Finset ι) (weight : ι → ℂ) (γ : ι → ℂ) (c : ℂ)
+    (hgap :
+      Finset.sum S (fun i =>
+        weight i *
+          (1 / (((γ i - 2 * c) * (γ i - 3 * c)) * ((γ i) * (γ i - c))) -
+            1 / (((γ i - c) * (γ i - 2 * c)) * ((γ i - c) * (γ i - 2 * c))))) ≠ 0) :
+    ¬ ∃ u,
+      po3_suzuki_filtered_pm_finset S weight γ (po3_affine_alpha c)
+        = po3_suzuki_filtered_pm_candidate u := by
+  apply po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
+  rw [po3_suzuki_filtered_pm_finset_antidiagonal_gap_20_11]
+  exact hgap
+
 /-- Filtered one-variable profile for the concrete `(++ )` Section 8 block. -/
 noncomputable def po3_section8_filtered_pp_profile (B t : ℝ) : ℤ → ℂ :=
   fun k =>
