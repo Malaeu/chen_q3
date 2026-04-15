@@ -8059,3 +8059,29 @@ Update:
 - this makes the next live step very clean: define the Suzuki filtered profile
   candidates in matching one-variable notation and compare them directly against
   `po3_section8_filtered_pp_profile` and `po3_section8_filtered_pm_profile`.
+
+## In progress (2026-04-15): Suzuki filtered shell should reduce block equality to profile equality
+
+- адрес поиска зафиксирован как `PO2`, сырой адрес `PO2, D2g33`; для него
+  заведена отдельная oracle-card
+  `ACTIVE/pipeline/oracle_questions/2026_04_15_po2_m_m_concrete_section_8_shell.md`;
+- локальный oracle-recall дал ровно тот сигнал, который и нужен для next step:
+  `main_closure.tex` остаётся главным источником для filtered Suzuki formulas,
+  а заметка `h1_po2_cross_sign_bulk_exactness_2026_03_16.md` уже фиксирует,
+  что первым честным потребителем должна быть cross-sign ветка `M^{+-}`;
+- внешняя web-проверка не дала полезного project-specific сигнала; для этой
+  задачи actionable структура целиком сидит в рукописи и локальных notes;
+- по формулам `main_closure.tex` видно важную развилку: `M^{+-}` разумно
+  атаковать как одномерный профиль-кандидат, а `M^{++}` нельзя заранее
+  объявлять честно одномерным без дополнительного вывода;
+- поэтому fastest clean move в `Q3/Proofs/HBridge_PO3_Shell.lean` такой:
+  добавить общие леммы вида
+  “равенство `po3_sum_kernel` эквивалентно равенству профилей” и
+  “равенство `po3_difference_kernel` эквивалентно равенству профилей”;
+- после этого следующий математический вход будет узким и нормальным:
+  не сравнивать сразу весь filtered Suzuki block с Section 8 block,
+  а только подать конкретный Suzuki one-variable profile и закрыть
+  точечное равенство с
+  `po3_section8_filtered_pm_profile`
+  или, если получится, с
+  `po3_section8_filtered_pp_profile`.
