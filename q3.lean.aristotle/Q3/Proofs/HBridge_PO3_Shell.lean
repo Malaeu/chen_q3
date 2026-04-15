@@ -863,6 +863,17 @@ restriction to the nonnegative sum variable. -/
 def po3_q_pm_kernel_of_int (a p : ℤ → A) : ℕ → ℕ → A :=
   po3_q_pm_kernel (po3_nat_profile_of_int a) (po3_nat_profile_of_int p)
 
+/-- Recover a candidate sum-profile from a two-index kernel by freezing the
+second coordinate at `0`. -/
+def po3_sum_profile_of_kernel (K : ℕ → ℕ → A) : ℕ → A :=
+  fun t => K t 0
+
+/-- Recover a candidate difference-profile from a two-index kernel by freezing
+one coordinate on the appropriate side of `0`. -/
+def po3_difference_profile_of_kernel (K : ℕ → ℕ → A) : ℤ → A
+  | Int.ofNat n => K n 0
+  | Int.negSucc n => K 0 (n + 1)
+
 /-- The sum-profile kernel remembers its one-variable profile exactly. -/
 theorem po3_sum_kernel_injective :
     Function.Injective (po3_sum_kernel (A := A)) := by
@@ -880,6 +891,22 @@ theorem po3_sum_kernel_eq_iff
     exact po3_sum_kernel_injective h
   · intro h
     simp [h]
+
+/-- A kernel equals a sum-profile exactly when it is constant on anti-diagonals. -/
+theorem po3_eq_sum_kernel_iff_antidiagonal_invariant
+    (K : ℕ → ℕ → A) :
+    (∃ u, K = po3_sum_kernel u)
+      ↔
+    ∀ m n m' n', m + n = m' + n' → K m n = K m' n' := by
+  constructor
+  · rintro ⟨u, rfl⟩
+    intro m n m' n' hsum
+    simp [po3_sum_kernel, hsum]
+  · intro hK
+    refine ⟨po3_sum_profile_of_kernel K, ?_⟩
+    funext m n
+    have hmn : K m n = K (m + n) 0 := hK m n (m + n) 0 (by simp)
+    simpa [po3_sum_kernel, po3_sum_profile_of_kernel] using hmn
 
 /-- The difference-profile kernel also remembers its one-variable profile
 exactly. -/
@@ -906,6 +933,35 @@ theorem po3_difference_kernel_eq_iff
     exact po3_difference_kernel_injective h
   · intro h
     simp [h]
+
+/-- A kernel equals a difference-profile exactly when it is constant on level
+sets of the index difference. -/
+theorem po3_eq_difference_kernel_iff_difference_invariant
+    (K : ℕ → ℕ → A) :
+    (∃ u, K = po3_difference_kernel u)
+      ↔
+    ∀ m n m' n' : ℕ,
+      ((m : ℤ) - (n : ℤ)) = ((m' : ℤ) - (n' : ℤ)) → K m n = K m' n' := by
+  constructor
+  · rintro ⟨u, rfl⟩
+    intro m n m' n' hdiff
+    simp [po3_difference_kernel, hdiff]
+  · intro hK
+    refine ⟨po3_difference_profile_of_kernel K, ?_⟩
+    funext m n
+    cases hmn : ((m : ℤ) - (n : ℤ)) with
+    | ofNat t =>
+        have hEq : ((m : ℤ) - (n : ℤ)) = (((t : ℕ) : ℤ) - (((0 : ℕ) : ℤ))) := by
+          simpa [hmn]
+        have hval : K m n = K t 0 := hK m n t 0 hEq
+        simpa [po3_difference_kernel, po3_difference_profile_of_kernel, hmn] using hval
+    | negSucc t =>
+        have hEq : ((m : ℤ) - (n : ℤ)) = ((((0 : ℕ) : ℤ)) - (((t + 1 : ℕ) : ℤ))) := by
+          rw [hmn]
+          change Int.negSucc t = -(((t + 1 : ℕ) : ℤ))
+          rfl
+        have hval : K m n = K 0 (t + 1) := hK m n 0 (t + 1) hEq
+        simpa [po3_difference_kernel, po3_difference_profile_of_kernel, hmn] using hval
 
 /-- The filtered `(+,-)` profile is additive with respect to subtraction. -/
 theorem po3_filtered_sum_profile_sub
@@ -1647,6 +1703,16 @@ theorem po3_suzuki_filtered_pm_candidate_eq_section8_iff
       u = po3_section8_filtered_pm_profile B t := by
   exact po3_sum_kernel_eq_iff u (po3_section8_filtered_pm_profile B t)
 
+/-- Existence of a one-variable `(+,-)` Suzuki profile is equivalent to
+anti-diagonal invariance of the filtered block. -/
+theorem po3_exists_suzuki_filtered_pm_candidate_iff
+    (K : ℕ → ℕ → ℂ) :
+    (∃ u, K = po3_suzuki_filtered_pm_candidate u)
+      ↔
+    ∀ m n m' n', m + n = m' + n' → K m n = K m' n' := by
+  simpa [po3_suzuki_filtered_pm_candidate] using
+    po3_eq_sum_kernel_iff_antidiagonal_invariant (K := K)
+
 /-- Once the Suzuki `(++ )` block lands as a difference-profile candidate,
 equality with the concrete Section 8 filtered block is exactly profile
 equality. -/
@@ -1657,6 +1723,17 @@ theorem po3_suzuki_filtered_pp_candidate_eq_section8_iff
         ↔
       u = po3_section8_filtered_pp_profile B t := by
   exact po3_difference_kernel_eq_iff u (po3_section8_filtered_pp_profile B t)
+
+/-- Existence of a one-variable `(++ )` Suzuki profile is equivalent to
+difference-level invariance of the filtered block. -/
+theorem po3_exists_suzuki_filtered_pp_candidate_iff
+    (K : ℕ → ℕ → ℂ) :
+    (∃ u, K = po3_suzuki_filtered_pp_candidate u)
+      ↔
+    ∀ m n m' n' : ℕ,
+      ((m : ℤ) - (n : ℤ)) = ((m' : ℤ) - (n' : ℤ)) → K m n = K m' n' := by
+  simpa [po3_suzuki_filtered_pp_candidate] using
+    po3_eq_difference_kernel_iff_difference_invariant (K := K)
 
 end PO3Section8Profiles
 
