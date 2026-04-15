@@ -863,6 +863,50 @@ restriction to the nonnegative sum variable. -/
 def po3_q_pm_kernel_of_int (a p : ℤ → A) : ℕ → ℕ → A :=
   po3_q_pm_kernel (po3_nat_profile_of_int a) (po3_nat_profile_of_int p)
 
+/-- The sum-profile kernel remembers its one-variable profile exactly. -/
+theorem po3_sum_kernel_injective :
+    Function.Injective (po3_sum_kernel (A := A)) := by
+  intro u v h
+  funext t
+  have ht := congrFun (congrFun h t) 0
+  simpa [po3_sum_kernel] using ht
+
+/-- Equality of sum-profile kernels is equivalent to equality of the profiles. -/
+theorem po3_sum_kernel_eq_iff
+    (u v : ℕ → A) :
+    po3_sum_kernel u = po3_sum_kernel v ↔ u = v := by
+  constructor
+  · intro h
+    exact po3_sum_kernel_injective h
+  · intro h
+    simp [h]
+
+/-- The difference-profile kernel also remembers its one-variable profile
+exactly. -/
+theorem po3_difference_kernel_injective :
+    Function.Injective (po3_difference_kernel (A := A)) := by
+  intro u v h
+  funext k
+  cases k with
+  | ofNat n =>
+      have hn := congrFun (congrFun h n) 0
+      simpa [po3_difference_kernel] using hn
+  | negSucc n =>
+      have hn := congrFun (congrFun h 0) (n + 1)
+      change u (-((n + 1 : ℤ))) = v (-((n + 1 : ℤ)))
+      simpa [po3_difference_kernel] using hn
+
+/-- Equality of difference-profile kernels is equivalent to equality of the
+profiles. -/
+theorem po3_difference_kernel_eq_iff
+    (u v : ℤ → A) :
+    po3_difference_kernel u = po3_difference_kernel v ↔ u = v := by
+  constructor
+  · intro h
+    exact po3_difference_kernel_injective h
+  · intro h
+    simp [h]
+
 /-- The filtered `(+,-)` profile is additive with respect to subtraction. -/
 theorem po3_filtered_sum_profile_sub
     (u v : ℕ → A) :
@@ -1495,6 +1539,16 @@ profile `a_k - p_k`. -/
 noncomputable def po3_section8_raw_kernel (B t : ℝ) : ℤ → ℤ → ℂ :=
   po3_signed_difference_kernel (po3_section8_raw_profile B t)
 
+/-- Candidate shape for a Suzuki `(+,-)` filtered block once it is shown to
+depend only on the sum variable. -/
+def po3_suzuki_filtered_pm_candidate (u : ℕ → ℂ) : ℕ → ℕ → ℂ :=
+  po3_sum_kernel u
+
+/-- Candidate shape for a Suzuki `(++ )` filtered block once it is shown to
+depend only on the difference variable. -/
+def po3_suzuki_filtered_pp_candidate (u : ℤ → ℂ) : ℕ → ℕ → ℂ :=
+  po3_difference_kernel u
+
 /-- Filtered one-variable profile for the concrete `(++ )` Section 8 block. -/
 noncomputable def po3_section8_filtered_pp_profile (B t : ℝ) : ℤ → ℂ :=
   fun k =>
@@ -1582,6 +1636,27 @@ theorem po3_mixed_packet_of_section8_raw_kernel_pm
     (p := po3_section8_prime_profile B t)
     (hq := po3_section8_raw_kernel_difference_formula B t)
     (r := r) (s := s)
+
+/-- Once the Suzuki `(+,-)` block lands as a sum-profile candidate, equality
+with the concrete Section 8 filtered block is exactly profile equality. -/
+theorem po3_suzuki_filtered_pm_candidate_eq_section8_iff
+    (u : ℕ → ℂ) (B t : ℝ) :
+    po3_suzuki_filtered_pm_candidate u
+      = po3_sum_kernel (po3_section8_filtered_pm_profile B t)
+        ↔
+      u = po3_section8_filtered_pm_profile B t := by
+  exact po3_sum_kernel_eq_iff u (po3_section8_filtered_pm_profile B t)
+
+/-- Once the Suzuki `(++ )` block lands as a difference-profile candidate,
+equality with the concrete Section 8 filtered block is exactly profile
+equality. -/
+theorem po3_suzuki_filtered_pp_candidate_eq_section8_iff
+    (u : ℤ → ℂ) (B t : ℝ) :
+    po3_suzuki_filtered_pp_candidate u
+      = po3_difference_kernel (po3_section8_filtered_pp_profile B t)
+        ↔
+      u = po3_section8_filtered_pp_profile B t := by
+  exact po3_difference_kernel_eq_iff u (po3_section8_filtered_pp_profile B t)
 
 end PO3Section8Profiles
 

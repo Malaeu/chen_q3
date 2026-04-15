@@ -8085,3 +8085,28 @@ Update:
   `po3_section8_filtered_pm_profile`
   или, если получится, с
   `po3_section8_filtered_pp_profile`.
+
+Update:
+
+- `HBridge_PO3_Shell.lean` теперь содержит точные редукционные леммы
+  `po3_sum_kernel_injective`,
+  `po3_sum_kernel_eq_iff`,
+  `po3_difference_kernel_injective`,
+  `po3_difference_kernel_eq_iff`;
+- это закрывает нужный shell-переход:
+  равенство целого filtered block теперь можно сводить к равенству
+  соответствующих одномерных профилей;
+- добавлены и именованные Suzuki-facing candidate wrappers
+  `po3_suzuki_filtered_pm_candidate` и
+  `po3_suzuki_filtered_pp_candidate`,
+  вместе с точными критериями сравнения с concrete Section 8 side:
+  `po3_suzuki_filtered_pm_candidate_eq_section8_iff` и
+  `po3_suzuki_filtered_pp_candidate_eq_section8_iff`;
+- значит следующий честный вход уже полностью локален:
+  сначала посадить реальную формулу Сузуки для `(+,-)` в вид
+  `po3_suzuki_filtered_pm_candidate u`,
+  затем проверить ровно одно профильное равенство
+  `u = po3_section8_filtered_pm_profile B t`;
+- `(++ )` пока сознательно не объявляется закрытым:
+  shell для него готов, но сам one-variable collapse ещё должен прийти
+  из настоящей формулы, а не из желания.
