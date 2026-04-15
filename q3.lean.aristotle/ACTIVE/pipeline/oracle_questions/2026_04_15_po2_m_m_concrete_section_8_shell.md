@@ -25,7 +25,10 @@ neighbor_addresses: ["PO3"]
 ## Статус
 
 - карточка создана;
-- серия запросов ещё не отработана полностью.
+- первая серия запросов проведена;
+- локальный вывод уже зафиксирован в `INSIGHTS`;
+- следующий шаг сузился до подстановки реальной формулы Сузуки в готовый
+  shell сравнения профилей.
 
 ## Точный блокер
 
@@ -38,35 +41,53 @@ neighbor_addresses: ["PO3"]
 
 ## Что уже известно по этому адресу
 
-- заполнить текущий математический контекст;
-- добавить ссылки на уже замороженные theorem-packets и kill certificates.
+- в `HBridge_PO3_Shell.lean` уже есть concrete Section 8 профили
+  `po3_section8_filtered_pp_profile` и
+  `po3_section8_filtered_pm_profile`;
+- по `main_closure.tex` filtered `(+,-)` остаётся первым честным потребителем;
+- raw-to-filtered Q-side shell уже заморожен, так что дальше нужен не новый
+  двухиндексный расчёт, а только точная подстановка одномерного профиля.
 
 ## Что именно мы хотим узнать поиском
 
-- какие формулировки уже были бесполезны;
-- какие слова могут открыть соседнюю живую ветку;
-- какие локальные теоремы или reviewed notes реально усиливают `PO2`.
+- можно ли посадить `M^{+-}` в честный одномерный профиль-кандидат;
+- есть ли у `M^{++}` такая же редукция или это пока ложная надежда;
+- какие локальные manuscript / insight узлы реально дают формулу, а не общий
+  разговор.
 
 ## Серия запросов
 
 | Запрос | Адрес | Зачем этот запрос | Какая ось варьируется | Сигнал | Куда привёл |
 | --- | --- | --- | --- | --- | --- |
-| TODO | `PO2` | TODO | TODO | pending | TODO |
-| TODO | `PO2` | TODO | TODO | pending | TODO |
-| TODO | `PO2` | TODO | TODO | pending | TODO |
+| `фильтрованный профиль Сузуки M^{+-} сумма по m+n four-term stencil` | `PO2` | проверить, есть ли уже явная свёртка mixed-блока в одну ось | `(+,-)` против общего filtered shell | слабый | вернул в `main_closure.tex`, но сам по себе дал мало структуры |
+| `adjacent Suzuki tails raw gamma blocks filtered M^{+-} main_closure` | `PO2` | вытащить точную рукописную формулу и опорные узлы | raw gamma blocks / adjacent tails | сильный | привёл к `main_closure.tex` и подтвердил, что `M^{+-}` надо бить первым |
+| `Section 8 filtered q profile Suzuki comparison plus minus plus plus` | `PO2` | связать новый concrete Section 8 shell с живой веткой bulk-comparison | Section 8 vs Suzuki | сильный | вернул к `eq:H1-filtered-bulk-plus-minus` и `h1_po2_cross_sign_bulk_exactness_2026_03_16.md` |
+| `M^{++} filtered Suzuki denominator alpha_m alpha_{m+1} difference profile adjacent tails` | `PO2` | проверить, честно ли ожидать одномерную разностную форму для same-sign блока | `(++ )` профиль по разности | средний отрицательный | подтвердил, что для `(++ )` нельзя заранее обещать one-variable collapse |
 
 ## Пустые / шумовые слова
 
-- заполнить после первой серии.
+- `общий Volterra ansatz`
+- `boundary algebra`
+- слишком широкие запросы без `adjacent tails` и без `filtered`
 
 ## Новые возможные комбинации слов
 
-- заполнить после первой серии.
+- `adjacent Suzuki tails`
+- `raw gamma blocks`
+- `filtered bulk plus minus`
+- `Section 8 filtered profile`
 
 ## Переход в INSIGHTS
 
-- ссылка будет добавлена после синтеза.
+- синтез зафиксирован в
+  `q3.lean.aristotle/docs/INSIGHTS.md`
+  под заголовком
+  `In progress (2026-04-15): Suzuki filtered shell should reduce block equality to profile equality`.
 
 ## Следующий адресный шаг
 
-- зафиксировать следующий узел дерева после завершения серии.
+- подать реальную формулу Сузуки для `(+,-)` в вид
+  `po3_suzuki_filtered_pm_candidate u`;
+- затем закрыть точечное равенство
+  `u = po3_section8_filtered_pm_profile B t`;
+- только после этого решать, есть ли честный аналогичный ход для `(++ )`.
