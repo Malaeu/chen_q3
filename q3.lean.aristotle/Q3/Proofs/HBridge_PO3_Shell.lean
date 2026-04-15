@@ -4,6 +4,8 @@ import Mathlib.LinearAlgebra.Span.Basic
 import Mathlib.Tactic
 import Q3.Basic.Defs
 
+open scoped BigOperators
+
 /-!
 # H-bridge PO3 shell
 
@@ -908,6 +910,25 @@ theorem po3_eq_sum_kernel_iff_antidiagonal_invariant
     have hmn : K m n = K (m + n) 0 := hK m n (m + n) 0 (by simp)
     simpa [po3_sum_kernel, po3_sum_profile_of_kernel] using hmn
 
+/-- The first adjacent anti-diagonal defect for a `(+,-)` kernel. If this
+quantity is nonzero at some level, the kernel cannot come from a one-variable
+sum-profile. -/
+def po3_antidiagonal_adjacent_defect (K : ℕ → ℕ → A) (t : ℕ) : A :=
+  K (t + 1) 0 - K t 1
+
+/-- A nonzero adjacent anti-diagonal defect rules out any one-variable
+`(+,-)` profile. -/
+theorem po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
+    (K : ℕ → ℕ → A) (t : ℕ)
+    (hdef : po3_antidiagonal_adjacent_defect K t ≠ 0) :
+    ¬ ∃ u, K = po3_sum_kernel u := by
+  intro hsum
+  rcases (po3_eq_sum_kernel_iff_antidiagonal_invariant (K := K)).1 hsum with hK
+  have hEq : K (t + 1) 0 = K t 1 := hK (t + 1) 0 t 1 (by simp)
+  have hzero : po3_antidiagonal_adjacent_defect K t = 0 := by
+    simp [po3_antidiagonal_adjacent_defect, hEq]
+  exact hdef hzero
+
 /-- The difference-profile kernel also remembers its one-variable profile
 exactly. -/
 theorem po3_difference_kernel_injective :
@@ -1604,6 +1625,115 @@ def po3_suzuki_filtered_pm_candidate (u : ℕ → ℂ) : ℕ → ℕ → ℂ :=
 depend only on the difference variable. -/
 def po3_suzuki_filtered_pp_candidate (u : ℤ → ℂ) : ℕ → ℕ → ℂ :=
   po3_difference_kernel u
+
+/-- A single manuscript-style `(+,-)` Suzuki atom:
+the parity factor already depends only on `m+n`, while the denominator carries
+the genuine two-variable geometry. -/
+noncomputable def po3_suzuki_filtered_pm_atom
+    (α : ℕ → ℂ) (γ : ℂ) : ℕ → ℕ → ℂ :=
+  fun m n =>
+    ((-1 : ℂ) ^ (m + n)) /
+      (((γ - α m) * (γ - α (m + 1))) * ((γ - α n) * (γ - α (n + 1))))
+
+/-- Finite packet model for the manuscript `(+,-)` Suzuki block. The global
+prefactor and the `\sin^2(a\gamma)` weight can be absorbed into `weight`. -/
+noncomputable def po3_suzuki_filtered_pm_finset
+    {ι : Type*} (S : Finset ι) (weight : ι → ℂ) (γ : ι → ℂ) (α : ℕ → ℂ) :
+    ℕ → ℕ → ℂ :=
+  fun m n => Finset.sum S (fun i => weight i * po3_suzuki_filtered_pm_atom α (γ i) m n)
+
+/-- The natural affine pole lattice `α_n = n c`. This is the literal pattern
+from the manuscript, with `c = π / a`. -/
+noncomputable def po3_affine_alpha (c : ℂ) : ℕ → ℂ :=
+  fun n => (n : ℂ) * c
+
+/-- The adjacent anti-diagonal defect of a finite Suzuki packet is the sum of
+the atom-wise defects. -/
+theorem po3_suzuki_filtered_pm_finset_adjacent_defect
+    {ι : Type*} (S : Finset ι) (weight : ι → ℂ) (γ : ι → ℂ) (α : ℕ → ℂ)
+    (t : ℕ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_filtered_pm_finset S weight γ α) t
+      =
+        Finset.sum S (fun i =>
+          weight i * po3_antidiagonal_adjacent_defect
+            (po3_suzuki_filtered_pm_atom α (γ i)) t) := by
+  classical
+  unfold po3_antidiagonal_adjacent_defect po3_suzuki_filtered_pm_finset
+  rw [← Finset.sum_sub_distrib]
+  congr with i
+  ring
+
+/-- The first nontrivial anti-diagonal gap for a single manuscript-style
+`(+,-)` Suzuki atom on the affine pole lattice `α_n = n c`, comparing the
+points `(2,0)` and `(1,1)`. -/
+theorem po3_suzuki_filtered_pm_atom_antidiagonal_gap_20_11
+    (c γ : ℂ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_filtered_pm_atom (po3_affine_alpha c) γ) 1
+      =
+        1 / (((γ - 2 * c) * (γ - 3 * c)) * (γ * (γ - c))) -
+          1 / (((γ - c) * (γ - 2 * c)) * ((γ - c) * (γ - 2 * c))) := by
+  simp [po3_antidiagonal_adjacent_defect, po3_suzuki_filtered_pm_atom,
+    po3_affine_alpha]
+
+/-- A single affine-lattice Suzuki atom cannot be a one-variable `(+,-)`
+profile once the first anti-diagonal gap is genuinely nonzero. -/
+theorem po3_no_suzuki_filtered_pm_atom_candidate_of_affine_gap_20_11
+    (c γ : ℂ)
+    (hc : c ≠ 0)
+    (hγ0 : γ ≠ 0)
+    (hγ1 : γ ≠ c)
+    (hγ2 : γ ≠ 2 * c)
+    (hγ3 : γ ≠ 3 * c) :
+    ¬ ∃ u,
+      po3_suzuki_filtered_pm_atom (po3_affine_alpha c) γ
+        = po3_suzuki_filtered_pm_candidate u := by
+  apply po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
+  rw [po3_suzuki_filtered_pm_atom_antidiagonal_gap_20_11]
+  intro hgap
+  let A : ℂ := (((γ - 2 * c) * (γ - 3 * c)) * (γ * (γ - c)))
+  let B : ℂ := (((γ - c) * (γ - 2 * c)) * ((γ - c) * (γ - 2 * c)))
+  have hdiv : 1 / A = 1 / B := by
+    have := sub_eq_zero.mp hgap
+    simpa [A, B] using this
+  have hA0 : A ≠ 0 := by
+    dsimp [A]
+    apply mul_ne_zero
+    · apply mul_ne_zero
+      · exact sub_ne_zero.mpr hγ2
+      · exact sub_ne_zero.mpr hγ3
+    · apply mul_ne_zero
+      · exact hγ0
+      · exact sub_ne_zero.mpr hγ1
+  have hB0 : B ≠ 0 := by
+    dsimp [B]
+    apply mul_ne_zero <;> apply mul_ne_zero
+    · exact sub_ne_zero.mpr hγ1
+    · exact sub_ne_zero.mpr hγ2
+    · exact sub_ne_zero.mpr hγ1
+    · exact sub_ne_zero.mpr hγ2
+  field_simp [A, B, hA0, hB0] at hdiv
+  dsimp [A, B] at hdiv
+  have hsub :
+      (((γ - c) * (γ - 2 * c)) * ((γ - c) * (γ - 2 * c)))
+        - (((γ - 2 * c) * (γ - 3 * c)) * (γ * (γ - c))) = 0 := by
+    exact sub_eq_zero.mpr hdiv
+  have hfactor :
+      (((γ - c) * (γ - 2 * c)) * ((γ - c) * (γ - 2 * c)))
+        - (((γ - 2 * c) * (γ - 3 * c)) * (γ * (γ - c)))
+          =
+        2 * c ^ 2 * (γ - c) * (γ - 2 * c) := by
+    ring
+  rw [hfactor] at hsub
+  have hc2 : c ^ 2 ≠ 0 := pow_ne_zero 2 hc
+  have hgc : (γ - c) * (γ - 2 * c) ≠ 0 := by
+    exact mul_ne_zero (sub_ne_zero.mpr hγ1) (sub_ne_zero.mpr hγ2)
+  have hmain : 2 * c ^ 2 * ((γ - c) * (γ - 2 * c)) ≠ 0 := by
+    exact mul_ne_zero (mul_ne_zero (by norm_num) hc2) hgc
+  have hmain' : 2 * c ^ 2 * (γ - c) * (γ - 2 * c) ≠ 0 := by
+    simpa [mul_assoc] using hmain
+  exact hmain' hsub
 
 /-- Filtered one-variable profile for the concrete `(++ )` Section 8 block. -/
 noncomputable def po3_section8_filtered_pp_profile (B t : ℝ) : ℤ → ℂ :=
