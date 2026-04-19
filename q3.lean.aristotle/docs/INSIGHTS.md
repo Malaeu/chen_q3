@@ -9282,3 +9282,31 @@ Update:
   `PO3-square.1` is now closed as a local packet-kill node.
   The next live address is `PO3-square.2`, the genuine infinite-support
   square-tail wall.
+
+## Synthesis (2026-04-19, in progress) — activate `PO3-square.2d0a` as the narrow formal entry into the square-tail wall
+
+- local embedding search is consistent across all three queries: the repo does
+  not contain a hidden theorem that solves `PO3-square.2` outright, and the
+  notes keep repeating the same split:
+  finite-support is dead, the live burden is infinite-support, and the cleanest
+  first reduction is the transform-side route `J(w^2) ↦ \widetilde H(w)`;
+- the strongest internal pointer is now the dedicated attack note
+  `docs/insights/h1_po3_square_tail_injectivity_attack_2026_04_19.md`,
+  which already isolates `PO3-square.2d0`, `PO3-square.2d0-finite`,
+  and `PO3-square.2d1`;
+- external search on primary sources did not surface a ready-made uniqueness
+  theorem specialized to zeros on `r^2`; at best it reconfirms generic
+  background around entire/divided-difference techniques, so importing outside
+  math here would be cargo cult;
+- therefore the next honest implementation target should be the smallest
+  formalizable piece of `2d0`, not the whole wall:
+  isolate the pure zero-transfer shell
+  `J(r^2)=0 on the strict tail ⇒ \widetilde H(r)=0`, and with evenness also
+  `\widetilde H(-r)=0`;
+- this is worth formalizing now because it fixes the exact downstream object:
+  the live `PO3-square.2d1` target is an even symmetric Cauchy receiver with
+  bilateral integer-tail zeros, not an abstract square-tail sentence anymore;
+- so the coding move is narrow and defensible:
+  add `PO3-square.2d0a` shell lemmas to
+  `Q3/Proofs/HBridge_PO3_Shell.lean`, then update the wall note and route
+  ladder so the next unresolved address is explicitly `PO3-square.2d1`.
