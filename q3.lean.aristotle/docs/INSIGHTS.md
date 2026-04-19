@@ -9336,3 +9336,25 @@ Update:
   `PO3-square.2d0a` is now frozen formally.
   The next live address is `PO3-square.2d1`, the infinite-support even
   symmetric Cauchy uniqueness target after reduction.
+
+## Synthesis (2026-04-19, in progress) — `PO3-square.2d1` should first be frozen as one named target, not attacked as prose
+
+- the local oracle results are stable and helpful here:
+  they do not produce a hidden theorem for `2d1`, but they sharply identify the
+  only two honest imported-looking directions already noted in the project:
+  localization of zeros for discrete Cauchy transforms, and Krein/ordering-type
+  results for ratios of discrete Cauchy transforms;
+- the divided-difference query adds the second internal axis:
+  the existing notes already read `square-tail vanishing` as vanishing of Newton
+  divided differences of one fixed receiver `J_a`, so the active wall really has
+  only two serious mathematical assaults right now: `2b` and `2c`, with
+  localization/Krein as imported background rather than a ready theorem;
+- that means the next coding step should not pretend to solve the wall;
+  it should freeze the exact post-reduction target as one named Lean object:
+  an even transform-side receiver together with bilateral integer-tail zeros;
+- doing this now is useful because `2d0a` is already formal, so the next live
+  burden is no longer “some square-tail problem”, but exactly a uniqueness
+  statement on one named class of transform-side receivers;
+- after that wrapper lands, the repo can refer to `PO3-square.2d1` precisely in
+  notes, shells, and future attack lemmas, while the real mathematics stays
+  concentrated in the next assault packet rather than leaking into notation.
