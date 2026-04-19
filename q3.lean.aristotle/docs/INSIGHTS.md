@@ -8474,3 +8474,40 @@ Update:
 - the remaining off-chain role of
   `FirstZetaGapWitness_2026_04_19_Data.lean` is narrowed to `prefix3` and raw
   provenance.
+
+## Synthesis (2026-04-19, in progress) — `PO3-prefix3` honest closure check
+
+- exact target is now the named shell object
+  `po3_first_zeta_gap_sum3_a1_decimal28 ≠ 0`;
+- local code inspection shows `prefix3` is not a new shell geometry branch:
+  it is the same manuscript gap-weight sum as `prefix2`, just with one extra
+  term for `γ₂`;
+- local oracle search was weak but sufficient: nothing in `q3_docs` points to a
+  deeper obstruction than the missing third real-weight positivity packet;
+- external mathlib docs confirm the same primary tools remain available:
+  `Real.pi_lt_d20` for interval placement and standard trigonometric facts for
+  `Complex.sin`;
+- honest next attack is therefore minimal: reuse the proven real-gap machinery
+  from `FirstZetaPrefix2_2026_04_19.lean`, add the real witness layer for `γ₂`,
+  and close the three-term sum by positivity.
+
+## Result (2026-04-19) — `PO3-shell` `prefix3` moved to honest theorem-level closure
+
+- the search-pass conclusion was correct: `prefix3` did not need a new bridge,
+  only the third witness packet on top of the already proved `prefix2` real-gap
+  machinery;
+- this is now formalized in
+  `Q3/Proofs/PO3Cert/FirstZetaPrefix3_2026_04_19.lean`;
+- the file packages `γ₂` as a real decimal-28 witness, proves `γ₂ > 3 * π`,
+  reuses the singleton sine-nonvanishing fact, and gets positivity of the
+  third manuscript gap weight from the same six-pole sign lemma;
+- hence the full three-term sum
+  `po3_first_zeta_gap_sum3_a1_decimal28` is a positive real number and
+  therefore nonzero;
+- the shell closure theorem
+  `po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_sum3_honest`
+  is now honest and no longer depends on the off-chain certificate file;
+- operationally this means the whole first-zeta `a = 1` local packet is now
+  theorem-level closed at `singleton`, `prefix2`, and `prefix3`;
+- the remaining role of
+  `FirstZetaGapWitness_2026_04_19_Data.lean` is now documentary provenance only.

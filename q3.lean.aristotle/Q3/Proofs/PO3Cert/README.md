@@ -16,6 +16,7 @@ Current file map:
 PO3Cert/
   FirstZetaGapWitness_2026_04_19_Data.lean
   FirstZetaPrefix2_2026_04_19.lean
+  FirstZetaPrefix3_2026_04_19.lean
   FirstZetaSingleton_2026_04_19.lean
   README.md
 ```
@@ -104,6 +105,32 @@ Status note:
 - `prefix2` now has a theorem-level closure with no external axiom;
 - the off-chain file `FirstZetaGapWitness_2026_04_19_Data.lean` remains useful
   for `prefix3` and provenance, but is no longer the only closure path.
+
+## Current honest `prefix3` theorem
+
+File:
+- `FirstZetaPrefix3_2026_04_19.lean`
+
+Purpose:
+- remove the off-chain certificate dependency for the concrete
+  `a = 1`, `prefix3` witness:
+  the file proves that the third manuscript gap weight attached to `γ₂`
+  is also a positive real number, so the full three-term witness sum
+  `po3_first_zeta_gap_sum3_a1_decimal28` is nonzero.
+
+Exports:
+- `po3_first_zeta_gamma2_decimal28_real`
+- `po3_first_zeta_gamma2_decimal28_eq_ofReal`
+- `po3_first_zeta_gamma2_decimal28_real_gt_three_pi`
+- `po3_first_zeta_gamma2_decimal28_real_sin_ne_zero`
+- `po3_first_zeta_gap_sum3_a1_decimal28_ne_zero_honest`
+- `po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_sum3_honest`
+
+Status note:
+- `prefix3` now also has a theorem-level closure with no external axiom;
+- the off-chain file `FirstZetaGapWitness_2026_04_19_Data.lean` remains useful
+  as provenance storage for the frozen numeric snapshot, but is no longer
+  needed for either `prefix2` or `prefix3`.
 
 ## Usage rule
 

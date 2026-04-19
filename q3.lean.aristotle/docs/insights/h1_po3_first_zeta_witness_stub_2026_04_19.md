@@ -2,11 +2,12 @@
 
 ## Status
 
-Частично закрыто.
+Локальный witness-пакет закрыт.
 
-- `prefix2` теперь имеет честное theorem-level закрытие без внешнего
-  сертификата;
-- `prefix3` пока остаётся на off-chain certificate route.
+- singleton-ветка для `γ₀, γ₁, γ₂` закрыта честно;
+- `prefix2` закрыт честной theorem-level леммой без внешнего сертификата;
+- `prefix3` теперь тоже закрыт честной theorem-level леммой без внешнего
+  сертификата.
 
 ## Purpose
 
@@ -107,7 +108,27 @@ It exports:
 
 Для `prefix2` этот off-chain слой теперь не обязателен: его заменяет честный
 theorem-level файл `FirstZetaPrefix2_2026_04_19.lean`. Для `prefix3` он всё ещё
-остаётся рабочим быстрым маршрутом.
+остаётся только provenance-слоем, а не обязательным мостом.
+
+## Current honest `prefix3` landing
+
+В
+[`Q3/Proofs/PO3Cert/FirstZetaPrefix3_2026_04_19.lean`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PO3Cert/FirstZetaPrefix3_2026_04_19.lean)
+теперь есть theorem-level closure и для трёхчленного witness-пакета при
+`a = 1`.
+
+Файл добавляет только недостающий третий witness:
+
+- вещественную форму `γ₂`;
+- оценку `γ₂ > 3 * π`;
+- ненулевость `sin γ₂`;
+- положительность третьего manuscript gap-weight;
+- теорему
+  `Q3.Proofs.PO3Cert.po3_first_zeta_gap_sum3_a1_decimal28_ne_zero_honest`;
+- и итоговое shell-замыкание
+  `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_sum3_honest`.
+
+Итог: и `prefix2`, и `prefix3` уже выведены в Lean без внешней аксиомы.
 
 ## Current honest singleton landing
 
@@ -140,9 +161,12 @@ kill theorems at `a = 1`, one for each of the first three witness ordinates.
 
 ## Intended next formal move
 
-Самый прямой следующий ход теперь уже уже уже не `prefix2`, а `prefix3`:
+Первый-zeta witness route при `a = 1` теперь закрыт целиком на уровне
+`singleton/prefix2/prefix3`.
 
-1. либо поднять честный theorem-level аргумент для
-   `po3_first_zeta_gap_sum3_a1_decimal28 ≠ 0`;
-2. либо временно использовать уже собранный off-chain certificate path для
-   `prefix3`, не смешивая его с честным `prefix2`-закрытием.
+Следующий честный ход уже не внутри этого локального пакета, а выше по цепочке:
+
+1. либо использовать закрытые `prefix2/prefix3` obstruction-леммы как готовые
+   локальные kill-пакеты в `PO3-shell`;
+2. либо перейти к следующему живому family/witness узлу, если нужен ещё один
+   независимый packet beyond the first zeta stack.
