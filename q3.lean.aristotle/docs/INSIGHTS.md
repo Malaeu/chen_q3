@@ -8297,3 +8297,25 @@ Update:
   выбрать конкретную enumeration `γ₀,γ₁,γ₂,...` из рукописи или численного
   канала, подать первые `K` членов в prefix-shell и проверить ненулевость
   соответствующей finite six-pole суммы.
+
+Update:
+
+- чтобы не застревать на уровне абстрактного `Finset.range K`, в shell
+  добавлены уже совсем явные тестовые оболочки:
+  `po3_gamma_prefix2`, `po3_gamma_prefix3`,
+  `po3_suzuki_raw_gamma_pm_prefix2`,
+  `po3_suzuki_raw_gamma_pm_prefix3`;
+- введён единый one-mode вклад
+  `po3_suzuki_manuscript_gap_weight a γ`,
+  так что соседний антидиагональный разрыв для finite truncation теперь
+  можно читать как обычную конечную сумму по mode-weights;
+- для `K=2` и `K=3` уже готовы explicit formulas:
+  `po3_suzuki_raw_gamma_pm_prefix2_antidiagonal_gap_20_11`,
+  `po3_suzuki_raw_gamma_pm_prefix3_antidiagonal_gap_20_11`,
+  а также прямые kill-критерии
+  `po3_no_suzuki_raw_gamma_pm_prefix2_candidate_of_gap_20_11` и
+  `po3_no_suzuki_raw_gamma_pm_prefix3_candidate_of_gap_20_11`;
+- это и есть правильный узкий landing zone:
+  теперь следующий шаг не требует никакой новой инфраструктуры —
+  достаточно подставить конкретные `γ₀,γ₁` или `γ₀,γ₁,γ₂` и проверить,
+  что соответствующая сумма `gap_weight` не ноль.

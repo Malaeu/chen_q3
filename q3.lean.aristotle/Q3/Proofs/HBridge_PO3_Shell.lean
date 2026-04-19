@@ -1863,6 +1863,31 @@ noncomputable def po3_suzuki_raw_gamma_pm_prefix
     (K : ℕ) (a : ℂ) (γ : ℕ → ℂ) : ℕ → ℕ → ℂ :=
   po3_suzuki_raw_gamma_pm_finset (Finset.range K) a γ
 
+/-- Explicit two-term `γ`-prefix. Outside the first two slots the sequence is
+filled with `0`; this never matters once we truncate at `K = 2`. -/
+def po3_gamma_prefix2 (γ0 γ1 : ℂ) : ℕ → ℂ
+  | 0 => γ0
+  | 1 => γ1
+  | _ => 0
+
+/-- Explicit three-term `γ`-prefix. Outside the first three slots the sequence
+is filled with `0`; this never matters once we truncate at `K = 3`. -/
+def po3_gamma_prefix3 (γ0 γ1 γ2 : ℂ) : ℕ → ℂ
+  | 0 => γ0
+  | 1 => γ1
+  | 2 => γ2
+  | _ => 0
+
+/-- Explicit `K = 2` raw manuscript truncation. -/
+noncomputable def po3_suzuki_raw_gamma_pm_prefix2
+    (a γ0 γ1 : ℂ) : ℕ → ℕ → ℂ :=
+  po3_suzuki_raw_gamma_pm_prefix 2 a (po3_gamma_prefix2 γ0 γ1)
+
+/-- Explicit `K = 3` raw manuscript truncation. -/
+noncomputable def po3_suzuki_raw_gamma_pm_prefix3
+    (a γ0 γ1 γ2 : ℂ) : ℕ → ℕ → ℂ :=
+  po3_suzuki_raw_gamma_pm_prefix 3 a (po3_gamma_prefix3 γ0 γ1 γ2)
+
 /-- The packaged manuscript prefix truncation on the first `K` `γ`-modes. -/
 noncomputable def po3_suzuki_filtered_pm_prefix_manuscript
     (K : ℕ) (a : ℂ) (γ : ℕ → ℂ) : ℕ → ℕ → ℂ :=
@@ -1875,6 +1900,14 @@ theorem po3_suzuki_raw_gamma_pm_prefix_eq_filtered_prefix_manuscript
       = po3_suzuki_filtered_pm_prefix_manuscript K a γ := by
   rw [po3_suzuki_raw_gamma_pm_prefix, po3_suzuki_filtered_pm_prefix_manuscript,
     po3_suzuki_raw_gamma_pm_finset_eq_partial_sum_manuscript]
+
+/-- The weighted six-pole contribution of one manuscript `γ`-mode to the
+neighboring anti-diagonal gap. -/
+noncomputable def po3_suzuki_manuscript_gap_weight
+    (a γ : ℂ) : ℂ :=
+  (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a γ) *
+    po3_suzuki_filtered_pm_gap_term_20_11
+      (po3_suzuki_manuscript_alpha_step a) γ
 
 /-- The raw manuscript singleton is exactly the packaged manuscript singleton
 already used by the shell. -/
@@ -2027,10 +2060,9 @@ theorem po3_suzuki_raw_gamma_pm_prefix_antidiagonal_gap_20_11
         (po3_suzuki_raw_gamma_pm_prefix K a γ) 1
       =
         Finset.sum (Finset.range K) (fun i =>
-          (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a (γ i)) *
-            po3_suzuki_filtered_pm_gap_term_20_11
-              (po3_suzuki_manuscript_alpha_step a) (γ i)) := by
+          po3_suzuki_manuscript_gap_weight a (γ i)) := by
   rw [po3_suzuki_raw_gamma_pm_prefix, po3_suzuki_raw_gamma_pm_finset_antidiagonal_gap_20_11]
+  simp [po3_suzuki_manuscript_gap_weight]
 
 /-- If the first anti-diagonal gap of the raw manuscript prefix truncation is
 nonzero, then the prefix cannot be a one-variable `(+,-)` profile. -/
@@ -2038,15 +2070,79 @@ theorem po3_no_suzuki_raw_gamma_pm_prefix_candidate_of_gap_20_11
     (K : ℕ) (a : ℂ) (γ : ℕ → ℂ)
     (hgap :
       Finset.sum (Finset.range K) (fun i =>
-        (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a (γ i)) *
-          po3_suzuki_filtered_pm_gap_term_20_11
-            (po3_suzuki_manuscript_alpha_step a) (γ i)) ≠ 0) :
+        po3_suzuki_manuscript_gap_weight a (γ i)) ≠ 0) :
     ¬ ∃ u,
       po3_suzuki_raw_gamma_pm_prefix K a γ
         = po3_suzuki_filtered_pm_candidate u := by
   rw [po3_suzuki_raw_gamma_pm_prefix]
   exact po3_no_suzuki_raw_gamma_pm_finset_candidate_of_gap_20_11
-    (Finset.range K) a γ hgap
+    (Finset.range K) a γ (by simpa [po3_suzuki_manuscript_gap_weight] using hgap)
+
+/-- Explicit two-term anti-diagonal gap formula. -/
+theorem po3_suzuki_raw_gamma_pm_prefix2_antidiagonal_gap_20_11
+    (a γ0 γ1 : ℂ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_raw_gamma_pm_prefix2 a γ0 γ1) 1
+      =
+        po3_suzuki_manuscript_gap_weight a γ0 +
+          po3_suzuki_manuscript_gap_weight a γ1 := by
+  rw [po3_suzuki_raw_gamma_pm_prefix2,
+    po3_suzuki_raw_gamma_pm_prefix_antidiagonal_gap_20_11]
+  rw [Finset.sum_range_succ, Finset.sum_range_succ]
+  simp [po3_gamma_prefix2, po3_suzuki_manuscript_gap_weight]
+
+/-- Explicit three-term anti-diagonal gap formula. -/
+theorem po3_suzuki_raw_gamma_pm_prefix3_antidiagonal_gap_20_11
+    (a γ0 γ1 γ2 : ℂ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_raw_gamma_pm_prefix3 a γ0 γ1 γ2) 1
+      =
+        po3_suzuki_manuscript_gap_weight a γ0 +
+          po3_suzuki_manuscript_gap_weight a γ1 +
+            po3_suzuki_manuscript_gap_weight a γ2 := by
+  rw [po3_suzuki_raw_gamma_pm_prefix3,
+    po3_suzuki_raw_gamma_pm_prefix_antidiagonal_gap_20_11]
+  rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_succ]
+  simp [po3_gamma_prefix3, po3_suzuki_manuscript_gap_weight, add_assoc]
+
+/-- Explicit `K = 2` kill criterion. -/
+theorem po3_no_suzuki_raw_gamma_pm_prefix2_candidate_of_gap_20_11
+    (a γ0 γ1 : ℂ)
+    (hgap :
+      po3_suzuki_manuscript_gap_weight a γ0 +
+        po3_suzuki_manuscript_gap_weight a γ1 ≠ 0) :
+    ¬ ∃ u,
+      po3_suzuki_raw_gamma_pm_prefix2 a γ0 γ1
+        = po3_suzuki_filtered_pm_candidate u := by
+  rw [po3_suzuki_raw_gamma_pm_prefix2]
+  have hgap' :
+      Finset.sum (Finset.range 2) (fun i =>
+        po3_suzuki_manuscript_gap_weight a (po3_gamma_prefix2 γ0 γ1 i)) ≠ 0 := by
+    rw [Finset.sum_range_succ, Finset.sum_range_succ]
+    simpa [po3_gamma_prefix2, po3_suzuki_manuscript_gap_weight] using hgap
+  exact po3_no_suzuki_raw_gamma_pm_prefix_candidate_of_gap_20_11
+    2 a (po3_gamma_prefix2 γ0 γ1)
+    hgap'
+
+/-- Explicit `K = 3` kill criterion. -/
+theorem po3_no_suzuki_raw_gamma_pm_prefix3_candidate_of_gap_20_11
+    (a γ0 γ1 γ2 : ℂ)
+    (hgap :
+      po3_suzuki_manuscript_gap_weight a γ0 +
+        po3_suzuki_manuscript_gap_weight a γ1 +
+          po3_suzuki_manuscript_gap_weight a γ2 ≠ 0) :
+    ¬ ∃ u,
+      po3_suzuki_raw_gamma_pm_prefix3 a γ0 γ1 γ2
+        = po3_suzuki_filtered_pm_candidate u := by
+  rw [po3_suzuki_raw_gamma_pm_prefix3]
+  have hgap' :
+      Finset.sum (Finset.range 3) (fun i =>
+        po3_suzuki_manuscript_gap_weight a (po3_gamma_prefix3 γ0 γ1 γ2 i)) ≠ 0 := by
+    rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_succ]
+    simpa [po3_gamma_prefix3, po3_suzuki_manuscript_gap_weight, add_assoc] using hgap
+  exact po3_no_suzuki_raw_gamma_pm_prefix_candidate_of_gap_20_11
+    3 a (po3_gamma_prefix3 γ0 γ1 γ2)
+    hgap'
 
 /-- A direct manuscript singleton truncation already rules out a one-variable
 `(+,-)` profile whenever its six-pole gap term is nonzero and the manuscript
