@@ -2,10 +2,33 @@
 
 ## Статус
 
-Рабочая note открыта.
+Частично формализовано.
 
 Это не доказательство всей ветки `PO3`, а точная заморозка следующего
 содержательного узла после закрытия локального `PO3-shell`.
+
+### Update (Lean, 2026-04-19)
+
+Абстрактное ядро `PO3-rig.1a` уже посажено в Lean как
+`Q3.HBridge.po3_rankOne_companion_rigidity` в файле
+`Q3/Proofs/HBridge_PO3_Shell.lean`.
+
+Формальная форма сейчас такая:
+
+```tex
+\phi\otimes x + \psi\otimes u = 0,\qquad \phi\neq 0,\quad u\neq 0
+\Longrightarrow
+x\in \mathbb C u,\ \psi\in\mathbb C\phi.
+```
+
+Это именно тот конечномерный линейно-алгебраический пакет, который нужен для
+оконной жёсткости: одна фиксированная ненулевая функциональная нога и одна
+фиксированная ненулевая векторная нога forcing обе свободные ноги в
+соответствующие одномерные линии.
+
+Значит следующий содержательный шаг уже не в `1a`, а в честной привязке
+реального surviving packet к этой abstract rank-one форме и затем в склейке
+оконных констант.
 
 ## Где этот узел в лестнице
 
@@ -176,7 +199,8 @@ c_{a,N,M_1}=c_{a,N,M_2}.
 ### Уже механика
 
 - extraction of `x_M`, `y_M`, `u_{+,M,N}`, `u_{-,M,N}`;
-- abstract finite-window linear algebra of `1a`;
+- abstract finite-window linear algebra of `1a`
+  through `Q3.HBridge.po3_rankOne_companion_rigidity`;
 - overlap gluing statement `1c`.
 
 ### Ещё не механика
@@ -207,7 +231,8 @@ x_M\otimes u_{-,M,N} + u_{+,M,N}\otimes y_M,
 
 Самый честный следующий formal move такой:
 
-1. зафиксировать `PO3-rig.1a` как отдельную abstract finite-window lemma;
+1. привязать surviving mixed packet на окне к форме
+   `\phi\otimes x + \psi\otimes u`;
 2. отдельно записать specialization `PO3-rig.1b` к zero-mode column;
 3. сразу после этого открыть `PO3-tail.1` как gluing lemma для
    `c_{a,N,M}`.

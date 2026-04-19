@@ -1,5 +1,7 @@
 import Mathlib.Algebra.Star.Basic
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Algebra.Module.LinearMap.DivisionRing
+import Mathlib.LinearAlgebra.Dual.Lemmas
 import Mathlib.LinearAlgebra.Span.Basic
 import Mathlib.Tactic
 import Q3.Basic.Defs
@@ -2620,6 +2622,44 @@ theorem not_mem_span_singleton_map_of_linearForm_witness
   exact not_mem_submodule_of_linearForm hEφ hvφ
 
 end PO3Witness
+
+section PO3Rigidity
+
+variable {𝕜 U V : Type*}
+variable [Field 𝕜]
+variable [AddCommGroup U] [Module 𝕜 U]
+variable [AddCommGroup V] [Module 𝕜 V]
+
+/-- Abstract finite-window rigidity packet behind `PO3-rig.1a`:
+if a sum of two rank-one maps vanishes, with one fixed nonzero functional leg
+and one fixed nonzero vector leg, then the free vector factor and the free
+functional factor are forced onto the corresponding singleton spans. -/
+theorem po3_rankOne_companion_rigidity
+    {x u : V} {φ ψ : U →ₗ[𝕜] 𝕜}
+    (hφ : φ ≠ 0) (hu : u ≠ 0)
+    (hzero : φ.smulRight x + ψ.smulRight u = 0) :
+    x ∈ 𝕜 ∙ u ∧ ψ ∈ 𝕜 ∙ φ := by
+  have hsurj : Function.Surjective φ := φ.surjective hφ
+  have hx : x ∈ 𝕜 ∙ u := by
+    obtain ⟨z, hz⟩ := hsurj (1 : 𝕜)
+    have hz0 : x + ψ z • u = 0 := by
+      simpa [LinearMap.smulRight_apply, hz] using LinearMap.congr_fun hzero z
+    refine Submodule.mem_span_singleton.mpr ?_
+    refine ⟨-(ψ z), ?_⟩
+    simpa [neg_smul] using (eq_neg_of_add_eq_zero_left hz0).symm
+  have hker : LinearMap.ker φ ≤ LinearMap.ker ψ := by
+    intro z hz
+    rw [LinearMap.mem_ker] at hz ⊢
+    have hzu : ψ z • u = 0 := by
+      simpa [LinearMap.smulRight_apply, hz] using LinearMap.congr_fun hzero z
+    exact (smul_eq_zero.mp hzu).resolve_right hu
+  have hψ :
+      ψ ∈ Submodule.span 𝕜 (Set.range fun _ : Unit => φ) := by
+    apply mem_span_of_iInf_ker_le_ker
+    simpa using hker
+  exact ⟨hx, by simpa using hψ⟩
+
+end PO3Rigidity
 
 section PO3Symmetry
 

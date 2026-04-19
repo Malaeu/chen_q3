@@ -8874,3 +8874,24 @@ Update:
 - with this note in place, the next formal move is now sharply constrained:
   first prove the abstract window lemma `PO3-rig.1a`, then open `PO3-tail.1`
   as the gluing lemma for the constants `c_{a,N,M}`.
+
+## Result (2026-04-19) — abstract rank-one rigidity for `PO3-rig.1a` is now in Lean
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the theorem
+  `Q3.HBridge.po3_rankOne_companion_rigidity`;
+- this closes the abstract linear-algebra core behind `PO3-rig.1a`:
+  from
+  `φ.smulRight x + ψ.smulRight u = 0` with `φ ≠ 0` and `u ≠ 0`,
+  we now formally get both
+  `x ∈ 𝕜 ∙ u` and `ψ ∈ 𝕜 ∙ φ`;
+- that is the exact shell needed for the finite-window companion-cancellation
+  argument: one fixed nonzero functional leg and one fixed nonzero vector leg
+  force the two free legs onto the endpoint lines;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- net effect:
+  `PO3-rig.1` is no longer blocked by abstract finite-dimensional linear
+  algebra. The live step has moved one notch higher: attach the real surviving
+  window packet to this rank-one form, then specialize to the zero-mode column
+  and open the overlap gluing node `PO3-tail.1`.
