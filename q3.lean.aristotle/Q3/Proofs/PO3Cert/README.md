@@ -15,6 +15,7 @@ Current file map:
 ```text
 PO3Cert/
   FirstZetaGapWitness_2026_04_19_Data.lean
+  FirstZetaPrefix2_2026_04_19.lean
   FirstZetaSingleton_2026_04_19.lean
   README.md
 ```
@@ -75,6 +76,34 @@ Upstream shell dependency:
 Numerical provenance:
 - `ACTIVE/pipeline/po3_gamma_gap_witness_2026_04_19.json`
 - `scripts/po3_gamma_gap_witness.py`
+
+## Current honest `prefix2` theorem
+
+File:
+- `FirstZetaPrefix2_2026_04_19.lean`
+
+Purpose:
+- remove the off-chain certificate dependency for the concrete
+  `a = 1`, `prefix2` witness:
+  the file proves that the two manuscript gap weights attached to
+  `γ₀, γ₁` are positive real numbers, hence
+  `po3_first_zeta_gap_sum2_a1_decimal28 ≠ 0`.
+
+Exports:
+- `po3_gap_term20_11_real_a1`
+- `po3_gap_term20_11_real_a1_pos`
+- `po3_suzuki_filtered_pm_gap_term_20_11_a1_ofReal`
+- `po3_suzuki_manuscript_gap_weight_a1_ofReal`
+- `po3_suzuki_manuscript_gap_weight_a1_ofReal_pos`
+- `po3_first_zeta_gamma0_decimal28_real_gt_three_pi`
+- `po3_first_zeta_gamma1_decimal28_real_gt_three_pi`
+- `po3_first_zeta_gap_sum2_a1_decimal28_ne_zero_honest`
+- `po3_no_suzuki_raw_gamma_pm_prefix2_from_first_zeta_gap_sum2_honest`
+
+Status note:
+- `prefix2` now has a theorem-level closure with no external axiom;
+- the off-chain file `FirstZetaGapWitness_2026_04_19_Data.lean` remains useful
+  for `prefix3` and provenance, but is no longer the only closure path.
 
 ## Usage rule
 

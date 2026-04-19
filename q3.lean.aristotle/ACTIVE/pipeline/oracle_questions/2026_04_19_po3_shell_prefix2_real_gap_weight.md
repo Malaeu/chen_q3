@@ -1,17 +1,17 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-shell"
 related_addresses: ["PO3Cert", "PO3-prefix2"]
 ancestor_addresses: ["PO3", "PO2-shell"]
-child_or_next_addresses: ["PO3-shell.1"]
+child_or_next_addresses: ["PO3-shell.1", "PO3-prefix3"]
 raw_address_notation: "PO3-shell, PO3Cert, PO3-prefix2"
-normalized_addresses: ["PO3-shell", "PO3Cert", "PO3-prefix2", "PO3", "PO2-shell", "PO3-shell.1"]
+normalized_addresses: ["PO3-shell", "PO3Cert", "PO3-prefix2", "PO3", "PO2-shell", "PO3-shell.1", "PO3-prefix3"]
 address_status: "active"
 blocker: "Доказать theorem-level ненулевость manuscript gap sum2 при a = 1 через π-оценки и знак реального gap-weight"
 collections: ["q3_docs"]
 tags: ["po3", "shell", "prefix2", "gap_sum2", "pi_bounds"]
-insight_links: []
+insight_links: ["docs/insights/h1_po3_first_zeta_witness_stub_2026_04_19.md"]
 request_nodes: []
 strong_terms: ["manuscript gap sum2", "anti-diagonal gap 20 11", "pi bounds", "sin squared positivity"]
 empty_terms: []

@@ -8450,3 +8450,27 @@ Update:
 - if that succeeds, `prefix2` moves from off-chain certificate to theorem-level
   closure; if it fails, we will know the exact obstruction is cancellation
   between the two real gap-weights, not missing shell infrastructure.
+
+## Result (2026-04-19) — `PO3-shell` `prefix2` moved to honest theorem-level closure
+
+- search-pass landed exactly where it had to: the shell bridge was already in
+  place, and the only live brick was one real sign packet for the concrete
+  `a = 1` witness window;
+- that packet is now formalized in
+  `Q3/Proofs/PO3Cert/FirstZetaPrefix2_2026_04_19.lean`;
+- the proof rewrites the `(2,0) - (1,1)` six-pole gap term on the real axis,
+  proves it positive for `x > 3 * π`, and then combines this with
+  `Real.pi_lt_d20` to place both decimal-28 witnesses `γ₀, γ₁` inside the
+  positive window;
+- together with the already formalized singleton sine-nonvanishing facts, this
+  yields positivity of both manuscript gap weights, hence
+  `po3_first_zeta_gap_sum2_a1_decimal28 ≠ 0`;
+- the shell closure theorem
+  `po3_no_suzuki_raw_gamma_pm_prefix2_from_first_zeta_gap_sum2_honest`
+  is now honest and no longer depends on the off-chain certificate file;
+- operationally this means `PO3Cert` is no longer purely certificate-backed:
+  it now contains both singleton honest obstructions for `γ₀,γ₁,γ₂` and an
+  honest `prefix2` obstruction for `γ₀,γ₁`;
+- the remaining off-chain role of
+  `FirstZetaGapWitness_2026_04_19_Data.lean` is narrowed to `prefix3` and raw
+  provenance.

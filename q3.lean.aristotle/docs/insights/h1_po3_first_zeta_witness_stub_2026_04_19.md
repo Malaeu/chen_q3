@@ -2,7 +2,11 @@
 
 ## Status
 
-Work stub only. This is not a formal proof of nonzero yet.
+Частично закрыто.
+
+- `prefix2` теперь имеет честное theorem-level закрытие без внешнего
+  сертификата;
+- `prefix3` пока остаётся на off-chain certificate route.
 
 ## Purpose
 
@@ -65,15 +69,25 @@ For `a = 1` the frozen run gives:
 
 So the local numerical signal is comfortably away from zero.
 
-## Intended next formal move
+## Current honest `prefix2` landing
 
-Either:
+В
+[`Q3/Proofs/PO3Cert/FirstZetaPrefix2_2026_04_19.lean`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PO3Cert/FirstZetaPrefix2_2026_04_19.lean)
+теперь есть theorem-level closure для конкретного двухчленного witness-пакета
+при `a = 1`.
 
-1. accept an external numerical certificate for one of the two named gap sums;
-2. or produce a tiny imported certificate layer proving the corresponding
-   nonzero statement for the frozen decimal witness.
+Файл доказывает:
 
-No new Suzuki shell infrastructure is needed after this stub.
+- вещественную формулу для six-pole gap term `po3_gap_term20_11_real_a1`;
+- его положительность на окне `x > 3 * π`;
+- вещественную факторизацию manuscript gap-weight на реальной оси;
+- положительность двух весов при `γ₀`, `γ₁`;
+- теорему
+  `Q3.Proofs.PO3Cert.po3_first_zeta_gap_sum2_a1_decimal28_ne_zero_honest`;
+- и итоговое shell-замыкание
+  `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_prefix2_from_first_zeta_gap_sum2_honest`.
+
+Это уже не сертификатная заглушка: `prefix2` закрыт честной леммой внутри Lean.
 
 ## Current certificate landing
 
@@ -90,6 +104,10 @@ It exports:
   named external certificate axiom;
 - `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_cert`
   as the closure point back into the compiled `PO3` shell.
+
+Для `prefix2` этот off-chain слой теперь не обязателен: его заменяет честный
+theorem-level файл `FirstZetaPrefix2_2026_04_19.lean`. Для `prefix3` он всё ещё
+остаётся рабочим быстрым маршрутом.
 
 ## Current honest singleton landing
 
@@ -119,3 +137,12 @@ The key point is structural:
 each decimal-28 witness `γ₀,γ₁,γ₂` is rational, so it cannot equal an integer
 multiple of `π`; the file currently packages this into three honest singleton
 kill theorems at `a = 1`, one for each of the first three witness ordinates.
+
+## Intended next formal move
+
+Самый прямой следующий ход теперь уже уже уже не `prefix2`, а `prefix3`:
+
+1. либо поднять честный theorem-level аргумент для
+   `po3_first_zeta_gap_sum3_a1_decimal28 ≠ 0`;
+2. либо временно использовать уже собранный off-chain certificate path для
+   `prefix3`, не смешивая его с честным `prefix2`-закрытием.
