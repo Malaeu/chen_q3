@@ -152,6 +152,9 @@ Exports:
 - `po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet`
 - `po3_first_zeta_initial_packet_raw_ne_filtered_candidate`
 - `po3_no_tagged_first_zeta_initial_packet_eq_filtered_candidate`
+- `po3_no_filtered_candidate_of_eq_first_zeta_initial_packet_raw`
+- `po3_no_filtered_candidate_of_exists_eq_first_zeta_initial_packet_raw`
+- `po3_false_of_exists_eq_first_zeta_initial_packet_raw_and_filtered_candidate`
 - `po3_first_zeta_singleton_gamma0_profile`
 - `po3_first_zeta_singleton_gamma1_profile`
 - `po3_first_zeta_singleton_gamma2_profile`
@@ -170,6 +173,10 @@ Status note:
 - the direct shell-consumer layer is now also present in theorem form:
   pointwise `(tag) (u)` inequality and the collapsed existential
   `¬ ∃ tag u, ...`;
+- the next transport layer is also now present:
+  for an arbitrary shell kernel `K`, if `K` is identified with one tagged
+  first-zeta packet, then `K` is excluded from the filtered `(+,-)` candidate
+  shell, both in negated-existential and direct contradiction forms;
 - `po3_first_zeta_some_initial_packet_profile` is now the existential shell
   form `∃ tag, ...`, not a hand-written five-way disjunction.
 

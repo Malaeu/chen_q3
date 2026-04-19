@@ -8674,3 +8674,25 @@ Update:
   optionally add a contradiction corollary taking both `hpacket` and
   `hcand : ∃ u, K = candidate u`,
   then re-export through the existing `PO3Cert` layer and rerun Lean/build.
+
+## Result (2026-04-19) — `PO3-shell.4` kernel transport theorem landed
+
+- `Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean` now contains the
+  pointwise transport theorem
+  `po3_no_filtered_candidate_of_eq_first_zeta_initial_packet_raw`:
+  for arbitrary `K`, an equality `K = po3_first_zeta_initial_packet_raw tag`
+  already rules out every filtered `(+,-)` candidate form of `K`;
+- the same consumer layer is also exposed in existential shell form as
+  `po3_no_filtered_candidate_of_exists_eq_first_zeta_initial_packet_raw`,
+  plus the direct contradiction theorem
+  `po3_false_of_exists_eq_first_zeta_initial_packet_raw_and_filtered_candidate`;
+- this is the first real shell consumer above the raw/tag bridge:
+  downstream code can now stay at the level of an abstract kernel `K` and no
+  longer has to rewrite manually down to the raw packet family before killing
+  the candidate branch;
+- again, no new witness arithmetic or shell mathematics was added:
+  this is a pure equality-transport layer on top of the already closed
+  first-zeta family package;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
+  and `lake build Q3.Proofs.PO3Cert`.

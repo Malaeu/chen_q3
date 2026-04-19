@@ -162,6 +162,41 @@ theorem po3_no_tagged_first_zeta_initial_packet_eq_filtered_candidate :
   rcases h with ⟨tag, u, hEq⟩
   exact po3_first_zeta_initial_packet_raw_ne_filtered_candidate tag u hEq
 
+/-- Transport the direct raw-packet bridge to an arbitrary shell kernel `K`
+once `K` is identified with a fixed tagged first-zeta packet. -/
+theorem po3_no_filtered_candidate_of_eq_first_zeta_initial_packet_raw
+    {K : ℕ → ℕ → ℂ}
+    (tag : po3_first_zeta_initial_packet_tag)
+    (hK : K = po3_first_zeta_initial_packet_raw tag) :
+    ¬ ∃ u : ℕ → ℂ, K = po3_suzuki_filtered_pm_candidate u := by
+  intro h
+  rcases h with ⟨u, hu⟩
+  rw [hK] at hu
+  exact po3_first_zeta_initial_packet_raw_ne_filtered_candidate tag u hu
+
+/-- Existential shell form of the same transport theorem: any kernel that is
+one of the tagged first-zeta packets is automatically excluded from the
+one-variable filtered `(+,-)` shell. -/
+theorem po3_no_filtered_candidate_of_exists_eq_first_zeta_initial_packet_raw
+    {K : ℕ → ℕ → ℂ}
+    (hpacket : ∃ tag : po3_first_zeta_initial_packet_tag,
+      K = po3_first_zeta_initial_packet_raw tag) :
+    ¬ ∃ u : ℕ → ℂ, K = po3_suzuki_filtered_pm_candidate u := by
+  intro h
+  rcases hpacket with ⟨tag, hK⟩
+  exact po3_no_filtered_candidate_of_eq_first_zeta_initial_packet_raw tag hK h
+
+/-- Contradiction form for the same consumer layer on an arbitrary shell
+kernel `K`. -/
+theorem po3_false_of_exists_eq_first_zeta_initial_packet_raw_and_filtered_candidate
+    {K : ℕ → ℕ → ℂ}
+    (hpacket : ∃ tag : po3_first_zeta_initial_packet_tag,
+      K = po3_first_zeta_initial_packet_raw tag)
+    (hcand : ∃ u : ℕ → ℂ, K = po3_suzuki_filtered_pm_candidate u) :
+    False := by
+  exact po3_no_filtered_candidate_of_exists_eq_first_zeta_initial_packet_raw
+    hpacket hcand
+
 /-- No member of the initial first-zeta witness stack can come from a
 one-variable `(+,-)` profile. This is the disjunctive shell-facing form of the
 same local kill-layer. -/

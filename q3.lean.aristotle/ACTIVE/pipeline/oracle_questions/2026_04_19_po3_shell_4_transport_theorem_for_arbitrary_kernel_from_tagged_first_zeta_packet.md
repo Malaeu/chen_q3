@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-shell.4"
 related_addresses: ["PO3-shell", "PO3-shell.3", "PO3Cert"]
@@ -11,7 +11,7 @@ address_status: "active"
 blocker: "Дать transport-theorem на произвольный shell-kernel K: если K совпадает с tagged first-zeta packet, то K не может быть filtered (+,-) candidate"
 collections: ["q3_docs"]
 tags: ["po3", "shell", "transport", "kernel", "witness_stack"]
-insight_links: []
+insight_links: ["docs/insights/h1_po3_first_zeta_witness_stub_2026_04_19.md"]
 request_nodes: []
 strong_terms: ["kernel transport theorem", "exists tag K equals raw packet", "not exists filtered candidate"]
 empty_terms: []
@@ -24,9 +24,9 @@ neighbor_addresses: []
 
 ## Статус
 
-- карточка создана;
-- search-pass уже выполнен;
-- кодовый шаг ещё не начат.
+- карточка закрыта как `done`;
+- search-pass выполнен;
+- кодовый шаг завершён и собран.
 
 ## Точный блокер
 
@@ -84,6 +84,5 @@ neighbor_addresses: []
 
 ## Следующий адресный шаг
 
-- добавить theorem для явного `tag` и `hK : K = raw tag`;
-- добавить theorem для `hpacket : ∃ tag, K = raw tag`;
-- при необходимости добавить contradiction corollary и закрыть узел как `done`.
+- открыть `PO3-shell.5` как следующий consumer-узел уже поверх transport-layer;
+- использовать новый API на произвольном `K`, не возвращаясь к raw-family.
