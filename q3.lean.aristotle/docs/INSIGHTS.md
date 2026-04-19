@@ -8600,3 +8600,32 @@ Update:
 - success check passed:
   `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
   and `lake build Q3.Proofs.PO3Cert`.
+
+## Synthesis (2026-04-19, in progress) — `PO3-shell.3` direct tagged-packet bridge
+
+- exact target is now a one-line shell bridge, not new witness mathematics:
+  from the tag interface built in `FirstZetaWitnessStack_2026_04_19.lean`,
+  expose a theorem of the direct consumer form
+  `po3_first_zeta_initial_packet_raw tag ≠ po3_suzuki_filtered_pm_candidate u`;
+- repo search confirms the current gap precisely:
+  we already have `po3_first_zeta_initial_packet_profile_of_tag` and the
+  theorem `po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet`,
+  but downstream code still has to repackage equalities into the existential
+  predicate by hand;
+- `HBridge_PO3_Shell.lean` already provides the generic shell side:
+  `po3_suzuki_filtered_pm_candidate` and the anti-diagonal obstruction
+  interface, so the missing layer is purely the local bridge theorem in
+  `PO3Cert`, not any new shell mathematics;
+- local embedding search did not find any pre-existing direct inequality layer
+  for this packet family, which is informative: the implementation should stay
+  minimal and theorem-shaped;
+- external Lean docs confirm that finite inductive `cases` and existential
+  elimination are the standard tools here, so no extra infrastructure is
+  justified;
+- concrete implementation plan:
+  add one pointwise theorem `(tag) (u)`,
+  optionally add one collapsed existential theorem
+  `¬ ∃ tag u, ...`,
+  re-export them through `PO3Cert.lean`,
+  update `README` and the local witness note,
+  then run `lake env lean` and `lake build Q3.Proofs.PO3Cert`.
