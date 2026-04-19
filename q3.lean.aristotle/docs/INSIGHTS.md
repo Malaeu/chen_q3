@@ -9119,3 +9119,26 @@ Update:
 - after that theorem lands, `PO3-tail.2` is closed and the route moves
   immediately to `PO3-cauchy.1`, because the tail zero set is then already
   genuine rather than window-local.
+
+## Result (2026-04-19) — `PO3-tail.2` now has the abstract decay consumer
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the three generic theorems
+  behind the decay step:
+  `Q3.HBridge.po3_zero_scalar_of_tail_scalar_law_of_decay`,
+  `Q3.HBridge.po3_tail_zero_of_tail_scalar_law_of_decay`,
+  and
+  `Q3.HBridge.po3_tail_zero_of_window_family_of_decay`;
+- the first theorem is the exact scalar kill:
+  a tail law `values r = c * profile r`, together with unit-norm profile
+  `‖profile r‖ = 1` and explicit epsilon-decay of `values`, forces `c = 0`;
+- the second theorem converts that scalar kill directly into tail zero, and the
+  third theorem composes the new decay packet with the already-closed
+  `PO3-tail.1` gluing theorem, so one family of window laws plus decay now
+  yields `values r = 0` on the whole strict tail;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-tail.2` is now closed at the shell level.
+  The next honest node is `PO3-cauchy.1`, where this abstract tail zero law
+  has to be fed into the real Cauchy-type receiver.

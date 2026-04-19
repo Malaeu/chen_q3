@@ -1,5 +1,6 @@
 import Mathlib.Algebra.Star.Basic
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Analysis.Normed.Field.Basic
 import Mathlib.Algebra.Module.LinearMap.DivisionRing
 import Mathlib.LinearAlgebra.Dual.Lemmas
 import Mathlib.LinearAlgebra.Span.Basic
@@ -2799,6 +2800,66 @@ theorem po3_tail_scalar_law_of_window_family
   simpa [hc_eq.symm] using hr_eq
 
 end PO3TailLaw
+
+section PO3TailDecay
+
+variable {𝕜 : Type*}
+variable [NormedField 𝕜]
+
+/-- `PO3-tail.2`, scalar form:
+if a tail sequence is one scalar multiple of a unit-norm profile and the tail
+decays to zero in the explicit epsilon sense, then the scalar must be zero. -/
+theorem po3_zero_scalar_of_tail_scalar_law_of_decay
+    {values profile : ℕ → 𝕜} {N : ℕ} {c : 𝕜}
+    (hlaw : ∀ r, N < r → values r = c * profile r)
+    (hprofile : ∀ r, N < r → ‖profile r‖ = 1)
+    (hdecay : ∀ ε > 0, ∃ R, ∀ r, R ≤ r → ‖values r‖ < ε) :
+    c = 0 := by
+  by_contra hc
+  have hcpos : 0 < ‖c‖ := norm_pos_iff.mpr hc
+  obtain ⟨R, hR⟩ := hdecay (‖c‖ / 2) (half_pos hcpos)
+  let r := max R (N + 1)
+  have hrR : R ≤ r := le_max_left _ _
+  have hrN : N < r := lt_of_lt_of_le (Nat.lt_succ_self N) (le_max_right _ _)
+  have hsmall : ‖values r‖ < ‖c‖ / 2 := hR r hrR
+  have hnorm : ‖values r‖ = ‖c‖ := by
+    calc
+      ‖values r‖ = ‖c * profile r‖ := by rw [hlaw r hrN]
+      _ = ‖c‖ * ‖profile r‖ := norm_mul _ _
+      _ = ‖c‖ * 1 := by rw [hprofile r hrN]
+      _ = ‖c‖ := by ring
+  nlinarith [hcpos, hsmall, hnorm]
+
+/-- `PO3-tail.2`, tail-zero form:
+once the tail is a scalar multiple of a unit-norm profile and the sequence
+decays to zero, the whole strict tail must vanish. -/
+theorem po3_tail_zero_of_tail_scalar_law_of_decay
+    {values profile : ℕ → 𝕜} {N : ℕ} {c : 𝕜}
+    (hlaw : ∀ r, N < r → values r = c * profile r)
+    (hprofile : ∀ r, N < r → ‖profile r‖ = 1)
+    (hdecay : ∀ ε > 0, ∃ R, ∀ r, R ≤ r → ‖values r‖ < ε) :
+    ∀ r, N < r → values r = 0 := by
+  have hc : c = 0 :=
+    po3_zero_scalar_of_tail_scalar_law_of_decay hlaw hprofile hdecay
+  intro r hr
+  rw [hlaw r hr, hc, zero_mul]
+
+/-- Combined consumer for `PO3-tail.1 -> PO3-tail.2`:
+window laws glue to one tail law, and decay then kills that tail law. -/
+theorem po3_tail_zero_of_window_family_of_decay
+    {values profile : ℕ → 𝕜} {N : ℕ}
+    (hwin : ∀ M, N < M → ∃ c : 𝕜, ∀ r, N < r → r ≤ M → values r = c * profile r)
+    (hprofile : ∀ r, N < r → ‖profile r‖ = 1)
+    (hdecay : ∀ ε > 0, ∃ R, ∀ r, R ≤ r → ‖values r‖ < ε) :
+    ∀ r, N < r → values r = 0 := by
+  have hbase : profile (N + 1) ≠ 0 := by
+    intro hz
+    have hnorm1 : ‖profile (N + 1)‖ = 1 := hprofile (N + 1) (Nat.lt_succ_self N)
+    simpa [hz] using hnorm1
+  obtain ⟨c, hc⟩ := po3_tail_scalar_law_of_window_family hbase hwin
+  exact po3_tail_zero_of_tail_scalar_law_of_decay hc hprofile hdecay
+
+end PO3TailDecay
 
 section PO3Symmetry
 

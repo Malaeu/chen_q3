@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-tail.2"
 related_addresses: ["PO3-tail.1", "PO3-cauchy.1"]
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-rig.1", "PO3-tail.1"]
 child_or_next_addresses: ["PO3-cauchy.1"]
 raw_address_notation: "PO3-tail.2, PO3-cauchy.1"
 normalized_addresses: ["PO3-tail.2", "PO3-cauchy.1", "PO3-tail.1", "PO3-rig.1", "PO3-square.1"]
-address_status: "active"
+address_status: "done"
 blocker: "Нужен abstract decay-consumer: из хвостового закона values r = c * profile r и хвостового затухания values получить c = 0, а значит values r = 0 на всём хвосте."
 collections: ["q3_docs", "web"]
 tags: ["po3", "tail", "decay", "scalar_kill"]

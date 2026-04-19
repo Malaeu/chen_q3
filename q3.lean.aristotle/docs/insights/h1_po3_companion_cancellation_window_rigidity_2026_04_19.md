@@ -348,3 +348,24 @@ route сразу. Надо сначала посадить один clean rigidi
 
 Итог: `PO3-tail.1` закрыт как shell-layer. Следующий живой адрес уже
 `PO3-tail.2`, то есть убийство общей хвостовой константы через decay.
+
+## Lean update (2026-04-19, `PO3-tail.2`)
+
+Decay-consumer теперь тоже посажен.
+
+В `Q3/Proofs/HBridge_PO3_Shell.lean` добавлены:
+
+- `po3_zero_scalar_of_tail_scalar_law_of_decay`;
+- `po3_tail_zero_of_tail_scalar_law_of_decay`;
+- `po3_tail_zero_of_window_family_of_decay`.
+
+Это закрывает ровно тот шаг, который в заметке был уже проговорён словами:
+
+- если на хвосте
+  `values r = c * profile r`,
+  а `profile` имеет единичную норму;
+- и при этом `values` убывает к нулю в хвостовом epsilon-смысле;
+- то общий скаляр обязан быть нулём, а значит и весь хвост обязан занулиться.
+
+Итог: `PO3-tail.2` закрыт как abstract shell-consumer. Следующий живой адрес —
+`PO3-cauchy.1`.
