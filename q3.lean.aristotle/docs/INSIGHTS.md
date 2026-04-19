@@ -9493,3 +9493,35 @@ Update:
   ordering route.
   The remaining live wall is no longer this quotient family, but whichever
   square-support uniqueness / growth route we choose next.
+
+## Synthesis (2026-04-19, in progress) — `PO3-square.2c0` should freeze the canonical divider shell, not fake the full entire uniqueness route
+
+- the local oracle signal is consistent across three queries:
+  the real mathematical content already present in the March/April notes is not
+  yet a full entire-function uniqueness theorem, but a much narrower exact
+  factorization picture:
+  the square-tail set has a canonical entire divider
+  `E_N^{sq}(z)=\sin(\pi\sqrt z)/(\pi\sqrt z)` up to the finite front factor,
+  and after dividing by it the unresolved object is a quotient with the same
+  pole support;
+- the short external search confirms the classical canonical-product input from
+  a primary source:
+  DLMF §4.22 gives the sine product
+  `sin z = z ∏_{n≥1}(1 - z^2/(n^2 π^2))`,
+  which is exactly the background identity behind
+  `sin(π√z)/(π√z) = ∏_{n≥1}(1 - z/n^2)`;
+- the honest next Lean move is therefore not to formalize the transcendental
+  sine product itself, but to freeze the algebraic shell that will consume it:
+  define the finite square front factor, prove its successor recursion, then
+  prove that any canonical divider data
+  `base(z) = front_N(z) * E_N(z)`
+  automatically yields the pointwise step relation
+  `E_N(z) = (1 - z/(N+1)^2) * E_{N+1}(z)`
+  off the finite front-zero set;
+- this is the right `2c0` payload because it makes `2c` genuinely connect to
+  the already closed `2b1` shell:
+  once the canonical divider data is available analytically, the step relation
+  needed by the quotient-collapse packet becomes immediate algebra;
+- so the exact implementation target is narrow and honest:
+  add `po3_square_front_factor` plus its recursion and the derived
+  pointwise divider-step shell to `HBridge_PO3_Shell.lean`.
