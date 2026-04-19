@@ -8713,3 +8713,25 @@ Update:
   when the local shell packaging is forgotten later, we now have one stable
   document that says exactly where the route stands and what still separates
   the current branch from `RH`.
+
+## Synthesis (2026-04-19, in progress) — `PO3-shell.5` named kernel-family predicate
+
+- after `PO3-shell.4`, the remaining friction is now purely API-level:
+  downstream shell code still has to carry the witness hypothesis as
+  `hpacket : ∃ tag, K = po3_first_zeta_initial_packet_raw tag`;
+- exact target for `PO3-shell.5` is therefore a named family predicate on
+  kernels, something morally equivalent to
+  “`K` is one of the initial first-zeta packets”, together with theorems that
+  kill filtered `(+,-)` candidate branches directly from that predicate;
+- local embedding search found no pre-existing wrapper of this form, which is
+  informative: the work is a small API compression step, not new shell math;
+- repo search confirms the underlying content is already complete:
+  `FirstZetaWitnessStack_2026_04_19.lean` has the raw bridge, the transport
+  layer, and the contradiction theorem on arbitrary `K`;
+- official Lean docs again confirm that the minimal implementation should just
+  package the existing existential as a named `Prop` and then reuse the already
+  proved transport theorems by `simpa` / unfolding;
+- in parallel, the main route risk has been frozen in the dedicated attack note
+  `docs/insights/h1_po3_square_tail_injectivity_attack_2026_04_19.md`,
+  which records the four planned assaults on `PO3-square.2` and currently
+  prioritizes the divided-difference route (`2b`) over the others.
