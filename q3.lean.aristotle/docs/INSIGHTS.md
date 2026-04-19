@@ -8974,3 +8974,24 @@ Update:
 - once that lands, the shell side of `PO3-rig.1b` is fully closed, and the only
   remaining gap is the genuine Q3-side certificate connecting the compressed
   zero-mode coordinates to the alternating endpoint profile.
+
+## Result (2026-04-19) — the full shell side of `PO3-rig.1b` is now closed
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now also contains
+  `Q3.HBridge.po3_scalar_eq_of_shared_coordinate_profile` and
+  `Q3.HBridge.po3_shared_coordinate_profile_of_two_mem_span_singleton`;
+- this closes the exact abstract reflection-even/shared-sequence step:
+  if the plus and minus compressed pieces are both scalar multiples of the same
+  nonzero profile and are encoded by the same value sequence, then the two
+  scalar multipliers coincide, so one common window constant exists;
+- verification passed again:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- the important coordination verdict is now sharp:
+  the remaining gap in `PO3-rig.1b` is no longer shell-level linear algebra.
+  It is exactly the missing Q3-side coefficient certificate for the real
+  compressed zero-mode column;
+- in other words, the next honest step is not “more shell”, but either:
+  1. introduce the real `v_{a,N}` / `w_{r,0}(a)` layer in Lean, or
+  2. add a separate certificate file that feeds their coordinate laws into the
+     already-closed shell.

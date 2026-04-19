@@ -68,6 +68,34 @@ w_{r,0}(a)=c_{a,N,M}(-1)^r
 осталось только честно дать реальный Q3-side coefficient certificate для
 compressed zero-mode column `v_{a,N}`.
 
+### Update (Lean, 2026-04-19, third pass)
+
+Shell для `PO3-rig.1b` теперь закрыт полностью.
+
+Добавлены ещё две леммы:
+
+- `Q3.HBridge.po3_scalar_eq_of_shared_coordinate_profile`;
+- `Q3.HBridge.po3_shared_coordinate_profile_of_two_mem_span_singleton`.
+
+Их смысл такой:
+
+```tex
+\text{если одна и та же последовательность }w_r
+\text{ равна }c_+ \sigma_r\text{ и }c_- \sigma_r,
+\text{ а }\sigma\text{ где-то ненулевая, то }c_+=c_-.
+```
+
+Значит из двух span-laws на плюс- и минус-окне и из общей кодирующей
+последовательности автоматически получается **один** общий оконный скаляр.
+
+Это именно тот abstract reflection-even / shared-sequence bridge, которого
+не хватало, чтобы довести `PO3-rig.1b` до конца на shell-уровне.
+
+Следовательно, следующий настоящий live brick уже не про shell:
+нужно либо ввести в Lean реальные объекты `v_{a,N}` и `w_{r,0}(a)`,
+либо посадить отдельный Q3-side certificate layer, который честно подаст их
+в этот уже закрытый shell.
+
 ## Где этот узел в лестнице
 
 См. также:

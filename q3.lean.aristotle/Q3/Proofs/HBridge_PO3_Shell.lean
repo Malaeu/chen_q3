@@ -2703,6 +2703,49 @@ theorem po3_coordinate_profile_of_rankOne_companion_rigidity
   rcases po3_rankOne_companion_rigidity hφ hu_nonzero hzero with ⟨hx, _⟩
   exact po3_coordinate_profile_of_mem_span_singleton coords hx hu hxv
 
+/-- If the same coordinate sequence is written as two scalar multiples of the
+same nonzero profile, the scalar is unique. This is the abstract shared-scalar
+bridge behind the reflection-even step of `PO3-rig.1b`. -/
+theorem po3_scalar_eq_of_shared_coordinate_profile
+    {ι : Type*}
+    {profile values : ι → 𝕜}
+    {c₁ c₂ : 𝕜}
+    (h₁ : ∀ i, values i = c₁ * profile i)
+    (h₂ : ∀ i, values i = c₂ * profile i)
+    (hnz : ∃ i, profile i ≠ 0) :
+    c₁ = c₂ := by
+  rcases hnz with ⟨i, hi⟩
+  have hEq : c₁ * profile i = c₂ * profile i := by
+    calc
+      c₁ * profile i = values i := by simpa using (h₁ i).symm
+      _ = c₂ * profile i := h₂ i
+  have hEq' : profile i * c₁ = profile i * c₂ := by
+    simpa [mul_comm] using hEq
+  exact mul_left_cancel₀ hi hEq'
+
+/-- Two compressed pieces encoded by the same coordinate sequence and the same
+nonzero profile automatically share one common scalar window law. -/
+theorem po3_shared_coordinate_profile_of_two_mem_span_singleton
+    {W : Type*}
+    [AddCommGroup W] [Module 𝕜 W]
+    {ι : Type*}
+    (coordsV : ι → V →ₗ[𝕜] 𝕜)
+    (coordsW : ι → W →ₗ[𝕜] 𝕜)
+    {x u : V} {y v : W} {profile values : ι → 𝕜}
+    (hx : x ∈ 𝕜 ∙ u)
+    (hy : y ∈ 𝕜 ∙ v)
+    (hu : ∀ i, coordsV i u = profile i)
+    (hv : ∀ i, coordsW i v = profile i)
+    (hxv : ∀ i, coordsV i x = values i)
+    (hyv : ∀ i, coordsW i y = values i)
+    (hnz : ∃ i, profile i ≠ 0) :
+    ∃ c : 𝕜, ∀ i, values i = c * profile i := by
+  rcases po3_coordinate_profile_of_mem_span_singleton coordsV hx hu hxv with ⟨cV, hcV⟩
+  rcases po3_coordinate_profile_of_mem_span_singleton coordsW hy hv hyv with ⟨cW, hcW⟩
+  have hEq : cV = cW :=
+    po3_scalar_eq_of_shared_coordinate_profile hcV hcW hnz
+  exact ⟨cV, hcV⟩
+
 end PO3WindowLaw
 
 section PO3Symmetry
