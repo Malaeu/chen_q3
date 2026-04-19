@@ -46,6 +46,9 @@ Companion-cancellation rigidity на конечном окне:
 `w_{r,0}(a) = c_{a,N,M} (-1)^r`
 на всём окне.
 
+Рабочая note для этого узла:
+`docs/insights/h1_po3_companion_cancellation_window_rigidity_2026_04_19.md`.
+
 ### `PO3-rig.2`  `[Содержательно]`
 
 Уточнить rigidity как forced alternating law, а не как артефакт выбора базиса

@@ -8854,3 +8854,23 @@ Update:
   theorem for the project-specific window rigidity step, so the next honest
   implementation should be an internal note/theorem packet, not a literature
   import.
+
+## Result (2026-04-19) — `PO3-rig.1` theorem-packet frozen as a standalone note
+
+- the new note
+  `docs/insights/h1_po3_companion_cancellation_window_rigidity_2026_04_19.md`
+  now freezes the exact three-step packet for the next substantive node:
+  `PO3-rig.1a` abstract finite-window rigidity,
+  `PO3-rig.1b` specialization to the zero-mode column, and
+  `PO3-rig.1c` overlap-gluing interface to `PO3-tail.1`;
+- this is the right compression of the current state:
+  `PO3-rig.1` is no longer “some future idea about rigidity”, but one exact
+  extraction theorem from the already-frozen companion-cancellation packet;
+- the note also records the honest failure mode:
+  if the surviving mixed block cannot really be written as
+  `x_M ⊗ u_{-,M,N} + u_{+,M,N} ⊗ y_M`, then the problem is mathematical and we
+  must roll back to a more precise packet form instead of pretending the route
+  is ready;
+- with this note in place, the next formal move is now sharply constrained:
+  first prove the abstract window lemma `PO3-rig.1a`, then open `PO3-tail.1`
+  as the gluing lemma for the constants `c_{a,N,M}`.
