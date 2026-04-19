@@ -8427,3 +8427,26 @@ Update:
   там остаётся возможная cross-mode cancellation, но cert-layer уже перестал
   быть purely off-chain:
   внутри него теперь есть честное формальное семейство singleton obstructions.
+
+## Synthesis (2026-04-19, in progress) — `PO3-shell` real gap-weight bridge for `prefix2`
+
+- target lemma now is no longer a broad `PO3` search, but one exact shell-level
+  bridge: prove `po3_first_zeta_gap_sum2_a1_decimal28 ≠ 0` structurally enough
+  to feed `po3_no_suzuki_raw_gamma_pm_prefix2_of_first_zeta_decimal28_witness`;
+- local oracle search confirms the shell side is already packaged:
+  `po3_suzuki_manuscript_gap_weight`,
+  `po3_suzuki_manuscript_gap_sum2`,
+  `po3_suzuki_raw_gamma_pm_prefix2_antidiagonal_gap_20_11`,
+  `po3_no_suzuki_raw_gamma_pm_prefix2_of_gap_sum2_ne_zero`;
+- the missing piece is therefore not another bridge theorem, but a real
+  inequality packet for the explicit `a = 1` witness window;
+- external mathlib check confirms the needed constants are already available in
+  primary sources:
+  `Real.pi_gt_d20`, `Real.pi_lt_d20`, together with standard `positivity` /
+  `nlinarith` tooling from mathlib docs;
+- the honest next attack is: rewrite the six-pole gap term on the real axis,
+  isolate a sign lemma on a window like `x > 3 * π`, and then combine that with
+  interval placement for `γ₀, γ₁` at decimal-20 precision;
+- if that succeeds, `prefix2` moves from off-chain certificate to theorem-level
+  closure; if it fails, we will know the exact obstruction is cancellation
+  between the two real gap-weights, not missing shell infrastructure.
