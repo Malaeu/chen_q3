@@ -24,16 +24,39 @@ def po3_first_zeta_gap_witness_sha256 : String :=
   "00612c3c2f5d78ab7e45a9b8961a8c1c8a914e99ef61aadac75fcb8b4289feeb"
 
 /-- Raw numerical value reported in the witness snapshot for
+`po3_first_zeta_gap_sum2_a1_decimal28`. This constant is documentary only; the
+formal bridge below still depends only on the named nonzero certificate. -/
+def po3_first_zeta_gap_sum2_a1_decimal28_raw : ℝ :=
+  0.0008012376722781014
+
+/-- Raw numerical value reported in the witness snapshot for
 `po3_first_zeta_gap_sum3_a1_decimal28`. This constant is documentary only; the
 formal bridge below still depends only on the named nonzero certificate. -/
 def po3_first_zeta_gap_sum3_a1_decimal28_raw : ℝ :=
   0.0008013257563312617
+
+/-- External numerical certificate for the concrete two-mode first-zeta
+packet at `a = 1`. This is off-chain data, analogous in spirit to the
+PrimeCert numeric certificate layer. -/
+axiom po3_first_zeta_gap_sum2_a1_decimal28_ne_zero :
+    Q3.HBridge.po3_first_zeta_gap_sum2_a1_decimal28 ≠ 0
 
 /-- External numerical certificate for the concrete three-mode first-zeta
 packet at `a = 1`. This is off-chain data, analogous in spirit to the
 PrimeCert numeric certificate layer. -/
 axiom po3_first_zeta_gap_sum3_a1_decimal28_ne_zero :
     Q3.HBridge.po3_first_zeta_gap_sum3_a1_decimal28 ≠ 0
+
+/-- Off-chain closure point for the concrete first-zeta `prefix2` witness. -/
+theorem po3_no_suzuki_raw_gamma_pm_prefix2_from_first_zeta_gap_cert :
+    ¬ ∃ u,
+      Q3.HBridge.po3_suzuki_raw_gamma_pm_prefix2
+          (1 : ℂ)
+          Q3.HBridge.po3_first_zeta_gamma0_decimal28
+          Q3.HBridge.po3_first_zeta_gamma1_decimal28
+        = Q3.HBridge.po3_suzuki_filtered_pm_candidate u := by
+  exact Q3.HBridge.po3_no_suzuki_raw_gamma_pm_prefix2_of_first_zeta_decimal28_witness
+    po3_first_zeta_gap_sum2_a1_decimal28_ne_zero
 
 /-- Off-chain closure point for the concrete first-zeta `prefix3` witness. -/
 theorem po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_cert :

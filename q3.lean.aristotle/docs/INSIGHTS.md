@@ -8374,9 +8374,11 @@ Update:
   `Q3/Proofs/PO3Cert/FirstZetaGapWitness_2026_04_19_Data.lean`
   с provenance-полями
   `source`, `sha256`,
-  одной именованной аксиомой
+  двумя именованными аксиомами
+  `po3_first_zeta_gap_sum2_a1_decimal28_ne_zero`,
   `po3_first_zeta_gap_sum3_a1_decimal28_ne_zero`
-  и closure-theorem
+  и двумя closure-theorems
+  `po3_no_suzuki_raw_gamma_pm_prefix2_from_first_zeta_gap_cert`,
   `po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_cert`;
 - это именно тот формат, который у нас уже используется в `PrimeCert`:
   численный сертификат вынесен в отдельный off-chain слой и не смешан с
@@ -8392,3 +8394,12 @@ Update:
   и быстрый следующий честный шаг теперь — либо заморозить один такой
   witness как explicit candidate, либо поднять отдельную маленькую лемму,
   которая переносит явный численный nonzero-certificate в formal shell.
+- параллельно пришёл новый Aristotle-run
+  `1924e0b3-1fbe-4406-b9c2-53750d26e852` по `PO3a-A0`;
+  пакет оказался чистым:
+  в `RequestProject/DoubleTelescoping.lean` нет `sorry`, `admit` и `exact?`,
+  и файл прогоняется через `lake env lean`;
+- содержательно этот пакет не открывает новую дверь, а аккуратно дублирует
+  уже существующий shell `po3_double_telescoping` / `PO3a-A0`,
+  так что его правильный статус сейчас — structural candidate / external
+  cross-check, а не срочная интеграция в mainline-код.

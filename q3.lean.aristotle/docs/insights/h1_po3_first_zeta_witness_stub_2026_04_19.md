@@ -82,6 +82,10 @@ That certificate layer now exists as the separate off-chain file
 
 It exports:
 
+- `Q3.Proofs.PO3Cert.po3_first_zeta_gap_sum2_a1_decimal28_ne_zero` as the
+  named external certificate axiom for the concrete `prefix2` gap;
+- `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_prefix2_from_first_zeta_gap_cert`
+  as the closure point for the compiled `prefix2` shell;
 - `Q3.Proofs.PO3Cert.po3_first_zeta_gap_sum3_a1_decimal28_ne_zero` as the
   named external certificate axiom;
 - `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_cert`

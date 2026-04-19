@@ -30,12 +30,15 @@ File:
 - `FirstZetaGapWitness_2026_04_19_Data.lean`
 
 Purpose:
-- package the concrete `a = 1` first-zeta decimal witness for the `prefix3`
-  Suzuki shell.
+- package the concrete `a = 1` first-zeta decimal witness for the
+  `prefix2/prefix3` Suzuki shells.
 
 Exports:
 - `po3_first_zeta_gap_witness_source`
 - `po3_first_zeta_gap_witness_sha256`
+- `po3_first_zeta_gap_sum2_a1_decimal28_raw`
+- `po3_first_zeta_gap_sum2_a1_decimal28_ne_zero`
+- `po3_no_suzuki_raw_gamma_pm_prefix2_from_first_zeta_gap_cert`
 - `po3_first_zeta_gap_sum3_a1_decimal28_raw`
 - `po3_first_zeta_gap_sum3_a1_decimal28_ne_zero`
 - `po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_cert`
