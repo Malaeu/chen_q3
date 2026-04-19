@@ -74,3 +74,15 @@ Either:
    nonzero statement for the frozen decimal witness.
 
 No new Suzuki shell infrastructure is needed after this stub.
+
+## Current certificate landing
+
+That certificate layer now exists as the separate off-chain file
+[`Q3/Proofs/PO3Cert/FirstZetaGapWitness_2026_04_19_Data.lean`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PO3Cert/FirstZetaGapWitness_2026_04_19_Data.lean).
+
+It exports:
+
+- `Q3.Proofs.PO3Cert.po3_first_zeta_gap_sum3_a1_decimal28_ne_zero` as the
+  named external certificate axiom;
+- `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_cert`
+  as the closure point back into the compiled `PO3` shell.

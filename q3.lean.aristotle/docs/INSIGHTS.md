@@ -8369,6 +8369,18 @@ Update:
   так что следующий шаг теперь действительно узкий:
   осталось только подать внешний сертификат ненулевости в один из двух
   уже скомпилированных witness-bridge theorems;
+- следующий шаг уже частично закрыт:
+  добавлен отдельный off-chain certificate file
+  `Q3/Proofs/PO3Cert/FirstZetaGapWitness_2026_04_19_Data.lean`
+  с provenance-полями
+  `source`, `sha256`,
+  одной именованной аксиомой
+  `po3_first_zeta_gap_sum3_a1_decimal28_ne_zero`
+  и closure-theorem
+  `po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_cert`;
+- это именно тот формат, который у нас уже используется в `PrimeCert`:
+  численный сертификат вынесен в отдельный off-chain слой и не смешан с
+  основным shell-файлом;
 - это не даёт формального theorem-level closure, но даёт очень сильный
   локальный сигнал:
   готовые леммы `prefix2/prefix3` уже имеют содержательный численный вход,
