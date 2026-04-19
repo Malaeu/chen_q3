@@ -8647,3 +8647,30 @@ Update:
 - verification passed:
   `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
   and `lake build Q3.Proofs.PO3Cert`.
+
+## Synthesis (2026-04-19, in progress) — `PO3-shell.4` kernel transport theorem
+
+- exact next target is now the first genuine consumer above the direct bridge:
+  a theorem for an arbitrary shell kernel `K` saying that if
+  `K = po3_first_zeta_initial_packet_raw tag` for some tag, then
+  `K` cannot equal any `po3_suzuki_filtered_pm_candidate u`;
+- this is the right next layer because `PO3-shell.3` already killed the raw
+  tagged packet directly, but downstream code still has to transport that kill
+  through an equality `K = raw tag` by hand;
+- local embedding search found no existing reusable theorem of this exact form,
+  which is informative: the remaining work is a small equality-transport layer,
+  not hidden shell mathematics;
+- repo search confirms the mathematical ingredients are already complete:
+  `FirstZetaWitnessStack_2026_04_19.lean` has the direct bridge
+  `po3_first_zeta_initial_packet_raw_ne_filtered_candidate`,
+  while `HBridge_PO3_Shell.lean` already packages the generic filtered-candidate
+  side;
+- official Lean docs on equality and quantifiers confirm that the minimal
+  implementation should use plain equality rewriting (`rw` / `simpa`) and
+  existential elimination, with no extra infrastructure;
+- concrete implementation plan:
+  add a pointwise transport theorem for explicit `tag` and `hK : K = raw tag`,
+  add an existential shell theorem for `hpacket : ∃ tag, K = raw tag`,
+  optionally add a contradiction corollary taking both `hpacket` and
+  `hcand : ∃ u, K = candidate u`,
+  then re-export through the existing `PO3Cert` layer and rerun Lean/build.
