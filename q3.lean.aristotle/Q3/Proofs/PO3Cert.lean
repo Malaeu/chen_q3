@@ -3,6 +3,7 @@ import Q3.Proofs.PO3Cert.FirstZetaPrefix2_2026_04_19
 import Q3.Proofs.PO3Cert.FirstZetaPrefix3_2026_04_19
 import Q3.Proofs.PO3Cert.FirstZetaSingleton_2026_04_19
 import Q3.Proofs.PO3Cert.FirstZetaWitnessStack_2026_04_19
+import Q3.Proofs.PO3Cert.WindowLawCertificate_2026_04_19
 
 /-!
 Off-chain certificate hub for the experimental `PO3` witness layer.

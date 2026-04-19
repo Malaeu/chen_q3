@@ -19,6 +19,7 @@ PO3Cert/
   FirstZetaPrefix3_2026_04_19.lean
   FirstZetaSingleton_2026_04_19.lean
   FirstZetaWitnessStack_2026_04_19.lean
+  WindowLawCertificate_2026_04_19.lean
   README.md
 ```
 
@@ -170,6 +171,31 @@ Exports:
 - `po3_first_zeta_initial_packet_kill_layer_honest`
 - `po3_first_zeta_some_initial_packet_profile`
 - `po3_first_zeta_some_initial_packet_profile_false_honest`
+
+## Current certificate feeder for `PO3-rig.1b`
+
+File:
+- `WindowLawCertificate_2026_04_19.lean`
+
+Purpose:
+- freeze the exact input contract for the still-missing real Q3-side coordinate
+  certificate behind the compressed zero-mode window law;
+- keep that contract inside `PO3Cert`, not inside the mainline shell, so that
+  later Q3 data can be plugged in without changing the already-closed abstract
+  linear algebra.
+
+Exports:
+- `po3_window_scalar_law`
+- `PO3WindowCoordinateCertificate`
+- `po3_window_scalar_law_of_certificate`
+
+Status note:
+- this file does **not** define the real objects `v_{a,N}` or `w_{r,0}(a)`;
+- it only states exactly what a future Q3-side certificate must provide:
+  two compressed pieces, one shared coordinate sequence, one shared endpoint
+  profile, and one nonzero profile index;
+- once such a certificate is available, the feeder theorem returns the one
+  scalar window law needed by `PO3-tail.1`.
 
 Status note:
 - the whole first-zeta `a = 1` witness stack is now packaged as one reusable

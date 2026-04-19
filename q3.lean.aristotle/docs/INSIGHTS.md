@@ -9024,3 +9024,27 @@ Update:
 - that gives us a clean handoff: once real Q3 certificate data appears, we feed
   it into `PO3Cert`, and the shell theorem fires without reopening the linear
   algebra.
+
+## Result (2026-04-19) — `PO3-rig.1b.cert` now has a compiled certificate feeder
+
+- `Q3/Proofs/PO3Cert/WindowLawCertificate_2026_04_19.lean` now freezes the
+  exact feeder contract behind the closed `PO3-rig.1b` shell:
+  two compressed pieces, two coordinate families, one shared value sequence,
+  one shared endpoint profile, and one nonzero profile index;
+- the file exports three reusable names:
+  `po3_window_scalar_law`,
+  `PO3WindowCoordinateCertificate`,
+  and
+  `po3_window_scalar_law_of_certificate`;
+- the consumer theorem is exactly the intended bridge:
+  once a future Q3-side certificate instantiates that structure, Lean returns
+  `∃ c, values i = c * profile i` immediately by reusing
+  `Q3.HBridge.po3_shared_coordinate_profile_of_two_mem_span_singleton`;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/WindowLawCertificate_2026_04_19.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-rig.1b.cert` is now closed as an interface problem.
+  The next live step is no longer shell glue and no longer certificate design;
+  it is the real Q3-side content that will instantiate this feeder and pass the
+  resulting window scalar law into `PO3-tail.1`.

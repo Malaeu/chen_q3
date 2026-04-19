@@ -305,3 +305,26 @@ x_M\otimes u_{-,M,N} + u_{+,M,N}\otimes y_M,
 
 То есть следующий кодовый шаг не должен пытаться доказать весь tail-zero
 route сразу. Надо сначала посадить один clean rigidity packet.
+
+## Lean update (2026-04-19, `PO3-rig.1b.cert`)
+
+Сертификатный слой для этого пакета теперь тоже посажен.
+
+В `Q3/Proofs/PO3Cert/WindowLawCertificate_2026_04_19.lean` добавлен точный
+контракт `PO3WindowCoordinateCertificate` и theorem-consumer
+`po3_window_scalar_law_of_certificate`.
+
+Смысл узкий и правильный:
+
+- shell `PO3-rig.1b` больше не ждёт новых abstract lemmas;
+- теперь ему нужен только реальный Q3-side certificate, который подаст:
+  две compressed pieces,
+  один shared coordinate sequence,
+  один alternating endpoint profile,
+  и один nonzero profile index;
+- после этого Lean автоматически возвращает
+  `∃ c, values i = c * profile i`,
+  то есть ровно тот оконный скалярный закон, который нужен для `PO3-tail.1`.
+
+Итог: `PO3-rig.1b.cert` закрыт как interface-layer. Живой остаток уже не в
+линейной алгебре, а в реальном Q3 certificate content.

@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-rig.1b.cert"
 related_addresses: ["PO3-rig.1b", "PO3-tail.1"]
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-rig.1", "PO3-rig.1b"]
 child_or_next_addresses: ["PO3-tail.1"]
 raw_address_notation: "PO3-rig.1b.cert, PO3-tail.1"
 normalized_addresses: ["PO3-rig.1b.cert", "PO3-tail.1", "PO3-rig.1b", "PO3-rig.1", "PO3-rig.2"]
-address_status: "active"
+address_status: "done"
 blocker: "В Lean нет live-определений v_{a,N} и w_{r,0}(a); нужен отдельный certificate-layer, который подаёт compressed coordinate laws и alternating endpoint profile в уже закрытый shell PO3-rig.1b."
 collections: ["q3_docs", "web"]
 tags: ["po3", "certificate", "zero_mode", "coordinate_law"]
