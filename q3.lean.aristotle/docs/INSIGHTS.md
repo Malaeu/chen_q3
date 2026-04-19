@@ -8403,3 +8403,14 @@ Update:
   уже существующий shell `po3_double_telescoping` / `PO3a-A0`,
   так что его правильный статус сейчас — structural candidate / external
   cross-check, а не срочная интеграция в mainline-код.
+- cert-ветка теперь стала чуть сильнее:
+  добавлен честный theorem-level singleton module
+  `Q3/Proofs/PO3Cert/FirstZetaSingleton_2026_04_19.lean`,
+  где без внешних аксиом доказывается
+  `po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma0_decimal28`;
+  ключевая идея полностью structural:
+  decimal-28 witness `γ₀` рационален, поэтому не может совпасть ни с одним
+  целым кратным `π`, а значит для `a = 1` manuscript singleton уже имеет
+  ненулевой anti-diagonal gap;
+- это ещё не убивает `prefix2/prefix3`, но даёт первый честный theorem-level
+  obstruction внутри `PO3Cert`, а не только off-chain certificate shell.

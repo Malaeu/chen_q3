@@ -90,3 +90,20 @@ It exports:
   named external certificate axiom;
 - `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_cert`
   as the closure point back into the compiled `PO3` shell.
+
+## Current honest singleton landing
+
+There is now also a theorem-level singleton obstruction with no external axiom
+in
+[`Q3/Proofs/PO3Cert/FirstZetaSingleton_2026_04_19.lean`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PO3Cert/FirstZetaSingleton_2026_04_19.lean).
+
+It exports:
+
+- `Q3.Proofs.PO3Cert.po3_first_zeta_gamma0_decimal28_ne_int_mul_pi`;
+- `Q3.Proofs.PO3Cert.po3_first_zeta_gamma0_decimal28_sin_ne_zero`;
+- `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma0_decimal28`.
+
+The key point is structural:
+the decimal-28 witness `γ₀` is rational, so it cannot equal an integer
+multiple of `π`, and that already kills the singleton `(+,-)` candidate at
+`a = 1`.

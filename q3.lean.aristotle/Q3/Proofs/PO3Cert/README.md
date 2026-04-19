@@ -15,6 +15,7 @@ Current file map:
 ```text
 PO3Cert/
   FirstZetaGapWitness_2026_04_19_Data.lean
+  FirstZetaSingleton_2026_04_19.lean
   README.md
 ```
 
@@ -42,6 +43,22 @@ Exports:
 - `po3_first_zeta_gap_sum3_a1_decimal28_raw`
 - `po3_first_zeta_gap_sum3_a1_decimal28_ne_zero`
 - `po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_cert`
+
+## Current honest singleton theorem
+
+File:
+- `FirstZetaSingleton_2026_04_19.lean`
+
+Purpose:
+- record one theorem-level local obstruction with no external axiom:
+  the first decimal-28 zeta witness `γ₀` is rational, so it cannot sit on the
+  manuscript `π`-lattice, and the singleton raw packet at `a = 1` already has
+  a nonzero anti-diagonal gap.
+
+Exports:
+- `po3_first_zeta_gamma0_decimal28_ne_int_mul_pi`
+- `po3_first_zeta_gamma0_decimal28_sin_ne_zero`
+- `po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma0_decimal28`
 
 Upstream shell dependency:
 - `Q3/Proofs/HBridge_PO3_Shell.lean`
