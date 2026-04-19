@@ -9070,3 +9070,28 @@ Update:
   `PO3-tail.1` glues them,
   and only after that do we open `PO3-tail.2` for the decay kill
   `c_{a,N} = 0`.
+
+## Result (2026-04-19) — `PO3-tail.1` now has the abstract overlap-gluing shell
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the two generic consumers
+  behind the tail-gluing node:
+  `Q3.HBridge.po3_scalar_eq_of_tail_window_overlap`
+  and
+  `Q3.HBridge.po3_tail_scalar_law_of_window_family`;
+- the first theorem is the exact pairwise overlap step:
+  if two window laws
+  `values r = c₁ * profile r`
+  and
+  `values r = c₂ * profile r`
+  overlap at one index where the profile is nonzero, then `c₁ = c₂`;
+- the second theorem packages the actual `PO3-tail.1` consumer:
+  a family of finite-window scalar laws plus one nonzero base profile entry at
+  `N+1` collapses to one global tail scalar law
+  `∃ c, ∀ r > N, values r = c * profile r`;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-tail.1` is now closed at the shell level.
+  The next live consumer is `PO3-tail.2`: feed this glued tail law together
+  with the off-diagonal decay input and kill the tail constant.

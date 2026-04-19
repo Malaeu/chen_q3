@@ -2748,6 +2748,58 @@ theorem po3_shared_coordinate_profile_of_two_mem_span_singleton
 
 end PO3WindowLaw
 
+section PO3TailLaw
+
+variable {𝕜 : Type*}
+variable [Field 𝕜]
+
+/-- `PO3-tail.1`, pairwise form:
+if two finite window laws for the same tail sequence overlap at one index where
+the profile is nonzero, then their window scalars must coincide. -/
+theorem po3_scalar_eq_of_tail_window_overlap
+    {values profile : ℕ → 𝕜}
+    {N M₁ M₂ : ℕ} {c₁ c₂ : 𝕜}
+    (hNM₁ : N < M₁) (hM₁M₂ : M₁ ≤ M₂)
+    (h₁ : ∀ r, N < r → r ≤ M₁ → values r = c₁ * profile r)
+    (h₂ : ∀ r, N < r → r ≤ M₂ → values r = c₂ * profile r)
+    (hnz : profile M₁ ≠ 0) :
+    c₁ = c₂ := by
+  have hEq : c₁ * profile M₁ = c₂ * profile M₁ := by
+    calc
+      c₁ * profile M₁ = values M₁ := by
+        simpa using (h₁ M₁ hNM₁ le_rfl).symm
+      _ = c₂ * profile M₁ := by
+        exact h₂ M₁ hNM₁ hM₁M₂
+  have hEq' : profile M₁ * c₁ = profile M₁ * c₂ := by
+    simpa [mul_comm] using hEq
+  exact mul_left_cancel₀ hnz hEq'
+
+/-- `PO3-tail.1`, family form:
+if every finite tail window carries one scalar profile law and the base profile
+entry at `N+1` is nonzero, then all window scalars glue to one tail scalar
+law on the whole strict tail. -/
+theorem po3_tail_scalar_law_of_window_family
+    {values profile : ℕ → 𝕜} {N : ℕ}
+    (hbase : profile (N + 1) ≠ 0)
+    (hwin : ∀ M, N < M → ∃ c : 𝕜, ∀ r, N < r → r ≤ M → values r = c * profile r) :
+    ∃ c : 𝕜, ∀ r, N < r → values r = c * profile r := by
+  obtain ⟨c₀, hc₀⟩ := hwin (N + 1) (Nat.lt_succ_self N)
+  refine ⟨c₀, ?_⟩
+  intro r hr
+  obtain ⟨cr, hcr⟩ := hwin r hr
+  have hc_eq : c₀ = cr := by
+    apply po3_scalar_eq_of_tail_window_overlap
+      (N := N) (M₁ := N + 1) (M₂ := r)
+    · exact Nat.lt_succ_self N
+    · exact Nat.succ_le_of_lt hr
+    · exact hc₀
+    · exact hcr
+    · exact hbase
+  have hr_eq : values r = cr * profile r := hcr r hr le_rfl
+  simpa [hc_eq.symm] using hr_eq
+
+end PO3TailLaw
+
 section PO3Symmetry
 
 variable {A : Type*} [AddGroup A] [StarAddMonoid A]

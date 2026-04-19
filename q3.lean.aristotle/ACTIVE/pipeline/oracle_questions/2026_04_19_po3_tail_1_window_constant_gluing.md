@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-tail.1"
 related_addresses: ["PO3-rig.1c", "PO3-tail.2"]
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-rig.1", "PO3-rig.1b.cert"]
 child_or_next_addresses: ["PO3-tail.2"]
 raw_address_notation: "PO3-tail.1, PO3-tail.2"
 normalized_addresses: ["PO3-tail.1", "PO3-tail.2", "PO3-rig.1c", "PO3-rig.1", "PO3-rig.1b.cert", "PO3-cauchy.1"]
-address_status: "active"
+address_status: "done"
 blocker: "Нужна абстрактная Lean-лемма склейки оконных законов values r = c_M * profile r на перекрывающихся хвостовых окнах, чтобы получить один хвостовой скаляр c_N."
 collections: ["q3_docs", "web"]
 tags: ["po3", "tail", "gluing", "window_constant"]
