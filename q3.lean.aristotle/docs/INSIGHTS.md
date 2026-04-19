@@ -8247,3 +8247,32 @@ Update:
   либо вытащить из рукописи точную реальную finite truncation и подать её в
   уже готовый shell, либо доказать дополнительную cancellation identity,
   без которой surviving manuscript sum ожидать нельзя.
+
+Update:
+
+- локальный oracle по адресу `PO2-shell` подтвердил, что нужный мост уже почти
+  собран внутри проекта: главный сигнал пришёл из
+  `docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md` и
+  `full/sections/main_closure.tex`, где raw manuscript формула для `M^{+-}`
+  уже выписана буквально;
+- внешним web-search полезного первичного источника не нашлось:
+  он не дал ничего лучше нашей собственной рукописи и локальных notes,
+  так что для этого блокера canonical source остаётся внутренний стек проекта;
+- после этого в Lean добавлен уже не только packaged manuscript shell, но и
+  прямой raw manuscript объект:
+  `po3_suzuki_raw_gamma_pm_finset` и
+  `po3_suzuki_raw_gamma_pm_singleton`;
+- главное техническое место теперь закрыто точно:
+  `po3_suzuki_raw_gamma_pm_finset_eq_partial_sum_manuscript`
+  показывает, что явная tex-формула raw finite `\gamma`-sum совпадает с уже
+  заведённым manuscript shell без дополнительной математики;
+- вслед за этим автоматически подняты raw-версии gap/kill-теорем:
+  `po3_suzuki_raw_gamma_pm_finset_antidiagonal_gap_20_11`,
+  `po3_no_suzuki_raw_gamma_pm_finset_candidate_of_gap_20_11`,
+  `po3_suzuki_raw_gamma_pm_singleton_antidiagonal_gap_20_11`,
+  `po3_no_suzuki_raw_gamma_pm_singleton_candidate_of_gap_20_11`;
+- это важный сдвиг:
+  теперь следующий шаг — уже не “искать правильную формулу для finite
+  truncation”, а просто подставить конкретное finite множество `\gamma`
+  из рукописи в прямой raw объект и проверить, survives ли соответствующая
+  finite six-pole sum.

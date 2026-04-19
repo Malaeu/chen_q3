@@ -1816,11 +1816,54 @@ noncomputable def po3_suzuki_filtered_pm_partial_sum_manuscript
     γ
     (po3_suzuki_manuscript_alpha_step a)
 
+/-- The direct raw manuscript finite `γ`-sum for the filtered `(+,-)` block,
+written with the global prefactor outside the sum exactly as in the tex
+formula for `M^{+-}`. -/
+noncomputable def po3_suzuki_raw_gamma_pm_finset
+    {ι : Type*} (S : Finset ι) (a : ℂ) (γ : ι → ℂ) :
+    ℕ → ℕ → ℂ :=
+  fun m n =>
+    (po3_suzuki_manuscript_prefactor a * ((-1 : ℂ) ^ (m + n))) *
+      Finset.sum S (fun i =>
+        po3_suzuki_manuscript_amp a (γ i) /
+          (((γ i - po3_affine_alpha (po3_suzuki_manuscript_alpha_step a) m) *
+              (γ i - po3_affine_alpha (po3_suzuki_manuscript_alpha_step a) (m + 1))) *
+            ((γ i - po3_affine_alpha (po3_suzuki_manuscript_alpha_step a) n) *
+              (γ i - po3_affine_alpha (po3_suzuki_manuscript_alpha_step a) (n + 1)))))
+
+/-- The direct raw manuscript finite `γ`-sum is judgmentally the same object as
+the packaged manuscript partial sum already living in the Suzuki shell. -/
+theorem po3_suzuki_raw_gamma_pm_finset_eq_partial_sum_manuscript
+    {ι : Type*} (S : Finset ι) (a : ℂ) (γ : ι → ℂ) :
+    po3_suzuki_raw_gamma_pm_finset S a γ
+      = po3_suzuki_filtered_pm_partial_sum_manuscript S a γ := by
+  funext m n
+  simp [po3_suzuki_raw_gamma_pm_finset,
+    po3_suzuki_filtered_pm_partial_sum_manuscript,
+    po3_suzuki_filtered_pm_partial_sum, po3_suzuki_filtered_pm_finset,
+    po3_suzuki_filtered_pm_atom, po3_affine_alpha,
+    div_eq_mul_inv, Finset.mul_sum, mul_assoc, mul_left_comm, mul_comm]
+
 /-- The direct manuscript singleton truncation. This is the first concrete
 finite `γ`-packet with no remaining indexing overhead. -/
 noncomputable def po3_suzuki_filtered_pm_singleton_manuscript
     (a γ : ℂ) : ℕ → ℕ → ℂ :=
   po3_suzuki_filtered_pm_partial_sum_manuscript ({()} : Finset Unit) a (fun _ => γ)
+
+/-- The direct raw manuscript singleton truncation, written exactly as one
+term of the raw `γ`-sum for `M^{+-}`. -/
+noncomputable def po3_suzuki_raw_gamma_pm_singleton
+    (a γ : ℂ) : ℕ → ℕ → ℂ :=
+  po3_suzuki_raw_gamma_pm_finset ({()} : Finset Unit) a (fun _ => γ)
+
+/-- The raw manuscript singleton is exactly the packaged manuscript singleton
+already used by the shell. -/
+theorem po3_suzuki_raw_gamma_pm_singleton_eq_filtered_singleton_manuscript
+    (a γ : ℂ) :
+    po3_suzuki_raw_gamma_pm_singleton a γ
+      = po3_suzuki_filtered_pm_singleton_manuscript a γ := by
+  rw [po3_suzuki_raw_gamma_pm_singleton, po3_suzuki_filtered_pm_singleton_manuscript,
+    po3_suzuki_raw_gamma_pm_finset_eq_partial_sum_manuscript]
 
 /-- The manuscript prefactor is nonzero once `a ≠ 0`. -/
 theorem po3_suzuki_manuscript_prefactor_ne_zero
@@ -1882,6 +1925,20 @@ theorem po3_suzuki_filtered_pm_partial_sum_manuscript_antidiagonal_gap_20_11
   rw [po3_suzuki_filtered_pm_partial_sum_manuscript,
     po3_suzuki_filtered_pm_partial_sum_antidiagonal_gap_20_11]
 
+/-- The direct raw manuscript finite `γ`-sum has the same first anti-diagonal
+gap as the packaged manuscript shell, namely the finite six-pole sum. -/
+theorem po3_suzuki_raw_gamma_pm_finset_antidiagonal_gap_20_11
+    {ι : Type*} (S : Finset ι) (a : ℂ) (γ : ι → ℂ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_raw_gamma_pm_finset S a γ) 1
+      =
+        Finset.sum S (fun i =>
+          (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a (γ i)) *
+            po3_suzuki_filtered_pm_gap_term_20_11
+              (po3_suzuki_manuscript_alpha_step a) (γ i)) := by
+  rw [po3_suzuki_raw_gamma_pm_finset_eq_partial_sum_manuscript]
+  exact po3_suzuki_filtered_pm_partial_sum_manuscript_antidiagonal_gap_20_11 S a γ
+
 /-- If the first anti-diagonal gap of the direct manuscript finite partial
 `γ`-sum is nonzero, then the Suzuki packet cannot come from a one-variable
 `(+,-)` profile. -/
@@ -1899,6 +1956,22 @@ theorem po3_no_suzuki_filtered_pm_partial_sum_manuscript_candidate_of_gap_20_11
   rw [po3_suzuki_filtered_pm_partial_sum_manuscript_antidiagonal_gap_20_11]
   exact hgap
 
+/-- If the first anti-diagonal gap of the direct raw manuscript finite
+`γ`-sum is nonzero, then it cannot come from a one-variable `(+,-)` profile. -/
+theorem po3_no_suzuki_raw_gamma_pm_finset_candidate_of_gap_20_11
+    {ι : Type*} (S : Finset ι) (a : ℂ) (γ : ι → ℂ)
+    (hgap :
+      Finset.sum S (fun i =>
+        (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a (γ i)) *
+          po3_suzuki_filtered_pm_gap_term_20_11
+            (po3_suzuki_manuscript_alpha_step a) (γ i)) ≠ 0) :
+    ¬ ∃ u,
+      po3_suzuki_raw_gamma_pm_finset S a γ
+        = po3_suzuki_filtered_pm_candidate u := by
+  rw [po3_suzuki_raw_gamma_pm_finset_eq_partial_sum_manuscript]
+  exact po3_no_suzuki_filtered_pm_partial_sum_manuscript_candidate_of_gap_20_11
+    S a γ hgap
+
 /-- The neighboring anti-diagonal defect for the direct manuscript singleton
 truncation is exactly one weighted six-pole gap term. -/
 theorem po3_suzuki_filtered_pm_singleton_manuscript_antidiagonal_gap_20_11
@@ -1912,6 +1985,19 @@ theorem po3_suzuki_filtered_pm_singleton_manuscript_antidiagonal_gap_20_11
   rw [po3_suzuki_filtered_pm_singleton_manuscript,
     po3_suzuki_filtered_pm_partial_sum_manuscript_antidiagonal_gap_20_11]
   simp
+
+/-- The neighboring anti-diagonal defect for the raw manuscript singleton
+truncation is exactly the same weighted six-pole gap term. -/
+theorem po3_suzuki_raw_gamma_pm_singleton_antidiagonal_gap_20_11
+    (a γ : ℂ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_raw_gamma_pm_singleton a γ) 1
+      =
+        (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a γ) *
+          po3_suzuki_filtered_pm_gap_term_20_11
+            (po3_suzuki_manuscript_alpha_step a) γ := by
+  rw [po3_suzuki_raw_gamma_pm_singleton_eq_filtered_singleton_manuscript]
+  exact po3_suzuki_filtered_pm_singleton_manuscript_antidiagonal_gap_20_11 a γ
 
 /-- A direct manuscript singleton truncation already rules out a one-variable
 `(+,-)` profile whenever its six-pole gap term is nonzero and the manuscript
@@ -1939,6 +2025,23 @@ theorem po3_no_suzuki_filtered_pm_singleton_manuscript_candidate_of_gap_20_11
         unfold po3_suzuki_manuscript_alpha_step
         exact div_ne_zero (by exact_mod_cast Real.pi_ne_zero) ha)
       hγ0 hγ1 hγ2 hγ3
+
+/-- The same singleton kill, but now stated directly for the raw manuscript
+`γ`-sum formula. -/
+theorem po3_no_suzuki_raw_gamma_pm_singleton_candidate_of_gap_20_11
+    (a γ : ℂ)
+    (ha : a ≠ 0)
+    (hsin : Complex.sin (a * γ) ≠ 0)
+    (hγ0 : γ ≠ 0)
+    (hγ1 : γ ≠ po3_suzuki_manuscript_alpha_step a)
+    (hγ2 : γ ≠ 2 * po3_suzuki_manuscript_alpha_step a)
+    (hγ3 : γ ≠ 3 * po3_suzuki_manuscript_alpha_step a) :
+    ¬ ∃ u,
+      po3_suzuki_raw_gamma_pm_singleton a γ
+        = po3_suzuki_filtered_pm_candidate u := by
+  rw [po3_suzuki_raw_gamma_pm_singleton_eq_filtered_singleton_manuscript]
+  exact po3_no_suzuki_filtered_pm_singleton_manuscript_candidate_of_gap_20_11
+    a γ ha hsin hγ0 hγ1 hγ2 hγ3
 
 /-- Filtered one-variable profile for the concrete `(++ )` Section 8 block. -/
 noncomputable def po3_section8_filtered_pp_profile (B t : ℝ) : ℤ → ℂ :=
