@@ -174,11 +174,13 @@ Newton / divided-difference route:
 - `PO3-square.2b0` закрыт как shell-пакет:
   square-tail zero теперь уже формально переводится в нулевую башню iterated
   Newton/divided differences на shifted square nodes;
-- живой следующий подадрес внутри `2b` теперь уже выделен точнее:
-  `PO3-square.2b1` должен сначала формализовать quotient-collapse внутренней
-  квадратной цепочки после деления на общий square-tail divisor;
-- если `2b1` сядет, наивная внутренняя ordering-дверь будет убита формально,
-  и над башней останется уже только настоящая uniqueness / contradiction стена.
+- `PO3-square.2b1` тоже уже закрыт как kill-certificate:
+  после деления на общий square-tail divisor нормализованная внутренняя
+  квадратная цепочка схлопывается в одну линию, то есть наивная внутренняя
+  ordering-дверь внутри `2b` убита формально;
+- значит после `2b1` в этом штурме больше не осталось псевдосемейства
+  quotient-подпространств: выше живёт уже только настоящая uniqueness /
+  contradiction стена.
 
 ### `PO3-square.2c`  `[Штурм через entire divider]`
 

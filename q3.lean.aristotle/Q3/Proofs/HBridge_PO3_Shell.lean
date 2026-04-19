@@ -3104,6 +3104,50 @@ theorem po3_square_tail_iterated_newton_zero_of_square_tail_zero_apply
 
 end PO3SquareNewton
 
+section PO3SquareQuotientCollapse
+
+variable {𝕜 : Type*} [Field 𝕜]
+
+/-- `PO3-square.2b1` abstract quotient-collapse shell:
+if one step of the internal square-division chain is obtained by dividing
+`J_k` by `z - s`, and the common-zero packet changes by the expected scalar
+factor `1 - z / s`, then the normalized quotients differ only by the scalar
+`-s`. -/
+theorem po3_square_normalized_quotient_collapse
+    {s z Jk Jk1 Ek Ek1 Gk Gk1 : 𝕜}
+    (hs : s ≠ 0)
+    (hzs : z ≠ s)
+    (hEk1 : Ek1 ≠ 0)
+    (hJk1 : Jk1 = Jk / (z - s))
+    (hEk : Ek = (1 - z / s) * Ek1)
+    (hGk : Gk = Jk / Ek)
+    (hGk1 : Gk1 = Jk1 / Ek1) :
+    Gk = (-s) * Gk1 := by
+  have hzsub : z - s ≠ 0 := sub_ne_zero.mpr hzs
+  have hfactor : 1 - z / s = -((z - s) / s) := by
+    field_simp [hs]
+    ring
+  rw [hGk, hGk1, hEk, hJk1, hfactor]
+  field_simp [hs, hzsub, hEk1]
+
+/-- Packaged one-line version of the same collapse:
+the internal normalized quotient chain yields only scalar multiples. -/
+theorem po3_square_normalized_quotients_are_scalar_multiples
+    {s z Jk Jk1 Ek Ek1 Gk Gk1 : 𝕜}
+    (hs : s ≠ 0)
+    (hzs : z ≠ s)
+    (hEk1 : Ek1 ≠ 0)
+    (hJk1 : Jk1 = Jk / (z - s))
+    (hEk : Ek = (1 - z / s) * Ek1)
+    (hGk : Gk = Jk / Ek)
+    (hGk1 : Gk1 = Jk1 / Ek1) :
+    ∃ c : 𝕜, Gk = c * Gk1 := by
+  refine ⟨-s, ?_⟩
+  exact po3_square_normalized_quotient_collapse
+    hs hzs hEk1 hJk1 hEk hGk hGk1
+
+end PO3SquareQuotientCollapse
+
 section PO3Symmetry
 
 variable {A : Type*} [AddGroup A] [StarAddMonoid A]

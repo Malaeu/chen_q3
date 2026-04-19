@@ -235,7 +235,7 @@ analytic / infinite-support стороне.
 Живой Newton-side burden теперь уже только в следующем шаге:
 получить из этой нулевой башни настоящий uniqueness / contradiction theorem.
 
-### `PO3-square.2b1`  `[Quotient-collapse shell]`
+### `PO3-square.2b1`  `[Quotient-collapse shell closed]`
 
 Следующий честный узкий шаг внутри square-route уже не про всю uniqueness-стену,
 а про одну алгебраическую развилку:
@@ -256,6 +256,15 @@ analytic / infinite-support стороне.
 - после этого у square-tail ordering mainline уже не останется притворного
   “внутреннего семейства подпространств”: вся цепочка после quotient-нормировки
   схлопывается в одну линию.
+
+Статус:
+
+- этот shell теперь уже реально посажен в Lean в виде
+  `po3_square_normalized_quotient_collapse`
+  и
+  `po3_square_normalized_quotients_are_scalar_multiples`;
+- значит наивная внутренняя ordering-дверь внутри square-chain закрыта
+  формально, а не только на уровне заметок.
 
 ## Штурм `2c` — canonical entire divider
 

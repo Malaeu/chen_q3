@@ -9464,3 +9464,32 @@ Update:
 - once this lands, `PO3-square.2b1` will no longer be strategic prose:
   it will become a formal kill-certificate saying the naive internal ordering
   route collapses before any higher analytic work.
+
+## Result (2026-04-19) — `PO3-square.2b1` now freezes the internal quotient-collapse
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the exact algebraic shell
+  theorem
+  `po3_square_normalized_quotient_collapse`:
+  over a field, if
+  `Jk1 = Jk / (z - s)`,
+  `Ek = (1 - z / s) * Ek1`,
+  `Gk = Jk / Ek`,
+  `Gk1 = Jk1 / Ek1`,
+  and the natural nonvanishing side conditions hold, then
+  `Gk = (-s) * Gk1`;
+- the file also packages the same point as
+  `po3_square_normalized_quotients_are_scalar_multiples`,
+  so the internal normalized chain is now frozen explicitly as a one-line
+  scalar family;
+- this closes the exact strategic sentence that was only prose before:
+  after quotienting by the common square-tail zero factor, the internal
+  square-division chain does **not** produce a second genuinely distinct
+  ordered subspace candidate;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-square.2b1` is now closed as a kill-certificate for the naive internal
+  ordering route.
+  The remaining live wall is no longer this quotient family, but whichever
+  square-support uniqueness / growth route we choose next.

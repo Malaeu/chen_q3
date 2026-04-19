@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-square.2b1"
 related_addresses: ["PO3-square.2b", "PO3-square.2d1", "SQ2c"]
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-square.2b", "PO3-square.2"]
 child_or_next_addresses: ["PO3-square.2c"]
 raw_address_notation: "PO3-square.2b1; PO3-square.2b, PO3-square.2d1; SQ2c"
 normalized_addresses: ["PO3-square.2b1", "PO3-square.2b", "PO3-square.2d1", "SQ2c", "PO3-square.2", "PO3-square.2c"]
-address_status: "active"
+address_status: "done"
 blocker: "Формализовать алгебраическое схлопывание внутренней квадратной цепочки после деления на общий square-tail divisor: нормализованные quotients остаются только скалярными кратными."
 collections: ["q3_docs"]
 tags: ["po3-square", "quotient-collapse", "square-tail"]
@@ -26,7 +26,8 @@ neighbor_addresses: ["PO3-square.2d1"]
 
 - карточка создана;
 - первая серия локальных запросов уже отработана;
-- следующий ход зафиксирован как узкая Lean-лемма.
+- узкая Lean-лемма уже посажена и проверена;
+- адрес закрыт как `done`.
 
 ## Точный блокер
 
@@ -88,9 +89,11 @@ neighbor_addresses: ["PO3-square.2d1"]
 
 - синтез зафиксирован в `q3.lean.aristotle/docs/INSIGHTS.md` как адрес
   `PO3-square.2b1`.
+- итог тоже зафиксирован там же: внутренний quotient-route схлопывается в одну
+  линию и больше не считается живой ordering-дверью.
 
 ## Следующий адресный шаг
 
-- сначала закрыть `PO3-square.2b1` как абстрактную алгебраическую shell-лемму;
-- после этого либо переходить к `PO3-square.2c`, либо возвращаться к живой
-  uniqueness-стене уже без ложной внутренней ordering-двери.
+- следующий рекомендованный адрес: `PO3-square.2c`;
+- альтернативно можно вернуться прямо к живой uniqueness-стене уже без этой
+  ложной внутренней ordering-двери.
