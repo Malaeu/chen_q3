@@ -8356,6 +8356,19 @@ Update:
 - это убирает лишний шум из гипотез:
   теперь внешний witness можно формулировать не как длинную сумму weight-термов,
   а одним именованным объектом, который скрипт печатает в Lean-ready виде;
+- поверх этого добавлена уже совсем конкретная witness-заглушка под
+  `a = 1` и первые три decimal-28 ординаты нулей:
+  `po3_first_zeta_gamma0_decimal28`,
+  `po3_first_zeta_gamma1_decimal28`,
+  `po3_first_zeta_gamma2_decimal28`,
+  вместе с named targets
+  `po3_first_zeta_gap_sum2_a1_decimal28`,
+  `po3_first_zeta_gap_sum3_a1_decimal28`;
+- отдельная краткая note-зафиксировка лежит в
+  `docs/insights/h1_po3_first_zeta_witness_stub_2026_04_19.md`,
+  так что следующий шаг теперь действительно узкий:
+  осталось только подать внешний сертификат ненулевости в один из двух
+  уже скомпилированных witness-bridge theorems;
 - это не даёт формального theorem-level closure, но даёт очень сильный
   локальный сигнал:
   готовые леммы `prefix2/prefix3` уже имеют содержательный численный вход,

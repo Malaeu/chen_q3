@@ -2174,6 +2174,79 @@ theorem po3_no_suzuki_raw_gamma_pm_prefix3_of_gap_sum3_ne_zero
         = po3_suzuki_filtered_pm_candidate u :=
   po3_no_suzuki_raw_gamma_pm_prefix3_candidate_of_gap_20_11 a γ0 γ1 γ2 hgap
 
+/-- Shared denominator used for the decimal `28` witness values imported from
+the external zeta-zero scan. -/
+noncomputable def po3_decimal28 (n : ℤ) : ℂ :=
+  (n : ℂ) / ((10 : ℂ) ^ (28 : ℕ))
+
+/-- Decimal-28 approximation of the first positive zeta ordinate, taken from
+the external `mpmath.zetazero` witness scan. This is a numerical witness
+candidate, not a formal theorem about the true zero set. -/
+noncomputable def po3_first_zeta_gamma0_decimal28 : ℂ :=
+  po3_decimal28 141347251417346937904572519836
+
+/-- Decimal-28 approximation of the second positive zeta ordinate, used only as
+an external witness placeholder. -/
+noncomputable def po3_first_zeta_gamma1_decimal28 : ℂ :=
+  po3_decimal28 210220396387715549926284795939
+
+/-- Decimal-28 approximation of the third positive zeta ordinate, used only as
+an external witness placeholder. -/
+noncomputable def po3_first_zeta_gamma2_decimal28 : ℂ :=
+  po3_decimal28 250108575801456887632137909926
+
+/-- Named two-mode witness sum for the concrete `a = 1` decimal-zeta packet.
+Once an external certificate proves this quantity nonzero, the `prefix2` shell
+is killed immediately. -/
+noncomputable def po3_first_zeta_gap_sum2_a1_decimal28 : ℂ :=
+  po3_suzuki_manuscript_gap_sum2 (1 : ℂ)
+    po3_first_zeta_gamma0_decimal28
+    po3_first_zeta_gamma1_decimal28
+
+/-- Named three-mode witness sum for the concrete `a = 1` decimal-zeta packet.
+This is the main external certificate target for the current `prefix3` shell. -/
+noncomputable def po3_first_zeta_gap_sum3_a1_decimal28 : ℂ :=
+  po3_suzuki_manuscript_gap_sum3 (1 : ℂ)
+    po3_first_zeta_gamma0_decimal28
+    po3_first_zeta_gamma1_decimal28
+    po3_first_zeta_gamma2_decimal28
+
+/-- Concrete `prefix2` witness stub: once the external numerical certificate
+shows the named decimal-zeta gap sum is nonzero, the `a = 1` two-mode packet
+cannot come from a one-variable `(+,-)` profile. -/
+theorem po3_no_suzuki_raw_gamma_pm_prefix2_of_first_zeta_decimal28_witness
+    (hgap : po3_first_zeta_gap_sum2_a1_decimal28 ≠ 0) :
+    ¬ ∃ u,
+      po3_suzuki_raw_gamma_pm_prefix2
+          (1 : ℂ)
+          po3_first_zeta_gamma0_decimal28
+          po3_first_zeta_gamma1_decimal28
+        = po3_suzuki_filtered_pm_candidate u := by
+  exact po3_no_suzuki_raw_gamma_pm_prefix2_of_gap_sum2_ne_zero
+    (1 : ℂ)
+    po3_first_zeta_gamma0_decimal28
+    po3_first_zeta_gamma1_decimal28
+    hgap
+
+/-- Concrete `prefix3` witness stub: once the external numerical certificate
+shows the named decimal-zeta gap sum is nonzero, the `a = 1` three-mode packet
+cannot come from a one-variable `(+,-)` profile. -/
+theorem po3_no_suzuki_raw_gamma_pm_prefix3_of_first_zeta_decimal28_witness
+    (hgap : po3_first_zeta_gap_sum3_a1_decimal28 ≠ 0) :
+    ¬ ∃ u,
+      po3_suzuki_raw_gamma_pm_prefix3
+          (1 : ℂ)
+          po3_first_zeta_gamma0_decimal28
+          po3_first_zeta_gamma1_decimal28
+          po3_first_zeta_gamma2_decimal28
+        = po3_suzuki_filtered_pm_candidate u := by
+  exact po3_no_suzuki_raw_gamma_pm_prefix3_of_gap_sum3_ne_zero
+    (1 : ℂ)
+    po3_first_zeta_gamma0_decimal28
+    po3_first_zeta_gamma1_decimal28
+    po3_first_zeta_gamma2_decimal28
+    hgap
+
 /-- A direct manuscript singleton truncation already rules out a one-variable
 `(+,-)` profile whenever its six-pole gap term is nonzero and the manuscript
 weight does not vanish. -/

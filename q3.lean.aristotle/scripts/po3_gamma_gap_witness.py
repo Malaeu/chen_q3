@@ -162,17 +162,24 @@ def lean_ready_block(records: list[AValueRecord], gammas: list[mp.mpf]) -> str:
         "Lean-ready external witness sketch:",
         "  -- concrete parameters from the numerical certificate",
         f"  -- a = {record.a}",
+        "  -- witness constants already available in Lean:",
+        "  --   po3_first_zeta_gamma0_decimal28",
+        "  --   po3_first_zeta_gamma1_decimal28",
+        "  --   po3_first_zeta_gamma2_decimal28",
+        "  -- named gap targets:",
+        "  --   po3_first_zeta_gap_sum2_a1_decimal28",
+        "  --   po3_first_zeta_gap_sum3_a1_decimal28",
     ]
     for idx, gamma in enumerate(gammas, start=1):
         lines.append(f"  -- gamma_{idx} ≈ {mp.nstr(gamma, 30)}")
     lines.extend(
         [
             "  -- target hypotheses to discharge externally:",
-            "  -- hgap2 : po3_suzuki_manuscript_gap_sum2 a γ0 γ1 ≠ 0",
-            "  -- hgap3 : po3_suzuki_manuscript_gap_sum3 a γ0 γ1 γ2 ≠ 0",
+            "  -- hgap2 : po3_first_zeta_gap_sum2_a1_decimal28 ≠ 0",
+            "  -- hgap3 : po3_first_zeta_gap_sum3_a1_decimal28 ≠ 0",
             "  -- then apply:",
-            "  --   po3_no_suzuki_raw_gamma_pm_prefix2_of_gap_sum2_ne_zero",
-            "  --   po3_no_suzuki_raw_gamma_pm_prefix3_of_gap_sum3_ne_zero",
+            "  --   po3_no_suzuki_raw_gamma_pm_prefix2_of_first_zeta_decimal28_witness",
+            "  --   po3_no_suzuki_raw_gamma_pm_prefix3_of_first_zeta_decimal28_witness",
         ]
     )
     return "\n".join(lines)
