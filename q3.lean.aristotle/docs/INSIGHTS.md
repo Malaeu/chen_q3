@@ -9095,3 +9095,27 @@ Update:
   `PO3-tail.1` is now closed at the shell level.
   The next live consumer is `PO3-tail.2`: feed this glued tail law together
   with the off-diagonal decay input and kill the tail constant.
+
+## Synthesis (2026-04-19, in progress) — `PO3-tail.2` decay kills the glued tail scalar
+
+- the repo scan and local oracle align perfectly here: the notes already freeze
+  the intended move in one line,
+  `w_{r,0}(a) = c_{a,N} * (-1)^r` on the whole tail plus off-diagonal decay
+  `w_{r,0}(a) → 0`, hence `c_{a,N} = 0`;
+- there is still no shell theorem packaging that step in Lean, so the next
+  honest move is not a new Q3 object and not a new certificate, but one
+  generic normed-field lemma sitting directly above `PO3-tail.1`;
+- local oracle search points to exactly the right ingredients:
+  the March `PO3` note for the decay sentence and the new shell theorem
+  `po3_tail_scalar_law_of_window_family`; no stronger hidden theorem exists in
+  the repo;
+- external web search only returned generic convergence facts and nothing
+  project-shaped, so importing outside mathematics would add noise here;
+- the right theorem shape is explicit and narrow:
+  if `values r = c * profile r` on the strict tail,
+  `‖profile r‖ = 1` on that tail,
+  and `values` decays to `0`,
+  then `c = 0`, hence `values r = 0` on the whole tail;
+- after that theorem lands, `PO3-tail.2` is closed and the route moves
+  immediately to `PO3-cauchy.1`, because the tail zero set is then already
+  genuine rather than window-local.
