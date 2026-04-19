@@ -9229,3 +9229,30 @@ Update:
   `PO3-cauchy.2` is now closed at the shell level.
   The next live node is `PO3-square.1`, where the first nontrivial local kills
   on the square-support side begin.
+
+## Synthesis (2026-04-19, in progress) — `PO3-square.1` should be closed by the first-zeta local kill packet, not by fresh square-Cauchy formalization
+
+- the repo scan narrows this node immediately: the March/April notes already
+  say that finite-support square-tail injectivity is easy, while the real wall
+  only starts at `PO3-square.2`; so `PO3-square.1` should stay a local kill,
+  not grow into a second square-support theory;
+- the strongest internal asset is already theorem-level and honest:
+  `Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean` contains
+  `po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel` and
+  `po3_no_antidiagonal_invariant_of_first_zeta_initial_packet_kernel`;
+- that means the first decimal-28 packet at `a = 1` already gives an exact
+  shell consumer: once a square-side kernel is identified with one tagged
+  packet from the initial first-zeta stack, one-variable `(+,-)` profile shape
+  and anti-diagonal invariance are both ruled out immediately;
+- local oracle search for this blocker did not reveal any missing hidden Lean
+  theorem; the shortest path is transport, not new mathematics;
+- external web search only reconfirmed the standard Cauchy-matrix determinant
+  fact, which is useful background for finite-support notes but not needed for
+  the code move here;
+- the implementation target is therefore narrow:
+  add a thin shell-facing bridge theorem that imports the existing
+  first-zeta packet stack into the `PO3-square.1` ladder endpoint, without
+  polluting the abstract lower-shell machinery;
+- once that bridge lands, `PO3-square.1` is closed as the first concrete local
+  square-side kill, and the route moves cleanly to `PO3-square.2`, which
+  remains the only real infinite-support wall.
