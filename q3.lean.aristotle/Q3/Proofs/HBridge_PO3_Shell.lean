@@ -1856,6 +1856,26 @@ noncomputable def po3_suzuki_raw_gamma_pm_singleton
     (a γ : ℂ) : ℕ → ℕ → ℂ :=
   po3_suzuki_raw_gamma_pm_finset ({()} : Finset Unit) a (fun _ => γ)
 
+/-- The direct raw manuscript prefix truncation on the first `K` `γ`-modes.
+This is the most convenient shell for plugging in a concrete enumeration of
+zeros from the manuscript side. -/
+noncomputable def po3_suzuki_raw_gamma_pm_prefix
+    (K : ℕ) (a : ℂ) (γ : ℕ → ℂ) : ℕ → ℕ → ℂ :=
+  po3_suzuki_raw_gamma_pm_finset (Finset.range K) a γ
+
+/-- The packaged manuscript prefix truncation on the first `K` `γ`-modes. -/
+noncomputable def po3_suzuki_filtered_pm_prefix_manuscript
+    (K : ℕ) (a : ℂ) (γ : ℕ → ℂ) : ℕ → ℕ → ℂ :=
+  po3_suzuki_filtered_pm_partial_sum_manuscript (Finset.range K) a γ
+
+/-- The raw manuscript prefix is exactly the packaged manuscript prefix. -/
+theorem po3_suzuki_raw_gamma_pm_prefix_eq_filtered_prefix_manuscript
+    (K : ℕ) (a : ℂ) (γ : ℕ → ℂ) :
+    po3_suzuki_raw_gamma_pm_prefix K a γ
+      = po3_suzuki_filtered_pm_prefix_manuscript K a γ := by
+  rw [po3_suzuki_raw_gamma_pm_prefix, po3_suzuki_filtered_pm_prefix_manuscript,
+    po3_suzuki_raw_gamma_pm_finset_eq_partial_sum_manuscript]
+
 /-- The raw manuscript singleton is exactly the packaged manuscript singleton
 already used by the shell. -/
 theorem po3_suzuki_raw_gamma_pm_singleton_eq_filtered_singleton_manuscript
@@ -1998,6 +2018,35 @@ theorem po3_suzuki_raw_gamma_pm_singleton_antidiagonal_gap_20_11
             (po3_suzuki_manuscript_alpha_step a) γ := by
   rw [po3_suzuki_raw_gamma_pm_singleton_eq_filtered_singleton_manuscript]
   exact po3_suzuki_filtered_pm_singleton_manuscript_antidiagonal_gap_20_11 a γ
+
+/-- The first anti-diagonal gap for the direct raw manuscript prefix
+truncation is the finite six-pole sum over the first `K` `γ`-modes. -/
+theorem po3_suzuki_raw_gamma_pm_prefix_antidiagonal_gap_20_11
+    (K : ℕ) (a : ℂ) (γ : ℕ → ℂ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_raw_gamma_pm_prefix K a γ) 1
+      =
+        Finset.sum (Finset.range K) (fun i =>
+          (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a (γ i)) *
+            po3_suzuki_filtered_pm_gap_term_20_11
+              (po3_suzuki_manuscript_alpha_step a) (γ i)) := by
+  rw [po3_suzuki_raw_gamma_pm_prefix, po3_suzuki_raw_gamma_pm_finset_antidiagonal_gap_20_11]
+
+/-- If the first anti-diagonal gap of the raw manuscript prefix truncation is
+nonzero, then the prefix cannot be a one-variable `(+,-)` profile. -/
+theorem po3_no_suzuki_raw_gamma_pm_prefix_candidate_of_gap_20_11
+    (K : ℕ) (a : ℂ) (γ : ℕ → ℂ)
+    (hgap :
+      Finset.sum (Finset.range K) (fun i =>
+        (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a (γ i)) *
+          po3_suzuki_filtered_pm_gap_term_20_11
+            (po3_suzuki_manuscript_alpha_step a) (γ i)) ≠ 0) :
+    ¬ ∃ u,
+      po3_suzuki_raw_gamma_pm_prefix K a γ
+        = po3_suzuki_filtered_pm_candidate u := by
+  rw [po3_suzuki_raw_gamma_pm_prefix]
+  exact po3_no_suzuki_raw_gamma_pm_finset_candidate_of_gap_20_11
+    (Finset.range K) a γ hgap
 
 /-- A direct manuscript singleton truncation already rules out a one-variable
 `(+,-)` profile whenever its six-pole gap term is nonzero and the manuscript

@@ -8276,3 +8276,24 @@ Update:
   truncation”, а просто подставить конкретное finite множество `\gamma`
   из рукописи в прямой raw объект и проверить, survives ли соответствующая
   finite six-pole sum.
+
+Update:
+
+- следующий инфраструктурный зазор тоже закрыт:
+  в shell добавлены indexed prefix-объекты
+  `po3_suzuki_raw_gamma_pm_prefix` и
+  `po3_suzuki_filtered_pm_prefix_manuscript`,
+  то есть теперь finite truncation можно задавать как первые `K` значений
+  некоторой функции `γ : ℕ → ℂ`, без ручной сборки `Finset`;
+- доказано точное тождество
+  `po3_suzuki_raw_gamma_pm_prefix_eq_filtered_prefix_manuscript`,
+  так что и этот интерфейс не создаёт новой математики, а только даёт
+  удобную оболочку для реальной manuscript truncation;
+- на prefix-уровень сразу подняты
+  `po3_suzuki_raw_gamma_pm_prefix_antidiagonal_gap_20_11`
+  и
+  `po3_no_suzuki_raw_gamma_pm_prefix_candidate_of_gap_20_11`;
+- это означает, что следующий честный вычислительный шаг уже совсем прямой:
+  выбрать конкретную enumeration `γ₀,γ₁,γ₂,...` из рукописи или численного
+  канала, подать первые `K` членов в prefix-shell и проверить ненулевость
+  соответствующей finite six-pole суммы.
