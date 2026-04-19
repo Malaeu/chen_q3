@@ -9436,3 +9436,31 @@ Update:
   `PO3-square.2b0` is now frozen.
   The live Newton-side burden is no longer how to build the tower, but how to
   force uniqueness or contradiction from that zero tower.
+
+## Synthesis (2026-04-19, in progress) — `PO3-square.2b1` should freeze the quotient-collapse, not guess a new uniqueness theorem
+
+- three local oracle queries all returned the same exact signal from our own
+  March/April notes:
+  after dividing `J_{a,k}` by the common square-tail zero factor `E_k^{sq}`,
+  the normalized quotients satisfy
+  `G_k = - s_{k+1} G_{k+1}`;
+- this means the naive internal square-division chain does **not** produce a
+  second genuinely different ordered subspace:
+  after quotient-normalization the whole chain is one line;
+- short external search only confirms the general background
+  (ordered nearly invariant subspaces in de Branges / Cauchy-de Branges
+  settings) and does **not** provide an off-the-shelf theorem for this exact
+  internal collapse, so the honest next move is an algebraic shell lemma, not a
+  fake imported uniqueness theorem;
+- the narrow Lean target is therefore:
+  formalize an abstract field-level statement saying that if
+  `J_{k+1} = J_k / (z - s)`,
+  `E_k = (1 - z / s) E_{k+1}`,
+  `G_k = J_k / E_k`,
+  and
+  `G_{k+1} = J_{k+1} / E_{k+1}`,
+  then
+  `G_k = (-s) * G_{k+1}`;
+- once this lands, `PO3-square.2b1` will no longer be strategic prose:
+  it will become a formal kill-certificate saying the naive internal ordering
+  route collapses before any higher analytic work.

@@ -235,6 +235,28 @@ analytic / infinite-support стороне.
 Живой Newton-side burden теперь уже только в следующем шаге:
 получить из этой нулевой башни настоящий uniqueness / contradiction theorem.
 
+### `PO3-square.2b1`  `[Quotient-collapse shell]`
+
+Следующий честный узкий шаг внутри square-route уже не про всю uniqueness-стену,
+а про одну алгебраическую развилку:
+
+- если после деления на общий square-tail divisor внутренняя цепочка
+  `J_{a,k}` даёт разные normalized quotients, ordering-route ещё жив;
+- если же normalized quotients всегда только скалярно кратны, эта дверь надо
+  убить немедленно.
+
+Точный текущий target:
+
+- заморозить в Lean абстрактную лемму вида
+  `G_k = - s_{k+1} G_{k+1}`
+  из отношений
+  `J_{k+1} = J_k / (z - s_{k+1})`
+  и
+  `E_k = (1 - z / s_{k+1}) E_{k+1}`;
+- после этого у square-tail ordering mainline уже не останется притворного
+  “внутреннего семейства подпространств”: вся цепочка после quotient-нормировки
+  схлопывается в одну линию.
+
 ## Штурм `2c` — canonical entire divider
 
 Идея:
