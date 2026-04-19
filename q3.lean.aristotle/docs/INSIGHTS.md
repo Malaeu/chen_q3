@@ -8773,3 +8773,29 @@ Update:
   `PO3-square.2d0` is completely clean in the finite-support setting, but in
   the infinite-support setting it must still carry honest convergence /
   regularity assumptions.
+
+## Synthesis (2026-04-19, in progress) — `PO3-shell.6` direct anti-diagonal bridge
+
+- after `PO3-shell.5`, the remaining local gap is now exactly one shell-facing
+  API compression step: the first-zeta family predicate still kills
+  `∃ u, K = po3_suzuki_filtered_pm_candidate u`, but the next consumer wants to
+  speak directly in the language of anti-diagonal invariance;
+- the generic bridge is already compiled in
+  `Q3/Proofs/HBridge_PO3_Shell.lean` as
+  `po3_exists_suzuki_filtered_pm_candidate_iff`, together with the lower-level
+  `po3_eq_sum_kernel_iff_antidiagonal_invariant`;
+- repo search and local embedding search found no existing first-zeta theorem
+  at that anti-diagonal layer, so the missing step is genuinely small and
+  mechanical, not a hidden mathematical blocker;
+- exact target in
+  `Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`:
+  add a theorem saying that
+  `po3_first_zeta_initial_packet_kernel K` implies failure of anti-diagonal
+  invariance, plus the corresponding contradiction form;
+- the intended proof is one line of transport:
+  anti-diagonal invariance gives `∃ u, K = po3_suzuki_filtered_pm_candidate u`
+  by the generic shell theorem, which is already excluded by
+  `po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel`;
+- if this lands cleanly, `PO3-shell.6` is closed and the first-zeta local
+  packet plugs into the generic `PO3` shell without mentioning filtered
+  candidates explicitly.
