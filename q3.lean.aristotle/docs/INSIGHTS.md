@@ -9382,3 +9382,28 @@ Update:
   The next honest move is to choose a real assault on that target, and the two
   serious options remain `PO3-square.2b` (divided differences) and
   `PO3-square.2c` (entire divider / growth control).
+
+## Synthesis (2026-04-19, in progress) — `PO3-square.2b0` should formalize the Newton tower, not uniqueness
+
+- the local oracle result is unusually clean here:
+  the same March note literally says that square-tail vanishing is equivalent
+  to vanishing of Newton divided differences of one fixed receiver `J_a`, and
+  the April synthesis sharpens the backend further by saying the active route
+  should start from divided receivers `J_{a,k}`, not raw `J_a`;
+- there is still no in-repo theorem giving the final uniqueness step, and the
+  short external search does not change that, so the right next coding move is
+  reduction infrastructure rather than a fake global theorem;
+- the exact narrow packet to formalize now is:
+  define shifted square nodes, define the sampled tail of one fixed receiver on
+  those nodes, define one Newton/divided-difference step and its iterates, and
+  prove that square-tail zero forces the entire iterated divided-difference
+  tower to vanish;
+- this is the right `2b0` payload because it turns the live prose
+  “Newton route” into executable shell language and isolates the next real
+  burden:
+  after this bridge, the remaining wall is no longer how to *state* the Newton
+  attack, but how to get uniqueness from the zero Newton tower;
+- so the implementation target is honest and narrow:
+  add the abstract divided-difference tower to `HBridge_PO3_Shell.lean`,
+  specialize it to shifted square nodes, and record the resulting theorem as
+  the first formal Newton-side receiver for `PO3-square.2b`.
