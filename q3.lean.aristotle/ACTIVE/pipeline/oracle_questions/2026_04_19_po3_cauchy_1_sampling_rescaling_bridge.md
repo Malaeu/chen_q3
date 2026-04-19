@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-cauchy.1"
 related_addresses: ["PO3-tail.2", "PO3-cauchy.2"]
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-tail.1", "PO3-tail.2"]
 child_or_next_addresses: ["PO3-cauchy.2"]
 raw_address_notation: "PO3-cauchy.1, PO3-cauchy.2"
 normalized_addresses: ["PO3-cauchy.1", "PO3-cauchy.2", "PO3-tail.2", "PO3-tail.1", "PO3-square.1"]
-address_status: "active"
+address_status: "done"
 blocker: "Нужен abstract sampling-rescaling bridge: из tail-zero для values и формулы values r = scale r * samples r с scale r ≠ 0 вывести tail-zero для sampled Cauchy receiver."
 collections: ["q3_docs", "web"]
 tags: ["po3", "cauchy", "sampling", "rescaling"]

@@ -2861,6 +2861,42 @@ theorem po3_tail_zero_of_window_family_of_decay
 
 end PO3TailDecay
 
+section PO3CauchySampling
+
+variable {𝕜 : Type*}
+variable [NormedField 𝕜]
+
+/-- `PO3-cauchy.1`, pointwise form:
+tail zero transfers through a nonvanishing pointwise rescaling. -/
+theorem po3_tail_zero_of_nonvanishing_rescaling
+    {values scale samples : ℕ → 𝕜} {N : ℕ}
+    (hlaw : ∀ r, N < r → values r = scale r * samples r)
+    (hscale : ∀ r, N < r → scale r ≠ 0)
+    (hzero : ∀ r, N < r → values r = 0) :
+    ∀ r, N < r → samples r = 0 := by
+  intro r hr
+  have hmul : scale r * samples r = 0 := by
+    rw [← hlaw r hr, hzero r hr]
+  exact (mul_eq_zero.mp hmul).resolve_left (hscale r hr)
+
+/-- Combined consumer for `PO3-tail.2 -> PO3-cauchy.1`:
+window laws plus decay kill the zero-mode tail, and a nonvanishing sampling
+rescaling transfers that tail zero to the sampled receiver. -/
+theorem po3_sampled_tail_zero_of_window_family_of_decay_and_nonvanishing_rescaling
+    {values profile scale samples : ℕ → 𝕜} {N : ℕ}
+    (hwin : ∀ M, N < M → ∃ c : 𝕜, ∀ r, N < r → r ≤ M → values r = c * profile r)
+    (hprofile : ∀ r, N < r → ‖profile r‖ = 1)
+    (hdecay : ∀ ε > 0, ∃ R, ∀ r, R ≤ r → ‖values r‖ < ε)
+    (hlaw : ∀ r, N < r → values r = scale r * samples r)
+    (hscale : ∀ r, N < r → scale r ≠ 0) :
+    ∀ r, N < r → samples r = 0 := by
+  have hzeroValues :
+      ∀ r, N < r → values r = 0 :=
+    po3_tail_zero_of_window_family_of_decay hwin hprofile hdecay
+  exact po3_tail_zero_of_nonvanishing_rescaling hlaw hscale hzeroValues
+
+end PO3CauchySampling
+
 section PO3Symmetry
 
 variable {A : Type*} [AddGroup A] [StarAddMonoid A]

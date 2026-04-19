@@ -9164,3 +9164,25 @@ Update:
 - once this bridge lands, `PO3-cauchy.1` is closed and the next live node is
   `PO3-cauchy.2`, where the zero set is repackaged into the even square-support
   receiver.
+
+## Result (2026-04-19) — `PO3-cauchy.1` now has the sampling-rescaling bridge
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains
+  `Q3.HBridge.po3_tail_zero_of_nonvanishing_rescaling`
+  and
+  `Q3.HBridge.po3_sampled_tail_zero_of_window_family_of_decay_and_nonvanishing_rescaling`;
+- the first theorem is the exact Cauchy-sampling transfer:
+  if `values r = scale r * samples r` on the strict tail, the rescaling factor
+  is nonzero there, and `values` already vanishes on the tail, then the sampled
+  sequence also vanishes on the tail;
+- the second theorem packages the real route shape:
+  the already-closed `PO3-tail.1/.2` window-law-plus-decay packet now feeds
+  directly into a sampled receiver tail-zero conclusion through a nonvanishing
+  rescaling law;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-cauchy.1` is now closed at the shell level.
+  The next live node is `PO3-cauchy.2`, namely the repackaging of this
+  tail-zero sampled receiver into the even square-support form.

@@ -369,3 +369,23 @@ Decay-consumer теперь тоже посажен.
 
 Итог: `PO3-tail.2` закрыт как abstract shell-consumer. Следующий живой адрес —
 `PO3-cauchy.1`.
+
+## Lean update (2026-04-19, `PO3-cauchy.1`)
+
+Sampling-rescaling bridge теперь тоже посажен.
+
+В `Q3/Proofs/HBridge_PO3_Shell.lean` добавлены:
+
+- `po3_tail_zero_of_nonvanishing_rescaling`;
+- `po3_sampled_tail_zero_of_window_family_of_decay_and_nonvanishing_rescaling`.
+
+Это закрывает ровно тот шаг, который в заметке был уже фактически готов:
+
+- после `PO3-tail.2` у нас есть tail-zero для `values`;
+- если одновременно есть sampling identity
+  `values r = scale r * samples r`;
+- и `scale r ≠ 0` на хвосте,
+  то нули автоматически переходят на sampled receiver.
+
+Итог: `PO3-cauchy.1` закрыт как shell-layer. Следующий живой адрес —
+`PO3-cauchy.2`.
