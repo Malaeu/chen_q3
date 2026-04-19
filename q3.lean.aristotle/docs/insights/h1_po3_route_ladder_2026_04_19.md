@@ -169,6 +169,14 @@ Newton / divided-difference route:
 превратить square-tail vanishing в бесконечную систему жёстких нулевых
 коэффициентов.
 
+Текущее состояние этого штурма:
+
+- `PO3-square.2b0` закрыт как shell-пакет:
+  square-tail zero теперь уже формально переводится в нулевую башню iterated
+  Newton/divided differences на shifted square nodes;
+- живой Newton-side адрес теперь уже не encoding, а следующий
+  uniqueness / contradiction step над этой башней.
+
 ### `PO3-square.2c`  `[Штурм через entire divider]`
 
 Canonical square-lattice entire divider:

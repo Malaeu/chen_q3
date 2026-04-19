@@ -3005,6 +3005,105 @@ theorem po3_square2d1_target_of_even_square_tail_zero
 
 end PO3SquareTransformTransfer
 
+section PO3SquareNewton
+
+variable {𝕜 : Type*} [Field 𝕜]
+
+/-- Shifted square node sequence used by the square-tail Newton route:
+the `k`-th node is `(N + k + 1)^2`. -/
+def po3_shifted_square_node (N k : ℕ) : ℕ :=
+  (N + k + 1) ^ 2
+
+/-- The same shifted square nodes, now read in the coefficient field. -/
+def po3_shifted_square_nodes (N : ℕ) : ℕ → 𝕜 :=
+  fun k => ((po3_shifted_square_node N k : ℕ) : 𝕜)
+
+/-- Sample a one-variable receiver on the shifted square tail. -/
+def po3_square_tail_sample (receiver : ℕ → 𝕜) (N : ℕ) : ℕ → 𝕜 :=
+  fun k => receiver (po3_shifted_square_node N k)
+
+/-- One Newton/divided-difference step on a nonuniform node sequence. -/
+def po3_newton_divided_difference_step
+    (nodes : ℕ → 𝕜) (F : ℕ → 𝕜) : ℕ → 𝕜 :=
+  fun k => (F (k + 1) - F k) / (nodes (k + 1) - nodes k)
+
+/-- Iterated Newton/divided-difference tower on a fixed node sequence. -/
+def po3_iterated_newton_divided_difference
+    (nodes : ℕ → 𝕜) : ℕ → (ℕ → 𝕜) → (ℕ → 𝕜)
+  | 0, F => F
+  | n + 1, F =>
+      po3_iterated_newton_divided_difference nodes n
+        (po3_newton_divided_difference_step nodes F)
+
+/-- If a sampled sequence is identically zero, then one Newton/divided-
+difference step is identically zero as well. -/
+theorem po3_newton_divided_difference_step_zero_of_zero
+    {nodes : ℕ → 𝕜} {F : ℕ → 𝕜}
+    (hzero : ∀ k, F k = 0) :
+    po3_newton_divided_difference_step nodes F = 0 := by
+  funext k
+  simp [po3_newton_divided_difference_step, hzero k, hzero (k + 1)]
+
+/-- If a sampled sequence is identically zero, then the whole iterated
+Newton/divided-difference tower is identically zero. -/
+theorem po3_iterated_newton_divided_difference_zero_of_zero
+    {nodes : ℕ → 𝕜} (order : ℕ) {F : ℕ → 𝕜}
+    (hzero : ∀ k, F k = 0) :
+    po3_iterated_newton_divided_difference nodes order F = 0 := by
+  induction order generalizing F with
+  | zero =>
+      funext k
+      exact hzero k
+  | succ n ih =>
+      simpa [po3_iterated_newton_divided_difference] using
+        ih (F := po3_newton_divided_difference_step nodes F) (hzero := by
+          intro k
+          simp [po3_newton_divided_difference_step, hzero k, hzero (k + 1)])
+
+/-- Square-tail vanishing for the original receiver means that its shifted
+square-node sample sequence is identically zero. -/
+theorem po3_square_tail_sample_zero_of_square_tail_zero
+    {receiver : ℕ → 𝕜} {N : ℕ}
+    (hzero : ∀ r, N < r → receiver (r ^ 2) = 0) :
+    po3_square_tail_sample receiver N = 0 := by
+  funext k
+  have hk : N < N + k + 1 := by
+    simpa [Nat.add_assoc] using Nat.lt_add_of_pos_right (a := N) (p := k + 1) (Nat.succ_pos k)
+  simpa [po3_square_tail_sample, po3_shifted_square_node] using hzero (N + k + 1) hk
+
+/-- `PO3-square.2b0`:
+square-tail vanishing for one fixed receiver forces the entire iterated Newton /
+divided-difference tower on the shifted square nodes to vanish. -/
+theorem po3_square_tail_iterated_newton_zero_of_square_tail_zero
+    {receiver : ℕ → 𝕜} {N order : ℕ} :
+    (∀ r, N < r → receiver (r ^ 2) = 0) →
+    po3_iterated_newton_divided_difference
+        (po3_shifted_square_nodes (𝕜 := 𝕜) N)
+        order
+        (po3_square_tail_sample receiver N) = 0 := by
+  intro hzero
+  exact po3_iterated_newton_divided_difference_zero_of_zero order
+    (hzero := by
+      intro k
+      exact congrFun
+        (po3_square_tail_sample_zero_of_square_tail_zero
+          (receiver := receiver) (N := N) hzero) k)
+
+/-- Pointwise form of the same `PO3-square.2b0` packet. -/
+theorem po3_square_tail_iterated_newton_zero_of_square_tail_zero_apply
+    {receiver : ℕ → 𝕜} {N order n : ℕ}
+    (hzero : ∀ r, N < r → receiver (r ^ 2) = 0) :
+    po3_iterated_newton_divided_difference
+        (po3_shifted_square_nodes (𝕜 := 𝕜) N)
+        order
+        (po3_square_tail_sample receiver N) n = 0 := by
+  have h :=
+    po3_square_tail_iterated_newton_zero_of_square_tail_zero
+      (receiver := receiver) (N := N) (order := order) hzero
+  simpa using congrFun h n
+
+end PO3SquareNewton
+
 section PO3Symmetry
 
 variable {A : Type*} [AddGroup A] [StarAddMonoid A]

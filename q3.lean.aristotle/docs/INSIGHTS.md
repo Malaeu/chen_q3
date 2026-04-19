@@ -9407,3 +9407,32 @@ Update:
   add the abstract divided-difference tower to `HBridge_PO3_Shell.lean`,
   specialize it to shifted square nodes, and record the resulting theorem as
   the first formal Newton-side receiver for `PO3-square.2b`.
+
+## Result (2026-04-19) — `PO3-square.2b0` now has the Newton/divided-difference bridge
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the full first Newton-side
+  reduction packet:
+  `po3_shifted_square_node`,
+  `po3_shifted_square_nodes`,
+  `po3_square_tail_sample`,
+  `po3_newton_divided_difference_step`,
+  and
+  `po3_iterated_newton_divided_difference`;
+- on top of these definitions the file proves the abstract zero-propagation
+  theorem
+  `po3_iterated_newton_divided_difference_zero_of_zero`,
+  then specializes it to the square-tail route through
+  `po3_square_tail_sample_zero_of_square_tail_zero`,
+  `po3_square_tail_iterated_newton_zero_of_square_tail_zero`,
+  and
+  `po3_square_tail_iterated_newton_zero_of_square_tail_zero_apply`;
+- this is the exact formal content of `PO3-square.2b0`:
+  square-tail vanishing for one fixed receiver now yields a zero tower of
+  iterated Newton/divided differences on the shifted square nodes;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-square.2b0` is now frozen.
+  The live Newton-side burden is no longer how to build the tower, but how to
+  force uniqueness or contradiction from that zero tower.

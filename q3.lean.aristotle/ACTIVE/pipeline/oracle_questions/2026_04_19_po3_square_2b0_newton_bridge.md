@@ -1,5 +1,5 @@
 ---
-status: "open"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-square.2b0"
 related_addresses: ["PO3-square.2b", "PO3-square.2d1"]

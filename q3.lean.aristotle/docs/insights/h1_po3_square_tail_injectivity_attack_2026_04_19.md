@@ -221,6 +221,20 @@ analytic / infinite-support стороне.
 - бесконечная башня может потребовать сильной оценки роста,
   а не только формальной алгебры.
 
+### `PO3-square.2b0`  `[Shell bridge closed]`
+
+Первый Newton-side пакет теперь уже формализован в Lean:
+
+- shifted square nodes заданы явно;
+- sampled tail одного fixed receiver-а на этих узлах задан явно;
+- one-step и iterated Newton/divided differences заданы как отдельные объекты;
+- square-tail zero формально переводится в нулевую башню iterated divided
+  differences.
+
+То есть внутри `2b` больше не осталось definitional тумана.
+Живой Newton-side burden теперь уже только в следующем шаге:
+получить из этой нулевой башни настоящий uniqueness / contradiction theorem.
+
 ## Штурм `2c` — canonical entire divider
 
 Идея:
