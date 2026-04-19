@@ -159,6 +159,8 @@ Exports:
 - `po3_first_zeta_initial_packet_kernel_ne_filtered_candidate`
 - `po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel`
 - `po3_false_of_first_zeta_initial_packet_kernel_and_filtered_candidate`
+- `po3_no_antidiagonal_invariant_of_first_zeta_initial_packet_kernel`
+- `po3_false_of_first_zeta_initial_packet_kernel_and_antidiagonal_invariant`
 - `po3_first_zeta_singleton_gamma0_profile`
 - `po3_first_zeta_singleton_gamma1_profile`
 - `po3_first_zeta_singleton_gamma2_profile`
@@ -186,6 +188,11 @@ Status note:
   `po3_first_zeta_initial_packet_kernel`,
   and the filtered-candidate kill theorems are exported directly at that
   predicate level;
+- the final local shell cleanup is now also present:
+  the same named family predicate exports a direct bridge to the generic
+  anti-diagonal shell criterion, so downstream code can now contradict
+  anti-diagonal invariance without manually passing through
+  `∃ u, K = po3_suzuki_filtered_pm_candidate u`;
 - `po3_first_zeta_some_initial_packet_profile` is now the existential shell
   form `∃ tag, ...`, not a hand-written five-way disjunction.
 

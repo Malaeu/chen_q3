@@ -1,13 +1,13 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-shell.6"
 related_addresses: ["PO3-shell", "PO3-shell.5", "PO3Cert"]
 ancestor_addresses: ["PO3-shell.5"]
-child_or_next_addresses: []
+child_or_next_addresses: ["PO3-rig.1"]
 raw_address_notation: "PO3-shell.6, PO3-shell.5, PO3-shell, PO3Cert"
-normalized_addresses: ["PO3-shell.6", "PO3-shell.5", "PO3-shell", "PO3Cert"]
-address_status: "active"
+normalized_addresses: ["PO3-shell.6", "PO3-shell.5", "PO3-shell", "PO3Cert", "PO3-rig.1"]
+address_status: "done"
 blocker: "Дать прямой shell-мост от named first-zeta kernel family к общему критерию антидиагональной инвариантности, чтобы следующий consumer не ходил через filtered-candidate existential"
 collections: ["q3_docs"]
 tags: ["po3", "shell", "antidiagonal", "api", "witness_stack"]

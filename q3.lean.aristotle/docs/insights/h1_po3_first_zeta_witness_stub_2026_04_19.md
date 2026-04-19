@@ -174,11 +174,18 @@ theorem-level файл `FirstZetaPrefix2_2026_04_19.lean`. Для `prefix3` он
 - `Q3.Proofs.PO3Cert.po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel`;
 - `Q3.Proofs.PO3Cert.po3_false_of_first_zeta_initial_packet_kernel_and_filtered_candidate`.
 
+И теперь на этом же слое есть уже прямой anti-diagonal shell bridge:
+
+- `Q3.Proofs.PO3Cert.po3_no_antidiagonal_invariant_of_first_zeta_initial_packet_kernel`;
+- `Q3.Proofs.PO3Cert.po3_false_of_first_zeta_initial_packet_kernel_and_antidiagonal_invariant`.
+
 Это уже не просто набор локальных лемм, а готовый reusable witness-stack для
 дальнейшей `PO3-shell` упаковки: и как bundled theorem, и как конечная
 семья tagged raw-пакетов, и как прямой inequality-bridge к
 `po3_suzuki_filtered_pm_candidate`, и как transport-layer на произвольный
-shell-kernel, и как named family predicate для следующего API-слоя.
+shell-kernel, и как named family predicate для следующего API-слоя, и как
+прямой мост к generic anti-diagonal shell criterion без промежуточной ручной
+распаковки filtered-candidate existential.
 
 ## Current honest singleton landing
 

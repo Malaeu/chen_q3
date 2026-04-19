@@ -8799,3 +8799,28 @@ Update:
 - if this lands cleanly, `PO3-shell.6` is closed and the first-zeta local
   packet plugs into the generic `PO3` shell without mentioning filtered
   candidates explicitly.
+
+## Result (2026-04-19) — `PO3-shell.6` anti-diagonal bridge landed
+
+- `Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean` now exports the
+  direct shell theorem
+  `po3_no_antidiagonal_invariant_of_first_zeta_initial_packet_kernel`;
+- the same file also exports the contradiction form
+  `po3_false_of_first_zeta_initial_packet_kernel_and_antidiagonal_invariant`;
+- this closes the intended API gap:
+  downstream `PO3` shell consumers can now rule out a first-zeta initial packet
+  directly at the level of anti-diagonal invariance, without reintroducing the
+  intermediate existential
+  `∃ u, K = po3_suzuki_filtered_pm_candidate u`;
+- mathematically nothing new was added:
+  the proof is the exact generic transport
+  `anti-diagonal invariance -> filtered candidate`
+  via `po3_exists_suzuki_filtered_pm_candidate_iff`, composed with the already
+  compiled family-level kill theorem from `PO3-shell.5`;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- net effect:
+  the local first-zeta witness stack is now fully shell-facing through the two
+  generic entry languages already present in `HBridge_PO3_Shell.lean`:
+  filtered-candidate existence and anti-diagonal invariance.

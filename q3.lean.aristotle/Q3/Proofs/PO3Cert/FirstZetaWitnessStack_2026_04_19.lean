@@ -231,6 +231,25 @@ theorem po3_false_of_first_zeta_initial_packet_kernel_and_filtered_candidate
     False := by
   exact po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel hK hcand
 
+/-- Direct bridge from the named first-zeta kernel family to the generic shell
+criterion: such a kernel cannot be anti-diagonally invariant. -/
+theorem po3_no_antidiagonal_invariant_of_first_zeta_initial_packet_kernel
+    {K : ℕ → ℕ → ℂ}
+    (hK : po3_first_zeta_initial_packet_kernel K) :
+    ¬ ∀ m n m' n', m + n = m' + n' → K m n = K m' n' := by
+  intro hanti
+  apply po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel hK
+  exact (po3_exists_suzuki_filtered_pm_candidate_iff K).2 hanti
+
+/-- Contradiction form of the same shell bridge on the anti-diagonal-invariance
+side. -/
+theorem po3_false_of_first_zeta_initial_packet_kernel_and_antidiagonal_invariant
+    {K : ℕ → ℕ → ℂ}
+    (hK : po3_first_zeta_initial_packet_kernel K)
+    (hanti : ∀ m n m' n', m + n = m' + n' → K m n = K m' n') :
+    False := by
+  exact po3_no_antidiagonal_invariant_of_first_zeta_initial_packet_kernel hK hanti
+
 /-- No member of the initial first-zeta witness stack can come from a
 one-variable `(+,-)` profile. This is the disjunctive shell-facing form of the
 same local kill-layer. -/
