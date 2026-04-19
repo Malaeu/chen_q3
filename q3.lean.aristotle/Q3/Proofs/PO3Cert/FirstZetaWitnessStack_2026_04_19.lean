@@ -197,6 +197,40 @@ theorem po3_false_of_exists_eq_first_zeta_initial_packet_raw_and_filtered_candid
   exact po3_no_filtered_candidate_of_exists_eq_first_zeta_initial_packet_raw
     hpacket hcand
 
+/-- Named shell predicate for the family of kernels carried by the initial
+first-zeta packet stack. This is the kernel-level wrapper around the tagged raw
+packet family. -/
+def po3_first_zeta_initial_packet_kernel (K : ℕ → ℕ → ℂ) : Prop :=
+  ∃ tag : po3_first_zeta_initial_packet_tag,
+    K = po3_first_zeta_initial_packet_raw tag
+
+/-- Pointwise consumer theorem on the named kernel family: a kernel from the
+initial first-zeta family differs from every filtered `(+,-)` candidate. -/
+theorem po3_first_zeta_initial_packet_kernel_ne_filtered_candidate
+    {K : ℕ → ℕ → ℂ}
+    (hK : po3_first_zeta_initial_packet_kernel K)
+    (u : ℕ → ℂ) :
+    K ≠ po3_suzuki_filtered_pm_candidate u := by
+  intro hEq
+  exact
+    po3_no_filtered_candidate_of_exists_eq_first_zeta_initial_packet_raw hK
+      ⟨u, hEq⟩
+
+/-- Negated-existential shell theorem on the named first-zeta kernel family. -/
+theorem po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel
+    {K : ℕ → ℕ → ℂ}
+    (hK : po3_first_zeta_initial_packet_kernel K) :
+    ¬ ∃ u : ℕ → ℂ, K = po3_suzuki_filtered_pm_candidate u := by
+  exact po3_no_filtered_candidate_of_exists_eq_first_zeta_initial_packet_raw hK
+
+/-- Contradiction form on the named first-zeta kernel family. -/
+theorem po3_false_of_first_zeta_initial_packet_kernel_and_filtered_candidate
+    {K : ℕ → ℕ → ℂ}
+    (hK : po3_first_zeta_initial_packet_kernel K)
+    (hcand : ∃ u : ℕ → ℂ, K = po3_suzuki_filtered_pm_candidate u) :
+    False := by
+  exact po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel hK hcand
+
 /-- No member of the initial first-zeta witness stack can come from a
 one-variable `(+,-)` profile. This is the disjunctive shell-facing form of the
 same local kill-layer. -/

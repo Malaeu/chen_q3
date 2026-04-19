@@ -155,6 +155,10 @@ Exports:
 - `po3_no_filtered_candidate_of_eq_first_zeta_initial_packet_raw`
 - `po3_no_filtered_candidate_of_exists_eq_first_zeta_initial_packet_raw`
 - `po3_false_of_exists_eq_first_zeta_initial_packet_raw_and_filtered_candidate`
+- `po3_first_zeta_initial_packet_kernel`
+- `po3_first_zeta_initial_packet_kernel_ne_filtered_candidate`
+- `po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel`
+- `po3_false_of_first_zeta_initial_packet_kernel_and_filtered_candidate`
 - `po3_first_zeta_singleton_gamma0_profile`
 - `po3_first_zeta_singleton_gamma1_profile`
 - `po3_first_zeta_singleton_gamma2_profile`
@@ -177,6 +181,11 @@ Status note:
   for an arbitrary shell kernel `K`, if `K` is identified with one tagged
   first-zeta packet, then `K` is excluded from the filtered `(+,-)` candidate
   shell, both in negated-existential and direct contradiction forms;
+- the next API compression layer is also present:
+  the family of such kernels is now named by one predicate
+  `po3_first_zeta_initial_packet_kernel`,
+  and the filtered-candidate kill theorems are exported directly at that
+  predicate level;
 - `po3_first_zeta_some_initial_packet_profile` is now the existential shell
   form `∃ tag, ...`, not a hand-written five-way disjunction.
 

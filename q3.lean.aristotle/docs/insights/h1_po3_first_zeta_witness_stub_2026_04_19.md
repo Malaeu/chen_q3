@@ -167,11 +167,18 @@ theorem-level файл `FirstZetaPrefix2_2026_04_19.lean`. Для `prefix3` он
 - `Q3.Proofs.PO3Cert.po3_no_filtered_candidate_of_exists_eq_first_zeta_initial_packet_raw`;
 - `Q3.Proofs.PO3Cert.po3_false_of_exists_eq_first_zeta_initial_packet_raw_and_filtered_candidate`.
 
+Поверх этого теперь есть и named kernel-family layer:
+
+- `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_kernel`;
+- `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_kernel_ne_filtered_candidate`;
+- `Q3.Proofs.PO3Cert.po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel`;
+- `Q3.Proofs.PO3Cert.po3_false_of_first_zeta_initial_packet_kernel_and_filtered_candidate`.
+
 Это уже не просто набор локальных лемм, а готовый reusable witness-stack для
 дальнейшей `PO3-shell` упаковки: и как bundled theorem, и как конечная
 семья tagged raw-пакетов, и как прямой inequality-bridge к
 `po3_suzuki_filtered_pm_candidate`, и как transport-layer на произвольный
-shell-kernel.
+shell-kernel, и как named family predicate для следующего API-слоя.
 
 ## Current honest singleton landing
 

@@ -8735,3 +8735,23 @@ Update:
   `docs/insights/h1_po3_square_tail_injectivity_attack_2026_04_19.md`,
   which records the four planned assaults on `PO3-square.2` and currently
   prioritizes the divided-difference route (`2b`) over the others.
+
+## Result (2026-04-19) — `PO3-shell.5` named kernel-family predicate landed
+
+- `Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean` now names the
+  kernel family carried by the tagged first-zeta packet stack via the predicate
+  `po3_first_zeta_initial_packet_kernel`;
+- on top of that predicate the file now exports:
+  `po3_first_zeta_initial_packet_kernel_ne_filtered_candidate`,
+  `po3_no_filtered_candidate_of_first_zeta_initial_packet_kernel`,
+  and
+  `po3_false_of_first_zeta_initial_packet_kernel_and_filtered_candidate`;
+- this is exactly the intended API compression:
+  downstream shell code no longer has to carry the low-level witness hypothesis
+  `∃ tag, K = po3_first_zeta_initial_packet_raw tag` explicitly;
+- mathematically nothing new was added:
+  the new layer is just a named wrapper around the already proved transport
+  theorem from `PO3-shell.4`;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
+  and `lake build Q3.Proofs.PO3Cert`.

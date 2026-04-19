@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-shell.5"
 related_addresses: ["PO3-shell", "PO3-shell.4", "PO3Cert"]
@@ -11,7 +11,7 @@ address_status: "active"
 blocker: "Вынести named kernel-family predicate для tagged first-zeta packet и повесить на него готовые shell-theorems без ручного hpacket : ∃ tag, ..."
 collections: ["q3_docs"]
 tags: ["po3", "shell", "kernel_family", "api", "witness_stack"]
-insight_links: []
+insight_links: ["docs/insights/h1_po3_first_zeta_witness_stub_2026_04_19.md"]
 request_nodes: []
 strong_terms: ["named kernel family predicate", "first zeta initial packet kernel", "no filtered candidate on family predicate"]
 empty_terms: []
@@ -24,9 +24,9 @@ neighbor_addresses: []
 
 ## Статус
 
-- карточка создана;
-- search-pass уже выполнен;
-- кодовый шаг ещё не начат.
+- карточка закрыта как `done`;
+- search-pass выполнен;
+- кодовый шаг завершён и собран.
 
 ## Точный блокер
 
@@ -83,6 +83,5 @@ neighbor_addresses: []
 
 ## Следующий адресный шаг
 
-- определить named predicate for the initial first-zeta kernel family;
-- поднять на него negated-existential и contradiction theorems;
-- после этого открыть `PO3-shell.6` как финальную API-зачистку локального shell.
+- открыть `PO3-shell.6` как финальную API-зачистку локального shell;
+- использовать новый named family predicate как основной shell-level вход.
