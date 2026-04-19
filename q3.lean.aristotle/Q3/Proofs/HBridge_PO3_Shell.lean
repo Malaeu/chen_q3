@@ -1684,26 +1684,22 @@ noncomputable def po3_suzuki_filtered_pm_gap_term_20_11
   1 / (((γ - 2 * c) * (γ - 3 * c)) * (γ * (γ - c))) -
     1 / (((γ - c) * (γ - 2 * c)) * ((γ - c) * (γ - 2 * c)))
 
-/-- A single affine-lattice Suzuki atom cannot be a one-variable `(+,-)`
-profile once the first anti-diagonal gap is genuinely nonzero. -/
-theorem po3_no_suzuki_filtered_pm_atom_candidate_of_affine_gap_20_11
+/-- The six-pole gap term is genuinely nonzero away from the first affine
+pole locations. -/
+theorem po3_suzuki_filtered_pm_gap_term_20_11_ne_zero
     (c γ : ℂ)
     (hc : c ≠ 0)
     (hγ0 : γ ≠ 0)
     (hγ1 : γ ≠ c)
     (hγ2 : γ ≠ 2 * c)
     (hγ3 : γ ≠ 3 * c) :
-    ¬ ∃ u,
-      po3_suzuki_filtered_pm_atom (po3_affine_alpha c) γ
-        = po3_suzuki_filtered_pm_candidate u := by
-  apply po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
-  rw [po3_suzuki_filtered_pm_atom_antidiagonal_gap_20_11]
+    po3_suzuki_filtered_pm_gap_term_20_11 c γ ≠ 0 := by
   intro hgap
   let A : ℂ := (((γ - 2 * c) * (γ - 3 * c)) * (γ * (γ - c)))
   let B : ℂ := (((γ - c) * (γ - 2 * c)) * ((γ - c) * (γ - 2 * c)))
   have hdiv : 1 / A = 1 / B := by
     have := sub_eq_zero.mp hgap
-    simpa [A, B] using this
+    simpa [po3_suzuki_filtered_pm_gap_term_20_11, A, B] using this
   have hA0 : A ≠ 0 := by
     dsimp [A]
     apply mul_ne_zero
@@ -1741,6 +1737,22 @@ theorem po3_no_suzuki_filtered_pm_atom_candidate_of_affine_gap_20_11
   have hmain' : 2 * c ^ 2 * (γ - c) * (γ - 2 * c) ≠ 0 := by
     simpa [mul_assoc] using hmain
   exact hmain' hsub
+
+/-- A single affine-lattice Suzuki atom cannot be a one-variable `(+,-)`
+profile once the first anti-diagonal gap is genuinely nonzero. -/
+theorem po3_no_suzuki_filtered_pm_atom_candidate_of_affine_gap_20_11
+    (c γ : ℂ)
+    (hc : c ≠ 0)
+    (hγ0 : γ ≠ 0)
+    (hγ1 : γ ≠ c)
+    (hγ2 : γ ≠ 2 * c)
+    (hγ3 : γ ≠ 3 * c) :
+    ¬ ∃ u,
+      po3_suzuki_filtered_pm_atom (po3_affine_alpha c) γ
+        = po3_suzuki_filtered_pm_candidate u := by
+  apply po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
+  rw [po3_suzuki_filtered_pm_atom_antidiagonal_gap_20_11]
+  exact po3_suzuki_filtered_pm_gap_term_20_11_ne_zero c γ hc hγ0 hγ1 hγ2 hγ3
 
 /-- The first anti-diagonal gap for a finite Suzuki `(+,-)` packet on the
 affine pole lattice is the sum of the atom-wise gaps. This is the exact finite
@@ -1804,6 +1816,30 @@ noncomputable def po3_suzuki_filtered_pm_partial_sum_manuscript
     γ
     (po3_suzuki_manuscript_alpha_step a)
 
+/-- The direct manuscript singleton truncation. This is the first concrete
+finite `γ`-packet with no remaining indexing overhead. -/
+noncomputable def po3_suzuki_filtered_pm_singleton_manuscript
+    (a γ : ℂ) : ℕ → ℕ → ℂ :=
+  po3_suzuki_filtered_pm_partial_sum_manuscript ({()} : Finset Unit) a (fun _ => γ)
+
+/-- The manuscript prefactor is nonzero once `a ≠ 0`. -/
+theorem po3_suzuki_manuscript_prefactor_ne_zero
+    {a : ℂ} (ha : a ≠ 0) :
+    po3_suzuki_manuscript_prefactor a ≠ 0 := by
+  unfold po3_suzuki_manuscript_prefactor
+  apply div_ne_zero
+  · apply mul_ne_zero
+    · norm_num
+    · exact pow_ne_zero 2 (by exact_mod_cast Real.pi_ne_zero)
+  · exact pow_ne_zero 3 ha
+
+/-- The manuscript amplitude is nonzero as soon as `sin(aγ) ≠ 0`. -/
+theorem po3_suzuki_manuscript_amp_ne_zero
+    {a γ : ℂ} (hsin : Complex.sin (a * γ) ≠ 0) :
+    po3_suzuki_manuscript_amp a γ ≠ 0 := by
+  unfold po3_suzuki_manuscript_amp
+  exact pow_ne_zero 2 hsin
+
 /-- The first anti-diagonal gap for the manuscript-shaped finite partial
 `γ`-sum is the same finite sum of six-pole defects, with the global prefactor
 and amplitude carried pointwise. -/
@@ -1862,6 +1898,47 @@ theorem po3_no_suzuki_filtered_pm_partial_sum_manuscript_candidate_of_gap_20_11
   apply po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
   rw [po3_suzuki_filtered_pm_partial_sum_manuscript_antidiagonal_gap_20_11]
   exact hgap
+
+/-- The neighboring anti-diagonal defect for the direct manuscript singleton
+truncation is exactly one weighted six-pole gap term. -/
+theorem po3_suzuki_filtered_pm_singleton_manuscript_antidiagonal_gap_20_11
+    (a γ : ℂ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_filtered_pm_singleton_manuscript a γ) 1
+      =
+        (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a γ) *
+          po3_suzuki_filtered_pm_gap_term_20_11
+            (po3_suzuki_manuscript_alpha_step a) γ := by
+  rw [po3_suzuki_filtered_pm_singleton_manuscript,
+    po3_suzuki_filtered_pm_partial_sum_manuscript_antidiagonal_gap_20_11]
+  simp
+
+/-- A direct manuscript singleton truncation already rules out a one-variable
+`(+,-)` profile whenever its six-pole gap term is nonzero and the manuscript
+weight does not vanish. -/
+theorem po3_no_suzuki_filtered_pm_singleton_manuscript_candidate_of_gap_20_11
+    (a γ : ℂ)
+    (ha : a ≠ 0)
+    (hsin : Complex.sin (a * γ) ≠ 0)
+    (hγ0 : γ ≠ 0)
+    (hγ1 : γ ≠ po3_suzuki_manuscript_alpha_step a)
+    (hγ2 : γ ≠ 2 * po3_suzuki_manuscript_alpha_step a)
+    (hγ3 : γ ≠ 3 * po3_suzuki_manuscript_alpha_step a) :
+    ¬ ∃ u,
+      po3_suzuki_filtered_pm_singleton_manuscript a γ
+        = po3_suzuki_filtered_pm_candidate u := by
+  apply po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
+  rw [po3_suzuki_filtered_pm_singleton_manuscript_antidiagonal_gap_20_11]
+  apply mul_ne_zero
+  · exact mul_ne_zero
+      (po3_suzuki_manuscript_prefactor_ne_zero ha)
+      (po3_suzuki_manuscript_amp_ne_zero hsin)
+  · exact po3_suzuki_filtered_pm_gap_term_20_11_ne_zero
+      (po3_suzuki_manuscript_alpha_step a) γ
+      (by
+        unfold po3_suzuki_manuscript_alpha_step
+        exact div_ne_zero (by exact_mod_cast Real.pi_ne_zero) ha)
+      hγ0 hγ1 hγ2 hγ3
 
 /-- Filtered one-variable profile for the concrete `(++ )` Section 8 block. -/
 noncomputable def po3_section8_filtered_pp_profile (B t : ℝ) : ℤ → ℂ :=

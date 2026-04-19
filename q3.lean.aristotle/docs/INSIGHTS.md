@@ -8221,3 +8221,29 @@ Update:
   finite six-pole sum;
 - если не зануляется, one-variable дверь для Suzuki `(+,-)` закрыта уже в
   той нормировке, в которой формула реально написана в рукописи.
+
+Update:
+
+- теперь закрыт ещё более жёсткий локальный слой: в shell добавлены
+  `po3_suzuki_manuscript_prefactor_ne_zero`,
+  `po3_suzuki_manuscript_amp_ne_zero`,
+  `po3_suzuki_filtered_pm_singleton_manuscript`,
+  `po3_suzuki_filtered_pm_singleton_manuscript_antidiagonal_gap_20_11`,
+  `po3_no_suzuki_filtered_pm_singleton_manuscript_candidate_of_gap_20_11`;
+- это даёт уже не просто finite-packet shell, а прямой singleton manuscript
+  kill: одна конкретная `γ`-точка в manuscript normalization уже не может
+  быть one-variable `(+,-)` профилем, если одновременно не зануляется
+  `sin(aγ)` и `γ` не попадает в первые четыре affine poles
+  `0, π/a, 2π/a, 3π/a`;
+- технически это теперь сведено к одному явному произведению:
+  manuscript prefactor `2π²/a³`,
+  oscillatory amplitude `sin²(aγ)` и
+  six-pole gap term `po3_suzuki_filtered_pm_gap_term_20_11 (π/a) γ`;
+- это полезно как прямой structural candidate для реальной формулы Сузуки:
+  если даже одиночная manuscript truncation не проходит тест соседнего
+  антидиагонального разрыва, то full one-variable `(+,-)` landing уже с
+  самого начала становится крайне жёстким;
+- следующий шаг теперь очень конкретный:
+  либо вытащить из рукописи точную реальную finite truncation и подать её в
+  уже готовый shell, либо доказать дополнительную cancellation identity,
+  без которой surviving manuscript sum ожидать нельзя.
