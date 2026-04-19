@@ -3104,6 +3104,67 @@ theorem po3_square_tail_iterated_newton_zero_of_square_tail_zero_apply
 
 end PO3SquareNewton
 
+section PO3SquareEntireDivider
+
+variable {𝕜 : Type*} [Field 𝕜]
+
+/-- Finite front correction factor for the canonical square-lattice divider:
+it records the first `N` square nodes that must be removed from the full
+product `∏ (1 - z / m^2)`. -/
+def po3_square_front_factor (N : ℕ) (z : 𝕜) : 𝕜 :=
+  ∏ m ∈ Finset.range N, (1 - z / (((m + 1 : ℕ) : 𝕜) ^ 2))
+
+/-- Successor recursion for the finite square front factor. -/
+theorem po3_square_front_factor_succ
+    (N : ℕ) (z : 𝕜) :
+    po3_square_front_factor (𝕜 := 𝕜) (N + 1) z =
+      po3_square_front_factor (𝕜 := 𝕜) N z
+        * (1 - z / (((N + 1 : ℕ) : 𝕜) ^ 2)) := by
+  rw [po3_square_front_factor, po3_square_front_factor, Finset.prod_range_succ]
+
+/-- Abstract canonical divider data for `PO3-square.2c0`:
+the same base function is factored through the finite front correction and a
+tail divider at every level `N`. -/
+def po3_square_tail_divider_data
+    (base : 𝕜 → 𝕜) (divider : ℕ → 𝕜 → 𝕜) : Prop :=
+  ∀ N z, base z = po3_square_front_factor (𝕜 := 𝕜) N z * divider N z
+
+/-- Multiplicative step relation extracted from canonical divider data.
+This is the exact algebraic bridge from the divider route `2c` to the
+quotient-collapse route `2b1`. -/
+theorem po3_square_tail_divider_step_mul
+    {base : 𝕜 → 𝕜} {divider : ℕ → 𝕜 → 𝕜}
+    (hdata : po3_square_tail_divider_data (𝕜 := 𝕜) base divider)
+    (N : ℕ) (z : 𝕜) :
+    po3_square_front_factor (𝕜 := 𝕜) N z * divider N z =
+      po3_square_front_factor (𝕜 := 𝕜) N z
+        * ((1 - z / (((N + 1 : ℕ) : 𝕜) ^ 2)) * divider (N + 1) z) := by
+  calc
+    po3_square_front_factor (𝕜 := 𝕜) N z * divider N z = base z := (hdata N z).symm
+    _ = po3_square_front_factor (𝕜 := 𝕜) (N + 1) z * divider (N + 1) z := hdata (N + 1) z
+    _ =
+        (po3_square_front_factor (𝕜 := 𝕜) N z
+          * (1 - z / (((N + 1 : ℕ) : 𝕜) ^ 2))) * divider (N + 1) z := by
+          rw [po3_square_front_factor_succ]
+    _ =
+        po3_square_front_factor (𝕜 := 𝕜) N z
+          * ((1 - z / (((N + 1 : ℕ) : 𝕜) ^ 2)) * divider (N + 1) z) := by
+          rw [mul_assoc]
+
+/-- Pointwise step recursion for the tail divider, valid away from the finite
+front-zero set. This is the exact shell consumed by `PO3-square.2b1`. -/
+theorem po3_square_tail_divider_step_of_nonvanishing_front
+    {base : 𝕜 → 𝕜} {divider : ℕ → 𝕜 → 𝕜}
+    (hdata : po3_square_tail_divider_data (𝕜 := 𝕜) base divider)
+    {N : ℕ} {z : 𝕜}
+    (hfront : po3_square_front_factor (𝕜 := 𝕜) N z ≠ 0) :
+    divider N z =
+      (1 - z / (((N + 1 : ℕ) : 𝕜) ^ 2)) * divider (N + 1) z := by
+  apply mul_left_cancel₀ hfront
+  exact po3_square_tail_divider_step_mul (𝕜 := 𝕜) hdata N z
+
+end PO3SquareEntireDivider
+
 section PO3SquareQuotientCollapse
 
 variable {𝕜 : Type*} [Field 𝕜]

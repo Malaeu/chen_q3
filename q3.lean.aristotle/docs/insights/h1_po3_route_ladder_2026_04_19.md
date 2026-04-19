@@ -189,6 +189,17 @@ Canonical square-lattice entire divider:
 что совместимость с ростом / симметрией forcing-условий убивает
 ненулевое решение.
 
+Текущее состояние этого штурма:
+
+- `PO3-square.2c0` уже закрыт как первый shell-пакет:
+  finite front factor и derived pointwise step-рекурсия делителя теперь
+  формализованы;
+- значит внутри `2c` больше не осталось algebraic тумана на уровне front
+  correction;
+- живой следующий адрес в `2c` теперь уже не про продуктовую рекурсию, а про
+  сам analytic input:
+  canonical factorization / growth control / uniqueness after division.
+
 ### `PO3-square.2d`  `[Штурм через перенос в другой transform-side]`
 
 Не бить injectivity в текущей записи напрямую, а перевести её в более жёсткий

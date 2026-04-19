@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-square.2c0"
 related_addresses: ["PO3-square.2c", "PO3-square.2b1", "SQ1"]
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-square.2c", "PO3-square.2"]
 child_or_next_addresses: ["PO3-square.2c1"]
 raw_address_notation: "PO3-square.2c0; PO3-square.2c, PO3-square.2b1; SQ1"
 normalized_addresses: ["PO3-square.2c0", "PO3-square.2c", "PO3-square.2b1", "SQ1", "PO3-square.2", "PO3-square.2c1", "PO3-square.2d1"]
-address_status: "active"
+address_status: "done"
 blocker: "Формализовать canonical square-divider shell: finite front factor и pointwise step-рекурсию делителя, чтобы `2c` реально сцепился с уже закрытым `2b1`."
 collections: ["q3_docs"]
 tags: ["po3-square", "entire-divider", "canonical-product"]

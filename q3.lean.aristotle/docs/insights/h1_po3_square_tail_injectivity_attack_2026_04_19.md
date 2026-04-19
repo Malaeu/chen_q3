@@ -284,6 +284,26 @@ analytic / infinite-support стороне.
 - надо аккуратно доказать, что текущий receiver попадает в правильный класс
   функций, где деление и рост контролируются.
 
+### `PO3-square.2c0`  `[Canonical divider shell closed]`
+
+Первый честный подшаг внутри `2c` теперь уже формализован:
+
+- finite front correction factor
+  `po3_square_front_factor`
+  задан явно;
+- его successor-рекурсия посажена как
+  `po3_square_front_factor_succ`;
+- abstract canonical divider data
+  `base(z) = front_N(z) * E_N(z)`
+  упакованы в
+  `po3_square_tail_divider_data`;
+- из этих данных формально выведена pointwise step-рекурсия делителя вне
+  finite front-zero set:
+  `po3_square_tail_divider_step_of_nonvanishing_front`.
+
+То есть `2c` уже сцепился с `2b1`: как только аналитическая factorization
+будет реально доказана, step-рекурсия делителя дальше станет механикой.
+
 ## Штурм `2d` — transform transfer
 
 Идея:

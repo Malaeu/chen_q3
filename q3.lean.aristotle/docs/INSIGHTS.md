@@ -9525,3 +9525,32 @@ Update:
 - so the exact implementation target is narrow and honest:
   add `po3_square_front_factor` plus its recursion and the derived
   pointwise divider-step shell to `HBridge_PO3_Shell.lean`.
+
+## Result (2026-04-19) — `PO3-square.2c0` now freezes the canonical divider shell
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the concrete finite-product
+  shell for the canonical square-divider route:
+  `po3_square_front_factor`,
+  `po3_square_front_factor_succ`,
+  `po3_square_tail_divider_data`,
+  `po3_square_tail_divider_step_mul`,
+  and
+  `po3_square_tail_divider_step_of_nonvanishing_front`;
+- this closes the exact bridge that `2c` needed:
+  once analytic work later supplies a canonical factorization
+  `base(z) = front_N(z) * E_N(z)`,
+  the step relation
+  `E_N(z) = (1 - z/(N+1)^2) * E_{N+1}(z)`
+  is now immediate algebra away from the finite front-zero set;
+- that means `2c` is no longer isolated from `2b1`:
+  the entire-divider route now feeds directly into the already closed
+  quotient-collapse shell;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-square.2c0` is now closed as the first honest shell packet of the
+  canonical divider route.
+  The next live question is no longer the front-factor algebra, but the real
+  analytic input that supplies the canonical factorization or the subsequent
+  uniqueness step.
