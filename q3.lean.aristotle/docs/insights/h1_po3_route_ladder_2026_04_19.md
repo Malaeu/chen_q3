@@ -186,8 +186,9 @@ transform-side, где uniqueness выглядит естественнее, ч�
 - `PO3-square.2d0a` закрыт как shell-пакет:
   square-tail zero переносится в bilateral integer-tail zero у even
   transform-side receiver;
-- живой адрес внутри `2d` теперь уже не reduction-shell, а
-  `PO3-square.2d1`, то есть сама infinite-support uniqueness после reduction.
+- `PO3-square.2d1` тоже уже зафиксирован как named shell target;
+- живой адрес внутри `2d` теперь уже не reduction-shell и не notation,
+  а сама infinite-support uniqueness после reduction.
 
 ## Приоритет работы
 

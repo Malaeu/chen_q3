@@ -1,10 +1,10 @@
 ---
-status: "open"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-square.2d1"
 related_addresses: ["PO3-square.2d0", "PO3-square.2d0a", "PO3-square.2b", "PO3-square.2c"]
 ancestor_addresses: ["PO3-square.2"]
-child_or_next_addresses: []
+child_or_next_addresses: ["PO3-square.2b"]
 raw_address_notation: "PO3-square.2d1"
 normalized_addresses: ["PO3-square.2d1", "PO3-square.2d0", "PO3-square.2d0a", "PO3-square.2b", "PO3-square.2c", "PO3-square.2"]
 address_status: "active"

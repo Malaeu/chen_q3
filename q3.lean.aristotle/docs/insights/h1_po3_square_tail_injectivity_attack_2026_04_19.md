@@ -129,6 +129,17 @@ even symmetric Cauchy form.
 
 Это и есть честная infinite-support injectivity wall после reduction.
 
+Shell-status now:
+
+- this target is now named explicitly in Lean by
+  `po3_square2d1_target`;
+- the reduction shell from square-tail zero plus evenness to that target is
+  closed by
+  `po3_square2d1_target_of_even_square_tail_zero`.
+
+So the remaining live burden at `2d1` is no longer definitional; it is purely
+the infinite-support uniqueness argument.
+
 ## Что уже реально закрыто этим пакетом
 
 После принятия `PO3-square.2d0` пакет даёт три конкретных выигрыша:

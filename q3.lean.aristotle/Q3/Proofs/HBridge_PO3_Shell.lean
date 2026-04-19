@@ -2944,6 +2944,22 @@ section PO3SquareTransformTransfer
 
 variable {A : Type*} [Zero A]
 
+/-- Evenness property for the transform-side receiver in `PO3-square.2d1`. -/
+def po3_even_transform_receiver (transformReceiver : ℤ → A) : Prop :=
+  ∀ z : ℤ, transformReceiver (-z) = transformReceiver z
+
+/-- Bilateral tail-zero property for the transform-side receiver in
+`PO3-square.2d1`. -/
+def po3_bilateral_integer_tail_zero (transformReceiver : ℤ → A) (N : ℕ) : Prop :=
+  ∀ r, N < r →
+    transformReceiver (r : ℤ) = 0 ∧ transformReceiver (-(r : ℤ)) = 0
+
+/-- Named post-reduction target for `PO3-square.2d1`:
+an even transform-side receiver with bilateral integer-tail zeros. -/
+def po3_square2d1_target (transformReceiver : ℤ → A) (N : ℕ) : Prop :=
+  po3_even_transform_receiver transformReceiver ∧
+    po3_bilateral_integer_tail_zero transformReceiver N
+
 /-- `PO3-square.2d0a`, positive-tail half:
 if a transform-side receiver is obtained by the square pullback
 `transformReceiver r = squareReceiver (r^2)`, then square-tail zero for the
@@ -2963,7 +2979,7 @@ bilateral integer-tail zero for `transformReceiver`. -/
 theorem po3_bilateral_transform_tail_zero_of_even_square_tail_zero
     {squareReceiver : ℕ → A} {transformReceiver : ℤ → A} {N : ℕ}
     (hreduce : ∀ r : ℕ, transformReceiver (r : ℤ) = squareReceiver (r ^ 2))
-    (heven : ∀ z : ℤ, transformReceiver (-z) = transformReceiver z)
+    (heven : po3_even_transform_receiver transformReceiver)
     (hzero : ∀ r, N < r → squareReceiver (r ^ 2) = 0) :
     ∀ r, N < r →
       transformReceiver (r : ℤ) = 0 ∧ transformReceiver (-(r : ℤ)) = 0 := by
@@ -2971,6 +2987,21 @@ theorem po3_bilateral_transform_tail_zero_of_even_square_tail_zero
   constructor
   · rw [hreduce r, hzero r hr]
   · rw [heven, hreduce r, hzero r hr]
+
+/-- `PO3-square.2d1` exact target wrapper:
+the square-to-transform reduction plus evenness and square-tail zero produce
+the named live target for the remaining infinite-support uniqueness wall. -/
+theorem po3_square2d1_target_of_even_square_tail_zero
+    {squareReceiver : ℕ → A} {transformReceiver : ℤ → A} {N : ℕ}
+    (hreduce : ∀ r : ℕ, transformReceiver (r : ℤ) = squareReceiver (r ^ 2))
+    (heven : po3_even_transform_receiver transformReceiver)
+    (hzero : ∀ r, N < r → squareReceiver (r ^ 2) = 0) :
+    po3_square2d1_target transformReceiver N := by
+  constructor
+  · exact heven
+  · exact
+      po3_bilateral_transform_tail_zero_of_even_square_tail_zero
+        hreduce heven hzero
 
 end PO3SquareTransformTransfer
 

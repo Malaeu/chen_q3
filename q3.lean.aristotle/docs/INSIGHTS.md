@@ -9358,3 +9358,27 @@ Update:
 - after that wrapper lands, the repo can refer to `PO3-square.2d1` precisely in
   notes, shells, and future attack lemmas, while the real mathematics stays
   concentrated in the next assault packet rather than leaking into notation.
+
+## Result (2026-04-19) — `PO3-square.2d1` now has a named shell target
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now exposes the exact post-reduction
+  target through three named definitions:
+  `Q3.HBridge.po3_even_transform_receiver`,
+  `Q3.HBridge.po3_bilateral_integer_tail_zero`,
+  and
+  `Q3.HBridge.po3_square2d1_target`;
+- on top of them the file now contains the wrapper theorem
+  `Q3.HBridge.po3_square2d1_target_of_even_square_tail_zero`, which composes
+  the already-closed `2d0a` zero-transfer shell into one named endpoint:
+  square-tail zero plus transform evenness now yields the exact `2d1` target;
+- this is the right level of formalization for the wall:
+  it does not fake a uniqueness proof, but it removes the remaining ambiguity
+  about what the live infinite-support statement actually is inside the repo;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-square.2d1` is now frozen as one named shell target.
+  The next honest move is to choose a real assault on that target, and the two
+  serious options remain `PO3-square.2b` (divided differences) and
+  `PO3-square.2c` (entire divider / growth control).
