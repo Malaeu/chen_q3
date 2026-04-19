@@ -9048,3 +9048,25 @@ Update:
   The next live step is no longer shell glue and no longer certificate design;
   it is the real Q3-side content that will instantiate this feeder and pass the
   resulting window scalar law into `PO3-tail.1`.
+
+## Synthesis (2026-04-19, in progress) — `PO3-tail.1` overlap gluing of window constants
+
+- the local oracle is decisive here: there is still no Lean consumer for the
+  already-frozen window law `w_{r,0}(a) = c_{a,N,M} * profile r` on a finite
+  window, but the notes repeatedly state the next step in the same narrow form:
+  the constants `c_{a,N,M}` must glue on overlaps and yield one tail constant;
+- the strongest internal references are the March `PO3` note and the April
+  rigidity note, both saying the same thing: `PO3-tail.1` is not new
+  operator theory, only a scalar overlap lemma on nested windows;
+- external web search produced no useful project-level import and no theorem
+  sharper than the one-line internal argument “compare the two window laws at a
+  shared index where the profile is nonzero”;
+- so the right Lean move is fully internal:
+  add one abstract overlap lemma to `HBridge_PO3_Shell.lean`, then package a
+  second theorem turning a family of window laws with a nonzero base profile
+  entry into one global tail scalar law;
+- this keeps the route honest:
+  `PO3-rig.1b.cert` supplies finite-window laws,
+  `PO3-tail.1` glues them,
+  and only after that do we open `PO3-tail.2` for the decay kill
+  `c_{a,N} = 0`.
