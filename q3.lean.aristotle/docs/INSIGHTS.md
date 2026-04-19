@@ -8895,3 +8895,29 @@ Update:
   algebra. The live step has moved one notch higher: attach the real surviving
   window packet to this rank-one form, then specialize to the zero-mode column
   and open the overlap gluing node `PO3-tail.1`.
+
+## Synthesis (2026-04-19, in progress) — `PO3-rig.1b` zero-mode window law from the rank-one shell
+
+- the exact next blocker is now narrow: after `po3_rankOne_companion_rigidity`,
+  we still need the coordinate bridge turning
+  `x_M ∈ 𝕜 ∙ u_{+,M,N}` into the window law
+  `w_{r,0}(a) = c_{a,N,M} (-1)^r` on `N < r ≤ M`;
+- local embedding search returned the same old signal as before and nothing
+  stronger: the March `PO3` note already contains the intended theorem-shape,
+  and the current `PO3-rig.1` note records the same bridge, but there is no
+  reusable Lean theorem for the coordinate step itself;
+- the strongest reusable manuscript snippet is exactly the compression formula:
+  after `x_M ∈ 𝕜 ∙ u_{+,M,N}` and
+  `u_{+,M,N} = (1 / √(2a)) \sum_{r=N+1}^M (-1)^r e_r^+`,
+  one should read off one scalar `c_{a,N,M}` from the coordinates;
+- external web search only returned generic rank-one / finite-rank references
+  and no imported theorem that is sharper than the internal shell we already
+  have, so this remains an internal project lemma rather than a literature
+  import;
+- the right Lean move is therefore explicit:
+  add a generic coordinate-profile corollary to `HBridge_PO3_Shell.lean`
+  saying that if `x ∈ 𝕜 ∙ u`, the coordinates of `u` are a fixed profile `σ`,
+  and the coordinates of `x` are `w`, then `w = c • σ` for some scalar `c`;
+- once that shell lands, `PO3-rig.1b` is reduced to the real Q3-side
+  coefficient certificate for the compressed zero-mode column, and
+  `PO3-tail.1` becomes the next live consumer.
