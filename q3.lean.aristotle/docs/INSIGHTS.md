@@ -8995,3 +8995,32 @@ Update:
   1. introduce the real `v_{a,N}` / `w_{r,0}(a)` layer in Lean, or
   2. add a separate certificate file that feeds their coordinate laws into the
      already-closed shell.
+
+## Synthesis (2026-04-19, in progress) — `PO3-rig.1b.cert` certificate feeder for the closed shell
+
+- the repo scan is now decisive: `v_{a,N}` and `w_{r,0}(a)` are still present
+  only in notes/manuscript text, not as live Lean objects, so the next step
+  cannot be a fake “final Q3 integration”;
+- the right move is a feeder contract in `PO3Cert`, not another abstract shell
+  lemma:
+  one structure/theorem package whose only job is to state exactly what a real
+  Q3-side coordinate certificate must provide to trigger the already-closed
+  `PO3-rig.1b` shell;
+- local embedding search again points only to the same two internal sources:
+  the March `PO3` note for the coordinate formulas
+  `⟨v_{a,N}, z^r⟩ = √(2a)\,w_{r,0}(a)` and the April rigidity note for the
+  window-law consumer; there is no hidden Lean file already carrying this
+  bridge;
+- external web search adds nothing project-specific beyond generic uniqueness of
+  one-dimensional coordinate profiles, so this step should remain fully
+  internal;
+- the contract should expose three things and no more:
+  compressed plus/minus pieces,
+  a shared coordinate sequence,
+  and the alternating endpoint profile with one nonzero index;
+- the consumer theorem should then produce exactly one output:
+  `∃ c, values i = c * profile i`, i.e. the window constant needed by
+  `PO3-tail.1`;
+- that gives us a clean handoff: once real Q3 certificate data appears, we feed
+  it into `PO3Cert`, and the shell theorem fires without reopening the linear
+  algebra.
