@@ -8179,3 +8179,24 @@ Update:
   выживает ли разрыв после суммирования;
 - если survives уже на finite truncation, дверь с one-variable Suzuki
   `(+,-)`-profile закрывается очень жёстко.
+
+Update:
+
+- следующий слой тоже посажен в явную manuscript-shaped форму:
+  добавлены
+  `po3_suzuki_filtered_pm_gap_term_20_11`,
+  `po3_suzuki_filtered_pm_partial_sum`,
+  `po3_suzuki_filtered_pm_partial_sum_antidiagonal_gap_20_11`,
+  `po3_no_suzuki_filtered_pm_partial_sum_candidate_of_gap_20_11`;
+- это снимает последний организационный шум:
+  теперь finite partial `γ`-sum из рукописи можно подавать не как ad hoc
+  комбинацию `weight/γ/affine alpha`, а как один именованный объект
+  `po3_suzuki_filtered_pm_partial_sum`;
+- теорема о дефекте для него уже готова:
+  первый антидиагональный разрыв `(2,0) - (1,1)` равен конечной сумме
+  weighted six-pole gap terms `po3_suzuki_filtered_pm_gap_term_20_11`;
+- значит следующий честный шаг теперь совсем прямой:
+  выбрать finite truncation по `γ`, подставить реальный manuscript prefactor и
+  amplitude, и проверить, survives ли эта конечная сумма;
+- если survives, одномерный `(+,-)` профиль убивается уже для настоящей
+  finite manuscript packet, а не только для абстрактного shell-а.

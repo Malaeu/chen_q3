@@ -1677,6 +1677,13 @@ theorem po3_suzuki_filtered_pm_atom_antidiagonal_gap_20_11
   simp [po3_antidiagonal_adjacent_defect, po3_suzuki_filtered_pm_atom,
     po3_affine_alpha]
 
+/-- The neighboring anti-diagonal defect contributed by one affine-lattice
+Suzuki atom in the `(2,0)` vs `(1,1)` test. -/
+noncomputable def po3_suzuki_filtered_pm_gap_term_20_11
+    (c γ : ℂ) : ℂ :=
+  1 / (((γ - 2 * c) * (γ - 3 * c)) * (γ * (γ - c))) -
+    1 / (((γ - c) * (γ - 2 * c)) * ((γ - c) * (γ - 2 * c)))
+
 /-- A single affine-lattice Suzuki atom cannot be a one-variable `(+,-)`
 profile once the first anti-diagonal gap is genuinely nonzero. -/
 theorem po3_no_suzuki_filtered_pm_atom_candidate_of_affine_gap_20_11
@@ -1744,12 +1751,11 @@ theorem po3_suzuki_filtered_pm_finset_antidiagonal_gap_20_11
         (po3_suzuki_filtered_pm_finset S weight γ (po3_affine_alpha c)) 1
       =
         Finset.sum S (fun i =>
-          weight i *
-            (1 / (((γ i - 2 * c) * (γ i - 3 * c)) * ((γ i) * (γ i - c))) -
-              1 / (((γ i - c) * (γ i - 2 * c)) * ((γ i - c) * (γ i - 2 * c))))) := by
+          weight i * po3_suzuki_filtered_pm_gap_term_20_11 c (γ i)) := by
   rw [po3_suzuki_filtered_pm_finset_adjacent_defect]
   congr with i
   rw [po3_suzuki_filtered_pm_atom_antidiagonal_gap_20_11]
+  simp [po3_suzuki_filtered_pm_gap_term_20_11]
 
 /-- If the first anti-diagonal gap of a finite affine-lattice Suzuki packet is
 already nonzero, then the packet cannot come from a one-variable `(+,-)`
@@ -1758,14 +1764,47 @@ theorem po3_no_suzuki_filtered_pm_finset_candidate_of_affine_gap_20_11
     {ι : Type*} (S : Finset ι) (weight : ι → ℂ) (γ : ι → ℂ) (c : ℂ)
     (hgap :
       Finset.sum S (fun i =>
-        weight i *
-          (1 / (((γ i - 2 * c) * (γ i - 3 * c)) * ((γ i) * (γ i - c))) -
-            1 / (((γ i - c) * (γ i - 2 * c)) * ((γ i - c) * (γ i - 2 * c))))) ≠ 0) :
+        weight i * po3_suzuki_filtered_pm_gap_term_20_11 c (γ i)) ≠ 0) :
     ¬ ∃ u,
       po3_suzuki_filtered_pm_finset S weight γ (po3_affine_alpha c)
         = po3_suzuki_filtered_pm_candidate u := by
   apply po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
   rw [po3_suzuki_filtered_pm_finset_antidiagonal_gap_20_11]
+  exact hgap
+
+/-- Manuscript-shaped finite partial `γ`-sum for the Suzuki `(+,-)` block:
+the global prefactor is `κ`, the oscillatory factor is absorbed into
+`amp`, and the poles sit on the affine lattice `α_n = n c`. -/
+noncomputable def po3_suzuki_filtered_pm_partial_sum
+    {ι : Type*} (S : Finset ι) (κ : ℂ) (amp : ι → ℂ) (γ : ι → ℂ) (c : ℂ) :
+    ℕ → ℕ → ℂ :=
+  po3_suzuki_filtered_pm_finset S (fun i => κ * amp i) γ (po3_affine_alpha c)
+
+/-- The first anti-diagonal gap for the manuscript-shaped finite partial
+`γ`-sum is the same finite sum of six-pole defects, with the global prefactor
+and amplitude carried pointwise. -/
+theorem po3_suzuki_filtered_pm_partial_sum_antidiagonal_gap_20_11
+    {ι : Type*} (S : Finset ι) (κ : ℂ) (amp : ι → ℂ) (γ : ι → ℂ) (c : ℂ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_filtered_pm_partial_sum S κ amp γ c) 1
+      =
+        Finset.sum S (fun i =>
+          (κ * amp i) * po3_suzuki_filtered_pm_gap_term_20_11 c (γ i)) := by
+  rw [po3_suzuki_filtered_pm_partial_sum, po3_suzuki_filtered_pm_finset_antidiagonal_gap_20_11]
+
+/-- If the first anti-diagonal gap of the manuscript-shaped finite partial
+`γ`-sum is nonzero, then the Suzuki packet cannot come from a one-variable
+`(+,-)` profile. -/
+theorem po3_no_suzuki_filtered_pm_partial_sum_candidate_of_gap_20_11
+    {ι : Type*} (S : Finset ι) (κ : ℂ) (amp : ι → ℂ) (γ : ι → ℂ) (c : ℂ)
+    (hgap :
+      Finset.sum S (fun i =>
+        (κ * amp i) * po3_suzuki_filtered_pm_gap_term_20_11 c (γ i)) ≠ 0) :
+    ¬ ∃ u,
+      po3_suzuki_filtered_pm_partial_sum S κ amp γ c
+        = po3_suzuki_filtered_pm_candidate u := by
+  apply po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
+  rw [po3_suzuki_filtered_pm_partial_sum_antidiagonal_gap_20_11]
   exact hgap
 
 /-- Filtered one-variable profile for the concrete `(++ )` Section 8 block. -/
