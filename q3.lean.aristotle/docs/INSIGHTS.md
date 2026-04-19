@@ -9208,3 +9208,24 @@ Update:
 - once that packet lands, `PO3-cauchy.2` is closed and the route moves
   immediately to `PO3-square.1`, where local finite-support / local packet
   kills start.
+
+## Result (2026-04-19) — `PO3-cauchy.2` now has the square-tail repackaging bridge
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains
+  `Q3.HBridge.po3_square_tail_zero_of_repackaging`
+  and
+  `Q3.HBridge.po3_square_tail_zero_of_window_family_of_decay_nonvanishing_rescaling_and_repackaging`;
+- the first theorem is the exact repackaging step:
+  if `samples r = squareReceiver (r^2)` and the sampled receiver already
+  vanishes on the strict tail, then the new square receiver vanishes on the
+  square tail `r^2`;
+- the second theorem composes the whole lower-shell chain:
+  window laws, decay, nonvanishing sampling rescaling, and square repackaging
+  now produce square-tail zero directly in one theorem endpoint;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-cauchy.2` is now closed at the shell level.
+  The next live node is `PO3-square.1`, where the first nontrivial local kills
+  on the square-support side begin.

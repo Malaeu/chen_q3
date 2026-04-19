@@ -389,3 +389,25 @@ Sampling-rescaling bridge теперь тоже посажен.
 
 Итог: `PO3-cauchy.1` закрыт как shell-layer. Следующий живой адрес —
 `PO3-cauchy.2`.
+
+## Lean update (2026-04-19, `PO3-cauchy.2`)
+
+Square-tail repackaging bridge теперь тоже посажен.
+
+В `Q3/Proofs/HBridge_PO3_Shell.lean` добавлены:
+
+- `po3_square_tail_zero_of_repackaging`;
+- `po3_square_tail_zero_of_window_family_of_decay_nonvanishing_rescaling_and_repackaging`.
+
+Это закрывает ровно тот следующий шаг, который раньше оставался только
+словесным:
+
+- после `PO3-cauchy.1` у нас уже есть tail-zero для sampled receiver;
+- если этот sampled receiver переписывается как
+  `samples r = squareReceiver (r^2)`,
+  то нули автоматически переходят на square tail;
+- значит вход в `PO3-square.1` теперь уже formalized, а не только описан в
+  заметках.
+
+Итог: `PO3-cauchy.2` закрыт как shell-layer. Следующий живой адрес —
+`PO3-square.1`.

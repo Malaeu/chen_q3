@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-cauchy.2"
 related_addresses: ["PO3-cauchy.1", "PO3-square.1"]
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-tail.2", "PO3-cauchy.1"]
 child_or_next_addresses: ["PO3-square.1"]
 raw_address_notation: "PO3-cauchy.2, PO3-square.1"
 normalized_addresses: ["PO3-cauchy.2", "PO3-square.1", "PO3-cauchy.1", "PO3-tail.2", "PO3-square.2"]
-address_status: "active"
+address_status: "done"
 blocker: "Нужен abstract square-repackaging bridge: из sampled tail-zero и формулы samples r = squareReceiver (r^2) вывести square-tail zero для нового receiver; при желании отдельно зафиксировать evenness такого repackaging."
 collections: ["q3_docs", "web"]
 tags: ["po3", "cauchy", "square_support", "repackaging"]

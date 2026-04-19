@@ -2897,6 +2897,49 @@ theorem po3_sampled_tail_zero_of_window_family_of_decay_and_nonvanishing_rescali
 
 end PO3CauchySampling
 
+section PO3SquareRepackaging
+
+variable {A : Type*} [Zero A]
+
+/-- `PO3-cauchy.2`, basic form:
+if a sampled receiver is repackaged as a square-tail receiver
+`samples r = squareReceiver (r^2)`, then tail zero of the sampled receiver
+immediately transfers to square-tail zero of the new receiver. -/
+theorem po3_square_tail_zero_of_repackaging
+    {samples squareReceiver : ℕ → A} {N : ℕ}
+    (hrepack : ∀ r, samples r = squareReceiver (r ^ 2))
+    (hzero : ∀ r, N < r → samples r = 0) :
+    ∀ r, N < r → squareReceiver (r ^ 2) = 0 := by
+  intro r hr
+  rw [← hrepack r, hzero r hr]
+
+end PO3SquareRepackaging
+
+section PO3SquareRepackagingConsumer
+
+variable {𝕜 : Type*}
+variable [NormedField 𝕜]
+
+/-- Combined consumer for `PO3-cauchy.1 -> PO3-cauchy.2`:
+window laws plus decay produce sampled tail zero, and square repackaging turns
+that into square-tail zero for the new receiver. -/
+theorem po3_square_tail_zero_of_window_family_of_decay_nonvanishing_rescaling_and_repackaging
+    {values profile scale samples squareReceiver : ℕ → 𝕜} {N : ℕ}
+    (hwin : ∀ M, N < M → ∃ c : 𝕜, ∀ r, N < r → r ≤ M → values r = c * profile r)
+    (hprofile : ∀ r, N < r → ‖profile r‖ = 1)
+    (hdecay : ∀ ε > 0, ∃ R, ∀ r, R ≤ r → ‖values r‖ < ε)
+    (hlaw : ∀ r, N < r → values r = scale r * samples r)
+    (hscale : ∀ r, N < r → scale r ≠ 0)
+    (hrepack : ∀ r, samples r = squareReceiver (r ^ 2)) :
+    ∀ r, N < r → squareReceiver (r ^ 2) = 0 := by
+  have hsampleZero :
+      ∀ r, N < r → samples r = 0 :=
+    po3_sampled_tail_zero_of_window_family_of_decay_and_nonvanishing_rescaling
+      hwin hprofile hdecay hlaw hscale
+  exact po3_square_tail_zero_of_repackaging hrepack hsampleZero
+
+end PO3SquareRepackagingConsumer
+
 section PO3Symmetry
 
 variable {A : Type*} [AddGroup A] [StarAddMonoid A]
