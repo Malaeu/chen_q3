@@ -48,6 +48,112 @@ brick после локальной shell-механики и конечных �
 
 То есть это не очередной shell-step, а главный математический риск ветки.
 
+## Точный theorem-packet после square-to-Cauchy reduction
+
+Ниже зафиксирован рабочий пакет, который сжимает square-tail form к
+even symmetric Cauchy form.
+
+### `PO3-square.2d0`  `[Exact reduction under convergence assumptions]`
+
+Пусть
+
+- `J(z)` задаётся Cauchy-type representation по квадратной поддержке
+  `\Lambda = {x^2 : x ∈ X ⊂ (0,\infty)}`;
+- сумма определена в достаточно сильном смысле, чтобы можно было подставлять
+  `z = w^2` и перегруппировывать члены;
+- определён transform-side receiver
+  `\widetilde H(w) := J(w^2)`.
+
+Тогда:
+
+1. `\widetilde H` имеет exact even symmetric Cauchy form
+   \[
+   \widetilde H(w)
+   =
+   \sum_{x\in X}\frac{b_{x^2}}{2x}
+   \left(\frac{1}{x-w}+\frac{1}{x+w}\right);
+   \]
+2. `\widetilde H(-w)=\widetilde H(w)`;
+3. если
+   \[
+   J(r^2)=0 \qquad \forall r>N,
+   \]
+   то
+   \[
+   \widetilde H(r)=0 \qquad \forall r>N,
+   \]
+   и по чётности также `\widetilde H(-r)=0`.
+
+Смысл:
+
+- квадратный хвост редуцируется к integer-tail;
+- стену больше не надо формулировать как “injectivity on squares”;
+- она превращается в even symmetric Cauchy uniqueness on integers.
+
+### `PO3-square.2d0-finite`  `[Finite-support kill]`
+
+Если в `PO3-square.2d0` множество `X` конечно, то:
+
+1. `\widetilde H` — рациональная функция с конечным числом полюсов;
+2. бесконечно много хвостовых нулей на integers forcing
+   `\widetilde H \equiv 0`;
+3. значит все соответствующие coefficients `b_{x^2}` равны нулю.
+
+Итог:
+
+- finite-support branch стены уже убит полностью;
+- после reduction живым остаётся только infinite-support случай.
+
+### `PO3-square.2d1`  `[Live infinite-support target]`
+
+После `PO3-square.2d0` и `PO3-square.2d0-finite` реальная стена принимает
+точную форму:
+
+пусть
+\[
+\widetilde H(w)
+=
+\sum_{x\in X}\frac{c_x}{x-w}
++
+\sum_{x\in X}\frac{c_x}{x+w}
+\]
+есть even symmetric Cauchy receiver с бесконечной поддержкой, и
+\[
+\widetilde H(r)=0 \qquad \forall r>N.
+\]
+
+Нужно доказать:
+\[
+\widetilde H \equiv 0.
+\]
+
+Это и есть честная infinite-support injectivity wall после reduction.
+
+## Что уже реально закрыто этим пакетом
+
+После принятия `PO3-square.2d0` пакет даёт три конкретных выигрыша:
+
+1. square-tail ставится в более знакомую integer-tail форму;
+2. finite-support case закрывается сразу;
+3. живая цель переписывается в одну clean Cauchy uniqueness statement.
+
+То есть саму стену этот пакет ещё не пробивает, но очень сильно очищает её
+формулировку.
+
+## Осторожность по формулировке
+
+Для finite-support часть theorem честная без оговорок.
+
+Для infinite-support часть reduction нужно явно хранить условия сходимости /
+регулярности:
+
+- где определён `J`;
+- в каком смысле сходится Cauchy sum;
+- можно ли безопасно переходить к `J(w^2)` и симметричной записи по `±x`.
+
+Иначе `PO3-square.2d0` надо читать как theorem-target with assumptions, а не
+как уже доказанный строгий statement.
+
 ## Штурм `2a` — finite-support approximation
 
 Идея:

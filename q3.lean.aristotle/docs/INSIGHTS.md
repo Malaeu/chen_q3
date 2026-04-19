@@ -8755,3 +8755,21 @@ Update:
 - verification passed:
   `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
   and `lake build Q3.Proofs.PO3Cert`.
+
+## Result (2026-04-19) — `PO3-square.2d0/2d1` frozen in the wall note
+
+- the attack note
+  `docs/insights/h1_po3_square_tail_injectivity_attack_2026_04_19.md`
+  now contains an explicit theorem-packet for the square-to-Cauchy reduction:
+  `PO3-square.2d0`, `PO3-square.2d0-finite`, and `PO3-square.2d1`;
+- this records the exact gain from the transform-side move `\widetilde H(w)=J(w^2)`:
+  square-tail vanishing is reduced to an even symmetric Cauchy receiver with
+  integer-tail zeros;
+- the finite-support branch is now frozen as formally dead at the note level;
+- the genuinely live target is isolated sharply as the infinite-support
+  statement
+  “even symmetric Cauchy receiver + tail zeros on integers ⇒ triviality”;
+- an explicit caution is also recorded there:
+  `PO3-square.2d0` is completely clean in the finite-support setting, but in
+  the infinite-support setting it must still carry honest convergence /
+  regularity assumptions.
