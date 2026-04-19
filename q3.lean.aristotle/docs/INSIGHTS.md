@@ -8696,3 +8696,20 @@ Update:
 - verification passed:
   `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
   and `lake build Q3.Proofs.PO3Cert`.
+
+## Result (2026-04-19) — `PO3` route ladder frozen as a reusable map
+
+- the current route from the nearly-stabilized `PO3-shell` layer to `RH` is now
+  frozen in the dedicated note
+  `docs/insights/h1_po3_route_ladder_2026_04_19.md`;
+- the note separates shell mechanics, the next substantive nodes
+  `PO3-rig.*`, `PO3-tail.*`, `PO3-cauchy.*`, and the main risk concentration
+  point `PO3-square.2`;
+- `PO3-square.2` is now explicitly marked as the first genuine infinite-support
+  injectivity wall, and the note records four prepared assault routes:
+  approximation, divided differences, canonical entire divider, and transform
+  transfer;
+- this is not new mathematics, but it is an important control-plane freeze:
+  when the local shell packaging is forgotten later, we now have one stable
+  document that says exactly where the route stands and what still separates
+  the current branch from `RH`.
