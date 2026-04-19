@@ -154,6 +154,30 @@ def format_records(records: list[AValueRecord], gammas: list[mp.mpf]) -> str:
     return "\n".join(lines)
 
 
+def lean_ready_block(records: list[AValueRecord], gammas: list[mp.mpf]) -> str:
+    if not records:
+        return ""
+    record = records[0]
+    lines = [
+        "Lean-ready external witness sketch:",
+        "  -- concrete parameters from the numerical certificate",
+        f"  -- a = {record.a}",
+    ]
+    for idx, gamma in enumerate(gammas, start=1):
+        lines.append(f"  -- gamma_{idx} ≈ {mp.nstr(gamma, 30)}")
+    lines.extend(
+        [
+            "  -- target hypotheses to discharge externally:",
+            "  -- hgap2 : po3_suzuki_manuscript_gap_sum2 a γ0 γ1 ≠ 0",
+            "  -- hgap3 : po3_suzuki_manuscript_gap_sum3 a γ0 γ1 γ2 ≠ 0",
+            "  -- then apply:",
+            "  --   po3_no_suzuki_raw_gamma_pm_prefix2_of_gap_sum2_ne_zero",
+            "  --   po3_no_suzuki_raw_gamma_pm_prefix3_of_gap_sum3_ne_zero",
+        ]
+    )
+    return "\n".join(lines)
+
+
 def main() -> None:
     args = parse_args()
     a_values = [mp.mpf(part.strip()) for part in args.a_values.split(",") if part.strip()]
@@ -171,6 +195,8 @@ def main() -> None:
         print(f"  gamma_{idx} = {mp.nstr(gamma, 30)}")
     print()
     print(format_records(records, gammas))
+    print()
+    print(lean_ready_block(records, gammas))
     print()
     print(
         f"grid scan on [{args.grid_min}, {args.grid_max}] "

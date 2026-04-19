@@ -8346,6 +8346,16 @@ Update:
   `scripts/po3_gamma_gap_witness.py`
   и сохранён слепок прогона в
   `ACTIVE/pipeline/po3_gamma_gap_witness_2026_04_19.json`;
+- в Lean добавлен маленький интерфейсный слой для внешнего сертификата:
+  именованные суммы
+  `po3_suzuki_manuscript_gap_sum2`,
+  `po3_suzuki_manuscript_gap_sum3`
+  и короткие мосты
+  `po3_no_suzuki_raw_gamma_pm_prefix2_of_gap_sum2_ne_zero`,
+  `po3_no_suzuki_raw_gamma_pm_prefix3_of_gap_sum3_ne_zero`;
+- это убирает лишний шум из гипотез:
+  теперь внешний witness можно формулировать не как длинную сумму weight-термов,
+  а одним именованным объектом, который скрипт печатает в Lean-ready виде;
 - это не даёт формального theorem-level closure, но даёт очень сильный
   локальный сигнал:
   готовые леммы `prefix2/prefix3` уже имеют содержательный численный вход,
