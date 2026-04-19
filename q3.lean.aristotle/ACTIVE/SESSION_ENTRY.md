@@ -32,6 +32,7 @@
 8. `q3.lean.aristotle/ACTIVE/pipeline/RESEARCH_ORACLE.md`
 9. `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/INDEX.md`
 10. `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/BY_ADDRESS.md`
+11. `q3.lean.aristotle/docs/insights/h1_po3_route_ladder_2026_04_19.md`
 
 Если работаешь с Aristotle:
 
