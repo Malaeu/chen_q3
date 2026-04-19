@@ -8200,3 +8200,24 @@ Update:
   amplitude, и проверить, survives ли эта конечная сумма;
 - если survives, одномерный `(+,-)` профиль убивается уже для настоящей
   finite manuscript packet, а не только для абстрактного shell-а.
+
+Update:
+
+- теперь в shell добавлен и совсем прямой рукописный слой:
+  `po3_suzuki_manuscript_prefactor`,
+  `po3_suzuki_manuscript_alpha_step`,
+  `po3_suzuki_manuscript_amp`,
+  `po3_suzuki_filtered_pm_partial_sum_manuscript`;
+- это означает, что finite truncation можно подавать уже буквально в
+  manuscript normalization:
+  глобальный множитель `2π²/a³`, амплитуда `sin²(aγ)`, шаг полюсов `π/a`;
+- для этого прямого объекта тоже уже готовы
+  `po3_suzuki_filtered_pm_partial_sum_manuscript_antidiagonal_gap_20_11`
+  и
+  `po3_no_suzuki_filtered_pm_partial_sum_manuscript_candidate_of_gap_20_11`;
+- значит следующий реальный шаг теперь больше не технический:
+  нужно выбрать конкретную finite truncation множества `γ`, подставить её в
+  прямую manuscript theorem и проверить, не зануляется ли соответствующая
+  finite six-pole sum;
+- если не зануляется, one-variable дверь для Suzuki `(+,-)` закрыта уже в
+  той нормировке, в которой формула реально написана в рукописи.

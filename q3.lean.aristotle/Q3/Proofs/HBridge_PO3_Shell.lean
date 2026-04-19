@@ -1780,6 +1780,30 @@ noncomputable def po3_suzuki_filtered_pm_partial_sum
     ℕ → ℕ → ℂ :=
   po3_suzuki_filtered_pm_finset S (fun i => κ * amp i) γ (po3_affine_alpha c)
 
+/-- The global prefactor from the manuscript formula
+`2 π^2 / a^3`. -/
+noncomputable def po3_suzuki_manuscript_prefactor (a : ℂ) : ℂ :=
+  2 * ((Real.pi : ℂ) ^ 2) / (a ^ 3)
+
+/-- The affine step in the manuscript pole lattice `α_n = π n / a`. -/
+noncomputable def po3_suzuki_manuscript_alpha_step (a : ℂ) : ℂ :=
+  (Real.pi : ℂ) / a
+
+/-- The oscillatory manuscript amplitude `sin^2(aγ)`. -/
+noncomputable def po3_suzuki_manuscript_amp (a γ : ℂ) : ℂ :=
+  Complex.sin (a * γ) ^ 2
+
+/-- Direct finite manuscript partial `γ`-sum for the Suzuki `(+,-)` block. -/
+noncomputable def po3_suzuki_filtered_pm_partial_sum_manuscript
+    {ι : Type*} (S : Finset ι) (a : ℂ) (γ : ι → ℂ) :
+    ℕ → ℕ → ℂ :=
+  po3_suzuki_filtered_pm_partial_sum
+    S
+    (po3_suzuki_manuscript_prefactor a)
+    (fun i => po3_suzuki_manuscript_amp a (γ i))
+    γ
+    (po3_suzuki_manuscript_alpha_step a)
+
 /-- The first anti-diagonal gap for the manuscript-shaped finite partial
 `γ`-sum is the same finite sum of six-pole defects, with the global prefactor
 and amplitude carried pointwise. -/
@@ -1805,6 +1829,38 @@ theorem po3_no_suzuki_filtered_pm_partial_sum_candidate_of_gap_20_11
         = po3_suzuki_filtered_pm_candidate u := by
   apply po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
   rw [po3_suzuki_filtered_pm_partial_sum_antidiagonal_gap_20_11]
+  exact hgap
+
+/-- The first anti-diagonal gap for the direct manuscript finite partial
+`γ`-sum. This is the exact finite truncation of the raw manuscript formula in
+the `(2,0)` vs `(1,1)` test. -/
+theorem po3_suzuki_filtered_pm_partial_sum_manuscript_antidiagonal_gap_20_11
+    {ι : Type*} (S : Finset ι) (a : ℂ) (γ : ι → ℂ) :
+    po3_antidiagonal_adjacent_defect
+        (po3_suzuki_filtered_pm_partial_sum_manuscript S a γ) 1
+      =
+        Finset.sum S (fun i =>
+          (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a (γ i)) *
+            po3_suzuki_filtered_pm_gap_term_20_11
+              (po3_suzuki_manuscript_alpha_step a) (γ i)) := by
+  rw [po3_suzuki_filtered_pm_partial_sum_manuscript,
+    po3_suzuki_filtered_pm_partial_sum_antidiagonal_gap_20_11]
+
+/-- If the first anti-diagonal gap of the direct manuscript finite partial
+`γ`-sum is nonzero, then the Suzuki packet cannot come from a one-variable
+`(+,-)` profile. -/
+theorem po3_no_suzuki_filtered_pm_partial_sum_manuscript_candidate_of_gap_20_11
+    {ι : Type*} (S : Finset ι) (a : ℂ) (γ : ι → ℂ)
+    (hgap :
+      Finset.sum S (fun i =>
+        (po3_suzuki_manuscript_prefactor a * po3_suzuki_manuscript_amp a (γ i)) *
+          po3_suzuki_filtered_pm_gap_term_20_11
+            (po3_suzuki_manuscript_alpha_step a) (γ i)) ≠ 0) :
+    ¬ ∃ u,
+      po3_suzuki_filtered_pm_partial_sum_manuscript S a γ
+        = po3_suzuki_filtered_pm_candidate u := by
+  apply po3_no_sum_profile_of_adjacent_antidiagonal_defect_ne_zero
+  rw [po3_suzuki_filtered_pm_partial_sum_manuscript_antidiagonal_gap_20_11]
   exact hgap
 
 /-- Filtered one-variable profile for the concrete `(++ )` Section 8 block. -/
