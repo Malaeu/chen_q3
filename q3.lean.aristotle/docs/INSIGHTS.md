@@ -8576,3 +8576,27 @@ Update:
 - fallback if the family theorem name turns awkward:
   keep the same tag and family, and expose only the case-split theorem without
   changing the already-closed witness mathematics.
+
+## Result (2026-04-19) — `PO3-shell.2` tag-based shell interface landed
+
+- `Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean` now exposes a
+  finite tag type `po3_first_zeta_initial_packet_tag` for the five initial
+  first-zeta packets: `singletonGamma0`, `singletonGamma1`, `singletonGamma2`,
+  `prefix2`, `prefix3`;
+- the new raw family
+  `po3_first_zeta_initial_packet_raw : po3_first_zeta_initial_packet_tag → ℕ → ℕ → ℂ`
+  packages the corresponding shell kernels into one uniform interface;
+- the Prop layer is now aligned with that interface:
+  `po3_first_zeta_initial_packet_profile_of_tag tag` means that the tagged raw
+  packet equals some `po3_suzuki_filtered_pm_candidate u`;
+- the single shell-consumer theorem
+  `po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet`
+  closes all five cases by `cases tag` and reuses the already proved honest
+  singleton/prefix closures;
+- `po3_first_zeta_some_initial_packet_profile` was tightened from an explicit
+  five-way disjunction to the existential shell form `∃ tag, ...`, and the
+  theorem `po3_first_zeta_some_initial_packet_profile_false_honest` now kills
+  that existential directly;
+- success check passed:
+  `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
+  and `lake build Q3.Proofs.PO3Cert`.

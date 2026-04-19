@@ -60,6 +60,48 @@ abbrev po3_first_zeta_prefix3_profile : Prop :=
         po3_first_zeta_gamma2_decimal28
       = po3_suzuki_filtered_pm_candidate u
 
+/-- Finite tag type for the initial local first-zeta packet stack at `a = 1`. -/
+inductive po3_first_zeta_initial_packet_tag where
+  | singletonGamma0
+  | singletonGamma1
+  | singletonGamma2
+  | prefix2
+  | prefix3
+  deriving DecidableEq, Repr
+
+/-- Raw shell packet attached to a given tag of the initial first-zeta stack. -/
+noncomputable def po3_first_zeta_initial_packet_raw :
+    po3_first_zeta_initial_packet_tag → ℕ → ℕ → ℂ
+  | .singletonGamma0 =>
+      po3_suzuki_raw_gamma_pm_singleton
+        (1 : ℂ)
+        po3_first_zeta_gamma0_decimal28
+  | .singletonGamma1 =>
+      po3_suzuki_raw_gamma_pm_singleton
+        (1 : ℂ)
+        po3_first_zeta_gamma1_decimal28
+  | .singletonGamma2 =>
+      po3_suzuki_raw_gamma_pm_singleton
+        (1 : ℂ)
+        po3_first_zeta_gamma2_decimal28
+  | .prefix2 =>
+      po3_suzuki_raw_gamma_pm_prefix2
+        (1 : ℂ)
+        po3_first_zeta_gamma0_decimal28
+        po3_first_zeta_gamma1_decimal28
+  | .prefix3 =>
+      po3_suzuki_raw_gamma_pm_prefix3
+        (1 : ℂ)
+        po3_first_zeta_gamma0_decimal28
+        po3_first_zeta_gamma1_decimal28
+        po3_first_zeta_gamma2_decimal28
+
+/-- Shell-facing candidate predicate for a tagged packet from the initial
+first-zeta stack. -/
+def po3_first_zeta_initial_packet_profile_of_tag
+    (tag : po3_first_zeta_initial_packet_tag) : Prop :=
+  ∃ u, po3_first_zeta_initial_packet_raw tag = po3_suzuki_filtered_pm_candidate u
+
 /-- The reusable local kill-layer carried by the first decimal-28 zeta witness
 stack at `a = 1`. -/
 def po3_first_zeta_initial_packet_kill_layer : Prop :=
@@ -78,27 +120,39 @@ theorem po3_first_zeta_initial_packet_kill_layer_honest :
   refine ⟨po3_no_suzuki_raw_gamma_pm_prefix2_from_first_zeta_gap_sum2_honest, ?_⟩
   exact po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_sum3_honest
 
+/-- Direct shell-consumer theorem: no tagged packet in the initial first-zeta
+stack can equal a one-variable `(+,-)` candidate. -/
+theorem po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet
+    (tag : po3_first_zeta_initial_packet_tag) :
+    ¬ po3_first_zeta_initial_packet_profile_of_tag tag := by
+  cases tag
+  · simpa [po3_first_zeta_initial_packet_profile_of_tag,
+      po3_first_zeta_initial_packet_raw, po3_first_zeta_singleton_gamma0_profile] using
+      po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma0_decimal28
+  · simpa [po3_first_zeta_initial_packet_profile_of_tag,
+      po3_first_zeta_initial_packet_raw, po3_first_zeta_singleton_gamma1_profile] using
+      po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma1_decimal28
+  · simpa [po3_first_zeta_initial_packet_profile_of_tag,
+      po3_first_zeta_initial_packet_raw, po3_first_zeta_singleton_gamma2_profile] using
+      po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma2_decimal28
+  · simpa [po3_first_zeta_initial_packet_profile_of_tag,
+      po3_first_zeta_initial_packet_raw, po3_first_zeta_prefix2_profile] using
+      po3_no_suzuki_raw_gamma_pm_prefix2_from_first_zeta_gap_sum2_honest
+  · simpa [po3_first_zeta_initial_packet_profile_of_tag,
+      po3_first_zeta_initial_packet_raw, po3_first_zeta_prefix3_profile] using
+      po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_sum3_honest
+
 /-- No member of the initial first-zeta witness stack can come from a
 one-variable `(+,-)` profile. This is the disjunctive shell-facing form of the
 same local kill-layer. -/
 def po3_first_zeta_some_initial_packet_profile : Prop :=
-  po3_first_zeta_singleton_gamma0_profile ∨
-    po3_first_zeta_singleton_gamma1_profile ∨
-    po3_first_zeta_singleton_gamma2_profile ∨
-    po3_first_zeta_prefix2_profile ∨
-    po3_first_zeta_prefix3_profile
+  ∃ tag : po3_first_zeta_initial_packet_tag,
+    po3_first_zeta_initial_packet_profile_of_tag tag
 
 theorem po3_first_zeta_some_initial_packet_profile_false_honest :
     ¬ po3_first_zeta_some_initial_packet_profile := by
   intro h
-  rcases h with h0 | hrest
-  · exact po3_first_zeta_initial_packet_kill_layer_honest.1 h0
-  rcases hrest with h1 | hrest
-  · exact po3_first_zeta_initial_packet_kill_layer_honest.2.1 h1
-  rcases hrest with h2 | hrest
-  · exact po3_first_zeta_initial_packet_kill_layer_honest.2.2.1 h2
-  rcases hrest with h3 | h4
-  · exact po3_first_zeta_initial_packet_kill_layer_honest.2.2.2.1 h3
-  · exact po3_first_zeta_initial_packet_kill_layer_honest.2.2.2.2 h4
+  rcases h with ⟨tag, htag⟩
+  exact po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet tag htag
 
 end Q3.Proofs.PO3Cert

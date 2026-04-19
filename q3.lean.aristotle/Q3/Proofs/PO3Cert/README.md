@@ -146,6 +146,10 @@ Purpose:
   `prefix2(γ₀,γ₁)`, and `prefix3(γ₀,γ₁,γ₂)`.
 
 Exports:
+- `po3_first_zeta_initial_packet_tag`
+- `po3_first_zeta_initial_packet_raw`
+- `po3_first_zeta_initial_packet_profile_of_tag`
+- `po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet`
 - `po3_first_zeta_singleton_gamma0_profile`
 - `po3_first_zeta_singleton_gamma1_profile`
 - `po3_first_zeta_singleton_gamma2_profile`
@@ -159,8 +163,10 @@ Exports:
 Status note:
 - the whole first-zeta `a = 1` witness stack is now packaged as one reusable
   local kill-layer inside `PO3Cert`;
-- this adds no new witness mathematics, but gives `PO3-shell` one clean object
-  to consume later instead of five separate closure lemmas.
+- this adds no new witness mathematics, but gives `PO3-shell` both:
+  one bundled kill-layer theorem and one finite tag-based raw-packet interface;
+- `po3_first_zeta_some_initial_packet_profile` is now the existential shell
+  form `∃ tag, ...`, not a hand-written five-way disjunction.
 
 ## Usage rule
 

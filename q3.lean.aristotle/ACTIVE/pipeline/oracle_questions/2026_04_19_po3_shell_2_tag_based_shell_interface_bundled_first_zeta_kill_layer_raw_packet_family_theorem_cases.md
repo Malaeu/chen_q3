@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-shell.2"
 related_addresses: ["PO3-shell", "PO3Cert", "PO3-shell.1"]
@@ -11,7 +11,7 @@ address_status: "active"
 blocker: "Собрать tag-based shell-interface для bundled first-zeta kill-layer: один raw-packet family и одна theorem по cases"
 collections: ["q3_docs"]
 tags: ["po3", "shell", "witness_stack", "packet_tag", "kill_layer"]
-insight_links: []
+insight_links: ["docs/insights/h1_po3_first_zeta_witness_stub_2026_04_19.md"]
 request_nodes: []
 strong_terms: ["packet tag interface", "raw packet family", "one theorem by cases"]
 empty_terms: []
@@ -24,8 +24,9 @@ neighbor_addresses: []
 
 ## Статус
 
-- карточка активна;
-- search-pass уже дал exact theorem-shape.
+- карточка закрыта как `done`;
+- search-pass дал exact theorem-shape и он уже интегрирован в код;
+- следующий адресный ход перенесён в `PO3-shell.3`.
 
 ## Точный блокер
 

@@ -141,15 +141,24 @@ theorem-level файл `FirstZetaPrefix2_2026_04_19.lean`. Для `prefix3` он
 
 - собрать в один named object три singleton-обструкции;
 - добавить к ним honest `prefix2` и honest `prefix3`;
+- зафиксировать конечный tag-based shell-интерфейс поверх этих пяти пакетов;
 - дать shell-facing proposition
   `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_kill_layer`;
 - и дать bundled theorem
   `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_kill_layer_honest`,
-  а также disjunctive shell-form
+  а также existential shell-form
   `Q3.Proofs.PO3Cert.po3_first_zeta_some_initial_packet_profile_false_honest`.
 
+Теперь в этом же файле есть ещё и интерфейс для прямого shell-потребления:
+
+- `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_tag`;
+- `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_raw`;
+- `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_profile_of_tag`;
+- `Q3.Proofs.PO3Cert.po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet`.
+
 Это уже не просто набор локальных лемм, а готовый reusable witness-stack для
-дальнейшей `PO3-shell` упаковки.
+дальнейшей `PO3-shell` упаковки: и как bundled theorem, и как конечная
+семья tagged raw-пакетов.
 
 ## Current honest singleton landing
 
