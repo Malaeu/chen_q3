@@ -8947,3 +8947,30 @@ Update:
   The only live remainder is the real Q3 coefficient certificate identifying
   the compressed zero-mode coordinates with the alternating endpoint profile;
   after that, the next active consumer is `PO3-tail.1`.
+
+## Synthesis (2026-04-19, in progress) — `PO3-rig.1b` still needs one shared-scalar bridge
+
+- a closer repo scan shows that the real Q3 objects `v_{a,N}` and `w_{r,0}(a)`
+  are still frozen only in notes and manuscript snippets, not as live Lean
+  definitions, so the next honest move cannot pretend to be the final Q3-side
+  coefficient certificate yet;
+- the strongest reusable internal statement is sharper instead:
+  the notes use reflection-evenness to say that the plus and minus compressed
+  pieces are encoded by the same sequence `w_{r,0}(a)` with the same
+  alternating endpoint profile;
+- this exposes one more abstract shell target that is still missing:
+  if two coordinate laws have the same value sequence and the same nonzero
+  profile, then their two scalar multipliers must actually be equal, hence one
+  common window constant exists;
+- local embedding search again returned only the old March `PO3` note and the
+  current rigidity note, which is exactly what we want here: there is no hidden
+  stronger Lean theorem elsewhere in the repo;
+- external web search only gave generic uniqueness-of-coordinates statements for
+  one-dimensional spans and no sharper imported tool;
+- therefore the right next implementation is internal and narrow:
+  add a shared-scalar uniqueness lemma to `HBridge_PO3_Shell.lean`, then a
+  packaged corollary giving one common coordinate law from two span-laws plus a
+  nonvanishing profile entry;
+- once that lands, the shell side of `PO3-rig.1b` is fully closed, and the only
+  remaining gap is the genuine Q3-side certificate connecting the compressed
+  zero-mode coordinates to the alternating endpoint profile.
