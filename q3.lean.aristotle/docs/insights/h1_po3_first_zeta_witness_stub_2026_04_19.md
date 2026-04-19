@@ -99,11 +99,23 @@ in
 
 It exports:
 
+- the shared structural helpers
+  `Q3.Proofs.PO3Cert.po3_rational_complex_ne_int_mul_pi`
+  and
+  `Q3.Proofs.PO3Cert.po3_rational_complex_sin_ne_zero`,
+  together with the bridge helper
+  `Q3.Proofs.PO3Cert.po3_complex_sin_ne_zero_of_ne_int_mul_pi`;
 - `Q3.Proofs.PO3Cert.po3_first_zeta_gamma0_decimal28_ne_int_mul_pi`;
 - `Q3.Proofs.PO3Cert.po3_first_zeta_gamma0_decimal28_sin_ne_zero`;
-- `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma0_decimal28`.
+- `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma0_decimal28`;
+- `Q3.Proofs.PO3Cert.po3_first_zeta_gamma1_decimal28_ne_int_mul_pi`;
+- `Q3.Proofs.PO3Cert.po3_first_zeta_gamma1_decimal28_sin_ne_zero`;
+- `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma1_decimal28`;
+- `Q3.Proofs.PO3Cert.po3_first_zeta_gamma2_decimal28_ne_int_mul_pi`;
+- `Q3.Proofs.PO3Cert.po3_first_zeta_gamma2_decimal28_sin_ne_zero`;
+- `Q3.Proofs.PO3Cert.po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma2_decimal28`.
 
 The key point is structural:
-the decimal-28 witness `γ₀` is rational, so it cannot equal an integer
-multiple of `π`, and that already kills the singleton `(+,-)` candidate at
-`a = 1`.
+each decimal-28 witness `γ₀,γ₁,γ₂` is rational, so it cannot equal an integer
+multiple of `π`; the file currently packages this into three honest singleton
+kill theorems at `a = 1`, one for each of the first three witness ordinates.

@@ -50,15 +50,24 @@ File:
 - `FirstZetaSingleton_2026_04_19.lean`
 
 Purpose:
-- record one theorem-level local obstruction with no external axiom:
-  the first decimal-28 zeta witness `γ₀` is rational, so it cannot sit on the
-  manuscript `π`-lattice, and the singleton raw packet at `a = 1` already has
-  a nonzero anti-diagonal gap.
+- record a theorem-level local obstruction family with no external axiom:
+  the decimal-28 zeta witnesses `γ₀,γ₁,γ₂` are rational, so they cannot sit on
+  the manuscript `π`-lattice, and the corresponding singleton raw packets at
+  `a = 1` already have nonzero anti-diagonal gaps.
 
 Exports:
+- `po3_rational_complex_ne_int_mul_pi`
+- `po3_rational_complex_sin_ne_zero`
+- `po3_complex_sin_ne_zero_of_ne_int_mul_pi`
 - `po3_first_zeta_gamma0_decimal28_ne_int_mul_pi`
 - `po3_first_zeta_gamma0_decimal28_sin_ne_zero`
 - `po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma0_decimal28`
+- `po3_first_zeta_gamma1_decimal28_ne_int_mul_pi`
+- `po3_first_zeta_gamma1_decimal28_sin_ne_zero`
+- `po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma1_decimal28`
+- `po3_first_zeta_gamma2_decimal28_ne_int_mul_pi`
+- `po3_first_zeta_gamma2_decimal28_sin_ne_zero`
+- `po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma2_decimal28`
 
 Upstream shell dependency:
 - `Q3/Proofs/HBridge_PO3_Shell.lean`

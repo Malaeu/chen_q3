@@ -8414,3 +8414,16 @@ Update:
   ненулевой anti-diagonal gap;
 - это ещё не убивает `prefix2/prefix3`, но даёт первый честный theorem-level
   obstruction внутри `PO3Cert`, а не только off-chain certificate shell.
+- этот singleton-модуль затем обобщён на весь стартовый witness-stack:
+  теперь тот же structural argument закрывает не только `γ₀`, но и
+  `γ₁, γ₂`;
+  файл экспортирует общий rational helper
+  `po3_rational_complex_ne_int_mul_pi`,
+  `po3_rational_complex_sin_ne_zero`
+  и три concrete singleton theorems
+  `po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma{i}_decimal28`
+  для `i = 0,1,2`;
+- это всё ещё не даёт theorem-level closure для `prefix2/prefix3`, потому что
+  там остаётся возможная cross-mode cancellation, но cert-layer уже перестал
+  быть purely off-chain:
+  внутри него теперь есть честное формальное семейство singleton obstructions.
