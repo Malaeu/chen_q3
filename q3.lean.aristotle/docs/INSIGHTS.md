@@ -9256,3 +9256,29 @@ Update:
 - once that bridge lands, `PO3-square.1` is closed as the first concrete local
   square-side kill, and the route moves cleanly to `PO3-square.2`, which
   remains the only real infinite-support wall.
+
+## Result (2026-04-19) — `PO3-square.1` now has the first-zeta square-side bridge
+
+- `Q3/Proofs/PO3Cert/FirstZetaSquareBridge_2026_04_19.lean` now packages the
+  first concrete square-side local kill coming from the honest
+  `a = 1` first-zeta packet stack;
+- the file adds the exact shell-facing endpoints needed above the witness
+  stack:
+  `Q3.Proofs.PO3Cert.po3_square1_no_filtered_candidate_of_first_zeta_initial_packet_tag`,
+  `Q3.Proofs.PO3Cert.po3_square1_no_antidiagonal_invariant_of_first_zeta_initial_packet_tag`,
+  `Q3.Proofs.PO3Cert.po3_square1_no_filtered_candidate_of_eq_first_zeta_initial_packet_raw`,
+  `Q3.Proofs.PO3Cert.po3_square1_no_antidiagonal_invariant_of_eq_first_zeta_initial_packet_raw`,
+  and the two contradiction forms at raw-packet and named-kernel level;
+- structurally this is the right closure:
+  no new square-support theory was introduced, no cyclic import was created,
+  and the existing honest witness stack is now exposed exactly under the
+  `PO3-square.1` API shape;
+- `Q3/Proofs/PO3Cert.lean` imports the new bridge file, and
+  `Q3/Proofs/PO3Cert/README.md` records the exported theorem names;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/FirstZetaSquareBridge_2026_04_19.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-square.1` is now closed as a local packet-kill node.
+  The next live address is `PO3-square.2`, the genuine infinite-support
+  square-tail wall.

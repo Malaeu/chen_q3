@@ -17,6 +17,7 @@ PO3Cert/
   FirstZetaGapWitness_2026_04_19_Data.lean
   FirstZetaPrefix2_2026_04_19.lean
   FirstZetaPrefix3_2026_04_19.lean
+  FirstZetaSquareBridge_2026_04_19.lean
   FirstZetaSingleton_2026_04_19.lean
   FirstZetaWitnessStack_2026_04_19.lean
   WindowLawCertificate_2026_04_19.lean
@@ -171,6 +172,26 @@ Exports:
 - `po3_first_zeta_initial_packet_kill_layer_honest`
 - `po3_first_zeta_some_initial_packet_profile`
 - `po3_first_zeta_some_initial_packet_profile_false_honest`
+
+## Current `PO3-square.1` bridge for the first-zeta packet
+
+File:
+- `FirstZetaSquareBridge_2026_04_19.lean`
+
+Purpose:
+- expose the initial `a = 1` first-zeta packet stack exactly under the
+  square-side shell shape needed by `PO3-square.1`;
+- keep the abstract shell file free of witness-specific imports while still
+  giving downstream code a named contradiction packet.
+
+Exports:
+- `po3_square1_no_filtered_candidate_of_first_zeta_initial_packet_tag`
+- `po3_square1_no_antidiagonal_invariant_of_first_zeta_initial_packet_tag`
+- `po3_square1_no_filtered_candidate_of_eq_first_zeta_initial_packet_raw`
+- `po3_square1_no_antidiagonal_invariant_of_eq_first_zeta_initial_packet_raw`
+- `po3_square1_false_of_eq_first_zeta_initial_packet_raw_and_antidiagonal_invariant`
+- `po3_square1_no_antidiagonal_invariant_of_first_zeta_initial_packet_kernel`
+- `po3_square1_false_of_first_zeta_initial_packet_kernel_and_antidiagonal_invariant`
 
 ## Current certificate feeder for `PO3-rig.1b`
 

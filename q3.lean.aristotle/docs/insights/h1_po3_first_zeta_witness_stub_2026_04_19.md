@@ -187,6 +187,25 @@ shell-kernel, и как named family predicate для следующего API-�
 прямой мост к generic anti-diagonal shell criterion без промежуточной ручной
 распаковки filtered-candidate existential.
 
+## Current square-side landing
+
+Теперь поверх этого стека есть и отдельный `PO3-square.1` bridge в
+[`Q3/Proofs/PO3Cert/FirstZetaSquareBridge_2026_04_19.lean`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PO3Cert/FirstZetaSquareBridge_2026_04_19.lean).
+
+Он экспортирует:
+
+- `Q3.Proofs.PO3Cert.po3_square1_no_filtered_candidate_of_first_zeta_initial_packet_tag`;
+- `Q3.Proofs.PO3Cert.po3_square1_no_antidiagonal_invariant_of_first_zeta_initial_packet_tag`;
+- `Q3.Proofs.PO3Cert.po3_square1_no_filtered_candidate_of_eq_first_zeta_initial_packet_raw`;
+- `Q3.Proofs.PO3Cert.po3_square1_no_antidiagonal_invariant_of_eq_first_zeta_initial_packet_raw`;
+- `Q3.Proofs.PO3Cert.po3_square1_false_of_eq_first_zeta_initial_packet_raw_and_antidiagonal_invariant`;
+- `Q3.Proofs.PO3Cert.po3_square1_no_antidiagonal_invariant_of_first_zeta_initial_packet_kernel`;
+- `Q3.Proofs.PO3Cert.po3_square1_false_of_first_zeta_initial_packet_kernel_and_antidiagonal_invariant`.
+
+Это уже ровно тот transport-layer, который нужен не внутри локального witness
+пакета, а выше по лестнице: как только square-side kernel опознан как один
+tagged raw-пакет из initial first-zeta stack, `PO3-square.1` убивается сразу.
+
 ## Current honest singleton landing
 
 There is now also a theorem-level singleton obstruction with no external axiom

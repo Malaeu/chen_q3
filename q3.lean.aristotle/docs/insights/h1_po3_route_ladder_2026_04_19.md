@@ -74,10 +74,14 @@ Cauchy-type receiver на целочисленном хвосте.
 Использовать нечётную residue-симметрию и перейти к even square-support форме:
 `\\widetilde H_a(w) = J_a(w^2)`.
 
-### `PO3-square.1`  `[Содержательно / локальная добивка]`
+### `PO3-square.1`  `[Закрыто / локальная добивка]`
 
-Закрыть finite-support square-tail cases:
-конечные поддержки, finite-support kill, divisor tower, локальные Newton-пакеты.
+Узел закрыт через локальный first-zeta bridge при `a = 1`, без новой
+square-Cauchy formalization:
+tagged initial packet из
+`FirstZetaWitnessStack_2026_04_19` теперь напрямую даёт запрет
+антидиагональной инвариантности на square-side через
+`FirstZetaSquareBridge_2026_04_19`.
 
 ### `PO3-square.2`  `[Главная стена]`
 

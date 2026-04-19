@@ -1,5 +1,5 @@
 ---
-status: "open"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-square.1"
 related_addresses: []
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-cauchy.2"]
 child_or_next_addresses: ["PO3-square.2"]
 raw_address_notation: "PO3-square.1"
 normalized_addresses: ["PO3-square.1", "PO3-cauchy.2", "PO3-square.2", "D2Q3B5", "D2Q3B7"]
-address_status: "active"
+address_status: "done"
 blocker: "Закрыть первый локальный квадратный kill без новой finite-support Cauchy formalization: использовать уже собранный first-zeta initial packet как готовый shell bridge к запрету антидиагональной инвариантности."
 collections: ["q3_docs"]
 tags: ["po3-square", "first-zeta", "antidiagonal"]
