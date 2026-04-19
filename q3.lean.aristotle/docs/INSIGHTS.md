@@ -8824,3 +8824,33 @@ Update:
   the local first-zeta witness stack is now fully shell-facing through the two
   generic entry languages already present in `HBridge_PO3_Shell.lean`:
   filtered-candidate existence and anti-diagonal invariance.
+
+## Synthesis (2026-04-19, in progress) — `PO3-rig.1` companion-cancellation rigidity on a finite window
+
+- after `PO3-shell.6`, the next unresolved node is no longer shell plumbing but
+  one exact local rigidity target: if a compressed first-order packet cancels
+  with its adjoint companion on a finite tail window, then the zero-mode column
+  must already be windowwise proportional to the alternating endpoint lines;
+- the strongest local repo signal is consistent across search passes:
+  both the old `PO3` note
+  `docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`
+  and the later `INSIGHTS.md` packet already state the same shape
+  `w_{r,0}(a)=c_{a,N,M}(-1)^r` on `N<r≤M`;
+- this means `PO3-rig.1` should be frozen as an extraction theorem, not as a
+  new speculative branch:
+  abstract companion-cancellation on a window
+  `=>` plus/minus pieces lie on the endpoint lines
+  `=>` for the genuine zero-mode column we get one window constant
+  `c_{a,N,M}`;
+- the exact downstream interface is also now clear:
+  `PO3-rig.2` should cleanly identify this law as intrinsic rather than
+  basis-dependent, while `PO3-tail.1` only has to glue the window constants on
+  overlaps;
+- local embedding search did not uncover a forgotten stronger theorem elsewhere
+  in the repo; it kept returning the same old lower-shell packet, which is good
+  evidence that the right move is to freeze this packet explicitly now;
+- external web search only returned generic facts about Hankel / anti-diagonal
+  structure and rank-one cancellation terminology; it did not provide a usable
+  theorem for the project-specific window rigidity step, so the next honest
+  implementation should be an internal note/theorem packet, not a literature
+  import.
