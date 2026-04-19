@@ -9142,3 +9142,25 @@ Update:
   `PO3-tail.2` is now closed at the shell level.
   The next honest node is `PO3-cauchy.1`, where this abstract tail zero law
   has to be fed into the real Cauchy-type receiver.
+
+## Synthesis (2026-04-19, in progress) — `PO3-cauchy.1` is just a nonvanishing rescaling bridge
+
+- the local notes make this step much narrower than it first looked:
+  once `PO3-tail.2` gives tail zero for the zero-mode sequence, the next move is
+  not a new Cauchy uniqueness theorem, but only the frozen sampling identity
+  `w_{r,0}(a) = scale_r * H_a(α_r)` with `scale_r ≠ 0`;
+- the March `PO3` note already says the conclusion “for `H_a` follows
+  immediately”, and that is mathematically correct: this node is only the
+  transfer of zeros through a pointwise nonvanishing coefficient;
+- local oracle search confirms there is no existing Lean consumer for this
+  transfer, while external web search adds nothing project-specific;
+- the correct theorem shape is therefore purely internal and minimal:
+  if `values r = scale r * samples r` on the strict tail, `scale r ≠ 0` there,
+  and `values r = 0` on the strict tail, then `samples r = 0` on the strict
+  tail;
+- one second theorem should package the handoff from `PO3-tail.2` directly:
+  a window family plus decay plus a nonvanishing rescaling law yields tail zero
+  for the sampled receiver;
+- once this bridge lands, `PO3-cauchy.1` is closed and the next live node is
+  `PO3-cauchy.2`, where the zero set is repackaged into the even square-support
+  receiver.
