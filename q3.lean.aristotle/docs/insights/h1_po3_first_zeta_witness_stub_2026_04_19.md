@@ -156,9 +156,15 @@ theorem-level файл `FirstZetaPrefix2_2026_04_19.lean`. Для `prefix3` он
 - `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_profile_of_tag`;
 - `Q3.Proofs.PO3Cert.po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet`.
 
+И поверх него теперь добавлен уже совсем прямой bridge-слой:
+
+- `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_raw_ne_filtered_candidate`;
+- `Q3.Proofs.PO3Cert.po3_no_tagged_first_zeta_initial_packet_eq_filtered_candidate`.
+
 Это уже не просто набор локальных лемм, а готовый reusable witness-stack для
 дальнейшей `PO3-shell` упаковки: и как bundled theorem, и как конечная
-семья tagged raw-пакетов.
+семья tagged raw-пакетов, и как прямой inequality-bridge к
+`po3_suzuki_filtered_pm_candidate`.
 
 ## Current honest singleton landing
 

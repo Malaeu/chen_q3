@@ -150,6 +150,8 @@ Exports:
 - `po3_first_zeta_initial_packet_raw`
 - `po3_first_zeta_initial_packet_profile_of_tag`
 - `po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet`
+- `po3_first_zeta_initial_packet_raw_ne_filtered_candidate`
+- `po3_no_tagged_first_zeta_initial_packet_eq_filtered_candidate`
 - `po3_first_zeta_singleton_gamma0_profile`
 - `po3_first_zeta_singleton_gamma1_profile`
 - `po3_first_zeta_singleton_gamma2_profile`
@@ -165,6 +167,9 @@ Status note:
   local kill-layer inside `PO3Cert`;
 - this adds no new witness mathematics, but gives `PO3-shell` both:
   one bundled kill-layer theorem and one finite tag-based raw-packet interface;
+- the direct shell-consumer layer is now also present in theorem form:
+  pointwise `(tag) (u)` inequality and the collapsed existential
+  `¬ ∃ tag u, ...`;
 - `po3_first_zeta_some_initial_packet_profile` is now the existential shell
   form `∃ tag, ...`, not a hand-written five-way disjunction.
 

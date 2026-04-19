@@ -8629,3 +8629,21 @@ Update:
   re-export them through `PO3Cert.lean`,
   update `README` and the local witness note,
   then run `lake env lean` and `lake build Q3.Proofs.PO3Cert`.
+
+## Result (2026-04-19) — `PO3-shell.3` direct tagged-packet bridge landed
+
+- `Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean` now exposes the
+  pointwise shell theorem
+  `po3_first_zeta_initial_packet_raw_ne_filtered_candidate`:
+  for every tag and every profile `u`, the corresponding tagged raw packet is
+  not equal to `po3_suzuki_filtered_pm_candidate u`;
+- the same bridge is also packaged in collapsed existential form as
+  `po3_no_tagged_first_zeta_initial_packet_eq_filtered_candidate`,
+  so downstream shell code can kill a whole `∃ tag u, ...` node directly;
+- this adds no new witness arithmetic and no new shell mathematics:
+  it is exactly the missing consumer layer between the tag interface from
+  `PO3-shell.2` and the generic shell-side candidate machinery in
+  `HBridge_PO3_Shell.lean`;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
+  and `lake build Q3.Proofs.PO3Cert`.

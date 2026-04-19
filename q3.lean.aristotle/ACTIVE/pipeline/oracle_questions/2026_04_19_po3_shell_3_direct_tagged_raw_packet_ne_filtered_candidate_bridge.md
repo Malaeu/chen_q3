@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-shell.3"
 related_addresses: ["PO3-shell", "PO3-shell.2", "PO3Cert"]
@@ -11,7 +11,7 @@ address_status: "active"
 blocker: "Дать прямой shell-bridge от tagged raw packet к theorem-форме raw tag ≠ po3_suzuki_filtered_pm_candidate u для любого u"
 collections: ["q3_docs"]
 tags: ["po3", "shell", "witness_stack", "direct_bridge", "inequality"]
-insight_links: []
+insight_links: ["docs/insights/h1_po3_first_zeta_witness_stub_2026_04_19.md"]
 request_nodes: []
 strong_terms: ["direct inequality bridge", "raw tag ne filtered candidate", "tagged packet direct theorem"]
 empty_terms: []
@@ -24,9 +24,9 @@ neighbor_addresses: []
 
 ## Статус
 
-- карточка создана;
-- search-pass уже выполнен;
-- кодовый шаг ещё не начат.
+- карточка закрыта как `done`;
+- search-pass выполнен;
+- кодовый шаг завершён и собран.
 
 ## Точный блокер
 
@@ -85,6 +85,6 @@ neighbor_addresses: []
 
 ## Следующий адресный шаг
 
-- реализовать pointwise bridge theorem `(tag) (u)`;
-- при необходимости добавить collapsed existential theorem `¬ ∃ tag u, ...`;
-- после кода перевести узел в `done` и открыть `PO3-shell.4`.
+- открыть `PO3-shell.4` как следующий consumer-узел над новым bridge-слоем;
+- решать уже не интерфейсное, а прикладное shell-подключение к следующей
+  theorem-ветке.

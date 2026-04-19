@@ -142,6 +142,26 @@ theorem po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet
       po3_first_zeta_initial_packet_raw, po3_first_zeta_prefix3_profile] using
       po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_sum3_honest
 
+/-- Direct pointwise shell bridge: each tagged raw packet from the initial
+first-zeta stack differs from every one-variable `(+,-)` candidate. -/
+theorem po3_first_zeta_initial_packet_raw_ne_filtered_candidate
+    (tag : po3_first_zeta_initial_packet_tag)
+    (u : ℕ → ℂ) :
+    po3_first_zeta_initial_packet_raw tag ≠ po3_suzuki_filtered_pm_candidate u := by
+  intro hEq
+  exact
+    po3_no_suzuki_filtered_pm_candidate_of_first_zeta_initial_packet tag
+      ⟨u, hEq⟩
+
+/-- Collapsed shell form of the same direct bridge: no tagged raw packet from
+the initial first-zeta stack equals any one-variable `(+,-)` candidate. -/
+theorem po3_no_tagged_first_zeta_initial_packet_eq_filtered_candidate :
+    ¬ ∃ tag : po3_first_zeta_initial_packet_tag, ∃ u : ℕ → ℂ,
+      po3_first_zeta_initial_packet_raw tag = po3_suzuki_filtered_pm_candidate u := by
+  intro h
+  rcases h with ⟨tag, u, hEq⟩
+  exact po3_first_zeta_initial_packet_raw_ne_filtered_candidate tag u hEq
+
 /-- No member of the initial first-zeta witness stack can come from a
 one-variable `(+,-)` profile. This is the disjunctive shell-facing form of the
 same local kill-layer. -/
