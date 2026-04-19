@@ -181,6 +181,14 @@ Canonical square-lattice entire divider:
 Не бить injectivity в текущей записи напрямую, а перевести её в более жёсткий
 transform-side, где uniqueness выглядит естественнее, чем на исходном receiver-е.
 
+Текущее состояние этого штурма:
+
+- `PO3-square.2d0a` закрыт как shell-пакет:
+  square-tail zero переносится в bilateral integer-tail zero у even
+  transform-side receiver;
+- живой адрес внутри `2d` теперь уже не reduction-shell, а
+  `PO3-square.2d1`, то есть сама infinite-support uniqueness после reduction.
+
 ## Приоритет работы
 
 Текущий порядок я бы заморозил так:

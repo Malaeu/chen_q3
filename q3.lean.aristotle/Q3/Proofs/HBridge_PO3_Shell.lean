@@ -2940,6 +2940,40 @@ theorem po3_square_tail_zero_of_window_family_of_decay_nonvanishing_rescaling_an
 
 end PO3SquareRepackagingConsumer
 
+section PO3SquareTransformTransfer
+
+variable {A : Type*} [Zero A]
+
+/-- `PO3-square.2d0a`, positive-tail half:
+if a transform-side receiver is obtained by the square pullback
+`transformReceiver r = squareReceiver (r^2)`, then square-tail zero for the
+original receiver transfers directly to integer-tail zero for the new one. -/
+theorem po3_transform_tail_zero_of_square_tail_zero
+    {squareReceiver transformReceiver : ℕ → A} {N : ℕ}
+    (hreduce : ∀ r, transformReceiver r = squareReceiver (r ^ 2))
+    (hzero : ∀ r, N < r → squareReceiver (r ^ 2) = 0) :
+    ∀ r, N < r → transformReceiver r = 0 := by
+  intro r hr
+  rw [hreduce r, hzero r hr]
+
+/-- `PO3-square.2d0a`, bilateral half:
+if `transformReceiver` is even and agrees with `squareReceiver (r^2)` on the
+nonnegative integers, then square-tail zero for `squareReceiver` gives
+bilateral integer-tail zero for `transformReceiver`. -/
+theorem po3_bilateral_transform_tail_zero_of_even_square_tail_zero
+    {squareReceiver : ℕ → A} {transformReceiver : ℤ → A} {N : ℕ}
+    (hreduce : ∀ r : ℕ, transformReceiver (r : ℤ) = squareReceiver (r ^ 2))
+    (heven : ∀ z : ℤ, transformReceiver (-z) = transformReceiver z)
+    (hzero : ∀ r, N < r → squareReceiver (r ^ 2) = 0) :
+    ∀ r, N < r →
+      transformReceiver (r : ℤ) = 0 ∧ transformReceiver (-(r : ℤ)) = 0 := by
+  intro r hr
+  constructor
+  · rw [hreduce r, hzero r hr]
+  · rw [heven, hreduce r, hzero r hr]
+
+end PO3SquareTransformTransfer
+
 section PO3Symmetry
 
 variable {A : Type*} [AddGroup A] [StarAddMonoid A]

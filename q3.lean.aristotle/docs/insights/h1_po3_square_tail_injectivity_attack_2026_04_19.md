@@ -154,6 +154,26 @@ even symmetric Cauchy form.
 Иначе `PO3-square.2d0` надо читать как theorem-target with assumptions, а не
 как уже доказанный строгий statement.
 
+### `PO3-square.2d0a`  `[Shell half closed]`
+
+Чистая algebraic half-step теперь уже формализована в Lean:
+
+- если `transformReceiver r = squareReceiver (r^2)` на `r ≥ 0`,
+  то square-tail zero переходит в integer-tail zero;
+- если дополнительно transform-side receiver чётный, то получаем и
+  bilateral integer-tail zero на `±r`.
+
+Это закрыто в
+[`Q3/Proofs/HBridge_PO3_Shell.lean`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/HBridge_PO3_Shell.lean)
+леммами
+`po3_transform_tail_zero_of_square_tail_zero`
+и
+`po3_bilateral_transform_tail_zero_of_even_square_tail_zero`.
+
+То есть `2d0` больше не начинается с тумана:
+его zero-transfer shell уже собран, и живой burden остаётся только на
+analytic / infinite-support стороне.
+
 ## Штурм `2a` — finite-support approximation
 
 Идея:

@@ -9310,3 +9310,29 @@ Update:
   add `PO3-square.2d0a` shell lemmas to
   `Q3/Proofs/HBridge_PO3_Shell.lean`, then update the wall note and route
   ladder so the next unresolved address is explicitly `PO3-square.2d1`.
+
+## Result (2026-04-19) — `PO3-square.2d0a` now has the zero-transfer shell
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the two exact transform-side
+  transfer lemmas for the narrow square-wall entry point:
+  `Q3.HBridge.po3_transform_tail_zero_of_square_tail_zero`
+  and
+  `Q3.HBridge.po3_bilateral_transform_tail_zero_of_even_square_tail_zero`;
+- the first lemma is the positive-tail half:
+  if `transformReceiver r = squareReceiver (r^2)` and the square receiver
+  already vanishes on the strict square tail, then the transform-side receiver
+  vanishes on the strict integer tail;
+- the second lemma adds the evenness bridge and gives the bilateral statement:
+  from `J(r^2)=0` on the tail and `\widetilde H(-w)=\widetilde H(w)`, one gets
+  both `\widetilde H(r)=0` and `\widetilde H(-r)=0` for every sufficiently
+  large positive integer `r`;
+- this does not solve the square wall, and it does not pretend to:
+  it closes only the clean algebraic half of `PO3-square.2d0`, namely the
+  zero-transfer shell after the square-to-transform reduction;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-square.2d0a` is now frozen formally.
+  The next live address is `PO3-square.2d1`, the infinite-support even
+  symmetric Cauchy uniqueness target after reduction.

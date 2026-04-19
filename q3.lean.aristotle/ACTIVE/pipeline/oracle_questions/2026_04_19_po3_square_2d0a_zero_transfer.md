@@ -1,13 +1,13 @@
 ---
-status: "open"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-square.2d0a"
 related_addresses: ["PO3-square.2d0", "PO3-square.2d1"]
 ancestor_addresses: ["PO3-square.2"]
-child_or_next_addresses: ["PO3-square.2d0"]
+child_or_next_addresses: ["PO3-square.2d0", "PO3-square.2d1"]
 raw_address_notation: "PO3-square.2d0a"
 normalized_addresses: ["PO3-square.2d0a", "PO3-square.2d0", "PO3-square.2d1", "PO3-square.2", "PO3-square.2b", "PO3-square.2c"]
-address_status: "active"
+address_status: "done"
 blocker: "Зафиксировать самый узкий формализуемый кусок стены: zero-transfer из square-tail vanishing у J к integer-tail vanishing у transform-side even receiver H(w)=J(w^2)."
 collections: ["q3_docs"]
 tags: ["po3-square", "transform-transfer", "even-cauchy"]
