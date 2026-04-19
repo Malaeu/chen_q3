@@ -8552,3 +8552,27 @@ Update:
 - success check passed:
   `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
   and `lake build Q3.Proofs.PO3Cert`.
+
+## Synthesis (2026-04-19, in progress) — `PO3-shell.2` tag-based shell interface
+
+- exact target is now one layer lower than the bundle theorem:
+  keep the same honest first-zeta witness stack, but expose it through a small
+  enumerated tag type and one raw-packet family function;
+- direct repo search confirms the key technical fact:
+  `po3_suzuki_raw_gamma_pm_singleton`, `prefix2`, and `prefix3`
+  all land in the same shell type `ℕ → ℕ → ℂ`, so a unified family interface is
+  mathematically and implementation-wise natural;
+- local embedding search found no pre-existing tag/family consumer theorem,
+  which is informative: the remaining work is packaging, not hidden math;
+- external Lean docs on inductive enums confirm that a finite inductive tag
+  with `match`/cases is the standard minimal interface for exactly this shape;
+- concrete theorem target:
+  define a tag for the five initial packets, define the corresponding raw
+  packet family, and prove one theorem by cases saying no tagged packet equals
+  `po3_suzuki_filtered_pm_candidate u`;
+- success check:
+  `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- fallback if the family theorem name turns awkward:
+  keep the same tag and family, and expose only the case-split theorem without
+  changing the already-closed witness mathematics.
