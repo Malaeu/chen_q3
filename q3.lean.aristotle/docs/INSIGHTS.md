@@ -8511,3 +8511,22 @@ Update:
   theorem-level closed at `singleton`, `prefix2`, and `prefix3`;
 - the remaining role of
   `FirstZetaGapWitness_2026_04_19_Data.lean` is now documentary provenance only.
+
+## Synthesis (2026-04-19, in progress) — `PO3-shell.1` reusable first-zeta kill-layer
+
+- exact target lemma is no longer another witness nonvanishing statement:
+  it is one bundled theorem in `Q3/Proofs/PO3Cert/` collecting the already
+  proved honest closures for `γ₀,γ₁,γ₂`, `prefix2`, and `prefix3`;
+- local embedding search on `q3_docs` was weak and that is informative:
+  there is no hidden existing package theorem, only the five separate closure
+  points in `FirstZetaSingleton`, `FirstZetaPrefix2`, and `FirstZetaPrefix3`;
+- external mathlib docs search likewise gave no blocker-specific theorem:
+  this step does not need new mathematics, only a clean packaging object;
+- concrete file target is therefore a new `PO3Cert` module, with one named
+  proposition/theorem exposing the whole first-zeta stack as a reusable local
+  shell-level kill-layer;
+- success check: `lake build Q3.Proofs.PO3Cert` after importing the new module,
+  plus DB re-import and note updates;
+- fallback is trivial if the package theorem shape is awkward:
+  keep the same file but expose a conjunction theorem instead of a named
+  proposition, without touching the already closed witness mathematics.
