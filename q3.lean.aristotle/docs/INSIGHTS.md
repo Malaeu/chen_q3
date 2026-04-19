@@ -9186,3 +9186,25 @@ Update:
   `PO3-cauchy.1` is now closed at the shell level.
   The next live node is `PO3-cauchy.2`, namely the repackaging of this
   tail-zero sampled receiver into the even square-support form.
+
+## Synthesis (2026-04-19, in progress) — `PO3-cauchy.2` is just square-tail repackaging
+
+- the notes make this node even narrower than `PO3-cauchy.1`:
+  once the sampled receiver has tail zero, `PO3-cauchy.2` only repackages that
+  receiver as `samples r = J(r^2)` and passes the tail zero to the square-tail
+  receiver;
+- the same March note also records the evenness sentence
+  `\widetilde H_a(-w)=\widetilde H_a(w)`, but at the shell level this is only
+  bookkeeping unless a later consumer explicitly asks for it;
+- local oracle search confirms there is no existing Lean theorem for this
+  repackaging, while the mathematical content is trivial enough that importing
+  anything external would be pure overhead;
+- the right theorem packet is therefore minimal:
+  1. if `samples r = squareReceiver (r^2)`, then tail zero of `samples`
+     gives square-tail zero of `squareReceiver`;
+  2. combine that directly with the new `PO3-cauchy.1` bridge;
+  3. optionally add a tiny evenness theorem on the integer variable side for
+     future `PO3-square.*` consumers;
+- once that packet lands, `PO3-cauchy.2` is closed and the route moves
+  immediately to `PO3-square.1`, where local finite-support / local packet
+  kills start.
