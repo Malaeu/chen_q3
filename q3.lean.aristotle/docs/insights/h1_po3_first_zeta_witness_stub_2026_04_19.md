@@ -130,6 +130,27 @@ theorem-level файл `FirstZetaPrefix2_2026_04_19.lean`. Для `prefix3` он
 
 Итог: и `prefix2`, и `prefix3` уже выведены в Lean без внешней аксиомы.
 
+## Current reusable witness-stack landing
+
+Поверх отдельных honest-closures теперь есть ещё и один собранный reusable
+пакет:
+
+[`Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean)
+
+Он не добавляет новой математики. Его роль другая:
+
+- собрать в один named object три singleton-обструкции;
+- добавить к ним honest `prefix2` и honest `prefix3`;
+- дать shell-facing proposition
+  `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_kill_layer`;
+- и дать bundled theorem
+  `Q3.Proofs.PO3Cert.po3_first_zeta_initial_packet_kill_layer_honest`,
+  а также disjunctive shell-form
+  `Q3.Proofs.PO3Cert.po3_first_zeta_some_initial_packet_profile_false_honest`.
+
+Это уже не просто набор локальных лемм, а готовый reusable witness-stack для
+дальнейшей `PO3-shell` упаковки.
+
 ## Current honest singleton landing
 
 There is now also a theorem-level singleton obstruction with no external axiom

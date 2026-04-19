@@ -8530,3 +8530,25 @@ Update:
 - fallback is trivial if the package theorem shape is awkward:
   keep the same file but expose a conjunction theorem instead of a named
   proposition, without touching the already closed witness mathematics.
+
+## Result (2026-04-19) — `PO3-shell.1` reusable first-zeta kill-layer packaged
+
+- the planned shell-level packaging landed cleanly in
+  `Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`;
+- this file adds no new witness arithmetic: it packages the already proved
+  honest closures for `singleton(γ₀)`, `singleton(γ₁)`, `singleton(γ₂)`,
+  `prefix2(γ₀,γ₁)`, and `prefix3(γ₀,γ₁,γ₂)`;
+- the main new shell-facing object is the proposition
+  `po3_first_zeta_initial_packet_kill_layer`,
+  together with the theorem
+  `po3_first_zeta_initial_packet_kill_layer_honest`;
+- for downstream shell use there is also the disjunctive form
+  `po3_first_zeta_some_initial_packet_profile_false_honest`,
+  which says directly that no member of this initial witness stack can come
+  from a one-variable `(+,-)` profile;
+- operationally this is the right compression step:
+  `PO3-shell` no longer has to remember five separate theorem names just to use
+  the closed first-zeta local packet;
+- success check passed:
+  `lake env lean Q3/Proofs/PO3Cert/FirstZetaWitnessStack_2026_04_19.lean`
+  and `lake build Q3.Proofs.PO3Cert`.

@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-19"
 main_address: "PO3-shell.1"
 related_addresses: ["PO3-shell", "PO3Cert", "PO3-prefix2", "PO3-prefix3"]
@@ -11,7 +11,7 @@ address_status: "active"
 blocker: "Собрать honest singleton/prefix2/prefix3 closures первого zeta-stack в один reusable shell-level пакет"
 collections: ["q3_docs"]
 tags: ["po3", "shell", "first_zeta", "kill_layer", "packet_stack"]
-insight_links: []
+insight_links: ["docs/insights/h1_po3_first_zeta_witness_stub_2026_04_19.md"]
 request_nodes: []
 strong_terms: ["first zeta packet stack", "singleton prefix2 prefix3 bundle", "shell-level kill layer"]
 empty_terms: []

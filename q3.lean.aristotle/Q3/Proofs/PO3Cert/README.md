@@ -18,6 +18,7 @@ PO3Cert/
   FirstZetaPrefix2_2026_04_19.lean
   FirstZetaPrefix3_2026_04_19.lean
   FirstZetaSingleton_2026_04_19.lean
+  FirstZetaWitnessStack_2026_04_19.lean
   README.md
 ```
 
@@ -131,6 +132,35 @@ Status note:
 - the off-chain file `FirstZetaGapWitness_2026_04_19_Data.lean` remains useful
   as provenance storage for the frozen numeric snapshot, but is no longer
   needed for either `prefix2` or `prefix3`.
+
+## Current honest first-zeta witness-stack package
+
+File:
+- `FirstZetaWitnessStack_2026_04_19.lean`
+
+Purpose:
+- expose the now-closed local first-zeta packet as one reusable shell-facing
+  object, instead of five separate theorem endpoints;
+- bundle together the honest closures for
+  `singleton(γ₀)`, `singleton(γ₁)`, `singleton(γ₂)`,
+  `prefix2(γ₀,γ₁)`, and `prefix3(γ₀,γ₁,γ₂)`.
+
+Exports:
+- `po3_first_zeta_singleton_gamma0_profile`
+- `po3_first_zeta_singleton_gamma1_profile`
+- `po3_first_zeta_singleton_gamma2_profile`
+- `po3_first_zeta_prefix2_profile`
+- `po3_first_zeta_prefix3_profile`
+- `po3_first_zeta_initial_packet_kill_layer`
+- `po3_first_zeta_initial_packet_kill_layer_honest`
+- `po3_first_zeta_some_initial_packet_profile`
+- `po3_first_zeta_some_initial_packet_profile_false_honest`
+
+Status note:
+- the whole first-zeta `a = 1` witness stack is now packaged as one reusable
+  local kill-layer inside `PO3Cert`;
+- this adds no new witness mathematics, but gives `PO3-shell` one clean object
+  to consume later instead of five separate closure lemmas.
 
 ## Usage rule
 

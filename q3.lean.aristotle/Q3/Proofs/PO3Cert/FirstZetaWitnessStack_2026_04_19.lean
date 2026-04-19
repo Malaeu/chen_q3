@@ -1,0 +1,104 @@
+import Q3.Proofs.PO3Cert.FirstZetaPrefix3_2026_04_19
+
+/-!
+Reusable honest witness-stack package for the first decimal-28 zeta packet.
+
+This file does not add new witness mathematics. Its role is to expose the now
+closed local `a = 1` packet as one named shell-facing object:
+
+- singleton obstructions for `γ₀, γ₁, γ₂`,
+- the honest `prefix2` obstruction,
+- the honest `prefix3` obstruction.
+-/
+
+namespace Q3.Proofs.PO3Cert
+
+open Q3.HBridge
+
+/-- Shell-facing profile proposition for the first singleton witness `γ₀`. -/
+abbrev po3_first_zeta_singleton_gamma0_profile : Prop :=
+  ∃ u,
+    po3_suzuki_raw_gamma_pm_singleton
+        (1 : ℂ)
+        po3_first_zeta_gamma0_decimal28
+      = po3_suzuki_filtered_pm_candidate u
+
+/-- Shell-facing profile proposition for the second singleton witness `γ₁`. -/
+abbrev po3_first_zeta_singleton_gamma1_profile : Prop :=
+  ∃ u,
+    po3_suzuki_raw_gamma_pm_singleton
+        (1 : ℂ)
+        po3_first_zeta_gamma1_decimal28
+      = po3_suzuki_filtered_pm_candidate u
+
+/-- Shell-facing profile proposition for the third singleton witness `γ₂`. -/
+abbrev po3_first_zeta_singleton_gamma2_profile : Prop :=
+  ∃ u,
+    po3_suzuki_raw_gamma_pm_singleton
+        (1 : ℂ)
+        po3_first_zeta_gamma2_decimal28
+      = po3_suzuki_filtered_pm_candidate u
+
+/-- Shell-facing profile proposition for the concrete first-zeta `prefix2`
+packet at `a = 1`. -/
+abbrev po3_first_zeta_prefix2_profile : Prop :=
+  ∃ u,
+    po3_suzuki_raw_gamma_pm_prefix2
+        (1 : ℂ)
+        po3_first_zeta_gamma0_decimal28
+        po3_first_zeta_gamma1_decimal28
+      = po3_suzuki_filtered_pm_candidate u
+
+/-- Shell-facing profile proposition for the concrete first-zeta `prefix3`
+packet at `a = 1`. -/
+abbrev po3_first_zeta_prefix3_profile : Prop :=
+  ∃ u,
+    po3_suzuki_raw_gamma_pm_prefix3
+        (1 : ℂ)
+        po3_first_zeta_gamma0_decimal28
+        po3_first_zeta_gamma1_decimal28
+        po3_first_zeta_gamma2_decimal28
+      = po3_suzuki_filtered_pm_candidate u
+
+/-- The reusable local kill-layer carried by the first decimal-28 zeta witness
+stack at `a = 1`. -/
+def po3_first_zeta_initial_packet_kill_layer : Prop :=
+  ¬ po3_first_zeta_singleton_gamma0_profile ∧
+    ¬ po3_first_zeta_singleton_gamma1_profile ∧
+    ¬ po3_first_zeta_singleton_gamma2_profile ∧
+    ¬ po3_first_zeta_prefix2_profile ∧
+    ¬ po3_first_zeta_prefix3_profile
+
+/-- Honest theorem-level realization of the full first-zeta local kill-layer. -/
+theorem po3_first_zeta_initial_packet_kill_layer_honest :
+    po3_first_zeta_initial_packet_kill_layer := by
+  refine ⟨po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma0_decimal28, ?_⟩
+  refine ⟨po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma1_decimal28, ?_⟩
+  refine ⟨po3_no_suzuki_raw_gamma_pm_singleton_from_first_zeta_gamma2_decimal28, ?_⟩
+  refine ⟨po3_no_suzuki_raw_gamma_pm_prefix2_from_first_zeta_gap_sum2_honest, ?_⟩
+  exact po3_no_suzuki_raw_gamma_pm_prefix3_from_first_zeta_gap_sum3_honest
+
+/-- No member of the initial first-zeta witness stack can come from a
+one-variable `(+,-)` profile. This is the disjunctive shell-facing form of the
+same local kill-layer. -/
+def po3_first_zeta_some_initial_packet_profile : Prop :=
+  po3_first_zeta_singleton_gamma0_profile ∨
+    po3_first_zeta_singleton_gamma1_profile ∨
+    po3_first_zeta_singleton_gamma2_profile ∨
+    po3_first_zeta_prefix2_profile ∨
+    po3_first_zeta_prefix3_profile
+
+theorem po3_first_zeta_some_initial_packet_profile_false_honest :
+    ¬ po3_first_zeta_some_initial_packet_profile := by
+  intro h
+  rcases h with h0 | hrest
+  · exact po3_first_zeta_initial_packet_kill_layer_honest.1 h0
+  rcases hrest with h1 | hrest
+  · exact po3_first_zeta_initial_packet_kill_layer_honest.2.1 h1
+  rcases hrest with h2 | hrest
+  · exact po3_first_zeta_initial_packet_kill_layer_honest.2.2.1 h2
+  rcases hrest with h3 | h4
+  · exact po3_first_zeta_initial_packet_kill_layer_honest.2.2.2.1 h3
+  · exact po3_first_zeta_initial_packet_kill_layer_honest.2.2.2.2 h4
+
+end Q3.Proofs.PO3Cert
