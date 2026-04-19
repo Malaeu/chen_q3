@@ -2661,6 +2661,50 @@ theorem po3_rankOne_companion_rigidity
 
 end PO3Rigidity
 
+section PO3WindowLaw
+
+variable {𝕜 V : Type*}
+variable [Field 𝕜]
+variable [AddCommGroup V] [Module 𝕜 V]
+
+/-- If a vector lies on a singleton span, every chosen coordinate profile is a
+scalar multiple of the coordinate profile of the generator. This is the abstract
+window-law bridge behind `PO3-rig.1b`. -/
+theorem po3_coordinate_profile_of_mem_span_singleton
+    {ι : Type*}
+    (coords : ι → V →ₗ[𝕜] 𝕜)
+    {x u : V} {profile values : ι → 𝕜}
+    (hx : x ∈ 𝕜 ∙ u)
+    (hu : ∀ i, coords i u = profile i)
+    (hxv : ∀ i, coords i x = values i) :
+    ∃ c : 𝕜, ∀ i, values i = c * profile i := by
+  rcases Submodule.mem_span_singleton.mp hx with ⟨c, rfl⟩
+  refine ⟨c, ?_⟩
+  intro i
+  calc
+    values i = coords i (c • u) := by symm; exact hxv i
+    _ = c • coords i u := by rw [LinearMap.map_smul]
+    _ = c • profile i := by rw [hu i]
+    _ = c * profile i := by simp
+
+/-- Combining the rank-one companion rigidity shell with a coordinate profile
+immediately yields one scalar window law for the free vector factor. -/
+theorem po3_coordinate_profile_of_rankOne_companion_rigidity
+    {U ι : Type*}
+    [AddCommGroup U] [Module 𝕜 U]
+    {x u : V} {φ ψ : U →ₗ[𝕜] 𝕜}
+    (coords : ι → V →ₗ[𝕜] 𝕜)
+    {profile values : ι → 𝕜}
+    (hφ : φ ≠ 0) (hu_nonzero : u ≠ 0)
+    (hzero : φ.smulRight x + ψ.smulRight u = 0)
+    (hu : ∀ i, coords i u = profile i)
+    (hxv : ∀ i, coords i x = values i) :
+    ∃ c : 𝕜, ∀ i, values i = c * profile i := by
+  rcases po3_rankOne_companion_rigidity hφ hu_nonzero hzero with ⟨hx, _⟩
+  exact po3_coordinate_profile_of_mem_span_singleton coords hx hu hxv
+
+end PO3WindowLaw
+
 section PO3Symmetry
 
 variable {A : Type*} [AddGroup A] [StarAddMonoid A]

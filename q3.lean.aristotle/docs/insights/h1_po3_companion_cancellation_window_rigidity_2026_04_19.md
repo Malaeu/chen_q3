@@ -30,6 +30,44 @@ x\in \mathbb C u,\ \psi\in\mathbb C\phi.
 реального surviving packet к этой abstract rank-one форме и затем в склейке
 оконных констант.
 
+### Update (Lean, 2026-04-19, second pass)
+
+Abstract shell для `PO3-rig.1b` теперь тоже посажен в Lean.
+
+Добавлены две леммы:
+
+- `Q3.HBridge.po3_coordinate_profile_of_mem_span_singleton`;
+- `Q3.HBridge.po3_coordinate_profile_of_rankOne_companion_rigidity`.
+
+Их смысл ровно такой:
+
+```tex
+x \in \mathbb C u
+\quad\Longrightarrow\quad
+\text{любой координатный профиль }x\text{ есть }c\text{-кратный профиль }u,
+```
+
+а значит после `PO3-rig.1a` и заданного coordinate certificate для
+compressed endpoint vector уже автоматически получается один оконный закон
+
+```tex
+w_r = c_{a,N,M}\,\sigma_r.
+```
+
+Для `PO3` это означает: abstract часть перехода
+
+```tex
+x_M \in \mathbb C u_{+,M,N}
+\Longrightarrow
+w_{r,0}(a)=c_{a,N,M}(-1)^r
+```
+
+теперь формально сведена к одной generic coordinate lemma.
+
+Значит живой остаток `PO3-rig.1b` уже не линейно-алгебраический:
+осталось только честно дать реальный Q3-side coefficient certificate для
+compressed zero-mode column `v_{a,N}`.
+
 ## Где этот узел в лестнице
 
 См. также:

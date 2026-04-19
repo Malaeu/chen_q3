@@ -8921,3 +8921,29 @@ Update:
 - once that shell lands, `PO3-rig.1b` is reduced to the real Q3-side
   coefficient certificate for the compressed zero-mode column, and
   `PO3-tail.1` becomes the next live consumer.
+
+## Result (2026-04-19) — the abstract coordinate bridge for `PO3-rig.1b` is now in Lean
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now also contains
+  `Q3.HBridge.po3_coordinate_profile_of_mem_span_singleton` and
+  `Q3.HBridge.po3_coordinate_profile_of_rankOne_companion_rigidity`;
+- this closes the generic shell behind the window-law step:
+  once a compressed vector lies in the singleton span of the endpoint line,
+  any chosen coordinate family immediately yields one scalar profile
+  `values = c • profile`;
+- combined with the already-closed rank-one cancellation lemma, the abstract
+  implication
+  `φ ⊗ x + ψ ⊗ u = 0`
+  `=>`
+  `x ∈ 𝕜 ∙ u`
+  `=>`
+  one scalar coordinate law
+  is now fully formalized inside the shell file;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- net effect:
+  `PO3-rig.1b` is no longer blocked by shell-level linear algebra either.
+  The only live remainder is the real Q3 coefficient certificate identifying
+  the compressed zero-mode coordinates with the alternating endpoint profile;
+  after that, the next active consumer is `PO3-tail.1`.
