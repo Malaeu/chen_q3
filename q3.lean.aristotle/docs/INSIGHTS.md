@@ -9609,3 +9609,28 @@ Update:
   The next live question inside `2c` is no longer how to consume a future
   factorization, but how to actually obtain the analytic factorization shell or
   how to prove the quotient uniqueness target itself.
+
+## Synthesis (2026-04-21, in progress) — `PO3-square.2c2` should freeze the bundled factorization packet, not fake the analytic proof
+
+- the local oracle results sharpen the route one layer further:
+  our own notes already say that after division by a tail zero `(z-a)` one
+  stays in the same simple Cauchy class, and the square-tail note says that
+  after division by the canonical square divider the quotient should again be
+  meromorphic with the same pole support;
+- together with the already closed `2c1` consumer target, this means the next
+  honest shell is not the full analytic proof of factorization but the exact
+  transfer packet:
+  from square-tail zero of the receiver to existence of a quotient after
+  division that belongs to the same-pole-support simple Cauchy class;
+- the short external search again gives only background on meromorphic division
+  and canonical products, not a theorem that closes our specific packet, so the
+  right coding move is to freeze the packet as a named assumption layer;
+- the exact Lean target is:
+  define a bundled factorization shell predicate saying
+  “for every tail-zero receiver there exists a quotient after division with the
+  required class properties”, and prove that this packet plus
+  `po3_square_after_division_target` forces the receiver to vanish;
+- this is the right `2c2` payload because it isolates the remaining live
+  analytic burden with no ambiguity:
+  after `2c0` and `2c1`, the only unresolved work in `2c` is proving this
+  factorization packet or proving the quotient uniqueness target directly.
