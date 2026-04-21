@@ -9756,3 +9756,29 @@ Update:
   `PO3a-A-real` is now closed as a shell consumer.
   The next live burden is no longer this handoff but the real outer-layer
   check `PO3a.4`, followed by the rigidity-to-tail-zero chain.
+
+## Synthesis (2026-04-21, in progress) — `PO3a.4-real` should be one direct feeder from outer stripping to the closed rigidity shell
+
+- after the new `PO3a-A-real` consumer, the next honest blocker is no longer
+  about transport or Volterra packaging at all; it is one linear-algebra
+  feeder from the outer-stripped `2x2` cancellation to the already frozen
+  `PO3-rig.1` shell;
+- the local oracle pass points to one exact reusable core already present in
+  Lean:
+  `po3_rankOne_companion_rigidity`,
+  `mem_span_singleton_map_iff_of_injective`,
+  `mem_span_singleton_comp_iff_of_surjective`,
+  and
+  `po3_coordinate_profile_of_mem_span_singleton`;
+- this means the fastest move is not a new outer-operator theory, but one
+  theorem saying:
+  if the transported companion packet vanishes after an injective vector-side
+  map and a surjective functional pullback, then the original vector already
+  lies on the endpoint line and the original functional already lies on the
+  endpoint functional line;
+- the same pass also shows that a second corollary should be added
+  immediately:
+  from that span conclusion and a coordinate certificate, derive the single
+  scalar window law needed by `PO3-rig.1b`;
+- the external web sanity-check did not uncover a better off-the-shelf theorem,
+  so the direct local consumer is the right next strike.
