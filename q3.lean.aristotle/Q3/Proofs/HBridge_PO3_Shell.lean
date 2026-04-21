@@ -1200,6 +1200,46 @@ theorem po3_mixed_packet_of_sum_kernel_as_forward_second_difference
   simp [po3_forward_second_difference, po3_mixed_packet_of_sum_kernel,
     Nat.add_assoc]
 
+/-- Full named-packet shell for a sum-profile kernel. This is the direct
+`PO3a-A2-real` bookkeeping packet before specializing to the filtered `(+,-)`
+family. -/
+theorem po3_named_packets_of_sum_kernel
+    (u : ℕ → A) :
+    (∀ N,
+      po3_corner_packet (po3_sum_kernel u) N
+        =
+          u ((N + 1) + (N + 1)))
+      ∧
+    (∀ N r,
+      po3_row_trace_packet (po3_sum_kernel u) N r
+        =
+          u ((r + 1) + (N + 1))
+          - u (r + (N + 1)))
+      ∧
+    (∀ N s,
+      po3_column_trace_packet (po3_sum_kernel u) N s
+        =
+          u ((N + 1) + (s + 1))
+          - u ((N + 1) + s))
+      ∧
+    (∀ r s,
+      po3_mixed_packet (po3_sum_kernel u) r s
+        =
+          po3_forward_second_difference u (r + s)) := by
+  constructor
+  · intro N
+    simp [po3_corner_packet, po3_sum_kernel]
+  constructor
+  · intro N r
+    simp [po3_row_trace_packet, po3_sum_kernel, Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
+  constructor
+  · intro N s
+    simp [po3_column_trace_packet, po3_sum_kernel, Nat.add_assoc, Nat.add_left_comm,
+      Nat.add_comm]
+  · intro r s
+    exact po3_mixed_packet_of_sum_kernel_as_forward_second_difference
+      (u := u) (r := r) (s := s)
+
 /-- Mixed packet of a difference-profile kernel is the one-dimensional centered
 second difference on the difference variable. -/
 theorem po3_mixed_packet_of_difference_kernel
@@ -1414,6 +1454,58 @@ theorem po3_mixed_packet_of_four_term_stencil_q_pm_kernel_of_int
   simpa [po3_q_pm_kernel_of_int] using
     po3_mixed_packet_of_four_term_stencil_q_pm_kernel
       (a := po3_nat_profile_of_int a) (p := po3_nat_profile_of_int p) (r := r) (s := s)
+
+/-- Integer-profile version of the full named-packet shell for the filtered
+`q^{+-}` family. This packages the exact `corner + row + column + mixed`
+decomposition used by `PO3a-A2-real`. -/
+theorem po3_named_packets_of_four_term_stencil_q_pm_kernel_of_int
+    (a p : ℤ → A) :
+    let u :=
+      fun t =>
+        po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+          - po3_filtered_sum_profile (po3_nat_profile_of_int p) t
+    (∀ N,
+      po3_corner_packet (po3_four_term_stencil (po3_q_pm_kernel_of_int a p)) N
+        =
+          u ((N + 1) + (N + 1)))
+      ∧
+    (∀ N r,
+      po3_row_trace_packet (po3_four_term_stencil (po3_q_pm_kernel_of_int a p)) N r
+        =
+          u ((r + 1) + (N + 1))
+          - u (r + (N + 1)))
+      ∧
+    (∀ N s,
+      po3_column_trace_packet (po3_four_term_stencil (po3_q_pm_kernel_of_int a p)) N s
+        =
+          u ((N + 1) + (s + 1))
+          - u ((N + 1) + s))
+      ∧
+    (∀ r s,
+      po3_mixed_packet (po3_four_term_stencil (po3_q_pm_kernel_of_int a p)) r s
+        =
+          po3_forward_second_difference u (r + s)) := by
+  dsimp
+  rcases po3_named_packets_of_sum_kernel
+      (u := fun t =>
+        po3_filtered_sum_profile (po3_nat_profile_of_int a) t
+          - po3_filtered_sum_profile (po3_nat_profile_of_int p) t) with
+    ⟨hcorner, hrow, hcol, hmixed⟩
+  constructor
+  · intro N
+    rw [po3_four_term_stencil_q_pm_kernel_of_int]
+    exact hcorner N
+  constructor
+  · intro N r
+    rw [po3_four_term_stencil_q_pm_kernel_of_int]
+    exact hrow N r
+  constructor
+  · intro N s
+    rw [po3_four_term_stencil_q_pm_kernel_of_int]
+    exact hcol N s
+  · intro r s
+    rw [po3_four_term_stencil_q_pm_kernel_of_int]
+    exact hmixed r s
 
 /-- If a raw Section 8 packet is given by the signed difference formula
 `q_{rs}=a_{r-s}-p_{r-s}`, then its filtered `(++ )` block is exactly the
@@ -2444,6 +2536,55 @@ theorem po3_mixed_packet_of_section8_raw_kernel_pm
     (p := po3_section8_prime_profile B t)
     (hq := po3_section8_raw_kernel_difference_formula B t)
     (r := r) (s := s)
+
+/-- Full named-packet shell for the filtered raw `(+,-)` Section 8 family. -/
+theorem po3_named_packets_of_section8_raw_kernel_pm
+    (B t : ℝ) :
+    (∀ N,
+      po3_corner_packet
+          (po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (-(n : ℤ)))) N
+        =
+          po3_section8_filtered_pm_profile B t ((N + 1) + (N + 1)))
+      ∧
+    (∀ N r,
+      po3_row_trace_packet
+          (po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (-(n : ℤ))))
+          N r
+        =
+          po3_section8_filtered_pm_profile B t ((r + 1) + (N + 1))
+          - po3_section8_filtered_pm_profile B t (r + (N + 1)))
+      ∧
+    (∀ N s,
+      po3_column_trace_packet
+          (po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (-(n : ℤ))))
+          N s
+        =
+          po3_section8_filtered_pm_profile B t ((N + 1) + (s + 1))
+          - po3_section8_filtered_pm_profile B t ((N + 1) + s))
+      ∧
+    (∀ r s,
+      po3_mixed_packet
+          (po3_four_term_stencil (fun m n => po3_section8_raw_kernel B t (m : ℤ) (-(n : ℤ))))
+          r s
+        =
+          po3_forward_second_difference (po3_section8_filtered_pm_profile B t) (r + s)) := by
+  rcases po3_named_packets_of_sum_kernel (u := po3_section8_filtered_pm_profile B t) with
+    ⟨hcorner, hrow, hcol, hmixed⟩
+  constructor
+  · intro N
+    rw [po3_four_term_stencil_of_section8_raw_kernel_pm]
+    exact hcorner N
+  constructor
+  · intro N r
+    rw [po3_four_term_stencil_of_section8_raw_kernel_pm]
+    exact hrow N r
+  constructor
+  · intro N s
+    rw [po3_four_term_stencil_of_section8_raw_kernel_pm]
+    exact hcol N s
+  · intro r s
+    rw [po3_four_term_stencil_of_section8_raw_kernel_pm]
+    exact hmixed r s
 
 /-- Once the Suzuki `(+,-)` block lands as a sum-profile candidate, equality
 with the concrete Section 8 filtered block is exactly profile equality. -/

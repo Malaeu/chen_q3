@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-21"
 main_address: "PO3a-A2-real"
 related_addresses: ["PO3a-A2", "PO3a-A-real", "PO3a.4-real"]
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3a-A-real", "PO3a-A2", "H-bridge.11"]
 child_or_next_addresses: ["PO3a.4-real", "PO3-rig.1b"]
 raw_address_notation: "PO3a-A2-real"
 normalized_addresses: ["PO3a-A2-real", "PO3a-A2", "PO3a-A-real", "PO3a.4-real", "H-bridge.11", "PO3-rig.1b"]
-address_status: "active"
+address_status: "done"
 blocker: "Смешанная вторая разность реального дефекта и совпадение bulk-ядра с (I-R_a)^*K_a(I-R_a)-L_a"
 collections: ["q3_docs"]
 tags: ["po3a", "real-defect", "mixed-packet", "filtered-pm"]
@@ -28,6 +28,8 @@ neighbor_addresses: ["PO3a-A2", "PO3a-A-real", "PO3a.4-real"]
 - адрес narrowed до одного direct consumer-а для filtered `(+,-)` shell;
 - следующий кодовый шаг уже ясен: добавить theorem-пакет named packets для
   integer-profile `q^{+-}` семьи и не строить новую Volterra-теорию.
+- Lean consumer интегрирован и компилируется;
+- `PO3a-A2-real` закрыт как shell-level packet packaging.
 
 ## Точный блокер
 
@@ -100,3 +102,21 @@ consumer, который соберёт для реального `(+,-)`-деф
 - затем использовать его как manuscript-facing bridge к реальному дефекту,
   чтобы следующий живой узел был уже не `PO3a-A2-real`, а Q3-side
   certificate into `PO3a.4-real`.
+
+## Итог
+
+- в `Q3/Proofs/HBridge_PO3_Shell.lean` добавлены
+  `po3_named_packets_of_sum_kernel`,
+  `po3_named_packets_of_four_term_stencil_q_pm_kernel_of_int`
+  и
+  `po3_named_packets_of_section8_raw_kernel_pm`;
+- первый theorem дал reusable named-packet shell для любого sum-profile;
+- второй theorem exactly упаковал integer-profile filtered `q^{+-}` family в
+  формат `corner + row + column + mixed`;
+- третий theorem довёл тот же пакет до concrete Section 8 raw `(+,-)` family;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and
+  `lake build Q3.Proofs.PO3Cert`;
+- следующий живой узел теперь уже не shell-level extraction, а реальный
+  Q3-side certificate, который подставляет эти packaged packets в `PO3a.4-real`.

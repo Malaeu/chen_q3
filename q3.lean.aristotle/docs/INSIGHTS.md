@@ -9839,3 +9839,29 @@ Update:
   `Q3/Proofs/HBridge_PO3_Shell.lean`, and once that consumer lands the live
   burden moves forward to the actual Q3-side certificate instead of remaining
   on shell-level extraction.
+
+## Result (2026-04-21) — `PO3a-A2-real` now has the filtered `(+,-)` named-packet consumer
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains
+  `po3_named_packets_of_sum_kernel`;
+  this is the reusable bookkeeping shell that exposes `corner + row + column +
+  mixed` for any one-variable sum-profile kernel before any manuscript
+  specialization;
+- the same file now also contains
+  `po3_named_packets_of_four_term_stencil_q_pm_kernel_of_int`,
+  which packages the full filtered integer-profile `q^{+-}` family into the
+  exact named packets needed by `PO3a-A2-real`;
+- and finally it contains
+  `po3_named_packets_of_section8_raw_kernel_pm`,
+  so the concrete raw Section 8 `(+,-)` family lands in the same packetized
+  shell without any extra ad hoc extraction lemma;
+- this matters because the address is now closed at the shell level:
+  we no longer only know the mixed packet, but have the complete manuscript-
+  facing packet decomposition for the filtered `(+,-)` route;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  the live burden moves forward to the real Q3-side certificate that plugs
+  these packaged packets into the already closed `PO3a.4-real` feeder, rather
+  than staying stuck on extraction or packet bookkeeping.
