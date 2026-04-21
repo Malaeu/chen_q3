@@ -10112,3 +10112,41 @@ Update:
   The next honest step is to locate and freeze the actual transform-side
   `A_k/B_k` formulas and the exact Lean landing surface for the real dominant
   packet estimate.
+
+## Result (2026-04-21) — `PO3-square.2d3.formula-locate` pinned the real transform-side formula home
+
+- the repo now has one coherent formula map for the live `PO3-square.2d3`
+  wall, even though that map is still split across old and new notes rather
+  than frozen in one theorem packet;
+- the actual one-sided support geometry needed for the signed rightmost attack
+  is already present in
+  `docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md`:
+  the live transform-side support is
+  `Y_a = {x_γ : γ ∈ Z_+} ∪ {x_γ - 1 : γ ∈ Z_+}` with
+  `x_γ = a γ / π`;
+- the current route-language for the live wall, namely
+  “main `A_k` tower versus small mirror `B_k` tower”, is already frozen in
+  `docs/insights/h1_po3_route_ladder_2026_04_19.md`;
+  that file is not the formula source, but it is the canonical place where
+  `PO3-square.2d3` is stated as the unique current mathematical wall;
+- the explicit Gamma-profile building block is already in the repo:
+  `u_k(x) = (-1)^k Γ(N+1-x) / Γ(k+N+1-x)` appears in the old `PO2` note and in
+  this file; this is the honest formula ancestor for the real `A_k` side,
+  while the mirror side is the same packet after the symmetric transform-side
+  `x ↦ -x` re-expression that the `PO3` route notes package as `B_k`;
+- the pre-pairing transform-side Cauchy support still lives in
+  `docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md` as the
+  rescaled set `Y_a := {-(a/π)γ : γ ∈ Γ}`; this is still useful because it
+  records where the even/symmetric Cauchy receiver comes from before the
+  later one-sided `Y_a = {x_γ, x_γ - 1}` packaging;
+- no hidden internal theorem packet was found that already proves the real
+  lower bound on the signed `A_k` tower; the formula-localization search was
+  therefore successful precisely in the narrow sense we needed:
+  it fixed the exact note-level homes and confirmed that the next honest Lean
+  move is not another shell refactor but the first real transform-side
+  certificate landing surface;
+- the correct Lean landing file remains
+  `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`;
+  the next task is to specialize that feeder with explicit transform-side
+  packet data naming the real `A_k`, `B_k`, and `Y_a` objects, without
+  reopening the already-closed `PO3-square.2d2` shell.

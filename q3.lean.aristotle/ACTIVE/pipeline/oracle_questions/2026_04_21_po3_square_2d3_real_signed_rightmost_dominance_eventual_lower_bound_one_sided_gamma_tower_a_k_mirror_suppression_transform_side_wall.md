@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "resolved"
 date: "2026-04-21"
 main_address: "PO3-square.2d3-real"
 related_addresses: ["PO3-square.2d3", "D3e4", "D2"]
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-square.2d2", "PO3-square.2d1", "PO3", "H-bridge"]
 child_or_next_addresses: ["PO3", "PO4", "H2^f"]
 raw_address_notation: "PO3-square.2d3-real, PO3-square.2d3, D3e4, D2"
 normalized_addresses: ["PO3-square.2d3-real", "PO3-square.2d3", "D3e4", "D2", "PO3-square.2d2", "PO3-square.2d1", "PO3", "H-bridge", "PO4", "H2^f"]
-address_status: "active"
+address_status: "resolved"
 blocker: "Реальный signed-rightmost-dominance узел: вывести eventual lower bound для настоящей one-sided Gamma tower A_k при mirror suppression, чтобы замкнуть transform-side wall"
 collections: ["q3_docs"]
 tags: ["po3-square", "gamma-tower", "signed-dominance", "right-packet", "mirror-suppression"]
@@ -88,14 +88,34 @@ signed `A_k` tower from a rightmost/top-cluster dominance mechanism.
 - `q3.lean.aristotle/docs/INSIGHTS.md`:
   `2026-04-21` synthesis block for `PO3-square.2d3`.
 
+## Result
+
+- the abstract bridge step named here is now frozen:
+  `Q3/Proofs/HBridge_PO3_Shell.lean` contains the reusable dominant-packet
+  bridge, and
+  `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  contains the direct certificate feeder into `PO3-square.2d2`;
+- the remaining value of this oracle note is formula localization:
+  the real one-sided support geometry
+  `Y_a = {x_γ, x_γ - 1}` is already present in
+  `docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md`,
+  while the live route language `A_k` versus `B_k` is frozen in
+  `docs/insights/h1_po3_route_ladder_2026_04_19.md`;
+- the explicit Gamma-profile ancestor
+  `u_k(x) = (-1)^k Γ(N+1-x) / Γ(k+N+1-x)` is already in the repo and should be
+  treated as the honest formula parent for the future real `A_k` tower
+  specialization;
+- no hidden theorem packet was found for the actual signed lower bound, so the
+  next honest node is exactly the one now queued in the implementation plan:
+  freeze the first real transform-side certificate landing surface inside
+  `PO3SquareDominantPacketCertificate`, then attack the analytic packet
+  estimate directly.
+
 ## Следующий адресный шаг
 
-- freeze the abstract bridge theorem:
-  `main = dominantPacket + remainder`,
-  `dominantPacket` eventually bounded below,
-  `‖remainder‖ ≤ c · ‖dominantPacket‖` eventually with `c < 1`
-  `=> main` eventually bounded below;
-- then connect that bridge directly to the existing shell
-  `po3_square_signed_dominance_target`;
-- after that, attack only the real analytic certificate for the actual
-  transform-side Gamma packet.
+- move from formula search to code:
+  specialize the frozen certificate feeder with named transform-side packet
+  data for the real `A_k`, `B_k`, and `Y_a` objects;
+- keep the live mathematical burden explicit:
+  the unresolved theorem is still the signed rightmost / top-cluster lower
+  bound on the actual `A_k` tower, not any further shell design.
