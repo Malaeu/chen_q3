@@ -5,15 +5,15 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: Real proof-critical reset / PO3 sign-pure boundary-algebra attack
-main_kill_gate: the route fails if PO3 leaves a genuine non-cap cross-sign boundary residue
+macro_position: PO3-square.2d3 live wall / transform-side Gamma tower dominant-packet attack
+main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
-current_step_id: PO3
-current_step_title: cross-sign sign-pure boundary-algebra membership
+current_step_id: PO3-square.2d3
+current_step_title: transform-side Gamma tower dominant-packet estimate
 current_owner: local-agent
-current_artifact: docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md
+current_artifact: ACTIVE/pipeline/oracle_questions/2026_04_21_po3_square_2d3_real_signed_rightmost_dominance_eventual_lower_bound_one_sided_gamma_tower_a_k_mirror_suppression_transform_side_wall.md
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
 worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/node.md
 worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/report.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: the `PO3a` audit is now resolved one level deeper: the live object is the zero-mode column `v_{a,N}=T_{a,\infty,N}^*G_g[a]\mathbf 1`, its exact symmetry is reflection-evenness `w_{-r,0}(a)=w_{r,0}(a)`, and a lone first-order endpoint brick is now proven unable to lie in the sign-pure boundary algebra unless it is zero; the next real attack is therefore companion-cancellation rigidity on compressed windows, i.e. show that any exact first-order cancellation would force `w_{r,0}(a)=c_{a,N,M}(-1)^r` on the whole window, hence on the full tail and therefore to zero by off-diagonal decay, and then rewrite the surviving first-order route first as a scaled simple Cauchy transform on the integer tail and then, using the odd residue symmetry `e_a(-y)=-e_a(y)`, as an even square-support receiver `\widetilde H_a(w)=J_a(w^2)` with zeros on the square tail `J_a(r^2)=0`; this square-tail wall now has its own quadratic divisor tower, Newton divided-difference avatar, canonical square-lattice entire divider, and finite-support kill, so the only remaining live consumer is the genuine infinite-support even square-support injectivity problem; the old Stieltjes monotonicity shortcut is explicitly dead because the current `\gamma` are complex zeros of `\xi(1/2-iz)`, not an a priori positive real support; only after that should `Q3/Proofs/HBridge_PO3_Shell.lean` be used as the landing shell
-next_verify: rg -n -F "zero-mode column is reflection-even" q3.lean.aristotle/docs/INSIGHTS.md && rg -n -F "Finite-support square-tail injectivity" q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md && rg -n -F "even square-support square-tail injectivity" IMPLEMENTATION_PLAN.md
+next_deliverable: the lower-shell feeder through `PO3-square.2d2` is now frozen, the abstract dominant-packet bridge shell is frozen in `Q3/Proofs/HBridge_PO3_Shell.lean`, and the direct certificate feeder is frozen in `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`; the next real attack is therefore no longer shell design but exact formula/data localization for the actual transform-side tower: pin down the manuscript/repo home of the real `A_k` side, the mirror `B_k` side, the support geometry `Y_a = {x_γ, x_γ - 1}`, and the first honest Lean landing surface for the true dominant-packet estimate that should feed the new certificate
+next_verify: rg -n -F "PO3-square.2d3.formula-locate" IMPLEMENTATION_PLAN.md && rg -n -F "PO3SquareDominantPacketCertificate" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n -F "dominant-packet feeder for `PO3-square.2d3`" q3.lean.aristotle/Q3/Proofs/PO3Cert/README.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,39 +64,41 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3` — cross-sign sign-pure boundary-algebra membership
+### `PO3-square.2d3` — transform-side Gamma tower dominant-packet estimate
 
 Goal:
 
-- preserve the already frozen mathematical shell `PO3a/PO3b/PO3c` without
-  reopening bulk arithmetic;
-- treat the cancellation mechanism as already identified:
-  sign-pure boundary operators have zero mixed block;
-- attack the hard substeps directly:
-  explicit boundary expansion and sign-preservation on the surviving boundary
-  generators;
-- keep `Q3/Proofs/HBridge_PO3_Shell.lean` only as an auxiliary landing shell
-  until the actual proof packet exists.
+- keep the lower-shell feeder
+  `PO3-shell.5/.6 -> PO3a-A2-real -> PO3a.4-real -> PO3-rig.1b.cert-real -> PO3-tail.1-real -> PO3-square.2d0a/.1/.2`
+  frozen and do not reopen it;
+- use the already-frozen shell landing surface in
+  `Q3/Proofs/HBridge_PO3_Shell.lean`
+  and the new `PO3Cert` feeder
+  `PO3SquareDominantPacketCertificate`
+  as fixed interfaces, not as new mathematical work;
+- attack the only live burden directly:
+  identify and then estimate the actual transform-side dominant packet on the
+  `A_k` side strongly enough to beat the suppressed mirror `B_k` side.
 
 Required output:
 
-- one exact list of mathematical inputs implying the sign-pure membership
-  attack;
-- one explicit `PO3a.1 -> PO3a.5` packet with the hard bricks marked;
-- one route-kill criterion if the boundary formula forces a genuine cross-sign
-  generator outside `\mathcal B`;
-- one note on how the auxiliary Lean shell is to be used once the packet is real.
+- one exact formula home and notation map for the real transform-side tower
+  (`A_k`, `B_k`, `Y_a`, dominant packet candidates);
+- one explicit Lean landing surface for the future real packet estimate;
+- one route-kill criterion if the actual tower admits genuine infinite-support
+  signed self-cancellation that defeats rightmost dominance.
 
 Exact success criterion:
 
-- the next theorem attempt is no longer a broad search, but one exact
-  boundary-algebra membership lemma with a concrete source stack and failure mode.
+- the next theorem attempt is no longer shell refactoring or certificate design,
+  but one honest real packet estimate feeding the frozen `PO3-square.2d3`
+  certificate.
 
 Exact failure criterion:
 
-- if the explicit boundary formula cannot be placed inside the sign-pure
-  algebra, record that as a genuine mathematical blocker on `PO3a` rather than
-  pretending the shell is ready for proof submission.
+- if the actual transform-side formulas cannot be reconciled with the frozen
+  dominant-packet certificate shape, record that incompatibility explicitly
+  rather than reopening lower-shell architecture.
 
 ## Macro view
 
@@ -113,5 +115,7 @@ Current position:
 - `H1^f -> H2^f -> H3^f -> H4^f` is packaged tightly enough at theorem-shell level;
 - RH is still not proved because that bridge remains conditional on unresolved
   `H1` proof input;
-- the first real proof-critical gate on the route is therefore still `PO3`,
-  and the live burden is the missing proof packet for `PO3a`.
+- the first real proof-critical gate on the route is still inside `PO3`,
+  but its live mathematical point is now much narrower:
+  `PO3-square.2d3`, the transform-side dominant-packet estimate on the actual
+  Gamma tower.

@@ -20,6 +20,7 @@ PO3Cert/
   FirstZetaSquareBridge_2026_04_19.lean
   FirstZetaSingleton_2026_04_19.lean
   FirstZetaWitnessStack_2026_04_19.lean
+  PO3SquareSignedDominanceCertificate_2026_04_21.lean
   WindowLawCertificate_2026_04_19.lean
   README.md
 ```
@@ -258,6 +259,32 @@ Status note:
 - once a real Q3-side record of this shape is available, the next live burden
   is no longer `PO3-tail.*` or `PO3-cauchy.*`, but the square-side node fed by
   square-tail zero.
+
+## Current dominant-packet feeder for `PO3-square.2d3`
+
+File:
+- `PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+
+Purpose:
+- freeze the exact Q3-side certificate shape for the current live
+  transform-side wall `PO3-square.2d3`;
+- keep the analytic burden narrow:
+  a future real proof does not need to rebuild contradiction packaging, only to
+  certify one dominant packet, one controlled remainder, and mirror decay.
+
+Exports:
+- `PO3SquareDominantPacketCertificate`
+- `po3_square_signed_dominance_target_of_certificate`
+- `po3_square_false_of_wall_and_certificate`
+
+Status note:
+- this file does not prove signed rightmost dominance for the actual
+  transform-side Gamma tower;
+- it only compresses the already-closed shell bridge
+  `dominant packet + controlled remainder + mirror decay -> PO3-square.2d2 target`
+  into one honest `PO3Cert` consumer;
+- once a real transform-side packet of this shape is available, the remaining
+  live burden is purely the analytic certificate on the actual `A_k/B_k` tower.
 
 Status note:
 - the whole first-zeta `a = 1` witness stack is now packaged as one reusable

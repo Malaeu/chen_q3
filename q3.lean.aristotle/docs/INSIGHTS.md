@@ -10075,3 +10075,40 @@ Update:
   the next step is no longer shell design.
   We now need the real top-cluster / signed-rightmost estimate that feeds this
   new bridge on the actual `A_k` tower.
+
+## Result (2026-04-21) — `PO3-square.2d3` now has the direct `PO3Cert` dominant-packet feeder
+
+- new file
+  `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now freezes the exact certificate contract for the current live
+  transform-side wall:
+  one signed main tower, one dominant packet, one controlled remainder, and
+  one mirror tower;
+- the new record
+  `PO3SquareDominantPacketCertificate`
+  keeps only the live data actually needed above the already-closed shell:
+  the split
+  `main = dominantPacket + remainder`,
+  the dominant-packet lower bound,
+  the eventual relative remainder control,
+  and the mirror decay;
+- the same file exports
+  `po3_square_signed_dominance_target_of_certificate`,
+  which sends that certificate directly into the frozen shell target
+  `po3_square_signed_dominance_target`,
+  and
+  `po3_square_false_of_wall_and_certificate`,
+  which packages the contradiction against a transform-side wall identity in
+  one theorem endpoint;
+- `Q3/Proofs/PO3Cert.lean` and `Q3/Proofs/PO3Cert/README.md` were updated so
+  this live `2d3` feeder is visible from the certificate hub and documented as
+  the current landing surface for any future real `A_k/B_k` packet estimate;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  and
+  `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  the live burden has now moved one notch further away from shell packaging.
+  The next honest step is to locate and freeze the actual transform-side
+  `A_k/B_k` formulas and the exact Lean landing surface for the real dominant
+  packet estimate.

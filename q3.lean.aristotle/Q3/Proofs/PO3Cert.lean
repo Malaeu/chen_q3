@@ -4,6 +4,7 @@ import Q3.Proofs.PO3Cert.FirstZetaPrefix3_2026_04_19
 import Q3.Proofs.PO3Cert.FirstZetaSquareBridge_2026_04_19
 import Q3.Proofs.PO3Cert.FirstZetaSingleton_2026_04_19
 import Q3.Proofs.PO3Cert.FirstZetaWitnessStack_2026_04_19
+import Q3.Proofs.PO3Cert.PO3SquareSignedDominanceCertificate_2026_04_21
 import Q3.Proofs.PO3Cert.TailSquareBridgeCertificate_2026_04_21
 import Q3.Proofs.PO3Cert.WindowLawCertificate_2026_04_19
 
