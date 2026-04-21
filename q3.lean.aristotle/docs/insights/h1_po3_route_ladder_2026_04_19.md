@@ -194,11 +194,16 @@ Canonical square-lattice entire divider:
 - `PO3-square.2c0` уже закрыт как первый shell-пакет:
   finite front factor и derived pointwise step-рекурсия делителя теперь
   формализованы;
+- `PO3-square.2c1` тоже уже закрыт:
+  canonical-divider route теперь имеет named after-division target и consumer
+  theorem, так что логика “factorization => quotient uniqueness problem” уже
+  не висит в воздухе;
 - значит внутри `2c` больше не осталось algebraic тумана на уровне front
   correction;
-- живой следующий адрес в `2c` теперь уже не про продуктовую рекурсию, а про
-  сам analytic input:
-  canonical factorization / growth control / uniqueness after division.
+- живой следующий адрес в `2c` теперь уже не про product shell и не про
+  consumer shell, а про сам analytic input:
+  canonical factorization / growth control / quotient uniqueness after
+  division.
 
 ### `PO3-square.2d`  `[Штурм через перенос в другой transform-side]`
 

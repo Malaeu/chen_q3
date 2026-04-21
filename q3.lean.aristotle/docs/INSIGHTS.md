@@ -9583,3 +9583,29 @@ Update:
   add a named after-division target and its consumer theorem to
   `HBridge_PO3_Shell.lean`, with abstract predicates for
   “same pole support” and “simple Cauchy class”.
+
+## Result (2026-04-21) — `PO3-square.2c1` now freezes the after-division consumer target
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the named post-division
+  target
+  `po3_square_after_division_target`,
+  together with the consumer theorem
+  `po3_square_zero_of_after_division_target`;
+- the exact content is now frozen cleanly:
+  if analytic work later produces a factorization
+  `receiver = divider * quotient`,
+  and if that quotient belongs to the
+  same-pole-support simple Cauchy class,
+  then the whole canonical-divider route reduces to one named target:
+  show every quotient in that class is zero;
+- this closes the second honest shell layer of `2c`:
+  `2c0` handled the finite front-factor algebra,
+  `2c1` now handles the after-division consumer logic;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-square.2c1` is now closed.
+  The next live question inside `2c` is no longer how to consume a future
+  factorization, but how to actually obtain the analytic factorization shell or
+  how to prove the quotient uniqueness target itself.

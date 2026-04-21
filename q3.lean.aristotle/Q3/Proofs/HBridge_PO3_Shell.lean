@@ -3165,6 +3165,37 @@ theorem po3_square_tail_divider_step_of_nonvanishing_front
 
 end PO3SquareEntireDivider
 
+section PO3SquareEntireDividerConsumer
+
+variable {X β : Type*} [MonoidWithZero β]
+
+/-- `PO3-square.2c1` exact after-division target:
+every quotient that remains in the same-pole-support simple Cauchy class after
+division by the canonical square divider must already vanish. -/
+def po3_square_after_division_target
+    (SamePoleSupport SimpleCauchy : (X → β) → Prop) : Prop :=
+  ∀ quotient : X → β,
+    SamePoleSupport quotient → SimpleCauchy quotient → quotient = (0 : X → β)
+
+/-- Consumer theorem for the canonical divider route:
+once analytic work produces a factorization through the square divider and
+places the quotient in the same-pole-support simple Cauchy class, the entire
+route reduces to the named after-division target. -/
+theorem po3_square_zero_of_after_division_target
+    {receiver divider quotient : X → β}
+    (SamePoleSupport SimpleCauchy : (X → β) → Prop)
+    (hfactor : ∀ x, receiver x = divider x * quotient x)
+    (hsame : SamePoleSupport quotient)
+    (hcauchy : SimpleCauchy quotient)
+    (htarget : po3_square_after_division_target SamePoleSupport SimpleCauchy) :
+    receiver = (0 : X → β) := by
+  have hquot : quotient = (0 : X → β) := htarget quotient hsame hcauchy
+  funext x
+  rw [hfactor x, hquot]
+  simp
+
+end PO3SquareEntireDividerConsumer
+
 section PO3SquareQuotientCollapse
 
 variable {𝕜 : Type*} [Field 𝕜]

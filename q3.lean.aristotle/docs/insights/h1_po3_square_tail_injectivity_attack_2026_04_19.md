@@ -304,6 +304,28 @@ analytic / infinite-support стороне.
 То есть `2c` уже сцепился с `2b1`: как только аналитическая factorization
 будет реально доказана, step-рекурсия делителя дальше станет механикой.
 
+### `PO3-square.2c1`  `[After-division consumer shell closed]`
+
+Следующий shell внутри `2c` тоже уже посажен:
+
+- введена named target-цель после деления,
+  `po3_square_after_division_target`;
+- введена consumer-теорема
+  `po3_square_zero_of_after_division_target`,
+  которая формально говорит:
+  factorization через divider плюс принадлежность quotient-а к классу
+  “тот же pole support + simple Cauchy” сводят весь route к одной
+  quotient-uniqueness цели.
+
+То есть теперь внутри `2c` закрыты обе нижние логические оболочки:
+
+- front-factor / step algebra;
+- consumer logic after division.
+
+Живая часть сдвинулась ещё выше:
+либо строить сам analytic factorization shell,
+либо прямо бить quotient uniqueness.
+
 ## Штурм `2d` — transform transfer
 
 Идея:
