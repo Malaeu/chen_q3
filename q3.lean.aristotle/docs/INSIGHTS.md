@@ -9707,3 +9707,28 @@ Update:
   The next genuinely mathematical live address is `PO3-square.2d3`:
   derive the eventual lower bound on the real signed `A_k` tower from
   rightmost-term dominance, while keeping mirror-side suppression on `B_k`.
+
+## Synthesis (2026-04-21, in progress) — `PO3a-A-real` should use the existing shell and add exactly one one-kernel consumer
+
+- after re-reading the local note and shell file, the key correction is now
+  explicit: `PO3a-A0/A1/A2` do not need to be rebuilt at all;
+  they already exist in Lean as
+  `po3_double_telescoping`,
+  `po3_boundary_plus_bulk_of_double_telescoping`,
+  and the coefficient-level packet machinery;
+- more importantly, the repo already contains the exact lower-shell algebra we
+  need for the one-kernel Volterra route:
+  `po3_two_endpoint_expansion`,
+  `po3_finite_antiderivative_physical_specialization`,
+  `po3_endpoint_packet_of_antiderivative_transport`,
+  and
+  `po3_boundary_zero_of_antiderivative_transport_and_matrix_receiver`;
+- the current blocker is therefore much narrower than “close `PO3a-A`”:
+  add one direct consumer theorem saying that if the transported genuine
+  boundary packet is already in the physical one-kernel form, then the finite
+  receiver kills it immediately;
+- the local oracle consistently points back to our own shell file and the
+  `PO3a-two-endpoint extraction` note, while the external web sanity-check did
+  not produce any off-the-shelf theorem that would improve this packaging;
+- so the fastest move is to formalize this single consumer now, then move the
+  live burden forward to the real outer-factor check and the tail-zero chain.
