@@ -9865,3 +9865,36 @@ Update:
   the live burden moves forward to the real Q3-side certificate that plugs
   these packaged packets into the already closed `PO3a.4-real` feeder, rather
   than staying stuck on extraction or packet bookkeeping.
+
+## Synthesis (2026-04-21, in progress) — `PO3-rig.1b.cert-real` should be one direct `PO3Cert` bridge from outer transport data to scalar window law
+
+- the repo state is now sharp:
+  `HBridge_PO3_Shell.lean` already contains the exact mathematics-side feeder
+  `po3_coordinate_profile_of_outer_transport_companion_cancellation`, so there
+  is no remaining shell theorem to invent at this address;
+- the older file
+  `Q3/Proofs/PO3Cert/WindowLawCertificate_2026_04_19.lean`
+  already freezes a weaker contract
+  `PO3WindowCoordinateCertificate`,
+  but it only asks for span-laws and shared coordinates, not for the concrete
+  outer-transport cancellation packet that is now available after
+  `PO3a.4-real`;
+- the March `PO3` note remains the strongest manuscript anchor for the real
+  target:
+  once the compressed zero-mode column `v_{a,N}` lands on the endpoint line and
+  one uses reflection-even coordinates, the window law should read
+  `w_{r,0}(a) = c_{a,N,M} (-1)^r`;
+- local oracle search did not uncover any missing internal theorem beyond this:
+  it consistently pointed back to the shell file, the March note, and the
+  earlier certificate note;
+- the external web sanity-check returned only generic facts about coordinates on
+  one-dimensional spans and rank-one operators, with nothing better than the
+  local shell we already formalized;
+- therefore the fastest next move is not more abstract algebra, but one exact
+  `PO3Cert` contract:
+  freeze the outer-transport map data, the cancellation identity, the chosen
+  coordinate family, the endpoint profile, and the value sequence, then expose
+  one theorem sending that contract directly to `po3_window_scalar_law`;
+- coordination verdict:
+  after this contract lands, the live burden moves from certificate packaging
+  to the actual tail consumer `PO3-tail.1`.
