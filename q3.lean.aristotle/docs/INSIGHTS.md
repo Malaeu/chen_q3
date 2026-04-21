@@ -10012,3 +10012,35 @@ Update:
   and only after that read generated address/status artifacts or `INSIGHTS`;
 - `docs/PAPER_MAINLINE_TRACKER.md` remains paper-facing and was intentionally
   left out of execution-roadmap duty.
+
+## Synthesis (2026-04-21, in progress) — `PO3-square.2d3` should split into one reusable bridge shell plus one genuine analytic certificate
+
+- the local oracle pass plus the route-ladder notes agree on the status:
+  `PO3-square.2d0a`, `PO3-square.2d1`, and `PO3-square.2d2` are already frozen,
+  and `PO3-square.2d3` is the unique current live mathematical wall on the
+  lower-shell route;
+- no hidden internal theorem packet was found for the actual lower bound on the
+  signed one-sided Gamma tower `A_k`; the strongest repo signal is still the
+  same one recorded in older route memory: the unresolved upgrade is from a
+  finite/top right-packet dominance picture to the full unbounded-support wall,
+  using inherited coefficient decay and the geometry `Y_a = {x_γ, x_γ - 1}`;
+- the external sanity-check is only supportive, not decisive:
+  DLMF §5.11 justifies the fixed-parameter Gamma-ratio drift, while the
+  Abakumov--Baranov--Belov Cauchy-transform localization work supports the
+  general geometry/localization intuition, but neither source gives the actual
+  Q3 theorem we need;
+- therefore the next Lean move should stay honest and narrow:
+  freeze a reusable bridge saying
+  `main = dominantPacket + remainder`,
+  `dominantPacket` is eventually bounded below,
+  and `‖remainder‖ ≤ c · ‖dominantPacket‖` eventually for some `c < 1`,
+  then `main` is eventually bounded below as well;
+- this is the right step because it does not pretend to solve the analytic
+  wall, but it converts any future signed rightmost / top-cluster certificate
+  directly into the already-frozen consumer shell
+  `po3_square_signed_dominance_target`;
+- coordination verdict:
+  the current execution order should be
+  docs synthesis -> abstract dominance bridge in `HBridge_PO3_Shell.lean` ->
+  compile -> then return to the real analytic packet estimate at
+  `PO3-square.2d3`.
