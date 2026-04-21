@@ -2852,8 +2852,7 @@ theorem po3_rankOne_companion_rigidity_of_outer_transport
       (βh.comp g).smulRight (f v - c • f h) =
         (βh.comp g).smulRight (f v) - c • ((βh.comp g).smulRight (f h)) := by
     ext x
-    simp [LinearMap.smulRight_apply, smul_sub, smul_smul, sub_eq_add_neg,
-      add_assoc, add_left_comm, add_comm, mul_comm, mul_left_comm, mul_assoc]
+    simp [LinearMap.smulRight_apply, smul_smul, sub_eq_add_neg, mul_comm]
   have hsum :
       (βh.comp g).smulRight (f v) - c • ((βh.comp g).smulRight (f h)) +
         (βv.comp g).smulRight (f h) = 0 := by
@@ -2872,8 +2871,8 @@ theorem po3_rankOne_companion_rigidity_of_outer_transport
     refine ⟨a + c, ?_⟩
     calc
       (a + c) • f h = a • f h + c • f h := by rw [add_smul]
-      _ = (f v - c • f h) + c • f h := by simpa [ha]
-      _ = f v := by simpa using sub_add_cancel (f v) (c • f h)
+      _ = (f v - c • f h) + c • f h := by simp [ha]
+      _ = f v := by simp
   refine ⟨(mem_span_singleton_map_iff_of_injective hf).1 hfv, ?_⟩
   exact (mem_span_singleton_comp_iff_of_surjective hg).1 hβv_comp
 
