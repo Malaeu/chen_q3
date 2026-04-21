@@ -6,7 +6,7 @@ related_addresses: ["PO3a.4", "PO3-rig.1", "PO3-rig.1b"]
 ancestor_addresses: ["PO3a.4", "PO3a-A-real", "H-bridge.11"]
 child_or_next_addresses: ["PO3-rig.1", "PO3-rig.1b"]
 raw_address_notation: "PO3a.4-real"
-normalized_addresses: ["PO3a.4-real", "PO3a.4", "PO3a-A-real", "H-bridge.11", "PO3-rig.1", "PO3-rig.1b"]
+normalized_addresses: ["PO3a.4-real", "PO3a.4", "PO3-rig.1", "PO3-rig.1b", "PO3a-A-real", "H-bridge.11"]
 address_status: "done"
 blocker: "Прямой consumer от outer-stripping в companion-cancellation rigidity и coordinate window law"
 collections: ["q3_docs"]
@@ -28,6 +28,8 @@ neighbor_addresses: ["PO3a.4", "PO3-rig.1", "PO3-rig.1b"]
 - адрес narrowed to one direct shell consumer;
 - после интеграции следующий живой шаг сдвигается на реальный Q3-side
   certificate, а не на новую линейную алгебру.
+- Lean consumer интегрирован и компилируется;
+- `PO3a.4-real` закрыт как shell-level feeder.
 
 ## Точный блокер
 
@@ -94,3 +96,20 @@ neighbor_addresses: ["PO3a.4", "PO3-rig.1", "PO3-rig.1b"]
   `v ∈ 𝕜∙h` и `β_v ∈ 𝕜∙β_h`;
 - сразу добавить coordinate-profile corollary, чтобы следующий live burden был
   уже не shell-level linear algebra, а реальный Q3-side certificate.
+
+## Итог
+
+- в `Q3/Proofs/HBridge_PO3_Shell.lean` добавлены
+  `po3_rankOne_companion_rigidity_of_outer_transport`
+  и
+  `po3_coordinate_profile_of_outer_transport_companion_cancellation`;
+- первый theorem exactly strips outer `f,g` and feeds the already frozen
+  singleton-span rigidity shell;
+- второй theorem immediately converts that span conclusion into one scalar
+  coordinate window law;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and
+  `lake build Q3.Proofs.PO3Cert`;
+- следующий живой узел теперь уже не про `PO3a.4`, а про real Q3-side
+  certificate into `PO3-rig.1b`, then `PO3-tail.1`.

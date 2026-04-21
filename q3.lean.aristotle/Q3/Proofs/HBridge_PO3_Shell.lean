@@ -2812,6 +2812,97 @@ theorem po3_shared_coordinate_profile_of_two_mem_span_singleton
 
 end PO3WindowLaw
 
+section PO3OuterRigidityFeeders
+
+variable {𝕜 U₁ U₂ V₁ V₂ : Type*}
+variable [Field 𝕜]
+variable [AddCommGroup U₁] [Module 𝕜 U₁]
+variable [AddCommGroup U₂] [Module 𝕜 U₂]
+variable [AddCommGroup V₁] [Module 𝕜 V₁]
+variable [AddCommGroup V₂] [Module 𝕜 V₂]
+
+/-- `PO3a.4-real`, direct span-level consumer:
+if the outer-stripped companion packet vanishes after an injective transport on
+the vector side and a surjective pullback on the functional side, then the
+original free vector and free functional already lie on the corresponding
+singleton spans. This is the exact feeder from outer stripping back to the
+closed `PO3-rig.1a` shell. -/
+theorem po3_rankOne_companion_rigidity_of_outer_transport
+    {f : V₁ →ₗ[𝕜] V₂} (hf : Function.Injective f)
+    {g : U₂ →ₗ[𝕜] U₁} (hg : Function.Surjective g)
+    {h v : V₁} {βh βv : U₁ →ₗ[𝕜] 𝕜} {c : 𝕜}
+    (hβh : βh ≠ 0) (hh : h ≠ 0)
+    (hzero :
+      - (βv.comp g).smulRight (f h)
+      - (βh.comp g).smulRight (f v)
+      + c • ((βh.comp g).smulRight (f h)) = 0) :
+    v ∈ 𝕜 ∙ h ∧ βv ∈ 𝕜 ∙ βh := by
+  have hβh_comp : βh.comp g ≠ 0 := by
+    intro hcomp
+    apply hβh
+    ext y
+    rcases hg y with ⟨x, rfl⟩
+    have hx := LinearMap.congr_fun hcomp x
+    simpa using hx
+  have hfh : f h ≠ 0 := by
+    intro hfh
+    have hh0 : h = 0 := hf (by simpa using hfh)
+    exact hh hh0
+  have hsmul :
+      (βh.comp g).smulRight (f v - c • f h) =
+        (βh.comp g).smulRight (f v) - c • ((βh.comp g).smulRight (f h)) := by
+    ext x
+    simp [LinearMap.smulRight_apply, smul_sub, smul_smul, sub_eq_add_neg,
+      add_assoc, add_left_comm, add_comm, mul_comm, mul_left_comm, mul_assoc]
+  have hsum :
+      (βh.comp g).smulRight (f v) - c • ((βh.comp g).smulRight (f h)) +
+        (βv.comp g).smulRight (f h) = 0 := by
+    have hneg :
+        -(- (βv.comp g).smulRight (f h) - (βh.comp g).smulRight (f v) +
+            c • ((βh.comp g).smulRight (f h))) = 0 := by
+      simpa using congrArg Neg.neg hzero
+    simpa [sub_eq_add_neg, add_assoc, add_left_comm, add_comm] using hneg
+  have hzero' :
+      (βh.comp g).smulRight (f v - c • f h) + (βv.comp g).smulRight (f h) = 0 := by
+    simpa [hsmul] using hsum
+  rcases po3_rankOne_companion_rigidity hβh_comp hfh hzero' with ⟨hv_shift, hβv_comp⟩
+  have hfv : f v ∈ 𝕜 ∙ f h := by
+    rcases Submodule.mem_span_singleton.mp hv_shift with ⟨a, ha⟩
+    refine Submodule.mem_span_singleton.mpr ?_
+    refine ⟨a + c, ?_⟩
+    calc
+      (a + c) • f h = a • f h + c • f h := by rw [add_smul]
+      _ = (f v - c • f h) + c • f h := by simpa [ha]
+      _ = f v := by simpa using sub_add_cancel (f v) (c • f h)
+  refine ⟨(mem_span_singleton_map_iff_of_injective hf).1 hfv, ?_⟩
+  exact (mem_span_singleton_comp_iff_of_surjective hg).1 hβv_comp
+
+/-- `PO3a.4-real`, direct coordinate feeder:
+once the outer-stripped companion packet vanishes, any chosen coordinate
+certificate for the fixed endpoint line and the free vector immediately yields
+one scalar window law. This is the exact shell handoff from `PO3a.4` to
+`PO3-rig.1b`. -/
+theorem po3_coordinate_profile_of_outer_transport_companion_cancellation
+    {ι : Type*}
+    {f : V₁ →ₗ[𝕜] V₂} (hf : Function.Injective f)
+    {g : U₂ →ₗ[𝕜] U₁} (hg : Function.Surjective g)
+    {h v : V₁} {βh βv : U₁ →ₗ[𝕜] 𝕜} {c : 𝕜}
+    (coords : ι → V₁ →ₗ[𝕜] 𝕜)
+    {profile values : ι → 𝕜}
+    (hβh : βh ≠ 0) (hh : h ≠ 0)
+    (hzero :
+      - (βv.comp g).smulRight (f h)
+      - (βh.comp g).smulRight (f v)
+      + c • ((βh.comp g).smulRight (f h)) = 0)
+    (hhcoord : ∀ i, coords i h = profile i)
+    (hvcoord : ∀ i, coords i v = values i) :
+    ∃ a : 𝕜, ∀ i, values i = a * profile i := by
+  rcases po3_rankOne_companion_rigidity_of_outer_transport hf hg hβh hh hzero with
+    ⟨hv, _⟩
+  exact po3_coordinate_profile_of_mem_span_singleton coords hv hhcoord hvcoord
+
+end PO3OuterRigidityFeeders
+
 section PO3TailLaw
 
 variable {𝕜 : Type*}

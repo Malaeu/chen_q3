@@ -9782,3 +9782,29 @@ Update:
   scalar window law needed by `PO3-rig.1b`;
 - the external web sanity-check did not uncover a better off-the-shelf theorem,
   so the direct local consumer is the right next strike.
+
+## Result (2026-04-21) — `PO3a.4-real` now feeds `PO3-rig.1b` directly
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains
+  `po3_rankOne_companion_rigidity_of_outer_transport`;
+  this is the exact span-level feeder we were missing after `PO3a-A-real`:
+  from the outer-stripped companion cancellation packet, an injective vector
+  transport and a surjective functional pullback are enough to recover the
+  original singleton-span rigidity
+  `v ∈ 𝕜∙h` and `β_v ∈ 𝕜∙β_h`;
+- the same file now also contains
+  `po3_coordinate_profile_of_outer_transport_companion_cancellation`,
+  which immediately pushes that recovered span law into one scalar coordinate
+  profile law;
+- this matters because the route is now compressed exactly as planned:
+  `PO3a-A-real` hands the real packet to `PO3a.4-real`,
+  `PO3a.4-real` strips the outer layer,
+  and the result lands directly in the already closed shell of `PO3-rig.1b`;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  the live burden is no longer shell-level outer linear algebra.
+  The next real step is the Q3-side certificate that instantiates the new
+  outer-stripping feeder with the actual zero-mode/endpoint data, then the
+  window-gluing step `PO3-tail.1`.
