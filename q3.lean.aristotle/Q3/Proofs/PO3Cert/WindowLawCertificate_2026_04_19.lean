@@ -73,4 +73,67 @@ theorem po3_window_scalar_law_of_certificate
 
 end
 
+section
+
+variable {𝕜 ι U₁ U₂ V₁ V₂ : Type*}
+variable [Field 𝕜]
+variable [AddCommGroup U₁] [Module 𝕜 U₁]
+variable [AddCommGroup U₂] [Module 𝕜 U₂]
+variable [AddCommGroup V₁] [Module 𝕜 V₁]
+variable [AddCommGroup V₂] [Module 𝕜 V₂]
+
+/-- Exact contract for the next real `PO3-rig.1b` feeder after `PO3a.4-real`.
+
+This is the certificate shape one level closer to the real Q3 data than
+`PO3WindowCoordinateCertificate`:
+
+- the outer transport / pullback maps are part of the data;
+- the companion-cancellation identity is part of the data;
+- one chosen coordinate family on the original vector side records both the
+  endpoint profile and the free-piece values.
+
+Once such a certificate is available, the shell already proves one scalar
+window law. -/
+structure PO3OuterTransportWindowCertificate where
+  transport : V₁ →ₗ[𝕜] V₂
+  pullback : U₂ →ₗ[𝕜] U₁
+  endpointVec : V₁
+  freeVec : V₁
+  endpointFun : U₁ →ₗ[𝕜] 𝕜
+  freeFun : U₁ →ₗ[𝕜] 𝕜
+  shellScalar : 𝕜
+  coords : ι → V₁ →ₗ[𝕜] 𝕜
+  values : ι → 𝕜
+  profile : ι → 𝕜
+  transport_injective : Function.Injective transport
+  pullback_surjective : Function.Surjective pullback
+  endpointFun_nonzero : endpointFun ≠ 0
+  endpointVec_nonzero : endpointVec ≠ 0
+  cancellation :
+    - (freeFun.comp pullback).smulRight (transport endpointVec)
+    - (endpointFun.comp pullback).smulRight (transport freeVec)
+    + shellScalar • ((endpointFun.comp pullback).smulRight (transport endpointVec)) = 0
+  endpoint_profile : ∀ i, coords i endpointVec = profile i
+  free_values : ∀ i, coords i freeVec = values i
+
+/-- Direct `PO3Cert` consumer for the new real certificate layer:
+outer-transport cancellation plus coordinate data already imply the one-scalar
+window law needed by `PO3-tail.1`. -/
+theorem po3_window_scalar_law_of_outer_transport_certificate
+    (cert : PO3OuterTransportWindowCertificate
+      (𝕜 := 𝕜) (ι := ι) (U₁ := U₁) (U₂ := U₂) (V₁ := V₁) (V₂ := V₂)) :
+    po3_window_scalar_law cert.values cert.profile := by
+  rcases po3_coordinate_profile_of_outer_transport_companion_cancellation
+      (hf := cert.transport_injective)
+      (hg := cert.pullback_surjective)
+      (coords := cert.coords)
+      (hβh := cert.endpointFun_nonzero)
+      (hh := cert.endpointVec_nonzero)
+      (hzero := cert.cancellation)
+      (hhcoord := cert.endpoint_profile)
+      (hvcoord := cert.free_values) with ⟨c, hc⟩
+  exact ⟨c, hc⟩
+
+end
+
 end Q3.Proofs.PO3Cert

@@ -209,6 +209,8 @@ Exports:
 - `po3_window_scalar_law`
 - `PO3WindowCoordinateCertificate`
 - `po3_window_scalar_law_of_certificate`
+- `PO3OuterTransportWindowCertificate`
+- `po3_window_scalar_law_of_outer_transport_certificate`
 
 Status note:
 - this file does **not** define the real objects `v_{a,N}` or `w_{r,0}(a)`;
@@ -217,6 +219,18 @@ Status note:
   profile, and one nonzero profile index;
 - once such a certificate is available, the feeder theorem returns the one
   scalar window law needed by `PO3-tail.1`.
+
+Status update:
+- the same file now also contains a stronger certificate shape one level closer
+  to `PO3a.4-real`:
+  `PO3OuterTransportWindowCertificate`;
+- this stronger contract freezes the outer transport / pullback maps, the
+  transported companion-cancellation identity, one coordinate family, the
+  endpoint profile, and the resulting value sequence;
+- its consumer
+  `po3_window_scalar_law_of_outer_transport_certificate`
+  sends that data directly to the scalar window law, so the next live burden
+  is no longer certificate bookkeeping but the real `PO3-tail.1` input.
 
 Status note:
 - the whole first-zeta `a = 1` witness stack is now packaged as one reusable

@@ -9898,3 +9898,29 @@ Update:
 - coordination verdict:
   after this contract lands, the live burden moves from certificate packaging
   to the actual tail consumer `PO3-tail.1`.
+
+## Result (2026-04-21) — `PO3-rig.1b.cert-real` now has the direct `PO3Cert` bridge
+
+- `Q3/Proofs/PO3Cert/WindowLawCertificate_2026_04_19.lean` now contains
+  `PO3OuterTransportWindowCertificate`;
+  this is the exact contract one notch closer to the real Q3-side data than
+  the older `PO3WindowCoordinateCertificate`, because it freezes the outer
+  vector transport, the functional pullback, the companion-cancellation
+  identity, one coordinate family, the endpoint profile, and the resulting
+  value sequence in one place;
+- the same file now also contains
+  `po3_window_scalar_law_of_outer_transport_certificate`,
+  which immediately sends that contract to
+  `po3_window_scalar_law` by consuming the already-closed shell theorem
+  `po3_coordinate_profile_of_outer_transport_companion_cancellation`;
+- this matters because the certificate layer is now honest and compressed:
+  the next real Q3 contribution no longer needs to thread hypotheses manually
+  through `HBridge_PO3_Shell.lean`; it can land directly as one concrete
+  `PO3Cert` record;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/WindowLawCertificate_2026_04_19.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  the live burden is no longer certificate packaging.
+  The next honest step is to attack `PO3-tail.1` with a real window-family
+  input rather than add another bridge layer.

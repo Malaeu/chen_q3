@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-21"
 main_address: "PO3-rig.1b.cert-real"
 related_addresses: ["PO3-rig.1b.cert", "PO3a.4-real", "PO3-tail.1"]
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-rig.1b.cert", "PO3a.4-real", "PO3-rig.1b"]
 child_or_next_addresses: ["PO3-tail.1"]
 raw_address_notation: "PO3-rig.1b.cert-real"
 normalized_addresses: ["PO3-rig.1b.cert-real", "PO3-rig.1b.cert", "PO3a.4-real", "PO3-tail.1", "PO3-rig.1b"]
-address_status: "active"
+address_status: "done"
 blocker: "Прямой certificate-layer от outer-transport cancellation и coordinate data к scalar window law для реального Q3-side окна"
 collections: ["q3_docs"]
 tags: ["po3", "certificate", "outer-transport", "window-law"]
@@ -29,6 +29,8 @@ neighbor_addresses: ["PO3-rig.1b.cert", "PO3a.4-real", "PO3-tail.1"]
 - следующий кодовый шаг уже ясен: расширить
   `WindowLawCertificate_2026_04_19.lean` контрактом для outer-transport data
   и theorem-consumer-ом в scalar window law.
+- Lean bridge интегрирован и компилируется;
+- `PO3-rig.1b.cert-real` закрыт как certificate-layer packaging узел.
 
 ## Точный блокер
 
@@ -97,3 +99,22 @@ law и передать его в `PO3-tail.1`.
   `po3_window_scalar_law`;
 - после этого следующий живой узел станет уже `PO3-tail.1`, а не новый
   certificate bookkeeping.
+
+## Итог
+
+- в `Q3/Proofs/PO3Cert/WindowLawCertificate_2026_04_19.lean` добавлены
+  `PO3OuterTransportWindowCertificate`
+  и
+  `po3_window_scalar_law_of_outer_transport_certificate`;
+- новый structure фиксирует exact future Q3-side contract уже на уровне
+  outer-transport cancellation packet, coordinate family, endpoint profile и
+  value sequence;
+- новый theorem сразу сворачивает такой certificate в
+  `po3_window_scalar_law`, не требуя ещё одной shell-level вставки;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/WindowLawCertificate_2026_04_19.lean`
+  and
+  `lake build Q3.Proofs.PO3Cert`;
+- следующий живой узел теперь уже действительно `PO3-tail.1`: нужно
+  подать реальные window-family / decay / sampling hypotheses, а не ещё раз
+  чинить certificate packaging.
