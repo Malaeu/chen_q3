@@ -9924,3 +9924,33 @@ Update:
   the live burden is no longer certificate packaging.
   The next honest step is to attack `PO3-tail.1` with a real window-family
   input rather than add another bridge layer.
+
+## Synthesis (2026-04-21, in progress) — `PO3-tail.1-real` should collapse the whole tail/sampling/square feeder into one certificate consumer
+
+- after `PO3-rig.1b.cert-real`, the shell side is already fully closed much
+  farther than `PO3-tail.1` itself:
+  `HBridge_PO3_Shell.lean` contains the entire abstract chain from tail scalar
+  law to square-tail zero via decay, nonvanishing rescaling, and repackaging;
+- this means the new blocker is not another theorem in `HBridge_PO3_Shell`, but
+  one honest `PO3Cert` layer that packages real Q3-side data in exactly the
+  shape those consumers need;
+- local oracle search confirms that no missing intermediate theorem shows up in
+  our notes:
+  the strongest hits are still the March `PO3` note, the shell file itself,
+  and the just-closed outer-transport certificate theorem;
+- the March note gives the right manuscript narrative:
+  first obtain the scalar alternating law for `w_{r,0}(a)`, then use decay to
+  kill the scalar, then transfer tail zero through the sampling rescaling, and
+  finally repackage it to square-tail zero;
+- the external web sanity-check was useless again: it returned only generic
+  overlap/gluing material, so there is no reason to wait for outside math here;
+- therefore the fastest next move is one compressed certificate file:
+  keep `PO3OuterTransportWindowCertificate` as the window-law feeder, then add
+  a second record carrying `N`, the unit-norm profile condition on the strict
+  tail, the decay hypothesis for the value sequence, the sampling rescaling,
+  and the square repackaging;
+- that consumer theorem should jump directly from honest Q3-side certificate
+  data to `∀ r > N, squareReceiver (r^2) = 0`;
+- coordination verdict:
+  if this lands, the live burden moves immediately off all `PO3-tail.*` and
+  `PO3-cauchy.*` bookkeeping and onto the square-side wall.
