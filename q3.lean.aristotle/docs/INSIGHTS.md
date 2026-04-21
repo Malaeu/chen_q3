@@ -9657,3 +9657,27 @@ Update:
   The next live step is genuinely analytic:
   either prove the bundled factorization packet itself, or bypass it by
   attacking the quotient uniqueness target directly.
+
+## Synthesis (2026-04-21, in progress) — `PO3-square.2d2` should freeze the signed-dominance contradiction shell and kill the absolute-anchor detour
+
+- the direct local oracle hit is not a new theorem but a route-memory check:
+  our own older `D3e4` note already records the decisive Gamma-ratio fact
+  `W_k(y)/W_k(y') ~ C(y,y') k^{2(y-y')}`, hence any fixed finite anchor block
+  is impossible on unbounded support because absolute mass drifts to the right;
+- this matters immediately for `PO3-square.2d1`: the transform-side wall should
+  not be attacked through absolute-weight tightness or finite-anchor rhetoric,
+  because that door is structurally false on every genuine infinite-support
+  counterexample;
+- the external sanity-check agrees on both ingredients:
+  DLMF §5.11 gives the fixed-parameter Gamma-ratio asymptotic, while the
+  Cauchy-transform localization papers of Abakumov--Baranov--Belov point toward
+  support geometry / attraction structure rather than raw absolute-mass
+  compactness;
+- so the honest next shell is much narrower:
+  define one abstract contradiction target saying that a wall identity
+  `main k = mirror k` cannot persist if the signed main tower has an eventual
+  norm lower bound and the mirror tower tends to zero;
+- this is the right coding move because it removes the false `absolute anchor`
+  subroute from the critical path and leaves only one real analytic burden:
+  prove signed rightmost dominance on the main side for the actual
+  transform-side Gamma tower.
