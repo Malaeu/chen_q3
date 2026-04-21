@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-21"
 main_address: "PO3a-A-real"
 related_addresses: ["PO3a-A", "PO3a-A0", "PO3a-A1", "PO3a-A2", "PO3a.4", "PO3-rig.1"]
@@ -7,11 +7,11 @@ ancestor_addresses: ["PO3a-A", "PO3a", "H-bridge.11"]
 child_or_next_addresses: ["PO3a.4", "PO3-rig.1"]
 raw_address_notation: "PO3a-A-real; PO3a-A0, 1, 2; PO3a.4; PO3-rig.1"
 normalized_addresses: ["PO3a-A-real", "PO3a-A0", "PO3a-A1", "PO3a-A2", "PO3a.4", "PO3-rig.1", "PO3a-A", "PO3a", "H-bridge.11"]
-address_status: "active"
+address_status: "done"
 blocker: "real one-kernel antiderivative transport plus physical specialization consumer"
 collections: ["q3_docs"]
 tags: ["po3a", "antiderivative", "volterra", "physical-specialization"]
-insight_links: []
+insight_links: ["q3.lean.aristotle/docs/INSIGHTS.md"]
 request_nodes: []
 strong_terms: ["two-endpoint extraction", "physical specialization", "antiderivative transport"]
 empty_terms: ["new theorem package from scratch"]

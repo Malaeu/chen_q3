@@ -9732,3 +9732,27 @@ Update:
   not produce any off-the-shelf theorem that would improve this packaging;
 - so the fastest move is to formalize this single consumer now, then move the
   live burden forward to the real outer-factor check and the tail-zero chain.
+
+## Result (2026-04-21) — `PO3a-A-real` now has the direct one-kernel consumer
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains
+  `po3_boundary_zero_of_antiderivative_transport_and_physical_specialization`;
+- this is the exact direct consumer for the one-kernel physical Volterra route:
+  once the genuine boundary packet is transported to the antiderivative side,
+  and once that transported packet is identified with the physical
+  specialization
+  `((1-R)^* K (1-R) - K)`,
+  the theorem collapses it immediately to the already frozen finite matrix
+  receiver and concludes `D_partial_pm = 0`;
+- this closes the packaging gap that was still left after the earlier shell
+  results:
+  we no longer have just isolated pieces (`A0/A1`, two-endpoint expansion,
+  physical specialization, finite receiver), but one direct handoff theorem for
+  the actual one-kernel route;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3a-A-real` is now closed as a shell consumer.
+  The next live burden is no longer this handoff but the real outer-layer
+  check `PO3a.4`, followed by the rigidity-to-tail-zero chain.

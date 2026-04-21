@@ -394,6 +394,69 @@ theorem po3_finite_antiderivative_physical_specialization
 
 end PO3FiniteAntiderivativeMismatch
 
+section PO3PhysicalVolterraConsumer
+
+open Finset
+open scoped BigOperators
+
+variable {ι A : Type*} [Ring A]
+
+/-- Direct `PO3a-A-real` consumer for the one-kernel physical Volterra route:
+if the genuine cross-sign boundary packet has already been transported to the
+antiderivative side and identified with the physical specialization
+`((1-R)^* K (1-R) - K)`, then the finite receiver kills it immediately. -/
+theorem po3_boundary_zero_of_antiderivative_transport_and_physical_specialization
+    (s : Finset ι)
+    (D_partial_pm antiderivative_packet receiver A_mat B_mat M_mat : A)
+    (L K R_left R_right N : ι → A)
+    (htransport : D_partial_pm = antiderivative_packet)
+    (hphysical :
+      antiderivative_packet =
+        Finset.sum s
+          (fun i => L i * (((1 - R_left i) * K i * (1 - R_right i)) - K i) * N i))
+    (hreceiver :
+      -(Finset.sum s (fun i => L i * R_left i * K i * N i))
+        - (Finset.sum s (fun i => L i * K i * R_right i * N i))
+        + Finset.sum s (fun i => L i * R_left i * K i * R_right i * N i)
+        = receiver)
+    (hmatrix : receiver = A_mat + B_mat + M_mat)
+    (hcancel : A_mat + B_mat + M_mat = 0) :
+    D_partial_pm = 0 := by
+  have hspecial :
+      antiderivative_packet
+        =
+          -(Finset.sum s (fun i => L i * R_left i * K i * N i))
+          - (Finset.sum s (fun i => L i * K i * R_right i * N i))
+          + Finset.sum s (fun i => L i * R_left i * K i * R_right i * N i) := by
+    calc
+      antiderivative_packet
+          =
+            Finset.sum s
+              (fun i => L i * (((1 - R_left i) * K i * (1 - R_right i)) - K i) * N i) :=
+            hphysical
+      _ =
+            -(Finset.sum s (fun i => L i * R_left i * K i * N i))
+            - (Finset.sum s (fun i => L i * K i * R_right i * N i))
+            + Finset.sum s (fun i => L i * R_left i * K i * R_right i * N i) :=
+            po3_finite_antiderivative_physical_specialization s L K R_left R_right N
+  have hexpand :
+      antiderivative_packet = (0 : A) + receiver := by
+    calc
+      antiderivative_packet
+          =
+            -(Finset.sum s (fun i => L i * R_left i * K i * N i))
+            - (Finset.sum s (fun i => L i * K i * R_right i * N i))
+            + Finset.sum s (fun i => L i * R_left i * K i * R_right i * N i) :=
+            hspecial
+      _ = receiver := hreceiver
+      _ = (0 : A) + receiver := by simp
+  exact
+    po3_boundary_zero_of_antiderivative_transport_and_matrix_receiver
+      D_partial_pm antiderivative_packet 0 receiver receiver A_mat B_mat M_mat
+      htransport hexpand rfl rfl hmatrix hcancel
+
+end PO3PhysicalVolterraConsumer
+
 section PO3DoubleTelescoping
 
 open Finset
