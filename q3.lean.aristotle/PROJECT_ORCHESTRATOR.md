@@ -1,6 +1,6 @@
 # PROJECT ORCHESTRATOR - Q3
 
-Updated: 2026-04-11
+Updated: 2026-04-21
 
 ## Role
 
@@ -45,21 +45,40 @@ Broad-cone route status:
 - it may still produce reusable local lemmas,
 - but it is no longer the public RH contract.
 
+## Canonical PO3 Subroute
+
+For the active `H-bridge` route, the `PO3` lower-shell execution truth is now:
+
+- `PO3` remains the live lower-shell gateway inside `H1^f`;
+- the lower-shell feeder is already frozen through the closed chain
+  `PO3-shell.5/.6 -> PO3a-A2-real -> PO3a.4-real -> PO3-rig.1b.cert-real -> PO3-tail.1-real -> PO3-square.2d0a/.1/.2`;
+- the unique current live mathematical wall on this subroute is
+  `PO3-square.2d3`, namely signed rightmost dominance versus mirror
+  suppression on the transform-side Gamma tower;
+- `PO4/PO5` and `H2^f/H3^f/H4^f` stay conditional consumers after that wall,
+  not current blockers;
+- `PO3-square.2b*`, `PO3-square.2c*`, and `PO3-square.2d0a/.1/.2` are support
+  shell packets around the same wall, not parallel mainline replacements.
+
 ## Precedence Rule
 
 If files disagree, resolve conflicts in this order:
 
 1. `PROJECT_ORCHESTRATOR.md`
-2. `docs/PAPER_MAINLINE_TRACKER.md`
-3. `IMPLEMENTATION_PLAN.md`
-4. `docs/INSIGHTS.md`
+2. `docs/PO3_MAINLINE_ROADMAP.md`
+3. `docs/PAPER_MAINLINE_TRACKER.md`
+4. `IMPLEMENTATION_PLAN.md`
+5. generated address/status artifacts and `docs/INSIGHTS.md`
 
 Interpretation:
 
 - `PROJECT_ORCHESTRATOR.md` decides gate-state and frontier.
+- `docs/PO3_MAINLINE_ROADMAP.md` decides the canonical status-aware PO3
+  execution ladder under `H-bridge`.
 - `docs/PAPER_MAINLINE_TRACKER.md` decides manuscript typing and dependency map.
 - `IMPLEMENTATION_PLAN.md` decides only the current execution queue.
-- `docs/INSIGHTS.md` is non-normative and never overrides the other three.
+- generated address/status artifacts and `docs/INSIGHTS.md` are non-normative
+  and may lag the canonical control-plane docs.
 
 Route-level dead-end handling:
 
@@ -205,8 +224,12 @@ New live frontier:
       inside that wall the absolute-anchor / tightness door is already killed
       by the same Gamma-ratio drift mechanism as old `D3e4`,
       so the active live brick is narrower:
-      prove signed rightmost-dominance versus mirror suppression on the
-      transform-side wall `PO3-square.2d1`;
+      the lower-shell feeder through
+      `PO3-shell.5/.6`, `PO3a-A2-real`, `PO3a.4-real`,
+      `PO3-rig.1b.cert-real`, `PO3-tail.1-real`, and the square-side support
+      shells `PO3-square.2d0a/.1/.2` is already frozen, and the unique current
+      live mathematical wall is to prove signed rightmost-dominance versus
+      mirror suppression on the transform-side wall `PO3-square.2d3`;
       the auxiliary Lean shell `Q3/Proofs/HBridge_PO3_Shell.lean` is useful,
       but it does not replace that mathematics;
       treat `PO4/PO5` and `H2^f/H3^f/H4^f` as conditional consumers until that

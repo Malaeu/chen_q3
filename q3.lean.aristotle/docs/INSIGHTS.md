@@ -9989,3 +9989,26 @@ Update:
 - coordination verdict:
   the live burden is no longer tail/cauchy bookkeeping.
   The next honest node is `PO3-square.2d0a`.
+
+## Result (2026-04-21) — canonical `PO3` roadmap is now split from paper typing and generated status artifacts
+
+- `PROJECT_ORCHESTRATOR.md` now carries one compact `Canonical PO3 Subroute`
+  block so the project-level source of truth states the actual live `PO3`
+  frontier explicitly:
+  the lower-shell feeder is already frozen and the unique current live
+  mathematical wall is `PO3-square.2d3`;
+- a new control-plane document
+  `docs/PO3_MAINLINE_ROADMAP.md`
+  now records the full status-aware ladder
+  `done -> current live wall -> conditional consumers -> RH`
+  for the `PO3` subroute inside `H-bridge`;
+- this matters because the older prose route had gone stale:
+  several feeder nodes were still written as future work even though the repo
+  had already closed them as shell or certificate bridges;
+- the new rule is now explicit:
+  for `PO3` execution status, trust
+  `PROJECT_ORCHESTRATOR.md` first,
+  then `docs/PO3_MAINLINE_ROADMAP.md`,
+  and only after that read generated address/status artifacts or `INSIGHTS`;
+- `docs/PAPER_MAINLINE_TRACKER.md` remains paper-facing and was intentionally
+  left out of execution-roadmap duty.
