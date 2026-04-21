@@ -9954,3 +9954,38 @@ Update:
 - coordination verdict:
   if this lands, the live burden moves immediately off all `PO3-tail.*` and
   `PO3-cauchy.*` bookkeeping and onto the square-side wall.
+
+## Result (2026-04-21) — `PO3-tail.1-real` now has the direct square-tail certificate bridge
+
+- new file
+  `Q3/Proofs/PO3Cert/TailSquareBridgeCertificate_2026_04_21.lean`
+  now contains the exact real feeder packet
+  `PO3OuterTransportSquareTailCertificate`;
+  it keeps together:
+  one honest outer-transport window-law certificate, the tail index `N`, the
+  unit-norm tail profile condition, decay of the value sequence, the
+  nonvanishing sampling rescaling, and the square repackaging;
+- the same file exports
+  `po3_tail_scalar_law_of_outer_transport_square_tail_certificate`,
+  which turns the already-closed theorem
+  `po3_window_scalar_law_of_outer_transport_certificate`
+  into the strict-tail scalar law actually consumed by the decay kill;
+- more importantly, it exports
+  `po3_square_tail_zero_of_outer_transport_square_tail_certificate`,
+  which composes the closed shell consumers
+  `po3_tail_zero_of_tail_scalar_law_of_decay`,
+  `po3_tail_zero_of_nonvanishing_rescaling`,
+  and
+  `po3_square_tail_zero_of_repackaging`
+  and therefore sends honest Q3-side certificate data directly to
+  `∀ r > N, squareReceiver (r^2) = 0`;
+- `Q3/Proofs/PO3Cert.lean` and `Q3/Proofs/PO3Cert/README.md` were updated so
+  this bridge is visible from the certificate hub and documented as the new
+  real tail-to-square feeder;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/TailSquareBridgeCertificate_2026_04_21.lean`
+  and
+  `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  the live burden is no longer tail/cauchy bookkeeping.
+  The next honest node is `PO3-square.2d0a`.

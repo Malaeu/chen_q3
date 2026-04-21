@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-21"
 main_address: "PO3-tail.1-real"
 related_addresses: []
@@ -7,7 +7,7 @@ ancestor_addresses: ["PO3-rig.1b.cert-real", "PO3-tail.1", "PO3-tail.2", "PO3-ca
 child_or_next_addresses: ["PO3-square.2d0a"]
 raw_address_notation: "PO3-tail.1-real"
 normalized_addresses: ["PO3-tail.1-real", "PO3-rig.1b.cert-real", "PO3-tail.1", "PO3-tail.2", "PO3-cauchy.1", "PO3-cauchy.2", "PO3-square.2d0a"]
-address_status: "active"
+address_status: "done"
 blocker: "Реальный Q3-side certificate-пакет: из window-law/decay/sampling/repackaging data получить square-tail zero через уже закрытые shell consumers"
 collections: ["q3_docs", "web"]
 tags: ["po3", "tail", "certificate", "rescaling", "square-tail"]
@@ -24,8 +24,8 @@ neighbor_addresses: ["PO3-square.2d0a"]
 
 ## Статус
 
-- карточка создана;
-- серия запросов ещё не отработана полностью.
+- адрес закрыт;
+- `PO3Cert` bridge добавлен и проверен сборкой.
 
 ## Точный блокер
 
@@ -91,3 +91,31 @@ neighbor_addresses: ["PO3-square.2d0a"]
 
 - если certificate-bridge садится, следующий живой адрес уже не `PO3-tail.*`,
   а `PO3-square.2d0a`.
+
+## Result
+
+- новый файл
+  `Q3/Proofs/PO3Cert/TailSquareBridgeCertificate_2026_04_21.lean`
+  добавляет структуру
+  `PO3OuterTransportSquareTailCertificate`;
+- она держит вместе:
+  honest `PO3OuterTransportWindowCertificate`, индекс хвоста `N`,
+  unit-norm profile on the strict tail, decay of the value sequence,
+  nonvanishing sampling rescaling, and square repackaging;
+- theorem
+  `po3_tail_scalar_law_of_outer_transport_square_tail_certificate`
+  извлекает из этого пакета прямой strict-tail scalar law;
+- theorem
+  `po3_square_tail_zero_of_outer_transport_square_tail_certificate`
+  сразу композирует closed shell consumers
+  `po3_tail_zero_of_tail_scalar_law_of_decay`,
+  `po3_tail_zero_of_nonvanishing_rescaling`,
+  `po3_square_tail_zero_of_repackaging`
+  и получает
+  `∀ r > N, squareReceiver (r^2) = 0`;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/TailSquareBridgeCertificate_2026_04_21.lean`
+  and
+  `lake build Q3.Proofs.PO3Cert`;
+- the live burden now moves off `PO3-tail.*` / `PO3-cauchy.*` bookkeeping and
+  onto `PO3-square.2d0a`.

@@ -232,6 +232,33 @@ Status update:
   sends that data directly to the scalar window law, so the next live burden
   is no longer certificate bookkeeping but the real `PO3-tail.1` input.
 
+## Current real tail-to-square feeder after `PO3-rig.1b.cert-real`
+
+File:
+- `TailSquareBridgeCertificate_2026_04_21.lean`
+
+Purpose:
+- freeze the exact real Q3-side data packet that the already-closed
+  `PO3-tail.*`, `PO3-cauchy.1`, and `PO3-cauchy.2` shell consumers need;
+- move the live burden off tail/cauchy bookkeeping and directly onto the
+  square-side wall by exposing one theorem endpoint
+  `∀ r > N, squareReceiver (r^2) = 0`.
+
+Exports:
+- `PO3OuterTransportSquareTailCertificate`
+- `po3_tail_scalar_law_of_outer_transport_square_tail_certificate`
+- `po3_square_tail_zero_of_outer_transport_square_tail_certificate`
+
+Status note:
+- this file does not add new mathematics; it only compresses the already-closed
+  chain
+  `outer-transport window law -> tail scalar law -> decay kill -> sampled tail
+  zero -> square repackaging`
+  into one honest `PO3Cert` consumer;
+- once a real Q3-side record of this shape is available, the next live burden
+  is no longer `PO3-tail.*` or `PO3-cauchy.*`, but the square-side node fed by
+  square-tail zero.
+
 Status note:
 - the whole first-zeta `a = 1` witness stack is now packaged as one reusable
   local kill-layer inside `PO3Cert`;
