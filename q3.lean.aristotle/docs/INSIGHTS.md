@@ -9808,3 +9808,34 @@ Update:
   The next real step is the Q3-side certificate that instantiates the new
   outer-stripping feeder with the actual zero-mode/endpoint data, then the
   window-gluing step `PO3-tail.1`.
+
+## Synthesis (2026-04-21, in progress) — `PO3a-A2-real` should be one filtered `(+,-)` named-packet consumer, not a new Volterra theorem
+
+- the local oracle pass shows that `PO3a-A2-real` is already much narrower
+  than it looked in prose:
+  the real defect itself is frozen in
+  `docs/insights/h1_po1_tail_defect_attack_2026_03_16.md` as
+  `𝒟_{a,N} = S_{a,\infty,N}^* G_g[a] S_{a,\infty,N} - κ_{+-}(a) Δ_N^* Q_∞ Δ_N`,
+  and the filtered `(+,-)` defect is frozen in
+  `docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md` as
+  `𝒟_{a,N} = Δ_N^* 𝓡^{raw}_{a,N} Δ_N`;
+- `full/sections/Main_closure.tex` also already says the right structural
+  thing for this branch:
+  once the filtered `(+,-)` block is written with `\\widetilde Q_{M,N}^{+-}`,
+  there is no extra section-boundary defect to invent;
+- on the Lean side, the core shell is already present:
+  `po3_named_packets_of_four_term_stencil_sub_smul`,
+  `po3_four_term_stencil_q_pm_kernel_of_int`,
+  `po3_mixed_packet_of_four_term_stencil_q_pm_kernel_of_int`,
+  and `po3_mixed_packet_of_section8_raw_kernel_pm`;
+- this means the fastest next move is not a new “PO3a-A theorem” but one
+  manuscript-facing theorem-packet that exposes the whole filtered `(+,-)`
+  family as named packets `corner + row + column + mixed`, with the mixed
+  part already collapsing to the one-variable forward second difference;
+- the external web sanity-check only confirmed the generic double telescoping
+  identity and did not offer a better project-specific theorem;
+- coordination verdict:
+  `PO3a-A2-real` should now be treated as a direct packaging task inside
+  `Q3/Proofs/HBridge_PO3_Shell.lean`, and once that consumer lands the live
+  burden moves forward to the actual Q3-side certificate instead of remaining
+  on shell-level extraction.
