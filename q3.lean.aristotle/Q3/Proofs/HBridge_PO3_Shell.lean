@@ -3311,6 +3311,42 @@ def po3_eventually_norm_bounded_below (tower : ℕ → 𝕜) : Prop :=
 def po3_norm_tends_to_zero (tower : ℕ → 𝕜) : Prop :=
   ∀ ε > 0, ∃ K, ∀ k, K ≤ k → ‖tower k‖ < ε
 
+/-- Eventual relative remainder control for a dominant packet in
+`PO3-square.2d3`. -/
+def po3_eventually_dominates_remainder
+    (dominantPacket remainder : ℕ → 𝕜) : Prop :=
+  ∃ c, 0 ≤ c ∧ c < 1 ∧ ∃ K, ∀ k, K ≤ k →
+    ‖remainder k‖ ≤ c * ‖dominantPacket k‖
+
+/-- Abstract `PO3-square.2d3` bridge:
+if the signed main tower splits into a dominant packet plus a controlled
+remainder, and the remainder is eventually a strict fraction of a packet that
+is itself eventually bounded away from zero, then the whole main tower is
+eventually bounded away from zero as well. -/
+theorem po3_eventually_norm_bounded_below_of_dominant_packet
+    {mainTower dominantPacket remainder : ℕ → 𝕜}
+    (hsplit : ∀ k, mainTower k = dominantPacket k + remainder k)
+    (hpacket : po3_eventually_norm_bounded_below dominantPacket)
+    (hdom : po3_eventually_dominates_remainder dominantPacket remainder) :
+    po3_eventually_norm_bounded_below mainTower := by
+  rcases hpacket with ⟨ε, hεpos, Kpacket, hpacketBound⟩
+  rcases hdom with ⟨c, hc_nonneg, hc_lt_one, Kdom, hdomBound⟩
+  refine ⟨(1 - c) * ε, by nlinarith, max Kpacket Kdom, ?_⟩
+  intro k hk
+  have hpacketk : ε ≤ ‖dominantPacket k‖ := by
+    exact hpacketBound k (le_trans (le_max_left _ _) hk)
+  have hremk : ‖remainder k‖ ≤ c * ‖dominantPacket k‖ := by
+    exact hdomBound k (le_trans (le_max_right _ _) hk)
+  have hmaink_aux : ‖dominantPacket k‖ - ‖remainder k‖ ≤ ‖mainTower k‖ := by
+    calc
+      ‖dominantPacket k‖ - ‖remainder k‖ ≤ ‖dominantPacket k - (-remainder k)‖ := by
+        simpa using (norm_sub_norm_le (dominantPacket k) (-remainder k))
+      _ = ‖mainTower k‖ := by
+        simp [hsplit k]
+  have hmaink : (1 - c) * ‖dominantPacket k‖ ≤ ‖mainTower k‖ := by
+    nlinarith
+  nlinarith
+
 /-- Named contradiction target for `PO3-square.2d2`:
 the wall identity cannot survive if the signed main tower stays uniformly away
 from zero while the mirror tower decays to zero. -/
@@ -3318,6 +3354,21 @@ def po3_square_signed_dominance_target
     (mainTower mirrorTower : ℕ → 𝕜) : Prop :=
   po3_eventually_norm_bounded_below mainTower ∧
     po3_norm_tends_to_zero mirrorTower
+
+/-- Consumer bridge from a dominant packet decomposition to the already-frozen
+`PO3-square.2d2` contradiction target. -/
+theorem po3_square_signed_dominance_target_of_dominant_packet
+    {mainTower dominantPacket remainder mirrorTower : ℕ → 𝕜}
+    (hsplit : ∀ k, mainTower k = dominantPacket k + remainder k)
+    (hpacket : po3_eventually_norm_bounded_below dominantPacket)
+    (hdom : po3_eventually_dominates_remainder dominantPacket remainder)
+    (hmirror : po3_norm_tends_to_zero mirrorTower) :
+    po3_square_signed_dominance_target mainTower mirrorTower := by
+  constructor
+  · exact
+      po3_eventually_norm_bounded_below_of_dominant_packet
+        hsplit hpacket hdom
+  · exact hmirror
 
 /-- `PO3-square.2d2` exact shell:
 wall equality plus signed rightmost dominance on the main tower and mirror-side

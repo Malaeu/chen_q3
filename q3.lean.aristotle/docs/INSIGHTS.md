@@ -10044,3 +10044,34 @@ Update:
   docs synthesis -> abstract dominance bridge in `HBridge_PO3_Shell.lean` ->
   compile -> then return to the real analytic packet estimate at
   `PO3-square.2d3`.
+
+## Result (2026-04-21) — `PO3-square.2d3` now has the dominant-packet bridge shell
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the new predicate
+  `po3_eventually_dominates_remainder`;
+  this freezes the exact abstract certificate shape we want from the live wall:
+  the remainder is eventually controlled by a strict fraction of a dominant
+  packet;
+- the same file now proves
+  `po3_eventually_norm_bounded_below_of_dominant_packet`,
+  which is the reusable bridge from
+  `main = dominantPacket + remainder`
+  plus eventual packet lower bound
+  plus eventual relative remainder control
+  to an eventual lower bound on the whole signed main tower;
+- it also proves
+  `po3_square_signed_dominance_target_of_dominant_packet`,
+  which sends that bridge directly into the already-frozen
+  `PO3-square.2d2` consumer shell
+  `po3_square_signed_dominance_target`;
+- this is the correct formal compression of the current live wall:
+  the repo no longer needs to rediscover the contradiction packaging each time;
+  the only remaining live burden at `PO3-square.2d3` is the honest analytic
+  certificate on the actual transform-side Gamma packet;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  the next step is no longer shell design.
+  We now need the real top-cluster / signed-rightmost estimate that feeds this
+  new bridge on the actual `A_k` tower.
