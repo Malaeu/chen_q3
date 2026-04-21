@@ -9634,3 +9634,26 @@ Update:
   analytic burden with no ambiguity:
   after `2c0` and `2c1`, the only unresolved work in `2c` is proving this
   factorization packet or proving the quotient uniqueness target directly.
+
+## Result (2026-04-21) — `PO3-square.2c2` now freezes the bundled factorization packet
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the bundled predicate
+  `po3_square_divider_factorization_packet`;
+- the same file proves
+  `po3_square_zero_of_factorization_packet`,
+  which says:
+  once square-tail zero yields an after-division quotient in the
+  same-pole-support simple Cauchy class, the whole canonical-divider route
+  reduces immediately to the already frozen after-division target;
+- this closes the third shell layer inside `2c`:
+  `2c0` = front-factor algebra,
+  `2c1` = consumer target after division,
+  `2c2` = bundled factorization packet feeding that target;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-square.2c2` is now closed.
+  The next live step is genuinely analytic:
+  either prove the bundled factorization packet itself, or bypass it by
+  attacking the quotient uniqueness target directly.

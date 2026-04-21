@@ -326,6 +326,24 @@ analytic / infinite-support стороне.
 либо строить сам analytic factorization shell,
 либо прямо бить quotient uniqueness.
 
+### `PO3-square.2c2`  `[Bundled factorization packet closed]`
+
+Следующий слой тоже уже заморожен:
+
+- введён bundled predicate
+  `po3_square_divider_factorization_packet`;
+- введена bridge-теорема
+  `po3_square_zero_of_factorization_packet`.
+
+Теперь canonical-divider route внутри `2c` имеет уже три закрытых shell-слоя:
+
+- algebra фронт-фактора;
+- consumer-target после деления;
+- bundled packet, который переносит square-tail zero в quotient-class.
+
+Это хороший разрез: всё, что осталось выше, уже не shell-логика, а реальный
+analytic burden.
+
 ## Штурм `2d` — transform transfer
 
 Идея:

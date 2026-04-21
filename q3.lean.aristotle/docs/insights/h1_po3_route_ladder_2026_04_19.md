@@ -198,12 +198,15 @@ Canonical square-lattice entire divider:
   canonical-divider route теперь имеет named after-division target и consumer
   theorem, так что логика “factorization => quotient uniqueness problem” уже
   не висит в воздухе;
+- `PO3-square.2c2` тоже уже закрыт:
+  bundled factorization packet от square-tail zero к quotient-class теперь
+  формализован и сцеплен с `2c1`;
 - значит внутри `2c` больше не осталось algebraic тумана на уровне front
   correction;
 - живой следующий адрес в `2c` теперь уже не про product shell и не про
   consumer shell, а про сам analytic input:
-  canonical factorization / growth control / quotient uniqueness after
-  division.
+  canonical factorization / growth control / proof of the factorization packet
+  or quotient uniqueness after division.
 
 ### `PO3-square.2d`  `[Штурм через перенос в другой transform-side]`
 

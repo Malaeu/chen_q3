@@ -3194,6 +3194,34 @@ theorem po3_square_zero_of_after_division_target
   rw [hfactor x, hquot]
   simp
 
+/-- `PO3-square.2c2` bundled analytic-factorization packet:
+every square-tail-zero receiver admits an after-division quotient in the same
+pole-support simple Cauchy class. This isolates the exact analytic burden left
+inside the canonical divider route. -/
+def po3_square_divider_factorization_packet
+    (TailZero SamePoleSupport SimpleCauchy : (X → β) → Prop) : Prop :=
+  ∀ receiver divider : X → β,
+    TailZero receiver →
+      ∃ quotient : X → β,
+        (∀ x, receiver x = divider x * quotient x) ∧
+        SamePoleSupport quotient ∧
+        SimpleCauchy quotient
+
+/-- Once the bundled factorization packet is available, the canonical divider
+route reduces immediately to the already frozen after-division target. -/
+theorem po3_square_zero_of_factorization_packet
+    (TailZero SamePoleSupport SimpleCauchy : (X → β) → Prop)
+    {receiver divider : X → β}
+    (hzero : TailZero receiver)
+    (hpacket :
+      po3_square_divider_factorization_packet TailZero SamePoleSupport SimpleCauchy)
+    (htarget : po3_square_after_division_target SamePoleSupport SimpleCauchy) :
+    receiver = (0 : X → β) := by
+  obtain ⟨quotient, hfactor, hsame, hcauchy⟩ := hpacket receiver divider hzero
+  exact
+    po3_square_zero_of_after_division_target
+      SamePoleSupport SimpleCauchy hfactor hsame hcauchy htarget
+
 end PO3SquareEntireDividerConsumer
 
 section PO3SquareQuotientCollapse
