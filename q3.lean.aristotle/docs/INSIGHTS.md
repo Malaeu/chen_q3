@@ -9554,3 +9554,32 @@ Update:
   The next live question is no longer the front-factor algebra, but the real
   analytic input that supplies the canonical factorization or the subsequent
   uniqueness step.
+
+## Synthesis (2026-04-21, in progress) — `PO3-square.2c1` should freeze the after-division consumer target, not pretend to prove the analytic factorization
+
+- the local oracle queries all point to the same exact sentence from the March
+  note:
+  once `J_a(r^2)=0` on the square tail, the quotient
+  `U_a = J_a / E_N^{sq}` is again meromorphic with the same pole support
+  `\Lambda_a`, so the unresolved wall is already an after-division uniqueness
+  problem, not the raw square-tail formulation anymore;
+- the short external web search did not reveal an off-the-shelf theorem that
+  directly kills our specific quotient class; it only confirmed the general
+  Cauchy/de Branges background and the classical sine-product source behind the
+  canonical divider;
+- therefore the honest next Lean move is not to formalize the analytic
+  factorization itself, but to freeze the exact consumer theorem-shape it would
+  feed:
+  define the post-division target
+  “every quotient in the same-pole-support simple Cauchy class is zero”,
+  and prove that canonical factorization plus membership in that class imply
+  the original receiver is zero;
+- this is the right `2c1` payload because it isolates the real remaining burden
+  inside `2c`:
+  after `2c0`, the front-factor algebra is done; after `2c1`, the only live
+  work will be the analytic factorization itself or the proof of the quotient
+  uniqueness target;
+- implementation target:
+  add a named after-division target and its consumer theorem to
+  `HBridge_PO3_Shell.lean`, with abstract predicates for
+  “same pole support” and “simple Cauchy class”.
