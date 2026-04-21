@@ -1,5 +1,5 @@
 ---
-status: "active"
+status: "done"
 date: "2026-04-21"
 main_address: "PO3-square.2d2"
 related_addresses: ["D3e4", "D2"]
@@ -7,11 +7,11 @@ ancestor_addresses: ["PO3-square.2d1", "PO3-square.2d", "PO3-square.2", "PO3"]
 child_or_next_addresses: ["PO3-square.2d3"]
 raw_address_notation: "PO3-square.2d1, 2, 3; D3e4; D2"
 normalized_addresses: ["PO3-square.2d1", "PO3-square.2d2", "PO3-square.2d3", "D3e4", "D2", "PO3-square.2d", "PO3-square.2", "PO3", "PO3-square.2c2"]
-address_status: "active"
+address_status: "done"
 blocker: "signed rightmost dominance shell for the transform-side wall"
 collections: ["q3_docs"]
 tags: ["po3-square", "wall", "gamma-tower", "signed-dominance"]
-insight_links: []
+insight_links: ["q3.lean.aristotle/docs/insights/h1_po3_route_ladder_2026_04_19.md"]
 request_nodes: []
 strong_terms: ["signed rightmost dominance", "mirror suppression"]
 empty_terms: ["finite anchor"]

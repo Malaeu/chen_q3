@@ -202,6 +202,11 @@ New live frontier:
       `J_a(r^2)=0` on the square tail;
       so the live first-order consumer is now the even complex-support
       square-tail injectivity wall, not the full generic `PO2` class;
+      inside that wall the absolute-anchor / tightness door is already killed
+      by the same Gamma-ratio drift mechanism as old `D3e4`,
+      so the active live brick is narrower:
+      prove signed rightmost-dominance versus mirror suppression on the
+      transform-side wall `PO3-square.2d1`;
       the auxiliary Lean shell `Q3/Proofs/HBridge_PO3_Shell.lean` is useful,
       but it does not replace that mathematics;
       treat `PO4/PO5` and `H2^f/H3^f/H4^f` as conditional consumers until that

@@ -3005,6 +3005,45 @@ theorem po3_square2d1_target_of_even_square_tail_zero
 
 end PO3SquareTransformTransfer
 
+section PO3SquareSignedDominance
+
+variable {𝕜 : Type*} [NormedField 𝕜]
+
+/-- Eventual norm lower bound on the signed main tower in `PO3-square.2d2`. -/
+def po3_eventually_norm_bounded_below (tower : ℕ → 𝕜) : Prop :=
+  ∃ ε > 0, ∃ K, ∀ k, K ≤ k → ε ≤ ‖tower k‖
+
+/-- Tail decay shell for the mirror tower in `PO3-square.2d2`. -/
+def po3_norm_tends_to_zero (tower : ℕ → 𝕜) : Prop :=
+  ∀ ε > 0, ∃ K, ∀ k, K ≤ k → ‖tower k‖ < ε
+
+/-- Named contradiction target for `PO3-square.2d2`:
+the wall identity cannot survive if the signed main tower stays uniformly away
+from zero while the mirror tower decays to zero. -/
+def po3_square_signed_dominance_target
+    (mainTower mirrorTower : ℕ → 𝕜) : Prop :=
+  po3_eventually_norm_bounded_below mainTower ∧
+    po3_norm_tends_to_zero mirrorTower
+
+/-- `PO3-square.2d2` exact shell:
+wall equality plus signed rightmost dominance on the main tower and mirror-side
+decay is already contradictory. -/
+theorem po3_square_false_of_wall_and_signed_dominance_target
+    {mainTower mirrorTower : ℕ → 𝕜}
+    (hwall : ∀ k, mainTower k = mirrorTower k)
+    (htarget : po3_square_signed_dominance_target mainTower mirrorTower) :
+    False := by
+  rcases htarget with ⟨⟨ε, hεpos, Kmain, hmain⟩, hmirror⟩
+  rcases hmirror ε hεpos with ⟨Kmirror, hmirrorBound⟩
+  let K := max Kmain Kmirror
+  have hmainK : ε ≤ ‖mainTower K‖ := hmain K (le_max_left _ _)
+  have hmirrorK : ‖mirrorTower K‖ < ε := hmirrorBound K (le_max_right _ _)
+  have hmainK' : ε ≤ ‖mirrorTower K‖ := by
+    simpa [hwall K] using hmainK
+  exact not_lt_of_ge hmainK' hmirrorK
+
+end PO3SquareSignedDominance
+
 section PO3SquareNewton
 
 variable {𝕜 : Type*} [Field 𝕜]

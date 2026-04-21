@@ -219,8 +219,37 @@ transform-side, где uniqueness выглядит естественнее, ч�
   square-tail zero переносится в bilateral integer-tail zero у even
   transform-side receiver;
 - `PO3-square.2d1` тоже уже зафиксирован как named shell target;
-- живой адрес внутри `2d` теперь уже не reduction-shell и не notation,
-  а сама infinite-support uniqueness после reduction.
+- `PO3-square.2d2` теперь тоже закрыт как contradiction shell:
+  если signed main tower на transform-side имеет eventual нижнюю границу по
+  норме, а mirror tower уходит в ноль, то wall identity невозможна;
+- это одновременно убивает ложную `absolute-anchor` подветку на critical path:
+  по тому же Gamma-ratio механизму, что уже убил `D3e4`, finite anchor на
+  неограниченной справа поддержке не может быть честным infinite-support
+  двигателем;
+- живой адрес внутри `2d` теперь уже не reduction-shell и не
+  absolute-weight compactness, а один конкретный mathematical brick:
+  `PO3-square.2d3` = доказать signed rightmost dominance для реальной
+  `A_k`-башни и отделить её от mirror-side `B_k`.
+
+### `PO3-square.2d2`  `[Закрыто / shell]`
+
+Абстрактный contradiction shell:
+если `main_k = mirror_k`, но
+`‖main_k‖` имеет eventual positive lower bound, а `‖mirror_k‖ -> 0`,
+то получаем противоречие.
+
+Это не решает стену само по себе, но очень сильно режет следующую цель:
+осталось добыть только two-sided analytic input
+`main lower bound + mirror suppression`.
+
+### `PO3-square.2d3`  `[Главный live brick]`
+
+Signed rightmost-dominance theorem for the actual transform-side Gamma tower.
+
+Нужно показать, что на реальной стороне `A_k(x)` signed main sum не может
+бесконечно долго самоуничтожаться:
+правые support-точки должны eventually давать ненулевую нижнюю границу,
+которую маленькое зеркало `B_k(x)` уже не компенсирует.
 
 ## Приоритет работы
 
@@ -230,6 +259,17 @@ transform-side, где uniqueness выглядит естественнее, ч�
 2. затем `PO3-rig.2`;
 3. после этого переходить к `PO3-tail.1/.2`;
 4. параллельно держать отдельный attack note на `PO3-square.2a-d`.
+
+### Прямой удар по RH-маршруту сейчас
+
+Если идти не по общему dependency-order, а прямым штурмом главной стены,
+то честный порядок теперь такой:
+
+1. `PO3-square.2d3`: signed rightmost dominance для настоящей `A_k`-башни;
+2. mirror-side suppression для `B_k`;
+3. подключить уже закрытый shell `PO3-square.2d2`;
+4. после пробития стены дособрать верхнюю механику
+   `H2^f -> H3^f -> H4^f -> RH`.
 
 ## Короткая версия
 

@@ -9681,3 +9681,29 @@ Update:
   subroute from the critical path and leaves only one real analytic burden:
   prove signed rightmost dominance on the main side for the actual
   transform-side Gamma tower.
+
+## Result (2026-04-21) — `PO3-square.2d2` now freezes the signed-dominance contradiction shell
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now contains the three exact shell
+  predicates
+  `po3_eventually_norm_bounded_below`,
+  `po3_norm_tends_to_zero`,
+  and
+  `po3_square_signed_dominance_target`;
+- the same file proves
+  `po3_square_false_of_wall_and_signed_dominance_target`,
+  which says:
+  if the transform-side wall identity `main_k = mirror_k` holds for every `k`,
+  but the signed main tower stays uniformly away from zero while the mirror
+  tower tends to zero, then one gets an immediate contradiction;
+- this is the right closure for `PO3-square.2d2` because it formalizes the
+  exact direct path and cuts the false absolute-anchor detour out of the
+  critical path;
+- verification passed:
+  `lake env lean Q3/Proofs/HBridge_PO3_Shell.lean`
+  and `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  `PO3-square.2d2` is now closed as a shell packet.
+  The next genuinely mathematical live address is `PO3-square.2d3`:
+  derive the eventual lower bound on the real signed `A_k` tower from
+  rightmost-term dominance, while keeping mirror-side suppression on `B_k`.
