@@ -40,6 +40,37 @@
 ## Tooling / Checks
 
 
+- `PO3-square.2d3` is now narrowed to one exact hard blocker:
+  the lower packaging is honestly frozen in
+  `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  (`po3_gamma_profile`, `po3_gamma_profile_eq_prod`,
+  `po3_gamma_packet`, `po3_gamma_packet_eq_sum_prod`,
+  `PO3SquareTransformPacketCertificate`), and the formula homes are already
+  localized (`Y_a = {x_γ, x_γ - 1}` in
+  `docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md`,
+  `A_k/B_k` route language in
+  `docs/insights/h1_po3_route_ladder_2026_04_19.md`);
+  but the repo still does **not** contain the next real theorem-shape actually
+  needed by the wall: an exact extraction of the actual transform-side `A_k`
+  tower into `dominantPacket + remainder` in the frozen finite-packet language.
+- this is a real mathematical blocker, not more Lean plumbing:
+  the old `PO2` note only gives generic receiver identities of the form
+  `R(z₀)u_k(z₀)=∑ e(y)/(y-z₀) u_k(y)` and
+  `u_k(z₀)=∑ c_y u_k(y)`, which is still weaker than one honest theorem
+  rewriting the real `A_k` tower as a finite top-cluster packet plus
+  remainder.
+- oracle sweep on `q3_docs` plus external search did not reveal a standard
+  off-the-shelf theorem closing this translation for us; so the active mainline
+  burden is now exactly this formula bridge, not another shell refinement.
+- fast detect rule: if a note/proof candidate does not produce an exact
+  theorem-shape feeding `PO3SquareTransformPacketCertificate` on the real
+  `A_k` side, it is not the mainline step.
+- if this bridge cannot be derived from the real formulas pinned in the repo,
+  the signed-rightmost `PO3-square.2d3` route must be written up as an
+  incompatibility in `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` rather than hidden
+  under more packet scaffolding.
+
+
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
 - check_axioms падает на A3_FLOOR: нужен предварительный build → `docs/insights/check_axioms_prebuild_a3_floor_2026_01_16.md`.
 - FloorCert grid min: `floor_grid_val_ge_min_lb` closed via `native_decide`;

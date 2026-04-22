@@ -312,6 +312,11 @@ Status note:
   one named data packet for the actual support/tower notation
   (`Y_a`, `x_γ`, `A_k`, `B_k`) plus one wrapper certificate that sends that
   packet directly into the frozen dominant-packet feeder;
+- the remaining hard blocker is now exact:
+  the repo still lacks one theorem-shape that rewrites the actual
+  transform-side `A_k` tower itself as
+  `dominantPacket + remainder` in the frozen `po3_gamma_packet` language, so
+  more shell packaging is off-mainline until that bridge is real;
 - once a real transform-side packet of this shape is available, the remaining
   live burden is purely the analytic certificate on the actual `A_k/B_k`
   tower, now best attacked through the reciprocal-product finite-packet avatar
