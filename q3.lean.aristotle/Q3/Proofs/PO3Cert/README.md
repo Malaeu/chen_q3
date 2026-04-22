@@ -273,9 +273,14 @@ Purpose:
   certify one dominant packet, one controlled remainder, and mirror decay.
 
 Exports:
+- `po3_gamma_profile`
+- `PO3SquareTransformSideData`
 - `PO3SquareDominantPacketCertificate`
+- `PO3SquareTransformPacketCertificate`
 - `po3_square_signed_dominance_target_of_certificate`
 - `po3_square_false_of_wall_and_certificate`
+- `po3_square_signed_dominance_target_of_transform_packet_certificate`
+- `po3_square_false_of_transform_wall_and_packet_certificate`
 
 Status note:
 - this file does not prove signed rightmost dominance for the actual
@@ -283,6 +288,11 @@ Status note:
 - it only compresses the already-closed shell bridge
   `dominant packet + controlled remainder + mirror decay -> PO3-square.2d2 target`
   into one honest `PO3Cert` consumer;
+- it now also contains the first honest Lean-facing transform-side landing
+  surface:
+  one named data packet for the actual support/tower notation
+  (`Y_a`, `x_γ`, `A_k`, `B_k`) plus one wrapper certificate that sends that
+  packet directly into the frozen dominant-packet feeder;
 - once a real transform-side packet of this shape is available, the remaining
   live burden is purely the analytic certificate on the actual `A_k/B_k` tower.
 

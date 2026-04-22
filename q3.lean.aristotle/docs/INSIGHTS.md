@@ -10150,3 +10150,45 @@ Update:
   the next task is to specialize that feeder with explicit transform-side
   packet data naming the real `A_k`, `B_k`, and `Y_a` objects, without
   reopening the already-closed `PO3-square.2d2` shell.
+
+## Result (2026-04-22) — `PO3-square.2d3.packet-cert-real` now has an honest transform-side landing surface
+
+- the required pre-implementation search did not uncover any hidden theorem
+  packet beyond what was already frozen in the repo:
+  the old `PO2` note still carries the exact one-sided support geometry
+  `Y_a = {x_γ, x_γ - 1}`,
+  the old direct-receiver notes still carry the Gamma-profile ancestor
+  `u_k(x) = (-1)^k Γ(N+1-x) / Γ(k+N+1-x)`,
+  and the `PO3` route ladder still carries the live wall language
+  “signed `A_k` tower versus mirror `B_k` tower”;
+- the external sanity-check remained supportive only:
+  DLMF §5.11 confirms the Gamma-ratio drift
+  `Γ(z+a)/Γ(z+b) ~ z^(a-b)`,
+  but it does not provide the Q3 signed rightmost theorem;
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now contains the first honest Lean-facing transform-side landing surface for
+  the live wall:
+  `po3_gamma_profile`,
+  `PO3SquareTransformSideData`,
+  and
+  `PO3SquareTransformPacketCertificate`;
+- this is exactly the missing narrowing step:
+  the repo now names the real support/tower objects (`Y_a`, `x_γ`, `A_k`,
+  `B_k`) inside the existing dominant-packet feeder instead of only referring
+  to them in notes;
+- the two new consumer theorems
+  `po3_square_signed_dominance_target_of_transform_packet_certificate`
+  and
+  `po3_square_false_of_transform_wall_and_packet_certificate`
+  show that once a real transform-side packet estimate is proved, it plugs
+  directly into the already-frozen `PO3-square.2d2` shell with no further
+  certificate redesign;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  and
+  `lake build Q3.Proofs.PO3Cert`;
+- coordination verdict:
+  certificate plumbing is no longer the live burden.
+  The active blocker is now purely mathematical again:
+  prove or kill the real signed rightmost / top-cluster estimate on the actual
+  `A_k` tower against mirror suppression on `B_k`.

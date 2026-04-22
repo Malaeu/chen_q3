@@ -11,9 +11,9 @@ kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: transform-side Gamma tower certificate landing surface
+current_step_title: transform-side Gamma tower dominant-packet estimate
 current_owner: local-agent
-current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
+current_artifact: docs/insights/h1_po3_route_ladder_2026_04_19.md
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
 worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/node.md
 worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/report.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: the formula/data localization pass is now frozen: the support geometry `Y_a = {x_γ, x_γ - 1}` is pinned to the old `PO2` note, the live route language `A_k` versus `B_k` is pinned to the `PO3` ladder, and the Gamma-profile ancestor `u_k(x) = (-1)^k Γ(N+1-x) / Γ(k+N+1-x)` is pinned in `docs/INSIGHTS.md`; the next real attack is therefore to add the first honest Lean-facing transform-side landing surface inside `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`, so the future theorem attempt is the actual packet estimate rather than another formula hunt
-next_verify: rg -n -F "PO3-square.2d3.packet-cert-real" IMPLEMENTATION_PLAN.md && rg -n -F "PO3SquareDominantPacketCertificate" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n "A_k|B_k|Y_a|u_k\\(x\\)|Gamma-profile" q3.lean.aristotle/docs/INSIGHTS.md
+next_deliverable: the transform-side landing surface is now frozen in Lean: `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean` names `po3_gamma_profile`, `PO3SquareTransformSideData`, and `PO3SquareTransformPacketCertificate`, so the next real attack is no longer certificate plumbing but the actual signed top-cluster / rightmost estimate on the real `A_k` tower against mirror suppression on `B_k`
+next_verify: rg -n -F "PO3-square.2d3.packet-estimate" IMPLEMENTATION_PLAN.md && rg -n -F "PO3SquareTransformPacketCertificate" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n "dominant packet|rightmost|mirror suppression|A_k|B_k" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_route_ladder_2026_04_19.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — transform-side Gamma tower certificate landing surface
+### `PO3-square.2d3` — transform-side Gamma tower dominant-packet estimate
 
 Goal:
 
@@ -76,31 +76,36 @@ Goal:
   and the new `PO3Cert` feeder
   `PO3SquareDominantPacketCertificate`
   as fixed interfaces, not as new mathematical work;
-- treat the formula-localization pass as closed:
+- treat the formula-localization pass and the transform-side landing surface as
+  closed:
   `Y_a = {x_γ, x_γ - 1}` is already pinned to the old `PO2` note,
   the live `A_k/B_k` route language is already pinned to the `PO3` ladder,
   and the Gamma-profile ancestor
   `u_k(x) = (-1)^k Γ(N+1-x) / Γ(k+N+1-x)` is already pinned in
-  `docs/INSIGHTS.md`;
-- make the next code step honest:
-  freeze the first Lean-facing transform-side packet landing surface that names
-  the real `A_k`, `B_k`, and `Y_a` data expected by the future dominant-packet
-  estimate, without reopening shell design.
+  `docs/INSIGHTS.md`,
+  while the Lean packet
+  `PO3SquareTransformPacketCertificate`
+  already names the real `A_k`, `B_k`, and `Y_a` data expected by the future
+  proof;
+- attack the only live burden directly:
+  derive one honest eventual lower bound for the signed main `A_k` tower from
+  a real top-cluster / rightmost dominance mechanism strong enough to beat the
+  suppressed mirror `B_k` side.
 
 Required output:
 
-- one explicit Lean landing surface for the future real packet estimate that
-  points to the actual transform-side objects (`A_k`, `B_k`, `Y_a`);
-- one exact pointer from that landing surface back to the now-frozen note-level
-  formula homes;
+- one real analytic packet estimate or one explicitly isolated obstruction for
+  that estimate;
+- one exact pointer from that estimate back into the already-frozen transform-
+  side landing surface `PO3SquareTransformPacketCertificate`;
 - one route-kill criterion if the actual tower admits genuine infinite-support
   signed self-cancellation that defeats rightmost dominance.
 
 Exact success criterion:
 
-- the next theorem attempt is no longer formula hunting or shell refactoring,
-  but one honest real packet estimate feeding the now-named transform-side
-  certificate landing surface.
+- the next theorem attempt is one honest real packet estimate feeding the
+  transform-side certificate landing surface, or one explicit obstruction that
+  kills this route shape.
 
 Exact failure criterion:
 
