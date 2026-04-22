@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: the transform-side landing surface, exact Gamma-to-product bridge, and finite packet avatar are now frozen in Lean: `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean` names `po3_gamma_profile`, `po3_gamma_profile_eq_prod`, `po3_gamma_packet`, and `po3_gamma_packet_eq_sum_prod`, so the next real attack is narrower and harder: derive one exact theorem-shape rewriting the actual `A_k` tower into `dominantPacket + remainder` in that language, or write the incompatibility explicitly if the real formula is still too implicit
-next_verify: rg -n -F "PO3-square.2d3.actual-Ak-split" IMPLEMENTATION_PLAN.md && rg -n -F "po3_gamma_packet_eq_sum_prod" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n -e "actual A_k split" -e "hard blocker" -e "po3_gamma_packet" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/Q3/Proofs/PO3Cert/README.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the transform-side landing surface, exact Gamma-to-product bridge, and finite packet avatar are now frozen in Lean: `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean` names `po3_gamma_profile`, `po3_gamma_profile_eq_prod`, `po3_gamma_packet`, and `po3_gamma_packet_eq_sum_prod`, so the next real attack is now sharpened one step further: derive the honest local normal form of the actual reciprocal-product tower, with local log-slope `Λ_k(ξ)=∑_{j=1}^{k+1}(ξ-(N+j))^{-1}` and packet scale `1/|Λ_k(ξ)|`, and only then decide whether the naive `1/log k` exponential-window simplification is valid
+next_verify: rg -n -F "PO3-square.2d3.actual-Ak-split" IMPLEMENTATION_PLAN.md && rg -n -F "po3_gamma_packet_eq_sum_prod" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n -e "local log-slope" -e "1/|Λ_k(ξ)|" -e "hard blocker" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -91,16 +91,24 @@ Goal:
   the current hard blocker is that the repo still lacks one exact theorem-shape
   rewriting the actual transform-side `A_k` tower into
   `dominantPacket + remainder` in the frozen `po3_gamma_packet` language;
+- the first honest simplification of that blocker is now also clear:
+  the naive phrase “`1/log k`-scale local exponential rigidity” is only a
+  heuristic shortcut; the exact local model must come from the reciprocal-
+  product avatar itself, whose log-slope at a moving top point `ξ` is
+  `Λ_k(ξ)=∑_{j=1}^{k+1}(ξ-(N+j))^{-1}` (equivalently a digamma-difference),
+  so the natural window width is `1/|Λ_k(ξ)|`, not automatically `1/log k`;
 - attack the only live burden directly:
-  either derive that exact `A_k` split from the real transform-side formulas or
-  record the incompatibility explicitly instead of hiding it under more shell.
+  either derive that exact local normal form and feed it into an honest
+  `A_k = dominantPacket + remainder` split, or record the incompatibility
+  explicitly instead of hiding it under more shell.
 
 Required output:
 
 - one exact theorem-shape feeding
-  `PO3SquareTransformPacketCertificate` on the real `A_k` side, or one
+  `PO3SquareTransformPacketCertificate` on the real `A_k` side, beginning with
+  the local log-slope normal form of the reciprocal-product tower, or one
   explicitly isolated obstruction saying that the current repo formulas do not
-  yet provide such a split;
+  yet provide such a simplification;
 - one exact pointer from that theorem-shape or obstruction back into the
   already-frozen transform-side landing surface
   `PO3SquareTransformPacketCertificate`;

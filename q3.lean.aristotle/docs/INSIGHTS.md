@@ -69,6 +69,30 @@
   the signed-rightmost `PO3-square.2d3` route must be written up as an
   incompatibility in `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` rather than hidden
   under more packet scaffolding.
+- the first “simpler route” toward that bridge is now sharpened but corrected:
+  the exact product avatar
+  `A_k(x)=(-1)^{k+1}\prod_{j=1}^{k+1}(x-(N+j))^{-1}`
+  shows that the local behavior near a moving top point `ξ` is controlled by
+  the reciprocal-product log-slope
+  `Λ_k(ξ):=\sum_{j=1}^{k+1}(ξ-(N+j))^{-1}`
+  (equivalently a digamma-difference), not by a blindly assumed universal
+  `1/log k` law.
+- concretely, for a small local shift `δ`, the exact product form gives the
+  heuristic expansion
+  `log(A_k(ξ-δ)/A_k(ξ)) ≈ -δ Λ_k(ξ)`,
+  so the natural top-window width is
+  `1/|Λ_k(ξ)|`;
+  only in the regular regime `|Λ_k(ξ)| ≍ log k` does the wall reduce to the
+  naive slogan “`1/log k`-scale local exponential rigidity”.
+- this is a useful simplification, not a detour:
+  it says the next honest theorem is not yet “prove an `e^{-t}` packet”, but
+  first “prove that near-maximizers of the actual `A_k` tower live in a regime
+  where the reciprocal-product slope is logarithmic and the tower really
+  collapses to a local exponential packet”.
+- if that logarithmic-slope regime fails for the real near-maximizers, then
+  the pretty `1/log k` simplification is itself a false door and the failure
+  should be recorded explicitly as a route obstruction, rather than promoted to
+  a theorem target.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
