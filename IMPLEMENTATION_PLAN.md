@@ -1,6 +1,6 @@
 # Implementation Plan
 
-Updated: 2026-04-21
+Updated: 2026-04-22
 
 ## Queue Rules
 
@@ -12,7 +12,7 @@ Updated: 2026-04-21
 
 ## ACTIVE
 
-`PO3-square.2d3.packet-estimate | gate=H-bridge | target=Attack the real analytic wall directly: prove or honestly isolate the signed top-cluster / rightmost lower bound on the actual `A_k` tower against mirror suppression on `B_k`, now that the transform-side packet landing surface is frozen in Lean and no further certificate plumbing remains | files=q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean; q3.lean.aristotle/docs/INSIGHTS.md; q3.lean.aristotle/docs/insights/h1_po3_route_ladder_2026_04_19.md; q3.lean.aristotle/PROJECT_ORCHESTRATOR.md; q3.lean.aristotle/docs/PO3_MAINLINE_ROADMAP.md | verify=rg -n -F "PO3SquareTransformPacketCertificate" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n "dominant packet|rightmost|mirror suppression|A_k|B_k" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_route_ladder_2026_04_19.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert | done_when=the repo contains either one honest real packet estimate that feeds `PO3SquareTransformPacketCertificate` / `PO3SquareDominantPacketCertificate` or one explicit obstruction that kills this route shape | if_fail_then=write the exact obstruction in `docs/INSIGHTS.md` and, if necessary, in `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md``
+`PO3-square.2d3.product-packet | gate=H-bridge | target=Exploit the now-closed exact Gamma-to-product bridge for `po3_gamma_profile` and formulate the first honest dominant-packet / top-cluster estimate in reciprocal-product coordinates on the real `A_k` tower against mirror suppression on `B_k` | files=q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean; q3.lean.aristotle/Q3/Proofs/PO3Cert/README.md; q3.lean.aristotle/docs/INSIGHTS.md; q3.lean.aristotle/docs/insights/h1_po3_route_ladder_2026_04_19.md | verify=rg -n -F "po3_gamma_profile_eq_prod" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n "product-avatar|non-pole|dominant packet|top-cluster" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/Q3/Proofs/PO3Cert/README.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert | done_when=the repo contains either one honest product-avatar dominant-packet theorem-shape feeding `PO3SquareTransformPacketCertificate` or one explicit obstruction showing that the reciprocal-product avatar still admits the live signed self-cancellation wall | if_fail_then=write the exact obstruction in `docs/INSIGHTS.md` and, if necessary, in `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md``
 
 ## QUEUED
 

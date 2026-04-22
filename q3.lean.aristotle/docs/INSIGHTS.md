@@ -10192,3 +10192,39 @@ Update:
   The active blocker is now purely mathematical again:
   prove or kill the real signed rightmost / top-cluster estimate on the actual
   `A_k` tower against mirror suppression on `B_k`.
+
+## Result (2026-04-22) — `PO3-square.2d3.product-avatar` now has an exact Gamma-to-product bridge
+
+- the required pre-implementation search again found no hidden internal packet
+  that already formalizes the transform-side product avatar:
+  the old `PO2` and `PO3` notes still carry the right formulas, but the Lean
+  repo did not yet contain the exact bridge theorem;
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports the exact bridge theorems
+  `po3_gamma_profile_zero`,
+  `po3_gamma_profile_succ`,
+  and
+  `po3_gamma_profile_eq_prod`,
+  so the common ancestor
+  `po3_gamma_profile N x k = (-1)^k Γ(N+1-x) / Γ(k+N+1-x)`
+  can be used equally as a Gamma quotient or as the reciprocal finite product
+  `∏_{j < k} (x - (N+j+1))⁻¹`;
+- important domain correction:
+  the exact bridge is **not** globally true without hypotheses.
+  In mathlib the reciprocal-Gamma normalization really matters:
+  at pole locations one gets `Γ(base) = 0`, so the naive base case
+  `po3_gamma_profile N x 0 = 1` fails by `0 / 0 = 0`.
+  The honest theorem shape therefore needs the non-pole hypothesis
+  `∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m`;
+- this is a real route improvement, not cosmetic cleanup:
+  the live `PO3-square.2d3` wall can now be attacked in reciprocal-product
+  coordinates, which is much closer to finite packet / top-cluster dominance
+  than the raw Gamma quotient presentation;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  and
+  `lake build Q3.Proofs.PO3Cert`;
+- next live step:
+  formulate the first honest dominant-packet / top-cluster estimate in this
+  reciprocal-product avatar, or isolate the first exact signed-cancellation
+  obstruction there.

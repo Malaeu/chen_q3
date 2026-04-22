@@ -43,6 +43,78 @@ def po3_gamma_profile (N : ℕ) (x : ℂ) (k : ℕ) : ℂ :=
   ((-1 : ℂ) ^ k) * Complex.Gamma ((N + 1 : ℂ) - x) /
     Complex.Gamma ((k + N + 1 : ℂ) - x)
 
+theorem po3_gamma_profile_zero (N : ℕ) (x : ℂ)
+    (hbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m) :
+    po3_gamma_profile N x 0 = 1 := by
+  have hΓ : Complex.Gamma ((N + 1 : ℂ) - x) ≠ 0 := Complex.Gamma_ne_zero hbase
+  simp [po3_gamma_profile, hΓ]
+
+/-- Exact one-step recurrence for the transform-side Gamma profile.
+
+This is the clean algebraic bridge from the Gamma-quotient presentation to the
+packet/product presentation used in the old `PO2` direct-receiver notes. -/
+theorem po3_gamma_profile_succ (N : ℕ) (x : ℂ) (k : ℕ)
+    (hbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m) :
+    po3_gamma_profile N x (k + 1) =
+      (x - (N + k + 1 : ℕ) : ℂ)⁻¹ * po3_gamma_profile N x k := by
+  let z : ℂ := (N + k + 1 : ℂ) - x
+  have hshift : ∀ m : ℕ, z ≠ -m := by
+    intro m hm
+    apply hbase (m + k)
+    have hm' : z - (k : ℂ) = (-m : ℂ) - k := by
+      simpa using congrArg (fun t : ℂ => t - k) hm
+    dsimp [z] at hm' ⊢
+    ring_nf at hm' ⊢
+    norm_num at hm' ⊢
+    exact hm'
+  have hz0 : z ≠ 0 := by
+    intro hz
+    exact hshift 0 (by simpa using hz)
+  have hGamma :
+      (Complex.Gamma z)⁻¹ = z * (Complex.Gamma (z + 1))⁻¹ :=
+    Complex.one_div_Gamma_eq_self_mul_one_div_Gamma_add_one z
+  have hstep : (Complex.Gamma (z + 1))⁻¹ = z⁻¹ * (Complex.Gamma z)⁻¹ := by
+    have htmp := congrArg (fun t : ℂ => z⁻¹ * t) hGamma
+    simp [hz0] at htmp
+    exact htmp.symm
+  have hzneg : z⁻¹ = -((x - (N + k + 1 : ℕ) : ℂ)⁻¹) := by
+    have hzrepr : z = -(x - (N + k + 1 : ℕ) : ℂ) := by
+      dsimp [z]
+      simp [sub_eq_add_neg, add_assoc, add_left_comm, add_comm]
+    rw [hzrepr, inv_neg]
+  unfold po3_gamma_profile
+  rw [div_eq_mul_inv, div_eq_mul_inv]
+  have hden1 : Complex.Gamma (((k + 1 : ℕ) : ℂ) + ↑N + 1 - x) = Complex.Gamma (z + 1) := by
+    congr 1
+    dsimp [z]
+    norm_num
+    ring
+  have hden0 : Complex.Gamma ((↑k : ℂ) + ↑N + 1 - x) = Complex.Gamma z := by
+    congr 1
+    dsimp [z]
+    ring
+  rw [hden1, hden0, hstep, hzneg]
+  simp [pow_succ, mul_assoc, mul_left_comm, mul_comm]
+
+/-- Exact finite-product form of the transform-side Gamma profile.
+
+This is the real Lean bridge from the Gamma quotient
+`(-1)^k Γ(N+1-x) / Γ(k+N+1-x)` to the packet form
+`1 / ∏_{j=1}^k (x - (N+j))`
+used in the old `PO2` notes. -/
+theorem po3_gamma_profile_eq_prod (N : ℕ) (x : ℂ)
+    (hbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m) :
+    ∀ k,
+      po3_gamma_profile N x k =
+        Finset.prod (Finset.range k) (fun j => (x - (N + j + 1 : ℕ) : ℂ)⁻¹) := by
+  intro k
+  induction k with
+  | zero =>
+      simpa using po3_gamma_profile_zero N x hbase
+  | succ k ih =>
+      rw [po3_gamma_profile_succ N x k hbase, ih, Finset.prod_range_succ]
+      simp [mul_comm]
+
 /-- Named transform-side data packet for the live `PO3-square.2d3` wall.
 
 This is the first honest Lean-facing landing surface for the real formula map

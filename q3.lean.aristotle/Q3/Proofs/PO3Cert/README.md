@@ -274,6 +274,9 @@ Purpose:
 
 Exports:
 - `po3_gamma_profile`
+- `po3_gamma_profile_zero`
+- `po3_gamma_profile_succ`
+- `po3_gamma_profile_eq_prod`
 - `PO3SquareTransformSideData`
 - `PO3SquareDominantPacketCertificate`
 - `PO3SquareTransformPacketCertificate`
@@ -288,13 +291,22 @@ Status note:
 - it only compresses the already-closed shell bridge
   `dominant packet + controlled remainder + mirror decay -> PO3-square.2d2 target`
   into one honest `PO3Cert` consumer;
+- it also now freezes the exact algebraic bridge from the old Gamma quotient
+  avatar
+  `(-1)^k Γ(N+1-x) / Γ(k+N+1-x)`
+  to the reciprocal finite-product avatar
+  `∏_{j < k} (x - (N+j+1))⁻¹`,
+  under the honest non-pole hypothesis
+  `∀ m, (N+1-x) ≠ -m`;
 - it now also contains the first honest Lean-facing transform-side landing
   surface:
   one named data packet for the actual support/tower notation
   (`Y_a`, `x_γ`, `A_k`, `B_k`) plus one wrapper certificate that sends that
   packet directly into the frozen dominant-packet feeder;
 - once a real transform-side packet of this shape is available, the remaining
-  live burden is purely the analytic certificate on the actual `A_k/B_k` tower.
+  live burden is purely the analytic certificate on the actual `A_k/B_k`
+  tower, now best attacked through the reciprocal-product avatar rather than
+  through raw Gamma quotients.
 
 Status note:
 - the whole first-zeta `a = 1` witness stack is now packaged as one reusable

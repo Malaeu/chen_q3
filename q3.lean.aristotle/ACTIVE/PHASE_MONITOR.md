@@ -5,15 +5,15 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / transform-side Gamma tower dominant-packet attack
+macro_position: PO3-square.2d3 live wall / transform-side Gamma tower product-avatar dominant-packet attack
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: transform-side Gamma tower dominant-packet estimate
+current_step_title: transform-side Gamma tower product-avatar packet extraction
 current_owner: local-agent
-current_artifact: docs/insights/h1_po3_route_ladder_2026_04_19.md
+current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
 worker_request: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/node.md
 worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_h1_po3_cross_sign_boundary_2026_03_16/report.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: the transform-side landing surface is now frozen in Lean: `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean` names `po3_gamma_profile`, `PO3SquareTransformSideData`, and `PO3SquareTransformPacketCertificate`, so the next real attack is no longer certificate plumbing but the actual signed top-cluster / rightmost estimate on the real `A_k` tower against mirror suppression on `B_k`
-next_verify: rg -n -F "PO3-square.2d3.packet-estimate" IMPLEMENTATION_PLAN.md && rg -n -F "PO3SquareTransformPacketCertificate" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n "dominant packet|rightmost|mirror suppression|A_k|B_k" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_route_ladder_2026_04_19.md
+next_deliverable: the transform-side landing surface and its exact Gamma-to-product bridge are now frozen in Lean: `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean` names `po3_gamma_profile`, `PO3SquareTransformSideData`, `PO3SquareTransformPacketCertificate`, and the exact theorems `po3_gamma_profile_zero/succ/eq_prod`, so the next real attack is the first honest dominant-packet / top-cluster estimate in reciprocal-product coordinates on the real `A_k` tower against mirror suppression on `B_k`
+next_verify: rg -n -F "PO3-square.2d3.product-packet" IMPLEMENTATION_PLAN.md && rg -n -F "po3_gamma_profile_eq_prod" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n "product-avatar|non-pole|dominant packet|top-cluster" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/Q3/Proofs/PO3Cert/README.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
