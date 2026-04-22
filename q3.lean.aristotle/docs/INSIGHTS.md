@@ -10228,3 +10228,35 @@ Update:
   formulate the first honest dominant-packet / top-cluster estimate in this
   reciprocal-product avatar, or isolate the first exact signed-cancellation
   obstruction there.
+
+## Result (2026-04-22) — `PO3-square.2d3.finite-packet-avatar` is now frozen in Lean
+
+- the next narrow oracle pass stayed honest: it did **not** uncover a hidden
+  theorem already extracting the actual `A_k` tower into a finite dominant
+  packet; the strongest internal signal remained the same route-ladder claim
+  that `PO3-square.2d3` is the one live wall, now to be attacked through a
+  top-cluster on the transform-side Gamma tower;
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now contains the finite packet avatar directly on top of the previously
+  closed Gamma/product bridge:
+  `po3_gamma_profile_factor_ne_zero`,
+  `po3_gamma_profile_mul_prod_eq_one`,
+  `po3_gamma_packet`,
+  and
+  `po3_gamma_packet_eq_sum_prod`;
+- this is the exact Lean landing surface we were still missing for a future
+  dominant-packet theorem:
+  a finite top cluster can now be named as a weighted packet of Gamma profiles
+  and rewritten exactly as a finite sum of reciprocal finite products;
+- that means the current live burden has narrowed again.
+  The blocker is no longer “how to talk to Gamma quotients in Lean” and not
+  even “how to express a finite packet in product coordinates”.
+  The blocker is now the first honest **real packet split** for the actual
+  transform-side tower:
+  extract `A_k = dominantPacket + remainder` in this finite-packet language,
+  or write down the exact obstruction showing that the current notes still do
+  not determine such a split rigorously enough;
+- verification passed:
+  `lake env lean Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  and
+  `lake build Q3.Proofs.PO3Cert`.

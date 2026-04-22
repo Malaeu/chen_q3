@@ -23,6 +23,7 @@ Once that data is available, the shell already returns the named
 namespace Q3.Proofs.PO3Cert
 
 open Q3.HBridge
+open scoped BigOperators
 
 noncomputable section
 
@@ -114,6 +115,60 @@ theorem po3_gamma_profile_eq_prod (N : ℕ) (x : ℂ)
   | succ k ih =>
       rw [po3_gamma_profile_succ N x k hbase, ih, Finset.prod_range_succ]
       simp [mul_comm]
+
+theorem po3_gamma_profile_factor_ne_zero (N : ℕ) (x : ℂ) (j : ℕ)
+    (hbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m) :
+    (x - (N + j + 1 : ℕ) : ℂ) ≠ 0 := by
+  intro hx
+  apply hbase j
+  have hx' : x = (N + j + 1 : ℕ) := sub_eq_zero.mp hx
+  rw [hx']
+  norm_num
+
+/-- The reciprocal-product avatar is exact: after multiplying by the matching
+finite denominator packet, one gets `1`. -/
+theorem po3_gamma_profile_mul_prod_eq_one (N : ℕ) (x : ℂ)
+    (hbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m) (k : ℕ) :
+    po3_gamma_profile N x k *
+        Finset.prod (Finset.range k) (fun j => (x - (N + j + 1 : ℕ) : ℂ)) = 1 := by
+  rw [po3_gamma_profile_eq_prod N x hbase k]
+  calc
+    (Finset.prod (Finset.range k) (fun j => (x - (N + j + 1 : ℕ) : ℂ)⁻¹)) *
+        Finset.prod (Finset.range k) (fun j => (x - (N + j + 1 : ℕ) : ℂ))
+        =
+        Finset.prod (Finset.range k)
+          (fun j => ((x - (N + j + 1 : ℕ) : ℂ)⁻¹ * (x - (N + j + 1 : ℕ) : ℂ))) := by
+            symm
+            exact Finset.prod_mul_distrib
+    _ = Finset.prod (Finset.range k) (fun _ => (1 : ℂ)) := by
+          refine Finset.prod_congr rfl ?_
+          intro j hj
+          exact inv_mul_cancel₀ (po3_gamma_profile_factor_ne_zero N x j hbase)
+    _ = 1 := by simp
+
+/-- Finite packet extracted from the transform-side Gamma profile ancestor. -/
+def po3_gamma_packet {ι : Type*} (N : ℕ) (packet : Finset ι) (coeff : ι → ℂ)
+    (support : ι → ℂ) (k : ℕ) : ℂ :=
+  ∑ i ∈ packet, coeff i * po3_gamma_profile N (support i) k
+
+/-- Exact rewrite of a finite Gamma packet into the reciprocal-product avatar.
+
+This is the first honest Lean landing surface for a future top-cluster /
+dominant-packet estimate: finite packets of the real transform-side tower can
+now be stated directly as finite sums of reciprocal products. -/
+theorem po3_gamma_packet_eq_sum_prod {ι : Type*} (N : ℕ) (packet : Finset ι)
+    (coeff : ι → ℂ) (support : ι → ℂ)
+    (hbase : ∀ i ∈ packet, ∀ m : ℕ, ((N + 1 : ℂ) - support i) ≠ -m) :
+    ∀ k,
+      po3_gamma_packet N packet coeff support k =
+        ∑ i ∈ packet,
+          coeff i * Finset.prod (Finset.range k)
+            (fun j => (support i - (N + j + 1 : ℕ) : ℂ)⁻¹) := by
+  intro k
+  unfold po3_gamma_packet
+  refine Finset.sum_congr rfl ?_
+  intro i hi
+  rw [po3_gamma_profile_eq_prod N (support i) (hbase i hi) k]
 
 /-- Named transform-side data packet for the live `PO3-square.2d3` wall.
 

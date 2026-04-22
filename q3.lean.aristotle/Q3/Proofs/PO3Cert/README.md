@@ -277,6 +277,10 @@ Exports:
 - `po3_gamma_profile_zero`
 - `po3_gamma_profile_succ`
 - `po3_gamma_profile_eq_prod`
+- `po3_gamma_profile_factor_ne_zero`
+- `po3_gamma_profile_mul_prod_eq_one`
+- `po3_gamma_packet`
+- `po3_gamma_packet_eq_sum_prod`
 - `PO3SquareTransformSideData`
 - `PO3SquareDominantPacketCertificate`
 - `PO3SquareTransformPacketCertificate`
@@ -298,6 +302,11 @@ Status note:
   `∏_{j < k} (x - (N+j+1))⁻¹`,
   under the honest non-pole hypothesis
   `∀ m, (N+1-x) ≠ -m`;
+- it also now names the finite packet avatar needed for any future
+  top-cluster attack:
+  `po3_gamma_packet` is a finite weighted packet of Gamma profiles and
+  `po3_gamma_packet_eq_sum_prod` rewrites it exactly as a finite sum of
+  reciprocal finite products;
 - it now also contains the first honest Lean-facing transform-side landing
   surface:
   one named data packet for the actual support/tower notation
@@ -305,8 +314,8 @@ Status note:
   packet directly into the frozen dominant-packet feeder;
 - once a real transform-side packet of this shape is available, the remaining
   live burden is purely the analytic certificate on the actual `A_k/B_k`
-  tower, now best attacked through the reciprocal-product avatar rather than
-  through raw Gamma quotients.
+  tower, now best attacked through the reciprocal-product finite-packet avatar
+  rather than through raw Gamma quotients.
 
 Status note:
 - the whole first-zeta `a = 1` witness stack is now packaged as one reusable
