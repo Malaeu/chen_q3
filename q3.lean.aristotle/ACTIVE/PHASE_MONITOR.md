@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / actual transform-side A_k packet-split blocker
+macro_position: PO3-square.2d3 live wall / reciprocal-product slope trichotomy
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: actual transform-side A_k packet split
+current_step_title: reciprocal-product slope trichotomy
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: the transform-side landing surface, exact Gamma-to-product bridge, and finite packet avatar are now frozen in Lean: `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean` names `po3_gamma_profile`, `po3_gamma_profile_eq_prod`, `po3_gamma_packet`, and `po3_gamma_packet_eq_sum_prod`, so the next real attack is now sharpened one step further: derive the honest local normal form of the actual reciprocal-product tower, with local log-slope `Λ_k(ξ)=∑_{j=1}^{k+1}(ξ-(N+j))^{-1}` and packet scale `1/|Λ_k(ξ)|`, and only then decide whether the naive `1/log k` exponential-window simplification is valid
-next_verify: rg -n -F "PO3-square.2d3.actual-Ak-split" IMPLEMENTATION_PLAN.md && rg -n -F "po3_gamma_packet_eq_sum_prod" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n -e "local log-slope" -e "1/|Λ_k(ξ)|" -e "hard blocker" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+next_deliverable: the transform-side landing surface, exact Gamma-to-product bridge, and finite packet avatar are frozen in Lean: `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean` names `po3_gamma_profile`, `po3_gamma_profile_eq_prod`, `po3_gamma_packet`, and `po3_gamma_packet_eq_sum_prod`; the next real attack is now the slope trichotomy: derive `Λ_k(ξ)=ψ(r+θ)-ψ(k-r+2-θ)+π cot(πθ)` for `ξ=N+r+θ`, split near-maximizers into pole-near, edge-log, and balanced-bulk, and only allow the `1/log k` local exponential packet after pole-near and balanced-bulk are killed
+next_verify: rg -n -F "PO3-square.2d3.slope-trichotomy" IMPLEMENTATION_PLAN.md && rg -n -F "po3_gamma_packet_eq_sum_prod" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean && rg -n -e "slope trichotomy" -e "pole-near" -e "edge-log" -e "balanced-bulk" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — actual transform-side `A_k` packet split
+### `PO3-square.2d3` — reciprocal-product slope trichotomy
 
 Goal:
 
@@ -97,18 +97,24 @@ Goal:
   product avatar itself, whose log-slope at a moving top point `ξ` is
   `Λ_k(ξ)=∑_{j=1}^{k+1}(ξ-(N+j))^{-1}` (equivalently a digamma-difference),
   so the natural window width is `1/|Λ_k(ξ)|`, not automatically `1/log k`;
+- the exact slope decomposition is now the next object to freeze:
+  for `ξ=N+r+θ`, `0<θ<1`,
+  `Λ_k(ξ)=ψ(r+θ)-ψ(k-r+2-θ)+π cot(πθ)`;
+  this gives three regimes:
+  pole-near when `θ` is close to `0` or `1`, edge-log when one side of the
+  pole block is short and the other is length `~k`, and balanced-bulk when both
+  sides are length `~k`;
 - attack the only live burden directly:
-  either derive that exact local normal form and feed it into an honest
-  `A_k = dominantPacket + remainder` split, or record the incompatibility
-  explicitly instead of hiding it under more shell.
+  first freeze this trichotomy, then kill pole-near and balanced-bulk before
+  using the edge-log `1/log k` packet model.
 
 Required output:
 
 - one exact theorem-shape feeding
   `PO3SquareTransformPacketCertificate` on the real `A_k` side, beginning with
-  the local log-slope normal form of the reciprocal-product tower, or one
-  explicitly isolated obstruction saying that the current repo formulas do not
-  yet provide such a simplification;
+  the slope trichotomy of the reciprocal-product tower, or one explicitly
+  isolated obstruction saying that the current repo formulas do not yet provide
+  such a simplification;
 - one exact pointer from that theorem-shape or obstruction back into the
   already-frozen transform-side landing surface
   `PO3SquareTransformPacketCertificate`;
@@ -144,5 +150,6 @@ Current position:
   `H1` proof input;
 - the first real proof-critical gate on the route is still inside `PO3`,
   but its live mathematical point is now much narrower:
-  `PO3-square.2d3`, the missing exact split from the actual transform-side
-  `A_k` tower into the frozen dominant-packet certificate language.
+  `PO3-square.2d3`, the slope-regime analysis needed before the actual
+  transform-side `A_k` tower can feed the frozen dominant-packet certificate
+  language.

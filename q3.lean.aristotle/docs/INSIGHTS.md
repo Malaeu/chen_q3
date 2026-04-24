@@ -93,6 +93,24 @@
   the pretty `1/log k` simplification is itself a false door and the failure
   should be recorded explicitly as a route obstruction, rather than promoted to
   a theorem target.
+- the corrected simplification has now sharpened into a three-regime slope
+  packet for the reciprocal-product tower.  With
+  `Λ_k(x):=\sum_{j=1}^{k+1}(x-(N+j))^{-1}`, the exact product avatar gives
+  `(log A_k)'(x)=-Λ_k(x)`.  If `ξ=N+r+θ` with `0<θ<1`, then
+  `Λ_k(ξ)=ψ(r+θ)-ψ(k-r+2-θ)+π cot(πθ)`.
+- this formula splits the next proof into three regimes:
+  `pole-near`, where `θ` is close to `0` or `1` and `|Λ_k(ξ)|` is controlled
+  by distance to the nearest pole;
+  `edge-log`, where `θ` stays away from the poles and one side of the pole
+  block is short while the other has length `~k`, giving
+  `|Λ_k(ξ)| ≍ log k`;
+  and `balanced-bulk`, where both sides have length `~k`, giving only
+  `|Λ_k(ξ)|=O(1)`.
+- therefore the `1/log k` local exponential packet is not the starting theorem;
+  it is the survivor after two kill lemmas:
+  `PO3-square.2d3b1` should kill pole-near near-maximizers, and
+  `PO3-square.2d3b2` should kill balanced-bulk near-maximizers.
+  Only `PO3-square.2d3b3` may then use the edge-log local packet model.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
