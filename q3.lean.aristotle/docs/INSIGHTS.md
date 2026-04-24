@@ -124,6 +124,17 @@
   control for the selected adaptive rows.
 - detailed note:
   `docs/insights/h1_po3_square_2d3_adaptive_shift_constraints_2026_04_24.md`.
+- self-check correction: adaptive upper-end shifts alone are not enough for
+  the full edge-log branch.  In interval notation
+  `A_{L,U}(x)=prod_{j=L}^{U}(x-j)^(-1)`, a left-edge packet can be tested by
+  moving/truncating the upper endpoint, but a right-edge packet gets its
+  logarithmic slope from the lower endpoint.  Therefore the next live check is
+  whether the gamma wall is available with variable base `N`/lower endpoint.
+- if lower-end shifts are available, the adaptive Vandermonde extraction
+  becomes two-endpoint and survives; if `N` is frozen, right-edge edge-log is a
+  separate hard blocker and cannot be hidden under the old finite-packet
+  capture language.  Detailed audit:
+  `docs/insights/h1_po3_square_2d3_shift_orientation_audit_2026_04_24.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

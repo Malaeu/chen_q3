@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / adaptive edge-log shift constraints
+macro_position: PO3-square.2d3 live wall / shift-orientation audit
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: adaptive edge-log shift constraints
+current_step_title: shift-orientation audit for edge-log constraints
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: the transform-side landing surface, exact Gamma-to-product bridge, finite packet avatar, and slope trichotomy are frozen; the next real attack is now edge-log constraint extraction: use `A_{k+s}(x)=A_k(x)∏_{j=k+1}^{k+s}(x-(N+j))^{-1}`, choose adaptive shifts `s_{k,p}` with `μ_k(s_{k,p};ξ_k)/Λ_k(ξ_k)→p`, prove the normalized rows converge to the Vandermonde block `exp(-p t_i)`, and narrow the remaining blocker to normalized shifted-error control for remainder plus mirror
-next_verify: rg -n -F "PO3-square.2d3.adaptive-shift-constraints" IMPLEMENTATION_PLAN.md && rg -n -e "adaptive shift" -e "mu_k" -e "Vandermonde" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_adaptive_shift_constraints_2026_04_24.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md && rg -n -F "po3_gamma_profile_eq_prod" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
+next_deliverable: the transform-side landing surface, exact Gamma-to-product bridge, finite packet avatar, slope trichotomy, and first adaptive-shift constraint shape are frozen; the next real attack is now the shift-orientation audit: fixed/future upper-end shifts do not see both edge-log orientations, so rewrite the tower as an interval product `A_{L,U}(x)=∏_{j=L}^{U}(x-j)^{-1}` and check whether the gamma wall is available with variable lower endpoint `L`/base `N`; if it is, use two-endpoint adaptive Vandermonde constraints, and if not, isolate right-edge edge-log as a separate hard blocker
+next_verify: rg -n -F "PO3-square.2d3.shift-orientation-audit" IMPLEMENTATION_PLAN.md && rg -n -e "shift-orientation" -e "two-endpoint" -e "right-edge" -e "lower endpoint" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_shift_orientation_audit_2026_04_24.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md && rg -n -F "po3_gamma_profile_eq_prod" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — adaptive edge-log shift constraints
+### `PO3-square.2d3` — shift-orientation audit for edge-log constraints
 
 Goal:
 
@@ -121,15 +121,25 @@ Goal:
 - this limiting rectangular Vandermonde block has rank `L-1` on compact
   separated `t_i` configurations, so if the shifted remainder plus mirror is
   `o(1)` in those rows, the packet is forced into the exponential
-  finite-difference/Hermite line.
+  finite-difference/Hermite line;
+- self-check correction: upper-end shifts alone are not symmetric enough.
+  In interval notation `A_{L,U}(x)=∏_{j=L}^{U}(x-j)^{-1}`, the edge-log slope
+  comes from the long endpoint side.  A left-edge packet can be tested by
+  upper-end truncations/shifts, but a right-edge packet needs lower-end
+  shifts, i.e. variation of the base `N`;
+- the immediate proof obligation is therefore quantifier-level:
+  confirm that the gamma wall produced by tail-zero is available for variable
+  base `N` so that both endpoints can be shifted.  If `N` is frozen, the
+  right-edge edge-log orientation is a new hard blocker and must be killed
+  separately before residue-incompatibility can finish the wall.
 
 Required output:
 
 - one exact theorem-shape feeding
   `PO3SquareTransformPacketCertificate` on the real `A_k` side, now using the
-  adaptive-shift constraint matrix in the edge-log branch, or one explicitly
-  isolated obstruction saying that the shifted remainder/mirror is not small
-  enough for finite-packet capture;
+  endpoint-oriented adaptive-shift constraint matrix in the edge-log branch,
+  or one explicitly isolated obstruction saying that the available wall
+  equations do not provide the lower-end shifts needed for right-edge packets;
 - one exact pointer from that theorem-shape or obstruction back into the
   already-frozen transform-side landing surface
   `PO3SquareTransformPacketCertificate`;

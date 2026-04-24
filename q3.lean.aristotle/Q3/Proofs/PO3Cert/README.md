@@ -329,6 +329,11 @@ Status note:
   `mu_k(s_{k,p};xi_k)/Lambda_k(xi_k)->p`, and reduce the finite top packet to
   a Vandermonde constraint block `exp(-p t_i)`; the remaining analytic blocker
   is normalized shifted-error control for the selected rows.
+- self-check correction: the previous bullet is an upper-end version of the
+  extraction.  The full edge-log branch needs endpoint-oriented shifts in the
+  interval-product avatar `A_{L,U}(x)=∏_{j=L}^{U}(x-j)⁻¹`; right-edge packets
+  require lower-end/base-`N` variation, or else they become a separate hard
+  blocker.
 
 Status note:
 - the whole first-zeta `a = 1` witness stack is now packaged as one reusable
