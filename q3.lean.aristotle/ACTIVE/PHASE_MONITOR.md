@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / row-error estimates
+macro_position: PO3-square.2d3 live wall / absolute row-mass control
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: prove or kill normalized row-error estimates
+current_step_title: prove absolute row-mass control for endpoint rows
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: prove `RemainderRowSmall` and `MirrorRowSmall` for the endpoint-adaptive rows, or isolate the first concrete formula-level obstruction in the real transform-side wall; do not proceed to Hermite/residue incompatibility until `epsilon_rho -> 0` is closed
-next_verify: rg -n -e "RemainderRowSmall" -e "MirrorRowSmall" -e "epsilon_rho" q3.lean.aristotle/docs/insights/h1_po3_square_2d3_two_endpoint_shifted_error_2026_04_24.md q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
+next_deliverable: prove endpoint-row `AbsoluteRowMassControl` for the exterior `A`-mass plus a far mirror-tail estimate; this stronger input is now required to get `MirrorRowSmall`, signed `RemainderRowSmall`, and stability of the same top packet under adaptive endpoint rows
+next_verify: rg -n -e "AbsoluteRowMassControl" -e "far mirror-tail" -e "MirrorRowSmall" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_mirror_row_small_audit_2026_04_24.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — normalized row-error estimates for edge-log constraints
+### `PO3-square.2d3` — absolute row-mass control for edge-log endpoint rows
 
 Goal:
 
@@ -171,6 +171,20 @@ Exact failure criterion:
 - if the same top packet is not stable under these rows, or if either row
   error estimate fails, this is the first real obstruction and must be written
   to the route-kill registry before any residue/Hermite-incompatibility claim.
+
+## Result (2026-04-24) — `MirrorRowSmall` requires absolute row-mass control
+
+- the first row-error audit shows that shell-level `mirror_decay` is not
+  enough after normalization by the moving packet scale
+  `M_k m_rho(xi_k)`;
+- pointwise mirror suppression has the exact ratio
+  `|B_I(x)|/|A_I(x)|=prod_{j in I}|x-j|/|x+j|`, but on unbounded support this
+  only closes the mirror row after a near/far split and absolute exterior
+  `A`-mass control;
+- therefore the next theorem is stronger and cleaner:
+  prove endpoint-row `AbsoluteRowMassControl` for the exterior main mass plus
+  a far mirror-tail estimate.  This single input gives `MirrorRowSmall`,
+  signed `RemainderRowSmall`, and top-packet stability for the adaptive rows.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 

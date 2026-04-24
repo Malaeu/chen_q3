@@ -157,6 +157,16 @@
   estimate fails, the route obstruction is real and must be recorded before
   any Hermite/residue-incompatibility claim.  Detailed target:
   `docs/insights/h1_po3_square_2d3_two_endpoint_shifted_error_2026_04_24.md`.
+- first row-error audit: `MirrorRowSmall` is not a free consequence of the old
+  shell-level `mirror_decay`.  For a row interval `I`, the pointwise ratio is
+  `|B_I(x)|/|A_I(x)|=prod_{j in I}|x-j|/|x+j|`, but on unbounded support this
+  only proves mirror smallness after an absolute row-mass/tail split.
+- the next theorem should therefore be stronger than signed
+  `RemainderRowSmall`: prove endpoint-row `AbsoluteRowMassControl`
+  for the exterior `A`-mass plus a far mirror-tail estimate.  That single
+  input gives `MirrorRowSmall`, signed `RemainderRowSmall`, and top-packet
+  stability for the adaptive rows.  Detailed audit:
+  `docs/insights/h1_po3_square_2d3_mirror_row_small_audit_2026_04_24.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
