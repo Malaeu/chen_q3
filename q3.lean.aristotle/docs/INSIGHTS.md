@@ -135,6 +135,16 @@
   separate hard blocker and cannot be hidden under the old finite-packet
   capture language.  Detailed audit:
   `docs/insights/h1_po3_square_2d3_shift_orientation_audit_2026_04_24.md`.
+- the lower-end availability concern is now closed at the shell level by base
+  monotonicity in `Q3/Proofs/HBridge_PO3_Shell.lean`:
+  `po3_tail_zero_mono`, `po3_square_tail_zero_mono`,
+  `po3_bilateral_integer_tail_zero_mono`, and `po3_square2d1_target_mono`
+  say that once tail-zero is known after `N`, it is also known after every
+  later base `N' ≥ N`.
+- this means the right-edge edge-log branch does not require a new lower-shell
+  architecture merely to move the base.  The next real `PO3-square.2d3`
+  blocker is now the analytic one: normalized two-endpoint shifted-error
+  control for the adaptive Vandermonde rows.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

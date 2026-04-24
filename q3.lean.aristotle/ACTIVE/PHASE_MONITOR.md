@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / shift-orientation audit
+macro_position: PO3-square.2d3 live wall / two-endpoint shifted-error control
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: shift-orientation audit for edge-log constraints
+current_step_title: two-endpoint shifted-error control for edge-log constraints
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: the transform-side landing surface, exact Gamma-to-product bridge, finite packet avatar, slope trichotomy, and first adaptive-shift constraint shape are frozen; the next real attack is now the shift-orientation audit: fixed/future upper-end shifts do not see both edge-log orientations, so rewrite the tower as an interval product `A_{L,U}(x)=∏_{j=L}^{U}(x-j)^{-1}` and check whether the gamma wall is available with variable lower endpoint `L`/base `N`; if it is, use two-endpoint adaptive Vandermonde constraints, and if not, isolate right-edge edge-log as a separate hard blocker
-next_verify: rg -n -F "PO3-square.2d3.shift-orientation-audit" IMPLEMENTATION_PLAN.md && rg -n -e "shift-orientation" -e "two-endpoint" -e "right-edge" -e "lower endpoint" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_shift_orientation_audit_2026_04_24.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md && rg -n -F "po3_gamma_profile_eq_prod" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
+next_deliverable: formulate the exact two-endpoint adaptive shifted-error theorem: after isolating an edge-log top packet and choosing endpoint-oriented adaptive shifts, prove or precisely isolate the assumptions under which the shifted remainder plus mirror is `o(1)` after normalization in every Vandermonde row
+next_verify: rg -n -e "two-endpoint shifted-error" -e "Vandermonde row" -e "shifted remainder plus mirror" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — shift-orientation audit for edge-log constraints
+### `PO3-square.2d3` — two-endpoint shifted-error control for edge-log constraints
 
 Goal:
 
@@ -157,6 +157,20 @@ Exact failure criterion:
 - if the actual transform-side formulas cannot be reconciled with the frozen
   dominant-packet certificate shape, record that incompatibility explicitly
   rather than reopening lower-shell architecture.
+
+## Result (2026-04-24) — base monotonicity bridge closed
+
+- `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge
+  needed by the shift-orientation audit:
+  `po3_tail_zero_mono`, `po3_square_tail_zero_mono`,
+  `po3_bilateral_integer_tail_zero_mono`, and `po3_square2d1_target_mono`;
+- therefore tail-zero after `N` gives the same strict-tail conclusion after
+  every later base `N' ≥ N`, including the square and transform-side targets;
+- this closes the quantifier-level concern about lower-end rebasing for the
+  right-edge edge-log branch.  The live blocker is now analytic:
+  prove normalized two-endpoint shifted-error control for the adaptive
+  Vandermonde rows, or record the precise obstruction if the real wall identity
+  does not provide it.
 
 ## Macro view
 

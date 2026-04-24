@@ -334,6 +334,12 @@ Status note:
   interval-product avatar `A_{L,U}(x)=∏_{j=L}^{U}(x-j)⁻¹`; right-edge packets
   require lower-end/base-`N` variation, or else they become a separate hard
   blocker.
+- the base-variation concern is now discharged by the shell lemmas in
+  `Q3/Proofs/HBridge_PO3_Shell.lean`: tail-zero, square-tail-zero, bilateral
+  transform tail-zero, and the named `PO3-square.2d1` target are all monotone
+  under `N ≤ N'`.  Therefore lower-end rebasing to later bases is available;
+  the live blocker after this README entry is normalized two-endpoint
+  shifted-error control, not another certificate redesign.
 
 Status note:
 - the whole first-zeta `a = 1` witness stack is now packaged as one reusable

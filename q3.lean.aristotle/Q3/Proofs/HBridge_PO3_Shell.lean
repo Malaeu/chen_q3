@@ -3234,6 +3234,33 @@ theorem po3_square_tail_zero_of_window_family_of_decay_nonvanishing_rescaling_an
 
 end PO3SquareRepackagingConsumer
 
+section PO3TailZeroMonotonicity
+
+variable {A : Type*} [Zero A]
+
+/-- Tail-zero is monotone in the base index: once a sequence vanishes on the
+strict tail after `N`, it also vanishes on every later strict tail. -/
+theorem po3_tail_zero_mono
+    {values : ℕ → A} {N N' : ℕ}
+    (hNN' : N ≤ N')
+    (hzero : ∀ r, N < r → values r = 0) :
+    ∀ r, N' < r → values r = 0 := by
+  intro r hr
+  exact hzero r (lt_of_le_of_lt hNN' hr)
+
+/-- Square-tail zero is monotone in the base index.  This is the formal
+quantifier bridge needed when the square/gamma wall is re-based at a later
+lower endpoint. -/
+theorem po3_square_tail_zero_mono
+    {squareReceiver : ℕ → A} {N N' : ℕ}
+    (hNN' : N ≤ N')
+    (hzero : ∀ r, N < r → squareReceiver (r ^ 2) = 0) :
+    ∀ r, N' < r → squareReceiver (r ^ 2) = 0 := by
+  intro r hr
+  exact hzero r (lt_of_le_of_lt hNN' hr)
+
+end PO3TailZeroMonotonicity
+
 section PO3SquareTransformTransfer
 
 variable {A : Type*} [Zero A]
@@ -3253,6 +3280,25 @@ an even transform-side receiver with bilateral integer-tail zeros. -/
 def po3_square2d1_target (transformReceiver : ℤ → A) (N : ℕ) : Prop :=
   po3_even_transform_receiver transformReceiver ∧
     po3_bilateral_integer_tail_zero transformReceiver N
+
+/-- Bilateral transform-side tail-zero is monotone in the base index. -/
+theorem po3_bilateral_integer_tail_zero_mono
+    {transformReceiver : ℤ → A} {N N' : ℕ}
+    (hNN' : N ≤ N')
+    (hzero : po3_bilateral_integer_tail_zero transformReceiver N) :
+    po3_bilateral_integer_tail_zero transformReceiver N' := by
+  intro r hr
+  exact hzero r (lt_of_le_of_lt hNN' hr)
+
+/-- The named `PO3-square.2d1` target is monotone in the tail base. -/
+theorem po3_square2d1_target_mono
+    {transformReceiver : ℤ → A} {N N' : ℕ}
+    (hNN' : N ≤ N')
+    (htarget : po3_square2d1_target transformReceiver N) :
+    po3_square2d1_target transformReceiver N' := by
+  constructor
+  · exact htarget.1
+  · exact po3_bilateral_integer_tail_zero_mono hNN' htarget.2
 
 /-- `PO3-square.2d0a`, positive-tail half:
 if a transform-side receiver is obtained by the square pullback
