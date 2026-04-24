@@ -145,6 +145,18 @@
   architecture merely to move the base.  The next real `PO3-square.2d3`
   blocker is now the analytic one: normalized two-endpoint shifted-error
   control for the adaptive Vandermonde rows.
+- the two-endpoint shifted-error target is now pinned exactly.  For a selected
+  endpoint row `rho`, write
+  `m_rho(x)=A_{I_rho}(x)/A_{I_k}(x)` and normalize the wall equation by
+  `M_k m_rho(xi_k)`, where
+  `M_k=max_{i in P_k}|c_i A_{I_k}(x_i)|`.  The required error is
+  `epsilon_rho = (mirror_rho - remainder_rho)/(M_k m_rho(xi_k)) -> 0`
+  for every adaptive Vandermonde row.
+- therefore the next live proof is not another capture theorem.  It is exactly
+  `RemainderRowSmall + MirrorRowSmall` for endpoint-oriented rows.  If either
+  estimate fails, the route obstruction is real and must be recorded before
+  any Hermite/residue-incompatibility claim.  Detailed target:
+  `docs/insights/h1_po3_square_2d3_two_endpoint_shifted_error_2026_04_24.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

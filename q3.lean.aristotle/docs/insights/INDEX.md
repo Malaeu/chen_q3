@@ -50,6 +50,7 @@ Files:
 - h1_po3_route_ladder_2026_04_19.md
 - h1_po3_square_2d3_adaptive_shift_constraints_2026_04_24.md
 - h1_po3_square_2d3_shift_orientation_audit_2026_04_24.md
+- h1_po3_square_2d3_two_endpoint_shifted_error_2026_04_24.md
 - h1_po3_square_tail_injectivity_attack_2026_04_19.md
 - h1_po4_same_sign_boundary_identification_2026_03_18.md
 - h1_po5_cap_separation_2026_03_19.md
