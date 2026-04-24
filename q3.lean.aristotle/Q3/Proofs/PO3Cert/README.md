@@ -321,6 +321,14 @@ Status note:
   live burden is purely the analytic certificate on the actual `A_k/B_k`
   tower, now best attacked through the reciprocal-product finite-packet avatar
   rather than through raw Gamma quotients.
+- the latest mainline reduction says that the `edge-log` branch should be
+  attacked through shifted wall equations, not through fixed consecutive
+  shifts: use
+  `A_{k+s}(x)=A_k(x)∏_{j=k+1}^{k+s}(x-(N+j))⁻¹`, choose adaptive shifts
+  `s_{k,p}` by the future-slope ratio
+  `mu_k(s_{k,p};xi_k)/Lambda_k(xi_k)->p`, and reduce the finite top packet to
+  a Vandermonde constraint block `exp(-p t_i)`; the remaining analytic blocker
+  is normalized shifted-error control for the selected rows.
 
 Status note:
 - the whole first-zeta `a = 1` witness stack is now packaged as one reusable

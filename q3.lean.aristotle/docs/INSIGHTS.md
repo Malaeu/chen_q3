@@ -111,6 +111,19 @@
   `PO3-square.2d3b1` should kill pole-near near-maximizers, and
   `PO3-square.2d3b2` should kill balanced-bulk near-maximizers.
   Only `PO3-square.2d3b3` may then use the edge-log local packet model.
+- the next edge-log step is now sharper than “Hermite capture”: fixed shifts
+  `k,k+1,...` are usually too weak on a `1/log k` packet, because their rows
+  are almost constant across the local window.  The correct extraction uses
+  adaptive shifts and the future-slope
+  `mu_k(s;xi)=sum_{j=k+1}^{k+s}(xi-(N+j))^{-1}`.
+- choose `s_{k,p}` so that
+  `mu_k(s_{k,p};xi_k)/Lambda_k(xi_k)->p`; then for local points
+  `x_{k,i}=xi_k+t_i/Lambda_k(xi_k)+o(1/log k)`, the normalized shifted rows
+  converge to the Vandermonde block `exp(-p t_i)`.  Thus the next live blocker
+  is no longer coefficient capture itself, but normalized shifted-error
+  control for the selected adaptive rows.
+- detailed note:
+  `docs/insights/h1_po3_square_2d3_adaptive_shift_constraints_2026_04_24.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
@@ -1555,7 +1568,7 @@ Update (2026-02-02) — Prime-power term certificate attempt
   same `prime_partial_interval_2026-01-31_0009.txt` source).
 - Embedding search: `qmd query` fails on this host (llama-cpp Metal context).
   Fallback used: `qmd search` (BM25) on `q3_docs`; top hits are
-  `docs/INSIGHTS.md` + `docs/insights/primecert-closure-plan-2026-01-29.md`.
+  `docs/INSIGHTS.md` + `docs/insights/primecert_closure_plan_2026_01_29.md`.
 - Web search: `Mathlib.Tactic.IntervalCases` only (finite case splitting);
   no ready interval-AR for `exp/log` found; external `ComputableReal` is not allowed.
 
