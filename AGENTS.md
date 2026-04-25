@@ -1,5 +1,6 @@
 Project workflow: `q3.lean.aristotle/PROJECT_WORKFLOW.md`
 Aristotle skill (CLI-based): `~/.codex/skills/aristotle/`
+Oracle skill (advisory external reviewer): `~/.codex/skills/oracle/`
 Session entry (single): `SESSION_ENTRY.md`
 
 Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy docs.
@@ -14,6 +15,13 @@ Aristotle integration rules (project workflow):
 - When a lemma fails to integrate cleanly, revert its addition and request Aristotle iteration on that lemma only.
 - Log proof status in the DB by re-importing with `aristotle_db/parse_lean.py` and update notes if a lemma is no longer conditional.
 - Prefer small, targeted Aristotle requests with explicit lemma statements and no `exact?` or `sorry`.
+
+Oracle advisory workflow:
+- Use Oracle only as an external reviewer on hard blockers, not as a source of proof truth.
+- Prefer `npx -y @steipete/oracle --dry-run summary --files-report ...` before any live run.
+- Prefer `--render --copy` or browser mode for advisory review; API runs require explicit user consent because they can incur costs.
+- Never attach secrets, `.env`, credentials, or unrelated large folders.
+- Treat Oracle output like Proshka output: record useful theorem-shapes in `docs/INSIGHTS.md`, but accept only Lean-checked code, hole-free Aristotle output, or verified mathematics into the mainline.
 
 Semantic search workflow (before tackling a new blocker):
 - Define the exact target lemma/axiom and where it is wired in the chain.
