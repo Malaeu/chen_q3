@@ -165,6 +165,18 @@ Endpoint orientation split:
 - left-edge upper extension remains valid for arbitrary fixed integer rows
   `p>=0`, subject to the endpoint-row product-asymptotic estimates.
 
+Fractional right-edge Vandermonde condition:
+
+- with `beta_j=j/(n-1)`, the right-edge row matrix is ordinary Vandermonde in
+  `y_i=exp(t_i/(n-1))`;
+- bounded-separated right-edge capture requires separation of these actual
+  fractional nodes;
+- route-kill the bounded-separated right-edge branch if the fractional nodes
+  collapse and no confluent/Hermite stable projection replacement is supplied;
+- separation in a different coordinate, such as only `exp(-t_i)`, is not the
+  canonical certificate unless it is explicitly shown to imply separation of
+  `exp(t_i/(n-1))` on the active compact set.
+
 ## Re-entry rule
 
 A killed route can be reopened only if there is a new explicit ingredient that

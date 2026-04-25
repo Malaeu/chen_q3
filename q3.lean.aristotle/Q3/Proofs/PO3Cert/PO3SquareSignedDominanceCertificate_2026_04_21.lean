@@ -403,6 +403,62 @@ theorem po3_right_edge_lower_truncation_ratio_le_one_asymptotically
     cert.ratio_le_one_asymptotically :=
   cert.ratio_le_one_asymptotically_proof
 
+/-- Fractional right-edge Vandermonde static certificate.
+
+For the right-edge lower-truncation rows one should take
+`beta_j = j / (n - 1)`.  Then the limiting matrix
+`exp(beta_j * t_i)` is the ordinary rectangular Vandermonde matrix in
+`y_i = exp(t_i / (n - 1))`.  The analytic proof supplies separated fractional
+nodes and a uniform nonzero singular gap. -/
+structure PO3FractionalVandermondeStableProjectionCertificate
+    (E F : Type*) [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F] where
+  V : E →L[ℂ] F
+  Proj : E →L[ℂ] E
+  C : ℝ
+  bounded_packet : Prop
+  fractional_exponents : Prop
+  fractional_nodes : Prop
+  fractional_node_bounds : Prop
+  fractional_node_separation : Prop
+  row_limit_to_fractional_vandermonde : Prop
+  fractional_vandermonde_rank : Prop
+  fractional_vandermonde_one_dim_kernel : Prop
+  stable_projection : ∀ x : E, ‖x - Proj x‖ ≤ C * ‖V x‖
+
+/-- Consumer for the fractional right-edge Vandermonde branch.
+
+Once the real endpoint rows are certified to converge to the fractional
+Vandermonde model and the corresponding stable projection estimate is known,
+the generic stable-projection consumer captures the packet vector. -/
+theorem po3_endpoint_rows_stable_projection_of_fractional_right_edge_vandermonde
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    (cert : PO3FractionalVandermondeStableProjectionCertificate E F)
+    (q : E) (ε : F)
+    (hrow : cert.V q = ε) :
+    ‖q - cert.Proj q‖ ≤ cert.C * ‖ε‖ :=
+  po3_variable_comparable_packet_capture_of_stable_projection
+    cert.V cert.Proj cert.C cert.stable_projection q ε hrow
+
+/-- Route-kill marker for the bounded-separated right-edge fractional branch.
+
+If the actual fractional nodes `exp(t_i/(n-1))` collapse and no confluent
+stable-projection replacement is supplied, the bounded-separated right-edge
+capture certificate is unavailable. -/
+structure PO3FractionalRightEdgeNodeCollapseRouteKillCertificate where
+  fractional_node_collapse : Prop
+  no_confluent_replacement : Prop
+  bounded_separated_capture_unavailable : Prop
+  bounded_separated_capture_unavailable_proof :
+    bounded_separated_capture_unavailable
+
+theorem po3_fractional_right_edge_capture_route_kill_of_node_collapse
+    (cert : PO3FractionalRightEdgeNodeCollapseRouteKillCertificate) :
+    cert.bounded_separated_capture_unavailable :=
+  cert.bounded_separated_capture_unavailable_proof
+
 section
 
 variable {𝕜 : Type*} [NormedField 𝕜]

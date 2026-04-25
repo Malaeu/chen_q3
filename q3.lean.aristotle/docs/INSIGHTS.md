@@ -275,6 +275,17 @@
   `po3_right_edge_lower_truncation_ratio_le_one_asymptotically`.
   Detailed target:
   `docs/insights/h1_po3_square_2d3_endpoint_row_orientation_corollaries_2026_04_25.md`.
+- fractional right-edge capture is now reduced to ordinary Vandermonde by
+  choosing `beta_j=j/(n-1)`.  The row matrix
+  `exp(beta_j t_i)` equals `y_i^j` with
+  `y_i=exp(t_i/(n-1))`, so the correct bounded-separated condition is
+  separation of these fractional nodes.
+- Lean shell update: `PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now contains `PO3FractionalVandermondeStableProjectionCertificate`,
+  `po3_endpoint_rows_stable_projection_of_fractional_right_edge_vandermonde`,
+  and `po3_fractional_right_edge_capture_route_kill_of_node_collapse`.
+  Detailed target:
+  `docs/insights/h1_po3_square_2d3_fractional_vandermonde_projection_2026_04_25.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

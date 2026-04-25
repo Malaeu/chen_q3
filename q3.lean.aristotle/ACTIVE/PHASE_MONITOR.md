@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / endpoint orientation corollaries
+macro_position: PO3-square.2d3 live wall / fractional right-edge Vandermonde projection
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: prove endpoint orientation corollaries and right-edge obstruction
+current_step_title: prove fractional right-edge Vandermonde projection or node-collapse route-kill
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: prove endpoint orientation corollaries: left-edge upper extension gives integer rows `exp(-p t)`, right-edge later-base lower truncation gives only fractional rows `exp(beta t)` for `0<=beta<=1`, and right-edge integer `p>1` is a false theorem shape
-next_verify: rg -n -e "po3_left_edge_upper_extension_endpoint_row_asymptotic" -e "po3_right_edge_lower_truncation_endpoint_row_asymptotic" -e "po3_right_edge_lower_truncation_ratio_le_one_asymptotically" -e "fractional" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_endpoint_row_orientation_corollaries_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
+next_deliverable: prove/consume right-edge fractional Vandermonde stable projection: with `beta_j=j/(n-1)`, rows become ordinary Vandermonde in `y_i=exp(t_i/(n-1))`; if these fractional nodes collapse and no confluent replacement exists, record route-kill
+next_verify: rg -n -e "PO3FractionalVandermondeStableProjectionCertificate" -e "po3_endpoint_rows_stable_projection_of_fractional_right_edge_vandermonde" -e "po3_fractional_right_edge_capture_route_kill_of_node_collapse" -e "exp\\(t_i/\\(n-1\\)\\)" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_fractional_vandermonde_projection_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — endpoint orientation corollaries
+### `PO3-square.2d3` — fractional right-edge Vandermonde projection
 
 Goal:
 
@@ -315,6 +315,17 @@ Exact failure criterion:
 - this is enough for generalized Vandermonde capture using distinct
   `beta_j in [0,1]`, but it kills the false right-edge integer-row shape
   `alpha=-p` for `p>1`.
+
+## Result (2026-04-25) — fractional right-edge rows reduce to ordinary Vandermonde
+
+- choose `beta_j=j/(n-1)` for `j=0,...,n-2`;
+- then the right-edge row matrix `exp(beta_j t_i)` is the ordinary rectangular
+  Vandermonde matrix in `y_i=exp(t_i/(n-1))`;
+- bounded-separated capture should therefore be certified using separation of
+  the actual fractional nodes `y_i`, not merely separation of `exp(-t_i)`;
+- if the fractional nodes collapse and no confluent stable-projection
+  replacement is supplied, the bounded-separated right-edge capture branch is
+  unavailable.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 
