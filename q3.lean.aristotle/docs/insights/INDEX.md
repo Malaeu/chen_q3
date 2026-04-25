@@ -50,6 +50,7 @@ Files:
 - h1_po3_route_ladder_2026_04_19.md
 - h1_po3_square_2d3_absolute_row_mass_oracle_review_2026_04_25.md
 - h1_po3_square_2d3_adaptive_shift_constraints_2026_04_24.md
+- h1_po3_square_2d3_bounded_separated_projection_2026_04_25.md
 - h1_po3_square_2d3_log_loss_mirror_control_2026_04_25.md
 - h1_po3_square_2d3_mirror_row_small_audit_2026_04_24.md
 - h1_po3_square_2d3_shift_orientation_audit_2026_04_24.md

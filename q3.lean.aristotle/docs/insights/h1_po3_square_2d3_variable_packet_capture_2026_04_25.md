@@ -207,3 +207,18 @@ or record a route-kill:
   small enough.
 
 This is the sharp live blocker after the row-error split.
+
+## Follow-up selection
+
+The next review selects the fastest branch:
+
+```text
+EndpointRowsStableProjection_boundedSeparated
+```
+
+Do not start with clustered or growing packets.  First attempt the bounded
+packet with separated exponential nodes and endpoint-row convergence to the
+rectangular Vandermonde model.  The Lean-facing certificate is now
+`PO3EndpointRowBoundedSeparatedStableProjectionCertificate`, with consumer
+`po3_endpoint_rows_stable_projection_of_bounded_separated_packet`.  See
+`h1_po3_square_2d3_bounded_separated_projection_2026_04_25.md`.

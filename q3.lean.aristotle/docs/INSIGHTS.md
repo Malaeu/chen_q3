@@ -235,6 +235,20 @@
   growing packets, wrong kernel dimension, or ill-conditioned/confluent
   clusters.  Detailed target:
   `docs/insights/h1_po3_square_2d3_variable_packet_capture_2026_04_25.md`.
+- latest `RH_Maerz_2026` review selects the fastest stable-projection branch:
+  `EndpointRowsStableProjection_boundedSeparated`.  If the threshold packet
+  has bounded size and separated exponential nodes
+  `z_{k,i}=exp(-t_{k,i})`, and endpoint rows converge uniformly to
+  `z_{k,i}^p`, compactness of the separated Vandermonde class gives a uniform
+  stable projection constant.
+- Lean shell update: `PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now contains `PO3EndpointRowBoundedSeparatedStableProjectionCertificate` and
+  `po3_endpoint_rows_stable_projection_of_bounded_separated_packet`.  The
+  next analytic sublemma is the endpoint-row asymptotic
+  `m_rho(xi+t/Lambda)/m_rho(xi) -> exp(-p t)` uniformly for bounded
+  `p`; clustered packets are conditional fallback, and growing packets are
+  route-kill without a quantitative singular-gap theorem.  Detailed target:
+  `docs/insights/h1_po3_square_2d3_bounded_separated_projection_2026_04_25.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

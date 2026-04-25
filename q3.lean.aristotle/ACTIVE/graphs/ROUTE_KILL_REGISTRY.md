@@ -127,6 +127,22 @@ Stable-projection refinement:
   `sqrt(r_k)` loss unless the stability theorem is stated in a compatible
   `ell_infty` norm.
 
+Bounded-separated branch:
+
+- the active surviving branch is
+  `EndpointRowsStableProjection_boundedSeparated`: bounded threshold packet,
+  separated exponential local nodes, endpoint-row convergence to the
+  rectangular Vandermonde block, and compactness of the corresponding
+  nonzero singular gap;
+- kill the current finite/Hermite capture step if the threshold packets are
+  necessarily growing and no quantitative singular-gap theorem is available;
+- kill the bounded-separated branch if no subsequence has separated
+  exponential nodes, or if the real endpoint rows fail to converge to the
+  expected `z_i^p` row model;
+- clustered bounded packets are not killed immediately, but they require a
+  separate confluent/Hermite renormalization and proof that amplified row
+  errors still tend to zero.
+
 ## Re-entry rule
 
 A killed route can be reopened only if there is a new explicit ingredient that

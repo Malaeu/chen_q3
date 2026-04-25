@@ -283,6 +283,46 @@ theorem po3_variable_comparable_packet_capture_of_stable_projection
     ‖q - Proj q‖ ≤ C * ‖ε‖ := by
   simpa [hrow] using hstable q
 
+/-- Analytic certificate shape for the fastest current branch:
+`EndpointRowsStableProjection_boundedSeparated`.
+
+The fields are intentionally proof-facing rather than computational.  The
+future analytic work must show that a threshold-exhaustive packet is bounded,
+its exponential local nodes are separated, the selected endpoint rows converge
+to the rectangular Vandermonde row model, and this gives a uniform stable
+projection constant.  Once those facts are available, the generic stable-
+projection consumer captures the packet vector. -/
+structure PO3EndpointRowBoundedSeparatedStableProjectionCertificate
+    (E F : Type*) [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F] where
+  V : E →L[ℂ] F
+  Proj : E →L[ℂ] E
+  C : ℝ
+  bounded_packet : Prop
+  separated_exponential_nodes : Prop
+  endpoint_rows_vandermonde_limit : Prop
+  stable_projection : ∀ x : E, ‖x - Proj x‖ ≤ C * ‖V x‖
+
+/-- Consumer for a bounded-separated endpoint-row stable-projection
+certificate.
+
+This is the Lean-facing landing surface for the branch recommended by the
+latest `PO3-square.2d3` review.  It deliberately treats the Vandermonde gap and
+row convergence as certificate fields; the analytic theorem to prove next is
+that the real endpoint rows supply such a certificate for the selected
+threshold packet. -/
+theorem po3_endpoint_rows_stable_projection_of_bounded_separated_packet
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    (cert :
+      PO3EndpointRowBoundedSeparatedStableProjectionCertificate E F)
+    (q : E) (ε : F)
+    (hrow : cert.V q = ε) :
+    ‖q - cert.Proj q‖ ≤ cert.C * ‖ε‖ :=
+  po3_variable_comparable_packet_capture_of_stable_projection
+    cert.V cert.Proj cert.C cert.stable_projection q ε hrow
+
 section
 
 variable {𝕜 : Type*} [NormedField 𝕜]
