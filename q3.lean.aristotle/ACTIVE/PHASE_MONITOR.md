@@ -11,7 +11,7 @@ kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: prove log-loss mirror control; isolate row-cluster exhaustion
+current_step_title: attack row-cluster exhaustion for endpoint rows
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: prove `EndpointRowLogMassMirrorControl` from log-loss zero-counting row mass plus `eta_{k,rho} log(2+xi_k)->0`, and leave `RowClusterExhaustion` as the explicit hard blocker for the main `A`-remainder
-next_verify: rg -n -e "EndpointRowLogMassMirrorControl" -e "RowClusterExhaustion" -e "log-loss" -e "bounded-local-coordinate" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_log_loss_mirror_control_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
+next_deliverable: prove `RowClusterExhaustion` for the endpoint rows, or record a route-kill via a bounded-local-coordinate exterior competitor or unbounded comparable row-scale support cluster outside `P_k`
+next_verify: rg -n -e "RowClusterExhaustion" -e "bounded-local-coordinate" -e "comparable row-scale" -e "po3_endpoint_row_log_mass_mirror_control" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_log_loss_mirror_control_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -219,6 +219,20 @@ Exact failure criterion:
   bounded-local-coordinate exterior competitor, or an unbounded number of
   comparable row-scale support points, invalidates the fixed finite
   Vandermonde packet route at this node.
+
+## Result (2026-04-25) — log-loss mirror consumer frozen in Lean
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now contains the abstract consumer
+  `po3_endpoint_row_log_mass_mirror_control`;
+- the theorem says: if a mirror row is bounded by
+  `eta * nearAMass + farMirror`, the near `A`-mass has a log-loss bound
+  against the packet scale, `eta * logLoss -> 0`, and the far mirror tail is
+  small relative to the same scale, then the mirror row is small relative to
+  the packet scale;
+- this closes only the shell part of `EndpointRowLogMassMirrorControl`.  The
+  remaining analytic blocker is `RowClusterExhaustion`, needed for the main
+  `A`-remainder before any Hermite/Vandermonde capture can be used.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 

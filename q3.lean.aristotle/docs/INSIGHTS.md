@@ -201,6 +201,11 @@
   record the bounded-local-coordinate exterior competitor / unbounded local
   comparable cluster as a route kill.  Detailed target:
   `docs/insights/h1_po3_square_2d3_log_loss_mirror_control_2026_04_25.md`.
+- Lean shell update: `PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports `po3_row_relative_small`, `po3_product_tends_to_zero`, and
+  `po3_endpoint_row_log_mass_mirror_control`.  This freezes the consumer part
+  of `EndpointRowLogMassMirrorControl`; the analytic input still has to prove
+  the log-loss row-mass bound and `eta_{k,rho} log(2+xi_k)->0`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

@@ -192,6 +192,71 @@ structure PO3SquareTransformSideData (ι γ : Type*) where
   Bk : ℕ → ℂ
   paired_support : ∀ y, ∃ g, Ya y = xGamma g ∨ Ya y = xGamma g - 1
 
+/-! ## Log-loss mirror-row consumer -/
+
+/-- Relative row smallness against a moving nonnegative scale.
+
+This is the Lean-side home for normalized estimates of the form
+`row = o(scale)` in the `PO3-square.2d3` endpoint-row audit.  The quantities
+are already absolute upper bounds, so no norm is included here. -/
+def po3_row_relative_small (row scale : ℕ → ℝ) : Prop :=
+  ∀ ε > 0, ∃ K, ∀ k, K ≤ k → row k ≤ ε * scale k
+
+/-- Product smallness for the log-loss mirror route.
+
+This records the analytic condition
+`eta_{k,rho} * log(2+xi_k) -> 0` abstractly, without committing this file to a
+specific zero-counting model. -/
+def po3_product_tends_to_zero (eta logLoss : ℕ → ℝ) : Prop :=
+  ∀ ε > 0, ∃ K, ∀ k, K ≤ k → eta k * logLoss k ≤ ε
+
+/-- `EndpointRowLogMassMirrorControl`.
+
+If the mirror row is bounded by pointwise mirror suppression times the local
+absolute `A`-mass plus a far mirror tail, the local `A`-mass has only a
+log-loss bound against the packet scale, the product `eta * logLoss` tends to
+zero, and the far mirror tail is already small relative to the same scale, then
+the mirror row is small relative to the packet scale.
+
+This is intentionally only a consumer shell.  The real analytic work remains:
+prove the zero-counting log-loss bound and the stronger pointwise condition
+`eta_{k,rho} log(2+xi_k) -> 0` for the selected endpoint rows. -/
+theorem po3_endpoint_row_log_mass_mirror_control
+    {mirrorAbs nearAMass farMirror eta logLoss scale : ℕ → ℝ}
+    (hscale_nonneg : ∀ k, 0 ≤ scale k)
+    (heta_nonneg : ∀ k, 0 ≤ eta k)
+    (hmirror :
+      ∀ k, mirrorAbs k ≤ eta k * nearAMass k + farMirror k)
+    (hnear :
+      ∀ k, nearAMass k ≤ logLoss k * scale k)
+    (hetaLog : po3_product_tends_to_zero eta logLoss)
+    (hfar : po3_row_relative_small farMirror scale) :
+    po3_row_relative_small mirrorAbs scale := by
+  intro ε hεpos
+  have hhalf_pos : 0 < ε / 2 := by positivity
+  rcases hetaLog (ε / 2) hhalf_pos with ⟨Keta, hKeta⟩
+  rcases hfar (ε / 2) hhalf_pos with ⟨Kfar, hKfar⟩
+  refine ⟨max Keta Kfar, ?_⟩
+  intro k hk
+  have hketa : Keta ≤ k := le_trans (le_max_left _ _) hk
+  have hkfar : Kfar ≤ k := le_trans (le_max_right _ _) hk
+  have hnear_eta :
+      eta k * nearAMass k ≤ eta k * (logLoss k * scale k) := by
+    exact mul_le_mul_of_nonneg_left (hnear k) (heta_nonneg k)
+  have hnear_scale :
+      eta k * (logLoss k * scale k) ≤ (ε / 2) * scale k := by
+    calc
+      eta k * (logLoss k * scale k)
+          = (eta k * logLoss k) * scale k := by ring
+      _ ≤ (ε / 2) * scale k := by
+          exact mul_le_mul_of_nonneg_right (hKeta k hketa) (hscale_nonneg k)
+  have hfar_scale : farMirror k ≤ (ε / 2) * scale k := hKfar k hkfar
+  calc
+    mirrorAbs k ≤ eta k * nearAMass k + farMirror k := hmirror k
+    _ ≤ (ε / 2) * scale k + (ε / 2) * scale k := by
+        exact add_le_add (le_trans hnear_eta hnear_scale) hfar_scale
+    _ = ε * scale k := by ring
+
 section
 
 variable {𝕜 : Type*} [NormedField 𝕜]
