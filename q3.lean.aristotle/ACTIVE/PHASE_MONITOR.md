@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / absolute row-mass control
+macro_position: PO3-square.2d3 live wall / isolated edge-packet mass control
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: prove absolute row-mass control for endpoint rows
+current_step_title: prove or kill isolated edge-packet control for endpoint rows
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: prove endpoint-row `AbsoluteRowMassControl` for the exterior `A`-mass plus a far mirror-tail estimate; this stronger input is now required to get `MirrorRowSmall`, signed `RemainderRowSmall`, and stability of the same top packet under adaptive endpoint rows
-next_verify: rg -n -e "AbsoluteRowMassControl" -e "far mirror-tail" -e "MirrorRowSmall" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_mirror_row_small_audit_2026_04_24.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
+next_deliverable: prove `EndpointRowAbsoluteMassControl_from_packet_isolation` from an exhaustive row-effective packet definition, or exhibit a bounded-local-coordinate exterior competitor showing that the selected packet misses comparable absolute `A`-mass
+next_verify: rg -n -e "EndpointRowAbsoluteMassControl_from_packet_isolation" -e "bounded-local-coordinate" -e "row-effective" -e "exterior competitor" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_absolute_row_mass_oracle_review_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — absolute row-mass control for edge-log endpoint rows
+### `PO3-square.2d3` — isolated edge-packet control for edge-log endpoint rows
 
 Goal:
 
@@ -185,6 +185,23 @@ Exact failure criterion:
   prove endpoint-row `AbsoluteRowMassControl` for the exterior main mass plus
   a far mirror-tail estimate.  This single input gives `MirrorRowSmall`,
   signed `RemainderRowSmall`, and top-packet stability for the adaptive rows.
+
+## Result (2026-04-25) — Oracle review narrows absolute row-mass to packet isolation
+
+- `RH_März_2026` agrees with the mirror-row audit but rejects the unconditional
+  implication from only `Y_a={x_gamma,x_gamma-1}` and
+  `|c_gamma|=O(gamma^-3)`;
+- the next proof-facing theorem is
+  `EndpointRowAbsoluteMassControl_from_packet_isolation`: choose an exhaustive
+  row-effective region `E_{k,rho}`, prove exterior absolute `A`-mass inside
+  `E_{k,rho}\setminus P_k`, prove the `A`-ineffective tail, and prove the far
+  mirror tail;
+- the exact route fork is now:
+  prove packet isolation, or exhibit a bounded-local-coordinate exterior
+  competitor `y_k=xi_k+(t+o(1))/Lambda_k(xi_k)` whose endpoint-row contribution
+  remains comparable to `M_k|m_rho(xi_k)|`;
+- until this fork is resolved, Hermite/Vandermonde residue capture cannot be
+  used as a closure argument.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 

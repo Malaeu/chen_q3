@@ -57,6 +57,30 @@ So a true `PO3` route-kill means:
 3. rollback to the branch point `H-bridge vs PSD-pd`;
 4. activate `PSD-pd` as the main live route.
 
+## Live kill criterion under watch
+
+This is not a killed route yet.  It is the current `PO3-square.2d3` test that
+would kill the unconditional endpoint-row absolute-mass route if realized.
+
+Route / theorem shape:
+
+- `PO3-square.2d3.absolute-row-mass-control` as an unconditional consequence
+  of only `Y_a={x_gamma,x_gamma-1}` and `|c_gamma|=O(gamma^-3)`.
+
+Exact obstruction:
+
+- a required endpoint row `rho`, a subsequence `k_n`, and exterior support
+  points `y_{k_n}\in Y_a\setminus P_{k_n}` such that
+  `Lambda_{k_n}(xi_{k_n})(y_{k_n}-xi_{k_n})` stays bounded while
+  `|c_{y_{k_n}} A_{I_{k_n,rho}}(y_{k_n})|`
+  remains comparable to `M_{k_n}|m_{k_n,rho}(xi_{k_n})|`.
+
+If this occurs, the selected endpoint-adaptive packet is not exhaustive and
+Hermite/Vandermonde residue capture cannot be used at this node.  The current
+live branch is therefore the conditional theorem
+`EndpointRowAbsoluteMassControl_from_packet_isolation`: prove exhaustive
+packet isolation, or promote the obstruction above to a route kill.
+
 ## Re-entry rule
 
 A killed route can be reopened only if there is a new explicit ingredient that

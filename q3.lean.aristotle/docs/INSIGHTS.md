@@ -167,6 +167,29 @@
   input gives `MirrorRowSmall`, signed `RemainderRowSmall`, and top-packet
   stability for the adaptive rows.  Detailed audit:
   `docs/insights/h1_po3_square_2d3_mirror_row_small_audit_2026_04_24.md`.
+- `RH_März_2026` Oracle review agrees with the audit and sharpens the live
+  target: `AbsoluteRowMassControl` is viable only with an extra row-stable
+  packet-isolation assumption.  The top packet must be exhaustive for the
+  selected endpoint rows; otherwise a row-effective exterior cloud can have
+  comparable absolute `A`-mass while disappearing only by signed cancellation.
+- the next lemma target is therefore
+  `endpoint_row_absolute_mass_control_of_isolated_edge_packet`, with explicit
+  assumptions: top-packet row stability, near mirror suppression, exterior
+  row-weighted packet isolation, far mirror-tail smallness, and either far
+  `A`-tail smallness or an exhaustive row-effective region.  Detailed review:
+  `docs/insights/h1_po3_square_2d3_absolute_row_mass_oracle_review_2026_04_25.md`.
+- correction after the second `RH_März_2026` review: the Lean-facing target is
+  `EndpointRowAbsoluteMassControl_from_packet_isolation`, not an unconditional
+  `AbsoluteRowMassControl` theorem.  The theorem must either define an
+  exhaustive row-effective region `E_{k,rho}` and control both
+  `E_{k,rho}\setminus P_k` and `X\setminus E_{k,rho}`, or record the route-kill
+  obstruction.
+- the exact obstruction is a bounded-local-coordinate exterior competitor:
+  some `y_k in Y_a \ P_k` with
+  `Lambda_k(xi_k)(y_k-xi_k)=O(1)` and
+  `|c_{y_k} A_{I_{k,rho}}(y_k)|` comparable to
+  `M_k|m_{k,rho}(xi_k)|`.  Polynomial coefficient decay and zero-counting do
+  not exclude this by themselves.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

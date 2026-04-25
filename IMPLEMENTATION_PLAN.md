@@ -1,6 +1,6 @@
 # Implementation Plan
 
-Updated: 2026-04-24
+Updated: 2026-04-25
 
 ## Queue Rules
 
@@ -12,7 +12,7 @@ Updated: 2026-04-24
 
 ## ACTIVE
 
-`PO3-square.2d3.absolute-row-mass-control | gate=H-bridge | target=Prove or kill the stronger endpoint-row mass estimate exposed by the mirror audit: exterior absolute `A`-mass must be `o(M_k|m_rho(xi_k)|)` on the row-effective region, and the far mirror tail must also be `o(M_k|m_rho(xi_k)|)`; this is now the shared input for `MirrorRowSmall`, signed `RemainderRowSmall`, and top-packet stability | files=q3.lean.aristotle/docs/insights/h1_po3_square_2d3_mirror_row_small_audit_2026_04_24.md; q3.lean.aristotle/docs/INSIGHTS.md; q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md; q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md | verify=rg -n -e "AbsoluteRowMassControl" -e "far mirror-tail" -e "MirrorRowSmall" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_mirror_row_small_audit_2026_04_24.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert | done_when=the repo contains a proof-facing absolute row-mass estimate, or a precise route-kill obstruction showing that exterior mass can stay comparable after endpoint-adaptive testing | if_fail_then=write the obstruction into `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` and do not proceed to Hermite/residue capture`
+`PO3-square.2d3.isolated-edge-packet | gate=H-bridge | target=Prove or kill the exact packet-isolation input behind endpoint-row absolute mass control: define an exhaustive row-effective region `E_{k,rho}` and prove `EndpointRowAbsoluteMassControl_from_packet_isolation`, or exhibit a bounded-local-coordinate exterior competitor showing that `P_k` misses comparable absolute `A`-mass; do not claim the estimate from `Y_a={x_gamma,x_gamma-1}` and `|c_gamma|=O(gamma^-3)` alone | files=q3.lean.aristotle/docs/insights/h1_po3_square_2d3_absolute_row_mass_oracle_review_2026_04_25.md; q3.lean.aristotle/docs/insights/h1_po3_square_2d3_mirror_row_small_audit_2026_04_24.md; q3.lean.aristotle/docs/INSIGHTS.md; q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md; q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md | verify=rg -n -e "EndpointRowAbsoluteMassControl_from_packet_isolation" -e "bounded-local-coordinate" -e "row-effective" -e "exterior competitor" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_absolute_row_mass_oracle_review_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert | done_when=the repo contains either a proof-facing isolated edge-packet theorem feeding `MirrorRowSmall` and `RemainderRowSmall`, or a precise route-kill obstruction showing comparable exterior row mass after endpoint-adaptive testing | if_fail_then=write the bounded-local-coordinate exterior cloud obstruction into `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` and do not proceed to Hermite/residue capture`
 
 ## QUEUED
 
