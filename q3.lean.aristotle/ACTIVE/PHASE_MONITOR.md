@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / threshold-exhaustive packet plus variable capture
+macro_position: PO3-square.2d3 live wall / stable projection conditioning for threshold packets
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: close threshold-exhaustive packet row errors and decide variable capture
+current_step_title: prove endpoint-row stable projection or route-kill
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: close `ThresholdExhaustivePacketRowError` for endpoint rows and then decide `VariableComparablePacketCapture`: bounded/separated packet capture, or a route-kill via growing/ill-conditioned comparable packets
-next_verify: rg -n -e "ThresholdExhaustivePacketRowError" -e "VariableComparablePacketCapture" -e "delta_k" -e "sigma_min" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_threshold_exhaustive_packet_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
+next_deliverable: prove `EndpointRowStableProjectionOrRouteKill`: a stable projection/conditioning estimate `C_k * ||epsilon_k|| -> 0` for the threshold packet, or route-kill via growing packets, wrong kernel dimension, or ill-conditioned/confluent clusters
+next_verify: rg -n -e "po3_variable_comparable_packet_capture_of_stable_projection" -e "EndpointRowStableProjectionOrRouteKill" -e "stable projection" -e "sigma_min" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_variable_packet_capture_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — threshold-exhaustive packet plus variable capture
+### `PO3-square.2d3` — stable projection conditioning for threshold packets
 
 Goal:
 
@@ -251,6 +251,24 @@ Exact failure criterion:
   separated, use the existing finite Vandermonde/Hermite branch; if it grows
   or becomes ill-conditioned, require a singular-value estimate or record a
   route kill before residue/Hermite incompatibility is invoked.
+
+## Result (2026-04-25) — variable packet capture reduced to stable projection
+
+- the next `RH_Maerz_2026` review gives the clean finite-dimensional consumer:
+  if endpoint-row equations have form `V_k q_k = epsilon_k` and there is a
+  projection onto the expected Vandermonde/Hermite kernel satisfying
+  `||q - Proj q|| <= C_k ||V_k q||`, then
+  `dist(q_k, ker V_k) <= C_k ||epsilon_k||`;
+- this is now frozen in Lean as
+  `po3_variable_comparable_packet_capture_of_stable_projection` in
+  `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`;
+- the active analytic blocker is therefore not another row-error shell, but
+  `EndpointRowStableProjectionOrRouteKill`: prove
+  `C_k ||epsilon_k|| -> 0` for the threshold packet, or record route-kill by
+  growing packet size, wrong kernel dimension, or ill-conditioned/confluent
+  clusters;
+- remember the norm correction: if only row sup-error is controlled and there
+  are `r_k` rows, then `||epsilon_k||_2 <= sqrt(r_k) max_p |epsilon_{k,p}|`.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 

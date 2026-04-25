@@ -113,6 +113,20 @@ Latest correction:
 - if the threshold packet is bounded and separated, the existing finite
   Vandermonde/Hermite branch remains the next consumer.
 
+Stable-projection refinement:
+
+- the variable-packet consumer is now frozen as
+  `po3_variable_comparable_packet_capture_of_stable_projection`;
+- the live route survives if the selected endpoint rows provide a projection
+  onto the expected Vandermonde/Hermite kernel with
+  `||q-Proj q|| <= C_k ||V_k q||` and `C_k ||epsilon_k|| -> 0`;
+- kill this capture branch if the packet matrix has the wrong kernel
+  dimension, if the kernel is not the expected Vandermonde/Hermite line, or if
+  the conditioning loses to the row error;
+- in row-sup norm bookkeeping, the kill criterion must include the
+  `sqrt(r_k)` loss unless the stability theorem is stated in a compatible
+  `ell_infty` norm.
+
 ## Re-entry rule
 
 A killed route can be reopened only if there is a new explicit ingredient that

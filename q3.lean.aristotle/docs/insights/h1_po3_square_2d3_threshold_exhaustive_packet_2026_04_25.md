@@ -230,3 +230,23 @@ This is now the sharp `PO3-square.2d3` blocker.  Once the stable branch is
 proved, it feeds the existing `PO3SquareTransformPacketCertificate` landing
 surface.  If the variable packet branch is growing or ill-conditioned, that is
 the route obstruction to record.
+
+## Follow-up correction
+
+The variable packet capture consumer is now frozen in Lean as
+
+```text
+po3_variable_comparable_packet_capture_of_stable_projection
+```
+
+The next live target is therefore not another abstract capture theorem.  It is
+the analytic conditioning theorem
+
+```text
+EndpointRowStableProjectionOrRouteKill
+```
+
+which must prove a stable projection estimate for the selected endpoint rows
+or record route-kill from growing packets, wrong kernel dimension, or
+ill-conditioned/confluent clusters.  See
+`h1_po3_square_2d3_variable_packet_capture_2026_04_25.md`.

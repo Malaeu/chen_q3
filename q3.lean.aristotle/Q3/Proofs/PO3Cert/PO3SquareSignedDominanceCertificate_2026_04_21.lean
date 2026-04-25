@@ -257,6 +257,32 @@ theorem po3_endpoint_row_log_mass_mirror_control
         exact add_le_add (le_trans hnear_eta hnear_scale) hfar_scale
     _ = ε * scale k := by ring
 
+/-! ## Variable-packet capture consumer -/
+
+/-- `VariableComparablePacketCapture` as a stable-projection consumer.
+
+This is the finite-dimensional linear-algebra core of the current
+`PO3-square.2d3` threshold-packet plan.  A future analytic argument supplies:
+
+- a row operator `V` for the selected endpoint-adaptive rows;
+- a projection `Proj` onto the expected Vandermonde/Hermite kernel;
+- a stability constant `C`, analytically `1 / sigma_min^+(V)`;
+- the row equation `V q = ε`.
+
+Then the packet vector `q` is captured up to the row error amplified by the
+conditioning constant.  The real hard input is therefore exactly
+`C_k * ‖ε_k‖ -> 0`, not another shell redesign. -/
+theorem po3_variable_comparable_packet_capture_of_stable_projection
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    (V : E →L[ℂ] F) (Proj : E →L[ℂ] E) (C : ℝ)
+    (hstable : ∀ x : E, ‖x - Proj x‖ ≤ C * ‖V x‖)
+    (q : E) (ε : F)
+    (hrow : V q = ε) :
+    ‖q - Proj q‖ ≤ C * ‖ε‖ := by
+  simpa [hrow] using hstable q
+
 section
 
 variable {𝕜 : Type*} [NormedField 𝕜]

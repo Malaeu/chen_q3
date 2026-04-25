@@ -223,6 +223,18 @@
   `sigma_min^+(V_k)^(-1) max_p |epsilon_{k,rho_p}| -> 0` or a route kill.
   Detailed target:
   `docs/insights/h1_po3_square_2d3_threshold_exhaustive_packet_2026_04_25.md`.
+- `RH_Maerz_2026` now reduces `VariableComparablePacketCapture` to a stable
+  projection consumer: from `V_k q_k = epsilon_k` and
+  `||q-Proj q|| <= C_k ||V_k q||`, one gets
+  `dist(q_k, range Proj) <= C_k ||epsilon_k||`.
+- Lean shell update: `PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports
+  `po3_variable_comparable_packet_capture_of_stable_projection`, so the
+  remaining live analytic theorem is `EndpointRowStableProjectionOrRouteKill`:
+  prove `C_k ||epsilon_k|| -> 0` for the threshold packet, or route-kill by
+  growing packets, wrong kernel dimension, or ill-conditioned/confluent
+  clusters.  Detailed target:
+  `docs/insights/h1_po3_square_2d3_variable_packet_capture_2026_04_25.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
