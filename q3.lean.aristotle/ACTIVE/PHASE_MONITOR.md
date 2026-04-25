@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / log-loss mirror plus cluster exhaustion
+macro_position: PO3-square.2d3 live wall / threshold-exhaustive packet plus variable capture
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: attack row-cluster exhaustion for endpoint rows
+current_step_title: close threshold-exhaustive packet row errors and decide variable capture
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: prove `RowClusterExhaustion` for the endpoint rows, or record a route-kill via a bounded-local-coordinate exterior competitor or unbounded comparable row-scale support cluster outside `P_k`
-next_verify: rg -n -e "RowClusterExhaustion" -e "bounded-local-coordinate" -e "comparable row-scale" -e "po3_endpoint_row_log_mass_mirror_control" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_log_loss_mirror_control_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
+next_deliverable: close `ThresholdExhaustivePacketRowError` for endpoint rows and then decide `VariableComparablePacketCapture`: bounded/separated packet capture, or a route-kill via growing/ill-conditioned comparable packets
+next_verify: rg -n -e "ThresholdExhaustivePacketRowError" -e "VariableComparablePacketCapture" -e "delta_k" -e "sigma_min" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_threshold_exhaustive_packet_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — log-loss mirror control plus row-cluster exhaustion
+### `PO3-square.2d3` — threshold-exhaustive packet plus variable capture
 
 Goal:
 
@@ -233,6 +233,24 @@ Exact failure criterion:
 - this closes only the shell part of `EndpointRowLogMassMirrorControl`.  The
   remaining analytic blocker is `RowClusterExhaustion`, needed for the main
   `A`-remainder before any Hermite/Vandermonde capture can be used.
+
+## Result (2026-04-25) — threshold packet replaces fixed cluster exhaustion
+
+- the latest `RH_Maerz_2026` review rejects fixed finite
+  `RowClusterExhaustion` as an unconditional theorem shape: zero-counting
+  gives `O(log xi_k)` local density, not a fixed finite exhaustive packet;
+- the corrected target is `ThresholdExhaustivePacketRowError`: choose
+  `delta_k` with `delta_k log(2+xi_k)->0` and define `P_k(delta_k)` to contain
+  every row-effective point whose normalized endpoint-row contribution is at
+  least `delta_k` of the row scale;
+- the omitted row-effective mass is then `o(D_{k,rho})` by counting:
+  each omitted point is `< delta_k D_{k,rho}` and there are
+  `O(log(2+xi_k))` of them;
+- after row errors are closed, the remaining live blocker is
+  `VariableComparablePacketCapture`: if the threshold packet is bounded and
+  separated, use the existing finite Vandermonde/Hermite branch; if it grows
+  or becomes ill-conditioned, require a singular-value estimate or record a
+  route kill before residue/Hermite incompatibility is invoked.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 

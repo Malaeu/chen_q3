@@ -235,3 +235,22 @@ isolate RowClusterExhaustion as the hard blocker.
 Once `MirrorRowSmall` is closed under the log-loss condition, the remaining
 route-critical input is exactly `RowClusterExhaustion`, or the route-kill
 obstruction above.
+
+## Follow-up correction
+
+The next `RH_Maerz_2026` review further sharpens this target: fixed finite
+`RowClusterExhaustion` is not the active unconditional theorem shape.  Use the
+threshold-exhaustive packet split instead:
+
+```text
+ThresholdExhaustivePacketRowError
+```
+
+with `delta_k log(2+xi_k)->0`, followed by the separate blocker
+
+```text
+VariableComparablePacketCapture
+```
+
+for the possibly growing or ill-conditioned comparable packet.  See
+`h1_po3_square_2d3_threshold_exhaustive_packet_2026_04_25.md`.

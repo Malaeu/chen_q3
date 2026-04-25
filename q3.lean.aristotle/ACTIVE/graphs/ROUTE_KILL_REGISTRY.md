@@ -95,6 +95,24 @@ Sharper split:
   contribution, or an unbounded number of comparable row-scale support points
   outside the selected finite packet.
 
+Latest correction:
+
+- fixed finite `RowClusterExhaustion` is no longer the active unconditional
+  theorem shape.  The active row-error target is
+  `ThresholdExhaustivePacketRowError`: choose `delta_k` with
+  `delta_k log(2+xi_k)->0` and include every row-effective point with
+  normalized endpoint-row contribution at least `delta_k` of the row scale;
+- this threshold packet closes the omitted row-effective `A`-mass by the
+  `O(log xi_k)` zero-counting bound, but it may have variable size;
+- the new live kill criterion is `VariableComparablePacketCapture`: kill the
+  fixed finite Vandermonde route if every admissible threshold gives
+  `|P_k(delta_k)|->infty`, or if the endpoint-row matrix for the threshold
+  packet is too ill-conditioned, i.e.
+  `sigma_min^+(V_k)` fails to dominate the normalized row error
+  `max_p |epsilon_{k,rho_p}|`;
+- if the threshold packet is bounded and separated, the existing finite
+  Vandermonde/Hermite branch remains the next consumer.
+
 ## Re-entry rule
 
 A killed route can be reopened only if there is a new explicit ingredient that

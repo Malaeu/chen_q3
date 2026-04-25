@@ -206,6 +206,23 @@
   `po3_endpoint_row_log_mass_mirror_control`.  This freezes the consumer part
   of `EndpointRowLogMassMirrorControl`; the analytic input still has to prove
   the log-loss row-mass bound and `eta_{k,rho} log(2+xi_k)->0`.
+- latest `RH_Maerz_2026` review corrects the next target again: fixed finite
+  `RowClusterExhaustion` is not the right unconditional theorem shape.  Replace
+  it by `ThresholdExhaustivePacketRowError`: choose
+  `delta_k log(2+xi_k)->0` and let `P_k(delta_k)` contain every row-effective
+  support point whose normalized endpoint-row contribution is at least
+  `delta_k` of the row scale.
+- then the omitted row-effective `A`-mass is `o(D_{k,rho})` by the local
+  zero-counting size bound: each omitted point is `< delta_k D_{k,rho}` and
+  there are only `O(log(2+xi_k))` row-effective points.
+- the true next blocker is `VariableComparablePacketCapture`: if
+  `|P_k(delta_k)|` stays bounded and the local coordinates remain separated,
+  the old finite Vandermonde/Hermite capture branch applies; if the packet
+  grows or the endpoint-row matrix becomes ill-conditioned, the route needs a
+  singular-value estimate
+  `sigma_min^+(V_k)^(-1) max_p |epsilon_{k,rho_p}| -> 0` or a route kill.
+  Detailed target:
+  `docs/insights/h1_po3_square_2d3_threshold_exhaustive_packet_2026_04_25.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.
