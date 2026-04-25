@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / isolated edge-packet mass control
+macro_position: PO3-square.2d3 live wall / log-loss mirror plus cluster exhaustion
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: prove or kill isolated edge-packet control for endpoint rows
+current_step_title: prove log-loss mirror control; isolate row-cluster exhaustion
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: prove `EndpointRowAbsoluteMassControl_from_packet_isolation` from an exhaustive row-effective packet definition, or exhibit a bounded-local-coordinate exterior competitor showing that the selected packet misses comparable absolute `A`-mass
-next_verify: rg -n -e "EndpointRowAbsoluteMassControl_from_packet_isolation" -e "bounded-local-coordinate" -e "row-effective" -e "exterior competitor" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_absolute_row_mass_oracle_review_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
+next_deliverable: prove `EndpointRowLogMassMirrorControl` from log-loss zero-counting row mass plus `eta_{k,rho} log(2+xi_k)->0`, and leave `RowClusterExhaustion` as the explicit hard blocker for the main `A`-remainder
+next_verify: rg -n -e "EndpointRowLogMassMirrorControl" -e "RowClusterExhaustion" -e "log-loss" -e "bounded-local-coordinate" q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_log_loss_mirror_control_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — isolated edge-packet control for edge-log endpoint rows
+### `PO3-square.2d3` — log-loss mirror control plus row-cluster exhaustion
 
 Goal:
 
@@ -202,6 +202,23 @@ Exact failure criterion:
   remains comparable to `M_k|m_rho(xi_k)|`;
 - until this fork is resolved, Hermite/Vandermonde residue capture cannot be
   used as a closure argument.
+
+## Result (2026-04-25) — log-loss mirror split replaces unconditional absolute mass
+
+- the sharper audit says `AbsoluteRowMassControl = o(D_{k,rho})` is still too
+  strong from the allowed inputs alone: zero counting gives at most
+  `O(log xi_k)` local row-mass loss and no spacing on the endpoint-row scale;
+- the mirror side should now be attacked by
+  `EndpointRowLogMassMirrorControl`: combine the log-loss absolute row-mass
+  estimate with the stronger pointwise condition
+  `eta_{k,rho} log(2+xi_k)->0`, plus the far mirror tail;
+- the main `A`-remainder is a separate blocker named `RowClusterExhaustion`:
+  every row-scale support point with comparable normalized contribution must
+  be included in `P_k`, or its aggregate contribution must be `o(D_{k,rho})`;
+- the route-kill criterion is now concrete: an omitted
+  bounded-local-coordinate exterior competitor, or an unbounded number of
+  comparable row-scale support points, invalidates the fixed finite
+  Vandermonde packet route at this node.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 

@@ -190,6 +190,17 @@
   `|c_{y_k} A_{I_{k,rho}}(y_k)|` comparable to
   `M_k|m_{k,rho}(xi_k)|`.  Polynomial coefficient decay and zero-counting do
   not exclude this by themselves.
+- sharper correction: zero counting plus `|c_gamma|=O(gamma^-3)` gives only a
+  log-loss local absolute row-mass bound, not `o(D_{k,rho})` for a fixed finite
+  packet.  The mirror side should therefore be split off as
+  `EndpointRowLogMassMirrorControl`: if
+  `eta_{k,rho} log(2+xi_k)->0` and the far mirror tail is small, then
+  `MirrorRowSmall` follows.
+- the remaining main-side blocker is now explicitly `RowClusterExhaustion`:
+  prove that all row-scale comparable support points are included in `P_k`, or
+  record the bounded-local-coordinate exterior competitor / unbounded local
+  comparable cluster as a route kill.  Detailed target:
+  `docs/insights/h1_po3_square_2d3_log_loss_mirror_control_2026_04_25.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

@@ -81,6 +81,20 @@ live branch is therefore the conditional theorem
 `EndpointRowAbsoluteMassControl_from_packet_isolation`: prove exhaustive
 packet isolation, or promote the obstruction above to a route kill.
 
+Sharper split:
+
+- the unconditional `o(D_{k,rho})` absolute-mass route is not the next target;
+  zero counting plus `|c_gamma|=O(gamma^-3)` gives only a log-loss row-mass
+  bound;
+- `MirrorRowSmall` should be pursued through
+  `EndpointRowLogMassMirrorControl`, requiring
+  `eta_{k,rho} log(2+xi_k)->0` plus far mirror-tail control;
+- the remaining kill criterion is `RowClusterExhaustion`: kill the fixed
+  finite Vandermonde packet route if there is either one omitted
+  bounded-local-coordinate exterior competitor with comparable row
+  contribution, or an unbounded number of comparable row-scale support points
+  outside the selected finite packet.
+
 ## Re-entry rule
 
 A killed route can be reopened only if there is a new explicit ingredient that
