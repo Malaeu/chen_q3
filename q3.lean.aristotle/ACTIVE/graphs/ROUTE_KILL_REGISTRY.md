@@ -154,6 +154,17 @@ Orientation-safe endpoint-row limit:
   incorrectly requires earlier-base lower extensions unavailable from the
   frozen wall identity.
 
+Endpoint orientation split:
+
+- the right-edge later-base lower-truncation branch is not killed by the sign
+  change; it should use fractional exponents `0<=beta<=1` and generalized
+  Vandermonde rows `exp(beta t_i)`;
+- kill only the false right-edge integer-row theorem shape asking for
+  `alpha=-p` with integer `p>1`, because lower truncation can remove at most
+  one full long-side logarithmic slope;
+- left-edge upper extension remains valid for arbitrary fixed integer rows
+  `p>=0`, subject to the endpoint-row product-asymptotic estimates.
+
 ## Re-entry rule
 
 A killed route can be reopened only if there is a new explicit ingredient that

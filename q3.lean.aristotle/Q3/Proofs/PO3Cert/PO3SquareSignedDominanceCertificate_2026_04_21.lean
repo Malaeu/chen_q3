@@ -355,6 +355,54 @@ theorem po3_endpoint_row_multiplier_uniform_asymptotic_of_theta_slope
     cert.uniform_multiplier_asymptotic :=
   cert.uniform_multiplier_asymptotic_proof
 
+/-- Left-edge upper-extension specialization marker.
+
+This is the consumer name for the concrete orientation where
+`Theta/Lambda -> p`, hence the endpoint-row multiplier limit is `exp(-p t)`.
+The analytic proof supplies the certificate. -/
+structure PO3LeftEdgeUpperExtensionAsymptoticCertificate where
+  product : PO3EndpointRowProductAsymptoticCertificate
+  alpha_is_integer_row : Prop
+  exp_neg_row_limit : Prop
+  exp_neg_row_limit_proof : exp_neg_row_limit
+
+theorem po3_left_edge_upper_extension_endpoint_row_asymptotic
+    (cert : PO3LeftEdgeUpperExtensionAsymptoticCertificate) :
+    cert.exp_neg_row_limit :=
+  cert.exp_neg_row_limit_proof
+
+/-- Right-edge later-base lower-truncation specialization marker.
+
+This is the consumer name for the concrete orientation where only bounded
+fractions `beta in [0,1]` are available from later-base lower truncation and
+the row limit is `exp(+ beta t)`. -/
+structure PO3RightEdgeLowerTruncationAsymptoticCertificate where
+  product : PO3EndpointRowProductAsymptoticCertificate
+  beta_in_unit_interval : Prop
+  exp_pos_fractional_row_limit : Prop
+  exp_pos_fractional_row_limit_proof : exp_pos_fractional_row_limit
+
+theorem po3_right_edge_lower_truncation_endpoint_row_asymptotic
+    (cert : PO3RightEdgeLowerTruncationAsymptoticCertificate) :
+    cert.exp_pos_fractional_row_limit :=
+  cert.exp_pos_fractional_row_limit_proof
+
+/-- Right-edge lower-truncation obstruction marker.
+
+Later-base lower truncation can remove at most one full long-side logarithmic
+slope, so it cannot provide right-edge rows with integer slopes `p > 1`.
+The analytic proof should instantiate this certificate when ruling out the
+false right-edge integer-row theorem shape. -/
+structure PO3RightEdgeLowerTruncationRatioLeOneCertificate where
+  lower_truncation_geometry : Prop
+  ratio_le_one_asymptotically : Prop
+  ratio_le_one_asymptotically_proof : ratio_le_one_asymptotically
+
+theorem po3_right_edge_lower_truncation_ratio_le_one_asymptotically
+    (cert : PO3RightEdgeLowerTruncationRatioLeOneCertificate) :
+    cert.ratio_le_one_asymptotically :=
+  cert.ratio_le_one_asymptotically_proof
+
 section
 
 variable {𝕜 : Type*} [NormedField 𝕜]

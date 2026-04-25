@@ -261,6 +261,20 @@
   show the theta-slope and second-order estimates for the concrete endpoint
   rows.  Detailed target:
   `docs/insights/h1_po3_square_2d3_endpoint_row_product_asymptotic_2026_04_25.md`.
+- concrete orientation corollaries are now split: left-edge upper extension
+  gives integer rows `exp(-p t)`, while right-edge later-base lower truncation
+  gives only fractional rows `exp(beta t)` with `0<=beta<=1`.
+- this does not kill right-edge capture: choose distinct fractions
+  `0=beta_0<...<beta_{n-2}<=1` and use the generalized Vandermonde matrix
+  `exp(beta_j t_i)`.  It only kills the false right-edge integer-row theorem
+  shape `alpha=-p` for `p>1`.
+- Lean shell update: `PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now contains marker consumers
+  `po3_left_edge_upper_extension_endpoint_row_asymptotic`,
+  `po3_right_edge_lower_truncation_endpoint_row_asymptotic`, and
+  `po3_right_edge_lower_truncation_ratio_le_one_asymptotically`.
+  Detailed target:
+  `docs/insights/h1_po3_square_2d3_endpoint_row_orientation_corollaries_2026_04_25.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

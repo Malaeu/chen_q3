@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / orientation-safe endpoint-row product asymptotic
+macro_position: PO3-square.2d3 live wall / endpoint orientation corollaries
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: prove orientation-safe endpoint-row product asymptotic
+current_step_title: prove endpoint orientation corollaries and right-edge obstruction
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: prove `po3_endpoint_row_multiplier_uniform_asymptotic_of_theta_slope`: local tube plus `Theta/Lambda -> alpha_p` plus second-order smallness gives `m_rho(xi+t/Lambda)/m_rho(xi)->exp(-alpha_p t)` uniformly, with left/right endpoint signs handled explicitly
-next_verify: rg -n -e "po3_endpoint_row_multiplier_uniform_asymptotic_of_theta_slope" -e "PO3EndpointRowProductAsymptoticCertificate" -e "alpha_p" -e "orientation" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_endpoint_row_product_asymptotic_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
+next_deliverable: prove endpoint orientation corollaries: left-edge upper extension gives integer rows `exp(-p t)`, right-edge later-base lower truncation gives only fractional rows `exp(beta t)` for `0<=beta<=1`, and right-edge integer `p>1` is a false theorem shape
+next_verify: rg -n -e "po3_left_edge_upper_extension_endpoint_row_asymptotic" -e "po3_right_edge_lower_truncation_endpoint_row_asymptotic" -e "po3_right_edge_lower_truncation_ratio_le_one_asymptotically" -e "fractional" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_endpoint_row_orientation_corollaries_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — orientation-safe endpoint-row product asymptotic
+### `PO3-square.2d3` — endpoint orientation corollaries
 
 Goal:
 
@@ -301,6 +301,20 @@ Exact failure criterion:
   assumptions: edge-log scale, no moved pole in the local tube,
   `Theta/Lambda -> alpha_p`, and
   `S/|Lambda|^2 -> 0`.
+
+## Result (2026-04-25) — endpoint orientation corollaries split
+
+- left-edge upper extension realizes integer rows: with
+  `I_{k,p}=[L_k,U_k+s_{k,p}]`, choose `s_{k,p}` by first crossing of the
+  added upper harmonic sum; then `Theta/Lambda -> p` and the row limit is
+  `exp(-p t)`;
+- right-edge later-base lower truncation realizes only bounded fractional
+  rows: with `I_{k,beta}=[L_k+s_{k,beta},U_k]`, `0<=beta<=1`, choose
+  `s_{k,beta}` by first crossing of the removed lower harmonic sum; then
+  `Theta/Lambda -> -beta` and the row limit is `exp(+beta t)`;
+- this is enough for generalized Vandermonde capture using distinct
+  `beta_j in [0,1]`, but it kills the false right-edge integer-row shape
+  `alpha=-p` for `p>1`.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 
