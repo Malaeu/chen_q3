@@ -143,6 +143,17 @@ Bounded-separated branch:
   separate confluent/Hermite renormalization and proof that amplified row
   errors still tend to zero.
 
+Orientation-safe endpoint-row limit:
+
+- do not kill the route merely because the right-edge later-base row gives
+  `exp(+p t)` instead of `exp(-p t)`;
+- the safe theorem uses `exp(-alpha_p t)`, with `alpha_p` determined by
+  `Theta_{k,p}/Lambda_k`;
+- record a route-kill only if the required endpoint rows fail the local tube,
+  theta-slope, or second-order smallness hypotheses, or if a right-edge proof
+  incorrectly requires earlier-base lower extensions unavailable from the
+  frozen wall identity.
+
 ## Re-entry rule
 
 A killed route can be reopened only if there is a new explicit ingredient that

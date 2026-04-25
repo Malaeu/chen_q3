@@ -249,6 +249,18 @@
   `p`; clustered packets are conditional fallback, and growing packets are
   route-kill without a quantitative singular-gap theorem.  Detailed target:
   `docs/insights/h1_po3_square_2d3_bounded_separated_projection_2026_04_25.md`.
+- sign correction for the endpoint-row asymptotic: the safe theorem is
+  `m_rho(xi+t/Lambda)/m_rho(xi) -> exp(-alpha_p t)`, where
+  `alpha_p=Theta_{k,p}(xi)/Lambda_k(xi)` in the limit.  Left-edge upper
+  extensions usually give `alpha_p=p`, but right-edge later-base lower
+  truncations usually give `alpha_p=-p`, i.e. rows `exp(+p t)`.
+- Lean shell update: `PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now contains `PO3EndpointRowProductAsymptoticCertificate` and
+  `po3_endpoint_row_multiplier_uniform_asymptotic_of_theta_slope`.  This
+  freezes the orientation-safe product-model target; the analytic proof must
+  show the theta-slope and second-order estimates for the concrete endpoint
+  rows.  Detailed target:
+  `docs/insights/h1_po3_square_2d3_endpoint_row_product_asymptotic_2026_04_25.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

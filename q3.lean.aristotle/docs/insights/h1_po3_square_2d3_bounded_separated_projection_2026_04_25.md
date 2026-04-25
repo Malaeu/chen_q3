@@ -37,22 +37,25 @@ P_k(\delta_k)=\{x_{k,1},\dots,x_{k,n_k}\},
 \qquad n_k\le n_0.
 ```
 
-Define local coordinates and exponential nodes by
+Define local coordinates by
 
 ```tex
-t_{k,i}:=\Lambda_k(\xi_k)(x_{k,i}-\xi_k),
-\qquad
-z_{k,i}:=e^{-t_{k,i}}.
+t_{k,i}:=\Lambda_k(\xi_k)(x_{k,i}-\xi_k).
 ```
 
-Assume bounded separated nodes:
+The endpoint-row product limit is orientation-sensitive.  With row slopes
+`alpha_p`, the row model is
 
 ```tex
-|z_{k,i}|\in[r_0,R_0],
-\qquad
-|z_{k,i}-z_{k,j}|\ge\Delta_0>0
-\quad(i\ne j).
+V_{k,p,i}\to e^{-\alpha_p t_{k,i}}.
 ```
+
+For left-edge upper extensions usually `alpha_p=p`, so the nodes are
+`e^{-t_{k,i}}`.  For right-edge later-base lower truncations usually
+`alpha_p=-p`, so the nodes are `e^{t_{k,i}}`.  Both are valid Vandermonde
+systems.
+
+Assume the corresponding exponential nodes are bounded and separated.
 
 Choose rows `rho_{k,0},...,rho_{k,n_k-2}` and define
 
@@ -64,14 +67,15 @@ V_{k,p,i}:=
 The endpoint-row asymptotic target is
 
 ```tex
-\max_{p,i}|V_{k,p,i}-z_{k,i}^p|\to0.
+\max_{p,i}|V_{k,p,i}-e^{-\alpha_p t_{k,i}}|\to0.
 ```
 
 Then the rectangular Vandermonde matrix
 
-```tex
-W_{k,p,i}:=z_{k,i}^p,\qquad 0\le p\le n_k-2,
-```
+with rows `e^{-\alpha_p t_i}`.  In the standard left-edge case this is
+`W_{k,p,i}=z_{k,i}^p` with `z_{k,i}=e^{-t_{k,i}}`; in the right-edge
+later-base truncation case it is the same Vandermonde form with
+`z_{k,i}=e^{t_{k,i}}`.
 
 has rank `n_k-1` and a one-dimensional finite-difference kernel.  A generator
 is
@@ -119,7 +123,7 @@ The real Gamma/product work in this branch is the uniform row limit
 ```tex
 \frac{m_{\rho_{k,p}}(\xi_k+t/\Lambda_k(\xi_k))}
      {m_{\rho_{k,p}}(\xi_k)}
-\to e^{-pt}
+\to e^{-\alpha_p t}
 ```
 
 uniformly for
@@ -153,7 +157,7 @@ where
 Endpoint-adaptive row choice must give
 
 ```tex
-\Theta_{k,p}(\xi_k)/\Lambda_k(\xi_k)\to p,
+\Theta_{k,p}(\xi_k)/\Lambda_k(\xi_k)\to\alpha_p,
 ```
 
 and the second-order term must be `o(1)` uniformly for bounded
@@ -225,4 +229,6 @@ The record stores the proof-facing assumptions:
 - stable projection estimate.
 
 The next analytic proof must supply this certificate for the real endpoint
-rows, or route-kill by one of the obstructions above.
+rows, using the orientation-safe product asymptotic
+`po3_endpoint_row_multiplier_uniform_asymptotic_of_theta_slope`, or route-kill
+by one of the obstructions above.

@@ -323,6 +323,38 @@ theorem po3_endpoint_rows_stable_projection_of_bounded_separated_packet
   po3_variable_comparable_packet_capture_of_stable_projection
     cert.V cert.Proj cert.C cert.stable_projection q ε hrow
 
+/-- Orientation-safe product asymptotic certificate for endpoint-row
+multipliers.
+
+The real endpoint rows may have either sign depending on whether the packet is
+near the left or right edge of the pole block.  Thus the row limit is recorded
+with a general slope parameter `alpha`, not hardcoded as `p`.
+
+Mathematically this packages the product-model statement:
+
+`m_{k,p}(xi_k + t/Lambda_k) / m_{k,p}(xi_k) -> exp(-alpha_p t)`,
+
+uniformly for bounded row indices and compact `t`-ranges, assuming the
+theta-slope ratio, local tube, and second-order bounds. -/
+structure PO3EndpointRowProductAsymptoticCertificate where
+  alpha : ℕ → ℂ
+  edge_log_scale : Prop
+  local_tube : Prop
+  theta_slope : Prop
+  second_order_small : Prop
+  uniform_multiplier_asymptotic : Prop
+  uniform_multiplier_asymptotic_proof : uniform_multiplier_asymptotic
+
+/-- Marker theorem for the orientation-safe endpoint-row multiplier limit.
+
+This is intentionally a certificate consumer: the analytic proof of the
+product expansion belongs to the transform-side wall, while this file records
+the exact statement shape needed by the bounded-separated Vandermonde branch. -/
+theorem po3_endpoint_row_multiplier_uniform_asymptotic_of_theta_slope
+    (cert : PO3EndpointRowProductAsymptoticCertificate) :
+    cert.uniform_multiplier_asymptotic :=
+  cert.uniform_multiplier_asymptotic_proof
+
 section
 
 variable {𝕜 : Type*} [NormedField 𝕜]

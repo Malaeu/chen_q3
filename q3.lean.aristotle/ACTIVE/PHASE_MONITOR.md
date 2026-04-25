@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / bounded-separated endpoint-row projection branch
+macro_position: PO3-square.2d3 live wall / orientation-safe endpoint-row product asymptotic
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: prove bounded-separated endpoint-row projection or route-kill
+current_step_title: prove orientation-safe endpoint-row product asymptotic
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: prove `EndpointRowsStableProjection_boundedSeparated`: bounded threshold packet plus separated exponential nodes imply endpoint-row convergence to a Vandermonde block and a uniform stable projection constant, or route-kill because threshold packets are necessarily clustered/growing
-next_verify: rg -n -e "po3_endpoint_rows_stable_projection_of_bounded_separated_packet" -e "EndpointRowsStableProjection_boundedSeparated" -e "bounded separated" -e "Vandermonde" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_bounded_separated_projection_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
+next_deliverable: prove `po3_endpoint_row_multiplier_uniform_asymptotic_of_theta_slope`: local tube plus `Theta/Lambda -> alpha_p` plus second-order smallness gives `m_rho(xi+t/Lambda)/m_rho(xi)->exp(-alpha_p t)` uniformly, with left/right endpoint signs handled explicitly
+next_verify: rg -n -e "po3_endpoint_row_multiplier_uniform_asymptotic_of_theta_slope" -e "PO3EndpointRowProductAsymptoticCertificate" -e "alpha_p" -e "orientation" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_endpoint_row_product_asymptotic_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -64,7 +64,7 @@ If a parallel worker is used during this phase, it should:
 
 ## Current step
 
-### `PO3-square.2d3` — bounded-separated endpoint-row projection branch
+### `PO3-square.2d3` — orientation-safe endpoint-row product asymptotic
 
 Goal:
 
@@ -285,6 +285,22 @@ Exact failure criterion:
 - clustered bounded packets are a conditional confluent/Hermite fallback with
   error amplification, while growing packets are route-kill unless an explicit
   quantitative singular-gap theorem is proved.
+
+## Result (2026-04-25) — endpoint-row product asymptotic must be orientation-safe
+
+- the next review corrects a sign hazard: the endpoint-row limit is
+  `exp(-alpha_p t)`, not always `exp(-p t)`;
+- left-edge upper extensions usually have `alpha_p=p`, while right-edge
+  later-base lower truncations usually have `alpha_p=-p`, producing rows
+  `exp(+p t)`;
+- this does not hurt Vandermonde capture, because it only changes the nodes
+  from `exp(-t_i)` to `exp(t_i)`, but the theorem statement must record the
+  orientation;
+- the active theorem shape is now the product-model certificate
+  `po3_endpoint_row_multiplier_uniform_asymptotic_of_theta_slope`, with
+  assumptions: edge-log scale, no moved pole in the local tube,
+  `Theta/Lambda -> alpha_p`, and
+  `S/|Lambda|^2 -> 0`.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 
