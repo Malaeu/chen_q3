@@ -177,6 +177,17 @@ Fractional right-edge Vandermonde condition:
   canonical certificate unless it is explicitly shown to imply separation of
   `exp(t_i/(n-1))` on the active compact set.
 
+Stable adaptive shifts reconciliation:
+
+- generic future-slope-adapted shifts are a support packet, not a new escape
+  from the orientation-safe/fractional endpoint-row pipeline;
+- after stable rows are selected, the live kill criterion is row-error
+  conditioning: kill the capture branch if the normalized shifted errors do
+  not satisfy `C_k ||epsilon_k|| -> 0`;
+- if only component row errors are controlled, include the
+  `sqrt(r_k) max_rho |epsilon_{k,rho}|` loss before comparing to the stable
+  projection constant.
+
 ## Re-entry rule
 
 A killed route can be reopened only if there is a new explicit ingredient that

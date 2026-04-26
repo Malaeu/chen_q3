@@ -286,6 +286,15 @@
   and `po3_fractional_right_edge_capture_route_kill_of_node_collapse`.
   Detailed target:
   `docs/insights/h1_po3_square_2d3_fractional_vandermonde_projection_2026_04_25.md`.
+- the latest stable-adaptive-shift review is useful but support-only: it
+  recovers the old fact that future-slope-adapted shifts give exponential
+  Vandermonde rows, but this is already subsumed by the orientation-safe
+  product theorem and the right-edge fractional Vandermonde certificate.
+  The active blocker is now `PO3-square.2d3.shifted-error-after-stable-rows`:
+  prove normalized row errors `epsilon_{k,rho}->0` for the selected stable
+  endpoint rows, or route-kill if `C_k ||epsilon_k||` does not tend to zero.
+  Detailed reconciliation:
+  `docs/insights/h1_po3_square_2d3_stable_adaptive_shifts_reconciled_2026_04_27.md`.
 
 
 - **Lean build hangs на MeasureTheory/HasSum**: `simpa using` убивает перфоманс → `docs/insights/lean_simpa_performance_fix_2026_01_19.md`.

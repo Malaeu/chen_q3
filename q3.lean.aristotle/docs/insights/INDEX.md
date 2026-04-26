@@ -57,6 +57,7 @@ Files:
 - h1_po3_square_2d3_log_loss_mirror_control_2026_04_25.md
 - h1_po3_square_2d3_mirror_row_small_audit_2026_04_24.md
 - h1_po3_square_2d3_shift_orientation_audit_2026_04_24.md
+- h1_po3_square_2d3_stable_adaptive_shifts_reconciled_2026_04_27.md
 - h1_po3_square_2d3_threshold_exhaustive_packet_2026_04_25.md
 - h1_po3_square_2d3_two_endpoint_shifted_error_2026_04_24.md
 - h1_po3_square_2d3_variable_packet_capture_2026_04_25.md

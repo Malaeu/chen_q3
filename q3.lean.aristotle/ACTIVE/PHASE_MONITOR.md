@@ -5,13 +5,13 @@ phase: H1_real_proof_attack
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH
-macro_position: PO3-square.2d3 live wall / fractional right-edge Vandermonde projection
+macro_position: PO3-square.2d3 live wall / shifted row-error after stable endpoint rows
 main_kill_gate: the route fails if the real transform-side Gamma tower admits a genuine infinite-support signed self-cancellation that defeats rightmost dominance versus mirror suppression
 kill_writeback: q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md
 rollback_target_if_killed: rollback to the last real branch point H-bridge vs PSD-pd in PROJECT_ORCHESTRATOR.md
 current_lane: A
 current_step_id: PO3-square.2d3
-current_step_title: prove fractional right-edge Vandermonde projection or node-collapse route-kill
+current_step_title: prove shifted row-error smallness after stable endpoint rows
 current_owner: local-agent
 current_artifact: Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean
 worker_protocol: q3.lean.aristotle/ACTIVE/AGENT_PROTOCOL.md
@@ -23,8 +23,8 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: prove/consume right-edge fractional Vandermonde stable projection: with `beta_j=j/(n-1)`, rows become ordinary Vandermonde in `y_i=exp(t_i/(n-1))`; if these fractional nodes collapse and no confluent replacement exists, record route-kill
-next_verify: rg -n -e "PO3FractionalVandermondeStableProjectionCertificate" -e "po3_endpoint_rows_stable_projection_of_fractional_right_edge_vandermonde" -e "po3_fractional_right_edge_capture_route_kill_of_node_collapse" -e "exp\\(t_i/\\(n-1\\)\\)" q3.lean.aristotle/Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/docs/insights/h1_po3_square_2d3_fractional_vandermonde_projection_2026_04_25.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
+next_deliverable: prove normalized shifted row-error smallness `epsilon_{k,rho}->0` for the selected stable endpoint rows, using threshold-exhaustive packet selection plus log-loss mirror control; if `C_k ||epsilon_k||` does not tend to zero, record route-kill before residue/Hermite capture
+next_verify: rg -n -e "stable adaptive shifts are a support packet" -e "PO3-square.2d3.shifted-error-after-stable-rows" -e "epsilon_\\{k,rho\\}->0" -e "C_k \\|\\|epsilon_k\\|\\|" q3.lean.aristotle/docs/insights/h1_po3_square_2d3_stable_adaptive_shifts_reconciled_2026_04_27.md q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
@@ -326,6 +326,20 @@ Exact failure criterion:
 - if the fractional nodes collapse and no confluent stable-projection
   replacement is supplied, the bounded-separated right-edge capture branch is
   unavailable.
+
+## Result (2026-04-27) — stable adaptive shifts reconciled as support
+
+- the latest Proshka `stable adaptive shifts` theorem is mathematically useful
+  but not a new active node: it restates the support mechanism already recorded
+  in `h1_po3_square_2d3_adaptive_shift_constraints_2026_04_24.md`;
+- after the orientation and right-edge fractional-row corrections, generic
+  adaptive shifts must be consumed through the orientation-safe product theorem
+  and the fractional Vandermonde certificate, not as a separate route;
+- the active blocker is therefore the normalized shifted row-error estimate:
+  prove `epsilon_{k,rho}->0` for the selected stable endpoint rows, or record
+  route-kill if `C_k ||epsilon_k||` does not tend to zero;
+- detailed reconciliation:
+  `docs/insights/h1_po3_square_2d3_stable_adaptive_shifts_reconciled_2026_04_27.md`.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 
