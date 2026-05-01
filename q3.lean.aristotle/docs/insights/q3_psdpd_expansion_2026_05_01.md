@@ -232,3 +232,39 @@ Carleson-small with the correct Rayleigh scaling.}
 This is the right PSD-pd version of the "second Bochner" idea: not every
 positive bump is a sound, but every allowed sound is a square, and the primes
 must be small as a sampling operator on that square space.
+
+## Lean landing surface (2026-05-01)
+
+New lightweight module:
+
+```text
+Q3/Proofs/PSD_FormAlgebra.lean
+```
+
+It deliberately avoids importing the heavy Q3 analytic stack.  It freezes the
+finite-form algebra:
+
+```math
+\text{arch floor} + \text{prime cap} + \text{cap}\le\text{floor}
+\Longrightarrow
+\text{difference form is PSD}.
+```
+
+Main exported names:
+
+- `Q3.Proofs.FormPSD`
+- `Q3.Proofs.formDiff`
+- `Q3.Proofs.formDiff_nonneg_of_floor_cap`
+- `Q3.Proofs.formPSD_diff_of_uniform_floor_cap`
+- `Q3.Proofs.formPSD_diff_of_strict_uniform_floor_cap`
+- `Q3.Proofs.formDiff_margin_of_uniform_floor_cap`
+
+Verification:
+
+```text
+cd q3.lean.aristotle && lake env lean Q3/Proofs/PSD_FormAlgebra.lean
+```
+
+This is only the algebraic interface.  The next bridge must instantiate the
+abstract forms with the concrete packet-Rayleigh / Carleson forms and keep the
+`(2M+1)` prime normalization explicit.

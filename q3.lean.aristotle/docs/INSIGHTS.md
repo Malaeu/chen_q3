@@ -10533,6 +10533,11 @@ Update:
   Carleson/RKHS inequality `P_prime <= rho A_arch`, `rho < 1`, on an expanding
   dense square class, with the Rayleigh prime scaling audited for the
   `(2M+1)` normalization.
+- Lightweight Lean landing surface added:
+  `Q3/Proofs/PSD_FormAlgebra.lean`.  It compiles independently and proves the
+  finite-form algebra
+  `arch floor + prime cap + cap <= floor -> difference form PSD`; the concrete
+  packet-Rayleigh/Carleson instantiation remains the next bridge.
 - Control-plane status: this is fallback `PSD-pd` work, not a replacement for
   the active `H-bridge / PO3-square.2d3` phase unless the route is explicitly
   pivoted.
