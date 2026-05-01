@@ -39,6 +39,16 @@
 
 ## Tooling / Checks
 
+- `Q3_PSDpd_Expansion` Class 1 audit: current shifted Fejer x heat facts are
+  scalar/`basis0` only (`prime_rayleigh_shift_le_rho_oneK`,
+  `prime_term_phi_shift_le_rho_oneK`) and do not yet give the full-vector
+  square-space cap needed by `PSD-pd`.  The next exact Lean target is the
+  shifted op-norm chain
+  `T_P_comp_real_shift_opNorm_le_weight_sum ->
+  shifted_rkhs_cap_rayleigh_of_weight_sum`, followed by a scale check that
+  `rho_oneK K` remains below the Archimedean floor on the chosen compact
+  exhaustion.  Detailed note:
+  `docs/insights/q3_psdpd_class1_shifted_cap_audit_2026_05_01.md`.
 
 - `PO3-square.2d3` is now narrowed to one exact hard blocker:
   the lower packaging is honestly frozen in

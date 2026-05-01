@@ -105,6 +105,7 @@ Files:
 - proven_assets_inventory_2026_01_14.md
 - psd_packet_kernel_frontier_2026_03_07.md
 - psd_pd_smallest_block_step_2026_03_16.md
+- q3_psdpd_class1_shifted_cap_audit_2026_05_01.md
 - q3_psdpd_expansion_2026_05_01.md
 - q_zeta_core_short_circuit_sprint_2026_03_15.md
 - q_zeta_core_skeleton_2026_03_15.md

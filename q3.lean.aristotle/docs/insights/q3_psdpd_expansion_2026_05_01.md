@@ -259,6 +259,45 @@ Main exported names:
 - `Q3.Proofs.formPSD_diff_of_strict_uniform_floor_cap`
 - `Q3.Proofs.formDiff_margin_of_uniform_floor_cap`
 
+## Class 1 audit: shifted cap frontier (2026-05-01)
+
+Detailed note:
+
+```text
+docs/insights/q3_psdpd_class1_shifted_cap_audit_2026_05_01.md
+```
+
+Current repository status:
+
+- shifted scalar/basis0 facts exist:
+  `prime_rayleigh_shift_le_rho_oneK`, `prime_term_phi_shift_le_rho_oneK`;
+- shifted Q-identification exists:
+  `T_P_comp_real_shift`, `prime_rayleigh_eq_shift`, `rayleigh_Q_eq_Q_shift`;
+- unshifted full-vector op-norm route exists:
+  `T_P_comp_real_opNorm_le_weight_sum`,
+  `rkhs_cap_rayleigh_of_weight_sum`;
+- shifted full-vector op-norm route is not yet present.
+
+Therefore the first real Class 1 target is not mixed-scale density.  It is the
+shifted operator cap:
+
+```text
+T_P_comp_real_shift_opNorm_le_weight_sum
+shifted_rkhs_cap_rayleigh_of_weight_sum
+```
+
+Only after that cap exists should we instantiate `PSD_FormAlgebra` on shifted
+packet blocks.  The scale bound also has to be checked honestly, because the
+current shifted scalar cap lands at
+
+```math
+\rho_{\mathrm{oneK}}(K)
+=
+\exp(8\pi^2 t_{\mathrm{rkhs\_cap}}K^2)\rho_{\mathrm{one}},
+```
+
+which is K-dependent and not automatically below the Archimedean floor.
+
 Verification:
 
 ```text
