@@ -174,3 +174,31 @@ cleanly, instantiate the finite PSD algebra:
 ```
 
 on the Class 1 shifted packet block.
+
+## Implementation audit (same session)
+
+An initial Lean patch was drafted with the intended theorem names:
+
+- `T_P_comp_real_shift_opNorm_le_weight_sum`;
+- `shifted_rkhs_cap_rayleigh_of_weight_sum`.
+
+The draft copied the existing unshifted Schur/row-sum proof pattern with
+`fejer_heat_window` replaced by `phi_shift`.
+
+It was **not integrated**.  The reason was not a local proof failure; targeted
+checks stalled while reading the heavy import layer around `Q3.Basic.Defs`, and
+even the already-existing `T_P_comp_utils.lean` showed the same behavior in
+this session.  Under the project workflow, unverified Lean must not enter the
+mainline.
+
+Safe next implementation path:
+
+1. move only the lightweight shifted definitions
+   `phi_shift`, `T_P_comp_shift`, `T_P_comp_real_shift` into a small import
+   layer;
+2. keep `g_shift`, `P_A_shift`, and shifted periodization proofs in the
+   heavier `ShiftedWindows`/`Rayleigh_Q_identification` layer;
+3. verify that lightweight layer first;
+4. only then add the shifted Schur/op-norm proof packet.
+
+This is an import-architecture issue, not a change to the mathematical target.
