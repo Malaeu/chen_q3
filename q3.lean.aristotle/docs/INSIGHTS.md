@@ -10517,3 +10517,22 @@ Update:
   `lake env lean Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
   and
   `lake build Q3.Proofs.PO3Cert`.
+
+## Synthesis (2026-05-01, in progress) — `Q3_PSDpd_Expansion`
+
+- New PSD-pd repair packet recorded in
+  `docs/insights/q3_psdpd_expansion_2026_05_01.md`.
+- Verdict: the broad pointwise cone `C^+_{even,c}` remains dead; the correct
+  fallback target is the autocorrelation / positive-definite cone
+  `W_K^{pd} = closure cone {psi * widetilde psi}`.
+- The useful new sharpening is that autocorrelation cannot create a free
+  isolated prime spike: a prime-separation hit carries central mass. This is
+  the structural tax that may let the Archimedean square dominate the prime
+  sampling operator.
+- The next PSD-pd micro-frontier is not another scalar positivity slogan but a
+  Carleson/RKHS inequality `P_prime <= rho A_arch`, `rho < 1`, on an expanding
+  dense square class, with the Rayleigh prime scaling audited for the
+  `(2M+1)` normalization.
+- Control-plane status: this is fallback `PSD-pd` work, not a replacement for
+  the active `H-bridge / PO3-square.2d3` phase unless the route is explicitly
+  pivoted.
