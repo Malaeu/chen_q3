@@ -10755,3 +10755,28 @@ Update:
 - Recommended next move: Step 17 interval/proof-grade certificate for the
   same-profile branch, starting from `k_spline=9`, `ell=0.30`, `delta=0.25`,
   with `k_spline=11`, `ell=0.30`, `delta=0.25` as the higher-margin backup.
+
+## Result (2026-05-03, in progress) — `Step17CertificateExtraction`
+
+- Step 17 finite-certificate extraction script added:
+  `scripts/q3_psdpd_step17_extract_certificate.py`.
+- Result note recorded in
+  `docs/insights/q3_psdpd_step17_certificate_extraction_2026_05_03.md`.
+- Primary same-profile candidate:
+  `k_spline=11`, `ell=0.30`, `delta=0.25`, `kappa=3.25`, `theta=1e-4`.
+- Primary result:
+  `eig_min(C,G)≈1.83e-4`, `eig_min(R_k,G)≈1.35e-1`,
+  `eig_min(D_theta,G)≈1.15e-4`, and relative margin `≈2.70e-4`, where
+  `D_theta=C-theta R_k`.
+- The primary kappa scan over `2.50..4.25` has 71/71 passing rows for
+  `R_k>0` and `D_theta>0`.
+- Quadrature drift guard passes for the primary candidate.  After subtracting
+  tested drift, the safe lower bounds are
+  `safe_R_lower≈1.353e-1`, `safe_Dtheta_lower≈1.154e-4`, and
+  `safe_C_lower≈1.834e-4`.
+- Control candidate also passes:
+  `k_spline=9`, `ell=0.30`, `delta=0.25`, `kappa=3.075`, `theta=1e-5`, with
+  `safe_Dtheta_lower≈1.316e-5`.
+- Recommended next move: Step 18 interval-certified entries for `A`, `P0`,
+  and `P`, followed by interval LDL/Cholesky certification of
+  `D_theta^circ >= 0`.
