@@ -11218,3 +11218,9 @@ Update:
 - Operational rule: do not rewire `Q3.Main` yet.  First close B-spline matrix
   identification, directed-family instantiation, and global corrected-cone
   positivity.
+- Follow-up expansion: the note now records the full layer-by-layer route:
+  `T0/normalization`, `T0.1`, `T0-pd`, `A1-pd`,
+  `packet-Rayleigh-pd`, `PSD-pd`, `A2`, `LF-pd`, and `G6`.
+- It also records the future integration pattern:
+  add a `PSDpd_GlobalRoute` export, compare it with the current old atom route,
+  and rewire `Q3.Main` only after the PSD-pd route is theorem-complete.
