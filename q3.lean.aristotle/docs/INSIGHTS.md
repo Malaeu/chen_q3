@@ -10914,3 +10914,36 @@ Update:
   exhaustion contract needed to lift finite interval certificates toward the
   target infinite test class, and isolate the Arch tail envelope as a reusable
   analytic lemma.
+
+## Synthesis (2026-05-03, in progress) — `Step23CertificateFamilyExhaustion`
+
+- Step 23 certificate-family contract recorded in
+  `docs/insights/q3_psdpd_step23_certificate_family_exhaustion_2026_05_03.md`.
+- Local semantic search found no existing project theorem that already performs
+  the needed exhaustion.  The useful anchors are:
+  `PSD-pd` as the finite packet-kernel target, the rejected-too-strong
+  `A3-pd` uniform-floor warning, and the `Q_zeta` core rule that finite
+  interval certificates are legitimate backend progress.
+- External sanity search points to standard Galerkin/Cea-style convergence and
+  B-spline quasi-interpolation as the approximation template, but the
+  boundary-null correction and Weil-form topology must be stated in Q3 terms.
+- The proposed finite-level predicate is `FiniteCert(alpha)` for
+  `alpha=(L,k_spline,ell,delta,kappa,theta,T)`, consisting of entry
+  midpoint/radius contracts for `A,P,P0,Q`, penalty SPD guards for
+  `Dtheta+tau_D Q^TQ` and `Rkappa+tau_R Q^TQ`, and exact kappa-split algebra.
+- The first theorem is purely finite-dimensional:
+  if `M+tau Q^TQ` is SPD, then `M` is PSD on `ker Q`.
+- The second theorem identifies a certified finite block with Weil positivity
+  on the corresponding boundary-null B-spline packet space.
+- The exhaustion hinge is boundary-preserving approximation: raw B-spline
+  approximants converge in the form topology, then a two-packet correction
+  kills the two boundary coordinates `H(1/2),H(-1/2)` without losing
+  convergence.
+- The full fallback theorem shape is:
+  finite certified family + boundary-null B-spline exhaustion + Weil-form
+  continuity implies `PSD-pd` on the corrected packet test class.
+- This still does not claim RH; it defines the exact bridge needed before
+  `A2/LF/G6` can be invoked.
+- Recommended next move: Step 24 should formalize the generic finite penalty
+  theorem first.  It is small, reusable, and independent of the analytic
+  zeta/prime/Arch machinery.
