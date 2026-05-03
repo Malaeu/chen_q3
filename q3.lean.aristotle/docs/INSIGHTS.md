@@ -11098,3 +11098,25 @@ Update:
   intentionally empty until the real directed refinement relation is proved.
 - Recommended next move: Step 28 should attack the boundary-null correction
   lemma, because that is the first analytic brick needed for exhaustion.
+
+## Result (2026-05-03, in progress) — `Step28BoundaryNullCorrection`
+
+- Added algebraic boundary-null correction lemma:
+  `Q3/Proofs/PSD_BoundaryNullCorrection.lean`.
+- Main theorem:
+  `boundary_correction_exists`.
+- The theorem proves that if two corrector vectors have invertible two-by-two
+  boundary evaluation matrix, then every vector can be corrected by their span
+  so both boundary functionals vanish.
+- Added `BoundaryCorrectorData` and
+  `boundary_correction_from_data` as the future analytic data receiver.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_BoundaryNullCorrection.lean` passes.
+- Hole scan on the new file has no `sorry`, `admit`, or `exact?`.
+- Result note recorded:
+  `docs/insights/q3_psdpd_step28_boundary_null_correction_2026_05_03.md`.
+- This closes only the algebraic correction core.  It does not yet prove that
+  corrected approximants converge.
+- Recommended next move: Step 29 should prove the small-coefficient convergence
+  layer: if `g_n -> h`, `h` is boundary-null, and the boundary functionals are
+  continuous, then the correction coefficients tend to zero.
