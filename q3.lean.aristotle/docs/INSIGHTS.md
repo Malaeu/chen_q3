@@ -10802,3 +10802,31 @@ Update:
 - Recommended next move: Step 19 Arb/interval entry generator, starting with
   the finite prime matrix `P` and the compact-support exponential-polynomial
   matrix `P0`, then the Arch integral `A` with a sinc-power tail bound.
+
+## Result (2026-05-03, in progress) — `Step19EntryRadii`
+
+- Step 19 entry-radius generator added:
+  `scripts/q3_psdpd_step19_entry_radii.py`.
+- Dependency added:
+  `python-flint>=0.8.0`.
+- Result note recorded in
+  `docs/insights/q3_psdpd_step19_entry_radii_2026_05_03.md`.
+- Primary `k_spline=11`, `ell=0.30`, `delta=0.25` radius CSV generated:
+  `docs/insights/q3_psdpd_step19_entry_radii.csv`.
+- For `k_spline=11`, Arb evaluation of `P` exposes a real midpoint mismatch
+  against the current float power-basis B-spline evaluator:
+  `max rad(P)≈4.69e-5`, `||rad(P)||_2≈3.07e-4`.
+  Step 18 radius-mode therefore fails for `Dtheta` with
+  `safe_Dtheta_lower≈-1.92e-4`, while `Rkappa` still passes with
+  `safe_Rkappa_lower≈1.354e-1`.
+- Control `k_spline=9`, `ell=0.30`, `delta=0.25` radius CSV generated:
+  `docs/insights/q3_psdpd_step19_entry_radii_k9.csv`.
+- For `k_spline=9`, the full Step 19 -> Step 18 radius-mode pipeline passes:
+  `safe_Dtheta_lower≈1.034e-5` and `safe_Rkappa_lower≈1.957e-3`.
+- Interpretation: the penalty guard is healthy.  The new blocker is stable
+  high-degree B-spline midpoint evaluation, especially for the `k_spline=11`
+  branch.
+- Recommended next move: Step 20 should either add a stable B-spline midpoint
+  builder / midpoint CSV contract, or keep `k_spline=9` as the first
+  proof-candidate while replacing `P0` drift radii by proof-grade
+  piecewise exponential-polynomial intervals.
