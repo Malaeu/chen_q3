@@ -336,3 +336,37 @@ The immediate Lean-facing theorem order is:
 - prove PSD transfer from the reduced matrix on `ker Q`;
 - package the finite Step 8 certificate before instantiating bump/Toeplitz
   matrices.
+
+## Prime-Graph SOS follow-up (2026-05-03)
+
+Detailed note:
+
+```text
+docs/insights/q3_psdpd_prime_graph_sos_step9_audit_2026_05_03.md
+```
+
+The prime-shift term has a better certificate form:
+
+```math
+\mathcal P(h)
+=2W_L\|h\|^2-\sum_aw_a\|h-S_a h\|^2.
+```
+
+So on the boundary-null subspace:
+
+```math
+\mathcal W(h)
+=
+\mathcal A(h)+\sum_aw_a\|h-S_a h\|^2-2W_L\|h\|^2.
+```
+
+This yields the concrete Step 9 target:
+
+```math
+\lambda_{\min}(A+\mathcal L_P,G;\ker Q)\ge2W_L.
+```
+
+`PSD_FormAlgebra.lean` now contains the verified abstract algebra for this
+rewrite.  The old A3 bridge cannot yet be used as a finished RH proof because
+it has not been proved for the boundary-null compact-support Hermitian-square
+localizer class with corrected `W^{pd}` closure and explicit prime scaling.

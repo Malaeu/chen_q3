@@ -10567,3 +10567,20 @@ Update:
   `boundaryNull_reduction_form_eq`,
   `psd_on_kernel_of_reduced_psd`, and a finite certificate contract carrying
   `A`, `P`, `Q`, `N`, and the reduced PSD check.
+
+## Result (2026-05-03, in progress) — `PrimeGraphSOS_Step9_Audit`
+
+- Prime-Graph SOS packet recorded in
+  `docs/insights/q3_psdpd_prime_graph_sos_step9_audit_2026_05_03.md`.
+- `Q3/Proofs/PSD_FormAlgebra.lean` now contains the hole-free abstract algebra
+  for the Step 8 rewrite:
+  `qP = 2W*qG - qLap` and `2W*qG <= qA + qLap` imply nonnegativity of
+  `qA - qP`, including the constrained boundary-null form
+  `FormNonnegOn`.
+- Verification passed:
+  `lake env lean Q3/Proofs/PSD_FormAlgebra.lean`.
+- Important audit verdict: the proposed final jump through the old
+  A3/Toeplitz--RKHS theorem is still conditional.  The missing theorem is that
+  A3 positivity applies to the boundary-null compact-support Hermitian-square
+  localizers, with corrected `W^{pd}` closure and explicit `(2M+1)` prime
+  scaling.

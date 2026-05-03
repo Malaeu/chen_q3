@@ -72,4 +72,95 @@ theorem formDiff_margin_of_uniform_floor_cap {ι : Type*}
   unfold formDiff
   linarith [hA v, hP v]
 
+/-- Nonnegativity of a finite form on a constrained subspace/predicate.
+
+This is the lightweight interface needed for boundary-null reductions:
+`Boundary v` can encode constraints such as `H_v(1/2)=H_v(-1/2)=0`. -/
+def FormNonnegOn {ι : Type*} (q : (ι → ℝ) → ℝ)
+    (Boundary : (ι → ℝ) → Prop) : Prop :=
+  ∀ v : ι → ℝ, Boundary v → 0 ≤ q v
+
+/-- Prime-graph SOS certificate form:
+
+`qA + qLap - 2 W qG`.
+
+Analytically this represents
+`Arch energy + prime graph Laplacian energy - mass penalty`. -/
+def primeGraphCert {ι : Type*}
+    (qA qLap qG : (ι → ℝ) → ℝ) (W : ℝ) : (ι → ℝ) → ℝ :=
+  fun v => qA v + qLap v - 2 * W * qG v
+
+/-- Algebraic rewrite behind the prime-graph SOS trick.
+
+If the prime form satisfies
+`qP v = 2 W qG v - qLap v`, then the Arch-minus-prime form equals
+`qA v + qLap v - 2 W qG v`. -/
+lemma formDiff_eq_primeGraphCert_of_prime_sos {ι : Type*}
+    (qA qP qLap qG : (ι → ℝ) → ℝ) (W : ℝ) (v : ι → ℝ)
+    (hsos : qP v = 2 * W * qG v - qLap v) :
+    formDiff qA qP v = primeGraphCert qA qLap qG W v := by
+  unfold formDiff primeGraphCert
+  linarith
+
+/-- A spectral-gap inequality is exactly nonnegativity of the prime-graph
+certificate form. -/
+lemma primeGraphCert_nonneg_of_spectral_gap {ι : Type*}
+    (qA qLap qG : (ι → ℝ) → ℝ) (W : ℝ) (v : ι → ℝ)
+    (hgap : 2 * W * qG v ≤ qA v + qLap v) :
+    0 ≤ primeGraphCert qA qLap qG W v := by
+  unfold primeGraphCert
+  linarith
+
+/-- Boundary-null prime-graph certificate.
+
+This is the abstract Lean landing surface for Step 8:
+on the boundary-null predicate, the prime SOS identity plus the projected
+spectral-gap certificate proves nonnegativity of `qA - qP`. -/
+theorem formNonnegOn_diff_of_primeGraph_cert {ι : Type*}
+    (qA qP qLap qG : (ι → ℝ) → ℝ) (W : ℝ)
+    (Boundary : (ι → ℝ) → Prop)
+    (hsos : ∀ v : ι → ℝ, Boundary v →
+      qP v = 2 * W * qG v - qLap v)
+    (hcert : ∀ v : ι → ℝ, Boundary v →
+      0 ≤ primeGraphCert qA qLap qG W v) :
+    FormNonnegOn (formDiff qA qP) Boundary := by
+  intro v hv
+  rw [formDiff_eq_primeGraphCert_of_prime_sos
+    (qA := qA) (qP := qP) (qLap := qLap) (qG := qG) (W := W)
+    (v := v) (hsos v hv)]
+  exact hcert v hv
+
+/-- Boundary-null prime-graph spectral-gap certificate.
+
+This packages the target inequality
+`qA v + qLap v >= 2 W qG v` on the boundary-null subspace. -/
+theorem formNonnegOn_diff_of_primeGraph_gap {ι : Type*}
+    (qA qP qLap qG : (ι → ℝ) → ℝ) (W : ℝ)
+    (Boundary : (ι → ℝ) → Prop)
+    (hsos : ∀ v : ι → ℝ, Boundary v →
+      qP v = 2 * W * qG v - qLap v)
+    (hgap : ∀ v : ι → ℝ, Boundary v →
+      2 * W * qG v ≤ qA v + qLap v) :
+    FormNonnegOn (formDiff qA qP) Boundary := by
+  apply formNonnegOn_diff_of_primeGraph_cert
+    (qA := qA) (qP := qP) (qLap := qLap) (qG := qG)
+    (W := W) (Boundary := Boundary) hsos
+  intro v hv
+  exact primeGraphCert_nonneg_of_spectral_gap
+    (qA := qA) (qLap := qLap) (qG := qG) (W := W)
+    (v := v) (hgap v hv)
+
+/-- Unconstrained version of the prime-graph certificate for ordinary PSD. -/
+theorem formPSD_diff_of_primeGraph_cert {ι : Type*} [Zero (ι → ℝ)]
+    (qA qP qLap qG : (ι → ℝ) → ℝ) (W : ℝ)
+    (hsos : ∀ v : ι → ℝ, qP v = 2 * W * qG v - qLap v)
+    (hcert : ∀ v : ι → ℝ, v ≠ 0 →
+      0 ≤ primeGraphCert qA qLap qG W v) :
+    FormPSD (formDiff qA qP) := by
+  intro v hv
+  rw [formDiff_eq_primeGraphCert_of_prime_sos
+    (qA := qA) (qP := qP) (qLap := qLap) (qG := qG) (W := W)
+    (v := v) (hsos v)]
+  exact hcert v hv
+
 end Q3.Proofs

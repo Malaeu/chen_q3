@@ -107,6 +107,7 @@ Files:
 - psd_pd_smallest_block_step_2026_03_16.md
 - q3_psdpd_class1_shifted_cap_audit_2026_05_01.md
 - q3_psdpd_expansion_2026_05_01.md
+- q3_psdpd_prime_graph_sos_step9_audit_2026_05_03.md
 - q3_psdpd_step8_certificate_design_2026_05_03.md
 - q_zeta_core_short_circuit_sprint_2026_03_15.md
 - q_zeta_core_skeleton_2026_03_15.md

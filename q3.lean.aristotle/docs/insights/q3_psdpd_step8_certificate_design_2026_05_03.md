@@ -236,3 +236,42 @@ Qv=0,\quad N^\ast(A-P)N\succeq0
 
 This keeps the certificate basis-invariant and avoids repeating the killed
 broad-cone or prime-block-PSD routes.
+
+## Prime-Graph SOS amendment (2026-05-03)
+
+Follow-up note:
+
+```text
+docs/insights/q3_psdpd_prime_graph_sos_step9_audit_2026_05_03.md
+```
+
+The sharper Step 8 certificate rewrites the prime term by the shift identity
+
+```math
+2\operatorname{Re}\langle h,S_a h\rangle
+=
+2\|h\|^2-\|h-S_a h\|^2.
+```
+
+Thus
+
+```math
+A-P
+=
+A+\sum_aw_a(I-S_a)^\ast(I-S_a)-2W_LG.
+```
+
+The finite target becomes:
+
+```math
+N^\ast
+\left(
+A+\sum_aw_aL_a-2W_LG
+\right)
+N
+\succeq0.
+```
+
+This is equivalent to `N^*(A-P)N >= 0`, but it exposes the exact
+Prime-Graph spectral-gap target.  The algebraic consumer is now Lean-checked in
+`Q3/Proofs/PSD_FormAlgebra.lean`.
