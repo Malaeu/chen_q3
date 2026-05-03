@@ -68,9 +68,16 @@
 - The exact prime-side closed-form target is now named in Lean as
   `CenteredBSplineAutocorrelationClosedForm`, stating
   `centeredBSplineCorrelationProfile k x = centeredBSplineR k x`.
+- The sign-sensitive autocorrelation/convolution bridge is now Lean-proved:
+  `realBumpCorrelationProfile_eq_realConvolution_neg_of_even`, together with
+  `CenteredBSplineAutocorrelationClosedForm_of_cardinalEven_selfConvolution`.
+  Thus the remaining prime-side target reduces to proving
+  `CenteredCardinalBSplineEven k` and
+  `CenteredBSplineSelfConvolutionClosedForm k`.
 - This is still Step 32F, not Step 33.  Remaining blockers are
-  autocorrelation closed form, sinc/sinh transform profile, nonzero boundary
-  scales, and feeding those facts into `BSplineTranslatedAnalyticContract`.
+  centered-cardinal evenness, self-convolution closed form, sinc/sinh transform
+  profile, nonzero boundary scales, and feeding those facts into
+  `BSplineTranslatedAnalyticContract`.
 
 ## Синхронизационный статус (2026-02-28)
 

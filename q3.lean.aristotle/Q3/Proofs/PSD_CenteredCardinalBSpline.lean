@@ -1,10 +1,12 @@
 import Q3.Proofs.PSD_BSplineAnalyticModel
+import Mathlib.Analysis.Convolution
 import Mathlib.Tactic
 
 set_option linter.mathlibStandardSet false
 
 noncomputable section
 
+open MeasureTheory
 open scoped BigOperators
 
 namespace Q3
@@ -128,9 +130,55 @@ def centeredBSplineR (k : ℕ) (x : ℝ) : ℝ :=
   centeredCardinalBSpline (bsplineAutocorrDegree k) (bsplineScale k * x) /
     bsplineAutocorrNorm k
 
+/-- Evenness target for the concrete centered cardinal B-spline. -/
+def CenteredCardinalBSplineEven (k : ℕ) : Prop :=
+  ∀ x : ℝ, centeredCardinalBSpline k (-x) = centeredCardinalBSpline k x
+
+/-- Evenness of `b_k` transfers to evenness of the scaled normalized bump. -/
+theorem centeredBSplineEta_even_of_cardinal_even
+    (k : ℕ) (heven : CenteredCardinalBSplineEven k) :
+    ∀ y : ℝ, centeredBSplineEta k (-y) = centeredBSplineEta k y := by
+  intro y
+  unfold centeredBSplineEta
+  have harg : bsplineScale k * (-y) = -(bsplineScale k * y) := by ring
+  rw [harg, heven]
+
 /-- Actual generic-bump correlation profile of `eta_k`. -/
 def centeredBSplineCorrelationProfile (k : ℕ) (x : ℝ) : ℝ :=
   realBumpCorrelationProfile (centeredBSplineEta k) x
+
+/-- Real convolution with the sign convention `(f*g)(x)=∫ y, f y * g (x-y)`. -/
+def realConvolution (f g : ℝ → ℝ) (x : ℝ) : ℝ :=
+  ∫ y : ℝ, f y * g (x - y)
+
+/--
+Autocorrelation is convolution at the reflected argument for even functions.
+
+This is the sign bookkeeping needed before applying the cardinal B-spline
+convolution-power identity.
+-/
+theorem realBumpCorrelationProfile_eq_realConvolution_neg_of_even
+    (f : ℝ → ℝ) (hf_even : ∀ y : ℝ, f (-y) = f y) (x : ℝ) :
+    realBumpCorrelationProfile f x = realConvolution f f (-x) := by
+  unfold realBumpCorrelationProfile realConvolution
+  apply integral_congr_ae
+  filter_upwards with y
+  have harg : (-x - y) = -(y + x) := by ring
+  calc
+    f y * f (y + x)
+        = f y * f (-(y + x)) := by rw [hf_even (y + x)]
+    _ = f y * f (-x - y) := by rw [harg]
+
+/--
+Exact remaining convolution theorem for the concrete normalized bump.
+
+Together with `realBumpCorrelationProfile_eq_realConvolution_neg_of_even`,
+this is equivalent to `CenteredBSplineAutocorrelationClosedForm`.
+-/
+def CenteredBSplineSelfConvolutionClosedForm (k : ℕ) : Prop :=
+  ∀ x : ℝ,
+    realConvolution (centeredBSplineEta k) (centeredBSplineEta k) (-x) =
+      centeredBSplineR k x
 
 /--
 The exact autocorrelation theorem still needed to close the prime-entry side of
@@ -139,6 +187,35 @@ Step 32F.
 def CenteredBSplineAutocorrelationClosedForm (k : ℕ) : Prop :=
   ∀ x : ℝ,
     centeredBSplineCorrelationProfile k x = centeredBSplineR k x
+
+/--
+The self-convolution closed form implies the autocorrelation closed form once
+the concrete bump is even.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_of_selfConvolution
+    (k : ℕ)
+    (heta_even : ∀ y : ℝ, centeredBSplineEta k (-y) = centeredBSplineEta k y)
+    (hconv : CenteredBSplineSelfConvolutionClosedForm k) :
+    CenteredBSplineAutocorrelationClosedForm k := by
+  intro x
+  rw [centeredBSplineCorrelationProfile,
+    realBumpCorrelationProfile_eq_realConvolution_neg_of_even
+      (centeredBSplineEta k) heta_even x]
+  exact hconv x
+
+/--
+Concrete two-lemma route to the autocorrelation closed form:
+
+1. the centered cardinal spline is even;
+2. the normalized bump has the expected self-convolution profile.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_of_cardinalEven_selfConvolution
+    (k : ℕ)
+    (heven : CenteredCardinalBSplineEven k)
+    (hconv : CenteredBSplineSelfConvolutionClosedForm k) :
+    CenteredBSplineAutocorrelationClosedForm k :=
+  CenteredBSplineAutocorrelationClosedForm_of_selfConvolution
+    k (centeredBSplineEta_even_of_cardinal_even k heven) hconv
 
 /-- Name the exact transform profile still needed to close the Arch/boundary
 side of Step 32F. -/

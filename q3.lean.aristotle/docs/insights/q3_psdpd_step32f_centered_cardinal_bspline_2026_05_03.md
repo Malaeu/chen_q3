@@ -23,6 +23,9 @@ The file defines:
 - `centeredBSplineCorrelationProfile`;
 - `centeredBSplineRealTransformProfile`;
 - concrete boundary scales.
+- `realConvolution`;
+- `CenteredCardinalBSplineEven`;
+- `CenteredBSplineSelfConvolutionClosedForm`.
 
 It proves:
 
@@ -31,6 +34,10 @@ It proves:
 - `bsplineScale_ne_zero`;
 - `centeredBSplineBoundaryPlus_basis`;
 - `centeredBSplineBoundaryMinus_basis`;
+- `realBumpCorrelationProfile_eq_realConvolution_neg_of_even`;
+- `centeredBSplineEta_even_of_cardinal_even`;
+- `CenteredBSplineAutocorrelationClosedForm_of_selfConvolution`;
+- `CenteredBSplineAutocorrelationClosedForm_of_cardinalEven_selfConvolution`;
 - `centeredBSplineCorrelation_scaledTranslated_shift`;
 - `centeredBSplineCorrelation_scaledTranslated_shift_closed`.
 
@@ -52,6 +59,25 @@ In Lean this target is named:
 
 `CenteredBSplineAutocorrelationClosedForm`.
 
+The sign-sensitive measure-theory bridge is now also closed:
+
+\[
+\operatorname{corr}_f(x)
+=
+(f*f)(-x)
+\]
+
+for even \(f\), with the convolution convention
+
+\[
+(f*f)(x)=\int f(y)f(x-y)\,dy.
+\]
+
+So the remaining proof is reduced to:
+
+1. `CenteredCardinalBSplineEven k`;
+2. `CenteredBSplineSelfConvolutionClosedForm k`.
+
 ## External sanity check
 
 The object follows the standard cardinal B-spline route:
@@ -71,11 +97,12 @@ Useful references:
 
 ## Remaining inside Step 32F
 
-1. Prove `bsplineAutocorrNorm k ≠ 0`, preferably positivity.
-2. Prove `CenteredBSplineAutocorrelationClosedForm`.
-3. Prove the centered-cardinal `sinh`/sinc-power transform profile.
-4. Prove boundary scale nonzero at \(z=\pm1/2\).
-5. Feed these into the existing `BSplineTranslatedAnalyticContract`.
+1. Prove `CenteredCardinalBSplineEven k`.
+2. Prove `CenteredBSplineSelfConvolutionClosedForm k`.
+3. Prove `bsplineAutocorrNorm k ≠ 0`, preferably positivity.
+4. Prove the centered-cardinal `sinh`/sinc-power transform profile.
+5. Prove boundary scale nonzero at \(z=\pm1/2\).
+6. Feed these into the existing `BSplineTranslatedAnalyticContract`.
 
 ## Verdict
 
