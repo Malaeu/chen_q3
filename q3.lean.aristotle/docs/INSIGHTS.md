@@ -11143,3 +11143,31 @@ Update:
   builds.
 - Recommended next move: Step 30 can package ordinary density plus Steps 28/29
   into boundary-null exhaustion.
+
+## Result (2026-05-03, in progress) — `Step30BoundaryNullExhaustion`
+
+- Added the boundary-null sequential exhaustion layer:
+  `Q3/Proofs/PSD_BoundaryNullExhaustion.lean`.
+- New theorem-facing objects:
+  `OrdinarySequentialExhaustive` and
+  `BoundaryNullSequentialExhaustive`.
+- New explicit boundary-zero theorems for the corrected approximant:
+  `boundaryCorrected_evalPlus_zero` and
+  `boundaryCorrected_evalMinus_zero`.
+- Main bridge:
+  `boundaryNullSequentialExhaustiveOfOrdinary`.
+- Meaning: ordinary sequential density plus continuity of the two boundary
+  functionals, nonzero corrector determinant, and closure under the fixed
+  boundary correction implies sequential density inside the boundary-null
+  subspace.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_BoundaryNullExhaustion.lean` passes.
+- Hole scan on the new file has no `sorry`, `admit`, or `exact?`.
+- Result note recorded:
+  `docs/insights/q3_psdpd_step30_boundary_null_exhaustion_2026_05_03.md`.
+- Workspace note update: the local `.lake` cache is healthy again after the
+  `2e32af92` mainline repair; `lake build Q3.Main` and
+  `./scripts/check_axioms.sh` pass.
+- Recommended next move: instantiate the abstract assumptions for a concrete
+  directed finite-space family: ordinary density, boundary functional
+  continuity, and closure under correction/refinement.
