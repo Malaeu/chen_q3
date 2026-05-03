@@ -10881,3 +10881,36 @@ Update:
   Arch matrix `A`.
 - Recommended next move: Step 22 proof-grade `A` via interval quadrature on
   `[0,T]` plus a sinc-power analytic tail bound.
+
+## Result (2026-05-03, in progress) — `Step22ArchInterval`
+
+- Step 22 Arch interval patcher added:
+  `scripts/q3_psdpd_step22_arch_interval.py`.
+- Result note recorded in
+  `docs/insights/q3_psdpd_step22_arch_interval_2026_05_03.md`.
+- The script reads Step 21 midpoint/radius CSVs and replaces only the Arch
+  matrix `A` by acb/Arb interval values.
+- The finite part is evaluated by `acb.integral` on `[0,T]`, using Toeplitz
+  structure to compute only the unique distances `|u_j-u_i|`.
+- The tail uses the sinc-power decay of the B-spline transform and a
+  conservative Arch envelope `|Omega(t)| <= 10 log(2+t)` for `t >= T`.
+- Primary `k_spline=11`, `ell=0.30`, `delta=0.25`, `kappa=3.25`,
+  `theta=1e-4` result:
+  `max old rad(A)≈1.64e-14`,
+  `max new rad(A)≈1.30e-17`,
+  `tail radius≈1.33e-18`.
+- The full Step 18 radius-mode penalty guard passes with all four entry
+  sources interval-backed:
+  `safe_Dtheta_lower≈1.2229e-4` and
+  `safe_Rkappa_lower≈1.3569e-1`.
+- Control `k_spline=9`, `ell=0.30`, `delta=0.25`, `kappa=3.075`,
+  `theta=1e-5` also passes:
+  `safe_Dtheta_lower≈1.2637e-5` and
+  `safe_Rkappa_lower≈1.9591e-3`.
+- Current status: the primary finite block now has interval contracts for
+  `A`, `P`, `P0`, and `Q`.  This is a finite interval-backed certificate
+  candidate, not a global RH proof.
+- Recommended next move: Step 23 should formulate the certificate-family /
+  exhaustion contract needed to lift finite interval certificates toward the
+  target infinite test class, and isolate the Arch tail envelope as a reusable
+  analytic lemma.
