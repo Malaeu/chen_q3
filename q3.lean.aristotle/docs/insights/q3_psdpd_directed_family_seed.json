@@ -1,0 +1,89 @@
+{
+  "accepted_blocks": 2,
+  "blocks": [
+    {
+      "L": 3.0,
+      "block_id": "psdpd_L3_k11_ell030_delta025_theta1e4",
+      "cert_id": "psdpd_family_v1:psdpd_L3_k11_ell030_delta025_theta1e4",
+      "delta": 0.25,
+      "dtheta_floor": {
+        "decimal": "0.000122285948",
+        "den": "1000000000000",
+        "num": "122285948"
+      },
+      "dtheta_safe_lower": 0.00012228594850139608,
+      "ell": 0.3,
+      "family_id": "psdpd_family_v1",
+      "k_spline": 11,
+      "kappa": 3.25,
+      "midpoint_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+      "midpoint_sha256": "29d9c06befcc68ee13dbe2fe7cbad898df968ea9632f0d31c9a7d6c983411ac3",
+      "radius_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
+      "radius_sha256": "e6112bc2202d2560f1aab4f4e4bffdcc60586652a902859e19dd122e6d491ed2",
+      "rkappa_floor": {
+        "decimal": "0.135692207803",
+        "den": "1000000000000",
+        "num": "135692207803"
+      },
+      "rkappa_safe_lower": 0.1356922078030177,
+      "role": "primary",
+      "step18_stdout": "q3.lean.aristotle/docs/insights/q3_psdpd_family_step18_outputs/psdpd_L3_k11_ell030_delta025_theta1e4.step18.txt",
+      "tau_grid": "log:-8:8:161",
+      "theorem_payload": {
+        "boundary_conclusion": "C^circ >= theta Rkappa^circ and Rkappa^circ > 0",
+        "boundary_predicate": "Qv = 0",
+        "finite_guard": "Dtheta + tau_D Q^T Q > 0 and Rkappa + tau_R Q^T Q > 0",
+        "lean_receiver": "Q3.Proofs.FinitePenaltyCert"
+      },
+      "theta": 0.0001
+    },
+    {
+      "L": 3.0,
+      "block_id": "psdpd_L3_k9_ell030_delta025_theta1e5",
+      "cert_id": "psdpd_family_v1:psdpd_L3_k9_ell030_delta025_theta1e5",
+      "delta": 0.25,
+      "dtheta_floor": {
+        "decimal": "0.000012636922",
+        "den": "1000000000000",
+        "num": "12636922"
+      },
+      "dtheta_safe_lower": 1.2636922932217566e-05,
+      "ell": 0.3,
+      "family_id": "psdpd_family_v1",
+      "k_spline": 9,
+      "kappa": 3.075,
+      "midpoint_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+      "midpoint_sha256": "cc88eb915f7dc7fd499c2ae3dcfe8f5bac9615750c92ba1c1c98559c9b711a0f",
+      "radius_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
+      "radius_sha256": "0b3c5a067323b278a3c4fc75d8af86df4ea69dfa20c5a8472343a263e78ebea9",
+      "rkappa_floor": {
+        "decimal": "0.001959064196",
+        "den": "1000000000000",
+        "num": "1959064196"
+      },
+      "rkappa_safe_lower": 0.0019590641960201293,
+      "role": "control",
+      "step18_stdout": "q3.lean.aristotle/docs/insights/q3_psdpd_family_step18_outputs/psdpd_L3_k9_ell030_delta025_theta1e5.step18.txt",
+      "tau_grid": "log:-8:8:161",
+      "theorem_payload": {
+        "boundary_conclusion": "C^circ >= theta Rkappa^circ and Rkappa^circ > 0",
+        "boundary_predicate": "Qv = 0",
+        "finite_guard": "Dtheta + tau_D Q^T Q > 0 and Rkappa + tau_R Q^T Q > 0",
+        "lean_receiver": "Q3.Proofs.FinitePenaltyCert"
+      },
+      "theta": 1e-05
+    }
+  ],
+  "known_refinements": [],
+  "meaning": "This seed records accepted finite certificate blocks. It is not yet an exhausting directed family.",
+  "next_required_theorems": [
+    "directed_refinement_relation",
+    "boundary_null_correction",
+    "finite_space_density",
+    "Weil_form_continuity",
+    "uniform_certificate_family"
+  ],
+  "schema": "q3_psdpd_directed_family_seed_v1",
+  "source_ledger": "q3.lean.aristotle/docs/insights/q3_psdpd_finitecert_ledger.json",
+  "status": "seed_only_not_exhaustive"
+}

@@ -11071,3 +11071,30 @@ Update:
   must quantify over.
 - Recommended next move: define the directed-family skeleton over accepted
   `FinitePenaltyCert` rows, then attack boundary-null exhaustion separately.
+
+## Result (2026-05-03, in progress) — `Step27DirectedFamilySkeleton`
+
+- Added directed family Lean skeleton:
+  `Q3/Proofs/PSD_CertificateFamily.lean`.
+- New theorem-facing objects:
+  `FiniteSpaceLabel`, `CertifiedFiniteBlock`, `HasRefinement`,
+  `DirectedCertFamily`, `BoundaryNullExhaustive`,
+  `BoundaryNullGlobalPositivity`, and `DirectedFamilyClosure`.
+- No axioms were added.  The closure is represented as a record package, not as
+  a claimed theorem.
+- Lean verification:
+  `lake env lean Q3/Proofs/PSD_CertificateFamily.lean` passes.
+- Hole scan on `PSD_CertificateFamily.lean` and `PSD_PenaltyCertificate.lean`
+  has no `sorry`, `admit`, or `exact?`.
+- Added seed generator:
+  `scripts/q3_psdpd_step27_family_seed.py`.
+- Generated directed-family seed:
+  `docs/insights/q3_psdpd_directed_family_seed.json`.
+- Result note recorded:
+  `docs/insights/q3_psdpd_step27_directed_family_skeleton_2026_05_03.md`.
+- The seed accepts the primary `k=11` and control `k=9` finite certs and
+  records conservative rational floors for their safe lower bounds.
+- Important status: `seed_only_not_exhaustive`.  The known refinement list is
+  intentionally empty until the real directed refinement relation is proved.
+- Recommended next move: Step 28 should attack the boundary-null correction
+  lemma, because that is the first analytic brick needed for exhaustion.
