@@ -192,6 +192,36 @@ q_\nu\le\theta(q_A-q_0),
 q_A-q_P\ge0.
 ```
 
+## Step 11 follow-up
+
+Step 11 refines the construction of `Pnu` itself.  With cumulative error
+
+```math
+E(x)=
+\sum_{m\log p\le x}\frac{\log p}{p^{m/2}}
+-2(e^{x/2}-1),
+```
+
+the fluctuation form becomes
+
+```math
+\mathcal P_\nu(h)
+=
+-\int_0^{2L}
+E(a)\,\frac{d}{da}[f(a)+f(-a)]\,da.
+```
+
+For the local bump basis this yields local smoothed-error coefficients
+
+```math
+(P_\nu)_{ij}
+=
+\mathcal E_\ell(u_j-u_i)+\mathcal E_\ell(u_i-u_j).
+```
+
+The new note is
+`docs/insights/q3_psdpd_smoothed_error_step11_2026_05_03.md`.
+
 ## Search synthesis
 
 Local semantic search:
@@ -246,4 +276,3 @@ E(x)
 ```
 
 This is now the sharp analytic remainder problem.
-

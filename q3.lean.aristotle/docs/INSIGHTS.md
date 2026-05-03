@@ -10617,3 +10617,24 @@ Update:
   records the `theta<=1` generalized-eigenvalue certificate.
 - Verification passed:
   `lake env lean Q3/Proofs/PSD_FormAlgebra.lean`.
+
+## Result (2026-05-03, in progress) — `SmoothedErrorStep11`
+
+- Step 11 smoothed prime-error packet recorded in
+  `docs/insights/q3_psdpd_smoothed_error_step11_2026_05_03.md`.
+- The prime fluctuation is now represented by the cumulative error
+  `E(x)=sum_{m log p<=x} log(p)/p^(m/2)-2(exp(x/2)-1)` via
+  `Pnu(h)=int phi_h dE = -int E(a) phi_h'(a) da`.
+- For the local bump basis, `Pnu` becomes a matrix of local smoothed-error
+  bands:
+  `Pnu_ij = E_ell(u_j-u_i)+E_ell(u_i-u_j)`, where
+  `E_ell(d)=ell^(-1) int E(a) r_eta'((d-a)/ell) da`.
+- Important constraint: do not try to prove RH-level pointwise smallness of
+  `E(x)`.  The live target is the operator/relative-norm certificate
+  `lambda_max(Pnu^circ,R^circ)<=1` on the autocorrelation boundary-null class.
+- `Q3/Proofs/PSD_FormAlgebra.lean` now includes the hole-free Step 11 consumer
+  algebra:
+  `|qnu| <= theta*(qA-q0)`, `0<=qA-q0`, and `theta<=1` imply
+  `qA-(q0+qnu)>=0` on the constrained subspace.
+- Verification passed:
+  `lake env lean Q3/Proofs/PSD_FormAlgebra.lean`.

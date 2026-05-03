@@ -110,6 +110,7 @@ Files:
 - q3_psdpd_fluctuation_certificate_step10_2026_05_03.md
 - q3_psdpd_prime_fluctuation_split_2026_05_03.md
 - q3_psdpd_prime_graph_sos_step9_audit_2026_05_03.md
+- q3_psdpd_smoothed_error_step11_2026_05_03.md
 - q3_psdpd_step8_certificate_design_2026_05_03.md
 - q_zeta_core_short_circuit_sprint_2026_03_15.md
 - q_zeta_core_skeleton_2026_03_15.md

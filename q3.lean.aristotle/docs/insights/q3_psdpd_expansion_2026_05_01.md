@@ -442,3 +442,40 @@ Equivalently, on the quotient if necessary:
 
 `PSD_FormAlgebra.lean` now has the verified abstract consumer for this exact
 relative fluctuation certificate.
+
+## Step 11 smoothed-error certificate (2026-05-03)
+
+Detailed note:
+
+```text
+docs/insights/q3_psdpd_smoothed_error_step11_2026_05_03.md
+```
+
+The fluctuation matrix is now tied to the cumulative prime error
+
+```math
+E(x)=
+\sum_{m\log p\le x}\frac{\log p}{p^{m/2}}
+-2(e^{x/2}-1).
+```
+
+For Hermitian squares,
+
+```math
+\mathcal P_\nu(h)
+=
+\int_0^{2L}\varphi_h(a)\,dE(a)
+=
+-\int_0^{2L}E(a)\varphi_h'(a)\,da.
+```
+
+For local bumps this gives smoothed-error bands
+
+```math
+(P_\nu)_{ij}
+=
+\mathcal E_\ell(u_j-u_i)+\mathcal E_\ell(u_i-u_j).
+```
+
+The next certificate engine should work with this smoothed operator, not with
+raw pointwise bounds on `E(x)`.

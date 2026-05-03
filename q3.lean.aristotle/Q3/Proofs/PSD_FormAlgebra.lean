@@ -307,4 +307,47 @@ theorem formNonnegOn_diff_of_relative_fluctuation_bound {ι : Type*}
     (qA := qA) (qMain := qMain) (qFluct := qFluct)
     (theta := theta) (v := v) (hbase v hv) (hfluct v hv) htheta
 
+/-- Absolute relative fluctuation certificate.
+
+Step 11 rewrites the prime fluctuation through a smoothed error kernel.  A
+typical analytic output is an absolute estimate
+`|qFluct v| <= theta * R v`, where `R = qA - qMain`.  This lemma turns that
+two-sided estimate into the one-sided domination required by Step 10. -/
+lemma fluctuation_le_base_of_abs_relative_bound {ι : Type*}
+    (qA qMain qFluct : (ι → ℝ) → ℝ) (theta : ℝ) (v : ι → ℝ)
+    (hbase : 0 ≤ fluctuationBase qA qMain v)
+    (habound : |qFluct v| ≤ theta * fluctuationBase qA qMain v)
+    (htheta : theta ≤ 1) :
+    qFluct v ≤ fluctuationBase qA qMain v := by
+  have hfluct : qFluct v ≤ theta * fluctuationBase qA qMain v :=
+    (abs_le.mp habound).2
+  exact fluctuation_le_base_of_relative_bound
+    (qA := qA) (qMain := qMain) (qFluct := qFluct)
+    (theta := theta) (v := v) hbase hfluct htheta
+
+/-- Boundary-null absolute relative fluctuation certificate.
+
+This is the Lean landing surface for the Step 11 smoothed-error target:
+if the arithmetic fluctuation has relative absolute norm at most
+`theta <= 1` with respect to `R = A - P0`, then the full Arch-minus-prime
+form is nonnegative on the constrained subspace. -/
+theorem formNonnegOn_diff_of_abs_relative_fluctuation_bound {ι : Type*}
+    (qA qP qMain qFluct : (ι → ℝ) → ℝ)
+    (Boundary : (ι → ℝ) → Prop) (theta : ℝ)
+    (hsplit : ∀ v : ι → ℝ, Boundary v →
+      qP v = qMain v + qFluct v)
+    (hbase : ∀ v : ι → ℝ, Boundary v →
+      0 ≤ fluctuationBase qA qMain v)
+    (habound : ∀ v : ι → ℝ, Boundary v →
+      |qFluct v| ≤ theta * fluctuationBase qA qMain v)
+    (htheta : theta ≤ 1) :
+    FormNonnegOn (formDiff qA qP) Boundary := by
+  apply formNonnegOn_diff_of_fluctuation_le_base
+    (qA := qA) (qP := qP) (qMain := qMain) (qFluct := qFluct)
+    (Boundary := Boundary) hsplit
+  intro v hv
+  exact fluctuation_le_base_of_abs_relative_bound
+    (qA := qA) (qMain := qMain) (qFluct := qFluct)
+    (theta := theta) (v := v) (hbase v hv) (habound v hv) htheta
+
 end Q3.Proofs
