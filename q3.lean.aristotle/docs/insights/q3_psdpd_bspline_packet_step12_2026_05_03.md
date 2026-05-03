@@ -532,3 +532,13 @@ Step 13 should implement the numerical pilot:
   `lambda_max(Pnu^circ,R^circ)`;
 - report the gap and the worst vector;
 - prepare interval-Cholesky hooks for proof-grade finite certificates.
+
+Update:
+
+- Step 13 pilot script is now
+  `scripts/q3_psdpd_step13_pilot.py`.
+- First results are recorded in
+  `docs/insights/q3_psdpd_step13_pilot_2026_05_03.md`.
+- The first signal is: `-P0` is robust, direct `A-P` is near-PSD with a tiny
+  stable gap in the baseline, and the `R=A-P0` relative certificate is not
+  available before quotient/base repair because `R^circ` is indefinite.

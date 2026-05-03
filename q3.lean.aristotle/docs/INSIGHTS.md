@@ -10657,3 +10657,24 @@ Update:
 - Recommended next move: Step 13 numerical pilot for
   `G,A,P,P0,Pnu,Q,N`, generalized eigenvalue, worst vector, and
   interval-Cholesky hooks.
+
+## Result (2026-05-03, in progress) — `Step13NumericalPilot`
+
+- Step 13 numerical pilot script added:
+  `scripts/q3_psdpd_step13_pilot.py`.
+- Pilot result note recorded in
+  `docs/insights/q3_psdpd_step13_pilot_2026_05_03.md`.
+- Baseline run:
+  `L=3.0`, `ell=0.35`, `delta=0.25`, `k_spline=5`,
+  `arch_tmax=180`, `arch_nt=24001`, `p0_na=12001`.
+- Sanity checks passed:
+  `||QN||_F≈1.75e-15`, `||C-(R-Pnu)||_F≈1.81e-15`, and
+  `lambda_min(-P0^circ,G^circ)≈6.42e-3`.
+- Direct finite certificate is barely positive:
+  `lambda_min(C^circ,G^circ)≈1.01e-8`, stable under stronger quadrature
+  `arch_tmax=260`, `arch_nt=48001`, `p0_na=24001`.
+- The relative certificate with base `R=A-P0` is not currently available:
+  `R^circ` is indefinite on this finite level.
+- Sweep verdict: `-P0` is robustly positive, while direct `A-P` has a
+  near-kernel and can cross slightly negative for smoother/wider spline
+  parameters.  Step 14 should extract and diagnose the worst vector.
