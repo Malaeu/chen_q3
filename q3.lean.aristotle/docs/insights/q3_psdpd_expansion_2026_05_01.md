@@ -409,3 +409,36 @@ P_\nu=P-P_0.
 
 The abstract Lean algebra for this split is now in
 `Q3/Proofs/PSD_FormAlgebra.lean`.
+
+## Step 10 fluctuation certificate (2026-05-03)
+
+Detailed note:
+
+```text
+docs/insights/q3_psdpd_fluctuation_certificate_step10_2026_05_03.md
+```
+
+The sharp certificate keeps the Green-positive block:
+
+```math
+R=A-P_0=A+S_0.
+```
+
+The finite target is:
+
+```math
+R^\circ-P_\nu^\circ\succeq0,
+\qquad
+R^\circ=N^\ast(A-P_0)N,
+\qquad
+P_\nu^\circ=N^\ast(P-P_0)N.
+```
+
+Equivalently, on the quotient if necessary:
+
+```math
+\lambda_{\max}(P_\nu^\circ,R^\circ)\le1.
+```
+
+`PSD_FormAlgebra.lean` now has the verified abstract consumer for this exact
+relative fluctuation certificate.

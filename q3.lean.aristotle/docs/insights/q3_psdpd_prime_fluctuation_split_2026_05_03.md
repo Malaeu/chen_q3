@@ -227,3 +227,35 @@ N^\ast(A-P_\nu)N\succeq0.
 
 This is the current sharpest Step 10 target.
 
+## Step 10 refinement (2026-05-03)
+
+Detailed note:
+
+```text
+docs/insights/q3_psdpd_fluctuation_certificate_step10_2026_05_03.md
+```
+
+The sharper certificate keeps the positive Green block:
+
+```math
+R=A-P_0=A+S_0.
+```
+
+So the finite target is:
+
+```math
+R^\circ-P_\nu^\circ\succeq0,
+\qquad
+R^\circ=N^\ast(A-P_0)N,
+\qquad
+P_\nu^\circ=N^\ast(P-P_0)N.
+```
+
+Equivalently:
+
+```math
+\lambda_{\max}(P_\nu^\circ,R^\circ)\le1.
+```
+
+This is weaker and better than the sufficient target `A-Pnu>=0`, because it
+uses the free positive `S0` energy rather than discarding it.

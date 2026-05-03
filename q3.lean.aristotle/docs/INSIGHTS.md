@@ -10601,3 +10601,19 @@ Update:
   `qP=qMain+qFluct`, `qMain<=0`, and `qA-qFluct>=0` imply `qA-qP>=0`.
 - Verification passed:
   `lake env lean Q3/Proofs/PSD_FormAlgebra.lean`.
+
+## Result (2026-05-03, in progress) — `FluctuationCertificateStep10`
+
+- Step 10 certificate recorded in
+  `docs/insights/q3_psdpd_fluctuation_certificate_step10_2026_05_03.md`.
+- Correction: the sharp target is not the sufficient but too-strong
+  `A>=Pnu`; it is `R>=Pnu` with `R=A-P0=A+S0`.
+- Finite target:
+  `R^circ=N^*(A-P0)N`, `Pnu^circ=N^*(P-P0)N`, and
+  `R^circ-Pnu^circ>=0`, equivalently
+  `lambda_max(Pnu^circ,R^circ)<=1` on the quotient when needed.
+- `Q3/Proofs/PSD_FormAlgebra.lean` now contains the hole-free Step 10 algebra:
+  `qP=q0+qnu` and `qnu <= qA-q0` imply `qA-qP>=0`; the relative version
+  records the `theta<=1` generalized-eigenvalue certificate.
+- Verification passed:
+  `lake env lean Q3/Proofs/PSD_FormAlgebra.lean`.

@@ -221,4 +221,90 @@ theorem formPSD_diff_of_main_nonpos_fluctuation {ι : Type*} [Zero (ι → ℝ)]
     (qA := qA) (qP := qP) (qMain := qMain) (qFluct := qFluct)
     (v := v) (hsplit v) (hmain v) (hfluct v hv)
 
+/-- Base energy after removing the continuous prime-main kernel. -/
+def fluctuationBase {ι : Type*}
+    (qA qMain : (ι → ℝ) → ℝ) : (ι → ℝ) → ℝ :=
+  formDiff qA qMain
+
+/-- Main/fluctuation split rewritten through the base energy
+`R = A - main`.
+
+If `qP = qMain + qFluct`, then `qA - qP = R - qFluct`. -/
+lemma formDiff_eq_base_minus_fluct_of_split {ι : Type*}
+    (qA qP qMain qFluct : (ι → ℝ) → ℝ) (v : ι → ℝ)
+    (hsplit : qP v = qMain v + qFluct v) :
+    formDiff qA qP v = formDiff (fluctuationBase qA qMain) qFluct v := by
+  simp [formDiff, fluctuationBase, hsplit]
+  linarith
+
+/-- One-vector fluctuation domination certificate:
+if `R = A - main` dominates the fluctuation, then `A` dominates the full prime
+form `main + fluctuation`. -/
+lemma formDiff_nonneg_of_fluctuation_le_base {ι : Type*}
+    (qA qP qMain qFluct : (ι → ℝ) → ℝ) (v : ι → ℝ)
+    (hsplit : qP v = qMain v + qFluct v)
+    (hdom : qFluct v ≤ fluctuationBase qA qMain v) :
+    0 ≤ formDiff qA qP v := by
+  rw [formDiff_eq_base_minus_fluct_of_split
+    (qA := qA) (qP := qP) (qMain := qMain) (qFluct := qFluct)
+    (v := v) hsplit]
+  unfold formDiff
+  exact sub_nonneg.mpr hdom
+
+/-- Boundary-null fluctuation domination certificate.
+
+This is the sharper Step 10 interface:
+after the prime split `P = P0 + Pnu`, prove only `Pnu <= A - P0` on the
+boundary-null subspace. -/
+theorem formNonnegOn_diff_of_fluctuation_le_base {ι : Type*}
+    (qA qP qMain qFluct : (ι → ℝ) → ℝ)
+    (Boundary : (ι → ℝ) → Prop)
+    (hsplit : ∀ v : ι → ℝ, Boundary v →
+      qP v = qMain v + qFluct v)
+    (hdom : ∀ v : ι → ℝ, Boundary v →
+      qFluct v ≤ fluctuationBase qA qMain v) :
+    FormNonnegOn (formDiff qA qP) Boundary := by
+  intro v hv
+  exact formDiff_nonneg_of_fluctuation_le_base
+    (qA := qA) (qP := qP) (qMain := qMain) (qFluct := qFluct)
+    (v := v) (hsplit v hv) (hdom v hv)
+
+/-- Relative fluctuation certificate with a contraction factor.
+
+If `qBase >= 0`, `qFluct <= theta*qBase`, and `theta <= 1`, then
+`qFluct <= qBase`. -/
+lemma fluctuation_le_base_of_relative_bound {ι : Type*}
+    (qA qMain qFluct : (ι → ℝ) → ℝ) (theta : ℝ) (v : ι → ℝ)
+    (hbase : 0 ≤ fluctuationBase qA qMain v)
+    (hfluct : qFluct v ≤ theta * fluctuationBase qA qMain v)
+    (htheta : theta ≤ 1) :
+    qFluct v ≤ fluctuationBase qA qMain v := by
+  have hmul : theta * fluctuationBase qA qMain v ≤
+      1 * fluctuationBase qA qMain v := by
+    exact mul_le_mul_of_nonneg_right htheta hbase
+  linarith
+
+/-- Boundary-null relative fluctuation domination certificate.
+
+This matches the generalized-eigenvalue target
+`lambda_max(Pnu, R) <= theta <= 1`. -/
+theorem formNonnegOn_diff_of_relative_fluctuation_bound {ι : Type*}
+    (qA qP qMain qFluct : (ι → ℝ) → ℝ)
+    (Boundary : (ι → ℝ) → Prop) (theta : ℝ)
+    (hsplit : ∀ v : ι → ℝ, Boundary v →
+      qP v = qMain v + qFluct v)
+    (hbase : ∀ v : ι → ℝ, Boundary v →
+      0 ≤ fluctuationBase qA qMain v)
+    (hfluct : ∀ v : ι → ℝ, Boundary v →
+      qFluct v ≤ theta * fluctuationBase qA qMain v)
+    (htheta : theta ≤ 1) :
+    FormNonnegOn (formDiff qA qP) Boundary := by
+  apply formNonnegOn_diff_of_fluctuation_le_base
+    (qA := qA) (qP := qP) (qMain := qMain) (qFluct := qFluct)
+    (Boundary := Boundary) hsplit
+  intro v hv
+  exact fluctuation_le_base_of_relative_bound
+    (qA := qA) (qMain := qMain) (qFluct := qFluct)
+    (theta := theta) (v := v) (hbase v hv) (hfluct v hv) htheta
+
 end Q3.Proofs
