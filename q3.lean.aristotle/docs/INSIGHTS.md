@@ -11120,3 +11120,26 @@ Update:
 - Recommended next move: Step 29 should prove the small-coefficient convergence
   layer: if `g_n -> h`, `h` is boundary-null, and the boundary functionals are
   continuous, then the correction coefficients tend to zero.
+
+## Result (2026-05-03, in progress) — `Step29BoundaryNullConvergence`
+
+- Added the boundary-null convergence layer:
+  `Q3/Proofs/PSD_BoundaryNullConvergence.lean`.
+- New explicit correction objects:
+  `boundaryCoeffPlus`, `boundaryCoeffMinus`, and `boundaryCorrected`.
+- Main convergence payload:
+  - `boundaryCoeffPlus_tendsto_zero`;
+  - `boundaryCoeffMinus_tendsto_zero`;
+  - `boundaryCorrected_tendsto`;
+  - `boundaryCorrected_tendsto_of_continuous_boundary`.
+- Meaning: if raw approximants converge to a boundary-null limit and the
+  boundary functionals are continuous, then the correction coefficients tend to
+  zero and the corrected approximants converge to the same limit.
+- Hole scan on the new file has no `sorry`, `admit`, or `exact?`.
+- Verification: `lake env lean Q3/Proofs/PSD_BoundaryNullConvergence.lean`
+  passes in a clean Lake mirror with fresh Mathlib cache artifacts.
+- Workspace note: the main local `.lake` cache remains damaged after the failed
+  cache-repair attempt and should be refreshed separately before ordinary local
+  builds.
+- Recommended next move: Step 30 can package ordinary density plus Steps 28/29
+  into boundary-null exhaustion.
