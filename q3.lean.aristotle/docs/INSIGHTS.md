@@ -10970,3 +10970,22 @@ Update:
 - Recommended next move: Step 25 should introduce a small
   `FinitePenaltyCert` record and prove that such a record yields the finite
   Step 23 block conclusion for `Dtheta` and `Rkappa` on `ker Q`.
+
+## Synthesis (2026-05-03, in progress) — `ArchTailEnvelopeLemma`
+
+- Arch tail envelope note recorded in
+  `docs/insights/q3_psdpd_arch_tail_envelope_2026_05_03.md`.
+- Reusable analytic target:
+  `|Omega(t)| <= 10 log(2+t)`, where
+  `Omega(t) = -log(pi) + Re psi(1/4 + i t/2)`.
+- Step 22 only needs the tail range `t >= 260`; the global `t >= 0` version is
+  a cleaner standalone lemma target.
+- For the primary `k_spline=11`, the B-spline transform contributes
+  sinc-power decay `t^-24`, so the Arch tail is bounded by
+  `const * int_T^infty log(2+t) t^-24 dt`.
+- Step 22 used this shape with `T=260` and obtained tail radius
+  `~1.33e-18`.
+- Numbering alignment: Step 24 is already closed as the Lean penalty receiver.
+  The next engineering step should be the certificate-family manifest, while
+  boundary-null exhaustion and the Arch tail envelope remain the key analytic
+  theorem targets.

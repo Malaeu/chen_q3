@@ -29,6 +29,28 @@ Rkappa safe_lower ~= 1.36e-1.
 This is a real finite certificate candidate.  It is not a global RH proof.
 The missing layer is a directed certificate family plus an exhaustion theorem.
 
+## Numbering alignment after Step 24
+
+The intended theorem packet is:
+
+- Theorem 23A: finite penalty certificate on `ker Q`.
+- Theorem 23B: boundary-null exhaustion.
+- Lemma 23D: boundary-null correction.
+- Theorem 23C: RH closure from boundary-null positivity plus the existing Q3
+  linkage.
+
+In the repository timeline, Step 24 has already landed as the Lean receiver for
+Theorem 23A:
+
+```text
+Q3/Proofs/PSD_PenaltyCertificate.lean
+```
+
+Therefore the next engineering step after this note is the certificate
+family/manifest generator, not another finite sweep.  To avoid renumbering
+committed work, that manifest step should be recorded as the next project step
+after the Step 24 Lean receiver.
+
 ## Semantic Search Synthesis
 
 Local search found no ready-made project theorem that already performs this
@@ -199,6 +221,9 @@ should be split into small lemmas:
 
 ## Theorem 23C -- Boundary-Null B-spline Exhaustion
 
+This is the object that should be promoted to the user-facing Theorem 23B in
+the final theorem packet.
+
 ### Target Class
 
 Let `T_L^0` be the smooth compactly supported test class in `[-L,L]` satisfying
@@ -266,7 +291,24 @@ Because the residual tends to zero and the inverse correction matrix is fixed
 at each large level, `correction_n -> 0` in the energy topology.  Hence
 `h_n -> h` and `Q_alpha_n v_n = 0`.
 
+### Lemma 23D -- Boundary-null correction
+
+The correction substep above is its own lemma candidate:
+
+```text
+raw approximants converging to boundary-null h
+  -> corrected approximants in ker(Q) with the same limit.
+```
+
+It is the main place where the two boundary functionals
+`H(1/2), H(-1/2)` must be handled explicitly.
+
 ## Theorem 23D -- Family Exhaustion Implies `PSD-pd`
+
+In the final user-facing theorem packet, this should be split into:
+
+- Theorem 23B: boundary-null exhaustion;
+- Theorem 23C: RH closure after invoking the existing Q3 Weil-linkage route.
 
 ### Statement
 
@@ -367,15 +409,21 @@ Step 22 used `C=10`, `T0=260`, which is intentionally conservative.
 
 Do not run more sweeps.
 
-The fastest robust Step 24 is:
+Step 24 is now closed as:
 
 ```text
-formalize / document Lean Target 1:
-  penalty certificate on ker(Q).
+Q3/Proofs/PSD_PenaltyCertificate.lean
 ```
 
-This converts the strongest numerical insight into a small reusable theorem
-block and gives the finite certificate pipeline a clean formal receiver.
+This converted the strongest finite numerical insight into a small reusable
+Lean theorem block and gave the certificate pipeline a clean formal receiver.
 
-In parallel, keep Theorem 23C as the main analytic blocker for the full
-exhaustion route.
+The fastest next move is now the certificate-family manifest:
+
+```text
+family_id, L, k_spline, ell, delta, kappa, theta, tau,
+midpoint_csv, radius_csv, Dtheta_safe_lower, Rkappa_safe_lower, status.
+```
+
+In parallel, keep boundary-null exhaustion and the Arch tail envelope as the
+main analytic blockers for the full RH route.
