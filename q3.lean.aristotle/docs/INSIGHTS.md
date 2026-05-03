@@ -11293,3 +11293,35 @@ Update:
   prove the actual analytic B-spline packet formulas:
   transform \(H_j(z)\), boundary rows \(e^{\pm u_j/2}\), the correlation
   identity, and the Arch/Prime entry identities.
+
+## Synthesis (2026-05-03, in progress) — `Step32C_BSplineEntryExpansion`
+
+- Ran the project semantic-search protocol for the next PSD-pd blocker using
+  queries around B-spline packet basis transforms, finite bilinear matrix-entry
+  expansion, and correlation/Arch/Prime entry formulas.
+- Local hits again confirm the same route:
+  `packet-Rayleigh-pd` is the exact finite quadratic-form identity layer,
+  while `PSD-pd` supplies the finite positivity engine before `A2` closure.
+- Added Lean file:
+  `Q3/Proofs/PSD_BSplineEntryExpansion.lean`.
+- New basis synthesis object:
+  `PacketBasisExpansion`, recording `h_v = sum_i v_i psi_i`.
+- New boundary expansion payload:
+  basis values
+  `E_+(psi_i)=s_+ q_{+,i}` and `E_-(psi_i)=s_- q_{-,i}` imply the full
+  coordinate boundary-row formulas for `h_v`.
+- New bilinear expansion payload:
+  `PacketBilinearMatrixExpansion.form_synth_eq_quadForm` proves that a
+  bilinear form with basis entries expands to its finite quadratic matrix form
+  on synthesized packets.
+- New contract:
+  `BSplineBasisFormulaContract`, converting basis-level Arch/Prime/boundary
+  formulas into the Step 32B `BSplineFormulaContract`.
+- Recorded note:
+  `docs/insights/q3_psdpd_step32c_bspline_entry_expansion_2026_05_03.md`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_BSplineEntryExpansion.lean` passes.
+- Remaining Step 32D blocker:
+  prove the actual analytic basis identities:
+  B-spline transform \(H_j(z)\), boundary row values, Arch pairings, and prime
+  pairings via the B-spline correlation identity.
