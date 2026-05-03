@@ -10551,3 +10551,19 @@ Update:
 - Control-plane status: this is fallback `PSD-pd` work, not a replacement for
   the active `H-bridge / PO3-square.2d3` phase unless the route is explicitly
   pivoted.
+
+## Synthesis (2026-05-03, in progress) — `Q3_PSDpd_Step8_Certificate`
+
+- Step 8 certificate design recorded in
+  `docs/insights/q3_psdpd_step8_certificate_design_2026_05_03.md`.
+- The corrected Step 8 target is the boundary-null compact-support Gram
+  certificate
+  `N^*(A-P)N >= 0`, where `Qv=(H_v(1/2),H_v(-1/2))=0` removes the rank-two
+  boundary term before the positivity check.
+- Local semantic search confirms that the old sparse Gershgorin route is useful
+  only as a finite checker; it should not be promoted to a dense main theorem
+  because previous packet notes already record collapse of uniform dense gaps.
+- Recommended next Lean landing surface:
+  `boundaryNull_reduction_form_eq`,
+  `psd_on_kernel_of_reduced_psd`, and a finite certificate contract carrying
+  `A`, `P`, `Q`, `N`, and the reduced PSD check.

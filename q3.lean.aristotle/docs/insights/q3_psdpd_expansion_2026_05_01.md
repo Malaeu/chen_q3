@@ -307,3 +307,32 @@ cd q3.lean.aristotle && lake env lean Q3/Proofs/PSD_FormAlgebra.lean
 This is only the algebraic interface.  The next bridge must instantiate the
 abstract forms with the concrete packet-Rayleigh / Carleson forms and keep the
 `(2M+1)` prime normalization explicit.
+
+## Step 8 certificate design (2026-05-03)
+
+Detailed note:
+
+```text
+docs/insights/q3_psdpd_step8_certificate_design_2026_05_03.md
+```
+
+The next certificate-friendly formulation is not full-space positivity and not
+raw Gershgorin promotion.  It is the boundary-null compact-support Gram target:
+
+```math
+Qv=(H_v(1/2),H_v(-1/2))=0,
+\qquad
+\widetilde K=N^\ast(A-P)N\succeq0.
+```
+
+Here `A` is the Arch Toeplitz-like matrix and `P` is the sparse shifted
+prime-band matrix.  The boundary matrix has rank at most two, but it is not
+automatically positive, so the clean route is to remove it by the two boundary
+constraints and prove positivity on `ker Q`.
+
+The immediate Lean-facing theorem order is:
+
+- prove the boundary-null form rewrite;
+- prove PSD transfer from the reduced matrix on `ker Q`;
+- package the finite Step 8 certificate before instantiating bump/Toeplitz
+  matrices.
