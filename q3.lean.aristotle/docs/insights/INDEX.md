@@ -110,6 +110,7 @@ Files:
 - q3_psdpd_class1_shifted_cap_audit_2026_05_01.md
 - q3_psdpd_expansion_2026_05_01.md
 - q3_psdpd_fluctuation_certificate_step10_2026_05_03.md
+- q3_psdpd_operator_plan_alignment_2026_05_03.md
 - q3_psdpd_prime_fluctuation_split_2026_05_03.md
 - q3_psdpd_prime_graph_sos_step9_audit_2026_05_03.md
 - q3_psdpd_smoothed_error_step11_2026_05_03.md

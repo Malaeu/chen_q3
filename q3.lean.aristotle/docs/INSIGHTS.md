@@ -11197,3 +11197,24 @@ Update:
 - Recommended next move: Step 32 should instantiate the model for the actual
   B-spline packet synthesis and prove that `C=A-P` is the matrix of the
   analytic Weil/PSD form on that finite packet space.
+
+## Synthesis (2026-05-03, in progress) — PSD-pd operator plan alignment
+
+- Added a stable orientation note:
+  `docs/insights/q3_psdpd_operator_plan_alignment_2026_05_03.md`.
+- Purpose: record how the old operator plan fits the current Q3 architecture.
+- The old operator difference is now the finite Weil matrix
+  `C=A-P`, with `A` the Arch matrix and `P` the Prime matrix.
+- The stabilized certificate uses the kappa split
+  `C=(A-kappa P0)-(P-kappa P0)` and the penalty guards
+  `Dtheta+tau Q^TQ` and `Rkappa+tau Q^TQ`.
+- The old "one line" geometry is represented in the current proof by the
+  corrected positive-definite cone plus the boundary-null packet space
+  `Qv=0`.
+- The full insertion point is:
+  `T0-pd -> A1-pd -> packet-Rayleigh-pd -> PSD-pd -> A2 closure -> LF-pd -> G6 -> RH`.
+- Current exact location: Step 31 closed the matrix-to-Weil receiver; Step 32
+  must instantiate it for the concrete B-spline packet matrices.
+- Operational rule: do not rewire `Q3.Main` yet.  First close B-spline matrix
+  identification, directed-family instantiation, and global corrected-cone
+  positivity.
