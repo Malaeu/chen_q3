@@ -123,6 +123,7 @@ Files:
 - q3_psdpd_step21_p0_interval_2026_05_03.md
 - q3_psdpd_step22_arch_interval_2026_05_03.md
 - q3_psdpd_step23_certificate_family_exhaustion_2026_05_03.md
+- q3_psdpd_step24_penalty_certificate_lean_2026_05_03.md
 - q3_psdpd_step8_certificate_design_2026_05_03.md
 - q_zeta_core_short_circuit_sprint_2026_03_15.md
 - q_zeta_core_skeleton_2026_03_15.md

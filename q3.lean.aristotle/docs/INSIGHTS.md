@@ -10947,3 +10947,26 @@ Update:
 - Recommended next move: Step 24 should formalize the generic finite penalty
   theorem first.  It is small, reusable, and independent of the analytic
   zeta/prime/Arch machinery.
+
+## Result (2026-05-03, in progress) — `Step24PenaltyCertificateLean`
+
+- Step 24 Lean receiver added:
+  `Q3/Proofs/PSD_PenaltyCertificate.lean`.
+- Result note recorded in
+  `docs/insights/q3_psdpd_step24_penalty_certificate_lean_2026_05_03.md`.
+- The file defines the finite forms
+  `quadForm`, `BoundaryNull`, `boundaryEnergy`, and `penaltyForm`.
+- Main closed theorem:
+  if `penaltyForm M Q tau` is strictly positive on every nonzero full-space
+  vector, then `quadForm M` is nonnegative on every nonzero boundary-null
+  vector.
+- Two-guard theorem also closed for the Step 18/22 pair:
+  `Dtheta + tau_D Q^TQ` and `Rkappa + tau_R Q^TQ`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_PenaltyCertificate.lean` passes.
+- Hole scan on the new file has no `sorry`, `admit`, or `exact?`.
+- The file remains standalone/off-mainline until the finite certificate
+  family/exhaustion theorem is formalized.
+- Recommended next move: Step 25 should introduce a small
+  `FinitePenaltyCert` record and prove that such a record yields the finite
+  Step 23 block conclusion for `Dtheta` and `Rkappa` on `ker Q`.
