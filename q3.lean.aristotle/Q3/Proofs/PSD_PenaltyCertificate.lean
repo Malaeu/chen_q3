@@ -113,4 +113,60 @@ theorem two_penalty_guards_on_boundaryNull {ρ ι : Type*}
   · exact quadForm_pos_on_boundaryNull_of_penalty_pos
       (M := R) (Q := Q) (tau := tauR) hR
 
+/-- A finite penalty certificate for the pair `(D, R)` relative to boundary
+constraints `Q`.  In the PSD-pd kappa split, `D` is `Dtheta` and `R` is
+`Rkappa`. -/
+structure FinitePenaltyCert {ρ ι : Type*} [Fintype ρ] [Fintype ι]
+    (D R : Matrix ι ι ℝ) (Q : Matrix ρ ι ℝ) where
+  tauD : ℝ
+  tauR : ℝ
+  D_penalty_pos : ∀ v : ι → ℝ, v ≠ 0 → 0 < penaltyForm D Q tauD v
+  R_penalty_pos : ∀ v : ι → ℝ, v ≠ 0 → 0 < penaltyForm R Q tauR v
+
+namespace FinitePenaltyCert
+
+/-- A finite penalty certificate gives `D >= 0` and `R > 0` on the
+boundary-null subspace. -/
+theorem boundaryNull_guards {ρ ι : Type*} [Fintype ρ] [Fintype ι]
+    {D R : Matrix ι ι ℝ} {Q : Matrix ρ ι ℝ}
+    (cert : FinitePenaltyCert D R Q) :
+    (∀ v : ι → ℝ, BoundaryNull Q v → v ≠ 0 → 0 ≤ quadForm D v) ∧
+    (∀ v : ι → ℝ, BoundaryNull Q v → v ≠ 0 → 0 < quadForm R v) := by
+  exact two_penalty_guards_on_boundaryNull
+    (D := D) (R := R) (Q := Q)
+    (tauD := cert.tauD) (tauR := cert.tauR)
+    cert.D_penalty_pos cert.R_penalty_pos
+
+/-- If `C = D + theta R` as quadratic forms and `theta >= 0`, then the
+certificate proves `C >= 0` on `ker Q`. -/
+theorem C_nonneg_on_boundaryNull {ρ ι : Type*} [Fintype ρ] [Fintype ι]
+    {C D R : Matrix ι ι ℝ} {Q : Matrix ρ ι ℝ} {theta : ℝ}
+    (cert : FinitePenaltyCert D R Q)
+    (hC : ∀ v : ι → ℝ,
+      quadForm C v = quadForm D v + theta * quadForm R v)
+    (htheta : 0 ≤ theta) :
+    ∀ v : ι → ℝ, BoundaryNull Q v → v ≠ 0 → 0 ≤ quadForm C v := by
+  intro v hv hne
+  have hD : 0 ≤ quadForm D v := (boundaryNull_guards cert).1 v hv hne
+  have hR : 0 ≤ quadForm R v := le_of_lt <| (boundaryNull_guards cert).2 v hv hne
+  rw [hC v]
+  exact add_nonneg hD (mul_nonneg htheta hR)
+
+/-- Strengthened form of the finite certificate:
+`C >= theta R` on the boundary-null subspace. -/
+theorem C_ge_theta_R_on_boundaryNull {ρ ι : Type*} [Fintype ρ] [Fintype ι]
+    {C D R : Matrix ι ι ℝ} {Q : Matrix ρ ι ℝ} {theta : ℝ}
+    (cert : FinitePenaltyCert D R Q)
+    (hC : ∀ v : ι → ℝ,
+      quadForm C v = quadForm D v + theta * quadForm R v) :
+    ∀ v : ι → ℝ,
+      BoundaryNull Q v → v ≠ 0 →
+        theta * quadForm R v ≤ quadForm C v := by
+  intro v hv hne
+  have hD : 0 ≤ quadForm D v := (boundaryNull_guards cert).1 v hv hne
+  rw [hC v]
+  simpa [zero_add] using add_le_add_right hD (theta * quadForm R v)
+
+end FinitePenaltyCert
+
 end Q3.Proofs

@@ -11042,3 +11042,32 @@ Update:
 - Recommended next move: introduce a manifest consumer / `FiniteCert` record
   that turns `PASS` rows into the finite predicates used by the Step 23 theorem
   contract.
+
+## Result (2026-05-03, in progress) — `Step26FiniteCertLedger`
+
+- Added the `FinitePenaltyCert` Lean receiver record inside
+  `Q3/Proofs/PSD_PenaltyCertificate.lean`.
+- New Lean payload:
+  - `FinitePenaltyCert.boundaryNull_guards`;
+  - `FinitePenaltyCert.C_nonneg_on_boundaryNull`;
+  - `FinitePenaltyCert.C_ge_theta_R_on_boundaryNull`.
+- Direct verification:
+  `lake env lean Q3/Proofs/PSD_PenaltyCertificate.lean` passes.
+- Hole scan on the updated Lean file has no `sorry`, `admit`, or `exact?`.
+- Added manifest consumer:
+  `scripts/q3_psdpd_step26_finitecert_ledger.py`.
+- Generated theorem-facing ledger:
+  `docs/insights/q3_psdpd_finitecert_ledger.json`.
+- Generated note:
+  `docs/insights/q3_psdpd_step26_finitecert_ledger_2026_05_03.md`.
+- Ledger result:
+  `accepted=2`, `rejected=0`.
+- Accepted finite predicates:
+  - `psdpd_family_v1:psdpd_L3_k11_ell030_delta025_theta1e4`;
+  - `psdpd_family_v1:psdpd_L3_k9_ell030_delta025_theta1e5`.
+- The manifest rows now have a proof-facing interpretation as
+  `FinitePenaltyCert(Dtheta, Rkappa, Q)` objects.  This still does not prove
+  exhaustion; it supplies the finite predicates that the Step 23 theorem packet
+  must quantify over.
+- Recommended next move: define the directed-family skeleton over accepted
+  `FinitePenaltyCert` rows, then attack boundary-null exhaustion separately.
