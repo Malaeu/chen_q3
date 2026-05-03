@@ -239,7 +239,8 @@ theorem Q_nonneg_on_base_atoms_brange :
 -/
 theorem Q_nonneg_on_base_atoms_brange_tcritical :
     ∀ (K : ℝ) (hK : K ≥ 1),
-      ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min prime_cert_B_max,
+      ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min
+        Q3.Proofs.PrimeCert.prime_cert_B_max,
         Q3.Q g ≥ 0 := by
   intro K hK g hg
   exact Q3.Q_nonneg_on_base_atoms_brange_tcritical K hK g hg

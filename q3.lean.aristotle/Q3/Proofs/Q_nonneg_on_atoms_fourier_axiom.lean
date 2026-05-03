@@ -71,7 +71,8 @@ theorem Q_nonneg_on_base_atoms_of_A3_Fourier_RKHS :
 
 theorem Q_nonneg_on_base_atoms_brange_tcritical :
   ∀ (K : ℝ) (_hK : K ≥ 1),
-    ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min prime_cert_B_max, Q g ≥ 0 := by
+    ∀ g ∈ Q3.BaseAtomCone_K_brange K Q3.t0_critical B_min
+      Q3.Proofs.PrimeCert.prime_cert_B_max, Q g ≥ 0 := by
   intro K _hK g hg
   exact Q3.Proofs.QNonnegTau0Bridge.Q_nonneg_on_base_atoms_brange_tcritical K _hK g hg
 

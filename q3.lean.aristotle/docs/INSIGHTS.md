@@ -6763,7 +6763,7 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
 ## In progress (2026-04-11): endpoint evaluation on the raw tail already splits by sign
 
 - the endpoint functional is now explicit on the raw tail synthesis:
-  `\chi_{\pm n}[a](-a)=(2a)^{-1/2}(-1)^n`, so
+  `\chi_{\pm n}^{[a]}(-a)=(2a)^{-1/2}(-1)^n`, so
   `\operatorname{ev}_{-a}\circ T_{a,\infty,N}`
   splits exactly as
   `\ell_{+,N}P_+ + \ell_{-,N}P_-`
@@ -7201,7 +7201,7 @@ Direct `PO2` receiver plan after demoting the Krein/localization branch:
   [`h1_po2_cross_sign_bulk_exactness_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md),
   [`h1_po3_cross_sign_boundary_cancellation_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_po3_cross_sign_boundary_cancellation_2026_03_16.md),
   [`h1_boundary_cap_reset_2026_03_14.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_boundary_cap_reset_2026_03_14.md),
-  [`h1_proof_obligation_table_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1-proof-obligation-table-2026-03-16.md);
+  [`h1_proof_obligation_table_2026_03_16.md`](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/h1_proof_obligation_table_2026_03_16.md);
 - короткая внешняя проверка дала только общий операторный фон про конечный
   ранг, конечные возмущения и почти-инвариантность; готовой внешней теоремы,
   которая автоматически закрывает наш `PO3a`, нет;
