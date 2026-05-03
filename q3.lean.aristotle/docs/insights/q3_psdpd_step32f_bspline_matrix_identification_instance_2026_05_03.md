@@ -1,8 +1,10 @@
-# Step 32F — B-spline matrix identification instance
+# Step 32F — B-spline matrix identification instance and concrete-identity gap
 
 ## Goal
 
-Close the Step 32 Lean-side matrix-identification chain.
+Provide the final Lean-side matrix-identification consumer for Step 32, and
+record the remaining concrete B-spline identity gap without pretending it is
+closed.
 
 The output is the final object required by Step 31:
 
@@ -63,7 +65,7 @@ for analytic boundary-null packet vectors.
 
 ## What this closes
 
-Steps 31--32F now give the full formal bridge:
+Steps 31--32F now give the final Lean consumer shape:
 
 \[
 \texttt{FinitePenaltyCert}
@@ -76,16 +78,28 @@ Steps 31--32F now give the full formal bridge:
 Equivalently, the interval-backed matrix certificate can now be consumed as a
 finite analytic Weil positivity theorem for the B-spline packet block.
 
-## Honesty note
+This is a real closure of the matrix-identification plumbing, but it is not yet
+the proof of the concrete centered B-spline transform/correlation formulas.
+
+## Concrete identity gap
 
 The current Lean codebase still does not define the centered cardinal B-spline
 bump, its Laplace transform integral, or its autocorrelation integral as
 analytic objects.  Therefore Step 32F does not pretend to prove those
 special-function facts from first principles.
 
-Instead, it makes them the final concrete identity input through
-`BSplineTranslatedAnalyticContract` and immediately converts them into the
+Instead, the current file makes them the final concrete identity input through
+`BSplineTranslatedAnalyticContract` and immediately converts that input into the
 certified finite analytic model.
+
+Under the stricter Step 32F requirement, Step 32 is not mathematically closed
+until the following Lean objects exist and compile:
+
+1. a centered/scaled B-spline bump definition;
+2. its translated/scaled transform identity;
+3. its nonzero boundary-scale proof at \(z=\pm1/2\);
+4. its autocorrelation identity \(r_k(x)=b_{2k+1}(s_kx)/c_k\);
+5. the Arch and Prime entry identities built from those formulas.
 
 The external sanity-check matches the recorded Step 12 formulas: centered
 cardinal B-splines have sinc/sinh-power transforms and compactly supported
@@ -96,21 +110,22 @@ piecewise-polynomial autocorrelations.  Useful references:
 - Boost cardinal B-spline documentation:
   `https://www.boost.org/doc/libs/latest/libs/math/doc/html/math_toolkit/sf_poly/cardinal_b_splines.html`
 
-## Remaining work after Step 32
+## Remaining work inside Step 32F
 
-This is no longer another matrix-identification receiver.  The remaining work
-is to instantiate the analytic identity input for the actual B-spline bump:
+This should not become another receiver layer.  The remaining work is the
+actual analytic B-spline model input:
 
 1. centered/scaled B-spline transform;
 2. nonzero boundary scales;
 3. B-spline autocorrelation profile \(r_k\);
 4. Arch and Prime profiles.
 
-That should be treated as the analytic B-spline model input feeding the already
-closed Step 32 matrix-identification bridge.
+That input should feed the already-built matrix-identification consumer in this
+file.  Only after that can Step 32 be marked closed in the strict sense.
 
 ## Verdict
 
-Step 32 is closed on the Lean matrix-identification side.  The next architectural
-move is Step 33: consume certified finite B-spline blocks inside the directed
-family / exhaustion route.
+Step 32 is closed on the Lean matrix-identification-plumbing side, but not yet
+closed as concrete B-spline mathematics.  Do not advance to Step 33 as if the
+actual centered B-spline transform/correlation identities had already been
+proved in Lean.

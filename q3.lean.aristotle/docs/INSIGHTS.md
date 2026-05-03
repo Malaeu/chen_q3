@@ -11,6 +11,27 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-05-03, correction) — Step32F concrete B-spline identity gap
+
+- Correction to the Step 32F status: the committed file
+  `Q3/Proofs/PSD_BSplineMatrixIdentificationInstance.lean` is the final
+  matrix-identification consumer from `BSplineTranslatedAnalyticContract` to
+  `CertifiedFiniteWeilModel`, but it does **not** yet prove the concrete
+  centered B-spline transform/autocorrelation formulas.
+- Local Lean search and mathlib search show no existing centered cardinal
+  B-spline analytic object in the project or mathlib.  The concrete formulas
+  currently live in scripts/notes, especially the PSD-pd pilot/interval
+  pipeline, not as Lean definitions with integral theorems.
+- Therefore Step 32 should not be advanced to Step 33 under the strict
+  interpretation until the actual analytic identity input is added:
+  centered/scaled B-spline bump, translated transform identity, nonzero
+  boundary scales, autocorrelation profile, and Arch/Prime entry identities.
+- This is not another receiver layer.  It is the real analytic model input that
+  feeds the already-built matrix-identification consumer.
+- Active recommendation: keep the existing consumer, but treat Step 32F as the
+  current hard blocker for concrete formulas; do not mark the full B-spline
+  matrix-identification theorem closed yet.
+
 ## Синхронизационный статус (2026-02-28)
 
 - Проверка последнего плана: mainline формально описывает τ=0 маршрут через
