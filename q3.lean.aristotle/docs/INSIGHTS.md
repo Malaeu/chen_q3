@@ -10830,3 +10830,29 @@ Update:
   builder / midpoint CSV contract, or keep `k_spline=9` as the first
   proof-candidate while replacing `P0` drift radii by proof-grade
   piecewise exponential-polynomial intervals.
+
+## Result (2026-05-03, in progress) — `Step20MidpointContract`
+
+- Step 18 now accepts an optional midpoint override:
+  `--midpoint-csv`, with rows `matrix,i,j,mid`.
+- Step 20 midpoint/radius contract generator added:
+  `scripts/q3_psdpd_step20_midpoint_contract.py`.
+- Result note recorded in
+  `docs/insights/q3_psdpd_step20_midpoint_contract_2026_05_03.md`.
+- For `k_spline=11`, the measured mismatch between the old float `P`
+  midpoint and Arb `P` midpoint is
+  `||P_float-P_arb_mid||_2≈2.02e-4`.  This confirms that the Step 19
+  `k=11` failure was a midpoint-contract failure, not a failure of the finite
+  form.
+- With Arb midpoint plus Arb radius for `P,Q`, the `k_spline=11` branch passes
+  Step 18 radius-mode:
+  `safe_Dtheta_lower≈1.2226e-4` and
+  `safe_Rkappa_lower≈1.3544e-1`.
+- Control `k_spline=9` remains healthy under the new contract:
+  `safe_Dtheta_lower≈1.2637e-5` and
+  `safe_Rkappa_lower≈1.9569e-3`.
+- Current proof-candidate status: `P,Q` now have Arb midpoint/radius
+  contracts; `P0,A` still use float midpoint plus drift radii.
+- Recommended next move: Step 21 proof-grade `P0` via compact-support
+  B-spline/exponential-polynomial interval integrals, then Step 22
+  proof-grade `A` via interval quadrature plus sinc-power tail bound.

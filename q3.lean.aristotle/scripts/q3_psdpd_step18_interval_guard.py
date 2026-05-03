@@ -199,6 +199,60 @@ def load_radius_csv(path: Path, base: dict[str, np.ndarray]) -> RadiusPack:
     return rp
 
 
+def load_midpoint_csv(path: Path, base: dict[str, np.ndarray]) -> None:
+    """
+    Optional midpoint override.
+
+    Expected CSV rows:
+      matrix,i,j,mid
+
+    matrix in:
+      A, P, P0, Q
+
+    This mutates base in-place and recomputes QTQ if Q is changed.
+    """
+    if not path.exists():
+        raise FileNotFoundError(path)
+    if path.is_dir():
+        raise IsADirectoryError(path)
+
+    targets = {
+        "A": base["A"],
+        "P": base["P"],
+        "P0": base["P0"],
+        "Q": base["Q"],
+    }
+
+    touched_Q = False
+
+    with path.open() as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            name = row["matrix"].strip()
+            i = int(row["i"])
+            j = int(row["j"])
+            mid = float(row["mid"])
+
+            if name not in targets:
+                raise ValueError(f"Bad matrix name in midpoint CSV: {name}")
+
+            M = targets[name]
+            M[i, j] = mid
+
+            if name != "Q" and i != j:
+                M[j, i] = mid
+
+            if name == "Q":
+                touched_Q = True
+
+    base["A"] = sym(base["A"])
+    base["P"] = sym(base["P"])
+    base["P0"] = sym(base["P0"])
+
+    if touched_Q:
+        base["QTQ"] = q_penalty(base["Q"])
+
+
 def qTq_radius(Q_mid: np.ndarray, Q_rad: np.ndarray) -> np.ndarray:
     """
     Entrywise radius bound for Q^T Q.
@@ -346,6 +400,13 @@ def run() -> None:
     )
 
     parser.add_argument(
+        "--midpoint-csv",
+        type=str,
+        default="",
+        help="Optional midpoint CSV with rows matrix,i,j,mid. Overrides internal float midpoints.",
+    )
+
+    parser.add_argument(
         "--mode",
         type=str,
         choices=["drift", "radius"],
@@ -372,9 +433,15 @@ def run() -> None:
     print(f"L={args.L}, ell={args.ell}, delta={args.delta}, k_spline={args.k_spline}")
     print(f"kappa={args.kappa}, theta={args.theta}")
     print(f"mode={args.mode}")
-    print("[WARN] drift mode is not proof-grade. Use radius mode with Arb intervals for proof.")
+    if args.mode == "drift":
+        print("[WARN] drift mode is not proof-grade. Use radius mode with Arb intervals for proof.")
+    else:
+        print("[INFO] radius mode uses the provided midpoint/radius CSV contract.")
 
     base = build_all(params)
+
+    if args.midpoint_csv:
+        load_midpoint_csv(Path(args.midpoint_csv), base)
 
     A = base["A"]
     P = base["P"]
