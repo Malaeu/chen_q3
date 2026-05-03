@@ -208,3 +208,13 @@ Step 14 should add diagnostics:
 - decompose its energy into `A`, `P`, `P0`, `Pnu`;
 - run a local refinement around the best positive cases, especially
   `(k_spline,ell)=(9,0.30)`, `(3,0.35)`, and `(7,0.30)`.
+
+Update:
+
+- Step 14 added the worst-vector autopsy script
+  `scripts/q3_psdpd_step14_worst_vector.py`.
+- First autopsy result is recorded in
+  `docs/insights/q3_psdpd_step14_worst_vector_2026_05_03.md`.
+- The near-kernel is a real Arch/Prime cancellation mode; a `kappa` split
+  revives a finite relative certificate around `kappa=8`, but with a
+  very small margin.

@@ -10678,3 +10678,25 @@ Update:
 - Sweep verdict: `-P0` is robustly positive, while direct `A-P` has a
   near-kernel and can cross slightly negative for smoother/wider spline
   parameters.  Step 14 should extract and diagnose the worst vector.
+
+## Result (2026-05-03, in progress) — `Step14WorstVectorAutopsy`
+
+- Step 14 autopsy script added:
+  `scripts/q3_psdpd_step14_worst_vector.py`.
+- Result note recorded in
+  `docs/insights/q3_psdpd_step14_worst_vector_2026_05_03.md`.
+- Baseline worst vector confirms a genuine near-cancellation:
+  `lambda_min(C^circ,G^circ)≈1.01e-8`,
+  `E_A≈0.3763534724`, `E_P≈0.3763534623`,
+  `E_P0≈-0.0229611264`, `E_Pnu≈0.3993145887`.
+- The lifted vector is boundary-null to numerical precision:
+  `||Qv||_2≈7.02e-16`.
+- The worst profile is strongly antisymmetric with main packets near
+  `u≈±2.35..2.65` and secondary packets near `u≈±1.35..1.65`.
+- Prime-shift contributors are not just small primes: dominant bands include
+  `log 19`, `log 53`, `log 43`, `log 41`, plus `log 5` and `log 2`.
+- New certificate signal: the `kappa` split
+  `C=(A-kappa P0)-(P-kappa P0)` makes the base positive and relative max
+  below `1` at `kappa=8`, but only by a knife-edge margin near `1.8e-8`.
+- Step 15 should find the minimal viable `kappa`, test margin stability, and
+  compare worst-vector profiles across nearby parameters.
