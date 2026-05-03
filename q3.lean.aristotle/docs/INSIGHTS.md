@@ -10725,3 +10725,33 @@ Update:
 - Recommended next move: refine around `k_spline=9`, `ell=0.25..0.35`,
   `delta=0.20..0.25`, export worst vectors, and run quadrature-stability plus
   interval-certificate probes on the best finite level.
+
+## Result (2026-05-03, in progress) — `Step16RefineCandidate`
+
+- Step 16 candidate-refinement script added:
+  `scripts/q3_psdpd_step16_refine_candidate.py`.
+- Result note recorded in
+  `docs/insights/q3_psdpd_step16_refine_candidate_2026_05_03.md`.
+- Main CSV outputs:
+  `docs/insights/q3_psdpd_step16_refine.csv` and
+  `docs/insights/q3_psdpd_step16_kappa_curve.csv`.
+- Refined best Step 15 candidate
+  `k_spline=9`, `ell=0.30`, `delta=0.25` on fine kappa grid:
+  first viable kappa is `3.075`, with
+  `lambda_min(C^circ,G^circ)≈1.96e-5` and margin `≈3.03e-5`.
+- Kappa plateau is stable on the tested grid: the certificate remains viable
+  from `kappa=3.075` through `4.25`, with margin staying near `3e-5`.
+- Quadrature stability is strong for the baseline:
+  `220:36001:18001`, `260:48001:24001`, and `320:64001:32001` all give the
+  same viable kappa and margin to the displayed precision.
+- Profile stability is now meaningful because profiles are compared to the
+  best baseline.  The same-profile branch survives changes in spline degree
+  and nearby `ell` at `delta=0.25`; for example
+  `k_spline=11`, `ell=0.30`, `delta=0.25` has margin `≈2.73e-4` and
+  profile correlation `≈0.99487`.
+- A separate high-margin branch appears at `delta=0.30`, with margins up to
+  `≈9.89e-3` but very low correlation to the baseline profile.  Treat this as
+  a different mode until a dedicated autopsy is done.
+- Recommended next move: Step 17 interval/proof-grade certificate for the
+  same-profile branch, starting from `k_spline=9`, `ell=0.30`, `delta=0.25`,
+  with `k_spline=11`, `ell=0.30`, `delta=0.25` as the higher-margin backup.
