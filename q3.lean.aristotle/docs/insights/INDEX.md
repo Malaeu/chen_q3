@@ -132,6 +132,7 @@ Files:
 - q3_psdpd_step28_boundary_null_correction_2026_05_03.md
 - q3_psdpd_step29_boundary_null_convergence_2026_05_03.md
 - q3_psdpd_step30_boundary_null_exhaustion_2026_05_03.md
+- q3_psdpd_step31_matrix_identification_2026_05_03.md
 - q3_psdpd_step8_certificate_design_2026_05_03.md
 - q_zeta_core_short_circuit_sprint_2026_03_15.md
 - q_zeta_core_skeleton_2026_03_15.md

@@ -11171,3 +11171,29 @@ Update:
 - Recommended next move: instantiate the abstract assumptions for a concrete
   directed finite-space family: ordinary density, boundary functional
   continuity, and closure under correction/refinement.
+
+## Result (2026-05-03, in progress) — `Step31MatrixIdentification`
+
+- Added the matrix-to-analytic-form bridge:
+  `Q3/Proofs/PSD_MatrixIdentification.lean`.
+- New theorem-facing objects:
+  `FiniteWeilMatrixModel` and `CertifiedFiniteWeilModel`.
+- The file records the exact contract needed to connect interval-backed finite
+  matrices to analytic Weil positivity:
+  - synthesis `v ↦ h_v`;
+  - identification `WeilForm(h_v)=quadForm C v`;
+  - analytic boundary vanishing of `h_v` implies `BoundaryNull Q v`.
+- Main payload:
+  a `FinitePenaltyCert D R Q`, the split
+  `quadForm C v = quadForm D v + theta * quadForm R v`, and a
+  `FiniteWeilMatrixModel C Q` imply analytic nonnegativity
+  `0 ≤ WeilForm(h_v)` for synthesized boundary-null vectors.
+- The strengthened finite estimate is also transported:
+  `theta * quadForm R v ≤ WeilForm(h_v)`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_MatrixIdentification.lean` passes.
+- This does not yet instantiate the concrete B-spline formulas.  It creates the
+  Lean port where the concrete Arch/prime/boundary matrix identities must land.
+- Recommended next move: Step 32 should instantiate the model for the actual
+  B-spline packet synthesis and prove that `C=A-P` is the matrix of the
+  analytic Weil/PSD form on that finite packet space.
