@@ -163,4 +163,62 @@ theorem formPSD_diff_of_primeGraph_cert {ι : Type*} [Zero (ι → ℝ)]
     (v := v) (hsos v)]
   exact hcert v hv
 
+/-- Algebraic rewrite for the prime-main/fluctuation split.
+
+If `qP = qMain + qFluct`, then `qA - qP` is
+`(qA - qFluct) - qMain`.  In the intended application `qMain <= 0` on the
+boundary-null subspace, so `-qMain` is a bonus positive term. -/
+lemma formDiff_eq_fluctuation_minus_main_of_split {ι : Type*}
+    (qA qP qMain qFluct : (ι → ℝ) → ℝ) (v : ι → ℝ)
+    (hsplit : qP v = qMain v + qFluct v) :
+    formDiff qA qP v = formDiff qA qFluct v - qMain v := by
+  unfold formDiff
+  linarith
+
+/-- One-vector main-kernel split certificate.
+
+If the continuous main part is nonpositive and the Archimedean form dominates
+the fluctuation, then the Archimedean form dominates the full prime form. -/
+lemma formDiff_nonneg_of_main_nonpos_fluctuation_nonneg {ι : Type*}
+    (qA qP qMain qFluct : (ι → ℝ) → ℝ) (v : ι → ℝ)
+    (hsplit : qP v = qMain v + qFluct v)
+    (hmain : qMain v ≤ 0)
+    (hfluct : 0 ≤ formDiff qA qFluct v) :
+    0 ≤ formDiff qA qP v := by
+  rw [formDiff_eq_fluctuation_minus_main_of_split
+    (qA := qA) (qP := qP) (qMain := qMain) (qFluct := qFluct)
+    (v := v) hsplit]
+  linarith
+
+/-- Boundary-null main-kernel split certificate.
+
+This is the abstract Lean landing surface for Step 9:
+`qMain` models the continuous prime-main kernel `P0`, which is nonpositive on
+the boundary-null subspace by the Green identity.  It remains to prove the
+fluctuation domination `qA - qFluct >= 0`. -/
+theorem formNonnegOn_diff_of_main_nonpos_fluctuation {ι : Type*}
+    (qA qP qMain qFluct : (ι → ℝ) → ℝ)
+    (Boundary : (ι → ℝ) → Prop)
+    (hsplit : ∀ v : ι → ℝ, Boundary v →
+      qP v = qMain v + qFluct v)
+    (hmain : ∀ v : ι → ℝ, Boundary v → qMain v ≤ 0)
+    (hfluct : FormNonnegOn (formDiff qA qFluct) Boundary) :
+    FormNonnegOn (formDiff qA qP) Boundary := by
+  intro v hv
+  exact formDiff_nonneg_of_main_nonpos_fluctuation_nonneg
+    (qA := qA) (qP := qP) (qMain := qMain) (qFluct := qFluct)
+    (v := v) (hsplit v hv) (hmain v hv) (hfluct v hv)
+
+/-- Unconstrained main-kernel split certificate for ordinary PSD. -/
+theorem formPSD_diff_of_main_nonpos_fluctuation {ι : Type*} [Zero (ι → ℝ)]
+    (qA qP qMain qFluct : (ι → ℝ) → ℝ)
+    (hsplit : ∀ v : ι → ℝ, qP v = qMain v + qFluct v)
+    (hmain : ∀ v : ι → ℝ, qMain v ≤ 0)
+    (hfluct : FormPSD (formDiff qA qFluct)) :
+    FormPSD (formDiff qA qP) := by
+  intro v hv
+  exact formDiff_nonneg_of_main_nonpos_fluctuation_nonneg
+    (qA := qA) (qP := qP) (qMain := qMain) (qFluct := qFluct)
+    (v := v) (hsplit v) (hmain v) (hfluct v hv)
+
 end Q3.Proofs

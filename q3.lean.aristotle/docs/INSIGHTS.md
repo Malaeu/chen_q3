@@ -10584,3 +10584,20 @@ Update:
   A3 positivity applies to the boundary-null compact-support Hermitian-square
   localizers, with corrected `W^{pd}` closure and explicit `(2M+1)` prime
   scaling.
+
+## Result (2026-05-03, in progress) — `PrimeFluctuationSplit`
+
+- Prime fluctuation split recorded in
+  `docs/insights/q3_psdpd_prime_fluctuation_split_2026_05_03.md`.
+- New Step 9 sharpening:
+  split `P=P0+Pnu`, where `dmu0(a)=exp(a/2) da`.  On the boundary-null
+  subspace, the continuous main kernel satisfies
+  `P0(h)=-||Phi'||^2-(1/4)||Phi||^2 <= 0`.
+- Therefore the main prime mass becomes a positive bonus in `A-P`; the live
+  target shrinks from `A>=P` to fluctuation domination `A>=Pnu`, equivalently
+  `N^*(A-Pnu)N >= 0`.
+- `Q3/Proofs/PSD_FormAlgebra.lean` now includes the hole-free abstract split
+  algebra:
+  `qP=qMain+qFluct`, `qMain<=0`, and `qA-qFluct>=0` imply `qA-qP>=0`.
+- Verification passed:
+  `lake env lean Q3/Proofs/PSD_FormAlgebra.lean`.

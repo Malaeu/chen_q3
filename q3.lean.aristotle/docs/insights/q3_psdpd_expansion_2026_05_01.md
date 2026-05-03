@@ -370,3 +370,42 @@ This yields the concrete Step 9 target:
 rewrite.  The old A3 bridge cannot yet be used as a finished RH proof because
 it has not been proved for the boundary-null compact-support Hermitian-square
 localizer class with corrected `W^{pd}` closure and explicit prime scaling.
+
+## Prime fluctuation split (2026-05-03)
+
+Detailed note:
+
+```text
+docs/insights/q3_psdpd_prime_fluctuation_split_2026_05_03.md
+```
+
+Instead of proving `A >= P`, split the prime measure as
+
+```math
+d\mu=d\mu_0+d\nu,
+\qquad
+d\mu_0(a)=e^{a/2}\,da.
+```
+
+The continuous main kernel gives
+
+```math
+P_0(h)=\iint h(u)\overline{h(v)}e^{|u-v|/2}\,du\,dv.
+```
+
+On boundary-null tests this satisfies
+
+```math
+P_0(h)=-\|\Phi'\|_2^2-\frac14\|\Phi\|_2^2\le0.
+```
+
+So the current sharp target is:
+
+```math
+N^\ast(A-P_\nu)N\succeq0,
+\qquad
+P_\nu=P-P_0.
+```
+
+The abstract Lean algebra for this split is now in
+`Q3/Proofs/PSD_FormAlgebra.lean`.

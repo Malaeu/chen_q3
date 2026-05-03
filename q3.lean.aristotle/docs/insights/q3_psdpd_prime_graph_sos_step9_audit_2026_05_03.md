@@ -213,3 +213,34 @@ then attack one concrete bridge.}
 The new Lean algebra means Step 9A now has a clean consumer:
 it only needs the spectral-gap inequality on `ker Q`.
 
+## Prime-fluctuation refinement (2026-05-03)
+
+Follow-up note:
+
+```text
+docs/insights/q3_psdpd_prime_fluctuation_split_2026_05_03.md
+```
+
+The sharper split is:
+
+```math
+P=P_0+P_\nu,
+\qquad
+d\mu_0(a)=e^{a/2}\,da.
+```
+
+On the boundary-null subspace, `P0` is nonpositive by a Green identity:
+
+```math
+P_0(h)=-\|\Phi'\|_2^2-\frac14\|\Phi\|_2^2\le0.
+```
+
+Thus the Step 9A target improves from domination of the full prime form to
+domination of only the prime fluctuation:
+
+```math
+N^\ast(A-P_\nu)N\succeq0.
+```
+
+This should be preferred over the raw mass-penalty certificate whenever the
+Green-kernel normalization is available.
