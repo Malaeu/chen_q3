@@ -11224,3 +11224,39 @@ Update:
 - It also records the future integration pattern:
   add a `PSDpd_GlobalRoute` export, compare it with the current old atom route,
   and rewire `Q3.Main` only after the PSD-pd route is theorem-complete.
+
+## Synthesis (2026-05-03, in progress) — `Step32A_BSplineMatrixIdentificationReceiver`
+
+- Ran the project semantic-search protocol for the new blocker using queries:
+  `B-spline packet matrix identification WeilForm`,
+  `packet-Rayleigh-pd finite quadratic form identity`,
+  `boundary rows H(1/2) H(-1/2) spline packet`, and
+  `Arch matrix prime matrix A P B-spline packet`.
+- Local hits confirm the intended insertion point:
+  `packet-Rayleigh-pd` supplies finite quadratic-form identification on packet
+  tests, and `PSD-pd` supplies positivity before `A2` closure.
+- `full/sections/Weil_pack.tex` and `full/sections/Main_closure.tex` confirm
+  that the live packet target is PSD of the exact autocorrelation packet kernel,
+  not the overlarge naive Rayleigh family.
+- External sanity-check found only standard background facts: B-spline
+  sinc-power Fourier behavior, Toeplitz quadratic-form representation, and
+  Weil positive-definite phrasing.  No route change.
+- Recorded the Step 32A note:
+  `docs/insights/q3_psdpd_step32a_bspline_matrix_identification_receiver_2026_05_03.md`.
+- Chosen theorem shape:
+  B-spline entry hypotheses for Arch, Prime, boundary rows, and
+  `WeilForm=Arch-Prime` should construct a `FiniteWeilMatrixModel`; paired with
+  a `FinitePenaltyCert`, this yields a `CertifiedFiniteWeilModel`.
+- Added Lean receiver:
+  `Q3/Proofs/PSD_BSplineMatrixIdentification.lean`.
+- New objects:
+  `BSplinePacketEntryData` and `CertifiedBSplinePacketBlock`.
+- Main conversion payload:
+  `BSplinePacketEntryData.toFiniteWeilMatrixModel` and
+  `CertifiedBSplinePacketBlock.toCertifiedFiniteWeilModel`.
+- Main analytic consequences:
+  `CertifiedBSplinePacketBlock.weil_nonneg_on_analyticBoundary` and
+  `CertifiedBSplinePacketBlock.weil_ge_theta_R_on_analyticBoundary`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_BSplineMatrixIdentification.lean` passes, hole
+  scan is clean, and links are clean.
