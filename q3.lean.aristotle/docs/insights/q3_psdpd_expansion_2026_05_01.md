@@ -479,3 +479,35 @@ For local bumps this gives smoothed-error bands
 
 The next certificate engine should work with this smoothed operator, not with
 raw pointwise bounds on `E(x)`.
+
+## Step 12 B-spline packet formulas (2026-05-03)
+
+Detailed note:
+
+```text
+docs/insights/q3_psdpd_bspline_packet_step12_2026_05_03.md
+```
+
+The reconnaissance basis is now fixed as a centered compact B-spline packet:
+
+```math
+\eta_k(x)=
+\sqrt{\frac{s_k}{c_k}}\,b_k(s_kx),
+\qquad
+s_k=(k+1)/2,
+\qquad
+c_k=b_{2k+1}(0).
+```
+
+The basis transform and autocorrelation are explicit:
+
+```math
+H_j(z)=\sqrt{\ell}\,e^{zu_j}E_{\ell,k}(z),
+```
+
+```math
+r_k(x)=b_{2k+1}(s_kx)/c_k.
+```
+
+This freezes formula-level entries for `G,A,P,P0,Pnu,Q,N` and the finite
+certificate `C^circ=N^*(A-P)N`.

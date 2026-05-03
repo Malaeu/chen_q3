@@ -10638,3 +10638,22 @@ Update:
   `qA-(q0+qnu)>=0` on the constrained subspace.
 - Verification passed:
   `lake env lean Q3/Proofs/PSD_FormAlgebra.lean`.
+
+## Synthesis (2026-05-03, in progress) — `BSplinePacketStep12`
+
+- Step 12 B-spline packet formulas recorded in
+  `docs/insights/q3_psdpd_bspline_packet_step12_2026_05_03.md`.
+- Notation correction: spline degree/order uses `k`, while prime powers use
+  `r log p`; this avoids the `m`/`m` collision before implementing the engine.
+- The chosen reconnaissance bump is the centered compact B-spline
+  `eta_k(x)=sqrt(s_k/c_k) b_k(s_k x)`, with
+  `s_k=(k+1)/2` and `c_k=b_{2k+1}(0)`.
+- Explicit formulas are now frozen for `H_j`, `G`, `A`, `Q`, `P`, `P0`,
+  `Pnu`, and the reduced certificate
+  `C^circ=N^*(A-P)N=N^*(R-Pnu)N`.
+- Proof-grade warning recorded: finite B-splines are only `C^(k-1)`, so the
+  final admissible-test proof needs either a mollified B-spline limit with a
+  strict gap or a direct `C^infty` bump with interval quadrature.
+- Recommended next move: Step 13 numerical pilot for
+  `G,A,P,P0,Pnu,Q,N`, generalized eigenvalue, worst vector, and
+  interval-Cholesky hooks.

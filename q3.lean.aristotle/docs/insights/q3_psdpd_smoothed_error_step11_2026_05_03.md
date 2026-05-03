@@ -253,3 +253,10 @@ entries for:
 Recommended first engineering choice: use a compact polynomial bump or
 B-spline-like autocorrelation so that `r_eta` and `r_eta'` are explicit enough
 for interval arithmetic.
+
+Update:
+
+- Step 12 chose the centered B-spline packet basis and fixed explicit formulas
+  in `docs/insights/q3_psdpd_bspline_packet_step12_2026_05_03.md`.
+- In that note the spline degree/order is written `k`, while prime powers use
+  `r log p`, to avoid notation collision.
