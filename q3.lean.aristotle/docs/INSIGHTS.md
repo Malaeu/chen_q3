@@ -11352,3 +11352,37 @@ Update:
 - Remaining Step 32E blocker:
   prove the actual B-spline transform/correlation identities and instantiate
   the Arch/Prime kernels, instead of adding more receiver layers.
+
+## Synthesis (2026-05-03, in progress) — `Step32E_BSplineTranslationIdentities`
+
+- Ran the project semantic-search protocol for the next PSD-pd blocker using
+  queries around B-spline transforms, autocorrelation, Arch kernels, prime
+  kernels, and the packet-Rayleigh corrected-cone route.
+- Local hits again place this work exactly between `packet-Rayleigh-pd` and
+  `PSD-pd`: matrix entries must be the exact packet kernel
+  \(K_Q(g_i,g_j)=\mathcal Q(g_i*\widetilde{g_j})\), not an unrelated CSV
+  object.
+- Added Lean file:
+  `Q3/Proofs/PSD_BSplineTranslationIdentities.lean`.
+- New boundary translation object:
+  `PacketTranslationBoundaryData` proves that translated packets satisfying
+  \(E_+(T_u f)=e^{u/2}E_+(f)\) and
+  \(E_-(T_u f)=e^{-u/2}E_-(f)\) produce the concrete Step 32D rows
+  `exp(center i / 2)` and `exp(-(center i) / 2)`.
+- New kernel translation object:
+  `PacketTranslationKernelData` proves that a pairing profile
+  `form (T_u base) (T_v base) = profile (u - v)` gives matrix entries
+  `profile (center j - center i)` under the Step 32C convention
+  `M i j = form psi_j psi_i`.
+- New combined contract:
+  `BSplineTranslatedAnalyticContract`, converting translated-packet boundary
+  and difference-kernel data into `BSplineAnalyticKernelContract` and then into
+  `FiniteWeilMatrixModel`.
+- Recorded note:
+  `docs/insights/q3_psdpd_step32e_bspline_translation_identities_2026_05_03.md`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_BSplineTranslationIdentities.lean` passes.
+- Remaining Step 32F blocker:
+  prove the actual base B-spline analytic identities: transform of the centered
+  scaled bump, nonzero boundary scales, autocorrelation profile \(r_k\), and
+  Arch/Prime profile formulas.
