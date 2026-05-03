@@ -10856,3 +10856,28 @@ Update:
 - Recommended next move: Step 21 proof-grade `P0` via compact-support
   B-spline/exponential-polynomial interval integrals, then Step 22
   proof-grade `A` via interval quadrature plus sinc-power tail bound.
+
+## Result (2026-05-03, in progress) — `Step21P0Interval`
+
+- Step 21 `P0` interval patcher added:
+  `scripts/q3_psdpd_step21_p0_interval.py`.
+- Result note recorded in
+  `docs/insights/q3_psdpd_step21_p0_interval_2026_05_03.md`.
+- The script reads Step 20 midpoint/radius CSVs and replaces only `P0` by
+  Arb midpoint/radius values computed from piecewise B-spline exponential
+  integrals.
+- For `k_spline=11`, the old drift-based `P0` radius is replaced by an Arb
+  interval:
+  `max old rad(P0)≈1.22e-5`,
+  `max new rad(P0)≈1.43e-16`.
+- The `k_spline=11` Step 18 radius-mode certificate still passes:
+  `safe_Dtheta_lower≈1.2229e-4` and
+  `safe_Rkappa_lower≈1.3569e-1`.
+- Control `k_spline=9` also passes:
+  `safe_Dtheta_lower≈1.2637e-5` and
+  `safe_Rkappa_lower≈1.9591e-3`.
+- Current proof-candidate status: `P`, `Q`, and `P0` now have Arb
+  midpoint/radius contracts.  The only remaining drift-backed matrix is the
+  Arch matrix `A`.
+- Recommended next move: Step 22 proof-grade `A` via interval quadrature on
+  `[0,T]` plus a sinc-power analytic tail bound.
