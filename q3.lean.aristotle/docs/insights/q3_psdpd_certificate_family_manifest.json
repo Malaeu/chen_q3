@@ -1,0 +1,61 @@
+{
+  "blocks": [
+    {
+      "L": 3.0,
+      "block_id": "psdpd_L3_k11_ell030_delta025_theta1e4",
+      "delta": 0.25,
+      "dtheta_pass": true,
+      "dtheta_safe_lower": 0.00012228594850139608,
+      "ell": 0.3,
+      "family_id": "psdpd_family_v1",
+      "k_spline": 11,
+      "kappa": 3.25,
+      "midpoint_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+      "midpoint_sha256": "29d9c06befcc68ee13dbe2fe7cbad898df968ea9632f0d31c9a7d6c983411ac3",
+      "notes": "Primary interval-backed finite block after Step 22.",
+      "radius_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
+      "radius_sha256": "e6112bc2202d2560f1aab4f4e4bffdcc60586652a902859e19dd122e6d491ed2",
+      "rkappa_pass": true,
+      "rkappa_safe_lower": 0.1356922078030177,
+      "role": "primary",
+      "status": "PASS",
+      "stdout_path": "q3.lean.aristotle/docs/insights/q3_psdpd_family_step18_outputs/psdpd_L3_k11_ell030_delta025_theta1e4.step18.txt",
+      "tau_grid": "log:-8:8:161",
+      "theta": 0.0001
+    },
+    {
+      "L": 3.0,
+      "block_id": "psdpd_L3_k9_ell030_delta025_theta1e5",
+      "delta": 0.25,
+      "dtheta_pass": true,
+      "dtheta_safe_lower": 1.2636922932217566e-05,
+      "ell": 0.3,
+      "family_id": "psdpd_family_v1",
+      "k_spline": 9,
+      "kappa": 3.075,
+      "midpoint_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+      "midpoint_sha256": "cc88eb915f7dc7fd499c2ae3dcfe8f5bac9615750c92ba1c1c98559c9b711a0f",
+      "notes": "Control interval-backed finite block after Step 22.",
+      "radius_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
+      "radius_sha256": "0b3c5a067323b278a3c4fc75d8af86df4ea69dfa20c5a8472343a263e78ebea9",
+      "rkappa_pass": true,
+      "rkappa_safe_lower": 0.0019590641960201293,
+      "role": "control",
+      "status": "PASS",
+      "stdout_path": "q3.lean.aristotle/docs/insights/q3_psdpd_family_step18_outputs/psdpd_L3_k9_ell030_delta025_theta1e5.step18.txt",
+      "tau_grid": "log:-8:8:161",
+      "theta": 1e-05
+    }
+  ],
+  "control_pass": [
+    "psdpd_L3_k9_ell030_delta025_theta1e5"
+  ],
+  "fail_blocks": 0,
+  "missing_blocks": 0,
+  "pass_blocks": 2,
+  "primary_pass": [
+    "psdpd_L3_k11_ell030_delta025_theta1e4"
+  ],
+  "run_error_blocks": 0,
+  "total_blocks": 2
+}

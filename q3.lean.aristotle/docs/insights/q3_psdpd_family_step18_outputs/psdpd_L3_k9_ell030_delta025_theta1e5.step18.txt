@@ -1,0 +1,34 @@
+== Step 18 interval/drift penalty guard ==
+L=3.0, ell=0.3, delta=0.25, k_spline=9
+kappa=3.075, theta=1e-05
+mode=radius
+[INFO] radius mode uses the provided midpoint/radius CSV contract.
+
+== Midpoint tau scan ==
+Dtheta best tau midpoint = 6.3095734448019430e+07, lambda_min=1.2867267279208557e-05
+Rkappa best tau midpoint = 6.3095734448019430e+07, lambda_min=1.9590875190777977e-03
+
+== Radius diagnostics ==
+||rad(A)||_2      = 2.0455060480410520e-15
+||rad(P)||_2      = 7.9787190368612646e-16
+||rad(P0)||_2     = 7.7626345855150444e-16
+||rad(QTQ)||_2    = 8.9822860692597915e-15
+||rad(Dtheta)||_2 = 2.7571875130377107e-15
+||rad(Rkappa)||_2 = 4.2814627268370869e-15
+
+== Dtheta = C - theta R_kappa penalty certificate ==
+best_tau      = 1.0000000000000000e+02
+lambda_mid    = 1.2636923832983548e-05
+err_norm      = 9.0076598144080025e-13
+safe_lower    = 1.2636922932217566e-05
+PASS          = True
+
+== R_kappa penalty certificate ==
+best_tau      = 1.0000000000000000e+05
+lambda_mid    = 1.9590650942526585e-03
+err_norm      = 8.9823252905406139e-10
+safe_lower    = 1.9590641960201293e-03
+PASS          = True
+
+== Final verdict ==
+PASS: penalty certificate proves Dtheta >= 0 and Rkappa > 0 on ker(Q).

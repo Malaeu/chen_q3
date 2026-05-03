@@ -11014,3 +11014,31 @@ Update:
 - Recommended next move: add a lightweight manifest consumer / `FiniteCert`
   ledger object, then keep boundary-null exhaustion as the main analytic
   theorem target.
+
+## Result (2026-05-03, in progress) — `Step25FamilyManifestRunner`
+
+- Added audit-facing Step 25 manifest runner:
+  `scripts/q3_psdpd_step25_family_manifest.py`.
+- Generated seed block list:
+  `docs/insights/q3_psdpd_family_blocks_seed.csv`.
+- Generated family manifest:
+  `docs/insights/q3_psdpd_certificate_family_manifest.csv`.
+- Generated JSON summary:
+  `docs/insights/q3_psdpd_certificate_family_manifest.json`.
+- Saved Step 18 stdout for each block under:
+  `docs/insights/q3_psdpd_family_step18_outputs/`.
+- Result note recorded:
+  `docs/insights/q3_psdpd_step25_certificate_family_manifest_2026_05_03.md`.
+- Current family:
+  - primary `psdpd_L3_k11_ell030_delta025_theta1e4`: `PASS`,
+    `Dtheta_safe_lower≈1.222859e-4`,
+    `Rkappa_safe_lower≈1.356922e-1`;
+  - control `psdpd_L3_k9_ell030_delta025_theta1e5`: `PASS`,
+    `Dtheta_safe_lower≈1.263692e-5`,
+    `Rkappa_safe_lower≈1.959064e-3`.
+- This runner is intentionally audit-facing: it invokes Step 18 in
+  `--mode radius`, records stdout, and writes a JSON summary in addition to the
+  CSV ledger.
+- Recommended next move: introduce a manifest consumer / `FiniteCert` record
+  that turns `PASS` rows into the finite predicates used by the Step 23 theorem
+  contract.
