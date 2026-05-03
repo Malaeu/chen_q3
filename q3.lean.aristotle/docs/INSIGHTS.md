@@ -53,6 +53,25 @@
 - Do not advance to Step 33 until those centered-cardinal B-spline facts feed
   the existing `BSplineTranslatedAnalyticContract`.
 
+## Synthesis (2026-05-03, in progress) — Step32F centered cardinal B-spline object landed
+
+- `Q3/Proofs/PSD_CenteredCardinalBSpline.lean` now defines the actual concrete
+  centered-cardinal B-spline objects used by the PSD-pd packet formulas:
+  `centeredCardinalBSpline`, `bsplineScale`, `bsplineAutocorrNorm`,
+  `centeredBSplineEta`, `centeredBSplineR`, and the concrete transform/boundary
+  scale profiles.
+- Lean now proves the concrete specialization of the generic translated/scaled
+  bump identities:
+  `centeredBSplineBoundaryPlus_basis`,
+  `centeredBSplineBoundaryMinus_basis`, and
+  `centeredBSplineCorrelation_scaledTranslated_shift`.
+- The exact prime-side closed-form target is now named in Lean as
+  `CenteredBSplineAutocorrelationClosedForm`, stating
+  `centeredBSplineCorrelationProfile k x = centeredBSplineR k x`.
+- This is still Step 32F, not Step 33.  Remaining blockers are
+  autocorrelation closed form, sinc/sinh transform profile, nonzero boundary
+  scales, and feeding those facts into `BSplineTranslatedAnalyticContract`.
+
 ## Синхронизационный статус (2026-02-28)
 
 - Проверка последнего плана: mainline формально описывает τ=0 маршрут через
