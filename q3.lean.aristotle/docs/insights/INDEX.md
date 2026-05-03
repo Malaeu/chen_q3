@@ -139,6 +139,7 @@ Files:
 - q3_psdpd_step32c_bspline_entry_expansion_2026_05_03.md
 - q3_psdpd_step32d_bspline_analytic_kernel_contract_2026_05_03.md
 - q3_psdpd_step32e_bspline_translation_identities_2026_05_03.md
+- q3_psdpd_step32f_bspline_analytic_model_2026_05_03.md
 - q3_psdpd_step32f_bspline_matrix_identification_instance_2026_05_03.md
 - q3_psdpd_step8_certificate_design_2026_05_03.md
 - q_zeta_core_short_circuit_sprint_2026_03_15.md

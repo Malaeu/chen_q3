@@ -32,6 +32,27 @@
   current hard blocker for concrete formulas; do not mark the full B-spline
   matrix-identification theorem closed yet.
 
+## Synthesis (2026-05-03, in progress) — Step32F generic analytic model landed
+
+- `Q3/Proofs/PSD_BSplineAnalyticModel.lean` now proves the generic analytic
+  packet identities for translated/scaled bumps by actual integral
+  change-of-variables, not by another receiver layer.
+- Main proven identities:
+  `realBumpLaplace_scaledTranslated`,
+  `realBumpLaplace_scaledTranslated_plus`,
+  `realBumpLaplace_scaledTranslated_minus`,
+  `complexBumpLaplace_scaledTranslated`, and
+  `realBumpCorrelation_scaledTranslated_shift`.
+- These close the generic transform/correlation part of Step 32F:
+  \(H_j(z)=\sqrt{\ell}e^{zu_j}E_\ell(z)\) and
+  \(C_{ij}(a)=r_\eta((u_j-u_i-a)/\ell)\).
+- The remaining Step 32F burden is now sharply localized to the concrete
+  centered-cardinal B-spline closed forms: define the bump, prove the
+  `sinh`/sinc-power transform profile, prove nonzero boundary scales, and prove
+  \(r_k(x)=b_{2k+1}(s_kx)/c_k\).
+- Do not advance to Step 33 until those centered-cardinal B-spline facts feed
+  the existing `BSplineTranslatedAnalyticContract`.
+
 ## Синхронизационный статус (2026-02-28)
 
 - Проверка последнего плана: mainline формально описывает τ=0 маршрут через
