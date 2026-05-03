@@ -179,3 +179,26 @@ Step 15 should:
 - measure `max eig(S_k,R_k)-1` versus `kappa`;
 - compare worst-vector profiles across nearby `(k_spline,ell,delta)`;
 - add optional CSV/NPZ export for the worst vector and matrix diagnostics.
+
+## Follow-up from Step 15
+
+Step 15 refined the baseline threshold:
+
+```text
+k_spline=5, ell=0.35, delta=0.25
+kappa_viable_min_grid=6.5
+margin=1.9160043108e-08
+```
+
+The sweep also found a much healthier finite-level candidate:
+
+```text
+k_spline=9, ell=0.30, delta=0.25
+kappa_viable_min_grid=3.25
+margin=3.0226377556e-05
+```
+
+This changes the next diagnostic priority: the key question is no longer
+whether the `kappa` split can revive the relative certificate, but whether the
+larger `k_spline=9, ell=0.30` margin survives refined quadrature, nearby
+`delta`, and aligned worst-profile comparison.

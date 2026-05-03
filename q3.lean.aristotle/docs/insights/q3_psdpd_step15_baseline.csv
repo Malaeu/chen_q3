@@ -1,0 +1,2 @@
+case_id,L,ell,delta,k_spline,n_centers,dim_boundary_null,lambda_CG_min,lambda_negP0_G_min,kappa_pd_min_grid,kappa_viable_min_grid,viable_rel_max,viable_margin,best_margin_kappa,best_rel_max,best_margin,profile_corr_signed,profile_corr_abs,q_resid_fro,split_err_fro
+1,3.0,0.35,0.25,5,22,20,1.0106683705041208e-08,0.006421437723440789,6.5,6.5,0.9999999808399569,1.916004310764663e-08,6.5,0.9999999808399569,1.916004310764663e-08,,,1.7499224587323019e-15,2.0396099332657777e-15

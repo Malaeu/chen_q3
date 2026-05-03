@@ -10700,3 +10700,28 @@ Update:
   below `1` at `kappa=8`, but only by a knife-edge margin near `1.8e-8`.
 - Step 15 should find the minimal viable `kappa`, test margin stability, and
   compare worst-vector profiles across nearby parameters.
+
+## Result (2026-05-03, in progress) — `Step15KappaStability`
+
+- Step 15 kappa-stability script added:
+  `scripts/q3_psdpd_step15_kappa_stability.py`.
+- Result note recorded in
+  `docs/insights/q3_psdpd_step15_kappa_stability_2026_05_03.md`.
+- Baseline `L=3.0`, `ell=0.35`, `delta=0.25`, `k_spline=5`:
+  `lambda_min(C^circ,G^circ)≈1.01e-8`,
+  `lambda_min(-P0^circ,G^circ)≈6.42e-3`, and first viable kappa on the
+  `0.25` grid is `kappa=6.5` with margin `≈1.92e-8`.
+- Sweep over `k_spline=3,5,7,9` and
+  `ell=0.30,0.35,0.40,0.45,0.60` shows that kappa viability is not an
+  isolated baseline accident.
+- Best observed finite-level margin:
+  `k_spline=9`, `ell=0.30`, `delta=0.25`, `kappa=3.25`, with
+  `lambda_min(C^circ,G^circ)≈1.96e-5` and margin `≈3.02e-5`.
+- Wider/smoother combinations can still fail on this pilot grid, especially
+  `ell>=0.45` for `k_spline=7,9`; the certificate is parameter-sensitive.
+- Profile correlations against the first sweep case are low across broad
+  parameter changes, so Step 16 should use aligned/profile-family comparison
+  rather than a single fixed baseline profile.
+- Recommended next move: refine around `k_spline=9`, `ell=0.25..0.35`,
+  `delta=0.20..0.25`, export worst vectors, and run quadrature-stability plus
+  interval-certificate probes on the best finite level.
