@@ -11386,3 +11386,44 @@ Update:
   prove the actual base B-spline analytic identities: transform of the centered
   scaled bump, nonzero boundary scales, autocorrelation profile \(r_k\), and
   Arch/Prime profile formulas.
+
+## Synthesis (2026-05-03, in progress) — `Step32F_BSplineMatrixIdentificationInstance`
+
+- Ran the project semantic-search protocol for the final Step 32 blocker using
+  queries around centered cardinal B-spline transforms, autocorrelation, the
+  concrete Step 32F identity target, and `CertifiedFiniteWeilModel`.
+- Local code search confirms that the actual centered cardinal B-spline bump,
+  its Laplace transform integral, and its autocorrelation integral are not yet
+  Lean definitions; they currently live in the Step 12/21/22 notes and Python
+  interval scripts.
+- External sanity-check matches the Step 12 formulas: cardinal B-splines have
+  sinc/sinh-power transform formulas and compactly supported spline
+  autocorrelations.  References checked:
+  de Boor cardinal B-splines
+  (`https://pages.cs.wisc.edu/~deboor/toast/pages005.html`) and Boost
+  cardinal B-spline documentation
+  (`https://www.boost.org/doc/libs/latest/libs/math/doc/html/math_toolkit/sf_poly/cardinal_b_splines.html`).
+- Added Lean file:
+  `Q3/Proofs/PSD_BSplineMatrixIdentificationInstance.lean`.
+- New final Step 32 object:
+  `CertifiedBSplineConcreteBlock`, packaging the concrete B-spline
+  translated-packet identity data with the interval-backed
+  `FinitePenaltyCert` and the quadratic-form split `C = D + theta R`.
+- New final conversion:
+  `bspline_packet_certifiedFiniteWeilModel`, producing the Step 31 object
+  `CertifiedFiniteWeilModel`.
+- New consumer theorems:
+  `CertifiedBSplineConcreteBlock.weil_nonneg_on_analyticBoundary` and
+  `CertifiedBSplineConcreteBlock.weil_ge_theta_R_on_analyticBoundary`.
+- Recorded note:
+  `docs/insights/q3_psdpd_step32f_bspline_matrix_identification_instance_2026_05_03.md`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_BSplineMatrixIdentificationInstance.lean` passes.
+- Honest status:
+  Step 32 is closed on the Lean matrix-identification side.  The remaining
+  B-spline special-function facts must be introduced as analytic identity input
+  for the actual centered B-spline model, not as another matrix-identification
+  receiver.
+- Next architectural move:
+  Step 33 should consume certified finite B-spline blocks inside the
+  directed-family / exhaustion route.
