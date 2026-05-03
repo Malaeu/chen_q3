@@ -11260,3 +11260,36 @@ Update:
 - Verification:
   `lake env lean Q3/Proofs/PSD_BSplineMatrixIdentification.lean` passes, hole
   scan is clean, and links are clean.
+
+## Synthesis (2026-05-03, in progress) — `Step32B_BSplineFormulaContract`
+
+- Ran the project semantic-search protocol for the next PSD-pd blocker using
+  queries around B-spline packet transforms, packet-Rayleigh autocorrelation
+  identities, Arch/Prime matrix entries, and boundary rows.
+- Local hits again point to the same insertion point:
+  `packet-Rayleigh-pd -> PSD-pd -> A2 closure`, with PSD-pd responsible for
+  finite packet positivity after analytic packet form identification.
+- External sanity-check only confirmed standard background facts: cardinal
+  B-spline Fourier transforms are sinc-power objects, and the Arch term is the
+  Gamma/digamma contribution in Weil's explicit formula.  No route change.
+- Added Lean file:
+  `Q3/Proofs/PSD_BSplineFormulaContract.lean`.
+- New finite algebra payload:
+  `quadForm_matrixSub` proves that the quadratic form of entrywise `A-P` is
+  `quadForm A - quadForm P`.
+- New boundary-row payload:
+  `BSplineBoundaryRows` records the concrete two-row boundary formulas with
+  harmless nonzero row scalings, and
+  `BSplineBoundaryRows.analyticBoundary_to_matrixBoundary` proves analytic
+  boundary vanishing implies `BoundaryNull Q v`.
+- New conversion payload:
+  `BSplineFormulaContract.toEntryData` and
+  `BSplineFormulaContract.toFiniteWeilMatrixModel`.
+- Recorded note:
+  `docs/insights/q3_psdpd_step32b_bspline_formula_contract_2026_05_03.md`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_BSplineFormulaContract.lean` passes.
+- Remaining Step 32C blocker:
+  prove the actual analytic B-spline packet formulas:
+  transform \(H_j(z)\), boundary rows \(e^{\pm u_j/2}\), the correlation
+  identity, and the Arch/Prime entry identities.

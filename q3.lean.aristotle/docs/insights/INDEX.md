@@ -135,6 +135,7 @@ Files:
 - q3_psdpd_step30_boundary_null_exhaustion_2026_05_03.md
 - q3_psdpd_step31_matrix_identification_2026_05_03.md
 - q3_psdpd_step32a_bspline_matrix_identification_receiver_2026_05_03.md
+- q3_psdpd_step32b_bspline_formula_contract_2026_05_03.md
 - q3_psdpd_step8_certificate_design_2026_05_03.md
 - q_zeta_core_short_circuit_sprint_2026_03_15.md
 - q_zeta_core_skeleton_2026_03_15.md
