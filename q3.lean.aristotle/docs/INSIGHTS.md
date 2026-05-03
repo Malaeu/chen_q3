@@ -11325,3 +11325,30 @@ Update:
   prove the actual analytic basis identities:
   B-spline transform \(H_j(z)\), boundary row values, Arch pairings, and prime
   pairings via the B-spline correlation identity.
+
+## Synthesis (2026-05-03, in progress) — `Step32D_BSplineAnalyticKernelContract`
+
+- Ran the project semantic-search protocol for the next PSD-pd blocker using
+  queries around analytic B-spline basis identities, kernel entries, and
+  packet-kernel PSD.
+- Local hits confirm the live theorem target is still PSD of the exact packet
+  kernel \(K_Q(g_i,g_j)=\mathcal Q(g_i*\widetilde{g_j})\), with matrix entry
+  matching as the current proof port.
+- Added Lean file:
+  `Q3/Proofs/PSD_BSplineAnalyticKernelContract.lean`.
+- New concrete boundary rows:
+  `bsplineBoundaryPlusRow center i = Real.exp (center i / 2)` and
+  `bsplineBoundaryMinusRow center i = Real.exp (-(center i) / 2)`.
+- New kernel-entry receiver:
+  `PacketKernelPairingData`, converting basis pairings
+  `K i j = form (psi_j) (psi_i)` into the Step 32C bilinear matrix expansion.
+- New final contract:
+  `BSplineAnalyticKernelContract`, converting through
+  `BSplineBasisFormulaContract -> BSplineFormulaContract -> FiniteWeilMatrixModel`.
+- Recorded note:
+  `docs/insights/q3_psdpd_step32d_bspline_analytic_kernel_contract_2026_05_03.md`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_BSplineAnalyticKernelContract.lean` passes.
+- Remaining Step 32E blocker:
+  prove the actual B-spline transform/correlation identities and instantiate
+  the Arch/Prime kernels, instead of adding more receiver layers.
