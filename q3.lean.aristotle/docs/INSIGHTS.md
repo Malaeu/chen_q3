@@ -10780,3 +10780,25 @@ Update:
 - Recommended next move: Step 18 interval-certified entries for `A`, `P0`,
   and `P`, followed by interval LDL/Cholesky certification of
   `D_theta^circ >= 0`.
+
+## Result (2026-05-03, in progress) — `Step18IntervalGuard`
+
+- Step 18 interval/drift penalty-guard script added:
+  `scripts/q3_psdpd_step18_interval_guard.py`.
+- Result note recorded in
+  `docs/insights/q3_psdpd_step18_interval_guard_2026_05_03.md`.
+- Main hardening move: avoid certifying the numerical nullspace basis `N` by
+  using full-space penalty matrices
+  `D_theta + tau Q^T Q` and `R_kappa + tau Q^T Q`.
+- Primary candidate:
+  `k_spline=11`, `ell=0.30`, `delta=0.25`, `kappa=3.25`, `theta=1e-4`.
+- Drift-mode guard passes on the tested quadrature variants.  The best
+  midpoint penalties are
+  `tau_D≈7.94e7` and `tau_R≈3.98e7`.
+- After subtracting empirical drift radii, the safe lower bounds are
+  `safe_Dtheta_lower≈1.1536e-4` and `safe_Rkappa_lower≈1.3556e-1`.
+- This is not proof-grade yet: the drift radii must be replaced by rigorous
+  Arb/interval entry radii for `A`, `P`, `P0`, and `Q`.
+- Recommended next move: Step 19 Arb/interval entry generator, starting with
+  the finite prime matrix `P` and the compact-support exponential-polynomial
+  matrix `P0`, then the Arch integral `A` with a sinc-power tail bound.

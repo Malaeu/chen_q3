@@ -117,6 +117,7 @@ Files:
 - q3_psdpd_step15_kappa_stability_2026_05_03.md
 - q3_psdpd_step16_refine_candidate_2026_05_03.md
 - q3_psdpd_step17_certificate_extraction_2026_05_03.md
+- q3_psdpd_step18_interval_guard_2026_05_03.md
 - q3_psdpd_step8_certificate_design_2026_05_03.md
 - q_zeta_core_short_circuit_sprint_2026_03_15.md
 - q_zeta_core_skeleton_2026_03_15.md
