@@ -10989,3 +10989,28 @@ Update:
   The next engineering step should be the certificate-family manifest, while
   boundary-null exhaustion and the Arch tail envelope remain the key analytic
   theorem targets.
+
+## Result (2026-05-03, in progress) — `Step25CertificateManifest`
+
+- Step 25 certificate-family manifest script added:
+  `scripts/q3_psdpd_step25_certificate_manifest.py`.
+- Manifest CSV generated:
+  `docs/insights/q3_psdpd_step25_certificate_manifest.csv`.
+- Result note recorded:
+  `docs/insights/q3_psdpd_step25_certificate_manifest_2026_05_03.md`.
+- The manifest records finite certificate parameters, midpoint/radius CSV paths,
+  SHA256 hashes, penalty taus, safe lower bounds, radius diagnostics, and
+  pass/fail status.
+- Current rows:
+  - primary `k11_L3_ell030_delta025`: `pass`,
+    `Dtheta_safe_lower≈1.222859e-4`,
+    `Rkappa_safe_lower≈1.356922e-1`;
+  - control `k9_L3_ell030_delta025_control`: `pass`,
+    `Dtheta_safe_lower≈1.263692e-5`,
+    `Rkappa_safe_lower≈1.959064e-3`.
+- This is the first concrete registry layer for Step 23:
+  finite interval-backed blocks can now be referred to as manifest rows instead
+  of loose CSV files.
+- Recommended next move: add a lightweight manifest consumer / `FiniteCert`
+  ledger object, then keep boundary-null exhaustion as the main analytic
+  theorem target.
