@@ -93,6 +93,18 @@ theorem centeredCardinalBSpline_zero (x : ℝ) :
       simp only [h0, hx, hx', if_false]
       ring
 
+/-- The centered box spline \(b_0=\mathbf 1_{[-1/2,1/2]}\), with the same
+endpoint convention as `centeredCardinalBSpline 0`. -/
+def centeredBoxSpline (x : ℝ) : ℝ :=
+  positivePartPower 0 (x + (1 / 2 : ℝ))
+    - positivePartPower 0 (x - (1 / 2 : ℝ))
+
+/-- The truncated-power degree-zero spline is the centered box. -/
+theorem centeredCardinalBSpline_zero_eq_centeredBoxSpline :
+    centeredCardinalBSpline 0 = centeredBoxSpline := by
+  funext x
+  exact centeredCardinalBSpline_zero x
+
 /-- The PSD-pd packet scale `s_k=(k+1)/2`. -/
 def bsplineScale (k : ℕ) : ℝ :=
   (((k + 1 : ℕ) : ℝ) / 2)
@@ -152,6 +164,102 @@ def realConvolution (f g : ℝ → ℝ) (x : ℝ) : ℝ :=
   ∫ y : ℝ, f y * g (x - y)
 
 /--
+Convolution-power model of the centered cardinal B-splines.
+
+This is the proof-friendly version:
+`convPower 0 = centered box` and
+`convPower (k+1)=convPower k * centered box`.
+-/
+def centeredCardinalBSplineConvPower : ℕ → ℝ → ℝ
+  | 0 => centeredBoxSpline
+  | k + 1 => realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline
+
+/-- The convolution-power model starts with the centered box. -/
+theorem centeredCardinalBSplineConvPower_zero :
+    centeredCardinalBSplineConvPower 0 = centeredBoxSpline := rfl
+
+/-- One convolution step in the convolution-power model. -/
+theorem centeredCardinalBSplineConvPower_succ (k : ℕ) :
+    centeredCardinalBSplineConvPower (k + 1) =
+      realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline := rfl
+
+/--
+Bridge target between the executable truncated-power spline and the
+proof-friendly convolution-power spline.
+-/
+def CenteredCardinalBSplineMatchesConvPower (k : ℕ) : Prop :=
+  ∀ x : ℝ,
+    centeredCardinalBSpline k x = centeredCardinalBSplineConvPower k x
+
+/-- The bridge target is closed in degree zero. -/
+theorem CenteredCardinalBSplineMatchesConvPower_zero :
+    CenteredCardinalBSplineMatchesConvPower 0 := by
+  intro x
+  rw [centeredCardinalBSpline_zero_eq_centeredBoxSpline]
+  rfl
+
+/--
+Self-convolution theorem target in the convolution-power model.
+
+This is the pure convolution-algebra statement:
+the `(k+1)`-fold box convolution convolved with itself is the `(2k+2)`-fold
+box convolution, hence degree `2*k+1`.
+-/
+def CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm (k : ℕ) : Prop :=
+  ∀ x : ℝ,
+    realConvolution
+        (centeredCardinalBSplineConvPower k)
+        (centeredCardinalBSplineConvPower k) (-x) =
+      centeredCardinalBSplineConvPower (bsplineAutocorrDegree k) x
+
+/--
+Unnormalized base autocorrelation closed form for the centered cardinal spline.
+
+This is the exact classical B-spline theorem
+`corr(b_k)(x)=b_{2k+1}(x)`.
+-/
+def CenteredCardinalBSplineBaseCorrelationClosedForm (k : ℕ) : Prop :=
+  ∀ x : ℝ,
+    realBumpCorrelationProfile (centeredCardinalBSpline k) x =
+      centeredCardinalBSpline (bsplineAutocorrDegree k) x
+
+/--
+Unnormalized self-convolution closed form for the centered cardinal spline.
+
+With our convolution convention this is the sign-sensitive version needed for
+the autocorrelation profile.
+-/
+def CenteredCardinalBSplineSelfConvolutionClosedForm (k : ℕ) : Prop :=
+  ∀ x : ℝ,
+    realConvolution (centeredCardinalBSpline k) (centeredCardinalBSpline k) (-x) =
+      centeredCardinalBSpline (bsplineAutocorrDegree k) x
+
+/--
+Transfer self-convolution from the proof-friendly convolution-power model to
+the executable truncated-power model.
+-/
+theorem CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPower
+    (k : ℕ)
+    (hmatch : CenteredCardinalBSplineMatchesConvPower k)
+    (hmatchAuto : CenteredCardinalBSplineMatchesConvPower (bsplineAutocorrDegree k))
+    (hconv : CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k) :
+    CenteredCardinalBSplineSelfConvolutionClosedForm k := by
+  intro x
+  unfold realConvolution
+  calc
+    (∫ y : ℝ, centeredCardinalBSpline k y *
+        centeredCardinalBSpline k (-x - y))
+        = ∫ y : ℝ, centeredCardinalBSplineConvPower k y *
+            centeredCardinalBSplineConvPower k (-x - y) := by
+            apply integral_congr_ae
+            filter_upwards with y
+            rw [hmatch y, hmatch (-x - y)]
+    _ = centeredCardinalBSplineConvPower (bsplineAutocorrDegree k) x := by
+            simpa [realConvolution] using hconv x
+    _ = centeredCardinalBSpline (bsplineAutocorrDegree k) x := by
+            exact (hmatchAuto x).symm
+
+/--
 Autocorrelation is convolution at the reflected argument for even functions.
 
 This is the sign bookkeeping needed before applying the cardinal B-spline
@@ -168,6 +276,22 @@ theorem realBumpCorrelationProfile_eq_realConvolution_neg_of_even
     f y * f (y + x)
         = f y * f (-(y + x)) := by rw [hf_even (y + x)]
     _ = f y * f (-x - y) := by rw [harg]
+
+/--
+The user-facing convolution-power route:
+
+evenness of \(b_k\) plus the unnormalized self-convolution identity implies
+the unnormalized base autocorrelation identity.
+-/
+theorem CenteredCardinalBSplineBaseCorrelationClosedForm_of_even_selfConvolution
+    (k : ℕ)
+    (heven : CenteredCardinalBSplineEven k)
+    (hconv : CenteredCardinalBSplineSelfConvolutionClosedForm k) :
+    CenteredCardinalBSplineBaseCorrelationClosedForm k := by
+  intro x
+  rw [realBumpCorrelationProfile_eq_realConvolution_neg_of_even
+    (centeredCardinalBSpline k) heven x]
+  exact hconv x
 
 /--
 Exact remaining convolution theorem for the concrete normalized bump.
@@ -199,10 +323,7 @@ prime-side closed form is the unnormalized base identity
 theorem CenteredBSplineAutocorrelationClosedForm_of_baseCorrelation
     (k : ℕ)
     (hc_pos : 0 < bsplineAutocorrNorm k)
-    (hbase :
-      ∀ x : ℝ,
-        realBumpCorrelationProfile (centeredCardinalBSpline k) x =
-          centeredCardinalBSpline (bsplineAutocorrDegree k) x) :
+    (hbase : CenteredCardinalBSplineBaseCorrelationClosedForm k) :
     CenteredBSplineAutocorrelationClosedForm k := by
   intro x
   let s : ℝ := bsplineScale k
@@ -289,6 +410,43 @@ theorem CenteredBSplineAutocorrelationClosedForm_of_cardinalEven_selfConvolution
     CenteredBSplineAutocorrelationClosedForm k :=
   CenteredBSplineAutocorrelationClosedForm_of_selfConvolution
     k (centeredBSplineEta_even_of_cardinal_even k heven) hconv
+
+/--
+Canonical Step 32F route for the prime-side profile:
+
+1. prove \(0<c_k\);
+2. prove centered-cardinal evenness;
+3. prove the centered-cardinal self-convolution profile.
+
+Then the normalized autocorrelation closed form follows.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_of_cardinalEven_cardinalSelfConvolution
+    (k : ℕ)
+    (hc_pos : 0 < bsplineAutocorrNorm k)
+    (heven : CenteredCardinalBSplineEven k)
+    (hconv : CenteredCardinalBSplineSelfConvolutionClosedForm k) :
+    CenteredBSplineAutocorrelationClosedForm k :=
+  CenteredBSplineAutocorrelationClosedForm_of_baseCorrelation
+    k hc_pos
+      (CenteredCardinalBSplineBaseCorrelationClosedForm_of_even_selfConvolution
+        k heven hconv)
+
+/--
+Fully factored convolution-power route to the normalized Step 32F
+autocorrelation closed form.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_of_convPowerRoute
+    (k : ℕ)
+    (hc_pos : 0 < bsplineAutocorrNorm k)
+    (heven : CenteredCardinalBSplineEven k)
+    (hmatch : CenteredCardinalBSplineMatchesConvPower k)
+    (hmatchAuto : CenteredCardinalBSplineMatchesConvPower (bsplineAutocorrDegree k))
+    (hconv : CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k) :
+    CenteredBSplineAutocorrelationClosedForm k :=
+  CenteredBSplineAutocorrelationClosedForm_of_cardinalEven_cardinalSelfConvolution
+    k hc_pos heven
+      (CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPower
+        k hmatch hmatchAuto hconv)
 
 /-- Name the exact transform profile still needed to close the Arch/boundary
 side of Step 32F. -/

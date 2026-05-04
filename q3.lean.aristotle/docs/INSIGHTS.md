@@ -11520,3 +11520,35 @@ Update:
 - Remaining Step 32F blocker:
   prove the base cardinal B-spline autocorrelation identity, preferably via
   convolution powers of the centered box, then close positivity of `c_k`.
+
+## Synthesis (2026-05-03, in progress) — `Step32F_ConvPowerRoute`
+
+- Follow-up to `Step32F_CenteredBSplineAutocorrelation`: added the
+  proof-friendly convolution-power model directly in Lean.
+- New definitions:
+  `centeredBoxSpline`, `centeredCardinalBSplineConvPower`,
+  `CenteredCardinalBSplineMatchesConvPower`,
+  `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm`.
+- New proved bridge:
+  `CenteredCardinalBSplineMatchesConvPower_zero`, so the truncated-power
+  model and convolution-power model agree at degree zero.
+- New downstream theorem:
+  `CenteredBSplineAutocorrelationClosedForm_of_convPowerRoute`.
+- Meaning:
+  the final prime-side closed form now follows from exactly the intended
+  convolution-power facts:
+  1. \(0<c_k\);
+  2. evenness of `centeredCardinalBSpline k`;
+  3. truncated-power/convolution-power agreement for degrees `k` and `2*k+1`;
+  4. self-convolution of the convolution-power model.
+- Local search result:
+  no existing Lean proof of this B-spline autocorrelation theorem was found in
+  the repo; project docs only confirm the corrected-cone/autocorrelation role.
+- External sanity-check:
+  standard references define cardinal B-splines as repeated convolutions of a
+  box function, matching the route now encoded in Lean.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean` passes.
+- Remaining blocker:
+  prove the convolution-power self-convolution theorem and the agreement
+  between the truncated-power formula and the convolution-power model.

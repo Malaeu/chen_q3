@@ -15,6 +15,8 @@ The file defines:
 
 - `positivePartPower`;
 - `centeredCardinalBSpline`;
+- `centeredBoxSpline`;
+- `centeredCardinalBSplineConvPower`;
 - `bsplineScale`;
 - `bsplineAutocorrDegree`;
 - `bsplineAutocorrNorm`;
@@ -25,16 +27,25 @@ The file defines:
 - concrete boundary scales.
 - `realConvolution`;
 - `CenteredCardinalBSplineEven`;
+- `CenteredCardinalBSplineMatchesConvPower`;
+- `CenteredCardinalBSplineBaseCorrelationClosedForm`;
+- `CenteredCardinalBSplineSelfConvolutionClosedForm`;
+- `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm`;
 - `CenteredBSplineSelfConvolutionClosedForm`.
 
 It proves:
 
 - `centeredCardinalBSpline_zero`;
+- `centeredCardinalBSpline_zero_eq_centeredBoxSpline`;
+- `CenteredCardinalBSplineMatchesConvPower_zero`;
 - `bsplineScale_pos`;
 - `bsplineScale_ne_zero`;
 - `centeredBSplineBoundaryPlus_basis`;
 - `centeredBSplineBoundaryMinus_basis`;
 - `CenteredBSplineAutocorrelationClosedForm_of_baseCorrelation`;
+- `CenteredCardinalBSplineBaseCorrelationClosedForm_of_even_selfConvolution`;
+- `CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPower`;
+- `CenteredBSplineAutocorrelationClosedForm_of_convPowerRoute`;
 - `realBumpCorrelationProfile_eq_realConvolution_neg_of_even`;
 - `centeredBSplineEta_even_of_cardinal_even`;
 - `CenteredBSplineAutocorrelationClosedForm_of_selfConvolution`;
@@ -92,6 +103,28 @@ The normalizing/scaling step is now Lean-proved:
 
 follows from \(c_k>0\) and the unnormalized base identity.
 
+The proof-friendly convolution-power model is also now present:
+
+\[
+B_0=\mathbf 1_{[-1/2,1/2]},
+\qquad
+B_{k+1}=B_k * B_0.
+\]
+
+Lean proves the downstream route:
+
+```lean
+CenteredBSplineAutocorrelationClosedForm_of_convPowerRoute
+```
+
+so the final target follows from:
+
+1. \(0<c_k\);
+2. `CenteredCardinalBSplineEven k`;
+3. `CenteredCardinalBSplineMatchesConvPower k`;
+4. `CenteredCardinalBSplineMatchesConvPower (2*k+1)`;
+5. `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k`.
+
 ## External sanity check
 
 The object follows the standard cardinal B-spline route:
@@ -112,15 +145,13 @@ Useful references:
 ## Remaining inside Step 32F
 
 1. Prove `0 < bsplineAutocorrNorm k`.
-2. Prove the unnormalized base autocorrelation identity:
-   `realBumpCorrelationProfile (centeredCardinalBSpline k) x =
-    centeredCardinalBSpline (bsplineAutocorrDegree k) x`.
-3. Optionally recover it through convolution powers:
-   `CenteredCardinalBSplineEven k` and
-   `CenteredBSplineSelfConvolutionClosedForm k`.
-4. Prove the centered-cardinal `sinh`/sinc-power transform profile.
-5. Prove boundary scale nonzero at \(z=\pm1/2\).
-6. Feed these into the existing `BSplineTranslatedAnalyticContract`.
+2. Prove `CenteredCardinalBSplineEven k`.
+3. Prove `CenteredCardinalBSplineMatchesConvPower k` for all degrees needed.
+4. Prove the pure convolution-power self-convolution theorem:
+   `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k`.
+5. Prove the centered-cardinal `sinh`/sinc-power transform profile.
+6. Prove boundary scale nonzero at \(z=\pm1/2\).
+7. Feed these into the existing `BSplineTranslatedAnalyticContract`.
 
 ## Verdict
 
