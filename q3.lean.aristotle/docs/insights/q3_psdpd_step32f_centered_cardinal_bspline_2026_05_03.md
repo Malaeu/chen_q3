@@ -34,6 +34,7 @@ It proves:
 - `bsplineScale_ne_zero`;
 - `centeredBSplineBoundaryPlus_basis`;
 - `centeredBSplineBoundaryMinus_basis`;
+- `CenteredBSplineAutocorrelationClosedForm_of_baseCorrelation`;
 - `realBumpCorrelationProfile_eq_realConvolution_neg_of_even`;
 - `centeredBSplineEta_even_of_cardinal_even`;
 - `CenteredBSplineAutocorrelationClosedForm_of_selfConvolution`;
@@ -75,8 +76,21 @@ for even \(f\), with the convolution convention
 
 So the remaining proof is reduced to:
 
-1. `CenteredCardinalBSplineEven k`;
-2. `CenteredBSplineSelfConvolutionClosedForm k`.
+1. positivity of \(c_k=b_{2k+1}(0)\);
+2. the unnormalized base identity
+   \[
+   \operatorname{corr}(b_k)(x)=b_{2k+1}(x).
+   \]
+
+The normalizing/scaling step is now Lean-proved:
+
+\[
+\operatorname{corr}(\eta_k)(x)
+=
+\frac{b_{2k+1}(s_kx)}{c_k}
+\]
+
+follows from \(c_k>0\) and the unnormalized base identity.
 
 ## External sanity check
 
@@ -97,9 +111,13 @@ Useful references:
 
 ## Remaining inside Step 32F
 
-1. Prove `CenteredCardinalBSplineEven k`.
-2. Prove `CenteredBSplineSelfConvolutionClosedForm k`.
-3. Prove `bsplineAutocorrNorm k ≠ 0`, preferably positivity.
+1. Prove `0 < bsplineAutocorrNorm k`.
+2. Prove the unnormalized base autocorrelation identity:
+   `realBumpCorrelationProfile (centeredCardinalBSpline k) x =
+    centeredCardinalBSpline (bsplineAutocorrDegree k) x`.
+3. Optionally recover it through convolution powers:
+   `CenteredCardinalBSplineEven k` and
+   `CenteredBSplineSelfConvolutionClosedForm k`.
 4. Prove the centered-cardinal `sinh`/sinc-power transform profile.
 5. Prove boundary scale nonzero at \(z=\pm1/2\).
 6. Feed these into the existing `BSplineTranslatedAnalyticContract`.

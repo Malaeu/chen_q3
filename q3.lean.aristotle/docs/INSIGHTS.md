@@ -11495,3 +11495,28 @@ Update:
 - Next architectural move:
   Step 33 should consume certified finite B-spline blocks inside the
   directed-family / exhaustion route.
+
+## Synthesis (2026-05-03, in progress) — `Step32F_CenteredBSplineAutocorrelation`
+
+- Re-opened the concrete Step 32F blocker after the receiver/consumer layers:
+  Step 33 should not start until the prime-side B-spline autocorrelation
+  profile is closed.
+- Target theorem:
+  `CenteredBSplineAutocorrelationClosedForm`, i.e.
+  \[
+  r_{\eta_k}(x)=b_{2k+1}(s_kx)/c_k.
+  \]
+- Added Lean reduction:
+  `CenteredBSplineAutocorrelationClosedForm_of_baseCorrelation`.
+- Meaning:
+  the normalization and scaling of
+  \(\eta_k(x)=\sqrt{s_k/c_k}\,b_k(s_kx)\) are now Lean-proved.
+  The closed form follows from:
+  1. \(0<c_k=b_{2k+1}(0)\);
+  2. the unnormalized base identity
+     `corr(b_k)(x)=b_{2k+1}(x)`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean` passes.
+- Remaining Step 32F blocker:
+  prove the base cardinal B-spline autocorrelation identity, preferably via
+  convolution powers of the centered box, then close positivity of `c_k`.

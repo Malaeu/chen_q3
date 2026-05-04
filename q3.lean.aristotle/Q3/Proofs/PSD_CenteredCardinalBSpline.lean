@@ -189,6 +189,79 @@ def CenteredBSplineAutocorrelationClosedForm (k : ℕ) : Prop :=
     centeredBSplineCorrelationProfile k x = centeredBSplineR k x
 
 /--
+Normalization/scaling reduction for the centered B-spline autocorrelation.
+
+After this lemma, the only concrete B-spline theorem still needed for the
+prime-side closed form is the unnormalized base identity
+
+`corr(b_k)(x)=b_{2k+1}(x)`.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_of_baseCorrelation
+    (k : ℕ)
+    (hc_pos : 0 < bsplineAutocorrNorm k)
+    (hbase :
+      ∀ x : ℝ,
+        realBumpCorrelationProfile (centeredCardinalBSpline k) x =
+          centeredCardinalBSpline (bsplineAutocorrDegree k) x) :
+    CenteredBSplineAutocorrelationClosedForm k := by
+  intro x
+  let s : ℝ := bsplineScale k
+  let c : ℝ := bsplineAutocorrNorm k
+  let b : ℝ → ℝ := centeredCardinalBSpline k
+  let α : ℝ := Real.sqrt (s / c)
+  have hs_pos : 0 < s := by
+    simpa [s] using bsplineScale_pos k
+  have hs_ne : s ≠ 0 := hs_pos.ne'
+  have hc_ne : c ≠ 0 := by
+    exact hc_pos.ne'
+  have hsc_nonneg : 0 ≤ s / c := by
+    exact div_nonneg hs_pos.le hc_pos.le
+  have hα_sq : α * α = s / c := by
+    calc
+      α * α = α ^ 2 := by ring
+      _ = s / c := by
+        simpa [α] using Real.sq_sqrt hsc_nonneg
+  let G : ℝ → ℝ := fun t => b t * b (t + s * x)
+  have hmul :
+      (∫ y : ℝ, b (s * y) * b (s * y + s * x)) =
+        |s⁻¹| • (∫ t : ℝ, b t * b (t + s * x)) := by
+    calc
+      (∫ y : ℝ, b (s * y) * b (s * y + s * x))
+          = ∫ y : ℝ, G (s * y) := by
+              apply integral_congr_ae
+              filter_upwards with y
+              simp [G]
+      _ = |s⁻¹| • (∫ t : ℝ, G t) := by
+              exact MeasureTheory.Measure.integral_comp_mul_left G s
+      _ = |s⁻¹| • (∫ t : ℝ, b t * b (t + s * x)) := by
+              rfl
+  calc
+    centeredBSplineCorrelationProfile k x
+        = ∫ y : ℝ, (α * b (s * y)) * (α * b (s * y + s * x)) := by
+            unfold centeredBSplineCorrelationProfile realBumpCorrelationProfile
+            simp [centeredBSplineEta, α, b, s, c, mul_add]
+    _ = (α * α) * (∫ y : ℝ, b (s * y) * b (s * y + s * x)) := by
+            rw [← MeasureTheory.integral_const_mul]
+            apply integral_congr_ae
+            filter_upwards with y
+            ring
+    _ = (s / c) * (|s⁻¹| * (∫ t : ℝ, b t * b (t + s * x))) := by
+            rw [hα_sq, hmul]
+            rfl
+    _ = (1 / c) * realBumpCorrelationProfile b (s * x) := by
+            unfold realBumpCorrelationProfile
+            have habs : |s⁻¹| = s⁻¹ := by
+              rw [abs_of_pos]
+              exact inv_pos.mpr hs_pos
+            rw [habs]
+            field_simp [hs_ne, hc_ne]
+    _ = (1 / c) * centeredCardinalBSpline (bsplineAutocorrDegree k) (s * x) := by
+            rw [hbase (s * x)]
+    _ = centeredBSplineR k x := by
+            simp [centeredBSplineR, s, c]
+            ring
+
+/--
 The self-convolution closed form implies the autocorrelation closed form once
 the concrete bump is even.
 -/
