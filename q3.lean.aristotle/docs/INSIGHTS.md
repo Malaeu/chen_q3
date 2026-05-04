@@ -11614,3 +11614,30 @@ Update:
   propagate the shifted a.e. route through convolution powers / agreement, then
   close self-convolution, \(0<c_k\), and the final
   `CenteredBSplineAutocorrelationClosedForm`.
+
+## Synthesis (2026-05-04, in progress) — `Step32F_ConvPowerAERoute`
+
+- Added the endpoint-safe convolution-power route for the prime-side
+  autocorrelation theorem.
+- New Lean objects:
+  `CenteredCardinalBSplineMatchesConvPowerAE`,
+  `CenteredCardinalBSplineMatchesConvPowerShiftAE`,
+  `CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPowerAE`, and
+  `CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute`.
+- Added bridge adapters:
+  `CenteredCardinalBSplineMatchesConvPowerAE_of_pointwise` and
+  `CenteredCardinalBSplineMatchesConvPowerShiftAE_of_pointwise`.
+- Important correction:
+  a.e. agreement for the degree `k` factors is enough under the convolution
+  integral, but the target degree `2*k+1` still needs pointwise agreement, since
+  it is evaluated at the external point `x`.
+- Meaning:
+  the old pointwise-even route is no longer the only downstream path.  The
+  active route now matches the endpoint convention:
+  shifted a.e. evenness + a.e./shifted-a.e. agreement under the integral +
+  pointwise target agreement.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean` passes.
+- Remaining Step 32F blockers:
+  prove the actual agreement/recurrence facts, the required pointwise target
+  agreement for `2*k+1`, the self-convolution law, and \(0<c_k\).

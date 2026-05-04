@@ -28,6 +28,8 @@ The file defines:
 - `realConvolution`;
 - `CenteredCardinalBSplineEven`;
 - `CenteredCardinalBSplineMatchesConvPower`;
+- `CenteredCardinalBSplineMatchesConvPowerAE`;
+- `CenteredCardinalBSplineMatchesConvPowerShiftAE`;
 - `CenteredCardinalBSplineBaseCorrelationClosedForm`;
 - `CenteredCardinalBSplineSelfConvolutionClosedForm`;
 - `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm`;
@@ -44,6 +46,10 @@ It proves:
 - `centeredBoxSpline_shiftEvenAE`;
 - `CenteredCardinalBSplineShiftEvenAE_zero`;
 - `CenteredCardinalBSplineMatchesConvPower_zero`;
+- `CenteredCardinalBSplineMatchesConvPowerAE_zero`;
+- `CenteredCardinalBSplineMatchesConvPowerShiftAE_zero`;
+- `CenteredCardinalBSplineMatchesConvPowerAE_of_pointwise`;
+- `CenteredCardinalBSplineMatchesConvPowerShiftAE_of_pointwise`;
 - `CenteredCardinalBSplineConvPowerConvolutionLaw_of_assoc`;
 - `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_convolutionLaw`;
 - `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_assoc`;
@@ -57,7 +63,9 @@ It proves:
 - `CenteredBSplineAutocorrelationClosedForm_of_baseCorrelation`;
 - `CenteredCardinalBSplineBaseCorrelationClosedForm_of_even_selfConvolution`;
 - `CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPower`;
+- `CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPowerAE`;
 - `CenteredBSplineAutocorrelationClosedForm_of_convPowerRoute`;
+- `CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute`;
 - `realBumpCorrelationProfile_eq_realConvolution_neg_of_even`;
 - `centeredBSplineEta_even_of_cardinal_even`;
 - `CenteredBSplineAutocorrelationClosedForm_of_selfConvolution`;
@@ -193,12 +201,27 @@ realBumpCorrelationProfile_eq_realConvolution_neg_of_shiftEvenAE
 CenteredCardinalBSplineShiftEvenAE
 CenteredCardinalBSplineShiftEvenAE_zero
 CenteredBSplineAutocorrelationClosedForm_of_cardinalShiftEvenAE_cardinalSelfConvolution
+CenteredCardinalBSplineMatchesConvPowerAE
+CenteredCardinalBSplineMatchesConvPowerShiftAE
+CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPowerAE
+CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute
 ```
 
 So the endpoint convention no longer blocks the main autocorrelation theorem.
 The remaining evenness target is propagation of shifted a.e. evenness through
 the spline family/convolution-power agreement, not pointwise evenness of the
 degree-zero box.
+
+The endpoint-safe convolution-power route now has the exact theorem shape:
+
+```lean
+CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute
+```
+
+This route uses a.e. agreement for the degree `k` factors under the integral
+and shifted-a.e. agreement for the reflected factor.  The degree `2*k+1`
+agreement is still pointwise because the final spline value is evaluated at
+the external point `x`, not integrated out.
 
 ## External sanity check
 
@@ -221,15 +244,21 @@ Useful references:
 
 1. Prove `0 < bsplineAutocorrNorm k`.
 2. Prove `CenteredCardinalBSplineEven k`.
-3. Prove `CenteredCardinalBSplineMatchesConvPower k` for all degrees needed.
-4. Prove analytic associativity of `realConvolution` for the relevant
+3. Prove `CenteredCardinalBSplineMatchesConvPowerAE k` and
+   `CenteredCardinalBSplineMatchesConvPowerShiftAE k`, or prove pointwise
+   `CenteredCardinalBSplineMatchesConvPower k` and use the new adapters.
+4. Prove pointwise
+   `CenteredCardinalBSplineMatchesConvPower (bsplineAutocorrDegree k)` for the
+   final target degree, or replace the final pointwise theorem by a stronger
+   target-degree regularity bridge.
+5. Prove analytic associativity of `realConvolution` for the relevant
    convolution powers.
-5. Propagate shifted a.e. evenness from the degree-zero box to the
+6. Propagate shifted a.e. evenness from the degree-zero box to the
    concrete/convolution-power spline where needed, using the new integral-safe
    route.
-6. Prove the centered-cardinal `sinh`/sinc-power transform profile.
-7. Prove boundary scale nonzero at \(z=\pm1/2\).
-8. Feed these into the existing `BSplineTranslatedAnalyticContract`.
+7. Prove the centered-cardinal `sinh`/sinc-power transform profile.
+8. Prove boundary scale nonzero at \(z=\pm1/2\).
+9. Feed these into the existing `BSplineTranslatedAnalyticContract`.
 
 ## Verdict
 
@@ -262,3 +291,28 @@ lake build Q3.Main
 
 All pass.  The project axiom profile remains unchanged at 5 total axioms
 including the 3 standard Lean axioms.
+
+## 2026-05-04 update — convolution-power AE route
+
+The route no longer requires pointwise agreement for every occurrence of
+`b_k`.  Lean now has:
+
+```lean
+CenteredCardinalBSplineMatchesConvPowerAE
+CenteredCardinalBSplineMatchesConvPowerShiftAE
+CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPowerAE
+CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute
+```
+
+This is the honest endpoint-safe route:
+
+```text
+shifted a.e. evenness
++ a.e./shifted-a.e. agreement under the integral
++ pointwise agreement for the target degree
++ conv-power self-convolution
+=> CenteredBSplineAutocorrelationClosedForm
+```
+
+The pointwise target-degree agreement is still required because the final
+right-hand side is evaluated at a specific `x`.

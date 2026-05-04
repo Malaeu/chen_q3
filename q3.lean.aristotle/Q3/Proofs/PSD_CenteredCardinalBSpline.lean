@@ -263,12 +263,65 @@ def CenteredCardinalBSplineMatchesConvPower (k : ℕ) : Prop :=
   ∀ x : ℝ,
     centeredCardinalBSpline k x = centeredCardinalBSplineConvPower k x
 
+/--
+Almost-everywhere bridge between the executable truncated-power spline and
+the proof-friendly convolution-power spline.
+
+This is the right strength for identities used under the autocorrelation
+integral.  Pointwise agreement is still needed when a spline value appears
+outside an integral.
+-/
+def CenteredCardinalBSplineMatchesConvPowerAE (k : ℕ) : Prop :=
+  centeredCardinalBSpline k =ᵐ[volume] centeredCardinalBSplineConvPower k
+
+/--
+Shifted a.e. agreement between the truncated-power and convolution-power
+models.
+
+This is the exact form needed for the reflected second factor in
+`realConvolution ... (-x)`.
+-/
+def CenteredCardinalBSplineMatchesConvPowerShiftAE (k : ℕ) : Prop :=
+  ∀ x : ℝ, ∀ᵐ y : ℝ,
+    centeredCardinalBSpline k (-(y + x)) =
+      centeredCardinalBSplineConvPower k (-(y + x))
+
 /-- The bridge target is closed in degree zero. -/
 theorem CenteredCardinalBSplineMatchesConvPower_zero :
     CenteredCardinalBSplineMatchesConvPower 0 := by
   intro x
   rw [centeredCardinalBSpline_zero_eq_centeredBoxSpline]
   rfl
+
+/-- Degree-zero a.e. agreement follows from the pointwise degree-zero bridge. -/
+theorem CenteredCardinalBSplineMatchesConvPowerAE_zero :
+    CenteredCardinalBSplineMatchesConvPowerAE 0 := by
+  filter_upwards with x
+  exact CenteredCardinalBSplineMatchesConvPower_zero x
+
+/-- Degree-zero shifted a.e. agreement follows from pointwise agreement. -/
+theorem CenteredCardinalBSplineMatchesConvPowerShiftAE_zero :
+    CenteredCardinalBSplineMatchesConvPowerShiftAE 0 := by
+  intro x
+  filter_upwards with y
+  exact CenteredCardinalBSplineMatchesConvPower_zero (-(y + x))
+
+/-- Pointwise agreement implies a.e. agreement. -/
+theorem CenteredCardinalBSplineMatchesConvPowerAE_of_pointwise
+    (k : ℕ)
+    (hmatch : CenteredCardinalBSplineMatchesConvPower k) :
+    CenteredCardinalBSplineMatchesConvPowerAE k := by
+  filter_upwards with x
+  exact hmatch x
+
+/-- Pointwise agreement implies shifted a.e. agreement. -/
+theorem CenteredCardinalBSplineMatchesConvPowerShiftAE_of_pointwise
+    (k : ℕ)
+    (hmatch : CenteredCardinalBSplineMatchesConvPower k) :
+    CenteredCardinalBSplineMatchesConvPowerShiftAE k := by
+  intro x
+  filter_upwards with y
+  exact hmatch (-(y + x))
 
 /--
 Self-convolution theorem target in the convolution-power model.
@@ -450,6 +503,47 @@ theorem CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPower
             apply integral_congr_ae
             filter_upwards with y
             rw [hmatch y, hmatch (-x - y)]
+    _ = centeredCardinalBSplineConvPower (bsplineAutocorrDegree k) x := by
+            simpa [realConvolution] using hconv x
+    _ = centeredCardinalBSpline (bsplineAutocorrDegree k) x := by
+            exact (hmatchAuto x).symm
+
+/--
+Transfer self-convolution from the convolution-power model to the
+truncated-power model using only a.e. agreement for the two factors under the
+integral.
+
+The target degree still needs pointwise agreement because it is evaluated at a
+single point `x`, outside the integral.
+-/
+theorem CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPowerAE
+    (k : ℕ)
+    (hmatchAE : CenteredCardinalBSplineMatchesConvPowerAE k)
+    (hmatchShiftAE : CenteredCardinalBSplineMatchesConvPowerShiftAE k)
+    (hmatchAuto : CenteredCardinalBSplineMatchesConvPower (bsplineAutocorrDegree k))
+    (hconv : CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k) :
+    CenteredCardinalBSplineSelfConvolutionClosedForm k := by
+  intro x
+  unfold realConvolution
+  calc
+    (∫ y : ℝ, centeredCardinalBSpline k y *
+        centeredCardinalBSpline k (-x - y))
+        = ∫ y : ℝ, centeredCardinalBSplineConvPower k y *
+            centeredCardinalBSplineConvPower k (-x - y) := by
+            apply integral_congr_ae
+            have hleft :
+                ∀ᵐ y : ℝ,
+                  centeredCardinalBSpline k y =
+                    centeredCardinalBSplineConvPower k y := hmatchAE
+            have hright :
+                ∀ᵐ y : ℝ,
+                  centeredCardinalBSpline k (-x - y) =
+                    centeredCardinalBSplineConvPower k (-x - y) := by
+              filter_upwards [hmatchShiftAE x] with y hy
+              have harg : -x - y = -(y + x) := by ring
+              simpa [harg] using hy
+            filter_upwards [hleft, hright] with y hyLeft hyRight
+            rw [hyLeft, hyRight]
     _ = centeredCardinalBSplineConvPower (bsplineAutocorrDegree k) x := by
             simpa [realConvolution] using hconv x
     _ = centeredCardinalBSpline (bsplineAutocorrDegree k) x := by
@@ -745,6 +839,30 @@ theorem CenteredBSplineAutocorrelationClosedForm_of_convPowerRoute
     k hc_pos heven
       (CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPower
         k hmatch hmatchAuto hconv)
+
+/--
+Endpoint-safe convolution-power route to the normalized Step 32F
+autocorrelation closed form.
+
+Compared with `CenteredBSplineAutocorrelationClosedForm_of_convPowerRoute`,
+the spline factors under the integral only require a.e./shifted-a.e.
+agreement with the convolution-power model.  The autocorrelation degree still
+requires pointwise agreement because it is evaluated at the external point
+`x`.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute
+    (k : ℕ)
+    (hc_pos : 0 < bsplineAutocorrNorm k)
+    (hevenAE : CenteredCardinalBSplineShiftEvenAE k)
+    (hmatchAE : CenteredCardinalBSplineMatchesConvPowerAE k)
+    (hmatchShiftAE : CenteredCardinalBSplineMatchesConvPowerShiftAE k)
+    (hmatchAuto : CenteredCardinalBSplineMatchesConvPower (bsplineAutocorrDegree k))
+    (hconv : CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k) :
+    CenteredBSplineAutocorrelationClosedForm k :=
+  CenteredBSplineAutocorrelationClosedForm_of_cardinalShiftEvenAE_cardinalSelfConvolution
+    k hc_pos hevenAE
+      (CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPowerAE
+        k hmatchAE hmatchShiftAE hmatchAuto hconv)
 
 /-- Name the exact transform profile still needed to close the Arch/boundary
 side of Step 32F. -/
