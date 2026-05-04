@@ -213,6 +213,130 @@ def CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm (k : ℕ) : Prop :
       centeredCardinalBSplineConvPower (bsplineAutocorrDegree k) x
 
 /--
+Associativity target for the real convolution convention used in this file.
+
+This is separated from the B-spline algebra because the analytic proof lives in
+measure theory/Fubini bookkeeping, while the spline-degree arithmetic below is
+purely formal once associativity is available.
+-/
+def RealConvolutionAssociative : Prop :=
+  ∀ f g h : ℝ → ℝ, ∀ x : ℝ,
+    realConvolution f (realConvolution g h) x =
+      realConvolution (realConvolution f g) h x
+
+/--
+Full convolution-power law for the proof-friendly centered-cardinal model:
+
+`F_k * F_l = F_{k+l+1}`.
+-/
+def CenteredCardinalBSplineConvPowerConvolutionLaw : Prop :=
+  ∀ k l : ℕ, ∀ x : ℝ,
+    realConvolution
+        (centeredCardinalBSplineConvPower k)
+        (centeredCardinalBSplineConvPower l) x =
+      centeredCardinalBSplineConvPower (k + l + 1) x
+
+/--
+The convolution-power law follows formally from associativity.
+
+This is the degree-bookkeeping core of `b_k*b_l=b_{k+l+1}` for the
+convolution-defined spline family.
+-/
+theorem CenteredCardinalBSplineConvPowerConvolutionLaw_of_assoc
+    (hassoc : RealConvolutionAssociative) :
+    CenteredCardinalBSplineConvPowerConvolutionLaw := by
+  intro k l
+  induction l with
+  | zero =>
+      intro x
+      simpa using
+        (show
+          realConvolution
+              (centeredCardinalBSplineConvPower k)
+              centeredBoxSpline x =
+            centeredCardinalBSplineConvPower (k + 1) x from rfl)
+  | succ l ih =>
+      intro x
+      calc
+        realConvolution
+            (centeredCardinalBSplineConvPower k)
+            (centeredCardinalBSplineConvPower (l + 1)) x
+            =
+          realConvolution
+            (realConvolution
+              (centeredCardinalBSplineConvPower k)
+              (centeredCardinalBSplineConvPower l))
+            centeredBoxSpline x := by
+              rw [centeredCardinalBSplineConvPower_succ]
+              exact hassoc
+                (centeredCardinalBSplineConvPower k)
+                (centeredCardinalBSplineConvPower l)
+                centeredBoxSpline x
+        _ =
+          realConvolution
+            (centeredCardinalBSplineConvPower (k + l + 1))
+            centeredBoxSpline x := by
+              have ihfun :
+                  realConvolution
+                      (centeredCardinalBSplineConvPower k)
+                      (centeredCardinalBSplineConvPower l) =
+                    centeredCardinalBSplineConvPower (k + l + 1) := by
+                funext t
+                exact ih t
+              rw [ihfun]
+        _ = centeredCardinalBSplineConvPower ((k + l + 1) + 1) x := by
+              rfl
+        _ = centeredCardinalBSplineConvPower (k + (l + 1) + 1) x := by
+              have hnat : (k + l + 1) + 1 = k + (l + 1) + 1 := by
+                omega
+              rw [hnat]
+
+/-- Evenness target for the convolution-power model. -/
+def CenteredCardinalBSplineConvPowerEven (k : ℕ) : Prop :=
+  ∀ x : ℝ,
+    centeredCardinalBSplineConvPower k (-x) =
+      centeredCardinalBSplineConvPower k x
+
+/--
+The full convolution-power law gives the self-convolution closed form once the
+target autocorrelation degree is even.
+-/
+theorem CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_convolutionLaw
+    (k : ℕ)
+    (hevenAuto : CenteredCardinalBSplineConvPowerEven (bsplineAutocorrDegree k))
+    (hlaw : CenteredCardinalBSplineConvPowerConvolutionLaw) :
+    CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k := by
+  intro x
+  calc
+    realConvolution
+        (centeredCardinalBSplineConvPower k)
+        (centeredCardinalBSplineConvPower k) (-x)
+        =
+      centeredCardinalBSplineConvPower (k + k + 1) (-x) := by
+        exact hlaw k k (-x)
+    _ =
+      centeredCardinalBSplineConvPower (bsplineAutocorrDegree k) (-x) := by
+        congr 1
+        unfold bsplineAutocorrDegree
+        omega
+    _ =
+      centeredCardinalBSplineConvPower (bsplineAutocorrDegree k) x := by
+        exact hevenAuto x
+
+/--
+Associativity plus evenness of the target convolution power closes the
+convolution-power self-convolution target.
+-/
+theorem CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_assoc
+    (k : ℕ)
+    (hassoc : RealConvolutionAssociative)
+    (hevenAuto : CenteredCardinalBSplineConvPowerEven (bsplineAutocorrDegree k)) :
+    CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k :=
+  CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_convolutionLaw
+    k hevenAuto
+      (CenteredCardinalBSplineConvPowerConvolutionLaw_of_assoc hassoc)
+
+/--
 Unnormalized base autocorrelation closed form for the centered cardinal spline.
 
 This is the exact classical B-spline theorem

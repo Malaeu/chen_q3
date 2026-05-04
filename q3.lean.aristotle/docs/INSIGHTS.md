@@ -11534,13 +11534,22 @@ Update:
   model and convolution-power model agree at degree zero.
 - New downstream theorem:
   `CenteredBSplineAutocorrelationClosedForm_of_convPowerRoute`.
+- New convolution-algebra bridge:
+  `CenteredCardinalBSplineConvPowerConvolutionLaw_of_assoc` proves that
+  associativity of `realConvolution` formally gives
+  `F_k * F_l = F_{k+l+1}` for the convolution-power spline model.
+- New self-convolution bridge:
+  `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_assoc` proves
+  that associativity plus evenness of the target degree `2*k+1` gives the
+  exact self-convolution target needed by the prime-side autocorrelation route.
 - Meaning:
   the final prime-side closed form now follows from exactly the intended
   convolution-power facts:
   1. \(0<c_k\);
   2. evenness of `centeredCardinalBSpline k`;
   3. truncated-power/convolution-power agreement for degrees `k` and `2*k+1`;
-  4. self-convolution of the convolution-power model.
+  4. associativity of `realConvolution` on the relevant convolution powers;
+  5. evenness of the convolution-power target degree `2*k+1`.
 - Local search result:
   no existing Lean proof of this B-spline autocorrelation theorem was found in
   the repo; project docs only confirm the corrected-cone/autocorrelation role.
@@ -11550,5 +11559,6 @@ Update:
 - Verification:
   `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean` passes.
 - Remaining blocker:
-  prove the convolution-power self-convolution theorem and the agreement
-  between the truncated-power formula and the convolution-power model.
+  prove the analytic associativity/evenness facts for the relevant
+  convolution powers and the agreement between the truncated-power formula and
+  the convolution-power model.

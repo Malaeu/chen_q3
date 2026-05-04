@@ -38,6 +38,9 @@ It proves:
 - `centeredCardinalBSpline_zero`;
 - `centeredCardinalBSpline_zero_eq_centeredBoxSpline`;
 - `CenteredCardinalBSplineMatchesConvPower_zero`;
+- `CenteredCardinalBSplineConvPowerConvolutionLaw_of_assoc`;
+- `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_convolutionLaw`;
+- `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_assoc`;
 - `bsplineScale_pos`;
 - `bsplineScale_ne_zero`;
 - `centeredBSplineBoundaryPlus_basis`;
@@ -125,6 +128,29 @@ so the final target follows from:
 4. `CenteredCardinalBSplineMatchesConvPower (2*k+1)`;
 5. `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k`.
 
+The self-convolution part is now further factored.  Lean proves:
+
+```lean
+CenteredCardinalBSplineConvPowerConvolutionLaw_of_assoc
+```
+
+which turns associativity of `realConvolution` into the formal degree law
+
+\[
+F_k * F_l = F_{k+l+1}.
+\]
+
+Lean also proves:
+
+```lean
+CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_assoc
+```
+
+so the self-convolution target follows from:
+
+1. associativity of `realConvolution` on the relevant functions;
+2. evenness of the target convolution power \(F_{2k+1}\).
+
 ## External sanity check
 
 The object follows the standard cardinal B-spline route:
@@ -147,11 +173,13 @@ Useful references:
 1. Prove `0 < bsplineAutocorrNorm k`.
 2. Prove `CenteredCardinalBSplineEven k`.
 3. Prove `CenteredCardinalBSplineMatchesConvPower k` for all degrees needed.
-4. Prove the pure convolution-power self-convolution theorem:
-   `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k`.
-5. Prove the centered-cardinal `sinh`/sinc-power transform profile.
-6. Prove boundary scale nonzero at \(z=\pm1/2\).
-7. Feed these into the existing `BSplineTranslatedAnalyticContract`.
+4. Prove analytic associativity of `realConvolution` for the relevant
+   convolution powers.
+5. Prove evenness of the relevant convolution powers, especially degree
+   \(2k+1\).
+6. Prove the centered-cardinal `sinh`/sinc-power transform profile.
+7. Prove boundary scale nonzero at \(z=\pm1/2\).
+8. Feed these into the existing `BSplineTranslatedAnalyticContract`.
 
 ## Verdict
 
