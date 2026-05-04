@@ -11591,3 +11591,26 @@ Update:
   prove `CenteredCardinalBSplineShiftEvenAE k` plus the self-convolution and
   normalization facts; pointwise evenness of degree zero is no longer on the
   critical path.
+
+## Synthesis (2026-05-04, in progress) — `Step32F_BoxShiftEvenAEBase`
+
+- Follow-up to `Step32F_BoxEndpointConvention`: closed the degree-zero
+  endpoint-safe base facts for the shifted a.e. route.
+- New proved Lean facts:
+  `centeredBoxSpline_neg_eq_of_ne_endpoints`,
+  `centeredBoxSpline_shiftEvenAE`, and
+  `CenteredCardinalBSplineShiftEvenAE_zero`.
+- Meaning:
+  the strict endpoint convention is now isolated exactly where it belongs:
+  pointwise symmetry fails only at the two endpoints, while shifted a.e.
+  symmetry holds for the box and transfers to the degree-zero cardinal spline.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
+  `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`,
+  `lake build Q3.Main`, and `./scripts/check_axioms.sh` pass.
+- Axiom status remains unchanged:
+  5 total axioms = 3 standard Lean + 2 project axioms.
+- Remaining Step 32F blocker:
+  propagate the shifted a.e. route through convolution powers / agreement, then
+  close self-convolution, \(0<c_k\), and the final
+  `CenteredBSplineAutocorrelationClosedForm`.

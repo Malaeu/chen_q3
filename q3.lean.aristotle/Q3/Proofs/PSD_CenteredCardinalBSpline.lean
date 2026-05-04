@@ -180,6 +180,44 @@ theorem not_CenteredCardinalBSplineEven_zero :
   rw [centeredCardinalBSpline_zero_eq_centeredBoxSpline] at hbad
   norm_num at hbad
 
+/--
+Away from the two endpoints, the strict centered-box convention is even.
+
+This is the pointwise core behind the later a.e. evenness theorem.
+-/
+theorem centeredBoxSpline_neg_eq_of_ne_endpoints
+    {t : ℝ}
+    (hleft : t ≠ -(1 / 2 : ℝ))
+    (hright : t ≠ (1 / 2 : ℝ)) :
+    centeredBoxSpline (-t) = centeredBoxSpline t := by
+  unfold centeredBoxSpline
+  simp only [positivePartPower_zero]
+  by_cases hlt : t < -(1 / 2 : ℝ)
+  · have h1 : 0 < -t + (1 / 2 : ℝ) := by linarith
+    have h2 : 0 < -t - (1 / 2 : ℝ) := by linarith
+    have h3 : ¬ 0 < t + (1 / 2 : ℝ) := by linarith
+    have h4 : ¬ 0 < t - (1 / 2 : ℝ) := by linarith
+    simp only [h1, h2, h3, h4, if_true, if_false]
+    ring
+  · have hge : -(1 / 2 : ℝ) < t := by
+      have hle : -(1 / 2 : ℝ) ≤ t := by linarith
+      exact lt_of_le_of_ne hle hleft.symm
+    by_cases hmid : t < (1 / 2 : ℝ)
+    · have h1 : 0 < -t + (1 / 2 : ℝ) := by linarith
+      have h2 : ¬ 0 < -t - (1 / 2 : ℝ) := by linarith
+      have h3 : 0 < t + (1 / 2 : ℝ) := by linarith
+      have h4 : ¬ 0 < t - (1 / 2 : ℝ) := by linarith
+      simp only [h1, h2, h3, h4, if_true, if_false]
+    · have hgt : (1 / 2 : ℝ) < t := by
+        have hle : (1 / 2 : ℝ) ≤ t := by linarith
+        exact lt_of_le_of_ne hle hright.symm
+      have h1 : ¬ 0 < -t + (1 / 2 : ℝ) := by linarith
+      have h2 : ¬ 0 < -t - (1 / 2 : ℝ) := by linarith
+      have h3 : 0 < t + (1 / 2 : ℝ) := by linarith
+      have h4 : 0 < t - (1 / 2 : ℝ) := by linarith
+      simp only [h1, h2, h3, h4, if_true, if_false]
+      ring
+
 /-- Evenness of `b_k` transfers to evenness of the scaled normalized bump. -/
 theorem centeredBSplineEta_even_of_cardinal_even
     (k : ℕ) (heven : CenteredCardinalBSplineEven k) :
@@ -446,6 +484,32 @@ def RealFunctionShiftEvenAE (f : ℝ → ℝ) : Prop :=
   ∀ x : ℝ, ∀ᵐ y : ℝ, f (-(y + x)) = f (y + x)
 
 /--
+The strict centered box is shifted-even almost everywhere.
+
+The only failures are the two translated endpoints `y+x=±1/2`, both null
+sets.  This is the degree-zero base fact for the endpoint-safe route.
+-/
+theorem centeredBoxSpline_shiftEvenAE :
+    RealFunctionShiftEvenAE centeredBoxSpline := by
+  intro x
+  have hleft :
+      ∀ᵐ y : ℝ, y ≠ (-(1 / 2 : ℝ)) - x :=
+    MeasureTheory.measure_eq_zero_iff_ae_notMem.mp
+      (MeasureTheory.measure_singleton ((-(1 / 2 : ℝ)) - x))
+  have hright :
+      ∀ᵐ y : ℝ, y ≠ (1 / 2 : ℝ) - x :=
+    MeasureTheory.measure_eq_zero_iff_ae_notMem.mp
+      (MeasureTheory.measure_singleton ((1 / 2 : ℝ) - x))
+  filter_upwards [hleft, hright] with y hyLeft hyRight
+  apply centeredBoxSpline_neg_eq_of_ne_endpoints
+  · intro hy
+    apply hyLeft
+    linarith
+  · intro hy
+    apply hyRight
+    linarith
+
+/--
 Autocorrelation is convolution at the reflected argument under shifted a.e.
 evenness.
 
@@ -483,6 +547,13 @@ theorem CenteredCardinalBSplineBaseCorrelationClosedForm_of_even_selfConvolution
 /-- Shifted a.e. evenness target for the centered cardinal spline. -/
 def CenteredCardinalBSplineShiftEvenAE (k : ℕ) : Prop :=
   RealFunctionShiftEvenAE (centeredCardinalBSpline k)
+
+/-- Degree-zero shifted a.e. evenness follows from the endpoint-safe box fact. -/
+theorem CenteredCardinalBSplineShiftEvenAE_zero :
+    CenteredCardinalBSplineShiftEvenAE 0 := by
+  change RealFunctionShiftEvenAE (centeredCardinalBSpline 0)
+  rw [centeredCardinalBSpline_zero_eq_centeredBoxSpline]
+  exact centeredBoxSpline_shiftEvenAE
 
 /--
 Integral-safe route from self-convolution to base autocorrelation.

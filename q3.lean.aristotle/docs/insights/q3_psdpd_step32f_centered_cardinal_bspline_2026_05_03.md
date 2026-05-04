@@ -40,6 +40,9 @@ It proves:
 - `centeredBoxSpline_neg_half`;
 - `centeredBoxSpline_pos_half`;
 - `not_CenteredCardinalBSplineEven_zero`;
+- `centeredBoxSpline_neg_eq_of_ne_endpoints`;
+- `centeredBoxSpline_shiftEvenAE`;
+- `CenteredCardinalBSplineShiftEvenAE_zero`;
 - `CenteredCardinalBSplineMatchesConvPower_zero`;
 - `CenteredCardinalBSplineConvPowerConvolutionLaw_of_assoc`;
 - `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_convolutionLaw`;
@@ -184,14 +187,18 @@ The a.e./integral evenness route is now present in Lean:
 
 ```lean
 RealFunctionShiftEvenAE
+centeredBoxSpline_neg_eq_of_ne_endpoints
+centeredBoxSpline_shiftEvenAE
 realBumpCorrelationProfile_eq_realConvolution_neg_of_shiftEvenAE
 CenteredCardinalBSplineShiftEvenAE
+CenteredCardinalBSplineShiftEvenAE_zero
 CenteredBSplineAutocorrelationClosedForm_of_cardinalShiftEvenAE_cardinalSelfConvolution
 ```
 
 So the endpoint convention no longer blocks the main autocorrelation theorem.
-The remaining evenness target is shifted a.e. evenness of the concrete spline,
-not pointwise evenness of the degree-zero box.
+The remaining evenness target is propagation of shifted a.e. evenness through
+the spline family/convolution-power agreement, not pointwise evenness of the
+degree-zero box.
 
 ## External sanity check
 
@@ -217,8 +224,9 @@ Useful references:
 3. Prove `CenteredCardinalBSplineMatchesConvPower k` for all degrees needed.
 4. Prove analytic associativity of `realConvolution` for the relevant
    convolution powers.
-5. Prove shifted a.e. evenness of the concrete/convolution-power spline where
-   needed, using the new integral-safe route.
+5. Propagate shifted a.e. evenness from the degree-zero box to the
+   concrete/convolution-power spline where needed, using the new integral-safe
+   route.
 6. Prove the centered-cardinal `sinh`/sinc-power transform profile.
 7. Prove boundary scale nonzero at \(z=\pm1/2\).
 8. Feed these into the existing `BSplineTranslatedAnalyticContract`.
@@ -228,3 +236,29 @@ Useful references:
 This is real concrete Step 32F progress, not a new receiver.  The B-spline
 object now exists in Lean; the remaining blocker is the closed-form
 autocorrelation/transform theorem package.
+
+## 2026-05-04 update — degree-zero shifted a.e. base
+
+The endpoint-safe base of the a.e. route is now Lean-proved:
+
+```lean
+centeredBoxSpline_neg_eq_of_ne_endpoints
+centeredBoxSpline_shiftEvenAE
+CenteredCardinalBSplineShiftEvenAE_zero
+```
+
+This records the exact correction: the strict box is not pointwise even, but it
+is shifted-even almost everywhere, and therefore usable under the
+autocorrelation integral.
+
+Verification:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean
+lake build Q3.Proofs.PSD_CenteredCardinalBSpline
+lake build Q3.Main
+./scripts/check_axioms.sh
+```
+
+All pass.  The project axiom profile remains unchanged at 5 total axioms
+including the 3 standard Lean axioms.
