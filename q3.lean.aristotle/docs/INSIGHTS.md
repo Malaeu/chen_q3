@@ -11641,3 +11641,26 @@ Update:
 - Remaining Step 32F blockers:
   prove the actual agreement/recurrence facts, the required pointwise target
   agreement for `2*k+1`, the self-convolution law, and \(0<c_k\).
+
+## Synthesis (2026-05-04, in progress) — `Step32F_AERouteAdapters`
+
+- Added convenience closure theorems above the endpoint-safe route:
+  `CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_pointwise`
+  and `CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_assoc`.
+- Meaning:
+  once pointwise truncated-power/convolution-power agreement is proved for the
+  active degree, Lean can automatically downgrade it to the a.e. and shifted
+  a.e. forms needed under the integral.  The `assoc` theorem also feeds the
+  existing convolution-power self-convolution bridge.
+- Added the first concrete normalizer positivity fact:
+  `bsplineAutocorrNorm_pos_zero`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
+  `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, `lake build Q3.Main`,
+  `./scripts/check_axioms.sh`, and link/hole scans pass.  The axiom profile
+  remains unchanged at five total axioms: three standard Lean axioms and two
+  documented project axioms.
+- Remaining all-degree work:
+  prove the recurrence/agreement theorem for `centeredCardinalBSpline`, prove
+  the relevant associativity/evenness facts for convolution powers, and lift
+  `0<c_k` from degree zero to all `k`.

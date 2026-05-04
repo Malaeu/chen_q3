@@ -66,6 +66,9 @@ It proves:
 - `CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPowerAE`;
 - `CenteredBSplineAutocorrelationClosedForm_of_convPowerRoute`;
 - `CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute`;
+- `CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_pointwise`;
+- `CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_assoc`;
+- `bsplineAutocorrNorm_pos_zero`;
 - `realBumpCorrelationProfile_eq_realConvolution_neg_of_even`;
 - `centeredBSplineEta_even_of_cardinal_even`;
 - `CenteredBSplineAutocorrelationClosedForm_of_selfConvolution`;
@@ -216,12 +219,23 @@ The endpoint-safe convolution-power route now has the exact theorem shape:
 
 ```lean
 CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute
+CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_pointwise
+CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_assoc
 ```
 
 This route uses a.e. agreement for the degree `k` factors under the integral
 and shifted-a.e. agreement for the reflected factor.  The degree `2*k+1`
 agreement is still pointwise because the final spline value is evaluated at
 the external point `x`, not integrated out.
+
+The first concrete normalizer positivity fact is also closed:
+
+```lean
+bsplineAutocorrNorm_pos_zero
+```
+
+This proves \(0<c_0\).  The all-degree \(0<c_k\) theorem still needs the
+square-integral/self-convolution positivity argument.
 
 ## External sanity check
 
@@ -316,3 +330,39 @@ shifted a.e. evenness
 
 The pointwise target-degree agreement is still required because the final
 right-hand side is evaluated at a specific `x`.
+
+## 2026-05-04 update — route adapters and base positivity
+
+Lean now has adapter theorems that let the future recurrence/agreement theorem
+feed the endpoint-safe route directly:
+
+```lean
+CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_pointwise
+CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_assoc
+```
+
+The second theorem also discharges the self-convolution input from
+`RealConvolutionAssociative` and target-degree evenness via the existing
+convolution-power bridge.
+
+The degree-zero normalizer positivity is proved:
+
+```lean
+bsplineAutocorrNorm_pos_zero
+```
+
+Remaining all-degree blockers are unchanged: recurrence/agreement,
+convolution associativity/evenness on the relevant powers, and \(0<c_k\) for
+all `k`.
+
+Verification on 2026-05-04:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean
+lake build Q3.Proofs.PSD_CenteredCardinalBSpline
+lake build Q3.Main
+./scripts/check_axioms.sh
+```
+
+All pass.  The axiom profile is unchanged: three standard Lean axioms and two
+documented project axioms.

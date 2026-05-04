@@ -864,6 +864,51 @@ theorem CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute
       (CenteredCardinalBSplineSelfConvolutionClosedForm_of_convPowerAE
         k hmatchAE hmatchShiftAE hmatchAuto hconv)
 
+/--
+Endpoint-safe route when the executable/convolution-power agreement is already
+available pointwise for the degree `k` factors.
+
+The pointwise agreement is immediately downgraded to the a.e. and shifted-a.e.
+forms needed under the autocorrelation integral.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_pointwise
+    (k : ℕ)
+    (hc_pos : 0 < bsplineAutocorrNorm k)
+    (hevenAE : CenteredCardinalBSplineShiftEvenAE k)
+    (hmatch : CenteredCardinalBSplineMatchesConvPower k)
+    (hmatchAuto : CenteredCardinalBSplineMatchesConvPower (bsplineAutocorrDegree k))
+    (hconv : CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k) :
+    CenteredBSplineAutocorrelationClosedForm k :=
+  CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute
+    k hc_pos hevenAE
+      (CenteredCardinalBSplineMatchesConvPowerAE_of_pointwise k hmatch)
+      (CenteredCardinalBSplineMatchesConvPowerShiftAE_of_pointwise k hmatch)
+      hmatchAuto hconv
+
+/--
+Endpoint-safe route with the convolution-power self-convolution discharged
+from associativity and target evenness.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_assoc
+    (k : ℕ)
+    (hc_pos : 0 < bsplineAutocorrNorm k)
+    (hevenAE : CenteredCardinalBSplineShiftEvenAE k)
+    (hmatch : CenteredCardinalBSplineMatchesConvPower k)
+    (hmatchAuto : CenteredCardinalBSplineMatchesConvPower (bsplineAutocorrDegree k))
+    (hassoc : RealConvolutionAssociative)
+    (hevenAuto : CenteredCardinalBSplineConvPowerEven (bsplineAutocorrDegree k)) :
+    CenteredBSplineAutocorrelationClosedForm k :=
+  CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_pointwise
+    k hc_pos hevenAE hmatch hmatchAuto
+      (CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_assoc
+        k hassoc hevenAuto)
+
+/-- The degree-zero autocorrelation normalizer is positive. -/
+theorem bsplineAutocorrNorm_pos_zero :
+    0 < bsplineAutocorrNorm 0 := by
+  norm_num [bsplineAutocorrNorm, bsplineAutocorrDegree,
+    centeredCardinalBSpline, positivePartPower]
+
 /-- Name the exact transform profile still needed to close the Arch/boundary
 side of Step 32F. -/
 def centeredBSplineRealTransformProfile (k : ℕ) (ell z : ℝ) : ℝ :=
