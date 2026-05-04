@@ -11562,3 +11562,32 @@ Update:
   prove the analytic associativity/evenness facts for the relevant
   convolution powers and the agreement between the truncated-power formula and
   the convolution-power model.
+
+## Synthesis (2026-05-03, in progress) — `Step32F_BoxEndpointConvention`
+
+- While trying to close the evenness branch of the convolution-power route,
+  Lean exposed an important endpoint issue: with the current strict
+  `positivePartPower 0` convention, the centered degree-zero box is not
+  pointwise even.
+- New proved facts:
+  `centeredBoxSpline_neg_half = 0`,
+  `centeredBoxSpline_pos_half = 1`, and
+  `not_CenteredCardinalBSplineEven_zero`.
+- Meaning:
+  the mathematical B-spline convolution route is still correct for integrals,
+  because this is a measure-zero endpoint convention.  However, the current
+  pointwise-evenness target is too strong at degree zero.
+- Route correction:
+  the remaining Step 32F autocorrelation proof should use either an
+  a.e./integral evenness formulation or prove the recurrence
+  `b_{k+1}=b_k*b_0` directly under the integral, instead of trying to derive
+  everything from pointwise evenness of the box.
+- Implemented the a.e./integral evenness replacement:
+  `RealFunctionShiftEvenAE`,
+  `realBumpCorrelationProfile_eq_realConvolution_neg_of_shiftEvenAE`,
+  `CenteredCardinalBSplineShiftEvenAE`, and
+  `CenteredBSplineAutocorrelationClosedForm_of_cardinalShiftEvenAE_cardinalSelfConvolution`.
+- New remaining target shape:
+  prove `CenteredCardinalBSplineShiftEvenAE k` plus the self-convolution and
+  normalization facts; pointwise evenness of degree zero is no longer on the
+  critical path.

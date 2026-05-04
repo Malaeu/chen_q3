@@ -37,10 +37,16 @@ It proves:
 
 - `centeredCardinalBSpline_zero`;
 - `centeredCardinalBSpline_zero_eq_centeredBoxSpline`;
+- `centeredBoxSpline_neg_half`;
+- `centeredBoxSpline_pos_half`;
+- `not_CenteredCardinalBSplineEven_zero`;
 - `CenteredCardinalBSplineMatchesConvPower_zero`;
 - `CenteredCardinalBSplineConvPowerConvolutionLaw_of_assoc`;
 - `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_convolutionLaw`;
 - `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_assoc`;
+- `realBumpCorrelationProfile_eq_realConvolution_neg_of_shiftEvenAE`;
+- `CenteredCardinalBSplineBaseCorrelationClosedForm_of_shiftEvenAE_selfConvolution`;
+- `CenteredBSplineAutocorrelationClosedForm_of_cardinalShiftEvenAE_cardinalSelfConvolution`;
 - `bsplineScale_pos`;
 - `bsplineScale_ne_zero`;
 - `centeredBSplineBoundaryPlus_basis`;
@@ -151,6 +157,42 @@ so the self-convolution target follows from:
 1. associativity of `realConvolution` on the relevant functions;
 2. evenness of the target convolution power \(F_{2k+1}\).
 
+## Endpoint convention correction
+
+The current strict convention for `positivePartPower 0` makes the centered box
+half-open at the endpoints:
+
+\[
+B_0(-1/2)=0,\qquad B_0(1/2)=1.
+\]
+
+Lean records this as:
+
+```lean
+centeredBoxSpline_neg_half
+centeredBoxSpline_pos_half
+not_CenteredCardinalBSplineEven_zero
+```
+
+This is harmless for the integral B-spline identities, because the endpoint is
+a null set.  It does mean that a proof route requiring pointwise evenness of
+degree zero is too strong.  The next proof step should use an a.e./integral
+evenness formulation, or prove the box-convolution recurrence directly under
+the integral.
+
+The a.e./integral evenness route is now present in Lean:
+
+```lean
+RealFunctionShiftEvenAE
+realBumpCorrelationProfile_eq_realConvolution_neg_of_shiftEvenAE
+CenteredCardinalBSplineShiftEvenAE
+CenteredBSplineAutocorrelationClosedForm_of_cardinalShiftEvenAE_cardinalSelfConvolution
+```
+
+So the endpoint convention no longer blocks the main autocorrelation theorem.
+The remaining evenness target is shifted a.e. evenness of the concrete spline,
+not pointwise evenness of the degree-zero box.
+
 ## External sanity check
 
 The object follows the standard cardinal B-spline route:
@@ -175,8 +217,8 @@ Useful references:
 3. Prove `CenteredCardinalBSplineMatchesConvPower k` for all degrees needed.
 4. Prove analytic associativity of `realConvolution` for the relevant
    convolution powers.
-5. Prove evenness of the relevant convolution powers, especially degree
-   \(2k+1\).
+5. Prove shifted a.e. evenness of the concrete/convolution-power spline where
+   needed, using the new integral-safe route.
 6. Prove the centered-cardinal `sinh`/sinc-power transform profile.
 7. Prove boundary scale nonzero at \(z=\pm1/2\).
 8. Feed these into the existing `BSplineTranslatedAnalyticContract`.

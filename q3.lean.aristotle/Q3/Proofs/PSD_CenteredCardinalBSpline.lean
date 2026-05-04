@@ -105,6 +105,26 @@ theorem centeredCardinalBSpline_zero_eq_centeredBoxSpline :
   funext x
   exact centeredCardinalBSpline_zero x
 
+/--
+Left endpoint value for the strict centered-box convention.
+
+This records the measure-zero endpoint convention explicitly.  It is harmless
+for integral identities, but it means the degree-zero box is not pointwise even.
+-/
+@[simp] theorem centeredBoxSpline_neg_half :
+    centeredBoxSpline (-(1 / 2 : ℝ)) = 0 := by
+  simp [centeredBoxSpline]
+
+/--
+Right endpoint value for the strict centered-box convention.
+
+Together with `centeredBoxSpline_neg_half`, this shows that the box is only
+even up to a null endpoint convention.
+-/
+@[simp] theorem centeredBoxSpline_pos_half :
+    centeredBoxSpline (1 / 2 : ℝ) = 1 := by
+  simp [centeredBoxSpline]
+
 /-- The PSD-pd packet scale `s_k=(k+1)/2`. -/
 def bsplineScale (k : ℕ) : ℝ :=
   (((k + 1 : ℕ) : ℝ) / 2)
@@ -145,6 +165,20 @@ def centeredBSplineR (k : ℕ) (x : ℝ) : ℝ :=
 /-- Evenness target for the concrete centered cardinal B-spline. -/
 def CenteredCardinalBSplineEven (k : ℕ) : Prop :=
   ∀ x : ℝ, centeredCardinalBSpline k (-x) = centeredCardinalBSpline k x
+
+/--
+The current strict endpoint convention prevents degree-zero pointwise evenness.
+
+The B-spline integral identities still see the centered box as even almost
+everywhere, so later convolution arguments should use an a.e./integral
+evenness form rather than pointwise evenness at degree zero.
+-/
+theorem not_CenteredCardinalBSplineEven_zero :
+    ¬ CenteredCardinalBSplineEven 0 := by
+  intro h
+  have hbad := h (1 / 2 : ℝ)
+  rw [centeredCardinalBSpline_zero_eq_centeredBoxSpline] at hbad
+  norm_num at hbad
 
 /-- Evenness of `b_k` transfers to evenness of the scaled normalized bump. -/
 theorem centeredBSplineEta_even_of_cardinal_even
@@ -402,6 +436,35 @@ theorem realBumpCorrelationProfile_eq_realConvolution_neg_of_even
     _ = f y * f (-x - y) := by rw [harg]
 
 /--
+Shifted a.e. evenness, exactly in the form needed to turn autocorrelation into
+convolution under the integral.
+
+This is weaker than pointwise evenness and is the right shape for the
+degree-zero centered-box endpoint convention.
+-/
+def RealFunctionShiftEvenAE (f : ℝ → ℝ) : Prop :=
+  ∀ x : ℝ, ∀ᵐ y : ℝ, f (-(y + x)) = f (y + x)
+
+/--
+Autocorrelation is convolution at the reflected argument under shifted a.e.
+evenness.
+
+This is the integral-safe replacement for pointwise evenness when endpoint
+conventions differ on null sets.
+-/
+theorem realBumpCorrelationProfile_eq_realConvolution_neg_of_shiftEvenAE
+    (f : ℝ → ℝ) (hf_even : RealFunctionShiftEvenAE f) (x : ℝ) :
+    realBumpCorrelationProfile f x = realConvolution f f (-x) := by
+  unfold realBumpCorrelationProfile realConvolution
+  apply integral_congr_ae
+  filter_upwards [hf_even x] with y hy
+  have harg : (-x - y) = -(y + x) := by ring
+  calc
+    f y * f (y + x)
+        = f y * f (-(y + x)) := by rw [← hy]
+    _ = f y * f (-x - y) := by rw [harg]
+
+/--
 The user-facing convolution-power route:
 
 evenness of \(b_k\) plus the unnormalized self-convolution identity implies
@@ -415,6 +478,26 @@ theorem CenteredCardinalBSplineBaseCorrelationClosedForm_of_even_selfConvolution
   intro x
   rw [realBumpCorrelationProfile_eq_realConvolution_neg_of_even
     (centeredCardinalBSpline k) heven x]
+  exact hconv x
+
+/-- Shifted a.e. evenness target for the centered cardinal spline. -/
+def CenteredCardinalBSplineShiftEvenAE (k : ℕ) : Prop :=
+  RealFunctionShiftEvenAE (centeredCardinalBSpline k)
+
+/--
+Integral-safe route from self-convolution to base autocorrelation.
+
+This avoids the false degree-zero pointwise-evenness requirement caused by the
+strict box endpoint convention.
+-/
+theorem CenteredCardinalBSplineBaseCorrelationClosedForm_of_shiftEvenAE_selfConvolution
+    (k : ℕ)
+    (hevenAE : CenteredCardinalBSplineShiftEvenAE k)
+    (hconv : CenteredCardinalBSplineSelfConvolutionClosedForm k) :
+    CenteredCardinalBSplineBaseCorrelationClosedForm k := by
+  intro x
+  rw [realBumpCorrelationProfile_eq_realConvolution_neg_of_shiftEvenAE
+    (centeredCardinalBSpline k) hevenAE x]
   exact hconv x
 
 /--
@@ -554,6 +637,26 @@ theorem CenteredBSplineAutocorrelationClosedForm_of_cardinalEven_cardinalSelfCon
     k hc_pos
       (CenteredCardinalBSplineBaseCorrelationClosedForm_of_even_selfConvolution
         k heven hconv)
+
+/--
+Integral-safe canonical Step 32F route:
+
+1. prove \(0<c_k\);
+2. prove shifted a.e. evenness of the centered-cardinal spline;
+3. prove the centered-cardinal self-convolution profile.
+
+Then the normalized autocorrelation closed form follows.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_of_cardinalShiftEvenAE_cardinalSelfConvolution
+    (k : ℕ)
+    (hc_pos : 0 < bsplineAutocorrNorm k)
+    (hevenAE : CenteredCardinalBSplineShiftEvenAE k)
+    (hconv : CenteredCardinalBSplineSelfConvolutionClosedForm k) :
+    CenteredBSplineAutocorrelationClosedForm k :=
+  CenteredBSplineAutocorrelationClosedForm_of_baseCorrelation
+    k hc_pos
+      (CenteredCardinalBSplineBaseCorrelationClosedForm_of_shiftEvenAE_selfConvolution
+        k hevenAE hconv)
 
 /--
 Fully factored convolution-power route to the normalized Step 32F
