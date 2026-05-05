@@ -366,3 +366,31 @@ lake build Q3.Main
 
 All pass.  The axiom profile is unchanged: three standard Lean axioms and two
 documented project axioms.
+
+## 2026-05-05 update — recurrence package assembly
+
+Semantic search on `q3_docs` did not find an already-closed local recurrence
+lemma for the centered-cardinal truncated-power definition.  The useful local
+hits were the existing Step 32F receiver and old finite-sum/integral proof
+style; an external sanity check again confirms the standard route: cardinal
+B-splines are convolution powers of the centered box.
+
+Lean now has the formal assembly layer that will consume the remaining
+mathematical bricks:
+
+```lean
+CenteredCardinalBSplineMatchesConvPower_all_of_succ_eq_conv_box
+CenteredBSplineAutocorrelationClosedForm_all_of_convPower_inputs
+CenteredBSplineAutocorrelationClosedForm_all_of_recurrence_package
+```
+
+Thus the Step 32F autocorrelation target is no longer a loose bundle.  It is
+reduced to the precise remaining inputs:
+
+1. prove the recurrence `b_{k+1}=b_k*b_0`;
+2. prove `0 < bsplineAutocorrNorm k`;
+3. propagate `CenteredCardinalBSplineShiftEvenAE k`;
+4. prove the convolution-power self-convolution closed form.
+
+The next live Lean target is still the recurrence, preferably through the
+positive-part interval integral plus Pascal telescope.

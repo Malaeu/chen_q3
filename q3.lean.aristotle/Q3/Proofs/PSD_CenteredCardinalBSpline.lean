@@ -903,6 +903,87 @@ theorem CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_assoc
       (CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_assoc
         k hassoc hevenAuto)
 
+/-!
+## Step 32F assembly layer
+
+The next analytic brick is the recurrence
+`b_{k+1}=b_k*b_0`.  The theorems below isolate the purely formal fallout of
+that brick: once the recurrence is proved, pointwise agreement with the
+convolution-power model follows by induction, and the endpoint-safe
+autocorrelation closed form is reduced to the remaining positivity,
+shifted-a.e. symmetry, and convolution-power self-convolution inputs.
+-/
+
+/--
+If the truncated-power centered B-splines satisfy the box-convolution
+recurrence, then they agree pointwise with the convolution-power model in every
+degree.
+-/
+theorem CenteredCardinalBSplineMatchesConvPower_all_of_succ_eq_conv_box
+    (hrec : ∀ k : ℕ,
+      centeredCardinalBSpline (k + 1) =
+        realConvolution (centeredCardinalBSpline k) centeredBoxSpline) :
+    ∀ k : ℕ, CenteredCardinalBSplineMatchesConvPower k := by
+  intro k
+  induction k with
+  | zero =>
+      exact CenteredCardinalBSplineMatchesConvPower_zero
+  | succ k ih =>
+      intro x
+      have hfun :
+          centeredCardinalBSpline k =
+            centeredCardinalBSplineConvPower k := by
+        funext y
+        exact ih y
+      calc
+        centeredCardinalBSpline (k + 1) x
+            = realConvolution (centeredCardinalBSpline k) centeredBoxSpline x := by
+                rw [hrec k]
+        _ = realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline x := by
+                rw [hfun]
+        _ = centeredCardinalBSplineConvPower (k + 1) x := by
+                rfl
+
+/--
+Package the endpoint-safe Step 32F autocorrelation closure once all remaining
+degreewise inputs have been supplied.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_all_of_convPower_inputs
+    (hc_pos : ∀ k : ℕ, 0 < bsplineAutocorrNorm k)
+    (hevenAE : ∀ k : ℕ, CenteredCardinalBSplineShiftEvenAE k)
+    (hmatch : ∀ k : ℕ, CenteredCardinalBSplineMatchesConvPower k)
+    (hconv : ∀ k : ℕ, CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k) :
+    ∀ k : ℕ, CenteredBSplineAutocorrelationClosedForm k := by
+  intro k
+  exact
+    CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_pointwise
+      k
+      (hc_pos k)
+      (hevenAE k)
+      (hmatch k)
+      (hmatch (bsplineAutocorrDegree k))
+      (hconv k)
+
+/--
+Single assembly theorem for the current Step 32F route: the recurrence closes
+the executable/convolution-power agreement, and the other degreewise inputs
+then close the concrete normalized autocorrelation profile.
+-/
+theorem CenteredBSplineAutocorrelationClosedForm_all_of_recurrence_package
+    (hrec : ∀ k : ℕ,
+      centeredCardinalBSpline (k + 1) =
+        realConvolution (centeredCardinalBSpline k) centeredBoxSpline)
+    (hc_pos : ∀ k : ℕ, 0 < bsplineAutocorrNorm k)
+    (hevenAE : ∀ k : ℕ, CenteredCardinalBSplineShiftEvenAE k)
+    (hconv : ∀ k : ℕ, CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k) :
+    ∀ k : ℕ, CenteredBSplineAutocorrelationClosedForm k := by
+  exact
+    CenteredBSplineAutocorrelationClosedForm_all_of_convPower_inputs
+      hc_pos
+      hevenAE
+      (CenteredCardinalBSplineMatchesConvPower_all_of_succ_eq_conv_box hrec)
+      hconv
+
 /-- The degree-zero autocorrelation normalizer is positive. -/
 theorem bsplineAutocorrNorm_pos_zero :
     0 < bsplineAutocorrNorm 0 := by
