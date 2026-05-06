@@ -394,3 +394,30 @@ reduced to the precise remaining inputs:
 
 The next live Lean target is still the recurrence, preferably through the
 positive-part interval integral plus Pascal telescope.
+
+## 2026-05-07 update — branch export reviewed
+
+The raw branch export at
+`/Users/emalam/Documents/GitHub/rh_lean_01_2026/docs/2026-5-5 8-39-57-________Branch_______________________.md`
+was reviewed as project memory, but should not be committed or indexed as-is.
+The reusable synthesis is recorded in:
+
+```text
+docs/insights/q3_branch_operator_difference_step32f_review_2026_05_07.md
+```
+
+The review does not change the live theorem frontier.  It confirms the current
+route:
+
+1. stay inside Step 32F, not Step 33;
+2. close `centeredCardinalBSpline_succ_eq_conv_box`;
+3. feed the existing recurrence assembly layer;
+4. then close `CenteredBSplineAutocorrelationClosedForm`.
+
+The exact local proof split remains:
+
+```lean
+positivePartPower_interval_integral_centered
+centeredCardinalBSpline_pascal_telescope
+centeredCardinalBSpline_succ_eq_conv_box
+```
