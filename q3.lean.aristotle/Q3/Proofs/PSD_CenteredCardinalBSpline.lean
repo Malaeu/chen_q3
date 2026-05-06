@@ -904,6 +904,75 @@ theorem CenteredBSplineAutocorrelationClosedForm_of_convPowerAERoute_assoc
         k hassoc hevenAuto)
 
 /-!
+## Step 32F recurrence algebra
+
+The next analytic target is the box-convolution recurrence
+`b_{k+1}=b_k*b_0`.  Its finite-sum part is independent of integration:
+after the positive-part interval integral produces `T_j - T_(j+1)`, Pascal's
+identity converts the alternating degree-`k+1` sum into the degree-`k+2`
+centered-cardinal sum.
+-/
+
+/--
+Shift an alternating binomial sum by one index.
+
+This is the boundary bookkeeping used by the Pascal telescope below.
+-/
+theorem centeredCardinalBSpline_altChoose_shift_sum
+    (n : ℕ) (T : ℕ → ℝ) :
+    ((Finset.range (n + 1)).sum fun j =>
+      ((-1 : ℝ) ^ j) * (Nat.choose n j : ℝ) * T j)
+    =
+      T 0 -
+        ((Finset.range (n + 1)).sum fun j =>
+          ((-1 : ℝ) ^ j) * (Nat.choose n (j + 1) : ℝ) * T (j + 1)) := by
+  rw [Finset.sum_range_succ']
+  rw [Finset.sum_range_succ]
+  simp [pow_succ, add_comm, mul_comm]
+  abel
+
+/--
+Pascal telescope for the centered-cardinal recurrence.
+
+Mathematically:
+
+`sum_j (-1)^j choose(n,j) (T_j - T_(j+1))
+ = sum_j (-1)^j choose(n+1,j) T_j`.
+-/
+theorem centeredCardinalBSpline_pascal_telescope
+    (n : ℕ) (T : ℕ → ℝ) :
+    ((Finset.range (n + 1)).sum fun j =>
+      ((-1 : ℝ) ^ j) * (Nat.choose n j : ℝ) *
+        (T j - T (j + 1)))
+    =
+    ((Finset.range (n + 2)).sum fun j =>
+      ((-1 : ℝ) ^ j) * (Nat.choose (n + 1) j : ℝ) * T j) := by
+  calc
+    ((Finset.range (n + 1)).sum fun j =>
+      ((-1 : ℝ) ^ j) * (Nat.choose n j : ℝ) *
+        (T j - T (j + 1)))
+        = ((Finset.range (n + 1)).sum fun j =>
+            ((-1 : ℝ) ^ j) * (Nat.choose n j : ℝ) * T j)
+          - ((Finset.range (n + 1)).sum fun j =>
+            ((-1 : ℝ) ^ j) * (Nat.choose n j : ℝ) * T (j + 1)) := by
+            simp [mul_sub, Finset.sum_sub_distrib]
+    _ = T 0 -
+          ((Finset.range (n + 1)).sum fun j =>
+            ((-1 : ℝ) ^ j) * (Nat.choose n (j + 1) : ℝ) * T (j + 1))
+          - ((Finset.range (n + 1)).sum fun j =>
+            ((-1 : ℝ) ^ j) * (Nat.choose n j : ℝ) * T (j + 1)) := by
+            rw [centeredCardinalBSpline_altChoose_shift_sum n T]
+    _ = ((Finset.range (n + 2)).sum fun j =>
+          ((-1 : ℝ) ^ j) * (Nat.choose (n + 1) j : ℝ) * T j) := by
+          conv_rhs =>
+            rw [Finset.sum_range_succ' (f := fun j =>
+              ((-1 : ℝ) ^ j) * (Nat.choose (n + 1) j : ℝ) * T j) (n + 1)]
+          simp [Nat.choose_succ_succ, pow_succ, add_comm, mul_comm]
+          ring_nf
+          rw [Finset.sum_add_distrib]
+          ring_nf
+
+/-!
 ## Step 32F assembly layer
 
 The next analytic brick is the recurrence

@@ -421,3 +421,35 @@ positivePartPower_interval_integral_centered
 centeredCardinalBSpline_pascal_telescope
 centeredCardinalBSpline_succ_eq_conv_box
 ```
+
+## 2026-05-07 update — Pascal telescope closed
+
+Lean now proves the finite-sum algebra half of the recurrence route:
+
+```lean
+centeredCardinalBSpline_altChoose_shift_sum
+centeredCardinalBSpline_pascal_telescope
+```
+
+The theorem
+
+```lean
+centeredCardinalBSpline_pascal_telescope
+```
+
+is the abstract binomial identity:
+
+```text
+sum_j (-1)^j choose(n,j) (T_j - T_(j+1))
+= sum_j (-1)^j choose(n+1,j) T_j
+```
+
+This closes the Pascal bookkeeping needed after the positive-part interval
+integral produces the `T_j - T_(j+1)` difference.  The recurrence is now blocked
+on the analytic integral/reduction side, not on finite-sum algebra.
+
+Next live target:
+
+```lean
+positivePartPower_interval_integral_centered
+```
