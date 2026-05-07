@@ -11767,3 +11767,21 @@ Update:
   Step 32F input:
   `∀ k : ℕ, 0 < bsplineAutocorrNorm k`, recorded by
   `CenteredBSplineAutocorrelationClosedForm_all_of_norm_pos`.
+
+## Synthesis (2026-05-08, in progress) — `Step32F_AutocorrNorm_pos`
+
+- Target:
+  `∀ k : ℕ, 0 < bsplineAutocorrNorm k`.
+- Local semantic search found no existing all-degree positivity theorem for
+  `bsplineAutocorrNorm`; previous Step 32F notes now reduce the normalized
+  autocorrelation package to this single input.
+- External check confirms the standard B-spline route: cardinal splines are
+  iterated box convolutions; positivity of the normalizer should follow from
+  `B_k * B_k = B_{2k+1}` at zero and endpoint-safe evenness, reducing the
+  value to an integral of `B_k^2`.
+- Concrete Lean plan:
+  use `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all`,
+  `CenteredCardinalBSplineMatchesConvPower_all`, and
+  `CenteredCardinalBSplineShiftEvenAE_all`; then prove a nonzero/positive-on-set
+  lemma for `centeredCardinalBSplineConvPower k` strong enough to show
+  `∫ y, B_k y * B_k y > 0`.
