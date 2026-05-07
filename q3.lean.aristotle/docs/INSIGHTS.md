@@ -11785,3 +11785,24 @@ Update:
   `CenteredCardinalBSplineShiftEvenAE_all`; then prove a nonzero/positive-on-set
   lemma for `centeredCardinalBSplineConvPower k` strong enough to show
   `∫ y, B_k y * B_k y > 0`.
+
+## Synthesis (2026-05-08, OK) — `Step32F_AutocorrNorm_pos_closed`
+
+- Closed the all-degree normalizer positivity theorem:
+  `bsplineAutocorrNorm_pos : ∀ k, 0 < bsplineAutocorrNorm k`.
+- Added compact-support and continuity bridges for the proof-friendly
+  convolution-power model:
+  `centeredBoxSpline_hasCompactSupport`,
+  `centeredCardinalBSplineConvPower_hasCompactSupport`,
+  `centeredCardinalBSplineConvPower_continuous_of_pos`.
+- Added the nonzero/square-integral route:
+  `centeredCardinalBSpline_left_interior_pos`,
+  `centeredCardinalBSplineConvPower_nonzero_of_pos`,
+  `realConvolution_convPower_self_zero_eq_squareIntegral`, and
+  `centeredCardinalBSplineConvPower_squareIntegral_pos_of_pos`.
+- Closed the unconditional public Step 32F autocorrelation theorem:
+  `CenteredBSplineAutocorrelationClosedForm_all`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
+  `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, and
+  `lake build Q3.Main` all pass.

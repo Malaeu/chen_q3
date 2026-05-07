@@ -1746,11 +1746,202 @@ theorem CenteredBSplineAutocorrelationClosedForm_all_of_norm_pos
     CenteredCardinalBSplineConvPowerAssocRightBox_all
     hc_pos
 
+/-- The strict centered box is compactly supported in `[-1/2,1/2]`. -/
+theorem centeredBoxSpline_hasCompactSupport :
+    HasCompactSupport centeredBoxSpline := by
+  have hIcc : IsCompact (Set.Icc (-(1 / 2 : ℝ)) (1 / 2 : ℝ)) := isCompact_Icc
+  refine HasCompactSupport.of_support_subset_isCompact hIcc ?_
+  intro x hx
+  have hx_support : centeredBoxSpline x ≠ 0 := hx
+  constructor
+  · by_contra hxlt
+    have hleft : ¬ 0 < x + (2⁻¹ : ℝ) := by norm_num; linarith
+    have hright : ¬ (2⁻¹ : ℝ) < x := by norm_num; linarith
+    have hzero : centeredBoxSpline x = 0 := by
+      simp [centeredBoxSpline, hleft, hright]
+    exact hx_support hzero
+  · by_contra hxgt
+    have hleft : 0 < x + (2⁻¹ : ℝ) := by norm_num; linarith
+    have hright : (2⁻¹ : ℝ) < x := by norm_num; linarith
+    have hzero : centeredBoxSpline x = 0 := by
+      simp [centeredBoxSpline, hleft, hright]
+    exact hx_support hzero
+
+/-- Every centered-box convolution power is compactly supported. -/
+theorem centeredCardinalBSplineConvPower_hasCompactSupport
+    (k : ℕ) :
+    HasCompactSupport (centeredCardinalBSplineConvPower k) := by
+  induction k with
+  | zero =>
+      simpa [centeredCardinalBSplineConvPower_zero] using centeredBoxSpline_hasCompactSupport
+  | succ k ih =>
+      change HasCompactSupport
+        (realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline)
+      have hconv := ih.convolution
+        (L := ContinuousLinearMap.mul ℝ ℝ)
+        (μ := volume)
+        centeredBoxSpline_hasCompactSupport
+      simpa [realConvolution, MeasureTheory.convolution_def] using hconv
+
+/-- Positive-degree executable centered-cardinal B-splines are continuous. -/
+theorem centeredCardinalBSpline_continuous_succ
+    (k : ℕ) :
+    Continuous (centeredCardinalBSpline (k + 1)) := by
+  unfold centeredCardinalBSpline
+  refine Continuous.mul continuous_const ?_
+  refine continuous_finset_sum _ fun j _ => ?_
+  have harg :
+      Continuous fun x : ℝ =>
+        x + ((((k + 1) + 1 : ℕ) : ℝ) / 2) - (j : ℝ) := by
+    continuity
+  have hpp := (continuous_positivePartPower_succ k).comp harg
+  exact continuous_const.mul hpp
+
+/-- Positive-degree executable centered-cardinal B-splines are continuous. -/
+theorem centeredCardinalBSpline_continuous_of_pos
+    (k : ℕ) (hk : 0 < k) :
+    Continuous (centeredCardinalBSpline k) := by
+  cases k with
+  | zero =>
+      cases hk
+  | succ k =>
+      simpa using centeredCardinalBSpline_continuous_succ k
+
+/-- The left interior point of a positive-degree centered cardinal spline is
+strictly positive. -/
+theorem centeredCardinalBSpline_left_interior_pos
+    (k : ℕ) (_hk : 0 < k) :
+    0 < centeredCardinalBSpline k (-(k : ℝ) / 2) := by
+  unfold centeredCardinalBSpline
+  have hsum :
+      ((Finset.range (k + 2)).sum fun j =>
+        ((-1 : ℝ) ^ j) * (Nat.choose (k + 1) j : ℝ) *
+        positivePartPower k
+            (-(k : ℝ) / 2 + (((k + 1 : ℕ) : ℝ) / 2) - (j : ℝ))) =
+        (1 / 2 : ℝ) ^ k := by
+    rw [Finset.sum_eq_single 0]
+    · have harg0 :
+          (-(k : ℝ) / 2 + (((k + 1 : ℕ) : ℝ) / 2)) = (1 / 2 : ℝ) := by
+        norm_num [Nat.cast_add]
+        ring
+      rw [harg0]
+      rw [positivePartPower_of_pos k (by norm_num)]
+      simp
+    · intro j hj hj0
+      have hjpos_nat : 1 ≤ j := Nat.succ_le_of_lt (Nat.pos_of_ne_zero hj0)
+      have hjpos : (1 : ℝ) ≤ (j : ℝ) := by exact_mod_cast hjpos_nat
+      have harg :
+          ¬ 0 <
+            (-(k : ℝ) / 2 + (((k + 1 : ℕ) : ℝ) / 2) - (j : ℝ)) := by
+        have hcalc :
+            (-(k : ℝ) / 2 + (((k + 1 : ℕ) : ℝ) / 2) - (j : ℝ)) =
+              (1 / 2 : ℝ) - (j : ℝ) := by
+          norm_num [Nat.cast_add]
+          ring
+        rw [hcalc]
+        linarith
+      rw [positivePartPower_of_nonpos k harg]
+      ring
+    · intro hnot
+      simp at hnot
+  rw [hsum]
+  exact mul_pos (inv_pos.mpr (by positivity)) (pow_pos (by norm_num) k)
+
+/-- Positive convolution powers are continuous, via the executable
+truncated-power model. -/
+theorem centeredCardinalBSplineConvPower_continuous_of_pos
+    (k : ℕ) (hk : 0 < k) :
+    Continuous (centeredCardinalBSplineConvPower k) := by
+  have hfun :
+      centeredCardinalBSplineConvPower k = centeredCardinalBSpline k := by
+    funext x
+    exact (CenteredCardinalBSplineMatchesConvPower_all k x).symm
+  rw [hfun]
+  exact centeredCardinalBSpline_continuous_of_pos k hk
+
+/-- Every positive convolution power is nonzero. -/
+theorem centeredCardinalBSplineConvPower_nonzero_of_pos
+    (k : ℕ) (hk : 0 < k) :
+    ∃ x : ℝ, centeredCardinalBSplineConvPower k x ≠ 0 := by
+  refine ⟨-(k : ℝ) / 2, ?_⟩
+  have hpos := centeredCardinalBSpline_left_interior_pos k hk
+  have hmatch := CenteredCardinalBSplineMatchesConvPower_all k (-(k : ℝ) / 2)
+  intro hzero
+  rw [hmatch, hzero] at hpos
+  exact (lt_irrefl (0 : ℝ)) hpos
+
+/-- At zero, self-convolution of a centered convolution power is the integral
+of its square, using endpoint-safe a.e. evenness. -/
+theorem realConvolution_convPower_self_zero_eq_squareIntegral
+    (k : ℕ) :
+    realConvolution
+        (centeredCardinalBSplineConvPower k)
+        (centeredCardinalBSplineConvPower k) 0 =
+      ∫ y : ℝ,
+        centeredCardinalBSplineConvPower k y *
+          centeredCardinalBSplineConvPower k y := by
+  unfold realConvolution
+  apply integral_congr_ae
+  filter_upwards [centeredCardinalBSplineConvPower_shiftEvenAE_all k 0] with y hy
+  have hy' :
+      centeredCardinalBSplineConvPower k (-y) =
+        centeredCardinalBSplineConvPower k y := by
+    simpa using hy
+  simp [hy']
+
+/-- The square of any positive convolution power has strictly positive
+Lebesgue integral. -/
+theorem centeredCardinalBSplineConvPower_squareIntegral_pos_of_pos
+    (k : ℕ) (hk : 0 < k) :
+    0 <
+      ∫ y : ℝ,
+        centeredCardinalBSplineConvPower k y *
+          centeredCardinalBSplineConvPower k y := by
+  let B : ℝ → ℝ := centeredCardinalBSplineConvPower k
+  have hcontB : Continuous B := centeredCardinalBSplineConvPower_continuous_of_pos k hk
+  have hcontSq : Continuous fun y : ℝ => B y * B y := hcontB.mul hcontB
+  have hcompB : HasCompactSupport B := centeredCardinalBSplineConvPower_hasCompactSupport k
+  have hcompSq : HasCompactSupport fun y : ℝ => B y * B y := by
+    have hmul : HasCompactSupport (B * B) := hcompB.mul_right
+    simpa [B, Pi.mul_apply] using hmul
+  have hnonneg : 0 ≤ fun y : ℝ => B y * B y := by
+    intro y
+    exact mul_self_nonneg (B y)
+  rcases centeredCardinalBSplineConvPower_nonzero_of_pos k hk with ⟨x, hx⟩
+  have hxSq : B x * B x ≠ 0 := by
+    exact mul_self_ne_zero.mpr (by simpa [B] using hx)
+  exact hcontSq.integral_pos_of_hasCompactSupport_nonneg_nonzero
+    hcompSq hnonneg hxSq
+
 /-- The degree-zero autocorrelation normalizer is positive. -/
 theorem bsplineAutocorrNorm_pos_zero :
     0 < bsplineAutocorrNorm 0 := by
   norm_num [bsplineAutocorrNorm, bsplineAutocorrDegree,
     centeredCardinalBSpline, positivePartPower]
+
+/-- The centered B-spline autocorrelation normalizer is positive in every
+degree. -/
+theorem bsplineAutocorrNorm_pos
+    (k : ℕ) :
+    0 < bsplineAutocorrNorm k := by
+  cases k with
+  | zero =>
+      exact bsplineAutocorrNorm_pos_zero
+  | succ k =>
+      unfold bsplineAutocorrNorm
+      rw [CenteredCardinalBSplineMatchesConvPower_all (bsplineAutocorrDegree (k + 1)) 0]
+      have hconv := CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all (k + 1) 0
+      rw [← hconv]
+      simp only [neg_zero]
+      rw [realConvolution_convPower_self_zero_eq_squareIntegral]
+      exact centeredCardinalBSplineConvPower_squareIntegral_pos_of_pos (k + 1)
+        (Nat.succ_pos k)
+
+/-- Endpoint-safe centered B-spline autocorrelation closed form in every
+degree. -/
+theorem CenteredBSplineAutocorrelationClosedForm_all :
+    ∀ k : ℕ, CenteredBSplineAutocorrelationClosedForm k :=
+  CenteredBSplineAutocorrelationClosedForm_all_of_norm_pos bsplineAutocorrNorm_pos
 
 /-- Name the exact transform profile still needed to close the Arch/boundary
 side of Step 32F. -/
