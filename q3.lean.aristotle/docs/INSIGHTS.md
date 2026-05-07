@@ -11688,3 +11688,20 @@ Update:
   `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm`,
   all-degree shifted a.e. evenness, and all-degree positivity
   `0 < bsplineAutocorrNorm k`.
+
+## Synthesis (2026-05-07, in progress) — `Step32F_ShiftEvenAE`
+
+- Closed the endpoint-safe shifted-a.e. evenness branch:
+  `centeredCardinalBSplineConvPower_shiftEvenAE_all` and
+  `CenteredCardinalBSplineShiftEvenAE_all`.
+- Added the interval-substitution lemma
+  `realConvolution_centeredBoxSpline_even_of_ae_even`: a.e. evenness of the
+  input implies pointwise evenness after convolution with the strict centered
+  box.
+- Closed target evenness for the autocorrelation degree:
+  `CenteredCardinalBSplineConvPowerEven_autocorrDegree`.
+- Added the self-convolution assembly theorem
+  `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assoc`.
+- Reduced the current endpoint-safe autocorrelation package to:
+  `RealConvolutionAssociative` and `∀ k, 0 < bsplineAutocorrNorm k`, recorded
+  as `CenteredBSplineAutocorrelationClosedForm_all_of_assoc_and_norm_pos`.

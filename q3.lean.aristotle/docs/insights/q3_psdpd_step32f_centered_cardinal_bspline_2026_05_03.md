@@ -533,3 +533,35 @@ CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm
 CenteredCardinalBSplineShiftEvenAE
 bsplineAutocorrNorm_pos
 ```
+
+## 2026-05-07 update — shifted-a.e. evenness closed
+
+Lean now proves the endpoint-safe evenness branch:
+
+```lean
+realConvolution_centeredBoxSpline_even_of_ae_even
+centeredCardinalBSplineConvPower_shiftEvenAE_all
+CenteredCardinalBSplineShiftEvenAE_all
+centeredCardinalBSplineConvPower_even_succ
+CenteredCardinalBSplineConvPowerEven_autocorrDegree
+```
+
+The proof avoids false degree-zero pointwise evenness: a.e. evenness of the
+input is enough because convolution with the strict centered box can be
+rewritten as an interval integral, then the substitution `y ↦ -y` gives
+pointwise evenness after one convolution step.
+
+This also discharges the target evenness required by the existing conditional
+self-convolution bridge.  Consequently the current endpoint-safe Step 32F
+package is reduced to two remaining inputs:
+
+```lean
+RealConvolutionAssociative
+∀ k, 0 < bsplineAutocorrNorm k
+```
+
+The convenience theorem now records this reduced frontier:
+
+```lean
+CenteredBSplineAutocorrelationClosedForm_all_of_assoc_and_norm_pos
+```

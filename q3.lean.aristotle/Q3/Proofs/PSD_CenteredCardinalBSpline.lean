@@ -1341,6 +1341,100 @@ theorem CenteredCardinalBSplineMatchesConvPowerShiftAE_all
     k
     (CenteredCardinalBSplineMatchesConvPower_all k)
 
+/-- If `f` is even a.e., then its convolution with the strict centered box is
+pointwise even.  The endpoint convention is absorbed by
+`realConvolution_centeredBoxSpline`, so the proof is just the interval
+substitution `y ↦ -y`. -/
+theorem realConvolution_centeredBoxSpline_even_of_ae_even
+    (f : ℝ → ℝ)
+    (hf_even : ∀ᵐ t : ℝ, f (-t) = f t) :
+    ∀ z : ℝ,
+      realConvolution f centeredBoxSpline (-z) =
+        realConvolution f centeredBoxSpline z := by
+  intro z
+  rw [realConvolution_centeredBoxSpline, realConvolution_centeredBoxSpline]
+  calc
+    ∫ y in -z - 1 / 2..-z + 1 / 2, f y
+        = ∫ y in z - 1 / 2..z + 1 / 2, f (-y) := by
+            have hneg := intervalIntegral.integral_comp_neg
+              (f := f) (a := z - 1 / 2) (b := z + 1 / 2)
+            rw [hneg]
+            congr 2 <;> ring
+    _ = ∫ y in z - 1 / 2..z + 1 / 2, f y := by
+            apply intervalIntegral.integral_congr_ae
+            filter_upwards [hf_even] with y hy hy_mem
+            exact hy
+
+/-- Convolution powers of the strict centered box are shifted-even a.e. in every
+degree. -/
+theorem centeredCardinalBSplineConvPower_shiftEvenAE_all
+    (k : ℕ) :
+    RealFunctionShiftEvenAE (centeredCardinalBSplineConvPower k) := by
+  induction k with
+  | zero =>
+      rw [centeredCardinalBSplineConvPower_zero]
+      exact centeredBoxSpline_shiftEvenAE
+  | succ k ih =>
+      intro x
+      have h_even0 : ∀ᵐ t : ℝ,
+          centeredCardinalBSplineConvPower k (-t) =
+            centeredCardinalBSplineConvPower k t := by
+        simpa using ih 0
+      have hpoint := realConvolution_centeredBoxSpline_even_of_ae_even
+        (centeredCardinalBSplineConvPower k) h_even0
+      filter_upwards with y
+      change realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline
+          (-(y + x)) =
+        realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline
+          (y + x)
+      exact hpoint (y + x)
+
+/-- The executable truncated-power centered B-splines are shifted-even a.e. in
+every degree. -/
+theorem CenteredCardinalBSplineShiftEvenAE_all
+    (k : ℕ) :
+    CenteredCardinalBSplineShiftEvenAE k := by
+  intro x
+  filter_upwards [centeredCardinalBSplineConvPower_shiftEvenAE_all k x] with y hy
+  rw [CenteredCardinalBSplineMatchesConvPower_all k (-(y + x))]
+  rw [CenteredCardinalBSplineMatchesConvPower_all k (y + x)]
+  exact hy
+
+/-- Every positive convolution power is pointwise even. -/
+theorem centeredCardinalBSplineConvPower_even_succ
+    (k : ℕ) :
+    CenteredCardinalBSplineConvPowerEven (k + 1) := by
+  intro z
+  change realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline (-z) =
+    realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline z
+  have h_even0 : ∀ᵐ t : ℝ,
+      centeredCardinalBSplineConvPower k (-t) =
+        centeredCardinalBSplineConvPower k t := by
+    simpa using centeredCardinalBSplineConvPower_shiftEvenAE_all k 0
+  exact realConvolution_centeredBoxSpline_even_of_ae_even
+    (centeredCardinalBSplineConvPower k) h_even0 z
+
+/-- The autocorrelation target convolution power has odd positive degree, hence
+it is pointwise even. -/
+theorem CenteredCardinalBSplineConvPowerEven_autocorrDegree
+    (k : ℕ) :
+    CenteredCardinalBSplineConvPowerEven (bsplineAutocorrDegree k) := by
+  unfold bsplineAutocorrDegree
+  simpa [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using
+    centeredCardinalBSplineConvPower_even_succ (2 * k)
+
+/-- Once real convolution associativity is available, the convolution-power
+self-convolution closed form is available in every degree. -/
+theorem CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assoc
+    (hassoc : RealConvolutionAssociative) :
+    ∀ k : ℕ, CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k := by
+  intro k
+  exact
+    CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_assoc
+      k
+      hassoc
+      (CenteredCardinalBSplineConvPowerEven_autocorrDegree k)
+
 /--
 Package the endpoint-safe Step 32F autocorrelation closure once all remaining
 degreewise inputs have been supplied.
@@ -1380,6 +1474,21 @@ theorem CenteredBSplineAutocorrelationClosedForm_all_of_recurrence_package
       hevenAE
       (CenteredCardinalBSplineMatchesConvPower_all_of_succ_eq_conv_box hrec)
       hconv
+
+/-- Current reduced Step 32F endpoint-safe package: after the recurrence work,
+the remaining normalized autocorrelation closure is reduced to associativity of
+`realConvolution` and positivity of the normalizer. -/
+theorem CenteredBSplineAutocorrelationClosedForm_all_of_assoc_and_norm_pos
+    (hassoc : RealConvolutionAssociative)
+    (hc_pos : ∀ k : ℕ, 0 < bsplineAutocorrNorm k) :
+    ∀ k : ℕ, CenteredBSplineAutocorrelationClosedForm k := by
+  exact
+    CenteredBSplineAutocorrelationClosedForm_all_of_convPower_inputs
+      hc_pos
+      CenteredCardinalBSplineShiftEvenAE_all
+      CenteredCardinalBSplineMatchesConvPower_all
+      (CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assoc
+        hassoc)
 
 /-- The degree-zero autocorrelation normalizer is positive. -/
 theorem bsplineAutocorrNorm_pos_zero :
