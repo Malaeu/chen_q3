@@ -11729,3 +11729,21 @@ Update:
   prove the B-spline-specific convolution-power law
   `CenteredCardinalBSplineConvPowerConvolutionLaw`, plus
   `∀ k, 0 < bsplineAutocorrNorm k`.
+
+## Synthesis (2026-05-07, in progress) — `Step32F_RightBoxAssoc`
+
+- Added the exact induction-step target
+  `CenteredCardinalBSplineConvPowerAssocRightBox`:
+  reassociate only
+  `B_k * (B_l * b_0)` to `(B_k * B_l) * b_0`.
+- Added the formal closure theorem
+  `CenteredCardinalBSplineConvPowerConvolutionLaw_of_assocRightBox`.
+  Thus the degree-additivity law `B_k * B_l = B_{k+l+1}` no longer needs to
+  depend on a global associativity theorem.
+- Added downstream packages:
+  `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assocRightBox`
+  and
+  `CenteredBSplineAutocorrelationClosedForm_all_of_assocRightBox_and_norm_pos`.
+- New smallest analytic frontier:
+  prove `CenteredCardinalBSplineConvPowerAssocRightBox`, then prove
+  `∀ k, 0 < bsplineAutocorrNorm k`.

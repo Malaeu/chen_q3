@@ -599,3 +599,33 @@ The remaining normalized autocorrelation frontier is therefore:
 CenteredCardinalBSplineConvPowerConvolutionLaw
 ∀ k, 0 < bsplineAutocorrNorm k
 ```
+
+## 2026-05-07 update — right-box associativity isolated
+
+Lean now records the exact induction step needed for the convolution-power
+degree-additivity law:
+
+```lean
+CenteredCardinalBSplineConvPowerAssocRightBox
+```
+
+This target says only:
+
+```lean
+B_k * (B_l * b_0) = (B_k * B_l) * b_0
+```
+
+inside the centered-cardinal convolution-power family.  From it, Lean proves:
+
+```lean
+CenteredCardinalBSplineConvPowerConvolutionLaw_of_assocRightBox
+CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assocRightBox
+CenteredBSplineAutocorrelationClosedForm_all_of_assocRightBox_and_norm_pos
+```
+
+The current smallest analytic frontier is therefore:
+
+```lean
+CenteredCardinalBSplineConvPowerAssocRightBox
+∀ k, 0 < bsplineAutocorrNorm k
+```

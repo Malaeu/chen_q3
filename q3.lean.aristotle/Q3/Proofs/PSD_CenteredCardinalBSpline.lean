@@ -575,6 +575,24 @@ def CenteredCardinalBSplineConvPowerConvolutionLaw : Prop :=
       centeredCardinalBSplineConvPower (k + l + 1) x
 
 /--
+The exact local associativity step needed to prove the convolution-power law.
+
+This is much narrower than global associativity of `realConvolution`: it only
+asks to reassociate a rightmost convolution with the centered box inside the
+B-spline convolution-power family.
+-/
+def CenteredCardinalBSplineConvPowerAssocRightBox : Prop :=
+  ∀ k l : ℕ, ∀ x : ℝ,
+    realConvolution
+        (centeredCardinalBSplineConvPower k)
+        (realConvolution (centeredCardinalBSplineConvPower l) centeredBoxSpline) x =
+      realConvolution
+        (realConvolution
+          (centeredCardinalBSplineConvPower k)
+          (centeredCardinalBSplineConvPower l))
+        centeredBoxSpline x
+
+/--
 The convolution-power law follows formally from associativity.
 
 This is the degree-bookkeeping core of `b_k*b_l=b_{k+l+1}` for the
@@ -610,6 +628,64 @@ theorem CenteredCardinalBSplineConvPowerConvolutionLaw_of_assoc
                 (centeredCardinalBSplineConvPower k)
                 (centeredCardinalBSplineConvPower l)
                 centeredBoxSpline x
+        _ =
+          realConvolution
+            (centeredCardinalBSplineConvPower (k + l + 1))
+            centeredBoxSpline x := by
+              have ihfun :
+                  realConvolution
+                      (centeredCardinalBSplineConvPower k)
+                      (centeredCardinalBSplineConvPower l) =
+                    centeredCardinalBSplineConvPower (k + l + 1) := by
+                funext t
+                exact ih t
+              rw [ihfun]
+        _ = centeredCardinalBSplineConvPower ((k + l + 1) + 1) x := by
+              rfl
+        _ = centeredCardinalBSplineConvPower (k + (l + 1) + 1) x := by
+              have hnat : (k + l + 1) + 1 = k + (l + 1) + 1 := by
+                omega
+              rw [hnat]
+
+/--
+The B-spline convolution-power law follows from the local right-box
+associativity step.
+
+This is the preferred Step 32F theorem shape: it avoids the global
+`RealConvolutionAssociative` target and isolates exactly the induction step
+needed by the family `B_{n+1}=B_n*b_0`.
+-/
+theorem CenteredCardinalBSplineConvPowerConvolutionLaw_of_assocRightBox
+    (hbox : CenteredCardinalBSplineConvPowerAssocRightBox) :
+    CenteredCardinalBSplineConvPowerConvolutionLaw := by
+  intro k l
+  induction l with
+  | zero =>
+      intro x
+      simpa using
+        (show
+          realConvolution
+              (centeredCardinalBSplineConvPower k)
+              centeredBoxSpline x =
+            centeredCardinalBSplineConvPower (k + 1) x from rfl)
+  | succ l ih =>
+      intro x
+      calc
+        realConvolution
+            (centeredCardinalBSplineConvPower k)
+            (centeredCardinalBSplineConvPower (l + 1)) x
+            =
+          realConvolution
+            (centeredCardinalBSplineConvPower k)
+            (realConvolution (centeredCardinalBSplineConvPower l) centeredBoxSpline) x := by
+              rw [centeredCardinalBSplineConvPower_succ]
+        _ =
+          realConvolution
+            (realConvolution
+              (centeredCardinalBSplineConvPower k)
+              (centeredCardinalBSplineConvPower l))
+            centeredBoxSpline x := by
+              exact hbox k l x
         _ =
           realConvolution
             (centeredCardinalBSplineConvPower (k + l + 1))
@@ -1452,6 +1528,14 @@ theorem CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_convolu
       (CenteredCardinalBSplineConvPowerEven_autocorrDegree k)
       hlaw
 
+/-- The self-convolution package follows from the B-spline-local right-box
+associativity step. -/
+theorem CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assocRightBox
+    (hbox : CenteredCardinalBSplineConvPowerAssocRightBox) :
+    ∀ k : ℕ, CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k :=
+  CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_convolutionLaw
+    (CenteredCardinalBSplineConvPowerConvolutionLaw_of_assocRightBox hbox)
+
 /--
 Package the endpoint-safe Step 32F autocorrelation closure once all remaining
 degreewise inputs have been supplied.
@@ -1520,6 +1604,20 @@ theorem CenteredBSplineAutocorrelationClosedForm_all_of_convolutionLaw_and_norm_
       CenteredCardinalBSplineMatchesConvPower_all
       (CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_convolutionLaw
         hlaw)
+
+/-- Endpoint-safe closure using only the local right-box associativity step for
+the B-spline convolution-power family, plus positivity of the normalizer. -/
+theorem CenteredBSplineAutocorrelationClosedForm_all_of_assocRightBox_and_norm_pos
+    (hbox : CenteredCardinalBSplineConvPowerAssocRightBox)
+    (hc_pos : ∀ k : ℕ, 0 < bsplineAutocorrNorm k) :
+    ∀ k : ℕ, CenteredBSplineAutocorrelationClosedForm k := by
+  exact
+    CenteredBSplineAutocorrelationClosedForm_all_of_convPower_inputs
+      hc_pos
+      CenteredCardinalBSplineShiftEvenAE_all
+      CenteredCardinalBSplineMatchesConvPower_all
+      (CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assocRightBox
+        hbox)
 
 /-- The degree-zero autocorrelation normalizer is positive. -/
 theorem bsplineAutocorrNorm_pos_zero :
