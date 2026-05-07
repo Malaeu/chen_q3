@@ -453,3 +453,41 @@ Next live target:
 ```lean
 positivePartPower_interval_integral_centered
 ```
+
+## 2026-05-07 update — positive-part interval integral closed
+
+Lean now proves the analytic integral half of the recurrence route:
+
+```lean
+positivePartPower_succ_eq_max
+continuous_positivePartPower_succ
+intervalIntegrable_positivePartPower_zero
+intervalIntegrable_positivePartPower
+hasDerivAt_positivePartPower_succ_div_off_zero
+positivePartPower_intervalIntegral
+positivePartPower_interval_integral_centered
+```
+
+The proof respects the strict degree-zero endpoint convention:
+
+- degree `0` is handled as a bounded measurable step function;
+- positive degrees use the continuous `(max x 0)^(n+1)` model;
+- the antiderivative step uses FTC away from the single kink `{0}`;
+- the centered form converts the `Icc` set integral to the oriented interval
+  integral and applies the substitution `u = x + A - y`.
+
+Together with the already closed Pascal telescope, the recurrence
+
+```lean
+centeredCardinalBSpline (k + 1)
+  = realConvolution (centeredCardinalBSpline k) centeredBoxSpline
+```
+
+is now blocked on the box-convolution expansion/finite-sum assembly, not on
+calculus or Pascal algebra.
+
+Next live target:
+
+```lean
+centeredCardinalBSpline_conv_box_after_integral
+```

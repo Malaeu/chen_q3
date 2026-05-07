@@ -1,5 +1,6 @@
 import Q3.Proofs.PSD_BSplineAnalyticModel
 import Mathlib.Analysis.Convolution
+import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
 import Mathlib.Tactic
 
 set_option linter.mathlibStandardSet false
@@ -53,6 +54,150 @@ def positivePartPower (n : ℕ) (x : ℝ) : ℝ :=
   by_cases hx : 0 < x
   · simp [positivePartPower, hx]
   · simp [positivePartPower, hx]
+
+/-- Positive-degree truncated powers agree with the continuous max-power
+model. -/
+theorem positivePartPower_succ_eq_max (n : ℕ) (x : ℝ) :
+    positivePartPower (n + 1) x = (max x 0) ^ (n + 1) := by
+  by_cases hx : 0 < x
+  · have hmax : max x 0 = x := max_eq_left hx.le
+    simp [positivePartPower, hx, hmax]
+  · have hxle : x ≤ 0 := le_of_not_gt hx
+    have hmax : max x 0 = 0 := max_eq_right hxle
+    simp [positivePartPower, hx, hmax]
+
+/-- Positive-degree truncated powers are continuous. -/
+theorem continuous_positivePartPower_succ (n : ℕ) :
+    Continuous (positivePartPower (n + 1)) := by
+  rw [show positivePartPower (n + 1) = fun x : ℝ => (max x 0) ^ (n + 1) by
+    funext x
+    exact positivePartPower_succ_eq_max n x]
+  exact (continuous_id.max continuous_const).pow (n + 1)
+
+/-- The strict degree-zero truncated power is measurable. -/
+theorem measurable_positivePartPower_zero : Measurable (positivePartPower 0) := by
+  simpa [positivePartPower_zero, Set.mem_Ioi] using
+    (Measurable.ite (p := fun x : ℝ => 0 < x) measurableSet_Ioi
+      (measurable_const : Measurable (fun _ : ℝ => (1 : ℝ)))
+      (measurable_const : Measurable (fun _ : ℝ => (0 : ℝ))))
+
+/-- The strict degree-zero truncated power is interval-integrable. -/
+theorem intervalIntegrable_positivePartPower_zero (a b : ℝ) :
+    IntervalIntegrable (positivePartPower 0) volume a b := by
+  have hle :
+      ∀ {u v : ℝ}, u ≤ v →
+        IntervalIntegrable (positivePartPower 0) volume u v := by
+    intro u v huv
+    rw [intervalIntegrable_iff_integrableOn_Ioc_of_le huv]
+    refine MeasureTheory.Measure.integrableOn_of_bounded (M := 1)
+      measure_Ioc_lt_top.ne ?_ ?_
+    · exact measurable_positivePartPower_zero.aestronglyMeasurable
+    · filter_upwards with x
+      simp [positivePartPower_zero]
+      split <;> norm_num
+  by_cases hab : a ≤ b
+  · exact hle hab
+  · exact (hle (le_of_not_ge hab)).symm
+
+/-- Every truncated positive-part power is interval-integrable. -/
+theorem intervalIntegrable_positivePartPower (k : ℕ) (a b : ℝ) :
+    IntervalIntegrable (positivePartPower k) volume a b := by
+  cases k with
+  | zero =>
+      exact intervalIntegrable_positivePartPower_zero a b
+  | succ k =>
+      exact (continuous_positivePartPower_succ k).intervalIntegrable a b
+
+/-- Away from the kink at zero, the normalized next truncated power has
+derivative equal to the current truncated power. -/
+theorem hasDerivAt_positivePartPower_succ_div_off_zero
+    (k : ℕ) {x : ℝ} (hx0 : x ≠ 0) :
+    HasDerivAt
+      (fun y : ℝ => positivePartPower (k + 1) y / (k + 1 : ℝ))
+      (positivePartPower k x)
+      x := by
+  have hkne : (k + 1 : ℝ) ≠ 0 := by positivity
+  by_cases hx : 0 < x
+  · have heq :
+        (fun y : ℝ => positivePartPower (k + 1) y / (k + 1 : ℝ))
+          =ᶠ[nhds x]
+        (fun y : ℝ => y ^ (k + 1) / (k + 1 : ℝ)) := by
+      filter_upwards [(isOpen_Ioi.mem_nhds hx)] with y hy
+      have hypos : 0 < y := hy
+      simp [positivePartPower, hypos]
+    have hpoly :
+        HasDerivAt
+          (fun y : ℝ => y ^ (k + 1) / (k + 1 : ℝ))
+          (x ^ k) x := by
+      have h := (hasDerivAt_pow (k + 1) x).div_const (k + 1 : ℝ)
+      have hpowexp : k + 1 - 1 = k := by omega
+      have hderiv :
+          ((↑k + 1 : ℝ) * x ^ k / (↑k + 1 : ℝ)) = x ^ k := by
+        field_simp [hkne]
+      simpa [hpowexp, hderiv] using h
+    have htarget := hpoly.congr_of_eventuallyEq heq
+    simpa [positivePartPower, hx] using htarget
+  · have hxlt : x < 0 := lt_of_le_of_ne (le_of_not_gt hx) hx0
+    have heq :
+        (fun y : ℝ => positivePartPower (k + 1) y / (k + 1 : ℝ))
+          =ᶠ[nhds x]
+        (fun _ : ℝ => 0) := by
+      filter_upwards [(isOpen_Iio.mem_nhds hxlt)] with y hy
+      have hylt : y < 0 := hy
+      have hy' : ¬ 0 < y := by linarith
+      simp [positivePartPower, hy']
+    have hconst : HasDerivAt (fun _ : ℝ => (0 : ℝ)) 0 x :=
+      hasDerivAt_const x 0
+    have htarget := hconst.congr_of_eventuallyEq heq
+    have hxnonpos : ¬ 0 < x := by linarith
+    simpa [positivePartPower, hxnonpos] using htarget
+
+/-- Oriented interval integral of a truncated positive-part power. -/
+theorem positivePartPower_intervalIntegral
+    (k : ℕ) (a b : ℝ) :
+    ∫ u in a..b, positivePartPower k u =
+      (positivePartPower (k + 1) b - positivePartPower (k + 1) a) /
+        (k + 1 : ℝ) := by
+  have hftc :=
+    MeasureTheory.integral_eq_of_hasDerivAt_off_countable
+      (f := fun y : ℝ => positivePartPower (k + 1) y / (k + 1 : ℝ))
+      (f' := positivePartPower k)
+      (a := a) (b := b) (s := ({0} : Set ℝ))
+      (Set.countable_singleton 0)
+      ?hcont ?hderiv ?hint
+  · simpa [sub_div] using hftc
+  · exact ((continuous_positivePartPower_succ k).div_const (k + 1 : ℝ)).continuousOn
+  · intro x hx
+    exact hasDerivAt_positivePartPower_succ_div_off_zero k (by simpa using hx.2)
+  · exact intervalIntegrable_positivePartPower k a b
+
+/-- Centered interval form used in the box-convolution recurrence. -/
+theorem positivePartPower_interval_integral_centered
+    (k : ℕ) (x A : ℝ) :
+    ∫ y in Set.Icc (-(1/2 : ℝ)) (1/2 : ℝ),
+      positivePartPower k (x - y + A)
+    =
+    (positivePartPower (k + 1) (x + A + 1/2)
+      - positivePartPower (k + 1) (x + A - 1/2)) /
+      (k + 1 : ℝ) := by
+  calc
+    ∫ y in Set.Icc (-(1/2 : ℝ)) (1/2 : ℝ),
+      positivePartPower k (x - y + A)
+        = ∫ y in Set.Ioc (-(1/2 : ℝ)) (1/2 : ℝ),
+            positivePartPower k (x - y + A) := by
+            rw [MeasureTheory.integral_Icc_eq_integral_Ioc]
+    _ = ∫ y in (-(1/2 : ℝ))..(1/2 : ℝ),
+            positivePartPower k (x - y + A) := by
+            rw [intervalIntegral.integral_of_le]
+            norm_num
+    _ = ∫ u in x + A - 1/2..x + A + 1/2,
+            positivePartPower k u := by
+            have h := intervalIntegral.integral_comp_sub_left
+              (f := positivePartPower k)
+              (a := (-(1/2 : ℝ))) (b := (1/2 : ℝ)) (d := x + A)
+            simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using h
+    _ = _ := by
+            rw [positivePartPower_intervalIntegral]
 
 /--
 Centered cardinal B-spline in truncated-power form.
