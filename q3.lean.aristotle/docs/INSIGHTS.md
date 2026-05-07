@@ -11747,3 +11747,23 @@ Update:
 - New smallest analytic frontier:
   prove `CenteredCardinalBSplineConvPowerAssocRightBox`, then prove
   `∀ k, 0 < bsplineAutocorrNorm k`.
+
+## Synthesis (2026-05-07, OK) — `Step32F_RightBoxAssoc_closed`
+
+- Closed the local right-box associativity theorem:
+  `CenteredCardinalBSplineConvPowerAssocRightBox_all`.
+- Added the integrability bridge for the strict centered box and all centered
+  box convolution powers:
+  `centeredBoxSpline_integrable` and
+  `centeredCardinalBSplineConvPower_integrable`.
+- Added the narrow Fubini helper
+  `realConvolution_assoc_right_centeredBox_of_integrable_kernel`, using
+  `realConvolution_centeredBoxSpline` and
+  `intervalIntegral_integral_swap`.
+- As a result, Lean now proves the unconditional convolution-power packages
+  `CenteredCardinalBSplineConvPowerConvolutionLaw_all` and
+  `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all`.
+- The normalized autocorrelation package is now reduced to one remaining
+  Step 32F input:
+  `∀ k : ℕ, 0 < bsplineAutocorrNorm k`, recorded by
+  `CenteredBSplineAutocorrelationClosedForm_all_of_norm_pos`.

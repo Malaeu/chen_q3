@@ -1,6 +1,7 @@
 import Q3.Proofs.PSD_BSplineAnalyticModel
 import Mathlib.Analysis.Convolution
 import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
+import Mathlib.MeasureTheory.Measure.Lebesgue.Integral
 import Mathlib.Tactic
 
 set_option linter.mathlibStandardSet false
@@ -448,6 +449,77 @@ theorem realConvolution_centeredBoxSpline (f : ℝ → ℝ) (x : ℝ) :
             rw [intervalIntegral.integral_of_le]
             linarith
 
+/-- The strict centered box is Lebesgue-integrable. -/
+theorem centeredBoxSpline_integrable : Integrable centeredBoxSpline := by
+  have hI :
+      Integrable
+        ((Set.Ico (-(1/2 : ℝ)) (1/2 : ℝ)).indicator
+          (fun _ : ℝ => (1 : ℝ))) := by
+    rw [integrable_indicator_iff measurableSet_Ico]
+    refine Measure.integrableOn_of_bounded (M := 1) measure_Ico_lt_top.ne ?_ ?_
+    · exact (measurable_const : Measurable (fun _ : ℝ => (1 : ℝ))).aestronglyMeasurable
+    · filter_upwards with x
+      simp
+  have hfun :
+      (fun y : ℝ => centeredBoxSpline (-y)) =
+        (Set.Ico (-(1/2 : ℝ)) (1/2 : ℝ)).indicator
+          (fun _ : ℝ => (1 : ℝ)) := by
+    funext y
+    simpa using centeredBoxSpline_sub_eq_indicator_Ico (0 : ℝ) y
+  have hneg : Integrable (fun y : ℝ => centeredBoxSpline (-y)) := by
+    simpa [hfun] using hI
+  simpa using hneg.comp_neg
+
+/--
+Right-box associativity for `realConvolution` under the exact Fubini
+integrability condition needed on the kernel over the finite box interval.
+
+This is deliberately narrower than global convolution associativity: the only
+special right factor is `centeredBoxSpline`, and the proof uses
+`realConvolution_centeredBoxSpline` plus `intervalIntegral_integral_swap`.
+-/
+theorem realConvolution_assoc_right_centeredBox_of_integrable_kernel
+    (f g : ℝ → ℝ) (x : ℝ)
+    (h_int :
+      Integrable
+        (Function.uncurry fun u t : ℝ => f t * g (u - t))
+        (volume.prod volume)) :
+    realConvolution f (realConvolution g centeredBoxSpline) x =
+      realConvolution (realConvolution f g) centeredBoxSpline x := by
+  have h_int_restrict :
+      Integrable
+        (Function.uncurry fun u t : ℝ => f t * g (u - t))
+        ((volume.restrict (Set.uIoc (x - 1/2) (x + 1/2))).prod volume) := by
+    have hprod := Measure.prod_restrict
+      (μ := volume) (ν := volume)
+      (s := Set.uIoc (x - 1/2) (x + 1/2)) (t := (Set.univ : Set ℝ))
+    rw [Measure.restrict_univ] at hprod
+    rw [hprod]
+    exact h_int.mono_measure Measure.restrict_le_self
+  calc
+    realConvolution f (realConvolution g centeredBoxSpline) x
+        = ∫ t : ℝ, f t * ∫ u in x - 1/2..x + 1/2, g (u - t) := by
+            change (∫ t : ℝ, f t * realConvolution g centeredBoxSpline (x - t)) = _
+            apply integral_congr_ae
+            filter_upwards with t
+            rw [realConvolution_centeredBoxSpline]
+            congr 1
+            have hshift := (intervalIntegral.integral_comp_sub_right
+              (f := g) (a := x - 1/2) (b := x + 1/2) (d := t)).symm
+            simp [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] at hshift ⊢
+    _ = ∫ t : ℝ, ∫ u in x - 1/2..x + 1/2, f t * g (u - t) := by
+            apply integral_congr_ae
+            filter_upwards with t
+            rw [intervalIntegral.integral_const_mul]
+    _ = ∫ u in x - 1/2..x + 1/2, ∫ t : ℝ, f t * g (u - t) := by
+            exact (MeasureTheory.intervalIntegral_integral_swap
+              (f := fun u t : ℝ => f t * g (u - t)) h_int_restrict).symm
+    _ = realConvolution (realConvolution f g) centeredBoxSpline x := by
+            rw [realConvolution_centeredBoxSpline]
+            apply intervalIntegral.integral_congr
+            intro u hu
+            rfl
+
 /--
 Convolution-power model of the centered cardinal B-splines.
 
@@ -467,6 +539,22 @@ theorem centeredCardinalBSplineConvPower_zero :
 theorem centeredCardinalBSplineConvPower_succ (k : ℕ) :
     centeredCardinalBSplineConvPower (k + 1) =
       realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline := rfl
+
+/-- Every centered-box convolution power is Lebesgue-integrable. -/
+theorem centeredCardinalBSplineConvPower_integrable
+    (k : ℕ) :
+    Integrable (centeredCardinalBSplineConvPower k) := by
+  induction k with
+  | zero =>
+      simpa [centeredCardinalBSplineConvPower_zero] using centeredBoxSpline_integrable
+  | succ k ih =>
+      change Integrable (realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline)
+      have hconv := MeasureTheory.Integrable.integrable_convolution
+        (L := ContinuousLinearMap.mul ℝ ℝ)
+        (μ := volume)
+        ih
+        centeredBoxSpline_integrable
+      simpa [realConvolution, MeasureTheory.convolution_def] using hconv
 
 /--
 Bridge target between the executable truncated-power spline and the
@@ -704,6 +792,29 @@ theorem CenteredCardinalBSplineConvPowerConvolutionLaw_of_assocRightBox
               have hnat : (k + l + 1) + 1 = k + (l + 1) + 1 := by
                 omega
               rw [hnat]
+
+/-- The local right-box associativity step is closed for centered-box
+convolution powers. -/
+theorem CenteredCardinalBSplineConvPowerAssocRightBox_all :
+    CenteredCardinalBSplineConvPowerAssocRightBox := by
+  intro k l x
+  refine realConvolution_assoc_right_centeredBox_of_integrable_kernel
+    (centeredCardinalBSplineConvPower k)
+    (centeredCardinalBSplineConvPower l)
+    x ?_
+  have hglobal := MeasureTheory.Integrable.convolution_integrand
+    (L := ContinuousLinearMap.mul ℝ ℝ)
+    (μ := volume) (ν := volume)
+    (centeredCardinalBSplineConvPower_integrable k)
+    (centeredCardinalBSplineConvPower_integrable l)
+  simpa [Function.uncurry, ContinuousLinearMap.mul_apply] using hglobal
+
+/-- Closed convolution-power degree-additivity law for the proof-friendly
+centered-cardinal model. -/
+theorem CenteredCardinalBSplineConvPowerConvolutionLaw_all :
+    CenteredCardinalBSplineConvPowerConvolutionLaw :=
+  CenteredCardinalBSplineConvPowerConvolutionLaw_of_assocRightBox
+    CenteredCardinalBSplineConvPowerAssocRightBox_all
 
 /-- Evenness target for the convolution-power model. -/
 def CenteredCardinalBSplineConvPowerEven (k : ℕ) : Prop :=
@@ -1536,6 +1647,13 @@ theorem CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assocRi
   CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_convolutionLaw
     (CenteredCardinalBSplineConvPowerConvolutionLaw_of_assocRightBox hbox)
 
+/-- Closed self-convolution package for all centered-cardinal convolution
+powers: `B_k * B_k = B_{2k+1}` in the endpoint-safe formulation. -/
+theorem CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all :
+    ∀ k : ℕ, CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k :=
+  CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assocRightBox
+    CenteredCardinalBSplineConvPowerAssocRightBox_all
+
 /--
 Package the endpoint-safe Step 32F autocorrelation closure once all remaining
 degreewise inputs have been supplied.
@@ -1618,6 +1736,15 @@ theorem CenteredBSplineAutocorrelationClosedForm_all_of_assocRightBox_and_norm_p
       CenteredCardinalBSplineMatchesConvPower_all
       (CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assocRightBox
         hbox)
+
+/-- With right-box associativity now closed, the remaining normalized
+autocorrelation package depends only on positivity of the normalizer. -/
+theorem CenteredBSplineAutocorrelationClosedForm_all_of_norm_pos
+    (hc_pos : ∀ k : ℕ, 0 < bsplineAutocorrNorm k) :
+    ∀ k : ℕ, CenteredBSplineAutocorrelationClosedForm k :=
+  CenteredBSplineAutocorrelationClosedForm_all_of_assocRightBox_and_norm_pos
+    CenteredCardinalBSplineConvPowerAssocRightBox_all
+    hc_pos
 
 /-- The degree-zero autocorrelation normalizer is positive. -/
 theorem bsplineAutocorrNorm_pos_zero :

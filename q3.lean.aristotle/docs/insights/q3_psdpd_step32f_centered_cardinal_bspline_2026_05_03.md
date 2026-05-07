@@ -629,3 +629,29 @@ The current smallest analytic frontier is therefore:
 CenteredCardinalBSplineConvPowerAssocRightBox
 ∀ k, 0 < bsplineAutocorrNorm k
 ```
+
+## 2026-05-07 update — right-box associativity closed
+
+Lean now proves the right-box associativity branch without using global
+convolution associativity:
+
+```lean
+centeredBoxSpline_integrable
+centeredCardinalBSplineConvPower_integrable
+realConvolution_assoc_right_centeredBox_of_integrable_kernel
+CenteredCardinalBSplineConvPowerAssocRightBox_all
+CenteredCardinalBSplineConvPowerConvolutionLaw_all
+CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all
+CenteredBSplineAutocorrelationClosedForm_all_of_norm_pos
+```
+
+The key proof is deliberately narrow.  It rewrites convolution with the strict
+centered box as an interval integral, applies `intervalIntegral_integral_swap`
+under an explicit kernel integrability hypothesis, and obtains that
+integrability from the centered box and mathlib's `L¹` convolution lemmas.
+
+The remaining normalized autocorrelation blocker is now only:
+
+```lean
+∀ k : ℕ, 0 < bsplineAutocorrNorm k
+```
