@@ -11705,3 +11705,27 @@ Update:
 - Reduced the current endpoint-safe autocorrelation package to:
   `RealConvolutionAssociative` and `∀ k, 0 < bsplineAutocorrNorm k`, recorded
   as `CenteredBSplineAutocorrelationClosedForm_all_of_assoc_and_norm_pos`.
+
+## Synthesis (2026-05-07, in progress) — `Step32F_NarrowConvolutionLaw`
+
+- Semantic search pass:
+  local `q3_docs` mostly pointed back to the Step 32F autocorrelation route and
+  older convolution-square density material; no existing all-degree
+  normalizer positivity theorem was found.
+- External Lean/mathlib pass:
+  mathlib exposes convolution associativity through
+  `MeasureTheory.convolution_assoc`, but with explicit measurability and
+  integrability/existence hypotheses.
+- Decision:
+  do not make the global theorem
+  `RealConvolutionAssociative : ∀ f g h, ...` the next live target.  It is too
+  broad for the actual B-spline need and risks encoding a false/noisy theorem
+  shape.
+- Added narrower assembly:
+  `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_convolutionLaw`
+  and
+  `CenteredBSplineAutocorrelationClosedForm_all_of_convolutionLaw_and_norm_pos`.
+- New reduced frontier:
+  prove the B-spline-specific convolution-power law
+  `CenteredCardinalBSplineConvPowerConvolutionLaw`, plus
+  `∀ k, 0 < bsplineAutocorrNorm k`.

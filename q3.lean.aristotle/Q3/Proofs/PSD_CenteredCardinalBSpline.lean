@@ -1436,6 +1436,23 @@ theorem CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assoc
       (CenteredCardinalBSplineConvPowerEven_autocorrDegree k)
 
 /--
+The narrower Step 32F self-convolution package.
+
+This avoids making the global `RealConvolutionAssociative` theorem the live
+frontier: it is enough to prove the convolution-power law on the B-spline
+family itself.
+-/
+theorem CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_convolutionLaw
+    (hlaw : CenteredCardinalBSplineConvPowerConvolutionLaw) :
+    ∀ k : ℕ, CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm k := by
+  intro k
+  exact
+    CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_of_convolutionLaw
+      k
+      (CenteredCardinalBSplineConvPowerEven_autocorrDegree k)
+      hlaw
+
+/--
 Package the endpoint-safe Step 32F autocorrelation closure once all remaining
 degreewise inputs have been supplied.
 -/
@@ -1489,6 +1506,20 @@ theorem CenteredBSplineAutocorrelationClosedForm_all_of_assoc_and_norm_pos
       CenteredCardinalBSplineMatchesConvPower_all
       (CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_assoc
         hassoc)
+
+/-- Same endpoint-safe closure, but with the live frontier narrowed from global
+associativity to the B-spline convolution-power law. -/
+theorem CenteredBSplineAutocorrelationClosedForm_all_of_convolutionLaw_and_norm_pos
+    (hlaw : CenteredCardinalBSplineConvPowerConvolutionLaw)
+    (hc_pos : ∀ k : ℕ, 0 < bsplineAutocorrNorm k) :
+    ∀ k : ℕ, CenteredBSplineAutocorrelationClosedForm k := by
+  exact
+    CenteredBSplineAutocorrelationClosedForm_all_of_convPower_inputs
+      hc_pos
+      CenteredCardinalBSplineShiftEvenAE_all
+      CenteredCardinalBSplineMatchesConvPower_all
+      (CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_convolutionLaw
+        hlaw)
 
 /-- The degree-zero autocorrelation normalizer is positive. -/
 theorem bsplineAutocorrNorm_pos_zero :

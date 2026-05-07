@@ -565,3 +565,37 @@ The convenience theorem now records this reduced frontier:
 ```lean
 CenteredBSplineAutocorrelationClosedForm_all_of_assoc_and_norm_pos
 ```
+
+## 2026-05-07 update — frontier narrowed to convolution-power law
+
+The global associativity target is now demoted from the preferred next live
+blocker.  A semantic search pass found no local theorem closing all-degree
+`bsplineAutocorrNorm` positivity, and the mathlib pass shows that convolution
+associativity is available with the expected measurability/integrability
+contracts rather than as a theorem for arbitrary functions.
+
+Lean now records the narrower Step 32F assembly:
+
+```lean
+CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm_all_of_convolutionLaw
+CenteredBSplineAutocorrelationClosedForm_all_of_convolutionLaw_and_norm_pos
+```
+
+This changes the current live target from:
+
+```lean
+RealConvolutionAssociative
+```
+
+to the B-spline-specific law:
+
+```lean
+CenteredCardinalBSplineConvPowerConvolutionLaw
+```
+
+The remaining normalized autocorrelation frontier is therefore:
+
+```lean
+CenteredCardinalBSplineConvPowerConvolutionLaw
+∀ k, 0 < bsplineAutocorrNorm k
+```
