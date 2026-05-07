@@ -199,6 +199,30 @@ theorem positivePartPower_interval_integral_centered
     _ = _ := by
             rw [positivePartPower_intervalIntegral]
 
+/-- Shifted oriented interval integral of a truncated positive-part power. -/
+theorem positivePartPower_intervalIntegral_add
+    (k : ℕ) (a b C : ℝ) :
+    ∫ y in a..b, positivePartPower k (y + C) =
+      (positivePartPower (k + 1) (b + C)
+        - positivePartPower (k + 1) (a + C)) / (k + 1 : ℝ) := by
+  calc
+    ∫ y in a..b, positivePartPower k (y + C)
+        = ∫ u in a + C..b + C, positivePartPower k u := by
+            exact intervalIntegral.integral_comp_add_right
+              (f := positivePartPower k) (a := a) (b := b) (d := C)
+    _ = _ := by
+            rw [positivePartPower_intervalIntegral]
+
+/-- Shifted/subtracted oriented interval integral form used by the spline
+finite-sum expansion. -/
+theorem positivePartPower_intervalIntegral_add_sub
+    (k : ℕ) (a b C D : ℝ) :
+    ∫ y in a..b, positivePartPower k (y + C - D) =
+      (positivePartPower (k + 1) (b + C - D)
+        - positivePartPower (k + 1) (a + C - D)) / (k + 1 : ℝ) := by
+  simpa [sub_eq_add_neg, add_assoc] using
+    positivePartPower_intervalIntegral_add k a b (C - D)
+
 /--
 Centered cardinal B-spline in truncated-power form.
 
@@ -243,6 +267,28 @@ endpoint convention as `centeredCardinalBSpline 0`. -/
 def centeredBoxSpline (x : ℝ) : ℝ :=
   positivePartPower 0 (x + (1 / 2 : ℝ))
     - positivePartPower 0 (x - (1 / 2 : ℝ))
+
+/-- The strict centered-box convention is exactly the half-open indicator
+`Ico (x-1/2) (x+1/2)` after reflection around `x`. -/
+theorem centeredBoxSpline_sub_eq_indicator_Ico (x y : ℝ) :
+    centeredBoxSpline (x - y) =
+      (Set.Ico (x - 1/2) (x + 1/2)).indicator (fun _ : ℝ => (1 : ℝ)) y := by
+  unfold centeredBoxSpline
+  simp only [positivePartPower_zero, Set.indicator]
+  by_cases hA : 0 < x - y + 2⁻¹
+  · by_cases hB : 2⁻¹ < x - y
+    · have hC : ¬ (x ≤ y + 2⁻¹ ∧ y < x + 2⁻¹) := by
+        intro h
+        linarith
+      simp [hA, hB, hC]
+    · have hC : x ≤ y + 2⁻¹ ∧ y < x + 2⁻¹ := by
+        constructor <;> linarith
+      simp [hA, hB, hC]
+  · have hB : ¬ (2⁻¹ : ℝ) < x - y := by linarith
+    have hC : ¬ (x ≤ y + 2⁻¹ ∧ y < x + 2⁻¹) := by
+      intro h
+      linarith
+    simp [hA, hB, hC]
 
 /-- The truncated-power degree-zero spline is the centered box. -/
 theorem centeredCardinalBSpline_zero_eq_centeredBoxSpline :
@@ -379,6 +425,28 @@ def centeredBSplineCorrelationProfile (k : ℕ) (x : ℝ) : ℝ :=
 /-- Real convolution with the sign convention `(f*g)(x)=∫ y, f y * g (x-y)`. -/
 def realConvolution (f g : ℝ → ℝ) (x : ℝ) : ℝ :=
   ∫ y : ℝ, f y * g (x - y)
+
+/-- Convolution with the strict centered box is integration over the translated
+unit interval.  The proof uses the exact half-open convention and then removes
+endpoint differences by the no-atoms property of Lebesgue measure. -/
+theorem realConvolution_centeredBoxSpline (f : ℝ → ℝ) (x : ℝ) :
+    realConvolution f centeredBoxSpline x =
+      ∫ y in x - 1/2..x + 1/2, f y := by
+  unfold realConvolution
+  calc
+    ∫ y : ℝ, f y * centeredBoxSpline (x - y)
+        = ∫ y : ℝ, (Set.Ico (x - 1/2) (x + 1/2)).indicator f y := by
+            apply integral_congr_ae
+            filter_upwards with y
+            rw [centeredBoxSpline_sub_eq_indicator_Ico]
+            simp [Set.indicator]
+    _ = ∫ y in Set.Ico (x - 1/2) (x + 1/2), f y := by
+            rw [MeasureTheory.integral_indicator measurableSet_Ico]
+    _ = ∫ y in Set.Ioc (x - 1/2) (x + 1/2), f y := by
+            exact MeasureTheory.setIntegral_congr_set MeasureTheory.Ico_ae_eq_Ioc
+    _ = ∫ y in x - 1/2..x + 1/2, f y := by
+            rw [intervalIntegral.integral_of_le]
+            linarith
 
 /--
 Convolution-power model of the centered cardinal B-splines.
@@ -1117,6 +1185,94 @@ theorem centeredCardinalBSpline_pascal_telescope
           rw [Finset.sum_add_distrib]
           ring_nf
 
+/-- Expand the box convolution of a truncated-power centered cardinal spline
+as a finite sum of positive-part interval integrals. -/
+theorem centeredCardinalBSpline_conv_box_expanded
+    (k : ℕ) (x : ℝ) :
+    realConvolution (centeredCardinalBSpline k) centeredBoxSpline x =
+      ((Nat.factorial k : ℝ)⁻¹) *
+        ((Finset.range (k + 2)).sum fun j =>
+          ((-1 : ℝ) ^ j) * (Nat.choose (k + 1) j : ℝ) *
+            ∫ y in x - 1/2..x + 1/2,
+              positivePartPower k
+                (y + (((k + 1 : ℕ) : ℝ) / 2) - (j : ℝ))) := by
+  rw [realConvolution_centeredBoxSpline]
+  unfold centeredCardinalBSpline
+  rw [intervalIntegral.integral_const_mul]
+  rw [intervalIntegral.integral_finset_sum]
+  · congr 1
+    apply Finset.sum_congr rfl
+    intro j hj
+    rw [intervalIntegral.integral_const_mul]
+  · intro j hj
+    let C : ℝ := (((k + 1 : ℕ) : ℝ) / 2) - (j : ℝ)
+    have hshift :
+        IntervalIntegrable (fun y : ℝ => positivePartPower k (y + C)) volume
+          (x - 1/2) (x + 1/2) := by
+      have h := (intervalIntegrable_positivePartPower k
+        ((x - 1/2) + C) ((x + 1/2) + C)).comp_add_right C
+      simpa [C, sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using h
+    simpa [C, sub_eq_add_neg, add_assoc] using
+      hshift.const_mul (((-1 : ℝ) ^ j) * (Nat.choose (k + 1) j : ℝ))
+
+/-- Apply the positive-part interval integral to the expanded box convolution,
+producing exactly the `T_j - T_(j+1)` finite sum consumed by the Pascal
+telescope. -/
+theorem centeredCardinalBSpline_conv_box_after_integral
+    (k : ℕ) (x : ℝ) :
+    realConvolution (centeredCardinalBSpline k) centeredBoxSpline x =
+      ((Nat.factorial (k + 1) : ℝ)⁻¹) *
+        ((Finset.range (k + 2)).sum fun j =>
+          ((-1 : ℝ) ^ j) * (Nat.choose (k + 1) j : ℝ) *
+            (positivePartPower (k + 1)
+                (x + (((k + 2 : ℕ) : ℝ) / 2) - (j : ℝ))
+             - positivePartPower (k + 1)
+                (x + (((k + 2 : ℕ) : ℝ) / 2) - ((j + 1 : ℕ) : ℝ)))) := by
+  calc
+    realConvolution (centeredCardinalBSpline k) centeredBoxSpline x
+        =
+      ((Nat.factorial k : ℝ)⁻¹) *
+        ((Finset.range (k + 2)).sum fun j =>
+          ((-1 : ℝ) ^ j) * (Nat.choose (k + 1) j : ℝ) *
+            ((positivePartPower (k + 1)
+                (x + (((k + 2 : ℕ) : ℝ) / 2) - (j : ℝ))
+             - positivePartPower (k + 1)
+                (x + (((k + 2 : ℕ) : ℝ) / 2) - ((j + 1 : ℕ) : ℝ))) /
+              (k + 1 : ℝ))) := by
+            rw [centeredCardinalBSpline_conv_box_expanded]
+            congr 1
+            apply Finset.sum_congr rfl
+            intro j hj
+            congr 1
+            rw [positivePartPower_intervalIntegral_add_sub]
+            congr 1
+            apply congrArg₂ (fun a b : ℝ => a - b)
+            · apply congrArg (positivePartPower (k + 1))
+              norm_num
+              ring
+            · apply congrArg (positivePartPower (k + 1))
+              norm_num
+              ring
+    _ = _ := by
+            rw [Nat.factorial_succ]
+            norm_num
+            simp [div_eq_mul_inv, Finset.mul_sum, mul_assoc, mul_comm, mul_left_comm]
+
+/-- The centered cardinal B-spline recurrence: convolving degree `k` with the
+centered box gives degree `k+1`. -/
+theorem centeredCardinalBSpline_succ_eq_conv_box
+    (k : ℕ) :
+    centeredCardinalBSpline (k + 1) =
+      realConvolution (centeredCardinalBSpline k) centeredBoxSpline := by
+  funext x
+  rw [centeredCardinalBSpline_conv_box_after_integral]
+  unfold centeredCardinalBSpline
+  have htel := centeredCardinalBSpline_pascal_telescope
+    (k + 1)
+    (fun j => positivePartPower (k + 1)
+      (x + (((k + 2 : ℕ) : ℝ) / 2) - (j : ℝ)))
+  rw [← htel]
+
 /-!
 ## Step 32F assembly layer
 
@@ -1157,6 +1313,33 @@ theorem CenteredCardinalBSplineMatchesConvPower_all_of_succ_eq_conv_box
                 rw [hfun]
         _ = centeredCardinalBSplineConvPower (k + 1) x := by
                 rfl
+
+/-- The truncated-power centered B-splines agree pointwise with the
+convolution-power model in every degree. -/
+theorem CenteredCardinalBSplineMatchesConvPower_all
+    (k : ℕ) :
+    CenteredCardinalBSplineMatchesConvPower k :=
+  CenteredCardinalBSplineMatchesConvPower_all_of_succ_eq_conv_box
+    centeredCardinalBSpline_succ_eq_conv_box
+    k
+
+/-- The all-degree pointwise bridge also gives the a.e. bridge used under
+integrals. -/
+theorem CenteredCardinalBSplineMatchesConvPowerAE_all
+    (k : ℕ) :
+    CenteredCardinalBSplineMatchesConvPowerAE k :=
+  CenteredCardinalBSplineMatchesConvPowerAE_of_pointwise
+    k
+    (CenteredCardinalBSplineMatchesConvPower_all k)
+
+/-- The all-degree pointwise bridge also gives shifted a.e. bridge used for the
+reflected factor in the autocorrelation integral. -/
+theorem CenteredCardinalBSplineMatchesConvPowerShiftAE_all
+    (k : ℕ) :
+    CenteredCardinalBSplineMatchesConvPowerShiftAE k :=
+  CenteredCardinalBSplineMatchesConvPowerShiftAE_of_pointwise
+    k
+    (CenteredCardinalBSplineMatchesConvPower_all k)
 
 /--
 Package the endpoint-safe Step 32F autocorrelation closure once all remaining

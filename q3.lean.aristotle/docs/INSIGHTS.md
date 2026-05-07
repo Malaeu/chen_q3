@@ -11664,3 +11664,27 @@ Update:
   prove the recurrence/agreement theorem for `centeredCardinalBSpline`, prove
   the relevant associativity/evenness facts for convolution powers, and lift
   `0<c_k` from degree zero to all `k`.
+
+## Synthesis (2026-05-07, in progress) — `Step32F_BoxConvolutionRecurrence`
+
+- Closed the concrete box-convolution recurrence for the executable centered
+  cardinal B-spline:
+  `centeredCardinalBSpline_succ_eq_conv_box`.
+- Added exact endpoint bookkeeping for the strict centered box:
+  `centeredBoxSpline_sub_eq_indicator_Ico` and
+  `realConvolution_centeredBoxSpline`.
+- Added the finite-sum expansion bridge:
+  `centeredCardinalBSpline_conv_box_expanded` and
+  `centeredCardinalBSpline_conv_box_after_integral`.
+- Fed the recurrence into the existing assembly layer, closing:
+  `CenteredCardinalBSplineMatchesConvPower_all`,
+  `CenteredCardinalBSplineMatchesConvPowerAE_all`, and
+  `CenteredCardinalBSplineMatchesConvPowerShiftAE_all`.
+- Meaning:
+  the explicit truncated-power spline and convolution-power spline now agree in
+  every degree, including the a.e. variants needed under the autocorrelation
+  integral.
+- Remaining Step 32F blockers:
+  `CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm`,
+  all-degree shifted a.e. evenness, and all-degree positivity
+  `0 < bsplineAutocorrNorm k`.

@@ -491,3 +491,45 @@ Next live target:
 ```lean
 centeredCardinalBSpline_conv_box_after_integral
 ```
+
+## 2026-05-07 update — box-convolution recurrence closed
+
+Lean now proves the full recurrence route for the executable centered cardinal
+B-spline:
+
+```lean
+centeredBoxSpline_sub_eq_indicator_Ico
+realConvolution_centeredBoxSpline
+positivePartPower_intervalIntegral_add
+positivePartPower_intervalIntegral_add_sub
+centeredCardinalBSpline_conv_box_expanded
+centeredCardinalBSpline_conv_box_after_integral
+centeredCardinalBSpline_succ_eq_conv_box
+```
+
+The strict endpoint convention is handled exactly as a half-open box
+indicator, then endpoint differences are removed under the integral using the
+Lebesgue no-atoms fact.  The recurrence
+
+```lean
+centeredCardinalBSpline (k + 1)
+  = realConvolution (centeredCardinalBSpline k) centeredBoxSpline
+```
+
+then feeds the existing assembly layer and closes the all-degree bridges:
+
+```lean
+CenteredCardinalBSplineMatchesConvPower_all
+CenteredCardinalBSplineMatchesConvPowerAE_all
+CenteredCardinalBSplineMatchesConvPowerShiftAE_all
+```
+
+This removes the explicit-vs-convolution-power mismatch from Step 32F.  The
+next live Step 32F targets are now the remaining normalized autocorrelation
+inputs:
+
+```lean
+CenteredCardinalBSplineConvPowerSelfConvolutionClosedForm
+CenteredCardinalBSplineShiftEvenAE
+bsplineAutocorrNorm_pos
+```
