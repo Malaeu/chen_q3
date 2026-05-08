@@ -11806,3 +11806,24 @@ Update:
   `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
   `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, and
   `lake build Q3.Main` all pass.
+
+## Synthesis (2026-05-08, in progress) — `Step32F_BoundaryScale_nonzero`
+
+- Target:
+  `centeredBSplineBoundaryPlusScale k ell ≠ 0` and
+  `centeredBSplineBoundaryMinusScale k ell ≠ 0` for `0 < ell`.
+- Local semantic search did not find a ready concrete theorem, but existing
+  code already exposes the generic row identities
+  `realBumpLaplace_scaledTranslated_plus/minus` and the translated-packet
+  contract fields `basePlus_ne_zero` / `baseMinus_ne_zero`.
+- External check confirms the lightweight route: avoid the full
+  `sinh`/sinc transform first; show positivity of the boundary profile as an
+  integral of a nonnegative nonzero bump times a strictly positive exponential.
+- Planned Lean route:
+  prove nonnegativity and nonzero/compact-support facts for
+  `centeredBSplineEta k`, then use
+  `Continuous.integral_pos_of_hasCompactSupport_nonneg_nonzero` on
+  `eta(x) * exp(±ell*x/2)`; derive nonzero scales by multiplying with
+  `sqrt ell`.
+- Full `sinh`/sinc transform remains the next heavier Arch-entry target after
+  the boundary row scales are closed.
