@@ -11871,3 +11871,22 @@ Update:
   `centeredBSplineBoundaryMinusScale_ne_zero_of_pos_degree`.
 - This closes the boundary-data wiring only; Arch and prime translated-kernel
   data remain separate Step 32F-transform / entry-profile targets.
+
+## Synthesis (2026-05-08, OK) — `Step32F_BoundaryData_wiring_pos_degree_closed`
+
+- Added
+  `centeredBSplinePacketTranslationBoundaryData_of_pos_degree`, a constructor
+  that packages positive-degree centered B-spline boundary scales into
+  `PacketTranslationBoundaryData`.
+- The constructor consumes the caller-supplied translation covariance and base
+  scale equalities, then discharges `basePlus_ne_zero` and `baseMinus_ne_zero`
+  with `centeredBSplineBoundaryPlusScale_ne_zero_of_pos_degree` and
+  `centeredBSplineBoundaryMinusScale_ne_zero_of_pos_degree`.
+- This connects the concrete boundary scale theorem packet to the existing
+  chain `PacketTranslationBoundaryData -> BSplineTranslatedAnalyticContract ->
+  BSplineAnalyticKernelContract` without adding Arch/prime assumptions.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
+  `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, `lake build Q3.Main`,
+  hole scan, whitespace check, `check_audit_invariants.sh`,
+  `check_axioms.sh`, and theorem axiom print pass.

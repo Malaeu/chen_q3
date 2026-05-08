@@ -2148,6 +2148,54 @@ theorem centeredBSplineBoundaryMinus_basis
     realBumpLaplace_scaledTranslated_minus (centeredBSplineEta k) ell center hell
 
 /--
+Positive-degree concrete boundary scales feed the translated-packet boundary
+receiver.
+
+This is the small wiring step between the concrete centered B-spline boundary
+scale facts and the abstract `PacketTranslationBoundaryData` contract.  The
+actual translation covariance and base scale identities are supplied by the
+caller; the new content here is that the base scales are now known to be
+nonzero for `0 < k` and `0 < ell`.
+-/
+def centeredBSplinePacketTranslationBoundaryData_of_pos_degree
+    {ι V : Type*} [Fintype ι] [AddCommGroup V] [Module ℝ V]
+    (k : ℕ) (ell : ℝ) (hk : 0 < k) (hell : 0 < ell)
+    (center : ι → ℝ)
+    (basisExpansion : PacketBasisExpansion ι V)
+    (boundary : BoundaryPair V)
+    (base : V)
+    (translate : ℝ → V → V)
+    (basis_eq_translate :
+      ∀ i : ι, basisExpansion.basis i = translate (center i) base)
+    (boundaryPlus_translate :
+      ∀ (u : ℝ) (f : V),
+        boundary.evalPlus (translate u f) =
+          Real.exp (u / 2) * boundary.evalPlus f)
+    (boundaryMinus_translate :
+      ∀ (u : ℝ) (f : V),
+        boundary.evalMinus (translate u f) =
+          Real.exp (-(u) / 2) * boundary.evalMinus f)
+    (basePlus_eq :
+      boundary.evalPlus base = centeredBSplineBoundaryPlusScale k ell)
+    (baseMinus_eq :
+      boundary.evalMinus base = centeredBSplineBoundaryMinusScale k ell) :
+    PacketTranslationBoundaryData ι V where
+  center := center
+  basisExpansion := basisExpansion
+  boundary := boundary
+  base := base
+  translate := translate
+  basis_eq_translate := basis_eq_translate
+  boundaryPlus_translate := boundaryPlus_translate
+  boundaryMinus_translate := boundaryMinus_translate
+  basePlus_ne_zero := by
+    rw [basePlus_eq]
+    exact centeredBSplineBoundaryPlusScale_ne_zero_of_pos_degree k ell hk hell
+  baseMinus_ne_zero := by
+    rw [baseMinus_eq]
+    exact centeredBSplineBoundaryMinusScale_ne_zero_of_pos_degree k ell hk hell
+
+/--
 Concrete packet-shift correlation reduces to the actual correlation profile of
 `eta_k`.
 
