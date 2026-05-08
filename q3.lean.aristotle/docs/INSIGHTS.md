@@ -11890,3 +11890,24 @@ Update:
   `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, `lake build Q3.Main`,
   hole scan, whitespace check, `check_audit_invariants.sh`,
   `check_axioms.sh`, and theorem axiom print pass.
+
+## Synthesis (2026-05-08, in progress) — `Step32F_TransformSinhcProfile`
+
+- Status update: `AssocRightBox`, `bsplineAutocorrNorm_pos`,
+  `CenteredBSplineAutocorrelationClosedForm_all`, positive-degree boundary
+  scales, and boundary-data wiring are closed. The next real Step 32F target is
+  the closed transform profile used by Arch entries.
+- Target shape:
+  `centeredBSplineRealTransformProfile k ell z =
+   (sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ *
+   realSinhc (ell*z/(2*bsplineScale k))^(k+1)`.
+- Local semantic search found no ready Lean theorem for this profile; it only
+  confirmed the existing receiver comments saying the `sinh`/sinc-power profile
+  remains the concrete analytic target.
+- External search confirmed the standard mathematics: cardinal B-spline
+  transforms are sinc-power objects, and the real Laplace version uses the
+  hyperbolic counterpart `sinh(x)/x`.
+- Decision: first add a regularized `realSinhc` with `realSinhc 0 = 1` and a
+  named RHS definition for the closed transform profile. This avoids the
+  invalid Lean expression `sinh x / x` at `x=0` and gives a stable theorem
+  target for the next proof brick.
