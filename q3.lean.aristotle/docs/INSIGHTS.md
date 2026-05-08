@@ -11827,3 +11827,25 @@ Update:
   `sqrt ell`.
 - Full `sinh`/sinc transform remains the next heavier Arch-entry target after
   the boundary row scales are closed.
+
+## Synthesis (2026-05-08, OK) — `Step32F_BoundaryScale_nonzero_pos_degree`
+
+- Closed positive-degree boundary row scale positivity/nonzero:
+  `centeredBSplineBoundaryPlusScale_pos_of_pos_degree`,
+  `centeredBSplineBoundaryMinusScale_pos_of_pos_degree`,
+  `centeredBSplineBoundaryPlusScale_ne_zero_of_pos_degree`, and
+  `centeredBSplineBoundaryMinusScale_ne_zero_of_pos_degree`.
+- Added the reusable positivity/support bridge for concrete centered
+  B-spline packets: `centeredBoxSpline_nonneg`,
+  `centeredCardinalBSplineConvPower_nonneg`, `centeredCardinalBSpline_nonneg`,
+  `centeredBSplineEta_nonneg`, `centeredBSplineEta_exists_pos`,
+  `centeredBSplineEta_continuous_of_pos`, and
+  `centeredBSplineEta_hasCompactSupport`.
+- Scope: the boundary nonzero theorem currently assumes `0 < k` and
+  `0 < ell`, matching the active positive-degree packet blocks. Degree zero is
+  a separate endpoint-convention special case if a future all-k API needs it.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
+  `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, `lake build Q3.Main`,
+  hole scan, `check_audit_invariants.sh`, `check_axioms.sh`, and boundary
+  theorem axiom prints pass.

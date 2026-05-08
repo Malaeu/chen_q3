@@ -1956,6 +1956,172 @@ def centeredBSplineBoundaryPlusScale (k : ℕ) (ell : ℝ) : ℝ :=
 def centeredBSplineBoundaryMinusScale (k : ℕ) (ell : ℝ) : ℝ :=
   Real.sqrt ell * centeredBSplineRealTransformProfile k ell (-(1 / 2))
 
+/-- The strict centered box is nonnegative. -/
+theorem centeredBoxSpline_nonneg (x : ℝ) :
+    0 ≤ centeredBoxSpline x := by
+  unfold centeredBoxSpline
+  simp only [positivePartPower_zero]
+  split_ifs with hleft hright
+  · norm_num
+  · norm_num
+  · linarith
+  · norm_num
+
+/-- Every centered-box convolution power is nonnegative. -/
+theorem centeredCardinalBSplineConvPower_nonneg
+    (k : ℕ) (x : ℝ) :
+    0 ≤ centeredCardinalBSplineConvPower k x := by
+  induction k generalizing x with
+  | zero =>
+      simpa [centeredCardinalBSplineConvPower_zero] using centeredBoxSpline_nonneg x
+  | succ k ih =>
+      change 0 ≤ realConvolution (centeredCardinalBSplineConvPower k) centeredBoxSpline x
+      unfold realConvolution
+      exact integral_nonneg fun y =>
+        mul_nonneg (ih y) (centeredBoxSpline_nonneg (x - y))
+
+/-- Executable centered-cardinal B-splines are nonnegative. -/
+theorem centeredCardinalBSpline_nonneg
+    (k : ℕ) (x : ℝ) :
+    0 ≤ centeredCardinalBSpline k x := by
+  rw [CenteredCardinalBSplineMatchesConvPower_all k x]
+  exact centeredCardinalBSplineConvPower_nonneg k x
+
+/-- Every centered-cardinal B-spline is positive somewhere. -/
+theorem centeredCardinalBSpline_exists_pos
+    (k : ℕ) :
+    ∃ x : ℝ, 0 < centeredCardinalBSpline k x := by
+  cases k with
+  | zero =>
+      refine ⟨0, ?_⟩
+      rw [centeredCardinalBSpline_zero_eq_centeredBoxSpline]
+      norm_num [centeredBoxSpline, positivePartPower]
+  | succ k =>
+      exact ⟨-((k + 1 : ℕ) : ℝ) / 2,
+        centeredCardinalBSpline_left_interior_pos (k + 1) (Nat.succ_pos k)⟩
+
+/-- The normalized centered B-spline bump is nonnegative. -/
+theorem centeredBSplineEta_nonneg
+    (k : ℕ) (x : ℝ) :
+    0 ≤ centeredBSplineEta k x := by
+  unfold centeredBSplineEta
+  exact mul_nonneg (Real.sqrt_nonneg _)
+    (centeredCardinalBSpline_nonneg k (bsplineScale k * x))
+
+/-- The normalized centered B-spline bump is positive somewhere. -/
+theorem centeredBSplineEta_exists_pos
+    (k : ℕ) :
+    ∃ x : ℝ, 0 < centeredBSplineEta k x := by
+  rcases centeredCardinalBSpline_exists_pos k with ⟨y, hy⟩
+  refine ⟨y / bsplineScale k, ?_⟩
+  unfold centeredBSplineEta
+  have harg : bsplineScale k * (y / bsplineScale k) = y := by
+    field_simp [bsplineScale_ne_zero k]
+  rw [harg]
+  exact mul_pos
+    (Real.sqrt_pos.mpr
+      (div_pos (bsplineScale_pos k) (bsplineAutocorrNorm_pos k)))
+    hy
+
+/-- Positive-degree normalized centered B-spline bumps are continuous. -/
+theorem centeredBSplineEta_continuous_of_pos
+    (k : ℕ) (hk : 0 < k) :
+    Continuous (centeredBSplineEta k) := by
+  unfold centeredBSplineEta
+  refine continuous_const.mul ?_
+  exact (centeredCardinalBSpline_continuous_of_pos k hk).comp
+    (continuous_const.mul continuous_id)
+
+/-- Executable centered-cardinal B-splines are compactly supported. -/
+theorem centeredCardinalBSpline_hasCompactSupport
+    (k : ℕ) :
+    HasCompactSupport (centeredCardinalBSpline k) := by
+  have hfun :
+      centeredCardinalBSpline k = centeredCardinalBSplineConvPower k := by
+    funext x
+    exact CenteredCardinalBSplineMatchesConvPower_all k x
+  rw [hfun]
+  exact centeredCardinalBSplineConvPower_hasCompactSupport k
+
+/-- The normalized centered B-spline bump is compactly supported. -/
+theorem centeredBSplineEta_hasCompactSupport
+    (k : ℕ) :
+    HasCompactSupport (centeredBSplineEta k) := by
+  have hcard := centeredCardinalBSpline_hasCompactSupport k
+  have hscaled :
+      HasCompactSupport
+        (fun x : ℝ => centeredCardinalBSpline k (bsplineScale k • x)) :=
+    hcard.comp_smul (bsplineScale_ne_zero k)
+  have hmul :
+      HasCompactSupport
+        ((fun _ : ℝ =>
+            Real.sqrt (bsplineScale k / bsplineAutocorrNorm k)) *
+          fun x : ℝ => centeredCardinalBSpline k (bsplineScale k * x)) :=
+    hscaled.mul_left
+  simpa [centeredBSplineEta, Pi.mul_apply, smul_eq_mul] using hmul
+
+/-- Positive-degree boundary transform profiles are strictly positive at every
+real spectral parameter. -/
+theorem centeredBSplineRealTransformProfile_pos_of_pos_degree
+    (k : ℕ) (hk : 0 < k) (ell z : ℝ) :
+    0 < centeredBSplineRealTransformProfile k ell z := by
+  unfold centeredBSplineRealTransformProfile realBumpTransformProfile
+  let F : ℝ → ℝ :=
+    fun x => centeredBSplineEta k x * Real.exp (z * (ell * x))
+  have heta_cont := centeredBSplineEta_continuous_of_pos k hk
+  have hcont : Continuous F := by
+    exact heta_cont.mul
+      (Real.continuous_exp.comp
+        (continuous_const.mul (continuous_const.mul continuous_id)))
+  have heta_comp := centeredBSplineEta_hasCompactSupport k
+  have hcomp : HasCompactSupport F := by
+    have hmul :
+        HasCompactSupport
+          ((centeredBSplineEta k) *
+            fun x : ℝ => Real.exp (z * (ell * x))) :=
+      heta_comp.mul_right
+    simpa [F, Pi.mul_apply] using hmul
+  have hnonneg : 0 ≤ F := by
+    intro x
+    exact mul_nonneg (centeredBSplineEta_nonneg k x) (le_of_lt (Real.exp_pos _))
+  rcases centeredBSplineEta_exists_pos k with ⟨x, hx⟩
+  have hxF : F x ≠ 0 := by
+    exact ne_of_gt (mul_pos hx (Real.exp_pos _))
+  exact hcont.integral_pos_of_hasCompactSupport_nonneg_nonzero
+    hcomp hnonneg hxF
+
+/-- The plus boundary row scale is positive for positive-degree concrete
+B-spline packets. -/
+theorem centeredBSplineBoundaryPlusScale_pos_of_pos_degree
+    (k : ℕ) (ell : ℝ) (hk : 0 < k) (hell : 0 < ell) :
+    0 < centeredBSplineBoundaryPlusScale k ell := by
+  unfold centeredBSplineBoundaryPlusScale
+  exact mul_pos (Real.sqrt_pos.mpr hell)
+    (centeredBSplineRealTransformProfile_pos_of_pos_degree k hk ell (1 / 2))
+
+/-- The minus boundary row scale is positive for positive-degree concrete
+B-spline packets. -/
+theorem centeredBSplineBoundaryMinusScale_pos_of_pos_degree
+    (k : ℕ) (ell : ℝ) (hk : 0 < k) (hell : 0 < ell) :
+    0 < centeredBSplineBoundaryMinusScale k ell := by
+  unfold centeredBSplineBoundaryMinusScale
+  exact mul_pos (Real.sqrt_pos.mpr hell)
+    (centeredBSplineRealTransformProfile_pos_of_pos_degree k hk ell (-(1 / 2)))
+
+/-- The plus boundary row scale is nonzero for positive-degree concrete
+B-spline packets. -/
+theorem centeredBSplineBoundaryPlusScale_ne_zero_of_pos_degree
+    (k : ℕ) (ell : ℝ) (hk : 0 < k) (hell : 0 < ell) :
+    centeredBSplineBoundaryPlusScale k ell ≠ 0 :=
+  (centeredBSplineBoundaryPlusScale_pos_of_pos_degree k ell hk hell).ne'
+
+/-- The minus boundary row scale is nonzero for positive-degree concrete
+B-spline packets. -/
+theorem centeredBSplineBoundaryMinusScale_ne_zero_of_pos_degree
+    (k : ℕ) (ell : ℝ) (hk : 0 < k) (hell : 0 < ell) :
+    centeredBSplineBoundaryMinusScale k ell ≠ 0 :=
+  (centeredBSplineBoundaryMinusScale_pos_of_pos_degree k ell hk hell).ne'
+
 /--
 Concrete boundary row formula for the centered cardinal B-spline packet.
 
