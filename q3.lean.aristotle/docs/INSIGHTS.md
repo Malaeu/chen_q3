@@ -11849,3 +11849,25 @@ Update:
   `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, `lake build Q3.Main`,
   hole scan, `check_audit_invariants.sh`, `check_axioms.sh`, and boundary
   theorem axiom prints pass.
+
+## Synthesis (2026-05-08, in progress) — `Step32F_BoundaryData_wiring_pos_degree`
+
+- Target: wire the positive-degree concrete boundary scale facts into the
+  translated-packet receiver by constructing `PacketTranslationBoundaryData`
+  from basis translation covariance plus base scale identities.
+- Local semantic search found the existing receiver path:
+  `PacketTranslationBoundaryData -> BSplineTranslatedAnalyticContract ->
+  BSplineAnalyticKernelContract`, with fields `basePlus_ne_zero` and
+  `baseMinus_ne_zero` as the exact consumers.
+- External check only confirms the standard background: boundary values are
+  nonzero because the bump integral has positive integrand; no new external
+  theorem shape is needed for the Lean wiring layer.
+- Concrete Lean plan: add a constructor in
+  `Q3/Proofs/PSD_CenteredCardinalBSpline.lean` which assumes
+  `boundary.evalPlus base = centeredBSplineBoundaryPlusScale k ell` and the
+  corresponding minus identity, then fills `basePlus_ne_zero` /
+  `baseMinus_ne_zero` via
+  `centeredBSplineBoundaryPlusScale_ne_zero_of_pos_degree` and
+  `centeredBSplineBoundaryMinusScale_ne_zero_of_pos_degree`.
+- This closes the boundary-data wiring only; Arch and prime translated-kernel
+  data remain separate Step 32F-transform / entry-profile targets.
