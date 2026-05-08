@@ -1948,6 +1948,29 @@ side of Step 32F. -/
 def centeredBSplineRealTransformProfile (k : ℕ) (ell z : ℝ) : ℝ :=
   realBumpTransformProfile (centeredBSplineEta k) ell z
 
+/--
+Regularized hyperbolic sinc.
+
+The B-spline Laplace profile is a power of `sinh x / x`, but the transform is
+regular at `x = 0`.  This definition records the removable value explicitly so
+the closed-form target is well-typed and correct at the origin.
+-/
+def realSinhc (x : ℝ) : ℝ :=
+  if x = 0 then 1 else Real.sinh x / x
+
+@[simp] theorem realSinhc_zero :
+    realSinhc 0 = 1 := by
+  simp [realSinhc]
+
+theorem realSinhc_of_ne_zero {x : ℝ} (hx : x ≠ 0) :
+    realSinhc x = Real.sinh x / x := by
+  simp [realSinhc, hx]
+
+/-- Closed-form RHS for the normalized centered B-spline real transform. -/
+def centeredBSplineRealTransformClosedForm (k : ℕ) (ell z : ℝ) : ℝ :=
+  (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ *
+    (realSinhc (ell * z / (2 * bsplineScale k))) ^ (k + 1)
+
 /-- The plus boundary scale for the concrete bump. -/
 def centeredBSplineBoundaryPlusScale (k : ℕ) (ell : ℝ) : ℝ :=
   Real.sqrt ell * centeredBSplineRealTransformProfile k ell (1 / 2)

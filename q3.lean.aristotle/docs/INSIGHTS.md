@@ -11911,3 +11911,16 @@ Update:
   named RHS definition for the closed transform profile. This avoids the
   invalid Lean expression `sinh x / x` at `x=0` and gives a stable theorem
   target for the next proof brick.
+
+## Synthesis (2026-05-08, OK) — `Step32F_TransformSinhcProfile_defs`
+
+- Added `realSinhc`, with lemmas `realSinhc_zero` and
+  `realSinhc_of_ne_zero`.
+- Added `centeredBSplineRealTransformClosedForm`, the normalized closed-form
+  RHS for `centeredBSplineRealTransformProfile`.
+- This does not yet prove the transform identity; it removes the `0/0`
+  denominator hazard and fixes the exact Lean target for the next proof.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
+  `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, hole scan, whitespace
+  check, and axiom prints for the new `realSinhc` lemmas pass.
