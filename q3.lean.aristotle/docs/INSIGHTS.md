@@ -97,6 +97,11 @@
 - First small Lean target: add a regularized `realSinc`, prove the centered
   interval cosine integral, and specialize it to the strict centered box:
   `centeredBoxSpline_cosTransform_eq_realSinc`.
+- Result: the first imaginary-axis base layer is now closed in Lean.  New
+  reusable facts are `realSinc`, `intervalIntegral_cos_mul_centered_eq_realSinc`,
+  `intervalIntegral_sin_mul_centered_eq_zero`,
+  `centeredBoxSpline_cosTransform_eq_realSinc`, and
+  `centeredBoxSpline_sinTransform_eq_zero`.
 - After that, lift this base through the complex/imaginary convolution-power
   transform and then feed the resulting sinc-power profile into the Arch entry
   formulas and `BSplineTranslatedAnalyticContract`.

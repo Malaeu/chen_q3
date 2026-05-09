@@ -1994,6 +1994,23 @@ theorem realSinhc_of_ne_zero {x : ℝ} (hx : x ≠ 0) :
     realSinhc x = Real.sinh x / x := by
   simp [realSinhc, hx]
 
+/--
+Regularized trigonometric sinc.
+
+The imaginary-axis B-spline transform is a power of `sin x / x`, with the
+removable value at the origin recorded explicitly.
+-/
+def realSinc (x : ℝ) : ℝ :=
+  if x = 0 then 1 else Real.sin x / x
+
+@[simp] theorem realSinc_zero :
+    realSinc 0 = 1 := by
+  simp [realSinc]
+
+theorem realSinc_of_ne_zero {x : ℝ} (hx : x ≠ 0) :
+    realSinc x = Real.sin x / x := by
+  simp [realSinc, hx]
+
 /-- The centered interval exponential integral is the regularized hyperbolic
 sinc factor. -/
 theorem intervalIntegral_exp_mul_centered_eq_realSinhc (a : ℝ) :
@@ -2031,6 +2048,82 @@ theorem intervalIntegral_exp_mul_centered_eq_realSinhc (a : ℝ) :
     rw [Real.sinh_eq]
     field_simp [ha]
 
+/-- The centered interval cosine integral is the regularized sinc factor. -/
+theorem intervalIntegral_cos_mul_centered_eq_realSinc (a : ℝ) :
+    (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ), Real.cos (a * x)) =
+      realSinc (a / 2) := by
+  by_cases ha : a = 0
+  · subst a
+    simp [realSinc]
+    norm_num
+  · have hmul := intervalIntegral.mul_integral_comp_mul_left
+      (f := Real.cos) (c := a)
+      (a := (-(1 / 2 : ℝ))) (b := (1 / 2 : ℝ))
+    have hmul' :
+        a * (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+          Real.cos (a * x)) =
+          ∫ x in (a * (-(1 / 2 : ℝ)))..(a * (1 / 2 : ℝ)),
+            Real.cos x := by
+      exact hmul
+    rw [integral_cos] at hmul'
+    have hmul'' :
+        a * (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+          Real.cos (a * x)) =
+          2 * Real.sin (a / 2) := by
+      calc
+        a * (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+            Real.cos (a * x))
+            = Real.sin (a * (1 / 2 : ℝ)) -
+                Real.sin (a * (-(1 / 2 : ℝ))) := by
+              exact hmul'
+        _ = 2 * Real.sin (a / 2) := by
+              have hleft : a * (1 / 2 : ℝ) = a / 2 := by ring
+              have hright : a * (-(1 / 2 : ℝ)) = -(a / 2) := by ring
+              rw [hleft, hright, Real.sin_neg]
+              ring
+    have hI :
+        (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ), Real.cos (a * x)) =
+          (2 * Real.sin (a / 2)) / a := by
+      field_simp [ha] at hmul'' ⊢
+      exact hmul''
+    rw [hI]
+    have ha2 : a / 2 ≠ 0 := by
+      exact div_ne_zero ha (by norm_num)
+    rw [realSinc_of_ne_zero ha2]
+    field_simp [ha]
+
+/-- The centered interval sine integral vanishes by symmetry. -/
+theorem intervalIntegral_sin_mul_centered_eq_zero (a : ℝ) :
+    (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ), Real.sin (a * x)) = 0 := by
+  by_cases ha : a = 0
+  · subst a
+    simp
+  · have hmul := intervalIntegral.mul_integral_comp_mul_left
+      (f := Real.sin) (c := a)
+      (a := (-(1 / 2 : ℝ))) (b := (1 / 2 : ℝ))
+    have hmul' :
+        a * (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+          Real.sin (a * x)) =
+          ∫ x in (a * (-(1 / 2 : ℝ)))..(a * (1 / 2 : ℝ)),
+            Real.sin x := by
+      exact hmul
+    rw [integral_sin] at hmul'
+    have hmul'' :
+        a * (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+          Real.sin (a * x)) = 0 := by
+      calc
+        a * (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+            Real.sin (a * x))
+            = Real.cos (a * (-(1 / 2 : ℝ))) -
+                Real.cos (a * (1 / 2 : ℝ)) := by
+              exact hmul'
+        _ = 0 := by
+              have hleft : a * (1 / 2 : ℝ) = a / 2 := by ring
+              have hright : a * (-(1 / 2 : ℝ)) = -(a / 2) := by ring
+              rw [hleft, hright, Real.cos_neg]
+              ring
+    exact (mul_eq_zero.mp hmul'').resolve_left ha
+
 /-- Degree-zero centered box real transform. -/
 theorem centeredBoxSpline_realTransform_eq_realSinhc (a : ℝ) :
     (∫ x : ℝ, centeredBoxSpline x * Real.exp (a * x)) =
@@ -2051,6 +2144,47 @@ theorem centeredBoxSpline_realTransform_eq_realSinhc (a : ℝ) :
             linarith
     _ = realSinhc (a / 2) :=
             intervalIntegral_exp_mul_centered_eq_realSinhc a
+
+/-- Degree-zero centered box cosine transform on the imaginary axis. -/
+theorem centeredBoxSpline_cosTransform_eq_realSinc (a : ℝ) :
+    (∫ x : ℝ, centeredBoxSpline x * Real.cos (a * x)) =
+      realSinc (a / 2) := by
+  calc
+    (∫ x : ℝ, centeredBoxSpline x * Real.cos (a * x))
+        = ∫ x : ℝ, (Set.Ioc (-(1 / 2 : ℝ)) (1 / 2)).indicator
+            (fun x : ℝ => Real.cos (a * x)) x := by
+            apply integral_congr_ae
+            filter_upwards with x
+            rw [centeredBoxSpline_eq_indicator_Ioc x]
+            by_cases hx : x ∈ Set.Ioc (-(1 / 2 : ℝ)) (1 / 2) <;>
+              simp [Set.indicator]
+    _ = ∫ x in Set.Ioc (-(1 / 2 : ℝ)) (1 / 2), Real.cos (a * x) := by
+            rw [MeasureTheory.integral_indicator measurableSet_Ioc]
+    _ = ∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ), Real.cos (a * x) := by
+            rw [intervalIntegral.integral_of_le]
+            linarith
+    _ = realSinc (a / 2) :=
+            intervalIntegral_cos_mul_centered_eq_realSinc a
+
+/-- Degree-zero centered box sine transform vanishes on the imaginary axis. -/
+theorem centeredBoxSpline_sinTransform_eq_zero (a : ℝ) :
+    (∫ x : ℝ, centeredBoxSpline x * Real.sin (a * x)) = 0 := by
+  calc
+    (∫ x : ℝ, centeredBoxSpline x * Real.sin (a * x))
+        = ∫ x : ℝ, (Set.Ioc (-(1 / 2 : ℝ)) (1 / 2)).indicator
+            (fun x : ℝ => Real.sin (a * x)) x := by
+            apply integral_congr_ae
+            filter_upwards with x
+            rw [centeredBoxSpline_eq_indicator_Ioc x]
+            by_cases hx : x ∈ Set.Ioc (-(1 / 2 : ℝ)) (1 / 2) <;>
+              simp [Set.indicator]
+    _ = ∫ x in Set.Ioc (-(1 / 2 : ℝ)) (1 / 2), Real.sin (a * x) := by
+            rw [MeasureTheory.integral_indicator measurableSet_Ioc]
+    _ = ∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ), Real.sin (a * x) := by
+            rw [intervalIntegral.integral_of_le]
+            linarith
+    _ = 0 :=
+            intervalIntegral_sin_mul_centered_eq_zero a
 
 /-- Laplace transform of the real convolution is the product of weighted
 Laplace transforms, under the exact weighted-integrability hypotheses. -/
