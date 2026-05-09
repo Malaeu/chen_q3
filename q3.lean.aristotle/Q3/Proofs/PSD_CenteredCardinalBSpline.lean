@@ -2650,6 +2650,20 @@ def centeredBSplineImagTransformClosedForm (k : ℕ) (ell t : ℝ) : ℂ :=
   (((Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ : ℝ) : ℂ) *
     ((realSinc (ell * t / (2 * bsplineScale k)) : ℂ) ^ (k + 1))
 
+/-- Real-valued scalar behind the normalized imaginary-axis closed form. -/
+def centeredBSplineImagTransformRealClosedForm (k : ℕ) (ell t : ℝ) : ℝ :=
+  (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ *
+    (realSinc (ell * t / (2 * bsplineScale k))) ^ (k + 1)
+
+/-- The complex closed form is just the real scalar embedded in `ℂ`. -/
+theorem centeredBSplineImagTransformClosedForm_eq_ofReal
+    (k : ℕ) (ell t : ℝ) :
+    centeredBSplineImagTransformClosedForm k ell t =
+      (centeredBSplineImagTransformRealClosedForm k ell t : ℂ) := by
+  unfold centeredBSplineImagTransformClosedForm
+    centeredBSplineImagTransformRealClosedForm
+  norm_num
+
 /-- The normalized imaginary-axis closed form is real-valued. -/
 theorem centeredBSplineImagTransformClosedForm_conj
     (k : ℕ) (ell t : ℝ) :
@@ -2852,6 +2866,33 @@ theorem centeredBSplineImagTransform_scaledTranslated_pair_phase_closedForm
         Complex.exp ((Complex.I * (t : ℂ)) * ((uj : ℂ) - (ui : ℂ))) *
           (centeredBSplineImagTransformClosedForm k ell t) ^ 2 := by
             rw [hsqrt_sq, hphase]
+
+/-- Real part of the translated Arch pair factor.  This is the real kernel
+payload used by the Arch matrix entries: phase becomes cosine and the
+imaginary-axis profile contributes its square. -/
+theorem centeredBSplineImagTransform_scaledTranslated_pair_re_closedForm
+    (k : ℕ) (ell ui uj t : ℝ) (hell : 0 < ell) :
+    (complexBumpLaplace
+        (complexScaledTranslatedBump
+          (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell uj)
+        (Complex.I * (t : ℂ)) *
+      star
+        (complexBumpLaplace
+          (complexScaledTranslatedBump
+            (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell ui)
+          (Complex.I * (t : ℂ)))).re =
+      ell * Real.cos (t * (uj - ui)) *
+        (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2 := by
+  rw [centeredBSplineImagTransform_scaledTranslated_pair_phase_closedForm
+    k ell ui uj t hell]
+  rw [centeredBSplineImagTransformClosedForm_eq_ofReal]
+  have hphase :
+      (Complex.I * (t : ℂ)) * ((uj - ui : ℝ) : ℂ) =
+        ((t * (uj - ui) : ℝ) : ℂ) * Complex.I := by
+    norm_num
+    ring
+  rw [hphase]
+  simp [Complex.mul_re, Complex.exp_re, Complex.exp_im, pow_two]
 
 /-- The plus boundary scale for the concrete bump. -/
 def centeredBSplineBoundaryPlusScale (k : ℕ) (ell : ℝ) : ℝ :=

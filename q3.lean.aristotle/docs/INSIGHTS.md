@@ -12113,3 +12113,19 @@ Update:
   normalized sinc profile -> translated phase -> pair-product kernel factor.
 - Next target: wrap this factor into the real Arch kernel/profile integral and
   instantiate `PacketTranslationKernelData` for the Arch side.
+
+## Synthesis (2026-05-10, OK) — `Step32F_TranslatedArchRealPairFactor_closed`
+
+- Target: convert the complex translated Arch pair factor into the real kernel
+  payload used by matrix entries.
+- Added `centeredBSplineImagTransformRealClosedForm`, the real scalar behind
+  the normalized imaginary-axis closed form, plus
+  `centeredBSplineImagTransformClosedForm_eq_ofReal`.
+- Added `centeredBSplineImagTransform_scaledTranslated_pair_re_closedForm`,
+  which rewrites the real part of the translated packet product as
+  `ell * cos(t * (u_j - u_i)) * E_real(t)^2`.
+- This closes the local real Arch pair factor:
+  translated phase factor -> cosine kernel factor -> squared normalized sinc
+  profile.
+- Next target: define the Arch kernel/profile integral and use this real pair
+  factor to instantiate the concrete Arch `PacketTranslationKernelData`.
