@@ -2124,6 +2124,37 @@ theorem intervalIntegral_sin_mul_centered_eq_zero (a : ℝ) :
               ring
     exact (mul_eq_zero.mp hmul'').resolve_left ha
 
+/-- The centered interval complex exponential integral on the imaginary axis is
+the regularized sinc factor. -/
+theorem intervalIntegral_complex_exp_I_mul_centered_eq_realSinc (a : ℝ) :
+    (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+        Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ))) =
+      (realSinc (a / 2) : ℂ) := by
+  have hfun :
+      (fun x : ℝ => Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ))) =
+        fun x : ℝ => Complex.exp (((a * x : ℝ) : ℂ) * Complex.I) := by
+    funext x
+    congr 1
+    norm_num
+    ring
+  rw [hfun]
+  by_cases ha : a = 0
+  · subst a
+    simp [realSinc]
+    norm_num
+  · have hcomp := intervalIntegral.integral_comp_mul_left
+      (f := fun t : ℝ => Complex.exp ((t : ℂ) * Complex.I))
+      (a := (-(1 / 2 : ℝ))) (b := (1 / 2 : ℝ)) ha
+    have hleft : a * (-(1 / 2 : ℝ)) = -(a / 2) := by ring
+    have hright : a * (1 / 2 : ℝ) = a / 2 := by ring
+    rw [hleft, hright] at hcomp
+    rw [hcomp]
+    rw [integral_exp_mul_I_eq_sin]
+    have ha2 : a / 2 ≠ 0 := div_ne_zero ha (by norm_num)
+    rw [realSinc_of_ne_zero ha2]
+    norm_num
+    field_simp [ha]
+
 /-- Degree-zero centered box real transform. -/
 theorem centeredBoxSpline_realTransform_eq_realSinhc (a : ℝ) :
     (∫ x : ℝ, centeredBoxSpline x * Real.exp (a * x)) =
@@ -2186,6 +2217,33 @@ theorem centeredBoxSpline_sinTransform_eq_zero (a : ℝ) :
     _ = 0 :=
             intervalIntegral_sin_mul_centered_eq_zero a
 
+/-- Degree-zero centered box complex transform on the imaginary axis. -/
+theorem centeredBoxSpline_complexBumpLaplace_imag_eq_realSinc (a : ℝ) :
+    complexBumpLaplace
+      (fun x : ℝ => (centeredBoxSpline x : ℂ)) (Complex.I * (a : ℂ)) =
+      (realSinc (a / 2) : ℂ) := by
+  unfold complexBumpLaplace
+  calc
+    (∫ x : ℝ, (centeredBoxSpline x : ℂ) *
+        Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ)))
+        = ∫ x : ℝ, (Set.Ioc (-(1 / 2 : ℝ)) (1 / 2)).indicator
+            (fun x : ℝ => Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ))) x := by
+            apply integral_congr_ae
+            filter_upwards with x
+            rw [centeredBoxSpline_eq_indicator_Ioc x]
+            by_cases hcond :
+                -((2 : ℝ)⁻¹) < x ∧ x ≤ (2 : ℝ)⁻¹ <;>
+              simp [Set.indicator, Set.mem_Ioc, hcond]
+    _ = ∫ x in Set.Ioc (-(1 / 2 : ℝ)) (1 / 2),
+          Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ)) := by
+            rw [MeasureTheory.integral_indicator measurableSet_Ioc]
+    _ = ∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+          Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ)) := by
+            rw [intervalIntegral.integral_of_le]
+            linarith
+    _ = (realSinc (a / 2) : ℂ) :=
+            intervalIntegral_complex_exp_I_mul_centered_eq_realSinc a
+
 /-- Laplace transform of the real convolution is the product of weighted
 Laplace transforms, under the exact weighted-integrability hypotheses. -/
 theorem realBumpLaplace_realConvolution_eq_mul
@@ -2225,6 +2283,61 @@ theorem realBumpLaplace_realConvolution_eq_mul
     _ = realBumpLaplace f a * realBumpLaplace g a := by
             simp [F, G, realBumpLaplace]
 
+/-- Complex Laplace transform of the real convolution is the product of the
+complex weighted transforms, under the exact weighted-integrability
+hypotheses. -/
+theorem complexBumpLaplace_realConvolution_eq_mul
+    (f g : ℝ → ℝ) (z : ℂ)
+    (hf : Integrable
+      (fun x : ℝ => (f x : ℂ) * Complex.exp (z * (x : ℂ))))
+    (hg : Integrable
+      (fun x : ℝ => (g x : ℂ) * Complex.exp (z * (x : ℂ)))) :
+    complexBumpLaplace (fun x : ℝ => (realConvolution f g x : ℂ)) z =
+      complexBumpLaplace (fun x : ℝ => (f x : ℂ)) z *
+        complexBumpLaplace (fun x : ℝ => (g x : ℂ)) z := by
+  let F : ℝ → ℂ := fun x => (f x : ℂ) * Complex.exp (z * (x : ℂ))
+  let G : ℝ → ℂ := fun x => (g x : ℂ) * Complex.exp (z * (x : ℂ))
+  have hpoint : ∀ x : ℝ,
+      (realConvolution f g x : ℂ) * Complex.exp (z * (x : ℂ)) =
+        MeasureTheory.convolution F G (ContinuousLinearMap.mul ℂ ℂ) volume x := by
+    intro x
+    rw [MeasureTheory.convolution_def]
+    unfold realConvolution
+    rw [← integral_complex_ofReal]
+    rw [← integral_mul_const]
+    apply integral_congr_ae
+    filter_upwards with y
+    simp only [F, G, Complex.ofReal_mul]
+    change (f y : ℂ) * (g (x - y) : ℂ) * Complex.exp (z * (x : ℂ)) =
+      ((f y : ℂ) * Complex.exp (z * (y : ℂ))) *
+        ((g (x - y) : ℂ) * Complex.exp (z * ((x - y : ℝ) : ℂ)))
+    have hx : z * (y : ℂ) + z * ((x - y : ℝ) : ℂ) = z * (x : ℂ) := by
+      norm_num
+      ring
+    have hexp : Complex.exp (z * (x : ℂ)) =
+        Complex.exp (z * (y : ℂ)) *
+          Complex.exp (z * ((x - y : ℝ) : ℂ)) := by
+      rw [← Complex.exp_add, hx]
+    rw [hexp]
+    ring
+  calc
+    complexBumpLaplace (fun x : ℝ => (realConvolution f g x : ℂ)) z
+        = ∫ x : ℝ,
+            MeasureTheory.convolution F G (ContinuousLinearMap.mul ℂ ℂ) volume x := by
+            unfold complexBumpLaplace
+            apply integral_congr_ae
+            filter_upwards with x
+            exact hpoint x
+    _ = (∫ x : ℝ, F x) * (∫ x : ℝ, G x) := by
+            have hconv := MeasureTheory.integral_convolution
+              (L := ContinuousLinearMap.mul ℂ ℂ)
+              (μ := volume) (ν := volume) hf hg
+            simpa [ContinuousLinearMap.mul_apply] using hconv
+    _ =
+      complexBumpLaplace (fun x : ℝ => (f x : ℂ)) z *
+        complexBumpLaplace (fun x : ℝ => (g x : ℂ)) z := by
+            simp [F, G, complexBumpLaplace]
+
 /-- The exponentially weighted centered box is integrable. -/
 theorem centeredBoxSpline_realBumpLaplace_integrable (a : ℝ) :
     Integrable (fun x : ℝ => centeredBoxSpline x * Real.exp (a * x)) := by
@@ -2240,6 +2353,25 @@ theorem centeredBoxSpline_realBumpLaplace_integrable (a : ℝ) :
   rw [integrable_indicator_iff measurableSet_Ioc]
   exact (Real.continuous_exp.comp
     (continuous_const.mul continuous_id)).integrableOn_Ioc
+
+/-- The imaginary-axis complex weighted centered box is integrable. -/
+theorem centeredBoxSpline_complexBumpLaplace_imag_integrable (a : ℝ) :
+    Integrable
+      (fun x : ℝ => (centeredBoxSpline x : ℂ) *
+        Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ))) := by
+  have hfun :
+      (fun x : ℝ => (centeredBoxSpline x : ℂ) *
+        Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ))) =
+        (Set.Ioc (-(1 / 2 : ℝ)) (1 / 2)).indicator
+          (fun x : ℝ => Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ))) := by
+    funext x
+    rw [centeredBoxSpline_eq_indicator_Ioc x]
+    by_cases hcond : -((2 : ℝ)⁻¹) < x ∧ x ≤ (2 : ℝ)⁻¹ <;>
+      simp [Set.indicator, Set.mem_Ioc, hcond]
+  rw [hfun]
+  rw [integrable_indicator_iff measurableSet_Ioc]
+  exact (Complex.continuous_exp.comp
+    (continuous_const.mul Complex.continuous_ofReal)).integrableOn_Ioc
 
 /-- Every centered-box convolution power has an exponentially weighted
 Laplace-integrable profile. -/
@@ -2267,6 +2399,48 @@ theorem centeredCardinalBSplineConvPower_realBumpLaplace_integrable
         simpa [B, Pi.mul_apply] using hmul
       exact hcont.integrable_of_hasCompactSupport hcomp
 
+/-- Every centered-box convolution power has an imaginary-axis complex
+weighted-integrable profile. -/
+theorem centeredCardinalBSplineConvPower_complexBumpLaplace_imag_integrable
+    (k : ℕ) (a : ℝ) :
+    Integrable
+      (fun x : ℝ => (centeredCardinalBSplineConvPower k x : ℂ) *
+        Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ))) := by
+  cases k with
+  | zero =>
+      simpa [centeredCardinalBSplineConvPower_zero] using
+        centeredBoxSpline_complexBumpLaplace_imag_integrable a
+  | succ k =>
+      let B : ℝ → ℝ := centeredCardinalBSplineConvPower (k + 1)
+      have hcontB : Continuous B :=
+        centeredCardinalBSplineConvPower_continuous_of_pos (k + 1) (Nat.succ_pos k)
+      have hcontCast : Continuous (fun x : ℝ => (B x : ℂ)) :=
+        Complex.continuous_ofReal.comp hcontB
+      have hcont : Continuous
+          (fun x : ℝ => (B x : ℂ) *
+            Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ))) := by
+        exact hcontCast.mul
+          (Complex.continuous_exp.comp
+            (continuous_const.mul Complex.continuous_ofReal))
+      have hcompB : HasCompactSupport B :=
+        centeredCardinalBSplineConvPower_hasCompactSupport (k + 1)
+      have hcompCast : HasCompactSupport (fun x : ℝ => (B x : ℂ)) := by
+        have hcast :
+            HasCompactSupport ((fun r : ℝ => (r : ℂ)) ∘ B) :=
+          hcompB.comp_left (by simp)
+        simpa [Function.comp_def] using hcast
+      have hcomp : HasCompactSupport
+          (fun x : ℝ => (B x : ℂ) *
+            Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ))) := by
+        have hmul :
+            HasCompactSupport
+              ((fun x : ℝ => (B x : ℂ)) *
+                fun x : ℝ =>
+                  Complex.exp ((Complex.I * (a : ℂ)) * (x : ℂ))) :=
+          hcompCast.mul_right
+        simpa [Pi.mul_apply] using hmul
+      exact hcont.integrable_of_hasCompactSupport hcomp
+
 /-- One convolution-power transform step: convolving once more with the
 centered box multiplies the transform by the box `realSinhc` factor. -/
 theorem centeredCardinalBSplineConvPower_realBumpLaplace_succ
@@ -2282,6 +2456,28 @@ theorem centeredCardinalBSplineConvPower_realBumpLaplace_succ
   · exact centeredCardinalBSplineConvPower_realBumpLaplace_integrable k a
   · exact centeredBoxSpline_realBumpLaplace_integrable a
 
+/-- One convolution-power imaginary-axis transform step: convolving once more
+with the centered box multiplies the complex transform by the box sinc factor. -/
+theorem centeredCardinalBSplineConvPower_complexBumpLaplace_imag_succ
+    (k : ℕ) (a : ℝ) :
+    complexBumpLaplace
+        (fun x : ℝ => (centeredCardinalBSplineConvPower (k + 1) x : ℂ))
+        (Complex.I * (a : ℂ)) =
+      complexBumpLaplace
+        (fun x : ℝ => (centeredCardinalBSplineConvPower k x : ℂ))
+        (Complex.I * (a : ℂ)) *
+        (realSinc (a / 2) : ℂ) := by
+  rw [centeredCardinalBSplineConvPower_succ]
+  rw [complexBumpLaplace_realConvolution_eq_mul]
+  have hbox :
+      complexBumpLaplace (fun x : ℝ => (centeredBoxSpline x : ℂ))
+          (Complex.I * (a : ℂ)) =
+        (realSinc (a / 2) : ℂ) :=
+    centeredBoxSpline_complexBumpLaplace_imag_eq_realSinc a
+  rw [hbox]
+  · exact centeredCardinalBSplineConvPower_complexBumpLaplace_imag_integrable k a
+  · exact centeredBoxSpline_complexBumpLaplace_imag_integrable a
+
 /-- Closed transform of the convolution-power centered-cardinal model. -/
 theorem centeredCardinalBSplineConvPower_realBumpLaplace_eq_realSinhc_pow
     (k : ℕ) (a : ℝ) :
@@ -2295,6 +2491,39 @@ theorem centeredCardinalBSplineConvPower_realBumpLaplace_eq_realSinhc_pow
       rw [centeredCardinalBSplineConvPower_realBumpLaplace_succ, ih]
       rw [pow_succ]
       ring
+
+/-- Closed imaginary-axis transform of the convolution-power centered-cardinal
+model. -/
+theorem centeredCardinalBSplineConvPower_complexBumpLaplace_imag_eq_realSinc_pow
+    (k : ℕ) (a : ℝ) :
+    complexBumpLaplace
+        (fun x : ℝ => (centeredCardinalBSplineConvPower k x : ℂ))
+        (Complex.I * (a : ℂ)) =
+      ((realSinc (a / 2) : ℂ)) ^ (k + 1) := by
+  induction k with
+  | zero =>
+      simpa [centeredCardinalBSplineConvPower_zero] using
+        centeredBoxSpline_complexBumpLaplace_imag_eq_realSinc a
+  | succ k ih =>
+      rw [centeredCardinalBSplineConvPower_complexBumpLaplace_imag_succ, ih]
+      rw [pow_succ]
+      ring
+
+/-- Closed imaginary-axis transform of the executable centered-cardinal model,
+obtained by pointwise agreement with the convolution-power model. -/
+theorem centeredCardinalBSpline_complexBumpLaplace_imag_eq_realSinc_pow
+    (k : ℕ) (a : ℝ) :
+    complexBumpLaplace
+        (fun x : ℝ => (centeredCardinalBSpline k x : ℂ))
+        (Complex.I * (a : ℂ)) =
+      ((realSinc (a / 2) : ℂ)) ^ (k + 1) := by
+  have hfun :
+      (fun x : ℝ => (centeredCardinalBSpline k x : ℂ)) =
+        fun x : ℝ => (centeredCardinalBSplineConvPower k x : ℂ) := by
+    funext x
+    rw [CenteredCardinalBSplineMatchesConvPower_all k x]
+  rw [hfun]
+  exact centeredCardinalBSplineConvPower_complexBumpLaplace_imag_eq_realSinc_pow k a
 
 /-- Closed transform of the executable centered-cardinal model, obtained by
 the pointwise agreement with the convolution-power model. -/

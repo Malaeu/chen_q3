@@ -102,9 +102,16 @@
   `intervalIntegral_sin_mul_centered_eq_zero`,
   `centeredBoxSpline_cosTransform_eq_realSinc`, and
   `centeredBoxSpline_sinTransform_eq_zero`.
-- After that, lift this base through the complex/imaginary convolution-power
-  transform and then feed the resulting sinc-power profile into the Arch entry
-  formulas and `BSplineTranslatedAnalyticContract`.
+- The base has now also been lifted through the complex/imaginary
+  convolution-power transform.  New closed facts:
+  `intervalIntegral_complex_exp_I_mul_centered_eq_realSinc`,
+  `centeredBoxSpline_complexBumpLaplace_imag_eq_realSinc`,
+  `complexBumpLaplace_realConvolution_eq_mul`,
+  `centeredCardinalBSplineConvPower_complexBumpLaplace_imag_eq_realSinc_pow`,
+  and `centeredCardinalBSpline_complexBumpLaplace_imag_eq_realSinc_pow`.
+- Next target: scale this executable centered-cardinal sinc-power transform to
+  `centeredBSplineEta` and feed the resulting imaginary-axis profile into the
+  Arch entry formulas and `BSplineTranslatedAnalyticContract`.
 
 ## Синхронизационный статус (2026-02-28)
 
