@@ -10,6 +10,7 @@ noncomputable section
 
 open MeasureTheory
 open scoped BigOperators
+open scoped ComplexConjugate
 
 namespace Q3
 namespace PSDpd
@@ -2649,6 +2650,14 @@ def centeredBSplineImagTransformClosedForm (k : ℕ) (ell t : ℝ) : ℂ :=
   (((Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ : ℝ) : ℂ) *
     ((realSinc (ell * t / (2 * bsplineScale k)) : ℂ) ^ (k + 1))
 
+/-- The normalized imaginary-axis closed form is real-valued. -/
+theorem centeredBSplineImagTransformClosedForm_conj
+    (k : ℕ) (ell t : ℝ) :
+    star (centeredBSplineImagTransformClosedForm k ell t) =
+      centeredBSplineImagTransformClosedForm k ell t := by
+  unfold centeredBSplineImagTransformClosedForm
+  simp
+
 /-- Closed normalized imaginary-axis transform profile for the concrete
 centered B-spline packet. -/
 theorem centeredBSplineImagTransformProfile_eq_closedForm
@@ -2734,6 +2743,115 @@ theorem centeredBSplineImagTransformProfile_eq_closedForm
                   simp [s]
     _ = centeredBSplineImagTransformClosedForm k ell t := by
             rfl
+
+/-- Imaginary-axis transform of a translated/scaled normalized centered
+B-spline packet.  This is the concrete phase factor used by the Arch entry
+formulas. -/
+theorem centeredBSplineImagTransform_scaledTranslated_eq_closedForm
+    (k : ℕ) (ell center t : ℝ) (hell : 0 < ell) :
+    complexBumpLaplace
+        (complexScaledTranslatedBump
+          (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell center)
+        (Complex.I * (t : ℂ)) =
+      (Real.sqrt ell : ℂ) *
+        Complex.exp ((Complex.I * (t : ℂ)) * (center : ℂ)) *
+          centeredBSplineImagTransformClosedForm k ell t := by
+  calc
+    complexBumpLaplace
+        (complexScaledTranslatedBump
+          (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell center)
+        (Complex.I * (t : ℂ))
+        =
+      (Real.sqrt ell : ℂ) *
+        Complex.exp ((Complex.I * (t : ℂ)) * (center : ℂ)) *
+          centeredBSplineImagTransformProfile k ell t := by
+            simpa [centeredBSplineImagTransformProfile] using
+              complexBumpLaplace_scaledTranslated
+                (fun x : ℝ => (centeredBSplineEta k x : ℂ))
+                ell center (Complex.I * (t : ℂ)) hell
+    _ =
+      (Real.sqrt ell : ℂ) *
+        Complex.exp ((Complex.I * (t : ℂ)) * (center : ℂ)) *
+          centeredBSplineImagTransformClosedForm k ell t := by
+            rw [centeredBSplineImagTransformProfile_eq_closedForm]
+
+/-- Product of translated imaginary-axis transforms, before folding the two
+phase factors into a single difference phase.  This is the local algebraic
+payload used by the Arch pairings. -/
+theorem centeredBSplineImagTransform_scaledTranslated_pair_raw
+    (k : ℕ) (ell ui uj t : ℝ) (hell : 0 < ell) :
+    complexBumpLaplace
+        (complexScaledTranslatedBump
+          (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell uj)
+        (Complex.I * (t : ℂ)) *
+      star
+        (complexBumpLaplace
+          (complexScaledTranslatedBump
+            (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell ui)
+          (Complex.I * (t : ℂ))) =
+      ((Real.sqrt ell : ℂ) *
+          Complex.exp ((Complex.I * (t : ℂ)) * (uj : ℂ)) *
+            centeredBSplineImagTransformClosedForm k ell t) *
+        star
+          ((Real.sqrt ell : ℂ) *
+            Complex.exp ((Complex.I * (t : ℂ)) * (ui : ℂ)) *
+              centeredBSplineImagTransformClosedForm k ell t) := by
+  rw [centeredBSplineImagTransform_scaledTranslated_eq_closedForm k ell uj t hell]
+  rw [centeredBSplineImagTransform_scaledTranslated_eq_closedForm k ell ui t hell]
+
+/-- Product of translated imaginary-axis transforms with the phase folded into
+the center difference.  This is the concrete kernel factor that the Arch entry
+integral consumes. -/
+theorem centeredBSplineImagTransform_scaledTranslated_pair_phase_closedForm
+    (k : ℕ) (ell ui uj t : ℝ) (hell : 0 < ell) :
+    complexBumpLaplace
+        (complexScaledTranslatedBump
+          (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell uj)
+        (Complex.I * (t : ℂ)) *
+      star
+        (complexBumpLaplace
+          (complexScaledTranslatedBump
+            (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell ui)
+          (Complex.I * (t : ℂ))) =
+      (ell : ℂ) *
+        Complex.exp ((Complex.I * (t : ℂ)) * ((uj - ui : ℝ) : ℂ)) *
+          (centeredBSplineImagTransformClosedForm k ell t) ^ 2 := by
+  rw [centeredBSplineImagTransform_scaledTranslated_pair_raw k ell ui uj t hell]
+  have hsqrt_sq :
+      (Real.sqrt ell : ℂ) * (Real.sqrt ell : ℂ) = (ell : ℂ) := by
+    have hsqrt_sq_real : Real.sqrt ell * Real.sqrt ell = ell := by
+      simpa [pow_two] using Real.sq_sqrt (le_of_lt hell)
+    exact_mod_cast hsqrt_sq_real
+  have hphase :
+      Complex.exp ((Complex.I * (t : ℂ)) * (uj : ℂ)) *
+          star (Complex.exp ((Complex.I * (t : ℂ)) * (ui : ℂ))) =
+        Complex.exp ((Complex.I * (t : ℂ)) * ((uj : ℂ) - (ui : ℂ))) := by
+    rw [Complex.star_def]
+    rw [← Complex.exp_conj]
+    rw [← Complex.exp_add]
+    congr 1
+    simp
+    ring
+  have hE := centeredBSplineImagTransformClosedForm_conj k ell t
+  simp [hE]
+  calc
+    (Real.sqrt ell : ℂ) *
+          Complex.exp ((Complex.I * (t : ℂ)) * (uj : ℂ)) *
+            centeredBSplineImagTransformClosedForm k ell t *
+        ((Real.sqrt ell : ℂ) *
+          star (Complex.exp ((Complex.I * (t : ℂ)) * (ui : ℂ))) *
+            centeredBSplineImagTransformClosedForm k ell t)
+        =
+      ((Real.sqrt ell : ℂ) * (Real.sqrt ell : ℂ)) *
+        (Complex.exp ((Complex.I * (t : ℂ)) * (uj : ℂ)) *
+          star (Complex.exp ((Complex.I * (t : ℂ)) * (ui : ℂ)))) *
+          (centeredBSplineImagTransformClosedForm k ell t) ^ 2 := by
+            ring
+    _ =
+      (ell : ℂ) *
+        Complex.exp ((Complex.I * (t : ℂ)) * ((uj : ℂ) - (ui : ℂ))) *
+          (centeredBSplineImagTransformClosedForm k ell t) ^ 2 := by
+            rw [hsqrt_sq, hphase]
 
 /-- The plus boundary scale for the concrete bump. -/
 def centeredBSplineBoundaryPlusScale (k : ℕ) (ell : ℝ) : ℝ :=

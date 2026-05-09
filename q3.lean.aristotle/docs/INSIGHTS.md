@@ -12095,3 +12095,21 @@ Update:
 - Next target: use this closed form in the translated packet identity to
   assemble concrete Arch entries through `|E_{ell,k}(it)|^2` and then feed the
   Arch/boundary rows into `BSplineTranslatedAnalyticContract`.
+
+## Synthesis (2026-05-10, OK) — `Step32F_TranslatedArchPhaseFactor_closed`
+
+- Target: consume the normalized imaginary-axis sinc profile inside the generic
+  translated/scaled packet transform identity.
+- Added `centeredBSplineImagTransformClosedForm_conj`, recording that the
+  normalized imaginary-axis closed form is fixed by complex conjugation.
+- Added `centeredBSplineImagTransform_scaledTranslated_eq_closedForm`, giving
+  the exact translated packet factor
+  `sqrt(ell) * exp(I*t*center) * centeredBSplineImagTransformClosedForm`.
+- Added `centeredBSplineImagTransform_scaledTranslated_pair_raw` and
+  `centeredBSplineImagTransform_scaledTranslated_pair_phase_closedForm`, folding
+  the product of two translated packet transforms into the phase
+  `exp(I*t*(u_j-u_i))` times `ell * E(t)^2`.
+- This closes the local Arch algebra payload:
+  normalized sinc profile -> translated phase -> pair-product kernel factor.
+- Next target: wrap this factor into the real Arch kernel/profile integral and
+  instantiate `PacketTranslationKernelData` for the Arch side.
