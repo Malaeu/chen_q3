@@ -12146,3 +12146,22 @@ Update:
   the bilinear-form layer: define/prove the actual Arch form on packet spans
   so it supplies the `pairing_translate_ident` hypothesis consumed by the new
   helper.
+
+## Synthesis (2026-05-10, OK) — `Step32F_ArchPairing_bundling_layer`
+
+- Target: make the profile-level Arch identity usable by the finite translated
+  kernel receiver without committing to a global function-space bilinear form.
+- Added `realBilinearFormOfPairing`, a reusable bridge from an unbundled real
+  bilinear pairing `B : V -> V -> R` plus linearity laws to the curried
+  `V ->L[R] V ->L[R] R` shape expected by packet matrix contracts.
+- Added `PacketTranslationKernelData.ofPairing`, so translated-kernel data can
+  be built from the natural unbundled analytic pairing and its profile identity.
+- Added `centeredBSplineArchPairing`, the concrete Arch integral pairing on
+  imaginary-axis packet transforms, and proved
+  `centeredBSplineArchPairing_scaledTranslated_closed`.
+- Added `centeredBSplinePacketTranslationArchData_ofPairing`, the concrete
+  B-spline Arch constructor from an unbundled pairing plus linearity laws.
+- This closes the API/bundling gap between the checked Arch profile and
+  `PacketTranslationKernelData`.  Remaining Arch work is now the narrow
+  linearity/integrability proof for the concrete Arch pairing on the packet
+  span, not another profile calculation.

@@ -122,7 +122,65 @@ structure PacketTranslationKernelData
     ∀ u v : ℝ,
       form (translate u base) (translate v base) = profile (u - v)
 
+/-- Bundle an unbundled real bilinear pairing into the curried `LinearMap`
+shape expected by the finite packet receivers. -/
+def realBilinearFormOfPairing
+    {V : Type*} [AddCommGroup V] [Module ℝ V]
+    (B : V → V → ℝ)
+    (map_add_left : ∀ x y z : V, B (x + y) z = B x z + B y z)
+    (map_smul_left : ∀ (c : ℝ) (x z : V), B (c • x) z = c * B x z)
+    (map_add_right : ∀ x y z : V, B x (y + z) = B x y + B x z)
+    (map_smul_right : ∀ (c : ℝ) (x y : V), B x (c • y) = c * B x y) :
+    V →ₗ[ℝ] V →ₗ[ℝ] ℝ where
+  toFun x :=
+    { toFun := fun y => B x y
+      map_add' := by
+        intro y z
+        exact map_add_right x y z
+      map_smul' := by
+        intro c y
+        exact map_smul_right c x y }
+  map_add' := by
+    intro x y
+    ext z
+    exact map_add_left x y z
+  map_smul' := by
+    intro c x
+    ext z
+    exact map_smul_left c x z
+
 namespace PacketTranslationKernelData
+
+/-- Build translated-kernel data from an unbundled bilinear pairing plus its
+linearity laws.  This keeps analytic pairings easy to state while still
+feeding the bundled linear-map API used by the finite matrix layer. -/
+def ofPairing
+    {ι V : Type*} [Fintype ι] [AddCommGroup V] [Module ℝ V]
+    (center : ι → ℝ)
+    (basisExpansion : PacketBasisExpansion ι V)
+    (base : V)
+    (translate : ℝ → V → V)
+    (B : V → V → ℝ)
+    (profile : ℝ → ℝ)
+    (map_add_left : ∀ x y z : V, B (x + y) z = B x z + B y z)
+    (map_smul_left : ∀ (c : ℝ) (x z : V), B (c • x) z = c * B x z)
+    (map_add_right : ∀ x y z : V, B x (y + z) = B x y + B x z)
+    (map_smul_right : ∀ (c : ℝ) (x y : V), B x (c • y) = c * B x y)
+    (basis_eq_translate :
+      ∀ i : ι, basisExpansion.basis i = translate (center i) base)
+    (pairing_translate_ident :
+      ∀ u v : ℝ, B (translate u base) (translate v base) = profile (u - v)) :
+    PacketTranslationKernelData ι V where
+  center := center
+  basisExpansion := basisExpansion
+  base := base
+  translate := translate
+  form :=
+    realBilinearFormOfPairing B
+      map_add_left map_smul_left map_add_right map_smul_right
+  profile := profile
+  basis_eq_translate := basis_eq_translate
+  pairing_translate_ident := pairing_translate_ident
 
 /-- Difference-kernel matrix associated to translated packet pairings. -/
 def kernel

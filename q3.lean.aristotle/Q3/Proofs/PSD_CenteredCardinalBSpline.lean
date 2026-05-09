@@ -2895,6 +2895,14 @@ theorem centeredBSplineImagTransform_scaledTranslated_pair_re_closedForm
   rw [hphase]
   simp [Complex.mul_re, Complex.exp_re, Complex.exp_im, pow_two]
 
+/-- Unbundled real Arch pairing associated to imaginary-axis packet
+transforms.  This is the analytic pairing that later gets bundled into the
+finite `LinearMap` API after the relevant linearity laws are supplied. -/
+def centeredBSplineArchPairing (f g : ℝ → ℂ) : ℝ :=
+  ∫ t : ℝ, Q3.a_star t *
+    (complexBumpLaplace f (Complex.I * (t : ℂ)) *
+      star (complexBumpLaplace g (Complex.I * (t : ℂ)))).re
+
 /-- Concrete real Arch profile for translated normalized B-spline packets.
 
 The argument is the center difference.  The profile integrates the real
@@ -2925,6 +2933,18 @@ theorem centeredBSplineArchKernelProfile_pair_laplace_closed
   rw [centeredBSplineImagTransform_scaledTranslated_pair_re_closedForm
     k ell v u t hell]
 
+/-- The unbundled Arch pairing of two translated normalized B-spline packets is
+the concrete Arch profile at the center difference. -/
+theorem centeredBSplineArchPairing_scaledTranslated_closed
+    (k : ℕ) (ell u v : ℝ) (hell : 0 < ell) :
+    centeredBSplineArchPairing
+        (complexScaledTranslatedBump
+          (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell u)
+        (complexScaledTranslatedBump
+          (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell v) =
+      centeredBSplineArchKernelProfile k ell (u - v) := by
+  exact centeredBSplineArchKernelProfile_pair_laplace_closed k ell u v hell
+
 /-- Wiring helper: once an Arch bilinear form is known to agree with the
 concrete Arch profile on translated copies of the base packet, it instantiates
 the abstract translated-kernel receiver. -/
@@ -2951,6 +2971,35 @@ def centeredBSplinePacketTranslationArchData
   profile := centeredBSplineArchKernelProfile k ell
   basis_eq_translate := basis_eq_translate
   pairing_translate_ident := pairing_translate_ident
+
+/-- Arch wiring helper from an unbundled real bilinear pairing.  The analytic
+side usually proves the translated-packet identity for a concrete pairing
+function first; this packages that pairing into the curried `LinearMap` form
+needed by the finite receiver. -/
+def centeredBSplinePacketTranslationArchData_ofPairing
+    {ι V : Type*} [Fintype ι] [AddCommGroup V] [Module ℝ V]
+    (k : ℕ) (ell : ℝ)
+    (center : ι → ℝ)
+    (basisExpansion : PacketBasisExpansion ι V)
+    (base : V)
+    (translate : ℝ → V → V)
+    (B : V → V → ℝ)
+    (map_add_left : ∀ x y z : V, B (x + y) z = B x z + B y z)
+    (map_smul_left : ∀ (c : ℝ) (x z : V), B (c • x) z = c * B x z)
+    (map_add_right : ∀ x y z : V, B x (y + z) = B x y + B x z)
+    (map_smul_right : ∀ (c : ℝ) (x y : V), B x (c • y) = c * B x y)
+    (basis_eq_translate :
+      ∀ i : ι, basisExpansion.basis i = translate (center i) base)
+    (pairing_translate_ident :
+      ∀ u v : ℝ,
+        B (translate u base) (translate v base) =
+          centeredBSplineArchKernelProfile k ell (u - v)) :
+    PacketTranslationKernelData ι V :=
+  PacketTranslationKernelData.ofPairing
+    center basisExpansion base translate B
+    (centeredBSplineArchKernelProfile k ell)
+    map_add_left map_smul_left map_add_right map_smul_right
+    basis_eq_translate pairing_translate_ident
 
 /-- The plus boundary scale for the concrete bump. -/
 def centeredBSplineBoundaryPlusScale (k : ℕ) (ell : ℝ) : ℝ :=
