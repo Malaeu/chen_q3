@@ -1,3 +1,4 @@
+import Q3.Basic.Defs
 import Q3.Proofs.PSD_BSplineAnalyticModel
 import Mathlib.Analysis.Convolution
 import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
@@ -2893,6 +2894,63 @@ theorem centeredBSplineImagTransform_scaledTranslated_pair_re_closedForm
     ring
   rw [hphase]
   simp [Complex.mul_re, Complex.exp_re, Complex.exp_im, pow_two]
+
+/-- Concrete real Arch profile for translated normalized B-spline packets.
+
+The argument is the center difference.  The profile integrates the real
+translated pair factor against the Archimedean weight `a_star`. -/
+def centeredBSplineArchKernelProfile (k : ℕ) (ell x : ℝ) : ℝ :=
+  ∫ t : ℝ, Q3.a_star t *
+    (ell * Real.cos (t * x) *
+      (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+
+/-- The real translated Arch pair product is exactly the Arch profile at the
+center difference. -/
+theorem centeredBSplineArchKernelProfile_pair_laplace_closed
+    (k : ℕ) (ell u v : ℝ) (hell : 0 < ell) :
+    (∫ t : ℝ, Q3.a_star t *
+      (complexBumpLaplace
+          (complexScaledTranslatedBump
+            (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell u)
+          (Complex.I * (t : ℂ)) *
+        star
+          (complexBumpLaplace
+            (complexScaledTranslatedBump
+              (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell v)
+            (Complex.I * (t : ℂ)))).re) =
+      centeredBSplineArchKernelProfile k ell (u - v) := by
+  unfold centeredBSplineArchKernelProfile
+  apply integral_congr_ae
+  filter_upwards with t
+  rw [centeredBSplineImagTransform_scaledTranslated_pair_re_closedForm
+    k ell v u t hell]
+
+/-- Wiring helper: once an Arch bilinear form is known to agree with the
+concrete Arch profile on translated copies of the base packet, it instantiates
+the abstract translated-kernel receiver. -/
+def centeredBSplinePacketTranslationArchData
+    {ι V : Type*} [Fintype ι] [AddCommGroup V] [Module ℝ V]
+    (k : ℕ) (ell : ℝ)
+    (center : ι → ℝ)
+    (basisExpansion : PacketBasisExpansion ι V)
+    (base : V)
+    (translate : ℝ → V → V)
+    (form : V →ₗ[ℝ] V →ₗ[ℝ] ℝ)
+    (basis_eq_translate :
+      ∀ i : ι, basisExpansion.basis i = translate (center i) base)
+    (pairing_translate_ident :
+      ∀ u v : ℝ,
+        form (translate u base) (translate v base) =
+          centeredBSplineArchKernelProfile k ell (u - v)) :
+    PacketTranslationKernelData ι V where
+  center := center
+  basisExpansion := basisExpansion
+  base := base
+  translate := translate
+  form := form
+  profile := centeredBSplineArchKernelProfile k ell
+  basis_eq_translate := basis_eq_translate
+  pairing_translate_ident := pairing_translate_ident
 
 /-- The plus boundary scale for the concrete bump. -/
 def centeredBSplineBoundaryPlusScale (k : ℕ) (ell : ℝ) : ℝ :=

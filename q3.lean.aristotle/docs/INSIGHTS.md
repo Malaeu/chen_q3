@@ -12129,3 +12129,20 @@ Update:
   profile.
 - Next target: define the Arch kernel/profile integral and use this real pair
   factor to instantiate the concrete Arch `PacketTranslationKernelData`.
+
+## Synthesis (2026-05-10, OK) — `Step32F_ArchKernelProfile_wiring`
+
+- Target: turn the local real Arch pair factor into the one-variable
+  translated-kernel profile expected by `PacketTranslationKernelData`.
+- Added `centeredBSplineArchKernelProfile k ell x`, integrating the real
+  factor `ell * cos(t*x) * E_real(t)^2` against `Q3.a_star`.
+- Added `centeredBSplineArchKernelProfile_pair_laplace_closed`, proving that
+  the Arch integral of the real translated pair product is exactly the profile
+  at the center difference `u - v`.
+- Added `centeredBSplinePacketTranslationArchData`, a wiring helper that turns
+  any Arch bilinear form with this translated-profile identity into the
+  abstract `PacketTranslationKernelData` receiver.
+- This closes the profile-level Arch bridge.  Remaining concrete Arch work is
+  the bilinear-form layer: define/prove the actual Arch form on packet spans
+  so it supplies the `pairing_translate_ident` hypothesis consumed by the new
+  helper.
