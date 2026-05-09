@@ -79,6 +79,28 @@
   profile, nonzero boundary scales, and feeding those facts into
   `BSplineTranslatedAnalyticContract`.
 
+## Synthesis (2026-05-09, in progress) — Step32F imaginary-axis sinc profile
+
+- The real Laplace/sinhc side is closed in
+  `Q3/Proofs/PSD_CenteredCardinalBSpline.lean`:
+  `centeredCardinalBSplineConvPower_realBumpLaplace_eq_realSinhc_pow`,
+  `centeredCardinalBSpline_realBumpLaplace_eq_realSinhc_pow`,
+  `centeredBSplineRealTransformProfile_eq_closedForm`, and the boundary scale
+  closed forms are already Lean-backed.
+- The next genuine transform blocker is the imaginary-axis Arch profile, not
+  another prime/autocorrelation lemma: the finite Arch matrix needs the
+  centered B-spline packet transform at `z = I*t`, whose box base is the
+  regularized sinc factor.
+- Local semantic search did not find an existing `realSinc`/imaginary-axis
+  closed form in the project; external spline references agree with the
+  standard B-spline Fourier-transform shape as a sinc power.
+- First small Lean target: add a regularized `realSinc`, prove the centered
+  interval cosine integral, and specialize it to the strict centered box:
+  `centeredBoxSpline_cosTransform_eq_realSinc`.
+- After that, lift this base through the complex/imaginary convolution-power
+  transform and then feed the resulting sinc-power profile into the Arch entry
+  formulas and `BSplineTranslatedAnalyticContract`.
+
 ## Синхронизационный статус (2026-02-28)
 
 - Проверка последнего плана: mainline формально описывает τ=0 маршрут через
