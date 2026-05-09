@@ -11968,3 +11968,27 @@ Update:
   `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, `lake build Q3.Main`,
   hole scan, whitespace check, `check_audit_invariants.sh`,
   `check_axioms.sh`, and theorem axiom prints pass.
+
+## Synthesis (2026-05-09, in progress) — `Step32F_TransformSinhcProfile_convpower_lift`
+
+- Target: prove the convolution-power transform lift
+  `∫ x, centeredCardinalBSplineConvPower k x * exp(a*x) =
+   realSinhc(a/2)^(k+1)`.
+- Wiring: this is the middle bridge between the closed base box transform and
+  the final normalized profile
+  `centeredBSplineRealTransformProfile = centeredBSplineRealTransformClosedForm`.
+- Local semantic search found no ready theorem for this exact B-spline
+  transform.  It did recover only generic convolution references and the
+  already-closed `realConvolution` infrastructure.
+- External check confirms the standard route: the transform of a convolution is
+  a product, with the proof using Fubini/Tonelli under integrability; cardinal
+  B-splines are convolution powers of the box.
+- Option 1: prove a narrow weighted right-box theorem
+  `L(f * centeredBoxSpline)(a)=L(f)(a)*realSinhc(a/2)` for compactly supported
+  or integrable `f`, then induct on `centeredCardinalBSplineConvPower`.
+- Option 2: if the weighted Fubini theorem is too heavy, prove the same theorem
+  only for `f = centeredCardinalBSplineConvPower k`, using the existing compact
+  support and integrability lemmas.
+- Success check: add
+  `centeredCardinalBSplineConvPower_realTransform_eq_realSinhc_pow`, then
+  verify `Q3/Proofs/PSD_CenteredCardinalBSpline.lean` and `Q3.Main`.
