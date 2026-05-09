@@ -2637,6 +2637,104 @@ theorem centeredBSplineRealTransformProfile_eq_closedForm
     _ = centeredBSplineRealTransformClosedForm k ell z := by
             rfl
 
+/-- Imaginary-axis complex transform profile for the normalized centered
+B-spline packet. -/
+def centeredBSplineImagTransformProfile (k : ℕ) (ell t : ℝ) : ℂ :=
+  complexBumpTransformProfile (fun x : ℝ => (centeredBSplineEta k x : ℂ)) ell
+    (Complex.I * (t : ℂ))
+
+/-- Closed-form RHS for the normalized centered B-spline imaginary-axis
+transform. -/
+def centeredBSplineImagTransformClosedForm (k : ℕ) (ell t : ℝ) : ℂ :=
+  (((Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ : ℝ) : ℂ) *
+    ((realSinc (ell * t / (2 * bsplineScale k)) : ℂ) ^ (k + 1))
+
+/-- Closed normalized imaginary-axis transform profile for the concrete
+centered B-spline packet. -/
+theorem centeredBSplineImagTransformProfile_eq_closedForm
+    (k : ℕ) (ell t : ℝ) :
+    centeredBSplineImagTransformProfile k ell t =
+      centeredBSplineImagTransformClosedForm k ell t := by
+  let s : ℝ := bsplineScale k
+  let C : ℝ := Real.sqrt (s / bsplineAutocorrNorm k)
+  let a : ℝ := ell * t / s
+  let G : ℝ → ℂ := fun u =>
+    ((C * centeredCardinalBSpline k u : ℝ) : ℂ) *
+      Complex.exp ((Complex.I * (a : ℂ)) * (u : ℂ))
+  unfold centeredBSplineImagTransformProfile complexBumpTransformProfile centeredBSplineEta
+  calc
+    (∫ x : ℝ,
+        ↑(Real.sqrt (bsplineScale k / bsplineAutocorrNorm k) *
+            centeredCardinalBSpline k (bsplineScale k * x)) *
+          Complex.exp (Complex.I * ↑t * (↑ell * ↑x)))
+        = ∫ x : ℝ, G (s * x) := by
+            apply integral_congr_ae
+            filter_upwards with x
+            have harg :
+                Complex.I * (t : ℂ) * ((ell : ℂ) * (x : ℂ)) =
+                  (Complex.I * (a : ℂ)) * ((s * x : ℝ) : ℂ) := by
+              simp [a, s]
+              field_simp [bsplineScale_ne_zero k]
+            change
+              ((Real.sqrt (bsplineScale k / bsplineAutocorrNorm k) *
+                  centeredCardinalBSpline k (bsplineScale k * x) : ℝ) : ℂ) *
+                Complex.exp (Complex.I * (t : ℂ) * ((ell : ℂ) * (x : ℂ))) =
+              G (s * x)
+            dsimp [G, C, s]
+            rw [harg]
+    _ = |s⁻¹| * ∫ u : ℝ, G u := by
+            simpa using Measure.integral_comp_mul_left G s
+    _ =
+      |s⁻¹| *
+        (((C : ℂ) *
+          complexBumpLaplace
+            (fun u : ℝ => (centeredCardinalBSpline k u : ℂ))
+            (Complex.I * (a : ℂ)))) := by
+            congr 1
+            unfold G complexBumpLaplace
+            rw [← integral_const_mul]
+            apply integral_congr_ae
+            filter_upwards with u
+            simp [Complex.ofReal_mul]
+            ring
+    _ =
+      |s⁻¹| *
+        ((C : ℂ) *
+          (((realSinc ((ell * t / s) / 2) : ℂ)) ^ (k + 1))) := by
+            rw [centeredCardinalBSpline_complexBumpLaplace_imag_eq_realSinc_pow]
+    _ =
+      (((Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ : ℝ) : ℂ) *
+        ((realSinc (ell * t / (2 * bsplineScale k)) : ℂ) ^ (k + 1)) := by
+            have harg :
+                (ell * t / s) / 2 = ell * t / (2 * bsplineScale k) := by
+              simp [s]
+              ring
+            rw [harg]
+            calc
+              |s⁻¹| *
+                    ((C : ℂ) *
+                      ((realSinc (ell * t / (2 * bsplineScale k)) : ℂ) ^ (k + 1)))
+                  =
+                (((|s⁻¹| * C : ℝ) : ℂ) *
+                    ((realSinc (ell * t / (2 * bsplineScale k)) : ℂ) ^ (k + 1))) := by
+                  norm_num
+                  ring
+              _ =
+                (((Real.sqrt (s * bsplineAutocorrNorm k))⁻¹ : ℝ) : ℂ) *
+                    ((realSinc (ell * t / (2 * bsplineScale k)) : ℂ) ^ (k + 1)) := by
+                  have hcoeff := centeredBSpline_transform_normalization_coeff k
+                  have hcoeffC :
+                      ((|s⁻¹| * C : ℝ) : ℂ) =
+                        (((Real.sqrt (s * bsplineAutocorrNorm k))⁻¹ : ℝ) : ℂ) := by
+                    exact_mod_cast (by simpa [s, C] using hcoeff)
+                  rw [hcoeffC]
+              _ =
+                (((Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ : ℝ) : ℂ) *
+                    ((realSinc (ell * t / (2 * bsplineScale k)) : ℂ) ^ (k + 1)) := by
+                  simp [s]
+    _ = centeredBSplineImagTransformClosedForm k ell t := by
+            rfl
+
 /-- The plus boundary scale for the concrete bump. -/
 def centeredBSplineBoundaryPlusScale (k : ℕ) (ell : ℝ) : ℝ :=
   Real.sqrt ell * centeredBSplineRealTransformProfile k ell (1 / 2)

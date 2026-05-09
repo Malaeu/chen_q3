@@ -109,9 +109,11 @@
   `complexBumpLaplace_realConvolution_eq_mul`,
   `centeredCardinalBSplineConvPower_complexBumpLaplace_imag_eq_realSinc_pow`,
   and `centeredCardinalBSpline_complexBumpLaplace_imag_eq_realSinc_pow`.
-- Next target: scale this executable centered-cardinal sinc-power transform to
-  `centeredBSplineEta` and feed the resulting imaginary-axis profile into the
-  Arch entry formulas and `BSplineTranslatedAnalyticContract`.
+- The executable centered-cardinal sinc-power transform has now also been
+  scaled to `centeredBSplineEta`; see the closed normalized profile
+  `centeredBSplineImagTransformProfile_eq_closedForm`.
+- Next target: feed this normalized imaginary-axis profile into the Arch entry
+  formulas and `BSplineTranslatedAnalyticContract`.
 
 ## Синхронизационный статус (2026-02-28)
 
@@ -12073,3 +12075,23 @@ Update:
   requiring the imaginary-axis/sinc profile or equivalent kernel identity.
 - Verification:
   `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean` passes.
+
+## Synthesis (2026-05-10, OK) — `Step32F_ImagSincProfile_normalized_closed`
+
+- Target: scale the already-closed executable centered-cardinal imaginary-axis
+  transform
+  `centeredCardinalBSpline_complexBumpLaplace_imag_eq_realSinc_pow` to the
+  normalized packet `centeredBSplineEta`.
+- Added `centeredBSplineImagTransformProfile` and
+  `centeredBSplineImagTransformClosedForm`.
+- Added the checked identity
+  `centeredBSplineImagTransformProfile_eq_closedForm`:
+  the normalized profile at `z = I*t` is the expected coefficient
+  `(sqrt (s_k*c_k))^{-1}` times the sinc power
+  `realSinc(ell*t/(2*s_k))^(k+1)`.
+- This closes the Arch transform backbone:
+  base box imaginary transform -> convolution-power sinc transform ->
+  executable centered-cardinal spline -> normalized `eta_k` profile.
+- Next target: use this closed form in the translated packet identity to
+  assemble concrete Arch entries through `|E_{ell,k}(it)|^2` and then feed the
+  Arch/boundary rows into `BSplineTranslatedAnalyticContract`.
