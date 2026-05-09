@@ -2282,6 +2282,52 @@ def centeredBSplineBoundaryPlusScale (k : ℕ) (ell : ℝ) : ℝ :=
 def centeredBSplineBoundaryMinusScale (k : ℕ) (ell : ℝ) : ℝ :=
   Real.sqrt ell * centeredBSplineRealTransformProfile k ell (-(1 / 2))
 
+/-- Closed-form RHS for the plus boundary scale. -/
+def centeredBSplineBoundaryPlusScaleClosedForm (k : ℕ) (ell : ℝ) : ℝ :=
+  Real.sqrt ell *
+    (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ *
+      (realSinhc (ell / (4 * bsplineScale k))) ^ (k + 1)
+
+/-- Closed-form RHS for the minus boundary scale. -/
+def centeredBSplineBoundaryMinusScaleClosedForm (k : ℕ) (ell : ℝ) : ℝ :=
+  Real.sqrt ell *
+    (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ *
+      (realSinhc (-(ell / (4 * bsplineScale k)))) ^ (k + 1)
+
+/-- The plus boundary scale is the normalized B-spline transform at `1 / 2`,
+hence the `realSinhc` closed form at `ell / (4 * s_k)`. -/
+theorem centeredBSplineBoundaryPlusScale_eq_closedForm
+    (k : ℕ) (ell : ℝ) :
+    centeredBSplineBoundaryPlusScale k ell =
+      centeredBSplineBoundaryPlusScaleClosedForm k ell := by
+  unfold centeredBSplineBoundaryPlusScale
+    centeredBSplineBoundaryPlusScaleClosedForm
+  rw [centeredBSplineRealTransformProfile_eq_closedForm]
+  unfold centeredBSplineRealTransformClosedForm
+  have harg :
+      ell * (1 / 2 : ℝ) / (2 * bsplineScale k) =
+        ell / (4 * bsplineScale k) := by
+    ring
+  rw [harg]
+  ring
+
+/-- The minus boundary scale is the normalized B-spline transform at `-1 / 2`,
+hence the `realSinhc` closed form at `-ell / (4 * s_k)`. -/
+theorem centeredBSplineBoundaryMinusScale_eq_closedForm
+    (k : ℕ) (ell : ℝ) :
+    centeredBSplineBoundaryMinusScale k ell =
+      centeredBSplineBoundaryMinusScaleClosedForm k ell := by
+  unfold centeredBSplineBoundaryMinusScale
+    centeredBSplineBoundaryMinusScaleClosedForm
+  rw [centeredBSplineRealTransformProfile_eq_closedForm]
+  unfold centeredBSplineRealTransformClosedForm
+  have harg :
+      ell * (-(1 / 2 : ℝ)) / (2 * bsplineScale k) =
+        -(ell / (4 * bsplineScale k)) := by
+    ring
+  rw [harg]
+  ring
+
 /-- The strict centered box is nonnegative. -/
 theorem centeredBoxSpline_nonneg (x : ℝ) :
     0 ≤ centeredBoxSpline x := by

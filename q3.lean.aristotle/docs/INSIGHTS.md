@@ -12017,3 +12017,25 @@ Update:
   `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
   `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, `lake build Q3.Main`,
   hole scan, and `./scripts/check_axioms.sh` pass.
+
+## Synthesis (2026-05-09, OK) — `Step32F_BoundaryScaleClosedForms_closed`
+
+- Target: connect the already-closed boundary scales to the new normalized
+  `realSinhc` transform profile, rather than leaving them justified only by the
+  older integral-positivity route.
+- Added closed-form RHS definitions
+  `centeredBSplineBoundaryPlusScaleClosedForm` and
+  `centeredBSplineBoundaryMinusScaleClosedForm`.
+- Added
+  `centeredBSplineBoundaryPlusScale_eq_closedForm` and
+  `centeredBSplineBoundaryMinusScale_eq_closedForm`, obtained immediately from
+  `centeredBSplineRealTransformProfile_eq_closedForm` at `z = ±1/2`.
+- This gives the boundary block the explicit chain:
+  base box transform -> convPower transform -> eta normalized transform ->
+  boundary scale closed forms.
+- Local semantic search still points past this block to Arch/contract wiring:
+  `BSplineTranslatedAnalyticContract` now needs concrete Arch and prime
+  kernel pairings, with prime already backed by autocorrelation and Arch still
+  requiring the imaginary-axis/sinc profile or equivalent kernel identity.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean` passes.
