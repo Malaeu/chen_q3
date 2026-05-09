@@ -291,6 +291,34 @@ theorem centeredBoxSpline_sub_eq_indicator_Ico (x y : ℝ) :
       linarith
     simp [hA, hB, hC]
 
+/-- The strict centered box itself is the half-open indicator
+`Ioc (-1/2) (1/2)`. -/
+theorem centeredBoxSpline_eq_indicator_Ioc (x : ℝ) :
+    centeredBoxSpline x =
+      (Set.Ioc (-(1 / 2 : ℝ)) (1 / 2)).indicator
+        (fun _ : ℝ => (1 : ℝ)) x := by
+  unfold centeredBoxSpline
+  simp only [positivePartPower_zero, Set.indicator]
+  by_cases hleft : -(1 / 2 : ℝ) < x
+  · by_cases hright : x ≤ (1 / 2 : ℝ)
+    · have hA : 0 < x + (1 / 2 : ℝ) := by linarith
+      have hB : ¬ 0 < x - (1 / 2 : ℝ) := by linarith
+      have hmem : x ∈ Set.Ioc (-(1 / 2 : ℝ)) (1 / 2) :=
+        ⟨hleft, hright⟩
+      norm_num [hA, hB, hmem]
+    · have hA : 0 < x + (1 / 2 : ℝ) := by linarith
+      have hB : 0 < x - (1 / 2 : ℝ) := by linarith
+      have hmem : x ∉ Set.Ioc (-(1 / 2 : ℝ)) (1 / 2) := by
+        intro h
+        exact hright h.2
+      norm_num [hA, hB, hmem]
+  · have hA : ¬ 0 < x + (1 / 2 : ℝ) := by linarith
+    have hB : ¬ 0 < x - (1 / 2 : ℝ) := by linarith
+    have hmem : x ∉ Set.Ioc (-(1 / 2 : ℝ)) (1 / 2) := by
+      intro h
+      exact hleft h.1
+    norm_num [hA, hB, hmem]
+
 /-- The truncated-power degree-zero spline is the centered box. -/
 theorem centeredCardinalBSpline_zero_eq_centeredBoxSpline :
     centeredCardinalBSpline 0 = centeredBoxSpline := by
@@ -1965,6 +1993,64 @@ def realSinhc (x : ℝ) : ℝ :=
 theorem realSinhc_of_ne_zero {x : ℝ} (hx : x ≠ 0) :
     realSinhc x = Real.sinh x / x := by
   simp [realSinhc, hx]
+
+/-- The centered interval exponential integral is the regularized hyperbolic
+sinc factor. -/
+theorem intervalIntegral_exp_mul_centered_eq_realSinhc (a : ℝ) :
+    (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ), Real.exp (a * x)) =
+      realSinhc (a / 2) := by
+  by_cases ha : a = 0
+  · subst a
+    simp [realSinhc]
+    norm_num
+  · have hmul := intervalIntegral.mul_integral_comp_mul_left
+      (f := Real.exp) (c := a)
+      (a := (-(1 / 2 : ℝ))) (b := (1 / 2 : ℝ))
+    have hmul' :
+        a * (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+          Real.exp (a * x)) =
+          ∫ x in (a * (-(1 / 2 : ℝ)))..(a * (1 / 2 : ℝ)),
+            Real.exp x := by
+      exact hmul
+    rw [integral_exp] at hmul'
+    have hmul'' :
+        a * (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+          Real.exp (a * x)) =
+          Real.exp (a / 2) - Real.exp (-(a / 2)) := by
+      convert hmul' using 1
+      ring_nf
+    have hI :
+        (∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ), Real.exp (a * x)) =
+          (Real.exp (a / 2) - Real.exp (-(a / 2))) / a := by
+      field_simp [ha] at hmul'' ⊢
+      exact hmul''
+    rw [hI]
+    have ha2 : a / 2 ≠ 0 := by
+      exact div_ne_zero ha (by norm_num)
+    rw [realSinhc_of_ne_zero ha2]
+    rw [Real.sinh_eq]
+    field_simp [ha]
+
+/-- Degree-zero centered box real transform. -/
+theorem centeredBoxSpline_realTransform_eq_realSinhc (a : ℝ) :
+    (∫ x : ℝ, centeredBoxSpline x * Real.exp (a * x)) =
+      realSinhc (a / 2) := by
+  calc
+    (∫ x : ℝ, centeredBoxSpline x * Real.exp (a * x))
+        = ∫ x : ℝ, (Set.Ioc (-(1 / 2 : ℝ)) (1 / 2)).indicator
+            (fun x : ℝ => Real.exp (a * x)) x := by
+            apply integral_congr_ae
+            filter_upwards with x
+            rw [centeredBoxSpline_eq_indicator_Ioc x]
+            by_cases hx : x ∈ Set.Ioc (-(1 / 2 : ℝ)) (1 / 2) <;>
+              simp [Set.indicator]
+    _ = ∫ x in Set.Ioc (-(1 / 2 : ℝ)) (1 / 2), Real.exp (a * x) := by
+            rw [MeasureTheory.integral_indicator measurableSet_Ioc]
+    _ = ∫ x in (-(1 / 2 : ℝ))..(1 / 2 : ℝ), Real.exp (a * x) := by
+            rw [intervalIntegral.integral_of_le]
+            linarith
+    _ = realSinhc (a / 2) :=
+            intervalIntegral_exp_mul_centered_eq_realSinhc a
 
 /-- Closed-form RHS for the normalized centered B-spline real transform. -/
 def centeredBSplineRealTransformClosedForm (k : ℕ) (ell z : ℝ) : ℝ :=

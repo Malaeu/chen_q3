@@ -11948,3 +11948,23 @@ Update:
   add the interval form
   `∫ x in (-1/2)..(1/2), exp(a*x) = realSinhc(a/2)` and use it as the stable
   proof target for the later box theorem.
+
+## Synthesis (2026-05-09, OK) — `Step32F_TransformSinhcProfile_base_box_closed`
+
+- Added `centeredBoxSpline_eq_indicator_Ioc`, recording the strict endpoint
+  convention as the half-open indicator `Ioc (-1/2) (1/2)`.
+- Added `intervalIntegral_exp_mul_centered_eq_realSinhc`, proving
+  `∫ x in (-1/2)..(1/2), exp(a*x) = realSinhc(a/2)` with a separate removable
+  `a=0` branch.
+- Added `centeredBoxSpline_realTransform_eq_realSinhc`, the degree-zero box
+  transform:
+  `∫ x, centeredBoxSpline x * exp(a*x) = realSinhc(a/2)`.
+- This closes the base case for the later convolution-power transform lift.
+  The remaining transform work is multiplicativity through
+  `centeredCardinalBSplineConvPower` and the final scaling of
+  `centeredBSplineEta`.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
+  `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, `lake build Q3.Main`,
+  hole scan, whitespace check, `check_audit_invariants.sh`,
+  `check_axioms.sh`, and theorem axiom prints pass.
