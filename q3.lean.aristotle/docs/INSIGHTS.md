@@ -11924,3 +11924,27 @@ Update:
   `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
   `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, hole scan, whitespace
   check, and axiom prints for the new `realSinhc` lemmas pass.
+
+## Synthesis (2026-05-09, in progress) — `Step32F_TransformSinhcProfile_base_box`
+
+- Target: start the closed transform proof with the exact degree-zero box
+  identity
+  `∫ x, centeredBoxSpline x * exp (a*x) = realSinhc (a/2)`.
+- Wiring: this is the base case for the later multiplicativity lift
+  `centeredCardinalBSplineConvPower k -> realSinhc(a/2)^(k+1)`, and then the
+  scaling of `centeredBSplineEta` gives
+  `centeredBSplineRealTransformClosedForm`.
+- Local semantic search found no existing Lean theorem for this profile; the
+  useful local facts are already in `PSD_CenteredCardinalBSpline.lean`:
+  `realConvolution_centeredBoxSpline`, `centeredBoxSpline_integrable`, and the
+  recently added `realSinhc`.
+- External check confirms the standard theorem shape: cardinal B-spline
+  transforms are sinc powers, while the real Laplace version replaces sinc by
+  the hyperbolic removable factor `sinh(x)/x`.
+- Lean plan: prove a box-integral lemma by rewriting the strict box as an
+  interval integral over `[-1/2,1/2]`, split `a=0` from `a≠0`, use the existing
+  exponential interval integral lemmas, then normalize to `realSinhc (a/2)`.
+- Pivot rule: if whole-line strict-box rewriting becomes too expensive, first
+  add the interval form
+  `∫ x in (-1/2)..(1/2), exp(a*x) = realSinhc(a/2)` and use it as the stable
+  proof target for the later box theorem.
