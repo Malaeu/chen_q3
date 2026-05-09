@@ -2052,10 +2052,227 @@ theorem centeredBoxSpline_realTransform_eq_realSinhc (a : ℝ) :
     _ = realSinhc (a / 2) :=
             intervalIntegral_exp_mul_centered_eq_realSinhc a
 
+/-- Laplace transform of the real convolution is the product of weighted
+Laplace transforms, under the exact weighted-integrability hypotheses. -/
+theorem realBumpLaplace_realConvolution_eq_mul
+    (f g : ℝ → ℝ) (a : ℝ)
+    (hf : Integrable (fun x : ℝ => f x * Real.exp (a * x)))
+    (hg : Integrable (fun x : ℝ => g x * Real.exp (a * x))) :
+    realBumpLaplace (realConvolution f g) a =
+      realBumpLaplace f a * realBumpLaplace g a := by
+  let F : ℝ → ℝ := fun x => f x * Real.exp (a * x)
+  let G : ℝ → ℝ := fun x => g x * Real.exp (a * x)
+  have hpoint : ∀ x : ℝ,
+      realConvolution f g x * Real.exp (a * x) =
+        MeasureTheory.convolution F G (ContinuousLinearMap.mul ℝ ℝ) volume x := by
+    intro x
+    rw [MeasureTheory.convolution_def]
+    unfold realConvolution
+    rw [← integral_mul_const]
+    apply integral_congr_ae
+    filter_upwards with y
+    simp [F, G]
+    have hx : a * x = a * y + a * (x - y) := by ring
+    rw [hx, Real.exp_add]
+    ring_nf
+  calc
+    realBumpLaplace (realConvolution f g) a
+        = ∫ x : ℝ,
+            MeasureTheory.convolution F G (ContinuousLinearMap.mul ℝ ℝ) volume x := by
+            unfold realBumpLaplace
+            apply integral_congr_ae
+            filter_upwards with x
+            exact hpoint x
+    _ = (∫ x : ℝ, F x) * (∫ x : ℝ, G x) := by
+            have hconv := MeasureTheory.integral_convolution
+              (L := ContinuousLinearMap.mul ℝ ℝ)
+              (μ := volume) (ν := volume) hf hg
+            simpa [ContinuousLinearMap.mul_apply] using hconv
+    _ = realBumpLaplace f a * realBumpLaplace g a := by
+            simp [F, G, realBumpLaplace]
+
+/-- The exponentially weighted centered box is integrable. -/
+theorem centeredBoxSpline_realBumpLaplace_integrable (a : ℝ) :
+    Integrable (fun x : ℝ => centeredBoxSpline x * Real.exp (a * x)) := by
+  have hfun :
+      (fun x : ℝ => centeredBoxSpline x * Real.exp (a * x)) =
+        (Set.Ioc (-(1 / 2 : ℝ)) (1 / 2)).indicator
+          (fun x : ℝ => Real.exp (a * x)) := by
+    funext x
+    rw [centeredBoxSpline_eq_indicator_Ioc x]
+    by_cases hx : x ∈ Set.Ioc (-(1 / 2 : ℝ)) (1 / 2) <;>
+      simp [Set.indicator]
+  rw [hfun]
+  rw [integrable_indicator_iff measurableSet_Ioc]
+  exact (Real.continuous_exp.comp
+    (continuous_const.mul continuous_id)).integrableOn_Ioc
+
+/-- Every centered-box convolution power has an exponentially weighted
+Laplace-integrable profile. -/
+theorem centeredCardinalBSplineConvPower_realBumpLaplace_integrable
+    (k : ℕ) (a : ℝ) :
+    Integrable
+      (fun x : ℝ => centeredCardinalBSplineConvPower k x * Real.exp (a * x)) := by
+  cases k with
+  | zero =>
+      simpa [centeredCardinalBSplineConvPower_zero] using
+        centeredBoxSpline_realBumpLaplace_integrable a
+  | succ k =>
+      let B : ℝ → ℝ := centeredCardinalBSplineConvPower (k + 1)
+      have hcontB : Continuous B :=
+        centeredCardinalBSplineConvPower_continuous_of_pos (k + 1) (Nat.succ_pos k)
+      have hcont : Continuous (fun x : ℝ => B x * Real.exp (a * x)) := by
+        exact hcontB.mul
+          (Real.continuous_exp.comp (continuous_const.mul continuous_id))
+      have hcompB : HasCompactSupport B :=
+        centeredCardinalBSplineConvPower_hasCompactSupport (k + 1)
+      have hcomp : HasCompactSupport (fun x : ℝ => B x * Real.exp (a * x)) := by
+        have hmul :
+            HasCompactSupport (B * fun x : ℝ => Real.exp (a * x)) :=
+          hcompB.mul_right
+        simpa [B, Pi.mul_apply] using hmul
+      exact hcont.integrable_of_hasCompactSupport hcomp
+
+/-- One convolution-power transform step: convolving once more with the
+centered box multiplies the transform by the box `realSinhc` factor. -/
+theorem centeredCardinalBSplineConvPower_realBumpLaplace_succ
+    (k : ℕ) (a : ℝ) :
+    realBumpLaplace (centeredCardinalBSplineConvPower (k + 1)) a =
+      realBumpLaplace (centeredCardinalBSplineConvPower k) a *
+        realSinhc (a / 2) := by
+  rw [centeredCardinalBSplineConvPower_succ]
+  rw [realBumpLaplace_realConvolution_eq_mul]
+  have hbox : realBumpLaplace centeredBoxSpline a = realSinhc (a / 2) := by
+    simpa [realBumpLaplace] using centeredBoxSpline_realTransform_eq_realSinhc a
+  rw [hbox]
+  · exact centeredCardinalBSplineConvPower_realBumpLaplace_integrable k a
+  · exact centeredBoxSpline_realBumpLaplace_integrable a
+
+/-- Closed transform of the convolution-power centered-cardinal model. -/
+theorem centeredCardinalBSplineConvPower_realBumpLaplace_eq_realSinhc_pow
+    (k : ℕ) (a : ℝ) :
+    realBumpLaplace (centeredCardinalBSplineConvPower k) a =
+      (realSinhc (a / 2)) ^ (k + 1) := by
+  induction k with
+  | zero =>
+      simpa [centeredCardinalBSplineConvPower_zero, realBumpLaplace] using
+        centeredBoxSpline_realTransform_eq_realSinhc a
+  | succ k ih =>
+      rw [centeredCardinalBSplineConvPower_realBumpLaplace_succ, ih]
+      rw [pow_succ]
+      ring
+
+/-- Closed transform of the executable centered-cardinal model, obtained by
+the pointwise agreement with the convolution-power model. -/
+theorem centeredCardinalBSpline_realBumpLaplace_eq_realSinhc_pow
+    (k : ℕ) (a : ℝ) :
+    realBumpLaplace (centeredCardinalBSpline k) a =
+      (realSinhc (a / 2)) ^ (k + 1) := by
+  have hfun : centeredCardinalBSpline k = centeredCardinalBSplineConvPower k := by
+    funext x
+    exact CenteredCardinalBSplineMatchesConvPower_all k x
+  rw [hfun]
+  exact centeredCardinalBSplineConvPower_realBumpLaplace_eq_realSinhc_pow k a
+
 /-- Closed-form RHS for the normalized centered B-spline real transform. -/
 def centeredBSplineRealTransformClosedForm (k : ℕ) (ell z : ℝ) : ℝ :=
   (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ *
     (realSinhc (ell * z / (2 * bsplineScale k))) ^ (k + 1)
+
+/-- Normalization coefficient in the scaled `eta_k` transform. -/
+private theorem centeredBSpline_transform_normalization_coeff
+    (k : ℕ) :
+    |(bsplineScale k)⁻¹| *
+      Real.sqrt (bsplineScale k / bsplineAutocorrNorm k) =
+        (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ := by
+  have hs : 0 < bsplineScale k := bsplineScale_pos k
+  have hc : 0 < bsplineAutocorrNorm k := bsplineAutocorrNorm_pos k
+  have hsle : 0 ≤ bsplineScale k := le_of_lt hs
+  rw [abs_of_pos (inv_pos.mpr hs)]
+  rw [Real.sqrt_div hsle]
+  rw [Real.sqrt_mul hsle (bsplineAutocorrNorm k)]
+  have hsqrts : Real.sqrt (bsplineScale k) ≠ 0 :=
+    (Real.sqrt_pos.mpr hs).ne'
+  have hsqrtc : Real.sqrt (bsplineAutocorrNorm k) ≠ 0 :=
+    (Real.sqrt_pos.mpr hc).ne'
+  field_simp [hs.ne', hsqrts, hsqrtc]
+  exact Real.sq_sqrt hsle
+
+/-- Closed normalized real transform profile for the concrete centered
+B-spline packet. -/
+theorem centeredBSplineRealTransformProfile_eq_closedForm
+    (k : ℕ) (ell z : ℝ) :
+    centeredBSplineRealTransformProfile k ell z =
+      centeredBSplineRealTransformClosedForm k ell z := by
+  let s : ℝ := bsplineScale k
+  let C : ℝ := Real.sqrt (s / bsplineAutocorrNorm k)
+  let G : ℝ → ℝ := fun u =>
+    C * centeredCardinalBSpline k u * Real.exp ((z * ell / s) * u)
+  unfold centeredBSplineRealTransformProfile realBumpTransformProfile centeredBSplineEta
+  calc
+    (∫ x : ℝ,
+        Real.sqrt (bsplineScale k / bsplineAutocorrNorm k) *
+            centeredCardinalBSpline k (bsplineScale k * x) *
+          Real.exp (z * (ell * x)))
+        = ∫ x : ℝ, G (s * x) := by
+            apply integral_congr_ae
+            filter_upwards with x
+            have harg :
+                z * (ell * x) =
+                  (z * ell / bsplineScale k) * (bsplineScale k * x) := by
+              field_simp [bsplineScale_ne_zero k]
+            change
+              Real.sqrt (bsplineScale k / bsplineAutocorrNorm k) *
+                  centeredCardinalBSpline k (bsplineScale k * x) *
+                Real.exp (z * (ell * x)) =
+              C * centeredCardinalBSpline k (s * x) *
+                Real.exp ((z * ell / s) * (s * x))
+            rw [harg]
+    _ = |s⁻¹| * ∫ u : ℝ, G u := by
+            simpa using Measure.integral_comp_mul_left G s
+    _ =
+      |s⁻¹| *
+        (C * realBumpLaplace (centeredCardinalBSpline k) (z * ell / s)) := by
+            congr 1
+            unfold G realBumpLaplace
+            rw [← integral_const_mul]
+            apply integral_congr_ae
+            filter_upwards with u
+            ring
+    _ =
+      |s⁻¹| *
+        (C * (realSinhc ((z * ell / s) / 2)) ^ (k + 1)) := by
+            rw [centeredCardinalBSpline_realBumpLaplace_eq_realSinhc_pow]
+    _ =
+      (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ *
+        (realSinhc (ell * z / (2 * bsplineScale k))) ^ (k + 1) := by
+            have harg :
+                (z * ell / s) / 2 = ell * z / (2 * bsplineScale k) := by
+              simp [s]
+              ring
+            rw [harg]
+            calc
+              |s⁻¹| *
+                    (C * (realSinhc (ell * z / (2 * bsplineScale k))) ^ (k + 1))
+                  =
+                (|s⁻¹| * C) *
+                    (realSinhc (ell * z / (2 * bsplineScale k))) ^ (k + 1) := by
+                  ring
+              _ =
+                (Real.sqrt (s * bsplineAutocorrNorm k))⁻¹ *
+                    (realSinhc (ell * z / (2 * bsplineScale k))) ^ (k + 1) := by
+                  have hcoeff := centeredBSpline_transform_normalization_coeff k
+                  simpa [s, C] using
+                    congrArg
+                      (fun r : ℝ =>
+                        r * (realSinhc (ell * z / (2 * bsplineScale k))) ^ (k + 1))
+                      hcoeff
+              _ =
+                (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ *
+                    (realSinhc (ell * z / (2 * bsplineScale k))) ^ (k + 1) := by
+                  simp [s]
+    _ = centeredBSplineRealTransformClosedForm k ell z := by
+            rfl
 
 /-- The plus boundary scale for the concrete bump. -/
 def centeredBSplineBoundaryPlusScale (k : ℕ) (ell : ℝ) : ℝ :=

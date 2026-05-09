@@ -11992,3 +11992,28 @@ Update:
 - Success check: add
   `centeredCardinalBSplineConvPower_realTransform_eq_realSinhc_pow`, then
   verify `Q3/Proofs/PSD_CenteredCardinalBSpline.lean` and `Q3.Main`.
+
+## Synthesis (2026-05-09, OK) — `Step32F_TransformSinhcProfile_convpower_lift_closed`
+
+- Added `realBumpLaplace_realConvolution_eq_mul`, a weighted Laplace
+  transform product theorem for `realConvolution`, using mathlib's
+  `MeasureTheory.integral_convolution` under weighted-integrability
+  hypotheses.
+- Added weighted-integrability facts for the strict centered box and all
+  `centeredCardinalBSplineConvPower k`.
+- Added the closed convolution-power transform:
+  `realBumpLaplace (centeredCardinalBSplineConvPower k) a =
+   realSinhc(a/2)^(k+1)`.
+- Transferred the result to the executable truncated-power spline via
+  `CenteredCardinalBSplineMatchesConvPower_all`.
+- Added the normalized concrete packet profile:
+  `centeredBSplineRealTransformProfile k ell z =
+   centeredBSplineRealTransformClosedForm k ell z`.
+- This closes the real transform/sinhc lift:
+  base box transform -> convPower transform -> eta normalized transform.
+  Remaining Step 32F transform work is now the Arch/contract wiring that
+  consumes this closed form.
+- Verification:
+  `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`,
+  `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`, `lake build Q3.Main`,
+  hole scan, and `./scripts/check_axioms.sh` pass.
