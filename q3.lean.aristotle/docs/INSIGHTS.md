@@ -12165,3 +12165,25 @@ Update:
   `PacketTranslationKernelData`.  Remaining Arch work is now the narrow
   linearity/integrability proof for the concrete Arch pairing on the packet
   span, not another profile calculation.
+
+## Synthesis (2026-05-23, partial OK) — `Step32F_ArchPairing_linearity_laws`
+
+- Target: close the local linear-algebra part of the remaining Arch pairing
+  obligation after `6c17342c`, without widening back to Step 32 or adding a new
+  receiver layer.
+- Added `centeredBSplineArchIntegrand`, naming the concrete `a_star`-weighted
+  imaginary-axis integrand behind `centeredBSplineArchPairing`.
+- Added transform linearity helpers:
+  `complexBumpLaplace_add_of_integrable` and `complexBumpLaplace_smul`.
+- Added the four concrete Arch-pairing laws:
+  `centeredBSplineArchPairing_add_left`,
+  `centeredBSplineArchPairing_smul_left`,
+  `centeredBSplineArchPairing_add_right`,
+  `centeredBSplineArchPairing_smul_right`.
+- The `smul` laws are unconditional; the `add` laws expose exactly the
+  weighted Bochner-integrability hypotheses needed by Lean.
+- This is not another profile calculation and not another receiver.  It closes
+  the local bilinear algebra for the actual analytic pairing.  The remaining
+  blocker is now sharply isolated: prove the finite packet-span integrability
+  hypotheses for B-spline translated packet sums, then feed these laws into
+  `centeredBSplinePacketTranslationArchData_ofPairing`.

@@ -2903,6 +2903,143 @@ def centeredBSplineArchPairing (f g : ℝ → ℂ) : ℝ :=
     (complexBumpLaplace f (Complex.I * (t : ℂ)) *
       star (complexBumpLaplace g (Complex.I * (t : ℂ)))).re
 
+/-- Integrand used by the concrete Arch pairing. -/
+def centeredBSplineArchIntegrand (f g : ℝ → ℂ) (t : ℝ) : ℝ :=
+  Q3.a_star t *
+    (complexBumpLaplace f (Complex.I * (t : ℂ)) *
+      star (complexBumpLaplace g (Complex.I * (t : ℂ)))).re
+
+/-- Additivity of the complex packet transform under the exact weighted
+integrability hypotheses required by the Bochner integral. -/
+theorem complexBumpLaplace_add_of_integrable
+    (f g : ℝ → ℂ) (z : ℂ)
+    (hf : Integrable (fun x : ℝ => f x * Complex.exp (z * (x : ℂ))))
+    (hg : Integrable (fun x : ℝ => g x * Complex.exp (z * (x : ℂ)))) :
+    complexBumpLaplace (fun x : ℝ => f x + g x) z =
+      complexBumpLaplace f z + complexBumpLaplace g z := by
+  unfold complexBumpLaplace
+  rw [← integral_add hf hg]
+  apply integral_congr_ae
+  filter_upwards with x
+  ring
+
+/-- Real scalar homogeneity of the complex packet transform. -/
+theorem complexBumpLaplace_smul
+    (c : ℝ) (f : ℝ → ℂ) (z : ℂ) :
+    complexBumpLaplace (c • f) z =
+      (c : ℂ) * complexBumpLaplace f z := by
+  unfold complexBumpLaplace
+  rw [← integral_const_mul]
+  apply integral_congr_ae
+  filter_upwards with x
+  simp [Pi.smul_apply]
+  ring
+
+/-- Left additivity of the concrete Arch pairing, separated from the remaining
+packet-span integrability obligations. -/
+theorem centeredBSplineArchPairing_add_left
+    (f₁ f₂ g : ℝ → ℂ)
+    (hf₁ : ∀ t : ℝ,
+      Integrable
+        (fun x : ℝ =>
+          f₁ x * Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ))))
+    (hf₂ : ∀ t : ℝ,
+      Integrable
+        (fun x : ℝ =>
+          f₂ x * Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ))))
+    (hI₁ : Integrable (centeredBSplineArchIntegrand f₁ g))
+    (hI₂ : Integrable (centeredBSplineArchIntegrand f₂ g)) :
+    centeredBSplineArchPairing (fun x => f₁ x + f₂ x) g =
+      centeredBSplineArchPairing f₁ g + centeredBSplineArchPairing f₂ g := by
+  unfold centeredBSplineArchPairing
+  change
+    (∫ t : ℝ, centeredBSplineArchIntegrand (fun x => f₁ x + f₂ x) g t) =
+      (∫ t : ℝ, centeredBSplineArchIntegrand f₁ g t) +
+        ∫ t : ℝ, centeredBSplineArchIntegrand f₂ g t
+  rw [← integral_add hI₁ hI₂]
+  apply integral_congr_ae
+  filter_upwards with t
+  unfold centeredBSplineArchIntegrand
+  rw [complexBumpLaplace_add_of_integrable]
+  · rw [add_mul, Complex.add_re]
+    ring
+  · exact hf₁ t
+  · exact hf₂ t
+
+/-- Left real homogeneity of the concrete Arch pairing. -/
+theorem centeredBSplineArchPairing_smul_left
+    (c : ℝ) (f g : ℝ → ℂ) :
+    centeredBSplineArchPairing (c • f) g =
+      c * centeredBSplineArchPairing f g := by
+  unfold centeredBSplineArchPairing
+  rw [← integral_const_mul]
+  apply integral_congr_ae
+  filter_upwards with t
+  rw [complexBumpLaplace_smul]
+  change
+    Q3.a_star t *
+        (((c : ℂ) * complexBumpLaplace f (Complex.I * (t : ℂ))) *
+          star (complexBumpLaplace g (Complex.I * (t : ℂ)))).re =
+      c *
+        (Q3.a_star t *
+          (complexBumpLaplace f (Complex.I * (t : ℂ)) *
+            star (complexBumpLaplace g (Complex.I * (t : ℂ)))).re)
+  simp
+  ring
+
+/-- Right additivity of the concrete Arch pairing, separated from the remaining
+packet-span integrability obligations. -/
+theorem centeredBSplineArchPairing_add_right
+    (f g₁ g₂ : ℝ → ℂ)
+    (hg₁ : ∀ t : ℝ,
+      Integrable
+        (fun x : ℝ =>
+          g₁ x * Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ))))
+    (hg₂ : ∀ t : ℝ,
+      Integrable
+        (fun x : ℝ =>
+          g₂ x * Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ))))
+    (hI₁ : Integrable (centeredBSplineArchIntegrand f g₁))
+    (hI₂ : Integrable (centeredBSplineArchIntegrand f g₂)) :
+    centeredBSplineArchPairing f (fun x => g₁ x + g₂ x) =
+      centeredBSplineArchPairing f g₁ + centeredBSplineArchPairing f g₂ := by
+  unfold centeredBSplineArchPairing
+  change
+    (∫ t : ℝ, centeredBSplineArchIntegrand f (fun x => g₁ x + g₂ x) t) =
+      (∫ t : ℝ, centeredBSplineArchIntegrand f g₁ t) +
+        ∫ t : ℝ, centeredBSplineArchIntegrand f g₂ t
+  rw [← integral_add hI₁ hI₂]
+  apply integral_congr_ae
+  filter_upwards with t
+  unfold centeredBSplineArchIntegrand
+  rw [complexBumpLaplace_add_of_integrable]
+  · rw [star_add, mul_add, Complex.add_re]
+    ring
+  · exact hg₁ t
+  · exact hg₂ t
+
+/-- Right real homogeneity of the concrete Arch pairing. -/
+theorem centeredBSplineArchPairing_smul_right
+    (c : ℝ) (f g : ℝ → ℂ) :
+    centeredBSplineArchPairing f (c • g) =
+      c * centeredBSplineArchPairing f g := by
+  unfold centeredBSplineArchPairing
+  rw [← integral_const_mul]
+  apply integral_congr_ae
+  filter_upwards with t
+  rw [complexBumpLaplace_smul]
+  change
+    Q3.a_star t *
+        (complexBumpLaplace f (Complex.I * (t : ℂ)) *
+          star ((c : ℂ) * complexBumpLaplace g (Complex.I * (t : ℂ)))).re =
+      c *
+        (Q3.a_star t *
+          (complexBumpLaplace f (Complex.I * (t : ℂ)) *
+            star (complexBumpLaplace g (Complex.I * (t : ℂ)))).re)
+  rw [star_mul]
+  simp
+  ring
+
 /-- Concrete real Arch profile for translated normalized B-spline packets.
 
 The argument is the center difference.  The profile integrates the real
@@ -2976,6 +3113,14 @@ def centeredBSplinePacketTranslationArchData
 side usually proves the translated-packet identity for a concrete pairing
 function first; this packages that pairing into the curried `LinearMap` form
 needed by the finite receiver. -/
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Prime-side-adjacent Arch form / Coordinate
+- role: tactical Step32F Arch assembly
+- input: concrete centeredBSplineArchPairing, translated profile identity, ofPairing bundling layer
+- output: concrete Arch PacketTranslationKernelData for centered B-spline packets
+- reviewer question answered: is the Arch matrix entry produced by an actual analytic bilinear form, not just by a profile-level formula or receiver wrapper?
+-/
 def centeredBSplinePacketTranslationArchData_ofPairing
     {ι V : Type*} [Fintype ι] [AddCommGroup V] [Module ℝ V]
     (k : ℕ) (ell : ℝ)
