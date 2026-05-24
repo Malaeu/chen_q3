@@ -4218,6 +4218,160 @@ theorem centeredBSplineArchPacketCoeffBilinearForm_synth_eq_quadForm
   (centeredBSplineArchPacketCoeffKernelData
     k ell center hk hell).form_synth_eq_quadForm v
 
+/-- Prime-shift pairing on finite B-spline packet coefficients.  This is the
+coordinate receiver for one translated autocorrelation shift. -/
+noncomputable def centeredBSplinePrimeShiftPacketCoeffPairing
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell a : ℝ) (center : ι → ℝ) (x y : ι → ℂ) : ℝ :=
+  ∑ i, ∑ j,
+    ((x j) * star (y i)).re *
+      centeredBSplineR k ((center j - center i - a) / ell)
+
+/-- Left additivity of the prime-shift coefficient pairing. -/
+theorem centeredBSplinePrimeShiftPacketCoeffPairing_add_left
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell a : ℝ) (center : ι → ℝ) (x y z : ι → ℂ) :
+    centeredBSplinePrimeShiftPacketCoeffPairing k ell a center (x + y) z =
+      centeredBSplinePrimeShiftPacketCoeffPairing k ell a center x z +
+        centeredBSplinePrimeShiftPacketCoeffPairing k ell a center y z := by
+  unfold centeredBSplinePrimeShiftPacketCoeffPairing
+  simp only [Pi.add_apply, add_mul, Complex.add_re]
+  simp only [Finset.sum_add_distrib]
+
+/-- Left real homogeneity of the prime-shift coefficient pairing. -/
+theorem centeredBSplinePrimeShiftPacketCoeffPairing_smul_left
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell a c : ℝ) (center : ι → ℝ) (x z : ι → ℂ) :
+    centeredBSplinePrimeShiftPacketCoeffPairing k ell a center (c • x) z =
+      c * centeredBSplinePrimeShiftPacketCoeffPairing k ell a center x z := by
+  unfold centeredBSplinePrimeShiftPacketCoeffPairing
+  simp only [Pi.smul_apply]
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i _hi
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro j _hj
+  simp
+  ring_nf
+
+/-- Right additivity of the prime-shift coefficient pairing. -/
+theorem centeredBSplinePrimeShiftPacketCoeffPairing_add_right
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell a : ℝ) (center : ι → ℝ) (x y z : ι → ℂ) :
+    centeredBSplinePrimeShiftPacketCoeffPairing k ell a center z (x + y) =
+      centeredBSplinePrimeShiftPacketCoeffPairing k ell a center z x +
+        centeredBSplinePrimeShiftPacketCoeffPairing k ell a center z y := by
+  unfold centeredBSplinePrimeShiftPacketCoeffPairing
+  simp only [Pi.add_apply, star_add, mul_add, Complex.add_re, add_mul]
+  conv_lhs =>
+    arg 2
+    intro i
+    rw [Finset.sum_add_distrib]
+  rw [Finset.sum_add_distrib]
+
+/-- Right real homogeneity of the prime-shift coefficient pairing. -/
+theorem centeredBSplinePrimeShiftPacketCoeffPairing_smul_right
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell a c : ℝ) (center : ι → ℝ) (x z : ι → ℂ) :
+    centeredBSplinePrimeShiftPacketCoeffPairing k ell a center z (c • x) =
+      c * centeredBSplinePrimeShiftPacketCoeffPairing k ell a center z x := by
+  unfold centeredBSplinePrimeShiftPacketCoeffPairing
+  simp only [Pi.smul_apply]
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i _hi
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro j _hj
+  simp
+  ring_nf
+
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Prime-side receiver
+- role: Step32F Prime-shift coefficient-space receiver bridge
+- input: centered B-spline autocorrelation profile, coefficient basis receiver
+- output: real-bilinear Prime-shift form on finite centered B-spline packet coefficients
+- reviewer question answered: do the finite Prime-shift entries live in the same coefficient receiver model as the Arch entries?
+-/
+noncomputable def centeredBSplinePrimeShiftPacketCoeffBilinearForm
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell a : ℝ) (center : ι → ℝ) :
+    (ι → ℂ) →ₗ[ℝ] (ι → ℂ) →ₗ[ℝ] ℝ :=
+  realBilinearFormOfPairing
+    (centeredBSplinePrimeShiftPacketCoeffPairing k ell a center)
+    (fun x y z =>
+      centeredBSplinePrimeShiftPacketCoeffPairing_add_left
+        k ell a center x y z)
+    (fun c x z =>
+      centeredBSplinePrimeShiftPacketCoeffPairing_smul_left
+        k ell a c center x z)
+    (fun x y z =>
+      centeredBSplinePrimeShiftPacketCoeffPairing_add_right
+        k ell a center y z x)
+    (fun c x y =>
+      centeredBSplinePrimeShiftPacketCoeffPairing_smul_right
+        k ell a c center y x)
+
+/-- Basis entries of the prime-shift coefficient pairing are exactly the
+closed centered B-spline autocorrelation profile for that shift. -/
+theorem centeredBSplinePrimeShiftPacketCoeffPairing_basis_closed
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell a : ℝ) (center : ι → ℝ) (i j : ι) :
+    centeredBSplinePrimeShiftPacketCoeffPairing k ell a center
+      (centeredBSplineCoeffBasis j) (centeredBSplineCoeffBasis i) =
+      centeredBSplineR k ((center j - center i - a) / ell) := by
+  classical
+  unfold centeredBSplinePrimeShiftPacketCoeffPairing centeredBSplineCoeffBasis
+  rw [Finset.sum_eq_single i]
+  · rw [Finset.sum_eq_single j]
+    · simp
+    · intro j' _hj' hj'
+      simp [hj']
+    · intro hj
+      exact (hj (Finset.mem_univ _)).elim
+  · intro i' _hi' hi'
+    simp [hi']
+  · intro hi
+    exact (hi (Finset.mem_univ _)).elim
+
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Prime-side receiver
+- role: Step32F Prime-shift coefficient-space kernel data
+- input: centered B-spline autocorrelation closed form, shifted packet correlation identity, coefficient basis receiver
+- output: Prime-shift PacketKernelPairingData and finite quadratic matrix expansion on coefficient space
+- reviewer question answered: do the finite Prime-shift matrix entries come from the actual B-spline autocorrelation profile on packet coordinates?
+-/
+noncomputable def centeredBSplinePrimeShiftPacketCoeffKernelData
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell a : ℝ) (center : ι → ℝ) :
+    PacketKernelPairingData ι (ι → ℂ) where
+  basisExpansion := centeredBSplineCoeffBasisExpansion
+  form := centeredBSplinePrimeShiftPacketCoeffBilinearForm k ell a center
+  kernel := fun i j => centeredBSplineR k ((center j - center i - a) / ell)
+  pairing_ident := by
+    intro i j
+    dsimp [centeredBSplineCoeffBasisExpansion]
+    change centeredBSplineR k ((center j - center i - a) / ell) =
+      centeredBSplinePrimeShiftPacketCoeffPairing k ell a center
+        (centeredBSplineCoeffBasis j) (centeredBSplineCoeffBasis i)
+    rw [centeredBSplinePrimeShiftPacketCoeffPairing_basis_closed]
+
+/-- The concrete Prime-shift packet coefficient form expands to the finite
+kernel quadratic form. -/
+theorem centeredBSplinePrimeShiftPacketCoeffBilinearForm_synth_eq_quadForm
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell a : ℝ) (center : ι → ℝ) (v : ι → ℝ) :
+    (centeredBSplinePrimeShiftPacketCoeffBilinearForm k ell a center)
+        (centeredBSplineCoeffBasisExpansion.synth v)
+        (centeredBSplineCoeffBasisExpansion.synth v) =
+      Q3.Proofs.quadForm
+        (centeredBSplinePrimeShiftPacketCoeffKernelData k ell a center).matrix
+        v :=
+  (centeredBSplinePrimeShiftPacketCoeffKernelData k ell a center).form_synth_eq_quadForm v
+
 /-- Positive-degree boundary transform profiles are strictly positive at every
 real spectral parameter. -/
 theorem centeredBSplineRealTransformProfile_pos_of_pos_degree
@@ -4384,6 +4538,21 @@ theorem centeredBSplineCorrelation_scaledTranslated_shift_closed
       centeredBSplineR k ((uj - ui - a) / ell) := by
   rw [centeredBSplineCorrelation_scaledTranslated_shift k ell ui uj a hell]
   exact hclosed ((uj - ui - a) / ell)
+
+/-- The Prime-shift coefficient receiver basis entry agrees with the actual
+translated-packet autocorrelation integral. -/
+theorem centeredBSplinePrimeShiftPacketCoeffPairing_basis_correlation_closed
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell a : ℝ) (center : ι → ℝ) (hell : 0 < ell) (i j : ι) :
+    (∫ u : ℝ,
+        realScaledTranslatedBump (centeredBSplineEta k) ell (center j) u *
+          realShift a (realScaledTranslatedBump (centeredBSplineEta k) ell (center i)) u) =
+      centeredBSplinePrimeShiftPacketCoeffPairing k ell a center
+        (centeredBSplineCoeffBasis j) (centeredBSplineCoeffBasis i) := by
+  rw [centeredBSplineCorrelation_scaledTranslated_shift_closed
+    k ell (center i) (center j) a hell
+    (CenteredBSplineAutocorrelationClosedForm_all k)]
+  rw [centeredBSplinePrimeShiftPacketCoeffPairing_basis_closed]
 
 end PSDpd
 end Q3

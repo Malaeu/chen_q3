@@ -12319,3 +12319,30 @@ Update:
   coefficient model.  The next smallest node is the analogous Prime-side
   coefficient receiver bridge, using the already closed autocorrelation/profile
   facts.
+
+## Synthesis (2026-05-24, OK) — `Step32F_PrimeShiftCoeffKernelReceiverBridge`
+
+- Target: close the analogous coefficient receiver bridge for one Prime-side
+  autocorrelation shift, without starting the full prime-sum assembly.
+- Added `centeredBSplinePrimeShiftPacketCoeffPairing`, a real bilinear
+  coefficient-space pairing whose basis entries are the closed
+  `centeredBSplineR k ((center j - center i - a) / ell)` shift profile.
+- Added the four linearity laws
+  `centeredBSplinePrimeShiftPacketCoeffPairing_add_left`,
+  `centeredBSplinePrimeShiftPacketCoeffPairing_smul_left`,
+  `centeredBSplinePrimeShiftPacketCoeffPairing_add_right`, and
+  `centeredBSplinePrimeShiftPacketCoeffPairing_smul_right`.
+- Added `centeredBSplinePrimeShiftPacketCoeffBilinearForm` and
+  `centeredBSplinePrimeShiftPacketCoeffKernelData`, giving the concrete
+  `PacketKernelPairingData` receiver for the single-shift Prime kernel.
+- Added
+  `centeredBSplinePrimeShiftPacketCoeffBilinearForm_synth_eq_quadForm`, giving
+  the finite quadratic-form expansion for synthesized real coefficient vectors.
+- Added `centeredBSplinePrimeShiftPacketCoeffPairing_basis_correlation_closed`,
+  tying the coefficient receiver basis entry back to the actual translated
+  B-spline autocorrelation integral via
+  `CenteredBSplineAutocorrelationClosedForm_all`.
+- This closes the single-shift Prime-side matrix-identification receiver bridge
+  for the coefficient model.  The next smallest node is the finite prime-sum
+  assembly: combine these single-shift receivers with the prime weights into the
+  actual Prime packet matrix/form expected by the Step32 contract.
