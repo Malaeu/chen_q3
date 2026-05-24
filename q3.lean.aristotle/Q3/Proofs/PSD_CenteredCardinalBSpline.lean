@@ -1,4 +1,5 @@
 import Q3.Basic.Defs
+import Q3.Axioms
 import Q3.Proofs.PSD_BSplineAnalyticModel
 import Mathlib.Analysis.Convolution
 import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
@@ -10,6 +11,7 @@ set_option linter.mathlibStandardSet false
 noncomputable section
 
 open MeasureTheory
+open Set
 open scoped BigOperators
 open scoped ComplexConjugate
 
@@ -2045,6 +2047,18 @@ theorem realSinc_abs_le_inv_abs {x : ℝ} (hx : x ≠ 0) :
       div_le_div_of_nonneg_right hsin hxnonneg
     _ = |x|⁻¹ := by ring
 
+/-- The regularized sinc factor is even. -/
+theorem realSinc_neg (x : ℝ) :
+    realSinc (-x) = realSinc x := by
+  rw [realSinc_eq_sinc]
+  exact Real.sinc_neg x
+
+/-- The regularized sinc factor is continuous. -/
+theorem realSinc_continuous :
+    Continuous realSinc := by
+  rw [realSinc_eq_sinc]
+  exact Real.continuous_sinc
+
 /-- The centered interval exponential integral is the regularized hyperbolic
 sinc factor. -/
 theorem intervalIntegral_exp_mul_centered_eq_realSinhc (a : ℝ) :
@@ -2687,6 +2701,216 @@ def centeredBSplineImagTransformClosedForm (k : ℕ) (ell t : ℝ) : ℂ :=
 def centeredBSplineImagTransformRealClosedForm (k : ℕ) (ell t : ℝ) : ℝ :=
   (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ *
     (realSinc (ell * t / (2 * bsplineScale k))) ^ (k + 1)
+
+/-- The real imaginary-axis closed form is continuous in the spectral variable. -/
+theorem centeredBSplineImagTransformRealClosedForm_continuous
+    (k : ℕ) (ell : ℝ) :
+    Continuous (fun t : ℝ => centeredBSplineImagTransformRealClosedForm k ell t) := by
+  unfold centeredBSplineImagTransformRealClosedForm
+  refine continuous_const.mul ?_
+  exact (realSinc_continuous.comp (by continuity)).pow (k + 1)
+
+/-- The real imaginary-axis closed form is even in the spectral variable. -/
+theorem centeredBSplineImagTransformRealClosedForm_neg
+    (k : ℕ) (ell t : ℝ) :
+    centeredBSplineImagTransformRealClosedForm k ell (-t) =
+      centeredBSplineImagTransformRealClosedForm k ell t := by
+  unfold centeredBSplineImagTransformRealClosedForm
+  have harg :
+      ell * (-t) / (2 * bsplineScale k) =
+        -(ell * t / (2 * bsplineScale k)) := by
+    ring
+  rw [harg, realSinc_neg]
+
+/-- Positive-tail bound for the `a_star`-weighted square of the closed
+imaginary-axis B-spline transform.  For positive spline degree the sinc power
+contains at least four powers of `sinc`, so the linear growth of `a_star` is
+dominated by a `t^-3` tail. -/
+theorem a_star_mul_centeredBSplineImagTransformRealClosedForm_sq_tail_bound
+    (k : ℕ) (ell t C0 C1 : ℝ)
+    (hk : 0 < k) (hell : 0 < ell)
+    (hC0 : 0 ≤ C0) (hC1 : 0 ≤ C1)
+    (hgrowth : |Q3.a_star t| ≤ C0 + C1 * |t|) (ht : 1 ≤ t) :
+    ‖Q3.a_star t * (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2‖ ≤
+      ((C0 + C1) * |(Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹| ^ 2 *
+        (|(ell / (2 * bsplineScale k))|⁻¹) ^ 4) * t ^ (-3 : ℝ) := by
+  let D : ℝ := (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹
+  let c : ℝ := ell / (2 * bsplineScale k)
+  have htpos : 0 < t := lt_of_lt_of_le zero_lt_one ht
+  have hc_ne : c ≠ 0 := by
+    unfold c
+    exact div_ne_zero hell.ne'
+      (mul_ne_zero (by norm_num) (bsplineScale_ne_zero k))
+  have harg :
+      ell * t / (2 * bsplineScale k) = c * t := by
+    unfold c
+    ring
+  have hsinc4 :
+      |realSinc (c * t)| ^ 4 ≤ (|c|⁻¹) ^ 4 * t ^ (-4 : ℝ) := by
+    have hct : c * t ≠ 0 := mul_ne_zero hc_ne htpos.ne'
+    have hsinc := realSinc_abs_le_inv_abs hct
+    have hpow :
+        |realSinc (c * t)| ^ 4 ≤ (|c * t|⁻¹) ^ 4 := by
+      exact pow_le_pow_left₀ (abs_nonneg _) hsinc 4
+    calc
+      |realSinc (c * t)| ^ 4 ≤ (|c * t|⁻¹) ^ 4 := hpow
+      _ = (|c|⁻¹) ^ 4 * t ^ (-4 : ℝ) := by
+        rw [abs_mul, abs_of_pos htpos]
+        have hcabs : |c| ≠ 0 := abs_ne_zero.mpr hc_ne
+        have htne : t ≠ 0 := htpos.ne'
+        rw [Real.rpow_neg (le_of_lt htpos)]
+        field_simp [hcabs, htne]
+        norm_num [Real.rpow_natCast]
+  have hsincpow_le :
+      |realSinc (c * t)| ^ (2 * (k + 1)) ≤
+        |realSinc (c * t)| ^ 4 := by
+    have hx0 : 0 ≤ |realSinc (c * t)| := abs_nonneg _
+    have hx1 : |realSinc (c * t)| ≤ 1 := realSinc_abs_le_one _
+    have hpow : 4 ≤ 2 * (k + 1) := by
+      have hk1 : 2 ≤ k + 1 := Nat.succ_le_succ hk
+      nlinarith
+    exact pow_le_pow_of_le_one hx0 hx1 hpow
+  have hEabs :
+      |centeredBSplineImagTransformRealClosedForm k ell t| ^ 2 ≤
+        |D| ^ 2 * |realSinc (c * t)| ^ (2 * (k + 1)) := by
+    apply le_of_eq
+    unfold centeredBSplineImagTransformRealClosedForm D
+    rw [harg]
+    rw [abs_mul]
+    rw [abs_pow]
+    rw [mul_pow]
+    ring_nf
+  have hEabs4 :
+      |centeredBSplineImagTransformRealClosedForm k ell t| ^ 2 ≤
+        |D| ^ 2 * ((|c|⁻¹) ^ 4 * t ^ (-4 : ℝ)) := by
+    calc
+      |centeredBSplineImagTransformRealClosedForm k ell t| ^ 2 ≤
+          |D| ^ 2 * |realSinc (c * t)| ^ (2 * (k + 1)) := hEabs
+      _ ≤ |D| ^ 2 * |realSinc (c * t)| ^ 4 := by
+        exact mul_le_mul_of_nonneg_left hsincpow_le (sq_nonneg |D|)
+      _ ≤ |D| ^ 2 * ((|c|⁻¹) ^ 4 * t ^ (-4 : ℝ)) := by
+        exact mul_le_mul_of_nonneg_left hsinc4 (sq_nonneg |D|)
+  have ha : |Q3.a_star t| ≤ (C0 + C1) * t := by
+    calc
+      |Q3.a_star t| ≤ C0 + C1 * |t| := hgrowth
+      _ = C0 + C1 * t := by rw [abs_of_pos htpos]
+      _ ≤ (C0 + C1) * t := by
+        nlinarith [hC0, hC1, ht]
+  have ht_rpow :
+      t * t ^ (-4 : ℝ) = t ^ (-3 : ℝ) := by
+    calc
+      t * t ^ (-4 : ℝ) =
+          t ^ (1 : ℝ) * t ^ (-4 : ℝ) := by rw [Real.rpow_one]
+      _ = t ^ ((1 : ℝ) + (-4 : ℝ)) := by rw [Real.rpow_add htpos]
+      _ = t ^ (-3 : ℝ) := by norm_num
+  have hmain :
+      |Q3.a_star t| *
+          |centeredBSplineImagTransformRealClosedForm k ell t| ^ 2 ≤
+        ((C0 + C1) * |D| ^ 2 * (|c|⁻¹) ^ 4) * t ^ (-3 : ℝ) := by
+    calc
+      |Q3.a_star t| *
+          |centeredBSplineImagTransformRealClosedForm k ell t| ^ 2 ≤
+        ((C0 + C1) * t) *
+          (|D| ^ 2 * ((|c|⁻¹) ^ 4 * t ^ (-4 : ℝ))) := by
+            exact mul_le_mul ha hEabs4 (sq_nonneg _) (by positivity)
+      _ = ((C0 + C1) * |D| ^ 2 * (|c|⁻¹) ^ 4) * t ^ (-3 : ℝ) := by
+        rw [← ht_rpow]
+        ring
+  calc
+    ‖Q3.a_star t * (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2‖
+        = |Q3.a_star t| *
+            |centeredBSplineImagTransformRealClosedForm k ell t| ^ 2 := by
+          rw [Real.norm_eq_abs, abs_mul, abs_pow]
+    _ ≤ ((C0 + C1) * |D| ^ 2 * (|c|⁻¹) ^ 4) * t ^ (-3 : ℝ) := hmain
+    _ = ((C0 + C1) *
+          |(Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹| ^ 2 *
+        (|(ell / (2 * bsplineScale k))|⁻¹) ^ 4) * t ^ (-3 : ℝ) := by
+          simp [D, c]
+
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Prime-side-adjacent Arch form
+- role: Step32F Arch t-side tail integrability
+- input: closed imaginary-axis B-spline transform, realSinc decay bounds, a_star linear growth
+- output: a_star-weighted square of centered B-spline imaginary transform is integrable for 0 < k
+- reviewer question answered: is the Arch pairing an actual L¹ analytic integral, rather than a formal translated-profile wrapper?
+-/
+set_option maxHeartbeats 800000 in
+theorem a_star_mul_centeredBSplineImagTransformRealClosedForm_sq_integrable_of_pos_degree
+    (k : ℕ) (ell : ℝ) (hk : 0 < k) (hell : 0 < ell) :
+    Integrable (fun t : ℝ =>
+      Q3.a_star t * (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2) := by
+  let f : ℝ → ℝ := fun t =>
+    Q3.a_star t * (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2
+  rcases Q3.a_star_linear_growth with ⟨C0, C1, hC0, hC1, hgrowth⟩
+  let M : ℝ :=
+    (C0 + C1) * |(Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹| ^ 2 *
+      (|(ell / (2 * bsplineScale k))|⁻¹) ^ 4
+  have hcontE := centeredBSplineImagTransformRealClosedForm_continuous k ell
+  have hcont : Continuous f := by
+    dsimp [f]
+    exact Q3.a_star_continuous.mul (hcontE.pow 2)
+  have htail_bound :
+      ∀ t ∈ Ioi (1 : ℝ), ‖f t‖ ≤ M * t ^ (-3 : ℝ) := by
+    intro t ht
+    dsimp [f, M]
+    exact a_star_mul_centeredBSplineImagTransformRealClosedForm_sq_tail_bound
+      k ell t C0 C1 hk hell hC0 hC1 (hgrowth t)
+      (le_of_lt (show (1 : ℝ) < t from ht))
+  have htail_majorant :
+      Integrable (fun t : ℝ => M * t ^ (-3 : ℝ))
+        (volume.restrict (Ioi (1 : ℝ))) := by
+    have h :
+        IntegrableOn (fun t : ℝ => M * t ^ (-3 : ℝ))
+          (Ioi (1 : ℝ)) := by
+      exact (integrableOn_Ioi_rpow_of_lt
+        (by norm_num : (-3 : ℝ) < -1)
+        (by norm_num : (0 : ℝ) < 1)).const_mul M
+    simpa [IntegrableOn] using h
+  have htail : IntegrableOn f (Ioi (1 : ℝ)) := by
+    have hf_meas : AEStronglyMeasurable f (volume.restrict (Ioi (1 : ℝ))) :=
+      hcont.aestronglyMeasurable
+    have htail_int : Integrable f (volume.restrict (Ioi (1 : ℝ))) := by
+      refine htail_majorant.mono' hf_meas ?_
+      refine (ae_restrict_mem measurableSet_Ioi).mono ?_
+      intro t ht
+      exact htail_bound t ht
+    simpa [IntegrableOn] using htail_int
+  have hcompact : IntegrableOn f (Icc (0 : ℝ) 1) := by
+    exact hcont.integrableOn_Icc
+  have hpos : IntegrableOn f (Ici (0 : ℝ)) := by
+    have hunion : IntegrableOn f (Icc (0 : ℝ) 1 ∪ Ioi (1 : ℝ)) :=
+      hcompact.union htail
+    have hset : Icc (0 : ℝ) 1 ∪ Ioi (1 : ℝ) = Ici (0 : ℝ) := by
+      ext x
+      constructor
+      · intro hx
+        rcases hx with hx | hx
+        · exact hx.1
+        · exact le_trans zero_le_one
+            (le_of_lt (show (1 : ℝ) < x from hx))
+      · intro hx0
+        by_cases hx1 : x ≤ 1
+        · exact Or.inl ⟨hx0, hx1⟩
+        · exact Or.inr (lt_of_not_ge hx1)
+    simpa [hset] using hunion
+  have hneg_pre : IntegrableOn (fun x : ℝ => f (-x)) (Iic (0 : ℝ)) := by
+    have hpos0 : IntegrableOn f (Ici (-(0 : ℝ))) := by
+      simpa using hpos
+    simpa using (hpos0.comp_neg_Iic (c := (0 : ℝ)))
+  have hneg : IntegrableOn f (Iic (0 : ℝ)) := by
+    refine hneg_pre.congr_fun ?_ measurableSet_Iic
+    intro x _hx
+    dsimp [f]
+    rw [Q3.a_star_even x]
+    rw [centeredBSplineImagTransformRealClosedForm_neg]
+  have hall : IntegrableOn f univ := by
+    have hunion : IntegrableOn f (Iic (0 : ℝ) ∪ Ici (0 : ℝ)) :=
+      hneg.union hpos
+    simpa [Set.Iic_union_Ici] using hunion
+  have hfinal : Integrable f := by
+    simpa [integrableOn_univ] using hall
+  simpa [f]
 
 /-- The complex closed form is just the real scalar embedded in `ℂ`. -/
 theorem centeredBSplineImagTransformClosedForm_eq_ofReal

@@ -12225,3 +12225,28 @@ Update:
   integrability proof.  The remaining analytic core is now precisely the sinc
   tail lemma: `a_star` has linear growth and
   `realSinc(c*t)^(2*k+2)` must dominate it in `L1` for `0 < k`.
+
+## Synthesis (2026-05-24, OK) — `Step32F_ArchSincTailIntegrability`
+
+- Target: close the isolated analytic tail theorem
+  `a_star_mul_centeredBSplineImagTransformRealClosedForm_sq_integrable_of_pos_degree`,
+  not the whole Arch packet-sum integrability node.
+- Added `realSinc_neg` and `realSinc_continuous`, reusing Mathlib's
+  `Real.sinc_neg` and `Real.continuous_sinc` through the local `realSinc_eq_sinc`
+  bridge.
+- Added `centeredBSplineImagTransformRealClosedForm_continuous` and
+  `centeredBSplineImagTransformRealClosedForm_neg`, giving local continuity and
+  evenness of the normalized imaginary-axis closed form.
+- Added
+  `a_star_mul_centeredBSplineImagTransformRealClosedForm_sq_tail_bound`: on
+  `t >= 1`, `a_star_linear_growth` plus the four available sinc powers for
+  `0 < k` bounds the weighted square by a constant times `t^(-3)`.
+- Closed
+  `a_star_mul_centeredBSplineImagTransformRealClosedForm_sq_integrable_of_pos_degree`
+  by combining the positive-tail `t^(-3)` majorant, compact continuity on
+  `[0,1]`, and evenness to transfer the positive half-line estimate to the
+  negative half-line.
+- This closes the core `a_star x closedForm^2` tail obstruction.  The next
+  smallest theorem is the finite-packet Arch integrand lift:
+  `centeredBSplineArchIntegrand_translatedPacketSum_integrable`, using the
+  packet closed-form sum plus finite-sum/phase boundedness.
