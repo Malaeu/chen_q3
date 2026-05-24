@@ -4509,6 +4509,154 @@ theorem centeredBSplineFinitePrimePacketCoeffBilinearForm_synth_eq_quadForm
   (centeredBSplineFinitePrimePacketCoeffKernelData
     k ell center weight shift).form_synth_eq_quadForm v
 
+/-- Plus boundary functional on the coefficient model.  It is the concrete
+row `exp(center i / 2)` applied to the real parts of complex coefficients. -/
+noncomputable def centeredBSplineCoeffBoundaryPlusFunctional
+    {ι : Type*} [Fintype ι] (center : ι → ℝ) :
+    (ι → ℂ) →ₗ[ℝ] ℝ where
+  toFun x := ∑ i, bsplineBoundaryPlusRow center i * (x i).re
+  map_add' := by
+    intro x y
+    simp [Pi.add_apply, mul_add, Finset.sum_add_distrib]
+  map_smul' := by
+    intro c x
+    simp [Pi.smul_apply, Finset.mul_sum, mul_assoc, mul_comm]
+
+/-- Minus boundary functional on the coefficient model. -/
+noncomputable def centeredBSplineCoeffBoundaryMinusFunctional
+    {ι : Type*} [Fintype ι] (center : ι → ℝ) :
+    (ι → ℂ) →ₗ[ℝ] ℝ where
+  toFun x := ∑ i, bsplineBoundaryMinusRow center i * (x i).re
+  map_add' := by
+    intro x y
+    simp [Pi.add_apply, mul_add, Finset.sum_add_distrib]
+  map_smul' := by
+    intro c x
+    simp [Pi.smul_apply, Finset.mul_sum, mul_assoc, mul_comm]
+
+/-- Boundary pair for the concrete coefficient-space B-spline packet model. -/
+noncomputable def centeredBSplineCoeffBoundaryPair
+    {ι : Type*} [Fintype ι] (center : ι → ℝ) :
+    BoundaryPair (ι → ℂ) where
+  evalPlus := centeredBSplineCoeffBoundaryPlusFunctional center
+  evalMinus := centeredBSplineCoeffBoundaryMinusFunctional center
+
+/-- Coefficient plus boundary on a basis vector gives the plus exponential row. -/
+theorem centeredBSplineCoeffBoundaryPair_evalPlus_basis
+    {ι : Type*} [Fintype ι] (center : ι → ℝ) (i : ι) :
+    (centeredBSplineCoeffBoundaryPair center).evalPlus
+        (centeredBSplineCoeffBasis i) =
+      bsplineBoundaryPlusRow center i := by
+  classical
+  change
+    (∑ j : ι,
+      bsplineBoundaryPlusRow center j *
+        (if j = i then (1 : ℂ) else 0).re) =
+      bsplineBoundaryPlusRow center i
+  rw [Finset.sum_eq_single i]
+  · simp
+  · intro j _hj hji
+    simp [hji]
+  · intro hi
+    exact (hi (Finset.mem_univ _)).elim
+
+/-- Coefficient minus boundary on a basis vector gives the minus exponential row. -/
+theorem centeredBSplineCoeffBoundaryPair_evalMinus_basis
+    {ι : Type*} [Fintype ι] (center : ι → ℝ) (i : ι) :
+    (centeredBSplineCoeffBoundaryPair center).evalMinus
+        (centeredBSplineCoeffBasis i) =
+      bsplineBoundaryMinusRow center i := by
+  classical
+  change
+    (∑ j : ι,
+      bsplineBoundaryMinusRow center j *
+        (if j = i then (1 : ℂ) else 0).re) =
+      bsplineBoundaryMinusRow center i
+  rw [Finset.sum_eq_single i]
+  · simp
+  · intro j _hj hji
+    simp [hji]
+  · intro hi
+    exact (hi (Finset.mem_univ _)).elim
+
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Step32F concrete contract assembly
+- role: assemble coefficient-space boundary, Arch receiver, and finite Prime receiver
+- input: Arch coefficient receiver, finite Prime coefficient receiver, exponential boundary rows
+- output: one BSplineAnalyticKernelContract over the centered B-spline coefficient model
+- reviewer question answered: do the boundary rows, Arch matrix, and finite Prime matrix now live in one finite analytic contract?
+-/
+noncomputable def centeredBSplineCoeffAnalyticKernelContract
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) :
+    BSplineAnalyticKernelContract ι (ι → ℂ) where
+  center := center
+  basisExpansion := centeredBSplineCoeffBasisExpansion
+  boundary := centeredBSplineCoeffBoundaryPair center
+  scalePlus := 1
+  scaleMinus := 1
+  scalePlus_ne_zero := by norm_num
+  scaleMinus_ne_zero := by norm_num
+  boundaryPlus_basis := by
+    intro i
+    simpa using centeredBSplineCoeffBoundaryPair_evalPlus_basis center i
+  boundaryMinus_basis := by
+    intro i
+    simpa using centeredBSplineCoeffBoundaryPair_evalMinus_basis center i
+  archKernel := centeredBSplineArchPacketCoeffKernelData k ell center hk hell
+  primeKernel := centeredBSplineFinitePrimePacketCoeffKernelData k ell center weight shift
+  arch_basisExpansion_eq := rfl
+  prime_basisExpansion_eq := rfl
+  archForm := fun x =>
+    (centeredBSplineArchPacketCoeffBilinearForm k ell center hk hell) x x
+  primeForm := fun x =>
+    (centeredBSplineFinitePrimePacketCoeffBilinearForm k ell center weight shift) x x
+  weilForm := fun x =>
+    (centeredBSplineArchPacketCoeffBilinearForm k ell center hk hell) x x -
+      (centeredBSplineFinitePrimePacketCoeffBilinearForm k ell center weight shift) x x
+  archForm_eq := by
+    intro v
+    rfl
+  primeForm_eq := by
+    intro v
+    rfl
+  weil_split := by
+    intro v
+    rfl
+
+/-- The assembled coefficient-space B-spline contract gives a finite Weil
+matrix model with `C = A - P` and the two exponential boundary rows. -/
+noncomputable def centeredBSplineCoeffFiniteWeilMatrixModel
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) :
+    FiniteWeilMatrixModel
+      (V := ι → ℂ)
+      (centeredBSplineCoeffAnalyticKernelContract
+        k ell center weight shift hk hell).toFormulaContract.C
+      (centeredBSplineCoeffAnalyticKernelContract
+        k ell center weight shift hk hell).toFormulaContract.boundaryRows.Q :=
+  (centeredBSplineCoeffAnalyticKernelContract
+    k ell center weight shift hk hell).toFiniteWeilMatrixModel
+
+/-- The assembled coefficient contract identifies the synthesized Weil form
+with the finite Arch-minus-Prime matrix quadratic form. -/
+theorem centeredBSplineCoeffAnalyticKernelContract_weil_ident
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) :
+    ∀ v : ι → ℝ,
+      (centeredBSplineCoeffAnalyticKernelContract
+        k ell center weight shift hk hell).weilForm
+          (centeredBSplineCoeffBasisExpansion.synth v) =
+        Q3.Proofs.quadForm
+          (centeredBSplineCoeffAnalyticKernelContract
+            k ell center weight shift hk hell).toFormulaContract.C v :=
+  (centeredBSplineCoeffAnalyticKernelContract
+    k ell center weight shift hk hell).weil_ident
+
 /-- Positive-degree boundary transform profiles are strictly positive at every
 real spectral parameter. -/
 theorem centeredBSplineRealTransformProfile_pos_of_pos_degree

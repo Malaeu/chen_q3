@@ -12369,3 +12369,29 @@ Update:
   smallest node is to plug the Arch coefficient receiver, the finite Prime
   receiver, and the already closed boundary data into a concrete
   centered-B-spline analytic/finite-matrix contract.
+
+## Synthesis (2026-05-24, OK) — `Step32F_CoeffAnalyticKernelContractAssembly`
+
+- Target: assemble the already closed coefficient-space boundary rows, Arch
+  receiver, and finite Prime receiver into one concrete
+  `BSplineAnalyticKernelContract`.
+- Added real-linear coefficient boundary functionals
+  `centeredBSplineCoeffBoundaryPlusFunctional` and
+  `centeredBSplineCoeffBoundaryMinusFunctional`, plus
+  `centeredBSplineCoeffBoundaryPair`.
+- Added basis-row identities
+  `centeredBSplineCoeffBoundaryPair_evalPlus_basis` and
+  `centeredBSplineCoeffBoundaryPair_evalMinus_basis`, identifying the
+  coefficient basis with the rows `exp(center i / 2)` and
+  `exp(-center i / 2)`.
+- Added `centeredBSplineCoeffAnalyticKernelContract`, combining
+  `centeredBSplineArchPacketCoeffKernelData` and
+  `centeredBSplineFinitePrimePacketCoeffKernelData` under the same
+  coefficient basis and boundary rows.
+- Added `centeredBSplineCoeffFiniteWeilMatrixModel` and
+  `centeredBSplineCoeffAnalyticKernelContract_weil_ident`, exposing the
+  finite matrix model and the synthesized Weil-form identity.
+- This closes the coefficient-space Step32F contract assembly layer. The next
+  smallest node is to connect this assembled contract to the interval-backed
+  finite certificate data / concrete block wrapper, then move toward the
+  finite-to-directed bridge.
