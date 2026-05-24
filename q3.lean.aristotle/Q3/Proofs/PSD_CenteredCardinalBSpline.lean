@@ -4372,6 +4372,143 @@ theorem centeredBSplinePrimeShiftPacketCoeffBilinearForm_synth_eq_quadForm
         v :=
   (centeredBSplinePrimeShiftPacketCoeffKernelData k ell a center).form_synth_eq_quadForm v
 
+/-- Symmetric finite Prime packet pairing assembled from finitely many weighted
+positive/negative shifts.  A concrete prime block supplies `shift n = r log p`
+and `weight n = log p / p^(r/2)`. -/
+noncomputable def centeredBSplineFinitePrimePacketCoeffPairing
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (x y : ι → ℂ) : ℝ :=
+  ∑ n, weight n *
+    (centeredBSplinePrimeShiftPacketCoeffPairing k ell (shift n) center x y +
+      centeredBSplinePrimeShiftPacketCoeffPairing k ell (-(shift n)) center x y)
+
+/-- Symmetric finite Prime kernel profile induced by the weighted shift list. -/
+def centeredBSplineFinitePrimeKernelProfile
+    {ν : Type*} [Fintype ν]
+    (k : ℕ) (ell : ℝ) (weight shift : ν → ℝ) (d : ℝ) : ℝ :=
+  ∑ n, weight n *
+    (centeredBSplineR k ((d - shift n) / ell) +
+      centeredBSplineR k ((d + shift n) / ell))
+
+/-- Left additivity of the finite Prime packet coefficient pairing. -/
+theorem centeredBSplineFinitePrimePacketCoeffPairing_add_left
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (x y z : ι → ℂ) :
+    centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift (x + y) z =
+      centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift x z +
+        centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift y z := by
+  unfold centeredBSplineFinitePrimePacketCoeffPairing
+  simp [centeredBSplinePrimeShiftPacketCoeffPairing_add_left,
+    Finset.sum_add_distrib, mul_add, add_assoc, add_left_comm]
+
+/-- Left real homogeneity of the finite Prime packet coefficient pairing. -/
+theorem centeredBSplineFinitePrimePacketCoeffPairing_smul_left
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell c : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (x z : ι → ℂ) :
+    centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift (c • x) z =
+      c * centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift x z := by
+  unfold centeredBSplineFinitePrimePacketCoeffPairing
+  simp [centeredBSplinePrimeShiftPacketCoeffPairing_smul_left,
+    Finset.mul_sum, mul_add, mul_left_comm]
+
+/-- Right additivity of the finite Prime packet coefficient pairing. -/
+theorem centeredBSplineFinitePrimePacketCoeffPairing_add_right
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (x y z : ι → ℂ) :
+    centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift z (x + y) =
+      centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift z x +
+        centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift z y := by
+  unfold centeredBSplineFinitePrimePacketCoeffPairing
+  simp [centeredBSplinePrimeShiftPacketCoeffPairing_add_right,
+    Finset.sum_add_distrib, mul_add, add_assoc, add_left_comm]
+
+/-- Right real homogeneity of the finite Prime packet coefficient pairing. -/
+theorem centeredBSplineFinitePrimePacketCoeffPairing_smul_right
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell c : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (x z : ι → ℂ) :
+    centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift z (c • x) =
+      c * centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift z x := by
+  unfold centeredBSplineFinitePrimePacketCoeffPairing
+  simp [centeredBSplinePrimeShiftPacketCoeffPairing_smul_right,
+    Finset.mul_sum, mul_add, mul_left_comm]
+
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Prime-side finite receiver
+- role: Step32F finite Prime-sum coefficient-space assembly
+- input: single-shift Prime receivers, finite prime weights/shifts, coefficient basis receiver
+- output: one finite Prime PacketKernelPairingData assembled from all weighted positive/negative shifts
+- reviewer question answered: does the Prime packet matrix come from one real-bilinear finite form, not just disconnected single-shift identities?
+-/
+noncomputable def centeredBSplineFinitePrimePacketCoeffBilinearForm
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ) :
+    (ι → ℂ) →ₗ[ℝ] (ι → ℂ) →ₗ[ℝ] ℝ :=
+  realBilinearFormOfPairing
+    (centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift)
+    (fun x y z =>
+      centeredBSplineFinitePrimePacketCoeffPairing_add_left
+        k ell center weight shift x y z)
+    (fun c x z =>
+      centeredBSplineFinitePrimePacketCoeffPairing_smul_left
+        k ell c center weight shift x z)
+    (fun x y z =>
+      centeredBSplineFinitePrimePacketCoeffPairing_add_right
+        k ell center weight shift y z x)
+    (fun c x y =>
+      centeredBSplineFinitePrimePacketCoeffPairing_smul_right
+        k ell c center weight shift y x)
+
+/-- Basis entries of the finite Prime packet coefficient pairing are the
+weighted finite Prime kernel profile. -/
+theorem centeredBSplineFinitePrimePacketCoeffPairing_basis_closed
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ) (i j : ι) :
+    centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift
+      (centeredBSplineCoeffBasis j) (centeredBSplineCoeffBasis i) =
+      centeredBSplineFinitePrimeKernelProfile k ell weight shift (center j - center i) := by
+  unfold centeredBSplineFinitePrimePacketCoeffPairing centeredBSplineFinitePrimeKernelProfile
+  simp [centeredBSplinePrimeShiftPacketCoeffPairing_basis_closed,
+    sub_eq_add_neg, add_assoc, add_comm, add_left_comm]
+
+/-- Concrete finite Prime packet-kernel data assembled from all weighted
+positive/negative shifts. -/
+noncomputable def centeredBSplineFinitePrimePacketCoeffKernelData
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ) :
+    PacketKernelPairingData ι (ι → ℂ) where
+  basisExpansion := centeredBSplineCoeffBasisExpansion
+  form := centeredBSplineFinitePrimePacketCoeffBilinearForm k ell center weight shift
+  kernel := fun i j =>
+    centeredBSplineFinitePrimeKernelProfile k ell weight shift (center j - center i)
+  pairing_ident := by
+    intro i j
+    dsimp [centeredBSplineCoeffBasisExpansion]
+    change centeredBSplineFinitePrimeKernelProfile k ell weight shift (center j - center i) =
+      centeredBSplineFinitePrimePacketCoeffPairing k ell center weight shift
+        (centeredBSplineCoeffBasis j) (centeredBSplineCoeffBasis i)
+    rw [centeredBSplineFinitePrimePacketCoeffPairing_basis_closed]
+
+/-- The concrete finite Prime packet coefficient form expands to the finite
+kernel quadratic form. -/
+theorem centeredBSplineFinitePrimePacketCoeffBilinearForm_synth_eq_quadForm
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ) (v : ι → ℝ) :
+    (centeredBSplineFinitePrimePacketCoeffBilinearForm k ell center weight shift)
+        (centeredBSplineCoeffBasisExpansion.synth v)
+        (centeredBSplineCoeffBasisExpansion.synth v) =
+      Q3.Proofs.quadForm
+        (centeredBSplineFinitePrimePacketCoeffKernelData
+          k ell center weight shift).matrix
+        v :=
+  (centeredBSplineFinitePrimePacketCoeffKernelData
+    k ell center weight shift).form_synth_eq_quadForm v
+
 /-- Positive-degree boundary transform profiles are strictly positive at every
 real spectral parameter. -/
 theorem centeredBSplineRealTransformProfile_pos_of_pos_degree

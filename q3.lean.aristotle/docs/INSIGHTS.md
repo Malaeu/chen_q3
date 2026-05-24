@@ -12346,3 +12346,26 @@ Update:
   for the coefficient model.  The next smallest node is the finite prime-sum
   assembly: combine these single-shift receivers with the prime weights into the
   actual Prime packet matrix/form expected by the Step32 contract.
+
+## Synthesis (2026-05-24, OK) — `Step32F_FinitePrimeSumCoeffAssembly`
+
+- Target: assemble the single-shift Prime receiver into one finite weighted
+  Prime-side coefficient form, without yet wiring the full
+  `BSplineTranslatedAnalyticContract`.
+- Added `centeredBSplineFinitePrimePacketCoeffPairing`, summing the
+  single-shift receivers over a finite index type with weighted positive and
+  negative shifts.
+- Added `centeredBSplineFinitePrimeKernelProfile`, the resulting concrete
+  finite kernel profile
+  `sum weight n * (r_k((d-shift n)/ell) + r_k((d+shift n)/ell))`.
+- Added the four real-bilinearity laws for the finite Prime packet pairing.
+- Added `centeredBSplineFinitePrimePacketCoeffBilinearForm` and
+  `centeredBSplineFinitePrimePacketCoeffKernelData`, packaging the assembled
+  Prime form as one `PacketKernelPairingData`.
+- Added `centeredBSplineFinitePrimePacketCoeffBilinearForm_synth_eq_quadForm`,
+  giving the matrix quadratic-form expansion for synthesized real coefficient
+  vectors.
+- This closes the finite Prime-sum coefficient receiver layer.  The next
+  smallest node is to plug the Arch coefficient receiver, the finite Prime
+  receiver, and the already closed boundary data into a concrete
+  centered-B-spline analytic/finite-matrix contract.
