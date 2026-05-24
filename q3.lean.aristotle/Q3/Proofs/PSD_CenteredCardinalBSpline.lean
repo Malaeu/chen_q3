@@ -4657,6 +4657,112 @@ theorem centeredBSplineCoeffAnalyticKernelContract_weil_ident
   (centeredBSplineCoeffAnalyticKernelContract
     k ell center weight shift hk hell).weil_ident
 
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / finite certificate handoff
+- role: Step32F coefficient certified block wrapper
+- input: coefficient analytic contract, interval-backed FinitePenaltyCert, matrix split identity
+- output: CertifiedFiniteWeilModel for the centered B-spline coefficient model
+- reviewer question answered: does the concrete coefficient contract feed the existing finite-certificate consumer, rather than stopping at a matrix-identification wrapper?
+-/
+structure CertifiedCenteredBSplineCoeffBlock
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) where
+  D : Matrix ι ι ℝ
+  R : Matrix ι ι ℝ
+  theta : ℝ
+  theta_nonneg : 0 ≤ theta
+  cert :
+    Q3.Proofs.FinitePenaltyCert
+      D
+      R
+      (centeredBSplineCoeffAnalyticKernelContract
+        k ell center weight shift hk hell).toFormulaContract.boundaryRows.Q
+  split :
+    ∀ v : ι → ℝ,
+      Q3.Proofs.quadForm
+          (centeredBSplineCoeffAnalyticKernelContract
+            k ell center weight shift hk hell).toFormulaContract.C v =
+        Q3.Proofs.quadForm D v + theta * Q3.Proofs.quadForm R v
+
+namespace CertifiedCenteredBSplineCoeffBlock
+
+/-- The finite matrix-to-Weil model supplied by the coefficient-space analytic
+contract. -/
+noncomputable def finiteWeilMatrixModel
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    {k : ℕ} {ell : ℝ} {center : ι → ℝ} {weight shift : ν → ℝ}
+    {hk : 0 < k} {hell : 0 < ell}
+    (B : CertifiedCenteredBSplineCoeffBlock k ell center weight shift hk hell) :
+    FiniteWeilMatrixModel
+      (V := ι → ℂ)
+      (centeredBSplineCoeffAnalyticKernelContract
+        k ell center weight shift hk hell).toFormulaContract.C
+      (centeredBSplineCoeffAnalyticKernelContract
+        k ell center weight shift hk hell).toFormulaContract.boundaryRows.Q :=
+by
+  cases B
+  exact centeredBSplineCoeffFiniteWeilMatrixModel
+    k ell center weight shift hk hell
+
+/-- Coefficient analytic identity data plus an interval-backed finite penalty
+certificate produce the packaged Step 31 finite analytic Weil model. -/
+noncomputable def toCertifiedFiniteWeilModel
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    {k : ℕ} {ell : ℝ} {center : ι → ℝ} {weight shift : ν → ℝ}
+    {hk : 0 < k} {hell : 0 < ell}
+    (B : CertifiedCenteredBSplineCoeffBlock k ell center weight shift hk hell) :
+    CertifiedFiniteWeilModel (Fin 2) ι (ι → ℂ) where
+  C :=
+    (centeredBSplineCoeffAnalyticKernelContract
+      k ell center weight shift hk hell).toFormulaContract.C
+  D := B.D
+  R := B.R
+  Q :=
+    (centeredBSplineCoeffAnalyticKernelContract
+      k ell center weight shift hk hell).toFormulaContract.boundaryRows.Q
+  theta := B.theta
+  theta_nonneg := B.theta_nonneg
+  cert := B.cert
+  split := B.split
+  model := B.finiteWeilMatrixModel
+
+/-- A certified coefficient B-spline block proves analytic Weil nonnegativity
+on synthesized analytic boundary-null coefficient vectors. -/
+theorem weil_nonneg_on_analyticBoundary
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    {k : ℕ} {ell : ℝ} {center : ι → ℝ} {weight shift : ν → ℝ}
+    {hk : 0 < k} {hell : 0 < ell}
+    (B : CertifiedCenteredBSplineCoeffBlock k ell center weight shift hk hell) :
+    ∀ v : ι → ℝ,
+      B.finiteWeilMatrixModel.boundary.evalPlus
+          (B.finiteWeilMatrixModel.synth v) = 0 →
+      B.finiteWeilMatrixModel.boundary.evalMinus
+          (B.finiteWeilMatrixModel.synth v) = 0 →
+        0 ≤ B.finiteWeilMatrixModel.weilForm
+          (B.finiteWeilMatrixModel.synth v) :=
+  B.toCertifiedFiniteWeilModel.weil_nonneg_on_analyticBoundary
+
+/-- The same certified coefficient block exposes the strengthened lower bound
+against the certified base matrix `R`. -/
+theorem weil_ge_theta_R_on_analyticBoundary
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    {k : ℕ} {ell : ℝ} {center : ι → ℝ} {weight shift : ν → ℝ}
+    {hk : 0 < k} {hell : 0 < ell}
+    (B : CertifiedCenteredBSplineCoeffBlock k ell center weight shift hk hell) :
+    ∀ v : ι → ℝ,
+      B.finiteWeilMatrixModel.boundary.evalPlus
+          (B.finiteWeilMatrixModel.synth v) = 0 →
+      B.finiteWeilMatrixModel.boundary.evalMinus
+          (B.finiteWeilMatrixModel.synth v) = 0 →
+        B.theta * Q3.Proofs.quadForm B.R v ≤
+          B.finiteWeilMatrixModel.weilForm
+            (B.finiteWeilMatrixModel.synth v) :=
+  B.toCertifiedFiniteWeilModel.weil_ge_theta_R_on_analyticBoundary
+
+end CertifiedCenteredBSplineCoeffBlock
+
 /-- Positive-degree boundary transform profiles are strictly positive at every
 real spectral parameter. -/
 theorem centeredBSplineRealTransformProfile_pos_of_pos_degree

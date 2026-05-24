@@ -12395,3 +12395,31 @@ Update:
   smallest node is to connect this assembled contract to the interval-backed
   finite certificate data / concrete block wrapper, then move toward the
   finite-to-directed bridge.
+
+## Synthesis (2026-05-24, OK) — `Step32F_CoeffCertifiedFiniteBlock`
+
+- Target: bridge the assembled coefficient-space analytic contract to the
+  existing interval-backed `FinitePenaltyCert` / `CertifiedFiniteWeilModel`
+  consumer layer.
+- Semantic-search pass had low direct recall for the new theorem names, but
+  confirmed the relevant old receiver route:
+  `CertifiedBSplineConcreteBlock -> CertifiedFiniteWeilModel` and the Step 31
+  `FiniteWeilMatrixModel` certificate consumer.
+- Implementation plan: add a narrow coefficient-specific certified block
+  wrapper over `centeredBSplineCoeffAnalyticKernelContract`, with fields
+  `D`, `R`, `theta`, `FinitePenaltyCert`, and the split identity
+  `C = D + theta R` as quadratic forms.
+- Expected output: a direct `CertifiedFiniteWeilModel (Fin 2) ι (ι -> ℂ)` plus
+  analytic-boundary nonnegativity and `theta R` lower-bound consumer theorems.
+- Added `CertifiedCenteredBSplineCoeffBlock`, packaging `D`, `R`, `theta`,
+  `theta_nonneg`, a `FinitePenaltyCert`, and the split identity for the
+  assembled coefficient contract matrix `C`.
+- Added
+  `CertifiedCenteredBSplineCoeffBlock.finiteWeilMatrixModel`,
+  `CertifiedCenteredBSplineCoeffBlock.toCertifiedFiniteWeilModel`,
+  `CertifiedCenteredBSplineCoeffBlock.weil_nonneg_on_analyticBoundary`, and
+  `CertifiedCenteredBSplineCoeffBlock.weil_ge_theta_R_on_analyticBoundary`.
+- This closes the coefficient contract -> finite certificate consumer bridge.
+  The next smallest node is to instantiate this wrapper with a concrete
+  interval-backed certificate block / manifest data, then feed the resulting
+  `CertifiedFiniteWeilModel` into the finite-to-directed family layer.
