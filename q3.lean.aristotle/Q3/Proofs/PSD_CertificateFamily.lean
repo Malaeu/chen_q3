@@ -66,6 +66,27 @@ structure DirectedCertFamily where
       ∃ b₃ : Block,
         HasRefinement.Refines b₁ b₃ ∧ HasRefinement.Refines b₂ b₃
 
+namespace CertifiedFiniteBlock
+
+/-- A single certified finite block forms a degenerate directed family.
+
+This is a ledger adapter only: it does not assert density, exhaustion, or any
+analytic refinement beyond the singleton block itself. -/
+def singletonDirectedFamily (B : CertifiedFiniteBlock) : DirectedCertFamily where
+  Block := PUnit
+  refinement := { Refines := fun _ _ => True }
+  certBlock := fun _ => B
+  nonempty := ⟨PUnit.unit⟩
+  directed := by
+    intro b₁ b₂
+    exact ⟨PUnit.unit, trivial, trivial⟩
+
+@[simp] theorem singletonDirectedFamily_certBlock
+    (B : CertifiedFiniteBlock) (b : (singletonDirectedFamily B).Block) :
+    (singletonDirectedFamily B).certBlock b = B := rfl
+
+end CertifiedFiniteBlock
+
 /-- Future analytic exhaustion package.
 
 The `statement` field will eventually be the real boundary-null density theorem

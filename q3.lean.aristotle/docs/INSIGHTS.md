@@ -12439,3 +12439,22 @@ Update:
   next smallest node is to instantiate concrete manifest rows for the active
   blocks, using interval-backed `D/R/Q/theta/split` data or checked generator
   output feeding this wrapper.
+
+## Synthesis (2026-05-24, OK) — `Step32F_CoeffSingletonDirectedFamily`
+
+- Target: connect a single certified coefficient B-spline block to the Step27
+  `DirectedCertFamily` carrier without claiming boundary-null exhaustion.
+- Semantic-search pass had low direct recall for a pre-existing singleton
+  adapter, and the Step27 skeleton note confirmed that accepted finite blocks
+  currently sit in a seed-only, non-exhaustive layer.
+- Added `CertifiedFiniteBlock.singletonDirectedFamily`, a degenerate directed
+  family over `PUnit` whose only certified block is the supplied
+  `CertifiedFiniteBlock`.
+- Added
+  `CertifiedCenteredBSplineCoeffBlock.toSingletonDirectedCertFamily`, composing
+  the coefficient certified-block ledger bridge with the singleton directed
+  family adapter.
+- This closes the honest one-block directed-family carrier.  The next smallest
+  node is still concrete manifest-row instantiation for the active interval
+  certificates, followed by a genuine refinement/exhaustion theorem rather than
+  a singleton shell.

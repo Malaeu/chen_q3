@@ -4789,6 +4789,20 @@ noncomputable def toCertifiedFiniteBlock
       k ell center weight shift hk hell).toFormulaContract.boundaryRows.Q
   cert := B.cert
 
+/-- Expose one certified coefficient B-spline block as a degenerate directed
+certificate family.
+
+This is intentionally only the singleton ledger adapter.  Exhaustion and real
+directed refinement remain separate analytic obligations. -/
+noncomputable def toSingletonDirectedCertFamily
+    {ι ν : Type} [Fintype ι] [Fintype ν]
+    {k : ℕ} {ell : ℝ} {center : ι → ℝ} {weight shift : ν → ℝ}
+    {hk : 0 < k} {hell : 0 < ell}
+    (B : CertifiedCenteredBSplineCoeffBlock k ell center weight shift hk hell)
+    (label : FiniteSpaceLabel) :
+    DirectedCertFamily :=
+  (B.toCertifiedFiniteBlock label).singletonDirectedFamily
+
 end CertifiedCenteredBSplineCoeffBlock
 
 /-- Positive-degree boundary transform profiles are strictly positive at every
