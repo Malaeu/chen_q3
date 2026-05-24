@@ -3983,6 +3983,150 @@ theorem centeredBSplineArchIntegrand_translatedPacketSum_integrable
     hclosed_integrable.congr hclosed_ae
   simpa [F, G] using hfinal
 
+/-- Finite complex packet sum built from translated normalized centered
+B-spline packets.  The coefficient space is a real vector space via the usual
+real scalar action on complex coefficients. -/
+noncomputable def centeredBSplineTranslatedPacketSum
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (coeff : ι → ℂ) (center : ι → ℝ) : ℝ → ℂ :=
+  fun x : ℝ =>
+    Finset.univ.sum fun i : ι =>
+      coeff i *
+        complexScaledTranslatedBump
+          (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) x
+
+/-- Packet sums are additive in their coefficient vector. -/
+theorem centeredBSplineTranslatedPacketSum_add_coeff
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (a b : ι → ℂ) (center : ι → ℝ) :
+    centeredBSplineTranslatedPacketSum k ell (a + b) center =
+      fun x => centeredBSplineTranslatedPacketSum k ell a center x +
+        centeredBSplineTranslatedPacketSum k ell b center x := by
+  funext x
+  simp [centeredBSplineTranslatedPacketSum, Pi.add_apply, add_mul, Finset.sum_add_distrib]
+
+/-- Packet sums are homogeneous for real scalar multiplication of coefficients. -/
+theorem centeredBSplineTranslatedPacketSum_smul_coeff
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell c : ℝ) (a : ι → ℂ) (center : ι → ℝ) :
+    centeredBSplineTranslatedPacketSum k ell (c • a) center =
+      c • centeredBSplineTranslatedPacketSum k ell a center := by
+  funext x
+  simp [centeredBSplineTranslatedPacketSum, Pi.smul_apply, Finset.mul_sum]
+  ring_nf
+
+/-- Arch pairing pulled back to the finite coefficient space of translated
+centered B-spline packets. -/
+noncomputable def centeredBSplineArchPacketCoeffPairing
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (a b : ι → ℂ) : ℝ :=
+  centeredBSplineArchPairing
+    (centeredBSplineTranslatedPacketSum k ell a center)
+    (centeredBSplineTranslatedPacketSum k ell b center)
+
+/-- Left additivity of the concrete Arch pairing on finite B-spline packet
+coefficient vectors. -/
+theorem centeredBSplineArchPacketCoeffPairing_add_left
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (a b z : ι → ℂ)
+    (hk : 0 < k) (hell : 0 < ell) :
+    centeredBSplineArchPacketCoeffPairing k ell center (a + b) z =
+      centeredBSplineArchPacketCoeffPairing k ell center a z +
+        centeredBSplineArchPacketCoeffPairing k ell center b z := by
+  unfold centeredBSplineArchPacketCoeffPairing
+  rw [centeredBSplineTranslatedPacketSum_add_coeff k ell a b center]
+  apply centeredBSplineArchPairing_add_left
+  · intro t
+    simpa [centeredBSplineTranslatedPacketSum] using
+      centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_integrable
+        k ell t a center hk hell
+  · intro t
+    simpa [centeredBSplineTranslatedPacketSum] using
+      centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_integrable
+        k ell t b center hk hell
+  · simpa [centeredBSplineTranslatedPacketSum] using
+      centeredBSplineArchIntegrand_translatedPacketSum_integrable
+        k ell a center z center hk hell
+  · simpa [centeredBSplineTranslatedPacketSum] using
+      centeredBSplineArchIntegrand_translatedPacketSum_integrable
+        k ell b center z center hk hell
+
+/-- Left real homogeneity of the concrete Arch pairing on finite B-spline packet
+coefficient vectors. -/
+theorem centeredBSplineArchPacketCoeffPairing_smul_left
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (c : ℝ) (a z : ι → ℂ) :
+    centeredBSplineArchPacketCoeffPairing k ell center (c • a) z =
+      c * centeredBSplineArchPacketCoeffPairing k ell center a z := by
+  unfold centeredBSplineArchPacketCoeffPairing
+  rw [centeredBSplineTranslatedPacketSum_smul_coeff k ell c a center]
+  exact centeredBSplineArchPairing_smul_left c _ _
+
+/-- Right additivity of the concrete Arch pairing on finite B-spline packet
+coefficient vectors. -/
+theorem centeredBSplineArchPacketCoeffPairing_add_right
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (a b z : ι → ℂ)
+    (hk : 0 < k) (hell : 0 < ell) :
+    centeredBSplineArchPacketCoeffPairing k ell center z (a + b) =
+      centeredBSplineArchPacketCoeffPairing k ell center z a +
+        centeredBSplineArchPacketCoeffPairing k ell center z b := by
+  unfold centeredBSplineArchPacketCoeffPairing
+  rw [centeredBSplineTranslatedPacketSum_add_coeff k ell a b center]
+  apply centeredBSplineArchPairing_add_right
+  · intro t
+    simpa [centeredBSplineTranslatedPacketSum] using
+      centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_integrable
+        k ell t a center hk hell
+  · intro t
+    simpa [centeredBSplineTranslatedPacketSum] using
+      centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_integrable
+        k ell t b center hk hell
+  · simpa [centeredBSplineTranslatedPacketSum] using
+      centeredBSplineArchIntegrand_translatedPacketSum_integrable
+        k ell z center a center hk hell
+  · simpa [centeredBSplineTranslatedPacketSum] using
+      centeredBSplineArchIntegrand_translatedPacketSum_integrable
+        k ell z center b center hk hell
+
+/-- Right real homogeneity of the concrete Arch pairing on finite B-spline packet
+coefficient vectors. -/
+theorem centeredBSplineArchPacketCoeffPairing_smul_right
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (c : ℝ) (a z : ι → ℂ) :
+    centeredBSplineArchPacketCoeffPairing k ell center z (c • a) =
+      c * centeredBSplineArchPacketCoeffPairing k ell center z a := by
+  unfold centeredBSplineArchPacketCoeffPairing
+  rw [centeredBSplineTranslatedPacketSum_smul_coeff k ell c a center]
+  exact centeredBSplineArchPairing_smul_right c _ _
+
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Prime-side-adjacent Arch form / Coordinate
+- role: Step32F Arch packet-span bilinear wiring
+- input: packet-sum x-side Laplace integrability, packet-sum t-side Arch integrability, unbundled centeredBSplineArchPairing laws
+- output: real-bilinear Arch form on finite centered B-spline packet coefficient space
+- reviewer question answered: can the concrete Arch pairing be used as an actual bilinear form on packet spans, not merely as individual translated-profile identities?
+-/
+noncomputable def centeredBSplineArchPacketCoeffBilinearForm
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (hk : 0 < k) (hell : 0 < ell) :
+    (ι → ℂ) →ₗ[ℝ] (ι → ℂ) →ₗ[ℝ] ℝ :=
+  realBilinearFormOfPairing
+    (centeredBSplineArchPacketCoeffPairing k ell center)
+    (fun x y z =>
+      centeredBSplineArchPacketCoeffPairing_add_left
+        k ell center x y z hk hell)
+    (fun c x z =>
+      centeredBSplineArchPacketCoeffPairing_smul_left
+        k ell center c x z)
+    (fun x y z =>
+      centeredBSplineArchPacketCoeffPairing_add_right
+        k ell center y z x hk hell)
+    (fun c x y =>
+      centeredBSplineArchPacketCoeffPairing_smul_right
+        k ell center c y x)
+
 /-- Positive-degree boundary transform profiles are strictly positive at every
 real spectral parameter. -/
 theorem centeredBSplineRealTransformProfile_pos_of_pos_degree

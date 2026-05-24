@@ -96,3 +96,57 @@ The next likely proof route is the existing closed translated imaginary-axis
 profile, `a_star_linear_growth`, and an integrable sinc-power envelope.  The
 degree-zero case should be treated carefully; the positive-degree branch is the
 current safe mainline.
+
+## Follow-up: packet-span bilinear wiring
+
+After the later packet `t`-side theorem
+`centeredBSplineArchIntegrand_translatedPacketSum_integrable` was closed, this
+request was resumed and the concrete packet-span bilinear layer was added.
+
+### Additional theorem names added
+
+- `centeredBSplineTranslatedPacketSum`
+- `centeredBSplineTranslatedPacketSum_add_coeff`
+- `centeredBSplineTranslatedPacketSum_smul_coeff`
+- `centeredBSplineArchPacketCoeffPairing`
+- `centeredBSplineArchPacketCoeffPairing_add_left`
+- `centeredBSplineArchPacketCoeffPairing_smul_left`
+- `centeredBSplineArchPacketCoeffPairing_add_right`
+- `centeredBSplineArchPacketCoeffPairing_smul_right`
+- `centeredBSplineArchPacketCoeffBilinearForm`
+
+### Additional files touched
+
+- `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCardinalBSpline.lean`
+- `q3.lean.aristotle/docs/INSIGHTS.md`
+- `q3.lean.aristotle/ACTIVE/requests/step32f_arch_pairing_linear_integrable/report.md`
+
+### Updated status
+
+The concrete Arch pairing is now pulled back to finite centered B-spline packet
+coefficient space and packaged as a real bilinear form through
+`realBilinearFormOfPairing`.
+
+`centeredBSplinePacketTranslationArchData_ofPairing` is still not fully
+instantiated by this follow-up.  The next smallest blocker is the
+coordinate/receiver bridge from the coefficient-space bilinear form to the
+existing packet translation kernel/matrix-identification contracts, without
+adding a new abstraction layer.
+
+### Additional commands run
+
+- `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`
+- `lake env lean Q3/Proofs/PSD_BSplineTranslationIdentities.lean`
+- `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`
+- `lake build Q3.Main`
+- `rg -n "sorry|admit|exact\\?|ring\\?" Q3/Proofs/PSD_CenteredCardinalBSpline.lean Q3/Proofs/PSD_BSplineTranslationIdentities.lean`
+- `./scripts/check_axioms.sh`
+
+### Additional compile status
+
+- `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`: passed
+- `lake env lean Q3/Proofs/PSD_BSplineTranslationIdentities.lean`: passed
+- `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`: passed
+- `lake build Q3.Main`: passed
+- hole/tactic-placeholder scan on touched Lean files: clean
+- `./scripts/check_axioms.sh`: passed, 5 axioms total, no new axioms

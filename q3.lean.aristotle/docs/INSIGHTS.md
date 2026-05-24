@@ -12274,3 +12274,26 @@ Update:
   sums.  The next smallest node is to feed this into the
   `centeredBSplineArchPairing_add_left/right` hypotheses for concrete packet
   spans.
+
+## Synthesis (2026-05-24, OK) — `Step32F_ArchPacketBilinearWiring`
+
+- Target: consume the packet-sum `x`-side and `t`-side integrability packages
+  and expose the concrete Arch pairing as a real bilinear form on finite
+  centered B-spline packet coefficient space.
+- Added `centeredBSplineTranslatedPacketSum`, the finite complex packet-sum
+  function built from translated normalized centered B-spline packets.
+- Added coefficient-space linearity helpers:
+  `centeredBSplineTranslatedPacketSum_add_coeff` and
+  `centeredBSplineTranslatedPacketSum_smul_coeff`.
+- Added the pulled-back Arch packet coefficient pairing
+  `centeredBSplineArchPacketCoeffPairing` and its four real-bilinearity laws:
+  `centeredBSplineArchPacketCoeffPairing_add_left`,
+  `centeredBSplineArchPacketCoeffPairing_smul_left`,
+  `centeredBSplineArchPacketCoeffPairing_add_right`, and
+  `centeredBSplineArchPacketCoeffPairing_smul_right`.
+- Added `centeredBSplineArchPacketCoeffBilinearForm`, packaging the pulled-back
+  pairing through `realBilinearFormOfPairing`.
+- This closes the concrete packet-span bilinear wiring layer.  The next smallest
+  node is the coordinate/receiver bridge from this coefficient-space bilinear
+  form to the existing `PacketTranslationKernelData`/matrix-identification
+  contracts, without adding another receiver abstraction.
