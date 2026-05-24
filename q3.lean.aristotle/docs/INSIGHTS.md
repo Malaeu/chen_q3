@@ -12423,3 +12423,19 @@ Update:
   The next smallest node is to instantiate this wrapper with a concrete
   interval-backed certificate block / manifest data, then feed the resulting
   `CertifiedFiniteWeilModel` into the finite-to-directed family layer.
+
+## Synthesis (2026-05-24, OK) — `Step32F_CoeffCertifiedLedgerBridge`
+
+- Target: expose `CertifiedCenteredBSplineCoeffBlock` as the Step27
+  finite-certificate ledger object.
+- Added `CertifiedCenteredBSplineCoeffBlock.toCertifiedFiniteBlock`, turning a
+  certified coefficient B-spline block plus `FiniteSpaceLabel` into
+  `CertifiedFiniteBlock`.
+- The ledger object intentionally keeps only the concrete finite matrices
+  `D`, `R`, `Q`, and the `FinitePenaltyCert`; the analytic
+  matrix-identification payload remains in
+  `CertifiedCenteredBSplineCoeffBlock.toCertifiedFiniteWeilModel`.
+- This closes the coefficient certified-block -> finite-ledger bridge.  The
+  next smallest node is to instantiate concrete manifest rows for the active
+  blocks, using interval-backed `D/R/Q/theta/split` data or checked generator
+  output feeding this wrapper.

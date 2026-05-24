@@ -1,6 +1,7 @@
 import Q3.Basic.Defs
 import Q3.Axioms
 import Q3.Proofs.PSD_BSplineAnalyticModel
+import Q3.Proofs.PSD_CertificateFamily
 import Mathlib.Analysis.Convolution
 import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
 import Mathlib.MeasureTheory.Measure.Lebesgue.Integral
@@ -4760,6 +4761,33 @@ theorem weil_ge_theta_R_on_analyticBoundary
           B.finiteWeilMatrixModel.weilForm
             (B.finiteWeilMatrixModel.synth v) :=
   B.toCertifiedFiniteWeilModel.weil_ge_theta_R_on_analyticBoundary
+
+/-- Expose a certified coefficient B-spline block as a Step 27 finite
+certificate ledger row.
+
+The ledger object intentionally remembers only the finite matrices and the
+`FinitePenaltyCert`; the analytic matrix-identification payload remains in
+`toCertifiedFiniteWeilModel`.  The universe is restricted to ordinary `Type`
+because `CertifiedFiniteBlock` is a manifest/ledger carrier for concrete finite
+index types such as `Fin n`. -/
+noncomputable def toCertifiedFiniteBlock
+    {ι ν : Type} [Fintype ι] [Fintype ν]
+    {k : ℕ} {ell : ℝ} {center : ι → ℝ} {weight shift : ν → ℝ}
+    {hk : 0 < k} {hell : 0 < ell}
+    (B : CertifiedCenteredBSplineCoeffBlock k ell center weight shift hk hell)
+    (label : FiniteSpaceLabel) :
+    CertifiedFiniteBlock where
+  label := label
+  rho := Fin 2
+  iota := ι
+  rhoFinite := inferInstance
+  iotaFinite := inferInstance
+  D := B.D
+  R := B.R
+  Q :=
+    (centeredBSplineCoeffAnalyticKernelContract
+      k ell center weight shift hk hell).toFormulaContract.boundaryRows.Q
+  cert := B.cert
 
 end CertifiedCenteredBSplineCoeffBlock
 
