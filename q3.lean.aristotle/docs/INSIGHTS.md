@@ -12458,3 +12458,25 @@ Update:
   node is still concrete manifest-row instantiation for the active interval
   certificates, followed by a genuine refinement/exhaustion theorem rather than
   a singleton shell.
+
+## Synthesis (2026-05-24, OK) — `Step32F_CoeffActiveManifestLabels`
+
+- Target: give the two accepted Step27 seed rows theorem-facing Lean labels and
+  connect them to the coefficient certified-block adapters.
+- Confirmed from the generated Step27 seed that the current accepted rows are
+  the primary `psdpd_L3_k11_ell030_delta025_theta1e4` block and the control
+  `psdpd_L3_k9_ell030_delta025_theta1e5` block.  The CSV artifacts contain
+  interval midpoint/radius data, but not yet Lean matrix terms/proofs.
+- Added `CenteredBSplineCoeffManifestLabel.primaryK11L3Ell030Delta025Theta1e4`
+  and
+  `CenteredBSplineCoeffManifestLabel.controlK9L3Ell030Delta025Theta1e5`.
+- Added primary/control convenience adapters:
+  `CertifiedCenteredBSplineCoeffBlock.toPrimaryK11FiniteBlock`,
+  `CertifiedCenteredBSplineCoeffBlock.toControlK9FiniteBlock`,
+  `CertifiedCenteredBSplineCoeffBlock.toPrimaryK11SingletonDirectedCertFamily`,
+  and
+  `CertifiedCenteredBSplineCoeffBlock.toControlK9SingletonDirectedCertFamily`.
+- This closes the active manifest-label layer.  The next smallest node is a
+  generator/import layer that turns the interval-backed `D/R/Q/theta/split`
+  artifacts into actual Lean `CertifiedCenteredBSplineCoeffBlock` values for
+  these labels.

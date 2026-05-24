@@ -4687,6 +4687,35 @@ structure CertifiedCenteredBSplineCoeffBlock
             k ell center weight shift hk hell).toFormulaContract.C v =
         Q3.Proofs.quadForm D v + theta * Q3.Proofs.quadForm R v
 
+/-
+Manifest labels for the currently accepted centered B-spline coefficient
+certificate seed rows.
+
+These are theorem-facing identifiers only.  The actual interval-backed matrix
+payload still has to be supplied as a `CertifiedCenteredBSplineCoeffBlock`.
+-/
+namespace CenteredBSplineCoeffManifestLabel
+
+/-- Primary accepted seed row:
+`psdpd_L3_k11_ell030_delta025_theta1e4`. -/
+def primaryK11L3Ell030Delta025Theta1e4 : FiniteSpaceLabel where
+  id := "psdpd_L3_k11_ell030_delta025_theta1e4"
+  L := "3.0"
+  ell := "0.30"
+  delta := "0.25"
+  kSpline := "11"
+
+/-- Control accepted seed row:
+`psdpd_L3_k9_ell030_delta025_theta1e5`. -/
+def controlK9L3Ell030Delta025Theta1e5 : FiniteSpaceLabel where
+  id := "psdpd_L3_k9_ell030_delta025_theta1e5"
+  L := "3.0"
+  ell := "0.30"
+  delta := "0.25"
+  kSpline := "9"
+
+end CenteredBSplineCoeffManifestLabel
+
 namespace CertifiedCenteredBSplineCoeffBlock
 
 /-- The finite matrix-to-Weil model supplied by the coefficient-space analytic
@@ -4802,6 +4831,50 @@ noncomputable def toSingletonDirectedCertFamily
     (label : FiniteSpaceLabel) :
     DirectedCertFamily :=
   (B.toCertifiedFiniteBlock label).singletonDirectedFamily
+
+/-- Instantiate the primary accepted manifest label once the corresponding
+interval-backed certified coefficient block is supplied. -/
+noncomputable def toPrimaryK11FiniteBlock
+    {ι ν : Type} [Fintype ι] [Fintype ν]
+    {center : ι → ℝ} {weight shift : ν → ℝ}
+    {hk : 0 < 11} {hell : 0 < ((3 : ℝ) / 10)}
+    (B : CertifiedCenteredBSplineCoeffBlock
+      11 ((3 : ℝ) / 10) center weight shift hk hell) :
+    CertifiedFiniteBlock :=
+  B.toCertifiedFiniteBlock
+    CenteredBSplineCoeffManifestLabel.primaryK11L3Ell030Delta025Theta1e4
+
+/-- Instantiate the control accepted manifest label once the corresponding
+interval-backed certified coefficient block is supplied. -/
+noncomputable def toControlK9FiniteBlock
+    {ι ν : Type} [Fintype ι] [Fintype ν]
+    {center : ι → ℝ} {weight shift : ν → ℝ}
+    {hk : 0 < 9} {hell : 0 < ((3 : ℝ) / 10)}
+    (B : CertifiedCenteredBSplineCoeffBlock
+      9 ((3 : ℝ) / 10) center weight shift hk hell) :
+    CertifiedFiniteBlock :=
+  B.toCertifiedFiniteBlock
+    CenteredBSplineCoeffManifestLabel.controlK9L3Ell030Delta025Theta1e5
+
+/-- Singleton directed-family version of the primary accepted manifest row. -/
+noncomputable def toPrimaryK11SingletonDirectedCertFamily
+    {ι ν : Type} [Fintype ι] [Fintype ν]
+    {center : ι → ℝ} {weight shift : ν → ℝ}
+    {hk : 0 < 11} {hell : 0 < ((3 : ℝ) / 10)}
+    (B : CertifiedCenteredBSplineCoeffBlock
+      11 ((3 : ℝ) / 10) center weight shift hk hell) :
+    DirectedCertFamily :=
+  B.toPrimaryK11FiniteBlock.singletonDirectedFamily
+
+/-- Singleton directed-family version of the control accepted manifest row. -/
+noncomputable def toControlK9SingletonDirectedCertFamily
+    {ι ν : Type} [Fintype ι] [Fintype ν]
+    {center : ι → ℝ} {weight shift : ν → ℝ}
+    {hk : 0 < 9} {hell : 0 < ((3 : ℝ) / 10)}
+    (B : CertifiedCenteredBSplineCoeffBlock
+      9 ((3 : ℝ) / 10) center weight shift hk hell) :
+    DirectedCertFamily :=
+  B.toControlK9FiniteBlock.singletonDirectedFamily
 
 end CertifiedCenteredBSplineCoeffBlock
 
