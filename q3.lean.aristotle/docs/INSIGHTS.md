@@ -12523,3 +12523,20 @@ Update:
   verified interval/SPD penalty bridge that turns the midpoint/radius payload
   into `FinitePenaltyCert D R Q`, after which the existing
   `CertifiedCenteredBSplineCoeffBlock` adapters can be used.
+
+## Synthesis (2026-05-25, OK) — `Step32F_FinitePenaltyLowerBoundReceiver`
+
+- Target: make the next interval/SPD checker bridge narrower than the raw
+  `FinitePenaltyCert` fields.
+- Added `euclideanEnergy` and `euclideanEnergy_pos_of_ne_zero` to
+  `PSD_PenaltyCertificate.lean`.
+- Added `FinitePenaltyLowerBoundCert`, whose proof obligations are positive
+  full-space lower bounds
+  `floor * euclideanEnergy v <= penaltyForm M Q tau v` for the two penalized
+  forms.
+- Added `FinitePenaltyLowerBoundCert.toFinitePenaltyCert`, proving that these
+  lower bounds imply the existing `FinitePenaltyCert D R Q` receiver.
+- This closes the receiver/API part of the interval penalty bridge.  The next
+  smallest node is the actual checked interval/SPD lower-bound generator that
+  consumes the active midpoint/radius payload and produces a
+  `FinitePenaltyLowerBoundCert`.

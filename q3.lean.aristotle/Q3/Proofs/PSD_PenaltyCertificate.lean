@@ -39,6 +39,27 @@ def penaltyForm {ρ ι : Type*} [Fintype ρ] [Fintype ι]
     (v : ι → ℝ) : ℝ :=
   quadForm M v + tau * boundaryEnergy Q v
 
+/-- Squared Euclidean norm on a finite real coefficient space. -/
+def euclideanEnergy {ι : Type*} [Fintype ι]
+    (v : ι → ℝ) : ℝ :=
+  ∑ i, v i ^ 2
+
+/-- A nonzero finite real vector has positive squared Euclidean energy. -/
+lemma euclideanEnergy_pos_of_ne_zero {ι : Type*} [Fintype ι]
+    (v : ι → ℝ) (hv : v ≠ 0) :
+    0 < euclideanEnergy v := by
+  classical
+  unfold euclideanEnergy
+  have h_exists : ∃ i, v i ≠ 0 := by
+    by_contra h
+    apply hv
+    funext i
+    exact not_not.mp (not_exists.mp h i)
+  rcases h_exists with ⟨i, hi⟩
+  exact Finset.sum_pos'
+    (fun j _ => sq_nonneg (v j))
+    ⟨i, Finset.mem_univ i, sq_pos_of_ne_zero hi⟩
+
 /-- The boundary residual energy vanishes on the boundary-null subspace. -/
 lemma boundaryEnergy_eq_zero_of_boundaryNull {ρ ι : Type*}
     [Fintype ρ] [Fintype ι]
@@ -122,6 +143,48 @@ structure FinitePenaltyCert {ρ ι : Type*} [Fintype ρ] [Fintype ι]
   tauR : ℝ
   D_penalty_pos : ∀ v : ι → ℝ, v ≠ 0 → 0 < penaltyForm D Q tauD v
   R_penalty_pos : ∀ v : ι → ℝ, v ≠ 0 → 0 < penaltyForm R Q tauR v
+
+/-- Lower-bound landing surface for proof-generating interval/SPD checkers.
+
+This is the certificate shape a future checked interval layer should produce:
+the penalized forms dominate a positive multiple of the squared Euclidean
+energy on the full finite coefficient space.  Such a lower bound immediately
+implies the strict positivity fields required by `FinitePenaltyCert`. -/
+structure FinitePenaltyLowerBoundCert {ρ ι : Type*} [Fintype ρ] [Fintype ι]
+    (D R : Matrix ι ι ℝ) (Q : Matrix ρ ι ℝ) where
+  tauD : ℝ
+  tauR : ℝ
+  dFloor : ℝ
+  rFloor : ℝ
+  dFloor_pos : 0 < dFloor
+  rFloor_pos : 0 < rFloor
+  D_penalty_lower : ∀ v : ι → ℝ,
+    dFloor * euclideanEnergy v ≤ penaltyForm D Q tauD v
+  R_penalty_lower : ∀ v : ι → ℝ,
+    rFloor * euclideanEnergy v ≤ penaltyForm R Q tauR v
+
+namespace FinitePenaltyLowerBoundCert
+
+/-- A full-space positive Euclidean lower bound yields the standard finite
+penalty certificate consumed by the matrix-identification layer. -/
+def toFinitePenaltyCert {ρ ι : Type*} [Fintype ρ] [Fintype ι]
+    {D R : Matrix ι ι ℝ} {Q : Matrix ρ ι ℝ}
+    (cert : FinitePenaltyLowerBoundCert D R Q) :
+    FinitePenaltyCert D R Q where
+  tauD := cert.tauD
+  tauR := cert.tauR
+  D_penalty_pos := by
+    intro v hv
+    exact lt_of_lt_of_le
+      (mul_pos cert.dFloor_pos (euclideanEnergy_pos_of_ne_zero v hv))
+      (cert.D_penalty_lower v)
+  R_penalty_pos := by
+    intro v hv
+    exact lt_of_lt_of_le
+      (mul_pos cert.rFloor_pos (euclideanEnergy_pos_of_ne_zero v hv))
+      (cert.R_penalty_lower v)
+
+end FinitePenaltyLowerBoundCert
 
 namespace FinitePenaltyCert
 
