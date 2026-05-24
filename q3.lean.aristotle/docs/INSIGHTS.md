@@ -12504,3 +12504,22 @@ Update:
 - This closes the import-plan layer only.  The next smallest node is the checked
   generator/import layer that emits actual Lean matrix terms and proves/packages
   `CertifiedCenteredBSplineCoeffBlock` for the active manifest labels.
+
+## Synthesis (2026-05-24, OK) — `Step32F_CoeffPayloadLeanData`
+
+- Target: turn the validated Step22/27 active-block plan into a Lean-checked
+  matrix payload without pretending to have the missing positivity certificate.
+- Added `scripts/q3_psdpd_step32f_coeff_payload_lean_data.py`, which consumes
+  the import-plan JSON and emits exact rational Lean matrix data for the
+  primary `k=11` and control `k=9` active blocks.
+- Added `Q3/Proofs/PSD_CenteredCoeffPayloadImport.lean`, containing midpoint
+  `A`, `P`, `P0`, `Q`, radius `A`, `P`, `P0`, `Q`, derived midpoint
+  `C = A - P`, `R = A - kappa * P0`, and `D = C - theta * R`.
+- Lean proves `theta_nonneg` and the algebraic quadratic-form split
+  `quadForm C v = quadForm D v + theta * quadForm R v` for both active blocks
+  via the structural theorem `quadForm_scaled_sub_split`; the split is not
+  trusted from Python arithmetic.
+- This closes the checked data-import layer only.  The next smallest node is a
+  verified interval/SPD penalty bridge that turns the midpoint/radius payload
+  into `FinitePenaltyCert D R Q`, after which the existing
+  `CertifiedCenteredBSplineCoeffBlock` adapters can be used.
