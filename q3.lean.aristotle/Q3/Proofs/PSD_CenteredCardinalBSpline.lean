@@ -4127,6 +4127,97 @@ noncomputable def centeredBSplineArchPacketCoeffBilinearForm
       centeredBSplineArchPacketCoeffPairing_smul_right
         k ell center c y x)
 
+/-- The standard coefficient vector selecting the packet indexed by `i`. -/
+noncomputable def centeredBSplineCoeffBasis
+    {ι : Type*} [Fintype ι] (i : ι) : ι → ℂ := by
+  classical
+  exact fun j => if j = i then 1 else 0
+
+/-- Coefficient-space packet basis expansion.  Synthesizing a real vector
+coerces its coefficients to complex coefficients. -/
+noncomputable def centeredBSplineCoeffBasisExpansion
+    {ι : Type*} [Fintype ι] :
+    PacketBasisExpansion ι (ι → ℂ) where
+  basis := centeredBSplineCoeffBasis
+  synth := fun v => fun i => (v i : ℂ)
+  synth_eq_sum := by
+    intro v
+    funext i
+    classical
+    simp [centeredBSplineCoeffBasis]
+
+/-- A standard coefficient basis vector synthesizes exactly one translated
+centered B-spline packet. -/
+theorem centeredBSplineTranslatedPacketSum_coeffBasis
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (i : ι) :
+    centeredBSplineTranslatedPacketSum k ell
+        (centeredBSplineCoeffBasis i) center =
+      complexScaledTranslatedBump
+        (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) := by
+  funext x
+  classical
+  unfold centeredBSplineTranslatedPacketSum centeredBSplineCoeffBasis
+  rw [Finset.sum_eq_single i]
+  · simp
+  · intro j _hj hji
+    simp [hji]
+  · intro hi
+    exact (hi (Finset.mem_univ _)).elim
+
+/-- Basis entries of the coefficient-space Arch pairing are the centered
+B-spline Arch kernel profile at center differences. -/
+theorem centeredBSplineArchPacketCoeffPairing_basis_closed
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (hell : 0 < ell) (i j : ι) :
+    centeredBSplineArchPacketCoeffPairing k ell center
+      (centeredBSplineCoeffBasis j) (centeredBSplineCoeffBasis i) =
+      centeredBSplineArchKernelProfile k ell (center j - center i) := by
+  unfold centeredBSplineArchPacketCoeffPairing
+  rw [centeredBSplineTranslatedPacketSum_coeffBasis k ell center j]
+  rw [centeredBSplineTranslatedPacketSum_coeffBasis k ell center i]
+  exact centeredBSplineArchPairing_scaledTranslated_closed
+    k ell (center j) (center i) hell
+
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Prime-side-adjacent Arch form / Coordinate
+- role: Step32F Arch coefficient-space receiver bridge
+- input: packet-span bilinear form, standard coefficient basis, translated packet profile identity
+- output: Arch PacketKernelPairingData and finite quadratic matrix expansion on coefficient space
+- reviewer question answered: do the finite Arch matrix entries come from the actual bundled packet-span bilinear form on coordinates?
+-/
+noncomputable def centeredBSplineArchPacketCoeffKernelData
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (hk : 0 < k) (hell : 0 < ell) :
+    PacketKernelPairingData ι (ι → ℂ) where
+  basisExpansion := centeredBSplineCoeffBasisExpansion
+  form := centeredBSplineArchPacketCoeffBilinearForm k ell center hk hell
+  kernel := fun i j => centeredBSplineArchKernelProfile k ell (center j - center i)
+  pairing_ident := by
+    intro i j
+    dsimp [centeredBSplineCoeffBasisExpansion]
+    change centeredBSplineArchKernelProfile k ell (center j - center i) =
+      centeredBSplineArchPacketCoeffPairing k ell center
+        (centeredBSplineCoeffBasis j) (centeredBSplineCoeffBasis i)
+    rw [centeredBSplineArchPacketCoeffPairing_basis_closed
+      k ell center hell i j]
+
+/-- The concrete Arch packet coefficient form expands to the finite kernel
+quadratic form. -/
+theorem centeredBSplineArchPacketCoeffBilinearForm_synth_eq_quadForm
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (hk : 0 < k) (hell : 0 < ell)
+    (v : ι → ℝ) :
+    (centeredBSplineArchPacketCoeffBilinearForm k ell center hk hell)
+        (centeredBSplineCoeffBasisExpansion.synth v)
+        (centeredBSplineCoeffBasisExpansion.synth v) =
+      Q3.Proofs.quadForm
+        (centeredBSplineArchPacketCoeffKernelData k ell center hk hell).matrix
+        v :=
+  (centeredBSplineArchPacketCoeffKernelData
+    k ell center hk hell).form_synth_eq_quadForm v
+
 /-- Positive-degree boundary transform profiles are strictly positive at every
 real spectral parameter. -/
 theorem centeredBSplineRealTransformProfile_pos_of_pos_degree

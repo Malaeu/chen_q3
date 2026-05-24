@@ -12297,3 +12297,25 @@ Update:
   node is the coordinate/receiver bridge from this coefficient-space bilinear
   form to the existing `PacketTranslationKernelData`/matrix-identification
   contracts, without adding another receiver abstraction.
+
+## Synthesis (2026-05-24, OK) — `Step32F_ArchCoeffKernelReceiverBridge`
+
+- Target: close the coordinate/receiver bridge for the Arch packet coefficient
+  form without introducing another translated receiver layer.
+- Added `centeredBSplineCoeffBasis`, the standard coefficient vector selecting
+  one translated centered B-spline packet, and
+  `centeredBSplineCoeffBasisExpansion`, whose `synth` coerces real finite
+  coefficient vectors into complex packet coefficients.
+- Added `centeredBSplineTranslatedPacketSum_coeffBasis`, showing a standard
+  coefficient basis vector produces exactly one translated normalized packet.
+- Added `centeredBSplineArchPacketCoeffPairing_basis_closed`, identifying each
+  coefficient-space basis entry of the Arch pairing with
+  `centeredBSplineArchKernelProfile k ell (center j - center i)`.
+- Added `centeredBSplineArchPacketCoeffKernelData`, a concrete
+  `PacketKernelPairingData` instance for the Arch coefficient-space form.
+- Added `centeredBSplineArchPacketCoeffBilinearForm_synth_eq_quadForm`, giving
+  the finite quadratic-form expansion for synthesized real coefficient vectors.
+- This closes the Arch-side matrix-identification receiver bridge for the
+  coefficient model.  The next smallest node is the analogous Prime-side
+  coefficient receiver bridge, using the already closed autocorrelation/profile
+  facts.

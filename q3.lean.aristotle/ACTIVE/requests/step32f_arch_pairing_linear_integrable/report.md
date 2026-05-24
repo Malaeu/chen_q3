@@ -150,3 +150,44 @@ adding a new abstraction layer.
 - `lake build Q3.Main`: passed
 - hole/tactic-placeholder scan on touched Lean files: clean
 - `./scripts/check_axioms.sh`: passed, 5 axioms total, no new axioms
+
+## Follow-up: Arch coefficient receiver bridge
+
+The coordinate/matrix receiver bridge for the Arch coefficient-space form was
+then closed without adding another receiver abstraction.
+
+### Additional theorem names added
+
+- `centeredBSplineCoeffBasis`
+- `centeredBSplineCoeffBasisExpansion`
+- `centeredBSplineTranslatedPacketSum_coeffBasis`
+- `centeredBSplineArchPacketCoeffPairing_basis_closed`
+- `centeredBSplineArchPacketCoeffKernelData`
+- `centeredBSplineArchPacketCoeffBilinearForm_synth_eq_quadForm`
+
+### Updated bridge status
+
+`centeredBSplineArchPacketCoeffKernelData` now packages the Arch coefficient
+pairing as `PacketKernelPairingData`, with basis entries identified as:
+
+```text
+centeredBSplineArchKernelProfile k ell (center j - center i)
+```
+
+The finite synthesized packet quadratic form is available through:
+
+```lean
+centeredBSplineArchPacketCoeffBilinearForm_synth_eq_quadForm
+```
+
+The next smallest node is now the analogous Prime-side coefficient receiver
+bridge, using the closed centered B-spline autocorrelation/profile facts.
+
+### Verification status for this follow-up
+
+- `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`: passed
+- `lake env lean Q3/Proofs/PSD_BSplineTranslationIdentities.lean`: passed
+- `lake build Q3.Proofs.PSD_CenteredCardinalBSpline`: passed
+- `lake build Q3.Main`: passed
+- hole/tactic-placeholder scan on touched Lean files: clean
+- `./scripts/check_axioms.sh`: passed, 5 axioms total, no new axioms
