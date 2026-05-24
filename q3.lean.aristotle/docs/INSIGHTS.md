@@ -12250,3 +12250,27 @@ Update:
   smallest theorem is the finite-packet Arch integrand lift:
   `centeredBSplineArchIntegrand_translatedPacketSum_integrable`, using the
   packet closed-form sum plus finite-sum/phase boundedness.
+
+## Synthesis (2026-05-24, OK) — `Step32F_ArchPacketIntegrability`
+
+- Target: close the finite translated packet-sum Arch integrand theorem
+  `centeredBSplineArchIntegrand_translatedPacketSum_integrable`.
+- Added `centeredBSplineImagTransformClosedForm_continuous`, the complex-valued
+  continuity bridge from the real closed form.
+- Added
+  `centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_norm_bound`,
+  bounding a finite packet transform by `(sum ||coeff||) * sqrt(ell) *
+  |closedForm(t)|`.
+- Added
+  `centeredBSplineArchIntegrandClosed_translatedPacketSum_continuous`, giving the
+  closed finite-packet Arch integrand the `AEStronglyMeasurable` witness needed
+  for dominated integrability.
+- Closed `centeredBSplineArchIntegrand_translatedPacketSum_integrable` for two
+  arbitrary finite packet index types by dominating the packet-pair integrand by
+  a constant multiple of
+  `||a_star(t) * centeredBSplineImagTransformRealClosedForm(k, ell, t)^2||`.
+- This consumes the sinc-tail theorem from the previous node and closes the
+  `t`-side L1 well-definedness obstruction for finite centered B-spline packet
+  sums.  The next smallest node is to feed this into the
+  `centeredBSplineArchPairing_add_left/right` hypotheses for concrete packet
+  spans.

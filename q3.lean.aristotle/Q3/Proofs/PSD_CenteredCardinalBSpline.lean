@@ -3750,6 +3750,239 @@ theorem centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_closedForm_su
   intro i _hi
   rw [centeredBSplineImagTransform_scaledTranslated_eq_closedForm k ell (center i) t hell]
 
+/-- Complex continuity of the normalized imaginary-axis closed form. -/
+theorem centeredBSplineImagTransformClosedForm_continuous
+    (k : ℕ) (ell : ℝ) :
+    Continuous (fun t : ℝ => centeredBSplineImagTransformClosedForm k ell t) := by
+  rw [show (fun t : ℝ => centeredBSplineImagTransformClosedForm k ell t) =
+      fun t => (centeredBSplineImagTransformRealClosedForm k ell t : ℂ) by
+    funext t
+    rw [centeredBSplineImagTransformClosedForm_eq_ofReal]]
+  exact Complex.continuous_ofReal.comp
+    (centeredBSplineImagTransformRealClosedForm_continuous k ell)
+
+/-- Norm bound for finite translated packet sums on the imaginary axis. -/
+theorem centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_norm_bound
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell t : ℝ) (coeff : ι → ℂ) (center : ι → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) :
+    ‖complexBumpLaplace
+        (fun x : ℝ =>
+          Finset.univ.sum fun i : ι =>
+            coeff i *
+              complexScaledTranslatedBump
+                (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) x)
+        (Complex.I * (t : ℂ))‖ ≤
+      ((Finset.univ.sum fun i : ι => ‖coeff i‖) * Real.sqrt ell) *
+        |centeredBSplineImagTransformRealClosedForm k ell t| := by
+  rw [centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_closedForm_sum
+    k ell t coeff center hk hell]
+  calc
+    ‖Finset.univ.sum fun i : ι =>
+        coeff i *
+          ((Real.sqrt ell : ℂ) * Complex.exp ((Complex.I * (t : ℂ)) * (center i : ℂ)) *
+            centeredBSplineImagTransformClosedForm k ell t)‖
+        ≤ Finset.univ.sum fun i : ι =>
+            ‖coeff i *
+              ((Real.sqrt ell : ℂ) * Complex.exp ((Complex.I * (t : ℂ)) * (center i : ℂ)) *
+                centeredBSplineImagTransformClosedForm k ell t)‖ := by
+          simpa using norm_sum_le Finset.univ (fun i : ι =>
+            coeff i *
+              ((Real.sqrt ell : ℂ) * Complex.exp ((Complex.I * (t : ℂ)) * (center i : ℂ)) *
+                centeredBSplineImagTransformClosedForm k ell t))
+    _ = Finset.univ.sum fun i : ι =>
+          ‖coeff i‖ * Real.sqrt ell *
+            |centeredBSplineImagTransformRealClosedForm k ell t| := by
+          apply Finset.sum_congr rfl
+          intro i _hi
+          have harg : (Complex.I * (t : ℂ)) * (center i : ℂ) =
+              Complex.I * ((t * center i : ℝ) : ℂ) := by
+            norm_num
+            ring
+          rw [norm_mul, norm_mul, norm_mul]
+          rw [harg, Complex.norm_exp_I_mul_ofReal]
+          rw [centeredBSplineImagTransformClosedForm_eq_ofReal]
+          have hsqrt : ‖(Real.sqrt ell : ℂ)‖ = Real.sqrt ell := by
+            simp [abs_of_nonneg (Real.sqrt_nonneg ell)]
+          rw [hsqrt]
+          simp [mul_assoc]
+    _ = ((Finset.univ.sum fun i : ι => ‖coeff i‖) * Real.sqrt ell) *
+          |centeredBSplineImagTransformRealClosedForm k ell t| := by
+          rw [Finset.sum_mul]
+          rw [Finset.sum_mul]
+
+/-- Closed finite-packet Arch integrand is continuous. -/
+theorem centeredBSplineArchIntegrandClosed_translatedPacketSum_continuous
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    (k : ℕ) (ell : ℝ) (coeffF : ι → ℂ) (centerF : ι → ℝ)
+    (coeffG : κ → ℂ) (centerG : κ → ℝ) :
+    Continuous (fun t : ℝ =>
+      Q3.a_star t *
+        ((Finset.univ.sum fun i : ι =>
+          coeffF i * ((Real.sqrt ell : ℂ) *
+            Complex.exp ((Complex.I * (t : ℂ)) * (centerF i : ℂ)) *
+            centeredBSplineImagTransformClosedForm k ell t)) *
+        star (Finset.univ.sum fun j : κ =>
+          coeffG j * ((Real.sqrt ell : ℂ) *
+            Complex.exp ((Complex.I * (t : ℂ)) * (centerG j : ℂ)) *
+            centeredBSplineImagTransformClosedForm k ell t))).re) := by
+  have hE := centeredBSplineImagTransformClosedForm_continuous k ell
+  have hF : Continuous (fun t : ℝ => Finset.univ.sum fun i : ι =>
+      coeffF i * ((Real.sqrt ell : ℂ) *
+        Complex.exp ((Complex.I * (t : ℂ)) * (centerF i : ℂ)) *
+        centeredBSplineImagTransformClosedForm k ell t)) := by
+    refine continuous_finset_sum Finset.univ ?_
+    intro i _hi
+    exact continuous_const.mul
+      ((continuous_const.mul (Complex.continuous_exp.comp
+        ((continuous_const.mul Complex.continuous_ofReal).mul continuous_const))).mul hE)
+  have hG : Continuous (fun t : ℝ => Finset.univ.sum fun j : κ =>
+      coeffG j * ((Real.sqrt ell : ℂ) *
+        Complex.exp ((Complex.I * (t : ℂ)) * (centerG j : ℂ)) *
+        centeredBSplineImagTransformClosedForm k ell t)) := by
+    refine continuous_finset_sum Finset.univ ?_
+    intro j _hj
+    exact continuous_const.mul
+      ((continuous_const.mul (Complex.continuous_exp.comp
+        ((continuous_const.mul Complex.continuous_ofReal).mul continuous_const))).mul hE)
+  exact Q3.a_star_continuous.mul (Complex.continuous_re.comp (hF.mul hG.star))
+
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Prime-side-adjacent Arch form
+- role: Step32F Arch t-side well-definedness
+- input: x-side packet Laplace integrability, finite packet closed form, a_star-weighted sinc-tail integrability
+- output: Arch integrand for finite translated B-spline packet sums is integrable in t
+- reviewer question answered: is the Arch pairing an actual analytic L¹ form on packet sums, rather than a formal profile wrapper?
+-/
+theorem centeredBSplineArchIntegrand_translatedPacketSum_integrable
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    (k : ℕ) (ell : ℝ) (coeffF : ι → ℂ) (centerF : ι → ℝ)
+    (coeffG : κ → ℂ) (centerG : κ → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) :
+    Integrable
+      (centeredBSplineArchIntegrand
+        (fun x : ℝ =>
+          Finset.univ.sum fun i : ι =>
+            coeffF i *
+              complexScaledTranslatedBump
+                (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (centerF i) x)
+        (fun x : ℝ =>
+          Finset.univ.sum fun j : κ =>
+            coeffG j *
+              complexScaledTranslatedBump
+                (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (centerG j) x)) := by
+  let F : ℝ → ℂ := fun x =>
+    Finset.univ.sum fun i : ι =>
+      coeffF i *
+        complexScaledTranslatedBump
+          (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (centerF i) x
+  let G : ℝ → ℂ := fun x =>
+    Finset.univ.sum fun j : κ =>
+      coeffG j *
+        complexScaledTranslatedBump
+          (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (centerG j) x
+  let FC : ℝ → ℂ := fun t =>
+    Finset.univ.sum fun i : ι =>
+      coeffF i * ((Real.sqrt ell : ℂ) *
+        Complex.exp ((Complex.I * (t : ℂ)) * (centerF i : ℂ)) *
+        centeredBSplineImagTransformClosedForm k ell t)
+  let GC : ℝ → ℂ := fun t =>
+    Finset.univ.sum fun j : κ =>
+      coeffG j * ((Real.sqrt ell : ℂ) *
+        Complex.exp ((Complex.I * (t : ℂ)) * (centerG j : ℂ)) *
+        centeredBSplineImagTransformClosedForm k ell t)
+  let E : ℝ → ℝ := fun t => centeredBSplineImagTransformRealClosedForm k ell t
+  let CF : ℝ := (Finset.univ.sum fun i : ι => ‖coeffF i‖) * Real.sqrt ell
+  let CG : ℝ := (Finset.univ.sum fun j : κ => ‖coeffG j‖) * Real.sqrt ell
+  let C : ℝ := CF * CG
+  have hbase :=
+    a_star_mul_centeredBSplineImagTransformRealClosedForm_sq_integrable_of_pos_degree
+      k ell hk hell
+  have hmajor : Integrable (fun t : ℝ => C * ‖Q3.a_star t * (E t) ^ 2‖) := by
+    simpa [E] using hbase.norm.const_mul C
+  have hclosed_cont : Continuous (fun t : ℝ => Q3.a_star t * ((FC t) * star (GC t)).re) := by
+    simpa [FC, GC] using
+      centeredBSplineArchIntegrandClosed_translatedPacketSum_continuous
+        k ell coeffF centerF coeffG centerG
+  have hC_nonneg : 0 ≤ C := by
+    dsimp [C, CF, CG]
+    positivity
+  have hclosed_integrable : Integrable (fun t : ℝ => Q3.a_star t * ((FC t) * star (GC t)).re) := by
+    refine hmajor.mono' hclosed_cont.aestronglyMeasurable ?_
+    refine Filter.Eventually.of_forall ?_
+    intro t
+    have hF_bound : ‖FC t‖ ≤ CF * |E t| := by
+      have hF_eq :
+          complexBumpLaplace F (Complex.I * (t : ℂ)) = FC t := by
+        dsimp [F, FC]
+        rw [centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_closedForm_sum
+          k ell t coeffF centerF hk hell]
+      rw [← hF_eq]
+      simpa [F, E, CF] using
+        centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_norm_bound
+          k ell t coeffF centerF hk hell
+    have hG_bound : ‖GC t‖ ≤ CG * |E t| := by
+      have hG_eq :
+          complexBumpLaplace G (Complex.I * (t : ℂ)) = GC t := by
+        dsimp [G, GC]
+        rw [centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_closedForm_sum
+          k ell t coeffG centerG hk hell]
+      rw [← hG_eq]
+      simpa [G, E, CG] using
+        centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_norm_bound
+          k ell t coeffG centerG hk hell
+    have hCF_nonneg : 0 ≤ CF := by
+      dsimp [CF]
+      positivity
+    have hCG_nonneg : 0 ≤ CG := by
+      dsimp [CG]
+      positivity
+    have hprod : ‖FC t * star (GC t)‖ ≤ C * |E t| ^ 2 := by
+      calc
+        ‖FC t * star (GC t)‖ = ‖FC t‖ * ‖GC t‖ := by
+          rw [norm_mul, norm_star]
+        _ ≤ (CF * |E t|) * (CG * |E t|) := by
+          exact mul_le_mul hF_bound hG_bound
+            (norm_nonneg _) (mul_nonneg hCF_nonneg (abs_nonneg _))
+        _ = C * |E t| ^ 2 := by
+          dsimp [C]
+          ring
+    have hreal : |((FC t) * star (GC t)).re| ≤ C * |E t| ^ 2 := by
+      exact (Complex.abs_re_le_norm ((FC t) * star (GC t))).trans hprod
+    have hleft :
+        ‖Q3.a_star t * ((FC t) * star (GC t)).re‖ ≤
+          C * (|Q3.a_star t| * |E t| ^ 2) := by
+      calc
+        ‖Q3.a_star t * ((FC t) * star (GC t)).re‖
+            = |Q3.a_star t| * |((FC t) * star (GC t)).re| := by
+              rw [Real.norm_eq_abs, abs_mul]
+        _ ≤ |Q3.a_star t| * (C * |E t| ^ 2) := by
+              exact mul_le_mul_of_nonneg_left hreal (abs_nonneg _)
+        _ = C * (|Q3.a_star t| * |E t| ^ 2) := by ring
+    calc
+      ‖Q3.a_star t * ((FC t) * star (GC t)).re‖
+          ≤ C * (|Q3.a_star t| * |E t| ^ 2) := hleft
+      _ = C * ‖Q3.a_star t * (E t) ^ 2‖ := by
+          have hbaseabs : |Q3.a_star t * (E t) ^ 2| =
+              |Q3.a_star t| * |E t| ^ 2 := by
+            rw [abs_mul, abs_pow]
+          rw [Real.norm_eq_abs, hbaseabs]
+  have hclosed_ae :
+      (fun t : ℝ => Q3.a_star t * ((FC t) * star (GC t)).re) =ᵐ[volume]
+        centeredBSplineArchIntegrand F G := by
+    refine Filter.Eventually.of_forall ?_
+    intro t
+    unfold centeredBSplineArchIntegrand
+    dsimp [F, G, FC, GC]
+    rw [centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_closedForm_sum
+      k ell t coeffF centerF hk hell]
+    rw [centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_closedForm_sum
+      k ell t coeffG centerG hk hell]
+  have hfinal : Integrable (centeredBSplineArchIntegrand F G) :=
+    hclosed_integrable.congr hclosed_ae
+  simpa [F, G] using hfinal
+
 /-- Positive-degree boundary transform profiles are strictly positive at every
 real spectral parameter. -/
 theorem centeredBSplineRealTransformProfile_pos_of_pos_degree
