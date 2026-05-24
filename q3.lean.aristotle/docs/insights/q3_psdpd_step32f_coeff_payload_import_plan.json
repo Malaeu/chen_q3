@@ -1,0 +1,294 @@
+{
+  "accepted_blocks": 2,
+  "blocks": [
+    {
+      "artifacts": {
+        "midpoint_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+        "midpoint_sha256": "29d9c06befcc68ee13dbe2fe7cbad898df968ea9632f0d31c9a7d6c983411ac3",
+        "radius_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
+        "radius_sha256": "e6112bc2202d2560f1aab4f4e4bffdcc60586652a902859e19dd122e6d491ed2",
+        "step18_stdout": "q3.lean.aristotle/docs/insights/q3_psdpd_family_step18_outputs/psdpd_L3_k11_ell030_delta025_theta1e4.step18.txt"
+      },
+      "block_id": "psdpd_L3_k11_ell030_delta025_theta1e4",
+      "cert_id": "psdpd_family_v1:psdpd_L3_k11_ell030_delta025_theta1e4",
+      "csv_stats": {
+        "midpoint": {
+          "dimensions": {
+            "A": [
+              23,
+              23
+            ],
+            "P": [
+              23,
+              23
+            ],
+            "P0": [
+              23,
+              23
+            ],
+            "Q": [
+              2,
+              23
+            ]
+          },
+          "duplicate_entries": {
+            "A": 0,
+            "P": 0,
+            "P0": 0,
+            "Q": 0
+          },
+          "matrix_counts": {
+            "A": 529,
+            "P": 529,
+            "P0": 529,
+            "Q": 46
+          },
+          "missing_entries": {
+            "A": 0,
+            "P": 0,
+            "P0": 0,
+            "Q": 0
+          },
+          "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+          "row_count": 1633,
+          "sha256": "29d9c06befcc68ee13dbe2fe7cbad898df968ea9632f0d31c9a7d6c983411ac3",
+          "value_column": "mid"
+        },
+        "radius": {
+          "dimensions": {
+            "A": [
+              23,
+              23
+            ],
+            "P": [
+              23,
+              23
+            ],
+            "P0": [
+              23,
+              23
+            ],
+            "Q": [
+              2,
+              23
+            ]
+          },
+          "duplicate_entries": {
+            "A": 0,
+            "P": 0,
+            "P0": 0,
+            "Q": 0
+          },
+          "matrix_counts": {
+            "A": 529,
+            "P": 529,
+            "P0": 529,
+            "Q": 46
+          },
+          "missing_entries": {
+            "A": 0,
+            "P": 0,
+            "P0": 0,
+            "Q": 0
+          },
+          "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
+          "row_count": 1633,
+          "sha256": "e6112bc2202d2560f1aab4f4e4bffdcc60586652a902859e19dd122e6d491ed2",
+          "value_column": "rad"
+        }
+      },
+      "family_id": "psdpd_family_v1",
+      "finite_dimensions": {
+        "dim_boundary_null": 21,
+        "iota": "Fin 23",
+        "n_centers": 23,
+        "q_rank": 2,
+        "rho": "Fin 2"
+      },
+      "lean_bindings": {
+        "finite_block_adapter": "CertifiedCenteredBSplineCoeffBlock.toPrimaryK11FiniteBlock",
+        "label": "CenteredBSplineCoeffManifestLabel.primaryK11L3Ell030Delta025Theta1e4",
+        "lean_ell": "((3 : \u211d) / 10)",
+        "lean_k": "11",
+        "lean_kappa": "((13 : \u211d) / 4)",
+        "lean_theta": "((1 : \u211d) / 10000)",
+        "singleton_family_adapter": "CertifiedCenteredBSplineCoeffBlock.toPrimaryK11SingletonDirectedCertFamily"
+      },
+      "next_generator_obligations": [
+        "emit Lean matrices D and R over the declared center index type",
+        "emit or prove equality between CSV Q rows and the analytic contract boundary rows",
+        "emit theta_nonneg",
+        "emit FinitePenaltyCert penalty positivity proofs from interval guards",
+        "emit the quadratic-form split proof C = D + theta R",
+        "package the result as CertifiedCenteredBSplineCoeffBlock"
+      ],
+      "parameters": {
+        "L": 3.0,
+        "delta": 0.25,
+        "ell": 0.3,
+        "k_spline": 11,
+        "kappa": 3.25,
+        "tau_grid": "log:-8:8:161",
+        "theta": 0.0001
+      },
+      "required_lean_payload": {
+        "D": "Dtheta = (1 - theta) * A - P + theta * kappa * P0",
+        "Q": "boundary rows from the analytic coefficient contract; CSV Q is the interval-backed numerical row data",
+        "R": "Rkappa = A - kappa * P0",
+        "center_type": "Fin 23",
+        "cert": "FinitePenaltyCert D R Q, from Step18 penalty guards",
+        "prime_shift_type": "generator-defined finite prime-shift index",
+        "split": "quadForm C v = quadForm D v + theta * quadForm R v, since C = A - P",
+        "theta": "((1 : \u211d) / 10000)"
+      },
+      "role": "primary",
+      "status": "validated_import_plan"
+    },
+    {
+      "artifacts": {
+        "midpoint_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+        "midpoint_sha256": "cc88eb915f7dc7fd499c2ae3dcfe8f5bac9615750c92ba1c1c98559c9b711a0f",
+        "radius_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
+        "radius_sha256": "0b3c5a067323b278a3c4fc75d8af86df4ea69dfa20c5a8472343a263e78ebea9",
+        "step18_stdout": "q3.lean.aristotle/docs/insights/q3_psdpd_family_step18_outputs/psdpd_L3_k9_ell030_delta025_theta1e5.step18.txt"
+      },
+      "block_id": "psdpd_L3_k9_ell030_delta025_theta1e5",
+      "cert_id": "psdpd_family_v1:psdpd_L3_k9_ell030_delta025_theta1e5",
+      "csv_stats": {
+        "midpoint": {
+          "dimensions": {
+            "A": [
+              23,
+              23
+            ],
+            "P": [
+              23,
+              23
+            ],
+            "P0": [
+              23,
+              23
+            ],
+            "Q": [
+              2,
+              23
+            ]
+          },
+          "duplicate_entries": {
+            "A": 0,
+            "P": 0,
+            "P0": 0,
+            "Q": 0
+          },
+          "matrix_counts": {
+            "A": 529,
+            "P": 529,
+            "P0": 529,
+            "Q": 46
+          },
+          "missing_entries": {
+            "A": 0,
+            "P": 0,
+            "P0": 0,
+            "Q": 0
+          },
+          "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+          "row_count": 1633,
+          "sha256": "cc88eb915f7dc7fd499c2ae3dcfe8f5bac9615750c92ba1c1c98559c9b711a0f",
+          "value_column": "mid"
+        },
+        "radius": {
+          "dimensions": {
+            "A": [
+              23,
+              23
+            ],
+            "P": [
+              23,
+              23
+            ],
+            "P0": [
+              23,
+              23
+            ],
+            "Q": [
+              2,
+              23
+            ]
+          },
+          "duplicate_entries": {
+            "A": 0,
+            "P": 0,
+            "P0": 0,
+            "Q": 0
+          },
+          "matrix_counts": {
+            "A": 529,
+            "P": 529,
+            "P0": 529,
+            "Q": 46
+          },
+          "missing_entries": {
+            "A": 0,
+            "P": 0,
+            "P0": 0,
+            "Q": 0
+          },
+          "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
+          "row_count": 1633,
+          "sha256": "0b3c5a067323b278a3c4fc75d8af86df4ea69dfa20c5a8472343a263e78ebea9",
+          "value_column": "rad"
+        }
+      },
+      "family_id": "psdpd_family_v1",
+      "finite_dimensions": {
+        "dim_boundary_null": 21,
+        "iota": "Fin 23",
+        "n_centers": 23,
+        "q_rank": 2,
+        "rho": "Fin 2"
+      },
+      "lean_bindings": {
+        "finite_block_adapter": "CertifiedCenteredBSplineCoeffBlock.toControlK9FiniteBlock",
+        "label": "CenteredBSplineCoeffManifestLabel.controlK9L3Ell030Delta025Theta1e5",
+        "lean_ell": "((3 : \u211d) / 10)",
+        "lean_k": "9",
+        "lean_kappa": "((123 : \u211d) / 40)",
+        "lean_theta": "((1 : \u211d) / 100000)",
+        "singleton_family_adapter": "CertifiedCenteredBSplineCoeffBlock.toControlK9SingletonDirectedCertFamily"
+      },
+      "next_generator_obligations": [
+        "emit Lean matrices D and R over the declared center index type",
+        "emit or prove equality between CSV Q rows and the analytic contract boundary rows",
+        "emit theta_nonneg",
+        "emit FinitePenaltyCert penalty positivity proofs from interval guards",
+        "emit the quadratic-form split proof C = D + theta R",
+        "package the result as CertifiedCenteredBSplineCoeffBlock"
+      ],
+      "parameters": {
+        "L": 3.0,
+        "delta": 0.25,
+        "ell": 0.3,
+        "k_spline": 9,
+        "kappa": 3.075,
+        "tau_grid": "log:-8:8:161",
+        "theta": 1e-05
+      },
+      "required_lean_payload": {
+        "D": "Dtheta = (1 - theta) * A - P + theta * kappa * P0",
+        "Q": "boundary rows from the analytic coefficient contract; CSV Q is the interval-backed numerical row data",
+        "R": "Rkappa = A - kappa * P0",
+        "center_type": "Fin 23",
+        "cert": "FinitePenaltyCert D R Q, from Step18 penalty guards",
+        "prime_shift_type": "generator-defined finite prime-shift index",
+        "split": "quadForm C v = quadForm D v + theta * quadForm R v, since C = A - P",
+        "theta": "((1 : \u211d) / 100000)"
+      },
+      "role": "control",
+      "status": "validated_import_plan"
+    }
+  ],
+  "schema": "q3_psdpd_step32f_coeff_payload_import_plan_v1",
+  "source_seed": "docs/insights/q3_psdpd_directed_family_seed.json",
+  "status": "validated_import_plan_not_proof"
+}

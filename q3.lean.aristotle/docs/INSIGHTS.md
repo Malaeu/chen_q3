@@ -12480,3 +12480,27 @@ Update:
   generator/import layer that turns the interval-backed `D/R/Q/theta/split`
   artifacts into actual Lean `CertifiedCenteredBSplineCoeffBlock` values for
   these labels.
+
+## Synthesis (2026-05-24, OK) — `Step32F_CoeffPayloadImportPlan`
+
+- Target: make the next Step22/27 -> Lean payload import node
+  machine-checkable before generating large matrix terms.
+- Added `scripts/q3_psdpd_step32f_coeff_payload_plan.py`, which validates the
+  accepted Step27 seed rows, midpoint/radius SHA256 hashes, CSV schemas,
+  matrix dimensions, duplicate entries, and missing entries.
+- Generated:
+  `docs/insights/q3_psdpd_step32f_coeff_payload_import_plan.json` and
+  `docs/insights/q3_psdpd_step32f_coeff_payload_import_plan_2026_05_24.md`.
+- The plan validates the primary `k=11` and control `k=9` blocks as
+  `Fin 23` coefficient spaces with `Fin 2` boundary rows.  Both midpoint and
+  radius artifacts contain full `A`, `P`, `P0`, and `Q` data with the expected
+  dimensions.
+- The required Lean payload is now explicit:
+  `D = (1 - theta)A - P + theta*kappa*P0`,
+  `R = A - kappa*P0`,
+  the boundary row matrix `Q`, `theta_nonneg`, `FinitePenaltyCert D R Q`, and
+  the quadratic-form split
+  `quadForm C v = quadForm D v + theta * quadForm R v`.
+- This closes the import-plan layer only.  The next smallest node is the checked
+  generator/import layer that emits actual Lean matrix terms and proves/packages
+  `CertifiedCenteredBSplineCoeffBlock` for the active manifest labels.
