@@ -12208,3 +12208,20 @@ Update:
   of `centeredBSplineArchIntegrand` for those finite packet sums, likely using
   `a_star_linear_growth` plus sinc-power decay, before the four pairing laws can
   be fed all the way into `centeredBSplinePacketTranslationArchData_ofPairing`.
+
+## Synthesis (2026-05-24, partial OK) — `Step32F_ArchTIntegrability_packet_transform_bridge`
+
+- Target: start the `t`-side Arch integrability node
+  `centeredBSplineArchIntegrand_translatedPacketSum_integrable` without widening
+  back to full Arch assembly or redoing the sinc/profile derivation.
+- Added local bridges from Q3's `realSinc` to Mathlib's `Real.sinc`:
+  `realSinc_eq_sinc`, `realSinc_abs_le_one`, `realSinc_le_inv_abs`, and
+  `realSinc_abs_le_inv_abs`.
+- Added finite-packet transform linearity on the imaginary axis:
+  `centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_eq_sum`.
+- Added the closed finite packet-sum transform formula:
+  `centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_closedForm_sum`.
+- This removes the finite-sum / phase-profile part of the next Arch
+  integrability proof.  The remaining analytic core is now precisely the sinc
+  tail lemma: `a_star` has linear growth and
+  `realSinc(c*t)^(2*k+2)` must dominate it in `L1` for `0 < k`.

@@ -2013,6 +2013,38 @@ theorem realSinc_of_ne_zero {x : ℝ} (hx : x ≠ 0) :
     realSinc x = Real.sin x / x := by
   simp [realSinc, hx]
 
+/-- The local `realSinc` convention agrees with Mathlib's `Real.sinc`. -/
+theorem realSinc_eq_sinc :
+    realSinc = Real.sinc := by
+  funext x
+  by_cases hx : x = 0
+  · simp [realSinc, Real.sinc, hx]
+  · simp [realSinc, Real.sinc, hx]
+
+/-- The regularized sinc factor has absolute value at most one. -/
+theorem realSinc_abs_le_one (x : ℝ) :
+    |realSinc x| ≤ 1 := by
+  rw [realSinc_eq_sinc]
+  exact Real.abs_sinc_le_one x
+
+/-- Away from zero, the regularized sinc factor is bounded by `1 / |x|`. -/
+theorem realSinc_le_inv_abs {x : ℝ} (hx : x ≠ 0) :
+    realSinc x ≤ |x|⁻¹ := by
+  rw [realSinc_eq_sinc]
+  exact Real.sinc_le_inv_abs hx
+
+/-- Away from zero, the absolute value of the regularized sinc is bounded by
+`1 / |x|`. -/
+theorem realSinc_abs_le_inv_abs {x : ℝ} (hx : x ≠ 0) :
+    |realSinc x| ≤ |x|⁻¹ := by
+  rw [realSinc_of_ne_zero hx, abs_div]
+  have hsin : |Real.sin x| ≤ (1 : ℝ) := Real.abs_sin_le_one x
+  have hxnonneg : 0 ≤ |x| := abs_nonneg x
+  calc
+    |Real.sin x| / |x| ≤ 1 / |x| :=
+      div_le_div_of_nonneg_right hsin hxnonneg
+    _ = |x|⁻¹ := by ring
+
 /-- The centered interval exponential integral is the regularized hyperbolic
 sinc factor. -/
 theorem intervalIntegral_exp_mul_centered_eq_realSinhc (a : ℝ) :
@@ -3403,6 +3435,96 @@ theorem centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_integrable
         k ell (center i) t hk hell
     simpa [mul_assoc] using hi.const_mul (coeff i)
   simpa [Finset.sum_mul, mul_assoc] using hsum
+
+/-- The imaginary-axis transform of a finite translated/scaled B-spline packet
+sum is the corresponding finite sum of packet transforms.  This is the finite
+packet-span transform linearity bridge used before the remaining Arch `t`-side
+decay estimate. -/
+theorem centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_eq_sum
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell t : ℝ) (coeff : ι → ℂ) (center : ι → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) :
+    complexBumpLaplace
+        (fun x : ℝ =>
+          Finset.univ.sum fun i : ι =>
+            coeff i *
+              complexScaledTranslatedBump
+                (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) x)
+        (Complex.I * (t : ℂ)) =
+      Finset.univ.sum fun i : ι =>
+        coeff i *
+          complexBumpLaplace
+            (complexScaledTranslatedBump
+              (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i))
+            (Complex.I * (t : ℂ)) := by
+  unfold complexBumpLaplace
+  calc
+    (∫ x : ℝ,
+        (Finset.univ.sum fun i : ι =>
+          coeff i *
+            complexScaledTranslatedBump
+              (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) x) *
+          Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ)))
+        =
+      ∫ x : ℝ,
+        Finset.univ.sum fun i : ι =>
+          coeff i *
+            (complexScaledTranslatedBump
+              (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) x *
+                Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ))) := by
+          apply integral_congr_ae
+          filter_upwards with x
+          rw [Finset.sum_mul]
+          apply Finset.sum_congr rfl
+          intro i _hi
+          ring
+    _ =
+      Finset.univ.sum fun i : ι =>
+        ∫ x : ℝ,
+          coeff i *
+            (complexScaledTranslatedBump
+              (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) x *
+                Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ))) := by
+          refine integral_finset_sum Finset.univ ?_
+          intro i _hi
+          have hi :=
+            centeredBSplineTranslatedPacket_complexBumpLaplace_imag_integrable
+              k ell (center i) t hk hell
+          simpa [mul_assoc] using hi.const_mul (coeff i)
+    _ =
+      Finset.univ.sum fun i : ι =>
+        coeff i *
+          ∫ x : ℝ,
+            complexScaledTranslatedBump
+              (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) x *
+                Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ)) := by
+          apply Finset.sum_congr rfl
+          intro i _hi
+          rw [integral_const_mul]
+
+/-- Closed finite-sum form of the imaginary-axis transform of a translated
+B-spline packet sum. -/
+theorem centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_closedForm_sum
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell t : ℝ) (coeff : ι → ℂ) (center : ι → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) :
+    complexBumpLaplace
+        (fun x : ℝ =>
+          Finset.univ.sum fun i : ι =>
+            coeff i *
+              complexScaledTranslatedBump
+                (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) x)
+        (Complex.I * (t : ℂ)) =
+      Finset.univ.sum fun i : ι =>
+        coeff i *
+          ((Real.sqrt ell : ℂ) *
+            Complex.exp ((Complex.I * (t : ℂ)) * (center i : ℂ)) *
+              centeredBSplineImagTransformClosedForm k ell t) := by
+  rw [centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_eq_sum
+    k ell t coeff center hk hell]
+  apply Finset.sum_congr rfl
+  intro i _hi
+  rw [centeredBSplineImagTransform_scaledTranslated_eq_closedForm k ell (center i) t hell]
 
 /-- Positive-degree boundary transform profiles are strictly positive at every
 real spectral parameter. -/
