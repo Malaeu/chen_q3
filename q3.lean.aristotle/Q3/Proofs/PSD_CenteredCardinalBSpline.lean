@@ -3304,6 +3304,106 @@ theorem centeredBSplineEta_hasCompactSupport
     hscaled.mul_left
   simpa [centeredBSplineEta, Pi.mul_apply, smul_eq_mul] using hmul
 
+/-- A translated/scaled positive-degree normalized B-spline packet has an
+imaginary-axis weighted transform integrand in `L¹`.  This is the local
+Bochner-integrability fact needed when linearity of the concrete Arch pairing
+is applied to finite packet spans. -/
+theorem centeredBSplineTranslatedPacket_complexBumpLaplace_imag_integrable
+    (k : ℕ) (ell center t : ℝ) (hk : 0 < k) (hell : 0 < ell) :
+    Integrable
+      (fun x : ℝ =>
+        complexScaledTranslatedBump
+            (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell center x *
+          Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ))) := by
+  have heta_cont_real : Continuous (centeredBSplineEta k) :=
+    centeredBSplineEta_continuous_of_pos k hk
+  have heta_cont : Continuous (fun y : ℝ => (centeredBSplineEta k y : ℂ)) :=
+    Complex.continuous_ofReal.comp heta_cont_real
+  have harg_cont : Continuous (fun x : ℝ => (x - center) / ell) := by
+    continuity
+  have hpacket_cont : Continuous
+      (complexScaledTranslatedBump
+        (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell center) := by
+    unfold complexScaledTranslatedBump
+    exact continuous_const.mul (heta_cont.comp harg_cont)
+  have heta_comp_real : HasCompactSupport (centeredBSplineEta k) :=
+    centeredBSplineEta_hasCompactSupport k
+  have heta_comp : HasCompactSupport (fun y : ℝ => (centeredBSplineEta k y : ℂ)) := by
+    have hcast : HasCompactSupport ((fun r : ℝ => (r : ℂ)) ∘ centeredBSplineEta k) :=
+      heta_comp_real.comp_left (by simp)
+    simpa [Function.comp_def] using hcast
+  have hscale : HasCompactSupport
+      (fun x : ℝ => (centeredBSplineEta k ((ell⁻¹) • x) : ℂ)) := by
+    simpa using heta_comp.comp_smul (inv_ne_zero hell.ne')
+  have htrans : HasCompactSupport
+      (fun x : ℝ => (centeredBSplineEta k ((ell⁻¹) • (x + -center)) : ℂ)) := by
+    have h := hscale.comp_homeomorph (Homeomorph.addRight (-center))
+    simpa [Function.comp_def] using h
+  have hpacket_comp : HasCompactSupport
+      (complexScaledTranslatedBump
+        (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell center) := by
+    unfold complexScaledTranslatedBump
+    have htrans' : HasCompactSupport
+        (fun x : ℝ => (centeredBSplineEta k ((x - center) / ell) : ℂ)) := by
+      convert htrans using 1
+      ext x
+      simp [sub_eq_add_neg, div_eq_mul_inv, smul_eq_mul, mul_comm]
+    have hconst : HasCompactSupport
+        ((fun _ : ℝ => ((Real.sqrt ell : ℂ)⁻¹)) *
+          fun x : ℝ => (centeredBSplineEta k ((x - center) / ell) : ℂ)) :=
+      htrans'.mul_left
+    simpa [Pi.mul_apply] using hconst
+  have hcont : Continuous
+      (fun x : ℝ =>
+        complexScaledTranslatedBump
+            (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell center x *
+          Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ))) := by
+    exact hpacket_cont.mul
+      (Complex.continuous_exp.comp
+        (continuous_const.mul Complex.continuous_ofReal))
+  have hcomp : HasCompactSupport
+      (fun x : ℝ =>
+        complexScaledTranslatedBump
+            (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell center x *
+          Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ))) := by
+    have hmul : HasCompactSupport
+        (complexScaledTranslatedBump
+            (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell center *
+          fun x : ℝ => Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ))) :=
+      hpacket_comp.mul_right
+    simpa [Pi.mul_apply] using hmul
+  exact hcont.integrable_of_hasCompactSupport hcomp
+
+/-- Finite complex linear combinations of translated/scaled positive-degree
+normalized B-spline packets have imaginary-axis weighted transform integrands in
+`L¹`.  This packages the exact finite packet-span hypothesis consumed by
+`complexBumpLaplace_add_of_integrable`. -/
+theorem centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_integrable
+    {ι : Type*} [Fintype ι]
+    (k : ℕ) (ell t : ℝ) (coeff : ι → ℂ) (center : ι → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) :
+    Integrable
+      (fun x : ℝ =>
+        ((Finset.univ.sum fun i : ι =>
+            coeff i *
+              complexScaledTranslatedBump
+                (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) x) *
+          Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ)))) := by
+  have hsum : Integrable
+      (fun x : ℝ =>
+        Finset.univ.sum fun i : ι =>
+          coeff i *
+            (complexScaledTranslatedBump
+                (fun y : ℝ => (centeredBSplineEta k y : ℂ)) ell (center i) x *
+              Complex.exp ((Complex.I * (t : ℂ)) * (x : ℂ)))) := by
+    apply integrable_finset_sum
+    intro i _hi
+    have hi :=
+      centeredBSplineTranslatedPacket_complexBumpLaplace_imag_integrable
+        k ell (center i) t hk hell
+    simpa [mul_assoc] using hi.const_mul (coeff i)
+  simpa [Finset.sum_mul, mul_assoc] using hsum
+
 /-- Positive-degree boundary transform profiles are strictly positive at every
 real spectral parameter. -/
 theorem centeredBSplineRealTransformProfile_pos_of_pos_degree

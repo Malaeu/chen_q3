@@ -9,6 +9,8 @@
 - `centeredBSplineArchPairing_smul_left`
 - `centeredBSplineArchPairing_add_right`
 - `centeredBSplineArchPairing_smul_right`
+- `centeredBSplineTranslatedPacket_complexBumpLaplace_imag_integrable`
+- `centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_integrable`
 
 ## Files touched
 
@@ -36,6 +38,16 @@
 - `rg -n "sorry|admit" Q3/Proofs/PSD_CenteredCardinalBSpline.lean Q3/Proofs/PSD_BSplineTranslationIdentities.lean`
 - `./scripts/check_axioms.sh`
 
+## Follow-up commands run
+
+- `rg -n "centeredBSplineEta.*(continuous|Continuous|hasCompact|HasCompact|integrable|Integrable)|centeredCardinalBSpline.*(hasCompact|HasCompact|integrable|Integrable|continuous|Continuous)|ConvPower.*(hasCompact|HasCompact|integrable|Integrable|continuous|Continuous)|complexBumpLaplace.*integrable|scaledTranslated.*integrable|complexScaledTranslatedBump" Q3/Proofs/PSD_CenteredCardinalBSpline.lean Q3/Proofs/PSD_BSplineTranslationIdentities.lean Q3/Proofs -g '!PrimeCert/**'`
+- `lake env lean --stdin` for the translated-packet integrability prototypes
+- `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`
+- `lake env lean Q3/Proofs/PSD_BSplineTranslationIdentities.lean`
+- `lake build Q3.Main`
+- `rg -n "sorry|admit" Q3/Proofs/PSD_CenteredCardinalBSpline.lean Q3/Proofs/PSD_BSplineTranslationIdentities.lean`
+- `./scripts/check_axioms.sh`
+
 ## Compile status
 
 - `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`: passed
@@ -57,16 +69,18 @@ This pass closed the local linearity algebra for the concrete
 
 ## Remaining blocker
 
-The remaining blocker is now narrower:
+The remaining blocker is now narrower.  The lower `x`-side weighted
+Bochner-integrability hypotheses for finite translated packet sums are closed;
+what remains is the `t`-side Arch-integrand integrability:
 
 ```text
-prove the finite packet-span integrability hypotheses for B-spline translated
-packet sums, then feed the four Arch-pairing laws into
+prove centeredBSplineArchIntegrand integrability for B-spline translated packet
+sums, then feed the four Arch-pairing laws into
 centeredBSplinePacketTranslationArchData_ofPairing.
 ```
 
 No new profile, sinc, phase, or receiver calculation is needed for this next
-step.
+step, but the proof likely needs `a_star_linear_growth` plus sinc-power decay.
 
 ## Next smallest lemma if blocked
 
@@ -74,11 +88,11 @@ Add a finite-sum integrability packet for translated normalized B-spline
 packets:
 
 ```lean
-centeredBSplineTranslatedPacket_complexBumpLaplace_imag_integrable
-centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_integrable
 centeredBSplineArchIntegrand_translatedPacket_integrable
 centeredBSplineArchIntegrand_translatedPacketSum_integrable
 ```
 
-The likely proof route is compact support plus the existing closed translated
-imaginary-axis profile.
+The next likely proof route is the existing closed translated imaginary-axis
+profile, `a_star_linear_growth`, and an integrable sinc-power envelope.  The
+degree-zero case should be treated carefully; the positive-degree branch is the
+current safe mainline.

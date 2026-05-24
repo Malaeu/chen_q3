@@ -12187,3 +12187,24 @@ Update:
   blocker is now sharply isolated: prove the finite packet-span integrability
   hypotheses for B-spline translated packet sums, then feed these laws into
   `centeredBSplinePacketTranslationArchData_ofPairing`.
+
+## Synthesis (2026-05-24, partial OK) — `Step32F_TranslatedPacket_LaplaceIntegrable`
+
+- Target: close the lower finite-packet integrability layer exposed by
+  `centeredBSplineArchPairing_add_left/right`, without starting a new Arch
+  profile calculation.
+- Added
+  `centeredBSplineTranslatedPacket_complexBumpLaplace_imag_integrable`: for
+  `0 < k` and `0 < ell`, each translated/scaled normalized B-spline packet has
+  an imaginary-axis weighted complex Laplace integrand in `L1`.
+- Added
+  `centeredBSplineTranslatedPacketSum_complexBumpLaplace_imag_integrable`: the
+  same integrability is stable under finite complex packet sums.
+- Proof route: positive-degree continuity of `eta_k`, compact support of
+  `eta_k`, compact support under nonzero scaling/translation, and finite-sum
+  integrability.
+- This closes the `x`-side weighted Bochner-integrability obligations for
+  finite packet sums.  The next remaining Arch gate is the `t`-side integrability
+  of `centeredBSplineArchIntegrand` for those finite packet sums, likely using
+  `a_star_linear_growth` plus sinc-power decay, before the four pairing laws can
+  be fed all the way into `centeredBSplinePacketTranslationArchData_ofPairing`.
