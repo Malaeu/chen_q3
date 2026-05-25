@@ -12870,3 +12870,23 @@ Update:
 - The next smallest lock is an active boundary-Gram adapter for primary `k=11`
   and control `k=9`, parameterized by concrete boundary-row hboxes and
   generated radius-dominance lemmas.
+
+## Synthesis (2026-05-25, OK) — `Step32F_ActiveBoundaryGramBoxAdapters`
+
+- Target: specialize the generic boundary-Gram hbox receiver to the active
+  primary/control coefficient blocks.
+- Local `q3_docs` search had no better API than the current receiver chain;
+  the Lean signatures in `PSD_CenteredCoeffCertifiedBlockImport.lean` are the
+  authoritative route.
+- Added `primaryK11BoundaryGramBox_of_boundaryRows` and
+  `controlK9BoundaryGramBox_of_boundaryRows`.
+- Each theorem consumes a boundary-row hbox `matrixEntrywiseAbsLe Q Q0 QR` and
+  a generated dominance lemma from the product-split Gram radius into the
+  chosen square Gram radius `GR`.
+- Output is the exact `matrixEntrywiseAbsLe (boundaryGramMatrix analyticQ)
+  (boundaryGramMatrix importedQ) GR` hypothesis consumed by the active D/R
+  penalty-box adapters.
+- This closes the active adapter layer from rowwise Q enclosures to Gram
+  enclosures. The next smallest lock is to compose these Gram adapters with the
+  existing D/R penalty adapters, or to add concrete generated Q-row/Gram-radius
+  import facts when the payload data is ready.

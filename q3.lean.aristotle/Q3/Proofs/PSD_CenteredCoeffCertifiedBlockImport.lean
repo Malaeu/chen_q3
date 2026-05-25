@@ -112,6 +112,45 @@ theorem primaryK11RPenaltyBox_of_matrix_and_boundaryGram
       CenteredCoeffPenaltyImport.primaryK11TauR hM hG)
     hRad
 
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Step32F boundary-row hbox handoff
+- role: tactical adapter from active boundary-row boxes to boundary Gram boxes
+- input: future boundary-row hboxes and generated Gram-radius dominance lemmas
+- output: primary boundary-Gram hbox consumed by active D/R penalty adapters
+- reviewer question answered: does the boundary-row interval payload feed the
+  actual `Q^T Q` Gram term rather than stopping at rowwise midpoint/radius data?
+-/
+/-- Primary `k=11` boundary-Gram hbox from a boundary-row hbox and a generated
+Gram-radius dominance lemma. -/
+theorem primaryK11BoundaryGramBox_of_boundaryRows
+    (QR : Matrix BoundaryIndex2 CoeffIndex23 Real)
+    (GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      primaryK11AnalyticQ primaryK11Q QR)
+    (hRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            QR r i * (|primaryK11Q r j| + QR r j) +
+              |primaryK11Q r i| * QR r j) ≤
+        GR i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.boundaryGramMatrix primaryK11AnalyticQ)
+      (Q3.Proofs.boundaryGramMatrix primaryK11Q)
+      GR := by
+  exact Q3.Proofs.matrixEntrywiseAbsLe_mono
+    (Q3.Proofs.boundaryGramMatrix primaryK11AnalyticQ)
+    (Q3.Proofs.boundaryGramMatrix primaryK11Q)
+    (fun i j =>
+      Finset.univ.sum
+        (fun r : BoundaryIndex2 =>
+          QR r i * (|primaryK11Q r j| + QR r j) +
+            |primaryK11Q r i| * QR r j))
+    GR
+    (Q3.Proofs.boundaryGramMatrix_entrywiseAbsLe_of_matrix
+      primaryK11AnalyticQ primaryK11Q QR hQ)
+    hRad
+
 /- 
 Q3 obstruction wall:
 - wall: Matrix-identification / Step32F coefficient certified-block handoff
@@ -231,6 +270,45 @@ theorem controlK9RPenaltyBox_of_matrix_and_boundaryGram
     (Q3.Proofs.penaltyMatrix_entrywiseAbsLe_of_matrix_and_boundaryGram
       R controlK9R MR controlK9AnalyticQ controlK9Q GR
       CenteredCoeffPenaltyImport.controlK9TauR hM hG)
+    hRad
+
+/-
+Q3 obstruction wall:
+- wall: Matrix-identification / Step32F boundary-row hbox handoff
+- role: tactical adapter from active boundary-row boxes to boundary Gram boxes
+- input: future boundary-row hboxes and generated Gram-radius dominance lemmas
+- output: control boundary-Gram hbox consumed by active D/R penalty adapters
+- reviewer question answered: does the boundary-row interval payload feed the
+  actual `Q^T Q` Gram term rather than stopping at rowwise midpoint/radius data?
+-/
+/-- Control `k=9` boundary-Gram hbox from a boundary-row hbox and a generated
+Gram-radius dominance lemma. -/
+theorem controlK9BoundaryGramBox_of_boundaryRows
+    (QR : Matrix BoundaryIndex2 CoeffIndex23 Real)
+    (GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      controlK9AnalyticQ controlK9Q QR)
+    (hRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            QR r i * (|controlK9Q r j| + QR r j) +
+              |controlK9Q r i| * QR r j) ≤
+        GR i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.boundaryGramMatrix controlK9AnalyticQ)
+      (Q3.Proofs.boundaryGramMatrix controlK9Q)
+      GR := by
+  exact Q3.Proofs.matrixEntrywiseAbsLe_mono
+    (Q3.Proofs.boundaryGramMatrix controlK9AnalyticQ)
+    (Q3.Proofs.boundaryGramMatrix controlK9Q)
+    (fun i j =>
+      Finset.univ.sum
+        (fun r : BoundaryIndex2 =>
+          QR r i * (|controlK9Q r j| + QR r j) +
+            |controlK9Q r i| * QR r j))
+    GR
+    (Q3.Proofs.boundaryGramMatrix_entrywiseAbsLe_of_matrix
+      controlK9AnalyticQ controlK9Q QR hQ)
     hRad
 
 /- 
