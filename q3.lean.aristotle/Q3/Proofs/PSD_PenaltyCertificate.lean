@@ -254,6 +254,17 @@ def matrixEntrywiseAbsLe {ρ σ : Type*}
     (A M R : Matrix ρ σ ℝ) : Prop :=
   ∀ i j, |A i j - M i j| ≤ R i j
 
+/-- Entrywise boxes are monotone in the radius matrix.  This lets generated
+or analytic sub-radius bounds feed coarser imported interval radii without
+reproving the underlying entry estimate. -/
+theorem matrixEntrywiseAbsLe_mono {ρ σ : Type*}
+    (A M R S : Matrix ρ σ ℝ)
+    (hAM : matrixEntrywiseAbsLe A M R)
+    (hRS : ∀ i j, R i j ≤ S i j) :
+    matrixEntrywiseAbsLe A M S := by
+  intro i j
+  exact le_trans (hAM i j) (hRS i j)
+
 /-- Radius energy controlling the quadratic-form error from entrywise matrix
 boxes.  The radius matrix is expected to have nonnegative entries; this follows
 automatically from a `matrixEntrywiseAbsLe` hypothesis for the applications

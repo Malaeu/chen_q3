@@ -12818,3 +12818,20 @@ Update:
 - The next smallest lock is an active-block specialization of this receiver,
   starting with primary `k=11` D, so that the final hbox statement matches the
   input expected by `primaryK11CertifiedCoeffBlock_of_penalty_boxes`.
+
+## Synthesis (2026-05-25, OK) — `Step32F_MatrixEntrywiseAbsLeMono`
+
+- Target: close the tiny radius-relaxation gap after the penalty-matrix hbox
+  factor receiver.
+- Local `q3_docs` lookup did not expose an existing project-level monotonicity
+  receiver for `matrixEntrywiseAbsLe`; the relevant implementation is a local
+  order bridge, not a Mathlib matrix theorem.
+- Added `matrixEntrywiseAbsLe_mono` to `PSD_PenaltyCertificate.lean`.
+- The theorem says that if `A` is entrywise inside radius `R` around `M`, and
+  `R <= S` pointwise, then `A` is also inside radius `S` around `M`.
+- This lets future analytic composed radii, such as `MR + |tau| * GR`, feed the
+  imported active-block penalty radii once a pointwise radius-dominance lemma is
+  supplied.
+- The next smallest lock is an active-block specialization for primary `k=11`
+  D, combining `penaltyMatrix_entrywiseAbsLe_of_matrix_and_boundaryGram` with
+  this monotonicity adapter.
