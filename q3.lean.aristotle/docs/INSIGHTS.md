@@ -12562,3 +12562,23 @@ Update:
   next real proof node is a kernel-checkable rational matrix lower-bound
   certificate, likely LDL/SOS-style, proving the named lower-bound
   propositions rather than importing numerical SPD as evidence.
+
+## Synthesis (2026-05-25, OK) — `Step32F_WeightedSquareLowerBoundReceiver`
+
+- Target: give the next rational LDL/SOS checker a tiny algebraic receiver for
+  the named penalty lower-bound propositions.
+- Added `weightedSquareSum`, `weightedSquareSum_nonneg`, and
+  `penalty_lower_bound_of_weightedSquareSum_identity` to
+  `PSD_PenaltyCertificate.lean`.
+- Regenerated `PSD_CenteredCoeffPenaltyImport.lean` with per-block adapters
+  `primaryK11DLowerBound_of_weightedSquareSum`,
+  `primaryK11RLowerBound_of_weightedSquareSum`,
+  `controlK9DLowerBound_of_weightedSquareSum`, and
+  `controlK9RLowerBound_of_weightedSquareSum`.
+- The next proof generator now only has to emit nonnegative weights and an
+  exact identity
+  `penaltyForm M Q tau v = floor * euclideanEnergy v + weightedSquareSum w L v`;
+  Lean then derives the lower-bound target without eigenvalue reasoning.
+- This does not prove the active block SPD/lower bounds yet.  The next smallest
+  node is to generate and verify the primary `k=11` D/R weighted-square
+  identities, then repeat for the control `k=9` block.

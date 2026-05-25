@@ -60,6 +60,45 @@ lemma euclideanEnergy_pos_of_ne_zero {ι : Type*} [Fintype ι]
     (fun j _ => sq_nonneg (v j))
     ⟨i, Finset.mem_univ i, sq_pos_of_ne_zero hi⟩
 
+/-- A finite weighted sum of explicit linear squares.
+
+This is the algebraic landing surface for checked LDL/SOS generators: if a
+penalty form is rewritten as a positive Euclidean floor plus this expression
+with nonnegative weights, the lower bound follows without spectral reasoning. -/
+def weightedSquareSum {σ ι : Type*} [Fintype σ] [Fintype ι]
+    (w : σ → ℝ) (L : σ → ι → ℝ) (v : ι → ℝ) : ℝ :=
+  ∑ s, w s * (∑ i, L s i * v i) ^ 2
+
+/-- A weighted sum of linear squares is nonnegative when all weights are
+nonnegative. -/
+lemma weightedSquareSum_nonneg {σ ι : Type*} [Fintype σ] [Fintype ι]
+    (w : σ → ℝ) (L : σ → ι → ℝ)
+    (hw : ∀ s, 0 ≤ w s) (v : ι → ℝ) :
+    0 ≤ weightedSquareSum w L v := by
+  unfold weightedSquareSum
+  exact Finset.sum_nonneg (by
+    intro s _
+    exact mul_nonneg (hw s) (sq_nonneg _))
+
+/-- Convert an exact weighted-square identity into a full-space Euclidean
+penalty lower bound.
+
+Future checked generators should prove only the identity and the nonnegative
+weights; this theorem supplies the reusable algebraic receiver. -/
+theorem penalty_lower_bound_of_weightedSquareSum_identity
+    {ρ ι σ : Type*} [Fintype ρ] [Fintype ι] [Fintype σ]
+    (M : Matrix ι ι ℝ) (Q : Matrix ρ ι ℝ) (tau floor : ℝ)
+    (w : σ → ℝ) (L : σ → ι → ℝ)
+    (hw : ∀ s, 0 ≤ w s)
+    (hidentity : ∀ v : ι → ℝ,
+      penaltyForm M Q tau v =
+        floor * euclideanEnergy v + weightedSquareSum w L v) :
+    ∀ v : ι → ℝ,
+      floor * euclideanEnergy v ≤ penaltyForm M Q tau v := by
+  intro v
+  rw [hidentity v]
+  exact le_add_of_nonneg_right (weightedSquareSum_nonneg w L hw v)
+
 /-- The boundary residual energy vanishes on the boundary-null subspace. -/
 lemma boundaryEnergy_eq_zero_of_boundaryNull {ρ ι : Type*}
     [Fintype ρ] [Fintype ι]

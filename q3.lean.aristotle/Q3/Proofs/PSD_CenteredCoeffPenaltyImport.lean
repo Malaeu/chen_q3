@@ -45,6 +45,40 @@ def primaryK11RLowerBound : Prop :=
     primaryK11RFloor * Q3.Proofs.euclideanEnergy v <=
       Q3.Proofs.penaltyForm primaryK11R primaryK11Q primaryK11TauR v
 
+/-- Convert an exact weighted-square identity into `primaryK11DLowerBound`.
+
+The proof-generating SOS/LDL checker only needs to supply nonnegative
+weights and the exact identity; the reusable algebraic receiver proves
+the Euclidean lower bound. -/
+def primaryK11DLowerBound_of_weightedSquareSum
+    {σ : Type} [Fintype σ]
+    (w : σ -> Real) (L : σ -> CoeffIndex23 -> Real)
+    (hw : ∀ s, 0 <= w s)
+    (hidentity : ∀ v : CoeffIndex23 -> Real,
+      Q3.Proofs.penaltyForm primaryK11D primaryK11Q primaryK11TauD v =
+        primaryK11DFloor * Q3.Proofs.euclideanEnergy v +
+          Q3.Proofs.weightedSquareSum w L v) :
+    primaryK11DLowerBound :=
+  Q3.Proofs.penalty_lower_bound_of_weightedSquareSum_identity
+    primaryK11D primaryK11Q primaryK11TauD primaryK11DFloor w L hw hidentity
+
+/-- Convert an exact weighted-square identity into `primaryK11RLowerBound`.
+
+The proof-generating SOS/LDL checker only needs to supply nonnegative
+weights and the exact identity; the reusable algebraic receiver proves
+the Euclidean lower bound. -/
+def primaryK11RLowerBound_of_weightedSquareSum
+    {σ : Type} [Fintype σ]
+    (w : σ -> Real) (L : σ -> CoeffIndex23 -> Real)
+    (hw : ∀ s, 0 <= w s)
+    (hidentity : ∀ v : CoeffIndex23 -> Real,
+      Q3.Proofs.penaltyForm primaryK11R primaryK11Q primaryK11TauR v =
+        primaryK11RFloor * Q3.Proofs.euclideanEnergy v +
+          Q3.Proofs.weightedSquareSum w L v) :
+    primaryK11RLowerBound :=
+  Q3.Proofs.penalty_lower_bound_of_weightedSquareSum_identity
+    primaryK11R primaryK11Q primaryK11TauR primaryK11RFloor w L hw hidentity
+
 /-- Package the two checked lower bounds for `psdpd_L3_k11_ell030_delta025_theta1e4`. -/
 def primaryK11PenaltyLowerBoundCert_of_bounds
     (hD : primaryK11DLowerBound)
@@ -91,6 +125,40 @@ def controlK9RLowerBound : Prop :=
   ∀ v : CoeffIndex23 -> Real,
     controlK9RFloor * Q3.Proofs.euclideanEnergy v <=
       Q3.Proofs.penaltyForm controlK9R controlK9Q controlK9TauR v
+
+/-- Convert an exact weighted-square identity into `controlK9DLowerBound`.
+
+The proof-generating SOS/LDL checker only needs to supply nonnegative
+weights and the exact identity; the reusable algebraic receiver proves
+the Euclidean lower bound. -/
+def controlK9DLowerBound_of_weightedSquareSum
+    {σ : Type} [Fintype σ]
+    (w : σ -> Real) (L : σ -> CoeffIndex23 -> Real)
+    (hw : ∀ s, 0 <= w s)
+    (hidentity : ∀ v : CoeffIndex23 -> Real,
+      Q3.Proofs.penaltyForm controlK9D controlK9Q controlK9TauD v =
+        controlK9DFloor * Q3.Proofs.euclideanEnergy v +
+          Q3.Proofs.weightedSquareSum w L v) :
+    controlK9DLowerBound :=
+  Q3.Proofs.penalty_lower_bound_of_weightedSquareSum_identity
+    controlK9D controlK9Q controlK9TauD controlK9DFloor w L hw hidentity
+
+/-- Convert an exact weighted-square identity into `controlK9RLowerBound`.
+
+The proof-generating SOS/LDL checker only needs to supply nonnegative
+weights and the exact identity; the reusable algebraic receiver proves
+the Euclidean lower bound. -/
+def controlK9RLowerBound_of_weightedSquareSum
+    {σ : Type} [Fintype σ]
+    (w : σ -> Real) (L : σ -> CoeffIndex23 -> Real)
+    (hw : ∀ s, 0 <= w s)
+    (hidentity : ∀ v : CoeffIndex23 -> Real,
+      Q3.Proofs.penaltyForm controlK9R controlK9Q controlK9TauR v =
+        controlK9RFloor * Q3.Proofs.euclideanEnergy v +
+          Q3.Proofs.weightedSquareSum w L v) :
+    controlK9RLowerBound :=
+  Q3.Proofs.penalty_lower_bound_of_weightedSquareSum_identity
+    controlK9R controlK9Q controlK9TauR controlK9RFloor w L hw hidentity
 
 /-- Package the two checked lower bounds for `psdpd_L3_k9_ell030_delta025_theta1e5`. -/
 def controlK9PenaltyLowerBoundCert_of_bounds
