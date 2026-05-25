@@ -12644,3 +12644,27 @@ Update:
   `CertifiedCenteredBSplineCoeffBlock` for both active rows, because the current
   payload import has matrices/certs but not the `center/weight/shift` data
   expected by the analytic contract wrapper.
+
+## Synthesis (2026-05-25, OK) — `Step32F_CoeffDictionaryImport`
+
+- Target: import the concrete generator-side dictionaries required by the
+  centered coefficient analytic contract after the active primary/control LDL
+  certificates.
+- Added `scripts/q3_psdpd_step32f_coeff_dictionary_lean_data.py`, generating
+  `PSD_CenteredCoeffDictionaryImport.lean`.
+- The generated Lean file defines the exact center grid
+  `u_i = -27/10 + i/4` over `Fin 23`, the L=3 prime-power dictionary
+  `PrimeShiftIndexL3 := Fin 98`, analytic shifts `r * Real.log p`, and weights
+  `Real.log p * Real.exp (-(r * Real.log p) / 2)`.
+- Added primary/control dictionary aliases and concrete analytic contract
+  aliases:
+  `primaryK11CoeffAnalyticKernelContract`,
+  `primaryK11AnalyticC`, `primaryK11AnalyticQ`,
+  `controlK9CoeffAnalyticKernelContract`,
+  `controlK9AnalyticC`, and `controlK9AnalyticQ`.
+- `lake env lean Q3/Proofs/PSD_CenteredCoeffDictionaryImport.lean` passes.
+- This does not yet instantiate `CertifiedCenteredBSplineCoeffBlock`: the
+  imported Step22 matrices are exact rational midpoint/radius payloads, while
+  the analytic contract entries are expressions in `Real.exp`, `Real.log`, and
+  the Arch integral profile.  The next smallest node is therefore the
+  analytic-to-payload matrix bridge, not another dictionary import.
