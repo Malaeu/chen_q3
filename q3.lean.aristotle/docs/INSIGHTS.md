@@ -12835,3 +12835,21 @@ Update:
 - The next smallest lock is an active-block specialization for primary `k=11`
   D, combining `penaltyMatrix_entrywiseAbsLe_of_matrix_and_boundaryGram` with
   this monotonicity adapter.
+
+## Synthesis (2026-05-25, OK) — `Step32F_ActivePenaltyBoxFactorAdapters`
+
+- Target: specialize the generic penalty-matrix hbox factor receiver to the
+  active primary/control coefficient blocks.
+- Added four adapters in `PSD_CenteredCoeffCertifiedBlockImport.lean`:
+  `primaryK11DPenaltyBox_of_matrix_and_boundaryGram`,
+  `primaryK11RPenaltyBox_of_matrix_and_boundaryGram`,
+  `controlK9DPenaltyBox_of_matrix_and_boundaryGram`, and
+  `controlK9RPenaltyBox_of_matrix_and_boundaryGram`.
+- Each adapter consumes a base matrix hbox, a boundary-Gram hbox, and a
+  pointwise composed-radius dominance lemma, then returns the exact D/R
+  penalty-box hypothesis expected by the active finite certificate wrappers.
+- This removes another API gap between analytic entry enclosures and
+  `primaryK11CertifiedCoeffBlock_of_penalty_boxes` /
+  `controlK9CertifiedCoeffBlock_of_penalty_boxes`.
+- The next smallest lock is the shared boundary-Gram hbox for active boundary
+  rows, starting with `primaryK11`.
