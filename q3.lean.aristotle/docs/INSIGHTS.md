@@ -12690,3 +12690,23 @@ Update:
   combine D/R/Q entrywise boxes into a midpoint penalty lower bound with a
   radius-error subtraction, then feed the existing
   `FinitePenaltyLowerBoundCert` route.
+
+## Synthesis (2026-05-25, OK) — `Step32F_PenaltyRadiusReceiver`
+
+- Target: lift the new entrywise radius receiver from raw quadratic forms to
+  the actual penalized form `M + tau Q^T Q`.
+- Added `penaltyMatrix` and `penaltyForm_eq_quadForm_penaltyMatrix` to make the
+  existing `penaltyForm` definition equal to the quadratic form of the explicit
+  penalized matrix.
+- Added `abs_penaltyForm_sub_quadForm_le_quadFormAbsRadius`, which transfers a
+  midpoint/radius box for the penalized matrix into a penalty-form perturbation
+  bound.
+- Added `penaltyForm_lower_bound_of_midpoint_lower_bound_with_radius`: if a
+  midpoint penalized matrix dominates `floor * euclideanEnergy + radiusEnergy`,
+  then the analytic penalty form dominates `floor * euclideanEnergy`.
+- This is the algebraic receiver needed by the interval-backed Step18/22 guard:
+  the generator can now aim to import a midpoint lower bound with explicit
+  radius margin, rather than trying to identify analytic entries exactly.
+- The next smallest node is to generate/import the concrete midpoint-plus-radius
+  lower-bound hypotheses for primary `k=11` and control `k=9`, then assemble
+  actual `FinitePenaltyLowerBoundCert` values for the analytic contract.

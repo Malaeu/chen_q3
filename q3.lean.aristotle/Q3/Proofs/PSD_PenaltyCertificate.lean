@@ -292,6 +292,65 @@ theorem abs_quadForm_sub_le_quadFormAbsRadius {ι : Type*} [Fintype ι]
   exact abs_quadForm_le_quadFormAbsRadius
     (fun i j => A i j - M i j) R hAM v
 
+/-- Matrix of the penalized quadratic form `M + tau Q^T Q`. -/
+def penaltyMatrix {ρ ι : Type*} [Fintype ρ]
+    (M : Matrix ι ι ℝ) (Q : Matrix ρ ι ℝ) (tau : ℝ) :
+    Matrix ι ι ℝ :=
+  fun i j => M i j + tau * ∑ r, Q r i * Q r j
+
+/-- The explicit penalty form is the quadratic form of `penaltyMatrix`. -/
+lemma penaltyForm_eq_quadForm_penaltyMatrix {ρ ι : Type*}
+    [Fintype ρ] [Fintype ι]
+    (M : Matrix ι ι ℝ) (Q : Matrix ρ ι ℝ) (tau : ℝ)
+    (v : ι → ℝ) :
+    penaltyForm M Q tau v = quadForm (penaltyMatrix M Q tau) v := by
+  unfold penaltyForm penaltyMatrix
+  rw [boundaryEnergy_eq_quadForm_gram]
+  rw [← quadForm_pointwise_smul]
+  rw [← quadForm_pointwise_add]
+
+/-- Entrywise midpoint/radius control for the penalized matrix controls the
+penalty-form perturbation. -/
+theorem abs_penaltyForm_sub_quadForm_le_quadFormAbsRadius
+    {ρ ι : Type*} [Fintype ρ] [Fintype ι]
+    (M : Matrix ι ι ℝ) (Q : Matrix ρ ι ℝ) (tau : ℝ)
+    (Pmid Rad : Matrix ι ι ℝ)
+    (hbox : matrixEntrywiseAbsLe (penaltyMatrix M Q tau) Pmid Rad)
+    (v : ι → ℝ) :
+    |penaltyForm M Q tau v - quadForm Pmid v| ≤
+      quadFormAbsRadius Rad v := by
+  rw [penaltyForm_eq_quadForm_penaltyMatrix]
+  exact abs_quadForm_sub_le_quadFormAbsRadius
+    (penaltyMatrix M Q tau) Pmid Rad hbox v
+
+/-- Transfer a midpoint penalty lower bound to the analytic penalty form when
+the midpoint bound includes the explicit radius-error margin. -/
+theorem penaltyForm_lower_bound_of_midpoint_lower_bound_with_radius
+    {ρ ι : Type*} [Fintype ρ] [Fintype ι]
+    (M : Matrix ι ι ℝ) (Q : Matrix ρ ι ℝ) (tau floor : ℝ)
+    (Pmid Rad : Matrix ι ι ℝ)
+    (hbox : matrixEntrywiseAbsLe (penaltyMatrix M Q tau) Pmid Rad)
+    (hmid : ∀ v : ι → ℝ,
+      floor * euclideanEnergy v + quadFormAbsRadius Rad v ≤
+        quadForm Pmid v) :
+    ∀ v : ι → ℝ,
+      floor * euclideanEnergy v ≤ penaltyForm M Q tau v := by
+  intro v
+  have hpert :=
+    abs_penaltyForm_sub_quadForm_le_quadFormAbsRadius
+      M Q tau Pmid Rad hbox v
+  have hlow :
+      quadForm Pmid v - quadFormAbsRadius Rad v ≤
+        penaltyForm M Q tau v := by
+    have hleft := (abs_le.mp hpert).1
+    linarith
+  have hfloor :
+      floor * euclideanEnergy v ≤
+        quadForm Pmid v - quadFormAbsRadius Rad v := by
+    have h := hmid v
+    linarith
+  exact le_trans hfloor hlow
+
 /-- Convert a matrix-level weighted-Gram identity into a full-space Euclidean
 penalty lower bound.
 
