@@ -12745,3 +12745,21 @@ Update:
   emit active-block `D` and `R` penalized radius matrices, exact nonnegative
   total-mass bounds, and midpoint LDL lower bounds with the required extra
   `radFloor` margin.
+
+## Synthesis (2026-05-25, OK) — `Step32F_CenteredCoeffRadiusFloorImport`
+
+- Target: import the active primary `k=11` and control `k=9` penalized
+  radius-floor payloads into Lean, using the scalar radius-floor receiver.
+- Added generator
+  `scripts/q3_psdpd_step32f_radius_floor_lean_data.py`.
+- Added `PSD_CenteredCoeffRadiusFloorImport.lean`, generated from the existing
+  Step22 midpoint/radius CSV payloads.
+- The generated file defines D/R penalty-radius matrices, exact total-radius
+  floors, positive remaining interval floors, and generic
+  `*_LowerBound_of_penalty_box` adapters for `primaryK11` and `controlK9`.
+- The node is intentionally parameterized by future analytic `hbox` proofs:
+  it does not claim analytic entries equal imported midpoint entries; it
+  reduces that future work to an entrywise bound for the penalized matrix.
+- This closes the concrete payload side for radius floors.  The next smallest
+  node is to package the D/R adapters into active finite penalty certificate
+  wrappers, parameterized by the four analytic penalty-box hypotheses.
