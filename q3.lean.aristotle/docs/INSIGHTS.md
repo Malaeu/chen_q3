@@ -12540,3 +12540,25 @@ Update:
   smallest node is the actual checked interval/SPD lower-bound generator that
   consumes the active midpoint/radius payload and produces a
   `FinitePenaltyLowerBoundCert`.
+
+## Synthesis (2026-05-25, OK) — `Step32F_PenaltyLowerBoundParamsImport`
+
+- Target: pin the accepted Step18 `best_tau` / `safe_lower` values to exact
+  Lean constants without claiming the lower-bound proof itself.
+- Added `scripts/q3_psdpd_step32f_penalty_lower_bound_lean_params.py`.
+- Added `PSD_CenteredCoeffPenaltyImport.lean`, generated from the active
+  certificate-family manifest and Step18 stdout files.
+- The generated file defines exact rational `TauD`, `TauR`, `DFloor`, and
+  `RFloor` constants for the primary `k=11` and control `k=9` blocks, proves
+  the floor constants positive, and names the remaining proof targets
+  `primaryK11DLowerBound`, `primaryK11RLowerBound`, `controlK9DLowerBound`,
+  and `controlK9RLowerBound`.
+- The generated adapters
+  `primaryK11FinitePenaltyCert_of_bounds` and
+  `controlK9FinitePenaltyCert_of_bounds` convert these two lower bounds per
+  block into the existing `FinitePenaltyCert` receiver through
+  `FinitePenaltyLowerBoundCert`.
+- This closes the parameter/import part of the interval penalty bridge.  The
+  next real proof node is a kernel-checkable rational matrix lower-bound
+  certificate, likely LDL/SOS-style, proving the named lower-bound
+  propositions rather than importing numerical SPD as evidence.
