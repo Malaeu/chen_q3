@@ -12727,3 +12727,21 @@ Update:
 - The next smallest node is now concrete import/generation of `radFloor` bounds
   for primary `k=11` and control `k=9`, or a finite-dimensional row-sum receiver
   proving `quadFormAbsRadius R v <= radFloor * euclideanEnergy v`.
+
+## Synthesis (2026-05-25, OK) — `Step32F_RadiusFloorReceiver`
+
+- Target: close the finite-dimensional scalar radius-floor receiver left by the
+  penalty radius floor theorem.
+- Added `euclideanEnergy_nonneg`, `abs_mul_le_euclideanEnergy`,
+  `quadFormAbsRadius_le_totalRadius_mul_euclideanEnergy`, and
+  `quadFormAbsRadius_le_radiusFloor_mul_euclideanEnergy`.
+- The key theorem proves that if `R` has nonnegative entries and
+  `sum_i sum_j R_ij <= radFloor`, then
+  `quadFormAbsRadius R v <= radFloor * euclideanEnergy v`.
+- This is a conservative but Lean-simple landing surface for generated
+  radius bounds: importing a total radius mass certificate is enough to feed
+  `penaltyForm_lower_bound_of_midpoint_lower_bound_and_radius_floor`.
+- The next smallest node is concrete generator/import work:
+  emit active-block `D` and `R` penalized radius matrices, exact nonnegative
+  total-mass bounds, and midpoint LDL lower bounds with the required extra
+  `radFloor` margin.

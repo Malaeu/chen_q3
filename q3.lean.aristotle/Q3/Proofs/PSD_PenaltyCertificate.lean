@@ -47,6 +47,15 @@ def euclideanEnergy {ι : Type*} [Fintype ι]
     (v : ι → ℝ) : ℝ :=
   ∑ i, v i ^ 2
 
+/-- Squared Euclidean energy is nonnegative. -/
+lemma euclideanEnergy_nonneg {ι : Type*} [Fintype ι]
+    (v : ι → ℝ) :
+    0 ≤ euclideanEnergy v := by
+  unfold euclideanEnergy
+  exact Finset.sum_nonneg (by
+    intro i _
+    exact sq_nonneg (v i))
+
 /-- A nonzero finite real vector has positive squared Euclidean energy. -/
 lemma euclideanEnergy_pos_of_ne_zero {ι : Type*} [Fintype ι]
     (v : ι → ℝ) (hv : v ≠ 0) :
@@ -291,6 +300,77 @@ theorem abs_quadForm_sub_le_quadFormAbsRadius {ι : Type*} [Fintype ι]
   rw [← quadForm_pointwise_sub A M v]
   exact abs_quadForm_le_quadFormAbsRadius
     (fun i j => A i j - M i j) R hAM v
+
+/-- Product of two coordinate magnitudes is bounded by the full squared
+Euclidean energy. -/
+lemma abs_mul_le_euclideanEnergy {ι : Type*} [Fintype ι]
+    (v : ι → ℝ) (i j : ι) :
+    |v i| * |v j| ≤ euclideanEnergy v := by
+  classical
+  have hi : (v i) ^ 2 ≤ euclideanEnergy v := by
+    unfold euclideanEnergy
+    exact Finset.single_le_sum
+      (fun k _ => sq_nonneg (v k))
+      (Finset.mem_univ i)
+  have hj : (v j) ^ 2 ≤ euclideanEnergy v := by
+    unfold euclideanEnergy
+    exact Finset.single_le_sum
+      (fun k _ => sq_nonneg (v k))
+      (Finset.mem_univ j)
+  have hsq : 0 ≤ (|v i| - |v j|) ^ 2 := sq_nonneg _
+  have habs_sq_i : |v i| ^ 2 = (v i) ^ 2 := by
+    rw [sq_abs]
+  have habs_sq_j : |v j| ^ 2 = (v j) ^ 2 := by
+    rw [sq_abs]
+  nlinarith
+
+/-- A crude total-mass radius bound: if all radius entries are nonnegative,
+then the radius energy is controlled by the total radius mass times Euclidean
+energy. -/
+lemma quadFormAbsRadius_le_totalRadius_mul_euclideanEnergy
+    {ι : Type*} [Fintype ι]
+    (R : Matrix ι ι ℝ)
+    (hR : ∀ i j, 0 ≤ R i j)
+    (v : ι → ℝ) :
+    quadFormAbsRadius R v ≤
+      (∑ i, ∑ j, R i j) * euclideanEnergy v := by
+  unfold quadFormAbsRadius
+  calc
+    ∑ i, ∑ j, |v i| * R i j * |v j|
+        ≤ ∑ i, ∑ j, R i j * euclideanEnergy v := by
+          apply Finset.sum_le_sum
+          intro i _
+          apply Finset.sum_le_sum
+          intro j _
+          calc
+            |v i| * R i j * |v j|
+                = R i j * (|v i| * |v j|) := by ring
+            _ ≤ R i j * euclideanEnergy v := by
+              exact mul_le_mul_of_nonneg_left
+                (abs_mul_le_euclideanEnergy v i j)
+                (hR i j)
+    _ = (∑ i, ∑ j, R i j) * euclideanEnergy v := by
+      rw [Finset.sum_mul]
+      apply Finset.sum_congr rfl
+      intro i _
+      rw [Finset.sum_mul]
+
+/-- Scalar radius-floor receiver.
+
+This is intentionally conservative: a generator may prove that the total
+nonnegative radius mass is at most `radFloor`, and this theorem converts that
+fact into the radius-energy bound required by the penalty radius receiver. -/
+theorem quadFormAbsRadius_le_radiusFloor_mul_euclideanEnergy
+    {ι : Type*} [Fintype ι]
+    (R : Matrix ι ι ℝ) (radFloor : ℝ)
+    (hR : ∀ i j, 0 ≤ R i j)
+    (hsum : (∑ i, ∑ j, R i j) ≤ radFloor) :
+    ∀ v : ι → ℝ,
+      quadFormAbsRadius R v ≤ radFloor * euclideanEnergy v := by
+  intro v
+  exact le_trans
+    (quadFormAbsRadius_le_totalRadius_mul_euclideanEnergy R hR v)
+    (mul_le_mul_of_nonneg_right hsum (euclideanEnergy_nonneg v))
 
 /-- Matrix of the penalized quadratic form `M + tau Q^T Q`. -/
 def penaltyMatrix {ρ ι : Type*} [Fintype ρ]
