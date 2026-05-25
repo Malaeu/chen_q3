@@ -12802,3 +12802,19 @@ Update:
   The next real mathematical lock remains the four analytic hbox hypotheses
   comparing concrete B-spline/contract penalized entries to the imported
   midpoint/radius penalty boxes.
+
+## Synthesis (2026-05-25, OK) — `Step32F_PenaltyMatrixHboxFactorReceiver`
+
+- Target: make the remaining analytic hbox obligations less monolithic.
+- Added `boundaryGramMatrix` to `PSD_PenaltyCertificate.lean`, naming the
+  `Q^T Q` matrix already present inside `penaltyMatrix`.
+- Added `penaltyMatrix_entrywiseAbsLe_of_matrix_and_boundaryGram`.
+- The theorem proves that a hbox for `M` and a hbox for `Q^T Q` compose into
+  a direct hbox for `penaltyMatrix M Q tau`, with radius
+  `MR_ij + |tau| * GR_ij`.
+- This is the next receiver needed by the analytic enclosure layer: future
+  primary/control D/R penalty boxes can now be proved from separate analytic
+  matrix-entry enclosures and boundary-row Gram enclosures.
+- The next smallest lock is an active-block specialization of this receiver,
+  starting with primary `k=11` D, so that the final hbox statement matches the
+  input expected by `primaryK11CertifiedCoeffBlock_of_penalty_boxes`.

@@ -378,6 +378,52 @@ def penaltyMatrix {ρ ι : Type*} [Fintype ρ]
     Matrix ι ι ℝ :=
   fun i j => M i j + tau * ∑ r, Q r i * Q r j
 
+/-- Boundary Gram matrix `Q^T Q` used by the penalized matrix. -/
+def boundaryGramMatrix {ρ ι : Type*} [Fintype ρ]
+    (Q : Matrix ρ ι ℝ) : Matrix ι ι ℝ :=
+  fun i j => ∑ r, Q r i * Q r j
+
+/-- A penalty-matrix hbox follows from a base-matrix hbox and a boundary-Gram
+hbox.  This isolates the next analytic enclosure task: prove boxes for `M` and
+`Q^T Q`, then compose them into the direct `penaltyMatrix` box consumed by the
+finite certificate wrappers. -/
+theorem penaltyMatrix_entrywiseAbsLe_of_matrix_and_boundaryGram
+    {ρ ι : Type*} [Fintype ρ]
+    (M M0 MR : Matrix ι ι ℝ)
+    (Q Q0 : Matrix ρ ι ℝ)
+    (GR : Matrix ι ι ℝ)
+    (tau : ℝ)
+    (hM : matrixEntrywiseAbsLe M M0 MR)
+    (hG : matrixEntrywiseAbsLe
+      (boundaryGramMatrix Q) (boundaryGramMatrix Q0) GR) :
+    matrixEntrywiseAbsLe
+      (penaltyMatrix M Q tau)
+      (penaltyMatrix M0 Q0 tau)
+      (fun i j => MR i j + |tau| * GR i j) := by
+  intro i j
+  have hMij := hM i j
+  have hGij := hG i j
+  unfold penaltyMatrix
+  change
+    |(M i j + tau * boundaryGramMatrix Q i j) -
+      (M0 i j + tau * boundaryGramMatrix Q0 i j)| ≤
+        MR i j + |tau| * GR i j
+  calc
+    |(M i j + tau * boundaryGramMatrix Q i j) -
+      (M0 i j + tau * boundaryGramMatrix Q0 i j)|
+        = |(M i j - M0 i j) +
+            tau * (boundaryGramMatrix Q i j - boundaryGramMatrix Q0 i j)| := by
+          ring_nf
+    _ ≤ |M i j - M0 i j| +
+          |tau * (boundaryGramMatrix Q i j - boundaryGramMatrix Q0 i j)| := by
+          exact abs_add_le _ _
+    _ = |M i j - M0 i j| +
+          |tau| * |boundaryGramMatrix Q i j - boundaryGramMatrix Q0 i j| := by
+          rw [abs_mul]
+    _ ≤ MR i j + |tau| * GR i j := by
+          exact add_le_add hMij
+            (mul_le_mul_of_nonneg_left hGij (abs_nonneg tau))
+
 /-- The explicit penalty form is the quadratic form of `penaltyMatrix`. -/
 lemma penaltyForm_eq_quadForm_penaltyMatrix {ρ ι : Type*}
     [Fintype ρ] [Fintype ι]
