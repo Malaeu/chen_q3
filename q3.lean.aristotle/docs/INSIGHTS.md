@@ -12853,3 +12853,20 @@ Update:
   `controlK9CertifiedCoeffBlock_of_penalty_boxes`.
 - The next smallest lock is the shared boundary-Gram hbox for active boundary
   rows, starting with `primaryK11`.
+
+## Synthesis (2026-05-25, OK) — `Step32F_BoundaryGramHboxReceiver`
+
+- Target: close the generic algebra needed before active boundary-Gram
+  enclosures.
+- Added `boundaryGramMatrix_entrywiseAbsLe_of_matrix` to
+  `PSD_PenaltyCertificate.lean`.
+- The theorem turns a boundary-row hbox `matrixEntrywiseAbsLe Q Q0 QR` into a
+  Gram hbox for `boundaryGramMatrix Q` versus `boundaryGramMatrix Q0`.
+- The radius is the product-split bound
+  `sum_r QR_ri * (abs Q0_rj + QR_rj) + abs Q0_ri * QR_rj`, coming from
+  `(Q-Q0) * Q + Q0 * (Q-Q0)` and `abs Q <= abs Q0 + QR`.
+- This receiver is generic and now feeds the active penalty-box adapters without
+  repeating Gram expansion inside each primary/control D/R proof.
+- The next smallest lock is an active boundary-Gram adapter for primary `k=11`
+  and control `k=9`, parameterized by concrete boundary-row hboxes and
+  generated radius-dominance lemmas.

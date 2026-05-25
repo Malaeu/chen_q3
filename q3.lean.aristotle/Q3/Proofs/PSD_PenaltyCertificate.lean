@@ -394,6 +394,64 @@ def boundaryGramMatrix {ρ ι : Type*} [Fintype ρ]
     (Q : Matrix ρ ι ℝ) : Matrix ι ι ℝ :=
   fun i j => ∑ r, Q r i * Q r j
 
+/-- A boundary-Gram hbox follows from an entrywise hbox for the boundary-row
+matrix itself.  The radius keeps the asymmetric product split
+`(Q-Q0) * Q + Q0 * (Q-Q0)`, with `|Q|` bounded by `|Q0| + QR`. -/
+theorem boundaryGramMatrix_entrywiseAbsLe_of_matrix
+    {ρ ι : Type*} [Fintype ρ]
+    (Q Q0 QR : Matrix ρ ι ℝ)
+    (hQ : matrixEntrywiseAbsLe Q Q0 QR) :
+    matrixEntrywiseAbsLe
+      (boundaryGramMatrix Q)
+      (boundaryGramMatrix Q0)
+      (fun i j =>
+        Finset.univ.sum
+          (fun r : ρ =>
+            QR r i * (|Q0 r j| + QR r j) + |Q0 r i| * QR r j)) := by
+  intro i j
+  unfold boundaryGramMatrix
+  calc
+    |(∑ r, Q r i * Q r j) - (∑ r, Q0 r i * Q0 r j)|
+        = |∑ r, (Q r i * Q r j - Q0 r i * Q0 r j)| := by
+          rw [← Finset.sum_sub_distrib]
+    _ ≤ ∑ r, |Q r i * Q r j - Q0 r i * Q0 r j| := by
+          exact Finset.abs_sum_le_sum_abs _ _
+    _ ≤ Finset.univ.sum
+          (fun r : ρ =>
+            QR r i * (|Q0 r j| + QR r j) + |Q0 r i| * QR r j) := by
+      apply Finset.sum_le_sum
+      intro r _
+      have hi : |Q r i - Q0 r i| ≤ QR r i := hQ r i
+      have hj : |Q r j - Q0 r j| ≤ QR r j := hQ r j
+      have hQRi_nonneg : 0 ≤ QR r i := le_trans (abs_nonneg _) hi
+      have hQj_abs : |Q r j| ≤ |Q0 r j| + QR r j := by
+        calc
+          |Q r j| = |(Q r j - Q0 r j) + Q0 r j| := by
+            ring_nf
+          _ ≤ |Q r j - Q0 r j| + |Q0 r j| := by
+            exact abs_add_le _ _
+          _ ≤ QR r j + |Q0 r j| := by
+            simpa [add_comm, add_left_comm, add_assoc] using
+              add_le_add_left hj (|Q0 r j|)
+          _ = |Q0 r j| + QR r j := by
+            ring
+      calc
+        |Q r i * Q r j - Q0 r i * Q0 r j|
+            = |(Q r i - Q0 r i) * Q r j +
+                Q0 r i * (Q r j - Q0 r j)| := by
+              ring_nf
+        _ ≤ |(Q r i - Q0 r i) * Q r j| +
+              |Q0 r i * (Q r j - Q0 r j)| := by
+              exact abs_add_le _ _
+        _ = |Q r i - Q0 r i| * |Q r j| +
+              |Q0 r i| * |Q r j - Q0 r j| := by
+              rw [abs_mul, abs_mul]
+        _ ≤ QR r i * (|Q0 r j| + QR r j) +
+              |Q0 r i| * QR r j := by
+              exact add_le_add
+                (mul_le_mul hi hQj_abs (abs_nonneg _) hQRi_nonneg)
+                (mul_le_mul_of_nonneg_left hj (abs_nonneg _))
+
 /-- A penalty-matrix hbox follows from a base-matrix hbox and a boundary-Gram
 hbox.  This isolates the next analytic enclosure task: prove boxes for `M` and
 `Q^T Q`, then compose them into the direct `penaltyMatrix` box consumed by the
