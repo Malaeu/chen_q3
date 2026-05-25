@@ -12710,3 +12710,20 @@ Update:
 - The next smallest node is to generate/import the concrete midpoint-plus-radius
   lower-bound hypotheses for primary `k=11` and control `k=9`, then assemble
   actual `FinitePenaltyLowerBoundCert` values for the analytic contract.
+
+## Synthesis (2026-05-25, OK) — `Step32F_PenaltyRadiusFloorReceiver`
+
+- Target: make the penalty-radius receiver usable by generators that produce a
+  scalar radius-energy floor rather than a full symbolic
+  `floor * energy + radiusEnergy` lower-bound proof.
+- Added `penaltyForm_lower_bound_of_midpoint_lower_bound_and_radius_floor`.
+- The theorem says: if the midpoint penalized matrix has lower bound
+  `(floor + radFloor) * euclideanEnergy`, and the explicit radius energy is
+  bounded by `radFloor * euclideanEnergy`, then the analytic penalty form has
+  lower bound `floor * euclideanEnergy`.
+- This matches the Step18/25 numerical shape more closely:
+  `lambda_mid - radius_norm` is a safe lower bound once the radius norm is
+  imported as a Lean-checked scalar energy bound.
+- The next smallest node is now concrete import/generation of `radFloor` bounds
+  for primary `k=11` and control `k=9`, or a finite-dimensional row-sum receiver
+  proving `quadFormAbsRadius R v <= radFloor * euclideanEnergy v`.

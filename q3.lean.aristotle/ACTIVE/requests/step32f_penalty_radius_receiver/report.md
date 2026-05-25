@@ -8,6 +8,7 @@
   - `Q3.Proofs.penaltyForm_eq_quadForm_penaltyMatrix`
   - `Q3.Proofs.abs_penaltyForm_sub_quadForm_le_quadFormAbsRadius`
   - `Q3.Proofs.penaltyForm_lower_bound_of_midpoint_lower_bound_with_radius`
+  - `Q3.Proofs.penaltyForm_lower_bound_of_midpoint_lower_bound_and_radius_floor`
 - files touched:
   - `Q3/Proofs/PSD_PenaltyCertificate.lean`
   - `docs/INSIGHTS.md`
@@ -31,11 +32,14 @@
     `penaltyMatrix M Q tau`.
   - A midpoint lower bound with an explicit radius-energy margin now transfers
     to the analytic penalty form.
+  - A generator-friendly scalar-radius-floor variant was added: midpoint lower
+    bound `(floor + radFloor) * ||v||^2` plus
+    `radiusEnergy <= radFloor * ||v||^2` implies the analytic lower bound
+    `floor * ||v||^2`.
 - remaining blocker:
-  - Need generated/imported concrete midpoint-plus-radius lower-bound
-    hypotheses for the active primary `k=11` and control `k=9` coefficient
-    blocks.
+  - Need generated/imported concrete radius-floor bounds for the active primary
+    `k=11` and control `k=9` coefficient blocks.
 - next smallest theorem/import node:
-  - Import a concrete radius-margin lower-bound payload and use
-    `penaltyForm_lower_bound_of_midpoint_lower_bound_with_radius` to assemble
-    analytic `FinitePenaltyLowerBoundCert` values.
+  - Add a finite-dimensional row-sum/radius-floor receiver proving
+    `quadFormAbsRadius R v <= radFloor * euclideanEnergy v`, then generate the
+    concrete active-block radius floors.

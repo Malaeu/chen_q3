@@ -351,6 +351,35 @@ theorem penaltyForm_lower_bound_of_midpoint_lower_bound_with_radius
     linarith
   exact le_trans hfloor hlow
 
+/-- Practical margin form of the midpoint/radius transfer.
+
+If the midpoint penalized matrix has an extra scalar margin `radFloor`, and the
+explicit radius energy is bounded by that scalar margin times Euclidean energy,
+then the analytic penalty form keeps the requested `floor` lower bound. -/
+theorem penaltyForm_lower_bound_of_midpoint_lower_bound_and_radius_floor
+    {ρ ι : Type*} [Fintype ρ] [Fintype ι]
+    (M : Matrix ι ι ℝ) (Q : Matrix ρ ι ℝ) (tau floor radFloor : ℝ)
+    (Pmid Rad : Matrix ι ι ℝ)
+    (hbox : matrixEntrywiseAbsLe (penaltyMatrix M Q tau) Pmid Rad)
+    (hmid : ∀ v : ι → ℝ,
+      (floor + radFloor) * euclideanEnergy v ≤ quadForm Pmid v)
+    (hrad : ∀ v : ι → ℝ,
+      quadFormAbsRadius Rad v ≤ radFloor * euclideanEnergy v) :
+    ∀ v : ι → ℝ,
+      floor * euclideanEnergy v ≤ penaltyForm M Q tau v := by
+  apply penaltyForm_lower_bound_of_midpoint_lower_bound_with_radius
+    (M := M) (Q := Q) (tau := tau) (floor := floor)
+    (Pmid := Pmid) (Rad := Rad) hbox
+  intro v
+  calc
+    floor * euclideanEnergy v + quadFormAbsRadius Rad v
+        ≤ floor * euclideanEnergy v + radFloor * euclideanEnergy v := by
+          simpa [add_comm, add_left_comm, add_assoc] using
+            add_le_add_left (hrad v) (floor * euclideanEnergy v)
+    _ = (floor + radFloor) * euclideanEnergy v := by
+          ring
+    _ ≤ quadForm Pmid v := hmid v
+
 /-- Convert a matrix-level weighted-Gram identity into a full-space Euclidean
 penalty lower bound.
 
