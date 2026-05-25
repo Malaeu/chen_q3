@@ -12778,3 +12778,27 @@ Update:
   hypotheses for D/R of the primary and control coefficient blocks.
 - The next smallest node is the analytic hbox bridge from concrete
   B-spline/contract entries to the imported midpoint/radius penalty boxes.
+
+## Synthesis (2026-05-25, OK) — `Step32F_CoeffCertifiedBlockPenaltyBoxAdapters`
+
+- Target: close the API handoff between the penalty-box certificate wrappers
+  and the existing `CertifiedCenteredBSplineCoeffBlock` receiver.
+- Local `q3_docs` lookup was noisy on this exact late-stage node, but the
+  current `INSIGHTS.md` chain identifies the live gap: penalty-box hboxes must
+  feed the certified coefficient blocks without pretending midpoint matrices
+  are analytic matrices.
+- External Mathlib docs confirm the implementation choice is local rather than
+  library-driven: `Matrix` is function-like and finite-sum/quadratic-form
+  algebra is already handled by local receivers, so the next useful step is a
+  project adapter, not a new generic matrix theorem.
+- Added `PSD_CenteredCoeffCertifiedBlockImport.lean`, defining
+  `primaryK11AnalyticDFromR`, `controlK9AnalyticDFromR`, and their structural
+  split theorems.
+- Added `primaryK11CertifiedCoeffBlock_of_penalty_boxes` and
+  `controlK9CertifiedCoeffBlock_of_penalty_boxes`.  Each takes an analytic
+  candidate `R` plus the two future analytic D/R penalty-box hypotheses and
+  returns the corresponding `CertifiedCenteredBSplineCoeffBlock`.
+- This closes the receiver handoff after `Step32F_PenaltyBoxCertWrappers`.
+  The next real mathematical lock remains the four analytic hbox hypotheses
+  comparing concrete B-spline/contract penalized entries to the imported
+  midpoint/radius penalty boxes.
