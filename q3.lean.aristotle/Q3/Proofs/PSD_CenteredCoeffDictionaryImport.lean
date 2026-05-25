@@ -327,6 +327,28 @@ def primaryK11AnalyticC : Matrix CoeffIndex23 CoeffIndex23 Real :=
 def primaryK11AnalyticQ : Matrix BoundaryIndex2 CoeffIndex23 Real :=
   primaryK11CoeffAnalyticKernelContract.toFormulaContract.boundaryRows.Q
 
+theorem primaryK11AnalyticQ_zero (i : CoeffIndex23) :
+    primaryK11AnalyticQ 0 i = Real.exp (primaryK11Center i / 2) := by
+  simp [primaryK11AnalyticQ, primaryK11CoeffAnalyticKernelContract,
+    BSplineAnalyticKernelContract.toFormulaContract,
+    BSplineAnalyticKernelContract.toBasisFormulaContract,
+    BSplineBasisFormulaContract.toFormulaContract,
+    BSplineBasisFormulaContract.boundaryRows, PacketBasisExpansion.toBoundaryRows,
+    BSplineBoundaryRows.Q, twoRowBoundaryMatrix, bsplineBoundaryPlusRow,
+    primaryK11Center]
+  rfl
+
+theorem primaryK11AnalyticQ_one (i : CoeffIndex23) :
+    primaryK11AnalyticQ 1 i = Real.exp (-(primaryK11Center i) / 2) := by
+  simp [primaryK11AnalyticQ, primaryK11CoeffAnalyticKernelContract,
+    BSplineAnalyticKernelContract.toFormulaContract,
+    BSplineAnalyticKernelContract.toBasisFormulaContract,
+    BSplineBasisFormulaContract.toFormulaContract,
+    BSplineBasisFormulaContract.boundaryRows, PacketBasisExpansion.toBoundaryRows,
+    BSplineBoundaryRows.Q, twoRowBoundaryMatrix, bsplineBoundaryMinusRow,
+    primaryK11Center]
+  rfl
+
 /-- Concrete analytic contract generated from the active control dictionary. -/
 noncomputable def controlK9CoeffAnalyticKernelContract :
     BSplineAnalyticKernelContract CoeffIndex23 (CoeffIndex23 -> Complex) :=
@@ -339,6 +361,28 @@ def controlK9AnalyticC : Matrix CoeffIndex23 CoeffIndex23 Real :=
 
 def controlK9AnalyticQ : Matrix BoundaryIndex2 CoeffIndex23 Real :=
   controlK9CoeffAnalyticKernelContract.toFormulaContract.boundaryRows.Q
+
+theorem controlK9AnalyticQ_zero (i : CoeffIndex23) :
+    controlK9AnalyticQ 0 i = Real.exp (controlK9Center i / 2) := by
+  simp [controlK9AnalyticQ, controlK9CoeffAnalyticKernelContract,
+    BSplineAnalyticKernelContract.toFormulaContract,
+    BSplineAnalyticKernelContract.toBasisFormulaContract,
+    BSplineBasisFormulaContract.toFormulaContract,
+    BSplineBasisFormulaContract.boundaryRows, PacketBasisExpansion.toBoundaryRows,
+    BSplineBoundaryRows.Q, twoRowBoundaryMatrix, bsplineBoundaryPlusRow,
+    controlK9Center]
+  rfl
+
+theorem controlK9AnalyticQ_one (i : CoeffIndex23) :
+    controlK9AnalyticQ 1 i = Real.exp (-(controlK9Center i) / 2) := by
+  simp [controlK9AnalyticQ, controlK9CoeffAnalyticKernelContract,
+    BSplineAnalyticKernelContract.toFormulaContract,
+    BSplineAnalyticKernelContract.toBasisFormulaContract,
+    BSplineBasisFormulaContract.toFormulaContract,
+    BSplineBasisFormulaContract.boundaryRows, PacketBasisExpansion.toBoundaryRows,
+    BSplineBoundaryRows.Q, twoRowBoundaryMatrix, bsplineBoundaryMinusRow,
+    controlK9Center]
+  rfl
 
 end CenteredCoeffDictionaryImport
 end PSDpd

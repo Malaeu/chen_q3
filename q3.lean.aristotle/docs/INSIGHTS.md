@@ -12944,3 +12944,16 @@ Update:
 - This closes the API plumbing to the active certified block. The remaining
   work is now genuine generated/numeric proof payload: base matrix hboxes,
   Q-row hboxes, and radius-dominance facts.
+
+## Synthesis (2026-05-25, OK) — `Step32F_AnalyticQBoundaryRows`
+
+- Target: expose the active analytic boundary-row matrices as concrete
+  exponential rows before the generated Q-row hbox step.
+- Added primary/control row-normalization lemmas for `AnalyticQ`:
+  row `0` is `Real.exp (center i / 2)` and row `1` is
+  `Real.exp (-(center i) / 2)`.
+- This confirms that the next Q-row hbox lock is a finite set of real
+  exponential interval enclosures against the imported rational
+  `primaryK11QRadius` and `controlK9QRadius` payloads.
+- No numeric enclosure is asserted here; this only removes the contract
+  unfolding ambiguity.
