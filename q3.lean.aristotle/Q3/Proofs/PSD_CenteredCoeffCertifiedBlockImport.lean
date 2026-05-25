@@ -211,6 +211,77 @@ theorem primaryK11RPenaltyBox_of_matrix_and_boundaryRows
     (primaryK11BoundaryGramBox_of_boundaryRows QR GR hQ hGRad)
     hRad
 
+/-- Primary `k=11` boundary-Gram hbox specialized to the imported
+`primaryK11QRadius` row-radius payload. -/
+theorem primaryK11BoundaryGramBox_of_importedQRadius
+    (GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      primaryK11AnalyticQ primaryK11Q primaryK11QRadius)
+    (hRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            primaryK11QRadius r i * (|primaryK11Q r j| + primaryK11QRadius r j) +
+              |primaryK11Q r i| * primaryK11QRadius r j) ≤
+        GR i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.boundaryGramMatrix primaryK11AnalyticQ)
+      (Q3.Proofs.boundaryGramMatrix primaryK11Q)
+      GR := by
+  exact primaryK11BoundaryGramBox_of_boundaryRows
+    primaryK11QRadius GR hQ hRad
+
+/-- Primary `k=11` D penalty hbox specialized to the imported
+`primaryK11QRadius` row-radius payload. -/
+theorem primaryK11DPenaltyBox_of_matrix_and_importedQRadius
+    (R MR GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hM : Q3.Proofs.matrixEntrywiseAbsLe
+      (primaryK11AnalyticDFromR R) primaryK11D MR)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      primaryK11AnalyticQ primaryK11Q primaryK11QRadius)
+    (hGRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            primaryK11QRadius r i * (|primaryK11Q r j| + primaryK11QRadius r j) +
+              |primaryK11Q r i| * primaryK11QRadius r j) ≤
+        GR i j)
+    (hRad : ∀ i j,
+      MR i j + |CenteredCoeffPenaltyImport.primaryK11TauD| * GR i j ≤
+        primaryK11DPenaltyRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix
+        (primaryK11AnalyticDFromR R) primaryK11AnalyticQ
+        CenteredCoeffPenaltyImport.primaryK11TauD)
+      (Q3.Proofs.penaltyMatrix primaryK11D primaryK11Q
+        CenteredCoeffPenaltyImport.primaryK11TauD)
+      primaryK11DPenaltyRadius := by
+  exact primaryK11DPenaltyBox_of_matrix_and_boundaryRows
+    R MR primaryK11QRadius GR hM hQ hGRad hRad
+
+/-- Primary `k=11` R penalty hbox specialized to the imported
+`primaryK11QRadius` row-radius payload. -/
+theorem primaryK11RPenaltyBox_of_matrix_and_importedQRadius
+    (R MR GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hM : Q3.Proofs.matrixEntrywiseAbsLe R primaryK11R MR)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      primaryK11AnalyticQ primaryK11Q primaryK11QRadius)
+    (hGRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            primaryK11QRadius r i * (|primaryK11Q r j| + primaryK11QRadius r j) +
+              |primaryK11Q r i| * primaryK11QRadius r j) ≤
+        GR i j)
+    (hRad : ∀ i j,
+      MR i j + |CenteredCoeffPenaltyImport.primaryK11TauR| * GR i j ≤
+        primaryK11RPenaltyRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix R primaryK11AnalyticQ
+        CenteredCoeffPenaltyImport.primaryK11TauR)
+      (Q3.Proofs.penaltyMatrix primaryK11R primaryK11Q
+        CenteredCoeffPenaltyImport.primaryK11TauR)
+      primaryK11RPenaltyRadius := by
+  exact primaryK11RPenaltyBox_of_matrix_and_boundaryRows
+    R MR primaryK11QRadius GR hM hQ hGRad hRad
+
 /- 
 Q3 obstruction wall:
 - wall: Matrix-identification / Step32F coefficient certified-block handoff
@@ -430,6 +501,77 @@ theorem controlK9RPenaltyBox_of_matrix_and_boundaryRows
     R MR GR hM
     (controlK9BoundaryGramBox_of_boundaryRows QR GR hQ hGRad)
     hRad
+
+/-- Control `k=9` boundary-Gram hbox specialized to the imported
+`controlK9QRadius` row-radius payload. -/
+theorem controlK9BoundaryGramBox_of_importedQRadius
+    (GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      controlK9AnalyticQ controlK9Q controlK9QRadius)
+    (hRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            controlK9QRadius r i * (|controlK9Q r j| + controlK9QRadius r j) +
+              |controlK9Q r i| * controlK9QRadius r j) ≤
+        GR i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.boundaryGramMatrix controlK9AnalyticQ)
+      (Q3.Proofs.boundaryGramMatrix controlK9Q)
+      GR := by
+  exact controlK9BoundaryGramBox_of_boundaryRows
+    controlK9QRadius GR hQ hRad
+
+/-- Control `k=9` D penalty hbox specialized to the imported
+`controlK9QRadius` row-radius payload. -/
+theorem controlK9DPenaltyBox_of_matrix_and_importedQRadius
+    (R MR GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hM : Q3.Proofs.matrixEntrywiseAbsLe
+      (controlK9AnalyticDFromR R) controlK9D MR)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      controlK9AnalyticQ controlK9Q controlK9QRadius)
+    (hGRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            controlK9QRadius r i * (|controlK9Q r j| + controlK9QRadius r j) +
+              |controlK9Q r i| * controlK9QRadius r j) ≤
+        GR i j)
+    (hRad : ∀ i j,
+      MR i j + |CenteredCoeffPenaltyImport.controlK9TauD| * GR i j ≤
+        controlK9DPenaltyRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix
+        (controlK9AnalyticDFromR R) controlK9AnalyticQ
+        CenteredCoeffPenaltyImport.controlK9TauD)
+      (Q3.Proofs.penaltyMatrix controlK9D controlK9Q
+        CenteredCoeffPenaltyImport.controlK9TauD)
+      controlK9DPenaltyRadius := by
+  exact controlK9DPenaltyBox_of_matrix_and_boundaryRows
+    R MR controlK9QRadius GR hM hQ hGRad hRad
+
+/-- Control `k=9` R penalty hbox specialized to the imported
+`controlK9QRadius` row-radius payload. -/
+theorem controlK9RPenaltyBox_of_matrix_and_importedQRadius
+    (R MR GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hM : Q3.Proofs.matrixEntrywiseAbsLe R controlK9R MR)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      controlK9AnalyticQ controlK9Q controlK9QRadius)
+    (hGRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            controlK9QRadius r i * (|controlK9Q r j| + controlK9QRadius r j) +
+              |controlK9Q r i| * controlK9QRadius r j) ≤
+        GR i j)
+    (hRad : ∀ i j,
+      MR i j + |CenteredCoeffPenaltyImport.controlK9TauR| * GR i j ≤
+        controlK9RPenaltyRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix R controlK9AnalyticQ
+        CenteredCoeffPenaltyImport.controlK9TauR)
+      (Q3.Proofs.penaltyMatrix controlK9R controlK9Q
+        CenteredCoeffPenaltyImport.controlK9TauR)
+      controlK9RPenaltyRadius := by
+  exact controlK9RPenaltyBox_of_matrix_and_boundaryRows
+    R MR controlK9QRadius GR hM hQ hGRad hRad
 
 /- 
 Q3 obstruction wall:

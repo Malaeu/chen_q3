@@ -12910,3 +12910,22 @@ Update:
   `matrix box + Q-row box -> boundaryGram box -> D/R penalty box`.
 - The remaining open mathematical payload is now concrete generated enclosure
   data: Q-row hboxes, Gram-radius dominance, and base D/R matrix hboxes.
+
+## Synthesis (2026-05-25, OK) — `Step32F_ImportedQRadiusAdapters`
+
+- Target: specialize the active boundary-row and penalty-box adapters to the
+  generated Q-row radius payloads already imported in
+  `PSD_CenteredCoeffPayloadImport.lean`.
+- Added primary wrappers for `primaryK11QRadius`:
+  `primaryK11BoundaryGramBox_of_importedQRadius`,
+  `primaryK11DPenaltyBox_of_matrix_and_importedQRadius`, and
+  `primaryK11RPenaltyBox_of_matrix_and_importedQRadius`.
+- Added control wrappers for `controlK9QRadius`:
+  `controlK9BoundaryGramBox_of_importedQRadius`,
+  `controlK9DPenaltyBox_of_matrix_and_importedQRadius`, and
+  `controlK9RPenaltyBox_of_matrix_and_importedQRadius`.
+- These are intentionally still conditional on the analytic Q-row hbox and
+  generated dominance lemmas. They do not assert numerical enclosures.
+- The next smallest payload lock is to import or prove the concrete Q-row hbox
+  facts against `primaryK11QRadius` and `controlK9QRadius`, plus the associated
+  Gram-radius dominance facts.
