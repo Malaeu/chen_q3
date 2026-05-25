@@ -269,6 +269,50 @@ def emit_radius_pack(block: Block, kind: str, matrix: list[list[Fraction]]) -> l
     return lines
 
 
+def emit_cert_pack(block: Block) -> list[str]:
+    prefix = block.prefix
+    lines: list[str] = []
+    lines.append(f"/-- Package `{prefix}` interval-backed D/R penalty boxes as a lower-bound certificate. -/")
+    lines.append(f"def {prefix}PenaltyLowerBoundCert_of_penalty_boxes")
+    lines.append("    (D R : Matrix CoeffIndex23 CoeffIndex23 Real)")
+    lines.append("    (Q : Matrix BoundaryIndex2 CoeffIndex23 Real)")
+    lines.append("    (hDbox : Q3.Proofs.matrixEntrywiseAbsLe")
+    lines.append(f"      (Q3.Proofs.penaltyMatrix D Q {prefix}TauD)")
+    lines.append(f"      (Q3.Proofs.penaltyMatrix {prefix}D {prefix}Q {prefix}TauD)")
+    lines.append(f"      {prefix}DPenaltyRadius)")
+    lines.append("    (hRbox : Q3.Proofs.matrixEntrywiseAbsLe")
+    lines.append(f"      (Q3.Proofs.penaltyMatrix R Q {prefix}TauR)")
+    lines.append(f"      (Q3.Proofs.penaltyMatrix {prefix}R {prefix}Q {prefix}TauR)")
+    lines.append(f"      {prefix}RPenaltyRadius) :")
+    lines.append("    Q3.Proofs.FinitePenaltyLowerBoundCert D R Q where")
+    lines.append(f"  tauD := {prefix}TauD")
+    lines.append(f"  tauR := {prefix}TauR")
+    lines.append(f"  dFloor := {prefix}DIntervalFloor")
+    lines.append(f"  rFloor := {prefix}RIntervalFloor")
+    lines.append(f"  dFloor_pos := {prefix}DIntervalFloor_pos")
+    lines.append(f"  rFloor_pos := {prefix}RIntervalFloor_pos")
+    lines.append(f"  D_penalty_lower := {prefix}DLowerBound_of_penalty_box D Q hDbox")
+    lines.append(f"  R_penalty_lower := {prefix}RLowerBound_of_penalty_box R Q hRbox")
+    lines.append("")
+    lines.append(f"/-- Convert `{prefix}` interval-backed penalty boxes into the strict finite penalty cert. -/")
+    lines.append(f"def {prefix}FinitePenaltyCert_of_penalty_boxes")
+    lines.append("    (D R : Matrix CoeffIndex23 CoeffIndex23 Real)")
+    lines.append("    (Q : Matrix BoundaryIndex2 CoeffIndex23 Real)")
+    lines.append("    (hDbox : Q3.Proofs.matrixEntrywiseAbsLe")
+    lines.append(f"      (Q3.Proofs.penaltyMatrix D Q {prefix}TauD)")
+    lines.append(f"      (Q3.Proofs.penaltyMatrix {prefix}D {prefix}Q {prefix}TauD)")
+    lines.append(f"      {prefix}DPenaltyRadius)")
+    lines.append("    (hRbox : Q3.Proofs.matrixEntrywiseAbsLe")
+    lines.append(f"      (Q3.Proofs.penaltyMatrix R Q {prefix}TauR)")
+    lines.append(f"      (Q3.Proofs.penaltyMatrix {prefix}R {prefix}Q {prefix}TauR)")
+    lines.append(f"      {prefix}RPenaltyRadius) :")
+    lines.append("    Q3.Proofs.FinitePenaltyCert D R Q :=")
+    lines.append("  Q3.Proofs.FinitePenaltyLowerBoundCert.toFinitePenaltyCert")
+    lines.append(f"    ({prefix}PenaltyLowerBoundCert_of_penalty_boxes D R Q hDbox hRbox)")
+    lines.append("")
+    return lines
+
+
 def build_blocks(root: Path) -> list[Block]:
     return [
         Block(
@@ -304,6 +348,7 @@ def build_lean(root: Path) -> str:
         lines.append("")
         lines.extend(emit_radius_pack(block, "D", d_penalty))
         lines.extend(emit_radius_pack(block, "R", r_penalty))
+        lines.extend(emit_cert_pack(block))
     lines.append(FOOTER.strip())
     lines.append("")
     return "\n".join(lines)

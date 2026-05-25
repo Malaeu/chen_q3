@@ -12763,3 +12763,18 @@ Update:
 - This closes the concrete payload side for radius floors.  The next smallest
   node is to package the D/R adapters into active finite penalty certificate
   wrappers, parameterized by the four analytic penalty-box hypotheses.
+
+## Synthesis (2026-05-25, OK) — `Step32F_PenaltyBoxCertWrappers`
+
+- Target: close the packaging layer immediately after the radius-floor import.
+- Extended the radius-floor generator so each active block emits two wrappers:
+  `*PenaltyLowerBoundCert_of_penalty_boxes` and
+  `*FinitePenaltyCert_of_penalty_boxes`.
+- For `primaryK11` and `controlK9`, these wrappers take future analytic D/R
+  penalty-box hypotheses and produce the existing
+  `FinitePenaltyLowerBoundCert` / `FinitePenaltyCert` objects directly.
+- This keeps the proof boundary honest: the new cert wrappers are fully
+  Lean-checked, while the remaining analytic work is exactly the four hbox
+  hypotheses for D/R of the primary and control coefficient blocks.
+- The next smallest node is the analytic hbox bridge from concrete
+  B-spline/contract entries to the imported midpoint/radius penalty boxes.

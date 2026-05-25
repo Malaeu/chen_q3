@@ -1254,6 +1254,44 @@ theorem primaryK11RLowerBound_of_penalty_box
     primaryK11RMidpointLowerBound_with_radius_floor
     primaryK11RPenaltyRadiusEnergy_le
 
+/-- Package `primaryK11` interval-backed D/R penalty boxes as a lower-bound certificate. -/
+def primaryK11PenaltyLowerBoundCert_of_penalty_boxes
+    (D R : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (Q : Matrix BoundaryIndex2 CoeffIndex23 Real)
+    (hDbox : Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix D Q primaryK11TauD)
+      (Q3.Proofs.penaltyMatrix primaryK11D primaryK11Q primaryK11TauD)
+      primaryK11DPenaltyRadius)
+    (hRbox : Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix R Q primaryK11TauR)
+      (Q3.Proofs.penaltyMatrix primaryK11R primaryK11Q primaryK11TauR)
+      primaryK11RPenaltyRadius) :
+    Q3.Proofs.FinitePenaltyLowerBoundCert D R Q where
+  tauD := primaryK11TauD
+  tauR := primaryK11TauR
+  dFloor := primaryK11DIntervalFloor
+  rFloor := primaryK11RIntervalFloor
+  dFloor_pos := primaryK11DIntervalFloor_pos
+  rFloor_pos := primaryK11RIntervalFloor_pos
+  D_penalty_lower := primaryK11DLowerBound_of_penalty_box D Q hDbox
+  R_penalty_lower := primaryK11RLowerBound_of_penalty_box R Q hRbox
+
+/-- Convert `primaryK11` interval-backed penalty boxes into the strict finite penalty cert. -/
+def primaryK11FinitePenaltyCert_of_penalty_boxes
+    (D R : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (Q : Matrix BoundaryIndex2 CoeffIndex23 Real)
+    (hDbox : Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix D Q primaryK11TauD)
+      (Q3.Proofs.penaltyMatrix primaryK11D primaryK11Q primaryK11TauD)
+      primaryK11DPenaltyRadius)
+    (hRbox : Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix R Q primaryK11TauR)
+      (Q3.Proofs.penaltyMatrix primaryK11R primaryK11Q primaryK11TauR)
+      primaryK11RPenaltyRadius) :
+    Q3.Proofs.FinitePenaltyCert D R Q :=
+  Q3.Proofs.FinitePenaltyLowerBoundCert.toFinitePenaltyCert
+    (primaryK11PenaltyLowerBoundCert_of_penalty_boxes D R Q hDbox hRbox)
+
 /-! Radius floors for `controlK9`. -/
 
 def controlK9DPenaltyRadiusEntryRat : Nat -> Nat -> Rat
@@ -2485,6 +2523,44 @@ theorem controlK9RLowerBound_of_penalty_box
     controlK9RPenaltyRadius hbox
     controlK9RMidpointLowerBound_with_radius_floor
     controlK9RPenaltyRadiusEnergy_le
+
+/-- Package `controlK9` interval-backed D/R penalty boxes as a lower-bound certificate. -/
+def controlK9PenaltyLowerBoundCert_of_penalty_boxes
+    (D R : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (Q : Matrix BoundaryIndex2 CoeffIndex23 Real)
+    (hDbox : Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix D Q controlK9TauD)
+      (Q3.Proofs.penaltyMatrix controlK9D controlK9Q controlK9TauD)
+      controlK9DPenaltyRadius)
+    (hRbox : Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix R Q controlK9TauR)
+      (Q3.Proofs.penaltyMatrix controlK9R controlK9Q controlK9TauR)
+      controlK9RPenaltyRadius) :
+    Q3.Proofs.FinitePenaltyLowerBoundCert D R Q where
+  tauD := controlK9TauD
+  tauR := controlK9TauR
+  dFloor := controlK9DIntervalFloor
+  rFloor := controlK9RIntervalFloor
+  dFloor_pos := controlK9DIntervalFloor_pos
+  rFloor_pos := controlK9RIntervalFloor_pos
+  D_penalty_lower := controlK9DLowerBound_of_penalty_box D Q hDbox
+  R_penalty_lower := controlK9RLowerBound_of_penalty_box R Q hRbox
+
+/-- Convert `controlK9` interval-backed penalty boxes into the strict finite penalty cert. -/
+def controlK9FinitePenaltyCert_of_penalty_boxes
+    (D R : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (Q : Matrix BoundaryIndex2 CoeffIndex23 Real)
+    (hDbox : Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix D Q controlK9TauD)
+      (Q3.Proofs.penaltyMatrix controlK9D controlK9Q controlK9TauD)
+      controlK9DPenaltyRadius)
+    (hRbox : Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix R Q controlK9TauR)
+      (Q3.Proofs.penaltyMatrix controlK9R controlK9Q controlK9TauR)
+      controlK9RPenaltyRadius) :
+    Q3.Proofs.FinitePenaltyCert D R Q :=
+  Q3.Proofs.FinitePenaltyLowerBoundCert.toFinitePenaltyCert
+    (controlK9PenaltyLowerBoundCert_of_penalty_boxes D R Q hDbox hRbox)
 
 end CenteredCoeffRadiusFloorImport
 end PSDpd
