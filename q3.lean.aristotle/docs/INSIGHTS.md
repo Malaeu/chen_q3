@@ -12929,3 +12929,18 @@ Update:
 - The next smallest payload lock is to import or prove the concrete Q-row hbox
   facts against `primaryK11QRadius` and `controlK9QRadius`, plus the associated
   Gram-radius dominance facts.
+
+## Synthesis (2026-05-25, OK) — `Step32F_ImportedQRadiusCertifiedBlockWrappers`
+
+- Target: close the receiver wiring from imported Q-radius payloads all the way
+  to active `CertifiedCenteredBSplineCoeffBlock` wrappers.
+- Added `primaryK11CertifiedCoeffBlock_of_importedQRadius` and
+  `controlK9CertifiedCoeffBlock_of_importedQRadius`.
+- Each wrapper consumes base D/R matrix hboxes, the imported Q-row hbox,
+  Gram-radius dominance, and D/R penalty-radius dominance, then returns the
+  concrete active certified coefficient block.
+- Internally the wrappers reuse the imported-QRadius penalty-box adapters and
+  the existing `*_CertifiedCoeffBlock_of_penalty_boxes` constructors.
+- This closes the API plumbing to the active certified block. The remaining
+  work is now genuine generated/numeric proof payload: base matrix hboxes,
+  Q-row hboxes, and radius-dominance facts.

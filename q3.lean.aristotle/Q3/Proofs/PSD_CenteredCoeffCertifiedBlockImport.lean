@@ -320,6 +320,37 @@ noncomputable def primaryK11CertifiedCoeffBlock_of_penalty_boxes
       (primaryK11AnalyticDFromR R) R primaryK11AnalyticQ hDbox hRbox
   split := primaryK11AnalyticSplitFromR R
 
+/-- Primary active coefficient block directly from base D/R hboxes plus the
+imported Q-row radius payload.  The analytic enclosure facts remain explicit
+inputs; this definition only closes the receiver plumbing. -/
+noncomputable def primaryK11CertifiedCoeffBlock_of_importedQRadius
+    (R MRD MRR GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hD : Q3.Proofs.matrixEntrywiseAbsLe
+      (primaryK11AnalyticDFromR R) primaryK11D MRD)
+    (hR : Q3.Proofs.matrixEntrywiseAbsLe R primaryK11R MRR)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      primaryK11AnalyticQ primaryK11Q primaryK11QRadius)
+    (hGRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            primaryK11QRadius r i * (|primaryK11Q r j| + primaryK11QRadius r j) +
+              |primaryK11Q r i| * primaryK11QRadius r j) ≤
+        GR i j)
+    (hDRad : ∀ i j,
+      MRD i j + |CenteredCoeffPenaltyImport.primaryK11TauD| * GR i j ≤
+        primaryK11DPenaltyRadius i j)
+    (hRRad : ∀ i j,
+      MRR i j + |CenteredCoeffPenaltyImport.primaryK11TauR| * GR i j ≤
+        primaryK11RPenaltyRadius i j) :
+    CertifiedCenteredBSplineCoeffBlock
+      11 primaryK11Ell primaryK11Center primaryK11PrimeWeight primaryK11PrimeShift
+      primaryK11_hk primaryK11_hell :=
+  primaryK11CertifiedCoeffBlock_of_penalty_boxes R
+    (primaryK11DPenaltyBox_of_matrix_and_importedQRadius
+      R MRD GR hD hQ hGRad hDRad)
+    (primaryK11RPenaltyBox_of_matrix_and_importedQRadius
+      R MRR GR hR hQ hGRad hRRad)
+
 /-- Analytic control D matrix induced by a chosen analytic R matrix and the
 imported control penalty parameter. -/
 def controlK9AnalyticDFromR
@@ -610,6 +641,37 @@ noncomputable def controlK9CertifiedCoeffBlock_of_penalty_boxes
     controlK9FinitePenaltyCert_of_penalty_boxes
       (controlK9AnalyticDFromR R) R controlK9AnalyticQ hDbox hRbox
   split := controlK9AnalyticSplitFromR R
+
+/-- Control active coefficient block directly from base D/R hboxes plus the
+imported Q-row radius payload.  The analytic enclosure facts remain explicit
+inputs; this definition only closes the receiver plumbing. -/
+noncomputable def controlK9CertifiedCoeffBlock_of_importedQRadius
+    (R MRD MRR GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hD : Q3.Proofs.matrixEntrywiseAbsLe
+      (controlK9AnalyticDFromR R) controlK9D MRD)
+    (hR : Q3.Proofs.matrixEntrywiseAbsLe R controlK9R MRR)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      controlK9AnalyticQ controlK9Q controlK9QRadius)
+    (hGRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            controlK9QRadius r i * (|controlK9Q r j| + controlK9QRadius r j) +
+              |controlK9Q r i| * controlK9QRadius r j) ≤
+        GR i j)
+    (hDRad : ∀ i j,
+      MRD i j + |CenteredCoeffPenaltyImport.controlK9TauD| * GR i j ≤
+        controlK9DPenaltyRadius i j)
+    (hRRad : ∀ i j,
+      MRR i j + |CenteredCoeffPenaltyImport.controlK9TauR| * GR i j ≤
+        controlK9RPenaltyRadius i j) :
+    CertifiedCenteredBSplineCoeffBlock
+      9 controlK9Ell controlK9Center controlK9PrimeWeight controlK9PrimeShift
+      controlK9_hk controlK9_hell :=
+  controlK9CertifiedCoeffBlock_of_penalty_boxes R
+    (controlK9DPenaltyBox_of_matrix_and_importedQRadius
+      R MRD GR hD hQ hGRad hDRad)
+    (controlK9RPenaltyBox_of_matrix_and_importedQRadius
+      R MRR GR hR hQ hGRad hRRad)
 
 end CenteredCoeffCertifiedBlockImport
 end PSDpd
