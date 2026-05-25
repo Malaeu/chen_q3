@@ -151,6 +151,66 @@ theorem primaryK11BoundaryGramBox_of_boundaryRows
       primaryK11AnalyticQ primaryK11Q QR hQ)
     hRad
 
+/-- Primary `k=11` D penalty hbox directly from a base D hbox, a boundary-row
+hbox, and the two generated radius-dominance lemmas. -/
+theorem primaryK11DPenaltyBox_of_matrix_and_boundaryRows
+    (R MR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (QR : Matrix BoundaryIndex2 CoeffIndex23 Real)
+    (GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hM : Q3.Proofs.matrixEntrywiseAbsLe
+      (primaryK11AnalyticDFromR R) primaryK11D MR)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      primaryK11AnalyticQ primaryK11Q QR)
+    (hGRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            QR r i * (|primaryK11Q r j| + QR r j) +
+              |primaryK11Q r i| * QR r j) ≤
+        GR i j)
+    (hRad : ∀ i j,
+      MR i j + |CenteredCoeffPenaltyImport.primaryK11TauD| * GR i j ≤
+        primaryK11DPenaltyRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix
+        (primaryK11AnalyticDFromR R) primaryK11AnalyticQ
+        CenteredCoeffPenaltyImport.primaryK11TauD)
+      (Q3.Proofs.penaltyMatrix primaryK11D primaryK11Q
+        CenteredCoeffPenaltyImport.primaryK11TauD)
+      primaryK11DPenaltyRadius := by
+  exact primaryK11DPenaltyBox_of_matrix_and_boundaryGram
+    R MR GR hM
+    (primaryK11BoundaryGramBox_of_boundaryRows QR GR hQ hGRad)
+    hRad
+
+/-- Primary `k=11` R penalty hbox directly from a base R hbox, a boundary-row
+hbox, and the two generated radius-dominance lemmas. -/
+theorem primaryK11RPenaltyBox_of_matrix_and_boundaryRows
+    (R MR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (QR : Matrix BoundaryIndex2 CoeffIndex23 Real)
+    (GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hM : Q3.Proofs.matrixEntrywiseAbsLe R primaryK11R MR)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      primaryK11AnalyticQ primaryK11Q QR)
+    (hGRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            QR r i * (|primaryK11Q r j| + QR r j) +
+              |primaryK11Q r i| * QR r j) ≤
+        GR i j)
+    (hRad : ∀ i j,
+      MR i j + |CenteredCoeffPenaltyImport.primaryK11TauR| * GR i j ≤
+        primaryK11RPenaltyRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix R primaryK11AnalyticQ
+        CenteredCoeffPenaltyImport.primaryK11TauR)
+      (Q3.Proofs.penaltyMatrix primaryK11R primaryK11Q
+        CenteredCoeffPenaltyImport.primaryK11TauR)
+      primaryK11RPenaltyRadius := by
+  exact primaryK11RPenaltyBox_of_matrix_and_boundaryGram
+    R MR GR hM
+    (primaryK11BoundaryGramBox_of_boundaryRows QR GR hQ hGRad)
+    hRad
+
 /- 
 Q3 obstruction wall:
 - wall: Matrix-identification / Step32F coefficient certified-block handoff
@@ -309,6 +369,66 @@ theorem controlK9BoundaryGramBox_of_boundaryRows
     GR
     (Q3.Proofs.boundaryGramMatrix_entrywiseAbsLe_of_matrix
       controlK9AnalyticQ controlK9Q QR hQ)
+    hRad
+
+/-- Control `k=9` D penalty hbox directly from a base D hbox, a boundary-row
+hbox, and the two generated radius-dominance lemmas. -/
+theorem controlK9DPenaltyBox_of_matrix_and_boundaryRows
+    (R MR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (QR : Matrix BoundaryIndex2 CoeffIndex23 Real)
+    (GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hM : Q3.Proofs.matrixEntrywiseAbsLe
+      (controlK9AnalyticDFromR R) controlK9D MR)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      controlK9AnalyticQ controlK9Q QR)
+    (hGRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            QR r i * (|controlK9Q r j| + QR r j) +
+              |controlK9Q r i| * QR r j) ≤
+        GR i j)
+    (hRad : ∀ i j,
+      MR i j + |CenteredCoeffPenaltyImport.controlK9TauD| * GR i j ≤
+        controlK9DPenaltyRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix
+        (controlK9AnalyticDFromR R) controlK9AnalyticQ
+        CenteredCoeffPenaltyImport.controlK9TauD)
+      (Q3.Proofs.penaltyMatrix controlK9D controlK9Q
+        CenteredCoeffPenaltyImport.controlK9TauD)
+      controlK9DPenaltyRadius := by
+  exact controlK9DPenaltyBox_of_matrix_and_boundaryGram
+    R MR GR hM
+    (controlK9BoundaryGramBox_of_boundaryRows QR GR hQ hGRad)
+    hRad
+
+/-- Control `k=9` R penalty hbox directly from a base R hbox, a boundary-row
+hbox, and the two generated radius-dominance lemmas. -/
+theorem controlK9RPenaltyBox_of_matrix_and_boundaryRows
+    (R MR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (QR : Matrix BoundaryIndex2 CoeffIndex23 Real)
+    (GR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hM : Q3.Proofs.matrixEntrywiseAbsLe R controlK9R MR)
+    (hQ : Q3.Proofs.matrixEntrywiseAbsLe
+      controlK9AnalyticQ controlK9Q QR)
+    (hGRad : ∀ i j,
+      Finset.univ.sum
+          (fun r : BoundaryIndex2 =>
+            QR r i * (|controlK9Q r j| + QR r j) +
+              |controlK9Q r i| * QR r j) ≤
+        GR i j)
+    (hRad : ∀ i j,
+      MR i j + |CenteredCoeffPenaltyImport.controlK9TauR| * GR i j ≤
+        controlK9RPenaltyRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      (Q3.Proofs.penaltyMatrix R controlK9AnalyticQ
+        CenteredCoeffPenaltyImport.controlK9TauR)
+      (Q3.Proofs.penaltyMatrix controlK9R controlK9Q
+        CenteredCoeffPenaltyImport.controlK9TauR)
+      controlK9RPenaltyRadius := by
+  exact controlK9RPenaltyBox_of_matrix_and_boundaryGram
+    R MR GR hM
+    (controlK9BoundaryGramBox_of_boundaryRows QR GR hQ hGRad)
     hRad
 
 /- 

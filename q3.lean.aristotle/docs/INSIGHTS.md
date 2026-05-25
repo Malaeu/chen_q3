@@ -12890,3 +12890,23 @@ Update:
   enclosures. The next smallest lock is to compose these Gram adapters with the
   existing D/R penalty adapters, or to add concrete generated Q-row/Gram-radius
   import facts when the payload data is ready.
+
+## Synthesis (2026-05-25, OK) — `Step32F_ActivePenaltyBoxBoundaryRowAdapters`
+
+- Target: remove the extra manual step between active boundary-row hboxes and
+  active D/R penalty-box hboxes.
+- Added four composed adapters:
+  `primaryK11DPenaltyBox_of_matrix_and_boundaryRows`,
+  `primaryK11RPenaltyBox_of_matrix_and_boundaryRows`,
+  `controlK9DPenaltyBox_of_matrix_and_boundaryRows`, and
+  `controlK9RPenaltyBox_of_matrix_and_boundaryRows`.
+- Each theorem consumes a base matrix hbox, a boundary-row hbox, Gram-radius
+  dominance, and final penalty-radius dominance, then returns the exact D/R
+  penalty hbox expected by the active certificate wrappers.
+- Internally the adapters compose
+  `*_BoundaryGramBox_of_boundaryRows` with the existing
+  `*_PenaltyBox_of_matrix_and_boundaryGram` theorems.
+- This closes the active API path
+  `matrix box + Q-row box -> boundaryGram box -> D/R penalty box`.
+- The remaining open mathematical payload is now concrete generated enclosure
+  data: Q-row hboxes, Gram-radius dominance, and base D/R matrix hboxes.
