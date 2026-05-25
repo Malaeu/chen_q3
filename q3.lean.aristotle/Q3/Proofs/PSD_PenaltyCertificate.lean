@@ -188,6 +188,18 @@ lemma quadForm_pointwise_add {ι : Type*} [Fintype ι]
   simp_rw [add_mul]
   simp_rw [Finset.sum_add_distrib]
 
+/-- Pointwise subtraction distributes through the explicit quadratic form. -/
+lemma quadForm_pointwise_sub {ι : Type*} [Fintype ι]
+    (M N : Matrix ι ι ℝ) (v : ι → ℝ) :
+    quadForm (fun i j => M i j - N i j) v =
+      quadForm M v - quadForm N v := by
+  unfold quadForm
+  simp_rw [sub_eq_add_neg]
+  simp_rw [mul_add]
+  simp_rw [add_mul]
+  simp_rw [Finset.sum_add_distrib]
+  simp [Finset.sum_neg_distrib]
+
 /-- The diagonal matrix with constant `floor` has quadratic form
 `floor * euclideanEnergy`. -/
 lemma quadForm_diagonal_floor {ι : Type*} [Fintype ι] [DecidableEq ι]
@@ -218,6 +230,67 @@ lemma quadForm_pointwise_congr {ι : Type*} [Fintype ι]
   apply Finset.sum_congr rfl
   intro j _
   rw [h i j]
+
+/-!
+### Entrywise-radius receivers
+
+The Step 32F imported midpoint/radius payloads cannot honestly be treated as
+definitionally equal to the analytic Arch/Prime matrices.  The small receiver
+below is the algebraic bridge: an entrywise error box controls the quadratic
+form error by an explicit radius energy.
+-/
+
+/-- Entrywise absolute-error domination for a rectangular real matrix. -/
+def matrixEntrywiseAbsLe {ρ σ : Type*}
+    (A M R : Matrix ρ σ ℝ) : Prop :=
+  ∀ i j, |A i j - M i j| ≤ R i j
+
+/-- Radius energy controlling the quadratic-form error from entrywise matrix
+boxes.  The radius matrix is expected to have nonnegative entries; this follows
+automatically from a `matrixEntrywiseAbsLe` hypothesis for the applications
+below. -/
+def quadFormAbsRadius {ι : Type*} [Fintype ι]
+    (R : Matrix ι ι ℝ) (v : ι → ℝ) : ℝ :=
+  ∑ i, ∑ j, |v i| * R i j * |v j|
+
+/-- If every matrix entry of `E` is bounded in absolute value by `R`, then the
+quadratic form of `E` is bounded by the radius energy. -/
+lemma abs_quadForm_le_quadFormAbsRadius {ι : Type*} [Fintype ι]
+    (E R : Matrix ι ι ℝ)
+    (hE : ∀ i j, |E i j| ≤ R i j)
+    (v : ι → ℝ) :
+    |quadForm E v| ≤ quadFormAbsRadius R v := by
+  unfold quadForm quadFormAbsRadius
+  calc
+    |∑ i, ∑ j, v i * E i j * v j|
+        ≤ ∑ i, |∑ j, v i * E i j * v j| := by
+          exact Finset.abs_sum_le_sum_abs _ _
+    _ ≤ ∑ i, ∑ j, |v i| * R i j * |v j| := by
+      apply Finset.sum_le_sum
+      intro i _
+      calc
+        |∑ j, v i * E i j * v j|
+            ≤ ∑ j, |v i * E i j * v j| := by
+              exact Finset.abs_sum_le_sum_abs _ _
+        _ ≤ ∑ j, |v i| * R i j * |v j| := by
+          apply Finset.sum_le_sum
+          intro j _
+          rw [abs_mul, abs_mul]
+          exact mul_le_mul_of_nonneg_right
+            (mul_le_mul_of_nonneg_left (hE i j) (abs_nonneg (v i)))
+            (abs_nonneg (v j))
+
+/-- Entrywise midpoint/radius control gives a quadratic-form perturbation
+bound.  This is the reusable algebraic landing surface for interval-backed
+Step 32F payload certificates. -/
+theorem abs_quadForm_sub_le_quadFormAbsRadius {ι : Type*} [Fintype ι]
+    (A M R : Matrix ι ι ℝ)
+    (hAM : matrixEntrywiseAbsLe A M R)
+    (v : ι → ℝ) :
+    |quadForm A v - quadForm M v| ≤ quadFormAbsRadius R v := by
+  rw [← quadForm_pointwise_sub A M v]
+  exact abs_quadForm_le_quadFormAbsRadius
+    (fun i j => A i j - M i j) R hAM v
 
 /-- Convert a matrix-level weighted-Gram identity into a full-space Euclidean
 penalty lower bound.

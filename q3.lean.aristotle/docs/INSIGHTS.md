@@ -12668,3 +12668,25 @@ Update:
   the analytic contract entries are expressions in `Real.exp`, `Real.log`, and
   the Arch integral profile.  The next smallest node is therefore the
   analytic-to-payload matrix bridge, not another dictionary import.
+
+## Synthesis (2026-05-25, OK) — `Step32F_IntervalBoxReceiver`
+
+- Target: add the first Lean-checked algebraic bridge from midpoint/radius
+  payload boxes to analytic quadratic forms, without pretending midpoint
+  matrices are definitionally equal to analytic matrices.
+- Added `matrixEntrywiseAbsLe`, `quadFormAbsRadius`,
+  `abs_quadForm_le_quadFormAbsRadius`, and
+  `abs_quadForm_sub_le_quadFormAbsRadius` to
+  `PSD_PenaltyCertificate.lean`.
+- Added `quadForm_pointwise_sub`, matching the existing add/smul quadratic-form
+  algebra.
+- The key receiver proves: if every entry of `A - M` is bounded by a radius
+  matrix `R`, then
+  `|quadForm A v - quadForm M v| <= quadFormAbsRadius R v`.
+- This is the honest next bridge for Step32F interval-backed certificates:
+  later analytic enclosure lemmas can feed entrywise boxes, while existing LDL
+  certificates remain attached to exact midpoint matrices.
+- The next smallest node is to package the penalty-form version:
+  combine D/R/Q entrywise boxes into a midpoint penalty lower bound with a
+  radius-error subtraction, then feed the existing
+  `FinitePenaltyLowerBoundCert` route.
