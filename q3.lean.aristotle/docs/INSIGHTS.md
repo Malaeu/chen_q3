@@ -12626,3 +12626,21 @@ Update:
   node is the same exact rational LDL path for the control `k=9` D/R block,
   followed by the active wrapper consuming both primary and control
   `FinitePenaltyCert` values.
+
+## Synthesis (2026-05-25, OK) — `Step32F_ControlK9LDLCert`
+
+- Target: repeat the exact rational LDL/SOS certificate path for the accepted
+  control `k=9` block.
+- Extended `scripts/q3_psdpd_step32f_primary_ldl_cert.py` so it consumes all
+  active PASS rows with role `primary` or `control`, rather than hardcoding the
+  primary row.
+- Regenerated `PSD_CenteredCoeffPenaltyLDLImport.lean` with the control
+  certificates `controlK9DLowerBound_ldl`, `controlK9RLowerBound_ldl`,
+  `controlK9PenaltyLowerBoundCert_ldl`, and `controlK9FinitePenaltyCert_ldl`.
+- The generated file now closes both active Step32F finite penalty certificates:
+  primary `k=11` and control `k=9`.
+- The next smallest node is not another LDL theorem; it is the concrete
+  coefficient dictionary import needed to instantiate
+  `CertifiedCenteredBSplineCoeffBlock` for both active rows, because the current
+  payload import has matrices/certs but not the `center/weight/shift` data
+  expected by the analytic contract wrapper.

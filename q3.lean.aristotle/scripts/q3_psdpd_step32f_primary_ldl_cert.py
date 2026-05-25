@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate exact rational LDL certificates for the primary Step 32F coefficient
+Generate exact rational LDL certificates for active Step 32F coefficient
 penalty lower bounds.
 
 This is a proof generator, not a numerical import.  It consumes the already
@@ -114,44 +114,49 @@ def extract_value(body: str, key: str) -> Fraction:
     return parse_fraction(match.group(1))
 
 
-def load_primary_block(repo_dir: Path, plan_path: Path, manifest_path: Path) -> Block:
+def load_blocks(repo_dir: Path, plan_path: Path, manifest_path: Path) -> list[Block]:
     plan = json.loads(plan_path.read_text())
-    raw = next((block for block in plan["blocks"] if block["role"] == "primary"), None)
-    if raw is None:
-        raise SystemExit("missing primary block in payload import plan")
-
-    manifest_row = None
+    manifest_rows = {}
     with manifest_path.open() as f:
         for row in csv.DictReader(f):
-            if row["block_id"] == raw["block_id"]:
-                manifest_row = row
-                break
-    if manifest_row is None:
-        raise SystemExit(f"missing manifest row for {raw['block_id']}")
+            manifest_rows[row["block_id"]] = row
 
-    if (
-        manifest_row["status"] != "PASS"
-        or manifest_row["dtheta_pass"] != "True"
-        or manifest_row["rkappa_pass"] != "True"
-    ):
-        raise SystemExit(f"{raw['block_id']}: manifest row is not passing")
+    blocks: list[Block] = []
+    for raw in plan["blocks"]:
+        if raw["role"] not in {"primary", "control"}:
+            continue
+        manifest_row = manifest_rows.get(raw["block_id"])
+        if manifest_row is None:
+            raise SystemExit(f"missing manifest row for {raw['block_id']}")
+        if (
+            manifest_row["status"] != "PASS"
+            or manifest_row["dtheta_pass"] != "True"
+            or manifest_row["rkappa_pass"] != "True"
+        ):
+            raise SystemExit(f"{raw['block_id']}: manifest row is not passing")
 
-    stdout = repo_path(repo_dir, manifest_row["stdout_path"]).read_text()
-    d_body = extract_section(stdout, "Dtheta")
-    r_body = extract_section(stdout, "R_kappa")
-    params = raw["parameters"]
-    return Block(
-        block_id=raw["block_id"],
-        role=raw["role"],
-        prefix=block_prefix(raw["block_id"]),
-        midpoint_csv=repo_path(repo_dir, raw["artifacts"]["midpoint_csv"]),
-        kappa=parse_fraction(params["kappa"]),
-        theta=parse_fraction(params["theta"]),
-        tau_d=extract_value(d_body, "best_tau"),
-        tau_r=extract_value(r_body, "best_tau"),
-        floor_d=extract_value(d_body, "safe_lower"),
-        floor_r=extract_value(r_body, "safe_lower"),
-    )
+        stdout = repo_path(repo_dir, manifest_row["stdout_path"]).read_text()
+        d_body = extract_section(stdout, "Dtheta")
+        r_body = extract_section(stdout, "R_kappa")
+        params = raw["parameters"]
+        blocks.append(
+            Block(
+                block_id=raw["block_id"],
+                role=raw["role"],
+                prefix=block_prefix(raw["block_id"]),
+                midpoint_csv=repo_path(repo_dir, raw["artifacts"]["midpoint_csv"]),
+                kappa=parse_fraction(params["kappa"]),
+                theta=parse_fraction(params["theta"]),
+                tau_d=extract_value(d_body, "best_tau"),
+                tau_r=extract_value(r_body, "best_tau"),
+                floor_d=extract_value(d_body, "safe_lower"),
+                floor_r=extract_value(r_body, "safe_lower"),
+            )
+        )
+
+    if not blocks:
+        raise SystemExit("missing primary/control blocks in payload import plan")
+    return blocks
 
 
 def load_midpoint(path: Path) -> dict[str, dict[tuple[int, int], Fraction]]:
@@ -275,38 +280,38 @@ def build_gram(
 
 
 def generate(repo_dir: Path, plan_path: Path, manifest_path: Path) -> str:
-    block = load_primary_block(repo_dir, plan_path, manifest_path)
-    matrices = load_midpoint(block.midpoint_csv)
-    get = lambda name, i, j: matrices[name].get((i, j), Fraction(0))
-    a = lambda i, j: get("A", i, j)
-    p = lambda i, j: get("P", i, j)
-    p0 = lambda i, j: get("P0", i, j)
-    q = lambda r, i: get("Q", r, i)
-    c = lambda i, j: a(i, j) - p(i, j)
-    r_matrix = lambda i, j: a(i, j) - block.kappa * p0(i, j)
-    d_matrix = lambda i, j: c(i, j) - block.theta * r_matrix(i, j)
-
-    d_weights, d_rows = ldl_decomposition(
-        build_gram(d_matrix, q, block.tau_d, block.floor_d)
-    )
-    r_weights, r_rows = ldl_decomposition(
-        build_gram(r_matrix, q, block.tau_r, block.floor_r)
-    )
-
     chunks = [GENERATED_HEADER]
-    chunks.append(emit_ldl(block.prefix, "D", d_weights, d_rows))
-    chunks.append(emit_ldl(block.prefix, "R", r_weights, r_rows))
-    chunks.append(f"def {block.prefix}PenaltyLowerBoundCert_ldl :")
-    chunks.append(f"    Q3.Proofs.FinitePenaltyLowerBoundCert {block.prefix}D {block.prefix}R {block.prefix}Q :=")
-    chunks.append(f"  {block.prefix}PenaltyLowerBoundCert_of_bounds")
-    chunks.append(f"    {block.prefix}DLowerBound_ldl")
-    chunks.append(f"    {block.prefix}RLowerBound_ldl")
-    chunks.append("")
-    chunks.append(f"def {block.prefix}FinitePenaltyCert_ldl :")
-    chunks.append(f"    Q3.Proofs.FinitePenaltyCert {block.prefix}D {block.prefix}R {block.prefix}Q :=")
-    chunks.append("  Q3.Proofs.FinitePenaltyLowerBoundCert.toFinitePenaltyCert")
-    chunks.append(f"    {block.prefix}PenaltyLowerBoundCert_ldl")
-    chunks.append("")
+    for block in load_blocks(repo_dir, plan_path, manifest_path):
+        matrices = load_midpoint(block.midpoint_csv)
+        get = lambda name, i, j: matrices[name].get((i, j), Fraction(0))
+        a = lambda i, j: get("A", i, j)
+        p = lambda i, j: get("P", i, j)
+        p0 = lambda i, j: get("P0", i, j)
+        q = lambda r, i: get("Q", r, i)
+        c = lambda i, j: a(i, j) - p(i, j)
+        r_matrix = lambda i, j: a(i, j) - block.kappa * p0(i, j)
+        d_matrix = lambda i, j: c(i, j) - block.theta * r_matrix(i, j)
+
+        d_weights, d_rows = ldl_decomposition(
+            build_gram(d_matrix, q, block.tau_d, block.floor_d)
+        )
+        r_weights, r_rows = ldl_decomposition(
+            build_gram(r_matrix, q, block.tau_r, block.floor_r)
+        )
+
+        chunks.append(emit_ldl(block.prefix, "D", d_weights, d_rows))
+        chunks.append(emit_ldl(block.prefix, "R", r_weights, r_rows))
+        chunks.append(f"def {block.prefix}PenaltyLowerBoundCert_ldl :")
+        chunks.append(f"    Q3.Proofs.FinitePenaltyLowerBoundCert {block.prefix}D {block.prefix}R {block.prefix}Q :=")
+        chunks.append(f"  {block.prefix}PenaltyLowerBoundCert_of_bounds")
+        chunks.append(f"    {block.prefix}DLowerBound_ldl")
+        chunks.append(f"    {block.prefix}RLowerBound_ldl")
+        chunks.append("")
+        chunks.append(f"def {block.prefix}FinitePenaltyCert_ldl :")
+        chunks.append(f"    Q3.Proofs.FinitePenaltyCert {block.prefix}D {block.prefix}R {block.prefix}Q :=")
+        chunks.append("  Q3.Proofs.FinitePenaltyLowerBoundCert.toFinitePenaltyCert")
+        chunks.append(f"    {block.prefix}PenaltyLowerBoundCert_ldl")
+        chunks.append("")
     chunks.append(GENERATED_FOOTER)
     return "\n".join(chunks)
 
