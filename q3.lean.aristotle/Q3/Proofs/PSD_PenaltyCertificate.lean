@@ -1,5 +1,7 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Data.Matrix.Basic
+import Mathlib.Data.Rat.BigOperators
+import Mathlib.Data.Rat.Lemmas
 import Mathlib.Tactic
 
 set_option linter.mathlibStandardSet false
@@ -75,6 +77,14 @@ def weightedSquareMatrix {σ ι : Type*} [Fintype σ]
     (w : σ → ℝ) (L : σ → ι → ℝ) : Matrix ι ι ℝ :=
   fun i j => ∑ s, w s * L s i * L s j
 
+/-- Rational matrix represented by a weighted Gram sum of rational linear rows.
+
+Generated certificate files use this version so exact LDL/SOS identities can be
+checked by rational computation and then cast into the real receiver. -/
+def ratWeightedSquareMatrix {σ ι : Type*} [Fintype σ]
+    (w : σ → Rat) (L : σ → ι → Rat) : Matrix ι ι Rat :=
+  fun i j => ∑ s, w s * L s i * L s j
+
 /-- A weighted sum of linear squares is nonnegative when all weights are
 nonnegative. -/
 lemma weightedSquareSum_nonneg {σ ι : Type*} [Fintype σ] [Fintype ι]
@@ -146,6 +156,14 @@ lemma weightedSquareSum_eq_quadForm_weightedSquareMatrix {σ ι : Type*}
   apply Finset.sum_congr rfl
   intro s _
   ring
+
+/-- Casting a rational weighted Gram matrix agrees with the real weighted Gram
+matrix built from the cast rows and weights. -/
+lemma ratWeightedSquareMatrix_cast {σ ι : Type*} [Fintype σ]
+    (w : σ → Rat) (L : σ → ι → Rat) (i j : ι) :
+    weightedSquareMatrix (fun s => (w s : ℝ)) (fun s i => (L s i : ℝ)) i j =
+      (ratWeightedSquareMatrix w L i j : ℝ) := by
+  simp [weightedSquareMatrix, ratWeightedSquareMatrix]
 
 /-- Pointwise scalar multiplication pulls out of the explicit quadratic form. -/
 lemma quadForm_pointwise_smul {ι : Type*} [Fintype ι]
@@ -232,6 +250,54 @@ theorem penalty_lower_bound_of_weightedSquareMatrix_identity
   rw [quadForm_pointwise_add]
   rw [quadForm_diagonal_floor]
   rw [weightedSquareSum_eq_quadForm_weightedSquareMatrix]
+
+/-- Convert a matrix-level rational weighted-Gram identity into a full-space
+Euclidean penalty lower bound for the corresponding real matrices.
+
+This is the generated LDL/SOS landing surface: the generated file proves the
+entry identity over `Rat`, then this theorem casts it into the real penalty
+receiver. -/
+theorem penalty_lower_bound_of_ratWeightedSquareMatrix_identity
+    {ρ ι σ : Type*} [Fintype ρ] [Fintype ι] [Fintype σ] [DecidableEq ι]
+    (M : Matrix ι ι ℝ) (Q : Matrix ρ ι ℝ) (tau floor : ℝ)
+    (w : σ → Rat) (L : σ → ι → Rat)
+    (hw : ∀ s, 0 ≤ w s)
+    (hidentity : ∀ i j,
+      M i j + tau * (∑ r, Q r i * Q r j) =
+        floor * (if i = j then (1 : ℝ) else 0) +
+          (ratWeightedSquareMatrix w L i j : ℝ)) :
+    ∀ v : ι → ℝ,
+      floor * euclideanEnergy v ≤ penaltyForm M Q tau v := by
+  apply penalty_lower_bound_of_weightedSquareMatrix_identity M Q tau floor
+    (fun s => (w s : ℝ)) (fun s i => (L s i : ℝ))
+  · intro s
+    exact_mod_cast hw s
+  · intro i j
+    rw [ratWeightedSquareMatrix_cast]
+    exact hidentity i j
+
+/-- Fully rational variant of the matrix-level receiver. -/
+theorem penalty_lower_bound_of_ratMatrixWeightedSquare_identity
+    {ρ ι σ : Type*} [Fintype ρ] [Fintype ι] [Fintype σ] [DecidableEq ι]
+    (M : Matrix ι ι Rat) (Q : Matrix ρ ι Rat) (tau floor : Rat)
+    (w : σ → Rat) (L : σ → ι → Rat)
+    (hw : ∀ s, 0 ≤ w s)
+    (hidentity : ∀ i j,
+      M i j + tau * (∑ r, Q r i * Q r j) =
+        floor * (if i = j then (1 : Rat) else 0) +
+          ratWeightedSquareMatrix w L i j) :
+    ∀ v : ι → ℝ,
+      (floor : ℝ) * euclideanEnergy v ≤
+        penaltyForm (fun i j => (M i j : ℝ)) (fun r i => (Q r i : ℝ)) (tau : ℝ) v := by
+  apply penalty_lower_bound_of_ratWeightedSquareMatrix_identity
+    (fun i j => (M i j : ℝ)) (fun r i => (Q r i : ℝ)) (tau : ℝ) (floor : ℝ) w L hw
+  intro i j
+  have h := congrArg (fun x : Rat => (x : ℝ)) (hidentity i j)
+  by_cases hij : i = j
+  · simp [hij] at h ⊢
+    exact h
+  · simp [hij] at h ⊢
+    exact h
 
 /-- The boundary residual energy vanishes on the boundary-null subspace. -/
 lemma boundaryEnergy_eq_zero_of_boundaryNull {ρ ι : Type*}

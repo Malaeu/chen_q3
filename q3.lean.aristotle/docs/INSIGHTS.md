@@ -12603,3 +12603,26 @@ Update:
   all-variable `ring_nf` proof.  The next smallest node is to emit the primary
   `k=11` D/R rational LDL data and prove the 529 entry identities through the
   matrix-level receiver.
+
+## Synthesis (2026-05-25, OK) — `Step32F_PrimaryK11LDLCert`
+
+- Target: close the primary `k=11` D/R penalty lower bounds with exact rational
+  LDL/SOS data, not numerical SPD evidence.
+- Added a `Rat` mirror for payload matrices and penalty parameters so generated
+  entry identities can be checked by `native_decide` over exact rational data
+  and then cast to `Real`.
+- Added `ratWeightedSquareMatrix` plus
+  `penalty_lower_bound_of_ratMatrixWeightedSquare_identity`, a small receiver
+  that turns exact rational weighted-square matrix identities into the existing
+  real Euclidean lower-bound theorem.
+- Added `scripts/q3_psdpd_step32f_primary_ldl_cert.py`, which reads the active
+  Step32F payload, computes exact no-pivot LDL decompositions for the primary
+  `k=11` D/R penalized matrices, checks positive pivots and exact
+  reconstruction, and emits Lean data.
+- Added `PSD_CenteredCoeffPenaltyLDLImport.lean`, closing
+  `primaryK11DLowerBound_ldl`, `primaryK11RLowerBound_ldl`,
+  `primaryK11PenaltyLowerBoundCert_ldl`, and `primaryK11FinitePenaltyCert_ldl`.
+- This closes the primary active block penalty certificate.  The next smallest
+  node is the same exact rational LDL path for the control `k=9` D/R block,
+  followed by the active wrapper consuming both primary and control
+  `FinitePenaltyCert` values.

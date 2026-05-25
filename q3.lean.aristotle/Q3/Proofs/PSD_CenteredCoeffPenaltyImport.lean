@@ -22,16 +22,29 @@ close the named `DLowerBound` and `RLowerBound` propositions below.
 -/
 
 /-- Step 18 penalty parameters for `psdpd_L3_k11_ell030_delta025_theta1e4`. -/
-def primaryK11TauD : Real := ((25059361681363677 : Real) / 50000000000000)
-def primaryK11TauR : Real := ((7924465962305587 : Real) / 500000000000)
-def primaryK11DFloor : Real := ((1528574356267451 : Real) / 12500000000000000000)
-def primaryK11RFloor : Real := ((13569220780301769 : Real) / 100000000000000000)
+def primaryK11TauDRat : Rat := ((25059361681363677 : Rat) / 50000000000000)
+def primaryK11TauRRat : Rat := ((7924465962305587 : Rat) / 500000000000)
+def primaryK11DFloorRat : Rat := ((1528574356267451 : Rat) / 12500000000000000000)
+def primaryK11RFloorRat : Rat := ((13569220780301769 : Rat) / 100000000000000000)
+
+def primaryK11TauD : Real := (primaryK11TauDRat : Real)
+def primaryK11TauR : Real := (primaryK11TauRRat : Real)
+def primaryK11DFloor : Real := (primaryK11DFloorRat : Real)
+def primaryK11RFloor : Real := (primaryK11RFloorRat : Real)
+
+theorem primaryK11DFloorRat_pos : 0 < primaryK11DFloorRat := by
+  native_decide
+
+theorem primaryK11RFloorRat_pos : 0 < primaryK11RFloorRat := by
+  native_decide
 
 theorem primaryK11DFloor_pos : 0 < primaryK11DFloor := by
-  norm_num [primaryK11DFloor]
+  change 0 < (primaryK11DFloorRat : Real)
+  exact_mod_cast primaryK11DFloorRat_pos
 
 theorem primaryK11RFloor_pos : 0 < primaryK11RFloor := by
-  norm_num [primaryK11RFloor]
+  change 0 < (primaryK11RFloorRat : Real)
+  exact_mod_cast primaryK11RFloorRat_pos
 
 /-- Remaining checked lower-bound target for `psdpd_L3_k11_ell030_delta025_theta1e4` / D. -/
 def primaryK11DLowerBound : Prop :=
@@ -137,16 +150,29 @@ def primaryK11FinitePenaltyCert_of_bounds
     (primaryK11PenaltyLowerBoundCert_of_bounds hD hR)
 
 /-- Step 18 penalty parameters for `psdpd_L3_k9_ell030_delta025_theta1e5`. -/
-def controlK9TauD : Real := ((100 : Real))
-def controlK9TauR : Real := ((100000 : Real))
-def controlK9DFloor : Real := ((6318461466108783 : Real) / 500000000000000000000)
-def controlK9RFloor : Real := ((19590641960201293 : Real) / 10000000000000000000)
+def controlK9TauDRat : Rat := ((100 : Rat))
+def controlK9TauRRat : Rat := ((100000 : Rat))
+def controlK9DFloorRat : Rat := ((6318461466108783 : Rat) / 500000000000000000000)
+def controlK9RFloorRat : Rat := ((19590641960201293 : Rat) / 10000000000000000000)
+
+def controlK9TauD : Real := (controlK9TauDRat : Real)
+def controlK9TauR : Real := (controlK9TauRRat : Real)
+def controlK9DFloor : Real := (controlK9DFloorRat : Real)
+def controlK9RFloor : Real := (controlK9RFloorRat : Real)
+
+theorem controlK9DFloorRat_pos : 0 < controlK9DFloorRat := by
+  native_decide
+
+theorem controlK9RFloorRat_pos : 0 < controlK9RFloorRat := by
+  native_decide
 
 theorem controlK9DFloor_pos : 0 < controlK9DFloor := by
-  norm_num [controlK9DFloor]
+  change 0 < (controlK9DFloorRat : Real)
+  exact_mod_cast controlK9DFloorRat_pos
 
 theorem controlK9RFloor_pos : 0 < controlK9RFloor := by
-  norm_num [controlK9RFloor]
+  change 0 < (controlK9RFloorRat : Real)
+  exact_mod_cast controlK9RFloorRat_pos
 
 /-- Remaining checked lower-bound target for `psdpd_L3_k9_ell030_delta025_theta1e5` / D. -/
 def controlK9DLowerBound : Prop :=

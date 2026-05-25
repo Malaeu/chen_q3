@@ -4,7 +4,7 @@ Generate Lean parameter targets for the Step 32F finite penalty lower bounds.
 
 This is intentionally not a positivity prover.  It reads the accepted Step 18
 penalty-guard outputs, imports the exact `tau` and `safe_lower` values as
-rational Lean constants, and emits narrow theorem targets:
+`Rat` constants with real casts, and emits narrow theorem targets:
 
   D lower bound + R lower bound
   -> FinitePenaltyLowerBoundCert
@@ -103,8 +103,8 @@ def decimal_to_lean(raw: str) -> str:
     num //= g
     den //= g
     if den == 1:
-        return f"(({num} : Real))"
-    return f"(({num} : Real) / {den})"
+        return f"(({num} : Rat))"
+    return f"(({num} : Rat) / {den})"
 
 
 def block_prefix(block_id: str) -> str:
@@ -169,16 +169,29 @@ def emit_block(block: PenaltyBlock) -> str:
     p = block.prefix
     lines: list[str] = []
     lines.append(f"/-- Step 18 penalty parameters for `{block.block_id}`. -/")
-    lines.append(f"def {p}TauD : Real := {decimal_to_lean(block.d_tau)}")
-    lines.append(f"def {p}TauR : Real := {decimal_to_lean(block.r_tau)}")
-    lines.append(f"def {p}DFloor : Real := {decimal_to_lean(block.d_floor)}")
-    lines.append(f"def {p}RFloor : Real := {decimal_to_lean(block.r_floor)}")
+    lines.append(f"def {p}TauDRat : Rat := {decimal_to_lean(block.d_tau)}")
+    lines.append(f"def {p}TauRRat : Rat := {decimal_to_lean(block.r_tau)}")
+    lines.append(f"def {p}DFloorRat : Rat := {decimal_to_lean(block.d_floor)}")
+    lines.append(f"def {p}RFloorRat : Rat := {decimal_to_lean(block.r_floor)}")
+    lines.append("")
+    lines.append(f"def {p}TauD : Real := ({p}TauDRat : Real)")
+    lines.append(f"def {p}TauR : Real := ({p}TauRRat : Real)")
+    lines.append(f"def {p}DFloor : Real := ({p}DFloorRat : Real)")
+    lines.append(f"def {p}RFloor : Real := ({p}RFloorRat : Real)")
+    lines.append("")
+    lines.append(f"theorem {p}DFloorRat_pos : 0 < {p}DFloorRat := by")
+    lines.append("  native_decide")
+    lines.append("")
+    lines.append(f"theorem {p}RFloorRat_pos : 0 < {p}RFloorRat := by")
+    lines.append("  native_decide")
     lines.append("")
     lines.append(f"theorem {p}DFloor_pos : 0 < {p}DFloor := by")
-    lines.append(f"  norm_num [{p}DFloor]")
+    lines.append(f"  change 0 < ({p}DFloorRat : Real)")
+    lines.append(f"  exact_mod_cast {p}DFloorRat_pos")
     lines.append("")
     lines.append(f"theorem {p}RFloor_pos : 0 < {p}RFloor := by")
-    lines.append(f"  norm_num [{p}RFloor]")
+    lines.append(f"  change 0 < ({p}RFloorRat : Real)")
+    lines.append(f"  exact_mod_cast {p}RFloorRat_pos")
     lines.append("")
     lines.append(f"/-- Remaining checked lower-bound target for `{block.block_id}` / D. -/")
     lines.append(f"def {p}DLowerBound : Prop :=")

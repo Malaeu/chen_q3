@@ -50,6 +50,8 @@ Checked midpoint payload data for the active Step 32F coefficient blocks.
 This generated file is a deliberately narrow import layer:
 
 * it records the active CSV midpoint/radius artifacts as exact rational data;
+* it keeps a `Rat` mirror of every generated scalar/matrix entry so later
+  LDL/SOS certificates can be checked by rational computation;
 * it defines midpoint `C`, `R`, and `D` matrices from `A`, `P`, `P0`;
 * it proves the algebraic split `C = D + theta R` at quadratic-form level.
 
@@ -65,8 +67,16 @@ def matrixSub {rho sigma : Type*} (A B : Matrix rho sigma Real) :
     Matrix rho sigma Real :=
   fun i j => A i j - B i j
 
+def matrixSubRat {rho sigma : Type*} (A B : Matrix rho sigma Rat) :
+    Matrix rho sigma Rat :=
+  fun i j => A i j - B i j
+
 def matrixScaledSub {rho sigma : Type*} (A B : Matrix rho sigma Real)
     (c : Real) : Matrix rho sigma Real :=
+  fun i j => A i j - c * B i j
+
+def matrixScaledSubRat {rho sigma : Type*} (A B : Matrix rho sigma Rat)
+    (c : Rat) : Matrix rho sigma Rat :=
   fun i j => A i j - c * B i j
 
 theorem quadForm_pointwise_add {iota : Type*} [Fintype iota]
@@ -194,8 +204,8 @@ def decimal_to_lean(raw: str) -> str:
     num //= g
     den //= g
     if den == 1:
-        return f"(({num} : Real))"
-    return f"(({num} : Real) / {den})"
+        return f"(({num} : Rat))"
+    return f"(({num} : Rat) / {den})"
 
 
 def load_matrix_csv(path: Path, value_column: str) -> dict[str, dict[tuple[int, int], str]]:
@@ -257,17 +267,27 @@ def lean_matrix_def(
     *,
     boundary: bool = False,
 ) -> str:
+    fn_rat = f"{prefix}{matrix_name}EntryRat"
     fn = f"{prefix}{matrix_name}Entry"
-    rows = [f"def {fn} : Nat -> Nat -> Real"]
+    rows = [f"def {fn_rat} : Nat -> Nat -> Rat"]
     for (i, j), raw in sorted(values.items()):
         rows.append(f"  | {i}, {j} => {decimal_to_lean(raw)}")
     rows.append("  | _, _ => 0")
     rows.append("")
+    rows.append(f"def {fn} (i j : Nat) : Real :=")
+    rows.append(f"  ({fn_rat} i j : Real)")
+    rows.append("")
     if boundary:
+        rows.append(f"def {prefix}{matrix_name}Rat : Matrix BoundaryIndex2 CoeffIndex23 Rat :=")
+        rows.append(f"  fun i j => {fn_rat} i.val j.val")
+        rows.append("")
         rows.append(f"def {prefix}{matrix_name} : Matrix BoundaryIndex2 CoeffIndex23 Real :=")
     else:
+        rows.append(f"def {prefix}{matrix_name}Rat : Matrix CoeffIndex23 CoeffIndex23 Rat :=")
+        rows.append(f"  fun i j => {fn_rat} i.val j.val")
+        rows.append("")
         rows.append(f"def {prefix}{matrix_name} : Matrix CoeffIndex23 CoeffIndex23 Real :=")
-    rows.append(f"  fun i j => {fn} i.val j.val")
+    rows.append(f"  fun i j => ({prefix}{matrix_name}Rat i j : Real)")
     rows.append("")
     return "\n".join(rows)
 
@@ -278,32 +298,54 @@ def emit_block(block: Block) -> str:
     p = block.prefix
     lines: list[str] = []
     lines.append(f"/-- Generated exact midpoint payload for `{block.block_id}`. -/")
-    lines.append(f"def {p}Ell : Real := {decimal_to_lean(block.ell)}")
-    lines.append(f"def {p}Kappa : Real := {decimal_to_lean(block.kappa)}")
-    lines.append(f"def {p}Theta : Real := {decimal_to_lean(block.theta)}")
+    lines.append(f"def {p}EllRat : Rat := {decimal_to_lean(block.ell)}")
+    lines.append(f"def {p}KappaRat : Rat := {decimal_to_lean(block.kappa)}")
+    lines.append(f"def {p}ThetaRat : Rat := {decimal_to_lean(block.theta)}")
+    lines.append("")
+    lines.append(f"def {p}Ell : Real := ({p}EllRat : Real)")
+    lines.append(f"def {p}Kappa : Real := ({p}KappaRat : Real)")
+    lines.append(f"def {p}Theta : Real := ({p}ThetaRat : Real)")
     lines.append("")
     for name in EXPECTED_MATRICES:
         lines.append(lean_matrix_def(p, name, mid[name], boundary=(name == "Q")))
     for name in EXPECTED_MATRICES:
         rad_name = f"{name}Radius" if name != "Q" else "QRadius"
         lines.append(lean_matrix_def(p, rad_name, rad[name], boundary=(name == "Q")))
+    lines.append(f"def {p}CRat : Matrix CoeffIndex23 CoeffIndex23 Rat :=")
+    lines.append(f"  matrixSubRat {p}ARat {p}PRat")
+    lines.append("")
     lines.append(f"def {p}C : Matrix CoeffIndex23 CoeffIndex23 Real :=")
-    lines.append(f"  matrixSub {p}A {p}P")
+    lines.append(f"  fun i j => ({p}CRat i j : Real)")
+    lines.append("")
+    lines.append(f"def {p}RRat : Matrix CoeffIndex23 CoeffIndex23 Rat :=")
+    lines.append(f"  matrixScaledSubRat {p}ARat {p}P0Rat {p}KappaRat")
     lines.append("")
     lines.append(f"def {p}R : Matrix CoeffIndex23 CoeffIndex23 Real :=")
-    lines.append(f"  matrixScaledSub {p}A {p}P0 {p}Kappa")
+    lines.append(f"  fun i j => ({p}RRat i j : Real)")
+    lines.append("")
+    lines.append(f"def {p}DRat : Matrix CoeffIndex23 CoeffIndex23 Rat :=")
+    lines.append(f"  matrixScaledSubRat {p}CRat {p}RRat {p}ThetaRat")
     lines.append("")
     lines.append(f"def {p}D : Matrix CoeffIndex23 CoeffIndex23 Real :=")
-    lines.append(f"  matrixScaledSub {p}C {p}R {p}Theta")
+    lines.append(f"  fun i j => ({p}DRat i j : Real)")
+    lines.append("")
+    lines.append(f"theorem {p}ThetaRat_nonneg : 0 <= {p}ThetaRat := by")
+    lines.append("  native_decide")
     lines.append("")
     lines.append(f"theorem {p}Theta_nonneg : 0 <= {p}Theta := by")
-    lines.append(f"  norm_num [{p}Theta]")
+    lines.append(f"  change 0 <= ({p}ThetaRat : Real)")
+    lines.append(f"  exact_mod_cast {p}ThetaRat_nonneg")
     lines.append("")
     lines.append(f"theorem {p}Split :")
     lines.append("    forall v : CoeffIndex23 -> Real,")
     lines.append(f"      Q3.Proofs.quadForm {p}C v =")
     lines.append(f"        Q3.Proofs.quadForm {p}D v +")
     lines.append(f"          {p}Theta * Q3.Proofs.quadForm {p}R v := by")
+    lines.append(f"  have hD : {p}D = matrixScaledSub {p}C {p}R {p}Theta := by")
+    lines.append("    funext i j")
+    lines.append(f"    simp [{p}D, {p}DRat, {p}C, {p}CRat, {p}R, {p}RRat, {p}Theta,")
+    lines.append(f"      {p}ThetaRat, matrixScaledSub, matrixScaledSubRat]")
+    lines.append(f"  rw [hD]")
     lines.append(f"  exact quadForm_scaled_sub_split {p}C {p}R {p}Theta")
     lines.append("")
     lines.append(f"def {p}PayloadData : CenteredCoeffPayloadData where")
