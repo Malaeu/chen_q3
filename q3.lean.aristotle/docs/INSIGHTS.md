@@ -12582,3 +12582,24 @@ Update:
 - This does not prove the active block SPD/lower bounds yet.  The next smallest
   node is to generate and verify the primary `k=11` D/R weighted-square
   identities, then repeat for the control `k=9` block.
+
+## Synthesis (2026-05-25, OK) — `Step32F_WeightedSquareMatrixReceiver`
+
+- Target: make the future 23-by-23 LDL/SOS proof generator check matrix
+  identities instead of one giant expanded polynomial identity in all
+  coefficient variables.
+- Added `weightedSquareMatrix`, `boundaryEnergy_eq_quadForm_gram`,
+  `weightedSquareSum_eq_quadForm_weightedSquareMatrix`,
+  `quadForm_pointwise_smul`, `quadForm_pointwise_add`,
+  `quadForm_diagonal_floor`, and `quadForm_pointwise_congr` to
+  `PSD_PenaltyCertificate.lean`.
+- Added `penalty_lower_bound_of_weightedSquareMatrix_identity`, which turns the
+  pointwise matrix identity
+  `M_ij + tau * (Q^T Q)_ij = floor * I_ij + weightedSquareMatrix_ij`
+  plus nonnegative weights into the existing Euclidean lower-bound target.
+- Regenerated `PSD_CenteredCoeffPenaltyImport.lean` with per-block
+  `_of_weightedSquareMatrix` adapters for primary `k=11` and control `k=9`.
+- This keeps the proof path kernel-checkable while avoiding a brittle
+  all-variable `ring_nf` proof.  The next smallest node is to emit the primary
+  `k=11` D/R rational LDL data and prove the 529 entry identities through the
+  matrix-level receiver.

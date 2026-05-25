@@ -1,5 +1,6 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Data.Matrix.Basic
+import Mathlib.Tactic
 
 set_option linter.mathlibStandardSet false
 
@@ -69,6 +70,11 @@ def weightedSquareSum {σ ι : Type*} [Fintype σ] [Fintype ι]
     (w : σ → ℝ) (L : σ → ι → ℝ) (v : ι → ℝ) : ℝ :=
   ∑ s, w s * (∑ i, L s i * v i) ^ 2
 
+/-- Matrix represented by a weighted Gram sum of linear rows. -/
+def weightedSquareMatrix {σ ι : Type*} [Fintype σ]
+    (w : σ → ℝ) (L : σ → ι → ℝ) : Matrix ι ι ℝ :=
+  fun i j => ∑ s, w s * L s i * L s j
+
 /-- A weighted sum of linear squares is nonnegative when all weights are
 nonnegative. -/
 lemma weightedSquareSum_nonneg {σ ι : Type*} [Fintype σ] [Fintype ι]
@@ -98,6 +104,134 @@ theorem penalty_lower_bound_of_weightedSquareSum_identity
   intro v
   rw [hidentity v]
   exact le_add_of_nonneg_right (weightedSquareSum_nonneg w L hw v)
+
+/-- The boundary residual energy is the quadratic form of the Gram matrix
+`Q^T Q`, written with explicit finite sums. -/
+lemma boundaryEnergy_eq_quadForm_gram {ρ ι : Type*} [Fintype ρ] [Fintype ι]
+    (Q : Matrix ρ ι ℝ) (v : ι → ℝ) :
+    boundaryEnergy Q v =
+      quadForm (fun i j => ∑ r, Q r i * Q r j) v := by
+  unfold boundaryEnergy quadForm
+  simp_rw [pow_two]
+  simp_rw [Finset.sum_mul]
+  simp_rw [Finset.mul_sum]
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl
+  intro i _
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl
+  intro j _
+  rw [Finset.sum_mul]
+  apply Finset.sum_congr rfl
+  intro r _
+  ring
+
+/-- Weighted square sums are exactly the quadratic form of their weighted Gram
+matrix. -/
+lemma weightedSquareSum_eq_quadForm_weightedSquareMatrix {σ ι : Type*}
+    [Fintype σ] [Fintype ι]
+    (w : σ → ℝ) (L : σ → ι → ℝ) (v : ι → ℝ) :
+    weightedSquareSum w L v = quadForm (weightedSquareMatrix w L) v := by
+  unfold weightedSquareSum quadForm weightedSquareMatrix
+  simp_rw [pow_two]
+  simp_rw [Finset.sum_mul]
+  simp_rw [Finset.mul_sum]
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl
+  intro i _
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl
+  intro j _
+  rw [Finset.sum_mul]
+  apply Finset.sum_congr rfl
+  intro s _
+  ring
+
+/-- Pointwise scalar multiplication pulls out of the explicit quadratic form. -/
+lemma quadForm_pointwise_smul {ι : Type*} [Fintype ι]
+    (c : ℝ) (M : Matrix ι ι ℝ) (v : ι → ℝ) :
+    quadForm (fun i j => c * M i j) v = c * quadForm M v := by
+  unfold quadForm
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i _
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro j _
+  ring
+
+/-- Pointwise addition distributes through the explicit quadratic form. -/
+lemma quadForm_pointwise_add {ι : Type*} [Fintype ι]
+    (M N : Matrix ι ι ℝ) (v : ι → ℝ) :
+    quadForm (fun i j => M i j + N i j) v =
+      quadForm M v + quadForm N v := by
+  unfold quadForm
+  simp_rw [mul_add]
+  simp_rw [add_mul]
+  simp_rw [Finset.sum_add_distrib]
+
+/-- The diagonal matrix with constant `floor` has quadratic form
+`floor * euclideanEnergy`. -/
+lemma quadForm_diagonal_floor {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (floor : ℝ) (v : ι → ℝ) :
+    quadForm (fun i j => floor * if i = j then (1 : ℝ) else 0) v =
+      floor * euclideanEnergy v := by
+  unfold quadForm euclideanEnergy
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i _
+  rw [Finset.sum_eq_single i]
+  · simp [pow_two]
+    ring
+  · intro j _ hji
+    have hij : i ≠ j := fun h => hji h.symm
+    simp [hij]
+  · intro hi
+    exact False.elim (hi (Finset.mem_univ i))
+
+/-- Pointwise-equal matrices have equal explicit quadratic forms. -/
+lemma quadForm_pointwise_congr {ι : Type*} [Fintype ι]
+    {M N : Matrix ι ι ℝ}
+    (h : ∀ i j, M i j = N i j) (v : ι → ℝ) :
+    quadForm M v = quadForm N v := by
+  unfold quadForm
+  apply Finset.sum_congr rfl
+  intro i _
+  apply Finset.sum_congr rfl
+  intro j _
+  rw [h i j]
+
+/-- Convert a matrix-level weighted-Gram identity into a full-space Euclidean
+penalty lower bound.
+
+This is the preferred receiver for generated 23-by-23 rational SOS/LDL
+certificates: the generator proves one pointwise matrix identity, not a giant
+expanded polynomial identity in all coefficient variables. -/
+theorem penalty_lower_bound_of_weightedSquareMatrix_identity
+    {ρ ι σ : Type*} [Fintype ρ] [Fintype ι] [Fintype σ] [DecidableEq ι]
+    (M : Matrix ι ι ℝ) (Q : Matrix ρ ι ℝ) (tau floor : ℝ)
+    (w : σ → ℝ) (L : σ → ι → ℝ)
+    (hw : ∀ s, 0 ≤ w s)
+    (hidentity : ∀ i j,
+      M i j + tau * (∑ r, Q r i * Q r j) =
+        floor * (if i = j then (1 : ℝ) else 0) + weightedSquareMatrix w L i j) :
+    ∀ v : ι → ℝ,
+      floor * euclideanEnergy v ≤ penaltyForm M Q tau v := by
+  apply penalty_lower_bound_of_weightedSquareSum_identity M Q tau floor w L hw
+  intro v
+  unfold penaltyForm
+  rw [boundaryEnergy_eq_quadForm_gram]
+  rw [← quadForm_pointwise_smul]
+  rw [← quadForm_pointwise_add]
+  have hq := quadForm_pointwise_congr
+    (M := fun i j => M i j + tau * (∑ r, Q r i * Q r j))
+    (N := fun i j =>
+      floor * (if i = j then (1 : ℝ) else 0) + weightedSquareMatrix w L i j)
+    hidentity v
+  rw [hq]
+  rw [quadForm_pointwise_add]
+  rw [quadForm_diagonal_floor]
+  rw [weightedSquareSum_eq_quadForm_weightedSquareMatrix]
 
 /-- The boundary residual energy vanishes on the boundary-null subspace. -/
 lemma boundaryEnergy_eq_zero_of_boundaryNull {ρ ι : Type*}
