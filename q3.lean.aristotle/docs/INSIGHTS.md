@@ -13416,7 +13416,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.log_envelope_capture_assembly`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_envelope_capture_assembly`
 
 - Target: lift the full finite-count threshold capture assembly to the same
   log-envelope shape as the new mirror wrapper.
@@ -13433,6 +13433,16 @@ Update:
   `po3_endpoint_row_log_mass_mirror_control_of_finite_count_log_envelope` for
   the mirror side, then reuse the existing omitted-mass and row-sup capture
   consumers.
+- Added
+  `po3_capture_error_tends_to_zero_of_finite_count_log_envelope_threshold_mirror`.
+- Result: the end-to-end normalized capture consumer now accepts the expected
+  analytic log-envelope shape directly:
+  `eta <= etaBound`, `mirrorCountBound <= mirrorLogBound`, and
+  `etaBound * mirrorLogBound -> 0`, plus the already explicit threshold,
+  far-tail, row-factor, and stable-conditioning inputs.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.threshold_omitted_mass`
 
