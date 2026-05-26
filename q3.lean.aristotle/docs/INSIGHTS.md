@@ -13117,7 +13117,7 @@ Update:
   `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
   pass.
 
-## Synthesis (2026-05-26, in progress) — `Step32K_AnalyticP0Receiver`
+## Result (2026-05-26) — `Step32K_AnalyticP0Receiver`
 
 - Target: remove the artificial free `P0a` object left by
   `Step32J_BaseMatrixHboxReceiver` and replace it by the actual analytic
@@ -13137,6 +13137,15 @@ Update:
 - Important boundary: this step should not fake the numerical hbox theorem.
   The honest output is an analytic `P0` matrix plus primary/control wrappers
   whose remaining `hP0` premise is exactly the Step21 entry hbox.
-- Plan: add a small Lean import defining the continuous `P0` kernel/profile,
-  instantiate primary/control `AnalyticP0`, and call the Step32J base-hbox
-  wrappers with that concrete analytic matrix.
+- Added `Q3/Proofs/PSD_CenteredCoeffAnalyticP0Import.lean`.
+- The file defines `centeredBSplineP0KernelProfile`,
+  `centeredBSplineP0KernelMatrix`, `primaryK11AnalyticP0`, and
+  `controlK9AnalyticP0`.
+- It exposes `primaryK11CertifiedCoeffBlock_of_analyticBaseMatrixHboxes` and
+  `controlK9CertifiedCoeffBlock_of_analyticBaseMatrixHboxes`; the only
+  remaining `P0` premise is now the real Step21 hbox against the imported
+  midpoint/radius payload, not a free matrix parameter.
+- Verification: direct Lean, `lake build
+  Q3.Proofs.PSD_CenteredCoeffAnalyticP0Import`, `lake build Q3.Main`,
+  `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
+  pass.
