@@ -12985,3 +12985,35 @@ Update:
 - This closes the false-payload blocker. The next honest proof lock is still
   the generated Lean proof of the finite Q-row hboxes against the repaired
   `primaryK11QRadius` and `controlK9QRadius`.
+
+## Synthesis (2026-05-26, OK) — `Step32G_QRowHboxLeanImport`
+
+- Target: close the finite boundary-row hbox facts
+  `matrixEntrywiseAbsLe primaryK11AnalyticQ primaryK11Q primaryK11QRadius`
+  and the control analogue.
+- Local `q3_docs` search did not find a dedicated Step32F Q-row import, but it
+  pointed back to the generated-certificate pattern and the need for theorem
+  producing interval certificates rather than runtime checker trust.
+- Workspace source has the exact reusable engine in
+  `Q3/Proofs/PrimeCert/IntervalLemmas.lean`: `Real.exp_bound`/
+  `exp_eq_pow_div_nat` for upper/lower Taylor intervals and
+  `Real.sum_le_exp_of_nonneg` for lower bounds.
+- External mathlib check confirms `Real.exp_bound` gives an absolute Taylor
+  remainder for real `exp` when `|x| <= 1`; splitting the active exponents as
+  `exp(x) = exp(x/2)^2` keeps all centers inside that range.
+- Added `scripts/q3_psdpd_step32g_qrow_hbox_lean.py`; it reads the active
+  Step22 Q midpoint/radius CSVs, checks primary/control Q payload equality,
+  and generates theorem-producing Lean certificates.
+- Added `Q3/Proofs/PSD_CenteredCoeffQRowImport.lean` with 46 scalar rational
+  Taylor certificates and the closed hbox facts
+  `CenteredCoeffQRowImport.primaryK11QRadius_hbox` and
+  `CenteredCoeffQRowImport.controlK9QRadius_hbox`.
+- `Q3/Proofs/PSD_CenteredCoeffCertifiedBlockImport.lean` now exposes
+  `primaryK11CertifiedCoeffBlock_of_importedQRadius_hbox` and
+  `controlK9CertifiedCoeffBlock_of_importedQRadius_hbox`, so the explicit
+  Q-row hbox premise is no longer part of the next handoff.
+- Verification: direct Lean checks for the new/importing files, `lake build
+  Q3.Proofs.PSD_CenteredCoeffCertifiedBlockImport`, `lake build Q3.Main`,
+  `scripts/check_axioms.sh`, `git diff --check`, Python compile, and targeted
+  no-hole scan all pass. The remaining proof locks are Gram-radius dominance
+  and the base D/R matrix hboxes.
