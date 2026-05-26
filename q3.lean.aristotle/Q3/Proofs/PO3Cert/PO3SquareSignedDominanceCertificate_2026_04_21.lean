@@ -411,6 +411,40 @@ theorem po3_threshold_omitted_mass_row_relative_small_of_finite_count
     po3_row_relative_small_of_le_product_scale
       hscale_nonneg hmass hdeltaLog
 
+/-- Threshold-exhaustion omitted-mass bridge fed by a larger log/count envelope.
+
+This is the same finite-count consumer as
+`po3_threshold_omitted_mass_row_relative_small_of_finite_count`, but with the
+analytic estimates supplied in the more stable form
+`deltaBound_k * logBound_k -> 0`, `delta_k <= deltaBound_k`, and
+`countBound_k <= logBound_k`. -/
+theorem po3_threshold_omitted_mass_row_relative_small_of_finite_count_log_envelope
+    {ι : ℕ → Type*} [∀ k, Fintype (ι k)]
+    (rowMass : ∀ k, ι k → ℝ)
+    {omittedAMass delta deltaBound countBound logBound scale : ℕ → ℝ}
+    (hscale_nonneg : ∀ k, 0 ≤ scale k)
+    (hdelta_nonneg : ∀ k, 0 ≤ delta k)
+    (hlogBound_nonneg : ∀ k, 0 ≤ logBound k)
+    (hdelta_le : ∀ k, delta k ≤ deltaBound k)
+    (hcount_le : ∀ k, countBound k ≤ logBound k)
+    (hnear : ∀ k, omittedAMass k ≤ ∑ i, rowMass k i)
+    (hpoint : ∀ k i, rowMass k i ≤ delta k * scale k)
+    (hcount : ∀ k, (Fintype.card (ι k) : ℝ) ≤ countBound k)
+    (hdeltaBoundLog : po3_product_tends_to_zero deltaBound logBound) :
+    po3_row_relative_small omittedAMass scale := by
+  have hdeltaCount : po3_product_tends_to_zero delta countBound :=
+    po3_product_tends_to_zero_of_le_factors
+      hlogBound_nonneg hdelta_nonneg hdelta_le hcount_le hdeltaBoundLog
+  exact
+    po3_threshold_omitted_mass_row_relative_small_of_finite_count
+      rowMass
+      (hscale_nonneg := hscale_nonneg)
+      (hdelta_nonneg := hdelta_nonneg)
+      (hnear := hnear)
+      (hpoint := hpoint)
+      (hcount := hcount)
+      (hdeltaLog := hdeltaCount)
+
 /-- `EndpointRowLogMassMirrorControl`.
 
 If the mirror row is bounded by pointwise mirror suppression times the local

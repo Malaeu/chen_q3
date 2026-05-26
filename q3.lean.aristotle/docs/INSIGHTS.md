@@ -13477,7 +13477,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.threshold_omitted_log_envelope`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.threshold_omitted_log_envelope`
 
 - Target: give the threshold omitted-mass consumer the same log-envelope shape
   as the mirror side.
@@ -13492,6 +13492,17 @@ Update:
 - Plan: add
   `po3_threshold_omitted_mass_row_relative_small_of_finite_count_log_envelope`
   next to the existing finite-count omitted theorem.
+- Added
+  `po3_threshold_omitted_mass_row_relative_small_of_finite_count_log_envelope`.
+  It first uses `po3_product_tends_to_zero_of_le_factors` to derive
+  `delta_k * countBound_k -> 0`, then calls the existing finite-count omitted
+  bridge.
+- Result: the omitted-mass and mirror sides now both accept the same conservative
+  log-envelope pattern: pointwise bound, finite count envelope, larger log
+  envelope, and product smallness against that larger envelope.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
+  DB re-import pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 
