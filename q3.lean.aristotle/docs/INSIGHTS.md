@@ -13213,7 +13213,7 @@ Update:
   `lake build Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a
   targeted no-hole/native-decision scan pass.
 
-## Synthesis (2026-05-26, in progress) — `Step32N_CenteredBSplineRNonneg`
+## Synthesis (2026-05-26, OK) — `Step32N_CenteredBSplineRNonneg`
 
 - Target: expose nonnegativity of the normalized autocorrelation profile
   `centeredBSplineR`; this is a small reusable fact for future `P/P0`
@@ -13229,3 +13229,11 @@ Update:
   the Lean theorem.
 - Plan: add a small import module proving `centeredBSplineR_nonneg` without
   touching the large cardinal B-spline source file.
+- Added `Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean`.
+- The file proves `centeredBSplineR_nonneg` directly from
+  `centeredCardinalBSpline_nonneg` and `bsplineAutocorrNorm_pos`, preserving
+  the existing kernel/source split.
+- Verification: direct Lean, `lake build
+  Q3.Proofs.PSD_CenteredBSplineRBoundsImport`, `lake build Q3.Main`,
+  `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
+  pass.
