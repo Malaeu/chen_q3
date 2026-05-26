@@ -13448,3 +13448,25 @@ Update:
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
+
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.finite_count_capture_assembly`
+
+- Target: close the next bookkeeping lock by assembling the already Lean-checked
+  finite-count mirror estimate, threshold omitted-mass estimate, mirror
+  suppression transfer, row-sup norm correction, and stable-projection capture
+  into one end-to-end normalized capture consumer.
+- Local `q3_docs` search still points to the same boundary: this step belongs to
+  the `PO3-square.2d3` shifted row-error path after stable endpoint rows, not to
+  a new Arch/RKHS strategy.
+- The theorem must keep all analytic inputs explicit: finite local count,
+  pointwise row-mass bounds, `etaBound * countBound -> 0`,
+  `delta * logLoss -> 0`, far mirror smallness, row-factor norm control, and
+  bounded conditioning.
+- External checks are consistent with this boundary: finite-dimensional norm
+  equivalence only justifies an explicit row-factor, zero-counting gives a
+  logarithmic local count, and Vandermonde stability depends on separated or
+  certified nodes rather than automatic conditioning.
+- Plan: add a single composite Lean theorem in
+  `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  reusing the existing finite-count and row-sup consumers.  Do not assert the
+  analytic estimates themselves.
