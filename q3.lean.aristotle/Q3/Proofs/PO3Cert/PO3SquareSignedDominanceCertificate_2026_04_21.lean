@@ -289,6 +289,23 @@ theorem po3_product_tends_to_zero_of_le_right
     mul_le_mul_of_nonneg_left (hlog_le k) (heta_nonneg k)
   exact le_trans hle (hK k hk)
 
+/-- Product-smallness transfers through upper bounds on both factors. -/
+theorem po3_product_tends_to_zero_of_le_factors
+    {eta etaBound countBound logBound : ℕ → ℝ}
+    (hlogBound_nonneg : ∀ k, 0 ≤ logBound k)
+    (heta_nonneg : ∀ k, 0 ≤ eta k)
+    (heta_le : ∀ k, eta k ≤ etaBound k)
+    (hcount_le : ∀ k, countBound k ≤ logBound k)
+    (hbound : po3_product_tends_to_zero etaBound logBound) :
+    po3_product_tends_to_zero eta countBound := by
+  have hetaLog :
+      po3_product_tends_to_zero eta logBound :=
+    po3_product_tends_to_zero_of_le_left
+      hlogBound_nonneg heta_le hbound
+  exact
+    po3_product_tends_to_zero_of_le_right
+      heta_nonneg hcount_le hetaLog
+
 /-- If `row_k <= factorLeft_k * factorRight_k * scale_k` and the factor
 product tends to zero, then `row = o(scale)`. -/
 theorem po3_row_relative_small_of_le_product_scale
@@ -465,6 +482,44 @@ theorem po3_endpoint_row_log_mass_mirror_control_of_finite_count
   exact
     po3_endpoint_row_log_mass_mirror_control
       hscale_nonneg heta_nonneg hmirror hnear_log hetaCount hfar
+
+/-- Finite-count mirror control fed by a larger log/count envelope.
+
+This is the form used when the analytic proof first gives product-smallness
+for an upper suppression bound `etaBound` against a coarse log envelope, and
+only separately compares the finite-count bound to that envelope. -/
+theorem po3_endpoint_row_log_mass_mirror_control_of_finite_count_log_envelope
+    {ι : ℕ → Type*} [∀ k, Fintype (ι k)]
+    (rowMass : ∀ k, ι k → ℝ)
+    {mirrorAbs nearAMass farMirror eta etaBound pointBound countBound
+      logBound scale : ℕ → ℝ}
+    (hscale_nonneg : ∀ k, 0 ≤ scale k)
+    (heta_nonneg : ∀ k, 0 ≤ eta k)
+    (hlogBound_nonneg : ∀ k, 0 ≤ logBound k)
+    (heta_le : ∀ k, eta k ≤ etaBound k)
+    (hcount_le : ∀ k, countBound k ≤ logBound k)
+    (hmirror :
+      ∀ k, mirrorAbs k ≤ eta k * nearAMass k + farMirror k)
+    (hnear : ∀ k, nearAMass k ≤ ∑ i, rowMass k i)
+    (hpoint : ∀ k i, rowMass k i ≤ pointBound k * scale k)
+    (hcount : ∀ k, (Fintype.card (ι k) : ℝ) * pointBound k ≤ countBound k)
+    (hetaBoundLog : po3_product_tends_to_zero etaBound logBound)
+    (hfar : po3_row_relative_small farMirror scale) :
+    po3_row_relative_small mirrorAbs scale := by
+  have hetaCount : po3_product_tends_to_zero eta countBound :=
+    po3_product_tends_to_zero_of_le_factors
+      hlogBound_nonneg heta_nonneg heta_le hcount_le hetaBoundLog
+  exact
+    po3_endpoint_row_log_mass_mirror_control_of_finite_count
+      rowMass
+      hscale_nonneg
+      heta_nonneg
+      hmirror
+      hnear
+      hpoint
+      hcount
+      hetaCount
+      hfar
 
 /-- Sum of two row-small estimates against the same moving scale. -/
 theorem po3_row_relative_small_add

@@ -13383,7 +13383,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.finite_count_log_envelope_wrapper`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.finite_count_log_envelope_wrapper`
 
 - Target: expose the finite-count mirror consumer in the form the analytic
   log-loss route actually wants: prove the product against a larger log
@@ -13403,6 +13403,18 @@ Update:
   `po3_product_tends_to_zero_of_le_factors`, then add
   `po3_endpoint_row_log_mass_mirror_control_of_finite_count_log_envelope` as
   a wrapper around the existing finite-count mirror consumer.
+- Added `po3_product_tends_to_zero_of_le_factors`.
+- Added
+  `po3_endpoint_row_log_mass_mirror_control_of_finite_count_log_envelope`,
+  which feeds finite-count mirror control from the hypotheses
+  `eta <= etaBound`, `countBound <= logBound`, and
+  `etaBound * logBound -> 0`.
+- Result: the mirror side now has a Lean-checked wrapper in the same shape as
+  the expected analytic log-envelope inputs.  The actual zero-counting,
+  row-mass comparability, and far-tail estimates remain explicit hypotheses.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.threshold_omitted_mass`
 
