@@ -1,4 +1,5 @@
 import Q3.Proofs.PSD_CenteredCoeffDictionaryImport
+import Q3.Proofs.PSD_CenteredCoeffGramRadiusImport
 import Q3.Proofs.PSD_CenteredCoeffQRowImport
 import Q3.Proofs.PSD_CenteredCoeffRadiusFloorImport
 
@@ -13,6 +14,7 @@ namespace CenteredCoeffCertifiedBlockImport
 
 open CenteredCoeffPayloadImport
 open CenteredCoeffDictionaryImport
+open CenteredCoeffGramRadiusImport
 open CenteredCoeffQRowImport
 open CenteredCoeffRadiusFloorImport
 
@@ -379,6 +381,31 @@ noncomputable def primaryK11CertifiedCoeffBlock_of_importedQRadius_hbox
   primaryK11CertifiedCoeffBlock_of_importedQRadius
     R MRD MRR GR hD hR primaryK11QRadius_hbox hGRad hDRad hRRad
 
+/-- Primary active coefficient block with both the imported Q-row hbox and the
+canonical boundary-Gram radius fixed.  The remaining generated obligations are
+the base D/R hboxes and their dominance inside the imported penalty radii. -/
+noncomputable def primaryK11CertifiedCoeffBlock_of_importedBoundaryGramRadius
+    (R MRD MRR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hD : Q3.Proofs.matrixEntrywiseAbsLe
+      (primaryK11AnalyticDFromR R) primaryK11D MRD)
+    (hR : Q3.Proofs.matrixEntrywiseAbsLe R primaryK11R MRR)
+    (hDRad : ∀ i j,
+      MRD i j +
+          |CenteredCoeffPenaltyImport.primaryK11TauD| *
+            primaryK11BoundaryGramRadius i j ≤
+        primaryK11DPenaltyRadius i j)
+    (hRRad : ∀ i j,
+      MRR i j +
+          |CenteredCoeffPenaltyImport.primaryK11TauR| *
+            primaryK11BoundaryGramRadius i j ≤
+        primaryK11RPenaltyRadius i j) :
+    CertifiedCenteredBSplineCoeffBlock
+      11 primaryK11Ell primaryK11Center primaryK11PrimeWeight primaryK11PrimeShift
+      primaryK11_hk primaryK11_hell :=
+  primaryK11CertifiedCoeffBlock_of_importedQRadius_hbox
+    R MRD MRR primaryK11BoundaryGramRadius hD hR
+    primaryK11BoundaryGramRadius_dominance hDRad hRRad
+
 /-- Analytic control D matrix induced by a chosen analytic R matrix and the
 imported control penalty parameter. -/
 def controlK9AnalyticDFromR
@@ -726,6 +753,31 @@ noncomputable def controlK9CertifiedCoeffBlock_of_importedQRadius_hbox
       controlK9_hk controlK9_hell :=
   controlK9CertifiedCoeffBlock_of_importedQRadius
     R MRD MRR GR hD hR controlK9QRadius_hbox hGRad hDRad hRRad
+
+/-- Control active coefficient block with both the imported Q-row hbox and the
+canonical boundary-Gram radius fixed.  The remaining generated obligations are
+the base D/R hboxes and their dominance inside the imported penalty radii. -/
+noncomputable def controlK9CertifiedCoeffBlock_of_importedBoundaryGramRadius
+    (R MRD MRR : Matrix CoeffIndex23 CoeffIndex23 Real)
+    (hD : Q3.Proofs.matrixEntrywiseAbsLe
+      (controlK9AnalyticDFromR R) controlK9D MRD)
+    (hR : Q3.Proofs.matrixEntrywiseAbsLe R controlK9R MRR)
+    (hDRad : ∀ i j,
+      MRD i j +
+          |CenteredCoeffPenaltyImport.controlK9TauD| *
+            controlK9BoundaryGramRadius i j ≤
+        controlK9DPenaltyRadius i j)
+    (hRRad : ∀ i j,
+      MRR i j +
+          |CenteredCoeffPenaltyImport.controlK9TauR| *
+            controlK9BoundaryGramRadius i j ≤
+        controlK9RPenaltyRadius i j) :
+    CertifiedCenteredBSplineCoeffBlock
+      9 controlK9Ell controlK9Center controlK9PrimeWeight controlK9PrimeShift
+      controlK9_hk controlK9_hell :=
+  controlK9CertifiedCoeffBlock_of_importedQRadius_hbox
+    R MRD MRR controlK9BoundaryGramRadius hD hR
+    controlK9BoundaryGramRadius_dominance hDRad hRRad
 
 end CenteredCoeffCertifiedBlockImport
 end PSDpd

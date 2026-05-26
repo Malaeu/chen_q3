@@ -13017,3 +13017,28 @@ Update:
   `scripts/check_axioms.sh`, `git diff --check`, Python compile, and targeted
   no-hole scan all pass. The remaining proof locks are Gram-radius dominance
   and the base D/R matrix hboxes.
+
+## Synthesis (2026-05-26, OK) — `Step32H_BoundaryGramRadiusImport`
+
+- Target: remove the explicit Gram-radius dominance premise `hGRad` left by
+  the Step32G Q-row hbox handoff.
+- Local `q3_docs` search was noisy for this fresh generated front, but direct
+  source inspection identifies the exact receiver:
+  `Q3.Proofs.boundaryGramMatrix_entrywiseAbsLe_of_matrix`.
+- External mathlib search confirms this is the standard absolute-value /
+  finite-sum product-error pattern, not a new analytic estimate; the project
+  already has the specialized receiver, so the smallest honest Lean step is to
+  expose the canonical Gram-radius matrix itself.
+- Added `Q3/Proofs/PSD_CenteredCoeffGramRadiusImport.lean`; it defines
+  `primaryK11BoundaryGramRadius` and `controlK9BoundaryGramRadius` as the exact
+  finite sums over the imported Q-row midpoint/radius payloads.
+- Closed the dominance lemmas by `le_rfl` and exposed direct boundary-Gram
+  hbox facts from the already Lean-checked Q-row hboxes.
+- Added primary/control certified-block wrappers in
+  `PSD_CenteredCoeffCertifiedBlockImport.lean` that no longer take `hGRad`;
+  the remaining premises are the base D/R hboxes and the final D/R
+  penalty-radius dominance inequalities.
+- Verification: direct Lean for the new Gram-radius import and updated
+  certified-block import, `lake build Q3.Proofs.PSD_CenteredCoeffCertifiedBlockImport`,
+  `lake build Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and
+  targeted no-hole scan all pass.
