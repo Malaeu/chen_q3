@@ -4147,6 +4147,14 @@ noncomputable def centeredBSplineCoeffBasisExpansion
     classical
     simp [centeredBSplineCoeffBasis]
 
+/-- The synthesized real coefficient packet is exactly the finite real linear
+combination of the standard coefficient basis packets. -/
+theorem centeredBSplineCoeffBasisExpansion_synth_eq_sum
+    {ι : Type*} [Fintype ι] (v : ι → ℝ) :
+    (centeredBSplineCoeffBasisExpansion (ι := ι)).synth v =
+      ∑ i, v i • centeredBSplineCoeffBasis i :=
+  (centeredBSplineCoeffBasisExpansion (ι := ι)).synth_eq_sum v
+
 /-- A standard coefficient basis vector synthesizes exactly one translated
 centered B-spline packet. -/
 theorem centeredBSplineTranslatedPacketSum_coeffBasis
@@ -4580,6 +4588,28 @@ theorem centeredBSplineCoeffBoundaryPair_evalMinus_basis
   · intro hi
     exact (hi (Finset.mem_univ _)).elim
 
+/-- The plus boundary value of a synthesized coefficient packet is the plus
+exponential boundary row applied to the real coefficient vector. -/
+theorem centeredBSplineCoeffBoundaryPair_evalPlus_synth
+    {ι : Type*} [Fintype ι] (center : ι → ℝ) (v : ι → ℝ) :
+    (centeredBSplineCoeffBoundaryPair center).evalPlus
+        ((centeredBSplineCoeffBasisExpansion (ι := ι)).synth v) =
+      ∑ i, bsplineBoundaryPlusRow center i * v i := by
+  simp [centeredBSplineCoeffBoundaryPair,
+    centeredBSplineCoeffBoundaryPlusFunctional,
+    centeredBSplineCoeffBasisExpansion]
+
+/-- The minus boundary value of a synthesized coefficient packet is the minus
+exponential boundary row applied to the real coefficient vector. -/
+theorem centeredBSplineCoeffBoundaryPair_evalMinus_synth
+    {ι : Type*} [Fintype ι] (center : ι → ℝ) (v : ι → ℝ) :
+    (centeredBSplineCoeffBoundaryPair center).evalMinus
+        ((centeredBSplineCoeffBasisExpansion (ι := ι)).synth v) =
+      ∑ i, bsplineBoundaryMinusRow center i * v i := by
+  simp [centeredBSplineCoeffBoundaryPair,
+    centeredBSplineCoeffBoundaryMinusFunctional,
+    centeredBSplineCoeffBasisExpansion]
+
 /-
 Q3 obstruction wall:
 - wall: Matrix-identification / Step32F concrete contract assembly
@@ -4657,6 +4687,58 @@ theorem centeredBSplineCoeffAnalyticKernelContract_weil_ident
             k ell center weight shift hk hell).toFormulaContract.C v :=
   (centeredBSplineCoeffAnalyticKernelContract
     k ell center weight shift hk hell).weil_ident
+
+/-- The centered coefficient B-spline Weil form is the Arch-minus-Prime finite
+matrix quadratic form on synthesized packets. -/
+theorem centeredBSplineCoeffWeilForm_eq_matrixSub_quadForm
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) (v : ι → ℝ) :
+    (centeredBSplineCoeffAnalyticKernelContract
+      k ell center weight shift hk hell).weilForm
+        ((centeredBSplineCoeffBasisExpansion (ι := ι)).synth v) =
+      Q3.Proofs.quadForm
+        (matrixSub
+          (centeredBSplineArchPacketCoeffKernelData
+            k ell center hk hell).matrix
+          (centeredBSplineFinitePrimePacketCoeffKernelData
+            k ell center weight shift).matrix) v := by
+  simpa [centeredBSplineCoeffAnalyticKernelContract,
+    BSplineAnalyticKernelContract.toFormulaContract,
+    BSplineAnalyticKernelContract.toBasisFormulaContract,
+    BSplineBasisFormulaContract.toFormulaContract,
+    PacketKernelPairingData.toBilinearMatrixExpansion,
+    BSplineFormulaContract.C] using
+      centeredBSplineCoeffAnalyticKernelContract_weil_ident
+        k ell center weight shift hk hell v
+
+/-- The two finite boundary rows of the centered coefficient contract evaluate
+to the analytic plus/minus boundary pair on synthesized packets. -/
+theorem centeredBSplineBoundaryRows_identify_Q
+    {ι ν : Type*} [Fintype ι] [Fintype ν]
+    (k : ℕ) (ell : ℝ) (center : ι → ℝ) (weight shift : ν → ℝ)
+    (hk : 0 < k) (hell : 0 < ell) (v : ι → ℝ) :
+    ((∑ i,
+        (centeredBSplineCoeffAnalyticKernelContract
+          k ell center weight shift hk hell).toFormulaContract.boundaryRows.Q 0 i *
+          v i),
+      (∑ i,
+        (centeredBSplineCoeffAnalyticKernelContract
+          k ell center weight shift hk hell).toFormulaContract.boundaryRows.Q 1 i *
+          v i)) =
+    ((centeredBSplineCoeffBoundaryPair center).evalPlus
+        ((centeredBSplineCoeffBasisExpansion (ι := ι)).synth v),
+      (centeredBSplineCoeffBoundaryPair center).evalMinus
+        ((centeredBSplineCoeffBasisExpansion (ι := ι)).synth v)) := by
+  simp [centeredBSplineCoeffAnalyticKernelContract,
+    BSplineAnalyticKernelContract.toFormulaContract,
+    BSplineAnalyticKernelContract.toBasisFormulaContract,
+    BSplineBasisFormulaContract.toFormulaContract,
+    BSplineBasisFormulaContract.boundaryRows,
+    PacketBasisExpansion.toBoundaryRows,
+    BSplineBoundaryRows.Q,
+    centeredBSplineCoeffBoundaryPair_evalPlus_synth,
+    centeredBSplineCoeffBoundaryPair_evalMinus_synth]
 
 /-
 Q3 obstruction wall:

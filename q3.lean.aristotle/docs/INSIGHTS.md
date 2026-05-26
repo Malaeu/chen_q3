@@ -13973,3 +13973,33 @@ Update:
   algebraic translation step before the analytic future-slope/log-exp proof.
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, full `Q3.Main`,
   no-hole, axiom, DB, and diff checks pass.
+
+## Synthesis (2026-05-26, OK) — `Step32.centered_bspline_matrix_identification_bridge`
+
+- Target: close the next B-spline matrix-identification gate without touching
+  `Q3.Main`: expose the coefficient packet `h_v`, the analytic Weil form, and
+  the two boundary rows in directly citeable theorem shapes.
+- Local lookup: `q3_docs` search around `FiniteWeilMatrixModel`,
+  `CertifiedCenteredBSplineCoeffBlock`, `centeredBSplineCoeffAnalyticKernelContract`,
+  and boundary rows confirmed that the analytic receiver already exists; the
+  missing piece was a named bridge from the assembled contract to the concrete
+  `matrixSub A P` and `Qv` forms.
+- External sanity: de Boor/Schoenberg cardinal B-spline notes and standard
+  B-spline Gram-matrix documentation support the local architecture of
+  translated B-spline packet sums and finite Gram/kernel matrices, but no
+  external formula was imported as proof.
+- Added `centeredBSplineCoeffBasisExpansion_synth_eq_sum`,
+  `centeredBSplineCoeffBoundaryPair_evalPlus_synth`,
+  `centeredBSplineCoeffBoundaryPair_evalMinus_synth`,
+  `centeredBSplineCoeffWeilForm_eq_matrixSub_quadForm`, and
+  `centeredBSplineBoundaryRows_identify_Q`.
+- Result: the centered coefficient B-spline contract now states all three
+  requested bridge identities in Lean-facing form:
+  `h_v = sum_j v_j psi_j`,
+  `WeilForm(h_v) = v^T(A-P)v`, and
+  `Qv = (H_+(h_v), H_-(h_v))`.
+- Verification: `lake env lean Q3/Proofs/PSD_CenteredCardinalBSpline.lean`
+  passes, and no `sorry`, `exact?`, or `admit` occurs in the touched Lean file.
+- Next blocker: connect the imported primary/control interval payloads to
+  concrete `CertifiedCenteredBSplineCoeffBlock` instances so the new bridge
+  theorem can feed the finite positivity certificate without a manual wrapper.
