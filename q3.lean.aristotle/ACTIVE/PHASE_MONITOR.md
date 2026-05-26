@@ -385,6 +385,19 @@ Exact failure criterion:
   for the selected endpoint rows, or the recorded obstruction if the
   conditioning product cannot tend to zero.
 
+## Result (2026-05-26) — conditioning factor split for bounded-separated branch
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports
+  `po3_capture_error_tends_to_zero_of_stable_projection_row_sup_bounded_factors`;
+- the bounded-separated branch can now prove boundedness of `C_k` and
+  boundedness of the row norm-correction factor separately, then use
+  `po3_eventually_bounded_above_by_pos_mul` to recover the combined
+  `bounded (C_k * rowFactor_k)` hypothesis;
+- this keeps the remaining analytic work accurately split: stable Vandermonde
+  conditioning controls `C_k`, while bounded selected row count controls the
+  row-factor side.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

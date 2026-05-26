@@ -257,6 +257,28 @@ theorem po3_product_tends_to_zero_of_bounded_left
     rwa [mul_div_cancel₀ ε hBpos.ne'] at htmp
   exact le_of_lt (lt_of_le_of_lt hmul_le hBrow_lt)
 
+/-- Product of eventually bounded scalar sequences is eventually bounded when
+the right factor is nonnegative. -/
+theorem po3_eventually_bounded_above_by_pos_mul
+    {C D : ℕ → ℝ}
+    (hD_nonneg : ∀ k, 0 ≤ D k)
+    (hC : po3_eventually_bounded_above_by_pos C)
+    (hD : po3_eventually_bounded_above_by_pos D) :
+    po3_eventually_bounded_above_by_pos (fun k => C k * D k) := by
+  rcases hC with ⟨BC, hBCpos, KC, hKC⟩
+  rcases hD with ⟨BD, hBDpos, KD, hKD⟩
+  refine ⟨BC * BD, mul_pos hBCpos hBDpos, max KC KD, ?_⟩
+  intro k hk
+  have hkC : KC ≤ k := le_trans (le_max_left _ _) hk
+  have hkD : KD ≤ k := le_trans (le_max_right _ _) hk
+  have hCk : C k ≤ BC := hKC k hkC
+  have hDk : D k ≤ BD := hKD k hkD
+  calc
+    C k * D k ≤ BC * D k :=
+      mul_le_mul_of_nonneg_right hCk (hD_nonneg k)
+    _ ≤ BC * BD :=
+      mul_le_mul_of_nonneg_left hDk (le_of_lt hBCpos)
+
 /-- Product-smallness transfers through an upper bound on the left factor. -/
 theorem po3_product_tends_to_zero_of_le_left
     {eta etaBound logLoss : ℕ → ℝ}
@@ -784,6 +806,32 @@ theorem po3_capture_error_tends_to_zero_of_stable_projection_row_sup
       V Proj C q rowError hstable hrow
       (po3_conditioning_product_tends_to_zero_of_row_sup_bound
         hC_nonneg hrowNorm_bound hCfactor hrowSup_nonneg hrowSup)
+
+/-- Row-sup capture with separate boundedness inputs for the stable projection
+constant and the norm-correction factor. -/
+theorem po3_capture_error_tends_to_zero_of_stable_projection_row_sup_bounded_factors
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    (V : ℕ → E →L[ℂ] F) (Proj : ℕ → E →L[ℂ] E)
+    (C rowFactor rowSup : ℕ → ℝ) (q : ℕ → E) (rowError : ℕ → F)
+    (hstable : ∀ k x, ‖x - Proj k x‖ ≤ C k * ‖V k x‖)
+    (hrow : ∀ k, V k (q k) = rowError k)
+    (hC_nonneg : ∀ k, 0 ≤ C k)
+    (hrowNorm_bound : ∀ k, ‖rowError k‖ ≤ rowFactor k * rowSup k)
+    (hC_bound : po3_eventually_bounded_above_by_pos C)
+    (hrowFactor_nonneg : ∀ k, 0 ≤ rowFactor k)
+    (hrowFactor_bound : po3_eventually_bounded_above_by_pos rowFactor)
+    (hrowSup_nonneg : ∀ k, 0 ≤ rowSup k)
+    (hrowSup : po3_real_tends_to_zero rowSup) :
+    po3_real_tends_to_zero (fun k => ‖q k - Proj k (q k)‖) := by
+  exact
+    po3_capture_error_tends_to_zero_of_stable_projection_row_sup
+      V Proj C rowFactor rowSup q rowError hstable hrow
+      hC_nonneg hrowNorm_bound
+      (po3_eventually_bounded_above_by_pos_mul
+        hrowFactor_nonneg hC_bound hrowFactor_bound)
+      hrowSup_nonneg hrowSup
 
 /-- Normalized row-sup capture consumer for `PO3-square.2d3`.
 

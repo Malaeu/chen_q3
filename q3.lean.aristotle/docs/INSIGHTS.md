@@ -13536,7 +13536,7 @@ Update:
   Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
   DB re-import pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.conditioning_bounded_factors`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.conditioning_bounded_factors`
 
 - Target: split the stable-conditioning hypothesis
   `bounded (C_k * rowFactor_k)` into the branch-native inputs
@@ -13553,6 +13553,14 @@ Update:
 - Plan: add a generic bounded-product lemma for nonnegative scalar sequences
   and a row-sup stable-projection consumer that takes bounded `C` and bounded
   `rowFactor` separately.
+- Added `po3_eventually_bounded_above_by_pos_mul` and
+  `po3_capture_error_tends_to_zero_of_stable_projection_row_sup_bounded_factors`.
+- Result: the bounded-separated branch can discharge the conditioning-product
+  input by proving bounded stable-projection constants and bounded row-factor
+  estimates separately.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
+  DB re-import pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 
