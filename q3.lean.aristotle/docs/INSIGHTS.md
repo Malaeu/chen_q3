@@ -13301,7 +13301,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.stable_projection_conditioning_fork`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.stable_projection_conditioning_fork`
 
 - Target: formalize the exact `EndpointRowStableProjectionOrRouteKill` fork
   after the finite-count capture assembly: under stable endpoint-row equations,
@@ -13323,6 +13323,18 @@ Update:
   `capture_error_tends_to_zero ∨ ¬ po3_product_tends_to_zero C ||rowError||`.
   This must not claim an actual route kill; it only names the exact obstruction
   if the product estimate cannot be proved.
+- Added
+  `po3_capture_error_tends_to_zero_or_conditioning_product_obstruction`, the
+  stable-projection fork theorem:
+  capture follows from the conditioning product, otherwise the negated product
+  is the exact formal obstruction for this route shape.
+- Result: `EndpointRowStableProjectionOrRouteKill` now has a Lean-visible fork
+  at the correct boundary.  A future route-kill entry must still prove that the
+  obstruction side actually occurs and that no confluent/stable replacement is
+  available; this theorem only names the proof obligation.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.mirror_suppression_transfer`
 

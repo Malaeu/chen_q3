@@ -358,6 +358,19 @@ Exact failure criterion:
   endpoint rows, or a route-kill certificate if one of the products/conditioning
   factors cannot tend to zero.
 
+## Result (2026-05-26) — stable-projection conditioning fork named
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports
+  `po3_capture_error_tends_to_zero_or_conditioning_product_obstruction`;
+- after endpoint-row equations and a stable projection estimate are fixed, this
+  theorem states the exact fork: either capture error tends to zero, or
+  `¬ po3_product_tends_to_zero C (fun k => ||rowError k||)` is the formal
+  obstruction for this route shape;
+- this is not itself a route-kill decision.  A real kill still requires proving
+  the obstruction side for the actual endpoint rows and ruling out an acceptable
+  confluent/stable replacement.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

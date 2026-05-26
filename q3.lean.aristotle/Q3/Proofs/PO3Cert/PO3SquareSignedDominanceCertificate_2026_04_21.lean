@@ -577,6 +577,32 @@ theorem po3_capture_error_tends_to_zero_of_stable_projection_conditioning
           (V k) (Proj k) (C k) (hstable k) (q k) (rowError k) (hrow k))
       hconditioning
 
+/-- Exact stable-projection fork for the live `EndpointRowStableProjectionOrRouteKill`
+decision.
+
+For this route shape, after the endpoint-row equations and stable-projection
+estimate are fixed, either the conditioning product is available and the
+capture error tends to zero, or the missing product estimate is the precise
+formal obstruction still to be resolved. -/
+theorem po3_capture_error_tends_to_zero_or_conditioning_product_obstruction
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    (V : ℕ → E →L[ℂ] F) (Proj : ℕ → E →L[ℂ] E)
+    (C : ℕ → ℝ) (q : ℕ → E) (rowError : ℕ → F)
+    (hstable : ∀ k x, ‖x - Proj k x‖ ≤ C k * ‖V k x‖)
+    (hrow : ∀ k, V k (q k) = rowError k) :
+    po3_real_tends_to_zero (fun k => ‖q k - Proj k (q k)‖) ∨
+      ¬ po3_product_tends_to_zero C (fun k => ‖rowError k‖) := by
+  classical
+  by_cases hconditioning :
+      po3_product_tends_to_zero C (fun k => ‖rowError k‖)
+  · exact
+      Or.inl
+        (po3_capture_error_tends_to_zero_of_stable_projection_conditioning
+          V Proj C q rowError hstable hrow hconditioning)
+  · exact Or.inr hconditioning
+
 /-- Bounded-conditioning specialization of the sequence-level capture handoff.
 
 This is the Lean-side consumer for the bounded-separated branch: once the
