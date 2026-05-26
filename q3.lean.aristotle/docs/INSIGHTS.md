@@ -13042,3 +13042,43 @@ Update:
   certified-block import, `lake build Q3.Proofs.PSD_CenteredCoeffCertifiedBlockImport`,
   `lake build Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and
   targeted no-hole scan all pass.
+
+## Synthesis (2026-05-26, OK) — `Step32I_PenaltyRadiusDominanceImport`
+
+- Target: remove the remaining generated D/R penalty-radius dominance premises
+  `hDRad` and `hRRad` after the canonical Step32H boundary-Gram radius import.
+- Local `q3_docs` search is noisy for this fresh generated front, but source
+  inspection identifies the exact formulas in
+  `scripts/q3_psdpd_step32f_radius_floor_lean_data.py`.
+- The active radius-floor generator defines
+  `d_penalty = d_rad + |tauD| * qTq_radius` and
+  `r_penalty = r_rad + |tauR| * qTq_radius`, where `d_rad`/`r_rad` are built
+  from imported A/P/P0 radius payloads.
+- `PSD_CenteredCoeffPayloadImport.lean` already imports exact rational
+  A/P/P0/Q radius matrices, so the smallest honest Lean step is not a new
+  analytic estimate; it is a checked bridge exposing canonical D/R base-radius
+  matrices and proving they fit inside the imported penalty radii.
+- External Lean/mathlib documentation check only supports the implementation
+  tactic choice: these are finite rational inequalities, so the proof should
+  be kernel-checked by explicit finite cases and `norm_num`/rational
+  computation.
+- Added `PSD_CenteredCoeffPenaltyRadiusDominanceImport.lean`; it defines exact
+  rational boundary-Gram mirrors plus canonical primary/control D/R base-radius
+  matrices from the imported A/P/P0/Q radius payload.
+- Closed the four dominance facts
+  `primaryK11DBaseRadius_penaltyRadius_dominance`,
+  `primaryK11RBaseRadius_penaltyRadius_dominance`,
+  `controlK9DBaseRadius_penaltyRadius_dominance`, and
+  `controlK9RBaseRadius_penaltyRadius_dominance`.
+- The rational inequality part is discharged by `native_decide`; the Real bridge
+  uses the generic `Rat.cast_abs` simplification, avoiding a slow 23-by-23
+  `norm_num` case split.
+- Added primary/control certified-block wrappers in
+  `PSD_CenteredCoeffCertifiedBlockImport.lean` that no longer take `hDRad` or
+  `hRRad`; the remaining premises are only the base D/R hboxes against
+  `primaryK11DBaseRadius`/`primaryK11RBaseRadius` and their control analogues.
+- Verification: direct Lean for the new import and updated certified-block
+  import, `lake build Q3.Proofs.PSD_CenteredCoeffPenaltyRadiusDominanceImport`,
+  `lake build Q3.Proofs.PSD_CenteredCoeffCertifiedBlockImport`,
+  `lake build Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a
+  targeted no-hole scan all pass.
