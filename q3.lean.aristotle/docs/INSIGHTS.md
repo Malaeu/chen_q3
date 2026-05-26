@@ -13149,3 +13149,27 @@ Update:
   Q3.Proofs.PSD_CenteredCoeffAnalyticP0Import`, `lake build Q3.Main`,
   `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
   pass.
+
+## Synthesis (2026-05-26, in progress) — `Step32L_EntryHboxBundle`
+
+- Target: make the next generated enclosure step precise: the final base
+  entry hbox inputs are `hA`, `hP`, and `hP0` for both primary/control blocks,
+  feeding the Step32K analytic `P0` wrapper.
+- Local search finds no existing `A/P/P0` entry-hbox generator in Lean.  The
+  closest proven pattern is `PSD_CenteredCoeffQRowImport.lean`, which generates
+  concrete scalar hbox lemmas, and the radius-floor generator comments already
+  say that a future analytic enclosure node must provide
+  `matrixEntrywiseAbsLe`.
+- Source inspection confirms that `PSD_CenteredCoeffAnalyticP0Import.lean`
+  now names the exact analytic `P0`; therefore the next target should no longer
+  mention arbitrary `P0a`.
+- External check: Lean's finite computation tactics are suitable for finite
+  generated arithmetic, and Mathlib's exponential-bound file shows the style
+  used for elementary transcendental scalar bounds; neither gives a drop-in
+  proof of the Step21/22 Arb/acb integrations.
+- Important boundary: do not add fake `hA/hP/hP0` proofs.  The honest output is
+  a small certificate bundle structure plus certified-block consumers, so the
+  later generator has one exact theorem shape to fill.
+- Plan: add a Lean import defining primary/control base-entry hbox cert
+  bundles and wrappers from those bundles to
+  `CertifiedCenteredBSplineCoeffBlock`.
