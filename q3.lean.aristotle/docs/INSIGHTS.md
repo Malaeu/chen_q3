@@ -13769,3 +13769,25 @@ Update:
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
   Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
   DB re-import pass.
+
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.coordinate_row_sup_capture`
+
+- Target: expose the bounded-separated endpoint-row consumer in the exact
+  coordinate form expected by the analytic instantiation: componentwise
+  `||epsilon_{k,i}|| <= rowSup_k`, bounded stable-projection constants, and
+  row-sup decay should imply packet-capture decay.
+- Local `q3_docs` search again returns the active PO3 fork: stable projection
+  consumes the Euclidean norm `||epsilon_k||`, while endpoint-row estimates are
+  naturally componentwise and must pay a finite row-count factor.
+- The previous two Lean facts now provide the missing norm side:
+  `po3_euclidean_row_error_norm_le_sqrt_card_mul_sup` gives the
+  coordinate-to-Euclidean bound, and the fixed finite row type makes
+  `sqrt(card rows)` a bounded row factor.
+- External sanity checks are aligned: finite-dimensional Euclidean norm is the
+  square root of a coordinate square sum, and Vandermonde stability still
+  depends on separated/certified nodes rather than automatic conditioning.
+- Plan: add a single coordinate-row specialization of the existing
+  log-envelope/threshold/mirror bounded-factor consumer in `PO3Cert`.  It
+  should remove the manual `rowFactor` and `hrowNorm_bound` hypotheses but keep
+  all analytic row-mass, log-envelope, far-mirror, row-sup, and stable
+  conditioning inputs explicit.
