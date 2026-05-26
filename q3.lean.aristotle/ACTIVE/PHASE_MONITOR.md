@@ -505,6 +505,17 @@ Exact failure criterion:
   prove the theta-slope/log-exp product asymptotic and shifted row-error
   smallness for the real endpoint rows.
 
+## Result (2026-05-26) — shifted row log-sum form frozen
+
+- `po3_gamma_profile_shift_ratio_exp_neg_log_sum` rewrites the concrete
+  shifted-row multiplier as
+  `exp(-sum_{h<s} log(1+(x-xi)/(xi-(N+k+h+1))))`;
+- `po3_prod_one_add_inv_eq_exp_neg_sum_log` records the reusable exact
+  finite product-to-log bridge for reciprocal local factors;
+- the live lock is now precisely analytic: prove convergence of this log sum
+  from theta-slope/local-tube/second-order estimates, then feed that into the
+  shifted endpoint-row error smallness theorem.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

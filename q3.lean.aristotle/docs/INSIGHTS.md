@@ -13885,6 +13885,27 @@ Update:
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, full `Q3.Main`,
   no-hole, axiom, DB, and diff checks pass.
 
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.shift_ratio_exp_neg_log_sum`
+
+- Target: freeze the exact log/exp interface after the local-factor identity:
+  `prod_{h<s}(1+u_h)^-1 = exp(-sum_{h<s} log(1+u_h))`, specialized to
+  `u_h=(x-xi)/(xi-(N+k+h+1))`.
+- Local lookup: the endpoint-row product note says the exact product identity
+  is followed by theta-slope/local-tube/second-order estimates.  The current
+  Lean target should therefore expose the log-sum object explicitly, without
+  yet claiming an asymptotic.
+- External sanity: DLMF §4.6 supplies the standard log/exp series background
+  for the next analytic estimate, while this theorem uses only exact
+  `Complex.exp_log` and finite products.
+- Added `po3_prod_one_add_inv_eq_exp_neg_sum_log` and
+  `po3_gamma_profile_shift_ratio_exp_neg_log_sum`.
+- Result: the shifted-row multiplier is now Lean-visible as an exponential of
+  a finite log sum.  The remaining proof-critical lock is to show that this
+  finite log sum tends to the correct theta-slope limit with controlled
+  second-order error.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, full `Q3.Main`,
+  no-hole, axiom, DB, and diff checks pass.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.shift_ratio_local_product_identity`
 
 - Target: connect the concrete Gamma-profile shifted row

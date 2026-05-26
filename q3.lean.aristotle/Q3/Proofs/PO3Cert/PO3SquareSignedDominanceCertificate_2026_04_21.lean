@@ -276,6 +276,52 @@ theorem po3_gamma_profile_shift_ratio_local_product_identity (N : ℕ)
   rw [hxprod] at hlocal
   exact hlocal
 
+/-- Exact finite log/exp rewrite for reciprocal local factors. -/
+theorem po3_prod_one_add_inv_eq_exp_neg_sum_log {ι : Type*}
+    (moved : Finset ι) (u : ι → ℂ)
+    (hu : ∀ i ∈ moved, 1 + u i ≠ 0) :
+    Finset.prod moved (fun i => (1 + u i)⁻¹) =
+      Complex.exp (-(Finset.sum moved (fun i => Complex.log (1 + u i)))) := by
+  have hterm :
+      ∀ i ∈ moved,
+        (1 + u i)⁻¹ = Complex.exp (-(Complex.log (1 + u i))) := by
+    intro i hi
+    rw [Complex.exp_neg, Complex.exp_log (hu i hi)]
+  rw [Finset.prod_congr rfl hterm, ← Complex.exp_sum]
+  simp
+
+/-- Concrete log/exp form of the adaptive shifted-row multiplier. -/
+theorem po3_gamma_profile_shift_ratio_exp_neg_log_sum (N : ℕ)
+    (x xi : ℂ)
+    (hxbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m)
+    (hxibase : ∀ m : ℕ, ((N + 1 : ℂ) - xi) ≠ -m) (k s : ℕ) :
+    (po3_gamma_profile N x (k + s) / po3_gamma_profile N x k) /
+        (po3_gamma_profile N xi (k + s) / po3_gamma_profile N xi k) =
+      Complex.exp
+        (-(Finset.sum (Finset.range s)
+          (fun h => Complex.log
+            (1 + (x - xi) / (xi - (N + k + h + 1 : ℕ) : ℂ))))) := by
+  rw [po3_gamma_profile_shift_ratio_local_product_identity
+    N x xi hxbase hxibase k s]
+  refine po3_prod_one_add_inv_eq_exp_neg_sum_log (Finset.range s)
+    (fun h => (x - xi) / (xi - (N + k + h + 1 : ℕ) : ℂ)) ?_
+  intro h _
+  have hx_pole : x - ((N + k + h + 1 : ℕ) : ℂ) ≠ 0 := by
+    simpa [Nat.add_assoc, Nat.add_left_comm, Nat.add_comm] using
+      po3_gamma_profile_factor_ne_zero N x (k + h) hxbase
+  have hxi_pole : xi - ((N + k + h + 1 : ℕ) : ℂ) ≠ 0 := by
+    simpa [Nat.add_assoc, Nat.add_left_comm, Nat.add_comm] using
+      po3_gamma_profile_factor_ne_zero N xi (k + h) hxibase
+  have hfactor :
+      1 + (x - xi) / (xi - ((N + k + h + 1 : ℕ) : ℂ)) =
+        (x - ((N + k + h + 1 : ℕ) : ℂ)) /
+          (xi - ((N + k + h + 1 : ℕ) : ℂ)) := by
+    simpa using
+      (po3_shift_factor_div_eq_one_add xi (x - xi)
+        ((N + k + h + 1 : ℕ) : ℂ) hxi_pole).symm
+  rw [hfactor]
+  exact div_ne_zero hx_pole hxi_pole
+
 /-- The reciprocal-product avatar is exact: after multiplying by the matching
 finite denominator packet, one gets `1`. -/
 theorem po3_gamma_profile_mul_prod_eq_one (N : ℕ) (x : ℂ)
