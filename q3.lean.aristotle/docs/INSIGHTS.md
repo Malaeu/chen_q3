@@ -13562,6 +13562,23 @@ Update:
   Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
   DB re-import pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.branch_shaped_capture_consumer`
+
+- Target: expose the exact bounded-separated branch interface in one theorem:
+  double log-envelope row-error control plus separate bounded `C_k` and bounded
+  `rowFactor_k`.
+- This is a wrapper over already-proved pieces, not a new analytic claim.
+  It should call
+  `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror` after
+  deriving the combined conditioning-factor bound from
+  `po3_eventually_bounded_above_by_pos_mul`.
+- The theorem keeps all actual analytic work explicit: count envelopes,
+  pointwise row bounds, product estimates, far mirror smallness, row sup
+  nonnegativity, stable projection, and separate conditioning bounds.
+- Plan: add
+  `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror_bounded_factors`
+  after the existing double log-envelope theorem.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 
 - Target: make the first real log-loss bridge precise: a finite local row
