@@ -13504,6 +13504,27 @@ Update:
   Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
   DB re-import pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.capture_double_log_envelope`
+
+- Target: remove the remaining interface mismatch in the end-to-end capture
+  theorem by feeding both the mirror side and the threshold omitted side through
+  conservative log/count envelopes.
+- Local `q3_docs` search points back to the active `PHASE_MONITOR` and this
+  `INSIGHTS.md` chain: the live lock is still finite-count shifted row-error
+  capture plus stable conditioning, not a return to PO2/PO3 shell algebra.
+- Existing Lean pieces already suffice:
+  `po3_endpoint_row_log_mass_mirror_control_of_finite_count_log_envelope`,
+  `po3_threshold_omitted_mass_row_relative_small_of_finite_count_log_envelope`,
+  `po3_shifted_row_error_relative_small_of_parts`, and the stable-projection
+  row-sup consumer.
+- External sanity check is unchanged: zero-counting supports only log-sized
+  local count envelopes, while Vandermonde stability/conditioning must remain
+  explicit in the `C_k`/row-factor hypothesis rather than hidden inside
+  row-mass estimates.
+- Plan: add
+  `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror` next to
+  the current one-sided log-envelope theorem.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 
 - Target: make the first real log-loss bridge precise: a finite local row
