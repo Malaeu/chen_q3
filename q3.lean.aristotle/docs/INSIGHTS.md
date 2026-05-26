@@ -13301,6 +13301,22 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.mirror_suppression_transfer`
+
+- Target: add the monotone transfer needed for pointwise mirror suppression:
+  if the actual mirror ratio `eta_k` is bounded by a sharper `etaBound_k`, and
+  `etaBound_k * logLoss_k -> 0`, then `eta_k * logLoss_k -> 0`.
+- This is not the analytic product-ratio proof itself; it is the Lean bridge
+  that lets the future product-ratio estimate feed
+  `EndpointRowLogMassMirrorControl` directly.
+- Local notes identify `eta_{k,rho} log(2+xi_k)->0` as the mirror-side
+  condition.  The estimate should remain explicit, not buried inside the
+  mirror consumer.
+- External checks do not add a stronger theorem here; the mathematical content
+  is order preservation under multiplication by a nonnegative log-loss factor.
+- Plan: add a small `po3_product_tends_to_zero_of_le_left` lemma with
+  `logLoss >= 0`, then reuse it in later mirror suppression certificates.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.threshold_omitted_mass`
 
 - Target: formalize the threshold-exhaustion bookkeeping for omitted main-side
