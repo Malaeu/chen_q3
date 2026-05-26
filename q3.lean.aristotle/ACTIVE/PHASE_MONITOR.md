@@ -434,6 +434,21 @@ Exact failure criterion:
   the analytic facts of bounded selected row count and componentwise row-sup
   decay.
 
+## Result (2026-05-26) — coordinate row-sup capture consumer exported
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports
+  `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror_coordinate_row_sup`;
+- this is the fixed finite-row specialization of the current
+  bounded-separated endpoint-row landing surface: analytic estimates can now
+  provide componentwise `rowSup` bounds on an `EuclideanSpace` row-error
+  vector, while the theorem internally pays the `sqrt(card rows)` correction
+  and then invokes the bounded-factor capture consumer;
+- the next genuinely analytic lock remains unchanged: instantiate the
+  row-mass/log-envelope/far-mirror/row-sup estimates and stable conditioning
+  for the selected endpoint rows, or prove the obstruction side for the actual
+  rows.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

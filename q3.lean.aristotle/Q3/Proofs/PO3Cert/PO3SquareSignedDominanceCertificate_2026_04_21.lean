@@ -1288,6 +1288,95 @@ theorem po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror_bounde
       homittedCount_le_log homittedNear homittedPoint homittedCount
       hdeltaBoundLog hrowSup_nonneg
 
+/-- Coordinate-row version of the bounded-separated log-envelope capture
+consumer.
+
+This is the form expected when the selected endpoint-row error vector lives in
+a fixed finite Euclidean coordinate space and the analytic estimates are
+componentwise: `‖epsilon_{k,i}‖ <= rowSup_k`.  The theorem pays the explicit
+`sqrt(card rows)` factor internally and then reuses the bounded-factor capture
+consumer. -/
+theorem po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror_coordinate_row_sup
+    {E : Type*} {ι : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E] [Fintype ι]
+    {ιMirror ιOmitted : ℕ → Type*}
+    [∀ k, Fintype (ιMirror k)] [∀ k, Fintype (ιOmitted k)]
+    (mirrorRowMass : ∀ k, ιMirror k → ℝ)
+    (omittedRowMass : ∀ k, ιOmitted k → ℝ)
+    (V : ℕ → E →L[ℂ] EuclideanSpace ℂ ι) (Proj : ℕ → E →L[ℂ] E)
+    (C rowSup : ℕ → ℝ) (q : ℕ → E)
+    (rowError : ℕ → EuclideanSpace ℂ ι)
+    (mirrorAbs nearAMass farMirror eta etaBound mirrorPointBound
+      mirrorCountBound mirrorLogBound omittedAMass delta deltaBound
+      omittedCountBound omittedLogBound : ℕ → ℝ)
+    (hstable : ∀ k x, ‖x - Proj k x‖ ≤ C k * ‖V k x‖)
+    (hrow : ∀ k, V k (q k) = rowError k)
+    (hC_nonneg : ∀ k, 0 ≤ C k)
+    (hC_bound : po3_eventually_bounded_above_by_pos C)
+    (hcoord : ∀ k i, ‖rowError k i‖ ≤ rowSup k)
+    (heta_nonneg : ∀ k, 0 ≤ eta k)
+    (hmirrorLogBound_nonneg : ∀ k, 0 ≤ mirrorLogBound k)
+    (heta_le : ∀ k, eta k ≤ etaBound k)
+    (hmirrorCount_le_log :
+      ∀ k, mirrorCountBound k ≤ mirrorLogBound k)
+    (hetaBoundLog :
+      po3_product_tends_to_zero etaBound mirrorLogBound)
+    (hmirror :
+      ∀ k, mirrorAbs k ≤ eta k * nearAMass k + farMirror k)
+    (hmirrorNear : ∀ k, nearAMass k ≤ ∑ i, mirrorRowMass k i)
+    (hmirrorPoint :
+      ∀ k i, mirrorRowMass k i ≤ mirrorPointBound k)
+    (hmirrorCount :
+      ∀ k, (Fintype.card (ιMirror k) : ℝ) * mirrorPointBound k ≤
+        mirrorCountBound k)
+    (hfar : po3_row_relative_small farMirror (fun _ => 1))
+    (hrowSup_bound : ∀ k, rowSup k ≤ mirrorAbs k + omittedAMass k)
+    (hdelta_nonneg : ∀ k, 0 ≤ delta k)
+    (homittedLogBound_nonneg : ∀ k, 0 ≤ omittedLogBound k)
+    (hdelta_le : ∀ k, delta k ≤ deltaBound k)
+    (homittedCount_le_log :
+      ∀ k, omittedCountBound k ≤ omittedLogBound k)
+    (homittedNear :
+      ∀ k, omittedAMass k ≤ ∑ i, omittedRowMass k i)
+    (homittedPoint : ∀ k i, omittedRowMass k i ≤ delta k)
+    (homittedCount :
+      ∀ k, (Fintype.card (ιOmitted k) : ℝ) ≤ omittedCountBound k)
+    (hdeltaBoundLog :
+      po3_product_tends_to_zero deltaBound omittedLogBound)
+    (hrowSup_nonneg : ∀ k, 0 ≤ rowSup k) :
+    po3_real_tends_to_zero (fun k => ‖q k - Proj k (q k)‖) := by
+  let rowFactor : ℕ → ℝ := fun _ => Real.sqrt (Fintype.card ι)
+  have hrowNorm_bound :
+      ∀ k, ‖rowError k‖ ≤ rowFactor k * rowSup k := by
+    intro k
+    dsimp [rowFactor]
+    exact
+      po3_euclidean_row_error_norm_le_sqrt_card_mul_sup
+        (rowError k) (rowSup k) (hrowSup_nonneg k) (hcoord k)
+  have hrowFactor_nonneg : ∀ k, 0 ≤ rowFactor k := by
+    intro k
+    dsimp [rowFactor]
+    exact Real.sqrt_nonneg _
+  have hrowFactor_bound : po3_eventually_bounded_above_by_pos rowFactor := by
+    refine ⟨Real.sqrt (Fintype.card ι) + 1, ?_, 0, ?_⟩
+    · positivity
+    · intro k _hk
+      dsimp [rowFactor]
+      linarith
+  exact
+    po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror_bounded_factors
+      mirrorRowMass omittedRowMass V Proj C rowFactor rowSup q rowError
+      mirrorAbs nearAMass farMirror eta etaBound mirrorPointBound
+      mirrorCountBound mirrorLogBound omittedAMass delta deltaBound
+      omittedCountBound omittedLogBound
+      hstable hrow hC_nonneg hrowNorm_bound hC_bound
+      hrowFactor_nonneg hrowFactor_bound
+      heta_nonneg hmirrorLogBound_nonneg heta_le hmirrorCount_le_log
+      hetaBoundLog hmirror hmirrorNear hmirrorPoint hmirrorCount hfar
+      hrowSup_bound hdelta_nonneg homittedLogBound_nonneg hdelta_le
+      homittedCount_le_log homittedNear homittedPoint homittedCount
+      hdeltaBoundLog hrowSup_nonneg
+
 /-- Analytic certificate shape for the fastest current branch:
 `EndpointRowsStableProjection_boundedSeparated`.
 

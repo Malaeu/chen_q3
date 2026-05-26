@@ -13770,7 +13770,7 @@ Update:
   Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
   DB re-import pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.coordinate_row_sup_capture`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.coordinate_row_sup_capture`
 
 - Target: expose the bounded-separated endpoint-row consumer in the exact
   coordinate form expected by the analytic instantiation: componentwise
@@ -13791,3 +13791,12 @@ Update:
   should remove the manual `rowFactor` and `hrowNorm_bound` hypotheses but keep
   all analytic row-mass, log-envelope, far-mirror, row-sup, and stable
   conditioning inputs explicit.
+- Added
+  `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror_coordinate_row_sup`.
+- Result: the bounded-separated endpoint-row landing surface now accepts a
+  fixed finite Euclidean row-error vector with componentwise row-sup bounds.
+  The theorem pays the `sqrt(card rows)` factor internally and reuses the
+  existing bounded-factor capture consumer.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, and `lake build
+  Q3.Main` pass; follow-up no-hole, axiom, DB, and diff checks were run in the
+  same integration pass.
