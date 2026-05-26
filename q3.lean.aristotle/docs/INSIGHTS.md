@@ -13536,6 +13536,24 @@ Update:
   Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
   DB re-import pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.conditioning_bounded_factors`
+
+- Target: split the stable-conditioning hypothesis
+  `bounded (C_k * rowFactor_k)` into the branch-native inputs
+  `bounded C_k` and `bounded rowFactor_k`.
+- Local `q3_docs` search points back to the same live conditioning fork: the
+  row factor is the norm-correction factor from row sup-error to vector
+  row-error, while `C_k` is the stable-projection constant.
+- The bounded-separated branch should prove these separately: separated
+  Vandermonde rows give bounded `C_k`, and bounded row count gives a bounded
+  `sqrt(r_k)`-type row factor.
+- External sanity check matches the intended shape: finite-dimensional
+  norm-equivalence supplies the row-sup to Euclidean norm factor, while
+  separated-node Vandermonde stability supplies the conditioning side.
+- Plan: add a generic bounded-product lemma for nonnegative scalar sequences
+  and a row-sup stable-projection consumer that takes bounded `C` and bounded
+  `rowFactor` separately.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 
 - Target: make the first real log-loss bridge precise: a finite local row
