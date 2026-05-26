@@ -13844,3 +13844,16 @@ Update:
   `po3_gamma_profile_add_shift_div_eq_prod`.
 - Result: future normalized endpoint-row formulas can cite a division-safe
   ratio theorem instead of repeating the nonzero/product cancellation proof.
+
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.two_point_shift_row`
+
+- Target: name the exact two-point normalized row multiplier used in the
+  adaptive Vandermonde note:
+  `Shift_{k,s}(x) / Shift_{k,s}(xi)`.
+- Local lookup: `h1_po3_square_2d3_adaptive_shift_constraints_2026_04_24.md`
+  writes the row limit in exactly this normalized form before the
+  future-slope asymptotic.
+- Added `po3_gamma_profile_shift_ratio_div_shift_ratio_eq_prod_div_prod`.
+- Result: the endpoint-row multiplier is now a Lean-visible consequence of two
+  one-point Gamma-profile shift ratios.  This still makes no analytic
+  asymptotic claim; it only freezes the exact algebraic row identity.

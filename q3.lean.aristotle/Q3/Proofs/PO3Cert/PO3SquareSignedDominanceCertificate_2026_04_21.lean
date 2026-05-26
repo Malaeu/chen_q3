@@ -167,6 +167,23 @@ theorem po3_gamma_profile_add_shift_div_eq_prod (N : ℕ) (x : ℂ)
   rw [po3_gamma_profile_add_shift_eq_prod_mul N x hbase k s]
   field_simp [po3_gamma_profile_ne_zero N x hbase k]
 
+/-- Two-point normalized shifted-row identity.
+
+This is the Lean form of the endpoint-row multiplier
+`Shift_{k,s}(x) / Shift_{k,s}(xi)` used before the future-slope asymptotic. -/
+theorem po3_gamma_profile_shift_ratio_div_shift_ratio_eq_prod_div_prod (N : ℕ)
+    (x xi : ℂ)
+    (hxbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m)
+    (hxibase : ∀ m : ℕ, ((N + 1 : ℂ) - xi) ≠ -m) (k s : ℕ) :
+    (po3_gamma_profile N x (k + s) / po3_gamma_profile N x k) /
+        (po3_gamma_profile N xi (k + s) / po3_gamma_profile N xi k) =
+      (Finset.prod (Finset.range s)
+          (fun h => (x - (N + k + h + 1 : ℕ) : ℂ)⁻¹)) /
+        Finset.prod (Finset.range s)
+          (fun h => (xi - (N + k + h + 1 : ℕ) : ℂ)⁻¹) := by
+  rw [po3_gamma_profile_add_shift_div_eq_prod N x hxbase k s,
+    po3_gamma_profile_add_shift_div_eq_prod N xi hxibase k s]
+
 /-- The reciprocal-product avatar is exact: after multiplying by the matching
 finite denominator packet, one gets `1`. -/
 theorem po3_gamma_profile_mul_prod_eq_one (N : ℕ) (x : ℂ)

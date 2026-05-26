@@ -472,6 +472,16 @@ Exact failure criterion:
   the `Shift_{k,s}` row multiplier before the remaining analytic
   future-slope/row-error estimates are attacked.
 
+## Result (2026-05-26) — two-point shifted row frozen
+
+- `po3_gamma_profile_shift_ratio_div_shift_ratio_eq_prod_div_prod` now names
+  the exact row multiplier `Shift_{k,s}(x)/Shift_{k,s}(xi)`;
+- this gives the adaptive Vandermonde row layer a direct theorem from Gamma
+  profile ratios to product-ratio rows;
+- after this, the next nontrivial work is genuinely analytic: prove the
+  orientation-safe future-slope/product asymptotic and the shifted row-error
+  smallness, or record the obstruction.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge
