@@ -398,6 +398,18 @@ Exact failure criterion:
   conditioning controls `C_k`, while bounded selected row count controls the
   row-factor side.
 
+## Result (2026-05-26) — branch-shaped capture consumer exported
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports
+  `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror_bounded_factors`;
+- this is the current bounded-separated endpoint-row landing surface: mirror
+  and omitted row-errors are fed by separate log/count envelopes, while stable
+  conditioning is fed by separately bounded `C_k` and row-factor sequences;
+- the next non-plumbing lock is now genuinely analytic: instantiate these
+  hypotheses for the selected adaptive endpoint rows, or prove the obstruction
+  side of the conditioning fork for the actual rows.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

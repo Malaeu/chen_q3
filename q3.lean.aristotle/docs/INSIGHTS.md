@@ -13562,7 +13562,7 @@ Update:
   Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
   DB re-import pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.branch_shaped_capture_consumer`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.branch_shaped_capture_consumer`
 
 - Target: expose the exact bounded-separated branch interface in one theorem:
   double log-envelope row-error control plus separate bounded `C_k` and bounded
@@ -13578,6 +13578,15 @@ Update:
 - Plan: add
   `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror_bounded_factors`
   after the existing double log-envelope theorem.
+- Added
+  `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror_bounded_factors`.
+- Result: the current bounded-separated endpoint-row branch now has one
+  Lean-facing consumer with the natural hypothesis split: double log envelopes
+  for row errors, bounded stable-projection constants, and bounded row-factor
+  norm correction.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
+  DB re-import pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 
