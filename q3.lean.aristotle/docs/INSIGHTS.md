@@ -13416,6 +13416,24 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.log_envelope_capture_assembly`
+
+- Target: lift the full finite-count threshold capture assembly to the same
+  log-envelope shape as the new mirror wrapper.
+- The current end-to-end theorem
+  `po3_capture_error_tends_to_zero_of_finite_count_threshold_mirror` still
+  expects product-smallness against `mirrorCountBound`; the analytic route more
+  naturally supplies `etaBound * logBound -> 0` plus
+  `mirrorCountBound <= logBound`.
+- This is a theorem-shape improvement only.  It must keep all analytic content
+  explicit: finite local mass count, `eta <= etaBound`, log envelope
+  comparison, far mirror smallness, threshold omitted mass, row-sup norm
+  correction, and stable conditioning.
+- Plan: add an end-to-end theorem using
+  `po3_endpoint_row_log_mass_mirror_control_of_finite_count_log_envelope` for
+  the mirror side, then reuse the existing omitted-mass and row-sup capture
+  consumers.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.threshold_omitted_mass`
 
 - Target: formalize the threshold-exhaustion bookkeeping for omitted main-side
