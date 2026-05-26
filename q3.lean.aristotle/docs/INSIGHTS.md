@@ -13714,3 +13714,25 @@ Update:
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
+
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.euclidean_row_norm_factor`
+
+- Target: close the concrete row-norm correction used by the bounded-separated
+  branch: component row-error control over a finite selected row set should
+  imply the Euclidean row-error bound with the explicit factor
+  `sqrt(card rows)`.
+- Local `q3_docs` search points back to the same active PO3 conditioning fork:
+  stable projection consumes `||epsilon_k||`, while the notes warn that
+  component bounds must pay the row-count factor before comparing with `C_k`.
+- The repo already uses `EuclideanSpace.norm_eq` in finite-dimensional matrix
+  arguments (`Q3/Proofs/Bridge.lean`), so the clean Lean lemma should be a
+  local finite Euclidean-space estimate, not a new PO3 certificate wrapper.
+- External sanity check matches the standard finite-dimensional estimate:
+  `||x||_2 <= sqrt(n) ||x||_infty`; mathlib exposes the needed coordinate
+  norm formula through `EuclideanSpace.norm_eq`.
+- Plan: add
+  `po3_euclidean_row_error_norm_le_sqrt_card_mul_sup` in `PO3Cert`, proving
+  `||epsilon|| <= sqrt(card rows) * rowSup` from coordinatewise
+  `||epsilon_i|| <= rowSup`.  Then the existing bounded-factor capture
+  consumer can take `rowFactor_k = sqrt(card rows_k)` once bounded row count is
+  supplied analytically.
