@@ -14085,3 +14085,46 @@ Update:
   Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean` and
   `scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`
   pass; no `sorry`, `exact?`, or `admit` occurs in the new Lean file.
+
+## Synthesis (2026-05-26, BLOCKER) — `Step32Q_R11PrimeShiftReplay`
+
+- Target: continue from `primaryK11FinitePrimeKernelProfile_entry_hbox` and
+  isolate the exact missing `centeredBSplineR` replay surface rather than
+  stopping at a whole-matrix scalar hbox.
+- Added a Lean-checked summand surface in
+  `PSD_CenteredCoeffPrimeEntryHboxImport.lean`:
+  `primaryK11FinitePrimeProfileTerm`,
+  `controlK9FinitePrimeProfileTerm`,
+  `primaryK11FinitePrimeKernelProfile_entry_eq_sum`, and
+  `controlK9FinitePrimeKernelProfile_entry_eq_sum`.
+- Added propagation receivers:
+  `primaryK11FinitePrimeKernelProfile_entry_hbox_of_term_hboxes` and
+  `primaryK11AnalyticP_entry_hbox_of_term_hboxes`.  Thus term-level
+  midpoint/radius proofs now imply the final analytic `P` hbox directly.
+- Local lookup: fresh `q3_docs` searches for
+  `primaryK11FinitePrimeProfileTerm`, `centeredBSplineR 11` interval replay,
+  term midpoint/radius tables, and truncated-power B-spline certificates did
+  not find an existing Lean replay for the needed R-values.  Hits were older
+  prime certificates or general B-spline notes, not this Step32 theorem.
+- External sanity: standard B-spline references describe cardinal B-splines as
+  piecewise polynomial/truncated-power objects, and FLINT/Arb ball arithmetic
+  supplies rigorous enclosures by inclusion.  This matches the generator
+  architecture but does not provide Lean terms for the CSV entries.
+- Exact missing lemma:
+  `primaryK11CenteredBSplineR11PrimeShiftPair_hbox`, with generated
+  midpoint/radius tables
+  `primaryK11R11MinusMidRat`, `primaryK11R11MinusRadiusRat`,
+  `primaryK11R11PlusMidRat`, and `primaryK11R11PlusRadiusRat`, proving both
+  `centeredBSplineR 11 (((d)-shift n)/ell)` and
+  `centeredBSplineR 11 (((d)+shift n)/ell)` enclosures for every
+  `(i,j,n) : CoeffIndex23 × CoeffIndex23 × PrimeShiftIndexL3`.
+- Why this is now the real blocker: current Lean has only
+  `centeredBSplineR_nonneg`; the finite-sum propagation is now compiled.
+  The missing generated proof must expand
+  `centeredBSplineR 11 = centeredCardinalBSpline 23 (6*x) / c_11`, choose the
+  correct truncated-power segment, and replay rational upper/lower bounds for
+  each prime-shifted argument before combining with the generated prime-weight
+  hbox.
+- Verification: `lake env lean
+  Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean` passes after adding the
+  term-level receivers.

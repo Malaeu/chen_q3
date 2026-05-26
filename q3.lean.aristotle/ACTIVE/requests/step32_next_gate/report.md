@@ -1,6 +1,6 @@
 # Step32 Next Gate Report
 
-Status: scalar-blocker-written
+Status: centered-bspline-r-blocker-written
 Date: 2026-05-26
 
 ## Current Gate
@@ -66,6 +66,28 @@ controlK9AnalyticP_entry_hbox_of_profile_hbox
 These show that the active `matrixEntrywiseAbsLe` field follows immediately
 once the finite prime profile has an entrywise scalar hbox.
 
+Latest update: the same module now also exposes the primary 98-term summand
+surface and a Lean-checked propagation theorem:
+
+```lean
+def primaryK11FinitePrimeProfileTerm
+    (i j : CoeffIndex23) (n : PrimeShiftIndexL3) : Real
+
+theorem primaryK11FinitePrimeKernelProfile_entry_hbox_of_term_hboxes
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    ...
+```
+
+The final analytic hbox also has a direct term-level receiver:
+
+```lean
+theorem primaryK11AnalyticP_entry_hbox_of_term_hboxes
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    ...
+```
+
 No final hbox theorem was integrated in this run.  The current Lean file now
 identifies the analytic `P` entries, but the actual scalar interval replay for
 the 98-term finite prime profile is still absent.
@@ -110,7 +132,7 @@ by a generated finite-prime hbox module.  The Arch `A` and continuous `P0`
 hboxes require the heavier Step22 acb/tail and Step21 B-spline integral replay
 layers.
 
-Exact scalar certificate blocker:
+Exact scalar certificate blocker already reduced:
 
 ```lean
 theorem primaryK11FinitePrimeKernelProfile_entry_hbox :
@@ -143,6 +165,53 @@ Current helpers are insufficient for that scalar theorem:
 - Therefore the missing object is the generated scalar interval replay for
   the finite prime profile, not another wrapper and not a PSD table.
 
+Exact missing `centeredBSplineR` interval replay lemma:
+
+```lean
+def primaryK11R11MinusMidRat : Nat -> Nat -> Nat -> Rat
+def primaryK11R11MinusRadiusRat : Nat -> Nat -> Nat -> Rat
+def primaryK11R11PlusMidRat : Nat -> Nat -> Nat -> Rat
+def primaryK11R11PlusRadiusRat : Nat -> Nat -> Nat -> Rat
+
+def primaryK11R11MinusMid
+    (i j : CoeffIndex23) (n : PrimeShiftIndexL3) : Real :=
+  (primaryK11R11MinusMidRat i.val j.val n.val : Real)
+
+def primaryK11R11MinusRadius
+    (i j : CoeffIndex23) (n : PrimeShiftIndexL3) : Real :=
+  (primaryK11R11MinusRadiusRat i.val j.val n.val : Real)
+
+def primaryK11R11PlusMid
+    (i j : CoeffIndex23) (n : PrimeShiftIndexL3) : Real :=
+  (primaryK11R11PlusMidRat i.val j.val n.val : Real)
+
+def primaryK11R11PlusRadius
+    (i j : CoeffIndex23) (n : PrimeShiftIndexL3) : Real :=
+  (primaryK11R11PlusRadiusRat i.val j.val n.val : Real)
+
+theorem primaryK11CenteredBSplineR11PrimeShiftPair_hbox :
+    ∀ i j : CoeffIndex23, ∀ n : PrimeShiftIndexL3,
+      |centeredBSplineR 11
+          (((primaryK11Center j - primaryK11Center i) -
+            primaryK11PrimeShift n) / primaryK11Ell) -
+        primaryK11R11MinusMid i j n| ≤
+          primaryK11R11MinusRadius i j n ∧
+      |centeredBSplineR 11
+          (((primaryK11Center j - primaryK11Center i) +
+            primaryK11PrimeShift n) / primaryK11Ell) -
+        primaryK11R11PlusMid i j n| ≤
+          primaryK11R11PlusRadius i j n
+```
+
+Why this is the exact next missing lemma: the compiled receiver
+`primaryK11AnalyticP_entry_hbox_of_term_hboxes` already handles finite-sum
+propagation once term midpoint/radius tables exist.  The remaining term hbox
+proofs require the two `centeredBSplineR 11` enclosures above, plus the already
+anticipated generated weight replay for
+`primaryK11PrimeWeight n = log p * exp(-(r log p)/2)`.  The `centeredBSplineR`
+tables are not present in the repo, and current Lean only has
+`centeredBSplineR_nonneg`.
+
 Commands run:
 
 ```bash
@@ -158,6 +227,10 @@ scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
 ./scripts/research_oracle.py query "centeredBSplineFinitePrimeKernelProfile interval midpoint radius replay" -c q3_docs
 ./scripts/research_oracle.py query "Step21 Step22 prime side P matrix hbox Arb certificate" -c q3_docs
 ./scripts/research_oracle.py query "centeredBSplineR exact rational interval certificate Lean" -c q3_docs
+./scripts/research_oracle.py query "primaryK11FinitePrimeProfileTerm centeredBSplineR interval replay term hbox" -c q3_docs
+./scripts/research_oracle.py query "centeredBSplineR 11 positivePartPower interval upper lower generated Lean" -c q3_docs
+./scripts/research_oracle.py query "Step32 prime profile termMid termRad 98 prime shifts" -c q3_docs
+./scripts/research_oracle.py query "B spline truncated power formula centeredCardinalBSpline certificate" -c q3_docs
 ```
 
 Compile status:
@@ -166,14 +239,17 @@ Compile status:
   `scripts/q3_check.sh`.
 - `Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean` passes direct Lean and
   `scripts/q3_check.sh`.
-- No `sorry`, `exact?`, or `admit` appears in the active entry-hbox file.
+- No `sorry`, `exact?`, or `admit` appears in the active entry-hbox file or
+  the new prime-entry hbox module.
 
 Blocker status:
 
-- Stop condition satisfied by exact scalar blocker report.
+- Stop condition satisfied by exact `centeredBSplineR` interval replay blocker
+  report.
 - Next action: generate
-  `primaryK11FinitePrimeKernelProfile_entry_hbox`, then wrap it into
-  `primaryK11AnalyticP_entry_hbox` using the compiled receiver.
+  `primaryK11CenteredBSplineR11PrimeShiftPair_hbox`, then use it with generated
+  weight/term tables to discharge
+  `primaryK11AnalyticP_entry_hbox_of_term_hboxes`.
 
 ## Next Update Format
 

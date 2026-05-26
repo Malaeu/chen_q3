@@ -6,6 +6,8 @@ set_option linter.mathlibStandardSet false
 
 noncomputable section
 
+open scoped BigOperators
+
 namespace Q3
 namespace PSDpd
 namespace CenteredCoeffPrimeEntryHboxImport
@@ -23,6 +25,101 @@ prime kernel profiles generated from the active dictionary.  The remaining
 hbox certificates must prove scalar midpoint-radius enclosures for these
 finite sums.
 -/
+
+/-- One primary `k=11` finite-prime summand at packet entry `(i,j)`. -/
+def primaryK11FinitePrimeProfileTerm
+    (i j : CoeffIndex23) (n : PrimeShiftIndexL3) : Real :=
+  primaryK11PrimeWeight n *
+    (centeredBSplineR 11
+        (((primaryK11Center j - primaryK11Center i) -
+          primaryK11PrimeShift n) / primaryK11Ell) +
+      centeredBSplineR 11
+        (((primaryK11Center j - primaryK11Center i) +
+          primaryK11PrimeShift n) / primaryK11Ell))
+
+/-- One control `k=9` finite-prime summand at packet entry `(i,j)`. -/
+def controlK9FinitePrimeProfileTerm
+    (i j : CoeffIndex23) (n : PrimeShiftIndexL3) : Real :=
+  controlK9PrimeWeight n *
+    (centeredBSplineR 9
+        (((controlK9Center j - controlK9Center i) -
+          controlK9PrimeShift n) / controlK9Ell) +
+      centeredBSplineR 9
+        (((controlK9Center j - controlK9Center i) +
+          controlK9PrimeShift n) / controlK9Ell))
+
+/-- The primary finite-prime profile is the sum of its 98 dictionary terms. -/
+theorem primaryK11FinitePrimeKernelProfile_entry_eq_sum
+    (i j : CoeffIndex23) :
+    centeredBSplineFinitePrimeKernelProfile
+        11 primaryK11Ell primaryK11PrimeWeight primaryK11PrimeShift
+        (primaryK11Center j - primaryK11Center i) =
+      ∑ n : PrimeShiftIndexL3, primaryK11FinitePrimeProfileTerm i j n := by
+  rfl
+
+/-- The control finite-prime profile is the sum of its 98 dictionary terms. -/
+theorem controlK9FinitePrimeKernelProfile_entry_eq_sum
+    (i j : CoeffIndex23) :
+    centeredBSplineFinitePrimeKernelProfile
+        9 controlK9Ell controlK9PrimeWeight controlK9PrimeShift
+        (controlK9Center j - controlK9Center i) =
+      ∑ n : PrimeShiftIndexL3, controlK9FinitePrimeProfileTerm i j n := by
+  rfl
+
+/-- Termwise midpoint/radius certificates imply the primary finite-prime
+profile hbox.  The generator still has to supply the term tables and the
+termwise scalar proofs. -/
+theorem primaryK11FinitePrimeKernelProfile_entry_hbox_of_term_hboxes
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hterm :
+      ∀ i j n,
+        |primaryK11FinitePrimeProfileTerm i j n - termMid i j n| ≤
+          termRad i j n)
+    (hmid :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termMid i j n) = primaryK11P i j)
+    (hrad :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termRad i j n) ≤ primaryK11PRadius i j) :
+    ∀ i j : CoeffIndex23,
+      |centeredBSplineFinitePrimeKernelProfile
+          11 primaryK11Ell primaryK11PrimeWeight primaryK11PrimeShift
+          (primaryK11Center j - primaryK11Center i) -
+        primaryK11P i j| ≤ primaryK11PRadius i j := by
+  intro i j
+  have hdiff :
+      centeredBSplineFinitePrimeKernelProfile
+          11 primaryK11Ell primaryK11PrimeWeight primaryK11PrimeShift
+          (primaryK11Center j - primaryK11Center i) -
+        primaryK11P i j =
+        ∑ n : PrimeShiftIndexL3,
+          (primaryK11FinitePrimeProfileTerm i j n - termMid i j n) := by
+    calc
+      centeredBSplineFinitePrimeKernelProfile
+          11 primaryK11Ell primaryK11PrimeWeight primaryK11PrimeShift
+          (primaryK11Center j - primaryK11Center i) -
+        primaryK11P i j =
+          (∑ n : PrimeShiftIndexL3, primaryK11FinitePrimeProfileTerm i j n) -
+            ∑ n : PrimeShiftIndexL3, termMid i j n := by
+            rw [primaryK11FinitePrimeKernelProfile_entry_eq_sum, hmid i j]
+      _ = ∑ n : PrimeShiftIndexL3,
+          (primaryK11FinitePrimeProfileTerm i j n - termMid i j n) := by
+            rw [Finset.sum_sub_distrib]
+  calc
+    |centeredBSplineFinitePrimeKernelProfile
+        11 primaryK11Ell primaryK11PrimeWeight primaryK11PrimeShift
+        (primaryK11Center j - primaryK11Center i) -
+      primaryK11P i j| =
+        |∑ n : PrimeShiftIndexL3,
+          (primaryK11FinitePrimeProfileTerm i j n - termMid i j n)| := by
+          rw [hdiff]
+    _ ≤ ∑ n : PrimeShiftIndexL3,
+        |primaryK11FinitePrimeProfileTerm i j n - termMid i j n| := by
+          exact Finset.abs_sum_le_sum_abs _ _
+    _ ≤ ∑ n : PrimeShiftIndexL3, termRad i j n := by
+          exact Finset.sum_le_sum (fun n _ => hterm i j n)
+    _ ≤ primaryK11PRadius i j := hrad i j
 
 /-- Primary `k=11` analytic prime entries are the finite prime kernel profile
 on the active packet centers. -/
@@ -53,6 +150,27 @@ theorem primaryK11AnalyticP_entry_hbox_of_profile_hbox
       primaryK11AnalyticP primaryK11P primaryK11PRadius := by
   intro i j
   simpa [primaryK11AnalyticP_entry i j] using hprofile i j
+
+/-- Termwise midpoint/radius certificates imply the final primary analytic
+`P` hbox field. -/
+theorem primaryK11AnalyticP_entry_hbox_of_term_hboxes
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hterm :
+      ∀ i j n,
+        |primaryK11FinitePrimeProfileTerm i j n - termMid i j n| ≤
+          termRad i j n)
+    (hmid :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termMid i j n) = primaryK11P i j)
+    (hrad :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termRad i j n) ≤ primaryK11PRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      primaryK11AnalyticP primaryK11P primaryK11PRadius :=
+  primaryK11AnalyticP_entry_hbox_of_profile_hbox
+    (primaryK11FinitePrimeKernelProfile_entry_hbox_of_term_hboxes
+      termMid termRad hterm hmid hrad)
 
 /-- Control `k=9` analytic prime entries are the finite prime kernel profile
 on the active packet centers. -/
