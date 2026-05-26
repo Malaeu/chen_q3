@@ -13359,6 +13359,23 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.product_right_transfer`
+
+- Target: add the symmetric monotone transfer needed when a finite-count bound
+  is first proved against `countBound_k` and then compared to a larger
+  log-loss envelope `logBound_k`.
+- This is pure bookkeeping, not an analytic zero-counting theorem: if
+  `eta_k >= 0`, `countBound_k <= logBound_k`, and
+  `eta_k * logBound_k -> 0`, then `eta_k * countBound_k -> 0`.
+- The existing `po3_product_tends_to_zero_of_le_left` handles
+  `eta <= etaBound`; the finite-count mirror path also needs the right-factor
+  version to keep local count envelopes explicit.
+- External checks add no stronger mathematics here; this is the elementary
+  order-preservation step under multiplication by a nonnegative left factor.
+- Plan: add `po3_product_tends_to_zero_of_le_right` next to the existing
+  left-factor lemma and reuse it later when count/log-loss envelopes are
+  instantiated.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.threshold_omitted_mass`
 
 - Target: formalize the threshold-exhaustion bookkeeping for omitted main-side
