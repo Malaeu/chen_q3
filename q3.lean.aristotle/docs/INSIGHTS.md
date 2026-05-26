@@ -13268,3 +13268,22 @@ Update:
   Q3.Proofs.PO3Cert`, `lake build Q3.Main`, `scripts/check_axioms.sh`,
   `git diff --check`, the phase-monitor marker check, and a targeted no-hole
   scan pass.
+
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.conditioned_capture_error`
+
+- Target: close the next bookkeeping lock after shifted row-error control:
+  stable projection plus `C_k ||epsilon_k|| -> 0` must produce vanishing
+  packet-capture error.
+- Local q3_docs search points back to the same live statement in
+  `PHASE_MONITOR.md`: after row errors are small, the remaining analytic
+  burden is `EndpointRowStableProjectionOrRouteKill`, i.e. prove the
+  conditioning product tends to zero or record a route kill.
+- The current `PO3Cert` file has the pointwise stable-projection inequality
+  `||q-Proj q|| <= C ||epsilon||`, but not the sequence-level handoff from
+  `C_k ||epsilon_k|| -> 0` to capture-error decay.
+- External check confirms the mathematical boundary: Vandermonde blocks are
+  nonsingular for distinct nodes, but conditioning can be severe, so the
+  singular-gap/conditioning hypothesis must remain explicit.
+- Plan: add small real convergence helpers and a sequence-level stable
+  projection consumer in `PO3Cert`; do not assert bounded-separated
+  Vandermonde conditioning itself.
