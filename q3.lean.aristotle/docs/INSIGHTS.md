@@ -13212,3 +13212,20 @@ Update:
   Q3.Proofs.PSD_CenteredCoeffPrimeDictionaryBoundsImport`,
   `lake build Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a
   targeted no-hole/native-decision scan pass.
+
+## Synthesis (2026-05-26, in progress) — `Step32N_CenteredBSplineRNonneg`
+
+- Target: expose nonnegativity of the normalized autocorrelation profile
+  `centeredBSplineR`; this is a small reusable fact for future `P/P0`
+  hbox/radius arguments.
+- Local `q3_docs` search was noisy, but direct Lean source inspection found
+  `centeredCardinalBSpline_nonneg`, `centeredBSplineEta_nonneg`,
+  `bsplineScale_pos`, and `bsplineAutocorrNorm_pos`.
+- The missing theorem is exactly `centeredBSplineR_nonneg`, following from
+  `centeredCardinalBSpline_nonneg` and the positive denominator
+  `bsplineAutocorrNorm_pos`.
+- External check only confirms the mathematical expectation that B-spline
+  kernels are nonnegative/compactly supported; the accepted artifact must be
+  the Lean theorem.
+- Plan: add a small import module proving `centeredBSplineR_nonneg` without
+  touching the large cardinal B-spline source file.
