@@ -13183,3 +13183,23 @@ Update:
   Q3.Proofs.PSD_CenteredCoeffEntryHboxImport`, `lake build Q3.Main`,
   `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
   pass.
+
+## Synthesis (2026-05-26, in progress) — `Step32M_PrimeDictionaryBounds`
+
+- Target: prepare the finite-prime `P` hbox generator without pretending to
+  prove the full `A/P/P0` matrix enclosures yet.
+- Local search was noisy, but direct source inspection found the relevant
+  reusable pattern in `Q3/Proofs/PrimeCert/IntervalLemmas.lean`:
+  `log_nat_bounds_of_exp_bounds` converts generated exponential bounds into
+  Lean bounds for `Real.log (n : Real)`.
+- The active `P` matrix depends on `activeL3PrimeShift n = r * log p` and
+  `activeL3PrimeWeight n = log p * exp(-shift/2)`, so the next honest small
+  lock is the dictionary-level positivity and shift-bound layer.
+- External check: FLINT/Arb confirms the intended numerical side is interval
+  enclosure/ball arithmetic, but those external balls still need Lean-facing
+  certificate lemmas; Lean's `native_decide` is unsuitable for critical
+  numeric proof replay because it trusts compiled code.
+- Plan: add `PSD_CenteredCoeffPrimeDictionaryBoundsImport.lean` proving
+  active L=3 prime base/exponent positivity, active/primary/control
+  shift-weight positivity, and a generic theorem that turns exp-bounds for
+  `p` into bounds for `r * log p`.
