@@ -116,6 +116,27 @@ theorem po3_gamma_profile_eq_prod (N : ℕ) (x : ℂ)
       rw [po3_gamma_profile_succ N x k hbase, ih, Finset.prod_range_succ]
       simp [mul_comm]
 
+/-- Exact finite-shift identity for the transform-side Gamma profile.
+
+This is the Lean form of the adaptive-shift equation used in
+`PO3-square.2d3`:
+`A_{k+s}(x) = A_k(x) * ∏_{h<s} (x-(N+k+h+1))^{-1}`. -/
+theorem po3_gamma_profile_add_shift_eq_prod_mul (N : ℕ) (x : ℂ)
+    (hbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m) :
+    ∀ k s,
+      po3_gamma_profile N x (k + s) =
+        Finset.prod (Finset.range s)
+          (fun h => (x - (N + k + h + 1 : ℕ) : ℂ)⁻¹) *
+            po3_gamma_profile N x k := by
+  intro k s
+  induction s with
+  | zero =>
+      simp
+  | succ s ih =>
+      rw [Nat.add_succ, po3_gamma_profile_succ N x (k + s) hbase, ih,
+        Finset.prod_range_succ]
+      ring_nf
+
 theorem po3_gamma_profile_factor_ne_zero (N : ℕ) (x : ℂ) (j : ℕ)
     (hbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m) :
     (x - (N + j + 1 : ℕ) : ℂ) ≠ 0 := by

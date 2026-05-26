@@ -13801,7 +13801,7 @@ Update:
   Q3.Main` pass; follow-up no-hole, axiom, DB, and diff checks were run in the
   same integration pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.adaptive_shift_identity`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.adaptive_shift_identity`
 
 - Target: freeze the exact finite-shift identity needed by the adaptive
   endpoint-row route:
@@ -13819,3 +13819,10 @@ Update:
 - Plan: add `po3_gamma_profile_add_shift_eq_prod_mul`, proved by induction on
   `s`, immediately after `po3_gamma_profile_eq_prod`.  Keep the same non-pole
   hypothesis as the existing Gamma/product bridge.
+- Added `po3_gamma_profile_add_shift_eq_prod_mul`.
+- Result: the adaptive-shift row route now has an exact Lean-checked finite
+  shift identity on the Gamma-profile ancestor.  Future endpoint-row formulas
+  can cite this directly instead of manually iterating the one-step recurrence.
+- Verification: direct Lean and `lake build Q3.Proofs.PO3Cert` pass; full
+  `Q3.Main`, no-hole, axiom, DB, and diff checks were run in the same
+  integration pass.

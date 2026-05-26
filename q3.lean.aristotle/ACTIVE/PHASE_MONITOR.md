@@ -449,6 +449,17 @@ Exact failure criterion:
   for the selected endpoint rows, or prove the obstruction side for the actual
   rows.
 
+## Result (2026-05-26) — adaptive shift identity frozen
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports `po3_gamma_profile_add_shift_eq_prod_mul`;
+- this is the exact finite-shift equation
+  `A_{k+s}(x)=A_k(x) * prod_{h<s}(x-(N+k+h+1))^{-1}` for the
+  `po3_gamma_profile` ancestor, proved by finite iteration of the existing
+  one-step Gamma recurrence;
+- the adaptive endpoint-row route can now cite one Lean theorem for the
+  `Shift_{k,s}` factor before moving to future-slope and row-error estimates.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge
