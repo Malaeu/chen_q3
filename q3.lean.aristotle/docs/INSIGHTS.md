@@ -13744,3 +13744,20 @@ Update:
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
   Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
   DB re-import pass.
+
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.sqrt_card_row_factor_bound`
+
+- Target: finish the row-factor side of the bounded-separated branch: once the
+  selected endpoint-row set has uniformly bounded cardinality, the norm
+  correction factor `sqrt(card rows_k)` should be an eventually bounded
+  positive sequence.
+- Local search and the active monitor point to the same conditioning split:
+  stable Vandermonde separation controls `C_k`, while bounded selected row
+  count controls the row-factor side.
+- The previous Lean lemma proves the pointwise Euclidean norm correction.  The
+  missing reusable bridge is the sequence-level boundedness of the specific
+  factor `sqrt(card rows_k)`.
+- Plan: add a small theorem
+  `po3_sqrt_card_row_factor_eventually_bounded_of_card_bound` in `PO3Cert`,
+  taking an eventual natural cardinality bound and returning
+  `po3_eventually_bounded_above_by_pos (fun k => sqrt(card rows_k))`.
