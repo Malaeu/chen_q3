@@ -13184,7 +13184,7 @@ Update:
   `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
   pass.
 
-## Synthesis (2026-05-26, in progress) — `Step32M_PrimeDictionaryBounds`
+## Synthesis (2026-05-26, OK) — `Step32M_PrimeDictionaryBounds`
 
 - Target: prepare the finite-prime `P` hbox generator without pretending to
   prove the full `A/P/P0` matrix enclosures yet.
@@ -13199,7 +13199,16 @@ Update:
   enclosure/ball arithmetic, but those external balls still need Lean-facing
   certificate lemmas; Lean's `native_decide` is unsuitable for critical
   numeric proof replay because it trusts compiled code.
-- Plan: add `PSD_CenteredCoeffPrimeDictionaryBoundsImport.lean` proving
-  active L=3 prime base/exponent positivity, active/primary/control
-  shift-weight positivity, and a generic theorem that turns exp-bounds for
-  `p` into bounds for `r * log p`.
+- Added `Q3/Proofs/PSD_CenteredCoeffPrimeDictionaryBoundsImport.lean`.
+- It proves active L=3 prime base/exponent positivity, active shift/weight
+  positivity, and primary/control shift/weight positivity.
+- It also exposes `activeL3PrimeLog_bounds_of_exp_bounds`,
+  `activeL3PrimeShift_bounds_of_log_bounds`, and
+  `activeL3PrimeShift_bounds_of_exp_bounds`, so generated `P` hbox code can
+  reuse the PrimeCert log-bound pattern instead of restating it entry-by-entry.
+- The finite 98-entry positivity checks use `fin_cases` plus kernel-level
+  `decide`; no `native_decide` is used.
+- Verification: direct Lean, `lake build
+  Q3.Proofs.PSD_CenteredCoeffPrimeDictionaryBoundsImport`,
+  `lake build Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a
+  targeted no-hole/native-decision scan pass.
