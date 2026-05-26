@@ -13082,3 +13082,37 @@ Update:
   `lake build Q3.Proofs.PSD_CenteredCoeffCertifiedBlockImport`,
   `lake build Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a
   targeted no-hole scan all pass.
+
+## Result (2026-05-26) — `Step32J_BaseMatrixHboxReceiver`
+
+- Target: reduce the final certified-block premises from D/R hboxes to the
+  natural Step18--22 entry hboxes for analytic `A`, `P`, and `P0` against the
+  imported midpoint/radius payloads.
+- Local `q3_docs` search is noisy on the fresh Step32J name, but the older
+  Step18--22 notes are decisive: the active proof-grade CSV contract is
+  exactly entry midpoint/radius data for `A`, `P`, `P0`, and `Q`, with
+  `Dtheta = (1 - theta) A - P + theta * kappa * P0` and
+  `Rkappa = A - kappa * P0`.
+- Source inspection confirms `BSplineFormulaContract` exposes analytic `A` and
+  `P` through `toFormulaContract`, while `P0` is not yet a Lean analytic
+  object; the next wrapper must therefore accept analytic `P0` as a parameter
+  until the compact-support integral definition lands.
+- External FLINT/Arb docs support the existing backend choice: Step20--22
+  midpoint/radius CSVs are ball-arithmetic enclosures, but Lean should only
+  consume them as explicit rational hbox certificates, not as trusted runtime
+  computations.
+- Important negative check: choosing `R = imported R` would force a C-hbox
+  radius; `primaryK11DBaseRadius` is smaller than the crude `A+P` radius in
+  some entries, so that shortcut is invalid.
+- Added `Q3/Proofs/PSD_CenteredCoeffBaseHboxImport.lean`, with generic sharp
+  hbox propagation lemmas from `A/P/P0` to `Rkappa` and `Dtheta`.
+- The module exposes `primaryK11AnalyticA/P` and `controlK9AnalyticA/P` from
+  the existing `BSplineFormulaContract` objects, then wires
+  `primaryK11CertifiedCoeffBlock_of_baseMatrixHboxes` and
+  `controlK9CertifiedCoeffBlock_of_baseMatrixHboxes`.
+- `P0a` intentionally remains a parameter: the compact-support analytic `P0`
+  object and its entry hboxes are the next remaining Lean bridge.
+- Verification: direct Lean, `lake build
+  Q3.Proofs.PSD_CenteredCoeffBaseHboxImport`, `lake build Q3.Main`,
+  `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
+  pass.
