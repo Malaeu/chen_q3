@@ -257,6 +257,66 @@ theorem po3_endpoint_row_log_mass_mirror_control
         exact add_le_add (le_trans hnear_eta hnear_scale) hfar_scale
     _ = ε * scale k := by ring
 
+/-- Sum of two row-small estimates against the same moving scale. -/
+theorem po3_row_relative_small_add
+    {row₁ row₂ scale : ℕ → ℝ}
+    (hrow₁ : po3_row_relative_small row₁ scale)
+    (hrow₂ : po3_row_relative_small row₂ scale) :
+    po3_row_relative_small (fun k => row₁ k + row₂ k) scale := by
+  intro ε hεpos
+  have hhalf_pos : 0 < ε / 2 := by positivity
+  rcases hrow₁ (ε / 2) hhalf_pos with ⟨K₁, hK₁⟩
+  rcases hrow₂ (ε / 2) hhalf_pos with ⟨K₂, hK₂⟩
+  refine ⟨max K₁ K₂, ?_⟩
+  intro k hk
+  have hk₁ : K₁ ≤ k := le_trans (le_max_left _ _) hk
+  have hk₂ : K₂ ≤ k := le_trans (le_max_right _ _) hk
+  calc
+    row₁ k + row₂ k
+        ≤ (ε / 2) * scale k + (ε / 2) * scale k := by
+          exact add_le_add (hK₁ k hk₁) (hK₂ k hk₂)
+    _ = ε * scale k := by ring
+
+/-- If a normalized shifted row error is bounded by two row-small pieces, it is
+row-small. -/
+theorem po3_shifted_row_error_relative_small_of_parts
+    {epsilon mirrorAbs omittedAMass scale : ℕ → ℝ}
+    (herror : ∀ k, epsilon k ≤ mirrorAbs k + omittedAMass k)
+    (hmirror : po3_row_relative_small mirrorAbs scale)
+    (homitted : po3_row_relative_small omittedAMass scale) :
+    po3_row_relative_small epsilon scale := by
+  intro ε hεpos
+  rcases po3_row_relative_small_add hmirror homitted ε hεpos with ⟨K, hK⟩
+  refine ⟨K, ?_⟩
+  intro k hk
+  exact le_trans (herror k) (hK k hk)
+
+/-- `PO3-square.2d3.shifted-error-after-stable-rows` consumer.
+
+The shifted row error is small once the mirror row is handled by the log-loss
+mirror consumer and the omitted main-side `A` mass is already small by
+threshold exhaustion. -/
+theorem po3_shifted_row_error_small_of_log_mirror_and_threshold
+    {epsilon mirrorAbs nearAMass farMirror eta logLoss omittedAMass scale :
+      ℕ → ℝ}
+    (hscale_nonneg : ∀ k, 0 ≤ scale k)
+    (heta_nonneg : ∀ k, 0 ≤ eta k)
+    (hmirror :
+      ∀ k, mirrorAbs k ≤ eta k * nearAMass k + farMirror k)
+    (hnear :
+      ∀ k, nearAMass k ≤ logLoss k * scale k)
+    (hetaLog : po3_product_tends_to_zero eta logLoss)
+    (hfar : po3_row_relative_small farMirror scale)
+    (herror : ∀ k, epsilon k ≤ mirrorAbs k + omittedAMass k)
+    (homitted : po3_row_relative_small omittedAMass scale) :
+    po3_row_relative_small epsilon scale := by
+  have hmirror_small : po3_row_relative_small mirrorAbs scale :=
+    po3_endpoint_row_log_mass_mirror_control
+      hscale_nonneg heta_nonneg hmirror hnear hetaLog hfar
+  exact
+    po3_shifted_row_error_relative_small_of_parts
+      herror hmirror_small homitted
+
 /-! ## Variable-packet capture consumer -/
 
 /-- `VariableComparablePacketCapture` as a stable-projection consumer.

@@ -13238,7 +13238,7 @@ Update:
   `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
   pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.shifted_row_error_consumer`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.shifted_row_error_consumer`
 
 - Target: add the missing Lean-side connector for the active monitor target:
   normalized shifted row-error smallness after stable endpoint rows.
@@ -13255,3 +13255,16 @@ Update:
 - Plan: add small row-smallness addition and shifted-row-error consumer lemmas
   to `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`;
   do not claim the analytic zero-counting or packet-separation estimates.
+- Added `po3_row_relative_small_add`,
+  `po3_shifted_row_error_relative_small_of_parts`, and
+  `po3_shifted_row_error_small_of_log_mirror_and_threshold`.
+- The new consumer proves the bookkeeping target: if log-loss mirror control
+  makes the mirror row small and threshold exhaustion makes omitted `A` mass
+  small, then the normalized shifted row error is small against the same scale.
+- This deliberately leaves the real analytic inputs open: zero-counting,
+  threshold exhaustion, endpoint-row asymptotics, and stable-projection
+  conditioning still have to be supplied by the transform-side proof.
+- Verification: direct Lean after rebuilding `HBridge_PO3_Shell`, `lake build
+  Q3.Proofs.PO3Cert`, `lake build Q3.Main`, `scripts/check_axioms.sh`,
+  `git diff --check`, the phase-monitor marker check, and a targeted no-hole
+  scan pass.
