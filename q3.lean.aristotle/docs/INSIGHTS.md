@@ -13301,6 +13301,25 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.log_loss_finite_count_mass`
+
+- Target: make the first real log-loss bridge precise: a finite local row
+  window with a pointwise normalized row-mass bound and a count/log-loss bound
+  gives the `nearAMass <= logLoss * scale` input required by
+  `EndpointRowLogMassMirrorControl`.
+- Local `q3_docs` points to the April 25 log-loss correction: zero counting
+  gives only `O(log xi_k)` local mass loss and no spacing, so this is the
+  correct near-mass bridge before any stronger row-cluster claim.
+- The already-added mirror consumer accepts `nearAMass <= logLoss * scale`,
+  but the file still lacks the finite-counting lemma that turns pointwise
+  row-mass comparability plus local count into that hypothesis.
+- External check matches the boundary: Riemann--von Mangoldt/explicit
+  zero-counting supports a logarithmic count bound, while Vandermonde
+  conditioning remains separate and must not be folded into this lemma.
+- Plan: add a finite sum/count theorem and a mirror-control wrapper using it.
+  Keep zero-counting, coefficient decay, and row distortion as explicit
+  hypotheses rather than proving them here.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.normalized_row_sup_capture`
 
 - Target: assemble the normalized row-error chain that the active monitor
