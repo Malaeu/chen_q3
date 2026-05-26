@@ -13301,6 +13301,25 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.threshold_omitted_mass`
+
+- Target: formalize the threshold-exhaustion bookkeeping for omitted main-side
+  `A` mass: if every omitted row-effective point is below `delta_k * scale_k`,
+  the local count is at most `logLoss_k`, and `delta_k * logLoss_k -> 0`, then
+  the omitted mass is row-small against `scale_k`.
+- This is the next useful analytic-input bridge after the finite log-loss
+  near-mass lemma: it targets `RemainderRowSmall` without claiming spacing or a
+  bounded threshold packet.
+- Local notes identify this as the honest replacement for unconditional
+  `AbsoluteRowMassControl`; threshold packets may grow, so the theorem must
+  expose the product condition `delta_k logLoss_k -> 0`.
+- External zero-counting checks support only a logarithmic local count bound,
+  so the Lean theorem should use an explicit `card <= logLoss` premise and not
+  hide it inside a stronger geometric assumption.
+- Plan: add a generic `row <= factor*scale` row-smallness consumer for
+  `po3_product_tends_to_zero`, then specialize the finite-count bridge to
+  threshold omitted mass with `factor = delta * logLoss`.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 
 - Target: make the first real log-loss bridge precise: a finite local row
