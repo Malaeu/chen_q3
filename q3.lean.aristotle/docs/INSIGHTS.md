@@ -13301,7 +13301,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.threshold_omitted_mass`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.threshold_omitted_mass`
 
 - Target: formalize the threshold-exhaustion bookkeeping for omitted main-side
   `A` mass: if every omitted row-effective point is below `delta_k * scale_k`,
@@ -13319,6 +13319,20 @@ Update:
 - Plan: add a generic `row <= factor*scale` row-smallness consumer for
   `po3_product_tends_to_zero`, then specialize the finite-count bridge to
   threshold omitted mass with `factor = delta * logLoss`.
+- Added `po3_row_relative_small_of_le_product_scale`, the generic consumer
+  from `row_k <= factorLeft_k * factorRight_k * scale_k` and
+  `factorLeft_k * factorRight_k -> 0` to `row = o(scale)`.
+- Added `po3_threshold_omitted_mass_row_relative_small_of_finite_count`, which
+  proves the threshold-exhaustion omitted-mass estimate from pointwise
+  `delta_k * scale_k` control, local `card <= logLoss_k`, and
+  `delta_k * logLoss_k -> 0`.
+- Result: the main-side omitted `A`-mass now has the same Lean-checked
+  finite-count/product bridge as the mirror near-mass side.  The real open
+  inputs are the actual threshold selection, local count bound, and pointwise
+  row-effective contribution bound.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 

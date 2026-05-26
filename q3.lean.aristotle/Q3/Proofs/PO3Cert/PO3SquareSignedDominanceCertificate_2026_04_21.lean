@@ -257,6 +257,23 @@ theorem po3_product_tends_to_zero_of_bounded_left
     rwa [mul_div_cancel₀ ε hBpos.ne'] at htmp
   exact le_of_lt (lt_of_le_of_lt hmul_le hBrow_lt)
 
+/-- If `row_k <= factorLeft_k * factorRight_k * scale_k` and the factor
+product tends to zero, then `row = o(scale)`. -/
+theorem po3_row_relative_small_of_le_product_scale
+    {row factorLeft factorRight scale : ℕ → ℝ}
+    (hscale_nonneg : ∀ k, 0 ≤ scale k)
+    (hrow :
+      ∀ k, row k ≤ (factorLeft k * factorRight k) * scale k)
+    (hproduct : po3_product_tends_to_zero factorLeft factorRight) :
+    po3_row_relative_small row scale := by
+  intro ε hεpos
+  rcases hproduct ε hεpos with ⟨K, hK⟩
+  refine ⟨K, ?_⟩
+  intro k hk
+  exact
+    le_trans (hrow k)
+      (mul_le_mul_of_nonneg_right (hK k hk) (hscale_nonneg k))
+
 /-- Finite row-mass count bridge.
 
 If every point in a finite row window contributes at most `pointBound * scale`
@@ -309,6 +326,41 @@ theorem po3_endpoint_row_log_mass_bound_of_finite_count
       (hpoint k)
       (hcount k)
       (hscale_nonneg k)
+
+/-- Threshold-exhaustion omitted-mass bridge.
+
+If all omitted row-effective points are individually at most `delta_k * scale_k`,
+the local count is at most `logLoss_k`, and `delta_k * logLoss_k -> 0`, then
+the omitted mass is small relative to `scale_k`. -/
+theorem po3_threshold_omitted_mass_row_relative_small_of_finite_count
+    {ι : ℕ → Type*} [∀ k, Fintype (ι k)]
+    (rowMass : ∀ k, ι k → ℝ)
+    {omittedAMass delta logLoss scale : ℕ → ℝ}
+    (hscale_nonneg : ∀ k, 0 ≤ scale k)
+    (hdelta_nonneg : ∀ k, 0 ≤ delta k)
+    (hnear : ∀ k, omittedAMass k ≤ ∑ i, rowMass k i)
+    (hpoint : ∀ k i, rowMass k i ≤ delta k * scale k)
+    (hcount : ∀ k, (Fintype.card (ι k) : ℝ) ≤ logLoss k)
+    (hdeltaLog : po3_product_tends_to_zero delta logLoss) :
+    po3_row_relative_small omittedAMass scale := by
+  have hcount_delta :
+      ∀ k, (Fintype.card (ι k) : ℝ) * delta k ≤ delta k * logLoss k := by
+    intro k
+    have hmul :
+        delta k * (Fintype.card (ι k) : ℝ) ≤ delta k * logLoss k :=
+      mul_le_mul_of_nonneg_left (hcount k) (hdelta_nonneg k)
+    calc
+      (Fintype.card (ι k) : ℝ) * delta k
+          = delta k * (Fintype.card (ι k) : ℝ) := by ring
+      _ ≤ delta k * logLoss k := hmul
+  have hmass :
+      ∀ k, omittedAMass k ≤ (delta k * logLoss k) * scale k :=
+    po3_endpoint_row_log_mass_bound_of_finite_count
+      rowMass omittedAMass delta (fun k => delta k * logLoss k) scale
+      hnear hpoint hcount_delta hscale_nonneg
+  exact
+    po3_row_relative_small_of_le_product_scale
+      hscale_nonneg hmass hdeltaLog
 
 /-- `EndpointRowLogMassMirrorControl`.
 
