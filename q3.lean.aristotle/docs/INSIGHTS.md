@@ -13383,6 +13383,27 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.finite_count_log_envelope_wrapper`
+
+- Target: expose the finite-count mirror consumer in the form the analytic
+  log-loss route actually wants: prove the product against a larger log
+  envelope `etaBound_k * logBound_k -> 0`, compare
+  `eta_k <= etaBound_k` and `countBound_k <= logBound_k`, then feed the actual
+  finite-count `countBound_k` into the mirror estimate.
+- This is still bookkeeping, not zero-counting or row-mass analysis.  It keeps
+  the actual local count comparison and product estimate as explicit
+  hypotheses rather than burying them in the mirror theorem.
+- Local docs keep the boundary unchanged: zero-counting supplies at most a
+  logarithmic local envelope, and stable Vandermonde conditioning remains a
+  separate input.
+- External checks match that boundary: Riemann--von Mangoldt gives the
+  logarithmic zero-counting scale, while Vandermonde stability depends on
+  separation/singular-gap hypotheses.
+- Plan: add a combined product transfer
+  `po3_product_tends_to_zero_of_le_factors`, then add
+  `po3_endpoint_row_log_mass_mirror_control_of_finite_count_log_envelope` as
+  a wrapper around the existing finite-count mirror consumer.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.threshold_omitted_mass`
 
 - Target: formalize the threshold-exhaustion bookkeeping for omitted main-side
