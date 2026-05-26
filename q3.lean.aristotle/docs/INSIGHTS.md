@@ -13884,3 +13884,26 @@ Update:
   and shifted row-error smallness for the actual endpoint rows.
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, full `Q3.Main`,
   no-hole, axiom, DB, and diff checks pass.
+
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.shift_ratio_local_product_identity`
+
+- Target: connect the concrete Gamma-profile shifted row
+  `Shift_{k,s}(x)/Shift_{k,s}(xi)` to the local moved-pole factors
+  `prod_{h<s}(1+(x-xi)/(xi-(N+k+h+1)))^-1`.
+- Local lookup: the adaptive-shift note and active monitor both place the
+  normalized shifted row immediately before the future-slope asymptotic; the
+  endpoint-row product note identifies the local `1+h/(xi-j)` factors as the
+  exact algebraic input to the later log/exp estimate.
+- External sanity: DLMF §5.5 records the Gamma recurrence behind the already
+  checked finite-shift theorem, while DLMF §4.6 is the analytic follow-up for
+  log/exp series; this step remains exact finite algebra only.
+- Plan: specialize
+  `po3_gamma_profile_shift_ratio_div_shift_ratio_eq_prod_div_prod` with
+  `h=x-xi` and reuse
+  `po3_inverse_product_ratio_eq_prod_one_add_inv`.
+- Added `po3_gamma_profile_shift_ratio_local_product_identity`.
+- Result: the adaptive shifted-row multiplier now has a concrete local-factor
+  theorem directly in the `Shift_{k,s}` variables.  This removes one more
+  algebraic translation step before the analytic future-slope/log-exp proof.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, full `Q3.Main`,
+  no-hole, axiom, DB, and diff checks pass.

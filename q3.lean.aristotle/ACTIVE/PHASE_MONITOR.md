@@ -493,6 +493,18 @@ Exact failure criterion:
   turn the exact product into the future-slope/log-exp asymptotic and then use
   it to prove shifted endpoint-row error smallness for the actual rows.
 
+## Result (2026-05-26) — shifted row local factors frozen
+
+- `po3_gamma_profile_shift_ratio_local_product_identity` specializes the
+  moved-pole identity to the concrete adaptive row
+  `Shift_{k,s}(x)/Shift_{k,s}(xi)`;
+- the row multiplier is now available directly as
+  `prod_{h<s}(1+(x-xi)/(xi-(N+k+h+1)))^-1`, with non-pole conditions supplied
+  by the existing Gamma-profile lattice exclusion;
+- this leaves no remaining algebraic translation before the analytic lock:
+  prove the theta-slope/log-exp product asymptotic and shifted row-error
+  smallness for the real endpoint rows.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

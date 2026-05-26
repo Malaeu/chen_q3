@@ -245,6 +245,37 @@ theorem po3_endpoint_row_multiplier_local_product_identity
   rw [po3_inverse_product_ratio_eq_prod_one_add_inv plusPoles plus xi h hplus,
     po3_product_ratio_eq_prod_one_add minusPoles minus xi h hminus]
 
+/-- Concrete local-factor form of the adaptive shifted-row multiplier. -/
+theorem po3_gamma_profile_shift_ratio_local_product_identity (N : ℕ)
+    (x xi : ℂ)
+    (hxbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m)
+    (hxibase : ∀ m : ℕ, ((N + 1 : ℂ) - xi) ≠ -m) (k s : ℕ) :
+    (po3_gamma_profile N x (k + s) / po3_gamma_profile N x k) /
+        (po3_gamma_profile N xi (k + s) / po3_gamma_profile N xi k) =
+      Finset.prod (Finset.range s)
+        (fun h => (1 + (x - xi) / (xi - (N + k + h + 1 : ℕ) : ℂ))⁻¹) := by
+  rw [po3_gamma_profile_shift_ratio_div_shift_ratio_eq_prod_div_prod
+    N x xi hxbase hxibase k s]
+  have hpole :
+      ∀ h ∈ Finset.range s, xi - ((N + k + h + 1 : ℕ) : ℂ) ≠ 0 := by
+    intro h _
+    simpa [Nat.add_assoc, Nat.add_left_comm, Nat.add_comm] using
+      po3_gamma_profile_factor_ne_zero N xi (k + h) hxibase
+  have hlocal :=
+    po3_inverse_product_ratio_eq_prod_one_add_inv
+      (fun h => ((N + k + h + 1 : ℕ) : ℂ)) (Finset.range s) xi (x - xi) hpole
+  have hxprod :
+      Finset.prod (Finset.range s)
+          (fun h => (xi + (x - xi) - ((N + k + h + 1 : ℕ) : ℂ))⁻¹) =
+        Finset.prod (Finset.range s)
+          (fun h => (x - (N + k + h + 1 : ℕ) : ℂ)⁻¹) := by
+    refine Finset.prod_congr rfl ?_
+    intro h _
+    congr 1
+    ring
+  rw [hxprod] at hlocal
+  exact hlocal
+
 /-- The reciprocal-product avatar is exact: after multiplying by the matching
 finite denominator packet, one gets `1`. -/
 theorem po3_gamma_profile_mul_prod_eq_one (N : ℕ) (x : ℂ)
