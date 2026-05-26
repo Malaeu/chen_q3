@@ -13800,3 +13800,22 @@ Update:
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, and `lake build
   Q3.Main` pass; follow-up no-hole, axiom, DB, and diff checks were run in the
   same integration pass.
+
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.adaptive_shift_identity`
+
+- Target: freeze the exact finite-shift identity needed by the adaptive
+  endpoint-row route:
+  `A_{k+s}(x)=A_k(x) * prod_{h<s}(x-(N+k+h+1))^{-1}` for the Lean
+  `po3_gamma_profile` ancestor.
+- Local `q3_docs` search points back to
+  `h1_po3_square_2d3_adaptive_shift_constraints_2026_04_24.md` and the active
+  monitor: shifted equations are the input for future-slope adapted rows, but
+  the current Lean file only has the one-step recurrence and the full product
+  avatar.
+- External sanity check is standard: DLMF records the Gamma functional
+  relation `Gamma(z+1)=z Gamma(z)`, which is exactly the recurrence already
+  used by `po3_gamma_profile_succ`; the new theorem should be a finite
+  iteration of that checked recurrence, not a new analytic estimate.
+- Plan: add `po3_gamma_profile_add_shift_eq_prod_mul`, proved by induction on
+  `s`, immediately after `po3_gamma_profile_eq_prod`.  Keep the same non-pole
+  hypothesis as the existing Gamma/product bridge.
