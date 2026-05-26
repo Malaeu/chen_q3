@@ -13885,6 +13885,24 @@ Update:
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, full `Q3.Main`,
   no-hole, axiom, DB, and diff checks pass.
 
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_sum_to_multiplier_limit`
+
+- Target: separate the easy topological part of the endpoint-row asymptotic:
+  once a finite log sum tends to `limit`, the multiplier
+  `exp(-logSum)` tends to `exp(-limit)`.
+- Local lookup: after `po3_gamma_profile_shift_ratio_exp_neg_log_sum`, the
+  next nontrivial missing input is exactly the convergence of the log sum from
+  theta-slope/local-tube/second-order estimates.
+- External sanity: this is only continuity of the complex exponential; it does
+  not assert the theta-slope estimate itself.
+- Added `po3_exp_neg_tendsto_of_log_sum_tendsto` and
+  `po3_endpoint_row_multiplier_tendsto_of_eventual_exp_neg_log_sum`.
+- Result: the formal endpoint-row route is reduced to proving the log-sum
+  convergence statement.  The final `exp(-...)` continuity step is now
+  Lean-checked and reusable.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, full `Q3.Main`,
+  no-hole, axiom, DB, and diff checks pass.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.shift_ratio_exp_neg_log_sum`
 
 - Target: freeze the exact log/exp interface after the local-factor identity:

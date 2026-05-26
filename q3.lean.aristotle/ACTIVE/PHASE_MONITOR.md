@@ -516,6 +516,17 @@ Exact failure criterion:
   from theta-slope/local-tube/second-order estimates, then feed that into the
   shifted endpoint-row error smallness theorem.
 
+## Result (2026-05-26) — log-sum limit consumer frozen
+
+- `po3_exp_neg_tendsto_of_log_sum_tendsto` records the continuity bridge from
+  a log-sum limit to an `exp(-logSum)` multiplier limit;
+- `po3_endpoint_row_multiplier_tendsto_of_eventual_exp_neg_log_sum` packages
+  the same bridge for endpoint-row multipliers once their exact log-sum form
+  is available eventually;
+- the only remaining hard point in this subchain is now the real analytic
+  theorem: the shifted-row log sum must converge to the slope-controlled
+  exponent with the required uniformity.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

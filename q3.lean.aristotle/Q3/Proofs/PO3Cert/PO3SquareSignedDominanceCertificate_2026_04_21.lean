@@ -322,6 +322,26 @@ theorem po3_gamma_profile_shift_ratio_exp_neg_log_sum (N : ℕ)
   rw [hfactor]
   exact div_ne_zero hx_pole hxi_pole
 
+/-- Continuity bridge from a log-sum limit to the corresponding multiplier. -/
+theorem po3_exp_neg_tendsto_of_log_sum_tendsto {α : Type*} {l : Filter α}
+    {logSum : α → ℂ} {limit : ℂ}
+    (hlog : Filter.Tendsto logSum l (nhds limit)) :
+    Filter.Tendsto (fun a => Complex.exp (-(logSum a))) l
+      (nhds (Complex.exp (-limit))) := by
+  simpa [← Complex.exp_eq_exp_ℂ] using
+    (Filter.Tendsto.exp (𝕂 := ℂ) (𝔸 := ℂ) hlog.neg)
+
+/-- Endpoint-row multiplier convergence once the exact log-sum form is known. -/
+theorem po3_endpoint_row_multiplier_tendsto_of_eventual_exp_neg_log_sum
+    {α : Type*} {l : Filter α}
+    {multiplier logSum : α → ℂ} {limit : ℂ}
+    (hexact :
+      ∀ᶠ a in l, multiplier a = Complex.exp (-(logSum a)))
+    (hlog : Filter.Tendsto logSum l (nhds limit)) :
+    Filter.Tendsto multiplier l (nhds (Complex.exp (-limit))) := by
+  exact (po3_exp_neg_tendsto_of_log_sum_tendsto hlog).congr'
+    (hexact.mono fun _ h => h.symm)
+
 /-- The reciprocal-product avatar is exact: after multiplying by the matching
 finite denominator packet, one gets `1`. -/
 theorem po3_gamma_profile_mul_prod_eq_one (N : ℕ) (x : ℂ)
