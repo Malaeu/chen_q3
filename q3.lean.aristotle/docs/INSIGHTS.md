@@ -13301,7 +13301,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.mirror_suppression_transfer`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.mirror_suppression_transfer`
 
 - Target: add the monotone transfer needed for pointwise mirror suppression:
   if the actual mirror ratio `eta_k` is bounded by a sharper `etaBound_k`, and
@@ -13316,6 +13316,13 @@ Update:
   is order preservation under multiplication by a nonnegative log-loss factor.
 - Plan: add a small `po3_product_tends_to_zero_of_le_left` lemma with
   `logLoss >= 0`, then reuse it in later mirror suppression certificates.
+- Added `po3_product_tends_to_zero_of_le_left`.
+- Result: future explicit mirror-ratio bounds can prove product-smallness for a
+  sharper upper bound `etaBound`, then transfer it to the actual `eta` used by
+  `EndpointRowLogMassMirrorControl`.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.threshold_omitted_mass`
 
