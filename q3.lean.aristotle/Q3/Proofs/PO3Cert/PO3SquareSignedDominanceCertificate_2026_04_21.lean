@@ -210,6 +210,53 @@ specific zero-counting model. -/
 def po3_product_tends_to_zero (eta logLoss : ℕ → ℝ) : Prop :=
   ∀ ε > 0, ∃ K, ∀ k, K ≤ k → eta k * logLoss k ≤ ε
 
+/-- Real-valued smallness to zero, used for nonnegative error norms. -/
+def po3_real_tends_to_zero (error : ℕ → ℝ) : Prop :=
+  ∀ ε > 0, ∃ K, ∀ k, K ≤ k → error k < ε
+
+/-- Eventual positive upper bound for a scalar conditioning sequence. -/
+def po3_eventually_bounded_above_by_pos (C : ℕ → ℝ) : Prop :=
+  ∃ B > 0, ∃ K, ∀ k, K ≤ k → C k ≤ B
+
+/-- A scalar error bounded by a product tending to zero also tends to zero. -/
+theorem po3_real_tends_to_zero_of_le_product
+    {capture C rowError : ℕ → ℝ}
+    (hcapture : ∀ k, capture k ≤ C k * rowError k)
+    (hproduct : po3_product_tends_to_zero C rowError) :
+    po3_real_tends_to_zero capture := by
+  intro ε hεpos
+  have hhalf_pos : 0 < ε / 2 := by positivity
+  rcases hproduct (ε / 2) hhalf_pos with ⟨K, hK⟩
+  refine ⟨K, ?_⟩
+  intro k hk
+  exact lt_of_le_of_lt (le_trans (hcapture k) (hK k hk)) (by linarith)
+
+/-- Bounded conditioning times a real error tending to zero gives product
+smallness. -/
+theorem po3_product_tends_to_zero_of_bounded_left
+    {C rowError : ℕ → ℝ}
+    (hrow_nonneg : ∀ k, 0 ≤ rowError k)
+    (hC : po3_eventually_bounded_above_by_pos C)
+    (hrow : po3_real_tends_to_zero rowError) :
+    po3_product_tends_to_zero C rowError := by
+  intro ε hεpos
+  rcases hC with ⟨B, hBpos, KC, hKC⟩
+  have hεB_pos : 0 < ε / B := div_pos hεpos hBpos
+  rcases hrow (ε / B) hεB_pos with ⟨Krow, hKrow⟩
+  refine ⟨max KC Krow, ?_⟩
+  intro k hk
+  have hkC : KC ≤ k := le_trans (le_max_left _ _) hk
+  have hkrow : Krow ≤ k := le_trans (le_max_right _ _) hk
+  have hCk : C k ≤ B := hKC k hkC
+  have hrowk : rowError k < ε / B := hKrow k hkrow
+  have hmul_le : C k * rowError k ≤ B * rowError k :=
+    mul_le_mul_of_nonneg_right hCk (hrow_nonneg k)
+  have hBrow_lt : B * rowError k < ε := by
+    have htmp : B * rowError k < B * (ε / B) :=
+      mul_lt_mul_of_pos_left hrowk hBpos
+    rwa [mul_div_cancel₀ ε hBpos.ne'] at htmp
+  exact le_of_lt (lt_of_le_of_lt hmul_le hBrow_lt)
+
 /-- `EndpointRowLogMassMirrorControl`.
 
 If the mirror row is bounded by pointwise mirror suppression times the local
@@ -342,6 +389,54 @@ theorem po3_variable_comparable_packet_capture_of_stable_projection
     (hrow : V q = ε) :
     ‖q - Proj q‖ ≤ C * ‖ε‖ := by
   simpa [hrow] using hstable q
+
+/-- Sequence-level conditioned capture handoff.
+
+If each endpoint-row system has the stable-projection estimate and the
+conditioning product `C_k * ‖epsilon_k‖` tends to zero, then the capture error
+`‖q_k - Proj_k q_k‖` tends to zero. -/
+theorem po3_capture_error_tends_to_zero_of_stable_projection_conditioning
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    (V : ℕ → E →L[ℂ] F) (Proj : ℕ → E →L[ℂ] E)
+    (C : ℕ → ℝ) (q : ℕ → E) (rowError : ℕ → F)
+    (hstable : ∀ k x, ‖x - Proj k x‖ ≤ C k * ‖V k x‖)
+    (hrow : ∀ k, V k (q k) = rowError k)
+    (hconditioning :
+      po3_product_tends_to_zero C (fun k => ‖rowError k‖)) :
+    po3_real_tends_to_zero (fun k => ‖q k - Proj k (q k)‖) := by
+  exact
+    po3_real_tends_to_zero_of_le_product
+      (capture := fun k => ‖q k - Proj k (q k)‖)
+      (C := C)
+      (rowError := fun k => ‖rowError k‖)
+      (fun k =>
+        po3_variable_comparable_packet_capture_of_stable_projection
+          (V k) (Proj k) (C k) (hstable k) (q k) (rowError k) (hrow k))
+      hconditioning
+
+/-- Bounded-conditioning specialization of the sequence-level capture handoff.
+
+This is the Lean-side consumer for the bounded-separated branch: once the
+stable constants are eventually bounded and the row-error norms tend to zero,
+the capture error tends to zero. -/
+theorem po3_capture_error_tends_to_zero_of_bounded_stable_projection
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    (V : ℕ → E →L[ℂ] F) (Proj : ℕ → E →L[ℂ] E)
+    (C : ℕ → ℝ) (q : ℕ → E) (rowError : ℕ → F)
+    (hstable : ∀ k x, ‖x - Proj k x‖ ≤ C k * ‖V k x‖)
+    (hrow : ∀ k, V k (q k) = rowError k)
+    (hC : po3_eventually_bounded_above_by_pos C)
+    (hrowSmall : po3_real_tends_to_zero (fun k => ‖rowError k‖)) :
+    po3_real_tends_to_zero (fun k => ‖q k - Proj k (q k)‖) := by
+  exact
+    po3_capture_error_tends_to_zero_of_stable_projection_conditioning
+      V Proj C q rowError hstable hrow
+      (po3_product_tends_to_zero_of_bounded_left
+        (fun k => norm_nonneg (rowError k)) hC hrowSmall)
 
 /-- Analytic certificate shape for the fastest current branch:
 `EndpointRowsStableProjection_boundedSeparated`.

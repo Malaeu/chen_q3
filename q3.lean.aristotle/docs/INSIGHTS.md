@@ -13269,7 +13269,7 @@ Update:
   `git diff --check`, the phase-monitor marker check, and a targeted no-hole
   scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.conditioned_capture_error`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.conditioned_capture_error`
 
 - Target: close the next bookkeeping lock after shifted row-error control:
   stable projection plus `C_k ||epsilon_k|| -> 0` must produce vanishing
@@ -13287,3 +13287,16 @@ Update:
 - Plan: add small real convergence helpers and a sequence-level stable
   projection consumer in `PO3Cert`; do not assert bounded-separated
   Vandermonde conditioning itself.
+- Added `po3_real_tends_to_zero`,
+  `po3_eventually_bounded_above_by_pos`,
+  `po3_real_tends_to_zero_of_le_product`, and
+  `po3_product_tends_to_zero_of_bounded_left`.
+- Added sequence consumers
+  `po3_capture_error_tends_to_zero_of_stable_projection_conditioning` and
+  `po3_capture_error_tends_to_zero_of_bounded_stable_projection`.
+- The handoff now says exactly what the monitor needs: pointwise stable
+  projection plus `C_k * ||epsilon_k|| -> 0` gives vanishing capture error;
+  if `C_k` is eventually bounded, row-error norm decay suffices.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.
