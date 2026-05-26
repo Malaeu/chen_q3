@@ -13301,6 +13301,29 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.stable_projection_conditioning_fork`
+
+- Target: formalize the exact `EndpointRowStableProjectionOrRouteKill` fork
+  after the finite-count capture assembly: under stable endpoint-row equations,
+  either the conditioning product is small and capture follows, or failure of
+  `C_k ||epsilon_k|| -> 0` is the named obstruction for this route.
+- Local `q3_docs` search returns the route-kill policy: do not silently promote
+  a failed theorem shape; record the exact obstruction and theorem-shape being
+  killed.  Here we are not killing the route, only freezing the Lean-facing fork
+  that a future analytic result must decide.
+- Existing Lean already has the forward consumer
+  `po3_capture_error_tends_to_zero_of_stable_projection_conditioning`; what is
+  missing is a theorem named at the route boundary that exposes the negated
+  conditioning product as the alternative.
+- External linear-algebra checks support this boundary: finite-dimensional
+  norms require an explicit row factor, and Vandermonde stability/conditioning
+  depends on singular-gap or separation hypotheses rather than following
+  automatically from the row equations.
+- Plan: add a small classical disjunction theorem in `PO3Cert`:
+  `capture_error_tends_to_zero ∨ ¬ po3_product_tends_to_zero C ||rowError||`.
+  This must not claim an actual route kill; it only names the exact obstruction
+  if the product estimate cannot be proved.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.mirror_suppression_transfer`
 
 - Target: add the monotone transfer needed for pointwise mirror suppression:
