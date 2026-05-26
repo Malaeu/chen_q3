@@ -13715,7 +13715,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.euclidean_row_norm_factor`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.euclidean_row_norm_factor`
 
 - Target: close the concrete row-norm correction used by the bounded-separated
   branch: component row-error control over a finite selected row set should
@@ -13736,3 +13736,11 @@ Update:
   `||epsilon_i|| <= rowSup`.  Then the existing bounded-factor capture
   consumer can take `rowFactor_k = sqrt(card rows_k)` once bounded row count is
   supplied analytically.
+- Added `po3_euclidean_row_error_norm_le_sqrt_card_mul_sup`.
+- Result: the bounded-separated branch now has a Lean-checked finite
+  Euclidean row-norm correction.  The remaining analytic input is the actual
+  bounded selected row count and componentwise row-sup estimate for the
+  endpoint rows, not the abstract norm conversion.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
+  DB re-import pass.

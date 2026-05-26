@@ -410,6 +410,18 @@ Exact failure criterion:
   hypotheses for the selected adaptive endpoint rows, or prove the obstruction
   side of the conditioning fork for the actual rows.
 
+## Result (2026-05-26) — Euclidean row-norm factor frozen
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports `po3_euclidean_row_error_norm_le_sqrt_card_mul_sup`;
+- this closes the finite-dimensional norm-correction warning in the active
+  row-error pipeline: componentwise endpoint-row error bounds feed the
+  Euclidean row-error norm after paying the explicit factor
+  `sqrt(card rows)`;
+- the next analytic instantiation can therefore keep the row-factor side
+  honest by proving bounded selected row count plus componentwise row-sup
+  decay, rather than leaving the norm conversion implicit.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

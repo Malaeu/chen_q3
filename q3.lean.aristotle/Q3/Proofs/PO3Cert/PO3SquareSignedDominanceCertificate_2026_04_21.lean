@@ -833,6 +833,39 @@ theorem po3_capture_error_tends_to_zero_of_stable_projection_row_sup_bounded_fac
         hrowFactor_nonneg hC_bound hrowFactor_bound)
       hrowSup_nonneg hrowSup
 
+/-- Euclidean row-norm correction for finitely many selected endpoint rows.
+
+If every component row error is bounded by `rowSup`, then the Euclidean
+row-error norm pays exactly the expected `sqrt(card rows)` factor. -/
+theorem po3_euclidean_row_error_norm_le_sqrt_card_mul_sup
+    {ι : Type*} [Fintype ι]
+    (rowError : EuclideanSpace ℂ ι) (rowSup : ℝ)
+    (hrowSup_nonneg : 0 ≤ rowSup)
+    (hcoord : ∀ i, ‖rowError i‖ ≤ rowSup) :
+    ‖rowError‖ ≤ Real.sqrt (Fintype.card ι) * rowSup := by
+  classical
+  have hsum :
+      (∑ i, ‖rowError.ofLp i‖ ^ 2) ≤ ∑ _i : ι, rowSup ^ 2 := by
+    refine Finset.sum_le_sum ?_
+    intro i _hi
+    exact
+      pow_le_pow_left₀ (norm_nonneg (rowError.ofLp i))
+        (by simpa using hcoord i) 2
+  have hnorm :
+      ‖rowError‖ = Real.sqrt (∑ i, ‖rowError.ofLp i‖ ^ 2) :=
+    EuclideanSpace.norm_eq rowError
+  have hsum_const :
+      (∑ _i : ι, rowSup ^ 2) = (Fintype.card ι : ℝ) * rowSup ^ 2 := by
+    simp [Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
+  calc
+    ‖rowError‖ = Real.sqrt (∑ i, ‖rowError.ofLp i‖ ^ 2) := hnorm
+    _ ≤ Real.sqrt (∑ _i : ι, rowSup ^ 2) := Real.sqrt_le_sqrt hsum
+    _ = Real.sqrt ((Fintype.card ι : ℝ) * rowSup ^ 2) := by
+          rw [hsum_const]
+    _ = Real.sqrt (Fintype.card ι) * rowSup := by
+          rw [Real.sqrt_mul (Nat.cast_nonneg _) (rowSup ^ 2),
+            Real.sqrt_sq hrowSup_nonneg]
+
 /-- Normalized row-sup capture consumer for `PO3-square.2d3`.
 
 This combines the bookkeeping pieces in the active route:
