@@ -482,6 +482,17 @@ Exact failure criterion:
   orientation-safe future-slope/product asymptotic and the shifted row-error
   smallness, or record the obstruction.
 
+## Result (2026-05-26) — local moved-pole product identity frozen
+
+- `po3_endpoint_row_multiplier_local_product_identity` now names the exact
+  orientation-safe moved-pole identity
+  `m(xi+h)/m(xi)=prod_{P+}(1+h/(xi-j))^-1 prod_{P-}(1+h/(xi-j))`;
+- supporting one-factor and finite-product lemmas cover both reciprocal
+  upper-extension factors and direct lower-truncation factors;
+- the next lock is now the analytic one explicitly separated by this theorem:
+  turn the exact product into the future-slope/log-exp asymptotic and then use
+  it to prove shifted endpoint-row error smallness for the actual rows.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

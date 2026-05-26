@@ -13857,3 +13857,30 @@ Update:
 - Result: the endpoint-row multiplier is now a Lean-visible consequence of two
   one-point Gamma-profile shift ratios.  This still makes no analytic
   asymptotic claim; it only freezes the exact algebraic row identity.
+
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.endpoint_row_local_product_identity`
+
+- Target: freeze the exact product-model identity used before the
+  orientation-safe endpoint-row asymptotic:
+  `m(xi+h)/m(xi)=prod_{P+}(1+h/(xi-j))^-1 prod_{P-}(1+h/(xi-j))`.
+- Local lookup:
+  `docs/insights/h1_po3_square_2d3_endpoint_row_product_asymptotic_2026_04_25.md`
+  records this as the exact identity before theta-slope/local-tube/second-order
+  hypotheses.  `ACTIVE/PHASE_MONITOR.md` says the next nontrivial work is
+  future-slope/product asymptotic and shifted row-error smallness.
+- External sanity: DLMF log/exp series are the standard analytic follow-up for
+  turning products of `1+u_j` into exponential limits; this Lean step claims
+  only the exact finite product identity.
+- Plan: add single-factor plus/minus lemmas, finite-product normalized lemmas,
+  and one orientation-safe combined theorem in `PO3Cert`.
+- Added `po3_shift_factor_div_eq_one_add`,
+  `po3_inverse_shift_factor_div_eq_one_add_inv`,
+  `po3_product_ratio_eq_prod_one_add`,
+  `po3_inverse_product_ratio_eq_prod_one_add_inv`, and
+  `po3_endpoint_row_multiplier_local_product_identity`.
+- Result: moved-pole endpoint-row multipliers now have a Lean-checked exact
+  local product identity with both reciprocal and direct orientations.  The
+  remaining step is still analytic: prove the theta-slope/log-exp asymptotic
+  and shifted row-error smallness for the actual endpoint rows.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, full `Q3.Main`,
+  no-hole, axiom, DB, and diff checks pass.

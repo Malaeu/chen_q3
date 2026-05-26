@@ -184,6 +184,67 @@ theorem po3_gamma_profile_shift_ratio_div_shift_ratio_eq_prod_div_prod (N : ℕ)
   rw [po3_gamma_profile_add_shift_div_eq_prod N x hxbase k s,
     po3_gamma_profile_add_shift_div_eq_prod N xi hxibase k s]
 
+/-- Single moved lower pole as a local endpoint-row factor. -/
+theorem po3_shift_factor_div_eq_one_add (xi h pole : ℂ)
+    (hpole : xi - pole ≠ 0) :
+    (xi + h - pole) / (xi - pole) =
+      1 + h / (xi - pole) := by
+  have hrewrite : xi + h - pole = (xi - pole) + h := by ring
+  rw [hrewrite, add_div, div_self hpole]
+
+/-- Single moved upper pole as a reciprocal local endpoint-row factor. -/
+theorem po3_inverse_shift_factor_div_eq_one_add_inv (xi h pole : ℂ)
+    (hpole : xi - pole ≠ 0) :
+    ((xi + h - pole)⁻¹ / (xi - pole)⁻¹) =
+      (1 + h / (xi - pole))⁻¹ := by
+  rw [← inv_div']
+  rw [po3_shift_factor_div_eq_one_add xi h pole hpole]
+
+/-- Finite product of moved upper poles, normalized at `xi`. -/
+theorem po3_inverse_product_ratio_eq_prod_one_add_inv {ι : Type*}
+    (poles : ι → ℂ) (moved : Finset ι) (xi h : ℂ)
+    (hpole : ∀ i ∈ moved, xi - poles i ≠ 0) :
+    (Finset.prod moved (fun i => (xi + h - poles i)⁻¹)) /
+        Finset.prod moved (fun i => (xi - poles i)⁻¹) =
+      Finset.prod moved (fun i => (1 + h / (xi - poles i))⁻¹) := by
+  rw [← Finset.prod_div_distrib]
+  refine Finset.prod_congr rfl ?_
+  intro i hi
+  exact po3_inverse_shift_factor_div_eq_one_add_inv xi h (poles i) (hpole i hi)
+
+/-- Finite product of moved lower poles, normalized at `xi`. -/
+theorem po3_product_ratio_eq_prod_one_add {ι : Type*}
+    (poles : ι → ℂ) (moved : Finset ι) (xi h : ℂ)
+    (hpole : ∀ i ∈ moved, xi - poles i ≠ 0) :
+    (Finset.prod moved (fun i => (xi + h - poles i))) /
+        Finset.prod moved (fun i => (xi - poles i)) =
+      Finset.prod moved (fun i => (1 + h / (xi - poles i))) := by
+  rw [← Finset.prod_div_distrib]
+  refine Finset.prod_congr rfl ?_
+  intro i hi
+  exact po3_shift_factor_div_eq_one_add xi h (poles i) (hpole i hi)
+
+/-- Orientation-safe exact local product identity for moved endpoint-row poles.
+
+The `plus` set records poles entering as reciprocal factors, while the `minus`
+set records poles entering as direct factors.  This is the exact finite-product
+identity that precedes the theta-slope/log-exp asymptotic estimates. -/
+theorem po3_endpoint_row_multiplier_local_product_identity
+    {ιp ιm : Type*}
+    (plusPoles : ιp → ℂ) (minusPoles : ιm → ℂ)
+    (plus : Finset ιp) (minus : Finset ιm) (xi h : ℂ)
+    (hplus : ∀ i ∈ plus, xi - plusPoles i ≠ 0)
+    (hminus : ∀ i ∈ minus, xi - minusPoles i ≠ 0) :
+    ((Finset.prod plus (fun i => (xi + h - plusPoles i)⁻¹)) *
+          Finset.prod minus (fun i => (xi + h - minusPoles i))) /
+        ((Finset.prod plus (fun i => (xi - plusPoles i)⁻¹)) *
+          Finset.prod minus (fun i => (xi - minusPoles i))) =
+      (Finset.prod plus (fun i => (1 + h / (xi - plusPoles i))⁻¹)) *
+        Finset.prod minus (fun i => (1 + h / (xi - minusPoles i))) := by
+  rw [mul_div_mul_comm]
+  rw [po3_inverse_product_ratio_eq_prod_one_add_inv plusPoles plus xi h hplus,
+    po3_product_ratio_eq_prod_one_add minusPoles minus xi h hminus]
+
 /-- The reciprocal-product avatar is exact: after multiplying by the matching
 finite denominator packet, one gets `1`. -/
 theorem po3_gamma_profile_mul_prod_eq_one (N : ℕ) (x : ℂ)
