@@ -13300,3 +13300,19 @@ Update:
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
+
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.row_sup_norm_correction`
+
+- Target: encode the norm-correction warning from the active notes: component
+  row-error smallness is enough only after paying the row-count/conditioning
+  factor, e.g. `sqrt(r_k)`.
+- Local q3_docs search and the phase monitor both identify this as the next
+  exact bookkeeping lock after `C_k ||epsilon_k|| -> 0`.
+- The current Lean handoff accepts row-error norm decay, but it does not yet
+  expose the common proof shape where `||epsilon_k||` is bounded by
+  `rowFactor_k * rowSupError_k`.
+- External check only supports the standard finite-dimensional norm shape; the
+  Lean theorem should keep the actual Euclidean row-norm estimate explicit.
+- Plan: add a consumer proving `C_k ||epsilon_k|| -> 0` from
+  `||epsilon_k|| <= rowFactor_k * rowSup_k`, bounded `C_k*rowFactor_k`, and
+  `rowSup_k -> 0`.
