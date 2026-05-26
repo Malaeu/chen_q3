@@ -13237,3 +13237,21 @@ Update:
   Q3.Proofs.PSD_CenteredBSplineRBoundsImport`, `lake build Q3.Main`,
   `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
   pass.
+
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.shifted_row_error_consumer`
+
+- Target: add the missing Lean-side connector for the active monitor target:
+  normalized shifted row-error smallness after stable endpoint rows.
+- Local q3_docs search points back to the same frozen chain:
+  `ThresholdExhaustivePacketRowError` handles omitted main-side `A` mass,
+  `EndpointRowLogMassMirrorControl` handles mirror rows, and the remaining
+  bookkeeping is exactly their sum divided by the packet scale.
+- The current `PO3Cert` file already has the log-loss mirror consumer and the
+  stable/fractional Vandermonde consumers; it lacks only the direct theorem
+  combining mirror-small plus omitted-A-small into `epsilon_{k,rho}->0`.
+- External check confirms only the finite-dimensional shape: separated
+  Vandermonde nodes give the expected nonsingular model, and stable projection
+  estimates must still be paid for through the row-error conditioning scale.
+- Plan: add small row-smallness addition and shifted-row-error consumer lemmas
+  to `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`;
+  do not claim the analytic zero-counting or packet-separation estimates.
