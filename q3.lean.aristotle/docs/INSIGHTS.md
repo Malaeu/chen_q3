@@ -13301,7 +13301,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.normalized_row_sup_capture`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.normalized_row_sup_capture`
 
 - Target: assemble the normalized row-error chain that the active monitor
   actually needs: log-loss mirror control plus omitted `A`-mass control gives
@@ -13320,6 +13320,18 @@ Update:
   `po3_real_tends_to_zero error`, then add a combined normalized row-sup
   stable-projection consumer.  Do not assert the analytic log-loss,
   threshold-exhaustion, or singular-gap estimates themselves.
+- Added `po3_real_tends_to_zero_of_row_relative_small_one`.
+- Added `po3_capture_error_tends_to_zero_of_log_mirror_threshold_row_sup`,
+  which combines normalized log-loss mirror control, omitted `A`-mass control,
+  the explicit row-factor norm estimate, and stable projection into one
+  capture-error conclusion.
+- Result: the active PO3 consumer side is now assembled end-to-end.  The
+  remaining open facts are exactly the analytic inputs: log-loss mirror,
+  omitted row-effective `A`-mass, row-factor estimate, and stable-projection
+  conditioning.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.row_sup_norm_correction`
 

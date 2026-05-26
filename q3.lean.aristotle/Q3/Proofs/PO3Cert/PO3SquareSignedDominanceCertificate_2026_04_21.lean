@@ -324,6 +324,21 @@ theorem po3_row_relative_small_add
           exact add_le_add (hK₁ k hk₁) (hK₂ k hk₂)
     _ = ε * scale k := by ring
 
+/-- A row-small estimate against the normalized scale `1` is ordinary
+real-valued smallness to zero. -/
+theorem po3_real_tends_to_zero_of_row_relative_small_one
+    {error : ℕ → ℝ}
+    (herror : po3_row_relative_small error (fun _ => 1)) :
+    po3_real_tends_to_zero error := by
+  intro ε hεpos
+  have hhalf_pos : 0 < ε / 2 := by positivity
+  rcases herror (ε / 2) hhalf_pos with ⟨K, hK⟩
+  refine ⟨K, ?_⟩
+  intro k hk
+  have hk_small : error k ≤ ε / 2 := by
+    simpa using hK k hk
+  exact lt_of_le_of_lt hk_small (by linarith)
+
 /-- If a normalized shifted row error is bounded by two row-small pieces, it is
 row-small. -/
 theorem po3_shifted_row_error_relative_small_of_parts
@@ -492,6 +507,52 @@ theorem po3_capture_error_tends_to_zero_of_stable_projection_row_sup
       V Proj C q rowError hstable hrow
       (po3_conditioning_product_tends_to_zero_of_row_sup_bound
         hC_nonneg hrowNorm_bound hCfactor hrowSup_nonneg hrowSup)
+
+/-- Normalized row-sup capture consumer for `PO3-square.2d3`.
+
+This combines the bookkeeping pieces in the active route:
+log-loss mirror control and omitted `A`-mass control make the normalized row
+supremum tend to zero; the explicit row-factor estimate turns that into
+conditioned row-norm smallness; stable projection then gives capture. -/
+theorem po3_capture_error_tends_to_zero_of_log_mirror_threshold_row_sup
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    (V : ℕ → E →L[ℂ] F) (Proj : ℕ → E →L[ℂ] E)
+    (C rowFactor rowSup : ℕ → ℝ) (q : ℕ → E) (rowError : ℕ → F)
+    (mirrorAbs nearAMass farMirror eta logLoss omittedAMass : ℕ → ℝ)
+    (hstable : ∀ k x, ‖x - Proj k x‖ ≤ C k * ‖V k x‖)
+    (hrow : ∀ k, V k (q k) = rowError k)
+    (hC_nonneg : ∀ k, 0 ≤ C k)
+    (hrowNorm_bound : ∀ k, ‖rowError k‖ ≤ rowFactor k * rowSup k)
+    (hCfactor : po3_eventually_bounded_above_by_pos
+      (fun k => C k * rowFactor k))
+    (heta_nonneg : ∀ k, 0 ≤ eta k)
+    (hmirror :
+      ∀ k, mirrorAbs k ≤ eta k * nearAMass k + farMirror k)
+    (hnear : ∀ k, nearAMass k ≤ logLoss k)
+    (hetaLog : po3_product_tends_to_zero eta logLoss)
+    (hfar : po3_row_relative_small farMirror (fun _ => 1))
+    (hrowSup_bound : ∀ k, rowSup k ≤ mirrorAbs k + omittedAMass k)
+    (homitted : po3_row_relative_small omittedAMass (fun _ => 1))
+    (hrowSup_nonneg : ∀ k, 0 ≤ rowSup k) :
+    po3_real_tends_to_zero (fun k => ‖q k - Proj k (q k)‖) := by
+  have hrowSup_small : po3_real_tends_to_zero rowSup :=
+    po3_real_tends_to_zero_of_row_relative_small_one
+      (po3_shifted_row_error_small_of_log_mirror_and_threshold
+        (scale := fun _ => 1)
+        (fun _ => by norm_num)
+        heta_nonneg
+        hmirror
+        (fun k => by simpa using hnear k)
+        hetaLog
+        hfar
+        hrowSup_bound
+        homitted)
+  exact
+    po3_capture_error_tends_to_zero_of_stable_projection_row_sup
+      V Proj C rowFactor rowSup q rowError hstable hrow
+      hC_nonneg hrowNorm_bound hCfactor hrowSup_nonneg hrowSup_small
 
 /-- Analytic certificate shape for the fastest current branch:
 `EndpointRowsStableProjection_boundedSeparated`.
