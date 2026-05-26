@@ -13116,3 +13116,27 @@ Update:
   Q3.Proofs.PSD_CenteredCoeffBaseHboxImport`, `lake build Q3.Main`,
   `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
   pass.
+
+## Synthesis (2026-05-26, in progress) — `Step32K_AnalyticP0Receiver`
+
+- Target: remove the artificial free `P0a` object left by
+  `Step32J_BaseMatrixHboxReceiver` and replace it by the actual analytic
+  continuous-prime-main matrix used by Step21.
+- Local `q3_docs` search again points back to Step18--22 rather than to a
+  named Lean node: Step21 computes `P0(d)` by Arb enclosures of the
+  compact-support integral over `a in [0,2L]`, and Step22 treats the resulting
+  midpoint/radius CSV rows as the proof-grade hbox payload.
+- Source inspection gives the exact Lean target:
+  `PSD_CenteredCardinalBSpline.lean` already has the closed autocorrelation
+  profile `centeredBSplineR` and the finite-prime kernel receiver; the missing
+  object is only the continuous kernel
+  `∫ a in 0..2L, exp(a/2) * (r_k((d-a)/ell)+r_k((d+a)/ell))`.
+- External check: FLINT/Arb ball arithmetic justifies the generator-side
+  enclosure contract, while Mathlib interval integrals give the Lean notation
+  and object language for the compact interval definition.
+- Important boundary: this step should not fake the numerical hbox theorem.
+  The honest output is an analytic `P0` matrix plus primary/control wrappers
+  whose remaining `hP0` premise is exactly the Step21 entry hbox.
+- Plan: add a small Lean import defining the continuous `P0` kernel/profile,
+  instantiate primary/control `AnalyticP0`, and call the Step32J base-hbox
+  wrappers with that concrete analytic matrix.
