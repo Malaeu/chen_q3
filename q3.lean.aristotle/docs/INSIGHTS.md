@@ -13301,6 +13301,26 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.normalized_row_sup_capture`
+
+- Target: assemble the normalized row-error chain that the active monitor
+  actually needs: log-loss mirror control plus omitted `A`-mass control gives
+  row-sup smallness, row-sup smallness pays the finite-row norm factor, and
+  stable projection then gives capture.
+- Local `q3_docs` search and the active notes keep pointing to the same exact
+  theorem shape: `RemainderRowSmall + MirrorRowSmall => epsilon_rho -> 0`,
+  followed by the conditioning test `C_k ||epsilon_k|| -> 0`.
+- The current `PO3Cert` file now has the pieces separately, but it does not yet
+  expose a single normalized consumer from the row-error estimates to capture.
+- External check supports keeping the norm/conditioning factors explicit:
+  finite-dimensional norm equivalence pays a dimension factor, separated
+  Vandermonde stability is a conditioning hypothesis, and zero counting gives
+  log-loss rather than spacing.
+- Plan: add a small bridge from `po3_row_relative_small error 1` to
+  `po3_real_tends_to_zero error`, then add a combined normalized row-sup
+  stable-projection consumer.  Do not assert the analytic log-loss,
+  threshold-exhaustion, or singular-gap estimates themselves.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.row_sup_norm_correction`
 
 - Target: encode the norm-correction warning from the active notes: component
