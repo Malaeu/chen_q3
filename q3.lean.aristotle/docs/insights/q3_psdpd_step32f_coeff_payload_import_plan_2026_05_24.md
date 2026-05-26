@@ -36,14 +36,14 @@ block  = CertifiedCenteredBSplineCoeffBlock
 ### `psdpd_L3_k11_ell030_delta025_theta1e4`
 
 - midpoint sha256: `29d9c06befcc68ee13dbe2fe7cbad898df968ea9632f0d31c9a7d6c983411ac3`
-- radius sha256: `e6112bc2202d2560f1aab4f4e4bffdcc60586652a902859e19dd122e6d491ed2`
+- radius sha256: `6e29b6de57d2be9e6f1460d90061d65dfa18833eaa9062ec2408ca7816e41675`
 - matrix dimensions: `{'A': [23, 23], 'P': [23, 23], 'P0': [23, 23], 'Q': [2, 23]}`
 - row counts: midpoint `1633`, radius `1633`
 
 ### `psdpd_L3_k9_ell030_delta025_theta1e5`
 
 - midpoint sha256: `cc88eb915f7dc7fd499c2ae3dcfe8f5bac9615750c92ba1c1c98559c9b711a0f`
-- radius sha256: `0b3c5a067323b278a3c4fc75d8af86df4ea69dfa20c5a8472343a263e78ebea9`
+- radius sha256: `ee50429a7ed0cd9929f39e8ee5a924b61b5ddeb413c0705624a631c96c9c0c17`
 - matrix dimensions: `{'A': [23, 23], 'P': [23, 23], 'P0': [23, 23], 'Q': [2, 23]}`
 - row counts: midpoint `1633`, radius `1633`
 

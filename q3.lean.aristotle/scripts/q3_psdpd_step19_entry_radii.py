@@ -74,13 +74,13 @@ def arb_radius_against_float(x: arb, midpoint_float: float) -> float:
     """
     Return a decimal radius covering the Arb ball x around midpoint_float.
 
-    Step 18 stores only radii around the existing double midpoint, so this
-    deliberately measures against that midpoint rather than against the Arb
-    ball center.
+    Step 18 stores only radii around the existing double midpoint, serialized
+    as .18e in the CSV.  Measure against that exact decimal, because Lean
+    imports the CSV text rather than Decimal(str(float)).
     """
     lo = arb_lower_decimal(x)
     hi = arb_upper_decimal(x)
-    mid = Decimal(str(midpoint_float))
+    mid = Decimal(f"{float(midpoint_float):.18e}")
     rad = max(abs(mid - lo), abs(hi - mid))
     return float(rad * Decimal("1.0000000001") + Decimal("1e-80"))
 

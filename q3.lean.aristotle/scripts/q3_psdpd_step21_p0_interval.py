@@ -50,13 +50,13 @@ from q3_psdpd_step19_entry_radii import (
 
 
 def ball_to_mid_rad(x: arb) -> tuple[float, float]:
-    """Convert an Arb ball to float midpoint and radius around that midpoint."""
+    """Convert an Arb ball to a CSV midpoint and radius around that CSV value."""
     lo = arb_lower_decimal(x)
     hi = arb_upper_decimal(x)
 
     mid_dec = (lo + hi) / Decimal(2)
     mid_float = float(mid_dec)
-    mid_float_dec = Decimal(str(mid_float))
+    mid_float_dec = Decimal(f"{mid_float:.18e}")
 
     rad = max(abs(mid_float_dec - lo), abs(hi - mid_float_dec))
     rad = rad * Decimal("1.0000000001") + Decimal("1e-80")

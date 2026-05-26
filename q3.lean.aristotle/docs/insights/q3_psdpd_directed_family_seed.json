@@ -7,11 +7,11 @@
       "cert_id": "psdpd_family_v1:psdpd_L3_k11_ell030_delta025_theta1e4",
       "delta": 0.25,
       "dtheta_floor": {
-        "decimal": "0.000122285948",
+        "decimal": "0.000122285947",
         "den": "1000000000000",
-        "num": "122285948"
+        "num": "122285947"
       },
-      "dtheta_safe_lower": 0.00012228594850139608,
+      "dtheta_safe_lower": 0.00012228594783230456,
       "ell": 0.3,
       "family_id": "psdpd_family_v1",
       "k_spline": 11,
@@ -19,13 +19,13 @@
       "midpoint_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
       "midpoint_sha256": "29d9c06befcc68ee13dbe2fe7cbad898df968ea9632f0d31c9a7d6c983411ac3",
       "radius_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
-      "radius_sha256": "e6112bc2202d2560f1aab4f4e4bffdcc60586652a902859e19dd122e6d491ed2",
+      "radius_sha256": "6e29b6de57d2be9e6f1460d90061d65dfa18833eaa9062ec2408ca7816e41675",
       "rkappa_floor": {
-        "decimal": "0.135692207803",
+        "decimal": "0.135692207781",
         "den": "1000000000000",
-        "num": "135692207803"
+        "num": "135692207781"
       },
-      "rkappa_safe_lower": 0.1356922078030177,
+      "rkappa_safe_lower": 0.13569220778186006,
       "role": "primary",
       "step18_stdout": "q3.lean.aristotle/docs/insights/q3_psdpd_family_step18_outputs/psdpd_L3_k11_ell030_delta025_theta1e4.step18.txt",
       "tau_grid": "log:-8:8:161",
@@ -47,7 +47,7 @@
         "den": "1000000000000",
         "num": "12636922"
       },
-      "dtheta_safe_lower": 1.2636922932217566e-05,
+      "dtheta_safe_lower": 1.26369228219279e-05,
       "ell": 0.3,
       "family_id": "psdpd_family_v1",
       "k_spline": 9,
@@ -55,13 +55,13 @@
       "midpoint_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
       "midpoint_sha256": "cc88eb915f7dc7fd499c2ae3dcfe8f5bac9615750c92ba1c1c98559c9b711a0f",
       "radius_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
-      "radius_sha256": "0b3c5a067323b278a3c4fc75d8af86df4ea69dfa20c5a8472343a263e78ebea9",
+      "radius_sha256": "ee50429a7ed0cd9929f39e8ee5a924b61b5ddeb413c0705624a631c96c9c0c17",
       "rkappa_floor": {
-        "decimal": "0.001959064196",
+        "decimal": "0.001959064062",
         "den": "1000000000000",
-        "num": "1959064196"
+        "num": "1959064062"
       },
-      "rkappa_safe_lower": 0.0019590641960201293,
+      "rkappa_safe_lower": 0.0019590640625249765,
       "role": "control",
       "step18_stdout": "q3.lean.aristotle/docs/insights/q3_psdpd_family_step18_outputs/psdpd_L3_k9_ell030_delta025_theta1e5.step18.txt",
       "tau_grid": "log:-8:8:161",

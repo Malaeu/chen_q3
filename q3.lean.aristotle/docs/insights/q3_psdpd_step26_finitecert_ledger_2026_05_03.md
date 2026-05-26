@@ -11,8 +11,8 @@
 
 | cert_id | role | k | ell | theta | Dtheta safe | Rkappa safe |
 |---|---:|---:|---:|---:|---:|---:|
-| `psdpd_family_v1:psdpd_L3_k11_ell030_delta025_theta1e4` | primary | 11 | 0.3 | `0.0001` | `1.2228594850139608e-04` | `1.3569220780301769e-01` |
-| `psdpd_family_v1:psdpd_L3_k9_ell030_delta025_theta1e5` | control | 9 | 0.3 | `1e-05` | `1.2636922932217566e-05` | `1.9590641960201293e-03` |
+| `psdpd_family_v1:psdpd_L3_k11_ell030_delta025_theta1e4` | primary | 11 | 0.3 | `0.0001` | `1.2228594783230456e-04` | `1.3569220778186006e-01` |
+| `psdpd_family_v1:psdpd_L3_k9_ell030_delta025_theta1e5` | control | 9 | 0.3 | `1e-05` | `1.2636922821927900e-05` | `1.9590640625249765e-03` |
 
 ## Theorem payload
 

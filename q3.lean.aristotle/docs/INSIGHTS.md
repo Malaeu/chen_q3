@@ -12957,3 +12957,31 @@ Update:
   `primaryK11QRadius` and `controlK9QRadius` payloads.
 - No numeric enclosure is asserted here; this only removes the contract
   unfolding ambiguity.
+
+## Synthesis (2026-05-26, OK) — `Step32F_QRadiusSerializationRepair`
+
+- Target: make the active `primaryK11QRadius` and `controlK9QRadius` payloads
+  large enough for the concrete analytic Q rows exposed by
+  `Step32F_AnalyticQBoundaryRows`.
+- Local `q3_docs` queries were weak/noisy but kept the active front on the
+  Step32F imported-QRadius wrappers, not the older Rayleigh/Q route; direct
+  workspace reports identify the needed hboxes as
+  `matrixEntrywiseAbsLe primaryK11AnalyticQ primaryK11Q primaryK11QRadius` and
+  the control analogue.
+- External Python docs check: `Decimal` imports decimal strings exactly, and
+  `.18e` scientific formatting is a rounded decimal representation. Therefore
+  the radius contract must be around the exact CSV string that Lean imports,
+  not around `Decimal(str(float_midpoint))`.
+- Added `q3_psdpd_step32f_qradius_repair.py`; it recomputes the Q-row exp
+  enclosures around the exact Step22 midpoint CSV decimals and enlarges only
+  Q-radius rows with conservative slack.
+- Audit result: 20 short Q entries in primary k=11 and 20 in control k=9 before
+  repair; both blocks have zero Q-radius failures after repair.
+- Updated the shared Step19/20/21 radius helpers so future generated payloads
+  use the same CSV-midpoint contract.
+- Regenerated Step25 family manifest, Step26 finite-cert ledger, Step27 seed,
+  Step32F payload plan, `PSD_CenteredCoeffPayloadImport.lean`, and
+  `PSD_CenteredCoeffRadiusFloorImport.lean`; the family manifest remains PASS.
+- This closes the false-payload blocker. The next honest proof lock is still
+  the generated Lean proof of the finite Q-row hboxes against the repaired
+  `primaryK11QRadius` and `controlK9QRadius`.

@@ -205,6 +205,7 @@ def write_default_blocks_csv(path: Path) -> None:
     with path.open("w", newline="") as f:
         writer = csv.DictWriter(
             f,
+            lineterminator="\n",
             fieldnames=[
                 "block_id",
                 "family_id",
@@ -339,7 +340,11 @@ def run_step18(
 def write_manifest_csv(path: Path, results: list[BlockResult]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=list(asdict(results[0]).keys()))
+        writer = csv.DictWriter(
+            f,
+            fieldnames=list(asdict(results[0]).keys()),
+            lineterminator="\n",
+        )
         writer.writeheader()
         for result in results:
             writer.writerow(asdict(result))
