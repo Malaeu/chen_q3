@@ -13477,6 +13477,22 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.threshold_omitted_log_envelope`
+
+- Target: give the threshold omitted-mass consumer the same log-envelope shape
+  as the mirror side.
+- The existing theorem already proves omitted-mass smallness from pointwise
+  `delta_k * scale_k`, `card <= logLoss_k`, and
+  `delta_k * logLoss_k -> 0`; the analytic route may instead prove
+  `deltaBound_k * logBound_k -> 0` and compare
+  `delta_k <= deltaBound_k`, `countBound_k <= logBound_k`.
+- This wrapper should reuse `po3_product_tends_to_zero_of_le_factors` and then
+  call the existing threshold omitted-mass theorem.  It must not alter the
+  pointwise row-effective contribution hypothesis.
+- Plan: add
+  `po3_threshold_omitted_mass_row_relative_small_of_finite_count_log_envelope`
+  next to the existing finite-count omitted theorem.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 
 - Target: make the first real log-loss bridge precise: a finite local row
