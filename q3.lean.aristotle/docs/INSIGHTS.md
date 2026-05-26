@@ -13826,3 +13826,21 @@ Update:
 - Verification: direct Lean and `lake build Q3.Proofs.PO3Cert` pass; full
   `Q3.Main`, no-hole, axiom, DB, and diff checks were run in the same
   integration pass.
+
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.normalized_shift_ratio`
+
+- Target: expose the endpoint-row normalization form of the just-frozen Gamma
+  finite-shift identity:
+  `po3_gamma_profile N x (k+s) / po3_gamma_profile N x k =
+   prod_{h<s} (x-(N+k+h+1))^{-1}`.
+- Local lookup: the adaptive-shift note identifies normalized rows
+  `Shift_k,s(x_i)/Shift_k,s(xi_k)` as the next edge-log Vandermonde interface;
+  the active monitor says the route now moves from the exact `Shift_{k,s}`
+  factor toward future-slope and row-error estimates.
+- External sanity: this is still only the Gamma recurrence/no-zero algebra
+  behind the previous finite-shift theorem, matching the standard DLMF Gamma
+  recurrence/nonzero facts; no new analytic estimate is being claimed.
+- Added `po3_gamma_profile_ne_zero` and
+  `po3_gamma_profile_add_shift_div_eq_prod`.
+- Result: future normalized endpoint-row formulas can cite a division-safe
+  ratio theorem instead of repeating the nonzero/product cancellation proof.

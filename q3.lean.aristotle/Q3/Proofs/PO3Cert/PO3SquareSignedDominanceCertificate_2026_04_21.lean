@@ -146,6 +146,27 @@ theorem po3_gamma_profile_factor_ne_zero (N : ℕ) (x : ℂ) (j : ℕ)
   rw [hx']
   norm_num
 
+/-- The pinned Gamma profile is nonzero away from the excluded pole lattice. -/
+theorem po3_gamma_profile_ne_zero (N : ℕ) (x : ℂ)
+    (hbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m) :
+    ∀ k, po3_gamma_profile N x k ≠ 0 := by
+  intro k
+  rw [po3_gamma_profile_eq_prod N x hbase k]
+  exact Finset.prod_ne_zero_iff.mpr fun j _ =>
+    inv_ne_zero (po3_gamma_profile_factor_ne_zero N x j hbase)
+
+/-- Normalized finite-shift identity for the transform-side Gamma profile.
+
+This is the ratio form used by endpoint-row normalization:
+`A_{k+s}(x) / A_k(x) = Shift_{k,s}(x)`. -/
+theorem po3_gamma_profile_add_shift_div_eq_prod (N : ℕ) (x : ℂ)
+    (hbase : ∀ m : ℕ, ((N + 1 : ℂ) - x) ≠ -m) (k s : ℕ) :
+    po3_gamma_profile N x (k + s) / po3_gamma_profile N x k =
+      Finset.prod (Finset.range s)
+        (fun h => (x - (N + k + h + 1 : ℕ) : ℂ)⁻¹) := by
+  rw [po3_gamma_profile_add_shift_eq_prod_mul N x hbase k s]
+  field_simp [po3_gamma_profile_ne_zero N x hbase k]
+
 /-- The reciprocal-product avatar is exact: after multiplying by the matching
 finite denominator packet, one gets `1`. -/
 theorem po3_gamma_profile_mul_prod_eq_one (N : ℕ) (x : ℂ)

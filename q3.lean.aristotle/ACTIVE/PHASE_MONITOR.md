@@ -460,6 +460,18 @@ Exact failure criterion:
 - the adaptive endpoint-row route can now cite one Lean theorem for the
   `Shift_{k,s}` factor before moving to future-slope and row-error estimates.
 
+## Result (2026-05-26) — normalized shift ratio frozen
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now also exports `po3_gamma_profile_ne_zero` and
+  `po3_gamma_profile_add_shift_div_eq_prod`;
+- the normalized ratio form
+  `A_{k+s}(x)/A_k(x)=prod_{h<s}(x-(N+k+h+1))^{-1}` is available under the same
+  non-pole hypothesis;
+- the endpoint-row normalization layer can now use a division-safe theorem for
+  the `Shift_{k,s}` row multiplier before the remaining analytic
+  future-slope/row-error estimates are attacked.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge
