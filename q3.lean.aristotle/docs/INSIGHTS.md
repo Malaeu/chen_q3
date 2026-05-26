@@ -13359,7 +13359,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.product_right_transfer`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.product_right_transfer`
 
 - Target: add the symmetric monotone transfer needed when a finite-count bound
   is first proved against `countBound_k` and then compared to a larger
@@ -13375,6 +13375,13 @@ Update:
 - Plan: add `po3_product_tends_to_zero_of_le_right` next to the existing
   left-factor lemma and reuse it later when count/log-loss envelopes are
   instantiated.
+- Added `po3_product_tends_to_zero_of_le_right`.
+- Result: future finite-count mirror estimates can prove product-smallness
+  against a larger log/count envelope and transfer it down to the actual
+  count-bound factor without hiding the comparison.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.threshold_omitted_mass`
 

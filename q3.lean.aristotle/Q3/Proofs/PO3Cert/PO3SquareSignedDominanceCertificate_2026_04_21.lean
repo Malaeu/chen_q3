@@ -273,6 +273,22 @@ theorem po3_product_tends_to_zero_of_le_left
     mul_le_mul_of_nonneg_right (heta_le k) (hlog_nonneg k)
   exact le_trans hle (hK k hk)
 
+/-- Product-smallness transfers through an upper bound on the right factor. -/
+theorem po3_product_tends_to_zero_of_le_right
+    {eta logLoss logBound : ℕ → ℝ}
+    (heta_nonneg : ∀ k, 0 ≤ eta k)
+    (hlog_le : ∀ k, logLoss k ≤ logBound k)
+    (hbound : po3_product_tends_to_zero eta logBound) :
+    po3_product_tends_to_zero eta logLoss := by
+  intro ε hεpos
+  rcases hbound ε hεpos with ⟨K, hK⟩
+  refine ⟨K, ?_⟩
+  intro k hk
+  have hle :
+      eta k * logLoss k ≤ eta k * logBound k :=
+    mul_le_mul_of_nonneg_left (hlog_le k) (heta_nonneg k)
+  exact le_trans hle (hK k hk)
+
 /-- If `row_k <= factorLeft_k * factorRight_k * scale_k` and the factor
 product tends to zero, then `row = o(scale)`. -/
 theorem po3_row_relative_small_of_le_product_scale
