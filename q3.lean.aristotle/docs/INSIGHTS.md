@@ -14045,3 +14045,43 @@ Update:
   Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean` passes; no Lean code was
   weakened or faked.  The active request report now contains the exact blocker
   and next requested theorem.
+
+## Synthesis (2026-05-26, BLOCKER) — `Step32P_PrimeProfileHboxReplay`
+
+- Target: start the next requested theorem
+  `primaryK11AnalyticP_entry_hbox` without reopening closed Step32 matrix
+  identification gates.
+- Added `Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean` with
+  Lean-checked entry identities
+  `primaryK11AnalyticP_entry` and `controlK9AnalyticP_entry`, exposing the
+  analytic `P` entries as `centeredBSplineFinitePrimeKernelProfile` on the
+  active packet centers.
+- Added receiver lemmas
+  `primaryK11AnalyticP_entry_hbox_of_profile_hbox` and
+  `controlK9AnalyticP_entry_hbox_of_profile_hbox`: once the finite profile
+  scalar hbox is available, the `matrixEntrywiseAbsLe` certificate field is
+  immediate.
+- Local `q3_docs` lookup found no existing Lean replay for the exact 98-term
+  prime profile hbox; the useful hits confirm older prime certificates and
+  interval pipelines, not this Step32 finite B-spline profile theorem.
+- External sanity: Mathlib has `Real.exp_bound`/`Real.exp_bound'` for Taylor
+  exponential enclosure replay, and FLINT/Arb ball arithmetic is designed to
+  produce rigorous midpoint-radius enclosures.  Those support the generator
+  architecture but are not Lean proofs of the Step21/22 CSV entries.
+- Exact scalar blocker:
+  `primaryK11FinitePrimeKernelProfile_entry_hbox`, an entrywise theorem
+  bounding
+  `centeredBSplineFinitePrimeKernelProfile 11 primaryK11Ell
+  primaryK11PrimeWeight primaryK11PrimeShift (...)` against
+  `primaryK11P` and `primaryK11PRadius`.
+- Why current helpers are not enough:
+  `activeL3PrimeLog_bounds_of_exp_bounds` and
+  `activeL3PrimeShift_bounds_of_exp_bounds` only bound the dictionary shifts,
+  while `centeredBSplineR_nonneg` only gives nonnegativity.  The missing
+  generated proof must bound/evaluate the two `centeredBSplineR 11` terms for
+  each of 98 prime shifts and propagate the weighted sum into each imported
+  radius entry.
+- Verification: `lake env lean
+  Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean` and
+  `scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`
+  pass; no `sorry`, `exact?`, or `admit` occurs in the new Lean file.
