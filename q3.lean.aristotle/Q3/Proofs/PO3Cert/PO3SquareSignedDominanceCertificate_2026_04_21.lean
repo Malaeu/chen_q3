@@ -438,6 +438,61 @@ theorem po3_capture_error_tends_to_zero_of_bounded_stable_projection
       (po3_product_tends_to_zero_of_bounded_left
         (fun k => norm_nonneg (rowError k)) hC hrowSmall)
 
+/-- Row-sup norm-correction handoff for conditioned capture.
+
+If `‖epsilon_k‖` is bounded by `rowFactor_k * rowSup_k`, the combined
+conditioning factor `C_k * rowFactor_k` is eventually bounded, and the row-sup
+error tends to zero, then `C_k * ‖epsilon_k‖ -> 0`. -/
+theorem po3_conditioning_product_tends_to_zero_of_row_sup_bound
+    {C rowNorm rowFactor rowSup : ℕ → ℝ}
+    (hC_nonneg : ∀ k, 0 ≤ C k)
+    (hrowNorm_bound : ∀ k, rowNorm k ≤ rowFactor k * rowSup k)
+    (hCfactor : po3_eventually_bounded_above_by_pos
+      (fun k => C k * rowFactor k))
+    (hrowSup_nonneg : ∀ k, 0 ≤ rowSup k)
+    (hrowSup : po3_real_tends_to_zero rowSup) :
+    po3_product_tends_to_zero C rowNorm := by
+  intro ε hεpos
+  have hproduct :
+      po3_product_tends_to_zero (fun k => C k * rowFactor k) rowSup :=
+    po3_product_tends_to_zero_of_bounded_left
+      (C := fun k => C k * rowFactor k)
+      (rowError := rowSup)
+      hrowSup_nonneg hCfactor hrowSup
+  rcases hproduct ε hεpos with ⟨K, hK⟩
+  refine ⟨K, ?_⟩
+  intro k hk
+  have hrowk : rowNorm k ≤ rowFactor k * rowSup k := hrowNorm_bound k
+  have hleft : C k * rowNorm k ≤ C k * (rowFactor k * rowSup k) :=
+    mul_le_mul_of_nonneg_left hrowk (hC_nonneg k)
+  calc
+    C k * rowNorm k ≤ C k * (rowFactor k * rowSup k) := hleft
+    _ = (C k * rowFactor k) * rowSup k := by ring
+    _ ≤ ε := hK k hk
+
+/-- Stable-projection capture from row-sup error with explicit norm-correction
+factor. -/
+theorem po3_capture_error_tends_to_zero_of_stable_projection_row_sup
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    (V : ℕ → E →L[ℂ] F) (Proj : ℕ → E →L[ℂ] E)
+    (C rowFactor rowSup : ℕ → ℝ) (q : ℕ → E) (rowError : ℕ → F)
+    (hstable : ∀ k x, ‖x - Proj k x‖ ≤ C k * ‖V k x‖)
+    (hrow : ∀ k, V k (q k) = rowError k)
+    (hC_nonneg : ∀ k, 0 ≤ C k)
+    (hrowNorm_bound : ∀ k, ‖rowError k‖ ≤ rowFactor k * rowSup k)
+    (hCfactor : po3_eventually_bounded_above_by_pos
+      (fun k => C k * rowFactor k))
+    (hrowSup_nonneg : ∀ k, 0 ≤ rowSup k)
+    (hrowSup : po3_real_tends_to_zero rowSup) :
+    po3_real_tends_to_zero (fun k => ‖q k - Proj k (q k)‖) := by
+  exact
+    po3_capture_error_tends_to_zero_of_stable_projection_conditioning
+      V Proj C q rowError hstable hrow
+      (po3_conditioning_product_tends_to_zero_of_row_sup_bound
+        hC_nonneg hrowNorm_bound hCfactor hrowSup_nonneg hrowSup)
+
 /-- Analytic certificate shape for the fastest current branch:
 `EndpointRowsStableProjection_boundedSeparated`.
 

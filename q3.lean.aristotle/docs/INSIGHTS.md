@@ -13301,7 +13301,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.row_sup_norm_correction`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.row_sup_norm_correction`
 
 - Target: encode the norm-correction warning from the active notes: component
   row-error smallness is enough only after paying the row-count/conditioning
@@ -13316,3 +13316,15 @@ Update:
 - Plan: add a consumer proving `C_k ||epsilon_k|| -> 0` from
   `||epsilon_k|| <= rowFactor_k * rowSup_k`, bounded `C_k*rowFactor_k`, and
   `rowSup_k -> 0`.
+- Added `po3_conditioning_product_tends_to_zero_of_row_sup_bound`, which proves
+  `C_k * ||epsilon_k|| -> 0` from the explicit norm-correction estimate and an
+  eventual bound on `C_k * rowFactor_k`.
+- Added `po3_capture_error_tends_to_zero_of_stable_projection_row_sup`, which
+  plugs that product-smallness directly into the stable-projection capture
+  handoff.
+- Result: the Lean chain now records the correct consumer shape for component
+  row-error control; no theorem assumes row-sup smallness implies norm smallness
+  for free.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.
