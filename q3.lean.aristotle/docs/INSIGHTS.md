@@ -14003,3 +14003,45 @@ Update:
 - Next blocker: connect the imported primary/control interval payloads to
   concrete `CertifiedCenteredBSplineCoeffBlock` instances so the new bridge
   theorem can feed the finite positivity certificate without a manual wrapper.
+
+## Synthesis (2026-05-26, BLOCKER) — `Step32O_EntryHboxScalarReplay`
+
+- Target: execute `ACTIVE/requests/step32_next_gate/node.md` after the
+  centered B-spline matrix-identification bridge.  The live Lean surface is
+  `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`.
+- Direct source inspection confirms that
+  `PrimaryK11BaseEntryHboxCert`, `ControlK9BaseEntryHboxCert`, and
+  `ActiveCenteredCoeffEntryHboxCert` are present and compile, but only as
+  structures/wrappers; no actual `hA`, `hP`, or `hP0` proof is present.
+- Local search found the proven receiver pattern in
+  `PSD_CenteredCoeffQRowImport.lean`, the Step21/22 CSV payloads under
+  `docs/insights/q3_psdpd_step21_*` and `q3_psdpd_step22_*`, and the
+  prime-side helpers in `PSD_CenteredCoeffPrimeDictionaryBoundsImport.lean`.
+- Local `q3_docs` search was partly noisy, but the useful hits confirm the
+  same boundary: existing notes say the next real object is generated
+  `matrixEntrywiseAbsLe`, not another wrapper or numerical PSD table.
+- External primary-source check: Mathlib exposes `Real.exp_bound` for Taylor
+  replay of exponential scalar bounds
+  (https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Complex/Exponential.html#Real.exp_bound);
+  FLINT/Arb documents rigorous midpoint-radius balls
+  (https://flintlib.org/doc/arb.html), and python-flint exposes
+  `acb.integral` examples (https://python-flint.readthedocs.io/en/latest/acb.html).
+  These justify the computational certificate architecture, but they are not
+  Lean proofs of the Step21/22 CSV entries.
+- Exact missing lemma family: `primaryK11AnalyticA_entry_hbox`,
+  `primaryK11AnalyticP_entry_hbox`, `primaryK11AnalyticP0_entry_hbox`,
+  `controlK9AnalyticA_entry_hbox`, `controlK9AnalyticP_entry_hbox`, and
+  `controlK9AnalyticP0_entry_hbox`, each a `matrixEntrywiseAbsLe` statement
+  against the imported midpoint/radius matrices.
+- Smallest next theorem target: `primaryK11AnalyticP_entry_hbox`.  This is
+  narrower than Arch `A` or continuous `P0` because the prime dictionary bridge
+  already has Lean helpers for log/shift bounds.
+- Exact missing engine: a generated module such as
+  `PSD_CenteredCoeffPrimeEntryHboxImport.lean` that turns the finite prime-side
+  Step21/22 payload into scalar `matrixEntrywiseAbsLe` proof cases using
+  explicit rational certificates, `Real.exp_bound`, and
+  `activeL3PrimeLog_bounds_of_exp_bounds`.
+- Validation: `scripts/q3_check.sh
+  Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean` passes; no Lean code was
+  weakened or faked.  The active request report now contains the exact blocker
+  and next requested theorem.
