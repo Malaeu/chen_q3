@@ -13150,7 +13150,7 @@ Update:
   `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
   pass.
 
-## Synthesis (2026-05-26, in progress) — `Step32L_EntryHboxBundle`
+## Synthesis (2026-05-26, OK) — `Step32L_EntryHboxBundle`
 
 - Target: make the next generated enclosure step precise: the final base
   entry hbox inputs are `hA`, `hP`, and `hP0` for both primary/control blocks,
@@ -13170,6 +13170,16 @@ Update:
 - Important boundary: do not add fake `hA/hP/hP0` proofs.  The honest output is
   a small certificate bundle structure plus certified-block consumers, so the
   later generator has one exact theorem shape to fill.
-- Plan: add a Lean import defining primary/control base-entry hbox cert
-  bundles and wrappers from those bundles to
-  `CertifiedCenteredBSplineCoeffBlock`.
+- Added `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`.
+- The file defines `PrimaryK11BaseEntryHboxCert`,
+  `ControlK9BaseEntryHboxCert`, and `ActiveCenteredCoeffEntryHboxCert`.
+- It exposes `primaryK11CertifiedCoeffBlock_of_entryHboxCert`,
+  `controlK9CertifiedCoeffBlock_of_entryHboxCert`, and active wrappers into
+  the Step32K certified-block constructors.
+- It deliberately does not fake `hA`, `hP`, or `hP0`; these remain the exact
+  generated `matrixEntrywiseAbsLe` obligations for the Step21/22 hbox
+  pipeline.
+- Verification: direct Lean, `lake build
+  Q3.Proofs.PSD_CenteredCoeffEntryHboxImport`, `lake build Q3.Main`,
+  `scripts/check_axioms.sh`, `git diff --check`, and a targeted no-hole scan
+  pass.
