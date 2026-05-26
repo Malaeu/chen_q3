@@ -700,6 +700,99 @@ theorem po3_capture_error_tends_to_zero_of_log_mirror_threshold_row_sup
       V Proj C rowFactor rowSup q rowError hstable hrow
       hC_nonneg hrowNorm_bound hCfactor hrowSup_nonneg hrowSup_small
 
+/-- End-to-end finite-count capture assembly for `PO3-square.2d3`.
+
+This is the normalized consumer after the April log-loss correction:
+
+- mirror near-mass comes from a finite local count and pointwise row-mass bound;
+- mirror suppression is allowed to pass through the stronger `etaBound`;
+- omitted `A`-mass is handled by threshold exhaustion;
+- row-sup control pays the explicit row-factor before stable projection.
+
+All analytic estimates remain hypotheses of this theorem. -/
+theorem po3_capture_error_tends_to_zero_of_finite_count_threshold_mirror
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    {ιMirror ιOmitted : ℕ → Type*}
+    [∀ k, Fintype (ιMirror k)] [∀ k, Fintype (ιOmitted k)]
+    (mirrorRowMass : ∀ k, ιMirror k → ℝ)
+    (omittedRowMass : ∀ k, ιOmitted k → ℝ)
+    (V : ℕ → E →L[ℂ] F) (Proj : ℕ → E →L[ℂ] E)
+    (C rowFactor rowSup : ℕ → ℝ) (q : ℕ → E) (rowError : ℕ → F)
+    (mirrorAbs nearAMass farMirror eta etaBound mirrorPointBound
+      mirrorCountBound omittedAMass delta logLoss : ℕ → ℝ)
+    (hstable : ∀ k x, ‖x - Proj k x‖ ≤ C k * ‖V k x‖)
+    (hrow : ∀ k, V k (q k) = rowError k)
+    (hC_nonneg : ∀ k, 0 ≤ C k)
+    (hrowNorm_bound : ∀ k, ‖rowError k‖ ≤ rowFactor k * rowSup k)
+    (hCfactor : po3_eventually_bounded_above_by_pos
+      (fun k => C k * rowFactor k))
+    (heta_nonneg : ∀ k, 0 ≤ eta k)
+    (heta_le : ∀ k, eta k ≤ etaBound k)
+    (hmirrorCount_nonneg : ∀ k, 0 ≤ mirrorCountBound k)
+    (hetaBoundCount :
+      po3_product_tends_to_zero etaBound mirrorCountBound)
+    (hmirror :
+      ∀ k, mirrorAbs k ≤ eta k * nearAMass k + farMirror k)
+    (hmirrorNear : ∀ k, nearAMass k ≤ ∑ i, mirrorRowMass k i)
+    (hmirrorPoint :
+      ∀ k i, mirrorRowMass k i ≤ mirrorPointBound k)
+    (hmirrorCount :
+      ∀ k, (Fintype.card (ιMirror k) : ℝ) * mirrorPointBound k ≤
+        mirrorCountBound k)
+    (hfar : po3_row_relative_small farMirror (fun _ => 1))
+    (hrowSup_bound : ∀ k, rowSup k ≤ mirrorAbs k + omittedAMass k)
+    (hdelta_nonneg : ∀ k, 0 ≤ delta k)
+    (homittedNear :
+      ∀ k, omittedAMass k ≤ ∑ i, omittedRowMass k i)
+    (homittedPoint : ∀ k i, omittedRowMass k i ≤ delta k)
+    (homittedCount :
+      ∀ k, (Fintype.card (ιOmitted k) : ℝ) ≤ logLoss k)
+    (hdeltaLog : po3_product_tends_to_zero delta logLoss)
+    (hrowSup_nonneg : ∀ k, 0 ≤ rowSup k) :
+    po3_real_tends_to_zero (fun k => ‖q k - Proj k (q k)‖) := by
+  have hetaCount :
+      po3_product_tends_to_zero eta mirrorCountBound :=
+    po3_product_tends_to_zero_of_le_left
+      hmirrorCount_nonneg heta_le hetaBoundCount
+  have hmirror_small :
+      po3_row_relative_small mirrorAbs (fun _ => 1) :=
+    po3_endpoint_row_log_mass_mirror_control_of_finite_count
+      (ι := ιMirror)
+      mirrorRowMass
+      (hscale_nonneg := fun _ => by norm_num)
+      (heta_nonneg := heta_nonneg)
+      (hmirror := hmirror)
+      (hnear := hmirrorNear)
+      (hpoint := fun k i => by
+        simpa using hmirrorPoint k i)
+      (hcount := hmirrorCount)
+      (hetaCount := hetaCount)
+      (hfar := hfar)
+  have homitted_small :
+      po3_row_relative_small omittedAMass (fun _ => 1) :=
+    po3_threshold_omitted_mass_row_relative_small_of_finite_count
+      (ι := ιOmitted)
+      omittedRowMass
+      (hscale_nonneg := fun _ => by norm_num)
+      (hdelta_nonneg := hdelta_nonneg)
+      (hnear := homittedNear)
+      (hpoint := fun k i => by
+        simpa using homittedPoint k i)
+      (hcount := homittedCount)
+      (hdeltaLog := hdeltaLog)
+  have hrowSup_rel :
+      po3_row_relative_small rowSup (fun _ => 1) :=
+    po3_shifted_row_error_relative_small_of_parts
+      hrowSup_bound hmirror_small homitted_small
+  have hrowSup_small : po3_real_tends_to_zero rowSup :=
+    po3_real_tends_to_zero_of_row_relative_small_one hrowSup_rel
+  exact
+    po3_capture_error_tends_to_zero_of_stable_projection_row_sup
+      V Proj C rowFactor rowSup q rowError hstable hrow
+      hC_nonneg hrowNorm_bound hCfactor hrowSup_nonneg hrowSup_small
+
 /-- Analytic certificate shape for the fastest current branch:
 `EndpointRowsStableProjection_boundedSeparated`.
 

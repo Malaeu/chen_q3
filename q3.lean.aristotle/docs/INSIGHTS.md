@@ -13449,7 +13449,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.finite_count_capture_assembly`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.finite_count_capture_assembly`
 
 - Target: close the next bookkeeping lock by assembling the already Lean-checked
   finite-count mirror estimate, threshold omitted-mass estimate, mirror
@@ -13470,3 +13470,16 @@ Update:
   `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
   reusing the existing finite-count and row-sup consumers.  Do not assert the
   analytic estimates themselves.
+- Added
+  `po3_capture_error_tends_to_zero_of_finite_count_threshold_mirror`, the
+  normalized end-to-end consumer from finite-count mirror control, threshold
+  omitted-mass control, `eta <= etaBound` product transfer, row-sup norm
+  correction, and bounded stable projection to capture-error decay.
+- Result: the Lean-facing `PO3-square.2d3` shifted row-error path is now
+  assembled from concrete local-count hypotheses all the way to packet capture.
+  The remaining open inputs are the actual analytic estimates: local counts,
+  pointwise row-mass bounds, threshold exhaustion, mirror suppression product,
+  and stable endpoint-row conditioning.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.

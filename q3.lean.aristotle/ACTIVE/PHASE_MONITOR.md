@@ -23,7 +23,7 @@ last_completed_commit: 83e973ac
 last_completed_step_id: PO2
 last_completed_step_artifact: docs/insights/h1_po2_cross_sign_bulk_exactness_2026_03_16.md
 last_completed_step_commit: 414464f3
-next_deliverable: prove normalized shifted row-error smallness `epsilon_{k,rho}->0` for the selected stable endpoint rows, using threshold-exhaustive packet selection plus log-loss mirror control; if `C_k ||epsilon_k||` does not tend to zero, record route-kill before residue/Hermite capture
+next_deliverable: instantiate the finite-count shifted row-error capture assembly for the selected stable endpoint rows: prove local counts, pointwise row-mass bounds, threshold exhaustion, mirror suppression product, far mirror smallness, and stable conditioning; if `C_k ||epsilon_k||` does not tend to zero, record route-kill before residue/Hermite capture
 next_verify: rg -n -e "stable adaptive shifts are a support packet" -e "PO3-square.2d3.shifted-error-after-stable-rows" -e "epsilon_\\{k,rho\\}->0" -e "C_k \\|\\|epsilon_k\\|\\|" q3.lean.aristotle/docs/insights/h1_po3_square_2d3_stable_adaptive_shifts_reconciled_2026_04_27.md q3.lean.aristotle/docs/INSIGHTS.md q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md IMPLEMENTATION_PLAN.md && cd q3.lean.aristotle && lake build Q3.Proofs.PO3Cert
 
 This file is the operational single source of truth after the Q_zeta sprint is
@@ -340,6 +340,23 @@ Exact failure criterion:
   route-kill if `C_k ||epsilon_k||` does not tend to zero;
 - detailed reconciliation:
   `docs/insights/h1_po3_square_2d3_stable_adaptive_shifts_reconciled_2026_04_27.md`.
+
+## Result (2026-05-26) — finite-count shifted row-error capture assembled
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports
+  `po3_capture_error_tends_to_zero_of_finite_count_threshold_mirror`;
+- this theorem assembles the finite-count mirror bridge, threshold omitted
+  `A`-mass bridge, `eta <= etaBound` suppression transfer, row-sup
+  norm-correction factor, and stable-projection capture into one normalized
+  end-to-end consumer;
+- the theorem does not hide analytic content: local count bounds, pointwise
+  row-mass bounds, threshold exhaustion, mirror suppression product, far mirror
+  smallness, and stable endpoint-row conditioning remain explicit hypotheses;
+- the next proof-critical lock is therefore no longer shell assembly but the
+  actual analytic instantiation of these hypotheses for the selected stable
+  endpoint rows, or a route-kill certificate if one of the products/conditioning
+  factors cannot tend to zero.
 
 ## Result (2026-04-24) — base monotonicity bridge closed
 
