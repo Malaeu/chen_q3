@@ -866,6 +866,25 @@ theorem po3_euclidean_row_error_norm_le_sqrt_card_mul_sup
           rw [Real.sqrt_mul (Nat.cast_nonneg _) (rowSup ^ 2),
             Real.sqrt_sq hrowSup_nonneg]
 
+/-- Uniformly bounded selected row count gives an eventually bounded
+`sqrt(card rows)` norm-correction factor. -/
+theorem po3_sqrt_card_row_factor_eventually_bounded_of_card_bound
+    {ιRows : ℕ → Type*} [∀ k, Fintype (ιRows k)] (n0 : ℕ)
+    (hcard : ∃ K, ∀ k, K ≤ k → Fintype.card (ιRows k) ≤ n0) :
+    po3_eventually_bounded_above_by_pos
+      (fun k => Real.sqrt (Fintype.card (ιRows k))) := by
+  refine ⟨Real.sqrt (n0 : ℝ) + 1, ?_, ?_⟩
+  · positivity
+  · rcases hcard with ⟨K, hK⟩
+    refine ⟨K, ?_⟩
+    intro k hk
+    have hcast : (Fintype.card (ιRows k) : ℝ) ≤ (n0 : ℝ) := by
+      exact_mod_cast hK k hk
+    have hsqrt :
+        Real.sqrt (Fintype.card (ιRows k) : ℝ) ≤ Real.sqrt (n0 : ℝ) :=
+      Real.sqrt_le_sqrt hcast
+    linarith
+
 /-- Normalized row-sup capture consumer for `PO3-square.2d3`.
 
 This combines the bookkeeping pieces in the active route:

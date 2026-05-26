@@ -422,6 +422,18 @@ Exact failure criterion:
   honest by proving bounded selected row count plus componentwise row-sup
   decay, rather than leaving the norm conversion implicit.
 
+## Result (2026-05-26) — sqrt-card row factor boundedness frozen
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports
+  `po3_sqrt_card_row_factor_eventually_bounded_of_card_bound`;
+- if the selected endpoint-row count is eventually bounded by a fixed natural
+  number, then the factor `sqrt(card rows_k)` is an eventually bounded positive
+  sequence in the exact form expected by the bounded-factor capture consumer;
+- the row-factor side of the bounded-separated branch is now fully reduced to
+  the analytic facts of bounded selected row count and componentwise row-sup
+  decay.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

@@ -13745,7 +13745,7 @@ Update:
   Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
   DB re-import pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.sqrt_card_row_factor_bound`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.sqrt_card_row_factor_bound`
 
 - Target: finish the row-factor side of the bounded-separated branch: once the
   selected endpoint-row set has uniformly bounded cardinality, the norm
@@ -13761,3 +13761,11 @@ Update:
   `po3_sqrt_card_row_factor_eventually_bounded_of_card_bound` in `PO3Cert`,
   taking an eventual natural cardinality bound and returning
   `po3_eventually_bounded_above_by_pos (fun k => sqrt(card rows_k))`.
+- Added `po3_sqrt_card_row_factor_eventually_bounded_of_card_bound`.
+- Result: the bounded-separated branch now has both row-factor pieces:
+  componentwise endpoint-row error gives Euclidean norm after
+  `sqrt(card rows_k)`, and an eventual cardinality bound makes that factor
+  eventually bounded.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
+  DB re-import pass.
