@@ -13301,7 +13301,7 @@ Update:
   Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
   no-hole scan pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.log_loss_finite_count_mass`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 
 - Target: make the first real log-loss bridge precise: a finite local row
   window with a pointwise normalized row-mass bound and a count/log-loss bound
@@ -13319,6 +13319,19 @@ Update:
 - Plan: add a finite sum/count theorem and a mirror-control wrapper using it.
   Keep zero-counting, coefficient decay, and row distortion as explicit
   hypotheses rather than proving them here.
+- Added `po3_near_row_mass_le_count_mul_scale`, the finite window estimate
+  `nearAMass <= card * pointBound * scale <= countBound * scale`.
+- Added `po3_endpoint_row_log_mass_bound_of_finite_count`, the sequence-level
+  form for moving endpoint-row windows.
+- Added `po3_endpoint_row_log_mass_mirror_control_of_finite_count`, which feeds
+  the finite-count near-mass estimate directly into the existing log-loss
+  mirror consumer.
+- Result: the mirror side now has a Lean-checked bridge from finite local
+  counting and pointwise row comparability to the `eta * logLoss -> 0`
+  smallness consumer.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, `scripts/check_axioms.sh`, `git diff --check`, and a targeted
+  no-hole scan pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.normalized_row_sup_capture`
 

@@ -257,6 +257,59 @@ theorem po3_product_tends_to_zero_of_bounded_left
     rwa [mul_div_cancel₀ ε hBpos.ne'] at htmp
   exact le_of_lt (lt_of_le_of_lt hmul_le hBrow_lt)
 
+/-- Finite row-mass count bridge.
+
+If every point in a finite row window contributes at most `pointBound * scale`
+and `card * pointBound <= countBound`, then the total near-row mass is bounded
+by `countBound * scale`.  This is the Lean side of the log-loss row-mass
+bookkeeping; zero-counting supplies the `countBound` hypothesis elsewhere. -/
+theorem po3_near_row_mass_le_count_mul_scale
+    {ι : Type*} [Fintype ι]
+    {rowMass : ι → ℝ} {nearAMass pointBound countBound scale : ℝ}
+    (hnear : nearAMass ≤ ∑ i, rowMass i)
+    (hpoint : ∀ i, rowMass i ≤ pointBound * scale)
+    (hcount : (Fintype.card ι : ℝ) * pointBound ≤ countBound)
+    (hscale_nonneg : 0 ≤ scale) :
+    nearAMass ≤ countBound * scale := by
+  have hsum_le : (∑ i, rowMass i) ≤ ∑ _ : ι, pointBound * scale := by
+    exact Finset.sum_le_sum (fun i _ => hpoint i)
+  have hconst :
+      (∑ _ : ι, pointBound * scale)
+        = (Fintype.card ι : ℝ) * (pointBound * scale) := by
+    simp
+  have hcount_scale :
+      ((Fintype.card ι : ℝ) * pointBound) * scale ≤ countBound * scale :=
+    mul_le_mul_of_nonneg_right hcount hscale_nonneg
+  calc
+    nearAMass ≤ ∑ i, rowMass i := hnear
+    _ ≤ ∑ _ : ι, pointBound * scale := hsum_le
+    _ = (Fintype.card ι : ℝ) * (pointBound * scale) := hconst
+    _ = ((Fintype.card ι : ℝ) * pointBound) * scale := by ring
+    _ ≤ countBound * scale := hcount_scale
+
+/-- Sequence form of the finite row-mass count bridge. -/
+theorem po3_endpoint_row_log_mass_bound_of_finite_count
+    {ι : ℕ → Type*} [∀ k, Fintype (ι k)]
+    (rowMass : ∀ k, ι k → ℝ)
+    (nearAMass pointBound countBound scale : ℕ → ℝ)
+    (hnear : ∀ k, nearAMass k ≤ ∑ i, rowMass k i)
+    (hpoint : ∀ k i, rowMass k i ≤ pointBound k * scale k)
+    (hcount : ∀ k, (Fintype.card (ι k) : ℝ) * pointBound k ≤ countBound k)
+    (hscale_nonneg : ∀ k, 0 ≤ scale k) :
+    ∀ k, nearAMass k ≤ countBound k * scale k := by
+  intro k
+  exact
+    po3_near_row_mass_le_count_mul_scale
+      (rowMass := rowMass k)
+      (nearAMass := nearAMass k)
+      (pointBound := pointBound k)
+      (countBound := countBound k)
+      (scale := scale k)
+      (hnear k)
+      (hpoint k)
+      (hcount k)
+      (hscale_nonneg k)
+
 /-- `EndpointRowLogMassMirrorControl`.
 
 If the mirror row is bounded by pointwise mirror suppression times the local
@@ -303,6 +356,31 @@ theorem po3_endpoint_row_log_mass_mirror_control
     _ ≤ (ε / 2) * scale k + (ε / 2) * scale k := by
         exact add_le_add (le_trans hnear_eta hnear_scale) hfar_scale
     _ = ε * scale k := by ring
+
+/-- Log-loss mirror control where the near `A`-mass bound comes from a finite
+local count and pointwise row-mass comparability. -/
+theorem po3_endpoint_row_log_mass_mirror_control_of_finite_count
+    {ι : ℕ → Type*} [∀ k, Fintype (ι k)]
+    (rowMass : ∀ k, ι k → ℝ)
+    {mirrorAbs nearAMass farMirror eta pointBound countBound scale : ℕ → ℝ}
+    (hscale_nonneg : ∀ k, 0 ≤ scale k)
+    (heta_nonneg : ∀ k, 0 ≤ eta k)
+    (hmirror :
+      ∀ k, mirrorAbs k ≤ eta k * nearAMass k + farMirror k)
+    (hnear : ∀ k, nearAMass k ≤ ∑ i, rowMass k i)
+    (hpoint : ∀ k i, rowMass k i ≤ pointBound k * scale k)
+    (hcount : ∀ k, (Fintype.card (ι k) : ℝ) * pointBound k ≤ countBound k)
+    (hetaCount : po3_product_tends_to_zero eta countBound)
+    (hfar : po3_row_relative_small farMirror scale) :
+    po3_row_relative_small mirrorAbs scale := by
+  have hnear_log :
+      ∀ k, nearAMass k ≤ countBound k * scale k :=
+    po3_endpoint_row_log_mass_bound_of_finite_count
+      rowMass nearAMass pointBound countBound scale
+      hnear hpoint hcount hscale_nonneg
+  exact
+    po3_endpoint_row_log_mass_mirror_control
+      hscale_nonneg heta_nonneg hmirror hnear_log hetaCount hfar
 
 /-- Sum of two row-small estimates against the same moving scale. -/
 theorem po3_row_relative_small_add
