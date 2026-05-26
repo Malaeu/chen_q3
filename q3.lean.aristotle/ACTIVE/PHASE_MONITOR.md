@@ -371,6 +371,20 @@ Exact failure criterion:
   the obstruction side for the actual endpoint rows and ruling out an acceptable
   confluent/stable replacement.
 
+## Result (2026-05-26) — log-envelope row-error capture interface aligned
+
+- `Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean`
+  now exports the two-sided envelope consumer
+  `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror`;
+- both the mirror near-mass side and the threshold omitted-mass side now accept
+  conservative count/log envelopes, with product smallness proved against the
+  larger log envelope and finite counts compared into it;
+- this removes the remaining shell-level mismatch in the capture assembly.  The
+  next live work is the actual analytic instantiation: local counts, pointwise
+  row-mass bounds, envelope products, far mirror tail, and stable conditioning
+  for the selected endpoint rows, or the recorded obstruction if the
+  conditioning product cannot tend to zero.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

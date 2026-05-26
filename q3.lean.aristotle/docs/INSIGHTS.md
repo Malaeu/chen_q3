@@ -13504,7 +13504,7 @@ Update:
   Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
   DB re-import pass.
 
-## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.capture_double_log_envelope`
+## Synthesis (2026-05-26, OK) — `PO3-square.2d3.capture_double_log_envelope`
 
 - Target: remove the remaining interface mismatch in the end-to-end capture
   theorem by feeding both the mirror side and the threshold omitted side through
@@ -13524,6 +13524,17 @@ Update:
 - Plan: add
   `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror` next to
   the current one-sided log-envelope theorem.
+- Added `po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror`.
+  It assembles the mirror log-envelope bridge and the omitted-mass
+  log-envelope bridge before applying row-sup smallness and the stable
+  projection consumer.
+- Result: the end-to-end capture interface now matches the analytic route on
+  both sides: prove products against conservative log envelopes, compare local
+  finite counts into those envelopes, and keep the conditioning/product
+  amplifier explicit.
+- Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, `lake build
+  Q3.Main`, no-hole scan, `git diff --check`, `scripts/check_axioms.sh`, and
+  DB re-import pass.
 
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_loss_finite_count_mass`
 

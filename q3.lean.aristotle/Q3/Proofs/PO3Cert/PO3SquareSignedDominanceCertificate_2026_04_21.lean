@@ -1015,6 +1015,107 @@ theorem po3_capture_error_tends_to_zero_of_finite_count_log_envelope_threshold_m
       V Proj C rowFactor rowSup q rowError hstable hrow
       hC_nonneg hrowNorm_bound hCfactor hrowSup_nonneg hrowSup_small
 
+/-- End-to-end capture assembly with log/count envelopes on both row-error
+sides.
+
+The mirror and omitted estimates may use different count and log envelopes.
+This is the fully envelope-shaped consumer expected from the current
+`PO3-square.2d3` route: prove the analytic products against larger log
+envelopes, compare the finite local counts to those envelopes, and keep the
+stable-projection amplification explicit through `C * rowFactor`. -/
+theorem po3_capture_error_tends_to_zero_of_log_envelopes_threshold_mirror
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    [NormedAddCommGroup F] [NormedSpace ℂ F]
+    {ιMirror ιOmitted : ℕ → Type*}
+    [∀ k, Fintype (ιMirror k)] [∀ k, Fintype (ιOmitted k)]
+    (mirrorRowMass : ∀ k, ιMirror k → ℝ)
+    (omittedRowMass : ∀ k, ιOmitted k → ℝ)
+    (V : ℕ → E →L[ℂ] F) (Proj : ℕ → E →L[ℂ] E)
+    (C rowFactor rowSup : ℕ → ℝ) (q : ℕ → E) (rowError : ℕ → F)
+    (mirrorAbs nearAMass farMirror eta etaBound mirrorPointBound
+      mirrorCountBound mirrorLogBound omittedAMass delta deltaBound
+      omittedCountBound omittedLogBound : ℕ → ℝ)
+    (hstable : ∀ k x, ‖x - Proj k x‖ ≤ C k * ‖V k x‖)
+    (hrow : ∀ k, V k (q k) = rowError k)
+    (hC_nonneg : ∀ k, 0 ≤ C k)
+    (hrowNorm_bound : ∀ k, ‖rowError k‖ ≤ rowFactor k * rowSup k)
+    (hCfactor : po3_eventually_bounded_above_by_pos
+      (fun k => C k * rowFactor k))
+    (heta_nonneg : ∀ k, 0 ≤ eta k)
+    (hmirrorLogBound_nonneg : ∀ k, 0 ≤ mirrorLogBound k)
+    (heta_le : ∀ k, eta k ≤ etaBound k)
+    (hmirrorCount_le_log :
+      ∀ k, mirrorCountBound k ≤ mirrorLogBound k)
+    (hetaBoundLog :
+      po3_product_tends_to_zero etaBound mirrorLogBound)
+    (hmirror :
+      ∀ k, mirrorAbs k ≤ eta k * nearAMass k + farMirror k)
+    (hmirrorNear : ∀ k, nearAMass k ≤ ∑ i, mirrorRowMass k i)
+    (hmirrorPoint :
+      ∀ k i, mirrorRowMass k i ≤ mirrorPointBound k)
+    (hmirrorCount :
+      ∀ k, (Fintype.card (ιMirror k) : ℝ) * mirrorPointBound k ≤
+        mirrorCountBound k)
+    (hfar : po3_row_relative_small farMirror (fun _ => 1))
+    (hrowSup_bound : ∀ k, rowSup k ≤ mirrorAbs k + omittedAMass k)
+    (hdelta_nonneg : ∀ k, 0 ≤ delta k)
+    (homittedLogBound_nonneg : ∀ k, 0 ≤ omittedLogBound k)
+    (hdelta_le : ∀ k, delta k ≤ deltaBound k)
+    (homittedCount_le_log :
+      ∀ k, omittedCountBound k ≤ omittedLogBound k)
+    (homittedNear :
+      ∀ k, omittedAMass k ≤ ∑ i, omittedRowMass k i)
+    (homittedPoint : ∀ k i, omittedRowMass k i ≤ delta k)
+    (homittedCount :
+      ∀ k, (Fintype.card (ιOmitted k) : ℝ) ≤ omittedCountBound k)
+    (hdeltaBoundLog :
+      po3_product_tends_to_zero deltaBound omittedLogBound)
+    (hrowSup_nonneg : ∀ k, 0 ≤ rowSup k) :
+    po3_real_tends_to_zero (fun k => ‖q k - Proj k (q k)‖) := by
+  have hmirror_small :
+      po3_row_relative_small mirrorAbs (fun _ => 1) :=
+    po3_endpoint_row_log_mass_mirror_control_of_finite_count_log_envelope
+      (ι := ιMirror)
+      mirrorRowMass
+      (hscale_nonneg := fun _ => by norm_num)
+      (heta_nonneg := heta_nonneg)
+      (hlogBound_nonneg := hmirrorLogBound_nonneg)
+      (heta_le := heta_le)
+      (hcount_le := hmirrorCount_le_log)
+      (hmirror := hmirror)
+      (hnear := hmirrorNear)
+      (hpoint := fun k i => by
+        simpa using hmirrorPoint k i)
+      (hcount := hmirrorCount)
+      (hetaBoundLog := hetaBoundLog)
+      (hfar := hfar)
+  have homitted_small :
+      po3_row_relative_small omittedAMass (fun _ => 1) :=
+    po3_threshold_omitted_mass_row_relative_small_of_finite_count_log_envelope
+      (ι := ιOmitted)
+      omittedRowMass
+      (hscale_nonneg := fun _ => by norm_num)
+      (hdelta_nonneg := hdelta_nonneg)
+      (hlogBound_nonneg := homittedLogBound_nonneg)
+      (hdelta_le := hdelta_le)
+      (hcount_le := homittedCount_le_log)
+      (hnear := homittedNear)
+      (hpoint := fun k i => by
+        simpa using homittedPoint k i)
+      (hcount := homittedCount)
+      (hdeltaBoundLog := hdeltaBoundLog)
+  have hrowSup_rel :
+      po3_row_relative_small rowSup (fun _ => 1) :=
+    po3_shifted_row_error_relative_small_of_parts
+      hrowSup_bound hmirror_small homitted_small
+  have hrowSup_small : po3_real_tends_to_zero rowSup :=
+    po3_real_tends_to_zero_of_row_relative_small_one hrowSup_rel
+  exact
+    po3_capture_error_tends_to_zero_of_stable_projection_row_sup
+      V Proj C rowFactor rowSup q rowError hstable hrow
+      hC_nonneg hrowNorm_bound hCfactor hrowSup_nonneg hrowSup_small
+
 /-- Analytic certificate shape for the fastest current branch:
 `EndpointRowsStableProjection_boundedSeparated`.
 
