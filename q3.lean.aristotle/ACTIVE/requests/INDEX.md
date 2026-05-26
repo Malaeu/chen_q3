@@ -7,7 +7,10 @@
 
 ---
 
-Total nodes: 14
+Total nodes: 15
+
+## Active (Step32)
+- step32_next_gate: `requests/step32_next_gate/node.md`
 
 ## Active (PrimeCert)
 - proshka_primecert_closure_2026_01_27: `requests/proshka_primecert_closure_2026_01_27/node.md`

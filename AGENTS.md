@@ -5,6 +5,15 @@ Session entry (single): `SESSION_ENTRY.md`
 
 Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy docs.
 
+Codex self-config bootstrap:
+- Root atlas: `Q3_OBSTRUCTION_ATLAS.md`.
+- Repo skill: `.agents/skills/q3-step32-lean/SKILL.md`.
+- Active Step32 request: `q3.lean.aristotle/ACTIVE/requests/step32_next_gate/node.md`.
+- Validation helper: `scripts/q3_check.sh`.
+- Current Step32 live gate: entry hbox certificates around
+  `ActiveCenteredCoeffEntryHboxCert`; do not route new work to the already
+  closed Arch-integrability target.
+
 Aristotle integration rules (project workflow):
 - Activate venv before any Aristotle command: `source .venv/bin/activate`.
 - Submit via `aristotle prove-from-file` and check/download via the Python API snippets in the Aristotle skill.
