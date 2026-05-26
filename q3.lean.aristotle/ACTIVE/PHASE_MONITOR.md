@@ -527,6 +527,18 @@ Exact failure criterion:
   theorem: the shifted-row log sum must converge to the slope-controlled
   exponent with the required uniformity.
 
+## Current blocker (2026-05-26) — shifted-row log-sum convergence
+
+- Algebraic chain status: exact shift ratio, local moved-pole product,
+  log-sum form, and `exp(-logSum)` continuity bridge are all Lean-checked;
+- remaining proof-critical input: prove the moving finite log-sum asymptotic
+  from theta-slope, local-tube, and second-order estimates for the actual
+  endpoint rows;
+- next action: state the smallest dedicated log-sum convergence lemma, with
+  first-moment/theta-slope and quadratic-error hypotheses explicit, then either
+  prove it locally from Mathlib `Complex.LogBounds`-style tools or request a
+  targeted Aristotle iteration for that lemma only.
+
 ## Result (2026-04-24) — base monotonicity bridge closed
 
 - `Q3/Proofs/HBridge_PO3_Shell.lean` now exports the monotonicity bridge

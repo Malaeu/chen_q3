@@ -13885,6 +13885,33 @@ Update:
 - Verification: direct Lean, `lake build Q3.Proofs.PO3Cert`, full `Q3.Main`,
   no-hole, axiom, DB, and diff checks pass.
 
+## Synthesis (2026-05-26, in progress) — `PO3-square.2d3.log_sum_convergence`
+
+- Target: prove the real analytic step now isolated by the exact identities:
+  the finite log sum
+  `sum_{h<s(k)} log(1+(x_k(t)-xi_k)/(xi_k-(N+k+h+1)))`
+  must converge to the slope-controlled exponent, with the uniformity needed
+  by endpoint-row error smallness.
+- Local lookup: `h1_po3_square_2d3_endpoint_row_product_asymptotic_2026_04_25.md`
+  remains the sharpest note: it says the exact product identity is followed by
+  theta-slope, local-tube, and second-order hypotheses.  Fresh `q3_docs`
+  queries did not find an already-formal Lean theorem for this moving finite
+  log-sum estimate.
+- External sanity: DLMF §4.2 records the complex exponential/log framework,
+  and Mathlib `Complex.LogBounds` has nearby one-parameter results such as
+  `n * log (1 + g n) -> t` from `n * g n -> t`.  Those are useful shapes, but
+  the present target is a moving finite sum with endpoint-row denominators, so
+  it still needs a dedicated theta-slope/local-tube proof.
+- Plan: next formal target should be a narrowly stated log-sum convergence
+  lemma for the concrete shifted row, parameterized by (1) denominator
+  first-moment/theta-slope convergence, (2) a local smallness tube ensuring
+  all `log(1+u_h)` are on the principal branch safely, and (3) a second-order
+  bound making `sum (log(1+u_h)-u_h)` vanish.  Once this lemma is available,
+  `po3_endpoint_row_multiplier_tendsto_of_eventual_exp_neg_log_sum` supplies
+  the multiplier limit immediately.
+- Status: open analytic lock; no new algebraic blocker remains in the
+  shifted-row chain.
+
 ## Synthesis (2026-05-26, OK) — `PO3-square.2d3.log_sum_to_multiplier_limit`
 
 - Target: separate the easy topological part of the endpoint-row asymptotic:
