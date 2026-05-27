@@ -399,3 +399,66 @@ Compile status:
 - `scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`
   passes;
 - no `sorry`, `exact?`, or `admit` occurs in the touched Lean file.
+
+## Update (2026-05-27) — Prime weight receiver from log/exp-factor boxes
+
+Status: prime-weight-log-exp-receiver-compiled
+
+The prime-side `P` hbox route now has a lower receiver for the prime weights.
+Instead of requiring the generator to prove the whole weight hbox directly,
+Lean now derives it from:
+
+- a midpoint/radius hbox for `log p`;
+- a midpoint/radius hbox for `exp(-(r * log p) / 2)`;
+- generated midpoint/radius arithmetic dominance for the product.
+
+Theorem/definitions added in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+```
+
+New scalar weight receivers:
+
+```lean
+activeL3PrimeWeight_hbox_of_log_exp_factor_hboxes
+primaryK11PrimeWeight_hbox_of_log_exp_factor_hboxes
+controlK9PrimeWeight_hbox_of_log_exp_factor_hboxes
+```
+
+New final `P` hbox receivers using log/exp-factor weight inputs:
+
+```lean
+primaryK11AnalyticP_entry_hbox_of_log_exp_weight_and_R_pair_hboxes
+controlK9AnalyticP_entry_hbox_of_log_exp_weight_and_R_pair_hboxes
+```
+
+Meaning: the generated primary/control `P` proof source is now reduced to
+separate log bounds, exponential-factor bounds, R-pair bounds, and rational
+dominance checks.  The future generator no longer needs to emit a monolithic
+weight proof.
+
+The first missing proof source remains the R-pair side:
+
+```lean
+primaryK11CenteredBSplineR11PrimeShiftPair_hbox
+```
+
+but the matching generated weight payload should now feed:
+
+```lean
+primaryK11AnalyticP_entry_hbox_of_log_exp_weight_and_R_pair_hboxes
+```
+
+Commands run:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+```
+
+Compile status:
+
+- direct Lean passes for `Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`;
+- `scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`
+  passes;
+- no `sorry`, `exact?`, or `admit` occurs in the touched Lean file.

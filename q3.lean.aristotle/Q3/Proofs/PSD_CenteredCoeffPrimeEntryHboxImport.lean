@@ -148,6 +148,95 @@ private theorem mul_sum_pair_abs_sub_le
     _ = (|wm| + wr) * (xr + yr) + wr * |xm + ym| := by
           ring
 
+/-- Scalar interval multiplication for one product. -/
+private theorem mul_abs_sub_le
+    (a am ar b bm br : Real)
+    (ha : |a - am| ≤ ar)
+    (hb : |b - bm| ≤ br) :
+    |a * b - am * bm| ≤ (|am| + ar) * br + ar * |bm| := by
+  have hzero : |(0 : Real) - 0| ≤ (0 : Real) := by norm_num
+  have h := mul_sum_pair_abs_sub_le
+    a am ar b bm br 0 0 0 ha hb hzero
+  simpa using h
+
+/-- Generated log and exponential-factor hboxes imply an active prime-weight
+hbox. -/
+theorem activeL3PrimeWeight_hbox_of_log_exp_factor_hboxes
+    (logMid logRad expMid expRad weightMid weightRad :
+      PrimeShiftIndexL3 -> Real)
+    (hlog :
+      ∀ n,
+        |Real.log (activeL3PrimeBase n : Real) - logMid n| ≤ logRad n)
+    (hexp :
+      ∀ n,
+        |Real.exp (-(activeL3PrimeShift n) / 2) - expMid n| ≤ expRad n)
+    (hmid :
+      ∀ n,
+        weightMid n = logMid n * expMid n)
+    (hrad :
+      ∀ n,
+        (|logMid n| + logRad n) * expRad n +
+          logRad n * |expMid n| ≤ weightRad n) :
+    ∀ n,
+      |activeL3PrimeWeight n - weightMid n| ≤ weightRad n := by
+  intro n
+  unfold activeL3PrimeWeight
+  rw [hmid n]
+  exact le_trans
+    (mul_abs_sub_le
+      (Real.log (activeL3PrimeBase n : Real)) (logMid n) (logRad n)
+      (Real.exp (-(activeL3PrimeShift n) / 2)) (expMid n) (expRad n)
+      (hlog n) (hexp n))
+    (hrad n)
+
+theorem primaryK11PrimeWeight_hbox_of_log_exp_factor_hboxes
+    (logMid logRad expMid expRad weightMid weightRad :
+      PrimeShiftIndexL3 -> Real)
+    (hlog :
+      ∀ n,
+        |Real.log (activeL3PrimeBase n : Real) - logMid n| ≤ logRad n)
+    (hexp :
+      ∀ n,
+        |Real.exp (-(activeL3PrimeShift n) / 2) - expMid n| ≤ expRad n)
+    (hmid :
+      ∀ n,
+        weightMid n = logMid n * expMid n)
+    (hrad :
+      ∀ n,
+        (|logMid n| + logRad n) * expRad n +
+          logRad n * |expMid n| ≤ weightRad n) :
+    ∀ n,
+      |primaryK11PrimeWeight n - weightMid n| ≤ weightRad n := by
+  intro n
+  simpa [primaryK11PrimeWeight] using
+    activeL3PrimeWeight_hbox_of_log_exp_factor_hboxes
+      logMid logRad expMid expRad weightMid weightRad
+      hlog hexp hmid hrad n
+
+theorem controlK9PrimeWeight_hbox_of_log_exp_factor_hboxes
+    (logMid logRad expMid expRad weightMid weightRad :
+      PrimeShiftIndexL3 -> Real)
+    (hlog :
+      ∀ n,
+        |Real.log (activeL3PrimeBase n : Real) - logMid n| ≤ logRad n)
+    (hexp :
+      ∀ n,
+        |Real.exp (-(activeL3PrimeShift n) / 2) - expMid n| ≤ expRad n)
+    (hmid :
+      ∀ n,
+        weightMid n = logMid n * expMid n)
+    (hrad :
+      ∀ n,
+        (|logMid n| + logRad n) * expRad n +
+          logRad n * |expMid n| ≤ weightRad n) :
+    ∀ n,
+      |controlK9PrimeWeight n - weightMid n| ≤ weightRad n := by
+  intro n
+  simpa [controlK9PrimeWeight] using
+    activeL3PrimeWeight_hbox_of_log_exp_factor_hboxes
+      logMid logRad expMid expRad weightMid weightRad
+      hlog hexp hmid hrad n
+
 /-- Termwise midpoint/radius certificates imply the primary finite-prime
 profile hbox.  The generator still has to supply the term tables and the
 termwise scalar proofs. -/
@@ -355,6 +444,66 @@ theorem primaryK11AnalyticP_entry_hbox_of_weight_and_R_pair_hboxes
       hweight hminus hplus htermMid htermRad)
     hmid hrad
 
+/-- Generated log, exponential-factor, and `centeredBSplineR 11` pair hboxes
+imply the final primary analytic `P` hbox field once the generator supplies
+the rational term-sum checks. -/
+theorem primaryK11AnalyticP_entry_hbox_of_log_exp_weight_and_R_pair_hboxes
+    (logMid logRad expMid expRad weightMid weightRad :
+      PrimeShiftIndexL3 -> Real)
+    (minusMid minusRad plusMid plusRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hlog :
+      ∀ n,
+        |Real.log (activeL3PrimeBase n : Real) - logMid n| ≤ logRad n)
+    (hexp :
+      ∀ n,
+        |Real.exp (-(activeL3PrimeShift n) / 2) - expMid n| ≤ expRad n)
+    (hweightMid :
+      ∀ n,
+        weightMid n = logMid n * expMid n)
+    (hweightRad :
+      ∀ n,
+        (|logMid n| + logRad n) * expRad n +
+          logRad n * |expMid n| ≤ weightRad n)
+    (hminus :
+      ∀ i j n,
+        |centeredBSplineR 11
+            (((primaryK11Center j - primaryK11Center i) -
+              primaryK11PrimeShift n) / primaryK11Ell) -
+          minusMid i j n| ≤ minusRad i j n)
+    (hplus :
+      ∀ i j n,
+        |centeredBSplineR 11
+            (((primaryK11Center j - primaryK11Center i) +
+              primaryK11PrimeShift n) / primaryK11Ell) -
+          plusMid i j n| ≤ plusRad i j n)
+    (htermMid :
+      ∀ i j n,
+        termMid i j n =
+          weightMid n * (minusMid i j n + plusMid i j n))
+    (htermRad :
+      ∀ i j n,
+        (|weightMid n| + weightRad n) *
+            (minusRad i j n + plusRad i j n) +
+          weightRad n * |minusMid i j n + plusMid i j n| ≤
+            termRad i j n)
+    (hmid :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termMid i j n) = primaryK11P i j)
+    (hrad :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termRad i j n) ≤ primaryK11PRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      primaryK11AnalyticP primaryK11P primaryK11PRadius :=
+  primaryK11AnalyticP_entry_hbox_of_weight_and_R_pair_hboxes
+    weightMid weightRad minusMid minusRad plusMid plusRad termMid termRad
+    (primaryK11PrimeWeight_hbox_of_log_exp_factor_hboxes
+      logMid logRad expMid expRad weightMid weightRad
+      hlog hexp hweightMid hweightRad)
+    hminus hplus htermMid htermRad hmid hrad
+
 /-- Control `k=9` analytic prime entries are the finite prime kernel profile
 on the active packet centers. -/
 theorem controlK9AnalyticP_entry (i j : CoeffIndex23) :
@@ -560,6 +709,66 @@ theorem controlK9AnalyticP_entry_hbox_of_weight_and_R_pair_hboxes
       weightMid weightRad minusMid minusRad plusMid plusRad termMid termRad
       hweight hminus hplus htermMid htermRad)
     hmid hrad
+
+/-- Generated log, exponential-factor, and `centeredBSplineR 9` pair hboxes
+imply the final control analytic `P` hbox field once the generator supplies
+the rational term-sum checks. -/
+theorem controlK9AnalyticP_entry_hbox_of_log_exp_weight_and_R_pair_hboxes
+    (logMid logRad expMid expRad weightMid weightRad :
+      PrimeShiftIndexL3 -> Real)
+    (minusMid minusRad plusMid plusRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hlog :
+      ∀ n,
+        |Real.log (activeL3PrimeBase n : Real) - logMid n| ≤ logRad n)
+    (hexp :
+      ∀ n,
+        |Real.exp (-(activeL3PrimeShift n) / 2) - expMid n| ≤ expRad n)
+    (hweightMid :
+      ∀ n,
+        weightMid n = logMid n * expMid n)
+    (hweightRad :
+      ∀ n,
+        (|logMid n| + logRad n) * expRad n +
+          logRad n * |expMid n| ≤ weightRad n)
+    (hminus :
+      ∀ i j n,
+        |centeredBSplineR 9
+            (((controlK9Center j - controlK9Center i) -
+              controlK9PrimeShift n) / controlK9Ell) -
+          minusMid i j n| ≤ minusRad i j n)
+    (hplus :
+      ∀ i j n,
+        |centeredBSplineR 9
+            (((controlK9Center j - controlK9Center i) +
+              controlK9PrimeShift n) / controlK9Ell) -
+          plusMid i j n| ≤ plusRad i j n)
+    (htermMid :
+      ∀ i j n,
+        termMid i j n =
+          weightMid n * (minusMid i j n + plusMid i j n))
+    (htermRad :
+      ∀ i j n,
+        (|weightMid n| + weightRad n) *
+            (minusRad i j n + plusRad i j n) +
+          weightRad n * |minusMid i j n + plusMid i j n| ≤
+            termRad i j n)
+    (hmid :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termMid i j n) = controlK9P i j)
+    (hrad :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termRad i j n) ≤ controlK9PRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      controlK9AnalyticP controlK9P controlK9PRadius :=
+  controlK9AnalyticP_entry_hbox_of_weight_and_R_pair_hboxes
+    weightMid weightRad minusMid minusRad plusMid plusRad termMid termRad
+    (controlK9PrimeWeight_hbox_of_log_exp_factor_hboxes
+      logMid logRad expMid expRad weightMid weightRad
+      hlog hexp hweightMid hweightRad)
+    hminus hplus htermMid htermRad hmid hrad
 
 end CenteredCoeffPrimeEntryHboxImport
 end PSDpd

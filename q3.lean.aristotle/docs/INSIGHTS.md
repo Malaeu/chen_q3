@@ -14178,3 +14178,24 @@ Update:
 - Verification: direct Lean and `scripts/q3_check.sh` pass for
   `Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`; no hole marker
   occurs in the touched Lean file.
+
+## Synthesis (2026-05-27, OK) — `Step33.prime_weight_log_exp_receiver`
+
+- Target: reduce the generated proof source for prime weights rather than
+  asking for a monolithic `primaryK11PrimeWeight` hbox.
+- Added `activeL3PrimeWeight_hbox_of_log_exp_factor_hboxes`, proving that a
+  midpoint/radius hbox for `log p` and one for `exp(-(r * log p) / 2)` imply
+  the active prime-weight hbox by a checked scalar product enclosure.
+- Added primary/control specializations
+  `primaryK11PrimeWeight_hbox_of_log_exp_factor_hboxes` and
+  `controlK9PrimeWeight_hbox_of_log_exp_factor_hboxes`.
+- Added final primary/control `P` receivers
+  `primaryK11AnalyticP_entry_hbox_of_log_exp_weight_and_R_pair_hboxes` and
+  `controlK9AnalyticP_entry_hbox_of_log_exp_weight_and_R_pair_hboxes`.
+- Result: the future generator can emit separate log, exponential-factor,
+  R-pair, and rational dominance certificates.  The remaining first source
+  proof is still the R-pair interval replay, beginning with
+  `primaryK11CenteredBSplineR11PrimeShiftPair_hbox`.
+- Verification: direct Lean and `scripts/q3_check.sh` pass for
+  `Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`; no hole marker
+  occurs in the touched Lean file.
