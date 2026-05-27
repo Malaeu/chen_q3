@@ -66,6 +66,88 @@ theorem controlK9FinitePrimeKernelProfile_entry_eq_sum
       ∑ n : PrimeShiftIndexL3, controlK9FinitePrimeProfileTerm i j n := by
   rfl
 
+/-- Scalar interval multiplication for one prime-profile term.
+
+If `w`, `x`, and `y` are enclosed by midpoint/radius data, then
+`w * (x + y)` is enclosed by the standard product-of-balls radius used by the
+generated prime-profile term certificates. -/
+private theorem mul_sum_pair_abs_sub_le
+    (w wm wr x xm xr y ym yr : Real)
+    (hw : |w - wm| ≤ wr)
+    (hx : |x - xm| ≤ xr)
+    (hy : |y - ym| ≤ yr) :
+    |w * (x + y) - wm * (xm + ym)| ≤
+      (|wm| + wr) * (xr + yr) + wr * |xm + ym| := by
+  have hwr_nonneg : 0 ≤ wr := le_trans (abs_nonneg _) hw
+  have hxr_nonneg : 0 ≤ xr := le_trans (abs_nonneg _) hx
+  have hyr_nonneg : 0 ≤ yr := le_trans (abs_nonneg _) hy
+  have hsr_nonneg : 0 ≤ xr + yr := add_nonneg hxr_nonneg hyr_nonneg
+  have hsum :
+      |(x + y) - (xm + ym)| ≤ xr + yr := by
+    calc
+      |(x + y) - (xm + ym)| = |(x - xm) + (y - ym)| := by
+        ring_nf
+      _ ≤ |x - xm| + |y - ym| := abs_add_le _ _
+      _ ≤ xr + yr := add_le_add hx hy
+  have hdecomp :
+      w * (x + y) - wm * (xm + ym) =
+        (w - wm) * ((x + y) - (xm + ym)) +
+          (w - wm) * (xm + ym) +
+            wm * ((x + y) - (xm + ym)) := by
+    ring
+  have hprod :
+      |w - wm| * |(x + y) - (xm + ym)| ≤ wr * (xr + yr) :=
+    mul_le_mul hw hsum (abs_nonneg _) hwr_nonneg
+  have hmid :
+      |w - wm| * |xm + ym| ≤ wr * |xm + ym| :=
+    mul_le_mul_of_nonneg_right hw (abs_nonneg _)
+  have hcenter :
+      |wm| * |(x + y) - (xm + ym)| ≤ |wm| * (xr + yr) :=
+    mul_le_mul_of_nonneg_left hsum (abs_nonneg _)
+  calc
+    |w * (x + y) - wm * (xm + ym)| =
+        |(w - wm) * ((x + y) - (xm + ym)) +
+          (w - wm) * (xm + ym) +
+            wm * ((x + y) - (xm + ym))| := by
+          rw [hdecomp]
+    _ ≤ |(w - wm) * ((x + y) - (xm + ym))| +
+          |(w - wm) * (xm + ym)| +
+            |wm * ((x + y) - (xm + ym))| := by
+          calc
+            |(w - wm) * ((x + y) - (xm + ym)) +
+              (w - wm) * (xm + ym) +
+                wm * ((x + y) - (xm + ym))| ≤
+                |(w - wm) * ((x + y) - (xm + ym)) +
+                  (w - wm) * (xm + ym)| +
+                  |wm * ((x + y) - (xm + ym))| := by
+                  exact abs_add_le _ _
+            _ ≤ (|(w - wm) * ((x + y) - (xm + ym))| +
+                  |(w - wm) * (xm + ym)|) +
+                    |wm * ((x + y) - (xm + ym))| := by
+                  have hAB :
+                      |(w - wm) * ((x + y) - (xm + ym)) +
+                        (w - wm) * (xm + ym)| ≤
+                        |(w - wm) * ((x + y) - (xm + ym))| +
+                          |(w - wm) * (xm + ym)| :=
+                    abs_add_le
+                      ((w - wm) * ((x + y) - (xm + ym)))
+                      ((w - wm) * (xm + ym))
+                  simpa [add_comm, add_left_comm, add_assoc] using
+                    add_le_add_right hAB
+                      (|wm * ((x + y) - (xm + ym))|)
+            _ = |(w - wm) * ((x + y) - (xm + ym))| +
+                  |(w - wm) * (xm + ym)| +
+                    |wm * ((x + y) - (xm + ym))| := by
+                  ring
+    _ = |w - wm| * |(x + y) - (xm + ym)| +
+          |w - wm| * |xm + ym| +
+            |wm| * |(x + y) - (xm + ym)| := by
+          simp [abs_mul]
+    _ ≤ wr * (xr + yr) + wr * |xm + ym| + |wm| * (xr + yr) := by
+          exact add_le_add (add_le_add hprod hmid) hcenter
+    _ = (|wm| + wr) * (xr + yr) + wr * |xm + ym| := by
+          ring
+
 /-- Termwise midpoint/radius certificates imply the primary finite-prime
 profile hbox.  The generator still has to supply the term tables and the
 termwise scalar proofs. -/
@@ -121,6 +203,59 @@ theorem primaryK11FinitePrimeKernelProfile_entry_hbox_of_term_hboxes
           exact Finset.sum_le_sum (fun n _ => hterm i j n)
     _ ≤ primaryK11PRadius i j := hrad i j
 
+/-- Primary term hboxes follow from generated weight hboxes and the two
+`centeredBSplineR 11` hboxes for the minus/plus prime shifts. -/
+theorem primaryK11FinitePrimeProfileTerm_hbox_of_weight_and_R_pair_hboxes
+    (weightMid weightRad : PrimeShiftIndexL3 -> Real)
+    (minusMid minusRad plusMid plusRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hweight :
+      ∀ n,
+        |primaryK11PrimeWeight n - weightMid n| ≤ weightRad n)
+    (hminus :
+      ∀ i j n,
+        |centeredBSplineR 11
+            (((primaryK11Center j - primaryK11Center i) -
+              primaryK11PrimeShift n) / primaryK11Ell) -
+          minusMid i j n| ≤ minusRad i j n)
+    (hplus :
+      ∀ i j n,
+        |centeredBSplineR 11
+            (((primaryK11Center j - primaryK11Center i) +
+              primaryK11PrimeShift n) / primaryK11Ell) -
+          plusMid i j n| ≤ plusRad i j n)
+    (hmid :
+      ∀ i j n,
+        termMid i j n =
+          weightMid n * (minusMid i j n + plusMid i j n))
+    (hrad :
+      ∀ i j n,
+        (|weightMid n| + weightRad n) *
+            (minusRad i j n + plusRad i j n) +
+          weightRad n * |minusMid i j n + plusMid i j n| ≤
+            termRad i j n) :
+    ∀ i j n,
+      |primaryK11FinitePrimeProfileTerm i j n - termMid i j n| ≤
+        termRad i j n := by
+  intro i j n
+  unfold primaryK11FinitePrimeProfileTerm
+  rw [hmid i j n]
+  exact le_trans
+    (mul_sum_pair_abs_sub_le
+      (primaryK11PrimeWeight n) (weightMid n) (weightRad n)
+      (centeredBSplineR 11
+        (((primaryK11Center j - primaryK11Center i) -
+          primaryK11PrimeShift n) / primaryK11Ell))
+      (minusMid i j n) (minusRad i j n)
+      (centeredBSplineR 11
+        (((primaryK11Center j - primaryK11Center i) +
+          primaryK11PrimeShift n) / primaryK11Ell))
+      (plusMid i j n) (plusRad i j n)
+      (hweight n) (hminus i j n) (hplus i j n))
+    (hrad i j n)
+
 /-- Primary `k=11` analytic prime entries are the finite prime kernel profile
 on the active packet centers. -/
 theorem primaryK11AnalyticP_entry (i j : CoeffIndex23) :
@@ -172,6 +307,54 @@ theorem primaryK11AnalyticP_entry_hbox_of_term_hboxes
     (primaryK11FinitePrimeKernelProfile_entry_hbox_of_term_hboxes
       termMid termRad hterm hmid hrad)
 
+/-- Generated weight and `centeredBSplineR 11` pair hboxes imply the final
+primary analytic `P` hbox field once the generator also supplies the term
+midpoint/radius sums. -/
+theorem primaryK11AnalyticP_entry_hbox_of_weight_and_R_pair_hboxes
+    (weightMid weightRad : PrimeShiftIndexL3 -> Real)
+    (minusMid minusRad plusMid plusRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hweight :
+      ∀ n,
+        |primaryK11PrimeWeight n - weightMid n| ≤ weightRad n)
+    (hminus :
+      ∀ i j n,
+        |centeredBSplineR 11
+            (((primaryK11Center j - primaryK11Center i) -
+              primaryK11PrimeShift n) / primaryK11Ell) -
+          minusMid i j n| ≤ minusRad i j n)
+    (hplus :
+      ∀ i j n,
+        |centeredBSplineR 11
+            (((primaryK11Center j - primaryK11Center i) +
+              primaryK11PrimeShift n) / primaryK11Ell) -
+          plusMid i j n| ≤ plusRad i j n)
+    (htermMid :
+      ∀ i j n,
+        termMid i j n =
+          weightMid n * (minusMid i j n + plusMid i j n))
+    (htermRad :
+      ∀ i j n,
+        (|weightMid n| + weightRad n) *
+            (minusRad i j n + plusRad i j n) +
+          weightRad n * |minusMid i j n + plusMid i j n| ≤
+            termRad i j n)
+    (hmid :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termMid i j n) = primaryK11P i j)
+    (hrad :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termRad i j n) ≤ primaryK11PRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      primaryK11AnalyticP primaryK11P primaryK11PRadius :=
+  primaryK11AnalyticP_entry_hbox_of_term_hboxes termMid termRad
+    (primaryK11FinitePrimeProfileTerm_hbox_of_weight_and_R_pair_hboxes
+      weightMid weightRad minusMid minusRad plusMid plusRad termMid termRad
+      hweight hminus hplus htermMid htermRad)
+    hmid hrad
+
 /-- Control `k=9` analytic prime entries are the finite prime kernel profile
 on the active packet centers. -/
 theorem controlK9AnalyticP_entry (i j : CoeffIndex23) :
@@ -201,6 +384,182 @@ theorem controlK9AnalyticP_entry_hbox_of_profile_hbox
       controlK9AnalyticP controlK9P controlK9PRadius := by
   intro i j
   simpa [controlK9AnalyticP_entry i j] using hprofile i j
+
+/-- Control term hboxes follow from generated weight hboxes and the two
+`centeredBSplineR 9` hboxes for the minus/plus prime shifts. -/
+theorem controlK9FinitePrimeProfileTerm_hbox_of_weight_and_R_pair_hboxes
+    (weightMid weightRad : PrimeShiftIndexL3 -> Real)
+    (minusMid minusRad plusMid plusRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hweight :
+      ∀ n,
+        |controlK9PrimeWeight n - weightMid n| ≤ weightRad n)
+    (hminus :
+      ∀ i j n,
+        |centeredBSplineR 9
+            (((controlK9Center j - controlK9Center i) -
+              controlK9PrimeShift n) / controlK9Ell) -
+          minusMid i j n| ≤ minusRad i j n)
+    (hplus :
+      ∀ i j n,
+        |centeredBSplineR 9
+            (((controlK9Center j - controlK9Center i) +
+              controlK9PrimeShift n) / controlK9Ell) -
+          plusMid i j n| ≤ plusRad i j n)
+    (hmid :
+      ∀ i j n,
+        termMid i j n =
+          weightMid n * (minusMid i j n + plusMid i j n))
+    (hrad :
+      ∀ i j n,
+        (|weightMid n| + weightRad n) *
+            (minusRad i j n + plusRad i j n) +
+          weightRad n * |minusMid i j n + plusMid i j n| ≤
+            termRad i j n) :
+    ∀ i j n,
+      |controlK9FinitePrimeProfileTerm i j n - termMid i j n| ≤
+        termRad i j n := by
+  intro i j n
+  unfold controlK9FinitePrimeProfileTerm
+  rw [hmid i j n]
+  exact le_trans
+    (mul_sum_pair_abs_sub_le
+      (controlK9PrimeWeight n) (weightMid n) (weightRad n)
+      (centeredBSplineR 9
+        (((controlK9Center j - controlK9Center i) -
+          controlK9PrimeShift n) / controlK9Ell))
+      (minusMid i j n) (minusRad i j n)
+      (centeredBSplineR 9
+        (((controlK9Center j - controlK9Center i) +
+          controlK9PrimeShift n) / controlK9Ell))
+      (plusMid i j n) (plusRad i j n)
+      (hweight n) (hminus i j n) (hplus i j n))
+    (hrad i j n)
+
+/-- Control termwise midpoint/radius certificates imply the control
+finite-prime profile hbox. -/
+theorem controlK9FinitePrimeKernelProfile_entry_hbox_of_term_hboxes
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hterm :
+      ∀ i j n,
+        |controlK9FinitePrimeProfileTerm i j n - termMid i j n| ≤
+          termRad i j n)
+    (hmid :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termMid i j n) = controlK9P i j)
+    (hrad :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termRad i j n) ≤ controlK9PRadius i j) :
+    ∀ i j : CoeffIndex23,
+      |centeredBSplineFinitePrimeKernelProfile
+          9 controlK9Ell controlK9PrimeWeight controlK9PrimeShift
+          (controlK9Center j - controlK9Center i) -
+        controlK9P i j| ≤ controlK9PRadius i j := by
+  intro i j
+  have hdiff :
+      centeredBSplineFinitePrimeKernelProfile
+          9 controlK9Ell controlK9PrimeWeight controlK9PrimeShift
+          (controlK9Center j - controlK9Center i) -
+        controlK9P i j =
+        ∑ n : PrimeShiftIndexL3,
+          (controlK9FinitePrimeProfileTerm i j n - termMid i j n) := by
+    calc
+      centeredBSplineFinitePrimeKernelProfile
+          9 controlK9Ell controlK9PrimeWeight controlK9PrimeShift
+          (controlK9Center j - controlK9Center i) -
+        controlK9P i j =
+          (∑ n : PrimeShiftIndexL3, controlK9FinitePrimeProfileTerm i j n) -
+            ∑ n : PrimeShiftIndexL3, termMid i j n := by
+            rw [controlK9FinitePrimeKernelProfile_entry_eq_sum, hmid i j]
+      _ = ∑ n : PrimeShiftIndexL3,
+          (controlK9FinitePrimeProfileTerm i j n - termMid i j n) := by
+            rw [Finset.sum_sub_distrib]
+  calc
+    |centeredBSplineFinitePrimeKernelProfile
+        9 controlK9Ell controlK9PrimeWeight controlK9PrimeShift
+        (controlK9Center j - controlK9Center i) -
+      controlK9P i j| =
+        |∑ n : PrimeShiftIndexL3,
+          (controlK9FinitePrimeProfileTerm i j n - termMid i j n)| := by
+          rw [hdiff]
+    _ ≤ ∑ n : PrimeShiftIndexL3,
+        |controlK9FinitePrimeProfileTerm i j n - termMid i j n| := by
+          exact Finset.abs_sum_le_sum_abs _ _
+    _ ≤ ∑ n : PrimeShiftIndexL3, termRad i j n := by
+          exact Finset.sum_le_sum (fun n _ => hterm i j n)
+    _ ≤ controlK9PRadius i j := hrad i j
+
+/-- Control termwise midpoint/radius certificates imply the final control
+analytic `P` hbox field. -/
+theorem controlK9AnalyticP_entry_hbox_of_term_hboxes
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hterm :
+      ∀ i j n,
+        |controlK9FinitePrimeProfileTerm i j n - termMid i j n| ≤
+          termRad i j n)
+    (hmid :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termMid i j n) = controlK9P i j)
+    (hrad :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termRad i j n) ≤ controlK9PRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      controlK9AnalyticP controlK9P controlK9PRadius :=
+  controlK9AnalyticP_entry_hbox_of_profile_hbox
+    (controlK9FinitePrimeKernelProfile_entry_hbox_of_term_hboxes
+      termMid termRad hterm hmid hrad)
+
+/-- Generated weight and `centeredBSplineR 9` pair hboxes imply the final
+control analytic `P` hbox field once the generator also supplies the term
+midpoint/radius sums. -/
+theorem controlK9AnalyticP_entry_hbox_of_weight_and_R_pair_hboxes
+    (weightMid weightRad : PrimeShiftIndexL3 -> Real)
+    (minusMid minusRad plusMid plusRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (termMid termRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hweight :
+      ∀ n,
+        |controlK9PrimeWeight n - weightMid n| ≤ weightRad n)
+    (hminus :
+      ∀ i j n,
+        |centeredBSplineR 9
+            (((controlK9Center j - controlK9Center i) -
+              controlK9PrimeShift n) / controlK9Ell) -
+          minusMid i j n| ≤ minusRad i j n)
+    (hplus :
+      ∀ i j n,
+        |centeredBSplineR 9
+            (((controlK9Center j - controlK9Center i) +
+              controlK9PrimeShift n) / controlK9Ell) -
+          plusMid i j n| ≤ plusRad i j n)
+    (htermMid :
+      ∀ i j n,
+        termMid i j n =
+          weightMid n * (minusMid i j n + plusMid i j n))
+    (htermRad :
+      ∀ i j n,
+        (|weightMid n| + weightRad n) *
+            (minusRad i j n + plusRad i j n) +
+          weightRad n * |minusMid i j n + plusMid i j n| ≤
+            termRad i j n)
+    (hmid :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termMid i j n) = controlK9P i j)
+    (hrad :
+      ∀ i j,
+        (∑ n : PrimeShiftIndexL3, termRad i j n) ≤ controlK9PRadius i j) :
+    Q3.Proofs.matrixEntrywiseAbsLe
+      controlK9AnalyticP controlK9P controlK9PRadius :=
+  controlK9AnalyticP_entry_hbox_of_term_hboxes termMid termRad
+    (controlK9FinitePrimeProfileTerm_hbox_of_weight_and_R_pair_hboxes
+      weightMid weightRad minusMid minusRad plusMid plusRad termMid termRad
+      hweight hminus hplus htermMid htermRad)
+    hmid hrad
 
 end CenteredCoeffPrimeEntryHboxImport
 end PSDpd

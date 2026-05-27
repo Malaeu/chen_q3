@@ -327,3 +327,75 @@ Compile status:
 - `scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`
   passes;
 - no `sorry`, `exact?`, or `admit` occurs in the touched Lean file.
+
+## Update (2026-05-27) — Prime term hbox receiver from weight/R-pair boxes
+
+Status: prime-term-weight-rpair-receiver-compiled
+
+The prime-side `P` hbox route now has a narrower generated-certificate
+receiver.  Instead of asking the generator to prove each full weighted term
+directly, Lean now proves that a term hbox follows from:
+
+- a prime weight midpoint/radius hbox;
+- the minus-shift `centeredBSplineR` midpoint/radius hbox;
+- the plus-shift `centeredBSplineR` midpoint/radius hbox;
+- generated term midpoint/radius arithmetic dominance.
+
+Theorem/definitions added in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+```
+
+New generic scalar interval lemma:
+
+```lean
+mul_sum_pair_abs_sub_le
+```
+
+New primary receivers:
+
+```lean
+primaryK11FinitePrimeProfileTerm_hbox_of_weight_and_R_pair_hboxes
+primaryK11AnalyticP_entry_hbox_of_weight_and_R_pair_hboxes
+```
+
+New control receivers:
+
+```lean
+controlK9FinitePrimeProfileTerm_hbox_of_weight_and_R_pair_hboxes
+controlK9FinitePrimeKernelProfile_entry_hbox_of_term_hboxes
+controlK9AnalyticP_entry_hbox_of_term_hboxes
+controlK9AnalyticP_entry_hbox_of_weight_and_R_pair_hboxes
+```
+
+Meaning: the primary/control analytic `P` fields are now reduced to generated
+weight hboxes, generated `centeredBSplineR 11/9` minus/plus hboxes, and
+generated rational sum checks.  This is closer than the previous abstract
+term-level receiver and gives the next generator an exact Lean surface.
+
+The first missing proof source remains:
+
+```lean
+primaryK11CenteredBSplineR11PrimeShiftPair_hbox
+```
+
+Now it should be generated together with a weight hbox and term midpoint/radius
+sum dominance table consumed by:
+
+```lean
+primaryK11AnalyticP_entry_hbox_of_weight_and_R_pair_hboxes
+```
+
+Commands run:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+```
+
+Compile status:
+
+- direct Lean passes for `Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`;
+- `scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`
+  passes;
+- no `sorry`, `exact?`, or `admit` occurs in the touched Lean file.

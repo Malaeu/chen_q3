@@ -14153,3 +14153,28 @@ Update:
 - Verification: direct Lean and `scripts/q3_check.sh` pass for
   `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`; no hole marker occurs in
   the touched Lean file.
+
+## Synthesis (2026-05-27, OK) — `Step33.prime_term_weight_rpair_receiver`
+
+- Target: move Step33A.1 closer to actual primary/control `P` hboxes without
+  fabricating the missing scalar interval tables.
+- Added the generic scalar interval lemma
+  `mul_sum_pair_abs_sub_le`: if `w`, `x`, and `y` each have midpoint/radius
+  enclosures, then `w * (x + y)` has the generated product-of-balls radius
+  expected for one finite-prime profile term.
+- Added primary receivers reducing
+  `primaryK11AnalyticP_entry_hbox` to generated weight hboxes, generated
+  `centeredBSplineR 11` minus/plus hboxes, and generated term
+  midpoint/radius sum dominance.
+- Added the parallel control receivers for `controlK9AnalyticP_entry_hbox`,
+  including the missing control term/profile propagation wrappers.
+- Result: the prime-side hbox generator now has a precise lower-level Lean
+  target.  It no longer needs to prove weighted terms monolithically; it can
+  emit weight bounds, R-pair bounds, and rational dominance checks separately.
+- Remaining first source proof:
+  `primaryK11CenteredBSplineR11PrimeShiftPair_hbox`, plus the matching weight
+  hbox and term sum dominance payload consumed by
+  `primaryK11AnalyticP_entry_hbox_of_weight_and_R_pair_hboxes`.
+- Verification: direct Lean and `scripts/q3_check.sh` pass for
+  `Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`; no hole marker
+  occurs in the touched Lean file.
