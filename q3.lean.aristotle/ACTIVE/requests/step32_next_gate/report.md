@@ -486,6 +486,83 @@ Compile status:
   file `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`;
 - no `sorry`, `exact?`, or `admit` occurs in either touched Lean file.
 
+## Update (2026-05-27) — Cardinal B-spline receiver from truncated-power summands
+
+Status: cardinal-summand-hbox-receiver-compiled
+
+The primary/control R-pair route is now reduced one layer below the cardinal
+B-spline numerator.  Lean now proves a cardinal B-spline numerator hbox from
+generated hboxes for each truncated-power summand in the definition of
+`centeredCardinalBSpline`.
+
+Theorem/definitions added in:
+
+```text
+Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean
+Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+```
+
+New reusable summand receiver:
+
+```lean
+centeredCardinalBSplineSummand
+centeredCardinalBSpline_hbox_of_summand_hboxes
+```
+
+New primary/control cardinal numerator receivers:
+
+```lean
+primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes
+controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_summand_hboxes
+```
+
+Meaning: the next generated proof source can now stop at scalar hboxes for the
+finite truncated-power summands
+
+```lean
+(( -1 : Real) ^ m) * Nat.choose (degree + 1) m *
+  positivePartPower degree (x + (degree + 1) / 2 - m)
+```
+
+plus generated midpoint/radius sum checks.  The primary `k=11` numerator is
+degree `23`; the control `k=9` numerator is degree `19`.
+
+Local q3_docs searches were run for:
+
+```text
+centeredCardinalBSpline truncated power hbox summand midpoint radius
+cardinal B-spline numerator hbox positivePartPower summands
+Step33 cardinal hbox receiver centeredCardinalBSpline degree 23
+```
+
+They did not find an existing hbox replay.  The useful local source remains the
+already imported truncated-power definition in
+`Q3/Proofs/PSD_CenteredCardinalBSpline.lean`.
+
+External web sanity search matched the same standard B-spline route: cardinal
+B-splines are represented by finite truncated-power/piecewise-polynomial
+formulas, but no Lean payload is available from those references.
+
+Commands run:
+
+```bash
+lake build Q3.Proofs.PSD_CenteredBSplineRBoundsImport
+lake env lean Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+scripts/q3_check.sh Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
+scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
+rg -n "sorry|exact\\?|admit" q3.lean.aristotle/Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+```
+
+Compile status:
+
+- direct Lean passes for both touched Lean files;
+- `scripts/q3_check.sh` passes for both touched Lean files;
+- direct Lean and `scripts/q3_check.sh` also pass for the active entry-hbox
+  file `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`;
+- no `sorry`, `exact?`, or `admit` occurs in either touched Lean file.
+
 ## Update (2026-05-27) — Prime weight receiver from log/exp-factor boxes
 
 Status: prime-weight-log-exp-receiver-compiled

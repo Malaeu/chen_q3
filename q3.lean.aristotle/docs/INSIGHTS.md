@@ -14229,3 +14229,31 @@ Update:
   files pass; direct Lean and `scripts/q3_check.sh` also pass for the active
   entry-hbox file `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`; no hole
   marker occurs in either touched Lean file.
+
+## Synthesis (2026-05-27, OK) — `Step33.cardinal_summand_hbox_receiver`
+
+- Target: reduce the new cardinal numerator hbox target to the actual
+  truncated-power summands already present in `centeredCardinalBSpline`.
+- Local `q3_docs` searches for `centeredCardinalBSpline truncated power hbox
+  summand midpoint radius`, `cardinal B-spline numerator hbox
+  positivePartPower summands`, and `Step33 cardinal hbox receiver
+  centeredCardinalBSpline degree 23` did not find an existing hbox replay.
+- External web sanity search on cardinal B-spline/truncated-power formulas
+  matched the same finite-summand route, but the proof payload remains local
+  Lean code plus generated scalar tables.
+- Added `centeredCardinalBSplineSummand` and
+  `centeredCardinalBSpline_hbox_of_summand_hboxes` in
+  `PSD_CenteredBSplineRBoundsImport.lean`: summand hboxes plus generated
+  midpoint/radius sum checks now imply the whole cardinal B-spline hbox.
+- Added primary/control prime-shift cardinal numerator receivers:
+  `primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes`
+  and
+  `controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_summand_hboxes`.
+- Result: the next generated proof source is now scalar
+  `positivePartPower`/polynomial-segment hboxes for degree `23` primary and
+  degree `19` control numerator summands, plus finite sum dominance checks.
+- Verification: `lake build Q3.Proofs.PSD_CenteredBSplineRBoundsImport`,
+  direct Lean on both touched files, and `scripts/q3_check.sh` on both touched
+  files pass; direct Lean and `scripts/q3_check.sh` also pass for the active
+  entry-hbox file `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`; no hole
+  marker occurs in either touched Lean file.
