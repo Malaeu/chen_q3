@@ -16,28 +16,32 @@
 ## Обязательный read order
 
 1. `SESSION_ENTRY.md`
-2. `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md` if it exists and is `ACTIVE`
-3. `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md` if it exists and is `ACTIVE`
-4. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
-5. `IMPLEMENTATION_PLAN.md`
-6. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
-7. `q3.lean.aristotle/docs/INSIGHTS.md`
+2. `q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md` if it exists and is
+   `ACTIVE` and the task mentions PSD-pd, Step32, Step33, B-spline,
+   entry hboxes, or finite certificates
+3. `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md` if it exists and is `ACTIVE`
+   and the task mentions H1, PO3, H-bridge, or route-kill work
+4. `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md` if it exists and is `ACTIVE`
+5. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
+6. `IMPLEMENTATION_PLAN.md`
+7. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
+8. `q3.lean.aristotle/docs/INSIGHTS.md`
 
 Если работаешь с embeddings / incoming notes, потом ещё:
 
-8. `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
+9. `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
 
 Если работаешь именно с oracle-search / embeddings по новому blocker, потом ещё:
 
-8. `q3.lean.aristotle/ACTIVE/pipeline/RESEARCH_ORACLE.md`
-9. `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/INDEX.md`
-10. `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/BY_ADDRESS.md`
-11. `q3.lean.aristotle/docs/insights/h1_po3_route_ladder_2026_04_19.md`
+9. `q3.lean.aristotle/ACTIVE/pipeline/RESEARCH_ORACLE.md`
+10. `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/INDEX.md`
+11. `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/BY_ADDRESS.md`
+12. `q3.lean.aristotle/docs/insights/h1_po3_route_ladder_2026_04_19.md`
 
 Если работаешь с Aristotle:
 
-8. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`
-9. `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
+9. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`
+10. `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
 
 ## Текущий public mainline
 
@@ -85,6 +89,17 @@
   `H-bridge` и `PSD-pd`.
 
 ## Текущий практический next step
+
+Если `ACTIVE/PSD_STEP33_MONITOR.md` существует, имеет `status: ACTIVE`, и
+текущая задача явно про PSD-pd / Step33 / B-spline finite certificate backend,
+то он является оперативным single source of truth для этой задачи:
+
+- продолжать ровно `current_step_id`;
+- читать `request` / `report` из `PSD_STEP33_MONITOR.md`;
+- не переключаться на `ACTIVE/PHASE_MONITOR.md`, если пользователь явно не
+  просит H1 / PO3 / H-bridge / route-kill;
+- не пересобирать frontier заново;
+- обновлять сперва PSD monitor/request/report, потом `INSIGHTS`.
 
 Если `ACTIVE/PHASE_MONITOR.md` существует и имеет `status: ACTIVE`, то он
 является оперативным post-sprint single source of truth:

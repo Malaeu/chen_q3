@@ -14257,3 +14257,27 @@ Update:
   files pass; direct Lean and `scripts/q3_check.sh` also pass for the active
   entry-hbox file `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`; no hole
   marker occurs in either touched Lean file.
+
+## Synthesis (2026-05-27, OK) — `Step33.control_plane_refactor`
+
+- Target: prevent the active PSD Step33 bootstrap loop from drifting into the
+  older H1/PO3 `PHASE_MONITOR.md` route.
+- Parked `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md` for current execution and
+  created `q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md` as the active PSD
+  Step33 source of truth.
+- Promoted `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md` and
+  `report.md` as the canonical active request/report.  The older
+  `step32_next_gate` files remain historical/backward pointers only.
+- Added `.agents/skills/q3-psdpd-step33-bootstrap/SKILL.md` and turned
+  `.agents/skills/q3-step32-lean/SKILL.md` into a compatibility shim, since
+  Step32 is closed and the live loop is Step33A.1.
+- Added `PRO_REVIEW_REQUEST` discipline: Codex must not assume automatic access
+  to the Pro/Louise chat, and must write a compact route/blocker question into
+  the active report when theorem shape, payload shape, or monitor precedence is
+  unclear.
+- Clarified the Git untracked-file policy: untracked means only "not tracked by
+  Git"; such files are not foreign/disposable by default.
+- No Lean theorem code was touched by this refactor.  Next theorem target
+  remains the primary `k=11` `positivePartPower` / polynomial-segment summand
+  hboxes consumed by
+  `primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes`.

@@ -2,6 +2,22 @@
 
 Date: 2026-05-26
 
+## Status
+
+Superseded for active execution by:
+
+```text
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+```
+
+This request is retained as historical Step32/early-Step33 context.  New PSD
+Step33 work should append to:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+```
+
 ## Objective
 
 Operate the current Q3 Step32 proof loop until one new Step32 theorem compiles

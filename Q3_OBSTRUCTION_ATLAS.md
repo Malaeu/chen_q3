@@ -24,14 +24,24 @@ without new evidence:
   base matrix hbox receiver, analytic P0 receiver, entry hbox bundle scaffold,
   prime dictionary bounds, and centered B-spline R nonnegativity.
 
-The live gate is now the generated Step21/Step22 entry-hbox certificate layer:
+The active PSD monitor is:
+
+`q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md`
+
+The H1/PO3 `PHASE_MONITOR.md` is a separate route monitor and is parked for the
+current PSD Step33 bootstrap unless explicitly requested.
+
+The live PSD gate is now the generated Step21/Step22 entry-hbox certificate
+layer:
 
 - `PrimaryK11BaseEntryHboxCert`
 - `ControlK9BaseEntryHboxCert`
 - `ActiveCenteredCoeffEntryHboxCert`
 
-The concrete Lean surface is
-`q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`.
+The concrete Lean surfaces are:
+
+- `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`
+- `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`
 
 ## Walls
 

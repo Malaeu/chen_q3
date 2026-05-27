@@ -1,5 +1,15 @@
 # Step32 Next Gate Report
 
+Superseded for active execution by:
+
+```text
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+```
+
+This report remains historical context for closed Step32 and early Step33
+receiver work.  Append new PSD Step33 updates to the Step33 bootstrap report.
+
 Status: centered-bspline-r-blocker-written
 Date: 2026-05-26
 

@@ -7,12 +7,21 @@ Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy 
 
 Codex self-config bootstrap:
 - Root atlas: `Q3_OBSTRUCTION_ATLAS.md`.
-- Repo skill: `.agents/skills/q3-step32-lean/SKILL.md`.
-- Active Step32 request: `q3.lean.aristotle/ACTIVE/requests/step32_next_gate/node.md`.
+- Repo skill: `.agents/skills/q3-psdpd-step33-bootstrap/SKILL.md`.
+- Compatibility skill: `.agents/skills/q3-step32-lean/SKILL.md`.
+- Active PSD Step33 monitor: `q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md`.
+- Active PSD Step33 request:
+  `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md`.
+- Legacy Step32 request:
+  `q3.lean.aristotle/ACTIVE/requests/step32_next_gate/node.md`.
 - Validation helper: `scripts/q3_check.sh`.
-- Current Step32 live gate: entry hbox certificates around
+- Current PSD Step33 live gate: entry hbox certificates around
   `ActiveCenteredCoeffEntryHboxCert`; do not route new work to the already
-  closed Arch-integrability target.
+  closed Arch-integrability target or to the parked H1/PO3 monitor unless the
+  user explicitly asks for H1 / PO3 / H-bridge / route-kill work.
+- Git `untracked` means only "not tracked by Git"; these files may still be
+  project files. Do not delete, stage, or describe them as foreign unless the
+  current task explicitly requires it.
 
 Aristotle integration rules (project workflow):
 - Activate venv before any Aristotle command: `source .venv/bin/activate`.
@@ -31,6 +40,36 @@ Oracle advisory workflow:
 - Prefer `--render --copy` or browser mode for advisory review; API runs require explicit user consent because they can incur costs.
 - Never attach secrets, `.env`, credentials, or unrelated large folders.
 - Treat Oracle output like Proshka output: record useful theorem-shapes in `docs/INSIGHTS.md`, but accept only Lean-checked code, hole-free Aristotle output, or verified mathematics into the mainline.
+
+Pro / Louise escalation protocol:
+- Current project roles:
+  - Codex is the local repo worker: edits Lean/docs/scripts, runs builds/checks,
+    and writes exact blocker reports.
+  - ChatGPT Pro / Louise is the route architect/reviewer: chooses theorem
+    shape or next proof gate when there is a real fork.
+- Codex must not assume automatic access to the Pro chat.  If the user
+  attaches, pastes, or appshots the Pro chat, Codex may use it as context.
+  Otherwise Codex must write a compact escalation block in the active report:
+
+```md
+## PRO_REVIEW_REQUEST
+
+Route:
+Current step:
+Current theorem:
+File:
+Lean error / blocker:
+Options:
+A.
+B.
+C.
+Codex recommendation:
+Question for Louise:
+```
+
+- Use `PRO_REVIEW_REQUEST` when two routes are plausible, a theorem statement
+  may be wrong, a monitor conflict appears, H1/PO3 and PSD Step33 routes
+  conflict, or a generated payload shape is unclear.
 
 Semantic search workflow (before tackling a new blocker):
 - Define the exact target lemma/axiom and where it is wired in the chain.
