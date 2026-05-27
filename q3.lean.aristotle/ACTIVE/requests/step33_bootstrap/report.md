@@ -78,6 +78,82 @@ scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
 
 No `sorry`, `exact?`, or `admit` was present in touched Lean files.
 
+## Execution Update (2026-05-27) — positivePartPower scalar receiver
+
+Route: PSD-pd/Q3 Step33A.1.
+
+Files searched:
+
+```text
+Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean
+Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
+q3.lean.aristotle/docs/INSIGHTS.md
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+```
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean
+Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Lean receiver lemmas added:
+
+```lean
+centeredCardinalBSplineSummand_hbox_of_positivePartPower_hbox
+primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_positivePartPower_hboxes
+controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_positivePartPower_hboxes
+```
+
+Result:
+
+```text
+positivePartPower scalar hboxes
+-> signed-binomial summand hboxes
+-> cardinal numerator hboxes
+-> R-shift pair hboxes
+-> P-entry hbox receiver
+```
+
+Commands run:
+
+```bash
+lake build Q3.Proofs.PSD_CenteredBSplineRBoundsImport
+lake env lean Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
+scripts/q3_check.sh Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
+git diff --check
+```
+
+Compile result: pass.
+
+Next missing payload:
+
+```text
+primary k=11 generated positivePartPower midpoint/radius tables:
+  minusPowerMid/minusPowerRad
+  plusPowerMid/plusPowerRad
+
+plus signed-binomial coefficient scaling checks:
+  hminusTermMid/hminusTermRad
+  hplusTermMid/hplusTermRad
+
+then finite cardinal sum checks:
+  hminusMid/hminusRad
+  hplusMid/hplusRad
+```
+
+PRO_REVIEW_REQUEST: none.  The route is clear; the remaining blocker is payload
+generation/integration, not theorem-shape ambiguity.
+
 ## PRO_REVIEW_REQUEST
 
 Status: none open.

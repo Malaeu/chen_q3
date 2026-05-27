@@ -529,6 +529,229 @@ theorem controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_summand_hboxes
         (plusTermMid i j n) (plusTermRad i j n)
         (hplusTerm i j n) (hplusMid i j n) (hplusRad i j n)
 
+/-- Generated positive-part-power hboxes imply the primary cardinal
+B-spline numerator hboxes for all active prime shifts.  This is the scalar
+receiver that sits below the existing summand receiver. -/
+theorem primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_positivePartPower_hboxes
+    (minusPowerMid minusPowerRad plusPowerMid plusPowerRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> ℕ -> Real)
+    (minusTermMid minusTermRad plusTermMid plusTermRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> ℕ -> Real)
+    (minusCardMid minusCardRad plusCardMid plusCardRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hminusPower :
+      ∀ i j n m,
+        m ∈ Finset.range (bsplineAutocorrDegree 11 + 2) ->
+          |positivePartPower (bsplineAutocorrDegree 11)
+              (bsplineScale 11 *
+                  (((primaryK11Center j - primaryK11Center i) -
+                    primaryK11PrimeShift n) / primaryK11Ell) +
+                (((bsplineAutocorrDegree 11 + 1 : ℕ) : Real) / 2) -
+                (m : Real)) -
+            minusPowerMid i j n m| ≤ minusPowerRad i j n m)
+    (hplusPower :
+      ∀ i j n m,
+        m ∈ Finset.range (bsplineAutocorrDegree 11 + 2) ->
+          |positivePartPower (bsplineAutocorrDegree 11)
+              (bsplineScale 11 *
+                  (((primaryK11Center j - primaryK11Center i) +
+                    primaryK11PrimeShift n) / primaryK11Ell) +
+                (((bsplineAutocorrDegree 11 + 1 : ℕ) : Real) / 2) -
+                (m : Real)) -
+            plusPowerMid i j n m| ≤ plusPowerRad i j n m)
+    (hminusTermMid :
+      ∀ i j n m,
+        (((-1 : Real) ^ m) *
+          (Nat.choose (bsplineAutocorrDegree 11 + 1) m : Real)) *
+            minusPowerMid i j n m = minusTermMid i j n m)
+    (hminusTermRad :
+      ∀ i j n m,
+        |((-1 : Real) ^ m) *
+          (Nat.choose (bsplineAutocorrDegree 11 + 1) m : Real)| *
+            minusPowerRad i j n m ≤ minusTermRad i j n m)
+    (hplusTermMid :
+      ∀ i j n m,
+        (((-1 : Real) ^ m) *
+          (Nat.choose (bsplineAutocorrDegree 11 + 1) m : Real)) *
+            plusPowerMid i j n m = plusTermMid i j n m)
+    (hplusTermRad :
+      ∀ i j n m,
+        |((-1 : Real) ^ m) *
+          (Nat.choose (bsplineAutocorrDegree 11 + 1) m : Real)| *
+            plusPowerRad i j n m ≤ plusTermRad i j n m)
+    (hminusMid :
+      ∀ i j n,
+        ((Nat.factorial (bsplineAutocorrDegree 11) : Real)⁻¹) *
+          ((Finset.range (bsplineAutocorrDegree 11 + 2)).sum fun m =>
+            minusTermMid i j n m) = minusCardMid i j n)
+    (hminusRad :
+      ∀ i j n,
+        |((Nat.factorial (bsplineAutocorrDegree 11) : Real)⁻¹)| *
+          ((Finset.range (bsplineAutocorrDegree 11 + 2)).sum fun m =>
+            minusTermRad i j n m) ≤ minusCardRad i j n)
+    (hplusMid :
+      ∀ i j n,
+        ((Nat.factorial (bsplineAutocorrDegree 11) : Real)⁻¹) *
+          ((Finset.range (bsplineAutocorrDegree 11 + 2)).sum fun m =>
+            plusTermMid i j n m) = plusCardMid i j n)
+    (hplusRad :
+      ∀ i j n,
+        |((Nat.factorial (bsplineAutocorrDegree 11) : Real)⁻¹)| *
+          ((Finset.range (bsplineAutocorrDegree 11 + 2)).sum fun m =>
+            plusTermRad i j n m) ≤ plusCardRad i j n) :
+    (∀ i j n,
+      |centeredCardinalBSpline (bsplineAutocorrDegree 11)
+          (bsplineScale 11 *
+            (((primaryK11Center j - primaryK11Center i) -
+              primaryK11PrimeShift n) / primaryK11Ell)) -
+        minusCardMid i j n| ≤ minusCardRad i j n) ∧
+    (∀ i j n,
+      |centeredCardinalBSpline (bsplineAutocorrDegree 11)
+          (bsplineScale 11 *
+            (((primaryK11Center j - primaryK11Center i) +
+              primaryK11PrimeShift n) / primaryK11Ell)) -
+        plusCardMid i j n| ≤ plusCardRad i j n) := by
+  exact
+    primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes
+      minusTermMid minusTermRad plusTermMid plusTermRad
+      minusCardMid minusCardRad plusCardMid plusCardRad
+      (fun i j n m hm =>
+        _root_.Q3.PSDpd.CenteredBSplineRBoundsImport.centeredCardinalBSplineSummand_hbox_of_positivePartPower_hbox
+          (bsplineAutocorrDegree 11)
+          (bsplineScale 11 *
+            (((primaryK11Center j - primaryK11Center i) -
+              primaryK11PrimeShift n) / primaryK11Ell))
+          m
+          (minusPowerMid i j n m) (minusPowerRad i j n m)
+          (minusTermMid i j n m) (minusTermRad i j n m)
+          (hminusPower i j n m hm)
+          (hminusTermMid i j n m)
+          (hminusTermRad i j n m))
+      (fun i j n m hm =>
+        _root_.Q3.PSDpd.CenteredBSplineRBoundsImport.centeredCardinalBSplineSummand_hbox_of_positivePartPower_hbox
+          (bsplineAutocorrDegree 11)
+          (bsplineScale 11 *
+            (((primaryK11Center j - primaryK11Center i) +
+              primaryK11PrimeShift n) / primaryK11Ell))
+          m
+          (plusPowerMid i j n m) (plusPowerRad i j n m)
+          (plusTermMid i j n m) (plusTermRad i j n m)
+          (hplusPower i j n m hm)
+          (hplusTermMid i j n m)
+          (hplusTermRad i j n m))
+      hminusMid hminusRad hplusMid hplusRad
+
+/-- Generated positive-part-power hboxes imply the control cardinal
+B-spline numerator hboxes for all active prime shifts. -/
+theorem controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_positivePartPower_hboxes
+    (minusPowerMid minusPowerRad plusPowerMid plusPowerRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> ℕ -> Real)
+    (minusTermMid minusTermRad plusTermMid plusTermRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> ℕ -> Real)
+    (minusCardMid minusCardRad plusCardMid plusCardRad :
+      CoeffIndex23 -> CoeffIndex23 -> PrimeShiftIndexL3 -> Real)
+    (hminusPower :
+      ∀ i j n m,
+        m ∈ Finset.range (bsplineAutocorrDegree 9 + 2) ->
+          |positivePartPower (bsplineAutocorrDegree 9)
+              (bsplineScale 9 *
+                  (((controlK9Center j - controlK9Center i) -
+                    controlK9PrimeShift n) / controlK9Ell) +
+                (((bsplineAutocorrDegree 9 + 1 : ℕ) : Real) / 2) -
+                (m : Real)) -
+            minusPowerMid i j n m| ≤ minusPowerRad i j n m)
+    (hplusPower :
+      ∀ i j n m,
+        m ∈ Finset.range (bsplineAutocorrDegree 9 + 2) ->
+          |positivePartPower (bsplineAutocorrDegree 9)
+              (bsplineScale 9 *
+                  (((controlK9Center j - controlK9Center i) +
+                    controlK9PrimeShift n) / controlK9Ell) +
+                (((bsplineAutocorrDegree 9 + 1 : ℕ) : Real) / 2) -
+                (m : Real)) -
+            plusPowerMid i j n m| ≤ plusPowerRad i j n m)
+    (hminusTermMid :
+      ∀ i j n m,
+        (((-1 : Real) ^ m) *
+          (Nat.choose (bsplineAutocorrDegree 9 + 1) m : Real)) *
+            minusPowerMid i j n m = minusTermMid i j n m)
+    (hminusTermRad :
+      ∀ i j n m,
+        |((-1 : Real) ^ m) *
+          (Nat.choose (bsplineAutocorrDegree 9 + 1) m : Real)| *
+            minusPowerRad i j n m ≤ minusTermRad i j n m)
+    (hplusTermMid :
+      ∀ i j n m,
+        (((-1 : Real) ^ m) *
+          (Nat.choose (bsplineAutocorrDegree 9 + 1) m : Real)) *
+            plusPowerMid i j n m = plusTermMid i j n m)
+    (hplusTermRad :
+      ∀ i j n m,
+        |((-1 : Real) ^ m) *
+          (Nat.choose (bsplineAutocorrDegree 9 + 1) m : Real)| *
+            plusPowerRad i j n m ≤ plusTermRad i j n m)
+    (hminusMid :
+      ∀ i j n,
+        ((Nat.factorial (bsplineAutocorrDegree 9) : Real)⁻¹) *
+          ((Finset.range (bsplineAutocorrDegree 9 + 2)).sum fun m =>
+            minusTermMid i j n m) = minusCardMid i j n)
+    (hminusRad :
+      ∀ i j n,
+        |((Nat.factorial (bsplineAutocorrDegree 9) : Real)⁻¹)| *
+          ((Finset.range (bsplineAutocorrDegree 9 + 2)).sum fun m =>
+            minusTermRad i j n m) ≤ minusCardRad i j n)
+    (hplusMid :
+      ∀ i j n,
+        ((Nat.factorial (bsplineAutocorrDegree 9) : Real)⁻¹) *
+          ((Finset.range (bsplineAutocorrDegree 9 + 2)).sum fun m =>
+            plusTermMid i j n m) = plusCardMid i j n)
+    (hplusRad :
+      ∀ i j n,
+        |((Nat.factorial (bsplineAutocorrDegree 9) : Real)⁻¹)| *
+          ((Finset.range (bsplineAutocorrDegree 9 + 2)).sum fun m =>
+            plusTermRad i j n m) ≤ plusCardRad i j n) :
+    (∀ i j n,
+      |centeredCardinalBSpline (bsplineAutocorrDegree 9)
+          (bsplineScale 9 *
+            (((controlK9Center j - controlK9Center i) -
+              controlK9PrimeShift n) / controlK9Ell)) -
+        minusCardMid i j n| ≤ minusCardRad i j n) ∧
+    (∀ i j n,
+      |centeredCardinalBSpline (bsplineAutocorrDegree 9)
+          (bsplineScale 9 *
+            (((controlK9Center j - controlK9Center i) +
+              controlK9PrimeShift n) / controlK9Ell)) -
+        plusCardMid i j n| ≤ plusCardRad i j n) := by
+  exact
+    controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_summand_hboxes
+      minusTermMid minusTermRad plusTermMid plusTermRad
+      minusCardMid minusCardRad plusCardMid plusCardRad
+      (fun i j n m hm =>
+        _root_.Q3.PSDpd.CenteredBSplineRBoundsImport.centeredCardinalBSplineSummand_hbox_of_positivePartPower_hbox
+          (bsplineAutocorrDegree 9)
+          (bsplineScale 9 *
+            (((controlK9Center j - controlK9Center i) -
+              controlK9PrimeShift n) / controlK9Ell))
+          m
+          (minusPowerMid i j n m) (minusPowerRad i j n m)
+          (minusTermMid i j n m) (minusTermRad i j n m)
+          (hminusPower i j n m hm)
+          (hminusTermMid i j n m)
+          (hminusTermRad i j n m))
+      (fun i j n m hm =>
+        _root_.Q3.PSDpd.CenteredBSplineRBoundsImport.centeredCardinalBSplineSummand_hbox_of_positivePartPower_hbox
+          (bsplineAutocorrDegree 9)
+          (bsplineScale 9 *
+            (((controlK9Center j - controlK9Center i) +
+              controlK9PrimeShift n) / controlK9Ell))
+          m
+          (plusPowerMid i j n m) (plusPowerRad i j n m)
+          (plusTermMid i j n m) (plusTermRad i j n m)
+          (hplusPower i j n m hm)
+          (hplusTermMid i j n m)
+          (hplusTermRad i j n m))
+      hminusMid hminusRad hplusMid hplusRad
+
 /-- Termwise midpoint/radius certificates imply the primary finite-prime
 profile hbox.  The generator still has to supply the term tables and the
 termwise scalar proofs. -/

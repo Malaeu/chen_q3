@@ -39,12 +39,13 @@ Step32 is closed:
 - `centeredBSplineBoundaryRows_identify_Q`
 
 The current Step33A.1 prime-side `P` chain has compiled receivers down to
-truncated-power summand hboxes:
+positive-part-power scalar hboxes:
 
 - log/exp prime-weight receivers;
 - weighted R-pair term receivers;
 - cardinal numerator to `centeredBSplineR` receivers;
-- summand hboxes to cardinal numerator receivers.
+- summand hboxes to cardinal numerator receivers;
+- `positivePartPower` hboxes to summand receivers.
 
 ## Exact Live Gate
 
@@ -59,14 +60,16 @@ Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
 Target declaration chain:
 
 ```lean
+primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_positivePartPower_hboxes
 primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes
 primaryK11CenteredBSplineR11PrimeShiftPair_hbox_of_cardinal_hboxes
 primaryK11AnalyticP_entry_hbox_of_log_exp_weight_and_R_pair_hboxes
 ```
 
-The expected missing generated proof surface is scalar midpoint/radius hboxes
-for the `positivePartPower` / polynomial-segment summands of the degree-23
-primary cardinal numerator.
+The expected missing generated proof surface is now the actual scalar
+midpoint/radius payload for `positivePartPower` values of the degree-23 primary
+cardinal numerator, plus the coefficient scaling checks for the signed binomial
+summands.
 
 Control `k=9` follows the same pattern after primary is wired.
 
@@ -74,10 +77,10 @@ Control `k=9` follows the same pattern after primary is wired.
 
 Choose one:
 
-1. Add a Lean-checked receiver proving one smaller scalar replay layer below
-   `centeredCardinalBSplineSummand`.
-2. Integrate generated primary `k=11` summand hboxes into the compiled
+1. Integrate generated primary `k=11` `positivePartPower` hboxes into the compiled
    receiver chain without weakening theorem statements.
+2. Repeat the generated payload integration for the control `k=9` analogue if
+   primary is already wired.
 3. Write a precise blocker report naming the exact missing scalar enclosure
    engine, generated table, theorem, or file.
 

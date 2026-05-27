@@ -7,9 +7,9 @@ started: 2026-05-27
 current_lane: PSD
 current_step_id: Step33A.1
 current_step_title: primary/control analytic A/P/P0 entry hbox lemmas
-current_target: generated scalar summand hboxes for centered cardinal B-spline numerator
+current_target: generated positivePartPower scalar hboxes for centered cardinal B-spline summands
 current_owner: local-agent
-current_artifact: Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean
+current_artifact: Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
 request: q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
 report: q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
 legacy_request: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/node.md
@@ -18,8 +18,8 @@ h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
 next_theorem_targets:
-- primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes
-- controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_summand_hboxes
+- primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_positivePartPower_hboxes
+- controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_positivePartPower_hboxes
 
 This is the operational source of truth for the active PSD Step33 bootstrap
 goal.  While this file has `status: ACTIVE`, PSD/Step33 work follows this file
@@ -74,26 +74,29 @@ Recent checked receivers:
 - `controlK9CenteredBSplineR9PrimeShiftPair_hbox_of_cardinal_hboxes`
 - `primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes`
 - `controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_summand_hboxes`
+- `centeredCardinalBSplineSummand_hbox_of_positivePartPower_hbox`
+- `primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_positivePartPower_hboxes`
+- `controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_positivePartPower_hboxes`
 
 ## Next Deliverable
 
-Close the next generated scalar replay layer for the prime-side `P` entry hbox:
+Integrate the generated scalar replay payload for the prime-side `P` entry hbox:
 
 ```lean
-primaryK11 positivePartPower / polynomial-segment summand hboxes
+primaryK11 positivePartPower midpoint/radius hboxes
 ```
 
-The immediate generated target is scalar hboxes for the truncated-power
-summands consumed by:
+The immediate generated target is the `minusPowerMid/minusPowerRad` and
+`plusPowerMid/plusPowerRad` tables plus coefficient scaling checks consumed by:
 
 ```lean
-primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes
+primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_positivePartPower_hboxes
 ```
 
 Control `k=9` follows the same shape through:
 
 ```lean
-controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_summand_hboxes
+controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_positivePartPower_hboxes
 ```
 
 ## Validation

@@ -21,6 +21,44 @@ def centeredCardinalBSplineSummand (degree : ℕ) (x : Real) (j : ℕ) : Real :=
       positivePartPower degree
         (x + (((degree + 1 : ℕ) : Real) / 2) - (j : Real))
 
+/-- A generated positive-part-power hbox gives the corresponding centered
+cardinal B-spline summand hbox after applying the signed binomial
+coefficient. -/
+theorem centeredCardinalBSplineSummand_hbox_of_positivePartPower_hbox
+    (degree : ℕ) (x : Real) (j : ℕ)
+    (ppMid ppRad mid rad : Real)
+    (hpp :
+      |positivePartPower degree
+          (x + (((degree + 1 : ℕ) : Real) / 2) - (j : Real)) -
+        ppMid| ≤ ppRad)
+    (hmid :
+      (((-1 : Real) ^ j) *
+        (Nat.choose (degree + 1) j : Real)) * ppMid = mid)
+    (hrad :
+      |((-1 : Real) ^ j) *
+        (Nat.choose (degree + 1) j : Real)| * ppRad ≤ rad) :
+    |centeredCardinalBSplineSummand degree x j - mid| ≤ rad := by
+  unfold centeredCardinalBSplineSummand
+  rw [← hmid]
+  calc
+    |(((-1 : Real) ^ j) *
+          (Nat.choose (degree + 1) j : Real) *
+          positivePartPower degree
+            (x + (((degree + 1 : ℕ) : Real) / 2) - (j : Real))) -
+        (((-1 : Real) ^ j) *
+          (Nat.choose (degree + 1) j : Real)) * ppMid| =
+        |((-1 : Real) ^ j) *
+          (Nat.choose (degree + 1) j : Real)| *
+          |positivePartPower degree
+            (x + (((degree + 1 : ℕ) : Real) / 2) - (j : Real)) -
+            ppMid| := by
+          rw [← mul_sub, abs_mul]
+    _ ≤
+        |((-1 : Real) ^ j) *
+          (Nat.choose (degree + 1) j : Real)| * ppRad := by
+          exact mul_le_mul_of_nonneg_left hpp (abs_nonneg _)
+    _ ≤ rad := hrad
+
 /-- Summand midpoint/radius hboxes imply a centered cardinal B-spline hbox. -/
 theorem centeredCardinalBSpline_hbox_of_summand_hboxes
     (degree : ℕ) (x mid rad : Real)

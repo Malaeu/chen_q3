@@ -14281,3 +14281,27 @@ Update:
   remains the primary `k=11` `positivePartPower` / polynomial-segment summand
   hboxes consumed by
   `primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes`.
+
+## Synthesis (2026-05-27, OK) — `Step33.positivePartPower_scalar_receiver`
+
+- Target: close the scalar receiver layer below
+  `centeredCardinalBSplineSummand` without inventing generated tables.
+- Local searches for `positivePartPower`, `centeredCardinalBSplineSummand`,
+  `summand hbox`, and `PowerMid` found no existing generated scalar replay.
+- Added `centeredCardinalBSplineSummand_hbox_of_positivePartPower_hbox`:
+  a generated hbox for `positivePartPower degree (x + (degree + 1) / 2 - j)`
+  now gives the signed-binomial summand hbox after midpoint equality and radius
+  scaling.
+- Added primary/control Step33 receivers:
+  `primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_positivePartPower_hboxes`
+  and
+  `controlK9CenteredCardinalBSpline19PrimeShiftPair_hbox_of_positivePartPower_hboxes`.
+- Resulting chain is now:
+  `positivePartPower scalar hbox -> summand hbox -> cardinal numerator hbox ->
+  R-shift pair hbox -> P-entry hbox`.
+- Verification: `lake build Q3.Proofs.PSD_CenteredBSplineRBoundsImport`,
+  direct Lean on RBounds/PrimeEntry/EntryHbox, `scripts/q3_check.sh` for the
+  active touched files, and `git diff --check` all pass.
+- Next payload is concrete generated data: primary `k=11`
+  `minusPowerMid/minusPowerRad` and `plusPowerMid/plusPowerRad` tables, signed
+  binomial coefficient scaling checks, and the finite cardinal sum checks.
