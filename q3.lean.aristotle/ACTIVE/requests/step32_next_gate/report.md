@@ -400,6 +400,92 @@ Compile status:
   passes;
 - no `sorry`, `exact?`, or `admit` occurs in the touched Lean file.
 
+## Update (2026-05-27) — R-pair receiver from cardinal B-spline boxes
+
+Status: rpair-cardinal-hbox-receiver-compiled
+
+The prime-side R-pair source proof is now one layer lower.  Instead of asking
+the generator to prove `centeredBSplineR k x` enclosures directly, Lean now
+proves that such an enclosure follows from a cardinal B-spline enclosure for
+the numerator:
+
+```lean
+centeredCardinalBSpline (bsplineAutocorrDegree k) (bsplineScale k * x)
+```
+
+and the checked positive normalization denominator:
+
+```lean
+bsplineAutocorrNorm k
+```
+
+Theorem/definitions added in:
+
+```text
+Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean
+Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+```
+
+New reusable normalization receivers:
+
+```lean
+div_pos_abs_sub_le
+centeredBSplineR_hbox_of_cardinal_hbox
+```
+
+New primary/control R-pair receivers:
+
+```lean
+primaryK11CenteredBSplineR11PrimeShiftPair_hbox_of_cardinal_hboxes
+controlK9CenteredBSplineR9PrimeShiftPair_hbox_of_cardinal_hboxes
+```
+
+Meaning: the first missing generated proof source is no longer a direct
+`centeredBSplineR` replay.  It is now the cardinal B-spline numerator hbox:
+
+```lean
+centeredCardinalBSpline 23
+  (bsplineScale 11 *
+    (((primaryK11Center j - primaryK11Center i) ±
+      primaryK11PrimeShift n) / primaryK11Ell))
+```
+
+together with the generated midpoint/radius normalization equalities and
+radius dominance consumed by
+`primaryK11CenteredBSplineR11PrimeShiftPair_hbox_of_cardinal_hboxes`.
+
+Local q3_docs searches were run for:
+
+```text
+primaryK11CenteredBSplineR11PrimeShiftPair_hbox
+centeredBSplineR 11 prime shift pair hbox
+prime weight log exp R pair entry hbox Step33
+```
+
+They did not find an existing generated R11 replay, only older prime and
+B-spline notes.  External web sanity search on cardinal B-spline/truncated
+power formulas did not change the Lean target.
+
+Commands run:
+
+```bash
+lake build Q3.Proofs.PSD_CenteredBSplineRBoundsImport
+lake env lean Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
+scripts/q3_check.sh Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
+rg -n "sorry|exact\\?|admit" q3.lean.aristotle/Q3/Proofs/PSD_CenteredBSplineRBoundsImport.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean
+```
+
+Compile status:
+
+- direct Lean passes for both touched Lean files;
+- `scripts/q3_check.sh` passes for both touched Lean files;
+- direct Lean and `scripts/q3_check.sh` also pass for the active entry-hbox
+  file `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`;
+- no `sorry`, `exact?`, or `admit` occurs in either touched Lean file.
+
 ## Update (2026-05-27) — Prime weight receiver from log/exp-factor boxes
 
 Status: prime-weight-log-exp-receiver-compiled

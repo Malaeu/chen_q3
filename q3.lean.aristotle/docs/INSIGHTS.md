@@ -14199,3 +14199,33 @@ Update:
 - Verification: direct Lean and `scripts/q3_check.sh` pass for
   `Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean`; no hole marker
   occurs in the touched Lean file.
+
+## Synthesis (2026-05-27, OK) — `Step33.rpair_cardinal_hbox_receiver`
+
+- Target: reduce the remaining R-pair proof source for Step33A.1 without
+  fabricating generated scalar tables.
+- Local `q3_docs` searches for
+  `primaryK11CenteredBSplineR11PrimeShiftPair_hbox`,
+  `centeredBSplineR 11 prime shift pair hbox`, and
+  `prime weight log exp R pair entry hbox Step33` did not find an existing
+  generated replay; the useful local pointer remains the earlier note that
+  `centeredBSplineR 11 x` expands to a normalized cardinal B-spline numerator.
+- External web sanity search on cardinal B-spline/truncated-power formulas
+  matched the same numerator-level route but did not provide a Lean payload.
+- Added `div_pos_abs_sub_le` and `centeredBSplineR_hbox_of_cardinal_hbox` in
+  `PSD_CenteredBSplineRBoundsImport.lean`: a cardinal numerator hbox for
+  `centeredCardinalBSpline (bsplineAutocorrDegree k) (bsplineScale k * x)`
+  now implies the normalized `centeredBSplineR k x` hbox using
+  `bsplineAutocorrNorm_pos`.
+- Added primary/control prime-shift pair receivers:
+  `primaryK11CenteredBSplineR11PrimeShiftPair_hbox_of_cardinal_hboxes` and
+  `controlK9CenteredBSplineR9PrimeShiftPair_hbox_of_cardinal_hboxes`.
+- Result: the next generator target is now strictly smaller.  For primary
+  `k=11`, it must emit cardinal B-spline hboxes for degree `23` at the two
+  shifted arguments, plus midpoint/radius normalization checks consumed by the
+  new receiver.
+- Verification: `lake build Q3.Proofs.PSD_CenteredBSplineRBoundsImport`,
+  direct Lean on both touched files, and `scripts/q3_check.sh` on both touched
+  files pass; direct Lean and `scripts/q3_check.sh` also pass for the active
+  entry-hbox file `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`; no hole
+  marker occurs in either touched Lean file.
