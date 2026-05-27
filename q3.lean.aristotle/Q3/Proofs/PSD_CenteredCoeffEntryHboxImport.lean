@@ -71,6 +71,94 @@ noncomputable def controlK9CertifiedCoeffBlock_of_activeEntryHboxCert
       controlK9_hk controlK9_hell :=
   controlK9CertifiedCoeffBlock_of_entryHboxCert cert.control
 
+noncomputable def primaryK11FiniteBlock_of_entryHboxCert
+    (cert : PrimaryK11BaseEntryHboxCert) :
+    CertifiedFiniteBlock :=
+  (primaryK11CertifiedCoeffBlock_of_entryHboxCert cert).toCertifiedFiniteBlock
+    CenteredBSplineCoeffManifestLabel.primaryK11L3Ell030Delta025Theta1e4
+
+noncomputable def controlK9FiniteBlock_of_entryHboxCert
+    (cert : ControlK9BaseEntryHboxCert) :
+    CertifiedFiniteBlock :=
+  (controlK9CertifiedCoeffBlock_of_entryHboxCert cert).toCertifiedFiniteBlock
+    CenteredBSplineCoeffManifestLabel.controlK9L3Ell030Delta025Theta1e5
+
+noncomputable def primaryK11FiniteBlock_of_activeEntryHboxCert
+    (cert : ActiveCenteredCoeffEntryHboxCert) :
+    CertifiedFiniteBlock :=
+  primaryK11FiniteBlock_of_entryHboxCert cert.primary
+
+noncomputable def controlK9FiniteBlock_of_activeEntryHboxCert
+    (cert : ActiveCenteredCoeffEntryHboxCert) :
+    CertifiedFiniteBlock :=
+  controlK9FiniteBlock_of_entryHboxCert cert.control
+
+noncomputable def primaryK11SingletonDirectedCertFamily_of_entryHboxCert
+    (cert : PrimaryK11BaseEntryHboxCert) :
+    DirectedCertFamily :=
+  (primaryK11CertifiedCoeffBlock_of_entryHboxCert cert).toSingletonDirectedCertFamily
+    CenteredBSplineCoeffManifestLabel.primaryK11L3Ell030Delta025Theta1e4
+
+noncomputable def controlK9SingletonDirectedCertFamily_of_entryHboxCert
+    (cert : ControlK9BaseEntryHboxCert) :
+    DirectedCertFamily :=
+  (controlK9CertifiedCoeffBlock_of_entryHboxCert cert).toSingletonDirectedCertFamily
+    CenteredBSplineCoeffManifestLabel.controlK9L3Ell030Delta025Theta1e5
+
+noncomputable def primaryK11SingletonDirectedCertFamily_of_activeEntryHboxCert
+    (cert : ActiveCenteredCoeffEntryHboxCert) :
+    DirectedCertFamily :=
+  primaryK11SingletonDirectedCertFamily_of_entryHboxCert cert.primary
+
+noncomputable def controlK9SingletonDirectedCertFamily_of_activeEntryHboxCert
+    (cert : ActiveCenteredCoeffEntryHboxCert) :
+    DirectedCertFamily :=
+  controlK9SingletonDirectedCertFamily_of_entryHboxCert cert.control
+
+theorem primaryK11_weil_nonneg_on_analyticBoundary_of_entryHboxCert
+    (cert : PrimaryK11BaseEntryHboxCert) :
+    ∀ v : CoeffIndex23 -> Real,
+      (primaryK11CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.boundary.evalPlus
+          ((primaryK11CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.synth v) = 0 ->
+      (primaryK11CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.boundary.evalMinus
+          ((primaryK11CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.synth v) = 0 ->
+        0 ≤ (primaryK11CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.weilForm
+          ((primaryK11CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.synth v) :=
+  (primaryK11CertifiedCoeffBlock_of_entryHboxCert cert).weil_nonneg_on_analyticBoundary
+
+theorem controlK9_weil_nonneg_on_analyticBoundary_of_entryHboxCert
+    (cert : ControlK9BaseEntryHboxCert) :
+    ∀ v : CoeffIndex23 -> Real,
+      (controlK9CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.boundary.evalPlus
+          ((controlK9CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.synth v) = 0 ->
+      (controlK9CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.boundary.evalMinus
+          ((controlK9CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.synth v) = 0 ->
+        0 ≤ (controlK9CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.weilForm
+          ((controlK9CertifiedCoeffBlock_of_entryHboxCert cert).finiteWeilMatrixModel.synth v) :=
+  (controlK9CertifiedCoeffBlock_of_entryHboxCert cert).weil_nonneg_on_analyticBoundary
+
+theorem primaryK11_weil_nonneg_on_analyticBoundary_of_activeEntryHboxCert
+    (cert : ActiveCenteredCoeffEntryHboxCert) :
+    ∀ v : CoeffIndex23 -> Real,
+      (primaryK11CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.boundary.evalPlus
+          ((primaryK11CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.synth v) = 0 ->
+      (primaryK11CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.boundary.evalMinus
+          ((primaryK11CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.synth v) = 0 ->
+        0 ≤ (primaryK11CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.weilForm
+          ((primaryK11CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.synth v) :=
+  primaryK11_weil_nonneg_on_analyticBoundary_of_entryHboxCert cert.primary
+
+theorem controlK9_weil_nonneg_on_analyticBoundary_of_activeEntryHboxCert
+    (cert : ActiveCenteredCoeffEntryHboxCert) :
+    ∀ v : CoeffIndex23 -> Real,
+      (controlK9CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.boundary.evalPlus
+          ((controlK9CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.synth v) = 0 ->
+      (controlK9CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.boundary.evalMinus
+          ((controlK9CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.synth v) = 0 ->
+        0 ≤ (controlK9CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.weilForm
+          ((controlK9CertifiedCoeffBlock_of_activeEntryHboxCert cert).finiteWeilMatrixModel.synth v) :=
+  controlK9_weil_nonneg_on_analyticBoundary_of_entryHboxCert cert.control
+
 end CenteredCoeffEntryHboxImport
 end PSDpd
 end Q3

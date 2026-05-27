@@ -258,3 +258,72 @@ Blocker status:
 - commands run:
 - compile status:
 - blocker, if any:
+
+## Update (2026-05-27) — Entry certificate downstream adapters
+
+Status: downstream-entry-adapters-compiled
+
+The active entry-hbox certificate now has named downstream adapters from the
+already-existing certificate bundle to the finite certificate ledger and
+directed-family handoff.
+
+Theorem/definitions added in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
+```
+
+New finite-block adapters:
+
+```lean
+primaryK11FiniteBlock_of_entryHboxCert
+controlK9FiniteBlock_of_entryHboxCert
+primaryK11FiniteBlock_of_activeEntryHboxCert
+controlK9FiniteBlock_of_activeEntryHboxCert
+```
+
+New directed-family adapters:
+
+```lean
+primaryK11SingletonDirectedCertFamily_of_entryHboxCert
+controlK9SingletonDirectedCertFamily_of_entryHboxCert
+primaryK11SingletonDirectedCertFamily_of_activeEntryHboxCert
+controlK9SingletonDirectedCertFamily_of_activeEntryHboxCert
+```
+
+New finite analytic Weil nonnegativity wrappers:
+
+```lean
+primaryK11_weil_nonneg_on_analyticBoundary_of_entryHboxCert
+controlK9_weil_nonneg_on_analyticBoundary_of_entryHboxCert
+primaryK11_weil_nonneg_on_analyticBoundary_of_activeEntryHboxCert
+controlK9_weil_nonneg_on_analyticBoundary_of_activeEntryHboxCert
+```
+
+Meaning: once the six real entry-hbox fields `hA`, `hP`, and `hP0` for
+primary/control are supplied, the path to `CertifiedFiniteBlock`, singleton
+`DirectedCertFamily`, and finite analytic Weil nonnegativity is now named and
+Lean-checked in the active request file.
+
+This does not close Step33A.1.  The first missing proof source remains:
+
+```lean
+primaryK11CenteredBSplineR11PrimeShiftPair_hbox
+```
+
+That lemma is still needed before the primary `P` field
+`primaryK11AnalyticP_entry_hbox` can be assembled through the compiled
+term/profile receivers.
+
+Commands run:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
+```
+
+Compile status:
+
+- direct Lean passes for `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`;
+- `scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`
+  passes;
+- no `sorry`, `exact?`, or `admit` occurs in the touched Lean file.

@@ -14128,3 +14128,28 @@ Update:
 - Verification: `lake env lean
   Q3/Proofs/PSD_CenteredCoeffPrimeEntryHboxImport.lean` passes after adding the
   term-level receivers.
+
+## Synthesis (2026-05-27, OK) — `Step33.entry_cert_downstream_adapters`
+
+- Target: continue the active entry-hbox certificate route without pretending
+  the missing scalar hboxes are already proven.
+- Direct source inspection showed that `PrimaryK11BaseEntryHboxCert`,
+  `ControlK9BaseEntryHboxCert`, and `ActiveCenteredCoeffEntryHboxCert` already
+  assemble `CertifiedCenteredBSplineCoeffBlock` values from `hA/hP/hP0`.
+- Existing downstream APIs on `CertifiedCenteredBSplineCoeffBlock` already
+  expose `CertifiedFiniteBlock`, singleton `DirectedCertFamily`, and analytic
+  boundary-null Weil nonnegativity.
+- Added named adapters in `PSD_CenteredCoeffEntryHboxImport.lean` from
+  primary/control/active entry-hbox certificates to those downstream objects:
+  finite-block adapters, singleton directed-family adapters, and primary/control
+  finite analytic Weil nonnegativity wrappers.
+- Result: Step33A.2/A.3 and the conditional Step33B/Step33C handoff are now
+  named at the active certificate surface.  Step33A.1 remains the real open
+  source proof.
+- Remaining first target:
+  `primaryK11CenteredBSplineR11PrimeShiftPair_hbox`, feeding
+  `primaryK11AnalyticP_entry_hbox` through the already-compiled finite
+  prime-profile receivers.
+- Verification: direct Lean and `scripts/q3_check.sh` pass for
+  `Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean`; no hole marker occurs in
+  the touched Lean file.
