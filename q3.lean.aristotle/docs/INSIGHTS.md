@@ -32918,3 +32918,30 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   floating pilot data)`, and
   `FATAL(treating receiver sampled ranges or floating-profile intervals as
   Lean proof-grade enclosures)`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeReceiverCombinedIntervalAudit
+
+- Upgraded `scripts/trackb_nonnode_interval_atom_audit.py` with Selberg/Vaaler
+  receiver interval atoms `E_delta^(j)`, using recurrence-to-positive
+  polygamma evaluation plus a positive-series integral tail bound.  The DLMF
+  §5.15 polygamma identities are the allowed source; no RH/GRH input is used.
+- Added combined product-rule interval atoms for `H_v^(j)` and `S_v^(j)`.
+- On K=3.5 cell `58`, mesh interval
+  `[6.645833333333817, 6.645976562500484]`, receiver intervals contain all
+  sampled `E0..E3` ranges.  Width/sample ratios are about `5.62`, `96.04`,
+  `64.43`, and `965.45` respectively.
+- The combined interval sign guard passes locally:
+  `S0=[0.06347021663883491,0.07150540275891909]`,
+  `S1_abs_upper~0.7894215401009013`,
+  `S2_abs_upper~1.0233364325665646`, and direct mesh guard
+  `~0.06341368254416625`.
+- Tail sanity for polygamma terms `100,400,1000` keeps the direct guard near
+  `0.0634120..0.0634138`, so the local pass is not a tail-truncation artifact
+  at the recorded precision.
+- Status refines to
+  `PARTIAL(local combined interval sign guard installed for K=3.5 cell 58
+  mesh 0)`,
+  `GAP(full-cell worklist lift, rational certificate data, and Lean-grade
+  outward rounding still missing)`, and
+  `FATAL(treating the floating interval scaffold as a proof-grade E5'
+  certificate)`.
