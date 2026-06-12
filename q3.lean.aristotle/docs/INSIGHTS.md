@@ -32794,3 +32794,26 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `GAP(actual outward-rounded interval enclosures for S_v and S_v' still
   missing)`, and
   `FATAL(treating stress factors as proof-grade derivative bounds)`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeMeshGuardAudit
+
+- Added `docs/trackB/b2b_nonnode_mesh_guard_audit.md` and upgraded
+  `scripts/trackb_edge_operator_probe.py clvsigncert` with
+  `mesh_interval_guard` summaries inside each non-node candidate.
+- The mesh guard mirrors the existing FloorCert pattern:
+  endpoint lower bounds plus a derivative/Lipschitz envelope over each mesh
+  interval.  The current field still uses sampled endpoint derivatives and is
+  therefore diagnostic only.
+- K=3.5 cell `58` has 800 mesh intervals and passes the tested factor
+  `1000`; its worst factor-1000 interval is
+  `[6.645833333333817, 6.645976562500484]`, with sampled guard about
+  `0.012976`.  Factor `2000` fails.
+- K=3.5 cell `59` passes through factor `2000`; K=3 cells `35,36` pass
+  through factor `5000`; cells `61,39` remain outside the non-node branch.
+- The next theorem-producing generator target is K=3.5 cell `58`, replacing
+  sampled endpoint derivative values by outward-rounded interval suprema of
+  `|S_v'|` on each of the 800 mesh intervals.
+- Status refines to
+  `PARTIAL(per-mesh non-node certificate shape extracted)`,
+  `GAP(outward-rounded sup |S_v'| on each mesh interval still missing)`, and
+  `FATAL(treating endpoint derivative samples as interval suprema)`.

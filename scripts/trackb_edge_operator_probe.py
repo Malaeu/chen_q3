@@ -1204,6 +1204,75 @@ def interval_safety_stress_summary(
     }
 
 
+def mesh_interval_guard_summary(
+    a_grid: np.ndarray,
+    values: np.ndarray,
+    derivative_values: np.ndarray,
+    *,
+    safety_factors: list[float],
+) -> dict[str, Any]:
+    """Per-mesh diagnostic guards for the future grid/Lipschitz certificate."""
+    a = np.asarray(a_grid, dtype=float)
+    v = np.asarray(values, dtype=float)
+    dv = np.asarray(derivative_values, dtype=float)
+    if a.size < 2 or v.size != a.size or dv.size != a.size:
+        return {
+            "route": "per_mesh_endpoint_guard",
+            "mesh_interval_count": 0,
+            "stress_factors": [],
+            "largest_passing_factor": None,
+            "first_failing_factor": None,
+            "proof_status": (
+                "diagnostic_only: malformed mesh; no interval certificate generated"
+            ),
+        }
+
+    widths = np.diff(a)
+    endpoint_min_abs = np.minimum(np.abs(v[:-1]), np.abs(v[1:]))
+    endpoint_lipschitz = np.maximum(np.abs(dv[:-1]), np.abs(dv[1:]))
+    rows: list[dict[str, Any]] = []
+    passing: list[float] = []
+    for factor in sorted(float(f) for f in safety_factors if float(f) > 0.0):
+        guards = endpoint_min_abs - 0.5 * factor * endpoint_lipschitz * widths
+        worst_idx = int(np.argmin(guards))
+        min_guard = float(guards[worst_idx])
+        row = {
+            "factor": finite_float(factor),
+            "min_mesh_guard": finite_float(min_guard),
+            "passes_all_mesh_intervals": bool(min_guard > 0.0),
+            "worst_interval_index": int(worst_idx),
+            "worst_a_lo": finite_float(float(a[worst_idx])),
+            "worst_a_hi": finite_float(float(a[worst_idx + 1])),
+            "worst_endpoint_min_abs_S": finite_float(float(endpoint_min_abs[worst_idx])),
+            "worst_endpoint_L_sample": finite_float(float(endpoint_lipschitz[worst_idx])),
+            "worst_mesh_width": finite_float(float(widths[worst_idx])),
+        }
+        rows.append(row)
+        if min_guard > 0.0:
+            passing.append(factor)
+    failing = [
+        float(row["factor"]) for row in rows if not bool(row["passes_all_mesh_intervals"])
+    ]
+    return {
+        "route": "per_mesh_endpoint_guard",
+        "mesh_interval_count": int(widths.size),
+        "max_mesh_width": finite_float(float(np.max(widths))),
+        "min_endpoint_abs_S": finite_float(float(np.min(endpoint_min_abs))),
+        "max_endpoint_L_sample": finite_float(float(np.max(endpoint_lipschitz))),
+        "stress_factors": rows,
+        "largest_passing_factor": None if not passing else finite_float(max(passing)),
+        "first_failing_factor": None if not failing else finite_float(min(failing)),
+        "derivative_bound_status": (
+            "sampled_endpoint_only: replace endpoint derivative samples by "
+            "outward-rounded sup |S'| on each mesh interval"
+        ),
+        "proof_status": (
+            "diagnostic_only: per-mesh shape matches grid/Lipschitz certificate, "
+            "but derivative bounds are sampled endpoints, not interval suprema"
+        ),
+    }
+
+
 def smooth_segment_sign_candidate(
     pilot: Any,
     packet: Any,
@@ -1297,6 +1366,12 @@ def smooth_segment_sign_candidate(
         max_mesh=max_mesh,
         safety_factors=interval_safety_factors or [],
     )
+    mesh_guard_summary = mesh_interval_guard_summary(
+        a_grid,
+        signed_density,
+        signed_density_derivative,
+        safety_factors=interval_safety_factors or [],
+    )
     sign_orientation = (
         "positive"
         if float(np.min(signed_density)) > 0.0
@@ -1331,6 +1406,7 @@ def smooth_segment_sign_candidate(
             allowable_lipschitz_multiplier - 1.0
         ),
         "interval_safety_stress": stress_summary,
+        "mesh_interval_guard": mesh_guard_summary,
         "proof_status": (
             "diagnostic_only: replace sampled extrema by outward-rounded interval "
             "bounds for S and S' before using this certificate"
@@ -4156,6 +4232,7 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                     non_node_candidate_slacks: list[float] = []
                     non_node_candidate_count = 0
                     non_node_stress_passed_sets: list[set[float]] = []
+                    non_node_mesh_guard_passed_sets: list[set[float]] = []
                     for seg in smooth_segments:
                         audit = seg.get("receiver_node_audit", {})
                         for axis_key in ["left_axis", "right_axis"]:
@@ -4183,12 +4260,25 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                                 if bool(row.get("passes"))
                             }
                             non_node_stress_passed_sets.append(passed)
+                            mesh_guard = non_node_candidate.get("mesh_interval_guard", {})
+                            mesh_passed = {
+                                float(row["factor"])
+                                for row in mesh_guard.get("stress_factors", [])
+                                if bool(row.get("passes_all_mesh_intervals"))
+                            }
+                            non_node_mesh_guard_passed_sets.append(mesh_passed)
                     if non_node_stress_passed_sets:
                         common_stress_passed = sorted(
                             set.intersection(*non_node_stress_passed_sets)
                         )
                     else:
                         common_stress_passed = []
+                    if non_node_mesh_guard_passed_sets:
+                        common_mesh_guard_passed = sorted(
+                            set.intersection(*non_node_mesh_guard_passed_sets)
+                        )
+                    else:
+                        common_mesh_guard_passed = []
                     cell_rows.append(
                         {
                             "cell_index": int(cell_idx),
@@ -4226,6 +4316,12 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                             "non_node_interval_largest_common_passing_safety_factor": None
                             if not common_stress_passed
                             else finite_float(max(common_stress_passed)),
+                            "non_node_mesh_guard_common_passing_safety_factors": [
+                                finite_float(factor) for factor in common_mesh_guard_passed
+                            ],
+                            "non_node_mesh_guard_largest_common_passing_safety_factor": None
+                            if not common_mesh_guard_passed
+                            else finite_float(max(common_mesh_guard_passed)),
                             "smooth_continuous_variation_x": finite_float(
                                 smooth_continuous_variation
                             ),

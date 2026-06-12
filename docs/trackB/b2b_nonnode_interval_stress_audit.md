@@ -233,6 +233,13 @@ falling back to a more symbolic Taylor model.
 
 Track B remains active.
 
+Follow-up:
+
+- `docs/trackB/b2b_nonnode_mesh_guard_audit.md` refines the stress audit into
+  per-mesh guards.  The first theorem-producing target is K=3.5 cell `58`,
+  with worst pilot mesh interval
+  `[6.645833333333817, 6.645976562500484]`.
+
 ## Proshka Audit Block
 
 Claim:
