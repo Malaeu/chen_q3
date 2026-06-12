@@ -31950,3 +31950,33 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   not prove Weil positivity, does not close Step33/L3, and does not mutate
   `Q3.Main`, Lean proof files, payloads, CSVs, LDL/radius data, H1/PO3, or the
   active PSD route.
+
+## Insight (2026-06-12, Track B B1) -- CLVSelbergPairEdgeStrip
+
+- Added `docs/trackB/clv_pair.md` as the B1 formula card for the
+  Selberg-Beurling / CLV edge-strip pair.  This is formula documentation only,
+  not a Lean proof and not an E5' closure.
+- Local `q3_docs` checks kept the D2 normalization in view:
+  `Q Phi = arch_term Phi - prime_term Phi`, with Q3 prime nodes
+  `xi_n = log n / (2*pi)` and prime weights `2*Lambda(n)/sqrt(n)`.
+- External source classification: Vaaler/Selberg interval majorants and the
+  Le-Vaaler `H,J,K` Fourier-support lemma are `UNCONDITIONAL`; CLV Gaussian
+  subordination is `UNCONDITIONAL`; Carneiro-Milinovich-Soundararajan prime-gap
+  applications are RH-conditional and are forbidden as theorem inputs here.
+- Formula frozen: for `I=[a,b]` and `delta>0`,
+  `M^-_{I,delta} <= chi_I <= M^+_{I,delta}`, type `<= 2*pi*delta`,
+  Fourier support in `[-delta,delta]`, and one-sided `L1` error exactly
+  `1/delta`.
+- Fourier-side correction: the transform is
+  `hat(chi_I)(u)*hat(J0)(u/delta) +/- (e(-a*u)+e(-b*u))*hat(K0)(u/delta)/(2*delta)`.
+  The `hat(J0)` factor is load-bearing; replacing it by a naive truncated
+  interval transform is a false shortcut.
+- K=2 formula sanity in raw-log coordinates: `I=[4,8]`, `delta=1`, type
+  `<=2*pi`, support `[-1,1]`, `hat(M^+)(0)=5`, `hat(M^-)(0)=3`, one-sided
+  error `1`.
+- Remaining B1 gate: the measured Q3 cross-correlation edge-defect artifact for
+  `K=2` was not located in this pass, so the requested numeric comparison is
+  still `GAP(measured artifact)`.
+- B2 warning recorded: the positive/negative split `g=g_+-g_-` is invalid as a
+  bandlimited cone move.  Prefer B2b: Hermitian square, explicit formula, and
+  existing zero-side PSD in place of any RH-dependent zero-side positivity.
