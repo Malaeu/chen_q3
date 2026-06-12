@@ -32662,3 +32662,28 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `PARTIAL(smooth/jump proof-generator shape identified)`,
   `GAP(interval or B-spline derivative enclosure still missing)`, and
   `FATAL(treating sampled sign guards as proof of sign stability)`.
+
+## Insight (2026-06-12, Track B B2b) -- ProfileDerivativeEnclosure
+
+- Added `docs/trackB/b2b_profile_derivative_enclosure.md` and upgraded
+  `scripts/trackb_edge_operator_probe.py clvsigncert` so the packet-profile
+  derivatives `F_v'` and `F_v''` are computed by analytic centered B-spline
+  derivative formulas.
+- The smooth-segment sign density now uses
+  `S(a)=exp(-a/2)(H_v'(a)-H_v(a)/2)` and
+  `S'(a)=exp(-a/2)(H_v''(a)-H_v'(a)+H_v(a)/4)`, with analytic packet
+  derivatives but sampled finite-difference Selberg receiver derivatives.
+- A finite-difference sanity check for K=3.5 on `[6.65,7.1]` at step
+  `h=1e-3` gave max discrepancies about `3.18e-5` for `F_v'` and `4.15e-4`
+  for `F_v''`; smaller second-difference steps are dominated by floating
+  cancellation.
+- K=3.5 cells `58,59,61` keep the previous classification after the
+  semi-analytic rewrite.  Cell `61` is still the tightest first target: after
+  the jump split the smaller smooth-side sampled guard is about `0.007154`.
+- K=3 cells `35,36` remain smooth sign candidates; K=3 cell `39` still has
+  the single root bracket `[5.995196059570327, 5.995289794921890]`, so that
+  root is not an artifact of packet-derivative sampling.
+- Status refines to
+  `PARTIAL(packet-profile derivative sampling removed)`,
+  `GAP(Selberg receiver derivative enclosure still sampled)`, and
+  `FATAL(treating semi-analytic sampled receiver guards as proof)`.

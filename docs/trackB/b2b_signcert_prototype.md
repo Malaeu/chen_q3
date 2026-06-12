@@ -263,3 +263,11 @@ For the first certificate generator, should we enclose
 `H_v'(a)-H_v(a)/2` directly by interval arithmetic on the explicit sampled
 packet formula, or should we first derive B-spline derivative envelopes and
 use them as reusable sign guards?
+
+Follow-up:
+
+- `docs/trackB/b2b_profile_derivative_enclosure.md` takes the second option
+  for the packet side: `F_v'` and `F_v''` are now computed by analytic
+  centered B-spline derivative formulas inside `clvsigncert`.  The remaining
+  missing enclosure is for the Selberg/Vaaler receiver derivatives
+  `E_delta'` and `E_delta''`.

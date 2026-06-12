@@ -29,6 +29,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   clvmesh  mesh-stability audit for the finite psi-staircase ledger
   clvsigncert
             smooth/jump split prototype for a future V_J sign certificate
+            with analytic B-spline derivatives for the packet profile
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -713,6 +714,122 @@ def packet_profile_grid(
     )
 
 
+def centered_bspline_derivative(pilot: Any, deg: int, x: np.ndarray | float) -> np.ndarray:
+    x_arr = np.asarray(x, dtype=float)
+    if deg <= 0:
+        return np.zeros_like(x_arr, dtype=float)
+    return pilot.centered_bspline(deg - 1, x_arr + 0.5) - pilot.centered_bspline(
+        deg - 1, x_arr - 0.5
+    )
+
+
+def centered_bspline_second_derivative(pilot: Any, deg: int, x: np.ndarray | float) -> np.ndarray:
+    x_arr = np.asarray(x, dtype=float)
+    if deg <= 1:
+        return np.zeros_like(x_arr, dtype=float)
+    return (
+        pilot.centered_bspline(deg - 2, x_arr + 1.0)
+        - 2.0 * pilot.centered_bspline(deg - 2, x_arr)
+        + pilot.centered_bspline(deg - 2, x_arr - 1.0)
+    )
+
+
+def r_corr_derivative(pilot: Any, packet: Any, x: np.ndarray | float) -> np.ndarray:
+    deg = 2 * int(packet.k_spline) + 1
+    y = packet.s_k * np.asarray(x, dtype=float)
+    return (packet.s_k / packet.c_k) * centered_bspline_derivative(pilot, deg, y)
+
+
+def r_corr_second_derivative(pilot: Any, packet: Any, x: np.ndarray | float) -> np.ndarray:
+    deg = 2 * int(packet.k_spline) + 1
+    y = packet.s_k * np.asarray(x, dtype=float)
+    return (packet.s_k**2 / packet.c_k) * centered_bspline_second_derivative(pilot, deg, y)
+
+
+def shifted_packet_matrix_derivative(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    a: float,
+) -> np.ndarray:
+    return (
+        -r_corr_derivative(pilot, packet, (D - a) / ell)
+        + r_corr_derivative(pilot, packet, (D + a) / ell)
+    ) / ell
+
+
+def shifted_packet_matrix_second_derivative(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    a: float,
+) -> np.ndarray:
+    return (
+        r_corr_second_derivative(pilot, packet, (D - a) / ell)
+        + r_corr_second_derivative(pilot, packet, (D + a) / ell)
+    ) / (ell**2)
+
+
+def packet_profile_derivative_value(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a: float,
+) -> float:
+    M = shifted_packet_matrix_derivative(pilot, packet, D, ell, float(a))
+    return float(coeffs @ M @ coeffs)
+
+
+def packet_profile_second_derivative_value(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a: float,
+) -> float:
+    M = shifted_packet_matrix_second_derivative(pilot, packet, D, ell, float(a))
+    return float(coeffs @ M @ coeffs)
+
+
+def packet_profile_derivative_grid(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a_grid: np.ndarray,
+) -> np.ndarray:
+    return np.array(
+        [
+            packet_profile_derivative_value(pilot, packet, D, ell, coeffs, float(a))
+            for a in a_grid
+        ],
+        dtype=float,
+    )
+
+
+def packet_profile_second_derivative_grid(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a_grid: np.ndarray,
+) -> np.ndarray:
+    return np.array(
+        [
+            packet_profile_second_derivative_value(pilot, packet, D, ell, coeffs, float(a))
+            for a in a_grid
+        ],
+        dtype=float,
+    )
+
+
 def psi_error_on_grid(a_grid: np.ndarray, shifts: list[Any]) -> np.ndarray:
     sorted_shifts = sorted(shifts, key=lambda sh: float(sh.a))
     shift_a = np.array([float(sh.a) for sh in sorted_shifts], dtype=float)
@@ -1067,19 +1184,32 @@ def smooth_segment_sign_candidate(
     a_grid = np.linspace(float(seg_lo), float(seg_hi), n)
     correction_weights = np.array([correction_weight(float(a)) for a in a_grid], dtype=float)
     profile = packet_profile_grid(pilot, packet, D, ell, coeffs, a_grid)
+    profile_derivative = packet_profile_derivative_grid(pilot, packet, D, ell, coeffs, a_grid)
+    profile_second_derivative = packet_profile_second_derivative_grid(
+        pilot, packet, D, ell, coeffs, a_grid
+    )
+    weight_derivative = np.gradient(
+        correction_weights, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
+    )
+    weight_second_derivative = np.gradient(
+        weight_derivative, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
+    )
     H = correction_weights * profile
-    dH = np.gradient(H, a_grid, edge_order=2 if len(a_grid) >= 3 else 1)
+    dH = weight_derivative * profile + correction_weights * profile_derivative
+    ddH = (
+        weight_second_derivative * profile
+        + 2.0 * weight_derivative * profile_derivative
+        + correction_weights * profile_second_derivative
+    )
     signed_density = np.exp(-0.5 * a_grid) * (dH - 0.5 * H)
+    signed_density_derivative = np.exp(-0.5 * a_grid) * (ddH - dH + 0.25 * H)
     phi = np.exp(-0.5 * a_grid) * H
     sign_changes = sampled_sign_change_count(signed_density)
     partition = sampled_sign_partition_variation(a_grid, phi, signed_density)
     root_brackets = sampled_root_brackets(a_grid, signed_density)
     spacing = np.diff(a_grid)
     max_mesh = float(np.max(spacing)) if spacing.size else 0.0
-    if signed_density.size >= 2 and spacing.size:
-        lipschitz_sample = float(np.max(np.abs(np.diff(signed_density) / spacing)))
-    else:
-        lipschitz_sample = 0.0
+    lipschitz_sample = float(np.max(np.abs(signed_density_derivative)))
     max_abs = float(np.max(np.abs(signed_density)))
     min_abs = float(np.min(np.abs(signed_density)))
     sign_guard = min_abs - 0.5 * lipschitz_sample * max_mesh
@@ -1100,6 +1230,17 @@ def smooth_segment_sign_candidate(
         "signed_density_min_abs": finite_float(min_abs),
         "signed_density_max_abs": finite_float(max_abs),
         "sampled_lipschitz_signed_density": finite_float(lipschitz_sample),
+        "signed_density_derivative_max_abs": finite_float(lipschitz_sample),
+        "profile_derivative_source": "analytic_centered_b_spline_derivative",
+        "receiver_derivative_source": "sampled_finite_difference",
+        "profile_derivative_max_abs": finite_float(float(np.max(np.abs(profile_derivative)))),
+        "profile_second_derivative_max_abs": finite_float(
+            float(np.max(np.abs(profile_second_derivative)))
+        ),
+        "receiver_derivative_max_abs": finite_float(float(np.max(np.abs(weight_derivative)))),
+        "receiver_second_derivative_max_abs": finite_float(
+            float(np.max(np.abs(weight_second_derivative)))
+        ),
         "sampled_mesh": finite_float(max_mesh),
         "sampled_sign_guard": finite_float(sign_guard),
         "sampled_sign_changes": int(sign_changes),
@@ -3670,8 +3811,9 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                             ),
                             "recommendation": recommendation,
                             "proof_status": (
-                                "diagnostic_only: sampled signs and sampled Lipschitz guards "
-                                "are not proof certificates"
+                                "diagnostic_only: packet-profile derivatives use analytic centered "
+                                "B-spline formulas, but Selberg receiver derivatives and sign guards "
+                                "are still sampled and are not proof certificates"
                             ),
                             "smooth_segments": smooth_segments,
                             "jump_terms": jump_terms,
@@ -3710,7 +3852,9 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                     "directions": direction_rows,
                     "theorem_shape": (
                         "prototype V_J certificate worklist: split edge jumps, then certify "
-                        "sign of H_v'(a)-H_v(a)/2 on smooth raw-a subsegments"
+                        "sign of H_v'(a)-H_v(a)/2 on smooth raw-a subsegments; packet-profile "
+                        "derivatives are analytic centered B-spline derivatives, receiver "
+                        "derivatives still need interval enclosure"
                     ),
                     "D2": (
                         "raw a=r*log(p), x=exp(a), phi=x^(-1/2)E_delta(log x)F_v(log x); "
