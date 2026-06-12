@@ -32869,3 +32869,27 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   missing)`, and
   `FATAL(treating floating analytic product-rule values as interval
   enclosures)`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeIntervalAtomAudit
+
+- Added `docs/trackB/b2b_nonnode_interval_atom_audit.md` and
+  `scripts/trackb_nonnode_interval_atom_audit.py`.
+- The new script is a proof-generator scaffold for one non-node mesh interval:
+  it reuses the `clvsigncert` opnorm direction and emits named atom ranges for
+  `E_delta^(j)`, `F_v^(j)`, `H_v^(j)`, and `S_v^(j)`.
+- The current interval kind is explicitly
+  `directed_rounded_sample_ranges_not_proof_grade`; this is useful contract
+  data, not a proof certificate.
+- K=3.5 cell `58`, mesh interval
+  `[6.645833333333817, 6.645976562500484]`, gives
+  `S0=[0.06743528530196136,0.06754419551924461]`,
+  `S2max=0.7880288906201766`, and factor-`10000` guard
+  `~0.06734041094813385`.
+- Repeating with `atom_samples` in `33,65,129,257` leaves the reported `S0`,
+  `S2max`, and factor-`10000` guard unchanged at the printed precision.
+- Status refines to
+  `PARTIAL(atom-level certificate contract emitted for K=3.5 cell 58 mesh 0)`,
+  `GAP(natural interval extensions for Selberg/Vaaler receiver and B-spline
+  profile atoms still missing)`, and
+  `FATAL(treating directed sampled ranges as proof-grade interval
+  enclosures)`.

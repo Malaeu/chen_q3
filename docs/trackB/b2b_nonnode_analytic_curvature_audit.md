@@ -286,6 +286,16 @@ min(endpoint S lower bounds)
 
 Track B remains active.
 
+Follow-up:
+
+- `docs/trackB/b2b_nonnode_interval_atom_audit.md` fixes the first
+  atom-level certificate scaffold for K=3.5 cell `58`, mesh interval `0`.
+  It names the future interval atoms
+  `E_delta^{(j)}`, `F_v^{(j)}`, `H_v^{(j)}`, and `S_v^{(j)}` and reproduces
+  the factor-`10000` mesh guard.  It remains diagnostic because the current
+  ranges are directed-rounded sampled ranges, not natural interval
+  extensions of the formulas.
+
 ## Proshka Audit Block
 
 Claim:
