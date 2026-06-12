@@ -11,6 +11,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   finiteop  direct projected finite-operator certificate diagnostics
   finitesweep compact finiteop spectrum sweep over packet scales
   finiteschedule stability-filtered best packet-scale schedule
+  spacing   D2 log-spacing barrier for generic Hilbert/large-sieve bounds
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -544,6 +545,83 @@ def run_finiteschedule(args: argparse.Namespace) -> list[dict[str, Any]]:
         "D2": "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), stability-filtered schedule",
     }
     return [summary] + selected
+
+
+def log_gap_summary(values: list[float]) -> dict[str, Any]:
+    if len(values) < 2:
+        return {
+            "count": int(len(values)),
+            "min_raw_log_gap": None,
+            "median_raw_log_gap": None,
+            "max_raw_log_gap": None,
+            "min_q3_xi_gap": None,
+            "hilbert_pi_over_min_raw_gap": None,
+            "hilbert_pi_over_median_raw_gap": None,
+        }
+    gaps = np.diff(np.array(sorted(values), dtype=float))
+    min_gap = float(np.min(gaps))
+    median_gap = float(np.median(gaps))
+    max_gap = float(np.max(gaps))
+    return {
+        "count": int(len(values)),
+        "min_raw_log_gap": finite_float(min_gap),
+        "median_raw_log_gap": finite_float(median_gap),
+        "max_raw_log_gap": finite_float(max_gap),
+        "min_q3_xi_gap": finite_float(min_gap / (2.0 * math.pi)),
+        "hilbert_pi_over_min_raw_gap": finite_float(math.pi / min_gap),
+        "hilbert_pi_over_median_raw_gap": finite_float(math.pi / median_gap),
+    }
+
+
+def run_spacing(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        lo, hi = 2.0 * K, 4.0 * K
+        params = pilot.PilotParams(
+            L=2.0 * K,
+            ell=0.35,
+            delta=0.5,
+            k_spline=5,
+            p0_na=3,
+        )
+        edge_shifts = [sh for sh in pilot.prime_power_shifts(params.L) if lo <= sh.a <= hi]
+        ordinary = [sh for sh in edge_shifts if int(sh.r_pow) == 1]
+        prime_powers = [sh for sh in edge_shifts if int(sh.r_pow) != 1]
+        ordinary_logs = [float(sh.a) for sh in ordinary]
+        all_logs = [float(sh.a) for sh in edge_shifts]
+        integer_node_lower_gap_raw = math.log1p(math.exp(-hi))
+        edge_length = hi - lo
+        ordinary_weight_sum = sum(float(sh.weight) for sh in ordinary)
+        all_weight_sum = sum(float(sh.weight) for sh in edge_shifts)
+        row = {
+            "mode": "spacing",
+            "K": finite_float(K),
+            "raw_edge": [finite_float(lo), finite_float(hi)],
+            "edge_length_raw": finite_float(edge_length),
+            "ordinary_primes": log_gap_summary(ordinary_logs),
+            "all_prime_powers": log_gap_summary(all_logs),
+            "edge_prime_power_shifts": int(len(edge_shifts)),
+            "edge_ordinary_prime_shifts": int(len(ordinary)),
+            "edge_nonordinary_prime_power_shifts": int(len(prime_powers)),
+            "ordinary_weight_sum": finite_float(ordinary_weight_sum),
+            "all_weight_sum": finite_float(all_weight_sum),
+            "ordinary_weight_fraction": finite_float(
+                0.0 if all_weight_sum == 0.0 else ordinary_weight_sum / all_weight_sum
+            ),
+            "average_ordinary_gap_raw": None
+            if len(ordinary) < 2
+            else finite_float(edge_length / float(len(ordinary) - 1)),
+            "integer_node_lower_gap_raw": finite_float(integer_node_lower_gap_raw),
+            "integer_node_lower_gap_q3_xi": finite_float(integer_node_lower_gap_raw / (2.0 * math.pi)),
+            "hilbert_barrier_note": (
+                "Montgomery-Vaughan/Hilbert separation-only constants scale like "
+                "pi/min_gap in raw log frequency; this is a D2 obstruction, not a proof input."
+            ),
+            "D2": "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), spacing-only Hilbert barrier",
+        }
+        rows.append(row)
+    return rows
 
 
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
@@ -1290,6 +1368,10 @@ def parse_args() -> argparse.Namespace:
     finiteschedule.add_argument("--max-g-condition", type=float, default=20.0)
     finiteschedule.add_argument("--min-g-eig", type=float, default=1e-4)
     finiteschedule.set_defaults(func=run_finiteschedule)
+
+    spacing = sub.add_parser("spacing", help="D2 log-spacing barrier for generic Hilbert bounds")
+    spacing.add_argument("--K", type=float, nargs="+", required=True)
+    spacing.set_defaults(func=run_spacing)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

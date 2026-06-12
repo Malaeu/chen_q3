@@ -32226,3 +32226,22 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   Track B remains active, but the next trick should be either a structured
   ordinary-prime mean estimate or a different normalized packet family such as
   a prolate/energy-concentration basis.
+
+## Insight (2026-06-12, Track B B2b) -- PrimeMeanSpacingBarrier
+
+- Added `docs/trackB/b2b_prime_mean_route.md` and
+  `scripts/trackb_edge_operator_probe.py spacing`.
+- The allowed theorem input is `UNCONDITIONAL`: Montgomery--Vaughan Hilbert
+  inequality / Dirichlet-polynomial mean-value technology.  Conditional
+  prime-gap conclusions from Fourier optimization remain route analogies only.
+- Direct separation-only Hilbert control is too crude for E5': in D2 raw-log
+  coordinates, `pi/min_gap` grows from about `4.7e3` at K=2 to about `1.9e6`
+  at K=3.5, while the measured stable finite-op epsilons remain `O(1)`.
+- The failure is structural: generic spacing sees node crowding and drops the
+  corrected positive-definite cross-correlation cone, boundary-null structure,
+  and CLV smoothing.
+- Status refines to
+  `GAP(generic Hilbert/large-sieve spacing control cannot close E5')`.
+  The viable next branch is a structured ordinary-prime mean theorem for
+  boundary-null cross-correlation packets, or a switch to a prolate /
+  energy-concentration packet basis.
