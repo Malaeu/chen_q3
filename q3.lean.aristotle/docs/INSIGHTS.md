@@ -33086,3 +33086,25 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `GAP(cell 62 has a sampled-negative near-zero witness; cell 61 edge jump
   remains separate HEAVY_JOB)`, and
   `FATAL(level-3 mesh refinement instead of changing the formulation)`.
+
+## Insight (2026-06-12, Track B B2b) -- N1bWitnessAnatomy
+
+- Added `clvwitness` mode to `scripts/trackb_edge_operator_probe.py` and
+  recorded the witness card in `docs/trackB/n1b_witness_anatomy.md`.
+- The first centered-form sampled-negative witness is
+  `a=7.130987044271352`, with local density
+  `S(a)=exp(-a/2)(H'(a)-H(a)/2) ~= -5.66307e-8`.
+- Four-slot diagnostic at the point: smooth-receiver/arch proxy
+  `~=-0.115274`, pointwise zero-PSD slot `0`, hard-edge slot `~=+0.115274`,
+  boundary jump slot `0`; the negative sign is a near-cancellation residual,
+  not a standalone pointwise zero-side or boundary defect.
+- Coarse scan on `[6.8,7.4]` with step `0.01` finds sampled negative zone
+  `[7.14,7.40]`, minimum `~=-0.021217` at `a~=7.28`.
+- Controls at the witness turn positive under ordinary-primes-only,
+  literal `p=2`-only, excluding `log n > a_w-0.5`, and excluding
+  `[a_w-delta,a_w+delta]`; nearest logs are ordinary primes, and the local
+  correction window is dominated by ordinary primes just below `2K`.
+- Status:
+  `ZERO_CONSISTENT(a_local_first_crossing_edge_primes_confirmed)`,
+  `PARTIAL(witness portrait ready for N2 diagnostics)`, and
+  `FATAL(treating this sampled anatomy as an E5' proof certificate)`.

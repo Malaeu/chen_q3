@@ -27,6 +27,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   clvledger
             finite psi-staircase ledger diagnostics for the smooth correction
   clvmesh  mesh-stability audit for the finite psi-staircase ledger
+  clvwitness
+            N1b anatomy for the first clvsigncert sampled-negative witness
   clvsigncert
             smooth/jump split prototype for a future V_J sign certificate
             with analytic B-spline derivatives for the packet profile
@@ -4277,6 +4279,544 @@ def run_clvmesh(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def clv_correction_direction(
+    *,
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    shifts: list[Any],
+    chi_weight: Any,
+    plus_weight: Any,
+    P0_edge: np.ndarray,
+    P0_plus: np.ndarray,
+    N: np.ndarray,
+    Gc: np.ndarray,
+) -> dict[str, Any]:
+    P_edge = build_prime_matrix_for_weight(pilot, packet, D, ell, shifts, chi_weight)
+    P_plus = build_prime_matrix_for_weight(pilot, packet, D, ell, shifts, plus_weight)
+    prime_correction = pilot.sym(P_plus - P_edge)
+    continuum_correction = pilot.sym(P0_plus - P0_edge)
+    correction = pilot.sym(prime_correction - continuum_correction)
+    A_corr = generalized_to_standard(pilot, project_matrix(pilot, correction, N), Gc)
+    eigs, evecs = np.linalg.eigh(A_corr)
+    op_idx = int(np.argmax(np.abs(eigs)))
+    coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, evecs[:, op_idx])
+    return {
+        "coeffs": coeffs,
+        "opnorm_eigenvalue": float(eigs[op_idx]),
+        "correction_eig_min": float(eigs[0]),
+        "correction_eig_max": float(eigs[-1]),
+        "prime_correction_rayleigh": float(coeffs @ prime_correction @ coeffs),
+        "continuum_correction_rayleigh": float(coeffs @ continuum_correction @ coeffs),
+        "correction_rayleigh": float(coeffs @ correction @ coeffs),
+        "shift_count": int(len(shifts)),
+    }
+
+
+def clv_direction_report(direction: dict[str, Any]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in direction.items():
+        if key == "coeffs":
+            continue
+        if isinstance(value, int):
+            out[key] = int(value)
+        elif isinstance(value, float):
+            out[key] = finite_float(float(value))
+    return out
+
+
+def clv_local_sign_anatomy(
+    *,
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a: float,
+    lo: float,
+    hi: float,
+    receiver_delta: float,
+) -> dict[str, Any]:
+    if abs(float(a) - float(lo)) < 1e-12 or abs(float(a) - float(hi)) < 1e-12:
+        return {"a": finite_float(float(a)), "status": "edge_jump_node", "S0": None}
+    mplus, m1, _m2, _m3 = selberg_interval_plus_derivatives3(
+        np.array([float(a)]),
+        lo=float(lo),
+        hi=float(hi),
+        receiver_delta=float(receiver_delta),
+    )
+    M0 = float(mplus[0])
+    M1 = float(m1[0])
+    if not (math.isfinite(M0) and math.isfinite(M1)):
+        return {"a": finite_float(float(a)), "status": "nonfinite_receiver_value", "S0": None}
+
+    chi = 1.0 if float(lo) <= float(a) <= float(hi) else 0.0
+    F0 = packet_profile_value(pilot, packet, D, ell, coeffs, float(a))
+    F1 = packet_profile_derivative_value(pilot, packet, D, ell, coeffs, float(a))
+    exp_half = math.exp(-0.5 * float(a))
+    profile_density = F1 - 0.5 * F0
+    E0 = M0 - chi
+
+    # Local Stieltjes product-rule density.  The zero-side PSD slot is global,
+    # so the four-slot fields below are a diagnostic naming layer, not a new
+    # explicit-formula theorem.
+    receiver_derivative = exp_half * M1 * F0
+    receiver_profile = exp_half * E0 * profile_density
+    S0 = receiver_derivative + receiver_profile
+    smooth_receiver = exp_half * (M1 * F0 + M0 * profile_density)
+    hard_edge_profile = -exp_half * chi * profile_density
+    four_slot_sum = smooth_receiver + hard_edge_profile
+
+    return {
+        "a": finite_float(float(a)),
+        "status": "ok",
+        "Mplus": finite_float(M0),
+        "Mplus_derivative": finite_float(M1),
+        "chi_edge": finite_float(chi),
+        "E_delta": finite_float(E0),
+        "F": finite_float(F0),
+        "F_derivative": finite_float(F1),
+        "profile_density_Fprime_minus_F_over_2": finite_float(profile_density),
+        "exp_minus_a_over_2": finite_float(exp_half),
+        "receiver_derivative_part": finite_float(receiver_derivative),
+        "receiver_profile_part": finite_float(receiver_profile),
+        "S0": finite_float(S0),
+        "four_slot_diagnostic": {
+            "arch_proxy_smooth_receiver": finite_float(smooth_receiver),
+            "minus_zero_PSD_pointwise_slot": 0.0,
+            "prime_edge_hard_indicator_slot": finite_float(hard_edge_profile),
+            "boundary_jump_slot": 0.0,
+            "sum": finite_float(four_slot_sum),
+            "reconstruction_abs_error": finite_float(abs(four_slot_sum - S0)),
+            "warning": (
+                "diagnostic labels only: clvsigncert has the local density "
+                "S=exp(-a/2)(H'-H/2); zero-side PSD is a global slot"
+            ),
+        },
+    }
+
+
+def clv_sign_density_values(
+    *,
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a_grid: np.ndarray,
+    lo: float,
+    hi: float,
+    receiver_delta: float,
+) -> np.ndarray:
+    values: list[float] = []
+    for a in a_grid:
+        row = clv_local_sign_anatomy(
+            pilot=pilot,
+            packet=packet,
+            D=D,
+            ell=ell,
+            coeffs=coeffs,
+            a=float(a),
+            lo=lo,
+            hi=hi,
+            receiver_delta=receiver_delta,
+        )
+        value = row.get("S0")
+        values.append(float("nan") if value is None else float(value))
+    return np.array(values, dtype=float)
+
+
+def negative_run_summary(a_grid: np.ndarray, values: np.ndarray) -> dict[str, Any]:
+    finite = np.isfinite(values)
+    if not np.any(finite):
+        return {
+            "finite_sample_count": 0,
+            "negative_sample_count": 0,
+            "min_a": None,
+            "min_value": None,
+            "negative_runs": [],
+        }
+    finite_idx = np.flatnonzero(finite)
+    min_idx = int(finite_idx[int(np.argmin(values[finite]))])
+    neg_idx = np.flatnonzero(finite & (values < 0.0))
+    runs: list[dict[str, Any]] = []
+    if len(neg_idx) > 0:
+        typical_step = float(np.median(np.diff(a_grid))) if len(a_grid) > 1 else 0.0
+        start = int(neg_idx[0])
+        prev = int(neg_idx[0])
+        for raw_idx in neg_idx[1:]:
+            idx = int(raw_idx)
+            same_run = idx == prev + 1 and (
+                typical_step <= 0.0
+                or abs(float(a_grid[idx]) - float(a_grid[prev])) <= 1.5 * typical_step
+            )
+            if same_run:
+                prev = idx
+                continue
+            segment = values[start : prev + 1]
+            offset = int(np.nanargmin(segment))
+            runs.append(
+                {
+                    "a_start": finite_float(float(a_grid[start])),
+                    "a_end": finite_float(float(a_grid[prev])),
+                    "sample_span": finite_float(float(a_grid[prev] - a_grid[start])),
+                    "sample_count": int(prev - start + 1),
+                    "min_a": finite_float(float(a_grid[start + offset])),
+                    "min_value": finite_float(float(segment[offset])),
+                }
+            )
+            start = idx
+            prev = idx
+        segment = values[start : prev + 1]
+        offset = int(np.nanargmin(segment))
+        runs.append(
+            {
+                "a_start": finite_float(float(a_grid[start])),
+                "a_end": finite_float(float(a_grid[prev])),
+                "sample_span": finite_float(float(a_grid[prev] - a_grid[start])),
+                "sample_count": int(prev - start + 1),
+                "min_a": finite_float(float(a_grid[start + offset])),
+                "min_value": finite_float(float(segment[offset])),
+            }
+        )
+    return {
+        "finite_sample_count": int(np.count_nonzero(finite)),
+        "negative_sample_count": int(len(neg_idx)),
+        "min_a": finite_float(float(a_grid[min_idx])),
+        "min_value": finite_float(float(values[min_idx])),
+        "negative_runs": runs,
+    }
+
+
+def clv_scan_summary(
+    *,
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    lo: float,
+    hi: float,
+    receiver_delta: float,
+    a_start: float,
+    a_end: float,
+    step: float,
+) -> dict[str, Any]:
+    count = int(math.floor((float(a_end) - float(a_start)) / float(step) + 0.5)) + 1
+    a_grid = float(a_start) + float(step) * np.arange(count, dtype=float)
+    values = clv_sign_density_values(
+        pilot=pilot,
+        packet=packet,
+        D=D,
+        ell=ell,
+        coeffs=coeffs,
+        a_grid=a_grid,
+        lo=lo,
+        hi=hi,
+        receiver_delta=receiver_delta,
+    )
+    summary = negative_run_summary(a_grid, values)
+    summary.update(
+        {
+            "a_start": finite_float(float(a_start)),
+            "a_end": finite_float(float(a_grid[-1])),
+            "step": finite_float(float(step)),
+        }
+    )
+    return summary
+
+
+def clv_window_shift_summary(
+    *,
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    shifts: list[Any],
+    a: float,
+    lo: float,
+    hi: float,
+    receiver_delta: float,
+    top: int,
+) -> dict[str, Any]:
+    def chi_weight(x: float) -> float:
+        return 1.0 if float(lo) <= float(x) <= float(hi) else 0.0
+
+    def plus_weight(x: float) -> float:
+        return float(
+            selberg_interval_values(
+                np.array([float(x)]),
+                lo=float(lo),
+                hi=float(hi),
+                receiver_delta=float(receiver_delta),
+                sign="plus",
+            )[0]
+        )
+
+    window = [
+        sh
+        for sh in shifts
+        if float(a) - float(receiver_delta) <= float(sh.a) <= float(a) + float(receiver_delta)
+    ]
+    ordinary = [sh for sh in window if int(sh.r_pow) == 1]
+    p_equals_2 = [sh for sh in window if int(sh.p) == 2]
+    contributions: list[tuple[float, float, Any]] = []
+    for sh in window:
+        value = (
+            float(sh.weight)
+            * (plus_weight(float(sh.a)) - chi_weight(float(sh.a)))
+            * packet_profile_value(pilot, packet, D, ell, coeffs, float(sh.a))
+        )
+        contributions.append((abs(value), value, sh))
+    top_rows = []
+    for abs_value, value, sh in sorted(contributions, key=lambda row: -row[0])[:top]:
+        top_rows.append(
+            {
+                "p": int(sh.p),
+                "r_pow": int(sh.r_pow),
+                "a": finite_float(float(sh.a)),
+                "distance_from_witness": finite_float(float(sh.a) - float(a)),
+                "weight": finite_float(float(sh.weight)),
+                "prime_correction_contribution": finite_float(float(value)),
+                "abs_prime_correction_contribution": finite_float(float(abs_value)),
+            }
+        )
+    return {
+        "window": [
+            finite_float(float(a) - float(receiver_delta)),
+            finite_float(float(a) + float(receiver_delta)),
+        ],
+        "shift_count": int(len(window)),
+        "ordinary_prime_count": int(len(ordinary)),
+        "p_equals_2_count": int(len(p_equals_2)),
+        "weight_sum": finite_float(float(sum(float(sh.weight) for sh in window))),
+        "ordinary_weight_sum": finite_float(float(sum(float(sh.weight) for sh in ordinary))),
+        "p_equals_2_weight_sum": finite_float(float(sum(float(sh.weight) for sh in p_equals_2))),
+        "top_prime_correction_contributions": top_rows,
+    }
+
+
+def run_clvwitness(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            all_shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+            witness_a = (
+                float(args.witness_a)
+                if args.witness_a is not None
+                else float(lo + args.witness_offset)
+            )
+            variants: dict[str, tuple[str, list[Any]]] = {
+                "full": ("all prime-power shifts", all_shifts),
+                "ordinary_primes_only": (
+                    "ordinary primes only: r_pow=1; interpreted primes-only control",
+                    [sh for sh in all_shifts if int(sh.r_pow) == 1],
+                ),
+                "p_equals_2_only": (
+                    "literal p=2-only control, included to disambiguate primes-only-2",
+                    [sh for sh in all_shifts if int(sh.p) == 2],
+                ),
+                "without_log_gt_witness_minus_0p5": (
+                    "exclude all shifts with log n > witness_a - 0.5",
+                    [sh for sh in all_shifts if float(sh.a) <= witness_a - 0.5],
+                ),
+                "without_local_delta_window": (
+                    "exclude shifts with log n in [witness_a-delta,witness_a+delta]",
+                    [
+                        sh
+                        for sh in all_shifts
+                        if not (
+                            witness_a - float(receiver_delta)
+                            <= float(sh.a)
+                            <= witness_a + float(receiver_delta)
+                        )
+                    ],
+                ),
+            }
+
+            variant_rows: dict[str, Any] = {}
+            variant_coeffs: dict[str, np.ndarray] = {}
+            for name, (description, shifts) in variants.items():
+                direction = clv_correction_direction(
+                    pilot=pilot,
+                    packet=packet,
+                    D=D,
+                    ell=params.ell,
+                    shifts=shifts,
+                    chi_weight=chi_weight,
+                    plus_weight=plus_weight,
+                    P0_edge=P0_edge,
+                    P0_plus=P0_plus,
+                    N=N,
+                    Gc=Gc,
+                )
+                coeffs = direction["coeffs"]
+                variant_coeffs[name] = coeffs
+                variant_rows[name] = {
+                    "description": description,
+                    "direction": clv_direction_report(direction),
+                    "witness": clv_local_sign_anatomy(
+                        pilot=pilot,
+                        packet=packet,
+                        D=D,
+                        ell=params.ell,
+                        coeffs=coeffs,
+                        a=witness_a,
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                    ),
+                    "coarse_scan": clv_scan_summary(
+                        pilot=pilot,
+                        packet=packet,
+                        D=D,
+                        ell=params.ell,
+                        coeffs=coeffs,
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        a_start=lo - float(args.scan_left),
+                        a_end=lo + float(args.scan_right),
+                        step=float(args.scan_step),
+                    ),
+                    "fine_witness_scan": clv_scan_summary(
+                        pilot=pilot,
+                        packet=packet,
+                        D=D,
+                        ell=params.ell,
+                        coeffs=coeffs,
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        a_start=max(lo + 1e-9, witness_a - float(args.fine_radius)),
+                        a_end=witness_a + float(args.fine_radius),
+                        step=float(args.fine_step),
+                    ),
+                }
+
+            full_witness = variant_rows["full"]["witness"].get("S0")
+            cutoff_witness = variant_rows["without_log_gt_witness_minus_0p5"]["witness"].get("S0")
+            window_removed_witness = variant_rows["without_local_delta_window"]["witness"].get("S0")
+            if (
+                full_witness is not None
+                and float(full_witness) < 0.0
+                and cutoff_witness is not None
+                and float(cutoff_witness) >= 0.0
+                and window_removed_witness is not None
+                and float(window_removed_witness) >= 0.0
+            ):
+                verdict = "a_local_first_crossing_edge_primes_confirmed"
+            elif full_witness is not None and float(full_witness) < 0.0:
+                verdict = "b_negative_persists_under_prime_controls"
+            else:
+                verdict = "no_negative_witness_at_requested_point"
+
+            nearest = sorted(all_shifts, key=lambda sh: abs(float(sh.a) - witness_a))[
+                : int(args.top)
+            ]
+            rows.append(
+                {
+                    "mode": "clvwitness",
+                    "status": "diagnostic_only",
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "max_a_effective": finite_float(effective_max_a),
+                    "witness_a": finite_float(witness_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(all_shifts)),
+                    "nearest_prime_power_logs": [
+                        {
+                            "p": int(sh.p),
+                            "r_pow": int(sh.r_pow),
+                            "a": finite_float(float(sh.a)),
+                            "distance_from_witness": finite_float(float(sh.a) - witness_a),
+                            "weight": finite_float(float(sh.weight)),
+                        }
+                        for sh in nearest
+                    ],
+                    "local_delta_window_summary": clv_window_shift_summary(
+                        pilot=pilot,
+                        packet=packet,
+                        D=D,
+                        ell=params.ell,
+                        coeffs=variant_coeffs["full"],
+                        shifts=all_shifts,
+                        a=witness_a,
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        top=int(args.top),
+                    ),
+                    "variants": variant_rows,
+                    "verdict": verdict,
+                    "D2": (
+                        "raw a=r*log(p), x=exp(a), witness density "
+                        "S(a)=exp(-a/2)*(H'(a)-H(a)/2), "
+                        "H=(M^+_[2K,4K],delta-1_[2K,4K])*F_v(a); "
+                        "diagnostic only, no E5' closure"
+                    ),
+                }
+            )
+    return rows
+
+
 def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
     pilot = load_step13()
     rows: list[dict[str, Any]] = []
@@ -5620,6 +6160,34 @@ def parse_args() -> argparse.Namespace:
     clvmesh.add_argument("--ledger-cells", type=int, default=120)
     clvmesh.add_argument("--top-cells", type=int, default=3)
     clvmesh.set_defaults(func=run_clvmesh)
+
+    clvwitness = sub.add_parser(
+        "clvwitness",
+        help="N1b witness anatomy for the clvsigncert sampled-negative point",
+    )
+    add_common_packet_args(clvwitness)
+    clvwitness.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvwitness.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvwitness.add_argument("--p0-na", type=int, default=401)
+    clvwitness.add_argument("--witness-a", type=float)
+    clvwitness.add_argument(
+        "--witness-offset",
+        type=float,
+        default=0.130987044271352,
+        help="used when --witness-a is omitted; raw a is 2K plus this offset",
+    )
+    clvwitness.add_argument("--scan-left", type=float, default=0.2)
+    clvwitness.add_argument("--scan-right", type=float, default=0.4)
+    clvwitness.add_argument("--scan-step", type=float, default=0.01)
+    clvwitness.add_argument("--fine-radius", type=float, default=0.02)
+    clvwitness.add_argument("--fine-step", type=float, default=0.0005)
+    clvwitness.add_argument("--top", type=int, default=12)
+    clvwitness.set_defaults(func=run_clvwitness)
 
     clvsigncert = sub.add_parser(
         "clvsigncert",
