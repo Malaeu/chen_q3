@@ -31980,3 +31980,23 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - B2 warning recorded: the positive/negative split `g=g_+-g_-` is invalid as a
   bandlimited cone move.  Prefer B2b: Hermitian square, explicit formula, and
   existing zero-side PSD in place of any RH-dependent zero-side positivity.
+
+## Insight (2026-06-12, Track B B1 sanity) -- K2EdgeDefectProxyGap
+
+- Added `docs/trackB/k2_sanity_gap.md` to record the K=2 sanity-gate state.
+  Status remains `GAP(measured CLV-through-cone comparison missing)`.
+- The nearest local measurement is the Step13 packet pilot, not a proof-grade
+  CLV certificate.  Running the Step13 pilot with `L=4`, `ell=0.35`,
+  `delta=0.5`, `k_spline=5`, `arch_tmax=120`, `arch_nt=8001`, and
+  `p0_na=8001` verifies the finite split `C=A-P=(A-P0)-(P-P0)` with
+  `||C-(R-Pnu)||_F=6.280e-16`.
+- That pilot covers all shifts `a<=8`, not just the edge.  Filtering the same
+  formulas to raw-log edge `[4,8]` gives `edge_prime_power_shifts=441`,
+  `||Pnu_edge^circ||_F=8.357091998775007e-01`, and projected `G`-operator norm
+  `4.416718760986591e-01`.
+- This number is now the B2 target proxy: the first useful CLV cone bound
+  should majorize the defect in the same normalization, or explicitly explain
+  why a different normalization is the theorem target.
+- Route decision: start B2 with the Hermitian-square / explicit-formula route.
+  The naive positive-negative split remains blocked because it drops the
+  bandlimited cross-correlation cone.
