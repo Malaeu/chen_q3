@@ -70,6 +70,11 @@ def finite_float(x: float) -> float:
     return float(x)
 
 
+def finite_float_or_none(x: float) -> float | None:
+    value = float(x)
+    return value if math.isfinite(value) else None
+
+
 def build_packet_context(
     pilot: Any,
     *,
@@ -1171,6 +1176,7 @@ def smooth_segment_sign_candidate(
     seg_hi: float,
     correction_weight: Any,
     correction_weight_derivatives: Any | None = None,
+    receiver_node_audit: Any | None = None,
     sample_count: int,
 ) -> dict[str, Any]:
     if seg_hi <= seg_lo:
@@ -1239,6 +1245,7 @@ def smooth_segment_sign_candidate(
     sign_guard = min_abs - 0.5 * lipschitz_sample * max_mesh
     endpoint_variation = abs(float(phi[-1]) - float(phi[0]))
     continuous_variation = float(np.trapezoid(np.abs(signed_density), a_grid))
+    node_audit = {} if receiver_node_audit is None else receiver_node_audit(a_grid)
     status = "needs_root_isolation"
     if sign_changes == 0 and sign_guard > 0.0:
         status = "sampled_sign_stable_candidate"
@@ -1269,6 +1276,7 @@ def smooth_segment_sign_candidate(
         "receiver_second_derivative_max_abs": finite_float(
             float(np.max(np.abs(weight_second_derivative)))
         ),
+        "receiver_node_audit": node_audit,
         "sampled_mesh": finite_float(max_mesh),
         "sampled_sign_guard": finite_float(sign_guard),
         "sampled_sign_changes": int(sign_changes),
@@ -1736,6 +1744,143 @@ def vaaler_H0_derivatives(
         h1[regular] = A1 * B + A * B1
         h2[regular] = A2 * B + 2.0 * A1 * B1 + A * B2
     return h0, h1, h2
+
+
+def max_finite(values: np.ndarray) -> float | None:
+    arr = np.asarray(values, dtype=float)
+    finite = arr[np.isfinite(arr)]
+    if finite.size == 0:
+        return None
+    return finite_float(float(np.max(finite)))
+
+
+def max_abs_finite(values: np.ndarray) -> float | None:
+    arr = np.asarray(values, dtype=float)
+    finite = arr[np.isfinite(arr)]
+    if finite.size == 0:
+        return None
+    return finite_float(float(np.max(np.abs(finite))))
+
+
+def cancellation_ratio_summary(terms: list[np.ndarray], result: np.ndarray) -> dict[str, Any]:
+    with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
+        abs_sum = np.zeros_like(np.asarray(result, dtype=float), dtype=float)
+        for term in terms:
+            abs_sum += np.abs(np.asarray(term, dtype=float))
+        denom = np.abs(np.asarray(result, dtype=float))
+        ratio = abs_sum / np.maximum(denom, 1e-300)
+    return {
+        "max_abs_term_sum": max_abs_finite(abs_sum),
+        "max_cancellation_ratio": max_finite(ratio),
+    }
+
+
+def vaaler_H0_cancellation_summary(z: np.ndarray) -> dict[str, Any]:
+    z = np.asarray(z, dtype=float)
+    nearest = np.rint(z)
+    regular = np.abs(z - nearest) > 1e-10
+    zr = z[regular]
+    if zr.size == 0:
+        return {
+            "regular_sample_count": 0,
+            "B": {"max_abs_term_sum": None, "max_cancellation_ratio": None},
+            "B_prime": {"max_abs_term_sum": None, "max_cancellation_ratio": None},
+            "B_second": {"max_abs_term_sum": None, "max_cancellation_ratio": None},
+            "H0_prime": {"max_abs_term_sum": None, "max_cancellation_ratio": None},
+            "H0_second": {"max_abs_term_sum": None, "max_cancellation_ratio": None},
+        }
+    with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
+        sinp = np.sin(math.pi * zr)
+        A = (sinp / math.pi) ** 2
+        A1 = np.sin(2.0 * math.pi * zr) / math.pi
+        A2 = 2.0 * np.cos(2.0 * math.pi * zr)
+
+        B_terms = [
+            special.polygamma(1, 1.0 - zr),
+            -special.polygamma(1, 1.0 + zr),
+            2.0 / zr,
+        ]
+        B = B_terms[0] + B_terms[1] + B_terms[2]
+        B1_terms = [
+            -special.polygamma(2, 1.0 - zr),
+            -special.polygamma(2, 1.0 + zr),
+            -2.0 / (zr**2),
+        ]
+        B1 = B1_terms[0] + B1_terms[1] + B1_terms[2]
+        B2_terms = [
+            special.polygamma(3, 1.0 - zr),
+            -special.polygamma(3, 1.0 + zr),
+            4.0 / (zr**3),
+        ]
+        B2 = B2_terms[0] + B2_terms[1] + B2_terms[2]
+        H1_terms = [A1 * B, A * B1]
+        H1 = H1_terms[0] + H1_terms[1]
+        H2_terms = [A2 * B, 2.0 * A1 * B1, A * B2]
+        H2 = H2_terms[0] + H2_terms[1] + H2_terms[2]
+    return {
+        "regular_sample_count": int(zr.size),
+        "B": cancellation_ratio_summary(B_terms, B),
+        "B_prime": cancellation_ratio_summary(B1_terms, B1),
+        "B_second": cancellation_ratio_summary(B2_terms, B2),
+        "H0_prime": cancellation_ratio_summary(H1_terms, H1),
+        "H0_second": cancellation_ratio_summary(H2_terms, H2),
+    }
+
+
+def vaaler_node_axis_audit(a_grid: np.ndarray, z: np.ndarray, label: str) -> dict[str, Any]:
+    a = np.asarray(a_grid, dtype=float)
+    z_arr = np.asarray(z, dtype=float)
+    nearest = np.rint(z_arr)
+    distance = np.abs(z_arr - nearest)
+    min_idx = int(np.argmin(distance))
+    z_min = float(np.min(z_arr))
+    z_max = float(np.max(z_arr))
+    crossed = [
+        int(n)
+        for n in range(math.ceil(z_min), math.floor(z_max) + 1)
+        if z_min <= float(n) <= z_max
+    ]
+    return {
+        "label": label,
+        "z_min": finite_float(z_min),
+        "z_max": finite_float(z_max),
+        "nearest_integer_at_min_distance": int(nearest[min_idx]),
+        "min_distance_to_integer": finite_float(float(distance[min_idx])),
+        "a_at_min_distance": finite_float(float(a[min_idx])),
+        "crossed_integer_count": int(len(crossed)),
+        "crossed_integers": crossed[:16],
+        "samples_within_1e_minus_2": int(np.count_nonzero(distance <= 1e-2)),
+        "samples_within_1e_minus_3": int(np.count_nonzero(distance <= 1e-3)),
+        "samples_within_1e_minus_4": int(np.count_nonzero(distance <= 1e-4)),
+        "needs_local_node_treatment": bool(float(distance[min_idx]) <= 1e-3 or crossed),
+        "H0_cancellation": vaaler_H0_cancellation_summary(z_arr),
+    }
+
+
+def selberg_receiver_node_audit(
+    a_grid: np.ndarray,
+    *,
+    lo: float,
+    hi: float,
+    receiver_delta: float,
+) -> dict[str, Any]:
+    a = np.asarray(a_grid, dtype=float)
+    za = receiver_delta * (a - lo)
+    zb = receiver_delta * (a - hi)
+    left = vaaler_node_axis_audit(a, za, "z_left=delta*(a-2K)")
+    right = vaaler_node_axis_audit(a, zb, "z_right=delta*(a-4K)")
+    min_distance = min(
+        float(left["min_distance_to_integer"]),
+        float(right["min_distance_to_integer"]),
+    )
+    return {
+        "left_axis": left,
+        "right_axis": right,
+        "min_distance_to_any_vaaler_integer": finite_float(min_distance),
+        "needs_local_node_treatment": bool(
+            left["needs_local_node_treatment"] or right["needs_local_node_treatment"]
+        ),
+    }
 
 
 def selberg_interval_plus_derivatives(
@@ -3745,6 +3890,14 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                 chi_values = np.where((lo <= a_values) & (a_values <= hi), 1.0, 0.0)
                 return values - chi_values, first, second
 
+            def receiver_node_audit_grid(a_values: np.ndarray) -> dict[str, Any]:
+                return selberg_receiver_node_audit(
+                    a_values,
+                    lo=lo,
+                    hi=hi,
+                    receiver_delta=float(receiver_delta),
+                )
+
             P_edge = build_prime_matrix_for_weight(
                 pilot, packet, D, params.ell, shifts, chi_weight
             )
@@ -3809,6 +3962,7 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                             seg_hi=seg_hi,
                             correction_weight=correction_weight,
                             correction_weight_derivatives=correction_weight_derivatives_grid,
+                            receiver_node_audit=receiver_node_audit_grid,
                             sample_count=int(args.cert_na),
                         )
                         for seg_lo, seg_hi in segments
@@ -3899,6 +4053,29 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                         recommendation = "smooth_sign_cert_plus_explicit_jump_cert"
                     else:
                         recommendation = "smooth_sign_cert_candidate"
+                    node_distances = [
+                        float(seg["receiver_node_audit"]["min_distance_to_any_vaaler_integer"])
+                        for seg in smooth_segments
+                        if "receiver_node_audit" in seg and seg["receiver_node_audit"]
+                    ]
+                    node_treatment_count = sum(
+                        1
+                        for seg in smooth_segments
+                        if seg.get("receiver_node_audit", {}).get("needs_local_node_treatment")
+                    )
+                    h0_prime_cancel_ratios: list[float] = []
+                    h0_second_cancel_ratios: list[float] = []
+                    for seg in smooth_segments:
+                        audit = seg.get("receiver_node_audit", {})
+                        for axis_key in ["left_axis", "right_axis"]:
+                            axis = audit.get(axis_key, {})
+                            h0_cancel = axis.get("H0_cancellation", {})
+                            h0p = h0_cancel.get("H0_prime", {}).get("max_cancellation_ratio")
+                            h0pp = h0_cancel.get("H0_second", {}).get("max_cancellation_ratio")
+                            if h0p is not None and math.isfinite(float(h0p)):
+                                h0_prime_cancel_ratios.append(float(h0p))
+                            if h0pp is not None and math.isfinite(float(h0pp)):
+                                h0_second_cancel_ratios.append(float(h0pp))
                     cell_rows.append(
                         {
                             "cell_index": int(cell_idx),
@@ -3909,6 +4086,18 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                             "sampled_sign_stable_segment_count": int(stable_segments),
                             "sampled_sign_weak_segment_count": int(weak_segments),
                             "needs_root_isolation_segment_count": int(root_segments),
+                            "receiver_node_treatment_segment_count": int(
+                                node_treatment_count
+                            ),
+                            "receiver_min_distance_to_vaaler_integer": None
+                            if not node_distances
+                            else finite_float(min(node_distances)),
+                            "receiver_H0_prime_max_cancellation_ratio": None
+                            if not h0_prime_cancel_ratios
+                            else finite_float(max(h0_prime_cancel_ratios)),
+                            "receiver_H0_second_max_cancellation_ratio": None
+                            if not h0_second_cancel_ratios
+                            else finite_float(max(h0_second_cancel_ratios)),
                             "smooth_continuous_variation_x": finite_float(
                                 smooth_continuous_variation
                             ),

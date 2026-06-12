@@ -32713,3 +32713,31 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `GAP(interval enclosures near Vaaler interpolation nodes still missing)`,
   and
   `FATAL(treating analytic floating-point polygamma values as proof intervals)`.
+
+## Insight (2026-06-12, Track B B2b) -- VaalerNodeAudit
+
+- Added `docs/trackB/b2b_vaaler_node_audit.md` and extended
+  `scripts/trackb_edge_operator_probe.py clvsigncert` with
+  `receiver_node_audit` plus cell-level node/cancellation summaries.
+- The audit reports `z_left=delta*(a-2K)`, `z_right=delta*(a-4K)`,
+  nearest Vaaler integers, distances, samples near nodes, and diagnostic
+  cancellation ratios for `H0'` and `H0''`.
+- K=3.5 cells `58,59` are non-node first targets: minimum distances to a
+  Vaaler integer are about `0.239583` and `0.125000`, with
+  `receiver_node_treatment_segment_count = 0`.
+- K=3.5 cell `61` is the first node-local target: both smooth sides are about
+  `3.580729e-5` from Vaaler nodes (`z_left=0`, `z_right=-7`), with
+  `receiver_node_treatment_segment_count = 2`, max `H0'` cancellation ratio
+  about `8.73e11`, and max `H0''` cancellation ratio about `3.42e12`.
+- K=3 cells `35,36` are non-node targets; K=3 cell `39` is node-local with
+  min distance about `2.343750e-5`, max `H0'` cancellation ratio about
+  `2.92e12`, and max `H0''` cancellation ratio about `3.76e11`.
+- The next theorem-producing order is now: K=3.5 cells `58,59` by direct
+  non-node interval route; K=3.5 cell `61` by node-local split/Taylor route;
+  K=3 cells `35,36`; then K=3 cell `39` with node-local split plus root
+  isolation.
+- Status refines to `PARTIAL(node-local interval targets identified)`,
+  `GAP(Taylor/series or outward-rounded interval bounds near Vaaler nodes
+  missing)`, and
+  `FATAL(treating cancellation-heavy floating-point polygamma values as proof
+  intervals)`.

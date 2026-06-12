@@ -228,6 +228,12 @@ Build an interval-node audit for K=3.5 cell 61, measuring distance to Vaaler
 integer nodes and the local cancellation pressure for H0/H0'/H0''.
 ```
 
+Follow-up:
+
+- `docs/trackB/b2b_vaaler_node_audit.md` implements this experiment.  It
+  splits the remaining interval work into a non-node branch (`K=3.5` cells
+  `58,59`) and a node-local branch (`K=3.5` cell `61`, then `K=3` cell `39`).
+
 ## Verdict
 
 `PARTIAL(receiver derivative sampling removed)`.
