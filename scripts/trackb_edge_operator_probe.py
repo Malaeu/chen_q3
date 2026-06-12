@@ -726,6 +726,74 @@ def psi_error_on_grid(a_grid: np.ndarray, shifts: list[Any]) -> np.ndarray:
     return psi - np.exp(a_grid)
 
 
+def chebyshev_staircase_arrays(shifts: list[Any]) -> tuple[np.ndarray, np.ndarray]:
+    sorted_shifts = sorted(shifts, key=lambda sh: float(sh.a))
+    shift_a = np.array([float(sh.a) for sh in sorted_shifts], dtype=float)
+    lambda_weights = np.array(
+        [float(sh.weight) * math.exp(0.5 * float(sh.a)) for sh in sorted_shifts],
+        dtype=float,
+    )
+    cumulative = np.cumsum(lambda_weights)
+    return shift_a, cumulative
+
+
+def chebyshev_psi_error_at(
+    a: float,
+    shift_a: np.ndarray,
+    cumulative: np.ndarray,
+    *,
+    side: str,
+) -> float:
+    if side == "right":
+        idx = int(np.searchsorted(shift_a, float(a), side="right") - 1)
+    elif side == "left":
+        idx = int(np.searchsorted(shift_a, float(a), side="left") - 1)
+    else:
+        raise ValueError("side must be 'left' or 'right'")
+    psi = 0.0 if idx < 0 else float(cumulative[idx])
+    return psi - math.exp(float(a))
+
+
+def finite_chebyshev_error_sup_on_cell(
+    cell_lo: float,
+    cell_hi: float,
+    shift_a: np.ndarray,
+    cumulative: np.ndarray,
+) -> dict[str, Any]:
+    """Finite supremum candidates for |psi(e^a)-e^a| on a raw-a cell.
+
+    Between prime-power jumps, psi(e^a)-e^a is strictly decreasing.  Therefore
+    the supremum of its absolute value is attained at a cell endpoint or at a
+    left/right limit of a jump point.  This is still a diagnostic floating-point
+    extraction of the finite candidate list, not a Lean certificate.
+    """
+    candidates: list[tuple[float, str, float]] = [
+        (float(cell_lo), "left_endpoint_left", chebyshev_psi_error_at(cell_lo, shift_a, cumulative, side="left")),
+        (float(cell_lo), "left_endpoint_right", chebyshev_psi_error_at(cell_lo, shift_a, cumulative, side="right")),
+        (float(cell_hi), "right_endpoint_left", chebyshev_psi_error_at(cell_hi, shift_a, cumulative, side="left")),
+        (float(cell_hi), "right_endpoint_right", chebyshev_psi_error_at(cell_hi, shift_a, cumulative, side="right")),
+    ]
+    lo_idx = int(np.searchsorted(shift_a, float(cell_lo), side="left"))
+    hi_idx = int(np.searchsorted(shift_a, float(cell_hi), side="right"))
+    for idx in range(lo_idx, hi_idx):
+        a0 = float(shift_a[idx])
+        candidates.append(
+            (a0, "jump_left", chebyshev_psi_error_at(a0, shift_a, cumulative, side="left"))
+        )
+        candidates.append(
+            (a0, "jump_right", chebyshev_psi_error_at(a0, shift_a, cumulative, side="right"))
+        )
+    best_a, best_label, best_value = max(candidates, key=lambda item: abs(float(item[2])))
+    return {
+        "finite_sup_abs_psi_minus_x": finite_float(abs(float(best_value))),
+        "finite_sup_location": finite_float(float(best_a)),
+        "finite_sup_side": best_label,
+        "finite_sup_signed_value": finite_float(float(best_value)),
+        "finite_sup_candidate_count": int(len(candidates)),
+        "finite_jump_count": int(hi_idx - lo_idx),
+    }
+
+
 def explicit_psi_error_bound(a_grid: np.ndarray) -> np.ndarray:
     """Unconditional explicit proxy for |psi(x)-x| in x=e^a coordinates.
 
@@ -2597,6 +2665,7 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
             a_grid = np.linspace(0.0, effective_max_a, int(args.quad_na))
             psi_err = psi_error_on_grid(a_grid, shifts)
             pnt_err = explicit_psi_error_bound(a_grid)
+            staircase_shift_a, staircase_cumulative = chebyshev_staircase_arrays(shifts)
             correction_weights_grid = np.array([correction_weight(float(a)) for a in a_grid], dtype=float)
             cell_edges = np.linspace(0.0, effective_max_a, int(args.ledger_cells) + 1)
 
@@ -2644,6 +2713,14 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                     exact_bound = float(np.trapezoid(eg * vg, ag))
                     pnt_bound = float(np.trapezoid(pg * vg, ag))
                     variation_x = float(np.trapezoid(vg, ag))
+                    finite_U = finite_chebyshev_error_sup_on_cell(
+                        float(cell_lo),
+                        float(cell_hi),
+                        staircase_shift_a,
+                        staircase_cumulative,
+                    )
+                    finite_sup = float(finite_U["finite_sup_abs_psi_minus_x"])
+                    grid_sup = float(np.max(eg))
                     cell_rows.append(
                         {
                             "cell_index": int(cell_idx),
@@ -2659,9 +2736,20 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                             "jump_variation_x": 0.0,
                             "exact_jump_bound": 0.0,
                             "pnt_jump_bound": 0.0,
-                            "max_abs_psi_minus_x": finite_float(float(np.max(eg))),
+                            "finite_exact_jump_bound": 0.0,
+                            "finiteU_continuous_variation_bound": finite_float(finite_sup * variation_x),
+                            "finiteU_with_exact_jumps_bound": finite_float(finite_sup * variation_x),
+                            "finiteU_conservative_total_variation_bound": finite_float(
+                                finite_sup * variation_x
+                            ),
+                            "max_abs_psi_minus_x": finite_float(grid_sup),
+                            "grid_sup_abs_psi_minus_x": finite_float(grid_sup),
+                            "finiteU_over_grid_sup_abs_psi_minus_x": ratio_or_none(
+                                finite_sup, grid_sup
+                            ),
                             "max_pnt_bound": finite_float(float(np.max(pg))),
                             "max_abs_H": finite_float(float(np.max(np.abs(Hg)))),
+                            **finite_U,
                         }
                     )
 
@@ -2681,11 +2769,22 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         continue
                     row = target_rows[0]
                     jump_phi = math.exp(-0.5 * jump_a) * abs(float(jump_H))
-                    exact_jump = abs(float(psi_error_on_grid(np.array([jump_a]), shifts)[0])) * jump_phi
+                    exact_jump = abs(
+                        chebyshev_psi_error_at(
+                            jump_a,
+                            staircase_shift_a,
+                            staircase_cumulative,
+                            side="right",
+                        )
+                    ) * jump_phi
                     pnt_jump = float(explicit_psi_error_bound(np.array([jump_a]))[0]) * jump_phi
+                    finite_sup = float(row["finite_sup_abs_psi_minus_x"])
                     row["jump_variation_x"] = finite_float(float(row["jump_variation_x"]) + jump_phi)
                     row["exact_jump_bound"] = finite_float(float(row["exact_jump_bound"]) + exact_jump)
                     row["pnt_jump_bound"] = finite_float(float(row["pnt_jump_bound"]) + pnt_jump)
+                    row["finite_exact_jump_bound"] = finite_float(
+                        float(row["finite_exact_jump_bound"]) + exact_jump
+                    )
                     row["exact_grid_variation_bound"] = finite_float(
                         float(row["exact_grid_variation_bound"]) + exact_jump
                     )
@@ -2693,6 +2792,13 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         float(row["explicit_pnt_variation_bound"]) + pnt_jump
                     )
                     row["variation_x"] = finite_float(float(row["variation_x"]) + jump_phi)
+                    row["finiteU_with_exact_jumps_bound"] = finite_float(
+                        float(row["finiteU_with_exact_jumps_bound"]) + exact_jump
+                    )
+                    row["finiteU_conservative_total_variation_bound"] = finite_float(
+                        float(row["finiteU_conservative_total_variation_bound"])
+                        + finite_sup * jump_phi
+                    )
                     row.setdefault("jump_labels", [])
                     row["jump_labels"].append(jump_label)
 
@@ -2700,6 +2806,8 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                     abs_residual = abs(float(row["direct_residual"]))
                     exact_bound = float(row["exact_grid_variation_bound"])
                     pnt_bound = float(row["explicit_pnt_variation_bound"])
+                    finiteU_bound = float(row["finiteU_with_exact_jumps_bound"])
+                    finiteU_conservative = float(row["finiteU_conservative_total_variation_bound"])
                     row["abs_direct_residual"] = finite_float(abs_residual)
                     row["exact_bound_over_abs_cell_residual"] = (
                         None if abs_residual <= 0.0 else finite_float(exact_bound / abs_residual)
@@ -2713,9 +2821,24 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                     row["required_pnt_multiplier_to_cover_cell_residual"] = ratio_or_none(
                         abs_residual, pnt_bound
                     )
+                    row["finiteU_bound_over_abs_cell_residual"] = (
+                        None if abs_residual <= 0.0 else finite_float(finiteU_bound / abs_residual)
+                    )
+                    row["finiteU_conservative_bound_over_abs_cell_residual"] = (
+                        None
+                        if abs_residual <= 0.0
+                        else finite_float(finiteU_conservative / abs_residual)
+                    )
+                    row["required_finiteU_multiplier_to_cover_cell_residual"] = ratio_or_none(
+                        abs_residual, finiteU_bound
+                    )
                     row["sampled_exact_cell_underbound"] = bool(abs_residual > exact_bound)
                     row["sampled_exact_cell_deficit"] = finite_float(
                         max(0.0, abs_residual - exact_bound)
+                    )
+                    row["finiteU_cell_underbound"] = bool(abs_residual > finiteU_bound)
+                    row["finiteU_cell_deficit"] = finite_float(
+                        max(0.0, abs_residual - finiteU_bound)
                     )
                     row["sampled_pnt_cell_underbound"] = bool(abs_residual > pnt_bound)
                     row["sampled_pnt_cell_deficit"] = finite_float(
@@ -2727,11 +2850,21 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                 total_residual = total_prime - total_cont
                 exact_integral_bound = float(sum(float(row["exact_grid_variation_bound"]) for row in cell_rows))
                 pnt_integral_bound = float(sum(float(row["explicit_pnt_variation_bound"]) for row in cell_rows))
+                finiteU_integral_bound = float(
+                    sum(float(row["finiteU_with_exact_jumps_bound"]) for row in cell_rows)
+                )
+                finiteU_conservative_bound = float(
+                    sum(float(row["finiteU_conservative_total_variation_bound"]) for row in cell_rows)
+                )
                 abs_cell_sum = float(sum(abs(float(row["direct_residual"])) for row in cell_rows))
                 exact_cell_deficit = float(sum(float(row["sampled_exact_cell_deficit"]) for row in cell_rows))
+                finiteU_cell_deficit = float(sum(float(row["finiteU_cell_deficit"]) for row in cell_rows))
                 pnt_cell_deficit = float(sum(float(row["sampled_pnt_cell_deficit"]) for row in cell_rows))
                 exact_underbound_count = sum(
                     1 for row in cell_rows if bool(row["sampled_exact_cell_underbound"])
+                )
+                finiteU_underbound_count = sum(
+                    1 for row in cell_rows if bool(row["finiteU_cell_underbound"])
                 )
                 pnt_underbound_count = sum(
                     1 for row in cell_rows if bool(row["sampled_pnt_cell_underbound"])
@@ -2769,6 +2902,14 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                     cell_rows,
                     key=lambda row: -float(row["sampled_exact_cell_deficit"]),
                 )[: int(args.top_cells)]
+                by_finiteU_bound = sorted(
+                    cell_rows,
+                    key=lambda row: -float(row["finiteU_with_exact_jumps_bound"]),
+                )[: int(args.top_cells)]
+                by_finiteU_deficit = sorted(
+                    cell_rows,
+                    key=lambda row: -float(row["finiteU_cell_deficit"]),
+                )[: int(args.top_cells)]
 
                 direction_rows.append(
                     {
@@ -2790,12 +2931,30 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "pnt_integral_variation_bound": finite_float(pnt_integral_bound),
                         "pnt_endpoint_contribution": finite_float(endpoint_contribution_pnt),
                         "pnt_total_with_endpoints": finite_float(pnt_total_with_endpoints),
+                        "finiteU_with_exact_jumps_bound": finite_float(finiteU_integral_bound),
+                        "finiteU_conservative_total_variation_bound": finite_float(
+                            finiteU_conservative_bound
+                        ),
+                        "finiteU_bound_over_abs_residual": finite_float(
+                            0.0 if total_residual == 0.0 else finiteU_integral_bound / abs(total_residual)
+                        ),
+                        "finiteU_conservative_bound_over_abs_residual": finite_float(
+                            0.0 if total_residual == 0.0 else finiteU_conservative_bound / abs(total_residual)
+                        ),
+                        "finiteU_bound_over_exact_grid_bound": ratio_or_none(
+                            finiteU_integral_bound, exact_total_with_endpoints
+                        ),
                         "sampled_exact_underbound_cell_count": int(exact_underbound_count),
+                        "finiteU_underbound_cell_count": int(finiteU_underbound_count),
                         "sampled_pnt_underbound_cell_count": int(pnt_underbound_count),
                         "sampled_exact_cell_deficit_sum": finite_float(exact_cell_deficit),
+                        "finiteU_cell_deficit_sum": finite_float(finiteU_cell_deficit),
                         "sampled_pnt_cell_deficit_sum": finite_float(pnt_cell_deficit),
                         "sampled_exact_cell_bound_over_sum_abs_residuals": finite_float(
                             0.0 if abs_cell_sum == 0.0 else exact_integral_bound / abs_cell_sum
+                        ),
+                        "finiteU_bound_over_sum_abs_residuals": finite_float(
+                            0.0 if abs_cell_sum == 0.0 else finiteU_integral_bound / abs_cell_sum
                         ),
                         "sampled_pnt_cell_bound_over_sum_abs_residuals": finite_float(
                             0.0 if abs_cell_sum == 0.0 else pnt_integral_bound / abs_cell_sum
@@ -2805,6 +2964,9 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         ),
                         "required_uniform_pnt_multiplier_to_cover_sum_abs_cells": ratio_or_none(
                             abs_cell_sum, pnt_integral_bound
+                        ),
+                        "required_uniform_finiteU_multiplier_to_cover_sum_abs_cells": ratio_or_none(
+                            abs_cell_sum, finiteU_integral_bound
                         ),
                         "exact_bound_over_abs_residual": finite_float(
                             0.0 if total_residual == 0.0 else exact_total_with_endpoints / abs(total_residual)
@@ -2822,6 +2984,8 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "top_cells_by_abs_residual": by_residual,
                         "top_cells_by_required_exact_multiplier": by_required,
                         "top_cells_by_sampled_exact_deficit": by_deficit,
+                        "top_cells_by_finiteU_bound": by_finiteU_bound,
+                        "top_cells_by_finiteU_deficit": by_finiteU_deficit,
                     }
                 )
 
@@ -2908,12 +3072,26 @@ def run_clvmesh(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "exact_integral_variation_bound": direction["exact_integral_variation_bound"],
                         "exact_total_with_endpoints": direction["exact_total_with_endpoints"],
                         "exact_bound_over_abs_residual": direction["exact_bound_over_abs_residual"],
+                        "finiteU_with_exact_jumps_bound": direction[
+                            "finiteU_with_exact_jumps_bound"
+                        ],
+                        "finiteU_bound_over_abs_residual": direction[
+                            "finiteU_bound_over_abs_residual"
+                        ],
+                        "finiteU_bound_over_exact_grid_bound": direction[
+                            "finiteU_bound_over_exact_grid_bound"
+                        ],
                         "sampled_exact_underbound_cell_count": direction[
                             "sampled_exact_underbound_cell_count"
                         ],
+                        "finiteU_underbound_cell_count": direction["finiteU_underbound_cell_count"],
                         "sampled_exact_cell_deficit_sum": direction["sampled_exact_cell_deficit_sum"],
+                        "finiteU_cell_deficit_sum": direction["finiteU_cell_deficit_sum"],
                         "required_uniform_exact_multiplier_to_cover_sum_abs_cells": direction[
                             "required_uniform_exact_multiplier_to_cover_sum_abs_cells"
+                        ],
+                        "required_uniform_finiteU_multiplier_to_cover_sum_abs_cells": direction[
+                            "required_uniform_finiteU_multiplier_to_cover_sum_abs_cells"
                         ],
                     }
                 )

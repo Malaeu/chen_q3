@@ -271,6 +271,10 @@ Follow-up:
 - The K=3 underbound at `quad_na=2001` is downgraded from route-danger to
   mesh/continuum-convention warning.  A sweep over
   `quad_na=2001,4001,8001,16001` shows first global coverage at `quad_na=4001`.
+- `docs/trackB/b2b_finite_U_staircase_audit.md` then removes the sampled
+  dependency from `U_J`: the Chebyshev staircase side is a finite max over
+  endpoints and prime-power jump one-sided values.  The remaining live proof
+  object is the certified `V_J` variation/quadrature envelope.
 
 ## Verdict
 

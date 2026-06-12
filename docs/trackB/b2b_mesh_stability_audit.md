@@ -220,6 +220,14 @@ Track B remains active.  The next implementation step is to generate certified
 interval enclosures for `V_J` on the K=3 shoulder cells, using the mesh-stable
 global Stieltjes budget as the acceptance criterion.
 
+Follow-up:
+
+- `docs/trackB/b2b_finite_U_staircase_audit.md` removes the sampled dependency
+  from the `U_J` side.  Since `psi(exp(a))-exp(a)` is strictly decreasing
+  between prime-power jumps, each `U_J` is a finite max over endpoints and
+  jump one-sided values.  The remaining proof-grade gap is therefore the
+  `V_J` variation/quadrature envelope, not `U_J`.
+
 ## Proshka Audit Block
 
 Claim:

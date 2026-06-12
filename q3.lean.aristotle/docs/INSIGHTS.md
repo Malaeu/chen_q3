@@ -32545,3 +32545,28 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   downgraded)`, `GAP(certified quadrature/variation envelope generator still
   missing)`, and `FATAL(treating cell residual ratios or low-resolution meshes
   as proof)`.
+
+## Insight (2026-06-12, Track B B2b) -- FiniteUStaircase
+
+- Added `docs/trackB/b2b_finite_U_staircase_audit.md` and extended
+  `scripts/trackb_edge_operator_probe.py clvledger` with finite Chebyshev
+  `U_J` fields.
+- The finite theorem shape is elementary and unconditional: on intervals with
+  no prime-power jump, `E(a)=psi(exp(a))-exp(a)` has derivative `-exp(a)<0`;
+  therefore `sup_J |E|` is attained at endpoints or at left/right values of
+  prime-power jumps.  This turns `U_J` into a finite-list max problem.
+- Local `q3_docs` search points to existing finite prime-power and PrimeCert
+  bucket infrastructure (`W_sum_finite`, PrimeCert closure notes, finite
+  endpoint-envelope generators).  External search only confirms the standard
+  definition of `psi(x)=sum_{n<=x} Lambda(n)`.
+- At `K=3`, `ell=0.75`, `delta=0.5`, `quad_na=4001`, the ledger residual is
+  about `-0.31706`; exact-grid global bound is about `0.31870`
+  (`~1.00518x`), while finite-`U_J` with sampled `V_J` gives about `0.94631`
+  (`~2.98465x`, about `2.97x` the exact-grid bound).
+- At `K=3.5`, `ell=1.375`, `delta=1`, `quad_na=4001`, ledger residual is
+  about `0.31897`; exact-grid global bound is about `0.75431`
+  (`~2.36484x`), while finite-`U_J` with sampled `V_J` gives about `1.53472`
+  (`~4.81151x`, about `2.03x` the exact-grid bound).
+- Status refines to `PARTIAL(finite Chebyshev U_J extracted)`,
+  `GAP(certified V_J variation/quadrature envelope still missing)`, and
+  `FATAL(treating finite-U plus sampled-V as a proof certificate)`.
