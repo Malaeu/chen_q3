@@ -32570,3 +32570,34 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Status refines to `PARTIAL(finite Chebyshev U_J extracted)`,
   `GAP(certified V_J variation/quadrature envelope still missing)`, and
   `FATAL(treating finite-U plus sampled-V as a proof certificate)`.
+
+## Insight (2026-06-12, Track B B2b) -- VVariationShape
+
+- Added `docs/trackB/b2b_V_variation_shape_audit.md` and extended
+  `scripts/trackb_edge_operator_probe.py clvledger` with `V_J` shape fields:
+  continuous variation, jump variation, sampled derivative extrema, sampled
+  sign-change counts, and top cells by continuous variation.
+- The D2-normalized variation density is
+  `exp(-a/2)|H_v'(a)-H_v(a)/2|`, coming from
+  `phi_v(x)=x^(-1/2)H_v(log x)`.
+- Local `q3_docs` search points to the existing FloorCert/PrimeCert pattern:
+  grid plus Lipschitz/envelope and theorem-producing generators.  External
+  search only confirms standard BV/Stieltjes facts; no conditional
+  number-theory input is added.
+- K=3 at `ell=0.75`, `delta=0.5`, `quad_na=4001`, `ledger_cells=80`:
+  finite-U/residual is about `2.98465`, continuous variation sum about
+  `0.127925`, jump variation sum about `0.049769`, with `16` sampled
+  sign-change cells.  Top continuous-variation cells are `39`, `35`, `36`;
+  cell `39=[5.850,6.000]` contains the left-edge jump and has continuous
+  variation about `0.040003`.
+- K=3 mesh stability for `V_J`: continuous variation is about `0.126036`,
+  `0.127925`, `0.128868` for `quad_na=2001,4001,8001`; sampled sign changes
+  stay at `16`.
+- K=3.5 at `ell=1.375`, `delta=1`, `quad_na=4001`, `ledger_cells=120`:
+  finite-U/residual is about `4.81151`, continuous variation sum about
+  `0.104734`, jump variation sum about `0.030132`, with `41` sampled
+  sign-change cells and `46` total sampled sign changes.  Top
+  continuous-variation cells are `61`, `59`, `58`.
+- Status refines to `PARTIAL(V_J worklist localized and sign-shape exposed)`,
+  `GAP(certified sign partition or interval enclosure for V_J missing)`, and
+  `FATAL(treating sampled sign changes as certified signs)`.

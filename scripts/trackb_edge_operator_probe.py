@@ -931,6 +931,17 @@ def ratio_or_none(numerator: float, denominator: float) -> float | None:
     return finite_float(float(numerator) / float(denominator))
 
 
+def sampled_sign_change_count(values: np.ndarray, *, rel_tol: float = 1e-10) -> int:
+    arr = np.asarray(values, dtype=float)
+    if arr.size == 0:
+        return 0
+    threshold = rel_tol * max(1.0, float(np.max(np.abs(arr))))
+    signs = np.sign(arr[np.abs(arr) > threshold])
+    if signs.size < 2:
+        return 0
+    return int(np.count_nonzero(signs[1:] * signs[:-1] < 0.0))
+
+
 def run_finiteop(args: argparse.Namespace) -> list[dict[str, Any]]:
     pilot = load_step13()
     rows: list[dict[str, Any]] = []
@@ -2679,7 +2690,8 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                 H_grid = correction_weights_grid * profile_grid
                 dH = np.gradient(H_grid, a_grid, edge_order=2 if len(a_grid) >= 3 else 1)
                 phi = np.exp(-0.5 * a_grid) * H_grid
-                variation_density = np.exp(-0.5 * a_grid) * np.abs(dH - 0.5 * H_grid)
+                phi_derivative_density = np.exp(-0.5 * a_grid) * (dH - 0.5 * H_grid)
+                variation_density = np.abs(phi_derivative_density)
 
                 shift_a = np.array([float(sh.a) for sh in shifts], dtype=float)
                 shift_weight = np.array([float(sh.weight) for sh in shifts], dtype=float)
@@ -2705,6 +2717,7 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                     ag = a_grid[grid_mask]
                     Hg = H_grid[grid_mask]
                     vg = variation_density[grid_mask]
+                    pdg = phi_derivative_density[grid_mask]
                     eg = np.abs(psi_err[grid_mask])
                     pg = pnt_err[grid_mask]
                     continuum = float(np.trapezoid(np.exp(0.5 * ag) * Hg, ag))
@@ -2713,6 +2726,7 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                     exact_bound = float(np.trapezoid(eg * vg, ag))
                     pnt_bound = float(np.trapezoid(pg * vg, ag))
                     variation_x = float(np.trapezoid(vg, ag))
+                    peak_idx = int(np.argmax(vg))
                     finite_U = finite_chebyshev_error_sup_on_cell(
                         float(cell_lo),
                         float(cell_hi),
@@ -2732,6 +2746,7 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                             "direct_residual": finite_float(residual),
                             "exact_grid_variation_bound": finite_float(exact_bound),
                             "explicit_pnt_variation_bound": finite_float(pnt_bound),
+                            "continuous_variation_x": finite_float(variation_x),
                             "variation_x": finite_float(variation_x),
                             "jump_variation_x": 0.0,
                             "exact_jump_bound": 0.0,
@@ -2749,6 +2764,13 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                             ),
                             "max_pnt_bound": finite_float(float(np.max(pg))),
                             "max_abs_H": finite_float(float(np.max(np.abs(Hg)))),
+                            "sampled_phi_derivative_min": finite_float(float(np.min(pdg))),
+                            "sampled_phi_derivative_max": finite_float(float(np.max(pdg))),
+                            "sampled_phi_derivative_max_abs": finite_float(float(np.max(np.abs(pdg)))),
+                            "sampled_phi_derivative_peak_a": finite_float(float(ag[peak_idx])),
+                            "sampled_phi_derivative_sign_changes": int(
+                                sampled_sign_change_count(pdg)
+                            ),
                             **finite_U,
                         }
                     )
@@ -2848,6 +2870,10 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                 total_prime = float(sum(float(row["direct_prime_sum"]) for row in cell_rows))
                 total_cont = float(sum(float(row["direct_continuum"]) for row in cell_rows))
                 total_residual = total_prime - total_cont
+                continuous_variation_sum = float(
+                    sum(float(row["continuous_variation_x"]) for row in cell_rows)
+                )
+                jump_variation_sum = float(sum(float(row["jump_variation_x"]) for row in cell_rows))
                 exact_integral_bound = float(sum(float(row["exact_grid_variation_bound"]) for row in cell_rows))
                 pnt_integral_bound = float(sum(float(row["explicit_pnt_variation_bound"]) for row in cell_rows))
                 finiteU_integral_bound = float(
@@ -2868,6 +2894,12 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                 )
                 pnt_underbound_count = sum(
                     1 for row in cell_rows if bool(row["sampled_pnt_cell_underbound"])
+                )
+                sign_change_total = sum(
+                    int(row["sampled_phi_derivative_sign_changes"]) for row in cell_rows
+                )
+                sign_change_cell_count = sum(
+                    1 for row in cell_rows if int(row["sampled_phi_derivative_sign_changes"]) > 0
                 )
                 endpoint_contribution_exact = (
                     abs(float(psi_err[0])) * abs(float(phi[0]))
@@ -2910,6 +2942,14 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                     cell_rows,
                     key=lambda row: -float(row["finiteU_cell_deficit"]),
                 )[: int(args.top_cells)]
+                by_continuous_variation = sorted(
+                    cell_rows,
+                    key=lambda row: -float(row["continuous_variation_x"]),
+                )[: int(args.top_cells)]
+                by_sign_changes = sorted(
+                    cell_rows,
+                    key=lambda row: -int(row["sampled_phi_derivative_sign_changes"]),
+                )[: int(args.top_cells)]
 
                 direction_rows.append(
                     {
@@ -2924,6 +2964,12 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "sum_abs_cell_residuals": finite_float(abs_cell_sum),
                         "cancellation_ratio_abs_total_over_sum_abs_cells": finite_float(
                             0.0 if abs_cell_sum == 0.0 else abs(total_residual) / abs_cell_sum
+                        ),
+                        "continuous_variation_x_sum": finite_float(continuous_variation_sum),
+                        "jump_variation_x_sum": finite_float(jump_variation_sum),
+                        "sampled_phi_derivative_sign_changes_total": int(sign_change_total),
+                        "sampled_phi_derivative_sign_change_cell_count": int(
+                            sign_change_cell_count
                         ),
                         "exact_integral_variation_bound": finite_float(exact_integral_bound),
                         "exact_endpoint_contribution": finite_float(endpoint_contribution_exact),
@@ -2986,6 +3032,8 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "top_cells_by_sampled_exact_deficit": by_deficit,
                         "top_cells_by_finiteU_bound": by_finiteU_bound,
                         "top_cells_by_finiteU_deficit": by_finiteU_deficit,
+                        "top_cells_by_continuous_variation": by_continuous_variation,
+                        "top_cells_by_phi_derivative_sign_changes": by_sign_changes,
                     }
                 )
 
@@ -3072,6 +3120,14 @@ def run_clvmesh(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "exact_integral_variation_bound": direction["exact_integral_variation_bound"],
                         "exact_total_with_endpoints": direction["exact_total_with_endpoints"],
                         "exact_bound_over_abs_residual": direction["exact_bound_over_abs_residual"],
+                        "continuous_variation_x_sum": direction["continuous_variation_x_sum"],
+                        "jump_variation_x_sum": direction["jump_variation_x_sum"],
+                        "sampled_phi_derivative_sign_changes_total": direction[
+                            "sampled_phi_derivative_sign_changes_total"
+                        ],
+                        "sampled_phi_derivative_sign_change_cell_count": direction[
+                            "sampled_phi_derivative_sign_change_cell_count"
+                        ],
                         "finiteU_with_exact_jumps_bound": direction[
                             "finiteU_with_exact_jumps_bound"
                         ],

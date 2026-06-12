@@ -250,6 +250,14 @@ Track B remains active.  The next implementation step is a theorem-producing
 `V_J` envelope generator for the same cells, preferably starting with K=3
 cells `35,36,39` and K=3.5 cells `58,59,61`.
 
+Follow-up:
+
+- `docs/trackB/b2b_V_variation_shape_audit.md` adds sampled `V_J` shape
+  diagnostics: continuous variation, jump variation, and sign-change worklists
+  for `H_v'(a)-H_v(a)/2`.  It keeps the same blocker status: sampled signs are
+  not certificates, but the live `V_J` work is now localized to endpoint
+  shoulder cells.
+
 ## Proshka Audit Block
 
 Claim:
