@@ -1170,6 +1170,7 @@ def smooth_segment_sign_candidate(
     seg_lo: float,
     seg_hi: float,
     correction_weight: Any,
+    correction_weight_derivatives: Any | None = None,
     sample_count: int,
 ) -> dict[str, Any]:
     if seg_hi <= seg_lo:
@@ -1183,16 +1184,39 @@ def smooth_segment_sign_candidate(
     n = max(5, int(sample_count))
     a_grid = np.linspace(float(seg_lo), float(seg_hi), n)
     correction_weights = np.array([correction_weight(float(a)) for a in a_grid], dtype=float)
+    if correction_weight_derivatives is None:
+        weight_derivative = np.gradient(
+            correction_weights, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
+        )
+        weight_second_derivative = np.gradient(
+            weight_derivative, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
+        )
+        receiver_derivative_source = "sampled_finite_difference"
+        receiver_derivative_fd_error = 0.0
+        receiver_second_derivative_fd_error = 0.0
+    else:
+        (
+            correction_weights,
+            weight_derivative,
+            weight_second_derivative,
+        ) = correction_weight_derivatives(a_grid)
+        weight_derivative_fd = np.gradient(
+            correction_weights, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
+        )
+        weight_second_derivative_fd = np.gradient(
+            weight_derivative_fd, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
+        )
+        receiver_derivative_source = "analytic_vaaler_polygamma_derivative"
+        receiver_derivative_fd_error = float(
+            np.nanmax(np.abs(weight_derivative - weight_derivative_fd))
+        )
+        receiver_second_derivative_fd_error = float(
+            np.nanmax(np.abs(weight_second_derivative - weight_second_derivative_fd))
+        )
     profile = packet_profile_grid(pilot, packet, D, ell, coeffs, a_grid)
     profile_derivative = packet_profile_derivative_grid(pilot, packet, D, ell, coeffs, a_grid)
     profile_second_derivative = packet_profile_second_derivative_grid(
         pilot, packet, D, ell, coeffs, a_grid
-    )
-    weight_derivative = np.gradient(
-        correction_weights, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
-    )
-    weight_second_derivative = np.gradient(
-        weight_derivative, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
     )
     H = correction_weights * profile
     dH = weight_derivative * profile + correction_weights * profile_derivative
@@ -1232,7 +1256,11 @@ def smooth_segment_sign_candidate(
         "sampled_lipschitz_signed_density": finite_float(lipschitz_sample),
         "signed_density_derivative_max_abs": finite_float(lipschitz_sample),
         "profile_derivative_source": "analytic_centered_b_spline_derivative",
-        "receiver_derivative_source": "sampled_finite_difference",
+        "receiver_derivative_source": receiver_derivative_source,
+        "receiver_derivative_fd_max_abs_error": finite_float(receiver_derivative_fd_error),
+        "receiver_second_derivative_fd_max_abs_error": finite_float(
+            receiver_second_derivative_fd_error
+        ),
         "profile_derivative_max_abs": finite_float(float(np.max(np.abs(profile_derivative)))),
         "profile_second_derivative_max_abs": finite_float(
             float(np.max(np.abs(profile_second_derivative)))
@@ -1623,6 +1651,33 @@ def vaaler_K0(z: np.ndarray) -> np.ndarray:
     return np.sinc(z) ** 2
 
 
+def vaaler_K0_derivatives(z: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    z = np.asarray(z, dtype=float)
+    k0 = vaaler_K0(z)
+    k1 = np.empty_like(z, dtype=float)
+    k2 = np.empty_like(z, dtype=float)
+    small = np.abs(z) < 1e-8
+    zs = z[~small]
+    if zs.size:
+        sinp = np.sin(math.pi * zs)
+        cosp = np.cos(math.pi * zs)
+        k1[~small] = 2.0 * sinp * (math.pi * zs * cosp - sinp) / (math.pi**2 * zs**3)
+        k2[~small] = (
+            2.0
+            * (
+                (math.pi**2 * zs**2) * np.cos(2.0 * math.pi * zs)
+                - 2.0 * math.pi * zs * np.sin(2.0 * math.pi * zs)
+                + 3.0 * sinp**2
+            )
+            / (math.pi**2 * zs**4)
+        )
+    if np.any(small):
+        zs0 = z[small]
+        k1[small] = -(2.0 * math.pi**2 / 3.0) * zs0 + (4.0 * math.pi**4 / 45.0) * zs0**3
+        k2[small] = -(2.0 * math.pi**2 / 3.0) + (4.0 * math.pi**4 / 15.0) * zs0**2
+    return k0, k1, k2
+
+
 def vaaler_H0(z: np.ndarray, *, integer_tol: float = 1e-10) -> np.ndarray:
     """Vaaler's H0 sign approximant in the B1 Fourier convention.
 
@@ -1642,6 +1697,67 @@ def vaaler_H0(z: np.ndarray, *, integer_tol: float = 1e-10) -> np.ndarray:
         series = special.polygamma(1, 1.0 - zr) - special.polygamma(1, 1.0 + zr) + 2.0 / zr
         out[regular] = (np.sin(math.pi * zr) / math.pi) ** 2 * series
     return out
+
+
+def vaaler_H0_derivatives(
+    z: np.ndarray,
+    *,
+    integer_tol: float = 1e-10,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Return H0, H0', H0'' from the polygamma product formula.
+
+    Values exactly at integers are filled for H0 only.  Derivatives at those
+    removable points are left as NaN because the Track B smooth segments should
+    split before Vaaler interpolation nodes.
+    """
+    z = np.asarray(z, dtype=float)
+    h0 = vaaler_H0(z, integer_tol=integer_tol)
+    h1 = np.full_like(z, np.nan, dtype=float)
+    h2 = np.full_like(z, np.nan, dtype=float)
+    nearest = np.rint(z)
+    regular = np.abs(z - nearest) > integer_tol
+    zr = z[regular]
+    if zr.size:
+        sinp = np.sin(math.pi * zr)
+        A = (sinp / math.pi) ** 2
+        A1 = np.sin(2.0 * math.pi * zr) / math.pi
+        A2 = 2.0 * np.cos(2.0 * math.pi * zr)
+        B = special.polygamma(1, 1.0 - zr) - special.polygamma(1, 1.0 + zr) + 2.0 / zr
+        B1 = (
+            -special.polygamma(2, 1.0 - zr)
+            - special.polygamma(2, 1.0 + zr)
+            - 2.0 / (zr**2)
+        )
+        B2 = (
+            special.polygamma(3, 1.0 - zr)
+            - special.polygamma(3, 1.0 + zr)
+            + 4.0 / (zr**3)
+        )
+        h1[regular] = A1 * B + A * B1
+        h2[regular] = A2 * B + 2.0 * A1 * B1 + A * B2
+    return h0, h1, h2
+
+
+def selberg_interval_plus_derivatives(
+    x: np.ndarray,
+    *,
+    lo: float,
+    hi: float,
+    receiver_delta: float,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    if receiver_delta <= 0.0:
+        raise ValueError("receiver_delta must be positive")
+    x = np.asarray(x, dtype=float)
+    za = receiver_delta * (x - lo)
+    zb = receiver_delta * (x - hi)
+    Ha0, Ha1, Ha2 = vaaler_H0_derivatives(za)
+    Hb0, Hb1, Hb2 = vaaler_H0_derivatives(zb)
+    Ka0, Ka1, Ka2 = vaaler_K0_derivatives(za)
+    Kb0, Kb1, Kb2 = vaaler_K0_derivatives(zb)
+    value = 0.5 * Ha0 - 0.5 * Hb0 + 0.5 * Ka0 + 0.5 * Kb0
+    first = receiver_delta * (0.5 * Ha1 - 0.5 * Hb1 + 0.5 * Ka1 + 0.5 * Kb1)
+    second = receiver_delta**2 * (0.5 * Ha2 - 0.5 * Hb2 + 0.5 * Ka2 + 0.5 * Kb2)
+    return value, first, second
 
 
 def selberg_interval_values(
@@ -3617,6 +3733,18 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
             def correction_weight(a: float) -> float:
                 return plus_weight(a) - chi_weight(a)
 
+            def correction_weight_derivatives_grid(
+                a_values: np.ndarray,
+            ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+                values, first, second = selberg_interval_plus_derivatives(
+                    a_values,
+                    lo=lo,
+                    hi=hi,
+                    receiver_delta=float(receiver_delta),
+                )
+                chi_values = np.where((lo <= a_values) & (a_values <= hi), 1.0, 0.0)
+                return values - chi_values, first, second
+
             P_edge = build_prime_matrix_for_weight(
                 pilot, packet, D, params.ell, shifts, chi_weight
             )
@@ -3680,6 +3808,7 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                             seg_lo=seg_lo,
                             seg_hi=seg_hi,
                             correction_weight=correction_weight,
+                            correction_weight_derivatives=correction_weight_derivatives_grid,
                             sample_count=int(args.cert_na),
                         )
                         for seg_lo, seg_hi in segments
@@ -3812,8 +3941,9 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                             "recommendation": recommendation,
                             "proof_status": (
                                 "diagnostic_only: packet-profile derivatives use analytic centered "
-                                "B-spline formulas, but Selberg receiver derivatives and sign guards "
-                                "are still sampled and are not proof certificates"
+                                "B-spline formulas and Selberg receiver derivatives use analytic "
+                                "Vaaler/polygamma formulas, but sign guards are still sampled "
+                                "and are not interval proof certificates"
                             ),
                             "smooth_segments": smooth_segments,
                             "jump_terms": jump_terms,
@@ -3853,8 +3983,8 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                     "theorem_shape": (
                         "prototype V_J certificate worklist: split edge jumps, then certify "
                         "sign of H_v'(a)-H_v(a)/2 on smooth raw-a subsegments; packet-profile "
-                        "derivatives are analytic centered B-spline derivatives, receiver "
-                        "derivatives still need interval enclosure"
+                        "derivatives are analytic centered B-spline derivatives and receiver "
+                        "derivatives are analytic Vaaler/polygamma derivatives"
                     ),
                     "D2": (
                         "raw a=r*log(p), x=exp(a), phi=x^(-1/2)E_delta(log x)F_v(log x); "

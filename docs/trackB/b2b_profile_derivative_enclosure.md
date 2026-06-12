@@ -207,8 +207,17 @@ Preferred next experiment:
 
 ```text
 Derive and implement explicit derivative helpers for Vaaler H0/K0, then rerun
-clvsigncert with receiver_derivative_source = analytic_vaaler_derivative.
+clvsigncert with receiver_derivative_source =
+analytic_vaaler_polygamma_derivative.
 ```
+
+Follow-up:
+
+- `docs/trackB/b2b_receiver_derivative_enclosure.md` implements this
+  experiment.  `clvsigncert` now reports
+  `receiver_derivative_source = analytic_vaaler_polygamma_derivative`.  The
+  remaining gap is proof-grade interval enclosure near Vaaler interpolation
+  nodes, not sampled receiver differentiation.
 
 ## Verdict
 

@@ -32687,3 +32687,29 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `PARTIAL(packet-profile derivative sampling removed)`,
   `GAP(Selberg receiver derivative enclosure still sampled)`, and
   `FATAL(treating semi-analytic sampled receiver guards as proof)`.
+
+## Insight (2026-06-12, Track B B2b) -- ReceiverDerivativeEnclosure
+
+- Added `docs/trackB/b2b_receiver_derivative_enclosure.md` and upgraded
+  `scripts/trackb_edge_operator_probe.py clvsigncert` with analytic Vaaler
+  receiver derivatives: `K0`, `K0'`, `K0''`, `H0`, `H0'`, `H0''`, and
+  `M^+`, `(M^+)'`, `(M^+)''`.
+- The derivative source reported by smooth segments is now
+  `analytic_vaaler_polygamma_derivative`; finite differences are kept only as
+  sanity diagnostics via `receiver_derivative_fd_max_abs_error` and
+  `receiver_second_derivative_fd_max_abs_error`.
+- K=3.5 cells `58,59,61` keep the previous classification.  Cells `58` and
+  `59` have sampled guards about `0.067408` and `0.128763`; cell `61` splits
+  at the edge jump into two smooth sides with guards about `0.022024` and
+  `0.007154`.
+- K=3 cells `35,36` remain smooth sign candidates; K=3 cell `39` retains the
+  same root bracket `[5.995196059570327, 5.995289794921890]`.
+- Near-edge second-derivative finite-difference sanity errors are largest at
+  K=3.5 cell `61` (`~1.789` and `~0.198`) and K=3 cell `39` (`~0.108781`),
+  as expected near Vaaler integer nodes; this localizes the remaining proof
+  engineering to interval enclosures around those nodes.
+- Status refines to
+  `PARTIAL(receiver derivative sampling removed)`,
+  `GAP(interval enclosures near Vaaler interpolation nodes still missing)`,
+  and
+  `FATAL(treating analytic floating-point polygamma values as proof intervals)`.
