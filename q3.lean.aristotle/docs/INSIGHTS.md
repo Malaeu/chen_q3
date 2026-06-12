@@ -32043,3 +32043,16 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   ledger, (2) find a PSD-aware CLV replacement whose error is nonnegative on
   the actual packet spectrum, or (3) certify the finite projected operator
   inequality directly and use CLV only for tail/continuum control.
+
+## Insight (2026-06-12, Track B B2) -- LowBandNotEnoughForStep13Packet
+
+- Extended `docs/trackB/b2_cone_transport_probe.md` with a low-band capture
+  check for the current Step13 B-spline pilot.
+- For `ell=0.35`, `k_spline=5`, the scaled single-correlation Fourier profile
+  has total mass `1`, but the Selberg-positive window `|u|<1/(12K)` captures
+  only `4.93%` at `K=1`, `2.47%` at `K=2`, `1.65%` at `K=3`, and `1.23%` at
+  `K=4`.
+- Therefore `LOW-BAND` is not a closure route for the current packet without a
+  new low-pass decomposition plus explicit tail ledger.  The practical next
+  branch is `PSD-CLV` or `FINITE-OP`, with CLV used only where it preserves the
+  Hermitian-square/PSD structure.

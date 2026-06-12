@@ -173,6 +173,42 @@ Interpretation:
   normalization.
 - The `K=4` jump warns that B3 cannot be claimed from the current finite proxy.
 
+## Low-Band Capture Check
+
+The low-band survivor would need the live packet cone to be spectrally
+concentrated inside approximately:
+
+```text
+|u| < 1/(12K).
+```
+
+For the Step13 B-spline pilot with `ell=0.35` and `k_spline=5`, the scaled
+single-correlation Fourier profile is
+
+```text
+hat(r_ell)(u)
+  = ell/(s_k*c_k) * sinc(ell*u/s_k)^(2*k+2),
+s_k = 3,
+c_k = 0.3939255651755652,
+hat(r_ell)(0) = 0.2961642426397752.
+```
+
+Numerical quadrature confirms total mass `int hat(r_ell)(u) du = 1`.  The mass
+inside the Selberg-positive low band is:
+
+```text
+K=1  sigma=1/(12K)=0.08333333333333333   mass=0.04933002494217992
+K=2  sigma=1/(12K)=0.041666666666666664  mass=0.02467651672634222
+K=3  sigma=1/(12K)=0.027777777777777776  mass=0.016452432112490048
+K=4  sigma=1/(12K)=0.020833333333333332  mass=0.012339697124628818
+K=8  sigma=1/(12K)=0.010416666666666666  mass=0.006170028430304413
+```
+
+So the ordinary Selberg low-band window captures only a tiny part of the
+current Step13 packet spectrum.  `LOW-BAND` is not a closure route for the
+current packet unless we add a separate low-pass decomposition and an explicit
+tail ledger.
+
 ## Current B2 Verdict
 
 The B2 cone transport has three possible survivors:
@@ -191,6 +227,9 @@ The current evidence rejects:
 ```text
 ordinary Selberg majorant + unrestricted positive-definite cone
 ```
+
+and makes `LOW-BAND` non-competitive for the current Step13 B-spline packet
+without a new tail estimate.
 
 It does not reject Track B as a whole.
 
@@ -211,6 +250,9 @@ What was tried:
 - Checked `hat(M^+_sym)` and `hat(M^+_sym-chi_sym)`.
 - Identified the low-band window and the exact zero `u=1/(12K)`.
 - Ran Step13 edge proxy scaling for `K=1..4`.
+- Checked low-band capture for the current Step13 B-spline profile; at `K=2`
+  the positive low band captures only about `2.47%` of the single-correlation
+  spectral mass.
 
 Minimal example:
 `K=2`, raw `I=[4,8]`, `delta=1`.  A valid cone-transport theorem would need
