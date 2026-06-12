@@ -32945,3 +32945,31 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   outward rounding still missing)`, and
   `FATAL(treating the floating interval scaffold as a proof-grade E5'
   certificate)`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeFullCellIntervalWorklist
+
+- Extended `scripts/trackb_nonnode_interval_atom_audit.py` with
+  `--mesh-index all`, which reuses one `clvsigncert` context and emits a
+  compact full-cell mesh worklist.  The full-cell mode remains
+  `diagnostic_only`.
+- Runtime on K=3.5 cell `58` with `cert_na=801`,
+  `polygamma_tail_terms=400`, fixed `ell=1.375`, and `receiver_delta=1` was
+  about `37.17s` after adding B-spline interval caching and an all-order
+  profile interval path.
+- The selected full cell has `800` mesh intervals.  Current floating interval
+  guard counts are: `S0` excludes zero on `800/800`, direct `S1` guard passes
+  on `800/800`, and curvature `S2` guard passes on `800/800`.
+- Worst row remains mesh interval `0`:
+  `[6.645833333333817, 6.645976562500484]`, with
+  `S0=[0.06347021663883491,0.07150540275891909]`, direct guard
+  `~0.06341368254416625`, and curvature guard `~0.06341367729583335`.
+- Coarse sanity with `cert_na=21` fails the guard on `0/20` intervals because
+  the interval extension becomes too wide; the finite certificate must record
+  the fine mesh scale, not just the cell.
+- Status refines to
+  `PARTIAL(full-cell floating interval guard installed for K=3.5 cell 58:
+  800/800 mesh intervals pass)`,
+  `GAP(rational certificate data, Lean-grade outward rounding, and coverage
+  beyond this selected cell/direction still missing)`, and
+  `FATAL(treating the floating interval scaffold as a proof-grade E5'
+  certificate)`.

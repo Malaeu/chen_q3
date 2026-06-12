@@ -391,25 +391,99 @@ polygamma tail terms = 1000:
   direct guard ~0.0634137804410493
 ```
 
+## Full-Cell Worklist Lift
+
+The script now accepts:
+
+```text
+--mesh-index all
+```
+
+In this mode it builds one compact worklist row for every mesh interval in
+the selected cell, using the same receiver/profile/product-rule interval
+guard.  The output remains `diagnostic_only`: it is a floating interval
+scaffold, not rational Lean certificate data.
+
+Full-cell run:
+
+```text
+/usr/bin/time -p .venv/bin/python \
+  scripts/trackb_nonnode_interval_atom_audit.py \
+  --K 3.5 --ell 1.375 --schedule fixed --receiver-delta 1 \
+  --p0-na 401 --ledger-cells 120 --cert-na 801 \
+  --cell 58 --mesh-index all --polygamma-tail-terms 400 \
+  --worklist-worst-limit 5 \
+  > /tmp/trackb_cell58_full_worklist.json
+```
+
+Runtime:
+
+```text
+real ~37.17s
+```
+
+Summary:
+
+```text
+mesh intervals total: 800
+S0 excludes zero:    800 / 800
+direct S1 guard:     800 / 800
+curvature S2 guard:  800 / 800
+
+min direct S1 mesh guard lower:    ~0.06341368254416625
+min curvature S2 mesh guard lower: ~0.06341367729583335
+min S0_abs_lower:                  ~0.0634702166388349
+max S1_abs_upper:                  ~0.7894215401009013
+max S2_abs_upper:                  ~6.587435522205067
+```
+
+Worst row:
+
+```text
+mesh_index = 0
+mesh interval =
+  [6.645833333333817, 6.645976562500484]
+S0 =
+  [0.06347021663883491, 0.07150540275891909]
+direct guard =
+  ~0.06341368254416625
+curvature guard =
+  ~0.06341367729583335
+min distance to Vaaler integer node =
+  ~0.35402343749951637
+```
+
+Coarse-mesh sanity:
+
+```text
+cert_na = 21
+mesh intervals total: 20
+direct S1 guard pass count: 0 / 20
+```
+
+This is expected and useful: the current proof shape needs the fine mesh
+scale.  A coarse full-cell mesh lets the interval extension become too wide
+and `S0` can cross zero in the enclosure.  Therefore the finite certificate
+must record the mesh scale, not only the cell.
+
 Interpretation:
 
-- K=3.5 cell `58`, mesh interval `0`, now has a local interval sign guard
-  using receiver/profile/product-rule intervals rather than sampled `S`
-  values.
+- K=3.5 cell `58` now has a full-cell compact worklist with all `800` mesh
+  intervals passing the current floating interval sign guard.
 - The interval is still a floating scaffold.  The proof-producing version
-  must rationalize constants, packet coefficients/centers, and the receiver
-  tail bounds, then repeat this over all mesh intervals in the cell.
-- The next live task is not another formula rewrite for this mesh interval;
-  it is a worklist lift: run the same interval guard over all `800` mesh
-  intervals of cell `58`, identify the weakest intervals, and only then decide
-  whether Proshka should attack rationalization or interval tightening first.
+  must rationalize constants, packet coefficients/centers, receiver tail
+  bounds, and the exact mesh scale.
+- The next live task is no longer "does mesh-0 extend to the full cell?"
+  It does.  The next live task is rationalization and then coverage beyond
+  this one selected cell/direction.
 
 ## Verdict
 
-`PARTIAL(local combined interval sign guard installed for K=3.5 cell 58 mesh 0)`.
+`PARTIAL(full-cell floating interval guard installed for K=3.5 cell 58:
+800/800 mesh intervals pass)`.
 
-`GAP(full-cell worklist lift, rational certificate data, and Lean-grade
-outward rounding still missing)`.
+`GAP(rational certificate data, Lean-grade outward rounding, and coverage
+beyond this selected cell/direction still missing)`.
 
 `FATAL(treating the floating interval scaffold as a proof-grade E5'
 certificate)`.
@@ -419,13 +493,14 @@ Track B remains active.
 ## Proshka Audit Block
 
 Claim:
-The first non-node theorem target now has a local combined interval sign guard
-for `S_v` on K=3.5 cell `58`, mesh interval `0`.
+The first non-node theorem target now has a full-cell floating interval sign
+guard for `S_v` on K=3.5 cell `58`: all `800/800` mesh intervals pass the
+direct and curvature interval guards.
 
 Point of blockage:
-The current guard is a floating interval scaffold over one mesh interval.
-It is not yet lifted to all `800` mesh intervals of the cell, and it is not
-rationalized into Lean-grade certificate data.
+The current guard is still a floating interval scaffold.  It is not
+rationalized into Lean-grade certificate data and it covers only this selected
+cell/opnorm direction.
 
 What was tried:
 Added `scripts/trackb_nonnode_interval_atom_audit.py`, reused the
@@ -434,15 +509,17 @@ Added `scripts/trackb_nonnode_interval_atom_audit.py`, reused the
 primitive by a centered-cardinal B-spline recursion interval with a `1e-12`
 rounding pad.  Then added Selberg/Vaaler receiver intervals using polygamma
 recurrence plus positive-series tail bounds and combined them into `H/S`
-intervals by product rule.
+intervals by product rule.  Then added `--mesh-index all` and ran the same
+compact guard over all `800` mesh intervals in cell `58`.
 
 Minimal example:
-K=3.5 cell `58`, mesh interval
-`[6.645833333333817, 6.645976562500484]` has combined
+The weakest full-cell row is still mesh interval `0`:
+`[6.645833333333817, 6.645976562500484]`.  It has combined
 `S0=[0.06347021663883491, 0.07150540275891909]`; it excludes zero and gives
 direct mesh guard `~0.06341368254416625`.
 
 Question for Proshka:
-After the full-cell worklist is generated, should rationalization start from
-separate receiver/profile atoms, or from already-combined `S_v`, `S_v'`,
-`S_v''` interval records?
+For rationalization, should the proof object store separate receiver/profile
+atoms, or already-combined `S_v`, `S_v'`, `S_v''` interval records?  The
+combined route is smaller; the separate-atom route is more reusable and easier
+to audit against D2 normalization.

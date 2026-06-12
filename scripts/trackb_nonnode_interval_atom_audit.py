@@ -4,15 +4,15 @@ Track B / E5' non-node interval-atom audit.
 
 This script is a proof-generator scaffold, not a proof certificate.  It
 selects the same `clvsigncert` opnorm direction, focuses on one non-node mesh
-interval, and emits the analytic atom ranges that the future outward-rounded
-certificate must prove:
+interval or a full-cell mesh worklist, and emits the analytic atom ranges that
+the future outward-rounded certificate must prove:
 
   E_delta^(j), F_v^(j), H_v^(j), S_v^(j).
 
-The receiver and combined H/S ranges are still directed-rounded sampled
-ranges.  The packet-profile F ranges additionally include a natural
-Cox-de-Boor-style centered-B-spline interval extension over the same raw-a
-interval.
+The packet-profile F ranges use a natural Cox-de-Boor-style centered-B-spline
+interval extension.  The Selberg/Vaaler receiver ranges use polygamma
+recurrence plus a positive-series tail interval.  The combined H/S ranges are
+then formed by interval product rules over the same raw-a interval.
 
 All coordinates are raw-log coordinates: a = r * log(p).
 """
@@ -20,6 +20,7 @@ All coordinates are raw-log coordinates: a = r * log(p).
 from __future__ import annotations
 
 import argparse
+from functools import lru_cache
 import json
 import math
 from typing import Any
@@ -221,11 +222,17 @@ def abs_upper_from_endpoint_values(left: float, right: float) -> float:
 
 
 def centered_bspline_interval(deg: int, x: Interval) -> Interval:
+    return _centered_bspline_interval_cached(int(deg), float(x[0]), float(x[1]))
+
+
+@lru_cache(maxsize=500_000)
+def _centered_bspline_interval_cached(deg: int, lo: float, hi: float) -> Interval:
     """Natural interval extension of the centered cardinal B-spline recursion.
 
     This avoids the large cancellation of the alternating positive-part power
     formula used for point evaluation in the Step13 pilot.
     """
+    x = (float(lo), float(hi))
     if deg < 0:
         raise ValueError("degree must be nonnegative")
     support_radius = 0.5 * (deg + 1)
@@ -341,7 +348,90 @@ def shifted_packet_matrix_entry_interval(
     raise ValueError("only derivative orders 0..3 are supported")
 
 
+def shifted_packet_matrix_entry_intervals(
+    packet: Any,
+    *,
+    D_value: float,
+    ell: float,
+    a_interval: Interval,
+) -> tuple[Interval, Interval, Interval, Interval]:
+    ell_f = float(ell)
+    x_minus = iv_scale(1.0 / ell_f, iv_sub(iv_make(float(D_value)), a_interval))
+    x_plus = iv_scale(1.0 / ell_f, iv_add(iv_make(float(D_value)), a_interval))
+    minus = [r_corr_derivative_interval(packet, order, x_minus) for order in range(4)]
+    plus = [r_corr_derivative_interval(packet, order, x_plus) for order in range(4)]
+    return (
+        iv_add(minus[0], plus[0]),
+        iv_scale(1.0 / ell_f, iv_add(iv_neg(minus[1]), plus[1])),
+        iv_scale(1.0 / (ell_f**2), iv_add(minus[2], plus[2])),
+        iv_scale(1.0 / (ell_f**3), iv_add(iv_neg(minus[3]), plus[3])),
+    )
+
+
+def packet_profile_interval_ranges_all_orders(
+    *,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a_interval: Interval,
+) -> dict[str, Any]:
+    totals: list[Interval] = [(0.0, 0.0) for _ in range(4)]
+    nonzero_entries = [0 for _ in range(4)]
+    max_entry_width = [0.0 for _ in range(4)]
+    for i in range(D.shape[0]):
+        ci = float(coeffs[i])
+        if ci == 0.0:
+            continue
+        for j in range(D.shape[1]):
+            cj = float(coeffs[j])
+            coeff = ci * cj
+            if coeff == 0.0:
+                continue
+            entries = shifted_packet_matrix_entry_intervals(
+                packet,
+                D_value=float(D[i, j]),
+                ell=float(ell),
+                a_interval=a_interval,
+            )
+            for order, entry in enumerate(entries):
+                if entry == (0.0, 0.0):
+                    continue
+                nonzero_entries[order] += 1
+                max_entry_width[order] = max(max_entry_width[order], iv_width(entry))
+                totals[order] = iv_add(totals[order], iv_scale(coeff, entry))
+    return {
+        f"F{order}": {
+            "lo": totals[order][0],
+            "hi": totals[order][1],
+            "max_abs": out_up(max(abs(totals[order][0]), abs(totals[order][1]))),
+            "width": iv_width(totals[order]),
+            "nonzero_matrix_entries": int(nonzero_entries[order]),
+            "max_entry_width": out_up(max_entry_width[order]),
+        }
+        for order in range(4)
+    }
+
+
 def packet_profile_interval_range(
+    *,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a_interval: Interval,
+    order: int,
+) -> dict[str, Any]:
+    return packet_profile_interval_ranges_all_orders(
+        packet=packet,
+        D=D,
+        ell=ell,
+        coeffs=coeffs,
+        a_interval=a_interval,
+    )[f"F{order}"]
+
+
+def packet_profile_interval_range_slow(
     *,
     packet: Any,
     D: np.ndarray,
@@ -730,6 +820,315 @@ def atom_samples(
     }
 
 
+def audit_mesh_interval(
+    *,
+    args: argparse.Namespace,
+    ctx: dict[str, Any],
+    K: float,
+    ell: float,
+    receiver_delta: float,
+    cell_idx: int,
+    cell_lo: float,
+    cell_hi: float,
+    mesh: np.ndarray,
+    mesh_idx: int,
+    include_samples: bool,
+    compact: bool,
+) -> dict[str, Any]:
+    a_lo = float(mesh[mesh_idx])
+    a_hi = float(mesh[mesh_idx + 1])
+    a_interval = iv_make(a_lo, a_hi)
+    ranges: dict[str, Any] = {}
+    samples: dict[str, np.ndarray] | None = None
+    a_grid = np.array([a_lo, a_hi], dtype=float)
+    if include_samples:
+        a_grid = np.linspace(a_lo, a_hi, int(args.atom_samples))
+        samples = atom_samples(
+            ctx=ctx,
+            receiver_delta=float(receiver_delta),
+            a_grid=a_grid,
+        )
+        ranges = {name: directed_range(values) for name, values in samples.items()}
+
+    profile_intervals = packet_profile_interval_ranges_all_orders(
+        packet=ctx["packet"],
+        D=ctx["D"],
+        ell=float(ctx["params"].ell),
+        coeffs=ctx["coeffs"],
+        a_interval=a_interval,
+    )
+    profile_interval_comparison = None
+    if include_samples:
+        profile_interval_comparison = {
+            name: {
+                "contains_directed_sample_range": range_contains(interval, ranges[name]),
+                "interval_width_over_sample_width": width_ratio(interval, ranges[name]),
+                "interval_width": interval["width"],
+                "sample_width": None
+                if ranges[name]["lo"] is None or ranges[name]["hi"] is None
+                else out_up(float(ranges[name]["hi"]) - float(ranges[name]["lo"])),
+                "nonzero_matrix_entries": interval["nonzero_matrix_entries"],
+                "max_entry_width": interval["max_entry_width"],
+            }
+            for name, interval in profile_intervals.items()
+        }
+
+    receiver_intervals = selberg_receiver_interval_ranges(
+        a_interval=a_interval,
+        lo=float(ctx["lo"]),
+        hi=float(ctx["hi"]),
+        receiver_delta=float(receiver_delta),
+        tail_terms=int(args.polygamma_tail_terms),
+    )
+    receiver_interval_comparison = None
+    if include_samples:
+        receiver_interval_comparison = {
+            name: {
+                "contains_directed_sample_range": range_contains(interval, ranges[name]),
+                "interval_width_over_sample_width": width_ratio(interval, ranges[name]),
+                "interval_width": interval["width"],
+                "sample_width": None
+                if ranges[name]["lo"] is None or ranges[name]["hi"] is None
+                else out_up(float(ranges[name]["hi"]) - float(ranges[name]["lo"])),
+            }
+            for name, interval in receiver_intervals.items()
+        }
+
+    combined_intervals = combined_hs_interval_ranges(
+        a_interval=a_interval,
+        receiver_intervals=receiver_intervals,
+        profile_intervals=profile_intervals,
+    )
+    combined_interval_comparison = None
+    if include_samples:
+        combined_interval_comparison = {
+            name: {
+                "contains_directed_sample_range": range_contains(interval, ranges[name]),
+                "interval_width_over_sample_width": width_ratio(interval, ranges[name]),
+                "interval_width": interval["width"],
+                "sample_width": None
+                if ranges[name]["lo"] is None or ranges[name]["hi"] is None
+                else out_up(float(ranges[name]["hi"]) - float(ranges[name]["lo"])),
+            }
+            for name, interval in combined_intervals.items()
+            if name in ranges
+        }
+
+    width = out_up(a_hi - a_lo)
+    interval_s0 = dict_to_interval(combined_intervals["S0"])
+    direct_s0_abs_lower = interval_abs_lower(interval_s0)
+    direct_s1_abs_upper = combined_intervals["S1"]["max_abs"]
+    direct_s2_abs_upper = combined_intervals["S2"]["max_abs"]
+    direct_mesh_guard = out_down(direct_s0_abs_lower - 0.5 * direct_s1_abs_upper * width)
+    curvature_mesh_guard = out_down(
+        direct_s0_abs_lower
+        - 0.5
+        * out_up(direct_s1_abs_upper + 0.5 * direct_s2_abs_upper * width)
+        * width
+    )
+    combined_interval_sign_guard = {
+        "S0_excludes_zero": bool(not (interval_s0[0] <= 0.0 <= interval_s0[1])),
+        "S0_abs_lower": direct_s0_abs_lower,
+        "S1_abs_upper": direct_s1_abs_upper,
+        "S2_abs_upper": direct_s2_abs_upper,
+        "mesh_width_upper": width,
+        "direct_S1_mesh_guard_lower": direct_mesh_guard,
+        "curvature_S2_mesh_guard_lower": curvature_mesh_guard,
+        "direct_S1_guard_passes": bool(direct_mesh_guard > 0.0),
+        "curvature_S2_guard_passes": bool(curvature_mesh_guard > 0.0),
+    }
+    node_audit = probe.selberg_receiver_node_audit(
+        a_grid,
+        lo=float(ctx["lo"]),
+        hi=float(ctx["hi"]),
+        receiver_delta=float(receiver_delta),
+    )
+
+    common = {
+        "status": "diagnostic_only",
+        "K": float(K),
+        "ell": float(ell),
+        "grid_delta": float(args.grid_delta),
+        "k_spline": int(args.k_spline),
+        "p0_na": int(args.p0_na),
+        "ledger_cells": int(args.ledger_cells),
+        "cert_na": int(args.cert_na),
+        "cell": cell_idx,
+        "mesh_index": mesh_idx,
+        "receiver_delta": float(receiver_delta),
+        "raw_edge": [float(ctx["lo"]), float(ctx["hi"])],
+        "cell_interval": [cell_lo, cell_hi],
+        "mesh_interval": [a_lo, a_hi],
+        "mesh_width_directed_upper": width,
+        "combined_interval_sign_guard": combined_interval_sign_guard,
+        "receiver_node_audit": node_audit,
+        "D2": (
+            "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), "
+            "w_Q(n)=2*Lambda(n)/sqrt(n)"
+        ),
+    }
+
+    if compact:
+        return {
+            "mode": "trackb_nonnode_interval_atom_worklist_row",
+            **common,
+            "S0_interval": combined_intervals["S0"],
+            "S1_interval": combined_intervals["S1"],
+            "S2_interval": combined_intervals["S2"],
+            "direct_S1_mesh_guard_lower": direct_mesh_guard,
+            "curvature_S2_mesh_guard_lower": curvature_mesh_guard,
+            "direct_S1_guard_passes": bool(direct_mesh_guard > 0.0),
+            "curvature_S2_guard_passes": bool(curvature_mesh_guard > 0.0),
+            "S0_excludes_zero": combined_interval_sign_guard["S0_excludes_zero"],
+        }
+
+    assert samples is not None
+    endpoint_abs_S_lower = abs_lower_from_endpoint_values(
+        float(samples["S0"][0]),
+        float(samples["S0"][-1]),
+    )
+    endpoint_abs_S1_upper = abs_upper_from_endpoint_values(
+        float(samples["S1"][0]),
+        float(samples["S1"][-1]),
+    )
+    sample_S2_abs_upper = ranges["S2"]["max_abs"]
+    guards: list[dict[str, Any]] = []
+    for factor in args.curvature_factors:
+        derivative_envelope = out_up(
+            endpoint_abs_S1_upper
+            + 0.5 * float(factor) * float(sample_S2_abs_upper) * width
+        )
+        guard = out_down(endpoint_abs_S_lower - 0.5 * derivative_envelope * width)
+        guards.append(
+            {
+                "curvature_factor": float(factor),
+                "endpoint_abs_S_lower": endpoint_abs_S_lower,
+                "endpoint_abs_S1_upper": endpoint_abs_S1_upper,
+                "sample_sup_abs_S2_upper": sample_S2_abs_upper,
+                "derivative_envelope_upper": derivative_envelope,
+                "mesh_guard_lower": guard,
+                "passes": bool(guard > 0.0),
+            }
+        )
+
+    return {
+        "mode": "trackb_nonnode_interval_atom_audit",
+        **common,
+        "interval_kind": "directed_rounded_sample_ranges_not_proof_grade",
+        "atom_samples": int(args.atom_samples),
+        "opnorm_eigenvalue": float(ctx["opnorm_eigenvalue"]),
+        "correction_eig_min": float(ctx["correction_eig_min"]),
+        "correction_eig_max": float(ctx["correction_eig_max"]),
+        "atom_ranges": ranges,
+        "profile_interval_kind": (
+            "natural_centered_b_spline_interval_with_float_coefficients"
+        ),
+        "profile_interval_method": "centered_cardinal_b_spline_cox_de_boor_recursion",
+        "profile_interval_rounding_pad": BSPLINE_INTERVAL_PAD,
+        "profile_interval_ranges": profile_intervals,
+        "profile_interval_comparison": profile_interval_comparison,
+        "receiver_interval_kind": (
+            "vaaler_polygamma_recurrence_positive_series_tail_interval"
+        ),
+        "receiver_interval_polygamma_tail_terms": int(args.polygamma_tail_terms),
+        "receiver_interval_ranges": receiver_intervals,
+        "receiver_interval_comparison": receiver_interval_comparison,
+        "combined_interval_kind": "product_rule_interval_from_receiver_and_profile_atoms",
+        "combined_interval_ranges": combined_intervals,
+        "combined_interval_comparison": combined_interval_comparison,
+        "mesh_guards": guards,
+        "proof_status": (
+            "diagnostic_only: F_v profile atoms and E_delta receiver "
+            "atoms now have natural interval extensions over the "
+            "selected raw-a interval, and H/S ranges are combined "
+            "by interval product rules; "
+            "profile coefficients and centers are current floating "
+            "pilot data and receiver constants are floating interval "
+            "scaffold data, not rational Lean certificate data"
+        ),
+        "next_certificate_contract": (
+            "for selected cells use --mesh-index all to lift the floating "
+            "interval sign guard to a full-cell worklist, then rationalize "
+            "the packet-profile coefficients/centers plus receiver constants"
+        ),
+    }
+
+
+def worklist_summary_row(
+    *,
+    args: argparse.Namespace,
+    ctx: dict[str, Any],
+    K: float,
+    ell: float,
+    receiver_delta: float,
+    cell_idx: int,
+    cell_lo: float,
+    cell_hi: float,
+    compact_rows: list[dict[str, Any]],
+) -> dict[str, Any]:
+    worst_limit = int(args.worklist_worst_limit)
+    direct_failures = [row for row in compact_rows if not row["direct_S1_guard_passes"]]
+    curvature_failures = [row for row in compact_rows if not row["curvature_S2_guard_passes"]]
+    s0_failures = [row for row in compact_rows if not row["S0_excludes_zero"]]
+
+    def worst_rows(key: str) -> list[dict[str, Any]]:
+        return sorted(compact_rows, key=lambda row: float(row[key]))[:worst_limit]
+
+    summary = {
+        "mode": "trackb_nonnode_interval_atom_full_cell_worklist",
+        "status": "diagnostic_only",
+        "K": float(K),
+        "ell": float(ell),
+        "grid_delta": float(args.grid_delta),
+        "k_spline": int(args.k_spline),
+        "p0_na": int(args.p0_na),
+        "ledger_cells": int(args.ledger_cells),
+        "cert_na": int(args.cert_na),
+        "cell": cell_idx,
+        "receiver_delta": float(receiver_delta),
+        "raw_edge": [float(ctx["lo"]), float(ctx["hi"])],
+        "cell_interval": [cell_lo, cell_hi],
+        "mesh_intervals_total": len(compact_rows),
+        "S0_excludes_zero_count": len(compact_rows) - len(s0_failures),
+        "direct_S1_guard_pass_count": len(compact_rows) - len(direct_failures),
+        "curvature_S2_guard_pass_count": len(compact_rows) - len(curvature_failures),
+        "S0_failure_count": len(s0_failures),
+        "direct_S1_guard_failure_count": len(direct_failures),
+        "curvature_S2_guard_failure_count": len(curvature_failures),
+        "min_direct_S1_mesh_guard_lower": min(
+            float(row["direct_S1_mesh_guard_lower"]) for row in compact_rows
+        ),
+        "min_curvature_S2_mesh_guard_lower": min(
+            float(row["curvature_S2_mesh_guard_lower"]) for row in compact_rows
+        ),
+        "min_S0_abs_lower": min(
+            float(row["combined_interval_sign_guard"]["S0_abs_lower"])
+            for row in compact_rows
+        ),
+        "max_S1_abs_upper": max(
+            float(row["combined_interval_sign_guard"]["S1_abs_upper"])
+            for row in compact_rows
+        ),
+        "max_S2_abs_upper": max(
+            float(row["combined_interval_sign_guard"]["S2_abs_upper"])
+            for row in compact_rows
+        ),
+        "worst_direct_S1_rows": worst_rows("direct_S1_mesh_guard_lower"),
+        "worst_curvature_S2_rows": worst_rows("curvature_S2_mesh_guard_lower"),
+        "proof_status": (
+            "diagnostic_only: full-cell lift of the floating interval scaffold; "
+            "not rational certificate data and not a Lean proof"
+        ),
+        "D2": (
+            "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), "
+            "w_Q(n)=2*Lambda(n)/sqrt(n)"
+        ),
+    }
+    if not args.worklist_omit_rows:
+        summary["worklist_rows"] = compact_rows
+    return summary
+
+
 def run(args: argparse.Namespace) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for K in args.K:
@@ -754,6 +1153,38 @@ def run(args: argparse.Namespace) -> list[dict[str, Any]]:
             cell_lo = float(cell_edges[cell_idx])
             cell_hi = float(cell_edges[cell_idx + 1])
             mesh = np.linspace(cell_lo, cell_hi, int(args.cert_na))
+            if args.mesh_index == "all":
+                compact_rows = [
+                    audit_mesh_interval(
+                        args=args,
+                        ctx=ctx,
+                        K=float(K),
+                        ell=float(ell),
+                        receiver_delta=float(receiver_delta),
+                        cell_idx=cell_idx,
+                        cell_lo=cell_lo,
+                        cell_hi=cell_hi,
+                        mesh=mesh,
+                        mesh_idx=mesh_idx,
+                        include_samples=False,
+                        compact=True,
+                    )
+                    for mesh_idx in range(len(mesh) - 1)
+                ]
+                rows.append(
+                    worklist_summary_row(
+                        args=args,
+                        ctx=ctx,
+                        K=float(K),
+                        ell=float(ell),
+                        receiver_delta=float(receiver_delta),
+                        cell_idx=cell_idx,
+                        cell_lo=cell_lo,
+                        cell_hi=cell_hi,
+                        compact_rows=compact_rows,
+                    )
+                )
+                continue
             if args.mesh_index == "auto":
                 # The current theorem-producing pilot is the worst leftmost
                 # interval for K=3.5 cell 58.  For other cells, keep the same
@@ -764,195 +1195,21 @@ def run(args: argparse.Namespace) -> list[dict[str, Any]]:
                 mesh_idx = int(args.mesh_index)
             if mesh_idx < 0 or mesh_idx >= len(mesh) - 1:
                 raise ValueError("mesh-index must select an interval inside the cell mesh")
-            a_lo = float(mesh[mesh_idx])
-            a_hi = float(mesh[mesh_idx + 1])
-            a_grid = np.linspace(a_lo, a_hi, int(args.atom_samples))
-            samples = atom_samples(
-                ctx=ctx,
-                receiver_delta=float(receiver_delta),
-                a_grid=a_grid,
-            )
-            ranges = {name: directed_range(values) for name, values in samples.items()}
-            a_interval = iv_make(a_lo, a_hi)
-            profile_intervals = {
-                f"F{order}": packet_profile_interval_range(
-                    packet=ctx["packet"],
-                    D=ctx["D"],
-                    ell=float(ctx["params"].ell),
-                    coeffs=ctx["coeffs"],
-                    a_interval=a_interval,
-                    order=order,
-                )
-                for order in range(4)
-            }
-            profile_interval_comparison = {
-                name: {
-                    "contains_directed_sample_range": range_contains(interval, ranges[name]),
-                    "interval_width_over_sample_width": width_ratio(interval, ranges[name]),
-                    "interval_width": interval["width"],
-                    "sample_width": None
-                    if ranges[name]["lo"] is None or ranges[name]["hi"] is None
-                    else out_up(float(ranges[name]["hi"]) - float(ranges[name]["lo"])),
-                    "nonzero_matrix_entries": interval["nonzero_matrix_entries"],
-                    "max_entry_width": interval["max_entry_width"],
-                }
-                for name, interval in profile_intervals.items()
-            }
-            receiver_intervals = selberg_receiver_interval_ranges(
-                a_interval=a_interval,
-                lo=float(ctx["lo"]),
-                hi=float(ctx["hi"]),
-                receiver_delta=float(receiver_delta),
-                tail_terms=int(args.polygamma_tail_terms),
-            )
-            receiver_interval_comparison = {
-                name: {
-                    "contains_directed_sample_range": range_contains(interval, ranges[name]),
-                    "interval_width_over_sample_width": width_ratio(interval, ranges[name]),
-                    "interval_width": interval["width"],
-                    "sample_width": None
-                    if ranges[name]["lo"] is None or ranges[name]["hi"] is None
-                    else out_up(float(ranges[name]["hi"]) - float(ranges[name]["lo"])),
-                }
-                for name, interval in receiver_intervals.items()
-            }
-            combined_intervals = combined_hs_interval_ranges(
-                a_interval=a_interval,
-                receiver_intervals=receiver_intervals,
-                profile_intervals=profile_intervals,
-            )
-            combined_interval_comparison = {
-                name: {
-                    "contains_directed_sample_range": range_contains(interval, ranges[name]),
-                    "interval_width_over_sample_width": width_ratio(interval, ranges[name]),
-                    "interval_width": interval["width"],
-                    "sample_width": None
-                    if ranges[name]["lo"] is None or ranges[name]["hi"] is None
-                    else out_up(float(ranges[name]["hi"]) - float(ranges[name]["lo"])),
-                }
-                for name, interval in combined_intervals.items()
-                if name in ranges
-            }
-            width = out_up(a_hi - a_lo)
-            endpoint_abs_S_lower = abs_lower_from_endpoint_values(
-                float(samples["S0"][0]),
-                float(samples["S0"][-1]),
-            )
-            endpoint_abs_S1_upper = abs_upper_from_endpoint_values(
-                float(samples["S1"][0]),
-                float(samples["S1"][-1]),
-            )
-            sample_S2_abs_upper = ranges["S2"]["max_abs"]
-            guards: list[dict[str, Any]] = []
-            for factor in args.curvature_factors:
-                derivative_envelope = out_up(
-                    endpoint_abs_S1_upper
-                    + 0.5 * float(factor) * float(sample_S2_abs_upper) * width
-                )
-                guard = out_down(endpoint_abs_S_lower - 0.5 * derivative_envelope * width)
-                guards.append(
-                    {
-                        "curvature_factor": float(factor),
-                        "endpoint_abs_S_lower": endpoint_abs_S_lower,
-                        "endpoint_abs_S1_upper": endpoint_abs_S1_upper,
-                        "sample_sup_abs_S2_upper": sample_S2_abs_upper,
-                        "derivative_envelope_upper": derivative_envelope,
-                        "mesh_guard_lower": guard,
-                        "passes": bool(guard > 0.0),
-                    }
-                )
-            interval_s0 = dict_to_interval(combined_intervals["S0"])
-            interval_s1 = dict_to_interval(combined_intervals["S1"])
-            interval_s2 = dict_to_interval(combined_intervals["S2"])
-            direct_s0_abs_lower = interval_abs_lower(interval_s0)
-            direct_s1_abs_upper = combined_intervals["S1"]["max_abs"]
-            direct_s2_abs_upper = combined_intervals["S2"]["max_abs"]
-            direct_mesh_guard = out_down(direct_s0_abs_lower - 0.5 * direct_s1_abs_upper * width)
-            curvature_mesh_guard = out_down(
-                direct_s0_abs_lower
-                - 0.5
-                * out_up(direct_s1_abs_upper + 0.5 * direct_s2_abs_upper * width)
-                * width
-            )
-            combined_interval_sign_guard = {
-                "S0_excludes_zero": bool(not (interval_s0[0] <= 0.0 <= interval_s0[1])),
-                "S0_abs_lower": direct_s0_abs_lower,
-                "S1_abs_upper": direct_s1_abs_upper,
-                "S2_abs_upper": direct_s2_abs_upper,
-                "mesh_width_upper": width,
-                "direct_S1_mesh_guard_lower": direct_mesh_guard,
-                "curvature_S2_mesh_guard_lower": curvature_mesh_guard,
-                "direct_S1_guard_passes": bool(direct_mesh_guard > 0.0),
-                "curvature_S2_guard_passes": bool(curvature_mesh_guard > 0.0),
-            }
-            node_audit = probe.selberg_receiver_node_audit(
-                a_grid,
-                lo=float(ctx["lo"]),
-                hi=float(ctx["hi"]),
-                receiver_delta=float(receiver_delta),
-            )
             rows.append(
-                {
-                    "mode": "trackb_nonnode_interval_atom_audit",
-                    "status": "diagnostic_only",
-                    "interval_kind": "directed_rounded_sample_ranges_not_proof_grade",
-                    "K": float(K),
-                    "ell": float(ell),
-                    "grid_delta": float(args.grid_delta),
-                    "k_spline": int(args.k_spline),
-                    "p0_na": int(args.p0_na),
-                    "ledger_cells": int(args.ledger_cells),
-                    "cert_na": int(args.cert_na),
-                    "cell": cell_idx,
-                    "mesh_index": mesh_idx,
-                    "atom_samples": int(args.atom_samples),
-                    "receiver_delta": float(receiver_delta),
-                    "raw_edge": [float(ctx["lo"]), float(ctx["hi"])],
-                    "cell_interval": [cell_lo, cell_hi],
-                    "mesh_interval": [a_lo, a_hi],
-                    "mesh_width_directed_upper": width,
-                    "opnorm_eigenvalue": float(ctx["opnorm_eigenvalue"]),
-                    "correction_eig_min": float(ctx["correction_eig_min"]),
-                    "correction_eig_max": float(ctx["correction_eig_max"]),
-                    "atom_ranges": ranges,
-                    "profile_interval_kind": (
-                        "natural_centered_b_spline_interval_with_float_coefficients"
-                    ),
-                    "profile_interval_method": "centered_cardinal_b_spline_cox_de_boor_recursion",
-                    "profile_interval_rounding_pad": BSPLINE_INTERVAL_PAD,
-                    "profile_interval_ranges": profile_intervals,
-                    "profile_interval_comparison": profile_interval_comparison,
-                    "receiver_interval_kind": (
-                        "vaaler_polygamma_recurrence_positive_series_tail_interval"
-                    ),
-                    "receiver_interval_polygamma_tail_terms": int(args.polygamma_tail_terms),
-                    "receiver_interval_ranges": receiver_intervals,
-                    "receiver_interval_comparison": receiver_interval_comparison,
-                    "combined_interval_kind": "product_rule_interval_from_receiver_and_profile_atoms",
-                    "combined_interval_ranges": combined_intervals,
-                    "combined_interval_comparison": combined_interval_comparison,
-                    "combined_interval_sign_guard": combined_interval_sign_guard,
-                    "mesh_guards": guards,
-                    "receiver_node_audit": node_audit,
-                    "proof_status": (
-                        "diagnostic_only: F_v profile atoms and E_delta receiver "
-                        "atoms now have natural interval extensions over the "
-                        "selected raw-a interval, and H/S ranges are combined "
-                        "by interval product rules; "
-                        "profile coefficients and centers are current floating "
-                        "pilot data and receiver constants are floating interval "
-                        "scaffold data, not rational Lean certificate data"
-                    ),
-                    "next_certificate_contract": (
-                        "rationalize the current floating packet-profile "
-                        "coefficients/centers plus receiver constants, then lift "
-                        "the local interval sign guard to the full cell worklist"
-                    ),
-                    "D2": (
-                        "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), "
-                        "w_Q(n)=2*Lambda(n)/sqrt(n)"
-                    ),
-                }
+                audit_mesh_interval(
+                    args=args,
+                    ctx=ctx,
+                    K=float(K),
+                    ell=float(ell),
+                    receiver_delta=float(receiver_delta),
+                    cell_idx=cell_idx,
+                    cell_lo=cell_lo,
+                    cell_hi=cell_hi,
+                    mesh=mesh,
+                    mesh_idx=mesh_idx,
+                    include_samples=True,
+                    compact=False,
+                )
             )
     return rows
 
@@ -977,7 +1234,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--mesh-index",
         default="auto",
-        help="mesh interval index inside the selected cell, or auto",
+        help="mesh interval index inside the selected cell, auto, or all",
     )
     parser.add_argument("--atom-samples", type=int, default=65)
     parser.add_argument(
@@ -992,6 +1249,17 @@ def parse_args() -> argparse.Namespace:
         nargs="+",
         default=[1.0, 1000.0, 10000.0],
         help="diagnostic inflation factors for sampled S'' ranges",
+    )
+    parser.add_argument(
+        "--worklist-worst-limit",
+        type=int,
+        default=10,
+        help="number of worst compact rows to repeat in --mesh-index all summaries",
+    )
+    parser.add_argument(
+        "--worklist-omit-rows",
+        action="store_true",
+        help="omit the compact per-mesh rows from --mesh-index all summaries",
     )
     return parser.parse_args()
 
