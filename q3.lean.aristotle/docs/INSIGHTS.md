@@ -32893,3 +32893,28 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   profile atoms still missing)`, and
   `FATAL(treating directed sampled ranges as proof-grade interval
   enclosures)`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeProfileIntervalAudit
+
+- Upgraded `scripts/trackb_nonnode_interval_atom_audit.py` with a natural
+  centered-cardinal B-spline interval extension for packet-profile atoms
+  `F_v^(j)`, `j <= 3`.
+- The interval method is the Cox-de-Boor-style centered recursion with an
+  explicit `1e-12` rounding pad; this avoids the catastrophic cancellation of
+  the alternating positive-part formula as an interval primitive.
+- On K=3.5 cell `58`, mesh interval
+  `[6.645833333333817, 6.645976562500484]`, the profile intervals contain
+  all directed sampled profile ranges.  Width-over-sampled-width ratios are
+  about `77.92` for `F0`, `95.87` for `F1`, `41.39` for `F2`, and `45.69`
+  for `F3`.
+- Example: `F0` is certified by the profile interval
+  `[-0.4836943690700886, -0.4297032359816557]`, containing sampled
+  `[-0.45704510276491067, -0.4563522038852088]`.
+- Status refines to
+  `PARTIAL(profile natural interval extension installed for K=3.5 cell 58
+  mesh 0)`,
+  `GAP(natural interval extensions for Selberg/Vaaler receiver and combined
+  H/S atoms still missing; profile coefficients and centers are still
+  floating pilot data)`, and
+  `FATAL(treating receiver sampled ranges or floating-profile intervals as
+  Lean proof-grade enclosures)`.

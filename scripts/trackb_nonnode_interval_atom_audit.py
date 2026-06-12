@@ -9,9 +9,10 @@ certificate must prove:
 
   E_delta^(j), F_v^(j), H_v^(j), S_v^(j).
 
-The current ranges are directed-rounded sampled ranges.  They are useful for
-checking the atom contract and slack budget, but they are not a replacement
-for interval extension of the Selberg/Vaaler receiver and B-spline profile.
+The receiver and combined H/S ranges are still directed-rounded sampled
+ranges.  The packet-profile F ranges additionally include a natural
+Cox-de-Boor-style centered-B-spline interval extension over the same raw-a
+interval.
 
 All coordinates are raw-log coordinates: a = r * log(p).
 """
@@ -28,12 +29,59 @@ import numpy as np
 import trackb_edge_operator_probe as probe
 
 
+Interval = tuple[float, float]
+BSPLINE_INTERVAL_PAD = 1e-12
+
+
 def out_down(x: float) -> float:
     return float(math.nextafter(float(x), -math.inf))
 
 
 def out_up(x: float) -> float:
     return float(math.nextafter(float(x), math.inf))
+
+
+def iv_make(lo: float, hi: float | None = None) -> Interval:
+    if hi is None:
+        hi = lo
+    lo_f = float(lo)
+    hi_f = float(hi)
+    if lo_f <= hi_f:
+        return (out_down(lo_f), out_up(hi_f))
+    return (out_down(hi_f), out_up(lo_f))
+
+
+def iv_add(x: Interval, y: Interval) -> Interval:
+    return (out_down(x[0] + y[0]), out_up(x[1] + y[1]))
+
+
+def iv_sub(x: Interval, y: Interval) -> Interval:
+    return (out_down(x[0] - y[1]), out_up(x[1] - y[0]))
+
+
+def iv_neg(x: Interval) -> Interval:
+    return (out_down(-x[1]), out_up(-x[0]))
+
+
+def iv_scale(c: float, x: Interval) -> Interval:
+    c_f = float(c)
+    if c_f >= 0.0:
+        return (out_down(c_f * x[0]), out_up(c_f * x[1]))
+    return (out_down(c_f * x[1]), out_up(c_f * x[0]))
+
+
+def iv_mul(x: Interval, y: Interval) -> Interval:
+    products = [x[0] * y[0], x[0] * y[1], x[1] * y[0], x[1] * y[1]]
+    return (out_down(min(products)), out_up(max(products)))
+
+
+def iv_pad(x: Interval, pad: float = BSPLINE_INTERVAL_PAD) -> Interval:
+    pad_f = abs(float(pad))
+    return (out_down(x[0] - pad_f), out_up(x[1] + pad_f))
+
+
+def iv_width(x: Interval) -> float:
+    return out_up(x[1] - x[0])
 
 
 def directed_range(values: np.ndarray) -> dict[str, Any]:
@@ -59,6 +107,189 @@ def abs_lower_from_endpoint_values(left: float, right: float) -> float:
 def abs_upper_from_endpoint_values(left: float, right: float) -> float:
     upper = max(abs(float(left)), abs(float(right)))
     return out_up(upper)
+
+
+def centered_bspline_interval(deg: int, x: Interval) -> Interval:
+    """Natural interval extension of the centered cardinal B-spline recursion.
+
+    This avoids the large cancellation of the alternating positive-part power
+    formula used for point evaluation in the Step13 pilot.
+    """
+    if deg < 0:
+        raise ValueError("degree must be nonnegative")
+    support_radius = 0.5 * (deg + 1)
+    if x[1] < -support_radius or x[0] > support_radius:
+        return (0.0, 0.0)
+    if deg == 0:
+        if x[1] < -0.5 or x[0] > 0.5:
+            return (0.0, 0.0)
+        if -0.5 <= x[0] and x[1] <= 0.5:
+            return iv_pad((1.0, 1.0))
+        return iv_pad((0.0, 1.0))
+
+    half_width = 0.5 * (deg + 1)
+    left_coeff = iv_scale(1.0 / float(deg), iv_add(x, iv_make(half_width)))
+    right_coeff = iv_scale(1.0 / float(deg), iv_sub(iv_make(half_width), x))
+    left = centered_bspline_interval(deg - 1, iv_add(x, iv_make(0.5)))
+    right = centered_bspline_interval(deg - 1, iv_sub(x, iv_make(0.5)))
+    return iv_pad(iv_add(iv_mul(left_coeff, left), iv_mul(right_coeff, right)))
+
+
+def centered_bspline_derivative_interval(deg: int, x: Interval) -> Interval:
+    if deg <= 0:
+        return (0.0, 0.0)
+    return iv_sub(
+        centered_bspline_interval(deg - 1, iv_add(x, iv_make(0.5))),
+        centered_bspline_interval(deg - 1, iv_sub(x, iv_make(0.5))),
+    )
+
+
+def centered_bspline_second_derivative_interval(deg: int, x: Interval) -> Interval:
+    if deg <= 1:
+        return (0.0, 0.0)
+    return iv_add(
+        iv_sub(
+            centered_bspline_interval(deg - 2, iv_add(x, iv_make(1.0))),
+            iv_scale(2.0, centered_bspline_interval(deg - 2, x)),
+        ),
+        centered_bspline_interval(deg - 2, iv_sub(x, iv_make(1.0))),
+    )
+
+
+def centered_bspline_third_derivative_interval(deg: int, x: Interval) -> Interval:
+    if deg <= 2:
+        return (0.0, 0.0)
+    return iv_add(
+        iv_add(
+            centered_bspline_interval(deg - 3, iv_add(x, iv_make(1.5))),
+            iv_scale(-3.0, centered_bspline_interval(deg - 3, iv_add(x, iv_make(0.5)))),
+        ),
+        iv_add(
+            iv_scale(3.0, centered_bspline_interval(deg - 3, iv_sub(x, iv_make(0.5)))),
+            iv_scale(-1.0, centered_bspline_interval(deg - 3, iv_sub(x, iv_make(1.5)))),
+        ),
+    )
+
+
+def r_corr_derivative_interval(packet: Any, order: int, x: Interval) -> Interval:
+    deg = 2 * int(packet.k_spline) + 1
+    y = iv_scale(float(packet.s_k), x)
+    if order == 0:
+        base = centered_bspline_interval(deg, y)
+    elif order == 1:
+        base = centered_bspline_derivative_interval(deg, y)
+    elif order == 2:
+        base = centered_bspline_second_derivative_interval(deg, y)
+    elif order == 3:
+        base = centered_bspline_third_derivative_interval(deg, y)
+    else:
+        raise ValueError("only derivative orders 0..3 are supported")
+    return iv_scale((float(packet.s_k) ** order) / float(packet.c_k), base)
+
+
+def shifted_packet_matrix_entry_interval(
+    packet: Any,
+    *,
+    D_value: float,
+    ell: float,
+    a_interval: Interval,
+    order: int,
+) -> Interval:
+    ell_f = float(ell)
+    x_minus = iv_scale(1.0 / ell_f, iv_sub(iv_make(float(D_value)), a_interval))
+    x_plus = iv_scale(1.0 / ell_f, iv_add(iv_make(float(D_value)), a_interval))
+    if order == 0:
+        return iv_add(
+            r_corr_derivative_interval(packet, 0, x_minus),
+            r_corr_derivative_interval(packet, 0, x_plus),
+        )
+    if order == 1:
+        return iv_scale(
+            1.0 / ell_f,
+            iv_add(
+                iv_neg(r_corr_derivative_interval(packet, 1, x_minus)),
+                r_corr_derivative_interval(packet, 1, x_plus),
+            ),
+        )
+    if order == 2:
+        return iv_scale(
+            1.0 / (ell_f**2),
+            iv_add(
+                r_corr_derivative_interval(packet, 2, x_minus),
+                r_corr_derivative_interval(packet, 2, x_plus),
+            ),
+        )
+    if order == 3:
+        return iv_scale(
+            1.0 / (ell_f**3),
+            iv_add(
+                iv_neg(r_corr_derivative_interval(packet, 3, x_minus)),
+                r_corr_derivative_interval(packet, 3, x_plus),
+            ),
+        )
+    raise ValueError("only derivative orders 0..3 are supported")
+
+
+def packet_profile_interval_range(
+    *,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a_interval: Interval,
+    order: int,
+) -> dict[str, Any]:
+    total = (0.0, 0.0)
+    nonzero_entries = 0
+    max_entry_width = 0.0
+    for i in range(D.shape[0]):
+        ci = float(coeffs[i])
+        if ci == 0.0:
+            continue
+        for j in range(D.shape[1]):
+            cj = float(coeffs[j])
+            coeff = ci * cj
+            if coeff == 0.0:
+                continue
+            entry = shifted_packet_matrix_entry_interval(
+                packet,
+                D_value=float(D[i, j]),
+                ell=float(ell),
+                a_interval=a_interval,
+                order=order,
+            )
+            if entry == (0.0, 0.0):
+                continue
+            nonzero_entries += 1
+            max_entry_width = max(max_entry_width, iv_width(entry))
+            total = iv_add(total, iv_scale(coeff, entry))
+    return {
+        "lo": total[0],
+        "hi": total[1],
+        "max_abs": out_up(max(abs(total[0]), abs(total[1]))),
+        "width": iv_width(total),
+        "nonzero_matrix_entries": int(nonzero_entries),
+        "max_entry_width": out_up(max_entry_width),
+    }
+
+
+def range_contains(container: dict[str, Any], sample: dict[str, Any]) -> bool:
+    if container["lo"] is None or container["hi"] is None:
+        return False
+    if sample["lo"] is None or sample["hi"] is None:
+        return False
+    return float(container["lo"]) <= float(sample["lo"]) and float(sample["hi"]) <= float(container["hi"])
+
+
+def width_ratio(container: dict[str, Any], sample: dict[str, Any]) -> float | None:
+    if container["lo"] is None or container["hi"] is None:
+        return None
+    if sample["lo"] is None or sample["hi"] is None:
+        return None
+    sample_width = float(sample["hi"]) - float(sample["lo"])
+    if sample_width <= 0.0:
+        return None
+    return out_up((float(container["hi"]) - float(container["lo"])) / sample_width)
 
 
 def selected_opnorm_context(
@@ -237,6 +468,31 @@ def run(args: argparse.Namespace) -> list[dict[str, Any]]:
                 a_grid=a_grid,
             )
             ranges = {name: directed_range(values) for name, values in samples.items()}
+            a_interval = iv_make(a_lo, a_hi)
+            profile_intervals = {
+                f"F{order}": packet_profile_interval_range(
+                    packet=ctx["packet"],
+                    D=ctx["D"],
+                    ell=float(ctx["params"].ell),
+                    coeffs=ctx["coeffs"],
+                    a_interval=a_interval,
+                    order=order,
+                )
+                for order in range(4)
+            }
+            profile_interval_comparison = {
+                name: {
+                    "contains_directed_sample_range": range_contains(interval, ranges[name]),
+                    "interval_width_over_sample_width": width_ratio(interval, ranges[name]),
+                    "interval_width": interval["width"],
+                    "sample_width": None
+                    if ranges[name]["lo"] is None or ranges[name]["hi"] is None
+                    else out_up(float(ranges[name]["hi"]) - float(ranges[name]["lo"])),
+                    "nonzero_matrix_entries": interval["nonzero_matrix_entries"],
+                    "max_entry_width": interval["max_entry_width"],
+                }
+                for name, interval in profile_intervals.items()
+            }
             width = out_up(a_hi - a_lo)
             endpoint_abs_S_lower = abs_lower_from_endpoint_values(
                 float(samples["S0"][0]),
@@ -295,18 +551,27 @@ def run(args: argparse.Namespace) -> list[dict[str, Any]]:
                     "correction_eig_min": float(ctx["correction_eig_min"]),
                     "correction_eig_max": float(ctx["correction_eig_max"]),
                     "atom_ranges": ranges,
+                    "profile_interval_kind": (
+                        "natural_centered_b_spline_interval_with_float_coefficients"
+                    ),
+                    "profile_interval_method": "centered_cardinal_b_spline_cox_de_boor_recursion",
+                    "profile_interval_rounding_pad": BSPLINE_INTERVAL_PAD,
+                    "profile_interval_ranges": profile_intervals,
+                    "profile_interval_comparison": profile_interval_comparison,
                     "mesh_guards": guards,
                     "receiver_node_audit": node_audit,
                     "proof_status": (
-                        "diagnostic_only: fields are the future interval atoms, "
-                        "but ranges are directed-rounded sampled ranges rather "
-                        "than natural interval extensions of Vaaler/polygamma "
-                        "and B-spline formulas"
+                        "diagnostic_only: F_v profile atoms now have a natural "
+                        "centered-B-spline interval extension over the selected "
+                        "raw-a interval, but receiver E_delta and combined H/S "
+                        "ranges are still directed-rounded sampled ranges; "
+                        "profile coefficients and centers are current floating "
+                        "pilot data, not rational Lean certificate data"
                     ),
                     "next_certificate_contract": (
-                        "replace each sampled range E_delta^(j), F_v^(j), "
-                        "H_v^(j), S_v^(j) by an outward-rounded interval "
-                        "extension over the same raw-a mesh interval"
+                        "replace E_delta^(j), H_v^(j), S_v^(j) by natural "
+                        "outward-rounded interval extensions and rationalize "
+                        "the current floating packet-profile coefficients/centers"
                     ),
                     "D2": (
                         "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), "

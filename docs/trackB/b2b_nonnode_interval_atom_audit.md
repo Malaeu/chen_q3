@@ -39,6 +39,11 @@ All intervals below are raw `a` intervals.
 - `UNCONDITIONAL / proof-engine style only`: directed floating-point
   neighboring by `math.nextafter`.
   Source: https://docs.python.org/3/library/math.html#math.nextafter
+- `UNCONDITIONAL / local object definition`: centered cardinal B-spline packet
+  profile from `q3.lean.aristotle/scripts/q3_psdpd_step13_pilot.py`, evaluated
+  by the standard Cox-de-Boor centered recursion to avoid interval
+  cancellation in the alternating positive-part formula.
+  Reference check: https://en.wikipedia.org/wiki/B-spline
 
 Not used:
 
@@ -117,7 +122,8 @@ scripts/trackb_nonnode_interval_atom_audit.py
 ```
 
 It reuses the `clvsigncert` opnorm direction and emits the atom ranges for a
-single mesh interval.  The current output kind is intentionally explicit:
+single mesh interval.  The current sampled output kind is intentionally
+explicit:
 
 ```text
 interval_kind = directed_rounded_sample_ranges_not_proof_grade
@@ -126,6 +132,21 @@ interval_kind = directed_rounded_sample_ranges_not_proof_grade
 That means the script is a scaffold for the proof-producing generator.  It is
 not yet a natural interval extension of the Selberg/Vaaler and B-spline
 formulas.
+
+Follow-up update: the script now also emits a natural interval extension for
+the packet-profile atoms `F_v^(j)`:
+
+```text
+profile_interval_kind =
+  natural_centered_b_spline_interval_with_float_coefficients
+profile_interval_method =
+  centered_cardinal_b_spline_cox_de_boor_recursion
+profile_interval_rounding_pad = 1e-12
+```
+
+This removes the sampled-only status from the `F_v` half of the atom stack.
+It is still not a Lean certificate because the current profile coefficients
+and grid centers are floating pilot data.
 
 ## K=3.5 Cell 58 Mesh-0 Run
 
@@ -207,42 +228,106 @@ This is still diagnostic only.  It is useful because it says the micro-atom is
 numerically stable and the future interval extension should not need an
 aggressive mesh refinement at this interval.
 
+## Profile Natural Interval Extension
+
+Run:
+
+```text
+.venv/bin/python scripts/trackb_nonnode_interval_atom_audit.py \
+  --K 3.5 --ell 1.375 --schedule fixed --receiver-delta 1 \
+  --p0-na 401 --ledger-cells 120 --cert-na 801 \
+  --cell 58 --mesh-index 0 --atom-samples 65 \
+  --curvature-factors 10000
+```
+
+Profile interval results:
+
+```text
+F0 interval:
+  [-0.4836943690700886, -0.4297032359816557]
+  width: ~0.053991133088432904
+  width / sampled width: ~77.92065288323721
+  contains sampled range: true
+
+F1 interval:
+  [4.724122675759641, 4.951266391331951]
+  width: ~0.22714371557231064
+  width / sampled width: ~95.8707931092394
+  contains sampled range: true
+
+F2 interval:
+  [16.065928439553154, 17.01769190483454]
+  width: ~0.9517634652813848
+  width / sampled width: ~41.3931534392018
+  contains sampled range: true
+
+F3 interval:
+  [-162.51851749057516, -158.55105547638678]
+  width: ~3.9674620141883854
+  width / sampled width: ~45.69407790205535
+  contains sampled range: true
+```
+
+Interpretation:
+
+- The direct B-spline profile atom is now a real interval extension of the
+  centered-cardinal recursion over the selected raw-a interval.
+- The interval is wider than the sampled range by factors `~41` to `~96`,
+  but it is no longer catastrophic.  The previous naive alternating
+  positive-part interval expansion showed cancellation blowup and was not the
+  right proof-generator primitive.
+- The remaining hard interval atoms are the Selberg/Vaaler receiver
+  `E_delta^(j)` and the combined product-rule atoms `H_v^(j)`, `S_v^(j)`.
+
+Point sanity:
+
+```text
+centered B-spline degrees tested: 0, 1, 2, 5, 8, 11
+comparison target: Step13 point evaluator
+result: all tested point values contained after the explicit 1e-12 pad
+```
+
 ## Verdict
 
-`PARTIAL(atom-level certificate contract emitted for K=3.5 cell 58 mesh 0)`.
+`PARTIAL(profile natural interval extension installed for K=3.5 cell 58 mesh 0)`.
 
-`GAP(natural interval extensions for Selberg/Vaaler receiver and B-spline
-profile atoms still missing)`.
+`GAP(natural interval extensions for Selberg/Vaaler receiver and combined H/S
+atoms still missing; profile coefficients and centers are still floating pilot
+data)`.
 
-`FATAL(treating directed sampled ranges as proof-grade interval enclosures)`.
+`FATAL(treating receiver sampled ranges or floating-profile intervals as
+Lean proof-grade enclosures)`.
 
 Track B remains active.
 
 ## Proshka Audit Block
 
 Claim:
-The first non-node theorem target can now be expressed as an atom-level
-certificate over one raw-a mesh interval: `E_delta^(j)`, `F_v^(j)`,
-`H_v^(j)`, and `S_v^(j)` for `j <= 3` / `j <= 2` as appropriate.
+The first non-node theorem target now has a profile-side natural interval
+extension for `F_v^(j)`, `j<=3`, over one raw-a mesh interval.
 
 Point of blockage:
-The current script emits directed-rounded sampled ranges.  It does not yet
-evaluate the Vaaler/polygamma receiver and B-spline profile by natural
-outward-rounded interval extension.
+The current script still emits directed-rounded sampled ranges for the
+Selberg/Vaaler receiver and combined product-rule atoms.  The profile
+intervals are also over floating pilot data, not rational Lean certificate
+data.
 
 What was tried:
 Added `scripts/trackb_nonnode_interval_atom_audit.py`, reused the
 `clvsigncert` opnorm direction, and checked K=3.5 cell `58`, mesh interval
-`0`, with `atom_samples` up to `257`.
+`0`, with `atom_samples` up to `257`.  Then replaced the profile interval
+primitive by a centered-cardinal B-spline recursion interval with a `1e-12`
+rounding pad.
 
 Minimal example:
 K=3.5 cell `58`, mesh interval
 `[6.645833333333817, 6.645976562500484]` has
-`S0=[0.06743528530196136,0.06754419551924461]` and factor-10000 guard
-`~0.06734041094813385` under the directed sampled atom scaffold.
+`F0` profile interval
+`[-0.4836943690700886, -0.4297032359816557]`, containing the sampled
+`F0` range `[-0.45704510276491067, -0.4563522038852088]`.
 
 Question for Proshka:
-Should the proof-producing generator first intervalize the receiver atom
-`E_delta^(j)` and profile atom `F_v^(j)` separately, then combine them into
-`H/S`, or directly intervalize the full product-rule expression for `S_v`,
+Should the proof-producing generator now intervalize `E_delta^(j)` separately
+and combine it with these profile intervals into `H/S`, or should it switch
+to a single direct interval for the full product-rule expression for `S_v`,
 `S_v'`, and `S_v''`?
