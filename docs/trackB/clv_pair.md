@@ -258,6 +258,17 @@ for `K=2` was not located in the repo during this pass.
 
 ## D2 Guardrails for B2
 
+Preflight gate before any B2a work:
+
+```text
+docs/trackB/b2_uncertainty_tax_preflight.md
+```
+
+That gate records the unavoidable Selberg/Vaaler hard-edge tax
+`>= 1/B_K` once the cone receiver has Fourier slack `B_K`.  Therefore a naive
+route of the form "CLV majorant times ||g||_infty" is `FATAL` whenever the
+mu-ledger asks for `epsilon_K = o(1/B_K)`.
+
 The D2 object is the exact explicit-formula split:
 
 ```text
@@ -314,6 +325,9 @@ What is ready:
 
 Open gates before claiming B1 complete:
 
+0. Run the B2-0 uncertainty-tax preflight in
+   `docs/trackB/b2_uncertainty_tax_preflight.md`; if the mu-ledger target is
+   `o(1/B_K)`, do not pursue naive B2a.
 1. Locate or generate the measured Q3 cross-correlation edge defect for
    `K=2`, then compare it to the corresponding CLV/Selberg bound.
 2. Freeze whether the edge interval is expressed in raw `log n` or in Q3

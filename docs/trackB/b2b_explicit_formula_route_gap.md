@@ -99,6 +99,22 @@ from `docs/trackB/k2_sanity_gap.md`.
 
 ## Why Plain B2a Is Blocked
 
+The pre-B2 uncertainty gate is now explicit:
+
+```text
+docs/trackB/b2_uncertainty_tax_preflight.md
+```
+
+It gives a stronger reason to avoid naive B2a: hard Selberg/Vaaler
+majorants/minorants of `[2K,4K]` pay at least `1/B_K` after imposing the
+actual Fourier slack `B_K`.  Therefore the route
+
+```text
+CLV majorant * ||g||_infty
+```
+
+is `FATAL` whenever the mu-ledger requires `epsilon_K = o(1/B_K)`.
+
 The pointwise split
 
 ```text

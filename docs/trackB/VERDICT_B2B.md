@@ -18,6 +18,17 @@ tested finite packet cone directions, but the smoothed zero-side proxy is not
 nonnegative on all tested directions.  The failure is not an arithmetic
 decomposition defect; it is an eligibility/PSD-slot defect.
 
+Pre-B2 route gate:
+
+```text
+docs/trackB/b2_uncertainty_tax_preflight.md
+```
+
+That gate kills naive B2a in the form "CLV majorant times ||g||_infty" whenever
+the mu-ledger requires `epsilon_K = o(1/B_K)`.  It does not kill B2b; it is one
+more reason B2b must preserve Hermitian-square / zero-side PSD structure
+instead of paying the hard-edge scalar-mask tax.
+
 ## D2
 
 Raw coordinate:

@@ -33177,3 +33177,21 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   This is not a decomposition arithmetic bug; it is a PSD-slot eligibility
   gap for the naive smoothed receiver route.  See
   `docs/trackB/VERDICT_B2B.md`.
+
+## Insight (2026-06-13, Track B B2) -- UncertaintyTaxPreflight
+
+- Added `docs/trackB/b2_uncertainty_tax_preflight.md` as the mandatory B2-0
+  route gate before spending time on naive B2a.
+- `UNCONDITIONAL` Selberg/Vaaler interval extremal theorem gives
+  `int(M^+ - 1_[2K,4K]) >= 1/delta` for any bandlimited majorant with
+  `supp(hat M^+) subset [-delta,delta]`; similarly for the minorant.  Sources
+  are the already-recorded Vaaler and Le--Vaaler references in
+  `docs/trackB/clv_pair.md`.
+- If the actual cone receiver Fourier slack is `B_K`, then `delta <= B_K`
+  forces a hard-edge tax `>= 1/B_K`.  In prime-weighted normalization on
+  `[2K,4K]`, the naive scalar-mask route still pays `>= c/B_K`.
+- Route verdict: `FATAL(B2a naive CLV majorant times ||g||_infty)` whenever
+  the mu-ledger requires `epsilon_K = o(1/B_K)`.  This does not kill B2b:
+  the explicit-formula / Hermitian-square route remains `OPEN` because it
+  preserves the zero-side PSD and cone structure rather than replacing the
+  defect by an absolute-value scalar mask.

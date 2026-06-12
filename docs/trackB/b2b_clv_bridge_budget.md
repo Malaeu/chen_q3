@@ -4,6 +4,11 @@ Status: B2/B3 diagnostic.  This is not a proof certificate and does not close
 E5'.  It takes the bridge gap from
 `docs/trackB/b2b_clv_receiver_probe.md` and turns it into an explicit budget:
 
+Preflight route warning: `docs/trackB/b2_uncertainty_tax_preflight.md` records
+the hard Selberg/Vaaler uncertainty tax `>=1/B_K`.  The present note is the
+finite-packet numerical counterpart: the scalar bridge also fails on the
+current stable packet family.
+
 ```text
 P(edge) <= P(M^+) + R_K(delta) * G
 ```

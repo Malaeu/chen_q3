@@ -58,3 +58,15 @@ Hermitian-square directions in `ker Q`.
 ВЕРДИКТ: DONE=B, `B2B_GATE_NOT_GREEN_ZERO_PSD_PROXY`; not a decomposition
 arithmetic bug, but a PSD-slot eligibility gap.
 ПЛАН: stop per DONE; next decision belongs to Ылша/Fable.
+
+## 2026-06-13 -- B2-0 Uncertainty-Tax Preflight
+
+ГДЕ Я: Track B route triage after Proshka verdict.
+СДЕЛАНО: added `docs/trackB/b2_uncertainty_tax_preflight.md` and linked it
+from `clv_pair.md`, `b2b_explicit_formula_route_gap.md`, and `VERDICT_B2B.md`.
+ЧИСЛА: hard Selberg/Vaaler edge majorant/minorant pays `>=1/delta`; with
+receiver Fourier slack `delta<=B_K`, naive CLV tax is `>=1/B_K`.
+ПРОБЛЕМА: route `CLV majorant * ||g||_infty` drops cone structure and cannot
+beat `1/B_K` without an extra named decay/cancellation theorem.
+ВЕРДИКТ: `FATAL(B2a naive scalar mask if mu_budget=o(1/B_K))`; `OPEN(B2b)`.
+ПЛАН: keep Track B centered on B2b / explicit-formula / Hermitian-square.
