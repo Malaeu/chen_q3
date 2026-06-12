@@ -20,3 +20,15 @@ smoothed-edge pre-flight (`~10 min` before any long run).
 КОНТРОЛЬ: at `a_w`, ordinary-only, `p=2`-only, no-right-edge, and no-local-window variants are positive.
 ВЕРДИКТ: `ZERO_CONSISTENT(a_local_first_crossing_edge_primes_confirmed)`.
 ПЛАН: N2 diagnostic smoothing is allowed, but must carry this witness card.
+
+## 2026-06-12 -- S1 Addendum Level 3 Stop
+
+ГДЕ Я: Track B v5 S1-addendum, point `a_min=7.28`.
+СДЕЛАНО: controls + float guard; `WITNESS_cell62.md` written.
+ЧИСЛА: full `S=-0.021217`; ordinary-only `-0.019003`, `p=2` `-0.003082`,
+no-right-edge `-0.002189`, no-local-window `-0.003036`.
+ПРОБЛЕМА: negativity persists under all four controls at the minimum; not
+float cancellation (`decimal30` diff `<1e-17`).
+ПЛАН (+стоимость): STOP per v5 Level 3; do not start S2.
+ВОПРОС Ылше/Fable: controls should reselect opnorm direction, or freeze the
+full witness direction for prime-removal tests? yes=reselect / no=freeze.

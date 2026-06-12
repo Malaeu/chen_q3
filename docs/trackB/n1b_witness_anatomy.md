@@ -1,7 +1,12 @@
 # Track B N1b: Witness Anatomy
 
-Status: ZERO_CONSISTENT / diagnostic only.  This is not a proof of E5', not
-a Lean proof, and not a route mutation.
+Status: ZERO_CONSISTENT(first crossing only) / superseded by v5 addendum.
+This is not a proof of E5', not a Lean proof, and not a route mutation.
+
+Update: Track B v5 addendum found a second pathology at the sampled minimum
+`a=7.28`.  The active witness card is now
+`docs/trackB/WITNESS_cell62.md`; do not use this older first-crossing card as
+permission to start S2.
 
 ## Target
 

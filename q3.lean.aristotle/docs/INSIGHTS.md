@@ -33108,3 +33108,28 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `ZERO_CONSISTENT(a_local_first_crossing_edge_primes_confirmed)`,
   `PARTIAL(witness portrait ready for N2 diagnostics)`, and
   `FATAL(treating this sampled anatomy as an E5' proof certificate)`.
+
+## Insight (2026-06-12, Track B B2b) -- S1AddendumLevel3Stop
+
+- Track B v5 addendum required repeating the four nature controls at the
+  sampled minimum `a=7.28`, not only at the first crossing
+  `a=7.130987044271352`.
+- Result at `a=7.28`: full `S ~= -0.0212171`, ordinary-primes-only
+  `~=-0.0190030`, literal `p=2` only `~=-0.00308213`,
+  excluding `log n > a-0.5` `~=-0.00218879`, and excluding
+  `[a-delta,a+delta]` `~=-0.00303605`.
+- The four-slot diagnostic at `a=7.28` is smooth-receiver/arch proxy
+  `~=-0.167043`, pointwise zero-PSD slot `0`, hard-edge slot `~=+0.145826`,
+  boundary jump slot `0`; the residual is about `6.78%` of the two main
+  component absolute sum.
+- Float guard is clean: `.venv` and system Python lack `mpmath`, `.venv`
+  lacks `pip`, so `decimal` precision `30` recombined the float64 analytic
+  atoms.  Differences from centered float64 are `<1e-17` at both
+  `a=7.130987044271352` and `a=7.28`.
+- Added `docs/trackB/WITNESS_cell62.md`.  Status:
+  `REFUTED(addendum prediction: minimum negativity disappears without edge
+  primes)`, `GAP(second pathology at sampled minimum under reselected-opnorm
+  controls)`, and `ZERO_CONSISTENT(float cancellation not responsible)`.
+- Per v5 Level 3, S2 must not start until Ylsha/Fable chooses whether nature
+  controls should reselect opnorm directions or freeze the full witness
+  direction for prime-removal tests.
