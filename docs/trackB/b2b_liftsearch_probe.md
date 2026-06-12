@@ -233,6 +233,130 @@ Surviving next moves:
 3. Ask Proshka for a cost-controlled admissible-lift theorem shape that avoids
    the zero self-correlation tax.
 
+## Signed/Multi-Packet Autocorrelation Probe
+
+The next test keeps the same unconditional positive-definite mechanism but
+allows signs inside the packet before autocorrelation.  A basis atom has the
+form
+
+```text
+L(a) = sum_{i,j} alpha_i alpha_j G_s(a-(t_i-t_j)).
+```
+
+This is `UNCONDITIONAL` positive-definite: its Fourier transform is a positive
+Gaussian factor times
+
+```text
+|sum_j alpha_j exp(-2*pi*i*u*t_j)|^2.
+```
+
+The implemented finite family uses triplets
+
+```text
+(t_0,t_1,t_2) = (0,c/2,c)
+```
+
+with the following patterns:
+
+```text
+triplet_plus_raw       = (1,  1,    1)
+triplet_soft_notch_l2  = l2-normalized (1, -0.25, 1)
+triplet_notch_l2       = l2-normalized (1, -0.5,  1)
+triplet_alt_l2         = l2-normalized (1, -1,    1)
+triplet_second_diff_l2 = l2-normalized (1, -2,    1)
+```
+
+Command:
+
+```bash
+.venv/bin/python scripts/trackb_edge_operator_probe.py liftsearch \
+  --lift-family signed-triplet \
+  --K 2 --num-centers 9 \
+  --widths 0.35 0.5 0.75 1.0 1.5 2.0 3.0 4.0 \
+  --coeff-budget 10 --coeff-bound 10 \
+  --tol 1e-7 --p0-na 1001
+```
+
+Prime-only dominance:
+
+```text
+signed-triplet:
+  basis_count = 360
+  eta         = 0.010678615099582397
+  gamma       = 4.559110446465757
+
+two-point baseline:
+  basis_count = 72
+  eta         = 0.007718167761385715
+  gamma       = 5.267566976647217
+```
+
+The signed family is slightly worse on pure prime dominance but lowers the
+continuum/arch proxy cost by about `13%`.
+
+Cost-controlled checks:
+
+```text
+signed-triplet, cost_weight=0.5:
+  eta   = 0.11595741532417321
+  gamma = 1.1502671927558392
+
+signed-triplet, gamma <= 2.0:
+  eta   = 0.029163236795078755
+  gamma = 2.0
+
+signed-triplet, gamma <= 0.4416718761:
+  eta   = 0.8844308083281898
+  gamma = 0.4416718761
+```
+
+For comparison, the two-point family had
+
+```text
+gamma <= 2.0:          eta = 0.3874752228956056
+gamma <= 0.4416718761: eta = 1.7101952677636467
+```
+
+So signed/multi-packet atoms materially improve the Pareto curve, especially
+under a cost cap, but still do not close the E5' ledger at the measured edge
+scale.
+
+The combined dictionary `--lift-family all` was also tested:
+
+```text
+all, cost_weight=0.5:
+  eta   = 0.11604176072995512
+  gamma = 1.1114756778205883
+
+all, gamma <= 0.4416718761:
+  eta   = 0.8574452002672178
+  gamma = 0.4416718761
+```
+
+This gives only a marginal improvement over signed-triplet alone under the
+tight cap.
+
+## Signed-Packet Verdict
+
+`PARTIAL(signed/multi-packet autocorrelation improves the cost wall)`.
+
+But it is not an E5' closure:
+
+```text
+B2-GAP(stronger cost-controlled admissible lift or finite-op tail certificate)
+```
+
+Interpretation:
+
+- The cost wall was partly a basis-family issue: signed convolution-square
+  atoms reduce `eta` dramatically under `gamma` caps.
+- The wall is not gone: the tight ledger-scale cap still leaves
+  `eta≈0.86-0.88`, far above the needed `eta<=0` or small
+  `epsilon_K^{CLV}` closure.
+- This suggests the next useful mathematical trick is not another small scalar
+  atom list, but either a theorem-level cost-controlled lift construction or a
+  `FINITE-OP + CLV-tail` decomposition.
+
 ## Proshka Update
 
 Claim:
@@ -259,3 +383,25 @@ Minimal example:
 grid `delta=0.5`, `k_spline=5`, two-point Gaussian autocorrelation dictionary
 with `72` basis functions.  Budget `10` gives `eta≈0.0077`, but
 `gamma≈5.27`; forcing `gamma≈0.4417` raises `eta≈1.71`.
+
+Update after signed/multi-packet probe:
+Using signed triplet autocorrelation atoms (still unconditional
+positive-definite convolution squares) improves the cost-controlled tradeoff
+but does not close it.  With `360` signed-triplet atoms:
+
+```text
+gamma<=2.0          gives eta≈0.0292,
+gamma<=0.4416718761 gives eta≈0.8844.
+```
+
+Combined old+new dictionary gives only marginal extra help:
+
+```text
+gamma<=0.4416718761 gives eta≈0.8574.
+```
+
+Question for Proshka:
+Is there a theorem-shape for a cost-controlled admissible lift that cancels the
+continuum/arch proxy at the operator level, or should B2b switch to a direct
+finite-operator certificate for the compact edge plus CLV only for tail and
+continuum control?

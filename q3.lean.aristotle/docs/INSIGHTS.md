@@ -32148,3 +32148,22 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   signed/multi-packet convolution-square lift that avoids the zero
   self-correlation cost, or a direct `FINITE-OP` certificate with CLV only for
   tail/continuum control.
+
+## Insight (2026-06-12, Track B B2b) -- SignedPacketLiftPartial
+
+- Extended `scripts/trackb_edge_operator_probe.py liftsearch` with
+  `--lift-family signed-triplet|all`; the new atoms are signed Gaussian packet
+  autocorrelations, hence `UNCONDITIONAL` positive-definite by the square
+  modulus of their Fourier transform.
+- The old two-point default is unchanged and still reproduces the baseline
+  `K=2` numbers: `eta≈0.007718`, `gamma≈5.2676`.
+- Signed triplets materially improve the cost-controlled Pareto curve:
+  `gamma<=2.0` gives `eta≈0.0292` instead of the old `0.3875`; tight cap
+  `gamma<=0.4416718761` gives `eta≈0.8844` instead of `1.7102`.
+- The combined dictionary gives only a marginal extra tight-cap improvement
+  (`eta≈0.8574`), so a small scalar autocorrelation dictionary still does not
+  close E5'.
+- Status remains
+  `B2-GAP(stronger cost-controlled admissible lift or finite-op tail certificate)`.
+  Proshka question: find a theorem-shape that cancels the arch/continuum proxy
+  at operator level, or authorize switching B2b to `FINITE-OP + CLV-tail`.

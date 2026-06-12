@@ -9,6 +9,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   lowband   mass captured by the Selberg-positive ultra-low band
   gaussian  finite-packet failure of the naive PSD Gaussian majorant
   liftsearch finite operator-majorant search for positive-definite lifts
+             (two-point or signed/multi-packet autocorrelation dictionaries)
 
 All coordinates below are raw-log coordinates: a = r * log(p).
 """
@@ -339,6 +340,12 @@ def run_gaussian(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def gaussian_bump(a: float, *, width: float) -> float:
+    if width <= 0:
+        raise ValueError("width must be positive")
+    return math.exp(-math.pi * (a / width) ** 2)
+
+
 def two_point_gaussian_lift_value(a: float, *, center: float, width: float) -> float:
     """Autocorrelation of two equal Gaussian packets separated by `center`.
 
@@ -347,13 +354,122 @@ def two_point_gaussian_lift_value(a: float, *, center: float, width: float) -> f
 
     It is a positive-definite even function because it is an autocorrelation.
     """
-    if width <= 0:
-        raise ValueError("width must be positive")
+    return (
+        2.0 * gaussian_bump(a, width=width)
+        + gaussian_bump(a - center, width=width)
+        + gaussian_bump(a + center, width=width)
+    )
 
-    def g(x: float) -> float:
-        return math.exp(-math.pi * (x / width) ** 2)
 
-    return 2.0 * g(a) + g(a - center) + g(a + center)
+def signed_packet_gaussian_lift_value(
+    a: float,
+    *,
+    positions: list[float],
+    coefficients: list[float],
+    width: float,
+) -> float:
+    """Autocorrelation of a signed Gaussian packet.
+
+    The Fourier transform is a positive Gaussian factor times
+      |sum_j coefficients[j] * exp(-2*pi*i*u*positions[j])|^2,
+    so every generated scalar lift is positive-definite.  The lift may be
+    pointwise signed in raw-log space; that is the point of this B2b probe.
+    """
+    if len(positions) != len(coefficients):
+        raise ValueError("positions and coefficients must have the same length")
+    total = 0.0
+    for ti, ai in zip(positions, coefficients):
+        for tj, aj in zip(positions, coefficients):
+            total += ai * aj * gaussian_bump(a - (ti - tj), width=width)
+    return total
+
+
+def normalized_coefficients(raw: list[float]) -> list[float]:
+    norm = math.sqrt(sum(float(x) * float(x) for x in raw))
+    if norm <= 0.0:
+        raise ValueError("coefficient pattern has zero l2 norm")
+    return [float(x) / norm for x in raw]
+
+
+def signed_triplet_patterns() -> list[tuple[str, list[float], bool]]:
+    """Small signed/multi-packet dictionary for the cost-wall probe.
+
+    The `normalize` flag makes the signed triplets report one unit of diagonal
+    self-correlation; the all-positive triplet is left unnormalized so that the
+    probe also tests whether more adjacent pairs improve the zero-cost ratio.
+    """
+    return [
+        ("triplet_plus_raw", [1.0, 1.0, 1.0], False),
+        ("triplet_soft_notch_l2", [1.0, -0.25, 1.0], True),
+        ("triplet_notch_l2", [1.0, -0.5, 1.0], True),
+        ("triplet_alt_l2", [1.0, -1.0, 1.0], True),
+        ("triplet_second_diff_l2", [1.0, -2.0, 1.0], True),
+    ]
+
+
+def build_lift_basis_specs(
+    *,
+    lift_family: str,
+    centers: list[float],
+    widths: list[float],
+) -> list[dict[str, Any]]:
+    specs: list[dict[str, Any]] = []
+
+    if lift_family in {"two-point", "all"}:
+        for center in centers:
+            for width in widths:
+                specs.append(
+                    {
+                        "family": "two-point",
+                        "center": finite_float(center),
+                        "width": finite_float(width),
+                    }
+                )
+
+    if lift_family in {"signed-triplet", "all"}:
+        patterns = signed_triplet_patterns()
+        for center in centers:
+            positions = [0.0, 0.5 * float(center), float(center)]
+            for width in widths:
+                for label, raw_coeffs, normalize in patterns:
+                    coefficients = (
+                        normalized_coefficients(raw_coeffs) if normalize else list(raw_coeffs)
+                    )
+                    specs.append(
+                        {
+                            "family": "signed-triplet",
+                            "pattern": label,
+                            "center": finite_float(center),
+                            "width": finite_float(width),
+                            "positions": [finite_float(x) for x in positions],
+                            "coefficients": [finite_float(x) for x in coefficients],
+                            "coeff_l2_sq": finite_float(
+                                sum(float(x) * float(x) for x in coefficients)
+                            ),
+                        }
+                    )
+
+    if not specs:
+        raise ValueError(f"unknown or empty lift family: {lift_family}")
+    return specs
+
+
+def lift_spec_value(a: float, spec: dict[str, Any]) -> float:
+    family = spec["family"]
+    if family == "two-point":
+        return two_point_gaussian_lift_value(
+            a,
+            center=float(spec["center"]),
+            width=float(spec["width"]),
+        )
+    if family == "signed-triplet":
+        return signed_packet_gaussian_lift_value(
+            a,
+            positions=[float(x) for x in spec["positions"]],
+            coefficients=[float(x) for x in spec["coefficients"]],
+            width=float(spec["width"]),
+        )
+    raise ValueError(f"unknown lift spec family: {family}")
 
 
 def default_lift_centers(K: float, n: int) -> list[float]:
@@ -627,28 +743,32 @@ def run_liftsearch(args: argparse.Namespace) -> list[dict[str, Any]]:
             or args.gamma_upper is not None
         )
 
-        basis_meta: list[dict[str, float]] = []
+        basis_specs = build_lift_basis_specs(
+            lift_family=args.lift_family,
+            centers=centers,
+            widths=widths,
+        )
+        basis_meta: list[dict[str, Any]] = []
         P_basis: list[np.ndarray] = []
         P0_basis: list[np.ndarray] = []
-        for center in centers:
-            for width in widths:
-                def weight_fn(a: float, center: float = center, width: float = width) -> float:
-                    return two_point_gaussian_lift_value(a, center=center, width=width)
+        for spec in basis_specs:
+            def weight_fn(a: float, spec: dict[str, Any] = spec) -> float:
+                return lift_spec_value(a, spec)
 
-                basis_meta.append({"center": finite_float(center), "width": finite_float(width)})
-                P_basis.append(build_prime_matrix_for_weight(pilot, packet, D, params.ell, shifts, weight_fn))
-                if need_continuum:
-                    P0_basis.append(
-                        build_continuum_matrix_for_weight(
-                            pilot,
-                            packet,
-                            D,
-                            params.ell,
-                            max_a=effective_max_a,
-                            p0_na=args.p0_na,
-                            weight_fn=weight_fn,
-                        )
+            basis_meta.append(spec)
+            P_basis.append(build_prime_matrix_for_weight(pilot, packet, D, params.ell, shifts, weight_fn))
+            if need_continuum:
+                P0_basis.append(
+                    build_continuum_matrix_for_weight(
+                        pilot,
+                        packet,
+                        D,
+                        params.ell,
+                        max_a=effective_max_a,
+                        p0_na=args.p0_na,
+                        weight_fn=weight_fn,
                     )
+                )
 
         P_edge_c = project_matrix(pilot, P_edge, N)
         A_edge = generalized_to_standard(pilot, P_edge_c, Gc)
@@ -736,7 +856,12 @@ def run_liftsearch(args: argparse.Namespace) -> list[dict[str, Any]]:
             "kerQ_dim": int(N.shape[1]),
             "prime_power_shifts_total": int(len(shifts)),
             "edge_prime_power_shifts": int(len(edge_shifts)),
-            "basis_family": "two-point Gaussian autocorrelation",
+            "basis_family": args.lift_family,
+            "basis_description": (
+                "two-point Gaussian autocorrelation"
+                if args.lift_family == "two-point"
+                else "signed/multi-packet Gaussian autocorrelation"
+            ),
             "basis_count": int(len(P_basis)),
             "centers": [finite_float(x) for x in centers],
             "widths": [finite_float(x) for x in widths],
@@ -819,6 +944,12 @@ def parse_args() -> argparse.Namespace:
     liftsearch = sub.add_parser("liftsearch", help="finite positive-definite lift operator search")
     add_common_packet_args(liftsearch)
     liftsearch.add_argument("--max-a-factor", type=float, default=8.0)
+    liftsearch.add_argument(
+        "--lift-family",
+        choices=["two-point", "signed-triplet", "all"],
+        default="two-point",
+        help="positive-definite scalar lift dictionary to test",
+    )
     liftsearch.add_argument("--centers", type=float, nargs="*")
     liftsearch.add_argument("--num-centers", type=int, default=5)
     liftsearch.add_argument("--widths", type=float, nargs="*")
