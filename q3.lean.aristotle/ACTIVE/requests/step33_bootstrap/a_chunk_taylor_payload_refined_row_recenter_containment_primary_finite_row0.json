@@ -1,0 +1,58 @@
+{
+  "block": "primary",
+  "componentFiniteInterval": {
+    "lower": "1.233644453639219465E-1",
+    "mid": "1.233644453639219510E-1",
+    "radius": "4.486686661176715800E-18",
+    "upper": "1.233644453639219555E-1"
+  },
+  "deltas": {
+    "component_lower_minus_before_lower": "1.331333882328420000E-20",
+    "component_upper_minus_before_upper": "-4.133133388232842000E-19",
+    "lower_decrease": "0.000000000000000000E+0",
+    "mid_shift": "0.000000000000000000E+0",
+    "radius_increase": "0.000000000000000000E+0",
+    "upper_increase": "0.000000000000000000E+0"
+  },
+  "distance": "0.00",
+  "family": "primary_finite",
+  "meaning": "Fail-closed check of refreshed finite-row interval containment through the interval-recenter A hbox receiver. No Lean payload is emitted.",
+  "route_guard": [
+    "Do not mutate A CSV, ARadius, radius-floor, LDL, or global payload radii.",
+    "This artifact checks only the refreshed finite row target plus existing tail radius.",
+    "A pass here is not a full A hbox proof; it only clears this refreshed row.",
+    "A fail reports the exact excess and should not be patched by widening global ARadius."
+  ],
+  "row": 0,
+  "schema": "q3_psdpd_step33_a_refined_row_recenter_containment_audit.v1",
+  "source_components": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_finite_tail_components_k11.json",
+  "source_payload_import": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffPayloadImport.lean",
+  "source_row_refresh": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_row_target_refresh_audit_primary_finite_row0.json",
+  "status": "pass",
+  "targetBefore": {
+    "center_error": "1.000000000000000000E-19",
+    "excess": "0.000000000000000000E+0",
+    "finite_mid": "1.233644453639219512E-1",
+    "finite_radius": "4.700000000000000000E-18",
+    "imported_mid": "1.233644453639219513E-1",
+    "imported_radius": "7.116332121107148949E-18",
+    "lower": "1.233644453639219465E-1",
+    "margin": "9.866866613077160290E-19",
+    "required_radius": "6.129645459799432920E-18",
+    "tail_radius": "1.329645459799432920E-18",
+    "upper": "1.233644453639219559E-1"
+  },
+  "targetRefreshed": {
+    "center_error": "1.000000000000000000E-19",
+    "excess": "0.000000000000000000E+0",
+    "finite_mid": "1.233644453639219512E-1",
+    "finite_radius": "4.700000000000000000E-18",
+    "imported_mid": "1.233644453639219513E-1",
+    "imported_radius": "7.116332121107148949E-18",
+    "lower": "1.233644453639219465E-1",
+    "margin": "9.866866613077160290E-19",
+    "required_radius": "6.129645459799432920E-18",
+    "tail_radius": "1.329645459799432920E-18",
+    "upper": "1.233644453639219559E-1"
+  }
+}

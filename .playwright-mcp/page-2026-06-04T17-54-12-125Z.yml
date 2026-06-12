@@ -1,0 +1,103 @@
+- generic [ref=e1]:
+  - link "Weiter zum Inhalt" [ref=e3] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e7]:
+    - generic [ref=e9]:
+      - navigation "Seitenleiste":
+        - generic:
+          - generic:
+            - generic:
+              - button "Seitenleiste öffnen":
+                - img
+        - generic:
+          - generic:
+            - link "Neuer Chat":
+              - /url: /
+              - generic:
+                - img
+              - generic: Neuer Chat
+          - generic:
+            - button "Chats durchsuchen":
+              - generic:
+                - img
+              - generic: Chats durchsuchen
+          - generic:
+            - button "Letzte":
+              - generic:
+                - img
+              - generic: Letzte
+        - generic:
+          - generic:
+            - button "Profil-Menü öffnen"
+      - generic [ref=e10]:
+        - heading "Chatverlauf" [level=2] [ref=e11]
+        - generic [ref=e12]:
+          - navigation "Chatverlauf" [ref=e13]:
+            - generic [ref=e16]:
+              - link "Heim" [ref=e17] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e18]: ChatGPT
+              - button "Seitenleiste schließen" [expanded] [ref=e20]:
+                - img [ref=e21]
+            - list [ref=e24]:
+              - listitem [ref=e25]:
+                - link "Neuer Chat" [ref=e26] [cursor=pointer]:
+                  - /url: /
+                  - img [ref=e28]
+                  - generic [ref=e31]: Neuer Chat
+              - listitem [ref=e32]:
+                - button "Chats durchsuchen" [ref=e33] [cursor=pointer]:
+                  - img [ref=e35]
+                  - generic [ref=e38]: Chats durchsuchen
+            - link "Bibliothek" [ref=e39] [cursor=pointer]:
+              - /url: /library
+              - img [ref=e41]
+              - generic [ref=e44]: Bibliothek
+            - link "Apps" [ref=e45] [cursor=pointer]:
+              - /url: /apps
+              - img [ref=e47]
+              - generic [ref=e50]: Apps
+            - link "Codex" [ref=e51] [cursor=pointer]:
+              - /url: /codex
+              - generic [ref=e52]:
+                - img [ref=e54]
+                - generic [ref=e57]: Codex
+              - img [ref=e59]
+            - generic [ref=e62] [cursor=pointer]:
+              - img [ref=e64]
+              - generic [ref=e67]: Mehr
+          - button "Eugen Malamutmann Pro, Profil-Menü öffnen" [ref=e71] [cursor=pointer]:
+            - generic [ref=e75]:
+              - generic [ref=e77]: Eugen Malamutmann
+              - generic [ref=e80]: Pro
+            - button "Apps herunterladen" [ref=e83]:
+              - img [ref=e85]
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - banner:
+          - generic [ref=e92]:
+            - button "Gemeinsam nutzen" [ref=e93] [cursor=pointer]:
+              - generic [ref=e94]:
+                - img [ref=e95]
+                - text: Gemeinsam nutzen
+            - button "Gesprächsoptionen öffnen" [ref=e99] [cursor=pointer]:
+              - img [ref=e100]
+      - main [ref=e102]:
+        - generic [ref=e105]:
+          - generic:
+            - generic:
+              - button:
+                - img
+          - generic [ref=e110]:
+            - generic [ref=e114]:
+              - button "Dateien und mehr hinzufügen" [ref=e117] [cursor=pointer]:
+                - img
+              - textbox "Mit ChatGPT chatten" [active] [ref=e120]:
+                - /placeholder: Stelle irgendeine Frage
+              - button "Aufforderung senden" [disabled] [ref=e124]:
+                - img [ref=e125]
+            - button [ref=e127]
+            - button [ref=e128]
+          - generic [ref=e134]: ChatGPT kann Fehler machen. Überprüfe wichtige Informationen.
+  - alert [ref=e135]
+  - status [ref=e136]

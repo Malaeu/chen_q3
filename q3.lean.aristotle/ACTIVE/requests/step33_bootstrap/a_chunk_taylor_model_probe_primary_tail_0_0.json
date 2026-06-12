@@ -1,0 +1,349 @@
+{
+  "cells": [
+    {
+      "best_degree_by_integral_margin": 10,
+      "center": "2.650000000000000000E+2",
+      "chunk_index": 0,
+      "chunk_lower": "1.088613911944200701E-29",
+      "chunk_upper": "1.088613911944221150E-29",
+      "degree_results": [
+        {
+          "chunk_lower": "1.088613911944200701E-29",
+          "chunk_upper": "1.088613911944221150E-29",
+          "coeff_float": [
+            1.318736143070885e-30
+          ],
+          "coeff_rational_candidate": [
+            "0/1000000000000000000"
+          ],
+          "degree": 0,
+          "fits_integral_interval": false,
+          "fits_sampled_residual_and_integral": false,
+          "lower_integral_margin": "-1.230323617853175779e-28",
+          "lower_model_integral": "-1.121462226658755809e-28",
+          "polynomial_integral": "1.318736143070884986e-29",
+          "remainder_candidate": "1.253335840965844476e-29",
+          "remainder_rational_candidate": "0/1000000000000000000",
+          "required_remainder_cap": "-2.301222311266638658e-31",
+          "residual_guard": "1.000000000000000056e-01",
+          "sampled_max_eval_radius": "4.192444364859703240e-84",
+          "sampled_max_residual": "1.139396219059858449e-29",
+          "upper_integral_margin": "-1.276348064078510762e-28",
+          "upper_model_integral": "1.385209455272932974e-28",
+          "worst_eta": "2.700000000000000000E+2"
+        },
+        {
+          "chunk_lower": "1.088613911944200701E-29",
+          "chunk_upper": "1.088613911944221150E-29",
+          "coeff_float": [
+            1.318736143070885e-30,
+            6.383145709055257e-31
+          ],
+          "coeff_rational_candidate": [
+            "0/1000000000000000000",
+            "0/1000000000000000000"
+          ],
+          "degree": 1,
+          "fits_integral_interval": false,
+          "fits_sampled_residual_and_integral": false,
+          "lower_integral_margin": "-8.792506038551371140e-29",
+          "lower_model_integral": "-7.703892126607170321e-29",
+          "polynomial_integral": "1.318736143070884986e-29",
+          "remainder_candidate": "9.022628269678055587e-30",
+          "remainder_rational_candidate": "0/1000000000000000000",
+          "required_remainder_cap": "-2.301222311266638658e-31",
+          "residual_guard": "1.000000000000000056e-01",
+          "sampled_max_eval_radius": "4.192444364859703240e-84",
+          "sampled_max_residual": "8.202389336070957332e-30",
+          "upper_integral_margin": "-9.252750500804719856e-29",
+          "upper_model_integral": "1.034136441274894085e-28",
+          "worst_eta": "2.700000000000000000E+2"
+        },
+        {
+          "chunk_lower": "1.088613911944200701E-29",
+          "chunk_upper": "1.088613911944221150E-29",
+          "coeff_float": [
+            -6.378712762897435e-31,
+            6.383145709055258e-31,
+            2.167318987599466e-31
+          ],
+          "coeff_rational_candidate": [
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000"
+          ],
+          "degree": 2,
+          "fits_integral_interval": false,
+          "fits_sampled_residual_and_integral": false,
+          "lower_integral_margin": "-5.135155246977268198e-29",
+          "lower_model_integral": "-4.046541335033067379e-29",
+          "polynomial_integral": "1.168227880043144876e-29",
+          "remainder_candidate": "5.214769215076211975e-30",
+          "remainder_rational_candidate": "0/1000000000000000000",
+          "required_remainder_cap": "-7.961396809892373567e-32",
+          "residual_guard": "1.000000000000000056e-01",
+          "sampled_max_eval_radius": "4.192444364859703240e-84",
+          "sampled_max_residual": "4.740699286432918958e-30",
+          "upper_integral_margin": "-5.294383183175136413e-29",
+          "upper_model_integral": "6.382997095119357411e-29",
+          "worst_eta": "2.700000000000000000E+2"
+        },
+        {
+          "chunk_lower": "1.088613911944200701E-29",
+          "chunk_upper": "1.088613911944221150E-29",
+          "coeff_float": [
+            -6.378712762897435e-31,
+            -3.0063632654965615e-31,
+            2.167318987599466e-31,
+            5.790532301222533e-32
+          ],
+          "coeff_rational_candidate": [
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000"
+          ],
+          "degree": 3,
+          "fits_integral_interval": false,
+          "fits_sampled_residual_and_integral": false,
+          "lower_integral_margin": "-2.337403268799786342e-29",
+          "lower_model_integral": "-1.248789356855585663e-29",
+          "polynomial_integral": "1.168227880043144876e-29",
+          "remainder_candidate": "2.417017236898730469e-30",
+          "remainder_rational_candidate": "0/1000000000000000000",
+          "required_remainder_cap": "-7.961396809892373567e-32",
+          "residual_guard": "1.000000000000000056e-01",
+          "sampled_max_eval_radius": "4.192444364859703240e-84",
+          "sampled_max_residual": "2.197288397180662979e-30",
+          "upper_integral_margin": "-2.496631204997654276e-29",
+          "upper_model_integral": "3.585245116941875274e-29",
+          "worst_eta": "2.700000000000000000E+2"
+        },
+        {
+          "chunk_lower": "1.088613911944200701E-29",
+          "chunk_upper": "1.088613911944221150E-29",
+          "coeff_float": [
+            1.4354299722068904e-31,
+            -3.00636326549656e-31,
+            -7.397606872785109e-32,
+            5.790532301222532e-32,
+            1.2590059343832443e-32
+          ],
+          "coeff_rational_candidate": [
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000"
+          ],
+          "degree": 4,
+          "fits_integral_interval": false,
+          "fits_sampled_residual_and_integral": false,
+          "lower_integral_margin": "-8.840455792101032790e-30",
+          "lower_model_integral": "2.045683327340974002e-30",
+          "polynomial_integral": "1.100833175800985315e-29",
+          "remainder_candidate": "8.962648430668879148e-31",
+          "remainder_rational_candidate": "0/1000000000000000000",
+          "required_remainder_cap": "-1.221926385676417681e-32",
+          "residual_guard": "1.000000000000000056e-01",
+          "sampled_max_eval_radius": "4.192444364859703240e-84",
+          "sampled_max_residual": "8.147862209698970852e-31",
+          "upper_integral_margin": "-9.084841069236520916e-30",
+          "upper_model_integral": "1.997098018867873230e-29",
+          "worst_eta": "2.700000000000000000E+2"
+        },
+        {
+          "chunk_lower": "1.088613911944200701E-29",
+          "chunk_upper": "1.088613911944221150E-29",
+          "coeff_float": [
+            1.4354299722069044e-31,
+            8.540471961740127e-32,
+            -7.397606872785146e-32,
+            -9.40905268433945e-33,
+            1.259005934383246e-32,
+            2.2586260427895922e-33
+          ],
+          "coeff_rational_candidate": [
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000"
+          ],
+          "degree": 5,
+          "fits_integral_interval": false,
+          "fits_sampled_residual_and_integral": false,
+          "lower_integral_margin": "-2.710203193094215406e-30",
+          "lower_model_integral": "8.175935926347791387e-30",
+          "polynomial_integral": "1.100833175800985595e-29",
+          "remainder_candidate": "2.832395831662065004e-31",
+          "remainder_rational_candidate": "0/1000000000000000000",
+          "required_remainder_cap": "-1.221926385676445734e-32",
+          "residual_guard": "1.000000000000000056e-01",
+          "sampled_max_eval_radius": "4.192444364859703240e-84",
+          "sampled_max_residual": "2.574905301510958870e-31",
+          "upper_integral_margin": "-2.954588470229710538e-30",
+          "upper_model_integral": "1.384072758967192192e-29",
+          "worst_eta": "2.694000000000000000E+2"
+        },
+        {
+          "chunk_lower": "1.088613911944200701E-29",
+          "chunk_upper": "1.088613911944221150E-29",
+          "coeff_float": [
+            6.358640431152365e-33,
+            8.540471961739814e-32,
+            3.4507248465996683e-32,
+            -9.409052684339397e-33,
+            3.626852354799e-34,
+            2.258626042789599e-33,
+            3.361069082452135e-34
+          ],
+          "coeff_rational_candidate": [
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000"
+          ],
+          "degree": 6,
+          "fits_integral_interval": false,
+          "fits_sampled_residual_and_integral": false,
+          "lower_integral_margin": "-9.042468224276280846e-31",
+          "lower_model_integral": "9.981892297014378708e-30",
+          "polynomial_integral": "1.089493333225368436e-29",
+          "remainder_candidate": "9.130410352393058709e-32",
+          "remainder_rational_candidate": "0/1000000000000000000",
+          "required_remainder_cap": "-8.794212811472977719e-34",
+          "residual_guard": "1.000000000000000056e-01",
+          "sampled_max_eval_radius": "4.192444364859703240e-84",
+          "sampled_max_residual": "8.300373047629962207e-32",
+          "upper_integral_margin": "-9.218352480507786296e-31",
+          "upper_model_integral": "1.180797436749299001e-29",
+          "worst_eta": "2.695000000000000000E+2"
+        },
+        {
+          "chunk_lower": "1.088613911944200701E-29",
+          "chunk_upper": "1.088613911944221150E-29",
+          "coeff_float": [
+            1.7166707717440863e-32,
+            2.2862278187246454e-32,
+            1.9603236552240835e-32,
+            1.1930059754612214e-32,
+            3.49504271524112e-33,
+            4.83091670619413e-34,
+            1.291517136569129e-34,
+            4.14697485302878e-35,
+            4.215211884118119e-36
+          ],
+          "coeff_rational_candidate": [
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000"
+          ],
+          "degree": 8,
+          "fits_integral_interval": false,
+          "fits_sampled_residual_and_integral": false,
+          "lower_integral_margin": "-5.315074128892107468e-32",
+          "lower_model_integral": "1.083298837815308572e-29",
+          "polynomial_integral": "1.088644331544252220e-29",
+          "remainder_candidate": "5.345493728943668317e-33",
+          "remainder_rational_candidate": "0/1000000000000000000",
+          "required_remainder_cap": "-3.041960003108205013e-35",
+          "residual_guard": "1.000000000000000056e-01",
+          "sampled_max_eval_radius": "4.192444364859703240e-84",
+          "sampled_max_residual": "4.859539753584243241e-33",
+          "upper_integral_margin": "-5.375913328974730523e-32",
+          "upper_model_integral": "1.093989825273195869e-29",
+          "worst_eta": "2.697000000000000000E+2"
+        },
+        {
+          "chunk_lower": "1.088613911944200701E-29",
+          "chunk_upper": "1.088613911944221150E-29",
+          "coeff_float": [
+            1.6824090849154342e-32,
+            2.695861295742321e-32,
+            2.0341550600066943e-32,
+            9.607154126606284e-33,
+            3.244988276688042e-33,
+            8.32466815488784e-34,
+            1.5838693301858477e-34,
+            2.2272634790709923e-35,
+            2.83568164942032e-36,
+            3.4772130547159946e-37,
+            2.2567382494071206e-38
+          ],
+          "coeff_rational_candidate": [
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000",
+            "0/1000000000000000000"
+          ],
+          "degree": 10,
+          "fits_integral_interval": false,
+          "fits_sampled_residual_and_integral": false,
+          "lower_integral_margin": "-1.200601693992736456e-33",
+          "lower_model_integral": "1.088493851774801406e-29",
+          "polynomial_integral": "1.088614231934591369e-29",
+          "remainder_candidate": "1.203801597899824855e-34",
+          "remainder_rational_candidate": "0/1000000000000000000",
+          "required_remainder_cap": "-3.199903702307753742e-37",
+          "residual_guard": "1.000000000000000056e-01",
+          "sampled_max_eval_radius": "4.192444364859703240e-84",
+          "sampled_max_residual": "1.094365088990749723e-34",
+          "upper_integral_margin": "-1.207001501601941538e-33",
+          "upper_model_integral": "1.088734612094381332e-29",
+          "worst_eta": "2.698000000000000000E+2"
+        }
+      ],
+      "distance": "0.00",
+      "distance_index": 0,
+      "family_id": "primary_tail",
+      "feasible_degrees": [],
+      "left": "2.600000000000000000E+2",
+      "radius": "5E+0",
+      "right": "2.700000000000000000E+2"
+    }
+  ],
+  "meaning": "Diagnostic sampled Taylor/model feasibility probe for the raw-Omega PayloadFin backend.  Arb/acb point values are search evidence only; this file is not a proof artifact and must not be imported by Lean.",
+  "parameters": {
+    "arb_prec": 192,
+    "check_samples": 101,
+    "chunk_indices": "0",
+    "degrees": "0,1,2,3,4,5,6,8,10",
+    "families": "primary_tail",
+    "fit_samples": 25,
+    "indices": "0",
+    "rational_denominator": 1000000000000000000,
+    "residual_guard": 0.1,
+    "source": "raw_step22"
+  },
+  "route_guard": [
+    "diagnostic only",
+    "do not emit Lean payload from this file",
+    "Arb/acb point samples may guide coefficient choice only",
+    "Lean must still prove raw bounds, polynomial bounds, diff bounds, and integral comparisons"
+  ],
+  "schema": "q3_psdpd_step33_a_chunk_taylor_model_probe.v1",
+  "source_proof_data": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_product_abs_seed.json",
+  "source_worklist": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_distance_payload_worklist.json",
+  "totals": {
+    "cells_checked": 1,
+    "cells_with_feasible_degree": 0
+  }
+}

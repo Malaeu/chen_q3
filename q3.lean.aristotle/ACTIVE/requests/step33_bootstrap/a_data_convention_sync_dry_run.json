@@ -1,0 +1,715 @@
+{
+  "closed_prerequisite": "centeredBSplineArchKernelProfile_eq_step22OmegaEtaTransformedProfileWithArchSign",
+  "families": [
+    {
+      "block_id": "psdpd_L3_k11_ell030_delta025_theta1e4",
+      "candidate_convention": "Step22 Omega eta source with Arch sign, eta=2*pi*xi, cosine and packet argument transformed",
+      "candidate_name": "A_transformed_from_rawStep22",
+      "center_comparison": {
+        "current_raw_step22_mid": "1.233644453639219513000000000000e-1",
+        "max_abs_current_raw_step22_vs_transformed": "7.902110587559564195130000000000e+1",
+        "transformed_step22_mid": "-7.889774143023172000000000000000e+1",
+        "worst_distance": "0.00",
+        "worst_index": 0
+      },
+      "direct_eta_samples": [
+        {
+          "bridge_receiver_mid_from_existing_audit": "-7.889774143023172000000000000000e+1",
+          "direct_eta_minus_bridge_abs": "0.000000e-23",
+          "distance": "0.00",
+          "eta_2pi_xi260_transformed_full_even_mid": "-7.889774143023172000000000000000e+1",
+          "eta_2pi_xi260_transformed_full_even_rad": "6.293589e-15",
+          "index": 0,
+          "raw_eta_260_transformed_full_even_mid": "-7.849353299351628000000000000000e+1"
+        },
+        {
+          "bridge_receiver_mid_from_existing_audit": "1.572542934926196200000000000000e+1",
+          "direct_eta_minus_bridge_abs": "0.000000e-23",
+          "distance": "0.25",
+          "eta_2pi_xi260_transformed_full_even_mid": "1.572542934926196200000000000000e+1",
+          "eta_2pi_xi260_transformed_full_even_rad": "7.319297e-16",
+          "index": 1,
+          "raw_eta_260_transformed_full_even_mid": "1.576840478066379700000000000000e+1"
+        },
+        {
+          "bridge_receiver_mid_from_existing_audit": "7.469675830471349000000000000000e+0",
+          "direct_eta_minus_bridge_abs": "0.000000e-24",
+          "distance": "0.50",
+          "eta_2pi_xi260_transformed_full_even_mid": "7.469675830471349000000000000000e+0",
+          "eta_2pi_xi260_transformed_full_even_rad": "1.394868e-16",
+          "index": 2,
+          "raw_eta_260_transformed_full_even_mid": "7.289426184764776600000000000000e+0"
+        }
+      ],
+      "ell": "0.3",
+      "family": "primary",
+      "k_spline": 11,
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+      "not_candidate": [
+        "raw Q3.a_star migration",
+        "-Q3.a_star scalar fit",
+        "ARadius widening patch"
+      ],
+      "psd_sanity": {
+        "current_raw_step22_import": {
+          "A_diag": 0.12336444536392195,
+          "A_max_entry": 0.12336444536392195,
+          "A_min_entry": -0.43748178349373795,
+          "D_penalty_floor": 0.0001222859478322234,
+          "D_penalty_min_eigenvalue": 0.00012228595300390246,
+          "D_penalty_passes_floor": true,
+          "R_penalty_floor": 0.13569220778186006,
+          "R_penalty_min_eigenvalue": 0.1356922079453794,
+          "R_penalty_passes_floor": true
+        },
+        "negative_transformed_step22_arch_sign_probe": {
+          "A_diag": 78.89774143023172,
+          "A_max_entry": 78.89774143023172,
+          "A_min_entry": -15.725429349261962,
+          "D_penalty_floor": 0.0001222859478322234,
+          "D_penalty_min_eigenvalue": 39.79178072188683,
+          "D_penalty_passes_floor": true,
+          "R_penalty_floor": 0.13569220778186006,
+          "R_penalty_min_eigenvalue": 40.66392132402513,
+          "R_penalty_passes_floor": true
+        },
+        "raw_step22_full_even_variant": {
+          "A_diag": 0.2467288907278439,
+          "A_max_entry": 0.2467288907278439,
+          "A_min_entry": -0.8749635669874759,
+          "D_penalty_floor": 0.0001222859478322234,
+          "D_penalty_min_eigenvalue": -0.9116495926800922,
+          "D_penalty_passes_floor": false,
+          "R_penalty_floor": 0.13569220778186006,
+          "R_penalty_min_eigenvalue": -0.27371571621801827,
+          "R_penalty_passes_floor": false
+        },
+        "transformed_step22_arch_sign_candidate": {
+          "A_diag": -78.89774143023172,
+          "A_max_entry": 15.725429349261962,
+          "A_min_entry": -78.89774143023172,
+          "D_penalty_floor": 0.0001222859478322234,
+          "D_penalty_min_eigenvalue": -101.65250980604694,
+          "D_penalty_passes_floor": false,
+          "R_penalty_floor": 0.13569220778186006,
+          "R_penalty_min_eigenvalue": -101.08826416650179,
+          "R_penalty_passes_floor": false
+        }
+      },
+      "radius_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
+      "radius_reuse_probe": {
+        "current_raw_radius_reuse_passes": false,
+        "required_action": "generate transformed Step22-Omega A radius data before local recenter containment can be closed",
+        "rows": [
+          {
+            "bridge_finite_numeric_radius": "6.294000e-15",
+            "center_error": "7.902110587559564195130000000000e+1",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "7.116332121107148949000000000000e-18",
+            "current_raw_step22_mid": "1.233644453639219513000000000000e-1",
+            "distance": "0.00",
+            "index": 0,
+            "transformed_step22_mid": "-7.889774143023172000000000000000e+1"
+          },
+          {
+            "bridge_finite_numeric_radius": "7.320000e-16",
+            "center_error": "1.616291113275569995240000000000e+1",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "1.577706161515855660000000000000e-17",
+            "current_raw_step22_mid": "-4.374817834937379524000000000000e-1",
+            "distance": "0.25",
+            "index": 1,
+            "transformed_step22_mid": "1.572542934926196200000000000000e+1"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.394800e-16",
+            "center_error": "7.693206225393354049000000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "2.500510200586236600000000000000e-18",
+            "current_raw_step22_mid": "-2.235303949220050490000000000000e-1",
+            "distance": "0.50",
+            "index": 2,
+            "transformed_step22_mid": "7.469675830471349000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "3.220000e-16",
+            "center_error": "5.172963376817055850900000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "1.110027779744348984000000000000e-17",
+            "current_raw_step22_mid": "-1.588643857122144509000000000000e-1",
+            "distance": "0.75",
+            "index": 3,
+            "transformed_step22_mid": "5.014098991104841400000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "8.008000e-17",
+            "center_error": "3.939753213307660283800000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "1.045863747614262720000000000000e-17",
+            "current_raw_step22_mid": "-1.255555459045882838000000000000e-1",
+            "distance": "1.00",
+            "index": 4,
+            "transformed_step22_mid": "3.814197667403072000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.583800e-16",
+            "center_error": "3.204085997818592230000000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "4.856807149981803554000000000000e-18",
+            "current_raw_step22_mid": "-1.042320657664256300000000000000e-1",
+            "distance": "1.25",
+            "index": 5,
+            "transformed_step22_mid": "3.099853932052166600000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.176600e-16",
+            "center_error": "2.713840114868166593090000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "5.817794673437905863000000000000e-18",
+            "current_raw_step22_mid": "-8.879834253975839309000000000000e-2",
+            "distance": "1.50",
+            "index": 6,
+            "transformed_step22_mid": "2.625041772328408200000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "2.058000e-16",
+            "center_error": "2.362901238984967435210000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "9.855397780590861004000000000000e-18",
+            "current_raw_step22_mid": "-7.675380274770543521000000000000e-2",
+            "distance": "1.75",
+            "index": 7,
+            "transformed_step22_mid": "2.286147436237262000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "3.564000e-17",
+            "center_error": "2.098736426585506762360000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "5.911821639595180182000000000000e-18",
+            "current_raw_step22_mid": "-6.690167682234596236000000000000e-2",
+            "distance": "2.00",
+            "index": 8,
+            "transformed_step22_mid": "2.031834749763160800000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "4.844000e-17",
+            "center_error": "1.892341858579927807640000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "3.160889056582762950000000000000e-18",
+            "current_raw_step22_mid": "-5.860341194405480764000000000000e-2",
+            "distance": "2.25",
+            "index": 9,
+            "transformed_step22_mid": "1.833738446635873000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.916800e-17",
+            "center_error": "1.726385856965016982280000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "3.099768741669753080000000000000e-18",
+            "current_raw_step22_mid": "-5.148618820286358228000000000000e-2",
+            "distance": "2.50",
+            "index": 10,
+            "transformed_step22_mid": "1.674899668762153400000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.928000e-17",
+            "center_error": "1.589866734778600730070000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "3.346297937174976180000000000000e-18",
+            "current_raw_step22_mid": "-4.531358455175713007000000000000e-2",
+            "distance": "2.75",
+            "index": 11,
+            "transformed_step22_mid": "1.544553150226843600000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "2.692000e-17",
+            "center_error": "1.475458906678416505370000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "3.687152412608507489000000000000e-18",
+            "current_raw_step22_mid": "-3.992364956689390537000000000000e-2",
+            "distance": "3.00",
+            "index": 12,
+            "transformed_step22_mid": "1.435535257111522600000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "7.030000e-17",
+            "center_error": "1.378091307660876604290000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "2.998465033638122990000000000000e-18",
+            "current_raw_step22_mid": "-3.519755893762420429000000000000e-2",
+            "distance": "3.25",
+            "index": 13,
+            "transformed_step22_mid": "1.342893748723252400000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "4.052000e-17",
+            "center_error": "1.294138680532441099610000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "1.638453192936618487000000000000e-18",
+            "current_raw_step22_mid": "-3.104306607661829961000000000000e-2",
+            "distance": "3.50",
+            "index": 14,
+            "transformed_step22_mid": "1.263095614455822800000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "2.276000e-17",
+            "center_error": "1.220938219691547541410000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "2.500491300797631790000000000000e-18",
+            "current_raw_step22_mid": "-2.738542581476614141000000000000e-2",
+            "distance": "3.75",
+            "index": 15,
+            "transformed_step22_mid": "1.193552793876781400000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "9.522000e-17",
+            "center_error": "1.156488453982766220130000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "1.660242192931622748000000000000e-18",
+            "current_raw_step22_mid": "-2.416221268183482013000000000000e-2",
+            "distance": "4.00",
+            "index": 16,
+            "transformed_step22_mid": "1.132326241300931400000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "7.304000e-17",
+            "center_error": "1.099254906508216453350000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "1.981941272471374758000000000000e-18",
+            "current_raw_step22_mid": "-2.132022017537525335000000000000e-2",
+            "distance": "4.25",
+            "index": 17,
+            "transformed_step22_mid": "1.077934686332841200000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "8.578000e-17",
+            "center_error": "1.048040771178359845600000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "2.711239747734376180000000000000e-18",
+            "current_raw_step22_mid": "-1.881349899943884560000000000000e-2",
+            "distance": "4.50",
+            "index": 18,
+            "transformed_step22_mid": "1.029227272178921000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.885200e-17",
+            "center_error": "1.001898521374614626150000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "3.113483522086718292000000000000e-18",
+            "current_raw_step22_mid": "-1.660203614477936615000000000000e-2",
+            "distance": "4.75",
+            "index": 19,
+            "transformed_step22_mid": "9.852964852298352600000000000000e-1"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.696600e-18",
+            "center_error": "9.600680533964278980100000000000e-1",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "1.740759247031571372000000000000e-18",
+            "current_raw_step22_mid": "-1.465080742557569801000000000000e-2",
+            "distance": "5.00",
+            "index": 20,
+            "transformed_step22_mid": "9.454172459708522000000000000000e-1"
+          },
+          {
+            "bridge_finite_numeric_radius": "4.202000e-17",
+            "center_error": "9.219324830256776425900000000000e-1",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "2.480141276156962735000000000000e-18",
+            "current_raw_step22_mid": "-1.292905771430244259000000000000e-2",
+            "distance": "5.25",
+            "index": 21,
+            "transformed_step22_mid": "9.090034253113752000000000000000e-1"
+          },
+          {
+            "bridge_finite_numeric_radius": "7.626000e-18",
+            "center_error": "8.869859609610252210300000000000e-1",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "1.743668175006610164000000000000e-18",
+            "current_raw_step22_mid": "-1.140972789300954103000000000000e-2",
+            "distance": "5.50",
+            "index": 22,
+            "transformed_step22_mid": "8.755762330680156800000000000000e-1"
+          }
+        ],
+        "transformed_radius_policy_exists": false,
+        "worst_current_radius_reuse_row": {
+          "bridge_finite_numeric_radius": "6.294000e-15",
+          "center_error": "7.902110587559564195130000000000e+1",
+          "center_error_le_current_radius": false,
+          "current_raw_ARadius": "7.116332121107148949000000000000e-18",
+          "current_raw_step22_mid": "1.233644453639219513000000000000e-1",
+          "distance": "0.00",
+          "index": 0,
+          "transformed_step22_mid": "-7.889774143023172000000000000000e+1"
+        }
+      }
+    },
+    {
+      "block_id": "psdpd_L3_k9_ell030_delta025_theta1e5",
+      "candidate_convention": "Step22 Omega eta source with Arch sign, eta=2*pi*xi, cosine and packet argument transformed",
+      "candidate_name": "A_transformed_from_rawStep22",
+      "center_comparison": {
+        "current_raw_step22_mid": "2.624890365877484422000000000000e-2",
+        "max_abs_current_raw_step22_vs_transformed": "7.523137907465061484422000000000e+1",
+        "transformed_step22_mid": "-7.520513017099184000000000000000e+1",
+        "worst_distance": "0.00",
+        "worst_index": 0
+      },
+      "direct_eta_samples": [
+        {
+          "bridge_receiver_mid_from_existing_audit": "-7.520513017099184000000000000000e+1",
+          "direct_eta_minus_bridge_abs": "0.000000e-23",
+          "distance": "0.00",
+          "eta_2pi_xi260_transformed_full_even_mid": "-7.520513017099184000000000000000e+1",
+          "eta_2pi_xi260_transformed_full_even_rad": "3.520444e-15",
+          "index": 0,
+          "raw_eta_260_transformed_full_even_mid": "-7.507130231772885000000000000000e+1"
+        },
+        {
+          "bridge_receiver_mid_from_existing_audit": "1.732138601963182000000000000000e+1",
+          "direct_eta_minus_bridge_abs": "0.000000e-23",
+          "distance": "0.25",
+          "eta_2pi_xi260_transformed_full_even_mid": "1.732138601963182000000000000000e+1",
+          "eta_2pi_xi260_transformed_full_even_rad": "5.496415e-17",
+          "index": 1,
+          "raw_eta_260_transformed_full_even_mid": "1.732476495235339400000000000000e+1"
+        },
+        {
+          "bridge_receiver_mid_from_existing_audit": "8.228638331900756000000000000000e+0",
+          "direct_eta_minus_bridge_abs": "0.000000e-24",
+          "distance": "0.50",
+          "eta_2pi_xi260_transformed_full_even_mid": "8.228638331900756000000000000000e+0",
+          "eta_2pi_xi260_transformed_full_even_rad": "7.675006e-16",
+          "index": 2,
+          "raw_eta_260_transformed_full_even_mid": "8.159387431694918000000000000000e+0"
+        }
+      ],
+      "ell": "0.3",
+      "family": "control",
+      "k_spline": 9,
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+      "not_candidate": [
+        "raw Q3.a_star migration",
+        "-Q3.a_star scalar fit",
+        "ARadius widening patch"
+      ],
+      "psd_sanity": {
+        "current_raw_step22_import": {
+          "A_diag": 0.026248903658774844,
+          "A_max_entry": 0.026248903658774844,
+          "A_min_entry": -0.4873092439847854,
+          "D_penalty_floor": 1.263692282186616e-05,
+          "D_penalty_min_eigenvalue": 1.263692347554592e-05,
+          "D_penalty_passes_floor": true,
+          "R_penalty_floor": 0.0019590640625249765,
+          "R_penalty_min_eigenvalue": 0.0019590650942526585,
+          "R_penalty_passes_floor": true
+        },
+        "negative_transformed_step22_arch_sign_probe": {
+          "A_diag": 75.20513017099184,
+          "A_max_entry": 75.20513017099184,
+          "A_min_entry": -17.32138601963182,
+          "D_penalty_floor": 1.263692282186616e-05,
+          "D_penalty_min_eigenvalue": 32.14144110121121,
+          "D_penalty_passes_floor": true,
+          "R_penalty_floor": 0.0019590640625249765,
+          "R_penalty_min_eigenvalue": 32.94592066457576,
+          "R_penalty_passes_floor": true
+        },
+        "raw_step22_full_even_variant": {
+          "A_diag": 0.05249780731754969,
+          "A_max_entry": 0.05249780731754969,
+          "A_min_entry": -0.9746184879695708,
+          "D_penalty_floor": 1.263692282186616e-05,
+          "D_penalty_min_eigenvalue": -1.1577107609349888,
+          "D_penalty_passes_floor": false,
+          "R_penalty_floor": 0.0019590640625249765,
+          "R_penalty_min_eigenvalue": -0.597444432046752,
+          "R_penalty_passes_floor": false
+        },
+        "transformed_step22_arch_sign_candidate": {
+          "A_diag": -75.20513017099184,
+          "A_max_entry": 17.32138601963182,
+          "A_min_entry": -75.20513017099184,
+          "D_penalty_floor": 1.263692282186616e-05,
+          "D_penalty_min_eigenvalue": -100.27132888586563,
+          "D_penalty_passes_floor": false,
+          "R_penalty_floor": 0.0019590640625249765,
+          "R_penalty_min_eigenvalue": -99.63668870977041,
+          "R_penalty_passes_floor": false
+        }
+      },
+      "radius_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
+      "radius_reuse_probe": {
+        "current_raw_radius_reuse_passes": false,
+        "required_action": "generate transformed Step22-Omega A radius data before local recenter containment can be closed",
+        "rows": [
+          {
+            "bridge_finite_numeric_radius": "3.520000e-15",
+            "center_error": "7.523137907465061484422000000000e+1",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.364500223596109620000000000000e-17",
+            "current_raw_step22_mid": "2.624890365877484422000000000000e-2",
+            "distance": "0.00",
+            "index": 0,
+            "transformed_step22_mid": "-7.520513017099184000000000000000e+1"
+          },
+          {
+            "bridge_finite_numeric_radius": "5.496000e-17",
+            "center_error": "1.780869526361660542290000000000e+1",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "1.190355246781040254000000000000e-16",
+            "current_raw_step22_mid": "-4.873092439847854229000000000000e-1",
+            "distance": "0.25",
+            "index": 1,
+            "transformed_step22_mid": "1.732138601963182000000000000000e+1"
+          },
+          {
+            "bridge_finite_numeric_radius": "7.676000e-16",
+            "center_error": "8.474711937610143521800000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "9.701174134984211113000000000000e-17",
+            "current_raw_step22_mid": "-2.460736057093875218000000000000e-1",
+            "distance": "0.50",
+            "index": 2,
+            "transformed_step22_mid": "8.228638331900756000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "2.444000e-16",
+            "center_error": "5.683839549272034007900000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "9.143914874814076740000000000000e-17",
+            "current_raw_step22_mid": "-1.744899965879780079000000000000e-1",
+            "distance": "0.75",
+            "index": 3,
+            "transformed_step22_mid": "5.509349552684056000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.507400e-16",
+            "center_error": "4.325343599403887760600000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.547287468774182193000000000000e-17",
+            "current_raw_step22_mid": "-1.378119062369357606000000000000e-1",
+            "distance": "1.00",
+            "index": 4,
+            "transformed_step22_mid": "4.187531693166952000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "4.700000e-17",
+            "center_error": "3.516418111318958413300000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "9.027009332658144178000000000000e-17",
+            "current_raw_step22_mid": "-1.143748439686752133000000000000e-1",
+            "distance": "1.25",
+            "index": 5,
+            "transformed_step22_mid": "3.402043267350283200000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "4.604000e-17",
+            "center_error": "2.977821070312408075830000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.520175248603988751000000000000e-17",
+            "current_raw_step22_mid": "-9.742597050289207583000000000000e-2",
+            "distance": "1.50",
+            "index": 6,
+            "transformed_step22_mid": "2.880395099809516000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "3.432000e-17",
+            "center_error": "2.592456709808171788270000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.764529123241566338000000000000e-17",
+            "current_raw_step22_mid": "-8.420506225936438827000000000000e-2",
+            "distance": "1.75",
+            "index": 7,
+            "transformed_step22_mid": "2.508251647548807400000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "3.044000e-17",
+            "center_error": "2.302464770979828168690000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.572089978111729267000000000000e-17",
+            "current_raw_step22_mid": "-7.339349733534716869000000000000e-2",
+            "distance": "2.00",
+            "index": 8,
+            "transformed_step22_mid": "2.229071273644481000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.847800e-16",
+            "center_error": "2.075935577413811853010000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.883559043881058240000000000000e-17",
+            "current_raw_step22_mid": "-6.428849036841745301000000000000e-2",
+            "distance": "2.25",
+            "index": 9,
+            "transformed_step22_mid": "2.011647087045394400000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "2.866000e-17",
+            "center_error": "1.893814604572607162080000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.404100735488497990000000000000e-17",
+            "current_raw_step22_mid": "-5.648004324873016208000000000000e-2",
+            "distance": "2.50",
+            "index": 10,
+            "transformed_step22_mid": "1.837334561323877000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.093400e-17",
+            "center_error": "1.744012455688263107050000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.631824126481241565000000000000e-17",
+            "current_raw_step22_mid": "-4.970832111898410705000000000000e-2",
+            "distance": "2.75",
+            "index": 11,
+            "transformed_step22_mid": "1.694304134569279000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.466000e-17",
+            "center_error": "1.618482103886336658990000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.557023424662600110000000000000e-17",
+            "current_raw_step22_mid": "-4.379542530481585899000000000000e-2",
+            "distance": "3.00",
+            "index": 12,
+            "transformed_step22_mid": "1.574686678581520800000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "2.186000e-17",
+            "center_error": "1.511654524287795708490000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.619125414472311744000000000000e-17",
+            "current_raw_step22_mid": "-3.861088483096190849000000000000e-2",
+            "distance": "3.25",
+            "index": 13,
+            "transformed_step22_mid": "1.473043639456833800000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "9.222000e-17",
+            "center_error": "1.419549264865692248870000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.450832979626583330000000000000e-17",
+            "current_raw_step22_mid": "-3.405344322235764887000000000000e-2",
+            "distance": "3.50",
+            "index": 14,
+            "transformed_step22_mid": "1.385495821643334600000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "8.758000e-17",
+            "center_error": "1.339243078027109707700000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.317834124848488720000000000000e-17",
+            "current_raw_step22_mid": "-3.004107317037790770000000000000e-2",
+            "distance": "3.75",
+            "index": 15,
+            "transformed_step22_mid": "1.309202004856731800000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "7.454000e-17",
+            "center_error": "1.268539004923608077200000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.331725389139044151000000000000e-17",
+            "current_raw_step22_mid": "-2.650527771460507720000000000000e-2",
+            "distance": "4.00",
+            "index": 16,
+            "transformed_step22_mid": "1.242033727209003000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.016400e-16",
+            "center_error": "1.205752860598479295400000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.293908731891722760000000000000e-17",
+            "current_raw_step22_mid": "-2.338768127103869540000000000000e-2",
+            "distance": "4.25",
+            "index": 17,
+            "transformed_step22_mid": "1.182365179327440600000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "6.776000e-17",
+            "center_error": "1.149571181582545402660000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.330229533672689410000000000000e-17",
+            "current_raw_step22_mid": "-2.063787367594900266000000000000e-2",
+            "distance": "4.50",
+            "index": 18,
+            "transformed_step22_mid": "1.128933307906596400000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "1.885400e-17",
+            "center_error": "1.098954151719787433310000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.363158070115162896000000000000e-17",
+            "current_raw_step22_mid": "-1.821195908254563331000000000000e-2",
+            "distance": "4.75",
+            "index": 19,
+            "transformed_step22_mid": "1.080742192637241800000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "6.616000e-17",
+            "center_error": "1.053067679384816315110000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.272225106809787543000000000000e-17",
+            "current_raw_step22_mid": "-1.607151550999931511000000000000e-2",
+            "distance": "5.00",
+            "index": 20,
+            "transformed_step22_mid": "1.036996163874817000000000000000e+0"
+          },
+          {
+            "bridge_finite_numeric_radius": "4.598000e-17",
+            "center_error": "1.011234865074394132390000000000e+0",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.270446986287126277000000000000e-17",
+            "current_raw_step22_mid": "-1.418280469000953239000000000000e-2",
+            "distance": "5.25",
+            "index": 21,
+            "transformed_step22_mid": "9.970520603843846000000000000000e-1"
+          },
+          {
+            "bridge_finite_numeric_radius": "7.050000e-18",
+            "center_error": "9.729006686286341852500000000000e-1",
+            "center_error_le_current_radius": false,
+            "current_raw_ARadius": "8.282698246144176863000000000000e-17",
+            "current_raw_step22_mid": "-1.251614313302646525000000000000e-2",
+            "distance": "5.50",
+            "index": 22,
+            "transformed_step22_mid": "9.603845254956077200000000000000e-1"
+          }
+        ],
+        "transformed_radius_policy_exists": false,
+        "worst_current_radius_reuse_row": {
+          "bridge_finite_numeric_radius": "3.520000e-15",
+          "center_error": "7.523137907465061484422000000000e+1",
+          "center_error_le_current_radius": false,
+          "current_raw_ARadius": "8.364500223596109620000000000000e-17",
+          "current_raw_step22_mid": "2.624890365877484422000000000000e-2",
+          "distance": "0.00",
+          "index": 0,
+          "transformed_step22_mid": "-7.520513017099184000000000000000e+1"
+        }
+      }
+    }
+  ],
+  "gate": "Step33A.1-A-data-convention-sync",
+  "inputs": {
+    "audit_json": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_source_convention_audit.json",
+    "plan": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step32f_coeff_payload_import_plan.json"
+  },
+  "non_mutating": true,
+  "parameters": {
+    "abs_tol": "1e-35",
+    "arb_prec": 256,
+    "chunk_size": "40",
+    "cutoff_xi": "260",
+    "direct_eta_samples": true,
+    "raw_eta_cutoff": "260",
+    "receiver_eta_cutoff": "1633.6281798666924840005745593053414997825280876750520",
+    "rel_tol": "1e-35",
+    "sample_indices": [
+      0,
+      1,
+      2
+    ]
+  },
+  "schema": "q3_psdpd_step33_a_data_convention_sync_dry_run.v1"
+}

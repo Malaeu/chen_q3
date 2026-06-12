@@ -19,6 +19,10 @@ Codex self-config bootstrap:
   `ActiveCenteredCoeffEntryHboxCert`; do not route new work to the already
   closed Arch-integrability target or to the parked H1/PO3 monitor unless the
   user explicitly asks for H1 / PO3 / H-bridge / route-kill work.
+- Step33 anti-swamp rule: the `(0,0)` direct-profile cert is a pilot only.
+  Do not continue manual row-by-row or entry-by-entry scalar replay.  For
+  PSD Step33A.1, prefer delta compression, compact-support live prime-shift
+  filtering, and segment/live hbox receivers before generating scalar payloads.
 - Git `untracked` means only "not tracked by Git"; these files may still be
   project files. Do not delete, stage, or describe them as foreign unless the
   current task explicitly requires it.

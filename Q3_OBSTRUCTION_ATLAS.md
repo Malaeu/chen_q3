@@ -68,6 +68,16 @@ The finite prime-side matrix `P` must come from the analytic/dictionary/hbox
 route. A positive table or scalar mirror is not a proof of the imported prime
 form.
 
+### Step33 scalar replay swamp wall
+
+Do not close Step33A.1 by manually sweeping entries or scalar summands one by
+one.  The `(0,0)` direct-profile support-zero certificate is only a pilot.  The
+prime profile must first be compressed by packet center difference, then by a
+compact-support live prime-shift filter, and only live terms should receive
+generated hbox payloads.  If truncated-power summands create cancellation-heavy
+obligations, add a piecewise-polynomial/segment receiver for the centered
+cardinal B-spline instead of expanding all summands.
+
 ### P0 enclosure wall
 
 The `P0` hbox fields in the active entry certificate must be real enclosure

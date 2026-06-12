@@ -1224,7 +1224,7 @@ lemma stieltjes_integral_deriv (z : ℂ) (hz : 0 < z.re) :
 
 /-!
 Kernel integral. The full calculus proof is being formalized; we keep the
-exact evaluation as an axiom and use it for the analytic tail bounds.
+exact evaluation as a local theorem and use it for the analytic tail bounds.
 -/
 
 lemma integral_kernel_eq (σ τ : ℝ) (hσ : 0 < σ) :
@@ -1582,6 +1582,351 @@ lemma integral_kernel_bound (σ τ : ℝ) (hσ : 0 < σ) :
     _ ≤ 1 / (Real.sqrt (σ ^ 2 + τ ^ 2) ^ 2) := hle
     _ = 1 / (σ ^ 2 + τ ^ 2) := by simp [hsq]
 
+/-- Pointwise right-half-plane domination for the order-15 kernel that appears
+in the first omitted term of the M6 digamma Euler-Maclaurin remainder. -/
+lemma kernel_norm_pow15_le_re (z : ℂ) (hz : 0 < z.re)
+    {x : ℝ} (hx : x ∈ Set.Ioi (0 : ℝ)) :
+    1 / ‖(x : ℂ) + z‖ ^ 15 ≤ 1 / (x + z.re) ^ 15 := by
+  have hxpos : 0 < x := hx
+  have hxre_pos : 0 < x + z.re := by
+    linarith [hxpos, hz]
+  have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+  have hnorm_ge : x + z.re ≤ ‖(x : ℂ) + z‖ := by
+    have h := Complex.abs_re_le_norm ((x : ℂ) + z)
+    have hre : (((x : ℂ) + z).re) = x + z.re := by
+      simp
+    have habs : |(((x : ℂ) + z).re)| = x + z.re := by
+      rw [hre, abs_of_nonneg hxre_nonneg]
+    rwa [habs] at h
+  have hpow :
+      (x + z.re) ^ 15 ≤ ‖(x : ℂ) + z‖ ^ 15 :=
+    pow_le_pow_left₀ hxre_nonneg hnorm_ge 15
+  exact one_div_le_one_div_of_le (pow_pos hxre_pos 15) hpow
+
+/-- Integrability of the order-15 kernel used by the M6 first-omitted
+Euler-Maclaurin remainder. -/
+lemma integrable_kernel_norm_pow15 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 15))
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hdomOn :
+      IntegrableOn (fun x : ℝ => (x + z.re) ^ (-15 : ℝ))
+        (Set.Ioi (0 : ℝ)) := by
+    have hlt : (-15 : ℝ) < -1 := by norm_num
+    have hc : -z.re < (0 : ℝ) := by linarith [hz]
+    simpa using
+      (integrableOn_add_rpow_Ioi_of_lt (a := (-15 : ℝ))
+        (c := (0 : ℝ)) (m := z.re) hlt hc)
+  have hdomOn' :
+      IntegrableOn (fun x : ℝ => 1 / (x + z.re) ^ 15)
+        (Set.Ioi (0 : ℝ)) := by
+    refine hdomOn.congr_fun ?_ measurableSet_Ioi
+    intro x hx
+    have hxpos : 0 < x := hx
+    have hxre_pos : 0 < x + z.re := by
+      linarith [hxpos, hz]
+    have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+    calc
+      (x + z.re) ^ (-15 : ℝ)
+          = ((x + z.re) ^ (15 : ℝ))⁻¹ := by
+              simpa using (rpow_neg_eq_inv_rpow (x + z.re) (15 : ℝ))
+      _ = ((x + z.re) ^ 15)⁻¹ := by
+              simp [Real.rpow_natCast, hxre_nonneg]
+      _ = 1 / (x + z.re) ^ 15 := by
+              simp [one_div]
+  have hdom :
+      Integrable (fun x : ℝ => 1 / (x + z.re) ^ 15)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    simpa [IntegrableOn] using hdomOn'
+  have hmeas :
+      AEStronglyMeasurable (fun x : ℝ => 1 / ‖(x : ℂ) + z‖ ^ 15)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hcoe : Measurable (fun x : ℝ => (x : ℂ)) :=
+      Complex.measurable_ofReal
+    have hadd : Measurable (fun x : ℝ => (x : ℂ) + z) :=
+      hcoe.add measurable_const
+    have hnorm : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖) :=
+      hadd.norm
+    have hpow : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖ ^ 15) :=
+      hnorm.pow_const 15
+    have hinv : Measurable (fun x : ℝ => (‖(x : ℂ) + z‖ ^ 15)⁻¹) :=
+      hpow.inv
+    simpa [one_div] using hinv.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x : ℝ ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(1 / ‖(x : ℂ) + z‖ ^ 15 : ℝ)‖ ≤
+          1 / (x + z.re) ^ 15 := by
+    refine (ae_restrict_mem measurableSet_Ioi).mono ?_
+    intro x hx
+    have hnonneg : 0 ≤ (1 / ‖(x : ℂ) + z‖ ^ 15 : ℝ) := by
+      exact one_div_nonneg.mpr (pow_nonneg (norm_nonneg _) 15)
+    have hnorm_abs :
+        ‖(1 / ‖(x : ℂ) + z‖ ^ 15 : ℝ)‖ =
+          1 / ‖(x : ℂ) + z‖ ^ 15 := by
+      simpa [Real.norm_eq_abs, abs_of_nonneg hnonneg]
+    simpa [hnorm_abs] using kernel_norm_pow15_le_re z hz hx
+  exact Integrable.mono' hdom hmeas hbound
+
+/-- Exact real tail integral for the order-15 right-half-plane majorant. -/
+lemma integral_one_div_add_pos_pow15 (a : ℝ) (ha : 0 < a) :
+    ∫ x in Set.Ioi (0 : ℝ), 1 / (x + a) ^ 15 =
+      1 / (14 * a ^ 14) := by
+  let g : ℝ → ℝ := fun x => -(1 / 14 : ℝ) * (x + a) ^ (-14 : ℝ)
+  let g' : ℝ → ℝ := fun x => 1 / (x + a) ^ 15
+  have hderiv : ∀ x ∈ Set.Ici (0 : ℝ), HasDerivAt g (g' x) x := by
+    intro x hx
+    have hx0 : 0 ≤ x := by simpa [Set.mem_Ici] using hx
+    have hxapos : 0 < x + a := by nlinarith [hx0, ha]
+    have hxane : x + a ≠ 0 := ne_of_gt hxapos
+    have hlin : HasDerivAt (fun y : ℝ => y + a) 1 x := by
+      simpa using (hasDerivAt_id x).add_const a
+    have hrpow :
+        HasDerivAt (fun y : ℝ => (y + a) ^ (-14 : ℝ))
+          ((-14 : ℝ) * (x + a) ^ ((-14 : ℝ) - 1)) x := by
+      simpa using
+        (Real.hasDerivAt_rpow_const (x := x + a) (p := (-14 : ℝ))
+          (Or.inl hxane)).comp x hlin
+    have hmul := hrpow.const_mul (-(1 / 14 : ℝ))
+    have hderiv_value :
+        (x + a) ^ ((-14 : ℝ) - 1) = g' x := by
+      rw [show ((-14 : ℝ) - 1) = (-15 : ℝ) by norm_num]
+      have hxanonneg : 0 ≤ x + a := le_of_lt hxapos
+      calc
+        (x + a) ^ (-15 : ℝ)
+            = ((x + a) ^ (15 : ℝ))⁻¹ := by
+              simpa using (rpow_neg_eq_inv_rpow (x + a) (15 : ℝ))
+        _ = ((x + a) ^ 15)⁻¹ := by
+              simp [Real.rpow_natCast, hxanonneg]
+        _ = 1 / (x + a) ^ 15 := by
+              simp [one_div]
+    simpa [g, hderiv_value] using hmul
+  have g'pos : ∀ x ∈ Set.Ioi (0 : ℝ), 0 ≤ g' x := by
+    intro x hx
+    have hxpos : 0 < x := hx
+    have hxapos : 0 < x + a := by nlinarith [hxpos, ha]
+    dsimp [g']
+    exact one_div_nonneg.mpr (pow_nonneg (le_of_lt hxapos) 15)
+  have hlim : Tendsto g atTop (𝓝 (0 : ℝ)) := by
+    have hshift : Tendsto (fun x : ℝ => x + a) atTop atTop :=
+      tendsto_atTop_add_const_right atTop a tendsto_id
+    have hrpow : Tendsto (fun x : ℝ => (x + a) ^ (-14 : ℝ)) atTop (𝓝 (0 : ℝ)) :=
+      (tendsto_rpow_neg_atTop (by norm_num : (0 : ℝ) < 14)).comp hshift
+    simpa [g] using hrpow.const_mul (-(1 / 14 : ℝ))
+  have hmain :=
+    integral_Ioi_of_hasDerivAt_of_nonneg' (a := (0 : ℝ)) hderiv g'pos hlim
+  calc
+    ∫ x in Set.Ioi (0 : ℝ), 1 / (x + a) ^ 15 =
+        ∫ x in Set.Ioi (0 : ℝ), g' x := by rfl
+    _ = (0 : ℝ) - g 0 := hmain
+    _ = 1 / (14 * a ^ 14) := by
+          dsimp [g]
+          rw [show (0 : ℝ) + a = a by ring]
+          rw [rpow_neg_eq_inv_rpow a (14 : ℝ)]
+          simp [Real.rpow_natCast, le_of_lt ha, one_div]
+          field_simp [show (14 : ℝ) ≠ 0 by norm_num,
+            pow_ne_zero 14 (ne_of_gt ha)]
+
+/-- Integral bound for the order-15 complex kernel by the right-half-plane
+real majorant. -/
+lemma integral_kernel_norm_pow15_le_re (z : ℂ) (hz : 0 < z.re) :
+    ∫ x in Set.Ioi (0 : ℝ), 1 / ‖(x : ℂ) + z‖ ^ 15 ≤
+      1 / (14 * z.re ^ 14) := by
+  have hkernel : Integrable (fun x : ℝ => 1 / ‖(x : ℂ) + z‖ ^ 15)
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    integrable_kernel_norm_pow15 z hz
+  have hdomOn :
+      IntegrableOn (fun x : ℝ => (x + z.re) ^ (-15 : ℝ))
+        (Set.Ioi (0 : ℝ)) := by
+    have hlt : (-15 : ℝ) < -1 := by norm_num
+    have hc : -z.re < (0 : ℝ) := by linarith [hz]
+    simpa using
+      (integrableOn_add_rpow_Ioi_of_lt (a := (-15 : ℝ))
+        (c := (0 : ℝ)) (m := z.re) hlt hc)
+  have hdomOn' :
+      IntegrableOn (fun x : ℝ => 1 / (x + z.re) ^ 15)
+        (Set.Ioi (0 : ℝ)) := by
+    refine hdomOn.congr_fun ?_ measurableSet_Ioi
+    intro x hx
+    have hxpos : 0 < x := hx
+    have hxre_pos : 0 < x + z.re := by
+      linarith [hxpos, hz]
+    have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+    calc
+      (x + z.re) ^ (-15 : ℝ)
+          = ((x + z.re) ^ (15 : ℝ))⁻¹ := by
+              simpa using (rpow_neg_eq_inv_rpow (x + z.re) (15 : ℝ))
+      _ = ((x + z.re) ^ 15)⁻¹ := by
+              simp [Real.rpow_natCast, hxre_nonneg]
+      _ = 1 / (x + z.re) ^ 15 := by
+              simp [one_div]
+  have hdom : Integrable (fun x : ℝ => 1 / (x + z.re) ^ 15)
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    simpa [IntegrableOn] using hdomOn'
+  have hmono :
+      ∫ x in Set.Ioi (0 : ℝ), 1 / ‖(x : ℂ) + z‖ ^ 15 ≤
+        ∫ x in Set.Ioi (0 : ℝ), 1 / (x + z.re) ^ 15 := by
+    refine integral_mono_ae hkernel hdom ?_
+    refine (ae_restrict_mem measurableSet_Ioi).mono ?_
+    intro x hx
+    exact kernel_norm_pow15_le_re z hz hx
+  calc
+    ∫ x in Set.Ioi (0 : ℝ), 1 / ‖(x : ℂ) + z‖ ^ 15
+        ≤ ∫ x in Set.Ioi (0 : ℝ), 1 / (x + z.re) ^ 15 := hmono
+    _ = 1 / (14 * z.re ^ 14) := integral_one_div_add_pos_pow15 z.re hz
+
+/-- The `m = 6` Bernoulli asymptotic main term for the digamma function.
+
+The next Step33 endpoint proof only needs a theorem bounding the difference
+between `Q3.digamma z` and this expression by the standard order-15
+Euler-Maclaurin remainder. -/
+def digammaM6AsymptoticMain (z : ℂ) : ℂ :=
+  Complex.log z
+    - ((1 : ℂ) / (2 : ℂ)) * z⁻¹
+    - ((1 : ℂ) / (12 : ℂ)) * (z ^ 2)⁻¹
+    + ((1 : ℂ) / (120 : ℂ)) * (z ^ 4)⁻¹
+    - ((1 : ℂ) / (252 : ℂ)) * (z ^ 6)⁻¹
+    + ((1 : ℂ) / (240 : ℂ)) * (z ^ 8)⁻¹
+    - ((1 : ℂ) / (132 : ℂ)) * (z ^ 10)⁻¹
+    + (((691 : ℂ) / (32760 : ℂ)) * (z ^ 12)⁻¹)
+
+/-- The standard order-15 integral-remainder estimate for the `m = 6`
+digamma asymptotic main term.  This is the remaining analytic source theorem
+for the current Step33A.1-A endpoint route. -/
+def digammaM6IntegralRemainderBound (z : ℂ) : Prop :=
+  ‖Q3.digamma z - digammaM6AsymptoticMain z‖ ≤
+    ((7 : ℝ) / (6 : ℝ)) *
+      ∫ x in Set.Ioi (0 : ℝ), 1 / ‖(x : ℂ) + z‖ ^ 15
+
+/-- Once the `m = 6` digamma remainder has the standard order-15 integral
+form, the first-omitted bound in terms of `z.re` follows from the checked
+kernel majorant. -/
+lemma digamma_m6_re_first_omitted_bound_of_integral_remainder
+    (z : ℂ) (hz : 0 < z.re)
+    (hIntegral : digammaM6IntegralRemainderBound z) :
+    ‖Q3.digamma z - digammaM6AsymptoticMain z‖ ≤
+      ((1 : ℝ) / (12 : ℝ)) * (z.re⁻¹) ^ 14 := by
+  have hIntegralBound :
+      ∫ x in Set.Ioi (0 : ℝ), 1 / ‖(x : ℂ) + z‖ ^ 15 ≤
+        1 / (14 * z.re ^ 14) :=
+    integral_kernel_norm_pow15_le_re z hz
+  have hScaled :
+      ((7 : ℝ) / (6 : ℝ)) *
+          ∫ x in Set.Ioi (0 : ℝ), 1 / ‖(x : ℂ) + z‖ ^ 15 ≤
+        ((7 : ℝ) / (6 : ℝ)) * (1 / (14 * z.re ^ 14)) := by
+    exact mul_le_mul_of_nonneg_left hIntegralBound (by norm_num)
+  have hScalar :
+      ((7 : ℝ) / (6 : ℝ)) * (1 / (14 * z.re ^ 14)) =
+        ((1 : ℝ) / (12 : ℝ)) * (z.re⁻¹) ^ 14 := by
+    rw [inv_pow]
+    field_simp [show (6 : ℝ) ≠ 0 by norm_num,
+      show (7 : ℝ) ≠ 0 by norm_num,
+      show (12 : ℝ) ≠ 0 by norm_num,
+      show (14 : ℝ) ≠ 0 by norm_num,
+      pow_ne_zero 14 (ne_of_gt hz)]
+    ring
+  exact hIntegral.trans (hScaled.trans_eq hScalar)
+
+/-- The one-step defect of the `m = 6` asymptotic main under the digamma
+recurrence.  This is the finite algebraic object left after shifting the
+digamma remainder to the right. -/
+def digammaM6StepDefect (z : ℂ) : ℂ :=
+  digammaM6AsymptoticMain (z + 1) - digammaM6AsymptoticMain z - z⁻¹
+
+/-- Finite telescoping identity for the `m = 6` main-term step defects. -/
+lemma digammaM6StepDefect_sum_range (z : ℂ) (N : ℕ) :
+    (Finset.range N).sum
+        (fun n : ℕ => digammaM6StepDefect (z + (n : ℂ))) =
+      digammaM6AsymptoticMain (z + (N : ℂ)) -
+        digammaM6AsymptoticMain z -
+        (Finset.range N).sum (fun n : ℕ => (z + (n : ℂ))⁻¹) := by
+  induction N with
+  | zero =>
+      simp [digammaM6StepDefect]
+  | succ N ih =>
+      rw [Finset.sum_range_succ, ih]
+      have harg :
+          z + (N : ℂ) + 1 = z + (((N + 1 : ℕ) : ℂ)) := by
+        norm_num [Nat.cast_add, Nat.cast_one]
+        ring
+      rw [digammaM6StepDefect, harg, Finset.sum_range_succ]
+      abel
+
+/-- Finite right-shift receiver for the `m = 6` digamma remainder.  It reduces
+the remainder at `z` to the remainder at `z + N` plus a finite sum of checked
+main-term step defects. -/
+lemma digamma_m6_remainder_finite_telescope
+    (z : ℂ) (N : ℕ) (hz : 0 < z.re) :
+    Q3.digamma z - digammaM6AsymptoticMain z =
+      Q3.digamma (z + (N : ℂ)) -
+        digammaM6AsymptoticMain (z + (N : ℂ)) +
+        (Finset.range N).sum
+          (fun n : ℕ => digammaM6StepDefect (z + (n : ℂ))) := by
+  have hrec := digamma_add_nat_of_re_pos z N hz
+  have hpsi :
+      Q3.digamma z =
+        Q3.digamma (z + (N : ℂ)) -
+          (Finset.range N).sum (fun n : ℕ => (z + (n : ℂ))⁻¹) :=
+    eq_sub_of_add_eq hrec.symm
+  have hdefects := digammaM6StepDefect_sum_range z N
+  rw [hpsi, hdefects]
+  abel
+
+/-- Norm receiver for the finite right-shift M6 remainder identity.  A bound
+for the shifted remainder plus a bound for the finite step-defect sum gives a
+bound at the original point. -/
+lemma digamma_m6_remainder_norm_le_of_finite_telescope
+    (z : ℂ) (N : ℕ) (hz : 0 < z.re) (shiftRad defectRad : ℝ)
+    (hShift :
+      ‖Q3.digamma (z + (N : ℂ)) -
+          digammaM6AsymptoticMain (z + (N : ℂ))‖ ≤ shiftRad)
+    (hDefects :
+      (Finset.range N).sum
+          (fun n : ℕ => ‖digammaM6StepDefect (z + (n : ℂ))‖) ≤ defectRad) :
+    ‖Q3.digamma z - digammaM6AsymptoticMain z‖ ≤
+      shiftRad + defectRad := by
+  rw [digamma_m6_remainder_finite_telescope z N hz]
+  have hsumNorm :
+      ‖(Finset.range N).sum
+          (fun n : ℕ => digammaM6StepDefect (z + (n : ℂ)))‖ ≤
+        (Finset.range N).sum
+          (fun n : ℕ => ‖digammaM6StepDefect (z + (n : ℂ))‖) := by
+    exact norm_sum_le _ _
+  calc
+    ‖Q3.digamma (z + (N : ℂ)) -
+          digammaM6AsymptoticMain (z + (N : ℂ)) +
+        (Finset.range N).sum
+          (fun n : ℕ => digammaM6StepDefect (z + (n : ℂ)))‖
+        ≤ ‖Q3.digamma (z + (N : ℂ)) -
+            digammaM6AsymptoticMain (z + (N : ℂ))‖ +
+          ‖(Finset.range N).sum
+            (fun n : ℕ => digammaM6StepDefect (z + (n : ℂ)))‖ :=
+            norm_add_le _ _
+    _ ≤ shiftRad +
+          (Finset.range N).sum
+            (fun n : ℕ => ‖digammaM6StepDefect (z + (n : ℂ))‖) :=
+            add_le_add hShift hsumNorm
+    _ ≤ shiftRad + defectRad :=
+            add_le_add (le_refl shiftRad) hDefects
+
+/-- Finite-telescope receiver for the standard `m = 6` integral-remainder
+surface.  This keeps the analytic source theorem local: it suffices to bound a
+far-right remainder and the explicit finite M6 step-defect sum. -/
+lemma digammaM6IntegralRemainderBound_of_finite_telescope
+    (z : ℂ) (N : ℕ) (hz : 0 < z.re) (shiftRad defectRad : ℝ)
+    (hShift :
+      ‖Q3.digamma (z + (N : ℂ)) -
+          digammaM6AsymptoticMain (z + (N : ℂ))‖ ≤ shiftRad)
+    (hDefects :
+      (Finset.range N).sum
+          (fun n : ℕ => ‖digammaM6StepDefect (z + (n : ℂ))‖) ≤ defectRad)
+    (hTotal :
+      shiftRad + defectRad ≤
+        ((7 : ℝ) / (6 : ℝ)) *
+          ∫ x in Set.Ioi (0 : ℝ), 1 / ‖(x : ℂ) + z‖ ^ 15) :
+    digammaM6IntegralRemainderBound z := by
+  exact
+    (digamma_m6_remainder_norm_le_of_finite_telescope
+      z N hz shiftRad defectRad hShift hDefects).trans hTotal
+
 lemma integrable_kernel_norm (z : ℂ) (hz : 0 < z.re) :
     Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 3))
       (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
@@ -1885,6 +2230,178 @@ lemma digamma_stieltjes_identity (z : ℂ) (hz : 0 < z.re) :
         = Q3.digamma z - (Complex.log z - (1 / 2 : ℂ) * z⁻¹) := by
             ring
     _ = -Iinf := hlim'
+
+/-- Complex-norm form of the first Stieltjes/Euler-Maclaurin digamma
+remainder.  The real-part theorem below is a projection of this bound, while
+future high-order endpoint receivers can target the same main/error shape. -/
+lemma digamma_stieltjes_complex_remainder_bound (z : ℂ) (hz : 0 < z.re) :
+    ‖Q3.digamma z - Complex.log z + (1 / (2 : ℂ)) * z⁻¹‖ ≤
+      1 / (4 * ‖z‖^2) := by
+  classical
+  set E : ℂ := Q3.digamma z - Complex.log z + (1 / (2 : ℂ)) * z⁻¹
+  have hE : E = -∫ x in Set.Ioi (0 : ℝ), (bernoulli2Diff x : ℂ) / (x + z) ^ 3 := by
+    simpa [E] using (digamma_stieltjes_identity z hz)
+  have hB : ∀ x : ℝ, ‖(bernoulli2Diff x : ℂ)‖ ≤ (1 / 4 : ℝ) := by
+    intro x
+    have hb0 : 0 ≤ bernoulli2Diff x := (bernoulli2Diff_bounds x).1
+    have hb1 : bernoulli2Diff x ≤ (1 / 4 : ℝ) := (bernoulli2Diff_bounds x).2
+    have habs : |bernoulli2Diff x| = bernoulli2Diff x := by simp [abs_of_nonneg hb0]
+    have hnorm : ‖(bernoulli2Diff x : ℂ)‖ = |bernoulli2Diff x| := by
+      simp
+    simpa [hnorm, habs] using hb1
+  have hF_bound :
+      ∀ x : ℝ,
+        ‖(bernoulli2Diff x : ℂ) / (x + z) ^ 3‖
+          ≤ (1 / 4 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 3) := by
+    intro x
+    have hnorm_pow : ‖(x + z : ℂ) ^ 3‖ = ‖(x + z : ℂ)‖ ^ 3 := by
+      simp [norm_pow]
+    have hpos : 0 ≤ ‖(x : ℂ) + z‖ ^ 3 := by positivity
+    calc
+      ‖(bernoulli2Diff x : ℂ) / (x + z) ^ 3‖
+          = ‖(bernoulli2Diff x : ℂ)‖ / ‖(x + z : ℂ) ^ 3‖ := by
+            simp
+      _ = ‖(bernoulli2Diff x : ℂ)‖ / ‖(x : ℂ) + z‖ ^ 3 := by
+            simp [hnorm_pow]
+      _ ≤ (1 / 4 : ℝ) / ‖(x : ℂ) + z‖ ^ 3 := by
+            exact (div_le_div_of_nonneg_right (hB x) hpos)
+      _ = (1 / 4 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 3) := by
+            field_simp
+  have hnorm_sq :
+      ∀ x : ℝ, ‖(x : ℂ) + z‖ ^ 2 = (x + z.re) ^ 2 + z.im ^ 2 := by
+    intro x
+    have h' : Complex.normSq ((x : ℂ) + z) =
+        (x + z.re) * (x + z.re) + z.im * z.im := by
+      simp [Complex.normSq_apply]
+    have h'' : ‖(x : ℂ) + z‖ ^ 2 = Complex.normSq ((x : ℂ) + z) := by
+      simpa using (Complex.sq_norm ((x : ℂ) + z))
+    simpa [pow_two] using (h''.trans h')
+  have hpow :
+      ∀ x : ℝ, (‖(x : ℂ) + z‖ ^ 2) ^ (3 / 2 : ℝ) = ‖(x : ℂ) + z‖ ^ 3 := by
+    intro x
+    have hbase : 0 ≤ ‖(x : ℂ) + z‖ ^ 2 := by positivity
+    calc
+      (‖(x : ℂ) + z‖ ^ 2) ^ (3 / 2 : ℝ)
+          = (‖(x : ℂ) + z‖ ^ 2) ^ ((1 / 2 : ℝ) * (3 : ℝ)) := by ring_nf
+      _ = ((‖(x : ℂ) + z‖ ^ 2) ^ (1 / 2 : ℝ)) ^ (3 : ℝ) := by
+            simpa using
+              (Real.rpow_mul (x := ‖(x : ℂ) + z‖ ^ 2) hbase (1 / 2 : ℝ) (3 : ℝ))
+      _ = (Real.sqrt (‖(x : ℂ) + z‖ ^ 2)) ^ (3 : ℝ) := by
+            simp [Real.sqrt_eq_rpow]
+      _ = ‖(x : ℂ) + z‖ ^ (3 : ℝ) := by
+            simp
+      _ = ‖(x : ℂ) + z‖ ^ 3 := by
+            simp
+  have hrewrite :
+      ∀ x : ℝ,
+        1 / ‖(x : ℂ) + z‖ ^ 3 =
+          1 / ((x + z.re) ^ 2 + z.im ^ 2) ^ (3 / 2 : ℝ) := by
+    intro x
+    calc
+      1 / ‖(x : ℂ) + z‖ ^ 3
+          = 1 / (‖(x : ℂ) + z‖ ^ 2) ^ (3 / 2 : ℝ) := by
+              simp [hpow x]
+      _ = 1 / ((x + z.re) ^ 2 + z.im ^ 2) ^ (3 / 2 : ℝ) := by
+            simp [hnorm_sq x]
+  have hkernel_eq :
+      ∫ x in Set.Ioi (0 : ℝ), (1 / ‖(x : ℂ) + z‖ ^ 3) =
+        1 / (Real.sqrt (z.re ^ 2 + z.im ^ 2) * (Real.sqrt (z.re ^ 2 + z.im ^ 2) + z.re)) := by
+    have hbound := integral_kernel_eq (σ := z.re) (τ := z.im) hz
+    simpa [hrewrite] using hbound
+  have hkernel_ne :
+      (Real.sqrt (z.re ^ 2 + z.im ^ 2) * (Real.sqrt (z.re ^ 2 + z.im ^ 2) + z.re)) ≠ 0 := by
+    have hpos : 0 < Real.sqrt (z.re ^ 2 + z.im ^ 2) := by
+      have hsq : 0 < z.re ^ 2 + z.im ^ 2 := by nlinarith [hz]
+      simpa using Real.sqrt_pos.mpr hsq
+    have hpos2 : 0 < Real.sqrt (z.re ^ 2 + z.im ^ 2) + z.re := by
+      nlinarith [hpos, hz]
+    nlinarith [hpos, hpos2]
+  have hkernel_integrable :
+      Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 3))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    set c : ℝ :=
+      1 / (Real.sqrt (z.re ^ 2 + z.im ^ 2) * (Real.sqrt (z.re ^ 2 + z.im ^ 2) + z.re))
+    have hc : c ≠ 0 := by
+      have : (Real.sqrt (z.re ^ 2 + z.im ^ 2) * (Real.sqrt (z.re ^ 2 + z.im ^ 2) + z.re)) ≠ 0 :=
+        hkernel_ne
+      simpa [c] using (one_div_ne_zero this)
+    have hscaled :
+        ∫ x in Set.Ioi (0 : ℝ), (1 / c : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 3) = (1 : ℝ) := by
+      calc
+        ∫ x in Set.Ioi (0 : ℝ), (1 / c : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 3)
+            = (1 / c : ℝ) * ∫ x in Set.Ioi (0 : ℝ), (1 / ‖(x : ℂ) + z‖ ^ 3) := by
+                simp [MeasureTheory.integral_const_mul]
+        _ = (1 / c : ℝ) * c := by
+              simpa using (congrArg (fun t => (1 / c : ℝ) * t) hkernel_eq)
+        _ = (1 : ℝ) := by
+              field_simp [hc]
+    have hscaled_int :
+        Integrable (fun x : ℝ => (1 / c : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 3))
+          (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+      exact MeasureTheory.integrable_of_integral_eq_one hscaled
+    have hgi :
+        Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 3))
+          (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+      have hgi' := hscaled_int.smul c
+      refine hgi'.congr ?_
+      refine Filter.Eventually.of_forall ?_
+      intro x
+      have :
+          c * (c⁻¹ * (‖(x : ℂ) + z‖ ^ 3)⁻¹) =
+            (‖(x : ℂ) + z‖ ^ 3)⁻¹ := by
+        field_simp [hc, mul_comm, mul_left_comm, mul_assoc]
+      simpa [Pi.smul_apply, smul_eq_mul] using this
+    exact hgi
+  have hE_norm' :
+      ‖E‖ ≤ ∫ x in Set.Ioi (0 : ℝ), (1 / 4 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 3) := by
+    have hle :
+        ∀ᵐ x ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+          ‖(bernoulli2Diff x : ℂ) / (x + z) ^ 3‖
+            ≤ (1 / 4 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 3) := by
+      exact Filter.Eventually.of_forall hF_bound
+    have hgi :
+        Integrable (fun x : ℝ => (1 / 4 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 3))
+          (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+      simpa using hkernel_integrable.smul (1 / 4 : ℝ)
+    have hnorm :
+        ‖E‖ = ‖∫ x in Set.Ioi (0 : ℝ), (bernoulli2Diff x : ℂ) / (x + z) ^ 3‖ := by
+      simp [hE, norm_neg]
+    have h' :=
+      (MeasureTheory.norm_integral_le_of_norm_le
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) hgi hle)
+    simpa [hnorm] using h'
+  have hkernel :
+      ∫ x in Set.Ioi (0 : ℝ), (1 / ‖(x : ℂ) + z‖ ^ 3)
+        ≤ 1 / ‖z‖ ^ 2 := by
+    have hnormsq : (z.re ^ 2 + z.im ^ 2) = ‖z‖ ^ 2 := by
+      have h1 : (z.re ^ 2 + z.im ^ 2) = Complex.normSq z := by
+        simp [Complex.normSq_apply, pow_two]
+      have h2 : Complex.normSq z = ‖z‖ ^ 2 := by
+        simpa using (Complex.normSq_eq_norm_sq z)
+      exact h1.trans h2
+    have hbound := integral_kernel_bound (σ := z.re) (τ := z.im) hz
+    simpa [hrewrite, hnormsq] using hbound
+  have hE_final :
+      ‖E‖ ≤ 1 / (4 * ‖z‖ ^ 2) := by
+    have hE_norm'' :
+        ‖E‖ ≤ ∫ x in Set.Ioi (0 : ℝ), (4⁻¹ : ℝ) * (‖(x : ℂ) + z‖ ^ 3)⁻¹ := by
+      simpa [one_div] using hE_norm'
+    have hkernel' :
+        ∫ x in Set.Ioi (0 : ℝ), (‖(x : ℂ) + z‖ ^ 3)⁻¹ ≤ (‖z‖ ^ 2)⁻¹ := by
+      simpa [one_div] using hkernel
+    have h' :
+        (4⁻¹ : ℝ) * ∫ x in Set.Ioi (0 : ℝ), (‖(x : ℂ) + z‖ ^ 3)⁻¹
+          ≤ (4⁻¹ : ℝ) * (‖z‖ ^ 2)⁻¹ := by
+      exact mul_le_mul_of_nonneg_left hkernel' (by norm_num : (0 : ℝ) ≤ (4⁻¹ : ℝ))
+    refine le_trans hE_norm'' ?_
+    calc
+      ∫ x in Set.Ioi (0 : ℝ), (4⁻¹ : ℝ) * (‖(x : ℂ) + z‖ ^ 3)⁻¹
+          = (4⁻¹ : ℝ) * ∫ x in Set.Ioi (0 : ℝ), (‖(x : ℂ) + z‖ ^ 3)⁻¹ := by
+              simp [MeasureTheory.integral_const_mul]
+      _ ≤ (4⁻¹ : ℝ) * (‖z‖ ^ 2)⁻¹ := h'
+      _ = 1 / (4 * ‖z‖ ^ 2) := by
+            field_simp
+  simpa [E] using hE_final
 
 lemma re_digamma_remainder_bound_stieltjes (z : ℂ) (hz : 0 < z.re) :
     |(Q3.digamma z).re - Real.log ‖z‖ + z.re / (2 * ‖z‖^2)| ≤

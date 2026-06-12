@@ -1,0 +1,79 @@
+{
+  "route": "Step33A.1-A canonical signed A direct boundary-null PSD sanity",
+  "date": "2026-06-04",
+  "matrix_convention": {
+    "A": "current Step22 positive Arch midpoint table",
+    "P": "current finite prime midpoint table",
+    "Q": "current boundary midpoint table",
+    "canonical_signed_C_tested": "-A - P",
+    "positive_finite_C_tested": "A - P"
+  },
+  "blocks": {
+    "primary": {
+      "q_singular_values": [9.68757799, 6.87835225],
+      "q_rank": 2,
+      "boundary_null_dimension": 21,
+      "variants": {
+        "A-P": {
+          "min_eigenvalue_on_ker_q": 0.000190283604334,
+          "negative_eigenvalue_count": 0,
+          "max_eigenvalue_on_ker_q": 2.61738467644
+        },
+        "A+P": {
+          "min_eigenvalue_on_ker_q": -2.19045105434,
+          "negative_eigenvalue_count": 8,
+          "max_eigenvalue_on_ker_q": 1.41825030827
+        },
+        "-A-P": {
+          "min_eigenvalue_on_ker_q": -1.418250308269634,
+          "negative_eigenvalue_count": 13,
+          "max_eigenvalue_on_ker_q": 2.1904510543433995
+        },
+        "-A+P": {
+          "min_eigenvalue_on_ker_q": -2.61738467644,
+          "negative_eigenvalue_count": 21,
+          "max_eigenvalue_on_ker_q": -0.000190283604334
+        },
+        "P-A": {
+          "min_eigenvalue_on_ker_q": -2.61738467644,
+          "negative_eigenvalue_count": 21,
+          "max_eigenvalue_on_ker_q": -0.000190283604334
+        }
+      }
+    },
+    "control": {
+      "q_singular_values": [9.68757799, 6.87835225],
+      "q_rank": 2,
+      "boundary_null_dimension": 21,
+      "variants": {
+        "A-P": {
+          "min_eigenvalue_on_ker_q": 0.0000190759278019,
+          "negative_eigenvalue_count": 0,
+          "max_eigenvalue_on_ker_q": 2.58293999017
+        },
+        "A+P": {
+          "min_eigenvalue_on_ker_q": -2.60238711597,
+          "negative_eigenvalue_count": 9,
+          "max_eigenvalue_on_ker_q": 1.36707918001
+        },
+        "-A-P": {
+          "min_eigenvalue_on_ker_q": -1.367079180010388,
+          "negative_eigenvalue_count": 12,
+          "max_eigenvalue_on_ker_q": 2.6023871159713385
+        },
+        "-A+P": {
+          "min_eigenvalue_on_ker_q": -2.58293999017,
+          "negative_eigenvalue_count": 21,
+          "max_eigenvalue_on_ker_q": -0.0000190759278019
+        },
+        "P-A": {
+          "min_eigenvalue_on_ker_q": -2.58293999017,
+          "negative_eigenvalue_count": 21,
+          "max_eigenvalue_on_ker_q": -0.0000190759278019
+        }
+      }
+    }
+  },
+  "tau_penalty_conclusion": "Adding tau * Q^T Q cannot fix a negative eigenvalue on ker(Q), because Qv = 0 on the target subspace.",
+  "verdict": "Do not generate direct -A-P signed PSD payload. Resolve semantic sign location first; current finite PSD truth points to A-P."
+}

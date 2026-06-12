@@ -1,0 +1,124 @@
+{
+  "families": [
+    {
+      "block_id": "psdpd_L3_k11_ell030_delta025_theta1e4",
+      "candidate_lean_astar_import": {
+        "A_diag": -78.89774143023172,
+        "A_max_entry": 15.725429349261962,
+        "A_min_entry": -78.89774143023172,
+        "D_penalty_floor": 0.0001222859478322234,
+        "D_penalty_min_eigenvalue": -101.65250980604694,
+        "D_penalty_passes_floor": false,
+        "R_penalty_floor": 0.13569220778186006,
+        "R_penalty_min_eigenvalue": -101.08826416650179,
+        "R_penalty_passes_floor": false
+      },
+      "current_step22_import": {
+        "A_diag": 0.12336444536392195,
+        "A_max_entry": 0.12336444536392195,
+        "A_min_entry": -0.43748178349373795,
+        "D_penalty_floor": 0.0001222859478322234,
+        "D_penalty_min_eigenvalue": 0.00012228595300390246,
+        "D_penalty_passes_floor": true,
+        "R_penalty_floor": 0.13569220778186006,
+        "R_penalty_min_eigenvalue": 0.1356922079453794,
+        "R_penalty_passes_floor": true
+      },
+      "family": "primary",
+      "kappa": 3.25,
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+      "negative_candidate_lean_astar_import": {
+        "A_diag": 78.89774143023172,
+        "A_max_entry": 78.89774143023172,
+        "A_min_entry": -15.725429349261962,
+        "D_penalty_floor": 0.0001222859478322234,
+        "D_penalty_min_eigenvalue": 39.79178072188683,
+        "D_penalty_passes_floor": true,
+        "R_penalty_floor": 0.13569220778186006,
+        "R_penalty_min_eigenvalue": 40.66392132402513,
+        "R_penalty_passes_floor": true
+      },
+      "negative_current_step22_import": {
+        "A_diag": -0.12336444536392195,
+        "A_max_entry": 0.43748178349373795,
+        "A_min_entry": -0.12336444536392195,
+        "D_penalty_floor": 0.0001222859478322234,
+        "D_penalty_min_eigenvalue": -1.4181814057633806,
+        "D_penalty_passes_floor": false,
+        "R_penalty_floor": 0.13569220778186006,
+        "R_penalty_min_eigenvalue": -0.7087931541502508,
+        "R_penalty_passes_floor": false
+      },
+      "penalty_params": {
+        "dFloor": 0.0001222859478322234,
+        "rFloor": 0.13569220778186006,
+        "tauD": 501.18723362727354,
+        "tauR": 15848.931924611174
+      },
+      "theta": 0.0001
+    },
+    {
+      "block_id": "psdpd_L3_k9_ell030_delta025_theta1e5",
+      "candidate_lean_astar_import": {
+        "A_diag": -75.20513017099184,
+        "A_max_entry": 17.32138601963182,
+        "A_min_entry": -75.20513017099184,
+        "D_penalty_floor": 1.263692282186616e-05,
+        "D_penalty_min_eigenvalue": -100.27132888586563,
+        "D_penalty_passes_floor": false,
+        "R_penalty_floor": 0.0019590640625249765,
+        "R_penalty_min_eigenvalue": -99.63668870977041,
+        "R_penalty_passes_floor": false
+      },
+      "current_step22_import": {
+        "A_diag": 0.026248903658774844,
+        "A_max_entry": 0.026248903658774844,
+        "A_min_entry": -0.4873092439847854,
+        "D_penalty_floor": 1.263692282186616e-05,
+        "D_penalty_min_eigenvalue": 1.263692347554592e-05,
+        "D_penalty_passes_floor": true,
+        "R_penalty_floor": 0.0019590640625249765,
+        "R_penalty_min_eigenvalue": 0.0019590650942526585,
+        "R_penalty_passes_floor": true
+      },
+      "family": "control",
+      "kappa": 3.075,
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+      "negative_candidate_lean_astar_import": {
+        "A_diag": 75.20513017099184,
+        "A_max_entry": 75.20513017099184,
+        "A_min_entry": -17.32138601963182,
+        "D_penalty_floor": 1.263692282186616e-05,
+        "D_penalty_min_eigenvalue": 32.14144110121121,
+        "D_penalty_passes_floor": true,
+        "R_penalty_floor": 0.0019590640625249765,
+        "R_penalty_min_eigenvalue": 32.94592066457576,
+        "R_penalty_passes_floor": true
+      },
+      "negative_current_step22_import": {
+        "A_diag": -0.026248903658774844,
+        "A_max_entry": 0.4873092439847854,
+        "A_min_entry": -0.026248903658774844,
+        "D_penalty_floor": 1.263692282186616e-05,
+        "D_penalty_min_eigenvalue": -1.3670744647608697,
+        "D_penalty_passes_floor": false,
+        "R_penalty_floor": 0.0019590640625249765,
+        "R_penalty_min_eigenvalue": -0.6845612808106109,
+        "R_penalty_passes_floor": false
+      },
+      "penalty_params": {
+        "dFloor": 1.263692282186616e-05,
+        "rFloor": 0.0019590640625249765,
+        "tauD": 63.09573444801943,
+        "tauR": 100000.0
+      },
+      "theta": 1e-05
+    }
+  ],
+  "inputs": {
+    "audit_json": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_source_convention_audit.json",
+    "penalty_import": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffPenaltyImport.lean",
+    "plan": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step32f_coeff_payload_import_plan.json"
+  },
+  "schema": "q3_psdpd_step33_a_source_sync_psd_sanity.v1"
+}

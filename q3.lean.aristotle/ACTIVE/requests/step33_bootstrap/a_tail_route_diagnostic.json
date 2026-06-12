@@ -1,0 +1,327 @@
+{
+  "blocks": [
+    {
+      "absolute_two_piece_log_majorant_can_be_final_payload": false,
+      "block": "primary",
+      "crossing_rows": [],
+      "crossing_window_rows": 0,
+      "distances": 23,
+      "k": 11,
+      "label": "primary k=11",
+      "negative_rows": [
+        {
+          "distance": "0.25",
+          "index": 1,
+          "positive_window_lower": "-6.305551866376207189E-23",
+          "positive_window_upper": "-6.305551866376207094E-23"
+        },
+        {
+          "distance": "0.50",
+          "index": 2,
+          "positive_window_lower": "-1.996472869034854928E-25",
+          "positive_window_upper": "-1.996472869034848130E-25"
+        },
+        {
+          "distance": "0.75",
+          "index": 3,
+          "positive_window_lower": "-6.895864346860663928E-31",
+          "positive_window_upper": "-6.895864340546207930E-31"
+        },
+        {
+          "distance": "2.00",
+          "index": 8,
+          "positive_window_lower": "-1.814020884951004928E-38",
+          "positive_window_upper": "-1.760515882149359049E-38"
+        },
+        {
+          "distance": "2.25",
+          "index": 9,
+          "positive_window_lower": "-2.174760883333156440E-38",
+          "positive_window_upper": "-2.143920573751077708E-38"
+        },
+        {
+          "distance": "2.75",
+          "index": 11,
+          "positive_window_lower": "-4.053674357961899650E-38",
+          "positive_window_upper": "-4.049949548971988508E-38"
+        },
+        {
+          "distance": "3.00",
+          "index": 12,
+          "positive_window_lower": "-4.998461426049225854E-38",
+          "positive_window_upper": "-4.979670394004845056E-38"
+        },
+        {
+          "distance": "3.50",
+          "index": 14,
+          "positive_window_lower": "-5.579606071978205304E-38",
+          "positive_window_upper": "-5.567555740781065146E-38"
+        },
+        {
+          "distance": "3.75",
+          "index": 15,
+          "positive_window_lower": "-7.547160862263315632E-38",
+          "positive_window_upper": "-7.527602995532354013E-38"
+        },
+        {
+          "distance": "4.25",
+          "index": 17,
+          "positive_window_lower": "-6.017701436619444538E-38",
+          "positive_window_upper": "-5.998562761037059983E-38"
+        },
+        {
+          "distance": "4.50",
+          "index": 18,
+          "positive_window_lower": "-9.715450123528218917E-38",
+          "positive_window_upper": "-9.689880822991377271E-38"
+        },
+        {
+          "distance": "5.00",
+          "index": 20,
+          "positive_window_lower": "-5.498206149480209692E-38",
+          "positive_window_upper": "-5.471530306837159073E-38"
+        },
+        {
+          "distance": "5.25",
+          "index": 21,
+          "positive_window_lower": "-1.122040070429504374E-37",
+          "positive_window_upper": "-1.119944472664322698E-37"
+        }
+      ],
+      "negative_window_rows": 13,
+      "obstruction": {
+        "first_distance": "0.25",
+        "first_index": 1,
+        "first_positive_window_upper": "-6.305551866376207094E-23",
+        "reason": "absolute_log_majorant_upper_is_nonnegative_but_generated_signed_window_upper_is_negative"
+      },
+      "positive_rows": [
+        {
+          "distance": "0.00",
+          "index": 0,
+          "positive_window_lower": "1.798295245717239885E-21",
+          "positive_window_upper": "1.798295245717239886E-21"
+        },
+        {
+          "distance": "1.00",
+          "index": 4,
+          "positive_window_lower": "6.401079035162446847E-35",
+          "positive_window_upper": "6.401155878556344853E-35"
+        },
+        {
+          "distance": "1.25",
+          "index": 5,
+          "positive_window_lower": "2.763730364120544729E-37",
+          "positive_window_upper": "2.765434525216832360E-37"
+        },
+        {
+          "distance": "1.50",
+          "index": 6,
+          "positive_window_lower": "1.602399319764370269E-38",
+          "positive_window_upper": "1.636634569504751816E-38"
+        },
+        {
+          "distance": "1.75",
+          "index": 7,
+          "positive_window_lower": "9.734208512697355486E-39",
+          "positive_window_upper": "1.032615878008123111E-38"
+        },
+        {
+          "distance": "2.50",
+          "index": 10,
+          "positive_window_lower": "6.474329120162834575E-38",
+          "positive_window_upper": "6.495885617702951180E-38"
+        },
+        {
+          "distance": "3.25",
+          "index": 13,
+          "positive_window_lower": "1.105003144696759785E-37",
+          "positive_window_upper": "1.105298281018955597E-37"
+        },
+        {
+          "distance": "4.00",
+          "index": 16,
+          "positive_window_lower": "1.428235690884327907E-37",
+          "positive_window_upper": "1.431037884303337226E-37"
+        },
+        {
+          "distance": "4.75",
+          "index": 19,
+          "positive_window_lower": "1.603265278771680276E-37",
+          "positive_window_upper": "1.604677483371580220E-37"
+        },
+        {
+          "distance": "5.50",
+          "index": 22,
+          "positive_window_lower": "1.627623055066903689E-37",
+          "positive_window_upper": "1.629182771798841832E-37"
+        }
+      ],
+      "positive_window_rows": 10,
+      "recommended_route": "signed_chunked_comparison_integral_payload"
+    },
+    {
+      "absolute_two_piece_log_majorant_can_be_final_payload": false,
+      "block": "control",
+      "crossing_rows": [],
+      "crossing_window_rows": 0,
+      "distances": 23,
+      "k": 9,
+      "label": "control k=9",
+      "negative_rows": [
+        {
+          "distance": "0.25",
+          "index": 1,
+          "positive_window_lower": "-1.496392435805403197E-18",
+          "positive_window_upper": "-1.496392435805403197E-18"
+        },
+        {
+          "distance": "0.75",
+          "index": 3,
+          "positive_window_lower": "-7.058157635391009113E-20",
+          "positive_window_upper": "-7.058157635391009113E-20"
+        },
+        {
+          "distance": "1.00",
+          "index": 4,
+          "positive_window_lower": "-2.359662550523920397E-19",
+          "positive_window_upper": "-2.359662550523920397E-19"
+        },
+        {
+          "distance": "1.50",
+          "index": 6,
+          "positive_window_lower": "-8.737862637356801481E-20",
+          "positive_window_upper": "-8.737862637356801481E-20"
+        },
+        {
+          "distance": "1.75",
+          "index": 7,
+          "positive_window_lower": "-9.828979838699466044E-20",
+          "positive_window_upper": "-9.828979838699466044E-20"
+        },
+        {
+          "distance": "2.25",
+          "index": 9,
+          "positive_window_lower": "-8.679651064084806067E-20",
+          "positive_window_upper": "-8.679651064084806067E-20"
+        },
+        {
+          "distance": "2.50",
+          "index": 10,
+          "positive_window_lower": "-4.176827026346629402E-20",
+          "positive_window_upper": "-4.176827026346629402E-20"
+        },
+        {
+          "distance": "3.00",
+          "index": 12,
+          "positive_window_lower": "-8.274872087691456295E-20",
+          "positive_window_upper": "-8.274872087691456295E-20"
+        },
+        {
+          "distance": "3.25",
+          "index": 13,
+          "positive_window_lower": "-1.015346368075401224E-20",
+          "positive_window_upper": "-1.015346368075401224E-20"
+        },
+        {
+          "distance": "3.75",
+          "index": 15,
+          "positive_window_lower": "-7.689410156069335989E-20",
+          "positive_window_upper": "-7.689410156069335989E-20"
+        },
+        {
+          "distance": "4.50",
+          "index": 18,
+          "positive_window_lower": "-6.977810634424286916E-20",
+          "positive_window_upper": "-6.977810634424286916E-20"
+        },
+        {
+          "distance": "5.25",
+          "index": 21,
+          "positive_window_lower": "-6.173345585286570032E-20",
+          "positive_window_upper": "-6.173345585286570032E-20"
+        }
+      ],
+      "negative_window_rows": 12,
+      "obstruction": {
+        "first_distance": "0.25",
+        "first_index": 1,
+        "first_positive_window_upper": "-1.496392435805403197E-18",
+        "reason": "absolute_log_majorant_upper_is_nonnegative_but_generated_signed_window_upper_is_negative"
+      },
+      "positive_rows": [
+        {
+          "distance": "0.00",
+          "index": 0,
+          "positive_window_lower": "2.390275099671697075E-18",
+          "positive_window_upper": "2.390275099671697075E-18"
+        },
+        {
+          "distance": "0.50",
+          "index": 2,
+          "positive_window_lower": "6.216563201416807164E-19",
+          "positive_window_upper": "6.216563201416807164E-19"
+        },
+        {
+          "distance": "1.25",
+          "index": 5,
+          "positive_window_lower": "2.573790936828052663E-19",
+          "positive_window_upper": "2.573790936828052663E-19"
+        },
+        {
+          "distance": "2.00",
+          "index": 8,
+          "positive_window_lower": "1.625541116389958198E-19",
+          "positive_window_upper": "1.625541116389958198E-19"
+        },
+        {
+          "distance": "2.75",
+          "index": 11,
+          "positive_window_lower": "1.137653830948299151E-19",
+          "positive_window_upper": "1.137653830948299151E-19"
+        },
+        {
+          "distance": "3.50",
+          "index": 14,
+          "positive_window_lower": "8.152033533892666785E-20",
+          "positive_window_upper": "8.152033533892666785E-20"
+        },
+        {
+          "distance": "4.00",
+          "index": 16,
+          "positive_window_lower": "9.864598276104447575E-21",
+          "positive_window_upper": "9.864598276104447575E-21"
+        },
+        {
+          "distance": "4.25",
+          "index": 17,
+          "positive_window_lower": "5.738007805541927638E-20",
+          "positive_window_upper": "5.738007805541927638E-20"
+        },
+        {
+          "distance": "4.75",
+          "index": 19,
+          "positive_window_lower": "2.308438688896104387E-20",
+          "positive_window_upper": "2.308438688896104387E-20"
+        },
+        {
+          "distance": "5.00",
+          "index": 20,
+          "positive_window_lower": "3.810690383811020543E-20",
+          "positive_window_upper": "3.810690383811020543E-20"
+        },
+        {
+          "distance": "5.50",
+          "index": 22,
+          "positive_window_lower": "3.168430360414573664E-20",
+          "positive_window_upper": "3.168430360414573664E-20"
+        }
+      ],
+      "positive_window_rows": 11,
+      "recommended_route": "signed_chunked_comparison_integral_payload"
+    }
+  ],
+  "meaning": "Route guard for the Step33A.1-A signed positive-tail window. It detects when a nonnegative absolute log-majorant cannot be the final signed payload because generated window uppers are negative.",
+  "schema": "q3_psdpd_step33_a_tail_route_diagnostic.v1",
+  "source_contract": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_window_contract.json"
+}

@@ -1,0 +1,48 @@
+[
+  {
+    "block": "primary",
+    "k_spline": 11,
+    "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+    "radius_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
+    "arb_prec": 1024,
+    "entries": 529,
+    "failed_entries": 0,
+    "max_mid_drift": "2.166667737082949416000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009231648420020226526E-46",
+    "max_required_radius": "1.979966428272639024E-16",
+    "min_slack": "0E-35",
+    "worst": {
+      "i": 0,
+      "j": 8,
+      "generated_mid": "0.6918228900734029185",
+      "imported_mid": "0.6918228900734029185",
+      "generated_rad": "4.802067732556144058E-17",
+      "required_radius": "4.802067732556144058E-17",
+      "imported_radius": "4.802067732556144058E-17",
+      "slack": "0E-35"
+    },
+    "verdict": "direct_profile_payload_fits_imported_radius"
+  },
+  {
+    "block": "control",
+    "k_spline": 9,
+    "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+    "radius_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
+    "arb_prec": 1024,
+    "entries": 529,
+    "failed_entries": 0,
+    "max_mid_drift": "6.964019195683736832000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002529490998753729276E-52",
+    "max_required_radius": "2.155774514359498832E-16",
+    "min_slack": "0E-36",
+    "worst": {
+      "i": 0,
+      "j": 4,
+      "generated_mid": "0.2872678396459469874",
+      "imported_mid": "0.2872678396459469874",
+      "generated_rad": "6.934963520328490029E-18",
+      "required_radius": "6.934963520328490029E-18",
+      "imported_radius": "6.934963520328490029E-18",
+      "slack": "0E-36"
+    },
+    "verdict": "direct_profile_payload_fits_imported_radius"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "blocks": [
+    {
+      "block": "primary",
+      "changed_rows": 182,
+      "enlarged_rows": 182,
+      "max_new_radius": "2.139966428288638983E-16",
+      "max_old_radius": "2.139966428288638983E-16",
+      "max_source_radius": "1.979966428272639024E-16",
+      "p_rows": 529,
+      "preserved_old_rows": 347,
+      "source_csv": "/tmp/q3_step20_k11_rad.csv",
+      "target_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
+      "target_sha256_after": "1abcea4734501e53b0fb313f994be1b02d2ed9214b605445e8b8dca983ede331",
+      "target_sha256_before": "6e29b6de57d2be9e6f1460d90061d65dfa18833eaa9062ec2408ca7816e41675"
+    },
+    {
+      "block": "control",
+      "changed_rows": 122,
+      "enlarged_rows": 122,
+      "max_new_radius": "2.605774514404499073E-16",
+      "max_old_radius": "2.605774514404499073E-16",
+      "max_source_radius": "2.155774514359498832E-16",
+      "p_rows": 529,
+      "preserved_old_rows": 407,
+      "source_csv": "/tmp/q3_step20_k9_rad.csv",
+      "target_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
+      "target_sha256_after": "6b3d86ba20be14c721895ae8977fa6f97e4d089d08da7efd891b305572dfe794",
+      "target_sha256_before": "ee50429a7ed0cd9929f39e8ee5a924b61b5ddeb413c0705624a631c96c9c0c17"
+    }
+  ],
+  "meaning": "Only Step22 matrix=P radius rows were synchronized with the current Step20 direct-profile replay using max(old, replay).",
+  "schema": "q3_psdpd_step33_sync_p_radii_v1"
+}

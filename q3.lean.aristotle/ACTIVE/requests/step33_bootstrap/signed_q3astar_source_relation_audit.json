@@ -1,0 +1,175 @@
+{
+  "families": [
+    {
+      "canonical_receiver": "-Step22/centeredBSplineArchKernelProfile midpoint convention",
+      "d0": {
+        "canonical_signed_mid": -0.12336444536392195,
+        "correction": 79.02110587559564,
+        "signed_q3astar_mid": 78.89774143023172
+      },
+      "d1": {
+        "canonical_signed_mid": 0.43748178349373795,
+        "correction": -16.1629111327557,
+        "signed_q3astar_mid": -15.725429349261962
+      },
+      "diagonal_like": false,
+      "distance_correction_first8": [
+        79.02110587559564,
+        -16.1629111327557,
+        -7.693206225393354,
+        -5.172963376817056,
+        -3.93975321330766,
+        -3.2040859978185923,
+        -2.713840114868167,
+        -2.3629012389849673
+      ],
+      "eigenvalues_max6": [
+        98.92957069600901,
+        99.85329173450235,
+        100.60337611115756,
+        101.18126412889265,
+        101.59230445962748,
+        101.83779500551256
+      ],
+      "eigenvalues_min6": [
+        -11.118230819237816,
+        30.00954378714344,
+        44.72492323389793,
+        54.85464022135573,
+        62.13735479080256,
+        68.10181793309025
+      ],
+      "family": "primary",
+      "fro_norm_correction": 400.7893242995274,
+      "max_abs_correction": 79.02110587559564,
+      "max_abs_offdiag": 16.1629111327557,
+      "operator_norm_correction": 101.83779500551255,
+      "p0_like": {
+        "alpha": -1.285530350585366,
+        "relative_residual": 0.9983951639990946,
+        "residual_fro": 400.1461231631129
+      },
+      "payload": "negative full-even Q3.a_star candidate midpoint convention",
+      "prefix": "primaryK11",
+      "qt_s_q_like": {
+        "coefficients": [
+          0.36036893518209256,
+          -0.3887041044766754,
+          0.39826926694113235
+        ],
+        "relative_residual": 0.9958525960706897,
+        "residual_fro": 399.1270890811019
+      },
+      "rank_one_like": false,
+      "rank_tol_1e_minus_10": 23,
+      "rank_tol_1e_minus_8": 23,
+      "rank_two_like": false,
+      "scalar_multiple_of_canonical_signed_fit": {
+        "alpha": -49.87150504738336,
+        "relative_residual": 0.8858269706549146,
+        "residual_fro": 353.4919056312062
+      },
+      "singular_values_top6": [
+        101.83779500551255,
+        101.59230445962747,
+        101.18126412889264,
+        100.60337611115756,
+        99.85329173450232,
+        98.92957069600898
+      ],
+      "zero_on_ker_q": {
+        "ker_q_compressed_fro": 397.1997877943896,
+        "kernel_dimension": 21,
+        "q_rank": 2,
+        "relative_to_target_fro": 0.9910438320396598,
+        "yes_at_tol_1e_minus_8": false
+      }
+    },
+    {
+      "canonical_receiver": "-Step22/centeredBSplineArchKernelProfile midpoint convention",
+      "d0": {
+        "canonical_signed_mid": -0.026248903658774844,
+        "correction": 75.2313790746506,
+        "signed_q3astar_mid": 75.20513017099184
+      },
+      "d1": {
+        "canonical_signed_mid": 0.4873092439847854,
+        "correction": -17.808695263616606,
+        "signed_q3astar_mid": -17.32138601963182
+      },
+      "diagonal_like": false,
+      "distance_correction_first8": [
+        75.2313790746506,
+        -17.808695263616606,
+        -8.474711937610143,
+        -5.683839549272034,
+        -4.325343599403888,
+        -3.5164181113189583,
+        -2.977821070312408,
+        -2.5924567098081717
+      ],
+      "eigenvalues_max6": [
+        97.17222688716389,
+        98.18581426114761,
+        99.00822768452298,
+        99.64142559209998,
+        100.09157462658798,
+        100.36032838644537
+      ],
+      "eigenvalues_min6": [
+        -23.898040287799798,
+        21.235844339859433,
+        37.4060044015067,
+        48.55245177859908,
+        56.57677667156831,
+        63.15579445677167
+      ],
+      "family": "control",
+      "fro_norm_correction": 388.32996376692563,
+      "max_abs_correction": 75.2313790746506,
+      "max_abs_offdiag": 17.808695263616606,
+      "operator_norm_correction": 100.36032838644537,
+      "p0_like": {
+        "alpha": -1.4279409619592158,
+        "relative_residual": 0.9974606868849912,
+        "residual_fro": 387.3438723969814
+      },
+      "payload": "negative full-even Q3.a_star candidate midpoint convention",
+      "prefix": "controlK9",
+      "qt_s_q_like": {
+        "coefficients": [
+          0.21925815264635307,
+          -0.36617891768235683,
+          0.24231773385573838
+        ],
+        "relative_residual": 0.9967988230513105,
+        "residual_fro": 387.08685083842954
+      },
+      "rank_one_like": false,
+      "rank_tol_1e_minus_10": 23,
+      "rank_tol_1e_minus_8": 23,
+      "rank_two_like": false,
+      "scalar_multiple_of_canonical_signed_fit": {
+        "alpha": -37.000855765860614,
+        "relative_residual": 0.9212878574038788,
+        "residual_fro": 356.29082619420734
+      },
+      "singular_values_top6": [
+        100.36032838644537,
+        100.09157462658801,
+        99.64142559209996,
+        99.008227684523,
+        98.18581426114766,
+        97.17222688716394
+      ],
+      "zero_on_ker_q": {
+        "ker_q_compressed_fro": 384.68157365414424,
+        "kernel_dimension": 21,
+        "q_rank": 2,
+        "relative_to_target_fro": 0.9906049224803802,
+        "yes_at_tol_1e_minus_8": false
+      }
+    }
+  ],
+  "status": "diagnostic_only"
+}

@@ -1,0 +1,84 @@
+{
+  "decision": {
+    "D_simple_coordinate_or_frequency_map": "rejected",
+    "constant_sign_or_scale_fit": "rejected",
+    "recommended_route": "No simple D theorem from d/frequency/sign/scale evidence. Choose B only if a Lean semantic theorem changes the receiver/assembler to raw Step22; otherwise choose C one-time recert/migration to the centered receiver convention."
+  },
+  "families": [
+    {
+      "constant_scale_probe": {
+        "ratio_gap": "2.625642235749704442E-2",
+        "rejects_constant_scale": true,
+        "target_over_receiver_at_d0": "-1.563599199769382369E-3",
+        "target_over_receiver_at_d1": "-2.782002155726642679E-2"
+      },
+      "d0": {
+        "center_error": "7.902110587559563426E+1",
+        "coordinate_invariant_reason": "cos(t*0)=1, so pure x/d/frequency rewrites cannot change this row",
+        "distance": "0.00",
+        "minus_receiver_error": "7.877437698486779036E+1",
+        "minus_receiver_mid": "7.889774143023171231E+1",
+        "receiver_mid": "-7.889774143023171231E+1",
+        "rejects_pure_coordinate_frequency_rewrite": true,
+        "target_mid": "1.233644453639219510E-1"
+      },
+      "d1": {
+        "center_error": "1.616291113275570036E+1",
+        "distance": "0.25",
+        "minus_receiver_error": "1.528794756576822446E+1",
+        "minus_receiver_mid": "-1.572542934926196241E+1",
+        "receiver_mid": "1.572542934926196241E+1",
+        "target_mid": "-4.374817834937379520E-1"
+      },
+      "family": "primary_finite",
+      "source": null,
+      "window": {
+        "chunk_count": 26,
+        "has_negative_side": true,
+        "has_positive_side": true,
+        "left_min": "-2.600000000000000000E+2",
+        "looks_full_symmetric": true,
+        "right_max": "2.600000000000000000E+2"
+      }
+    },
+    {
+      "constant_scale_probe": {
+        "ratio_gap": "2.778435553201289414E-2",
+        "rejects_constant_scale": true,
+        "target_over_receiver_at_d0": "-3.490307589268635342E-4",
+        "target_over_receiver_at_d1": "-2.813338629093975767E-2"
+      },
+      "d0": {
+        "center_error": "7.523137907465061464E+1",
+        "coordinate_invariant_reason": "cos(t*0)=1, so pure x/d/frequency rewrites cannot change this row",
+        "distance": "0.00",
+        "minus_receiver_error": "7.517888126733306496E+1",
+        "minus_receiver_mid": "7.520513017099183980E+1",
+        "receiver_mid": "-7.520513017099183980E+1",
+        "rejects_pure_coordinate_frequency_rewrite": true,
+        "target_mid": "2.624890365877484420E-2"
+      },
+      "d1": {
+        "center_error": "1.780869526361660549E+1",
+        "distance": "0.25",
+        "minus_receiver_error": "1.683407677564703465E+1",
+        "minus_receiver_mid": "-1.732138601963182007E+1",
+        "receiver_mid": "1.732138601963182007E+1",
+        "target_mid": "-4.873092439847854230E-1"
+      },
+      "family": "control_finite",
+      "source": null,
+      "window": {
+        "chunk_count": 26,
+        "has_negative_side": true,
+        "has_positive_side": true,
+        "left_min": "-2.600000000000000000E+2",
+        "looks_full_symmetric": true,
+        "right_max": "2.600000000000000000E+2"
+      }
+    }
+  ],
+  "input_smoke_json": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_integral_probe_centered_smoke.json",
+  "non_mutating": true,
+  "schema": "q3_psdpd_step33_a_coordinate_invariant_audit.v1"
+}

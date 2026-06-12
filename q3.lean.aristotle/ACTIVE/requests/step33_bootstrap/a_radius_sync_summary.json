@@ -1,0 +1,38 @@
+{
+  "blocks": [
+    {
+      "a_rows": 529,
+      "block": "primary",
+      "changed_rows": 196,
+      "enlarged_rows": 196,
+      "max_midpoint_offset": "4E-19",
+      "max_new_radius": "1.57770616151585566E-17",
+      "max_old_radius": "1.53770616151585566E-17",
+      "max_source_radius": "1.57770616151585566E-17",
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+      "preserved_old_rows": 333,
+      "source_manifest": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_finite_tail_components_k11.json",
+      "target_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
+      "target_sha256_after": "c198f787012d2d96ce6df5ba7da179b7229d437998a45dd1e6985f37cb255beb",
+      "target_sha256_before": "c04ceeb77aae33d7111c666f764f7e42e62b92ef38c33a161d7fb916c63b9129"
+    },
+    {
+      "a_rows": 529,
+      "block": "control",
+      "changed_rows": 149,
+      "enlarged_rows": 149,
+      "max_midpoint_offset": "4E-19",
+      "max_new_radius": "1.190355246781040254E-16",
+      "max_old_radius": "1.190355246781040254E-16",
+      "max_source_radius": "9.62355246758140240E-17",
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+      "preserved_old_rows": 380,
+      "source_manifest": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_finite_tail_components_k9.json",
+      "target_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
+      "target_sha256_after": "312473b70e802516a78a5beb89c507d79a61162dbe9c56761d6ad8e7e0752914",
+      "target_sha256_before": "7d52da1b157cb253bd7c9f04d48a2ffc9bee275fc302917591d338359d755620"
+    }
+  ],
+  "meaning": "Only Step22 matrix=A radius rows were synchronized with the finite/tail Arch manifests using max(old, abs(payload_mid - finite_mid) + manifest_total_radius).",
+  "schema": "q3_psdpd_step33_sync_a_radii_v1"
+}

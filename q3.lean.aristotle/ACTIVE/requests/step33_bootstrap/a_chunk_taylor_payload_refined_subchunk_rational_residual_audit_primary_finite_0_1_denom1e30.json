@@ -1,0 +1,349 @@
+{
+  "counts": {
+    "candidateSubchunks": 10,
+    "proofSafeClosedFields": 0,
+    "sampledDiffCandidateFields": 20,
+    "sampledRemainderFails": 3,
+    "sampledRemainderPasses": 7
+  },
+  "failures": [
+    {
+      "center": "1.050000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "69/500000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": false,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.000000000000000000E+1",
+      "requiredRemainder": "143/1000000000000000000000000000000",
+      "requiredRemainderDecimal": "1.430000000000000000E-28",
+      "right": "1.100000000000000000E+1",
+      "sampledDiffLowerCandidate": "-143/1000000000000000000000000000000",
+      "sampledDiffUpperCandidate": "143/1000000000000000000000000000000",
+      "sampledMaxEvalRadius": "2.222046309646183374E-66",
+      "sampledMaxResidual": "1.294726270209177252E-28",
+      "subchunk": 0,
+      "worstEta": "1.001666666666666667E+1",
+      "worstRationalPoly": "2.057491780611746558E-2",
+      "worstRawMid": "2.057491780611746558E-2"
+    },
+    {
+      "center": "1.150000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "7/250000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": false,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.100000000000000000E+1",
+      "requiredRemainder": "29/1000000000000000000000000000000",
+      "requiredRemainderDecimal": "2.900000000000000000E-29",
+      "right": "1.200000000000000000E+1",
+      "sampledDiffLowerCandidate": "-29/1000000000000000000000000000000",
+      "sampledDiffUpperCandidate": "29/1000000000000000000000000000000",
+      "sampledMaxEvalRadius": "2.189590755827668437E-66",
+      "sampledMaxResidual": "2.621718490455725794E-29",
+      "subchunk": 1,
+      "worstEta": "1.101666666666666667E+1",
+      "worstRationalPoly": "2.350486969977719098E-2",
+      "worstRawMid": "2.350486969977719098E-2"
+    },
+    {
+      "center": "1.250000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "7/1000000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": false,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.200000000000000000E+1",
+      "requiredRemainder": "1/125000000000000000000000000000",
+      "requiredRemainderDecimal": "8.000000000000000000E-30",
+      "right": "1.300000000000000000E+1",
+      "sampledDiffLowerCandidate": "-1/125000000000000000000000000000",
+      "sampledDiffUpperCandidate": "1/125000000000000000000000000000",
+      "sampledMaxEvalRadius": "2.000653067527027910E-66",
+      "sampledMaxResidual": "6.371959599171902616E-30",
+      "subchunk": 2,
+      "worstEta": "1.201666666666666667E+1",
+      "worstRationalPoly": "2.561902841635749404E-2",
+      "worstRawMid": "2.561902841635749404E-2"
+    }
+  ],
+  "meaning": "Sampled diagnostic residual audit against rational polynomial candidates.  This is not Lean proof data.",
+  "overlay": "q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_1_denom1e30.json",
+  "parameters": {
+    "arbPrec": 224,
+    "checkSamples": 61,
+    "denominator": 1000000000000000000000000000000,
+    "ell": "0.30",
+    "residualGuard": "0.10",
+    "source": "raw_step22"
+  },
+  "pilot": {
+    "degree": 16,
+    "family": "primary_finite",
+    "left": "1.000000000000000000E+1",
+    "parentChunk": 1,
+    "right": "2.000000000000000000E+1",
+    "row": 0,
+    "split": 10
+  },
+  "routeGuard": [
+    "do not emit Lean from sampled residual audit",
+    "sampled diff candidates must be replaced by universal checked bounds",
+    "if sampled audit fails, increase or recompute candidate remainder before any proof-data attempt",
+    "if sampled audit passes, the next target is a checked analytic enclosure for the same rational polynomial candidates"
+  ],
+  "schema": "q3_psdpd_step33_a_refined_subchunk_rational_residual_audit.v1",
+  "sourceWorklist": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_distance_payload_worklist.json",
+  "status": "sampled_rational_residual_audit_failed",
+  "subchunks": [
+    {
+      "center": "1.050000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "69/500000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": false,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.000000000000000000E+1",
+      "requiredRemainder": "143/1000000000000000000000000000000",
+      "requiredRemainderDecimal": "1.430000000000000000E-28",
+      "right": "1.100000000000000000E+1",
+      "sampledDiffLowerCandidate": "-143/1000000000000000000000000000000",
+      "sampledDiffUpperCandidate": "143/1000000000000000000000000000000",
+      "sampledMaxEvalRadius": "2.222046309646183374E-66",
+      "sampledMaxResidual": "1.294726270209177252E-28",
+      "subchunk": 0,
+      "worstEta": "1.001666666666666667E+1",
+      "worstRationalPoly": "2.057491780611746558E-2",
+      "worstRawMid": "2.057491780611746558E-2"
+    },
+    {
+      "center": "1.150000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "7/250000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": false,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.100000000000000000E+1",
+      "requiredRemainder": "29/1000000000000000000000000000000",
+      "requiredRemainderDecimal": "2.900000000000000000E-29",
+      "right": "1.200000000000000000E+1",
+      "sampledDiffLowerCandidate": "-29/1000000000000000000000000000000",
+      "sampledDiffUpperCandidate": "29/1000000000000000000000000000000",
+      "sampledMaxEvalRadius": "2.189590755827668437E-66",
+      "sampledMaxResidual": "2.621718490455725794E-29",
+      "subchunk": 1,
+      "worstEta": "1.101666666666666667E+1",
+      "worstRationalPoly": "2.350486969977719098E-2",
+      "worstRawMid": "2.350486969977719098E-2"
+    },
+    {
+      "center": "1.250000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "7/1000000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": false,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.200000000000000000E+1",
+      "requiredRemainder": "1/125000000000000000000000000000",
+      "requiredRemainderDecimal": "8.000000000000000000E-30",
+      "right": "1.300000000000000000E+1",
+      "sampledDiffLowerCandidate": "-1/125000000000000000000000000000",
+      "sampledDiffUpperCandidate": "1/125000000000000000000000000000",
+      "sampledMaxEvalRadius": "2.000653067527027910E-66",
+      "sampledMaxResidual": "6.371959599171902616E-30",
+      "subchunk": 2,
+      "worstEta": "1.201666666666666667E+1",
+      "worstRationalPoly": "2.561902841635749404E-2",
+      "worstRawMid": "2.561902841635749404E-2"
+    },
+    {
+      "center": "1.350000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "1/500000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": true,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.300000000000000000E+1",
+      "requiredRemainder": "1/500000000000000000000000000000",
+      "requiredRemainderDecimal": "2.000000000000000000E-30",
+      "right": "1.400000000000000000E+1",
+      "sampledDiffLowerCandidate": "-1/500000000000000000000000000000",
+      "sampledDiffUpperCandidate": "1/500000000000000000000000000000",
+      "sampledMaxEvalRadius": "1.805919744615938287E-66",
+      "sampledMaxResidual": "1.659888355938956274E-30",
+      "subchunk": 3,
+      "worstEta": "1.301666666666666667E+1",
+      "worstRationalPoly": "2.702326976312119970E-2",
+      "worstRawMid": "2.702326976312119970E-2"
+    },
+    {
+      "center": "1.450000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "1/1000000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": true,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.400000000000000000E+1",
+      "requiredRemainder": "1/1000000000000000000000000000000",
+      "requiredRemainderDecimal": "1.000000000000000000E-30",
+      "right": "1.500000000000000000E+1",
+      "sampledDiffLowerCandidate": "-1/1000000000000000000000000000000",
+      "sampledDiffUpperCandidate": "1/1000000000000000000000000000000",
+      "sampledMaxEvalRadius": "1.532365791002740960E-66",
+      "sampledMaxResidual": "8.275403951425623274E-31",
+      "subchunk": 4,
+      "worstEta": "1.498333333333333333E+1",
+      "worstRationalPoly": "2.806827362915674764E-2",
+      "worstRawMid": "2.806827362915674764E-2"
+    },
+    {
+      "center": "1.550000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "1/1000000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": true,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.500000000000000000E+1",
+      "requiredRemainder": "1/1000000000000000000000000000000",
+      "requiredRemainderDecimal": "1.000000000000000000E-30",
+      "right": "1.600000000000000000E+1",
+      "sampledDiffLowerCandidate": "-1/1000000000000000000000000000000",
+      "sampledDiffUpperCandidate": "1/1000000000000000000000000000000",
+      "sampledMaxEvalRadius": "1.262289218155813090E-66",
+      "sampledMaxResidual": "4.482605716225605785E-31",
+      "subchunk": 5,
+      "worstEta": "1.501666666666666667E+1",
+      "worstRationalPoly": "2.806915807706905537E-2",
+      "worstRawMid": "2.806915807706905537E-2"
+    },
+    {
+      "center": "1.650000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "1/1000000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": true,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.600000000000000000E+1",
+      "requiredRemainder": "1/1000000000000000000000000000000",
+      "requiredRemainderDecimal": "1.000000000000000000E-30",
+      "right": "1.700000000000000000E+1",
+      "sampledDiffLowerCandidate": "-1/1000000000000000000000000000000",
+      "sampledDiffUpperCandidate": "1/1000000000000000000000000000000",
+      "sampledMaxEvalRadius": "1.933423706045818397E-66",
+      "sampledMaxResidual": "4.049446398722628509E-31",
+      "subchunk": 6,
+      "worstEta": "1.698333333333333333E+1",
+      "worstRationalPoly": "2.732552354606007345E-2",
+      "worstRawMid": "2.732552354606007345E-2"
+    },
+    {
+      "center": "1.750000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "1/1000000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": true,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.700000000000000000E+1",
+      "requiredRemainder": "1/1000000000000000000000000000000",
+      "requiredRemainderDecimal": "1.000000000000000000E-30",
+      "right": "1.800000000000000000E+1",
+      "sampledDiffLowerCandidate": "-1/1000000000000000000000000000000",
+      "sampledDiffUpperCandidate": "1/1000000000000000000000000000000",
+      "sampledMaxEvalRadius": "1.605390787094399569E-66",
+      "sampledMaxResidual": "5.543845991677619212E-31",
+      "subchunk": 7,
+      "worstEta": "1.800000000000000000E+1",
+      "worstRationalPoly": "2.643255989060730116E-2",
+      "worstRawMid": "2.643255989060730116E-2"
+    },
+    {
+      "center": "1.850000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "1/1000000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": true,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.800000000000000000E+1",
+      "requiredRemainder": "1/1000000000000000000000000000000",
+      "requiredRemainderDecimal": "1.000000000000000000E-30",
+      "right": "1.900000000000000000E+1",
+      "sampledDiffLowerCandidate": "-1/1000000000000000000000000000000",
+      "sampledDiffUpperCandidate": "1/1000000000000000000000000000000",
+      "sampledMaxEvalRadius": "1.656392371666351613E-66",
+      "sampledMaxResidual": "3.420503439529244670E-31",
+      "subchunk": 8,
+      "worstEta": "1.900000000000000000E+1",
+      "worstRationalPoly": "2.530144446545001195E-2",
+      "worstRawMid": "2.530144446545001195E-2"
+    },
+    {
+      "center": "1.950000000000000000E+1",
+      "coeffLen": 17,
+      "currentRemainder": "1/1000000000000000000000000000000",
+      "currentRemainderPassesSampledAudit": true,
+      "guard": [
+        "sampled residual against rational polynomial only",
+        "not a universal Lean diff proof"
+      ],
+      "left": "1.900000000000000000E+1",
+      "requiredRemainder": "1/1000000000000000000000000000000",
+      "requiredRemainderDecimal": "1.000000000000000000E-30",
+      "right": "2.000000000000000000E+1",
+      "sampledDiffLowerCandidate": "-1/1000000000000000000000000000000",
+      "sampledDiffUpperCandidate": "1/1000000000000000000000000000000",
+      "sampledMaxEvalRadius": "1.523092775626022407E-66",
+      "sampledMaxResidual": "4.855558572189505330E-31",
+      "subchunk": 9,
+      "worstEta": "1.900000000000000000E+1",
+      "worstRationalPoly": "2.530144446545001195E-2",
+      "worstRawMid": "2.530144446545001195E-2"
+    }
+  ],
+  "worst": {
+    "center": "1.050000000000000000E+1",
+    "coeffLen": 17,
+    "currentRemainder": "69/500000000000000000000000000000",
+    "currentRemainderPassesSampledAudit": false,
+    "guard": [
+      "sampled residual against rational polynomial only",
+      "not a universal Lean diff proof"
+    ],
+    "left": "1.000000000000000000E+1",
+    "requiredRemainder": "143/1000000000000000000000000000000",
+    "requiredRemainderDecimal": "1.430000000000000000E-28",
+    "right": "1.100000000000000000E+1",
+    "sampledDiffLowerCandidate": "-143/1000000000000000000000000000000",
+    "sampledDiffUpperCandidate": "143/1000000000000000000000000000000",
+    "sampledMaxEvalRadius": "2.222046309646183374E-66",
+    "sampledMaxResidual": "1.294726270209177252E-28",
+    "subchunk": 0,
+    "worstEta": "1.001666666666666667E+1",
+    "worstRationalPoly": "2.057491780611746558E-2",
+    "worstRawMid": "2.057491780611746558E-2"
+  }
+}

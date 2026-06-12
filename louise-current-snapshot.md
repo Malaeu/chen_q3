@@ -1,0 +1,237 @@
+- generic [ref=e1]:
+  - link "Weiter zum Inhalt" [ref=e3] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e7]:
+    - generic [ref=e9]:
+      - navigation "Seitenleiste":
+        - generic:
+          - generic:
+            - generic:
+              - button "Seitenleiste öffnen":
+                - img
+        - generic:
+          - generic:
+            - link "Neuer Chat":
+              - /url: /
+              - generic:
+                - img
+              - generic: Neuer Chat
+          - generic:
+            - button "Chats durchsuchen":
+              - generic:
+                - img
+              - generic: Chats durchsuchen
+          - generic:
+            - button "Letzte":
+              - generic:
+                - img
+              - generic: Letzte
+        - generic:
+          - generic:
+            - button "Profil-Menü öffnen"
+      - generic [ref=e10]:
+        - heading "Chatverlauf" [level=2] [ref=e11]
+        - generic [ref=e12]:
+          - navigation "Chatverlauf" [ref=e13]:
+            - generic [ref=e16]:
+              - link "Heim" [ref=e17] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e18]: ChatGPT
+              - button "Seitenleiste schließen" [expanded] [ref=e20]:
+                - img [ref=e21]
+            - list [ref=e24]:
+              - listitem [ref=e25]:
+                - link "Neuer Chat Umschalttaste Befehlstaste O" [ref=e137] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e32]:
+                - button "Chats durchsuchen Befehlstaste K" [ref=e150] [cursor=pointer]
+            - link "Bibliothek" [ref=e39] [cursor=pointer]:
+              - /url: /library
+              - img [ref=e41]
+              - generic [ref=e44]: Bibliothek
+            - link "Apps" [ref=e45] [cursor=pointer]:
+              - /url: /apps
+              - img [ref=e47]
+              - generic [ref=e50]: Apps
+            - link "Codex" [ref=e51] [cursor=pointer]:
+              - /url: /codex
+              - generic [ref=e52]:
+                - img [ref=e54]
+                - generic [ref=e57]: Codex
+              - img [ref=e59]
+            - generic [ref=e62] [cursor=pointer]:
+              - img [ref=e64]
+              - generic [ref=e67]: Mehr
+            - generic [ref=e161]:
+              - button "GPTs" [expanded] [ref=e163] [cursor=pointer]:
+                - heading "GPTs" [level=2] [ref=e164]
+              - list [ref=e165]:
+                - listitem [ref=e166]
+                - listitem [ref=e179]
+                - listitem [ref=e191]
+                - listitem [ref=e203]
+              - link "GPTs erkunden" [ref=e215] [cursor=pointer]:
+                - /url: /gpts
+                - img [ref=e217]
+                - generic [ref=e220]: GPTs erkunden
+            - generic [ref=e221]:
+              - button "Projekte" [expanded] [ref=e223] [cursor=pointer]:
+                - heading "Projekte" [level=2] [ref=e224]
+              - list [ref=e225]:
+                - listitem [ref=e226]
+                - listitem [ref=e233]
+                - listitem [ref=e319]
+                - listitem [ref=e343]
+                - listitem [ref=e367]
+                - listitem [ref=e391]
+                - listitem [ref=e415]
+            - generic [ref=e422]:
+              - button "Aktuelle" [expanded] [ref=e424] [cursor=pointer]:
+                - heading "Aktuelle" [level=2] [ref=e425]
+              - list [ref=e427]:
+                - listitem [ref=e4591]
+                - listitem [ref=e4601]
+                - listitem [ref=e428]
+                - listitem [ref=e438]
+                - listitem [ref=e448]
+                - listitem [ref=e458]
+                - listitem [ref=e468]
+                - listitem [ref=e478]
+                - listitem [ref=e488]
+                - listitem [ref=e498]
+                - listitem [ref=e508]
+                - listitem [ref=e518]
+                - listitem [ref=e528]
+                - listitem [ref=e538]
+                - listitem [ref=e548]
+                - listitem [ref=e558]
+                - listitem [ref=e568]
+                - listitem [ref=e578]
+                - listitem [ref=e588]
+                - listitem [ref=e598]
+                - listitem [ref=e608]
+                - listitem [ref=e618]
+                - listitem [ref=e628]
+                - listitem [ref=e638]
+                - listitem [ref=e648]
+                - listitem [ref=e658]
+                - listitem [ref=e668]
+                - listitem [ref=e678]
+          - button "kdl2017 Pro, Profil-Menü öffnen" [ref=e714] [cursor=pointer]:
+            - generic [ref=e75]:
+              - generic [ref=e77]: kdl2017
+              - generic [ref=e80]: Pro
+            - button "Apps herunterladen" [ref=e83]:
+              - img [ref=e85]
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - banner:
+          - link "Projekt RH_März_2026 öffnen" [ref=e718] [cursor=pointer]:
+            - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/project
+            - generic [ref=e719]:
+              - img "Standardfarbe, schwarz im hellen Modus, weiß im dunklen Modus Ordner" [ref=e721]
+              - generic [ref=e723]: RH_März_2026
+          - generic [ref=e92]:
+            - button "Gemeinsam nutzen" [ref=e93] [cursor=pointer]:
+              - generic [ref=e94]:
+                - img [ref=e95]
+                - text: Gemeinsam nutzen
+            - button "Gesprächsoptionen öffnen" [ref=e99] [cursor=pointer]:
+              - img [ref=e100]
+      - main [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e725]:
+            - generic [ref=e737]:
+              - heading "Du:" [level=4] [ref=e738]
+              - generic [ref=e740]:
+                - generic [ref=e743]
+                - generic [ref=e788]
+            - generic [ref=e804]:
+              - heading "Du:" [level=4] [ref=e805]
+              - generic [ref=e807]:
+                - generic [ref=e810]
+                - generic [ref=e818]
+            - generic [ref=e826]:
+              - heading "Du:" [level=4] [ref=e827]
+              - generic [ref=e829]:
+                - generic [ref=e834]: PRO_REVIEW_R. . UEST. .
+                - generic [ref=e835]
+            - generic [ref=e841]:
+              - heading "Du:" [level=4] [ref=e842]
+              - generic [ref=e844]:
+                - generic [ref=e847]
+                - generic [ref=e855]
+            - generic [ref=e865]:
+              - heading "Du:" [level=4] [ref=e866]
+              - generic [ref=e868]:
+                - generic [ref=e873]: <response> Окей, вот если бы ты сам сейчас шел по этому голу, попробуй, а, математически все это закрыть так, чтобы он потом не гадал, а, как ему закрывать эти степы. Попробуй, э, закрыть их </response>
+                - generic [ref=e874]
+            - generic [ref=e878]:
+              - heading "Du:" [level=4] [ref=e879]
+              - generic [ref=e881]:
+                - generic [ref=e884]
+                - generic [ref=e892]
+            - generic [ref=e896]:
+              - heading "Du:" [level=4] [ref=e897]
+              - generic [ref=e899]:
+                - generic [ref=e902]
+                - generic [ref=e910]
+            - generic [ref=e939]:
+              - heading "ChatGPT:" [level=4] [ref=e940]
+              - generic [ref=e942]:
+                - generic [ref=e943]
+                - generic [ref=e1629]
+            - generic [ref=e1632]:
+              - heading "Du:" [level=4] [ref=e1633]
+              - generic [ref=e1635]:
+                - generic [ref=e1641]
+                - generic [ref=e1649]
+            - generic [ref=e1652]:
+              - heading "ChatGPT:" [level=4] [ref=e1653]
+              - generic [ref=e1655]:
+                - generic [ref=e1656]
+                - generic [ref=e2375]
+            - generic [ref=e2378]:
+              - heading "Du:" [level=4] [ref=e2379]
+              - generic [ref=e2381]:
+                - generic [ref=e2387]
+                - generic [ref=e2405]
+            - generic [ref=e2408]:
+              - heading "ChatGPT:" [level=4] [ref=e2409]
+              - generic [ref=e2411]:
+                - generic [ref=e2412]
+                - generic [ref=e3187]
+            - generic [ref=e3240]:
+              - heading "Du:" [level=4] [ref=e3241]
+              - generic [ref=e3243]:
+                - generic [ref=e3249]
+                - generic [ref=e3257]
+            - generic [ref=e3260]:
+              - heading "ChatGPT:" [level=4] [ref=e3261]
+              - generic [ref=e3263]:
+                - generic [ref=e3264]
+                - generic [ref=e3934]
+            - generic [ref=e3962]:
+              - heading "Du:" [level=4] [ref=e3963]
+              - generic [ref=e3965]:
+                - generic [ref=e3971]
+                - generic [ref=e3979]
+            - generic [ref=e3982]:
+              - heading "ChatGPT:" [level=4] [ref=e3983]
+              - generic [ref=e3985]:
+                - generic [ref=e3986]
+                - generic [ref=e4585]
+          - generic [ref=e105]:
+            - generic:
+              - generic:
+                - button
+            - generic [ref=e110]:
+              - generic [ref=e114]:
+                - button "Dateien und mehr hinzufügen" [ref=e117] [cursor=pointer]
+                - textbox "Mit ChatGPT chatten" [active] [ref=e3195]
+                - generic [ref=e121]
+              - button [ref=e127]
+              - button [ref=e128]
+            - generic [ref=e3209]: ChatGPT kann Fehler machen. Überprüfe wichtige Informationen.
+  - alert [ref=e135]
+  - status [ref=e136]

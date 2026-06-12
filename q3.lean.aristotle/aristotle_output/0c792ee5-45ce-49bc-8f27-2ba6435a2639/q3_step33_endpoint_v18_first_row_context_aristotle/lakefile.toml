@@ -1,0 +1,23 @@
+name = "q3_step33_endpoint_context"
+version = "0.1.0"
+defaultTargets = ["Q3"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.26.0"
+
+[[lean_lib]]
+name = "Q3"
+moreLeanArgs = ["-j", "1", "-s", "65536"]
+globs = ["Q3"]
+
+[[lean_lib]]
+name = "aristotle_output"
+roots = ["aristotle_output"]
+moreLeanArgs = ["-j", "1", "-s", "65536"]
+
+[[lean_lib]]
+name = "aristotle_input"
+roots = ["aristotle_input"]
+moreLeanArgs = ["-j", "1", "-s", "65536"]

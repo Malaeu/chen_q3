@@ -1,0 +1,46 @@
+# Step33A.1-A Refined Subchunk Derivative Remainder Refresh
+
+Diagnostic only: candidate remainders raised to sampled derivative-envelope requirements.
+No Lean proof data is emitted.
+
+## Summary
+
+- status: `candidate_overlay_derivative_remainder_refreshed_not_proof_data`
+- family: `primary_finite`
+- row: `0`
+- parent chunk: `1`
+- split: `10`
+- adjusted subchunks: `10`
+- sampled envelope passes after refresh: `10/10`
+- total extra remainder: `1.424000000000000000E-26`
+- max extra remainder: `1.124100000000000000E-26`
+
+## Adjusted Subchunks
+
+| subchunk | current | sampled lhs | required | new | extra |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 0 | `143/1000000000000000000000000000000` | `1.138400000000000000E-26` | `1423/125000000000000000000000000000` | `1423/125000000000000000000000000000` | `1.124100000000000000E-26` |
+| 1 | `29/1000000000000000000000000000000` | `2.287500000000000000E-27` | `143/62500000000000000000000000000` | `143/62500000000000000000000000000` | `2.259000000000000000E-27` |
+| 2 | `1/125000000000000000000000000000` | `5.405000000000000000E-28` | `541/1000000000000000000000000000000` | `541/1000000000000000000000000000000` | `5.330000000000000000E-28` |
+| 3 | `1/500000000000000000000000000000` | `1.440000000000000000E-28` | `9/62500000000000000000000000000` | `9/62500000000000000000000000000` | `1.420000000000000000E-28` |
+| 4 | `1/1000000000000000000000000000000` | `4.250000000000000000E-29` | `43/1000000000000000000000000000000` | `43/1000000000000000000000000000000` | `4.200000000000000000E-29` |
+| 5 | `1/1000000000000000000000000000000` | `1.400000000000000000E-29` | `7/500000000000000000000000000000` | `7/500000000000000000000000000000` | `1.300000000000000000E-29` |
+| 6 | `1/1000000000000000000000000000000` | `5.500000000000000000E-30` | `3/500000000000000000000000000000` | `3/500000000000000000000000000000` | `5.000000000000000000E-30` |
+| 7 | `1/1000000000000000000000000000000` | `3.500000000000000000E-30` | `1/250000000000000000000000000000` | `1/250000000000000000000000000000` | `3.000000000000000000E-30` |
+| 8 | `1/1000000000000000000000000000000` | `1.500000000000000000E-30` | `1/500000000000000000000000000000` | `1/500000000000000000000000000000` | `1.000000000000000000E-30` |
+| 9 | `1/1000000000000000000000000000000` | `1.500000000000000000E-30` | `1/500000000000000000000000000000` | `1/500000000000000000000000000000` | `1.000000000000000000E-30` |
+
+## Guard
+
+- do not mutate the refined skeleton or worklist from this overlay
+- do not emit Lean from this overlay
+- sampled residuals must be replaced by universal checked bounds
+- rational coefficients must be residual-rechecked after rounding
+- raw-integrand value bounds or direct diff bounds remain required
+- row hLowerSum/hUpperSum comparisons remain required
+- remainder refresh is diagnostic generator data only
+- sampled residual audit is not a universal Lean proof
+- do not emit Lean until analytic residual bounds are checked
+- derivative remainder refresh is diagnostic generator data only
+- sampled derivative envelope is not a universal Lean proof
+- do not emit Lean until hEnvelope and hResidualDerivBoundOnCell are checked

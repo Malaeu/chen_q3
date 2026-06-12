@@ -1,0 +1,600 @@
+import Q3.Proofs.PSD_CenteredCoeffRawOmegaATailWindowArithmeticSupport
+
+set_option linter.mathlibStandardSet false
+set_option maxHeartbeats 0
+set_option autoImplicit false
+
+/-!
+Generated raw-Omega Step33 A tail-window arithmetic payloads.
+
+This file proves only rational arithmetic: cutoff/order checks,
+tail-window/remainder containment, and containment in the imported
+raw-Omega A payload lower/upper boxes.  It does not prove comparison
+integral enclosures.
+
+If a local target refresh is present, it was produced from a chunk
+integral probe row whose excess is bounded by the already available
+payload slack.  This generator does not mutate A CSV, ARadius,
+radius-floor, or LDL data.
+local target refresh rows: 71
+-/
+
+noncomputable section
+
+namespace Q3
+namespace PSDpd
+namespace CenteredCoeffPrimeDeltaLiveRationalPayloadImport
+
+open CenteredCoeffPayloadImport
+
+def rawOmegaAFiniteTailCutoff : Real := ((260 : Real) / (1 : Real))
+
+def rawOmegaATailWindowEnd : Real := ((520 : Real) / (1 : Real))
+
+/-! Arithmetic data for primary k=11. -/
+
+def primaryK11RawOmegaAFiniteLowerRat : Nat -> Rat
+  | 0 => ((246728890727843893 : Rat) / (2000000000000000000 : Rat))
+  | 1 => ((-2187408917468689830237080776790607 : Rat) / (5000000000000000000000000000000000 : Rat))
+  | 2 => ((-11176519746100252508543237039290187 : Rat) / (50000000000000000000000000000000000 : Rat))
+  | 3 => ((-248225602675335093547863027426649 : Rat) / (1562500000000000000000000000000000 : Rat))
+  | 4 => ((-1255555459045882929 : Rat) / (10000000000000000000 : Rat))
+  | 5 => ((-208464131532851267 : Rat) / (2000000000000000000 : Rat))
+  | 6 => ((-8879834253975839552185078705352699 : Rat) / (100000000000000000000000000000000000 : Rat))
+  | 7 => ((-383769013738527194678761601557147 : Rat) / (5000000000000000000000000000000000 : Rat))
+  | 8 => ((-3345083841117298231108808977937359 : Rat) / (50000000000000000000000000000000000 : Rat))
+  | 9 => ((-5860341194405480949 : Rat) / (100000000000000000000 : Rat))
+  | 10 => ((-1029723764057271681 : Rat) / (20000000000000000000 : Rat))
+  | 11 => ((-4531358455175713209 : Rat) / (100000000000000000000 : Rat))
+  | 12 => ((-1996182478344695369375347638553743 : Rat) / (50000000000000000000000000000000000 : Rat))
+  | 13 => ((-879938973440605149 : Rat) / (25000000000000000000 : Rat))
+  | 14 => ((-776076651915457493 : Rat) / (25000000000000000000 : Rat))
+  | 15 => ((-2738542581476614256084584099719893 : Rat) / (100000000000000000000000000000000000 : Rat))
+  | 16 => ((-483244253636696407 : Rat) / (20000000000000000000 : Rat))
+  | 17 => ((-333128440240238339098372072436593 : Rat) / (15625000000000000000000000000000000 : Rat))
+  | 18 => ((-18813498999438847 : Rat) / (1000000000000000000 : Rat))
+  | 19 => ((-830101807238968391691903113564277 : Rat) / (50000000000000000000000000000000000 : Rat))
+  | 20 => ((-1465080742557569843 : Rat) / (100000000000000000000 : Rat))
+  | 21 => ((-646452885715122167 : Rat) / (50000000000000000000 : Rat))
+  | 22 => ((-1140972789300954143 : Rat) / (100000000000000000000 : Rat))
+  | _ => 0
+
+def primaryK11RawOmegaAFiniteLower (n : CoeffIndex23) : Real :=
+  (primaryK11RawOmegaAFiniteLowerRat (n.1) : Real)
+
+def primaryK11RawOmegaAFiniteUpperRat : Nat -> Rat
+  | 0 => ((1233644453639219559 : Rat) / (10000000000000000000 : Rat))
+  | 1 => ((-2187408917468689689762919223209393 : Rat) / (5000000000000000000000000000000000 : Rat))
+  | 2 => ((-11176519746100252391456762960709813 : Rat) / (50000000000000000000000000000000000 : Rat))
+  | 3 => ((-248225602675335065827136972573351 : Rat) / (1562500000000000000000000000000000 : Rat))
+  | 4 => ((-1255555459045882747 : Rat) / (10000000000000000000 : Rat))
+  | 5 => ((-130290082208032033 : Rat) / (1250000000000000000 : Rat))
+  | 6 => ((-8879834253975839067814921294647301 : Rat) / (100000000000000000000000000000000000 : Rat))
+  | 7 => ((-383769013738527157321238398442853 : Rat) / (5000000000000000000000000000000000 : Rat))
+  | 8 => ((-3345083841117298008891191022062641 : Rat) / (50000000000000000000000000000000000 : Rat))
+  | 9 => ((-5860341194405480581 : Rat) / (100000000000000000000 : Rat))
+  | 10 => ((-160894338133948689 : Rat) / (3125000000000000000 : Rat))
+  | 11 => ((-1132839613793928201 : Rat) / (25000000000000000000 : Rat))
+  | 12 => ((-1996182478344695170624652361446257 : Rat) / (50000000000000000000000000000000000 : Rat))
+  | 13 => ((-175987794688121013 : Rat) / (5000000000000000000 : Rat))
+  | 14 => ((-48504790744716093 : Rat) / (1562500000000000000 : Rat))
+  | 15 => ((-2738542581476614023915415900280107 : Rat) / (100000000000000000000000000000000000 : Rat))
+  | 16 => ((-241622126818348199 : Rat) / (10000000000000000000 : Rat))
+  | 17 => ((-333128440240238329651627927563407 : Rat) / (15625000000000000000000000000000000 : Rat))
+  | 18 => ((-940674949971942211 : Rat) / (50000000000000000000 : Rat))
+  | 19 => ((-830101807238968228308096886435723 : Rat) / (50000000000000000000000000000000000 : Rat))
+  | 20 => ((-9156754640984811 : Rat) / (625000000000000000 : Rat))
+  | 21 => ((-161613221428780523 : Rat) / (12500000000000000000 : Rat))
+  | 22 => ((-570486394650477031 : Rat) / (50000000000000000000 : Rat))
+  | _ => 0
+
+def primaryK11RawOmegaAFiniteUpper (n : CoeffIndex23) : Real :=
+  (primaryK11RawOmegaAFiniteUpperRat (n.1) : Real)
+
+def primaryK11RawOmegaATailWindowLowerRat : Nat -> Rat
+  | 0 => ((359659049143447977 : Rat) / (200000000000000000000000000000000000000 : Rat))
+  | 1 => ((-6305551866376207189 : Rat) / (100000000000000000000000000000000000000000 : Rat))
+  | 2 => ((-199647286903485493 : Rat) / (1000000000000000000000000000000000000000000 : Rat))
+  | 3 => ((-344793217350062697 : Rat) / (500000000000000000000000000000000000000000000000 : Rat))
+  | 4 => ((6401079035162446847 : Rat) / (100000000000000000000000000000000000000000000000000000 : Rat))
+  | 5 => ((2763713814090063621 : Rat) / (10000000000000000000000000000000000000000000000000000000 : Rat))
+  | 6 => ((400492358425282849 : Rat) / (25000000000000000000000000000000000000000000000000000000 : Rat))
+  | 7 => ((389162206649650173 : Rat) / (40000000000000000000000000000000000000000000000000000000 : Rat))
+  | 8 => ((-7086019081839863 : Rat) / (390625000000000000000000000000000000000000000000000000 : Rat))
+  | 9 => ((-543785595049903599 : Rat) / (25000000000000000000000000000000000000000000000000000000 : Rat))
+  | 10 => ((1294696695227312651 : Rat) / (20000000000000000000000000000000000000000000000000000000 : Rat))
+  | 11 => ((-2027122904158541647 : Rat) / (50000000000000000000000000000000000000000000000000000000 : Rat))
+  | 12 => ((-2499230713024612927 : Rat) / (50000000000000000000000000000000000000000000000000000000 : Rat))
+  | 13 => ((552489611807106463 : Rat) / (5000000000000000000000000000000000000000000000000000000 : Rat))
+  | 14 => ((-5579641763480666301 : Rat) / (100000000000000000000000000000000000000000000000000000000 : Rat))
+  | 15 => ((-471697553891457227 : Rat) / (6250000000000000000000000000000000000000000000000000000 : Rat))
+  | 16 => ((1428235690884327907 : Rat) / (10000000000000000000000000000000000000000000000000000000 : Rat))
+  | 17 => ((-3008850718309722269 : Rat) / (50000000000000000000000000000000000000000000000000000000 : Rat))
+  | 18 => ((-9715450123528218917 : Rat) / (100000000000000000000000000000000000000000000000000000000 : Rat))
+  | 19 => ((400816319692920069 : Rat) / (2500000000000000000000000000000000000000000000000000000 : Rat))
+  | 20 => ((-5498545248477549621 : Rat) / (100000000000000000000000000000000000000000000000000000000 : Rat))
+  | 21 => ((-561020035214752187 : Rat) / (5000000000000000000000000000000000000000000000000000000 : Rat))
+  | 22 => ((1627623055066903689 : Rat) / (10000000000000000000000000000000000000000000000000000000 : Rat))
+  | _ => 0
+
+def primaryK11RawOmegaATailWindowLower (n : CoeffIndex23) : Real :=
+  (primaryK11RawOmegaATailWindowLowerRat (n.1) : Real)
+
+def primaryK11RawOmegaATailWindowUpperRat : Nat -> Rat
+  | 0 => ((899147622858619943 : Rat) / (500000000000000000000000000000000000000 : Rat))
+  | 1 => ((-6305551866376207087 : Rat) / (100000000000000000000000000000000000000000 : Rat))
+  | 2 => ((-199647286903484813 : Rat) / (1000000000000000000000000000000000000000000 : Rat))
+  | 3 => ((-6895864340443257689 : Rat) / (10000000000000000000000000000000000000000000000000 : Rat))
+  | 4 => ((1280232064226889393 : Rat) / (20000000000000000000000000000000000000000000000000000 : Rat))
+  | 5 => ((69135863130420809 : Rat) / (250000000000000000000000000000000000000000000000000000 : Rat))
+  | 6 => ((204579321188093977 : Rat) / (12500000000000000000000000000000000000000000000000000000 : Rat))
+  | 7 => ((51669682584452229 : Rat) / (5000000000000000000000000000000000000000000000000000000 : Rat))
+  | 8 => ((-1760240619106856281 : Rat) / (100000000000000000000000000000000000000000000000000000000 : Rat))
+  | 9 => ((-535980143437769427 : Rat) / (25000000000000000000000000000000000000000000000000000000 : Rat))
+  | 10 => ((324794280885147559 : Rat) / (5000000000000000000000000000000000000000000000000000000 : Rat))
+  | 11 => ((-1012487387242997127 : Rat) / (25000000000000000000000000000000000000000000000000000000 : Rat))
+  | 12 => ((-49794307419764233 : Rat) / (1000000000000000000000000000000000000000000000000000000 : Rat))
+  | 13 => ((1105298281018955597 : Rat) / (10000000000000000000000000000000000000000000000000000000 : Rat))
+  | 14 => ((-2783777870390532573 : Rat) / (50000000000000000000000000000000000000000000000000000000 : Rat))
+  | 15 => ((-301102934208028829 : Rat) / (4000000000000000000000000000000000000000000000000000000 : Rat))
+  | 16 => ((715518942151668613 : Rat) / (5000000000000000000000000000000000000000000000000000000 : Rat))
+  | 17 => ((-2999250903648200631 : Rat) / (50000000000000000000000000000000000000000000000000000000 : Rat))
+  | 18 => ((-4844736336507651279 : Rat) / (50000000000000000000000000000000000000000000000000000000 : Rat))
+  | 19 => ((1604706731390971483 : Rat) / (10000000000000000000000000000000000000000000000000000000 : Rat))
+  | 20 => ((-5471530306837159073 : Rat) / (100000000000000000000000000000000000000000000000000000000 : Rat))
+  | 21 => ((-69995257263967893 : Rat) / (625000000000000000000000000000000000000000000000000000 : Rat))
+  | 22 => ((1629227873897282337 : Rat) / (10000000000000000000000000000000000000000000000000000000 : Rat))
+  | _ => 0
+
+def primaryK11RawOmegaATailWindowUpper (n : CoeffIndex23) : Real :=
+  (primaryK11RawOmegaATailWindowUpperRat (n.1) : Real)
+
+def primaryK11RawOmegaATailRemainderRadiusRat : Nat -> Rat
+  | 0 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 1 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 2 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 3 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 4 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 5 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 6 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 7 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 8 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 9 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 10 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 11 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 12 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 13 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 14 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 15 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 16 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 17 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 18 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 19 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 20 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 21 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | 22 => ((8744876245761809 : Rat) / (50000000000000000000000000000000000000000 : Rat))
+  | _ => 0
+
+def primaryK11RawOmegaATailRemainderRadius (n : CoeffIndex23) : Real :=
+  (primaryK11RawOmegaATailRemainderRadiusRat (n.1) : Real)
+
+def primaryK11RawOmegaATailRadiusRat : Nat -> Rat
+  | 0 => ((22908303024985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 1 => ((33241136494985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 2 => ((33241136494985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 3 => ((33241136494985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 4 => ((23965936902485823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 5 => ((11982517042043526611 : Rat) / (10000000000000000000000000000000000000 : Rat))
+  | 6 => ((33241136494985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 7 => ((33241136494985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 8 => ((33241136494985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 9 => ((12297984512521721969 : Rat) / (10000000000000000000000000000000000000 : Rat))
+  | 10 => ((125803598990226159533 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 11 => ((31407448429235823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 12 => ((33241136494985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 13 => ((32140708179750014101 : Rat) / (25000000000000000000000000000000000000 : Rat))
+  | 14 => ((128741012682811949513 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 15 => ((33241136494985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 16 => ((127488651401946782937 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 17 => ((33241136494985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 18 => ((65461883650210498137 : Rat) / (50000000000000000000000000000000000000 : Rat))
+  | 19 => ((33241136494985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 20 => ((32518981175735823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 21 => ((130622058584365022489 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 22 => ((32091704374985823 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | _ => 0
+
+def primaryK11RawOmegaATailRadius (n : CoeffIndex23) : Real :=
+  (primaryK11RawOmegaATailRadiusRat (n.1) : Real)
+
+def primaryK11RawOmegaAComparisonTailWindowArithmeticPayload_generated :
+    PrimaryK11RawOmegaAComparisonTailWindowArithmeticPayload := by
+  refine
+    { cutoff := rawOmegaAFiniteTailCutoff
+      tailEnd := rawOmegaATailWindowEnd
+      finiteLower := primaryK11RawOmegaAFiniteLower
+      finiteUpper := primaryK11RawOmegaAFiniteUpper
+      tailWindowLower := primaryK11RawOmegaATailWindowLower
+      tailWindowUpper := primaryK11RawOmegaATailWindowUpper
+      tailRemainderRadius := primaryK11RawOmegaATailRemainderRadius
+      tailRadius := primaryK11RawOmegaATailRadius
+      hCutoff_nonneg := by norm_num [rawOmegaAFiniteTailCutoff]
+      hTailWindow := by norm_num [rawOmegaAFiniteTailCutoff, rawOmegaATailWindowEnd]
+      hTailLowerArith := ?_
+      hTailUpperArith := ?_
+      hPayloadLowerArith := ?_
+      hPayloadUpperArith := ?_ }
+  · intro n
+    fin_cases n <;>
+      norm_num [
+        rawOmegaAFiniteTailCutoff,
+        rawOmegaATailWindowEnd,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAAbsDistanceLower,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAAbsDistanceUpper,
+        Q3.PSDpd.CenteredCoeffPayloadImport.primaryK11AAbsDistanceEntryRat,
+        Q3.PSDpd.CenteredCoeffPayloadImport.primaryK11ARadiusAbsDistanceEntryRat,
+        primaryK11RawOmegaAFiniteLower,
+        primaryK11RawOmegaAFiniteLowerRat,
+        primaryK11RawOmegaAFiniteUpper,
+        primaryK11RawOmegaAFiniteUpperRat,
+        primaryK11RawOmegaATailWindowLower,
+        primaryK11RawOmegaATailWindowLowerRat,
+        primaryK11RawOmegaATailWindowUpper,
+        primaryK11RawOmegaATailWindowUpperRat,
+        primaryK11RawOmegaATailRemainderRadius,
+        primaryK11RawOmegaATailRemainderRadiusRat,
+        primaryK11RawOmegaATailRadius,
+        primaryK11RawOmegaATailRadiusRat
+      ]
+  · intro n
+    fin_cases n <;>
+      norm_num [
+        rawOmegaAFiniteTailCutoff,
+        rawOmegaATailWindowEnd,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAAbsDistanceLower,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAAbsDistanceUpper,
+        Q3.PSDpd.CenteredCoeffPayloadImport.primaryK11AAbsDistanceEntryRat,
+        Q3.PSDpd.CenteredCoeffPayloadImport.primaryK11ARadiusAbsDistanceEntryRat,
+        primaryK11RawOmegaAFiniteLower,
+        primaryK11RawOmegaAFiniteLowerRat,
+        primaryK11RawOmegaAFiniteUpper,
+        primaryK11RawOmegaAFiniteUpperRat,
+        primaryK11RawOmegaATailWindowLower,
+        primaryK11RawOmegaATailWindowLowerRat,
+        primaryK11RawOmegaATailWindowUpper,
+        primaryK11RawOmegaATailWindowUpperRat,
+        primaryK11RawOmegaATailRemainderRadius,
+        primaryK11RawOmegaATailRemainderRadiusRat,
+        primaryK11RawOmegaATailRadius,
+        primaryK11RawOmegaATailRadiusRat
+      ]
+  · intro n
+    fin_cases n <;>
+      norm_num [
+        rawOmegaAFiniteTailCutoff,
+        rawOmegaATailWindowEnd,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAAbsDistanceLower,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAAbsDistanceUpper,
+        Q3.PSDpd.CenteredCoeffPayloadImport.primaryK11AAbsDistanceEntryRat,
+        Q3.PSDpd.CenteredCoeffPayloadImport.primaryK11ARadiusAbsDistanceEntryRat,
+        primaryK11RawOmegaAFiniteLower,
+        primaryK11RawOmegaAFiniteLowerRat,
+        primaryK11RawOmegaAFiniteUpper,
+        primaryK11RawOmegaAFiniteUpperRat,
+        primaryK11RawOmegaATailWindowLower,
+        primaryK11RawOmegaATailWindowLowerRat,
+        primaryK11RawOmegaATailWindowUpper,
+        primaryK11RawOmegaATailWindowUpperRat,
+        primaryK11RawOmegaATailRemainderRadius,
+        primaryK11RawOmegaATailRemainderRadiusRat,
+        primaryK11RawOmegaATailRadius,
+        primaryK11RawOmegaATailRadiusRat
+      ]
+  · intro n
+    fin_cases n <;>
+      norm_num [
+        rawOmegaAFiniteTailCutoff,
+        rawOmegaATailWindowEnd,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAAbsDistanceLower,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAAbsDistanceUpper,
+        Q3.PSDpd.CenteredCoeffPayloadImport.primaryK11AAbsDistanceEntryRat,
+        Q3.PSDpd.CenteredCoeffPayloadImport.primaryK11ARadiusAbsDistanceEntryRat,
+        primaryK11RawOmegaAFiniteLower,
+        primaryK11RawOmegaAFiniteLowerRat,
+        primaryK11RawOmegaAFiniteUpper,
+        primaryK11RawOmegaAFiniteUpperRat,
+        primaryK11RawOmegaATailWindowLower,
+        primaryK11RawOmegaATailWindowLowerRat,
+        primaryK11RawOmegaATailWindowUpper,
+        primaryK11RawOmegaATailWindowUpperRat,
+        primaryK11RawOmegaATailRemainderRadius,
+        primaryK11RawOmegaATailRemainderRadiusRat,
+        primaryK11RawOmegaATailRadius,
+        primaryK11RawOmegaATailRadiusRat
+      ]
+
+/-! Arithmetic data for control k=9. -/
+
+def controlK9RawOmegaAFiniteLowerRat : Nat -> Rat
+  | 0 => ((2624890365877484281 : Rat) / (100000000000000000000 : Rat))
+  | 1 => ((-4873092439847854368218120316427241 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 2 => ((-2460736057093875348980287054908127 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 3 => ((-174489996587978017 : Rat) / (1000000000000000000 : Rat))
+  | 4 => ((-13781190623693576355916204351051637 : Rat) / (100000000000000000000000000000000000 : Rat))
+  | 5 => ((-1143748439686752181 : Rat) / (10000000000000000000 : Rat))
+  | 6 => ((-9742597050289207721 : Rat) / (100000000000000000000 : Rat))
+  | 7 => ((-842050622593643919 : Rat) / (10000000000000000000 : Rat))
+  | 8 => ((-183483743338367927 : Rat) / (2500000000000000000 : Rat))
+  | 9 => ((-1607212259210436487796944865981851 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 10 => ((-5648004324873016381 : Rat) / (100000000000000000000 : Rat))
+  | 11 => ((-4970832111898410805452862034611253 : Rat) / (100000000000000000000000000000000000 : Rat))
+  | 12 => ((-4379542530481586224652160245470013 : Rat) / (100000000000000000000000000000000000 : Rat))
+  | 13 => ((-3861088483096191087 : Rat) / (100000000000000000000 : Rat))
+  | 14 => ((-851336080558941249 : Rat) / (25000000000000000000 : Rat))
+  | 15 => ((-3004107317037790859 : Rat) / (100000000000000000000 : Rat))
+  | 16 => ((-2650527771460507803 : Rat) / (100000000000000000000 : Rat))
+  | 17 => ((-1461730079439918501585917171620397 : Rat) / (62500000000000000000000000000000000 : Rat))
+  | 18 => ((-10318936837974501824291346277795657 : Rat) / (500000000000000000000000000000000000 : Rat))
+  | 19 => ((-910597954127281717 : Rat) / (50000000000000000000 : Rat))
+  | 20 => ((-803575775499965771 : Rat) / (50000000000000000000 : Rat))
+  | 21 => ((-35457011725023831 : Rat) / (2500000000000000000 : Rat))
+  | 22 => ((-782258945814154097704363577841817 : Rat) / (62500000000000000000000000000000000 : Rat))
+  | _ => 0
+
+def controlK9RawOmegaAFiniteLower (n : CoeffIndex23) : Real :=
+  (controlK9RawOmegaAFiniteLowerRat (n.1) : Real)
+
+def controlK9RawOmegaAFiniteUpperRat : Nat -> Rat
+  | 0 => ((2624890365877484551 : Rat) / (100000000000000000000 : Rat))
+  | 1 => ((-4873092439847854091781879683572759 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 2 => ((-2460736057093875091019712945091873 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 3 => ((-1744899965879779987 : Rat) / (10000000000000000000 : Rat))
+  | 4 => ((-13781190623693575844083795648948363 : Rat) / (100000000000000000000000000000000000 : Rat))
+  | 5 => ((-1143748439686752083 : Rat) / (10000000000000000000 : Rat))
+  | 6 => ((-2435649262572301863 : Rat) / (25000000000000000000 : Rat))
+  | 7 => ((-4210253112968219229 : Rat) / (50000000000000000000 : Rat))
+  | 8 => ((-1834837433383679163 : Rat) / (25000000000000000000 : Rat))
+  | 9 => ((-1607212259210436162203055134018149 : Rat) / (25000000000000000000000000000000000 : Rat))
+  | 10 => ((-176500135152281751 : Rat) / (3125000000000000000 : Rat))
+  | 11 => ((-4970832111898410594547137965388747 : Rat) / (100000000000000000000000000000000000 : Rat))
+  | 12 => ((-4379542530481585575347839754529987 : Rat) / (100000000000000000000000000000000000 : Rat))
+  | 13 => ((-241318030193511913 : Rat) / (6250000000000000000 : Rat))
+  | 14 => ((-3405344322235764777 : Rat) / (100000000000000000000 : Rat))
+  | 15 => ((-751026829259447671 : Rat) / (25000000000000000000 : Rat))
+  | 16 => ((-66263194286512691 : Rat) / (2500000000000000000 : Rat))
+  | 17 => ((-1461730079439918423414082828379603 : Rat) / (62500000000000000000000000000000000 : Rat))
+  | 18 => ((-10318936837974500875708653722204343 : Rat) / (500000000000000000000000000000000000 : Rat))
+  | 19 => ((-1821195908254563229 : Rat) / (100000000000000000000 : Rat))
+  | 20 => ((-40178788774998287 : Rat) / (2500000000000000000 : Rat))
+  | 21 => ((-709140234500476619 : Rat) / (50000000000000000000 : Rat))
+  | 22 => ((-782258945814154064795636422158183 : Rat) / (62500000000000000000000000000000000 : Rat))
+  | _ => 0
+
+def controlK9RawOmegaAFiniteUpper (n : CoeffIndex23) : Real :=
+  (controlK9RawOmegaAFiniteUpperRat (n.1) : Real)
+
+def controlK9RawOmegaATailWindowLowerRat : Nat -> Rat
+  | 0 => ((95611003986867883 : Rat) / (40000000000000000000000000000000000 : Rat))
+  | 1 => ((-1496392435805403197 : Rat) / (1000000000000000000000000000000000000 : Rat))
+  | 2 => ((1554140800354201791 : Rat) / (2500000000000000000000000000000000000 : Rat))
+  | 3 => ((-7058157635391009113 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 4 => ((-2359662550523920397 : Rat) / (10000000000000000000000000000000000000 : Rat))
+  | 5 => ((2573790936828052663 : Rat) / (10000000000000000000000000000000000000 : Rat))
+  | 6 => ((-873786263735680149 : Rat) / (10000000000000000000000000000000000000 : Rat))
+  | 7 => ((-4914489919349733027 : Rat) / (50000000000000000000000000000000000000 : Rat))
+  | 8 => ((812770558194979099 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 9 => ((-2169912766021201519 : Rat) / (25000000000000000000000000000000000000 : Rat))
+  | 10 => ((-2088413513173314703 : Rat) / (50000000000000000000000000000000000000 : Rat))
+  | 11 => ((22753076618965983 : Rat) / (200000000000000000000000000000000000 : Rat))
+  | 12 => ((-517179505480716019 : Rat) / (6250000000000000000000000000000000000 : Rat))
+  | 13 => ((-40613854723016049 : Rat) / (4000000000000000000000000000000000000 : Rat))
+  | 14 => ((1630406706778533357 : Rat) / (20000000000000000000000000000000000000 : Rat))
+  | 15 => ((-7689410156069335997 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 16 => ((1972919655220889513 : Rat) / (200000000000000000000000000000000000000 : Rat))
+  | 17 => ((358625487846370477 : Rat) / (6250000000000000000000000000000000000 : Rat))
+  | 18 => ((-6977810634424286923 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 19 => ((36069354514001631 : Rat) / (1562500000000000000000000000000000000 : Rat))
+  | 20 => ((3810690383811020539 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 21 => ((-3086672792643285019 : Rat) / (50000000000000000000000000000000000000 : Rat))
+  | 22 => ((99013448762955427 : Rat) / (3125000000000000000000000000000000000 : Rat))
+  | _ => 0
+
+def controlK9RawOmegaATailWindowLower (n : CoeffIndex23) : Real :=
+  (controlK9RawOmegaATailWindowLowerRat (n.1) : Real)
+
+def controlK9RawOmegaATailWindowUpperRat : Nat -> Rat
+  | 0 => ((1195137549835848539 : Rat) / (500000000000000000000000000000000000 : Rat))
+  | 1 => ((-299278487161080639 : Rat) / (200000000000000000000000000000000000 : Rat))
+  | 2 => ((621656320141680717 : Rat) / (1000000000000000000000000000000000000 : Rat))
+  | 3 => ((-3529078817695504553 : Rat) / (50000000000000000000000000000000000000 : Rat))
+  | 4 => ((-1179831275261960197 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 5 => ((1286895468414026333 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 6 => ((-136529103708700023 : Rat) / (1562500000000000000000000000000000000 : Rat))
+  | 7 => ((-2457244959674866511 : Rat) / (25000000000000000000000000000000000000 : Rat))
+  | 8 => ((8127705581949791 : Rat) / (50000000000000000000000000000000000 : Rat))
+  | 9 => ((-1084956383010600757 : Rat) / (12500000000000000000000000000000000000 : Rat))
+  | 10 => ((-2088413513173314699 : Rat) / (50000000000000000000000000000000000000 : Rat))
+  | 11 => ((1137653830948299151 : Rat) / (10000000000000000000000000000000000000 : Rat))
+  | 12 => ((-1654974417538291259 : Rat) / (20000000000000000000000000000000000000 : Rat))
+  | 13 => ((-126918296009425153 : Rat) / (12500000000000000000000000000000000000 : Rat))
+  | 14 => ((4076016766946333397 : Rat) / (50000000000000000000000000000000000000 : Rat))
+  | 15 => ((-7689410156069335989 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 16 => ((1972919655220889517 : Rat) / (200000000000000000000000000000000000000 : Rat))
+  | 17 => ((1434501951385481911 : Rat) / (25000000000000000000000000000000000000 : Rat))
+  | 18 => ((-1744452658606071729 : Rat) / (25000000000000000000000000000000000000 : Rat))
+  | 19 => ((2308438688896104387 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 20 => ((3810690383811020543 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 21 => ((-385834099080410627 : Rat) / (6250000000000000000000000000000000000 : Rat))
+  | 22 => ((792107590103643417 : Rat) / (25000000000000000000000000000000000000 : Rat))
+  | _ => 0
+
+def controlK9RawOmegaATailWindowUpper (n : CoeffIndex23) : Real :=
+  (controlK9RawOmegaATailWindowUpperRat (n.1) : Real)
+
+def controlK9RawOmegaATailRemainderRadiusRat : Nat -> Rat
+  | 0 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 1 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 2 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 3 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 4 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 5 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 6 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 7 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 8 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 9 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 10 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 11 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 12 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 13 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 14 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 15 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 16 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 17 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 18 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 19 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 20 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 21 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | 22 => ((866072951420431 : Rat) / (5000000000000000000000000000000000000 : Rat))
+  | _ => 0
+
+def controlK9RawOmegaATailRemainderRadius (n : CoeffIndex23) : Real :=
+  (controlK9RawOmegaATailRemainderRadiusRat (n.1) : Real)
+
+def controlK9RawOmegaATailRadiusRat : Nat -> Rat
+  | 0 => ((822350022359603061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 1 => ((823137126441703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 2 => ((823137126441703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 3 => ((820137865445154106719 : Rat) / (10000000000000000000000000000000000000 : Rat))
+  | 4 => ((823137126441703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 5 => ((818700933262703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 6 => ((205460816288117985559 : Rat) / (2500000000000000000000000000000000000 : Rat))
+  | 7 => ((821952912322403061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 8 => ((822308997809803061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 9 => ((823137126441703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 10 => ((164479875780757267577 : Rat) / (2000000000000000000000000000000000000 : Rat))
+  | 11 => ((823137126441703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 12 => ((823137126441703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 13 => ((822612541445703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 14 => ((8224504204907288315291 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 15 => ((8227904296677281423227 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 16 => ((8228366611933691728321 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 17 => ((823137126441703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 18 => ((823137126441703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 19 => ((822815807011203061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | 20 => ((8228910270477458433839 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 21 => ((8229028705814118385039 : Rat) / (100000000000000000000000000000000000000 : Rat))
+  | 22 => ((823137126441703061 : Rat) / (10000000000000000000000000000000000 : Rat))
+  | _ => 0
+
+def controlK9RawOmegaATailRadius (n : CoeffIndex23) : Real :=
+  (controlK9RawOmegaATailRadiusRat (n.1) : Real)
+
+def controlK9RawOmegaAComparisonTailWindowArithmeticPayload_generated :
+    ControlK9RawOmegaAComparisonTailWindowArithmeticPayload := by
+  refine
+    { cutoff := rawOmegaAFiniteTailCutoff
+      tailEnd := rawOmegaATailWindowEnd
+      finiteLower := controlK9RawOmegaAFiniteLower
+      finiteUpper := controlK9RawOmegaAFiniteUpper
+      tailWindowLower := controlK9RawOmegaATailWindowLower
+      tailWindowUpper := controlK9RawOmegaATailWindowUpper
+      tailRemainderRadius := controlK9RawOmegaATailRemainderRadius
+      tailRadius := controlK9RawOmegaATailRadius
+      hCutoff_nonneg := by norm_num [rawOmegaAFiniteTailCutoff]
+      hTailWindow := by norm_num [rawOmegaAFiniteTailCutoff, rawOmegaATailWindowEnd]
+      hTailLowerArith := ?_
+      hTailUpperArith := ?_
+      hPayloadLowerArith := ?_
+      hPayloadUpperArith := ?_ }
+  · intro n
+    fin_cases n <;>
+      norm_num [
+        rawOmegaAFiniteTailCutoff,
+        rawOmegaATailWindowEnd,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.controlK9RawOmegaAAbsDistanceLower,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.controlK9RawOmegaAAbsDistanceUpper,
+        Q3.PSDpd.CenteredCoeffPayloadImport.controlK9AAbsDistanceEntryRat,
+        Q3.PSDpd.CenteredCoeffPayloadImport.controlK9ARadiusAbsDistanceEntryRat,
+        controlK9RawOmegaAFiniteLower,
+        controlK9RawOmegaAFiniteLowerRat,
+        controlK9RawOmegaAFiniteUpper,
+        controlK9RawOmegaAFiniteUpperRat,
+        controlK9RawOmegaATailWindowLower,
+        controlK9RawOmegaATailWindowLowerRat,
+        controlK9RawOmegaATailWindowUpper,
+        controlK9RawOmegaATailWindowUpperRat,
+        controlK9RawOmegaATailRemainderRadius,
+        controlK9RawOmegaATailRemainderRadiusRat,
+        controlK9RawOmegaATailRadius,
+        controlK9RawOmegaATailRadiusRat
+      ]
+  · intro n
+    fin_cases n <;>
+      norm_num [
+        rawOmegaAFiniteTailCutoff,
+        rawOmegaATailWindowEnd,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.controlK9RawOmegaAAbsDistanceLower,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.controlK9RawOmegaAAbsDistanceUpper,
+        Q3.PSDpd.CenteredCoeffPayloadImport.controlK9AAbsDistanceEntryRat,
+        Q3.PSDpd.CenteredCoeffPayloadImport.controlK9ARadiusAbsDistanceEntryRat,
+        controlK9RawOmegaAFiniteLower,
+        controlK9RawOmegaAFiniteLowerRat,
+        controlK9RawOmegaAFiniteUpper,
+        controlK9RawOmegaAFiniteUpperRat,
+        controlK9RawOmegaATailWindowLower,
+        controlK9RawOmegaATailWindowLowerRat,
+        controlK9RawOmegaATailWindowUpper,
+        controlK9RawOmegaATailWindowUpperRat,
+        controlK9RawOmegaATailRemainderRadius,
+        controlK9RawOmegaATailRemainderRadiusRat,
+        controlK9RawOmegaATailRadius,
+        controlK9RawOmegaATailRadiusRat
+      ]
+  · intro n
+    fin_cases n <;>
+      norm_num [
+        rawOmegaAFiniteTailCutoff,
+        rawOmegaATailWindowEnd,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.controlK9RawOmegaAAbsDistanceLower,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.controlK9RawOmegaAAbsDistanceUpper,
+        Q3.PSDpd.CenteredCoeffPayloadImport.controlK9AAbsDistanceEntryRat,
+        Q3.PSDpd.CenteredCoeffPayloadImport.controlK9ARadiusAbsDistanceEntryRat,
+        controlK9RawOmegaAFiniteLower,
+        controlK9RawOmegaAFiniteLowerRat,
+        controlK9RawOmegaAFiniteUpper,
+        controlK9RawOmegaAFiniteUpperRat,
+        controlK9RawOmegaATailWindowLower,
+        controlK9RawOmegaATailWindowLowerRat,
+        controlK9RawOmegaATailWindowUpper,
+        controlK9RawOmegaATailWindowUpperRat,
+        controlK9RawOmegaATailRemainderRadius,
+        controlK9RawOmegaATailRemainderRadiusRat,
+        controlK9RawOmegaATailRadius,
+        controlK9RawOmegaATailRadiusRat
+      ]
+  · intro n
+    fin_cases n <;>
+      norm_num [
+        rawOmegaAFiniteTailCutoff,
+        rawOmegaATailWindowEnd,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.controlK9RawOmegaAAbsDistanceLower,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.controlK9RawOmegaAAbsDistanceUpper,
+        Q3.PSDpd.CenteredCoeffPayloadImport.controlK9AAbsDistanceEntryRat,
+        Q3.PSDpd.CenteredCoeffPayloadImport.controlK9ARadiusAbsDistanceEntryRat,
+        controlK9RawOmegaAFiniteLower,
+        controlK9RawOmegaAFiniteLowerRat,
+        controlK9RawOmegaAFiniteUpper,
+        controlK9RawOmegaAFiniteUpperRat,
+        controlK9RawOmegaATailWindowLower,
+        controlK9RawOmegaATailWindowLowerRat,
+        controlK9RawOmegaATailWindowUpper,
+        controlK9RawOmegaATailWindowUpperRat,
+        controlK9RawOmegaATailRemainderRadius,
+        controlK9RawOmegaATailRemainderRadiusRat,
+        controlK9RawOmegaATailRadius,
+        controlK9RawOmegaATailRadiusRat
+      ]
+
+end CenteredCoeffPrimeDeltaLiveRationalPayloadImport
+end PSDpd
+end Q3

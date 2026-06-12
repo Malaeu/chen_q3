@@ -36,6 +36,41 @@ Step32 is closed.  The live PSD gate is Step33A.1:
 - then Step33A.3 packages `CertifiedCenteredBSplineCoeffBlock`;
 - then Step33B/Step33C consume certified blocks/families.
 
+Do not model Step33 as a long list of row, entry, shift, or scalar-table proof
+goals.  The mathematical Step33 contract has exactly three gates:
+
+- 33A: construct `ActiveCenteredCoeffEntryHboxCert`;
+- 33B: derive finite analytic Weil positivity from certified centered coeff
+  blocks;
+- 33C: package the singleton `DirectedCertFamily` handoff.
+
+The current thin aggregator theorem is:
+
+- `psd_step33_closed_from_deltaLiveTightSumChecksWithCenterError`.
+- `psd_step33_closed_from_namedDeltaLiveTightSumChecksWithCenterError`.
+
+The older exact midpoint-equality aggregator
+`psd_step33_closed_from_deltaLiveTightSumChecks` remains a stricter compiled
+compatibility surface.  The active generated-payload contract follows the
+1024-bit/36-decimal audit:
+
+```text
+abs(live_mid_sum - imported_P_mid) + live_rad_sum <= imported_P_radius
+```
+
+The active generated payload facts are named:
+
+- `primaryK11TightLiveCenterErrorSumCheck`;
+- `controlK9TightLiveCenterErrorSumCheck`.
+
+If blocked, classify the blocker only as:
+
+- A. missing generated live tight-sum fact;
+- B. missing `ActiveCenteredCoeffEntryHboxCert` receiver;
+- C. missing `CertifiedCenteredBSplineCoeffBlock` receiver;
+- D. missing finite analytic Weil positivity receiver;
+- E. missing `DirectedFamily`/singleton handoff receiver.
+
 The current practical source proof is the primary prime-side `P` entry hbox.
 Recent compiled receiver chain:
 
@@ -43,9 +78,16 @@ Recent compiled receiver chain:
 - `primaryK11CenteredBSplineR11PrimeShiftPair_hbox_of_cardinal_hboxes`
 - `primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes`
 
-The next generated replay layer is scalar `positivePartPower` /
-polynomial-segment hboxes for degree-23 primary summands.  Control `k=9`
-follows the same shape after primary.
+The `(0,0)` direct-profile certificate is only a pilot.  Do not continue
+manual row-by-row or entry-by-entry scalar replay.  The next replay layer should
+first add structural compression:
+
+- packet center delta compression;
+- compact-support live prime-shift filtering;
+- live/segment hbox receiver for centered cardinal B-splines;
+- generated scalar payloads only for live terms.
+
+Control `k=9` follows the same shape after primary.
 
 ## Workflow
 

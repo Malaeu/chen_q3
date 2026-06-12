@@ -1,0 +1,2397 @@
+- generic [ref=e1]:
+  - link "Weiter zum Inhalt" [ref=e3] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e7]:
+    - generic [ref=e9]:
+      - navigation "Seitenleiste":
+        - generic:
+          - generic:
+            - generic:
+              - button "Seitenleiste öffnen":
+                - img
+        - generic:
+          - generic:
+            - link "Neuer Chat":
+              - /url: /
+              - generic:
+                - img
+              - generic: Neuer Chat
+          - generic:
+            - button "Chats durchsuchen":
+              - generic:
+                - img
+              - generic: Chats durchsuchen
+          - generic:
+            - button "Letzte":
+              - generic:
+                - img
+              - generic: Letzte
+        - generic:
+          - generic:
+            - button "Profil-Menü öffnen"
+      - generic [ref=e10]:
+        - heading "Chatverlauf" [level=2] [ref=e11]
+        - generic [ref=e12]:
+          - navigation "Chatverlauf" [ref=e13]:
+            - generic [ref=e16]:
+              - link "Heim" [ref=e17] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e18]: ChatGPT
+              - button "Seitenleiste schließen" [expanded] [ref=e20]:
+                - img [ref=e21]
+            - list [ref=e24]:
+              - listitem [ref=e25]:
+                - link "Neuer Chat Umschalttaste Befehlstaste O" [ref=e137] [cursor=pointer]:
+                  - /url: /
+                  - generic [ref=e27]:
+                    - img [ref=e139]
+                    - generic [ref=e142]: Neuer Chat
+                  - generic [ref=e143]:
+                    - generic "Umschalttaste" [ref=e144]:
+                      - generic [ref=e145]: ⇧
+                    - generic "Befehlstaste" [ref=e146]:
+                      - generic [ref=e147]: ⌘
+                    - generic [ref=e149]: O
+              - listitem [ref=e32]:
+                - button "Chats durchsuchen Befehlstaste K" [ref=e150] [cursor=pointer]:
+                  - generic [ref=e34]:
+                    - img [ref=e152]
+                    - generic [ref=e155]: Chats durchsuchen
+                  - generic [ref=e156]:
+                    - generic "Befehlstaste" [ref=e157]:
+                      - generic [ref=e158]: ⌘
+                    - generic [ref=e160]: K
+            - link "Bibliothek" [ref=e39] [cursor=pointer]:
+              - /url: /library
+              - img [ref=e41]
+              - generic [ref=e44]: Bibliothek
+            - link "Apps" [ref=e45] [cursor=pointer]:
+              - /url: /apps
+              - img [ref=e47]
+              - generic [ref=e50]: Apps
+            - link "Codex" [ref=e51] [cursor=pointer]:
+              - /url: /codex
+              - generic [ref=e52]:
+                - img [ref=e54]
+                - generic [ref=e57]: Codex
+              - img [ref=e59]
+            - generic [ref=e62] [cursor=pointer]:
+              - img [ref=e64]
+              - generic [ref=e67]: Mehr
+            - generic [ref=e161]:
+              - button "GPTs" [expanded] [ref=e163] [cursor=pointer]:
+                - heading "GPTs" [level=2] [ref=e164]
+              - list [ref=e165]:
+                - listitem [ref=e166]:
+                  - link "Aris_Tot_Le" [ref=e167] [cursor=pointer]:
+                    - /url: /g/g-693cbc1743d48191966718e1132fc48c-aris-tot-le
+                    - generic [ref=e168]:
+                      - img [ref=e170]
+                      - generic [ref=e173]: Aris_Tot_Le
+                    - button [ref=e175]:
+                      - img [ref=e177]
+                - listitem [ref=e179]:
+                  - link "Murka" [ref=e180] [cursor=pointer]:
+                    - /url: /g/g-67f01efd3b1481918beadcb246142d4b-murka
+                    - generic [ref=e185]: Murka
+                    - button [ref=e187]:
+                      - img [ref=e189]
+                - listitem [ref=e191]:
+                  - link "System Prompt Generator for Reasoning Models" [ref=e192] [cursor=pointer]:
+                    - /url: /g/g-6769db0aa91c8191bf46eeac95f5e055-system-prompt-generator-for-reasoning-models
+                    - generic "System Prompt Generator for Reasoning Models" [ref=e197]
+                    - button [ref=e199]:
+                      - img [ref=e201]
+                - listitem [ref=e203]:
+                  - link "System Prompt Generator" [ref=e204] [cursor=pointer]:
+                    - /url: /g/g-8qIKJ1ORT-system-prompt-generator
+                    - generic [ref=e209]: System Prompt Generator
+                    - button [ref=e211]:
+                      - img [ref=e213]
+              - link "GPTs erkunden" [ref=e215] [cursor=pointer]:
+                - /url: /gpts
+                - img [ref=e217]
+                - generic [ref=e220]: GPTs erkunden
+            - generic [ref=e221]:
+              - button "Projekte" [expanded] [ref=e223] [cursor=pointer]:
+                - heading "Projekte" [level=2] [ref=e224]
+              - list [ref=e225]:
+                - listitem [ref=e226]:
+                  - button "Neues Projekt" [ref=e227] [cursor=pointer]:
+                    - img [ref=e229]
+                    - generic [ref=e232]: Neues Projekt
+                - listitem [ref=e233]:
+                  - generic [ref=e234]:
+                    - button "RH_März_2026" [expanded] [ref=e235] [cursor=pointer]:
+                      - img [ref=e239]
+                      - generic [ref=e248]: RH_März_2026
+                    - generic:
+                      - button "Projektstartseite öffnen" [ref=e249] [cursor=pointer]:
+                        - img [ref=e251]
+                      - button "Projektoptionen für RH_März_2026 öffnen" [ref=e253] [cursor=pointer]:
+                        - img [ref=e255]
+                  - list [ref=e258]:
+                    - listitem [ref=e259]:
+                      - link "Branch · Доказательство гипотезы Римана, Chat im Projekt RH_März_2026" [ref=e260] [cursor=pointer]:
+                        - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a15bb66-72e0-83eb-9a6e-1da84bfec2de
+                        - generic "Branch · Доказательство гипотезы Римана" [ref=e262]
+                        - button "Gesprächsoptionen für Branch · Доказательство гипотезы Римана öffnen" [ref=e265]:
+                          - img [ref=e267]
+                    - listitem [ref=e269]:
+                      - link "Branch · Branch · Доказательство гипотезы Римана, Chat im Projekt RH_März_2026, ungelesen" [ref=e270] [cursor=pointer]:
+                        - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a15bf3c-fcf0-83eb-8bde-466ad482785d
+                        - generic "Branch · Branch · Доказательство гипотезы Римана" [ref=e272]
+                        - button "Gesprächsoptionen für Branch · Branch · Доказательство гипотезы Римана öffnen" [ref=e276]:
+                          - img [ref=e278]
+                    - listitem [ref=e282]:
+                      - link "Доказательство гипотезы Римана, Chat im Projekt RH_März_2026, ungelesen" [ref=e283] [cursor=pointer]:
+                        - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a15a8d6-0c60-83eb-bdc7-926d6ca244e7
+                        - generic "Доказательство гипотезы Римана" [ref=e285]
+                        - button "Gesprächsoptionen für Доказательство гипотезы Римана öffnen" [ref=e289]:
+                          - img [ref=e291]
+                    - listitem [ref=e295]:
+                      - link "Как настроить кодекс, Chat im Projekt RH_März_2026" [ref=e296] [cursor=pointer]:
+                        - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a11a05f-4508-83eb-a5eb-948a1896a678
+                        - generic [ref=e298]: Как настроить кодекс
+                        - button "Gesprächsoptionen für Как настроить кодекс öffnen" [ref=e301]:
+                          - img [ref=e303]
+                    - listitem [ref=e305]:
+                      - link "Truth-First Proof Protocol, Chat im Projekt RH_März_2026" [ref=e306] [cursor=pointer]:
+                        - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a0fb1bf-4280-83eb-955b-615032a280d3
+                        - generic [ref=e308]: Truth-First Proof Protocol
+                        - button "Gesprächsoptionen für Truth-First Proof Protocol öffnen" [ref=e311]:
+                          - img [ref=e313]
+                    - listitem [ref=e315]:
+                      - button "Mehr anzeigen" [ref=e316] [cursor=pointer]:
+                        - generic [ref=e318]: Mehr anzeigen
+                - listitem [ref=e319]:
+                  - generic [ref=e320]:
+                    - button "Last War Survival" [ref=e321] [cursor=pointer]:
+                      - img [ref=e325]
+                      - generic [ref=e334]: Last War Survival
+                    - generic:
+                      - button "Projektstartseite öffnen" [ref=e335] [cursor=pointer]:
+                        - img [ref=e337]
+                      - button "Projektoptionen für Last War Survival öffnen" [ref=e339] [cursor=pointer]:
+                        - img [ref=e341]
+                - listitem [ref=e343]:
+                  - generic [ref=e344]:
+                    - button "Patienten Beratung" [ref=e345] [cursor=pointer]:
+                      - img [ref=e349]
+                      - generic [ref=e358]: Patienten Beratung
+                    - generic:
+                      - button "Projektstartseite öffnen" [ref=e359] [cursor=pointer]:
+                        - img [ref=e361]
+                      - button "Projektoptionen für Patienten Beratung öffnen" [ref=e363] [cursor=pointer]:
+                        - img [ref=e365]
+                - listitem [ref=e367]:
+                  - generic [ref=e368]:
+                    - button "OP Berichte" [ref=e369] [cursor=pointer]:
+                      - img [ref=e373]
+                      - generic [ref=e382]: OP Berichte
+                    - generic:
+                      - button "Projektstartseite öffnen" [ref=e383] [cursor=pointer]:
+                        - img [ref=e385]
+                      - button "Projektoptionen für OP Berichte öffnen" [ref=e387] [cursor=pointer]:
+                        - img [ref=e389]
+                - listitem [ref=e391]:
+                  - generic [ref=e392]:
+                    - button "Paper_RH" [ref=e393] [cursor=pointer]:
+                      - img [ref=e397]
+                      - generic [ref=e406]: Paper_RH
+                    - generic:
+                      - button "Projektstartseite öffnen" [ref=e407] [cursor=pointer]:
+                        - img [ref=e409]
+                      - button "Projektoptionen für Paper_RH öffnen" [ref=e411] [cursor=pointer]:
+                        - img [ref=e413]
+                - listitem [ref=e415]:
+                  - generic [ref=e416] [cursor=pointer]:
+                    - img [ref=e418]
+                    - generic [ref=e421]: Mehr
+            - generic [ref=e422]:
+              - button "Aktuelle" [expanded] [ref=e424] [cursor=pointer]:
+                - heading "Aktuelle" [level=2] [ref=e425]
+              - list [ref=e427]:
+                - listitem [ref=e4591]:
+                  - link "Abführmittel oder Fiber-Supplement" [ref=e4592] [cursor=pointer]:
+                    - /url: /c/6a2256ac-34a8-83eb-8060-47ae0ed80abb
+                    - generic "Abführmittel oder Fiber-Supplement" [ref=e4594]
+                    - button "Gesprächsoptionen für Abführmittel oder Fiber-Supplement öffnen" [ref=e4597]:
+                      - img [ref=e4599]
+                - listitem [ref=e4601]:
+                  - link "Translate to Indonesian" [ref=e4602] [cursor=pointer]:
+                    - /url: /c/f09293e0-df34-8009-9990-e8ce4430486e
+                    - generic [ref=e4604]: Translate to Indonesian
+                    - button "Gesprächsoptionen für Translate to Indonesian öffnen" [ref=e4607]:
+                      - img [ref=e4609]
+                - listitem [ref=e428]:
+                  - link "Ответ в стиле Гоголя" [ref=e429] [cursor=pointer]:
+                    - /url: /c/6a21a026-298c-838b-b6f4-4402629292c0
+                    - generic [ref=e431]: Ответ в стиле Гоголя
+                    - button "Gesprächsoptionen für Ответ в стиле Гоголя öffnen" [ref=e434]:
+                      - img [ref=e436]
+                - listitem [ref=e438]:
+                  - link "Интраоперационная квантовая навигация" [ref=e439] [cursor=pointer]:
+                    - /url: /c/6a20be57-fc00-8394-9279-637ff31f9adf
+                    - generic "Интраоперационная квантовая навигация" [ref=e441]
+                    - button "Gesprächsoptionen für Интраоперационная квантовая навигация öffnen" [ref=e444]:
+                      - img [ref=e446]
+                - listitem [ref=e448]:
+                  - link "Translation clarification" [ref=e449] [cursor=pointer]:
+                    - /url: /c/e7d2f9ed-419c-8009-a0d7-7f43e006842c
+                    - generic [ref=e451]: Translation clarification
+                    - button "Gesprächsoptionen für Translation clarification öffnen" [ref=e454]:
+                      - img [ref=e456]
+                - listitem [ref=e458]:
+                  - link "Translate German to English" [ref=e459] [cursor=pointer]:
+                    - /url: /c/4cf27b8b-ff74-8009-a0a6-10e51d79b290
+                    - generic [ref=e461]: Translate German to English
+                    - button "Gesprächsoptionen für Translate German to English öffnen" [ref=e464]:
+                      - img [ref=e466]
+                - listitem [ref=e468]:
+                  - link "Translate to English" [ref=e469] [cursor=pointer]:
+                    - /url: /c/52e0aea2-0d44-8009-960a-4d915150dda8
+                    - generic [ref=e471]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e474]:
+                      - img [ref=e476]
+                - listitem [ref=e478]:
+                  - link "Cancer Forecast, Full Morning Version" [ref=e479] [cursor=pointer]:
+                    - /url: /c/6a1ea378-6e08-8389-83d2-5851a5ca99f3
+                    - generic "Cancer Forecast, Full Morning Version" [ref=e481]
+                    - button "Gesprächsoptionen für Cancer Forecast, Full Morning Version öffnen" [ref=e484]:
+                      - img [ref=e486]
+                - listitem [ref=e488]:
+                  - link "Translate to English" [ref=e489] [cursor=pointer]:
+                    - /url: /c/b2acf441-22d8-8009-8bbc-e37257a84a37
+                    - generic [ref=e491]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e494]:
+                      - img [ref=e496]
+                - listitem [ref=e498]:
+                  - link "Translate German to English" [ref=e499] [cursor=pointer]:
+                    - /url: /c/0acb1b01-addc-8009-89b3-96d52bf8ec7a
+                    - generic [ref=e501]: Translate German to English
+                    - button "Gesprächsoptionen für Translate German to English öffnen" [ref=e504]:
+                      - img [ref=e506]
+                - listitem [ref=e508]:
+                  - link "Translate German to English" [ref=e509] [cursor=pointer]:
+                    - /url: /c/ea665d3d-f1a8-8009-b2b7-e7aca945cd58
+                    - generic [ref=e511]: Translate German to English
+                    - button "Gesprächsoptionen für Translate German to English öffnen" [ref=e514]:
+                      - img [ref=e516]
+                - listitem [ref=e518]:
+                  - link "Translate to English" [ref=e519] [cursor=pointer]:
+                    - /url: /c/36f9e6c7-f10c-8009-bf3c-51fdb7037988
+                    - generic [ref=e521]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e524]:
+                      - img [ref=e526]
+                - listitem [ref=e528]:
+                  - link "Translate to English" [ref=e529] [cursor=pointer]:
+                    - /url: /c/79abc471-d160-8009-bc1d-c1c45ae8a36d
+                    - generic [ref=e531]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e534]:
+                      - img [ref=e536]
+                - listitem [ref=e538]:
+                  - link "Translation request English" [ref=e539] [cursor=pointer]:
+                    - /url: /c/bbed01b6-b1f4-8009-aea3-fb516365838d
+                    - generic [ref=e541]: Translation request English
+                    - button "Gesprächsoptionen für Translation request English öffnen" [ref=e544]:
+                      - img [ref=e546]
+                - listitem [ref=e548]:
+                  - link "Translate to English" [ref=e549] [cursor=pointer]:
+                    - /url: /c/31398a6f-78ec-8009-8936-b2c83d40feb0
+                    - generic [ref=e551]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e554]:
+                      - img [ref=e556]
+                - listitem [ref=e558]:
+                  - link "Translate German to English" [ref=e559] [cursor=pointer]:
+                    - /url: /c/7f87684c-2a14-8009-97bc-e3e0e2592430
+                    - generic [ref=e561]: Translate German to English
+                    - button "Gesprächsoptionen für Translate German to English öffnen" [ref=e564]:
+                      - img [ref=e566]
+                - listitem [ref=e568]:
+                  - link "Принцип Парето в бизнесе" [ref=e569] [cursor=pointer]:
+                    - /url: /c/6a1c486e-87d4-83eb-a971-106bb531d1ae
+                    - generic [ref=e571]: Принцип Парето в бизнесе
+                    - button "Gesprächsoptionen für Принцип Парето в бизнесе öffnen" [ref=e574]:
+                      - img [ref=e576]
+                - listitem [ref=e578]:
+                  - link "Lash Lifting und Maniküre" [ref=e579] [cursor=pointer]:
+                    - /url: /c/6a1bb39f-fd5c-83eb-b53a-592474238f1c
+                    - generic [ref=e581]: Lash Lifting und Maniküre
+                    - button "Gesprächsoptionen für Lash Lifting und Maniküre öffnen" [ref=e584]:
+                      - img [ref=e586]
+                - listitem [ref=e588]:
+                  - link "Cancer Daily Horoscope, May 31" [ref=e589] [cursor=pointer]:
+                    - /url: /c/6a1b4304-0954-83eb-984b-1b462d267334
+                    - generic [ref=e591]: Cancer Daily Horoscope, May 31
+                    - button "Gesprächsoptionen für Cancer Daily Horoscope, May 31 öffnen" [ref=e594]:
+                      - img [ref=e596]
+                - listitem [ref=e598]:
+                  - link "Выгодный бизнес в Таиланде" [ref=e599] [cursor=pointer]:
+                    - /url: /c/6a1af8b9-dddc-83eb-9ff6-3366f91dff12
+                    - generic [ref=e601]: Выгодный бизнес в Таиланде
+                    - button "Gesprächsoptionen für Выгодный бизнес в Таиланде öffnen" [ref=e604]:
+                      - img [ref=e606]
+                - listitem [ref=e608]:
+                  - link "Translate to English" [ref=e609] [cursor=pointer]:
+                    - /url: /c/3b69d475-d644-8009-bb12-2d33456d7710
+                    - generic [ref=e611]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e614]:
+                      - img [ref=e616]
+                - listitem [ref=e618]:
+                  - link "Перевод монетаризация" [ref=e619] [cursor=pointer]:
+                    - /url: /c/2b144e06-1e0c-8009-ba5a-a3b09c7f462a
+                    - generic [ref=e621]: Перевод монетаризация
+                    - button "Gesprächsoptionen für Перевод монетаризация öffnen" [ref=e624]:
+                      - img [ref=e626]
+                - listitem [ref=e628]:
+                  - link "Лечение пигментации лица" [ref=e629] [cursor=pointer]:
+                    - /url: /c/6a1ad676-da94-83eb-b404-76d60b08f7a8
+                    - generic [ref=e631]: Лечение пигментации лица
+                    - button "Gesprächsoptionen für Лечение пигментации лица öffnen" [ref=e634]:
+                      - img [ref=e636]
+                - listitem [ref=e638]:
+                  - link "AI Music Industry Watch" [ref=e639] [cursor=pointer]:
+                    - /url: /c/6a19b8e7-4058-83eb-8a90-130832fb1064
+                    - generic [ref=e641]: AI Music Industry Watch
+                    - button "Gesprächsoptionen für AI Music Industry Watch öffnen" [ref=e644]:
+                      - img [ref=e646]
+                - listitem [ref=e648]:
+                  - link "Cancer Horoscope for May 30" [ref=e649] [cursor=pointer]:
+                    - /url: /c/6a19b8d6-2194-83eb-8c5b-ac629f34e6df
+                    - generic [ref=e651]: Cancer Horoscope for May 30
+                    - button "Gesprächsoptionen für Cancer Horoscope for May 30 öffnen" [ref=e654]:
+                      - img [ref=e656]
+                - listitem [ref=e658]:
+                  - link "Выбор ATM в Таиланде" [ref=e659] [cursor=pointer]:
+                    - /url: /c/6a1a60ef-a024-83eb-93f6-72abbc96ee70
+                    - generic [ref=e661]: Выбор ATM в Таиланде
+                    - button "Gesprächsoptionen für Выбор ATM в Таиланде öffnen" [ref=e664]:
+                      - img [ref=e666]
+                - listitem [ref=e668]:
+                  - link "Caveman Output Rules, Compressed" [ref=e669] [cursor=pointer]:
+                    - /url: /c/6a18af3d-1bc4-83eb-bdab-09b522c5657a
+                    - generic "Caveman Output Rules, Compressed" [ref=e671]
+                    - button "Gesprächsoptionen für Caveman Output Rules, Compressed öffnen" [ref=e674]:
+                      - img [ref=e676]
+                - listitem [ref=e678]:
+                  - link "AI текст и нарратив" [ref=e679] [cursor=pointer]:
+                    - /url: /c/6a18555c-f820-83eb-bcd5-1d38b3ade264
+                    - generic [ref=e681]: AI текст и нарратив
+                    - button "Gesprächsoptionen für AI текст и нарратив öffnen" [ref=e684]:
+                      - img [ref=e686]
+          - button "kdl2017 Pro, Profil-Menü öffnen" [ref=e714] [cursor=pointer]:
+            - generic [ref=e75]:
+              - generic [ref=e77]: kdl2017
+              - generic [ref=e80]: Pro
+            - button "Apps herunterladen" [ref=e83]:
+              - img [ref=e85]
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - banner:
+          - link "Projekt RH_März_2026 öffnen" [ref=e718] [cursor=pointer]:
+            - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/project
+            - generic [ref=e719]:
+              - img "Standardfarbe, schwarz im hellen Modus, weiß im dunklen Modus Ordner" [ref=e721]
+              - generic [ref=e723]: RH_März_2026
+          - generic [ref=e92]:
+            - button "Gemeinsam nutzen" [ref=e93] [cursor=pointer]:
+              - generic [ref=e94]:
+                - img [ref=e95]
+                - text: Gemeinsam nutzen
+            - button "Gesprächsoptionen öffnen" [ref=e99] [cursor=pointer]:
+              - img [ref=e100]
+      - main [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e725]:
+            - generic [ref=e737]:
+              - heading "Du:" [level=4] [ref=e738]
+              - generic [ref=e740]:
+                - generic [ref=e743]:
+                  - generic [ref=e744]:
+                    - group "node.md" [ref=e745]:
+                      - button "node.md" [ref=e748] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: node.md
+                              - generic: Datei
+                    - group "report.md" [ref=e749]:
+                      - button "report.md" [ref=e752] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: report.md
+                              - generic: Datei
+                    - group "AGENT_PROTOCOL.md" [ref=e753]:
+                      - button "AGENT_PROTOCOL.md" [ref=e756] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: AGENT_PROTOCOL.md
+                              - generic: Datei
+                    - group "PHASE_MONITOR.md" [ref=e757]:
+                      - button "PHASE_MONITOR.md" [ref=e760] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: PHASE_MONITOR.md
+                              - generic: Datei
+                    - group "PSD_STEP33_MONITOR.md" [ref=e761]:
+                      - button "PSD_STEP33_MONITOR.md" [ref=e764] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: PSD_STEP33_MONITOR.md
+                              - generic: Datei
+                  - generic [ref=e767]:
+                    - generic [ref=e769]:
+                      - text: "Сделал. Коммит:"
+                      - code [ref=e770]: e16550f5f7feb18f8f751c23b4c537fd792ec998
+                      - code [ref=e771]: "[MacOS][rh_clean][Docs] Refactor Step33 control plane"
+                      - text: "Что зафиксировано: - [PSD_STEP33_MONITOR.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md) теперь"
+                      - code [ref=e772]: "status: ACTIVE"
+                      - text: . - [PHASE_MONITOR.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md) теперь
+                      - code [ref=e773]: "status: PARKED"
+                      - text: ". - Новый активный request/report: [node.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md), [report.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md). - Добавлен новый skill"
+                      - code [ref=e774]: q3-psdpd-step33-bootstrap
+                      - text: ; старый
+                      - code [ref=e775]: q3-step32-lean
+                      - text: стал compatibility shim. - В
+                      - code [ref=e776]: AGENTS.md
+                      - text: добавлен
+                      - code [ref=e777]: PRO_REVIEW_REQUEST
+                      - text: ": Codex не предполагает доступ к Pro/Louise-чату, а пишет компактный вопрос в report. - Untracked-артефакты оставлены как есть и не тронуты. Проверка:"
+                      - code [ref=e778]: git diff --check
+                      - text: "и staged diff check прошли. Lean не гонял, потому что это docs/control-plane-only refactor, theorem-файлы не трогались. Запуск следующего goal:"
+                      - code [ref=e780]: text /goal Step33A.1 only. Use q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md and q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md as the active route. Do not route to H1/PO3. Step32 is closed. Generate the next scalar positivePartPower / polynomial-segment summand hboxes needed by primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes, then feed existing cardinal -> R-pair -> P-entry receivers if dependencies exist. No sorry/admit/exact?/axiom. Do not touch Q3.Main. Run lake build Q3.Proofs.PSD_CenteredBSplineRBoundsImport, lake env lean the RBounds/PrimeEntry/EntryHbox files, scripts/q3_check.sh, and git diff --check. If blocked, write exact missing generated payload field and PRO_REVIEW_REQUEST for ChatGPT Pro/Louise into q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md.
+                      - text: "Следующая настоящая цель остаётся та же: добить primary"
+                      - code [ref=e781]: k=11
+                      - text: scalar summand hboxes для
+                      - code [ref=e782]: primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes
+                      - text: ". ::git-stage{cwd=\"/Users/emalam/Documents/GitHub/rh_lean_01_2026\"} ::git-commit{cwd=\"/Users/emalam/Documents/GitHub/rh_lean_01_2026\"}"
+                    - button "Mehr anzeigen" [ref=e783] [cursor=pointer]:
+                      - generic [ref=e784]: Mehr anzeigen
+                      - img [ref=e786]
+                - generic [ref=e788]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e804]:
+              - heading "Du:" [level=4] [ref=e805]
+              - generic [ref=e807]:
+                - generic [ref=e810]:
+                  - group "Pasted text.txt" [ref=e812]:
+                    - button "Pasted text.txt" [ref=e815] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                          - generic:
+                            - generic: Pasted text.txt
+                            - generic: Dokument
+                  - generic [ref=e817]: <response> Чувак, что ему сейчас надо? Что он там опять нашел, что почему-то что-то не подходит? Надо ему помочь </response> Kaк это работает? это вообще работает?
+                - generic [ref=e818]:
+                  - group "Deine Nachrichtenaktionen"
+            - generic [ref=e826]:
+              - heading "Du:" [level=4] [ref=e827]
+              - generic [ref=e829]:
+                - generic [ref=e834]: PRO_REVIEW_R. . UEST. .
+                - generic [ref=e835]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e841]:
+              - heading "Du:" [level=4] [ref=e842]
+              - generic [ref=e844]:
+                - generic [ref=e847]:
+                  - group "Pasted text.txt" [ref=e849]:
+                    - button "Pasted text.txt" [ref=e852] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                          - generic:
+                            - generic: Pasted text.txt
+                            - generic: Dokument
+                  - generic [ref=e854]: чушак смотри после сука 17!!!! часош!!! нам надо продумат как такое обходит матаном или фисикой или гометрийес или какнибуд!
+                - generic [ref=e855]:
+                  - group "Deine Nachrichtenaktionen"
+            - generic [ref=e865]:
+              - heading "Du:" [level=4] [ref=e866]
+              - generic [ref=e868]:
+                - generic [ref=e873]: <response> Окей, вот если бы ты сам сейчас шел по этому голу, попробуй, а, математически все это закрыть так, чтобы он потом не гадал, а, как ему закрывать эти степы. Попробуй, э, закрыть их </response>
+                - generic [ref=e874]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e878]:
+              - heading "Du:" [level=4] [ref=e879]
+              - generic [ref=e881]:
+                - generic [ref=e884]:
+                  - group "Pasted text.txt" [ref=e886]:
+                    - button "Pasted text.txt" [ref=e889] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                          - generic:
+                            - generic: Pasted text.txt
+                            - generic: Dokument
+                  - generic [ref=e891]: probej eto . het ja ne sowsem ponimaju etot razbo!
+                - generic [ref=e892]:
+                  - group "Deine Nachrichtenaktionen"
+            - generic [ref=e896]:
+              - heading "Du:" [level=4] [ref=e897]
+              - generic [ref=e899]:
+                - generic [ref=e902]:
+                  - group "Pasted text.txt" [ref=e904]:
+                    - button "Pasted text.txt" [ref=e907] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                          - generic:
+                            - generic: Pasted text.txt
+                            - generic: Dokument
+                  - generic [ref=e909]: poxodu opjat zastryli
+                - generic [ref=e910]:
+                  - group "Deine Nachrichtenaktionen"
+            - generic [ref=e939]:
+              - heading "ChatGPT:" [level=4] [ref=e940]
+              - generic [ref=e942]:
+                - generic [ref=e943]:
+                  - paragraph [ref=e947]: "Ы. Выбор уже почти принудительный: старый negated Step22 payload больше не тащим, потому что он PSD-sanity не проходит. Следующий ход — чистая signed-Q3/a_star data surface для signed finite-Weil A, а не подкрутка параметров вокруг старой таблицы."
+                  - button "Nachgedacht für 3m 55s" [ref=e949] [cursor=pointer]:
+                    - text: Nachgedacht für 3m 55s
+                    - img [ref=e950]
+                  - generic [ref=e954]:
+                    - paragraph [ref=e955]:
+                      - text: "Ы. Выбор:"
+                      - strong [ref=e956]: B
+                      - text: .
+                    - paragraph [ref=e957]:
+                      - text: Не A.
+                      - text: Не C.
+                    - generic [ref=e966]:
+                      - button "Kopieren" [ref=e967] [cursor=pointer]:
+                        - img [ref=e968]
+                      - code [ref=e976]: B. Use -candidate Q3.a_star / transformed canonical source.
+                    - heading "Stepwise Reasoning" [level=2] [ref=e977]
+                    - heading "1. Что показал audit" [level=3] [ref=e978]
+                    - paragraph [ref=e979]: "Есть три A-кандидата:"
+                    - generic [ref=e988]:
+                      - button "Kopieren" [ref=e989] [cursor=pointer]:
+                        - img [ref=e990]
+                      - code [ref=e998]:
+                        - text: 1. current positive Step22 payload
+                        - text: 2. -current Step22 payload
+                        - text: 3. -candidate Q3.a_star payload
+                    - paragraph [ref=e999]: "Результат:"
+                    - generic [ref=e1008]:
+                      - button "Kopieren" [ref=e1009] [cursor=pointer]:
+                        - img [ref=e1010]
+                      - code [ref=e1018]:
+                        - text: "-current Step22 payload:"
+                        - text: primary D ≈ -1.418, R ≈ -0.709
+                        - text: control D ≈ -1.367, R ≈ -0.685
+                        - text: FAIL
+                        - text: "-candidate Q3.a_star:"
+                        - text: primary D ≈ +39.79, R ≈ +40.66
+                        - text: control D ≈ +32.14, R ≈ +32.95
+                        - text: PASS
+                    - paragraph [ref=e1019]: Это уже не микрошум.
+                    - paragraph [ref=e1020]: "Это говорит:"
+                    - generic [ref=e1029]:
+                      - button "Kopieren" [ref=e1030] [cursor=pointer]:
+                        - img [ref=e1031]
+                      - code [ref=e1039]: "-negated current Step22 payload is not the finite cert source."
+                    - heading "2. Почему не A" [level=3] [ref=e1040]
+                    - paragraph [ref=e1041]: "A говорит:"
+                    - generic [ref=e1050]:
+                      - button "Kopieren" [ref=e1051] [cursor=pointer]:
+                        - img [ref=e1052]
+                      - code [ref=e1060]: оставить -current Step22 и искать новые split/parameters
+                    - paragraph [ref=e1061]: Плохо.
+                    - paragraph [ref=e1062]: "Почему:"
+                    - generic [ref=e1071]:
+                      - button "Kopieren" [ref=e1072] [cursor=pointer]:
+                        - img [ref=e1073]
+                      - code [ref=e1081]:
+                        - text: "-current Step22 уже валится в D/R."
+                        - text: а -candidate Q3.a_star проходит с огромным запасом.
+                    - paragraph [ref=e1082]: Если есть source, который проходит сразу, не надо спасать source, который уже выглядит wrong-convention.
+                    - paragraph [ref=e1083]: "A можно оставить только как fallback, если окажется:"
+                    - generic [ref=e1092]:
+                      - button "Kopieren" [ref=e1093] [cursor=pointer]:
+                        - img [ref=e1094]
+                      - code [ref=e1102]: "-candidate Q3.a_star cannot be connected to analytic receiver in Lean."
+                    - paragraph [ref=e1103]: Но это не первый ход.
+                    - heading "3. Почему не C" [level=3] [ref=e1104]
+                    - paragraph [ref=e1105]: "C говорит:"
+                    - generic [ref=e1114]:
+                      - button "Kopieren" [ref=e1115] [cursor=pointer]:
+                        - img [ref=e1116]
+                      - code [ref=e1124]:
+                        - text: оставить current positive finite cert
+                        - text: и искать знак где-то ещё
+                    - paragraph [ref=e1125]: Это уже опасно.
+                    - paragraph [ref=e1126]: "Мы это почти выжали:"
+                    - generic [ref=e1135]:
+                      - button "Kopieren" [ref=e1136] [cursor=pointer]:
+                        - img [ref=e1137]
+                      - code [ref=e1145]:
+                        - text: positive current payload passes PSD,
+                        - text: but semantic receiver/sign route говорит, что finite-Weil A должна быть signed.
+                    - paragraph [ref=e1146]: "Если оставить positive cert только потому, что он проходит, есть риск снова доказать:"
+                    - generic [ref=e1155]:
+                      - button "Kopieren" [ref=e1156] [cursor=pointer]:
+                        - img [ref=e1157]
+                      - code [ref=e1165]: positivity of wrong matrix
+                    - paragraph [ref=e1166]: "C допустим только если будет theorem:"
+                    - generic [ref=e1175]:
+                      - generic [ref=e1177]:
+                        - generic [ref=e1178]:
+                          - img [ref=e1179]
+                          - text: lean
+                        - button "Kopieren" [ref=e1182] [cursor=pointer]:
+                          - img [ref=e1183]
+                      - code [ref=e1191]: positiveCurrentA_eq_actualFiniteWeilA
+                    - paragraph [ref=e1192]: Сейчас evidence наоборот.
+                    - separator [ref=e1193]
+                    - heading "Final Proposal" [level=1] [ref=e1194]
+                    - paragraph [ref=e1195]:
+                      - text: Идём по
+                      - strong [ref=e1196]: B
+                      - text: ":"
+                    - generic [ref=e1205]:
+                      - button "Kopieren" [ref=e1206] [cursor=pointer]:
+                        - img [ref=e1207]
+                      - code [ref=e1215]:
+                        - text: canonical signed-A payload source =
+                        - text: "-candidate Q3.a_star / transformed canonical source"
+                    - paragraph [ref=e1216]: "Но строго:"
+                    - generic [ref=e1225]:
+                      - button "Kopieren" [ref=e1226] [cursor=pointer]:
+                        - img [ref=e1227]
+                      - code [ref=e1235]:
+                        - text: не просто “использовать числа”.
+                        - text: сначала Lean bridge theorem,
+                        - text: потом data surface,
+                        - text: потом recert.
+                    - heading "Exact next theorem target" [level=2] [ref=e1236]
+                    - paragraph [ref=e1237]: "Первый theorem:"
+                    - generic [ref=e1246]:
+                      - generic [ref=e1248]:
+                        - generic [ref=e1249]:
+                          - img [ref=e1250]
+                          - text: lean
+                        - button "Kopieren" [ref=e1253] [cursor=pointer]:
+                          - img [ref=e1254]
+                      - code [ref=e1262]: centeredBSplineSignedFiniteWeilAProfile_eq_neg_q3AStarProfile
+                    - paragraph [ref=e1263]: "или repo-style:"
+                    - generic [ref=e1272]:
+                      - generic [ref=e1274]:
+                        - generic [ref=e1275]:
+                          - img [ref=e1276]
+                          - text: lean
+                        - button "Kopieren" [ref=e1279] [cursor=pointer]:
+                          - img [ref=e1280]
+                      - code [ref=e1288]: centeredBSplineSignedAnalyticAProfile_eq_neg_Q3_a_star
+                    - paragraph [ref=e1289]: "Смысл:"
+                    - generic [ref=e1298]:
+                      - button "Kopieren" [ref=e1299] [cursor=pointer]:
+                        - img [ref=e1300]
+                      - code [ref=e1308]:
+                        - text: signed finite-Weil A profile
+                        - text: =
+                        - text: "- Q3.a_star profile"
+                    - paragraph [ref=e1309]:
+                      - text: Если уже есть профильный theorem через
+                      - code [ref=e1310]: centeredBSplineArchKernelProfile
+                      - text: ", то можно сделать thin theorem:"
+                    - generic [ref=e1319]:
+                      - generic [ref=e1321]:
+                        - generic [ref=e1322]:
+                          - img [ref=e1323]
+                          - text: lean
+                        - button "Kopieren" [ref=e1326] [cursor=pointer]:
+                          - img [ref=e1327]
+                      - code [ref=e1335]: centeredBSplineSignedFiniteWeilAProfile_eq_neg_centeredBSplineArchKernelProfile
+                    - paragraph [ref=e1336]: "и потом:"
+                    - generic [ref=e1345]:
+                      - generic [ref=e1347]:
+                        - generic [ref=e1348]:
+                          - img [ref=e1349]
+                          - text: lean
+                        - button "Kopieren" [ref=e1352] [cursor=pointer]:
+                          - img [ref=e1353]
+                      - code [ref=e1361]: centeredBSplineSignedFiniteWeilAProfile_eq_neg_q3AStarProfile
+                    - paragraph [ref=e1362]: через existing definitions.
+                    - heading "Exact data target" [level=2] [ref=e1363]
+                    - paragraph [ref=e1364]: "После theorem:"
+                    - generic [ref=e1373]:
+                      - generic [ref=e1375]:
+                        - generic [ref=e1376]:
+                          - img [ref=e1377]
+                          - text: lean
+                        - button "Kopieren" [ref=e1380] [cursor=pointer]:
+                          - img [ref=e1381]
+                      - code [ref=e1389]:
+                        - text: primaryK11SignedQ3AStarAnalyticADeltaHboxCert
+                        - text: controlK9SignedQ3AStarAnalyticADeltaHboxCert
+                    - paragraph [ref=e1390]: "или repo-style:"
+                    - generic [ref=e1399]:
+                      - generic [ref=e1401]:
+                        - generic [ref=e1402]:
+                          - img [ref=e1403]
+                          - text: lean
+                        - button "Kopieren" [ref=e1406] [cursor=pointer]:
+                          - img [ref=e1407]
+                      - code [ref=e1415]:
+                        - text: primaryK11SignedAnalyticAQ3AStarDeltaHboxCert
+                        - text: controlK9SignedAnalyticAQ3AStarDeltaHboxCert
+                    - paragraph [ref=e1416]: "Смысл:"
+                    - generic [ref=e1425]:
+                      - button "Kopieren" [ref=e1426] [cursor=pointer]:
+                        - img [ref=e1427]
+                      - code [ref=e1435]:
+                        - text: primary/control signed A hbox certs
+                        - text: generated from -candidate Q3.a_star data
+                    - paragraph [ref=e1436]: "Then recert target:"
+                    - generic [ref=e1445]:
+                      - generic [ref=e1447]:
+                        - generic [ref=e1448]:
+                          - img [ref=e1449]
+                          - text: lean
+                        - button "Kopieren" [ref=e1452] [cursor=pointer]:
+                          - img [ref=e1453]
+                      - code [ref=e1461]:
+                        - text: primaryK11SignedQ3AStarFinitePenaltyCert
+                        - text: controlK9SignedQ3AStarFinitePenaltyCert
+                    - paragraph [ref=e1462]: "or active block-level:"
+                    - generic [ref=e1471]:
+                      - generic [ref=e1473]:
+                        - generic [ref=e1474]:
+                          - img [ref=e1475]
+                          - text: lean
+                        - button "Kopieren" [ref=e1478] [cursor=pointer]:
+                          - img [ref=e1479]
+                      - code [ref=e1487]: signedQ3AStarActiveCenteredCoeffEntryHboxCert
+                    - paragraph [ref=e1488]: Use repo naming if existing receiver already expects different names.
+                    - separator [ref=e1489]
+                    - heading "Text for Codex" [level=1] [ref=e1490]
+                    - generic [ref=e1499]:
+                      - button "Kopieren" [ref=e1500] [cursor=pointer]:
+                        - img [ref=e1501]
+                      - code [ref=e1509]:
+                        - text: "Route decision: choose B."
+                        - text: "The canonical signed finite-Weil A payload source should be:"
+                        - text: "-candidate Q3.a_star / transformed canonical source."
+                        - text: "Do not continue with:"
+                        - text: "-current Step22 positive payload"
+                        - text: "Reason:"
+                        - text: "-current Step22 fails finite penalty sanity:"
+                        - text: primary D/R negative
+                        - text: control D/R negative
+                        - text: "-candidate Q3.a_star passes with large margin."
+                        - text: "Do not keep current positive finite cert unless a theorem proves:"
+                        - text: positiveCurrentA = actual finite-Weil A
+                        - text: "Next theorem target:"
+                        - text: centeredBSplineSignedFiniteWeilAProfile_eq_neg_q3AStarProfile
+                        - text: "or repo-style:"
+                        - text: centeredBSplineSignedAnalyticAProfile_eq_neg_Q3_a_star
+                        - text: "Then implement parallel signed-Q3AStar A data surface:"
+                        - text: primaryK11SignedQ3AStarAnalyticADeltaHboxCert
+                        - text: controlK9SignedQ3AStarAnalyticADeltaHboxCert
+                        - text: "Then recert:"
+                        - text: signed-Q3AStar finite penalty / D/R certificate
+                        - text: Do not mutate old A CSV/ARadius as proof patch.
+                        - text: Add explicit signed-Q3AStar payload artifacts.
+                        - text: "After signed-Q3AStar cert compiles:"
+                        - text: feed signed A hboxes into ActiveCenteredCoeffEntryHboxCert
+                        - text: then Step33B/C receiver chain.
+                    - heading "Stop condition" [level=2] [ref=e1510]
+                    - paragraph [ref=e1511]: "Codex should stop only if one of these happens:"
+                    - generic [ref=e1520]:
+                      - button "Kopieren" [ref=e1521] [cursor=pointer]:
+                        - img [ref=e1522]
+                      - code [ref=e1530]:
+                        - text: 1. signed-Q3AStar A profile theorem compiles.
+                        - text: 2. signed-Q3AStar delta hbox certs compile.
+                        - text: 3. signed-Q3AStar finite penalty cert compiles.
+                        - text: "4. Exact blocker:"
+                        - text: cannot prove signed finite-Weil A = -Q3.a_star.
+                    - heading "Коротко" [level=2] [ref=e1531]
+                    - generic [ref=e1540]:
+                      - button "Kopieren" [ref=e1541] [cursor=pointer]:
+                        - img [ref=e1542]
+                      - code [ref=e1550]:
+                        - text: B.
+                        - text: Use -candidate Q3.a_star.
+                        - text: Create explicit signed-Q3AStar payload/cert route.
+                        - text: Do not rescue -current Step22.
+                        - text: Do not hide sign in positive cert.
+                    - paragraph [ref=e1551]: "Next theorem:"
+                    - generic [ref=e1560]:
+                      - generic [ref=e1562]:
+                        - generic [ref=e1563]:
+                          - img [ref=e1564]
+                          - text: lean
+                        - button "Kopieren" [ref=e1567] [cursor=pointer]:
+                          - img [ref=e1568]
+                      - code [ref=e1576]: centeredBSplineSignedFiniteWeilAProfile_eq_neg_q3AStarProfile
+                    - paragraph [ref=e1577]: "Next data certs:"
+                    - generic [ref=e1586]:
+                      - generic [ref=e1588]:
+                        - generic [ref=e1589]:
+                          - img [ref=e1590]
+                          - text: lean
+                        - button "Kopieren" [ref=e1593] [cursor=pointer]:
+                          - img [ref=e1594]
+                      - code [ref=e1602]:
+                        - text: primaryK11SignedQ3AStarAnalyticADeltaHboxCert
+                        - text: controlK9SignedQ3AStarAnalyticADeltaHboxCert
+                    - paragraph [ref=e1603]: "Then:"
+                    - generic [ref=e1612]:
+                      - generic [ref=e1614]:
+                        - generic [ref=e1615]:
+                          - img [ref=e1616]
+                          - text: lean
+                        - button "Kopieren" [ref=e1619] [cursor=pointer]:
+                          - img [ref=e1620]
+                      - code [ref=e1628]:
+                        - text: signedQ3AStar finite penalty cert
+                        - text: → ActiveCenteredCoeffEntryHboxCert
+                        - text: → Step33B/C
+                - generic [ref=e1629]:
+                  - group "Antwortaktionen":
+                    - button "Antwort kopieren":
+                      - generic:
+                        - img
+                    - button "Pro-Feedback":
+                      - img
+                    - button "Zu den Projektquellen hinzufügen":
+                      - generic:
+                        - img
+                    - button "Mehr Aktionen":
+                      - img
+            - generic [ref=e1632]:
+              - heading "Du:" [level=4] [ref=e1633]
+              - generic [ref=e1635]:
+                - generic [ref=e1641]:
+                  - generic [ref=e1643]: "Louise, canonical semantic A decision needed for Step33A.1-A. Route: PSD-pd Step33A.1-A, signed-Q3AStar route B after finite penalty recert. Closed locally: - generated signed-Q3AStar finite penalty LDL cert compiled cleanly: primaryK11SignedQ3AStarFinitePenaltyCert_ldl controlK9SignedQ3AStarFinitePenaltyCert_ldl - validation passed: lake env lean Q3/Proofs/PSD_CenteredCoeffSignedQ3AStarPenaltyLDLImport.lean scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffSignedQ3AStarPenaltyLDLImport.lean hole scan clean. Current blocker: The A hbox receiver statement is arithmetically false for the signed-Q3AStar payload. Current theorem targets: primaryK11SignedQ3AStarAnalyticADeltaHboxCert controlK9SignedQ3AStarAnalyticADeltaHboxCert Current receiver in Q3/Proofs/PSD_CenteredCoeffSignedArchReceiver.lean uses: centeredBSplineSignedFiniteWeilAProfile k ell x := -centeredBSplineArchKernelProfile k ell x But the new signed-Q3AStar payload is the route-B -candidate Q3.a_star / transformed canonical source. At primary d=0: finite-tail centeredBSplineArchKernelProfile mid ~= 0.12336444536392195 signed receiver ~= -0.12336444536392195 SignedQ3AStar payload ~= 78.89774143023172 mismatch ~= 79.02110587559564 So do NOT generate A hbox arithmetic for the current statement. Options: A. Retarget centeredBSplineSignedFiniteWeilAProfile to the actual raw/candidate Q3.a_star profile used by the signed-Q3AStar payload, then prove this is semantic finite-Weil Arch A. B. Keep -centeredBSplineArchKernelProfile as semantic receiver and reject signed-Q3AStar payload as wrong A-hbox source, despite finite penalty sanity. C. Add an explicit convention bridge showing how the raw/candidate Q3.a_star payload maps into the finite-Weil Arch receiver; then state A hbox against that bridged receiver. Codex recommendation: Choose C if a real normalization theorem exists; otherwise A. Do not continue with current A hbox statement. Question: What exact theorem statement should define canonical signed finite-Weil A now? Should it be: -centeredBSplineArchKernelProfile, raw/candidate -Q3.a_star profile, or a transformed bridge between them? Please give the next Lean theorem name/shape and where it should feed Step33A."
+                  - button "Mehr anzeigen" [ref=e1644] [cursor=pointer]:
+                    - generic [ref=e1645]: Mehr anzeigen
+                    - img [ref=e1647]
+                - generic [ref=e1649]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e1652]:
+              - heading "ChatGPT:" [level=4] [ref=e1653]
+              - generic [ref=e1655]:
+                - generic [ref=e1656]:
+                  - paragraph [ref=e1660]:
+                    - text: Ы. Jetzt ist das keine Payload-Optimierung mehr, sondern die semantische Entscheidung, welche
+                    - code [ref=e1661]: A
+                    - text: "tatsächlich die analytische Arch-Matrix in Step32/WeilForm ist; PSD-Erfolg allein zählt nicht. Den aktuellen signed-Q3AStar-Payload darf man nicht als A-hbox einspeisen:"
+                    - code [ref=e1662]: "78.897"
+                    - text: gegen
+                    - code [ref=e1663]: "-0.123"
+                    - text: ist kein Rundungsfehler, sondern ein anderer mathematischer Gegenstand.
+                  - button "Nachgedacht für 4m 1s" [ref=e1665] [cursor=pointer]:
+                    - text: Nachgedacht für 4m 1s
+                    - img [ref=e1666]
+                  - generic [ref=e1670]:
+                    - paragraph [ref=e1671]: "Ы. Выбор сейчас:"
+                    - generic [ref=e1680]:
+                      - button "Kopieren" [ref=e1681] [cursor=pointer]:
+                        - img [ref=e1682]
+                      - code [ref=e1690]: Canonical semantic A = -centeredBSplineArchKernelProfile.
+                    - paragraph [ref=e1691]:
+                      - text: Не
+                      - code [ref=e1692]: raw/candidate -Q3.a_star
+                      - text: напрямую.
+                    - paragraph [ref=e1693]: "Почему:"
+                    - generic [ref=e1702]:
+                      - button "Kopieren" [ref=e1703] [cursor=pointer]:
+                        - img [ref=e1704]
+                      - code [ref=e1712]:
+                        - text: "Step32/Step33 receiver уже говорит:"
+                        - text: signed A = -centeredBSplineArchKernelProfile
+                        - text: signed-Q3AStar payload даёт d=0 ≈ 78.897
+                        - text: receiver ждёт d=0 ≈ -0.123
+                        - text: это не hbox mismatch.
+                        - text: это разные функции.
+                    - paragraph [ref=e1713]:
+                      - text: PSD sanity для signed-Q3AStar хороший, но этого мало.
+                      - text: Он доказывает положительность
+                      - strong [ref=e1714]: какой-то другой матрицы
+                      - text: .
+                      - text: Пока нет theorem, что эта другая матрица = semantic finite-Weil A, её нельзя feed в Step33A.
+                    - separator [ref=e1715]
+                    - heading "Stepwise Reasoning" [level=2] [ref=e1716]
+                    - heading "1. Что закрыто" [level=3] [ref=e1717]
+                    - generic [ref=e1726]:
+                      - generic [ref=e1728]:
+                        - generic [ref=e1729]:
+                          - img [ref=e1730]
+                          - text: lean
+                        - button "Kopieren" [ref=e1733] [cursor=pointer]:
+                          - img [ref=e1734]
+                      - code [ref=e1742]:
+                        - text: primaryK11SignedAnalyticA_entry_index_delta
+                        - text: controlK9SignedAnalyticA_entry_index_delta
+                        - text: primaryK11SignedAnalyticADeltaHboxCert
+                        - text: controlK9SignedAnalyticADeltaHboxCert
+                        - text: primaryK11SignedAnalyticA_entry_hbox_of_delta_cert
+                        - text: controlK9SignedAnalyticA_entry_hbox_of_delta_cert
+                    - paragraph [ref=e1743]: "И signed receiver:"
+                    - generic [ref=e1752]:
+                      - generic [ref=e1754]:
+                        - generic [ref=e1755]:
+                          - img [ref=e1756]
+                          - text: lean
+                        - button "Kopieren" [ref=e1759] [cursor=pointer]:
+                          - img [ref=e1760]
+                      - code [ref=e1768]:
+                        - text: centeredBSplineSignedFiniteWeilAProfile k ell x
+                        - text: := -centeredBSplineArchKernelProfile k ell x
+                    - paragraph [ref=e1769]: Это хороший semantic surface.
+                    - heading "2. Что не закрыто" [level=3] [ref=e1770]
+                    - generic [ref=e1779]:
+                      - generic [ref=e1781]:
+                        - generic [ref=e1782]:
+                          - img [ref=e1783]
+                          - text: lean
+                        - button "Kopieren" [ref=e1786] [cursor=pointer]:
+                          - img [ref=e1787]
+                      - code [ref=e1795]:
+                        - text: primaryK11SignedQ3AStarAnalyticADeltaHboxCert
+                        - text: controlK9SignedQ3AStarAnalyticADeltaHboxCert
+                    - paragraph [ref=e1796]: не могут быть доказаны против текущего receiver.
+                    - paragraph [ref=e1797]:
+                      - text: Потому что на
+                      - code [ref=e1798]: d=0
+                      - text: ":"
+                    - generic [ref=e1807]:
+                      - button "Kopieren" [ref=e1808] [cursor=pointer]:
+                        - img [ref=e1809]
+                      - code [ref=e1817]:
+                        - text: receiver ≈ -0.123
+                        - text: payload ≈ 78.897
+                        - text: gap ≈ 79.021
+                    - paragraph [ref=e1818]:
+                      - text: Это не rounding.
+                      - text: Не radius.
+                      - text: Не tail.
+                      - text: Это wrong target.
+                    - heading "3. Почему не A" [level=3] [ref=e1819]
+                    - paragraph [ref=e1820]: "A говорит:"
+                    - generic [ref=e1829]:
+                      - button "Kopieren" [ref=e1830] [cursor=pointer]:
+                        - img [ref=e1831]
+                      - code [ref=e1839]: retarget receiver to raw/candidate Q3.a_star
+                    - paragraph [ref=e1840]: Нельзя делать просто так.
+                    - paragraph [ref=e1841]: "Нужно theorem:"
+                    - generic [ref=e1850]:
+                      - generic [ref=e1852]:
+                        - generic [ref=e1853]:
+                          - img [ref=e1854]
+                          - text: lean
+                        - button "Kopieren" [ref=e1857] [cursor=pointer]:
+                          - img [ref=e1858]
+                      - code [ref=e1866]: raw/candidateQ3AStarProfile = semantic finite-Weil A
+                    - paragraph [ref=e1867]: Пока его нет.
+                    - heading "4. Почему не B в текущем виде" [level=3] [ref=e1868]
+                    - paragraph [ref=e1869]: "B говорит:"
+                    - generic [ref=e1878]:
+                      - button "Kopieren" [ref=e1879] [cursor=pointer]:
+                        - img [ref=e1880]
+                      - code [ref=e1888]:
+                        - text: keep -centeredBSplineArchKernelProfile
+                        - text: reject signed-Q3AStar payload
+                    - paragraph [ref=e1889]: Это безопасно, но может выкинуть полезную матрицу, которая проходит PSD.
+                    - paragraph [ref=e1890]:
+                      - text: Не надо сразу выкидывать.
+                      - text: Надо сначала понять, что это за payload.
+                    - heading "5. Правильный следующий route" [level=3] [ref=e1891]
+                    - paragraph [ref=e1892]:
+                      - text: Это
+                      - strong [ref=e1893]: C
+                      - text: ", но не как “adapter by hand”."
+                    - paragraph [ref=e1894]: "Правильный C:"
+                    - generic [ref=e1903]:
+                      - button "Kopieren" [ref=e1904] [cursor=pointer]:
+                        - img [ref=e1905]
+                      - code [ref=e1913]:
+                        - text: prove/decompose exact bridge between signed-Q3AStar payload profile
+                        - text: and canonical signed finite-Weil receiver.
+                    - paragraph [ref=e1914]: "То есть не:"
+                    - generic [ref=e1923]:
+                      - generic [ref=e1925]:
+                        - generic [ref=e1926]:
+                          - img [ref=e1927]
+                          - text: lean
+                        - button "Kopieren" [ref=e1930] [cursor=pointer]:
+                          - img [ref=e1931]
+                      - code [ref=e1939]: signedQ3AStarPayload hboxes receiver
+                    - paragraph [ref=e1940]: "а сначала:"
+                    - generic [ref=e1949]:
+                      - generic [ref=e1951]:
+                        - generic [ref=e1952]:
+                          - img [ref=e1953]
+                          - text: lean
+                        - button "Kopieren" [ref=e1956] [cursor=pointer]:
+                          - img [ref=e1957]
+                      - code [ref=e1965]: signedQ3AStar profile relation theorem
+                    - separator [ref=e1966]
+                    - heading "Final Proposal" [level=1] [ref=e1967]
+                    - paragraph [ref=e1968]: "Canonical definition остаётся:"
+                    - generic [ref=e1977]:
+                      - generic [ref=e1979]:
+                        - generic [ref=e1980]:
+                          - img [ref=e1981]
+                          - text: lean
+                        - button "Kopieren" [ref=e1984] [cursor=pointer]:
+                          - img [ref=e1985]
+                      - code [ref=e1993]:
+                        - text: def centeredBSplineSignedFiniteWeilAProfile
+                        - text: "(k ell : ℕ) (x : ℝ) : ℝ :="
+                        - text: "-centeredBSplineArchKernelProfile k ell x"
+                    - paragraph [ref=e1994]:
+                      - text: Следующий theorem не hbox.
+                      - text: Следующий theorem —
+                      - strong [ref=e1995]: source relation theorem
+                      - text: .
+                    - paragraph [ref=e1996]: "Пусть Codex заведёт/найдёт exact profile для payload:"
+                    - generic [ref=e2005]:
+                      - generic [ref=e2007]:
+                        - generic [ref=e2008]:
+                          - img [ref=e2009]
+                          - text: lean
+                        - button "Kopieren" [ref=e2012] [cursor=pointer]:
+                          - img [ref=e2013]
+                      - code [ref=e2021]: centeredBSplineSignedQ3AStarPayloadProfile
+                    - paragraph [ref=e2022]: Потом пытается доказать один из двух вариантов.
+                    - heading "First target — exact equality, likely fails" [level=2] [ref=e2023]
+                    - generic [ref=e2032]:
+                      - generic [ref=e2034]:
+                        - generic [ref=e2035]:
+                          - img [ref=e2036]
+                          - text: lean
+                        - button "Kopieren" [ref=e2039] [cursor=pointer]:
+                          - img [ref=e2040]
+                      - code [ref=e2048]:
+                        - text: theorem centeredBSplineSignedQ3AStarPayloadProfile_eq_signedFiniteWeilAProfile
+                        - text: "(k ell : ℕ) (x : ℝ) :"
+                        - text: centeredBSplineSignedQ3AStarPayloadProfile k ell x
+                        - text: =
+                        - text: centeredBSplineSignedFiniteWeilAProfile k ell x := by
+                        - text: ...
+                    - paragraph [ref=e2049]:
+                      - text: Но numeric gap
+                      - code [ref=e2050]: ≈79
+                      - text: "говорит: скорее всего false."
+                    - heading "Real target — decomposition theorem" [level=2] [ref=e2051]
+                    - paragraph [ref=e2052]: "Нужен такой theorem:"
+                    - generic [ref=e2061]:
+                      - generic [ref=e2063]:
+                        - generic [ref=e2064]:
+                          - img [ref=e2065]
+                          - text: lean
+                        - button "Kopieren" [ref=e2068] [cursor=pointer]:
+                          - img [ref=e2069]
+                      - code [ref=e2077]:
+                        - text: theorem centeredBSplineSignedQ3AStarPayloadProfile_eq_signedFiniteWeilAProfile_add_correction
+                        - text: "(k ell : ℕ) (x : ℝ) :"
+                        - text: centeredBSplineSignedQ3AStarPayloadProfile k ell x
+                        - text: =
+                        - text: centeredBSplineSignedFiniteWeilAProfile k ell x
+                        - text: + centeredBSplineQ3AStarArchCorrectionProfile k ell x := by
+                        - text: ...
+                    - paragraph [ref=e2078]: "Потом Codex должен классифицировать correction:"
+                    - generic [ref=e2087]:
+                      - button "Kopieren" [ref=e2088] [cursor=pointer]:
+                        - img [ref=e2089]
+                      - code [ref=e2097]:
+                        - text: zero? → payload usable directly.
+                        - text: diagonal? → maybe D/P0/radius-floor route.
+                        - text: rank-one / boundary? → maybe QᵀQ / boundary-null route.
+                        - text: P0-like? → split model route.
+                        - text: full-rank real term? → payload is different A; needs full semantic retarget or cannot use.
+                    - paragraph [ref=e2098]:
+                      - text: Уже по старым delta-аудитам похоже, что correction не trivial.
+                      - text: Но надо проверить именно для signed-Q3AStar payload.
+                    - separator [ref=e2099]
+                    - heading "Что Codex должен делать сейчас" [level=2] [ref=e2100]
+                    - generic [ref=e2109]:
+                      - button "Kopieren" [ref=e2110] [cursor=pointer]:
+                        - img [ref=e2111]
+                      - code [ref=e2119]:
+                        - text: Do not generate A hboxes for signed-Q3AStar payload against current receiver.
+                        - text: Do not retarget canonical A just because signed-Q3AStar passes PSD sanity.
+                        - text: "Canonical signed finite-Weil A remains:"
+                        - text: "-centeredBSplineArchKernelProfile"
+                        - text: "Next gate:"
+                        - text: signed-Q3AStar source relation audit.
+                        - text: "Define/locate:"
+                        - text: centeredBSplineSignedQ3AStarPayloadProfile
+                        - text: centeredBSplineSignedFiniteWeilAProfile
+                        - text: "Try:"
+                        - text: centeredBSplineSignedQ3AStarPayloadProfile_eq_signedFiniteWeilAProfile
+                        - text: "If false, prove/develop:"
+                        - text: centeredBSplineSignedQ3AStarPayloadProfile_eq_signedFiniteWeilAProfile_add_correction
+                        - text: "Then classify correction:"
+                        - text: zero / scalar / diagonal / rank-one / QᵀQ / P0-like / full-rank.
+                        - text: Only if correction is semantically part of the finite-Weil Arch A,
+                        - text: retarget receiver with theorem.
+                        - text: Otherwise reject signed-Q3AStar payload for Step33A hbox despite PSD sanity.
+                    - separator [ref=e2120]
+                    - heading "Exact Codex target names" [level=2] [ref=e2121]
+                    - paragraph [ref=e2122]: "Use these:"
+                    - generic [ref=e2131]:
+                      - generic [ref=e2133]:
+                        - generic [ref=e2134]:
+                          - img [ref=e2135]
+                          - text: lean
+                        - button "Kopieren" [ref=e2138] [cursor=pointer]:
+                          - img [ref=e2139]
+                      - code [ref=e2147]:
+                        - text: centeredBSplineSignedQ3AStarPayloadProfile
+                        - text: centeredBSplineSignedQ3AStarPayloadProfile_eq_signedFiniteWeilAProfile
+                        - text: centeredBSplineSignedQ3AStarPayloadCorrectionProfile
+                        - text: centeredBSplineSignedQ3AStarPayloadProfile_eq_signedFiniteWeilAProfile_add_correction
+                    - paragraph [ref=e2148]: "Then report:"
+                    - generic [ref=e2157]:
+                      - button "Kopieren" [ref=e2158] [cursor=pointer]:
+                        - img [ref=e2159]
+                      - code [ref=e2167]:
+                        - text: "SIGNED_Q3ASTAR_SOURCE_RELATION:"
+                        - text: "- equality holds: yes/no"
+                        - text: "- d=0 gap:"
+                        - text: "- correction structure:"
+                        - text: "- zero on ker(Q): yes/no"
+                        - text: "- QᵀQ-like: yes/no"
+                        - text: "- P0-like: yes/no"
+                        - text: "- full-rank: yes/no"
+                        - text: "- recommended route:"
+                    - separator [ref=e2168]
+                    - heading "Where it feeds Step33A" [level=2] [ref=e2169]
+                    - paragraph [ref=e2170]: "Only after source relation:"
+                    - heading "If equality holds" [level=3] [ref=e2171]
+                    - generic [ref=e2180]:
+                      - button "Kopieren" [ref=e2181] [cursor=pointer]:
+                        - img [ref=e2182]
+                      - code [ref=e2190]:
+                        - text: signedQ3AStar delta hboxes
+                        - text: → primary/control signed A hboxes
+                        - text: → ActiveCenteredCoeffEntryHboxCert
+                    - heading "If correction is valid part of finite-Weil A" [level=3] [ref=e2191]
+                    - paragraph [ref=e2192]: "Retarget receiver by theorem:"
+                    - generic [ref=e2201]:
+                      - generic [ref=e2203]:
+                        - generic [ref=e2204]:
+                          - img [ref=e2205]
+                          - text: lean
+                        - button "Kopieren" [ref=e2208] [cursor=pointer]:
+                          - img [ref=e2209]
+                      - code [ref=e2217]: centeredBSplineSignedFiniteWeilAProfile_eq_signedQ3AStarPayloadProfile
+                    - paragraph [ref=e2218]: "then feed:"
+                    - generic [ref=e2227]:
+                      - button "Kopieren" [ref=e2228] [cursor=pointer]:
+                        - img [ref=e2229]
+                      - code [ref=e2237]: signedQ3AStar hboxes → signed A hboxes
+                    - heading "If correction is not semantic" [level=3] [ref=e2238]
+                    - generic [ref=e2247]:
+                      - button "Kopieren" [ref=e2248] [cursor=pointer]:
+                        - img [ref=e2249]
+                      - code [ref=e2257]: signedQ3AStar payload rejected
+                    - paragraph [ref=e2258]: "Then either:"
+                    - generic [ref=e2267]:
+                      - button "Kopieren" [ref=e2268] [cursor=pointer]:
+                        - img [ref=e2269]
+                      - code [ref=e2277]: use canonical receiver and find new PSD cert
+                    - paragraph [ref=e2278]: or reopen semantic sign convention.
+                    - separator [ref=e2279]
+                    - heading "Коротко" [level=2] [ref=e2280]
+                    - paragraph [ref=e2281]: Не выбирай payload по PSD sanity.
+                    - paragraph [ref=e2282]: "Выбирай по theorem:"
+                    - generic [ref=e2291]:
+                      - button "Kopieren" [ref=e2292] [cursor=pointer]:
+                        - img [ref=e2293]
+                      - code [ref=e2301]: payload profile = semantic finite-Weil A profile
+                    - paragraph [ref=e2302]: "Сейчас canonical semantic A:"
+                    - generic [ref=e2311]:
+                      - button "Kopieren" [ref=e2312] [cursor=pointer]:
+                        - img [ref=e2313]
+                      - code [ref=e2321]: "-centeredBSplineArchKernelProfile"
+                    - paragraph [ref=e2322]: "Следующий theorem:"
+                    - generic [ref=e2331]:
+                      - generic [ref=e2333]:
+                        - generic [ref=e2334]:
+                          - img [ref=e2335]
+                          - text: lean
+                        - button "Kopieren" [ref=e2338] [cursor=pointer]:
+                          - img [ref=e2339]
+                      - code [ref=e2347]: centeredBSplineSignedQ3AStarPayloadProfile_eq_signedFiniteWeilAProfile
+                    - paragraph [ref=e2348]: "Если false:"
+                    - generic [ref=e2357]:
+                      - generic [ref=e2359]:
+                        - generic [ref=e2360]:
+                          - img [ref=e2361]
+                          - text: lean
+                        - button "Kopieren" [ref=e2364] [cursor=pointer]:
+                          - img [ref=e2365]
+                      - code [ref=e2373]: centeredBSplineSignedQ3AStarPayloadProfile_eq_signedFiniteWeilAProfile_add_correction
+                    - paragraph [ref=e2374]: И только после этого решать, можно ли signed-Q3AStar feed в Step33A.
+                - generic [ref=e2375]:
+                  - group "Antwortaktionen":
+                    - button "Antwort kopieren":
+                      - generic:
+                        - img
+                    - button "Pro-Feedback":
+                      - img
+                    - button "Zu den Projektquellen hinzufügen":
+                      - generic:
+                        - img
+                    - button "Mehr Aktionen":
+                      - img
+            - generic [ref=e2378]:
+              - heading "Du:" [level=4] [ref=e2379]
+              - generic [ref=e2381]:
+                - generic [ref=e2387]:
+                  - generic [ref=e2389]:
+                    - text: "he delaem !!!! Сделал. Закрыто локально: signed-Q3AStar finite penalty recert. Новый Lean-файл компилируется: [PSD_CenteredCoeffSignedQ3AStarPenaltyLDLImport.lean](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffSignedQ3AStarPenaltyLDLImport.lean). Проверки прошли:"
+                    - code [ref=e2390]: lake env lean
+                    - text: ","
+                    - code [ref=e2391]: scripts/q3_check.sh
+                    - text: ","
+                    - code [ref=e2392]: py_compile
+                    - text: ", hole-scan чистый. Я спросил Louise в открытой вкладке. Вердикт жёсткий: canonical semantic signed A остаётся"
+                    - code [ref=e2393]: "-centeredBSplineArchKernelProfile"
+                    - text: .
+                    - code [ref=e2394]: SignedQ3AStar
+                    - text: "нельзя использовать как A-hbox source просто потому, что PSD sanity/finite penalty проходит. После этого сделал source-relation audit: [signed_q3astar_source_relation_audit.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/signed_q3astar_source_relation_audit.md). Итог: correction full-rank, не diagonal, не rank-one/two, не"
+                    - code [ref=e2395]: Q^T S Q
+                    - text: ", не zero on"
+                    - code [ref=e2396]: ker(Q)
+                    - text: ", не P0-like. То есть"
+                    - code [ref=e2397]: SignedQ3AStar
+                    - text: "сейчас честно отвергнут как Step33A A-hbox source. Обновил активные файлы: [report.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md), [node.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md), [PSD_STEP33_MONITOR.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md), [INSIGHTS.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/INSIGHTS.md). Текущий next step теперь не"
+                    - code [ref=e2398]: SignedQ3AStar
+                    - text: "hbox. Правильный ход: вернуться к canonical receiver"
+                    - code [ref=e2399]: "-centeredBSplineArchKernelProfile"
+                    - text: "и строить finite PSD/cert route, совместимый именно с этим semantic A, либо явно переоткрывать semantic sign convention новым theorem statement. ::git-stage{cwd=\"/Users/emalam/Documents/GitHub/rh_lean_01_2026\"} <response> Чувак, может, пробей это? Чё это мы там опять застряли где-то? </response>"
+                  - button "Mehr anzeigen" [ref=e2400] [cursor=pointer]:
+                    - generic [ref=e2401]: Mehr anzeigen
+                    - img [ref=e2403]
+                - generic [ref=e2405]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e2408]:
+              - heading "ChatGPT:" [level=4] [ref=e2409]
+              - generic [ref=e2411]:
+                - generic [ref=e2412]:
+                  - paragraph [ref=e2416]:
+                    - text: "Ы. Разбираю checkpoint: это не тупик, а отсечение ещё одного ложного пути —"
+                    - code [ref=e2417]: SignedQ3AStar
+                    - text: проходит PSD, но не равен канонической analytic A receiver. Поэтому дальше надо держать semantic route, а не выбирать payload только потому, что он численно удобный.
+                  - button "Nachgedacht für 4m 20s" [ref=e2419] [cursor=pointer]:
+                    - text: Nachgedacht für 4m 20s
+                    - img [ref=e2420]
+                  - generic [ref=e2424]:
+                    - paragraph [ref=e2425]:
+                      - text: Ы. Да.
+                      - text: Тут
+                      - strong [ref=e2426]: не тупик
+                      - text: ", но мы выбили ещё один ложный shortcut."
+                    - heading "Где мы застряли" [level=2] [ref=e2427]
+                    - paragraph [ref=e2428]: "Мы здесь:"
+                    - generic [ref=e2437]:
+                      - button "Kopieren" [ref=e2438] [cursor=pointer]:
+                        - img [ref=e2439]
+                      - code [ref=e2447]:
+                        - text: Step33A.1-A
+                        - text: Arch-side A hbox / finite PSD cert route
+                    - paragraph [ref=e2448]: "Не здесь:"
+                    - generic [ref=e2457]:
+                      - button "Kopieren" [ref=e2458] [cursor=pointer]:
+                        - img [ref=e2459]
+                      - code [ref=e2467]:
+                        - text: не P
+                        - text: не P0
+                        - text: не Step34
+                        - text: не Step35
+                        - text: не Q3.Main
+                    - heading "Что Codex выяснил" [level=2] [ref=e2468]
+                    - paragraph [ref=e2469]:
+                      - code [ref=e2470]: SignedQ3AStar
+                      - text: ":"
+                    - generic [ref=e2479]:
+                      - button "Kopieren" [ref=e2480] [cursor=pointer]:
+                        - img [ref=e2481]
+                      - code [ref=e2489]:
+                        - text: finite penalty cert проходит
+                        - text: "но source relation audit говорит:"
+                        - text: это не semantic A
+                    - paragraph [ref=e2490]: "То есть:"
+                    - generic [ref=e2499]:
+                      - button "Kopieren" [ref=e2500] [cursor=pointer]:
+                        - img [ref=e2501]
+                      - code [ref=e2509]:
+                        - text: SignedQ3AStar = положительная красивая матрица
+                        - text: но не та матрица, которую требует analytic receiver
+                    - paragraph [ref=e2510]: Поэтому её нельзя использовать.
+                    - paragraph [ref=e2511]: "Иначе получится:"
+                    - generic [ref=e2520]:
+                      - button "Kopieren" [ref=e2521] [cursor=pointer]:
+                        - img [ref=e2522]
+                      - code [ref=e2530]: доказали PSD не той A
+                    - paragraph [ref=e2531]: Это мусор. Хорошо, что остановили.
+                    - separator [ref=e2532]
+                    - heading "Правильная карта сейчас" [level=1] [ref=e2533]
+                    - paragraph [ref=e2534]: "Canonical semantic A остаётся:"
+                    - generic [ref=e2543]:
+                      - generic [ref=e2545]:
+                        - generic [ref=e2546]:
+                          - img [ref=e2547]
+                          - text: lean
+                        - button "Kopieren" [ref=e2550] [cursor=pointer]:
+                          - img [ref=e2551]
+                      - code [ref=e2559]: "-centeredBSplineArchKernelProfile"
+                    - paragraph [ref=e2560]: "То есть:"
+                    - generic [ref=e2569]:
+                      - button "Kopieren" [ref=e2570] [cursor=pointer]:
+                        - img [ref=e2571]
+                      - code [ref=e2579]:
+                        - text: правильная A для finite-Weil receiver =
+                        - text: минус Arch kernel profile
+                    - paragraph [ref=e2580]:
+                      - text: А
+                      - code [ref=e2581]: SignedQ3AStar
+                      - text: "отвергнут:"
+                    - generic [ref=e2590]:
+                      - button "Kopieren" [ref=e2591] [cursor=pointer]:
+                        - img [ref=e2592]
+                      - code [ref=e2600]:
+                        - text: correction full-rank
+                        - text: не QᵀQ
+                        - text: не P0
+                        - text: не boundary-null zero
+                        - text: не semantic adapter
+                    - paragraph [ref=e2601]: Значит он не feed-ится в Step33A.
+                    - separator [ref=e2602]
+                    - heading "Что делать дальше" [level=1] [ref=e2603]
+                    - paragraph [ref=e2604]:
+                      - text: Не пытаться дальше спасать
+                      - code [ref=e2605]: SignedQ3AStar
+                      - text: .
+                    - paragraph [ref=e2606]: "Следующий ход:"
+                    - generic [ref=e2615]:
+                      - button "Kopieren" [ref=e2616] [cursor=pointer]:
+                        - img [ref=e2617]
+                      - code [ref=e2625]: строить cert route именно для canonical signed A
+                    - paragraph [ref=e2626]: Но не через старый split/P0, если он валится.
+                    - paragraph [ref=e2627]: "Нужен прямой путь:"
+                    - generic [ref=e2636]:
+                      - button "Kopieren" [ref=e2637] [cursor=pointer]:
+                        - img [ref=e2638]
+                      - code [ref=e2646]: direct boundary-null PSD certificate
+                    - paragraph [ref=e2647]: Почему?
+                    - paragraph [ref=e2648]: "Потому что главная цель finite block:"
+                    - generic [ref=e2657]:
+                      - button "Kopieren" [ref=e2658] [cursor=pointer]:
+                        - img [ref=e2659]
+                      - code [ref=e2667]: ∀ v, Qv = 0 → vᵀ(A - P)v ≥ 0
+                    - paragraph [ref=e2668]: "А не обязательно старый split:"
+                    - generic [ref=e2677]:
+                      - button "Kopieren" [ref=e2678] [cursor=pointer]:
+                        - img [ref=e2679]
+                      - code [ref=e2687]: Rκ / Dθ / P0
+                    - paragraph [ref=e2688]:
+                      - text: Если старый split не работает, но сама матрица на
+                      - code [ref=e2689]: ker(Q)
+                      - text: положительна, делаем прямой cert на
+                      - code [ref=e2690]: ker(Q)
+                      - text: .
+                    - separator [ref=e2691]
+                    - heading "Новый точный маршрут" [level=1] [ref=e2692]
+                    - heading "1. Закрыть signed canonical A hbox" [level=2] [ref=e2693]
+                    - paragraph [ref=e2694]:
+                      - text: Не
+                      - code [ref=e2695]: SignedQ3AStar
+                      - text: .
+                    - paragraph [ref=e2696]: "А:"
+                    - generic [ref=e2705]:
+                      - button "Kopieren" [ref=e2706] [cursor=pointer]:
+                        - img [ref=e2707]
+                      - code [ref=e2715]: signed canonical A = -centeredBSplineArchKernelProfile
+                    - paragraph [ref=e2716]: "Если уже есть positive hbox для:"
+                    - generic [ref=e2725]:
+                      - button "Kopieren" [ref=e2726] [cursor=pointer]:
+                        - img [ref=e2727]
+                      - code [ref=e2735]: centeredBSplineArchKernelProfile
+                    - paragraph [ref=e2736]: "то signed hbox получается механически:"
+                    - generic [ref=e2745]:
+                      - generic [ref=e2747]:
+                        - generic [ref=e2748]:
+                          - img [ref=e2749]
+                          - text: lean
+                        - button "Kopieren" [ref=e2752] [cursor=pointer]:
+                          - img [ref=e2753]
+                      - code [ref=e2761]:
+                        - text: "|x - c| ≤ r"
+                        - text: → |(-x) - (-c)| ≤ r
+                    - paragraph [ref=e2762]: "То есть data:"
+                    - generic [ref=e2771]:
+                      - button "Kopieren" [ref=e2772] [cursor=pointer]:
+                        - img [ref=e2773]
+                      - code [ref=e2781]:
+                        - text: midpoint flips sign
+                        - text: radius unchanged
+                    - paragraph [ref=e2782]: "Lean lemma:"
+                    - generic [ref=e2791]:
+                      - generic [ref=e2793]:
+                        - generic [ref=e2794]:
+                          - img [ref=e2795]
+                          - text: lean
+                        - button "Kopieren" [ref=e2798] [cursor=pointer]:
+                          - img [ref=e2799]
+                      - code [ref=e2807]:
+                        - text: lemma hbox_neg_of_hbox
+                        - text: "{x c r : ℝ}"
+                        - text: "(h : |x - c| ≤ r) :"
+                        - text: "|(-x) - (-c)| ≤ r := by"
+                        - text: "have hx : (-x) - (-c) = -(x - c) := by ring"
+                        - text: rw [hx, abs_neg]
+                        - text: exact h
+                    - paragraph [ref=e2808]: "Targets:"
+                    - generic [ref=e2817]:
+                      - generic [ref=e2819]:
+                        - generic [ref=e2820]:
+                          - img [ref=e2821]
+                          - text: lean
+                        - button "Kopieren" [ref=e2824] [cursor=pointer]:
+                          - img [ref=e2825]
+                      - code [ref=e2833]:
+                        - text: primaryK11CanonicalSignedAnalyticADeltaHboxCert
+                        - text: controlK9CanonicalSignedAnalyticADeltaHboxCert
+                    - paragraph [ref=e2834]: "или repo-style:"
+                    - generic [ref=e2843]:
+                      - generic [ref=e2845]:
+                        - generic [ref=e2846]:
+                          - img [ref=e2847]
+                          - text: lean
+                        - button "Kopieren" [ref=e2850] [cursor=pointer]:
+                          - img [ref=e2851]
+                      - code [ref=e2859]:
+                        - text: primaryK11SignedAnalyticADeltaHboxCert_of_negatedArchPayload
+                        - text: controlK9SignedAnalyticADeltaHboxCert_of_negatedArchPayload
+                    - heading "2. Не использовать старый split/P0 как обязательный" [level=2] [ref=e2860]
+                    - paragraph [ref=e2861]:
+                      - text: Если canonical signed A не проходит old split/P0, не надо снова сканировать
+                      - code [ref=e2862]: κ/θ
+                      - text: .
+                    - paragraph [ref=e2863]: "Следующая проверка:"
+                    - generic [ref=e2872]:
+                      - button "Kopieren" [ref=e2873] [cursor=pointer]:
+                        - img [ref=e2874]
+                      - code [ref=e2882]:
+                        - text: C_signed = A_signed - P
+                        - text: на ker(Q)
+                    - paragraph [ref=e2883]: "То есть:"
+                    - generic [ref=e2892]:
+                      - button "Kopieren" [ref=e2893] [cursor=pointer]:
+                        - img [ref=e2894]
+                      - code [ref=e2902]: Kᵀ C_signed K
+                    - paragraph [ref=e2903]: Если это PSD — делаем direct certificate.
+                    - paragraph [ref=e2904]: "Targets:"
+                    - generic [ref=e2913]:
+                      - generic [ref=e2915]:
+                        - generic [ref=e2916]:
+                          - img [ref=e2917]
+                          - text: lean
+                        - button "Kopieren" [ref=e2920] [cursor=pointer]:
+                          - img [ref=e2921]
+                      - code [ref=e2929]:
+                        - text: primaryK11CanonicalSignedBoundaryNullPSDCert
+                        - text: controlK9CanonicalSignedBoundaryNullPSDCert
+                    - paragraph [ref=e2930]: "или:"
+                    - generic [ref=e2939]:
+                      - generic [ref=e2941]:
+                        - generic [ref=e2942]:
+                          - img [ref=e2943]
+                          - text: lean
+                        - button "Kopieren" [ref=e2946] [cursor=pointer]:
+                          - img [ref=e2947]
+                      - code [ref=e2955]:
+                        - text: primaryK11DirectBoundaryNullPSD_of_kernelLDL
+                        - text: controlK9DirectBoundaryNullPSD_of_kernelLDL
+                    - heading "3. Добавить receiver/adapter" [level=2] [ref=e2956]
+                    - paragraph [ref=e2957]:
+                      - text: Если Step33 сейчас жёстко ждёт
+                      - code [ref=e2958]: FinitePenaltyCert
+                      - text: ", надо добавить альтернативный receiver:"
+                    - generic [ref=e2967]:
+                      - button "Kopieren" [ref=e2968] [cursor=pointer]:
+                        - img [ref=e2969]
+                      - code [ref=e2977]:
+                        - text: DirectBoundaryNullPSDCert
+                        - text: → finite analytic Weil positivity on boundary-null
+                    - paragraph [ref=e2978]: "Lean-shape:"
+                    - generic [ref=e2987]:
+                      - generic [ref=e2989]:
+                        - generic [ref=e2990]:
+                          - img [ref=e2991]
+                          - text: lean
+                        - button "Kopieren" [ref=e2994] [cursor=pointer]:
+                          - img [ref=e2995]
+                      - code [ref=e3003]:
+                        - text: theorem finiteAnalyticWeilPositivity_of_directBoundaryNullPSD
+                        - text: "(hcert : DirectBoundaryNullPSDCert ...)"
+                        - text: ":"
+                        - text: FiniteAnalyticWeilPositivity ... := by
+                        - text: ...
+                    - paragraph [ref=e3004]: "Смысл:"
+                    - generic [ref=e3013]:
+                      - button "Kopieren" [ref=e3014] [cursor=pointer]:
+                        - img [ref=e3015]
+                      - code [ref=e3023]:
+                        - text: "мы доказываем ровно нужное:"
+                        - text: Qv = 0 → vᵀ C v ≥ 0
+                    - paragraph [ref=e3024]: Без лишнего split/P0.
+                    - separator [ref=e3025]
+                    - heading "Что сказать Codex" [level=1] [ref=e3026]
+                    - generic [ref=e3035]:
+                      - button "Kopieren" [ref=e3036] [cursor=pointer]:
+                        - img [ref=e3037]
+                      - code [ref=e3045]:
+                        - text: Stop SignedQ3AStar route.
+                        - text: SignedQ3AStar finite penalty cert is not usable for Step33A,
+                        - text: because source relation audit shows it is not the semantic A.
+                        - text: "Canonical semantic A remains:"
+                        - text: "-centeredBSplineArchKernelProfile"
+                        - text: "Next route:"
+                        - text: build canonical signed A hbox from negated Arch payload,
+                        - text: then certify C = A - P directly on boundary-null space ker(Q).
+                        - text: "Do not:"
+                        - text: feed SignedQ3AStar into A hbox
+                        - text: try to prove hbox against SignedQ3AStar payload
+                        - text: rescue SignedQ3AStar by full-rank correction
+                        - text: return to positive A just because old cert passes
+                        - text: touch Q3.Main
+                        - text: route H1/PO3
+                        - text: patch ARadius/CSV/radius-floor/LDL as proof patch
+                        - text: "Targets:"
+                        - text: "1. Signed canonical A hbox:"
+                        - text: primaryK11SignedAnalyticADeltaHboxCert_of_negatedArchPayload
+                        - text: controlK9SignedAnalyticADeltaHboxCert_of_negatedArchPayload
+                        - text: "2. Direct boundary-null PSD:"
+                        - text: primaryK11CanonicalSignedBoundaryNullPSDCert
+                        - text: controlK9CanonicalSignedBoundaryNullPSDCert
+                        - text: "3. Receiver:"
+                        - text: finiteAnalyticWeilPositivity_of_directBoundaryNullPSD
+                        - text: Then feed Step33B/C.
+                    - separator [ref=e3046]
+                    - heading "Почему это правильнее" [level=1] [ref=e3047]
+                    - paragraph [ref=e3048]: "Старый маршрут требовал:"
+                    - generic [ref=e3057]:
+                      - button "Kopieren" [ref=e3058] [cursor=pointer]:
+                        - img [ref=e3059]
+                      - code [ref=e3067]: FinitePenaltyCert через P0/split
+                    - paragraph [ref=e3068]:
+                      - text: Но это был
+                      - strong [ref=e3069]: метод доказательства
+                      - text: ", не сама цель."
+                    - paragraph [ref=e3070]: "Сама цель:"
+                    - generic [ref=e3079]:
+                      - button "Kopieren" [ref=e3080] [cursor=pointer]:
+                        - img [ref=e3081]
+                      - code [ref=e3089]: boundary-null positivity
+                    - paragraph [ref=e3090]: Если прямой kernel-PSD cert закрывает это, он даже чище.
+                    - separator [ref=e3091]
+                    - heading "Коротко" [level=1] [ref=e3092]
+                    - paragraph [ref=e3093]: Мы застряли не в математике.
+                    - paragraph [ref=e3094]: "Мы нашли:"
+                    - generic [ref=e3103]:
+                      - button "Kopieren" [ref=e3104] [cursor=pointer]:
+                        - img [ref=e3105]
+                      - code [ref=e3113]:
+                        - text: SignedQ3AStar проходит PSD,
+                        - text: но не является нужной A.
+                    - paragraph [ref=e3114]: "Значит:"
+                    - generic [ref=e3123]:
+                      - button "Kopieren" [ref=e3124] [cursor=pointer]:
+                        - img [ref=e3125]
+                      - code [ref=e3133]:
+                        - text: выкидываем SignedQ3AStar из Step33A.
+                        - text: берём canonical signed A = -centeredBSplineArchKernelProfile.
+                        - text: строим direct boundary-null PSD cert.
+                    - paragraph [ref=e3134]: "Следующий theorem:"
+                    - generic [ref=e3143]:
+                      - generic [ref=e3145]:
+                        - generic [ref=e3146]:
+                          - img [ref=e3147]
+                          - text: lean
+                        - button "Kopieren" [ref=e3150] [cursor=pointer]:
+                          - img [ref=e3151]
+                      - code [ref=e3159]:
+                        - text: primaryK11SignedAnalyticADeltaHboxCert_of_negatedArchPayload
+                        - text: controlK9SignedAnalyticADeltaHboxCert_of_negatedArchPayload
+                    - paragraph [ref=e3160]: "Потом:"
+                    - generic [ref=e3169]:
+                      - generic [ref=e3171]:
+                        - generic [ref=e3172]:
+                          - img [ref=e3173]
+                          - text: lean
+                        - button "Kopieren" [ref=e3176] [cursor=pointer]:
+                          - img [ref=e3177]
+                      - code [ref=e3185]:
+                        - text: primaryK11CanonicalSignedBoundaryNullPSDCert
+                        - text: controlK9CanonicalSignedBoundaryNullPSDCert
+                    - paragraph [ref=e3186]: Это теперь самый чистый путь.
+                - generic [ref=e3187]:
+                  - group "Antwortaktionen":
+                    - button "Antwort kopieren":
+                      - generic:
+                        - img
+                    - button "Pro-Feedback":
+                      - img
+                    - button "Zu den Projektquellen hinzufügen":
+                      - generic:
+                        - img
+                    - button "Mehr Aktionen":
+                      - img
+            - generic [ref=e3240]:
+              - heading "Du:" [level=4] [ref=e3241]
+              - generic [ref=e3243]:
+                - generic [ref=e3249]:
+                  - generic [ref=e3251]: "Step33A.1-A update / route fork. We implemented and Lean-checked the direct receiver for canonical signed A: - DirectBoundaryNullPSDCert - DirectBoundaryNullPSDCert.of_penalty_lower_bound - primary/control CanonicalSignedBoundaryNullPSDCert - primary/control CanonicalSignedBoundaryNullPSDCert_of_penalty_lower_bound But numeric midpoint sanity on the current finite tables says canonical C_signed = -A - P is NOT PSD on ker(Q): primary: min eig on ker(Q) for -A-P = -1.418250308269634, neg eig count 13 A-P min = +0.000190283604334, neg eig count 0 control: min eig on ker(Q) for -A-P = -1.367079180010388, neg eig count 12 A-P min = +0.0000190759278019, neg eig count 0 Adding tau Q^T Q cannot fix this because Qv=0 on the target space. So the finite PSD truth currently points to A-P, not -A-P. Question: Should Codex now switch to a positive-A semantic/sign-location bridge (A-P is the finite Weil C), or is there a missing sign in P / WeilForm / Arch convention that makes the canonical signed theorem different from C_signed = -A-P? Codex recommendation: do not generate a direct signed -A-P PSD payload; first resolve sign-location theorem. Please give exact theorem target/route."
+                  - button "Mehr anzeigen" [ref=e3252] [cursor=pointer]:
+                    - generic [ref=e3253]: Mehr anzeigen
+                    - img [ref=e3255]
+                - generic [ref=e3257]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e3260]:
+              - heading "ChatGPT:" [level=4] [ref=e3261]
+              - generic [ref=e3263]:
+                - generic [ref=e3264]:
+                  - paragraph [ref=e3275]:
+                    - text: Ы.
+                    - code [ref=e3276]: "-A-P"
+                    - text: jetzt nicht weiter retten. Wenn es direkt auf
+                    - code [ref=e3277]: ker(Q)
+                    - text: negativ ist, ist dieser Weg für den aktuellen finite block mathematisch tot.
+                  - button "Nachgedacht für 4m 10s" [ref=e3283] [cursor=pointer]:
+                    - text: Nachgedacht für 4m 10s
+                    - img [ref=e3284]
+                  - generic [ref=e3288]:
+                    - paragraph [ref=e3289]:
+                      - text: Ы. Да.
+                      - text: "Теперь ответ стал жёсткий:"
+                    - generic [ref=e3298]:
+                      - button "Kopieren" [ref=e3299] [cursor=pointer]:
+                        - img [ref=e3300]
+                      - code [ref=e3308]:
+                        - text: Switch to positive-A semantic/sign-location bridge.
+                        - text: Do NOT continue signed -A-P route.
+                    - heading "Stepwise Reasoning" [level=2] [ref=e3309]
+                    - heading "1. Что проверено" [level=3] [ref=e3310]
+                    - paragraph [ref=e3311]: "Текущая цель finite positivity:"
+                    - generic [ref=e3320]:
+                      - button "Kopieren" [ref=e3321] [cursor=pointer]:
+                        - img [ref=e3322]
+                      - code [ref=e3330]:
+                        - text: C = A - P
+                        - text: on ker(Q)
+                    - paragraph [ref=e3331]: "Результат:"
+                    - generic [ref=e3340]:
+                      - button "Kopieren" [ref=e3341] [cursor=pointer]:
+                        - img [ref=e3342]
+                      - code [ref=e3350]:
+                        - text: "-A - P:"
+                        - text: primary ≈ -1.418
+                        - text: control ≈ -1.367
+                        - text: FAIL
+                        - text: "+A - P:"
+                        - text: primary ≈ +0.000190
+                        - text: control ≈ +0.000019
+                        - text: PASS
+                    - paragraph [ref=e3351]: Это решает fork.
+                    - paragraph [ref=e3352]:
+                      - text: Если цель на
+                      - code [ref=e3353]: ker(Q)
+                      - text: "отрицательная, то:"
+                    - generic [ref=e3362]:
+                      - button "Kopieren" [ref=e3363] [cursor=pointer]:
+                        - img [ref=e3364]
+                      - code [ref=e3372]: никакой tau QᵀQ не поможет
+                    - paragraph [ref=e3373]: "потому что:"
+                    - generic [ref=e3382]:
+                      - button "Kopieren" [ref=e3383] [cursor=pointer]:
+                        - img [ref=e3384]
+                      - code [ref=e3392]: Qv = 0 → vᵀQᵀQv = 0
+                    - paragraph [ref=e3393]: "Значит signed receiver:"
+                    - generic [ref=e3402]:
+                      - generic [ref=e3404]:
+                        - generic [ref=e3405]:
+                          - img [ref=e3406]
+                          - text: lean
+                        - button "Kopieren" [ref=e3409] [cursor=pointer]:
+                          - img [ref=e3410]
+                      - code [ref=e3418]:
+                        - text: A = -centeredBSplineArchKernelProfile
+                        - text: C = A - P
+                    - paragraph [ref=e3419]: не может быть active Step33 route.
+                    - separator [ref=e3420]
+                    - heading "2. Что это значит" [level=3] [ref=e3421]
+                    - paragraph [ref=e3422]: "Мы не должны теперь чинить:"
+                    - generic [ref=e3431]:
+                      - button "Kopieren" [ref=e3432] [cursor=pointer]:
+                        - img [ref=e3433]
+                      - code [ref=e3441]: "-A - P"
+                    - paragraph [ref=e3442]:
+                      - text: Это не “почти правильно”.
+                      - text: Это wrong sign-location.
+                    - paragraph [ref=e3443]: "Правильная finite truth говорит:"
+                    - generic [ref=e3452]:
+                      - button "Kopieren" [ref=e3453] [cursor=pointer]:
+                        - img [ref=e3454]
+                      - code [ref=e3462]: C = (+A) - P
+                    - paragraph [ref=e3463]: "где:"
+                    - generic [ref=e3472]:
+                      - button "Kopieren" [ref=e3473] [cursor=pointer]:
+                        - img [ref=e3474]
+                      - code [ref=e3482]: A = centeredBSplineArchKernelProfile
+                    - paragraph [ref=e3483]:
+                      - text: То есть следующий theorem должен быть не про signed A, а про то, что
+                      - strong [ref=e3484]: finite Weil C uses positive Arch A
+                      - text: .
+                    - separator [ref=e3485]
+                    - heading "3. Почему не искать знак в P первым" [level=3] [ref=e3486]
+                    - paragraph [ref=e3487]: Не надо сначала менять P.
+                    - paragraph [ref=e3488]: "Потому что уже есть working candidate:"
+                    - generic [ref=e3497]:
+                      - button "Kopieren" [ref=e3498] [cursor=pointer]:
+                        - img [ref=e3499]
+                      - code [ref=e3507]: +A - P passes.
+                    - paragraph [ref=e3508]: Если начать крутить P sign, мы снова откроем весь Step32/Prime bridge.
+                    - paragraph [ref=e3509]: "Сначала докажи минимальный sign-location theorem:"
+                    - generic [ref=e3518]:
+                      - button "Kopieren" [ref=e3519] [cursor=pointer]:
+                        - img [ref=e3520]
+                      - code [ref=e3528]: finite Weil matrix C = positive Arch matrix - Prime matrix
+                    - paragraph [ref=e3529]: Если этот theorem не доказывается из definitions, тогда уже делаем deeper WeilForm sign audit.
+                    - separator [ref=e3530]
+                    - heading "Final Proposal" [level=2] [ref=e3531]
+                    - paragraph [ref=e3532]: "Выбор:"
+                    - generic [ref=e3541]:
+                      - button "Kopieren" [ref=e3542] [cursor=pointer]:
+                        - img [ref=e3543]
+                      - code [ref=e3551]: A. Switch to positive-A semantic/sign-location bridge.
+                    - paragraph [ref=e3552]: "Но точнее:"
+                    - generic [ref=e3561]:
+                      - button "Kopieren" [ref=e3562] [cursor=pointer]:
+                        - img [ref=e3563]
+                      - code [ref=e3571]:
+                        - text: не “raw A потому что PSD проходит”,
+                        - text: а “prove form-level theorem that Step33 finite Weil C uses positive Arch A”.
+                    - separator [ref=e3572]
+                    - heading "Exact next theorem target" [level=2] [ref=e3573]
+                    - paragraph [ref=e3574]:
+                      - text: Главный theorem должен быть
+                      - strong [ref=e3575]: C-level
+                      - text: ", не A-level."
+                    - paragraph [ref=e3576]: "Лучшее имя:"
+                    - generic [ref=e3585]:
+                      - generic [ref=e3587]:
+                        - generic [ref=e3588]:
+                          - img [ref=e3589]
+                          - text: lean
+                        - button "Kopieren" [ref=e3592] [cursor=pointer]:
+                          - img [ref=e3593]
+                      - code [ref=e3601]: centeredBSplineFiniteWeilCProfile_eq_archKernelProfile_sub_primeProfile
+                    - paragraph [ref=e3602]: "Смысл:"
+                    - generic [ref=e3611]:
+                      - button "Kopieren" [ref=e3612] [cursor=pointer]:
+                        - img [ref=e3613]
+                      - code [ref=e3621]:
+                        - text: finite Weil C profile
+                        - text: =
+                        - text: centeredBSplineArchKernelProfile - centeredBSplinePrimeProfile
+                    - paragraph [ref=e3622]: "Если repo naming другое:"
+                    - generic [ref=e3631]:
+                      - generic [ref=e3633]:
+                        - generic [ref=e3634]:
+                          - img [ref=e3635]
+                          - text: lean
+                        - button "Kopieren" [ref=e3638] [cursor=pointer]:
+                          - img [ref=e3639]
+                      - code [ref=e3647]: centeredBSplineFiniteWeilMatrixC_eq_positiveArch_sub_Prime
+                    - paragraph [ref=e3648]: "или:"
+                    - generic [ref=e3657]:
+                      - generic [ref=e3659]:
+                        - generic [ref=e3660]:
+                          - img [ref=e3661]
+                          - text: lean
+                        - button "Kopieren" [ref=e3664] [cursor=pointer]:
+                          - img [ref=e3665]
+                      - code [ref=e3673]: centeredBSplineFiniteWeilForm_eq_positiveArch_minus_Prime
+                    - paragraph [ref=e3674]: "Это лучше, чем просто:"
+                    - generic [ref=e3683]:
+                      - generic [ref=e3685]:
+                        - generic [ref=e3686]:
+                          - img [ref=e3687]
+                          - text: lean
+                        - button "Kopieren" [ref=e3690] [cursor=pointer]:
+                          - img [ref=e3691]
+                      - code [ref=e3699]: A = centeredBSplineArchKernelProfile
+                    - paragraph [ref=e3700]: "потому что реальная цель Step33:"
+                    - generic [ref=e3709]:
+                      - button "Kopieren" [ref=e3710] [cursor=pointer]:
+                        - img [ref=e3711]
+                      - code [ref=e3719]: C = A - P
+                    - separator [ref=e3720]
+                    - heading "Supporting theorem" [level=2] [ref=e3721]
+                    - paragraph [ref=e3722]: "Если нужен A-profile theorem:"
+                    - generic [ref=e3731]:
+                      - generic [ref=e3733]:
+                        - generic [ref=e3734]:
+                          - img [ref=e3735]
+                          - text: lean
+                        - button "Kopieren" [ref=e3738] [cursor=pointer]:
+                          - img [ref=e3739]
+                      - code [ref=e3747]:
+                        - text: theorem centeredBSplineFiniteWeilAProfile_eq_archKernelProfile
+                        - text: "(k ell : ℕ) (x : ℝ) :"
+                        - text: centeredBSplineFiniteWeilAProfile k ell x =
+                        - text: centeredBSplineArchKernelProfile k ell x := by
+                        - text: "-- unfold definitions / sign-location"
+                        - text: ...
+                    - paragraph [ref=e3748]: "Then C theorem:"
+                    - generic [ref=e3757]:
+                      - generic [ref=e3759]:
+                        - generic [ref=e3760]:
+                          - img [ref=e3761]
+                          - text: lean
+                        - button "Kopieren" [ref=e3764] [cursor=pointer]:
+                          - img [ref=e3765]
+                      - code [ref=e3773]:
+                        - text: theorem centeredBSplineFiniteWeilCProfile_eq_archKernelProfile_sub_primeProfile
+                        - text: "(k ell : ℕ) (x : ℝ) :"
+                        - text: centeredBSplineFiniteWeilCProfile k ell x =
+                        - text: centeredBSplineArchKernelProfile k ell x
+                        - text: "- centeredBSplinePrimeKernelProfile k ell x := by"
+                        - text: "-- use A theorem + C = A - P"
+                        - text: ...
+                    - paragraph [ref=e3774]:
+                      - text: Names must be repo-real.
+                      - text: But shape is this.
+                    - separator [ref=e3775]
+                    - heading "What to tell Codex" [level=2] [ref=e3776]
+                    - generic [ref=e3785]:
+                      - button "Kopieren" [ref=e3786] [cursor=pointer]:
+                        - img [ref=e3787]
+                      - code [ref=e3795]:
+                        - text: "Route decision:"
+                        - text: Use positive-A semantic/sign-location bridge.
+                        - text: Do not continue signed -A-P route.
+                        - text: "Reason:"
+                        - text: "Direct boundary-null sanity proves:"
+                        - text: +A - P is PSD on ker(Q)
+                        - text: "-A - P is not PSD on ker(Q)"
+                        - text: "Therefore the active finite Weil C must be:"
+                        - text: C = centeredBSplineArchKernelProfile - P
+                        - text: "Next theorem target:"
+                        - text: centeredBSplineFiniteWeilCProfile_eq_archKernelProfile_sub_primeProfile
+                        - text: "Supporting target:"
+                        - text: centeredBSplineFiniteWeilAProfile_eq_archKernelProfile
+                        - text: "Do not:"
+                        - text: generate direct signed -A-P PSD payload
+                        - text: use SignedQ3AStar
+                        - text: mutate A CSV / ARadius / radius-floor / LDL
+                        - text: route H1/PO3
+                        - text: touch Q3.Main
+                        - text: change P sign unless positive-A theorem fails from definitions
+                        - text: "After theorem compiles:"
+                        - text: use existing positive A hbox payload
+                        - text: use existing A-P finite penalty cert
+                        - text: feed ActiveCenteredCoeffEntryHboxCert
+                        - text: continue Step33B/C receiver chain
+                    - separator [ref=e3796]
+                    - heading "What happens to signed receiver files" [level=2] [ref=e3797]
+                    - paragraph [ref=e3798]: Keep them as exploratory / inactive.
+                    - paragraph [ref=e3799]: "Do not feed:"
+                    - generic [ref=e3808]:
+                      - generic [ref=e3810]:
+                        - generic [ref=e3811]:
+                          - img [ref=e3812]
+                          - text: lean
+                        - button "Kopieren" [ref=e3815] [cursor=pointer]:
+                          - img [ref=e3816]
+                      - code [ref=e3824]: CanonicalSignedBoundaryNullPSDCert
+                    - paragraph [ref=e3825]: into active Step33.
+                    - paragraph [ref=e3826]: "Mark route:"
+                    - generic [ref=e3835]:
+                      - button "Kopieren" [ref=e3836] [cursor=pointer]:
+                        - img [ref=e3837]
+                      - code [ref=e3845]:
+                        - text: "SIGNED_A_ROUTE_REJECTED_FOR_STEP33A:"
+                        - text: "-A-P fails on ker(Q)"
+                    - separator [ref=e3846]
+                    - heading "Current exact route" [level=2] [ref=e3847]
+                    - generic [ref=e3856]:
+                      - button "Kopieren" [ref=e3857] [cursor=pointer]:
+                        - img [ref=e3858]
+                      - code [ref=e3866]:
+                        - text: 1. Prove positive Arch sign-location theorem.
+                        - text: 2. Reuse positive A hbox.
+                        - text: 3. Reuse A-P finite cert.
+                        - text: 4. Build ActiveCenteredCoeffEntryHboxCert.
+                        - text: 5. Step33B finite analytic handoff.
+                        - text: 6. Step33C singleton DirectedFamily handoff.
+                    - heading "Bottom line" [level=2] [ref=e3867]
+                    - generic [ref=e3876]:
+                      - button "Kopieren" [ref=e3877] [cursor=pointer]:
+                        - img [ref=e3878]
+                      - code [ref=e3886]: Canonical C for Step33A is A - P with positive Arch A.
+                    - paragraph [ref=e3887]: "Next theorem:"
+                    - generic [ref=e3896]:
+                      - generic [ref=e3898]:
+                        - generic [ref=e3899]:
+                          - img [ref=e3900]
+                          - text: lean
+                        - button "Kopieren" [ref=e3903] [cursor=pointer]:
+                          - img [ref=e3904]
+                      - code [ref=e3912]: centeredBSplineFiniteWeilCProfile_eq_archKernelProfile_sub_primeProfile
+                    - paragraph [ref=e3913]: "If Codex cannot prove this from definitions, then blocker is:"
+                    - generic [ref=e3922]:
+                      - button "Kopieren" [ref=e3923] [cursor=pointer]:
+                        - img [ref=e3924]
+                      - code [ref=e3932]: WeilForm / Arch sign definitions disagree with finite PSD truth.
+                    - paragraph [ref=e3933]: But the next correct attempt is positive-A bridge, not signed-A recert.
+                - generic [ref=e3934]:
+                  - group "Antwortaktionen":
+                    - button "Antwort kopieren":
+                      - generic:
+                        - img
+                    - button "Pro-Feedback":
+                      - img
+                    - button "Zu den Projektquellen hinzufügen":
+                      - generic:
+                        - img
+                    - button "Mehr Aktionen":
+                      - img
+            - generic [ref=e3962]:
+              - heading "Du:" [level=4] [ref=e3963]
+              - generic [ref=e3965]:
+                - generic [ref=e3971]:
+                  - generic [ref=e3973]: "Step33A.1-A route update. Local checks now say: 1. B local raw-Step22 hbox theorem is blocked: ActiveCenteredCoeffEntryHboxCert consumes analytic A unfolding to centeredBSplineArchKernelProfile; no local raw Step22 receiver exists. 2. C1 direct recert for C = centeredA - P is blocked: C is negative on ker(Q) (primary about -101.66, control about -100.27). 3. C2 regenerated D/R/radius-floor/LDL under current split shape is also blocked; tau Q^T Q vanishes on ker(Q). So the live target is Step33A.1-A-semantic-assembler-sign-decision, not payload generation. Choose exact next theorem route: B2. upstream theorem: raw Step22 positive-axis A is the finite analytic receiver through Weil/Arch assembler; S. semantic sign-location theorem: finite model uses sign-normalized Arch A and Step33A must be retargeted through checked assembler bridge; C. current finite certificate convention is inconsistent and needs a new finite model/split theorem. Please answer with CHOSEN: B2/S/C and exact theorem shape."
+                  - button "Mehr anzeigen" [ref=e3974] [cursor=pointer]:
+                    - generic [ref=e3975]: Mehr anzeigen
+                    - img [ref=e3977]
+                - generic [ref=e3979]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e3982]:
+              - heading "ChatGPT:" [level=4] [ref=e3983]
+              - generic [ref=e3985]:
+                - generic [ref=e3986]:
+                  - paragraph [ref=e3998]:
+                    - text: "Ы. Смотрю на это как route decision: дальше payload уже не поможет, надо выбрать, какая формула"
+                    - code [ref=e3999]: A
+                    - text: реально является Arch-частью finite Weil assembler. Здесь решается semantic sign/assembler issue, а не радиусы, hbox или генерация чисел.
+                  - button "Nachgedacht für 2m 57s" [ref=e4006] [cursor=pointer]:
+                    - text: Nachgedacht für 2m 57s
+                    - img [ref=e4007]
+                  - generic [ref=e4011]:
+                    - paragraph [ref=e4012]:
+                      - text: Ы. Да.
+                      - text: "Тут выбор:"
+                    - generic [ref=e4021]:
+                      - button "Kopieren" [ref=e4022] [cursor=pointer]:
+                        - img [ref=e4023]
+                      - code [ref=e4031]: "CHOSEN: S"
+                    - paragraph [ref=e4032]: "Но с уточнением:"
+                    - generic [ref=e4041]:
+                      - button "Kopieren" [ref=e4042] [cursor=pointer]:
+                        - img [ref=e4043]
+                      - code [ref=e4051]: B2 становится подтеоремой внутри S.
+                    - paragraph [ref=e4052]:
+                      - text: То есть не локальный raw-hbox patch.
+                      - text: А
+                      - strong [ref=e4053]: upstream sign-location / assembler theorem
+                      - text: .
+                    - separator [ref=e4054]
+                    - heading "Stepwise Reasoning" [level=1] [ref=e4055]
+                    - heading "1. Что доказано численно" [level=2] [ref=e4056]
+                    - generic [ref=e4065]:
+                      - button "Kopieren" [ref=e4066] [cursor=pointer]:
+                        - img [ref=e4067]
+                      - code [ref=e4075]:
+                        - text: "current receiver:"
+                        - text: A = centeredBSplineArchKernelProfile
+                        - text: "current formula:"
+                        - text: C = A - P
+                        - text: "result:"
+                        - text: centeredA - P is negative on ker(Q)
+                        - text: primary ≈ -101.66
+                        - text: control ≈ -100.27
+                    - paragraph [ref=e4076]:
+                      - text: Значит current receiver + current assembler sign
+                      - strong [ref=e4077]: не может
+                      - text: быть Step33 finite positivity target.
+                    - separator [ref=e4078]
+                    - heading "2. Что проходит" [level=2] [ref=e4079]
+                    - generic [ref=e4088]:
+                      - button "Kopieren" [ref=e4089] [cursor=pointer]:
+                        - img [ref=e4090]
+                      - code [ref=e4098]: raw Step22 positive-axis A - P
+                    - paragraph [ref=e4099]: "проходит:"
+                    - generic [ref=e4108]:
+                      - button "Kopieren" [ref=e4109] [cursor=pointer]:
+                        - img [ref=e4110]
+                      - code [ref=e4118]:
+                        - text: primary > 0
+                        - text: control > 0
+                    - paragraph [ref=e4119]: "Значит finite certificate convention указывает на:"
+                    - generic [ref=e4128]:
+                      - button "Kopieren" [ref=e4129] [cursor=pointer]:
+                        - img [ref=e4130]
+                      - code [ref=e4138]: C = rawStep22A - P
+                    - separator [ref=e4139]
+                    - heading "3. Почему не B2 напрямую" [level=2] [ref=e4140]
+                    - paragraph [ref=e4141]: "B2 как “просто использовать raw Step22 hbox” локально уже blocked:"
+                    - generic [ref=e4150]:
+                      - button "Kopieren" [ref=e4151] [cursor=pointer]:
+                        - img [ref=e4152]
+                      - code [ref=e4160]:
+                        - text: ActiveCenteredCoeffEntryHboxCert
+                        - text: unfolds analytic A to centeredBSplineArchKernelProfile
+                    - paragraph [ref=e4161]: То есть raw Step22 нельзя просто подставить в текущий receiver.
+                    - paragraph [ref=e4162]: "Нужно выше:"
+                    - generic [ref=e4171]:
+                      - button "Kopieren" [ref=e4172] [cursor=pointer]:
+                        - img [ref=e4173]
+                      - code [ref=e4181]: поменять/доказать assembler sign-location
+                    - separator [ref=e4182]
+                    - heading "4. Почему не C" [level=2] [ref=e4183]
+                    - paragraph [ref=e4184]: "C говорит:"
+                    - generic [ref=e4193]:
+                      - button "Kopieren" [ref=e4194] [cursor=pointer]:
+                        - img [ref=e4195]
+                      - code [ref=e4203]:
+                        - text: finite convention inconsistent
+                        - text: нужна новая finite model/split
+                    - paragraph [ref=e4204]: Рано.
+                    - paragraph [ref=e4205]: "Потому что:"
+                    - generic [ref=e4214]:
+                      - button "Kopieren" [ref=e4215] [cursor=pointer]:
+                        - img [ref=e4216]
+                      - code [ref=e4224]: rawStep22A - P already passes ker(Q)
+                    - paragraph [ref=e4225]:
+                      - text: Значит finite model не мёртвый.
+                      - text: Скорее мёртв current semantic assembler sign.
+                    - separator [ref=e4226]
+                    - heading "Final Proposal" [level=1] [ref=e4227]
+                    - paragraph [ref=e4228]: "Выбор:"
+                    - generic [ref=e4237]:
+                      - button "Kopieren" [ref=e4238] [cursor=pointer]:
+                        - img [ref=e4239]
+                      - code [ref=e4247]: S. semantic sign-location theorem.
+                    - paragraph [ref=e4248]: "Смысл:"
+                    - generic [ref=e4257]:
+                      - button "Kopieren" [ref=e4258] [cursor=pointer]:
+                        - img [ref=e4259]
+                      - code [ref=e4267]:
+                        - text: finite Weil model uses sign-normalized Arch A,
+                        - text: and that sign-normalized Arch A is the raw Step22 positive-axis A
+                        - text: inside the assembler.
+                    - paragraph [ref=e4268]: "Не доказывать:"
+                    - generic [ref=e4277]:
+                      - generic [ref=e4279]:
+                        - generic [ref=e4280]:
+                          - img [ref=e4281]
+                          - text: lean
+                        - button "Kopieren" [ref=e4284] [cursor=pointer]:
+                          - img [ref=e4285]
+                      - code [ref=e4293]: rawStep22A = centeredBSplineArchKernelProfile
+                    - paragraph [ref=e4294]: Это, судя по проверкам, false.
+                    - paragraph [ref=e4295]: "Доказывать надо C-level theorem:"
+                    - generic [ref=e4304]:
+                      - generic [ref=e4306]:
+                        - generic [ref=e4307]:
+                          - img [ref=e4308]
+                          - text: lean
+                        - button "Kopieren" [ref=e4311] [cursor=pointer]:
+                          - img [ref=e4312]
+                      - code [ref=e4320]: finite Weil C profile = raw Step22 positive-axis A profile - Prime profile
+                    - separator [ref=e4321]
+                    - heading "Exact next theorem shape" [level=1] [ref=e4322]
+                    - paragraph [ref=e4323]: "Главный theorem:"
+                    - generic [ref=e4332]:
+                      - generic [ref=e4334]:
+                        - generic [ref=e4335]:
+                          - img [ref=e4336]
+                          - text: lean
+                        - button "Kopieren" [ref=e4339] [cursor=pointer]:
+                          - img [ref=e4340]
+                      - code [ref=e4348]:
+                        - text: theorem centeredBSplineFiniteWeilCProfile_eq_step22PositiveAxisOmega_sub_primeProfile
+                        - text: "(k ell : ℕ) (x : ℝ) :"
+                        - text: centeredBSplineFiniteWeilCProfile k ell x
+                        - text: =
+                        - text: step22PositiveAxisOmegaAProfile k ell x
+                        - text: "- centeredBSplinePrimeKernelProfile k ell x := by"
+                        - text: ...
+                    - paragraph [ref=e4349]:
+                      - text: Repo-style names могут отличаться.
+                      - text: Но theorem должен быть именно
+                      - strong [ref=e4350]: C-level
+                      - text: .
+                    - paragraph [ref=e4351]: "Почему C-level:"
+                    - generic [ref=e4360]:
+                      - button "Kopieren" [ref=e4361] [cursor=pointer]:
+                        - img [ref=e4362]
+                      - code [ref=e4370]: Step33 cert proves positivity of C = A - P.
+                    - paragraph [ref=e4371]:
+                      - text: Не надо опять спорить “какая A сама по себе”.
+                      - text: "Надо зафиксировать:"
+                    - generic [ref=e4380]:
+                      - button "Kopieren" [ref=e4381] [cursor=pointer]:
+                        - img [ref=e4382]
+                      - code [ref=e4390]: какой C входит в finite Weil model.
+                    - separator [ref=e4391]
+                    - heading "Supporting theorem" [level=1] [ref=e4392]
+                    - paragraph [ref=e4393]: "Если нужен A-level helper:"
+                    - generic [ref=e4402]:
+                      - generic [ref=e4404]:
+                        - generic [ref=e4405]:
+                          - img [ref=e4406]
+                          - text: lean
+                        - button "Kopieren" [ref=e4409] [cursor=pointer]:
+                          - img [ref=e4410]
+                      - code [ref=e4418]:
+                        - text: theorem centeredBSplineFiniteWeilAProfile_eq_step22PositiveAxisOmega_throughAssembler
+                        - text: "(k ell : ℕ) (x : ℝ) :"
+                        - text: centeredBSplineFiniteWeilAProfile k ell x
+                        - text: =
+                        - text: step22PositiveAxisOmegaAProfile k ell x := by
+                        - text: ...
+                    - paragraph [ref=e4419]: "Потом:"
+                    - generic [ref=e4428]:
+                      - generic [ref=e4430]:
+                        - generic [ref=e4431]:
+                          - img [ref=e4432]
+                          - text: lean
+                        - button "Kopieren" [ref=e4435] [cursor=pointer]:
+                          - img [ref=e4436]
+                      - code [ref=e4444]:
+                        - text: theorem centeredBSplineFiniteWeilCProfile_eq_step22PositiveAxisOmega_sub_primeProfile
+                        - text: "(k ell : ℕ) (x : ℝ) :"
+                        - text: centeredBSplineFiniteWeilCProfile k ell x
+                        - text: =
+                        - text: step22PositiveAxisOmegaAProfile k ell x
+                        - text: "- centeredBSplinePrimeKernelProfile k ell x := by"
+                        - text: simp [centeredBSplineFiniteWeilCProfile,
+                        - text: centeredBSplineFiniteWeilAProfile_eq_step22PositiveAxisOmega_throughAssembler]
+                    - paragraph [ref=e4445]: Имена заменить на repo-real.
+                    - separator [ref=e4446]
+                    - heading "Where it feeds Step33A" [level=1] [ref=e4447]
+                    - paragraph [ref=e4448]: "После этого нужен adapter:"
+                    - generic [ref=e4457]:
+                      - generic [ref=e4459]:
+                        - generic [ref=e4460]:
+                          - img [ref=e4461]
+                          - text: lean
+                        - button "Kopieren" [ref=e4464] [cursor=pointer]:
+                          - img [ref=e4465]
+                      - code [ref=e4473]:
+                        - text: theorem activeCenteredCoeffEntryHboxCert_of_step22PositiveAxisOmegaA
+                        - text: "(...) :"
+                        - text: ActiveCenteredCoeffEntryHboxCert := by
+                        - text: ...
+                    - paragraph [ref=e4474]: "Смысл:"
+                    - generic [ref=e4483]:
+                      - button "Kopieren" [ref=e4484] [cursor=pointer]:
+                        - img [ref=e4485]
+                      - code [ref=e4493]:
+                        - text: existing positive raw Step22 A hbox
+                        - text: + existing P hbox
+                        - text: + existing P0 hbox
+                        - text: → ActiveCenteredCoeffEntryHboxCert
+                    - paragraph [ref=e4494]: Но только после C-level theorem.
+                    - separator [ref=e4495]
+                    - heading "Что сказать Codex" [level=1] [ref=e4496]
+                    - generic [ref=e4505]:
+                      - button "Kopieren" [ref=e4506] [cursor=pointer]:
+                        - img [ref=e4507]
+                      - code [ref=e4515]:
+                        - text: "CHOSEN: S."
+                        - text: Do not continue payload generation.
+                        - text: Do not continue centeredA-P recert.
+                        - text: Do not mutate CSV/ARadius/radius-floor/LDL.
+                        - text: Do not touch Q3.Main or H1/PO3.
+                        - text: Current problem is semantic assembler sign-location.
+                        - text: "Finite truth says:"
+                        - text: rawStep22PositiveAxisA - P is PSD on ker(Q)
+                        - text: "Current receiver says:"
+                        - text: centeredBSplineArchKernelProfile - P
+                        - text: and this is negative on ker(Q).
+                        - text: "Therefore next theorem must be upstream/C-level:"
+                        - text: centeredBSplineFiniteWeilCProfile_eq_step22PositiveAxisOmega_sub_primeProfile
+                        - text: "Supporting theorem if needed:"
+                        - text: centeredBSplineFiniteWeilAProfile_eq_step22PositiveAxisOmega_throughAssembler
+                        - text: "Then create Step33A adapter:"
+                        - text: activeCenteredCoeffEntryHboxCert_of_step22PositiveAxisOmegaA
+                        - text: "Do not prove:"
+                        - text: rawStep22A = centeredBSplineArchKernelProfile
+                        - text: "Instead prove:"
+                        - text: finite Weil assembler places the Arch sign/normalization so that
+                        - text: the C profile consumed by Step33A is rawStep22PositiveAxisA - P.
+                    - separator [ref=e4516]
+                    - heading "Decision summary" [level=1] [ref=e4517]
+                    - generic [ref=e4526]:
+                      - button "Kopieren" [ref=e4527] [cursor=pointer]:
+                        - img [ref=e4528]
+                      - code [ref=e4536]:
+                        - text: "B2 local raw hbox: blocked."
+                        - text: "C new finite model: too early."
+                        - text: "S assembler sign theorem: correct."
+                    - paragraph [ref=e4537]: "Next target:"
+                    - generic [ref=e4546]:
+                      - generic [ref=e4548]:
+                        - generic [ref=e4549]:
+                          - img [ref=e4550]
+                          - text: lean
+                        - button "Kopieren" [ref=e4553] [cursor=pointer]:
+                          - img [ref=e4554]
+                      - code [ref=e4562]: centeredBSplineFiniteWeilCProfile_eq_step22PositiveAxisOmega_sub_primeProfile
+                    - paragraph [ref=e4563]: "If this theorem fails from definitions, then and only then escalate to C:"
+                    - generic [ref=e4572]:
+                      - button "Kopieren" [ref=e4573] [cursor=pointer]:
+                        - img [ref=e4574]
+                      - code [ref=e4582]: current finite convention inconsistent with semantic assembler.
+                    - paragraph [ref=e4583]:
+                      - text: But next move is
+                      - strong [ref=e4584]: S
+                      - text: .
+                - generic [ref=e4585]:
+                  - group "Antwortaktionen":
+                    - button "Antwort kopieren":
+                      - generic:
+                        - img
+                    - button "Pro-Feedback":
+                      - img
+                    - button "Zu den Projektquellen hinzufügen":
+                      - generic:
+                        - img
+                    - button "Mehr Aktionen":
+                      - img
+            - generic [ref=e4613]:
+              - heading "Du:" [level=4] [ref=e4614]
+              - generic [ref=e4616]:
+                - generic [ref=e4622]:
+                  - generic [ref=e4624]: "PRO_REVIEW_REQUEST Route: Step33A.1-A raw-Omega S/A route. The S/sign-location fork is already resolved in repo-real code: live landing surface is RawOmegaADirectTailWindowInputs -> ActiveRawOmegaCoeffEntryHboxCert -> PsdStep33RawOmegaFiniteAnalyticPositivity -> PsdStep33RawOmegaSingletonDirectedFamilyHandoff. Current blocker: produce 46 direct tailRemainderAbs proofs for PayloadFin tail rows. Generated worklist: a_tail_remainder_worklist.md/json status=missing_tail_remainder_proof_data rows=46, present=0, missing=46 Lean consumer: RawOmegaAChunkTaylorPayload.PayloadFin.toDirectTailWindowInputs Exact Lean targets: primary: forall n : CoeffIndex23, |Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaATailPart 11 primaryK11Ell ((n.1 : Real) / 4) primaryK11RawOmegaAComparisonTailWindowArithmeticPayload_generated.tailEnd| <= primaryK11RawOmegaAComparisonTailWindowArithmeticPayload_generated.tailRemainderRadius n control: forall n : CoeffIndex23, |Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaATailPart 9 controlK9Ell ((n.1 : Real) / 4) controlK9RawOmegaAComparisonTailWindowArithmeticPayload_generated.tailEnd| <= controlK9RawOmegaAComparisonTailWindowArithmeticPayload_generated.tailRemainderRadius n Known data: tailEnd = 520 cutoff = 260 diagnostic Arb/acb signed tail probes fit generated radii, but they are NOT Lean proof data. Hard guards: do not use diagnostic Arb/acb probes as trusted proofs; do not use step22OmegaArchWeight_linear_growth unless it exposes concrete numeric constants; do not mutate A CSV / ARadius / radius-floor / LDL; do not touch Q3.Main / H1 / PO3. Options: A. Prove direct analytic (520,infty) tail remainder theorem against generated tailRemainderRadius. B. Expose concrete numeric Omega-growth-majorant constants, then use existing linear-growth tail theorem plus 46 rational comparisons. C. Regenerate only tail-remainder policy with proof-producing cert if A/B fail. Codex recommendation: A first. Question for Louise: What is the shortest Lean theorem shape for the 46 hTailRemainder proofs, and what exact helper theorem should be proved/generated next so it feeds PayloadFin.toDirectTailWindowInputs cleanly?"
+                  - button "Mehr anzeigen" [ref=e4625] [cursor=pointer]:
+                    - generic [ref=e4626]: Mehr anzeigen
+                    - img [ref=e4628]
+                - generic [ref=e4630]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e4633]:
+              - heading "ChatGPT:" [level=4] [ref=e4634]
+              - button "Pro-Denkvorgang" [ref=e4639] [cursor=pointer]:
+                - generic [ref=e4641]: Pro-Denkvorgang
+          - generic [ref=e105]:
+            - generic:
+              - generic:
+                - button:
+                  - img
+            - generic [ref=e110]:
+              - generic [ref=e114]:
+                - button "Dateien und mehr hinzufügen" [disabled] [ref=e117]:
+                  - img
+                - textbox "Mit ChatGPT chatten" [active] [ref=e3195]:
+                  - paragraph [ref=e4642]: Rückfrage
+                - generic [ref=e121]:
+                  - button "Länger Pro" [ref=e3200] [cursor=pointer]:
+                    - generic [ref=e3201]: Länger Pro
+                    - img
+                  - generic [ref=e122]:
+                    - button "Diktat starten" [ref=e3202] [cursor=pointer]:
+                      - img
+                    - button "Antwort stoppen" [ref=e4643] [cursor=pointer]:
+                      - img [ref=e4644]
+              - button [ref=e127]
+              - button [ref=e128]
+            - generic [ref=e3209]: ChatGPT kann Fehler machen. Überprüfe wichtige Informationen.
+  - alert [ref=e135]
+  - status [ref=e136]

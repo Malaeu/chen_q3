@@ -1,0 +1,183 @@
+{
+  "anchorReSeriesAbsTailFeasibility": {
+    "allowedAnchorCenterErrorAfterRelaxedDerivative": "2.287199989833435045049250024048093261896941186250842292793095E-21",
+    "asymptoticTailModel": "abs tail roughly >= 3/(4*N) before acceleration",
+    "implication": "The direct real-series prefix/absolute-tail receiver is not a good first proof route for the v21 direct anchor endpoint.  Use a sharper high-order/asymptotic bridge or a certified constant backend before trying to materialize anchorN rows.",
+    "roughMinAnchorNForAllowedError": "327911858750322320515.8216735665100622226299027967217482697189767497450361735355251771627194185021048",
+    "status": "plain_abs_tail_impractical_for_current_direct_anchor_budget"
+  },
+  "anchorReSeriesSignedTailRoute": {
+    "acceleratedModelTailFacts": [
+      "anchorQ2Lower <= tsum (fun n => 1/(n+anchorN+1/4)^2)",
+      "tsum (fun n => 1/(n+anchorN+1/4)^2) <= anchorQ2Upper",
+      "tsum (fun n => ((3/4)^2 + (etaUpper/2)^2)/(n+anchorN+1/4)^3) <= anchorQ3Upper",
+      "anchorTailLower <= -(3/4) * anchorQ2Upper - anchorQ3Upper",
+      "-(3/4) * anchorQ2Lower + anchorQ3Upper <= anchorTailUpper"
+    ],
+    "acceleratedTailLemma": "RawOmegaATaylorModelCertificate.step22OmegaArchWeightReSeries_tail_bounds_from_model_abs_error",
+    "anchorLemma": "RawOmegaATaylorModelCertificate.step22OmegaArchWeight_bounds_from_re_series_prefix_tail_interval",
+    "genericAcceleratedTailLemma": "RawOmegaATaylorModelCertificate.tsum_shifted_tail_bounds_of_model_abs_error",
+    "genericNonnegativePrefixTailLemma": "RawOmegaATaylorModelCertificate.nonneg_tsum_bounds_of_sum_range_tail_upper",
+    "leadingQuadraticErrorLemma": "RawOmegaATaylorModelCertificate.abs_step22OmegaArchWeightReSeriesTerm_sub_leading_quadratic_model_le_cubic",
+    "leadingQuadraticErrorMajorant": "g n = ((3/4)^2 + (etaUpper/2)^2) / ((((n + anchorN : Nat) : Real) + 1/4)^3)",
+    "leadingQuadraticModel": "model n = -(3/4) / ((((n + anchorN : Nat) : Real) + 1/4)^2)",
+    "leadingQuadraticTailLemma": "RawOmegaATaylorModelCertificate.step22OmegaArchWeightReSeries_tail_bounds_from_leading_quadratic_model_error",
+    "meaning": "The Lean receiver no longer requires |tail| <= radius.  The remaining proof-producing task is now localized to finite prefix sums and rational comparisons against checked closed-form shifted-tail bounds for the positive q2/q3 p-series; the combined Lean receiver now splits the nonnegative tsums and performs the negative-model sign flip.  However, using this receiver with only the current integral closed tails still leaves a first-order q2 tail-width constraint, so it is not a practical row-generation route for the v21 direct anchor interval.",
+    "positivePSeriesPrefixTailFacts": [
+      "anchorQ2PrefixLower <= sum range anchorQ2PrefixN q2",
+      "tsum (fun n => q2 (n + anchorQ2PrefixN)) <= 1 / ((anchorN + anchorQ2PrefixN + 1/4) - 1)",
+      "1 / ((anchorN + anchorQ2PrefixN + 1/4) - 1) <= anchorQ2TailUpper",
+      "sum range anchorQ2PrefixN q2 + anchorQ2TailUpper <= anchorQ2Upper",
+      "tsum (fun n => q3 (n + anchorQ3PrefixN)) <= ((3/4)^2 + (etaUpper/2)^2) * (1 / ((anchorN + anchorQ3PrefixN + 1/4 - 1)^2))",
+      "((3/4)^2 + (etaUpper/2)^2) * (1 / ((anchorN + anchorQ3PrefixN + 1/4 - 1)^2)) <= anchorQ3TailUpper",
+      "sum range anchorQ3PrefixN q3 + anchorQ3TailUpper <= anchorQ3Upper"
+    ],
+    "positiveSeriesTailLemma": "RawOmegaATaylorModelCertificate.step22OmegaArchWeightReSeries_tail_bounds_from_leading_quadratic_positive_series_bounds",
+    "prefixTailClosedFormTailLemma": "RawOmegaATaylorModelCertificate.step22OmegaArchWeightReSeries_tail_bounds_from_leading_quadratic_prefix_tail_closed_form",
+    "q2Series": "q2 n = 1 / ((((n + anchorN : Nat) : Real) + 1/4)^2)",
+    "q2ShiftedTailClosedFormLemma": "RawOmegaATaylorModelCertificate.tsum_anchor_q2_shifted_tail_le_closed_form",
+    "q2TailClosedForm": "1 / ((anchorN + anchorQ2PrefixN + 1/4) - 1)",
+    "q2TailClosedFormLemma": "RawOmegaATaylorModelCertificate.tsum_one_div_nat_add_quarter_sq_le_inv_pred",
+    "q3Series": "g n = ((3/4)^2 + (etaUpper/2)^2) / ((((n + anchorN : Nat) : Real) + 1/4)^3)",
+    "q3ShiftedTailClosedFormLemma": "RawOmegaATaylorModelCertificate.tsum_anchor_q3_shifted_tail_le_closed_form",
+    "q3TailClosedForm": "((3/4)^2 + (etaUpper/2)^2) * (1 / ((anchorN + anchorQ3PrefixN + 1/4 - 1)^2))",
+    "q3TailClosedFormLemma": "RawOmegaATaylorModelCertificate.tsum_const_mul_one_div_nat_add_quarter_cubic_le",
+    "receiver": "RawOmegaATaylorModelCertificate.Step22OmegaClosedFormEndpointBoundsCert.of_re_series_anchor_interval_tail_trigamma_im_closed_form_term_prefix_cubic_tail_Icc",
+    "requiredTailFacts": [
+      "anchorTailLower <= tail",
+      "tail <= anchorTailUpper",
+      "omegaAnchorLower <= constLower + prefixLower + anchorTailLower",
+      "constUpper + prefixUpper + anchorTailUpper <= omegaAnchorUpper"
+    ],
+    "status": "checked_combined_prefix_tail_receiver_available_but_simple_prefix_tail_width_impractical"
+  },
+  "anchorSignedTailPrefixFeasibility": {
+    "anchorIntervalWidth": "1.1039735089676795447468268908819181139429613872547919738454126375589250E-21",
+    "minCombinedQ2TailIndexForAnchorWidth": "679364127769081602024",
+    "minCombinedQ3TailIndexForAnchorWidth": "31940232705",
+    "q2TailWidthModel": "width contains roughly (3/4) / (anchorN + anchorQ2PrefixN - 3/4)",
+    "q3TailCoefficient": "0.563125",
+    "q3TailWidthModel": "width contains roughly 2*((3/4)^2 + (etaUpper/2)^2) / (anchorN + anchorQ3PrefixN - 3/4)^2",
+    "roughMinCombinedQ2TailIndexDecimal": "679364127769081602023.2959782840584692524335362851483467752701163081966017537304196549869897516461828",
+    "roughMinCombinedQ3TailIndexDecimal": "31940232704.97280761414152815346441526295811672241960046958471658070566521342648191582598642089014664",
+    "status": "current_simple_q2_q3_prefix_tail_receiver_impractical_for_v21_direct_anchor_interval",
+    "verdict": "Do not treat the remaining anchor task as finite-prefix row crawl.  Under the current simple closed-tail receiver, the q2 tail alone asks for an astronomically large combined anchorN+prefixN index.  The next proof route should introduce a sharper analytic/asymptotic tail bridge, a certified special-function constant backend, or an equivalent route chosen by Pro/Louise."
+  },
+  "currentEndpointContainment": {
+    "anchorCenterError": "6.312397263819157279290096877252160909824991053686543320249760436616125E-22",
+    "consumed": "8.312397263819157279290096877252160909824991053686543320249760436616125E-22",
+    "derivativeAbsSlope": "2",
+    "margin": "1.6559602634515193171202403363228771709144420808821879607681189563383875E-21",
+    "omegaCenter": "-5.332164676365227629591143622569968453205269577429301224261862214642052257005670125",
+    "omegaRadius": "2.487199989833435045049250024048093261896941186250842292793095E-21",
+    "passes": true
+  },
+  "derivativePrefixTailCandidate": {
+    "cubicTailBound": "0.002035416242621616120496641563199674333401180541420720537349888052106655811113372684714024017911662935",
+    "derivN": 4,
+    "etaUpper": "0.05",
+    "passesCurrentTightDerivativeTargets": true,
+    "passesRelaxedDerivativeTargets": true,
+    "prefixLower": "-3.168371740777337839112050012625742912478168778550381033397266472480337945609728991359038164913993980",
+    "prefixUpper": "-3.168371740777337839105961827066969534181279422862497916827267582006367036166596388055228378543920822",
+    "producedDerivLower": "1.583168162267358111492732592751884929923939121160538598144958846977130190177741507685257177263004580",
+    "producedDerivUpper": "1.585203578509979727616273327094471293405784979545900876967308180266222300710421182021876094465952822",
+    "roughMinNForCurrentTightWidthFromCubicTail": "0.1118033988749894848204586834365638117720309179805762862135448622705260462818902449707207204189391137",
+    "termLowerAtB": [
+      "-3.136947358102146848348201156749338300166650328399176551318498186452308597196353298696206254288795216",
+      "-0.02557953228144967522786966780660786465102083916533346677322673489580577205343372447102726282537764582",
+      "-0.004388491115004508641297094128608785384361956286331430338318684636339074388901469399394305941920971473",
+      "-0.001456359278736806894682093941187962276135654699539584967222866495884501971040498792410341857900147464"
+    ],
+    "termUpperAtA": [
+      "-3.136947358102146848342175733111003483448040181663339928893796978983860622552195326528850965698729854",
+      "-0.02557953228144967522781859056381955610320477289806275754359275340791432415994228413118480761627610624",
+      "-0.004388491115004508641288321480155954497689055996538012887688665965434552770129499208908116487178456152",
+      "-0.001456359278736806894679181911990540132345412304557217502189183649157536684329278186284488741736405722"
+    ]
+  },
+  "directAnchorProofTarget": {
+    "lowerStatement": "omegaAnchorLower <= step22OmegaArchWeight anchor",
+    "meaning": "The active v21 endpoint receiver asks for the two direct anchor inequalities around step22OmegaArchWeight (1/20).  This is below the checked Route A subchunk wrapper; it is not a request to regenerate A data or replay a full row.",
+    "proofInterval": {
+      "lower": {
+        "decimal": "-5.332164676365227629591616356352554217022087394632457926284822676923938394647490561593897312E+0",
+        "rational": "-85314634821843642073465861701640867472353398314119326820557162830783014314359848985502357/16000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "upper": {
+        "decimal": "-5.332164676365227629590512382843586537477340567741576008170879715536683602673645148956338388E+0",
+        "rational": "-426573174109218210367240990627486922998187245419326080653670377242934688213891611916507071/80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "widthDecimal": "1.103973508967679544746826890882E-21"
+    },
+    "proofPad": "44158940358707181789873075635276724557718455490191678953816505502357/80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "proofPadDecimal": "5.519867544838397723734134454410E-22",
+    "proofWidth": "1.103973508967679544746826890882E-21",
+    "status": "direct_anchor_wrapper_checked_anchor_inequalities_open",
+    "upperStatement": "step22OmegaArchWeight anchor <= omegaAnchorUpper",
+    "wrapper": "primaryFiniteRow0Parent0Split100Sub0OmegaEndpointBounds_of_direct_anchor_generated"
+  },
+  "notProof": true,
+  "recommendation": [
+    "Do not try to prove the current tight derivative endpoint interval with cubic absolute tail.",
+    "Keep the derivative-side wrapper that closes the first endpoint with relaxed derivative interval [0,2].",
+    "Use the v21 direct-anchor wrapper and prove only the two anchor inequalities for step22OmegaArchWeight (1/20).",
+    "Do not route the anchor side back to the old q2/q3 finite-prefix crawl under the current closed-tail receiver.",
+    "Ask Pro/Louise only for the canonical direct-anchor theorem shape: certified special-function constant backend, high-order/asymptotic digamma bridge, or another semantic rewrite.",
+    "Do not widen A radius/CSV/radius-floor/LDL.",
+    "Do not use the plain absolute-tail anchor receiver as the active tight-row target."
+  ],
+  "relaxedDerivativeCandidate": {
+    "allowedAnchorCenterError": "2.287199989833435045049250024048093261896941186250842292793095E-21",
+    "consumedWithCurrentAnchorProof": "8.312397263819157279290096877252160909824991053686543320249760436616125E-22",
+    "derivLower": "1",
+    "derivUpper": "2",
+    "derivativeAbsSlope": "2",
+    "marginWithCurrentAnchorProof": "1.6559602634515193171202403363228771709144420808821879607681189563383875E-21",
+    "meaning": "Derivative endpoints may be widened locally; the containment uses max(abs deriv endpoints) times etaRadius, not derivative interval width.",
+    "passesContainmentWithCurrentAnchorProof": true
+  },
+  "row": {
+    "endpointIntervals": {
+      "omegaAnchorProof": {
+        "lower": {
+          "decimal": "-5.332164676365227629591616356352554217022087394632457926284822676923938394647490561593897312E+0",
+          "rational": "-85314634821843642073465861701640867472353398314119326820557162830783014314359848985502357/16000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "upper": {
+          "decimal": "-5.332164676365227629590512382843586537477340567741576008170879715536683602673645148956338388E+0",
+          "rational": "-426573174109218210367240990627486922998187245419326080653670377242934688213891611916507071/80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "widthDecimal": "1.103973508967679544746826890882E-21"
+      },
+      "omegaDerivative": {
+        "lower": {
+          "decimal": "0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E+90",
+          "rational": "0"
+        },
+        "upper": {
+          "decimal": "2.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E+0",
+          "rational": "2"
+        },
+        "widthDecimal": "2.000000000000000000000000000000E+0"
+      }
+    },
+    "family": "primary_finite",
+    "interval": {
+      "a": "499999999999999999999/10000000000000000000000",
+      "aDecimal": "4.999999999999999999990000000000E-2",
+      "anchor": "1/20",
+      "anchorDecimal": "5.000000000000000000000000000000E-2",
+      "b": "1/20",
+      "bDecimal": "5.000000000000000000000000000000E-2",
+      "etaRadius": "1/10000000000000000000000",
+      "etaRadiusDecimal": "1.000000000000000000000000000000E-22"
+    },
+    "parentChunk": 0,
+    "row": 0,
+    "split": 100,
+    "subchunk": 0
+  },
+  "schema": "q3_psdpd_step33_a_omega_first_row_feasibility_audit.v11",
+  "status": "route_feasibility_audit_not_lean_proof"
+}

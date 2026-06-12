@@ -1,0 +1,124 @@
+{
+  "counts": {
+    "checkedSubchunksBeforeError": 0,
+    "numericErrorSubchunks": 10,
+    "proofSafeClosedFields": 0,
+    "subchunks": 10
+  },
+  "intervalFailures": [],
+  "jetFiniteCoverFailures": [],
+  "meaning": "Diagnostic derivative residual audit failed closed because at least one Arb derivative bound was non-finite or could not be converted to a Decimal.  This is not Lean proof data.",
+  "numericErrors": [
+    {
+      "error": "ValueError",
+      "left": "1.000000000000000000E+1",
+      "message": "non-finite Arb bound lower=NaN upper=NaN",
+      "right": "1.100000000000000000E+1",
+      "subchunk": 0
+    },
+    {
+      "error": "ValueError",
+      "left": "1.100000000000000000E+1",
+      "message": "non-finite Arb bound lower=NaN upper=NaN",
+      "right": "1.200000000000000000E+1",
+      "subchunk": 1
+    },
+    {
+      "error": "ValueError",
+      "left": "1.200000000000000000E+1",
+      "message": "non-finite Arb bound lower=NaN upper=NaN",
+      "right": "1.300000000000000000E+1",
+      "subchunk": 2
+    },
+    {
+      "error": "ValueError",
+      "left": "1.300000000000000000E+1",
+      "message": "non-finite Arb bound lower=NaN upper=NaN",
+      "right": "1.400000000000000000E+1",
+      "subchunk": 3
+    },
+    {
+      "error": "ValueError",
+      "left": "1.400000000000000000E+1",
+      "message": "non-finite Arb bound lower=NaN upper=NaN",
+      "right": "1.500000000000000000E+1",
+      "subchunk": 4
+    },
+    {
+      "error": "ValueError",
+      "left": "1.500000000000000000E+1",
+      "message": "non-finite Arb bound lower=NaN upper=NaN",
+      "right": "1.600000000000000000E+1",
+      "subchunk": 5
+    },
+    {
+      "error": "ValueError",
+      "left": "1.600000000000000000E+1",
+      "message": "non-finite Arb bound lower=NaN upper=NaN",
+      "right": "1.700000000000000000E+1",
+      "subchunk": 6
+    },
+    {
+      "error": "ValueError",
+      "left": "1.700000000000000000E+1",
+      "message": "non-finite Arb bound lower=NaN upper=NaN",
+      "right": "1.800000000000000000E+1",
+      "subchunk": 7
+    },
+    {
+      "error": "ValueError",
+      "left": "1.800000000000000000E+1",
+      "message": "non-finite Arb bound lower=NaN upper=NaN",
+      "right": "1.900000000000000000E+1",
+      "subchunk": 8
+    },
+    {
+      "error": "ValueError",
+      "left": "1.900000000000000000E+1",
+      "message": "non-finite Arb bound lower=NaN upper=NaN",
+      "right": "2.000000000000000000E+1",
+      "subchunk": 9
+    }
+  ],
+  "overlay": "q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_1.json",
+  "parameters": {
+    "arbPrec": 512,
+    "checkSamples": 61,
+    "denominator": 1000000000000000000000000000000,
+    "derivativeSplits": [
+      1,
+      4,
+      16,
+      64
+    ],
+    "ell": "0.30",
+    "sampleGuard": "0.10",
+    "sincTerms": 90,
+    "slopeGuard": "0.10",
+    "source": "raw_step22"
+  },
+  "pilot": {
+    "degree": 16,
+    "family": "primary_finite",
+    "left": "1.000000000000000000E+1",
+    "parentChunk": 1,
+    "right": "2.000000000000000000E+1",
+    "row": 0,
+    "split": 10
+  },
+  "rawPolyFailures": [],
+  "residualAudit": "q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_rational_residual_audit_primary_finite_0_1.json",
+  "routeGuard": [
+    "do not emit Lean from this derivative audit",
+    "non-finite Arb derivative bounds are a diagnostic blocker, not proof data",
+    "rerun with sharper local bounds or adjusted precision/split before direct overlay emission",
+    "proofSafeClosedFields remains zero"
+  ],
+  "sampledFailures": [],
+  "schema": "q3_psdpd_step33_a_refined_subchunk_derivative_bound_audit.v7",
+  "secondDerivativeFailures": [],
+  "sourceWorklist": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_distance_payload_worklist.json",
+  "status": "derivative_audit_numeric_nonfinite_bounds_no_proof",
+  "subchunks": [],
+  "worst": null
+}

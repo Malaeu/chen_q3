@@ -1,0 +1,110 @@
+import Q3.Proofs.PSD_CenteredCoeffPrimeDeltaLiveRationalPayloadImport
+
+set_option linter.mathlibStandardSet false
+set_option maxHeartbeats 0
+
+/-!
+Generated Step33A.1 option-B primaryK11 split-`R` minus-side
+zero-off-declared support facts, index chunk 39: 39..39.
+-/
+
+noncomputable section
+
+open scoped BigOperators
+
+namespace Q3
+namespace PSDpd
+namespace CenteredCoeffPrimeDeltaLiveRationalPayloadImport
+
+open CenteredCoeffPayloadImport
+open CenteredCoeffDictionaryImport
+open CenteredCoeffBaseHboxImport
+open CenteredCoeffAnalyticP0Import
+open CenteredCoeffPrimeEntryHboxImport
+open CenteredCoeffPrimeDeltaLivePayloadImport
+open CenteredCoeffPrimePositivePartTightImport
+open CenteredCoeffEntryHboxImport
+
+
+private theorem primaryK11RationalDeltaLiveRMinus_eq_zero_idx39_of_delta_le_p16
+    {δInt : Int}
+    (hδle : δInt ≤ (16 : Int)) :
+    centeredBSplineR 11
+      ((((δInt : Int) : Real) / 4 -
+          primaryK11PrimeShift activeL3RatWeightIndex39) / primaryK11Ell) = 0 := by
+  exact primaryK11RationalDeltaLiveRMinus_eq_zero_of_upper_le_neg_two
+    δInt activeL3RatWeightIndex39
+    (by
+      have hδreal : ((δInt : Int) : Real) ≤ ((16 : Int) : Real) := by exact_mod_cast hδle
+      have hnum : (((δInt : Int) : Real) / 4 - activeL3RationalPrimeShiftLower activeL3RatWeightIndex39) ≤ (((16 : Int) : Real) / 4 - activeL3RationalPrimeShiftLower activeL3RatWeightIndex39) := by
+        have hdiv : (((δInt : Int) : Real) / 4) ≤ (((16 : Int) : Real) / 4) := by
+          exact div_le_div_of_nonneg_right hδreal (by norm_num)
+        exact sub_le_sub_right hdiv _
+      have hmono : ((((δInt : Int) : Real) / 4 - activeL3RationalPrimeShiftLower activeL3RatWeightIndex39) / primaryK11Ell) ≤ ((((16 : Int) : Real) / 4 - activeL3RationalPrimeShiftLower activeL3RatWeightIndex39) / primaryK11Ell) := by
+        exact div_le_div_of_nonneg_right hnum (le_of_lt primaryK11_hell)
+      have hbound : ((((16 : Int) : Real) / 4 - activeL3RationalPrimeShiftLower activeL3RatWeightIndex39) / primaryK11Ell) ≤ (-2 : Real) := by
+        have hshift : ((92 : Real) / 20) ≤ activeL3RationalPrimeShiftLower activeL3RatWeightIndex39 := by
+          change ((92 : Real) / 20) ≤ (((1 : Nat) : Real) * ((4727387818712340568582131493616021672029330388702993794740348035343573905559050070836190102499872 : Real) / (1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : Real)))
+          norm_num
+        have hell_eq : primaryK11Ell = (3 : Real) / 10 := by
+          norm_num [primaryK11Ell, primaryK11EllRat]
+        rw [hell_eq]
+        have hnum_bound : (((16 : Int) : Real) / 4 - activeL3RationalPrimeShiftLower activeL3RatWeightIndex39) ≤ ((((16 : Int) : Real) / 4) - ((92 : Real) / 20)) := by
+          exact sub_le_sub_left hshift (((16 : Int) : Real) / 4)
+        have hdiv_bound : ((((16 : Int) : Real) / 4 - activeL3RationalPrimeShiftLower activeL3RatWeightIndex39) / ((3 : Real) / 10)) ≤ (((((16 : Int) : Real) / 4) - ((92 : Real) / 20)) / ((3 : Real) / 10)) := by
+          exact div_le_div_of_nonneg_right hnum_bound (by norm_num)
+        exact le_trans hdiv_bound (by norm_num)
+      exact le_trans hmono hbound)
+
+
+private theorem primaryK11RationalDeltaLiveRMinus_eq_zero_idx39_of_p22_le_delta
+    {δInt : Int}
+    (hδge : (22 : Int) ≤ δInt) :
+    centeredBSplineR 11
+      ((((δInt : Int) : Real) / 4 -
+          primaryK11PrimeShift activeL3RatWeightIndex39) / primaryK11Ell) = 0 := by
+  exact primaryK11RationalDeltaLiveRMinus_eq_zero_of_two_le_lower
+    δInt activeL3RatWeightIndex39
+    (by
+      have hδreal : ((22 : Int) : Real) ≤ ((δInt : Int) : Real) := by exact_mod_cast hδge
+      have hnum : (((22 : Int) : Real) / 4 - activeL3RationalPrimeShiftUpper activeL3RatWeightIndex39) ≤ (((δInt : Int) : Real) / 4 - activeL3RationalPrimeShiftUpper activeL3RatWeightIndex39) := by
+        have hdiv : (((22 : Int) : Real) / 4) ≤ (((δInt : Int) : Real) / 4) := by
+          exact div_le_div_of_nonneg_right hδreal (by norm_num)
+        exact sub_le_sub_right hdiv _
+      have hmono : ((((22 : Int) : Real) / 4 - activeL3RationalPrimeShiftUpper activeL3RatWeightIndex39) / primaryK11Ell) ≤ ((((δInt : Int) : Real) / 4 - activeL3RationalPrimeShiftUpper activeL3RatWeightIndex39) / primaryK11Ell) := by
+        exact div_le_div_of_nonneg_right hnum (le_of_lt primaryK11_hell)
+      have hbound : (2 : Real) ≤ ((((22 : Int) : Real) / 4 - activeL3RationalPrimeShiftUpper activeL3RatWeightIndex39) / primaryK11Ell) := by
+        have hshift : activeL3RationalPrimeShiftUpper activeL3RatWeightIndex39 ≤ ((98 : Real) / 20) := by
+          change (((1 : Nat) : Real) * ((4727387818712340568582131493616021672029330388702993794740348035343573905559050070836190102499873 : Real) / (1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : Real))) ≤ ((98 : Real) / 20)
+          norm_num
+        have hell_eq : primaryK11Ell = (3 : Real) / 10 := by
+          norm_num [primaryK11Ell, primaryK11EllRat]
+        rw [hell_eq]
+        have hnum_bound : ((((22 : Int) : Real) / 4) - ((98 : Real) / 20)) ≤ (((22 : Int) : Real) / 4 - activeL3RationalPrimeShiftUpper activeL3RatWeightIndex39) := by
+          exact sub_le_sub_left hshift (((22 : Int) : Real) / 4)
+        have hdiv_bound : (((((22 : Int) : Real) / 4) - ((98 : Real) / 20)) / ((3 : Real) / 10)) ≤ ((((22 : Int) : Real) / 4 - activeL3RationalPrimeShiftUpper activeL3RatWeightIndex39) / ((3 : Real) / 10)) := by
+          exact div_le_div_of_nonneg_right hnum_bound (by norm_num)
+        exact le_trans (by norm_num) hdiv_bound
+      exact le_trans hbound hmono)
+
+theorem primaryK11RationalDeltaLiveRMinusZeroOffDeclared_idx39
+    (δInt : Int)
+    (hδ : (-22 : Int) ≤ δInt ∧ δInt ≤ (22 : Int))
+    (hnot : activeL3RatWeightIndex39.1 ∉ primaryK11RationalDeltaLiveRMinusDeclaredNonzeroShiftSetByDelta δInt) :
+    centeredBSplineR 11
+      ((((δInt : Int) : Real) / 4 -
+          primaryK11PrimeShift activeL3RatWeightIndex39) / primaryK11Ell) = 0 := by
+  by_cases hleft : δInt ≤ (16 : Int)
+  · exact primaryK11RationalDeltaLiveRMinus_eq_zero_idx39_of_delta_le_p16 hleft
+  by_cases hright : (22 : Int) ≤ δInt
+  · exact primaryK11RationalDeltaLiveRMinus_eq_zero_idx39_of_p22_le_delta hright
+  exfalso
+  have hlow : (-22 : Int) ≤ δInt := hδ.1
+  have hhigh : δInt ≤ (22 : Int) := hδ.2
+  have hleftGap : (17 : Int) ≤ δInt := by omega
+  have hrightGap : δInt ≤ (21 : Int) := by omega
+  interval_cases δInt <;> exact hnot (by native_decide)
+
+end CenteredCoeffPrimeDeltaLiveRationalPayloadImport
+end PSDpd
+end Q3

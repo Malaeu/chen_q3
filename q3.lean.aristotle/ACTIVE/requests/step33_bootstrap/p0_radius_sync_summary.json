@@ -1,0 +1,62 @@
+{
+  "blocks": [
+    {
+      "block": "primary_step21",
+      "changed_rows": 185,
+      "enlarged_rows": 185,
+      "max_new_radius": "1.434631046272731335E-16",
+      "max_old_radius": "1.434631046272731335E-16",
+      "max_source_radius": "1.124631046241685607E-16",
+      "p0_rows": 529,
+      "preserved_old_rows": 344,
+      "source_csv": "/tmp/q3_p0_step21_rad_k11_check.csv",
+      "target_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step21_radii_k11.csv",
+      "target_sha256_after": "53415c45916644b2e00e0628c4bb33b68b93f452db39b04be83c166ba791d0aa",
+      "target_sha256_before": "74d382fc68cdafd9bd7195c71201d78a9df87089b1d70f237d767abc4645cf03"
+    },
+    {
+      "block": "primary_step22",
+      "changed_rows": 185,
+      "enlarged_rows": 185,
+      "max_new_radius": "1.434631046272731335E-16",
+      "max_old_radius": "1.434631046272731335E-16",
+      "max_source_radius": "1.124631046241685607E-16",
+      "p0_rows": 529,
+      "preserved_old_rows": 344,
+      "source_csv": "/tmp/q3_p0_step21_rad_k11_check.csv",
+      "target_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
+      "target_sha256_after": "15a1a7b988c52b46dcfa728922ad70ca9a7fb5cb497d7b90fbbb9a4d737198fe",
+      "target_sha256_before": "1abcea4734501e53b0fb313f994be1b02d2ed9214b605445e8b8dca983ede331"
+    },
+    {
+      "block": "control_step21",
+      "changed_rows": 70,
+      "enlarged_rows": 70,
+      "max_new_radius": "2.147169281325951796E-16",
+      "max_old_radius": "2.059275393876606503E-16",
+      "max_source_radius": "2.147169281325951796E-16",
+      "p0_rows": 529,
+      "preserved_old_rows": 459,
+      "source_csv": "/tmp/q3_p0_step21_rad_k9_check.csv",
+      "target_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step21_radii_k9.csv",
+      "target_sha256_after": "9cf64d65e7e293906b975e02c51d8685a2c206f9c8fd029ce210c26380e349ca",
+      "target_sha256_before": "f19d8991c8cb92628c616c8f7c6c1f8ac38cfabdcaaa793222cdd0dd8b2bb9ac"
+    },
+    {
+      "block": "control_step22",
+      "changed_rows": 70,
+      "enlarged_rows": 70,
+      "max_new_radius": "2.147169281325951796E-16",
+      "max_old_radius": "2.059275393876606503E-16",
+      "max_source_radius": "2.147169281325951796E-16",
+      "p0_rows": 529,
+      "preserved_old_rows": 459,
+      "source_csv": "/tmp/q3_p0_step21_rad_k9_check.csv",
+      "target_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
+      "target_sha256_after": "4f94d7a8508d081223961bd1f0c2a210f2624aedbbaeddd62b8d517aaeb10f37",
+      "target_sha256_before": "6b3d86ba20be14c721895ae8977fa6f97e4d089d08da7efd891b305572dfe794"
+    }
+  ],
+  "meaning": "Only matrix=P0 radius rows were synchronized with the current Arb P0 replay using max(old, replay).",
+  "schema": "q3_psdpd_step33_sync_p0_radii_v1"
+}

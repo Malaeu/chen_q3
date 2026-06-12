@@ -1,0 +1,113 @@
+{
+  "families": [
+    {
+      "family": "primary_finite",
+      "rows": [
+        {
+          "available_target_refresh_slack": "1.326048519512948610E-18",
+          "chunk_sum_lower": "-3.535346901998863369E-1",
+          "chunk_sum_upper": "-3.535346901998863369E-1",
+          "chunk_sum_width": "2.180542020775343327E-36",
+          "chunks": [
+            {
+              "index": 0,
+              "left": "0.000000000000000000E+0",
+              "lower": "-3.535346901998863369E-1",
+              "right": "1.000000000000000000E+1",
+              "upper": "-3.535346901998863369E-1",
+              "width": "2.180542020775343327E-36"
+            }
+          ],
+          "distance": "0.00",
+          "distance_index": 0,
+          "excess": "4.768991355638082834E-1",
+          "family_id": "primary_finite",
+          "fits_after_local_target_refresh": false,
+          "fits_target": false,
+          "full_chunk_row": false,
+          "lower_excess": "4.768991355638082834E-1",
+          "needed_target_refresh_slack": "4.768991355638082838E-1",
+          "slack_after_suggested_refresh": null,
+          "suggested_target_lower": "-3.535346901998863373E-1",
+          "suggested_target_upper": "1.233644453639219559E-1",
+          "target_interval_sign": "positive",
+          "target_lower": "1.233644453639219465E-1",
+          "target_refresh_guard": "3.535346901998863369E-19",
+          "target_upper": "1.233644453639219559E-1",
+          "upper_excess": "0.000000000000000000E+0"
+        }
+      ]
+    }
+  ],
+  "family_summaries": [
+    {
+      "id": "primary_finite",
+      "rows_checked": 1,
+      "rows_failed": 1,
+      "rows_slack_absorbable": 0,
+      "worst_excess": "4.768991355638082834E-1"
+    }
+  ],
+  "meaning": "Diagnostic exact-integrand acb/Arb chunk interval probe for the Step33 Arch-side A finite/tail worklist. This does not mutate ARadius, CSV files, or global payload radii, and is not a Lean proof artifact.",
+  "parameters": {
+    "abs_tol": "1e-40",
+    "arb_prec": 128,
+    "chunk_indices": "0",
+    "deg_limit": 64,
+    "depth_limit": 20,
+    "ell": "0.30",
+    "eval_limit": 100000,
+    "families": "primary_finite",
+    "indices": "0",
+    "omega_factor": "10",
+    "radius_floor": "1e-30",
+    "rel_tol": "1e-40",
+    "sinc_terms": 90,
+    "source": "raw_step22"
+  },
+  "schema": "q3_psdpd_step33_a_chunk_integral_probe.v1",
+  "source_worklist": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_distance_payload_worklist.json",
+  "totals": {
+    "families_checked": 1,
+    "full_chunk_rows": false,
+    "rows_checked": 1,
+    "rows_failed": 1,
+    "rows_slack_absorbable": 0,
+    "worst_excess": "4.768991355638082834E-1"
+  },
+  "worst_failures": [
+    {
+      "available_target_refresh_slack": "1.326048519512948610E-18",
+      "chunk_sum_lower": "-3.535346901998863369E-1",
+      "chunk_sum_upper": "-3.535346901998863369E-1",
+      "chunk_sum_width": "2.180542020775343327E-36",
+      "chunks": [
+        {
+          "index": 0,
+          "left": "0.000000000000000000E+0",
+          "lower": "-3.535346901998863369E-1",
+          "right": "1.000000000000000000E+1",
+          "upper": "-3.535346901998863369E-1",
+          "width": "2.180542020775343327E-36"
+        }
+      ],
+      "distance": "0.00",
+      "distance_index": 0,
+      "excess": "4.768991355638082834E-1",
+      "family_id": "primary_finite",
+      "fits_after_local_target_refresh": false,
+      "fits_target": false,
+      "full_chunk_row": false,
+      "lower_excess": "4.768991355638082834E-1",
+      "needed_target_refresh_slack": "4.768991355638082838E-1",
+      "slack_after_suggested_refresh": null,
+      "suggested_target_lower": "-3.535346901998863373E-1",
+      "suggested_target_upper": "1.233644453639219559E-1",
+      "target_interval_sign": "positive",
+      "target_lower": "1.233644453639219465E-1",
+      "target_refresh_guard": "3.535346901998863369E-19",
+      "target_upper": "1.233644453639219559E-1",
+      "upper_excess": "0.000000000000000000E+0"
+    }
+  ]
+}

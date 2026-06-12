@@ -1,0 +1,235 @@
+{
+  "activeProofDataSchema": "q3_psdpd_step33_a_refined_subchunk_proof_data.v17",
+  "activeSeedFields": [
+    "coeff",
+    "remainder"
+  ],
+  "candidateParents": [
+    {
+      "activeValueFieldsSeeded": 200,
+      "candidateSubchunks": 100,
+      "eligibleForSeedAudit": true,
+      "extraCandidateFieldsRecorded": 700,
+      "family": "primary_finite",
+      "missingActiveSeedFields": [],
+      "parentChunk": 0,
+      "parentSlackFitsCurrentBounds": false,
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30.json",
+      "remainderRefresh": null,
+      "residualAuditPassed": true,
+      "row": 0,
+      "seededEntriesPreview": [
+        {
+          "activeSeedFields": [
+            "coeff",
+            "remainder"
+          ],
+          "extraCandidateFields": [
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound",
+            "integralLower",
+            "integralUpper",
+            "remainderNonneg"
+          ],
+          "remainder": "1/1000000000000000000",
+          "remainderRefreshReason": null,
+          "subchunk": 0
+        },
+        {
+          "activeSeedFields": [
+            "coeff",
+            "remainder"
+          ],
+          "extraCandidateFields": [
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound",
+            "integralLower",
+            "integralUpper",
+            "remainderNonneg"
+          ],
+          "remainder": "1/1000000000000000000",
+          "remainderRefreshReason": null,
+          "subchunk": 1
+        },
+        {
+          "activeSeedFields": [
+            "coeff",
+            "remainder"
+          ],
+          "extraCandidateFields": [
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound",
+            "integralLower",
+            "integralUpper",
+            "remainderNonneg"
+          ],
+          "remainder": "1/1000000000000000000",
+          "remainderRefreshReason": null,
+          "subchunk": 2
+        }
+      ]
+    },
+    {
+      "activeValueFieldsSeeded": 20,
+      "candidateSubchunks": 10,
+      "eligibleForSeedAudit": true,
+      "extraCandidateFieldsRecorded": 70,
+      "family": "primary_finite",
+      "missingActiveSeedFields": [],
+      "parentChunk": 1,
+      "parentSlackFitsCurrentBounds": false,
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_1_denom1e30_derivfit.json",
+      "remainderRefresh": {
+        "adjusted": [
+          {
+            "currentRemainder": "69/500000000000000000000000000000",
+            "extraRemainder": "1/200000000000000000000000000000",
+            "extraRemainderDecimal": "5.000000000000000000E-30",
+            "newRemainder": "143/1000000000000000000000000000000",
+            "requiredRemainder": "143/1000000000000000000000000000000",
+            "subchunk": 0
+          },
+          {
+            "currentRemainder": "7/250000000000000000000000000000",
+            "extraRemainder": "1/1000000000000000000000000000000",
+            "extraRemainderDecimal": "1.000000000000000000E-30",
+            "newRemainder": "29/1000000000000000000000000000000",
+            "requiredRemainder": "29/1000000000000000000000000000000",
+            "subchunk": 1
+          },
+          {
+            "currentRemainder": "7/1000000000000000000000000000000",
+            "extraRemainder": "1/1000000000000000000000000000000",
+            "extraRemainderDecimal": "1.000000000000000000E-30",
+            "newRemainder": "1/125000000000000000000000000000",
+            "requiredRemainder": "1/125000000000000000000000000000",
+            "subchunk": 2
+          }
+        ],
+        "adjustedSubchunks": 3,
+        "maxExtraRemainder": "1/200000000000000000000000000000",
+        "maxExtraRemainderDecimal": "5.000000000000000000E-30",
+        "totalExtraRemainder": "7/1000000000000000000000000000000",
+        "totalExtraRemainderDecimal": "7.000000000000000000E-30"
+      },
+      "residualAuditPassed": true,
+      "row": 0,
+      "seededEntriesPreview": [
+        {
+          "activeSeedFields": [
+            "coeff",
+            "remainder"
+          ],
+          "extraCandidateFields": [
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound",
+            "integralLower",
+            "integralUpper",
+            "remainderNonneg"
+          ],
+          "remainder": "1423/125000000000000000000000000000",
+          "remainderRefreshReason": "sampled_derivative_envelope_lhs",
+          "subchunk": 0
+        },
+        {
+          "activeSeedFields": [
+            "coeff",
+            "remainder"
+          ],
+          "extraCandidateFields": [
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound",
+            "integralLower",
+            "integralUpper",
+            "remainderNonneg"
+          ],
+          "remainder": "143/62500000000000000000000000000",
+          "remainderRefreshReason": "sampled_derivative_envelope_lhs",
+          "subchunk": 1
+        },
+        {
+          "activeSeedFields": [
+            "coeff",
+            "remainder"
+          ],
+          "extraCandidateFields": [
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound",
+            "integralLower",
+            "integralUpper",
+            "remainderNonneg"
+          ],
+          "remainder": "541/1000000000000000000000000000000",
+          "remainderRefreshReason": "sampled_derivative_envelope_lhs",
+          "subchunk": 2
+        }
+      ]
+    }
+  ],
+  "coverage": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_coverage.json",
+  "extraCandidateFieldsRecorded": [
+    "polyLower",
+    "polyUpper",
+    "polynomialLowerBound",
+    "polynomialUpperBound",
+    "integralLower",
+    "integralUpper",
+    "remainderNonneg"
+  ],
+  "leanLandingSurface": "RawOmegaAChunkTaylorPayload.RefinedPayloadFin",
+  "meaning": "Fail-closed audit of selected tightened candidate overlays.  The active RefinedPayloadFin value fields `coeff` and `remainder` can be seeded for residual-passing selected parents, but this still closes zero proof-safe fields until analytic residual envelope and derivative cell bounds are generated and Lean-checked.",
+  "missingGroupsAfterCandidateSeeds": {
+    "residual_anchor_envelope": 40020,
+    "residual_derivative_cell_norm_proofs": 40020,
+    "residual_derivative_cell_slope_data": 40020,
+    "row_sum_comparisons": 184,
+    "taylor_model_data": 79820
+  },
+  "missingGroupsBefore": {
+    "residual_anchor_envelope": 40020,
+    "residual_derivative_cell_norm_proofs": 40020,
+    "residual_derivative_cell_slope_data": 40020,
+    "row_sum_comparisons": 184,
+    "taylor_model_data": 80040
+  },
+  "nextProofProducingTarget": [
+    "hEnvelope for the eligible covered candidate subchunks",
+    "hResidualDerivBoundOnCell for the eligible covered candidate subchunks",
+    "row hLowerSum/hUpperSum comparisons after proof-safe subchunk fields exist"
+  ],
+  "proofSafeClosedFields": 0,
+  "routeGuard": [
+    "candidate seed audit only",
+    "not Lean proof data",
+    "proofSafeClosedFields remains zero",
+    "parent point-bound slack is not required for seeding coeff/remainder values",
+    "do not emit RefinedPayloadFin while hEnvelope or hResidualDerivBoundOnCell is missing",
+    "do not count sampled residual audits as universal analytic proofs",
+    "do not mutate CSV, ARadius, radius-floor, LDL, Q3.Main, H1, or PO3"
+  ],
+  "schema": "q3_psdpd_step33_a_refined_subchunk_candidate_seed_audit.v1",
+  "status": "candidate_value_fields_seeded_no_lean_emitted",
+  "totals": {
+    "activeValueFieldsSeeded": 220,
+    "candidateParents": 2,
+    "eligibleCandidateParents": 2,
+    "extraCandidateFieldsRecorded": 770,
+    "missingRowAnalyticFields": 184,
+    "missingSubchunkAnalyticFieldsAfterCandidateSeeds": 199880,
+    "missingSubchunkAnalyticFieldsBefore": 200100,
+    "missingTotalAfterCandidateSeeds": 200064,
+    "seededSubchunks": 110
+  }
+}

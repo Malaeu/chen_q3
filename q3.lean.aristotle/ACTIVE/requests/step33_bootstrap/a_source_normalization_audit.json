@@ -1,0 +1,332 @@
+{
+  "families": [
+    {
+      "best_exact_formula": {
+        "formula": "step22_positive",
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0
+      },
+      "best_q3_scalar_fit": {
+        "formula": "lambda * q3_astar_positive",
+        "lambda": -0.006344534816044938,
+        "max_abs_error": 0.38759651649191423,
+        "mean_abs_error": 0.07085798599285947
+      },
+      "block_id": "psdpd_L3_k11_ell030_delta025_theta1e4",
+      "exact_hypotheses": [
+        {
+          "formula": "step22_positive",
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0
+        },
+        {
+          "formula": "step22_full_even",
+          "max_abs_error": 0.43748178349373795,
+          "mean_abs_error": 0.07888360388702598
+        },
+        {
+          "formula": "q3_astar_positive",
+          "max_abs_error": 39.57223516047978,
+          "mean_abs_error": 3.0833851566704817
+        },
+        {
+          "formula": "q3_astar_full_even",
+          "max_abs_error": 79.02110587559564,
+          "mean_abs_error": 6.0878867094539375
+        },
+        {
+          "formula": "neg_q3_astar_positive",
+          "max_abs_error": 39.32550626975194,
+          "mean_abs_error": 2.9256179488964302
+        },
+        {
+          "formula": "neg_q3_astar_full_even",
+          "max_abs_error": 78.7743769848678,
+          "mean_abs_error": 5.9301195016798856
+        }
+      ],
+      "family": "primary",
+      "fitted_hypotheses": [
+        {
+          "formula": "lambda * q3_astar_positive",
+          "lambda": -0.006344534816044938,
+          "max_abs_error": 0.38759651649191423,
+          "mean_abs_error": 0.07085798599285947
+        },
+        {
+          "formula": "lambda * q3_astar_full_even",
+          "lambda": -0.003172267408022469,
+          "max_abs_error": 0.38759651649191423,
+          "mean_abs_error": 0.07085798599285947
+        },
+        {
+          "formula": "lambda * neg_q3_astar_positive",
+          "lambda": 0.006344534816044938,
+          "max_abs_error": 0.38759651649191423,
+          "mean_abs_error": 0.07085798599285947
+        },
+        {
+          "formula": "lambda * neg_q3_astar_full_even",
+          "lambda": 0.003172267408022469,
+          "max_abs_error": 0.38759651649191423,
+          "mean_abs_error": 0.07085798599285947
+        }
+      ],
+      "imported_table_source": "Step22 Omega positive-axis payload",
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+      "psd_cert_source": "current imported A payload with derived C/R/D and finite penalty floors",
+      "psd_sanity_for_lambda_neg_q3_astar_full_even": {
+        "A_diag": 0.25028473370570814,
+        "A_max_entry": 0.25028473370570814,
+        "A_min_entry": -0.049885267001823705,
+        "D_penalty_floor": 0.0001222859478322234,
+        "D_penalty_min_eigenvalue": -0.3872278152331992,
+        "D_penalty_passes_floor": false,
+        "R_penalty_floor": 0.13569220778186006,
+        "R_penalty_min_eigenvalue": 0.33644908902995263,
+        "R_penalty_passes_floor": true
+      },
+      "receiver_source": "centeredBSplineArchKernelProfile / Q3.a_star",
+      "sampled_signed_deltas": [
+        {
+          "abs_distance_index": 2,
+          "imported_A": "-2.235303949220050490000000000000e-1",
+          "imported_over_neg_q3_astar_full_even": "2.992504627980621594940882728000e-2",
+          "imported_over_q3_astar_full_even": "-2.992504627980621594940882728000e-2",
+          "lambda_neg_q3_astar_full_even_abs_error": "1.998345857365076191432717473000e-1",
+          "lambda_neg_q3_astar_full_even_fit_value": "-2.369580918549742985672825274000e-2",
+          "neg_q3_astar_full_even": "-7.469675830471349000000000000000e+0",
+          "q3_astar_full_even": "7.469675830471349000000000000000e+0",
+          "signed_delta_index": -2,
+          "step22_full_even": "-4.470607898440101000000000000000e-1",
+          "step22_positive": "-2.235303949220050500000000000000e-1"
+        },
+        {
+          "abs_distance_index": 1,
+          "imported_A": "-4.374817834937379524000000000000e-1",
+          "imported_over_neg_q3_astar_full_even": "2.782002155726642754400100368000e-2",
+          "imported_over_q3_astar_full_even": "-2.782002155726642754400100368000e-2",
+          "lambda_neg_q3_astar_full_even_abs_error": "3.875965164919142468212169370000e-1",
+          "lambda_neg_q3_astar_full_even_fit_value": "-4.988526700182370557878306302000e-2",
+          "neg_q3_astar_full_even": "-1.572542934926196200000000000000e+1",
+          "q3_astar_full_even": "1.572542934926196200000000000000e+1",
+          "signed_delta_index": -1,
+          "step22_full_even": "-8.749635669874759000000000000000e-1",
+          "step22_positive": "-4.374817834937379500000000000000e-1"
+        },
+        {
+          "abs_distance_index": 0,
+          "imported_A": "1.233644453639219513000000000000e-1",
+          "imported_over_neg_q3_astar_full_even": "1.563599199769382220874930802000e-3",
+          "imported_over_q3_astar_full_even": "-1.563599199769382220874930802000e-3",
+          "lambda_neg_q3_astar_full_even_abs_error": "1.269202883417861932959776365000e-1",
+          "lambda_neg_q3_astar_full_even_fit_value": "2.502847337057081445959776365000e-1",
+          "neg_q3_astar_full_even": "7.889774143023172000000000000000e+1",
+          "q3_astar_full_even": "-7.889774143023172000000000000000e+1",
+          "signed_delta_index": 0,
+          "step22_full_even": "2.467288907278439000000000000000e-1",
+          "step22_positive": "1.233644453639219500000000000000e-1"
+        },
+        {
+          "abs_distance_index": 1,
+          "imported_A": "-4.374817834937379524000000000000e-1",
+          "imported_over_neg_q3_astar_full_even": "2.782002155726642754400100368000e-2",
+          "imported_over_q3_astar_full_even": "-2.782002155726642754400100368000e-2",
+          "lambda_neg_q3_astar_full_even_abs_error": "3.875965164919142468212169370000e-1",
+          "lambda_neg_q3_astar_full_even_fit_value": "-4.988526700182370557878306302000e-2",
+          "neg_q3_astar_full_even": "-1.572542934926196200000000000000e+1",
+          "q3_astar_full_even": "1.572542934926196200000000000000e+1",
+          "signed_delta_index": 1,
+          "step22_full_even": "-8.749635669874759000000000000000e-1",
+          "step22_positive": "-4.374817834937379500000000000000e-1"
+        },
+        {
+          "abs_distance_index": 2,
+          "imported_A": "-2.235303949220050490000000000000e-1",
+          "imported_over_neg_q3_astar_full_even": "2.992504627980621594940882728000e-2",
+          "imported_over_q3_astar_full_even": "-2.992504627980621594940882728000e-2",
+          "lambda_neg_q3_astar_full_even_abs_error": "1.998345857365076191432717473000e-1",
+          "lambda_neg_q3_astar_full_even_fit_value": "-2.369580918549742985672825274000e-2",
+          "neg_q3_astar_full_even": "-7.469675830471349000000000000000e+0",
+          "q3_astar_full_even": "7.469675830471349000000000000000e+0",
+          "signed_delta_index": 2,
+          "step22_full_even": "-4.470607898440101000000000000000e-1",
+          "step22_positive": "-2.235303949220050500000000000000e-1"
+        }
+      ],
+      "symbolic_relation": {
+        "eta_transform_effect": "eta=2*pi*xi changes sign, Jacobian, Omega argument, E argument, cosine argument, and finite-window cutoff variable",
+        "q3_a_star": "Q3.a_star(xi) = -2*pi*Omega(2*pi*xi)",
+        "q3_receiver_integrand": "Q3.a_star(t) * ell * E(t)^2 * cos(t*d)",
+        "step22_integrand": "(ell/pi) * Omega(t) * E(t)^2 * cos(t*d)"
+      }
+    },
+    {
+      "best_exact_formula": {
+        "formula": "step22_positive",
+        "max_abs_error": 0.0,
+        "mean_abs_error": 0.0
+      },
+      "best_q3_scalar_fit": {
+        "formula": "lambda * q3_astar_positive",
+        "lambda": -0.005122351329532035,
+        "max_abs_error": 0.4429461316312861,
+        "mean_abs_error": 0.0810000001935298
+      },
+      "block_id": "psdpd_L3_k9_ell030_delta025_theta1e5",
+      "exact_hypotheses": [
+        {
+          "formula": "step22_positive",
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0
+        },
+        {
+          "formula": "step22_full_even",
+          "max_abs_error": 0.4873092439847854,
+          "mean_abs_error": 0.08216625941678084
+        },
+        {
+          "formula": "q3_astar_positive",
+          "max_abs_error": 37.62881398915469,
+          "mean_abs_error": 3.1340362190046194
+        },
+        {
+          "formula": "q3_astar_full_even",
+          "max_abs_error": 75.2313790746506,
+          "mean_abs_error": 6.185906178592456
+        },
+        {
+          "formula": "neg_q3_astar_positive",
+          "max_abs_error": 37.57631618183714,
+          "mean_abs_error": 2.9697037001710576
+        },
+        {
+          "formula": "neg_q3_astar_full_even",
+          "max_abs_error": 75.17888126733307,
+          "mean_abs_error": 6.0215736597588965
+        }
+      ],
+      "family": "control",
+      "fitted_hypotheses": [
+        {
+          "formula": "lambda * q3_astar_positive",
+          "lambda": -0.005122351329532035,
+          "max_abs_error": 0.4429461316312861,
+          "mean_abs_error": 0.0810000001935298
+        },
+        {
+          "formula": "lambda * q3_astar_full_even",
+          "lambda": -0.0025611756647660176,
+          "max_abs_error": 0.4429461316312861,
+          "mean_abs_error": 0.0810000001935298
+        },
+        {
+          "formula": "lambda * neg_q3_astar_positive",
+          "lambda": 0.005122351329532035,
+          "max_abs_error": 0.4429461316312861,
+          "mean_abs_error": 0.0810000001935298
+        },
+        {
+          "formula": "lambda * neg_q3_astar_full_even",
+          "lambda": 0.0025611756647660176,
+          "max_abs_error": 0.4429461316312861,
+          "mean_abs_error": 0.0810000001935298
+        }
+      ],
+      "imported_table_source": "Step22 Omega positive-axis payload",
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+      "psd_cert_source": "current imported A payload with derived C/R/D and finite penalty floors",
+      "psd_sanity_for_lambda_neg_q3_astar_full_even": {
+        "A_diag": 0.1926135492595049,
+        "A_max_entry": 0.1926135492595049,
+        "A_min_entry": -0.04436311235349933,
+        "D_penalty_floor": 1.263692282186616e-05,
+        "D_penalty_min_eigenvalue": -0.4282029443104879,
+        "D_penalty_passes_floor": false,
+        "R_penalty_floor": 0.0019590640625249765,
+        "R_penalty_min_eigenvalue": 0.2726919887980242,
+        "R_penalty_passes_floor": true
+      },
+      "receiver_source": "centeredBSplineArchKernelProfile / Q3.a_star",
+      "sampled_signed_deltas": [
+        {
+          "abs_distance_index": 2,
+          "imported_A": "-2.460736057093875218000000000000e-1",
+          "imported_over_neg_q3_astar_full_even": "2.990453532942506866082949160000e-2",
+          "imported_over_q3_astar_full_even": "-2.990453532942506866082949160000e-2",
+          "lambda_neg_q3_astar_full_even_abs_error": "2.249986174595624688833273954000e-1",
+          "lambda_neg_q3_astar_full_even_fit_value": "-2.107498824982505291667260455000e-2",
+          "neg_q3_astar_full_even": "-8.228638331900756000000000000000e+0",
+          "q3_astar_full_even": "8.228638331900756000000000000000e+0",
+          "signed_delta_index": -2,
+          "step22_full_even": "-4.921472114187750400000000000000e-1",
+          "step22_positive": "-2.460736057093875200000000000000e-1"
+        },
+        {
+          "abs_distance_index": 1,
+          "imported_A": "-4.873092439847854229000000000000e-1",
+          "imported_over_neg_q3_astar_full_even": "2.813338629093975777953352257000e-2",
+          "imported_over_q3_astar_full_even": "-2.813338629093975777953352257000e-2",
+          "lambda_neg_q3_astar_full_even_abs_error": "4.429461316312860927285396004000e-1",
+          "lambda_neg_q3_astar_full_even_fit_value": "-4.436311235349933017146039964000e-2",
+          "neg_q3_astar_full_even": "-1.732138601963182000000000000000e+1",
+          "q3_astar_full_even": "1.732138601963182000000000000000e+1",
+          "signed_delta_index": -1,
+          "step22_full_even": "-9.746184879695708000000000000000e-1",
+          "step22_positive": "-4.873092439847854000000000000000e-1"
+        },
+        {
+          "abs_distance_index": 0,
+          "imported_A": "2.624890365877484422000000000000e-2",
+          "imported_over_neg_q3_astar_full_even": "3.490307589268635335714356051000e-4",
+          "imported_over_q3_astar_full_even": "-3.490307589268635335714356051000e-4",
+          "lambda_neg_q3_astar_full_even_abs_error": "1.663646456007300684518525189000e-1",
+          "lambda_neg_q3_astar_full_even_fit_value": "1.926135492595049126718525189000e-1",
+          "neg_q3_astar_full_even": "7.520513017099184000000000000000e+1",
+          "q3_astar_full_even": "-7.520513017099184000000000000000e+1",
+          "signed_delta_index": 0,
+          "step22_full_even": "5.249780731754968800000000000000e-2",
+          "step22_positive": "2.624890365877484400000000000000e-2"
+        },
+        {
+          "abs_distance_index": 1,
+          "imported_A": "-4.873092439847854229000000000000e-1",
+          "imported_over_neg_q3_astar_full_even": "2.813338629093975777953352257000e-2",
+          "imported_over_q3_astar_full_even": "-2.813338629093975777953352257000e-2",
+          "lambda_neg_q3_astar_full_even_abs_error": "4.429461316312860927285396004000e-1",
+          "lambda_neg_q3_astar_full_even_fit_value": "-4.436311235349933017146039964000e-2",
+          "neg_q3_astar_full_even": "-1.732138601963182000000000000000e+1",
+          "q3_astar_full_even": "1.732138601963182000000000000000e+1",
+          "signed_delta_index": 1,
+          "step22_full_even": "-9.746184879695708000000000000000e-1",
+          "step22_positive": "-4.873092439847854000000000000000e-1"
+        },
+        {
+          "abs_distance_index": 2,
+          "imported_A": "-2.460736057093875218000000000000e-1",
+          "imported_over_neg_q3_astar_full_even": "2.990453532942506866082949160000e-2",
+          "imported_over_q3_astar_full_even": "-2.990453532942506866082949160000e-2",
+          "lambda_neg_q3_astar_full_even_abs_error": "2.249986174595624688833273954000e-1",
+          "lambda_neg_q3_astar_full_even_fit_value": "-2.107498824982505291667260455000e-2",
+          "neg_q3_astar_full_even": "-8.228638331900756000000000000000e+0",
+          "q3_astar_full_even": "8.228638331900756000000000000000e+0",
+          "signed_delta_index": 2,
+          "step22_full_even": "-4.921472114187750400000000000000e-1",
+          "step22_positive": "-2.460736057093875200000000000000e-1"
+        }
+      ],
+      "symbolic_relation": {
+        "eta_transform_effect": "eta=2*pi*xi changes sign, Jacobian, Omega argument, E argument, cosine argument, and finite-window cutoff variable",
+        "q3_a_star": "Q3.a_star(xi) = -2*pi*Omega(2*pi*xi)",
+        "q3_receiver_integrand": "Q3.a_star(t) * ell * E(t)^2 * cos(t*d)",
+        "step22_integrand": "(ell/pi) * Omega(t) * E(t)^2 * cos(t*d)"
+      }
+    }
+  ],
+  "inputs": {
+    "penalty_import": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffPenaltyImport.lean",
+    "plan": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step32f_coeff_payload_import_plan.json",
+    "source_audit_json": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_source_convention_audit.json"
+  },
+  "schema": "q3_psdpd_step33_a_source_normalization_audit.v1"
+}

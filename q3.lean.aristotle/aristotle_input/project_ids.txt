@@ -72,3 +72,7 @@ rho_oneK_tcritical_le_cstar_quarter.md: b644c90d-9934-4c95-a857-221e38620134  20
 2026-04-11 d2g25_fejer_shrinking_target_2026_04_11.md: 37ae106c-0f73-4bbc-a6ed-f021a9513200
 2026-04-13 po3a_4_outer_invariance_minimal_2026_04_13.md: 3adae61c-af4a-42ed-8766-3461ae802d2d
 2026-04-19 po3a_a0_double_telescoping_2026_04_19.md: 1924e0b3-1fbe-4406-b9c2-53750d26e852
+2026-06-06 step33_endpoint_v18_first_row_context_bundle: 0c792ee5-45ce-49bc-8f27-2ba6435a2639
+2026-06-07 step33a_omega_direct_anchor_v21_first_row.md: 3cd86d8e-6e0b-4a7f-a027-adecacb71b6f
+2026-06-08 step33_shift16_digamma_m6_ball_request.md: 5b903a21-fba1-4f42-949f-470b62c020b1
+2026-06-08 step33_shift16_digamma_m6_ball_request.md status: 5b903a21-fba1-4f42-949f-470b62c020b1 COMPLETE_WITH_ERRORS output downloaded

@@ -1,0 +1,359 @@
+{
+  "detailHint": "Run this script with --include-detail to emit the full family/row/parent/subchunk tree.  The default output is compact to keep git artifacts reviewable.",
+  "detailMode": "compact",
+  "examples": [
+    {
+      "distance": "0.00",
+      "family": "primary_finite",
+      "firstSubchunk": {
+        "anchor": "5.000000000000000000E-2",
+        "center": "5.000000000000000000E-2",
+        "degree": 16,
+        "derivCellCount": 1,
+        "derivCellLeft": [
+          "0.000000000000000000E+0"
+        ],
+        "derivCellRight": [
+          "1.000000000000000000E-1"
+        ],
+        "hAnchorIn": "by norm_num [Set.mem_Ioc]",
+        "hDerivCoverCells": "by intro eta heta; exact <| Exists.intro 0 (by simpa using heta)",
+        "hLU": "by norm_num",
+        "hLeftMesh": "by norm_num",
+        "hProfileInt": "by exact RawOmegaAChunkIntegral.primaryK11RawOmegaAIntegrand_integrableOn_Ioc_of_nonneg_left n _ _ (by norm_num)",
+        "hResidualDifferentiable": "by intro eta _heta; exact RawOmegaATaylorModelCertificate.residual_differentiableAt _ eta",
+        "hRightMesh": "by norm_num",
+        "left": "0.000000000000000000E+0",
+        "mesh": "5.000000000000000000E-2",
+        "missing": [
+          "coeff",
+          "remainder",
+          "derivSlope",
+          "hResidualDerivBoundOnCell",
+          "hEnvelope"
+        ],
+        "radius": "5.000000000000000000E-2",
+        "radiusLeft": "by norm_num",
+        "radiusNonneg": "by norm_num",
+        "radiusRight": "by norm_num",
+        "right": "1.000000000000000000E-1",
+        "subchunk": 0,
+        "subchunkProofShape": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+        "subchunkWindowReceiver": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.windowPartBoundsCert"
+      },
+      "parentChunk": 0,
+      "parentLeft": "0.000000000000000000E+0",
+      "parentRight": "1.000000000000000000E+1",
+      "row": 0,
+      "subchunkCount": 100
+    },
+    {
+      "distance": "0.00",
+      "family": "primary_tail",
+      "firstSubchunk": {
+        "anchor": "2.602500000000000000E+2",
+        "center": "2.602500000000000000E+2",
+        "degree": 16,
+        "derivCellCount": 1,
+        "derivCellLeft": [
+          "2.600000000000000000E+2"
+        ],
+        "derivCellRight": [
+          "2.605000000000000000E+2"
+        ],
+        "hAnchorIn": "by norm_num [Set.mem_Ioc]",
+        "hDerivCoverCells": "by intro eta heta; exact <| Exists.intro 0 (by simpa using heta)",
+        "hLU": "by norm_num",
+        "hLeftMesh": "by norm_num",
+        "hProfileInt": "by exact RawOmegaAChunkIntegral.primaryK11RawOmegaAIntegrand_integrableOn_Ioc_of_nonneg_left n _ _ (by norm_num [rawOmegaAFiniteTailCutoff])",
+        "hResidualDifferentiable": "by intro eta _heta; exact RawOmegaATaylorModelCertificate.residual_differentiableAt _ eta",
+        "hRightMesh": "by norm_num",
+        "left": "2.600000000000000000E+2",
+        "mesh": "2.500000000000000000E-1",
+        "missing": [
+          "coeff",
+          "remainder",
+          "derivSlope",
+          "hResidualDerivBoundOnCell",
+          "hEnvelope"
+        ],
+        "radius": "2.500000000000000000E-1",
+        "radiusLeft": "by norm_num",
+        "radiusNonneg": "by norm_num",
+        "radiusRight": "by norm_num",
+        "right": "2.605000000000000000E+2",
+        "subchunk": 0,
+        "subchunkProofShape": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+        "subchunkWindowReceiver": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.windowPartBoundsCert"
+      },
+      "parentChunk": 0,
+      "parentLeft": "2.600000000000000000E+2",
+      "parentRight": "2.700000000000000000E+2",
+      "row": 0,
+      "subchunkCount": 20
+    },
+    {
+      "distance": "0.00",
+      "family": "control_finite",
+      "firstSubchunk": {
+        "anchor": "5.000000000000000000E-2",
+        "center": "5.000000000000000000E-2",
+        "degree": 16,
+        "derivCellCount": 1,
+        "derivCellLeft": [
+          "0.000000000000000000E+0"
+        ],
+        "derivCellRight": [
+          "1.000000000000000000E-1"
+        ],
+        "hAnchorIn": "by norm_num [Set.mem_Ioc]",
+        "hDerivCoverCells": "by intro eta heta; exact <| Exists.intro 0 (by simpa using heta)",
+        "hLU": "by norm_num",
+        "hLeftMesh": "by norm_num",
+        "hProfileInt": "by exact RawOmegaAChunkIntegral.controlK9RawOmegaAIntegrand_integrableOn_Ioc_of_nonneg_left n _ _ (by norm_num)",
+        "hResidualDifferentiable": "by intro eta _heta; exact RawOmegaATaylorModelCertificate.residual_differentiableAt _ eta",
+        "hRightMesh": "by norm_num",
+        "left": "0.000000000000000000E+0",
+        "mesh": "5.000000000000000000E-2",
+        "missing": [
+          "coeff",
+          "remainder",
+          "derivSlope",
+          "hResidualDerivBoundOnCell",
+          "hEnvelope"
+        ],
+        "radius": "5.000000000000000000E-2",
+        "radiusLeft": "by norm_num",
+        "radiusNonneg": "by norm_num",
+        "radiusRight": "by norm_num",
+        "right": "1.000000000000000000E-1",
+        "subchunk": 0,
+        "subchunkProofShape": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+        "subchunkWindowReceiver": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.windowPartBoundsCert"
+      },
+      "parentChunk": 0,
+      "parentLeft": "0.000000000000000000E+0",
+      "parentRight": "1.000000000000000000E+1",
+      "row": 0,
+      "subchunkCount": 100
+    },
+    {
+      "distance": "0.00",
+      "family": "control_tail",
+      "firstSubchunk": {
+        "anchor": "2.602500000000000000E+2",
+        "center": "2.602500000000000000E+2",
+        "degree": 16,
+        "derivCellCount": 1,
+        "derivCellLeft": [
+          "2.600000000000000000E+2"
+        ],
+        "derivCellRight": [
+          "2.605000000000000000E+2"
+        ],
+        "hAnchorIn": "by norm_num [Set.mem_Ioc]",
+        "hDerivCoverCells": "by intro eta heta; exact <| Exists.intro 0 (by simpa using heta)",
+        "hLU": "by norm_num",
+        "hLeftMesh": "by norm_num",
+        "hProfileInt": "by exact RawOmegaAChunkIntegral.controlK9RawOmegaAIntegrand_integrableOn_Ioc_of_nonneg_left n _ _ (by norm_num [rawOmegaAFiniteTailCutoff])",
+        "hResidualDifferentiable": "by intro eta _heta; exact RawOmegaATaylorModelCertificate.residual_differentiableAt _ eta",
+        "hRightMesh": "by norm_num",
+        "left": "2.600000000000000000E+2",
+        "mesh": "2.500000000000000000E-1",
+        "missing": [
+          "coeff",
+          "remainder",
+          "derivSlope",
+          "hResidualDerivBoundOnCell",
+          "hEnvelope"
+        ],
+        "radius": "2.500000000000000000E-1",
+        "radiusLeft": "by norm_num",
+        "radiusNonneg": "by norm_num",
+        "radiusRight": "by norm_num",
+        "right": "2.605000000000000000E+2",
+        "subchunk": 0,
+        "subchunkProofShape": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+        "subchunkWindowReceiver": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.windowPartBoundsCert"
+      },
+      "parentChunk": 0,
+      "parentLeft": "2.600000000000000000E+2",
+      "parentRight": "2.700000000000000000E+2",
+      "row": 0,
+      "subchunkCount": 20
+    }
+  ],
+  "familySummaries": [
+    {
+      "domain": "(0,260]",
+      "familyKind": "finite",
+      "hProfileIntTemplate": "by exact RawOmegaAChunkIntegral.primaryK11RawOmegaAIntegrand_integrableOn_Ioc_of_nonneg_left n _ _ (by norm_num)",
+      "id": "primary_finite",
+      "k": 11,
+      "leanWindowReceiver": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.windowPartBoundsCert",
+      "totals": {
+        "missingParentAnalyticFields": 0,
+        "missingRowAnalyticFields": 46,
+        "missingSubchunkAnalyticFields": 40250,
+        "parentChunks": 598,
+        "rows": 23,
+        "subchunks": 8050
+      },
+      "worklistLeanValidConstructor": null
+    },
+    {
+      "domain": "(260,520]",
+      "familyKind": "tail",
+      "hProfileIntTemplate": "by exact RawOmegaAChunkIntegral.primaryK11RawOmegaAIntegrand_integrableOn_Ioc_of_nonneg_left n _ _ (by norm_num [rawOmegaAFiniteTailCutoff])",
+      "id": "primary_tail",
+      "k": 11,
+      "leanWindowReceiver": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.windowPartBoundsCert",
+      "totals": {
+        "missingParentAnalyticFields": 0,
+        "missingRowAnalyticFields": 46,
+        "missingSubchunkAnalyticFields": 59800,
+        "parentChunks": 598,
+        "rows": 23,
+        "subchunks": 11960
+      },
+      "worklistLeanValidConstructor": null
+    },
+    {
+      "domain": "(0,260]",
+      "familyKind": "finite",
+      "hProfileIntTemplate": "by exact RawOmegaAChunkIntegral.controlK9RawOmegaAIntegrand_integrableOn_Ioc_of_nonneg_left n _ _ (by norm_num)",
+      "id": "control_finite",
+      "k": 9,
+      "leanWindowReceiver": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.windowPartBoundsCert",
+      "totals": {
+        "missingParentAnalyticFields": 0,
+        "missingRowAnalyticFields": 46,
+        "missingSubchunkAnalyticFields": 40250,
+        "parentChunks": 598,
+        "rows": 23,
+        "subchunks": 8050
+      },
+      "worklistLeanValidConstructor": null
+    },
+    {
+      "domain": "(260,520]",
+      "familyKind": "tail",
+      "hProfileIntTemplate": "by exact RawOmegaAChunkIntegral.controlK9RawOmegaAIntegrand_integrableOn_Ioc_of_nonneg_left n _ _ (by norm_num [rawOmegaAFiniteTailCutoff])",
+      "id": "control_tail",
+      "k": 9,
+      "leanWindowReceiver": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.windowPartBoundsCert",
+      "totals": {
+        "missingParentAnalyticFields": 0,
+        "missingRowAnalyticFields": 46,
+        "missingSubchunkAnalyticFields": 59800,
+        "parentChunks": 598,
+        "rows": 23,
+        "subchunks": 11960
+      },
+      "worklistLeanValidConstructor": null
+    }
+  ],
+  "includeNullFields": false,
+  "leanDirectTailWindowInputs": "RawOmegaAChunkTaylorPayload.RefinedPayloadFin.toDirectTailWindowInputs",
+  "leanLandingSurface": "RawOmegaAChunkTaylorPayload.RefinedPayloadFin",
+  "leanParentBridge": "RawOmegaAChunkIntegral.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralRefinedWindowProofData.toRefinedWindowPartBoundsCert",
+  "meaning": "Fail-closed proof-data skeleton for the refined raw-Omega Taylor/model route.  The top-level payload remains the 26 parent chunks; refined subchunks feed residual-anchor parent data below each parent.  Structural fields are seeded as generator templates; checked residual differentiability is seeded globally from RawOmegaATaylorModelCertificate.residual_differentiableAt; the single residual anchor is seeded at the Taylor center with mesh equal to the Taylor radius; and the derivative finite cover is seeded as one derivative cell equal to the refined subchunk.  Subchunk lower/upper bounds are exact Taylor/model integrals, so the generator no longer emits hIntegralLower/hIntegralUpper per refined subchunk.  The anchor residual is folded directly into the envelope comparison, so the generator no longer emits a separate sampleRadius datum or hAnchorResidual proof.  The derivative finite cover uses one derivative norm slope per cell instead of lower/upper derivative interval endpoints, so the generator no longer emits derivLower/derivUpper or hResidualDerivLowerOnCell/hResidualDerivUpperOnCell.  Other analytic fields remain missing until a proof-producing residual-anchor generator fills them and Lean checks the result.  Parent bounds use exact subchunk sums through ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralRefinedWindowProofData.toRefinedWindowPartBoundsCert. Each subchunk uses ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData, so the generator supplies one residual anchor plus mesh coverage for the value residual as one direct anchor-envelope proof, and a finite cover of direct residual-derivative norm cell bounds.  Lean computes the global derivative slope from those per-cell norm slopes, packages the cell bounds into the residual-variation premise, then expands the one-anchor packet to the finite-cover receiver. The remaining non-subchunk comparisons are row-level hLowerSum and hUpperSum fields for RefinedPayloadFin.",
+  "missingGroups": {
+    "residual_anchor_envelope": 40020,
+    "residual_derivative_cell_norm_proofs": 40020,
+    "residual_derivative_cell_slope_data": 40020,
+    "row_sum_comparisons": 184,
+    "taylor_model_data": 80040
+  },
+  "missingParentFields": {},
+  "missingRowFields": {
+    "hLowerSum": 92,
+    "hUpperSum": 92
+  },
+  "missingSubchunkFields": {
+    "coeff": 40020,
+    "derivSlope": 40020,
+    "hEnvelope": 40020,
+    "hResidualDerivBoundOnCell": 40020,
+    "remainder": 40020
+  },
+  "parentAnalyticFields": [],
+  "parentStructuralFields": [
+    "parentBoundsMode",
+    "n",
+    "pts",
+    "first_eq",
+    "last_eq",
+    "mono",
+    "hProfileInt",
+    "subLowerSource",
+    "subUpperSource",
+    "subCertSource"
+  ],
+  "routeGuard": [
+    "not Lean proof data",
+    "do not emit RefinedPayloadFin while analytic fields are missing",
+    "do not replace the top-level 26 parent chunks by a fully refined payload",
+    "parent fold must target RawOmegaAChunkIntegral.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralRefinedWindowProofData",
+    "parent bounds build RawOmegaAChunkIntegral.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralRefinedWindowProofData.toRefinedWindowPartBoundsCert",
+    "subchunk proof data must use ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+    "subchunk hIntegralLower/hIntegralUpper are eliminated by exact model integral bounds",
+    "subchunk slope/hSlopeNonneg/hDerivLowerAbs/hDerivUpperAbs are eliminated by auto-slope interval packaging",
+    "subchunk sampleRadius/hAnchorResidual are eliminated by direct anchor-envelope packaging",
+    "subchunk derivLower/derivUpper/hResidualDerivLowerOnCell/hResidualDerivUpperOnCell are eliminated by cell-slope derivative norm packaging",
+    "hResidualDifferentiable is a checked structural seed, not generated numeric proof data",
+    "single-anchor geometry uses anchor = center and mesh = radius",
+    "derivative finite cover geometry uses one cell equal to the refined subchunk",
+    "row hLowerSum/hUpperSum comparisons remain required for RefinedPayloadFin",
+    "structural proof templates must still be Lean-checked in generated code",
+    "do not mutate CSV, ARadius, radius-floor, or LDL data",
+    "do not route to H1/PO3 or Q3.Main from this layer"
+  ],
+  "rowAnalyticFields": [
+    "hLowerSum",
+    "hUpperSum"
+  ],
+  "schema": "q3_psdpd_step33_a_refined_subchunk_proof_data.v17",
+  "status": "structural_skeleton_seeded_missing_analytic_fields",
+  "subchunkAnalyticFields": [
+    "coeff",
+    "remainder",
+    "derivSlope",
+    "hResidualDerivBoundOnCell",
+    "hEnvelope"
+  ],
+  "subchunkStructuralFields": [
+    "center",
+    "radius",
+    "degree",
+    "hLU",
+    "radiusNonneg",
+    "radiusLeft",
+    "radiusRight",
+    "hProfileInt",
+    "hResidualDifferentiable",
+    "mesh",
+    "anchor",
+    "hAnchorIn",
+    "hLeftMesh",
+    "hRightMesh",
+    "derivCellCount",
+    "derivCellLeft",
+    "derivCellRight",
+    "hDerivCoverCells"
+  ],
+  "totals": {
+    "families": 4,
+    "missingParentAnalyticFields": 0,
+    "missingRowAnalyticFields": 184,
+    "missingSubchunkAnalyticFields": 200100,
+    "parentChunks": 2392,
+    "rows": 92,
+    "seededParentStructuralFields": 23920,
+    "seededSubchunkStructuralFields": 720360,
+    "subchunks": 40020
+  },
+  "worklistLeanLandingSurface": "RawOmegaAChunkTaylorPayload.RefinedPayloadFin",
+  "worklistSchema": "q3_psdpd_step33_a_refined_subchunk_worklist.v2",
+  "worklistSource": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_worklist.json"
+}

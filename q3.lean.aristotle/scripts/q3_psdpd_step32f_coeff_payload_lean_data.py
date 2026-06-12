@@ -52,6 +52,9 @@ This generated file is a deliberately narrow import layer:
 * it records the active CSV midpoint/radius artifacts as exact rational data;
 * it keeps a `Rat` mirror of every generated scalar/matrix entry so later
   LDL/SOS certificates can be checked by rational computation;
+* it emits the Toeplitz/symmetric `A` and `P0` midpoint/radius matrices through
+  compact absolute-distance tables, matching the Step21/Step22 certificate
+  geometry;
 * it defines midpoint `C`, `R`, and `D` matrices from `A`, `P`, `P0`;
 * it proves the algebraic split `C = D + theta R` at quadratic-form level.
 
@@ -62,6 +65,9 @@ is the next required bridge before these payloads can become
 
 abbrev CoeffIndex23 := Fin 23
 abbrev BoundaryIndex2 := Fin 2
+
+def natAbsDiff (i j : Nat) : Nat :=
+  if i ≤ j then j - i else i - j
 
 def matrixSub {rho sigma : Type*} (A B : Matrix rho sigma Real) :
     Matrix rho sigma Real :=
@@ -227,6 +233,27 @@ def load_matrix_csv(path: Path, value_column: str) -> dict[str, dict[tuple[int, 
     return out
 
 
+def abs_distance_entries(
+    values: dict[tuple[int, int], str],
+    *,
+    size: int = 23,
+) -> dict[int, str]:
+    out: dict[int, str] = {}
+    for dist in range(size):
+        vals = {
+            decimal_to_lean(raw)
+            for (i, j), raw in values.items()
+            if 0 <= i < size and 0 <= j < size and abs(j - i) == dist
+        }
+        if len(vals) != 1:
+            raise SystemExit(
+                f"matrix is not absolute-distance compressed at dist={dist}: "
+                f"{len(vals)} values"
+            )
+        out[dist] = vals.pop()
+    return out
+
+
 def block_prefix(block_id: str) -> str:
     if "k11" in block_id:
         return "primaryK11"
@@ -292,6 +319,35 @@ def lean_matrix_def(
     return "\n".join(rows)
 
 
+def lean_abs_distance_matrix_def(
+    prefix: str,
+    matrix_name: str,
+    values: dict[tuple[int, int], str],
+) -> str:
+    fn_abs_rat = f"{prefix}{matrix_name}AbsDistanceEntryRat"
+    fn_rat = f"{prefix}{matrix_name}EntryRat"
+    fn = f"{prefix}{matrix_name}Entry"
+    entries = abs_distance_entries(values)
+    rows = [f"def {fn_abs_rat} : Nat -> Rat"]
+    for dist, raw in sorted(entries.items()):
+        rows.append(f"  | {dist} => {raw}")
+    rows.append("  | _ => 0")
+    rows.append("")
+    rows.append(f"def {fn_rat} (i j : Nat) : Rat :=")
+    rows.append(f"  {fn_abs_rat} (natAbsDiff i j)")
+    rows.append("")
+    rows.append(f"def {fn} (i j : Nat) : Real :=")
+    rows.append(f"  ({fn_rat} i j : Real)")
+    rows.append("")
+    rows.append(f"def {prefix}{matrix_name}Rat : Matrix CoeffIndex23 CoeffIndex23 Rat :=")
+    rows.append(f"  fun i j => {fn_rat} i.val j.val")
+    rows.append("")
+    rows.append(f"def {prefix}{matrix_name} : Matrix CoeffIndex23 CoeffIndex23 Real :=")
+    rows.append(f"  fun i j => ({prefix}{matrix_name}Rat i j : Real)")
+    rows.append("")
+    return "\n".join(rows)
+
+
 def emit_block(block: Block) -> str:
     mid = load_matrix_csv(block.midpoint_csv, "mid")
     rad = load_matrix_csv(block.radius_csv, "rad")
@@ -307,10 +363,16 @@ def emit_block(block: Block) -> str:
     lines.append(f"def {p}Theta : Real := ({p}ThetaRat : Real)")
     lines.append("")
     for name in EXPECTED_MATRICES:
-        lines.append(lean_matrix_def(p, name, mid[name], boundary=(name == "Q")))
+        if name in {"A", "P0"}:
+            lines.append(lean_abs_distance_matrix_def(p, name, mid[name]))
+        else:
+            lines.append(lean_matrix_def(p, name, mid[name], boundary=(name == "Q")))
     for name in EXPECTED_MATRICES:
         rad_name = f"{name}Radius" if name != "Q" else "QRadius"
-        lines.append(lean_matrix_def(p, rad_name, rad[name], boundary=(name == "Q")))
+        if name in {"A", "P0"}:
+            lines.append(lean_abs_distance_matrix_def(p, rad_name, rad[name]))
+        else:
+            lines.append(lean_matrix_def(p, rad_name, rad[name], boundary=(name == "Q")))
     lines.append(f"def {p}CRat : Matrix CoeffIndex23 CoeffIndex23 Rat :=")
     lines.append(f"  matrixSubRat {p}ARat {p}PRat")
     lines.append("")

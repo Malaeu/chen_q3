@@ -1,0 +1,37 @@
+{
+  "distances": [
+    {
+      "distance": "0.00",
+      "excess": "0.000000000000000000E+18",
+      "fits_generated_tail_radius": true,
+      "generated_tail_radius": "8.231371264417030610E-17",
+      "index": 0,
+      "positive_tail_lower": "2.390101885081412989E-18",
+      "positive_tail_upper": "2.390448314261981161E-18",
+      "remainder_radius": "1.732145902840862000E-22",
+      "tail_lower": "4.780203770162825978E-18",
+      "tail_upper": "4.780896628523962323E-18",
+      "window_lower": "2.390275099671697075E-18",
+      "window_upper": "2.390275099671697075E-18"
+    }
+  ],
+  "meaning": "Diagnostic signed two-sided tail enclosure from acb on the positive window [T,U] plus the existing explicit absolute sinc-power remainder from U, doubled to match Lean TailPart. This is external evidence / generator-shape data, not a Lean proof.",
+  "parameters": {
+    "abs_tol": "1e-40",
+    "arb_prec": 256,
+    "chunk_size": "10",
+    "cutoff_t": "260",
+    "deg_limit": 64,
+    "depth_limit": 20,
+    "ell": "0.30",
+    "eval_limit": 100000,
+    "k_spline": 9,
+    "omega_factor": "10",
+    "rel_tol": "1e-40",
+    "sinc_terms": 90,
+    "source_manifest": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_finite_tail_components_k9.json",
+    "tail_window_end": "520"
+  },
+  "schema": "q3_psdpd_step33_a_signed_tail_probe.v1",
+  "worst_excess": "0.000000000000000000E+18"
+}

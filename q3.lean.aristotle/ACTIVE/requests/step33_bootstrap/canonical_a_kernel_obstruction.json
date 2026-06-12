@@ -1,0 +1,131 @@
+{
+  "decision": {
+    "next_action": "semantic sign/assembler review; do not search P0 split until C=A-P sign is resolved",
+    "transformed_A_current_formula_contract_feasible": false,
+    "worst_family": "primary",
+    "worst_transformed_C_min_on_kerQ": -101.6626177950135
+  },
+  "families": [
+    {
+      "Q_rank": 2,
+      "block_id": "psdpd_L3_k11_ell030_delta025_theta1e4",
+      "family": "primary",
+      "kerQ_dim": 21,
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+      "necessary_obstruction": {
+        "formula_contract": "C = A - P",
+        "reason": "C must be nonnegative on ker(Q) before any P0 split can certify it",
+        "transformed_C_min_on_kerQ": -101.6626177950135,
+        "transformed_C_passes": false
+      },
+      "sources": [
+        {
+          "A_on_kerQ": {
+            "max": 0.7287875847797666,
+            "min": -1.0226763274327562
+          },
+          "C_boundary_null_nonnegative": true,
+          "C_eq_A_minus_P_on_kerQ": {
+            "max": 2.61738467643642,
+            "min": 0.00019028360433413977
+          },
+          "max_abs_A_minus_rawStep22": 0.0,
+          "max_abs_A_minus_transformedArchSign": 79.02110587559564,
+          "max_abs_rawStep22_plus_transformedArchSign": 78.7743769848678,
+          "source": "raw_step22_positive_axis"
+        },
+        {
+          "A_on_kerQ": {
+            "max": -38.66267872919048,
+            "min": -101.10826719608505
+          },
+          "C_boundary_null_nonnegative": false,
+          "C_eq_A_minus_P_on_kerQ": {
+            "max": -37.52095144747043,
+            "min": -101.6626177950135
+          },
+          "max_abs_A_minus_rawStep22": 79.02110587559564,
+          "max_abs_A_minus_transformedArchSign": 0.0,
+          "max_abs_rawStep22_plus_transformedArchSign": 78.7743769848678,
+          "source": "transformed_step22_omega_arch_sign"
+        },
+        {
+          "A_on_kerQ": {
+            "max": 101.10826719608505,
+            "min": 38.66267872919048
+          },
+          "C_boundary_null_nonnegative": true,
+          "C_eq_A_minus_P_on_kerQ": {
+            "max": 102.36204332181914,
+            "min": 39.80269486786667
+          },
+          "max_abs_A_minus_rawStep22": 78.7743769848678,
+          "max_abs_A_minus_transformedArchSign": 157.79548286046344,
+          "max_abs_rawStep22_plus_transformedArchSign": 78.7743769848678,
+          "source": "negative_transformed_step22_omega_arch_sign"
+        }
+      ]
+    },
+    {
+      "Q_rank": 2,
+      "block_id": "psdpd_L3_k9_ell030_delta025_theta1e5",
+      "family": "control",
+      "kerQ_dim": 21,
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+      "necessary_obstruction": {
+        "formula_contract": "C = A - P",
+        "reason": "C must be nonnegative on ker(Q) before any P0 split can certify it",
+        "transformed_C_min_on_kerQ": -100.27231457492014,
+        "transformed_C_passes": false
+      },
+      "sources": [
+        {
+          "A_on_kerQ": {
+            "max": 0.7036911730187044,
+            "min": -1.2461947201512449
+          },
+          "C_boundary_null_nonnegative": true,
+          "C_eq_A_minus_P_on_kerQ": {
+            "max": 2.582939990165992,
+            "min": 1.907592780168228e-05
+          },
+          "max_abs_A_minus_rawStep22": 0.0,
+          "max_abs_A_minus_transformedArchSign": 75.2313790746506,
+          "max_abs_rawStep22_plus_transformedArchSign": 75.17888126733307,
+          "source": "raw_step22_positive_axis"
+        },
+        {
+          "A_on_kerQ": {
+            "max": -30.870400785124033,
+            "min": -99.65582680806783
+          },
+          "C_boundary_null_nonnegative": false,
+          "C_eq_A_minus_P_on_kerQ": {
+            "max": -29.53075433596259,
+            "min": -100.27231457492014
+          },
+          "max_abs_A_minus_rawStep22": 75.2313790746506,
+          "max_abs_A_minus_transformedArchSign": 0.0,
+          "max_abs_rawStep22_plus_transformedArchSign": 75.17888126733307,
+          "source": "transformed_step22_omega_arch_sign"
+        },
+        {
+          "A_on_kerQ": {
+            "max": 99.65582680806783,
+            "min": 30.870400785124033
+          },
+          "C_boundary_null_nonnegative": true,
+          "C_eq_A_minus_P_on_kerQ": {
+            "max": 100.84265426845738,
+            "min": 32.20884472709366
+          },
+          "max_abs_A_minus_rawStep22": 75.17888126733307,
+          "max_abs_A_minus_transformedArchSign": 150.41026034198367,
+          "max_abs_rawStep22_plus_transformedArchSign": 75.17888126733307,
+          "source": "negative_transformed_step22_omega_arch_sign"
+        }
+      ]
+    }
+  ],
+  "status": "non_mutating_diagnostic"
+}

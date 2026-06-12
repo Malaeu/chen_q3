@@ -1,0 +1,1521 @@
+{
+  "blocks": [
+    {
+      "block": "primary",
+      "distance_count": 23,
+      "distances": [
+        {
+          "distance": "0.00",
+          "finite_lower": "1.233644453639219465E-1",
+          "finite_upper": "1.233644453639219555E-1",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 0,
+          "positive_window_lower": "1.798295245717239885E-21",
+          "positive_window_upper": "1.798295245717239886E-21",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "0.25",
+          "finite_lower": "-4.374817834937379660E-1",
+          "finite_upper": "-4.374817834937379380E-1",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 1,
+          "positive_window_lower": "-6.305551866376207189E-23",
+          "positive_window_upper": "-6.305551866376207094E-23",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "0.50",
+          "finite_lower": "-2.235303949220050502E-1",
+          "finite_upper": "-2.235303949220050478E-1",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 2,
+          "positive_window_lower": "-1.996472869034854928E-25",
+          "positive_window_upper": "-1.996472869034848130E-25",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "0.75",
+          "finite_lower": "-1.588643857122144599E-1",
+          "finite_upper": "-1.588643857122144421E-1",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 3,
+          "positive_window_lower": "-6.895864346860663928E-31",
+          "positive_window_upper": "-6.895864340546207930E-31",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "1.00",
+          "finite_lower": "-1.255555459045882929E-1",
+          "finite_upper": "-1.255555459045882751E-1",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 4,
+          "positive_window_lower": "6.401079035162446847E-35",
+          "positive_window_upper": "6.401155878556344853E-35",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "1.25",
+          "finite_lower": "-1.042320657664256335E-1",
+          "finite_upper": "-1.042320657664256265E-1",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 5,
+          "positive_window_lower": "2.763730364120544729E-37",
+          "positive_window_upper": "2.765434525216832360E-37",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "1.50",
+          "finite_lower": "-8.879834253975839552E-2",
+          "finite_upper": "-8.879834253975839068E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 6,
+          "positive_window_lower": "1.602399319764370269E-38",
+          "positive_window_upper": "1.636634569504751816E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "1.75",
+          "finite_lower": "-7.675380274770543894E-2",
+          "finite_upper": "-7.675380274770543146E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 7,
+          "positive_window_lower": "9.734208512697355486E-39",
+          "positive_window_upper": "1.032615878008123111E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "2.00",
+          "finite_lower": "-6.690167682234596462E-2",
+          "finite_upper": "-6.690167682234596018E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 8,
+          "positive_window_lower": "-1.814020884951004928E-38",
+          "positive_window_upper": "-1.760515882149359049E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "2.25",
+          "finite_lower": "-5.860341194405480939E-2",
+          "finite_upper": "-5.860341194405480581E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 9,
+          "positive_window_lower": "-2.174760883333156440E-38",
+          "positive_window_upper": "-2.143920573751077708E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "2.50",
+          "finite_lower": "-5.148618820286358405E-2",
+          "finite_upper": "-5.148618820286358055E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 10,
+          "positive_window_lower": "6.474329120162834575E-38",
+          "positive_window_upper": "6.495885617702951180E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "2.75",
+          "finite_lower": "-4.531358455175713209E-2",
+          "finite_upper": "-4.531358455175712811E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 11,
+          "positive_window_lower": "-4.053674357961899650E-38",
+          "positive_window_upper": "-4.049949548971988508E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "3.00",
+          "finite_lower": "-3.992364956689390739E-2",
+          "finite_upper": "-3.992364956689390341E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 12,
+          "positive_window_lower": "-4.998461426049225854E-38",
+          "positive_window_upper": "-4.979670394004845056E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "3.25",
+          "finite_lower": "-3.519755893762420596E-2",
+          "finite_upper": "-3.519755893762420264E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 13,
+          "positive_window_lower": "1.105003144696759785E-37",
+          "positive_window_upper": "1.105298281018955597E-37",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "3.50",
+          "finite_lower": "-3.104306607661829968E-2",
+          "finite_upper": "-3.104306607661829952E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 14,
+          "positive_window_lower": "-5.579606071978205304E-38",
+          "positive_window_upper": "-5.567555740781065146E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "3.75",
+          "finite_lower": "-2.738542581476614256E-2",
+          "finite_upper": "-2.738542581476614024E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 15,
+          "positive_window_lower": "-7.547160862263315632E-38",
+          "positive_window_upper": "-7.527602995532354013E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "4.00",
+          "finite_lower": "-2.416221268183482030E-2",
+          "finite_upper": "-2.416221268183481990E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 16,
+          "positive_window_lower": "1.428235690884327907E-37",
+          "positive_window_upper": "1.431037884303337226E-37",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "4.25",
+          "finite_lower": "-2.132022017537525370E-2",
+          "finite_upper": "-2.132022017537525310E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 17,
+          "positive_window_lower": "-6.017701436619444538E-38",
+          "positive_window_upper": "-5.998562761037059983E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "4.50",
+          "finite_lower": "-1.881349899943884698E-2",
+          "finite_upper": "-1.881349899943884422E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 18,
+          "positive_window_lower": "-9.715450123528218917E-38",
+          "positive_window_upper": "-9.689880822991377271E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "4.75",
+          "finite_lower": "-1.660203614477936783E-2",
+          "finite_upper": "-1.660203614477936457E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 19,
+          "positive_window_lower": "1.603265278771680276E-37",
+          "positive_window_upper": "1.604677483371580220E-37",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "5.00",
+          "finite_lower": "-1.465080742557569840E-2",
+          "finite_upper": "-1.465080742557569760E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 20,
+          "positive_window_lower": "-5.498206149480209692E-38",
+          "positive_window_upper": "-5.471530306837159073E-38",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "5.25",
+          "finite_lower": "-1.292905771430244334E-2",
+          "finite_upper": "-1.292905771430244186E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 21,
+          "positive_window_lower": "-1.122040070429504374E-37",
+          "positive_window_upper": "-1.119944472664322698E-37",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "5.50",
+          "finite_lower": "-1.140972789300954138E-2",
+          "finite_upper": "-1.140972789300954062E-2",
+          "generated_tail_radius": "1.329645459799432920E-18",
+          "index": 22,
+          "positive_window_lower": "1.627623055066903689E-37",
+          "positive_window_upper": "1.629182771798841832E-37",
+          "proof_remainder_radius": "1.748975249152361800E-25",
+          "signed_positive_window_sign": "positive"
+        }
+      ],
+      "finite_window": {
+        "direct_full_chunks": [
+          {
+            "index": 0,
+            "left": "-2.600000000000000000E+2",
+            "right": "-2.400000000000000000E+2"
+          },
+          {
+            "index": 1,
+            "left": "-2.400000000000000000E+2",
+            "right": "-2.200000000000000000E+2"
+          },
+          {
+            "index": 2,
+            "left": "-2.200000000000000000E+2",
+            "right": "-2.000000000000000000E+2"
+          },
+          {
+            "index": 3,
+            "left": "-2.000000000000000000E+2",
+            "right": "-1.800000000000000000E+2"
+          },
+          {
+            "index": 4,
+            "left": "-1.800000000000000000E+2",
+            "right": "-1.600000000000000000E+2"
+          },
+          {
+            "index": 5,
+            "left": "-1.600000000000000000E+2",
+            "right": "-1.400000000000000000E+2"
+          },
+          {
+            "index": 6,
+            "left": "-1.400000000000000000E+2",
+            "right": "-1.200000000000000000E+2"
+          },
+          {
+            "index": 7,
+            "left": "-1.200000000000000000E+2",
+            "right": "-1.000000000000000000E+2"
+          },
+          {
+            "index": 8,
+            "left": "-1.000000000000000000E+2",
+            "right": "-8.000000000000000000E+1"
+          },
+          {
+            "index": 9,
+            "left": "-8.000000000000000000E+1",
+            "right": "-6.000000000000000000E+1"
+          },
+          {
+            "index": 10,
+            "left": "-6.000000000000000000E+1",
+            "right": "-4.000000000000000000E+1"
+          },
+          {
+            "index": 11,
+            "left": "-4.000000000000000000E+1",
+            "right": "-2.000000000000000000E+1"
+          },
+          {
+            "index": 12,
+            "left": "-2.000000000000000000E+1",
+            "right": "0.000000000000000000E+0"
+          },
+          {
+            "index": 13,
+            "left": "0.000000000000000000E+0",
+            "right": "2.000000000000000000E+1"
+          },
+          {
+            "index": 14,
+            "left": "2.000000000000000000E+1",
+            "right": "4.000000000000000000E+1"
+          },
+          {
+            "index": 15,
+            "left": "4.000000000000000000E+1",
+            "right": "6.000000000000000000E+1"
+          },
+          {
+            "index": 16,
+            "left": "6.000000000000000000E+1",
+            "right": "8.000000000000000000E+1"
+          },
+          {
+            "index": 17,
+            "left": "8.000000000000000000E+1",
+            "right": "1.000000000000000000E+2"
+          },
+          {
+            "index": 18,
+            "left": "1.000000000000000000E+2",
+            "right": "1.200000000000000000E+2"
+          },
+          {
+            "index": 19,
+            "left": "1.200000000000000000E+2",
+            "right": "1.400000000000000000E+2"
+          },
+          {
+            "index": 20,
+            "left": "1.400000000000000000E+2",
+            "right": "1.600000000000000000E+2"
+          },
+          {
+            "index": 21,
+            "left": "1.600000000000000000E+2",
+            "right": "1.800000000000000000E+2"
+          },
+          {
+            "index": 22,
+            "left": "1.800000000000000000E+2",
+            "right": "2.000000000000000000E+2"
+          },
+          {
+            "index": 23,
+            "left": "2.000000000000000000E+2",
+            "right": "2.200000000000000000E+2"
+          },
+          {
+            "index": 24,
+            "left": "2.200000000000000000E+2",
+            "right": "2.400000000000000000E+2"
+          },
+          {
+            "index": 25,
+            "left": "2.400000000000000000E+2",
+            "right": "2.600000000000000000E+2"
+          }
+        ],
+        "note": "The existing numerical source used the positive half-window. The checked finite-part positive-half receiver doubles the Ioc(0,T) comparison integrals by the proved evenness identity. The active direct-finite route uses 26 full-window chunks of width 20 on Ioc(-T,T), landing on FiniteLower/FiniteUpper.",
+        "positive_half_chunks": [
+          {
+            "index": 0,
+            "left": "0.000000000000000000E+0",
+            "right": "1.000000000000000000E+1"
+          },
+          {
+            "index": 1,
+            "left": "1.000000000000000000E+1",
+            "right": "2.000000000000000000E+1"
+          },
+          {
+            "index": 2,
+            "left": "2.000000000000000000E+1",
+            "right": "3.000000000000000000E+1"
+          },
+          {
+            "index": 3,
+            "left": "3.000000000000000000E+1",
+            "right": "4.000000000000000000E+1"
+          },
+          {
+            "index": 4,
+            "left": "4.000000000000000000E+1",
+            "right": "5.000000000000000000E+1"
+          },
+          {
+            "index": 5,
+            "left": "5.000000000000000000E+1",
+            "right": "6.000000000000000000E+1"
+          },
+          {
+            "index": 6,
+            "left": "6.000000000000000000E+1",
+            "right": "7.000000000000000000E+1"
+          },
+          {
+            "index": 7,
+            "left": "7.000000000000000000E+1",
+            "right": "8.000000000000000000E+1"
+          },
+          {
+            "index": 8,
+            "left": "8.000000000000000000E+1",
+            "right": "9.000000000000000000E+1"
+          },
+          {
+            "index": 9,
+            "left": "9.000000000000000000E+1",
+            "right": "1.000000000000000000E+2"
+          },
+          {
+            "index": 10,
+            "left": "1.000000000000000000E+2",
+            "right": "1.100000000000000000E+2"
+          },
+          {
+            "index": 11,
+            "left": "1.100000000000000000E+2",
+            "right": "1.200000000000000000E+2"
+          },
+          {
+            "index": 12,
+            "left": "1.200000000000000000E+2",
+            "right": "1.300000000000000000E+2"
+          },
+          {
+            "index": 13,
+            "left": "1.300000000000000000E+2",
+            "right": "1.400000000000000000E+2"
+          },
+          {
+            "index": 14,
+            "left": "1.400000000000000000E+2",
+            "right": "1.500000000000000000E+2"
+          },
+          {
+            "index": 15,
+            "left": "1.500000000000000000E+2",
+            "right": "1.600000000000000000E+2"
+          },
+          {
+            "index": 16,
+            "left": "1.600000000000000000E+2",
+            "right": "1.700000000000000000E+2"
+          },
+          {
+            "index": 17,
+            "left": "1.700000000000000000E+2",
+            "right": "1.800000000000000000E+2"
+          },
+          {
+            "index": 18,
+            "left": "1.800000000000000000E+2",
+            "right": "1.900000000000000000E+2"
+          },
+          {
+            "index": 19,
+            "left": "1.900000000000000000E+2",
+            "right": "2.000000000000000000E+2"
+          },
+          {
+            "index": 20,
+            "left": "2.000000000000000000E+2",
+            "right": "2.100000000000000000E+2"
+          },
+          {
+            "index": 21,
+            "left": "2.100000000000000000E+2",
+            "right": "2.200000000000000000E+2"
+          },
+          {
+            "index": 22,
+            "left": "2.200000000000000000E+2",
+            "right": "2.300000000000000000E+2"
+          },
+          {
+            "index": 23,
+            "left": "2.300000000000000000E+2",
+            "right": "2.400000000000000000E+2"
+          },
+          {
+            "index": 24,
+            "left": "2.400000000000000000E+2",
+            "right": "2.500000000000000000E+2"
+          },
+          {
+            "index": 25,
+            "left": "2.500000000000000000E+2",
+            "right": "2.600000000000000000E+2"
+          }
+        ],
+        "receiver_domain": "Set.Icc (-archAFiniteTailCutoff) archAFiniteTailCutoff",
+        "source_positive_half_domain": "Set.Ioc 0 archAFiniteTailCutoff"
+      },
+      "k": 11,
+      "label": "primary k=11",
+      "lean_targets": {
+        "analytic_cert": "primaryK11AnalyticAFiniteTailAnalyticBoundsCert",
+        "finite_part_cert": "primaryK11AnalyticAFinitePartBoundsCert",
+        "finite_tail_assembly": "primaryK11AnalyticAFiniteTailAnalyticBoundsCert_of_generatedFinitePartAndPositiveTailWindowProofRemainder",
+        "positive_window_cert": "primaryK11AnalyticAPositiveTailWindowBoundsCert"
+      },
+      "positive_tail_window": {
+        "chunks": [
+          {
+            "index": 0,
+            "left": "2.600000000000000000E+2",
+            "right": "2.700000000000000000E+2"
+          },
+          {
+            "index": 1,
+            "left": "2.700000000000000000E+2",
+            "right": "2.800000000000000000E+2"
+          },
+          {
+            "index": 2,
+            "left": "2.800000000000000000E+2",
+            "right": "2.900000000000000000E+2"
+          },
+          {
+            "index": 3,
+            "left": "2.900000000000000000E+2",
+            "right": "3.000000000000000000E+2"
+          },
+          {
+            "index": 4,
+            "left": "3.000000000000000000E+2",
+            "right": "3.100000000000000000E+2"
+          },
+          {
+            "index": 5,
+            "left": "3.100000000000000000E+2",
+            "right": "3.200000000000000000E+2"
+          },
+          {
+            "index": 6,
+            "left": "3.200000000000000000E+2",
+            "right": "3.300000000000000000E+2"
+          },
+          {
+            "index": 7,
+            "left": "3.300000000000000000E+2",
+            "right": "3.400000000000000000E+2"
+          },
+          {
+            "index": 8,
+            "left": "3.400000000000000000E+2",
+            "right": "3.500000000000000000E+2"
+          },
+          {
+            "index": 9,
+            "left": "3.500000000000000000E+2",
+            "right": "3.600000000000000000E+2"
+          },
+          {
+            "index": 10,
+            "left": "3.600000000000000000E+2",
+            "right": "3.700000000000000000E+2"
+          },
+          {
+            "index": 11,
+            "left": "3.700000000000000000E+2",
+            "right": "3.800000000000000000E+2"
+          },
+          {
+            "index": 12,
+            "left": "3.800000000000000000E+2",
+            "right": "3.900000000000000000E+2"
+          },
+          {
+            "index": 13,
+            "left": "3.900000000000000000E+2",
+            "right": "4.000000000000000000E+2"
+          },
+          {
+            "index": 14,
+            "left": "4.000000000000000000E+2",
+            "right": "4.100000000000000000E+2"
+          },
+          {
+            "index": 15,
+            "left": "4.100000000000000000E+2",
+            "right": "4.200000000000000000E+2"
+          },
+          {
+            "index": 16,
+            "left": "4.200000000000000000E+2",
+            "right": "4.300000000000000000E+2"
+          },
+          {
+            "index": 17,
+            "left": "4.300000000000000000E+2",
+            "right": "4.400000000000000000E+2"
+          },
+          {
+            "index": 18,
+            "left": "4.400000000000000000E+2",
+            "right": "4.500000000000000000E+2"
+          },
+          {
+            "index": 19,
+            "left": "4.500000000000000000E+2",
+            "right": "4.600000000000000000E+2"
+          },
+          {
+            "index": 20,
+            "left": "4.600000000000000000E+2",
+            "right": "4.700000000000000000E+2"
+          },
+          {
+            "index": 21,
+            "left": "4.700000000000000000E+2",
+            "right": "4.800000000000000000E+2"
+          },
+          {
+            "index": 22,
+            "left": "4.800000000000000000E+2",
+            "right": "4.900000000000000000E+2"
+          },
+          {
+            "index": 23,
+            "left": "4.900000000000000000E+2",
+            "right": "5.000000000000000000E+2"
+          },
+          {
+            "index": 24,
+            "left": "5.000000000000000000E+2",
+            "right": "5.100000000000000000E+2"
+          },
+          {
+            "index": 25,
+            "left": "5.100000000000000000E+2",
+            "right": "5.200000000000000000E+2"
+          }
+        ],
+        "receiver_domain": "Set.Ioc archAFiniteTailCutoff archAPositiveTailWindowEnd"
+      },
+      "signed_window_counts": {
+        "crossing": 0,
+        "negative": 13,
+        "positive": 10
+      }
+    },
+    {
+      "block": "control",
+      "distance_count": 23,
+      "distances": [
+        {
+          "distance": "0.00",
+          "finite_lower": "2.624890365877484289E-2",
+          "finite_upper": "2.624890365877484551E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 0,
+          "positive_window_lower": "2.390275099671697075E-18",
+          "positive_window_upper": "2.390275099671697075E-18",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "0.25",
+          "finite_lower": "-4.873092439847854368E-1",
+          "finite_upper": "-4.873092439847854092E-1",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 1,
+          "positive_window_lower": "-1.496392435805403197E-18",
+          "positive_window_upper": "-1.496392435805403197E-18",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "0.50",
+          "finite_lower": "-2.460736057093875349E-1",
+          "finite_upper": "-2.460736057093875091E-1",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 2,
+          "positive_window_lower": "6.216563201416807164E-19",
+          "positive_window_upper": "6.216563201416807164E-19",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "0.75",
+          "finite_lower": "-1.744899965879780170E-1",
+          "finite_upper": "-1.744899965879779990E-1",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 3,
+          "positive_window_lower": "-7.058157635391009113E-20",
+          "positive_window_upper": "-7.058157635391009113E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "1.00",
+          "finite_lower": "-1.378119062369357636E-1",
+          "finite_upper": "-1.378119062369357584E-1",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 4,
+          "positive_window_lower": "-2.359662550523920397E-19",
+          "positive_window_upper": "-2.359662550523920397E-19",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "1.25",
+          "finite_lower": "-1.143748439686752177E-1",
+          "finite_upper": "-1.143748439686752083E-1",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 5,
+          "positive_window_lower": "2.573790936828052663E-19",
+          "positive_window_upper": "2.573790936828052663E-19",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "1.50",
+          "finite_lower": "-9.742597050289207708E-2",
+          "finite_upper": "-9.742597050289207452E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 6,
+          "positive_window_lower": "-8.737862637356801481E-20",
+          "positive_window_upper": "-8.737862637356801481E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "1.75",
+          "finite_lower": "-8.420506225936439190E-2",
+          "finite_upper": "-8.420506225936438470E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 7,
+          "positive_window_lower": "-9.828979838699466044E-20",
+          "positive_window_upper": "-9.828979838699466044E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "2.00",
+          "finite_lower": "-7.339349733534717080E-2",
+          "finite_upper": "-7.339349733534716660E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 8,
+          "positive_window_lower": "1.625541116389958198E-19",
+          "positive_window_upper": "1.625541116389958198E-19",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "2.25",
+          "finite_lower": "-6.428849036841745951E-2",
+          "finite_upper": "-6.428849036841744649E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 9,
+          "positive_window_lower": "-8.679651064084806067E-20",
+          "positive_window_upper": "-8.679651064084806067E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "2.50",
+          "finite_lower": "-5.648004324873016381E-2",
+          "finite_upper": "-5.648004324873016039E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 10,
+          "positive_window_lower": "-4.176827026346629402E-20",
+          "positive_window_upper": "-4.176827026346629402E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "2.75",
+          "finite_lower": "-4.970832111898410805E-2",
+          "finite_upper": "-4.970832111898410595E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 11,
+          "positive_window_lower": "1.137653830948299151E-19",
+          "positive_window_upper": "1.137653830948299151E-19",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "3.00",
+          "finite_lower": "-4.379542530481586225E-2",
+          "finite_upper": "-4.379542530481585575E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 12,
+          "positive_window_lower": "-8.274872087691456295E-20",
+          "positive_window_upper": "-8.274872087691456295E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "3.25",
+          "finite_lower": "-3.861088483096191087E-2",
+          "finite_upper": "-3.861088483096190613E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 13,
+          "positive_window_lower": "-1.015346368075401224E-20",
+          "positive_window_upper": "-1.015346368075401224E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "3.50",
+          "finite_lower": "-3.405344322235764996E-2",
+          "finite_upper": "-3.405344322235764784E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 14,
+          "positive_window_lower": "8.152033533892666785E-20",
+          "positive_window_upper": "8.152033533892666785E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "3.75",
+          "finite_lower": "-3.004107317037790856E-2",
+          "finite_upper": "-3.004107317037790684E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 15,
+          "positive_window_lower": "-7.689410156069335989E-20",
+          "positive_window_upper": "-7.689410156069335989E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "4.00",
+          "finite_lower": "-2.650527771460507800E-2",
+          "finite_upper": "-2.650527771460507640E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 16,
+          "positive_window_lower": "9.864598276104447575E-21",
+          "positive_window_upper": "9.864598276104447575E-21",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "4.25",
+          "finite_lower": "-2.338768127103869603E-2",
+          "finite_upper": "-2.338768127103869477E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 17,
+          "positive_window_lower": "5.738007805541927638E-20",
+          "positive_window_upper": "5.738007805541927638E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "4.50",
+          "finite_lower": "-2.063787367594900365E-2",
+          "finite_upper": "-2.063787367594900175E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 18,
+          "positive_window_lower": "-6.977810634424286916E-20",
+          "positive_window_upper": "-6.977810634424286916E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "4.75",
+          "finite_lower": "-1.821195908254563431E-2",
+          "finite_upper": "-1.821195908254563229E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 19,
+          "positive_window_lower": "2.308438688896104387E-20",
+          "positive_window_upper": "2.308438688896104387E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "5.00",
+          "finite_lower": "-1.607151550999931540E-2",
+          "finite_upper": "-1.607151550999931480E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 20,
+          "positive_window_lower": "3.810690383811020543E-20",
+          "positive_window_upper": "3.810690383811020543E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        },
+        {
+          "distance": "5.25",
+          "finite_lower": "-1.418280469000953240E-2",
+          "finite_upper": "-1.418280469000953240E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 21,
+          "positive_window_lower": "-6.173345585286570032E-20",
+          "positive_window_upper": "-6.173345585286570032E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "negative"
+        },
+        {
+          "distance": "5.50",
+          "finite_lower": "-1.251614313302646556E-2",
+          "finite_upper": "-1.251614313302646504E-2",
+          "generated_tail_radius": "8.231371264417030610E-17",
+          "index": 22,
+          "positive_window_lower": "3.168430360414573664E-20",
+          "positive_window_upper": "3.168430360414573664E-20",
+          "proof_remainder_radius": "1.732145902840862000E-22",
+          "signed_positive_window_sign": "positive"
+        }
+      ],
+      "finite_window": {
+        "direct_full_chunks": [
+          {
+            "index": 0,
+            "left": "-2.600000000000000000E+2",
+            "right": "-2.400000000000000000E+2"
+          },
+          {
+            "index": 1,
+            "left": "-2.400000000000000000E+2",
+            "right": "-2.200000000000000000E+2"
+          },
+          {
+            "index": 2,
+            "left": "-2.200000000000000000E+2",
+            "right": "-2.000000000000000000E+2"
+          },
+          {
+            "index": 3,
+            "left": "-2.000000000000000000E+2",
+            "right": "-1.800000000000000000E+2"
+          },
+          {
+            "index": 4,
+            "left": "-1.800000000000000000E+2",
+            "right": "-1.600000000000000000E+2"
+          },
+          {
+            "index": 5,
+            "left": "-1.600000000000000000E+2",
+            "right": "-1.400000000000000000E+2"
+          },
+          {
+            "index": 6,
+            "left": "-1.400000000000000000E+2",
+            "right": "-1.200000000000000000E+2"
+          },
+          {
+            "index": 7,
+            "left": "-1.200000000000000000E+2",
+            "right": "-1.000000000000000000E+2"
+          },
+          {
+            "index": 8,
+            "left": "-1.000000000000000000E+2",
+            "right": "-8.000000000000000000E+1"
+          },
+          {
+            "index": 9,
+            "left": "-8.000000000000000000E+1",
+            "right": "-6.000000000000000000E+1"
+          },
+          {
+            "index": 10,
+            "left": "-6.000000000000000000E+1",
+            "right": "-4.000000000000000000E+1"
+          },
+          {
+            "index": 11,
+            "left": "-4.000000000000000000E+1",
+            "right": "-2.000000000000000000E+1"
+          },
+          {
+            "index": 12,
+            "left": "-2.000000000000000000E+1",
+            "right": "0.000000000000000000E+0"
+          },
+          {
+            "index": 13,
+            "left": "0.000000000000000000E+0",
+            "right": "2.000000000000000000E+1"
+          },
+          {
+            "index": 14,
+            "left": "2.000000000000000000E+1",
+            "right": "4.000000000000000000E+1"
+          },
+          {
+            "index": 15,
+            "left": "4.000000000000000000E+1",
+            "right": "6.000000000000000000E+1"
+          },
+          {
+            "index": 16,
+            "left": "6.000000000000000000E+1",
+            "right": "8.000000000000000000E+1"
+          },
+          {
+            "index": 17,
+            "left": "8.000000000000000000E+1",
+            "right": "1.000000000000000000E+2"
+          },
+          {
+            "index": 18,
+            "left": "1.000000000000000000E+2",
+            "right": "1.200000000000000000E+2"
+          },
+          {
+            "index": 19,
+            "left": "1.200000000000000000E+2",
+            "right": "1.400000000000000000E+2"
+          },
+          {
+            "index": 20,
+            "left": "1.400000000000000000E+2",
+            "right": "1.600000000000000000E+2"
+          },
+          {
+            "index": 21,
+            "left": "1.600000000000000000E+2",
+            "right": "1.800000000000000000E+2"
+          },
+          {
+            "index": 22,
+            "left": "1.800000000000000000E+2",
+            "right": "2.000000000000000000E+2"
+          },
+          {
+            "index": 23,
+            "left": "2.000000000000000000E+2",
+            "right": "2.200000000000000000E+2"
+          },
+          {
+            "index": 24,
+            "left": "2.200000000000000000E+2",
+            "right": "2.400000000000000000E+2"
+          },
+          {
+            "index": 25,
+            "left": "2.400000000000000000E+2",
+            "right": "2.600000000000000000E+2"
+          }
+        ],
+        "note": "The existing numerical source used the positive half-window. The checked finite-part positive-half receiver doubles the Ioc(0,T) comparison integrals by the proved evenness identity. The active direct-finite route uses 26 full-window chunks of width 20 on Ioc(-T,T), landing on FiniteLower/FiniteUpper.",
+        "positive_half_chunks": [
+          {
+            "index": 0,
+            "left": "0.000000000000000000E+0",
+            "right": "1.000000000000000000E+1"
+          },
+          {
+            "index": 1,
+            "left": "1.000000000000000000E+1",
+            "right": "2.000000000000000000E+1"
+          },
+          {
+            "index": 2,
+            "left": "2.000000000000000000E+1",
+            "right": "3.000000000000000000E+1"
+          },
+          {
+            "index": 3,
+            "left": "3.000000000000000000E+1",
+            "right": "4.000000000000000000E+1"
+          },
+          {
+            "index": 4,
+            "left": "4.000000000000000000E+1",
+            "right": "5.000000000000000000E+1"
+          },
+          {
+            "index": 5,
+            "left": "5.000000000000000000E+1",
+            "right": "6.000000000000000000E+1"
+          },
+          {
+            "index": 6,
+            "left": "6.000000000000000000E+1",
+            "right": "7.000000000000000000E+1"
+          },
+          {
+            "index": 7,
+            "left": "7.000000000000000000E+1",
+            "right": "8.000000000000000000E+1"
+          },
+          {
+            "index": 8,
+            "left": "8.000000000000000000E+1",
+            "right": "9.000000000000000000E+1"
+          },
+          {
+            "index": 9,
+            "left": "9.000000000000000000E+1",
+            "right": "1.000000000000000000E+2"
+          },
+          {
+            "index": 10,
+            "left": "1.000000000000000000E+2",
+            "right": "1.100000000000000000E+2"
+          },
+          {
+            "index": 11,
+            "left": "1.100000000000000000E+2",
+            "right": "1.200000000000000000E+2"
+          },
+          {
+            "index": 12,
+            "left": "1.200000000000000000E+2",
+            "right": "1.300000000000000000E+2"
+          },
+          {
+            "index": 13,
+            "left": "1.300000000000000000E+2",
+            "right": "1.400000000000000000E+2"
+          },
+          {
+            "index": 14,
+            "left": "1.400000000000000000E+2",
+            "right": "1.500000000000000000E+2"
+          },
+          {
+            "index": 15,
+            "left": "1.500000000000000000E+2",
+            "right": "1.600000000000000000E+2"
+          },
+          {
+            "index": 16,
+            "left": "1.600000000000000000E+2",
+            "right": "1.700000000000000000E+2"
+          },
+          {
+            "index": 17,
+            "left": "1.700000000000000000E+2",
+            "right": "1.800000000000000000E+2"
+          },
+          {
+            "index": 18,
+            "left": "1.800000000000000000E+2",
+            "right": "1.900000000000000000E+2"
+          },
+          {
+            "index": 19,
+            "left": "1.900000000000000000E+2",
+            "right": "2.000000000000000000E+2"
+          },
+          {
+            "index": 20,
+            "left": "2.000000000000000000E+2",
+            "right": "2.100000000000000000E+2"
+          },
+          {
+            "index": 21,
+            "left": "2.100000000000000000E+2",
+            "right": "2.200000000000000000E+2"
+          },
+          {
+            "index": 22,
+            "left": "2.200000000000000000E+2",
+            "right": "2.300000000000000000E+2"
+          },
+          {
+            "index": 23,
+            "left": "2.300000000000000000E+2",
+            "right": "2.400000000000000000E+2"
+          },
+          {
+            "index": 24,
+            "left": "2.400000000000000000E+2",
+            "right": "2.500000000000000000E+2"
+          },
+          {
+            "index": 25,
+            "left": "2.500000000000000000E+2",
+            "right": "2.600000000000000000E+2"
+          }
+        ],
+        "receiver_domain": "Set.Icc (-archAFiniteTailCutoff) archAFiniteTailCutoff",
+        "source_positive_half_domain": "Set.Ioc 0 archAFiniteTailCutoff"
+      },
+      "k": 9,
+      "label": "control k=9",
+      "lean_targets": {
+        "analytic_cert": "controlK9AnalyticAFiniteTailAnalyticBoundsCert",
+        "finite_part_cert": "controlK9AnalyticAFinitePartBoundsCert",
+        "finite_tail_assembly": "controlK9AnalyticAFiniteTailAnalyticBoundsCert_of_generatedFinitePartAndPositiveTailWindowProofRemainder",
+        "positive_window_cert": "controlK9AnalyticAPositiveTailWindowBoundsCert"
+      },
+      "positive_tail_window": {
+        "chunks": [
+          {
+            "index": 0,
+            "left": "2.600000000000000000E+2",
+            "right": "2.700000000000000000E+2"
+          },
+          {
+            "index": 1,
+            "left": "2.700000000000000000E+2",
+            "right": "2.800000000000000000E+2"
+          },
+          {
+            "index": 2,
+            "left": "2.800000000000000000E+2",
+            "right": "2.900000000000000000E+2"
+          },
+          {
+            "index": 3,
+            "left": "2.900000000000000000E+2",
+            "right": "3.000000000000000000E+2"
+          },
+          {
+            "index": 4,
+            "left": "3.000000000000000000E+2",
+            "right": "3.100000000000000000E+2"
+          },
+          {
+            "index": 5,
+            "left": "3.100000000000000000E+2",
+            "right": "3.200000000000000000E+2"
+          },
+          {
+            "index": 6,
+            "left": "3.200000000000000000E+2",
+            "right": "3.300000000000000000E+2"
+          },
+          {
+            "index": 7,
+            "left": "3.300000000000000000E+2",
+            "right": "3.400000000000000000E+2"
+          },
+          {
+            "index": 8,
+            "left": "3.400000000000000000E+2",
+            "right": "3.500000000000000000E+2"
+          },
+          {
+            "index": 9,
+            "left": "3.500000000000000000E+2",
+            "right": "3.600000000000000000E+2"
+          },
+          {
+            "index": 10,
+            "left": "3.600000000000000000E+2",
+            "right": "3.700000000000000000E+2"
+          },
+          {
+            "index": 11,
+            "left": "3.700000000000000000E+2",
+            "right": "3.800000000000000000E+2"
+          },
+          {
+            "index": 12,
+            "left": "3.800000000000000000E+2",
+            "right": "3.900000000000000000E+2"
+          },
+          {
+            "index": 13,
+            "left": "3.900000000000000000E+2",
+            "right": "4.000000000000000000E+2"
+          },
+          {
+            "index": 14,
+            "left": "4.000000000000000000E+2",
+            "right": "4.100000000000000000E+2"
+          },
+          {
+            "index": 15,
+            "left": "4.100000000000000000E+2",
+            "right": "4.200000000000000000E+2"
+          },
+          {
+            "index": 16,
+            "left": "4.200000000000000000E+2",
+            "right": "4.300000000000000000E+2"
+          },
+          {
+            "index": 17,
+            "left": "4.300000000000000000E+2",
+            "right": "4.400000000000000000E+2"
+          },
+          {
+            "index": 18,
+            "left": "4.400000000000000000E+2",
+            "right": "4.500000000000000000E+2"
+          },
+          {
+            "index": 19,
+            "left": "4.500000000000000000E+2",
+            "right": "4.600000000000000000E+2"
+          },
+          {
+            "index": 20,
+            "left": "4.600000000000000000E+2",
+            "right": "4.700000000000000000E+2"
+          },
+          {
+            "index": 21,
+            "left": "4.700000000000000000E+2",
+            "right": "4.800000000000000000E+2"
+          },
+          {
+            "index": 22,
+            "left": "4.800000000000000000E+2",
+            "right": "4.900000000000000000E+2"
+          },
+          {
+            "index": 23,
+            "left": "4.900000000000000000E+2",
+            "right": "5.000000000000000000E+2"
+          },
+          {
+            "index": 24,
+            "left": "5.000000000000000000E+2",
+            "right": "5.100000000000000000E+2"
+          },
+          {
+            "index": 25,
+            "left": "5.100000000000000000E+2",
+            "right": "5.200000000000000000E+2"
+          }
+        ],
+        "receiver_domain": "Set.Ioc archAFiniteTailCutoff archAPositiveTailWindowEnd"
+      },
+      "signed_window_counts": {
+        "crossing": 0,
+        "negative": 12,
+        "positive": 11
+      }
+    }
+  ],
+  "checked_chunk_assembler_helpers": [
+    "centeredBSplineArchKernelProfileFinitePart_eq_two_positiveFinitePart",
+    "centeredBSplineArchKernelProfilePositiveFinitePart_bounds_of_comparison_integrals",
+    "centeredBSplineArchKernelProfileFinitePart_bounds_of_positive_comparison_integrals",
+    "centeredBSplineArchKernelProfilePositiveFinitePart_bounds_of_two_piece_comparison_integrals",
+    "centeredBSplineArchKernelProfileFinitePart_bounds_of_positive_two_piece_comparison_integrals",
+    "centeredBSplineArchKernelProfilePositiveWindowPartBoundsCert",
+    "centeredBSplineArchKernelProfilePositiveWindowPartBoundsCert_of_comparison_integrals",
+    "centeredBSplineArchKernelProfilePositiveWindowPartBoundsCert_of_pointwise_bounds",
+    "centeredBSplineArchKernelProfilePositiveWindowPartBoundsCert_glue_adjacent",
+    "centeredBSplineArchKernelProfilePositiveWindowPartBoundsCert_empty",
+    "centeredBSplineArchKernelProfilePositiveWindowPartBoundsCert_of_chunked_range",
+    "centeredBSplineArchKernelProfilePositiveWindowPartBoundsCert_of_chunked_range_bounds",
+    "centeredBSplineArchKernelProfileFinitePart_bounds_of_positive_window_cert",
+    "primaryK11AnalyticAFinitePartBoundsCert_of_positiveComparisonIntegrals",
+    "primaryK11AnalyticAFinitePartBoundsCert_of_positiveTwoPieceComparisonIntegrals",
+    "controlK9AnalyticAFinitePartBoundsCert_of_positiveComparisonIntegrals",
+    "controlK9AnalyticAFinitePartBoundsCert_of_positiveTwoPieceComparisonIntegrals",
+    "centeredBSplineArchKernelProfilePositiveTailWindowIntervalCert_of_window_cert",
+    "primaryK11AnalyticAFinitePartBoundsCert_of_positiveWindowCert",
+    "primaryK11AnalyticAPositiveTailWindowBoundsCert_of_positiveWindowCert",
+    "controlK9AnalyticAFinitePartBoundsCert_of_positiveWindowCert",
+    "controlK9AnalyticAPositiveTailWindowBoundsCert_of_positiveWindowCert",
+    "Step33AFoldedWindowPayload",
+    "primaryK11AnalyticAFinitePositiveLower",
+    "primaryK11AnalyticAFinitePositiveUpper",
+    "primaryK11AnalyticAFinitePositiveLowerBound_generated",
+    "primaryK11AnalyticAFinitePositiveUpperBound_generated",
+    "controlK9AnalyticAFinitePositiveLower",
+    "controlK9AnalyticAFinitePositiveUpper",
+    "controlK9AnalyticAFinitePositiveLowerBound_generated",
+    "controlK9AnalyticAFinitePositiveUpperBound_generated",
+    "step33AFoldedWindowPayload_of_generatedAWindowCerts",
+    "Step33AChunkedWindowPayload",
+    "Step33AChunkedPointwiseWindowPayload",
+    "step33AChunkedWindowPayload_of_chunkedPointwiseWindowPayload",
+    "Step33AChunkedComparisonIntegralPayload",
+    "Step33AChunkedComparisonIntegralFamilyPayload",
+    "Step33AChunkedComparisonIntegralDistancePayload",
+    "step33AChunkedComparisonIntegralDistancePayload_of_integrand_chunk_bounds",
+    "step33AChunkedComparisonIntegralPayload_of_familyPayloads",
+    "step33AChunkedComparisonIntegralFamilyPayload_of_distancePayloads",
+    "centeredBSplineArchKernelProfilePositiveWindowPartBoundsCert_of_chunkedComparisonIntegralFamilyPayload",
+    "primaryK11AnalyticAFinitePositiveWindowPartBoundsCert_of_chunkedComparisonIntegralFamilyPayload",
+    "primaryK11AnalyticAFinitePartBoundsCert_of_chunkedComparisonIntegralFamilyPayload",
+    "primaryK11AnalyticAPositiveTailWindowPartBoundsCert_of_chunkedComparisonIntegralFamilyPayload",
+    "primaryK11AnalyticAPositiveTailWindowBoundsCert_of_chunkedComparisonIntegralFamilyPayload",
+    "primaryK11AnalyticAFiniteTailAnalyticBoundsCert_of_chunkedComparisonIntegralFamilyPayloads",
+    "primaryK11AnalyticAFiniteTailAnalyticBoundsCert_of_chunkedComparisonIntegralDistancePayloads",
+    "controlK9AnalyticAFinitePositiveWindowPartBoundsCert_of_chunkedComparisonIntegralFamilyPayload",
+    "controlK9AnalyticAFinitePartBoundsCert_of_chunkedComparisonIntegralFamilyPayload",
+    "controlK9AnalyticAPositiveTailWindowPartBoundsCert_of_chunkedComparisonIntegralFamilyPayload",
+    "controlK9AnalyticAPositiveTailWindowBoundsCert_of_chunkedComparisonIntegralFamilyPayload",
+    "controlK9AnalyticAFiniteTailAnalyticBoundsCert_of_chunkedComparisonIntegralFamilyPayloads",
+    "controlK9AnalyticAFiniteTailAnalyticBoundsCert_of_chunkedComparisonIntegralDistancePayloads",
+    "step33AChunkedWindowPayload_of_chunkedComparisonIntegralPayload",
+    "step33AFoldedWindowPayload_of_chunkedWindowPayload",
+    "step33AFoldedWindowPayload_of_signedChunkedComparisonIntegralPayload",
+    "primaryK11AnalyticAFinitePartBoundsCert_of_foldedWindowPayload",
+    "primaryK11AnalyticAPositiveTailWindowBoundsCert_of_foldedWindowPayload",
+    "primaryK11AnalyticAFiniteTailAnalyticBoundsCert_of_foldedWindowPayload",
+    "primaryK11AnalyticAAbsDistanceHboxCert_of_foldedWindowPayload",
+    "primaryK11AnalyticA_entry_hbox_of_foldedWindowPayload",
+    "controlK9AnalyticAFinitePartBoundsCert_of_foldedWindowPayload",
+    "controlK9AnalyticAPositiveTailWindowBoundsCert_of_foldedWindowPayload",
+    "controlK9AnalyticAFiniteTailAnalyticBoundsCert_of_foldedWindowPayload",
+    "controlK9AnalyticAAbsDistanceHboxCert_of_foldedWindowPayload",
+    "controlK9AnalyticA_entry_hbox_of_foldedWindowPayload",
+    "primaryK11AnalyticP0_entry_hbox_generated",
+    "controlK9AnalyticP0_entry_hbox_generated",
+    "activeCenteredCoeffEntryHboxCert_of_foldedWindowPayload",
+    "psd_step33_finite_analytic_weil_positivity_of_foldedWindowPayload",
+    "psd_step33_singleton_directed_family_handoff_of_foldedWindowPayload",
+    "activeCenteredCoeffEntryHboxCert_of_generatedAWindowCerts",
+    "psd_step33_finite_analytic_weil_positivity_of_generatedAWindowCerts",
+    "psd_step33_singleton_directed_family_handoff_of_generatedAWindowCerts",
+    "activeCenteredCoeffEntryHboxCert_of_chunkedWindowPayload",
+    "psd_step33_finite_analytic_weil_positivity_of_chunkedWindowPayload",
+    "psd_step33_singleton_directed_family_handoff_of_chunkedWindowPayload",
+    "activeCenteredCoeffEntryHboxCert_of_chunkedPointwiseWindowPayload",
+    "psd_step33_finite_analytic_weil_positivity_of_chunkedPointwiseWindowPayload",
+    "psd_step33_singleton_directed_family_handoff_of_chunkedPointwiseWindowPayload",
+    "activeCenteredCoeffEntryHboxCert_of_chunkedComparisonIntegralPayload",
+    "psd_step33_finite_analytic_weil_positivity_of_chunkedComparisonIntegralPayload",
+    "psd_step33_singleton_directed_family_handoff_of_chunkedComparisonIntegralPayload",
+    "activeCenteredCoeffEntryHboxCert_of_chunkedComparisonIntegralFamilyPayloads",
+    "psd_step33_finite_analytic_weil_positivity_of_chunkedComparisonIntegralFamilyPayloads",
+    "psd_step33_singleton_directed_family_handoff_of_chunkedComparisonIntegralFamilyPayloads",
+    "activeCenteredCoeffEntryHboxCert_of_chunkedComparisonIntegralDistancePayloads",
+    "psd_step33_finite_analytic_weil_positivity_of_chunkedComparisonIntegralDistancePayloads",
+    "psd_step33_singleton_directed_family_handoff_of_chunkedComparisonIntegralDistancePayloads",
+    "activeCenteredCoeffEntryHboxCert_of_signedChunkedComparisonIntegralPayload",
+    "psd_step33_finite_analytic_weil_positivity_of_signedChunkedComparisonIntegralPayload",
+    "psd_step33_singleton_directed_family_handoff_of_signedChunkedComparisonIntegralPayload",
+    "psd_step33_closed_from_rationalDeltaLiveGeneratedP0AFoldedWindowPayload",
+    "centeredBSplineArchKernelProfileFinitePart_bounds_of_two_piece_comparison_integrals",
+    "primaryK11AnalyticAFinitePartBoundsCert_of_twoPieceComparisonIntegrals",
+    "controlK9AnalyticAFinitePartBoundsCert_of_twoPieceComparisonIntegrals",
+    "centeredBSplineArchKernelProfilePositiveTailWindowPart_bounds_of_two_piece_comparison_integrals",
+    "centeredBSplineArchKernelProfilePositiveTailWindowIntervalCert_of_two_piece_comparison_integrals",
+    "primaryK11AnalyticAPositiveTailWindowBoundsCert_of_twoPieceComparisonIntegrals",
+    "controlK9AnalyticAPositiveTailWindowBoundsCert_of_twoPieceComparisonIntegrals"
+  ],
+  "lean_chunked_comparison_distance_assembler": "step33AChunkedComparisonIntegralFamilyPayload_of_distancePayloads",
+  "lean_chunked_comparison_distance_payload_structure": "Step33AChunkedComparisonIntegralDistancePayload",
+  "lean_chunked_comparison_distance_step33a_wrapper": "activeCenteredCoeffEntryHboxCert_of_chunkedComparisonIntegralDistancePayloads",
+  "lean_chunked_comparison_distance_step33b_wrapper": "psd_step33_finite_analytic_weil_positivity_of_chunkedComparisonIntegralDistancePayloads",
+  "lean_chunked_comparison_distance_step33c_wrapper": "psd_step33_singleton_directed_family_handoff_of_chunkedComparisonIntegralDistancePayloads",
+  "lean_chunked_comparison_family_assembler": "step33AChunkedComparisonIntegralPayload_of_familyPayloads",
+  "lean_chunked_comparison_family_payload_structure": "Step33AChunkedComparisonIntegralFamilyPayload",
+  "lean_chunked_comparison_family_step33a_wrapper": "activeCenteredCoeffEntryHboxCert_of_chunkedComparisonIntegralFamilyPayloads",
+  "lean_chunked_comparison_family_step33b_wrapper": "psd_step33_finite_analytic_weil_positivity_of_chunkedComparisonIntegralFamilyPayloads",
+  "lean_chunked_comparison_family_step33c_wrapper": "psd_step33_singleton_directed_family_handoff_of_chunkedComparisonIntegralFamilyPayloads",
+  "lean_chunked_comparison_payload_structure": "Step33AChunkedComparisonIntegralPayload",
+  "lean_chunked_comparison_step33a_wrapper": "activeCenteredCoeffEntryHboxCert_of_chunkedComparisonIntegralPayload",
+  "lean_chunked_comparison_step33b_wrapper": "psd_step33_finite_analytic_weil_positivity_of_chunkedComparisonIntegralPayload",
+  "lean_chunked_comparison_step33c_wrapper": "psd_step33_singleton_directed_family_handoff_of_chunkedComparisonIntegralPayload",
+  "lean_chunked_comparison_to_window_wrapper": "step33AChunkedWindowPayload_of_chunkedComparisonIntegralPayload",
+  "lean_chunked_pointwise_payload_structure": "Step33AChunkedPointwiseWindowPayload",
+  "lean_chunked_pointwise_step33a_wrapper": "activeCenteredCoeffEntryHboxCert_of_chunkedPointwiseWindowPayload",
+  "lean_chunked_pointwise_step33b_wrapper": "psd_step33_finite_analytic_weil_positivity_of_chunkedPointwiseWindowPayload",
+  "lean_chunked_pointwise_step33c_wrapper": "psd_step33_singleton_directed_family_handoff_of_chunkedPointwiseWindowPayload",
+  "lean_chunked_pointwise_to_window_wrapper": "step33AChunkedWindowPayload_of_chunkedPointwiseWindowPayload",
+  "lean_chunked_window_fold_wrapper": "step33AFoldedWindowPayload_of_chunkedWindowPayload",
+  "lean_chunked_window_payload_structure": "Step33AChunkedWindowPayload",
+  "lean_chunked_window_step33a_wrapper": "activeCenteredCoeffEntryHboxCert_of_chunkedWindowPayload",
+  "lean_chunked_window_step33b_wrapper": "psd_step33_finite_analytic_weil_positivity_of_chunkedWindowPayload",
+  "lean_chunked_window_step33c_wrapper": "psd_step33_singleton_directed_family_handoff_of_chunkedWindowPayload",
+  "lean_folded_payload_structure": "Step33AFoldedWindowPayload",
+  "lean_folded_payload_wrapper": "psd_step33_closed_from_rationalDeltaLiveGeneratedP0AFoldedWindowPayload",
+  "lean_payload_structure": "Step33ASignedChunkedComparisonIntegralPayload",
+  "lean_payload_wrapper": "psd_step33_closed_from_rationalDeltaLiveGeneratedP0ASignedChunkedComparisonIntegralPayload",
+  "lean_receiver": "activeCenteredCoeffEntryHboxCert_of_chunkedWindowPayload",
+  "meaning": "Exact non-mutating Step33A.1-A route contract for the 26-chunk A-window payload.",
+  "proof_obligations": [
+    "active lower-level route: instantiate four collections of Step33AChunkedComparisonIntegralDistancePayloads, one collection per family",
+    "each distance payload covers one CoeffIndex23 distance and 26 adjacent chunks",
+    "use step33AChunkedComparisonIntegralDistancePayload_of_integrand_chunk_bounds when lowerF/upperF are the analytic A integrand itself",
+    "assemble each family with step33AChunkedComparisonIntegralFamilyPayload_of_distancePayloads",
+    "each family payload now extracts a checked positive-window or finite-window cert",
+    "primary finite+tail family payloads now extract primaryK11AnalyticAFiniteTailAnalyticBoundsCert",
+    "control finite+tail family payloads now extract controlK9AnalyticAFiniteTailAnalyticBoundsCert",
+    "assemble them with step33AChunkedComparisonIntegralPayload_of_familyPayloads",
+    "then instantiate Step33AChunkedComparisonIntegralPayload",
+    "prove each chunk lower/upper scalar comparison against the analytic A-integrand integral",
+    "define chunk lower/upper values for primary/control finite windows, 26 chunks each",
+    "define chunk lower/upper values for primary/control positive-tail windows, 26 chunks each",
+    "active direct-finite route: prove primaryFiniteChunks for intervals -archAFiniteTailCutoff + 20*i to -archAFiniteTailCutoff + 20*(i+1)",
+    "active direct-finite route: prove controlFiniteChunks for intervals -archAFiniteTailCutoff + 20*i to -archAFiniteTailCutoff + 20*(i+1)",
+    "legacy folded route still records positive-half finite chunks for receiver comparison but is not the active worklist after the local slack audit",
+    "prove primaryTailChunks for intervals archAFiniteTailCutoff + 10*i to archAFiniteTailCutoff + 10*(i+1)",
+    "prove controlTailChunks for intervals archAFiniteTailCutoff + 10*i to archAFiniteTailCutoff + 10*(i+1)",
+    "prove finite-window sum lower/upper comparisons against generated FiniteLower/FiniteUpper bounds",
+    "prove tail-window sum lower/upper comparisons against generated positive-tail bounds",
+    "convert to Step33AChunkedWindowPayload via the checked comparison-integral-to-window wrapper",
+    "instantiate Step33AChunkedWindowPayload",
+    "feed activeCenteredCoeffEntryHboxCert_of_chunkedWindowPayload to close Step33A",
+    "feed the chunkedWindowPayload Step33B/Step33C wrappers for final handoff",
+    "pointwise-constant chunks are a checked helper only, not the active route for current tight signed windows",
+    "do not mutate ARadius, CSV, radius floors, or global A-radius payloads"
+  ],
+  "schema": "q3_psdpd_step33_a_signed_chunk_payload_contract.v1",
+  "source_route_diagnostic": "q3_psdpd_step33_a_tail_route_diagnostic.v1",
+  "source_window_contract": "q3_psdpd_step33_a_window_contract.v1",
+  "underlying_receiver": "activeCenteredCoeffEntryHboxCert_of_foldedWindowPayload"
+}

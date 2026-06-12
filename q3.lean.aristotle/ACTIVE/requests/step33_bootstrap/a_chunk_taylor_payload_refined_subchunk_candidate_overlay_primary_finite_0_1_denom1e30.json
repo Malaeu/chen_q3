@@ -1,0 +1,717 @@
+{
+  "candidates": [
+    {
+      "candidateGuard": [
+        "coefficients are rational candidates, not yet residual-rechecked",
+        "integral bounds come from diagnostic model integral candidates",
+        "polynomial bounds are exact rational-radius candidates but not emitted Lean proofs",
+        "diffLower/diffUpper remain missing"
+      ],
+      "center": "1.050000000000000000E+1",
+      "coeff": [
+        "22100216631746731637298712790/1000000000000000000000000000000",
+        "2939416992894977786023955572/1000000000000000000000000000000",
+        "-437567979996688300220995879/1000000000000000000000000000000",
+        "20453279744064049908630039/1000000000000000000000000000000",
+        "-884924385786078286466841/1000000000000000000000000000000",
+        "78111735982515760039004/1000000000000000000000000000000",
+        "-7119481280492723885715/1000000000000000000000000000000",
+        "586532552079156942886/1000000000000000000000000000000",
+        "-48769704336202636442/1000000000000000000000000000000",
+        "4167507726035882681/1000000000000000000000000000000",
+        "-361094496737170972/1000000000000000000000000000000",
+        "31586410097988320/1000000000000000000000000000000",
+        "-2787562428895582/1000000000000000000000000000000",
+        "248022591463304/1000000000000000000000000000000",
+        "-22243448955331/1000000000000000000000000000000",
+        "2025671651774/1000000000000000000000000000000",
+        "-185188673601/1000000000000000000000000000000"
+      ],
+      "degree": 16,
+      "endpointMismatches": [],
+      "integralLower": "441274831118919063/20000000000000000000",
+      "integralUpper": "441274831118919063/20000000000000000000",
+      "left": "1.000000000000000000E+1",
+      "polyAbs": "5920482911987614338418708639/250000000000000000000000000000",
+      "polyLower": "-5920482911987614338418708639/250000000000000000000000000000",
+      "polyUpper": "5920482911987614338418708639/250000000000000000000000000000",
+      "polynomialLowerBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "polynomialUpperBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "radius": "5.000000000000000000E-1",
+      "remainder": "69/500000000000000000000000000000",
+      "remainderNonneg": "by norm_num",
+      "right": "1.100000000000000000E+1",
+      "sampledMaxResidual": "1.252580481454165961E-28",
+      "sampledRemainderCandidate": "1.377838529599582557E-28",
+      "seededFields": [
+        "coeff",
+        "remainder",
+        "remainderNonneg",
+        "polyLower",
+        "polyUpper",
+        "polynomialLowerBound",
+        "polynomialUpperBound",
+        "integralLower",
+        "integralUpper"
+      ],
+      "stillMissingFields": [
+        "diffLower",
+        "diffUpper"
+      ],
+      "subchunk": 0
+    },
+    {
+      "candidateGuard": [
+        "coefficients are rational candidates, not yet residual-rechecked",
+        "integral bounds come from diagnostic model integral candidates",
+        "polynomial bounds are exact rational-radius candidates but not emitted Lean proofs",
+        "diffLower/diffUpper remain missing"
+      ],
+      "center": "1.150000000000000000E+1",
+      "coeff": [
+        "24621705533856288563851182230/1000000000000000000000000000000",
+        "2122452766166673268743435065/1000000000000000000000000000000",
+        "-380832274954910220035373878/1000000000000000000000000000000",
+        "17570418872480026222358162/1000000000000000000000000000000",
+        "-583584687739722924663252/1000000000000000000000000000000",
+        "45427703792988212559296/1000000000000000000000000000000",
+        "-4092679521025046015541/1000000000000000000000000000000",
+        "311650025496289957329/1000000000000000000000000000000",
+        "-23416126062657722136/1000000000000000000000000000000",
+        "1821673216724393123/1000000000000000000000000000000",
+        "-144111048642169705/1000000000000000000000000000000",
+        "11497473434622926/1000000000000000000000000000000",
+        "-924771732375472/1000000000000000000000000000000",
+        "74943708539868/1000000000000000000000000000000",
+        "-6114222951930/1000000000000000000000000000000",
+        "504685320498/1000000000000000000000000000000",
+        "-41691026177/1000000000000000000000000000000"
+      ],
+      "degree": 16,
+      "endpointMismatches": [],
+      "integralLower": "2458996220698916121/100000000000000000000",
+      "integralUpper": "2458996220698916121/100000000000000000000",
+      "left": "1.100000000000000000E+1",
+      "polyAbs": "12890187124087098570486182011/500000000000000000000000000000",
+      "polyLower": "-12890187124087098570486182011/500000000000000000000000000000",
+      "polyUpper": "12890187124087098570486182011/500000000000000000000000000000",
+      "polynomialLowerBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "polynomialUpperBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "radius": "5.000000000000000000E-1",
+      "remainder": "7/250000000000000000000000000000",
+      "remainderNonneg": "by norm_num",
+      "right": "1.200000000000000000E+1",
+      "sampledMaxResidual": "2.516410589819999841E-29",
+      "sampledRemainderCandidate": "2.768051648801999825E-29",
+      "seededFields": [
+        "coeff",
+        "remainder",
+        "remainderNonneg",
+        "polyLower",
+        "polyUpper",
+        "polynomialLowerBound",
+        "polynomialUpperBound",
+        "integralLower",
+        "integralUpper"
+      ],
+      "stillMissingFields": [
+        "diffLower",
+        "diffUpper"
+      ],
+      "subchunk": 1
+    },
+    {
+      "candidateGuard": [
+        "coefficients are rational candidates, not yet residual-rechecked",
+        "integral bounds come from diagnostic model integral candidates",
+        "polynomial bounds are exact rational-radius candidates but not emitted Lean proofs",
+        "diffLower/diffUpper remain missing"
+      ],
+      "center": "1.250000000000000000E+1",
+      "coeff": [
+        "26380354484199167476254605969/1000000000000000000000000000000",
+        "1411369725856561787758126183/1000000000000000000000000000000",
+        "-331223690947886161660022077/1000000000000000000000000000000",
+        "15618237457136896421471313/1000000000000000000000000000000",
+        "-408365087530848980769212/1000000000000000000000000000000",
+        "26302853955420844443735/1000000000000000000000000000000",
+        "-2439453837019962899855/1000000000000000000000000000000",
+        "175780109130646573326/1000000000000000000000000000000",
+        "-11985881658209936788/1000000000000000000000000000000",
+        "852928107637559999/1000000000000000000000000000000",
+        "-62128420256042925/1000000000000000000000000000000",
+        "4559346933733425/1000000000000000000000000000000",
+        "-336988864743033/1000000000000000000000000000000",
+        "25090605610503/1000000000000000000000000000000",
+        "-1880137406274/1000000000000000000000000000000",
+        "142332370632/1000000000000000000000000000000",
+        "-10781070025/1000000000000000000000000000000"
+      ],
+      "degree": 16,
+      "endpointMismatches": [],
+      "integralLower": "1317637369996974949/50000000000000000000",
+      "integralUpper": "1317637369996974949/50000000000000000000",
+      "left": "1.200000000000000000E+1",
+      "polyAbs": "5434164786773403164601106661/200000000000000000000000000000",
+      "polyLower": "-5434164786773403164601106661/200000000000000000000000000000",
+      "polyUpper": "5434164786773403164601106661/200000000000000000000000000000",
+      "polynomialLowerBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "polynomialUpperBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "radius": "5.000000000000000000E-1",
+      "remainder": "7/1000000000000000000000000000000",
+      "remainderNonneg": "by norm_num",
+      "right": "1.300000000000000000E+1",
+      "sampledMaxResidual": "5.932556959494686606E-30",
+      "sampledRemainderCandidate": "6.525812655444155267E-30",
+      "seededFields": [
+        "coeff",
+        "remainder",
+        "remainderNonneg",
+        "polyLower",
+        "polyUpper",
+        "polynomialLowerBound",
+        "polynomialUpperBound",
+        "integralLower",
+        "integralUpper"
+      ],
+      "stillMissingFields": [
+        "diffLower",
+        "diffUpper"
+      ],
+      "subchunk": 2
+    },
+    {
+      "candidateGuard": [
+        "coefficients are rational candidates, not yet residual-rechecked",
+        "integral bounds come from diagnostic model integral candidates",
+        "polynomial bounds are exact rational-radius candidates but not emitted Lean proofs",
+        "diffLower/diffUpper remain missing"
+      ],
+      "center": "1.350000000000000000E+1",
+      "coeff": [
+        "27475734419466840410899568558/1000000000000000000000000000000",
+        "794261615204021931576558944/1000000000000000000000000000000",
+        "-286589348452100885178183251/1000000000000000000000000000000",
+        "14204562539529882291940555/1000000000000000000000000000000",
+        "-308033557223718463575315/1000000000000000000000000000000",
+        "14779984865899581843843/1000000000000000000000000000000",
+        "-1484165684218149012963/1000000000000000000000000000000",
+        "104418152811035303875/1000000000000000000000000000000",
+        "-6492388032721790716/1000000000000000000000000000000",
+        "423049847922921101/1000000000000000000000000000000",
+        "-28569866571062598/1000000000000000000000000000000",
+        "1943136939199628/1000000000000000000000000000000",
+        "-132871744826261/1000000000000000000000000000000",
+        "9150655968967/1000000000000000000000000000000",
+        "-634235051090/1000000000000000000000000000000",
+        "44372392202/1000000000000000000000000000000",
+        "-3107247582/1000000000000000000000000000000"
+      ],
+      "degree": 16,
+      "endpointMismatches": [],
+      "integralLower": "2745184812002734313/100000000000000000000",
+      "integralUpper": "2745184812002734313/100000000000000000000",
+      "left": "1.300000000000000000E+1",
+      "polyAbs": "27946307872503243052420811423/1000000000000000000000000000000",
+      "polyLower": "-27946307872503243052420811423/1000000000000000000000000000000",
+      "polyUpper": "27946307872503243052420811423/1000000000000000000000000000000",
+      "polynomialLowerBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "polynomialUpperBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "radius": "5.000000000000000000E-1",
+      "remainder": "1/500000000000000000000000000000",
+      "remainderNonneg": "by norm_num",
+      "right": "1.400000000000000000E+1",
+      "sampledMaxResidual": "1.575255306705275978E-30",
+      "sampledRemainderCandidate": "1.732780837375803576E-30",
+      "seededFields": [
+        "coeff",
+        "remainder",
+        "remainderNonneg",
+        "polyLower",
+        "polyUpper",
+        "polynomialLowerBound",
+        "polynomialUpperBound",
+        "integralLower",
+        "integralUpper"
+      ],
+      "stillMissingFields": [
+        "diffLower",
+        "diffUpper"
+      ],
+      "subchunk": 3
+    },
+    {
+      "candidateGuard": [
+        "coefficients are rational candidates, not yet residual-rechecked",
+        "integral bounds come from diagnostic model integral candidates",
+        "polynomial bounds are exact rational-radius candidates but not emitted Lean proofs",
+        "diffLower/diffUpper remain missing"
+      ],
+      "center": "1.450000000000000000E+1",
+      "coeff": [
+        "27997316609342312885190091200/1000000000000000000000000000000",
+        "262530149149345246431519851/1000000000000000000000000000000",
+        "-245696299776199847794518102/1000000000000000000000000000000",
+        "13093868308821995831342842/1000000000000000000000000000000",
+        "-253148063935806932321738/1000000000000000000000000000000",
+        "7751106036747440611889/1000000000000000000000000000000",
+        "-904700011576673262766/1000000000000000000000000000000",
+        "64830238567839461026/1000000000000000000000000000000",
+        "-3705615693925418306/1000000000000000000000000000000",
+        "220455382020151282/1000000000000000000000000000000",
+        "-13871072946578350/1000000000000000000000000000000",
+        "880656424025975/1000000000000000000000000000000",
+        "-56042607219484/1000000000000000000000000000000",
+        "3589885943727/1000000000000000000000000000000",
+        "-231472260510/1000000000000000000000000000000",
+        "15056590960/1000000000000000000000000000000",
+        "-980661854/1000000000000000000000000000000"
+      ],
+      "degree": 16,
+      "endpointMismatches": [],
+      "integralLower": "2797683875132246779/100000000000000000000",
+      "integralUpper": "2797683875132246779/100000000000000000000",
+      "left": "1.400000000000000000E+1",
+      "polyAbs": "28191658571033041404156149519/1000000000000000000000000000000",
+      "polyLower": "-28191658571033041404156149519/1000000000000000000000000000000",
+      "polyUpper": "28191658571033041404156149519/1000000000000000000000000000000",
+      "polynomialLowerBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "polynomialUpperBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "radius": "5.000000000000000000E-1",
+      "remainder": "1/1000000000000000000000000000000",
+      "remainderNonneg": "by norm_num",
+      "right": "1.500000000000000000E+1",
+      "sampledMaxResidual": "4.611731845850974487E-31",
+      "sampledRemainderCandidate": "5.072905030436071936E-31",
+      "seededFields": [
+        "coeff",
+        "remainder",
+        "remainderNonneg",
+        "polyLower",
+        "polyUpper",
+        "polynomialLowerBound",
+        "polynomialUpperBound",
+        "integralLower",
+        "integralUpper"
+      ],
+      "stillMissingFields": [
+        "diffLower",
+        "diffUpper"
+      ],
+      "subchunk": 4
+    },
+    {
+      "candidateGuard": [
+        "coefficients are rational candidates, not yet residual-rechecked",
+        "integral bounds come from diagnostic model integral candidates",
+        "polynomial bounds are exact rational-radius candidates but not emitted Lean proofs",
+        "diffLower/diffUpper remain missing"
+      ],
+      "center": "1.550000000000000000E+1",
+      "coeff": [
+        "28026998086698404812812603067/1000000000000000000000000000000",
+        "-190559684381026932125595282/1000000000000000000000000000000",
+        "-207868377638191206933222754/1000000000000000000000000000000",
+        "12142771644736771918812154/1000000000000000000000000000000",
+        "-225928238992156557466793/1000000000000000000000000000000",
+        "3501475041575777020084/1000000000000000000000000000000",
+        "-538679641209006588925/1000000000000000000000000000000",
+        "41708861247793932152/1000000000000000000000000000000",
+        "-2224137857956696464/1000000000000000000000000000000",
+        "120020047545570555/1000000000000000000000000000000",
+        "-7049339788951158/1000000000000000000000000000000",
+        "420790624777367/1000000000000000000000000000000",
+        "-25059557284053/1000000000000000000000000000000",
+        "1500030824024/1000000000000000000000000000000",
+        "-90417044839/1000000000000000000000000000000",
+        "5496191779/1000000000000000000000000000000",
+        "-334633147/1000000000000000000000000000000"
+      ],
+      "degree": 16,
+      "endpointMismatches": [],
+      "integralLower": "2800967289658885893/100000000000000000000",
+      "integralUpper": "2800967289658885893/100000000000000000000",
+      "left": "1.500000000000000000E+1",
+      "polyAbs": "2817577710844173965707047187/100000000000000000000000000000",
+      "polyLower": "-2817577710844173965707047187/100000000000000000000000000000",
+      "polyUpper": "2817577710844173965707047187/100000000000000000000000000000",
+      "polynomialLowerBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "polynomialUpperBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "radius": "5.000000000000000000E-1",
+      "remainder": "1/1000000000000000000000000000000",
+      "remainderNonneg": "by norm_num",
+      "right": "1.600000000000000000E+1",
+      "sampledMaxResidual": "1.467721051258748292E-31",
+      "sampledRemainderCandidate": "1.614493156384623121E-31",
+      "seededFields": [
+        "coeff",
+        "remainder",
+        "remainderNonneg",
+        "polyLower",
+        "polyUpper",
+        "polynomialLowerBound",
+        "polynomialUpperBound",
+        "integralLower",
+        "integralUpper"
+      ],
+      "stillMissingFields": [
+        "diffLower",
+        "diffUpper"
+      ],
+      "subchunk": 5
+    },
+    {
+      "candidateGuard": [
+        "coefficients are rational candidates, not yet residual-rechecked",
+        "integral bounds come from diagnostic model integral candidates",
+        "polynomial bounds are exact rational-radius candidates but not emitted Lean proofs",
+        "diffLower/diffUpper remain missing"
+      ],
+      "center": "1.650000000000000000E+1",
+      "coeff": [
+        "27640489870478422899330287433/1000000000000000000000000000000",
+        "-570757287198847836707631387/1000000000000000000000000000000",
+        "-172767879946809739511398606/1000000000000000000000000000000",
+        "11264644404862337864752070/1000000000000000000000000000000",
+        "-215183168298801027589814/1000000000000000000000000000000",
+        "1034253975588590997327/1000000000000000000000000000000",
+        "-300218572097026291352/1000000000000000000000000000000",
+        "27511868613820327916/1000000000000000000000000000000",
+        "-1402461309798226243/1000000000000000000000000000000",
+        "68072593085181089/1000000000000000000000000000000",
+        "-3721938537663612/1000000000000000000000000000000",
+        "210407298115891/1000000000000000000000000000000",
+        "-11794586674526/1000000000000000000000000000000",
+        "662340388700/1000000000000000000000000000000",
+        "-37474152572/1000000000000000000000000000000",
+        "2138223082/1000000000000000000000000000000",
+        "-122228165/1000000000000000000000000000000"
+      ],
+      "degree": 16,
+      "endpointMismatches": [],
+      "integralLower": "2762608985668917857/100000000000000000000",
+      "integralUpper": "2762608985668917857/100000000000000000000",
+      "left": "1.600000000000000000E+1",
+      "polyAbs": "27970482050795079178745301687/1000000000000000000000000000000",
+      "polyLower": "-27970482050795079178745301687/1000000000000000000000000000000",
+      "polyUpper": "27970482050795079178745301687/1000000000000000000000000000000",
+      "polynomialLowerBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "polynomialUpperBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "radius": "5.000000000000000000E-1",
+      "remainder": "1/1000000000000000000000000000000",
+      "remainderNonneg": "by norm_num",
+      "right": "1.700000000000000000E+1",
+      "sampledMaxResidual": "5.023261416369631346E-32",
+      "sampledRemainderCandidate": "5.525587558006594480E-32",
+      "seededFields": [
+        "coeff",
+        "remainder",
+        "remainderNonneg",
+        "polyLower",
+        "polyUpper",
+        "polynomialLowerBound",
+        "polynomialUpperBound",
+        "integralLower",
+        "integralUpper"
+      ],
+      "stillMissingFields": [
+        "diffLower",
+        "diffUpper"
+      ],
+      "subchunk": 6
+    },
+    {
+      "candidateGuard": [
+        "coefficients are rational candidates, not yet residual-rechecked",
+        "integral bounds come from diagnostic model integral candidates",
+        "polynomial bounds are exact rational-radius candidates but not emitted Lean proofs",
+        "diffLower/diffUpper remain missing"
+      ],
+      "center": "1.750000000000000000E+1",
+      "coeff": [
+        "26908014924778689549679183800/1000000000000000000000000000000",
+        "-883356294651625313506801326/1000000000000000000000000000000",
+        "-140258665706548347434401346/1000000000000000000000000000000",
+        "10409139581313499622979023/1000000000000000000000000000000",
+        "-213642574318024324514591/1000000000000000000000000000000",
+        "-260118181053025223673/1000000000000000000000000000000",
+        "-141880573953601573177/1000000000000000000000000000000",
+        "18357272378355663435/1000000000000000000000000000000",
+        "-927664114675596774/1000000000000000000000000000000",
+        "40238782883234209/1000000000000000000000000000000",
+        "-2028434410314419/1000000000000000000000000000000",
+        "109348201633380/1000000000000000000000000000000",
+        "-5808978961490/1000000000000000000000000000000",
+        "307101020147/1000000000000000000000000000000",
+        "-16362734630/1000000000000000000000000000000",
+        "879764178/1000000000000000000000000000000",
+        "-47399920/1000000000000000000000000000000"
+      ],
+      "degree": 16,
+      "endpointMismatches": [],
+      "integralLower": "2689632403178719769/100000000000000000000",
+      "integralUpper": "2689632403178719769/100000000000000000000",
+      "left": "1.700000000000000000E+1",
+      "polyAbs": "5477214448826479197743090699/200000000000000000000000000000",
+      "polyLower": "-5477214448826479197743090699/200000000000000000000000000000",
+      "polyUpper": "5477214448826479197743090699/200000000000000000000000000000",
+      "polynomialLowerBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "polynomialUpperBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "radius": "5.000000000000000000E-1",
+      "remainder": "1/1000000000000000000000000000000",
+      "remainderNonneg": "by norm_num",
+      "right": "1.800000000000000000E+1",
+      "sampledMaxResidual": "1.832680391682288735E-32",
+      "sampledRemainderCandidate": "2.015948430850517609E-32",
+      "seededFields": [
+        "coeff",
+        "remainder",
+        "remainderNonneg",
+        "polyLower",
+        "polyUpper",
+        "polynomialLowerBound",
+        "polynomialUpperBound",
+        "integralLower",
+        "integralUpper"
+      ],
+      "stillMissingFields": [
+        "diffLower",
+        "diffUpper"
+      ],
+      "subchunk": 7
+    },
+    {
+      "candidateGuard": [
+        "coefficients are rational candidates, not yet residual-rechecked",
+        "integral bounds come from diagnostic model integral candidates",
+        "polynomial bounds are exact rational-radius candidates but not emitted Lean proofs",
+        "diffLower/diffUpper remain missing"
+      ],
+      "center": "1.850000000000000000E+1",
+      "coeff": [
+        "25894595076896678800356971049/1000000000000000000000000000000",
+        "-1133502808069807262446832229/1000000000000000000000000000000",
+        "-110317470907841148698793195/1000000000000000000000000000000",
+        "9549724199586981035163488/1000000000000000000000000000000",
+        "-216489128258183001390164/1000000000000000000000000000000",
+        "-773242890995798265700/1000000000000000000000000000000",
+        "-36354542714815814134/1000000000000000000000000000000",
+        "12173103692943628709/1000000000000000000000000000000",
+        "-641276409917557315/1000000000000000000000000000000",
+        "24881341994830457/1000000000000000000000000000000",
+        "-1135243455810320/1000000000000000000000000000000",
+        "58657612631790/1000000000000000000000000000000",
+        "-2978787598472/1000000000000000000000000000000",
+        "148776391940/1000000000000000000000000000000",
+        "-7483074457/1000000000000000000000000000000",
+        "380380898/1000000000000000000000000000000",
+        "-19383997/1000000000000000000000000000000"
+      ],
+      "degree": 16,
+      "endpointMismatches": [],
+      "integralLower": "1294269962406274759/50000000000000000000",
+      "integralUpper": "1294269962406274759/50000000000000000000",
+      "left": "1.800000000000000000E+1",
+      "polyAbs": "6622533279895886098582919877/250000000000000000000000000000",
+      "polyLower": "-6622533279895886098582919877/250000000000000000000000000000",
+      "polyUpper": "6622533279895886098582919877/250000000000000000000000000000",
+      "polynomialLowerBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "polynomialUpperBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "radius": "5.000000000000000000E-1",
+      "remainder": "1/1000000000000000000000000000000",
+      "remainderNonneg": "by norm_num",
+      "right": "1.900000000000000000E+1",
+      "sampledMaxResidual": "7.076242587156538343E-33",
+      "sampledRemainderCandidate": "7.783866845872192178E-33",
+      "seededFields": [
+        "coeff",
+        "remainder",
+        "remainderNonneg",
+        "polyLower",
+        "polyUpper",
+        "polynomialLowerBound",
+        "polynomialUpperBound",
+        "integralLower",
+        "integralUpper"
+      ],
+      "stillMissingFields": [
+        "diffLower",
+        "diffUpper"
+      ],
+      "subchunk": 8
+    },
+    {
+      "candidateGuard": [
+        "coefficients are rational candidates, not yet residual-rechecked",
+        "integral bounds come from diagnostic model integral candidates",
+        "polynomial bounds are exact rational-radius candidates but not emitted Lean proofs",
+        "diffLower/diffUpper remain missing"
+      ],
+      "center": "1.950000000000000000E+1",
+      "coeff": [
+        "24660107234948554678675871635/1000000000000000000000000000000",
+        "-1326358537846767078949572787/1000000000000000000000000000000",
+        "-82975272298559023403069437/1000000000000000000000000000000",
+        "8675700276806966840569272/1000000000000000000000000000000",
+        "-220516576943477634483987/1000000000000000000000000000000",
+        "-768772562775002690041/1000000000000000000000000000000",
+        "32777657262545652704/1000000000000000000000000000000",
+        "7819621180985611164/1000000000000000000000000000000",
+        "-460055061703245171/1000000000000000000000000000000",
+        "16192837382127386/1000000000000000000000000000000",
+        "-650547903202859/1000000000000000000000000000000",
+        "32237349958988/1000000000000000000000000000000",
+        "-1582847761920/1000000000000000000000000000000",
+        "75019178376/1000000000000000000000000000000",
+        "-3567229713/1000000000000000000000000000000",
+        "171889436/1000000000000000000000000000000",
+        "-8311647/1000000000000000000000000000000"
+      ],
+      "degree": 16,
+      "endpointMismatches": [],
+      "integralLower": "493063797450788553/20000000000000000000",
+      "integralUpper": "493063797450788553/20000000000000000000",
+      "left": "1.900000000000000000E+1",
+      "polyAbs": "25345128591366451452288900451/1000000000000000000000000000000",
+      "polyLower": "-25345128591366451452288900451/1000000000000000000000000000000",
+      "polyUpper": "25345128591366451452288900451/1000000000000000000000000000000",
+      "polynomialLowerBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "polynomialUpperBound": {
+        "source": "RawOmegaATaylorModelCertificate.polynomial_value_bounds_of_sum_abs_coeff_mul_radius",
+        "status": "candidate_rational_arithmetic_not_lean_checked"
+      },
+      "radius": "5.000000000000000000E-1",
+      "remainder": "1/1000000000000000000000000000000",
+      "remainderNonneg": "by norm_num",
+      "right": "2.000000000000000000E+1",
+      "sampledMaxResidual": "2.874107115823222489E-33",
+      "sampledRemainderCandidate": "3.161517827405544738E-33",
+      "seededFields": [
+        "coeff",
+        "remainder",
+        "remainderNonneg",
+        "polyLower",
+        "polyUpper",
+        "polynomialLowerBound",
+        "polynomialUpperBound",
+        "integralLower",
+        "integralUpper"
+      ],
+      "stillMissingFields": [
+        "diffLower",
+        "diffUpper"
+      ],
+      "subchunk": 9
+    }
+  ],
+  "counts": {
+    "candidateSubchunks": 10,
+    "endpointMismatchSubchunks": 0,
+    "expectedSubchunks": 10,
+    "probeSubchunks": 10,
+    "proofSafeClosedFields": 0,
+    "seededCandidateFields": 90,
+    "stillMissingFields": 20
+  },
+  "meaning": "Candidate overlay for one refined parent chunk.  This file is not proof data and must not be imported by Lean.",
+  "nextGeneratorContract": [
+    "recompute residual bounds against the rational polynomial candidates",
+    "generate universal raw-integrand value bounds or direct diff bounds",
+    "turn polynomial-radius arithmetic into Lean-checkable proof terms",
+    "then lift this overlay shape from one parent chunk to shardable refined worklists"
+  ],
+  "pilot": {
+    "degree": 16,
+    "family": "primary_finite",
+    "left": "1.000000000000000000E+1",
+    "parentChunk": 1,
+    "right": "2.000000000000000000E+1",
+    "row": 0,
+    "split": 10
+  },
+  "probe": "q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_model_probe_primary_finite_0_1_split10_decimal_full_denom1e30.json",
+  "routeGuard": [
+    "do not mutate the refined skeleton or worklist from this overlay",
+    "do not emit Lean from this overlay",
+    "sampled residuals must be replaced by universal checked bounds",
+    "rational coefficients must be residual-rechecked after rounding",
+    "raw-integrand value bounds or direct diff bounds remain required",
+    "row hLowerSum/hUpperSum comparisons remain required"
+  ],
+  "schema": "q3_psdpd_step33_a_refined_subchunk_candidate_overlay.v1",
+  "seededFields": [
+    "coeff",
+    "remainder",
+    "remainderNonneg",
+    "polyLower",
+    "polyUpper",
+    "polynomialLowerBound",
+    "polynomialUpperBound",
+    "integralLower",
+    "integralUpper"
+  ],
+  "skeleton": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_proof_data_skeleton.json",
+  "status": "candidate_overlay_not_proof_data",
+  "stillMissingFields": [
+    "diffLower",
+    "diffUpper"
+  ],
+  "worklist": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_worklist.json"
+}

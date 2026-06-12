@@ -10,24 +10,24 @@ Rkappa best tau midpoint = 6.3095734448019430e+07, lambda_min=1.9590875190777977
 
 == Radius diagnostics ==
 ||rad(A)||_2      = 2.0455060480410520e-15
-||rad(P)||_2      = 7.9787190368612646e-16
-||rad(P0)||_2     = 7.7626345855150444e-16
+||rad(P)||_2      = 8.6711132260283498e-16
+||rad(P0)||_2     = 8.4469507316590047e-16
 ||rad(QTQ)||_2    = 1.0317235888039832e-14
-||rad(Dtheta)||_2 = 2.7571875130377107e-15
-||rad(Rkappa)||_2 = 4.2814627268370869e-15
+||rad(Dtheta)||_2 = 2.8165869753900760e-15
+||rad(Rkappa)||_2 = 4.4738619165509740e-15
 
 == Dtheta = C - theta R_kappa penalty certificate ==
 best_tau      = 6.3095734448019428e+01
 lambda_mid    = 1.2636923475545920e-05
-err_norm      = 6.5361801953490399e-13
-safe_lower    = 1.2636922821927900e-05
+err_norm      = 6.5367976193589348e-13
+safe_lower    = 1.2636922821866158e-05
 PASS          = True
 
 == R_kappa penalty certificate ==
 best_tau      = 1.0000000000000000e+05
 lambda_mid    = 1.9590650942526585e-03
-err_norm      = 1.0317276819473711e-09
-safe_lower    = 1.9590640625249765e-03
+err_norm      = 1.0317278608443631e-09
+safe_lower    = 1.9590640625247978e-03
 PASS          = True
 
 == Final verdict ==

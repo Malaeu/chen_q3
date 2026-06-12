@@ -1,0 +1,1518 @@
+- generic [ref=e1]:
+  - link "Weiter zum Inhalt" [ref=e3] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e7]:
+    - generic [ref=e9]:
+      - navigation "Seitenleiste":
+        - generic:
+          - generic:
+            - generic:
+              - button "Seitenleiste öffnen":
+                - img
+        - generic:
+          - generic:
+            - link "Neuer Chat":
+              - /url: /
+              - generic:
+                - img
+              - generic: Neuer Chat
+          - generic:
+            - button "Chats durchsuchen":
+              - generic:
+                - img
+              - generic: Chats durchsuchen
+          - generic:
+            - button "Letzte":
+              - generic:
+                - img
+              - generic: Letzte
+        - generic:
+          - generic:
+            - button "Profil-Menü öffnen"
+      - generic [ref=e10]:
+        - heading "Chatverlauf" [level=2] [ref=e11]
+        - generic [ref=e12]:
+          - navigation "Chatverlauf" [ref=e13]:
+            - generic [ref=e16]:
+              - link "Heim" [ref=e17] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e18]: ChatGPT
+              - button "Seitenleiste schließen" [expanded] [ref=e20]:
+                - img [ref=e21]
+            - list [ref=e24]:
+              - listitem [ref=e25]:
+                - link "Neuer Chat Umschalttaste Befehlstaste O" [ref=e137] [cursor=pointer]:
+                  - /url: /
+                  - generic [ref=e27]:
+                    - img [ref=e139]
+                    - generic [ref=e142]: Neuer Chat
+                  - generic [ref=e143]:
+                    - generic "Umschalttaste" [ref=e144]:
+                      - generic [ref=e145]: ⇧
+                    - generic "Befehlstaste" [ref=e146]:
+                      - generic [ref=e147]: ⌘
+                    - generic [ref=e149]: O
+              - listitem [ref=e32]:
+                - button "Chats durchsuchen Befehlstaste K" [ref=e150] [cursor=pointer]:
+                  - generic [ref=e34]:
+                    - img [ref=e152]
+                    - generic [ref=e155]: Chats durchsuchen
+                  - generic [ref=e156]:
+                    - generic "Befehlstaste" [ref=e157]:
+                      - generic [ref=e158]: ⌘
+                    - generic [ref=e160]: K
+            - link "Bibliothek" [ref=e39] [cursor=pointer]:
+              - /url: /library
+              - img [ref=e41]
+              - generic [ref=e44]: Bibliothek
+            - link "Apps" [ref=e45] [cursor=pointer]:
+              - /url: /apps
+              - img [ref=e47]
+              - generic [ref=e50]: Apps
+            - link "Codex" [ref=e51] [cursor=pointer]:
+              - /url: /codex
+              - generic [ref=e52]:
+                - img [ref=e54]
+                - generic [ref=e57]: Codex
+              - img [ref=e59]
+            - generic [ref=e62] [cursor=pointer]:
+              - img [ref=e64]
+              - generic [ref=e67]: Mehr
+            - generic [ref=e161]:
+              - button "GPTs" [expanded] [ref=e163] [cursor=pointer]:
+                - heading "GPTs" [level=2] [ref=e164]
+              - list [ref=e165]:
+                - listitem [ref=e166]:
+                  - link "Aris_Tot_Le" [ref=e167] [cursor=pointer]:
+                    - /url: /g/g-693cbc1743d48191966718e1132fc48c-aris-tot-le
+                    - generic [ref=e168]:
+                      - img [ref=e170]
+                      - generic [ref=e173]: Aris_Tot_Le
+                    - button [ref=e175]:
+                      - img [ref=e177]
+                - listitem [ref=e179]:
+                  - link "Murka" [ref=e180] [cursor=pointer]:
+                    - /url: /g/g-67f01efd3b1481918beadcb246142d4b-murka
+                    - generic [ref=e185]: Murka
+                    - button [ref=e187]:
+                      - img [ref=e189]
+                - listitem [ref=e191]:
+                  - link "System Prompt Generator for Reasoning Models" [ref=e192] [cursor=pointer]:
+                    - /url: /g/g-6769db0aa91c8191bf46eeac95f5e055-system-prompt-generator-for-reasoning-models
+                    - generic "System Prompt Generator for Reasoning Models" [ref=e197]
+                    - button [ref=e199]:
+                      - img [ref=e201]
+                - listitem [ref=e203]:
+                  - link "System Prompt Generator" [ref=e204] [cursor=pointer]:
+                    - /url: /g/g-8qIKJ1ORT-system-prompt-generator
+                    - generic [ref=e209]: System Prompt Generator
+                    - button [ref=e211]:
+                      - img [ref=e213]
+              - link "GPTs erkunden" [ref=e215] [cursor=pointer]:
+                - /url: /gpts
+                - img [ref=e217]
+                - generic [ref=e220]: GPTs erkunden
+            - generic [ref=e221]:
+              - button "Projekte" [expanded] [ref=e223] [cursor=pointer]:
+                - heading "Projekte" [level=2] [ref=e224]
+              - list [ref=e225]:
+                - listitem [ref=e226]:
+                  - button "Neues Projekt" [ref=e227] [cursor=pointer]:
+                    - img [ref=e229]
+                    - generic [ref=e232]: Neues Projekt
+                - listitem [ref=e233]:
+                  - generic [ref=e234]:
+                    - button "RH_März_2026" [expanded] [ref=e235] [cursor=pointer]:
+                      - img [ref=e239]
+                      - generic [ref=e248]: RH_März_2026
+                    - generic:
+                      - button "Projektstartseite öffnen" [ref=e249] [cursor=pointer]:
+                        - img [ref=e251]
+                      - button "Projektoptionen für RH_März_2026 öffnen" [ref=e253] [cursor=pointer]:
+                        - img [ref=e255]
+                  - list [ref=e258]:
+                    - listitem [ref=e259]:
+                      - link "Branch · Доказательство гипотезы Римана, Chat im Projekt RH_März_2026" [ref=e260] [cursor=pointer]:
+                        - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a15bb66-72e0-83eb-9a6e-1da84bfec2de
+                        - generic "Branch · Доказательство гипотезы Римана" [ref=e262]
+                        - button "Gesprächsoptionen für Branch · Доказательство гипотезы Римана öffnen" [ref=e265]:
+                          - img [ref=e267]
+                    - listitem [ref=e269]:
+                      - link "Branch · Branch · Доказательство гипотезы Римана, Chat im Projekt RH_März_2026, ungelesen" [ref=e270] [cursor=pointer]:
+                        - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a15bf3c-fcf0-83eb-8bde-466ad482785d
+                        - generic "Branch · Branch · Доказательство гипотезы Римана" [ref=e272]
+                        - button "Gesprächsoptionen für Branch · Branch · Доказательство гипотезы Римана öffnen" [ref=e276]:
+                          - img [ref=e278]
+                    - listitem [ref=e282]:
+                      - link "Доказательство гипотезы Римана, Chat im Projekt RH_März_2026, ungelesen" [ref=e283] [cursor=pointer]:
+                        - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a15a8d6-0c60-83eb-bdc7-926d6ca244e7
+                        - generic "Доказательство гипотезы Римана" [ref=e285]
+                        - button "Gesprächsoptionen für Доказательство гипотезы Римана öffnen" [ref=e289]:
+                          - img [ref=e291]
+                    - listitem [ref=e295]:
+                      - link "Как настроить кодекс, Chat im Projekt RH_März_2026" [ref=e296] [cursor=pointer]:
+                        - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a11a05f-4508-83eb-a5eb-948a1896a678
+                        - generic [ref=e298]: Как настроить кодекс
+                        - button "Gesprächsoptionen für Как настроить кодекс öffnen" [ref=e301]:
+                          - img [ref=e303]
+                    - listitem [ref=e305]:
+                      - link "Truth-First Proof Protocol, Chat im Projekt RH_März_2026" [ref=e306] [cursor=pointer]:
+                        - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a0fb1bf-4280-83eb-955b-615032a280d3
+                        - generic [ref=e308]: Truth-First Proof Protocol
+                        - button "Gesprächsoptionen für Truth-First Proof Protocol öffnen" [ref=e311]:
+                          - img [ref=e313]
+                    - listitem [ref=e315]:
+                      - button "Mehr anzeigen" [ref=e316] [cursor=pointer]:
+                        - generic [ref=e318]: Mehr anzeigen
+                - listitem [ref=e319]:
+                  - generic [ref=e320]:
+                    - button "Last War Survival" [ref=e321] [cursor=pointer]:
+                      - img [ref=e325]
+                      - generic [ref=e334]: Last War Survival
+                    - generic:
+                      - button "Projektstartseite öffnen" [ref=e335] [cursor=pointer]:
+                        - img [ref=e337]
+                      - button "Projektoptionen für Last War Survival öffnen" [ref=e339] [cursor=pointer]:
+                        - img [ref=e341]
+                - listitem [ref=e343]:
+                  - generic [ref=e344]:
+                    - button "Patienten Beratung" [ref=e345] [cursor=pointer]:
+                      - img [ref=e349]
+                      - generic [ref=e358]: Patienten Beratung
+                    - generic:
+                      - button "Projektstartseite öffnen" [ref=e359] [cursor=pointer]:
+                        - img [ref=e361]
+                      - button "Projektoptionen für Patienten Beratung öffnen" [ref=e363] [cursor=pointer]:
+                        - img [ref=e365]
+                - listitem [ref=e367]:
+                  - generic [ref=e368]:
+                    - button "OP Berichte" [ref=e369] [cursor=pointer]:
+                      - img [ref=e373]
+                      - generic [ref=e382]: OP Berichte
+                    - generic:
+                      - button "Projektstartseite öffnen" [ref=e383] [cursor=pointer]:
+                        - img [ref=e385]
+                      - button "Projektoptionen für OP Berichte öffnen" [ref=e387] [cursor=pointer]:
+                        - img [ref=e389]
+                - listitem [ref=e391]:
+                  - generic [ref=e392]:
+                    - button "Paper_RH" [ref=e393] [cursor=pointer]:
+                      - img [ref=e397]
+                      - generic [ref=e406]: Paper_RH
+                    - generic:
+                      - button "Projektstartseite öffnen" [ref=e407] [cursor=pointer]:
+                        - img [ref=e409]
+                      - button "Projektoptionen für Paper_RH öffnen" [ref=e411] [cursor=pointer]:
+                        - img [ref=e413]
+                - listitem [ref=e415]:
+                  - generic [ref=e416] [cursor=pointer]:
+                    - img [ref=e418]
+                    - generic [ref=e421]: Mehr
+            - generic [ref=e422]:
+              - button "Aktuelle" [expanded] [ref=e424] [cursor=pointer]:
+                - heading "Aktuelle" [level=2] [ref=e425]
+              - list [ref=e427]:
+                - listitem [ref=e428]:
+                  - link "Translation to English" [ref=e429] [cursor=pointer]:
+                    - /url: /c/6134ce71-3288-8009-8b67-af0ab66dda92
+                    - generic [ref=e431]: Translation to English
+                    - button "Gesprächsoptionen für Translation to English öffnen" [ref=e434]:
+                      - img [ref=e436]
+                - listitem [ref=e438]:
+                  - link "Translate Russian to English" [ref=e439] [cursor=pointer]:
+                    - /url: /c/3ce521b2-21f0-8009-a2f5-bf5d97961a91
+                    - generic [ref=e441]: Translate Russian to English
+                    - button "Gesprächsoptionen für Translate Russian to English öffnen" [ref=e444]:
+                      - img [ref=e446]
+                - listitem [ref=e448]:
+                  - link "Cancer Daily Forecast, June 7" [ref=e449] [cursor=pointer]:
+                    - /url: /c/6a24e91f-4e78-83eb-b099-4abad061cf6f
+                    - generic [ref=e451]: Cancer Daily Forecast, June 7
+                    - button "Gesprächsoptionen für Cancer Daily Forecast, June 7 öffnen" [ref=e454]:
+                      - img [ref=e456]
+                - listitem [ref=e458]:
+                  - link "Translate to English" [ref=e459] [cursor=pointer]:
+                    - /url: /c/8d8bf52d-0d78-8009-aa62-59a80291f0d1
+                    - generic [ref=e461]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e464]:
+                      - img [ref=e466]
+                - listitem [ref=e468]:
+                  - link "Translate German to English" [ref=e469] [cursor=pointer]:
+                    - /url: /c/0acb1b01-addc-8009-89b3-96d52bf8ec7a
+                    - generic [ref=e471]: Translate German to English
+                    - button "Gesprächsoptionen für Translate German to English öffnen" [ref=e474]:
+                      - img [ref=e476]
+                - listitem [ref=e478]:
+                  - link "Translate German to English" [ref=e479] [cursor=pointer]:
+                    - /url: /c/2d794eeb-b164-8009-b5de-04babbcbb9cc
+                    - generic [ref=e481]: Translate German to English
+                    - button "Gesprächsoptionen für Translate German to English öffnen" [ref=e484]:
+                      - img [ref=e486]
+                - listitem [ref=e488]:
+                  - link "Перевод на геймерский английский" [ref=e489] [cursor=pointer]:
+                    - /url: /c/33518b28-f060-8009-8eb1-a56459766436
+                    - generic "Перевод на геймерский английский" [ref=e491]
+                    - button "Gesprächsoptionen für Перевод на геймерский английский öffnen" [ref=e494]:
+                      - img [ref=e496]
+                - listitem [ref=e498]:
+                  - link "Translate to English" [ref=e499] [cursor=pointer]:
+                    - /url: /c/740cde98-a204-8009-8859-cc5af31b1b0a
+                    - generic [ref=e501]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e504]:
+                      - img [ref=e506]
+                - listitem [ref=e508]:
+                  - link "Translate German to English" [ref=e509] [cursor=pointer]:
+                    - /url: /c/c3ab6af6-be24-8009-98a5-554a1d8d8869
+                    - generic [ref=e511]: Translate German to English
+                    - button "Gesprächsoptionen für Translate German to English öffnen" [ref=e514]:
+                      - img [ref=e516]
+                - listitem [ref=e518]:
+                  - link "Translate to English" [ref=e519] [cursor=pointer]:
+                    - /url: /c/c5cbf38e-96e4-8009-9813-67faf2fab6c8
+                    - generic [ref=e521]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e524]:
+                      - img [ref=e526]
+                - listitem [ref=e528]:
+                  - link "Gamer Englisch Übersetzung" [ref=e529] [cursor=pointer]:
+                    - /url: /c/5e07445f-1ba4-8009-a39d-a34ba783934d
+                    - generic [ref=e531]: Gamer Englisch Übersetzung
+                    - button "Gesprächsoptionen für Gamer Englisch Übersetzung öffnen" [ref=e534]:
+                      - img [ref=e536]
+                - listitem [ref=e538]:
+                  - link "Translate to English" [ref=e539] [cursor=pointer]:
+                    - /url: /c/eba16502-5bec-8009-9a8a-19a82036ef74
+                    - generic [ref=e541]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e544]:
+                      - img [ref=e546]
+                - listitem [ref=e548]:
+                  - link "Перевод на gamers english" [ref=e549] [cursor=pointer]:
+                    - /url: /c/f6632b7e-5790-8009-b275-151269ba68ba
+                    - generic [ref=e551]: Перевод на gamers english
+                    - button "Gesprächsoptionen für Перевод на gamers english öffnen" [ref=e554]:
+                      - img [ref=e556]
+                - listitem [ref=e558]:
+                  - link "English translation" [ref=e559] [cursor=pointer]:
+                    - /url: /c/39e7f45c-c06c-8009-ace0-afc1a40c7da8
+                    - generic [ref=e561]: English translation
+                    - button "Gesprächsoptionen für English translation öffnen" [ref=e564]:
+                      - img [ref=e566]
+                - listitem [ref=e568]:
+                  - link "Translate Russian to English" [ref=e569] [cursor=pointer]:
+                    - /url: /c/adb67804-ca74-8009-a619-62e3d41cffa6
+                    - generic [ref=e571]: Translate Russian to English
+                    - button "Gesprächsoptionen für Translate Russian to English öffnen" [ref=e574]:
+                      - img [ref=e576]
+                - listitem [ref=e578]:
+                  - link "Перевод на английский" [ref=e579] [cursor=pointer]:
+                    - /url: /c/bd620dae-3fcc-8009-b7c2-09a2c7428b3e
+                    - generic [ref=e581]: Перевод на английский
+                    - button "Gesprächsoptionen für Перевод на английский öffnen" [ref=e584]:
+                      - img [ref=e586]
+                - listitem [ref=e588]:
+                  - link "Translate to Indonesian" [ref=e589] [cursor=pointer]:
+                    - /url: /c/f1230787-d888-8009-b2c5-13d9d4f710f5
+                    - generic [ref=e591]: Translate to Indonesian
+                    - button "Gesprächsoptionen für Translate to Indonesian öffnen" [ref=e594]:
+                      - img [ref=e596]
+                - listitem [ref=e598]:
+                  - link "German translation comparison" [ref=e599] [cursor=pointer]:
+                    - /url: /c/f98dec15-2940-8009-b0ae-82bf3c232f0e
+                    - generic [ref=e601]: German translation comparison
+                    - button "Gesprächsoptionen für German translation comparison öffnen" [ref=e604]:
+                      - img [ref=e606]
+                - listitem [ref=e608]:
+                  - link "Ins gamer english" [ref=e609] [cursor=pointer]:
+                    - /url: /c/07f2c9bc-85c8-8009-aacd-93539747c44f
+                    - generic [ref=e611]: Ins gamer english
+                    - button "Gesprächsoptionen für Ins gamer english öffnen" [ref=e614]:
+                      - img [ref=e616]
+                - listitem [ref=e618]:
+                  - link "Translate to gamer English" [ref=e619] [cursor=pointer]:
+                    - /url: /c/b7216900-4e5c-8009-a231-2759d3a50c57
+                    - generic [ref=e621]: Translate to gamer English
+                    - button "Gesprächsoptionen für Translate to gamer English öffnen" [ref=e624]:
+                      - img [ref=e626]
+                - listitem [ref=e628]:
+                  - link "Перевод с русского" [ref=e629] [cursor=pointer]:
+                    - /url: /c/bdd7b0c5-dd44-8009-a4a8-25cfa6a2d8ae
+                    - generic [ref=e631]: Перевод с русского
+                    - button "Gesprächsoptionen für Перевод с русского öffnen" [ref=e634]:
+                      - img [ref=e636]
+                - listitem [ref=e638]:
+                  - link "Перевод на профессиональный английский" [ref=e639] [cursor=pointer]:
+                    - /url: /c/472754be-300c-8009-8e13-4b9074927c55
+                    - generic "Перевод на профессиональный английский" [ref=e641]
+                    - button "Gesprächsoptionen für Перевод на профессиональный английский öffnen" [ref=e644]:
+                      - img [ref=e646]
+                - listitem [ref=e648]:
+                  - link "Translate to gamer English" [ref=e649] [cursor=pointer]:
+                    - /url: /c/13571d18-b008-8009-9c69-eb9a85fd66ae
+                    - generic [ref=e651]: Translate to gamer English
+                    - button "Gesprächsoptionen für Translate to gamer English öffnen" [ref=e654]:
+                      - img [ref=e656]
+                - listitem [ref=e658]:
+                  - link "Translate to English" [ref=e659] [cursor=pointer]:
+                    - /url: /c/40323c20-c930-8009-9402-af62cb3b590d
+                    - generic [ref=e661]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e664]:
+                      - img [ref=e666]
+                - listitem [ref=e668]:
+                  - link "Translate to English" [ref=e669] [cursor=pointer]:
+                    - /url: /c/cdfe739e-6ee0-8009-b646-0018e7a23a3d
+                    - generic [ref=e671]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e674]:
+                      - img [ref=e676]
+                - listitem [ref=e678]:
+                  - link "Translate to English" [ref=e679] [cursor=pointer]:
+                    - /url: /c/be5f36ca-3a68-8009-a726-f388f3fff197
+                    - generic [ref=e681]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e684]:
+                      - img [ref=e686]
+                - listitem [ref=e688]:
+                  - link "Translate German to English" [ref=e689] [cursor=pointer]:
+                    - /url: /c/dac48a35-491c-8009-9786-9cb1997aaae1
+                    - generic [ref=e691]: Translate German to English
+                    - button "Gesprächsoptionen für Translate German to English öffnen" [ref=e694]:
+                      - img [ref=e696]
+                - listitem [ref=e698]:
+                  - link "Translate to English" [ref=e699] [cursor=pointer]:
+                    - /url: /c/9e32d82f-af48-8009-974c-0d9e51a972ff
+                    - generic [ref=e701]: Translate to English
+                    - button "Gesprächsoptionen für Translate to English öffnen" [ref=e704]:
+                      - img [ref=e706]
+          - button "kdl2017 Pro, Profil-Menü öffnen" [ref=e708] [cursor=pointer]:
+            - generic [ref=e75]:
+              - generic [ref=e77]: kdl2017
+              - generic [ref=e80]: Pro
+            - button "Apps herunterladen" [ref=e83]:
+              - img [ref=e85]
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - banner:
+          - link "Projekt RH_März_2026 öffnen" [ref=e712] [cursor=pointer]:
+            - /url: /g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/project
+            - generic [ref=e713]:
+              - img "Standardfarbe, schwarz im hellen Modus, weiß im dunklen Modus Ordner" [ref=e715]
+              - generic [ref=e717]: RH_März_2026
+          - generic [ref=e92]:
+            - button "Gemeinsam nutzen" [ref=e93] [cursor=pointer]:
+              - generic [ref=e94]:
+                - img [ref=e95]
+                - text: Gemeinsam nutzen
+            - button "Gesprächsoptionen öffnen" [ref=e99] [cursor=pointer]:
+              - img [ref=e100]
+      - main [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e719]:
+            - generic [ref=e731]:
+              - heading "Du:" [level=4] [ref=e732]
+              - generic [ref=e734]:
+                - generic [ref=e737]:
+                  - generic [ref=e738]:
+                    - group "node.md" [ref=e739]:
+                      - button "node.md" [ref=e742] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: node.md
+                              - generic: Datei
+                    - group "report.md" [ref=e743]:
+                      - button "report.md" [ref=e746] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: report.md
+                              - generic: Datei
+                    - group "AGENT_PROTOCOL.md" [ref=e747]:
+                      - button "AGENT_PROTOCOL.md" [ref=e750] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: AGENT_PROTOCOL.md
+                              - generic: Datei
+                    - group "PHASE_MONITOR.md" [ref=e751]:
+                      - button "PHASE_MONITOR.md" [ref=e754] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: PHASE_MONITOR.md
+                              - generic: Datei
+                    - group "PSD_STEP33_MONITOR.md" [ref=e755]:
+                      - button "PSD_STEP33_MONITOR.md" [ref=e758] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img
+                            - generic:
+                              - generic: PSD_STEP33_MONITOR.md
+                              - generic: Datei
+                  - generic [ref=e761]:
+                    - generic [ref=e763]:
+                      - text: "Сделал. Коммит:"
+                      - code [ref=e764]: e16550f5f7feb18f8f751c23b4c537fd792ec998
+                      - code [ref=e765]: "[MacOS][rh_clean][Docs] Refactor Step33 control plane"
+                      - text: "Что зафиксировано: - [PSD_STEP33_MONITOR.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md) теперь"
+                      - code [ref=e766]: "status: ACTIVE"
+                      - text: . - [PHASE_MONITOR.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md) теперь
+                      - code [ref=e767]: "status: PARKED"
+                      - text: ". - Новый активный request/report: [node.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md), [report.md](/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md). - Добавлен новый skill"
+                      - code [ref=e768]: q3-psdpd-step33-bootstrap
+                      - text: ; старый
+                      - code [ref=e769]: q3-step32-lean
+                      - text: стал compatibility shim. - В
+                      - code [ref=e770]: AGENTS.md
+                      - text: добавлен
+                      - code [ref=e771]: PRO_REVIEW_REQUEST
+                      - text: ": Codex не предполагает доступ к Pro/Louise-чату, а пишет компактный вопрос в report. - Untracked-артефакты оставлены как есть и не тронуты. Проверка:"
+                      - code [ref=e772]: git diff --check
+                      - text: "и staged diff check прошли. Lean не гонял, потому что это docs/control-plane-only refactor, theorem-файлы не трогались. Запуск следующего goal:"
+                      - code [ref=e774]: text /goal Step33A.1 only. Use q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md and q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md as the active route. Do not route to H1/PO3. Step32 is closed. Generate the next scalar positivePartPower / polynomial-segment summand hboxes needed by primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes, then feed existing cardinal -> R-pair -> P-entry receivers if dependencies exist. No sorry/admit/exact?/axiom. Do not touch Q3.Main. Run lake build Q3.Proofs.PSD_CenteredBSplineRBoundsImport, lake env lean the RBounds/PrimeEntry/EntryHbox files, scripts/q3_check.sh, and git diff --check. If blocked, write exact missing generated payload field and PRO_REVIEW_REQUEST for ChatGPT Pro/Louise into q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md.
+                      - text: "Следующая настоящая цель остаётся та же: добить primary"
+                      - code [ref=e775]: k=11
+                      - text: scalar summand hboxes для
+                      - code [ref=e776]: primaryK11CenteredCardinalBSpline23PrimeShiftPair_hbox_of_summand_hboxes
+                      - text: ". ::git-stage{cwd=\"/Users/emalam/Documents/GitHub/rh_lean_01_2026\"} ::git-commit{cwd=\"/Users/emalam/Documents/GitHub/rh_lean_01_2026\"}"
+                    - button "Mehr anzeigen" [ref=e777] [cursor=pointer]:
+                      - generic [ref=e778]: Mehr anzeigen
+                      - img [ref=e780]
+                - generic [ref=e782]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e798]:
+              - heading "Du:" [level=4] [ref=e799]
+              - generic [ref=e801]:
+                - generic [ref=e804]:
+                  - group "Pasted text.txt" [ref=e806]:
+                    - button "Pasted text.txt" [ref=e809] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                          - generic:
+                            - generic: Pasted text.txt
+                            - generic: Dokument
+                  - generic [ref=e811]: <response> Чувак, что ему сейчас надо? Что он там опять нашел, что почему-то что-то не подходит? Надо ему помочь </response> Kaк это работает? это вообще работает?
+                - generic [ref=e812]:
+                  - group "Deine Nachrichtenaktionen"
+            - generic [ref=e820]:
+              - heading "Du:" [level=4] [ref=e821]
+              - generic [ref=e823]:
+                - generic [ref=e828]: PRO_REVIEW_R. . UEST. .
+                - generic [ref=e829]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e835]:
+              - heading "Du:" [level=4] [ref=e836]
+              - generic [ref=e838]:
+                - generic [ref=e841]:
+                  - group "Pasted text.txt" [ref=e843]:
+                    - button "Pasted text.txt" [ref=e846] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                          - generic:
+                            - generic: Pasted text.txt
+                            - generic: Dokument
+                  - generic [ref=e848]: чушак смотри после сука 17!!!! часош!!! нам надо продумат как такое обходит матаном или фисикой или гометрийес или какнибуд!
+                - generic [ref=e849]:
+                  - group "Deine Nachrichtenaktionen"
+            - generic [ref=e859]:
+              - heading "Du:" [level=4] [ref=e860]
+              - generic [ref=e862]:
+                - generic [ref=e867]: <response> Окей, вот если бы ты сам сейчас шел по этому голу, попробуй, а, математически все это закрыть так, чтобы он потом не гадал, а, как ему закрывать эти степы. Попробуй, э, закрыть их </response>
+                - generic [ref=e868]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e872]:
+              - heading "Du:" [level=4] [ref=e873]
+              - generic [ref=e875]:
+                - generic [ref=e878]:
+                  - group "Pasted text.txt" [ref=e880]:
+                    - button "Pasted text.txt" [ref=e883] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                          - generic:
+                            - generic: Pasted text.txt
+                            - generic: Dokument
+                  - generic [ref=e885]: probej eto . het ja ne sowsem ponimaju etot razbo!
+                - generic [ref=e886]:
+                  - group "Deine Nachrichtenaktionen"
+            - generic [ref=e890]:
+              - heading "Du:" [level=4] [ref=e891]
+              - generic [ref=e893]:
+                - generic [ref=e896]:
+                  - group "Pasted text.txt" [ref=e898]:
+                    - button "Pasted text.txt" [ref=e901] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                          - generic:
+                            - generic: Pasted text.txt
+                            - generic: Dokument
+                  - generic [ref=e903]: poxodu opjat zastryli
+                - generic [ref=e904]:
+                  - group "Deine Nachrichtenaktionen"
+            - generic [ref=e971]:
+              - heading "ChatGPT:" [level=4] [ref=e972]
+              - generic [ref=e974]:
+                - generic [ref=e975]:
+                  - button "Nachgedacht für 1m 35s" [ref=e977] [cursor=pointer]:
+                    - text: Nachgedacht für 1m 35s
+                    - img [ref=e978]
+                  - generic [ref=e982]:
+                    - paragraph [ref=e983]:
+                      - text: "CHOSEN ROUTE:"
+                      - strong [ref=e984]: B — Aristotle generic lemmas, then generated rational rows
+                    - paragraph [ref=e985]: "FIRST THEOREM / FILE:"
+                    - generic [ref=e994]:
+                      - button "Kopieren" [ref=e995] [cursor=pointer]:
+                        - img [ref=e996]
+                      - code [ref=e1004]: Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointAristotleImport.lean
+                    - paragraph [ref=e1005]: "Main imported theorem family:"
+                    - generic [ref=e1014]:
+                      - generic [ref=e1016]:
+                        - generic [ref=e1017]:
+                          - img [ref=e1018]
+                          - text: lean
+                        - button "Kopieren" [ref=e1021] [cursor=pointer]:
+                          - img [ref=e1022]
+                      - code [ref=e1030]:
+                        - text: theorem step22OmegaClosedFormEndpointBoundsCert_aristotle_v18
+                        - text: "(r : RawOmegaEndpointWorkRowV18) :"
+                        - text: Step22OmegaClosedFormEndpointBoundsCert
+                        - text: r.k r.ell r.x r.L r.U
+                        - text: r.omegaValueLower r.omegaValueUpper
+                        - text: r.omegaDerivLower r.omegaDerivUpper := by
+                        - text: "-- Aristotle-generated Lean proof"
+                        - text: ...
+                    - paragraph [ref=e1031]: "Second family:"
+                    - generic [ref=e1040]:
+                      - generic [ref=e1042]:
+                        - generic [ref=e1043]:
+                          - img [ref=e1044]
+                          - text: lean
+                        - button "Kopieren" [ref=e1047] [cursor=pointer]:
+                          - img [ref=e1048]
+                      - code [ref=e1056]:
+                        - text: theorem shapeSqEndpointBoundsCert_aristotle_v18
+                        - text: "(r : RawOmegaEndpointWorkRowV18) :"
+                        - text: ShapeSqEndpointBoundsCert
+                        - text: r.k r.ell r.x r.L r.U
+                        - text: r.shapeSqValueLower r.shapeSqValueUpper
+                        - text: r.shapeSqDerivLower r.shapeSqDerivUpper := by
+                        - text: "-- Aristotle-generated Lean proof"
+                        - text: ...
+                    - paragraph [ref=e1057]: "If one indexed theorem is too hard, split into row classes:"
+                    - generic [ref=e1066]:
+                      - generic [ref=e1068]:
+                        - generic [ref=e1069]:
+                          - img [ref=e1070]
+                          - text: lean
+                        - button "Kopieren" [ref=e1073] [cursor=pointer]:
+                          - img [ref=e1074]
+                      - code [ref=e1082]:
+                        - text: step22OmegaClosedFormEndpointBoundsCert_aristotle_primary_finite_v18
+                        - text: step22OmegaClosedFormEndpointBoundsCert_aristotle_primary_tail_v18
+                        - text: step22OmegaClosedFormEndpointBoundsCert_aristotle_control_finite_v18
+                        - text: step22OmegaClosedFormEndpointBoundsCert_aristotle_control_tail_v18
+                        - text: shapeSqEndpointBoundsCert_aristotle_primary_finite_v18
+                        - text: shapeSqEndpointBoundsCert_aristotle_primary_tail_v18
+                        - text: shapeSqEndpointBoundsCert_aristotle_control_finite_v18
+                        - text: shapeSqEndpointBoundsCert_aristotle_control_tail_v18
+                    - paragraph [ref=e1083]: "FIRST SMALL LOCAL LEMMA:"
+                    - generic [ref=e1092]:
+                      - generic [ref=e1094]:
+                        - generic [ref=e1095]:
+                          - img [ref=e1096]
+                          - text: lean
+                        - button "Kopieren" [ref=e1099] [cursor=pointer]:
+                          - img [ref=e1100]
+                      - code [ref=e1108]:
+                        - text: theorem rawOmegaEndpointValueDerivIntervalCert_generated_of_aristotle_packages
+                        - text: "(hOmega :"
+                        - text: "∀ r : RawOmegaEndpointWorkRowV18,"
+                        - text: Step22OmegaClosedFormEndpointBoundsCert
+                        - text: r.k r.ell r.x r.L r.U
+                        - text: r.omegaValueLower r.omegaValueUpper
+                        - text: r.omegaDerivLower r.omegaDerivUpper)
+                        - text: "(hShape :"
+                        - text: "∀ r : RawOmegaEndpointWorkRowV18,"
+                        - text: ShapeSqEndpointBoundsCert
+                        - text: r.k r.ell r.x r.L r.U
+                        - text: r.shapeSqValueLower r.shapeSqValueUpper
+                        - text: "r.shapeSqDerivLower r.shapeSqDerivUpper) :"
+                        - text: "∀ r : RawOmegaEndpointWorkRowV18,"
+                        - text: LocalRawOmegaComponentDirectEndpointIntervalCert r := by
+                        - text: intro r
+                        - text: exact
+                        - text: LocalRawOmegaComponentDirectEndpointIntervalCert
+                        - text: .of_omega_shape_endpoint_bounds_rational
+                        - text: (hOmega r)
+                        - text: (hShape r)
+                        - text: (localRawOmegaComponentDirectEndpointRationalCert_generated r)
+                    - paragraph [ref=e1109]: "Then define:"
+                    - generic [ref=e1118]:
+                      - generic [ref=e1120]:
+                        - generic [ref=e1121]:
+                          - img [ref=e1122]
+                          - text: lean
+                        - button "Kopieren" [ref=e1125] [cursor=pointer]:
+                          - img [ref=e1126]
+                      - code [ref=e1134]:
+                        - text: def rawOmegaEndpointValueDerivIntervalCert_generated
+                        - text: "(r : RawOmegaEndpointWorkRowV18) :"
+                        - text: LocalRawOmegaComponentDirectEndpointIntervalCert r :=
+                        - text: rawOmegaEndpointValueDerivIntervalCert_generated_of_aristotle_packages
+                        - text: step22OmegaClosedFormEndpointBoundsCert_aristotle_v18
+                        - text: shapeSqEndpointBoundsCert_aristotle_v18
+                        - text: r
+                    - paragraph [ref=e1135]: "GENERATED DATA SHAPE:"
+                    - paragraph [ref=e1136]: "For each of 110 rows:"
+                    - generic [ref=e1145]:
+                      - button "Kopieren" [ref=e1146] [cursor=pointer]:
+                        - img [ref=e1147]
+                      - code [ref=e1155]:
+                        - text: rowId
+                        - text: rowClass
+                        - text: k
+                        - text: ell
+                        - text: x
+                        - text: L
+                        - text: U
+                        - text: omegaValueLower
+                        - text: omegaValueUpper
+                        - text: omegaDerivLower
+                        - text: omegaDerivUpper
+                        - text: shapeSqValueLower
+                        - text: shapeSqValueUpper
+                        - text: shapeSqDerivLower
+                        - text: shapeSqDerivUpper
+                        - text: rational endpoint containment fields
+                    - paragraph [ref=e1156]: "Generated files:"
+                    - generic [ref=e1165]:
+                      - button "Kopieren" [ref=e1166] [cursor=pointer]:
+                        - img [ref=e1167]
+                      - code [ref=e1175]:
+                        - text: scripts/q3_psdpd_step33_a_endpoint_aristotle_request_emit.py
+                        - text: scripts/q3_psdpd_step33_a_endpoint_aristotle_payload_emit.py
+                        - text: Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointAristotleImport.lean
+                        - text: Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointPayloadImport.lean
+                    - paragraph [ref=e1176]: "WHAT IS PROOF-SAFE:"
+                    - generic [ref=e1185]:
+                      - button "Kopieren" [ref=e1186] [cursor=pointer]:
+                        - img [ref=e1187]
+                      - code [ref=e1195]:
+                        - text: Aristotle output must be Lean source.
+                        - text: Lean must compile it.
+                        - text: No Arb/acb theorem.
+                        - text: No trusted decimal theorem.
+                        - text: No opaque certificate.
+                    - paragraph [ref=e1196]: "Arb/acb may only supply:"
+                    - generic [ref=e1205]:
+                      - button "Kopieren" [ref=e1206] [cursor=pointer]:
+                        - img [ref=e1207]
+                      - code [ref=e1215]:
+                        - text: candidate rational bounds
+                        - text: interval suggestions
+                        - text: row grouping
+                        - text: margin diagnostics
+                    - paragraph [ref=e1216]: "Lean must check:"
+                    - generic [ref=e1225]:
+                      - button "Kopieren" [ref=e1226] [cursor=pointer]:
+                        - img [ref=e1227]
+                      - code [ref=e1235]:
+                        - text: Step22OmegaClosedFormEndpointBoundsCert
+                        - text: ShapeSqEndpointBoundsCert
+                        - text: LocalRawOmegaComponentDirectEndpointRationalCert
+                        - text: LocalRawOmegaComponentDirectEndpointIntervalCert
+                        - text: rawOmegaEndpointValueDerivIntervalCert_generated
+                    - paragraph [ref=e1236]: "STOP CONDITION:"
+                    - paragraph [ref=e1237]: "Stop when one of these happens:"
+                    - generic [ref=e1246]:
+                      - button "Kopieren" [ref=e1247] [cursor=pointer]:
+                        - img [ref=e1248]
+                      - code [ref=e1256]:
+                        - text: 1. rawOmegaEndpointValueDerivIntervalCert_generated compiles for all 110 rows.
+                        - text: "2. Omega package fails:"
+                        - text: report exact missing theorem for Step22Omega / digamma / trigamma.
+                        - text: "3. ShapeSq package fails:"
+                        - text: report exact missing theorem for E / sinc / E' closed-form bounds.
+                        - text: "4. First row-class failure is isolated with:"
+                        - text: row id
+                        - text: interval
+                        - text: value/derivative side
+                        - text: failing inequality
+                        - text: missing lemma
+                        - text: candidate rational bounds
+                    - paragraph [ref=e1257]: "HARD GUARD:"
+                    - generic [ref=e1266]:
+                      - button "Kopieren" [ref=e1267] [cursor=pointer]:
+                        - img [ref=e1268]
+                      - code [ref=e1276]:
+                        - text: No trusted Arb/acb.
+                        - text: No local fake analytic checker.
+                        - text: No LeanCert dependency now.
+                        - text: No compression detour.
+                        - text: No sorry/admit/exact?/axiom/unsafe.
+                        - text: No A CSV / ARadius / radius-floor / LDL.
+                        - text: No Q3.Main.
+                        - text: No H1/PO3.
+                        - text: No anchorValueCorners.
+                        - text: No manual 1100-fact row crawl.
+                    - paragraph [ref=e1277]: "Why not A/C/D:"
+                    - generic [ref=e1286]:
+                      - button "Kopieren" [ref=e1287] [cursor=pointer]:
+                        - img [ref=e1288]
+                      - code [ref=e1296]:
+                        - text: "A is too large with current deps: digamma/trigamma + sinc/E/E' checker locally risks swamp."
+                        - text: C adds infrastructure before proving need.
+                        - text: D changes target despite receivers already being correct.
+                        - text: B is proof-safe because Aristotle emits Lean proofs, and lake verifies them.
+                - generic [ref=e1297]:
+                  - group "Antwortaktionen":
+                    - button "Antwort kopieren":
+                      - generic:
+                        - img
+                    - button "Pro-Feedback":
+                      - img
+                    - button "Zu den Projektquellen hinzufügen":
+                      - generic:
+                        - img
+                    - button "Mehr Aktionen":
+                      - img
+            - generic [ref=e1300]:
+              - heading "Du:" [level=4] [ref=e1301]
+              - generic [ref=e1303]:
+                - generic [ref=e1309]:
+                  - generic [ref=e1311]: "Route-B correction from repo reality. Your answer chose B: Aristotle generic endpoint lemmas, then generated rational rows. But repo evidence says the naive B request has already failed closed: - v18 first-row context bundle 0c792ee5... returned no hole-free package; sorries remained. - v21 direct first-anchor project 3cd86d8e... completed COMPLETE_WITH_ERRORS. - Reported blocker: generic Mathlib is too weak for a tight interval around -Real.eulerMascheroniConstant - Real.log Real.pi and the signed tail; current Q3-local DigammaSeries/DigammaRemainder has only coarse N=1 Stieltjes/Euler-Maclaurin infrastructure. - Repo-real combiner already exists and Lean-checks: primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_endpoint_bounds_generated - RawOmegaEndpointWorkRowV18 is schematic only; do not use it as a real Lean type. So please do not answer \"use Aristotle generic lemmas\" again unless you specify the new proof-safe engine that makes that possible. Choose exact next route now: A. extend Q3.DigammaRemainder with a high-order complex-norm digamma asymptotic receiver for z = 1/4 + i/40, then feed v18 shifted-digamma complex-main wrapper; B. finish the re-series route by proving certified bounds for -gamma - log pi plus N=16 tail/glue inside Q3.DigammaSeries; C. create a very small verified interval dependency/LeanCert bridge as one-time infra; D. split ShapeSq first and leave Omega as sole analytic blocker. Required answer: - chosen route after accounting for the failed Aristotle attempts; - exact next Lean theorem name and file; - first small lemma Codex should implement locally now; - what data generator should emit; - exact stop/blocker condition. Hard guards: no trusted Arb/acb, no sorry/admit/exact?/axiom/unsafe, no A CSV/ARadius/radius-floor/LDL, no Q3.Main, no H1/PO3, no invented RawOmegaEndpointWorkRowV18."
+                  - button "Mehr anzeigen" [ref=e1312] [cursor=pointer]:
+                    - generic [ref=e1313]: Mehr anzeigen
+                    - img [ref=e1315]
+                - generic [ref=e1317]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e1320]:
+              - heading "ChatGPT:" [level=4] [ref=e1321]
+              - generic [ref=e1323]:
+                - generic [ref=e1324]:
+                  - paragraph [ref=e1328]: Ы. Die generischen Aristotle-Versuche sind damit raus; der Blocker ist jetzt ein lokaler proof-safe Engine für die engen Omega/digamma-Endpoint-Bounds, nicht mehr Receiver-Design. Codex muss im Q3-Code einen konkreten Digamma/Omega-Endpunktprüfer bauen, statt erneut externe allgemeine Lemmas anzufragen.
+                  - button "Nachgedacht für 5m 0s" [ref=e1330] [cursor=pointer]:
+                    - text: Nachgedacht für 5m 0s
+                    - img [ref=e1331]
+                  - generic [ref=e1335]:
+                    - paragraph [ref=e1336]: Ы.
+                    - paragraph [ref=e1337]:
+                      - text: "CHOSEN ROUTE:"
+                      - strong [ref=e1338]: B
+                    - paragraph [ref=e1339]:
+                      - text: Finish the
+                      - strong [ref=e1340]: Q3.DigammaSeries re-series route
+                      - text: .
+                    - paragraph [ref=e1341]:
+                      - text: Not A.
+                      - text: Not C.
+                      - text: Not D.
+                    - heading "Why B" [level=2] [ref=e1342]
+                    - paragraph [ref=e1343]: "The failed Aristotle attempts exposed the real blocker:"
+                    - generic [ref=e1352]:
+                      - button "Kopieren" [ref=e1353] [cursor=pointer]:
+                        - img [ref=e1354]
+                      - code [ref=e1362]:
+                        - text: "tight bounds around:"
+                        - text: "-Real.eulerMascheroniConstant - Real.log Real.pi"
+                        - text: plus signed digamma tail
+                    - paragraph [ref=e1363]:
+                      - text: Generic Mathlib is too weak.
+                      - text: Local
+                      - code [ref=e1364]: Q3.DigammaSeries / Q3.DigammaRemainder
+                      - text: already exists, but only coarse
+                      - code [ref=e1365]: N=1
+                      - text: .
+                    - paragraph [ref=e1366]: "So next proof-safe engine is:"
+                    - generic [ref=e1375]:
+                      - button "Kopieren" [ref=e1376] [cursor=pointer]:
+                        - img [ref=e1377]
+                      - code [ref=e1385]:
+                        - text: upgrade local DigammaSeries to N=16 certified re-series
+                        - text: → feed Step22Omega endpoint bounds
+                        - text: → then existing rational endpoint layer combines.
+                    - separator [ref=e1386]
+                    - heading "Exact next Lean theorem" [level=2] [ref=e1387]
+                    - paragraph [ref=e1388]: "First real theorem:"
+                    - generic [ref=e1397]:
+                      - generic [ref=e1399]:
+                        - generic [ref=e1400]:
+                          - img [ref=e1401]
+                          - text: lean
+                        - button "Kopieren" [ref=e1404] [cursor=pointer]:
+                          - img [ref=e1405]
+                      - code [ref=e1413]: Q3.DigammaSeries.shiftedDigammaComplexMain_intervalCert_N16
+                    - paragraph [ref=e1414]: "File:"
+                    - generic [ref=e1423]:
+                      - button "Kopieren" [ref=e1424] [cursor=pointer]:
+                        - img [ref=e1425]
+                      - code [ref=e1433]: Q3/DigammaSeries.lean
+                    - paragraph [ref=e1434]: "Shape:"
+                    - generic [ref=e1443]:
+                      - generic [ref=e1445]:
+                        - generic [ref=e1446]:
+                          - img [ref=e1447]
+                          - text: lean
+                        - button "Kopieren" [ref=e1450] [cursor=pointer]:
+                          - img [ref=e1451]
+                      - code [ref=e1459]:
+                        - text: theorem Q3.DigammaSeries.shiftedDigammaComplexMain_intervalCert_N16
+                        - text: "(z : ℂ)"
+                        - text: "(hz : Complex.normSq z ≤ qNormSq)"
+                        - text: "(hsmall : Complex.abs z ≤ qRadius)"
+                        - text: ":"
+                        - text: ComplexInterval.Contains
+                        - text: (shiftedDigammaComplexMain z)
+                        - text: (shiftedDigammaComplexMainN16Interval z) := by
+                        - text: "-- finite N=16 re-series part"
+                        - text: "-- certified tail bound"
+                        - text: "-- certified constant interval for:"
+                        - text: "-- -Real.eulerMascheroniConstant - Real.log Real.pi"
+                        - text: ...
+                    - paragraph [ref=e1460]:
+                      - text: If repo does not have
+                      - code [ref=e1461]: ComplexInterval.Contains
+                      - text: ", use the local interval predicate already used by"
+                      - code [ref=e1462]: DigammaSeries
+                      - text: .
+                    - separator [ref=e1463]
+                    - heading "First small lemma Codex should implement now" [level=2] [ref=e1464]
+                    - paragraph [ref=e1465]:
+                      - text: Start with the constant. Do
+                      - strong [ref=e1466]: not
+                      - text: start with all endpoint rows.
+                    - generic [ref=e1475]:
+                      - generic [ref=e1477]:
+                        - generic [ref=e1478]:
+                          - img [ref=e1479]
+                          - text: lean
+                        - button "Kopieren" [ref=e1482] [cursor=pointer]:
+                          - img [ref=e1483]
+                      - code [ref=e1491]:
+                        - text: "theorem Q3.DigammaSeries.neg_eulerMascheroni_sub_log_pi_intervalCert :"
+                        - text: RealInterval.Contains
+                        - text: (-Real.eulerMascheroniConstant - Real.log Real.pi)
+                        - text: qNegEulerSubLogPiInterval := by
+                        - text: "-- local certified interval proof"
+                        - text: "-- no Arb trust"
+                        - text: "-- no sorry"
+                        - text: ...
+                    - paragraph [ref=e1492]:
+                      - text: If
+                      - code [ref=e1493]: RealInterval.Contains
+                      - text: is not the repo type, use the repo-local interval/hbox predicate.
+                    - paragraph [ref=e1494]: "Why first:"
+                    - generic [ref=e1503]:
+                      - button "Kopieren" [ref=e1504] [cursor=pointer]:
+                        - img [ref=e1505]
+                      - code [ref=e1513]:
+                        - text: Aristotle blocker explicitly mentioned this constant.
+                        - text: If this constant cannot be certified, all endpoint packages stay blocked.
+                    - paragraph [ref=e1514]: "Then add tail:"
+                    - generic [ref=e1523]:
+                      - generic [ref=e1525]:
+                        - generic [ref=e1526]:
+                          - img [ref=e1527]
+                          - text: lean
+                        - button "Kopieren" [ref=e1530] [cursor=pointer]:
+                          - img [ref=e1531]
+                      - code [ref=e1539]:
+                        - text: theorem Q3.DigammaSeries.shiftedDigamma_reSeries_tail_abs_le_N16
+                        - text: "(z : ℂ)"
+                        - text: "(hz : Complex.abs z ≤ qRadius) :"
+                        - text: Complex.abs (shiftedDigammaTailFrom 17 z)
+                        - text: ≤ shiftedDigammaTailBoundN16 qRadius := by
+                        - text: "-- geometric/zeta-majorant tail"
+                        - text: ...
+                    - paragraph [ref=e1540]: "Then combine:"
+                    - generic [ref=e1549]:
+                      - generic [ref=e1551]:
+                        - generic [ref=e1552]:
+                          - img [ref=e1553]
+                          - text: lean
+                        - button "Kopieren" [ref=e1556] [cursor=pointer]:
+                          - img [ref=e1557]
+                      - code [ref=e1565]:
+                        - text: theorem Q3.DigammaSeries.shiftedDigammaComplexMain_intervalCert_N16
+                        - text: ...
+                    - separator [ref=e1566]
+                    - heading "Endpoint theorem that feeds Step33A" [level=2] [ref=e1567]
+                    - paragraph [ref=e1568]: "After the N16 engine exists:"
+                    - paragraph [ref=e1569]: "File:"
+                    - generic [ref=e1578]:
+                      - button "Kopieren" [ref=e1579] [cursor=pointer]:
+                        - img [ref=e1580]
+                      - code [ref=e1588]: Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointOmegaSeriesImport.lean
+                    - paragraph [ref=e1589]: "Theorem:"
+                    - generic [ref=e1598]:
+                      - generic [ref=e1600]:
+                        - generic [ref=e1601]:
+                          - img [ref=e1602]
+                          - text: lean
+                        - button "Kopieren" [ref=e1605] [cursor=pointer]:
+                          - img [ref=e1606]
+                      - code [ref=e1614]:
+                        - text: theorem step22OmegaClosedFormEndpointBoundsCert_of_digammaSeriesN16
+                        - text: "(row : RawOmegaEndpointConcreteRowV18)"
+                        - text: "(hData : Step22OmegaEndpointDigammaN16Payload row) :"
+                        - text: Step22OmegaClosedFormEndpointBoundsCert
+                        - text: row.k row.ell row.x row.L row.U
+                        - text: row.omegaValueLower row.omegaValueUpper
+                        - text: row.omegaDerivLower row.omegaDerivUpper := by
+                        - text: "-- use Q3.DigammaSeries.shiftedDigammaComplexMain_intervalCert_N16"
+                        - text: "-- use generated rational payload data"
+                        - text: ...
+                    - paragraph [ref=e1615]:
+                      - text: "Important: do"
+                      - strong [ref=e1616]: not
+                      - text: "use fake schematic type:"
+                    - generic [ref=e1625]:
+                      - generic [ref=e1627]:
+                        - generic [ref=e1628]:
+                          - img [ref=e1629]
+                          - text: lean
+                        - button "Kopieren" [ref=e1632] [cursor=pointer]:
+                          - img [ref=e1633]
+                      - code [ref=e1641]: RawOmegaEndpointWorkRowV18
+                    - paragraph [ref=e1642]: Use the actual concrete generated row type / index family that the repo already emits.
+                    - separator [ref=e1643]
+                    - heading "Generated data shape" [level=2] [ref=e1644]
+                    - paragraph [ref=e1645]: "Generator emits for each concrete endpoint row:"
+                    - generic [ref=e1654]:
+                      - button "Kopieren" [ref=e1655] [cursor=pointer]:
+                        - img [ref=e1656]
+                      - code [ref=e1664]:
+                        - text: rowId
+                        - text: rowClass
+                        - text: k
+                        - text: ell
+                        - text: x
+                        - text: L
+                        - text: U
+                        - text: endpointSide
+                        - text: complex z
+                        - text: zNormSq
+                        - text: zAbsUpper
+                        - text: N = 16
+                        - text: finiteSeriesRealLower
+                        - text: finiteSeriesRealUpper
+                        - text: finiteSeriesImagLower
+                        - text: finiteSeriesImagUpper
+                        - text: tailAbsUpper
+                        - text: constantLower for -gamma - log(pi)
+                        - text: constantUpper for -gamma - log(pi)
+                        - text: omegaValueLower
+                        - text: omegaValueUpper
+                        - text: omegaDerivLower
+                        - text: omegaDerivUpper
+                        - text: "all rational inequalities needed by:"
+                        - text: shiftedDigammaComplexMain_intervalCert_N16
+                        - text: step22OmegaClosedFormEndpointBoundsCert_of_digammaSeriesN16
+                    - paragraph [ref=e1665]: For ShapeSq, keep existing path. Do not block Omega on ShapeSq.
+                    - separator [ref=e1666]
+                    - heading "What Lean checks" [level=2] [ref=e1667]
+                    - paragraph [ref=e1668]: "Lean must check:"
+                    - generic [ref=e1677]:
+                      - button "Kopieren" [ref=e1678] [cursor=pointer]:
+                        - img [ref=e1679]
+                      - code [ref=e1687]:
+                        - text: constant interval for -γ - log π
+                        - text: finite N=16 rational series arithmetic
+                        - text: tail bound inequality
+                        - text: complex interval containment
+                        - text: Omega value/derivative interval containment
+                        - text: Step22OmegaClosedFormEndpointBoundsCert
+                        - text: rawOmegaEndpointClosedFormBounds_generated
+                    - paragraph [ref=e1688]: "Arb/acb may only provide:"
+                    - generic [ref=e1697]:
+                      - button "Kopieren" [ref=e1698] [cursor=pointer]:
+                        - img [ref=e1699]
+                      - code [ref=e1707]:
+                        - text: candidate intervals
+                        - text: candidate rational bounds
+                        - text: diagnostic margins
+                    - paragraph [ref=e1708]: "Arb/acb cannot be:"
+                    - generic [ref=e1717]:
+                      - button "Kopieren" [ref=e1718] [cursor=pointer]:
+                        - img [ref=e1719]
+                      - code [ref=e1727]:
+                        - text: trusted theorem
+                        - text: axiom
+                        - text: opaque certificate
+                        - text: unsafe shortcut
+                    - separator [ref=e1728]
+                    - heading "Stop condition" [level=2] [ref=e1729]
+                    - paragraph [ref=e1730]: "Stop immediately if first constant theorem fails:"
+                    - generic [ref=e1739]:
+                      - button "Kopieren" [ref=e1740] [cursor=pointer]:
+                        - img [ref=e1741]
+                      - code [ref=e1749]: Q3.DigammaSeries.neg_eulerMascheroni_sub_log_pi_intervalCert
+                    - paragraph [ref=e1750]: "Report:"
+                    - generic [ref=e1759]:
+                      - button "Kopieren" [ref=e1760] [cursor=pointer]:
+                        - img [ref=e1761]
+                      - code [ref=e1769]:
+                        - text: "DIGAMMA_SERIES_BLOCKER:"
+                        - text: "- theorem:"
+                        - text: "- missing local lemma:"
+                        - text: "- target interval:"
+                        - text: "- current bound source:"
+                        - text: "- exact failed inequality:"
+                    - paragraph [ref=e1770]: "Otherwise stop when one of these happens:"
+                    - generic [ref=e1779]:
+                      - button "Kopieren" [ref=e1780] [cursor=pointer]:
+                        - img [ref=e1781]
+                      - code [ref=e1789]:
+                        - text: 1. shiftedDigammaComplexMain_intervalCert_N16 compiles.
+                        - text: 2. step22OmegaClosedFormEndpointBoundsCert_of_digammaSeriesN16 compiles for first concrete endpoint row.
+                        - text: 3. rawOmegaEndpointClosedFormBounds_generated compiles for all 110 rows.
+                        - text: "4. exact blocker: finite series / tail / derivative / constant interval."
+                    - separator [ref=e1790]
+                    - heading "Hard guard" [level=2] [ref=e1791]
+                    - generic [ref=e1800]:
+                      - button "Kopieren" [ref=e1801] [cursor=pointer]:
+                        - img [ref=e1802]
+                      - code [ref=e1810]:
+                        - text: No trusted Arb/acb.
+                        - text: No Aristotle generic retry.
+                        - text: No LeanCert dependency now.
+                        - text: No invented RawOmegaEndpointWorkRowV18 type.
+                        - text: No sorry/admit/exact?/axiom/unsafe.
+                        - text: No A CSV / ARadius / radius-floor / LDL.
+                        - text: No Q3.Main.
+                        - text: No H1/PO3.
+                        - text: No anchorValueCorners.
+                        - text: No manual 1100-row proof crawl.
+                    - paragraph [ref=e1811]: "Final:"
+                    - generic [ref=e1820]:
+                      - button "Kopieren" [ref=e1821] [cursor=pointer]:
+                        - img [ref=e1822]
+                      - code [ref=e1830]:
+                        - text: B.
+                        - text: Build N=16 local Q3.DigammaSeries endpoint engine.
+                        - text: "First theorem:"
+                        - text: Q3.DigammaSeries.neg_eulerMascheroni_sub_log_pi_intervalCert
+                        - text: "Then:"
+                        - text: Q3.DigammaSeries.shiftedDigamma_reSeries_tail_abs_le_N16
+                        - text: "Then:"
+                        - text: Q3.DigammaSeries.shiftedDigammaComplexMain_intervalCert_N16
+                        - text: "Then feed:"
+                        - text: step22OmegaClosedFormEndpointBoundsCert_of_digammaSeriesN16
+                - generic [ref=e1831]:
+                  - group "Antwortaktionen":
+                    - button "Antwort kopieren":
+                      - generic:
+                        - img
+                    - button "Pro-Feedback":
+                      - img
+                    - button "Zu den Projektquellen hinzufügen":
+                      - generic:
+                        - img
+                    - button "Mehr Aktionen":
+                      - img
+            - generic [ref=e1834]:
+              - heading "Du:" [level=4] [ref=e1835]
+              - generic [ref=e1837]:
+                - generic [ref=e1843]:
+                  - generic [ref=e1845]: "Checkpoint update from Codex local repo worker. Current verified state: - Step33A.1-A raw-Omega endpoint proof-data is live. - Route-A refined parent/subchunk receiver layer is already Lean-checked; do not re-add it. - First ShapeSq endpoint package is Lean-checked. - Endpoint wrappers are Lean-checked, including rectangular Re/Im shifted-digamma receiver: primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shifted_digamma_rect_interval_generated - Q3/DigammaSeries.lean compiles and q3_check passes. - The theorem you named first already exists structurally: Q3.DigammaSeries.neg_eulerMascheroni_sub_log_pi_intervalCert and _of_seq. - New diagnostic theorem exists and compiles: eulerMascheroniSeq_interval_width It shows elementary eulerMascheroniSeq width is log(n+1)-log(n), too slow for the first v21 anchor (~1.1e-21). Current blocker: Need proof-grade input for the first raw-Omega endpoint anchor. Existing receivers are: A) direct re-series N16 prefix route: primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_re_series_N16_prefix_and_shape_generated still needs tight constant bounds for -gamma-log pi and signed tail bounds. B) shifted-digamma rectangular route: primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shifted_digamma_rect_interval_generated still needs high-order Re/Im interval enclosure for digamma(1/4 + i/40 + shift) plus rational main +/- error containment. Question for Louise: Within Route B, what is the exact next proof-producing theorem shape Codex should implement first? Please choose one and give theorem name/signature shape: 1. Accelerated constant backend for -Real.eulerMascheroniConstant - Real.log Real.pi, then N16 signed tail. 2. High-order shifted-digamma Re/Im interval theorem for a concrete shift (which shift?), then feed rectangular receiver. 3. Another semantic rewrite. Hard guards: no sorry/admit/exact?/axiom/unsafe; no generic Aristotle retry; no CSV/ARadius/radius-floor/LDL; no Q3.Main/H1/PO3; no q2/q3 huge finite-prefix crawl."
+                  - button "Mehr anzeigen" [ref=e1846] [cursor=pointer]:
+                    - generic [ref=e1847]: Mehr anzeigen
+                    - img [ref=e1849]
+                - generic [ref=e1851]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e1854]:
+              - heading "ChatGPT:" [level=4] [ref=e1855]
+              - generic [ref=e1857]:
+                - generic [ref=e1858]:
+                  - paragraph [ref=e1862]:
+                    - text: Ы. Wir sollten den direkten high-order rectangular shifted-digamma-bound für einen konkreten ersten endpoint anchor wählen, nicht den konstanten
+                    - code [ref=e1863]: "-γ-log π"
+                    - text: "-Pfad weiter ausbauen. Wenn dieser proof-producing theorem kompiliert, wird das Muster danach auf die übrigen Endpoint-Zeilen repliziert."
+                  - button "Nachgedacht für 2m 58s" [ref=e1865] [cursor=pointer]:
+                    - text: Nachgedacht für 2m 58s
+                    - img [ref=e1866]
+                  - generic [ref=e1870]:
+                    - paragraph [ref=e1871]:
+                      - text: "CHOSEN:"
+                      - strong [ref=e1872]: "2"
+                    - paragraph [ref=e1873]:
+                      - text: Use the shifted-digamma rectangular route.
+                      - text: Do
+                      - strong [ref=e1874]: not
+                      - text: start with
+                      - code [ref=e1875]: "-γ - log π"
+                      - text: .
+                      - text: Do
+                      - strong [ref=e1876]: not
+                      - text: retry generic Aristotle.
+                    - heading "Exact shift" [level=2] [ref=e1877]
+                    - paragraph [ref=e1878]: "Use recurrence shift:"
+                    - generic [ref=e1887]:
+                      - button "Kopieren" [ref=e1888] [cursor=pointer]:
+                        - img [ref=e1889]
+                      - code [ref=e1897]: M = 16
+                    - paragraph [ref=e1898]: "Meaning:"
+                    - generic [ref=e1907]:
+                      - button "Kopieren" [ref=e1908] [cursor=pointer]:
+                        - img [ref=e1909]
+                      - code [ref=e1917]:
+                        - text: z₀ = actual endpoint argument, e.g. 1/4 + i/40 + rowShift
+                        - text: prove ψ(z₀) by rewriting to ψ(z₀ + 16)
+                    - paragraph [ref=e1918]: "Formula:"
+                    - generic [ref=e1927]:
+                      - button "Kopieren" [ref=e1928] [cursor=pointer]:
+                        - img [ref=e1929]
+                      - code [ref=e1937]: "ψ(z₀) = ψ(z₀ + 16) - Σ_{m=0}^{15} 1 / (z₀ + m)"
+                    - paragraph [ref=e1938]:
+                      - text: Then use N=16 asymptotic / rectangular interval on
+                      - code [ref=e1939]: z₀ + 16
+                      - text: .
+                    - separator [ref=e1940]
+                    - heading "First theorem name" [level=2] [ref=e1941]
+                    - paragraph [ref=e1942]: "File:"
+                    - generic [ref=e1951]:
+                      - button "Kopieren" [ref=e1952] [cursor=pointer]:
+                        - img [ref=e1953]
+                      - code [ref=e1961]: Q3/DigammaSeries.lean
+                    - paragraph [ref=e1962]: "Theorem:"
+                    - generic [ref=e1971]:
+                      - generic [ref=e1973]:
+                        - generic [ref=e1974]:
+                          - img [ref=e1975]
+                          - text: lean
+                        - button "Kopieren" [ref=e1978] [cursor=pointer]:
+                          - img [ref=e1979]
+                      - code [ref=e1987]: Q3.DigammaSeries.shiftedDigamma_rect_intervalCert_shift16_N16
+                    - paragraph [ref=e1988]: "Shape:"
+                    - generic [ref=e1997]:
+                      - generic [ref=e1999]:
+                        - generic [ref=e2000]:
+                          - img [ref=e2001]
+                          - text: lean
+                        - button "Kopieren" [ref=e2004] [cursor=pointer]:
+                          - img [ref=e2005]
+                      - code [ref=e2013]:
+                        - text: theorem Q3.DigammaSeries.shiftedDigamma_rect_intervalCert_shift16_N16
+                        - text: "(z : ℂ)"
+                        - text: "(cert : Q3.DigammaSeries.ShiftedDigammaRectPayload16N16 z)"
+                        - text: "(hcert : cert.Valid) :"
+                        - text: Q3.ComplexRect.Contains
+                        - text: (Q3.DigammaSeries.shiftedDigamma z)
+                        - text: cert.reLower cert.reUpper cert.imLower cert.imUpper := by
+                        - text: "-- recurrence:"
+                        - text: "-- ψ(z) = ψ(z + 16) - Σ m<16, 1/(z+m)"
+                        - text: "-- N=16 asymptotic / tail bound on z+16"
+                        - text: "-- rational rectangle arithmetic"
+                        - text: ...
+                    - paragraph [ref=e2014]:
+                      - text: If repo does not use
+                      - code [ref=e2015]: Q3.ComplexRect.Contains
+                      - text: ", use the existing local rectangular interval predicate."
+                    - separator [ref=e2016]
+                    - heading "First small lemma Codex should implement now" [level=2] [ref=e2017]
+                    - generic [ref=e2026]:
+                      - generic [ref=e2028]:
+                        - generic [ref=e2029]:
+                          - img [ref=e2030]
+                          - text: lean
+                        - button "Kopieren" [ref=e2033] [cursor=pointer]:
+                          - img [ref=e2034]
+                      - code [ref=e2042]:
+                        - text: theorem Q3.DigammaSeries.digamma_shift16_recurrence
+                        - text: "(z : ℂ)"
+                        - text: "(h : ∀ m : Fin 16, z + (m.val : ℂ) ≠ 0) :"
+                        - text: Q3.DigammaSeries.shiftedDigamma z
+                        - text: =
+                        - text: Q3.DigammaSeries.shiftedDigamma (z + 16)
+                        - text: "- ∑ m : Fin 16, (z + (m.val : ℂ))⁻¹ := by"
+                        - text: "-- use digamma recurrence ψ(z+1)=ψ(z)+1/z"
+                        - text: "-- telescope 16 steps"
+                        - text: ...
+                    - paragraph [ref=e2043]:
+                      - text: This is the first local proof-producing lemma.
+                      - text: Small. Reusable. No constants.
+                    - paragraph [ref=e2044]: "Then:"
+                    - generic [ref=e2053]:
+                      - generic [ref=e2055]:
+                        - generic [ref=e2056]:
+                          - img [ref=e2057]
+                          - text: lean
+                        - button "Kopieren" [ref=e2060] [cursor=pointer]:
+                          - img [ref=e2061]
+                      - code [ref=e2069]:
+                        - text: theorem Q3.DigammaSeries.shiftedDigamma_add16_asymptotic_rect_N16
+                        - text: "(z : ℂ)"
+                        - text: "(cert : Q3.DigammaSeries.DigammaAsymptoticRectPayloadN16 (z + 16))"
+                        - text: "(hcert : cert.Valid) :"
+                        - text: Q3.ComplexRect.Contains
+                        - text: (Q3.DigammaSeries.shiftedDigamma (z + 16))
+                        - text: cert.reLower cert.reUpper cert.imLower cert.imUpper := by
+                        - text: ...
+                    - paragraph [ref=e2070]: "Then combine into:"
+                    - generic [ref=e2079]:
+                      - generic [ref=e2081]:
+                        - generic [ref=e2082]:
+                          - img [ref=e2083]
+                          - text: lean
+                        - button "Kopieren" [ref=e2086] [cursor=pointer]:
+                          - img [ref=e2087]
+                      - code [ref=e2095]: Q3.DigammaSeries.shiftedDigamma_rect_intervalCert_shift16_N16
+                    - separator [ref=e2096]
+                    - heading "Endpoint feed theorem" [level=2] [ref=e2097]
+                    - paragraph [ref=e2098]: "File:"
+                    - generic [ref=e2107]:
+                      - button "Kopieren" [ref=e2108] [cursor=pointer]:
+                        - img [ref=e2109]
+                      - code [ref=e2117]: Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointOmegaSeriesImport.lean
+                    - paragraph [ref=e2118]: "Theorem for first anchor:"
+                    - generic [ref=e2127]:
+                      - generic [ref=e2129]:
+                        - generic [ref=e2130]:
+                          - img [ref=e2131]
+                          - text: lean
+                        - button "Kopieren" [ref=e2134] [cursor=pointer]:
+                          - img [ref=e2135]
+                      - code [ref=e2143]:
+                        - text: "theorem primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shiftedDigammaRect_shift16_N16 :"
+                        - text: LocalRawOmegaComponentDirectEndpointIntervalCert
+                        - text: primaryFiniteRow0Parent0Split100Sub0 := by
+                        - text: exact
+                        - text: primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shifted_digamma_rect_interval_generated
+                        - text: primaryFiniteRow0Parent0Split100Sub0_shiftedDigamma_rect_intervalCert_shift16_N16
+                        - text: primaryFiniteRow0Parent0Split100Sub0_main_error_containment
+                        - text: primaryFiniteRow0Parent0Split100Sub0_shape_cert
+                        - text: primaryFiniteRow0Parent0Split100Sub0_rational_cert
+                    - paragraph [ref=e2144]: Use actual repo names for row/cert args.
+                    - separator [ref=e2145]
+                    - heading "Generator data shape" [level=2] [ref=e2146]
+                    - paragraph [ref=e2147]: "For each endpoint row, emit:"
+                    - generic [ref=e2156]:
+                      - button "Kopieren" [ref=e2157] [cursor=pointer]:
+                        - img [ref=e2158]
+                      - code [ref=e2166]:
+                        - text: rowId
+                        - text: zRe
+                        - text: zIm
+                        - text: M = 16
+                        - text: N = 16
+                        - text: nonzero proofs for z + m, m = 0..15
+                        - text: recurrenceSumReLower
+                        - text: recurrenceSumReUpper
+                        - text: recurrenceSumImLower
+                        - text: recurrenceSumImUpper
+                        - text: asymptoticReLower
+                        - text: asymptoticReUpper
+                        - text: asymptoticImLower
+                        - text: asymptoticImUpper
+                        - text: tailAbsUpper
+                        - text: rectReLower
+                        - text: rectReUpper
+                        - text: rectImLower
+                        - text: rectImUpper
+                        - text: mainErrorLower
+                        - text: mainErrorUpper
+                        - text: omegaValueLower
+                        - text: omegaValueUpper
+                        - text: omegaDerivLower
+                        - text: omegaDerivUpper
+                    - paragraph [ref=e2167]: All as exact rationals.
+                    - separator [ref=e2168]
+                    - heading "What Lean checks" [level=2] [ref=e2169]
+                    - paragraph [ref=e2170]: "Lean checks:"
+                    - generic [ref=e2179]:
+                      - button "Kopieren" [ref=e2180] [cursor=pointer]:
+                        - img [ref=e2181]
+                      - code [ref=e2189]:
+                        - text: 16-step recurrence
+                        - text: finite inverse-sum rectangle arithmetic
+                        - text: N=16 asymptotic rectangle
+                        - text: tail bound
+                        - text: final Re/Im rectangle containment
+                        - text: main ± error containment
+                        - text: endpoint interval cert constructor
+                    - paragraph [ref=e2190]: "Arb/acb only suggests:"
+                    - generic [ref=e2199]:
+                      - button "Kopieren" [ref=e2200] [cursor=pointer]:
+                        - img [ref=e2201]
+                      - code [ref=e2209]:
+                        - text: candidate rectangle bounds
+                        - text: tail size
+                        - text: rational margins
+                    - paragraph [ref=e2210]: No Arb theorem.
+                    - separator [ref=e2211]
+                    - heading "Stop condition" [level=2] [ref=e2212]
+                    - paragraph [ref=e2213]: "Stop after first concrete anchor:"
+                    - generic [ref=e2222]:
+                      - generic [ref=e2224]:
+                        - generic [ref=e2225]:
+                          - img [ref=e2226]
+                          - text: lean
+                        - button "Kopieren" [ref=e2229] [cursor=pointer]:
+                          - img [ref=e2230]
+                      - code [ref=e2238]: primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shiftedDigammaRect_shift16_N16
+                    - paragraph [ref=e2239]: compiles.
+                    - paragraph [ref=e2240]: "If blocked, report exactly:"
+                    - generic [ref=e2249]:
+                      - button "Kopieren" [ref=e2250] [cursor=pointer]:
+                        - img [ref=e2251]
+                      - code [ref=e2259]:
+                        - text: "DIGAMMA_RECT_SHIFT16_BLOCKER:"
+                        - text: "- theorem:"
+                        - text: "- z:"
+                        - text: "- recurrence/nonzero side:"
+                        - text: "- asymptotic side:"
+                        - text: "- tail inequality:"
+                        - text: "- failing rational inequality:"
+                        - text: "- missing local lemma:"
+                    - separator [ref=e2260]
+                    - heading "Why not option 1" [level=2] [ref=e2261]
+                    - paragraph [ref=e2262]: "The constant route is blocked by:"
+                    - generic [ref=e2271]:
+                      - button "Kopieren" [ref=e2272] [cursor=pointer]:
+                        - img [ref=e2273]
+                      - code [ref=e2281]: "-γ - log π"
+                    - paragraph [ref=e2282]:
+                      - text: and elementary
+                      - code [ref=e2283]: eulerMascheroniSeq
+                      - text: is too slow.
+                    - paragraph [ref=e2284]: Shifted digamma avoids proving a standalone ultra-tight constant first.
+                    - separator [ref=e2285]
+                    - heading "Why not option 3" [level=2] [ref=e2286]
+                    - paragraph [ref=e2287]:
+                      - text: No semantic rewrite now.
+                      - text: The receiver is already present.
+                      - text: The blocker is proof-grade Re/Im enclosure for shifted digamma.
+                    - paragraph [ref=e2288]: "Final:"
+                    - generic [ref=e2297]:
+                      - button "Kopieren" [ref=e2298] [cursor=pointer]:
+                        - img [ref=e2299]
+                      - code [ref=e2307]:
+                        - text: Choose 2.
+                        - text: "First lemma:"
+                        - text: Q3.DigammaSeries.digamma_shift16_recurrence
+                        - text: "Main theorem:"
+                        - text: Q3.DigammaSeries.shiftedDigamma_rect_intervalCert_shift16_N16
+                        - text: "First row target:"
+                        - text: primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shiftedDigammaRect_shift16_N16
+                - generic [ref=e2308]:
+                  - group "Antwortaktionen":
+                    - button "Antwort kopieren":
+                      - generic:
+                        - img
+                    - button "Pro-Feedback":
+                      - img
+                    - button "Zu den Projektquellen hinzufügen":
+                      - generic:
+                        - img
+                    - button "Mehr Aktionen":
+                      - img
+            - generic [ref=e2354]:
+              - heading "Du:" [level=4] [ref=e2355]
+              - generic [ref=e2357]:
+                - generic [ref=e2363]:
+                  - generic [ref=e2365]: "PRO_REVIEW_REQUEST Route: Step33A.1-A raw-Omega refined-parent route-A payload. Current step: close proof-producing inputs for 110 selected direct subchunks under the checked 26-parent refined receiver. Current active theorem: RawOmegaAChunkIntegral.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance Checked optional theorem: RawOmegaAChunkIntegral.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_deriv_anchor_second_deriv_bound_at_zero_distance Blocker: no Lean error. Optional derivative-anchor/second-derivative wrapper compiles, but current v7 derivative-audit data does not fit envelope budget: - parent 0 subchunk 0: derivSampleRadius + secondDerivativeSlope * mesh <= sampledSlope fails, excess about 3.43e-5 - parent 1 subchunk 0: same dry-run fails, excess about 2.18e-5 Active v27/v35/v11 worklist remains: - hRawCenterCoeffAbs: 110 - hResidualDerivBoundOnCell: 110 Options: A. Build direct proof-safe residual-derivative norm generator for current cell-slope receiver, preserving tiny sampled norm target. B. Generate finer derivative cells / tighter second-derivative payload until optional derivative-anchor wrapper satisfies derivative and residual envelope budgets. C. Fall back to legacy lower/upper interval route only if it can preserve cancellation; current one-cell raw/poly audit is 0/110 passing. Codex recommendation: A first. Current sampled norm route already fits hEnvelope for 110/110; missing piece is proof-safe certification of that norm without raw/poly cancellation loss. Use B only if direct norm proof surface cannot be made structural. Question: Should next generator target be direct residual-derivative norm proof surface for hResidualDerivBoundOnCell, or switch to finer derivative-cell / second-derivative payloads and activate the optional derivative-anchor wrapper?"
+                  - button "Mehr anzeigen" [ref=e2366] [cursor=pointer]:
+                    - generic [ref=e2367]: Mehr anzeigen
+                    - img [ref=e2369]
+                - generic [ref=e2371]:
+                  - group "Deine Nachrichtenaktionen":
+                    - button "Nachricht kopieren":
+                      - generic:
+                        - img
+                    - button "Nachricht bearbeiten":
+                      - generic:
+                        - img
+            - generic [ref=e2374]:
+              - heading "ChatGPT:" [level=4] [ref=e2375]
+              - generic [ref=e2382]: Pro-Denkvorgang
+          - generic [ref=e105]:
+            - generic:
+              - generic:
+                - button:
+                  - img
+            - generic [ref=e110]:
+              - generic [ref=e114]:
+                - button "Dateien und mehr hinzufügen" [ref=e117] [cursor=pointer]:
+                  - img
+                - textbox "Mit ChatGPT chatten" [ref=e2316]:
+                  - paragraph [ref=e2317]: Stelle irgendeine Frage
+                - generic [ref=e121]:
+                  - button "Länger Pro" [ref=e2321] [cursor=pointer]:
+                    - generic [ref=e2322]: Länger Pro
+                    - img
+                  - generic [ref=e122]:
+                    - button "Diktat starten" [ref=e2323] [cursor=pointer]:
+                      - img
+                    - generic [ref=e123]:
+                      - tooltip "Antwort stoppen, Eingabetaste" [ref=e2383]:
+                        - generic "Antwort stoppen, Eingabetaste" [ref=e2386]:
+                          - generic [ref=e2387]: Antwort stoppen
+                          - generic [ref=e2390]: ⏎
+                      - button "Antwort stoppen" [active] [ref=e2391] [cursor=pointer]:
+                        - img [ref=e2392]
+              - button [ref=e127]
+              - button [ref=e128]
+            - generic [ref=e2330]: ChatGPT kann Fehler machen. Überprüfe wichtige Informationen.
+  - alert [ref=e135]
+  - status [ref=e136]

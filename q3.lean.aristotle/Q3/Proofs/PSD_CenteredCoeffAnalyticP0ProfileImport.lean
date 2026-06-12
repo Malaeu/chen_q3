@@ -1,0 +1,33 @@
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D0To2Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D3To4Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D5To6Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D7To8Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D9To10Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D11To12Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D13To14Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D15To16Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D17To18Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D19To20Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK11D21To22Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D0To2Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D3To4Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D5To6Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D7To8Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D9To10Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D11To12Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D13To14Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D15To16Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D17To18Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D19To20Import
+import Q3.Proofs.PSD_CenteredCoeffAnalyticP0ProfileK9D21To22Import
+
+set_option linter.mathlibStandardSet false
+
+/-!
+Generated Step21 P0 profile equalities for the primary `k=11` and control
+`k=9` B-spline packets.
+
+The imported files are deliberately split into small distance ranges so Lake
+can cache the polynomial-segment proofs without loading one monolithic
+certificate module.
+-/

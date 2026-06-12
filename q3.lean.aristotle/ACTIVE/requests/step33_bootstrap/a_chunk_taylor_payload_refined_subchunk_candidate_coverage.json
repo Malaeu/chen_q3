@@ -1,0 +1,381 @@
+{
+  "activeProofDataSchema": "q3_psdpd_step33_a_refined_subchunk_proof_data.v17",
+  "activeSubchunkFields": [
+    "coeff",
+    "remainder",
+    "derivSlope",
+    "hResidualDerivBoundOnCell",
+    "hEnvelope"
+  ],
+  "candidateParents": [
+    {
+      "candidateSubchunks": 100,
+      "family": "primary_finite",
+      "left": "0.000000000000000000E+0",
+      "parentChunk": 0,
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30.json",
+      "policy": "finite_first_split100",
+      "proofSafeClosedFields": 0,
+      "residualAudit": {
+        "fails": 0,
+        "passes": 100,
+        "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_rational_residual_audit_primary_finite_0_0_denom1e30.json",
+        "residualAuditPassed": true,
+        "status": "sampled_rational_residual_audit_passed_not_proof"
+      },
+      "residualAuditPassed": true,
+      "right": "1.000000000000000000E+1",
+      "row": 0,
+      "seededCandidateFields": 900,
+      "selectionScore": {
+        "adjustedParentUpperSlack": "-1.891000000000000000E-20",
+        "residualAuditPassed": true,
+        "rowUpperSlackAfterReplacingParent": "4.202457513693252068E-20",
+        "slackFitsCurrentBounds": false
+      },
+      "slackAudit": {
+        "adjustedParentUpperSlack": "-1.891000000000000000E-20",
+        "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_remainder_slack_audit_primary_finite_0_0_denom1e30.json",
+        "rowUpperSlackAfterReplacingParent": "4.202457513693252068E-20",
+        "slackFits": false,
+        "status": "derivative_slack_exceeds_current_parent_or_row_bounds"
+      },
+      "slackFitsCurrentBounds": false,
+      "split": 100,
+      "status": "candidate_overlay_not_proof_data",
+      "stillMissingFields": 200,
+      "subchunks": 100
+    },
+    {
+      "candidateSubchunks": 10,
+      "family": "primary_finite",
+      "left": "1.000000000000000000E+1",
+      "parentChunk": 1,
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_1_denom1e30_derivfit.json",
+      "policy": "finite_rest_split10",
+      "proofSafeClosedFields": 0,
+      "residualAudit": {
+        "fails": 0,
+        "passes": 10,
+        "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_rational_residual_audit_primary_finite_0_1_denom1e30_derivfit.json",
+        "residualAuditPassed": true,
+        "status": "sampled_rational_residual_audit_passed_not_proof"
+      },
+      "residualAuditPassed": true,
+      "right": "2.000000000000000000E+1",
+      "row": 0,
+      "seededCandidateFields": 90,
+      "selectionScore": {
+        "adjustedParentUpperSlack": "2.000000000000000000E-20",
+        "residualAuditPassed": true,
+        "rowUpperSlackAfterReplacingParent": "8.093457513693252068E-20",
+        "slackFitsCurrentBounds": false
+      },
+      "slackAudit": {
+        "adjustedParentUpperSlack": "2.000000000000000000E-20",
+        "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_remainder_slack_audit_primary_finite_0_1_denom1e30_derivfit.json",
+        "rowUpperSlackAfterReplacingParent": "8.093457513693252068E-20",
+        "slackFits": false,
+        "status": "derivative_slack_exceeds_current_parent_or_row_bounds"
+      },
+      "slackFitsCurrentBounds": false,
+      "split": 10,
+      "status": "candidate_overlay_derivative_remainder_refreshed_not_proof_data",
+      "stillMissingFields": 20,
+      "subchunks": 10
+    }
+  ],
+  "directParents": [
+    {
+      "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+      "family": "primary_finite",
+      "left": "0.000000000000000000E+0",
+      "parentChunk": 0,
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30.json",
+      "policy": "finite_first_split100",
+      "remainingAnalyticFields": 300,
+      "right": "1.000000000000000000E+1",
+      "row": 0,
+      "seededFields": 1900,
+      "split": 100,
+      "status": "direct_derivative_overlay_seeded_missing_cell_proofs",
+      "subchunks": 100
+    },
+    {
+      "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+      "family": "primary_finite",
+      "left": "1.000000000000000000E+1",
+      "parentChunk": 1,
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_1_denom1e30_derivfit.json",
+      "policy": "finite_rest_split10",
+      "remainingAnalyticFields": 30,
+      "right": "2.000000000000000000E+1",
+      "row": 0,
+      "seededFields": 190,
+      "split": 10,
+      "status": "direct_derivative_overlay_seeded_missing_cell_proofs",
+      "subchunks": 10
+    }
+  ],
+  "familySummary": [
+    {
+      "candidateParents": 0,
+      "candidateSubchunks": 0,
+      "directParents": 0,
+      "directSubchunks": 0,
+      "family": "control_finite",
+      "parentChunks": 598,
+      "rowsSeen": 23,
+      "subchunks": 8050
+    },
+    {
+      "candidateParents": 0,
+      "candidateSubchunks": 0,
+      "directParents": 0,
+      "directSubchunks": 0,
+      "family": "control_tail",
+      "parentChunks": 598,
+      "rowsSeen": 23,
+      "subchunks": 11960
+    },
+    {
+      "candidateParents": 2,
+      "candidateSubchunks": 110,
+      "directParents": 2,
+      "directSubchunks": 110,
+      "family": "primary_finite",
+      "parentChunks": 598,
+      "rowsSeen": 23,
+      "subchunks": 8050
+    },
+    {
+      "candidateParents": 0,
+      "candidateSubchunks": 0,
+      "directParents": 0,
+      "directSubchunks": 0,
+      "family": "primary_tail",
+      "parentChunks": 598,
+      "rowsSeen": 23,
+      "subchunks": 11960
+    }
+  ],
+  "leanLandingSurface": "RawOmegaAChunkTaylorPayload.RefinedPayloadFin",
+  "meaning": "Fail-closed coverage audit for refined-subchunk candidate and direct-derivative overlays.  This is not proof data.",
+  "missingGroups": {
+    "residual_anchor_envelope": 40020,
+    "residual_derivative_cell_norm_proofs": 40020,
+    "residual_derivative_cell_slope_data": 40020,
+    "row_sum_comparisons": 184,
+    "taylor_model_data": 80040
+  },
+  "nextCandidateParents": [
+    {
+      "family": "primary_finite",
+      "left": "2.000000000000000000E+1",
+      "parentChunk": 2,
+      "policy": "finite_rest_split10",
+      "right": "3.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "3.000000000000000000E+1",
+      "parentChunk": 3,
+      "policy": "finite_rest_split10",
+      "right": "4.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "4.000000000000000000E+1",
+      "parentChunk": 4,
+      "policy": "finite_rest_split10",
+      "right": "5.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "5.000000000000000000E+1",
+      "parentChunk": 5,
+      "policy": "finite_rest_split10",
+      "right": "6.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "6.000000000000000000E+1",
+      "parentChunk": 6,
+      "policy": "finite_rest_split10",
+      "right": "7.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "7.000000000000000000E+1",
+      "parentChunk": 7,
+      "policy": "finite_rest_split10",
+      "right": "8.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "8.000000000000000000E+1",
+      "parentChunk": 8,
+      "policy": "finite_rest_split10",
+      "right": "9.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "9.000000000000000000E+1",
+      "parentChunk": 9,
+      "policy": "finite_rest_split10",
+      "right": "1.000000000000000000E+2",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    }
+  ],
+  "nextDirectParents": [
+    {
+      "family": "primary_finite",
+      "left": "2.000000000000000000E+1",
+      "parentChunk": 2,
+      "policy": "finite_rest_split10",
+      "right": "3.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "3.000000000000000000E+1",
+      "parentChunk": 3,
+      "policy": "finite_rest_split10",
+      "right": "4.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "4.000000000000000000E+1",
+      "parentChunk": 4,
+      "policy": "finite_rest_split10",
+      "right": "5.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "5.000000000000000000E+1",
+      "parentChunk": 5,
+      "policy": "finite_rest_split10",
+      "right": "6.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "6.000000000000000000E+1",
+      "parentChunk": 6,
+      "policy": "finite_rest_split10",
+      "right": "7.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "7.000000000000000000E+1",
+      "parentChunk": 7,
+      "policy": "finite_rest_split10",
+      "right": "8.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "8.000000000000000000E+1",
+      "parentChunk": 8,
+      "policy": "finite_rest_split10",
+      "right": "9.000000000000000000E+1",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    },
+    {
+      "family": "primary_finite",
+      "left": "9.000000000000000000E+1",
+      "parentChunk": 9,
+      "policy": "finite_rest_split10",
+      "right": "1.000000000000000000E+2",
+      "row": 0,
+      "split": 10,
+      "subchunks": 10
+    }
+  ],
+  "nextGeneratorTarget": [
+    "lift candidate-overlay generation from the one pilot parent to shardable parent chunks",
+    "for every candidate parent, produce universal hEnvelope and hResidualDerivBoundOnCell proofs",
+    "then emit RefinedPayloadFin only after all parent and row comparisons are present"
+  ],
+  "proofDataSkeleton": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_proof_data_skeleton.json",
+  "routeGuard": [
+    "coverage audit only",
+    "do not import this file as Lean proof data",
+    "do not write refined generated Lean while missingTotal is nonzero",
+    "candidate overlays close zero proof-safe fields",
+    "direct overlays still leave hEnvelope and hResidualDerivBoundOnCell open",
+    "keep the 26 parent chunks; refined subchunks stay under each parent",
+    "no CSV, ARadius, radius-floor, LDL, Q3.Main, H1, or PO3 mutation"
+  ],
+  "schema": "q3_psdpd_step33_a_refined_subchunk_candidate_coverage.v1",
+  "staleDirectOverlays": [
+    {
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0.json",
+      "schema": "q3_psdpd_step33_a_refined_subchunk_direct_derivative_overlay.v19"
+    }
+  ],
+  "status": "pilot_only_candidate_coverage_no_lean_emitted",
+  "totals": {
+    "candidateMissingParents": 2390,
+    "candidateMissingSubchunks": 39910,
+    "candidateOverlayFiles": 2,
+    "candidateParents": 2,
+    "candidateResidualPassedParents": 2,
+    "candidateSlackFitParents": 0,
+    "candidateSubchunks": 110,
+    "directMissingParents": 2390,
+    "directMissingSubchunks": 39910,
+    "directOverlayFiles": 2,
+    "directParents": 2,
+    "directSubchunks": 110,
+    "missingRowAnalyticFields": 184,
+    "missingSubchunkAnalyticFields": 200100,
+    "parentChunks": 2392,
+    "proofSafeClosedFields": 0,
+    "refinedSubchunks": 40020,
+    "residualAuditFiles": 2,
+    "slackAuditFiles": 2,
+    "staleDirectOverlayFiles": 1
+  },
+  "worklist": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_worklist.json"
+}

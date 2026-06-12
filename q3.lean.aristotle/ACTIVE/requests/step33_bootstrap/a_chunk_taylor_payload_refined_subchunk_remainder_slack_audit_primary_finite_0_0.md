@@ -1,0 +1,58 @@
+# Step33A.1-A Refined Subchunk Remainder Slack Audit
+
+Fail-closed accounting report.  This is not Lean proof data.
+
+## Verdict
+
+- status: `derivative_slack_exceeds_current_parent_or_row_bounds`
+- family: `primary_finite`
+- row: `0`
+- parent chunk: `0`
+- split: `100`
+
+## Counts
+
+| item | count |
+| --- | ---: |
+| `subchunks` | `100` |
+| `derivativeFailuresNeedingSlack` | `0` |
+| `proofSafeClosedFields` | `0` |
+
+## Parent Accounting
+
+| item | value |
+| --- | ---: |
+| `parentLower` | `-3.535346901998863369E-1` |
+| `parentUpper` | `-3.535346901998863369E-1` |
+| `candidateLowerSum` | `-3.535346901998863890E-1` |
+| `candidateUpperSum` | `-3.535346901998862890E-1` |
+| `adjustedLowerSum` | `-3.535346901998863890E-1` |
+| `adjustedUpperSum` | `-3.535346901998862890E-1` |
+| `currentParentLowerSlack` | `-5.210000000000000000E-17` |
+| `currentParentUpperSlack` | `-4.790000000000000000E-17` |
+| `adjustedParentLowerSlack` | `-5.210000000000000000E-17` |
+| `adjustedParentUpperSlack` | `-4.790000000000000000E-17` |
+| `parentLowerDeltaIfReplaced` | `-5.210000000000000000E-17` |
+| `parentUpperDeltaIfReplaced` | `4.790000000000000000E-17` |
+| `totalExtraRemainderNeeded` | `0.000000000000000000E+18` |
+
+## Row Accounting
+
+| item | value |
+| --- | ---: |
+| `rowTargetLower` | `1.233644453639219465E-1` |
+| `rowTargetUpper` | `1.233644453639219559E-1` |
+| `rowParentLowerSumBefore` | `1.233644453639219558E-1` |
+| `rowParentUpperSumBefore` | `1.233644453639219558E-1` |
+| `rowLowerSlackBefore` | `9.339065424863067479E-18` |
+| `rowUpperSlackBefore` | `6.093457513693252068E-20` |
+| `rowLowerSlackAfterReplacingParent` | `-4.276093457513693252E-17` |
+| `rowUpperSlackAfterReplacingParent` | `-4.783906542486306748E-17` |
+
+## Guard
+
+- accounting audit only
+- do not emit Lean from this report
+- do not mutate parent or row bounds from this report
+- if current row slack is insufficient, choose an explicit row-target refresh or global slack policy before payload emission
+- proofSafeClosedFields remains zero

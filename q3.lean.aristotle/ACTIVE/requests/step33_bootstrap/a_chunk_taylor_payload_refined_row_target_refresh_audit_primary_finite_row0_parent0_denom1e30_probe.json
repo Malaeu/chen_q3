@@ -1,0 +1,82 @@
+{
+  "counts": {
+    "coveredCandidateParents": 2,
+    "derivativeFailuresNeedingSlack": 1,
+    "proofSafeClosedFields": 0,
+    "rowParentChunks": 26,
+    "slackFitParents": 0
+  },
+  "coverage": "q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_coverage_primary_row0_parent0_denom1e30_probe.json",
+  "family": "primary_finite",
+  "meaning": "Fail-closed aggregate row accounting for currently slack-audited candidate parents.  This is not Lean proof data and does not mutate parent or row targets.",
+  "parentReplacements": [
+    {
+      "adjustedParentLower": "-3.535346901998863369E-1",
+      "adjustedParentLowerSlack": "8.910000000000000000E-21",
+      "adjustedParentUpper": "-3.535346901998863369E-1",
+      "adjustedParentUpperSlack": "-1.891000000000000000E-20",
+      "currentParentLower": "-3.535346901998863369E-1",
+      "currentParentUpper": "-3.535346901998863369E-1",
+      "derivativeFailuresNeedingSlack": 0,
+      "left": "0.000000000000000000E+0",
+      "lowerDeltaIfReplaced": "0.000000000000000000E-1",
+      "parentChunk": 0,
+      "right": "1.000000000000000000E+1",
+      "slackAudit": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_remainder_slack_audit_primary_finite_0_0_denom1e30.json",
+      "slackFitsCurrentBounds": false,
+      "slackStatus": "derivative_slack_exceeds_current_parent_or_row_bounds",
+      "split": 100,
+      "subchunks": 100,
+      "totalExtraRemainderNeeded": "0.000000000000000000E+18",
+      "upperDeltaIfReplaced": "0.000000000000000000E-1"
+    },
+    {
+      "adjustedParentLower": "2.615058139399545769E-1",
+      "adjustedParentLowerSlack": "-5.356029973344000000E-18",
+      "adjustedParentUpper": "2.615058139399545871E-1",
+      "adjustedParentUpperSlack": "-4.756029973344000000E-18",
+      "currentParentLower": "2.615058139399545823E-1",
+      "currentParentUpper": "2.615058139399545823E-1",
+      "derivativeFailuresNeedingSlack": 1,
+      "left": "1.000000000000000000E+1",
+      "lowerDeltaIfReplaced": "-5.400000000000000000E-18",
+      "parentChunk": 1,
+      "right": "2.000000000000000000E+1",
+      "slackAudit": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_remainder_slack_audit_primary_finite_0_1.json",
+      "slackFitsCurrentBounds": false,
+      "slackStatus": "derivative_slack_exceeds_current_parent_or_row_bounds",
+      "split": 10,
+      "subchunks": 10,
+      "totalExtraRemainderNeeded": "5.602997334400000000E-20",
+      "upperDeltaIfReplaced": "4.800000000000000000E-18"
+    }
+  ],
+  "routeGuard": [
+    "aggregate accounting audit only",
+    "do not emit Lean from this report",
+    "do not mutate parent or row bounds from this report",
+    "covered parents only; uncovered parents keep current worklist bounds",
+    "if refresh is chosen, prove a local row-target/recenter containment theorem before payload emission",
+    "proofSafeClosedFields remains zero"
+  ],
+  "row": 0,
+  "rowAccounting": {
+    "minimalRefreshedTargetLower": "1.233644453639219465E-1",
+    "minimalRefreshedTargetUpper": "1.233644453639219606E-1",
+    "requiredLowerTargetDecrease": "0.000000000000000000E+18",
+    "requiredUpperTargetIncrease": "4.739065424863067479E-18",
+    "rowLowerSlackAfterReplacingCoveredParents": "3.939065424863067479E-18",
+    "rowLowerSlackBefore": "9.339065424863067479E-18",
+    "rowParentLowerSumAfterReplacingCoveredParents": "1.233644453639219504E-1",
+    "rowParentLowerSumBefore": "1.233644453639219558E-1",
+    "rowParentUpperSumAfterReplacingCoveredParents": "1.233644453639219606E-1",
+    "rowParentUpperSumBefore": "1.233644453639219558E-1",
+    "rowUpperSlackAfterReplacingCoveredParents": "-4.739065424863067479E-18",
+    "rowUpperSlackBefore": "6.093457513693252068E-20",
+    "targetLowerBefore": "1.233644453639219465E-1",
+    "targetUpperBefore": "1.233644453639219559E-1"
+  },
+  "schema": "q3_psdpd_step33_a_refined_row_target_refresh_audit.v1",
+  "status": "row_target_refresh_required_for_covered_candidate_parents",
+  "worklist": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_worklist.json"
+}

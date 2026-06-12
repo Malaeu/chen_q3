@@ -25,6 +25,7 @@ Status:
 from __future__ import annotations
 
 import argparse
+import json
 import math
 from decimal import Decimal, getcontext
 from pathlib import Path
@@ -218,31 +219,47 @@ class ArchIntervalBuilder:
 
         return total
 
-    def entry_mid_rad(self, d_abs: Decimal) -> tuple[float, float]:
+    def entry_components(self, d_abs: Decimal) -> dict[str, str]:
         val = self.finite_integral(d_abs)
-        mid, rad = ball_to_mid_rad(val.real)
-        rad += self.tail_radius + self.radius_floor
-        return mid, rad
+        finite_mid, finite_radius = ball_to_mid_rad(val.real)
+        total_radius = finite_radius + self.tail_radius + self.radius_floor
+        return {
+            "distance": str(d_abs),
+            "finite_mid": f"{finite_mid:.17e}",
+            "finite_radius": f"{finite_radius:.17e}",
+            "tail_radius": f"{self.tail_radius:.17e}",
+            "radius_floor": f"{self.radius_floor:.17e}",
+            "total_mid": f"{finite_mid:.17e}",
+            "total_radius": f"{total_radius:.17e}",
+        }
+
+    def entry_mid_rad(self, d_abs: Decimal) -> tuple[float, float]:
+        components = self.entry_components(d_abs)
+        return float(components["total_mid"]), float(components["total_radius"])
 
 
 def build_A_midrad_arch(
     *,
     centers_dec: list[Decimal],
     builder: ArchIntervalBuilder,
-) -> tuple[np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, list[dict[str, str]]]:
     n = len(centers_dec)
     mids = np.zeros((n, n), dtype=float)
     rads = np.zeros((n, n), dtype=float)
 
     unique_d = sorted({abs(centers_dec[j] - centers_dec[i]) for i in range(n) for j in range(n)})
     values: dict[Decimal, tuple[float, float]] = {}
+    components_by_distance: list[dict[str, str]] = []
 
     print(f"Unique Arch distances: {len(unique_d)}")
     print(f"Common tail radius: {builder.tail_radius:.16e}")
 
     for idx, d in enumerate(unique_d, 1):
-        mid, rad = builder.entry_mid_rad(d)
+        components = builder.entry_components(d)
+        mid = float(components["total_mid"])
+        rad = float(components["total_radius"])
         values[d] = (mid, rad)
+        components_by_distance.append(components)
         print(f"[{idx:03d}/{len(unique_d):03d}] d={d} mid={mid:.16e} rad={rad:.16e}")
 
     for i in range(n):
@@ -250,7 +267,7 @@ def build_A_midrad_arch(
             d_abs = abs(centers_dec[j] - centers_dec[i])
             mids[i, j], rads[i, j] = values[d_abs]
 
-    return sym(mids), sym(rads)
+    return sym(mids), sym(rads), components_by_distance
 
 
 def run() -> None:
@@ -277,6 +294,7 @@ def run() -> None:
     parser.add_argument("--in-rad", type=str, required=True)
     parser.add_argument("--out-mid", type=str, required=True)
     parser.add_argument("--out-rad", type=str, required=True)
+    parser.add_argument("--out-finite-tail-json", type=str)
 
     args = parser.parse_args()
     set_precision(args.arb_prec)
@@ -309,7 +327,10 @@ def run() -> None:
         radius_floor=args.radius_floor,
     )
 
-    mid_A, rad_A = build_A_midrad_arch(centers_dec=centers_dec, builder=builder)
+    mid_A, rad_A, finite_tail_components = build_A_midrad_arch(
+        centers_dec=centers_dec,
+        builder=builder,
+    )
 
     old_mid_A = mids["A"].copy()
     old_rad_A = rads["A"].copy()
@@ -322,6 +343,34 @@ def run() -> None:
 
     write_matrix_csv(Path(args.out_mid), mids, value_col="mid")
     write_matrix_csv(Path(args.out_rad), rads, value_col="rad")
+
+    if args.out_finite_tail_json:
+        finite_tail_payload = {
+            "schema": "q3_psdpd_step22_arch_finite_tail_components.v1",
+            "parameters": {
+                "L": args.L,
+                "ell": args.ell,
+                "delta": args.delta,
+                "k_spline": args.k_spline,
+                "arb_prec": args.arb_prec,
+                "cutoff_t": args.cutoff_t,
+                "chunk_size": args.chunk_size,
+                "rel_tol": args.rel_tol,
+                "abs_tol": args.abs_tol,
+                "deg_limit": args.deg_limit,
+                "eval_limit": args.eval_limit,
+                "depth_limit": args.depth_limit,
+                "sinc_terms": args.sinc_terms,
+                "omega_factor": args.omega_factor,
+                "radius_floor": args.radius_floor,
+            },
+            "distances": finite_tail_components,
+        }
+        out_finite_tail_json = Path(args.out_finite_tail_json)
+        out_finite_tail_json.write_text(
+            json.dumps(finite_tail_payload, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
 
     # Compare against both input midpoint and the old pilot builder for debugging.
     params = PilotParams(
@@ -346,6 +395,8 @@ def run() -> None:
     print(f"tail radius                  = {builder.tail_radius:.16e}")
     print(f"Wrote midpoint CSV: {args.out_mid}")
     print(f"Wrote radius CSV:   {args.out_rad}")
+    if args.out_finite_tail_json:
+        print(f"Wrote finite/tail JSON: {args.out_finite_tail_json}")
 
 
 if __name__ == "__main__":

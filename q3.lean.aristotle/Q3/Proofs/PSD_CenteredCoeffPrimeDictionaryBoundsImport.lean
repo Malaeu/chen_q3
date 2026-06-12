@@ -51,6 +51,40 @@ theorem activeL3PrimeShift_nonneg (n : PrimeShiftIndexL3) :
     0 ≤ activeL3PrimeShift n :=
   le_of_lt (activeL3PrimeShift_pos n)
 
+/-- Uniform lower bound strong enough for the active `ell = 0.30` support cut. -/
+theorem activeL3PrimeShift_ge_three_fifths (n : PrimeShiftIndexL3) :
+    (3 / 5 : Real) <= activeL3PrimeShift n := by
+  have hlog2 : (3 / 5 : Real) <= Real.log 2 := by
+    have h := Real.log_two_gt_d9
+    norm_num at h ⊢
+    linarith
+  have hbase : (2 : Real) <= (activeL3PrimeBase n : Real) := by
+    exact_mod_cast activeL3PrimeBase_ge_two n
+  have hlog_ge :
+      Real.log 2 <= Real.log (activeL3PrimeBase n : Real) := by
+    exact Real.log_le_log (by norm_num) hbase
+  have hexp_one :
+      (1 : Real) <= (activeL3PrimeExponent n : Real) := by
+    exact_mod_cast activeL3PrimeExponent_pos n
+  have hlog_nonneg :
+      0 <= Real.log (activeL3PrimeBase n : Real) :=
+    le_of_lt (activeL3PrimeLog_pos n)
+  have hscale :
+      Real.log (activeL3PrimeBase n : Real) <=
+        (activeL3PrimeExponent n : Real) *
+          Real.log (activeL3PrimeBase n : Real) := by
+    calc
+      Real.log (activeL3PrimeBase n : Real)
+          = (1 : Real) * Real.log (activeL3PrimeBase n : Real) := by ring
+      _ <= (activeL3PrimeExponent n : Real) *
+          Real.log (activeL3PrimeBase n : Real) := by
+            exact mul_le_mul_of_nonneg_right hexp_one hlog_nonneg
+  calc
+    (3 / 5 : Real) <= Real.log 2 := hlog2
+    _ <= Real.log (activeL3PrimeBase n : Real) := hlog_ge
+    _ <= activeL3PrimeShift n := by
+      simpa [activeL3PrimeShift] using hscale
+
 theorem activeL3PrimeWeight_pos (n : PrimeShiftIndexL3) :
     0 < activeL3PrimeWeight n := by
   exact mul_pos (activeL3PrimeLog_pos n) (Real.exp_pos _)
@@ -74,6 +108,32 @@ theorem controlK9PrimeShift_pos (n : PrimeShiftIndexL3) :
 theorem controlK9PrimeWeight_pos (n : PrimeShiftIndexL3) :
     0 < controlK9PrimeWeight n := by
   simpa [controlK9PrimeWeight] using activeL3PrimeWeight_pos n
+
+theorem primaryK11_two_le_primeShift_div_ell (n : PrimeShiftIndexL3) :
+    (2 : Real) <=
+      primaryK11PrimeShift n / CenteredCoeffPayloadImport.primaryK11Ell := by
+  have hell : 0 < CenteredCoeffPayloadImport.primaryK11Ell := by
+    norm_num [CenteredCoeffPayloadImport.primaryK11Ell,
+      CenteredCoeffPayloadImport.primaryK11EllRat]
+  exact (le_div_iff₀ hell).2
+    (by
+      have h := activeL3PrimeShift_ge_three_fifths n
+      norm_num [primaryK11PrimeShift, CenteredCoeffPayloadImport.primaryK11Ell,
+        CenteredCoeffPayloadImport.primaryK11EllRat] at h ⊢
+      exact h)
+
+theorem controlK9_two_le_primeShift_div_ell (n : PrimeShiftIndexL3) :
+    (2 : Real) <=
+      controlK9PrimeShift n / CenteredCoeffPayloadImport.controlK9Ell := by
+  have hell : 0 < CenteredCoeffPayloadImport.controlK9Ell := by
+    norm_num [CenteredCoeffPayloadImport.controlK9Ell,
+      CenteredCoeffPayloadImport.controlK9EllRat]
+  exact (le_div_iff₀ hell).2
+    (by
+      have h := activeL3PrimeShift_ge_three_fifths n
+      norm_num [controlK9PrimeShift, CenteredCoeffPayloadImport.controlK9Ell,
+        CenteredCoeffPayloadImport.controlK9EllRat] at h ⊢
+      exact h)
 
 /-- Generated exponential lower/upper bounds for the prime base give a Lean
 interval for `log p`. -/

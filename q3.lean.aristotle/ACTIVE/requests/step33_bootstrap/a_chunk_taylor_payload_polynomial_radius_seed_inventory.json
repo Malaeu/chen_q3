@@ -1,0 +1,635 @@
+{
+  "families": [
+    {
+      "block": "primary",
+      "chunk_cells": 598,
+      "chunk_count": 26,
+      "complete_cells": 0,
+      "complete_rows": 0,
+      "distance_rows": 23,
+      "examples": [
+        {
+          "distance": "0.00",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 0,
+          "row_missing": []
+        },
+        {
+          "distance": "0.25",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 1,
+          "row_missing": []
+        },
+        {
+          "distance": "0.50",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 2,
+          "row_missing": []
+        }
+      ],
+      "family_kind": "finite",
+      "id": "primary_finite",
+      "lean_valid_constructor": "RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.Valid.primaryK11_finiteChunk_of_raw_component_abs_cos_and_polynomial_term_bounds_model_integral_bounds",
+      "missing_field_counts": {
+        "cell.coeff": 598,
+        "cell.degree": 598,
+        "cell.diffLower": 598,
+        "cell.diffUpper": 598,
+        "cell.integralLower": 598,
+        "cell.integralUpper": 598,
+        "cell.polyLower": 598,
+        "cell.polyUpper": 598,
+        "cell.polynomialLowerBound": 598,
+        "cell.polynomialUpperBound": 598,
+        "cell.remainder": 598,
+        "cell.remainderNonneg": 598
+      },
+      "missing_group_counts": {
+        "diff_integral_comparisons": 2392,
+        "polynomial_value_bounds": 2392,
+        "taylor_model_data": 2392
+      }
+    },
+    {
+      "block": "primary",
+      "chunk_cells": 598,
+      "chunk_count": 26,
+      "complete_cells": 0,
+      "complete_rows": 0,
+      "distance_rows": 23,
+      "examples": [
+        {
+          "distance": "0.00",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 0,
+          "row_missing": []
+        },
+        {
+          "distance": "0.25",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 1,
+          "row_missing": []
+        },
+        {
+          "distance": "0.50",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 2,
+          "row_missing": []
+        }
+      ],
+      "family_kind": "tail",
+      "id": "primary_tail",
+      "lean_valid_constructor": "RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.Valid.primaryK11_tailChunk_of_raw_component_abs_cos_and_polynomial_term_bounds_model_integral_bounds",
+      "missing_field_counts": {
+        "cell.coeff": 598,
+        "cell.degree": 598,
+        "cell.diffLower": 598,
+        "cell.diffUpper": 598,
+        "cell.integralLower": 598,
+        "cell.integralUpper": 598,
+        "cell.polyLower": 598,
+        "cell.polyUpper": 598,
+        "cell.polynomialLowerBound": 598,
+        "cell.polynomialUpperBound": 598,
+        "cell.remainder": 598,
+        "cell.remainderNonneg": 598
+      },
+      "missing_group_counts": {
+        "diff_integral_comparisons": 2392,
+        "polynomial_value_bounds": 2392,
+        "taylor_model_data": 2392
+      }
+    },
+    {
+      "block": "control",
+      "chunk_cells": 598,
+      "chunk_count": 26,
+      "complete_cells": 0,
+      "complete_rows": 0,
+      "distance_rows": 23,
+      "examples": [
+        {
+          "distance": "0.00",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 0,
+          "row_missing": []
+        },
+        {
+          "distance": "0.25",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 1,
+          "row_missing": []
+        },
+        {
+          "distance": "0.50",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 2,
+          "row_missing": []
+        }
+      ],
+      "family_kind": "finite",
+      "id": "control_finite",
+      "lean_valid_constructor": "RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.Valid.controlK9_finiteChunk_of_raw_component_abs_cos_and_polynomial_term_bounds_model_integral_bounds",
+      "missing_field_counts": {
+        "cell.coeff": 598,
+        "cell.degree": 598,
+        "cell.diffLower": 598,
+        "cell.diffUpper": 598,
+        "cell.integralLower": 598,
+        "cell.integralUpper": 598,
+        "cell.polyLower": 598,
+        "cell.polyUpper": 598,
+        "cell.polynomialLowerBound": 598,
+        "cell.polynomialUpperBound": 598,
+        "cell.remainder": 598,
+        "cell.remainderNonneg": 598
+      },
+      "missing_group_counts": {
+        "diff_integral_comparisons": 2392,
+        "polynomial_value_bounds": 2392,
+        "taylor_model_data": 2392
+      }
+    },
+    {
+      "block": "control",
+      "chunk_cells": 598,
+      "chunk_count": 26,
+      "complete_cells": 0,
+      "complete_rows": 0,
+      "distance_rows": 23,
+      "examples": [
+        {
+          "distance": "0.00",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 0,
+          "row_missing": []
+        },
+        {
+          "distance": "0.25",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 1,
+          "row_missing": []
+        },
+        {
+          "distance": "0.50",
+          "first_chunk_missing": [
+            "degree",
+            "coeff",
+            "remainder",
+            "remainderNonneg",
+            "diffLower",
+            "diffUpper",
+            "integralLower",
+            "integralUpper",
+            "polyLower",
+            "polyUpper",
+            "polynomialLowerBound",
+            "polynomialUpperBound"
+          ],
+          "index": 2,
+          "row_missing": []
+        }
+      ],
+      "family_kind": "tail",
+      "id": "control_tail",
+      "lean_valid_constructor": "RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.Valid.controlK9_tailChunk_of_raw_component_abs_cos_and_polynomial_term_bounds_model_integral_bounds",
+      "missing_field_counts": {
+        "cell.coeff": 598,
+        "cell.degree": 598,
+        "cell.diffLower": 598,
+        "cell.diffUpper": 598,
+        "cell.integralLower": 598,
+        "cell.integralUpper": 598,
+        "cell.polyLower": 598,
+        "cell.polyUpper": 598,
+        "cell.polynomialLowerBound": 598,
+        "cell.polynomialUpperBound": 598,
+        "cell.remainder": 598,
+        "cell.remainderNonneg": 598
+      },
+      "missing_group_counts": {
+        "diff_integral_comparisons": 2392,
+        "polynomial_value_bounds": 2392,
+        "taylor_model_data": 2392
+      }
+    }
+  ],
+  "lean_payload_type": "RawOmegaAChunkTaylorPayload.PayloadFin",
+  "lean_step33a_wrapper": "RawOmegaAChunkTaylorPayload.PayloadFin.toDirectTailWindowInputs",
+  "lean_step33b_wrapper": "psd_step33_rawOmega_finite_analytic_and_singleton_handoff_of_rawOmegaADirectTailWindowInputs",
+  "meaning": "Inventory for the proof-data required to instantiate RawOmegaAChunkTaylorPayload.PayloadFin.  Numeric Arb probes are not accepted as Lean proof data.",
+  "missing_field_counts": {
+    "cell.coeff": 2392,
+    "cell.degree": 2392,
+    "cell.diffLower": 2392,
+    "cell.diffUpper": 2392,
+    "cell.integralLower": 2392,
+    "cell.integralUpper": 2392,
+    "cell.polyLower": 2392,
+    "cell.polyUpper": 2392,
+    "cell.polynomialLowerBound": 2392,
+    "cell.polynomialUpperBound": 2392,
+    "cell.remainder": 2392,
+    "cell.remainderNonneg": 2392
+  },
+  "missing_field_groups": {
+    "chunk_geometry": [
+      "cell.center",
+      "cell.radius",
+      "cell.radiusNonneg",
+      "cell.radiusLeft",
+      "cell.radiusRight"
+    ],
+    "chunk_interval_probe": [
+      "cell.chunkLower",
+      "cell.chunkUpper"
+    ],
+    "cosine_envelope": [
+      "cell.cosLower",
+      "cell.cosUpper",
+      "cell.cosLowerBound",
+      "cell.cosUpperBound"
+    ],
+    "diff_integral_comparisons": [
+      "cell.diffLower",
+      "cell.diffUpper",
+      "cell.integralLower",
+      "cell.integralUpper"
+    ],
+    "omega_shape_enclosures": [
+      "cell.omegaLower",
+      "cell.omegaUpper",
+      "cell.omegaLowerBound",
+      "cell.omegaUpperBound",
+      "cell.shapeSqLower",
+      "cell.shapeSqUpper",
+      "cell.shapeSqLowerBound",
+      "cell.shapeSqUpperBound"
+    ],
+    "polynomial_value_bounds": [
+      "cell.termLower",
+      "cell.termUpper",
+      "cell.polyLower",
+      "cell.polyUpper",
+      "cell.polynomialTermBounds",
+      "cell.polyLowerSum",
+      "cell.polyUpperSum",
+      "cell.polynomialLowerBound",
+      "cell.polynomialUpperBound"
+    ],
+    "raw_product_bounds": [
+      "cell.rawLower",
+      "cell.rawUpper",
+      "cell.componentProductLower",
+      "cell.componentProductUpper",
+      "cell.componentProductCornerLowerLLL",
+      "cell.componentProductCornerLowerLLU",
+      "cell.componentProductCornerLowerLUL",
+      "cell.componentProductCornerLowerLUU",
+      "cell.componentProductCornerLowerULL",
+      "cell.componentProductCornerLowerULU",
+      "cell.componentProductCornerLowerUUL",
+      "cell.componentProductCornerLowerUUU",
+      "cell.componentProductCornerUpperLLL",
+      "cell.componentProductCornerUpperLLU",
+      "cell.componentProductCornerUpperLUL",
+      "cell.componentProductCornerUpperLUU",
+      "cell.componentProductCornerUpperULL",
+      "cell.componentProductCornerUpperULU",
+      "cell.componentProductCornerUpperUUL",
+      "cell.componentProductCornerUpperUUU",
+      "cell.scaleLower",
+      "cell.scaleUpper",
+      "cell.scaleLowerBound",
+      "cell.scaleUpperBound",
+      "cell.componentProductScaleCornerLowerLLLL",
+      "cell.componentProductScaleCornerLowerLLLU",
+      "cell.componentProductScaleCornerLowerLLUL",
+      "cell.componentProductScaleCornerLowerLLUU",
+      "cell.componentProductScaleCornerLowerLULL",
+      "cell.componentProductScaleCornerLowerLULU",
+      "cell.componentProductScaleCornerLowerLUUL",
+      "cell.componentProductScaleCornerLowerLUUU",
+      "cell.componentProductScaleCornerLowerULLL",
+      "cell.componentProductScaleCornerLowerULLU",
+      "cell.componentProductScaleCornerLowerULUL",
+      "cell.componentProductScaleCornerLowerULUU",
+      "cell.componentProductScaleCornerLowerUULL",
+      "cell.componentProductScaleCornerLowerUULU",
+      "cell.componentProductScaleCornerLowerUUUL",
+      "cell.componentProductScaleCornerLowerUUUU",
+      "cell.componentProductScaleCornerUpperLLLL",
+      "cell.componentProductScaleCornerUpperLLLU",
+      "cell.componentProductScaleCornerUpperLLUL",
+      "cell.componentProductScaleCornerUpperLLUU",
+      "cell.componentProductScaleCornerUpperLULL",
+      "cell.componentProductScaleCornerUpperLULU",
+      "cell.componentProductScaleCornerUpperLUUL",
+      "cell.componentProductScaleCornerUpperLUUU",
+      "cell.componentProductScaleCornerUpperULLL",
+      "cell.componentProductScaleCornerUpperULLU",
+      "cell.componentProductScaleCornerUpperULUL",
+      "cell.componentProductScaleCornerUpperULUU",
+      "cell.componentProductScaleCornerUpperUULL",
+      "cell.componentProductScaleCornerUpperUULU",
+      "cell.componentProductScaleCornerUpperUUUL",
+      "cell.componentProductScaleCornerUpperUUUU"
+    ],
+    "row_sum_arithmetic": [
+      "row.lowerSum",
+      "row.upperSum"
+    ],
+    "taylor_model_data": [
+      "cell.degree",
+      "cell.coeff",
+      "cell.remainder",
+      "cell.remainderNonneg"
+    ]
+  },
+  "missing_group_counts": {
+    "diff_integral_comparisons": 9568,
+    "polynomial_value_bounds": 9568,
+    "taylor_model_data": 9568
+  },
+  "probe_summary": {
+    "available": true,
+    "chunk_cells": 2392,
+    "families": 4,
+    "has_numeric_chunk_intervals": true,
+    "has_taylor_proof_data": false,
+    "numeric_chunk_cells": 2392,
+    "rows": 92
+  },
+  "product_proof_alternatives": {
+    "corner": [
+      "componentProductCornerLowerLLL",
+      "componentProductCornerLowerLLU",
+      "componentProductCornerLowerLUL",
+      "componentProductCornerLowerLUU",
+      "componentProductCornerLowerULL",
+      "componentProductCornerLowerULU",
+      "componentProductCornerLowerUUL",
+      "componentProductCornerLowerUUU",
+      "componentProductCornerUpperLLL",
+      "componentProductCornerUpperLLU",
+      "componentProductCornerUpperLUL",
+      "componentProductCornerUpperLUU",
+      "componentProductCornerUpperULL",
+      "componentProductCornerUpperULU",
+      "componentProductCornerUpperUUL",
+      "componentProductCornerUpperUUU"
+    ],
+    "corner_receiver": "RawOmegaATaylorModelCertificate.product_bounds_of_eight_corners",
+    "direct": [
+      "componentProductLower",
+      "componentProductUpper"
+    ],
+    "scale_interval": [
+      "scaleLower",
+      "scaleUpper",
+      "scaleLowerBound",
+      "scaleUpperBound",
+      "componentProductScaleCornerLowerLLLL",
+      "componentProductScaleCornerLowerLLLU",
+      "componentProductScaleCornerLowerLLUL",
+      "componentProductScaleCornerLowerLLUU",
+      "componentProductScaleCornerLowerLULL",
+      "componentProductScaleCornerLowerLULU",
+      "componentProductScaleCornerLowerLUUL",
+      "componentProductScaleCornerLowerLUUU",
+      "componentProductScaleCornerLowerULLL",
+      "componentProductScaleCornerLowerULLU",
+      "componentProductScaleCornerLowerULUL",
+      "componentProductScaleCornerLowerULUU",
+      "componentProductScaleCornerLowerUULL",
+      "componentProductScaleCornerLowerUULU",
+      "componentProductScaleCornerLowerUUUL",
+      "componentProductScaleCornerLowerUUUU",
+      "componentProductScaleCornerUpperLLLL",
+      "componentProductScaleCornerUpperLLLU",
+      "componentProductScaleCornerUpperLLUL",
+      "componentProductScaleCornerUpperLLUU",
+      "componentProductScaleCornerUpperLULL",
+      "componentProductScaleCornerUpperLULU",
+      "componentProductScaleCornerUpperLUUL",
+      "componentProductScaleCornerUpperLUUU",
+      "componentProductScaleCornerUpperULLL",
+      "componentProductScaleCornerUpperULLU",
+      "componentProductScaleCornerUpperULUL",
+      "componentProductScaleCornerUpperULUU",
+      "componentProductScaleCornerUpperUULL",
+      "componentProductScaleCornerUpperUULU",
+      "componentProductScaleCornerUpperUUUL",
+      "componentProductScaleCornerUpperUUUU"
+    ],
+    "scale_interval_receiver": "RawOmegaATaylorModelCertificate.product_bounds_of_scale_interval_and_sixteen_corners"
+  },
+  "proof_data_schema_expected": "q3_psdpd_step33_a_chunk_taylor_payload_proof_data.v1",
+  "proof_data_source": "ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_polynomial_radius_seed.json",
+  "proof_data_summary": {
+    "available": true,
+    "cells_with_any_populated_field": 2392,
+    "cells_with_any_populated_proof_field": 2392,
+    "cells_with_any_populated_required_field": 2392,
+    "chunk_cells": 2392,
+    "families": 4,
+    "rows": 92,
+    "status": "polynomial_radius_seed_applied"
+  },
+  "required_cell_fields": [
+    "chunkLower",
+    "chunkUpper",
+    "center",
+    "radius",
+    "degree",
+    "coeff",
+    "remainder",
+    "omegaLower",
+    "omegaUpper",
+    "omegaLowerBound",
+    "omegaUpperBound",
+    "shapeSqLower",
+    "shapeSqUpper",
+    "shapeSqLowerBound",
+    "shapeSqUpperBound",
+    "cosLower",
+    "cosUpper",
+    "cosLowerBound",
+    "cosUpperBound",
+    "rawLower",
+    "rawUpper",
+    "radiusNonneg",
+    "remainderNonneg",
+    "radiusLeft",
+    "radiusRight",
+    "diffLower",
+    "diffUpper",
+    "integralLower",
+    "integralUpper"
+  ],
+  "required_row_fields": [
+    "lowerSum",
+    "upperSum"
+  ],
+  "required_tail_row_fields": [],
+  "route_guard": [
+    "do not emit trusted Arb/acb integral theorems",
+    "do not mutate A CSV, ARadius, radius-floor, or LDL",
+    "do not route to Q3.Main or H1/PO3",
+    "do not call Step33A.1-A closed until PayloadFin compiles"
+  ],
+  "schema": "q3_psdpd_step33_a_chunk_taylor_payload_inventory.v1",
+  "status": "missing_proof_data",
+  "totals": {
+    "chunk_cells": 2392,
+    "complete_cells": 0,
+    "complete_rows": 0,
+    "distance_rows": 92,
+    "families": 4,
+    "missing_cells": 2392
+  },
+  "worklist_schema": "q3_psdpd_step33_a_distance_payload_worklist.v1"
+}

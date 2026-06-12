@@ -1,0 +1,1080 @@
+{
+  "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeJetIntervalFiniteCoverChunkProofData",
+  "blockedSubchunks": [
+    {
+      "jetCoverSlopeDecimal": "1.179008903933595908E-5",
+      "jetEnvelopeExcess": "5.895044519659269725E-7",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.247216030607258675E-2",
+      "reason": "subchunk 0: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.843206600623000000E-19",
+      "subchunk": 0
+    },
+    {
+      "jetCoverSlopeDecimal": "1.380394893227744701E-5",
+      "jetEnvelopeExcess": "6.901974466128984266E-7",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.460252449034252137E-2",
+      "reason": "subchunk 1: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.936788528616000000E-19",
+      "subchunk": 1
+    },
+    {
+      "jetCoverSlopeDecimal": "1.300901266440272401E-5",
+      "jetEnvelopeExcess": "6.504506332192528159E-7",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.376160017391333492E-2",
+      "reason": "subchunk 2: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.580742717972500000E-19",
+      "subchunk": 2
+    },
+    {
+      "jetCoverSlopeDecimal": "8.479385426786311507E-6",
+      "jetEnvelopeExcess": "4.239692713385530449E-7",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "8.969928385360626887E-3",
+      "reason": "subchunk 3: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.523618491780000000E-19",
+      "subchunk": 3
+    },
+    {
+      "jetCoverSlopeDecimal": "4.830155147563297397E-6",
+      "jetEnvelopeExcess": "2.415077573777087589E-7",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "5.109585610645446283E-3",
+      "reason": "subchunk 4: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.498344250769000000E-19",
+      "subchunk": 4
+    },
+    {
+      "jetCoverSlopeDecimal": "2.988832919798042351E-6",
+      "jetEnvelopeExcess": "1.494416459893138469E-7",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.161740609372763262E-3",
+      "reason": "subchunk 5: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.722565854644500000E-19",
+      "subchunk": 5
+    },
+    {
+      "jetCoverSlopeDecimal": "2.393497425868751155E-6",
+      "jetEnvelopeExcess": "1.196748712926589556E-7",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.531964219100464404E-3",
+      "reason": "subchunk 6: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.629646773941000000E-19",
+      "subchunk": 6
+    },
+    {
+      "jetCoverSlopeDecimal": "1.854891767944511975E-6",
+      "jetEnvelopeExcess": "9.274458839648554112E-8",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.962199556172456904E-3",
+      "reason": "subchunk 7: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.292860025512500000E-19",
+      "subchunk": 7
+    },
+    {
+      "jetCoverSlopeDecimal": "1.398997145522886625E-6",
+      "jetEnvelopeExcess": "6.994985727556368696E-8",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.479930864684832425E-3",
+      "reason": "subchunk 8: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.576289419374000000E-19",
+      "subchunk": 8
+    },
+    {
+      "jetCoverSlopeDecimal": "1.033321033309986068E-6",
+      "jetEnvelopeExcess": "5.166605166461704682E-8",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.093099936063026206E-3",
+      "reason": "subchunk 9: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.637736378320500000E-19",
+      "subchunk": 9
+    },
+    {
+      "jetCoverSlopeDecimal": "7.553312921810803233E-7",
+      "jetEnvelopeExcess": "3.776656460823801375E-8",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "7.990281437946450487E-4",
+      "reason": "subchunk 10: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.048160895762500000E-19",
+      "subchunk": 10
+    },
+    {
+      "jetCoverSlopeDecimal": "5.554842890579450273E-7",
+      "jetEnvelopeExcess": "2.777421445193072053E-8",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "5.876197437964177391E-4",
+      "reason": "subchunk 11: jet envelope fails",
+      "sampledEnvelopeExcess": "-9.450335815809500000E-19",
+      "subchunk": 11
+    },
+    {
+      "jetCoverSlopeDecimal": "4.142528048337168950E-7",
+      "jetEnvelopeExcess": "2.071264024077263232E-8",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "4.382178431298328859E-4",
+      "reason": "subchunk 12: jet envelope fails",
+      "sampledEnvelopeExcess": "-9.072787109573500000E-19",
+      "subchunk": 12
+    },
+    {
+      "jetCoverSlopeDecimal": "3.136336848643917820E-7",
+      "jetEnvelopeExcess": "1.568168424245633930E-8",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.317777823353517718E-4",
+      "reason": "subchunk 13: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.402829901816000000E-19",
+      "subchunk": 13
+    },
+    {
+      "jetCoverSlopeDecimal": "2.417832302306976159E-7",
+      "jetEnvelopeExcess": "1.208916151076352701E-8",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.557706898306504360E-4",
+      "reason": "subchunk 14: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.640272888465500000E-19",
+      "subchunk": 14
+    },
+    {
+      "jetCoverSlopeDecimal": "1.911186103034304909E-7",
+      "jetEnvelopeExcess": "9.555930514436401672E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.021750588333324854E-4",
+      "reason": "subchunk 15: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.330308427191000000E-19",
+      "subchunk": 15
+    },
+    {
+      "jetCoverSlopeDecimal": "1.530192594487832144E-7",
+      "jetEnvelopeExcess": "7.650962971896982900E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.618716133011309127E-4",
+      "reason": "subchunk 16: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.344965594153000000E-19",
+      "subchunk": 16
+    },
+    {
+      "jetCoverSlopeDecimal": "1.224283021537878480E-7",
+      "jetEnvelopeExcess": "6.121415106731829555E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.295109312039298447E-4",
+      "reason": "subchunk 17: jet envelope fails",
+      "sampledEnvelopeExcess": "-9.542109109580500000E-19",
+      "subchunk": 17
+    },
+    {
+      "jetCoverSlopeDecimal": "9.692679195092700807E-8",
+      "jetEnvelopeExcess": "4.846339596830006631E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.025341270218635942E-4",
+      "reason": "subchunk 18: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.903284971370000000E-19",
+      "subchunk": 18
+    },
+    {
+      "jetCoverSlopeDecimal": "8.372060936250318958E-8",
+      "jetEnvelopeExcess": "4.186030467599122224E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "8.856395039964875180E-5",
+      "reason": "subchunk 19: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.107524821414500000E-19",
+      "subchunk": 19
+    },
+    {
+      "jetCoverSlopeDecimal": "7.333459462287376887E-8",
+      "jetEnvelopeExcess": "3.666729730162643792E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "7.757709183203721106E-5",
+      "reason": "subchunk 20: jet envelope fails",
+      "sampledEnvelopeExcess": "-9.627766461827500000E-19",
+      "subchunk": 20
+    },
+    {
+      "jetCoverSlopeDecimal": "6.565496203664295775E-8",
+      "jetEnvelopeExcess": "3.282748100866601566E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "6.945318298086116897E-5",
+      "reason": "subchunk 21: jet envelope fails",
+      "sampledEnvelopeExcess": "-9.582228454471500000E-19",
+      "subchunk": 21
+    },
+    {
+      "jetCoverSlopeDecimal": "6.056514319562497984E-8",
+      "jetEnvelopeExcess": "3.028257159295688368E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "6.406891181004078815E-5",
+      "reason": "subchunk 22: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.757165353804000000E-19",
+      "subchunk": 22
+    },
+    {
+      "jetCoverSlopeDecimal": "5.697178041587582295E-8",
+      "jetEnvelopeExcess": "2.848589020220805477E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "6.026766853888474357E-5",
+      "reason": "subchunk 23: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.633378174589000000E-19",
+      "subchunk": 23
+    },
+    {
+      "jetCoverSlopeDecimal": "5.372169903979186676E-8",
+      "jetEnvelopeExcess": "2.686084951099199767E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "5.682956592572399844E-5",
+      "reason": "subchunk 24: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.616877235035500000E-19",
+      "subchunk": 24
+    },
+    {
+      "jetCoverSlopeDecimal": "4.884440733469951938E-8",
+      "jetEnvelopeExcess": "2.442220365993309226E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "5.167011684928892370E-5",
+      "reason": "subchunk 25: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.140879155828500000E-19",
+      "subchunk": 25
+    },
+    {
+      "jetCoverSlopeDecimal": "4.241531227591293097E-8",
+      "jetEnvelopeExcess": "2.120765612934145608E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "4.486909067187072624E-5",
+      "reason": "subchunk 26: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.500761851601000000E-19",
+      "subchunk": 26
+    },
+    {
+      "jetCoverSlopeDecimal": "3.842622343765765603E-8",
+      "jetEnvelopeExcess": "1.921311171397053997E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "4.064922809894584394E-5",
+      "reason": "subchunk 27: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.688644172081500000E-19",
+      "subchunk": 27
+    },
+    {
+      "jetCoverSlopeDecimal": "3.826467219522469835E-8",
+      "jetEnvelopeExcess": "1.913233609227075781E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "4.047833091721910946E-5",
+      "reason": "subchunk 28: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.320697599926500000E-19",
+      "subchunk": 28
+    },
+    {
+      "jetCoverSlopeDecimal": "3.766533057786985032E-8",
+      "jetEnvelopeExcess": "1.883266528326305162E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.984431664428277366E-5",
+      "reason": "subchunk 29: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.632076415508000000E-19",
+      "subchunk": 29
+    },
+    {
+      "jetCoverSlopeDecimal": "3.805555555352971077E-8",
+      "jetEnvelopeExcess": "1.902777776930106109E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "4.025711661838951837E-5",
+      "reason": "subchunk 30: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.361873752553000000E-19",
+      "subchunk": 30
+    },
+    {
+      "jetCoverSlopeDecimal": "3.819621110858054193E-8",
+      "jetEnvelopeExcess": "1.909810554983348118E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "4.040590927136950541E-5",
+      "reason": "subchunk 31: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.190162871705500000E-19",
+      "subchunk": 31
+    },
+    {
+      "jetCoverSlopeDecimal": "3.880213179978642948E-8",
+      "jetEnvelopeExcess": "1.940106589076855489E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "4.104688322576421192E-5",
+      "reason": "subchunk 32: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.921152708784500000E-19",
+      "subchunk": 32
+    },
+    {
+      "jetCoverSlopeDecimal": "3.851014881360861763E-8",
+      "jetEnvelopeExcess": "1.925507439838032069E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "4.073800866188178798E-5",
+      "reason": "subchunk 33: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.231239227283500000E-19",
+      "subchunk": 33
+    },
+    {
+      "jetCoverSlopeDecimal": "3.706169937566564658E-8",
+      "jetEnvelopeExcess": "1.853084967943616714E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.920576462870406265E-5",
+      "reason": "subchunk 34: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.353770630240500000E-19",
+      "subchunk": 34
+    },
+    {
+      "jetCoverSlopeDecimal": "3.363610012867754084E-8",
+      "jetEnvelopeExcess": "1.681805005674574490E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.558199021871967945E-5",
+      "reason": "subchunk 35: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.570328380598000000E-19",
+      "subchunk": 35
+    },
+    {
+      "jetCoverSlopeDecimal": "2.864408001545427504E-8",
+      "jetEnvelopeExcess": "1.432204000110952223E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.030117555333642600E-5",
+      "reason": "subchunk 36: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.530631278467500000E-19",
+      "subchunk": 36
+    },
+    {
+      "jetCoverSlopeDecimal": "2.849450072682934668E-8",
+      "jetEnvelopeExcess": "1.424725035909919295E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.014294291705978464E-5",
+      "reason": "subchunk 37: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.017845439879000000E-19",
+      "subchunk": 37
+    },
+    {
+      "jetCoverSlopeDecimal": "2.879080158453549376E-8",
+      "jetEnvelopeExcess": "1.439540078312893397E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.045638514689963533E-5",
+      "reason": "subchunk 38: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.941420122761500000E-19",
+      "subchunk": 38
+    },
+    {
+      "jetCoverSlopeDecimal": "2.862108326610701123E-8",
+      "jetEnvelopeExcess": "1.431054162604782542E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.027684841322869193E-5",
+      "reason": "subchunk 39: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.771556599581000000E-19",
+      "subchunk": 39
+    },
+    {
+      "jetCoverSlopeDecimal": "2.839968663776406152E-8",
+      "jetEnvelopeExcess": "1.419984331315226126E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.004264371573534557E-5",
+      "reason": "subchunk 40: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.616758301758500000E-19",
+      "subchunk": 40
+    },
+    {
+      "jetCoverSlopeDecimal": "2.830170396200578959E-8",
+      "jetEnvelopeExcess": "1.415085197568919420E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.993899262057028659E-5",
+      "reason": "subchunk 41: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.143035565235500000E-19",
+      "subchunk": 41
+    },
+    {
+      "jetCoverSlopeDecimal": "2.863136268764124150E-8",
+      "jetEnvelopeExcess": "1.431568133742204107E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.028772251227984008E-5",
+      "reason": "subchunk 42: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.284011751293500000E-19",
+      "subchunk": 42
+    },
+    {
+      "jetCoverSlopeDecimal": "2.854679772876008264E-8",
+      "jetEnvelopeExcess": "1.427339885970623438E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "3.019826536578205855E-5",
+      "reason": "subchunk 43: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.596558340985500000E-19",
+      "subchunk": 43
+    },
+    {
+      "jetCoverSlopeDecimal": "2.787844787833334820E-8",
+      "jetEnvelopeExcess": "1.393922393362470733E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.949125064810006699E-5",
+      "reason": "subchunk 44: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.493190969314500000E-19",
+      "subchunk": 44
+    },
+    {
+      "jetCoverSlopeDecimal": "2.604312902026824503E-8",
+      "jetEnvelopeExcess": "1.302156450137841102E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.754975631877891038E-5",
+      "reason": "subchunk 45: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.677020133207000000E-19",
+      "subchunk": 45
+    },
+    {
+      "jetCoverSlopeDecimal": "2.369034014021885739E-8",
+      "jetEnvelopeExcess": "1.184517006302365349E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.506085568549867697E-5",
+      "reason": "subchunk 46: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.042330710872000000E-19",
+      "subchunk": 46
+    },
+    {
+      "jetCoverSlopeDecimal": "2.154637877988653893E-8",
+      "jetEnvelopeExcess": "1.077318938218257847E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.279286350246481104E-5",
+      "reason": "subchunk 47: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.612591772233500000E-19",
+      "subchunk": 47
+    },
+    {
+      "jetCoverSlopeDecimal": "2.362339959474485903E-8",
+      "jetEnvelopeExcess": "1.181169979269833819E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.499004254601799789E-5",
+      "reason": "subchunk 48: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.439727422528500000E-19",
+      "subchunk": 48
+    },
+    {
+      "jetCoverSlopeDecimal": "2.439342789162205851E-8",
+      "jetEnvelopeExcess": "1.219671393984715781E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.580461793461183033E-5",
+      "reason": "subchunk 49: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.819141140552000000E-19",
+      "subchunk": 49
+    },
+    {
+      "jetCoverSlopeDecimal": "2.435550257508743105E-8",
+      "jetEnvelopeExcess": "1.217775127929282267E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.576449859182767264E-5",
+      "reason": "subchunk 50: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.213313957482500000E-19",
+      "subchunk": 50
+    },
+    {
+      "jetCoverSlopeDecimal": "2.516682462854890387E-8",
+      "jetEnvelopeExcess": "1.258341230546407267E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.662275663157195470E-5",
+      "reason": "subchunk 51: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.635917838553500000E-19",
+      "subchunk": 51
+    },
+    {
+      "jetCoverSlopeDecimal": "2.555848843949940260E-8",
+      "jetEnvelopeExcess": "1.277924421169860944E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.703707867957418118E-5",
+      "reason": "subchunk 52: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.953166224075000000E-19",
+      "subchunk": 52
+    },
+    {
+      "jetCoverSlopeDecimal": "2.717672998451919014E-8",
+      "jetEnvelopeExcess": "1.358836498746905575E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.874893750428357655E-5",
+      "reason": "subchunk 53: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.786291680876500000E-19",
+      "subchunk": 53
+    },
+    {
+      "jetCoverSlopeDecimal": "2.759038767076664247E-8",
+      "jetEnvelopeExcess": "1.379519383052131212E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.918652579987438402E-5",
+      "reason": "subchunk 54: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.591051529200500000E-19",
+      "subchunk": 54
+    },
+    {
+      "jetCoverSlopeDecimal": "2.754054684029877053E-8",
+      "jetEnvelopeExcess": "1.377027341395884616E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.913380161608704975E-5",
+      "reason": "subchunk 55: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.148778241873500000E-19",
+      "subchunk": 55
+    },
+    {
+      "jetCoverSlopeDecimal": "2.660707462418540341E-8",
+      "jetEnvelopeExcess": "1.330353730369858527E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.814632687486739712E-5",
+      "reason": "subchunk 56: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.263107348937000000E-19",
+      "subchunk": 56
+    },
+    {
+      "jetCoverSlopeDecimal": "2.441027117153394462E-8",
+      "jetEnvelopeExcess": "1.220513557821691040E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.582243561890367224E-5",
+      "reason": "subchunk 57: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.253273811448000000E-19",
+      "subchunk": 57
+    },
+    {
+      "jetCoverSlopeDecimal": "2.118356052811883127E-8",
+      "jetEnvelopeExcess": "1.059178025877899109E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.240905576508760921E-5",
+      "reason": "subchunk 58: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.194934776745500000E-19",
+      "subchunk": 58
+    },
+    {
+      "jetCoverSlopeDecimal": "2.058050301985088921E-8",
+      "jetEnvelopeExcess": "1.029025150206481550E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.177111063239077463E-5",
+      "reason": "subchunk 59: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.771204977701000000E-19",
+      "subchunk": 59
+    },
+    {
+      "jetCoverSlopeDecimal": "2.171527424681135781E-8",
+      "jetEnvelopeExcess": "1.085763711569599315E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.297152978167938254E-5",
+      "reason": "subchunk 60: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.645766889655000000E-19",
+      "subchunk": 60
+    },
+    {
+      "jetCoverSlopeDecimal": "2.183420157469012102E-8",
+      "jetEnvelopeExcess": "1.091710077998515192E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.309733720260588020E-5",
+      "reason": "subchunk 61: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.198953641872000000E-19",
+      "subchunk": 61
+    },
+    {
+      "jetCoverSlopeDecimal": "2.168680212765814506E-8",
+      "jetEnvelopeExcess": "1.084340105879592469E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.294141051496608576E-5",
+      "reason": "subchunk 62: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.928896058060500000E-19",
+      "subchunk": 62
+    },
+    {
+      "jetCoverSlopeDecimal": "2.094248662555801427E-8",
+      "jetEnvelopeExcess": "1.047124330523557874E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.215403543812771049E-5",
+      "reason": "subchunk 63: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.298429879464000000E-19",
+      "subchunk": 63
+    },
+    {
+      "jetCoverSlopeDecimal": "2.096116716561606789E-8",
+      "jetEnvelopeExcess": "1.048058357417529631E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.217379667064923795E-5",
+      "reason": "subchunk 64: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.439756676518000000E-19",
+      "subchunk": 64
+    },
+    {
+      "jetCoverSlopeDecimal": "2.161050739517031846E-8",
+      "jetEnvelopeExcess": "1.080525369181254255E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.286070203779576920E-5",
+      "reason": "subchunk 65: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.742158996677500000E-19",
+      "subchunk": 65
+    },
+    {
+      "jetCoverSlopeDecimal": "2.172639465557271502E-8",
+      "jetEnvelopeExcess": "1.086319732083671977E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.298329351972568696E-5",
+      "reason": "subchunk 66: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.844007302283500000E-19",
+      "subchunk": 66
+    },
+    {
+      "jetCoverSlopeDecimal": "2.162261817041047409E-8",
+      "jetEnvelopeExcess": "1.081130907969534414E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.287351343580534620E-5",
+      "reason": "subchunk 67: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.225275719191500000E-19",
+      "subchunk": 67
+    },
+    {
+      "jetCoverSlopeDecimal": "2.077110729601752811E-8",
+      "jetEnvelopeExcess": "1.038555364293038160E-9",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.197274160191032703E-5",
+      "reason": "subchunk 68: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.854541476902500000E-19",
+      "subchunk": 68
+    },
+    {
+      "jetCoverSlopeDecimal": "1.915436504818412365E-8",
+      "jetEnvelopeExcess": "9.577182517495624724E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "2.026246881074799732E-5",
+      "reason": "subchunk 69: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.337818592643500000E-19",
+      "subchunk": 69
+    },
+    {
+      "jetCoverSlopeDecimal": "1.685693808208367893E-8",
+      "jetEnvelopeExcess": "8.428469031621463996E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.783213284658336623E-5",
+      "reason": "subchunk 70: jet envelope fails",
+      "sampledEnvelopeExcess": "-9.171137284880000000E-19",
+      "subchunk": 70
+    },
+    {
+      "jetCoverSlopeDecimal": "1.409979148605926533E-8",
+      "jetEnvelopeExcess": "7.049895737484147833E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.491548190233426035E-5",
+      "reason": "subchunk 71: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.423295587327500000E-19",
+      "subchunk": 71
+    },
+    {
+      "jetCoverSlopeDecimal": "1.489195318302658019E-8",
+      "jetEnvelopeExcess": "7.445976586609024273E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.575347113532841512E-5",
+      "reason": "subchunk 72: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.716960939895000000E-19",
+      "subchunk": 72
+    },
+    {
+      "jetCoverSlopeDecimal": "1.513372030314223508E-8",
+      "jetEnvelopeExcess": "7.566860146615174808E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.600922478290394545E-5",
+      "reason": "subchunk 73: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.671310249422500000E-19",
+      "subchunk": 73
+    },
+    {
+      "jetCoverSlopeDecimal": "1.511671377897957962E-8",
+      "jetEnvelopeExcess": "7.558356882620872544E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.599123441033246108E-5",
+      "reason": "subchunk 74: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.658365258329000000E-19",
+      "subchunk": 74
+    },
+    {
+      "jetCoverSlopeDecimal": "1.469545272254469434E-8",
+      "jetEnvelopeExcess": "7.347726354289758202E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.554560287948170419E-5",
+      "reason": "subchunk 75: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.699628520386500000E-19",
+      "subchunk": 75
+    },
+    {
+      "jetCoverSlopeDecimal": "1.371861387022254378E-8",
+      "jetEnvelopeExcess": "6.859306926261753530E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.451225268860720832E-5",
+      "reason": "subchunk 76: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.611352548678000000E-19",
+      "subchunk": 76
+    },
+    {
+      "jetCoverSlopeDecimal": "1.347265846446206312E-8",
+      "jetEnvelopeExcess": "6.736329226486906936E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.425206845772119211E-5",
+      "reason": "subchunk 77: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.506372519057000000E-19",
+      "subchunk": 77
+    },
+    {
+      "jetCoverSlopeDecimal": "1.228089209711145510E-8",
+      "jetEnvelopeExcess": "6.140446041400200576E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.299135692855635094E-5",
+      "reason": "subchunk 78: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.889078975486000000E-19",
+      "subchunk": 78
+    },
+    {
+      "jetCoverSlopeDecimal": "1.278478228760491922E-8",
+      "jetEnvelopeExcess": "6.392391136743916089E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.352439779124438702E-5",
+      "reason": "subchunk 79: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.792215571317000000E-19",
+      "subchunk": 79
+    },
+    {
+      "jetCoverSlopeDecimal": "1.287352656443905675E-8",
+      "jetEnvelopeExcess": "6.436763273105250007E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.361827603465333856E-5",
+      "reason": "subchunk 80: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.891192177109000000E-19",
+      "subchunk": 80
+    },
+    {
+      "jetCoverSlopeDecimal": "1.283883702391577592E-8",
+      "jetEnvelopeExcess": "6.419418504480414978E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.358157966155651500E-5",
+      "reason": "subchunk 81: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.419960972693000000E-19",
+      "subchunk": 81
+    },
+    {
+      "jetCoverSlopeDecimal": "1.245043352291828736E-8",
+      "jetEnvelopeExcess": "6.225216754034635810E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.317070653658886509E-5",
+      "reason": "subchunk 82: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.367586832958500000E-19",
+      "subchunk": 82
+    },
+    {
+      "jetCoverSlopeDecimal": "1.164804713405399428E-8",
+      "jetEnvelopeExcess": "5.824023560499796804E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.232190110035778740E-5",
+      "reason": "subchunk 83: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.452518984947000000E-19",
+      "subchunk": 83
+    },
+    {
+      "jetCoverSlopeDecimal": "1.048559365066366289E-8",
+      "jetEnvelopeExcess": "5.242796816534345529E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "1.109219824167442000E-5",
+      "reason": "subchunk 84: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.623931766737500000E-19",
+      "subchunk": 84
+    },
+    {
+      "jetCoverSlopeDecimal": "9.060300195701004724E-9",
+      "jetEnvelopeExcess": "4.530150090002146451E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "9.584449793546679900E-6",
+      "reason": "subchunk 85: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.739425713512500000E-19",
+      "subchunk": 85
+    },
+    {
+      "jetCoverSlopeDecimal": "8.647328021205685353E-9",
+      "jetEnvelopeExcess": "4.323664003445241646E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "9.147586666930362235E-6",
+      "reason": "subchunk 86: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.075393208008000000E-19",
+      "subchunk": 86
+    },
+    {
+      "jetCoverSlopeDecimal": "9.079831014647198456E-9",
+      "jetEnvelopeExcess": "4.539915498379134473E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "9.605110494688195399E-6",
+      "reason": "subchunk 87: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.881405505652000000E-19",
+      "subchunk": 87
+    },
+    {
+      "jetCoverSlopeDecimal": "9.194705275325528189E-9",
+      "jetEnvelopeExcess": "4.597352630261304733E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "9.726630373757333166E-6",
+      "reason": "subchunk 88: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.339166130021000000E-19",
+      "subchunk": 88
+    },
+    {
+      "jetCoverSlopeDecimal": "9.188664259099521032E-9",
+      "jetEnvelopeExcess": "4.594332122883594121E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "9.720239877127332285E-6",
+      "reason": "subchunk 89: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.505571085757000000E-19",
+      "subchunk": 89
+    },
+    {
+      "jetCoverSlopeDecimal": "8.985747232454050455E-9",
+      "jetEnvelopeExcess": "4.492873609654780458E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "9.505583849150095730E-6",
+      "reason": "subchunk 90: jet envelope fails",
+      "sampledEnvelopeExcess": "-6.547467598460500000E-19",
+      "subchunk": 90
+    },
+    {
+      "jetCoverSlopeDecimal": "8.501990784841583755E-9",
+      "jetEnvelopeExcess": "4.250995386423633472E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "8.993841490853333461E-6",
+      "reason": "subchunk 91: jet envelope fails",
+      "sampledEnvelopeExcess": "-5.712805649221500000E-19",
+      "subchunk": 91
+    },
+    {
+      "jetCoverSlopeDecimal": "8.231583327345263560E-9",
+      "jetEnvelopeExcess": "4.115791658754737679E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "8.707790627229084656E-6",
+      "reason": "subchunk 92: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.888700255925000000E-19",
+      "subchunk": 92
+    },
+    {
+      "jetCoverSlopeDecimal": "8.395217583927891620E-9",
+      "jetEnvelopeExcess": "4.197608782521989226E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "8.880891328442589001E-6",
+      "reason": "subchunk 93: jet envelope fails",
+      "sampledEnvelopeExcess": "-9.411764949503500000E-19",
+      "subchunk": 93
+    },
+    {
+      "jetCoverSlopeDecimal": "8.456827028296863013E-9",
+      "jetEnvelopeExcess": "4.228413509500214916E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "8.946064955507486795E-6",
+      "reason": "subchunk 94: jet envelope fails",
+      "sampledEnvelopeExcess": "-4.591686712017000000E-19",
+      "subchunk": 94
+    },
+    {
+      "jetCoverSlopeDecimal": "8.444985194417151146E-9",
+      "jetEnvelopeExcess": "4.222492588319611796E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "8.933538056644826008E-6",
+      "reason": "subchunk 95: jet envelope fails",
+      "sampledEnvelopeExcess": "-8.777495351279000000E-19",
+      "subchunk": 95
+    },
+    {
+      "jetCoverSlopeDecimal": "8.252588427817989261E-9",
+      "jetEnvelopeExcess": "4.126294206097403118E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "8.730010898217631810E-6",
+      "reason": "subchunk 96: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.540083923808500000E-19",
+      "subchunk": 96
+    },
+    {
+      "jetCoverSlopeDecimal": "7.819198633139804005E-9",
+      "jetEnvelopeExcess": "3.909599307332962950E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "8.271548966939438790E-6",
+      "reason": "subchunk 97: jet envelope fails",
+      "sampledEnvelopeExcess": "-9.086887265064500000E-19",
+      "subchunk": 97
+    },
+    {
+      "jetCoverSlopeDecimal": "7.176240830961308836E-9",
+      "jetEnvelopeExcess": "3.588120407337280256E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "7.591395258668862389E-6",
+      "reason": "subchunk 98: jet envelope fails",
+      "sampledEnvelopeExcess": "-7.896059186572000000E-19",
+      "subchunk": 98
+    },
+    {
+      "jetCoverSlopeDecimal": "6.475181404444376923E-9",
+      "jetEnvelopeExcess": "3.237590692492643885E-10",
+      "jetFiniteCoverCellCount": 64,
+      "jetFiniteCoverSplit": 64,
+      "jetMaxSecondDerivativeResidualAbsUpper": "6.849778675602777439E-6",
+      "reason": "subchunk 99: jet envelope fails",
+      "sampledEnvelopeExcess": "-9.644993961854000000E-19",
+      "subchunk": 99
+    }
+  ],
+  "leanLandingSurface": "RawOmegaAChunkTaylorPayload.ResidualAnchorRefinedPayloadFin",
+  "meaning": "Fail-closed pilot overlay for the active v10 refined raw-Omega route.  If residual-jet finite-cover candidates pass the outer residual envelope, the overlay seeds rational arithmetic and geometry fields for primary_finite row 0 parent chunk 0.  If they fail, this file is a blocker report only and is not Lean-emittable proof data.",
+  "pilot": {
+    "degree": 16,
+    "family": "primary_finite",
+    "left": "0.000000000000000000E+0",
+    "parentChunk": 0,
+    "right": "1.000000000000000000E+1",
+    "row": 0,
+    "split": 100
+  },
+  "remainingAnalyticFieldNames": [
+    "coeff",
+    "hAnchorResidual",
+    "hResidualDifferentiable",
+    "hDerivCoverCells",
+    "hDerivAnchorLower",
+    "hDerivAnchorUpper",
+    "hResidualDerivDifferentiableOnCell",
+    "hResidualSecondDerivBoundOnCell",
+    "hIntegralLower",
+    "hIntegralUpper"
+  ],
+  "routeGuard": [
+    "not Lean proof data",
+    "do not emit PayloadFin from this overlay alone",
+    "sampled derivative lower/upper values are candidates only",
+    "anchor-to-cell scalar comparisons are rational checks, not analytic proofs",
+    "next Lean work must prove derivative-anchor intervals and second-derivative cell bounds",
+    "do not mutate CSV, ARadius, radius-floor, or LDL data",
+    "do not route to H1/PO3 or Q3.Main from this layer"
+  ],
+  "schema": "q3_psdpd_step33_a_refined_subchunk_pilot_overlay.v3",
+  "seededFieldNames": [
+    "remainder",
+    "sampleRadius",
+    "slope",
+    "mesh",
+    "anchor",
+    "derivCellCount",
+    "derivCellLeft",
+    "derivCellRight",
+    "derivLower",
+    "derivUpper",
+    "derivAnchor",
+    "derivAnchorLower",
+    "derivAnchorUpper",
+    "derivMesh",
+    "derivSlope",
+    "hSlopeNonneg",
+    "hAnchorIn",
+    "hLeftMesh",
+    "hRightMesh",
+    "hDerivSlopeNonneg",
+    "hDerivAnchorIn",
+    "hDerivLeftMesh",
+    "hDerivRightMesh",
+    "hDerivLowerFromAnchor",
+    "hDerivUpperFromAnchor",
+    "hDerivLowerAbs",
+    "hDerivUpperAbs",
+    "hEnvelope"
+  ],
+  "sourceDerivativeAudit": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_derivative_bound_audit_primary_finite_0_0.json",
+  "sourceDerivativeAuditStatus": "sampled_interval_finite_cover_candidate_passed_rejected_envelopes_overestimated",
+  "status": "pilot_overlay_blocked_jet_envelope_failed",
+  "subchunks": [],
+  "totals": {
+    "blockedSubchunks": 100,
+    "remainingAnalyticFields": 0,
+    "remainingAnalyticFieldsPerSubchunk": 10,
+    "seededFields": 0,
+    "seededFieldsPerSubchunk": 28,
+    "subchunks": 0
+  }
+}

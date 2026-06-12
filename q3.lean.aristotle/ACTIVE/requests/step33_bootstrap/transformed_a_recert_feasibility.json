@@ -1,0 +1,149 @@
+{
+  "decision": {
+    "next_action": "do not start LDL/radius-floor migration; escalate semantic/route choice or search a new split/P0 model",
+    "reason": "tau*Q^TQ vanishes on ker(Q); the best scanned joint D/R boundary-null minimum stays negative",
+    "tau_can_fix_boundary_null_failure": false,
+    "transformed_A_recert_feasible_in_scan": false,
+    "worst_family": "primary",
+    "worst_joint_boundary_null_min": -94.61397191242261
+  },
+  "families": [
+    {
+      "block_id": "psdpd_L3_k11_ell030_delta025_theta1e4",
+      "boundary_null_scan": {
+        "A_on_kerQ": {
+          "max": -38.66267872919048,
+          "min": -101.10826719608505
+        },
+        "P0_on_kerQ": {
+          "max": -0.00614901171642978,
+          "min": -0.6293603746842318
+        },
+        "P_on_kerQ": {
+          "max": 0.705884970487137,
+          "min": -1.9069192109781141
+        },
+        "Q_rank": 2,
+        "best_D": {
+          "min_eig": 61489.56263440665,
+          "signed_kappa": -10000000.0,
+          "theta": 1.0
+        },
+        "best_R": {
+          "min_eig": 61389.01046977869,
+          "signed_kappa": 10000000.0
+        },
+        "best_joint_D_R": {
+          "D_min_eig_on_kerQ": -94.61397191242261,
+          "R_min_eig_on_kerQ": -94.02015551090118,
+          "objective_min_D_R": -94.61397191242261,
+          "signed_kappa": 1152.542372881356,
+          "theta": 0.075
+        },
+        "boundary_null_feasible_in_scan": false,
+        "kerQ_dim": 21,
+        "necessary_condition": "D and R must be nonnegative on ker(Q); tau*Q^TQ is zero there",
+        "scan_domain": {
+          "signed_kappa_count": 1977,
+          "signed_kappa_max": 10000000.0,
+          "signed_kappa_min": -10000000.0,
+          "theta_count": 205,
+          "theta_max": 1.0,
+          "theta_min": 0.0
+        }
+      },
+      "current_kappa": 3.25,
+      "current_penalty_params": {
+        "dFloor": 0.0001222859478322234,
+        "rFloor": 0.13569220778186006,
+        "tauD": 501.18723362727354,
+        "tauR": 15848.931924611174
+      },
+      "current_theta": 0.0001,
+      "family": "primary",
+      "old_param_penalty_sanity": {
+        "A_diag": -78.89774143023172,
+        "A_max_entry": 15.725429349261962,
+        "A_min_entry": -78.89774143023172,
+        "D_penalty_floor": 0.0001222859478322234,
+        "D_penalty_min_eigenvalue": -101.65250980604694,
+        "D_penalty_passes_floor": false,
+        "R_penalty_floor": 0.13569220778186006,
+        "R_penalty_min_eigenvalue": -101.08826416650179,
+        "R_penalty_passes_floor": false
+      }
+    },
+    {
+      "block_id": "psdpd_L3_k9_ell030_delta025_theta1e5",
+      "boundary_null_scan": {
+        "A_on_kerQ": {
+          "max": -30.870400785124033,
+          "min": -99.65582680806783
+        },
+        "P0_on_kerQ": {
+          "max": -0.006217482504872319,
+          "min": -0.6898573857833847
+        },
+        "P_on_kerQ": {
+          "max": 0.6816736617298491,
+          "min": -1.8999392379559223
+        },
+        "Q_rank": 2,
+        "best_D": {
+          "min_eig": 62174.20968244315,
+          "signed_kappa": -10000000.0,
+          "theta": 1.0
+        },
+        "best_R": {
+          "min_eig": 62075.1709294002,
+          "signed_kappa": 10000000.0
+        },
+        "best_joint_D_R": {
+          "D_min_eig_on_kerQ": -93.34023264129644,
+          "R_min_eig_on_kerQ": -92.48870298534226,
+          "objective_min_D_R": -93.34023264129644,
+          "signed_kappa": 1152.542372881356,
+          "theta": 0.075
+        },
+        "boundary_null_feasible_in_scan": false,
+        "kerQ_dim": 21,
+        "necessary_condition": "D and R must be nonnegative on ker(Q); tau*Q^TQ is zero there",
+        "scan_domain": {
+          "signed_kappa_count": 1977,
+          "signed_kappa_max": 10000000.0,
+          "signed_kappa_min": -10000000.0,
+          "theta_count": 205,
+          "theta_max": 1.0,
+          "theta_min": 0.0
+        }
+      },
+      "current_kappa": 3.075,
+      "current_penalty_params": {
+        "dFloor": 1.263692282186616e-05,
+        "rFloor": 0.0019590640625249765,
+        "tauD": 63.09573444801943,
+        "tauR": 100000.0
+      },
+      "current_theta": 1e-05,
+      "family": "control",
+      "old_param_penalty_sanity": {
+        "A_diag": -75.20513017099184,
+        "A_max_entry": 17.32138601963182,
+        "A_min_entry": -75.20513017099184,
+        "D_penalty_floor": 1.263692282186616e-05,
+        "D_penalty_min_eigenvalue": -100.27132888586563,
+        "D_penalty_passes_floor": false,
+        "R_penalty_floor": 0.0019590640625249765,
+        "R_penalty_min_eigenvalue": -99.63668870977041,
+        "R_penalty_passes_floor": false
+      }
+    }
+  ],
+  "gate": "Step33A.1-A transformed-A finite recert feasibility",
+  "inputs": {
+    "plan": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step32f_coeff_payload_import_plan.json",
+    "source_convention_audit_json": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_source_convention_audit.json"
+  },
+  "non_mutating": true,
+  "schema": "q3_psdpd_step33_transformed_a_recert_feasibility.v1"
+}

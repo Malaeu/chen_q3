@@ -1,0 +1,73 @@
+{
+  "schema": "q3_psdpd_step33_experiment_card.v1",
+  "id": "EC-001",
+  "title": "A-side interpolation replacement probe",
+  "date": "2026-06-12",
+  "status": "planned_monitoring_only",
+  "route": "PSD-pd Step33A.1-A raw-Omega A-side",
+  "trick_atlas_anchors": [
+    "docs/RH_TRICK_ATLAS.md#2-cohn-kumar-miller-radchenko-viazovska-interpolation",
+    "docs/RH_TRICK_ATLAS.md#5-margin-ledger"
+  ],
+  "scope_guard": {
+    "no_lean_payload_claim": true,
+    "no_q3_main": true,
+    "no_csv_or_radius_mutation": true,
+    "no_h1_po3_route_change": true,
+    "not_step33_closure": true
+  },
+  "target_cell": {
+    "family": "primary_finite",
+    "row": 0,
+    "parent_chunk": 0,
+    "subchunk": 0,
+    "cell": "[0, 1/10]",
+    "anchor": "1/20",
+    "current_worst_remaining_slack": "9.127351807129486100E-19"
+  },
+  "current_receiver_chain": [
+    "primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_hRawCenterCoeffAbs_and_deriv_norm_bound",
+    "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+    "RawOmegaAChunkTaylorPayload.CellSlopeDirectEnvelopeRefinedPayloadFin",
+    "RawOmegaAChunkTaylorPayload.RefinedPayloadFin",
+    "RawOmegaAChunkIntegralBoundsCert.toDirectTailWindowInputs"
+  ],
+  "open_fields_to_replace_or_compress": [
+    "hRawCenterCoeffAbs",
+    "hResidualDerivBoundOnCell"
+  ],
+  "replacement_hypothesis": "A finite rational interpolation or jet certificate for the residual and residual derivative can replace scalar Taylor/interval replay on the first A-side subchunk, provided it proves the exact current receiver fields without changing the raw-Omega object.",
+  "candidate_lean_shape": {
+    "receiver_name": "ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound",
+    "inputs": [
+      "rational interpolation polynomial or finite jet model for deriv cert.residual",
+      "uniform interpolation error bound on Set.Icc L U",
+      "rational bound for the model on Set.Icc L U",
+      "model_bound + interpolation_error <= derivSlope"
+    ],
+    "output": "ResidualDerivativeDirectNormCert.Valid cert derivCert"
+  },
+  "success_checks": [
+    "the experiment names a theorem-shaped Lean receiver with no new axiom, sorry, admit, exact?, or theorem weakening",
+    "the first-cell receiver still lands in the existing hRawCenterCoeffAbs + hResidualDerivBoundOnCell surface",
+    "the local budget satisfies sampleRadius + max 0 derivSlope * mesh <= cert.remainder",
+    "all nodes, cells, anchors, and interval endpoints are rational and match the active worklist",
+    "the output is marked candidate or checked only after lake/q3_check validation"
+  ],
+  "failure_modes": [
+    "the interpolation theorem controls a nearby transformed function but not step22PositiveAxisOmegaAIntegrand",
+    "the node set loses the closed-cell or anchor convention used by the receiver",
+    "the interpolation error bound needs a higher derivative theorem as hard as the current blocker",
+    "numeric interpolation data are treated as trusted proof payload"
+  ],
+  "local_search_summary": [
+    "q3_docs finds existing HatInterpolation/HatInterpBounded skeletons, useful as interpolation cautionary structure but not a Step33 receiver",
+    "q3_docs points the active Step33 surface back to the raw-center/direct-norm receiver and margin ledger worst cell"
+  ],
+  "external_source_anchors": [
+    "https://arxiv.org/abs/1902.05438",
+    "https://eudml.org/doc/148345",
+    "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Calculus/Taylor.html"
+  ],
+  "next_action": "write a tiny Lean receiver stub or diagnostic theorem-shape for the first cell only, then decide whether Aristotle should target the interpolation-error lemma or the existing high-order digamma source lemma"
+}

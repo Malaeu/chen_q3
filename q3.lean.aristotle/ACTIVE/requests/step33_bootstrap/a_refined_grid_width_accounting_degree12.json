@@ -1,0 +1,940 @@
+{
+  "families": [
+    {
+      "available_recorded_slack": "9.127351807129486100E-19",
+      "chunks": [
+        {
+          "chunk": 0,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "-3.535346901999005254E-1",
+          "source": "first_chunk_probe",
+          "upper": "-3.535346901998718816E-1",
+          "width": "2.864380000000000000E-14"
+        },
+        {
+          "chunk": 1,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.615058139399541459E-1",
+          "source": "row_probe",
+          "upper": "2.615058139399554227E-1",
+          "width": "1.276800000000000000E-15"
+        },
+        {
+          "chunk": 2,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.623500002662724429E-1",
+          "source": "row_probe",
+          "upper": "1.623500002662732478E-1",
+          "width": "8.049000000000000000E-16"
+        },
+        {
+          "chunk": 3,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "4.574132198443938563E-2",
+          "source": "row_probe",
+          "upper": "4.574132198443958686E-2",
+          "width": "2.012300000000000000E-16"
+        },
+        {
+          "chunk": 4,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "6.765808406913470692E-3",
+          "source": "row_probe",
+          "upper": "6.765808406913505386E-3",
+          "width": "3.469400000000000000E-17"
+        },
+        {
+          "chunk": 5,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "5.169774839176028824E-4",
+          "source": "row_probe",
+          "upper": "5.169774839176051592E-4",
+          "width": "2.276800000000000000E-18"
+        },
+        {
+          "chunk": 6,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.892225314469765397E-5",
+          "source": "row_probe",
+          "upper": "1.892225314469774884E-5",
+          "width": "9.487000000000000000E-20"
+        },
+        {
+          "chunk": 7,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.897508287881116908E-7",
+          "source": "row_probe",
+          "upper": "2.897508287881131731E-7",
+          "width": "1.482300000000000000E-21"
+        },
+        {
+          "chunk": 8,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.476670460523112546E-9",
+          "source": "row_probe",
+          "upper": "1.476670460523119371E-9",
+          "width": "6.825000000000000000E-24"
+        },
+        {
+          "chunk": 9,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.665838345718551878E-12",
+          "source": "row_probe",
+          "upper": "1.665838345718560158E-12",
+          "width": "8.280000000000000000E-27"
+        },
+        {
+          "chunk": 10,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.829338978707492770E-16",
+          "source": "row_probe",
+          "upper": "1.829338978707503617E-16",
+          "width": "1.084700000000000000E-30"
+        },
+        {
+          "chunk": 11,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.451698236335642715E-22",
+          "source": "row_probe",
+          "upper": "2.451698236335658232E-22",
+          "width": "1.551700000000000000E-36"
+        },
+        {
+          "chunk": 12,
+          "failure_mode": "sampled_feasible",
+          "lower": "5.042220058290546012E-34",
+          "source": "row_probe",
+          "upper": "5.042220060122645397E-34",
+          "width": "1.832099385000000000E-43"
+        },
+        {
+          "chunk": 13,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.227090661819319081E-25",
+          "source": "row_probe",
+          "upper": "1.227090661819328264E-25",
+          "width": "9.183000000000000000E-40"
+        },
+        {
+          "chunk": 14,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "5.828365072281483766E-21",
+          "source": "row_probe",
+          "upper": "5.828365072281513858E-21",
+          "width": "3.009200000000000000E-35"
+        },
+        {
+          "chunk": 15,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.894899271905280866E-18",
+          "source": "row_probe",
+          "upper": "1.894899271905289340E-18",
+          "width": "8.474000000000000000E-33"
+        },
+        {
+          "chunk": 16,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "4.536093331545381060E-17",
+          "source": "row_probe",
+          "upper": "4.536093331545401398E-17",
+          "width": "2.033800000000000000E-31"
+        },
+        {
+          "chunk": 17,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.859074418258511697E-16",
+          "source": "row_probe",
+          "upper": "1.859074418258519586E-16",
+          "width": "7.889000000000000000E-31"
+        },
+        {
+          "chunk": 18,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.841193083173905021E-16",
+          "source": "row_probe",
+          "upper": "1.841193083173913156E-16",
+          "width": "8.135000000000000000E-31"
+        },
+        {
+          "chunk": 19,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "4.953039026911401660E-17",
+          "source": "row_probe",
+          "upper": "4.953039026911425696E-17",
+          "width": "2.403600000000000000E-31"
+        },
+        {
+          "chunk": 20,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "3.493317674510498720E-18",
+          "source": "row_probe",
+          "upper": "3.493317674510517209E-18",
+          "width": "1.848900000000000000E-32"
+        },
+        {
+          "chunk": 21,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "5.282361183823975405E-20",
+          "source": "row_probe",
+          "upper": "5.282361183824004896E-20",
+          "width": "2.949100000000000000E-34"
+        },
+        {
+          "chunk": 22,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.060304455315525002E-22",
+          "source": "row_probe",
+          "upper": "1.060304455315529469E-22",
+          "width": "4.467000000000000000E-37"
+        },
+        {
+          "chunk": 23,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "9.047626348891168927E-27",
+          "source": "row_probe",
+          "upper": "9.047626348891207671E-27",
+          "width": "3.874400000000000000E-41"
+        },
+        {
+          "chunk": 24,
+          "failure_mode": "sampled_feasible",
+          "lower": "9.952621290756091757E-34",
+          "source": "row_probe",
+          "upper": "9.952621290956431937E-34",
+          "width": "2.003401800000000000E-44"
+        },
+        {
+          "chunk": 25,
+          "failure_mode": "sampled_feasible",
+          "lower": "2.287480178832134206E-37",
+          "source": "row_probe",
+          "upper": "2.287480378832498570E-37",
+          "width": "2.000003643640000000E-44"
+        }
+      ],
+      "degree": 12,
+      "family": "primary_finite",
+      "fits_recorded_slack_max_side": false,
+      "fits_recorded_slack_sum": false,
+      "fits_target": false,
+      "lower_excess": "1.498596191624821106E-14",
+      "model_lower": "1.233644453639069605E-1",
+      "model_upper": "1.233644453639379243E-1",
+      "model_width": "3.096379715913328316E-14",
+      "needed_slack_max_side": "1.596843524288507209E-14",
+      "needed_slack_sum": "3.095439715913328316E-14",
+      "policy": "first_chunk_split50_rest_split10",
+      "row": 0,
+      "target_lower": "1.233644453639219465E-1",
+      "target_upper": "1.233644453639219559E-1",
+      "target_width": "9.400000000000000000E-18",
+      "upper_excess": "1.596843524288507209E-14",
+      "verdict": "exceeds_recorded_slack"
+    },
+    {
+      "available_recorded_slack": "7.745410560743634378E-17",
+      "chunks": [
+        {
+          "chunk": 0,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "-3.887204663948025662E-1",
+          "source": "first_chunk_probe",
+          "upper": "-3.887204663947715355E-1",
+          "width": "3.103070000000000000E-14"
+        },
+        {
+          "chunk": 1,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.546688145455395236E-1",
+          "source": "row_probe",
+          "upper": "2.546688145455406338E-1",
+          "width": "1.110200000000000000E-15"
+        },
+        {
+          "chunk": 2,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.307425628490112568E-1",
+          "source": "row_probe",
+          "upper": "1.307425628490118674E-1",
+          "width": "6.106000000000000000E-16"
+        },
+        {
+          "chunk": 3,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.695636479632811111E-2",
+          "source": "row_probe",
+          "upper": "2.695636479632824295E-2",
+          "width": "1.318400000000000000E-16"
+        },
+        {
+          "chunk": 4,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.503180893782813200E-3",
+          "source": "row_probe",
+          "upper": "2.503180893782824476E-3",
+          "width": "1.127600000000000000E-17"
+        },
+        {
+          "chunk": 5,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "9.713320536247746408E-5",
+          "source": "row_probe",
+          "upper": "9.713320536247797908E-5",
+          "width": "5.150000000000000000E-19"
+        },
+        {
+          "chunk": 6,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.309463143374288765E-6",
+          "source": "row_probe",
+          "upper": "1.309463143374295541E-6",
+          "width": "6.776000000000000000E-21"
+        },
+        {
+          "chunk": 7,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "4.298555905056379751E-9",
+          "source": "row_probe",
+          "upper": "4.298555905056404566E-9",
+          "width": "2.481500000000000000E-23"
+        },
+        {
+          "chunk": 8,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.638304517494037493E-12",
+          "source": "row_probe",
+          "upper": "1.638304517494047187E-12",
+          "width": "9.694000000000000000E-27"
+        },
+        {
+          "chunk": 9,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.041377626709137144E-17",
+          "source": "row_probe",
+          "upper": "1.041377626709144386E-17",
+          "width": "7.242000000000000000E-32"
+        },
+        {
+          "chunk": 10,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.882814182416687154E-28",
+          "source": "row_probe",
+          "upper": "2.882814182590422155E-28",
+          "width": "1.737350010000000000E-38"
+        },
+        {
+          "chunk": 11,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.003957457774197974E-19",
+          "source": "row_probe",
+          "upper": "1.003957457774203511E-19",
+          "width": "5.537000000000000000E-34"
+        },
+        {
+          "chunk": 12,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.904838114089292851E-16",
+          "source": "row_probe",
+          "upper": "2.904838114089306656E-16",
+          "width": "1.380500000000000000E-30"
+        },
+        {
+          "chunk": 13,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.524260430846939491E-14",
+          "source": "row_probe",
+          "upper": "1.524260430846945802E-14",
+          "width": "6.311000000000000000E-29"
+        },
+        {
+          "chunk": 14,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "8.279132473214009721E-14",
+          "source": "row_probe",
+          "upper": "8.279132473214051372E-14",
+          "width": "4.165100000000000000E-28"
+        },
+        {
+          "chunk": 15,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "8.267657395615369015E-14",
+          "source": "row_probe",
+          "upper": "8.267657395615403094E-14",
+          "width": "3.407900000000000000E-28"
+        },
+        {
+          "chunk": 16,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.781532338152277876E-14",
+          "source": "row_probe",
+          "upper": "1.781532338152285764E-14",
+          "width": "7.888000000000000000E-29"
+        },
+        {
+          "chunk": 17,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "7.546586899752623663E-16",
+          "source": "row_probe",
+          "upper": "7.546586899752667051E-16",
+          "width": "4.338800000000000000E-30"
+        },
+        {
+          "chunk": 18,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "4.179784978062688324E-18",
+          "source": "row_probe",
+          "upper": "4.179784978062711435E-18",
+          "width": "2.311100000000000000E-32"
+        },
+        {
+          "chunk": 19,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "9.956362955204690208E-22",
+          "source": "row_probe",
+          "upper": "9.956362955204754155E-22",
+          "width": "6.394700000000000000E-36"
+        },
+        {
+          "chunk": 20,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.187950514254587055E-28",
+          "source": "row_probe",
+          "upper": "2.187950514254626516E-28",
+          "width": "3.946100000000000000E-42"
+        },
+        {
+          "chunk": 21,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "3.619200973670744875E-28",
+          "source": "row_probe",
+          "upper": "3.619200973670771332E-28",
+          "width": "2.645700000000000000E-42"
+        },
+        {
+          "chunk": 22,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "7.969609101483626218E-23",
+          "source": "row_probe",
+          "upper": "7.969609101483674413E-23",
+          "width": "4.819500000000000000E-37"
+        },
+        {
+          "chunk": 23,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "3.605217865087356419E-20",
+          "source": "row_probe",
+          "upper": "3.605217865087375678E-20",
+          "width": "1.925900000000000000E-34"
+        },
+        {
+          "chunk": 24,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "8.725308178754821903E-19",
+          "source": "row_probe",
+          "upper": "8.725308178754862347E-19",
+          "width": "4.044400000000000000E-33"
+        },
+        {
+          "chunk": 25,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "3.013084795960271924E-18",
+          "source": "row_probe",
+          "upper": "3.013084795960284635E-18",
+          "width": "1.271100000000000000E-32"
+        }
+      ],
+      "degree": 12,
+      "family": "control_finite",
+      "fits_recorded_slack_max_side": false,
+      "fits_recorded_slack_sum": false,
+      "fits_target": false,
+      "lower_excess": "1.605338770142468068E-14",
+      "model_lower": "2.624890365875878942E-2",
+      "model_upper": "2.624890365879168456E-2",
+      "model_width": "3.289513780082559912E-14",
+      "needed_slack_max_side": "1.683905009940091844E-14",
+      "needed_slack_sum": "3.289243780082559912E-14",
+      "policy": "first_chunk_split50_rest_split10",
+      "row": 0,
+      "target_lower": "2.624890365877484281E-2",
+      "target_upper": "2.624890365877484551E-2",
+      "target_width": "2.700000000000000000E-18",
+      "upper_excess": "1.683905009940091844E-14",
+      "verdict": "exceeds_recorded_slack"
+    },
+    {
+      "available_recorded_slack": "0.000000000000000000E+0",
+      "chunks": [
+        {
+          "chunk": 0,
+          "failure_mode": "sampled_feasible",
+          "lower": "1.088613911944206565E-29",
+          "source": "row_probe",
+          "upper": "1.088613911944216374E-29",
+          "width": "9.809000000000000000E-44"
+        },
+        {
+          "chunk": 1,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "7.162922067052406766E-26",
+          "source": "row_probe",
+          "upper": "7.162922067052450387E-26",
+          "width": "4.362100000000000000E-40"
+        },
+        {
+          "chunk": 2,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.174784504455500975E-23",
+          "source": "row_probe",
+          "upper": "1.174784504455506118E-23",
+          "width": "5.143000000000000000E-38"
+        },
+        {
+          "chunk": 3,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.109279318875667936E-22",
+          "source": "row_probe",
+          "upper": "2.109279318875677575E-22",
+          "width": "9.639000000000000000E-37"
+        },
+        {
+          "chunk": 4,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "7.464841416472760554E-22",
+          "source": "row_probe",
+          "upper": "7.464841416472794408E-22",
+          "width": "3.385400000000000000E-36"
+        },
+        {
+          "chunk": 5,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "6.632731636340862395E-22",
+          "source": "row_probe",
+          "upper": "6.632731636340896249E-22",
+          "width": "3.385400000000000000E-36"
+        },
+        {
+          "chunk": 6,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.562922755943452205E-22",
+          "source": "row_probe",
+          "upper": "1.562922755943458553E-22",
+          "width": "6.348000000000000000E-37"
+        },
+        {
+          "chunk": 7,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "8.856206616415402750E-24",
+          "source": "row_probe",
+          "upper": "8.856206616415448300E-24",
+          "width": "4.555000000000000000E-38"
+        },
+        {
+          "chunk": 8,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "8.959177851417229331E-26",
+          "source": "row_probe",
+          "upper": "8.959177851417274101E-26",
+          "width": "4.477000000000000000E-40"
+        },
+        {
+          "chunk": 9,
+          "failure_mode": "sampled_feasible",
+          "lower": "8.140234144396318051E-29",
+          "source": "row_probe",
+          "upper": "8.140234144396364014E-29",
+          "width": "4.596300000000000000E-43"
+        },
+        {
+          "chunk": 10,
+          "failure_mode": "sampled_feasible",
+          "lower": "1.140827387428760121E-33",
+          "source": "row_probe",
+          "upper": "1.140827387448767968E-33",
+          "width": "2.000784700000000000E-44"
+        },
+        {
+          "chunk": 11,
+          "failure_mode": "sampled_feasible",
+          "lower": "2.335433180037119936E-43",
+          "source": "row_probe",
+          "upper": "2.535433180063896043E-43",
+          "width": "2.000000000267761070E-44"
+        },
+        {
+          "chunk": 12,
+          "failure_mode": "sampled_feasible",
+          "lower": "3.060323863845861648E-37",
+          "source": "row_probe",
+          "upper": "3.060324063845884400E-37",
+          "width": "2.000000227520000000E-44"
+        },
+        {
+          "chunk": 13,
+          "failure_mode": "sampled_feasible",
+          "lower": "1.154864320117250273E-31",
+          "source": "row_probe",
+          "upper": "1.154864320117456746E-31",
+          "width": "2.064730000000000000E-44"
+        },
+        {
+          "chunk": 14,
+          "failure_mode": "sampled_feasible",
+          "lower": "1.466836656785396832E-28",
+          "source": "row_probe",
+          "upper": "1.466836656785405801E-28",
+          "width": "8.969000000000000000E-43"
+        },
+        {
+          "chunk": 15,
+          "failure_mode": "sampled_feasible",
+          "lower": "1.039353807274184005E-26",
+          "source": "row_probe",
+          "upper": "1.039353807274189458E-26",
+          "width": "5.453000000000000000E-41"
+        },
+        {
+          "chunk": 16,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.088964554058981216E-25",
+          "source": "row_probe",
+          "upper": "1.088964554058985578E-25",
+          "width": "4.362000000000000000E-40"
+        },
+        {
+          "chunk": 17,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.540430612489615970E-25",
+          "source": "row_probe",
+          "upper": "2.540430612489627449E-25",
+          "width": "1.147900000000000000E-39"
+        },
+        {
+          "chunk": 18,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.540147041358924896E-25",
+          "source": "row_probe",
+          "upper": "1.540147041358932243E-25",
+          "width": "7.347000000000000000E-40"
+        },
+        {
+          "chunk": 19,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.405481629996553794E-26",
+          "source": "row_probe",
+          "upper": "2.405481629996563552E-26",
+          "width": "9.758000000000000000E-41"
+        },
+        {
+          "chunk": 20,
+          "failure_mode": "sampled_feasible",
+          "lower": "8.147318881491323520E-28",
+          "source": "row_probe",
+          "upper": "8.147318881491364774E-28",
+          "width": "4.125400000000000000E-42"
+        },
+        {
+          "chunk": 21,
+          "failure_mode": "sampled_feasible",
+          "lower": "3.897019935843035344E-30",
+          "source": "row_probe",
+          "upper": "3.897019935843074581E-30",
+          "width": "3.923700000000000000E-44"
+        },
+        {
+          "chunk": 22,
+          "failure_mode": "sampled_feasible",
+          "lower": "9.619206736105476850E-34",
+          "source": "row_probe",
+          "upper": "9.619206736305527943E-34",
+          "width": "2.000510930000000000E-44"
+        },
+        {
+          "chunk": 23,
+          "failure_mode": "sampled_feasible",
+          "lower": "6.535975760807745261E-40",
+          "source": "row_probe",
+          "upper": "6.536175760807804362E-40",
+          "width": "2.000000000591010000E-44"
+        },
+        {
+          "chunk": 24,
+          "failure_mode": "sampled_feasible",
+          "lower": "-9.583868971485651835E-45",
+          "source": "row_probe",
+          "upper": "1.041613102851541758E-44",
+          "width": "2.000000000000106942E-44"
+        },
+        {
+          "chunk": 25,
+          "failure_mode": "sampled_feasible",
+          "lower": "3.214922472638223254E-37",
+          "source": "row_probe",
+          "upper": "3.214922672638240994E-37",
+          "width": "2.000000177400000000E-44"
+        }
+      ],
+      "degree": 12,
+      "family": "primary_tail",
+      "fits_recorded_slack_max_side": false,
+      "fits_recorded_slack_sum": false,
+      "fits_target": false,
+      "lower_excess": "2.872381303776955703E-36",
+      "model_lower": "1.798295245717237013E-21",
+      "model_upper": "1.798295245717245482E-21",
+      "model_width": "8.469840599917260358E-36",
+      "needed_slack_max_side": "5.596459296140304655E-36",
+      "needed_slack_sum": "8.468840599917260358E-36",
+      "policy": "all_split10",
+      "row": 0,
+      "target_lower": "1.798295245717239885E-21",
+      "target_upper": "1.798295245717239886E-21",
+      "target_width": "1.000000000000000000E-39",
+      "upper_excess": "5.596459296140304655E-36",
+      "verdict": "exceeds_recorded_slack"
+    },
+    {
+      "available_recorded_slack": "7.753281601564634378E-17",
+      "chunks": [
+        {
+          "chunk": 0,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.079648243339557274E-18",
+          "source": "row_probe",
+          "upper": "2.079648243339567674E-18",
+          "width": "1.040000000000000000E-32"
+        },
+        {
+          "chunk": 1,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.960968324589729155E-19",
+          "source": "row_probe",
+          "upper": "2.960968324589742637E-19",
+          "width": "1.348200000000000000E-33"
+        },
+        {
+          "chunk": 2,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "6.872538926676261516E-21",
+          "source": "row_probe",
+          "upper": "6.872538926676299132E-21",
+          "width": "3.761600000000000000E-35"
+        },
+        {
+          "chunk": 3,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.303993024244403449E-23",
+          "source": "row_probe",
+          "upper": "1.303993024244411090E-23",
+          "width": "7.641000000000000000E-38"
+        },
+        {
+          "chunk": 4,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.695195050932684852E-28",
+          "source": "row_probe",
+          "upper": "2.695195050932700547E-28",
+          "width": "1.569500000000000000E-42"
+        },
+        {
+          "chunk": 5,
+          "failure_mode": "sampled_feasible",
+          "lower": "1.063222459628353600E-36",
+          "source": "row_probe",
+          "upper": "1.063222479630552095E-36",
+          "width": "2.000219849500000000E-44"
+        },
+        {
+          "chunk": 6,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "4.125328007045966406E-28",
+          "source": "row_probe",
+          "upper": "4.125328007045990620E-28",
+          "width": "2.421400000000000000E-42"
+        },
+        {
+          "chunk": 7,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.164182963227014288E-24",
+          "source": "row_probe",
+          "upper": "2.164182963227026043E-24",
+          "width": "1.175500000000000000E-38"
+        },
+        {
+          "chunk": 8,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.160279114650515718E-22",
+          "source": "row_probe",
+          "upper": "2.160279114650526062E-22",
+          "width": "1.034400000000000000E-36"
+        },
+        {
+          "chunk": 9,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.145889300808621945E-21",
+          "source": "row_probe",
+          "upper": "2.145889300808631725E-21",
+          "width": "9.780000000000000000E-36"
+        },
+        {
+          "chunk": 10,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "3.762292826279720841E-21",
+          "source": "row_probe",
+          "upper": "3.762292826279735887E-21",
+          "width": "1.504600000000000000E-35"
+        },
+        {
+          "chunk": 11,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.371845339436550588E-21",
+          "source": "row_probe",
+          "upper": "1.371845339436556795E-21",
+          "width": "6.207000000000000000E-36"
+        },
+        {
+          "chunk": 12,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "9.419131701293474972E-23",
+          "source": "row_probe",
+          "upper": "9.419131701293526694E-23",
+          "width": "5.172200000000000000E-37"
+        },
+        {
+          "chunk": 13,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "7.920862092127669747E-25",
+          "source": "row_probe",
+          "upper": "7.920862092127710155E-25",
+          "width": "4.040800000000000000E-39"
+        },
+        {
+          "chunk": 14,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.504588245519121666E-28",
+          "source": "row_probe",
+          "upper": "2.504588245519136912E-28",
+          "width": "1.524600000000000000E-42"
+        },
+        {
+          "chunk": 15,
+          "failure_mode": "sampled_feasible",
+          "lower": "4.473385898142128814E-35",
+          "source": "row_probe",
+          "upper": "4.473385900142189116E-35",
+          "width": "2.000060302000000000E-44"
+        },
+        {
+          "chunk": 16,
+          "failure_mode": "sampled_feasible",
+          "lower": "1.822673909060559872E-33",
+          "source": "row_probe",
+          "upper": "1.822673909080571139E-33",
+          "width": "2.001126700000000000E-44"
+        },
+        {
+          "chunk": 17,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "3.443824611212239499E-28",
+          "source": "row_probe",
+          "upper": "3.443824611212261920E-28",
+          "width": "2.242100000000000000E-42"
+        },
+        {
+          "chunk": 18,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.810675948549913615E-25",
+          "source": "row_probe",
+          "upper": "1.810675948549922340E-25",
+          "width": "8.725000000000000000E-40"
+        },
+        {
+          "chunk": 19,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "5.374673041837317445E-24",
+          "source": "row_probe",
+          "upper": "5.374673041837343893E-24",
+          "width": "2.644800000000000000E-38"
+        },
+        {
+          "chunk": 20,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "2.289422842939739771E-23",
+          "source": "row_probe",
+          "upper": "2.289422842939748881E-23",
+          "width": "9.110000000000000000E-38"
+        },
+        {
+          "chunk": 21,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "1.936774980581605352E-23",
+          "source": "row_probe",
+          "upper": "1.936774980581613874E-23",
+          "width": "8.522000000000000000E-38"
+        },
+        {
+          "chunk": 22,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "3.332128614305456234E-24",
+          "source": "row_probe",
+          "upper": "3.332128614305472397E-24",
+          "width": "1.616300000000000000E-38"
+        },
+        {
+          "chunk": 23,
+          "failure_mode": "split_model_interval_wider_than_parent_chunk_interval",
+          "lower": "9.073920193491388528E-26",
+          "source": "row_probe",
+          "upper": "9.073920193491440185E-26",
+          "width": "5.165700000000000000E-40"
+        },
+        {
+          "chunk": 24,
+          "failure_mode": "sampled_feasible",
+          "lower": "1.884816502101522632E-28",
+          "source": "row_probe",
+          "upper": "1.884816502101532049E-28",
+          "width": "9.417000000000000000E-43"
+        },
+        {
+          "chunk": 25,
+          "failure_mode": "sampled_feasible",
+          "lower": "3.434543204046445164E-33",
+          "source": "row_probe",
+          "upper": "3.434543204066473195E-33",
+          "width": "2.002803100000000000E-44"
+        }
+      ],
+      "degree": 12,
+      "family": "control_tail",
+      "fits_recorded_slack_max_side": true,
+      "fits_recorded_slack_sum": true,
+      "fits_target": false,
+      "lower_excess": "4.169647223466445322E-33",
+      "model_lower": "2.390275099671692905E-18",
+      "model_upper": "2.390275099671704724E-18",
+      "model_width": "1.181871315464934210E-32",
+      "needed_slack_max_side": "7.646065931182896777E-33",
+      "needed_slack_sum": "1.181571315464934210E-32",
+      "policy": "all_split10",
+      "row": 0,
+      "target_lower": "2.390275099671697075E-18",
+      "target_upper": "2.390275099671697078E-18",
+      "target_width": "3.000000000000000000E-36",
+      "upper_excess": "7.646065931182896777E-33",
+      "verdict": "fits_recorded_slack"
+    }
+  ],
+  "meaning": "Diagnostic refined-grid row-width accounting for the raw-Omega Taylor PayloadFin route.  This is search/control-plane evidence only, not a Lean proof artifact.",
+  "parameters": {
+    "degree": 12
+  },
+  "proof_data_source": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_product_abs_seed.json",
+  "route_guard": [
+    "diagnostic only",
+    "do not emit Lean payload from this file",
+    "do not mutate CSV, ARadius, radius-floor, or LDL data",
+    "row target refresh must be Lean-checked before payload emission"
+  ],
+  "schema": "q3_psdpd_step33_a_refined_grid_width_accounting.v1"
+}

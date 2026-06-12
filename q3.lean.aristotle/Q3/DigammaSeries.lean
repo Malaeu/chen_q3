@@ -287,6 +287,155 @@ lemma digammaSeq_tendsto_Q3_digamma (z : ℂ) (hz : 0 < z.re) :
     h_loc.tendsto_at (by simpa [S] using hz)
   simpa [digamma_eq_root] using h_point
 
+/-- One-step right-half-plane recurrence for the Q3 digamma function.
+
+This local form avoids adding a new Gamma-functional-equation dependency to
+the Step33 endpoint backend. It is proved from the already checked
+`digammaSeq` convergence surface and a telescoping finite-sum identity. -/
+lemma digamma_add_one_of_re_pos (z : ℂ) (hzpos : 0 < z.re) :
+    Q3.digamma (z + 1) = Q3.digamma z + z⁻¹ := by
+  have hz1pos : 0 < (z + 1).re := by
+    simp [Complex.add_re]
+    linarith
+  have htz := digammaSeq_tendsto_Q3_digamma z hzpos
+  have htz1 := digammaSeq_tendsto_Q3_digamma (z + 1) hz1pos
+  have h_diff : ∀ n : ℕ,
+      _root_.digammaSeq (z + 1) n - _root_.digammaSeq z n =
+        z⁻¹ - (z + ((n : ℂ) + 1))⁻¹ := by
+    intro n
+    unfold digammaSeq
+    have htel := Finset.sum_range_sub'
+      (fun x => (z + (x : ℂ))⁻¹) (n + 1)
+    simp [one_div, add_comm, add_left_comm, Finset.sum_range_succ] at htel ⊢
+    exact htel
+  have h_limit : Filter.Tendsto
+      (fun n : ℕ => z⁻¹ - (z + ((n : ℂ) + 1))⁻¹)
+      Filter.atTop (nhds z⁻¹) := by
+    rw [tendsto_iff_norm_sub_tendsto_zero]
+    simp [sub_eq_add_neg, add_comm, add_left_comm]
+    refine Filter.Tendsto.inv_tendsto_atTop ?_
+    rw [Filter.tendsto_atTop_atTop]
+    intro r
+    refine ⟨Nat.ceil (max r 0 + ‖z‖ + 2), ?_⟩
+    intro n hn
+    have hnreal : max r 0 + ‖z‖ + 2 <= (n : ℝ) := by
+      exact le_trans (Nat.le_ceil _) (by exact_mod_cast hn)
+    have hnorm_n : ‖(n : ℂ)‖ = (n : ℝ) := by simp
+    have hle : max r 0 + 1 <= ‖z + ((n : ℂ) + 1)‖ := by
+      have htri : ‖(n : ℂ)‖ <= ‖z + ((n : ℂ) + 1)‖ + ‖z + 1‖ := by
+        simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using
+          norm_sub_le (z + ((n : ℂ) + 1)) (z + 1)
+      have hz1norm : ‖z + 1‖ <= ‖z‖ + 1 := by
+        simpa using norm_add_le z (1 : ℂ)
+      have hmid : (n : ℝ) <= ‖z + ((n : ℂ) + 1)‖ + (‖z‖ + 1) := by
+        linarith
+      linarith
+    have hrle : r <= max r 0 + 1 := by
+      have : r <= max r 0 := le_max_left _ _
+      linarith
+    exact le_trans hrle hle
+  have h_limit_diff : Filter.Tendsto
+      (fun n : ℕ => _root_.digammaSeq (z + 1) n - _root_.digammaSeq z n)
+      Filter.atTop (nhds z⁻¹) := by
+    simpa [h_diff] using h_limit
+  have h_sub : Q3.digamma (z + 1) - Q3.digamma z = z⁻¹ :=
+    tendsto_nhds_unique (Filter.Tendsto.sub htz1 htz) h_limit_diff
+  exact sub_eq_iff_eq_add'.mp h_sub
+
+/-- Finite right-shift recurrence for the Q3 digamma function on the
+right half-plane. -/
+lemma digamma_add_nat_of_re_pos (z : ℂ) (N : ℕ) (hzpos : 0 < z.re) :
+    Q3.digamma (z + (N : ℂ)) =
+      Q3.digamma z + (Finset.range N).sum (fun m : ℕ => (z + (m : ℂ))⁻¹) := by
+  induction N with
+  | zero => simp
+  | succ N ih =>
+      have hzNpos : 0 < (z + (N : ℂ)).re := by
+        simp [Complex.add_re]
+        have hNnonneg : (0 : ℝ) <= N := by exact_mod_cast Nat.zero_le N
+        linarith
+      calc
+        Q3.digamma (z + ((N + 1 : ℕ) : ℂ))
+            = Q3.digamma (z + (N : ℂ) + 1) := by
+              congr 1
+              norm_num [Nat.cast_add, Nat.cast_one]
+              ring
+        _ = Q3.digamma (z + (N : ℂ)) + (z + (N : ℂ))⁻¹ :=
+              digamma_add_one_of_re_pos (z + (N : ℂ)) hzNpos
+        _ = Q3.digamma z +
+              (Finset.range (N + 1)).sum (fun m : ℕ => (z + (m : ℂ))⁻¹) := by
+              rw [ih]
+              simp [Finset.sum_range_succ, add_assoc]
+
+/-- The concrete 16-step recurrence requested by the shifted-digamma
+rectangular endpoint route. -/
+theorem digamma_shift16_recurrence_of_re_pos (z : ℂ) (hzpos : 0 < z.re) :
+    Q3.digamma z =
+      Q3.digamma (z + (16 : ℂ)) -
+        (Finset.range 16).sum (fun m : ℕ => (z + (m : ℂ))⁻¹) := by
+  have h := digamma_add_nat_of_re_pos z 16 hzpos
+  exact eq_sub_of_add_eq h.symm
+
+/-- Rectangular interval glue for the 16-step shifted-digamma route.
+
+Generated endpoint rows can prove a rectangle for `Q3.digamma (z+16)` and a
+rectangle for the finite inverse sum. Lean then checks the recurrence and the
+componentwise subtraction arithmetic. -/
+theorem digamma_interval_of_shift16_rect
+    (z : ℂ)
+    (reLower reUpper imLower imUpper shiftedReLower shiftedReUpper shiftedImLower
+      shiftedImUpper invReLower invReUpper invImLower invImUpper : ℝ)
+    (hzpos : 0 < z.re)
+    (hShiftReLower : shiftedReLower <= (Q3.digamma (z + (16 : ℂ))).re)
+    (hShiftReUpper : (Q3.digamma (z + (16 : ℂ))).re <= shiftedReUpper)
+    (hShiftImLower : shiftedImLower <= (Q3.digamma (z + (16 : ℂ))).im)
+    (hShiftImUpper : (Q3.digamma (z + (16 : ℂ))).im <= shiftedImUpper)
+    (hInvReLower :
+      invReLower <=
+        ((Finset.range 16).sum (fun m : ℕ => (z + (m : ℂ))⁻¹)).re)
+    (hInvReUpper :
+      ((Finset.range 16).sum (fun m : ℕ => (z + (m : ℂ))⁻¹)).re <=
+        invReUpper)
+    (hInvImLower :
+      invImLower <=
+        ((Finset.range 16).sum (fun m : ℕ => (z + (m : ℂ))⁻¹)).im)
+    (hInvImUpper :
+      ((Finset.range 16).sum (fun m : ℕ => (z + (m : ℂ))⁻¹)).im <=
+        invImUpper)
+    (hReLower : reLower <= shiftedReLower - invReUpper)
+    (hReUpper : shiftedReUpper - invReLower <= reUpper)
+    (hImLower : imLower <= shiftedImLower - invImUpper)
+    (hImUpper : shiftedImUpper - invImLower <= imUpper) :
+    reLower <= (Q3.digamma z).re ∧ (Q3.digamma z).re <= reUpper ∧
+      imLower <= (Q3.digamma z).im ∧ (Q3.digamma z).im <= imUpper := by
+  let invSum : ℂ := (Finset.range 16).sum (fun m : ℕ => (z + (m : ℂ))⁻¹)
+  have hrec := digamma_shift16_recurrence_of_re_pos z hzpos
+  have hReEq :
+      (Q3.digamma z).re =
+        (Q3.digamma (z + (16 : ℂ))).re - invSum.re := by
+    change (Q3.digamma z).re =
+      (Q3.digamma (z + (16 : ℂ))).re -
+        ((Finset.range 16).sum (fun m : ℕ => (z + (m : ℂ))⁻¹)).re
+    simpa [sub_eq_add_neg] using congrArg Complex.re hrec
+  have hImEq :
+      (Q3.digamma z).im =
+        (Q3.digamma (z + (16 : ℂ))).im - invSum.im := by
+    change (Q3.digamma z).im =
+      (Q3.digamma (z + (16 : ℂ))).im -
+        ((Finset.range 16).sum (fun m : ℕ => (z + (m : ℂ))⁻¹)).im
+    simpa [sub_eq_add_neg] using congrArg Complex.im hrec
+  constructor
+  · rw [hReEq]
+    linarith
+  constructor
+  · rw [hReEq]
+    linarith
+  constructor
+  · rw [hImEq]
+    linarith
+  · rw [hImEq]
+    linarith
+
 lemma digammaSeq_eq_split (z : ℂ) (n : ℕ) :
     _root_.digammaSeq z n =
       (Real.log n : ℂ) - ∑ k ∈ Finset.range (n + 1), (1 / (k + 1 : ℂ)) +
@@ -482,6 +631,447 @@ lemma re_digamma_eq_sum_of_tendsto (z : ℂ) (hz : ∀ n : ℕ, z + n ≠ 0)
         ((-Real.eulerMascheroniConstant : ℝ) : ℂ).re + (∑' n : ℕ, term n).re := h_re
     _ = -Real.eulerMascheroniConstant + ∑' n : ℕ, (term n).re := by
         rw [hcast, hre]
+
+/-- Imaginary-part companion to `re_digamma_eq_sum_of_tendsto`.
+
+Unlike the real-part formula, the Euler-Mascheroni constant drops out after
+taking imaginary parts.  This gives the Step33 shifted-digamma rectangular
+receiver a semantic series surface for future generated `Im ψ(z)` interval
+payloads without introducing any numerical oracle. -/
+lemma im_digamma_eq_sum_of_tendsto (z : ℂ) (hz : ∀ n : ℕ, z + n ≠ 0)
+    (h_tendsto : Filter.Tendsto (fun n : ℕ => _root_.digammaSeq z n) Filter.atTop
+      (nhds (Q3.digamma z))) :
+    (Q3.digamma z).im =
+        ∑' n : ℕ, ((1 / (n + 1 : ℂ) - 1 / (z + n)).im) := by
+  let term : ℕ → ℂ := fun n => (1 / (n + 1 : ℂ) - 1 / (z + n))
+  have h_series := digamma_eq_series_of_tendsto z hz h_tendsto
+  have hsum : Summable term := digamma_series_summable z hz
+  have him : ((∑' n : ℕ, term n).im) = ∑' n : ℕ, (term n).im := by
+    simpa using (Complex.im_tsum hsum)
+  have hcast : ((-Real.eulerMascheroniConstant : ℝ) : ℂ).im = 0 := by
+    simp
+  have h_im : (Q3.digamma z).im =
+      ((-Real.eulerMascheroniConstant : ℝ) : ℂ).im + (∑' n : ℕ, term n).im := by
+    simpa [term] using (congrArg Complex.im h_series)
+  calc
+    (Q3.digamma z).im =
+        ((-Real.eulerMascheroniConstant : ℝ) : ℂ).im + (∑' n : ℕ, term n).im := h_im
+    _ = ∑' n : ℕ, (term n).im := by
+        rw [hcast, him]
+        simp
+
+/-- Bound a real `tsum` from a finite prefix and a signed tail interval.
+
+This small generic receiver is used by generated digamma component rows: the
+generator proves rational bounds for the finite prefix and a separate tail
+interval, while Lean checks the safe `sum_range + shifted_tail = tsum` split. -/
+theorem real_tsum_bounds_of_sum_range_tail_interval
+    {f : Nat -> Real} (N : Nat)
+    (prefixLower prefixUpper tailLower tailUpper : Real)
+    (hf : Summable f)
+    (hPrefixLower : prefixLower <= (Finset.range N).sum f)
+    (hPrefixUpper : (Finset.range N).sum f <= prefixUpper)
+    (hTailLower : tailLower <= ∑' n : Nat, f (n + N))
+    (hTailUpper : (∑' n : Nat, f (n + N)) <= tailUpper) :
+    prefixLower + tailLower <= ∑' n : Nat, f n ∧
+      (∑' n : Nat, f n) <= prefixUpper + tailUpper := by
+  have hsplit :
+      (Finset.range N).sum f + (∑' n : Nat, f (n + N)) =
+        ∑' n : Nat, f n := by
+    simpa using (hf.sum_add_tsum_nat_add N)
+  constructor
+  · rw [← hsplit]
+    linarith
+  · rw [← hsplit]
+    linarith
+
+/-- Bound a real `tsum` from a finite prefix and an absolute tail radius. -/
+theorem real_tsum_bounds_of_sum_range_tail_abs
+    {f : Nat -> Real} (N : Nat) (prefixLower prefixUpper tailRadius : Real)
+    (hf : Summable f)
+    (hPrefixLower : prefixLower <= (Finset.range N).sum f)
+    (hPrefixUpper : (Finset.range N).sum f <= prefixUpper)
+    (hTail : |∑' n : Nat, f (n + N)| <= tailRadius) :
+    prefixLower - tailRadius <= ∑' n : Nat, f n ∧
+      (∑' n : Nat, f n) <= prefixUpper + tailRadius := by
+  have hTailLower : -tailRadius <= ∑' n : Nat, f (n + N) :=
+    (abs_le.mp hTail).1
+  have hTailUpper : (∑' n : Nat, f (n + N)) <= tailRadius :=
+    (abs_le.mp hTail).2
+  simpa [sub_eq_add_neg] using
+    real_tsum_bounds_of_sum_range_tail_interval
+      (f := f) N prefixLower prefixUpper (-tailRadius) tailRadius hf
+      hPrefixLower hPrefixUpper hTailLower hTailUpper
+
+/-- A single complex norm-tail majorant supplies absolute tail radii for both
+real and imaginary digamma series components.
+
+Generated endpoint rows can prove one nonnegative complex majorant and reuse it
+for the Re/Im component receivers without duplicating tail proof data. -/
+theorem digamma_series_tail_re_im_abs_of_complex_norm_tail
+    (z : Complex) (N : Nat) (tailRadius : Real)
+    (hz : ∀ n : Nat, z + n ≠ 0)
+    (hTailNorm :
+      (∑' n : Nat,
+          ‖1 / (((n + N : Nat) : Complex) + 1) -
+            1 / (z + ((n + N : Nat) : Complex))‖) <= tailRadius) :
+    |∑' n : Nat,
+        (1 / (((n + N : Nat) : Complex) + 1) -
+          1 / (z + ((n + N : Nat) : Complex))).re| <= tailRadius ∧
+      |∑' n : Nat,
+        (1 / (((n + N : Nat) : Complex) + 1) -
+          1 / (z + ((n + N : Nat) : Complex))).im| <= tailRadius := by
+  let term : Nat -> Complex := fun n : Nat =>
+    1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))
+  have hComplex : Summable term := by
+    simpa [term] using digamma_series_summable z hz
+  have hTailComplex : Summable (fun n : Nat => term (n + N)) := by
+    simpa [term, Nat.cast_add, add_assoc] using
+      (summable_nat_add_iff N).2 hComplex
+  have hNormSum :
+      ‖∑' n : Nat, term (n + N)‖ <=
+        ∑' n : Nat, ‖term (n + N)‖ := by
+    exact norm_tsum_le_tsum_norm hTailComplex.norm
+  have hNormTail :
+      ∑' n : Nat, ‖term (n + N)‖ <= tailRadius := by
+    simpa [term, Nat.cast_add, add_assoc] using hTailNorm
+  have hReAbs :
+      |(∑' n : Nat, term (n + N)).re| <= tailRadius :=
+    (Complex.abs_re_le_norm _).trans (hNormSum.trans hNormTail)
+  have hImAbs :
+      |(∑' n : Nat, term (n + N)).im| <= tailRadius :=
+    (Complex.abs_im_le_norm _).trans (hNormSum.trans hNormTail)
+  have hReTsum :
+      ((∑' n : Nat, term (n + N)).re) =
+        ∑' n : Nat, (term (n + N)).re := by
+    simpa using (Complex.re_tsum hTailComplex)
+  have hImTsum :
+      ((∑' n : Nat, term (n + N)).im) =
+        ∑' n : Nat, (term (n + N)).im := by
+    simpa using (Complex.im_tsum hTailComplex)
+  constructor
+  · change |∑' n : Nat, (term (n + N)).re| <= tailRadius
+    rw [← hReTsum]
+    exact hReAbs
+  · change |∑' n : Nat, (term (n + N)).im| <= tailRadius
+    rw [← hImTsum]
+    exact hImAbs
+
+/-- Bound the complex norm tail of the digamma series from a generated
+termwise majorant.
+
+This is the proof-data landing surface one level below
+`digamma_series_tail_re_im_abs_of_complex_norm_tail`: generated rows can prove
+`‖tailTerm n‖ <= g n` and a rational bound on `∑' g n`, while Lean supplies the
+summability and `tsum` monotonicity bridge. -/
+theorem digamma_series_tail_norm_le_of_norm_le_tsum_bound
+    (z : Complex) (N : Nat) (g : Nat -> Real) (tailRadius : Real)
+    (hz : ∀ n : Nat, z + n ≠ 0)
+    (hg : Summable g)
+    (hTerm :
+      ∀ n : Nat,
+        ‖1 / (((n + N : Nat) : Complex) + 1) -
+          1 / (z + ((n + N : Nat) : Complex))‖ <= g n)
+    (hSum : (∑' n : Nat, g n) <= tailRadius) :
+    (∑' n : Nat,
+        ‖1 / (((n + N : Nat) : Complex) + 1) -
+          1 / (z + ((n + N : Nat) : Complex))‖) <= tailRadius := by
+  let term : Nat -> Complex := fun n : Nat =>
+    1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))
+  have hComplex : Summable term := by
+    simpa [term] using digamma_series_summable z hz
+  have hTailComplex : Summable (fun n : Nat => term (n + N)) := by
+    simpa [term, Nat.cast_add, add_assoc] using
+      (summable_nat_add_iff N).2 hComplex
+  have hTerm' : ∀ n : Nat, ‖term (n + N)‖ <= g n := by
+    intro n
+    simpa [term, Nat.cast_add, add_assoc] using hTerm n
+  have hLe :
+      (∑' n : Nat, ‖term (n + N)‖) <= ∑' n : Nat, g n := by
+    exact Summable.tsum_le_tsum hTerm' hTailComplex.norm hg
+  have hLe' :
+      (∑' n : Nat,
+          ‖1 / (((n + N : Nat) : Complex) + 1) -
+            1 / (z + ((n + N : Nat) : Complex))‖) <=
+        ∑' n : Nat, g n := by
+    simpa [term, Nat.cast_add, add_assoc] using hLe
+  exact hLe'.trans hSum
+
+/-- Generated-facing interval receiver for the imaginary part of the digamma
+series.
+
+The conclusion is an interval for `(Q3.digamma z).im`; generated rows supply a
+finite prefix enclosure for the semantic series and a signed tail interval.
+No Euler-Mascheroni or `log π` constant is involved. -/
+theorem im_digamma_interval_of_series_prefix_tail_interval
+    (z : ℂ) (N : Nat)
+    (lower upper prefixLower prefixUpper tailLower tailUpper : Real)
+    (hzpos : 0 < z.re)
+    (hz : ∀ n : Nat, z + n ≠ 0)
+    (hPrefixLower :
+      prefixLower <=
+        (Finset.range N).sum (fun n : Nat =>
+          (1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))).im))
+    (hPrefixUpper :
+      (Finset.range N).sum (fun n : Nat =>
+          (1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))).im) <=
+        prefixUpper)
+    (hTailLower :
+      tailLower <=
+        ∑' n : Nat,
+          (1 / (((n + N : Nat) : Complex) + 1) -
+            1 / (z + ((n + N : Nat) : Complex))).im)
+    (hTailUpper :
+      (∑' n : Nat,
+          (1 / (((n + N : Nat) : Complex) + 1) -
+            1 / (z + ((n + N : Nat) : Complex))).im) <=
+        tailUpper)
+    (hLower : lower <= prefixLower + tailLower)
+    (hUpper : prefixUpper + tailUpper <= upper) :
+    lower <= (Q3.digamma z).im ∧
+      (Q3.digamma z).im <= upper := by
+  let term : Nat -> Real := fun n : Nat =>
+    (1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))).im
+  have hComplex : Summable (fun n : Nat =>
+      1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))) :=
+    digamma_series_summable z hz
+  have hTerm : Summable term := by
+    exact Complex.imCLM.summable hComplex
+  have hTsum :=
+    real_tsum_bounds_of_sum_range_tail_interval
+      (f := term) N prefixLower prefixUpper tailLower tailUpper hTerm
+      (by simpa [term] using hPrefixLower)
+      (by simpa [term] using hPrefixUpper)
+      (by simpa [term, Nat.cast_add, add_assoc] using hTailLower)
+      (by simpa [term, Nat.cast_add, add_assoc] using hTailUpper)
+  have hDig :
+      (Q3.digamma z).im = ∑' n : Nat, term n := by
+    simpa [term] using
+      im_digamma_eq_sum_of_tendsto z hz
+        (digammaSeq_tendsto_Q3_digamma z hzpos)
+  constructor
+  · rw [hDig]
+    exact hLower.trans hTsum.1
+  · rw [hDig]
+    exact hTsum.2.trans hUpper
+
+/-- Absolute-tail variant of
+`im_digamma_interval_of_series_prefix_tail_interval`. -/
+theorem im_digamma_interval_of_series_prefix_tail_abs
+    (z : ℂ) (N : Nat)
+    (lower upper prefixLower prefixUpper tailRadius : Real)
+    (hzpos : 0 < z.re)
+    (hz : ∀ n : Nat, z + n ≠ 0)
+    (hPrefixLower :
+      prefixLower <=
+        (Finset.range N).sum (fun n : Nat =>
+          (1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))).im))
+    (hPrefixUpper :
+      (Finset.range N).sum (fun n : Nat =>
+          (1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))).im) <=
+        prefixUpper)
+    (hTail :
+      |∑' n : Nat,
+          (1 / (((n + N : Nat) : Complex) + 1) -
+            1 / (z + ((n + N : Nat) : Complex))).im| <=
+        tailRadius)
+    (hLower : lower <= prefixLower - tailRadius)
+    (hUpper : prefixUpper + tailRadius <= upper) :
+    lower <= (Q3.digamma z).im ∧
+      (Q3.digamma z).im <= upper := by
+  exact
+    im_digamma_interval_of_series_prefix_tail_interval
+      z N lower upper prefixLower prefixUpper (-tailRadius) tailRadius
+      hzpos hz hPrefixLower hPrefixUpper
+      (abs_le.mp hTail).1 (abs_le.mp hTail).2
+      (by simpa [sub_eq_add_neg] using hLower) hUpper
+
+/-- Generated-facing interval receiver for the real part of the digamma
+series.
+
+The real component carries the `-γ` constant.  Generated rows may prove a
+separate Euler-Mascheroni interval and combine it with prefix/tail bounds for
+the semantic digamma series. -/
+theorem re_digamma_interval_of_series_prefix_tail_interval
+    (z : ℂ) (N : Nat)
+    (lower upper gammaLower gammaUpper prefixLower prefixUpper tailLower
+      tailUpper : Real)
+    (hzpos : 0 < z.re)
+    (hz : ∀ n : Nat, z + n ≠ 0)
+    (hGammaLower : gammaLower <= Real.eulerMascheroniConstant)
+    (hGammaUpper : Real.eulerMascheroniConstant <= gammaUpper)
+    (hPrefixLower :
+      prefixLower <=
+        (Finset.range N).sum (fun n : Nat =>
+          (1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))).re))
+    (hPrefixUpper :
+      (Finset.range N).sum (fun n : Nat =>
+          (1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))).re) <=
+        prefixUpper)
+    (hTailLower :
+      tailLower <=
+        ∑' n : Nat,
+          (1 / (((n + N : Nat) : Complex) + 1) -
+            1 / (z + ((n + N : Nat) : Complex))).re)
+    (hTailUpper :
+      (∑' n : Nat,
+          (1 / (((n + N : Nat) : Complex) + 1) -
+            1 / (z + ((n + N : Nat) : Complex))).re) <=
+        tailUpper)
+    (hLower : lower <= -gammaUpper + prefixLower + tailLower)
+    (hUpper : -gammaLower + prefixUpper + tailUpper <= upper) :
+    lower <= (Q3.digamma z).re ∧
+      (Q3.digamma z).re <= upper := by
+  let term : Nat -> Real := fun n : Nat =>
+    (1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))).re
+  have hComplex : Summable (fun n : Nat =>
+      1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))) :=
+    digamma_series_summable z hz
+  have hTerm : Summable term := by
+    exact Complex.reCLM.summable hComplex
+  have hTsum :=
+    real_tsum_bounds_of_sum_range_tail_interval
+      (f := term) N prefixLower prefixUpper tailLower tailUpper hTerm
+      (by simpa [term] using hPrefixLower)
+      (by simpa [term] using hPrefixUpper)
+      (by simpa [term, Nat.cast_add, add_assoc] using hTailLower)
+      (by simpa [term, Nat.cast_add, add_assoc] using hTailUpper)
+  have hDig :
+      (Q3.digamma z).re =
+        -Real.eulerMascheroniConstant + ∑' n : Nat, term n := by
+    simpa [term] using
+      re_digamma_eq_sum_of_tendsto z hz
+        (digammaSeq_tendsto_Q3_digamma z hzpos)
+  constructor
+  · rw [hDig]
+    calc
+      lower <= -gammaUpper + prefixLower + tailLower := hLower
+      _ <= -Real.eulerMascheroniConstant + ∑' n : Nat, term n := by
+        linarith [hGammaUpper, hTsum.1]
+  · rw [hDig]
+    calc
+      -Real.eulerMascheroniConstant + ∑' n : Nat, term n <=
+          -gammaLower + prefixUpper + tailUpper := by
+        linarith [hGammaLower, hTsum.2]
+      _ <= upper := hUpper
+
+/-- Absolute-tail variant of
+`re_digamma_interval_of_series_prefix_tail_interval`. -/
+theorem re_digamma_interval_of_series_prefix_tail_abs
+    (z : ℂ) (N : Nat)
+    (lower upper gammaLower gammaUpper prefixLower prefixUpper tailRadius : Real)
+    (hzpos : 0 < z.re)
+    (hz : ∀ n : Nat, z + n ≠ 0)
+    (hGammaLower : gammaLower <= Real.eulerMascheroniConstant)
+    (hGammaUpper : Real.eulerMascheroniConstant <= gammaUpper)
+    (hPrefixLower :
+      prefixLower <=
+        (Finset.range N).sum (fun n : Nat =>
+          (1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))).re))
+    (hPrefixUpper :
+      (Finset.range N).sum (fun n : Nat =>
+          (1 / ((n : Complex) + 1) - 1 / (z + (n : Complex))).re) <=
+        prefixUpper)
+    (hTail :
+      |∑' n : Nat,
+          (1 / (((n + N : Nat) : Complex) + 1) -
+            1 / (z + ((n + N : Nat) : Complex))).re| <=
+        tailRadius)
+    (hLower : lower <= -gammaUpper + prefixLower - tailRadius)
+    (hUpper : -gammaLower + prefixUpper + tailRadius <= upper) :
+    lower <= (Q3.digamma z).re ∧
+      (Q3.digamma z).re <= upper := by
+  exact
+    re_digamma_interval_of_series_prefix_tail_interval
+      z N lower upper gammaLower gammaUpper prefixLower prefixUpper
+      (-tailRadius) tailRadius hzpos hz hGammaLower hGammaUpper
+      hPrefixLower hPrefixUpper (abs_le.mp hTail).1 (abs_le.mp hTail).2
+      (by simpa [sub_eq_add_neg] using hLower) hUpper
+
+/-- Mathlib's bracketing sequences give a proof-safe interval for the
+Euler-Mascheroni constant at every finite index.  Numerical rows can choose a
+concrete index and then discharge the remaining finite/log arithmetic
+separately. -/
+theorem eulerMascheroniConstant_interval_of_seq (n : Nat) :
+    Real.eulerMascheroniSeq n <= Real.eulerMascheroniConstant ∧
+      Real.eulerMascheroniConstant <= Real.eulerMascheroniSeq' n := by
+  exact
+    ⟨le_of_lt (Real.eulerMascheroniSeq_lt_eulerMascheroniConstant n),
+      le_of_lt (Real.eulerMascheroniConstant_lt_eulerMascheroniSeq' n)⟩
+
+/-- Exact width of Mathlib's elementary Euler-Mascheroni bracket.
+
+This is a diagnostic fact for tight Step33 endpoint constants: using only
+`eulerMascheroniSeq` / `eulerMascheroniSeq'` gives a gap
+`log (n + 1) - log n`, so very narrow generated endpoint intervals require an
+accelerated constant backend rather than a huge finite index. -/
+theorem eulerMascheroniSeq_interval_width
+    (n : Nat) (hn : n ≠ 0) :
+    Real.eulerMascheroniSeq' n - Real.eulerMascheroniSeq n =
+      Real.log (n + 1 : Real) - Real.log (n : Real) := by
+  rw [Real.eulerMascheroniSeq, Real.eulerMascheroniSeq']
+  simp [hn]
+
+/-- Turn explicit exponential comparisons around `π` into a logarithmic
+interval for `log π`.  This keeps the numerical `exp`/`π` witnesses outside
+the semantic digamma series proof. -/
+theorem log_pi_interval_of_exp_bounds
+    (lower upper piLower piUpper : Real)
+    (hExpLower : Real.exp lower <= piLower)
+    (hPiLower : piLower <= Real.pi)
+    (hPiUpper : Real.pi <= piUpper)
+    (hPiUpperExp : piUpper <= Real.exp upper) :
+    lower <= Real.log Real.pi ∧ Real.log Real.pi <= upper := by
+  constructor
+  · exact
+      (Real.le_log_iff_exp_le Real.pi_pos).mpr
+        (hExpLower.trans hPiLower)
+  · exact
+      (Real.log_le_iff_le_exp Real.pi_pos).mpr
+        (hPiUpper.trans hPiUpperExp)
+
+/-- Assemble independent `γ` and `log π` intervals into the constant interval
+needed by the Step22 Omega real-series endpoint receiver. -/
+theorem neg_eulerMascheroni_sub_log_pi_intervalCert
+    (lower upper gammaLower gammaUpper logPiLower logPiUpper : Real)
+    (hGammaLower : gammaLower <= Real.eulerMascheroniConstant)
+    (hGammaUpper : Real.eulerMascheroniConstant <= gammaUpper)
+    (hLogPiLower : logPiLower <= Real.log Real.pi)
+    (hLogPiUpper : Real.log Real.pi <= logPiUpper)
+    (hLower : lower <= -gammaUpper - logPiUpper)
+    (hUpper : -gammaLower - logPiLower <= upper) :
+    lower <= -Real.eulerMascheroniConstant - Real.log Real.pi ∧
+      -Real.eulerMascheroniConstant - Real.log Real.pi <= upper := by
+  constructor
+  · have hActualLower :
+        -gammaUpper - logPiUpper <=
+          -Real.eulerMascheroniConstant - Real.log Real.pi := by
+      linarith
+    exact hLower.trans hActualLower
+  · have hActualUpper :
+        -Real.eulerMascheroniConstant - Real.log Real.pi <=
+          -gammaLower - logPiLower := by
+      linarith
+    exact hActualUpper.trans hUpper
+
+/-- Variant using Mathlib's Euler-Mascheroni bracketing sequence directly for
+the `γ` part.  This is useful for diagnosing whether a proposed generated
+constant interval is even feasible before building a sharper acceleration
+engine. -/
+theorem neg_eulerMascheroni_sub_log_pi_intervalCert_of_seq
+    (n : Nat) (lower upper logPiLower logPiUpper : Real)
+    (hLogPiLower : logPiLower <= Real.log Real.pi)
+    (hLogPiUpper : Real.log Real.pi <= logPiUpper)
+    (hLower : lower <= -Real.eulerMascheroniSeq' n - logPiUpper)
+    (hUpper : -Real.eulerMascheroniSeq n - logPiLower <= upper) :
+    lower <= -Real.eulerMascheroniConstant - Real.log Real.pi ∧
+      -Real.eulerMascheroniConstant - Real.log Real.pi <= upper := by
+  have hgamma := eulerMascheroniConstant_interval_of_seq n
+  exact
+    neg_eulerMascheroni_sub_log_pi_intervalCert
+      lower upper (Real.eulerMascheroniSeq n) (Real.eulerMascheroniSeq' n)
+      logPiLower logPiUpper hgamma.1 hgamma.2 hLogPiLower hLogPiUpper
+      hLower hUpper
 
 end Q3
 

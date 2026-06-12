@@ -1,0 +1,405 @@
+{
+  "decision": {
+    "chosen_path": "C. one-time recert with transformed A, unless receiver is changed to raw Step22 by a semantic theorem",
+    "deltaA_P0_like": false,
+    "deltaA_absorbable_by_QtQ": false,
+    "deltaA_low_rank_rank_le_2": false,
+    "deltaA_zero_on_Qv_eq_0": false,
+    "negative_transformed_probe_all_pass": true,
+    "raw_sanity_all_pass": true,
+    "recommendation": "no hidden sign-location or boundary/gauge absorption was found; current finite PSD cert is for raw Step22 A",
+    "transformed_sanity_all_pass": false
+  },
+  "families": [
+    {
+      "block_id": "psdpd_L3_k11_ell030_delta025_theta1e4",
+      "deltaA": {
+        "definition": "A_transformed_arch_sign_receiver - A_raw_step22_positive_axis_payload",
+        "penalty_shift": {
+          "D_shift_eigenvalues": {
+            "abs_max": 101.82761122601202,
+            "max": 11.117118996155845,
+            "min": -101.82761122601202
+          },
+          "D_shift_formula": "(1 - theta) * DeltaA",
+          "D_shift_on_boundary_null": {
+            "Q_rank": 2,
+            "is_zero_on_boundary_null_at_1e_9": false,
+            "null_dim": 21,
+            "projected_fro_norm": 397.16006781561003,
+            "projected_max_eigenvalue": -37.637427848559405,
+            "projected_min_eigenvalue": -101.82687096324136,
+            "projected_spectral_norm": 101.82687096324136
+          },
+          "R_shift_eigenvalues": {
+            "abs_max": 101.83779500551256,
+            "max": 11.118230819237816,
+            "min": -101.83779500551256
+          },
+          "R_shift_formula": "DeltaA",
+          "R_shift_on_boundary_null": {
+            "Q_rank": 2,
+            "is_zero_on_boundary_null_at_1e_9": false,
+            "null_dim": 21,
+            "projected_fro_norm": 397.1997877943896,
+            "projected_max_eigenvalue": -37.64119196775625,
+            "projected_min_eigenvalue": -101.83705466870832,
+            "projected_spectral_norm": 101.83705466870832
+          }
+        },
+        "structure": {
+          "boundary_null": {
+            "Q_rank": 2,
+            "is_zero_on_boundary_null_at_1e_9": false,
+            "null_dim": 21,
+            "projected_fro_norm": 397.1997877943896,
+            "projected_max_eigenvalue": -37.64119196775625,
+            "projected_min_eigenvalue": -101.83705466870832,
+            "projected_spectral_norm": 101.83705466870832
+          },
+          "delta_fro_norm": 400.7893242995274,
+          "delta_spectral_norm": 101.83779500551256,
+          "diagonal_abs_max": 79.02110587559564,
+          "entry_abs_max": 79.02110587559564,
+          "fit_P0": {
+            "coefficient": 1.285530350585367,
+            "relative_residual_fro": 0.9983951639990946,
+            "residual_fro": 400.1461231631129,
+            "residual_spectral": 101.83012305404407
+          },
+          "fit_Q_transpose_Q": {
+            "coefficient": -0.1491125785221031,
+            "relative_residual_fro": 0.9992352138572552,
+            "residual_fro": 400.48280617814305,
+            "residual_spectral": 101.83769242146307
+          },
+          "fit_scalar_A_raw": {
+            "coefficient": -50.87150504738332,
+            "relative_residual_fro": 0.8819893250625263,
+            "residual_fro": 353.4919056312061,
+            "residual_spectral": 115.83498592377862
+          },
+          "fit_scalar_A_transformed": {
+            "coefficient": 1.0043173066033544,
+            "relative_residual_fro": 0.008206227212892672,
+            "residual_fro": 3.2889682597036476,
+            "residual_spectral": 2.4565817837535735
+          },
+          "fit_scalar_I": {
+            "coefficient": -79.02110587559561,
+            "relative_residual_fro": 0.325436536543636,
+            "residual_fro": 130.43148958370233,
+            "residual_spectral": 90.13933669483343
+          },
+          "fit_scalar_J": {
+            "coefficient": 0.4113393284146782,
+            "relative_residual_fro": 0.9997213530025761,
+            "residual_fro": 400.6776455577118,
+            "residual_spectral": 101.8378145831615
+          },
+          "fit_span_I_J_QtQ_P0_Araw": {
+            "basis": [
+              "I",
+              "J",
+              "Q_transpose_Q",
+              "P0",
+              "A_raw"
+            ],
+            "coefficients": {
+              "A_raw": -38.27351304795425,
+              "I": -73.53051769146563,
+              "J": -0.8352507841885409,
+              "P0": 0.7433444388924995,
+              "Q_transpose_Q": -0.011432272460478524
+            },
+            "relative_residual_fro": 0.00989561868344787,
+            "residual_fro": 3.96605832566485,
+            "residual_spectral": 2.026987738928621
+          },
+          "is_diagonal_at_1e_9": false,
+          "is_scalar_I_at_1e_9": false,
+          "offdiag_abs_max": 16.1629111327557,
+          "rank": {
+            "bottom_singular_values": [
+              62.13735479080252,
+              54.854640221355766,
+              44.72492323389791,
+              30.009543787143397,
+              11.11823081923776
+            ],
+            "is_rank_one_at_1e_9": false,
+            "is_rank_two_at_1e_9": false,
+            "rank_by_threshold": {
+              "1e-06": 23,
+              "1e-09": 23,
+              "1e-12": 23
+            },
+            "top_singular_values": [
+              101.83779500551255,
+              101.59230445962747,
+              101.18126412889264,
+              100.60337611115756,
+              99.85329173450232,
+              98.92957069600898,
+              97.82119108002863,
+              96.52723768811494
+            ]
+          }
+        }
+      },
+      "family": "primary",
+      "finite_psd_convention": {
+        "C_formula": "A - P",
+        "D_direct_minus_D_from_C_R_abs_max": 4.440892098500626e-16,
+        "D_formula": "(1 - theta) * A - P + theta * kappa * P0",
+        "D_from_C_R_formula": "C - theta * R",
+        "R_formula": "A - kappa * P0"
+      },
+      "finite_psd_sanity": {
+        "A_used_in_current_D_R": "current raw Step22 positive-axis A payload",
+        "negative_transformed_probe_passes": true,
+        "negative_transformed_probe_psd_sanity": {
+          "A_diag": 78.89774143023172,
+          "A_max_entry": 78.89774143023172,
+          "A_min_entry": -15.725429349261962,
+          "D_penalty_floor": 0.0001222859478322234,
+          "D_penalty_min_eigenvalue": 39.79178072188683,
+          "D_penalty_passes_floor": true,
+          "R_penalty_floor": 0.13569220778186006,
+          "R_penalty_min_eigenvalue": 40.66392132402513,
+          "R_penalty_passes_floor": true
+        },
+        "raw_passes": true,
+        "raw_step22_psd_sanity": {
+          "A_diag": 0.12336444536392195,
+          "A_max_entry": 0.12336444536392195,
+          "A_min_entry": -0.43748178349373795,
+          "D_penalty_floor": 0.0001222859478322234,
+          "D_penalty_min_eigenvalue": 0.00012228595300390246,
+          "D_penalty_passes_floor": true,
+          "R_penalty_floor": 0.13569220778186006,
+          "R_penalty_min_eigenvalue": 0.1356922079453794,
+          "R_penalty_passes_floor": true
+        },
+        "transformed_arch_sign_psd_sanity": {
+          "A_diag": -78.89774143023172,
+          "A_max_entry": 15.725429349261962,
+          "A_min_entry": -78.89774143023172,
+          "D_penalty_floor": 0.0001222859478322234,
+          "D_penalty_min_eigenvalue": -101.65250980604694,
+          "D_penalty_passes_floor": false,
+          "R_penalty_floor": 0.13569220778186006,
+          "R_penalty_min_eigenvalue": -101.08826416650179,
+          "R_penalty_passes_floor": false
+        },
+        "transformed_passes": false
+      },
+      "kappa": 3.25,
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
+      "theta": 0.0001
+    },
+    {
+      "block_id": "psdpd_L3_k9_ell030_delta025_theta1e5",
+      "deltaA": {
+        "definition": "A_transformed_arch_sign_receiver - A_raw_step22_positive_axis_payload",
+        "penalty_shift": {
+          "D_shift_eigenvalues": {
+            "abs_max": 100.35932478316147,
+            "max": 23.897801307396904,
+            "min": -100.35932478316147
+          },
+          "D_shift_formula": "(1 - theta) * DeltaA",
+          "D_shift_on_boundary_null": {
+            "Q_rank": 2,
+            "is_zero_on_boundary_null_at_1e_9": false,
+            "null_dim": 21,
+            "projected_fro_norm": 384.6777268384077,
+            "projected_max_eigenvalue": -29.625156238042855,
+            "projected_min_eigenvalue": -100.35851429101858,
+            "projected_spectral_norm": 100.35851429101858
+          },
+          "R_shift_eigenvalues": {
+            "abs_max": 100.36032838644537,
+            "max": 23.898040287799798,
+            "min": -100.36032838644537
+          },
+          "R_shift_formula": "DeltaA",
+          "R_shift_on_boundary_null": {
+            "Q_rank": 2,
+            "is_zero_on_boundary_null_at_1e_9": false,
+            "null_dim": 21,
+            "projected_fro_norm": 384.68157365414424,
+            "projected_max_eigenvalue": -29.625452492567803,
+            "projected_min_eigenvalue": -100.35951788619748,
+            "projected_spectral_norm": 100.35951788619748
+          }
+        },
+        "structure": {
+          "boundary_null": {
+            "Q_rank": 2,
+            "is_zero_on_boundary_null_at_1e_9": false,
+            "null_dim": 21,
+            "projected_fro_norm": 384.68157365414424,
+            "projected_max_eigenvalue": -29.625452492567803,
+            "projected_min_eigenvalue": -100.35951788619748,
+            "projected_spectral_norm": 100.35951788619748
+          },
+          "delta_fro_norm": 388.32996376692563,
+          "delta_spectral_norm": 100.36032838644537,
+          "diagonal_abs_max": 75.2313790746506,
+          "entry_abs_max": 75.2313790746506,
+          "fit_P0": {
+            "coefficient": 1.427940961959215,
+            "relative_residual_fro": 0.9974606868849912,
+            "residual_fro": 387.3438723969814,
+            "residual_spectral": 100.35174207849747
+          },
+          "fit_Q_transpose_Q": {
+            "coefficient": -0.014491530430080767,
+            "relative_residual_fro": 0.9999923085891895,
+            "residual_fro": 388.3269769616443,
+            "residual_spectral": 100.36031702972718
+          },
+          "fit_scalar_A_raw": {
+            "coefficient": -38.000855765860585,
+            "relative_residual_fro": 0.9174950671796522,
+            "residual_fro": 356.29082619420734,
+            "residual_spectral": 85.10361458549343
+          },
+          "fit_scalar_A_transformed": {
+            "coefficient": 1.0040871671930278,
+            "relative_residual_fro": 0.009642930918309948,
+            "residual_fro": 3.744639014114269,
+            "residual_spectral": 2.77559212740821
+          },
+          "fit_scalar_I": {
+            "coefficient": -75.23137907465065,
+            "relative_residual_fro": 0.36983085987669617,
+            "residual_fro": 143.61640441580838,
+            "residual_spectral": 99.12941936245034
+          },
+          "fit_scalar_J": {
+            "coefficient": 0.9596430229890479,
+            "relative_residual_fro": 0.9983834301757216,
+            "residual_fro": 387.7022012656369,
+            "residual_spectral": 100.36037942709743
+          },
+          "fit_span_I_J_QtQ_P0_Araw": {
+            "basis": [
+              "I",
+              "J",
+              "Q_transpose_Q",
+              "P0",
+              "A_raw"
+            ],
+            "coefficients": {
+              "A_raw": -37.796184125470816,
+              "I": -73.45906218070866,
+              "J": -0.8542126763346012,
+              "P0": 0.7090386804327958,
+              "Q_transpose_Q": -0.011260795459281502
+            },
+            "relative_residual_fro": 0.01025986077037903,
+            "residual_fro": 3.9842113612149905,
+            "residual_spectral": 2.136287379401878
+          },
+          "is_diagonal_at_1e_9": false,
+          "is_scalar_I_at_1e_9": false,
+          "offdiag_abs_max": 17.808695263616606,
+          "rank": {
+            "bottom_singular_values": [
+              56.576776671568275,
+              48.5524517785991,
+              37.40600440150671,
+              23.89804028779976,
+              21.23584433985941
+            ],
+            "is_rank_one_at_1e_9": false,
+            "is_rank_two_at_1e_9": false,
+            "rank_by_threshold": {
+              "1e-06": 23,
+              "1e-09": 23,
+              "1e-12": 23
+            },
+            "top_singular_values": [
+              100.36032838644537,
+              100.09157462658801,
+              99.64142559209996,
+              99.008227684523,
+              98.18581426114766,
+              97.17222688716394,
+              95.95495765814367,
+              94.53254237662287
+            ]
+          }
+        }
+      },
+      "family": "control",
+      "finite_psd_convention": {
+        "C_formula": "A - P",
+        "D_direct_minus_D_from_C_R_abs_max": 4.440892098500626e-16,
+        "D_formula": "(1 - theta) * A - P + theta * kappa * P0",
+        "D_from_C_R_formula": "C - theta * R",
+        "R_formula": "A - kappa * P0"
+      },
+      "finite_psd_sanity": {
+        "A_used_in_current_D_R": "current raw Step22 positive-axis A payload",
+        "negative_transformed_probe_passes": true,
+        "negative_transformed_probe_psd_sanity": {
+          "A_diag": 75.20513017099184,
+          "A_max_entry": 75.20513017099184,
+          "A_min_entry": -17.32138601963182,
+          "D_penalty_floor": 1.263692282186616e-05,
+          "D_penalty_min_eigenvalue": 32.14144110121121,
+          "D_penalty_passes_floor": true,
+          "R_penalty_floor": 0.0019590640625249765,
+          "R_penalty_min_eigenvalue": 32.94592066457576,
+          "R_penalty_passes_floor": true
+        },
+        "raw_passes": true,
+        "raw_step22_psd_sanity": {
+          "A_diag": 0.026248903658774844,
+          "A_max_entry": 0.026248903658774844,
+          "A_min_entry": -0.4873092439847854,
+          "D_penalty_floor": 1.263692282186616e-05,
+          "D_penalty_min_eigenvalue": 1.263692347554592e-05,
+          "D_penalty_passes_floor": true,
+          "R_penalty_floor": 0.0019590640625249765,
+          "R_penalty_min_eigenvalue": 0.0019590650942526585,
+          "R_penalty_passes_floor": true
+        },
+        "transformed_arch_sign_psd_sanity": {
+          "A_diag": -75.20513017099184,
+          "A_max_entry": 17.32138601963182,
+          "A_min_entry": -75.20513017099184,
+          "D_penalty_floor": 1.263692282186616e-05,
+          "D_penalty_min_eigenvalue": -100.27132888586563,
+          "D_penalty_passes_floor": false,
+          "R_penalty_floor": 0.0019590640625249765,
+          "R_penalty_min_eigenvalue": -99.63668870977041,
+          "R_penalty_passes_floor": false
+        },
+        "transformed_passes": false
+      },
+      "kappa": 3.075,
+      "midpoint_csv": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
+      "theta": 1e-05
+    }
+  ],
+  "gate": "Step33A.1-A canonical-A decision fork",
+  "inputs": {
+    "plan": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs/insights/q3_psdpd_step32f_coeff_payload_import_plan.json",
+    "source_convention_audit_json": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_source_convention_audit.json"
+  },
+  "non_mutating": true,
+  "schema": "q3_psdpd_step33_a_canonical_decision_audit.v1",
+  "source_map": {
+    "Arch_sign_location": "in the analytic receiver/profile bridge theorem, not in the imported table, not in C/D/R assembly, and not in penaltyForm",
+    "C_convention": "C = A - P",
+    "D_R_convention": "R = A - kappa*P0; D = (1 - theta)*A - P + theta*kappa*P0 = C - theta*R",
+    "analytic_receiver_A": "CenteredCoeffBaseHboxImport.primary/control AnalyticA, identified with centeredBSplineArchKernelProfile and the transformed Step22-Omega Arch-sign profile",
+    "finite_PSD_cert_A": "the same raw imported A midpoint payload used to assemble D/R",
+    "imported_table_A": "raw Step22 positive-axis Omega payload in q3_psdpd_step22_midpoints_k11/k9.csv",
+    "penalty_convention": "penaltyForm M Q tau v = quadForm M v + tau * boundaryEnergy Q v"
+  }
+}

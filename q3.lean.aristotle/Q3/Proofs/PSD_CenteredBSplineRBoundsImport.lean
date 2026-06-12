@@ -147,6 +147,86 @@ theorem centeredBSplineR_nonneg (k : ℕ) (x : ℝ) :
       (bsplineScale k * x))
     (le_of_lt (bsplineAutocorrNorm_pos k))
 
+/-- The primary `k=11` normalized R-profile is zero on the left of support. -/
+theorem centeredBSplineR11_eq_zero_of_le_neg_two {x : ℝ}
+    (hx : x <= -2) :
+    centeredBSplineR 11 x = 0 := by
+  unfold centeredBSplineR
+  have harg :
+      bsplineScale 11 * x <=
+        -(((bsplineAutocorrDegree 11 + 1 : ℕ) : ℝ) / 2) := by
+    norm_num [bsplineScale, bsplineAutocorrDegree] at *
+    linarith
+  have hzero :=
+    _root_.Q3.PSDpd.centeredCardinalBSpline_eq_zero_of_le_left
+      (degree := bsplineAutocorrDegree 11)
+      (x := bsplineScale 11 * x) harg
+  simp [hzero]
+
+/-- The primary `k=11` normalized R-profile is zero on the right of support. -/
+theorem centeredBSplineR11_eq_zero_of_two_le {x : ℝ}
+    (hx : 2 <= x) :
+    centeredBSplineR 11 x = 0 := by
+  unfold centeredBSplineR
+  have harg :
+      -(bsplineScale 11 * x) <=
+        -(((bsplineAutocorrDegree 11 + 1 : ℕ) : ℝ) / 2) := by
+    norm_num [bsplineScale, bsplineAutocorrDegree] at *
+    linarith
+  have hzero :=
+    _root_.Q3.PSDpd.centeredCardinalBSpline_eq_zero_of_le_left
+      (degree := bsplineAutocorrDegree 11)
+      (x := -(bsplineScale 11 * x)) harg
+  have heven :=
+    _root_.Q3.PSDpd.centeredCardinalBSpline_autocorrDegree_even 11
+      (bsplineScale 11 * x)
+  have hnum :
+      centeredCardinalBSpline (bsplineAutocorrDegree 11)
+        (bsplineScale 11 * x) = 0 := by
+    rw [<- heven]
+    exact hzero
+  simp [hnum]
+
+/-- The control `k=9` normalized R-profile is zero on the left of support. -/
+theorem centeredBSplineR9_eq_zero_of_le_neg_two {x : ℝ}
+    (hx : x <= -2) :
+    centeredBSplineR 9 x = 0 := by
+  unfold centeredBSplineR
+  have harg :
+      bsplineScale 9 * x <=
+        -(((bsplineAutocorrDegree 9 + 1 : ℕ) : ℝ) / 2) := by
+    norm_num [bsplineScale, bsplineAutocorrDegree] at *
+    linarith
+  have hzero :=
+    _root_.Q3.PSDpd.centeredCardinalBSpline_eq_zero_of_le_left
+      (degree := bsplineAutocorrDegree 9)
+      (x := bsplineScale 9 * x) harg
+  simp [hzero]
+
+/-- The control `k=9` normalized R-profile is zero on the right of support. -/
+theorem centeredBSplineR9_eq_zero_of_two_le {x : ℝ}
+    (hx : 2 <= x) :
+    centeredBSplineR 9 x = 0 := by
+  unfold centeredBSplineR
+  have harg :
+      -(bsplineScale 9 * x) <=
+        -(((bsplineAutocorrDegree 9 + 1 : ℕ) : ℝ) / 2) := by
+    norm_num [bsplineScale, bsplineAutocorrDegree] at *
+    linarith
+  have hzero :=
+    _root_.Q3.PSDpd.centeredCardinalBSpline_eq_zero_of_le_left
+      (degree := bsplineAutocorrDegree 9)
+      (x := -(bsplineScale 9 * x)) harg
+  have heven :=
+    _root_.Q3.PSDpd.centeredCardinalBSpline_autocorrDegree_even 9
+      (bsplineScale 9 * x)
+  have hnum :
+      centeredCardinalBSpline (bsplineAutocorrDegree 9)
+        (bsplineScale 9 * x) = 0 := by
+    rw [<- heven]
+    exact hzero
+  simp [hnum]
+
 end CenteredBSplineRBoundsImport
 end PSDpd
 end Q3

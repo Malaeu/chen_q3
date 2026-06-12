@@ -1,0 +1,2206 @@
+{
+  "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+  "coverage": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_coverage.json",
+  "directDerivativeCoverage": {
+    "directParents": [
+      {
+        "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+        "family": "primary_finite",
+        "left": "0.000000000000000000E+0",
+        "parentChunk": 0,
+        "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30.json",
+        "policy": "finite_first_split100",
+        "remainingAnalyticFields": 300,
+        "right": "1.000000000000000000E+1",
+        "row": 0,
+        "seededFields": 1900,
+        "split": 100,
+        "status": "direct_derivative_overlay_seeded_missing_cell_proofs",
+        "subchunks": 100
+      },
+      {
+        "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+        "family": "primary_finite",
+        "left": "1.000000000000000000E+1",
+        "parentChunk": 1,
+        "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_1_denom1e30_derivfit.json",
+        "policy": "finite_rest_split10",
+        "remainingAnalyticFields": 30,
+        "right": "2.000000000000000000E+1",
+        "row": 0,
+        "seededFields": 190,
+        "split": 10,
+        "status": "direct_derivative_overlay_seeded_missing_cell_proofs",
+        "subchunks": 10
+      }
+    ],
+    "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_coverage.json",
+    "schema": "q3_psdpd_step33_a_refined_subchunk_candidate_coverage.v1",
+    "totals": {
+      "candidateMissingParents": 2390,
+      "candidateMissingSubchunks": 39910,
+      "candidateOverlayFiles": 2,
+      "candidateParents": 2,
+      "candidateResidualPassedParents": 2,
+      "candidateSlackFitParents": 0,
+      "candidateSubchunks": 110,
+      "directMissingParents": 2390,
+      "directMissingSubchunks": 39910,
+      "directOverlayFiles": 2,
+      "directParents": 2,
+      "directSubchunks": 110,
+      "missingRowAnalyticFields": 184,
+      "missingSubchunkAnalyticFields": 200100,
+      "parentChunks": 2392,
+      "proofSafeClosedFields": 0,
+      "refinedSubchunks": 40020,
+      "residualAuditFiles": 2,
+      "slackAuditFiles": 2,
+      "staleDirectOverlayFiles": 1
+    }
+  },
+  "directNormCertGenericConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_direct_norm_cert_at_zero_distance",
+  "directNormIntervalBoundsFullCellConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_direct_norm_interval_bounds_full_cell_at_zero_distance",
+  "hRawCenterCoeffLocalComponentContract": {
+    "compactComponentReceiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_component_cert_scale_interval_corner_bounds_at_zero_distance",
+    "compactDirectEndpointReceiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_direct_endpoint_cert_scale_interval_corner_bounds_at_zero_distance",
+    "compactEndpointReceiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_endpoint_cert_scale_interval_corner_bounds_at_zero_distance",
+    "componentBallCertReceiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_abs_bounds",
+    "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_hraw_center_coeff_contract.json",
+    "rawCenterCoeffSampleEnvelopeDirectEndpointConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeFiniteCoverData.of_local_direct_endpoint_cert_scale_interval_corner_bounds_at_zero_distance",
+    "receiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_interval_raw_component_scale_interval_corner_bounds_at",
+    "schema": "q3_psdpd_step33_a_refined_subchunk_hraw_center_coeff_contract.v11",
+    "status": "arithmetic_ready_missing_component_interval_derivative_enclosures_not_lean_proof",
+    "totals": {
+      "anchorMembershipPassing": 110,
+      "arithmeticFailedRows": 0,
+      "arithmeticReadyRows": 110,
+      "coeffArithmeticComparisons": 220,
+      "coeffArithmeticPassing": 220,
+      "compactComponentRows": 110,
+      "componentAnchorDeviationAnalyticFactsOpen": 440,
+      "componentAnchorDeviationCertsOpen": 110,
+      "componentAnchorDeviationContainmentComparisonsOpen": 220,
+      "componentAutoDiffClosedByLean": 220,
+      "componentAutoDiffDerivativeAnalyticFactsOpen": 440,
+      "componentAutoDiffDerivativeAnchorEndpointComparisons": 330,
+      "componentAutoDiffDerivativeAnchorEndpointComparisonsPassing": 330,
+      "componentAutoDiffDerivativeBoundArithmeticComparisonsOpen": 660,
+      "componentAutoDiffDerivativeBoundChoicesOpen": 660,
+      "componentAutoDiffDerivativeCertsOpen": 110,
+      "componentBallAbsFactsOpen": 220,
+      "componentBallCertsOpen": 110,
+      "componentBallContainmentComparisons": 440,
+      "componentBallContainmentPassing": 440,
+      "componentDerivativeAnalyticFactsOpen": 660,
+      "componentDerivativeAnchorEndpointComparisons": 330,
+      "componentDerivativeAnchorEndpointComparisonsPassing": 330,
+      "componentDerivativeBoundArithmeticComparisonsOpen": 660,
+      "componentDerivativeBoundChoicesOpen": 660,
+      "componentDerivativeCertsOpen": 110,
+      "componentIntervalCertsOpen": 110,
+      "componentIntervalDerivativeArithmeticComparisons": 990,
+      "componentIntervalDerivativeArithmeticComparisonsPassing": 770,
+      "componentIntervalDerivativeCertsOpen": 110,
+      "componentIntervalDerivativeClosedByLean": 880,
+      "componentIntervalDerivativeContainmentComparisonsOpen": 220,
+      "componentIntervalDerivativeEndpointFactsOpen": 880,
+      "componentIntervalProofsOpen": 440,
+      "componentLipschitzAnalyticFactsOpen": 440,
+      "componentLipschitzBoundArithmeticComparisonsOpen": 660,
+      "componentLipschitzBoundChoicesOpen": 660,
+      "componentLipschitzCertsOpen": 110,
+      "componentLipschitzEndpointComparisons": 220,
+      "componentLipschitzEndpointComparisonsPassing": 220,
+      "cornerArithmeticComparisons": 3520,
+      "cornerArithmeticPassing": 3520,
+      "cosArithmeticComparisons": 220,
+      "cosArithmeticPassing": 220,
+      "proofSafeClosedFields": 0,
+      "rows": 110,
+      "rowsByFamily": {
+        "primary_finite": 110
+      },
+      "scaleProofReferences": 220,
+      "zeroDistanceRows": 110
+    },
+    "worstArithmeticRow": {
+      "anchorMembership": {
+        "field": "hAnchorIn",
+        "leftMarginDecimal": "1.000000000000000000E-22",
+        "passesArithmetic": true,
+        "rightMarginDecimal": "0.000000000000000000E+18",
+        "statement": "anchor \u2208 Set.Ioc a b",
+        "suggestedProof": "by norm_num"
+      },
+      "coeffArithmetic": {
+        "hCoeffLower": {
+          "marginDecimal": "0.000000000000000000E+18",
+          "passes": true,
+          "statement": "-sampleRadius <= rawLower - coeff0",
+          "suggestedProof": "by norm_num"
+        },
+        "hCoeffUpper": {
+          "marginDecimal": "0.000000000000000000E+18",
+          "passes": true,
+          "statement": "rawUpper - coeff0 <= sampleRadius",
+          "suggestedProof": "by norm_num"
+        }
+      },
+      "compactDirectEndpointReceiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_direct_endpoint_cert_scale_interval_corner_bounds_at_zero_distance",
+      "compactEndpointReceiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_endpoint_cert_scale_interval_corner_bounds_at_zero_distance",
+      "compactReceiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_component_cert_scale_interval_corner_bounds_at_zero_distance",
+      "componentAnchorDeviationCert": {
+        "analyticFacts": [
+          {
+            "field": "hOmegaDev",
+            "statement": "\u2200 eta \u2208 Set.Ioc a b, |step22OmegaArchWeight eta - step22OmegaArchWeight anchor| <= omegaLocalRadius",
+            "status": "missing_analytic_anchor_deviation_bound"
+          },
+          {
+            "field": "hOmegaCenter",
+            "statement": "|step22OmegaArchWeight anchor - omegaCenter| <= omegaCenterError",
+            "status": "missing_anchor_value_enclosure"
+          },
+          {
+            "field": "hShapeSqDev",
+            "statement": "\u2200 eta \u2208 Set.Ioc a b, |shapeSq eta - shapeSq anchor| <= shapeSqLocalRadius",
+            "status": "missing_analytic_anchor_deviation_bound"
+          },
+          {
+            "field": "hShapeSqCenter",
+            "statement": "|shapeSq anchor - shapeSqCenter| <= shapeSqCenterError",
+            "status": "missing_anchor_value_enclosure"
+          }
+        ],
+        "containmentComparisons": [
+          {
+            "field": "hOmegaContain",
+            "statement": "omegaLocalRadius + omegaCenterError <= omegaRadius",
+            "status": "waiting_for_local_radius_and_center_error",
+            "suggestedProof": "by norm_num after generator chooses bounds"
+          },
+          {
+            "field": "hShapeSqContain",
+            "statement": "shapeSqLocalRadius + shapeSqCenterError <= shapeSqRadius",
+            "status": "waiting_for_local_radius_and_center_error",
+            "suggestedProof": "by norm_num after generator chooses bounds"
+          }
+        ],
+        "field": "component",
+        "parameters": {
+          "omegaCenter": "-42657317410921821036729148980559747625642156619434409794094897717136418056045361/8000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaCenterDecimal": "-5.332164676365227629591143622569968453205269577429301224261862214642052257005670125",
+          "omegaRadius": "497439997966687009009850004809618652379388237250168458558619/200000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaRadiusDecimal": "0.000000000000000000002487199989833435045049250024048093261896941186250842292793095",
+          "shapeSqCenter": "1189083473934301464219563233287103546805007037141976307699442333267954471822479257/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqCenterDecimal": "0.5945417369671507321097816166435517734025035185709881538497211666339772359112396285",
+          "shapeSqRadius": "57076887920830373945734317601865930036364460420372779481112957/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqRadiusDecimal": "0.0000000000000000000285384439604151869728671588009329650181822302101863897405564785"
+        },
+        "receiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_deviation_bounds",
+        "statement": "LocalRawOmegaComponentIntervalCert.of_anchor_deviation_bounds hOmegaDev hOmegaCenter hOmegaContain hShapeSqDev hShapeSqCenter hShapeSqContain hOmegaLower hOmegaUpper hShapeSqLower hShapeSqUpper",
+        "status": "missing_analytic_anchor_deviation_bounds",
+        "usesBallCertReceiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_abs_bounds"
+      },
+      "componentAutoDiffDerivativeCert": {
+        "analyticFacts": [
+          {
+            "field": "hOmegaDerivBound",
+            "statement": "\u2200 eta \u2208 Set.Icc a b, \u2016deriv step22OmegaArchWeight eta\u2016 <= omegaSlope",
+            "status": "missing_derivative_bound"
+          },
+          {
+            "field": "hOmegaCenter",
+            "statement": "|step22OmegaArchWeight anchor - omegaCenter| <= omegaCenterError",
+            "status": "missing_anchor_value_enclosure"
+          },
+          {
+            "field": "hShapeSqDerivBound",
+            "statement": "\u2200 eta \u2208 Set.Icc a b, \u2016deriv (fun t => shapeSq t) eta\u2016 <= shapeSqSlope",
+            "status": "missing_derivative_bound"
+          },
+          {
+            "field": "hShapeSqCenter",
+            "statement": "|shapeSq anchor - shapeSqCenter| <= shapeSqCenterError",
+            "status": "missing_anchor_value_enclosure"
+          }
+        ],
+        "arithmeticComparisons": {
+          "hAnchorIn": {
+            "leftMarginDecimal": "1.000000000000000000E-22",
+            "passes": true,
+            "rightMarginDecimal": "0.000000000000000000E+18",
+            "statement": "anchor \u2208 Set.Ioc a b",
+            "suggestedProof": "by norm_num"
+          },
+          "hEtaLeft": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "anchor - a <= etaRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hEtaRight": {
+            "marginDecimal": "1.000000000000000000E-22",
+            "passes": true,
+            "statement": "b - anchor <= etaRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hOmegaContain": {
+            "statement": "omegaLocalRadius + omegaCenterError <= omegaRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hOmegaLocalContain": {
+            "statement": "omegaSlope * etaRadius <= omegaLocalRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hOmegaSlopeNonneg": {
+            "statement": "0 <= omegaSlope",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hShapeSqContain": {
+            "statement": "shapeSqLocalRadius + shapeSqCenterError <= shapeSqRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hShapeSqLocalContain": {
+            "statement": "shapeSqSlope * etaRadius <= shapeSqLocalRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hShapeSqSlopeNonneg": {
+            "statement": "0 <= shapeSqSlope",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          }
+        },
+        "boundChoicesOpen": [
+          {
+            "field": "omegaSlope",
+            "status": "generator_must_choose_verified_derivative_bound"
+          },
+          {
+            "field": "omegaLocalRadius",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "omegaCenterError",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "shapeSqSlope",
+            "status": "generator_must_choose_verified_derivative_bound"
+          },
+          {
+            "field": "shapeSqLocalRadius",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "shapeSqCenterError",
+            "status": "generator_must_choose_verified_bound"
+          }
+        ],
+        "closedByLean": [
+          {
+            "field": "hOmegaDifferentiable",
+            "receiver": "CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_differentiableAt"
+          },
+          {
+            "field": "hShapeSqDifferentiable",
+            "receiver": "CenteredCoeffAnalyticABoundsBackend.centeredBSplineImagTransformRealClosedForm_differentiableAt"
+          }
+        ],
+        "field": "component",
+        "parameters": {
+          "etaRadius": "1/10000000000000000000000",
+          "etaRadiusDecimal": "0.0000000000000000000001",
+          "omegaCenter": "-42657317410921821036729148980559747625642156619434409794094897717136418056045361/8000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaCenterDecimal": "-5.332164676365227629591143622569968453205269577429301224261862214642052257005670125",
+          "omegaRadius": "497439997966687009009850004809618652379388237250168458558619/200000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaRadiusDecimal": "0.000000000000000000002487199989833435045049250024048093261896941186250842292793095",
+          "shapeSqCenter": "1189083473934301464219563233287103546805007037141976307699442333267954471822479257/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqCenterDecimal": "0.5945417369671507321097816166435517734025035185709881538497211666339772359112396285",
+          "shapeSqRadius": "57076887920830373945734317601865930036364460420372779481112957/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqRadiusDecimal": "0.0000000000000000000285384439604151869728671588009329650181822302101863897405564785"
+        },
+        "receiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_deriv_bounds_auto_differentiability",
+        "statement": "LocalRawOmegaComponentIntervalCert.of_anchor_deriv_bounds_auto_differentiability hAnchorIn hEtaLeft hEtaRight hOmegaDerivBound hOmegaSlopeNonneg hOmegaLocalContain hOmegaCenter hOmegaContain hShapeSqDerivBound hShapeSqSlopeNonneg hShapeSqLocalContain hShapeSqCenter hShapeSqContain hOmegaLower hOmegaUpper hShapeSqLower hShapeSqUpper",
+        "status": "missing_analytic_derivative_bounds_and_anchor_values",
+        "usesDerivativeCertReceiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_deriv_bounds"
+      },
+      "componentBallCert": {
+        "absFacts": [
+          {
+            "field": "hOmegaAbs",
+            "statement": "\u2200 eta \u2208 Set.Ioc a b, |step22OmegaArchWeight eta - omegaCenter| <= omegaRadius",
+            "status": "missing_analytic_abs_ball_bound"
+          },
+          {
+            "field": "hShapeSqAbs",
+            "statement": "\u2200 eta \u2208 Set.Ioc a b, |shapeSq eta - shapeSqCenter| <= shapeSqRadius",
+            "status": "missing_analytic_abs_ball_bound"
+          }
+        ],
+        "containmentArithmetic": {
+          "hOmegaLower": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "omegaLower <= omegaCenter - omegaRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hOmegaUpper": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "omegaCenter + omegaRadius <= omegaUpper",
+            "suggestedProof": "by norm_num"
+          },
+          "hShapeSqLower": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "shapeSqLower <= shapeSqCenter - shapeSqRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hShapeSqUpper": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "shapeSqCenter + shapeSqRadius <= shapeSqUpper",
+            "suggestedProof": "by norm_num"
+          }
+        },
+        "field": "component",
+        "parameters": {
+          "omegaCenter": "-42657317410921821036729148980559747625642156619434409794094897717136418056045361/8000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaCenterDecimal": "-5.332164676365227629591143622569968453205269577429301224261862214642052257005670125",
+          "omegaRadius": "497439997966687009009850004809618652379388237250168458558619/200000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaRadiusDecimal": "0.000000000000000000002487199989833435045049250024048093261896941186250842292793095",
+          "shapeSqCenter": "1189083473934301464219563233287103546805007037141976307699442333267954471822479257/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqCenterDecimal": "0.5945417369671507321097816166435517734025035185709881538497211666339772359112396285",
+          "shapeSqRadius": "57076887920830373945734317601865930036364460420372779481112957/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqRadiusDecimal": "0.0000000000000000000285384439604151869728671588009329650181822302101863897405564785"
+        },
+        "receiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_abs_bounds",
+        "statement": "LocalRawOmegaComponentIntervalCert.of_anchor_abs_bounds hOmegaAbs hShapeSqAbs hOmegaLower hOmegaUpper hShapeSqLower hShapeSqUpper",
+        "status": "missing_analytic_abs_ball_bounds"
+      },
+      "componentBallReceiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_abs_bounds",
+      "componentDerivativeCert": {
+        "analyticFacts": [
+          {
+            "field": "hOmegaDifferentiable",
+            "statement": "\u2200 eta \u2208 Set.Icc a b, DifferentiableAt Real step22OmegaArchWeight eta",
+            "status": "missing_differentiability_proof"
+          },
+          {
+            "field": "hOmegaDerivBound",
+            "statement": "\u2200 eta \u2208 Set.Icc a b, \u2016deriv step22OmegaArchWeight eta\u2016 <= omegaSlope",
+            "status": "missing_derivative_bound"
+          },
+          {
+            "field": "hOmegaCenter",
+            "statement": "|step22OmegaArchWeight anchor - omegaCenter| <= omegaCenterError",
+            "status": "missing_anchor_value_enclosure"
+          },
+          {
+            "field": "hShapeSqDifferentiable",
+            "statement": "\u2200 eta \u2208 Set.Icc a b, DifferentiableAt Real (fun t => shapeSq t) eta",
+            "status": "missing_differentiability_proof"
+          },
+          {
+            "field": "hShapeSqDerivBound",
+            "statement": "\u2200 eta \u2208 Set.Icc a b, \u2016deriv (fun t => shapeSq t) eta\u2016 <= shapeSqSlope",
+            "status": "missing_derivative_bound"
+          },
+          {
+            "field": "hShapeSqCenter",
+            "statement": "|shapeSq anchor - shapeSqCenter| <= shapeSqCenterError",
+            "status": "missing_anchor_value_enclosure"
+          }
+        ],
+        "arithmeticComparisons": {
+          "hAnchorIn": {
+            "leftMarginDecimal": "1.000000000000000000E-22",
+            "passes": true,
+            "rightMarginDecimal": "0.000000000000000000E+18",
+            "statement": "anchor \u2208 Set.Ioc a b",
+            "suggestedProof": "by norm_num"
+          },
+          "hEtaLeft": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "anchor - a <= etaRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hEtaRight": {
+            "marginDecimal": "1.000000000000000000E-22",
+            "passes": true,
+            "statement": "b - anchor <= etaRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hOmegaContain": {
+            "statement": "omegaLocalRadius + omegaCenterError <= omegaRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hOmegaLocalContain": {
+            "statement": "omegaSlope * etaRadius <= omegaLocalRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hOmegaSlopeNonneg": {
+            "statement": "0 <= omegaSlope",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hShapeSqContain": {
+            "statement": "shapeSqLocalRadius + shapeSqCenterError <= shapeSqRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hShapeSqLocalContain": {
+            "statement": "shapeSqSlope * etaRadius <= shapeSqLocalRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hShapeSqSlopeNonneg": {
+            "statement": "0 <= shapeSqSlope",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          }
+        },
+        "boundChoicesOpen": [
+          {
+            "field": "omegaSlope",
+            "status": "generator_must_choose_verified_derivative_bound"
+          },
+          {
+            "field": "omegaLocalRadius",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "omegaCenterError",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "shapeSqSlope",
+            "status": "generator_must_choose_verified_derivative_bound"
+          },
+          {
+            "field": "shapeSqLocalRadius",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "shapeSqCenterError",
+            "status": "generator_must_choose_verified_bound"
+          }
+        ],
+        "field": "component",
+        "parameters": {
+          "etaRadius": "1/10000000000000000000000",
+          "etaRadiusDecimal": "0.0000000000000000000001",
+          "omegaCenter": "-42657317410921821036729148980559747625642156619434409794094897717136418056045361/8000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaCenterDecimal": "-5.332164676365227629591143622569968453205269577429301224261862214642052257005670125",
+          "omegaRadius": "497439997966687009009850004809618652379388237250168458558619/200000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaRadiusDecimal": "0.000000000000000000002487199989833435045049250024048093261896941186250842292793095",
+          "shapeSqCenter": "1189083473934301464219563233287103546805007037141976307699442333267954471822479257/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqCenterDecimal": "0.5945417369671507321097816166435517734025035185709881538497211666339772359112396285",
+          "shapeSqRadius": "57076887920830373945734317601865930036364460420372779481112957/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqRadiusDecimal": "0.0000000000000000000285384439604151869728671588009329650181822302101863897405564785"
+        },
+        "receiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_deriv_bounds",
+        "statement": "LocalRawOmegaComponentIntervalCert.of_anchor_deriv_bounds hAnchorIn hEtaLeft hEtaRight hOmegaDifferentiable hOmegaDerivBound hOmegaSlopeNonneg hOmegaLocalContain hOmegaCenter hOmegaContain hShapeSqDifferentiable hShapeSqDerivBound hShapeSqSlopeNonneg hShapeSqLocalContain hShapeSqCenter hShapeSqContain hOmegaLower hOmegaUpper hShapeSqLower hShapeSqUpper",
+        "status": "missing_analytic_derivative_bounds_and_anchor_values",
+        "usesLipschitzCertReceiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_lipschitz_bounds"
+      },
+      "componentIntervalCert": {
+        "coversFields": [
+          "hOmegaLower",
+          "hOmegaUpper",
+          "hShapeSqLower",
+          "hShapeSqUpper"
+        ],
+        "field": "component",
+        "statement": "LocalRawOmegaComponentIntervalCert k ell a b omegaLower omegaUpper shapeSqLower shapeSqUpper",
+        "status": "missing_analytic_interval_cert",
+        "type": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert"
+      },
+      "componentIntervalDerivativeCert": {
+        "arithmeticComparisons": {
+          "hAnchorIn": {
+            "leftMarginDecimal": "1.000000000000000000E-22",
+            "passes": true,
+            "rightMarginDecimal": "0.000000000000000000E+18",
+            "statement": "anchor \u2208 Set.Ioc a b",
+            "suggestedProof": "by norm_num"
+          },
+          "hEtaLeft": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "anchor - a <= etaRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hEtaRight": {
+            "marginDecimal": "1.000000000000000000E-22",
+            "passes": true,
+            "statement": "b - anchor <= etaRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hOmegaContain": {
+            "statement": "intervalAutoAbsBound omegaDerivLower omegaDerivUpper * etaRadius + intervalAutoCenterError omegaAnchorLower omegaAnchorUpper omegaCenter <= omegaRadius",
+            "status": "waiting_for_generator_endpoint_choices",
+            "suggestedProof": "by norm_num after endpoint choices"
+          },
+          "hOmegaLower": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "omegaLower <= omegaCenter - omegaRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hOmegaUpper": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "omegaCenter + omegaRadius <= omegaUpper",
+            "suggestedProof": "by norm_num"
+          },
+          "hShapeSqContain": {
+            "statement": "intervalAutoAbsBound shapeSqDerivLower shapeSqDerivUpper * etaRadius + intervalAutoCenterError shapeSqAnchorLower shapeSqAnchorUpper shapeSqCenter <= shapeSqRadius",
+            "status": "waiting_for_generator_endpoint_choices",
+            "suggestedProof": "by norm_num after endpoint choices"
+          },
+          "hShapeSqLower": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "shapeSqLower <= shapeSqCenter - shapeSqRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hShapeSqUpper": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "shapeSqCenter + shapeSqRadius <= shapeSqUpper",
+            "suggestedProof": "by norm_num"
+          }
+        },
+        "autoDefinitions": {
+          "omegaCenterError": "intervalAutoCenterError omegaAnchorLower omegaAnchorUpper omegaCenter",
+          "omegaLocalRadius": "omegaSlope * etaRadius",
+          "omegaSlope": "intervalAutoAbsBound omegaDerivLower omegaDerivUpper",
+          "shapeSqCenterError": "intervalAutoCenterError shapeSqAnchorLower shapeSqAnchorUpper shapeSqCenter",
+          "shapeSqLocalRadius": "shapeSqSlope * etaRadius",
+          "shapeSqSlope": "intervalAutoAbsBound shapeSqDerivLower shapeSqDerivUpper"
+        },
+        "closedByLean": [
+          {
+            "field": "hOmegaDifferentiable",
+            "receiver": "CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_differentiableAt"
+          },
+          {
+            "field": "hShapeSqDifferentiable",
+            "receiver": "CenteredCoeffAnalyticABoundsBackend.centeredBSplineImagTransformRealClosedForm_differentiableAt"
+          },
+          {
+            "field": "hOmegaSlopeNonneg",
+            "receiver": "intervalAutoAbsBound_nonneg"
+          },
+          {
+            "field": "hOmegaLocalContain",
+            "receiver": "le_rfl after omegaLocalRadius auto-definition"
+          },
+          {
+            "field": "hOmegaCenter",
+            "receiver": "abs_sub_center_le_intervalAutoCenterError_of_interval_bounds"
+          },
+          {
+            "field": "hShapeSqSlopeNonneg",
+            "receiver": "intervalAutoAbsBound_nonneg"
+          },
+          {
+            "field": "hShapeSqLocalContain",
+            "receiver": "le_rfl after shapeSqLocalRadius auto-definition"
+          },
+          {
+            "field": "hShapeSqCenter",
+            "receiver": "abs_sub_center_le_intervalAutoCenterError_of_interval_bounds"
+          }
+        ],
+        "endpointFactsOpen": [
+          {
+            "field": "hOmegaDerivLower",
+            "statement": "\u2200 eta \u2208 Set.Icc a b, omegaDerivLower <= deriv step22OmegaArchWeight eta",
+            "status": "missing_derivative_lower_enclosure"
+          },
+          {
+            "field": "hOmegaDerivUpper",
+            "statement": "\u2200 eta \u2208 Set.Icc a b, deriv step22OmegaArchWeight eta <= omegaDerivUpper",
+            "status": "missing_derivative_upper_enclosure"
+          },
+          {
+            "field": "hOmegaAnchorLower",
+            "statement": "omegaAnchorLower <= step22OmegaArchWeight anchor",
+            "status": "missing_anchor_value_lower_enclosure"
+          },
+          {
+            "field": "hOmegaAnchorUpper",
+            "statement": "step22OmegaArchWeight anchor <= omegaAnchorUpper",
+            "status": "missing_anchor_value_upper_enclosure"
+          },
+          {
+            "field": "hShapeSqDerivLower",
+            "statement": "\u2200 eta \u2208 Set.Icc a b, shapeSqDerivLower <= deriv (fun t => shapeSq t) eta",
+            "status": "missing_derivative_lower_enclosure"
+          },
+          {
+            "field": "hShapeSqDerivUpper",
+            "statement": "\u2200 eta \u2208 Set.Icc a b, deriv (fun t => shapeSq t) eta <= shapeSqDerivUpper",
+            "status": "missing_derivative_upper_enclosure"
+          },
+          {
+            "field": "hShapeSqAnchorLower",
+            "statement": "shapeSqAnchorLower <= shapeSq anchor",
+            "status": "missing_anchor_value_lower_enclosure"
+          },
+          {
+            "field": "hShapeSqAnchorUpper",
+            "statement": "shapeSq anchor <= shapeSqAnchorUpper",
+            "status": "missing_anchor_value_upper_enclosure"
+          }
+        ],
+        "field": "component",
+        "parameters": {
+          "etaRadius": "1/10000000000000000000000",
+          "etaRadiusDecimal": "0.0000000000000000000001",
+          "omegaCenter": "-42657317410921821036729148980559747625642156619434409794094897717136418056045361/8000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaCenterDecimal": "-5.332164676365227629591143622569968453205269577429301224261862214642052257005670125",
+          "omegaRadius": "497439997966687009009850004809618652379388237250168458558619/200000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaRadiusDecimal": "0.000000000000000000002487199989833435045049250024048093261896941186250842292793095",
+          "shapeSqCenter": "1189083473934301464219563233287103546805007037141976307699442333267954471822479257/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqCenterDecimal": "0.5945417369671507321097816166435517734025035185709881538497211666339772359112396285",
+          "shapeSqRadius": "57076887920830373945734317601865930036364460420372779481112957/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqRadiusDecimal": "0.0000000000000000000285384439604151869728671588009329650181822302101863897405564785"
+        },
+        "receiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_deriv_interval_enclosures_auto_differentiability",
+        "statement": "LocalRawOmegaComponentIntervalCert.of_anchor_deriv_interval_enclosures_auto_differentiability hAnchorIn hEtaLeft hEtaRight hOmegaDerivLower hOmegaDerivUpper hOmegaAnchorLower hOmegaAnchorUpper hOmegaContain hShapeSqDerivLower hShapeSqDerivUpper hShapeSqAnchorLower hShapeSqAnchorUpper hShapeSqContain hOmegaLower hOmegaUpper hShapeSqLower hShapeSqUpper",
+        "status": "missing_derivative_and_anchor_endpoint_interval_enclosures",
+        "usesAutoDiffDerivativeReceiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_deriv_bounds_auto_differentiability"
+      },
+      "componentIntervalProofs": [
+        {
+          "field": "hOmegaLower",
+          "statement": "\u2200 eta \u2208 Set.Ioc a b, omegaLower <= step22OmegaArchWeight eta",
+          "status": "missing_analytic_interval_proof"
+        },
+        {
+          "field": "hOmegaUpper",
+          "statement": "\u2200 eta \u2208 Set.Ioc a b, step22OmegaArchWeight eta <= omegaUpper",
+          "status": "missing_analytic_interval_proof"
+        },
+        {
+          "field": "hShapeSqLower",
+          "statement": "\u2200 eta \u2208 Set.Ioc a b, shapeSqLower <= shapeSq eta",
+          "status": "missing_analytic_interval_proof"
+        },
+        {
+          "field": "hShapeSqUpper",
+          "statement": "\u2200 eta \u2208 Set.Ioc a b, shapeSq eta <= shapeSqUpper",
+          "status": "missing_analytic_interval_proof"
+        }
+      ],
+      "componentLipschitzCert": {
+        "analyticFacts": [
+          {
+            "field": "hOmegaLip",
+            "statement": "\u2200 eta \u2208 Set.Ioc a b, |step22OmegaArchWeight eta - step22OmegaArchWeight anchor| <= omegaSlope * |eta - anchor|",
+            "status": "missing_analytic_lipschitz_bound"
+          },
+          {
+            "field": "hOmegaCenter",
+            "statement": "|step22OmegaArchWeight anchor - omegaCenter| <= omegaCenterError",
+            "status": "missing_anchor_value_enclosure"
+          },
+          {
+            "field": "hShapeSqLip",
+            "statement": "\u2200 eta \u2208 Set.Ioc a b, |shapeSq eta - shapeSq anchor| <= shapeSqSlope * |eta - anchor|",
+            "status": "missing_analytic_lipschitz_bound"
+          },
+          {
+            "field": "hShapeSqCenter",
+            "statement": "|shapeSq anchor - shapeSqCenter| <= shapeSqCenterError",
+            "status": "missing_anchor_value_enclosure"
+          }
+        ],
+        "arithmeticComparisons": {
+          "hEtaLeft": {
+            "marginDecimal": "0.000000000000000000E+18",
+            "passes": true,
+            "statement": "anchor - a <= etaRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hEtaRight": {
+            "marginDecimal": "1.000000000000000000E-22",
+            "passes": true,
+            "statement": "b - anchor <= etaRadius",
+            "suggestedProof": "by norm_num"
+          },
+          "hOmegaContain": {
+            "statement": "omegaLocalRadius + omegaCenterError <= omegaRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hOmegaLocalContain": {
+            "statement": "omegaSlope * etaRadius <= omegaLocalRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hOmegaSlopeNonneg": {
+            "statement": "0 <= omegaSlope",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hShapeSqContain": {
+            "statement": "shapeSqLocalRadius + shapeSqCenterError <= shapeSqRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hShapeSqLocalContain": {
+            "statement": "shapeSqSlope * etaRadius <= shapeSqLocalRadius",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          },
+          "hShapeSqSlopeNonneg": {
+            "statement": "0 <= shapeSqSlope",
+            "status": "waiting_for_generator_bound_choice",
+            "suggestedProof": "by norm_num after bound choice"
+          }
+        },
+        "boundChoicesOpen": [
+          {
+            "field": "omegaSlope",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "omegaLocalRadius",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "omegaCenterError",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "shapeSqSlope",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "shapeSqLocalRadius",
+            "status": "generator_must_choose_verified_bound"
+          },
+          {
+            "field": "shapeSqCenterError",
+            "status": "generator_must_choose_verified_bound"
+          }
+        ],
+        "field": "component",
+        "parameters": {
+          "etaRadius": "1/10000000000000000000000",
+          "etaRadiusDecimal": "0.0000000000000000000001",
+          "omegaCenter": "-42657317410921821036729148980559747625642156619434409794094897717136418056045361/8000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaCenterDecimal": "-5.332164676365227629591143622569968453205269577429301224261862214642052257005670125",
+          "omegaRadius": "497439997966687009009850004809618652379388237250168458558619/200000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "omegaRadiusDecimal": "0.000000000000000000002487199989833435045049250024048093261896941186250842292793095",
+          "shapeSqCenter": "1189083473934301464219563233287103546805007037141976307699442333267954471822479257/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqCenterDecimal": "0.5945417369671507321097816166435517734025035185709881538497211666339772359112396285",
+          "shapeSqRadius": "57076887920830373945734317601865930036364460420372779481112957/2000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "shapeSqRadiusDecimal": "0.0000000000000000000285384439604151869728671588009329650181822302101863897405564785"
+        },
+        "receiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_lipschitz_bounds",
+        "statement": "LocalRawOmegaComponentIntervalCert.of_anchor_lipschitz_bounds hEtaLeft hEtaRight hOmegaLip hOmegaSlopeNonneg hOmegaLocalContain hOmegaCenter hOmegaContain hShapeSqLip hShapeSqSlopeNonneg hShapeSqLocalContain hShapeSqCenter hShapeSqContain hOmegaLower hOmegaUpper hShapeSqLower hShapeSqUpper",
+        "status": "missing_analytic_lipschitz_and_anchor_value_bounds",
+        "usesAnchorDeviationCertReceiver": "RawOmegaATaylorModelCertificate.LocalRawOmegaComponentIntervalCert.of_anchor_deviation_bounds"
+      },
+      "constants": {
+        "a": "0.0499999999999999999999",
+        "anchor": "0.05000000000000000000",
+        "b": "0.05000000000000000000",
+        "coeff0": "-151365635111474049/500000000000000000",
+        "cosLower": "1.00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "cosUpper": "1.00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "omegaLower": "-5.33216467636522762959363082255980188825031882745334931752375915582830309929846322",
+        "omegaUpper": "-5.33216467636522762958865642258013501816022032740525313099996527345580141471287703",
+        "rawLower": "-151365635111474049064509243331/500000000000000000000000000000",
+        "rawUpper": "-151365635111474048935490756669/500000000000000000000000000000",
+        "sampleRadius": "64509243331/500000000000000000000000000000",
+        "scaleLower": "0.095492965855137201461330258023",
+        "scaleUpper": "0.095492965855137201461330258024",
+        "shapeSqLower": "0.594541736967150732081243172683136586429636359770055188831538936423790846170683150",
+        "shapeSqUpper": "0.594541736967150732138320060603966960375370677371921118867903396844163625651796107"
+      },
+      "cornerArithmetic": {
+        "corners": [
+          {
+            "corner": "LLLL",
+            "hLower": "hLowerLLLL",
+            "hUpper": "hUpperLLLL",
+            "lowerMarginDecimal": "2.399128723841436583E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "1.812410093985634168E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "LLLU",
+            "hLower": "hLowerLLLU",
+            "hUpper": "hUpperLLLU",
+            "lowerMarginDecimal": "2.399128723841436583E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "1.812410093985634168E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "LLUL",
+            "hLower": "hLowerLLUL",
+            "hUpper": "hUpperLLUL",
+            "lowerMarginDecimal": "2.108502217638718826E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "4.718675156012811740E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "LLUU",
+            "hLower": "hLowerLLUU",
+            "hUpper": "hUpperLLUU",
+            "lowerMarginDecimal": "2.108502217638718826E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "4.718675156012811740E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "LULL",
+            "hLower": "hLowerLULL",
+            "hUpper": "hUpperLULL",
+            "lowerMarginDecimal": "2.401952917233505803E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "1.784168160064941966E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "LULU",
+            "hLower": "hLowerLULU",
+            "hUpper": "hUpperLULU",
+            "lowerMarginDecimal": "2.401952917233505803E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "1.784168160064941966E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "LUUL",
+            "hLower": "hLowerLUUL",
+            "hUpper": "hUpperLUUL",
+            "lowerMarginDecimal": "2.111326411030788046E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "4.690433222092119539E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "LUUU",
+            "hLower": "hLowerLUUU",
+            "hUpper": "hUpperLUUU",
+            "lowerMarginDecimal": "2.111326411030788046E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "4.690433222092119539E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "ULLL",
+            "hLower": "hLowerULLL",
+            "hUpper": "hUpperULLL",
+            "lowerMarginDecimal": "2.399128723809734639E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "1.812410094302653613E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "ULLU",
+            "hLower": "hLowerULLU",
+            "hUpper": "hUpperULLU",
+            "lowerMarginDecimal": "2.399128723809734639E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "1.812410094302653613E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "ULUL",
+            "hLower": "hLowerULUL",
+            "hUpper": "hUpperULUL",
+            "lowerMarginDecimal": "2.108502217607016881E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "4.718675156329831185E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "ULUU",
+            "hLower": "hLowerULUU",
+            "hUpper": "hUpperULUU",
+            "lowerMarginDecimal": "2.108502217607016881E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "4.718675156329831185E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "UULL",
+            "hLower": "hLowerUULL",
+            "hUpper": "hUpperUULL",
+            "lowerMarginDecimal": "2.401952917201803859E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "1.784168160381961411E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "UULU",
+            "hLower": "hLowerUULU",
+            "hUpper": "hUpperUULU",
+            "lowerMarginDecimal": "2.401952917201803859E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "1.784168160381961411E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "UUUL",
+            "hLower": "hLowerUUUL",
+            "hUpper": "hUpperUUUL",
+            "lowerMarginDecimal": "2.111326410999086102E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "4.690433222409138984E-20",
+            "upperPasses": true
+          },
+          {
+            "corner": "UUUU",
+            "hLower": "hLowerUUUU",
+            "hUpper": "hUpperUUUU",
+            "lowerMarginDecimal": "2.111326410999086102E-19",
+            "lowerPasses": true,
+            "productDecimal": "-3.027312702229480979E-1",
+            "upperMarginDecimal": "4.690433222409138984E-20",
+            "upperPasses": true
+          }
+        ],
+        "lowerPassing": 16,
+        "totalComparisons": 32,
+        "totalPassing": 32,
+        "upperPassing": 16
+      },
+      "cosArithmetic": {
+        "enabledByZeroDistanceReceiver": true,
+        "hCosLowerOne": {
+          "marginDecimal": "0.000000000000000000E+18",
+          "passes": true,
+          "statement": "cosLower <= 1",
+          "suggestedProof": "by norm_num"
+        },
+        "hCosUpperOne": {
+          "marginDecimal": "0.000000000000000000E+18",
+          "passes": true,
+          "statement": "1 <= cosUpper",
+          "suggestedProof": "by norm_num"
+        }
+      },
+      "distance": "0.00",
+      "ell": "0.3",
+      "family": "primary_finite",
+      "k": 11,
+      "minArithmeticMarginDecimal": "0.000000000000000000E+18",
+      "parentChunk": 0,
+      "receiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_interval_raw_component_scale_interval_corner_bounds_at_zero_distance",
+      "row": 0,
+      "scaleProofs": {
+        "hScaleLower": "primaryK11Ell_div_pi_tightScaleLower",
+        "hScaleUpper": "primaryK11Ell_div_pi_tightScaleUpper"
+      },
+      "split": 100,
+      "status": "arithmetic_ready_missing_component_interval_derivative_enclosures",
+      "subchunk": 0,
+      "zeroDistance": true
+    },
+    "zeroDistanceReceiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_interval_raw_component_scale_interval_corner_bounds_at_zero_distance"
+  },
+  "leanDirectTailWindowInputs": "RawOmegaAChunkTaylorPayload.RefinedPayloadFin.toDirectTailWindowInputs",
+  "leanLandingSurface": "RawOmegaAChunkTaylorPayload.RefinedPayloadFin",
+  "legacyIntervalSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+  "localComponentIntervalProbe": {
+    "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_local_component_interval_probe.json",
+    "receiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_interval_raw_component_scale_interval_corner_bounds_at",
+    "scaleLower": "0.095492965855137201461330258023",
+    "scaleMode": "d29_pi_p30_decimal_bounds",
+    "scalePad": null,
+    "scaleProofsByFamily": {
+      "primary_finite": {
+        "hScaleLower": "primaryK11Ell_div_pi_tightScaleLower",
+        "hScaleUpper": "primaryK11Ell_div_pi_tightScaleUpper"
+      }
+    },
+    "scaleUpper": "0.095492965855137201461330258024",
+    "schema": "q3_psdpd_step33_a_refined_subchunk_local_component_interval_probe.v2",
+    "status": "local_component_interval_probe_passed_not_lean_proof",
+    "totals": {
+      "coeffComparisonInputsPerEntry": 2,
+      "componentAnalyticInputsPerEntry": 6,
+      "cornerArithmeticInputsPerEntry": 32,
+      "entries": 110,
+      "failedAnyWidth": 0,
+      "passedAnyWidth": 110,
+      "proofSafeClosedFields": 0,
+      "scaleBoundInputsPerEntry": 2,
+      "widthDistribution": {
+        "0.0000000000000000000000000000000001": 4,
+        "0.00000000000000000000000000000001": 6,
+        "0.000000000000000000000001": 3,
+        "0.0000000000000000000001": 97
+      }
+    },
+    "worstPassingEntry": {
+      "anchor": "18.50000000000000000",
+      "attempts": [
+        {
+          "a": "18.4999999999999999999999999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "0.000000000000000000E+18",
+          "lowerMarginDecimal": "7.561932040020583724E-31",
+          "minMarginDecimal": "7.561932040020583724E-31",
+          "productLowerDecimal": "2.589459507689667880E-2",
+          "productUpperDecimal": "2.589459507689667880E-2",
+          "productWidthDecimal": "2.711675789990608646E-31",
+          "status": "passes",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "9.726392169988807630E-31",
+          "width": "0.0000000000000000000000000000000000000001"
+        },
+        {
+          "a": "18.49999999999999999999999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "0.000000000000000000E+18",
+          "lowerMarginDecimal": "7.561925376622326129E-31",
+          "minMarginDecimal": "7.561925376622326129E-31",
+          "productLowerDecimal": "2.589459507689667880E-2",
+          "productUpperDecimal": "2.589459507689667880E-2",
+          "productWidthDecimal": "2.711689116899347228E-31",
+          "status": "passes",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "9.726385506478326643E-31",
+          "width": "0.00000000000000000000000000000000000001"
+        },
+        {
+          "a": "18.499999999999999999999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "0.000000000000000000E+18",
+          "lowerMarginDecimal": "7.561259036459701578E-31",
+          "minMarginDecimal": "7.561259036459701578E-31",
+          "productLowerDecimal": "2.589459507689667880E-2",
+          "productUpperDecimal": "2.589459507689667880E-2",
+          "productWidthDecimal": "2.713021808446982016E-31",
+          "status": "passes",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "9.725719155093316406E-31",
+          "width": "0.000000000000000000000000000000000001"
+        },
+        {
+          "a": "18.4999999999999999999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "0.000000000000000000E+18",
+          "lowerMarginDecimal": "7.494625099747584275E-31",
+          "minMarginDecimal": "7.494625099747584275E-31",
+          "productLowerDecimal": "2.589459507689667880E-2",
+          "productUpperDecimal": "2.589459507689667880E-2",
+          "productWidthDecimal": "2.846290804096706787E-31",
+          "status": "passes",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "9.659084096155708938E-31",
+          "width": "0.0000000000000000000000000000000001"
+        },
+        {
+          "a": "18.49999999999999999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "0.000000000000000000E+18",
+          "lowerMarginDecimal": "8.312257372078911514E-32",
+          "minMarginDecimal": "8.312257372078911514E-32",
+          "productLowerDecimal": "2.589459507689667880E-2",
+          "productUpperDecimal": "2.589459507689667880E-2",
+          "productWidthDecimal": "1.617320175218033006E-30",
+          "status": "passes",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "2.995572510611778793E-31",
+          "width": "0.00000000000000000000000000000001"
+        },
+        {
+          "a": "18.499999999999999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.655081370822994679E-29",
+          "lowerMarginDecimal": "-6.655081370822994679E-29",
+          "minMarginDecimal": "-6.655081370822994679E-29",
+          "productLowerDecimal": "2.589459507689667880E-2",
+          "productUpperDecimal": "2.589459507689667880E-2",
+          "productWidthDecimal": "1.348863150123086048E-28",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.633550130407865798E-29",
+          "width": "0.000000000000000000000000000001"
+        },
+        {
+          "a": "18.4999999999999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.729943518737654448E-27",
+          "lowerMarginDecimal": "-6.729943518737654448E-27",
+          "minMarginDecimal": "-6.729943518737654448E-27",
+          "productLowerDecimal": "2.589459507689667880E-2",
+          "productUpperDecimal": "2.589459507689667880E-2",
+          "productWidthDecimal": "1.346178394865338880E-26",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.729840429915734350E-27",
+          "width": "0.0000000000000000000000000001"
+        },
+        {
+          "a": "18.49999999999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730807364634303132E-25",
+          "lowerMarginDecimal": "-6.730696173298510856E-25",
+          "minMarginDecimal": "-6.730807364634303132E-25",
+          "productLowerDecimal": "2.589459507689667880E-2",
+          "productUpperDecimal": "2.589459507689667880E-2",
+          "productWidthDecimal": "1.346152353793281399E-24",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730807364634303132E-25",
+          "width": "0.00000000000000000000000001"
+        },
+        {
+          "a": "18.499999999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730814249168385974E-23",
+          "lowerMarginDecimal": "-6.730700913387024315E-23",
+          "minMarginDecimal": "-6.730814249168385974E-23",
+          "productLowerDecimal": "2.589459507689667880E-2",
+          "productUpperDecimal": "2.589459507689667880E-2",
+          "productWidthDecimal": "1.346151536255541029E-22",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730814249168385974E-23",
+          "width": "0.000000000000000000000001"
+        },
+        {
+          "a": "18.4999999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730816381667889146E-21",
+          "lowerMarginDecimal": "-6.730703026357153724E-21",
+          "minMarginDecimal": "-6.730816381667889146E-21",
+          "productLowerDecimal": "2.589459507689667879E-2",
+          "productUpperDecimal": "2.589459507689667881E-2",
+          "productWidthDecimal": "1.346151941002504287E-20",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730816381667889146E-21",
+          "width": "0.0000000000000000000001"
+        },
+        {
+          "a": "18.49999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730820953653295989E-19",
+          "lowerMarginDecimal": "-6.730707596912617119E-19",
+          "minMarginDecimal": "-6.730820953653295989E-19",
+          "productLowerDecimal": "2.589459507689667813E-2",
+          "productUpperDecimal": "2.589459507689667947E-2",
+          "productWidthDecimal": "1.346152855058591311E-18",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730820953653295989E-19",
+          "width": "0.00000000000000000001"
+        },
+        {
+          "a": "18.4999999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730812590743014546E-18",
+          "lowerMarginDecimal": "-6.730699230812226150E-18",
+          "minMarginDecimal": "-6.730812590743014546E-18",
+          "productLowerDecimal": "2.589459507689667207E-2",
+          "productUpperDecimal": "2.589459507689668553E-2",
+          "productWidthDecimal": "1.346151182155724070E-17",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730812590743014546E-18",
+          "width": "0.0000000000000000001"
+        },
+        {
+          "a": "18.499999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730817526605501990E-17",
+          "lowerMarginDecimal": "-6.730704167906419006E-17",
+          "minMarginDecimal": "-6.730817526605501990E-17",
+          "productLowerDecimal": "2.589459507689661149E-2",
+          "productUpperDecimal": "2.589459507689674611E-2",
+          "productWidthDecimal": "1.346152169451212100E-16",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730817526605501990E-17",
+          "width": "0.000000000000000001"
+        },
+        {
+          "a": "18.49999999999999999",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730816263808939240E-16",
+          "lowerMarginDecimal": "-6.730702906829365802E-16",
+          "minMarginDecimal": "-6.730816263808939240E-16",
+          "productLowerDecimal": "2.589459507689600573E-2",
+          "productUpperDecimal": "2.589459507689735188E-2",
+          "productWidthDecimal": "1.346151917063832504E-15",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730816263808939240E-16",
+          "width": "0.00000000000000001"
+        },
+        {
+          "a": "18.49999999999999990",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730816208978315616E-15",
+          "lowerMarginDecimal": "-6.730702851874418394E-15",
+          "minMarginDecimal": "-6.730816208978315616E-15",
+          "productLowerDecimal": "2.589459507688994810E-2",
+          "productUpperDecimal": "2.589459507690340962E-2",
+          "productWidthDecimal": "1.346151906085273601E-14",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730816208978315616E-15",
+          "width": "0.0000000000000001"
+        },
+        {
+          "a": "18.49999999999999900",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730814475333818158E-14",
+          "lowerMarginDecimal": "-6.730701117432275803E-14",
+          "minMarginDecimal": "-6.730814475333818158E-14",
+          "productLowerDecimal": "2.589459507682937179E-2",
+          "productUpperDecimal": "2.589459507696398695E-2",
+          "productWidthDecimal": "1.346151559276609416E-13",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730814475333818158E-14",
+          "width": "0.000000000000001"
+        },
+        {
+          "a": "18.49999999999999000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730821339370684840E-13",
+          "lowerMarginDecimal": "-6.730707982043089633E-13",
+          "minMarginDecimal": "-6.730821339370684840E-13",
+          "productLowerDecimal": "2.589459507622360800E-2",
+          "productUpperDecimal": "2.589459507756976093E-2",
+          "productWidthDecimal": "1.346152932141377449E-12",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730821339370684840E-13",
+          "width": "0.00000000000001"
+        },
+        {
+          "a": "18.49999999999990000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730819156863343045E-12",
+          "lowerMarginDecimal": "-6.730705800761084877E-12",
+          "minMarginDecimal": "-6.730819156863343045E-12",
+          "productLowerDecimal": "2.589459507016597300E-2",
+          "productUpperDecimal": "2.589459508362749796E-2",
+          "productWidthDecimal": "1.346152495762442792E-11",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730819156863343045E-12",
+          "width": "0.0000000000001"
+        },
+        {
+          "a": "18.49999999999900000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730817385723354181E-11",
+          "lowerMarginDecimal": "-6.730704028929574163E-11",
+          "minMarginDecimal": "-6.730817385723354181E-11",
+          "productLowerDecimal": "2.589459500958963851E-2",
+          "productUpperDecimal": "2.589459514420485266E-2",
+          "productWidthDecimal": "1.346152141465292834E-10",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730817385723354181E-11",
+          "width": "0.000000000001"
+        },
+        {
+          "a": "18.49999999999000000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730814648282335879E-10",
+          "lowerMarginDecimal": "-6.730701289143225262E-10",
+          "minMarginDecimal": "-6.730814648282335879E-10",
+          "productLowerDecimal": "2.589459440382654989E-2",
+          "productUpperDecimal": "2.589459574997814363E-2",
+          "productWidthDecimal": "1.346151593742556114E-9",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730814648282335879E-10",
+          "width": "0.00000000001"
+        },
+        {
+          "a": "18.49999999990000000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730812851823697041E-9",
+          "lowerMarginDecimal": "-6.730699490470094784E-9",
+          "minMarginDecimal": "-6.730812851823697041E-9",
+          "productLowerDecimal": "2.589458834619718833E-2",
+          "productUpperDecimal": "2.589460180770953062E-2",
+          "productWidthDecimal": "1.346151234229379182E-8",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730812851823697041E-9",
+          "width": "0.0000000001"
+        },
+        {
+          "a": "18.49999999900000000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730817687441547723E-8",
+          "lowerMarginDecimal": "-6.730704316555743762E-8",
+          "minMarginDecimal": "-6.730817687441547723E-8",
+          "productLowerDecimal": "2.589452776985351324E-2",
+          "productUpperDecimal": "2.589466238507355322E-2",
+          "productWidthDecimal": "1.346152200399729148E-7",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730817687441547723E-8",
+          "width": "0.000000001"
+        },
+        {
+          "a": "18.49999999000000000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.730871410566067363E-7",
+          "lowerMarginDecimal": "-6.730757884200644887E-7",
+          "minMarginDecimal": "-6.730871410566067363E-7",
+          "productLowerDecimal": "2.589392200110825874E-2",
+          "productUpperDecimal": "2.589526816403773541E-2",
+          "productWidthDecimal": "1.346162929476671225E-6",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.730871410566067363E-7",
+          "width": "0.00000001"
+        },
+        {
+          "a": "18.49999990000000000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.731347118706676762E-6",
+          "lowerMarginDecimal": "-6.731232072201085514E-6",
+          "minMarginDecimal": "-6.731347118706676762E-6",
+          "productLowerDecimal": "2.588786384482447771E-2",
+          "productUpperDecimal": "2.590132642401538548E-2",
+          "productWidthDecimal": "1.346257919090776228E-5",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.731347118706676762E-6",
+          "width": "0.0000001"
+        },
+        {
+          "a": "18.49999900000000000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.736154162198849539E-5",
+          "lowerMarginDecimal": "-6.736023892034651843E-5",
+          "minMarginDecimal": "-6.736154162198849539E-5",
+          "productLowerDecimal": "2.582723483797633228E-2",
+          "productUpperDecimal": "2.596195661851866730E-2",
+          "productWidthDecimal": "1.347217805423350138E-4",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.736154162198849539E-5",
+          "width": "0.000001"
+        },
+        {
+          "a": "18.49999000000000000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "6.784559686683972256E-4",
+          "lowerMarginDecimal": "-6.784276064229706194E-4",
+          "minMarginDecimal": "-6.784559686683972256E-4",
+          "productLowerDecimal": "2.521616747047370818E-2",
+          "productUpperDecimal": "2.657305104556507603E-2",
+          "productWidthDecimal": "1.356883575091367845E-3",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-6.784559686683972256E-4",
+          "width": "0.00001"
+        },
+        {
+          "a": "18.49990000000000000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "7.304234785673743384E-3",
+          "lowerMarginDecimal": "-7.302293703449465778E-3",
+          "minMarginDecimal": "-7.304234785673743384E-3",
+          "productLowerDecimal": "1.859230137344721302E-2",
+          "productUpperDecimal": "3.319882986257042218E-2",
+          "productWidthDecimal": "1.460652848912320916E-2",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-7.304234785673743384E-3",
+          "width": "0.0001"
+        },
+        {
+          "a": "18.49900000000000000",
+          "b": "18.50000000000000000",
+          "excessDecimal": "1.964203298043861720E-1",
+          "lowerMarginDecimal": "-1.963543908638744799E-1",
+          "minMarginDecimal": "-1.964203298043861720E-1",
+          "productLowerDecimal": "-1.704597957869778011E-1",
+          "productUpperDecimal": "2.223149248812828508E-1",
+          "productWidthDecimal": "3.927747206682606519E-1",
+          "status": "fails",
+          "targetWidthDecimal": "2.000000000000000000E-30",
+          "upperMarginDecimal": "-1.964203298043861720E-1",
+          "width": "0.001"
+        },
+        {
+          "error": "[<class 'decimal.InvalidOperation'>]",
+          "status": "arb_invalid",
+          "width": "0.01"
+        }
+      ],
+      "bestFailure": null,
+      "chosen": {
+        "a": "18.49999999999999999999999999999999",
+        "b": "18.50000000000000000",
+        "component": {
+          "cosLower": "1.00000000000000000000000000000000000000000000000000000000000000000000000000000000E+0",
+          "cosUpper": "1.00000000000000000000000000000000000000000000000000000000000000000000000000000000E+0",
+          "omegaLower": "1.07977185996367540361895512748591298155900388114770902395001883466292985718691420E+0",
+          "omegaUpper": "1.07977185996367540361895512754201866554361011725121333534171131814090659631765707E+0",
+          "shapeSqLower": "2.51134128969298313966923028917032312571268812053132293631487676721686075017785394E-1",
+          "shapeSqUpper": "2.51134128969298313966923028917038633430790640396550475826280176079441108892051757E-1"
+        },
+        "excessDecimal": "0.000000000000000000E+18",
+        "lowerMarginDecimal": "8.312257372078911514E-32",
+        "minMarginDecimal": "8.312257372078911514E-32",
+        "productLowerDecimal": "2.589459507689667880E-2",
+        "productUpperDecimal": "2.589459507689667880E-2",
+        "productWidthDecimal": "1.617320175218033006E-30",
+        "status": "passes",
+        "targetWidthDecimal": "2.000000000000000000E-30",
+        "upperMarginDecimal": "2.995572510611778793E-31",
+        "width": "0.00000000000000000000000000000001"
+      },
+      "distance": "0.00",
+      "ell": "0.3",
+      "family": "primary_finite",
+      "firstPassingWidth": "0.0000000000000000000000000000000000000001",
+      "k": 11,
+      "largestPassingWidth": "0.00000000000000000000000000000001",
+      "parentChunk": 1,
+      "rawLowerDecimal": "2.589459507689667880E-2",
+      "rawUpperDecimal": "2.589459507689667880E-2",
+      "receiver": "RawOmegaATaylorModelCertificate.raw_center_coeff_abs_of_local_interval_raw_component_scale_interval_corner_bounds_at",
+      "row": 0,
+      "sampleRadiusDecimal": "1.000000000000000000E-30",
+      "scale": {
+        "scaleLower": "0.095492965855137201461330258023",
+        "scaleUpper": "0.095492965855137201461330258024",
+        "scaleWidth": "1.000000000000000000E-30"
+      },
+      "scaleMode": "d29_pi_p30_decimal_bounds",
+      "scaleProofs": {
+        "hScaleLower": "primaryK11Ell_div_pi_tightScaleLower",
+        "hScaleUpper": "primaryK11Ell_div_pi_tightScaleUpper"
+      },
+      "split": 10,
+      "status": "passes",
+      "subchunk": 8
+    }
+  },
+  "missingGroups": {
+    "residual_anchor_envelope": 40020,
+    "residual_derivative_cell_norm_proofs": 40020,
+    "residual_derivative_cell_slope_data": 40020,
+    "row_sum_comparisons": 184,
+    "taylor_model_data": 80040
+  },
+  "missingParentAnalyticFields": 0,
+  "missingRowAnalyticFields": 184,
+  "missingSubchunkAnalyticFields": 200100,
+  "missingTotal": 200284,
+  "nextProofProducingTarget": [
+    "covered direct parents: primary_finite row 0 parent chunk 0, primary_finite row 0 parent chunk 1",
+    "current direct coverage: 110 subchunks, 220 remaining analytic fields",
+    "full payload via route-A parent-refined subchunk folding",
+    "hRawCenterCoeffAbs via sharp raw-center-minus-coeff0 absolute bound; Lean wrapper derives hAnchorResidual",
+    "preferred proof-data constructor for hRawCenterCoeffAbs: ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeFiniteCoverData.of_local_direct_endpoint_cert_scale_interval_corner_bounds_at_zero_distance",
+    "hRawCenterCoeffAbs local scale-interval probe supplies 110/110 diagnostic rows with shared primary/control scale theorem names",
+    "hRawCenterCoeffAbs local component contract supplies 110/110 arithmetic-ready zero-distance rows through one compact LocalRawOmegaComponentIntervalCert per row; preferred cert producer is LocalRawOmegaComponentIntervalCert.of_anchor_abs_bounds with 220 open abs ball facts and arithmetic containment checks",
+    "with the direct endpoint constructor, generated rows should supply LocalRawOmegaComponentDirectEndpointIntervalCert plus rational scale/corner/coeff checks instead of a standalone hRawCenterCoeffAbs proof term",
+    "scalar hEnvelope exact rational arithmetic already passes in the direct overlays; future Lean emission should materialize it with norm_num",
+    "scale_abs_box anchor receiver remains compiled legacy support only",
+    "preferred compact route: prove one ResidualDerivativeDirectNormCert.Valid per direct subchunk, prove cellL=L and cellU=U, and feed endpoint cert + direct norm cert to ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_direct_norm_cert_full_cell_at_zero_distance",
+    "shortcut compact route: prove residual-derivative lower/upper bounds on the full subchunk cell plus abs-slope comparisons and feed them to ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_direct_norm_interval_bounds_full_cell_at_zero_distance",
+    "fallback compact route: extract hResidualDerivBoundOnCell and feed ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance",
+    "legacy interval route remains available: direct residual-derivative lower/upper interval bounds via cancellation-preserving generator",
+    "derivative abs comparisons already pass exact rational arithmetic; future Lean emission should materialize them with norm_num",
+    "single-cell receiver residual_deriv_bound_on_single_cell_of_interval_bounds for current one-cell direct subchunks",
+    "cell-indexed receiver residual_deriv_bound_on_cells_of_interval_bounds",
+    "parent route-A fold via ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralRefinedWindowProofData.toWindowPartBoundsCert"
+  ],
+  "outLean": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARefinedSubchunkGeneratedPayloadImport.lean",
+  "outLeanWritten": false,
+  "preferredCellSlopeDirectEndpointConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance",
+  "preferredCellSlopeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+  "preferredDirectNormCertConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_direct_norm_cert_full_cell_at_zero_distance",
+  "preferredDirectNormCertFullCellConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_direct_norm_cert_full_cell_at_zero_distance",
+  "proofData": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_proof_data_skeleton.json",
+  "proofDataStatus": "structural_skeleton_seeded_missing_analytic_fields",
+  "reason": "Refined proof data is incomplete; writing a Lean payload now would turn missing Taylor/model or row-sum facts into a fake trusted import.",
+  "routeBDirectDerivativeAggregate": {
+    "closedArithmeticFields": 110,
+    "closedArithmeticFieldsByName": {
+      "hEnvelope": 110
+    },
+    "derivativeAbsArithmeticPassing": 220,
+    "overlays": 2,
+    "remainingAnalyticFields": 220,
+    "remainingAnalyticFieldsByName": {
+      "hRawCenterCoeffAbs": 110,
+      "hResidualDerivBoundOnCell": 110
+    },
+    "sampleEnvelopeArithmeticPassing": 110,
+    "seededFields": 2090,
+    "subchunks": 110
+  },
+  "routeBDirectDerivativeOverlay": {
+    "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+    "closedArithmeticFieldNames": [
+      "hEnvelope"
+    ],
+    "coverageParent": {
+      "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+      "family": "primary_finite",
+      "left": "0.000000000000000000E+0",
+      "parentChunk": 0,
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30.json",
+      "policy": "finite_first_split100",
+      "remainingAnalyticFields": 300,
+      "right": "1.000000000000000000E+1",
+      "row": 0,
+      "seededFields": 1900,
+      "split": 100,
+      "status": "direct_derivative_overlay_seeded_missing_cell_proofs",
+      "subchunks": 100
+    },
+    "family": "primary_finite",
+    "hAnchorPolynomialCenterReceiver": "RawOmegaATaylorModelCertificate.polynomial_center",
+    "hAnchorResidualAbsCosReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_nonneg_abs_cos_component_bounds_at_center",
+    "hAnchorResidualNextInputs": [
+      "anchor = cert.center",
+      "prove sharp bound |step22PositiveAxisOmegaAIntegrand k ell x anchor - cert.coeff 0| <= sampleRadius",
+      "payload field hRawCenterCoeffAbs feeds the sharp-anchor sample-envelope wrapper"
+    ],
+    "hAnchorResidualRawPolyReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_raw_poly_value_bounds_at",
+    "hAnchorResidualReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_raw_center_coeff_abs_bound",
+    "hAnchorResidualScaleAbsBoxReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_scale_abs_box_component_bounds_at_center",
+    "hDirectEnvelopeSingleCellReceiver": "RawOmegaATaylorModelCertificate.direct_envelope_of_single_cell_residual_bound",
+    "hEnvelopeArithmetic": {
+      "derivSlope": "1866608532757/500000000000000000000000000000",
+      "derivSlopeNonneg": true,
+      "excess": "-6843206600623/10000000000000000000000000000000",
+      "lhs": "3156793399377/10000000000000000000000000000000",
+      "maxSlope": "1866608532757/500000000000000000000000000000",
+      "mesh": "1/20",
+      "passes": true,
+      "proofHint": "by norm_num",
+      "relation": "sampleRadius + max 0 derivSlope * mesh <= remainder",
+      "remainder": "1/1000000000000000000",
+      "sampleRadius": "64509243331/500000000000000000000000000000",
+      "targetField": "hEnvelope"
+    },
+    "hEnvelopeNextInputs": [
+      "prove sharp anchor raw-center-minus-coeff0 bound",
+      "Lean wrapper packages hRawCenterCoeffAbs into hAnchorResidual: |cert.residual anchor| <= sampleRadius",
+      "prove scalar direct envelope: sampleRadius + max 0 derivSlope[0] * mesh <= cert.remainder",
+      "sample-envelope wrapper packages the direct envelope required by the one-cell receiver"
+    ],
+    "hPolynomialDerivCellExprReceiver": "RawOmegaATaylorModelCertificate.polynomial_derivative_term_bounds_on_cell_of_expr_bounds",
+    "hPolynomialDerivCellTermReceiver": "RawOmegaATaylorModelCertificate.polynomial_deriv_bounds_on_cell_of_term_deriv_bounds",
+    "hPolynomialDerivEqReceiver": "RawOmegaATaylorModelCertificate.polynomial_deriv_eq_term_deriv_sum",
+    "hPolynomialTermDerivEqReceiver": "RawOmegaATaylorModelCertificate.polynomial_term_deriv_eq",
+    "hRawOmegaAtAbsCosReceiver": "rawOmegaAIntegrand_value_bounds_at_of_nonneg_abs_cos_component_bounds",
+    "hRawOmegaAtScaleAbsBoxReceiver": "rawOmegaAIntegrand_value_bounds_at_of_scale_abs_box_bounds",
+    "hResidualDerivAbsArithmetic": {
+      "derivLower": "-94119513411/500000000000000000000000000000",
+      "derivSlope": "1866608532757/500000000000000000000000000000",
+      "derivUpper": "1866608532757/500000000000000000000000000000",
+      "lowerExcess": "-886244509673/250000000000000000000000000000",
+      "lowerPasses": true,
+      "lowerRelation": "-derivSlope <= derivLower",
+      "passes": true,
+      "proofHint": "by norm_num",
+      "targetFields": [
+        "hDerivLowerAbs",
+        "hDerivUpperAbs"
+      ],
+      "upperExcess": "0",
+      "upperPasses": true,
+      "upperRelation": "derivUpper <= derivSlope"
+    },
+    "hResidualDerivCellCompositeReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cell_of_raw_deriv_and_poly_term_bounds",
+    "hResidualDerivCellExprCompositeReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cell_of_raw_deriv_and_poly_term_expr_bounds",
+    "hResidualDerivCellNextInputs": [
+      "legacy interval route only; prefer hResidualDerivBoundOnCell when possible",
+      "prove cancellation-preserving derivLower i <= deriv cert.residual eta on cell i",
+      "prove cancellation-preserving deriv cert.residual eta <= derivUpper i on cell i",
+      "-derivSlope i <= derivLower i",
+      "derivUpper i <= derivSlope i",
+      "package \u2016deriv cert.residual eta\u2016 <= derivSlope i",
+      "legacy interval receiver for one-cell direct subchunks: residual_deriv_bound_on_single_cell_of_interval_bounds",
+      "do not use raw/poly derivative subtraction here; feasibility audit reports 0/110 passing"
+    ],
+    "hResidualDerivCellRawPolyReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cell_of_raw_poly_deriv_bounds",
+    "hResidualDerivCellsExprCompositeReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cells_of_raw_deriv_and_poly_term_expr_bounds",
+    "hResidualDerivCellsIntervalNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_cells_of_interval_bounds",
+    "hResidualDerivCellsNextInputs": [
+      "for derivCellCount = 1, prefer the scalar cell-slope proof-data route",
+      "cell-indexed direct residual-derivative lower/upper bounds",
+      "cell-indexed -derivSlope <= derivLower and derivUpper <= derivSlope comparisons",
+      "legacy fallback receiver: residual_deriv_bound_on_cells_of_interval_bounds"
+    ],
+    "hResidualDerivEqReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_eq",
+    "hResidualDerivSingleCellIntervalNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+    "hResidualDerivSingleCellNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_raw_deriv_and_poly_term_expr_bounds",
+    "left": "0.000000000000000000E+0",
+    "legacyIntervalSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+    "parentChunk": 0,
+    "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30.json",
+    "pilot": {
+      "degree": 16,
+      "family": "primary_finite",
+      "left": "0.000000000000000000E+0",
+      "parentChunk": 0,
+      "right": "1.000000000000000000E+1",
+      "row": 0,
+      "split": 100
+    },
+    "policy": "finite_first_split100",
+    "preferredCellSlopeDirectEndpointConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance",
+    "preferredCellSlopeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+    "remainingAnalyticFieldNames": [
+      "hRawCenterCoeffAbs",
+      "hResidualDerivBoundOnCell"
+    ],
+    "right": "1.000000000000000000E+1",
+    "routeBAnchorResidualArithmeticContract": {
+      "centerCoeffComparisons": 3,
+      "directEnvelopeReceiver": "RawOmegaATaylorModelCertificate.direct_envelope_of_single_cell_residual_bound",
+      "directRawCenterCoeffAbsBounds": 1,
+      "inactiveReceiverReason": "nonnegative abs-cos route is not active because the first raw-Omega finite chunk crosses the negative Omega region",
+      "legacyScaleAbsBoxObligations": 15,
+      "legacyScaleAbsBoxReason": "the scale-abs component box remains compiled support, but it is too coarse for the tiny anchor residual radius; the active generator target is the sharp raw-center-minus-coeff0 bound",
+      "legacyScaleAbsBoxReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_scale_abs_box_component_bounds_at_center",
+      "majorantNonnegComparisons": 2,
+      "openAnchorAnalyticObligations": 1,
+      "preferredReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_raw_center_coeff_abs_bound",
+      "rawCenterCoeffSampleEnvelopeProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeFiniteCoverData",
+      "rawIntegrandReceiver": "rawOmegaAIntegrand_value_bounds_at_of_scale_abs_box_bounds",
+      "rawScaleAbsComparisons": 2,
+      "residualRadiusComparisons": 2,
+      "sampleEnvelopeProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalSampleEnvelopeFiniteCoverData",
+      "scaleBoxComparisons": 3,
+      "shapeSqUpperBounds": 1,
+      "signedOmegaMajorantBounds": 2,
+      "totalAnchorResidualArithmeticObligations": 1
+    },
+    "routeBDerivativeArithmeticContract": {
+      "cellIndexedReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_cells_of_interval_bounds",
+      "closedDerivativeAbsComparisons": 2,
+      "degree": 16,
+      "derivCellCount": 1,
+      "directResidualDerivativeBounds": 2,
+      "legacyRawPolyCellIndexedReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_cells_of_raw_deriv_and_poly_term_expr_bounds",
+      "legacyRawPolyIntervalReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cells_of_raw_deriv_and_poly_term_expr_bounds",
+      "legacyRawPolySingleCellReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_raw_deriv_and_poly_term_expr_bounds",
+      "openDerivativeAnalyticObligations": 2,
+      "preferredDirectEndpointConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance",
+      "preferredDirectResidualDerivativeNormBounds": 1,
+      "preferredNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+      "preferredOpenDerivativeAnalyticObligations": 1,
+      "preferredProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+      "preferredReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+      "receiverReason": "current one-cell raw/poly derivative intervals lose cancellation; proof data must instead provide cancellation-preserving bounds for deriv cert.residual directly",
+      "residualDerivativeAbsComparisons": 2,
+      "singleCellReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+      "termCount": 17,
+      "totalDerivativeArithmeticObligations": 4
+    },
+    "row": 0,
+    "schema": "q3_psdpd_step33_a_refined_subchunk_direct_derivative_overlay.v27",
+    "split": 100,
+    "status": "direct_derivative_overlay_seeded_missing_cell_slope_norm_proofs",
+    "totals": {
+      "closedArithmeticFields": 100,
+      "closedArithmeticFieldsPerSubchunk": 1,
+      "derivativeAbsArithmeticObligations": 200,
+      "derivativeAbsArithmeticPassing": 200,
+      "legacyIntervalClosedArithmeticFields": 200,
+      "legacyIntervalClosedArithmeticFieldsPerSubchunk": 2,
+      "legacyIntervalRemainingAnalyticFields": 300,
+      "legacyIntervalRemainingAnalyticFieldsPerSubchunk": 3,
+      "preferredNormRouteDerivativeAnalyticObligations": 100,
+      "remainingAnalyticFields": 200,
+      "remainingAnalyticFieldsPerSubchunk": 2,
+      "routeBAnchorResidualArithmeticObligations": 100,
+      "routeBDerivativeArithmeticObligations": 200,
+      "routeBDerivativeTotalComparisonsIncludingClosed": 400,
+      "sampleEnvelopeArithmeticObligations": 100,
+      "sampleEnvelopeArithmeticPassing": 100,
+      "seededFields": 1900,
+      "seededFieldsPerSubchunk": 19,
+      "subchunks": 100
+    }
+  },
+  "routeBDirectDerivativeOverlays": [
+    {
+      "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+      "closedArithmeticFieldNames": [
+        "hEnvelope"
+      ],
+      "coverageParent": {
+        "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+        "family": "primary_finite",
+        "left": "0.000000000000000000E+0",
+        "parentChunk": 0,
+        "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30.json",
+        "policy": "finite_first_split100",
+        "remainingAnalyticFields": 300,
+        "right": "1.000000000000000000E+1",
+        "row": 0,
+        "seededFields": 1900,
+        "split": 100,
+        "status": "direct_derivative_overlay_seeded_missing_cell_proofs",
+        "subchunks": 100
+      },
+      "family": "primary_finite",
+      "hAnchorPolynomialCenterReceiver": "RawOmegaATaylorModelCertificate.polynomial_center",
+      "hAnchorResidualAbsCosReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_nonneg_abs_cos_component_bounds_at_center",
+      "hAnchorResidualNextInputs": [
+        "anchor = cert.center",
+        "prove sharp bound |step22PositiveAxisOmegaAIntegrand k ell x anchor - cert.coeff 0| <= sampleRadius",
+        "payload field hRawCenterCoeffAbs feeds the sharp-anchor sample-envelope wrapper"
+      ],
+      "hAnchorResidualRawPolyReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_raw_poly_value_bounds_at",
+      "hAnchorResidualReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_raw_center_coeff_abs_bound",
+      "hAnchorResidualScaleAbsBoxReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_scale_abs_box_component_bounds_at_center",
+      "hDirectEnvelopeSingleCellReceiver": "RawOmegaATaylorModelCertificate.direct_envelope_of_single_cell_residual_bound",
+      "hEnvelopeArithmetic": {
+        "derivSlope": "1866608532757/500000000000000000000000000000",
+        "derivSlopeNonneg": true,
+        "excess": "-6843206600623/10000000000000000000000000000000",
+        "lhs": "3156793399377/10000000000000000000000000000000",
+        "maxSlope": "1866608532757/500000000000000000000000000000",
+        "mesh": "1/20",
+        "passes": true,
+        "proofHint": "by norm_num",
+        "relation": "sampleRadius + max 0 derivSlope * mesh <= remainder",
+        "remainder": "1/1000000000000000000",
+        "sampleRadius": "64509243331/500000000000000000000000000000",
+        "targetField": "hEnvelope"
+      },
+      "hEnvelopeNextInputs": [
+        "prove sharp anchor raw-center-minus-coeff0 bound",
+        "Lean wrapper packages hRawCenterCoeffAbs into hAnchorResidual: |cert.residual anchor| <= sampleRadius",
+        "prove scalar direct envelope: sampleRadius + max 0 derivSlope[0] * mesh <= cert.remainder",
+        "sample-envelope wrapper packages the direct envelope required by the one-cell receiver"
+      ],
+      "hPolynomialDerivCellExprReceiver": "RawOmegaATaylorModelCertificate.polynomial_derivative_term_bounds_on_cell_of_expr_bounds",
+      "hPolynomialDerivCellTermReceiver": "RawOmegaATaylorModelCertificate.polynomial_deriv_bounds_on_cell_of_term_deriv_bounds",
+      "hPolynomialDerivEqReceiver": "RawOmegaATaylorModelCertificate.polynomial_deriv_eq_term_deriv_sum",
+      "hPolynomialTermDerivEqReceiver": "RawOmegaATaylorModelCertificate.polynomial_term_deriv_eq",
+      "hRawOmegaAtAbsCosReceiver": "rawOmegaAIntegrand_value_bounds_at_of_nonneg_abs_cos_component_bounds",
+      "hRawOmegaAtScaleAbsBoxReceiver": "rawOmegaAIntegrand_value_bounds_at_of_scale_abs_box_bounds",
+      "hResidualDerivAbsArithmetic": {
+        "derivLower": "-94119513411/500000000000000000000000000000",
+        "derivSlope": "1866608532757/500000000000000000000000000000",
+        "derivUpper": "1866608532757/500000000000000000000000000000",
+        "lowerExcess": "-886244509673/250000000000000000000000000000",
+        "lowerPasses": true,
+        "lowerRelation": "-derivSlope <= derivLower",
+        "passes": true,
+        "proofHint": "by norm_num",
+        "targetFields": [
+          "hDerivLowerAbs",
+          "hDerivUpperAbs"
+        ],
+        "upperExcess": "0",
+        "upperPasses": true,
+        "upperRelation": "derivUpper <= derivSlope"
+      },
+      "hResidualDerivCellCompositeReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cell_of_raw_deriv_and_poly_term_bounds",
+      "hResidualDerivCellExprCompositeReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cell_of_raw_deriv_and_poly_term_expr_bounds",
+      "hResidualDerivCellNextInputs": [
+        "legacy interval route only; prefer hResidualDerivBoundOnCell when possible",
+        "prove cancellation-preserving derivLower i <= deriv cert.residual eta on cell i",
+        "prove cancellation-preserving deriv cert.residual eta <= derivUpper i on cell i",
+        "-derivSlope i <= derivLower i",
+        "derivUpper i <= derivSlope i",
+        "package \u2016deriv cert.residual eta\u2016 <= derivSlope i",
+        "legacy interval receiver for one-cell direct subchunks: residual_deriv_bound_on_single_cell_of_interval_bounds",
+        "do not use raw/poly derivative subtraction here; feasibility audit reports 0/110 passing"
+      ],
+      "hResidualDerivCellRawPolyReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cell_of_raw_poly_deriv_bounds",
+      "hResidualDerivCellsExprCompositeReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cells_of_raw_deriv_and_poly_term_expr_bounds",
+      "hResidualDerivCellsIntervalNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_cells_of_interval_bounds",
+      "hResidualDerivCellsNextInputs": [
+        "for derivCellCount = 1, prefer the scalar cell-slope proof-data route",
+        "cell-indexed direct residual-derivative lower/upper bounds",
+        "cell-indexed -derivSlope <= derivLower and derivUpper <= derivSlope comparisons",
+        "legacy fallback receiver: residual_deriv_bound_on_cells_of_interval_bounds"
+      ],
+      "hResidualDerivEqReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_eq",
+      "hResidualDerivSingleCellIntervalNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+      "hResidualDerivSingleCellNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_raw_deriv_and_poly_term_expr_bounds",
+      "left": "0.000000000000000000E+0",
+      "legacyIntervalSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+      "parentChunk": 0,
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30.json",
+      "pilot": {
+        "degree": 16,
+        "family": "primary_finite",
+        "left": "0.000000000000000000E+0",
+        "parentChunk": 0,
+        "right": "1.000000000000000000E+1",
+        "row": 0,
+        "split": 100
+      },
+      "policy": "finite_first_split100",
+      "preferredCellSlopeDirectEndpointConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance",
+      "preferredCellSlopeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+      "remainingAnalyticFieldNames": [
+        "hRawCenterCoeffAbs",
+        "hResidualDerivBoundOnCell"
+      ],
+      "right": "1.000000000000000000E+1",
+      "routeBAnchorResidualArithmeticContract": {
+        "centerCoeffComparisons": 3,
+        "directEnvelopeReceiver": "RawOmegaATaylorModelCertificate.direct_envelope_of_single_cell_residual_bound",
+        "directRawCenterCoeffAbsBounds": 1,
+        "inactiveReceiverReason": "nonnegative abs-cos route is not active because the first raw-Omega finite chunk crosses the negative Omega region",
+        "legacyScaleAbsBoxObligations": 15,
+        "legacyScaleAbsBoxReason": "the scale-abs component box remains compiled support, but it is too coarse for the tiny anchor residual radius; the active generator target is the sharp raw-center-minus-coeff0 bound",
+        "legacyScaleAbsBoxReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_scale_abs_box_component_bounds_at_center",
+        "majorantNonnegComparisons": 2,
+        "openAnchorAnalyticObligations": 1,
+        "preferredReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_raw_center_coeff_abs_bound",
+        "rawCenterCoeffSampleEnvelopeProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeFiniteCoverData",
+        "rawIntegrandReceiver": "rawOmegaAIntegrand_value_bounds_at_of_scale_abs_box_bounds",
+        "rawScaleAbsComparisons": 2,
+        "residualRadiusComparisons": 2,
+        "sampleEnvelopeProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalSampleEnvelopeFiniteCoverData",
+        "scaleBoxComparisons": 3,
+        "shapeSqUpperBounds": 1,
+        "signedOmegaMajorantBounds": 2,
+        "totalAnchorResidualArithmeticObligations": 1
+      },
+      "routeBDerivativeArithmeticContract": {
+        "cellIndexedReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_cells_of_interval_bounds",
+        "closedDerivativeAbsComparisons": 2,
+        "degree": 16,
+        "derivCellCount": 1,
+        "directResidualDerivativeBounds": 2,
+        "legacyRawPolyCellIndexedReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_cells_of_raw_deriv_and_poly_term_expr_bounds",
+        "legacyRawPolyIntervalReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cells_of_raw_deriv_and_poly_term_expr_bounds",
+        "legacyRawPolySingleCellReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_raw_deriv_and_poly_term_expr_bounds",
+        "openDerivativeAnalyticObligations": 2,
+        "preferredDirectEndpointConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance",
+        "preferredDirectResidualDerivativeNormBounds": 1,
+        "preferredNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+        "preferredOpenDerivativeAnalyticObligations": 1,
+        "preferredProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+        "preferredReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+        "receiverReason": "current one-cell raw/poly derivative intervals lose cancellation; proof data must instead provide cancellation-preserving bounds for deriv cert.residual directly",
+        "residualDerivativeAbsComparisons": 2,
+        "singleCellReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+        "termCount": 17,
+        "totalDerivativeArithmeticObligations": 4
+      },
+      "row": 0,
+      "schema": "q3_psdpd_step33_a_refined_subchunk_direct_derivative_overlay.v27",
+      "split": 100,
+      "status": "direct_derivative_overlay_seeded_missing_cell_slope_norm_proofs",
+      "totals": {
+        "closedArithmeticFields": 100,
+        "closedArithmeticFieldsPerSubchunk": 1,
+        "derivativeAbsArithmeticObligations": 200,
+        "derivativeAbsArithmeticPassing": 200,
+        "legacyIntervalClosedArithmeticFields": 200,
+        "legacyIntervalClosedArithmeticFieldsPerSubchunk": 2,
+        "legacyIntervalRemainingAnalyticFields": 300,
+        "legacyIntervalRemainingAnalyticFieldsPerSubchunk": 3,
+        "preferredNormRouteDerivativeAnalyticObligations": 100,
+        "remainingAnalyticFields": 200,
+        "remainingAnalyticFieldsPerSubchunk": 2,
+        "routeBAnchorResidualArithmeticObligations": 100,
+        "routeBDerivativeArithmeticObligations": 200,
+        "routeBDerivativeTotalComparisonsIncludingClosed": 400,
+        "sampleEnvelopeArithmeticObligations": 100,
+        "sampleEnvelopeArithmeticPassing": 100,
+        "seededFields": 1900,
+        "seededFieldsPerSubchunk": 19,
+        "subchunks": 100
+      }
+    },
+    {
+      "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+      "closedArithmeticFieldNames": [
+        "hEnvelope"
+      ],
+      "coverageParent": {
+        "activeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+        "family": "primary_finite",
+        "left": "1.000000000000000000E+1",
+        "parentChunk": 1,
+        "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_1_denom1e30_derivfit.json",
+        "policy": "finite_rest_split10",
+        "remainingAnalyticFields": 30,
+        "right": "2.000000000000000000E+1",
+        "row": 0,
+        "seededFields": 190,
+        "split": 10,
+        "status": "direct_derivative_overlay_seeded_missing_cell_proofs",
+        "subchunks": 10
+      },
+      "family": "primary_finite",
+      "hAnchorPolynomialCenterReceiver": "RawOmegaATaylorModelCertificate.polynomial_center",
+      "hAnchorResidualAbsCosReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_nonneg_abs_cos_component_bounds_at_center",
+      "hAnchorResidualNextInputs": [
+        "anchor = cert.center",
+        "prove sharp bound |step22PositiveAxisOmegaAIntegrand k ell x anchor - cert.coeff 0| <= sampleRadius",
+        "payload field hRawCenterCoeffAbs feeds the sharp-anchor sample-envelope wrapper"
+      ],
+      "hAnchorResidualRawPolyReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_raw_poly_value_bounds_at",
+      "hAnchorResidualReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_raw_center_coeff_abs_bound",
+      "hAnchorResidualScaleAbsBoxReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_scale_abs_box_component_bounds_at_center",
+      "hDirectEnvelopeSingleCellReceiver": "RawOmegaATaylorModelCertificate.direct_envelope_of_single_cell_residual_bound",
+      "hEnvelopeArithmetic": {
+        "derivSlope": "11241/500000000000000000000000000000",
+        "derivSlopeNonneg": true,
+        "excess": "0",
+        "lhs": "1423/125000000000000000000000000000",
+        "maxSlope": "11241/500000000000000000000000000000",
+        "mesh": "1/2",
+        "passes": true,
+        "proofHint": "by norm_num",
+        "relation": "sampleRadius + max 0 derivSlope * mesh <= remainder",
+        "remainder": "1423/125000000000000000000000000000",
+        "sampleRadius": "143/1000000000000000000000000000000",
+        "targetField": "hEnvelope"
+      },
+      "hEnvelopeNextInputs": [
+        "prove sharp anchor raw-center-minus-coeff0 bound",
+        "Lean wrapper packages hRawCenterCoeffAbs into hAnchorResidual: |cert.residual anchor| <= sampleRadius",
+        "prove scalar direct envelope: sampleRadius + max 0 derivSlope[0] * mesh <= cert.remainder",
+        "sample-envelope wrapper packages the direct envelope required by the one-cell receiver"
+      ],
+      "hPolynomialDerivCellExprReceiver": "RawOmegaATaylorModelCertificate.polynomial_derivative_term_bounds_on_cell_of_expr_bounds",
+      "hPolynomialDerivCellTermReceiver": "RawOmegaATaylorModelCertificate.polynomial_deriv_bounds_on_cell_of_term_deriv_bounds",
+      "hPolynomialDerivEqReceiver": "RawOmegaATaylorModelCertificate.polynomial_deriv_eq_term_deriv_sum",
+      "hPolynomialTermDerivEqReceiver": "RawOmegaATaylorModelCertificate.polynomial_term_deriv_eq",
+      "hRawOmegaAtAbsCosReceiver": "rawOmegaAIntegrand_value_bounds_at_of_nonneg_abs_cos_component_bounds",
+      "hRawOmegaAtScaleAbsBoxReceiver": "rawOmegaAIntegrand_value_bounds_at_of_scale_abs_box_bounds",
+      "hResidualDerivAbsArithmetic": {
+        "derivLower": "-4331/1000000000000000000000000000000",
+        "derivSlope": "11241/500000000000000000000000000000",
+        "derivUpper": "11241/500000000000000000000000000000",
+        "lowerExcess": "-18151/1000000000000000000000000000000",
+        "lowerPasses": true,
+        "lowerRelation": "-derivSlope <= derivLower",
+        "passes": true,
+        "proofHint": "by norm_num",
+        "targetFields": [
+          "hDerivLowerAbs",
+          "hDerivUpperAbs"
+        ],
+        "upperExcess": "0",
+        "upperPasses": true,
+        "upperRelation": "derivUpper <= derivSlope"
+      },
+      "hResidualDerivCellCompositeReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cell_of_raw_deriv_and_poly_term_bounds",
+      "hResidualDerivCellExprCompositeReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cell_of_raw_deriv_and_poly_term_expr_bounds",
+      "hResidualDerivCellNextInputs": [
+        "legacy interval route only; prefer hResidualDerivBoundOnCell when possible",
+        "prove cancellation-preserving derivLower i <= deriv cert.residual eta on cell i",
+        "prove cancellation-preserving deriv cert.residual eta <= derivUpper i on cell i",
+        "-derivSlope i <= derivLower i",
+        "derivUpper i <= derivSlope i",
+        "package \u2016deriv cert.residual eta\u2016 <= derivSlope i",
+        "legacy interval receiver for one-cell direct subchunks: residual_deriv_bound_on_single_cell_of_interval_bounds",
+        "do not use raw/poly derivative subtraction here; feasibility audit reports 0/110 passing"
+      ],
+      "hResidualDerivCellRawPolyReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cell_of_raw_poly_deriv_bounds",
+      "hResidualDerivCellsExprCompositeReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cells_of_raw_deriv_and_poly_term_expr_bounds",
+      "hResidualDerivCellsIntervalNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_cells_of_interval_bounds",
+      "hResidualDerivCellsNextInputs": [
+        "for derivCellCount = 1, prefer the scalar cell-slope proof-data route",
+        "cell-indexed direct residual-derivative lower/upper bounds",
+        "cell-indexed -derivSlope <= derivLower and derivUpper <= derivSlope comparisons",
+        "legacy fallback receiver: residual_deriv_bound_on_cells_of_interval_bounds"
+      ],
+      "hResidualDerivEqReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_eq",
+      "hResidualDerivSingleCellIntervalNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+      "hResidualDerivSingleCellNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_raw_deriv_and_poly_term_expr_bounds",
+      "left": "1.000000000000000000E+1",
+      "legacyIntervalSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+      "parentChunk": 1,
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_1_denom1e30_derivfit.json",
+      "pilot": {
+        "degree": 16,
+        "family": "primary_finite",
+        "left": "1.000000000000000000E+1",
+        "parentChunk": 1,
+        "right": "2.000000000000000000E+1",
+        "row": 0,
+        "split": 10
+      },
+      "policy": "finite_rest_split10",
+      "preferredCellSlopeDirectEndpointConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance",
+      "preferredCellSlopeSubchunkProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+      "remainingAnalyticFieldNames": [
+        "hRawCenterCoeffAbs",
+        "hResidualDerivBoundOnCell"
+      ],
+      "right": "2.000000000000000000E+1",
+      "routeBAnchorResidualArithmeticContract": {
+        "centerCoeffComparisons": 3,
+        "directEnvelopeReceiver": "RawOmegaATaylorModelCertificate.direct_envelope_of_single_cell_residual_bound",
+        "directRawCenterCoeffAbsBounds": 1,
+        "inactiveReceiverReason": "nonnegative abs-cos route is not active because the first raw-Omega finite chunk crosses the negative Omega region",
+        "legacyScaleAbsBoxObligations": 15,
+        "legacyScaleAbsBoxReason": "the scale-abs component box remains compiled support, but it is too coarse for the tiny anchor residual radius; the active generator target is the sharp raw-center-minus-coeff0 bound",
+        "legacyScaleAbsBoxReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_scale_abs_box_component_bounds_at_center",
+        "majorantNonnegComparisons": 2,
+        "openAnchorAnalyticObligations": 1,
+        "preferredReceiver": "RawOmegaATaylorModelCertificate.anchor_residual_abs_of_raw_center_coeff_abs_bound",
+        "rawCenterCoeffSampleEnvelopeProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeFiniteCoverData",
+        "rawIntegrandReceiver": "rawOmegaAIntegrand_value_bounds_at_of_scale_abs_box_bounds",
+        "rawScaleAbsComparisons": 2,
+        "residualRadiusComparisons": 2,
+        "sampleEnvelopeProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeSingleCellIntervalSampleEnvelopeFiniteCoverData",
+        "scaleBoxComparisons": 3,
+        "shapeSqUpperBounds": 1,
+        "signedOmegaMajorantBounds": 2,
+        "totalAnchorResidualArithmeticObligations": 1
+      },
+      "routeBDerivativeArithmeticContract": {
+        "cellIndexedReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_cells_of_interval_bounds",
+        "closedDerivativeAbsComparisons": 2,
+        "degree": 16,
+        "derivCellCount": 1,
+        "directResidualDerivativeBounds": 2,
+        "legacyRawPolyCellIndexedReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_cells_of_raw_deriv_and_poly_term_expr_bounds",
+        "legacyRawPolyIntervalReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_on_cells_of_raw_deriv_and_poly_term_expr_bounds",
+        "legacyRawPolySingleCellReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_raw_deriv_and_poly_term_expr_bounds",
+        "openDerivativeAnalyticObligations": 2,
+        "preferredDirectEndpointConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance",
+        "preferredDirectResidualDerivativeNormBounds": 1,
+        "preferredNormReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+        "preferredOpenDerivativeAnalyticObligations": 1,
+        "preferredProofData": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData",
+        "preferredReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+        "receiverReason": "current one-cell raw/poly derivative intervals lose cancellation; proof data must instead provide cancellation-preserving bounds for deriv cert.residual directly",
+        "residualDerivativeAbsComparisons": 2,
+        "singleCellReceiver": "RawOmegaATaylorModelCertificate.residual_deriv_bound_on_single_cell_of_interval_bounds",
+        "termCount": 17,
+        "totalDerivativeArithmeticObligations": 4
+      },
+      "row": 0,
+      "schema": "q3_psdpd_step33_a_refined_subchunk_direct_derivative_overlay.v27",
+      "split": 10,
+      "status": "direct_derivative_overlay_seeded_missing_cell_slope_norm_proofs",
+      "totals": {
+        "closedArithmeticFields": 10,
+        "closedArithmeticFieldsPerSubchunk": 1,
+        "derivativeAbsArithmeticObligations": 20,
+        "derivativeAbsArithmeticPassing": 20,
+        "legacyIntervalClosedArithmeticFields": 20,
+        "legacyIntervalClosedArithmeticFieldsPerSubchunk": 2,
+        "legacyIntervalRemainingAnalyticFields": 30,
+        "legacyIntervalRemainingAnalyticFieldsPerSubchunk": 3,
+        "preferredNormRouteDerivativeAnalyticObligations": 10,
+        "remainingAnalyticFields": 20,
+        "remainingAnalyticFieldsPerSubchunk": 2,
+        "routeBAnchorResidualArithmeticObligations": 10,
+        "routeBDerivativeArithmeticObligations": 20,
+        "routeBDerivativeTotalComparisonsIncludingClosed": 40,
+        "sampleEnvelopeArithmeticObligations": 10,
+        "sampleEnvelopeArithmeticPassing": 10,
+        "seededFields": 190,
+        "seededFieldsPerSubchunk": 19,
+        "subchunks": 10
+      }
+    }
+  ],
+  "routeBNextProofProducingTarget": [
+    "primary_finite row 0 parent chunks 0 and 1",
+    "proof-safe close hRawCenterCoeffAbs and the preferred direct residual-derivative norm bounds for the 110 covered direct subchunks",
+    "hRawCenterCoeffAbs via sharp raw-center-minus-coeff0 anchor bound; Lean wrapper derives hAnchorResidual",
+    "scalar hEnvelope via exact rational sample-envelope arithmetic",
+    "do not use the current one-cell raw/poly derivative intervals as proof data; the feasibility audit shows cancellation loss on all 110 subchunks",
+    "legacy lower/upper interval bounds may still feed residual_deriv_bound_on_single_cell_of_interval_bounds if the compact norm route fails; derivative abs comparisons are exact-passing metadata"
+  ],
+  "routeGuard": [
+    "do not write Lean while missingTotal is nonzero",
+    "parent fold must target RawOmegaAChunkIntegral.RefinedWindowPartBoundsCert",
+    "parent fold may land directly at ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralRefinedWindowProofData.toWindowPartBoundsCert",
+    "exact-sum parent bounds build RawOmegaAChunkIntegral.RefinedWindowPartBoundsCert.of_refinedSubchunkSums",
+    "top-level payload must keep the 26 parent chunks",
+    "subchunk hIntegralLower/hIntegralUpper are eliminated by exact model integral bounds",
+    "global preferred direct skeleton uses ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData and records one scalar residual-derivative norm proof input for hResidualDerivBoundOnCell",
+    "legacy interval skeleton remains recorded as ResidualAnchorDerivativeSingleCellIntervalRawCenterCoeffSampleEnvelopeExactIntegralChunkProofData",
+    "hResidualDifferentiable is seeded globally by a checked Lean theorem in proof-data schema v17",
+    "single-anchor geometry is seeded by anchor = center and mesh = radius",
+    "derivative finite-cover geometry is seeded as one cell equal to the refined subchunk",
+    "active full payload target is RawOmegaAChunkTaylorPayload.RefinedPayloadFin",
+    "route-B hRawCenterCoeffAbs must use the sharp raw-center-minus-coeff0 receiver; hAnchorResidual is derived by the Lean wrapper",
+    "route-B scalar hEnvelope arithmetic is exact-passing metadata, not Lean payload yet",
+    "route-B scale_abs_box receiver is compiled legacy support, not the active full-payload blocker",
+    "route-B nonnegative abs-cos anchor receiver is inactive for first finite chunk",
+    "route-B polynomial anchor side should use polynomial_center when anchor = cert.center",
+    "route-B residual derivative cells should prove hResidualDerivBoundOnCell through residual_deriv_bound_on_cells_of_interval_bounds",
+    "route-B raw/poly derivative-cell receivers are legacy support only on this 0/110 feasibility route",
+    "route-B scalable preferred derivative norm receiver is residual_deriv_bound_on_cells_of_interval_bounds",
+    "route-B one-cell raw/poly derivative norm receiver is not proof-ready with current interval data; direct_receiver_feasibility_audit reports 0/110 passing",
+    "route-B residual derivative identity is supplied by residual_deriv_eq",
+    "route-B polynomial derivative cells should use polynomial_deriv_bounds_on_cell_of_term_deriv_bounds",
+    "route-B polynomial derivative term bounds from explicit expressions should use polynomial_derivative_term_bounds_on_cell_of_expr_bounds",
+    "route-B polynomial derivative identity is supplied by polynomial_deriv_eq_term_deriv_sum",
+    "route-B monomial derivative identity is supplied by polynomial_term_deriv_eq",
+    "route-B direct overlay is a candidate surface only, not proof data",
+    "local component interval probe is a candidate surface only, not proof data",
+    "hRawCenterCoeffAbs local component contract is a candidate surface only, not proof data",
+    "do not fall back to scalePad = 1e-70 as the default scale route",
+    "do not treat sampled derivative intervals as Lean proof data",
+    "do not import generated refined payload until lake env lean checks it",
+    "do not use this report as proof data",
+    "do not mutate CSV, ARadius, radius-floor, or LDL data"
+  ],
+  "schema": "q3_psdpd_step33_a_refined_subchunk_payload_lean_emitter.v37",
+  "status": "missing_analytic_fields_no_lean_emitted",
+  "totals": {
+    "families": 4,
+    "missingParentAnalyticFields": 0,
+    "missingRowAnalyticFields": 184,
+    "missingSubchunkAnalyticFields": 200100,
+    "parentChunks": 2392,
+    "rows": 92,
+    "seededParentStructuralFields": 23920,
+    "seededSubchunkStructuralFields": 720360,
+    "subchunks": 40020
+  }
+}

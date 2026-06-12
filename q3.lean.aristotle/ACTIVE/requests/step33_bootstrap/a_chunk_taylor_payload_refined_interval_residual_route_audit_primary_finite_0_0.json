@@ -1,0 +1,190 @@
+{
+  "counts": {
+    "auditedSubchunks": 2,
+    "failsAtMaxSplit": 2,
+    "passesAtMaxSplit": 0,
+    "proofSafeClosedFields": 0
+  },
+  "meaning": "Fail-closed Arb interval route audit for direct residual/diff bounds.  This does not emit Lean and does not close proof fields.",
+  "overlay": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0.json",
+  "parameters": {
+    "arbPrec": 224,
+    "ell": "0.30",
+    "seriesSincTerms": 80,
+    "source": "raw_step22",
+    "splitSchedule": [
+      1,
+      16,
+      256,
+      1024
+    ],
+    "subchunks": "0,37"
+  },
+  "pilot": {
+    "degree": 16,
+    "family": "primary_finite",
+    "left": "0.000000000000000000E+0",
+    "parentChunk": 0,
+    "right": "1.000000000000000000E+1",
+    "row": 0,
+    "split": 100
+  },
+  "residualAudit": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_rational_residual_audit_primary_finite_0_0.json",
+  "routeGuard": [
+    "not Lean proof data",
+    "do not import Arb interval residual rows as trusted theorem",
+    "do not increase split counts into a microtask swamp",
+    "plain interval residual subtraction is rejected unless it passes at practical split counts",
+    "next proof-producing generator should use derivative/Cauchy/Taylor-remainder structure",
+    "do not mutate CSV, ARadius, radius-floor, LDL, H1/PO3, or Q3.Main"
+  ],
+  "routeVerdict": {
+    "fallback": "much_sharper_symbolic_local_component_bounds",
+    "nextRecommended": "derivative_or_cauchy_taylor_remainder_enclosure",
+    "reason": "Ball interval subtraction overestimates the residual by many orders of magnitude compared with the 1e-18 remainder.",
+    "rejected": "plain_ball_interval_residual_subtraction"
+  },
+  "schema": "q3_psdpd_step33_a_refined_interval_residual_route_audit.v1",
+  "status": "interval_residual_route_rejected_dependency_overestimate",
+  "subchunks": [
+    {
+      "center": "5.000000000000000000E-2",
+      "estimatedSplitsForRemainderLinearTrend": "1.522223063505362421E+17",
+      "left": "0.000000000000000000E+0",
+      "maxSplitMaxAbsDiff": "1.486545960454455489E-4",
+      "passesAtMaxSplit": false,
+      "remainder": "1/1000000000000000000",
+      "right": "1.000000000000000000E-1",
+      "sampledMaxResidual": "1.172895333288075275E-19",
+      "sampledRemainderPasses": true,
+      "splitRows": [
+        {
+          "diffLower": "-1.441602738828910293E-1",
+          "diffUpper": "1.441602740182029305E-1",
+          "maxAbsDiff": "1.441602740182029305E-1",
+          "passesRemainder": false,
+          "splits": 1,
+          "worstPiece": 0
+        },
+        {
+          "diffLower": "-9.571061946101064058E-3",
+          "diffUpper": "9.571061953554352550E-3",
+          "maxAbsDiff": "9.571061953554352550E-3",
+          "passesRemainder": false,
+          "splits": 16,
+          "worstPiece": 15
+        },
+        {
+          "diffLower": "-5.947996709752233608E-4",
+          "diffUpper": "5.947996720036853196E-4",
+          "maxAbsDiff": "5.947996720036853196E-4",
+          "passesRemainder": false,
+          "splits": 256,
+          "worstPiece": 255
+        },
+        {
+          "diffLower": "-1.486545958193241240E-4",
+          "diffUpper": "1.486545960454455489E-4",
+          "maxAbsDiff": "1.486545960454455489E-4",
+          "passesRemainder": false,
+          "splits": 1024,
+          "worstPiece": 1023
+        }
+      ],
+      "subchunk": 0
+    },
+    {
+      "center": "3.750000000000000000E+0",
+      "estimatedSplitsForRemainderLinearTrend": "3.256967731710545626E+17",
+      "left": "3.700000000000000000E+0",
+      "maxSplitMaxAbsDiff": "3.180632550498579713E-4",
+      "passesAtMaxSplit": false,
+      "remainder": "1/1000000000000000000",
+      "right": "3.800000000000000000E+0",
+      "sampledMaxResidual": "5.167745095026847270E-19",
+      "sampledRemainderPasses": true,
+      "splitRows": [
+        {
+          "diffLower": "-5.819473951939162936E+0",
+          "diffUpper": "5.819473952170791898E+0",
+          "maxAbsDiff": "5.819473952170791898E+0",
+          "passesRemainder": false,
+          "splits": 1,
+          "worstPiece": 0
+        },
+        {
+          "diffLower": "-2.292356419945890218E-2",
+          "diffUpper": "2.292356423697611182E-2",
+          "maxAbsDiff": "2.292356423697611182E-2",
+          "passesRemainder": false,
+          "splits": 16,
+          "worstPiece": 15
+        },
+        {
+          "diffLower": "-1.279281118434936510E-3",
+          "diffUpper": "1.279281120411270527E-3",
+          "maxAbsDiff": "1.279281120411270527E-3",
+          "passesRemainder": false,
+          "splits": 256,
+          "worstPiece": 255
+        },
+        {
+          "diffLower": "-3.180632545121603561E-4",
+          "diffUpper": "3.180632550498579713E-4",
+          "maxAbsDiff": "3.180632550498579713E-4",
+          "passesRemainder": false,
+          "splits": 1024,
+          "worstPiece": 1023
+        }
+      ],
+      "subchunk": 37
+    }
+  ],
+  "worklist": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_distance_payload_worklist.json",
+  "worstAtMaxSplit": {
+    "center": "3.750000000000000000E+0",
+    "estimatedSplitsForRemainderLinearTrend": "3.256967731710545626E+17",
+    "left": "3.700000000000000000E+0",
+    "maxSplitMaxAbsDiff": "3.180632550498579713E-4",
+    "passesAtMaxSplit": false,
+    "remainder": "1/1000000000000000000",
+    "right": "3.800000000000000000E+0",
+    "sampledMaxResidual": "5.167745095026847270E-19",
+    "sampledRemainderPasses": true,
+    "splitRows": [
+      {
+        "diffLower": "-5.819473951939162936E+0",
+        "diffUpper": "5.819473952170791898E+0",
+        "maxAbsDiff": "5.819473952170791898E+0",
+        "passesRemainder": false,
+        "splits": 1,
+        "worstPiece": 0
+      },
+      {
+        "diffLower": "-2.292356419945890218E-2",
+        "diffUpper": "2.292356423697611182E-2",
+        "maxAbsDiff": "2.292356423697611182E-2",
+        "passesRemainder": false,
+        "splits": 16,
+        "worstPiece": 15
+      },
+      {
+        "diffLower": "-1.279281118434936510E-3",
+        "diffUpper": "1.279281120411270527E-3",
+        "maxAbsDiff": "1.279281120411270527E-3",
+        "passesRemainder": false,
+        "splits": 256,
+        "worstPiece": 255
+      },
+      {
+        "diffLower": "-3.180632545121603561E-4",
+        "diffUpper": "3.180632550498579713E-4",
+        "maxAbsDiff": "3.180632550498579713E-4",
+        "passesRemainder": false,
+        "splits": 1024,
+        "worstPiece": 1023
+      }
+    ],
+    "subchunk": 37
+  }
+}

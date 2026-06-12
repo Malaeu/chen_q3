@@ -6,7 +6,7 @@
         "midpoint_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k11.csv",
         "midpoint_sha256": "29d9c06befcc68ee13dbe2fe7cbad898df968ea9632f0d31c9a7d6c983411ac3",
         "radius_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k11.csv",
-        "radius_sha256": "6e29b6de57d2be9e6f1460d90061d65dfa18833eaa9062ec2408ca7816e41675",
+        "radius_sha256": "15a1a7b988c52b46dcfa728922ad70ca9a7fb5cb497d7b90fbbb9a4d737198fe",
         "step18_stdout": "q3.lean.aristotle/docs/insights/q3_psdpd_family_step18_outputs/psdpd_L3_k11_ell030_delta025_theta1e4.step18.txt"
       },
       "block_id": "psdpd_L3_k11_ell030_delta025_theta1e4",
@@ -14,9 +14,9 @@
       "family_id": "psdpd_family_v1",
       "guards": {
         "Dtheta_pass": true,
-        "Dtheta_safe_lower": 0.00012228594783230456,
+        "Dtheta_safe_lower": 0.0001222859478322234,
         "Rkappa_pass": true,
-        "Rkappa_safe_lower": 0.13569220778186006
+        "Rkappa_safe_lower": 0.13569220778185986
       },
       "notes": "Primary interval-backed finite block after Step 22.",
       "parameters": {
@@ -42,7 +42,7 @@
         "midpoint_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_midpoints_k9.csv",
         "midpoint_sha256": "cc88eb915f7dc7fd499c2ae3dcfe8f5bac9615750c92ba1c1c98559c9b711a0f",
         "radius_csv": "q3.lean.aristotle/docs/insights/q3_psdpd_step22_radii_k9.csv",
-        "radius_sha256": "ee50429a7ed0cd9929f39e8ee5a924b61b5ddeb413c0705624a631c96c9c0c17",
+        "radius_sha256": "4f94d7a8508d081223961bd1f0c2a210f2624aedbbaeddd62b8d517aaeb10f37",
         "step18_stdout": "q3.lean.aristotle/docs/insights/q3_psdpd_family_step18_outputs/psdpd_L3_k9_ell030_delta025_theta1e5.step18.txt"
       },
       "block_id": "psdpd_L3_k9_ell030_delta025_theta1e5",
@@ -50,9 +50,9 @@
       "family_id": "psdpd_family_v1",
       "guards": {
         "Dtheta_pass": true,
-        "Dtheta_safe_lower": 1.26369228219279e-05,
+        "Dtheta_safe_lower": 1.2636922821866158e-05,
         "Rkappa_pass": true,
-        "Rkappa_safe_lower": 0.0019590640625249765
+        "Rkappa_safe_lower": 0.001959064062524798
       },
       "notes": "Control interval-backed finite block after Step 22.",
       "parameters": {
