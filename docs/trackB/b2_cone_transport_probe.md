@@ -222,10 +222,17 @@ The B2 cone transport has three possible survivors:
    projected finite operator inequality directly, using CLV only to control
    tails or continuum error.
 
+The follow-up Gaussian probe
+`docs/trackB/b2_psd_gaussian_majorant_probe.md` kills the simplest
+`PSD-CLV` attempt: a pointwise Gaussian majorant with nonnegative Fourier
+transform is still not enough, because `W-chi_edge` is not positive-definite
+and the projected packet matrix `N^T(P_W-P_edge)N` is indefinite.
+
 The current evidence rejects:
 
 ```text
 ordinary Selberg majorant + unrestricted positive-definite cone
+naive Gaussian PSD majorant + pointwise edge dominance
 ```
 
 and makes `LOW-BAND` non-competitive for the current Step13 B-spline packet

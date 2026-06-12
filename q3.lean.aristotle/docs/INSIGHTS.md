@@ -32056,3 +32056,20 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   new low-pass decomposition plus explicit tail ledger.  The practical next
   branch is `PSD-CLV` or `FINITE-OP`, with CLV used only where it preserves the
   Hermitian-square/PSD structure.
+
+## Insight (2026-06-12, Track B B2) -- GaussianMajorantOperatorFailure
+
+- Added `docs/trackB/b2_psd_gaussian_majorant_probe.md`.
+- Tested the D2g29e-inspired Gaussian majorant
+  `W_K(x)=exp(4*pi) exp(-pi*(x/(2K))^2)`.  It is pointwise above the raw edge
+  `[2K,4K]` and has nonnegative Fourier transform, both unconditionally.
+- This still does not transport the Q3 edge defect.  For `K=2`, the Fourier
+  error `hat(W_K-chi_sym)` becomes negative near `u=0.625089` and reaches about
+  `-0.846294`.
+- Finite Step13 packet test is decisive: with `ell=0.35`, grid `delta=0.5`,
+  and `k_spline=5`, the projected matrix `N^T(P_W-P_edge)N` has generalized
+  minimum eigenvalue `-8.39e4` for `K=1` and `-3.48e5` for `K=2`.
+- Verdict: `FATAL(naive Gaussian PSD majorant)`.  The surviving B2 branches are
+  now a stronger `PSD-CLV` condition on `M-chi_edge` over the actual packet
+  spectrum, a direct `FINITE-OP` certificate, or a genuine explicit-formula
+  receiver that inserts zero-side PSD before the prime-shift oscillation.
