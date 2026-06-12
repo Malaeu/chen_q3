@@ -32353,3 +32353,22 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   Surviving options are RP1 route-equivalence for the smoothed receiver
   ledger, a genuinely nonlinear/cone-adapted receiver with structural
   correction cancellation, or direct finite-op / ordinary-prime mean control.
+
+## Insight (2026-06-12, Track B B2b) -- RouteEquivalenceAudit
+
+- Added `docs/trackB/b2b_route_equivalence_audit.md`.
+- The RP1 question was whether E5' can use the smoothed receiver residual
+  `D_R = P(M^+)-P0(M^+)` instead of the hard-edge residual
+  `D_I = P(1_I)-P0(1_I)`.
+- Local `rg` and `q3_docs` searches found the opposite: Track B's E5/B3
+  interfaces are stated in terms of `E_I(v)`, `P_edge`, `P0_edge`, and
+  `N^T(P_edge-P0_edge)N <= epsilon_K*N^T G N`; no local theorem rewrites the
+  downstream ledger to accept `D_R`.
+- The exact identity `D_I = D_R - B_R` remains decisive.  Since previous probes
+  show `B_R` tracks the hard-edge defect, proving `D_R` small proves only a
+  smoothed E5-like statement unless a separate downstream route-equivalence
+  theorem is supplied.
+- Status refines to `FATAL(plain RP1 replacement of E5' by D_R)`.  Track B
+  remains active: the viable branches are a genuine downstream smoothed-ledger
+  rewrite, nonlinear/cone-adapted correction cancellation, or direct
+  ordinary-prime mean control of `D_I`.

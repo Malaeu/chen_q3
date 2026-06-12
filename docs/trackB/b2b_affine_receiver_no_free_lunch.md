@@ -265,3 +265,18 @@ Is there a route-equivalence theorem that allows E5' to use the smoothed
 receiver residual `D_R` directly?  If not, what nonlinear/cone-adapted
 receiver condition could cancel `B_R` structurally rather than paying it as a
 separate norm?
+
+## Follow-Up
+
+`docs/trackB/b2b_route_equivalence_audit.md` audits the first branch of that
+question.  It finds no local route-equivalence theorem that lets the original
+E5' hard-edge ledger use `D_R` in place of `D_I`.  The plain RP1 move
+
+```text
+prove ||D_R||_G small and call that E5'
+```
+
+is therefore a route-kill.  A legitimate smoothed route would need an explicit
+downstream rewrite of every `P_edge-P0_edge` interface; otherwise Track B must
+move to nonlinear cone-adapted receiver cancellation or direct ordinary-prime
+mean control of `D_I`.
