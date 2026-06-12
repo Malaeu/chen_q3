@@ -250,3 +250,19 @@ Question for Proshka:
 Can E5' be restated so that the Selberg receiver is the primary
 Guinand-Weil/Hermitian-square test object, avoiding hard-edge majorization?
 If yes, what is the exact Q3 cone statement and where does zero-side PSD enter?
+
+## Follow-Up
+
+`docs/trackB/b2b_receiver_primary_correction_gap.md` refines this blocker by
+writing the exact identity
+
+```text
+D_I = D_R - B_R^+,
+B_R^+ = (P(M^+) - P(1_I)) - (P0(M^+) - P0(1_I)).
+```
+
+The follow-up probe shows that `B_R^+` tracks the hard-edge defect on the
+tested stable packet schedule.  Therefore the missing theorem is not just
+"make the receiver primary"; it is either a route-equivalence theorem that
+changes the E5' ledger to the receiver object, or a cone-adapted receiver that
+cancels `B_R^+`.

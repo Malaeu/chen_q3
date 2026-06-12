@@ -32312,3 +32312,23 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   The next Track B target is the formulation theorem that makes the Selberg
   receiver the actual E5' test object, with zero-side PSD replacing any
   RH-conditional input.
+
+## Insight (2026-06-12, Track B B2b) -- ReceiverPrimaryCorrectionGap
+
+- Added `docs/trackB/b2b_receiver_primary_correction_gap.md` and extended
+  `scripts/trackb_edge_operator_probe.py clvrecv/clvprimary` with the exact
+  receiver bridge-correction diagnostics.
+- The algebraic identity is now explicit:
+  `D_I = D_R - B_R^+`, where
+  `D_I = P(1_I)-P0(1_I)`, `D_R = P(M^+)-P0(M^+)`, and
+  `B_R^+ = (P(M^+)-P(1_I)) - (P0(M^+)-P0(1_I))`.
+- The identity is numerically exact at floating precision; at K=3.5,
+  `ell=1.375`, `delta=1`, the reconstruction error is about `2e-17`.
+- The correction is not small in the current packet family: at the
+  best-smoothed deltas for K=2,2.5,3,3.5, `||B_R^+||_G` is approximately
+  `0.10197, 0.41939, 0.11346, 0.23863`, tracking the hard-edge residual
+  rather than the small receiver residual.
+- Status refines to `GAP(receiver-primary correction theorem missing)`.
+  The next viable B2b target is either a route-equivalence theorem that lets
+  the E5' ledger use the receiver object `D_R`, or a cone-adapted receiver
+  that cancels `B_R^+`; another scalar bandwidth sweep is not the right move.

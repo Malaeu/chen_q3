@@ -842,6 +842,10 @@ def run_clvrecv(args: argparse.Namespace) -> list[dict[str, Any]]:
             prime_minus_bridge_row = eig_row("prime_edge_minus_Mminus", P_edge - P_minus)
             cont_plus_bridge_row = eig_row("continuum_Mplus_minus_edge", P0_plus - P0_edge)
             cont_minus_bridge_row = eig_row("continuum_edge_minus_Mminus", P0_edge - P0_minus)
+            bridge_correction_plus = (P_plus - P_edge) - (P0_plus - P0_edge)
+            bridge_correction_minus = (P_edge - P_minus) - (P0_edge - P0_minus)
+            bridge_correction_plus_row = eig_row("bridge_correction_plus", bridge_correction_plus)
+            bridge_correction_minus_row = eig_row("bridge_correction_minus", bridge_correction_minus)
 
             bridge_R_plus = max(
                 0.0,
@@ -860,12 +864,20 @@ def run_clvrecv(args: argparse.Namespace) -> list[dict[str, Any]]:
             row.update(prime_minus_bridge_row)
             row.update(cont_plus_bridge_row)
             row.update(cont_minus_bridge_row)
+            row.update(bridge_correction_plus_row)
+            row.update(bridge_correction_minus_row)
             row.update(
                 {
                     "bridge_R_plus": finite_float(bridge_R_plus),
                     "bridge_R_minus": finite_float(bridge_R_minus),
                     "total_upper_budget_plus": finite_float(bridge_R_plus + smooth_Mplus_epsilon),
                     "total_upper_budget_minus": finite_float(bridge_R_minus + smooth_Mminus_epsilon),
+                    "receiver_identity_plus_max_abs_error": finite_float(
+                        float(np.max(np.abs(hard - (plus - bridge_correction_plus))))
+                    ),
+                    "receiver_identity_minus_max_abs_error": finite_float(
+                        float(np.max(np.abs(hard - (minus + bridge_correction_minus))))
+                    ),
                     "budget_note": (
                         "total_upper_budget_plus is the naive scalar-majorant route cost: "
                         "P(edge) <= P(M+) + R*G plus the smoothed receiver residual. "
@@ -956,6 +968,9 @@ def run_clvprimary(args: argparse.Namespace) -> list[dict[str, Any]]:
                     float(best_smooth["Mplus_minus_Mplus_continuum_opnorm"])
                 ),
                 "bridge_R_at_best_smooth": finite_float(float(best_smooth["bridge_R_plus"])),
+                "bridge_correction_at_best_smooth": finite_float(
+                    float(best_smooth["bridge_correction_plus_opnorm"])
+                ),
                 "total_at_best_smooth": finite_float(float(best_smooth["total_upper_budget_plus"])),
                 "best_total_delta": finite_float(float(best_total["receiver_delta"])),
                 "best_total_upper_budget": finite_float(float(best_total["total_upper_budget_plus"])),
@@ -963,6 +978,9 @@ def run_clvprimary(args: argparse.Namespace) -> list[dict[str, Any]]:
                     float(best_total["Mplus_minus_Mplus_continuum_opnorm"])
                 ),
                 "bridge_R_at_best_total": finite_float(float(best_total["bridge_R_plus"])),
+                "bridge_correction_at_best_total": finite_float(
+                    float(best_total["bridge_correction_plus_opnorm"])
+                ),
                 "hard_edge_epsilon": finite_float(
                     float(best_smooth["hard_edge_minus_continuum_opnorm"])
                 ),
@@ -988,10 +1006,14 @@ def run_clvprimary(args: argparse.Namespace) -> list[dict[str, Any]]:
         "k_spline": int(args.k_spline),
         "p0_na": int(args.p0_na),
         "smooth_fit": power_fit_rows(selected_rows, "best_smooth_epsilon"),
+        "hard_edge_fit": power_fit_rows(selected_rows, "hard_edge_epsilon"),
+        "bridge_correction_fit": power_fit_rows(selected_rows, "bridge_correction_at_best_smooth"),
         "scalar_bridge_total_fit": power_fit_rows(selected_rows, "best_total_upper_budget"),
         "verdict_note": (
             "The smooth fit tests the receiver-primary B2b hypothesis. The scalar-bridge "
-            "total fit tests the already-failing post-hoc hard-edge bridge."
+            "total fit tests the already-failing post-hoc hard-edge bridge. The bridge "
+            "correction fit tests whether receiver-primary actually removed the original "
+            "hard-edge fluctuation."
         ),
         "D2": (
             "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), "
