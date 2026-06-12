@@ -32188,3 +32188,21 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   must either control the ordinary-prime mean on the structured
   cross-correlation cone or change the packet normalization/family so the
   finite epsilon shows visible `K^{-c}` decay.
+
+## Insight (2026-06-12, Track B B2b) -- PacketScaleSweep
+
+- Added `docs/trackB/b2b_packet_scale_sweep.md` and
+  `scripts/trackb_edge_operator_probe.py finitesweep`.
+- The fixed `ell=0.35` finite-op wall is partly a packet-scale artifact:
+  at K=2, increasing `ell` to `0.75` lowers `epsilon` from about `0.4417` to
+  `0.1014`; at K=3, `ell=0.75` gives about `0.1097` instead of `0.4985`.
+- This still does not close B3: non-degenerate moderate-width sweeps plateau
+  around `0.10..0.11`, not a visible `K^{-c}` decay.
+- Very wide packets can force tiny epsilons, e.g. K=2 `ell=3.0` gives
+  `epsilon≈0.0215`, but only with `kerQ_dim=3`; grid refinement raises this to
+  `≈0.0929`.  At K=3, wide refined packets expose near-singular `G` modes and
+  can make epsilon blow up.
+- Status refines to
+  `B2-GAP(cost-controlled admissible lift, normalized packet theorem, or uniform finite-op prime-mean estimate)`.
+  Next useful theorem question: identify a stable packet normalization/family
+  before trying to claim finite-op decay.

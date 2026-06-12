@@ -190,6 +190,15 @@ Interpretation:
 - The measured `two_sided_epsilon` is not showing the desired
   `C*K^{-c}` decay in this raw Step13 model.
 
+Follow-up:
+
+- `docs/trackB/b2b_packet_scale_sweep.md` checks whether this is merely a
+  fixed-packet-width artifact.  Increasing `ell` from `0.35` to about
+  `0.5..1.0` substantially lowers the finite epsilon for K=2 and K=3, but the
+  non-degenerate values plateau near `0.10..0.11`.  Very wide packets can force
+  smaller values only by collapsing `kerQ_dim` or by producing nearly singular
+  projected Gram matrices under refinement.
+
 ## Verdict
 
 `PARTIAL(finite projected certificate exists)`.
@@ -197,16 +206,16 @@ Interpretation:
 But this branch does not yet close E5':
 
 ```text
-B2-GAP(uniform finite-op theorem plus CLV-tail transfer)
+B2-GAP(normalized packet theorem or uniform finite-op prime-mean estimate)
 ```
 
 The useful wall has moved again:
 
 ```text
 old wall: find a cost-controlled admissible lift.
-new wall: turn the finite eigenvalue certificate into a uniform structured
-          ordinary-prime mean estimate, or change normalization/packet family
-          so the finite epsilon has decay.
+new wall: find a stable normalized packet family with finite epsilon decay,
+          or turn the finite eigenvalue certificate into a uniform structured
+          ordinary-prime mean estimate.
 ```
 
 ## Proshka Update

@@ -9,6 +9,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   lowband   mass captured by the Selberg-positive ultra-low band
   gaussian  finite-packet failure of the naive PSD Gaussian majorant
   finiteop  direct projected finite-operator certificate diagnostics
+  finitesweep compact finiteop spectrum sweep over packet scales
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -368,6 +369,91 @@ def run_finiteop(args: argparse.Namespace) -> list[dict[str, Any]]:
                 "D2": "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), finite projected operator only",
             }
         )
+    return rows
+
+
+def run_finitesweep(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        lo, hi = 2.0 * K, 4.0 * K
+        for ell in args.ell_values:
+            for grid_delta in args.grid_delta_values:
+                try:
+                    ctx = build_packet_context(
+                        pilot,
+                        K=K,
+                        ell=ell,
+                        grid_delta=grid_delta,
+                        k_spline=args.k_spline,
+                        p0_na=args.p0_na,
+                    )
+                    params = ctx["params"]
+                    packet = ctx["packet"]
+                    D = ctx["D"]
+                    N = ctx["N"]
+                    Gc = ctx["Gc"]
+
+                    shifts = pilot.prime_power_shifts(params.L)
+                    edge_shifts = [sh for sh in shifts if lo <= sh.a <= hi]
+                    P_edge = np.zeros_like(D, dtype=float)
+                    for sh in edge_shifts:
+                        P_edge += sh.weight * shifted_packet_matrix(pilot, packet, D, params.ell, sh.a)
+                    P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, args.p0_na)
+                    Pnu_edge = pilot.sym(P_edge - P0_edge)
+                    A_edge = generalized_to_standard(pilot, project_matrix(pilot, Pnu_edge, N), Gc)
+                    eigs = np.linalg.eigvalsh(A_edge)
+                    epsilon = max(abs(float(eigs[0])), abs(float(eigs[-1])))
+                    fro_norm = float(np.linalg.norm(A_edge, ord="fro"))
+                    nuclear_norm = float(np.sum(np.abs(eigs)))
+                    eig_G = np.linalg.eigvalsh(Gc)
+                    rows.append(
+                        {
+                            "mode": "finitesweep",
+                            "status": "ok",
+                            "K": finite_float(K),
+                            "raw_edge": [finite_float(lo), finite_float(hi)],
+                            "ell": finite_float(ell),
+                            "ell_over_K": finite_float(ell / K),
+                            "grid_delta": finite_float(grid_delta),
+                            "grid_delta_over_ell": finite_float(grid_delta / ell),
+                            "k_spline": int(params.k_spline),
+                            "n_centers": int(len(ctx["u"])),
+                            "kerQ_dim": int(N.shape[1]),
+                            "prime_power_shifts_total": int(len(shifts)),
+                            "edge_prime_power_shifts": int(len(edge_shifts)),
+                            "lambda_min": finite_float(float(eigs[0])),
+                            "lambda_max": finite_float(float(eigs[-1])),
+                            "two_sided_epsilon": finite_float(epsilon),
+                            "epsilon_times_K": finite_float(epsilon * K),
+                            "epsilon_times_sqrt_K": finite_float(epsilon * math.sqrt(K)),
+                            "fro_norm_standard": finite_float(fro_norm),
+                            "nuclear_norm_standard": finite_float(nuclear_norm),
+                            "effective_rank_fro": finite_float(
+                                0.0 if fro_norm == 0.0 else nuclear_norm**2 / fro_norm**2
+                            ),
+                            "eig_Gc_min": finite_float(float(eig_G[0])),
+                            "eig_Gc_max": finite_float(float(eig_G[-1])),
+                            "G_condition": finite_float(float(eig_G[-1] / eig_G[0])),
+                            "D2": "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), packet-scale sweep",
+                        }
+                    )
+                except Exception as exc:  # numerical probe should report bad scale choices.
+                    rows.append(
+                        {
+                            "mode": "finitesweep",
+                            "status": "error",
+                            "K": finite_float(K),
+                            "raw_edge": [finite_float(lo), finite_float(hi)],
+                            "ell": finite_float(ell),
+                            "ell_over_K": finite_float(ell / K),
+                            "grid_delta": finite_float(grid_delta),
+                            "grid_delta_over_ell": finite_float(grid_delta / ell),
+                            "k_spline": int(args.k_spline),
+                            "error": str(exc),
+                            "D2": "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), packet-scale sweep",
+                        }
+                    )
     return rows
 
 
@@ -1093,6 +1179,14 @@ def parse_args() -> argparse.Namespace:
     finiteop.add_argument("--p0-na", type=int, default=8001)
     finiteop.add_argument("--top", type=int, default=12)
     finiteop.set_defaults(func=run_finiteop)
+
+    finitesweep = sub.add_parser("finitesweep", help="compact finiteop spectrum sweep over packet scales")
+    finitesweep.add_argument("--K", type=float, nargs="+", required=True)
+    finitesweep.add_argument("--ell-values", type=float, nargs="+", required=True)
+    finitesweep.add_argument("--grid-delta-values", type=float, nargs="+", required=True)
+    finitesweep.add_argument("--k-spline", type=int, default=5)
+    finitesweep.add_argument("--p0-na", type=int, default=1001)
+    finitesweep.set_defaults(func=run_finitesweep)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

@@ -224,10 +224,15 @@ Follow-up probe:
   while top-shift excision rapidly stops explaining the mass.  Thus the next
   theorem shape must control a structured ordinary-prime mean, not only a short
   list of exceptional shifts.
+- `docs/trackB/b2b_packet_scale_sweep.md` tests whether the finite-op wall is
+  only the fixed `ell=0.35` packet scale.  Packet scale matters: moderate
+  `ell=0.5..1.0` lowers the K=2/K=3 epsilon to about `0.10..0.11`.  But very
+  small epsilons occur only with low `kerQ_dim` or nearly singular projected
+  Gram metrics under grid refinement, so they are not yet a stable B3 route.
 
 ## Current Verdict
 
-`B2-GAP(cost-controlled admissible lift or uniform finite-op prime-mean estimate)`.
+`B2-GAP(cost-controlled admissible lift, normalized packet theorem, or uniform finite-op prime-mean estimate)`.
 
 What is known:
 
@@ -246,7 +251,8 @@ Find Phi_v^+ / Phi_v^- in the pd cone with operator dominance and arch budget,
 but not from the simple scalar two-point Gaussian autocorrelation dictionary;
 or upgrade the direct finite projected operator inequality into a uniform
 structured ordinary-prime mean estimate with CLV used only for tail/continuum
-transfer.
+transfer; the packet-scale sweep suggests this must be done with a stable
+normalization/family, not by relying on low-dimensional wide-packet collapse.
 ```
 
 ## Proshka Request
