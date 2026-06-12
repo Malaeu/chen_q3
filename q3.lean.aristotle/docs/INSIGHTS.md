@@ -32741,3 +32741,32 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   missing)`, and
   `FATAL(treating cancellation-heavy floating-point polygamma values as proof
   intervals)`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeIntervalCandidate
+
+- Added `docs/trackB/b2b_nonnode_interval_candidate.md` and extended
+  `scripts/trackb_edge_operator_probe.py clvsigncert` with per-segment
+  `non_node_interval_candidate` fields plus cell-level non-node candidate
+  aggregates.
+- The non-node certificate shape is now explicit:
+  `min_sample |S_v| > 0.5 * L_sample * mesh`, where
+  `S_v(a)=exp(-a/2)(H_v'(a)-H_v(a)/2)`.  This is only a diagnostic contract
+  until `min |S_v|` and `sup |S_v'|` are replaced by outward-rounded interval
+  bounds.
+- K=3.5 cells `58` and `59` are clean non-node candidates with
+  `receiver_node_treatment_segment_count = 0` and allowable sampled
+  `L_S` multipliers about `1238` and `3665`.  K=3.5 cell `61` is correctly
+  rejected from the non-node branch because both smooth sides remain
+  node-local.
+- K=3 cells `35` and `36` are clean non-node candidates with allowable
+  sampled `L_S` multipliers about `7920` and `5245`.  K=3 cell `39` is
+  correctly rejected because it combines node-local receiver behavior with a
+  sampled root bracket.
+- The theorem-producing order is now:
+  first prove outward-rounded non-node certificates for K=3.5 cells `58,59`;
+  then K=3 cells `35,36`; then handle K=3.5 cell `61` and K=3 cell `39` with
+  node-local Taylor/series or split interval bounds.
+- Status refines to
+  `PARTIAL(non-node interval candidate contract extracted)`,
+  `GAP(outward-rounded interval bounds for S_v and S_v' still missing)`, and
+  `FATAL(treating sampled min/Lipschitz guards as proof certificates)`.

@@ -1246,11 +1246,49 @@ def smooth_segment_sign_candidate(
     endpoint_variation = abs(float(phi[-1]) - float(phi[0]))
     continuous_variation = float(np.trapezoid(np.abs(signed_density), a_grid))
     node_audit = {} if receiver_node_audit is None else receiver_node_audit(a_grid)
+    lipschitz_denominator = 0.5 * lipschitz_sample * max_mesh
+    if lipschitz_denominator > 0.0:
+        allowable_lipschitz_multiplier = min_abs / lipschitz_denominator
+    else:
+        allowable_lipschitz_multiplier = math.inf
+    sign_orientation = (
+        "positive"
+        if float(np.min(signed_density)) > 0.0
+        else "negative"
+        if float(np.max(signed_density)) < 0.0
+        else "mixed_sampled"
+    )
     status = "needs_root_isolation"
     if sign_changes == 0 and sign_guard > 0.0:
         status = "sampled_sign_stable_candidate"
     elif sign_changes == 0:
         status = "sampled_sign_stable_but_guard_weak"
+    if node_audit and node_audit.get("needs_local_node_treatment"):
+        non_node_status = "not_non_node_segment"
+    elif sign_changes != 0:
+        non_node_status = "needs_root_isolation"
+    elif sign_guard <= 0.0:
+        non_node_status = "needs_tighter_lipschitz_bound"
+    else:
+        non_node_status = "candidate"
+    non_node_interval_candidate = {
+        "route": "direct_polygamma_lipschitz_grid",
+        "status": non_node_status,
+        "certificate_inequality": "min_abs_S > 0.5 * L_S * mesh",
+        "sign_orientation": sign_orientation,
+        "sampled_min_abs_S": finite_float(min_abs),
+        "sampled_L_S": finite_float(lipschitz_sample),
+        "sampled_mesh": finite_float(max_mesh),
+        "sampled_guard": finite_float(sign_guard),
+        "allowable_LS_multiplier": finite_float_or_none(allowable_lipschitz_multiplier),
+        "allowable_LS_multiplier_slack": finite_float_or_none(
+            allowable_lipschitz_multiplier - 1.0
+        ),
+        "proof_status": (
+            "diagnostic_only: replace sampled extrema by outward-rounded interval "
+            "bounds for S and S' before using this certificate"
+        ),
+    }
     return {
         "a_lo": finite_float(float(seg_lo)),
         "a_hi": finite_float(float(seg_hi)),
@@ -1277,6 +1315,7 @@ def smooth_segment_sign_candidate(
             float(np.max(np.abs(weight_second_derivative)))
         ),
         "receiver_node_audit": node_audit,
+        "non_node_interval_candidate": non_node_interval_candidate,
         "sampled_mesh": finite_float(max_mesh),
         "sampled_sign_guard": finite_float(sign_guard),
         "sampled_sign_changes": int(sign_changes),
@@ -4065,6 +4104,9 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                     )
                     h0_prime_cancel_ratios: list[float] = []
                     h0_second_cancel_ratios: list[float] = []
+                    non_node_candidate_multipliers: list[float] = []
+                    non_node_candidate_slacks: list[float] = []
+                    non_node_candidate_count = 0
                     for seg in smooth_segments:
                         audit = seg.get("receiver_node_audit", {})
                         for axis_key in ["left_axis", "right_axis"]:
@@ -4076,6 +4118,15 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                                 h0_prime_cancel_ratios.append(float(h0p))
                             if h0pp is not None and math.isfinite(float(h0pp)):
                                 h0_second_cancel_ratios.append(float(h0pp))
+                        non_node_candidate = seg.get("non_node_interval_candidate", {})
+                        if non_node_candidate.get("status") == "candidate":
+                            non_node_candidate_count += 1
+                            multiplier = non_node_candidate.get("allowable_LS_multiplier")
+                            slack = non_node_candidate.get("allowable_LS_multiplier_slack")
+                            if multiplier is not None and math.isfinite(float(multiplier)):
+                                non_node_candidate_multipliers.append(float(multiplier))
+                            if slack is not None and math.isfinite(float(slack)):
+                                non_node_candidate_slacks.append(float(slack))
                     cell_rows.append(
                         {
                             "cell_index": int(cell_idx),
@@ -4098,6 +4149,15 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                             "receiver_H0_second_max_cancellation_ratio": None
                             if not h0_second_cancel_ratios
                             else finite_float(max(h0_second_cancel_ratios)),
+                            "non_node_interval_candidate_segment_count": int(
+                                non_node_candidate_count
+                            ),
+                            "non_node_min_allowable_LS_multiplier": None
+                            if not non_node_candidate_multipliers
+                            else finite_float(min(non_node_candidate_multipliers)),
+                            "non_node_min_allowable_LS_multiplier_slack": None
+                            if not non_node_candidate_slacks
+                            else finite_float(min(non_node_candidate_slacks)),
                             "smooth_continuous_variation_x": finite_float(
                                 smooth_continuous_variation
                             ),

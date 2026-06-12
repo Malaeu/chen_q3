@@ -226,6 +226,13 @@ Recommended first theorem-producing order:
 4. K=3 cell 39: node-local split plus root isolation.
 ```
 
+Follow-up:
+
+- `docs/trackB/b2b_nonnode_interval_candidate.md` extracts the non-node
+  branch as the next proof-generator contract.  It keeps cells `58,59` and
+  `35,36` in the non-node branch and rejects cells `61,39` back to the
+  node-local branch.
+
 ## Verdict
 
 `PARTIAL(node-local interval targets identified)`.
