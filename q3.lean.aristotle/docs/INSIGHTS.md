@@ -32998,3 +32998,36 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   beyond this selected cell/direction still missing)`, and
   `FATAL(treating rational guard arithmetic over floating boxes as a proof of
   E5')`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeShoulderCellSweep
+
+- Added `scripts/trackb_nonnode_cell_sweep.py`, a compact multi-cell coverage
+  helper that reuses one `clvsigncert` context, runs the non-node interval
+  guard over selected cells, and checks each row by exact dyadic rational
+  guard arithmetic.
+- Sweep command: K=3.5, fixed `ell=1.375`, `receiver_delta=1`, `p0_na=401`,
+  `ledger_cells=120`, `cert_na=801`, cells `58:64`, `dyadic_bits=96`.
+  Runtime was about `142.73s`.
+- Aggregate: `4799` mesh intervals checked, `1` edge-jump interval skipped,
+  `4320` direct/curvature guard passes and `479` failures.
+- Passing shoulder cells: cell `58` passes `800/800`, cell `59` passes
+  `800/800`, and cell `63` passes `800/800`.
+- Failing halo cells: cell `60` passes `710/800`, cell `61` passes `518/799`
+  with one skipped edge-jump interval, and cell `62` passes `692/800`.
+- Focused failing-row sanity shows over-wide source boxes, not sampled sign
+  failure: cell `60` mesh `799` has sampled `S0` positive
+  `[0.03338278911572871,0.03353755638697867]`, but interval `S0` crosses zero
+  as `[-0.17361814953722893,0.24465758255306985]`; cell `62` mesh `145` has
+  sampled `S0` positive `[0.001547456633088882,0.0015852593894640952]`, but
+  interval `S0` crosses zero as `[-0.003358722690920184,0.006656701877967755]`.
+- Local `q3_docs` search found node-spacing/prime-cap neighbors but no ready
+  Track B halo source-box theorem.  External source check remains inside
+  allowed inputs: DLMF §5.15 for polygamma identities and Selberg/Vaaler
+  Beurling-Selberg formulas; no RH/GRH input was added.
+- Status refines to
+  `PARTIAL(non-node shoulder cells 58,59,63 pass exact dyadic guard
+  arithmetic)`,
+  `GAP(edge/node-halo source interval containment theorem and jump-split
+  certificate still missing)`, and
+  `FATAL(treating the smooth non-node interval scaffold as a proof across
+  the edge jump)`.

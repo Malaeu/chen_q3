@@ -553,13 +553,119 @@ Interpretation:
   It does.  The next live task is source-box containment, then coverage beyond
   this one selected cell/direction.
 
+## Multi-Cell Shoulder Sweep
+
+Added:
+
+```text
+scripts/trackb_nonnode_cell_sweep.py
+```
+
+This reuses one `clvsigncert` context and sweeps compact interval guards over
+multiple ledger cells.  It also applies the dyadic rational guard checker to
+each compact row.  Cells containing an edge jump are not silently accepted:
+mesh intervals crossing the jump are reported as skipped and must be handled
+by a separate jump-split certificate.
+
+Run:
+
+```text
+/usr/bin/time -p .venv/bin/python scripts/trackb_nonnode_cell_sweep.py \
+  --K 3.5 --ell 1.375 --schedule fixed --receiver-delta 1 \
+  --p0-na 401 --ledger-cells 120 --cert-na 801 \
+  --cells 58:64 --polygamma-tail-terms 400 \
+  --dyadic-bits 96 --worst-limit 3 \
+  > /tmp/trackb_cell58_63_sweep.json
+```
+
+Runtime:
+
+```text
+real ~142.73s
+```
+
+Aggregate:
+
+```text
+cells total:            6
+mesh intervals checked: 4799
+edge-jump skipped:      1
+direct guard passes:    4320
+direct guard failures:  479
+curvature passes:       4320
+curvature failures:     479
+```
+
+Per-cell result:
+
+```text
+cell 58  [6.645833333333817, 6.760416666667158]
+  checked 800, skipped 0, direct 800/800
+  min direct guard ~0.0634136825441662804747622
+
+cell 59  [6.760416666667158, 6.8750000000005]
+  checked 800, skipped 0, direct 800/800
+  min direct guard ~0.100062480543229220808499
+
+cell 60  [6.8750000000005, 6.989583333333842]
+  checked 800, skipped 0, direct 710/800
+  worst direct guard ~-0.00734566419499464370868047
+
+cell 61  [6.989583333333842, 7.104166666667184]
+  checked 799, skipped 1, direct 518/799
+  skipped mesh interval:
+    [6.999895833333842, 7.00003906250051]
+    reason: receiver interval crosses an edge jump
+  worst direct guard ~-217014.011202158726518974
+
+cell 62  [7.104166666667184, 7.218750000000525]
+  checked 800, skipped 0, direct 692/800
+  worst direct guard ~-2.6658468443434637801942e-05
+
+cell 63  [7.218750000000525, 7.333333333333867]
+  checked 800, skipped 0, direct 800/800
+  min direct guard ~0.0166486751187681324137824
+```
+
+Focused failing-row sanity:
+
+```text
+cell 60, mesh 799:
+  mesh interval [6.989440104167175, 6.989583333333842]
+  sampled S0 in [0.03338278911572871, 0.03353755638697867]
+  interval S0 in [-0.17361814953722893, 0.24465758255306985]
+  min distance to Vaaler integer node ~0.010416666666158036
+
+cell 62, mesh 145:
+  mesh interval [7.124934895833852, 7.125078125000519]
+  sampled S0 in [0.001547456633088882, 0.0015852593894640952]
+  interval S0 in [-0.003358722690920184, 0.006656701877967755]
+  min distance to Vaaler integer node ~0.12493489583385209
+```
+
+Interpretation:
+
+- The non-node interval guard is robust on shoulder cells `58`, `59`, and
+  `63`.
+- The current natural interval extension is too wide in the edge/node halo:
+  cells `60`, `61`, and `62` fail because `S0_abs_lower` becomes `0` in the
+  source interval boxes, while sampled `S0` is still positive on the inspected
+  failing rows.
+- Cell `61` contains the actual edge jump at `a=2K=7`; one mesh interval
+  crosses it and is correctly skipped.  That cell cannot be closed by a
+  smooth non-node certificate alone.
+- The next theorem shape is therefore not "more full-cell replay"; it is an
+  edge/node-halo source-box theorem: local Taylor/removable-singularity
+  treatment for the Selberg/Vaaler receiver near integer nodes, plus an
+  explicit jump split at `a=2K`.
+
 ## Verdict
 
-`PARTIAL(full-cell floating interval guard installed for K=3.5 cell 58:
-800/800 mesh intervals pass)`.
+`PARTIAL(non-node shoulder cells 58,59,63 pass exact dyadic guard arithmetic;
+edge/node halo localized to cells 60,61,62)`.
 
-`GAP(source interval containment proofs, Lean integration, and coverage beyond
-this selected cell/direction still missing)`.
+`GAP(edge/node-halo source interval containment theorem and jump-split
+certificate still missing)`.
 
 `FATAL(treating the floating interval scaffold as a proof-grade E5'
 certificate)`.
@@ -569,15 +675,15 @@ Track B remains active.
 ## Proshka Audit Block
 
 Claim:
-The first non-node theorem target now has a full-cell floating interval sign
-guard for `S_v` on K=3.5 cell `58`: all `800/800` mesh intervals pass the
-direct and curvature interval guards.  After dyadic outward rounding, exact
-rational guard arithmetic also passes `800/800`.
+The non-node interval guard is not a one-cell artifact: K=3.5 cells `58`,
+`59`, and `63` pass exact dyadic guard arithmetic.  The obstruction is now
+localized to the edge/node halo: cells `60`, `61`, and `62`.
 
 Point of blockage:
-The guard arithmetic is now rationalized, but the source interval boxes are
-still floating scaffold data.  The current artifact covers only this selected
-cell/opnorm direction and is not integrated into Lean.
+The current natural interval extension becomes too wide near the Vaaler
+integer node / edge jump.  In failing rows, sampled `S0` remains positive, but
+the source interval box for `S0` crosses zero.  Cell `61` also contains a mesh
+interval crossing the actual edge jump at `a=2K=7`, which needs a jump split.
 
 What was tried:
 Added `scripts/trackb_nonnode_interval_atom_audit.py`, reused the
@@ -589,19 +695,28 @@ recurrence plus positive-series tail bounds and combined them into `H/S`
 intervals by product rule.  Then added `--mesh-index all` and ran the same
 compact guard over all `800` mesh intervals in cell `58`.  Then added a
 dyadic rational verifier that checks the finite guard inequalities exactly
-after outward rounding.
+after outward rounding.  Then added `scripts/trackb_nonnode_cell_sweep.py`
+and swept cells `58:64`.
 
 Minimal example:
-The weakest full-cell row is still mesh interval `0`:
-`[6.645833333333817, 6.645976562500484]`.  It has combined
-`S0=[0.06347021663883491, 0.07150540275891909]`; it excludes zero and gives
-direct mesh guard `~0.06341368254416625`.  With `2^-96` dyadic rounding, the
-exact rational direct guard is still
-`~0.0634136825441662804747622`.
+Cell `60`, mesh `799`,
+`[6.989440104167175, 6.989583333333842]`: sampled `S0` is positive,
+`[0.03338278911572871, 0.03353755638697867]`, but the source interval
+enclosure is `[-0.17361814953722893, 0.24465758255306985]`, so the exact
+guard fails with `S0_abs_lower=0`.
+
+Cell `61`, mesh `72`,
+`[6.999895833333842, 7.00003906250051]`: skipped because the receiver interval
+crosses the edge jump.
+
+Cell `62`, mesh `145`,
+`[7.124934895833852, 7.125078125000519]`: sampled `S0` is positive,
+`[0.001547456633088882, 0.0015852593894640952]`, but the interval enclosure is
+`[-0.003358722690920184, 0.006656701877967755]`.
 
 Question for Proshka:
-For the source-box proof, should the Lean-facing object store separate
-receiver/profile atoms and replay the product-rule arithmetic, or should it
-store already-combined `S_v`, `S_v'`, `S_v''` interval records plus exact
-guard inequalities?  The combined route is smaller; the separate-atom route is
-more reusable and easier to audit against D2 normalization.
+What is the right source-box theorem for the edge/node halo: a local Taylor
+expansion of the Selberg/Vaaler receiver at integer nodes, a removable
+singularity rewrite for the cancellation-heavy polygamma expression, or a
+separate jump-split certificate at `a=2K` plus ordinary non-node intervals on
+both sides?
