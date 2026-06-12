@@ -239,6 +239,14 @@ K=3.5: cells 58,59,61
 
 Do not certify cell 39 or 61 as smooth.  Split the edge jump first.
 
+Follow-up:
+
+- `docs/trackB/b2b_signcert_prototype.md` adds the first smooth/jump split
+  prototype.  It introduces `clvsigncert`, reports sampled sign guards and
+  root brackets on selected worklist cells, and refines the next generator
+  order: K=3.5 cells `58,59,61`, then K=3 cells `35,36`, then K=3 cell `39`
+  with one root-isolation subproblem.
+
 ## Verdict
 
 `PARTIAL(sign-partition route looks viable for smooth shoulder cells)`.

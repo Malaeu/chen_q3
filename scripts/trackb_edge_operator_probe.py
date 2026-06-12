@@ -27,6 +27,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   clvledger
             finite psi-staircase ledger diagnostics for the smooth correction
   clvmesh  mesh-stability audit for the finite psi-staircase ledger
+  clvsigncert
+            smooth/jump split prototype for a future V_J sign certificate
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -1002,6 +1004,141 @@ def sampled_sign_partition_variation(
         ),
         "sampled_sign_partition_max_width": finite_float(max(widths) if widths else 0.0),
     }
+
+
+def sampled_root_brackets(
+    a_grid: np.ndarray,
+    values: np.ndarray,
+    *,
+    rel_tol: float = 1e-10,
+    max_brackets: int = 16,
+) -> list[dict[str, Any]]:
+    a = np.asarray(a_grid, dtype=float)
+    arr = np.asarray(values, dtype=float)
+    if a.size < 2 or arr.size != a.size:
+        return []
+    threshold = rel_tol * max(1.0, float(np.max(np.abs(arr))))
+    signs = np.zeros_like(arr, dtype=int)
+    signs[arr > threshold] = 1
+    signs[arr < -threshold] = -1
+    brackets: list[dict[str, Any]] = []
+    prev_idx: int | None = None
+    prev_sign = 0
+    for idx, sign in enumerate(signs):
+        if sign == 0:
+            continue
+        if prev_sign != 0 and int(sign) != prev_sign and prev_idx is not None:
+            brackets.append(
+                {
+                    "a_lo": finite_float(float(a[prev_idx])),
+                    "a_hi": finite_float(float(a[idx])),
+                    "value_lo": finite_float(float(arr[prev_idx])),
+                    "value_hi": finite_float(float(arr[idx])),
+                }
+            )
+            if len(brackets) >= max_brackets:
+                break
+        prev_idx = idx
+        prev_sign = int(sign)
+    return brackets
+
+
+def smooth_segment_sign_candidate(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    *,
+    seg_lo: float,
+    seg_hi: float,
+    correction_weight: Any,
+    sample_count: int,
+) -> dict[str, Any]:
+    if seg_hi <= seg_lo:
+        return {
+            "a_lo": finite_float(float(seg_lo)),
+            "a_hi": finite_float(float(seg_hi)),
+            "sample_count": 0,
+            "status": "empty_segment",
+        }
+
+    n = max(5, int(sample_count))
+    a_grid = np.linspace(float(seg_lo), float(seg_hi), n)
+    correction_weights = np.array([correction_weight(float(a)) for a in a_grid], dtype=float)
+    profile = packet_profile_grid(pilot, packet, D, ell, coeffs, a_grid)
+    H = correction_weights * profile
+    dH = np.gradient(H, a_grid, edge_order=2 if len(a_grid) >= 3 else 1)
+    signed_density = np.exp(-0.5 * a_grid) * (dH - 0.5 * H)
+    phi = np.exp(-0.5 * a_grid) * H
+    sign_changes = sampled_sign_change_count(signed_density)
+    partition = sampled_sign_partition_variation(a_grid, phi, signed_density)
+    root_brackets = sampled_root_brackets(a_grid, signed_density)
+    spacing = np.diff(a_grid)
+    max_mesh = float(np.max(spacing)) if spacing.size else 0.0
+    if signed_density.size >= 2 and spacing.size:
+        lipschitz_sample = float(np.max(np.abs(np.diff(signed_density) / spacing)))
+    else:
+        lipschitz_sample = 0.0
+    max_abs = float(np.max(np.abs(signed_density)))
+    min_abs = float(np.min(np.abs(signed_density)))
+    sign_guard = min_abs - 0.5 * lipschitz_sample * max_mesh
+    endpoint_variation = abs(float(phi[-1]) - float(phi[0]))
+    continuous_variation = float(np.trapezoid(np.abs(signed_density), a_grid))
+    status = "needs_root_isolation"
+    if sign_changes == 0 and sign_guard > 0.0:
+        status = "sampled_sign_stable_candidate"
+    elif sign_changes == 0:
+        status = "sampled_sign_stable_but_guard_weak"
+    return {
+        "a_lo": finite_float(float(seg_lo)),
+        "a_hi": finite_float(float(seg_hi)),
+        "sample_count": int(n),
+        "status": status,
+        "signed_density_min": finite_float(float(np.min(signed_density))),
+        "signed_density_max": finite_float(float(np.max(signed_density))),
+        "signed_density_min_abs": finite_float(min_abs),
+        "signed_density_max_abs": finite_float(max_abs),
+        "sampled_lipschitz_signed_density": finite_float(lipschitz_sample),
+        "sampled_mesh": finite_float(max_mesh),
+        "sampled_sign_guard": finite_float(sign_guard),
+        "sampled_sign_changes": int(sign_changes),
+        "sampled_root_brackets": root_brackets,
+        "continuous_variation_x": finite_float(continuous_variation),
+        "endpoint_variation_x": finite_float(endpoint_variation),
+        "endpoint_variation_over_continuous": ratio_or_none(
+            endpoint_variation, continuous_variation
+        ),
+        **partition,
+    }
+
+
+def split_cell_at_edge_jumps(
+    cell_lo: float,
+    cell_hi: float,
+    *,
+    edge_lo: float,
+    edge_hi: float,
+    sample_count: int,
+) -> tuple[list[tuple[float, float]], list[tuple[str, float]]]:
+    width = max(float(cell_hi) - float(cell_lo), 0.0)
+    eps = max(width / max(4.0 * float(max(2, sample_count - 1)), 1.0), 1e-12)
+    jumps: list[tuple[str, float]] = []
+    split_points: list[float] = [float(cell_lo), float(cell_hi)]
+    for label, a0 in [("left_edge_jump", edge_lo), ("right_edge_jump", edge_hi)]:
+        if float(cell_lo) - 1e-12 <= float(a0) <= float(cell_hi) + 1e-12:
+            jumps.append((label, float(a0)))
+            split_points.extend([float(a0) - eps, float(a0) + eps])
+    split_points = sorted(
+        set(float(min(max(point, cell_lo), cell_hi)) for point in split_points)
+    )
+    segments = [
+        (left, right)
+        for left, right in zip(split_points[:-1], split_points[1:])
+        if right - left > 2.0e-12
+        and not any(abs(0.5 * (left + right) - a0) <= eps for _, a0 in jumps)
+    ]
+    return segments, jumps
 
 
 def run_finiteop(args: argparse.Namespace) -> list[dict[str, Any]]:
@@ -3291,6 +3428,299 @@ def run_clvmesh(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+            staircase_shift_a, staircase_cumulative = chebyshev_staircase_arrays(shifts)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            def correction_weight(a: float) -> float:
+                return plus_weight(a) - chi_weight(a)
+
+            P_edge = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, chi_weight
+            )
+            P_plus = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, plus_weight
+            )
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+            correction = pilot.sym((P_plus - P_edge) - (P0_plus - P0_edge))
+            A_corr = generalized_to_standard(pilot, project_matrix(pilot, correction, N), Gc)
+            eigs, evecs = np.linalg.eigh(A_corr)
+            op_idx = int(np.argmax(np.abs(eigs)))
+            if args.directions == "all":
+                directions = [
+                    ("lower", 0),
+                    ("upper", len(eigs) - 1),
+                    ("opnorm", op_idx),
+                ]
+            else:
+                directions = [("opnorm", op_idx)]
+
+            cell_edges = np.linspace(0.0, effective_max_a, int(args.ledger_cells) + 1)
+            direction_rows: list[dict[str, Any]] = []
+            for label, idx in directions:
+                y = evecs[:, idx]
+                coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, y)
+                cell_rows: list[dict[str, Any]] = []
+                for cell_idx in args.cells:
+                    if int(cell_idx) < 0 or int(cell_idx) >= int(args.ledger_cells):
+                        cell_rows.append(
+                            {
+                                "cell_index": int(cell_idx),
+                                "status": "invalid_cell_index",
+                            }
+                        )
+                        continue
+                    cell_lo = float(cell_edges[int(cell_idx)])
+                    cell_hi = float(cell_edges[int(cell_idx) + 1])
+                    segments, jumps = split_cell_at_edge_jumps(
+                        cell_lo,
+                        cell_hi,
+                        edge_lo=lo,
+                        edge_hi=hi,
+                        sample_count=int(args.cert_na),
+                    )
+                    smooth_segments = [
+                        smooth_segment_sign_candidate(
+                            pilot,
+                            packet,
+                            D,
+                            params.ell,
+                            coeffs,
+                            seg_lo=seg_lo,
+                            seg_hi=seg_hi,
+                            correction_weight=correction_weight,
+                            sample_count=int(args.cert_na),
+                        )
+                        for seg_lo, seg_hi in segments
+                    ]
+                    jump_terms: list[dict[str, Any]] = []
+                    for jump_label, jump_a in jumps:
+                        profile_at_jump = packet_profile_value(
+                            pilot, packet, D, params.ell, coeffs, float(jump_a)
+                        )
+                        jump_H = -profile_at_jump if jump_label == "left_edge_jump" else profile_at_jump
+                        jump_phi = math.exp(-0.5 * float(jump_a)) * abs(float(jump_H))
+                        psi_left = chebyshev_psi_error_at(
+                            float(jump_a),
+                            staircase_shift_a,
+                            staircase_cumulative,
+                            side="left",
+                        )
+                        psi_right = chebyshev_psi_error_at(
+                            float(jump_a),
+                            staircase_shift_a,
+                            staircase_cumulative,
+                            side="right",
+                        )
+                        jump_terms.append(
+                            {
+                                "label": jump_label,
+                                "a": finite_float(float(jump_a)),
+                                "profile_at_jump": finite_float(profile_at_jump),
+                                "delta_H": finite_float(float(jump_H)),
+                                "jump_variation_x": finite_float(jump_phi),
+                                "psi_error_left": finite_float(float(psi_left)),
+                                "psi_error_right": finite_float(float(psi_right)),
+                                "exact_jump_bound_left": finite_float(
+                                    abs(float(psi_left)) * jump_phi
+                                ),
+                                "exact_jump_bound_right": finite_float(
+                                    abs(float(psi_right)) * jump_phi
+                                ),
+                                "finite_jump_bound": finite_float(
+                                    max(abs(float(psi_left)), abs(float(psi_right))) * jump_phi
+                                ),
+                            }
+                        )
+
+                    finite_U = finite_chebyshev_error_sup_on_cell(
+                        cell_lo,
+                        cell_hi,
+                        staircase_shift_a,
+                        staircase_cumulative,
+                    )
+                    finite_sup = float(finite_U["finite_sup_abs_psi_minus_x"])
+                    smooth_endpoint_variation = float(
+                        sum(float(seg.get("endpoint_variation_x", 0.0)) for seg in smooth_segments)
+                    )
+                    smooth_continuous_variation = float(
+                        sum(float(seg.get("continuous_variation_x", 0.0)) for seg in smooth_segments)
+                    )
+                    smooth_partition_variation = float(
+                        sum(
+                            float(seg.get("sampled_sign_partition_variation", 0.0))
+                            for seg in smooth_segments
+                        )
+                    )
+                    jump_variation = float(
+                        sum(float(jump["jump_variation_x"]) for jump in jump_terms)
+                    )
+                    finite_jump_bound = float(
+                        sum(float(jump["finite_jump_bound"]) for jump in jump_terms)
+                    )
+                    stable_segments = sum(
+                        1
+                        for seg in smooth_segments
+                        if seg.get("status") == "sampled_sign_stable_candidate"
+                    )
+                    weak_segments = sum(
+                        1
+                        for seg in smooth_segments
+                        if seg.get("status") == "sampled_sign_stable_but_guard_weak"
+                    )
+                    root_segments = sum(
+                        1 for seg in smooth_segments if seg.get("status") == "needs_root_isolation"
+                    )
+                    if root_segments > 0:
+                        recommendation = "isolate_roots_then_sign_certify"
+                    elif weak_segments > 0:
+                        recommendation = "tighten_lipschitz_or_refine_mesh"
+                    elif jump_terms:
+                        recommendation = "smooth_sign_cert_plus_explicit_jump_cert"
+                    else:
+                        recommendation = "smooth_sign_cert_candidate"
+                    cell_rows.append(
+                        {
+                            "cell_index": int(cell_idx),
+                            "a_lo": finite_float(cell_lo),
+                            "a_hi": finite_float(cell_hi),
+                            "smooth_segment_count": int(len(smooth_segments)),
+                            "jump_count": int(len(jump_terms)),
+                            "sampled_sign_stable_segment_count": int(stable_segments),
+                            "sampled_sign_weak_segment_count": int(weak_segments),
+                            "needs_root_isolation_segment_count": int(root_segments),
+                            "smooth_continuous_variation_x": finite_float(
+                                smooth_continuous_variation
+                            ),
+                            "smooth_endpoint_variation_x": finite_float(
+                                smooth_endpoint_variation
+                            ),
+                            "smooth_partition_variation_x": finite_float(
+                                smooth_partition_variation
+                            ),
+                            "smooth_endpoint_over_continuous": ratio_or_none(
+                                smooth_endpoint_variation, smooth_continuous_variation
+                            ),
+                            "smooth_partition_over_continuous": ratio_or_none(
+                                smooth_partition_variation, smooth_continuous_variation
+                            ),
+                            "jump_variation_x": finite_float(jump_variation),
+                            "finiteU_smooth_endpoint_bound": finite_float(
+                                finite_sup * smooth_endpoint_variation
+                            ),
+                            "finiteU_smooth_partition_bound": finite_float(
+                                finite_sup * smooth_partition_variation
+                            ),
+                            "finite_jump_bound": finite_float(finite_jump_bound),
+                            "finiteU_endpoint_plus_jump_candidate_bound": finite_float(
+                                finite_sup * smooth_endpoint_variation + finite_jump_bound
+                            ),
+                            "finiteU_partition_plus_jump_candidate_bound": finite_float(
+                                finite_sup * smooth_partition_variation + finite_jump_bound
+                            ),
+                            "recommendation": recommendation,
+                            "proof_status": (
+                                "diagnostic_only: sampled signs and sampled Lipschitz guards "
+                                "are not proof certificates"
+                            ),
+                            "smooth_segments": smooth_segments,
+                            "jump_terms": jump_terms,
+                            **finite_U,
+                        }
+                    )
+                direction_rows.append(
+                    {
+                        "label": label,
+                        "matrix_lambda": finite_float(float(eigs[idx])),
+                        "cells": cell_rows,
+                    }
+                )
+
+            rows.append(
+                {
+                    "mode": "clvsigncert",
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "ledger_cells": int(args.ledger_cells),
+                    "cert_na": int(args.cert_na),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "max_a_effective": finite_float(effective_max_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(shifts)),
+                    "correction_eig_min": finite_float(float(eigs[0])),
+                    "correction_eig_max": finite_float(float(eigs[-1])),
+                    "correction_opnorm": finite_float(
+                        max(abs(float(eigs[0])), abs(float(eigs[-1])))
+                    ),
+                    "directions": direction_rows,
+                    "theorem_shape": (
+                        "prototype V_J certificate worklist: split edge jumps, then certify "
+                        "sign of H_v'(a)-H_v(a)/2 on smooth raw-a subsegments"
+                    ),
+                    "D2": (
+                        "raw a=r*log(p), x=exp(a), phi=x^(-1/2)E_delta(log x)F_v(log x); "
+                        "Q3 xi=a/(2*pi), w_Q(n)=2*Lambda(n)/sqrt(n)"
+                    ),
+                }
+            )
+    return rows
+
+
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
     return (ell / (packet.s_k * packet.c_k)) * np.sinc(ell * u / packet.s_k) ** (
         2 * packet.k_spline + 2
@@ -4198,6 +4628,30 @@ def parse_args() -> argparse.Namespace:
     clvmesh.add_argument("--ledger-cells", type=int, default=120)
     clvmesh.add_argument("--top-cells", type=int, default=3)
     clvmesh.set_defaults(func=run_clvmesh)
+
+    clvsigncert = sub.add_parser(
+        "clvsigncert",
+        help="smooth/jump split prototype for V_J sign-certificate cells",
+    )
+    add_common_packet_args(clvsigncert)
+    clvsigncert.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvsigncert.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvsigncert.add_argument(
+        "--directions",
+        choices=["opnorm", "all"],
+        default="opnorm",
+        help="which correction eigenvector directions to inspect",
+    )
+    clvsigncert.add_argument("--p0-na", type=int, default=1001)
+    clvsigncert.add_argument("--ledger-cells", type=int, default=120)
+    clvsigncert.add_argument("--cert-na", type=int, default=801)
+    clvsigncert.add_argument("--cells", type=int, nargs="+", required=True)
+    clvsigncert.set_defaults(func=run_clvsigncert)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

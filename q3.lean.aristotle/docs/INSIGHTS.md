@@ -32630,3 +32630,35 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `PARTIAL(sign-partition route looks viable for smooth shoulder cells)`,
   `GAP(certified derivative sign/zero isolation and jump split missing)`, and
   `FATAL(treating sampled partition endpoints as certified critical points)`.
+
+## Insight (2026-06-12, Track B B2b) -- SignCertPrototype
+
+- Added `docs/trackB/b2b_signcert_prototype.md` and a new
+  `scripts/trackb_edge_operator_probe.py clvsigncert` mode.
+- The prototype explicitly splits edge jumps at `2K/4K` from smooth
+  variation, then reports sampled sign guards and root brackets for
+  `H_v'(a)-H_v(a)/2` on each smooth raw-`a` segment.  This is still diagnostic
+  only; sampled guards are not proof certificates.
+- Local `q3_docs` search points to the existing FloorCert/PrimeCert pattern:
+  theorem-producing finite interval packages with grid plus
+  Lipschitz/envelope certificates.  External search added no conditional
+  number-theory input; CLV/Selberg and standard BV/Stieltjes remain the only
+  analytic sources used.
+- K=3, `cert_na=1601`, cells `35,36,39`: cells `35` and `36` are sampled
+  sign-stable candidates with guards about `0.058968` and `0.048085` and
+  endpoint/continuous variation ratios within about `3.1e-8` and `9e-9` of
+  one.  Cell `39` contains the `left_edge_jump` at `a=6`, has finite jump
+  bound about `0.019709`, and one sampled smooth root bracket
+  `[5.995196059570327, 5.995289794921890]`.
+- K=3.5, `cert_na=1601`, cells `58,59,61`: cells `58` and `59` are sampled
+  sign-stable candidates with guards about `0.067408` and `0.128763`; cell
+  `61` splits at `a=7` into two sampled sign-stable smooth segments with
+  guards about `0.022024` and `0.007154`, plus finite jump bound about
+  `0.152588`.
+- The next theorem-producing order is now concrete: first certify K=3.5 cells
+  `58,59,61`, then K=3 cells `35,36`, then isolate the single root in K=3
+  cell `39`.
+- Status refines to
+  `PARTIAL(smooth/jump proof-generator shape identified)`,
+  `GAP(interval or B-spline derivative enclosure still missing)`, and
+  `FATAL(treating sampled sign guards as proof of sign stability)`.
