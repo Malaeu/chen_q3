@@ -32446,3 +32446,24 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Status refines to `PARTIAL(partial-summation theorem shape matches the
   correction)`, `GAP(global explicit-PNT variation bound is too large)`, and
   `FATAL(plain FKS sup-error + total variation as B3 closure)`.
+
+## Insight (2026-06-12, Track B B2b) -- FourierPSD
+
+- Added `docs/trackB/b2b_fourier_psd_probe.md` and extended
+  `scripts/trackb_edge_operator_probe.py` with `clvfourier`.
+- The probe samples the even raw Fourier transform of `F_v` and of
+  `H_v=E_delta*F_v` for the correction eigenvectors, using the D2 convention
+  `hat(f)(u)=int f(a)exp(-2*pi*i*u*a)da`.
+- Positive sanity check: the packet autocorrelation profile `F_v` is
+  Fourier-nonnegative up to numerical noise.  At `K=3.5`, the opnorm direction
+  has sampled `hat(F_v)` minimum about `-9.4e-11`.
+- Negative result: multiplying by the Selberg correction destroys direct PSD
+  eligibility.  At `K=3.5`, `ell=1.375`, `delta=1`, `p0_na=401`,
+  `quad_na=4001`, sampled `hat(E_delta*F_v)` has minimum about `-0.4595` and
+  negative area fraction about `0.506` on `u in [0,2]`.
+- The compact K=2,2.5,3,3.5 schedule shows the same pattern: `F_v` passes the
+  Fourier-positive sanity check, while `E_delta*F_v` has roughly half its
+  sampled Fourier area negative.
+- Status refines to `FATAL(direct PSD eligibility of E_delta*F_v)`,
+  `PARTIAL(F_v Fourier-positivity sanity passes)`, and
+  `GAP(signed PD decomposition or finite Chebyshev ledger still needed)`.

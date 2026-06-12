@@ -22,6 +22,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
             operator-level rank/cancellation diagnostics for that correction
   clvquad  partial-summation / Chebyshev-psi variation diagnostics for the
             smooth Selberg correction quadrature route
+  clvfourier
+            sampled Fourier-sign diagnostics for E_delta(a)*F_v(a)
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -782,6 +784,59 @@ def stieltjes_variation_bounds(
         "L1_abs_phi_dx_density": finite_float(
             float(np.trapezoid(np.exp(0.5 * a_grid) * np.abs(H), a_grid))
         ),
+    }
+
+
+def even_cosine_fourier_values(
+    a_grid: np.ndarray,
+    H: np.ndarray,
+    u_grid: np.ndarray,
+) -> np.ndarray:
+    weights = np.zeros_like(a_grid, dtype=float)
+    if len(a_grid) == 1:
+        weights[0] = 1.0
+    else:
+        weights[1:-1] = 0.5 * (a_grid[2:] - a_grid[:-2])
+        weights[0] = 0.5 * (a_grid[1] - a_grid[0])
+        weights[-1] = 0.5 * (a_grid[-1] - a_grid[-2])
+    cos_mat = np.cos(2.0 * math.pi * np.outer(u_grid, a_grid))
+    return 2.0 * (cos_mat @ (weights * H))
+
+
+def sampled_fourier_sign_summary(
+    a_grid: np.ndarray,
+    H: np.ndarray,
+    *,
+    u_max: float,
+    u_points: int,
+) -> dict[str, Any]:
+    u_grid = np.linspace(0.0, float(u_max), int(u_points))
+    hat = even_cosine_fourier_values(a_grid, H, u_grid)
+    neg = np.maximum(-hat, 0.0)
+    pos = np.maximum(hat, 0.0)
+    neg_area = float(np.trapezoid(neg, u_grid))
+    pos_area = float(np.trapezoid(pos, u_grid))
+    abs_area = neg_area + pos_area
+    neg_idx = np.flatnonzero(hat < -1e-10)
+    min_idx = int(np.argmin(hat))
+    max_idx = int(np.argmax(hat))
+    return {
+        "u_min": 0.0,
+        "u_max": finite_float(float(u_max)),
+        "u_points": int(u_points),
+        "hat_min": finite_float(float(hat[min_idx])),
+        "hat_min_u": finite_float(float(u_grid[min_idx])),
+        "hat_max": finite_float(float(hat[max_idx])),
+        "hat_max_u": finite_float(float(u_grid[max_idx])),
+        "hat_at_zero": finite_float(float(hat[0])),
+        "negative_sample_count": int(len(neg_idx)),
+        "negative_sample_fraction": finite_float(float(len(neg_idx)) / float(len(u_grid))),
+        "first_negative_u": None if len(neg_idx) == 0 else finite_float(float(u_grid[int(neg_idx[0])])),
+        "negative_area": finite_float(neg_area),
+        "positive_area": finite_float(pos_area),
+        "negative_area_fraction": finite_float(0.0 if abs_area == 0.0 else neg_area / abs_area),
+        "L1_abs_H_da": finite_float(float(np.trapezoid(np.abs(H), a_grid))),
+        "integral_H_da": finite_float(float(np.trapezoid(H, a_grid))),
     }
 
 
@@ -2293,6 +2348,153 @@ def run_clvquad(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def run_clvfourier(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            def correction_weight(a: float) -> float:
+                return plus_weight(a) - chi_weight(a)
+
+            P_edge = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, chi_weight
+            )
+            P_plus = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, plus_weight
+            )
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+            correction = pilot.sym((P_plus - P_edge) - (P0_plus - P0_edge))
+            A_corr = generalized_to_standard(pilot, project_matrix(pilot, correction, N), Gc)
+            eigs, evecs = np.linalg.eigh(A_corr)
+            op_idx = int(np.argmax(np.abs(eigs)))
+            directions = [
+                ("lower", 0),
+                ("upper", len(eigs) - 1),
+                ("opnorm", op_idx),
+            ]
+
+            a_grid = np.linspace(0.0, effective_max_a, int(args.quad_na))
+            correction_weights_grid = np.array([correction_weight(float(a)) for a in a_grid], dtype=float)
+
+            direction_rows: list[dict[str, Any]] = []
+            for label, idx in directions:
+                y = evecs[:, idx]
+                coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, y)
+                profile_grid = packet_profile_grid(
+                    pilot, packet, D, params.ell, coeffs, a_grid
+                )
+                H_grid = correction_weights_grid * profile_grid
+                profile_summary = sampled_fourier_sign_summary(
+                    a_grid,
+                    profile_grid,
+                    u_max=float(args.fourier_u_max),
+                    u_points=int(args.fourier_nu),
+                )
+                correction_summary = sampled_fourier_sign_summary(
+                    a_grid,
+                    H_grid,
+                    u_max=float(args.fourier_u_max),
+                    u_points=int(args.fourier_nu),
+                )
+                direction_rows.append(
+                    {
+                        "label": label,
+                        "matrix_lambda": finite_float(float(eigs[idx])),
+                        "profile_Fv_fourier": profile_summary,
+                        "correction_Edelta_Fv_fourier": correction_summary,
+                        "negative_area_fraction_ratio": None
+                        if profile_summary["negative_area_fraction"] == 0.0
+                        else finite_float(
+                            float(correction_summary["negative_area_fraction"])
+                            / float(profile_summary["negative_area_fraction"])
+                        ),
+                    }
+                )
+
+            rows.append(
+                {
+                    "mode": "clvfourier",
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "quad_na": int(args.quad_na),
+                    "fourier_u_max": finite_float(float(args.fourier_u_max)),
+                    "fourier_nu": int(args.fourier_nu),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "max_a_effective": finite_float(effective_max_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(shifts)),
+                    "correction_eig_min": finite_float(float(eigs[0])),
+                    "correction_eig_max": finite_float(float(eigs[-1])),
+                    "correction_opnorm": finite_float(
+                        max(abs(float(eigs[0])), abs(float(eigs[-1])))
+                    ),
+                    "directions": direction_rows,
+                    "theorem_shape": (
+                        "sampled Fourier sign of even raw test H(a)=E_delta(a)*F_v(a); "
+                        "nonnegative Fourier would be a PSD/zero-side door"
+                    ),
+                    "D2": (
+                        "raw a>=0 symmetrized to an even test, Fourier convention "
+                        "hat(f)(u)=int f(a)exp(-2*pi*i*u*a)da, Q3 xi=a/(2*pi)"
+                    ),
+                }
+            )
+    return rows
+
+
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
     return (ell / (packet.s_k * packet.c_k)) * np.sinc(ell * u / packet.s_k) ** (
         2 * packet.k_spline + 2
@@ -3134,6 +3336,24 @@ def parse_args() -> argparse.Namespace:
     clvquad.add_argument("--p0-na", type=int, default=1001)
     clvquad.add_argument("--quad-na", type=int, default=4001)
     clvquad.set_defaults(func=run_clvquad)
+
+    clvfourier = sub.add_parser(
+        "clvfourier",
+        help="sampled Fourier-sign diagnostics for the smooth Selberg correction test",
+    )
+    add_common_packet_args(clvfourier)
+    clvfourier.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvfourier.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvfourier.add_argument("--p0-na", type=int, default=1001)
+    clvfourier.add_argument("--quad-na", type=int, default=4001)
+    clvfourier.add_argument("--fourier-u-max", type=float, default=2.0)
+    clvfourier.add_argument("--fourier-nu", type=int, default=1001)
+    clvfourier.set_defaults(func=run_clvfourier)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

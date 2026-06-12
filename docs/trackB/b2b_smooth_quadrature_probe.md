@@ -282,6 +282,14 @@ Surviving next shapes:
 This is not fatal for Track B.  It says the next proof attempt must be
 localized, certified-finite, or zero-side/PSD-aware.
 
+Follow-up:
+
+- `docs/trackB/b2b_fourier_psd_probe.md` tests the zero-side/PSD-aware option
+  directly.  The profile `F_v` passes sampled Fourier-positivity sanity, but
+  the correction product `E_delta*F_v` is strongly Fourier-sign-changing.  So
+  the direct PSD shortcut is not available; a signed PD decomposition or finite
+  Chebyshev staircase ledger is still needed.
+
 ## Proshka Audit Block
 
 Claim:
