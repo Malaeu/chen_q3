@@ -12,6 +12,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   finitesweep compact finiteop spectrum sweep over packet scales
   finiteschedule stability-filtered best packet-scale schedule
   spacing   D2 log-spacing barrier for generic Hilbert/large-sieve bounds
+  clvrecv   Selberg-CLV smoothed receiver operator diagnostics
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -29,6 +30,7 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
+from scipy import special
 from scipy import linalg
 from scipy.optimize import linprog
 
@@ -621,6 +623,224 @@ def run_spacing(args: argparse.Namespace) -> list[dict[str, Any]]:
             "D2": "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), spacing-only Hilbert barrier",
         }
         rows.append(row)
+    return rows
+
+
+def vaaler_K0(z: np.ndarray) -> np.ndarray:
+    return np.sinc(z) ** 2
+
+
+def vaaler_H0(z: np.ndarray, *, integer_tol: float = 1e-10) -> np.ndarray:
+    """Vaaler's H0 sign approximant in the B1 Fourier convention.
+
+    The formula is the defining series rewritten through trigamma:
+      sum_{m>=1} ((z-m)^-2 - (z+m)^-2) + 2/z
+        = psi_1(1-z) - psi_1(1+z) + 2/z.
+    Removable singularities at integers are filled by H0(n)=sgn(n).
+    """
+    z = np.asarray(z, dtype=float)
+    out = np.empty_like(z, dtype=float)
+    nearest = np.rint(z)
+    integer_mask = np.abs(z - nearest) <= integer_tol
+    out[integer_mask] = np.sign(nearest[integer_mask])
+    regular = ~integer_mask
+    zr = z[regular]
+    if zr.size:
+        series = special.polygamma(1, 1.0 - zr) - special.polygamma(1, 1.0 + zr) + 2.0 / zr
+        out[regular] = (np.sin(math.pi * zr) / math.pi) ** 2 * series
+    return out
+
+
+def selberg_interval_values(
+    x: np.ndarray,
+    *,
+    lo: float,
+    hi: float,
+    receiver_delta: float,
+    sign: str,
+) -> np.ndarray:
+    if receiver_delta <= 0.0:
+        raise ValueError("receiver_delta must be positive")
+    if sign not in {"plus", "minus"}:
+        raise ValueError("sign must be 'plus' or 'minus'")
+    x = np.asarray(x, dtype=float)
+    za = receiver_delta * (x - lo)
+    zb = receiver_delta * (x - hi)
+    central = 0.5 * vaaler_H0(za) - 0.5 * vaaler_H0(zb)
+    endpoint = 0.5 * vaaler_K0(za) + 0.5 * vaaler_K0(zb)
+    return central + endpoint if sign == "plus" else central - endpoint
+
+
+def indicator_interval_values(x: np.ndarray, *, lo: float, hi: float) -> np.ndarray:
+    x = np.asarray(x, dtype=float)
+    out = np.zeros_like(x, dtype=float)
+    inside = (lo < x) & (x < hi)
+    endpoints = np.isclose(x, lo, rtol=0.0, atol=1e-12) | np.isclose(x, hi, rtol=0.0, atol=1e-12)
+    out[inside] = 1.0
+    out[endpoints] = 0.5
+    return out
+
+
+def selberg_grid_sanity(*, lo: float, hi: float, receiver_delta: float, nt: int) -> dict[str, Any]:
+    margin = max(8.0 / receiver_delta, 1.0)
+    x = np.linspace(lo - margin, hi + margin, nt)
+    chi = indicator_interval_values(x, lo=lo, hi=hi)
+    m_plus = selberg_interval_values(x, lo=lo, hi=hi, receiver_delta=receiver_delta, sign="plus")
+    m_minus = selberg_interval_values(x, lo=lo, hi=hi, receiver_delta=receiver_delta, sign="minus")
+    plus_gap = m_plus - chi
+    minus_gap = chi - m_minus
+    return {
+        "grid_nt": int(nt),
+        "grid_margin": finite_float(margin),
+        "min_Mplus_minus_chi": finite_float(float(np.min(plus_gap))),
+        "min_chi_minus_Mminus": finite_float(float(np.min(minus_gap))),
+        "trapz_Mplus_minus_chi": finite_float(float(np.trapezoid(plus_gap, x))),
+        "trapz_chi_minus_Mminus": finite_float(float(np.trapezoid(minus_gap, x))),
+        "expected_L1_error": finite_float(1.0 / receiver_delta),
+    }
+
+
+def run_clvrecv(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        lo, hi = 2.0 * K, 4.0 * K
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=K,
+                ell=args.ell,
+                grid_delta=args.grid_delta,
+                k_spline=args.k_spline,
+                p0_na=args.p0_na,
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=args.p0_na,
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]), lo=lo, hi=hi, receiver_delta=receiver_delta, sign="plus"
+                    )[0]
+                )
+
+            def minus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]), lo=lo, hi=hi, receiver_delta=receiver_delta, sign="minus"
+                    )[0]
+                )
+
+            P_edge = build_prime_matrix_for_weight(pilot, packet, D, params.ell, shifts, chi_weight)
+            P_plus = build_prime_matrix_for_weight(pilot, packet, D, params.ell, shifts, plus_weight)
+            P_minus = build_prime_matrix_for_weight(pilot, packet, D, params.ell, shifts, minus_weight)
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, args.p0_na)
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=args.p0_na,
+                weight_fn=plus_weight,
+            )
+            P0_minus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=args.p0_na,
+                weight_fn=minus_weight,
+            )
+
+            def eig_row(label: str, M: np.ndarray) -> dict[str, Any]:
+                eigs = projected_generalized_eigs(pilot, pilot.sym(M), N, Gc)
+                return {
+                    f"{label}_eig_min": finite_float(float(eigs[0])),
+                    f"{label}_eig_max": finite_float(float(eigs[-1])),
+                    f"{label}_opnorm": finite_float(max(abs(float(eigs[0])), abs(float(eigs[-1])))),
+                }
+
+            hard = P_edge - P0_edge
+            plus = P_plus - P0_plus
+            minus = P_minus - P0_minus
+            edge_shift_count = sum(1 for sh in shifts if lo <= sh.a <= hi)
+            shift_points = np.array([float(sh.a) for sh in shifts], dtype=float)
+            plus_values = selberg_interval_values(
+                shift_points, lo=lo, hi=hi, receiver_delta=receiver_delta, sign="plus"
+            )
+            minus_values = selberg_interval_values(
+                shift_points, lo=lo, hi=hi, receiver_delta=receiver_delta, sign="minus"
+            )
+            chi_values = np.array([chi_weight(float(a)) for a in shift_points], dtype=float)
+
+            row: dict[str, Any] = {
+                "mode": "clvrecv",
+                "K": finite_float(K),
+                "raw_edge": [finite_float(lo), finite_float(hi)],
+                "receiver_delta": finite_float(receiver_delta),
+                "receiver_type": "Selberg-Vaaler interval M+ / M-",
+                "receiver_exponential_type": finite_float(2.0 * math.pi * receiver_delta),
+                "receiver_fourier_support": [
+                    finite_float(-receiver_delta),
+                    finite_float(receiver_delta),
+                ],
+                "receiver_L1_error_exact": finite_float(1.0 / receiver_delta),
+                "max_a_effective": finite_float(effective_max_a),
+                "ell": finite_float(params.ell),
+                "grid_delta": finite_float(params.delta),
+                "k_spline": int(params.k_spline),
+                "n_centers": int(len(ctx["u"])),
+                "kerQ_dim": int(N.shape[1]),
+                "prime_power_shifts_total": int(len(shifts)),
+                "edge_prime_power_shifts": int(edge_shift_count),
+                "prime_scalar_Mplus_minus_chi_min": finite_float(float(np.min(plus_values - chi_values))),
+                "prime_scalar_chi_minus_Mminus_min": finite_float(float(np.min(chi_values - minus_values))),
+                "prime_scalar_Mplus_weight_sum": finite_float(
+                    sum(float(sh.weight) * float(val) for sh, val in zip(shifts, plus_values))
+                ),
+                "prime_scalar_edge_weight_sum": finite_float(
+                    sum(float(sh.weight) * float(val) for sh, val in zip(shifts, chi_values))
+                ),
+                "prime_scalar_Mminus_weight_sum": finite_float(
+                    sum(float(sh.weight) * float(val) for sh, val in zip(shifts, minus_values))
+                ),
+                "grid_sanity": selberg_grid_sanity(
+                    lo=lo,
+                    hi=hi,
+                    receiver_delta=receiver_delta,
+                    nt=args.receiver_grid_nt,
+                ),
+                "D2": (
+                    "raw a=r*log(p), Selberg receiver on edge=[2K,4K], "
+                    "Q3 xi=a/(2*pi), operator probe only"
+                ),
+            }
+            row.update(eig_row("hard_edge_minus_continuum", hard))
+            row.update(eig_row("Mplus_minus_Mplus_continuum", plus))
+            row.update(eig_row("Mminus_minus_Mminus_continuum", minus))
+            row.update(eig_row("prime_Mplus_minus_edge", P_plus - P_edge))
+            row.update(eig_row("prime_edge_minus_Mminus", P_edge - P_minus))
+            row.update(eig_row("continuum_Mplus_minus_edge", P0_plus - P0_edge))
+            row.update(eig_row("continuum_edge_minus_Mminus", P0_edge - P0_minus))
+            rows.append(row)
     return rows
 
 
@@ -1372,6 +1592,13 @@ def parse_args() -> argparse.Namespace:
     spacing = sub.add_parser("spacing", help="D2 log-spacing barrier for generic Hilbert bounds")
     spacing.add_argument("--K", type=float, nargs="+", required=True)
     spacing.set_defaults(func=run_spacing)
+
+    clvrecv = sub.add_parser("clvrecv", help="Selberg-CLV smoothed receiver operator diagnostics")
+    add_common_packet_args(clvrecv)
+    clvrecv.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvrecv.add_argument("--p0-na", type=int, default=1001)
+    clvrecv.add_argument("--receiver-grid-nt", type=int, default=20001)
+    clvrecv.set_defaults(func=run_clvrecv)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

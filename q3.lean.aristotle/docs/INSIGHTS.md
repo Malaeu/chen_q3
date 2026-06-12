@@ -32245,3 +32245,25 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   The viable next branch is a structured ordinary-prime mean theorem for
   boundary-null cross-correlation packets, or a switch to a prolate /
   energy-concentration packet basis.
+
+## Insight (2026-06-12, Track B B2b) -- CLVReceiverBridgeGap
+
+- Added `docs/trackB/b2b_clv_receiver_probe.md` and
+  `scripts/trackb_edge_operator_probe.py clvrecv`.
+- The new mode evaluates the Selberg-Vaaler `M^+`/`M^-` receivers from the B1
+  `H0,K0` formulas, checks sampled `M^- <= chi_I <= M^+`, and then measures
+  projected generalized eigens for the smoothed receiver operators.
+- The good signal: CLV smoothing can make
+  `P(M^+) - P0(M^+)` much smaller than the hard edge residual.  At K=3.5,
+  `ell=1.375`, `delta=1`, the smoothed epsilon is about `0.00101` versus
+  hard-edge epsilon about `0.23849`.
+- The blocking signal: scalar majorization does not give the needed cone
+  bridge.  In the same K=3.5 example,
+  `min eig(P(M^+) - P(edge)) ~= -12.5165`, so `M^+ >= 1_I` does not imply
+  Loewner dominance on the corrected cross-correlation cone.
+- Status refines to
+  `PARTIAL(CLV receiver gives small smoothed residual)` plus
+  `GAP(hard-edge-to-CLV-receiver operator bridge is missing)`.
+  The next theorem target is either a Hermitian-square explicit-formula route
+  where the receiver is primary from the start, or a structured bridge
+  `P(1_I) <= P(M^+) + R_K*G` with `R_K <= C*K^{-c}`.
