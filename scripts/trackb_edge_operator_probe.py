@@ -20,6 +20,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
             endpoint/bulk anatomy of the Selberg receiver correction
   clvstructure
             operator-level rank/cancellation diagnostics for that correction
+  clvquad  partial-summation / Chebyshev-psi variation diagnostics for the
+            smooth Selberg correction quadrature route
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -666,6 +668,121 @@ def standard_summary_for_matrix(
 ) -> dict[str, Any]:
     A = generalized_to_standard(pilot, project_matrix(pilot, M, N), Gc)
     return spectral_summary(A, top=top)
+
+
+def standardized_eigenvector_to_full_coeffs(
+    Gc: np.ndarray,
+    N: np.ndarray,
+    y: np.ndarray,
+) -> np.ndarray:
+    chol = linalg.cholesky(Gc, lower=True)
+    z = linalg.solve_triangular(chol.T, y, lower=False, check_finite=False)
+    return N @ z
+
+
+def packet_profile_value(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a: float,
+) -> float:
+    M = shifted_packet_matrix(pilot, packet, D, ell, float(a))
+    return float(coeffs @ M @ coeffs)
+
+
+def packet_profile_grid(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a_grid: np.ndarray,
+) -> np.ndarray:
+    return np.array(
+        [packet_profile_value(pilot, packet, D, ell, coeffs, float(a)) for a in a_grid],
+        dtype=float,
+    )
+
+
+def psi_error_on_grid(a_grid: np.ndarray, shifts: list[Any]) -> np.ndarray:
+    sorted_shifts = sorted(shifts, key=lambda sh: float(sh.a))
+    shift_a = np.array([float(sh.a) for sh in sorted_shifts], dtype=float)
+    lambda_weights = np.array(
+        [float(sh.weight) * math.exp(0.5 * float(sh.a)) for sh in sorted_shifts],
+        dtype=float,
+    )
+    cumulative = np.cumsum(lambda_weights)
+    idx = np.searchsorted(shift_a, a_grid, side="right") - 1
+    psi = np.zeros_like(a_grid, dtype=float)
+    valid = idx >= 0
+    psi[valid] = cumulative[idx[valid]]
+    return psi - np.exp(a_grid)
+
+
+def explicit_psi_error_bound(a_grid: np.ndarray) -> np.ndarray:
+    """Unconditional explicit proxy for |psi(x)-x| in x=e^a coordinates.
+
+    For x>2 this uses the Fiori--Kadiri--Swidinsky shape recorded in the
+    Track B docs.  For very small x we fall back to a trivial positive bound.
+    The minimum with x*(log x+1) is a diagnostic tightening, not a new theorem
+    claim in the docs.
+    """
+    a = np.asarray(a_grid, dtype=float)
+    x = np.exp(a)
+    trivial = x * (np.maximum(a, 0.0) + 1.0)
+    out = trivial.copy()
+    mask = x > 2.0
+    if np.any(mask):
+        am = np.maximum(a[mask], 1e-15)
+        fks = 9.22106 * x[mask] * am ** 1.5 * np.exp(-0.8476836 * np.sqrt(am))
+        out[mask] = np.minimum(trivial[mask], fks)
+    return out
+
+
+def stieltjes_variation_bounds(
+    a_grid: np.ndarray,
+    H: np.ndarray,
+    shifts: list[Any],
+) -> dict[str, Any]:
+    dH = np.gradient(H, a_grid, edge_order=2 if len(a_grid) >= 3 else 1)
+    phi = np.exp(-0.5 * a_grid) * H
+    variation_density = np.exp(-0.5 * a_grid) * np.abs(dH - 0.5 * H)
+    endpoint_weight = abs(float(phi[0])) + abs(float(phi[-1]))
+    variation_x = float(np.trapezoid(variation_density, a_grid))
+    psi_err = psi_error_on_grid(a_grid, shifts)
+    exact_U = np.abs(psi_err)
+    pnt_U = explicit_psi_error_bound(a_grid)
+
+    exact_weighted = (
+        float(exact_U[0]) * abs(float(phi[0]))
+        + float(exact_U[-1]) * abs(float(phi[-1]))
+        + float(np.trapezoid(exact_U * variation_density, a_grid))
+    )
+    pnt_weighted = (
+        float(pnt_U[0]) * abs(float(phi[0]))
+        + float(pnt_U[-1]) * abs(float(phi[-1]))
+        + float(np.trapezoid(pnt_U * variation_density, a_grid))
+    )
+    exact_sup = float(np.max(exact_U))
+    pnt_sup = float(np.max(pnt_U))
+
+    return {
+        "phi_endpoint_weight": finite_float(endpoint_weight),
+        "variation_x": finite_float(variation_x),
+        "sup_exact_abs_psi_minus_x_on_grid": finite_float(exact_sup),
+        "sup_explicit_pnt_bound_on_grid": finite_float(pnt_sup),
+        "exact_grid_weighted_variation_bound": finite_float(exact_weighted),
+        "exact_grid_sup_variation_bound": finite_float(exact_sup * (endpoint_weight + variation_x)),
+        "explicit_pnt_weighted_variation_bound": finite_float(pnt_weighted),
+        "explicit_pnt_sup_variation_bound": finite_float(pnt_sup * (endpoint_weight + variation_x)),
+        "max_abs_H": finite_float(float(np.max(np.abs(H)))),
+        "L1_abs_H_da": finite_float(float(np.trapezoid(np.abs(H), a_grid))),
+        "L1_abs_phi_dx_density": finite_float(
+            float(np.trapezoid(np.exp(0.5 * a_grid) * np.abs(H), a_grid))
+        ),
+    }
 
 
 def run_finiteop(args: argparse.Namespace) -> list[dict[str, Any]]:
@@ -2016,6 +2133,166 @@ def run_clvstructure(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def run_clvquad(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            def correction_weight(a: float) -> float:
+                return plus_weight(a) - chi_weight(a)
+
+            P_edge = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, chi_weight
+            )
+            P_plus = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, plus_weight
+            )
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+            correction = pilot.sym((P_plus - P_edge) - (P0_plus - P0_edge))
+            A_corr = generalized_to_standard(pilot, project_matrix(pilot, correction, N), Gc)
+            eigs, evecs = np.linalg.eigh(A_corr)
+            op_idx = int(np.argmax(np.abs(eigs)))
+            directions = [
+                ("lower", 0),
+                ("upper", len(eigs) - 1),
+                ("opnorm", op_idx),
+            ]
+
+            a_grid = np.linspace(0.0, effective_max_a, int(args.quad_na))
+            correction_weights_grid = np.array([correction_weight(float(a)) for a in a_grid], dtype=float)
+
+            direction_rows: list[dict[str, Any]] = []
+            for label, idx in directions:
+                y = evecs[:, idx]
+                coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, y)
+                profile_grid = packet_profile_grid(
+                    pilot, packet, D, params.ell, coeffs, a_grid
+                )
+                H_grid = correction_weights_grid * profile_grid
+
+                prime_sum = 0.0
+                for sh in shifts:
+                    w = correction_weight(float(sh.a))
+                    if w == 0.0:
+                        continue
+                    prime_sum += (
+                        float(sh.weight)
+                        * w
+                        * packet_profile_value(pilot, packet, D, params.ell, coeffs, float(sh.a))
+                    )
+                continuum_grid = float(np.trapezoid(np.exp(0.5 * a_grid) * H_grid, a_grid))
+                direct_residual = prime_sum - continuum_grid
+                variation = stieltjes_variation_bounds(a_grid, H_grid, shifts)
+                actual_abs = abs(direct_residual)
+                exact_weighted = float(variation["exact_grid_weighted_variation_bound"])
+                pnt_weighted = float(variation["explicit_pnt_weighted_variation_bound"])
+
+                direction_rows.append(
+                    {
+                        "label": label,
+                        "matrix_lambda": finite_float(float(eigs[idx])),
+                        "direct_prime_sum": finite_float(prime_sum),
+                        "direct_continuum_grid": finite_float(continuum_grid),
+                        "direct_residual": finite_float(direct_residual),
+                        "matrix_minus_direct_abs_error": finite_float(
+                            abs(float(eigs[idx]) - direct_residual)
+                        ),
+                        "actual_abs_over_exact_grid_weighted_bound": None
+                        if exact_weighted == 0.0
+                        else finite_float(actual_abs / exact_weighted),
+                        "actual_abs_over_explicit_pnt_weighted_bound": None
+                        if pnt_weighted == 0.0
+                        else finite_float(actual_abs / pnt_weighted),
+                        "explicit_pnt_weighted_bound_over_matrix_opnorm": finite_float(
+                            pnt_weighted
+                            / max(abs(float(eigs[0])), abs(float(eigs[-1])))
+                        ),
+                        **variation,
+                    }
+                )
+
+            rows.append(
+                {
+                    "mode": "clvquad",
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "quad_na": int(args.quad_na),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "max_a_effective": finite_float(effective_max_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(shifts)),
+                    "correction_eig_min": finite_float(float(eigs[0])),
+                    "correction_eig_max": finite_float(float(eigs[-1])),
+                    "correction_opnorm": finite_float(
+                        max(abs(float(eigs[0])), abs(float(eigs[-1])))
+                    ),
+                    "directions": direction_rows,
+                    "theorem_shape": (
+                        "partial summation with phi(x)=x^(-1/2)*E_delta(log x)*F_v(log x); "
+                        "bounds are diagnostics for a Chebyshev/PNT variation route"
+                    ),
+                    "D2": (
+                        "raw a=r*log(p), x=exp(a), edge=[2K,4K], Q3 xi=a/(2*pi), "
+                        "sum Lambda(n)n^(-1/2)H(log n) vs integral exp(a/2)H(a)da"
+                    ),
+                }
+            )
+    return rows
+
+
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
     return (ell / (packet.s_k * packet.c_k)) * np.sinc(ell * u / packet.s_k) ** (
         2 * packet.k_spline + 2
@@ -2841,6 +3118,22 @@ def parse_args() -> argparse.Namespace:
     clvstructure.add_argument("--top-eigs", type=int, default=8)
     clvstructure.add_argument("--top-rows", type=int, default=8)
     clvstructure.set_defaults(func=run_clvstructure)
+
+    clvquad = sub.add_parser(
+        "clvquad",
+        help="partial-summation variation diagnostics for the Selberg correction",
+    )
+    add_common_packet_args(clvquad)
+    clvquad.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvquad.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvquad.add_argument("--p0-na", type=int, default=1001)
+    clvquad.add_argument("--quad-na", type=int, default=4001)
+    clvquad.set_defaults(func=run_clvquad)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

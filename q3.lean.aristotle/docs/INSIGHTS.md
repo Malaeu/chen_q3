@@ -32422,3 +32422,27 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Status refines to `PARTIAL(matched prime-continuum cancellation observed)`,
   `GAP(smooth structured quadrature theorem for E_delta*F_v missing)`, and
   `FATAL(simple fixed-rank/few-row boundary shortcut in the current basis)`.
+
+## Insight (2026-06-12, Track B B2b) -- SmoothQuadrature
+
+- Added `docs/trackB/b2b_smooth_quadrature_probe.md` and extended
+  `scripts/trackb_edge_operator_probe.py` with `clvquad`.
+- The D2-safe identity is
+  `sum Lambda(n)n^(-1/2)H(log n) - int exp(a/2)H(a)da =
+  int phi(x)d(psi(x)-x)`, where
+  `H(a)=E_delta(a)F_v(a)` and `phi(x)=x^(-1/2)H(log x)`.
+- The probe computes Stieltjes variation bounds
+  `U(A)|phi(A)|+U(B)|phi(B)|+int U(x)|phi'(x)|dx` for correction
+  eigenvectors, using both exact-grid `psi-x` and the unconditional
+  Fiori--Kadiri--Swidinsky explicit PNT error shape.
+- Positive signal: empirical exact-grid variation sees the right object.  At
+  `K=3.5`, `ell=1.375`, `delta=1`, the opnorm direction has matrix opnorm
+  about `0.23816`, direct smooth residual about `0.22330`, and exact-grid
+  variation bound about `0.61263`.
+- Negative signal: the off-the-shelf explicit PNT bound is far too large on
+  the tested schedule.  At the same point the explicit-PNT variation bound is
+  about `764.37`, i.e. about `3209` times the correction opnorm; across
+  K=2,2.5,3,3.5 the ratio remains hundreds to thousands.
+- Status refines to `PARTIAL(partial-summation theorem shape matches the
+  correction)`, `GAP(global explicit-PNT variation bound is too large)`, and
+  `FATAL(plain FKS sup-error + total variation as B3 closure)`.

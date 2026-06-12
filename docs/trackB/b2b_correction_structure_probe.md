@@ -290,6 +290,15 @@ an unconditional smooth weighted prime-sum theorem for the structured
 cross-correlation family, likely using a Chebyshev/PNT error term plus explicit
 variation/derivative control of `E_delta(a) * F_v(a)`.
 
+Follow-up:
+
+- `docs/trackB/b2b_smooth_quadrature_probe.md` tests this partial-summation
+  route.  The theorem shape matches the correction: empirical `psi-x`
+  variation bounds are within a small constant factor of the observed residual.
+  However, the off-the-shelf explicit PNT bound is hundreds to thousands of
+  times too large on the tested small-K schedule, so plain global
+  Chebyshev-error plus total variation is not a B3 closure route.
+
 ## Proshka Audit Block
 
 Claim:
