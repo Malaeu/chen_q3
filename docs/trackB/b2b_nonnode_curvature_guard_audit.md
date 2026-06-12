@@ -263,6 +263,14 @@ wide, the fallback is a short Taylor model for `S_v'`.
 
 Track B remains active.
 
+Follow-up:
+
+- `docs/trackB/b2b_nonnode_analytic_curvature_audit.md` removes the
+  finite-difference `S_v''` layer from the non-node diagnostic path by adding
+  analytic third derivatives for the packet profile and Selberg/Vaaler
+  receiver.  The next blocker is now outward-rounded interval enclosure of
+  these analytic atoms, not the derivative formula itself.
+
 ## Proshka Audit Block
 
 Claim:

@@ -739,6 +739,18 @@ def centered_bspline_second_derivative(pilot: Any, deg: int, x: np.ndarray | flo
     )
 
 
+def centered_bspline_third_derivative(pilot: Any, deg: int, x: np.ndarray | float) -> np.ndarray:
+    x_arr = np.asarray(x, dtype=float)
+    if deg <= 2:
+        return np.zeros_like(x_arr, dtype=float)
+    return (
+        pilot.centered_bspline(deg - 3, x_arr + 1.5)
+        - 3.0 * pilot.centered_bspline(deg - 3, x_arr + 0.5)
+        + 3.0 * pilot.centered_bspline(deg - 3, x_arr - 0.5)
+        - pilot.centered_bspline(deg - 3, x_arr - 1.5)
+    )
+
+
 def r_corr_derivative(pilot: Any, packet: Any, x: np.ndarray | float) -> np.ndarray:
     deg = 2 * int(packet.k_spline) + 1
     y = packet.s_k * np.asarray(x, dtype=float)
@@ -749,6 +761,12 @@ def r_corr_second_derivative(pilot: Any, packet: Any, x: np.ndarray | float) -> 
     deg = 2 * int(packet.k_spline) + 1
     y = packet.s_k * np.asarray(x, dtype=float)
     return (packet.s_k**2 / packet.c_k) * centered_bspline_second_derivative(pilot, deg, y)
+
+
+def r_corr_third_derivative(pilot: Any, packet: Any, x: np.ndarray | float) -> np.ndarray:
+    deg = 2 * int(packet.k_spline) + 1
+    y = packet.s_k * np.asarray(x, dtype=float)
+    return (packet.s_k**3 / packet.c_k) * centered_bspline_third_derivative(pilot, deg, y)
 
 
 def shifted_packet_matrix_derivative(
@@ -777,6 +795,19 @@ def shifted_packet_matrix_second_derivative(
     ) / (ell**2)
 
 
+def shifted_packet_matrix_third_derivative(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    a: float,
+) -> np.ndarray:
+    return (
+        -r_corr_third_derivative(pilot, packet, (D - a) / ell)
+        + r_corr_third_derivative(pilot, packet, (D + a) / ell)
+    ) / (ell**3)
+
+
 def packet_profile_derivative_value(
     pilot: Any,
     packet: Any,
@@ -798,6 +829,18 @@ def packet_profile_second_derivative_value(
     a: float,
 ) -> float:
     M = shifted_packet_matrix_second_derivative(pilot, packet, D, ell, float(a))
+    return float(coeffs @ M @ coeffs)
+
+
+def packet_profile_third_derivative_value(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a: float,
+) -> float:
+    M = shifted_packet_matrix_third_derivative(pilot, packet, D, ell, float(a))
     return float(coeffs @ M @ coeffs)
 
 
@@ -829,6 +872,23 @@ def packet_profile_second_derivative_grid(
     return np.array(
         [
             packet_profile_second_derivative_value(pilot, packet, D, ell, coeffs, float(a))
+            for a in a_grid
+        ],
+        dtype=float,
+    )
+
+
+def packet_profile_third_derivative_grid(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    a_grid: np.ndarray,
+) -> np.ndarray:
+    return np.array(
+        [
+            packet_profile_third_derivative_value(pilot, packet, D, ell, coeffs, float(a))
             for a in a_grid
         ],
         dtype=float,
@@ -1386,31 +1446,50 @@ def smooth_segment_sign_candidate(
         weight_second_derivative = np.gradient(
             weight_derivative, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
         )
+        weight_third_derivative = np.gradient(
+            weight_second_derivative, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
+        )
         receiver_derivative_source = "sampled_finite_difference"
         receiver_derivative_fd_error = 0.0
         receiver_second_derivative_fd_error = 0.0
+        receiver_third_derivative_fd_error = 0.0
     else:
-        (
-            correction_weights,
-            weight_derivative,
-            weight_second_derivative,
-        ) = correction_weight_derivatives(a_grid)
+        derivative_result = correction_weight_derivatives(a_grid)
+        correction_weights = derivative_result[0]
+        weight_derivative = derivative_result[1]
+        weight_second_derivative = derivative_result[2]
+        if len(derivative_result) >= 4:
+            weight_third_derivative = derivative_result[3]
+            receiver_derivative_source = "analytic_vaaler_polygamma_derivative3"
+        else:
+            weight_third_derivative = np.gradient(
+                weight_second_derivative, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
+            )
+            receiver_derivative_source = "analytic_vaaler_polygamma_derivative"
         weight_derivative_fd = np.gradient(
             correction_weights, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
         )
         weight_second_derivative_fd = np.gradient(
             weight_derivative_fd, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
         )
-        receiver_derivative_source = "analytic_vaaler_polygamma_derivative"
+        weight_third_derivative_fd = np.gradient(
+            weight_second_derivative_fd, a_grid, edge_order=2 if len(a_grid) >= 3 else 1
+        )
         receiver_derivative_fd_error = float(
             np.nanmax(np.abs(weight_derivative - weight_derivative_fd))
         )
         receiver_second_derivative_fd_error = float(
             np.nanmax(np.abs(weight_second_derivative - weight_second_derivative_fd))
         )
+        receiver_third_derivative_fd_error = float(
+            np.nanmax(np.abs(weight_third_derivative - weight_third_derivative_fd))
+        )
     profile = packet_profile_grid(pilot, packet, D, ell, coeffs, a_grid)
     profile_derivative = packet_profile_derivative_grid(pilot, packet, D, ell, coeffs, a_grid)
     profile_second_derivative = packet_profile_second_derivative_grid(
+        pilot, packet, D, ell, coeffs, a_grid
+    )
+    profile_third_derivative = packet_profile_third_derivative_grid(
         pilot, packet, D, ell, coeffs, a_grid
     )
     H = correction_weights * profile
@@ -1420,12 +1499,24 @@ def smooth_segment_sign_candidate(
         + 2.0 * weight_derivative * profile_derivative
         + correction_weights * profile_second_derivative
     )
+    dddH = (
+        weight_third_derivative * profile
+        + 3.0 * weight_second_derivative * profile_derivative
+        + 3.0 * weight_derivative * profile_second_derivative
+        + correction_weights * profile_third_derivative
+    )
     signed_density = np.exp(-0.5 * a_grid) * (dH - 0.5 * H)
     signed_density_derivative = np.exp(-0.5 * a_grid) * (ddH - dH + 0.25 * H)
-    signed_density_curvature = np.gradient(
+    signed_density_curvature_fd = np.gradient(
         signed_density_derivative,
         a_grid,
         edge_order=2 if len(a_grid) >= 3 else 1,
+    )
+    signed_density_curvature = np.exp(-0.5 * a_grid) * (
+        dddH - 1.5 * ddH + 0.75 * dH - 0.125 * H
+    )
+    signed_density_curvature_fd_error = float(
+        np.nanmax(np.abs(signed_density_curvature - signed_density_curvature_fd))
     )
     phi = np.exp(-0.5 * a_grid) * H
     sign_changes = sampled_sign_change_count(signed_density)
@@ -1520,18 +1611,32 @@ def smooth_segment_sign_candidate(
             float(np.max(np.abs(signed_density_curvature)))
         ),
         "profile_derivative_source": "analytic_centered_b_spline_derivative",
+        "profile_third_derivative_source": "analytic_centered_b_spline_third_derivative",
         "receiver_derivative_source": receiver_derivative_source,
         "receiver_derivative_fd_max_abs_error": finite_float(receiver_derivative_fd_error),
         "receiver_second_derivative_fd_max_abs_error": finite_float(
             receiver_second_derivative_fd_error
         ),
+        "receiver_third_derivative_fd_max_abs_error": finite_float(
+            receiver_third_derivative_fd_error
+        ),
+        "signed_density_curvature_source": "analytic_product_rule",
+        "signed_density_curvature_fd_max_abs_error": finite_float(
+            signed_density_curvature_fd_error
+        ),
         "profile_derivative_max_abs": finite_float(float(np.max(np.abs(profile_derivative)))),
         "profile_second_derivative_max_abs": finite_float(
             float(np.max(np.abs(profile_second_derivative)))
         ),
+        "profile_third_derivative_max_abs": finite_float(
+            float(np.max(np.abs(profile_third_derivative)))
+        ),
         "receiver_derivative_max_abs": finite_float(float(np.max(np.abs(weight_derivative)))),
         "receiver_second_derivative_max_abs": finite_float(
             float(np.max(np.abs(weight_second_derivative)))
+        ),
+        "receiver_third_derivative_max_abs": finite_float(
+            float(np.nanmax(np.abs(weight_third_derivative)))
         ),
         "receiver_node_audit": node_audit,
         "non_node_interval_candidate": non_node_interval_candidate,
@@ -1944,6 +2049,29 @@ def vaaler_K0_derivatives(z: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.nda
     return k0, k1, k2
 
 
+def vaaler_K0_derivatives3(z: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    z = np.asarray(z, dtype=float)
+    k0, k1, k2 = vaaler_K0_derivatives(z)
+    k3 = np.empty_like(z, dtype=float)
+    small = np.abs(z) < 1e-6
+    zs = z[~small]
+    if zs.size:
+        sin2 = np.sin(2.0 * math.pi * zs)
+        cos2 = np.cos(2.0 * math.pi * zs)
+        k3[~small] = (
+            -4.0 * math.pi * sin2 / (zs**2)
+            - 12.0 * cos2 / (zs**3)
+            + 18.0 * sin2 / (math.pi * zs**4)
+            - 12.0 * (1.0 - cos2) / (math.pi**2 * zs**5)
+        )
+    if np.any(small):
+        zs0 = z[small]
+        k3[small] = (16.0 * math.pi**4 / 15.0) * zs0 - (
+            8.0 * math.pi**6 / 21.0
+        ) * zs0**3
+    return k0, k1, k2, k3
+
+
 def vaaler_H0(z: np.ndarray, *, integer_tol: float = 1e-10) -> np.ndarray:
     """Vaaler's H0 sign approximant in the B1 Fourier convention.
 
@@ -2002,6 +2130,44 @@ def vaaler_H0_derivatives(
         h1[regular] = A1 * B + A * B1
         h2[regular] = A2 * B + 2.0 * A1 * B1 + A * B2
     return h0, h1, h2
+
+
+def vaaler_H0_derivatives3(
+    z: np.ndarray,
+    *,
+    integer_tol: float = 1e-10,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Return H0 through H0''' from the polygamma product formula."""
+    z = np.asarray(z, dtype=float)
+    h0, h1, h2 = vaaler_H0_derivatives(z, integer_tol=integer_tol)
+    h3 = np.full_like(z, np.nan, dtype=float)
+    nearest = np.rint(z)
+    regular = np.abs(z - nearest) > integer_tol
+    zr = z[regular]
+    if zr.size:
+        sinp = np.sin(math.pi * zr)
+        A = (sinp / math.pi) ** 2
+        A1 = np.sin(2.0 * math.pi * zr) / math.pi
+        A2 = 2.0 * np.cos(2.0 * math.pi * zr)
+        A3 = -4.0 * math.pi * np.sin(2.0 * math.pi * zr)
+        B = special.polygamma(1, 1.0 - zr) - special.polygamma(1, 1.0 + zr) + 2.0 / zr
+        B1 = (
+            -special.polygamma(2, 1.0 - zr)
+            - special.polygamma(2, 1.0 + zr)
+            - 2.0 / (zr**2)
+        )
+        B2 = (
+            special.polygamma(3, 1.0 - zr)
+            - special.polygamma(3, 1.0 + zr)
+            + 4.0 / (zr**3)
+        )
+        B3 = (
+            -special.polygamma(4, 1.0 - zr)
+            - special.polygamma(4, 1.0 + zr)
+            - 12.0 / (zr**4)
+        )
+        h3[regular] = A3 * B + 3.0 * A2 * B1 + 3.0 * A1 * B2 + A * B3
+    return h0, h1, h2, h3
 
 
 def max_finite(values: np.ndarray) -> float | None:
@@ -2161,6 +2327,29 @@ def selberg_interval_plus_derivatives(
     first = receiver_delta * (0.5 * Ha1 - 0.5 * Hb1 + 0.5 * Ka1 + 0.5 * Kb1)
     second = receiver_delta**2 * (0.5 * Ha2 - 0.5 * Hb2 + 0.5 * Ka2 + 0.5 * Kb2)
     return value, first, second
+
+
+def selberg_interval_plus_derivatives3(
+    x: np.ndarray,
+    *,
+    lo: float,
+    hi: float,
+    receiver_delta: float,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    if receiver_delta <= 0.0:
+        raise ValueError("receiver_delta must be positive")
+    x = np.asarray(x, dtype=float)
+    za = receiver_delta * (x - lo)
+    zb = receiver_delta * (x - hi)
+    Ha0, Ha1, Ha2, Ha3 = vaaler_H0_derivatives3(za)
+    Hb0, Hb1, Hb2, Hb3 = vaaler_H0_derivatives3(zb)
+    Ka0, Ka1, Ka2, Ka3 = vaaler_K0_derivatives3(za)
+    Kb0, Kb1, Kb2, Kb3 = vaaler_K0_derivatives3(zb)
+    value = 0.5 * Ha0 - 0.5 * Hb0 + 0.5 * Ka0 + 0.5 * Kb0
+    first = receiver_delta * (0.5 * Ha1 - 0.5 * Hb1 + 0.5 * Ka1 + 0.5 * Kb1)
+    second = receiver_delta**2 * (0.5 * Ha2 - 0.5 * Hb2 + 0.5 * Ka2 + 0.5 * Kb2)
+    third = receiver_delta**3 * (0.5 * Ha3 - 0.5 * Hb3 + 0.5 * Ka3 + 0.5 * Kb3)
+    return value, first, second, third
 
 
 def selberg_interval_values(
@@ -4138,15 +4327,15 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
 
             def correction_weight_derivatives_grid(
                 a_values: np.ndarray,
-            ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-                values, first, second = selberg_interval_plus_derivatives(
+            ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+                values, first, second, third = selberg_interval_plus_derivatives3(
                     a_values,
                     lo=lo,
                     hi=hi,
                     receiver_delta=float(receiver_delta),
                 )
                 chi_values = np.where((lo <= a_values) & (a_values <= hi), 1.0, 0.0)
-                return values - chi_values, first, second
+                return values - chi_values, first, second, third
 
             def receiver_node_audit_grid(a_values: np.ndarray) -> dict[str, Any]:
                 return selberg_receiver_node_audit(

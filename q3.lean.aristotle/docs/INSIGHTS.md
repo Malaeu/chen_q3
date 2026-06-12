@@ -32840,3 +32840,32 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `PARTIAL(sampled curvature-envelope route validated on non-node pilots)`,
   `GAP(outward-rounded S_v, S_v', and sup |S_v''| enclosures still missing)`,
   and `FATAL(treating sampled finite-difference S_v'' as a proof bound)`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeAnalyticCurvatureAudit
+
+- Added `docs/trackB/b2b_nonnode_analytic_curvature_audit.md` and upgraded
+  `scripts/trackb_edge_operator_probe.py clvsigncert` with analytic third
+  derivatives for centered B-spline packet profiles, Vaaler `K0`, Vaaler
+  `H0`, and the Selberg receiver.
+- `S_v''` is now computed by the analytic product-rule formula
+  `exp(-a/2)(H_v''' - 3H_v''/2 + 3H_v'/4 - H_v/8)`.
+  Finite differences are retained only as sanity diagnostics.
+- A micro sanity check away from Vaaler integer nodes compared analytic
+  `K0'''` and `H0'''` with central-difference derivatives of `K0''` and
+  `H0''`; max errors were about `7.5e-9` and `4.2e-9`.
+- K=3.5 cells `58,59` keep the non-node classification and pass curvature
+  factors through `10000`; the max discrepancy between analytic `S_v''` and
+  the old finite-difference sanity layer is about `2.72e-6` for cell `58` and
+  `3.31e-6` for cell `59`.
+- Node-local cells `61` and `39` show huge third-receiver derivative pressure
+  (`~2.2e5` and `~3.3e4` respectively) and remain excluded from the non-node
+  proof path.
+- The next theorem-producing generator target is K=3.5 cell `58`, now with
+  outward-rounded interval enclosures for analytic atoms
+  `E_delta^{(j)}` and `F_v^{(j)}` for `j <= 3`.
+- Status refines to
+  `PARTIAL(analytic S_v'' product-rule route installed for non-node branch)`,
+  `GAP(outward-rounded intervals for receiver/profile derivatives still
+  missing)`, and
+  `FATAL(treating floating analytic product-rule values as interval
+  enclosures)`.
