@@ -32,3 +32,16 @@ float cancellation (`decimal30` diff `<1e-17`).
 ПЛАН (+стоимость): STOP per v5 Level 3; do not start S2.
 ВОПРОС Ылше/Fable: controls should reselect opnorm direction, or freeze the
 full witness direction for prime-removal tests? yes=reselect / no=freeze.
+
+## 2026-06-12 -- S1-FINAL Fixed Direction
+
+ГДЕ Я: Track B v5 S1-FINAL after LEVEL 3 answer `NO`.
+СДЕЛАНО: added `clvfixed` mode; froze full witness direction and evaluated
+prime-removal controls as linear Rayleigh/accounting on the same vector.
+ЧИСЛА: at `a_min=7.28`, pointwise `S=-0.0212171`; fixed Rayleigh table
+`-1.65015 -0.986324 +3.53058 -0.655948 +0 = +0.238160`.
+ДОПУСТИМОСТЬ: `Qv=(-3.55e-15,-3.55e-15)`, `||v||_G^2=1.000000000000001`;
+finite packet Hermitian square by construction.
+ВЕРДИКТ: blade `a_w` edge-prime sign selection confirmed; pit `a_min` is
+`FINITE_CONE_WITNESS`, nature `OPEN_UNTIL_S3_B2B_GATE`.
+ПЛАН (+стоимость): skip S2 per LEVEL 3; run S3 B2b gate on `K=2,3`.

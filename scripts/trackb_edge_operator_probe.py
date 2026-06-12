@@ -29,6 +29,9 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   clvmesh  mesh-stability audit for the finite psi-staircase ledger
   clvwitness
             N1b anatomy for the first clvsigncert sampled-negative witness
+  clvfixed
+            fixed-direction S1-FINAL witness accounting; prime removals are
+            evaluated on the full witness direction without reselecting it
   clvsigncert
             smooth/jump split prototype for a future V_J sign certificate
             with analytic B-spline derivatives for the packet profile
@@ -4598,6 +4601,390 @@ def clv_window_shift_summary(
     }
 
 
+def clv_prime_correction_rows_for_coeffs(
+    *,
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    shifts: list[Any],
+    lo: float,
+    hi: float,
+    receiver_delta: float,
+    top: int,
+) -> dict[str, Any]:
+    """Linear prime-correction accounting for a frozen coefficient vector."""
+
+    def chi_weight(x: float) -> float:
+        return 1.0 if float(lo) <= float(x) <= float(hi) else 0.0
+
+    def plus_weight(x: float) -> float:
+        return float(
+            selberg_interval_values(
+                np.array([float(x)]),
+                lo=float(lo),
+                hi=float(hi),
+                receiver_delta=float(receiver_delta),
+                sign="plus",
+            )[0]
+        )
+
+    rows: list[dict[str, Any]] = []
+    by_r_pow: dict[int, dict[str, Any]] = {}
+    total = 0.0
+    total_abs = 0.0
+    for sh in shifts:
+        receiver_gap = plus_weight(float(sh.a)) - chi_weight(float(sh.a))
+        profile = packet_profile_value(pilot, packet, D, ell, coeffs, float(sh.a))
+        contribution = float(sh.weight) * receiver_gap * profile
+        total += contribution
+        total_abs += abs(contribution)
+        bucket = by_r_pow.setdefault(int(sh.r_pow), {"count": 0, "sum": 0.0, "abs_sum": 0.0})
+        bucket["count"] += 1
+        bucket["sum"] += contribution
+        bucket["abs_sum"] += abs(contribution)
+        rows.append(
+            {
+                "p": int(sh.p),
+                "r_pow": int(sh.r_pow),
+                "a": finite_float(float(sh.a)),
+                "xi": finite_float(float(sh.a) / (2.0 * math.pi)),
+                "weight": finite_float(float(sh.weight)),
+                "receiver_gap_Mplus_minus_indicator": finite_float(receiver_gap),
+                "profile_F_v": finite_float(profile),
+                "prime_correction_contribution": finite_float(contribution),
+                "abs_prime_correction_contribution": finite_float(abs(contribution)),
+            }
+        )
+
+    rows.sort(key=lambda row: -float(row["abs_prime_correction_contribution"]))
+    power_rows = [
+        {
+            "r_pow": int(r_pow),
+            "count": int(data["count"]),
+            "sum": finite_float(float(data["sum"])),
+            "abs_sum": finite_float(float(data["abs_sum"])),
+            "abs_fraction": 0.0
+            if total_abs == 0.0
+            else finite_float(float(data["abs_sum"]) / total_abs),
+        }
+        for r_pow, data in sorted(by_r_pow.items())
+    ]
+    return {
+        "shift_count": int(len(shifts)),
+        "sum": finite_float(total),
+        "abs_sum": finite_float(total_abs),
+        "by_r_pow": power_rows,
+        "top_by_abs": rows[: int(top)],
+    }
+
+
+def clv_fixed_band_accounting(
+    *,
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    coeffs: np.ndarray,
+    shifts: list[Any],
+    lo: float,
+    hi: float,
+    receiver_delta: float,
+    top: int,
+) -> dict[str, Any]:
+    bands = [
+        ("[0,2K-0.5]", 0.0, float(lo) - 0.5, False),
+        ("[2K-0.5,2K+0.5]", float(lo) - 0.5, float(lo) + 0.5, False),
+        ("[2K+0.5,4K]", float(lo) + 0.5, float(hi), True),
+    ]
+
+    band_rows: list[dict[str, Any]] = []
+    assigned: set[int] = set()
+    for label, band_lo, band_hi, high_closed in bands:
+        selected: list[Any] = []
+        for idx, sh in enumerate(shifts):
+            a = float(sh.a)
+            inside = band_lo <= a <= band_hi if high_closed else band_lo <= a < band_hi
+            if inside:
+                selected.append(sh)
+                assigned.add(idx)
+        data = clv_prime_correction_rows_for_coeffs(
+            pilot=pilot,
+            packet=packet,
+            D=D,
+            ell=ell,
+            coeffs=coeffs,
+            shifts=selected,
+            lo=lo,
+            hi=hi,
+            receiver_delta=receiver_delta,
+            top=top,
+        )
+        band_rows.append(
+            {
+                "label": label,
+                "a_range": [finite_float(band_lo), finite_float(band_hi)],
+                "prime_correction_sum": data["sum"],
+                "prime_correction_abs_sum": data["abs_sum"],
+                "shift_count": data["shift_count"],
+                "by_r_pow": data["by_r_pow"],
+                "top_by_abs": data["top_by_abs"],
+            }
+        )
+
+    unassigned = [sh for idx, sh in enumerate(shifts) if idx not in assigned]
+    unassigned_data = clv_prime_correction_rows_for_coeffs(
+        pilot=pilot,
+        packet=packet,
+        D=D,
+        ell=ell,
+        coeffs=coeffs,
+        shifts=unassigned,
+        lo=lo,
+        hi=hi,
+        receiver_delta=receiver_delta,
+        top=top,
+    )
+    prime_total = sum(float(row["prime_correction_sum"]) for row in band_rows) + float(
+        unassigned_data["sum"]
+    )
+    return {
+        "bands": band_rows,
+        "outside_requested_bands": {
+            "prime_correction_sum": unassigned_data["sum"],
+            "prime_correction_abs_sum": unassigned_data["abs_sum"],
+            "shift_count": unassigned_data["shift_count"],
+            "top_by_abs": unassigned_data["top_by_abs"],
+        },
+        "prime_correction_sum_from_bands": finite_float(prime_total),
+    }
+
+
+def run_clvfixed(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            Q = ctx["Q"]
+            G = ctx["G"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            all_shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+            direction = clv_correction_direction(
+                pilot=pilot,
+                packet=packet,
+                D=D,
+                ell=params.ell,
+                shifts=all_shifts,
+                chi_weight=chi_weight,
+                plus_weight=plus_weight,
+                P0_edge=P0_edge,
+                P0_plus=P0_plus,
+                N=N,
+                Gc=Gc,
+            )
+            coeffs = direction["coeffs"]
+            witness_a = (
+                float(args.witness_a)
+                if args.witness_a is not None
+                else float(lo + args.witness_offset)
+            )
+
+            continuum_correction = float(direction["continuum_correction_rayleigh"])
+            variants: dict[str, tuple[str, list[Any]]] = {
+                "full": ("all prime-power shifts; direction frozen from this case", all_shifts),
+                "ordinary_primes_only": (
+                    "ordinary primes only, fixed full direction",
+                    [sh for sh in all_shifts if int(sh.r_pow) == 1],
+                ),
+                "p_equals_2_only": (
+                    "p=2 powers only, fixed full direction",
+                    [sh for sh in all_shifts if int(sh.p) == 2],
+                ),
+                "without_log_gt_witness_minus_0p5": (
+                    "exclude shifts with log n > witness_a - 0.5, fixed full direction",
+                    [sh for sh in all_shifts if float(sh.a) <= witness_a - 0.5],
+                ),
+                "without_local_delta_window": (
+                    "exclude shifts with log n in [witness_a-delta,witness_a+delta], fixed full direction",
+                    [
+                        sh
+                        for sh in all_shifts
+                        if not (
+                            witness_a - float(receiver_delta)
+                            <= float(sh.a)
+                            <= witness_a + float(receiver_delta)
+                        )
+                    ],
+                ),
+            }
+            variant_rows: dict[str, Any] = {}
+            full_prime_sum = None
+            for name, (description, shifts) in variants.items():
+                prime_rows = clv_prime_correction_rows_for_coeffs(
+                    pilot=pilot,
+                    packet=packet,
+                    D=D,
+                    ell=params.ell,
+                    coeffs=coeffs,
+                    shifts=shifts,
+                    lo=lo,
+                    hi=hi,
+                    receiver_delta=float(receiver_delta),
+                    top=int(args.top),
+                )
+                prime_sum = float(prime_rows["sum"])
+                if name == "full":
+                    full_prime_sum = prime_sum
+                variant_rows[name] = {
+                    "description": description,
+                    "shift_count": prime_rows["shift_count"],
+                    "prime_correction_rayleigh_fixed_direction": prime_rows["sum"],
+                    "minus_continuum_arch_model_same_for_all_prime_controls": finite_float(
+                        -continuum_correction
+                    ),
+                    "correction_rayleigh_fixed_direction": finite_float(
+                        prime_sum - continuum_correction
+                    ),
+                    "delta_prime_sum_vs_full": None
+                    if full_prime_sum is None
+                    else finite_float(prime_sum - full_prime_sum),
+                    "top_by_abs": prime_rows["top_by_abs"],
+                }
+
+            q_values = np.asarray(Q @ coeffs, dtype=float)
+            local = clv_local_sign_anatomy(
+                pilot=pilot,
+                packet=packet,
+                D=D,
+                ell=params.ell,
+                coeffs=coeffs,
+                a=witness_a,
+                lo=lo,
+                hi=hi,
+                receiver_delta=float(receiver_delta),
+            )
+            band_accounting = clv_fixed_band_accounting(
+                pilot=pilot,
+                packet=packet,
+                D=D,
+                ell=params.ell,
+                coeffs=coeffs,
+                shifts=all_shifts,
+                lo=lo,
+                hi=hi,
+                receiver_delta=float(receiver_delta),
+                top=int(args.top),
+            )
+            additive_total_from_bands = float(
+                band_accounting["prime_correction_sum_from_bands"]
+            ) - continuum_correction
+            rows.append(
+                {
+                    "mode": "clvfixed",
+                    "status": "diagnostic_only",
+                    "fixed_direction_protocol": (
+                        "full correction direction is frozen; prime-removal controls "
+                        "are linear Rayleigh/accounting evaluations on that same vector"
+                    ),
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "max_a_effective": finite_float(effective_max_a),
+                    "witness_a": finite_float(witness_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(all_shifts)),
+                    "full_direction": clv_direction_report(direction),
+                    "local_pointwise_density_at_witness": local,
+                    "fixed_direction_band_accounting": {
+                        "D2": (
+                            "additive table for the fixed Rayleigh correction "
+                            "prime(M+-1_edge)-continuum(M+-1_edge); it is not a "
+                            "pointwise prime-band decomposition of S(a)"
+                        ),
+                        "minus_continuum_arch_model": finite_float(-continuum_correction),
+                        "boundary_slot": 0.0,
+                        "prime_bands": band_accounting["bands"],
+                        "outside_requested_bands": band_accounting["outside_requested_bands"],
+                        "sum_prime_bands": band_accounting["prime_correction_sum_from_bands"],
+                        "total_prime_minus_continuum_plus_boundary": finite_float(
+                            additive_total_from_bands
+                        ),
+                        "total_minus_full_correction_rayleigh_abs": finite_float(
+                            abs(additive_total_from_bands - float(direction["correction_rayleigh"]))
+                        ),
+                    },
+                    "fixed_direction_prime_removal_controls": variant_rows,
+                    "admissibility": {
+                        "Q_functionals": [finite_float(float(x)) for x in q_values.tolist()],
+                        "Q_abs_max": finite_float(float(np.max(np.abs(q_values)))),
+                        "G_norm_squared": finite_float(float(coeffs @ G @ coeffs)),
+                        "coeff_l2_norm": finite_float(float(np.linalg.norm(coeffs))),
+                        "finite_packet_status": "FINITE_PACKET_HERMITIAN_SQUARE_BY_CONSTRUCTION",
+                        "global_Q3_cone_status": "DIAGNOSTIC_ONLY_NOT_A_LEAN_CERTIFICATE",
+                    },
+                    "D2": (
+                        "raw a=r*log(p), x=exp(a); local S(a) is the receiver "
+                        "product-rule density, while prime band rows are fixed-direction "
+                        "operator/Rayleigh accounting; no E5' closure is claimed"
+                    ),
+                }
+            )
+    return rows
+
+
 def run_clvwitness(args: argparse.Namespace) -> list[dict[str, Any]]:
     pilot = load_step13()
     rows: list[dict[str, Any]] = []
@@ -6188,6 +6575,29 @@ def parse_args() -> argparse.Namespace:
     clvwitness.add_argument("--fine-step", type=float, default=0.0005)
     clvwitness.add_argument("--top", type=int, default=12)
     clvwitness.set_defaults(func=run_clvwitness)
+
+    clvfixed = sub.add_parser(
+        "clvfixed",
+        help="S1-FINAL fixed-direction witness accounting without direction reselect",
+    )
+    add_common_packet_args(clvfixed)
+    clvfixed.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvfixed.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvfixed.add_argument("--p0-na", type=int, default=401)
+    clvfixed.add_argument("--witness-a", type=float)
+    clvfixed.add_argument(
+        "--witness-offset",
+        type=float,
+        default=0.130987044271352,
+        help="used when --witness-a is omitted; raw a is 2K plus this offset",
+    )
+    clvfixed.add_argument("--top", type=int, default=12)
+    clvfixed.set_defaults(func=run_clvfixed)
 
     clvsigncert = sub.add_parser(
         "clvsigncert",

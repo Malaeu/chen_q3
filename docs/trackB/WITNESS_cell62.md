@@ -1,7 +1,8 @@
 # Track B Witness Cell62
 
-Status: GAP(second pathology at minimum).  This is diagnostic evidence only:
-not a proof of E5', not a Lean proof, and not a route mutation.
+Status: GAP(pit survives prime controls; fixed direction is finite-cone
+admissible).  This is diagnostic evidence only: not a proof of E5', not a
+Lean proof, and not a route mutation.
 
 ## Point
 
@@ -101,8 +102,95 @@ exclude [a_min-delta,a_min+delta]         ~= -3.03605e-3
 ```
 
 Therefore the negative region is not killed by removing the local/right edge
-prime shifts after reselecting the diagnostic opnorm direction.  This is a
-second pathology under the v5 control protocol.
+prime shifts after reselecting the diagnostic opnorm direction.  LEVEL 3
+answered this protocol question with `NO`: freeze the full witness direction
+and run prime-removal tests only as linear difference accounting in that fixed
+direction.
+
+## S1-FINAL Fixed-Direction Accounting
+
+Protocol:
+
+```text
+direction = full correction opnorm witness, frozen
+prime-removal tests = linear Rayleigh/accounting on the same direction
+no reselect under prime-removal variants
+```
+
+D2: the band table below is additive for the fixed Rayleigh correction
+
+```text
+prime(M^+ - 1_edge) - continuum(M^+ - 1_edge) + boundary
+```
+
+It is not a literal pointwise prime-band decomposition of the local density
+`S(a)`.
+
+At `a_min = 7.28`, the local pointwise slot remains:
+
+```text
+S(a_min)                            ~= -2.12171e-2
+arch_proxy_smooth_receiver(a_min)   ~= -1.67043e-1
+prime_edge_hard_indicator_slot      ~= +1.45826e-1
+boundary_jump_slot                  =   0
+```
+
+Fixed-direction additive Rayleigh table:
+
+```text
+minus_continuum_arch_model          ~= -1.65015
+prime band [0, 2K-0.5]              ~= -0.986324   (143 shifts)
+prime band [2K-0.5, 2K+0.5]         ~= +3.53058    (165 shifts)
+prime band [2K+0.5, 4K]             ~= -0.655948   (73870 shifts)
+boundary_slot                       =   0
+total                               ~= +0.238160
+full correction Rayleigh            ~= +0.238160
+table reconstruction error          ~= 2.63e-12
+```
+
+The middle shoulder band `[2K-0.5,2K+0.5] = [6.5,7.5]` is the sign-selecting
+positive mass in the fixed-direction Rayleigh accounting.  Its largest terms
+are again ordinary primes just below the left edge:
+
+```text
+p=1093, log p ~= 6.9966814882, contribution ~= +0.210270
+p=1091, log p ~= 6.9948499858, contribution ~= +0.209873
+p=1087, log p ~= 6.9911768871, contribution ~= +0.209001
+```
+
+Fixed-direction prime-removal controls:
+
+```text
+full correction                      ~= +0.238160
+ordinary primes only                 ~= +0.195353
+p=2 powers only                      ~= -1.63440
+exclude log n > a_min - 0.5          ~= -3.80080
+exclude [a_min-delta,a_min+delta]    ~= -1.80707
+```
+
+So the fixed-direction linear accounting confirms that the edge shoulder
+prime band is carrying the positive correction mass.  It does not by itself
+explain the pointwise pit away; S3 must decide whether the pit is a legitimate
+member of the B2b accounting or a defect in the decomposition.
+
+Admissibility of the frozen direction:
+
+```text
+Q-functional 1                       ~= -3.55e-15
+Q-functional 2                       ~= -3.55e-15
+max |Qv|                             ~= 3.55e-15
+G-norm squared                       ~= 1.000000000000001
+finite packet status                 =  FINITE_PACKET_HERMITIAN_SQUARE_BY_CONSTRUCTION
+global Q3 status                     =  DIAGNOSTIC_ONLY_NOT_A_LEAN_CERTIFICATE
+```
+
+Verdict for the pit:
+
+```text
+NOT_OUT_OF_CONE
+FINITE_CONE_WITNESS
+OPEN_UNTIL_S3_B2B_GATE
+```
 
 ## Scan
 
@@ -138,11 +226,11 @@ p=1087, log p ~= 6.9911768871, contribution ~= 0.209001
 
 ## Float Guard
 
-`mpmath` is unavailable in both `.venv` and system Python, and the `.venv`
-does not contain `pip`.  The named cancellation guard was therefore run with
-Python `decimal` at precision `30`, recombining the same float64 analytic
-atoms.  This checks the arithmetic of the named cancellation, not source
-interval containment.
+At the addendum stop, `mpmath` was unavailable in both `.venv` and system
+Python, and the `.venv` did not contain `pip`.  The named cancellation guard
+was therefore run with Python `decimal` at precision `30`, recombining the
+same float64 analytic atoms.  This checks the arithmetic of the named
+cancellation, not source interval containment.
 
 ```text
 a_w:
@@ -162,6 +250,13 @@ Float-guard verdict:
 ZERO_CONSISTENT(float cancellation not responsible)
 ```
 
+S1-FINAL installed `mpmath` into `.venv` via `ensurepip` plus `pip install
+mpmath`.  A legal dps-30 recombine at `a_min=7.28` gives:
+
+```text
+mpmath30 S(a_min) ~= -0.0212171175273790354859108488959
+```
+
 ## Prediction Ledger
 
 ```text
@@ -174,18 +269,21 @@ Status: ZERO_CONSISTENT at a_w
 
 Addendum statement:
 minimum negativity also disappears without edge primes
-Status: REFUTED under reselected-opnorm controls at a_min
+Status: REFUTED
+
+Corrected two-layer picture:
+1. blade at a_w ~= 7.131: edge-prime sign selection CONFIRMED
+2. pit at a_min ~= 7.28: nature OPEN; it survives all prime controls and the
+   frozen direction is finite-cone admissible
+Status: GAP(pit awaits S3 B2b accounting)
 ```
 
-## Stop Verdict
+## S1-FINAL Verdict
 
 ```text
-GAP(second pathology: negative minimum persists under all four nature controls)
+ZERO_CONSISTENT(first crossing: edge-prime sign selection confirmed)
+REFUTED(Fable corrected prediction: minimum = edge-prime)
+GAP(pit: finite-cone witness, nature open until S3)
 ```
 
-Per Track B v5, this triggers Level 3.  Do not proceed to S2 until
-Ылша/Fable decides whether the control should:
-
-1. keep reselecting the opnorm direction under each prime-control variant; or
-2. freeze the full witness direction and test prime removals only in that
-   fixed direction.
+Per LEVEL 3, skip S2 for now and proceed directly to S3 B2b gate on `K=2,3`.

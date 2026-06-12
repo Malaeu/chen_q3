@@ -33133,3 +33133,27 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Per v5 Level 3, S2 must not start until Ylsha/Fable chooses whether nature
   controls should reselect opnorm directions or freeze the full witness
   direction for prime-removal tests.
+
+## Insight (2026-06-12, Track B B2b) -- S1FinalFixedDirection
+
+- LEVEL 3 answer was `NO`: freeze the full witness direction and evaluate
+  prime removals only as linear difference/Rayleigh accounting on that same
+  vector.  Added `clvfixed` mode to
+  `scripts/trackb_edge_operator_probe.py`; no Lean files and no route mutation.
+- At the pit `a_min=7.28`, the local density remains
+  `S(a) ~= -0.0212171`; four-slot diagnostic is arch proxy
+  `~=-0.167043`, hard-edge slot `~=+0.145826`, zero-side pointwise slot
+  `0`, boundary `0`.
+- Fixed-direction Rayleigh table for
+  `prime(M^+-1_edge)-continuum(M^+-1_edge)+boundary` is:
+  continuum/arch `-1.65015`, prime band `[0,2K-0.5]` `-0.986324`,
+  prime band `[2K-0.5,2K+0.5]` `+3.53058`, prime band `[2K+0.5,4K]`
+  `-0.655948`, total `+0.238160`; reconstruction error `~2.63e-12`.
+- The frozen direction is not outside the finite cone:
+  `Qv=(-3.55e-15,-3.55e-15)`, `||v||_G^2=1.000000000000001`, and the
+  finite packet profile is a Hermitian square by construction.  This is still
+  `DIAGNOSTIC_ONLY_NOT_A_LEAN_CERTIFICATE`.
+- Status:
+  `ZERO_CONSISTENT(first crossing edge-prime sign selection confirmed)`,
+  `REFUTED(Fable corrected prediction: minimum=edge-prime)`, and
+  `GAP(pit is finite-cone witness; nature remains open until S3 B2b gate)`.
