@@ -240,6 +240,19 @@ without a new tail estimate.
 
 It does not reject Track B as a whole.
 
+## Reproducibility
+
+The edge proxy and low-band numbers above are now reproducible with:
+
+```bash
+.venv/bin/python scripts/trackb_edge_operator_probe.py edge --K 1 2 --p0-na 8001
+.venv/bin/python scripts/trackb_edge_operator_probe.py lowband --K 1 2 3 4 8
+```
+
+The script is a numerical probe only.  It preserves the D2 raw-log convention
+`a=r*log(p)`, `I_K=[2K,4K]`, and `xi=a/(2*pi)`, but it does not interval-certify
+the matrix entries and does not prove E5'.
+
 ## Proshka Update
 
 Claim:

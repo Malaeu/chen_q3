@@ -32073,3 +32073,19 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   now a stronger `PSD-CLV` condition on `M-chi_edge` over the actual packet
   spectrum, a direct `FINITE-OP` certificate, or a genuine explicit-formula
   receiver that inserts zero-side PSD before the prime-shift oscillation.
+
+## Insight (2026-06-12, Track B B2) -- EdgeProbeScript
+
+- Added `scripts/trackb_edge_operator_probe.py` to make the current B2/D2
+  probes reproducible instead of leaving them as inline numerical experiments.
+- The script has three modes: `edge` for the projected Step13 edge-defect proxy
+  on `ker(Q)`, `lowband` for the Selberg-positive window mass
+  `|u|<1/(12K)`, and `gaussian` for the finite-packet failure of the naive
+  positive-definite Gaussian majorant.
+- Verification commands reproduced the existing control numbers:
+  `edge --K 1 2` gives the `K=2` projected edge opnorm
+  `0.4416718760986585`; `lowband --K 1 2 3 4` gives the same small capture
+  masses; `gaussian --K 1` gives generalized minimum eigenvalue about
+  `-8.3889e4`.
+- Status remains `B2-GAP(cone transport)`.  This is a reusable audit/minimal
+  example for Proshka, not a proof certificate and not an E5' closure.

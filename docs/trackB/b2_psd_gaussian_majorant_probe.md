@@ -205,3 +205,14 @@ Minimal example:
 `K=2`, raw edge `[4,8]`, `W_2(x)=exp(4*pi)exp(-pi*(x/4)^2)`,
 Step13 packet parameters `ell=0.35`, grid `delta=0.5`, `k_spline=5`.
 The candidate majorant is scalar-correct but operator-wrong.
+
+Reproducibility:
+
+```bash
+.venv/bin/python scripts/trackb_edge_operator_probe.py gaussian --K 1
+.venv/bin/python scripts/trackb_edge_operator_probe.py gaussian --K 2
+```
+
+The `K=2` run enumerates prime-power shifts up to `max_a=16` and is much
+heavier than `K=1`.  These runs are D2 numerical probes only; they do not
+interval-certify matrix entries and do not close E5'.
