@@ -220,3 +220,21 @@ Question for Proshka:
 What is the correct normalized packet family for the E5' cone: fixed-width
 packets, width proportional to K, or a two-scale family that separates
 ordinary-prime mean control from boundary-null capture?
+
+## Follow-Up: Stability Schedule
+
+`docs/trackB/b2b_stability_schedule.md` adds a stability-filtered schedule
+selection:
+
+```text
+kerQ_dim >= 8,
+G_condition <= 20,
+eig_Gc_min >= 1e-4.
+```
+
+Within the current Step13 B-spline packet family, the selected epsilons for
+`K=2,2.5,3,3.5` do not show B3 decay; the log-log fit has negative exponent
+`c≈-0.744`.  Dense `ell` checks confirm that K=2.5 and K=3.5 remain bad under
+stable packet choices.  The next branch is therefore not another blind `ell`
+sweep but either an ordinary-prime mean estimate on the structured cone or a
+different normalized packet family.

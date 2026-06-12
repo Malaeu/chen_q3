@@ -229,6 +229,11 @@ Follow-up probe:
   `ell=0.5..1.0` lowers the K=2/K=3 epsilon to about `0.10..0.11`.  But very
   small epsilons occur only with low `kerQ_dim` or nearly singular projected
   Gram metrics under grid refinement, so they are not yet a stable B3 route.
+- `docs/trackB/b2b_stability_schedule.md` adds stability filters and checks the
+  B3-facing schedule directly.  For `K=2,2.5,3,3.5`, the best eligible
+  Step13 B-spline packet choices give a negative fitted decay exponent
+  (`c≈-0.744` in `epsilon_K≈C*K^{-c}`), with stable bad points at K=2.5 and
+  K=3.5.  This kills simple packet-width tuning inside the current family.
 
 ## Current Verdict
 

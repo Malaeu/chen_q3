@@ -10,6 +10,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   gaussian  finite-packet failure of the naive PSD Gaussian majorant
   finiteop  direct projected finite-operator certificate diagnostics
   finitesweep compact finiteop spectrum sweep over packet scales
+  finiteschedule stability-filtered best packet-scale schedule
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -455,6 +456,94 @@ def run_finitesweep(args: argparse.Namespace) -> list[dict[str, Any]]:
                         }
                     )
     return rows
+
+
+def run_finiteschedule(args: argparse.Namespace) -> list[dict[str, Any]]:
+    sweep_rows = run_finitesweep(args)
+    selected: list[dict[str, Any]] = []
+    rejected_counts: dict[str, int] = {
+        "error": 0,
+        "kerQ_dim": 0,
+        "G_condition": 0,
+        "eig_Gc_min": 0,
+    }
+
+    for K in args.K:
+        candidates: list[dict[str, Any]] = []
+        for row in sweep_rows:
+            if row.get("K") != float(K):
+                continue
+            if row.get("status") != "ok":
+                rejected_counts["error"] += 1
+                continue
+            if int(row["kerQ_dim"]) < args.min_ker_dim:
+                rejected_counts["kerQ_dim"] += 1
+                continue
+            if float(row["G_condition"]) > args.max_g_condition:
+                rejected_counts["G_condition"] += 1
+                continue
+            if float(row["eig_Gc_min"]) < args.min_g_eig:
+                rejected_counts["eig_Gc_min"] += 1
+                continue
+            candidates.append(row)
+
+        if candidates:
+            best = min(
+                candidates,
+                key=lambda row: (
+                    float(row["two_sided_epsilon"]),
+                    float(row["G_condition"]),
+                    -int(row["kerQ_dim"]),
+                ),
+            )
+            selected.append({**best, "mode": "finiteschedule_selected", "eligible_count": len(candidates)})
+        else:
+            selected.append(
+                {
+                    "mode": "finiteschedule_selected",
+                    "status": "no_eligible_candidate",
+                    "K": finite_float(K),
+                    "eligible_count": 0,
+                    "D2": "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), stability-filtered schedule",
+                }
+            )
+
+    fit_candidates = [row for row in selected if row.get("status") == "ok"]
+    fit: dict[str, Any] = {"status": "insufficient_points"}
+    if len(fit_candidates) >= 2:
+        ks = np.array([float(row["K"]) for row in fit_candidates], dtype=float)
+        eps = np.array([float(row["two_sided_epsilon"]) for row in fit_candidates], dtype=float)
+        slope, intercept = np.polyfit(np.log(ks), np.log(eps), 1)
+        c_fit = -float(slope)
+        C_fit = float(math.exp(intercept))
+        fitted = C_fit * ks ** (-c_fit)
+        fit = {
+            "status": "ok",
+            "power_c_fit": finite_float(c_fit),
+            "power_C_fit": finite_float(C_fit),
+            "max_abs_log_residual": finite_float(float(np.max(np.abs(np.log(eps) - np.log(fitted))))),
+            "selected_K": [finite_float(x) for x in ks.tolist()],
+            "selected_epsilon": [finite_float(x) for x in eps.tolist()],
+        }
+
+    summary = {
+        "mode": "finiteschedule_summary",
+        "status": "ok" if fit_candidates else "no_eligible_candidate",
+        "K": [finite_float(float(K)) for K in args.K],
+        "ell_values": [finite_float(float(x)) for x in args.ell_values],
+        "grid_delta_values": [finite_float(float(x)) for x in args.grid_delta_values],
+        "min_ker_dim": int(args.min_ker_dim),
+        "max_g_condition": finite_float(args.max_g_condition),
+        "min_g_eig": finite_float(args.min_g_eig),
+        "p0_na": int(args.p0_na),
+        "k_spline": int(args.k_spline),
+        "total_sweep_rows": int(len(sweep_rows)),
+        "selected_count": int(len(fit_candidates)),
+        "rejected_counts": rejected_counts,
+        "fit": fit,
+        "D2": "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), stability-filtered schedule",
+    }
+    return [summary] + selected
 
 
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
@@ -1187,6 +1276,20 @@ def parse_args() -> argparse.Namespace:
     finitesweep.add_argument("--k-spline", type=int, default=5)
     finitesweep.add_argument("--p0-na", type=int, default=1001)
     finitesweep.set_defaults(func=run_finitesweep)
+
+    finiteschedule = sub.add_parser(
+        "finiteschedule",
+        help="stability-filtered best finiteop packet-scale schedule",
+    )
+    finiteschedule.add_argument("--K", type=float, nargs="+", required=True)
+    finiteschedule.add_argument("--ell-values", type=float, nargs="+", required=True)
+    finiteschedule.add_argument("--grid-delta-values", type=float, nargs="+", required=True)
+    finiteschedule.add_argument("--k-spline", type=int, default=5)
+    finiteschedule.add_argument("--p0-na", type=int, default=1001)
+    finiteschedule.add_argument("--min-ker-dim", type=int, default=8)
+    finiteschedule.add_argument("--max-g-condition", type=float, default=20.0)
+    finiteschedule.add_argument("--min-g-eig", type=float, default=1e-4)
+    finiteschedule.set_defaults(func=run_finiteschedule)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

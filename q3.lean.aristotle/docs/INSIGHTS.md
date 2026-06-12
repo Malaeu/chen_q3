@@ -32206,3 +32206,23 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `B2-GAP(cost-controlled admissible lift, normalized packet theorem, or uniform finite-op prime-mean estimate)`.
   Next useful theorem question: identify a stable packet normalization/family
   before trying to claim finite-op decay.
+
+## Insight (2026-06-12, Track B B2b/B3) -- StabilityScheduleGap
+
+- Added `docs/trackB/b2b_stability_schedule.md` and
+  `scripts/trackb_edge_operator_probe.py finiteschedule`.
+- The schedule filters packet candidates by `kerQ_dim`, `G_condition`, and
+  `eig_Gc_min` before choosing the best finite projected edge epsilon for each
+  K.
+- With `kerQ_dim>=8`, `G_condition<=20`, and `eig_Gc_min>=1e-4`, the selected
+  K=2,2.5,3,3.5 epsilons are approximately
+  `0.1014, 0.4229, 0.1096, 0.2407`; the log-log fit has negative decay
+  exponent `c≈-0.744`.
+- Dense `ell` checks at K=2.5 and K=3.5 keep the obstruction:
+  K=2.5 best stable epsilon is about `0.4194`, K=3.5 about `0.2385`, and the
+  numbers survive `p0_na=801 -> 1601` quadrature refinement.
+- Verdict for the current Step13 B-spline packet family:
+  `GAP(stability-filtered finite-op schedule does not give B3 decay)`.
+  Track B remains active, but the next trick should be either a structured
+  ordinary-prime mean estimate or a different normalized packet family such as
+  a prolate/energy-concentration basis.
