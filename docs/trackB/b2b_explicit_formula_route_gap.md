@@ -193,6 +193,19 @@ lemma: identify a CLV-derived object that stays inside the Q3 Hermitian-square
 receiver, or prove an explicit finite operator bound in the projected `G`
 normalization.
 
+Follow-up refinement:
+
+- `docs/trackB/b2b_admissible_lift_audit.md` isolates the B2b missing lemma as
+  an admissible lift:
+
+  ```text
+  edge prime <= lifted prime <= lifted arch <= P0_edge + epsilon_K <v,Gv>.
+  ```
+
+  The lift must be a corrected positive-definite/convolution-square Weil test
+  before Q3 PSD can replace the RH-conditional zero-side step used in
+  prime-gap explicit-formula arguments.
+
 ## Proshka Request
 
 Claim:

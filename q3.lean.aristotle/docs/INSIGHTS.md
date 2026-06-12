@@ -32089,3 +32089,22 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `-8.3889e4`.
 - Status remains `B2-GAP(cone transport)`.  This is a reusable audit/minimal
   example for Proshka, not a proof certificate and not an E5' closure.
+
+## Insight (2026-06-12, Track B B2b) -- AdmissibleLiftLemma
+
+- Added `docs/trackB/b2b_admissible_lift_audit.md`.
+- Local `q3_docs` search and direct file checks reaffirm the D2 contract:
+  `Q(Phi)=arch_term(Phi)-prime_term(Phi)`, `xi_n=log n/(2*pi)`, and
+  `w_Q(n)=2*Lambda(n)/sqrt(n)`; the public target is the corrected
+  positive-definite / convolution-square cone.
+- Primary-source check: CLV/Selberg constructions are unconditional, while the
+  Carneiro--Milinovich--Soundararajan prime-gap result is RH-conditional and
+  can be used only as an architecture reference, not as a theorem input.
+- B2b now reduces to an exact admissible-lift lemma:
+  construct `Phi_v^+` in the corrected pd Weil cone so that
+  `P_edge(v) <= prime_term(Phi_v^+) + R`, use Q3 PSD to get
+  `prime_term(Phi_v^+) <= arch_term(Phi_v^+)`, and then prove
+  `arch_term(Phi_v^+) - P0_edge(v) + R <= epsilon_K <v,Gv>`.
+- This isolates the next experiment: finite `K=2` operator-majorant search
+  for positive-definite lift kernels in the same projected `G` normalization.
+  Status remains `B2-GAP(admissible lift)`, not E5' closure.
