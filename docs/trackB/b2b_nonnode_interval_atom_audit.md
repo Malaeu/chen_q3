@@ -39,6 +39,9 @@ All intervals below are raw `a` intervals.
 - `UNCONDITIONAL / proof-engine style only`: directed floating-point
   neighboring by `math.nextafter`.
   Source: https://docs.python.org/3/library/math.html#math.nextafter
+- `UNCONDITIONAL / exact finite arithmetic`: dyadic rational guard checks by
+  integer/Fraction arithmetic.  This checks only the finite inequality layer
+  after interval boxes are supplied; it does not prove the source boxes.
 - `UNCONDITIONAL / local object definition`: centered cardinal B-spline packet
   profile from `q3.lean.aristotle/scripts/q3_psdpd_step13_pilot.py`, evaluated
   by the standard Cox-de-Boor centered recursion to avoid interval
@@ -466,15 +469,88 @@ scale.  A coarse full-cell mesh lets the interval extension become too wide
 and `S0` can cross zero in the enclosure.  Therefore the finite certificate
 must record the mesh scale, not only the cell.
 
+## Dyadic Rational Guard Arithmetic
+
+Added:
+
+```text
+scripts/trackb_interval_worklist_rationalize.py
+```
+
+This consumes the full-cell JSON with `worklist_rows`, rounds the recorded
+floating interval boxes outward to dyadic rationals, and verifies the direct
+and curvature mesh guards with exact `Fraction` arithmetic.
+
+Run:
+
+```text
+.venv/bin/python scripts/trackb_interval_worklist_rationalize.py \
+  --input /tmp/trackb_cell58_full_worklist_current.json \
+  --dyadic-bits 96 --worst-limit 3 \
+  > /tmp/trackb_cell58_rational_guard_96.json
+```
+
+Result:
+
+```text
+dyadic bits: 96
+mesh intervals total: 800
+direct S1 guard:    800 / 800
+curvature S2 guard: 800 / 800
+
+min direct guard:
+  0.0634136825441662804747622
+min curvature guard:
+  0.0634136772958333733152259
+```
+
+The worst exact-rational row is again mesh interval `0`:
+
+```text
+S0_abs_lower =
+  4573511104060505 / 72057594037927936
+S1_abs_upper =
+  7110477107673323 / 9007199254740992
+S2_abs_upper =
+  576087197047679 / 562949953421312
+mesh_width_upper =
+  5284223562776577 / 36893488147419103232
+direct guard =
+  42145621076761523701032188090107669 /
+  664613997892457936451903530140172288
+```
+
+Dyadic-bit sanity:
+
+```text
+bits=64  direct=800/800  curvature=800/800
+bits=80  direct=800/800  curvature=800/800
+bits=96  direct=800/800  curvature=800/800
+bits=128 direct=800/800  curvature=800/800
+```
+
+Interpretation:
+
+- The finite guard arithmetic is not the bottleneck anymore for this selected
+  cell.  Even dyadic `2^-64` outward rounding keeps the margin.
+- This still does not prove the interval boxes.  The missing analytic layer is
+  source containment: rational/Lean-grade proofs for the receiver/profile
+  interval enclosures that produced the boxes.
+- The most compact Lean-facing proof object would store combined
+  `S_v`, `S_v'`, `S_v''` dyadic boxes plus exact rational guard inequalities.
+  The more reusable object would store separate receiver/profile atoms and
+  replay product-rule interval arithmetic in Lean.
+
 Interpretation:
 
 - K=3.5 cell `58` now has a full-cell compact worklist with all `800` mesh
-  intervals passing the current floating interval sign guard.
+  intervals passing the current floating interval sign guard and the exact
+  dyadic rational guard arithmetic.
 - The interval is still a floating scaffold.  The proof-producing version
   must rationalize constants, packet coefficients/centers, receiver tail
-  bounds, and the exact mesh scale.
+  bounds, and the exact mesh scale at the source-box level.
 - The next live task is no longer "does mesh-0 extend to the full cell?"
-  It does.  The next live task is rationalization and then coverage beyond
+  It does.  The next live task is source-box containment, then coverage beyond
   this one selected cell/direction.
 
 ## Verdict
@@ -482,8 +558,8 @@ Interpretation:
 `PARTIAL(full-cell floating interval guard installed for K=3.5 cell 58:
 800/800 mesh intervals pass)`.
 
-`GAP(rational certificate data, Lean-grade outward rounding, and coverage
-beyond this selected cell/direction still missing)`.
+`GAP(source interval containment proofs, Lean integration, and coverage beyond
+this selected cell/direction still missing)`.
 
 `FATAL(treating the floating interval scaffold as a proof-grade E5'
 certificate)`.
@@ -495,12 +571,13 @@ Track B remains active.
 Claim:
 The first non-node theorem target now has a full-cell floating interval sign
 guard for `S_v` on K=3.5 cell `58`: all `800/800` mesh intervals pass the
-direct and curvature interval guards.
+direct and curvature interval guards.  After dyadic outward rounding, exact
+rational guard arithmetic also passes `800/800`.
 
 Point of blockage:
-The current guard is still a floating interval scaffold.  It is not
-rationalized into Lean-grade certificate data and it covers only this selected
-cell/opnorm direction.
+The guard arithmetic is now rationalized, but the source interval boxes are
+still floating scaffold data.  The current artifact covers only this selected
+cell/opnorm direction and is not integrated into Lean.
 
 What was tried:
 Added `scripts/trackb_nonnode_interval_atom_audit.py`, reused the
@@ -510,16 +587,21 @@ primitive by a centered-cardinal B-spline recursion interval with a `1e-12`
 rounding pad.  Then added Selberg/Vaaler receiver intervals using polygamma
 recurrence plus positive-series tail bounds and combined them into `H/S`
 intervals by product rule.  Then added `--mesh-index all` and ran the same
-compact guard over all `800` mesh intervals in cell `58`.
+compact guard over all `800` mesh intervals in cell `58`.  Then added a
+dyadic rational verifier that checks the finite guard inequalities exactly
+after outward rounding.
 
 Minimal example:
 The weakest full-cell row is still mesh interval `0`:
 `[6.645833333333817, 6.645976562500484]`.  It has combined
 `S0=[0.06347021663883491, 0.07150540275891909]`; it excludes zero and gives
-direct mesh guard `~0.06341368254416625`.
+direct mesh guard `~0.06341368254416625`.  With `2^-96` dyadic rounding, the
+exact rational direct guard is still
+`~0.0634136825441662804747622`.
 
 Question for Proshka:
-For rationalization, should the proof object store separate receiver/profile
-atoms, or already-combined `S_v`, `S_v'`, `S_v''` interval records?  The
-combined route is smaller; the separate-atom route is more reusable and easier
-to audit against D2 normalization.
+For the source-box proof, should the Lean-facing object store separate
+receiver/profile atoms and replay the product-rule arithmetic, or should it
+store already-combined `S_v`, `S_v'`, `S_v''` interval records plus exact
+guard inequalities?  The combined route is smaller; the separate-atom route is
+more reusable and easier to audit against D2 normalization.

@@ -32973,3 +32973,28 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   beyond this selected cell/direction still missing)`, and
   `FATAL(treating the floating interval scaffold as a proof-grade E5'
   certificate)`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeDyadicRationalGuard
+
+- Added `scripts/trackb_interval_worklist_rationalize.py`, which consumes the
+  full-cell `worklist_rows`, rounds the recorded interval boxes outward to
+  dyadic rationals, and checks the direct/curvature mesh guards by exact
+  `Fraction` arithmetic.
+- On the current K=3.5 cell `58` full-cell JSON, `dyadic_bits=96` gives
+  `800/800` direct-guard passes and `800/800` curvature-guard passes.
+- The worst row remains mesh interval `0`.  Exact dyadic values include
+  `S0_abs_lower = 4573511104060505 / 72057594037927936` and direct guard
+  approximately `0.0634136825441662804747622`.
+- Dyadic-bit sanity for `64,80,96,128` all preserves `800/800` direct and
+  curvature guard passes.  Therefore the finite guard arithmetic is not the
+  bottleneck for this selected cell.
+- Boundary: this exact rational layer checks only arithmetic over supplied
+  boxes.  It does not prove the source receiver/profile interval enclosures
+  and does not close E5'.
+- Status refines to
+  `PARTIAL(full-cell exact rational guard arithmetic installed for K=3.5 cell
+  58)`,
+  `GAP(source interval containment proofs, Lean integration, and coverage
+  beyond this selected cell/direction still missing)`, and
+  `FATAL(treating rational guard arithmetic over floating boxes as a proof of
+  E5')`.
