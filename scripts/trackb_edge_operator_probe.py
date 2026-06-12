@@ -452,6 +452,136 @@ def cutting_plane_lift_lp(
     }
 
 
+def cutting_plane_lift_cost_lp(
+    *,
+    A_edge: np.ndarray,
+    A_basis: list[np.ndarray],
+    C_edge: np.ndarray,
+    C_basis: list[np.ndarray],
+    coeff_budget: float,
+    coeff_bound: float,
+    eta_lower: float,
+    eta_upper: float,
+    gamma_lower: float,
+    gamma_upper: float,
+    eta_weight: float,
+    cost_weight: float,
+    max_iter: int,
+    tol: float,
+) -> dict[str, Any]:
+    dim = A_edge.shape[0]
+    n_basis = len(A_basis)
+    if n_basis == 0 or len(C_basis) != n_basis:
+        raise ValueError("cost liftsearch needs matching prime and continuum bases")
+
+    prime_dirs: list[np.ndarray] = []
+    cost_dirs: list[np.ndarray] = []
+    edge_evals, edge_evecs = np.linalg.eigh(A_edge)
+    cost_evals, cost_evecs = np.linalg.eigh(C_edge)
+    for j in range(dim):
+        basis_vec = np.eye(dim)[:, j]
+        prime_dirs.append(basis_vec)
+        cost_dirs.append(basis_vec)
+        prime_dirs.append(edge_evecs[:, j])
+        cost_dirs.append(cost_evecs[:, j])
+
+    c_obj = np.zeros(n_basis + 2)
+    c_obj[-2] = eta_weight
+    c_obj[-1] = cost_weight
+    bounds = (
+        [(0.0, coeff_bound) for _ in range(n_basis)]
+        + [(eta_lower, eta_upper), (gamma_lower, gamma_upper)]
+    )
+
+    result = None
+    coeffs = np.zeros(n_basis)
+    eta = eta_upper
+    gamma = gamma_upper
+    min_prime_slack = float("nan")
+    max_cost_eig = float("nan")
+    iterations = 0
+
+    for iterations in range(1, max_iter + 1):
+        a_ub: list[list[float]] = []
+        b_ub: list[float] = []
+
+        # Coefficient budget: sum c_m <= budget.
+        a_ub.append([1.0] * n_basis + [0.0, 0.0])
+        b_ub.append(coeff_budget)
+
+        # Prime dominance:
+        #   sum c_m <A_m x,x> + eta >= <A_edge x,x>.
+        for x in prime_dirs:
+            x = x / np.linalg.norm(x)
+            row = [-float(x @ A @ x) for A in A_basis] + [-1.0, 0.0]
+            rhs = -float(x @ A_edge @ x)
+            a_ub.append(row)
+            b_ub.append(rhs)
+
+        # Continuum/arch upper cost:
+        #   sum c_m <C_m y,y> - <C_edge y,y> <= gamma.
+        for y in cost_dirs:
+            y = y / np.linalg.norm(y)
+            row = [float(y @ C @ y) for C in C_basis] + [0.0, -1.0]
+            rhs = float(y @ C_edge @ y)
+            a_ub.append(row)
+            b_ub.append(rhs)
+
+        result = linprog(
+            c_obj,
+            A_ub=np.array(a_ub, dtype=float),
+            b_ub=np.array(b_ub, dtype=float),
+            bounds=bounds,
+            method="highs",
+        )
+        if not result.success:
+            break
+
+        coeffs = np.array(result.x[:n_basis], dtype=float)
+        eta = float(result.x[-2])
+        gamma = float(result.x[-1])
+
+        prime_slack = -A_edge + eta * np.eye(dim)
+        cost_mat = -C_edge
+        for c, A, C in zip(coeffs, A_basis, C_basis):
+            prime_slack += c * A
+            cost_mat += c * C
+
+        prime_evals, prime_evecs = np.linalg.eigh(0.5 * (prime_slack + prime_slack.T))
+        cost_evals, cost_evecs = np.linalg.eigh(0.5 * (cost_mat + cost_mat.T))
+        min_prime_slack = float(prime_evals[0])
+        max_cost_eig = float(cost_evals[-1])
+
+        added = False
+        if min_prime_slack < -tol:
+            prime_dirs.append(prime_evecs[:, 0])
+            added = True
+        if max_cost_eig > gamma + tol:
+            cost_dirs.append(cost_evecs[:, -1])
+            added = True
+        if not added:
+            break
+
+    return {
+        "success": bool(
+            result is not None
+            and result.success
+            and min_prime_slack >= -tol
+            and max_cost_eig <= gamma + tol
+        ),
+        "linprog_success": bool(result is not None and result.success),
+        "linprog_message": None if result is None else str(result.message),
+        "iterations": int(iterations),
+        "num_prime_cuts": int(len(prime_dirs)),
+        "num_cost_cuts": int(len(cost_dirs)),
+        "coefficients": coeffs,
+        "eta": finite_float(eta),
+        "gamma": finite_float(gamma),
+        "min_slack_eig": finite_float(min_prime_slack),
+        "max_cost_eig": finite_float(max_cost_eig),
+    }
+
+
 def run_liftsearch(args: argparse.Namespace) -> list[dict[str, Any]]:
     pilot = load_step13()
     rows: list[dict[str, Any]] = []
@@ -491,6 +621,12 @@ def run_liftsearch(args: argparse.Namespace) -> list[dict[str, Any]]:
         )
         shifts = pilot.prime_power_shifts(shift_params.L)
 
+        need_continuum = (
+            args.continuum_proxy
+            or args.cost_weight != 0.0
+            or args.gamma_upper is not None
+        )
+
         basis_meta: list[dict[str, float]] = []
         P_basis: list[np.ndarray] = []
         P0_basis: list[np.ndarray] = []
@@ -501,7 +637,7 @@ def run_liftsearch(args: argparse.Namespace) -> list[dict[str, Any]]:
 
                 basis_meta.append({"center": finite_float(center), "width": finite_float(width)})
                 P_basis.append(build_prime_matrix_for_weight(pilot, packet, D, params.ell, shifts, weight_fn))
-                if args.continuum_proxy:
+                if need_continuum:
                     P0_basis.append(
                         build_continuum_matrix_for_weight(
                             pilot,
@@ -523,16 +659,50 @@ def run_liftsearch(args: argparse.Namespace) -> list[dict[str, Any]]:
         if eta_upper is None:
             eta_upper = float(edge_eigs[-1] + 1.0)
 
-        lp = cutting_plane_lift_lp(
-            A_edge=A_edge,
-            A_basis=A_basis,
-            coeff_budget=args.coeff_budget,
-            coeff_bound=args.coeff_bound,
-            eta_lower=args.eta_lower,
-            eta_upper=eta_upper,
-            max_iter=args.max_iter,
-            tol=args.tol,
-        )
+        use_cost_lp = args.cost_weight != 0.0 or args.gamma_upper is not None
+        C_edge = None
+        C_basis = None
+        gamma_upper = None
+        if need_continuum:
+            C_edge = generalized_to_standard(pilot, project_matrix(pilot, P0_edge, N), Gc)
+            C_basis = [
+                generalized_to_standard(pilot, project_matrix(pilot, P0, N), Gc)
+                for P0 in P0_basis
+            ]
+            gamma_upper = args.gamma_upper
+            if gamma_upper is None:
+                gamma_upper = float(np.linalg.eigvalsh(C_edge)[-1] + 10.0)
+
+        if use_cost_lp:
+            if C_edge is None or C_basis is None or gamma_upper is None:
+                raise RuntimeError("cost liftsearch unexpectedly lacks continuum basis")
+            lp = cutting_plane_lift_cost_lp(
+                A_edge=A_edge,
+                A_basis=A_basis,
+                C_edge=C_edge,
+                C_basis=C_basis,
+                coeff_budget=args.coeff_budget,
+                coeff_bound=args.coeff_bound,
+                eta_lower=args.eta_lower,
+                eta_upper=eta_upper,
+                gamma_lower=args.gamma_lower,
+                gamma_upper=gamma_upper,
+                eta_weight=args.eta_weight,
+                cost_weight=args.cost_weight,
+                max_iter=args.max_iter,
+                tol=args.tol,
+            )
+        else:
+            lp = cutting_plane_lift_lp(
+                A_edge=A_edge,
+                A_basis=A_basis,
+                coeff_budget=args.coeff_budget,
+                coeff_bound=args.coeff_bound,
+                eta_lower=args.eta_lower,
+                eta_upper=eta_upper,
+                max_iter=args.max_iter,
+                tol=args.tol,
+            )
 
         coeffs = np.asarray(lp["coefficients"], dtype=float)
         P_lift = np.zeros_like(D, dtype=float)
@@ -574,12 +744,21 @@ def run_liftsearch(args: argparse.Namespace) -> list[dict[str, Any]]:
             "coeff_bound": finite_float(args.coeff_bound),
             "coeff_sum": finite_float(float(np.sum(coeffs))),
             "eta": lp["eta"],
+            "gamma": lp.get("gamma"),
             "min_slack_eig": lp["min_slack_eig"],
+            "max_cost_eig": lp.get("max_cost_eig"),
             "lp_success": bool(lp["success"]),
             "linprog_success": bool(lp["linprog_success"]),
             "linprog_message": lp["linprog_message"],
             "iterations": int(lp["iterations"]),
-            "num_cuts": int(lp["num_cuts"]),
+            "num_cuts": None if lp.get("num_cuts") is None else int(lp["num_cuts"]),
+            "num_prime_cuts": lp.get("num_prime_cuts"),
+            "num_cost_cuts": lp.get("num_cost_cuts"),
+            "use_cost_lp": bool(use_cost_lp),
+            "eta_weight": finite_float(args.eta_weight),
+            "cost_weight": finite_float(args.cost_weight),
+            "gamma_lower": finite_float(args.gamma_lower),
+            "gamma_upper": None if gamma_upper is None else finite_float(gamma_upper),
             "eig_Pedge_G_min": finite_float(edge_eigs[0]),
             "eig_Pedge_G_max": finite_float(edge_eigs[-1]),
             "eig_Plift_minus_Pedge_G_min": finite_float(lift_minus_edge_eigs[0]),
@@ -588,7 +767,7 @@ def run_liftsearch(args: argparse.Namespace) -> list[dict[str, Any]]:
             "D2": "raw a=r*log(p), candidate lift is an autocorrelation/positive-definite scalar probe",
         }
 
-        if args.continuum_proxy:
+        if need_continuum:
             P0_lift = np.zeros_like(D, dtype=float)
             for c, P0 in zip(coeffs, P0_basis):
                 P0_lift += float(c) * P0
@@ -647,6 +826,10 @@ def parse_args() -> argparse.Namespace:
     liftsearch.add_argument("--coeff-bound", type=float, default=10.0)
     liftsearch.add_argument("--eta-lower", type=float, default=-100.0)
     liftsearch.add_argument("--eta-upper", type=float)
+    liftsearch.add_argument("--eta-weight", type=float, default=1.0)
+    liftsearch.add_argument("--cost-weight", type=float, default=0.0)
+    liftsearch.add_argument("--gamma-lower", type=float, default=-100.0)
+    liftsearch.add_argument("--gamma-upper", type=float)
     liftsearch.add_argument("--max-iter", type=int, default=40)
     liftsearch.add_argument("--tol", type=float, default=1e-9)
     liftsearch.add_argument("--p0-na", type=int, default=2001)

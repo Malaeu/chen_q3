@@ -213,6 +213,10 @@ Follow-up probe:
   the prime-side slack down to `eta≈0.0077`, but the continuum proxy cost rises
   to about `5.27` in projected `G`-opnorm.  Thus the current wall is a
   cost-controlled admissible lift, not mere finite operator dominance.
+- The same probe now includes joint cost optimization.  Forcing the one-sided
+  continuum cost down to `gamma≈0.4417` raises prime-side slack to `eta≈1.71`.
+  This is a family-level failure for simple scalar two-point Gaussian
+  autocorrelation lifts, not a route-level failure for B2b.
 
 ## Current Verdict
 
@@ -232,6 +236,7 @@ What remains:
 
 ```text
 Find Phi_v^+ / Phi_v^- in the pd cone with operator dominance and arch budget,
+but not from the simple scalar two-point Gaussian autocorrelation dictionary;
 or prove a finite projected operator inequality directly.
 ```
 
@@ -248,7 +253,8 @@ Scalar CLV/Selberg majorization does not imply the projected operator
 dominance because the packet edge kernel `F_v(a)` is signed/oscillatory.
 Naive Gaussian positivity also fails in the finite packet test.  A richer
 two-point Gaussian autocorrelation dictionary nearly solves finite dominance
-at `K=2`, but only with large continuum proxy cost.
+at `K=2`, but only with large continuum proxy cost; joint optimization confirms
+the cost/eta tradeoff is too expensive for this family.
 
 What was tried:
 - Extracted unconditional Selberg/Vaaler formulas and constants.
@@ -260,6 +266,7 @@ What was tried:
   the corrected positive-definite cone.
 - Ran the finite `liftsearch` probe: dense two-point Gaussian dictionary gets
   `eta≈0.0077`, but `opnorm_G(P0_lift-P0_edge)≈5.27`.
+- Added joint cost constraints: forcing `gamma≈0.4417` gives `eta≈1.71`.
 
 Minimal example:
 `K=2`, raw edge `[4,8]`, Step13 packet parameters `ell=0.35`,
@@ -271,4 +278,5 @@ N^T(P_lift - P_edge)N + eta * N^T G N >= 0
 
 with `eta` as small as possible, plus an arch-budget check against
 `P0_edge`.  Current edge proxy norm is `0.4416718760986585`; the best dense
-probe so far has small `eta` but continuum cost an order of magnitude larger.
+probe so far has small `eta` but continuum cost an order of magnitude larger,
+while the cost-controlled probe has order-`1` prime slack.

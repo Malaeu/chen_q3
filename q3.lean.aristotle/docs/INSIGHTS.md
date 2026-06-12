@@ -32129,3 +32129,22 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Status refines to `B2-GAP(cost-controlled admissible lift)`: B2b is not dead,
   but the next theorem/experiment must optimize prime dominance and arch budget
   together, or move to direct `FINITE-OP` with CLV only for tail control.
+
+## Insight (2026-06-12, Track B B2b) -- CostControlledLiftTradeoff
+
+- Extended `liftsearch` with a joint cost LP: besides prime slack `eta`, it now
+  introduces `gamma` for the one-sided continuum/arch proxy constraint
+  `N^T(P0_lift-P0_edge)N <= gamma*N^TGN`.
+- The old post-hoc result is reproduced as `eta≈0.007718`, but with
+  `gamma≈5.27`.
+- Adding cost directly confirms the tradeoff for the two-point Gaussian
+  autocorrelation dictionary:
+  `cost_weight=0.5` gives `eta≈0.6425`, `gamma≈0.9035`;
+  hard cap `gamma<=2.0` gives `eta≈0.3875`;
+  hard cap `gamma≈0.4416718761` gives `eta≈1.7102`.
+- Verdict: `FATAL(two-point Gaussian autocorrelation lift family)` as an E5'
+  closure candidate, but Track B stays active as
+  `B2-GAP(cost-controlled admissible lift)`.  The next useful move is a
+  signed/multi-packet convolution-square lift that avoids the zero
+  self-correlation cost, or a direct `FINITE-OP` certificate with CLV only for
+  tail/continuum control.
