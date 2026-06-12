@@ -258,11 +258,25 @@ Interpretation: K=3.5 is much closer globally, but local underbounds remain.
 The largest-ratio cells are mostly tiny-tail artifacts; the actual certificate
 worklist should be sorted by deficit, not by ratio alone.
 
+## Mesh-Stability Correction
+
+Follow-up:
+
+- `docs/trackB/b2b_mesh_stability_audit.md` adds `clvmesh` and corrects the
+  interpretation of cell residual ratios.  A cell residual is not required to
+  be bounded by the cell's local variation integral alone, because internal
+  endpoint terms cancel only at the global Stieltjes level.  The ratio fields
+  above are priority scores for a future interval-envelope generator, not local
+  proof obligations.
+- The K=3 underbound at `quad_na=2001` is downgraded from route-danger to
+  mesh/continuum-convention warning.  A sweep over
+  `quad_na=2001,4001,8001,16001` shows first global coverage at `quad_na=4001`.
+
 ## Verdict
 
-`PARTIAL(interval-envelope contract isolated)`.
+`PARTIAL(interval-envelope contract isolated; mesh-stability correction added)`.
 
-`GAP(certified derivative/variation envelope generator missing)`.
+`GAP(certified quadrature/derivative/variation envelope generator missing)`.
 
 `FATAL(using sampled required multipliers as proof certificates)`.
 

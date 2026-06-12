@@ -239,6 +239,11 @@ Follow-up:
   hard target is the K=3 left-endpoint shoulder, where sampled bounds need a
   roughly `4.44x` uniform safety factor over the sum of absolute cell
   residuals.
+- `docs/trackB/b2b_mesh_stability_audit.md` corrects the proof interpretation:
+  cell residual ratios are worklist heuristics, while the global Stieltjes
+  budget is the proof criterion.  The K=3 underbound at `quad_na=2001` is
+  downgraded to a mesh/continuum-convention warning; `quad_na=4001` already
+  gives global coverage.
 
 ## Interpretation
 

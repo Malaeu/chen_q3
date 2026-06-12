@@ -32516,3 +32516,32 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Status refines to `PARTIAL(interval-envelope contract isolated)`,
   `GAP(certified derivative/variation envelope generator missing)`, and
   `FATAL(using sampled required multipliers as proof certificates)`.
+
+## Insight (2026-06-12, Track B B2b) -- MeshStabilityAudit
+
+- Added `docs/trackB/b2b_mesh_stability_audit.md` and extended
+  `scripts/trackb_edge_operator_probe.py` with `clvmesh`.
+- `clvmesh` wraps `clvledger` over several `quad_na` values and reports the
+  global Stieltjes coverage fields, especially
+  `first_quad_na_covering_total_residual`, residual mesh delta, and exact
+  total mesh delta.
+- Corrected interpretation: cell residual ratios are worklist heuristics, not
+  local proof obligations.  When the global Stieltjes integration-by-parts
+  identity is split into cells, internal endpoint terms cancel before absolute
+  values are taken; only the global budget is a proof criterion.
+- K=3 mesh sweep with `ell=0.75`, `delta=0.5`, `p0_na=201`,
+  `ledger_cells=80`:
+  `quad_na=2001` gives exact/residual `~0.65653`, but `quad_na=4001` gives
+  `~1.00518`, `quad_na=8001` gives `~1.42464`, and `quad_na=16001` gives
+  `~1.83208`.  First coverage is therefore at `quad_na=4001`.
+- K=3.5 mesh sweep with `ell=1.375`, `delta=1`, `p0_na=401`,
+  `ledger_cells=120`: exact/residual is `~1.92924`, `~2.36484`, `~2.64155`
+  for `quad_na=2001,4001,8001`.
+- Local `q3_docs` search again points to the existing FloorCert/PrimeCert
+  pattern: grid, Lipschitz/envelope, and theorem-producing generator.  External
+  search only adds validated-numerics/interval-arithmetic as proof-engine
+  style, not as a new mathematical theorem input.
+- Status refines to `PARTIAL(mesh-stability gate added and K=3 false alarm
+  downgraded)`, `GAP(certified quadrature/variation envelope generator still
+  missing)`, and `FATAL(treating cell residual ratios or low-resolution meshes
+  as proof)`.

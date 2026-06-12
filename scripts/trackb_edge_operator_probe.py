@@ -26,6 +26,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
             sampled Fourier-sign diagnostics for E_delta(a)*F_v(a)
   clvledger
             finite psi-staircase ledger diagnostics for the smooth correction
+  clvmesh  mesh-stability audit for the finite psi-staircase ledger
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -2859,6 +2860,95 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def run_clvmesh(args: argparse.Namespace) -> list[dict[str, Any]]:
+    groups: dict[tuple[float, float, float, str], dict[str, Any]] = {}
+    for quad_na in args.quad_na_values:
+        ledger_args = argparse.Namespace(**vars(args))
+        ledger_args.quad_na = int(quad_na)
+        ledger_args.top_cells = int(args.top_cells)
+        ledger_args.func = run_clvledger
+        for ledger_row in run_clvledger(ledger_args):
+            for direction in ledger_row["directions"]:
+                key = (
+                    float(ledger_row["K"]),
+                    float(ledger_row["receiver_delta"]),
+                    float(ledger_row["ell"]),
+                    str(direction["label"]),
+                )
+                group = groups.setdefault(
+                    key,
+                    {
+                        "mode": "clvmesh",
+                        "K": ledger_row["K"],
+                        "schedule": ledger_row["schedule"],
+                        "ell": ledger_row["ell"],
+                        "grid_delta": ledger_row["grid_delta"],
+                        "k_spline": ledger_row["k_spline"],
+                        "p0_na": ledger_row["p0_na"],
+                        "ledger_cells": ledger_row["ledger_cells"],
+                        "receiver_delta": ledger_row["receiver_delta"],
+                        "raw_edge": ledger_row["raw_edge"],
+                        "max_a_effective": ledger_row["max_a_effective"],
+                        "kerQ_dim": ledger_row["kerQ_dim"],
+                        "prime_power_shifts_total": ledger_row["prime_power_shifts_total"],
+                        "direction": direction["label"],
+                        "mesh_rows": [],
+                        "D2": (
+                            "raw a=r*log(p), x=exp(a); mesh audit varies quad_na for the "
+                            "Stieltjes ledger of phi=x^(-1/2)E_delta(log x)F_v(log x)"
+                        ),
+                    },
+                )
+                group["mesh_rows"].append(
+                    {
+                        "quad_na": int(quad_na),
+                        "matrix_lambda": direction["matrix_lambda"],
+                        "ledger_total_residual": direction["ledger_total_residual"],
+                        "matrix_minus_ledger_abs_error": direction["matrix_minus_ledger_abs_error"],
+                        "exact_integral_variation_bound": direction["exact_integral_variation_bound"],
+                        "exact_total_with_endpoints": direction["exact_total_with_endpoints"],
+                        "exact_bound_over_abs_residual": direction["exact_bound_over_abs_residual"],
+                        "sampled_exact_underbound_cell_count": direction[
+                            "sampled_exact_underbound_cell_count"
+                        ],
+                        "sampled_exact_cell_deficit_sum": direction["sampled_exact_cell_deficit_sum"],
+                        "required_uniform_exact_multiplier_to_cover_sum_abs_cells": direction[
+                            "required_uniform_exact_multiplier_to_cover_sum_abs_cells"
+                        ],
+                    }
+                )
+
+    rows: list[dict[str, Any]] = []
+    for group in groups.values():
+        mesh_rows = sorted(group["mesh_rows"], key=lambda row: int(row["quad_na"]))
+        group["mesh_rows"] = mesh_rows
+        covering = [
+            row for row in mesh_rows if float(row["exact_bound_over_abs_residual"]) >= 1.0
+        ]
+        group["first_quad_na_covering_total_residual"] = (
+            None if not covering else int(covering[0]["quad_na"])
+        )
+        if len(mesh_rows) >= 2:
+            prev = mesh_rows[-2]
+            last = mesh_rows[-1]
+            group["last_mesh_residual_abs_delta"] = finite_float(
+                abs(float(last["ledger_total_residual"]) - float(prev["ledger_total_residual"]))
+            )
+            group["last_mesh_exact_total_abs_delta"] = finite_float(
+                abs(float(last["exact_total_with_endpoints"]) - float(prev["exact_total_with_endpoints"]))
+            )
+        else:
+            group["last_mesh_residual_abs_delta"] = None
+            group["last_mesh_exact_total_abs_delta"] = None
+        group["mesh_interpretation"] = (
+            "global Stieltjes coverage is judged by exact_bound_over_abs_residual; "
+            "cell residual ratios remain worklist heuristics because cell endpoint "
+            "terms cancel only before taking absolute values"
+        )
+        rows.append(group)
+    return rows
+
+
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
     return (ell / (packet.s_k * packet.c_k)) * np.sinc(ell * u / packet.s_k) ** (
         2 * packet.k_spline + 2
@@ -3742,6 +3832,30 @@ def parse_args() -> argparse.Namespace:
     clvledger.add_argument("--ledger-cells", type=int, default=120)
     clvledger.add_argument("--top-cells", type=int, default=12)
     clvledger.set_defaults(func=run_clvledger)
+
+    clvmesh = sub.add_parser(
+        "clvmesh",
+        help="mesh-stability audit for the finite psi-staircase ledger",
+    )
+    add_common_packet_args(clvmesh)
+    clvmesh.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvmesh.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvmesh.add_argument(
+        "--directions",
+        choices=["opnorm", "all"],
+        default="opnorm",
+        help="which correction eigenvector directions to audit",
+    )
+    clvmesh.add_argument("--p0-na", type=int, default=1001)
+    clvmesh.add_argument("--quad-na-values", type=int, nargs="+", default=[2001, 4001, 8001])
+    clvmesh.add_argument("--ledger-cells", type=int, default=120)
+    clvmesh.add_argument("--top-cells", type=int, default=3)
+    clvmesh.set_defaults(func=run_clvmesh)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)
