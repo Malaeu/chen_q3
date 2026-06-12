@@ -32267,3 +32267,25 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   The next theorem target is either a Hermitian-square explicit-formula route
   where the receiver is primary from the start, or a structured bridge
   `P(1_I) <= P(M^+) + R_K*G` with `R_K <= C*K^{-c}`.
+
+## Insight (2026-06-12, Track B B2b/B3) -- CLVBridgeBudgetFatal
+
+- Added `docs/trackB/b2b_clv_bridge_budget.md` and extended
+  `scripts/trackb_edge_operator_probe.py clvrecv` with `bridge_R_plus` and
+  `total_upper_budget_plus`.
+- The tested budget is the naive scalar-majorant bridge:
+  `P(edge) <= P(M^+) + R_K(delta)*G`, followed by the smoothed receiver
+  residual `||P(M^+) - P0(M^+)||_G`.
+- The core tradeoff is now quantified: small/medium `delta` gives tiny
+  smoothed receiver residual but huge bridge penalty; large `delta` reduces
+  the bridge penalty only by drifting back toward the hard-edge problem.
+- Best-tested totals over stable packet choices do not show B3 decay:
+  K=2 gives about `0.5346`, K=2.5 about `0.3672`, K=3 about `0.4205`, and
+  K=3.5 about `0.7510`; the log-log fit has negative decay exponent
+  `c≈-0.522`.
+- Status refines to
+  `FATAL(naive scalar Selberg hard-edge bridge, current packet family)`.
+  Track B remains active: the next viable B2b target is a Hermitian-square /
+  explicit-formula route where the Selberg receiver is primary, or a
+  non-scalar structured correction that cancels the negative bridge modes
+  without paying `R_K`.

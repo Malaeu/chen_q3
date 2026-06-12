@@ -833,13 +833,44 @@ def run_clvrecv(args: argparse.Namespace) -> list[dict[str, Any]]:
                     "Q3 xi=a/(2*pi), operator probe only"
                 ),
             }
-            row.update(eig_row("hard_edge_minus_continuum", hard))
-            row.update(eig_row("Mplus_minus_Mplus_continuum", plus))
-            row.update(eig_row("Mminus_minus_Mminus_continuum", minus))
-            row.update(eig_row("prime_Mplus_minus_edge", P_plus - P_edge))
-            row.update(eig_row("prime_edge_minus_Mminus", P_edge - P_minus))
-            row.update(eig_row("continuum_Mplus_minus_edge", P0_plus - P0_edge))
-            row.update(eig_row("continuum_edge_minus_Mminus", P0_edge - P0_minus))
+            hard_row = eig_row("hard_edge_minus_continuum", hard)
+            plus_row = eig_row("Mplus_minus_Mplus_continuum", plus)
+            minus_row = eig_row("Mminus_minus_Mminus_continuum", minus)
+            prime_plus_bridge_row = eig_row("prime_Mplus_minus_edge", P_plus - P_edge)
+            prime_minus_bridge_row = eig_row("prime_edge_minus_Mminus", P_edge - P_minus)
+            cont_plus_bridge_row = eig_row("continuum_Mplus_minus_edge", P0_plus - P0_edge)
+            cont_minus_bridge_row = eig_row("continuum_edge_minus_Mminus", P0_edge - P0_minus)
+
+            bridge_R_plus = max(
+                0.0,
+                -float(prime_plus_bridge_row["prime_Mplus_minus_edge_eig_min"]),
+            )
+            bridge_R_minus = max(
+                0.0,
+                -float(prime_minus_bridge_row["prime_edge_minus_Mminus_eig_min"]),
+            )
+            smooth_Mplus_epsilon = float(plus_row["Mplus_minus_Mplus_continuum_opnorm"])
+            smooth_Mminus_epsilon = float(minus_row["Mminus_minus_Mminus_continuum_opnorm"])
+            row.update(hard_row)
+            row.update(plus_row)
+            row.update(minus_row)
+            row.update(prime_plus_bridge_row)
+            row.update(prime_minus_bridge_row)
+            row.update(cont_plus_bridge_row)
+            row.update(cont_minus_bridge_row)
+            row.update(
+                {
+                    "bridge_R_plus": finite_float(bridge_R_plus),
+                    "bridge_R_minus": finite_float(bridge_R_minus),
+                    "total_upper_budget_plus": finite_float(bridge_R_plus + smooth_Mplus_epsilon),
+                    "total_upper_budget_minus": finite_float(bridge_R_minus + smooth_Mminus_epsilon),
+                    "budget_note": (
+                        "total_upper_budget_plus is the naive scalar-majorant route cost: "
+                        "P(edge) <= P(M+) + R*G plus the smoothed receiver residual. "
+                        "It is only a diagnostic, not a theorem certificate."
+                    ),
+                }
+            )
             rows.append(row)
     return rows
 
