@@ -32601,3 +32601,32 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Status refines to `PARTIAL(V_J worklist localized and sign-shape exposed)`,
   `GAP(certified sign partition or interval enclosure for V_J missing)`, and
   `FATAL(treating sampled sign changes as certified signs)`.
+
+## Insight (2026-06-12, Track B B2b) -- SignPartitionAudit
+
+- Added `docs/trackB/b2b_sign_partition_audit.md` and extended
+  `scripts/trackb_edge_operator_probe.py clvledger/clvmesh` with sampled
+  sign-partition endpoint-variation fields.
+- The diagnostic tests the candidate theorem shape: certify signs of
+  `H_v'(a)-H_v(a)/2` on smooth raw-`a` subintervals, then reduce continuous
+  `V_J` to endpoint variation of `exp(-a/2)H_v(a)`.  Jump terms at `2K` and
+  `4K` must remain separate.
+- Local `q3_docs` search again points to the existing FloorCert/PrimeCert
+  pattern: grid plus Lipschitz/envelope and theorem-producing finite interval
+  packages.  External search added no conditional number-theory input; only
+  the already-used CLV source and standard BV/Stieltjes bookkeeping remain in
+  scope.
+- K=3 at `ell=0.75`, `delta=0.5`, `quad_na=4001`, `ledger_cells=80`:
+  sampled sign-partition variation sum is about `0.140369` versus continuous
+  variation sum about `0.127925`, ratio about `1.09728`; mesh rows
+  `quad_na=2001,4001` give ratios about `1.09880,1.09728`.  Cell `39`
+  contains `left_edge_jump`, so it must be split before certification.
+- K=3.5 at `ell=1.375`, `delta=1`, `quad_na=4001`, `ledger_cells=120`:
+  sampled sign-partition variation sum is about `0.104928` versus continuous
+  variation sum about `0.104734`, ratio about `1.00184`.  Cells `59` and
+  `58` have zero sampled sign changes and ratios close to `1.00015` and
+  `1.00008`; cell `61` contains `left_edge_jump`.
+- Status refines to
+  `PARTIAL(sign-partition route looks viable for smooth shoulder cells)`,
+  `GAP(certified derivative sign/zero isolation and jump split missing)`, and
+  `FATAL(treating sampled partition endpoints as certified critical points)`.

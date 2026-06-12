@@ -257,6 +257,10 @@ Follow-up:
   for `H_v'(a)-H_v(a)/2`.  It keeps the same blocker status: sampled signs are
   not certificates, but the live `V_J` work is now localized to endpoint
   shoulder cells.
+- `docs/trackB/b2b_sign_partition_audit.md` refines that blocker: non-jump
+  shoulder cells are numerically close to endpoint-exact after sampled
+  sign partitions, while edge-jump cells must be split before theorem
+  production.
 
 ## Proshka Audit Block
 

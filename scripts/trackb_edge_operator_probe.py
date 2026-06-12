@@ -942,6 +942,68 @@ def sampled_sign_change_count(values: np.ndarray, *, rel_tol: float = 1e-10) -> 
     return int(np.count_nonzero(signs[1:] * signs[:-1] < 0.0))
 
 
+def sampled_sign_partition_variation(
+    a_grid: np.ndarray,
+    phi_grid: np.ndarray,
+    derivative_grid: np.ndarray,
+    *,
+    rel_tol: float = 1e-10,
+) -> dict[str, Any]:
+    """Diagnostic endpoint-variation after sampled derivative sign changes."""
+    a = np.asarray(a_grid, dtype=float)
+    phi = np.asarray(phi_grid, dtype=float)
+    deriv = np.asarray(derivative_grid, dtype=float)
+    if a.size < 2 or phi.size != a.size or deriv.size != a.size:
+        return {
+            "sampled_sign_partition_count": 0,
+            "sampled_sign_partition_break_count": 0,
+            "sampled_sign_partition_variation": 0.0,
+            "sampled_sign_partition_variation_over_continuous": None,
+            "sampled_sign_partition_max_width": 0.0,
+        }
+
+    threshold = rel_tol * max(1.0, float(np.max(np.abs(deriv))))
+    signs = np.zeros_like(deriv, dtype=int)
+    signs[deriv > threshold] = 1
+    signs[deriv < -threshold] = -1
+
+    break_indices = [0]
+    prev_idx: int | None = None
+    prev_sign = 0
+    for idx, sign in enumerate(signs):
+        if sign == 0:
+            continue
+        if prev_sign != 0 and int(sign) != prev_sign:
+            if prev_idx is not None:
+                break_indices.append(prev_idx)
+            break_indices.append(idx)
+        prev_idx = idx
+        prev_sign = int(sign)
+    break_indices.append(int(a.size - 1))
+    break_indices = sorted(
+        set(int(min(max(idx, 0), int(a.size - 1))) for idx in break_indices)
+    )
+
+    widths = [
+        float(a[right] - a[left])
+        for left, right in zip(break_indices[:-1], break_indices[1:])
+    ]
+    variation = sum(
+        abs(float(phi[right]) - float(phi[left]))
+        for left, right in zip(break_indices[:-1], break_indices[1:])
+    )
+    continuous_variation = float(np.trapezoid(np.abs(deriv), a))
+    return {
+        "sampled_sign_partition_count": int(max(0, len(break_indices) - 1)),
+        "sampled_sign_partition_break_count": int(max(0, len(break_indices) - 2)),
+        "sampled_sign_partition_variation": finite_float(float(variation)),
+        "sampled_sign_partition_variation_over_continuous": ratio_or_none(
+            variation, continuous_variation
+        ),
+        "sampled_sign_partition_max_width": finite_float(max(widths) if widths else 0.0),
+    }
+
+
 def run_finiteop(args: argparse.Namespace) -> list[dict[str, Any]]:
     pilot = load_step13()
     rows: list[dict[str, Any]] = []
@@ -2716,6 +2778,7 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         continue
                     ag = a_grid[grid_mask]
                     Hg = H_grid[grid_mask]
+                    phig = phi[grid_mask]
                     vg = variation_density[grid_mask]
                     pdg = phi_derivative_density[grid_mask]
                     eg = np.abs(psi_err[grid_mask])
@@ -2733,6 +2796,7 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         staircase_shift_a,
                         staircase_cumulative,
                     )
+                    sign_partition = sampled_sign_partition_variation(ag, phig, pdg)
                     finite_sup = float(finite_U["finite_sup_abs_psi_minus_x"])
                     grid_sup = float(np.max(eg))
                     cell_rows.append(
@@ -2771,6 +2835,7 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                             "sampled_phi_derivative_sign_changes": int(
                                 sampled_sign_change_count(pdg)
                             ),
+                            **sign_partition,
                             **finite_U,
                         }
                     )
@@ -2901,6 +2966,15 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                 sign_change_cell_count = sum(
                     1 for row in cell_rows if int(row["sampled_phi_derivative_sign_changes"]) > 0
                 )
+                sign_partition_variation_sum = float(
+                    sum(float(row["sampled_sign_partition_variation"]) for row in cell_rows)
+                )
+                sign_partition_break_count = sum(
+                    int(row["sampled_sign_partition_break_count"]) for row in cell_rows
+                )
+                sign_partition_cells_with_breaks = sum(
+                    1 for row in cell_rows if int(row["sampled_sign_partition_break_count"]) > 0
+                )
                 endpoint_contribution_exact = (
                     abs(float(psi_err[0])) * abs(float(phi[0]))
                     + abs(float(psi_err[-1])) * abs(float(phi[-1]))
@@ -2950,6 +3024,14 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                     cell_rows,
                     key=lambda row: -int(row["sampled_phi_derivative_sign_changes"]),
                 )[: int(args.top_cells)]
+                by_sign_partition_breaks = sorted(
+                    cell_rows,
+                    key=lambda row: -int(row["sampled_sign_partition_break_count"]),
+                )[: int(args.top_cells)]
+                by_sign_partition_variation = sorted(
+                    cell_rows,
+                    key=lambda row: -float(row["sampled_sign_partition_variation"]),
+                )[: int(args.top_cells)]
 
                 direction_rows.append(
                     {
@@ -2970,6 +3052,18 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "sampled_phi_derivative_sign_changes_total": int(sign_change_total),
                         "sampled_phi_derivative_sign_change_cell_count": int(
                             sign_change_cell_count
+                        ),
+                        "sampled_sign_partition_variation_sum": finite_float(
+                            sign_partition_variation_sum
+                        ),
+                        "sampled_sign_partition_variation_over_continuous_sum": ratio_or_none(
+                            sign_partition_variation_sum, continuous_variation_sum
+                        ),
+                        "sampled_sign_partition_break_count_sum": int(
+                            sign_partition_break_count
+                        ),
+                        "sampled_sign_partition_cells_with_breaks": int(
+                            sign_partition_cells_with_breaks
                         ),
                         "exact_integral_variation_bound": finite_float(exact_integral_bound),
                         "exact_endpoint_contribution": finite_float(endpoint_contribution_exact),
@@ -3034,6 +3128,8 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "top_cells_by_finiteU_deficit": by_finiteU_deficit,
                         "top_cells_by_continuous_variation": by_continuous_variation,
                         "top_cells_by_phi_derivative_sign_changes": by_sign_changes,
+                        "top_cells_by_sign_partition_breaks": by_sign_partition_breaks,
+                        "top_cells_by_sign_partition_variation": by_sign_partition_variation,
                     }
                 )
 
@@ -3127,6 +3223,18 @@ def run_clvmesh(args: argparse.Namespace) -> list[dict[str, Any]]:
                         ],
                         "sampled_phi_derivative_sign_change_cell_count": direction[
                             "sampled_phi_derivative_sign_change_cell_count"
+                        ],
+                        "sampled_sign_partition_variation_sum": direction[
+                            "sampled_sign_partition_variation_sum"
+                        ],
+                        "sampled_sign_partition_variation_over_continuous_sum": direction[
+                            "sampled_sign_partition_variation_over_continuous_sum"
+                        ],
+                        "sampled_sign_partition_break_count_sum": direction[
+                            "sampled_sign_partition_break_count_sum"
+                        ],
+                        "sampled_sign_partition_cells_with_breaks": direction[
+                            "sampled_sign_partition_cells_with_breaks"
                         ],
                         "finiteU_with_exact_jumps_bound": direction[
                             "finiteU_with_exact_jumps_bound"

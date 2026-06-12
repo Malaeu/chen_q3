@@ -252,6 +252,14 @@ K=3:   cells 39,35,36
 K=3.5: cells 61,59,58
 ```
 
+Follow-up:
+
+- `docs/trackB/b2b_sign_partition_audit.md` adds sampled endpoint-variation
+  diagnostics after derivative sign partitions.  It refines the preferred
+  generator shape: smooth shoulder cells should use certified sign partitions,
+  while edge-jump cells must be split into explicit jump plus smooth pieces
+  before any endpoint-variation certificate is trusted.
+
 ## Proshka Audit Block
 
 Claim:
