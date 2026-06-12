@@ -18,6 +18,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   clvblend receiver affine-tradeoff no-free-lunch diagnostics
   clvbreakdown
             endpoint/bulk anatomy of the Selberg receiver correction
+  clvstructure
+            operator-level rank/cancellation diagnostics for that correction
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -495,6 +497,175 @@ def rayleigh_correction_continuum_breakdown(
         "continuum_abs_contribution_sum": finite_float(total_abs),
         "continuum_by_region": bucket_rows(by_region, total_abs),
     }
+
+
+def opnorm_sym(A: np.ndarray) -> float:
+    if A.size == 0:
+        return 0.0
+    eigs = np.linalg.eigvalsh(A)
+    return float(max(abs(float(eigs[0])), abs(float(eigs[-1]))))
+
+
+def spectral_summary(A: np.ndarray, *, top: int = 8) -> dict[str, Any]:
+    A = 0.5 * (A + A.T)
+    eigs = np.linalg.eigvalsh(A)
+    abs_eigs = np.abs(eigs)
+    fro = float(np.linalg.norm(A, ord="fro"))
+    nuclear = float(np.sum(abs_eigs))
+    opnorm = 0.0 if len(abs_eigs) == 0 else float(np.max(abs_eigs))
+    sq_total = float(np.sum(abs_eigs**2))
+    abs_total = float(np.sum(abs_eigs))
+    order = np.argsort(-abs_eigs)
+    top_rows = []
+    for idx in order[:top]:
+        top_rows.append(
+            {
+                "index": int(idx),
+                "eigenvalue": finite_float(float(eigs[idx])),
+                "abs_fraction": 0.0
+                if abs_total == 0.0
+                else finite_float(float(abs_eigs[idx]) / abs_total),
+                "fro_fraction": 0.0
+                if sq_total == 0.0
+                else finite_float(float(abs_eigs[idx] ** 2) / sq_total),
+            }
+        )
+    return {
+        "opnorm": finite_float(opnorm),
+        "lambda_min": finite_float(float(eigs[0])) if len(eigs) else 0.0,
+        "lambda_max": finite_float(float(eigs[-1])) if len(eigs) else 0.0,
+        "fro_norm": finite_float(fro),
+        "nuclear_norm": finite_float(nuclear),
+        "effective_rank_fro": finite_float(0.0 if fro == 0.0 else nuclear**2 / fro**2),
+        "top_abs_eigenvalues": top_rows,
+    }
+
+
+def row_column_concentration(
+    A: np.ndarray,
+    *,
+    top_counts: list[int],
+    top: int,
+) -> dict[str, Any]:
+    A2 = np.asarray(A, dtype=float) ** 2
+    total = float(np.sum(A2))
+    row_energy = np.sum(A2, axis=1)
+    order = np.argsort(-row_energy)
+    top_rows = [
+        {
+            "index": int(idx),
+            "row_fro_fraction": 0.0
+            if total == 0.0
+            else finite_float(float(row_energy[idx]) / total),
+        }
+        for idx in order[:top]
+    ]
+    captures = []
+    n = A.shape[0]
+    for count in top_counts:
+        k = min(int(count), n)
+        idxs = order[:k]
+        mask = np.zeros_like(A2, dtype=bool)
+        mask[idxs, :] = True
+        mask[:, idxs] = True
+        block = np.zeros_like(A2, dtype=bool)
+        block[np.ix_(idxs, idxs)] = True
+        captures.append(
+            {
+                "rows": int(k),
+                "union_rows_cols_fro_fraction": 0.0
+                if total == 0.0
+                else finite_float(float(np.sum(A2[mask])) / total),
+                "principal_block_fro_fraction": 0.0
+                if total == 0.0
+                else finite_float(float(np.sum(A2[block])) / total),
+            }
+        )
+    return {
+        "basis": "standardized projected kerQ basis",
+        "top_rows_by_fro_energy": top_rows,
+        "captures": captures,
+    }
+
+
+def add_matrix_bucket(mats: dict[str, np.ndarray], key: str, M: np.ndarray) -> None:
+    if key not in mats:
+        mats[key] = np.zeros_like(M, dtype=float)
+    mats[key] += M
+
+
+def build_prime_region_matrices(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    shifts: list[Any],
+    *,
+    weight_fn: Any,
+    lo: float,
+    hi: float,
+    halo: float,
+) -> dict[str, np.ndarray]:
+    mats: dict[str, np.ndarray] = {}
+    for sh in shifts:
+        scalar = float(weight_fn(float(sh.a)))
+        if scalar == 0.0:
+            continue
+        M = sh.weight * scalar * shifted_packet_matrix(pilot, packet, D, ell, sh.a)
+        add_matrix_bucket(mats, edge_region(float(sh.a), lo=lo, hi=hi, halo=halo), M)
+    return {key: pilot.sym(M) for key, M in mats.items()}
+
+
+def build_correction_continuum_region_matrices(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    *,
+    plus_weight_fn: Any,
+    lo: float,
+    hi: float,
+    halo: float,
+    max_a: float,
+    p0_na: int,
+) -> dict[str, np.ndarray]:
+    """Region matrices for P0(M+) - P0(edge), matching `build_P0_edge`."""
+    mats: dict[str, np.ndarray] = {}
+
+    def add_grid(a_grid: np.ndarray, weights: np.ndarray, sign: float, weight_fn: Any) -> None:
+        for a, w in zip(a_grid, weights):
+            coeff = sign * float(w) * math.exp(0.5 * float(a)) * float(weight_fn(float(a)))
+            if coeff == 0.0:
+                continue
+            M = coeff * shifted_packet_matrix(pilot, packet, D, ell, float(a))
+            add_matrix_bucket(mats, edge_region(float(a), lo=lo, hi=hi, halo=halo), M)
+
+    plus_grid = np.linspace(0.0, max_a, p0_na)
+    add_grid(plus_grid, pilot.trap_weights_uniform(plus_grid), 1.0, plus_weight_fn)
+
+    edge_grid = np.linspace(lo, hi, p0_na)
+    add_grid(edge_grid, pilot.trap_weights_uniform(edge_grid), -1.0, lambda _a: 1.0)
+    return {key: pilot.sym(M) for key, M in mats.items()}
+
+
+def sum_region_matrices(mats: dict[str, np.ndarray], regions: set[str], template: np.ndarray) -> np.ndarray:
+    out = np.zeros_like(template, dtype=float)
+    for region in regions:
+        if region in mats:
+            out += mats[region]
+    return out
+
+
+def standard_summary_for_matrix(
+    pilot: Any,
+    M: np.ndarray,
+    N: np.ndarray,
+    Gc: np.ndarray,
+    *,
+    top: int,
+) -> dict[str, Any]:
+    A = generalized_to_standard(pilot, project_matrix(pilot, M, N), Gc)
+    return spectral_summary(A, top=top)
 
 
 def run_finiteop(args: argparse.Namespace) -> list[dict[str, Any]]:
@@ -1614,6 +1785,237 @@ def run_clvbreakdown(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def run_clvstructure(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    endpoint_regions = {
+        "left_outside_halo",
+        "left_inside_halo",
+        "right_inside_halo",
+        "right_outside_halo",
+    }
+    far_regions = {"below_far", "above_far"}
+
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            halo = float(args.halo_factor) / float(receiver_delta)
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            def correction_weight(a: float) -> float:
+                return plus_weight(a) - chi_weight(a)
+
+            prime_regions = build_prime_region_matrices(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                shifts,
+                weight_fn=correction_weight,
+                lo=lo,
+                hi=hi,
+                halo=halo,
+            )
+            continuum_regions = build_correction_continuum_region_matrices(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                plus_weight_fn=plus_weight,
+                lo=lo,
+                hi=hi,
+                halo=halo,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+            )
+
+            template = np.zeros_like(D, dtype=float)
+            region_names = sorted(set(prime_regions) | set(continuum_regions))
+            prime_total = sum_region_matrices(prime_regions, set(region_names), template)
+            continuum_total = sum_region_matrices(continuum_regions, set(region_names), template)
+            correction_total = pilot.sym(prime_total - continuum_total)
+
+            A_prime = generalized_to_standard(pilot, project_matrix(pilot, prime_total, N), Gc)
+            A_cont = generalized_to_standard(pilot, project_matrix(pilot, continuum_total, N), Gc)
+            A_corr = generalized_to_standard(pilot, project_matrix(pilot, correction_total, N), Gc)
+
+            endpoint_prime = sum_region_matrices(prime_regions, endpoint_regions, template)
+            endpoint_cont = sum_region_matrices(continuum_regions, endpoint_regions, template)
+            far_prime = sum_region_matrices(prime_regions, far_regions, template)
+            far_cont = sum_region_matrices(continuum_regions, far_regions, template)
+            bulk_regions = set(region_names) - endpoint_regions - far_regions
+            bulk_prime = sum_region_matrices(prime_regions, bulk_regions, template)
+            bulk_cont = sum_region_matrices(continuum_regions, bulk_regions, template)
+
+            aggregate_components = {
+                "prime_total": prime_total,
+                "continuum_total": continuum_total,
+                "correction_total": correction_total,
+                "endpoint_correction": pilot.sym(endpoint_prime - endpoint_cont),
+                "bulk_correction": pilot.sym(bulk_prime - bulk_cont),
+                "far_correction": pilot.sym(far_prime - far_cont),
+            }
+            aggregate_summaries = [
+                {
+                    "label": label,
+                    **standard_summary_for_matrix(pilot, M, N, Gc, top=int(args.top_eigs)),
+                }
+                for label, M in aggregate_components.items()
+            ]
+
+            region_summaries = []
+            for region in region_names:
+                P_region = prime_regions.get(region, template)
+                C_region = continuum_regions.get(region, template)
+                region_summaries.append(
+                    {
+                        "region": region,
+                        "prime": standard_summary_for_matrix(
+                            pilot, P_region, N, Gc, top=int(args.top_eigs)
+                        ),
+                        "continuum": standard_summary_for_matrix(
+                            pilot, C_region, N, Gc, top=int(args.top_eigs)
+                        ),
+                        "signed_correction": standard_summary_for_matrix(
+                            pilot, pilot.sym(P_region - C_region), N, Gc, top=int(args.top_eigs)
+                        ),
+                    }
+                )
+
+            prime_op = opnorm_sym(A_prime)
+            cont_op = opnorm_sym(A_cont)
+            corr_op = opnorm_sym(A_corr)
+            prime_fro = float(np.linalg.norm(A_prime, ord="fro"))
+            cont_fro = float(np.linalg.norm(A_cont, ord="fro"))
+            corr_fro = float(np.linalg.norm(A_corr, ord="fro"))
+
+            endpoint_A = generalized_to_standard(
+                pilot,
+                project_matrix(pilot, aggregate_components["endpoint_correction"], N),
+                Gc,
+            )
+            bulk_A = generalized_to_standard(
+                pilot,
+                project_matrix(pilot, aggregate_components["bulk_correction"], N),
+                Gc,
+            )
+            far_A = generalized_to_standard(
+                pilot,
+                project_matrix(pilot, aggregate_components["far_correction"], N),
+                Gc,
+            )
+            split_op_sum = opnorm_sym(endpoint_A) + opnorm_sym(bulk_A) + opnorm_sym(far_A)
+            split_fro_sum = (
+                float(np.linalg.norm(endpoint_A, ord="fro"))
+                + float(np.linalg.norm(bulk_A, ord="fro"))
+                + float(np.linalg.norm(far_A, ord="fro"))
+            )
+
+            rebuild_error = float(
+                np.max(
+                    np.abs(
+                        correction_total
+                        - aggregate_components["endpoint_correction"]
+                        - aggregate_components["bulk_correction"]
+                        - aggregate_components["far_correction"]
+                    )
+                )
+            )
+
+            rows.append(
+                {
+                    "mode": "clvstructure",
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "halo_width_raw": finite_float(halo),
+                    "max_a_effective": finite_float(effective_max_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(shifts)),
+                    "aggregate_summaries": aggregate_summaries,
+                    "region_summaries": region_summaries,
+                    "prime_continuum_cancellation": {
+                        "correction_opnorm": finite_float(corr_op),
+                        "prime_opnorm": finite_float(prime_op),
+                        "continuum_opnorm": finite_float(cont_op),
+                        "opnorm_ratio_correction_over_prime_plus_continuum": finite_float(
+                            0.0 if prime_op + cont_op == 0.0 else corr_op / (prime_op + cont_op)
+                        ),
+                        "correction_fro": finite_float(corr_fro),
+                        "prime_fro": finite_float(prime_fro),
+                        "continuum_fro": finite_float(cont_fro),
+                        "fro_ratio_correction_over_prime_plus_continuum": finite_float(
+                            0.0 if prime_fro + cont_fro == 0.0 else corr_fro / (prime_fro + cont_fro)
+                        ),
+                    },
+                    "endpoint_bulk_far_cancellation": {
+                        "correction_opnorm": finite_float(corr_op),
+                        "split_opnorm_sum": finite_float(split_op_sum),
+                        "opnorm_ratio_total_over_split_sum": finite_float(
+                            0.0 if split_op_sum == 0.0 else corr_op / split_op_sum
+                        ),
+                        "correction_fro": finite_float(corr_fro),
+                        "split_fro_sum": finite_float(split_fro_sum),
+                        "fro_ratio_total_over_split_sum": finite_float(
+                            0.0 if split_fro_sum == 0.0 else corr_fro / split_fro_sum
+                        ),
+                        "rebuild_max_abs_error": finite_float(rebuild_error),
+                    },
+                    "correction_row_column_concentration": row_column_concentration(
+                        A_corr,
+                        top_counts=[1, 2, 4, 8, 16],
+                        top=int(args.top_rows),
+                    ),
+                    "D2": (
+                        "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), "
+                        "operator-level structure of B_R=(P(M+)-P(edge))-(P0(M+)-P0(edge))"
+                    ),
+                }
+            )
+    return rows
+
+
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
     return (ell / (packet.s_k * packet.c_k)) * np.sinc(ell * u / packet.s_k) ** (
         2 * packet.k_spline + 2
@@ -2416,6 +2818,29 @@ def parse_args() -> argparse.Namespace:
     clvbreakdown.add_argument("--p0-na", type=int, default=1001)
     clvbreakdown.add_argument("--top", type=int, default=12)
     clvbreakdown.set_defaults(func=run_clvbreakdown)
+
+    clvstructure = sub.add_parser(
+        "clvstructure",
+        help="operator-level rank/cancellation diagnostics for the Selberg correction",
+    )
+    add_common_packet_args(clvstructure)
+    clvstructure.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvstructure.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvstructure.add_argument(
+        "--halo-factor",
+        type=float,
+        default=1.0,
+        help="endpoint halo half-width is halo_factor / receiver_delta in raw a",
+    )
+    clvstructure.add_argument("--p0-na", type=int, default=1001)
+    clvstructure.add_argument("--top-eigs", type=int, default=8)
+    clvstructure.add_argument("--top-rows", type=int, default=8)
+    clvstructure.set_defaults(func=run_clvstructure)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

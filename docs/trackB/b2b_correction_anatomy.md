@@ -301,6 +301,15 @@ This is not fatal for Track B.  It is useful because it narrows the next
 mathematical question.  The correction is structured enough to attack, but the
 attack cannot be a scalar norm bound on the prime side alone.
 
+Follow-up:
+
+- `docs/trackB/b2b_correction_structure_probe.md` checks the operator-level
+  rank and cancellation structure.  The key positive signal is that
+  `P(M^+)-P(1_I)` and `P0(M^+)-P0(1_I)` nearly cancel as operators.  The key
+  negative signal is that the remainder is not fixed low rank in the current
+  projected basis.  This points to a smooth structured quadrature theorem for
+  the full receiver error, not a few-row endpoint shortcut.
+
 ## Proshka Audit Block
 
 Claim:

@@ -32397,3 +32397,28 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   plus `GAP(matched endpoint-continuum cancellation theorem missing)`.  The
   next RP4 target is not a scalar prime endpoint bound; it is a signed or
   cone-adapted endpoint-continuum cancellation theorem for `B_R`.
+
+## Insight (2026-06-12, Track B B2b) -- CorrectionStructure
+
+- Added `docs/trackB/b2b_correction_structure_probe.md` and extended
+  `scripts/trackb_edge_operator_probe.py` with `clvstructure`.
+- The probe decomposes the Selberg correction
+  `B_R = (P(M^+)-P(1_I)) - (P0(M^+)-P0(1_I))` at operator level into
+  prime/continuum totals, endpoint/bulk/far signed pieces, spectral-rank
+  diagnostics, and row/column concentration in the standardized projected
+  `kerQ` basis.
+- Strong positive signal: prime and continuum correction totals almost cancel.
+  At `K=3.5`, `ell=1.375`, `delta=1`, `p0_na=401`,
+  `||P(M^+)-P(1_I)||_G ~= 12.5346`, `||P0(M^+)-P0(1_I)||_G ~= 12.3336`,
+  but `||B_R||_G ~= 0.23816`, so the opnorm ratio is about `0.00958`.
+- Strong negative signal: `B_R` is not low rank in this basis.  At the same
+  point, `effective_rank_fro(B_R) ~= 15.31` in `kerQ_dim=21`; the top absolute
+  eigenvalue carries only about `7.3%` of nuclear mass.  Row/column union
+  capture is visible, but not as a fixed small principal block.
+- Endpoint and bulk signed pieces cancel each other: at `K=3.5`, endpoint
+  correction opnorm is about `0.919`, bulk correction opnorm about `0.768`,
+  while total correction opnorm is only about `0.238`.  Paying endpoint and
+  bulk separately is the wrong theorem shape.
+- Status refines to `PARTIAL(matched prime-continuum cancellation observed)`,
+  `GAP(smooth structured quadrature theorem for E_delta*F_v missing)`, and
+  `FATAL(simple fixed-rank/few-row boundary shortcut in the current basis)`.
