@@ -24,6 +24,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
             smooth Selberg correction quadrature route
   clvfourier
             sampled Fourier-sign diagnostics for E_delta(a)*F_v(a)
+  clvledger
+            finite psi-staircase ledger diagnostics for the smooth correction
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -838,6 +840,20 @@ def sampled_fourier_sign_summary(
         "L1_abs_H_da": finite_float(float(np.trapezoid(np.abs(H), a_grid))),
         "integral_H_da": finite_float(float(np.trapezoid(H, a_grid))),
     }
+
+
+def capture_count(values: list[float], fraction: float) -> int:
+    if not values:
+        return 0
+    total = float(sum(values))
+    if total <= 0.0:
+        return 0
+    running = 0.0
+    for idx, value in enumerate(sorted(values, reverse=True), start=1):
+        running += float(value)
+        if running >= fraction * total:
+            return idx
+    return len(values)
 
 
 def run_finiteop(args: argparse.Namespace) -> list[dict[str, Any]]:
@@ -2495,6 +2511,284 @@ def run_clvfourier(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            def correction_weight(a: float) -> float:
+                return plus_weight(a) - chi_weight(a)
+
+            P_edge = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, chi_weight
+            )
+            P_plus = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, plus_weight
+            )
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+            correction = pilot.sym((P_plus - P_edge) - (P0_plus - P0_edge))
+            A_corr = generalized_to_standard(pilot, project_matrix(pilot, correction, N), Gc)
+            eigs, evecs = np.linalg.eigh(A_corr)
+            op_idx = int(np.argmax(np.abs(eigs)))
+            if args.directions == "all":
+                directions = [
+                    ("lower", 0),
+                    ("upper", len(eigs) - 1),
+                    ("opnorm", op_idx),
+                ]
+            else:
+                directions = [("opnorm", op_idx)]
+
+            a_grid = np.linspace(0.0, effective_max_a, int(args.quad_na))
+            psi_err = psi_error_on_grid(a_grid, shifts)
+            pnt_err = explicit_psi_error_bound(a_grid)
+            correction_weights_grid = np.array([correction_weight(float(a)) for a in a_grid], dtype=float)
+            cell_edges = np.linspace(0.0, effective_max_a, int(args.ledger_cells) + 1)
+
+            direction_rows: list[dict[str, Any]] = []
+            for label, idx in directions:
+                y = evecs[:, idx]
+                coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, y)
+                profile_grid = packet_profile_grid(
+                    pilot, packet, D, params.ell, coeffs, a_grid
+                )
+                H_grid = correction_weights_grid * profile_grid
+                dH = np.gradient(H_grid, a_grid, edge_order=2 if len(a_grid) >= 3 else 1)
+                phi = np.exp(-0.5 * a_grid) * H_grid
+                variation_density = np.exp(-0.5 * a_grid) * np.abs(dH - 0.5 * H_grid)
+
+                shift_a = np.array([float(sh.a) for sh in shifts], dtype=float)
+                shift_weight = np.array([float(sh.weight) for sh in shifts], dtype=float)
+                shift_H = np.array(
+                    [
+                        correction_weight(float(sh.a))
+                        * packet_profile_value(pilot, packet, D, params.ell, coeffs, float(sh.a))
+                        for sh in shifts
+                    ],
+                    dtype=float,
+                )
+
+                cell_rows: list[dict[str, Any]] = []
+                for cell_idx, (cell_lo, cell_hi) in enumerate(zip(cell_edges[:-1], cell_edges[1:])):
+                    if cell_idx == len(cell_edges) - 2:
+                        grid_mask = (a_grid >= cell_lo) & (a_grid <= cell_hi)
+                        shift_mask = (shift_a >= cell_lo) & (shift_a <= cell_hi)
+                    else:
+                        grid_mask = (a_grid >= cell_lo) & (a_grid < cell_hi)
+                        shift_mask = (shift_a >= cell_lo) & (shift_a < cell_hi)
+                    if np.count_nonzero(grid_mask) < 2:
+                        continue
+                    ag = a_grid[grid_mask]
+                    Hg = H_grid[grid_mask]
+                    vg = variation_density[grid_mask]
+                    eg = np.abs(psi_err[grid_mask])
+                    pg = pnt_err[grid_mask]
+                    continuum = float(np.trapezoid(np.exp(0.5 * ag) * Hg, ag))
+                    prime = float(np.sum(shift_weight[shift_mask] * shift_H[shift_mask]))
+                    residual = prime - continuum
+                    exact_bound = float(np.trapezoid(eg * vg, ag))
+                    pnt_bound = float(np.trapezoid(pg * vg, ag))
+                    variation_x = float(np.trapezoid(vg, ag))
+                    cell_rows.append(
+                        {
+                            "cell_index": int(cell_idx),
+                            "a_lo": finite_float(float(cell_lo)),
+                            "a_hi": finite_float(float(cell_hi)),
+                            "prime_shift_count": int(np.count_nonzero(shift_mask)),
+                            "direct_prime_sum": finite_float(prime),
+                            "direct_continuum": finite_float(continuum),
+                            "direct_residual": finite_float(residual),
+                            "exact_grid_variation_bound": finite_float(exact_bound),
+                            "explicit_pnt_variation_bound": finite_float(pnt_bound),
+                            "variation_x": finite_float(variation_x),
+                            "jump_variation_x": 0.0,
+                            "exact_jump_bound": 0.0,
+                            "pnt_jump_bound": 0.0,
+                            "max_abs_psi_minus_x": finite_float(float(np.max(eg))),
+                            "max_pnt_bound": finite_float(float(np.max(pg))),
+                            "max_abs_H": finite_float(float(np.max(np.abs(Hg)))),
+                        }
+                    )
+
+                jump_events = [
+                    ("left_edge_jump", lo, -packet_profile_value(pilot, packet, D, params.ell, coeffs, lo)),
+                    ("right_edge_jump", hi, packet_profile_value(pilot, packet, D, params.ell, coeffs, hi)),
+                ]
+                for jump_label, jump_a, jump_H in jump_events:
+                    if not (0.0 <= jump_a <= effective_max_a):
+                        continue
+                    cell_index = min(
+                        int(args.ledger_cells) - 1,
+                        max(0, int(math.floor((jump_a / effective_max_a) * int(args.ledger_cells)))),
+                    )
+                    target_rows = [row for row in cell_rows if int(row["cell_index"]) == cell_index]
+                    if not target_rows:
+                        continue
+                    row = target_rows[0]
+                    jump_phi = math.exp(-0.5 * jump_a) * abs(float(jump_H))
+                    exact_jump = abs(float(psi_error_on_grid(np.array([jump_a]), shifts)[0])) * jump_phi
+                    pnt_jump = float(explicit_psi_error_bound(np.array([jump_a]))[0]) * jump_phi
+                    row["jump_variation_x"] = finite_float(float(row["jump_variation_x"]) + jump_phi)
+                    row["exact_jump_bound"] = finite_float(float(row["exact_jump_bound"]) + exact_jump)
+                    row["pnt_jump_bound"] = finite_float(float(row["pnt_jump_bound"]) + pnt_jump)
+                    row["exact_grid_variation_bound"] = finite_float(
+                        float(row["exact_grid_variation_bound"]) + exact_jump
+                    )
+                    row["explicit_pnt_variation_bound"] = finite_float(
+                        float(row["explicit_pnt_variation_bound"]) + pnt_jump
+                    )
+                    row["variation_x"] = finite_float(float(row["variation_x"]) + jump_phi)
+                    row.setdefault("jump_labels", [])
+                    row["jump_labels"].append(jump_label)
+
+                total_prime = float(sum(float(row["direct_prime_sum"]) for row in cell_rows))
+                total_cont = float(sum(float(row["direct_continuum"]) for row in cell_rows))
+                total_residual = total_prime - total_cont
+                exact_integral_bound = float(sum(float(row["exact_grid_variation_bound"]) for row in cell_rows))
+                pnt_integral_bound = float(sum(float(row["explicit_pnt_variation_bound"]) for row in cell_rows))
+                abs_cell_sum = float(sum(abs(float(row["direct_residual"])) for row in cell_rows))
+                endpoint_contribution_exact = (
+                    abs(float(psi_err[0])) * abs(float(phi[0]))
+                    + abs(float(psi_err[-1])) * abs(float(phi[-1]))
+                )
+                endpoint_contribution_pnt = (
+                    float(pnt_err[0]) * abs(float(phi[0]))
+                    + float(pnt_err[-1]) * abs(float(phi[-1]))
+                )
+                exact_total_with_endpoints = exact_integral_bound + endpoint_contribution_exact
+                pnt_total_with_endpoints = pnt_integral_bound + endpoint_contribution_pnt
+                exact_values = [float(row["exact_grid_variation_bound"]) for row in cell_rows]
+                abs_residual_values = [abs(float(row["direct_residual"])) for row in cell_rows]
+
+                by_bound = sorted(
+                    cell_rows,
+                    key=lambda row: -float(row["exact_grid_variation_bound"]),
+                )[: int(args.top_cells)]
+                by_residual = sorted(
+                    cell_rows,
+                    key=lambda row: -abs(float(row["direct_residual"])),
+                )[: int(args.top_cells)]
+
+                direction_rows.append(
+                    {
+                        "label": label,
+                        "matrix_lambda": finite_float(float(eigs[idx])),
+                        "ledger_total_prime_sum": finite_float(total_prime),
+                        "ledger_total_continuum": finite_float(total_cont),
+                        "ledger_total_residual": finite_float(total_residual),
+                        "matrix_minus_ledger_abs_error": finite_float(
+                            abs(float(eigs[idx]) - total_residual)
+                        ),
+                        "sum_abs_cell_residuals": finite_float(abs_cell_sum),
+                        "cancellation_ratio_abs_total_over_sum_abs_cells": finite_float(
+                            0.0 if abs_cell_sum == 0.0 else abs(total_residual) / abs_cell_sum
+                        ),
+                        "exact_integral_variation_bound": finite_float(exact_integral_bound),
+                        "exact_endpoint_contribution": finite_float(endpoint_contribution_exact),
+                        "exact_total_with_endpoints": finite_float(exact_total_with_endpoints),
+                        "pnt_integral_variation_bound": finite_float(pnt_integral_bound),
+                        "pnt_endpoint_contribution": finite_float(endpoint_contribution_pnt),
+                        "pnt_total_with_endpoints": finite_float(pnt_total_with_endpoints),
+                        "exact_bound_over_abs_residual": finite_float(
+                            0.0 if total_residual == 0.0 else exact_total_with_endpoints / abs(total_residual)
+                        ),
+                        "pnt_bound_over_abs_residual": finite_float(
+                            0.0 if total_residual == 0.0 else pnt_total_with_endpoints / abs(total_residual)
+                        ),
+                        "cells_for_50pct_exact_bound": int(capture_count(exact_values, 0.5)),
+                        "cells_for_80pct_exact_bound": int(capture_count(exact_values, 0.8)),
+                        "cells_for_95pct_exact_bound": int(capture_count(exact_values, 0.95)),
+                        "cells_for_50pct_abs_residual": int(capture_count(abs_residual_values, 0.5)),
+                        "cells_for_80pct_abs_residual": int(capture_count(abs_residual_values, 0.8)),
+                        "cells_for_95pct_abs_residual": int(capture_count(abs_residual_values, 0.95)),
+                        "top_cells_by_exact_bound": by_bound,
+                        "top_cells_by_abs_residual": by_residual,
+                    }
+                )
+
+            rows.append(
+                {
+                    "mode": "clvledger",
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "quad_na": int(args.quad_na),
+                    "ledger_cells": int(args.ledger_cells),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "max_a_effective": finite_float(effective_max_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(shifts)),
+                    "correction_eig_min": finite_float(float(eigs[0])),
+                    "correction_eig_max": finite_float(float(eigs[-1])),
+                    "correction_opnorm": finite_float(
+                        max(abs(float(eigs[0])), abs(float(eigs[-1])))
+                    ),
+                    "directions": direction_rows,
+                    "theorem_shape": (
+                        "finite raw-a ledger for int phi d(psi-x), decomposing the exact-grid "
+                        "Chebyshev staircase variation by cells"
+                    ),
+                    "D2": (
+                        "raw a=r*log(p), x=exp(a), phi=x^(-1/2)E_delta(log x)F_v(log x), "
+                        "cell ledger for sum Lambda(n)n^(-1/2)H(log n)-int exp(a/2)H(a)da"
+                    ),
+                }
+            )
+    return rows
+
+
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
     return (ell / (packet.s_k * packet.c_k)) * np.sinc(ell * u / packet.s_k) ** (
         2 * packet.k_spline + 2
@@ -3354,6 +3648,30 @@ def parse_args() -> argparse.Namespace:
     clvfourier.add_argument("--fourier-u-max", type=float, default=2.0)
     clvfourier.add_argument("--fourier-nu", type=int, default=1001)
     clvfourier.set_defaults(func=run_clvfourier)
+
+    clvledger = sub.add_parser(
+        "clvledger",
+        help="finite psi-staircase ledger diagnostics for the smooth correction",
+    )
+    add_common_packet_args(clvledger)
+    clvledger.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvledger.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvledger.add_argument(
+        "--directions",
+        choices=["opnorm", "all"],
+        default="opnorm",
+        help="which correction eigenvector directions to ledger",
+    )
+    clvledger.add_argument("--p0-na", type=int, default=1001)
+    clvledger.add_argument("--quad-na", type=int, default=4001)
+    clvledger.add_argument("--ledger-cells", type=int, default=120)
+    clvledger.add_argument("--top-cells", type=int, default=12)
+    clvledger.set_defaults(func=run_clvledger)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

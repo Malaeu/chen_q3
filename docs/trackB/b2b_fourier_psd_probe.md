@@ -250,6 +250,14 @@ This is not fatal for Track B.  It removes the simplest zero-side PSD shortcut
 and leaves two real routes: a controlled signed PD decomposition, or a finite
 smooth Chebyshev ledger.
 
+Follow-up:
+
+- `docs/trackB/b2b_finite_chebyshev_ledger_probe.md` starts the finite smooth
+  Chebyshev ledger route.  It adds explicit jump accounting at `a=2K,4K` and
+  shows promising endpoint localization at K=3.5, but the sampled derivative
+  ledger is not certificate-safe yet; interval derivative envelopes are the
+  missing proof-grade object.
+
 ## Proshka Audit Block
 
 Claim:

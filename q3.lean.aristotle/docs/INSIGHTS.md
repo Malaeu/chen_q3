@@ -32467,3 +32467,26 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Status refines to `FATAL(direct PSD eligibility of E_delta*F_v)`,
   `PARTIAL(F_v Fourier-positivity sanity passes)`, and
   `GAP(signed PD decomposition or finite Chebyshev ledger still needed)`.
+
+## Insight (2026-06-12, Track B B2b) -- FiniteChebyshevLedger
+
+- Added `docs/trackB/b2b_finite_chebyshev_ledger_probe.md` and extended
+  `scripts/trackb_edge_operator_probe.py` with `clvledger`.
+- The new mode decomposes the smooth correction
+  `int phi_v d(psi-x)` into finite raw-`a` cells, using exact-grid
+  `psi(e^a)-e^a`, cellwise prime-minus-continuum residuals, and explicit jump
+  terms at `a=2K` and `a=4K`.
+- Positive signal: at `K=3.5`, `ell=1.375`, `delta=1`, `ledger_cells=120`,
+  the opnorm direction has exact-grid jump-aware ledger bound about `0.75431`
+  for ledger residual about `0.31897`; 95% of the bound is captured by
+  `14/120` cells.
+- The dominant cell is `[6.990,7.104]`, contains the `left_edge_jump`, has
+  exact-grid bound about `0.4061`, and also carries the largest direct residual
+  contribution.  This matches the previous endpoint-prime anatomy.
+- Negative signal: the sampled derivative ledger is not proof-safe.  On the
+  compact schedule, K=3 underbounds the observed residual
+  (`exact/residual ~= 0.6565`), so interval-certified derivative/variation
+  envelopes are mandatory.
+- Status refines to `PARTIAL(finite Chebyshev ledger localizes the smooth
+  correction)`, `GAP(interval-certified derivative/variation envelopes
+  missing)`, and `FATAL(sampled clvledger output as proof certificate)`.
