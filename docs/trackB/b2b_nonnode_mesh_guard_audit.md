@@ -263,6 +263,15 @@ Taylor model for `S_v'` on each mesh interval.
 
 Track B remains active.
 
+Follow-up:
+
+- `docs/trackB/b2b_nonnode_curvature_guard_audit.md` adds a sampled
+  curvature-envelope layer for `sup |S_v'|` on each mesh interval.  On K=3.5
+  cell `58`, even curvature factor `10000` keeps the worst interval guard
+  positive, so the next proof-producing generator should focus on
+  outward-rounded endpoint values and certified `sup |S_v''|` or a Taylor
+  remainder.
+
 ## Proshka Audit Block
 
 Claim:

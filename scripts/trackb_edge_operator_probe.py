@@ -1273,6 +1273,86 @@ def mesh_interval_guard_summary(
     }
 
 
+def mesh_curvature_guard_summary(
+    a_grid: np.ndarray,
+    values: np.ndarray,
+    derivative_values: np.ndarray,
+    curvature_values: np.ndarray,
+    *,
+    safety_factors: list[float],
+) -> dict[str, Any]:
+    """Per-mesh guard using a sampled curvature envelope for |S'|."""
+    a = np.asarray(a_grid, dtype=float)
+    v = np.asarray(values, dtype=float)
+    dv = np.asarray(derivative_values, dtype=float)
+    curv = np.asarray(curvature_values, dtype=float)
+    if a.size < 2 or v.size != a.size or dv.size != a.size or curv.size != a.size:
+        return {
+            "route": "per_mesh_curvature_endpoint_guard",
+            "mesh_interval_count": 0,
+            "stress_factors": [],
+            "largest_passing_factor": None,
+            "first_failing_factor": None,
+            "proof_status": (
+                "diagnostic_only: malformed mesh; no curvature envelope generated"
+            ),
+        }
+
+    widths = np.diff(a)
+    endpoint_min_abs = np.minimum(np.abs(v[:-1]), np.abs(v[1:]))
+    endpoint_lipschitz = np.maximum(np.abs(dv[:-1]), np.abs(dv[1:]))
+    endpoint_curvature = np.maximum(np.abs(curv[:-1]), np.abs(curv[1:]))
+    rows: list[dict[str, Any]] = []
+    passing: list[float] = []
+    for factor in sorted(float(f) for f in safety_factors if float(f) > 0.0):
+        derivative_envelope = endpoint_lipschitz + 0.5 * factor * endpoint_curvature * widths
+        guards = endpoint_min_abs - 0.5 * derivative_envelope * widths
+        worst_idx = int(np.argmin(guards))
+        min_guard = float(guards[worst_idx])
+        row = {
+            "curvature_factor": finite_float(factor),
+            "min_mesh_guard": finite_float(min_guard),
+            "passes_all_mesh_intervals": bool(min_guard > 0.0),
+            "worst_interval_index": int(worst_idx),
+            "worst_a_lo": finite_float(float(a[worst_idx])),
+            "worst_a_hi": finite_float(float(a[worst_idx + 1])),
+            "worst_endpoint_min_abs_S": finite_float(float(endpoint_min_abs[worst_idx])),
+            "worst_endpoint_L_sample": finite_float(float(endpoint_lipschitz[worst_idx])),
+            "worst_endpoint_curvature_sample": finite_float(
+                float(endpoint_curvature[worst_idx])
+            ),
+            "worst_derivative_envelope": finite_float(float(derivative_envelope[worst_idx])),
+            "worst_mesh_width": finite_float(float(widths[worst_idx])),
+        }
+        rows.append(row)
+        if min_guard > 0.0:
+            passing.append(factor)
+    failing = [
+        float(row["curvature_factor"])
+        for row in rows
+        if not bool(row["passes_all_mesh_intervals"])
+    ]
+    return {
+        "route": "per_mesh_curvature_endpoint_guard",
+        "mesh_interval_count": int(widths.size),
+        "max_mesh_width": finite_float(float(np.max(widths))),
+        "min_endpoint_abs_S": finite_float(float(np.min(endpoint_min_abs))),
+        "max_endpoint_L_sample": finite_float(float(np.max(endpoint_lipschitz))),
+        "max_endpoint_curvature_sample": finite_float(float(np.max(endpoint_curvature))),
+        "stress_factors": rows,
+        "largest_passing_factor": None if not passing else finite_float(max(passing)),
+        "first_failing_factor": None if not failing else finite_float(min(failing)),
+        "curvature_bound_status": (
+            "sampled_gradient_only: replace sampled S'' by outward-rounded "
+            "sup |S''| or an analytic Taylor remainder before proof use"
+        ),
+        "proof_status": (
+            "diagnostic_only: curvature envelope approximates a proof-grade "
+            "sup |S'| bound but still uses sampled S''"
+        ),
+    }
+
+
 def smooth_segment_sign_candidate(
     pilot: Any,
     packet: Any,
@@ -1342,6 +1422,11 @@ def smooth_segment_sign_candidate(
     )
     signed_density = np.exp(-0.5 * a_grid) * (dH - 0.5 * H)
     signed_density_derivative = np.exp(-0.5 * a_grid) * (ddH - dH + 0.25 * H)
+    signed_density_curvature = np.gradient(
+        signed_density_derivative,
+        a_grid,
+        edge_order=2 if len(a_grid) >= 3 else 1,
+    )
     phi = np.exp(-0.5 * a_grid) * H
     sign_changes = sampled_sign_change_count(signed_density)
     partition = sampled_sign_partition_variation(a_grid, phi, signed_density)
@@ -1370,6 +1455,13 @@ def smooth_segment_sign_candidate(
         a_grid,
         signed_density,
         signed_density_derivative,
+        safety_factors=interval_safety_factors or [],
+    )
+    mesh_curvature_summary = mesh_curvature_guard_summary(
+        a_grid,
+        signed_density,
+        signed_density_derivative,
+        signed_density_curvature,
         safety_factors=interval_safety_factors or [],
     )
     sign_orientation = (
@@ -1407,6 +1499,7 @@ def smooth_segment_sign_candidate(
         ),
         "interval_safety_stress": stress_summary,
         "mesh_interval_guard": mesh_guard_summary,
+        "mesh_curvature_guard": mesh_curvature_summary,
         "proof_status": (
             "diagnostic_only: replace sampled extrema by outward-rounded interval "
             "bounds for S and S' before using this certificate"
@@ -1423,6 +1516,9 @@ def smooth_segment_sign_candidate(
         "signed_density_max_abs": finite_float(max_abs),
         "sampled_lipschitz_signed_density": finite_float(lipschitz_sample),
         "signed_density_derivative_max_abs": finite_float(lipschitz_sample),
+        "signed_density_curvature_sampled_max_abs": finite_float(
+            float(np.max(np.abs(signed_density_curvature)))
+        ),
         "profile_derivative_source": "analytic_centered_b_spline_derivative",
         "receiver_derivative_source": receiver_derivative_source,
         "receiver_derivative_fd_max_abs_error": finite_float(receiver_derivative_fd_error),
@@ -4233,6 +4329,7 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                     non_node_candidate_count = 0
                     non_node_stress_passed_sets: list[set[float]] = []
                     non_node_mesh_guard_passed_sets: list[set[float]] = []
+                    non_node_mesh_curvature_passed_sets: list[set[float]] = []
                     for seg in smooth_segments:
                         audit = seg.get("receiver_node_audit", {})
                         for axis_key in ["left_axis", "right_axis"]:
@@ -4267,6 +4364,13 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                                 if bool(row.get("passes_all_mesh_intervals"))
                             }
                             non_node_mesh_guard_passed_sets.append(mesh_passed)
+                            mesh_curvature = non_node_candidate.get("mesh_curvature_guard", {})
+                            curvature_passed = {
+                                float(row["curvature_factor"])
+                                for row in mesh_curvature.get("stress_factors", [])
+                                if bool(row.get("passes_all_mesh_intervals"))
+                            }
+                            non_node_mesh_curvature_passed_sets.append(curvature_passed)
                     if non_node_stress_passed_sets:
                         common_stress_passed = sorted(
                             set.intersection(*non_node_stress_passed_sets)
@@ -4279,6 +4383,12 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                         )
                     else:
                         common_mesh_guard_passed = []
+                    if non_node_mesh_curvature_passed_sets:
+                        common_mesh_curvature_passed = sorted(
+                            set.intersection(*non_node_mesh_curvature_passed_sets)
+                        )
+                    else:
+                        common_mesh_curvature_passed = []
                     cell_rows.append(
                         {
                             "cell_index": int(cell_idx),
@@ -4322,6 +4432,12 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                             "non_node_mesh_guard_largest_common_passing_safety_factor": None
                             if not common_mesh_guard_passed
                             else finite_float(max(common_mesh_guard_passed)),
+                            "non_node_mesh_curvature_common_passing_factors": [
+                                finite_float(factor) for factor in common_mesh_curvature_passed
+                            ],
+                            "non_node_mesh_curvature_largest_common_passing_factor": None
+                            if not common_mesh_curvature_passed
+                            else finite_float(max(common_mesh_curvature_passed)),
                             "smooth_continuous_variation_x": finite_float(
                                 smooth_continuous_variation
                             ),

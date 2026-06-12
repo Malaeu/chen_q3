@@ -32817,3 +32817,26 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `PARTIAL(per-mesh non-node certificate shape extracted)`,
   `GAP(outward-rounded sup |S_v'| on each mesh interval still missing)`, and
   `FATAL(treating endpoint derivative samples as interval suprema)`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeCurvatureGuardAudit
+
+- Added `docs/trackB/b2b_nonnode_curvature_guard_audit.md` and upgraded
+  `scripts/trackb_edge_operator_probe.py clvsigncert` with
+  `mesh_curvature_guard` summaries plus sampled
+  `signed_density_curvature_sampled_max_abs`.
+- The curvature guard estimates local `sup |S_v'|` by endpoint `|S_v'|`
+  plus sampled `|S_v''| * h/2`.  This is diagnostic only: `S_v''` is sampled
+  by finite differences of analytic `S_v'`.
+- K=3.5 cell `58` passes all tested curvature factors through `10000`; its
+  worst interval remains `[6.645833333333817, 6.645976562500484]`, with
+  factor-10000 derivative envelope about `1.324791` and guard about
+  `0.067340`.
+- K=3.5 cell `59` and K=3 cells `35,36` also pass through factor `10000`;
+  cells `61,39` remain excluded from the non-node branch.
+- The next theorem-producing generator target is now sharper: for K=3.5 cell
+  `58`, emit outward-rounded endpoint enclosures for `S_v`, `S_v'`, and a
+  certified `sup |S_v''|` or Taylor-model remainder on each mesh interval.
+- Status refines to
+  `PARTIAL(sampled curvature-envelope route validated on non-node pilots)`,
+  `GAP(outward-rounded S_v, S_v', and sup |S_v''| enclosures still missing)`,
+  and `FATAL(treating sampled finite-difference S_v'' as a proof bound)`.
