@@ -13,6 +13,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   finiteschedule stability-filtered best packet-scale schedule
   spacing   D2 log-spacing barrier for generic Hilbert/large-sieve bounds
   clvrecv   Selberg-CLV smoothed receiver operator diagnostics
+  clvprimary
+            receiver-primary CLV schedule and B3 fit diagnostics
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -875,6 +877,130 @@ def run_clvrecv(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def stable_receiver_ell(K: float, fallback: float) -> float:
+    stable = {
+        2.0: 0.75,
+        2.5: 1.375,
+        3.0: 0.75,
+        3.5: 1.375,
+    }
+    rounded = round(float(K) * 2.0) / 2.0
+    return stable.get(rounded, fallback)
+
+
+def power_fit_rows(rows: list[dict[str, Any]], value_key: str) -> dict[str, Any]:
+    candidates = [
+        row
+        for row in rows
+        if row.get(value_key) is not None and float(row[value_key]) > 0.0
+    ]
+    if len(candidates) < 2:
+        return {"status": "insufficient_points"}
+    ks = np.array([float(row["K"]) for row in candidates], dtype=float)
+    vals = np.array([float(row[value_key]) for row in candidates], dtype=float)
+    slope, intercept = np.polyfit(np.log(ks), np.log(vals), 1)
+    c_fit = -float(slope)
+    C_fit = float(math.exp(intercept))
+    fitted = C_fit * ks ** (-c_fit)
+    return {
+        "status": "ok",
+        "value_key": value_key,
+        "power_c_fit": finite_float(c_fit),
+        "power_C_fit": finite_float(C_fit),
+        "max_abs_log_residual": finite_float(float(np.max(np.abs(np.log(vals) - np.log(fitted))))),
+        "selected_K": [finite_float(x) for x in ks.tolist()],
+        "selected_values": [finite_float(x) for x in vals.tolist()],
+    }
+
+
+def run_clvprimary(args: argparse.Namespace) -> list[dict[str, Any]]:
+    selected_rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        clv_args = argparse.Namespace(
+            K=[float(K)],
+            ell=float(ell),
+            grid_delta=float(args.grid_delta),
+            k_spline=int(args.k_spline),
+            receiver_delta=[float(x) for x in args.receiver_delta],
+            p0_na=int(args.p0_na),
+            receiver_grid_nt=int(args.receiver_grid_nt),
+        )
+        rows = run_clvrecv(clv_args)
+        best_smooth = min(
+            rows,
+            key=lambda row: (
+                float(row["Mplus_minus_Mplus_continuum_opnorm"]),
+                float(row["receiver_delta"]),
+            ),
+        )
+        best_total = min(
+            rows,
+            key=lambda row: (
+                float(row["total_upper_budget_plus"]),
+                float(row["receiver_delta"]),
+            ),
+        )
+        selected_rows.append(
+            {
+                "mode": "clvprimary_selected",
+                "K": finite_float(float(K)),
+                "schedule": args.schedule,
+                "ell": finite_float(float(ell)),
+                "grid_delta": finite_float(float(args.grid_delta)),
+                "k_spline": int(args.k_spline),
+                "p0_na": int(args.p0_na),
+                "receiver_delta_values": [finite_float(float(x)) for x in args.receiver_delta],
+                "best_smooth_delta": finite_float(float(best_smooth["receiver_delta"])),
+                "best_smooth_epsilon": finite_float(
+                    float(best_smooth["Mplus_minus_Mplus_continuum_opnorm"])
+                ),
+                "bridge_R_at_best_smooth": finite_float(float(best_smooth["bridge_R_plus"])),
+                "total_at_best_smooth": finite_float(float(best_smooth["total_upper_budget_plus"])),
+                "best_total_delta": finite_float(float(best_total["receiver_delta"])),
+                "best_total_upper_budget": finite_float(float(best_total["total_upper_budget_plus"])),
+                "smooth_at_best_total": finite_float(
+                    float(best_total["Mplus_minus_Mplus_continuum_opnorm"])
+                ),
+                "bridge_R_at_best_total": finite_float(float(best_total["bridge_R_plus"])),
+                "hard_edge_epsilon": finite_float(
+                    float(best_smooth["hard_edge_minus_continuum_opnorm"])
+                ),
+                "receiver_primary_gap": (
+                    "best_smooth_epsilon is B3-relevant only if the Selberg receiver is the "
+                    "primary Hermitian-square explicit-formula test object; it does not by "
+                    "itself bound the hard edge."
+                ),
+                "D2": (
+                    "raw a=r*log(p), Selberg receiver on edge=[2K,4K], "
+                    "Q3 xi=a/(2*pi), receiver-primary schedule diagnostic"
+                ),
+            }
+        )
+
+    summary = {
+        "mode": "clvprimary_summary",
+        "status": "ok" if selected_rows else "empty",
+        "schedule": args.schedule,
+        "K": [finite_float(float(K)) for K in args.K],
+        "receiver_delta_values": [finite_float(float(x)) for x in args.receiver_delta],
+        "grid_delta": finite_float(float(args.grid_delta)),
+        "k_spline": int(args.k_spline),
+        "p0_na": int(args.p0_na),
+        "smooth_fit": power_fit_rows(selected_rows, "best_smooth_epsilon"),
+        "scalar_bridge_total_fit": power_fit_rows(selected_rows, "best_total_upper_budget"),
+        "verdict_note": (
+            "The smooth fit tests the receiver-primary B2b hypothesis. The scalar-bridge "
+            "total fit tests the already-failing post-hoc hard-edge bridge."
+        ),
+        "D2": (
+            "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), "
+            "receiver-primary schedule diagnostic"
+        ),
+    }
+    return [summary] + selected_rows
+
+
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
     return (ell / (packet.s_k * packet.c_k)) * np.sinc(ell * u / packet.s_k) ** (
         2 * packet.k_spline + 2
@@ -1630,6 +1756,19 @@ def parse_args() -> argparse.Namespace:
     clvrecv.add_argument("--p0-na", type=int, default=1001)
     clvrecv.add_argument("--receiver-grid-nt", type=int, default=20001)
     clvrecv.set_defaults(func=run_clvrecv)
+
+    clvprimary = sub.add_parser("clvprimary", help="receiver-primary CLV schedule diagnostics")
+    add_common_packet_args(clvprimary)
+    clvprimary.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvprimary.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvprimary.add_argument("--p0-na", type=int, default=1001)
+    clvprimary.add_argument("--receiver-grid-nt", type=int, default=4001)
+    clvprimary.set_defaults(func=run_clvprimary)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

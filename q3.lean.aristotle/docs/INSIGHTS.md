@@ -32289,3 +32289,26 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   explicit-formula route where the Selberg receiver is primary, or a
   non-scalar structured correction that cancels the negative bridge modes
   without paying `R_K`.
+
+## Insight (2026-06-12, Track B B2b/B3) -- CLVReceiverPrimaryPartial
+
+- Added `docs/trackB/b2b_clv_receiver_primary.md` and
+  `scripts/trackb_edge_operator_probe.py clvprimary`.
+- The new mode treats the Selberg receiver as the primary diagnostic object:
+  it minimizes `||P(M^+) - P0(M^+)||_G` over tested CLV bandwidths on the
+  stability-filtered packet schedule, while keeping the D2 raw-log/Q3
+  normalization explicit.
+- Over K=2,2.5,3,3.5 the best smoothed residuals are approximately
+  `0.00517, 0.00197, 0.00661, 0.00101`; a four-point power fit gives
+  `C≈0.01869`, `c≈1.89054`, but with visible non-monotonicity and
+  max log residual about `1.04`.
+- The old scalar bridge remains fatal: at the best smooth deltas the bridge
+  penalties are about `3.52, 3.48, 10.99, 12.52`, so
+  `M^+ >= 1_I` still does not imply Loewner control on the corrected
+  cross-correlation cone.
+- Status refines to
+  `PARTIAL(receiver-primary CLV residual is small)` plus
+  `GAP(receiver-primary Hermitian-square/explicit-formula theorem missing)`.
+  The next Track B target is the formulation theorem that makes the Selberg
+  receiver the actual E5' test object, with zero-side PSD replacing any
+  RH-conditional input.
