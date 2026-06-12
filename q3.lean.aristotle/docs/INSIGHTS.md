@@ -32000,3 +32000,23 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Route decision: start B2 with the Hermitian-square / explicit-formula route.
   The naive positive-negative split remains blocked because it drops the
   bandlimited cross-correlation cone.
+
+## Insight (2026-06-12, Track B B2b) -- SelbergMajorantNotPSDMultiplier
+
+- Added `docs/trackB/b2b_explicit_formula_route_gap.md`.
+- B2a remains blocked: `g=g_+-g_-` drops bandlimitation and is not a
+  structure-preserving cone argument.
+- A second naive route is now blocked too: the scalar Selberg pointwise
+  majorant is not automatically a PSD-preserving multiplier on the Q3
+  Hermitian-square cone.
+- Concrete D2 check: for `K=2`, raw-log `I=[4,8]`, `delta=1`, the symmetric
+  majorant `M^+_[4,8] + M^+_[-8,-4]` has sign-changing Fourier transform under
+  the B1 formula; sampling gives minimum about `-7.527308104448511` near
+  `u=-0.07851992148`.
+- Therefore the next B2 object must be a cone-transport lemma: either a
+  Fourier-positive edge majorant, a Hermitian-square explicit-formula lifting,
+  a square-function/Cauchy-Schwarz replacement with acceptable constants, or a
+  direct finite operator inequality
+  `N^T(P_edge-P0_edge)N <= epsilon_K N^T G N`.
+- Status: `B2-GAP(cone transport)`, fatal only for the naive Selberg insertion,
+  not fatal yet for the overall CLV Track B goal.
