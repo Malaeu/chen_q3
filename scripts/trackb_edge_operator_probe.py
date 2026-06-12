@@ -856,6 +856,12 @@ def capture_count(values: list[float], fraction: float) -> int:
     return len(values)
 
 
+def ratio_or_none(numerator: float, denominator: float) -> float | None:
+    if denominator <= 0.0:
+        return None
+    return finite_float(float(numerator) / float(denominator))
+
+
 def run_finiteop(args: argparse.Namespace) -> list[dict[str, Any]]:
     pilot = load_step13()
     rows: list[dict[str, Any]] = []
@@ -2689,12 +2695,46 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                     row.setdefault("jump_labels", [])
                     row["jump_labels"].append(jump_label)
 
+                for row in cell_rows:
+                    abs_residual = abs(float(row["direct_residual"]))
+                    exact_bound = float(row["exact_grid_variation_bound"])
+                    pnt_bound = float(row["explicit_pnt_variation_bound"])
+                    row["abs_direct_residual"] = finite_float(abs_residual)
+                    row["exact_bound_over_abs_cell_residual"] = (
+                        None if abs_residual <= 0.0 else finite_float(exact_bound / abs_residual)
+                    )
+                    row["pnt_bound_over_abs_cell_residual"] = (
+                        None if abs_residual <= 0.0 else finite_float(pnt_bound / abs_residual)
+                    )
+                    row["required_exact_multiplier_to_cover_cell_residual"] = ratio_or_none(
+                        abs_residual, exact_bound
+                    )
+                    row["required_pnt_multiplier_to_cover_cell_residual"] = ratio_or_none(
+                        abs_residual, pnt_bound
+                    )
+                    row["sampled_exact_cell_underbound"] = bool(abs_residual > exact_bound)
+                    row["sampled_exact_cell_deficit"] = finite_float(
+                        max(0.0, abs_residual - exact_bound)
+                    )
+                    row["sampled_pnt_cell_underbound"] = bool(abs_residual > pnt_bound)
+                    row["sampled_pnt_cell_deficit"] = finite_float(
+                        max(0.0, abs_residual - pnt_bound)
+                    )
+
                 total_prime = float(sum(float(row["direct_prime_sum"]) for row in cell_rows))
                 total_cont = float(sum(float(row["direct_continuum"]) for row in cell_rows))
                 total_residual = total_prime - total_cont
                 exact_integral_bound = float(sum(float(row["exact_grid_variation_bound"]) for row in cell_rows))
                 pnt_integral_bound = float(sum(float(row["explicit_pnt_variation_bound"]) for row in cell_rows))
                 abs_cell_sum = float(sum(abs(float(row["direct_residual"])) for row in cell_rows))
+                exact_cell_deficit = float(sum(float(row["sampled_exact_cell_deficit"]) for row in cell_rows))
+                pnt_cell_deficit = float(sum(float(row["sampled_pnt_cell_deficit"]) for row in cell_rows))
+                exact_underbound_count = sum(
+                    1 for row in cell_rows if bool(row["sampled_exact_cell_underbound"])
+                )
+                pnt_underbound_count = sum(
+                    1 for row in cell_rows if bool(row["sampled_pnt_cell_underbound"])
+                )
                 endpoint_contribution_exact = (
                     abs(float(psi_err[0])) * abs(float(phi[0]))
                     + abs(float(psi_err[-1])) * abs(float(phi[-1]))
@@ -2715,6 +2755,18 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                 by_residual = sorted(
                     cell_rows,
                     key=lambda row: -abs(float(row["direct_residual"])),
+                )[: int(args.top_cells)]
+                by_required = sorted(
+                    cell_rows,
+                    key=lambda row: -(
+                        float(row["required_exact_multiplier_to_cover_cell_residual"])
+                        if row["required_exact_multiplier_to_cover_cell_residual"] is not None
+                        else 0.0
+                    ),
+                )[: int(args.top_cells)]
+                by_deficit = sorted(
+                    cell_rows,
+                    key=lambda row: -float(row["sampled_exact_cell_deficit"]),
                 )[: int(args.top_cells)]
 
                 direction_rows.append(
@@ -2737,6 +2789,22 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "pnt_integral_variation_bound": finite_float(pnt_integral_bound),
                         "pnt_endpoint_contribution": finite_float(endpoint_contribution_pnt),
                         "pnt_total_with_endpoints": finite_float(pnt_total_with_endpoints),
+                        "sampled_exact_underbound_cell_count": int(exact_underbound_count),
+                        "sampled_pnt_underbound_cell_count": int(pnt_underbound_count),
+                        "sampled_exact_cell_deficit_sum": finite_float(exact_cell_deficit),
+                        "sampled_pnt_cell_deficit_sum": finite_float(pnt_cell_deficit),
+                        "sampled_exact_cell_bound_over_sum_abs_residuals": finite_float(
+                            0.0 if abs_cell_sum == 0.0 else exact_integral_bound / abs_cell_sum
+                        ),
+                        "sampled_pnt_cell_bound_over_sum_abs_residuals": finite_float(
+                            0.0 if abs_cell_sum == 0.0 else pnt_integral_bound / abs_cell_sum
+                        ),
+                        "required_uniform_exact_multiplier_to_cover_sum_abs_cells": ratio_or_none(
+                            abs_cell_sum, exact_integral_bound
+                        ),
+                        "required_uniform_pnt_multiplier_to_cover_sum_abs_cells": ratio_or_none(
+                            abs_cell_sum, pnt_integral_bound
+                        ),
                         "exact_bound_over_abs_residual": finite_float(
                             0.0 if total_residual == 0.0 else exact_total_with_endpoints / abs(total_residual)
                         ),
@@ -2751,6 +2819,8 @@ def run_clvledger(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "cells_for_95pct_abs_residual": int(capture_count(abs_residual_values, 0.95)),
                         "top_cells_by_exact_bound": by_bound,
                         "top_cells_by_abs_residual": by_residual,
+                        "top_cells_by_required_exact_multiplier": by_required,
+                        "top_cells_by_sampled_exact_deficit": by_deficit,
                     }
                 )
 

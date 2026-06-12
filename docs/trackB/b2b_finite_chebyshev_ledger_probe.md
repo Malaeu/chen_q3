@@ -231,6 +231,15 @@ observed residual.  Therefore the current `clvledger` output is not a
 certificate and should not be treated as a proof.  It is a worklist generator
 for interval cells and jump terms.
 
+Follow-up:
+
+- `docs/trackB/b2b_interval_envelope_audit.md` upgrades this warning into a
+  finite certificate contract.  `clvledger` now reports cellwise required
+  multipliers, underbound flags, and deficit-priority worklists.  The first
+  hard target is the K=3 left-endpoint shoulder, where sampled bounds need a
+  roughly `4.44x` uniform safety factor over the sum of absolute cell
+  residuals.
+
 ## Interpretation
 
 Positive signal:

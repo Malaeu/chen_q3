@@ -32490,3 +32490,29 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Status refines to `PARTIAL(finite Chebyshev ledger localizes the smooth
   correction)`, `GAP(interval-certified derivative/variation envelopes
   missing)`, and `FATAL(sampled clvledger output as proof certificate)`.
+
+## Insight (2026-06-12, Track B B2b) -- IntervalEnvelopeAudit
+
+- Added `docs/trackB/b2b_interval_envelope_audit.md` and extended
+  `scripts/trackb_edge_operator_probe.py clvledger` with cellwise required
+  multipliers, underbound flags, and deficit-priority worklists.
+- The proof-grade cell contract is now explicit in raw D2 coordinates:
+  for each cell `J`, certify
+  `U_J >= sup_J |psi(exp(a))-exp(a)|`,
+  `V_J >= int_J exp(-a/2)|H_v'(a)-H_v(a)/2| da`, and any jump term
+  `U(a0)exp(-a0/2)|Delta H_v(a0)|`; then sum cell budgets.
+- Local `q3_docs` search points to the existing PrimeCert/FloorCert style:
+  finite cells, endpoint envelopes, and theorem-producing generators, not a
+  new global PNT estimate.
+- K=3 is the hard audit case: `ledger_cells=80` gives sampled exact
+  underbound in `52/80` cells, sampled exact deficit sum about `1.21626`, and
+  required uniform exact multiplier about `4.44435` over the sum of absolute
+  cell residuals.  The largest deficits sit in the left-endpoint shoulder
+  cells `[5.850,6.000]`, `[5.400,5.550]`, and `[5.700,5.850]`.
+- K=3.5 is globally closer: sampled exact deficit sum about `0.19454` and
+  required uniform exact multiplier about `1.00231`, but local underbound
+  cells remain, so ratio-only sorting is misleading; deficit-priority sorting
+  is the right worklist.
+- Status refines to `PARTIAL(interval-envelope contract isolated)`,
+  `GAP(certified derivative/variation envelope generator missing)`, and
+  `FATAL(using sampled required multipliers as proof certificates)`.
