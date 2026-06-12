@@ -14,6 +14,12 @@ Every idea below must still become either a checked Lean theorem, a hole-free
 Aristotle output integrated through Lean, or a mathematically verified external
 argument before it can affect the mainline.
 
+Boundary: this atlas is a toolbox of mathematical moves, not a research log and
+not Track B itself.  A route-local probe may cite one or more atlas cards, but
+the probe belongs in the active request/report or a separate Track B document.
+Do not add a new card just because a new research question is important; add a
+card only when the reusable mathematical transformation is clear.
+
 ## Scan Rule
 
 The atlas is scanned by task signature, not by mathematical field.  Each card
@@ -649,19 +655,5 @@ For the active Step33/L3 environment, the most robust order is:
    already pinned.
 
 None of these steps closes Step33 or RH by itself.  They are ways to choose
-smaller, more structural proof experiments.
-
-## Experiment Cards
-
-Experiment cards are route-local tests of atlas tricks.  They are not proof
-status changes until the named Lean receiver compiles without holes and the
-active monitor/report records the validation.
-
-- `EC-001`: A-side interpolation replacement probe.
-  Path:
-  `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_side_interpolation_replacement_probe.md`.
-  Atlas anchors: card 2 `Cohn-Kumar-Miller-Radchenko-Viazovska
-  Interpolation` and card 5 `Margin Ledger`.  Target: first raw-Omega
-  Step33A.1-A worst cell, replacing scalar Taylor/interval replay by a finite
-  rational interpolation or jet certificate for `hRawCenterCoeffAbs` and
-  `hResidualDerivBoundOnCell`.
+smaller, more structural proof experiments.  The operating protocol for turning
+a wall into a route-local experiment lives in `docs/RH_TRICK_WORKFLOW.md`.
