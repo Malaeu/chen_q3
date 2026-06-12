@@ -15,6 +15,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   clvrecv   Selberg-CLV smoothed receiver operator diagnostics
   clvprimary
             receiver-primary CLV schedule and B3 fit diagnostics
+  clvblend receiver affine-tradeoff no-free-lunch diagnostics
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -1023,6 +1024,200 @@ def run_clvprimary(args: argparse.Namespace) -> list[dict[str, Any]]:
     return [summary] + selected_rows
 
 
+def theta_grid(theta_min: float, theta_max: float, theta_count: int) -> np.ndarray:
+    if theta_count <= 0:
+        raise ValueError("theta-count must be positive")
+    if theta_count == 1:
+        return np.array([float(theta_min)], dtype=float)
+    return np.linspace(float(theta_min), float(theta_max), int(theta_count), dtype=float)
+
+
+def run_clvblend(args: argparse.Namespace) -> list[dict[str, Any]]:
+    """Scan affine receivers R_theta = chi_I + theta * (M+ - chi_I).
+
+    This does not search for a new proof by itself.  It tests whether the
+    receiver-primary residual and bridge correction can both be made small
+    inside the simplest CLV/Selberg affine span.
+    """
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    thetas = theta_grid(args.theta_min, args.theta_max, args.theta_count)
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            P_edge = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, chi_weight
+            )
+            P_plus = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, plus_weight
+            )
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+
+            hard = pilot.sym(P_edge - P0_edge)
+            plus = pilot.sym(P_plus - P0_plus)
+            correction = pilot.sym(plus - hard)
+
+            def eig_stats(M: np.ndarray) -> tuple[float, float, float]:
+                eigs = projected_generalized_eigs(pilot, pilot.sym(M), N, Gc)
+                eig_min = float(eigs[0])
+                eig_max = float(eigs[-1])
+                return eig_min, eig_max, max(abs(eig_min), abs(eig_max))
+
+            hard_min, hard_max, hard_op = eig_stats(hard)
+            plus_min, plus_max, plus_op = eig_stats(plus)
+            corr_min, corr_max, corr_op = eig_stats(correction)
+
+            samples: list[dict[str, Any]] = []
+            for theta in thetas:
+                theta = float(theta)
+                d_theta = hard + theta * correction
+                b_theta = theta * correction
+                d_min, d_max, d_op = eig_stats(d_theta)
+                b_min, b_max, b_op = eig_stats(b_theta)
+                triangle_total = d_op + b_op
+                samples.append(
+                    {
+                        "theta": finite_float(theta),
+                        "D_theta_eig_min": finite_float(d_min),
+                        "D_theta_eig_max": finite_float(d_max),
+                        "D_theta_opnorm": finite_float(d_op),
+                        "B_theta_eig_min": finite_float(b_min),
+                        "B_theta_eig_max": finite_float(b_max),
+                        "B_theta_opnorm": finite_float(b_op),
+                        "triangle_total": finite_float(triangle_total),
+                        "triangle_total_minus_hard": finite_float(triangle_total - hard_op),
+                        "receiver_identity_max_abs_error": finite_float(
+                            float(np.max(np.abs(hard - (d_theta - b_theta))))
+                        ),
+                    }
+                )
+
+            best_total = min(samples, key=lambda row: (float(row["triangle_total"]), abs(float(row["theta"]))))
+            best_smooth = min(samples, key=lambda row: (float(row["D_theta_opnorm"]), abs(float(row["theta"]))))
+            theta_zero = min(samples, key=lambda row: abs(float(row["theta"])))
+            theta_one = min(samples, key=lambda row: abs(float(row["theta"]) - 1.0))
+
+            rows.append(
+                {
+                    "mode": "clvblend",
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "theta_min": finite_float(float(args.theta_min)),
+                    "theta_max": finite_float(float(args.theta_max)),
+                    "theta_count": int(args.theta_count),
+                    "p0_na": int(args.p0_na),
+                    "hard_edge_eig_min": finite_float(hard_min),
+                    "hard_edge_eig_max": finite_float(hard_max),
+                    "hard_edge_opnorm": finite_float(hard_op),
+                    "Mplus_receiver_eig_min": finite_float(plus_min),
+                    "Mplus_receiver_eig_max": finite_float(plus_max),
+                    "Mplus_receiver_opnorm": finite_float(plus_op),
+                    "Mplus_correction_eig_min": finite_float(corr_min),
+                    "Mplus_correction_eig_max": finite_float(corr_max),
+                    "Mplus_correction_opnorm": finite_float(corr_op),
+                    "best_total_theta": finite_float(float(best_total["theta"])),
+                    "best_total_value": best_total["triangle_total"],
+                    "best_total_minus_hard": best_total["triangle_total_minus_hard"],
+                    "best_total_D_opnorm": best_total["D_theta_opnorm"],
+                    "best_total_B_opnorm": best_total["B_theta_opnorm"],
+                    "best_smooth_theta": finite_float(float(best_smooth["theta"])),
+                    "best_smooth_D_opnorm": best_smooth["D_theta_opnorm"],
+                    "best_smooth_B_opnorm": best_smooth["B_theta_opnorm"],
+                    "theta0_total": theta_zero["triangle_total"],
+                    "theta0_D_opnorm": theta_zero["D_theta_opnorm"],
+                    "theta0_B_opnorm": theta_zero["B_theta_opnorm"],
+                    "theta1_total": theta_one["triangle_total"],
+                    "theta1_D_opnorm": theta_one["D_theta_opnorm"],
+                    "theta1_B_opnorm": theta_one["B_theta_opnorm"],
+                    "max_receiver_identity_error": finite_float(
+                        max(float(row["receiver_identity_max_abs_error"]) for row in samples)
+                    ),
+                    "no_free_lunch_note": (
+                        "For the exact identity D_I = D_theta - B_theta, any proof that "
+                        "bounds D_theta and B_theta separately pays at least ||D_I|| by "
+                        "the triangle inequality. This scan quantifies the finite "
+                        "operator tradeoff inside the affine Selberg receiver span."
+                    ),
+                    "D2": (
+                        "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), "
+                        "R_theta=chi_I+theta*(Mplus-chi_I)"
+                    ),
+                }
+            )
+
+    summary = {
+        "mode": "clvblend_summary",
+        "status": "ok" if rows else "empty",
+        "schedule": args.schedule,
+        "K": [finite_float(float(K)) for K in args.K],
+        "receiver_delta_values": [finite_float(float(x)) for x in args.receiver_delta],
+        "theta_range": [
+            finite_float(float(args.theta_min)),
+            finite_float(float(args.theta_max)),
+        ],
+        "theta_count": int(args.theta_count),
+        "best_total_fit": power_fit_rows(rows, "best_total_value"),
+        "hard_edge_fit": power_fit_rows(rows, "hard_edge_opnorm"),
+        "best_smooth_fit": power_fit_rows(rows, "best_smooth_D_opnorm"),
+        "D2": (
+            "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), "
+            "affine receiver no-free-lunch diagnostic"
+        ),
+    }
+    return [summary] + rows
+
+
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
     return (ell / (packet.s_k * packet.c_k)) * np.sinc(ell * u / packet.s_k) ** (
         2 * packet.k_spline + 2
@@ -1791,6 +1986,21 @@ def parse_args() -> argparse.Namespace:
     clvprimary.add_argument("--p0-na", type=int, default=1001)
     clvprimary.add_argument("--receiver-grid-nt", type=int, default=4001)
     clvprimary.set_defaults(func=run_clvprimary)
+
+    clvblend = sub.add_parser("clvblend", help="affine CLV receiver correction tradeoff")
+    add_common_packet_args(clvblend)
+    clvblend.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvblend.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvblend.add_argument("--theta-min", type=float, default=0.0)
+    clvblend.add_argument("--theta-max", type=float, default=1.0)
+    clvblend.add_argument("--theta-count", type=int, default=101)
+    clvblend.add_argument("--p0-na", type=int, default=1001)
+    clvblend.set_defaults(func=run_clvblend)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

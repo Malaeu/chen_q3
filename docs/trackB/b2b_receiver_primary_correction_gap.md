@@ -324,3 +324,25 @@ Can E5' be reformulated so that the CLV/Selberg receiver residual `D_R` is the
 actual ledger object, or must we construct a cone-adapted receiver that kills
 `B_R^+`?  If the latter, what structural condition should replace scalar
 `M^+ >= 1_I`?
+
+## Follow-Up
+
+`docs/trackB/b2b_affine_receiver_no_free_lunch.md` tests the simplest
+cone-adapted repair:
+
+```text
+R_theta = 1_I + theta * (M^+ - 1_I).
+```
+
+The result is a route-kill for affine Selberg interpolation with separate
+residual/correction bounds.  Since
+
+```text
+D_I = D_theta - B_theta,
+```
+
+the separate-bound cost `||D_theta||_G + ||B_theta||_G` is bounded below by
+`||D_I||_G`; the finite scan attains its best total at `theta=0`, i.e. no
+receiver smoothing.  The remaining doors are route-equivalence for the
+smoothed receiver ledger, a nonlinear/cone-adapted structural cancellation of
+`B_R`, or a return to direct finite-op / ordinary-prime mean control.

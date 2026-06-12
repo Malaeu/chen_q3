@@ -32332,3 +32332,24 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   The next viable B2b target is either a route-equivalence theorem that lets
   the E5' ledger use the receiver object `D_R`, or a cone-adapted receiver
   that cancels `B_R^+`; another scalar bandwidth sweep is not the right move.
+
+## Insight (2026-06-12, Track B B2b) -- AffineReceiverNoFreeLunch
+
+- Added `docs/trackB/b2b_affine_receiver_no_free_lunch.md` and
+  `scripts/trackb_edge_operator_probe.py clvblend`.
+- The tested family is
+  `R_theta = 1_I + theta*(M^+ - 1_I)`, with exact identity
+  `D_I = D_theta - B_theta`.
+- If a proof bounds `D_theta` and `B_theta` separately, the triangle
+  inequality forces
+  `||D_theta||_G + ||B_theta||_G >= ||D_I||_G`; this is an algebraic
+  no-free-lunch for affine Selberg interpolation.
+- The finite scan over K=2,2.5,3,3.5 and `theta in [0,1]` confirms the
+  lower-bound mechanism: best separate-bound total is attained at `theta=0`,
+  while `theta=1` makes `D_theta` small only by moving the hard edge into
+  `B_theta`.
+- Status refines to
+  `FATAL(affine Selberg receiver with separate correction bound)`.
+  Surviving options are RP1 route-equivalence for the smoothed receiver
+  ledger, a genuinely nonlinear/cone-adapted receiver with structural
+  correction cancellation, or direct finite-op / ordinary-prime mean control.
