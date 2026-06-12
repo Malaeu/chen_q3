@@ -16,6 +16,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   clvprimary
             receiver-primary CLV schedule and B3 fit diagnostics
   clvblend receiver affine-tradeoff no-free-lunch diagnostics
+  clvbreakdown
+            endpoint/bulk anatomy of the Selberg receiver correction
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -289,6 +291,209 @@ def rayleigh_shift_breakdown(
         "top_abs_fraction": 0.0 if total_abs == 0.0 else finite_float(top_abs / total_abs),
         "by_r_pow": by_power_rows,
         "top_shifts_by_abs_contribution": top_rows,
+    }
+
+
+def edge_region(a: float, *, lo: float, hi: float, halo: float) -> str:
+    if a < lo - halo:
+        return "below_far"
+    if a < lo:
+        return "left_outside_halo"
+    if a <= lo + halo:
+        return "left_inside_halo"
+    if a < hi - halo:
+        return "interior_bulk"
+    if a <= hi:
+        return "right_inside_halo"
+    if a <= hi + halo:
+        return "right_outside_halo"
+    return "above_far"
+
+
+def add_bucket(
+    buckets: dict[str, dict[str, Any]],
+    key: str,
+    contribution: float,
+    *,
+    count_weight: float = 1.0,
+) -> None:
+    bucket = buckets.setdefault(key, {"count": 0.0, "sum": 0.0, "abs_sum": 0.0})
+    bucket["count"] += count_weight
+    bucket["sum"] += contribution
+    bucket["abs_sum"] += abs(contribution)
+
+
+def bucket_rows(buckets: dict[str, dict[str, Any]], total_abs: float) -> list[dict[str, Any]]:
+    return [
+        {
+            "label": key,
+            "count": finite_float(float(data["count"])),
+            "sum": finite_float(float(data["sum"])),
+            "abs_sum": finite_float(float(data["abs_sum"])),
+            "abs_fraction": 0.0
+            if total_abs == 0.0
+            else finite_float(float(data["abs_sum"]) / total_abs),
+        }
+        for key, data in sorted(buckets.items())
+    ]
+
+
+def rayleigh_weighted_shift_breakdown(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    N: np.ndarray,
+    Gc: np.ndarray,
+    ell: float,
+    shifts: list[Any],
+    y: np.ndarray,
+    *,
+    weight_fn: Any,
+    lo: float,
+    hi: float,
+    halo: float,
+    top: int,
+) -> dict[str, Any]:
+    rows: list[dict[str, Any]] = []
+    by_region: dict[str, dict[str, Any]] = {}
+    by_power: dict[str, dict[str, Any]] = {}
+    rayleigh = 0.0
+    total_abs = 0.0
+
+    for sh in shifts:
+        scalar = float(weight_fn(float(sh.a)))
+        if scalar == 0.0:
+            continue
+        M = sh.weight * scalar * shifted_packet_matrix(pilot, packet, D, ell, sh.a)
+        A = generalized_to_standard(pilot, project_matrix(pilot, M, N), Gc)
+        contribution = float(y @ A @ y)
+        rayleigh += contribution
+        total_abs += abs(contribution)
+        region = edge_region(float(sh.a), lo=lo, hi=hi, halo=halo)
+        add_bucket(by_region, region, contribution)
+        add_bucket(by_power, f"r={int(sh.r_pow)}", contribution)
+        rows.append(
+            {
+                "a": finite_float(float(sh.a)),
+                "xi": finite_float(float(sh.a) / (2.0 * math.pi)),
+                "p": int(sh.p),
+                "r_pow": int(sh.r_pow),
+                "weight": finite_float(float(sh.weight)),
+                "receiver_minus_edge_weight": finite_float(scalar),
+                "region": region,
+                "contribution": finite_float(contribution),
+            }
+        )
+
+    rows.sort(key=lambda row: -abs(float(row["contribution"])))
+    top_rows = rows[:top]
+    top_abs = sum(abs(float(row["contribution"])) for row in top_rows)
+    for row in top_rows:
+        row["abs_fraction"] = 0.0 if total_abs == 0.0 else abs(float(row["contribution"])) / total_abs
+
+    return {
+        "prime_rayleigh": finite_float(rayleigh),
+        "prime_abs_contribution_sum": finite_float(total_abs),
+        "prime_top_abs_contribution_sum": finite_float(top_abs),
+        "prime_top_abs_fraction": 0.0 if total_abs == 0.0 else finite_float(top_abs / total_abs),
+        "prime_by_region": bucket_rows(by_region, total_abs),
+        "prime_by_r_pow": bucket_rows(by_power, total_abs),
+        "prime_top_shifts_by_abs_contribution": top_rows,
+    }
+
+
+def rayleigh_weighted_continuum_breakdown(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    N: np.ndarray,
+    Gc: np.ndarray,
+    ell: float,
+    y: np.ndarray,
+    *,
+    weight_fn: Any,
+    lo: float,
+    hi: float,
+    halo: float,
+    max_a: float,
+    p0_na: int,
+) -> dict[str, Any]:
+    a_grid = np.linspace(0.0, max_a, p0_na)
+    wa = pilot.trap_weights_uniform(a_grid)
+    by_region: dict[str, dict[str, Any]] = {}
+    rayleigh = 0.0
+    total_abs = 0.0
+
+    for a, w in zip(a_grid, wa):
+        scalar = float(weight_fn(float(a)))
+        coeff = float(w) * math.exp(0.5 * float(a)) * scalar
+        if coeff == 0.0:
+            continue
+        M = coeff * shifted_packet_matrix(pilot, packet, D, ell, float(a))
+        A = generalized_to_standard(pilot, project_matrix(pilot, M, N), Gc)
+        contribution = float(y @ A @ y)
+        rayleigh += contribution
+        total_abs += abs(contribution)
+        region = edge_region(float(a), lo=lo, hi=hi, halo=halo)
+        add_bucket(by_region, region, contribution)
+
+    return {
+        "continuum_rayleigh": finite_float(rayleigh),
+        "continuum_abs_contribution_sum": finite_float(total_abs),
+        "continuum_by_region": bucket_rows(by_region, total_abs),
+    }
+
+
+def rayleigh_correction_continuum_breakdown(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    N: np.ndarray,
+    Gc: np.ndarray,
+    ell: float,
+    y: np.ndarray,
+    *,
+    plus_weight_fn: Any,
+    lo: float,
+    hi: float,
+    halo: float,
+    max_a: float,
+    p0_na: int,
+) -> dict[str, Any]:
+    """Break down the exact continuum operator P0(M+) - P0(edge).
+
+    `build_P0_edge` uses a dedicated interval grid, while `P0(M+)` uses a
+    full `[0,max_a]` grid.  This helper mirrors that exact convention so the
+    Rayleigh check matches the matrix used by `clvrecv`.
+    """
+    by_region: dict[str, dict[str, Any]] = {}
+    rayleigh = 0.0
+    total_abs = 0.0
+
+    def add_continuum_grid(a_grid: np.ndarray, weights: np.ndarray, sign: float, weight_fn: Any) -> None:
+        nonlocal rayleigh, total_abs
+        for a, w in zip(a_grid, weights):
+            coeff = sign * float(w) * math.exp(0.5 * float(a)) * float(weight_fn(float(a)))
+            if coeff == 0.0:
+                continue
+            M = coeff * shifted_packet_matrix(pilot, packet, D, ell, float(a))
+            A = generalized_to_standard(pilot, project_matrix(pilot, M, N), Gc)
+            contribution = float(y @ A @ y)
+            rayleigh += contribution
+            total_abs += abs(contribution)
+            region = edge_region(float(a), lo=lo, hi=hi, halo=halo)
+            add_bucket(by_region, region, contribution)
+
+    plus_grid = np.linspace(0.0, max_a, p0_na)
+    add_continuum_grid(plus_grid, pilot.trap_weights_uniform(plus_grid), 1.0, plus_weight_fn)
+
+    edge_grid = np.linspace(lo, hi, p0_na)
+    add_continuum_grid(edge_grid, pilot.trap_weights_uniform(edge_grid), -1.0, lambda _a: 1.0)
+
+    return {
+        "continuum_rayleigh": finite_float(rayleigh),
+        "continuum_abs_contribution_sum": finite_float(total_abs),
+        "continuum_by_region": bucket_rows(by_region, total_abs),
     }
 
 
@@ -1218,6 +1423,197 @@ def run_clvblend(args: argparse.Namespace) -> list[dict[str, Any]]:
     return [summary] + rows
 
 
+def run_clvbreakdown(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            halo = float(args.halo_factor) / float(receiver_delta)
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            def correction_weight(a: float) -> float:
+                return plus_weight(a) - chi_weight(a)
+
+            P_edge = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, chi_weight
+            )
+            P_plus = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, plus_weight
+            )
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+            correction = pilot.sym((P_plus - P_edge) - (P0_plus - P0_edge))
+            A_corr = generalized_to_standard(pilot, project_matrix(pilot, correction, N), Gc)
+            eigs, evecs = np.linalg.eigh(A_corr)
+            op_idx = int(np.argmax(np.abs(eigs)))
+            directions = [
+                ("lower", 0),
+                ("upper", len(eigs) - 1),
+                ("opnorm", op_idx),
+            ]
+
+            breakdown_rows: list[dict[str, Any]] = []
+            for label, idx in directions:
+                y = evecs[:, idx]
+                prime_breakdown = rayleigh_weighted_shift_breakdown(
+                    pilot,
+                    packet,
+                    D,
+                    N,
+                    Gc,
+                    params.ell,
+                    shifts,
+                    y,
+                    weight_fn=correction_weight,
+                    lo=lo,
+                    hi=hi,
+                    halo=halo,
+                    top=int(args.top),
+                )
+                cont_breakdown = rayleigh_correction_continuum_breakdown(
+                    pilot,
+                    packet,
+                    D,
+                    N,
+                    Gc,
+                    params.ell,
+                    y,
+                    plus_weight_fn=plus_weight,
+                    lo=lo,
+                    hi=hi,
+                    halo=halo,
+                    max_a=effective_max_a,
+                    p0_na=int(args.p0_na),
+                )
+                lambda_check = (
+                    float(prime_breakdown["prime_rayleigh"])
+                    - float(cont_breakdown["continuum_rayleigh"])
+                )
+                prime_abs = float(prime_breakdown["prime_abs_contribution_sum"])
+                cont_abs = float(cont_breakdown["continuum_abs_contribution_sum"])
+                endpoint_regions = {
+                    "left_outside_halo",
+                    "left_inside_halo",
+                    "right_inside_halo",
+                    "right_outside_halo",
+                }
+
+                def endpoint_abs_fraction(rows: list[dict[str, Any]], total_abs: float) -> float:
+                    if total_abs == 0.0:
+                        return 0.0
+                    endpoint_abs = sum(
+                        float(row["abs_sum"])
+                        for row in rows
+                        if str(row["label"]) in endpoint_regions
+                    )
+                    return endpoint_abs / total_abs
+
+                breakdown_rows.append(
+                    {
+                        "label": label,
+                        "lambda": finite_float(float(eigs[idx])),
+                        "lambda_rayleigh_check": finite_float(lambda_check),
+                        "lambda_check_abs_error": finite_float(abs(float(eigs[idx]) - lambda_check)),
+                        "prime_minus_continuum_abs_budget": finite_float(prime_abs + cont_abs),
+                        "prime_abs_fraction_of_budget": finite_float(
+                            0.0 if prime_abs + cont_abs == 0.0 else prime_abs / (prime_abs + cont_abs)
+                        ),
+                        "continuum_abs_fraction_of_budget": finite_float(
+                            0.0 if prime_abs + cont_abs == 0.0 else cont_abs / (prime_abs + cont_abs)
+                        ),
+                        "prime_endpoint_abs_fraction": finite_float(
+                            endpoint_abs_fraction(prime_breakdown["prime_by_region"], prime_abs)
+                        ),
+                        "continuum_endpoint_abs_fraction": finite_float(
+                            endpoint_abs_fraction(cont_breakdown["continuum_by_region"], cont_abs)
+                        ),
+                        **prime_breakdown,
+                        **cont_breakdown,
+                    }
+                )
+
+            rows.append(
+                {
+                    "mode": "clvbreakdown",
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "halo_width_raw": finite_float(halo),
+                    "halo_factor": finite_float(float(args.halo_factor)),
+                    "max_a_effective": finite_float(effective_max_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(shifts)),
+                    "correction_eig_min": finite_float(float(eigs[0])),
+                    "correction_eig_max": finite_float(float(eigs[-1])),
+                    "correction_opnorm": finite_float(
+                        max(abs(float(eigs[0])), abs(float(eigs[-1])))
+                    ),
+                    "opnorm_label": "lower" if op_idx == 0 else "upper",
+                    "breakdowns": breakdown_rows,
+                    "classification_note": (
+                        "Endpoint fractions near 1 would support an endpoint/boundary "
+                        "cancellation route.  Small endpoint fractions and dominant r=1 "
+                        "mass point toward a distributed ordinary-prime mean route."
+                    ),
+                    "D2": (
+                        "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), "
+                        "correction weight Mplus-chi_I"
+                    ),
+                }
+            )
+    return rows
+
+
 def hat_r_ell(u: np.ndarray, *, ell: float, packet: Any) -> np.ndarray:
     return (ell / (packet.s_k * packet.c_k)) * np.sinc(ell * u / packet.s_k) ** (
         2 * packet.k_spline + 2
@@ -2001,6 +2397,25 @@ def parse_args() -> argparse.Namespace:
     clvblend.add_argument("--theta-count", type=int, default=101)
     clvblend.add_argument("--p0-na", type=int, default=1001)
     clvblend.set_defaults(func=run_clvblend)
+
+    clvbreakdown = sub.add_parser("clvbreakdown", help="endpoint/bulk correction anatomy")
+    add_common_packet_args(clvbreakdown)
+    clvbreakdown.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvbreakdown.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvbreakdown.add_argument(
+        "--halo-factor",
+        type=float,
+        default=1.0,
+        help="endpoint halo half-width is halo_factor / receiver_delta in raw a",
+    )
+    clvbreakdown.add_argument("--p0-na", type=int, default=1001)
+    clvbreakdown.add_argument("--top", type=int, default=12)
+    clvbreakdown.set_defaults(func=run_clvbreakdown)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)

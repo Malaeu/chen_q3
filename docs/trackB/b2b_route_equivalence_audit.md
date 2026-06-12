@@ -205,6 +205,14 @@ The next mathematical move should be RP4 or direct ordinary-prime mean control,
 unless Proshka supplies a concrete RP1b route rewrite with exact downstream
 interfaces.
 
+Follow-up:
+
+- `docs/trackB/b2b_correction_anatomy.md` starts the RP4 diagnostic.  The
+  correction `B_R` is not an arbitrary bulk error: its prime side is strongly
+  endpoint-halo and ordinary-prime dominated, while its continuum side often
+  carries the larger interior-bulk budget.  This points to a matched
+  endpoint-continuum correction theorem, not a plain endpoint-only norm bound.
+
 ## Proshka Audit Block
 
 Claim:

@@ -32372,3 +32372,28 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   remains active: the viable branches are a genuine downstream smoothed-ledger
   rewrite, nonlinear/cone-adapted correction cancellation, or direct
   ordinary-prime mean control of `D_I`.
+
+## Insight (2026-06-12, Track B B2b) -- CorrectionAnatomy
+
+- Added `docs/trackB/b2b_correction_anatomy.md` and extended
+  `scripts/trackb_edge_operator_probe.py` with `clvbreakdown`.
+- The new probe decomposes the Selberg receiver correction
+  `B_R = (P(M^+)-P(1_I)) - (P0(M^+)-P0(1_I))` by prime endpoint/bulk region,
+  prime-power exponent, and continuum endpoint/bulk region.
+- The continuum breakdown now mirrors the actual D2 matrix convention:
+  `P0(M^+)` uses a full `[0,max_a]` grid, while `P0(1_I)` uses a dedicated
+  `[2K,4K]` interval grid.  With that fix, the Rayleigh check matches the
+  correction eigenvalue to floating precision.
+- At `K=3.5`, `ell=1.375`, `delta=1`, `p0_na=401`, `||B_R||_G` is about
+  `0.2381603793`, the Rayleigh check error is about `3.76e-12`, the prime
+  side is about `93.76%` endpoint-halo by absolute contribution and about
+  `98.37%` ordinary-prime (`r=1`) by absolute contribution.
+- The same direction has only about `26.79%` endpoint-halo continuum mass and
+  the continuum side contributes about `95.65%` of the absolute
+  prime-plus-continuum budget.  On the four-K compact schedule, the prime side
+  remains endpoint/ordinary-prime dominated, but the continuum side is often
+  not endpoint-local.
+- Status refines to `PARTIAL(endpoint-halo ordinary-prime structure found)`
+  plus `GAP(matched endpoint-continuum cancellation theorem missing)`.  The
+  next RP4 target is not a scalar prime endpoint bound; it is a signed or
+  cone-adapted endpoint-continuum cancellation theorem for `B_R`.
