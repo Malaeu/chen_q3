@@ -31918,3 +31918,35 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   closure, not a route mutation, and not a Lean theorem.  Any promotion must
   go through `docs/RH_TRICK_WORKFLOW.md` as a route-local experiment card with
   exact normalization checks.
+
+## Insight (2026-06-12, Track B review) -- PrimeCombModularityAtlasCard01
+
+- Ingested the full review card
+  `docs/PRIME_COMB_MODULARITY_ATLAS_CARD_01.md` for question 1: which
+  modular/special structure plays for the prime comb the role modular forms
+  played for `E8`.
+- Updated ranking: the base structure remains Guinand-Weil/Tate local-to-global
+  harmonic analysis, but the preferred operational candidate is the
+  Connes-Consani-Moscovici prolate/Sonin/Toeplitz-Caratheodory-Fejer line.
+- Parallel tool: Carneiro-Littmann-Vaaler Beurling-Selberg/de Branges
+  extremal functions are the lowest-risk unconditional way to bound a finite
+  edge-strip prime defect once the exact Q3 normalization is fixed.
+- Dual bookkeeping: Bondarenko-Radchenko-Seip zero-side interpolation is the
+  closest CKMRV-style interpolation analogue, but it is not a prime-side
+  certificate generator.
+- Hard negatives/guardrails: Kurasov-Sarnak rule out a direct
+  Fourier-quasicrystal transfer for the explicit-formula prime comb, Meyer
+  identifies the explicit-formula measure as non-crystalline, and the failed
+  de Branges-type positivity condition is due to Conrey-Li
+  (`arXiv:math/9812166`), not Sarnak.
+- Recommended first finite experiment: reproduce a Connes-Consani/zeta-cycle
+  smallest-eigenvalue computation through the edge strip `[2K,4K]`, switch
+  primes on one at a time, and check whether the prolate-derived extremal
+  vector remains compatible with the Q3/ker-Q cone.
+- Recommended parallel bound experiment: build a CLV-type extremal
+  majorant/minorant for the same edge strip and compare its certified defect
+  bound with the archimedean positivity margin.
+- Boundary: this is strategy documentation only.  It does not prove RH, does
+  not prove Weil positivity, does not close Step33/L3, and does not mutate
+  `Q3.Main`, Lean proof files, payloads, CSVs, LDL/radius data, H1/PO3, or the
+  active PSD route.

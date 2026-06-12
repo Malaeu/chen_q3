@@ -171,8 +171,27 @@ new global route claim.
 Current proof note:
 `docs/PRIME_COMB_STRUCTURE_PROOF.md`.
 
+Full review card:
+`docs/PRIME_COMB_MODULARITY_ATLAS_CARD_01.md`.
+
 Current answer:
 The first candidate structure is the Guinand-Weil explicit-formula
 distribution, viewed through Tate-Iwasawa adelic harmonic analysis.  The prime
 comb is the non-archimedean local term of a global Fourier/trace identity, not
 an arbitrary scalar table.
+
+Deep-review update:
+The base structural layer is still Guinand-Weil/Tate.  Among concrete
+post-2020 candidate mechanisms, the preferred operational line is now:
+
+1. Connes-Consani-Moscovici prolate/Sonin/Toeplitz-Caratheodory-Fejer
+   structure as the primary finite experiment target.
+2. Carneiro-Littmann-Vaaler extremal majorants/minorants as the parallel
+   unconditional edge-defect bounding tool.
+3. Bondarenko-Radchenko-Seip zero-side interpolation as dual bookkeeping, not
+   as the prime-side certificate generator.
+4. Fourier-quasicrystal/Lee-Yang analogies only as obstruction/falsification
+   probes, because the explicit-formula prime comb is not a Fourier
+   quasicrystal.
+5. Direct automorphic/Eisenstein inputs only after a concrete transfer map to
+   the Q3 prime weights is found.

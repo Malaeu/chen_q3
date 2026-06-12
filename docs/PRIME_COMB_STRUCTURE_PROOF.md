@@ -18,6 +18,16 @@ not an arbitrary discrete measure.  It is the non-archimedean local term in a
 global Fourier/trace identity whose other side is the zero distribution plus
 the archimedean gamma term.
 
+The deeper review in `docs/PRIME_COMB_MODULARITY_ATLAS_CARD_01.md` refines the
+operational answer: Guinand-Weil/Tate is the base structural layer, while the
+best current finite-experiment candidate is the
+Connes-Consani-Moscovici prolate/Sonin/Toeplitz-Caratheodory-Fejer mechanism.
+Carneiro-Littmann-Vaaler extremal functions are the parallel unconditional
+edge-defect bounding tool, and Bondarenko-Radchenko-Seip interpolation is best
+treated as zero-side bookkeeping.  The Fourier-quasicrystal/Lee-Yang route is
+an analogy, not a load-bearing transfer, because the explicit-formula prime
+comb is not a Fourier quasicrystal.
+
 In Q3 notation, the working prime comb is:
 
 ```text
