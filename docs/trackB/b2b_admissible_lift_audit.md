@@ -217,10 +217,17 @@ Follow-up probe:
   continuum cost down to `gamma≈0.4417` raises prime-side slack to `eta≈1.71`.
   This is a family-level failure for simple scalar two-point Gaussian
   autocorrelation lifts, not a route-level failure for B2b.
+- `docs/trackB/b2b_finiteop_tail_probe.md` implements the fallback
+  `FINITE-OP + CLV-tail` diagnostic.  The fixed K projected eigenvalue
+  certificate exists, but at K=2 and K=3 the worst vectors are distributed over
+  the ordinary-prime comb: `r=1` carries about `97%` at K=2 and `99%` at K=3,
+  while top-shift excision rapidly stops explaining the mass.  Thus the next
+  theorem shape must control a structured ordinary-prime mean, not only a short
+  list of exceptional shifts.
 
 ## Current Verdict
 
-`B2-GAP(cost-controlled admissible lift)`.
+`B2-GAP(cost-controlled admissible lift or uniform finite-op prime-mean estimate)`.
 
 What is known:
 
@@ -237,7 +244,9 @@ What remains:
 ```text
 Find Phi_v^+ / Phi_v^- in the pd cone with operator dominance and arch budget,
 but not from the simple scalar two-point Gaussian autocorrelation dictionary;
-or prove a finite projected operator inequality directly.
+or upgrade the direct finite projected operator inequality into a uniform
+structured ordinary-prime mean estimate with CLV used only for tail/continuum
+transfer.
 ```
 
 ## Proshka Request

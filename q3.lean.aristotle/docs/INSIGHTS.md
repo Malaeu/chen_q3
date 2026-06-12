@@ -32167,3 +32167,24 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `B2-GAP(stronger cost-controlled admissible lift or finite-op tail certificate)`.
   Proshka question: find a theorem-shape that cancels the arch/continuum proxy
   at operator level, or authorize switching B2b to `FINITE-OP + CLV-tail`.
+
+## Insight (2026-06-12, Track B B2b) -- FiniteOpTailProbe
+
+- Added `docs/trackB/b2b_finiteop_tail_probe.md` and
+  `scripts/trackb_edge_operator_probe.py finiteop`.
+- The new mode computes the direct projected finite certificate
+  `lambda_min*G <= P_edge-P0_edge <= lambda_max*G` and decomposes the upper
+  and lower worst Rayleigh vectors by prime-power shift.
+- K=2 reproduces the D2 edge sanity value as a finite certificate:
+  `lambda_min≈-0.4416718761`, `lambda_max≈0.4370797629`,
+  `two_sided_epsilon≈0.4416718761`.
+- The obstruction is distributed, not an exceptional-prime list: at K=2 the
+  `r=1` ordinary primes carry about `97%` of absolute prime-shift mass, while
+  top 12 shifts carry only about `18-19%`; at K=3 top 5 shifts carry only about
+  `0.535%`.
+- Status refines to
+  `B2-GAP(cost-controlled admissible lift or uniform finite-op prime-mean estimate)`.
+  A finite exception-removal certificate will not scale; the next theorem shape
+  must either control the ordinary-prime mean on the structured
+  cross-correlation cone or change the packet normalization/family so the
+  finite epsilon shows visible `K^{-c}` decay.

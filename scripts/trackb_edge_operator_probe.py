@@ -8,6 +8,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   edge      projected edge-defect proxy on ker(Q)
   lowband   mass captured by the Selberg-positive ultra-low band
   gaussian  finite-packet failure of the naive PSD Gaussian majorant
+  finiteop  direct projected finite-operator certificate diagnostics
   liftsearch finite operator-majorant search for positive-definite lifts
              (two-point or signed/multi-packet autocorrelation dictionaries)
 
@@ -206,6 +207,165 @@ def run_edge(args: argparse.Namespace) -> list[dict[str, Any]]:
                 "opnorm_G_Pnu_edge": finite_float(max(abs(eigs[0]), abs(eigs[-1]))),
                 "fro_Pnu_edge": finite_float(np.linalg.norm(Pnu_edge, ord="fro")),
                 "D2": "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi)",
+            }
+        )
+    return rows
+
+
+def rayleigh_shift_breakdown(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    N: np.ndarray,
+    Gc: np.ndarray,
+    ell: float,
+    shifts: list[Any],
+    y: np.ndarray,
+    *,
+    top: int,
+) -> dict[str, Any]:
+    rows: list[dict[str, Any]] = []
+    by_power: dict[int, dict[str, Any]] = {}
+    prime_rayleigh = 0.0
+    total_abs = 0.0
+
+    for sh in shifts:
+        M = sh.weight * shifted_packet_matrix(pilot, packet, D, ell, sh.a)
+        A = generalized_to_standard(pilot, project_matrix(pilot, M, N), Gc)
+        contribution = float(y @ A @ y)
+        prime_rayleigh += contribution
+        total_abs += abs(contribution)
+
+        power_row = by_power.setdefault(
+            int(sh.r_pow),
+            {"count": 0, "sum": 0.0, "abs_sum": 0.0},
+        )
+        power_row["count"] += 1
+        power_row["sum"] += contribution
+        power_row["abs_sum"] += abs(contribution)
+
+        rows.append(
+            {
+                "a": finite_float(sh.a),
+                "xi": finite_float(sh.a / (2.0 * math.pi)),
+                "p": int(sh.p),
+                "r_pow": int(sh.r_pow),
+                "weight": finite_float(sh.weight),
+                "contribution": finite_float(contribution),
+            }
+        )
+
+    rows.sort(key=lambda row: -abs(float(row["contribution"])))
+    top_rows = rows[:top]
+    top_abs = sum(abs(float(row["contribution"])) for row in top_rows)
+    for row in top_rows:
+        row["abs_fraction"] = 0.0 if total_abs == 0.0 else abs(float(row["contribution"])) / total_abs
+
+    by_power_rows = [
+        {
+            "r_pow": int(r_pow),
+            "count": int(data["count"]),
+            "sum": finite_float(float(data["sum"])),
+            "abs_sum": finite_float(float(data["abs_sum"])),
+            "abs_fraction": 0.0
+            if total_abs == 0.0
+            else finite_float(float(data["abs_sum"]) / total_abs),
+        }
+        for r_pow, data in sorted(by_power.items())
+    ]
+
+    return {
+        "prime_rayleigh": finite_float(prime_rayleigh),
+        "prime_abs_contribution_sum": finite_float(total_abs),
+        "top_abs_contribution_sum": finite_float(top_abs),
+        "top_abs_fraction": 0.0 if total_abs == 0.0 else finite_float(top_abs / total_abs),
+        "by_r_pow": by_power_rows,
+        "top_shifts_by_abs_contribution": top_rows,
+    }
+
+
+def run_finiteop(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        lo, hi = 2.0 * K, 4.0 * K
+        ctx = build_packet_context(
+            pilot,
+            K=K,
+            ell=args.ell,
+            grid_delta=args.grid_delta,
+            k_spline=args.k_spline,
+            p0_na=args.p0_na,
+        )
+        params = ctx["params"]
+        packet = ctx["packet"]
+        D = ctx["D"]
+        N = ctx["N"]
+        Gc = ctx["Gc"]
+
+        shifts = pilot.prime_power_shifts(params.L)
+        edge_shifts = [sh for sh in shifts if lo <= sh.a <= hi]
+        P_edge = np.zeros_like(D, dtype=float)
+        for sh in edge_shifts:
+            P_edge += sh.weight * shifted_packet_matrix(pilot, packet, D, params.ell, sh.a)
+        P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, args.p0_na)
+        Pnu_edge = pilot.sym(P_edge - P0_edge)
+
+        A_edge = generalized_to_standard(pilot, project_matrix(pilot, Pnu_edge, N), Gc)
+        C_edge = generalized_to_standard(pilot, project_matrix(pilot, P0_edge, N), Gc)
+        eigs, evecs = np.linalg.eigh(A_edge)
+        fro_norm = float(np.linalg.norm(A_edge, ord="fro"))
+        nuclear_norm = float(np.sum(np.abs(eigs)))
+
+        def eigen_row(label: str, idx: int) -> dict[str, Any]:
+            y = evecs[:, idx]
+            breakdown = rayleigh_shift_breakdown(
+                pilot,
+                packet,
+                D,
+                N,
+                Gc,
+                params.ell,
+                edge_shifts,
+                y,
+                top=args.top,
+            )
+            continuum_rayleigh = float(y @ C_edge @ y)
+            lambda_rayleigh = float(breakdown["prime_rayleigh"]) - continuum_rayleigh
+            return {
+                "label": label,
+                "lambda": finite_float(float(eigs[idx])),
+                "lambda_rayleigh_check": finite_float(lambda_rayleigh),
+                "lambda_check_abs_error": finite_float(abs(float(eigs[idx]) - lambda_rayleigh)),
+                "continuum_rayleigh": finite_float(continuum_rayleigh),
+                **breakdown,
+            }
+
+        rows.append(
+            {
+                "mode": "finiteop",
+                "K": finite_float(K),
+                "raw_edge": [finite_float(lo), finite_float(hi)],
+                "ell": finite_float(params.ell),
+                "grid_delta": finite_float(params.delta),
+                "k_spline": int(params.k_spline),
+                "n_centers": int(len(ctx["u"])),
+                "kerQ_dim": int(N.shape[1]),
+                "prime_power_shifts_total": int(len(shifts)),
+                "edge_prime_power_shifts": int(len(edge_shifts)),
+                "finite_certificate": (
+                    "projected finite model certifies "
+                    "lambda_min*G <= P_edge-P0_edge <= lambda_max*G"
+                ),
+                "lambda_min": finite_float(float(eigs[0])),
+                "lambda_max": finite_float(float(eigs[-1])),
+                "two_sided_epsilon": finite_float(max(abs(float(eigs[0])), abs(float(eigs[-1])))),
+                "fro_norm_standard": finite_float(fro_norm),
+                "nuclear_norm_standard": finite_float(nuclear_norm),
+                "effective_rank_fro": finite_float(0.0 if fro_norm == 0.0 else nuclear_norm**2 / fro_norm**2),
+                "upper_worst": eigen_row("upper", -1),
+                "lower_worst": eigen_row("lower", 0),
+                "D2": "raw a=r*log(p), edge=[2K,4K], Q3 xi=a/(2*pi), finite projected operator only",
             }
         )
     return rows
@@ -927,6 +1087,12 @@ def parse_args() -> argparse.Namespace:
     add_common_packet_args(edge)
     edge.add_argument("--p0-na", type=int, default=8001)
     edge.set_defaults(func=run_edge)
+
+    finiteop = sub.add_parser("finiteop", help="direct projected finite-operator certificate")
+    add_common_packet_args(finiteop)
+    finiteop.add_argument("--p0-na", type=int, default=8001)
+    finiteop.add_argument("--top", type=int, default=12)
+    finiteop.set_defaults(func=run_finiteop)
 
     lowband = sub.add_parser("lowband", help="Selberg-positive low-band mass")
     lowband.add_argument("--K", type=float, nargs="+", required=True)
