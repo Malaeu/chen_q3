@@ -33061,3 +33061,28 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   parents plus bounded jump-aware cell 61 run)`, and
   `FATAL(replacing the residual source-box theorem by sampled signs, brute
   global mesh replay, or forbidden atlas-negative transfers)`.
+
+## Insight (2026-06-12, Track B B2b) -- CenteredFormN1
+
+- Track B v4 forbids level-3 mesh escalation for the residual halo; the
+  allowed N1 move is centered-form source boxes.  Added centered Taylor
+  methods for both Selberg/Vaaler receiver atoms and whole quadratic packet
+  profile atoms in `scripts/trackb_nonnode_interval_atom_audit.py`, threaded
+  through the cell/refinement helpers.
+- Tool-choice check: `python-flint` is available (`0.8.0`), `gp` is not in
+  PATH.  No `dps>15` run was used.
+- The five old residual leaves all close under centered receiver/profile
+  source boxes.  Representative guards: cell `60` mesh `29090` direct guard
+  `~0.102387`; cell `60` mesh `58181` `~0.0657129`; cell `62` mesh `14545`
+  `~0.00156767`; cell `62` mesh `18693` `~1.14701e-5`; cell `62` mesh
+  `18700` `~8.86543e-6`.
+- Aggregate sanity on cell `62` with centered form leaves a real sampled
+  negative witness, not an interval artifact: global mesh `18725`, center
+  `7.130987044271352`, width `~1.4323e-6`, sampled
+  `S0=[-2.42653e-7,1.29396e-7]`, sampled guard `~-6.05826e-8`, centered
+  enclosure `S0=[-2.50263e-7,1.37001e-7]`.
+- Status refines to
+  `PARTIAL(N1 centered-form closes the five old source-box residual leaves)`,
+  `GAP(cell 62 has a sampled-negative near-zero witness; cell 61 edge jump
+  remains separate HEAVY_JOB)`, and
+  `FATAL(level-3 mesh refinement instead of changing the formulation)`.

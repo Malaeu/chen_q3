@@ -413,6 +413,214 @@ def packet_profile_interval_ranges_all_orders(
     }
 
 
+def directed_range_with_lipschitz(
+    values: np.ndarray,
+    derivative_values: np.ndarray | None,
+    *,
+    cover_radius: float,
+    inflation: float,
+) -> dict[str, Any]:
+    base = directed_range(values)
+    if base["lo"] is None or base["hi"] is None:
+        return base
+    if derivative_values is None:
+        pad = 0.0
+    else:
+        deriv = np.asarray(derivative_values, dtype=float)
+        finite = deriv[np.isfinite(deriv)]
+        pad = 0.0 if finite.size == 0 else float(np.max(np.abs(finite)))
+        pad *= float(cover_radius) * float(inflation)
+    lo = out_down(float(base["lo"]) - pad)
+    hi = out_up(float(base["hi"]) + pad)
+    return {
+        "lo": lo,
+        "hi": hi,
+        "max_abs": out_up(max(abs(lo), abs(hi))),
+        "width": out_up(hi - lo),
+        "sample_width": out_up(float(base["hi"]) - float(base["lo"])),
+        "taylor_pad": out_up(pad),
+    }
+
+
+def centered_taylor_range(
+    *,
+    center_value: float,
+    center_derivative: float,
+    second_derivative_values: np.ndarray,
+    half_width: float,
+    inflation: float,
+) -> dict[str, Any]:
+    finite = np.asarray(second_derivative_values, dtype=float)
+    finite = finite[np.isfinite(finite)]
+    second_bound = 0.0 if finite.size == 0 else float(np.max(np.abs(finite)))
+    second_bound *= float(inflation)
+    radius = float(half_width)
+    linear = abs(float(center_derivative)) * radius
+    quadratic = 0.5 * second_bound * radius * radius
+    lo = out_down(float(center_value) - linear - quadratic)
+    hi = out_up(float(center_value) + linear + quadratic)
+    return {
+        "lo": lo,
+        "hi": hi,
+        "max_abs": out_up(max(abs(lo), abs(hi))),
+        "width": out_up(hi - lo),
+        "center_value": float(center_value),
+        "center_derivative": float(center_derivative),
+        "centered_taylor_half_width": out_up(radius),
+        "centered_taylor_second_derivative_bound": out_up(second_bound),
+        "centered_taylor_inflation": float(inflation),
+    }
+
+
+def centered_first_order_range(
+    *,
+    center_value: float,
+    derivative_values: np.ndarray,
+    half_width: float,
+    inflation: float,
+) -> dict[str, Any]:
+    finite = np.asarray(derivative_values, dtype=float)
+    finite = finite[np.isfinite(finite)]
+    derivative_bound = 0.0 if finite.size == 0 else float(np.max(np.abs(finite)))
+    derivative_bound *= float(inflation)
+    radius = float(half_width)
+    pad = derivative_bound * radius
+    lo = out_down(float(center_value) - pad)
+    hi = out_up(float(center_value) + pad)
+    return {
+        "lo": lo,
+        "hi": hi,
+        "max_abs": out_up(max(abs(lo), abs(hi))),
+        "width": out_up(hi - lo),
+        "center_value": float(center_value),
+        "centered_taylor_half_width": out_up(radius),
+        "centered_taylor_derivative_bound": out_up(derivative_bound),
+        "centered_taylor_inflation": float(inflation),
+    }
+
+
+def centered_taylor_last_range(values: np.ndarray, *, inflation: float) -> dict[str, Any]:
+    base = directed_range(values)
+    if base["lo"] is None or base["hi"] is None:
+        return base
+    center = 0.5 * (float(base["lo"]) + float(base["hi"]))
+    radius = 0.5 * (float(base["hi"]) - float(base["lo"])) * float(inflation)
+    lo = out_down(center - radius)
+    hi = out_up(center + radius)
+    return {
+        "lo": lo,
+        "hi": hi,
+        "max_abs": out_up(max(abs(lo), abs(hi))),
+        "width": out_up(hi - lo),
+        "sample_width": out_up(float(base["hi"]) - float(base["lo"])),
+        "centered_taylor_last_inflation": float(inflation),
+    }
+
+
+def packet_profile_sampled_taylor_ranges_all_orders(
+    *,
+    ctx: dict[str, Any],
+    a_interval: Interval,
+    sample_count: int,
+    inflation: float,
+) -> dict[str, Any]:
+    count = max(2, int(sample_count))
+    a_grid = np.linspace(float(a_interval[0]), float(a_interval[1]), count)
+    radius = 0.0 if count <= 1 else 0.5 * (float(a_interval[1]) - float(a_interval[0])) / float(count - 1)
+    pilot = ctx["pilot"]
+    packet = ctx["packet"]
+    D = ctx["D"]
+    ell = float(ctx["params"].ell)
+    coeffs = ctx["coeffs"]
+    f0 = probe.packet_profile_grid(pilot, packet, D, ell, coeffs, a_grid)
+    f1 = probe.packet_profile_derivative_grid(pilot, packet, D, ell, coeffs, a_grid)
+    f2 = probe.packet_profile_second_derivative_grid(pilot, packet, D, ell, coeffs, a_grid)
+    f3 = probe.packet_profile_third_derivative_grid(pilot, packet, D, ell, coeffs, a_grid)
+    ranges = {
+        "F0": directed_range_with_lipschitz(
+            f0,
+            f1,
+            cover_radius=radius,
+            inflation=inflation,
+        ),
+        "F1": directed_range_with_lipschitz(
+            f1,
+            f2,
+            cover_radius=radius,
+            inflation=inflation,
+        ),
+        "F2": directed_range_with_lipschitz(
+            f2,
+            f3,
+            cover_radius=radius,
+            inflation=inflation,
+        ),
+        "F3": directed_range_with_lipschitz(
+            f3,
+            None,
+            cover_radius=radius,
+            inflation=inflation,
+        ),
+    }
+    for row in ranges.values():
+        row["profile_taylor_sample_count"] = count
+        row["profile_taylor_cover_radius"] = out_up(radius)
+        row["profile_taylor_inflation"] = float(inflation)
+    return ranges
+
+
+def packet_profile_centered_taylor_ranges_all_orders(
+    *,
+    ctx: dict[str, Any],
+    a_interval: Interval,
+    sample_count: int,
+    inflation: float,
+) -> dict[str, Any]:
+    count = max(3, int(sample_count))
+    a_lo, a_hi = float(a_interval[0]), float(a_interval[1])
+    center = 0.5 * (a_lo + a_hi)
+    half_width = 0.5 * (a_hi - a_lo)
+    a_grid = np.linspace(a_lo, a_hi, count)
+    center_grid = np.array([center], dtype=float)
+    pilot = ctx["pilot"]
+    packet = ctx["packet"]
+    D = ctx["D"]
+    ell = float(ctx["params"].ell)
+    coeffs = ctx["coeffs"]
+    f0c = probe.packet_profile_grid(pilot, packet, D, ell, coeffs, center_grid)[0]
+    f1c = probe.packet_profile_derivative_grid(pilot, packet, D, ell, coeffs, center_grid)[0]
+    f2c = probe.packet_profile_second_derivative_grid(pilot, packet, D, ell, coeffs, center_grid)[0]
+    f3c = probe.packet_profile_third_derivative_grid(pilot, packet, D, ell, coeffs, center_grid)[0]
+    f2 = probe.packet_profile_second_derivative_grid(pilot, packet, D, ell, coeffs, a_grid)
+    f3 = probe.packet_profile_third_derivative_grid(pilot, packet, D, ell, coeffs, a_grid)
+    ranges = {
+        "F0": centered_taylor_range(
+            center_value=float(f0c),
+            center_derivative=float(f1c),
+            second_derivative_values=f2,
+            half_width=half_width,
+            inflation=inflation,
+        ),
+        "F1": centered_taylor_range(
+            center_value=float(f1c),
+            center_derivative=float(f2c),
+            second_derivative_values=f3,
+            half_width=half_width,
+            inflation=inflation,
+        ),
+        "F2": centered_first_order_range(
+            center_value=float(f2c),
+            derivative_values=f3,
+            half_width=half_width,
+            inflation=inflation,
+        ),
+        "F3": centered_taylor_last_range(f3, inflation=inflation),
+    }
+    for row in ranges.values():
+        row["profile_centered_taylor_sample_count"] = count
+    return ranges
+
+
 def packet_profile_interval_range(
     *,
     packet: Any,
@@ -554,7 +762,120 @@ def vaaler_K0_derivatives_interval(z: Interval) -> tuple[Interval, Interval, Int
     return k0, k1, k2, k3
 
 
-def vaaler_H0_derivatives_interval(
+def vaaler_H0_regular_remainder_derivatives_interval(
+    z: Interval,
+    *,
+    pole_n: int,
+    tail_terms: int,
+) -> tuple[Interval, Interval, Interval, Interval]:
+    """Regular part of Vaaler's H0 defining series after one pole is split.
+
+    For nonzero integer n, split
+
+      sum_{m>=1} ((z-m)^-2 - (z+m)^-2) + 2/z
+        = sgn(n) * (z-n)^-2 + C_n(z).
+
+    This returns interval enclosures for C_n and its first three derivatives
+    by a finite symmetric pair sum plus a crude absolute tail.  The split
+    removes the pole cancellation that makes the global polygamma interval
+    expression too wide in receiver halos.
+    """
+    if pole_n == 0:
+        raise ValueError("pole split expects a nonzero integer")
+    if tail_terms < abs(int(pole_n)) + 2:
+        raise ValueError("tail_terms must extend past the split pole")
+
+    values = [(0.0, 0.0) for _ in range(4)]
+    pole_abs = abs(int(pole_n))
+    for order in range(4):
+        coeff = ((-1.0) ** order) * float(math.factorial(order + 1))
+        acc = (0.0, 0.0)
+        for m in range(1, int(tail_terms) + 1):
+            if m != pole_abs or pole_n < 0:
+                acc = iv_add(
+                    acc,
+                    iv_scale(coeff, iv_recip_power(iv_sub(z, iv_make(float(m))), order + 2)),
+                )
+            if m != pole_abs or pole_n > 0:
+                acc = iv_add(
+                    acc,
+                    iv_scale(-coeff, iv_recip_power(iv_add(z, iv_make(float(m))), order + 2)),
+                )
+        zero_coeff = ((-1.0) ** order) * 2.0 * float(math.factorial(order))
+        acc = iv_add(acc, iv_scale(zero_coeff, iv_recip_power(z, order + 1)))
+
+        radius = max(abs(float(z[0])), abs(float(z[1])))
+        if float(tail_terms) <= radius:
+            raise ValueError("tail_terms must exceed the z-radius")
+        p = order + 2
+        tail = (
+            float(math.factorial(order + 1))
+            * 2.0
+            * (float(tail_terms) - radius) ** (1 - p)
+            / float(p - 1)
+        )
+        values[order] = iv_add(acc, (-out_up(tail), out_up(tail)))
+    return tuple(values)  # type: ignore[return-value]
+
+
+def vaaler_H0_derivatives_interval_pole_split(
+    z: Interval,
+    *,
+    pole_n: int,
+    tail_terms: int,
+) -> tuple[Interval, Interval, Interval, Interval]:
+    t = iv_sub(z, iv_make(float(pole_n)))
+    if t[0] <= 0.0 <= t[1]:
+        raise ValueError("pole-split interval crosses its split pole")
+    sign = 1.0 if int(pole_n) > 0 else -1.0
+
+    pi = iv_make(math.pi)
+    A = iv_div(iv_pow_int(iv_sin(iv_scale(math.pi, z)), 2), iv_pow_int(pi, 2))
+    A1 = iv_div(iv_sin(iv_scale(2.0 * math.pi, z)), pi)
+    A2 = iv_scale(2.0, iv_cos(iv_scale(2.0 * math.pi, z)))
+    A3 = iv_scale(-4.0 * math.pi, iv_sin(iv_scale(2.0 * math.pi, z)))
+    K = vaaler_K0_derivatives_interval(t)
+    C = vaaler_H0_regular_remainder_derivatives_interval(
+        z,
+        pole_n=int(pole_n),
+        tail_terms=int(tail_terms),
+    )
+
+    h0 = iv_add(iv_scale(sign, K[0]), iv_mul(A, C[0]))
+    h1 = iv_add(
+        iv_scale(sign, K[1]),
+        iv_add(iv_mul(A1, C[0]), iv_mul(A, C[1])),
+    )
+    h2 = iv_add(
+        iv_scale(sign, K[2]),
+        iv_add(
+            iv_add(iv_mul(A2, C[0]), iv_scale(2.0, iv_mul(A1, C[1]))),
+            iv_mul(A, C[2]),
+        ),
+    )
+    h3 = iv_add(
+        iv_scale(sign, K[3]),
+        iv_add(
+            iv_add(iv_mul(A3, C[0]), iv_scale(3.0, iv_mul(A2, C[1]))),
+            iv_add(iv_scale(3.0, iv_mul(A1, C[2])), iv_mul(A, C[3])),
+        ),
+    )
+    return h0, h1, h2, h3
+
+
+def local_nonzero_integer_for_split(z: Interval, *, radius: float) -> int | None:
+    mid = 0.5 * (float(z[0]) + float(z[1]))
+    nearest = int(round(mid))
+    if nearest == 0:
+        return None
+    if float(z[0]) < nearest < float(z[1]):
+        return None
+    if max(abs(float(z[0]) - nearest), abs(float(z[1]) - nearest)) <= float(radius):
+        return nearest
+    return None
+
+
+def vaaler_H0_derivatives_interval_polygamma(
     z: Interval,
     *,
     tail_terms: int,
@@ -602,6 +923,27 @@ def vaaler_H0_derivatives_interval(
     return h0, h1, h2, h3
 
 
+def vaaler_H0_derivatives_interval(
+    z: Interval,
+    *,
+    tail_terms: int,
+    method: str = "polygamma",
+    pole_split_radius: float = 0.0,
+) -> tuple[Interval, Interval, Interval, Interval]:
+    if method == "polygamma":
+        return vaaler_H0_derivatives_interval_polygamma(z, tail_terms=tail_terms)
+    if method == "pole-split":
+        pole_n = local_nonzero_integer_for_split(z, radius=float(pole_split_radius))
+        if pole_n is not None:
+            return vaaler_H0_derivatives_interval_pole_split(
+                z,
+                pole_n=pole_n,
+                tail_terms=tail_terms,
+            )
+        return vaaler_H0_derivatives_interval_polygamma(z, tail_terms=tail_terms)
+    raise ValueError(f"unknown receiver interval method: {method}")
+
+
 def selberg_receiver_interval_ranges(
     *,
     a_interval: Interval,
@@ -609,6 +951,10 @@ def selberg_receiver_interval_ranges(
     hi: float,
     receiver_delta: float,
     tail_terms: int,
+    method: str = "polygamma",
+    pole_split_radius: float = 0.0,
+    sample_count: int = 17,
+    taylor_inflation: float = 2.0,
 ) -> dict[str, Any]:
     delta = float(receiver_delta)
     if delta <= 0.0:
@@ -622,10 +968,114 @@ def selberg_receiver_interval_ranges(
     else:
         raise ValueError("receiver interval has ambiguous indicator state")
 
+    if method == "sampled-taylor":
+        count = max(2, int(sample_count))
+        a_grid = np.linspace(float(a_interval[0]), float(a_interval[1]), count)
+        radius = (
+            0.0
+            if count <= 1
+            else 0.5 * (float(a_interval[1]) - float(a_interval[0])) / float(count - 1)
+        )
+        e0, e1, e2, e3 = probe.selberg_interval_plus_derivatives3(
+            a_grid,
+            lo=float(lo),
+            hi=float(hi),
+            receiver_delta=delta,
+        )
+        e0 = e0 - chi
+        ranges = {
+            "E0": directed_range_with_lipschitz(
+                e0,
+                e1,
+                cover_radius=radius,
+                inflation=taylor_inflation,
+            ),
+            "E1": directed_range_with_lipschitz(
+                e1,
+                e2,
+                cover_radius=radius,
+                inflation=taylor_inflation,
+            ),
+            "E2": directed_range_with_lipschitz(
+                e2,
+                e3,
+                cover_radius=radius,
+                inflation=taylor_inflation,
+            ),
+            "E3": directed_range_with_lipschitz(
+                e3,
+                None,
+                cover_radius=radius,
+                inflation=taylor_inflation,
+            ),
+        }
+        for row in ranges.values():
+            row["receiver_taylor_sample_count"] = count
+            row["receiver_taylor_cover_radius"] = out_up(radius)
+            row["receiver_taylor_inflation"] = float(taylor_inflation)
+        return ranges
+
+    if method == "centered-taylor":
+        count = max(3, int(sample_count))
+        a_lo, a_hi = float(a_interval[0]), float(a_interval[1])
+        center = 0.5 * (a_lo + a_hi)
+        half_width = 0.5 * (a_hi - a_lo)
+        a_grid = np.linspace(a_lo, a_hi, count)
+        center_grid = np.array([center], dtype=float)
+        e0c, e1c, e2c, e3c = probe.selberg_interval_plus_derivatives3(
+            center_grid,
+            lo=float(lo),
+            hi=float(hi),
+            receiver_delta=delta,
+        )
+        e0c = e0c - chi
+        _e0, _e1, e2, e3 = probe.selberg_interval_plus_derivatives3(
+            a_grid,
+            lo=float(lo),
+            hi=float(hi),
+            receiver_delta=delta,
+        )
+        ranges = {
+            "E0": centered_taylor_range(
+                center_value=float(e0c[0]),
+                center_derivative=float(e1c[0]),
+                second_derivative_values=e2,
+                half_width=half_width,
+                inflation=taylor_inflation,
+            ),
+            "E1": centered_taylor_range(
+                center_value=float(e1c[0]),
+                center_derivative=float(e2c[0]),
+                second_derivative_values=e3,
+                half_width=half_width,
+                inflation=taylor_inflation,
+            ),
+            "E2": centered_first_order_range(
+                center_value=float(e2c[0]),
+                derivative_values=e3,
+                half_width=half_width,
+                inflation=taylor_inflation,
+            ),
+            "E3": centered_taylor_last_range(e3, inflation=taylor_inflation),
+        }
+        for row in ranges.values():
+            row["receiver_centered_taylor_sample_count"] = count
+        return ranges
+
     za = iv_scale(delta, iv_sub(a_interval, iv_make(float(lo))))
     zb = iv_scale(delta, iv_sub(a_interval, iv_make(float(hi))))
-    Ha = vaaler_H0_derivatives_interval(za, tail_terms=tail_terms)
-    Hb = vaaler_H0_derivatives_interval(zb, tail_terms=tail_terms)
+    Ha = vaaler_H0_derivatives_interval(
+        za,
+        tail_terms=tail_terms,
+        method=method,
+        pole_split_radius=float(pole_split_radius),
+    )
+    Hb = vaaler_H0_derivatives_interval(
+        zb,
+        tail_terms=tail_terms,
+        method=method,
+        pole_split_radius=float(pole_split_radius),
+    )
     Ka = vaaler_K0_derivatives_interval(za)
     Kb = vaaler_K0_derivatives_interval(zb)
     values: list[Interval] = []
@@ -850,13 +1300,31 @@ def audit_mesh_interval(
         )
         ranges = {name: directed_range(values) for name, values in samples.items()}
 
-    profile_intervals = packet_profile_interval_ranges_all_orders(
-        packet=ctx["packet"],
-        D=ctx["D"],
-        ell=float(ctx["params"].ell),
-        coeffs=ctx["coeffs"],
-        a_interval=a_interval,
-    )
+    profile_interval_method = getattr(args, "profile_interval_method", "natural")
+    if profile_interval_method == "natural":
+        profile_intervals = packet_profile_interval_ranges_all_orders(
+            packet=ctx["packet"],
+            D=ctx["D"],
+            ell=float(ctx["params"].ell),
+            coeffs=ctx["coeffs"],
+            a_interval=a_interval,
+        )
+    elif profile_interval_method == "sampled-taylor":
+        profile_intervals = packet_profile_sampled_taylor_ranges_all_orders(
+            ctx=ctx,
+            a_interval=a_interval,
+            sample_count=int(getattr(args, "profile_taylor_samples", 17)),
+            inflation=float(getattr(args, "profile_taylor_inflation", 2.0)),
+        )
+    elif profile_interval_method == "centered-taylor":
+        profile_intervals = packet_profile_centered_taylor_ranges_all_orders(
+            ctx=ctx,
+            a_interval=a_interval,
+            sample_count=int(getattr(args, "profile_taylor_samples", 17)),
+            inflation=float(getattr(args, "profile_taylor_inflation", 2.0)),
+        )
+    else:
+        raise ValueError(f"unknown profile interval method: {profile_interval_method}")
     profile_interval_comparison = None
     if include_samples:
         profile_interval_comparison = {
@@ -867,8 +1335,22 @@ def audit_mesh_interval(
                 "sample_width": None
                 if ranges[name]["lo"] is None or ranges[name]["hi"] is None
                 else out_up(float(ranges[name]["hi"]) - float(ranges[name]["lo"])),
-                "nonzero_matrix_entries": interval["nonzero_matrix_entries"],
-                "max_entry_width": interval["max_entry_width"],
+                "nonzero_matrix_entries": interval.get("nonzero_matrix_entries"),
+                "max_entry_width": interval.get("max_entry_width"),
+                "profile_taylor_sample_count": interval.get("profile_taylor_sample_count"),
+                "profile_taylor_cover_radius": interval.get("profile_taylor_cover_radius"),
+                "profile_taylor_inflation": interval.get("profile_taylor_inflation"),
+                "profile_taylor_pad": interval.get("taylor_pad"),
+                "profile_centered_taylor_sample_count": interval.get(
+                    "profile_centered_taylor_sample_count"
+                ),
+                "centered_taylor_half_width": interval.get("centered_taylor_half_width"),
+                "centered_taylor_second_derivative_bound": interval.get(
+                    "centered_taylor_second_derivative_bound"
+                ),
+                "centered_taylor_derivative_bound": interval.get(
+                    "centered_taylor_derivative_bound"
+                ),
             }
             for name, interval in profile_intervals.items()
         }
@@ -879,6 +1361,10 @@ def audit_mesh_interval(
         hi=float(ctx["hi"]),
         receiver_delta=float(receiver_delta),
         tail_terms=int(args.polygamma_tail_terms),
+        method=getattr(args, "receiver_interval_method", "polygamma"),
+        pole_split_radius=float(getattr(args, "receiver_pole_split_radius", 0.0)),
+        sample_count=int(getattr(args, "receiver_taylor_samples", 17)),
+        taylor_inflation=float(getattr(args, "receiver_taylor_inflation", 2.0)),
     )
     receiver_interval_comparison = None
     if include_samples:
@@ -890,6 +1376,20 @@ def audit_mesh_interval(
                 "sample_width": None
                 if ranges[name]["lo"] is None or ranges[name]["hi"] is None
                 else out_up(float(ranges[name]["hi"]) - float(ranges[name]["lo"])),
+                "receiver_taylor_sample_count": interval.get("receiver_taylor_sample_count"),
+                "receiver_taylor_cover_radius": interval.get("receiver_taylor_cover_radius"),
+                "receiver_taylor_inflation": interval.get("receiver_taylor_inflation"),
+                "receiver_taylor_pad": interval.get("taylor_pad"),
+                "receiver_centered_taylor_sample_count": interval.get(
+                    "receiver_centered_taylor_sample_count"
+                ),
+                "centered_taylor_half_width": interval.get("centered_taylor_half_width"),
+                "centered_taylor_second_derivative_bound": interval.get(
+                    "centered_taylor_second_derivative_bound"
+                ),
+                "centered_taylor_derivative_bound": interval.get(
+                    "centered_taylor_derivative_bound"
+                ),
             }
             for name, interval in receiver_intervals.items()
         }
@@ -956,6 +1456,17 @@ def audit_mesh_interval(
         "cell": cell_idx,
         "mesh_index": mesh_idx,
         "receiver_delta": float(receiver_delta),
+        "receiver_interval_method": getattr(args, "receiver_interval_method", "polygamma"),
+        "receiver_pole_split_radius": float(
+            getattr(args, "receiver_pole_split_radius", 0.0)
+        ),
+        "receiver_taylor_samples": int(getattr(args, "receiver_taylor_samples", 0)),
+        "receiver_taylor_inflation": float(
+            getattr(args, "receiver_taylor_inflation", 0.0)
+        ),
+        "profile_interval_source_method": getattr(args, "profile_interval_method", "natural"),
+        "profile_taylor_samples": int(getattr(args, "profile_taylor_samples", 0)),
+        "profile_taylor_inflation": float(getattr(args, "profile_taylor_inflation", 0.0)),
         "raw_edge": [float(ctx["lo"]), float(ctx["hi"])],
         "cell_interval": [cell_lo, cell_hi],
         "mesh_interval": [a_lo, a_hi],
@@ -1021,14 +1532,25 @@ def audit_mesh_interval(
         "correction_eig_max": float(ctx["correction_eig_max"]),
         "atom_ranges": ranges,
         "profile_interval_kind": (
-            "natural_centered_b_spline_interval_with_float_coefficients"
+            "natural_or_sampled_taylor_centered_b_spline_profile_interval"
         ),
-        "profile_interval_method": "centered_cardinal_b_spline_cox_de_boor_recursion",
+        "profile_interval_source_method": getattr(args, "profile_interval_method", "natural"),
+        "profile_taylor_samples": int(getattr(args, "profile_taylor_samples", 0)),
+        "profile_taylor_inflation": float(getattr(args, "profile_taylor_inflation", 0.0)),
+        "profile_interval_algorithm": "centered_cardinal_b_spline_cox_de_boor_recursion",
         "profile_interval_rounding_pad": BSPLINE_INTERVAL_PAD,
         "profile_interval_ranges": profile_intervals,
         "profile_interval_comparison": profile_interval_comparison,
         "receiver_interval_kind": (
-            "vaaler_polygamma_recurrence_positive_series_tail_interval"
+            "vaaler_polygamma_or_local_pole_split_positive_tail_interval"
+        ),
+        "receiver_interval_method": getattr(args, "receiver_interval_method", "polygamma"),
+        "receiver_pole_split_radius": float(
+            getattr(args, "receiver_pole_split_radius", 0.0)
+        ),
+        "receiver_taylor_samples": int(getattr(args, "receiver_taylor_samples", 0)),
+        "receiver_taylor_inflation": float(
+            getattr(args, "receiver_taylor_inflation", 0.0)
         ),
         "receiver_interval_polygamma_tail_terms": int(args.polygamma_tail_terms),
         "receiver_interval_ranges": receiver_intervals,
@@ -1086,6 +1608,10 @@ def worklist_summary_row(
         "cert_na": int(args.cert_na),
         "cell": cell_idx,
         "receiver_delta": float(receiver_delta),
+        "receiver_interval_method": getattr(args, "receiver_interval_method", "polygamma"),
+        "receiver_pole_split_radius": float(
+            getattr(args, "receiver_pole_split_radius", 0.0)
+        ),
         "raw_edge": [float(ctx["lo"]), float(ctx["hi"])],
         "cell_interval": [cell_lo, cell_hi],
         "mesh_intervals_total": len(compact_rows),
@@ -1243,6 +1769,28 @@ def parse_args() -> argparse.Namespace:
         default=400,
         help="positive-series terms before the integral tail in receiver interval bounds",
     )
+    parser.add_argument(
+        "--receiver-interval-method",
+        choices=["polygamma", "pole-split", "sampled-taylor", "centered-taylor"],
+        default="polygamma",
+        help="Selberg/Vaaler receiver interval source-box method",
+    )
+    parser.add_argument(
+        "--receiver-pole-split-radius",
+        type=float,
+        default=0.2,
+        help="use pole-split H0 boxes when z lies this close to a nonzero integer",
+    )
+    parser.add_argument("--receiver-taylor-samples", type=int, default=17)
+    parser.add_argument("--receiver-taylor-inflation", type=float, default=2.0)
+    parser.add_argument(
+        "--profile-interval-method",
+        choices=["natural", "sampled-taylor", "centered-taylor"],
+        default="natural",
+        help="packet profile interval source-box method",
+    )
+    parser.add_argument("--profile-taylor-samples", type=int, default=17)
+    parser.add_argument("--profile-taylor-inflation", type=float, default=2.0)
     parser.add_argument(
         "--curvature-factors",
         type=float,

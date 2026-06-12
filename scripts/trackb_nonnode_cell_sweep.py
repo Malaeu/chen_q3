@@ -116,6 +116,17 @@ def compact_cell_summary(
         "K": float(K),
         "ell": float(ell),
         "receiver_delta": float(receiver_delta),
+        "receiver_interval_method": getattr(args, "receiver_interval_method", "polygamma"),
+        "receiver_pole_split_radius": float(
+            getattr(args, "receiver_pole_split_radius", 0.0)
+        ),
+        "receiver_taylor_samples": int(getattr(args, "receiver_taylor_samples", 0)),
+        "receiver_taylor_inflation": float(
+            getattr(args, "receiver_taylor_inflation", 0.0)
+        ),
+        "profile_interval_source_method": getattr(args, "profile_interval_method", "natural"),
+        "profile_taylor_samples": int(getattr(args, "profile_taylor_samples", 0)),
+        "profile_taylor_inflation": float(getattr(args, "profile_taylor_inflation", 0.0)),
         "ledger_cells": int(args.ledger_cells),
         "cert_na": int(args.cert_na),
         "cell": int(cell_idx),
@@ -205,6 +216,17 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "K": K,
         "ell": float(ell),
         "receiver_delta": receiver_delta,
+        "receiver_interval_method": getattr(args, "receiver_interval_method", "polygamma"),
+        "receiver_pole_split_radius": float(
+            getattr(args, "receiver_pole_split_radius", 0.0)
+        ),
+        "receiver_taylor_samples": int(getattr(args, "receiver_taylor_samples", 0)),
+        "receiver_taylor_inflation": float(
+            getattr(args, "receiver_taylor_inflation", 0.0)
+        ),
+        "profile_interval_source_method": getattr(args, "profile_interval_method", "natural"),
+        "profile_taylor_samples": int(getattr(args, "profile_taylor_samples", 0)),
+        "profile_taylor_inflation": float(getattr(args, "profile_taylor_inflation", 0.0)),
         "grid_delta": float(args.grid_delta),
         "k_spline": int(args.k_spline),
         "p0_na": int(args.p0_na),
@@ -268,6 +290,21 @@ def parse_args() -> argparse.Namespace:
         help="comma list and/or Python-style ranges, e.g. 58,59 or 58:64",
     )
     parser.add_argument("--polygamma-tail-terms", type=int, default=400)
+    parser.add_argument(
+        "--receiver-interval-method",
+        choices=["polygamma", "pole-split", "sampled-taylor", "centered-taylor"],
+        default="polygamma",
+    )
+    parser.add_argument("--receiver-pole-split-radius", type=float, default=0.2)
+    parser.add_argument("--receiver-taylor-samples", type=int, default=17)
+    parser.add_argument("--receiver-taylor-inflation", type=float, default=2.0)
+    parser.add_argument(
+        "--profile-interval-method",
+        choices=["natural", "sampled-taylor", "centered-taylor"],
+        default="natural",
+    )
+    parser.add_argument("--profile-taylor-samples", type=int, default=17)
+    parser.add_argument("--profile-taylor-inflation", type=float, default=2.0)
     parser.add_argument("--dyadic-bits", type=int, default=96)
     parser.add_argument("--worst-limit", type=int, default=3)
     parser.add_argument("--atom-samples", type=int, default=65)

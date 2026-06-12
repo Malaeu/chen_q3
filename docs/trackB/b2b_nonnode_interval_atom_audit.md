@@ -826,3 +826,152 @@ parents, plus bounded jump-aware cell 61 run)`.
 
 `FATAL(replacing the residual source-box theorem by sampled signs, a brute
 global 80001 mesh, or a forbidden atlas-negative transfer)`.
+
+## N1 Centered-Form Update
+
+Track B v4 changed the rule for the residual halo: no level-3 refinement.
+The next allowed move is a centered-form source box:
+
+```text
+f([c-r,c+r]) subset f(c) + f'(c)*[-r,r] + 1/2*sup|f''|*r^2*[-1,1].
+```
+
+This is used diagnostically for both the Selberg/Vaaler receiver atoms
+`E_j(a)` and the whole quadratic packet profile atoms `F_j(a)`.  The point is
+to preserve the scalar receiver and quadratic-profile structure instead of
+summing independent matrix-entry intervals.
+
+Allowed inputs:
+
+- `UNCONDITIONAL`: Selberg/Vaaler receiver formulas from `docs/trackB/clv_pair.md`.
+- `UNCONDITIONAL`: DLMF polygamma identities when the old receiver route is
+  used, source https://dlmf.nist.gov/5.15.
+- `UNCONDITIONAL`: elementary Taylor theorem with bounded second derivative.
+
+Tool-choice check:
+
+```text
+gp: not found in PATH
+python-flint: available 0.8.0
+```
+
+No `dps>15` run was used in this update.
+
+Added source-box methods:
+
+```text
+--receiver-interval-method centered-taylor
+--profile-interval-method centered-taylor
+```
+
+Five old residual leaves all close under centered form:
+
+```text
+cell 60, mesh 29090:
+  center 6.916666080729669, width ~1.4323e-6
+  sampled guard ~0.102387
+  S0 enclosure [0.1023875078, 0.1023892444]
+  direct guard ~0.102387
+
+cell 60, mesh 58181:
+  center 6.958332877604673, width ~1.4323e-6
+  sampled guard ~0.0657130
+  S0 enclosure [0.0657135968, 0.0657153142]
+  direct guard ~0.0657129
+
+cell 62, mesh 14545:
+  center 7.125000065104685, width ~1.4323e-6
+  sampled guard ~0.00156768
+  S0 enclosure [0.0015678614, 0.0015682537]
+  direct guard ~0.00156767
+
+cell 62, mesh 18693:
+  center 7.130941210938019, width ~1.4323e-6
+  sampled guard ~1.14737e-5
+  S0 enclosure [1.16561e-5, 1.20434e-5]
+  direct guard ~1.14701e-5
+
+cell 62, mesh 18700:
+  center 7.130951236979685, width ~1.4323e-6
+  sampled guard ~8.86908e-6
+  S0 enclosure [9.05147e-6, 9.43877e-6]
+  direct guard ~8.86543e-6
+```
+
+Aggregate sanity on cell `62` with centered receiver/profile and no level-3
+refinement:
+
+```text
+coarse pass/fail:             798 / 2
+refined parent recovered:     1
+refined parent unresolved:    1
+refined checked subintervals: 40
+refined failed subintervals:  2
+```
+
+The remaining witness is no longer a source-box artifact.  It is sampled
+negative:
+
+```text
+cell 62, mesh 18724:
+  center 7.1309856119796855, width ~1.4323e-6
+  sampled S0 [1.29396e-7, 5.01443e-7]
+  sampled guard ~-6.05832e-8
+  S0 enclosure [1.21791e-7, 5.09056e-7]
+  direct guard ~-6.42366e-8
+
+cell 62, mesh 18725:
+  center 7.130987044271352, width ~1.4323e-6
+  sampled S0 [-2.42653e-7, 1.29396e-7]
+  sampled guard ~-6.05826e-8
+  S0 enclosure [-2.50263e-7, 1.37001e-7]
+  direct guard ~-1.86027e-7
+```
+
+Interpretation:
+
+- The centered-form rewrite succeeds at its intended job: it removes the
+  over-wide source enclosure for the five old residual leaves.
+- The remaining cell-62 obstruction is a real local sign crossing for this
+  chosen opnorm direction, not an interval-width artifact.
+- Per v4 stop-rule, do not try level-3 refinement.  The next step is route
+  escalation / N2 smoothing, not more mesh.
+
+Updated verdict:
+
+`PARTIAL(N1 centered-form closes the five old source-box residual leaves)`.
+
+`GAP(cell 62 has a sampled-negative near-zero witness at mesh 18724/18725;
+cell 61 edge jump remains separate HEAVY_JOB)`.
+
+`FATAL(treating centered-form witness closure as E5' closure, or attempting
+level-3 mesh refinement instead of changing the formulation)`.
+
+## Proshka Audit Block -- N1 Centered Form
+
+Claim:
+Centered-form receiver/profile source boxes remove the false interval-width
+obstruction on the five old residual leaves, but expose a genuine local
+sampled-negative witness in cell `62`.
+
+Point of blockage:
+The smooth non-node sign guard for the current `clvsigncert` opnorm direction
+crosses zero near raw `a ~= 7.130986`, so a local positivity/sign certificate
+for this direction is false as stated.
+
+What was tried:
+Natural B-spline entrywise intervals, polygamma receiver intervals,
+adaptive level-2 refinement, pole split, then centered Taylor source boxes for
+the whole receiver/profile objects.  The last move closes the five old
+residual leaves, so the remaining issue is not interval width.
+
+Minimal witness:
+Cell `62`, global mesh `18725`, center `7.130987044271352`, width
+`~1.4323e-6`; sampled `S0=[-2.42653e-7,1.29396e-7]`, sampled guard
+`~-6.05826e-8`, centered enclosure
+`S0=[-2.50263e-7,1.37001e-7]`, direct guard `~-1.86027e-7`.
+
+Question for Proshka:
+Should N2 replace the hard indicator edge by a Selberg-smoothed edge
+certificate for this opnorm direction, or should the certificate direction be
+reselected under a positivity constraint before N2?
