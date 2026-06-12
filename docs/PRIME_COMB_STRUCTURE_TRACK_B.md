@@ -167,3 +167,12 @@ Minimal output:
 Preferred outcome:
 Find a theorem-shaped compression that can become an experiment card, not a
 new global route claim.
+
+Current proof note:
+`docs/PRIME_COMB_STRUCTURE_PROOF.md`.
+
+Current answer:
+The first candidate structure is the Guinand-Weil explicit-formula
+distribution, viewed through Tate-Iwasawa adelic harmonic analysis.  The prime
+comb is the non-archimedean local term of a global Fourier/trace identity, not
+an arbitrary scalar table.

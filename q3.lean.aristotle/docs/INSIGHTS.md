@@ -31889,3 +31889,32 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Boundary: documentation/theorem-shape experiment only.  No Lean payload,
   CSV, `ARadius`, radius-floor, LDL, `Q3.Main`, H1/PO3, or route theorem was
   changed; Step33A.1-A and Step33 remain open.
+
+## Insight (2026-06-12, Track B) -- PrimeCombStructurePC001
+
+- Added `docs/PRIME_COMB_STRUCTURE_PROOF.md` as the first theorem-shaped
+  Track B proof note for question 1: which special structure plays for the
+  prime comb the role that modular forms played for the `E8` lattice.
+- Claim: the first correct structure is the Guinand-Weil explicit-formula
+  distribution, viewed through Tate-Iwasawa adelic harmonic analysis.  The
+  prime comb is the non-archimedean local term of a global Fourier/trace
+  identity, not an arbitrary scalar table.
+- Q3 mapping: `prime_term Phi = sum_n w_Q n * Phi (xi_n n)` is the centered
+  prime-comb functional, and `explicit_formula` records the classical split
+  `Q Phi = arch_term Phi - prime_term Phi`.
+- Local `q3_docs` search confirms the same normalization pressure: old
+  insights warn that Weil fixes Haar/Fourier normalizations, and
+  `Rayleigh_Q_identification`/`Main_closure` expose the concrete Q3 prime
+  weight `2 Lambda(n) / sqrt(n)` at nodes `log n / 2pi`.
+- External primary-source check: Weil 1952 links zero sums to prime-power sums
+  and stresses the Fourier-transform-as-distribution viewpoint; Connes 1998
+  interprets explicit formulae as trace formulae on adele classes;
+  Connes-Consani 2020 frames Weil positivity through a semi-local trace
+  formula.
+- What this proves: Track B should treat the prime side as a structured
+  non-archimedean local term and seek finite explicit-formula/trace-formula
+  receivers, not row-by-row scalar replay.
+- Boundary: this is not a proof of RH, not Weil positivity, not Step33/L3
+  closure, not a route mutation, and not a Lean theorem.  Any promotion must
+  go through `docs/RH_TRICK_WORKFLOW.md` as a route-local experiment card with
+  exact normalization checks.
