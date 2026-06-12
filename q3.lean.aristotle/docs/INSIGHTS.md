@@ -33031,3 +33031,33 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   certificate still missing)`, and
   `FATAL(treating the smooth non-node interval scaffold as a proof across
   the edge jump)`.
+
+## Insight (2026-06-12, Track B B2b) -- AdaptiveHaloRefinement
+
+- Added `scripts/trackb_nonnode_refine_failures.py`, which refines only coarse
+  mesh rows whose exact dyadic direct/curvature guard fails.  This keeps D2
+  normalization (`a=r*log p`, edge `[2K,4K]`, `xi=a/(2*pi)`,
+  `w_Q=2*Lambda(n)/sqrt(n)`) and remains `diagnostic_only`.
+- On K=3.5 cells `60,62`, fixed `ell=1.375`, `receiver_delta=1`,
+  `cert_na=801`, `dyadic_bits=96`, `refine_factor=10`,
+  `refine_levels=2`, there are `198` coarse failures.  Adaptive refinement
+  recovers `193` parent failures and leaves `5` unresolved parents.
+- Per-cell: cell `60` recovers `88/90` coarse failures; cell `62` recovers
+  `105/108`.  No edge-jump skips occur in this run.
+- Residual leaves are not sampled sign failures.  Representative examples
+  have sampled `S0` positive with large margin but source interval boxes
+  crossing zero: cell `60` mesh `29090` has sampled `S0~0.102388` while
+  interval `S0=[-0.2206845,0.4255226]`; cell `60` mesh `58181` has sampled
+  `S0~0.065714` while interval `S0=[-1.3124927,1.4441815]`; cell `62` mesh
+  `14545` has sampled `S0~0.001568` while interval
+  `S0=[-0.0013691,0.0045063]`.
+- Cell `61` level-2 refinement was started but manually stopped after entering
+  the heavy edge/jump regime.  It should be rerun as a bounded, jump-aware job
+  rather than hidden inside a broad smooth non-node sweep.
+- Status refines to
+  `PARTIAL(adaptive two-level refinement recovers 193/198 coarse failures in
+  cells 60 and 62)`,
+  `GAP(tighter Selberg/Vaaler receiver source-box theorem for the 5 residual
+  parents plus bounded jump-aware cell 61 run)`, and
+  `FATAL(replacing the residual source-box theorem by sampled signs, brute
+  global mesh replay, or forbidden atlas-negative transfers)`.

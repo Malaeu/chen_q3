@@ -720,3 +720,109 @@ expansion of the Selberg/Vaaler receiver at integer nodes, a removable
 singularity rewrite for the cancellation-heavy polygamma expression, or a
 separate jump-split certificate at `a=2K` plus ordinary non-node intervals on
 both sides?
+
+## Adaptive Halo Refinement Update
+
+Added:
+
+```text
+scripts/trackb_nonnode_refine_failures.py
+```
+
+Purpose:
+
+```text
+coarse failing row -> refine only that row -> exact dyadic guard check
+```
+
+The script keeps the same diagnostic boundary as the previous tools: the
+source boxes are still floating interval boxes, and the exact rational layer
+checks only the finite guard arithmetic after those boxes are supplied.
+
+Run:
+
+```text
+.venv/bin/python scripts/trackb_nonnode_refine_failures.py \
+  --K 3.5 --ell 1.375 --schedule fixed --receiver-delta 1 \
+  --p0-na 401 --ledger-cells 120 --cert-na 801 \
+  --cells 60,62 --refine-factor 10 --refine-levels 2 \
+  --dyadic-bits 96 --polygamma-tail-terms 400 --worst-limit 5
+```
+
+Result:
+
+```text
+coarse failures:             198
+refined parents recovered:   193
+refined parents unresolved:  5
+refined subintervals checked: 3070
+edge-jump skips:             0
+```
+
+Per cell:
+
+```text
+cell 60:
+  coarse failures:            90
+  recovered by refinement:    88
+  unresolved parents:         2
+
+cell 62:
+  coarse failures:            108
+  recovered by refinement:    105
+  unresolved parents:         3
+```
+
+The remaining unresolved leaves are not sampled sign failures.  They are
+source-box overreach in cancellation-sensitive receiver zones.  Representative
+leaves:
+
+```text
+cell 60, refined mesh 29090, interval
+  [6.916665364583836, 6.916666796875504]
+  sampled S0:   [0.10238782629912302, 0.10238892590680701]
+  interval S0:  [-0.2206845364307292, 0.4255226026002629]
+  interval/sample width ratio: ~587670
+  sampled guard: ~0.10238724582992195
+
+cell 60, refined mesh 58181, interval
+  [6.95833216145884, 6.958333593750506]
+  sampled S0:   [0.06571375406933506, 0.06571515694819118]
+  interval S0:  [-1.3124927334229297, 1.4441814588135633]
+  interval/sample width ratio: ~1965012
+  sampled guard: ~0.06571303166446242
+
+cell 62, refined mesh 14545, interval
+  [7.124999348958852, 7.1250007812505185]
+  sampled S0:   [0.0015678685329692222, 0.0015682465652368661]
+  interval S0:  [-0.001369074051625916, 0.004506325129599943]
+  interval/sample width ratio: ~15542
+  sampled guard: ~0.001567676317129589
+```
+
+Cell `61` was started with the same level-2 refinement, but it was stopped
+manually after entering a heavy edge/jump regime.  It should be rerun as a
+separate bounded, jump-aware job rather than hidden inside a broad cell sweep.
+
+Interpretation:
+
+- Adaptive mesh refinement is a real door for most of the non-jump halo:
+  `193/198` coarse failures in cells `60` and `62` are recovered without new
+  analytic input.
+- The remaining `5` parent intervals are not edge jumps and not sampled sign
+  changes; they are over-wide source enclosures caused by cancellation in the
+  current Selberg/Vaaler receiver interval expression.
+- The next proof-shape is now sharper: combine adaptive dyadic subdivision
+  with a local receiver source-box theorem for cancellation halos.  Cell `61`
+  still additionally needs an explicit jump split at `a=2K`.
+
+Updated verdict:
+
+`PARTIAL(adaptive two-level refinement recovers 193/198 coarse failures in
+cells 60 and 62)`.
+
+`GAP(tighter Selberg/Vaaler receiver source-box theorem for the 5 residual
+parents, plus bounded jump-aware cell 61 run)`.
+
+`FATAL(replacing the residual source-box theorem by sampled signs, a brute
+global 80001 mesh, or a forbidden atlas-negative transfer)`.
