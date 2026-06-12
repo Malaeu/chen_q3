@@ -165,6 +165,13 @@ B2b remains viable only if one of the following replacements is found:
 
    proved from the explicit CLV kernels, not from entrywise pointwise bounds.
 
+The follow-up probe `docs/trackB/b2_cone_transport_probe.md` refines item 1:
+it is enough for the majorant error `M^+-chi` to be Fourier-nonnegative on the
+actual spectral support of the Hermitian-square cone.  Numerically, for the
+ordinary Selberg error and `I=[2K,4K]`, the first zero/negative barrier is at
+`u=1/(12K)`.  Thus the ordinary Selberg pair only supports an ultra-low-band
+transport lemma, unless a different CLV object is found.
+
 ## Current Verdict
 
 `B2-GAP(cone transport)`.

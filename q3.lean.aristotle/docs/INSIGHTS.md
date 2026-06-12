@@ -32020,3 +32020,26 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `N^T(P_edge-P0_edge)N <= epsilon_K N^T G N`.
 - Status: `B2-GAP(cone transport)`, fatal only for the naive Selberg insertion,
   not fatal yet for the overall CLV Track B goal.
+
+## Insight (2026-06-12, Track B B2) -- LowBandSelbergErrorProbe
+
+- Added `docs/trackB/b2_cone_transport_probe.md`.
+- Local `q3_docs` search reaffirmed the corrected target: the public Q3 cone is
+  positive-definite / convolution-square, so B2 must be a PSD/cone transport
+  lemma, not a broad pointwise majorization argument.
+- Candidate transport lemma: if `F` is an autocorrelation with `hat(F)>=0` and
+  the Selberg majorant error `E=M^+_sym-chi_sym` has `hat(E)>=0` on
+  `supp hat(F)`, then Plancherel gives `int chi_sym F <= int M^+_sym F`.
+- Numerical result: for `K=2`, raw `I=[4,8]`, `delta=1`,
+  `hat(E)` is not globally nonnegative; sampled minimum is about
+  `-1.159899953539775`.  The first zero/negative barrier is at
+  `u=1/(12K)`, so ordinary Selberg only supports an ultra-low-band transport
+  lemma.
+- Step13 edge-proxy scan with `L=2K`, `ell=0.35`, grid `delta=0.5`, and
+  `k_spline=5` gives projected `G`-operator norms
+  `K=1:0.232991`, `K=2:0.441672`, `K=3:0.498473`, `K=4:0.971524`.
+  This is not B3 evidence for decay.
+- Current survivors: (1) prove a low-pass/low-band cone capture with tail
+  ledger, (2) find a PSD-aware CLV replacement whose error is nonnegative on
+  the actual packet spectrum, or (3) certify the finite projected operator
+  inequality directly and use CLV only for tail/continuum control.
