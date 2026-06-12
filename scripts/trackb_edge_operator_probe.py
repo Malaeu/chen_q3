@@ -32,6 +32,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   clvfixed
             fixed-direction S1-FINAL witness accounting; prime removals are
             evaluated on the full witness direction without reselecting it
+  clvgate
+            S3 B2b numerical decomposition gate on deterministic cone tests
   clvsigncert
             smooth/jump split prototype for a future V_J sign certificate
             with analytic B-spline derivatives for the packet profile
@@ -4985,6 +4987,227 @@ def run_clvfixed(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def deterministic_standard_cone_directions(
+    *,
+    A_corr: np.ndarray,
+    test_count: int,
+    seed: int,
+) -> list[tuple[str, np.ndarray]]:
+    eigs, evecs = np.linalg.eigh(A_corr)
+    op_idx = int(np.argmax(np.abs(eigs)))
+    candidates: list[tuple[str, np.ndarray]] = [
+        ("eig_lower", evecs[:, 0]),
+        ("eig_upper", evecs[:, len(eigs) - 1]),
+        ("eig_opnorm", evecs[:, op_idx]),
+    ]
+    n = A_corr.shape[0]
+    for idx in range(min(n, int(test_count))):
+        y = np.zeros(n, dtype=float)
+        y[idx] = 1.0
+        candidates.append((f"basis_{idx}", y))
+
+    rng = np.random.default_rng(int(seed))
+    while len(candidates) < int(test_count) + 8:
+        raw = rng.normal(size=n)
+        norm = float(np.linalg.norm(raw))
+        if norm == 0.0:
+            continue
+        candidates.append((f"random_{len(candidates)}", raw / norm))
+
+    out: list[tuple[str, np.ndarray]] = []
+    seen: list[np.ndarray] = []
+    for label, y in candidates:
+        norm = float(np.linalg.norm(y))
+        if norm == 0.0:
+            continue
+        yy = np.asarray(y, dtype=float) / norm
+        if any(abs(float(prev @ yy)) > 1.0 - 1e-10 for prev in seen):
+            continue
+        seen.append(yy)
+        out.append((label, yy))
+        if len(out) >= int(test_count):
+            break
+    return out
+
+
+def run_clvgate(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            G = ctx["G"]
+            Q = ctx["Q"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            P_edge = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, chi_weight
+            )
+            P_plus = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, plus_weight
+            )
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+            receiver_correction_matrix = pilot.sym((P_plus - P_edge) - (P0_plus - P0_edge))
+            A_corr = generalized_to_standard(
+                pilot, project_matrix(pilot, receiver_correction_matrix, N), Gc
+            )
+            directions = deterministic_standard_cone_directions(
+                A_corr=A_corr,
+                test_count=int(args.test_count),
+                seed=int(args.seed),
+            )
+
+            test_rows: list[dict[str, Any]] = []
+            max_closure_rel = 0.0
+            min_zero_psd_proxy = float("inf")
+            max_q_abs = 0.0
+            for label, y in directions:
+                coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, y)
+                prime_edge = float(coeffs @ P_edge @ coeffs)
+                arch_edge = float(coeffs @ P0_edge @ coeffs)
+                prime_plus = float(coeffs @ P_plus @ coeffs)
+                arch_plus = float(coeffs @ P0_plus @ coeffs)
+                zero_psd_proxy = arch_plus - prime_plus
+                receiver_correction = (prime_plus - prime_edge) - (arch_plus - arch_edge)
+                boundary_slot = 0.0
+                recomposed_prime_edge = (
+                    arch_edge - zero_psd_proxy - receiver_correction + boundary_slot
+                )
+                closure_abs = abs(prime_edge - recomposed_prime_edge)
+                component_scale = max(
+                    1.0,
+                    abs(prime_edge)
+                    + abs(arch_edge)
+                    + abs(zero_psd_proxy)
+                    + abs(receiver_correction)
+                    + abs(boundary_slot),
+                )
+                closure_rel = closure_abs / component_scale
+                q_values = np.asarray(Q @ coeffs, dtype=float)
+                q_abs = float(np.max(np.abs(q_values)))
+                max_closure_rel = max(max_closure_rel, closure_rel)
+                min_zero_psd_proxy = min(min_zero_psd_proxy, zero_psd_proxy)
+                max_q_abs = max(max_q_abs, q_abs)
+                test_rows.append(
+                    {
+                        "label": label,
+                        "prime_edge": finite_float(prime_edge),
+                        "arch_edge": finite_float(arch_edge),
+                        "minus_zero_PSD_proxy": finite_float(-zero_psd_proxy),
+                        "minus_receiver_correction": finite_float(-receiver_correction),
+                        "boundary_slot": finite_float(boundary_slot),
+                        "recomposed_prime_edge": finite_float(recomposed_prime_edge),
+                        "closure_abs_error": finite_float(closure_abs),
+                        "closure_rel_error": finite_float(closure_rel),
+                        "zero_PSD_proxy_arch_plus_minus_prime_plus": finite_float(
+                            zero_psd_proxy
+                        ),
+                        "receiver_correction": finite_float(receiver_correction),
+                        "G_norm_squared": finite_float(float(coeffs @ G @ coeffs)),
+                        "Q_functionals": [finite_float(float(x)) for x in q_values.tolist()],
+                        "Q_abs_max": finite_float(q_abs),
+                    }
+                )
+
+            closure_green = max_closure_rel <= float(args.rel_tol)
+            zero_proxy_green = min_zero_psd_proxy >= -float(args.zero_tol)
+            if closure_green and zero_proxy_green:
+                verdict = "B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC"
+            elif closure_green:
+                verdict = "B2B_GATE_NOT_GREEN_ZERO_PSD_PROXY"
+            else:
+                verdict = "B2B_GATE_NOT_GREEN_CLOSURE"
+
+            rows.append(
+                {
+                    "mode": "clvgate",
+                    "status": "diagnostic_only",
+                    "verdict": verdict,
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "max_a_effective": finite_float(effective_max_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(shifts)),
+                    "test_count": int(len(test_rows)),
+                    "seed": int(args.seed),
+                    "rel_tol": finite_float(float(args.rel_tol)),
+                    "zero_tol": finite_float(float(args.zero_tol)),
+                    "max_closure_rel_error": finite_float(max_closure_rel),
+                    "min_zero_PSD_proxy": finite_float(min_zero_psd_proxy),
+                    "max_Q_abs": finite_float(max_q_abs),
+                    "tests": test_rows,
+                    "D2": (
+                        "raw a=r*log(p), edge=[2K,4K], xi=a/(2*pi); "
+                        "finite packet Hermitian-square tests in kerQ.  "
+                        "The identity checked is prime_edge = arch_edge "
+                        "- zero_PSD_proxy - receiver_correction + boundary. "
+                        "zero_PSD_proxy is arch(M+)-prime(M+) for the smoothed "
+                        "receiver and remains a numerical eligibility proxy, "
+                        "not a theorem input."
+                    ),
+                    "instrument_status": {
+                        "prime_edge": "finite_prime_power_sum_matrix",
+                        "arch_edge": "continuum_trapezoid_matrix_proxy",
+                        "zero_PSD_proxy": "smoothed_arch_minus_smoothed_prime_proxy",
+                        "boundary": "boundary_null_Qv_numeric_zero",
+                        "proof_status": "SKETCH_DIAGNOSTIC_ONLY",
+                    },
+                }
+            )
+    return rows
+
+
 def run_clvwitness(args: argparse.Namespace) -> list[dict[str, Any]]:
     pilot = load_step13()
     rows: list[dict[str, Any]] = []
@@ -6598,6 +6821,25 @@ def parse_args() -> argparse.Namespace:
     )
     clvfixed.add_argument("--top", type=int, default=12)
     clvfixed.set_defaults(func=run_clvfixed)
+
+    clvgate = sub.add_parser(
+        "clvgate",
+        help="S3 B2b numerical decomposition gate on deterministic cone tests",
+    )
+    add_common_packet_args(clvgate)
+    clvgate.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvgate.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvgate.add_argument("--p0-na", type=int, default=401)
+    clvgate.add_argument("--test-count", type=int, default=10)
+    clvgate.add_argument("--seed", type=int, default=1337)
+    clvgate.add_argument("--rel-tol", type=float, default=1e-4)
+    clvgate.add_argument("--zero-tol", type=float, default=1e-10)
+    clvgate.set_defaults(func=run_clvgate)
 
     clvsigncert = sub.add_parser(
         "clvsigncert",

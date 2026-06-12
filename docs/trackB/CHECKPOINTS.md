@@ -45,3 +45,16 @@ finite packet Hermitian square by construction.
 ВЕРДИКТ: blade `a_w` edge-prime sign selection confirmed; pit `a_min` is
 `FINITE_CONE_WITNESS`, nature `OPEN_UNTIL_S3_B2B_GATE`.
 ПЛАН (+стоимость): skip S2 per LEVEL 3; run S3 B2b gate on `K=2,3`.
+
+## 2026-06-12 -- S3/S4 B2b Verdict
+
+ГДЕ Я: Track B v5 DONE after S3 B2b numerical gate.
+СДЕЛАНО: added `clvgate`; ran `K=2,3`, `10` deterministic finite-cone
+Hermitian-square directions in `ker Q`.
+ЧИСЛА: algebra closes: max relative error `9.93e-17` at `K=2`,
+`3.47e-16` at `K=3`; boundary residuals `|Qv|<=2.23e-15`.
+ПРОБЛЕМА: zero-side eligibility proxy is negative:
+`min zero_PSD_proxy=-8.66e-4` at `K=2`, `-7.74e-3` at `K=3`.
+ВЕРДИКТ: DONE=B, `B2B_GATE_NOT_GREEN_ZERO_PSD_PROXY`; not a decomposition
+arithmetic bug, but a PSD-slot eligibility gap.
+ПЛАН: stop per DONE; next decision belongs to Ылша/Fable.

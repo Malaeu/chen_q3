@@ -33157,3 +33157,23 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `ZERO_CONSISTENT(first crossing edge-prime sign selection confirmed)`,
   `REFUTED(Fable corrected prediction: minimum=edge-prime)`, and
   `GAP(pit is finite-cone witness; nature remains open until S3 B2b gate)`.
+
+## Insight (2026-06-12, Track B B2b) -- S3B2bGateVerdict
+
+- Added `clvgate` mode to `scripts/trackb_edge_operator_probe.py` and ran the
+  S3 diagnostic gate on `K=2,3`, with `10` deterministic finite-packet
+  Hermitian-square directions in `ker Q`.
+- The tested decomposition was
+  `prime_edge = arch_edge - zero_PSD_proxy - receiver_correction + boundary`,
+  where `zero_PSD_proxy = arch(M^+) - prime(M^+)` for the smoothed receiver.
+  This is a numerical eligibility proxy, not an accepted theorem input.
+- Algebraic closure is clean: max relative closure error is `~9.93e-17` for
+  `K=2` and `~3.47e-16` for `K=3`; max boundary residual is
+  `|Qv| <= 2.23e-15`.
+- The gate is still NOT GREEN because the zero-side eligibility proxy is
+  negative on tested cone directions: `min zero_PSD_proxy ~= -8.66e-4` at
+  `K=2`, and `~=-7.74e-3` at `K=3`.
+- Final Track B v5 DONE verdict is `B`: `B2B_GATE_NOT_GREEN_ZERO_PSD_PROXY`.
+  This is not a decomposition arithmetic bug; it is a PSD-slot eligibility
+  gap for the naive smoothed receiver route.  See
+  `docs/trackB/VERDICT_B2B.md`.
