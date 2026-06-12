@@ -206,9 +206,17 @@ Finite `K=2` operator-majorant feasibility test:
 This experiment is not a proof, but it is the right minimal example for
 Proshka because it tests exactly the missing lemma, not a pointwise surrogate.
 
+Follow-up probe:
+
+- `docs/trackB/b2b_liftsearch_probe.md` implements this experiment for `K=2`
+  with two-point Gaussian autocorrelation lifts.  The dense dictionary can drive
+  the prime-side slack down to `eta≈0.0077`, but the continuum proxy cost rises
+  to about `5.27` in projected `G`-opnorm.  Thus the current wall is a
+  cost-controlled admissible lift, not mere finite operator dominance.
+
 ## Current Verdict
 
-`B2-GAP(admissible lift)`.
+`B2-GAP(cost-controlled admissible lift)`.
 
 What is known:
 
@@ -230,14 +238,17 @@ or prove a finite projected operator inequality directly.
 ## Proshka Request
 
 Claim:
-B2b reduces to an admissible-lift lemma: construct a positive-definite Weil
-test `Phi_v^+` whose prime term operator-majorizes the signed edge prime form,
-and whose arch term is within `epsilon_K` of the edge continuum model.
+B2b reduces to a cost-controlled admissible-lift lemma: construct a
+positive-definite Weil test `Phi_v^+` whose prime term operator-majorizes the
+signed edge prime form, and whose arch term is within `epsilon_K` of the edge
+continuum model.
 
 Point of blockage:
 Scalar CLV/Selberg majorization does not imply the projected operator
 dominance because the packet edge kernel `F_v(a)` is signed/oscillatory.
-Naive Gaussian positivity also fails in the finite packet test.
+Naive Gaussian positivity also fails in the finite packet test.  A richer
+two-point Gaussian autocorrelation dictionary nearly solves finite dominance
+at `K=2`, but only with large continuum proxy cost.
 
 What was tried:
 - Extracted unconditional Selberg/Vaaler formulas and constants.
@@ -247,6 +258,8 @@ What was tried:
   generalized eigenvalues.
 - Checked local Q3 definitions: B2b may use `Q=arch-prime` only for tests in
   the corrected positive-definite cone.
+- Ran the finite `liftsearch` probe: dense two-point Gaussian dictionary gets
+  `eta≈0.0077`, but `opnorm_G(P0_lift-P0_edge)≈5.27`.
 
 Minimal example:
 `K=2`, raw edge `[4,8]`, Step13 packet parameters `ell=0.35`,
@@ -257,4 +270,5 @@ N^T(P_lift - P_edge)N + eta * N^T G N >= 0
 ```
 
 with `eta` as small as possible, plus an arch-budget check against
-`P0_edge`.  Current edge proxy norm is `0.4416718760986585`.
+`P0_edge`.  Current edge proxy norm is `0.4416718760986585`; the best dense
+probe so far has small `eta` but continuum cost an order of magnitude larger.

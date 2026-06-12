@@ -32108,3 +32108,24 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - This isolates the next experiment: finite `K=2` operator-majorant search
   for positive-definite lift kernels in the same projected `G` normalization.
   Status remains `B2-GAP(admissible lift)`, not E5' closure.
+
+## Insight (2026-06-12, Track B B2b) -- LiftSearchCostWall
+
+- Added `liftsearch` mode to `scripts/trackb_edge_operator_probe.py` and
+  recorded the result in `docs/trackB/b2b_liftsearch_probe.md`.
+- The mode tests finite operator-majorization
+  `N^T(P_lift-P_edge)N + eta*N^TGN >= 0` using two-point Gaussian
+  autocorrelation lifts, solved by a cutting-plane LP over projected
+  generalized eigenvectors.
+- D2 optimization: the script now uses compact B-spline support to reduce
+  requested `max_a=16` to effective `max_a=8.200000000001` for `K=2`, because
+  larger raw shifts do not interact with the packet matrix.
+- Dense dictionary result (`centers=4.0..8.0`, widths
+  `0.35,0.5,0.75,1.0,1.5,2.0,3.0,4.0`): budget `10` gives
+  `eta≈0.007718`, so finite prime-side dominance is nearly achieved.
+- The cost wall is the continuum/arch proxy:
+  `opnorm_G(P0_lift-P0_edge)≈5.27`, much larger than the measured edge
+  fluctuation `0.4416718760986585`.
+- Status refines to `B2-GAP(cost-controlled admissible lift)`: B2b is not dead,
+  but the next theorem/experiment must optimize prime dominance and arch budget
+  together, or move to direct `FINITE-OP` with CLV only for tail control.

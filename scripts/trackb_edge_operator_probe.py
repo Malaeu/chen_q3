@@ -8,6 +8,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
   edge      projected edge-defect proxy on ker(Q)
   lowband   mass captured by the Selberg-positive ultra-low band
   gaussian  finite-packet failure of the naive PSD Gaussian majorant
+  liftsearch finite operator-majorant search for positive-definite lifts
 
 All coordinates below are raw-log coordinates: a = r * log(p).
 """
@@ -24,6 +25,7 @@ from typing import Any
 
 import numpy as np
 from scipy import linalg
+from scipy.optimize import linprog
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -93,6 +95,17 @@ def projected_generalized_eigs(pilot: Any, M: np.ndarray, N: np.ndarray, Gc: np.
     return linalg.eigh(Mc, Gc, eigvals_only=True)
 
 
+def project_matrix(pilot: Any, M: np.ndarray, N: np.ndarray) -> np.ndarray:
+    return pilot.sym(N.T @ M @ N)
+
+
+def generalized_to_standard(pilot: Any, Mc: np.ndarray, Gc: np.ndarray) -> np.ndarray:
+    chol = linalg.cholesky(Gc, lower=True)
+    left = linalg.solve_triangular(chol, Mc, lower=True, check_finite=False)
+    standard = linalg.solve_triangular(chol, left.T, lower=True, check_finite=False).T
+    return pilot.sym(standard)
+
+
 def build_P0_edge(pilot: Any, packet: Any, D: np.ndarray, ell: float, lo: float, hi: float, p0_na: int) -> np.ndarray:
     a_grid = np.linspace(lo, hi, p0_na)
     wa = pilot.trap_weights_uniform(a_grid)
@@ -100,6 +113,44 @@ def build_P0_edge(pilot: Any, packet: Any, D: np.ndarray, ell: float, lo: float,
     for a, w in zip(a_grid, wa):
         P0 += w * math.exp(0.5 * float(a)) * shifted_packet_matrix(pilot, packet, D, ell, float(a))
     return pilot.sym(P0)
+
+
+def build_prime_matrix_for_weight(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    shifts: list[Any],
+    weight_fn: Any,
+) -> np.ndarray:
+    P = np.zeros_like(D, dtype=float)
+    for sh in shifts:
+        P += sh.weight * float(weight_fn(sh.a)) * shifted_packet_matrix(pilot, packet, D, ell, sh.a)
+    return pilot.sym(P)
+
+
+def build_continuum_matrix_for_weight(
+    pilot: Any,
+    packet: Any,
+    D: np.ndarray,
+    ell: float,
+    *,
+    max_a: float,
+    p0_na: int,
+    weight_fn: Any,
+) -> np.ndarray:
+    a_grid = np.linspace(0.0, max_a, p0_na)
+    wa = pilot.trap_weights_uniform(a_grid)
+    P0 = np.zeros_like(D, dtype=float)
+    for a, w in zip(a_grid, wa):
+        coeff = math.exp(0.5 * float(a)) * float(weight_fn(float(a)))
+        P0 += w * coeff * shifted_packet_matrix(pilot, packet, D, ell, float(a))
+    return pilot.sym(P0)
+
+
+def effective_shift_cutoff(D: np.ndarray, ell: float, *, packet_support_radius: float = 2.0) -> float:
+    """Largest positive shift that can interact with the compact packet support."""
+    return float(np.max(np.abs(D)) + packet_support_radius * ell + 1e-12)
 
 
 def run_edge(args: argparse.Namespace) -> list[dict[str, Any]]:
@@ -230,7 +281,8 @@ def run_gaussian(args: argparse.Namespace) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for K in args.K:
         lo, hi = 2.0 * K, 4.0 * K
-        max_a = args.max_a_factor * K
+        max_a_requested = args.max_a_factor * K
+        max_a = max_a_requested
         ctx = build_packet_context(
             pilot,
             K=K,
@@ -287,6 +339,275 @@ def run_gaussian(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def two_point_gaussian_lift_value(a: float, *, center: float, width: float) -> float:
+    """Autocorrelation of two equal Gaussian packets separated by `center`.
+
+    Up to an irrelevant positive scale this has the form
+      2 G_width(a) + G_width(a-center) + G_width(a+center).
+
+    It is a positive-definite even function because it is an autocorrelation.
+    """
+    if width <= 0:
+        raise ValueError("width must be positive")
+
+    def g(x: float) -> float:
+        return math.exp(-math.pi * (x / width) ** 2)
+
+    return 2.0 * g(a) + g(a - center) + g(a + center)
+
+
+def default_lift_centers(K: float, n: int) -> list[float]:
+    lo, hi = 2.0 * K, 4.0 * K
+    if n <= 1:
+        return [0.5 * (lo + hi)]
+    return np.linspace(lo, hi, n).tolist()
+
+
+def parse_float_list_or_default(raw: list[float] | None, default: list[float]) -> list[float]:
+    return default if raw is None or len(raw) == 0 else [float(x) for x in raw]
+
+
+def cutting_plane_lift_lp(
+    *,
+    A_edge: np.ndarray,
+    A_basis: list[np.ndarray],
+    coeff_budget: float,
+    coeff_bound: float,
+    eta_lower: float,
+    eta_upper: float,
+    max_iter: int,
+    tol: float,
+) -> dict[str, Any]:
+    dim = A_edge.shape[0]
+    n_basis = len(A_basis)
+    if n_basis == 0:
+        raise ValueError("liftsearch needs at least one basis matrix")
+
+    # Start with enough directions to see the current edge operator.
+    dirs: list[np.ndarray] = []
+    edge_evals, edge_evecs = np.linalg.eigh(A_edge)
+    for j in range(dim):
+        dirs.append(np.eye(dim)[:, j])
+        dirs.append(edge_evecs[:, j])
+
+    c_obj = np.zeros(n_basis + 1)
+    c_obj[-1] = 1.0
+    bounds = [(0.0, coeff_bound) for _ in range(n_basis)] + [(eta_lower, eta_upper)]
+
+    result = None
+    min_eval = float("nan")
+    worst_vec = None
+    coeffs = np.zeros(n_basis)
+    eta = eta_upper
+    iterations = 0
+
+    for iterations in range(1, max_iter + 1):
+        a_ub: list[list[float]] = []
+        b_ub: list[float] = []
+
+        # Coefficient budget: sum c_m <= budget.
+        a_ub.append([1.0] * n_basis + [0.0])
+        b_ub.append(coeff_budget)
+
+        # Directional PSD cuts:
+        #   sum c_m <A_m x,x> + eta >= <A_edge x,x>.
+        for x in dirs:
+            x = x / np.linalg.norm(x)
+            row = [-float(x @ A @ x) for A in A_basis] + [-1.0]
+            rhs = -float(x @ A_edge @ x)
+            a_ub.append(row)
+            b_ub.append(rhs)
+
+        result = linprog(
+            c_obj,
+            A_ub=np.array(a_ub, dtype=float),
+            b_ub=np.array(b_ub, dtype=float),
+            bounds=bounds,
+            method="highs",
+        )
+        if not result.success:
+            break
+
+        coeffs = np.array(result.x[:n_basis], dtype=float)
+        eta = float(result.x[-1])
+        slack = -A_edge + eta * np.eye(dim)
+        for c, A in zip(coeffs, A_basis):
+            slack += c * A
+        evals, evecs = np.linalg.eigh(0.5 * (slack + slack.T))
+        min_eval = float(evals[0])
+        worst_vec = evecs[:, 0]
+        if min_eval >= -tol:
+            break
+        dirs.append(worst_vec)
+
+    return {
+        "success": bool(result is not None and result.success and min_eval >= -tol),
+        "linprog_success": bool(result is not None and result.success),
+        "linprog_message": None if result is None else str(result.message),
+        "iterations": int(iterations),
+        "num_cuts": int(len(dirs)),
+        "coefficients": coeffs,
+        "eta": finite_float(eta),
+        "min_slack_eig": finite_float(min_eval),
+    }
+
+
+def run_liftsearch(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        lo, hi = 2.0 * K, 4.0 * K
+        max_a_requested = args.max_a_factor * K
+        centers = parse_float_list_or_default(args.centers, default_lift_centers(K, args.num_centers))
+        widths = parse_float_list_or_default(args.widths, [0.25 * K, 0.5 * K, K, 2.0 * K])
+
+        ctx = build_packet_context(
+            pilot,
+            K=K,
+            ell=args.ell,
+            grid_delta=args.grid_delta,
+            k_spline=args.k_spline,
+            p0_na=args.p0_na,
+        )
+        params = ctx["params"]
+        packet = ctx["packet"]
+        D = ctx["D"]
+        N = ctx["N"]
+        Gc = ctx["Gc"]
+
+        edge_shifts = [sh for sh in pilot.prime_power_shifts(params.L) if lo <= sh.a <= hi]
+        P_edge = np.zeros_like(D, dtype=float)
+        for sh in edge_shifts:
+            P_edge += sh.weight * shifted_packet_matrix(pilot, packet, D, params.ell, sh.a)
+        P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, args.p0_na)
+
+        effective_max_a = min(max_a_requested, effective_shift_cutoff(D, params.ell))
+        shift_params = pilot.PilotParams(
+            L=0.5 * effective_max_a,
+            ell=params.ell,
+            delta=params.delta,
+            k_spline=params.k_spline,
+            p0_na=args.p0_na,
+        )
+        shifts = pilot.prime_power_shifts(shift_params.L)
+
+        basis_meta: list[dict[str, float]] = []
+        P_basis: list[np.ndarray] = []
+        P0_basis: list[np.ndarray] = []
+        for center in centers:
+            for width in widths:
+                def weight_fn(a: float, center: float = center, width: float = width) -> float:
+                    return two_point_gaussian_lift_value(a, center=center, width=width)
+
+                basis_meta.append({"center": finite_float(center), "width": finite_float(width)})
+                P_basis.append(build_prime_matrix_for_weight(pilot, packet, D, params.ell, shifts, weight_fn))
+                if args.continuum_proxy:
+                    P0_basis.append(
+                        build_continuum_matrix_for_weight(
+                            pilot,
+                            packet,
+                            D,
+                            params.ell,
+                            max_a=effective_max_a,
+                            p0_na=args.p0_na,
+                            weight_fn=weight_fn,
+                        )
+                    )
+
+        P_edge_c = project_matrix(pilot, P_edge, N)
+        A_edge = generalized_to_standard(pilot, P_edge_c, Gc)
+        A_basis = [generalized_to_standard(pilot, project_matrix(pilot, P, N), Gc) for P in P_basis]
+
+        edge_eigs = np.linalg.eigvalsh(A_edge)
+        eta_upper = args.eta_upper
+        if eta_upper is None:
+            eta_upper = float(edge_eigs[-1] + 1.0)
+
+        lp = cutting_plane_lift_lp(
+            A_edge=A_edge,
+            A_basis=A_basis,
+            coeff_budget=args.coeff_budget,
+            coeff_bound=args.coeff_bound,
+            eta_lower=args.eta_lower,
+            eta_upper=eta_upper,
+            max_iter=args.max_iter,
+            tol=args.tol,
+        )
+
+        coeffs = np.asarray(lp["coefficients"], dtype=float)
+        P_lift = np.zeros_like(D, dtype=float)
+        for c, P in zip(coeffs, P_basis):
+            P_lift += float(c) * P
+        lift_minus_edge_eigs = projected_generalized_eigs(pilot, pilot.sym(P_lift - P_edge), N, Gc)
+
+        top_coeffs: list[dict[str, Any]] = []
+        for idx in np.argsort(-coeffs)[: args.top]:
+            if coeffs[idx] <= args.coeff_report_tol:
+                continue
+            top_coeffs.append(
+                {
+                    "index": int(idx),
+                    "coefficient": finite_float(coeffs[idx]),
+                    **basis_meta[int(idx)],
+                }
+            )
+
+        row: dict[str, Any] = {
+            "mode": "liftsearch",
+            "K": finite_float(K),
+            "raw_edge": [finite_float(lo), finite_float(hi)],
+            "max_a_requested": finite_float(max_a_requested),
+            "max_a_effective": finite_float(effective_max_a),
+            "max_a_factor": finite_float(args.max_a_factor),
+            "ell": finite_float(params.ell),
+            "grid_delta": finite_float(params.delta),
+            "k_spline": int(params.k_spline),
+            "n_centers": int(len(ctx["u"])),
+            "kerQ_dim": int(N.shape[1]),
+            "prime_power_shifts_total": int(len(shifts)),
+            "edge_prime_power_shifts": int(len(edge_shifts)),
+            "basis_family": "two-point Gaussian autocorrelation",
+            "basis_count": int(len(P_basis)),
+            "centers": [finite_float(x) for x in centers],
+            "widths": [finite_float(x) for x in widths],
+            "coeff_budget": finite_float(args.coeff_budget),
+            "coeff_bound": finite_float(args.coeff_bound),
+            "coeff_sum": finite_float(float(np.sum(coeffs))),
+            "eta": lp["eta"],
+            "min_slack_eig": lp["min_slack_eig"],
+            "lp_success": bool(lp["success"]),
+            "linprog_success": bool(lp["linprog_success"]),
+            "linprog_message": lp["linprog_message"],
+            "iterations": int(lp["iterations"]),
+            "num_cuts": int(lp["num_cuts"]),
+            "eig_Pedge_G_min": finite_float(edge_eigs[0]),
+            "eig_Pedge_G_max": finite_float(edge_eigs[-1]),
+            "eig_Plift_minus_Pedge_G_min": finite_float(lift_minus_edge_eigs[0]),
+            "eig_Plift_minus_Pedge_G_max": finite_float(lift_minus_edge_eigs[-1]),
+            "top_coefficients": top_coeffs,
+            "D2": "raw a=r*log(p), candidate lift is an autocorrelation/positive-definite scalar probe",
+        }
+
+        if args.continuum_proxy:
+            P0_lift = np.zeros_like(D, dtype=float)
+            for c, P0 in zip(coeffs, P0_basis):
+                P0_lift += float(c) * P0
+            continuum_eigs = projected_generalized_eigs(pilot, pilot.sym(P0_lift - P0_edge), N, Gc)
+            row.update(
+                {
+                    "continuum_proxy_max_a": finite_float(effective_max_a),
+                    "eig_P0lift_minus_P0edge_G_min": finite_float(continuum_eigs[0]),
+                    "eig_P0lift_minus_P0edge_G_max": finite_float(continuum_eigs[-1]),
+                    "opnorm_G_P0lift_minus_P0edge": finite_float(
+                        max(abs(continuum_eigs[0]), abs(continuum_eigs[-1]))
+                    ),
+                }
+            )
+
+        rows.append(row)
+    return rows
+
+
 def add_common_packet_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--K", type=float, nargs="+", required=True)
     parser.add_argument("--ell", type=float, default=0.35)
@@ -315,6 +636,29 @@ def parse_args() -> argparse.Namespace:
     gaussian.add_argument("--max-a-factor", type=float, default=8.0)
     gaussian.add_argument("--u-nt", type=int, default=200001)
     gaussian.set_defaults(func=run_gaussian)
+
+    liftsearch = sub.add_parser("liftsearch", help="finite positive-definite lift operator search")
+    add_common_packet_args(liftsearch)
+    liftsearch.add_argument("--max-a-factor", type=float, default=8.0)
+    liftsearch.add_argument("--centers", type=float, nargs="*")
+    liftsearch.add_argument("--num-centers", type=int, default=5)
+    liftsearch.add_argument("--widths", type=float, nargs="*")
+    liftsearch.add_argument("--coeff-budget", type=float, default=10.0)
+    liftsearch.add_argument("--coeff-bound", type=float, default=10.0)
+    liftsearch.add_argument("--eta-lower", type=float, default=-100.0)
+    liftsearch.add_argument("--eta-upper", type=float)
+    liftsearch.add_argument("--max-iter", type=int, default=40)
+    liftsearch.add_argument("--tol", type=float, default=1e-9)
+    liftsearch.add_argument("--p0-na", type=int, default=2001)
+    liftsearch.add_argument("--top", type=int, default=8)
+    liftsearch.add_argument("--coeff-report-tol", type=float, default=1e-9)
+    liftsearch.add_argument(
+        "--no-continuum-proxy",
+        dest="continuum_proxy",
+        action="store_false",
+        help="skip the continuum prime-model proxy for speed",
+    )
+    liftsearch.set_defaults(func=run_liftsearch, continuum_proxy=True)
 
     return parser.parse_args()
 
