@@ -280,6 +280,14 @@ Interpretation:
 
 Track B remains active.
 
+Follow-up:
+
+- `docs/trackB/b2b_nonnode_interval_stress_audit.md` measures how much
+  derivative-envelope inflation the non-node candidates can tolerate before
+  the sign guard fails.  K=3.5 cell `58` survives the tested `1000x` factor,
+  K=3.5 cell `59` survives `2000x`, and K=3 cells `35,36` survive `5000x`;
+  cells `61,39` remain outside the non-node branch.
+
 ## Proshka Audit Block
 
 Claim:

@@ -1165,6 +1165,45 @@ def sampled_root_brackets(
     return brackets
 
 
+def interval_safety_stress_summary(
+    *,
+    min_abs: float,
+    lipschitz_sample: float,
+    max_mesh: float,
+    safety_factors: list[float],
+) -> dict[str, Any]:
+    """Stress the sign guard under inflated derivative envelopes.
+
+    This is a proof-generator audit only.  A future proof certificate must
+    replace the sampled derivative by an outward-rounded interval bound.
+    """
+    rows: list[dict[str, Any]] = []
+    passing: list[float] = []
+    for factor in sorted(float(f) for f in safety_factors if float(f) > 0.0):
+        inflated_guard = (
+            float(min_abs) - 0.5 * factor * float(lipschitz_sample) * float(max_mesh)
+        )
+        row = {
+            "factor": finite_float(factor),
+            "inflated_guard": finite_float(inflated_guard),
+            "passes": bool(inflated_guard > 0.0),
+        }
+        rows.append(row)
+        if inflated_guard > 0.0:
+            passing.append(factor)
+    failing = [float(row["factor"]) for row in rows if not bool(row["passes"])]
+    return {
+        "route": "sampled_derivative_inflation_stress",
+        "stress_factors": rows,
+        "largest_passing_factor": None if not passing else finite_float(max(passing)),
+        "first_failing_factor": None if not failing else finite_float(min(failing)),
+        "proof_status": (
+            "diagnostic_only: stress factors do not replace outward-rounded "
+            "interval bounds for S and S'"
+        ),
+    }
+
+
 def smooth_segment_sign_candidate(
     pilot: Any,
     packet: Any,
@@ -1177,6 +1216,7 @@ def smooth_segment_sign_candidate(
     correction_weight: Any,
     correction_weight_derivatives: Any | None = None,
     receiver_node_audit: Any | None = None,
+    interval_safety_factors: list[float] | None = None,
     sample_count: int,
 ) -> dict[str, Any]:
     if seg_hi <= seg_lo:
@@ -1251,6 +1291,12 @@ def smooth_segment_sign_candidate(
         allowable_lipschitz_multiplier = min_abs / lipschitz_denominator
     else:
         allowable_lipschitz_multiplier = math.inf
+    stress_summary = interval_safety_stress_summary(
+        min_abs=min_abs,
+        lipschitz_sample=lipschitz_sample,
+        max_mesh=max_mesh,
+        safety_factors=interval_safety_factors or [],
+    )
     sign_orientation = (
         "positive"
         if float(np.min(signed_density)) > 0.0
@@ -1284,6 +1330,7 @@ def smooth_segment_sign_candidate(
         "allowable_LS_multiplier_slack": finite_float_or_none(
             allowable_lipschitz_multiplier - 1.0
         ),
+        "interval_safety_stress": stress_summary,
         "proof_status": (
             "diagnostic_only: replace sampled extrema by outward-rounded interval "
             "bounds for S and S' before using this certificate"
@@ -4002,6 +4049,7 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                             correction_weight=correction_weight,
                             correction_weight_derivatives=correction_weight_derivatives_grid,
                             receiver_node_audit=receiver_node_audit_grid,
+                            interval_safety_factors=args.interval_safety_factors,
                             sample_count=int(args.cert_na),
                         )
                         for seg_lo, seg_hi in segments
@@ -4107,6 +4155,7 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                     non_node_candidate_multipliers: list[float] = []
                     non_node_candidate_slacks: list[float] = []
                     non_node_candidate_count = 0
+                    non_node_stress_passed_sets: list[set[float]] = []
                     for seg in smooth_segments:
                         audit = seg.get("receiver_node_audit", {})
                         for axis_key in ["left_axis", "right_axis"]:
@@ -4127,6 +4176,19 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                                 non_node_candidate_multipliers.append(float(multiplier))
                             if slack is not None and math.isfinite(float(slack)):
                                 non_node_candidate_slacks.append(float(slack))
+                            stress = non_node_candidate.get("interval_safety_stress", {})
+                            passed = {
+                                float(row["factor"])
+                                for row in stress.get("stress_factors", [])
+                                if bool(row.get("passes"))
+                            }
+                            non_node_stress_passed_sets.append(passed)
+                    if non_node_stress_passed_sets:
+                        common_stress_passed = sorted(
+                            set.intersection(*non_node_stress_passed_sets)
+                        )
+                    else:
+                        common_stress_passed = []
                     cell_rows.append(
                         {
                             "cell_index": int(cell_idx),
@@ -4158,6 +4220,12 @@ def run_clvsigncert(args: argparse.Namespace) -> list[dict[str, Any]]:
                             "non_node_min_allowable_LS_multiplier_slack": None
                             if not non_node_candidate_slacks
                             else finite_float(min(non_node_candidate_slacks)),
+                            "non_node_interval_common_passing_safety_factors": [
+                                finite_float(factor) for factor in common_stress_passed
+                            ],
+                            "non_node_interval_largest_common_passing_safety_factor": None
+                            if not common_stress_passed
+                            else finite_float(max(common_stress_passed)),
                             "smooth_continuous_variation_x": finite_float(
                                 smooth_continuous_variation
                             ),
@@ -5173,6 +5241,13 @@ def parse_args() -> argparse.Namespace:
     clvsigncert.add_argument("--p0-na", type=int, default=1001)
     clvsigncert.add_argument("--ledger-cells", type=int, default=120)
     clvsigncert.add_argument("--cert-na", type=int, default=801)
+    clvsigncert.add_argument(
+        "--interval-safety-factors",
+        type=float,
+        nargs="+",
+        default=[2.0, 10.0, 100.0, 1000.0],
+        help="diagnostic derivative-inflation factors for non-node sign guards",
+    )
     clvsigncert.add_argument("--cells", type=int, nargs="+", required=True)
     clvsigncert.set_defaults(func=run_clvsigncert)
 

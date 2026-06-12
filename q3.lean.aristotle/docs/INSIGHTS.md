@@ -32770,3 +32770,27 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `PARTIAL(non-node interval candidate contract extracted)`,
   `GAP(outward-rounded interval bounds for S_v and S_v' still missing)`, and
   `FATAL(treating sampled min/Lipschitz guards as proof certificates)`.
+
+## Insight (2026-06-12, Track B B2b) -- NonNodeIntervalStressAudit
+
+- Added `docs/trackB/b2b_nonnode_interval_stress_audit.md` and upgraded
+  `scripts/trackb_edge_operator_probe.py clvsigncert` with
+  `--interval-safety-factors` plus segment/cell-level stress summaries.
+- The stress field tests
+  `min_sample |S_v| - factor * L_sample * mesh / 2 > 0`; it remains
+  diagnostic only and does not replace outward-rounded interval bounds for
+  `S_v` and `S_v'`.
+- K=3.5 cell `58` survives tested derivative inflation factors through
+  `1000x` but fails at `2000x`; cell `59` survives through `2000x` but fails
+  at `5000x`.  Cell `61` is still excluded from the non-node branch because
+  both smooth sides are node-local.
+- K=3 cells `35` and `36` survive all tested factors through `5000x`; cell
+  `39` is still excluded by both the root detector and the node-local detector.
+- The next theorem-producing gate is K=3.5 cell `58`: build an
+  outward-rounded interval backend proving
+  `lower(|S_v(a_i)|) > upper(|S_v'|)*h/2` on each grid interval.
+- Status refines to
+  `PARTIAL(non-node interval stress margins measured)`,
+  `GAP(actual outward-rounded interval enclosures for S_v and S_v' still
+  missing)`, and
+  `FATAL(treating stress factors as proof-grade derivative bounds)`.
