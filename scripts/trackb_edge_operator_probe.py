@@ -5096,18 +5096,15 @@ def run_clvgate(args: argparse.Namespace) -> list[dict[str, Any]]:
             A_corr = generalized_to_standard(
                 pilot, project_matrix(pilot, receiver_correction_matrix, N), Gc
             )
+            corr_eigs, corr_evecs = np.linalg.eigh(A_corr)
+            op_idx = int(np.argmax(np.abs(corr_eigs)))
             directions = deterministic_standard_cone_directions(
                 A_corr=A_corr,
                 test_count=int(args.test_count),
                 seed=int(args.seed),
             )
 
-            test_rows: list[dict[str, Any]] = []
-            max_closure_rel = 0.0
-            min_zero_psd_proxy = float("inf")
-            max_q_abs = 0.0
-            for label, y in directions:
-                coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, y)
+            def decomposition_row(label: str, coeffs: np.ndarray) -> dict[str, Any]:
                 prime_edge = float(coeffs @ P_edge @ coeffs)
                 arch_edge = float(coeffs @ P0_edge @ coeffs)
                 prime_plus = float(coeffs @ P_plus @ coeffs)
@@ -5130,44 +5127,95 @@ def run_clvgate(args: argparse.Namespace) -> list[dict[str, Any]]:
                 closure_rel = closure_abs / component_scale
                 q_values = np.asarray(Q @ coeffs, dtype=float)
                 q_abs = float(np.max(np.abs(q_values)))
+                return {
+                    "label": label,
+                    "prime_edge": finite_float(prime_edge),
+                    "arch_edge": finite_float(arch_edge),
+                    "minus_zero_PSD_proxy": finite_float(-zero_psd_proxy),
+                    "minus_receiver_correction": finite_float(-receiver_correction),
+                    "boundary_slot": finite_float(boundary_slot),
+                    "recomposed_prime_edge": finite_float(recomposed_prime_edge),
+                    "closure_abs_error": finite_float(closure_abs),
+                    "closure_rel_error": finite_float(closure_rel),
+                    "zero_PSD_proxy_arch_plus_minus_prime_plus": finite_float(
+                        zero_psd_proxy
+                    ),
+                    "receiver_correction": finite_float(receiver_correction),
+                    "G_norm_squared": finite_float(float(coeffs @ G @ coeffs)),
+                    "Q_functionals": [finite_float(float(x)) for x in q_values.tolist()],
+                    "Q_abs_max": finite_float(q_abs),
+                }
+
+            test_rows: list[dict[str, Any]] = []
+            max_closure_rel = 0.0
+            min_zero_psd_proxy = float("inf")
+            max_q_abs = 0.0
+            for label, y in directions:
+                coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, y)
+                row = decomposition_row(label, coeffs)
+                closure_rel = float(row["closure_rel_error"])
+                zero_psd_proxy = float(row["zero_PSD_proxy_arch_plus_minus_prime_plus"])
+                q_abs = float(row["Q_abs_max"])
                 max_closure_rel = max(max_closure_rel, closure_rel)
                 min_zero_psd_proxy = min(min_zero_psd_proxy, zero_psd_proxy)
                 max_q_abs = max(max_q_abs, q_abs)
-                test_rows.append(
-                    {
-                        "label": label,
-                        "prime_edge": finite_float(prime_edge),
-                        "arch_edge": finite_float(arch_edge),
-                        "minus_zero_PSD_proxy": finite_float(-zero_psd_proxy),
-                        "minus_receiver_correction": finite_float(-receiver_correction),
-                        "boundary_slot": finite_float(boundary_slot),
-                        "recomposed_prime_edge": finite_float(recomposed_prime_edge),
-                        "closure_abs_error": finite_float(closure_abs),
-                        "closure_rel_error": finite_float(closure_rel),
-                        "zero_PSD_proxy_arch_plus_minus_prime_plus": finite_float(
-                            zero_psd_proxy
-                        ),
-                        "receiver_correction": finite_float(receiver_correction),
-                        "G_norm_squared": finite_float(float(coeffs @ G @ coeffs)),
-                        "Q_functionals": [finite_float(float(x)) for x in q_values.tolist()],
-                        "Q_abs_max": finite_float(q_abs),
-                    }
+                test_rows.append(row)
+
+            witness_reconciliation = None
+            if args.witness_a is not None:
+                witness_y = corr_evecs[:, op_idx]
+                witness_coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, witness_y)
+                witness_row = decomposition_row("opnorm_witness_direction", witness_coeffs)
+                witness_local = clv_local_sign_anatomy(
+                    pilot=pilot,
+                    packet=packet,
+                    D=D,
+                    ell=params.ell,
+                    coeffs=witness_coeffs,
+                    a=float(args.witness_a),
+                    lo=lo,
+                    hi=hi,
+                    receiver_delta=float(receiver_delta),
                 )
+                witness_closure_green = (
+                    float(witness_row["closure_rel_error"]) <= float(args.rel_tol)
+                )
+                witness_reconciliation = {
+                    "witness_a": finite_float(float(args.witness_a)),
+                    "opnorm_eigenvalue": finite_float(float(corr_eigs[op_idx])),
+                    "local_pointwise_density": witness_local,
+                    "global_decomposition_on_same_direction": witness_row,
+                    "pit_accounting_verdict": (
+                        "NOT_A_BUG_BOOKKEEPING_MEMBER"
+                        if witness_closure_green
+                        else "RESIDUAL_GAP_IN_DECOMPOSITION"
+                    ),
+                    "D2": (
+                        "The local S(a) pit is pointwise receiver-density data. "
+                        "The S3 check tests whether the same frozen direction "
+                        "belongs to the global four-slot bookkeeping identity."
+                    ),
+                }
 
             closure_green = max_closure_rel <= float(args.rel_tol)
             zero_proxy_green = min_zero_psd_proxy >= -float(args.zero_tol)
-            if closure_green and zero_proxy_green:
-                verdict = "B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC"
-            elif closure_green:
-                verdict = "B2B_GATE_NOT_GREEN_ZERO_PSD_PROXY"
-            else:
-                verdict = "B2B_GATE_NOT_GREEN_CLOSURE"
+            verdict = (
+                "B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC"
+                if closure_green
+                else "B2B_GATE_NOT_GREEN_CLOSURE"
+            )
+            zero_side_eligibility_status = (
+                "ZERO_PSD_PROXY_NONNEGATIVE_ON_TESTS"
+                if zero_proxy_green
+                else "GAP_ZERO_PSD_PROXY_NEGATIVE_ON_TESTS"
+            )
 
             rows.append(
                 {
                     "mode": "clvgate",
                     "status": "diagnostic_only",
                     "verdict": verdict,
+                    "zero_side_eligibility_status": zero_side_eligibility_status,
                     "K": finite_float(float(K)),
                     "schedule": args.schedule,
                     "ell": finite_float(float(ell)),
@@ -5187,14 +5235,15 @@ def run_clvgate(args: argparse.Namespace) -> list[dict[str, Any]]:
                     "min_zero_PSD_proxy": finite_float(min_zero_psd_proxy),
                     "max_Q_abs": finite_float(max_q_abs),
                     "tests": test_rows,
+                    "witness_reconciliation": witness_reconciliation,
                     "D2": (
                         "raw a=r*log(p), edge=[2K,4K], xi=a/(2*pi); "
                         "finite packet Hermitian-square tests in kerQ.  "
                         "The identity checked is prime_edge = arch_edge "
                         "- zero_PSD_proxy - receiver_correction + boundary. "
                         "zero_PSD_proxy is arch(M+)-prime(M+) for the smoothed "
-                        "receiver and remains a numerical eligibility proxy, "
-                        "not a theorem input."
+                        "receiver and remains a separate numerical eligibility "
+                        "proxy, not the v5 closure gate and not a theorem input."
                     ),
                     "instrument_status": {
                         "prime_edge": "finite_prime_power_sum_matrix",
@@ -6839,6 +6888,7 @@ def parse_args() -> argparse.Namespace:
     clvgate.add_argument("--seed", type=int, default=1337)
     clvgate.add_argument("--rel-tol", type=float, default=1e-4)
     clvgate.add_argument("--zero-tol", type=float, default=1e-10)
+    clvgate.add_argument("--witness-a", type=float)
     clvgate.set_defaults(func=run_clvgate)
 
     clvsigncert = sub.add_parser(

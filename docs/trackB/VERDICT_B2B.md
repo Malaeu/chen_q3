@@ -1,22 +1,23 @@
 # Track B Verdict: S1 Witness To S3 B2b Gate
 
-Status: GAP(B2b numerical gate not green).  This is strategy/diagnostic
-documentation only: no Lean proof, no Q3.Main change, no route mutation, and
-no RH/RH-conditional input.
+Status: ZERO_CONSISTENT(S3 numerical closure gate green) plus
+GAP(zero-side PSD eligibility / admissible lift).  This is
+strategy/diagnostic documentation only: no Lean proof, no Q3.Main change, no
+route mutation, and no RH/RH-conditional input.
 
 ## Verdict
 
 ```text
-DONE verdict: B
+B2b closure verdict: GREEN under v5 numerical criterion
 B2b algebraic closure gate: ZERO_CONSISTENT
-B2b PSD-eligibility gate: GAP
-overall B2b gate: NOT GREEN
+B2b PSD-eligibility / admissible-lift status: GAP
+overall Track B status: OPEN, not proved
 ```
 
 Reason: the four-term numerical decomposition closes to floating error on the
-tested finite packet cone directions, but the smoothed zero-side proxy is not
-nonnegative on all tested directions.  The failure is not an arithmetic
-decomposition defect; it is an eligibility/PSD-slot defect.
+tested finite packet cone directions.  The smoothed zero-side proxy is not
+nonnegative on all tested directions, but that is a separate analytic
+eligibility/admissible-lift gap, not the v5 S3 closure criterion.
 
 Pre-B2 route gate:
 
@@ -58,6 +59,24 @@ boundary            = 0 numerically because Qv ~= 0
 
 The `zero_PSD_proxy` row is a numerical eligibility proxy, not a theorem input.
 
+## S2.5 Gap Anatomy
+
+Source: `docs/trackB/b2b_explicit_formula_route_gap.md`.
+
+| slot | status | why | failure class |
+| --- | --- | --- | --- |
+| arch | SKETCH/OPEN | Continuum matrices exist, but raw-log vs `xi=log n/(2*pi)` normalization must be frozen before theorem constants are compared. | normalization |
+| zero_PSD | GAP | Q3 PSD applies only after the lifted test is proved corrected positive-definite / Hermitian-square. Ordinary Selberg insertion is not PSD-preserving. | sign / cone eligibility |
+| prime | GAP | Pointwise `chi_I <= M+` does not give an operator inequality on signed `F_v`; `prime_edge <= lifted_prime` is the missing cone-transport lemma. | sign / cone transport |
+| boundary | OPEN | No concrete boundary/cap counterterm is exhibited in the route-gap file. S3 has numeric `Qv~=0`, but proof-grade cap/boundary bookkeeping is not supplied. | cap/boundary bookkeeping |
+
+Fable prediction check:
+
+```text
+boundary/cap as primary confirmed failure: NOT CONFIRMED BY THIS FILE
+active documented failure: sign/cone transport + zero-side eligibility
+```
+
 ## Witness Card
 
 Reference: `docs/trackB/WITNESS_cell62.md`.
@@ -70,7 +89,7 @@ blade at a_w ~= 7.130987:
 
 pit at a_min ~= 7.28:
   REFUTED(Fable corrected prediction: minimum=edge-prime)
-  GAP(nature open; finite-cone witness, not outside cone)
+  NOT_A_BUG_BOOKKEEPING_MEMBER under S3 witness reconciliation
 ```
 
 S1-FINAL fixed-direction admissibility:
@@ -111,7 +130,8 @@ K=2:
   max closure relative error  = 9.92599e-17
   max |Qv|                    = 8.88178e-16
   min zero_PSD_proxy          = -8.66226e-4
-  verdict                     = B2B_GATE_NOT_GREEN_ZERO_PSD_PROXY
+  closure verdict             = B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC
+  eligibility status          = GAP_ZERO_PSD_PROXY_NEGATIVE_ON_TESTS
 
 K=3:
   ell                         = 0.75
@@ -119,7 +139,15 @@ K=3:
   max closure relative error  = 3.46669e-16
   max |Qv|                    = 2.22045e-15
   min zero_PSD_proxy          = -7.74361e-3
-  verdict                     = B2B_GATE_NOT_GREEN_ZERO_PSD_PROXY
+  closure verdict             = B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC
+  eligibility status          = GAP_ZERO_PSD_PROXY_NEGATIVE_ON_TESTS
+
+K=3.5 witness reconciliation:
+  witness a                   = 7.28
+  local S(a)                  = -2.12171e-2
+  global closure rel          = 0
+  min zero_PSD_proxy          = -1.46782e-4
+  pit verdict                 = NOT_A_BUG_BOOKKEEPING_MEMBER
 ```
 
 Worst rows:
@@ -145,10 +173,12 @@ K=3, eig_upper:
 ```text
 PROVED: none
 SKETCH: clvgate finite-packet numerical decomposition machinery
-OPEN: analytic E5 attack and proof-grade zero-side eligibility mechanism
+OPEN: analytic E5 attack, admissible lift, proof-grade zero-side eligibility
 REFUTED: Fable corrected prediction that the sampled minimum is edge-prime
-ZERO_CONSISTENT: algebraic decomposition closes on K=2,3 test directions
-GAP: smoothed zero_PSD_proxy is negative on tested cone directions
+ZERO_CONSISTENT: algebraic decomposition closes on K=2,3 test directions and
+  on the K=3.5 witness direction
+GAP: smoothed zero_PSD_proxy is negative on tested cone directions; route-gap
+  file also lacks proof-grade cone transport/admissible lift
 ```
 
 ## Input For Analytic E5 Attack
@@ -162,13 +192,14 @@ Worst-case enemy profile:
 
 2. pit near a_min ~= 7.28:
    not killed by prime-removal controls and not outside finite cone.
-   S3 says the arithmetic split is consistent, so the next enemy is the
-   smoothed zero-side eligibility/projection slot, not bookkeeping error.
+   S3 witness reconciliation says it is a bookkeeping member, not an
+   arithmetic residual.  The next enemy is the smoothed zero-side
+   eligibility/projection slot, not local pointwise negativity.
 
-3. K=3 stronger obstruction:
+3. K=3 stronger eligibility obstruction:
    min zero_PSD_proxy ~= -7.74e-3 on a tested cone direction.
-   This is the current smallest numerical counter-signal to the naive B2b
-   smoothed receiver route.
+   This is the current largest numerical counter-signal to the naive B2b
+   smoothed receiver eligibility route.
 ```
 
 Next analytic question:

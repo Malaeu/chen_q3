@@ -33195,3 +33195,29 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   the explicit-formula / Hermitian-square route remains `OPEN` because it
   preserves the zero-side PSD and cone structure rather than replacing the
   defect by an absolute-value scalar mask.
+
+## Insight (2026-06-13, Track B B2b) -- ExplicitFormulaGapAndS3Green
+
+- S2.5 read-through of `docs/trackB/b2b_explicit_formula_route_gap.md` shows
+  the documented explicit-formula route gap is sign/cone transport plus
+  zero-side PSD eligibility, not a confirmed boundary/cap counterterm.
+- Four-slot status from that file:
+  arch is `SKETCH/OPEN` because raw-log vs `xi=log n/(2*pi)` normalization must
+  be frozen; zero_PSD is `GAP` because the lifted smoothed test is not proved
+  corrected positive-definite; prime is `GAP` because pointwise
+  `chi_I <= M+` does not imply operator order on signed `F_v`; boundary is
+  `OPEN` because no explicit cap/boundary term is supplied, although S3 has
+  numerical `Qv~=0`.
+- Updated `clvgate` so the v5 S3 verdict is based only on closure
+  `<=1e-4`.  The smoothed `zero_PSD_proxy` sign audit is now reported
+  separately as an eligibility status, not as the S3 closure verdict.
+- Rerun results: `K=2` max closure relative error `~9.93e-17`; `K=3`
+  `~3.47e-16`; both are `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC`.  Separate
+  eligibility status remains `GAP_ZERO_PSD_PROXY_NEGATIVE_ON_TESTS` with
+  minima `~=-8.66e-4` and `~=-7.74e-3`.
+- Witness reconciliation at `K=3.5`, `a=7.28` gives local
+  `S(a)~=-0.0212171`, but the same frozen/opnorm direction has global
+  four-slot closure relative error `0`; verdict
+  `NOT_A_BUG_BOOKKEEPING_MEMBER`.  The pointwise pit is not the decomposition
+  residual; the remaining mathematical gap is admissible lift / zero-side PSD
+  eligibility.

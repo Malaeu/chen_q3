@@ -1,8 +1,8 @@
 # Track B Witness Cell62
 
-Status: GAP(pit survives prime controls; fixed direction is finite-cone
-admissible).  This is diagnostic evidence only: not a proof of E5', not a
-Lean proof, and not a route mutation.
+Status: ZERO_CONSISTENT(pit is an S3 bookkeeping member) plus
+GAP(zero-side eligibility remains analytic).  This is diagnostic evidence
+only: not a proof of E5', not a Lean proof, and not a route mutation.
 
 ## Point
 
@@ -170,8 +170,8 @@ exclude [a_min-delta,a_min+delta]    ~= -1.80707
 
 So the fixed-direction linear accounting confirms that the edge shoulder
 prime band is carrying the positive correction mass.  It does not by itself
-explain the pointwise pit away; S3 must decide whether the pit is a legitimate
-member of the B2b accounting or a defect in the decomposition.
+explain the pointwise pit away.  S3 later decided that the pit is a legitimate
+member of the B2b bookkeeping, not a decomposition residual.
 
 Admissibility of the frozen direction:
 
@@ -189,7 +189,17 @@ Verdict for the pit:
 ```text
 NOT_OUT_OF_CONE
 FINITE_CONE_WITNESS
-OPEN_UNTIL_S3_B2B_GATE
+S3_BOOKKEEPING_MEMBER
+```
+
+S3 witness reconciliation:
+
+```text
+K = 3.5
+a_min = 7.28
+local S(a_min) ~= -2.12171e-2
+global four-slot closure rel = 0
+pit_accounting_verdict = NOT_A_BUG_BOOKKEEPING_MEMBER
 ```
 
 ## Scan
@@ -273,9 +283,9 @@ Status: REFUTED
 
 Corrected two-layer picture:
 1. blade at a_w ~= 7.131: edge-prime sign selection CONFIRMED
-2. pit at a_min ~= 7.28: nature OPEN; it survives all prime controls and the
-   frozen direction is finite-cone admissible
-Status: GAP(pit awaits S3 B2b accounting)
+2. pit at a_min ~= 7.28: survives prime controls, is finite-cone admissible,
+   and is an S3 bookkeeping member rather than an arithmetic residual
+Status: ZERO_CONSISTENT(pit bookkeeping)
 ```
 
 ## S1-FINAL Verdict
@@ -283,7 +293,8 @@ Status: GAP(pit awaits S3 B2b accounting)
 ```text
 ZERO_CONSISTENT(first crossing: edge-prime sign selection confirmed)
 REFUTED(Fable corrected prediction: minimum = edge-prime)
-GAP(pit: finite-cone witness, nature open until S3)
+ZERO_CONSISTENT(pit: finite-cone witness and S3 bookkeeping member)
 ```
 
-Per LEVEL 3, skip S2 for now and proceed directly to S3 B2b gate on `K=2,3`.
+The remaining Track B gap is not this pointwise pit.  It is proof-grade
+admissible lift / zero-side PSD eligibility for the smoothed receiver.

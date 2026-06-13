@@ -70,3 +70,38 @@ receiver Fourier slack `delta<=B_K`, naive CLV tax is `>=1/B_K`.
 beat `1/B_K` without an extra named decay/cancellation theorem.
 ВЕРДИКТ: `FATAL(B2a naive scalar mask if mu_budget=o(1/B_K))`; `OPEN(B2b)`.
 ПЛАН: keep Track B centered on B2b / explicit-formula / Hermitian-square.
+
+## 2026-06-13 -- S2.5 Explicit-Formula Gap Anatomy
+
+ГДЕ Я: Track B v5 S2.5, source file
+`docs/trackB/b2b_explicit_formula_route_gap.md`.
+СДЕЛАНО: вскрыта точка отказа explicit-formula route по 4 слотам.
+
+| slot | status | why | failure class |
+| --- | --- | --- | --- |
+| arch | SKETCH/OPEN | `P0_edge` and `P0(M+)` exist as continuum proxies, but raw-log vs `xi=log n/(2*pi)` normalization must be frozen before theorem constants are compared. | normalization |
+| zero_PSD | GAP | Q3 PSD is usable only after the lifted test is proved corrected positive-definite / Hermitian-square. Ordinary Selberg insertion has sign-changing Fourier transform, so PSD eligibility is not established. | sign / cone eligibility |
+| prime | GAP | Pointwise `chi_I <= M+` does not imply an operator inequality on signed cross-correlation `F_v`; `prime_edge <= lifted_prime` is exactly the missing cone-transport/admissible-lift lemma. | sign / cone transport |
+| boundary | OPEN | The route-gap file does not exhibit a concrete boundary/cap counterterm; it only says the lift must be a corrected Weil test before PSD applies. Boundary is numerically `Qv~=0` in S3, but proof-grade cap/boundary bookkeeping remains absent. | cap/boundary bookkeeping |
+
+ПРОШКА/Fable сверка: registered prediction "gap is boundary/cap, not
+zero_PSD" is not confirmed by this file. The local source says the active gap
+is sign/cone transport plus PSD eligibility; boundary/cap remains open
+bookkeeping, not the demonstrated failure.
+ПЛАН: run S3 closure gate and then witness reconciliation.
+
+## 2026-06-13 -- S3 B2b Gate Rerun + Witness Link
+
+ГДЕ Я: Track B v5 S3 after S2.5; `clvgate` now separates closure verdict from
+zero-side eligibility proxy.
+СДЕЛАНО: reran `K=2,3`, `10` deterministic cone directions; separately ran
+`K=3.5`, `a=7.28` witness reconciliation.
+ЧИСЛА: `K=2 max closure rel=9.93e-17`, `K=3 max closure rel=3.47e-16`,
+`K=3.5 witness closure rel=0`.
+ВЕРДИКТ: `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` under v5 closure criterion
+`<=1e-4`; pit `a=7.28` is `NOT_A_BUG_BOOKKEEPING_MEMBER`.
+ПРОБЛЕМА: separate analytic status remains
+`GAP_ZERO_PSD_PROXY_NEGATIVE_ON_TESTS` (`K=2 min=-8.66e-4`,
+`K=3 min=-7.74e-3`, `K=3.5 min=-1.47e-4`).
+ПЛАН: B2b remains open at PSD eligibility/admissible-lift level, not at S3
+arithmetic bookkeeping.
