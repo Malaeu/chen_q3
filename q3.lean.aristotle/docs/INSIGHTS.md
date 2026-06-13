@@ -33298,3 +33298,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Negative closure condition: if Route D also exceeds budget, record
   `B2B_FATAL_NO_ADMISSIBLE_LIFT_FOUND` for the current explicit-formula-lift
   families and move main weight to Track A / prolate Connes-Consani.
+
+## Insight (2026-06-13, Track B B2b) -- Atlas020028009Handoff
+
+- Applied atlas cards `020` Cohn-Elkies LP, `009` Selberg extremals, and `028`
+  Conrey-Ghosh mollifier to the Track B price-table bottleneck.
+- The primary replacement for missing `mu_budget(K)` is now concrete:
+  `mu_budget_LP(K)=d_K-p_K`, where `p_K` is the primal worst edge-defect
+  Rayleigh value on the admissible finite K-cell cone and `d_K` is the best
+  dual magic-function clamp satisfying PSD/sign/boundary constraints.
+- Selberg repairs only the scalar hard-edge constant: at `B_K=1` the ordinary
+  tax is `1`, but S5C0 PSD hard-edge taxes remain `2.93072`, `3.50596`,
+  `3.96288`; because the current lifted family has order-one Fourier
+  negatives, Selberg alone does not undie Route B.
+- The mollifier revival can be written as a finite K-mollifier ansatz, but the
+  local repo has no Track B inverse Dirichlet expansion of the margin and no
+  K-family first/second moment formula.  Current verdict:
+  `MOLLIFIER_GAP_NO_INVERSE_EXPANSION`.
+- Route D is now demoted to fallback after the LP dual route is priced; the
+  next decisive engineering task is a finite LP dual feasibility wrapper around
+  the existing K-cell matrices, not another scalar tax estimate.

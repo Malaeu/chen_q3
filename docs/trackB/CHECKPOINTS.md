@@ -159,3 +159,20 @@ mass about `0.50`; S5C0 PSD tax at `B_K=1` is `2.93072,3.50596,3.96288`.
 D finite ledger.
 ПЛАН: if exact `mu_budget(K)` appears, compute `tax/mu`; otherwise run Route D
 as the last bounded fallback before negative Track B closure.
+
+## 2026-06-13 -- Track B Atlas 020/028/009 Handoff
+
+ГДЕ Я: applied handoff `CODEX_HANDOFF_LP_SELBERG_MOLLIFIER.md` after price
+table.
+СДЕЛАНО: added LP reformulation, Selberg Route B repair audit, and mollifier
+S5.1 revival check; updated price table.
+ЧИСЛА: LP budget now named `mu_budget_LP(K)=d_K-p_K`; Selberg ordinary edge
+tax at `B_K=1` is `1`; PSD hard-edge tax remains `2.93072,3.50596,3.96288`;
+S5.1 negative/L1 remains about `0.5`.
+ВЕРДИКТ: Route C(LP) is `COMPUTABLE_FORMULA_READY`; Selberg-alone Route B is
+`SELBERG_REPAIR_NO_UNDIE_ROUTE_B`; mollifier is
+`MOLLIFIER_GAP_NO_INVERSE_EXPANSION`.
+ПРОБЛЕМА: numerical LP dual witness and continuous/interval guards are not yet
+solved.
+ПЛАН: next real Track B move is finite LP dual feasibility around existing
+K-cell matrices; Route D stays fallback after atlas-derived routes are priced.
