@@ -35,6 +35,29 @@ the mu-ledger requires `epsilon_K = o(1/B_K)`.  It does not kill B2b; it is one
 more reason B2b must preserve Hermitian-square / zero-side PSD structure
 instead of paying the hard-edge scalar-mask tax.
 
+## Price Table
+
+Current control panel:
+
+```text
+docs/trackB/TRACKB_PRICE_TABLE.md
+```
+
+Track B is now a price/budget decision, not an open-ended search:
+
+```text
+Does any admissible explicit-formula lift fit the mu-budget?
+```
+
+Current compression:
+
+```text
+product-lift family: REFUTED
+signed-small repair: REFUTED
+PSD-first Route C: surcharge confirmed, exact tax/mu ratio open
+Route D: final finite-ledger fallback
+```
+
 ## D2
 
 Raw coordinate:

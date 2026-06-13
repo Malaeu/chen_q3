@@ -148,3 +148,14 @@ for `K=2,3,3.5`; surcharge ratios same over ordinary tax `1`.
 so no theorem-grade global fatal yet.
 ПЛАН: either supply exact `mu` normalization for C0.3 or run Route D finite
 ledger fallback before closing Track B negatively.
+
+## 2026-06-13 -- Track B Price Table
+
+ГДЕ Я: Track B after S5C0; user asked for the current plan and goal.
+СДЕЛАНО: added `docs/trackB/TRACKB_PRICE_TABLE.md` as the control panel.
+ЧИСЛА: S4 product lift min hats `-1.68036,-2.67972,-2.44648`; S5.1 negative
+mass about `0.50`; S5C0 PSD tax at `B_K=1` is `2.93072,3.50596,3.96288`.
+ВЕРДИКТ: Track B is now a price/budget decision: exact `mu_budget(K)` or Route
+D finite ledger.
+ПЛАН: if exact `mu_budget(K)` appears, compute `tax/mu`; otherwise run Route D
+as the last bounded fallback before negative Track B closure.

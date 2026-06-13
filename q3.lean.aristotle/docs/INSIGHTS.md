@@ -33283,3 +33283,18 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Route implication: Route C is now much closer to fatal/borderline; either
   supply the exact `mu` normalization or run the last Route D finite-ledger
   fallback before declaring current explicit-formula-lift families exhausted.
+
+## Insight (2026-06-13, Track B B2b) -- PriceTable
+
+- Added `docs/trackB/TRACKB_PRICE_TABLE.md` as the control panel for the
+  current Track B state.
+- The live question is no longer "does B2b maybe work?" but whether any
+  admissible explicit-formula lift has total price below the `mu`-budget.
+- Current compression: S4 kills the product lift; S5.1 kills the
+  small-negative signed repair; S5C0 confirms PSD-first surcharge but leaves
+  exact `tax/mu` open because no numerical `mu_budget(K)` is exposed locally.
+- Decision tree: if exact `mu_budget(K)` is supplied, compute `tax/mu`; if
+  not, run Route D finite bad-mode/tail ledger as the final bounded fallback.
+- Negative closure condition: if Route D also exceeds budget, record
+  `B2B_FATAL_NO_ADMISSIBLE_LIFT_FOUND` for the current explicit-formula-lift
+  families and move main weight to Track A / prolate Connes-Consani.
