@@ -33318,3 +33318,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Route D is now demoted to fallback after the LP dual route is priced; the
   next decisive engineering task is a finite LP dual feasibility wrapper around
   the existing K-cell matrices, not another scalar tax estimate.
+
+## Insight (2026-06-13, Track B B2b) -- S5CLPFinalGate
+
+- Added `docs/trackB/S5C_LP_FINITE_DUAL_FEASIBILITY.md` to pin the last
+  dual/LP gate before Track B is either revived by a finite witness or demoted.
+- Registered forecast: `B2B_LP_FATAL` is more likely because S4 killed the
+  product lift, S5.1 killed signed-small repair, and S5C0 confirmed a
+  PSD-first hard-edge surcharge.  This is a forecast, not an impossibility
+  theorem for finite K.
+- The only allowed survival gap is a spectral/SOS finite dual-cone witness on
+  the existing K-cell matrices.  Disallowed witness classes are CLV
+  multiplication, ordinary Selberg scalar masks, spectral clipping without
+  edge-control ledger, de Branges positivity, and Fourier-quasicrystal
+  transfer.
+- S5C-LP verdicts are now explicit: `B2B_LP_GREEN` if
+  `mu_budget_usable(K)>0` and PSD/sign/boundary/Q3 closure guards pass;
+  `B2B_LP_FATAL` if the gap is nonpositive or a guard fails; `B2B_LP_CONFLICT`
+  if finite K is green but the asymptotic sign-uncertainty forecast conflicts.
+- If S5C-LP is red, the main effort should move to the operator/prolate route,
+  where PSD is built into spectral/self-adjoint structure rather than added as
+  an external Fourier-side constraint.

@@ -176,3 +176,18 @@ S5.1 negative/L1 remains about `0.5`.
 solved.
 ПЛАН: next real Track B move is finite LP dual feasibility around existing
 K-cell matrices; Route D stays fallback after atlas-derived routes are priced.
+
+## 2026-06-13 -- S5C-LP Final Gate Directive
+
+ГДЕ Я: after Fable/Ылша mathematical forecast on whether structural LP can
+close E5 without brute force.
+СДЕЛАНО: added `docs/trackB/S5C_LP_FINITE_DUAL_FEASIBILITY.md`; updated LP
+reformulation and price table to make this the final dual/LP gate.
+ЧИСЛА: no new numerical run; reused S4 min hats `-1.68036,-2.67972,-2.44648`,
+S5.1 negative/L1 about `0.5`, and S5C0 PSD tax `2.93072,3.50596,3.96288`.
+ВЕРДИКТ: registered forecast `B2B_LP_FATAL` likely, but finite spectral/SOS LP
+can still falsify it at `K=2,3,3.5`.
+ПРОБЛЕМА: finite witness must not be CLV/product/Selberg scalar; it must
+preserve PSD/sign/boundary/Q3 closure as a spectral/SOS cone certificate.
+ПЛАН: next implementation gate is S5C-LP; if green, audit K->infinity
+stability; if red, demote Track B and move main effort to operator/prolate.

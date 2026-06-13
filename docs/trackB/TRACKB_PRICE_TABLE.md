@@ -47,6 +47,7 @@ product-lift family dead;
 signed-small repair dead;
 PSD-first route pays surcharge;
 LP route gives the computable mu-budget object;
+S5C-LP is the final finite dual feasibility gate;
 Selberg alone does not undie Route B;
 mollifier revival lacks inverse expansion / second moment inputs;
 Route D is fallback only after LP/Selberg/mollifier fail.
@@ -61,7 +62,7 @@ Route D is fallback only after LP/Selberg/mollifier fail.
 | S5.1 Route A | Split into positive part minus small negative ledger. | negative/L1 for `L`: `0.499632`, `0.500130`, `0.500021`; for `E`: `0.508842`, `0.494477`, `0.506019`. | Negative part is about half the spectrum, not a small ledger tail. | `REFUTED_FOR_CURRENT_FAMILY` | Route A closed for this family. |
 | Route B | Clip spectrum: `hat(L_proj)=max(hat(L),0)`. | Would remove budget-sized spectral mass. Selberg exact edge tax is `1/B_K=1` in current run, but current lifted family has min hats `-1.68036`, `-2.67972`, `-2.44648`. | Selberg repairs scalar edge constant, not PSD/cone transport. | `SELBERG_REPAIR_NO_UNDIE_ROUTE_B` | Use Selberg only inside LP dual or after exact projection-loss budget. |
 | S5C0 Route C | Build PSD-first hard-edge lift. | At `B_K=1`, PSD tax `2.93072`, `3.50596`, `3.96288`; ordinary tax is `1`. | surcharge confirmed, exact `mu_budget(K)` absent. | `S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN` | Supply exact `mu_budget(K)` or move to Route D. |
-| S5C0 Route C (LP) | Cohn-Elkies LP dual on the finite K-cell cone. | `mu_budget_LP(K)=d_K-p_K`, where `p_K` is the primal worst edge Rayleigh value and `d_K` is the candidate/best dual clamp in the finite relaxation. | Formula is concrete; positive usable gap is not yet shown. | `COMPUTABLE_FORMULA_READY` | Build/solve dual feasibility wrapper around existing K-cell matrices. |
+| S5C-LP final gate | Spectral/SOS dual clamp on the finite K-cell cone. | `mu_budget_usable(K)=d_K-p_K-guards` for `K=2,3,3.5`; witness must preserve PSD/sign/boundary/Q3 closure. | Formula is concrete; registered prediction is likely fatal, but finite K may still find a witness. | `PLANNED_FINAL_GATE` | Build/solve final finite LP/SOS feasibility gate before Route D or Track A switch. |
 | S5.1 (mollifier) | K-mollifier finite combo of edge-defect indicators. | Ansatz exists, but no inverse Dirichlet expansion / K-family second moment found locally. | Cannot revive S5.1 from current inputs. | `MOLLIFIER_GAP_NO_INVERSE_EXPANSION` | Do not spend until inverse expansion and off-diagonal moment are supplied. |
 | Route D | Finite bad-mode / bad-region ledger plus tail bound. | Not run yet. | Fallback only if LP dual, Selberg-compatible lift, and mollifier route all fail. | `PARKED_FALLBACK_AFTER_D1_D2_D3` | Run only after the three atlas-derived routes are explicitly exhausted. |
 
@@ -102,7 +103,7 @@ continuous/interval guards: GAP
 ## Decision Tree
 
 ```text
-1. If the LP dual is solved:
+1. If S5C-LP finite dual feasibility is solved:
      compute mu_budget_usable(K) = d_K - p_K - guards.
 
      if mu_budget_usable(K) > 0:
@@ -112,6 +113,9 @@ continuous/interval guards: GAP
      if mu_budget_usable(K) <= 0:
        Route C(LP) is priced and does not fit;
        go to Route D only after checking no Selberg-compatible lift exists.
+
+     if finite K is green but asymptotic sign-uncertainty forecast conflicts:
+       stop and audit K -> infinity stability.
 
 2. Route B after Selberg:
      scalar edge constant is exact, but Route B is not undied because PSD/cone
@@ -143,6 +147,10 @@ Outcome 2:
 Outcome 3:
   LP dual cannot preserve Fourier-self-dual / F2 sign structure
   -> close Track B negatively with full price accounting.
+
+Outcome 4:
+  finite LP is green but asymptotic tax forecast conflicts
+  -> stop for K-to-infinity stability audit before analytic E5 claims.
 ```
 
 Either outcome is useful.  The bad outcome would be ambiguity:
@@ -167,7 +175,8 @@ D3 mollifier inverse-expansion route
 Current recommendation:
 
 ```text
-1. Implement/solve the finite LP dual wrapper for mu_budget_LP(K).
+1. Implement/solve S5C-LP finite spectral/SOS dual feasibility for
+   mu_budget_LP(K).
 2. Keep Selberg as scalar edge-constant input inside that LP.
 3. Do not spend on mollifier unless inverse expansion + moment formula appear.
 4. Run Route D only after the LP route is priced.
@@ -182,6 +191,7 @@ docs/trackB/S5_NEGATIVE_MASS_LEDGER.md
 docs/trackB/S5C0_TAX_PREFLIGHT.md
 docs/trackB/b2_uncertainty_tax_preflight.md
 docs/trackB/TRACKB_LP_REFORMULATION.md
+docs/trackB/S5C_LP_FINITE_DUAL_FEASIBILITY.md
 docs/trackB/TRACKB_SELBERG_ROUTE_B_REPAIR.md
 docs/trackB/TRACKB_MOLLIFIER_S51_REVIVAL.md
 docs/trackB/CODEX_HANDOFF_LP_SELBERG_MOLLIFIER.md
@@ -195,9 +205,9 @@ docs/RH_TRICK_ATLAS.md#11-sign-uncertainty-surcharge
 
 ```text
 PROVED: none
-SKETCH: numerical price accounting for current Track B families; LP formulation
-OPEN: LP dual witness solve; Route D finite ledger
+SKETCH: numerical price accounting for current Track B families; LP/S5C-LP formulation
+OPEN: S5C-LP finite dual witness solve; Route D finite ledger
 REFUTED: current product lift, Route A signed-small-negative repair, Selberg-alone Route B rescue
 ZERO_CONSISTENT: S3 closure bookkeeping
-GAP: continuous/interval guards for LP dual; mollifier inverse expansion / second moment
+GAP: spectral/SOS witness existence; continuous/interval guards for LP dual; mollifier inverse expansion / second moment
 ```

@@ -205,6 +205,44 @@ A thin future wrapper may be useful, but it must be a wrapper around the current
 K-cell matrices, not a new Track B object.  Until that wrapper exists, the LP
 status is `COMPUTABLE_FORMULA_READY`, not `GREEN`.
 
+## S5C-LP Final Gate
+
+The final LP test is now separated in:
+
+```text
+docs/trackB/S5C_LP_FINITE_DUAL_FEASIBILITY.md
+```
+
+The important refinement is that the dual witness should be spectral/SOS on the
+finite K-cell cone, not another CLV multiplication or ordinary Selberg scalar
+mask.
+
+Allowed witness class:
+
+```text
+finite dual-cone / SOS / spectral clamp on the existing K-cell matrices
+```
+
+Disallowed witness class:
+
+```text
+Mplus*F_v product lift
+signed-small repair of the failed lift
+ordinary Selberg scalar mask
+spectral clipping without an edge-control projection ledger
+```
+
+Registered forecast:
+
+```text
+B2B_LP_FATAL is more likely than B2B_LP_GREEN
+```
+
+but this is a forecast, not a proof.  The finite LP gate is worth running
+because finite K could exhibit a witness that asymptotic sign-uncertainty
+warnings do not rule out.  If it does, the next audit is K-to-infinity
+stability.
+
 ## Failure Diagnostic
 
 Card 020 says the invariant that must survive is the Fourier-self-dual pairing.
