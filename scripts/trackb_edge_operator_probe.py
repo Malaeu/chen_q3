@@ -36,6 +36,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
             S3 B2b numerical decomposition gate on deterministic cone tests
   clveligibility
             S4 zero-side PSD eligibility audit with planted Fourier tests
+  clvnegmass
+            S5.1 negative spectral mass ledger for the failed S4 lift
   clvsigncert
             smooth/jump split prototype for a future V_J sign certificate
             with analytic B-spline derivatives for the packet profile
@@ -5301,6 +5303,329 @@ def fourier_object_row(
     }
 
 
+def sampled_fourier_negative_mass_summary(
+    a_grid: np.ndarray,
+    values: np.ndarray,
+    *,
+    u_max: float,
+    u_points: int,
+    top: int,
+    q3_weight: str,
+    tol: float,
+) -> dict[str, Any]:
+    u_grid = np.linspace(0.0, float(u_max), int(u_points))
+    hat = even_cosine_fourier_values(a_grid, values, u_grid)
+    neg = np.maximum(-hat, 0.0)
+    pos = np.maximum(hat, 0.0)
+    abs_hat = np.abs(hat)
+    neg_area = float(np.trapezoid(neg, u_grid))
+    pos_area = float(np.trapezoid(pos, u_grid))
+    abs_area = neg_area + pos_area
+    if q3_weight == "one_plus_u2":
+        q_weight = 1.0 + u_grid**2
+    elif q3_weight == "u2":
+        q_weight = u_grid**2
+    else:
+        q_weight = np.ones_like(u_grid)
+    q_neg = float(np.trapezoid(q_weight * neg, u_grid))
+    q_abs = float(np.trapezoid(q_weight * abs_hat, u_grid))
+    q_pos = float(np.trapezoid(q_weight * pos, u_grid))
+    neg_mask = hat < -float(tol)
+    regions: list[dict[str, Any]] = []
+    if np.any(neg_mask):
+        idxs = np.flatnonzero(neg_mask)
+        start = int(idxs[0])
+        prev = int(idxs[0])
+        for raw_idx in idxs[1:]:
+            idx = int(raw_idx)
+            if idx == prev + 1:
+                prev = idx
+                continue
+            seg = slice(start, prev + 1)
+            local = int(np.argmax(neg[seg]))
+            local_idx = start + local
+            regions.append(
+                {
+                    "u_start": finite_float(float(u_grid[start])),
+                    "u_end": finite_float(float(u_grid[prev])),
+                    "width": finite_float(float(u_grid[prev] - u_grid[start])),
+                    "min_hat": finite_float(float(hat[local_idx])),
+                    "min_u": finite_float(float(u_grid[local_idx])),
+                    "negative_mass": finite_float(float(np.trapezoid(neg[seg], u_grid[seg]))),
+                }
+            )
+            start = idx
+            prev = idx
+        seg = slice(start, prev + 1)
+        local = int(np.argmax(neg[seg]))
+        local_idx = start + local
+        regions.append(
+            {
+                "u_start": finite_float(float(u_grid[start])),
+                "u_end": finite_float(float(u_grid[prev])),
+                "width": finite_float(float(u_grid[prev] - u_grid[start])),
+                "min_hat": finite_float(float(hat[local_idx])),
+                "min_u": finite_float(float(u_grid[local_idx])),
+                "negative_mass": finite_float(float(np.trapezoid(neg[seg], u_grid[seg]))),
+            }
+        )
+    min_idx = int(np.argmin(hat))
+    max_idx = int(np.argmax(hat))
+    sorted_neg = np.argsort(hat)
+    top_modes: list[dict[str, Any]] = []
+    seen: set[int] = set()
+    min_spacing = max(1, int(round(0.01 * float(u_points))))
+    for raw_idx in sorted_neg:
+        idx = int(raw_idx)
+        if hat[idx] >= -float(tol):
+            break
+        if any(abs(idx - old) < min_spacing for old in seen):
+            continue
+        seen.add(idx)
+        top_modes.append(
+            {
+                "u": finite_float(float(u_grid[idx])),
+                "hat_value": finite_float(float(hat[idx])),
+                "negative_height": finite_float(float(neg[idx])),
+            }
+        )
+        if len(top_modes) >= int(top):
+            break
+    total_width = float(sum(float(region["width"]) for region in regions))
+    max_width = 0.0 if not regions else float(max(float(region["width"]) for region in regions))
+    return {
+        "u_min": 0.0,
+        "u_max": finite_float(float(u_max)),
+        "u_points": int(u_points),
+        "hat_min": finite_float(float(hat[min_idx])),
+        "hat_min_u": finite_float(float(u_grid[min_idx])),
+        "hat_max": finite_float(float(hat[max_idx])),
+        "hat_max_u": finite_float(float(u_grid[max_idx])),
+        "hat_at_zero": finite_float(float(hat[0])),
+        "negative_mass": finite_float(neg_area),
+        "positive_mass": finite_float(pos_area),
+        "spectral_L1_mass": finite_float(abs_area),
+        "negative_mass_fraction": finite_float(0.0 if abs_area == 0.0 else neg_area / abs_area),
+        "q3_weight": q3_weight,
+        "q3_weighted_negative_mass": finite_float(q_neg),
+        "q3_weighted_positive_mass": finite_float(q_pos),
+        "q3_weighted_L1_mass": finite_float(q_abs),
+        "q3_weighted_negative_fraction": finite_float(0.0 if q_abs == 0.0 else q_neg / q_abs),
+        "negative_region_count": int(len(regions)),
+        "negative_support_width_sum": finite_float(total_width),
+        "negative_support_width_fraction": finite_float(
+            0.0 if float(u_max) == 0.0 else total_width / float(u_max)
+        ),
+        "max_negative_region_width": finite_float(max_width),
+        "regions": regions,
+        "top_negative_modes": top_modes,
+        "L1_abs_H_da": finite_float(float(np.trapezoid(np.abs(values), a_grid))),
+        "integral_H_da": finite_float(float(np.trapezoid(values, a_grid))),
+    }
+
+
+def negmass_budget_status(
+    summary: dict[str, Any],
+    *,
+    mu_budget: float | None,
+    budget_fraction_threshold: float,
+) -> str:
+    if mu_budget is not None:
+        return (
+            "EXCEEDS_MU_BUDGET"
+            if float(summary["q3_weighted_negative_mass"]) > float(mu_budget)
+            else "WITHIN_MU_BUDGET"
+        )
+    if float(summary["negative_mass_fraction"]) >= float(budget_fraction_threshold):
+        return "BUDGET_SIZED_BY_SPECTRAL_L1_FRACTION"
+    if float(summary["q3_weighted_negative_fraction"]) >= float(budget_fraction_threshold):
+        return "BUDGET_SIZED_BY_Q3_WEIGHTED_FRACTION"
+    return "SMALL_BY_AVAILABLE_FRACTION_PROXY"
+
+
+def run_clvnegmass(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            P_edge = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, chi_weight
+            )
+            P_plus = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, plus_weight
+            )
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+            correction = pilot.sym((P_plus - P_edge) - (P0_plus - P0_edge))
+            A_corr = generalized_to_standard(pilot, project_matrix(pilot, correction, N), Gc)
+            eigs, evecs = np.linalg.eigh(A_corr)
+            op_idx = int(np.argmax(np.abs(eigs)))
+            if args.directions == "all":
+                directions = [
+                    ("lower", 0),
+                    ("upper", len(eigs) - 1),
+                    ("opnorm", op_idx),
+                ]
+            else:
+                directions = [("opnorm", op_idx)]
+
+            a_grid = np.linspace(0.0, effective_max_a, int(args.quad_na))
+            plus_grid = np.array([plus_weight(float(a)) for a in a_grid], dtype=float)
+            chi_grid = np.array([chi_weight(float(a)) for a in a_grid], dtype=float)
+            E_grid = plus_grid - chi_grid
+
+            direction_rows: list[dict[str, Any]] = []
+            direction_verdicts: list[str] = []
+            for label, idx in directions:
+                coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, evecs[:, idx])
+                F_grid = packet_profile_grid(pilot, packet, D, params.ell, coeffs, a_grid)
+                objects = []
+                for object_label, object_kind, values in [
+                    (
+                        "L_current_Mplus_Fv",
+                        "current smoothed receiver lift L=Mplus*F_v",
+                        plus_grid * F_grid,
+                    ),
+                    (
+                        "E_correction_Edelta_Fv",
+                        "receiver correction E=(Mplus-1_edge)*F_v",
+                        E_grid * F_grid,
+                    ),
+                ]:
+                    summary = sampled_fourier_negative_mass_summary(
+                        a_grid,
+                        values,
+                        u_max=float(args.fourier_u_max),
+                        u_points=int(args.fourier_nu),
+                        top=int(args.top_modes),
+                        q3_weight=str(args.q3_weight),
+                        tol=float(args.neg_tol),
+                    )
+                    status = negmass_budget_status(
+                        summary,
+                        mu_budget=args.mu_budget,
+                        budget_fraction_threshold=float(args.budget_fraction_threshold),
+                    )
+                    objects.append(
+                        {
+                            "label": object_label,
+                            "object_kind": object_kind,
+                            "negative_mass_status": status,
+                            "mu_budget": None
+                            if args.mu_budget is None
+                            else finite_float(float(args.mu_budget)),
+                            "mu_budget_ratio": None
+                            if args.mu_budget is None or float(args.mu_budget) == 0.0
+                            else finite_float(
+                                float(summary["q3_weighted_negative_mass"])
+                                / float(args.mu_budget)
+                            ),
+                            "summary": summary,
+                        }
+                    )
+                if any(
+                    str(obj["negative_mass_status"]).startswith("BUDGET_SIZED")
+                    or obj["negative_mass_status"] == "EXCEEDS_MU_BUDGET"
+                    for obj in objects
+                ):
+                    direction_verdict = "S5_NEGMASS_BUDGET_SIZED"
+                else:
+                    direction_verdict = "S5_NEGMASS_SMALL"
+                direction_verdicts.append(direction_verdict)
+                direction_rows.append(
+                    {
+                        "direction": label,
+                        "correction_eigenvalue": finite_float(float(eigs[idx])),
+                        "objects": objects,
+                        "direction_verdict": direction_verdict,
+                    }
+                )
+
+            if any(verdict == "S5_NEGMASS_BUDGET_SIZED" for verdict in direction_verdicts):
+                verdict = "S5_NEGMASS_BUDGET_SIZED"
+            elif direction_verdicts:
+                verdict = "S5_NEGMASS_SMALL"
+            else:
+                verdict = "S5_NEGMASS_INSTRUMENT_GAP"
+            rows.append(
+                {
+                    "mode": "clvnegmass",
+                    "status": "diagnostic_only",
+                    "verdict": verdict,
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "quad_na": int(args.quad_na),
+                    "fourier_u_max": finite_float(float(args.fourier_u_max)),
+                    "fourier_nu": int(args.fourier_nu),
+                    "neg_tol": finite_float(float(args.neg_tol)),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "max_a_effective": finite_float(effective_max_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(shifts)),
+                    "directions": direction_rows,
+                    "D2": (
+                        "raw a=r*log(p), xi=a/(2*pi); Fourier convention "
+                        "hat(f)(u)=int f(a)exp(-2*pi*i*u*a)da after even "
+                        "extension.  q3_weight is a diagnostic spectral "
+                        "proxy, not a proof-grade mu-book theorem."
+                    ),
+                }
+            )
+    return rows
+
+
 def run_clveligibility(args: argparse.Namespace) -> list[dict[str, Any]]:
     pilot = load_step13()
     rows: list[dict[str, Any]] = []
@@ -7173,6 +7498,50 @@ def parse_args() -> argparse.Namespace:
     clveligibility.add_argument("--fourier-nu", type=int, default=1001)
     clveligibility.add_argument("--psd-tol", type=float, default=1e-8)
     clveligibility.set_defaults(func=run_clveligibility)
+
+    clvnegmass = sub.add_parser(
+        "clvnegmass",
+        help="S5.1 negative spectral mass ledger for the failed S4 lift",
+    )
+    add_common_packet_args(clvnegmass)
+    clvnegmass.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clvnegmass.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clvnegmass.add_argument(
+        "--directions",
+        choices=["opnorm", "all"],
+        default="opnorm",
+        help="which correction eigenvector directions to audit",
+    )
+    clvnegmass.add_argument("--p0-na", type=int, default=401)
+    clvnegmass.add_argument("--quad-na", type=int, default=4001)
+    clvnegmass.add_argument("--fourier-u-max", type=float, default=2.0)
+    clvnegmass.add_argument("--fourier-nu", type=int, default=1001)
+    clvnegmass.add_argument("--neg-tol", type=float, default=1e-10)
+    clvnegmass.add_argument("--top-modes", type=int, default=8)
+    clvnegmass.add_argument(
+        "--q3-weight",
+        choices=["flat", "u2", "one_plus_u2"],
+        default="one_plus_u2",
+        help="diagnostic spectral weighting for the negative-mass ledger",
+    )
+    clvnegmass.add_argument(
+        "--mu-budget",
+        type=float,
+        default=None,
+        help="optional explicit mu budget for q3_weighted_negative_mass",
+    )
+    clvnegmass.add_argument(
+        "--budget-fraction-threshold",
+        type=float,
+        default=0.05,
+        help="fraction proxy above which the negative mass is budget-sized",
+    )
+    clvnegmass.set_defaults(func=run_clvnegmass)
 
     clvsigncert = sub.add_parser(
         "clvsigncert",

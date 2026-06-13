@@ -119,3 +119,18 @@ lift; S3 closure remains `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC`.
 ПРОБЛЕМА: B2b now needs a different admissible lift / signed PD decomposition
 / corrected cone projection; do not reopen B2a.
 ПЛАН: stop at S4 verdict and hand route choice back to Ылша/Fable.
+
+## 2026-06-13 -- S5.1 Negative-Mass Ledger
+
+ГДЕ Я: Track B continuation v7b after S4 fatal for current `Mplus*F_v`.
+СДЕЛАНО: added `clvnegmass`; measured negative spectral mass for
+`L=Mplus*F_v` and `E=(Mplus-1_edge)*F_v` on `K=2,3,3.5`.
+ЧИСЛА: `L` negative/L1 fractions are `0.499632`, `0.500130`, `0.500021`;
+`E` fractions are `0.508842`, `0.494477`, `0.506019`.
+КОНТРОЛЬ: sensitivity `--directions all` keeps all negative/L1 fractions in
+the `~0.488` to `~0.509` range.
+ВЕРДИКТ: `S5_NEGMASS_BUDGET_SIZED`; Route A signed-small-negative ledger is
+`REFUTED_FOR_CURRENT_FAMILY`.
+ПРАВКА: Route B clipping repairs PSD; danger is edge-control/projection-loss,
+not Hermitian-square failure.
+ПЛАН: Route C is main open path, starting with C0 uncertainty-tax preflight.

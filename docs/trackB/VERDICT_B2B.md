@@ -11,6 +11,7 @@ proof, no Q3.Main change, no route mutation, and no RH/RH-conditional input.
 B2b closure verdict: GREEN under v5 numerical criterion
 B2b algebraic closure gate: ZERO_CONSISTENT
 B2b current smoothed-lift PSD eligibility: REFUTED
+Route A small-negative-ledger for current family: REFUTED
 B2b alternate admissible-lift status: OPEN
 overall Track B status: OPEN, not proved
 ```
@@ -97,6 +98,49 @@ Meaning: the current smoothed zero-side lift is not PSD eligible.  This kills
 that lift, not all B2b routes.  The remaining open route is to replace the
 smoothed zero-side slot by a structure-preserving admissible lift, signed PD
 decomposition, corrected cone projection, or finite ledger certificate.
+
+## S5 Negative-Mass Ledger
+
+Reference: `docs/trackB/S5_NEGATIVE_MASS_LEDGER.md`.
+
+```text
+S5.1 verdict:
+  S5_NEGMASS_BUDGET_SIZED
+
+Scope:
+  current smoothed lift family L=Mplus*F_v and E=(Mplus-1_edge)*F_v
+
+Consequence:
+  Route A signed PSD ledger is refuted for this current family.
+```
+
+Summary:
+
+| K | object | min hat | neg/L1 | q3-neg/L1 | negative width on `[0,2]` |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 2 | `L` | `-1.68036` | `0.499632` | `0.499667` | `0.978` |
+| 2 | `E` | `-0.412284` | `0.508842` | `0.522080` | `1.014` |
+| 3 | `L` | `-2.67972` | `0.500130` | `0.500830` | `0.974` |
+| 3 | `E` | `-0.449693` | `0.494477` | `0.486656` | `0.958` |
+| 3.5 | `L` | `-2.44648` | `0.500021` | `0.500286` | `0.986` |
+| 3.5 | `E` | `-0.459538` | `0.506019` | `0.513305` | `0.988` |
+
+Route B correction:
+
+```text
+hat(L_proj)=max(hat(L),0) can repair PSD.
+The danger is projection-loss / loss of physical edge-control, not loss of
+Hermitian-square itself.
+```
+
+Route status after S5.1:
+
+```text
+A signed ledger: REFUTED_FOR_CURRENT_FAMILY
+B spectral clipping: DEFERRED_BY_S5_NEGMASS_BUDGET_SIZED
+C structure-first PSD lift: MAIN_OPEN_ROUTE, starts with C0 uncertainty-tax
+D finite ledger: PARKED_LAST_ROUTE
+```
 
 ## S2.5 Gap Anatomy
 
@@ -215,10 +259,11 @@ SKETCH: clvgate finite-packet numerical decomposition machinery
 OPEN: analytic E5 attack, alternate admissible lift, replacement zero-side slot
 REFUTED: Fable corrected prediction that the sampled minimum is edge-prime
 REFUTED: current smoothed receiver lift Mplus*F_v is PSD eligible
+REFUTED: Route A small-negative-ledger for the current smoothed family
 ZERO_CONSISTENT: algebraic decomposition closes on K=2,3 test directions and
   on the K=3.5 witness direction
-GAP: route-gap file still lacks proof-grade cone transport/admissible lift for
-  any replacement lift
+GAP: exact mu-budget ratio absent from S5 inputs; route-gap file still lacks
+  proof-grade cone transport/admissible lift for any replacement lift
 ```
 
 ## Input For Analytic E5 Attack
@@ -240,12 +285,16 @@ Worst-case enemy profile:
    sampled Fourier min of current `Mplus*F_v` is `-1.68036` at K=2,
    `-2.67972` at K=3, and `-2.44648` at K=3.5.
    This refutes the current smoothed receiver lift as a PSD zero-side object.
+
+4. S5 negative-mass obstruction:
+   the negative spectral part of `Mplus*F_v` occupies about half of the
+   sampled spectral L1 mass on K=2,3,3.5.  This refutes the "small signed
+   ledger" rescue for the current family.
 ```
 
 Next analytic question:
 
 ```text
-Find a structure-preserving replacement for the smoothed zero-side slot:
-signed PD decomposition, corrected cone projection, or a different receiver
-whose zero-side term is genuinely PSD on the finite Hermitian-square cone.
+Run Route C0: decide whether PSD + bandlimit + edge-control is compatible with
+the actual B_K and mu-budget before constructing a new direct PSD lift.
 ```

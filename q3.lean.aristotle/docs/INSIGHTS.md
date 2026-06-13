@@ -33241,3 +33241,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   smoothed lift.  This does not change S3 closure-green and does not kill all
   B2b routes; it says the next object must be a different admissible lift,
   signed PD decomposition, corrected cone projection, or finite ledger route.
+
+## Insight (2026-06-13, Track B B2b) -- S5NegativeMassLedger
+
+- Added `clvnegmass` mode to `scripts/trackb_edge_operator_probe.py` for S5.1:
+  a sampled Fourier negative-mass ledger for the failed S4 lift
+  `L=Mplus*F_v` and correction `E=(Mplus-1_edge)*F_v`.
+- On `K=2,3,3.5`, the negative spectral part of `L` occupies about half of
+  sampled spectral L1: `0.499632`, `0.500130`, `0.500021`.  The `1+u^2`
+  weighted fractions are also about half: `0.499667`, `0.500830`,
+  `0.500286`.
+- The correction `E` has the same broad pattern: negative/L1 fractions
+  `0.508842`, `0.494477`, `0.506019`; weighted fractions `0.522080`,
+  `0.486656`, `0.513305`.
+- A sensitivity run with `--directions all` gives the same verdict for lower,
+  upper, and opnorm directions: all sampled negative/L1 fractions stay in the
+  `~0.488` to `~0.509` range.
+- S5.1 verdict is `S5_NEGMASS_BUDGET_SIZED`: the negative spectrum is broad,
+  not a local blemish.  Route A, the small signed-negative ledger rescue for
+  the current family, is refuted.
+- Corrected Route B note: spectral clipping `hat(L_proj)=max(hat(L),0)`
+  repairs Fourier-side PSD if regular enough; the danger is loss of physical
+  edge-control and projection-loss exceeding the `mu`-budget, not destruction
+  of Hermitian-square itself.
