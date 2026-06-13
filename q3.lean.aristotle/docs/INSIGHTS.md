@@ -33339,3 +33339,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - If S5C-LP is red, the main effort should move to the operator/prolate route,
   where PSD is built into spectral/self-adjoint structure rather than added as
   an external Fourier-side constraint.
+
+## Insight (2026-06-13, Track B B2b) -- S5CLPNumericalGate
+
+- Added executable `s5clp` mode to `scripts/trackb_edge_operator_probe.py`.
+  It tests finite spectral/SOS dictionary witnesses via
+  `P_lift-P_edge+eta*G >= 0` and `P0_lift-P0_edge <= gamma*G` after `ker Q`
+  projection and current `G` normalization.
+- Engineering fix: `s5clp` caches shifted packet matrices per K before
+  combining basis weights, avoiding repeated B-spline matrix construction.
+- Strict budget-scale gate with signed-triplet dictionary on `K=2,3,3.5`
+  is infeasible at `gamma_cap=edge_scale`.  Edge scales are `0.101393`,
+  `0.108956`, `0.236347`; each returns `B2B_LP_FATAL_LP_FAILED`.
+- K=2 with the small combined `all` dictionary is also infeasible at strict
+  cap.  Relaxing to `10x` cap makes K=2 feasible only with `eta=1.64700`,
+  `gamma=1.01393`, clamp `2.66093` versus edge scale `0.101393`.
+- Relaxing K=3/3.5 to `100x` cap still guard-fails with huge clamps
+  `14.8250` and `30.8405`.  Verdict for current executable family:
+  `S5C_LP_DICTIONARY_RED`, not a theorem excluding every possible spectral/SOS
+  witness.

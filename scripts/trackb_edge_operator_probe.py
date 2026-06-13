@@ -40,6 +40,7 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
             S5.1 negative spectral mass ledger for the failed S4 lift
   clvtaxpreflight
             S5C0 PSD-first uncertainty-tax and sign-surcharge preflight
+  s5clp    S5C-LP final finite dual feasibility gate
   clvsigncert
             smooth/jump split prototype for a future V_J sign certificate
             with analytic B-spline derivatives for the packet profile
@@ -7456,6 +7457,286 @@ def run_liftsearch(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def s5clp_verdict(
+    *,
+    lp: dict[str, Any],
+    eta: float,
+    gamma: float,
+    clamp: float,
+    edge_scale: float,
+    gamma_cap: float,
+    mu_budget: float | None,
+    eta_green_tol: float,
+    tol: float,
+) -> str:
+    if not bool(lp["linprog_success"]):
+        return "B2B_LP_FATAL_LP_FAILED"
+    if not bool(lp["success"]):
+        return "B2B_LP_FATAL_GUARD_FAIL"
+    if gamma > gamma_cap + tol:
+        return "B2B_LP_FATAL_GAMMA_CAP_FAIL"
+    if eta > eta_green_tol:
+        return "B2B_LP_FATAL_POSITIVE_PRIME_SLACK_UNDER_COST_CAP"
+    if mu_budget is not None:
+        return "B2B_LP_GREEN" if clamp <= mu_budget + tol else "B2B_LP_FATAL_MU_BUDGET_EXCEEDED"
+    if clamp <= edge_scale + tol:
+        return "B2B_LP_GREEN_NUMERICAL_PROXY"
+    return "B2B_LP_FATAL_CLAMP_EXCEEDS_EDGE_SCALE_PROXY"
+
+
+def run_s5clp(args: argparse.Namespace) -> list[dict[str, Any]]:
+    """S5C-LP final finite gate on the existing K-cell matrices.
+
+    This intentionally reuses the `liftsearch` finite positive-definite
+    dictionary and cutting-plane Loewner solver, but reports the result in the
+    S5C-LP vocabulary: primal edge scale, dual clamp, guards, and verdict.
+    """
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        max_a_requested = float(args.max_a_factor) * float(K)
+        centers = parse_float_list_or_default(
+            args.centers, default_lift_centers(float(K), int(args.num_centers))
+        )
+        widths = parse_float_list_or_default(
+            args.widths, [0.35, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0]
+        )
+
+        ctx = build_packet_context(
+            pilot,
+            K=float(K),
+            ell=float(ell),
+            grid_delta=float(args.grid_delta),
+            k_spline=int(args.k_spline),
+            p0_na=int(args.p0_na),
+        )
+        params = ctx["params"]
+        packet = ctx["packet"]
+        D = ctx["D"]
+        N = ctx["N"]
+        Gc = ctx["Gc"]
+
+        edge_shifts = [sh for sh in pilot.prime_power_shifts(params.L) if lo <= sh.a <= hi]
+        P_edge = np.zeros_like(D, dtype=float)
+        for sh in edge_shifts:
+            P_edge += sh.weight * shifted_packet_matrix(pilot, packet, D, params.ell, sh.a)
+        P_edge = pilot.sym(P_edge)
+        P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+
+        A_edge = generalized_to_standard(pilot, project_matrix(pilot, P_edge, N), Gc)
+        C_edge = generalized_to_standard(pilot, project_matrix(pilot, P0_edge, N), Gc)
+        D_edge = generalized_to_standard(
+            pilot, project_matrix(pilot, pilot.sym(P_edge - P0_edge), N), Gc
+        )
+        A_edge_eigs = np.linalg.eigvalsh(A_edge)
+        C_edge_eigs = np.linalg.eigvalsh(C_edge)
+        D_edge_eigs = np.linalg.eigvalsh(D_edge)
+        primal_positive = max(0.0, float(D_edge_eigs[-1]))
+        edge_scale = max(abs(float(D_edge_eigs[0])), abs(float(D_edge_eigs[-1])))
+
+        gamma_cap = (
+            float(args.gamma_upper)
+            if args.gamma_upper is not None
+            else float(args.gamma_ratio_cap) * edge_scale
+        )
+        eta_upper = (
+            float(args.eta_upper)
+            if args.eta_upper is not None
+            else max(float(A_edge_eigs[-1]) + 1.0, 1.0)
+        )
+
+        effective_max_a = min(max_a_requested, effective_shift_cutoff(D, params.ell))
+        shift_params = pilot.PilotParams(
+            L=0.5 * effective_max_a,
+            ell=params.ell,
+            delta=params.delta,
+            k_spline=params.k_spline,
+            p0_na=int(args.p0_na),
+        )
+        shifts = pilot.prime_power_shifts(shift_params.L)
+
+        prime_atoms = [
+            (
+                float(sh.a),
+                float(sh.weight),
+                shifted_packet_matrix(pilot, packet, D, params.ell, float(sh.a)),
+            )
+            for sh in shifts
+        ]
+        a_grid = np.linspace(0.0, effective_max_a, int(args.p0_na))
+        wa = pilot.trap_weights_uniform(a_grid)
+        continuum_atoms = [
+            (
+                float(a),
+                float(w) * math.exp(0.5 * float(a)),
+                shifted_packet_matrix(pilot, packet, D, params.ell, float(a)),
+            )
+            for a, w in zip(a_grid, wa)
+        ]
+
+        def prime_matrix_cached(weight_fn: Any) -> np.ndarray:
+            P = np.zeros_like(D, dtype=float)
+            for a, weight, M in prime_atoms:
+                P += weight * float(weight_fn(a)) * M
+            return pilot.sym(P)
+
+        def continuum_matrix_cached(weight_fn: Any) -> np.ndarray:
+            P0 = np.zeros_like(D, dtype=float)
+            for a, coeff, M in continuum_atoms:
+                P0 += coeff * float(weight_fn(a)) * M
+            return pilot.sym(P0)
+
+        basis_specs = build_lift_basis_specs(
+            lift_family=args.lift_family,
+            centers=centers,
+            widths=widths,
+        )
+        basis_meta: list[dict[str, Any]] = []
+        A_basis: list[np.ndarray] = []
+        C_basis: list[np.ndarray] = []
+        for spec in basis_specs:
+            def weight_fn(a: float, spec: dict[str, Any] = spec) -> float:
+                return lift_spec_value(a, spec)
+
+            P = prime_matrix_cached(weight_fn)
+            P0 = continuum_matrix_cached(weight_fn)
+            basis_meta.append(spec)
+            A_basis.append(generalized_to_standard(pilot, project_matrix(pilot, P, N), Gc))
+            C_basis.append(generalized_to_standard(pilot, project_matrix(pilot, P0, N), Gc))
+
+        lp = cutting_plane_lift_cost_lp(
+            A_edge=A_edge,
+            A_basis=A_basis,
+            C_edge=C_edge,
+            C_basis=C_basis,
+            coeff_budget=float(args.coeff_budget),
+            coeff_bound=float(args.coeff_bound),
+            eta_lower=float(args.eta_lower),
+            eta_upper=eta_upper,
+            gamma_lower=float(args.gamma_lower),
+            gamma_upper=gamma_cap,
+            eta_weight=float(args.eta_weight),
+            cost_weight=float(args.cost_weight),
+            max_iter=int(args.max_iter),
+            tol=float(args.tol),
+        )
+
+        coeffs = np.asarray(lp["coefficients"], dtype=float)
+        linprog_ok = bool(lp["linprog_success"])
+        eta = float(lp["eta"]) if linprog_ok else float("inf")
+        gamma = float(lp["gamma"]) if linprog_ok else float("inf")
+        clamp = eta + gamma if linprog_ok else float("inf")
+        certificate_gap = clamp - primal_positive if linprog_ok else float("inf")
+        usable_gap = certificate_gap - float(args.guard_budget) if linprog_ok else float("inf")
+        verdict = s5clp_verdict(
+            lp=lp,
+            eta=eta,
+            gamma=gamma,
+            clamp=clamp,
+            edge_scale=edge_scale,
+            gamma_cap=gamma_cap,
+            mu_budget=args.mu_budget,
+            eta_green_tol=float(args.eta_green_tol),
+            tol=float(args.tol),
+        )
+
+        top_coeffs: list[dict[str, Any]] = []
+        for idx in np.argsort(-coeffs)[: int(args.top)]:
+            if coeffs[idx] <= float(args.coeff_report_tol):
+                continue
+            top_coeffs.append(
+                {
+                    "index": int(idx),
+                    "coefficient": finite_float(float(coeffs[idx])),
+                    **basis_meta[int(idx)],
+                }
+            )
+
+        rows.append(
+            {
+                "mode": "s5clp",
+                "status": "diagnostic_only",
+                "verdict": verdict,
+                "K": finite_float(float(K)),
+                "schedule": args.schedule,
+                "ell": finite_float(float(params.ell)),
+                "grid_delta": finite_float(float(params.delta)),
+                "k_spline": int(params.k_spline),
+                "p0_na": int(args.p0_na),
+                "raw_edge": [finite_float(lo), finite_float(hi)],
+                "max_a_requested": finite_float(max_a_requested),
+                "max_a_effective": finite_float(effective_max_a),
+                "kerQ_dim": int(N.shape[1]),
+                "prime_power_shifts_total": int(len(shifts)),
+                "edge_prime_power_shifts": int(len(edge_shifts)),
+                "basis_family": args.lift_family,
+                "basis_count": int(len(A_basis)),
+                "centers": [finite_float(float(x)) for x in centers],
+                "widths": [finite_float(float(x)) for x in widths],
+                "coeff_budget": finite_float(float(args.coeff_budget)),
+                "coeff_bound": finite_float(float(args.coeff_bound)),
+                "coeff_sum": finite_float(float(np.sum(coeffs))),
+                "primal_positive_edge_defect_pK": finite_float(primal_positive),
+                "edge_defect_opnorm_scale": finite_float(edge_scale),
+                "edge_defect_eig_min": finite_float(float(D_edge_eigs[0])),
+                "edge_defect_eig_max": finite_float(float(D_edge_eigs[-1])),
+                "prime_edge_eig_max": finite_float(float(A_edge_eigs[-1])),
+                "arch_edge_eig_max": finite_float(float(C_edge_eigs[-1])),
+                "gamma_cap": finite_float(gamma_cap),
+                "gamma_ratio_cap": finite_float(float(args.gamma_ratio_cap)),
+                "mu_budget": None if args.mu_budget is None else finite_float(float(args.mu_budget)),
+                "eta": None if not linprog_ok else finite_float(eta),
+                "gamma": None if not linprog_ok else finite_float(gamma),
+                "dual_clamp_dK_eta_plus_gamma": None if not linprog_ok else finite_float(clamp),
+                "certificate_gap_dK_minus_pK": None if not linprog_ok else finite_float(certificate_gap),
+                "guard_budget": finite_float(float(args.guard_budget)),
+                "mu_budget_usable_proxy": None if not linprog_ok else finite_float(usable_gap),
+                "eta_green_tol": finite_float(float(args.eta_green_tol)),
+                "min_prime_slack_eig": finite_float_or_none(float(lp["min_slack_eig"])),
+                "max_cost_eig": finite_float_or_none(float(lp["max_cost_eig"])),
+                "lp_success": bool(lp["success"]),
+                "linprog_success": bool(lp["linprog_success"]),
+                "linprog_message": lp["linprog_message"],
+                "iterations": int(lp["iterations"]),
+                "num_prime_cuts": int(lp["num_prime_cuts"]),
+                "num_cost_cuts": int(lp["num_cost_cuts"]),
+                "top_coefficients": top_coeffs,
+                "guards": {
+                    "PSD": (
+                        "PASS"
+                        if bool(lp["success"]) and float(lp["min_slack_eig"]) >= -float(args.tol)
+                        else "FAIL"
+                    ),
+                    "sign_prime_dominance": (
+                        "PASS" if eta <= float(args.eta_green_tol) else "FAIL"
+                    ),
+                    "boundary": "PASS_BY_EXISTING_KERQ_PROJECTION",
+                    "closure": "USES_S3_MATRIX_NORMALIZATION_NOT_RERUN_HERE",
+                    "budget": (
+                        "PASS"
+                        if (
+                            (args.mu_budget is not None and clamp <= float(args.mu_budget) + float(args.tol))
+                            or (args.mu_budget is None and clamp <= edge_scale + float(args.tol))
+                        )
+                        else "FAIL"
+                    ),
+                },
+                "D2": (
+                    "raw a=r*log(p), edge=[2K,4K], xi=a/(2*pi).  "
+                    "This is the S5C-LP finite spectral/SOS dictionary gate: "
+                    "P_lift - P_edge + eta*G >= 0 and "
+                    "P0_lift - P0_edge <= gamma*G after kerQ projection.  "
+                    "GREEN requires eta near zero and clamp eta+gamma inside "
+                    "explicit mu_budget, or inside the finite edge-scale proxy "
+                    "when mu_budget is absent."
+                ),
+            }
+        )
+    return rows
+
+
 def add_common_packet_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--K", type=float, nargs="+", required=True)
     parser.add_argument("--ell", type=float, default=0.35)
@@ -7906,6 +8187,51 @@ def parse_args() -> argparse.Namespace:
         help="skip the continuum prime-model proxy for speed",
     )
     liftsearch.set_defaults(func=run_liftsearch, continuum_proxy=True)
+
+    s5clp = sub.add_parser(
+        "s5clp",
+        help="S5C-LP final finite spectral/SOS dual feasibility gate",
+    )
+    add_common_packet_args(s5clp)
+    s5clp.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    s5clp.add_argument("--max-a-factor", type=float, default=8.0)
+    s5clp.add_argument(
+        "--lift-family",
+        choices=["two-point", "signed-triplet", "all"],
+        default="all",
+        help="positive-definite spectral/SOS lift dictionary to test",
+    )
+    s5clp.add_argument("--centers", type=float, nargs="*")
+    s5clp.add_argument("--num-centers", type=int, default=7)
+    s5clp.add_argument("--widths", type=float, nargs="*")
+    s5clp.add_argument("--coeff-budget", type=float, default=10.0)
+    s5clp.add_argument("--coeff-bound", type=float, default=10.0)
+    s5clp.add_argument("--eta-lower", type=float, default=-100.0)
+    s5clp.add_argument("--eta-upper", type=float)
+    s5clp.add_argument("--eta-weight", type=float, default=1.0)
+    s5clp.add_argument("--cost-weight", type=float, default=0.0)
+    s5clp.add_argument("--gamma-lower", type=float, default=-100.0)
+    s5clp.add_argument("--gamma-upper", type=float)
+    s5clp.add_argument(
+        "--gamma-ratio-cap",
+        type=float,
+        default=1.0,
+        help="when --gamma-upper is absent, cap gamma at this multiple of the finite edge-defect opnorm",
+    )
+    s5clp.add_argument("--mu-budget", type=float)
+    s5clp.add_argument("--guard-budget", type=float, default=0.0)
+    s5clp.add_argument("--eta-green-tol", type=float, default=1e-6)
+    s5clp.add_argument("--max-iter", type=int, default=80)
+    s5clp.add_argument("--tol", type=float, default=1e-7)
+    s5clp.add_argument("--p0-na", type=int, default=401)
+    s5clp.add_argument("--top", type=int, default=8)
+    s5clp.add_argument("--coeff-report-tol", type=float, default=1e-9)
+    s5clp.set_defaults(func=run_s5clp)
 
     return parser.parse_args()
 

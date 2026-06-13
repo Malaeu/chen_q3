@@ -1,11 +1,17 @@
 # Track B S5C-LP: Finite Dual Feasibility Final Gate
 
-Status: PLANNED_FINAL_GATE plus REGISTERED_PREDICTION(likely fatal for
-dual/LP class).  This is strategy/diagnostic documentation only: no Lean proof,
-no Q3.Main change, no route mutation, and no RH-conditional input.
+Status: PLANNED_FINAL_GATE plus DIAGNOSTIC_RED(current executable finite
+dictionary).  This is strategy/diagnostic documentation only: no Lean proof, no
+Q3.Main change, no route mutation, and no RH-conditional input.
 
 No new numerical run is recorded here.  This file turns the current mathematical
 forecast into the next finite gate.
+
+Numerical execution is recorded in:
+
+```text
+docs/trackB/S5C_LP_NUMERICAL_GATE.md
+```
 
 ## Purpose
 
@@ -194,9 +200,9 @@ That is the reason it is not killed by the same hard-edge tax preflight.
 
 ```text
 PROVED: none
-SKETCH: final finite LP/SOS gate statement
-OPEN: actual finite dual feasibility solve; K -> infinity stability if green
-REFUTED: naive CLV/product/signed-small Selberg lift classes
+SKETCH: final finite LP/SOS gate statement; current finite dictionary red
+OPEN: richer exact dual-cone witness basis; K -> infinity stability if green
+REFUTED: naive CLV/product/signed-small Selberg lift classes; current signed-triplet/all small dictionary
 ZERO_CONSISTENT: S3 remains the closure regression
 GAP: spectral/SOS witness existence and Q3-normalization survival
 ```

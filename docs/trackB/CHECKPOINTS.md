@@ -191,3 +191,19 @@ can still falsify it at `K=2,3,3.5`.
 preserve PSD/sign/boundary/Q3 closure as a spectral/SOS cone certificate.
 ПЛАН: next implementation gate is S5C-LP; if green, audit K->infinity
 stability; if red, demote Track B and move main effort to operator/prolate.
+
+## 2026-06-13 -- S5C-LP Numerical Gate
+
+ГДЕ Я: implemented and ran `s5clp` in `scripts/trackb_edge_operator_probe.py`.
+СДЕЛАНО: cached shifted packet matrices; ran budget-scale gate on `K=2,3,3.5`
+with signed-triplet spectral/SOS dictionary; ran relaxed controls.
+ЧИСЛА: strict `gamma_cap=edge_scale` gives LP infeasible on all three K:
+edge scales `0.101393`, `0.108956`, `0.236347`. K=2 small `all` dictionary
+is also infeasible. Relaxed `10x` K=2 gives `eta=1.64700`,
+`gamma=1.01393`, clamp `2.66093`; relaxed `100x` K=3/3.5 gives clamps
+`14.8250`, `30.8405`.
+ВЕРДИКТ: `S5C_LP_DICTIONARY_RED`.
+ПРОБЛЕМА: this is not a theorem excluding every possible spectral/SOS witness;
+it kills the current executable finite dictionary at budget scale.
+ПЛАН: either supply a richer exact dual-cone basis, or accept practical LP red
+and switch main effort to operator/prolate.
