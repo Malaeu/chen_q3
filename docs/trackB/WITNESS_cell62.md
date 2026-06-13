@@ -296,5 +296,6 @@ REFUTED(Fable corrected prediction: minimum = edge-prime)
 ZERO_CONSISTENT(pit: finite-cone witness and S3 bookkeeping member)
 ```
 
-The remaining Track B gap is not this pointwise pit.  It is proof-grade
-admissible lift / zero-side PSD eligibility for the smoothed receiver.
+The remaining Track B issue is not this pointwise pit.  S4 later refutes the
+current smoothed receiver lift as PSD eligible, so the open work is a different
+admissible lift / signed PD decomposition / corrected cone projection.

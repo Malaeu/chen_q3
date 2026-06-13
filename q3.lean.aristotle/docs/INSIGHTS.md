@@ -33160,6 +33160,11 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 
 ## Insight (2026-06-12, Track B B2b) -- S3B2bGateVerdict
 
+Superseded on 2026-06-13 by `ExplicitFormulaGapAndS3Green`: this entry mixed
+the S3 closure gate with the separate zero-side PSD eligibility proxy.  Current
+status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
+`B2B_S4_FATAL_NOT_PSD_ELIGIBLE` only for the current smoothed receiver lift.
+
 - Added `clvgate` mode to `scripts/trackb_edge_operator_probe.py` and ran the
   S3 diagnostic gate on `K=2,3`, with `10` deterministic finite-packet
   Hermitian-square directions in `ker Q`.
@@ -33170,13 +33175,10 @@ small-window `(0,10]` Omega certificate before product-corner generation.
 - Algebraic closure is clean: max relative closure error is `~9.93e-17` for
   `K=2` and `~3.47e-16` for `K=3`; max boundary residual is
   `|Qv| <= 2.23e-15`.
-- The gate is still NOT GREEN because the zero-side eligibility proxy is
-  negative on tested cone directions: `min zero_PSD_proxy ~= -8.66e-4` at
-  `K=2`, and `~=-7.74e-3` at `K=3`.
-- Final Track B v5 DONE verdict is `B`: `B2B_GATE_NOT_GREEN_ZERO_PSD_PROXY`.
-  This is not a decomposition arithmetic bug; it is a PSD-slot eligibility
-  gap for the naive smoothed receiver route.  See
-  `docs/trackB/VERDICT_B2B.md`.
+- Superseded verdict: the negative `zero_PSD_proxy` values are not an S3
+  closure failure.  They belong to the later PSD-eligibility audit.  See
+  `docs/trackB/VERDICT_B2B.md` and
+  `docs/trackB/S4_ZERO_SIDE_ELIGIBILITY.md`.
 
 ## Insight (2026-06-13, Track B B2) -- UncertaintyTaxPreflight
 
@@ -33221,3 +33223,21 @@ small-window `(0,10]` Omega certificate before product-corner generation.
   `NOT_A_BUG_BOOKKEEPING_MEMBER`.  The pointwise pit is not the decomposition
   residual; the remaining mathematical gap is admissible lift / zero-side PSD
   eligibility.
+
+## Insight (2026-06-13, Track B B2b) -- S4ZeroSideEligibility
+
+- Added `clveligibility` mode to `scripts/trackb_edge_operator_probe.py` for
+  S4: a sampled Fourier PSD-eligibility audit with planted positive/negative
+  tests before testing the current lift.
+- The instrument passes on all tested K: raw finite-packet Hermitian-square
+  `F_v` is accepted within `psd_tol=1e-8`, while planted `-F_v` is rejected
+  with large negative Fourier margins.
+- The current smoothed receiver lift `Mplus*F_v` is sampled Fourier-negative
+  by order-one margins: min hat is `~=-1.68036` at `K=2`, `~=-2.67972` at
+  `K=3`, and `~=-2.44648` at `K=3.5`.
+- The correction `(Mplus-1_edge)*F_v` is also sampled Fourier-negative:
+  `~=-0.412284`, `~=-0.449693`, `~=-0.459538` for `K=2,3,3.5`.
+- Final S4 verdict is `B2B_S4_FATAL_NOT_PSD_ELIGIBLE` for the current
+  smoothed lift.  This does not change S3 closure-green and does not kill all
+  B2b routes; it says the next object must be a different admissible lift,
+  signed PD decomposition, corrected cone projection, or finite ledger route.

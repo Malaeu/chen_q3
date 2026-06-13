@@ -34,6 +34,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
             evaluated on the full witness direction without reselecting it
   clvgate
             S3 B2b numerical decomposition gate on deterministic cone tests
+  clveligibility
+            S4 zero-side PSD eligibility audit with planted Fourier tests
   clvsigncert
             smooth/jump split prototype for a future V_J sign certificate
             with analytic B-spline derivatives for the packet profile
@@ -5257,6 +5259,262 @@ def run_clvgate(args: argparse.Namespace) -> list[dict[str, Any]]:
     return rows
 
 
+def fourier_psd_status(summary: dict[str, Any], *, tol: float) -> str:
+    return (
+        "PSD_ELIGIBLE_CERTIFIED"
+        if float(summary["hat_min"]) >= -float(tol)
+        else "PSD_INELIGIBLE_CERTIFIED"
+    )
+
+
+def fourier_object_row(
+    *,
+    label: str,
+    object_kind: str,
+    a_grid: np.ndarray,
+    values: np.ndarray,
+    u_max: float,
+    u_points: int,
+    tol: float,
+    expected: str,
+) -> dict[str, Any]:
+    summary = sampled_fourier_sign_summary(
+        a_grid,
+        values,
+        u_max=float(u_max),
+        u_points=int(u_points),
+    )
+    status = fourier_psd_status(summary, tol=float(tol))
+    if expected == "positive":
+        planted_result = "PASS" if status == "PSD_ELIGIBLE_CERTIFIED" else "FAIL"
+    elif expected == "negative":
+        planted_result = "PASS" if status == "PSD_INELIGIBLE_CERTIFIED" else "FAIL"
+    else:
+        planted_result = "NA"
+    return {
+        "label": label,
+        "object_kind": object_kind,
+        "expected": expected,
+        "PSD_eligibility_status": status,
+        "planted_result": planted_result,
+        "fourier_summary": summary,
+    }
+
+
+def run_clveligibility(args: argparse.Namespace) -> list[dict[str, Any]]:
+    pilot = load_step13()
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        ell = stable_receiver_ell(K, args.ell) if args.schedule == "stable" else args.ell
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for receiver_delta in args.receiver_delta:
+            ctx = build_packet_context(
+                pilot,
+                K=float(K),
+                ell=float(ell),
+                grid_delta=float(args.grid_delta),
+                k_spline=int(args.k_spline),
+                p0_na=int(args.p0_na),
+            )
+            params = ctx["params"]
+            packet = ctx["packet"]
+            D = ctx["D"]
+            N = ctx["N"]
+            Gc = ctx["Gc"]
+            effective_max_a = effective_shift_cutoff(D, params.ell)
+            shift_params = pilot.PilotParams(
+                L=0.5 * effective_max_a,
+                ell=params.ell,
+                delta=params.delta,
+                k_spline=params.k_spline,
+                p0_na=int(args.p0_na),
+            )
+            shifts = pilot.prime_power_shifts(shift_params.L)
+
+            def chi_weight(a: float) -> float:
+                return 1.0 if lo <= a <= hi else 0.0
+
+            def plus_weight(a: float) -> float:
+                return float(
+                    selberg_interval_values(
+                        np.array([a]),
+                        lo=lo,
+                        hi=hi,
+                        receiver_delta=float(receiver_delta),
+                        sign="plus",
+                    )[0]
+                )
+
+            P_edge = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, chi_weight
+            )
+            P_plus = build_prime_matrix_for_weight(
+                pilot, packet, D, params.ell, shifts, plus_weight
+            )
+            P0_edge = build_P0_edge(pilot, packet, D, params.ell, lo, hi, int(args.p0_na))
+            P0_plus = build_continuum_matrix_for_weight(
+                pilot,
+                packet,
+                D,
+                params.ell,
+                max_a=effective_max_a,
+                p0_na=int(args.p0_na),
+                weight_fn=plus_weight,
+            )
+            correction = pilot.sym((P_plus - P_edge) - (P0_plus - P0_edge))
+            A_corr = generalized_to_standard(pilot, project_matrix(pilot, correction, N), Gc)
+            eigs, evecs = np.linalg.eigh(A_corr)
+            op_idx = int(np.argmax(np.abs(eigs)))
+            if args.directions == "all":
+                directions = [
+                    ("lower", 0),
+                    ("upper", len(eigs) - 1),
+                    ("opnorm", op_idx),
+                ]
+            else:
+                directions = [("opnorm", op_idx)]
+
+            a_grid = np.linspace(0.0, effective_max_a, int(args.quad_na))
+            plus_grid = np.array([plus_weight(float(a)) for a in a_grid], dtype=float)
+            chi_grid = np.array([chi_weight(float(a)) for a in a_grid], dtype=float)
+            E_grid = plus_grid - chi_grid
+
+            direction_rows: list[dict[str, Any]] = []
+            positive_pass = True
+            negative_pass = True
+            lift_statuses: list[str] = []
+            correction_statuses: list[str] = []
+            min_lift_hat = float("inf")
+            min_correction_hat = float("inf")
+
+            for label, idx in directions:
+                coeffs = standardized_eigenvector_to_full_coeffs(Gc, N, evecs[:, idx])
+                F_grid = packet_profile_grid(pilot, packet, D, params.ell, coeffs, a_grid)
+                objects = [
+                    fourier_object_row(
+                        label="positive_planted_profile_Fv",
+                        object_kind="raw finite-packet Hermitian square profile F_v",
+                        a_grid=a_grid,
+                        values=F_grid,
+                        u_max=float(args.fourier_u_max),
+                        u_points=int(args.fourier_nu),
+                        tol=float(args.psd_tol),
+                        expected="positive",
+                    ),
+                    fourier_object_row(
+                        label="negative_planted_minus_Fv",
+                        object_kind="deliberately signed non-admissible object -F_v",
+                        a_grid=a_grid,
+                        values=-F_grid,
+                        u_max=float(args.fourier_u_max),
+                        u_points=int(args.fourier_nu),
+                        tol=float(args.psd_tol),
+                        expected="negative",
+                    ),
+                    fourier_object_row(
+                        label="current_lift_Mplus_Fv",
+                        object_kind="smoothed receiver lift Mplus*F_v",
+                        a_grid=a_grid,
+                        values=plus_grid * F_grid,
+                        u_max=float(args.fourier_u_max),
+                        u_points=int(args.fourier_nu),
+                        tol=float(args.psd_tol),
+                        expected="unknown",
+                    ),
+                    fourier_object_row(
+                        label="correction_Edelta_Fv",
+                        object_kind="receiver correction (Mplus-1_edge)*F_v",
+                        a_grid=a_grid,
+                        values=E_grid * F_grid,
+                        u_max=float(args.fourier_u_max),
+                        u_points=int(args.fourier_nu),
+                        tol=float(args.psd_tol),
+                        expected="unknown",
+                    ),
+                ]
+                by_label = {str(row["label"]): row for row in objects}
+                positive_pass = positive_pass and (
+                    by_label["positive_planted_profile_Fv"]["planted_result"] == "PASS"
+                )
+                negative_pass = negative_pass and (
+                    by_label["negative_planted_minus_Fv"]["planted_result"] == "PASS"
+                )
+                lift_status = str(by_label["current_lift_Mplus_Fv"]["PSD_eligibility_status"])
+                correction_status = str(
+                    by_label["correction_Edelta_Fv"]["PSD_eligibility_status"]
+                )
+                lift_statuses.append(lift_status)
+                correction_statuses.append(correction_status)
+                min_lift_hat = min(
+                    min_lift_hat,
+                    float(by_label["current_lift_Mplus_Fv"]["fourier_summary"]["hat_min"]),
+                )
+                min_correction_hat = min(
+                    min_correction_hat,
+                    float(by_label["correction_Edelta_Fv"]["fourier_summary"]["hat_min"]),
+                )
+                direction_rows.append(
+                    {
+                        "direction": label,
+                        "correction_eigenvalue": finite_float(float(eigs[idx])),
+                        "objects": objects,
+                    }
+                )
+
+            instrument_status = (
+                "S4_INSTRUMENT_VALID"
+                if positive_pass and negative_pass
+                else "S4_INSTRUMENT_INVALID"
+            )
+            if instrument_status != "S4_INSTRUMENT_VALID":
+                verdict = "B2B_S4_FATAL_BAD_INSTRUMENT"
+                negative_proxy_class = "E_NUMERICAL_FLOOR"
+            elif all(status == "PSD_ELIGIBLE_CERTIFIED" for status in lift_statuses):
+                verdict = "B2B_S4_GREEN_PSD_ELIGIBLE"
+                negative_proxy_class = "B_PROXY_NOT_THE_THEOREM_OBJECT"
+            elif any(status == "PSD_INELIGIBLE_CERTIFIED" for status in lift_statuses):
+                verdict = "B2B_S4_FATAL_NOT_PSD_ELIGIBLE"
+                negative_proxy_class = "A_REAL_COUNTEREXAMPLE_TO_ELIGIBILITY"
+            else:
+                verdict = "B2B_S4_GAP_LIFT"
+                negative_proxy_class = "B_PROXY_NOT_THE_THEOREM_OBJECT"
+
+            rows.append(
+                {
+                    "mode": "clveligibility",
+                    "status": "diagnostic_only",
+                    "verdict": verdict,
+                    "negative_proxy_classification": negative_proxy_class,
+                    "instrument_status": instrument_status,
+                    "K": finite_float(float(K)),
+                    "schedule": args.schedule,
+                    "ell": finite_float(float(ell)),
+                    "grid_delta": finite_float(float(args.grid_delta)),
+                    "k_spline": int(args.k_spline),
+                    "p0_na": int(args.p0_na),
+                    "quad_na": int(args.quad_na),
+                    "fourier_u_max": finite_float(float(args.fourier_u_max)),
+                    "fourier_nu": int(args.fourier_nu),
+                    "psd_tol": finite_float(float(args.psd_tol)),
+                    "receiver_delta": finite_float(float(receiver_delta)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "max_a_effective": finite_float(effective_max_a),
+                    "kerQ_dim": int(N.shape[1]),
+                    "prime_power_shifts_total": int(len(shifts)),
+                    "directions": direction_rows,
+                    "min_hat_current_lift_Mplus_Fv": finite_float(min_lift_hat),
+                    "min_hat_correction_Edelta_Fv": finite_float(min_correction_hat),
+                    "D2": (
+                        "raw a=r*log(p), xi=a/(2*pi); Fourier convention "
+                        "hat(f)(u)=int f(a)exp(-2*pi*i*u*a)da after even "
+                        "extension.  This audits PSD eligibility separately "
+                        "from S3 closure."
+                    ),
+                }
+            )
+    return rows
+
+
 def run_clvwitness(args: argparse.Namespace) -> list[dict[str, Any]]:
     pilot = load_step13()
     rows: list[dict[str, Any]] = []
@@ -6890,6 +7148,31 @@ def parse_args() -> argparse.Namespace:
     clvgate.add_argument("--zero-tol", type=float, default=1e-10)
     clvgate.add_argument("--witness-a", type=float)
     clvgate.set_defaults(func=run_clvgate)
+
+    clveligibility = sub.add_parser(
+        "clveligibility",
+        help="S4 zero-side PSD eligibility audit with planted Fourier tests",
+    )
+    add_common_packet_args(clveligibility)
+    clveligibility.add_argument("--receiver-delta", type=float, nargs="+", required=True)
+    clveligibility.add_argument(
+        "--schedule",
+        choices=["stable", "fixed"],
+        default="stable",
+        help="use previous stability-filtered ell choices or a fixed --ell",
+    )
+    clveligibility.add_argument(
+        "--directions",
+        choices=["opnorm", "all"],
+        default="opnorm",
+        help="which correction eigenvector directions to audit",
+    )
+    clveligibility.add_argument("--p0-na", type=int, default=401)
+    clveligibility.add_argument("--quad-na", type=int, default=4001)
+    clveligibility.add_argument("--fourier-u-max", type=float, default=2.0)
+    clveligibility.add_argument("--fourier-nu", type=int, default=1001)
+    clveligibility.add_argument("--psd-tol", type=float, default=1e-8)
+    clveligibility.set_defaults(func=run_clveligibility)
 
     clvsigncert = sub.add_parser(
         "clvsigncert",

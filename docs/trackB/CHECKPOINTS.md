@@ -105,3 +105,17 @@ zero-side eligibility proxy.
 `K=3 min=-7.74e-3`, `K=3.5 min=-1.47e-4`).
 ПЛАН: B2b remains open at PSD eligibility/admissible-lift level, not at S3
 arithmetic bookkeeping.
+
+## 2026-06-13 -- S4 Zero-Side Eligibility Audit
+
+ГДЕ Я: Track B S4 after accepted S3 GREEN.
+СДЕЛАНО: added `clveligibility`; ran planted positive/negative Fourier tests
+and then current smoothed lift audit on `K=2,3,3.5`.
+ЧИСЛА: detector valid on all K; min hat `Mplus*F_v` is `-1.68036`,
+`-2.67972`, `-2.44648`; min hat correction is `-0.412284`, `-0.449693`,
+`-0.459538`.
+ВЕРДИКТ: `B2B_S4_FATAL_NOT_PSD_ELIGIBLE` for the current smoothed receiver
+lift; S3 closure remains `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC`.
+ПРОБЛЕМА: B2b now needs a different admissible lift / signed PD decomposition
+/ corrected cone projection; do not reopen B2a.
+ПЛАН: stop at S4 verdict and hand route choice back to Ылша/Fable.

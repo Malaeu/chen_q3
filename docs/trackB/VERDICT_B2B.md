@@ -1,23 +1,26 @@
-# Track B Verdict: S1 Witness To S3 B2b Gate
+# Track B Verdict: S1 Witness To S4 B2b Gate
 
 Status: ZERO_CONSISTENT(S3 numerical closure gate green) plus
-GAP(zero-side PSD eligibility / admissible lift).  This is
-strategy/diagnostic documentation only: no Lean proof, no Q3.Main change, no
-route mutation, and no RH/RH-conditional input.
+REFUTED(current smoothed receiver lift PSD eligibility) and OPEN(alternate
+B2b admissible lift).  This is strategy/diagnostic documentation only: no Lean
+proof, no Q3.Main change, no route mutation, and no RH/RH-conditional input.
 
 ## Verdict
 
 ```text
 B2b closure verdict: GREEN under v5 numerical criterion
 B2b algebraic closure gate: ZERO_CONSISTENT
-B2b PSD-eligibility / admissible-lift status: GAP
+B2b current smoothed-lift PSD eligibility: REFUTED
+B2b alternate admissible-lift status: OPEN
 overall Track B status: OPEN, not proved
 ```
 
 Reason: the four-term numerical decomposition closes to floating error on the
 tested finite packet cone directions.  The smoothed zero-side proxy is not
-nonnegative on all tested directions, but that is a separate analytic
-eligibility/admissible-lift gap, not the v5 S3 closure criterion.
+nonnegative on all tested directions, and S4 confirms the stronger statement
+that the current smoothed lift `Mplus*F_v` is sampled Fourier-negative by an
+order-one margin.  That is a separate PSD-eligibility failure, not the v5 S3
+closure criterion.
 
 Pre-B2 route gate:
 
@@ -58,6 +61,42 @@ boundary            = 0 numerically because Qv ~= 0
 ```
 
 The `zero_PSD_proxy` row is a numerical eligibility proxy, not a theorem input.
+
+## S4 Zero-Side Eligibility Audit
+
+Reference: `docs/trackB/S4_ZERO_SIDE_ELIGIBILITY.md`.
+
+```text
+S4 verdict:
+  B2B_S4_FATAL_NOT_PSD_ELIGIBLE
+
+Scope:
+  current smoothed receiver lift Mplus*F_v
+
+Not affected:
+  S3 closure gate remains B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC
+```
+
+Judge-before-player planted tests:
+
+| K | positive plant `F_v` | min hat | negative plant `-F_v` | min hat | instrument |
+| --- | --- | ---: | --- | ---: | --- |
+| 2 | PASS | `-7.55e-13` | PASS | `-5.14477` | `S4_INSTRUMENT_VALID` |
+| 3 | PASS | `+6.89e-12` | PASS | `-7.20072` | `S4_INSTRUMENT_VALID` |
+| 3.5 | PASS | `-9.41e-11` | PASS | `-7.37385` | `S4_INSTRUMENT_VALID` |
+
+Current lift failure:
+
+| K | min hat `Mplus*F_v` | min hat `(Mplus-1_edge)*F_v` | S4 classification |
+| --- | ---: | ---: | --- |
+| 2 | `-1.68036` | `-0.412284` | `A_REAL_COUNTEREXAMPLE_TO_ELIGIBILITY` |
+| 3 | `-2.67972` | `-0.449693` | `A_REAL_COUNTEREXAMPLE_TO_ELIGIBILITY` |
+| 3.5 | `-2.44648` | `-0.459538` | `A_REAL_COUNTEREXAMPLE_TO_ELIGIBILITY` |
+
+Meaning: the current smoothed zero-side lift is not PSD eligible.  This kills
+that lift, not all B2b routes.  The remaining open route is to replace the
+smoothed zero-side slot by a structure-preserving admissible lift, signed PD
+decomposition, corrected cone projection, or finite ledger certificate.
 
 ## S2.5 Gap Anatomy
 
@@ -173,12 +212,13 @@ K=3, eig_upper:
 ```text
 PROVED: none
 SKETCH: clvgate finite-packet numerical decomposition machinery
-OPEN: analytic E5 attack, admissible lift, proof-grade zero-side eligibility
+OPEN: analytic E5 attack, alternate admissible lift, replacement zero-side slot
 REFUTED: Fable corrected prediction that the sampled minimum is edge-prime
+REFUTED: current smoothed receiver lift Mplus*F_v is PSD eligible
 ZERO_CONSISTENT: algebraic decomposition closes on K=2,3 test directions and
   on the K=3.5 witness direction
-GAP: smoothed zero_PSD_proxy is negative on tested cone directions; route-gap
-  file also lacks proof-grade cone transport/admissible lift
+GAP: route-gap file still lacks proof-grade cone transport/admissible lift for
+  any replacement lift
 ```
 
 ## Input For Analytic E5 Attack
@@ -196,10 +236,10 @@ Worst-case enemy profile:
    arithmetic residual.  The next enemy is the smoothed zero-side
    eligibility/projection slot, not local pointwise negativity.
 
-3. K=3 stronger eligibility obstruction:
-   min zero_PSD_proxy ~= -7.74e-3 on a tested cone direction.
-   This is the current largest numerical counter-signal to the naive B2b
-   smoothed receiver eligibility route.
+3. S4 stronger eligibility obstruction:
+   sampled Fourier min of current `Mplus*F_v` is `-1.68036` at K=2,
+   `-2.67972` at K=3, and `-2.44648` at K=3.5.
+   This refutes the current smoothed receiver lift as a PSD zero-side object.
 ```
 
 Next analytic question:
