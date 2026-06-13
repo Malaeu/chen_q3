@@ -38,6 +38,8 @@ B-spline packet pilot to make the current B2 obstruction checks reproducible:
             S4 zero-side PSD eligibility audit with planted Fourier tests
   clvnegmass
             S5.1 negative spectral mass ledger for the failed S4 lift
+  clvtaxpreflight
+            S5C0 PSD-first uncertainty-tax and sign-surcharge preflight
   clvsigncert
             smooth/jump split prototype for a future V_J sign certificate
             with analytic B-spline derivatives for the packet profile
@@ -5443,6 +5445,264 @@ def negmass_budget_status(
     return "SMALL_BY_AVAILABLE_FRACTION_PROXY"
 
 
+def smooth_edge_target_values(
+    a_grid: np.ndarray,
+    *,
+    lo: float,
+    hi: float,
+    smooth_width: float,
+) -> np.ndarray:
+    a_grid = np.asarray(a_grid, dtype=float)
+    if smooth_width <= 0.0:
+        return indicator_interval_values(a_grid, lo=lo, hi=hi)
+    width = min(float(smooth_width), 0.5 * max(hi - lo, 0.0))
+    target = np.zeros_like(a_grid)
+    left = (lo < a_grid) & (a_grid < lo + width)
+    plateau = (lo + width <= a_grid) & (a_grid <= hi - width)
+    right = (hi - width < a_grid) & (a_grid < hi)
+    target[left] = 0.5 - 0.5 * np.cos(math.pi * (a_grid[left] - lo) / width)
+    target[plateau] = 1.0
+    target[right] = 0.5 + 0.5 * np.cos(math.pi * (a_grid[right] - (hi - width)) / width)
+    return target
+
+
+def physical_trapezoid_weights(grid: np.ndarray) -> np.ndarray:
+    grid = np.asarray(grid, dtype=float)
+    weights = np.zeros_like(grid)
+    if len(grid) == 1:
+        weights[0] = 1.0
+    else:
+        weights[1:-1] = 0.5 * (grid[2:] - grid[:-2])
+        weights[0] = 0.5 * (grid[1] - grid[0])
+        weights[-1] = 0.5 * (grid[-1] - grid[-2])
+    return weights
+
+
+def solve_sampled_psd_majorant_tax(
+    *,
+    lo: float,
+    hi: float,
+    bandlimit: float,
+    max_a: float,
+    physical_na: int,
+    freq_nu: int,
+    target_kind: str,
+    smooth_width: float,
+) -> dict[str, Any]:
+    a_grid = np.linspace(0.0, float(max_a), int(physical_na))
+    u_grid = np.linspace(0.0, float(bandlimit), int(freq_nu))
+    if target_kind == "hard":
+        target = indicator_interval_values(a_grid, lo=lo, hi=hi)
+    elif target_kind == "smooth":
+        target = smooth_edge_target_values(
+            a_grid,
+            lo=lo,
+            hi=hi,
+            smooth_width=float(smooth_width),
+        )
+    else:
+        raise ValueError("target_kind must be 'hard' or 'smooth'")
+
+    basis = np.ones((len(a_grid), len(u_grid)), dtype=float)
+    if len(u_grid) > 1:
+        basis[:, 1:] = 2.0 * np.cos(2.0 * math.pi * np.outer(a_grid, u_grid[1:]))
+    weights = physical_trapezoid_weights(a_grid)
+    c = weights @ basis
+    result = linprog(
+        c,
+        A_ub=-basis,
+        b_ub=-target,
+        bounds=[(0.0, None)] * len(u_grid),
+        method="highs",
+    )
+    row: dict[str, Any] = {
+        "target_kind": target_kind,
+        "lp_success": bool(result.success),
+        "linprog_status": int(result.status),
+        "linprog_message": str(result.message),
+        "physical_na": int(physical_na),
+        "freq_nu": int(freq_nu),
+        "bandlimit": finite_float(float(bandlimit)),
+        "max_a": finite_float(float(max_a)),
+        "smooth_width": finite_float(float(smooth_width)),
+        "target_integral": finite_float(float(np.trapezoid(target, a_grid))),
+    }
+    if not result.success:
+        return row
+    values = basis @ result.x
+    slack = values - target
+    tax = float(np.trapezoid(slack, a_grid))
+    target_integral = float(np.trapezoid(target, a_grid))
+    coeffs = np.asarray(result.x, dtype=float)
+    active = np.flatnonzero(coeffs > 1e-9)
+    top = sorted(
+        (
+            (float(coeffs[idx]), float(u_grid[idx]))
+            for idx in active
+        ),
+        reverse=True,
+    )[:8]
+    row.update(
+        {
+            "objective_value": finite_float(float(result.fun)),
+            "sampled_tax": finite_float(tax),
+            "sampled_tax_relative_to_target_integral": finite_float(
+                0.0 if target_integral == 0.0 else tax / target_integral
+            ),
+            "min_slack": finite_float(float(np.min(slack))),
+            "max_slack": finite_float(float(np.max(slack))),
+            "target_max": finite_float(float(np.max(target))),
+            "lift_max": finite_float(float(np.max(values))),
+            "active_frequency_count": int(len(active)),
+            "top_frequency_masses": [
+                {"u": finite_float(u), "mass": finite_float(mass)} for mass, u in top
+            ],
+        }
+    )
+    return row
+
+
+def tax_preflight_verdict(
+    *,
+    instrument_status: str,
+    surcharge_ratio: float | None,
+    mu_budget: float | None,
+    psd_tax: float | None,
+    surcharge_tol: float,
+) -> str:
+    if instrument_status != "S5C0_TAX_INSTRUMENT_VALID":
+        return "S5C0_FATAL_INVALID_TAX_INSTRUMENT"
+    if surcharge_ratio is None or psd_tax is None:
+        return "S5C0_GAP_TAX_LP_FAILED"
+    if mu_budget is not None:
+        return (
+            "S5C0_FATAL_UNCERTAINTY_TAX"
+            if float(psd_tax) > float(mu_budget)
+            else "S5C0_BORDERLINE_TAX_WITHIN_EXPLICIT_MU_BUDGET"
+        )
+    if float(surcharge_ratio) > 1.0 + float(surcharge_tol):
+        return "S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN"
+    return "S5C0_BORDERLINE_SURCHARGE_APPROX_ONE"
+
+
+def run_clvtaxpreflight(args: argparse.Namespace) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for K in args.K:
+        lo, hi = 2.0 * float(K), 4.0 * float(K)
+        for bandlimit in args.bandlimit:
+            max_a = (
+                float(args.max_a)
+                if args.max_a is not None
+                else hi + float(args.a_margin)
+            )
+            smooth_width = (
+                float(args.smooth_width)
+                if args.smooth_width is not None
+                else min(float(K) / 2.0, 1.0 / float(bandlimit))
+            )
+            hard = solve_sampled_psd_majorant_tax(
+                lo=lo,
+                hi=hi,
+                bandlimit=float(bandlimit),
+                max_a=max_a,
+                physical_na=int(args.tax_na),
+                freq_nu=int(args.freq_nu),
+                target_kind="hard",
+                smooth_width=smooth_width,
+            )
+            smooth = solve_sampled_psd_majorant_tax(
+                lo=lo,
+                hi=hi,
+                bandlimit=float(bandlimit),
+                max_a=max_a,
+                physical_na=int(args.tax_na),
+                freq_nu=int(args.freq_nu),
+                target_kind="smooth",
+                smooth_width=smooth_width,
+            )
+            ordinary_tax = 1.0 / float(bandlimit)
+            psd_tax = hard.get("sampled_tax")
+            smooth_tax = smooth.get("sampled_tax")
+            if hard.get("lp_success") and smooth.get("lp_success"):
+                hard_vs_smooth_ratio = (
+                    float("inf")
+                    if float(smooth_tax) == 0.0
+                    else float(psd_tax) / float(smooth_tax)
+                )
+                instrument_status = (
+                    "S5C0_TAX_INSTRUMENT_VALID"
+                    if hard_vs_smooth_ratio >= 1.0 + float(args.planted_tol)
+                    else "S5C0_TAX_INSTRUMENT_INVALID"
+                )
+                surcharge_additive = float(psd_tax) - ordinary_tax
+                surcharge_ratio = (
+                    float("inf")
+                    if ordinary_tax == 0.0
+                    else float(psd_tax) / ordinary_tax
+                )
+            else:
+                hard_vs_smooth_ratio = None
+                instrument_status = "S5C0_TAX_INSTRUMENT_INVALID"
+                surcharge_additive = None
+                surcharge_ratio = None
+            verdict = tax_preflight_verdict(
+                instrument_status=instrument_status,
+                surcharge_ratio=surcharge_ratio,
+                mu_budget=args.mu_budget,
+                psd_tax=None if psd_tax is None else float(psd_tax),
+                surcharge_tol=float(args.surcharge_tol),
+            )
+            rows.append(
+                {
+                    "mode": "clvtaxpreflight",
+                    "status": "diagnostic_only",
+                    "verdict": verdict,
+                    "instrument_status": instrument_status,
+                    "K": finite_float(float(K)),
+                    "raw_edge": [finite_float(lo), finite_float(hi)],
+                    "bandlimit_BK": finite_float(float(bandlimit)),
+                    "ordinary_hard_edge_tax_1_over_BK": finite_float(ordinary_tax),
+                    "psd_hard_edge_tax": psd_tax,
+                    "psd_smooth_edge_tax": smooth_tax,
+                    "hard_vs_smooth_tax_ratio": None
+                    if hard_vs_smooth_ratio is None
+                    else finite_float(float(hard_vs_smooth_ratio)),
+                    "sign_uncertainty_surcharge_additive": None
+                    if surcharge_additive is None
+                    else finite_float(float(surcharge_additive)),
+                    "surcharge_ratio": None
+                    if surcharge_ratio is None
+                    else finite_float(float(surcharge_ratio)),
+                    "mu_budget": None
+                    if args.mu_budget is None
+                    else finite_float(float(args.mu_budget)),
+                    "psd_tax_over_mu_budget": None
+                    if args.mu_budget is None or psd_tax is None or float(args.mu_budget) == 0.0
+                    else finite_float(float(psd_tax) / float(args.mu_budget)),
+                    "max_a": finite_float(float(max_a)),
+                    "a_margin": finite_float(float(args.a_margin)),
+                    "smooth_width": finite_float(float(smooth_width)),
+                    "tax_na": int(args.tax_na),
+                    "freq_nu": int(args.freq_nu),
+                    "hard_edge_lp": hard,
+                    "smooth_edge_lp": smooth,
+                    "D2": (
+                        "raw a=r*log(p), edge=[2K,4K].  Finite LP surrogate: "
+                        "L(a)=c0+2*sum c_j cos(2*pi*u_j*a), c_j>=0, "
+                        "u_j in [0,B_K], sampled L>=target on [0,max_a]. "
+                        "This is a C0 tax instrument, not a proof-grade "
+                        "continuous extremal theorem."
+                    ),
+                    "allowed_inputs": [
+                        "UNCONDITIONAL Selberg/Vaaler hard-edge tax 1/B_K from local CLV pair docs",
+                        "UNCONDITIONAL Bochner PSD criterion via nonnegative sampled spectral masses",
+                        "UNCONDITIONAL sign-uncertainty warning from RH_TRICK_ATLAS card 1/BCK note",
+                    ],
+                }
+            )
+    return rows
+
+
 def run_clvnegmass(args: argparse.Namespace) -> list[dict[str, Any]]:
     pilot = load_step13()
     rows: list[dict[str, Any]] = []
@@ -7542,6 +7802,33 @@ def parse_args() -> argparse.Namespace:
         help="fraction proxy above which the negative mass is budget-sized",
     )
     clvnegmass.set_defaults(func=run_clvnegmass)
+
+    clvtaxpreflight = sub.add_parser(
+        "clvtaxpreflight",
+        help="S5C0 PSD-first uncertainty-tax and sign-surcharge preflight",
+    )
+    clvtaxpreflight.add_argument("--K", type=float, nargs="+", required=True)
+    clvtaxpreflight.add_argument(
+        "--bandlimit",
+        type=float,
+        nargs="+",
+        required=True,
+        help="actual Fourier slack/radius B_K to test",
+    )
+    clvtaxpreflight.add_argument("--tax-na", type=int, default=801)
+    clvtaxpreflight.add_argument("--freq-nu", type=int, default=121)
+    clvtaxpreflight.add_argument("--a-margin", type=float, default=4.0)
+    clvtaxpreflight.add_argument("--max-a", type=float)
+    clvtaxpreflight.add_argument("--smooth-width", type=float)
+    clvtaxpreflight.add_argument("--planted-tol", type=float, default=0.05)
+    clvtaxpreflight.add_argument("--surcharge-tol", type=float, default=0.05)
+    clvtaxpreflight.add_argument(
+        "--mu-budget",
+        type=float,
+        default=None,
+        help="optional explicit mu budget for psd_hard_edge_tax",
+    )
+    clvtaxpreflight.set_defaults(func=run_clvtaxpreflight)
 
     clvsigncert = sub.add_parser(
         "clvsigncert",

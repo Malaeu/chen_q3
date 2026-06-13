@@ -33264,3 +33264,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   repairs Fourier-side PSD if regular enough; the danger is loss of physical
   edge-control and projection-loss exceeding the `mu`-budget, not destruction
   of Hermitian-square itself.
+
+## Insight (2026-06-13, Track B B2b) -- S5C0TaxPreflight
+
+- Added `clvtaxpreflight` mode to `scripts/trackb_edge_operator_probe.py` for
+  v8 C0: a finite LP PSD-majorant tax instrument
+  `L(a)=c0+2*sum c_j cos(2*pi*u_j*a)`, `c_j>=0`, `u_j in [0,B_K]`, with
+  sampled hard-edge control on `[0,max_a]`.
+- C0.0 planted test passes: at `B_K=1`, hard/smooth PSD tax ratios are
+  `~1.65020`, `~1.45333`, `~1.39354` for `K=2,3,3.5`, so the detector
+  distinguishes hard edge from smooth edge.
+- C0.2 sign-uncertainty surcharge is confirmed in the finite LP surrogate:
+  PSD hard-edge tax is `~2.93072`, `~3.50596`, `~3.96288`, versus ordinary
+  Selberg/Vaaler hard-edge tax `1/B_K=1`.
+- Current verdict is `S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN`, not a
+  theorem-grade global fatal: the local docs still do not expose a single exact
+  `mu_budget(K)` normalization for C0.3.
+- Route implication: Route C is now much closer to fatal/borderline; either
+  supply the exact `mu` normalization or run the last Route D finite-ledger
+  fallback before declaring current explicit-formula-lift families exhausted.

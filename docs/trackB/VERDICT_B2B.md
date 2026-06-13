@@ -1,4 +1,4 @@
-# Track B Verdict: S1 Witness To S4 B2b Gate
+# Track B Verdict: S1 Witness To S5C0 B2b Gate
 
 Status: ZERO_CONSISTENT(S3 numerical closure gate green) plus
 REFUTED(current smoothed receiver lift PSD eligibility) and OPEN(alternate
@@ -12,6 +12,7 @@ B2b closure verdict: GREEN under v5 numerical criterion
 B2b algebraic closure gate: ZERO_CONSISTENT
 B2b current smoothed-lift PSD eligibility: REFUTED
 Route A small-negative-ledger for current family: REFUTED
+Route C PSD-first tax status: SURCHARGE_CONFIRMED_MU_RATIO_OPEN
 B2b alternate admissible-lift status: OPEN
 overall Track B status: OPEN, not proved
 ```
@@ -142,6 +143,34 @@ C structure-first PSD lift: MAIN_OPEN_ROUTE, starts with C0 uncertainty-tax
 D finite ledger: PARKED_LAST_ROUTE
 ```
 
+## S5C0 PSD-First Tax Preflight
+
+Reference: `docs/trackB/S5C0_TAX_PREFLIGHT.md`.
+
+```text
+C0.0 planted instrument:
+  S5C0_TAX_INSTRUMENT_VALID
+
+C0.2 surcharge:
+  CONFIRMED
+
+C0.3 verdict:
+  S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN
+```
+
+Summary at `B_K=1`:
+
+| K | ordinary tax `1/B_K` | PSD hard-edge tax | smooth-edge PSD tax | surcharge ratio |
+| --- | ---: | ---: | ---: | ---: |
+| 2 | `1.00000` | `2.93072` | `1.77598` | `2.93072` |
+| 3 | `1.00000` | `3.50596` | `2.41236` | `3.50596` |
+| 3.5 | `1.00000` | `3.96288` | `2.84375` | `3.96288` |
+
+Meaning: Route C does not inherit only the ordinary Selberg/Vaaler hard-edge
+tax.  The PSD/nonnegative-hat constraint adds a sign-uncertainty surcharge in
+the finite LP instrument.  A proof-grade `S5C0_FATAL_UNCERTAINTY_TAX` still
+needs an explicit `mu_budget(K)` or a theorem-level normalization comparison.
+
 ## S2.5 Gap Anatomy
 
 Source: `docs/trackB/b2b_explicit_formula_route_gap.md`.
@@ -260,9 +289,10 @@ OPEN: analytic E5 attack, alternate admissible lift, replacement zero-side slot
 REFUTED: Fable corrected prediction that the sampled minimum is edge-prime
 REFUTED: current smoothed receiver lift Mplus*F_v is PSD eligible
 REFUTED: Route A small-negative-ledger for the current smoothed family
+REFUTED: PSD-first Route C pays only ordinary 1/B_K hard-edge tax
 ZERO_CONSISTENT: algebraic decomposition closes on K=2,3 test directions and
   on the K=3.5 witness direction
-GAP: exact mu-budget ratio absent from S5 inputs; route-gap file still lacks
+GAP: exact mu-budget ratio absent from S5C0 inputs; route-gap file still lacks
   proof-grade cone transport/admissible lift for any replacement lift
 ```
 
@@ -290,11 +320,19 @@ Worst-case enemy profile:
    the negative spectral part of `Mplus*F_v` occupies about half of the
    sampled spectral L1 mass on K=2,3,3.5.  This refutes the "small signed
    ledger" rescue for the current family.
+
+5. S5C0 tax obstruction:
+   PSD-first hard-edge control costs `2.93`, `3.51`, `3.96` times the ordinary
+   `1/B_K` baseline at `B_K=1` in the finite LP surrogate.  This confirms the
+   sign-uncertainty surcharge and leaves only the exact `mu_budget(K)` ratio
+   open.
 ```
 
 Next analytic question:
 
 ```text
-Run Route C0: decide whether PSD + bandlimit + edge-control is compatible with
-the actual B_K and mu-budget before constructing a new direct PSD lift.
+Either supply the exact mu-budget normalization for S5C0, or run the last
+Route D finite-ledger fallback before declaring
+B2B_FATAL_NO_ADMISSIBLE_LIFT_FOUND for the current explicit-formula-lift
+families.
 ```

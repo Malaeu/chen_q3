@@ -637,6 +637,59 @@ directly.
   The statistic is predictive but not certifying, or it replaces deterministic
   route-kill criteria with probabilistic language.
 
+## 11. Sign-Uncertainty Surcharge
+
+- Status:
+  applied.
+
+- Trick name:
+  Sign-uncertainty surcharge / PSD-first hard-edge tax.
+
+- Applicability signature:
+  A route tries to control a hard physical cutoff while also requiring
+  Fourier-side nonnegativity, positive-definiteness, or a Hermitian-square
+  certificate.
+
+- Original theorem/problem:
+  Bourgain-Clozel-Kahane sign-uncertainty phenomena: imposing sign constraints
+  on both physical and Fourier sides has an unavoidable uncertainty cost.  In
+  the current Track B use, this is not imported as a closed theorem with
+  constants; it is used as a route-design warning and measured by a finite tax
+  preflight.
+
+- Transformed object:
+  "Build a nicer PSD majorant" becomes "first measure whether PSD plus
+  bandlimit plus hard-edge control pays more than the ordinary Selberg/Vaaler
+  `1/B_K` tax."
+
+- Preserved structure:
+  Fourier-side PSD eligibility, bandlimit/slack `B_K`, and edge-control
+  requirements.
+
+- Dropped structure / danger:
+  K3 check: spectral clipping `max(hat L,0)` repairs PSD, but it may destroy
+  the physical edge-control inequality or create projection loss larger than
+  the `mu`-budget.  Do not record the false reason "clipping kills
+  Hermitian-square"; the endangered structure is edge-control.
+
+- RH/Q3 analogue:
+  Track B Route C after S4/S5.1: a direct PSD lift must pay not only the
+  Selberg hard-edge tax but also the PSD/sign-uncertainty surcharge.
+
+- Step33 or L3 use-case:
+  Not Step33 payload work.  It is a route-kill preflight for any PSD-first
+  replacement of a hard edge in E5-like prime defect estimates.
+
+- Concrete next experiment:
+  `docs/trackB/S5C0_TAX_PREFLIGHT.md`: finite LP PSD-majorant tax checker for
+  `K=2,3,3.5`, `B_K=1`, with hard-edge vs smooth-edge planted tests and
+  surcharge ratios.
+
+- Failure mode:
+  The finite tax instrument is not a continuous extremal theorem.  A final
+  route-kill still needs exact `mu_budget(K)` normalization or a proof-grade
+  lower bound.
+
 ## Practical Priority
 
 For the active Step33/L3 environment, the most robust order is:

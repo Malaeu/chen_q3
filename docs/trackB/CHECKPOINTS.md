@@ -134,3 +134,17 @@ the `~0.488` to `~0.509` range.
 ПРАВКА: Route B clipping repairs PSD; danger is edge-control/projection-loss,
 not Hermitian-square failure.
 ПЛАН: Route C is main open path, starting with C0 uncertainty-tax preflight.
+
+## 2026-06-13 -- S5C0 PSD-First Tax Preflight
+
+ГДЕ Я: Track B v8 C0 tax-preflight after S5.1 killed Route A.
+СДЕЛАНО: added `clvtaxpreflight`; finite LP PSD-majorant tax checker with
+hard-edge vs smooth-edge planted test and ordinary `1/B_K` baseline.
+ЧИСЛА: at `B_K=1`, PSD hard-edge tax is `2.93072`, `3.50596`, `3.96288`
+for `K=2,3,3.5`; surcharge ratios same over ordinary tax `1`.
+КОНТРОЛЬ: hard/smooth ratios are `1.65020`, `1.45333`, `1.39354`, so
+`S5C0_TAX_INSTRUMENT_VALID`.
+ВЕРДИКТ: `S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN`; exact `mu_budget(K)` absent,
+so no theorem-grade global fatal yet.
+ПЛАН: either supply exact `mu` normalization for C0.3 or run Route D finite
+ledger fallback before closing Track B negatively.
