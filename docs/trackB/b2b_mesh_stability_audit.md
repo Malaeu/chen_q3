@@ -1,7 +1,7 @@
 # Track B B2b: Mesh Stability Audit
 
 Status: RP4/B2 diagnostic and proof-contract correction.  This is not a proof
-of E5', not a proof of RH, and not a Lean proof file.
+of E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_interval_envelope_audit.md`.  The previous
 audit correctly identified the missing proof-grade object, but it compared

@@ -1,6 +1,6 @@
 # Track B B2b: Receiver-Primary Correction Gap
 
-Status: B2 theorem-shape audit.  This is not a proof of E5', not a proof of
+Status: B2 theorem-shape audit.  This is not a proof of E5p, not a proof of
 RH, and not a Lean proof file.
 
 This note refines `docs/trackB/b2b_clv_receiver_primary.md`.  The previous
@@ -76,7 +76,7 @@ theorem shapes returned:
   Arch and Prime sides and proves a `weilForm = quadForm C` identity.
 
 No local result says that a Selberg interval receiver can replace the hard
-edge in E5' without paying a correction term.
+edge in E5p without paying a correction term.
 
 ## Exact Algebraic Decomposition
 
@@ -115,9 +115,9 @@ D_I = D_R + B_R^-.
 ```
 
 This identity is a D2 guardrail.  A receiver-primary proof of the original
-E5' cannot stop after bounding `D_R`; it must either:
+E5p cannot stop after bounding `D_R`; it must either:
 
-1. prove the E5' ledger may be restated with `D_R` instead of `D_I`;
+1. prove the E5p ledger may be restated with `D_R` instead of `D_I`;
 2. prove `B_R^+` or `B_R^-` is controlled in the Q3 cone;
 3. construct a different receiver for which the correction cancels by
    structure.
@@ -215,7 +215,7 @@ The correction tracks the hard edge, not the small receiver residual.
 Claim shape:
 
 ```text
-E5' ledger can be restated with D_R in place of D_I.
+E5p ledger can be restated with D_R in place of D_I.
 ```
 
 This would make the small CLV residual relevant immediately.
@@ -268,7 +268,7 @@ the Q3 Hermitian-square cone or by a finite-Weil-model constraint.
 `GAP(receiver-primary correction theorem missing)`.
 
 The ordinary Selberg receiver successfully creates a small smoothed residual
-`D_R`, but it does not by itself control the original E5' hard edge.  The exact
+`D_R`, but it does not by itself control the original E5p hard edge.  The exact
 identity shows that the missing object is the bridge correction `B_R`, and the
 current finite evidence says `B_R` is essentially the hard-edge obstruction
 again.
@@ -276,7 +276,7 @@ again.
 Therefore the next Track B move should not be another scalar bandwidth sweep.
 It should be one of:
 
-1. prove RP1: the E5' ledger genuinely accepts the receiver-primary smoothed
+1. prove RP1: the E5p ledger genuinely accepts the receiver-primary smoothed
    test object;
 2. design RP4: a cone-adapted receiver whose correction term cancels;
 3. escalate this exact correction identity to Proshka for theorem-shape
@@ -320,7 +320,7 @@ identity error ~= 2e-17
 ```
 
 Question for Proshka:
-Can E5' be reformulated so that the CLV/Selberg receiver residual `D_R` is the
+Can E5p be reformulated so that the CLV/Selberg receiver residual `D_R` is the
 actual ledger object, or must we construct a cone-adapted receiver that kills
 `B_R^+`?  If the latter, what structural condition should replace scalar
 `M^+ >= 1_I`?

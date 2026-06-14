@@ -1,7 +1,7 @@
 # Track B B2b: Non-Node Curvature Guard Audit
 
 Status: RP4/B2 diagnostic and proof-generator audit.  This is not a proof of
-E5', not a proof of RH, and not a Lean proof file.
+E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_nonnode_mesh_guard_audit.md`.  The mesh
 guard still used sampled endpoint values of `|S_v'|` as if they were a

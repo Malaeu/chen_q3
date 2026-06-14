@@ -1,8 +1,25 @@
 # Track B Checkpoints
 
-## 2026-06-14 -- E5' Raw-Edge Interval Certificate
+## 2026-06-14 -- E5p Same-Unit Mu Bridge Audit
 
-ГДЕ Я: Track B / E5' Phase 4, after the mu-budget interface correction.
+ГДЕ Я: Track B / E5p after D1 naming canon and D2 budget-bookkeeping cleanup.
+
+ЧТО СДЕЛАНО: read issue #13 and audited the local bridge routes without rerunning
+raw-edge PSD/eigenvalue searches.  Added
+`docs/trackB/lemmas/MU_K_SAME_UNIT_BRIDGE_AUDIT.md`.
+
+ВЕРДИКТ: `E5P_BRIDGE_SOURCE_GAP`.  The repo has interval finite PSD certificates
+for supplied `mu=(0.45,0.51,0.75)`, but no analytic `mu_K` source in the same
+`G_K/Q_K` raw-edge normalization.  This is not a threshold fail yet because no
+same-unit source exists to compare.
+
+NEXT: supply a repository theorem defining `mu_K` in Track B units and proving
+`mu_K >= mu_cert,K + transfer_guards_K`, or lower the supplied thresholds to a
+proved same-unit budget.
+
+## 2026-06-14 -- E5p Raw-Edge Interval Certificate
+
+ГДЕ Я: Track B / E5p Phase 4, after the `mu_K` budget interface correction.
 СДЕЛАНО: added `scripts/trackb_raw_edge_interval_cert.py`; generated
 `trackB/certs/e5p_raw_edge_interval_cert_K2_K3_K35.json`; added
 `docs/trackB/TRACKB_E5P_RAW_EDGE_INTERVAL_CERT.md`.
@@ -10,28 +27,29 @@
 `K=2, mu=0.45, min_eig_lower>0.0129205`; `K=3, mu=0.51,
 min_eig_lower>0.0123292`; `K=3.5, mu=0.75, min_eig_lower>0.0150616`.
 ВЕРДИКТ: finite raw-edge PSD is no longer float-only for these supplied
-thresholds.  E5' is still not proved because the same-unit analytic `mu_K`
+thresholds.  E5p is still not proved because the same-unit analytic `mu_K`
 bridge is missing.
 ПЛАН: either prove/source `mu_K >= (0.45,0.51,0.75)` in the same normalization
 after guards, or lower the finite thresholds to a proved analytic budget.
 
 ## 2026-06-14 -- Mu Budget Interface Correction
 
-ГДЕ Я: Track B / E5' after the evidence bundle exposed the budget-name
+ГДЕ Я: Track B / E5p after the evidence bundle exposed the budget-name
 collision.
 СДЕЛАНО: added `docs/trackB/MU_BUDGET_INTERFACE.md` and corrected Track B docs
-so `d_K-p_K` is a finite `certificate_gap_K`, not the E5' `mu` budget.
+so `d_K-p_K` is a finite `certificate_gap_K`, not the E5p `mu` budget.
 ЧИСЛА: no new numerical run; retained raw-edge float requirements about
 `0.44`, `0.50`, `0.735` for `K=2,3,3.5`.
-ВЕРДИКТ: the correct comparison is `budget_slack_K = mu_K - d_K`, with guards;
+ВЕРДИКТ: the correct comparison is
+`budget_slack_K = mu_K - d_K - transfer_guards_K`;
 same-unit `mu_K` source remains GAP.  `m_old=0` unless a pre-edge ledger-support
 proof appears.
 ПЛАН: next proof-producing patch is an interval/rational raw-edge PSD
 certificate generator in the actual `G_K`, `Q_K` normalization.
 
-## 2026-06-14 -- E5' Proof Contract Entry
+## 2026-06-14 -- E5p Proof Contract Entry
 
-ГДЕ Я: Track B / E5' closure, Phase 0-2 entry.
+ГДЕ Я: Track B / E5p closure, Phase 0-2 entry.
 СДЕЛАНО: created `TRACKB_E5P_CLOSURE_GOAL.md`,
 `TRACKB_E5P_PROOF_CONTRACT.md`, `TRACKB_E5P_PROOF_CONTRACT.tex`, and
 `TRACKB_LEAN_BRIDGE_MAP.md`; ran local embedding search plus external web
@@ -191,7 +209,7 @@ hard-edge vs smooth-edge planted test and ordinary `1/B_K` baseline.
 for `K=2,3,3.5`; surcharge ratios same over ordinary tax `1`.
 КОНТРОЛЬ: hard/smooth ratios are `1.65020`, `1.45333`, `1.39354`, so
 `S5C0_TAX_INSTRUMENT_VALID`.
-ВЕРДИКТ: `S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN`; exact `mu_budget(K)` absent,
+ВЕРДИКТ: `S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN`; same-unit `mu_K` source absent,
 so no theorem-grade global fatal yet.
 ПЛАН: either supply exact `mu` normalization for C0.3 or run Route D finite
 ledger fallback before closing Track B negatively.
@@ -202,9 +220,9 @@ ledger fallback before closing Track B negatively.
 СДЕЛАНО: added `docs/trackB/TRACKB_PRICE_TABLE.md` as the control panel.
 ЧИСЛА: S4 product lift min hats `-1.68036,-2.67972,-2.44648`; S5.1 negative
 mass about `0.50`; S5C0 PSD tax at `B_K=1` is `2.93072,3.50596,3.96288`.
-ВЕРДИКТ: Track B is now a price/budget decision: exact `mu_budget(K)` or Route
+ВЕРДИКТ: Track B is now a price/budget decision: same-unit `mu_K` source or Route
 D finite ledger.
-ПЛАН: if exact `mu_budget(K)` appears, compute `tax/mu`; otherwise run Route D
+ПЛАН: if same-unit `mu_K` appears, compute `tax/mu`; otherwise run Route D
 as the last bounded fallback before negative Track B closure.
 
 ## 2026-06-13 -- Track B Atlas 020/028/009 Handoff
@@ -213,7 +231,7 @@ as the last bounded fallback before negative Track B closure.
 table.
 СДЕЛАНО: added LP reformulation, Selberg Route B repair audit, and mollifier
 S5.1 revival check; updated price table.
-ЧИСЛА: old LP shorthand named `d_K-p_K` as `mu_budget_LP`; this is now
+ЧИСЛА: old LP shorthand named `d_K-p_K` as a mu-budget; this is now
 corrected to `certificate_gap_K=d_K-p_K`; Selberg ordinary edge
 tax at `B_K=1` is `1`; PSD hard-edge tax remains `2.93072,3.50596,3.96288`;
 S5.1 negative/L1 remains about `0.5`.

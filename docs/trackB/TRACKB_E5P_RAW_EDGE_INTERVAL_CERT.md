@@ -1,7 +1,7 @@
-# Track B E5' Raw-Edge Interval Certificate
+# Track B E5p Raw-Edge Interval Certificate
 
 Status: FINITE_INTERVAL_CERT_PASS_FOR_SUPPLIED_MU / E5_STILL_GAP_MU_BRIDGE.
-This is not a Lean proof file, not a Q3.Main edit, and not an E5' closure
+This is not a Lean proof file, not a Q3.Main edit, and not an E5p closure
 claim.
 
 ## What This Certifies
@@ -18,7 +18,7 @@ on the full packet coefficient space.  Since the penalty term vanishes on
 finite raw-edge domination for the supplied value of `mu`.
 
 This only proves a finite statement for the supplied constants.  It does not
-prove that the analytic E5' budget `mu_K` is equal to, or larger than, those
+prove that the analytic E5p budget `mu_K` is equal to, or larger than, those
 constants.
 
 ## Command
@@ -76,11 +76,11 @@ old: float/probe raw-edge opnorm only
 new: interval PSD finite certificate for supplied mu thresholds
 ```
 
-The E5' node is still not closed because the repository still lacks the
+The E5p node is still not closed because the repository still lacks the
 same-unit analytic comparison
 
 ```text
-budget_slack_K = mu_K - d_K >= 0
+budget_slack_K = mu_K - d_K - transfer_guards_K >= 0
 ```
 
 or, concretely for this certificate, a proof that the analytic `mu_K` budget in
@@ -100,6 +100,6 @@ after all tail, boundary, closure, quadrature, and finite-projection guards.
 finite raw-edge interval PSD for supplied mu: PASS
 old reserve m_old: 0
 Lean status: not ported
-E5' closure status: GAP_EXACTLY_NAMED
+E5p closure status: GAP_EXACTLY_NAMED
 remaining gap: SAME_UNIT_ANALYTIC_MU_BRIDGE
 ```

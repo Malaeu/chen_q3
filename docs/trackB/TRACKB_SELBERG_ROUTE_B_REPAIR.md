@@ -50,7 +50,7 @@ M^+ >= 1_[2K,4K]
 ```
 
 The minorant `M^- <= 1_[2K,4K]` has the wrong direction for an upper defect
-bound.  It can lower-bound the edge but cannot certify the E5' upper budget.
+bound.  It can lower-bound the edge but cannot certify the E5p upper budget.
 
 This sign is checked against the explicit-formula bookkeeping by S3:
 

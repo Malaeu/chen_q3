@@ -1,6 +1,6 @@
 # Track B B2b: Non-Node Interval Atom Audit
 
-Status: RP4/B2 proof-generator scaffold.  This is not a proof of E5', not a
+Status: RP4/B2 proof-generator scaffold.  This is not a proof of E5p, not a
 proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_nonnode_analytic_curvature_audit.md`.
@@ -667,7 +667,7 @@ edge/node halo localized to cells 60,61,62)`.
 `GAP(edge/node-halo source interval containment theorem and jump-split
 certificate still missing)`.
 
-`FATAL(treating the floating interval scaffold as a proof-grade E5'
+`FATAL(treating the floating interval scaffold as a proof-grade E5p
 certificate)`.
 
 Track B remains active.
@@ -944,7 +944,7 @@ Updated verdict:
 `GAP(cell 62 has a sampled-negative near-zero witness at mesh 18724/18725;
 cell 61 edge jump remains separate HEAVY_JOB)`.
 
-`FATAL(treating centered-form witness closure as E5' closure, or attempting
+`FATAL(treating centered-form witness closure as E5p closure, or attempting
 level-3 mesh refinement instead of changing the formulation)`.
 
 ## Proshka Audit Block -- N1 Centered Form

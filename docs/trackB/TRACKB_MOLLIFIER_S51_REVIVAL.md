@@ -88,7 +88,7 @@ bounded ratio:
 ```
 
 If this holds, Cauchy-Schwarz gives a positive proportion of K-cells where the
-E5' budget remains open.
+E5p budget remains open.
 
 ## Feasibility Check
 

@@ -1,14 +1,14 @@
-# Track B E5' Proof Contract
+# Track B E5p Proof Contract
 
 Status: PROOF_CONTRACT_FIRST. This is the mandatory math/certificate contract
-for E5'. It precedes any Lean integration. It does not prove RH and does not
+for E5p. It precedes any Lean integration. It does not prove RH and does not
 edit the public route.
 
 ## Theorem Shape
 
 For each active finite cell `K`, define a finite packet coefficient space
 `V_K`, a cone-admissible packet class `C_K`, a boundary row matrix `Q_K`, a
-Gram matrix `G_K`, and a raw-edge matrix `E_edge,K`. The E5' claim is:
+Gram matrix `G_K`, and a raw-edge matrix `E_edge,K`. The E5p claim is:
 
 ```text
 forall c in C_K with Q_K c = 0,
@@ -78,9 +78,9 @@ The norm is fixed as
 Norm_K(c) = c^T G_K c.
 ```
 
-All comparison constants, including `mu_K` and any candidate `m_old(K)`, must
-be in this `G_K` normalization. Euclidean floors from older certificates are
-not directly comparable without a certified `G_K` bridge.
+All comparison constants, including `mu_K`, must be in this `G_K`
+normalization. Euclidean floors from older certificates are not directly
+comparable without a certified `G_K` bridge.
 
 ### Raw Edge
 
@@ -134,13 +134,13 @@ If there exists `tau_K >= 0` such that
 
 ```text
 M_K(tau_K) :=
-  (m_old(K) + mu_K) * G_K - E_edge,K + tau_K * Q_K^T Q_K
+  mu_K * G_K - E_edge,K + tau_K * Q_K^T Q_K
 ```
 
 is positive semidefinite on the full coefficient space, then
 
 ```text
-c^T E_edge,K c <= (m_old(K) + mu_K) * c^T G_K c
+c^T E_edge,K c <= mu_K * c^T G_K c
 ```
 
 for every `c` with `Q_K c = 0`.
@@ -149,8 +149,12 @@ Proof: for `Q_K c=0`, the penalty term vanishes, so
 
 ```text
 0 <= c^T M_K(tau_K)c
-  = (m_old(K)+mu_K)c^T G_K c - c^T E_edge,K c.
+  = mu_K*c^T G_K c - c^T E_edge,K c.
 ```
+
+A reserve-augmented variant is intentionally not part of the active theorem.
+It can be introduced only after a new same-unit pre-edge ledger proves a
+separate reserve in this exact cell, basis, and `G_K/Q_K` normalization.
 
 ### Rational/Interval PSD Requirement
 

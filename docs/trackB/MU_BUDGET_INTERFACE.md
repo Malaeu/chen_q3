@@ -1,22 +1,29 @@
 # Track B Mu Budget Interface
 
 Status: GAP_EXACTLY_NAMED / NORMALIZATION_INTERFACE.  This is documentation
-only: no Lean proof, no Q3.Main edit, and no E5' closure claim.
+only: no Lean proof, no Q3.Main edit, and no E5p closure claim.
 
 ## Purpose
 
-This file fixes the comparison interface for Track B / E5'.  The LP quantities
+This file fixes the comparison interface for Track B / E5p.  The LP quantities
 `p_K` and `d_K` are useful finite optimization objects, but the scalar
-`d_K-p_K` is not the E5' mu-budget.  It is a certificate/duality gap inside the
+`d_K-p_K` is not the E5p mu-budget.  It is a certificate/duality gap inside the
 finite LP model.
 
-The actual budget comparison is:
+The finite certificate comparison is:
 
 ```text
-budget_slack_K = mu_K - d_K
+certificate_gap_K  =  d_K  -  p_K  -  finite_guards_K
 ```
 
-with guard terms, when present:
+The actual E5p budget comparison is:
+
+```text
+budget_slack_K     =  mu_K -  d_K  -  transfer_guards_K
+```
+
+The following diagnostic is allowed only as a same-unit, guard-expanded
+budget check.  It is not a closure verdict by itself:
 
 ```text
 usable_budget_slack_K =
@@ -36,25 +43,25 @@ the same normalization.
 
 | quantity | meaning | units / normalization | current status |
 | --- | --- | --- | --- |
-| `mu_K` | Allowed E5' edge-defect budget from the analytic ledger. | Must be in the same `G_K`-normalized raw-edge units as `d_K`. | GAP |
+| `mu_K` | Allowed E5p edge-defect budget from the analytic ledger. | Must be in the same `G_K`-normalized raw-edge units as `d_K`. | GAP |
 | `p_K` | Primal worst edge-defect Rayleigh value over the admissible finite K-cell cone. | Finite cone, `||v||_G=1`, after the current `ker Q` projection. | DOC / PROBE |
 | `d_K` | Dual clamp or certificate level required to dominate the finite edge defect. | Same finite `G_K` units as `p_K` if the matrix convention is unchanged. | DOC / GAP |
-| `certificate_gap_K` | `d_K - p_K`. | Finite optimization/certificate slack only. | DOC |
+| `certificate_gap_K` | `d_K - p_K - finite_guards_K`. | Finite optimization/certificate slack only. | DOC |
 | `duality_gap_K` | Synonym for `certificate_gap_K` when the primal/dual relaxation is explicit. | Same as above. | DOC |
-| `budget_slack_K` | `mu_K - d_K`. | Proof-relevant E5' margin, only after same-unit bridge. | GAP |
+| `budget_slack_K` | `mu_K - d_K - transfer_guards_K`. | Proof-relevant E5p margin, only after same-unit bridge. | GAP |
 | `guards_K` | Closure, boundary, quadrature, interval, and finite-projection allowances. | Must be subtracted in the same units as `mu_K` and `d_K`. | GAP |
 
 Do not use:
 
 ```text
-d_K - p_K = mu_budget
+finite LP gap = mu budget
 ```
 
 Use:
 
 ```text
-certificate_gap_K = d_K - p_K
-budget_slack_K    = mu_K - d_K
+certificate_gap_K  =  d_K  -  p_K  -  finite_guards_K
+budget_slack_K     =  mu_K -  d_K  -  transfer_guards_K
 ```
 
 ## Same-Unit Comparator Tests
@@ -91,7 +98,7 @@ Command:
 | 3 | `0.4976712109972619` | `0.49847340804127216` | about `0.50` | NO |
 | 3.5 | `0.7349382268295058` | `0.734943076148279` | about `0.735` | NO |
 
-These values can guide certificate search, but final E5' closure needs an
+These values can guide certificate search, but final E5p closure needs an
 interval/rational PSD certificate or Lean-verifiable exact matrix inequality.
 
 Current finite interval certificate for supplied thresholds:
@@ -116,16 +123,16 @@ It does not supply the analytic same-unit `mu_K` source.
 Finite LP/certificate health:
 
 ```text
-certificate_gap_K = d_K - p_K.
+certificate_gap_K  =  d_K  -  p_K  -  finite_guards_K.
 ```
 
 This says whether the finite certificate has slack against the primal value,
-after guards.  It does not say the E5' analytic budget is large enough.
+after guards.  It does not say the E5p analytic budget is large enough.
 
-E5' budget health:
+E5p budget health:
 
 ```text
-budget_slack_K = mu_K - d_K.
+budget_slack_K  =  mu_K -  d_K  -  transfer_guards_K.
 ```
 
 Track B can only use a positive budget verdict after:
@@ -164,14 +171,14 @@ bridge.
 
 ## Verdict
 
-Current Track B / E5' budget state:
+Current Track B / E5p budget state:
 
 ```text
 mu_K source in same units: GAP
 d_K finite dual clamp: DOC / PROBE
 finite raw-edge PSD for supplied mu=(0.45,0.51,0.75): INTERVAL_CERT_PASS
-certificate_gap_K = d_K - p_K: useful finite slack, not mu-budget
-budget_slack_K = mu_K - d_K: the correct comparison, currently GAP
+certificate_gap_K = d_K - p_K - finite_guards_K: useful finite slack, not mu-budget
+budget_slack_K = mu_K - d_K - transfer_guards_K: the correct comparison, currently GAP
 m_old: 0 unless a same-unit pre-edge reserve ledger is proved
 ```
 

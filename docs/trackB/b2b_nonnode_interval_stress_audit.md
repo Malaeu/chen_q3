@@ -1,7 +1,7 @@
 # Track B B2b: Non-Node Interval Stress Audit
 
 Status: RP4/B2 diagnostic and proof-generator audit.  This is not a proof of
-E5', not a proof of RH, and not a Lean proof file.
+E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_nonnode_interval_candidate.md`.  The
 candidate card extracted the non-node sign certificate

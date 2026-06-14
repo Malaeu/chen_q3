@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Track B / E5' dyadic rational guard verifier for interval worklists.
+Track B / E5p dyadic rational guard verifier for interval worklists.
 
 This consumes the compact rows emitted by:
 

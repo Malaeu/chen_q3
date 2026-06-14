@@ -1,7 +1,7 @@
 # Track B B2b: Ordinary-Prime Mean Route And Hilbert Spacing Barrier
 
 Status: B2 theorem-shape audit.  This is not a proof certificate and does not
-close E5'.  It tests whether a direct Montgomery--Vaughan / large-sieve mean
+close E5p.  It tests whether a direct Montgomery--Vaughan / large-sieve mean
 estimate can control the distributed ordinary-prime edge defect found in
 `docs/trackB/b2b_finiteop_tail_probe.md` and
 `docs/trackB/b2b_stability_schedule.md`.
@@ -90,7 +90,7 @@ This route also drops exactly the structure we cannot afford to drop:
 - any smoothing or averaging coming from CLV/Selberg receivers.
 
 Therefore a separation-only Hilbert estimate is allowed mathematics, but not a
-credible E5' closure mechanism.
+credible E5p closure mechanism.
 
 ## Spacing Probe
 
@@ -154,7 +154,7 @@ cross-correlation cancellation.
 
 ## Verdict
 
-`GAP(generic Hilbert/large-sieve spacing control cannot close E5')`.
+`GAP(generic Hilbert/large-sieve spacing control cannot close E5p)`.
 
 What this kills:
 
@@ -225,7 +225,7 @@ route again.
 
 Claim:
 A direct Montgomery--Vaughan / large-sieve estimate based only on log-prime
-separation is unconditional but too crude for E5'.  Its constants grow like
+separation is unconditional but too crude for E5p.  Its constants grow like
 `pi/min_gap`, numerically from `4.7e3` at K=2 to `1.9e6` at K=3.5, while the
 actual finite projected epsilons are `O(1)`.
 

@@ -1,7 +1,7 @@
 # Track B B2b: Smooth/Jump Sign-Certificate Prototype
 
 Status: RP4/B2 diagnostic and proof-generator prototype.  This is not a
-proof of E5', not a proof of RH, and not a Lean proof file.
+proof of E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_sign_partition_audit.md`.  The previous
 audit said the next object should split edge jumps and certify signs of

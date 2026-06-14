@@ -1,7 +1,7 @@
 # Track B B2b: Analytic Selberg Receiver Derivatives
 
 Status: RP4/B2 diagnostic and proof-generator refinement.  This is not a
-proof of E5', not a proof of RH, and not a Lean proof file.
+proof of E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_profile_derivative_enclosure.md`.  The
 packet-profile derivatives were already made analytic.  This note removes the

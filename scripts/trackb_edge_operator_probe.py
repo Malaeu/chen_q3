@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Track B / E5' edge-operator probes.
+Track B / E5p edge-operator probes.
 
 This is reconnaissance code, not a proof certificate.  It reuses the Step13
 B-spline packet pilot to make the current B2 obstruction checks reproducible:
@@ -4987,7 +4987,7 @@ def run_clvfixed(args: argparse.Namespace) -> list[dict[str, Any]]:
                     "D2": (
                         "raw a=r*log(p), x=exp(a); local S(a) is the receiver "
                         "product-rule density, while prime band rows are fixed-direction "
-                        "operator/Rayleigh accounting; no E5' closure is claimed"
+                        "operator/Rayleigh accounting; no E5p closure is claimed"
                     ),
                 }
             )
@@ -6313,7 +6313,7 @@ def run_clvwitness(args: argparse.Namespace) -> list[dict[str, Any]]:
                         "raw a=r*log(p), x=exp(a), witness density "
                         "S(a)=exp(-a/2)*(H'(a)-H(a)/2), "
                         "H=(M^+_[2K,4K],delta-1_[2K,4K])*F_v(a); "
-                        "diagnostic only, no E5' closure"
+                        "diagnostic only, no E5p closure"
                     ),
                 }
             )
@@ -7478,9 +7478,9 @@ def s5clp_verdict(
     if eta > eta_green_tol:
         return "B2B_LP_FATAL_POSITIVE_PRIME_SLACK_UNDER_COST_CAP"
     if mu_budget is not None:
-        return "B2B_LP_GREEN" if clamp <= mu_budget + tol else "B2B_LP_FATAL_MU_BUDGET_EXCEEDED"
+        return "B2B_LP_CERT_READY" if clamp <= mu_budget + tol else "B2B_LP_FATAL_MU_K_BUDGET_EXCEEDED"
     if clamp <= edge_scale + tol:
-        return "B2B_LP_GREEN_NUMERICAL_PROXY"
+        return "B2B_LP_CERT_READY_NUMERICAL_PROXY"
     return "B2B_LP_FATAL_CLAMP_EXCEEDS_EDGE_SCALE_PROXY"
 
 
@@ -7686,13 +7686,13 @@ def run_s5clp(args: argparse.Namespace) -> list[dict[str, Any]]:
                 "arch_edge_eig_max": finite_float(float(C_edge_eigs[-1])),
                 "gamma_cap": finite_float(gamma_cap),
                 "gamma_ratio_cap": finite_float(float(args.gamma_ratio_cap)),
-                "mu_budget": None if args.mu_budget is None else finite_float(float(args.mu_budget)),
+                "mu_K_input": None if args.mu_budget is None else finite_float(float(args.mu_budget)),
                 "eta": None if not linprog_ok else finite_float(eta),
                 "gamma": None if not linprog_ok else finite_float(gamma),
                 "dual_clamp_dK_eta_plus_gamma": None if not linprog_ok else finite_float(clamp),
                 "certificate_gap_dK_minus_pK": None if not linprog_ok else finite_float(certificate_gap),
                 "guard_budget": finite_float(float(args.guard_budget)),
-                "mu_budget_usable_proxy": None if not linprog_ok else finite_float(usable_gap),
+                "certificate_gap_after_finite_guards": None if not linprog_ok else finite_float(usable_gap),
                 "eta_green_tol": finite_float(float(args.eta_green_tol)),
                 "min_prime_slack_eig": finite_float_or_none(float(lp["min_slack_eig"])),
                 "max_cost_eig": finite_float_or_none(float(lp["max_cost_eig"])),
@@ -7728,9 +7728,9 @@ def run_s5clp(args: argparse.Namespace) -> list[dict[str, Any]]:
                     "This is the S5C-LP finite spectral/SOS dictionary gate: "
                     "P_lift - P_edge + eta*G >= 0 and "
                     "P0_lift - P0_edge <= gamma*G after kerQ projection.  "
-                    "GREEN requires eta near zero and clamp eta+gamma inside "
-                    "explicit mu_budget, or inside the finite edge-scale proxy "
-                    "when mu_budget is absent."
+                    "CERT_READY requires eta near zero and clamp eta+gamma "
+                    "inside an explicit same-unit mu_K input, or inside the "
+                    "finite edge-scale proxy when that input is absent."
                 ),
             }
         )

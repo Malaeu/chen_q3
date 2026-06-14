@@ -1,7 +1,7 @@
 # Track B B2b: `V_J` Variation Shape Audit
 
 Status: RP4/B2 diagnostic and proof-contract refinement.  This is not a proof
-of E5', not a proof of RH, and not a Lean proof file.
+of E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_finite_U_staircase_audit.md`.  The `U_J`
 side of the Stieltjes ledger now has a finite Chebyshev-staircase theorem

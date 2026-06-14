@@ -120,7 +120,7 @@ Results:
 | 3 | `10.8956` | `3.92944` | `10.8956` | `14.8250` | `0.108956` | `-1.04e-4` | `B2B_LP_FATAL_GUARD_FAIL` |
 | 3.5 | `23.6347` | `7.20583` | `23.6347` | `30.8405` | `0.236347` | `-2.05e-2` | `B2B_LP_FATAL_GUARD_FAIL` |
 
-Even at 100x the finite edge scale, the candidate is nowhere near a usable E5'
+Even at 100x the finite edge scale, the candidate is nowhere near a usable E5p
 budget.  The LP is not discovering a hidden budget-compatible dual clamp.
 
 ## Interpretation

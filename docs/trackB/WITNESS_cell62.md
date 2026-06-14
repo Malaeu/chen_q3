@@ -2,7 +2,7 @@
 
 Status: ZERO_CONSISTENT(pit is an S3 bookkeeping member) plus
 GAP(zero-side eligibility remains analytic).  This is diagnostic evidence
-only: not a proof of E5', not a Lean proof, and not a route mutation.
+only: not a proof of E5p, not a Lean proof, and not a route mutation.
 
 ## Point
 

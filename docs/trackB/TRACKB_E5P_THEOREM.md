@@ -4,8 +4,8 @@ This is the **paper specification** of the theorem that closes E5p on the
 K-cell. Lean formalization is deferred until all four assumptions are
 discharged on paper.
 
-> Naming: `E5p = E5-prime = E5′`. See `CODEX_HANDOFF_E5P_SAME_UNIT_BRIDGE.md`
-> §1 for the canon.
+> Naming: `E5p = E5-prime = E5′`. See
+> `TRACKB_E5P_SAME_UNIT_BRIDGE_HANDOFF.md` for the canon.
 
 ---
 
@@ -88,8 +88,8 @@ The four assumptions are the work. Status as of this file:
 |------------|-------------------------------------|------------------------------------------------------------------------------------------|---------------------------------------------------|
 | **(A1)**   | `G_K ≻ 0` on `ker(Q_K)`             | **partial.** Numeric check on K∈{2,3,3.5}; no exact rational LDL on `ker(Q_K)` yet.       | finite linear algebra; rational/interval LDL      |
 | **(A2)**   | `E_edge,K` equals ledger object     | **partial.** Identical raw shape, no formal correspondence theorem in Lean.              | one Lean equality lemma + S3 bookkeeping audit    |
-| **(A3)**   | `mu_K` same-unit                    | **GAP.** No proved lower bound for `mu_K` in `G_K`-units. Currently a supplied constant. | atlas card 009 (Selberg) or 029 (Connes adelic)   |
-| **(A4)**   | `mu_K · G_K - E_edge,K + tau · Q^TQ ≥ 0` | **finite witness only** for K∈{2,3,3.5} and supplied μ; not proof-grade structurally. | rational LDL for sym-tridiagonal block + induction |
+| **(A3)**   | `mu_K` same-unit                    | **SOURCE GAP.** Audit returned `E5P_BRIDGE_SOURCE_GAP`: no repository artifact defines analytic `mu_K` in this `G_K/Q_K` raw-edge normalization and pays supplied thresholds. | `docs/trackB/lemmas/MU_K_SAME_UNIT_BRIDGE_AUDIT.md` |
+| **(A4)**   | `mu_K · G_K - E_edge,K + tau · Q^TQ ≥ 0` | **finite interval cert pass** for K∈{2,3,3.5} at supplied μ `(0.45,0.51,0.75)`; no same-unit analytic μ source and no all-K structural proof. | rational/interval cert import or Lean receiver |
 
 **(A3) is the binding gap.** Closing (A1), (A2), (A4) without (A3) yields a
 finite witness, not an E5p closure — exactly the state reached in commit

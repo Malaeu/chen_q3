@@ -1,7 +1,7 @@
 # Track B B2b: Sampled Sign-Partition Audit For `V_J`
 
 Status: RP4/B2 diagnostic and generator-shape refinement.  This is not a
-proof of E5', not a proof of RH, and not a Lean proof file.
+proof of E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_V_variation_shape_audit.md`.  The previous
 audit found the live `V_J` worklist.  This audit asks whether the

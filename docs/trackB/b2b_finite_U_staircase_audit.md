@@ -1,7 +1,7 @@
 # Track B B2b: Finite Chebyshev `U_J` Staircase Audit
 
 Status: RP4/B2 diagnostic and proof-contract refinement.  This is not a proof
-of E5', not a proof of RH, and not a Lean proof file.
+of E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_mesh_stability_audit.md`.  The mesh audit
 showed that the global Stieltjes budget is the right acceptance criterion.

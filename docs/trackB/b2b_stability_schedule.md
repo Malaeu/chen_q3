@@ -1,7 +1,7 @@
 # Track B B2b/B3: Stability-Filtered Packet Schedule
 
 Status: B2/B3 diagnostic.  This is not a proof certificate and does not close
-E5'.  It converts the packet-scale sweep into a stability-filtered schedule:
+E5p.  It converts the packet-scale sweep into a stability-filtered schedule:
 for each K, choose the best finite projected edge epsilon only among packet
 models whose projected Gram metric and boundary-null dimension are not
 obviously degenerate.

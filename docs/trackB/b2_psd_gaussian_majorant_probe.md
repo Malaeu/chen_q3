@@ -189,7 +189,7 @@ What survives:
 
 Claim:
 The obvious positive-definite Gaussian majorant
-`exp(4*pi) exp(-pi*(x/(2K))^2)` is not enough for E5' edge-defect transport.
+`exp(4*pi) exp(-pi*(x/(2K))^2)` is not enough for E5p edge-defect transport.
 
 Point of blockage:
 It is pointwise above the edge and has positive Fourier transform, but
@@ -215,4 +215,4 @@ Reproducibility:
 
 The `K=2` run enumerates prime-power shifts up to `max_a=16` and is much
 heavier than `K=1`.  These runs are D2 numerical probes only; they do not
-interval-certify matrix entries and do not close E5'.
+interval-certify matrix entries and do not close E5p.

@@ -1,6 +1,6 @@
 # Track B B2b: Interval Envelope Audit
 
-Status: RP4/B2 proof-contract audit.  This is not a proof of E5', not a proof
+Status: RP4/B2 proof-contract audit.  This is not a proof of E5p, not a proof
 of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_finite_chebyshev_ledger_probe.md`.  The

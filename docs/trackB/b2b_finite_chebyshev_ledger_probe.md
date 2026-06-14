@@ -1,10 +1,10 @@
 # Track B B2b: Finite Chebyshev Ledger Probe
 
-Status: RP4/B2 diagnostic.  This is not a proof of E5', not a proof of RH,
+Status: RP4/B2 diagnostic.  This is not a proof of E5p, not a proof of RH,
 and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_fourier_psd_probe.md`.  At this point the
-simple routes are known not to close E5':
+simple routes are known not to close E5p:
 
 - global explicit PNT error plus total variation is too large;
 - direct zero-side PSD fails because `E_delta*F_v` is Fourier-sign-changing.

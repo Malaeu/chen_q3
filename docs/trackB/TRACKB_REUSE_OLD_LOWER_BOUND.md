@@ -12,14 +12,15 @@ The old Step32F one-third/lower-bound engine may already contain enough
 quantitative reserve to dominate the raw Track B edge operator.
 ```
 
-The intended reuse test is:
+The historical reuse hypothesis was a reserve-augmented domination test:
 
 ```text
-(m_old(K) + mu_budget(K)) * G_K - E_edge,K >= 0 on ker(Q),
+mu_K * G_K - E_edge,K + m_old(K) * G_K >= 0 on ker(Q),
 ```
 
 where `E_edge,K = P_edge - P0_edge` in the same finite packet basis and the same
-`G/Q` normalization.
+`G/Q` normalization.  This hypothesis is not active because the same-unit
+pre-edge reserve ledger is missing and the current verdict is `m_old(K)=0`.
 
 ## Task 0 Gates
 
@@ -76,12 +77,12 @@ same full prime matrix `P`.  Therefore the old `C=A-P` certificate has already
 paid the edge prime contribution on that support.  Adding `m_old` again as a
 free reserve for the same `E_edge` would double-count.
 
-The old certificate is also not a direct post-edge closure for E5'.  It proves
+The old certificate is also not a direct post-edge closure for E5p.  It proves
 positivity of the full `A-P` block through the `Dtheta/Rkappa` split; it does
 not prove the specific Track B ledger inequality
 
 ```text
-(m_old + mu_K)G_K - (P_edge - P0_edge) >= 0.
+mu_K*G_K - (P_edge - P0_edge) + m_old*G_K >= 0.
 ```
 
 Task-0B verdict:
@@ -207,7 +208,7 @@ orders of magnitude smaller than the raw edge operator.
 
 ## Domination Test
 
-For `mu_budget = 0`, the requested domination test fails even under the
+For `mu_K = 0`, the requested domination test fails even under the
 counterfactual assumption that the old floor may be treated as a free reserve:
 
 ```text
@@ -229,7 +230,7 @@ primaryK11: edge_max - m_G ~= 1.1038939
 controlK9:  edge_max - m_G ~= 1.0841864
 ```
 
-The test could only turn green if an external `mu_budget` of order `1` in the
+The test could only turn green if an external `mu_K` budget of order `1` in the
 same `G` units were available.  That is not the old Step32F reserve.
 
 Because of Task 0B, this numerical test is only a stress test.  It is not a
@@ -247,7 +248,7 @@ R + tau_R Q^T Q >= rFloor*I.
 ```
 
 This is reusable as a penalty/LDL pattern, but it does not decompose
-`mu_budget*G - E_edge` into old positive pieces.  In particular, the old pieces
+`mu_K*G - E_edge` into old positive pieces.  In particular, the old pieces
 prove positivity of the full `A-P` block; they do not isolate the edge-strip
 prime defect.
 
@@ -295,5 +296,5 @@ not the old Step32F numerical reserve as the Track B edge reserve.
 ```
 
 If Track B continues, the next finite certificate must target
-`mu_budget*G - E_edge` directly in the current K-cell, or switch to the
+`mu_K*G - E_edge` directly in the current K-cell, or switch to the
 operator/prolate route already listed in the price table.

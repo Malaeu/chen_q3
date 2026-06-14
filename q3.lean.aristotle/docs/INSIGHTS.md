@@ -33386,3 +33386,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `14.8250` and `30.8405`.  Verdict for current executable family:
   `S5C_LP_DICTIONARY_RED`, not a theorem excluding every possible spectral/SOS
   witness.
+
+## Insight (2026-06-14, Track B E5p) -- SameUnitMuSourceGap
+
+- Issue #13 isolates the remaining E5p gap: finite raw-edge interval PSD passes
+  for supplied `mu=(0.45,0.51,0.75)`, but closure requires an analytic `mu_K`
+  source in the same `G_K/Q_K` raw-edge units.
+- D1/D2 cleanup canon: use `E5p`; `certificate_gap_K=d_K-p_K-finite_guards_K`
+  is finite LP slack only, while
+  `budget_slack_K=mu_K-d_K-transfer_guards_K` is the proof-relevant budget
+  comparison.
+- Old Step32F LDL remains alive as a penalty/LDL pattern only; it is not a
+  pre-edge reserve and must not be added to `mu_K` without a new same-unit
+  ledger-support proof.  Current `m_old=0`.
+- Local same-unit bridge audit result:
+  `docs/trackB/lemmas/MU_K_SAME_UNIT_BRIDGE_AUDIT.md` returns
+  `E5P_BRIDGE_SOURCE_GAP`.  Mollifier lacks inverse expansion/second moment;
+  Selberg gives scalar tax but not packet-cone `G_K` domination; Connes/adelic
+  notes are architectural and not wired to Track B constants.
+- Next proof-producing patch must supply a repository theorem defining
+  analytic `mu_K` in Track B units and proving
+  `mu_K >= mu_cert,K + transfer_guards_K`, or lower the finite thresholds to a
+  proved same-unit budget.

@@ -1,6 +1,6 @@
 # Track B B2b: Fourier-PSD Probe for the Smooth Correction
 
-Status: RP4/B2 diagnostic.  This is not a proof of E5', not a proof of RH,
+Status: RP4/B2 diagnostic.  This is not a proof of E5p, not a proof of RH,
 and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_smooth_quadrature_probe.md`.  The previous

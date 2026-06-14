@@ -1,7 +1,7 @@
 # Track B B2b/B3: CLV Receiver-Primary Schedule
 
 Status: B2/B3 diagnostic.  This is not a proof certificate and does not close
-E5'.  It tests the viable branch left after
+E5p.  It tests the viable branch left after
 `docs/trackB/b2b_clv_bridge_budget.md`:
 
 ```text
@@ -20,7 +20,7 @@ does ||P(M^+) - P0(M^+)||_G show B3-sized decay?
 The theorem question is separate:
 
 ```text
-Can original E5' be reformulated so that this receiver-primary object
+Can original E5p be reformulated so that this receiver-primary object
 actually controls the edge defect without a separate
 P(edge) <= P(M^+) + R_K G bridge?
 ```
@@ -74,7 +74,7 @@ Guinand Weil explicit formula test function Selberg majorant zero-side PSD
 returned the corrected cone, existing `Q^star` / Weil functional packaging,
 prime-term bridge files, and old explicit-formula decomposition notes.  It did
 not return a theorem that makes the Selberg receiver the primary
-Hermitian-square object for E5'.
+Hermitian-square object for E5p.
 
 External primary-source scan confirms the genre:
 
@@ -206,14 +206,14 @@ The next mathematical target is not another scalar majorant.  It is the
 formulation theorem:
 
 ```text
-Original E5' edge defect
+Original E5p edge defect
   -> receiver-primary Guinand-Weil / Hermitian-square test object
   -> zero-side PSD controls the receiver term
   -> prime-side residual is the measured P(M^+) - P0(M^+).
 ```
 
 If this formulation cannot be made precise, then the current CLV receiver
-evidence remains only a useful diagnostic, not a route to E5'.
+evidence remains only a useful diagnostic, not a route to E5p.
 
 ## Proshka Audit Block
 
@@ -223,7 +223,7 @@ residual on the stable packet schedule.  Over K=2,2.5,3,3.5 the best smoothed
 residuals are roughly `0.00517, 0.00197, 0.00661, 0.00101`.
 
 Point of blockage:
-This does not bound the hard edge unless we can formulate E5' with the
+This does not bound the hard edge unless we can formulate E5p with the
 receiver as the primary Hermitian-square explicit-formula test object.  The
 post-hoc scalar bridge is already fatal because it pays a large `R_K`.
 
@@ -247,7 +247,7 @@ bridge R at best smooth ~= 12.51649
 ```
 
 Question for Proshka:
-Can E5' be restated so that the Selberg receiver is the primary
+Can E5p be restated so that the Selberg receiver is the primary
 Guinand-Weil/Hermitian-square test object, avoiding hard-edge majorization?
 If yes, what is the exact Q3 cone statement and where does zero-side PSD enter?
 
@@ -264,5 +264,5 @@ B_R^+ = (P(M^+) - P(1_I)) - (P0(M^+) - P0(1_I)).
 The follow-up probe shows that `B_R^+` tracks the hard-edge defect on the
 tested stable packet schedule.  Therefore the missing theorem is not just
 "make the receiver primary"; it is either a route-equivalence theorem that
-changes the E5' ledger to the receiver object, or a cone-adapted receiver that
+changes the E5p ledger to the receiver object, or a cone-adapted receiver that
 cancels `B_R^+`.

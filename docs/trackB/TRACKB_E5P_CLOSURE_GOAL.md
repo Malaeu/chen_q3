@@ -1,11 +1,11 @@
-# Track B E5' Closure Goal
+# Track B E5p Closure Goal
 
 Status: IN_PROGRESS_TRACKB_E5P. Strategy/certificate documentation only:
 no Lean proof files, no `Q3.Main` edit, no route mutation, and no RH claim.
 
 ## Mission
 
-Close or kill the Track B / E5' edge-defect node by deciding the restricted
+Close or kill the Track B / E5p edge-defect node by deciding the restricted
 finite operator inequality
 
 ```text
@@ -18,11 +18,8 @@ The finite certificate target is
 mu_K * G_K - E_edge,K >= 0 on ker(Q_K),
 ```
 
-or, only if a genuine same-space pre-edge reserve is proved,
-
-```text
-(m_old(K) + mu_K) * G_K - E_edge,K >= 0 on ker(Q_K).
-```
+A reserve-augmented target is not active.  It can be introduced only if a
+new same-space pre-edge reserve ledger is proved; current `m_old(K)=0`.
 
 ## Current Verdict
 
@@ -104,7 +101,7 @@ R + tau_R Q^T Q >= rFloor * I
 ```
 
 It is live as an exact LDL receiver pattern, but it is not a free pre-edge
-reserve for E5':
+reserve for E5p:
 
 ```text
 m_old(K) = 0
@@ -145,7 +142,7 @@ K=3:   mu=0.51, tau=100000000, interval min eigen lower > 0.0123292
 K=3.5: mu=0.75, tau=100000000, interval min eigen lower > 0.0150616
 ```
 
-This is conditional on supplied `mu`; it is not yet the analytic E5' `mu_K`
+This is conditional on supplied `mu`; it is not yet the analytic E5p `mu_K`
 comparison.
 
 ## Lean Status
@@ -160,7 +157,7 @@ Q3.Proofs.PSD_PenaltyCertificate.quadForm_nonneg_on_boundaryNull_of_penalty_nonn
 Q3.Proofs.PSD_PenaltyCertificate.penalty_lower_bound_of_ratMatrixWeightedSquare_identity
 ```
 
-No current Lean declaration names the Track B E5' finite object
+No current Lean declaration names the Track B E5p finite object
 `mu_K * G_K - E_edge,K`.
 
 ## DONE Conditions

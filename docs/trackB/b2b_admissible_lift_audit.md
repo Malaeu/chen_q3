@@ -1,7 +1,7 @@
 # Track B B2b: Admissible-Lift Audit
 
 Status: `B2-GAP(admissible lift)`.  This is strategy documentation and a
-Proshka-ready blocker.  It is not a proof of E5', not a proof of RH, and not a
+Proshka-ready blocker.  It is not a proof of E5p, not a proof of RH, and not a
 Lean proof file.
 
 ## Target

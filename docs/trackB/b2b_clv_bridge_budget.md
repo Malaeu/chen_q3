@@ -1,7 +1,7 @@
 # Track B B2b/B3: CLV Receiver Bridge Budget
 
 Status: B2/B3 diagnostic.  This is not a proof certificate and does not close
-E5'.  It takes the bridge gap from
+E5p.  It takes the bridge gap from
 `docs/trackB/b2b_clv_receiver_probe.md` and turns it into an explicit budget:
 
 Preflight route warning: `docs/trackB/b2_uncertainty_tax_preflight.md` records
@@ -281,7 +281,7 @@ The naive scalar-majorant bridge
 P(edge) <= P(M+) + R_K(delta)*G
 ```
 
-does not close E5' on the current stable packet family.  The best-tested
+does not close E5p on the current stable packet family.  The best-tested
 budgets over `delta` do not show B3 decay.
 
 Point of blockage:

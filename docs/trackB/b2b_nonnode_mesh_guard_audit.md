@@ -1,7 +1,7 @@
 # Track B B2b: Non-Node Mesh Guard Audit
 
 Status: RP4/B2 diagnostic and proof-generator audit.  This is not a proof of
-E5', not a proof of RH, and not a Lean proof file.
+E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_nonnode_interval_stress_audit.md`.  The
 stress audit measured global derivative-inflation tolerance.  This card

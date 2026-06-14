@@ -1,7 +1,7 @@
 # Track B B2b: Packet-Scale Sweep for Finite-Op Decay
 
 Status: B2 diagnostic.  This is not a proof certificate and does not close
-E5'.  It tests whether the bad `FINITE-OP + CLV-tail` scale behavior in
+E5p.  It tests whether the bad `FINITE-OP + CLV-tail` scale behavior in
 `docs/trackB/b2b_finiteop_tail_probe.md` is caused by the fixed Step13 packet
 choice `ell=0.35`.
 
@@ -126,7 +126,7 @@ K=3, ell=5.5:
   kerQ_dim = 1
 ```
 
-This is not an E5' route.  It is mostly a dimensional collapse of the projected
+This is not an E5p route.  It is mostly a dimensional collapse of the projected
 packet space.
 
 ## Grid Refinement Check
@@ -172,7 +172,7 @@ current projected `G` metric.
 
 `PARTIAL(packet scale matters)`.
 
-But this does not close E5':
+But this does not close E5p:
 
 ```text
 B2-GAP(normalized packet theorem or structured ordinary-prime mean estimate)
@@ -217,7 +217,7 @@ At K=2, `ell=0.75`, `grid_delta=0.5` gives a non-degenerate improvement
 `grid_delta=0.25` raises epsilon to `≈0.092936`.
 
 Question for Proshka:
-What is the correct normalized packet family for the E5' cone: fixed-width
+What is the correct normalized packet family for the E5p cone: fixed-width
 packets, width proportional to K, or a two-scale family that separates
 ordinary-prime mean control from boundary-null capture?
 

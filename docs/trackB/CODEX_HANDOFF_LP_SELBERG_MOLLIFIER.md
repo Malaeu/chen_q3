@@ -57,7 +57,7 @@ Path:
 
 #### dual clamp and budget interface
 - Formula: `certificate_gap_K = d_K-p_K` for finite LP slack
-- Formula: `budget_slack_K = mu_K-d_K` for the actual E5' budget comparison
+- Formula: `budget_slack_K = mu_K-d_K` for the actual E5p budget comparison
 - This does not replace the open `mu_K` entry unless the same-unit bridge is proved
 
 #### Feasibility check protocol
@@ -121,7 +121,7 @@ Path:
 S5.1 signed-small repair died (negative mass ~0.5). Revive via K-mollifier:
 pre-multiply margin functional on K-cell by tunable finite `M_K` (combination
 of edge-defect indicators), trade uniform per-cell bound for
-positive-proportion of K where E5'-budget stays open.
+positive-proportion of K where E5p-budget stays open.
 
 ### Structure
 

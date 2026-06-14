@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Track B / E5' adaptive refinement probe for non-node interval guard failures.
+Track B / E5p adaptive refinement probe for non-node interval guard failures.
 
 The coarse multi-cell sweep intentionally uses a uniform mesh.  Near Vaaler
 receiver halos this can be too wide even when the sampled atom is far from a
@@ -517,7 +517,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         ),
         "proof_status": (
             "diagnostic_only: separates mesh-width halo failures from genuine "
-            "edge-jump/source-box failures; not a proof of E5' and not a Lean "
+            "edge-jump/source-box failures; not a proof of E5p and not a Lean "
             "certificate"
         ),
         "D2": (

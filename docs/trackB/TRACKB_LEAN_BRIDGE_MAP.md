@@ -1,17 +1,17 @@
-# Track B E5' Lean Bridge Map
+# Track B E5p Lean Bridge Map
 
 Status: READ_ONLY_MAP. This file records actual local names/files found by
 `rg`/local inspection. No Lean names are invented and no Lean files were edited.
 
 ## Scope
 
-The E5' finite target is not currently a named Lean theorem. The bridge map
+The E5p finite target is not currently a named Lean theorem. The bridge map
 therefore separates:
 
 ```text
 existing reusable receivers / definitions
 vs.
-missing Track B E5' finite objects
+missing Track B E5p finite objects
 ```
 
 ## Core Q3 Names
@@ -56,12 +56,12 @@ packet raw-edge domination theorem.
 | Euclidean energy | `Q3.Proofs.euclideanEnergy` | same | old floor normalization |
 | rational weighted-square matrix bridge | `Q3.Proofs.penalty_lower_bound_of_ratMatrixWeightedSquare_identity` | same | exact LDL receiver |
 | boundary penalty vanishes | `Q3.Proofs.penaltyForm_eq_quadForm_of_boundaryNull` | same | kerQ bridge |
-| PSD on boundary null | `Q3.Proofs.quadForm_nonneg_on_boundaryNull_of_penalty_nonneg` | same | direct E5' consumer pattern |
+| PSD on boundary null | `Q3.Proofs.quadForm_nonneg_on_boundaryNull_of_penalty_nonneg` | same | direct E5p consumer pattern |
 | strict-to-nonnegative receiver | `Q3.Proofs.quadForm_nonneg_on_boundaryNull_of_penalty_pos` | same | reusable |
 | finite certificate structure | `Q3.Proofs.FinitePenaltyCert` | same | reusable |
 | lower-bound certificate structure | `Q3.Proofs.FinitePenaltyLowerBoundCert` | same | reusable |
 
-This is the best existing Lean landing zone for a future exact E5' certificate.
+This is the best existing Lean landing zone for a future exact E5p certificate.
 
 ## Old Step32F Lower-Bound Names
 
@@ -82,7 +82,7 @@ This is the best existing Lean landing zone for a future exact E5' certificate.
 | control lower bounds | `controlK9DLowerBound_ldl`, `controlK9RLowerBound_ldl` | same | exact old receiver |
 | old finite certs | `primaryK11FinitePenaltyCert_ldl`, `controlK9FinitePenaltyCert_ldl` | same | old exact cert |
 
-Verdict for E5':
+Verdict for E5p:
 
 ```text
 usable as penalty/LDL pattern: yes
@@ -101,7 +101,7 @@ usable as free m_old pre-edge reserve: no, absent new ledger
 | direct prime payload | `PSD_CenteredCoeffPrimeDirectProfilePayloadImport.lean` | `q3.lean.aristotle/Q3/Proofs/` | generated payload file |
 | delta/live payload | `PSD_CenteredCoeffPrimeDeltaLivePayloadImport.lean` | same | generated payload file |
 
-These names are PSD Step33 infrastructure, not Track B E5' objects.
+These names are PSD Step33 infrastructure, not Track B E5p objects.
 
 ## Executable Track B Instrument Names
 
@@ -123,7 +123,7 @@ These names are PSD Step33 infrastructure, not Track B E5' objects.
 These are not Lean certificates. They are the current source of finite matrices
 for Phase 4 diagnostics and for any future rational/interval exporter.
 
-## Missing Lean Objects For E5'
+## Missing Lean Objects For E5p
 
 No current Lean declaration was found for:
 

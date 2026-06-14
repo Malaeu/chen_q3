@@ -1,13 +1,13 @@
 # Track B B2b: Route-Equivalence Audit for Smoothed Receiver
 
-Status: RP1 audit.  This is not a proof of E5', not a proof of RH, and not a
+Status: RP1 audit.  This is not a proof of E5p, not a proof of RH, and not a
 Lean proof file.
 
 After `docs/trackB/b2b_affine_receiver_no_free_lunch.md`, one surviving option
 was:
 
 ```text
-RP1: prove that the E5' ledger can use the smoothed receiver residual D_R
+RP1: prove that the E5p ledger can use the smoothed receiver residual D_R
      instead of the hard edge residual D_I.
 ```
 
@@ -91,7 +91,7 @@ returned the same pattern:
 
 - `docs/trackB/b2b_admissible_lift_audit.md` uses `P_edge` and `P0_edge` in
   the admissible-lift theorem shape.
-- No local theorem states that the downstream E5' ledger accepts
+- No local theorem states that the downstream E5p ledger accepts
   `P(M^+) - P0(M^+)` in place of `P_edge - P0_edge`.
 
 The q3_docs hits also point to the corrected positive-definite cone and to
@@ -114,7 +114,7 @@ RP1 would need a theorem of one of the following forms.
 ### RP1a: Ledger Equivalence
 
 ```text
-If ||D_R||_G <= epsilon_K, then the original E5' hard-edge ledger is closed.
+If ||D_R||_G <= epsilon_K, then the original E5p hard-edge ledger is closed.
 ```
 
 This is false without extra hypotheses, because `D_R` and `D_I` are different
@@ -127,7 +127,7 @@ The downstream theorem never needed D_I; it only needed D_R for an allowed
 receiver R.
 ```
 
-This would be a real route rewrite.  It must update the statement of E5' and
+This would be a real route rewrite.  It must update the statement of E5p and
 prove that every downstream use accepts the smoothed receiver normalization.
 No local document provides this.
 
@@ -183,12 +183,12 @@ edge defect.
 
 ## Verdict
 
-`FATAL(plain RP1 replacement of E5' by D_R)`.
+`FATAL(plain RP1 replacement of E5p by D_R)`.
 
 This is not fatal for Track B.  It kills only the route:
 
 ```text
-prove the smoothed receiver residual and call that E5'.
+prove the smoothed receiver residual and call that E5p.
 ```
 
 The remaining viable options are:
@@ -217,11 +217,11 @@ Follow-up:
 
 Claim:
 The small smoothed receiver residual `D_R = P(M^+) - P0(M^+)` does not close
-the original E5' hard-edge ledger, whose local target is
+the original E5p hard-edge ledger, whose local target is
 `D_I = P(1_I) - P0(1_I)`.
 
 Point of blockage:
-Local Track B documents define E5'/B3 targets using the hard edge:
+Local Track B documents define E5p/B3 targets using the hard edge:
 `E_I(v)`, `P_edge`, `P0_edge`, and
 `N^T(P_edge-P0_edge)N <= epsilon_K*N^T G N`.  No local theorem says the
 downstream ledger accepts `D_R` instead.
@@ -246,7 +246,7 @@ At K=3.5, `ell=1.375`, `delta=1`:
 ```
 
 Question for Proshka:
-Is there a legitimate downstream rewrite in which E5' only needs the smoothed
+Is there a legitimate downstream rewrite in which E5p only needs the smoothed
 receiver ledger `D_R`?  If yes, what exact theorem statements and interfaces
 replace `P_edge-P0_edge`?  If not, Track B should stop pursuing RP1 and move
 to a nonlinear cone-adapted receiver or direct ordinary-prime mean control.

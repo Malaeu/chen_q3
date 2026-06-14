@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Track B / E5' non-node interval-atom audit.
+Track B / E5p non-node interval-atom audit.
 
 This script is a proof-generator scaffold, not a proof certificate.  It
 selects the same `clvsigncert` opnorm direction, focuses on one non-node mesh

@@ -1,6 +1,6 @@
 # Track B B2b: Affine Receiver No-Free-Lunch
 
-Status: B2 route-kill for one receiver family.  This is not a proof of E5',
+Status: B2 route-kill for one receiver family.  This is not a proof of E5p,
 not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_receiver_primary_correction_gap.md`.
@@ -214,7 +214,7 @@ that the receiver moved out of `D_theta`.
 
 This is not fatal for Track B.  It refines the remaining options:
 
-1. RP1 route-equivalence: prove the E5' ledger genuinely accepts the smoothed
+1. RP1 route-equivalence: prove the E5p ledger genuinely accepts the smoothed
    receiver object `D_R` instead of the original hard edge `D_I`.
 2. Nonlinear/cone-adapted RP4: build a receiver whose correction cancels by a
    structural identity, not one whose correction is merely bounded separately.
@@ -261,7 +261,7 @@ theta=1:
 ```
 
 Question for Proshka:
-Is there a route-equivalence theorem that allows E5' to use the smoothed
+Is there a route-equivalence theorem that allows E5p to use the smoothed
 receiver residual `D_R` directly?  If not, what nonlinear/cone-adapted
 receiver condition could cancel `B_R` structurally rather than paying it as a
 separate norm?
@@ -270,10 +270,10 @@ separate norm?
 
 `docs/trackB/b2b_route_equivalence_audit.md` audits the first branch of that
 question.  It finds no local route-equivalence theorem that lets the original
-E5' hard-edge ledger use `D_R` in place of `D_I`.  The plain RP1 move
+E5p hard-edge ledger use `D_R` in place of `D_I`.  The plain RP1 move
 
 ```text
-prove ||D_R||_G small and call that E5'
+prove ||D_R||_G small and call that E5p
 ```
 
 is therefore a route-kill.  A legitimate smoothed route would need an explicit

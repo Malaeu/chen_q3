@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Track B / E5' raw-edge interval penalty certificate generator.
+Track B / E5p raw-edge interval penalty certificate generator.
 
 This script builds Arb interval matrices for the finite raw-edge target
 
@@ -8,7 +8,7 @@ This script builds Arb interval matrices for the finite raw-edge target
 
 on the full packet coefficient space.  If the interval eigenvalue lower bound
 is positive, this gives a proof-grade finite PSD certificate for the supplied
-`mu` and `tau`; it does not prove that `mu` is the analytic E5' budget.
+`mu` and `tau`; it does not prove that `mu` is the analytic E5p budget.
 
 All coordinates are raw-log coordinates: a = r * log(p), edge=[2K,4K].
 """

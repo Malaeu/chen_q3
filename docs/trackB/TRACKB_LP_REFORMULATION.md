@@ -25,8 +25,9 @@ S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN
 ```
 
 The missing object is not another scalar estimate.  The LP can expose the
-finite dual clamp `d_K` and the certificate gap `d_K-p_K`, but the E5'
-budget comparison remains `mu_K-d_K` in a same-unit normalization.  The
+finite dual clamp `d_K` and the certificate gap `d_K-p_K`, but the E5p
+budget comparison remains `mu_K-d_K` minus transfer guards in a same-unit
+normalization.  The
 Cohn-Elkies move is:
 
 ```text
@@ -66,7 +67,7 @@ Edge_K(v) =
 ```
 
 The sign convention is chosen so that positive `Edge_K` is the defect that has
-to fit in the E5' budget.  Equivalently, if the local script emits the opposite
+to fit in the E5p budget.  Equivalently, if the local script emits the opposite
 signed prime residual, replace `D_K` by `-D_K`; the LP definition is the
 Rayleigh value of the chosen defect matrix, not a new mathematical object.
 
@@ -136,17 +137,17 @@ d_K = inf {
 Then the finite certificate gap is:
 
 ```text
-certificate_gap_K = d_K - p_K.
+certificate_gap_K  =  d_K  -  p_K  -  finite_guards_K.
 ```
 
-This is not the E5' `mu`-budget.  It is a finite certificate/duality slack.  If
+This is not the E5p `mu`-budget.  It is a finite certificate/duality slack.  If
 the relaxation is driven to strong-duality equality and the guards consume the
 residual, then the finite LP route has no slack for this witness class.
 
-The E5' budget comparison is instead:
+The E5p budget comparison is instead:
 
 ```text
-budget_slack_K = mu_K - d_K.
+budget_slack_K  =  mu_K -  d_K  -  transfer_guards_K.
 ```
 
 After proof-grade guards:
@@ -164,10 +165,10 @@ usable_budget_slack_K =
 Gate:
 
 ```text
-if usable_budget_slack_K > 0:
+if budget_slack_K > 0 and all expanded guards are paid:
   Route C has a proof-relevant budget margin at K.
 
-if usable_budget_slack_K <= 0:
+if budget_slack_K <= 0:
   Route C is numerically/finitely fatal at K unless a stronger dual family is
   supplied.
 
@@ -175,7 +176,7 @@ if mu_K and d_K are not in a proved same-unit normalization:
   status is GAP, not GREEN.
 ```
 
-This corrects the old shorthand "mu_budget(K) as LP gap".  The finite formulas
+This corrects the old shorthand "mu budget as LP gap".  The finite formulas
 are ready; the remaining open work is solving the dual feasibility problem,
 measuring whether the certificate gap survives, proving the same-unit `mu_K`
 bridge, and attaching proof-grade error guards.
@@ -208,9 +209,10 @@ Protocol:
    plus sampled/interval sign constraints for the analytic witness W_K.
    ```
 
-5. Record `d_K`, `p_K`, `certificate_gap_K=d_K-p_K`, and all numerical guards.
-   The proof-relevant price-table number is `usable_budget_slack_K=mu_K-d_K`
-   after guards and only after the same-unit bridge is proved.
+5. Record `d_K`, `p_K`, `certificate_gap_K=d_K-p_K-finite_guards_K`, and all
+   numerical guards. The proof-relevant price-table number is
+   `budget_slack_K=mu_K-d_K-transfer_guards_K`, with the expanded diagnostic
+   used only after the same-unit bridge is proved.
 
 A thin future wrapper may be useful, but it must be a wrapper around the current
 K-cell matrices, not a new Track B object.  Until that wrapper exists, the LP
@@ -246,7 +248,7 @@ spectral clipping without an edge-control projection ledger
 Registered forecast:
 
 ```text
-B2B_LP_FATAL is more likely than B2B_LP_GREEN
+B2B_LP_FATAL is more likely than B2B_LP_CERT_READY
 ```
 
 but this is a forecast, not a proof.  The finite LP gate is worth running
@@ -276,7 +278,7 @@ Failure statuses:
 | `LP_DUAL_SIGN_WRONG` | margin sign violation | The witness does not clamp the edge defect. |
 | `LP_DUAL_NORMALIZATION_BROKEN` | S3 closure fails after insertion | The explicit-formula transfer changed Q3 normalization. |
 | `LP_GAP_NONPOSITIVE` | `certificate_gap_K <= guards` | The finite LP certificate has no usable slack. |
-| `BUDGET_SLACK_GAP` | `mu_K-d_K` not same-unit/proved | The E5' budget comparison is still open. |
+| `BUDGET_SLACK_GAP` | `mu_K-d_K` not same-unit/proved | The E5p budget comparison is still open. |
 
 This also explains S5C0: the surcharge was confirmed because PSD/nonnegative
 Fourier sign is expensive.  `mu` stayed open because the same-unit

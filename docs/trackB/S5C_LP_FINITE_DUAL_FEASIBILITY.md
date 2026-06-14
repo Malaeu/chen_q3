@@ -31,14 +31,14 @@ survives Q3 normalization?
 ```
 
 This is the last honest LP test before declaring the current dual/LP class
-fatal for E5'.
+fatal for E5p.
 
 ## Registered Prediction
 
 Prediction:
 
 ```text
-B2B_LP_FATAL is more likely than B2B_LP_GREEN.
+B2B_LP_FATAL is more likely than B2B_LP_CERT_READY.
 ```
 
 Reason:
@@ -129,11 +129,17 @@ d_K = inf { dual_clamp_K(W) :
 Certificate gap:
 
 ```text
-certificate_gap_K =
-  d_K - p_K
+certificate_gap_K = d_K - p_K - finite_guards_K
 ```
 
 Budget:
+
+```text
+budget_slack_K =
+  mu_K - d_K - transfer_guards_K
+```
+
+Expanded same-unit diagnostic:
 
 ```text
 usable_budget_slack_K =
@@ -162,13 +168,27 @@ Required checks:
 | boundary | `Q_1,Q_2` boundary functionals stay within guard | `LP_WITNESS_BOUNDARY_FAIL` |
 | closure | S3-style four-slot closure survives insertion | `LP_WITNESS_Q3_NORMALIZATION_FAIL` |
 | finite certificate | `certificate_gap_K > guards` | `LP_GAP_NONPOSITIVE` |
-| budget | `usable_budget_slack_K > 0` after a same-unit `mu_K` bridge | `BUDGET_SLACK_GAP` or `B2B_LP_FATAL` |
+| budget | `budget_slack_K > 0` after a same-unit `mu_K` bridge, with expanded guards paid if using `usable_budget_slack_K` | `BUDGET_SLACK_GAP` or `B2B_LP_FATAL` |
+
+Forbidden LP-GREEN trap:
+
+```text
+B2B_LP_GREEN is forbidden as a closure of E5p.
+It is at most a finite-LP signal. Closure requires:
+
+  (i)  budget_slack_K >= 0 (same-unit), AND
+  (ii) same-unit mu_K bridge proven (TRACKB_E5P_THEOREM.md assumption A3), AND
+  (iii) penalty PSD cert mu_K*G_K - E_edge_K + tau_K*Q_K^T Q_K >= 0 (A4).
+
+Missing any one -> status = GAP, not GREEN.
+```
 
 ## Verdicts
 
 ```text
-B2B_LP_GREEN:
-  usable_budget_slack_K > 0 on the tested K values
+B2B_LP_CERT_READY:
+  budget_slack_K > 0 on the tested K values
+  after a proved same-unit bridge
   and PSD/sign/boundary/closure guards all pass.
 
   Meaning:
@@ -176,7 +196,7 @@ B2B_LP_GREEN:
     The finite witness becomes input for an analytic E5 lemma.
 
 B2B_LP_FATAL:
-  usable_budget_slack_K <= 0
+  budget_slack_K <= 0
   or the witness breaks PSD/sign/boundary/Q3 normalization.
   If the same-unit mu_K bridge is missing, the correct status is GAP, not GREEN.
 

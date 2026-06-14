@@ -1,7 +1,7 @@
 # Track B B2b: Selberg-CLV Receiver Probe
 
 Status: B2 diagnostic.  This is not a proof certificate and does not close
-E5'.  It tests the next viable branch after the generic Hilbert spacing
+E5p.  It tests the next viable branch after the generic Hilbert spacing
 barrier:
 
 ```text
@@ -220,7 +220,7 @@ scalar majorant works pointwise on shifts
 `GAP(hard-edge-to-CLV-receiver operator bridge is missing)`.
 
 This keeps B2b alive but changes the theorem target.  We should not try to
-prove E5' by scalar majorization of the edge indicator.  The next theorem must
+prove E5p by scalar majorization of the edge indicator.  The next theorem must
 be one of:
 
 1. A Hermitian-square explicit-formula identity where the hard edge is never

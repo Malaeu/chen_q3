@@ -1,7 +1,7 @@
 # Track B B2b: Explicit-Formula Route and Cone-Transport Gap
 
 Status: GAP(cone transport).  This is strategy and blocker documentation only.
-It is not a proof of E5', not a proof of RH, and not a Lean proof file.
+It is not a proof of E5p, not a proof of RH, and not a Lean proof file.
 
 ## Goal
 
@@ -86,7 +86,7 @@ The target theorem shape is:
 |E_I(v)| <= epsilon_K^CLV * <v, G v>
 ```
 
-or the one-sided variant required by the E5' ledger, with explicit
+or the one-sided variant required by the E5p ledger, with explicit
 `epsilon_K^CLV` and no hidden normalization changes.
 
 For `K=2`, the current measured proxy is:

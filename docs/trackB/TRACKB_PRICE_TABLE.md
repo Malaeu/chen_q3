@@ -15,10 +15,10 @@ The current question is sharper:
 
 ```text
 Is there any admissible explicit-formula lift whose total price fits the
-mu-budget?
+same-unit `mu_K` budget?
 ```
 
-Here "price" means the loss paid to preserve the structures needed by E5':
+Here "price" means the loss paid to preserve the structures needed by E5p:
 
 ```text
 edge-control cost
@@ -29,7 +29,7 @@ uncertainty tax
 tail / finite-ledger remainder
 ```
 
-If a route's price is larger than the `mu`-budget, the route is not merely
+If a route's price is larger than the `mu_K` budget, the route is not merely
 hard.  It is structurally dead for Track B.
 
 ## Current Compression
@@ -61,9 +61,9 @@ Route D is fallback only after LP/Selberg/mollifier fail.
 | S4 product lift | Use `L=Mplus*F_v` as zero-side PSD object. | min hat `-1.68036`, `-2.67972`, `-2.44648`. | Fails PSD eligibility before budget. | `B2B_S4_FATAL_NOT_PSD_ELIGIBLE_FOR_CURRENT_LIFT` | Do not reuse this lift. |
 | S5.1 Route A | Split into positive part minus small negative ledger. | negative/L1 for `L`: `0.499632`, `0.500130`, `0.500021`; for `E`: `0.508842`, `0.494477`, `0.506019`. | Negative part is about half the spectrum, not a small ledger tail. | `REFUTED_FOR_CURRENT_FAMILY` | Route A closed for this family. |
 | Route B | Clip spectrum: `hat(L_proj)=max(hat(L),0)`. | Would remove budget-sized spectral mass. Selberg exact edge tax is `1/B_K=1` in current run, but current lifted family has min hats `-1.68036`, `-2.67972`, `-2.44648`. | Selberg repairs scalar edge constant, not PSD/cone transport. | `SELBERG_REPAIR_NO_UNDIE_ROUTE_B` | Use Selberg only inside LP dual or after exact projection-loss budget. |
-| S5C0 Route C | Build PSD-first hard-edge lift. | At `B_K=1`, PSD tax `2.93072`, `3.50596`, `3.96288`; ordinary tax is `1`. | surcharge confirmed, exact `mu_budget(K)` absent. | `S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN` | Supply exact `mu_budget(K)` or move to Route D. |
+| S5C0 Route C | Build PSD-first hard-edge lift. | At `B_K=1`, PSD tax `2.93072`, `3.50596`, `3.96288`; ordinary tax is `1`. | surcharge confirmed, same-unit `mu_K` source absent. | `S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN` | Supply same-unit `mu_K` source or move to Route D. |
 | S5C-LP final gate | Spectral/SOS dual clamp on the finite K-cell cone. | Budget-scale `gamma_cap=edge_scale` is infeasible for signed-triplet dictionary on `K=2,3,3.5`; K=2 remains infeasible with small `all` dictionary. Relaxed K=2 `10x` cap gives `eta=1.647`, `clamp=2.66093` vs edge scale `0.101393`; K=3/3.5 at `100x` still guard-fail with huge clamps. | Current executable finite witness family is red; route-level impossibility for every spectral/SOS witness remains open. | `S5C_LP_DICTIONARY_RED` | Either supply richer exact dual-cone basis or accept practical LP-family red signal and switch main effort to operator/prolate. |
-| E5' raw-edge interval PSD | Certify direct raw-edge domination by supplied finite thresholds. | Arb interval full-space penalty cert passes for `K=2,3,3.5` with supplied `mu=(0.45,0.51,0.75)` and `tau=1e8`; min eigen lower bounds are about `0.0129205`, `0.0123293`, `0.0150617`. | Finite raw-edge PSD is certified for supplied mu values, but analytic same-unit `mu_K` bridge is still missing. | `E5P_RAW_EDGE_INTERVAL_CERT_PASS_SUPPLIED_MU`; `SAME_UNIT_ANALYTIC_MU_BRIDGE_GAP` | Prove/source analytic `mu_K` in same `G/Q` normalization, or lower supplied thresholds to a proved budget. |
+| E5p raw-edge interval PSD | Certify direct raw-edge domination by supplied finite thresholds. | Arb interval full-space penalty cert passes for `K=2,3,3.5` with supplied `mu=(0.45,0.51,0.75)` and `tau=1e8`; min eigen lower bounds are about `0.0129205`, `0.0123293`, `0.0150617`. Same-unit bridge audit found no analytic `mu_K` source for these thresholds. | Finite raw-edge PSD is certified for supplied mu values, but analytic same-unit `mu_K` bridge is still missing. | `E5P_RAW_EDGE_INTERVAL_CERT_PASS_SUPPLIED_MU`; `E5P_BRIDGE_SOURCE_GAP` | Supply a repository analytic `mu_K` theorem in same `G/Q` normalization, or lower supplied thresholds to a proved budget. |
 | Old Step32F lower-bound reuse | Reuse the certified `C=A-P = Dtheta + theta*Rkappa` LDL reserve as the edge budget. | Task 0A: the old object is a live exact rational LDL certificate, not the buried float Rayleigh artefact. Task 0B: it is not a free pre-edge reserve, since old `P` already contains the edge prime support. Old floors imply only `m_G >= 1.354e-4` (`primaryK11`) and `1.254e-5` (`controlK9`) in the old `L=3` self-cell, while forced raw edge `[3,6]` has `G`-opnorm about `1.10`. Current S5C cells are also different operators/normalizations. | The old engine is real and useful as an LDL pattern, but not as a ready raw-edge domination reserve; adding `m_old` to `mu_K` would require a new pre-edge ledger-support proof. | `TRACKB_REUSE_GAP_NOT_EDGE_OPERATOR`; `TRACKB_REUSE_GAP_CIRCULARITY_OR_LEDGER_SUPPORT`; nearest-cell `TRACKB_REUSE_FATAL_INSUFFICIENT_RESERVE` | Do not build a new external lift from this reserve; reuse only the penalty/LDL receiver pattern. |
 | S5.1 (mollifier) | K-mollifier finite combo of edge-defect indicators. | Ansatz exists, but no inverse Dirichlet expansion / K-family second moment found locally. | Cannot revive S5.1 from current inputs. | `MOLLIFIER_GAP_NO_INVERSE_EXPANSION` | Do not spend until inverse expansion and off-diagonal moment are supplied. |
 | Route D | Finite bad-mode / bad-region ledger plus tail bound. | Not run yet. | Fallback only if LP dual, Selberg-compatible lift, and mollifier route all fail. | `PARKED_FALLBACK_AFTER_D1_D2_D3` | Run only after the three atlas-derived routes are explicitly exhausted. |
@@ -73,7 +73,7 @@ Route D is fallback only after LP/Selberg/mollifier fail.
 The decisive proof-relevant comparison is:
 
 ```text
-budget_slack_K = mu_K - d_K
+budget_slack_K  =  mu_K -  d_K  -  transfer_guards_K
 ```
 
 where:
@@ -81,11 +81,11 @@ where:
 ```text
 p_K = sup edge-defect Rayleigh value over the admissible finite K-cell cone
 d_K = inf dual magic-function clamp satisfying PSD/sign/boundary constraints
-certificate_gap_K = d_K - p_K
+certificate_gap_K  =  d_K  -  p_K  -  finite_guards_K
 ```
 
 The scalar `certificate_gap_K` is a finite LP/certificate slack.  It is useful
-for checking the health of a dual witness, but it is not the analytic E5'
+for checking the health of a dual witness, but it is not the analytic E5p
 `mu`-budget.  The same-unit interface is fixed in
 `docs/trackB/MU_BUDGET_INTERFACE.md`.
 
@@ -97,10 +97,10 @@ epsilon_K <= C*K^(-c)
 ```
 
 The LP reformulation replaces part of that ambiguity with a computable finite
-certificate gap.  It does not prove the E5' budget fits.  If exact
+certificate gap.  It does not prove the E5p budget fits.  If exact
 optimization/guards collapse the certificate gap to zero, that is a negative
-finite LP verdict.  If `budget_slack_K = mu_K-d_K` is not established in the
-same units, the E5' node remains open.
+finite LP verdict.  If `budget_slack_K = mu_K-d_K-transfer_guards_K` is not established in the
+same units, the E5p node remains open.
 
 Current status:
 
@@ -115,15 +115,15 @@ continuous/interval guards: GAP
 
 ```text
 1. If S5C-LP finite dual feasibility is solved:
-     compute certificate_gap_K = d_K - p_K and all guards.
-     compute usable_budget_slack_K = mu_K - d_K - guards only after
+     compute certificate_gap_K = d_K - p_K - finite_guards_K.
+     compute budget_slack_K = mu_K - d_K - transfer_guards_K only after
      a same-unit mu_K bridge is proved.
 
-     if usable_budget_slack_K > 0:
+     if budget_slack_K > 0:
        Route C(LP) remains alive;
        build the PSD-first admissible lift from the dual witness.
 
-     if usable_budget_slack_K <= 0 or the same-unit bridge is missing:
+     if budget_slack_K <= 0 or the same-unit bridge is missing:
        Route C(LP) is priced and does not fit;
        go to Route D only after checking no Selberg-compatible lift exists.
 
@@ -150,7 +150,7 @@ The immediate deliverable is the same-unit dual clamp and budget comparison:
 
 ```text
 Outcome 1:
-  usable_budget_slack_K = mu_K - d_K - guards is positive
+  budget_slack_K = mu_K - d_K - transfer_guards_K is positive
   -> build the PSD-first admissible lift.
 
 Outcome 2:
@@ -189,7 +189,7 @@ Current recommendation:
 
 ```text
 1. Implement/solve S5C-LP finite spectral/SOS dual feasibility for d_K and
-   certificate_gap_K, then compare mu_K-d_K only through the same-unit interface.
+   certificate_gap_K, then compare mu_K-d_K-transfer_guards_K only through the same-unit interface.
 2. Keep Selberg as scalar edge-constant input inside that LP.
 3. Do not spend on mollifier unless inverse expansion + moment formula appear.
 4. Run Route D only after the LP route is priced.
@@ -224,5 +224,5 @@ SKETCH: numerical price accounting for current Track B families; LP/S5C-LP dual-
 OPEN: richer exact spectral/SOS witness basis; Route D finite ledger
 REFUTED: current product lift, Route A signed-small-negative repair, Selberg-alone Route B rescue, current S5C-LP dictionary, old Step32F reserve as a free pre-edge raw-edge domination budget
 ZERO_CONSISTENT: S3 closure bookkeeping
-GAP: same-unit analytic mu_K bridge for supplied raw-edge thresholds; same-unit mu_K vs d_K bridge; spectral/SOS witness existence; continuous/interval guards for LP dual; old Step32F certificate is not the current edge operator; old Step32F support is post-edge/mixed unless a new ledger proof separates pre-edge reserve; mollifier inverse expansion / second moment
+GAP: same-unit analytic mu_K source for supplied raw-edge thresholds (`E5P_BRIDGE_SOURCE_GAP`); same-unit mu_K vs d_K bridge; spectral/SOS witness existence; continuous/interval guards for LP dual; old Step32F certificate is not the current edge operator; old Step32F support is post-edge/mixed unless a new ledger proof separates pre-edge reserve; mollifier inverse expansion / second moment
 ```

@@ -18,10 +18,10 @@ this one on conflict.
 
 ---
 
-## 1. Naming canon — use `E5p`, never `E5'`
+## 1. Naming canon — use `E5p`, never the ASCII-apostrophe spelling
 
-The character `'` (apostrophe) in `E5'` is **not** the mathematical prime symbol
-`′`. To kill alias-hell we fix one ASCII canon repo-wide:
+The ASCII apostrophe spelling is **not** the mathematical prime symbol `′`.
+To kill alias-hell we fix one ASCII canon repo-wide:
 
 | Context           | Write                                                |
 |-------------------|------------------------------------------------------|
@@ -30,7 +30,7 @@ The character `'` (apostrophe) in `E5'` is **not** the mathematical prime symbol
 | docs (prose)      | `E5p` (introduce once as `E5p = E5-prime = E5′`)       |
 | commit messages   | `E5p`                                                 |
 | diagrams / math   | `E5′` (the unicode prime, **U+2032**) is OK in display |
-| **forbidden**     | `E5'` (ASCII apostrophe), `E5_prime` in new files     |
+| **forbidden**     | ASCII-apostrophe spelling, `E5_prime` in new files    |
 
 **Spoken canon** (so we and Ылша stay aligned):
 
@@ -40,9 +40,9 @@ The character `'` (apostrophe) in `E5'` is **not** the mathematical prime symbol
 
 When Ылша dictates "штрих" / "prime" — it always means `E5p`.
 
-If you find `E5'` (ASCII apostrophe) in any tracked Track B file, **fix it in
-the same commit you touch that file for any reason**. Do not open a separate
-"naming" commit unless asked.
+If you find the ASCII-apostrophe spelling in any tracked Track B file, **fix
+it in the same commit you touch that file for any reason**. Do not open a
+separate "naming" commit unless asked.
 
 ---
 
@@ -51,16 +51,16 @@ the same commit you touch that file for any reason**. Do not open a separate
 The following identifications are **wrong** and must not be re-introduced:
 
 ```
-mu_budget_usable(K)  =  d_K - p_K - errors          ← WRONG
-mu_budget_LP(K)      =  d_K - p_K                   ← WRONG
-B2B_LP_GREEN         ⇐  mu_budget_usable(K) > 0     ← WRONG
+old usable-mu-budget label  =  finite LP gap minus errors  ← WRONG
+old LP-mu-budget label      =  finite LP gap               ← WRONG
+B2B_LP_GREEN                ⇐  old usable label > 0        ← WRONG
 ```
 
 If any tracked file still asserts these, **patch on read**.
 
 Reasons:
 
-- `d_K - p_K` is the duality gap inside the **finite** LP — it knows nothing
+- the `duality_gap` `d_K - p_K` inside the **finite** LP knows nothing
   about the analytic budget.
 - Calling it "mu-budget" creates a false bridge between LP slack and the
   Weil-side analytic μ.
@@ -213,7 +213,8 @@ git diff --check          # whitespace clean
 In priority order:
 
 ### D1. Naming sweep
-Replace every `E5'` (ASCII) in tracked Track B docs and scripts with `E5p`.
+Replace every ASCII-apostrophe spelling in tracked Track B docs and scripts
+with `E5p`.
 One commit, no behaviour change. Skip Unicode `E5′` in display contexts.
 
 ### D2. Verify the bookkeeping
@@ -222,8 +223,8 @@ For each of `MU_BUDGET_INTERFACE.md`, `TRACKB_PRICE_TABLE.md`,
 
 - assert exactly the formulas from Section 3 (with `finite_guards_K` /
   `transfer_guards_K` explicit),
-- patch any remaining `mu_budget_LP = d_K - p_K` or `mu_budget_usable =
-  d_K - p_K - errors` to the new semantics,
+- patch any remaining old LP-mu-budget or old usable-mu-budget labels to the
+  new semantics,
 - do NOT touch Lean files.
 
 ### D3. Same-unit bridge attempt — try IN THIS ORDER

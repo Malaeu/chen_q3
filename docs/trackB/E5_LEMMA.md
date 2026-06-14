@@ -1,7 +1,7 @@
-# Track B E5' Lemma Status
+# Track B E5p Lemma Status
 
 Status: GAP_EXACTLY_NAMED / SAME_UNIT_ANALYTIC_MU_BRIDGE.  This is not a Lean
-proof file and does not claim RH or full E5' closure.
+proof file and does not claim RH or full E5p closure.
 
 ## Target Lemma
 
@@ -42,7 +42,7 @@ This removes the float-only PSD blocker for these supplied constants.
 
 ## What Is Still Missing
 
-The repository does not yet prove that the analytic E5' budget `mu_K` supplies
+The repository does not yet prove that the analytic E5p budget `mu_K` supplies
 these constants in the same `G_K/Q_K` normalization, after all tail, boundary,
 closure, quadrature, and finite-projection guards.
 
@@ -59,7 +59,7 @@ in the same units as the interval certificate.
 ## Old Reserve
 
 The old Step32F LDL engine is reusable as a penalty/LDL pattern only.
-It is not a free pre-edge E5' reserve.
+It is not a free pre-edge E5p reserve.
 
 ```text
 m_old = 0
@@ -67,16 +67,16 @@ m_old = 0
 
 ## Lean Status
 
-No Lean E5' theorem exists locally.  No Lean proof files were edited for this
+No Lean E5p theorem exists locally.  No Lean proof files were edited for this
 node.  The likely future receiver is the generic penalty infrastructure in
 `Q3/Proofs/PSD_PenaltyCertificate.lean`, after a stable payload/bridge exists.
 
 ## Verdict
 
 ```text
-E5' proved: NO
+E5p proved: NO
 finite raw-edge PSD for supplied mu: YES
-old reserve reusable as E5' budget: NO
+old reserve reusable as E5p budget: NO
 m_old: 0
 terminal status: GAP_EXACTLY_NAMED
 gap: SAME_UNIT_ANALYTIC_MU_BRIDGE

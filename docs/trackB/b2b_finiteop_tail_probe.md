@@ -1,7 +1,7 @@
 # Track B B2b: Finite-Op + CLV-Tail Probe
 
 Status: B2 numerical/theorem-shape probe.  This is not a proof certificate and
-does not close E5'.  It tests the fallback branch left after the
+does not close E5p.  It tests the fallback branch left after the
 cost-controlled admissible-lift wall:
 
 ```text
@@ -38,7 +38,7 @@ No extra factor `2` is inserted into the Step13 raw prime weights.
   lambda_min * G <= P_edge - P0_edge <= lambda_max * G.
   ```
 
-  This is only a finite projected model certificate, not a theorem-level E5'
+  This is only a finite projected model certificate, not a theorem-level E5p
   proof.
 
 - `UNCONDITIONAL`: Selberg/Vaaler/CLV extremal-function tools from
@@ -203,7 +203,7 @@ Follow-up:
 
 `PARTIAL(finite projected certificate exists)`.
 
-But this branch does not yet close E5':
+But this branch does not yet close E5p:
 
 ```text
 B2-GAP(normalized packet theorem or uniform finite-op prime-mean estimate)

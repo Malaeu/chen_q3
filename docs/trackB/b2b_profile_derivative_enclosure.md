@@ -1,7 +1,7 @@
 # Track B B2b: Semi-Analytic Packet Derivative Enclosure
 
 Status: RP4/B2 diagnostic and proof-generator refinement.  This is not a
-proof of E5', not a proof of RH, and not a Lean proof file.
+proof of E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_signcert_prototype.md`.  The previous
 prototype identified the next certificate shape:

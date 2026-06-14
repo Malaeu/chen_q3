@@ -1,12 +1,12 @@
 # Track B / B1: Selberg-CLV Pair for the Edge Strip
 
 Status: B1 formula card, strategy documentation only.  This does not prove
-RH, does not prove E5', does not close Step33/L3, and does not modify Lean
+RH, does not prove E5p, does not close Step33/L3, and does not modify Lean
 proof files or `Q3.Main`.
 
 Goal context:
 
-- Track B goal: close the E5' edge defect using unconditional
+- Track B goal: close the E5p edge defect using unconditional
   Beurling-Selberg / CLV technology.
 - This B1 card records the explicit interval majorant/minorant for the edge
   strip and the exact D2 normalization checks that must be preserved before

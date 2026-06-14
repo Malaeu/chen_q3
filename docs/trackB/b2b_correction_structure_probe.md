@@ -1,6 +1,6 @@
 # Track B B2b: Selberg Correction Structure Probe
 
-Status: RP4/B2 diagnostic.  This is not a proof of E5', not a proof of RH,
+Status: RP4/B2 diagnostic.  This is not a proof of E5p, not a proof of RH,
 and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_correction_anatomy.md`.  The previous note

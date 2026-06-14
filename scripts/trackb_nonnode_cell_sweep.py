@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Track B / E5' compact multi-cell sweep for the non-node interval guard.
+Track B / E5p compact multi-cell sweep for the non-node interval guard.
 
 This is a diagnostic coverage helper.  It reuses one `clvsigncert` context and
 runs the compact interval guard from `trackb_nonnode_interval_atom_audit.py`

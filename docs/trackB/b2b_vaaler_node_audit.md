@@ -1,7 +1,7 @@
 # Track B B2b: Vaaler Node And Cancellation Audit
 
 Status: RP4/B2 diagnostic and interval-generator planning.  This is not a
-proof of E5', not a proof of RH, and not a Lean proof file.
+proof of E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_receiver_derivative_enclosure.md`.  The
 receiver derivatives are now analytic floating-point evaluations.  The next

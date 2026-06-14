@@ -3,30 +3,30 @@
 This file lists the concrete edits Codex applies in **D1** (naming sweep) and
 **D2** (bookkeeping verification) of the current handoff. Treat it as the
 diff plan; the source of truth is
-`CODEX_HANDOFF_E5P_SAME_UNIT_BRIDGE.md`.
+`TRACKB_E5P_SAME_UNIT_BRIDGE_HANDOFF.md`.
 
 ---
 
-## 1. ASCII canon sweep — `E5'` → `E5p`
+## 1. ASCII canon sweep — apostrophe spelling to `E5p`
 
-Files known to still contain `E5'` (apostrophe) after the previous run.
-**Replace ALL occurrences with `E5p`**, except in display-math contexts where
-the Unicode prime `E5′` (`U+2032`) is acceptable.
+Files known to still contain the ASCII-apostrophe spelling after the previous
+run must be cleaned. **Replace ALL occurrences with `E5p`**, except in
+display-math contexts where the Unicode prime `E5′` (`U+2032`) is acceptable.
 
 Suggested command (review hits first, don't blanket-sed):
 
 ```bash
-grep -rln "E5'" docs/trackB/ scripts/ | xargs -I{} \
-  sh -c 'echo "-- {} --"; grep -n "E5'\''" {}'
+grep -rln $'E5\x27' docs/trackB/ scripts/ | xargs -I{} \
+  sh -c 'echo "-- {} --"; grep -n $'"'"'E5\x27'"'"' "$1"' sh {}
 ```
 
-Then for each file, replace `E5'` → `E5p` and commit as one logical unit.
-Do not touch Lean files in this sweep.
+Then for each file, replace the ASCII-apostrophe spelling with `E5p` and
+commit as one logical unit. Do not touch Lean files in this sweep.
 
 Verification:
 
 ```bash
-! grep -r "E5'" docs/trackB/ scripts/ | grep -v '′'
+! grep -r $'E5\x27' docs/trackB/ scripts/ | grep -v '′'
 ```
 
 (Exit 0 means clean.)
@@ -59,8 +59,8 @@ usable_budget_slack_K = mu_K - d_K - closure_error_K
 | File                                     | Required edit                                                  |
 |------------------------------------------|----------------------------------------------------------------|
 | `MU_BUDGET_INTERFACE.md`                 | canonical definitions live here; ensure both formulas appear   |
-| `TRACKB_PRICE_TABLE.md`                  | replace any `mu_budget_LP = d_K - p_K` with `certificate_gap_K` |
-| `S5C_LP_FINITE_DUAL_FEASIBILITY.md`      | gate condition uses `budget_slack_K`, not `d_K - p_K`           |
+| `TRACKB_PRICE_TABLE.md`                  | replace any old LP-mu-budget label with `certificate_gap_K`     |
+| `S5C_LP_FINITE_DUAL_FEASIBILITY.md`      | gate condition uses `budget_slack_K`, not the finite gap        |
 | `TRACKB_LP_REFORMULATION.md`             | section "mu-budget interface" must point to `MU_BUDGET_INTERFACE.md` |
 | `CHECKPOINTS.md`                         | naming history note kept; current entries use new names         |
 | `VERDICT_B2B.md`                         | verdict uses `budget_slack_K ≥ 0` after same-unit bridge proof  |
@@ -129,10 +129,9 @@ Run before commit:
 git fetch origin
 git rebase origin/rh_clean
 git diff --check                                     # whitespace clean
-! grep -r "E5'" docs/trackB/ scripts/ | grep -v '′'  # no ASCII apostrophe
+! grep -r $'E5\x27' docs/trackB/ scripts/ | grep -v '′'  # no ASCII apostrophe
 ! grep -rE 'mu_budget_(LP|usable)' docs/trackB/      # no forbidden semantics
-! grep -rn 'd_K - p_K' docs/trackB/ \
-       | grep -vE 'certificate_gap|duality_gap|cert/gap_K|gap inside'
+! grep -rn 'd_K - p_K' docs/trackB/ | grep -vE 'certificate_gap|duality_gap|cert/gap_K|gap inside'
 ```
 
 All four `!`-checks must exit 0 (no matches).

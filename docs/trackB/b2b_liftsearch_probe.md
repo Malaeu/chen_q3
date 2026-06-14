@@ -1,7 +1,7 @@
 # Track B B2b: Finite Lift-Search Probe
 
 Status: B2 numerical probe.  This is not a proof certificate and does not close
-E5'.  It tests the admissible-lift lemma from
+E5p.  It tests the admissible-lift lemma from
 `docs/trackB/b2b_admissible_lift_audit.md` in the projected Step13 `G`
 normalization.
 
@@ -200,7 +200,7 @@ Bad:
 - The continuum/arch proxy cost grows to about `5.27` in `G`-opnorm.
 - That is far larger than the measured edge fluctuation scale
   `0.4416718760986585`.
-- So this lift family does not yet give an E5' bound.  It solves the wrong half
+- So this lift family does not yet give an E5p bound.  It solves the wrong half
   of B2b unless the arch budget can be compressed.
 - Joint optimization confirms the problem is structural for this simple
   scalar positive-definite lift dictionary: cost control and prime dominance
@@ -318,7 +318,7 @@ gamma <= 0.4416718761: eta = 1.7101952677636467
 ```
 
 So signed/multi-packet atoms materially improve the Pareto curve, especially
-under a cost cap, but still do not close the E5' ledger at the measured edge
+under a cost cap, but still do not close the E5p ledger at the measured edge
 scale.
 
 The combined dictionary `--lift-family all` was also tested:
@@ -340,7 +340,7 @@ tight cap.
 
 `PARTIAL(signed/multi-packet autocorrelation improves the cost wall)`.
 
-But it is not an E5' closure:
+But it is not an E5p closure:
 
 ```text
 B2-GAP(stronger cost-controlled admissible lift or finite-op tail certificate)
@@ -362,7 +362,7 @@ Interpretation:
 Claim:
 A positive-definite two-point Gaussian autocorrelation dictionary can nearly
 operator-majorize the `K=2` edge prime matrix, but the associated continuum
-proxy cost is too large for the E5' ledger.  Joint cost optimization confirms
+proxy cost is too large for the E5p ledger.  Joint cost optimization confirms
 this is not just a post-hoc artifact.
 
 Point of blockage:

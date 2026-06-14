@@ -1,7 +1,7 @@
 # Track B B2b: Non-Node Interval Certificate Candidate
 
 Status: RP4/B2 diagnostic and proof-generator contract.  This is not a
-proof of E5', not a proof of RH, and not a Lean proof file.
+proof of E5p, not a proof of RH, and not a Lean proof file.
 
 This note follows `docs/trackB/b2b_vaaler_node_audit.md`.  The node audit
 identified two receiver branches:

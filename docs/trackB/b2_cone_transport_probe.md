@@ -251,7 +251,7 @@ The edge proxy and low-band numbers above are now reproducible with:
 
 The script is a numerical probe only.  It preserves the D2 raw-log convention
 `a=r*log(p)`, `I_K=[2K,4K]`, and `xi=a/(2*pi)`, but it does not interval-certify
-the matrix entries and does not prove E5'.
+the matrix entries and does not prove E5p.
 
 ## Proshka Update
 
