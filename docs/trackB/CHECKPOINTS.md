@@ -207,3 +207,20 @@ is also infeasible. Relaxed `10x` K=2 gives `eta=1.64700`,
 it kills the current executable finite dictionary at budget scale.
 ПЛАН: either supply a richer exact dual-cone basis, or accept practical LP red
 and switch main effort to operator/prolate.
+
+## 2026-06-14 -- Old Lower-Bound Reuse Audit
+
+ГДЕ Я: Track B after S5C-LP red; user asked to recover the old lower-bound
+engine before any generic LP revival.
+СДЕЛАНО: added `docs/trackB/TRACKB_REUSE_OLD_LOWER_BOUND.md`; recovered the
+Step32F `C=A-P = Dtheta + theta*Rkappa` LDL certificate and tested raw edge in
+the nearest old `L=3` self-cell.
+ЧИСЛА: old floors give `m_G >= 1.354e-4` for `primaryK11` and `1.254e-5` for
+`controlK9`; forced old-cell raw edge `[3,6]` has `G`-opnorm about `1.104`
+and `1.085`.
+ВЕРДИКТ: direct reuse is `TRACKB_REUSE_GAP_NOT_EDGE_OPERATOR`; nearest-cell
+domination is `TRACKB_REUSE_FATAL_INSUFFICIENT_RESERVE`.
+ПРОБЛЕМА: old proof certifies full `A-P` positivity in Step32F cells, not
+raw edge domination in current Track B `K=2,3,3.5` cells.
+ПЛАН: reuse only the exact LDL/penalty pattern; do not treat the old numerical
+reserve as Track B edge budget.

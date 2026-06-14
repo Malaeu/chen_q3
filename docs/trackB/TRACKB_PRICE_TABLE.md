@@ -63,6 +63,7 @@ Route D is fallback only after LP/Selberg/mollifier fail.
 | Route B | Clip spectrum: `hat(L_proj)=max(hat(L),0)`. | Would remove budget-sized spectral mass. Selberg exact edge tax is `1/B_K=1` in current run, but current lifted family has min hats `-1.68036`, `-2.67972`, `-2.44648`. | Selberg repairs scalar edge constant, not PSD/cone transport. | `SELBERG_REPAIR_NO_UNDIE_ROUTE_B` | Use Selberg only inside LP dual or after exact projection-loss budget. |
 | S5C0 Route C | Build PSD-first hard-edge lift. | At `B_K=1`, PSD tax `2.93072`, `3.50596`, `3.96288`; ordinary tax is `1`. | surcharge confirmed, exact `mu_budget(K)` absent. | `S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN` | Supply exact `mu_budget(K)` or move to Route D. |
 | S5C-LP final gate | Spectral/SOS dual clamp on the finite K-cell cone. | Budget-scale `gamma_cap=edge_scale` is infeasible for signed-triplet dictionary on `K=2,3,3.5`; K=2 remains infeasible with small `all` dictionary. Relaxed K=2 `10x` cap gives `eta=1.647`, `clamp=2.66093` vs edge scale `0.101393`; K=3/3.5 at `100x` still guard-fail with huge clamps. | Current executable finite witness family is red; route-level impossibility for every spectral/SOS witness remains open. | `S5C_LP_DICTIONARY_RED` | Either supply richer exact dual-cone basis or accept practical LP-family red signal and switch main effort to operator/prolate. |
+| Old Step32F lower-bound reuse | Reuse the certified `C=A-P = Dtheta + theta*Rkappa` LDL reserve as the edge budget. | Old floors imply only `m_G >= 1.354e-4` (`primaryK11`) and `1.254e-5` (`controlK9`) in the old `L=3` self-cell, while forced raw edge `[3,6]` has `G`-opnorm about `1.10`. Current S5C cells are also different operators/normalizations. | The old engine is real and useful as an LDL pattern, but not as a ready raw-edge domination reserve. | `TRACKB_REUSE_GAP_NOT_EDGE_OPERATOR`; nearest-cell `TRACKB_REUSE_FATAL_INSUFFICIENT_RESERVE` | Do not build a new external lift from this reserve; reuse only the penalty/LDL receiver pattern. |
 | S5.1 (mollifier) | K-mollifier finite combo of edge-defect indicators. | Ansatz exists, but no inverse Dirichlet expansion / K-family second moment found locally. | Cannot revive S5.1 from current inputs. | `MOLLIFIER_GAP_NO_INVERSE_EXPANSION` | Do not spend until inverse expansion and off-diagonal moment are supplied. |
 | Route D | Finite bad-mode / bad-region ledger plus tail bound. | Not run yet. | Fallback only if LP dual, Selberg-compatible lift, and mollifier route all fail. | `PARKED_FALLBACK_AFTER_D1_D2_D3` | Run only after the three atlas-derived routes are explicitly exhausted. |
 
@@ -196,6 +197,7 @@ docs/trackB/S5C_LP_NUMERICAL_GATE.md
 docs/trackB/TRACKB_SELBERG_ROUTE_B_REPAIR.md
 docs/trackB/TRACKB_MOLLIFIER_S51_REVIVAL.md
 docs/trackB/CODEX_HANDOFF_LP_SELBERG_MOLLIFIER.md
+docs/trackB/TRACKB_REUSE_OLD_LOWER_BOUND.md
 docs/RH_TRICK_ATLAS.md#11-sign-uncertainty-surcharge
 /Users/emalam/Documents/GitHub/prowka-bot/Projects/math-arsenal/atlas/020-cohn-elkies-lp.md
 /Users/emalam/Documents/GitHub/prowka-bot/Projects/math-arsenal/atlas/028-conrey-ghosh-mollifier.md
@@ -208,7 +210,7 @@ docs/RH_TRICK_ATLAS.md#11-sign-uncertainty-surcharge
 PROVED: none
 SKETCH: numerical price accounting for current Track B families; LP/S5C-LP formulation
 OPEN: richer exact spectral/SOS witness basis; Route D finite ledger
-REFUTED: current product lift, Route A signed-small-negative repair, Selberg-alone Route B rescue, current S5C-LP dictionary
+REFUTED: current product lift, Route A signed-small-negative repair, Selberg-alone Route B rescue, current S5C-LP dictionary, old Step32F reserve as a raw-edge domination budget
 ZERO_CONSISTENT: S3 closure bookkeeping
-GAP: spectral/SOS witness existence; continuous/interval guards for LP dual; mollifier inverse expansion / second moment
+GAP: spectral/SOS witness existence; continuous/interval guards for LP dual; old Step32F certificate is not the current edge operator; mollifier inverse expansion / second moment
 ```
