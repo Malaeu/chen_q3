@@ -50,7 +50,7 @@ are deliberately excluded as sources.
 | `docs/trackB/TRACKB_REUSE_OLD_LOWER_BOUND.md:158-166` | Same-unit comparison audit. | Different operator/basis/G normalization verdicts. | GAP |
 | `docs/trackB/TRACKB_REUSE_OLD_LOWER_BOUND.md:173-236` | Old-cell raw-edge stress test. | Old raw-edge opnorm about `1.10`; reserve `1e-4..1e-5`. | NUMERIC / PROBE |
 | `docs/trackB/TRACKB_REUSE_OLD_LOWER_BOUND.md:245-299` | Final old-reserve verdict. | Reuse LDL pattern only, not old reserve as Track B budget. | DOC / GAP |
-| `docs/trackB/lemmas/MU_K_SAME_UNIT_BRIDGE_AUDIT.md` | Same-unit bridge audit for theorem assumption (A3). | `E5P_BRIDGE_SOURCE_GAP`: no analytic `mu_K` source in current Track B units. | GAP |
+| `docs/trackB/lemmas/MU_K_SAME_UNIT_BRIDGE_AUDIT.md` | Same-unit bridge audit for theorem obligation `mu-normalization`. | `E5P_BRIDGE_NORMALIZATION_GAP`: Q3 2025 Toeplitz-A3 is a candidate source, but the Track B local edge ledger map is missing. | GAP |
 | `docs/trackB/TRACKB_LP_REFORMULATION.md:41-80` | Finite cone and primal object. | `C_K`, `G_K`, `D_K`, `p_K`. | DOC / GAP |
 | `docs/trackB/TRACKB_LP_REFORMULATION.md:123-170` | LP dual-clamp and budget wording. | `d_K`, `certificate_gap_K=d_K-p_K-finite_guards_K`, `budget_slack_K=mu_K-d_K-transfer_guards_K`. | DOC / GAP |
 | `docs/trackB/TRACKB_LP_REFORMULATION.md:188-204` | LP solve shape. | `lambda G0_K - D0_K >= 0`. | DOC / GAP |
@@ -256,7 +256,7 @@ it becomes evidence.
 1. No local E5p closure theorem.
 2. No same-unit ledger-support proof allowing old Step32F reserve into E5p.
 3. `m_old` therefore defaults to `0`.
-4. Same-unit bridge audit result: `E5P_BRIDGE_SOURCE_GAP`.
+4. Same-unit bridge audit result: `E5P_BRIDGE_NORMALIZATION_GAP`.
 5. Raw-edge float/probe diagnostics are now backed by interval finite PSD
    certificates for supplied `mu=(0.45,0.51,0.75)`.
 6. No proof that analytic `mu_K` in the same normalization is at least those

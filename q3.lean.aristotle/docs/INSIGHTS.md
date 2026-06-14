@@ -33401,9 +33401,14 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   ledger-support proof.  Current `m_old=0`.
 - Local same-unit bridge audit result:
   `docs/trackB/lemmas/MU_K_SAME_UNIT_BRIDGE_AUDIT.md` returns
-  `E5P_BRIDGE_SOURCE_GAP`.  Mollifier lacks inverse expansion/second moment;
-  Selberg gives scalar tax but not packet-cone `G_K` domination; Connes/adelic
-  notes are architectural and not wired to Track B constants.
+  `E5P_BRIDGE_NORMALIZATION_GAP` after the Q3 2025 archive was added as a
+  candidate source.  Mollifier lacks inverse expansion/second moment; Selberg
+  gives scalar tax but not packet-cone `G_K` domination; Q3 2025 Toeplitz-A3
+  gives a total Weil/Toeplitz margin but is not yet mapped to the Track B local
+  edge matrix.
+- Naming guard: do not call the E5p obligations with numbered A-style labels.
+  `A3` is already the Q3 2025 Toeplitz bridge; E5p uses `G-pos`, `E-match`,
+  `mu-normalization`, and `tau-PSD-cert`.
 - Next proof-producing patch must supply a repository theorem defining
   analytic `mu_K` in Track B units and proving
   `mu_K >= mu_cert,K + transfer_guards_K`, or lower the finite thresholds to a

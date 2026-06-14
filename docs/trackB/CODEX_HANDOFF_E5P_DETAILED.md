@@ -6,7 +6,7 @@
 **Then this file** — operational handbook (atlas mapping, priorities, compute
 discipline, theorem refs).
 **Then** [`TRACKB_E5P_THEOREM.md`](TRACKB_E5P_THEOREM.md) — paper-spec of the
-target theorem, four assumptions, current status per assumption.
+target theorem, four named obligations, current status per obligation.
 
 Read this whole stack every rebase.
 
@@ -43,6 +43,11 @@ When Ылша dictates "штрих" / "prime" — it always means `E5p`.
 If you find the ASCII-apostrophe spelling in any tracked Track B file, **fix
 it in the same commit you touch that file for any reason**. Do not open a
 separate "naming" commit unless asked.
+
+Do not use numbered A-style labels as E5p theorem labels.  Q3 2025 already uses
+`A3` for the Toeplitz bridge module (`T_M[P_A]-T_P`, Arch margin, RKHS cap).  The
+E5p theorem labels are `G-pos`, `E-match`, `mu-normalization`, and
+`tau-PSD-cert`.
 
 ---
 
@@ -111,17 +116,17 @@ Fix K. Track B finite packet data:
   mu_K      = analytic E5p edge budget
 
 Assume:
-  (A1) G_K is positive definite on ker(Q_K).
-  (A2) E_edge,K is exactly the finite matrix representing the raw edge
+  (G-pos) G_K is positive definite on ker(Q_K).
+  (E-match) E_edge,K is exactly the finite matrix representing the raw edge
        defect in the same normalization as the E5p ledger.
-  (A3) mu_K is proved in the same G-normalized units.
-  (A4) ∃ tau_K ≥ 0 such that
+  (mu-normalization) mu_K is proved in the same G-normalized units.
+  (tau-PSD-cert) ∃ tau_K ≥ 0 such that
          mu_K · G_K  -  E_edge,K  +  tau_K · Q_K^T Q_K  ≥  0.
 
 Then:  ∀ v with Q_K v = 0,   v^T E_edge,K v  ≤  mu_K · v^T G_K v.
 ```
 
-(A4) is the **machine-checkable** core. The penalty form coincides with the
+`tau-PSD-cert` is the **machine-checkable** core. The penalty form coincides with the
 quadratic form on `BoundaryNull = ker Q_K`, and a positive penalty PSD gives
 the inequality on that subspace via the existing Lean receiver pattern.
 
@@ -181,7 +186,7 @@ git rebase origin/rh_clean
 **Files to re-read in this exact order:**
 
 1. `docs/trackB/CODEX_HANDOFF_E5P_SAME_UNIT_BRIDGE.md`  (this file)
-2. `docs/trackB/TRACKB_E5P_THEOREM.md`                  (theorem statement + assumptions)
+2. `docs/trackB/TRACKB_E5P_THEOREM.md`                  (theorem statement + named obligations)
 3. `docs/trackB/MU_BUDGET_INTERFACE.md`                 (canonical formula source)
 4. `docs/trackB/TRACKB_PRICE_TABLE.md`                  (live status of every route)
 5. `docs/trackB/S5C_LP_FINITE_DUAL_FEASIBILITY.md`      (LP gate state)
@@ -237,14 +242,14 @@ note and move on.
 
 **A (Selberg extremals, atlas card 009).** Replace `C · exp(-D)` edge bounds
 with Beurling-Selberg sharp constants of bandwidth K. Goal: a closed-form
-analytic lower bound for `mu_K` in G-normalized units (this is **assumption
-(A3)** of the theorem). Sign direction must be checked explicitly, not
+analytic lower bound for `mu_K` in G-normalized units (this is the
+**mu-normalization** obligation of the theorem). Sign direction must be checked explicitly, not
 assumed.
 
 **C (Connes adelic class space, atlas card 029, hot_candidate).** Heavier path:
 re-frame the bridge in the adelic class space where archimedean and finite
 places carry the same normalization by construction. This is the architectural
-fix for (A3). High effort, high reward.
+fix for `mu-normalization`. High effort, high reward.
 
 If B and A both produce dead-end notes within their budget, **stop and
 escalate** — do not fall into per-K interval grinding.

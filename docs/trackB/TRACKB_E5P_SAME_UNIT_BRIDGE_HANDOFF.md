@@ -6,6 +6,11 @@ Status: task note for the `rh_clean` branch.
 
 Use `E5p` in filenames and task notes. Read `E5′` or `E5p` as `E five prime` / `E fuenf Strich`.
 
+Do not label E5p theorem obligations with numbered A-style labels.  In the Q3
+2025 paper archive, `A3` already means the Toeplitz bridge
+`T_M[P_A]-T_P` with Arch margin and RKHS cap.  E5p uses named obligations:
+`G-pos`, `E-match`, `mu-normalization`, and `tau-PSD-cert`.
+
 ## Sync rule
 
 Before editing this track, run:
@@ -80,8 +85,9 @@ mu_K * G_K - E_edge,K + tau_K * Q_K^T Q_K >= 0
   handbook: atlas card mapping (020 / 028 / 009 / 029), D1–D5 priorities,
   compute discipline (no per-K interval grids as proof input), rebase protocol.
 - [`TRACKB_E5P_THEOREM.md`](TRACKB_E5P_THEOREM.md) — paper-spec of
-  `Theorem E5p_edge_closure_K`: four assumptions (A1–A4), implication proof,
-  per-assumption status table, sub-lemma names.
+  `Theorem E5p_edge_closure_K`: four named obligations
+  (`G-pos`, `E-match`, `mu-normalization`, `tau-PSD-cert`), implication proof,
+  per-obligation status table, sub-lemma names.
 - [`TRACKB_E5P_SAME_UNIT_BRIDGE_PATCH.md`](TRACKB_E5P_SAME_UNIT_BRIDGE_PATCH.md) —
   concrete diff plan for the naming sweep and bookkeeping harmonization
   (files to scan, regex checks, sanity commands).

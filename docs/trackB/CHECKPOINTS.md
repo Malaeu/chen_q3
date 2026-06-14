@@ -8,10 +8,11 @@
 raw-edge PSD/eigenvalue searches.  Added
 `docs/trackB/lemmas/MU_K_SAME_UNIT_BRIDGE_AUDIT.md`.
 
-ВЕРДИКТ: `E5P_BRIDGE_SOURCE_GAP`.  The repo has interval finite PSD certificates
-for supplied `mu=(0.45,0.51,0.75)`, but no analytic `mu_K` source in the same
-`G_K/Q_K` raw-edge normalization.  This is not a threshold fail yet because no
-same-unit source exists to compare.
+ВЕРДИКТ: `E5P_BRIDGE_NORMALIZATION_GAP`.  The repo has interval finite PSD
+certificates for supplied `mu=(0.45,0.51,0.75)`, and the external local Q3
+2025 Toeplitz-A3 archive is now a candidate analytic reserve source.  It is not
+a pass yet because no theorem maps the total Toeplitz margin to the Track B
+local raw-edge `G_K/Q_K` packet budget.
 
 NEXT: supply a repository theorem defining `mu_K` in Track B units and proving
 `mu_K >= mu_cert,K + transfer_guards_K`, or lower the supplied thresholds to a

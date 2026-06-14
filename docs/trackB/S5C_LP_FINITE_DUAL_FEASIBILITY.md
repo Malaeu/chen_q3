@@ -177,8 +177,8 @@ B2B_LP_GREEN is forbidden as a closure of E5p.
 It is at most a finite-LP signal. Closure requires:
 
   (i)  budget_slack_K >= 0 (same-unit), AND
-  (ii) same-unit mu_K bridge proven (TRACKB_E5P_THEOREM.md assumption A3), AND
-  (iii) penalty PSD cert mu_K*G_K - E_edge_K + tau_K*Q_K^T Q_K >= 0 (A4).
+  (ii) same-unit mu_K bridge proven (TRACKB_E5P_THEOREM.md obligation mu-normalization), AND
+  (iii) penalty PSD cert mu_K*G_K - E_edge_K + tau_K*Q_K^T Q_K >= 0 (tau-PSD-cert).
 
 Missing any one -> status = GAP, not GREEN.
 ```
