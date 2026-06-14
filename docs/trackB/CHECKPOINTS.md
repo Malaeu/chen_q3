@@ -224,3 +224,20 @@ domination is `TRACKB_REUSE_FATAL_INSUFFICIENT_RESERVE`.
 raw edge domination in current Track B `K=2,3,3.5` cells.
 ПЛАН: reuse only the exact LDL/penalty pattern; do not treat the old numerical
 reserve as Track B edge budget.
+
+## 2026-06-14 -- Old Lower-Bound Task 0A/0B Guard Addendum
+
+ГДЕ Я: after Fable/Ылша correction: reuse must first distinguish live analytic
+certificate from buried Rayleigh, then audit whether the reserve is pre-edge.
+СДЕЛАНО: updated `docs/trackB/TRACKB_REUSE_OLD_LOWER_BOUND.md` and price table
+with Task 0A/0B.
+ЧИСЛА: no new numerical run; reused old-cell stress test `m_G >= 1.354e-4`,
+`1.254e-5` versus edge opnorm about `1.10`.
+ВЕРДИКТ: Task 0A = live exact rational Step32F LDL, not
+`TRACKB_REUSE_FATAL_BAD_OLD_CERT`; Task 0B =
+`TRACKB_REUSE_GAP_CIRCULARITY_OR_LEDGER_SUPPORT`, because old `C=A-P` already
+contains the edge prime support in `P`.
+ПРОБЛЕМА: `m_old` cannot be added to `mu_K` as a free pre-edge budget without a
+new ledger-support proof.
+ПЛАН: LP/pairing fallback only after accepting that old reserve is reusable as
+an LDL pattern, not as already-free edge energy.

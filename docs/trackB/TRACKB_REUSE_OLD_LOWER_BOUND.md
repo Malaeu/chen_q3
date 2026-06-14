@@ -21,6 +21,83 @@ The intended reuse test is:
 where `E_edge,K = P_edge - P0_edge` in the same finite packet basis and the same
 `G/Q` normalization.
 
+## Task 0 Gates
+
+### Task 0A: Certificate Nature
+
+The old Step32F lower-bound engine recovered here is not the buried
+matrix-side Rayleigh artefact.
+
+Guard:
+
+```text
+DEAD_MATRIX_RAYLEIGH means:
+  18/18 NUMERICAL_INVALID,
+  signal about 1e-13 versus A_tail noise about 3e-10,
+  DO_NOT_RESURRECT.
+```
+
+This audit did not reuse that object.  The recovered certificate is the exact
+rational Step32F penalty/LDL certificate:
+
+```text
+D + tau_D Q^TQ = dFloor*I + L_D diag(w_D) L_D^T
+R + tau_R Q^TQ = rFloor*I + L_R diag(w_R) L_R^T
+```
+
+with Lean-checked rational matrix identities and nonnegative rational LDL
+weights.
+
+Task-0A verdict:
+
+```text
+ANALYTIC_LDL_CERTIFICATE
+not TRACKB_REUSE_FATAL_BAD_OLD_CERT
+not the buried float Rayleigh margin
+```
+
+Important limitation: it is an analytic/finite LDL certificate in the old
+Step32F coefficient space, but it is not already a `d_K * G_K` certificate in
+the current Track B K-cell.
+
+### Task 0B: Noncircularity / Ledger Support
+
+The old reserve is not a free pre-edge reserve for the current raw edge.
+
+Reason:
+
+```text
+old C = A - P,
+where P is the full finite prime-side matrix up to 2L.
+```
+
+In the nearest old self-cell `L=3`, the raw edge `[3,6]` is a subset of this
+same full prime matrix `P`.  Therefore the old `C=A-P` certificate has already
+paid the edge prime contribution on that support.  Adding `m_old` again as a
+free reserve for the same `E_edge` would double-count.
+
+The old certificate is also not a direct post-edge closure for E5'.  It proves
+positivity of the full `A-P` block through the `Dtheta/Rkappa` split; it does
+not prove the specific Track B ledger inequality
+
+```text
+(m_old + mu_K)G_K - (P_edge - P0_edge) >= 0.
+```
+
+Task-0B verdict:
+
+```text
+POST_EDGE_OR_MIXED_FOR_OLD_SELF_CELL
+TRACKB_REUSE_GAP_CIRCULARITY_OR_LEDGER_SUPPORT for using m_old as free edge budget
+```
+
+Consequence:
+
+```text
+Do not add m_old to mu_K unless a separate ledger decomposition proves that
+the old reserve is pre-edge with respect to the current E_edge term.
+```
+
 ## Sources Recovered
 
 The relevant old certificate is the Step32F finite penalty lower-bound engine:
@@ -93,6 +170,8 @@ Task-2 verdict:
 Current S5C K-cell: DIFFERENT_OPERATOR + NORMALIZATION_GAP.
 Old L=3 self-cell: SAME_SPACE only if Track B is forced to K=1.5 and old
 packet parameters.
+Even in that old self-cell, Task 0B says the old C=A-P certificate is not a
+free pre-edge reserve because P already contains the edge primes.
 ```
 
 ## Raw Edge Matrix In The Old Self-Cell
@@ -128,7 +207,8 @@ orders of magnitude smaller than the raw edge operator.
 
 ## Domination Test
 
-For `mu_budget = 0`, the requested domination test fails:
+For `mu_budget = 0`, the requested domination test fails even under the
+counterfactual assumption that the old floor may be treated as a free reserve:
 
 ```text
 (m_old * G - E_edge) >= 0 on ker(Q)
@@ -152,6 +232,9 @@ controlK9:  edge_max - m_G ~= 1.0841864
 The test could only turn green if an external `mu_budget` of order `1` in the
 same `G` units were available.  That is not the old Step32F reserve.
 
+Because of Task 0B, this numerical test is only a stress test.  It is not a
+valid proof route by itself: the old `m_old` is not certified as pre-edge.
+
 ## Three-Part Certificate Check
 
 The recovered old proof is not a three equal thirds certificate in the current
@@ -172,6 +255,7 @@ prime defect.
 
 ```text
 TRACKB_REUSE_GAP_NOT_EDGE_OPERATOR
+TRACKB_REUSE_GAP_CIRCULARITY_OR_LEDGER_SUPPORT
 ```
 
 Reason:
@@ -180,6 +264,10 @@ Reason:
 The old lower-bound engine is real and certified, but it certifies full
 C=A-P positivity in old Step32F cells.  It is not already a raw edge operator
 domination certificate in the current Track B K-cells.
+
+Moreover, in the old self-cell, C=A-P already contains the edge prime support
+inside P, so m_old cannot be added to mu_K as a free pre-edge budget without a
+new ledger-support proof.
 ```
 
 Additional nearest-cell numerical verdict:
