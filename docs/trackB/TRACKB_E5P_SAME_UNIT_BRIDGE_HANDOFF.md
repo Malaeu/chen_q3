@@ -73,3 +73,15 @@ mu_K * G_K - E_edge,K + tau_K * Q_K^T Q_K >= 0
 3. State that finite LP success is `B2B_LP_CERT_READY`, not green E5p closure.
 4. Reserve green closure for: same-unit bridge + positive `budget_slack_K` + proof-grade PSD or penalty certificate.
 5. Keep old Step32F as an LDL/penalty method pattern only, not as free Track B edge budget.
+
+## Further references
+
+- [`CODEX_HANDOFF_E5P_DETAILED.md`](CODEX_HANDOFF_E5P_DETAILED.md) — operational
+  handbook: atlas card mapping (020 / 028 / 009 / 029), D1–D5 priorities,
+  compute discipline (no per-K interval grids as proof input), rebase protocol.
+- [`TRACKB_E5P_THEOREM.md`](TRACKB_E5P_THEOREM.md) — paper-spec of
+  `Theorem E5p_edge_closure_K`: four assumptions (A1–A4), implication proof,
+  per-assumption status table, sub-lemma names.
+- [`TRACKB_E5P_SAME_UNIT_BRIDGE_PATCH.md`](TRACKB_E5P_SAME_UNIT_BRIDGE_PATCH.md) —
+  concrete diff plan for the naming sweep and bookkeeping harmonization
+  (files to scan, regex checks, sanity commands).
