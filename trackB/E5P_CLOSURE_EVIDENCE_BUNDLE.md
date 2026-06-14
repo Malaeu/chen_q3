@@ -52,6 +52,7 @@ are deliberately excluded as sources.
 | `docs/trackB/TRACKB_REUSE_OLD_LOWER_BOUND.md:245-299` | Final old-reserve verdict. | Reuse LDL pattern only, not old reserve as Track B budget. | DOC / GAP |
 | `docs/trackB/lemmas/MU_K_SAME_UNIT_BRIDGE_AUDIT.md` | Same-unit bridge audit for theorem obligation `mu-normalization`. | `E5P_BRIDGE_NORMALIZATION_GAP`: Q3 2025 Toeplitz-A3 is a candidate source, but the Track B local edge ledger map is missing. | GAP |
 | `docs/trackB/TRACKB_E5P_MATH_APPARATUS.md` | Paper-level apparatus for the Q3-2025-A3-to-Track-B bridge. | C0--C5 crosswalk obligations; guard against identifying `c_arch(K)` with `mu_K` before operator/norm/ledger proof. | DOC / GAP |
+| `docs/trackB/lemmas/EDGE_MAJORANT_BRIDGE_K.md` | Attempted proof of the edge-majorant bridge requested for `K=2,3,3.5`. | Defines scalar Selberg/Vaaler `Psi_K`; pointwise node majorant passes; Q3 A3 admissibility fails with `KERNEL_MISMATCH`. | DOC / GAP |
 | `docs/trackB/TRACKB_LP_REFORMULATION.md:41-80` | Finite cone and primal object. | `C_K`, `G_K`, `D_K`, `p_K`. | DOC / GAP |
 | `docs/trackB/TRACKB_LP_REFORMULATION.md:123-170` | LP dual-clamp and budget wording. | `d_K`, `certificate_gap_K=d_K-p_K-finite_guards_K`, `budget_slack_K=mu_K-d_K-transfer_guards_K`. | DOC / GAP |
 | `docs/trackB/TRACKB_LP_REFORMULATION.md:188-204` | LP solve shape. | `lambda G0_K - D0_K >= 0`. | DOC / GAP |
@@ -262,11 +263,14 @@ it becomes evidence.
    certificates for supplied `mu=(0.45,0.51,0.75)`.
 6. No proof that analytic `mu_K` in the same normalization is at least those
    supplied thresholds after guards.
-7. `mu_K` vs `d_K` normalization bridge is unclear/unproved.
-8. Current docs now distinguish `certificate_gap_K=d_K-p_K-finite_guards_K`
+7. Scalar edge-majorant route fails at `KERNEL_MISMATCH`: pointwise
+   Selberg/Vaaler `Psi_K` is not a Q3 A3 admissible Track B packet operator
+   majorant.
+8. `mu_K` vs `d_K` normalization bridge is unclear/unproved.
+9. Current docs now distinguish `certificate_gap_K=d_K-p_K-finite_guards_K`
    from the real budget comparison
    `budget_slack_K=mu_K-d_K-transfer_guards_K`.
-9. S3 closure is numerical bookkeeping only, not proof-grade defect accounting.
+10. S3 closure is numerical bookkeeping only, not proof-grade defect accounting.
 
 ## 10. Next Implementable Patch
 

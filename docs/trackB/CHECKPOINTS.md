@@ -324,3 +324,19 @@ coordinate, weight, basis/norm, reserve-transfer, ledger-extraction, and
 no-double-spend compatibility.
 ПЛАН: next proof-producing patch is `Q3A3_crosswalk_to_TrackB_mu_K`; no Lean
 edits before the paper crosswalk is stable.
+
+## 2026-06-14 -- E5p Edge-Majorant Bridge Attempt
+
+ГДЕ Я: attempted lemma `edge_majorant_bridge_K` for `K_TB=2,3,3.5`.
+СДЕЛАНО: added `docs/trackB/lemmas/EDGE_MAJORANT_BRIDGE_K.md`; tested the
+nearest local `Psi_K` candidate from Selberg/Vaaler `M^+`.
+ЧИСЛА: xi intervals are `[0.6366197723675814,1.2732395447351628]`,
+`[0.954929658551372,1.909859317102744]`, and
+`[1.1140846016432675,2.228169203286535]`; K=2 prior Selberg symmetric
+majorant Fourier min is about `-7.5273`, and naive Gaussian packet operator
+min is about `-3.477e5`.
+ВЕРДИКТ: `KERNEL_MISMATCH`, not `CONSTANT_THRESHOLD_FAIL`.
+ПРОБЛЕМА: pointwise `Psi_K(xi_n) >= 1_edge(xi_n)` does not make `Psi_K`
+admissible for Q3 A3 nor a Track B packet Loewner majorant.
+ПЛАН: repair requires an A3-admissible `Psi_K` or a direct projected finite
+operator majorant, followed by `J_K` norm transfer.

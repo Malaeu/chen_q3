@@ -33431,3 +33431,18 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Current verdict remains `E5P_BRIDGE_NORMALIZATION_GAP`, not
   `E5P_BRIDGE_PASS`; finite PSD pass for supplied `mu=(0.45,0.51,0.75)` is
   still conditional on the same-unit bridge.
+
+## Insight (2026-06-14, Track B E5p) -- EdgeMajorantBridgeK
+
+- Added `docs/trackB/lemmas/EDGE_MAJORANT_BRIDGE_K.md` for the requested
+  `edge_majorant_bridge_K` attempt on `K_TB=2,3,3.5`.
+- The Selberg/Vaaler scalar `M^+` gives a valid pointwise node majorant after
+  the raw-log to `xi=log n/(2*pi)` conversion, so lines 1--2 pass as scalar
+  analysis.
+- The proof fails at line 3 with `KERNEL_MISMATCH`: the scalar majorant is not
+  proved to be a Q3 A3 Fejer-heat/Fourier-Toeplitz admissible object, and local
+  Track B probes already show pointwise majorants do not transport to packet
+  Loewner order.
+- This is not a tiny-B `c_arch` or threshold failure.  `R_K`, `alpha_K`, and
+  `Loss_K` are not same-unit objects until an A3-admissible `Psi_K` or direct
+  projected finite operator majorant is supplied.
