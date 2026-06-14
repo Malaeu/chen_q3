@@ -24,6 +24,7 @@ Then read:
 
 ```text
 docs/trackB/TRACKB_PRICE_TABLE.md
+docs/trackB/TRACKB_E5P_MATH_APPARATUS.md
 docs/trackB/S5C_LP_FINITE_DUAL_FEASIBILITY.md
 docs/trackB/S5C_LP_NUMERICAL_GATE.md
 docs/trackB/TRACKB_REUSE_OLD_LOWER_BOUND.md
@@ -88,6 +89,10 @@ mu_K * G_K - E_edge,K + tau_K * Q_K^T Q_K >= 0
   `Theorem E5p_edge_closure_K`: four named obligations
   (`G-pos`, `E-match`, `mu-normalization`, `tau-PSD-cert`), implication proof,
   per-obligation status table, sub-lemma names.
+- [`TRACKB_E5P_MATH_APPARATUS.md`](TRACKB_E5P_MATH_APPARATUS.md) —
+  paper-level crosswalk spec from Q3 2025 `A3` to Track B `mu_K`; the source
+  for C0--C5 and the guard against identifying `c_arch(K)` with `mu_K` before the
+  operator/norm ledger is proved.
 - [`TRACKB_E5P_SAME_UNIT_BRIDGE_PATCH.md`](TRACKB_E5P_SAME_UNIT_BRIDGE_PATCH.md) —
   concrete diff plan for the naming sweep and bookkeeping harmonization
   (files to scan, regex checks, sanity commands).

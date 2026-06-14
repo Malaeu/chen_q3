@@ -33413,3 +33413,21 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   analytic `mu_K` in Track B units and proving
   `mu_K >= mu_cert,K + transfer_guards_K`, or lower the finite thresholds to a
   proved same-unit budget.
+
+## Insight (2026-06-14, Track B E5p) -- Q3A3CrosswalkApparatus
+
+- Added `docs/trackB/TRACKB_E5P_MATH_APPARATUS.md` as the paper-level bridge
+  spec.  It explicitly forbids identifying `c_arch(K)` with `mu_K` before the
+  operator/norm/ledger crosswalk is proved.
+- Q3 2025 `A3` is now the primary candidate source for analytic `mu_K`, but
+  only as `CANDIDATE_SOURCE`: the live theorem to prove is
+  `Q3A3_crosswalk_to_TrackB_mu_K`.
+- The required crosswalk obligations are C0--C5: coordinate coverage, weight
+  crosswalk, B-spline packet to Toeplitz basis/norm map, Arch reserve transfer,
+  prime/smooth ledger extraction, and no double-spending budget split.
+- Conservative lock JSON margins are about `0.90` for Q3 K=2,3,4.  The larger
+  raw floor values near `5.37` are not spendable Track B budgets; K=3 and K=4
+  floor JSON have invalid proof-use fields (`M_min=0`, `omega_condition_ok=false`).
+- Current verdict remains `E5P_BRIDGE_NORMALIZATION_GAP`, not
+  `E5P_BRIDGE_PASS`; finite PSD pass for supplied `mu=(0.45,0.51,0.75)` is
+  still conditional on the same-unit bridge.

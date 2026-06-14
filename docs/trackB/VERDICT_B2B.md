@@ -362,8 +362,8 @@ Worst-case enemy profile:
 Next analytic question:
 
 ```text
-Either supply the exact same-unit analytic `mu_K` bridge for the supplied
-raw-edge thresholds, or run the last Route D finite-ledger fallback before declaring
-B2B_FATAL_NO_ADMISSIBLE_LIFT_FOUND for the current explicit-formula-lift
-families.
+Either prove `Q3A3_crosswalk_to_TrackB_mu_K` from
+`docs/trackB/TRACKB_E5P_MATH_APPARATUS.md`, or run the last Route D
+finite-ledger fallback before declaring B2B_FATAL_NO_ADMISSIBLE_LIFT_FOUND for
+the current explicit-formula-lift families.
 ```

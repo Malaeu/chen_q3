@@ -308,3 +308,19 @@ contains the edge prime support in `P`.
 new ledger-support proof.
 ПЛАН: LP/pairing fallback only after accepting that old reserve is reusable as
 an LDL pattern, not as already-free edge energy.
+
+## 2026-06-14 -- E5p Q3-A3 Crosswalk Apparatus
+
+ГДЕ Я: Track B E5p after Q3 2025 `A3` was identified as the primary candidate
+source for the analytic `mu_K` budget.
+СДЕЛАНО: added `docs/trackB/TRACKB_E5P_MATH_APPARATUS.md`; linked it from the
+theorem spec, handoff, bridge audit, price table, evidence bundle, and verdict.
+ЧИСЛА: conservative Q3 2025 lock margins are `0.9028668493703329`,
+`0.9043681970359332`, `0.9050660039059131`; raw floor values near `5.37` are
+not spendable Track B budgets without the validity/crosswalk audit.
+ВЕРДИКТ: still `E5P_BRIDGE_NORMALIZATION_GAP`, not `E5P_BRIDGE_PASS`.
+ПРОБЛЕМА: `c_arch(K)` cannot be identified with `mu_K` until C0--C5 prove
+coordinate, weight, basis/norm, reserve-transfer, ledger-extraction, and
+no-double-spend compatibility.
+ПЛАН: next proof-producing patch is `Q3A3_crosswalk_to_TrackB_mu_K`; no Lean
+edits before the paper crosswalk is stable.

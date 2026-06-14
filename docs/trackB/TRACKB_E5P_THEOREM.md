@@ -6,6 +6,11 @@ discharged on paper.
 
 > Naming: `E5p = E5-prime = E5′`. See
 > `TRACKB_E5P_SAME_UNIT_BRIDGE_HANDOFF.md` for the canon.
+>
+> Crosswalk: see `TRACKB_E5P_MATH_APPARATUS.md` for the paper-level
+> Q3-2025-A3-to-Track-B apparatus.  In particular, do not identify
+> `c_arch(K)` with `mu_K` before the C0--C5 operator/norm/ledger crosswalk
+> is proved.
 
 ---
 
@@ -89,7 +94,7 @@ The four obligations are the work. Status as of this file:
 |------------|-------------------------------------|------------------------------------------------------------------------------------------|---------------------------------------------------|
 | **G-pos**   | `G_K ≻ 0` on `ker(Q_K)`             | **partial.** Numeric check on K∈{2,3,3.5}; no exact rational LDL on `ker(Q_K)` yet.       | finite linear algebra; rational/interval LDL      |
 | **E-match** | `E_edge,K` equals ledger object     | **partial.** Identical raw shape, no formal correspondence theorem in Lean.              | one Lean equality lemma + S3 bookkeeping audit    |
-| **mu-normalization** | `mu_K` same-unit           | **NORMALIZATION GAP.** Q3 2025 `A3` / Toeplitz bridge is now a candidate analytic reserve source, but no ledger/scale map identifies its total `T_M[P_A]-T_P` margin with the Track B local raw-edge budget in the B-spline `G_K/Q_K` packet space. | `docs/trackB/lemmas/MU_K_SAME_UNIT_BRIDGE_AUDIT.md` |
+| **mu-normalization** | `mu_K` same-unit           | **NORMALIZATION GAP.** Q3 2025 `A3` / Toeplitz bridge is now a candidate analytic reserve source, but no C0--C5 crosswalk identifies its total `T_M[P_A]-T_P` margin with the Track B local raw-edge budget in the B-spline `G_K/Q_K` packet space. | `docs/trackB/TRACKB_E5P_MATH_APPARATUS.md`; `docs/trackB/lemmas/MU_K_SAME_UNIT_BRIDGE_AUDIT.md` |
 | **tau-PSD-cert** | `mu_K · G_K - E_edge,K + tau · Q^TQ ≥ 0` | **finite interval cert pass** for K∈{2,3,3.5} at supplied μ `(0.45,0.51,0.75)`; no same-unit analytic μ source and no all-K structural proof. | rational/interval cert import or Lean receiver |
 
 **mu-normalization is the binding gap.** Closing `G-pos`, `E-match`, and

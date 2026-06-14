@@ -176,6 +176,17 @@ has been proved comparable to the thresholds after transfer guards.  It is not
 
 ## Exact Remaining Obligation
 
+See `docs/trackB/TRACKB_E5P_MATH_APPARATUS.md` for the paper-level statement.
+The next proof-producing theorem is:
+
+```text
+Q3A3_crosswalk_to_TrackB_mu_K
+```
+
+It must prove C0--C5: coordinate coverage, weight crosswalk, basis/norm map,
+Arch reserve transfer, prime/smooth ledger extraction, and no double-spending
+budget split.
+
 One of the following must be supplied before E5p can close:
 
 ```text
