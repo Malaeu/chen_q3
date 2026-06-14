@@ -1,0 +1,119 @@
+[
+  {
+    "K": "2",
+    "analytic_mu_bridge_status": "GAP",
+    "arb_prec_bits": 192,
+    "boundary_rows": 2,
+    "edge_prime_power_shifts": 441,
+    "eigenvalue_records": null,
+    "ell": "7/20",
+    "finite_interval_psd_cert": "PASS",
+    "full_space_dim": 16,
+    "grid_delta": "1/2",
+    "k_spline": 5,
+    "kerQ_dim_if_rank2": 14,
+    "matrix_entry_sources": {
+      "G": "exact centered B-spline rational inputs evaluated in Arb",
+      "P0_edge": "piecewise-polynomial B-spline integral of exp(a/2) in Arb",
+      "P_edge": "Arb log(p) and exp(-r log(p)/2) with B-spline interval evaluation",
+      "Q": "Arb exp(+-u/2)"
+    },
+    "min_eigenvalue_interval": {
+      "hi": "0.0129205025641165041756244529953655986464405111149196676181275134431485351425560917338567629",
+      "lo": "0.0129205025641165041756244529888550415698384941606131420373443264160324450064242783099439232",
+      "mid": "0.01292050256411650417562445299211032010813950263776640482773591992959049007449018502190034305",
+      "rad": "3.25527853830100847715326279039159351355804506806590671195641985E-30"
+    },
+    "min_eigenvalue_lower": "0.0129205025641165041756244529888550415698384941606131420373443264160324450064242783099439232",
+    "mode": "trackb_raw_edge_interval_penalty_cert",
+    "mu": "9/20",
+    "n_centers": 16,
+    "not_e5_closure_reason": "same-unit analytic mu_K source/bridge is not supplied by this certificate",
+    "penalty_matrix": "mu*G - (P_edge-P0_edge) + tau*Q^TQ",
+    "prime_power_shifts_total": 465,
+    "proof_scope": "finite raw-edge penalty PSD for supplied mu and tau only",
+    "raw_edge": [
+      "4",
+      "8"
+    ],
+    "tau": "100000000"
+  },
+  {
+    "K": "3",
+    "analytic_mu_bridge_status": "GAP",
+    "arb_prec_bits": 192,
+    "boundary_rows": 2,
+    "edge_prime_power_shifts": 14942,
+    "eigenvalue_records": null,
+    "ell": "7/20",
+    "finite_interval_psd_cert": "PASS",
+    "full_space_dim": 24,
+    "grid_delta": "1/2",
+    "k_spline": 5,
+    "kerQ_dim_if_rank2": 22,
+    "matrix_entry_sources": {
+      "G": "exact centered B-spline rational inputs evaluated in Arb",
+      "P0_edge": "piecewise-polynomial B-spline integral of exp(a/2) in Arb",
+      "P_edge": "Arb log(p) and exp(-r log(p)/2) with B-spline interval evaluation",
+      "Q": "Arb exp(+-u/2)"
+    },
+    "min_eigenvalue_interval": {
+      "hi": "0.0123292749542153373865150679887819907032931527209657383938690127779280779441296522217181924",
+      "lo": "0.0123292749542153373865150679879004070578799322422451094887694119834991629981888736052152297",
+      "mid": "0.01232927495421533738651506798834119888058654248160542394131921238071362047115926291346671105",
+      "rad": "4.4079182270661023936031445254980039721445747297038930825148135E-31"
+    },
+    "min_eigenvalue_lower": "0.0123292749542153373865150679879004070578799322422451094887694119834991629981888736052152297",
+    "mode": "trackb_raw_edge_interval_penalty_cert",
+    "mu": "51/100",
+    "n_centers": 24,
+    "not_e5_closure_reason": "same-unit analytic mu_K source/bridge is not supplied by this certificate",
+    "penalty_matrix": "mu*G - (P_edge-P0_edge) + tau*Q^TQ",
+    "prime_power_shifts_total": 15040,
+    "proof_scope": "finite raw-edge penalty PSD for supplied mu and tau only",
+    "raw_edge": [
+      "6",
+      "12"
+    ],
+    "tau": "100000000"
+  },
+  {
+    "K": "7/2",
+    "analytic_mu_bridge_status": "GAP",
+    "arb_prec_bits": 192,
+    "boundary_rows": 2,
+    "edge_prime_power_shifts": 93162,
+    "eigenvalue_records": null,
+    "ell": "7/20",
+    "finite_interval_psd_cert": "PASS",
+    "full_space_dim": 28,
+    "grid_delta": "1/2",
+    "k_spline": 5,
+    "kerQ_dim_if_rank2": 26,
+    "matrix_entry_sources": {
+      "G": "exact centered B-spline rational inputs evaluated in Arb",
+      "P0_edge": "piecewise-polynomial B-spline integral of exp(a/2) in Arb",
+      "P_edge": "Arb log(p) and exp(-r log(p)/2) with B-spline interval evaluation",
+      "Q": "Arb exp(+-u/2)"
+    },
+    "min_eigenvalue_interval": {
+      "hi": "0.0150616591834281164859458636823312514519848969605055023216679391546041584687316610143112579",
+      "lo": "0.0150616591834281164859458636664893080895405879259411551698018373140686699526777271522623609",
+      "mid": "0.0150616591834281164859458636744102797707627424432233287457348882343364142107046940832868094",
+      "rad": "7.9209716812221545172821735759330509202677442580269669310244485E-30"
+    },
+    "min_eigenvalue_lower": "0.0150616591834281164859458636664893080895405879259411551698018373140686699526777271522623609",
+    "mode": "trackb_raw_edge_interval_penalty_cert",
+    "mu": "3/4",
+    "n_centers": 28,
+    "not_e5_closure_reason": "same-unit analytic mu_K source/bridge is not supplied by this certificate",
+    "penalty_matrix": "mu*G - (P_edge-P0_edge) + tau*Q^TQ",
+    "prime_power_shifts_total": 93371,
+    "proof_scope": "finite raw-edge penalty PSD for supplied mu and tau only",
+    "raw_edge": [
+      "7",
+      "14"
+    ],
+    "tau": "100000000"
+  }
+]

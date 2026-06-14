@@ -1,0 +1,132 @@
+\section{Track B E5' Proof Contract}
+
+\paragraph{Status.}
+This contract is a math-to-certificate interface for Track B / E5'.  It is not
+a proof of RH, it does not modify the public route, and it precedes any Lean
+integration.
+
+\subsection{Finite theorem}
+
+For each active finite cell \(K\), let \(V_K\) be the finite packet coefficient
+space, \(C_K\subseteq V_K\) the finite admissible packet cone, \(Q_K\) the
+boundary-row matrix, \(G_K\) the packet Gram matrix, and \(E_{\mathrm{edge},K}\)
+the raw edge matrix.  The target is
+\[
+  c^T E_{\mathrm{edge},K} c
+  \le \mu_K\, c^T G_K c
+  \qquad(c\in C_K,\; Q_Kc=0).
+\]
+Equivalently,
+\[
+  \mu_KG_K-E_{\mathrm{edge},K}\succeq0
+  \quad\hbox{on }C_K\cap\ker Q_K.
+\]
+It is acceptable to prove the stronger statement on all of \(\ker Q_K\).
+
+\subsection{Raw edge}
+
+Use raw-log coordinate \(a=r\log p\) and \(\xi=a/(2\pi)\).  The active edge
+interval is \([2K,4K]\).  The finite matrix is
+\[
+  E_{\mathrm{edge},K}=P_{\mathrm{edge},K}-P_{0,\mathrm{edge},K},
+\]
+where \(P_{\mathrm{edge},K}\) is the finite prime-power matrix over
+\(\log n\in[2K,4K]\), and \(P_{0,\mathrm{edge},K}\) is the continuum model
+integral over the same raw-log interval with density \(e^{a/2}\,da\).
+In functional notation,
+\[
+  \mathrm{Edge}_K(h)=\langle |\widehat h|^2,W_K\rangle,\qquad
+  W_K(\xi)=\sum_{\log n\in[2K,4K]}
+    {\Lambda(n)\over\sqrt n}\cos(\xi\log n).
+\]
+Pointwise positivity of \(W_K\) is not required and is not the proof object.
+
+\subsection{Penalty certificate}
+
+If a genuine pre-edge reserve is available, write it as
+\[
+  \mathrm{old\_reserve}_K\succeq m_{\mathrm{old}}(K)G_K
+  \quad\hbox{on }\ker Q_K.
+\]
+Otherwise set \(m_{\mathrm{old}}(K)=0\).  A sufficient finite certificate is:
+there exists \(\tau_K\ge0\) such that
+\[
+  M_K(\tau_K):=(m_{\mathrm{old}}(K)+\mu_K)G_K
+    -E_{\mathrm{edge},K}+\tau_K Q_K^TQ_K
+  \succeq0
+\]
+on the full coefficient space.  Then for \(Q_Kc=0\),
+\[
+  0\le c^TM_K(\tau_K)c
+   =(m_{\mathrm{old}}(K)+\mu_K)c^TG_Kc-c^TE_{\mathrm{edge},K}c,
+\]
+which gives the desired restricted domination.
+
+\subsection{Current finite interval certificate}
+
+The current finite raw-edge certificate artifact is
+\[
+  \texttt{trackB/certs/e5p\_raw\_edge\_interval\_cert\_K2\_K3\_K35.json}.
+\]
+It uses Arb interval matrices for
+\[
+  \mu G_K - E_{\mathrm{edge},K}+\tau Q_K^TQ_K
+\]
+on the full coefficient space.  With \(\tau=10^8\), it proves positive
+interval lower eigenvalue bounds for the supplied finite thresholds
+\[
+\begin{array}{c|c|c}
+K & \mu & \hbox{interval lower eigenvalue} \\
+\hline
+2 & 0.45 & >0.0129205\\
+3 & 0.51 & >0.0123292\\
+3.5 & 0.75 & >0.0150616.
+\end{array}
+\]
+This is a finite certificate for the supplied \(\mu\) values only.  It is not
+an E5' closure until the analytic \(\mu_K\) ledger is proved to supply those
+constants in the same \(G_K/Q_K\) normalization after all guards.
+
+\subsection{True-edge bridge}
+
+The finite certificate must be connected to the analytic edge by a ledger
+\[
+  \mathrm{Edge}_{\mathrm{true},K}
+  = \mathrm{Edge}_{\mathrm{cell},K}
+    + \mathrm{Tail}_K
+    + \mathrm{Boundary}_K.
+\]
+Required lemmas:
+\[
+\begin{array}{lll}
+\mathrm{Cell} & \mathrm{Edge}_{\mathrm{cell},K}(c)=c^TE_{\mathrm{edge},K}c, \\
+\mathrm{Tail} & \mathrm{Tail}_K(c)\le t_K\,c^TG_Kc, \\
+\mathrm{Boundary} & \mathrm{Boundary}_K(c)=0 \hbox{ or } \le b_K\,c^TG_Kc
+  \hbox{ on }\ker Q_K, \\
+\mathrm{Budget} & t_K+b_K+\mu_{\mathrm{finite},K}\le\mu_K
+  \hbox{ in the same }G_K\hbox{ units.}
+\end{array}
+\]
+
+\subsection{Non-circular old-reserve rule}
+
+The old Step32F lower-bound engine proves exact rational LDL certificates for
+old matrices
+\[
+  C=A-P,\qquad R_\kappa=A-\kappa P_0,\qquad
+  D_\theta=C-\theta R_\kappa.
+\]
+Those certificates are reusable as a penalty/LDL pattern only.  They are not a
+free E5' pre-edge reserve unless a new ledger proves same cell, same basis,
+same \(G/Q\) normalization, and support disjointness from the edge-prime
+matrix already paid inside old \(P\).  With current evidence,
+\[
+  m_{\mathrm{old}}(K)=0.
+\]
+
+\subsection{Certificate standard}
+
+Float eigenvalues are diagnostics only.  A final PSD object must be an exact
+rational LDL/weighted-square identity, an outward-rounded interval LDL or
+Cholesky certificate, or a Lean-checked rational import equivalent to the
+penalty receiver.

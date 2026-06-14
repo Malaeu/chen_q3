@@ -126,11 +126,19 @@ d_K = inf { dual_clamp_K(W) :
             W satisfies boundary/cap normalization }.
 ```
 
+Certificate gap:
+
+```text
+certificate_gap_K =
+  d_K - p_K
+```
+
 Budget:
 
 ```text
-mu_budget_usable(K) =
-  d_K - p_K
+usable_budget_slack_K =
+  mu_K
+  - d_K
   - closure_error_K
   - boundary_error_K
   - quadrature_error_K
@@ -153,13 +161,14 @@ Required checks:
 | sign | physical-side edge sign clamps the defect | `LP_WITNESS_SIGN_WRONG` |
 | boundary | `Q_1,Q_2` boundary functionals stay within guard | `LP_WITNESS_BOUNDARY_FAIL` |
 | closure | S3-style four-slot closure survives insertion | `LP_WITNESS_Q3_NORMALIZATION_FAIL` |
-| budget | `mu_budget_usable(K) > 0` after guards | `LP_GAP_NONPOSITIVE` |
+| finite certificate | `certificate_gap_K > guards` | `LP_GAP_NONPOSITIVE` |
+| budget | `usable_budget_slack_K > 0` after a same-unit `mu_K` bridge | `BUDGET_SLACK_GAP` or `B2B_LP_FATAL` |
 
 ## Verdicts
 
 ```text
 B2B_LP_GREEN:
-  mu_budget_usable(K) > 0 on the tested K values
+  usable_budget_slack_K > 0 on the tested K values
   and PSD/sign/boundary/closure guards all pass.
 
   Meaning:
@@ -167,8 +176,9 @@ B2B_LP_GREEN:
     The finite witness becomes input for an analytic E5 lemma.
 
 B2B_LP_FATAL:
-  mu_budget_usable(K) <= 0
+  usable_budget_slack_K <= 0
   or the witness breaks PSD/sign/boundary/Q3 normalization.
+  If the same-unit mu_K bridge is missing, the correct status is GAP, not GREEN.
 
   Meaning:
     The current dual/LP class is dead for Track B.
@@ -204,5 +214,5 @@ SKETCH: final finite LP/SOS gate statement; current finite dictionary red
 OPEN: richer exact dual-cone witness basis; K -> infinity stability if green
 REFUTED: naive CLV/product/signed-small Selberg lift classes; current signed-triplet/all small dictionary
 ZERO_CONSISTENT: S3 remains the closure regression
-GAP: spectral/SOS witness existence and Q3-normalization survival
+GAP: same-unit mu_K vs d_K bridge; spectral/SOS witness existence and Q3-normalization survival
 ```

@@ -1,5 +1,52 @@
 # Track B Checkpoints
 
+## 2026-06-14 -- E5' Raw-Edge Interval Certificate
+
+ГДЕ Я: Track B / E5' Phase 4, after the mu-budget interface correction.
+СДЕЛАНО: added `scripts/trackb_raw_edge_interval_cert.py`; generated
+`trackB/certs/e5p_raw_edge_interval_cert_K2_K3_K35.json`; added
+`docs/trackB/TRACKB_E5P_RAW_EDGE_INTERVAL_CERT.md`.
+ЧИСЛА: Arb interval full-space penalty cert passes with `tau=100000000` for
+`K=2, mu=0.45, min_eig_lower>0.0129205`; `K=3, mu=0.51,
+min_eig_lower>0.0123292`; `K=3.5, mu=0.75, min_eig_lower>0.0150616`.
+ВЕРДИКТ: finite raw-edge PSD is no longer float-only for these supplied
+thresholds.  E5' is still not proved because the same-unit analytic `mu_K`
+bridge is missing.
+ПЛАН: either prove/source `mu_K >= (0.45,0.51,0.75)` in the same normalization
+after guards, or lower the finite thresholds to a proved analytic budget.
+
+## 2026-06-14 -- Mu Budget Interface Correction
+
+ГДЕ Я: Track B / E5' after the evidence bundle exposed the budget-name
+collision.
+СДЕЛАНО: added `docs/trackB/MU_BUDGET_INTERFACE.md` and corrected Track B docs
+so `d_K-p_K` is a finite `certificate_gap_K`, not the E5' `mu` budget.
+ЧИСЛА: no new numerical run; retained raw-edge float requirements about
+`0.44`, `0.50`, `0.735` for `K=2,3,3.5`.
+ВЕРДИКТ: the correct comparison is `budget_slack_K = mu_K - d_K`, with guards;
+same-unit `mu_K` source remains GAP.  `m_old=0` unless a pre-edge ledger-support
+proof appears.
+ПЛАН: next proof-producing patch is an interval/rational raw-edge PSD
+certificate generator in the actual `G_K`, `Q_K` normalization.
+
+## 2026-06-14 -- E5' Proof Contract Entry
+
+ГДЕ Я: Track B / E5' closure, Phase 0-2 entry.
+СДЕЛАНО: created `TRACKB_E5P_CLOSURE_GOAL.md`,
+`TRACKB_E5P_PROOF_CONTRACT.md`, `TRACKB_E5P_PROOF_CONTRACT.tex`, and
+`TRACKB_LEAN_BRIDGE_MAP.md`; ran local embedding search plus external web
+preflight.
+ЧИСЛА: no new long numerical run yet; inherited active cells `K=2,3,3.5` and
+old Step32F stress values from `TRACKB_REUSE_OLD_LOWER_BOUND.md`.
+ВЕРДИКТ: proof contract fixes the valid target as
+`mu_K G_K - E_edge,K >= 0 on ker(Q_K)` unless a new pre-edge ledger exists.
+Old Step32F is reusable as exact LDL pattern only, so current `m_old=0`.
+ПРОБЛЕМА: at this point the named gap was
+`MU_BUDGET_INTERFACE_AND_INTERVAL_CERT`; the later Phase 4 interval cert narrows
+it to `SAME_UNIT_ANALYTIC_MU_BRIDGE`.
+ПЛАН: run Phase 3 audit confirmation, then Phase 4 raw-edge finite diagnostics
+and decide whether a proof-grade cert is available or the named gap is terminal.
+
 ## 2026-06-12 -- N1 Centered-Form Receiver/Profile
 
 ГДЕ Я: Track B v4, N1(a), K=3.5 non-jump halo cells `60/62`.
@@ -166,7 +213,8 @@ as the last bounded fallback before negative Track B closure.
 table.
 СДЕЛАНО: added LP reformulation, Selberg Route B repair audit, and mollifier
 S5.1 revival check; updated price table.
-ЧИСЛА: LP budget now named `mu_budget_LP(K)=d_K-p_K`; Selberg ordinary edge
+ЧИСЛА: old LP shorthand named `d_K-p_K` as `mu_budget_LP`; this is now
+corrected to `certificate_gap_K=d_K-p_K`; Selberg ordinary edge
 tax at `B_K=1` is `1`; PSD hard-edge tax remains `2.93072,3.50596,3.96288`;
 S5.1 negative/L1 remains about `0.5`.
 ВЕРДИКТ: Route C(LP) is `COMPUTABLE_FORMULA_READY`; Selberg-alone Route B is

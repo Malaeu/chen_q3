@@ -14,7 +14,7 @@ State as of commit `600c818f4`:
 - S5C0 Route C: surcharge confirmed, `tax/mu` OPEN
 - Route D: finite-ledger fallback (last resort, NOT this task)
 
-Missing key quantity: `mu_budget(K)`.
+Missing key quantity: same-unit `mu_K` versus finite dual clamp `d_K`.
 Goal: avoid Route D by applying 3 atlas-cards as alternative routes.
 
 ## Trick atlas (READ FIRST, in this order)
@@ -55,9 +55,10 @@ Path:
 - Stay inside `eps`-budget
 - Clamp ratio: `f(0)/f_hat(0)`
 
-#### `mu_budget(K)` as LP-gap
-- Formula: `mu_budget(K) = ...` (LP-gap of primal/dual)
-- This REPLACES the "open" entry in price-table
+#### dual clamp and budget interface
+- Formula: `certificate_gap_K = d_K-p_K` for finite LP slack
+- Formula: `budget_slack_K = mu_K-d_K` for the actual E5' budget comparison
+- This does not replace the open `mu_K` entry unless the same-unit bridge is proved
 
 #### Feasibility check protocol
 - Numerical procedure to check whether dual is feasible at given K
@@ -70,7 +71,8 @@ Path:
 ### Acceptance gates
 
 - [ ] LP primal/dual written in Track B vocabulary (not generic)
-- [ ] `mu_budget(K)` defined as concrete LP-gap, not "to be defined"
+- [ ] `certificate_gap_K` defined as concrete LP-gap, and `budget_slack_K`
+      kept separate from it
 - [ ] Feasibility check protocol references EXISTING scripts in
       `rh_lean_01_2026/q3.lean.aristotle/scripts/` where applicable
 - [ ] Failure-mode diagnostic gives a numerical test, not philosophy
@@ -157,7 +159,8 @@ positive-proportion of K where E5'-budget stays open.
 
 After D1–D3, update the control panel:
 
-- Add row "S5C0 Route C (LP)" → `mu_budget(K) = LP-gap`, status: COMPUTABLE
+- Add row "S5C0 Route C (LP)" -> `certificate_gap_K = LP-gap`, while
+  `budget_slack_K = mu_K-d_K` remains GAP until same-unit proof
 - Update Route B row → "Selberg repair: \<verdict from D2\>"
 - Add row "S5.1 (mollifier)" → "\<verdict from D3\>"
 - Route D demoted to "fallback only if D1/D2/D3 all fail"
@@ -184,6 +187,7 @@ After D1–D3, update the control panel:
 ## Done criteria
 
 - 4 new/updated MD files committed and pushed.
-- Price-table now answers "Where does `mu_budget(K)` come from?" → "LP-gap" or
-  honest "still open after Selberg+mollifier attempts".
+- Price-table now answers that `d_K-p_K` is only the LP certificate gap, while
+  the true `mu_K-d_K` budget comparison is either proved same-unit or honestly
+  still open after Selberg+mollifier attempts.
 - One commit message that names all 3 atlas cards by id.

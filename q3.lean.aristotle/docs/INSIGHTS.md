@@ -11,6 +11,32 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-06-14, in progress) -- Track B E5' edge-defect contract
+
+- Target lemma: prove `Edge_K(h) <= mu_K Norm_K(h)` for `h in C_K cap kerQ`,
+  equivalently certify `mu_K G_K - E_edge,K >= 0` on `ker(Q_K)` for the active
+  Track B cells `K=2,3,3.5`; this is not a full-RH claim and does not touch
+  `Q3.Main`.
+- Local embedding search did not find an existing E5' domination theorem; it
+  returned only the corrected positive-definite packet cone, matrix-guard, and
+  old lower-bound/penalty infrastructure. External search likewise found only
+  general Beurling-Selberg/CLV/Weil-positive-definite tools, not an off-the-shelf
+  restricted raw-edge PSD theorem.
+- Option 1 (active): use the proof contract in
+  `docs/trackB/TRACKB_E5P_PROOF_CONTRACT.md`, set `m_old=0` unless a new
+  pre-edge ledger is proved, and target a direct penalty certificate
+  `mu_K G_K - E_edge,K + tau Q_K^T Q_K >= 0`.
+- Option 2 (fallback): if `mu_K` is missing or incomparable, use
+  `docs/trackB/MU_BUDGET_INTERFACE.md`; the correct comparison is
+  `budget_slack_K=mu_K-d_K`, while `d_K-p_K` is only a finite certificate gap.
+- Phase 4 update: `scripts/trackb_raw_edge_interval_cert.py` generated
+  `trackB/certs/e5p_raw_edge_interval_cert_K2_K3_K35.json`, an Arb interval
+  full-space penalty cert for supplied `mu=(0.45,0.51,0.75)` and `tau=1e8`.
+  The remaining E5' gap is the same-unit analytic `mu_K` bridge, not raw-edge
+  float-only PSD.
+- Pivot rule: float eigenvalues and S3 closure are diagnostics only; final PSD
+  needs rational/interval certificate or a Lean-checked rational import.
+
 ## Synthesis (2026-05-03, correction) — Step32F concrete B-spline identity gap
 
 - Correction to the Step 32F status: the committed file
@@ -33303,10 +33329,11 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 
 - Applied atlas cards `020` Cohn-Elkies LP, `009` Selberg extremals, and `028`
   Conrey-Ghosh mollifier to the Track B price-table bottleneck.
-- The primary replacement for missing `mu_budget(K)` is now concrete:
-  `mu_budget_LP(K)=d_K-p_K`, where `p_K` is the primal worst edge-defect
-  Rayleigh value on the admissible finite K-cell cone and `d_K` is the best
-  dual magic-function clamp satisfying PSD/sign/boundary constraints.
+- Correction: the finite LP exposes `certificate_gap_K=d_K-p_K`, where `p_K`
+  is the primal worst edge-defect Rayleigh value on the admissible finite
+  K-cell cone and `d_K` is the best dual magic-function clamp satisfying
+  PSD/sign/boundary constraints.  This is not the E5' `mu` budget; the true
+  comparison is `budget_slack_K=mu_K-d_K`.
 - Selberg repairs only the scalar hard-edge constant: at `B_K=1` the ordinary
   tax is `1`, but S5C0 PSD hard-edge taxes remain `2.93072`, `3.50596`,
   `3.96288`; because the current lifted family has order-one Fourier
@@ -33332,10 +33359,11 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   multiplication, ordinary Selberg scalar masks, spectral clipping without
   edge-control ledger, de Branges positivity, and Fourier-quasicrystal
   transfer.
-- S5C-LP verdicts are now explicit: `B2B_LP_GREEN` if
-  `mu_budget_usable(K)>0` and PSD/sign/boundary/Q3 closure guards pass;
-  `B2B_LP_FATAL` if the gap is nonpositive or a guard fails; `B2B_LP_CONFLICT`
-  if finite K is green but the asymptotic sign-uncertainty forecast conflicts.
+- S5C-LP verdicts are now explicit: `B2B_LP_GREEN` only if
+  `usable_budget_slack_K=mu_K-d_K-guards>0` in a proved same-unit
+  normalization and PSD/sign/boundary/Q3 closure guards pass; `B2B_LP_FATAL`
+  if the budget slack is nonpositive or a guard fails; `B2B_LP_CONFLICT` if
+  finite K is green but the asymptotic sign-uncertainty forecast conflicts.
 - If S5C-LP is red, the main effort should move to the operator/prolate route,
   where PSD is built into spectral/self-adjoint structure rather than added as
   an external Fourier-side constraint.

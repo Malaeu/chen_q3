@@ -24,9 +24,10 @@ The price table currently has the right diagnosis but the wrong missing object:
 S5C0_SURCHARGE_CONFIRMED_MU_RATIO_OPEN
 ```
 
-The missing number is not another scalar estimate.  It should be the LP gap
-between the best admissible edge-defect direction and the best dual
-magic-function clamp.  That is the Cohn-Elkies move:
+The missing object is not another scalar estimate.  The LP can expose the
+finite dual clamp `d_K` and the certificate gap `d_K-p_K`, but the E5'
+budget comparison remains `mu_K-d_K` in a same-unit normalization.  The
+Cohn-Elkies move is:
 
 ```text
 one dual witness + sign constraints + Fourier pairing = all configurations
@@ -120,7 +121,7 @@ Edge_K(v) <= lambda
 for every admissible K-cell vector.  A feasible dual witness is therefore a
 single certificate for all sampled directions, not another row-by-row ledger.
 
-## `mu_budget(K)` As LP Gap
+## Dual Clamp, Certificate Gap, And Budget Slack
 
 Define:
 
@@ -132,22 +133,28 @@ d_K = inf {
 }
 ```
 
-Then the LP budget exposed to the price table is:
+Then the finite certificate gap is:
 
 ```text
-mu_budget_LP(K) = d_K - p_K.
+certificate_gap_K = d_K - p_K.
 ```
 
-This is a finite certificate gap, not a promise that the exact optimized
-primal-dual gap stays positive.  If the relaxation is driven to strong-duality
-equality and the guards consume the residual, then `mu_budget_usable(K)` is
-zero and the LP route is a priced failure.
+This is not the E5' `mu`-budget.  It is a finite certificate/duality slack.  If
+the relaxation is driven to strong-duality equality and the guards consume the
+residual, then the finite LP route has no slack for this witness class.
 
-After numerical guards:
+The E5' budget comparison is instead:
 
 ```text
-mu_budget_usable(K) =
-  d_K - p_K
+budget_slack_K = mu_K - d_K.
+```
+
+After proof-grade guards:
+
+```text
+usable_budget_slack_K =
+  mu_K
+  - d_K
   - closure_error_K
   - boundary_error_K
   - quadrature_error_K
@@ -157,18 +164,21 @@ mu_budget_usable(K) =
 Gate:
 
 ```text
-if mu_budget_usable(K) > 0:
-  Route C has a computable budget margin at K.
+if usable_budget_slack_K > 0:
+  Route C has a proof-relevant budget margin at K.
 
-if mu_budget_usable(K) <= 0:
+if usable_budget_slack_K <= 0:
   Route C is numerically/finitely fatal at K unless a stronger dual family is
   supplied.
+
+if mu_K and d_K are not in a proved same-unit normalization:
+  status is GAP, not GREEN.
 ```
 
-This replaces the old open phrase "exact mu_budget(K) absent" by a concrete
-object.  The formula is ready; the remaining open work is solving the dual
-feasibility problem, measuring whether the certificate gap survives, and
-attaching proof-grade error guards.
+This corrects the old shorthand "mu_budget(K) as LP gap".  The finite formulas
+are ready; the remaining open work is solving the dual feasibility problem,
+measuring whether the certificate gap survives, proving the same-unit `mu_K`
+bridge, and attaching proof-grade error guards.
 
 ## Feasibility Protocol
 
@@ -198,8 +208,9 @@ Protocol:
    plus sampled/interval sign constraints for the analytic witness W_K.
    ```
 
-5. Record `d_K`, `p_K`, `d_K-p_K`, and all numerical guards.  The price-table
-   number is `mu_budget_usable(K)`, not the raw Selberg tax.
+5. Record `d_K`, `p_K`, `certificate_gap_K=d_K-p_K`, and all numerical guards.
+   The proof-relevant price-table number is `usable_budget_slack_K=mu_K-d_K`
+   after guards and only after the same-unit bridge is proved.
 
 A thin future wrapper may be useful, but it must be a wrapper around the current
 K-cell matrices, not a new Track B object.  Until that wrapper exists, the LP
@@ -264,19 +275,20 @@ Failure statuses:
 | `LP_DUAL_NOT_PSD` | `min hat(W_K) < -tol` | The witness is not zero-side admissible. |
 | `LP_DUAL_SIGN_WRONG` | margin sign violation | The witness does not clamp the edge defect. |
 | `LP_DUAL_NORMALIZATION_BROKEN` | S3 closure fails after insertion | The explicit-formula transfer changed Q3 normalization. |
-| `LP_GAP_NONPOSITIVE` | `d_K-p_K <= guards` | The LP route is priced and does not fit. |
+| `LP_GAP_NONPOSITIVE` | `certificate_gap_K <= guards` | The finite LP certificate has no usable slack. |
+| `BUDGET_SLACK_GAP` | `mu_K-d_K` not same-unit/proved | The E5' budget comparison is still open. |
 
 This also explains S5C0: the surcharge was confirmed because PSD/nonnegative
-Fourier sign is expensive.  `mu` stayed open because the finite LP dual gap was
-not yet computed.
+Fourier sign is expensive.  `mu` stayed open because the same-unit
+`mu_K` versus `d_K` bridge and proof-grade certificate are not yet present.
 
 ## Status Dictionary
 
 ```text
 PROVED: none
-SKETCH: primal/dual LP formulation and concrete mu_budget_LP(K) definition
+SKETCH: primal/dual LP formulation and certificate_gap/budget_slack interface
 OPEN: numerical dual witness solve; proof-grade continuous/interval guards
 REFUTED: scalar-mask replacement for this LP budget
 ZERO_CONSISTENT: S3 bookkeeping remains the regression gate
-GAP: Fourier-self-dual survival of the actual dual witness W_K
+GAP: same-unit mu_K vs d_K bridge; Fourier-self-dual survival of the actual dual witness W_K
 ```

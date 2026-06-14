@@ -192,7 +192,9 @@ Summary at `B_K=1`:
 Meaning: Route C does not inherit only the ordinary Selberg/Vaaler hard-edge
 tax.  The PSD/nonnegative-hat constraint adds a sign-uncertainty surcharge in
 the finite LP instrument.  A proof-grade `S5C0_FATAL_UNCERTAINTY_TAX` still
-needs an explicit `mu_budget(K)` or a theorem-level normalization comparison.
+needs the same-unit comparison `budget_slack_K=mu_K-d_K` from
+`docs/trackB/MU_BUDGET_INTERFACE.md`, or a theorem-level normalization
+comparison proving it.
 
 ## S2.5 Gap Anatomy
 
@@ -347,15 +349,21 @@ Worst-case enemy profile:
 5. S5C0 tax obstruction:
    PSD-first hard-edge control costs `2.93`, `3.51`, `3.96` times the ordinary
    `1/B_K` baseline at `B_K=1` in the finite LP surrogate.  This confirms the
-   sign-uncertainty surcharge and leaves only the exact `mu_budget(K)` ratio
-   open.
+   sign-uncertainty surcharge and leaves the same-unit `mu_K` versus `d_K`
+   comparison open.
+
+6. E5' raw-edge interval cert:
+   Arb interval full-space penalty certificates now pass on the active raw-edge
+   cells for supplied thresholds `mu=(0.45,0.51,0.75)` and `tau=1e8`.  This
+   removes the float-only PSD obstruction for those supplied constants, but it
+   does not prove the analytic `mu_K` ledger supplies those constants.
 ```
 
 Next analytic question:
 
 ```text
-Either supply the exact mu-budget normalization for S5C0, or run the last
-Route D finite-ledger fallback before declaring
+Either supply the exact same-unit analytic `mu_K` bridge for the supplied
+raw-edge thresholds, or run the last Route D finite-ledger fallback before declaring
 B2B_FATAL_NO_ADMISSIBLE_LIFT_FOUND for the current explicit-formula-lift
 families.
 ```
