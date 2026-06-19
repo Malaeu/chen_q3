@@ -15079,3 +15079,49 @@ Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral
 Boundary remains unchanged: the generated high-order payload theorem is open,
 Step33A.1-A remains open, A hbox is not closed,
 `ActiveCenteredCoeffEntryHboxCert` is not closed, and Step33 is not closed.
+
+## 2026-06-20 Current EOF Override -- M6 source theorem at z0 is next
+
+Route correction:
+
+```text
+The shift48 high-order rectangle route remains checked support/fallback, but
+it is no longer the first proof-producing request.  It adds telescope,
+component-defect, total-radius, and rectangle obligations before the missing
+M6 source theorem is proved.
+```
+
+Current canonical proof-producing request:
+
+```text
+q3.lean.aristotle/aristotle_input/step33_shift16_digamma_m6_integral_remainder_request.md
+```
+
+Current next theorem:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound
+    Q3.PSDpd.Step33.step33Shift16DigammaPoint
+```
+
+Checked consumer chain:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_re_first_omitted_term_bound_of_generic_integral_remainder
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm_of_re_first_omitted_term_bound
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_m6_re_first_omitted_term_bound_closedLogPi
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_re_first_omitted_term_bound_closedLogPi
+```
+
+First likely Lean obstruction:
+
+```text
+The repository has the N=1 Stieltjes/Euler-Maclaurin proof and the M6 receiver
+definitions, but not the six-step M6 Euler-Maclaurin/Stieltjes identity
+matching coefficient 7/6, kernel power 15, and complex norm.
+```
+
+Boundary remains unchanged: the M6 source theorem is open, Step33A.1-A remains
+open, A hbox is not closed, `ActiveCenteredCoeffEntryHboxCert` is not closed,
+and Step33 is not closed.

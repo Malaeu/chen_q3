@@ -1,7 +1,18 @@
 # Step33A.1-A Request: shift16 M6 shift48 integral-remainder source
 
-Status note, 2026-06-09: this is the narrow source-theorem request behind the
-current high-order payload route.
+Status note, 2026-06-20: this is checked support/fallback behind the shift48
+high-order payload route, but it is no longer the first proof-producing source
+request.  The current smaller request is:
+
+```text
+q3.lean.aristotle/aristotle_input/step33_shift16_digamma_m6_integral_remainder_request.md
+```
+
+It targets `Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint`
+directly.
+
+Historical status note, 2026-06-09: this was the narrow source-theorem request
+behind the high-order payload route.
 
 Do not prove the whole endpoint.  Do not revive the exact-prefix/Gauss
 absolute-tail route.  The target is only the far-right M6 digamma

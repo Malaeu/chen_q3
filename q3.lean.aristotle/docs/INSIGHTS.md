@@ -33446,3 +33446,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - This is not a tiny-B `c_arch` or threshold failure.  `R_K`, `alpha_K`, and
   `Loss_K` are not same-unit objects until an A3-admissible `Psi_K` or direct
   projected finite operator majorant is supplied.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6SourceTheoremAtZ0
+
+- Local inventory and Proshka/Louise advisory both narrow the next
+  proof-producing Step33A.1-A source to the specialized theorem
+  `Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint`.
+- Added
+  `aristotle_input/step33_shift16_digamma_m6_integral_remainder_request.md`
+  as the canonical request for that theorem.
+- The shift48 high-order rectangle route is now support/fallback, not the first
+  proof target: it adds telescope, component-defect, total-radius, and
+  rectangle obligations before the missing M6 source is proved.
+- Checked consumers already exist through
+  `step33_shift16_digamma_m6_re_first_omitted_term_bound_of_generic_integral_remainder`
+  and the endpoint/hRaw closed-log-pi wrappers.
+- The first real Lean obstruction is not endpoint arithmetic; it is the missing
+  six-step M6 Euler-Maclaurin/Stieltjes identity matching coefficient `7/6`,
+  kernel power `15`, and the repository's complex-norm
+  `Q3.digammaM6IntegralRemainderBound` definition.

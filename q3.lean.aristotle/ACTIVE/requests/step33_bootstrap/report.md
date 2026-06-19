@@ -52304,3 +52304,55 @@ Monitoring / theorem-shape card only.  No Lean payload, CSV, ARadius,
 radius-floor, LDL, Q3.Main, H1/PO3, or route theorem changed.  Step33A.1-A,
 A hbox, ActiveCenteredCoeffEntryHboxCert, and Step33 remain open.
 ```
+
+## 2026-06-20 Execution update -- M6 source theorem narrowed to z0
+
+Added the current smallest Step33A.1-A proof-producing request:
+
+```text
+q3.lean.aristotle/aristotle_input/step33_shift16_digamma_m6_integral_remainder_request.md
+```
+
+Target:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound
+    Q3.PSDpd.Step33.step33Shift16DigammaPoint
+```
+
+Why this is the next request:
+
+```text
+The already checked receiver
+  step33_shift16_digamma_m6_re_first_omitted_term_bound_of_generic_integral_remainder
+consumes exactly this source theorem at z0.  This avoids the generic half-plane
+theorem and avoids the shift48 finite-telescope/rectangle payload layer until
+the first active endpoint source is closed.
+```
+
+Proshka/Louise escalation was used because the blocker was a theorem-shape
+fork.  Advisory result:
+
+```text
+CHOICE: B
+THEOREM: step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint
+FIRST_OBSTRUCTION: existing N=1 Stieltjes lemmas do not directly provide the
+  six-step M6 Euler-Maclaurin/Stieltjes identity with coefficient 7/6,
+  kernel power 15, and complex norm.
+```
+
+Control-plane correction:
+
+```text
+step33_shift16_m6_high_order_payload_request.md and
+step33_shift16_m6_shift48_integral_remainder_source_request.md are now marked
+as checked support/fallback, not the first proof-producing request.
+```
+
+No Lean theorem was claimed and no proof file was edited.  DLMF 5.11 was used
+only as an external shape reference; accepted proof truth remains local Lean.
+
+Boundary remains unchanged: M6 source theorem open; Step33A.1-A open; A hbox
+open; `ActiveCenteredCoeffEntryHboxCert` open; Step33 open.

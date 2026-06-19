@@ -1,7 +1,18 @@
 # Step33A.1-A Request: shift16 M6 high-order payload
 
-Status note, 2026-06-09: this is the current live external-worker request for
-the first Step33A.1-A raw-Omega endpoint anchor.
+Status note, 2026-06-20: this route is now checked support/fallback, not the
+first proof-producing request.  The current smallest source request is:
+
+```text
+q3.lean.aristotle/aristotle_input/step33_shift16_digamma_m6_integral_remainder_request.md
+```
+
+It targets `Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint`
+directly.  The high-order shift48 rectangle route remains useful if the
+specialized `z0` source theorem cannot be made to land.
+
+Historical status note, 2026-06-09: this was the live external-worker request
+for the first Step33A.1-A raw-Omega endpoint anchor.
 
 Narrow source theorem request:
 
