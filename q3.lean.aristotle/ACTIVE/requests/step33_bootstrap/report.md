@@ -54023,6 +54023,43 @@ with endpoint-zero bookkeeping local to each cell.
 Boundary: this is not a proof of the B6-to-B8 Stieltjes bridge,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B6-to-B8 interval bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B6Diff_to_B8CellDeriv
+```
+
+Checked interval identity:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7
+=
+  (1 / 8 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli8DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 8
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_CELLDERIV_TO_B8DIFF_BOUNDARY_GAP
+```
+
+Meaning: prove the next interval integration-by-parts bridge that rewrites
+the B8 cell-derivative surface through `bernoulli8Diff/(x+z)^9`, including
+the endpoint boundary term, before summing or passing to `Ioi`.
+
+Boundary: this is not a proof of the B8 boundary bridge,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B6 digamma prefix checked
 
 Lean progress in `Q3.DigammaRemainder`:

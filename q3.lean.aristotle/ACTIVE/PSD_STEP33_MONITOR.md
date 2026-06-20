@@ -26790,6 +26790,33 @@ STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP
 Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A B6-to-B8 interval bridge checked
+
+Added checked interval bridge:
+
+```lean
+Q3.stieltjes_interval_B6Diff_to_B8CellDeriv
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_CELLDERIV_TO_B8DIFF_BOUNDARY_GAP
+```
+
+Meaning: prove the boundary-term bridge from
+`bernoulli8DiffCellDeriv/(x+z)^8` to `bernoulli8Diff/(x+z)^9`, including
+the endpoint contribution on each cell.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B8 cell layer checked
 
 Added the checked B8 local layer in `Q3.DigammaRemainder`:
