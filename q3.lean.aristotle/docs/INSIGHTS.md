@@ -36226,3 +36226,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP`.
 - Boundary: this proves the shape-side curvature sign only; raw
   second-derivative nonnegativity and Step33A.1-A closure remain open.
+
+## Insight (2026-06-20, Step33A.1-A) -- RawCurvatureSignAndSamePointRouteKill
+
+- Browser/Proshka advisory selected the trigamma-series sign route; the proof
+  accepted into the repo is local Lean only.
+- Added/checkpointed Omega sign support:
+  `eta_mul_trigammaImSeriesTermClosedForm_nonpos`,
+  `eta_mul_trigamma_im_step22_nonpos`,
+  `step22OmegaArchWeightDerivClosedForm_zero`,
+  `step22OmegaArchWeightDerivClosedForm_mul_self_nonneg`,
+  `deriv_nonneg_at_zero_of_mul_self_nonneg`,
+  `step22OmegaArchWeightDerivClosedForm_deriv_zero_nonneg`, and
+  `step22OmegaArchWeight_second_deriv_at_zero_nonneg`.
+- Added landing theorems:
+  `primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_nonneg` and
+  `primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail`.
+- Closed local gaps:
+  `STEP33_A1_SUB0_OMEGA_SECOND_DERIV_NONNEG_AT_ZERO_GAP`,
+  `STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP`,
+  `STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP`, and
+  `STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_AT_ZERO_BUDGET_FAIL`.
+- Route verdict: the current same-point/asymmetric anchor-curvature shortcut
+  is formally fail-closed.  This is useful progress because it prevents
+  another loop around the same bad payload shape.
+- Current mainline gap returns to
+  `STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP`; the
+  anchor-envelope path remains only a fallback via
+  `STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP`.
+- Boundary: no Step33A.1-A closure, no full 110-field payload, no A hbox,
+  no `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

@@ -2177,6 +2177,59 @@ theorem primaryFiniteRow0Parent0Split100Sub0_step22OmegaArchWeight_zero_nonpos :
     exact inv_pos.mpr (mul_pos (by norm_num) Real.pi_pos)
   nlinarith
 
+/-- The active raw Step22 Omega integrand has nonnegative curvature at the
+first-subchunk anchor.  This combines the product split with the now-checked
+Omega and shape-square sign factors. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_nonneg :
+    0 <=
+      deriv
+        (fun t : Real =>
+          deriv
+            (fun eta : Real =>
+              Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                11 ((3 : Real) / 10) 0 eta)
+            t)
+        (0 : Real) := by
+  rw [primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_decomp]
+  dsimp only
+  let E : Real -> Real :=
+    fun eta : Real =>
+      centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) eta
+  let S : Real -> Real := fun eta : Real => (E eta) ^ 2
+  let Ω : Real -> Real :=
+    Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+  have hOmega2 :
+      0 <= deriv (fun t : Real => deriv Ω t) (0 : Real) := by
+    simpa [Ω] using step22OmegaArchWeight_second_deriv_at_zero_nonneg
+  have hS0 : 0 <= S (0 : Real) := by
+    exact sq_nonneg (E (0 : Real))
+  have hS1 : deriv S (0 : Real) = 0 := by
+    simpa [S, E] using
+      primaryFiniteRow0Parent0Split100Sub0_shapeSq_deriv_at_zero
+  have hOmega0 : Ω (0 : Real) <= 0 := by
+    simpa [Ω] using
+      primaryFiniteRow0Parent0Split100Sub0_step22OmegaArchWeight_zero_nonpos
+  have hS2 :
+      deriv (fun t : Real => deriv S t) (0 : Real) <= 0 := by
+    simpa [S, E] using
+      primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_nonpos
+  have hTerm1 :
+      0 <= deriv (fun t : Real => deriv Ω t) (0 : Real) * S (0 : Real) :=
+    mul_nonneg hOmega2 hS0
+  have hTerm3 :
+      0 <= Ω (0 : Real) * deriv (fun t : Real => deriv S t) (0 : Real) :=
+    mul_nonneg_of_nonpos_of_nonpos hOmega0 hS2
+  have hcpos : 0 < (((3 : Real) / 10) / Real.pi) :=
+    div_pos (by norm_num) Real.pi_pos
+  have hbracket :
+      0 <=
+        deriv (fun t : Real => deriv Ω t) (0 : Real) * S (0 : Real) +
+          2 * deriv Ω (0 : Real) * deriv S (0 : Real) +
+            Ω (0 : Real) * deriv (fun t : Real => deriv S t) (0 : Real) := by
+    rw [hS1]
+    nlinarith
+  exact mul_nonneg (le_of_lt hcpos) hbracket
+
 /-- Same-point residual/raw-polynomial second-derivative crosswalk at the
 first-subchunk anchor, with the raw differentiability bridge discharged. -/
 theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero :
@@ -2222,6 +2275,19 @@ theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_o
   primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg_bridge
     hRawSecondNonneg
     primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero
+
+/-- The first-subchunk same-point curvature route exceeds the available
+second-derivative residual budget.  This is a local kill certificate for this
+asymmetric one-cell shortcut, not a Step33 closure theorem. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail :
+    ((279846042433 : Real) /
+        50000000000000000000000000000) <
+      ‖deriv
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          (0 : Real)‖ :=
+  primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg
+    primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_nonneg
 
 /-- Preferred direct-norm version of the first-subchunk exact-integral
 proof-data receiver.

@@ -17117,3 +17117,47 @@ STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP
 ```
 
 Boundary: no raw nonnegativity theorem yet and no Step33A.1-A closure yet.
+
+## 2026-06-20 Current EOF Addendum -- same-point curvature shortcut killed
+
+Browser/Proshka advisory selected the sign-from-trigamma-series route for the
+Omega curvature gate.  Lean now checks the route locally.
+
+New checked theorem chain:
+
+```lean
+eta_mul_trigamma_im_step22_nonpos
+step22OmegaArchWeightDerivClosedForm_mul_self_nonneg
+deriv_nonneg_at_zero_of_mul_self_nonneg
+step22OmegaArchWeight_second_deriv_at_zero_nonneg
+primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_nonneg
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail
+```
+
+Closed:
+
+```text
+STEP33_A1_SUB0_OMEGA_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_AT_ZERO_BUDGET_FAIL
+```
+
+Decision:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP = fail-closed for the
+current same-point curvature shortcut
+```
+
+Next live mainline patch:
+
+```text
+STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP
+```
+
+Use the checked direct-norm/interpolation receiver.  Do not resurrect the
+same-point curvature shortcut as a payload route unless a different budget
+interface is proved.
+
+Boundary: this is route death, not Step33A.1-A closure.

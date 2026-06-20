@@ -30104,3 +30104,51 @@ STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP
 Boundary: this still does not prove `raw_integrand''(0) >= 0` or close
 Step33A.1-A; the Omega second-derivative sign and final product-split assembly
 remain open.
+
+## 2026-06-20 Current EOF Addendum -- raw curvature sign closes same-point route
+
+Lean now proves the remaining Omega curvature sign, assembles the raw
+second-derivative nonnegativity at `eta = 0`, and specializes the conditional
+budget-fail gate to a no-hypothesis theorem.
+
+New checked support:
+
+```lean
+eta_mul_trigammaImSeriesTermClosedForm_nonpos
+eta_mul_trigamma_im_step22_nonpos
+step22OmegaArchWeightDerivClosedForm_zero
+step22OmegaArchWeightDerivClosedForm_mul_self_nonneg
+deriv_nonneg_at_zero_of_mul_self_nonneg
+step22OmegaArchWeightDerivClosedForm_deriv_zero_nonneg
+step22OmegaArchWeight_second_deriv_at_zero_nonneg
+primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_nonneg
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail
+```
+
+Closed blockers:
+
+```text
+STEP33_A1_SUB0_OMEGA_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_AT_ZERO_BUDGET_FAIL
+```
+
+Route verdict: the current first-subchunk same-point/asymmetric
+anchor-curvature shortcut is formally fail-closed.  It proves a route death,
+not Step33A.1-A closure.
+
+Current mainline gap:
+
+```text
+STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP
+```
+
+Fallback gap if direct norm is routed through the anchor envelope:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+Boundary: no full first-subchunk derivative payload, no A hbox, no
+`ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH closure.

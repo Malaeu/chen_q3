@@ -6789,6 +6789,137 @@ theorem trigamma_im_series_term_eq_closed_form (eta : Real) (n : Nat) :
   field_simp [hden]
   ring
 
+/-- Each closed-form trigamma-imaginary term has the sign needed for the
+Step33A.1-A zero-curvature Omega gate. -/
+theorem eta_mul_trigammaImSeriesTermClosedForm_nonpos
+    (eta : Real) (n : Nat) :
+    eta * trigammaImSeriesTermClosedForm eta n <= 0 := by
+  let x : Real := (n : Real) + (1 / 4 : Real)
+  have hxpos : 0 < x := by
+    dsimp [x]
+    have hn : 0 <= (n : Real) := by exact_mod_cast Nat.zero_le n
+    linarith
+  have hdenpos : 0 < (x ^ 2 + (eta / 2) ^ 2) ^ 2 := by
+    have hx2pos : 0 < x ^ 2 := sq_pos_of_pos hxpos
+    have hy2nonneg : 0 <= (eta / 2) ^ 2 := sq_nonneg _
+    exact sq_pos_of_pos (by linarith : 0 < x ^ 2 + (eta / 2) ^ 2)
+  unfold trigammaImSeriesTermClosedForm
+  calc
+    eta *
+        -((2 * ((n : Real) + (1 / 4 : Real)) * (eta / 2)) /
+          ((((n : Real) + (1 / 4 : Real)) ^ 2 + (eta / 2) ^ 2) ^ 2))
+        =
+        -(x * eta ^ 2 /
+          ((x ^ 2 + (eta / 2) ^ 2) ^ 2)) := by
+          ring
+    _ <= 0 := by
+      exact neg_nonpos.mpr
+        (div_nonneg
+          (mul_nonneg (le_of_lt hxpos) (sq_nonneg eta))
+          (le_of_lt hdenpos))
+
+/-- Specialized trigamma-imaginary sign along the Step22 Omega line
+`1/4 + i eta/2`. -/
+theorem eta_mul_trigamma_im_step22_nonpos (eta : Real) :
+    eta *
+        (trigamma
+          ((1 / 4 : Complex) + Complex.I * (((eta / 2 : Real) : Complex)))).im
+      <= 0 := by
+  let z : Complex :=
+    (1 / 4 : Complex) + Complex.I * (((eta / 2 : Real) : Complex))
+  have hz : 0 < z.re := by
+    dsimp [z]
+    norm_num [Complex.add_re, Complex.mul_re]
+  have hsum : Summable (fun n : Nat => (1 / (z + n) ^ 2).im) := by
+    exact Complex.imCLM.summable (_root_.summable_trigamma_series hz)
+  rw [_root_.im_trigamma_eq_tsum_im hz]
+  rw [← tsum_mul_left]
+  have hnonneg :
+      0 <= ∑' n : Nat, -(eta * (1 / (z + n) ^ 2).im) := by
+    refine tsum_nonneg ?_
+    intro n
+    have hterm := eta_mul_trigammaImSeriesTermClosedForm_nonpos eta n
+    have hrewrite :
+        (1 / (z + n) ^ 2).im = trigammaImSeriesTermClosedForm eta n := by
+      simpa [z] using trigamma_im_series_term_eq_closed_form eta n
+    rw [hrewrite]
+    exact neg_nonneg.mpr hterm
+  have htsum :
+      (∑' n : Nat, -(eta * (1 / (z + n) ^ 2).im)) =
+        -(∑' n : Nat, eta * (1 / (z + n) ^ 2).im) := by
+    exact tsum_neg (f := fun n : Nat => eta * (1 / (z + n) ^ 2).im)
+  rw [htsum] at hnonneg
+  linarith
+
+/-- The checked Omega-derivative closed form vanishes at the origin. -/
+theorem step22OmegaArchWeightDerivClosedForm_zero :
+    step22OmegaArchWeightDerivClosedForm (0 : Real) = 0 := by
+  unfold step22OmegaArchWeightDerivClosedForm
+  let z : Complex := (1 / 4 : Complex) + Complex.I * (((0 / 2 : Real) : Complex))
+  have hz : 0 < z.re := by
+    dsimp [z]
+    norm_num [Complex.add_re, Complex.mul_re]
+  have hzero :
+      (trigamma z).im = 0 := by
+    rw [_root_.im_trigamma_eq_tsum_im hz]
+    have hterms :
+        (fun n : Nat => (1 / (z + n) ^ 2).im) = fun _ : Nat => 0 := by
+      funext n
+      have hrewrite :
+          (1 / (z + n) ^ 2).im =
+            trigammaImSeriesTermClosedForm (0 : Real) n := by
+        simpa [z] using trigamma_im_series_term_eq_closed_form (0 : Real) n
+      rw [hrewrite]
+      unfold trigammaImSeriesTermClosedForm
+      norm_num
+    rw [hterms]
+    simp
+  change -((trigamma z).im * (1 / 2 : Real)) = 0
+  rw [hzero]
+  norm_num
+
+/-- The Omega derivative has the monotonic sign pattern needed at the origin:
+`eta * Omega'(eta) >= 0`. -/
+theorem step22OmegaArchWeightDerivClosedForm_mul_self_nonneg
+    (eta : Real) :
+    0 <= eta * step22OmegaArchWeightDerivClosedForm eta := by
+  unfold step22OmegaArchWeightDerivClosedForm
+  have h := eta_mul_trigamma_im_step22_nonpos eta
+  nlinarith
+
+/-- If `x * g x` is nonnegative everywhere and `g 0 = 0`, then the derivative
+of `g` at the origin cannot be negative. -/
+theorem deriv_nonneg_at_zero_of_mul_self_nonneg
+    {g : Real -> Real}
+    (hg0 : g (0 : Real) = 0)
+    (hgDiff : DifferentiableAt Real g (0 : Real))
+    (hSign : ∀ x : Real, 0 <= x * g x) :
+    0 <= deriv g (0 : Real) := by
+  have hslopeTendsto :
+      Filter.Tendsto (slope g (0 : Real)) (𝓝[>] (0 : Real))
+        (𝓝 (deriv g (0 : Real))) := by
+    exact (hasDerivAt_iff_tendsto_slope.mp hgDiff.hasDerivAt).mono_left
+      (nhdsGT_le_nhdsNE (0 : Real))
+  have hslopeNonneg :
+      ∀ᶠ x in 𝓝[>] (0 : Real), 0 <= slope g (0 : Real) x := by
+    filter_upwards [self_mem_nhdsWithin] with x hxpos
+    rw [slope_def_field, hg0]
+    have hxpos' : 0 < x := by
+      simpa using hxpos
+    have hxden : 0 < x - 0 := by linarith
+    have hgx_nonneg : 0 <= g x := by
+      nlinarith [hSign x, hxpos']
+    exact div_nonneg (by simpa using hgx_nonneg) (le_of_lt hxden)
+  exact ge_of_tendsto hslopeTendsto hslopeNonneg
+
+/-- Closed-form Step22 Omega curvature is nonnegative at the origin. -/
+theorem step22OmegaArchWeightDerivClosedForm_deriv_zero_nonneg :
+    0 <= deriv step22OmegaArchWeightDerivClosedForm (0 : Real) := by
+  exact deriv_nonneg_at_zero_of_mul_self_nonneg
+    step22OmegaArchWeightDerivClosedForm_zero
+    (step22OmegaArchWeightDerivClosedForm_differentiableAt (0 : Real))
+    step22OmegaArchWeightDerivClosedForm_mul_self_nonneg
+
 /-- A coarse cubic majorant for the closed-form trigamma-imaginary term on the
 positive eta axis.
 
@@ -8324,6 +8455,32 @@ theorem step22OmegaArchWeight_deriv_eq_closedForm (eta : Real) :
           ((1 / 4 : Complex) + Complex.I * (((eta / 2 : Real) : Complex))) := by
     simpa [Q3.digamma, digamma] using deriv_digamma_eq_trigamma hzPos
   rw [hTrigamma]
+
+/-- At the origin, the second derivative of the Step22 Omega weight is the
+derivative of the checked trigamma closed form. -/
+theorem step22OmegaArchWeight_second_deriv_at_zero_eq_closedForm :
+    deriv
+        (fun t : Real =>
+          deriv Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight t)
+        (0 : Real) =
+      deriv step22OmegaArchWeightDerivClosedForm (0 : Real) := by
+  have hEq :
+      (fun t : Real =>
+          deriv Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight t) =
+        step22OmegaArchWeightDerivClosedForm := by
+    funext t
+    exact step22OmegaArchWeight_deriv_eq_closedForm t
+  rw [hEq]
+
+/-- Step22 Omega has nonnegative curvature at the origin. -/
+theorem step22OmegaArchWeight_second_deriv_at_zero_nonneg :
+    0 <=
+      deriv
+        (fun t : Real =>
+          deriv Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight t)
+        (0 : Real) := by
+  rw [step22OmegaArchWeight_second_deriv_at_zero_eq_closedForm]
+  exact step22OmegaArchWeightDerivClosedForm_deriv_zero_nonneg
 
 /-- Interval wrapper for generated Omega derivative closed-form bounds. -/
 theorem step22OmegaArchWeight_deriv_eq_closedForm_on_Icc

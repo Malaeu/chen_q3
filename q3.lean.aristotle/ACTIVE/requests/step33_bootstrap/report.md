@@ -58453,3 +58453,85 @@ bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAH
 rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
 git diff --check
 ```
+
+## Execution Update (2026-06-20) -- raw curvature sign and same-point route kill
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk same-point curvature lane.
+
+Browser/Proshka was used through the in-app browser as advisory route review.
+The accepted proof objects are the local Lean theorems below; the browser
+answer is not proof evidence.
+
+Lean theorem support added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+
+```lean
+eta_mul_trigammaImSeriesTermClosedForm_nonpos
+eta_mul_trigamma_im_step22_nonpos
+step22OmegaArchWeightDerivClosedForm_zero
+step22OmegaArchWeightDerivClosedForm_mul_self_nonneg
+deriv_nonneg_at_zero_of_mul_self_nonneg
+step22OmegaArchWeightDerivClosedForm_deriv_zero_nonneg
+step22OmegaArchWeight_second_deriv_at_zero_eq_closedForm
+step22OmegaArchWeight_second_deriv_at_zero_nonneg
+```
+
+Lean theorem support added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_nonneg
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail
+```
+
+Proof-grade result: Lean now proves the active raw Step22 Omega integrand has
+nonnegative second derivative at the first-subchunk anchor `eta = 0`.  Feeding
+that into the checked residual/raw-polynomial crosswalk proves the current
+same-point residual second-derivative budget is impossible.
+
+Closed local blockers:
+
+```text
+STEP33_A1_SUB0_OMEGA_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_AT_ZERO_BUDGET_FAIL
+```
+
+Route verdict:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP
+```
+
+is fail-closed for the current same-point curvature shortcut.  The route is
+not spendable because the checked residual curvature already exceeds the
+available exact budget.
+
+Current mainline gap after this kill:
+
+```text
+STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP
+```
+
+Local fallback gap, only if the direct-norm route is not produced directly:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+Boundary: this does not close Step33A.1-A, the 110-field payload, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.  It only kills the
+current same-point/asymmetric anchor-curvature shortcut and routes work back to
+the direct residual-derivative norm payload.
+
+Validation:
+
+```bash
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
