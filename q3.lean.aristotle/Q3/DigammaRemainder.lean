@@ -2785,6 +2785,27 @@ lemma stieltjes_interval_B10CellDeriv_to_B10Diff (z : ℂ) (hz : 0 < z.re) (n : 
           rw [h_uv']
           ring
 
+lemma stieltjes_interval_B8Diff_to_B10Diff (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
+    ∫ x in (n : ℝ)..(n + 1 : ℝ),
+        (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9 =
+      (132 : ℂ)⁻¹ *
+          ((((n + 1 : ℂ) + z)⁻¹) ^ 10 - (((n : ℂ) + z)⁻¹) ^ 10) +
+        ∫ x in (n : ℝ)..(n + 1 : ℝ),
+          (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11 := by
+  have h1 := stieltjes_interval_B8Diff_to_B10CellDeriv z hz n
+  have h2 := stieltjes_interval_B10CellDeriv_to_B10Diff z hz n
+  calc
+    ∫ x in (n : ℝ)..(n + 1 : ℝ),
+        (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+        = (1 / 10 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+          (bernoulli10DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 10 := h1
+    _ = (132 : ℂ)⁻¹ *
+          ((((n + 1 : ℂ) + z)⁻¹) ^ 10 - (((n : ℂ) + z)⁻¹) ^ 10) +
+        ∫ x in (n : ℝ)..(n + 1 : ℝ),
+          (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11 := by
+          rw [h2]
+          ring
+
 lemma stieltjes_interval_B6Diff_to_B8Diff (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
     ∫ x in (n : ℝ)..(n + 1 : ℝ),
         (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7 =

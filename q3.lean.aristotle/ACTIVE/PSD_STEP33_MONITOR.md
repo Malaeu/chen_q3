@@ -26829,6 +26829,44 @@ boundary bridge to obtain the one-cell B8-to-B10 identity with the
 Boundary unchanged: this does not prove the combined B8-to-B10 bridge,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A B8-to-B10 combined cell bridge checked
+
+Added checked combined cell bridge:
+
+```lean
+Q3.stieltjes_interval_B8Diff_to_B10Diff
+```
+
+Checked one-cell identity:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+=
+  (132 : ℂ)⁻¹ *
+      ((((n + 1 : ℂ) + z)⁻¹) ^ 10 - (((n : ℂ) + z)⁻¹) ^ 10) +
+    ∫ x in (n : ℝ)..(n + 1 : ℝ),
+      (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11
+```
+
+This closes:
+
+```text
+STEP33_M6_B8_TO_B10_COMBINED_CELL_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_TO_B10_FINITE_SUM_TELESCOPE_GAP
+```
+
+Meaning: sum this one-cell identity over `n < N` and telescope the boundary
+terms to obtain the finite `[0,N]` B8-to-B10 identity.
+
+Boundary unchanged: this does not prove the finite B8-to-B10 telescope,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B6-to-B8 combined cell checked
 
 Added checked combined cell identity:

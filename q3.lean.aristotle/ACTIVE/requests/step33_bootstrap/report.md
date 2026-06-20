@@ -54024,6 +54024,44 @@ boundary bridge to expose the one-cell B8-to-B10 identity and its
 Boundary: this is not a proof of the combined B8-to-B10 cell identity,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B8-to-B10 combined cell bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B8Diff_to_B10Diff
+```
+
+Checked one-cell identity:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+=
+  (132 : ℂ)⁻¹ *
+      ((((n + 1 : ℂ) + z)⁻¹) ^ 10 - (((n : ℂ) + z)⁻¹) ^ 10) +
+    ∫ x in (n : ℝ)..(n + 1 : ℝ),
+      (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11
+```
+
+This closes:
+
+```text
+STEP33_M6_B8_TO_B10_COMBINED_CELL_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_TO_B10_FINITE_SUM_TELESCOPE_GAP
+```
+
+Meaning: sum the checked one-cell B8-to-B10 identity over the finite range and
+telescope the endpoint powers.
+
+Boundary: this is not a proof of the finite B8-to-B10 telescope,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B8 cell layer checked
 
 Lean progress in `Q3.DigammaRemainder`:

@@ -34400,3 +34400,19 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   B8-to-B10 identity with boundary coefficient `(1 / 132)`.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B8ToB10CombinedCellChecked
+
+- Added checked one-cell identity:
+  `Q3.stieltjes_interval_B8Diff_to_B10Diff`.
+- The theorem combines the B8-to-B10 interval bridge and the B10 boundary
+  bridge, producing boundary coefficient `(132 : ℂ)⁻¹` and the
+  B10/power-11 cell remainder.
+- Closed:
+  `STEP33_M6_B8_TO_B10_COMBINED_CELL_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B8_TO_B10_FINITE_SUM_TELESCOPE_GAP`.
+- Smallest useful next Lean object: mirror the checked B6-to-B8 finite
+  telescope lemmas for the B8-to-B10 identity.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
