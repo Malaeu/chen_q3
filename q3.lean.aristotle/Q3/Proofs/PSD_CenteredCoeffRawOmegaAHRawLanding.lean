@@ -2411,6 +2411,53 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_chec
     (primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_segment_cert
       data rawDeriv polyDeriv hValid)
 
+/-- First-subchunk direct residual-derivative norm bound extracted from a
+direct segmented residual interval certificate.
+
+This is the preferred current receiver for the pilot cell: generated code must
+prove the residual derivative interval itself on `[0, 1/10]`; it does not need
+to spend or even materialize separate raw/poly interval boxes. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert
+    (data : ResidualDerivativeSegmentIntervalCert)
+    (hValid :
+      ResidualDerivativeSegmentIntervalCert.DirectValid
+        data
+        (fun eta : Real =>
+          deriv
+            primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual
+            eta)
+        (0 : Real) ((1 : Real) / 10)
+        ((1866608532757 : Real) /
+          500000000000000000000000000000)) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖deriv
+          primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual
+          eta‖ <=
+        ((1866608532757 : Real) /
+          500000000000000000000000000000) := by
+  simpa using
+    (ResidualDerivativeSegmentIntervalCert.DirectValid.residual_norm_le hValid)
+
+/-- First-subchunk exact-integral proof-data receiver fed by a direct segmented
+residual-derivative interval certificate. -/
+def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert
+    (data : ResidualDerivativeSegmentIntervalCert)
+    (hValid :
+      ResidualDerivativeSegmentIntervalCert.DirectValid
+        data
+        (fun eta : Real =>
+          deriv
+            primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual
+            eta)
+        (0 : Real) ((1 : Real) / 10)
+        ((1866608532757 : Real) /
+          500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert :=
+  primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
+    (primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert
+      data hValid)
+
 /-- First-subchunk interpolation landing wrapper after the checked raw-center
 source has been closed.
 

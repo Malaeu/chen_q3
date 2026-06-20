@@ -46,14 +46,17 @@
   ],
   "leanInterfaces": {
     "checkerFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean",
+    "checkerLedgerSingleValidityConstructor": "ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds",
+    "checkerLedgerValidity": "ResidualDerivativeSegmentIntervalCert.Valid",
+    "checkerPreferredSingleValidityConstructor": "ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds",
+    "checkerPreferredTheorem": "ResidualDerivativeSegmentIntervalCert.DirectValid.residual_norm_le",
+    "checkerPreferredValidity": "ResidualDerivativeSegmentIntervalCert.DirectValid",
     "checkerSingleConstructor": "ResidualDerivativeSegmentIntervalCert.single",
-    "checkerSingleValidityConstructor": "ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds",
     "checkerStructure": "ResidualDerivativeSegmentIntervalCert",
-    "checkerTheorem": "ResidualDerivativeSegmentIntervalCert.Valid.residual_norm_le",
-    "checkerValidity": "ResidualDerivativeSegmentIntervalCert.Valid",
     "landingFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean",
-    "sub0NormWrapper": "primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_segment_cert",
-    "sub0ProofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_segment_interval_cert"
+    "sub0LedgerProofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_segment_interval_cert",
+    "sub0PreferredNormWrapper": "primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert",
+    "sub0PreferredProofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert"
   },
   "outLeanWritten": false,
   "proofMode": "exact_rational_same_expression_interval",
@@ -61,12 +64,12 @@
   "rationalProofObligations": [
     "exact segment coverage of Set.Icc 0 (1/10) (candidate passes)",
     "exact segment adjacency/no-gap proof (candidate passes)",
-    "residualDeriv eta = rawDeriv eta - polyDeriv eta on the cell",
-    "proof-grade raw derivative enclosure per segment",
-    "proof-grade polynomial derivative enclosure per segment",
     "same-expression direct residual derivative enclosure per segment (missing)",
     "for every segment: -1866608532757/500000000000000000000000000000 <= residualLower (candidate passes)",
-    "for every segment: residualUpper <= 1866608532757/500000000000000000000000000000 (candidate passes)"
+    "for every segment: residualUpper <= 1866608532757/500000000000000000000000000000 (candidate passes)",
+    "optional ledger: residualDeriv eta = rawDeriv eta - polyDeriv eta on the cell",
+    "optional ledger: proof-grade raw derivative enclosure per segment",
+    "optional ledger: proof-grade polynomial derivative enclosure per segment"
   ],
   "routeId": "STEP33_A1_SUB0_SEGMENTED_RESIDUAL_DERIV",
   "schema": "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v1",
@@ -89,8 +92,8 @@
     }
   ],
   "sourceDefinitionHashes": {
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "43b6990163f0a9fc",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "8be60207e71e9a0b"
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "3de3009753a52710",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "b8e73b9bbb2a53a3"
   },
   "sourceStatus": {
     "diagnosticSub0Candidate": {

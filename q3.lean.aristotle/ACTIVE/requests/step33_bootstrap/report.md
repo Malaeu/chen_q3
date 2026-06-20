@@ -58688,3 +58688,63 @@ bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAC
 rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
 git diff --check
 ```
+
+## Execution Update (2026-06-20) -- direct residual segment receiver
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk direct residual-derivative norm
+lane.
+
+Lean checker support added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+
+```lean
+ResidualDerivativeSegmentIntervalCert.DirectValid
+ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds
+ResidualDerivativeSegmentIntervalCert.DirectValid.residual_norm_le
+```
+
+Landing wrappers added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert
+```
+
+The segmented generator contract now marks these as the preferred interfaces:
+
+```text
+checkerPreferredValidity =
+  ResidualDerivativeSegmentIntervalCert.DirectValid
+checkerPreferredSingleValidityConstructor =
+  ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds
+sub0PreferredProofDataWrapper =
+  primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert
+```
+
+Result: the current preferred route no longer requires raw/poly derivative
+boxes before the direct residual-derivative norm can be consumed.  Those fields
+remain optional ledger material through the richer `Valid` route.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
+```
+
+Boundary: this is a receiver/interface improvement only.  It does not prove
+the residual interval, emit a generated Lean payload, close Step33A.1-A, or
+claim Step33/Step34/RH.
+
+Validation:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```

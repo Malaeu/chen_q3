@@ -21,12 +21,15 @@ Fail-closed skeleton.  This is not Lean proof data.
 - checkerFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`
 - checkerStructure: `ResidualDerivativeSegmentIntervalCert`
 - checkerSingleConstructor: `ResidualDerivativeSegmentIntervalCert.single`
-- checkerValidity: `ResidualDerivativeSegmentIntervalCert.Valid`
-- checkerSingleValidityConstructor: `ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds`
-- checkerTheorem: `ResidualDerivativeSegmentIntervalCert.Valid.residual_norm_le`
+- checkerPreferredValidity: `ResidualDerivativeSegmentIntervalCert.DirectValid`
+- checkerPreferredSingleValidityConstructor: `ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds`
+- checkerPreferredTheorem: `ResidualDerivativeSegmentIntervalCert.DirectValid.residual_norm_le`
+- checkerLedgerValidity: `ResidualDerivativeSegmentIntervalCert.Valid`
+- checkerLedgerSingleValidityConstructor: `ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds`
 - landingFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`
-- sub0NormWrapper: `primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_segment_cert`
-- sub0ProofDataWrapper: `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_segment_interval_cert`
+- sub0PreferredNormWrapper: `primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert`
+- sub0PreferredProofDataWrapper: `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert`
+- sub0LedgerProofDataWrapper: `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_segment_interval_cert`
 
 ## Certificate Fields
 
@@ -62,12 +65,12 @@ Fail-closed skeleton.  This is not Lean proof data.
 
 - exact segment coverage of Set.Icc 0 (1/10) (candidate passes)
 - exact segment adjacency/no-gap proof (candidate passes)
-- residualDeriv eta = rawDeriv eta - polyDeriv eta on the cell
-- proof-grade raw derivative enclosure per segment
-- proof-grade polynomial derivative enclosure per segment
 - same-expression direct residual derivative enclosure per segment (missing)
 - for every segment: -1866608532757/500000000000000000000000000000 <= residualLower (candidate passes)
 - for every segment: residualUpper <= 1866608532757/500000000000000000000000000000 (candidate passes)
+- optional ledger: residualDeriv eta = rawDeriv eta - polyDeriv eta on the cell
+- optional ledger: proof-grade raw derivative enclosure per segment
+- optional ledger: proof-grade polynomial derivative enclosure per segment
 
 ## Failure Codes
 
@@ -92,5 +95,6 @@ The diagnostic direct-overlay candidate now supplies a one-segment
 candidate whose exact rational coverage and budget arithmetic pass.
 It remains non-spendable because the same-expression residual
 derivative interval proof is still missing; only a proof-grade
-`ResidualDerivativeSegmentIntervalCert.Valid` witness can close
-the receiver.
+`ResidualDerivativeSegmentIntervalCert.DirectValid` witness can
+close the preferred receiver.  The richer `Valid` witness remains
+available only when a separate raw/poly ledger is also proved.

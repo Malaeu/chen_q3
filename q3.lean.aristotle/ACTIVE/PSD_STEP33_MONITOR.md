@@ -30236,3 +30236,30 @@ STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
 Boundary: the sampled overlay is still not proof data, no generated Lean
 payload was emitted, no first-subchunk residual-derivative norm certificate is
 closed, and Step33A.1-A remains open.
+
+## 2026-06-20 Current EOF Addendum -- direct residual segment receiver
+
+The preferred segmented receiver no longer requires raw/poly interval boxes as
+spendable inputs.  Lean now has a direct residual-only validity surface:
+
+```lean
+ResidualDerivativeSegmentIntervalCert.DirectValid
+ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds
+ResidualDerivativeSegmentIntervalCert.DirectValid.residual_norm_le
+primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert
+```
+
+The richer `ResidualDerivativeSegmentIntervalCert.Valid` surface remains
+available for a raw/poly ledger, but it is no longer the preferred route
+blocker.  The live proof-producing obligation is exactly the direct residual
+derivative interval proof on `Set.Icc 0 (1/10)`.
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
+```
+
+Boundary: no proof-grade residual interval is present yet, no generated Lean
+payload was emitted, and Step33A.1-A remains open.

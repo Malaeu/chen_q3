@@ -36319,3 +36319,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `git diff --check`.
 - Boundary: no Step33A.1-A closure, no generated Lean payload, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- DirectResidualSegmentReceiver
+
+- Added direct residual-only segmented validity:
+  `ResidualDerivativeSegmentIntervalCert.DirectValid`,
+  `ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds`,
+  and `ResidualDerivativeSegmentIntervalCert.DirectValid.residual_norm_le`.
+- Added sub0 landing wrappers:
+  `primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert`.
+- Updated the segmented generator contract so `DirectValid` is the preferred
+  route.  The richer raw/poly `Valid` route remains as optional ledger support,
+  but raw/poly boxes are no longer a required spendable input for the preferred
+  direct residual interval path.
+- Current first live blocker remains
+  `STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING`: prove the direct
+  same-expression residual derivative interval on `Set.Icc 0 (1/10)`.
+- Validation passed: generator run, `py_compile`, checker `lake env lean`,
+  checker `lake build`, landing `lake env lean`, `q3_check`, hole scan for
+  `sorry|admit|exact?`, and `git diff --check`.
+- Boundary: no Step33A.1-A closure, no generated Lean payload, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

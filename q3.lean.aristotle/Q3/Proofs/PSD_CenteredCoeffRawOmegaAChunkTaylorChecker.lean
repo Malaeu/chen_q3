@@ -12300,6 +12300,35 @@ structure Valid
       -derivSlope <= (data.residualLower i : Real) ∧
         (data.residualUpper i : Real) <= derivSlope
 
+/-- Direct validity predicate for a segmented residual-derivative certificate.
+
+This is the proof-producing surface for the current live route: a generator
+may prove the residual derivative interval directly from one common expression,
+without first materializing separate raw/poly derivative boxes.  The richer
+`Valid` predicate above remains available when a ledger also supplies those
+raw/poly fields. -/
+structure DirectValid
+    (data : ResidualDerivativeSegmentIntervalCert)
+    (residualDeriv : Real -> Real)
+    (cellL cellU derivSlope : Real) : Prop where
+  slope_nonneg : 0 <= derivSlope
+  segment_nonempty :
+    ∀ i : Fin data.segmentCount,
+      (data.segmentL i : Real) <= (data.segmentU i : Real)
+  cover :
+    ∀ eta ∈ Set.Icc cellL cellU,
+      ∃ i : Fin data.segmentCount,
+        eta ∈ Set.Icc (data.segmentL i : Real) (data.segmentU i : Real)
+  residual_bounds :
+    ∀ i : Fin data.segmentCount,
+      ∀ eta ∈ Set.Icc (data.segmentL i : Real) (data.segmentU i : Real),
+        (data.residualLower i : Real) <= residualDeriv eta ∧
+          residualDeriv eta <= (data.residualUpper i : Real)
+  residual_budget :
+    ∀ i : Fin data.segmentCount,
+      -derivSlope <= (data.residualLower i : Real) ∧
+        (data.residualUpper i : Real) <= derivSlope
+
 namespace Valid
 
 /-- Construct `Valid` for the single-segment case once the generator supplies
@@ -12379,6 +12408,67 @@ theorem residual_norm_le
       le_trans hInterval.2 hBudget.2⟩
 
 end Valid
+
+namespace DirectValid
+
+/-- Construct direct validity for the one-segment pilot cell once the generator
+supplies a proof-grade residual derivative interval on that cell. -/
+theorem of_single_residual_bounds
+    {residualDeriv : Real -> Real}
+    {cellL cellU derivSlope : Real}
+    {segL segU rawLower rawUpper polyLower polyUpper residualLower residualUpper :
+      Rat}
+    (hSlope : 0 <= derivSlope)
+    (hCellL : (segL : Real) = cellL)
+    (hCellU : (segU : Real) = cellU)
+    (hSeg : (segL : Real) <= (segU : Real))
+    (hResidualBounds :
+      ∀ eta ∈ Set.Icc (segL : Real) (segU : Real),
+        (residualLower : Real) <= residualDeriv eta ∧
+          residualDeriv eta <= (residualUpper : Real))
+    (hBudget :
+      -derivSlope <= (residualLower : Real) ∧
+        (residualUpper : Real) <= derivSlope) :
+    (single segL segU rawLower rawUpper polyLower polyUpper
+      residualLower residualUpper).DirectValid
+        residualDeriv cellL cellU derivSlope := by
+  refine
+    { slope_nonneg := hSlope
+      segment_nonempty := ?_
+      cover := ?_
+      residual_bounds := ?_
+      residual_budget := ?_ }
+  · intro i
+    simpa [single] using hSeg
+  · intro eta heta
+    refine ⟨⟨0, by simp [single]⟩, ?_⟩
+    constructor
+    · simpa [single, hCellL] using heta.1
+    · simpa [single, hCellU] using heta.2
+  · intro i eta heta
+    simpa [single] using hResidualBounds eta heta
+  · intro i
+    simpa [single] using hBudget
+
+/-- Extract the residual-derivative norm bound from a direct segmented
+same-expression interval certificate. -/
+theorem residual_norm_le
+    {data : ResidualDerivativeSegmentIntervalCert}
+    {residualDeriv : Real -> Real}
+    {cellL cellU derivSlope : Real}
+    (h :
+      data.DirectValid residualDeriv cellL cellU derivSlope) :
+    ∀ eta ∈ Set.Icc cellL cellU, ‖residualDeriv eta‖ <= derivSlope := by
+  intro eta heta
+  rcases h.cover eta heta with ⟨i, hi⟩
+  have hInterval := h.residual_bounds i eta hi
+  have hBudget := h.residual_budget i
+  rw [Real.norm_eq_abs]
+  exact abs_le.mpr
+    ⟨le_trans hBudget.1 hInterval.1,
+      le_trans hInterval.2 hBudget.2⟩
+
+end DirectValid
 end ResidualDerivativeSegmentIntervalCert
 
 /-- Derivative finite-cover data where each derivative-cell interval is proved

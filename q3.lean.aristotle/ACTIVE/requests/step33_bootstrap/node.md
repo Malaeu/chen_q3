@@ -17245,3 +17245,33 @@ STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
 ```
 
 The direct-overlay candidate remains non-spendable until this proof is present.
+
+## 2026-06-20 Current EOF Addendum -- direct residual segment receiver
+
+The preferred receiver for the one-segment pilot now avoids making raw/poly
+boxes a required spendable input.  Use:
+
+```lean
+ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert
+```
+
+The next proof-producing payload only needs to prove, on
+`Set.Icc 0 (1/10)`, that:
+
+```text
+-94119513411/500000000000000000000000000000
+  <= deriv residual eta
+deriv residual eta
+  <= 1866608532757/500000000000000000000000000000
+```
+
+plus the exact rational endpoint/budget facts already recorded by the
+generator.  The raw/poly `Valid` route is still available as an optional ledger
+when those boxes are also proved, but it is no longer the preferred blocker.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
+```
