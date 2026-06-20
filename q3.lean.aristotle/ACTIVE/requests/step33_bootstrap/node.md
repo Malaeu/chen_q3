@@ -15724,6 +15724,68 @@ the half-cell rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Addendum -- B14 norm-kernel true-cell bridge checked
+
+Checked support fact:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14NormKernelCellIntegral_nonneg
+```
+
+Statement:
+
+```lean
+theorem step33Shift16B14NormKernelCellIntegral_nonneg (n : Nat) :
+    0 <= ∫ x in (n : Real)..(n + 1 : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+```
+
+Closed coordinate bridge:
+
+```text
+STEP33_M6_B14_PARAM_CELL_TO_TRUE_CELL_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_CELL_SUM_TO_WEIGHTED_IOI_GAP
+```
+
+This patch converts the norm-weighted parameter-cell theorem
+`step33Shift16B14NormKernelParamCellIntegral_nonneg` into the actual
+integer-cell theorem using `intervalIntegral.integral_comp_add_left`.  It does
+not yet sum the true cells into the `Set.Ioi (0 : Real)` integral.
+
+Next patch-sized theorem:
+
+```lean
+theorem step33Shift16B14NormKernelWeightedIoi_nonneg :
+    0 <= ∫ x in Set.Ioi (0 : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+```
+
+After that, feed the theorem as the `hweighted` premise to
+`Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg`.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+and whitespace check were clean.
+
+Boundary: this does not prove `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Current EOF Addendum -- B14 cell pointwise crosswalk checked
 
 Checked support facts:

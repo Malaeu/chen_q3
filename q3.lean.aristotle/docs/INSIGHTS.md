@@ -35094,6 +35094,37 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
   RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- B14NormKernelTrueCellBridge
+
+- Target: reduce `STEP33_M6_B14_PARAM_CELL_TO_WEIGHTED_IOI_GAP` by closing the
+  pure coordinate bridge from `t in 0..1` to `x in n..n+1`.
+- q3_docs search pointed to existing local uses of
+  `intervalIntegral.integral_comp_add_right` for translating interval
+  integrals.  Official Mathlib interval-integral docs confirmed the API shape
+  for `integral_comp_add_left` / `integral_comp_add_right`; the accepted proof
+  is the Lean theorem below.
+- Added checked Lean fact:
+  `Q3.PSDpd.Step33.step33Shift16B14NormKernelCellIntegral_nonneg`.
+- Meaning: for every `n : Nat`, Lean now proves
+  `0 <= ∫ x in (n : Real)..(n + 1 : Real), bernoulli14Diff x /
+  ‖(x : Complex) + z0‖^15`, in the same norm-weighted units as the final
+  `hweighted` premise.
+- Closed coordinate bridge:
+  `STEP33_M6_B14_PARAM_CELL_TO_TRUE_CELL_GAP`.
+- Active exact gap:
+  `STEP33_M6_B14_CELL_SUM_TO_WEIGHTED_IOI_GAP`.
+- Next patch-sized theorem:
+  `step33Shift16B14NormKernelWeightedIoi_nonneg`, summing the nonnegative
+  integer cells into the weighted `Set.Ioi (0 : Real)` integral, then feeding
+  it to `Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  touched Lean-file forbidden-token scan, and `git diff --check`.
+- Boundary: this does not prove `hweighted`,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- B14CellPointwiseCrosswalk
 
 - Target: reduce `STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP` by removing the

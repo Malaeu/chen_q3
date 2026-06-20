@@ -730,6 +730,36 @@ theorem step33Shift16B14NormKernelParamCellIntegral_nonneg (n : Nat) :
   rw [step33Shift16Z0KernelPow15_eq_inv_norm_pow15 ((n : Real) + t)]
   ring_nf
 
+theorem step33Shift16B14NormKernelCellIntegral_nonneg (n : Nat) :
+    0 <= ∫ x in (n : Real)..(n + 1 : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15 := by
+  have h := step33Shift16B14NormKernelParamCellIntegral_nonneg n
+  let F : Real → Real := fun x =>
+    Q3.bernoulli14Diff x /
+      ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+  have hcomp :=
+    intervalIntegral.integral_comp_add_left (f := F) (d := (n : Real))
+      (a := (0 : Real)) (b := (1 : Real))
+  have hcell :
+      (∫ t in (0 : Real)..1,
+        Q3.bernoulli14Diff ((n : Real) + t) /
+          ‖((((n : Real) + t : Real) : Complex) + step33Shift16DigammaPoint)‖ ^ 15) =
+        ∫ x in (n : Real)..(n + 1 : Real), F x := by
+    calc
+      (∫ t in (0 : Real)..1,
+        Q3.bernoulli14Diff ((n : Real) + t) /
+          ‖((((n : Real) + t : Real) : Complex) + step33Shift16DigammaPoint)‖ ^ 15)
+          = ∫ t in (0 : Real)..1, F ((n : Real) + t) := by
+              rfl
+      _ = ∫ x in (n : Real) + (0 : Real)..(n : Real) + (1 : Real), F x := by
+              exact hcomp
+      _ = ∫ x in (n : Real)..(n + 1 : Real), F x := by
+              convert rfl using 1
+              ring_nf
+  rw [← hcell]
+  exact h
+
 theorem step33Shift16DigammaPoint_add_nat_norm_eq_sqrt (n : Nat) :
     ‖step33Shift16DigammaPoint + (n : Complex)‖ =
       Real.sqrt ((((1290 : Real) + 40 * (n : Real)) ^ 2 + 1) / 1600) := by

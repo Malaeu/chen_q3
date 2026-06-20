@@ -28562,6 +28562,74 @@ comparison, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Status -- B14 norm-kernel true-cell bridge checked
+
+New checked support fact:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14NormKernelCellIntegral_nonneg
+```
+
+Statement:
+
+```lean
+theorem step33Shift16B14NormKernelCellIntegral_nonneg (n : Nat) :
+    0 <= ∫ x in (n : Real)..(n + 1 : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+```
+
+Closed coordinate bridge:
+
+```text
+STEP33_M6_B14_PARAM_CELL_TO_TRUE_CELL_GAP
+```
+
+Reduced active gap:
+
+```text
+STEP33_M6_B14_CELL_SUM_TO_WEIGHTED_IOI_GAP
+```
+
+Meaning: Lean now transports the already checked parameter-cell
+nonnegativity from `t in 0..1` to the actual integer cell
+`x in (n : Real)..(n + 1 : Real)` in the true norm-weighted integrand used by
+`Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg`.  The remaining work is no
+longer the coordinate change; it is the countable cell summation / interval
+decomposition needed to produce the single `Set.Ioi (0 : Real)` weighted
+nonnegativity premise.
+
+Local search status: `q3_docs` pointed to existing uses of
+`intervalIntegral.integral_comp_add_right` for cell translation.  Official
+Mathlib interval-integral docs were used only to confirm API shape for
+`integral_comp_add_left` / `integral_comp_add_right`; the proof object is the
+Lean-checked theorem above.
+
+Next patch-sized theorem:
+
+```lean
+theorem step33Shift16B14NormKernelWeightedIoi_nonneg :
+    0 <= ∫ x in Set.Ioi (0 : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+and whitespace check were clean.
+
+Boundary: this does not prove `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Current EOF Status -- B14 cell pointwise crosswalk checked
 
 New checked support facts:
