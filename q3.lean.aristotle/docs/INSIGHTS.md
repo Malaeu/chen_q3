@@ -33745,3 +33745,18 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   exact source gap is still `STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP`, now
   reduced to checked intervals for `n=5,...,15` plus the separate shift/source
   input required by the existing N16 payload receiver.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6StepDefectN5IntervalClosed
+
+- Added Lean-checked no-premise theorem
+  `step33_shift16_m6_step_defect_n5_component_interval`.
+  It proves `[-26,-25]/10^25` for the real part and `[25,26]/10^27` for the
+  imaginary part of
+  `Q3.digammaM6StepDefect (step33Shift16DigammaPoint + (5 : Complex))`.
+- The real step uses `Real.abs_log_sub_add_sum_range_le` on
+  `log(1 + 120800/2220101)`, and the imaginary step uses the generic arctan
+  helper plus the `add_nat` arg lemma for ratios `1/1530` and `1/1490`.
+- Boundary: this closes only `n=0,1,2,3,4,5`.  The payload remains open; the
+  exact source gap is still `STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP`, now
+  reduced to checked intervals for `n=6,...,15` plus the separate shift/source
+  input required by the existing N16 payload receiver.
