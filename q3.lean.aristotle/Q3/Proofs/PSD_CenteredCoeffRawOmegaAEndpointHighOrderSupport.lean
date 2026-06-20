@@ -10154,6 +10154,83 @@ theorem Valid.of_order16_bound_checked_smooth
   Valid.of_order16_bound data omegaPrimeClosedForm_contDiff16
     hCoeffErrorNonneg hCenterJet hOrder16 hRemainderBudget
 
+def omegaPrimeOrder16SeriesFactor : Real :=
+  (Nat.factorial 17 : Real) / (2 : Real) ^ 17
+
+def omegaPrimeOrder16Series (eta : Real) : Real :=
+  ∑' n : Nat,
+    ((((n : Complex) + (1 / 4 : Complex) +
+        Complex.I * (((eta / 2 : Real) : Complex))) ^ 18)⁻¹).im
+
+/-- Algebraic receiver for the active OmegaPrime order-16 bound.
+
+This theorem does not prove the termwise-differentiation bridge.  It isolates
+the remaining analytic obligation into `hDerivEq` plus a same-normalization
+absolute bound for the resulting `tsum`. -/
+theorem order16_bound_of_tsum_abs_bound
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (B : Real)
+    (hSeriesAbs :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        |omegaPrimeOrder16Series eta| <= B)
+    (hFactorBudget :
+      omegaPrimeOrder16SeriesFactor * B <= (data.order16Abs : Real))
+    (hDerivEq :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        iteratedDeriv 16 omegaPrimeClosedForm eta =
+          -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖iteratedDeriv 16 omegaPrimeClosedForm eta‖ <=
+        (data.order16Abs : Real) := by
+  intro eta heta
+  have hFactorNonneg : 0 <= omegaPrimeOrder16SeriesFactor := by
+    unfold omegaPrimeOrder16SeriesFactor
+    positivity
+  rw [hDerivEq eta heta]
+  rw [Real.norm_eq_abs, abs_mul, abs_neg, abs_of_nonneg hFactorNonneg]
+  exact
+    (mul_le_mul_of_nonneg_left (hSeriesAbs eta heta) hFactorNonneg).trans
+      hFactorBudget
+
+/-- Checked-smooth `Valid` constructor using the isolated order-16 `tsum`
+surface.
+
+The proof-grade payload still has to provide the center-jet inequalities,
+the termwise-differentiation identity `hDerivEq`, the absolute `tsum` bound,
+and the rational remainder budget. -/
+theorem Valid.of_order16_tsum_abs_bound_checked_smooth
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (hCoeffErrorNonneg :
+      ∀ j, 0 <= (data.coeffErrorAbs j : Real))
+    (hCenterJet :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1 omegaPrimeClosedForm
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+            (Nat.factorial j.1 : Real) -
+          (data.coeff j : Real)‖ <=
+          (data.coeffErrorAbs j : Real))
+    (B : Real)
+    (hSeriesAbs :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        |omegaPrimeOrder16Series eta| <= B)
+    (hFactorBudget :
+      omegaPrimeOrder16SeriesFactor * B <= (data.order16Abs : Real))
+    (hDerivEq :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        iteratedDeriv 16 omegaPrimeClosedForm eta =
+          -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta)
+    (hRemainderBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) *
+            step33Sub0OmegaPrimeTaylorRadius ^ j.1) +
+          (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+            (Nat.factorial 16 : Real)
+        <= (data.remainderAbs : Real)) :
+    data.Valid :=
+  Valid.of_order16_bound_checked_smooth data hCoeffErrorNonneg hCenterJet
+    (order16_bound_of_tsum_abs_bound data B hSeriesAbs hFactorBudget hDerivEq)
+    hRemainderBudget
+
 private theorem eta_sub_center_abs_le_radius
     {eta : Real}
     (heta : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10)) :

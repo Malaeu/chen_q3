@@ -36729,3 +36729,40 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   exact rational remainder budget, no generated Lean payload, no
   first-subchunk residual-derivative norm certificate, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeOrder16TsumReceiver
+
+- Proshka/Browser advisory selected route A: keep the direct analytic crosswalk
+  and expose the first hard risk as
+  `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`.
+- Local q3_docs search for `OmegaPrime iteratedDeriv16 trigamma tsum`,
+  `iteratedDerivWithin_tsum trigamma series uniform majorant`, and
+  `step22OmegaArchWeightDerivClosedForm order16 polygamma bound center jet`
+  found no ready order-16 payload; closest checked sources are
+  `Q3/DigammaSeries.lean`, `Q3/Proofs/A3_Floor_Monotonicity.lean`, and the
+  current Step33 endpoint support file.
+- External primary-source check confirmed mathlib's
+  `iteratedDerivWithin_tsum` is the intended theorem shape: it needs pointwise
+  summability, locally uniform summability of each derivative order, and
+  differentiability of each term.
+- Added and Lean-checked the algebraic receiver symbols
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesFactor`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.order16_bound_of_tsum_abs_bound`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_tsum_abs_bound_checked_smooth`.
+- The new receiver proves that a same-normalization absolute bound for
+  `omegaPrimeOrder16Series`, the identity
+  `iteratedDeriv 16 omegaPrimeClosedForm eta =
+  -17!/2^17 * omegaPrimeOrder16Series eta`, center-jet bounds, and the
+  rational remainder budget are sufficient for `data.Valid`.
+- This is a reduction, not closure.  It does not prove termwise
+  differentiation under `tsum`, the proof-grade order-16 trigamma/polygamma
+  bound, center-jet enclosures, or the generated payload.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, and `git diff --check`.
+- Next exact blockers:
+  `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP` and
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.

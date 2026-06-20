@@ -30936,3 +30936,65 @@ Boundary: no center-jet payload, no uniform order-16/polygamma bound, no exact
 rational remainder budget, no generated Lean payload, no first-subchunk
 residual-derivative norm certificate, no A hbox, and no Step33A.1-A closure
 exists yet.
+
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 tsum receiver
+
+Proshka/Browser advisory selected route A: keep the direct analytic crosswalk
+and expose the first hard risk as
+`STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`.
+
+Added and Lean-checked a narrow algebraic receiver in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesFactor
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series
+Step33Sub0OmegaPrimeTaylorRemainderCert.order16_bound_of_tsum_abs_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_tsum_abs_bound_checked_smooth
+```
+
+Result:
+
+```text
+same-normalization abs(tsum) bound
++ hDerivEq:
+  iteratedDeriv 16 omegaPrimeClosedForm eta
+    = -17!/2^17 * omegaPrimeOrder16Series eta
++ centerJet + remainderBudget
+  -> data.Valid
+```
+
+This is not a proof of `hDerivEq` and not a numerical payload.  It only fixes
+the exact Lean interface for spending a future termwise-differentiation theorem
+and a proof-grade `tsum` bound.
+
+Next exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Meaning after this checkpoint: the remaining analytic bridge is
+termwise 16-fold differentiation of the trigamma series under `tsum`, followed
+by a proof-grade absolute bound for `omegaPrimeOrder16Series` on `[0, 1/10]`,
+center-jet coefficient enclosures, and exact rational budget arithmetic.
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no proof of termwise `iteratedDeriv16`/`tsum` interchange, no
+proof-grade `tsum` bound, no center-jet payload, no exact rational remainder
+budget, no generated Lean payload, no first-subchunk residual-derivative norm
+certificate, no A hbox, and no Step33A.1-A closure exists yet.

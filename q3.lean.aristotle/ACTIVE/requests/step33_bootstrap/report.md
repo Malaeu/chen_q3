@@ -59585,3 +59585,55 @@ Boundary: no center-jet payload, no uniform order-16/polygamma bound, no exact
 rational remainder budget, no generated Lean payload, no first-subchunk
 residual-derivative norm certificate, no A hbox, and no Step33A.1-A closure
 exists yet.
+
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 tsum receiver
+
+Proshka/Browser route review selected direct route A.  Local grep and q3_docs
+search found no existing order-16 payload; the closest checked surfaces are
+`im_trigamma_eq_tsum_im`, `step22OmegaArchWeightDerivClosedForm_contDiff16`,
+and mathlib's `iteratedDerivWithin_tsum`.
+
+Added a checked algebraic receiver:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesFactor
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series
+Step33Sub0OmegaPrimeTaylorRemainderCert.order16_bound_of_tsum_abs_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_tsum_abs_bound_checked_smooth
+```
+
+The receiver proves:
+
+```text
+if
+  |omegaPrimeOrder16Series eta| <= B on [0, 1/10],
+  omegaPrimeOrder16SeriesFactor * B <= data.order16Abs,
+  iteratedDeriv 16 omegaPrimeClosedForm eta
+    = -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta,
+  plus centerJet and remainderBudget,
+then
+  data.Valid.
+```
+
+This is a reduction only.  It does not prove termwise differentiation under
+`tsum`, the high-order trigamma/polygamma bound, center jets, or the final
+payload budget.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
+Step33/Step34/RH claim.
