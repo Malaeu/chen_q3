@@ -16338,3 +16338,33 @@ fallback: prove hDerivLower/hDerivUpper and use the checked interval receiver.
 ```
 
 No sampled JSON/audit candidate is promoted to proof.
+
+## 2026-06-20 Current EOF Addendum -- first-subchunk anchor-envelope fallback
+
+Checked adapter now available:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_residual_deriv_interval_bounds_of_anchor_envelope
+```
+
+It instantiates
+`RawOmegaATaylorModelCertificate.residual_deriv_interval_bounds_of_cell_anchor_envelope`
+for the first subchunk with `cellL = 0`, `cellU = 1/10`, `anchor = 0`, and
+`mesh = 1/10`.
+
+Packaged proof-data receiver:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope
+```
+
+Current exact payload gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+Next proof-producing target: prove the anchor derivative interval at `0`,
+prove the residual second-derivative envelope on `[0, 1/10]`, and discharge the
+two rational budget inequalities.  This is still a receiver path, not a closed
+derivative payload.

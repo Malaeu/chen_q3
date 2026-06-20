@@ -35604,3 +35604,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: receiver narrowing only.  It does not prove derivative
   lower/upper bounds, direct norm bound, a generated refined row,
   `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- FirstSubchunkAnchorEnvelopeAdapter
+
+- Added checked Lean adapter in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_residual_deriv_interval_bounds_of_anchor_envelope`.
+- Added packaged receiver:
+  `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope`.
+- The adapter instantiates the generic
+  `residual_deriv_interval_bounds_of_cell_anchor_envelope` for the concrete
+  first subchunk with `cellL = 0`, `cellU = 1/10`, `anchor = 0`, and
+  `mesh = 1/10`.
+- The new exact blocker is
+  `STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP`: prove the anchor
+  derivative interval at `eta = 0`, prove differentiability and a
+  second-derivative envelope on `[0, 1/10]`, and discharge the two rational
+  budget inequalities.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`,
+  forbidden-token scan, and `git diff --check`.
+- Boundary: adapter only.  It does not promote sampled JSON/audit derivative
+  candidates to proof and does not close the derivative payload, A hbox,
+  Step33, Step34, or RH.

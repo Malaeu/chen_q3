@@ -56966,6 +56966,66 @@ git diff --check
 Boundary: worklist synchronization only.  No generated Lean payload, no
 derivative analytic closure, no Step33 closure, and no RH claim.
 
+## Execution Update (2026-06-20) -- first-subchunk anchor-envelope adapter
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk fallback payload localization.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean adapter:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_residual_deriv_interval_bounds_of_anchor_envelope
+```
+
+Checked packaged receiver:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope
+```
+
+Meaning: the first-subchunk interval fallback now has an intermediate
+anchor-envelope surface.  It consumes:
+
+```text
+0 <= derivSlope
+derivAnchorLower <= deriv residual 0
+deriv residual 0 <= derivAnchorUpper
+DifferentiableAt Real (fun t => deriv residual t) on [0, 1/10]
+second-derivative envelope on [0, 1/10]
+lower/upper rational budget comparisons
+```
+
+and emits the existing `hDerivLower`/`hDerivUpper` payload needed by the checked
+interval fallback.  The sampled derivative JSON remains diagnostic-only.
+
+Active exact gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
+Boundary: receiver adapter only.  No derivative anchor/envelope payload, no
+direct norm payload, no generated refined row, no A hbox, no Step33 closure,
+and no RH claim.
+
 ## Execution Update (2026-06-20) -- first-subchunk checked raw-center interval fallback
 
 Route: PSD-pd/Q3 Step33A.1-A first-subchunk receiver narrowing.

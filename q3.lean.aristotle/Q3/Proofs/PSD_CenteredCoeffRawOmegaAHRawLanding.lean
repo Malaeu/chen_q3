@@ -1256,6 +1256,118 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_chec
     hDerivLower
     hDerivUpper
 
+/-- Concrete first-subchunk adapter from an anchor interval and a
+second-derivative envelope to the two-sided residual-derivative interval needed
+by the interval fallback.
+
+This is only a receiver: the anchor interval and the proof-grade envelope remain
+payload obligations.  It does not consume sampled derivative JSON. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_residual_deriv_interval_bounds_of_anchor_envelope
+    {derivAnchorLower derivAnchorUpper derivSlope : Real}
+    (hDerivSlopeNonneg : 0 <= derivSlope)
+    (hAnchorLower :
+      derivAnchorLower <=
+        deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual
+          (0 : Real))
+    (hAnchorUpper :
+      deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual
+          (0 : Real) <= derivAnchorUpper)
+    (hResidualDerivDifferentiable :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        DifferentiableAt Real
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          eta)
+    (hResidualSecondDerivBound :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖deriv
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          eta‖ <= derivSlope)
+    (hDerivLowerFromAnchor :
+      ((-94119513411 : Real) / 500000000000000000000000000000) <=
+        derivAnchorLower - derivSlope * ((1 : Real) / 10))
+    (hDerivUpperFromAnchor :
+      derivAnchorUpper + derivSlope * ((1 : Real) / 10) <=
+        ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    (∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ((-94119513411 : Real) / 500000000000000000000000000000) <=
+          deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta) ∧
+      (∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta <=
+          ((1866608532757 : Real) / 500000000000000000000000000000)) := by
+  exact
+    primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert
+      |>.residual_deriv_interval_bounds_of_cell_anchor_envelope
+        (cellL := (0 : Real))
+        (cellU := ((1 : Real) / 10))
+        (anchor := (0 : Real))
+        (mesh := ((1 : Real) / 10))
+        (derivAnchorLower := derivAnchorLower)
+        (derivAnchorUpper := derivAnchorUpper)
+        (derivSlope := derivSlope)
+        (derivLower :=
+          ((-94119513411 : Real) / 500000000000000000000000000000))
+        (derivUpper :=
+          ((1866608532757 : Real) / 500000000000000000000000000000))
+        hDerivSlopeNonneg
+        (by norm_num)
+        (by norm_num)
+        (by norm_num)
+        hAnchorLower
+        hAnchorUpper
+        hResidualDerivDifferentiable
+        hResidualSecondDerivBound
+        hDerivLowerFromAnchor
+        hDerivUpperFromAnchor
+
+/-- First-subchunk interval fallback fed by the concrete anchor-envelope adapter.
+
+The exact remaining payload is now localized to:
+`STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP`. -/
+def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope
+    {derivAnchorLower derivAnchorUpper derivSlope : Real}
+    (hDerivSlopeNonneg : 0 <= derivSlope)
+    (hAnchorLower :
+      derivAnchorLower <=
+        deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual
+          (0 : Real))
+    (hAnchorUpper :
+      deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual
+          (0 : Real) <= derivAnchorUpper)
+    (hResidualDerivDifferentiable :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        DifferentiableAt Real
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          eta)
+    (hResidualSecondDerivBound :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖deriv
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          eta‖ <= derivSlope)
+    (hDerivLowerFromAnchor :
+      ((-94119513411 : Real) / 500000000000000000000000000000) <=
+        derivAnchorLower - derivSlope * ((1 : Real) / 10))
+    (hDerivUpperFromAnchor :
+      derivAnchorUpper + derivSlope * ((1 : Real) / 10) <=
+        ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert :=
+  let hBounds :=
+    primaryFiniteRow0Parent0Split100Sub0_residual_deriv_interval_bounds_of_anchor_envelope
+      hDerivSlopeNonneg
+      hAnchorLower
+      hAnchorUpper
+      hResidualDerivDifferentiable
+      hResidualSecondDerivBound
+      hDerivLowerFromAnchor
+      hDerivUpperFromAnchor
+  primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interval_bounds
+    hBounds.1
+    hBounds.2
+
 /-- Preferred direct-norm version of the first-subchunk exact-integral
 proof-data receiver.
 

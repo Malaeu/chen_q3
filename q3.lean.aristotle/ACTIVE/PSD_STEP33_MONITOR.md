@@ -29220,3 +29220,49 @@ git diff --check
 
 Boundary: worklist synchronization only.  No Lean payload was emitted and no
 analytic derivative field was closed.
+
+## 2026-06-20 Current EOF Status -- first-subchunk anchor-envelope adapter
+
+Added checked Lean adapter:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_residual_deriv_interval_bounds_of_anchor_envelope
+```
+
+and packaged receiver:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope
+```
+
+Meaning: the first-subchunk interval fallback can now be fed from a local
+anchor interval at `eta = 0` plus a proof-grade second-derivative envelope on
+`Set.Icc 0 (1/10)`.  This instantiates the existing generic receiver
+`residual_deriv_interval_bounds_of_cell_anchor_envelope` with the concrete
+first-subchunk constants.
+
+Active exact gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+The missing payload is now localized to:
+
+```text
+anchor interval for deriv residual 0
+second-derivative differentiability/envelope on [0, 1/10]
+budget arithmetic into the fixed lower/upper derivative interval
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
+Boundary: receiver adapter only.  No sampled JSON/audit candidate is promoted
+to proof, and no derivative payload, A hbox, Step33, Step34, or RH is proved.
