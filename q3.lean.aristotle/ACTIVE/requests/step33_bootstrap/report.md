@@ -52993,3 +52993,79 @@ Next proof object:
   generate the remaining n=2,...,15 component-interval lemmas and feed the
   existing Fin 16 payload receiver.
 ```
+
+## 2026-06-20 Execution update -- n=2 M6 step-defect interval closed
+
+Extended the checked finite-telescope defect route by one more term.  The third
+term now has a no-premise Lean theorem:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n2_component_interval
+```
+
+It proves:
+
+```lean
+(((-90 : Real) / ((10 : Real) ^ 25) <=
+    (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (2 : Complex))).re ∧
+  (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (2 : Complex))).re <=
+    (-89 : Real) / ((10 : Real) ^ 25)) ∧
+ ((97 : Real) / ((10 : Real) ^ 27) <=
+    (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (2 : Complex))).im ∧
+  (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (2 : Complex))).im <=
+    (98 : Real) / ((10 : Real) ^ 27)))
+```
+
+New checked support names:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN2LogStep
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN2AlgebraicPart
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN2LogStep_re_bounds
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN2LogStep_im_bounds
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN2_eq_logStep_add_algebraicPart
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN2AlgebraicPart_re_eq
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN2AlgebraicPart_im_eq
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n2_component_interval_of_log_step_bounds
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+```
+
+Result:
+
+```text
+Lean ok
+q3_check ok
+no forbidden markers in touched Lean file
+git diff --check clean
+module build ok
+```
+
+Boundary:
+
+```text
+This closes n=0, n=1, and n=2 only.
+It still does not produce:
+  Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeTermPayload
+
+Current exact source gap:
+  STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP
+
+Next proof object:
+  produce checked component intervals for n=3,...,15, preferably by a finite
+  table/generator that reuses the now-tested log/arctan/algebraic split shape.
+```

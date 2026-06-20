@@ -33684,3 +33684,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP`, i.e. produce the remaining
   checked component intervals for `n=2,...,15` or a finite table theorem feeding
   the existing `Fin 16` receiver.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6StepDefectN2IntervalClosed
+
+- Added Lean-checked no-premise theorem
+  `step33_shift16_m6_step_defect_n2_component_interval`.
+  It proves `[-90,-89]/10^25` for the real part and `[97,98]/10^27` for the
+  imaginary part of
+  `Q3.digammaM6StepDefect (step33Shift16DigammaPoint + (2 : Complex))`.
+- This is the third consecutive proof-grade finite-telescope defect term
+  closed by the same shape: exact algebraic rational split plus certified
+  log-step rectangle.  The real step uses
+  `Real.abs_log_sub_add_sum_range_le` on `log(1 + 111200/1876901)`, and the
+  imaginary step uses arctan alternating-series certificates for ratios
+  `1/1410` and `1/1370`.
+- Validation target remains the same support file, with `lake env lean`
+  passing after the change.  Boundary: the payload remains open; the exact
+  source gap is still `STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP`, now reduced
+  to checked intervals for `n=3,...,15` or a finite table/generator feeding the
+  existing `Fin 16` receiver.
