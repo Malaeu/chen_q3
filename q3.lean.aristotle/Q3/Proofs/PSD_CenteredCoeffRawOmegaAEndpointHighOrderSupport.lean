@@ -3795,6 +3795,2558 @@ theorem step33_shift16_m6_step_defect_n7_component_interval :
     step33Shift16M6StepDefectN7LogStep_im_bounds.1
     step33Shift16M6StepDefectN7LogStep_im_bounds.2
 
+def step33Shift16M6StepDefectN8LogStep : Complex :=
+  Complex.log (step33Shift16DigammaPoint + (9 : Complex)) -
+    Complex.log (step33Shift16DigammaPoint + (8 : Complex))
+
+def step33Shift16M6StepDefectN8AlgebraicPart : Complex :=
+  let z : Complex := step33Shift16DigammaPoint + (8 : Complex)
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * (z + 1)⁻¹
+    - ((1 : Complex) / (12 : Complex)) * ((z + 1) ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * ((z + 1) ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * ((z + 1) ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * ((z + 1) ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * ((z + 1) ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * ((z + 1) ^ 12)⁻¹)) -
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * z⁻¹
+    - ((1 : Complex) / (12 : Complex)) * (z ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * (z ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * (z ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * (z ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * (z ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * (z ^ 12)⁻¹)) -
+  z⁻¹
+
+private def step33Shift16M6StepDefectN8LogReLower : Real :=
+  (24541099677057524623195588710 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN8LogReUpper : Real :=
+  (24541099677057524623195588711 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN8LogImLower : Real :=
+  (-150574006924811983100207868506 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN8LogImUpper : Real :=
+  (-150574006924811983100207868505 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+theorem step33Shift16M6StepDefectN8LogStep_re_eq_half_log_ratio :
+    step33Shift16M6StepDefectN8LogStep.re =
+      (1 / (2 : Real)) *
+        Real.log ((2722501 : Real) / (2592101 : Real)) := by
+  rw [step33Shift16M6StepDefectN8LogStep]
+  simp [Complex.log_re]
+  change
+    Real.log ‖step33Shift16DigammaPoint + (((9 : Nat) : Complex))‖ -
+        Real.log ‖step33Shift16DigammaPoint + (((8 : Nat) : Complex))‖ =
+      (2 : Real)⁻¹ * Real.log ((2722501 : Real) / (2592101 : Real))
+  rw [step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 9,
+    step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 8]
+  norm_num
+  have hNum : (0 : Real) <= 2722501 := by
+    norm_num
+  have hDen : (0 : Real) <= 2592101 := by
+    norm_num
+  have h40_ne : (40 : Real) ≠ 0 := by
+    norm_num
+  have hsNum_ne : Real.sqrt (2722501 : Real) ≠ 0 := by
+    positivity
+  have hsDen_ne : Real.sqrt (2592101 : Real) ≠ 0 := by
+    positivity
+  rw [Real.log_div hsNum_ne h40_ne,
+    Real.log_div hsDen_ne h40_ne]
+  rw [Real.log_sqrt hNum, Real.log_sqrt hDen]
+  have hratio :
+      Real.log ((2722501 : Real) / (2592101 : Real)) =
+        Real.log (2722501 : Real) - Real.log (2592101 : Real) := by
+    exact Real.log_div (by norm_num) (by norm_num)
+  rw [hratio]
+  ring
+
+theorem step33Shift16M6StepDefectN8LogStep_re_bounds :
+    step33Shift16M6StepDefectN8LogReLower <=
+        step33Shift16M6StepDefectN8LogStep.re ∧
+      step33Shift16M6StepDefectN8LogStep.re <=
+        step33Shift16M6StepDefectN8LogReUpper := by
+  let a : Real := (130400 : Real) / (2592101 : Real)
+  let S : Real :=
+    ∑ i ∈ Finset.range 26, (-a) ^ (i + 1) /
+      (((i + 1 : Nat) : Real))
+  let E : Real := |(-a)| ^ (26 + 1) / (1 - |(-a)|)
+  have ha_abs : |(-a)| < 1 := by
+    norm_num [a]
+  have hlogBound := Real.abs_log_sub_add_sum_range_le (x := -a) ha_abs 26
+  have hlogBound' : |S + Real.log (1 + a)| <= E := by
+    simpa [S, E, sub_eq_add_neg] using hlogBound
+  have hlog_ge : -S - E <= Real.log (1 + a) := by
+    have h := (abs_le.mp hlogBound').1
+    linarith
+  have hlog_le : Real.log (1 + a) <= -S + E := by
+    have h := (abs_le.mp hlogBound').2
+    linarith
+  have hratio : ((2722501 : Real) / (2592101 : Real)) = 1 + a := by
+    norm_num [a]
+  have hRe := step33Shift16M6StepDefectN8LogStep_re_eq_half_log_ratio
+  rw [hratio] at hRe
+  constructor
+  · rw [hRe]
+    have hApprox :
+        2 * step33Shift16M6StepDefectN8LogReLower <= -S - E := by
+      norm_num [step33Shift16M6StepDefectN8LogReLower, S, E, a]
+    have h2 : 2 * step33Shift16M6StepDefectN8LogReLower <=
+        Real.log (1 + a) := hApprox.trans hlog_ge
+    calc
+      step33Shift16M6StepDefectN8LogReLower =
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN8LogReLower) := by
+        ring
+      _ <= (1 / (2 : Real)) * Real.log (1 + a) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+  · rw [hRe]
+    have hApprox : -S + E <=
+        2 * step33Shift16M6StepDefectN8LogReUpper := by
+      norm_num [step33Shift16M6StepDefectN8LogReUpper, S, E, a]
+    have h2 : Real.log (1 + a) <=
+        2 * step33Shift16M6StepDefectN8LogReUpper := hlog_le.trans hApprox
+    calc
+      (1 / (2 : Real)) * Real.log (1 + a) <=
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN8LogReUpper) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+      _ = step33Shift16M6StepDefectN8LogReUpper := by
+        ring
+
+theorem step33Shift16M6StepDefectN8LogStep_im_eq_arg_sub :
+    step33Shift16M6StepDefectN8LogStep.im =
+      Complex.arg (step33Shift16DigammaPoint + (9 : Complex)) -
+        Complex.arg (step33Shift16DigammaPoint + (8 : Complex)) := by
+  rw [step33Shift16M6StepDefectN8LogStep]
+  simp [Complex.log_im]
+
+theorem step33Shift16M6StepDefectN8LogStep_im_bounds :
+    step33Shift16M6StepDefectN8LogImLower <=
+        step33Shift16M6StepDefectN8LogStep.im ∧
+      step33Shift16M6StepDefectN8LogStep.im <=
+        step33Shift16M6StepDefectN8LogImUpper := by
+  let x0 : Real := (1 : Real) / (1610 : Real)
+  let x1 : Real := (1 : Real) / (1650 : Real)
+  let S0 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x0 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E0 : Real := x0 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  let S1 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x1 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E1 : Real := x1 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  have h0 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x0 (by norm_num [x0]) (by norm_num [x0])
+    (by norm_num [x0]) (by norm_num [x0])
+  have h1 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x1 (by norm_num [x1]) (by norm_num [x1])
+    (by norm_num [x1]) (by norm_num [x1])
+  have h0Lower : S0 - E0 <= Real.arctan x0 := by
+    have h := (abs_le.mp h0).1
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h0Upper : Real.arctan x0 <= S0 + E0 := by
+    have h := (abs_le.mp h0).2
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h1Lower : S1 - E1 <= Real.arctan x1 := by
+    have h := (abs_le.mp h1).1
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have h1Upper : Real.arctan x1 <= S1 + E1 := by
+    have h := (abs_le.mp h1).2
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have hIm :
+      step33Shift16M6StepDefectN8LogStep.im =
+        Real.arctan x1 - Real.arctan x0 := by
+    rw [step33Shift16M6StepDefectN8LogStep_im_eq_arg_sub]
+    change
+      Complex.arg (step33Shift16DigammaPoint + (((9 : Nat) : Complex))) -
+          Complex.arg (step33Shift16DigammaPoint + (((8 : Nat) : Complex))) =
+        Real.arctan x1 - Real.arctan x0
+    rw [step33Shift16DigammaPoint_add_nat_arg_eq_arctan 9,
+      step33Shift16DigammaPoint_add_nat_arg_eq_arctan 8]
+    norm_num [x0, x1]
+  constructor
+  · rw [hIm]
+    have hApprox :
+        step33Shift16M6StepDefectN8LogImLower <=
+          (S1 - E1) - (S0 + E0) := by
+      norm_num [step33Shift16M6StepDefectN8LogImLower, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+  · rw [hIm]
+    have hApprox :
+        (S1 + E1) - (S0 - E0) <=
+          step33Shift16M6StepDefectN8LogImUpper := by
+      norm_num [step33Shift16M6StepDefectN8LogImUpper, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+
+theorem step33Shift16M6StepDefectN8_eq_logStep_add_algebraicPart :
+    Q3.digammaM6StepDefect
+        (step33Shift16DigammaPoint + (8 : Complex)) =
+      step33Shift16M6StepDefectN8LogStep +
+        step33Shift16M6StepDefectN8AlgebraicPart := by
+  simp [Q3.digammaM6StepDefect, Q3.digammaM6AsymptoticMain,
+    step33Shift16M6StepDefectN8LogStep,
+    step33Shift16M6StepDefectN8AlgebraicPart]
+  ring_nf
+
+theorem step33Shift16M6StepDefectN8AlgebraicPart_re_eq :
+    step33Shift16M6StepDefectN8AlgebraicPart.re =
+      (-86485959899542492389634694879377880391649505717362714705504899701537066128163436897100423887514620914234523770686966434659447756159950190447733145814541200 : Real) /
+        (3524127322639689887817721983750621732165732965172087749721296760726289330684803991439107775228427392545159015472173531565993558062689300437788271446766431431 : Real) := by
+  norm_num [step33Shift16M6StepDefectN8AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33Shift16M6StepDefectN8AlgebraicPart_im_eq :
+    step33Shift16M6StepDefectN8AlgebraicPart.im =
+      (159192591564920333686413021701770540156094598565530382572636889861039283531784234924920696758542090096798154740945049460336612839587860215288089804647720 : Real) /
+        (10572381967919069663453165951251865196497198895516263249163890282178867992054411974317323325685282177635477046416520594697980674188067901313364814340299294293 : Real) := by
+  norm_num [step33Shift16M6StepDefectN8AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33_shift16_m6_step_defect_n8_component_interval_of_log_step_bounds
+    (hLogReLower :
+      step33Shift16M6StepDefectN8LogReLower <=
+        step33Shift16M6StepDefectN8LogStep.re)
+    (hLogReUpper :
+      step33Shift16M6StepDefectN8LogStep.re <=
+        step33Shift16M6StepDefectN8LogReUpper)
+    (hLogImLower :
+      step33Shift16M6StepDefectN8LogImLower <=
+        step33Shift16M6StepDefectN8LogStep.im)
+    (hLogImUpper :
+      step33Shift16M6StepDefectN8LogStep.im <=
+        step33Shift16M6StepDefectN8LogImUpper) :
+    (((-9 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (8 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (8 : Complex))).re <=
+        (-8 : Real) / ((10 : Real) ^ 25)) ∧
+     ((7 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (8 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (8 : Complex))).im <=
+        (8 : Real) / ((10 : Real) ^ 27))) := by
+  have hReEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (8 : Complex))).re =
+        step33Shift16M6StepDefectN8LogStep.re +
+          step33Shift16M6StepDefectN8AlgebraicPart.re := by
+    simpa using congrArg Complex.re
+      step33Shift16M6StepDefectN8_eq_logStep_add_algebraicPart
+  have hImEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (8 : Complex))).im =
+        step33Shift16M6StepDefectN8LogStep.im +
+          step33Shift16M6StepDefectN8AlgebraicPart.im := by
+    simpa using congrArg Complex.im
+      step33Shift16M6StepDefectN8_eq_logStep_add_algebraicPart
+  constructor
+  · constructor
+    · rw [hReEq, step33Shift16M6StepDefectN8AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN8LogReLower] at hLogReLower ⊢
+      linarith [hLogReLower]
+    · rw [hReEq, step33Shift16M6StepDefectN8AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN8LogReUpper] at hLogReUpper ⊢
+      linarith [hLogReUpper]
+  · constructor
+    · rw [hImEq, step33Shift16M6StepDefectN8AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN8LogImLower] at hLogImLower ⊢
+      linarith [hLogImLower]
+    · rw [hImEq, step33Shift16M6StepDefectN8AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN8LogImUpper] at hLogImUpper ⊢
+      linarith [hLogImUpper]
+
+theorem step33_shift16_m6_step_defect_n8_component_interval :
+    (((-9 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (8 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (8 : Complex))).re <=
+        (-8 : Real) / ((10 : Real) ^ 25)) ∧
+     ((7 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (8 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (8 : Complex))).im <=
+        (8 : Real) / ((10 : Real) ^ 27))) := by
+  exact step33_shift16_m6_step_defect_n8_component_interval_of_log_step_bounds
+    step33Shift16M6StepDefectN8LogStep_re_bounds.1
+    step33Shift16M6StepDefectN8LogStep_re_bounds.2
+    step33Shift16M6StepDefectN8LogStep_im_bounds.1
+    step33Shift16M6StepDefectN8LogStep_im_bounds.2
+
+def step33Shift16M6StepDefectN9LogStep : Complex :=
+  Complex.log (step33Shift16DigammaPoint + (10 : Complex)) -
+    Complex.log (step33Shift16DigammaPoint + (9 : Complex))
+
+def step33Shift16M6StepDefectN9AlgebraicPart : Complex :=
+  let z : Complex := step33Shift16DigammaPoint + (9 : Complex)
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * (z + 1)⁻¹
+    - ((1 : Complex) / (12 : Complex)) * ((z + 1) ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * ((z + 1) ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * ((z + 1) ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * ((z + 1) ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * ((z + 1) ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * ((z + 1) ^ 12)⁻¹)) -
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * z⁻¹
+    - ((1 : Complex) / (12 : Complex)) * (z ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * (z ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * (z ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * (z ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * (z ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * (z ^ 12)⁻¹)) -
+  z⁻¹
+
+private def step33Shift16M6StepDefectN9LogReLower : Real :=
+  (23953232431665157352239505417 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN9LogReUpper : Real :=
+  (23953232431665157352239505418 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN9LogImLower : Real :=
+  (-143446245840530174720623928556 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN9LogImUpper : Real :=
+  (-143446245840530174720623928555 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+theorem step33Shift16M6StepDefectN9LogStep_re_eq_half_log_ratio :
+    step33Shift16M6StepDefectN9LogStep.re =
+      (1 / (2 : Real)) *
+        Real.log ((2856101 : Real) / (2722501 : Real)) := by
+  rw [step33Shift16M6StepDefectN9LogStep]
+  simp [Complex.log_re]
+  change
+    Real.log ‖step33Shift16DigammaPoint + (((10 : Nat) : Complex))‖ -
+        Real.log ‖step33Shift16DigammaPoint + (((9 : Nat) : Complex))‖ =
+      (2 : Real)⁻¹ * Real.log ((2856101 : Real) / (2722501 : Real))
+  rw [step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 10,
+    step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 9]
+  norm_num
+  have hNum : (0 : Real) <= 2856101 := by
+    norm_num
+  have hDen : (0 : Real) <= 2722501 := by
+    norm_num
+  have h40_ne : (40 : Real) ≠ 0 := by
+    norm_num
+  have hsNum_ne : Real.sqrt (2856101 : Real) ≠ 0 := by
+    positivity
+  have hsDen_ne : Real.sqrt (2722501 : Real) ≠ 0 := by
+    positivity
+  rw [Real.log_div hsNum_ne h40_ne,
+    Real.log_div hsDen_ne h40_ne]
+  rw [Real.log_sqrt hNum, Real.log_sqrt hDen]
+  have hratio :
+      Real.log ((2856101 : Real) / (2722501 : Real)) =
+        Real.log (2856101 : Real) - Real.log (2722501 : Real) := by
+    exact Real.log_div (by norm_num) (by norm_num)
+  rw [hratio]
+  ring
+
+theorem step33Shift16M6StepDefectN9LogStep_re_bounds :
+    step33Shift16M6StepDefectN9LogReLower <=
+        step33Shift16M6StepDefectN9LogStep.re ∧
+      step33Shift16M6StepDefectN9LogStep.re <=
+        step33Shift16M6StepDefectN9LogReUpper := by
+  let a : Real := (133600 : Real) / (2722501 : Real)
+  let S : Real :=
+    ∑ i ∈ Finset.range 26, (-a) ^ (i + 1) /
+      (((i + 1 : Nat) : Real))
+  let E : Real := |(-a)| ^ (26 + 1) / (1 - |(-a)|)
+  have ha_abs : |(-a)| < 1 := by
+    norm_num [a]
+  have hlogBound := Real.abs_log_sub_add_sum_range_le (x := -a) ha_abs 26
+  have hlogBound' : |S + Real.log (1 + a)| <= E := by
+    simpa [S, E, sub_eq_add_neg] using hlogBound
+  have hlog_ge : -S - E <= Real.log (1 + a) := by
+    have h := (abs_le.mp hlogBound').1
+    linarith
+  have hlog_le : Real.log (1 + a) <= -S + E := by
+    have h := (abs_le.mp hlogBound').2
+    linarith
+  have hratio : ((2856101 : Real) / (2722501 : Real)) = 1 + a := by
+    norm_num [a]
+  have hRe := step33Shift16M6StepDefectN9LogStep_re_eq_half_log_ratio
+  rw [hratio] at hRe
+  constructor
+  · rw [hRe]
+    have hApprox :
+        2 * step33Shift16M6StepDefectN9LogReLower <= -S - E := by
+      norm_num [step33Shift16M6StepDefectN9LogReLower, S, E, a]
+    have h2 : 2 * step33Shift16M6StepDefectN9LogReLower <=
+        Real.log (1 + a) := hApprox.trans hlog_ge
+    calc
+      step33Shift16M6StepDefectN9LogReLower =
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN9LogReLower) := by
+        ring
+      _ <= (1 / (2 : Real)) * Real.log (1 + a) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+  · rw [hRe]
+    have hApprox : -S + E <=
+        2 * step33Shift16M6StepDefectN9LogReUpper := by
+      norm_num [step33Shift16M6StepDefectN9LogReUpper, S, E, a]
+    have h2 : Real.log (1 + a) <=
+        2 * step33Shift16M6StepDefectN9LogReUpper := hlog_le.trans hApprox
+    calc
+      (1 / (2 : Real)) * Real.log (1 + a) <=
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN9LogReUpper) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+      _ = step33Shift16M6StepDefectN9LogReUpper := by
+        ring
+
+theorem step33Shift16M6StepDefectN9LogStep_im_eq_arg_sub :
+    step33Shift16M6StepDefectN9LogStep.im =
+      Complex.arg (step33Shift16DigammaPoint + (10 : Complex)) -
+        Complex.arg (step33Shift16DigammaPoint + (9 : Complex)) := by
+  rw [step33Shift16M6StepDefectN9LogStep]
+  simp [Complex.log_im]
+
+theorem step33Shift16M6StepDefectN9LogStep_im_bounds :
+    step33Shift16M6StepDefectN9LogImLower <=
+        step33Shift16M6StepDefectN9LogStep.im ∧
+      step33Shift16M6StepDefectN9LogStep.im <=
+        step33Shift16M6StepDefectN9LogImUpper := by
+  let x0 : Real := (1 : Real) / (1650 : Real)
+  let x1 : Real := (1 : Real) / (1690 : Real)
+  let S0 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x0 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E0 : Real := x0 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  let S1 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x1 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E1 : Real := x1 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  have h0 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x0 (by norm_num [x0]) (by norm_num [x0])
+    (by norm_num [x0]) (by norm_num [x0])
+  have h1 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x1 (by norm_num [x1]) (by norm_num [x1])
+    (by norm_num [x1]) (by norm_num [x1])
+  have h0Lower : S0 - E0 <= Real.arctan x0 := by
+    have h := (abs_le.mp h0).1
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h0Upper : Real.arctan x0 <= S0 + E0 := by
+    have h := (abs_le.mp h0).2
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h1Lower : S1 - E1 <= Real.arctan x1 := by
+    have h := (abs_le.mp h1).1
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have h1Upper : Real.arctan x1 <= S1 + E1 := by
+    have h := (abs_le.mp h1).2
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have hIm :
+      step33Shift16M6StepDefectN9LogStep.im =
+        Real.arctan x1 - Real.arctan x0 := by
+    rw [step33Shift16M6StepDefectN9LogStep_im_eq_arg_sub]
+    change
+      Complex.arg (step33Shift16DigammaPoint + (((10 : Nat) : Complex))) -
+          Complex.arg (step33Shift16DigammaPoint + (((9 : Nat) : Complex))) =
+        Real.arctan x1 - Real.arctan x0
+    rw [step33Shift16DigammaPoint_add_nat_arg_eq_arctan 10,
+      step33Shift16DigammaPoint_add_nat_arg_eq_arctan 9]
+    norm_num [x0, x1]
+  constructor
+  · rw [hIm]
+    have hApprox :
+        step33Shift16M6StepDefectN9LogImLower <=
+          (S1 - E1) - (S0 + E0) := by
+      norm_num [step33Shift16M6StepDefectN9LogImLower, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+  · rw [hIm]
+    have hApprox :
+        (S1 + E1) - (S0 - E0) <=
+          step33Shift16M6StepDefectN9LogImUpper := by
+      norm_num [step33Shift16M6StepDefectN9LogImUpper, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+
+theorem step33Shift16M6StepDefectN9_eq_logStep_add_algebraicPart :
+    Q3.digammaM6StepDefect
+        (step33Shift16DigammaPoint + (9 : Complex)) =
+      step33Shift16M6StepDefectN9LogStep +
+        step33Shift16M6StepDefectN9AlgebraicPart := by
+  simp [Q3.digammaM6StepDefect, Q3.digammaM6AsymptoticMain,
+    step33Shift16M6StepDefectN9LogStep,
+    step33Shift16M6StepDefectN9AlgebraicPart]
+  ring_nf
+
+theorem step33Shift16M6StepDefectN9AlgebraicPart_re_eq :
+    step33Shift16M6StepDefectN9AlgebraicPart.re =
+      (-270318282487713508819910770038912373208712376574101112855365242624845456318090190987004188570129244406073512414290043765402647593151603787001539801251550800 : Real) /
+        (11285252763228907857649527875282499781686626580983817315634368595537040469987521076758008178003182514443564763215358416625298598987231879506281175337159039431 : Real) := by
+  norm_num [step33Shift16M6StepDefectN9AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33Shift16M6StepDefectN9AlgebraicPart_im_eq :
+    step33Shift16M6StepDefectN9AlgebraicPart.im =
+      (485648142673996915342379424997802894301205403025491206176121438707352367382298056574561026046808790584037880113945577285487386308638651358405936362567720 : Real) /
+        (33855758289686723572948583625847499345059879742951451946903105786611121409962563230274024534009547543330694289646075249875895796961695638518843526011477118293 : Real) := by
+  norm_num [step33Shift16M6StepDefectN9AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33_shift16_m6_step_defect_n9_component_interval_of_log_step_bounds
+    (hLogReLower :
+      step33Shift16M6StepDefectN9LogReLower <=
+        step33Shift16M6StepDefectN9LogStep.re)
+    (hLogReUpper :
+      step33Shift16M6StepDefectN9LogStep.re <=
+        step33Shift16M6StepDefectN9LogReUpper)
+    (hLogImLower :
+      step33Shift16M6StepDefectN9LogImLower <=
+        step33Shift16M6StepDefectN9LogStep.im)
+    (hLogImUpper :
+      step33Shift16M6StepDefectN9LogStep.im <=
+        step33Shift16M6StepDefectN9LogImUpper) :
+    (((-6 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (9 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (9 : Complex))).re <=
+        (-5 : Real) / ((10 : Real) ^ 25)) ∧
+     ((5 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (9 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (9 : Complex))).im <=
+        (6 : Real) / ((10 : Real) ^ 27))) := by
+  have hReEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (9 : Complex))).re =
+        step33Shift16M6StepDefectN9LogStep.re +
+          step33Shift16M6StepDefectN9AlgebraicPart.re := by
+    simpa using congrArg Complex.re
+      step33Shift16M6StepDefectN9_eq_logStep_add_algebraicPart
+  have hImEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (9 : Complex))).im =
+        step33Shift16M6StepDefectN9LogStep.im +
+          step33Shift16M6StepDefectN9AlgebraicPart.im := by
+    simpa using congrArg Complex.im
+      step33Shift16M6StepDefectN9_eq_logStep_add_algebraicPart
+  constructor
+  · constructor
+    · rw [hReEq, step33Shift16M6StepDefectN9AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN9LogReLower] at hLogReLower ⊢
+      linarith [hLogReLower]
+    · rw [hReEq, step33Shift16M6StepDefectN9AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN9LogReUpper] at hLogReUpper ⊢
+      linarith [hLogReUpper]
+  · constructor
+    · rw [hImEq, step33Shift16M6StepDefectN9AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN9LogImLower] at hLogImLower ⊢
+      linarith [hLogImLower]
+    · rw [hImEq, step33Shift16M6StepDefectN9AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN9LogImUpper] at hLogImUpper ⊢
+      linarith [hLogImUpper]
+
+theorem step33_shift16_m6_step_defect_n9_component_interval :
+    (((-6 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (9 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (9 : Complex))).re <=
+        (-5 : Real) / ((10 : Real) ^ 25)) ∧
+     ((5 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (9 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (9 : Complex))).im <=
+        (6 : Real) / ((10 : Real) ^ 27))) := by
+  exact step33_shift16_m6_step_defect_n9_component_interval_of_log_step_bounds
+    step33Shift16M6StepDefectN9LogStep_re_bounds.1
+    step33Shift16M6StepDefectN9LogStep_re_bounds.2
+    step33Shift16M6StepDefectN9LogStep_im_bounds.1
+    step33Shift16M6StepDefectN9LogStep_im_bounds.2
+
+def step33Shift16M6StepDefectN10LogStep : Complex :=
+  Complex.log (step33Shift16DigammaPoint + (11 : Complex)) -
+    Complex.log (step33Shift16DigammaPoint + (10 : Complex))
+
+def step33Shift16M6StepDefectN10AlgebraicPart : Complex :=
+  let z : Complex := step33Shift16DigammaPoint + (10 : Complex)
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * (z + 1)⁻¹
+    - ((1 : Complex) / (12 : Complex)) * ((z + 1) ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * ((z + 1) ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * ((z + 1) ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * ((z + 1) ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * ((z + 1) ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * ((z + 1) ^ 12)⁻¹)) -
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * z⁻¹
+    - ((1 : Complex) / (12 : Complex)) * (z ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * (z ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * (z ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * (z ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * (z ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * (z ^ 12)⁻¹)) -
+  z⁻¹
+
+private def step33Shift16M6StepDefectN10LogReLower : Real :=
+  (23392871572856733776669996629 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN10LogReUpper : Real :=
+  (23392871572856733776669996630 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN10LogImLower : Real :=
+  (-136812895701387718999340281786 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN10LogImUpper : Real :=
+  (-136812895701387718999340281785 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+theorem step33Shift16M6StepDefectN10LogStep_re_eq_half_log_ratio :
+    step33Shift16M6StepDefectN10LogStep.re =
+      (1 / (2 : Real)) *
+        Real.log ((2992901 : Real) / (2856101 : Real)) := by
+  rw [step33Shift16M6StepDefectN10LogStep]
+  simp [Complex.log_re]
+  change
+    Real.log ‖step33Shift16DigammaPoint + (((11 : Nat) : Complex))‖ -
+        Real.log ‖step33Shift16DigammaPoint + (((10 : Nat) : Complex))‖ =
+      (2 : Real)⁻¹ * Real.log ((2992901 : Real) / (2856101 : Real))
+  rw [step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 11,
+    step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 10]
+  norm_num
+  have hNum : (0 : Real) <= 2992901 := by
+    norm_num
+  have hDen : (0 : Real) <= 2856101 := by
+    norm_num
+  have h40_ne : (40 : Real) ≠ 0 := by
+    norm_num
+  have hsNum_ne : Real.sqrt (2992901 : Real) ≠ 0 := by
+    positivity
+  have hsDen_ne : Real.sqrt (2856101 : Real) ≠ 0 := by
+    positivity
+  rw [Real.log_div hsNum_ne h40_ne,
+    Real.log_div hsDen_ne h40_ne]
+  rw [Real.log_sqrt hNum, Real.log_sqrt hDen]
+  have hratio :
+      Real.log ((2992901 : Real) / (2856101 : Real)) =
+        Real.log (2992901 : Real) - Real.log (2856101 : Real) := by
+    exact Real.log_div (by norm_num) (by norm_num)
+  rw [hratio]
+  ring
+
+theorem step33Shift16M6StepDefectN10LogStep_re_bounds :
+    step33Shift16M6StepDefectN10LogReLower <=
+        step33Shift16M6StepDefectN10LogStep.re ∧
+      step33Shift16M6StepDefectN10LogStep.re <=
+        step33Shift16M6StepDefectN10LogReUpper := by
+  let a : Real := (136800 : Real) / (2856101 : Real)
+  let S : Real :=
+    ∑ i ∈ Finset.range 26, (-a) ^ (i + 1) /
+      (((i + 1 : Nat) : Real))
+  let E : Real := |(-a)| ^ (26 + 1) / (1 - |(-a)|)
+  have ha_abs : |(-a)| < 1 := by
+    norm_num [a]
+  have hlogBound := Real.abs_log_sub_add_sum_range_le (x := -a) ha_abs 26
+  have hlogBound' : |S + Real.log (1 + a)| <= E := by
+    simpa [S, E, sub_eq_add_neg] using hlogBound
+  have hlog_ge : -S - E <= Real.log (1 + a) := by
+    have h := (abs_le.mp hlogBound').1
+    linarith
+  have hlog_le : Real.log (1 + a) <= -S + E := by
+    have h := (abs_le.mp hlogBound').2
+    linarith
+  have hratio : ((2992901 : Real) / (2856101 : Real)) = 1 + a := by
+    norm_num [a]
+  have hRe := step33Shift16M6StepDefectN10LogStep_re_eq_half_log_ratio
+  rw [hratio] at hRe
+  constructor
+  · rw [hRe]
+    have hApprox :
+        2 * step33Shift16M6StepDefectN10LogReLower <= -S - E := by
+      norm_num [step33Shift16M6StepDefectN10LogReLower, S, E, a]
+    have h2 : 2 * step33Shift16M6StepDefectN10LogReLower <=
+        Real.log (1 + a) := hApprox.trans hlog_ge
+    calc
+      step33Shift16M6StepDefectN10LogReLower =
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN10LogReLower) := by
+        ring
+      _ <= (1 / (2 : Real)) * Real.log (1 + a) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+  · rw [hRe]
+    have hApprox : -S + E <=
+        2 * step33Shift16M6StepDefectN10LogReUpper := by
+      norm_num [step33Shift16M6StepDefectN10LogReUpper, S, E, a]
+    have h2 : Real.log (1 + a) <=
+        2 * step33Shift16M6StepDefectN10LogReUpper := hlog_le.trans hApprox
+    calc
+      (1 / (2 : Real)) * Real.log (1 + a) <=
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN10LogReUpper) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+      _ = step33Shift16M6StepDefectN10LogReUpper := by
+        ring
+
+theorem step33Shift16M6StepDefectN10LogStep_im_eq_arg_sub :
+    step33Shift16M6StepDefectN10LogStep.im =
+      Complex.arg (step33Shift16DigammaPoint + (11 : Complex)) -
+        Complex.arg (step33Shift16DigammaPoint + (10 : Complex)) := by
+  rw [step33Shift16M6StepDefectN10LogStep]
+  simp [Complex.log_im]
+
+theorem step33Shift16M6StepDefectN10LogStep_im_bounds :
+    step33Shift16M6StepDefectN10LogImLower <=
+        step33Shift16M6StepDefectN10LogStep.im ∧
+      step33Shift16M6StepDefectN10LogStep.im <=
+        step33Shift16M6StepDefectN10LogImUpper := by
+  let x0 : Real := (1 : Real) / (1690 : Real)
+  let x1 : Real := (1 : Real) / (1730 : Real)
+  let S0 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x0 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E0 : Real := x0 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  let S1 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x1 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E1 : Real := x1 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  have h0 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x0 (by norm_num [x0]) (by norm_num [x0])
+    (by norm_num [x0]) (by norm_num [x0])
+  have h1 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x1 (by norm_num [x1]) (by norm_num [x1])
+    (by norm_num [x1]) (by norm_num [x1])
+  have h0Lower : S0 - E0 <= Real.arctan x0 := by
+    have h := (abs_le.mp h0).1
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h0Upper : Real.arctan x0 <= S0 + E0 := by
+    have h := (abs_le.mp h0).2
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h1Lower : S1 - E1 <= Real.arctan x1 := by
+    have h := (abs_le.mp h1).1
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have h1Upper : Real.arctan x1 <= S1 + E1 := by
+    have h := (abs_le.mp h1).2
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have hIm :
+      step33Shift16M6StepDefectN10LogStep.im =
+        Real.arctan x1 - Real.arctan x0 := by
+    rw [step33Shift16M6StepDefectN10LogStep_im_eq_arg_sub]
+    change
+      Complex.arg (step33Shift16DigammaPoint + (((11 : Nat) : Complex))) -
+          Complex.arg (step33Shift16DigammaPoint + (((10 : Nat) : Complex))) =
+        Real.arctan x1 - Real.arctan x0
+    rw [step33Shift16DigammaPoint_add_nat_arg_eq_arctan 11,
+      step33Shift16DigammaPoint_add_nat_arg_eq_arctan 10]
+    norm_num [x0, x1]
+  constructor
+  · rw [hIm]
+    have hApprox :
+        step33Shift16M6StepDefectN10LogImLower <=
+          (S1 - E1) - (S0 + E0) := by
+      norm_num [step33Shift16M6StepDefectN10LogImLower, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+  · rw [hIm]
+    have hApprox :
+        (S1 + E1) - (S0 - E0) <=
+          step33Shift16M6StepDefectN10LogImUpper := by
+      norm_num [step33Shift16M6StepDefectN10LogImUpper, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+
+theorem step33Shift16M6StepDefectN10_eq_logStep_add_algebraicPart :
+    Q3.digammaM6StepDefect
+        (step33Shift16DigammaPoint + (10 : Complex)) =
+      step33Shift16M6StepDefectN10LogStep +
+        step33Shift16M6StepDefectN10AlgebraicPart := by
+  simp [Q3.digammaM6StepDefect, Q3.digammaM6AsymptoticMain,
+    step33Shift16M6StepDefectN10LogStep,
+    step33Shift16M6StepDefectN10AlgebraicPart]
+  ring_nf
+
+theorem step33Shift16M6StepDefectN10AlgebraicPart_re_eq :
+    step33Shift16M6StepDefectN10AlgebraicPart.re =
+      (-274135458395893086063962242754401073397141725896632929978671783945571602619160678591149796004749063785963158112662649530030603938615228925008870856747066800 : Real) /
+        (11718760458377351201001193924437707598630857697391540815880561060144829459089748655387922960497518748652849579958965162115594505611295577264318206357168036077 : Real) := by
+  norm_num [step33Shift16M6StepDefectN10AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33Shift16M6StepDefectN10AlgebraicPart_im_eq :
+    step33Shift16M6StepDefectN10AlgebraicPart.im =
+      (1442949797107374378877860247487879016517739853519769622432458555576458123188508448191182319778160619249303590843296395146809246646724478102630078951079720 : Real) /
+        (105468844125396160809010745319939368387677719276523867342925049541303465131807737898491306644477668737875646219630686459040350550501660195378863857214512324693 : Real) := by
+  norm_num [step33Shift16M6StepDefectN10AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33_shift16_m6_step_defect_n10_component_interval_of_log_step_bounds
+    (hLogReLower :
+      step33Shift16M6StepDefectN10LogReLower <=
+        step33Shift16M6StepDefectN10LogStep.re)
+    (hLogReUpper :
+      step33Shift16M6StepDefectN10LogStep.re <=
+        step33Shift16M6StepDefectN10LogReUpper)
+    (hLogImLower :
+      step33Shift16M6StepDefectN10LogImLower <=
+        step33Shift16M6StepDefectN10LogStep.im)
+    (hLogImUpper :
+      step33Shift16M6StepDefectN10LogStep.im <=
+        step33Shift16M6StepDefectN10LogImUpper) :
+    (((-5 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (10 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (10 : Complex))).re <=
+        (-4 : Real) / ((10 : Real) ^ 25)) ∧
+     ((3 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (10 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (10 : Complex))).im <=
+        (4 : Real) / ((10 : Real) ^ 27))) := by
+  have hReEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (10 : Complex))).re =
+        step33Shift16M6StepDefectN10LogStep.re +
+          step33Shift16M6StepDefectN10AlgebraicPart.re := by
+    simpa using congrArg Complex.re
+      step33Shift16M6StepDefectN10_eq_logStep_add_algebraicPart
+  have hImEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (10 : Complex))).im =
+        step33Shift16M6StepDefectN10LogStep.im +
+          step33Shift16M6StepDefectN10AlgebraicPart.im := by
+    simpa using congrArg Complex.im
+      step33Shift16M6StepDefectN10_eq_logStep_add_algebraicPart
+  constructor
+  · constructor
+    · rw [hReEq, step33Shift16M6StepDefectN10AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN10LogReLower] at hLogReLower ⊢
+      linarith [hLogReLower]
+    · rw [hReEq, step33Shift16M6StepDefectN10AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN10LogReUpper] at hLogReUpper ⊢
+      linarith [hLogReUpper]
+  · constructor
+    · rw [hImEq, step33Shift16M6StepDefectN10AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN10LogImLower] at hLogImLower ⊢
+      linarith [hLogImLower]
+    · rw [hImEq, step33Shift16M6StepDefectN10AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN10LogImUpper] at hLogImUpper ⊢
+      linarith [hLogImUpper]
+
+theorem step33_shift16_m6_step_defect_n10_component_interval :
+    (((-5 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (10 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (10 : Complex))).re <=
+        (-4 : Real) / ((10 : Real) ^ 25)) ∧
+     ((3 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (10 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (10 : Complex))).im <=
+        (4 : Real) / ((10 : Real) ^ 27))) := by
+  exact step33_shift16_m6_step_defect_n10_component_interval_of_log_step_bounds
+    step33Shift16M6StepDefectN10LogStep_re_bounds.1
+    step33Shift16M6StepDefectN10LogStep_re_bounds.2
+    step33Shift16M6StepDefectN10LogStep_im_bounds.1
+    step33Shift16M6StepDefectN10LogStep_im_bounds.2
+
+def step33Shift16M6StepDefectN11LogStep : Complex :=
+  Complex.log (step33Shift16DigammaPoint + (12 : Complex)) -
+    Complex.log (step33Shift16DigammaPoint + (11 : Complex))
+
+def step33Shift16M6StepDefectN11AlgebraicPart : Complex :=
+  let z : Complex := step33Shift16DigammaPoint + (11 : Complex)
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * (z + 1)⁻¹
+    - ((1 : Complex) / (12 : Complex)) * ((z + 1) ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * ((z + 1) ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * ((z + 1) ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * ((z + 1) ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * ((z + 1) ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * ((z + 1) ^ 12)⁻¹)) -
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * z⁻¹
+    - ((1 : Complex) / (12 : Complex)) * (z ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * (z ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * (z ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * (z ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * (z ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * (z ^ 12)⁻¹)) -
+  z⁻¹
+
+private def step33Shift16M6StepDefectN11LogReLower : Real :=
+  (22858130610545736564944809297 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN11LogReUpper : Real :=
+  (22858130610545736564944809298 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN11LogImLower : Real :=
+  (-130629264017499094197982538238 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN11LogImUpper : Real :=
+  (-130629264017499094197982538237 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+theorem step33Shift16M6StepDefectN11LogStep_re_eq_half_log_ratio :
+    step33Shift16M6StepDefectN11LogStep.re =
+      (1 / (2 : Real)) *
+        Real.log ((3132901 : Real) / (2992901 : Real)) := by
+  rw [step33Shift16M6StepDefectN11LogStep]
+  simp [Complex.log_re]
+  change
+    Real.log ‖step33Shift16DigammaPoint + (((12 : Nat) : Complex))‖ -
+        Real.log ‖step33Shift16DigammaPoint + (((11 : Nat) : Complex))‖ =
+      (2 : Real)⁻¹ * Real.log ((3132901 : Real) / (2992901 : Real))
+  rw [step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 12,
+    step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 11]
+  norm_num
+  have hNum : (0 : Real) <= 3132901 := by
+    norm_num
+  have hDen : (0 : Real) <= 2992901 := by
+    norm_num
+  have h40_ne : (40 : Real) ≠ 0 := by
+    norm_num
+  have hsNum_ne : Real.sqrt (3132901 : Real) ≠ 0 := by
+    positivity
+  have hsDen_ne : Real.sqrt (2992901 : Real) ≠ 0 := by
+    positivity
+  rw [Real.log_div hsNum_ne h40_ne,
+    Real.log_div hsDen_ne h40_ne]
+  rw [Real.log_sqrt hNum, Real.log_sqrt hDen]
+  have hratio :
+      Real.log ((3132901 : Real) / (2992901 : Real)) =
+        Real.log (3132901 : Real) - Real.log (2992901 : Real) := by
+    exact Real.log_div (by norm_num) (by norm_num)
+  rw [hratio]
+  ring
+
+theorem step33Shift16M6StepDefectN11LogStep_re_bounds :
+    step33Shift16M6StepDefectN11LogReLower <=
+        step33Shift16M6StepDefectN11LogStep.re ∧
+      step33Shift16M6StepDefectN11LogStep.re <=
+        step33Shift16M6StepDefectN11LogReUpper := by
+  let a : Real := (140000 : Real) / (2992901 : Real)
+  let S : Real :=
+    ∑ i ∈ Finset.range 26, (-a) ^ (i + 1) /
+      (((i + 1 : Nat) : Real))
+  let E : Real := |(-a)| ^ (26 + 1) / (1 - |(-a)|)
+  have ha_abs : |(-a)| < 1 := by
+    norm_num [a]
+  have hlogBound := Real.abs_log_sub_add_sum_range_le (x := -a) ha_abs 26
+  have hlogBound' : |S + Real.log (1 + a)| <= E := by
+    simpa [S, E, sub_eq_add_neg] using hlogBound
+  have hlog_ge : -S - E <= Real.log (1 + a) := by
+    have h := (abs_le.mp hlogBound').1
+    linarith
+  have hlog_le : Real.log (1 + a) <= -S + E := by
+    have h := (abs_le.mp hlogBound').2
+    linarith
+  have hratio : ((3132901 : Real) / (2992901 : Real)) = 1 + a := by
+    norm_num [a]
+  have hRe := step33Shift16M6StepDefectN11LogStep_re_eq_half_log_ratio
+  rw [hratio] at hRe
+  constructor
+  · rw [hRe]
+    have hApprox :
+        2 * step33Shift16M6StepDefectN11LogReLower <= -S - E := by
+      norm_num [step33Shift16M6StepDefectN11LogReLower, S, E, a]
+    have h2 : 2 * step33Shift16M6StepDefectN11LogReLower <=
+        Real.log (1 + a) := hApprox.trans hlog_ge
+    calc
+      step33Shift16M6StepDefectN11LogReLower =
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN11LogReLower) := by
+        ring
+      _ <= (1 / (2 : Real)) * Real.log (1 + a) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+  · rw [hRe]
+    have hApprox : -S + E <=
+        2 * step33Shift16M6StepDefectN11LogReUpper := by
+      norm_num [step33Shift16M6StepDefectN11LogReUpper, S, E, a]
+    have h2 : Real.log (1 + a) <=
+        2 * step33Shift16M6StepDefectN11LogReUpper := hlog_le.trans hApprox
+    calc
+      (1 / (2 : Real)) * Real.log (1 + a) <=
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN11LogReUpper) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+      _ = step33Shift16M6StepDefectN11LogReUpper := by
+        ring
+
+theorem step33Shift16M6StepDefectN11LogStep_im_eq_arg_sub :
+    step33Shift16M6StepDefectN11LogStep.im =
+      Complex.arg (step33Shift16DigammaPoint + (12 : Complex)) -
+        Complex.arg (step33Shift16DigammaPoint + (11 : Complex)) := by
+  rw [step33Shift16M6StepDefectN11LogStep]
+  simp [Complex.log_im]
+
+theorem step33Shift16M6StepDefectN11LogStep_im_bounds :
+    step33Shift16M6StepDefectN11LogImLower <=
+        step33Shift16M6StepDefectN11LogStep.im ∧
+      step33Shift16M6StepDefectN11LogStep.im <=
+        step33Shift16M6StepDefectN11LogImUpper := by
+  let x0 : Real := (1 : Real) / (1730 : Real)
+  let x1 : Real := (1 : Real) / (1770 : Real)
+  let S0 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x0 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E0 : Real := x0 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  let S1 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x1 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E1 : Real := x1 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  have h0 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x0 (by norm_num [x0]) (by norm_num [x0])
+    (by norm_num [x0]) (by norm_num [x0])
+  have h1 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x1 (by norm_num [x1]) (by norm_num [x1])
+    (by norm_num [x1]) (by norm_num [x1])
+  have h0Lower : S0 - E0 <= Real.arctan x0 := by
+    have h := (abs_le.mp h0).1
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h0Upper : Real.arctan x0 <= S0 + E0 := by
+    have h := (abs_le.mp h0).2
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h1Lower : S1 - E1 <= Real.arctan x1 := by
+    have h := (abs_le.mp h1).1
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have h1Upper : Real.arctan x1 <= S1 + E1 := by
+    have h := (abs_le.mp h1).2
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have hIm :
+      step33Shift16M6StepDefectN11LogStep.im =
+        Real.arctan x1 - Real.arctan x0 := by
+    rw [step33Shift16M6StepDefectN11LogStep_im_eq_arg_sub]
+    change
+      Complex.arg (step33Shift16DigammaPoint + (((12 : Nat) : Complex))) -
+          Complex.arg (step33Shift16DigammaPoint + (((11 : Nat) : Complex))) =
+        Real.arctan x1 - Real.arctan x0
+    rw [step33Shift16DigammaPoint_add_nat_arg_eq_arctan 12,
+      step33Shift16DigammaPoint_add_nat_arg_eq_arctan 11]
+    norm_num [x0, x1]
+  constructor
+  · rw [hIm]
+    have hApprox :
+        step33Shift16M6StepDefectN11LogImLower <=
+          (S1 - E1) - (S0 + E0) := by
+      norm_num [step33Shift16M6StepDefectN11LogImLower, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+  · rw [hIm]
+    have hApprox :
+        (S1 + E1) - (S0 - E0) <=
+          step33Shift16M6StepDefectN11LogImUpper := by
+      norm_num [step33Shift16M6StepDefectN11LogImUpper, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+
+theorem step33Shift16M6StepDefectN11_eq_logStep_add_algebraicPart :
+    Q3.digammaM6StepDefect
+        (step33Shift16DigammaPoint + (11 : Complex)) =
+      step33Shift16M6StepDefectN11LogStep +
+        step33Shift16M6StepDefectN11AlgebraicPart := by
+  simp [Q3.digammaM6StepDefect, Q3.digammaM6AsymptoticMain,
+    step33Shift16M6StepDefectN11LogStep,
+    step33Shift16M6StepDefectN11AlgebraicPart]
+  ring_nf
+
+theorem step33Shift16M6StepDefectN11AlgebraicPart_re_eq :
+    step33Shift16M6StepDefectN11AlgebraicPart.re =
+      (-348355701007937585149398611867363335998393920260637484115035572904097759521910814918684705918306002825944751874565913041290648512222923160424420318179310000 : Real) /
+        (15239903338693041646385317170256945199349889817708917784558909653168762224870024141612152795123787045968556056773466874182549714256182482883264707225696096833 : Real) := by
+  norm_num [step33Shift16M6StepDefectN11AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33Shift16M6StepDefectN11AlgebraicPart_im_eq :
+    step33Shift16M6StepDefectN11AlgebraicPart.im =
+      (4180632449345728438190039748717160807837868635834581352452272695854988394282264321411028171329651461985146587506813222311385438899491866670778842664583720 : Real) /
+        (320037970112553874574091660575395849186347686171887273475737102716544006722270506973855208697599527965339677192242804357833543999379832140548558851739618033493 : Real) := by
+  norm_num [step33Shift16M6StepDefectN11AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33_shift16_m6_step_defect_n11_component_interval_of_log_step_bounds
+    (hLogReLower :
+      step33Shift16M6StepDefectN11LogReLower <=
+        step33Shift16M6StepDefectN11LogStep.re)
+    (hLogReUpper :
+      step33Shift16M6StepDefectN11LogStep.re <=
+        step33Shift16M6StepDefectN11LogReUpper)
+    (hLogImLower :
+      step33Shift16M6StepDefectN11LogImLower <=
+        step33Shift16M6StepDefectN11LogStep.im)
+    (hLogImUpper :
+      step33Shift16M6StepDefectN11LogStep.im <=
+        step33Shift16M6StepDefectN11LogImUpper) :
+    (((-3 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (11 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (11 : Complex))).re <=
+        (-2 : Real) / ((10 : Real) ^ 25)) ∧
+     ((2 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (11 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (11 : Complex))).im <=
+        (3 : Real) / ((10 : Real) ^ 27))) := by
+  have hReEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (11 : Complex))).re =
+        step33Shift16M6StepDefectN11LogStep.re +
+          step33Shift16M6StepDefectN11AlgebraicPart.re := by
+    simpa using congrArg Complex.re
+      step33Shift16M6StepDefectN11_eq_logStep_add_algebraicPart
+  have hImEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (11 : Complex))).im =
+        step33Shift16M6StepDefectN11LogStep.im +
+          step33Shift16M6StepDefectN11AlgebraicPart.im := by
+    simpa using congrArg Complex.im
+      step33Shift16M6StepDefectN11_eq_logStep_add_algebraicPart
+  constructor
+  · constructor
+    · rw [hReEq, step33Shift16M6StepDefectN11AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN11LogReLower] at hLogReLower ⊢
+      linarith [hLogReLower]
+    · rw [hReEq, step33Shift16M6StepDefectN11AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN11LogReUpper] at hLogReUpper ⊢
+      linarith [hLogReUpper]
+  · constructor
+    · rw [hImEq, step33Shift16M6StepDefectN11AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN11LogImLower] at hLogImLower ⊢
+      linarith [hLogImLower]
+    · rw [hImEq, step33Shift16M6StepDefectN11AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN11LogImUpper] at hLogImUpper ⊢
+      linarith [hLogImUpper]
+
+theorem step33_shift16_m6_step_defect_n11_component_interval :
+    (((-3 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (11 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (11 : Complex))).re <=
+        (-2 : Real) / ((10 : Real) ^ 25)) ∧
+     ((2 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (11 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (11 : Complex))).im <=
+        (3 : Real) / ((10 : Real) ^ 27))) := by
+  exact step33_shift16_m6_step_defect_n11_component_interval_of_log_step_bounds
+    step33Shift16M6StepDefectN11LogStep_re_bounds.1
+    step33Shift16M6StepDefectN11LogStep_re_bounds.2
+    step33Shift16M6StepDefectN11LogStep_im_bounds.1
+    step33Shift16M6StepDefectN11LogStep_im_bounds.2
+
+def step33Shift16M6StepDefectN12LogStep : Complex :=
+  Complex.log (step33Shift16DigammaPoint + (13 : Complex)) -
+    Complex.log (step33Shift16DigammaPoint + (12 : Complex))
+
+def step33Shift16M6StepDefectN12AlgebraicPart : Complex :=
+  let z : Complex := step33Shift16DigammaPoint + (12 : Complex)
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * (z + 1)⁻¹
+    - ((1 : Complex) / (12 : Complex)) * ((z + 1) ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * ((z + 1) ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * ((z + 1) ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * ((z + 1) ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * ((z + 1) ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * ((z + 1) ^ 12)⁻¹)) -
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * z⁻¹
+    - ((1 : Complex) / (12 : Complex)) * (z ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * (z ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * (z ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * (z ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * (z ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * (z ^ 12)⁻¹)) -
+  z⁻¹
+
+private def step33Shift16M6StepDefectN12LogReLower : Real :=
+  (22347291715952715771768880083 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN12LogReUpper : Real :=
+  (22347291715952715771768880084 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN12LogImLower : Real :=
+  (-124855596692454999171025015819 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN12LogImUpper : Real :=
+  (-124855596692454999171025015818 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+theorem step33Shift16M6StepDefectN12LogStep_re_eq_half_log_ratio :
+    step33Shift16M6StepDefectN12LogStep.re =
+      (1 / (2 : Real)) *
+        Real.log ((3276101 : Real) / (3132901 : Real)) := by
+  rw [step33Shift16M6StepDefectN12LogStep]
+  simp [Complex.log_re]
+  change
+    Real.log ‖step33Shift16DigammaPoint + (((13 : Nat) : Complex))‖ -
+        Real.log ‖step33Shift16DigammaPoint + (((12 : Nat) : Complex))‖ =
+      (2 : Real)⁻¹ * Real.log ((3276101 : Real) / (3132901 : Real))
+  rw [step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 13,
+    step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 12]
+  norm_num
+  have hNum : (0 : Real) <= 3276101 := by
+    norm_num
+  have hDen : (0 : Real) <= 3132901 := by
+    norm_num
+  have h40_ne : (40 : Real) ≠ 0 := by
+    norm_num
+  have hsNum_ne : Real.sqrt (3276101 : Real) ≠ 0 := by
+    positivity
+  have hsDen_ne : Real.sqrt (3132901 : Real) ≠ 0 := by
+    positivity
+  rw [Real.log_div hsNum_ne h40_ne,
+    Real.log_div hsDen_ne h40_ne]
+  rw [Real.log_sqrt hNum, Real.log_sqrt hDen]
+  have hratio :
+      Real.log ((3276101 : Real) / (3132901 : Real)) =
+        Real.log (3276101 : Real) - Real.log (3132901 : Real) := by
+    exact Real.log_div (by norm_num) (by norm_num)
+  rw [hratio]
+  ring
+
+theorem step33Shift16M6StepDefectN12LogStep_re_bounds :
+    step33Shift16M6StepDefectN12LogReLower <=
+        step33Shift16M6StepDefectN12LogStep.re ∧
+      step33Shift16M6StepDefectN12LogStep.re <=
+        step33Shift16M6StepDefectN12LogReUpper := by
+  let a : Real := (143200 : Real) / (3132901 : Real)
+  let S : Real :=
+    ∑ i ∈ Finset.range 26, (-a) ^ (i + 1) /
+      (((i + 1 : Nat) : Real))
+  let E : Real := |(-a)| ^ (26 + 1) / (1 - |(-a)|)
+  have ha_abs : |(-a)| < 1 := by
+    norm_num [a]
+  have hlogBound := Real.abs_log_sub_add_sum_range_le (x := -a) ha_abs 26
+  have hlogBound' : |S + Real.log (1 + a)| <= E := by
+    simpa [S, E, sub_eq_add_neg] using hlogBound
+  have hlog_ge : -S - E <= Real.log (1 + a) := by
+    have h := (abs_le.mp hlogBound').1
+    linarith
+  have hlog_le : Real.log (1 + a) <= -S + E := by
+    have h := (abs_le.mp hlogBound').2
+    linarith
+  have hratio : ((3276101 : Real) / (3132901 : Real)) = 1 + a := by
+    norm_num [a]
+  have hRe := step33Shift16M6StepDefectN12LogStep_re_eq_half_log_ratio
+  rw [hratio] at hRe
+  constructor
+  · rw [hRe]
+    have hApprox :
+        2 * step33Shift16M6StepDefectN12LogReLower <= -S - E := by
+      norm_num [step33Shift16M6StepDefectN12LogReLower, S, E, a]
+    have h2 : 2 * step33Shift16M6StepDefectN12LogReLower <=
+        Real.log (1 + a) := hApprox.trans hlog_ge
+    calc
+      step33Shift16M6StepDefectN12LogReLower =
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN12LogReLower) := by
+        ring
+      _ <= (1 / (2 : Real)) * Real.log (1 + a) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+  · rw [hRe]
+    have hApprox : -S + E <=
+        2 * step33Shift16M6StepDefectN12LogReUpper := by
+      norm_num [step33Shift16M6StepDefectN12LogReUpper, S, E, a]
+    have h2 : Real.log (1 + a) <=
+        2 * step33Shift16M6StepDefectN12LogReUpper := hlog_le.trans hApprox
+    calc
+      (1 / (2 : Real)) * Real.log (1 + a) <=
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN12LogReUpper) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+      _ = step33Shift16M6StepDefectN12LogReUpper := by
+        ring
+
+theorem step33Shift16M6StepDefectN12LogStep_im_eq_arg_sub :
+    step33Shift16M6StepDefectN12LogStep.im =
+      Complex.arg (step33Shift16DigammaPoint + (13 : Complex)) -
+        Complex.arg (step33Shift16DigammaPoint + (12 : Complex)) := by
+  rw [step33Shift16M6StepDefectN12LogStep]
+  simp [Complex.log_im]
+
+theorem step33Shift16M6StepDefectN12LogStep_im_bounds :
+    step33Shift16M6StepDefectN12LogImLower <=
+        step33Shift16M6StepDefectN12LogStep.im ∧
+      step33Shift16M6StepDefectN12LogStep.im <=
+        step33Shift16M6StepDefectN12LogImUpper := by
+  let x0 : Real := (1 : Real) / (1770 : Real)
+  let x1 : Real := (1 : Real) / (1810 : Real)
+  let S0 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x0 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E0 : Real := x0 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  let S1 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x1 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E1 : Real := x1 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  have h0 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x0 (by norm_num [x0]) (by norm_num [x0])
+    (by norm_num [x0]) (by norm_num [x0])
+  have h1 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x1 (by norm_num [x1]) (by norm_num [x1])
+    (by norm_num [x1]) (by norm_num [x1])
+  have h0Lower : S0 - E0 <= Real.arctan x0 := by
+    have h := (abs_le.mp h0).1
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h0Upper : Real.arctan x0 <= S0 + E0 := by
+    have h := (abs_le.mp h0).2
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h1Lower : S1 - E1 <= Real.arctan x1 := by
+    have h := (abs_le.mp h1).1
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have h1Upper : Real.arctan x1 <= S1 + E1 := by
+    have h := (abs_le.mp h1).2
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have hIm :
+      step33Shift16M6StepDefectN12LogStep.im =
+        Real.arctan x1 - Real.arctan x0 := by
+    rw [step33Shift16M6StepDefectN12LogStep_im_eq_arg_sub]
+    change
+      Complex.arg (step33Shift16DigammaPoint + (((13 : Nat) : Complex))) -
+          Complex.arg (step33Shift16DigammaPoint + (((12 : Nat) : Complex))) =
+        Real.arctan x1 - Real.arctan x0
+    rw [step33Shift16DigammaPoint_add_nat_arg_eq_arctan 13,
+      step33Shift16DigammaPoint_add_nat_arg_eq_arctan 12]
+    norm_num [x0, x1]
+  constructor
+  · rw [hIm]
+    have hApprox :
+        step33Shift16M6StepDefectN12LogImLower <=
+          (S1 - E1) - (S0 + E0) := by
+      norm_num [step33Shift16M6StepDefectN12LogImLower, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+  · rw [hIm]
+    have hApprox :
+        (S1 + E1) - (S0 - E0) <=
+          step33Shift16M6StepDefectN12LogImUpper := by
+      norm_num [step33Shift16M6StepDefectN12LogImUpper, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+
+theorem step33Shift16M6StepDefectN12_eq_logStep_add_algebraicPart :
+    Q3.digammaM6StepDefect
+        (step33Shift16DigammaPoint + (12 : Complex)) =
+      step33Shift16M6StepDefectN12LogStep +
+        step33Shift16M6StepDefectN12AlgebraicPart := by
+  simp [Q3.digammaM6StepDefect, Q3.digammaM6AsymptoticMain,
+    step33Shift16M6StepDefectN12LogStep,
+    step33Shift16M6StepDefectN12AlgebraicPart]
+  ring_nf
+
+theorem step33Shift16M6StepDefectN12AlgebraicPart_re_eq :
+    step33Shift16M6StepDefectN12AlgebraicPart.re =
+      (-7054793756682310724453676406530744690256188903585680895252658232104628278383767700323659771731853507052432738264751633746981549162914765702294280043405139600 : Real) /
+        (315688981302652174780228161419527951367363889734425767766918894049151734675323902424060360358678740743275142349429317138416490893948593918103618840182720428231 : Real) := by
+  norm_num [step33Shift16M6StepDefectN12AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33Shift16M6StepDefectN12AlgebraicPart_im_eq :
+    step33Shift16M6StepDefectN12AlgebraicPart.im =
+      (11824660838932772084734995419021273118930633644676694847067228527373985182060057577358189709285819913606680328961947761030801886299568998994120292987879720 : Real) /
+        (947066943907956524340684484258583854102091669203277303300756682147455204025971707272181081076036222229825427048287951415249472681845781754310856520548161284693 : Real) := by
+  norm_num [step33Shift16M6StepDefectN12AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33_shift16_m6_step_defect_n12_component_interval_of_log_step_bounds
+    (hLogReLower :
+      step33Shift16M6StepDefectN12LogReLower <=
+        step33Shift16M6StepDefectN12LogStep.re)
+    (hLogReUpper :
+      step33Shift16M6StepDefectN12LogStep.re <=
+        step33Shift16M6StepDefectN12LogReUpper)
+    (hLogImLower :
+      step33Shift16M6StepDefectN12LogImLower <=
+        step33Shift16M6StepDefectN12LogStep.im)
+    (hLogImUpper :
+      step33Shift16M6StepDefectN12LogStep.im <=
+        step33Shift16M6StepDefectN12LogImUpper) :
+    (((-3 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (12 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (12 : Complex))).re <=
+        (-2 : Real) / ((10 : Real) ^ 25)) ∧
+     ((1 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (12 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (12 : Complex))).im <=
+        (2 : Real) / ((10 : Real) ^ 27))) := by
+  have hReEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (12 : Complex))).re =
+        step33Shift16M6StepDefectN12LogStep.re +
+          step33Shift16M6StepDefectN12AlgebraicPart.re := by
+    simpa using congrArg Complex.re
+      step33Shift16M6StepDefectN12_eq_logStep_add_algebraicPart
+  have hImEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (12 : Complex))).im =
+        step33Shift16M6StepDefectN12LogStep.im +
+          step33Shift16M6StepDefectN12AlgebraicPart.im := by
+    simpa using congrArg Complex.im
+      step33Shift16M6StepDefectN12_eq_logStep_add_algebraicPart
+  constructor
+  · constructor
+    · rw [hReEq, step33Shift16M6StepDefectN12AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN12LogReLower] at hLogReLower ⊢
+      linarith [hLogReLower]
+    · rw [hReEq, step33Shift16M6StepDefectN12AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN12LogReUpper] at hLogReUpper ⊢
+      linarith [hLogReUpper]
+  · constructor
+    · rw [hImEq, step33Shift16M6StepDefectN12AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN12LogImLower] at hLogImLower ⊢
+      linarith [hLogImLower]
+    · rw [hImEq, step33Shift16M6StepDefectN12AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN12LogImUpper] at hLogImUpper ⊢
+      linarith [hLogImUpper]
+
+theorem step33_shift16_m6_step_defect_n12_component_interval :
+    (((-3 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (12 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (12 : Complex))).re <=
+        (-2 : Real) / ((10 : Real) ^ 25)) ∧
+     ((1 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (12 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (12 : Complex))).im <=
+        (2 : Real) / ((10 : Real) ^ 27))) := by
+  exact step33_shift16_m6_step_defect_n12_component_interval_of_log_step_bounds
+    step33Shift16M6StepDefectN12LogStep_re_bounds.1
+    step33Shift16M6StepDefectN12LogStep_re_bounds.2
+    step33Shift16M6StepDefectN12LogStep_im_bounds.1
+    step33Shift16M6StepDefectN12LogStep_im_bounds.2
+
+def step33Shift16M6StepDefectN13LogStep : Complex :=
+  Complex.log (step33Shift16DigammaPoint + (14 : Complex)) -
+    Complex.log (step33Shift16DigammaPoint + (13 : Complex))
+
+def step33Shift16M6StepDefectN13AlgebraicPart : Complex :=
+  let z : Complex := step33Shift16DigammaPoint + (13 : Complex)
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * (z + 1)⁻¹
+    - ((1 : Complex) / (12 : Complex)) * ((z + 1) ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * ((z + 1) ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * ((z + 1) ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * ((z + 1) ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * ((z + 1) ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * ((z + 1) ^ 12)⁻¹)) -
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * z⁻¹
+    - ((1 : Complex) / (12 : Complex)) * (z ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * (z ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * (z ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * (z ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * (z ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * (z ^ 12)⁻¹)) -
+  z⁻¹
+
+private def step33Shift16M6StepDefectN13LogReLower : Real :=
+  (21858787284045126272455602929 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN13LogReUpper : Real :=
+  (21858787284045126272455602930 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN13LogImLower : Real :=
+  (-119456437367339459087859374580 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN13LogImUpper : Real :=
+  (-119456437367339459087859374579 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+theorem step33Shift16M6StepDefectN13LogStep_re_eq_half_log_ratio :
+    step33Shift16M6StepDefectN13LogStep.re =
+      (1 / (2 : Real)) *
+        Real.log ((3422501 : Real) / (3276101 : Real)) := by
+  rw [step33Shift16M6StepDefectN13LogStep]
+  simp [Complex.log_re]
+  change
+    Real.log ‖step33Shift16DigammaPoint + (((14 : Nat) : Complex))‖ -
+        Real.log ‖step33Shift16DigammaPoint + (((13 : Nat) : Complex))‖ =
+      (2 : Real)⁻¹ * Real.log ((3422501 : Real) / (3276101 : Real))
+  rw [step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 14,
+    step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 13]
+  norm_num
+  have hNum : (0 : Real) <= 3422501 := by
+    norm_num
+  have hDen : (0 : Real) <= 3276101 := by
+    norm_num
+  have h40_ne : (40 : Real) ≠ 0 := by
+    norm_num
+  have hsNum_ne : Real.sqrt (3422501 : Real) ≠ 0 := by
+    positivity
+  have hsDen_ne : Real.sqrt (3276101 : Real) ≠ 0 := by
+    positivity
+  rw [Real.log_div hsNum_ne h40_ne,
+    Real.log_div hsDen_ne h40_ne]
+  rw [Real.log_sqrt hNum, Real.log_sqrt hDen]
+  have hratio :
+      Real.log ((3422501 : Real) / (3276101 : Real)) =
+        Real.log (3422501 : Real) - Real.log (3276101 : Real) := by
+    exact Real.log_div (by norm_num) (by norm_num)
+  rw [hratio]
+  ring
+
+theorem step33Shift16M6StepDefectN13LogStep_re_bounds :
+    step33Shift16M6StepDefectN13LogReLower <=
+        step33Shift16M6StepDefectN13LogStep.re ∧
+      step33Shift16M6StepDefectN13LogStep.re <=
+        step33Shift16M6StepDefectN13LogReUpper := by
+  let a : Real := (146400 : Real) / (3276101 : Real)
+  let S : Real :=
+    ∑ i ∈ Finset.range 26, (-a) ^ (i + 1) /
+      (((i + 1 : Nat) : Real))
+  let E : Real := |(-a)| ^ (26 + 1) / (1 - |(-a)|)
+  have ha_abs : |(-a)| < 1 := by
+    norm_num [a]
+  have hlogBound := Real.abs_log_sub_add_sum_range_le (x := -a) ha_abs 26
+  have hlogBound' : |S + Real.log (1 + a)| <= E := by
+    simpa [S, E, sub_eq_add_neg] using hlogBound
+  have hlog_ge : -S - E <= Real.log (1 + a) := by
+    have h := (abs_le.mp hlogBound').1
+    linarith
+  have hlog_le : Real.log (1 + a) <= -S + E := by
+    have h := (abs_le.mp hlogBound').2
+    linarith
+  have hratio : ((3422501 : Real) / (3276101 : Real)) = 1 + a := by
+    norm_num [a]
+  have hRe := step33Shift16M6StepDefectN13LogStep_re_eq_half_log_ratio
+  rw [hratio] at hRe
+  constructor
+  · rw [hRe]
+    have hApprox :
+        2 * step33Shift16M6StepDefectN13LogReLower <= -S - E := by
+      norm_num [step33Shift16M6StepDefectN13LogReLower, S, E, a]
+    have h2 : 2 * step33Shift16M6StepDefectN13LogReLower <=
+        Real.log (1 + a) := hApprox.trans hlog_ge
+    calc
+      step33Shift16M6StepDefectN13LogReLower =
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN13LogReLower) := by
+        ring
+      _ <= (1 / (2 : Real)) * Real.log (1 + a) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+  · rw [hRe]
+    have hApprox : -S + E <=
+        2 * step33Shift16M6StepDefectN13LogReUpper := by
+      norm_num [step33Shift16M6StepDefectN13LogReUpper, S, E, a]
+    have h2 : Real.log (1 + a) <=
+        2 * step33Shift16M6StepDefectN13LogReUpper := hlog_le.trans hApprox
+    calc
+      (1 / (2 : Real)) * Real.log (1 + a) <=
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN13LogReUpper) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+      _ = step33Shift16M6StepDefectN13LogReUpper := by
+        ring
+
+theorem step33Shift16M6StepDefectN13LogStep_im_eq_arg_sub :
+    step33Shift16M6StepDefectN13LogStep.im =
+      Complex.arg (step33Shift16DigammaPoint + (14 : Complex)) -
+        Complex.arg (step33Shift16DigammaPoint + (13 : Complex)) := by
+  rw [step33Shift16M6StepDefectN13LogStep]
+  simp [Complex.log_im]
+
+theorem step33Shift16M6StepDefectN13LogStep_im_bounds :
+    step33Shift16M6StepDefectN13LogImLower <=
+        step33Shift16M6StepDefectN13LogStep.im ∧
+      step33Shift16M6StepDefectN13LogStep.im <=
+        step33Shift16M6StepDefectN13LogImUpper := by
+  let x0 : Real := (1 : Real) / (1810 : Real)
+  let x1 : Real := (1 : Real) / (1850 : Real)
+  let S0 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x0 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E0 : Real := x0 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  let S1 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x1 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E1 : Real := x1 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  have h0 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x0 (by norm_num [x0]) (by norm_num [x0])
+    (by norm_num [x0]) (by norm_num [x0])
+  have h1 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x1 (by norm_num [x1]) (by norm_num [x1])
+    (by norm_num [x1]) (by norm_num [x1])
+  have h0Lower : S0 - E0 <= Real.arctan x0 := by
+    have h := (abs_le.mp h0).1
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h0Upper : Real.arctan x0 <= S0 + E0 := by
+    have h := (abs_le.mp h0).2
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h1Lower : S1 - E1 <= Real.arctan x1 := by
+    have h := (abs_le.mp h1).1
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have h1Upper : Real.arctan x1 <= S1 + E1 := by
+    have h := (abs_le.mp h1).2
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have hIm :
+      step33Shift16M6StepDefectN13LogStep.im =
+        Real.arctan x1 - Real.arctan x0 := by
+    rw [step33Shift16M6StepDefectN13LogStep_im_eq_arg_sub]
+    change
+      Complex.arg (step33Shift16DigammaPoint + (((14 : Nat) : Complex))) -
+          Complex.arg (step33Shift16DigammaPoint + (((13 : Nat) : Complex))) =
+        Real.arctan x1 - Real.arctan x0
+    rw [step33Shift16DigammaPoint_add_nat_arg_eq_arctan 14,
+      step33Shift16DigammaPoint_add_nat_arg_eq_arctan 13]
+    norm_num [x0, x1]
+  constructor
+  · rw [hIm]
+    have hApprox :
+        step33Shift16M6StepDefectN13LogImLower <=
+          (S1 - E1) - (S0 + E0) := by
+      norm_num [step33Shift16M6StepDefectN13LogImLower, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+  · rw [hIm]
+    have hApprox :
+        (S1 + E1) - (S0 - E0) <=
+          step33Shift16M6StepDefectN13LogImUpper := by
+      norm_num [step33Shift16M6StepDefectN13LogImUpper, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+
+theorem step33Shift16M6StepDefectN13_eq_logStep_add_algebraicPart :
+    Q3.digammaM6StepDefect
+        (step33Shift16DigammaPoint + (13 : Complex)) =
+      step33Shift16M6StepDefectN13LogStep +
+        step33Shift16M6StepDefectN13AlgebraicPart := by
+  simp [Q3.digammaM6StepDefect, Q3.digammaM6AsymptoticMain,
+    step33Shift16M6StepDefectN13LogStep,
+    step33Shift16M6StepDefectN13AlgebraicPart]
+  ring_nf
+
+theorem step33Shift16M6StepDefectN13AlgebraicPart_re_eq :
+    step33Shift16M6StepDefectN13AlgebraicPart.re =
+      (-6645492634926121949124767520410023690703048528462731734047277851048558696533223439863843283792111474497730150952191395372838145263441590835286488387267596400 : Real) /
+        (304019273739706093959818547796374927724285693059584246176613429524767851888166225119383440449311183893413320569274215351065272705701209663699215967732749226477 : Real) := by
+  norm_num [step33Shift16M6StepDefectN13AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33Shift16M6StepDefectN13AlgebraicPart_im_eq :
+    step33Shift16M6StepDefectN13AlgebraicPart.im =
+      (2971395763523282534682947734488285647142832033447809603236061124635952443208618030888677010291550456499203381546181783030261036440633146594913113508742520 : Real) /
+        (248743042150668622330760630015215849956233748866932565053592805974810060635772366006768269458527332276429080465769812559962495850119171543026631246326794821663 : Real) := by
+  norm_num [step33Shift16M6StepDefectN13AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33_shift16_m6_step_defect_n13_component_interval_of_log_step_bounds
+    (hLogReLower :
+      step33Shift16M6StepDefectN13LogReLower <=
+        step33Shift16M6StepDefectN13LogStep.re)
+    (hLogReUpper :
+      step33Shift16M6StepDefectN13LogStep.re <=
+        step33Shift16M6StepDefectN13LogReUpper)
+    (hLogImLower :
+      step33Shift16M6StepDefectN13LogImLower <=
+        step33Shift16M6StepDefectN13LogStep.im)
+    (hLogImUpper :
+      step33Shift16M6StepDefectN13LogStep.im <=
+        step33Shift16M6StepDefectN13LogImUpper) :
+    (((-2 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (13 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (13 : Complex))).re <=
+        (-1 : Real) / ((10 : Real) ^ 25)) ∧
+     ((1 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (13 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (13 : Complex))).im <=
+        (2 : Real) / ((10 : Real) ^ 27))) := by
+  have hReEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (13 : Complex))).re =
+        step33Shift16M6StepDefectN13LogStep.re +
+          step33Shift16M6StepDefectN13AlgebraicPart.re := by
+    simpa using congrArg Complex.re
+      step33Shift16M6StepDefectN13_eq_logStep_add_algebraicPart
+  have hImEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (13 : Complex))).im =
+        step33Shift16M6StepDefectN13LogStep.im +
+          step33Shift16M6StepDefectN13AlgebraicPart.im := by
+    simpa using congrArg Complex.im
+      step33Shift16M6StepDefectN13_eq_logStep_add_algebraicPart
+  constructor
+  · constructor
+    · rw [hReEq, step33Shift16M6StepDefectN13AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN13LogReLower] at hLogReLower ⊢
+      linarith [hLogReLower]
+    · rw [hReEq, step33Shift16M6StepDefectN13AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN13LogReUpper] at hLogReUpper ⊢
+      linarith [hLogReUpper]
+  · constructor
+    · rw [hImEq, step33Shift16M6StepDefectN13AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN13LogImLower] at hLogImLower ⊢
+      linarith [hLogImLower]
+    · rw [hImEq, step33Shift16M6StepDefectN13AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN13LogImUpper] at hLogImUpper ⊢
+      linarith [hLogImUpper]
+
+theorem step33_shift16_m6_step_defect_n13_component_interval :
+    (((-2 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (13 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (13 : Complex))).re <=
+        (-1 : Real) / ((10 : Real) ^ 25)) ∧
+     ((1 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (13 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (13 : Complex))).im <=
+        (2 : Real) / ((10 : Real) ^ 27))) := by
+  exact step33_shift16_m6_step_defect_n13_component_interval_of_log_step_bounds
+    step33Shift16M6StepDefectN13LogStep_re_bounds.1
+    step33Shift16M6StepDefectN13LogStep_re_bounds.2
+    step33Shift16M6StepDefectN13LogStep_im_bounds.1
+    step33Shift16M6StepDefectN13LogStep_im_bounds.2
+
+def step33Shift16M6StepDefectN14LogStep : Complex :=
+  Complex.log (step33Shift16DigammaPoint + (15 : Complex)) -
+    Complex.log (step33Shift16DigammaPoint + (14 : Complex))
+
+def step33Shift16M6StepDefectN14AlgebraicPart : Complex :=
+  let z : Complex := step33Shift16DigammaPoint + (14 : Complex)
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * (z + 1)⁻¹
+    - ((1 : Complex) / (12 : Complex)) * ((z + 1) ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * ((z + 1) ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * ((z + 1) ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * ((z + 1) ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * ((z + 1) ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * ((z + 1) ^ 12)⁻¹)) -
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * z⁻¹
+    - ((1 : Complex) / (12 : Complex)) * (z ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * (z ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * (z ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * (z ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * (z ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * (z ^ 12)⁻¹)) -
+  z⁻¹
+
+private def step33Shift16M6StepDefectN14LogReLower : Real :=
+  (21391183862966273872862231665 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN14LogReUpper : Real :=
+  (21391183862966273872862231666 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN14LogImLower : Real :=
+  (-114400081676667663401119226036 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN14LogImUpper : Real :=
+  (-114400081676667663401119226035 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+theorem step33Shift16M6StepDefectN14LogStep_re_eq_half_log_ratio :
+    step33Shift16M6StepDefectN14LogStep.re =
+      (1 / (2 : Real)) *
+        Real.log ((3572101 : Real) / (3422501 : Real)) := by
+  rw [step33Shift16M6StepDefectN14LogStep]
+  simp [Complex.log_re]
+  change
+    Real.log ‖step33Shift16DigammaPoint + (((15 : Nat) : Complex))‖ -
+        Real.log ‖step33Shift16DigammaPoint + (((14 : Nat) : Complex))‖ =
+      (2 : Real)⁻¹ * Real.log ((3572101 : Real) / (3422501 : Real))
+  rw [step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 15,
+    step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 14]
+  norm_num
+  have hNum : (0 : Real) <= 3572101 := by
+    norm_num
+  have hDen : (0 : Real) <= 3422501 := by
+    norm_num
+  have h40_ne : (40 : Real) ≠ 0 := by
+    norm_num
+  have hsNum_ne : Real.sqrt (3572101 : Real) ≠ 0 := by
+    positivity
+  have hsDen_ne : Real.sqrt (3422501 : Real) ≠ 0 := by
+    positivity
+  rw [Real.log_div hsNum_ne h40_ne,
+    Real.log_div hsDen_ne h40_ne]
+  rw [Real.log_sqrt hNum, Real.log_sqrt hDen]
+  have hratio :
+      Real.log ((3572101 : Real) / (3422501 : Real)) =
+        Real.log (3572101 : Real) - Real.log (3422501 : Real) := by
+    exact Real.log_div (by norm_num) (by norm_num)
+  rw [hratio]
+  ring
+
+theorem step33Shift16M6StepDefectN14LogStep_re_bounds :
+    step33Shift16M6StepDefectN14LogReLower <=
+        step33Shift16M6StepDefectN14LogStep.re ∧
+      step33Shift16M6StepDefectN14LogStep.re <=
+        step33Shift16M6StepDefectN14LogReUpper := by
+  let a : Real := (149600 : Real) / (3422501 : Real)
+  let S : Real :=
+    ∑ i ∈ Finset.range 26, (-a) ^ (i + 1) /
+      (((i + 1 : Nat) : Real))
+  let E : Real := |(-a)| ^ (26 + 1) / (1 - |(-a)|)
+  have ha_abs : |(-a)| < 1 := by
+    norm_num [a]
+  have hlogBound := Real.abs_log_sub_add_sum_range_le (x := -a) ha_abs 26
+  have hlogBound' : |S + Real.log (1 + a)| <= E := by
+    simpa [S, E, sub_eq_add_neg] using hlogBound
+  have hlog_ge : -S - E <= Real.log (1 + a) := by
+    have h := (abs_le.mp hlogBound').1
+    linarith
+  have hlog_le : Real.log (1 + a) <= -S + E := by
+    have h := (abs_le.mp hlogBound').2
+    linarith
+  have hratio : ((3572101 : Real) / (3422501 : Real)) = 1 + a := by
+    norm_num [a]
+  have hRe := step33Shift16M6StepDefectN14LogStep_re_eq_half_log_ratio
+  rw [hratio] at hRe
+  constructor
+  · rw [hRe]
+    have hApprox :
+        2 * step33Shift16M6StepDefectN14LogReLower <= -S - E := by
+      norm_num [step33Shift16M6StepDefectN14LogReLower, S, E, a]
+    have h2 : 2 * step33Shift16M6StepDefectN14LogReLower <=
+        Real.log (1 + a) := hApprox.trans hlog_ge
+    calc
+      step33Shift16M6StepDefectN14LogReLower =
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN14LogReLower) := by
+        ring
+      _ <= (1 / (2 : Real)) * Real.log (1 + a) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+  · rw [hRe]
+    have hApprox : -S + E <=
+        2 * step33Shift16M6StepDefectN14LogReUpper := by
+      norm_num [step33Shift16M6StepDefectN14LogReUpper, S, E, a]
+    have h2 : Real.log (1 + a) <=
+        2 * step33Shift16M6StepDefectN14LogReUpper := hlog_le.trans hApprox
+    calc
+      (1 / (2 : Real)) * Real.log (1 + a) <=
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN14LogReUpper) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+      _ = step33Shift16M6StepDefectN14LogReUpper := by
+        ring
+
+theorem step33Shift16M6StepDefectN14LogStep_im_eq_arg_sub :
+    step33Shift16M6StepDefectN14LogStep.im =
+      Complex.arg (step33Shift16DigammaPoint + (15 : Complex)) -
+        Complex.arg (step33Shift16DigammaPoint + (14 : Complex)) := by
+  rw [step33Shift16M6StepDefectN14LogStep]
+  simp [Complex.log_im]
+
+theorem step33Shift16M6StepDefectN14LogStep_im_bounds :
+    step33Shift16M6StepDefectN14LogImLower <=
+        step33Shift16M6StepDefectN14LogStep.im ∧
+      step33Shift16M6StepDefectN14LogStep.im <=
+        step33Shift16M6StepDefectN14LogImUpper := by
+  let x0 : Real := (1 : Real) / (1850 : Real)
+  let x1 : Real := (1 : Real) / (1890 : Real)
+  let S0 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x0 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E0 : Real := x0 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  let S1 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x1 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E1 : Real := x1 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  have h0 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x0 (by norm_num [x0]) (by norm_num [x0])
+    (by norm_num [x0]) (by norm_num [x0])
+  have h1 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x1 (by norm_num [x1]) (by norm_num [x1])
+    (by norm_num [x1]) (by norm_num [x1])
+  have h0Lower : S0 - E0 <= Real.arctan x0 := by
+    have h := (abs_le.mp h0).1
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h0Upper : Real.arctan x0 <= S0 + E0 := by
+    have h := (abs_le.mp h0).2
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h1Lower : S1 - E1 <= Real.arctan x1 := by
+    have h := (abs_le.mp h1).1
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have h1Upper : Real.arctan x1 <= S1 + E1 := by
+    have h := (abs_le.mp h1).2
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have hIm :
+      step33Shift16M6StepDefectN14LogStep.im =
+        Real.arctan x1 - Real.arctan x0 := by
+    rw [step33Shift16M6StepDefectN14LogStep_im_eq_arg_sub]
+    change
+      Complex.arg (step33Shift16DigammaPoint + (((15 : Nat) : Complex))) -
+          Complex.arg (step33Shift16DigammaPoint + (((14 : Nat) : Complex))) =
+        Real.arctan x1 - Real.arctan x0
+    rw [step33Shift16DigammaPoint_add_nat_arg_eq_arctan 15,
+      step33Shift16DigammaPoint_add_nat_arg_eq_arctan 14]
+    norm_num [x0, x1]
+  constructor
+  · rw [hIm]
+    have hApprox :
+        step33Shift16M6StepDefectN14LogImLower <=
+          (S1 - E1) - (S0 + E0) := by
+      norm_num [step33Shift16M6StepDefectN14LogImLower, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+  · rw [hIm]
+    have hApprox :
+        (S1 + E1) - (S0 - E0) <=
+          step33Shift16M6StepDefectN14LogImUpper := by
+      norm_num [step33Shift16M6StepDefectN14LogImUpper, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+
+theorem step33Shift16M6StepDefectN14_eq_logStep_add_algebraicPart :
+    Q3.digammaM6StepDefect
+        (step33Shift16DigammaPoint + (14 : Complex)) =
+      step33Shift16M6StepDefectN14LogStep +
+        step33Shift16M6StepDefectN14AlgebraicPart := by
+  simp [Q3.digammaM6StepDefect, Q3.digammaM6AsymptoticMain,
+    step33Shift16M6StepDefectN14LogStep,
+    step33Shift16M6StepDefectN14AlgebraicPart]
+  ring_nf
+
+theorem step33Shift16M6StepDefectN14AlgebraicPart_re_eq :
+    step33Shift16M6StepDefectN14AlgebraicPart.re =
+      (-65103634025345966808045117347593960746716284573568415910461198820788768462659025457652473434683500730659027362575105519776282363025082971768243791822541580400 : Real) /
+        (3043479708388527331673617128412280419278586237103045649177995963774702969609972387842840794590695663747849216851032154305688835251512732936129259562837410189873 : Real) := by
+  norm_num [step33Shift16M6StepDefectN14AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33Shift16M6StepDefectN14AlgebraicPart_im_eq :
+    step33Shift16M6StepDefectN14AlgebraicPart.im =
+      (1148975279829063090024013153156680955515559514366773062823927170952922411143803987044739121253548659824004819311819095245204367370750309228187116371215620360 : Real) /
+        (100434830376821401945229365237605253836193345824400506422873866804565197997129088798813746221492956903679024156084061092087731563299920186892265565573634536265809 : Real) := by
+  norm_num [step33Shift16M6StepDefectN14AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33_shift16_m6_step_defect_n14_component_interval_of_log_step_bounds
+    (hLogReLower :
+      step33Shift16M6StepDefectN14LogReLower <=
+        step33Shift16M6StepDefectN14LogStep.re)
+    (hLogReUpper :
+      step33Shift16M6StepDefectN14LogStep.re <=
+        step33Shift16M6StepDefectN14LogReUpper)
+    (hLogImLower :
+      step33Shift16M6StepDefectN14LogImLower <=
+        step33Shift16M6StepDefectN14LogStep.im)
+    (hLogImUpper :
+      step33Shift16M6StepDefectN14LogStep.im <=
+        step33Shift16M6StepDefectN14LogImUpper) :
+    (((-2 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (14 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (14 : Complex))).re <=
+        (-1 : Real) / ((10 : Real) ^ 25)) ∧
+     ((0 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (14 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (14 : Complex))).im <=
+        (1 : Real) / ((10 : Real) ^ 27))) := by
+  have hReEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (14 : Complex))).re =
+        step33Shift16M6StepDefectN14LogStep.re +
+          step33Shift16M6StepDefectN14AlgebraicPart.re := by
+    simpa using congrArg Complex.re
+      step33Shift16M6StepDefectN14_eq_logStep_add_algebraicPart
+  have hImEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (14 : Complex))).im =
+        step33Shift16M6StepDefectN14LogStep.im +
+          step33Shift16M6StepDefectN14AlgebraicPart.im := by
+    simpa using congrArg Complex.im
+      step33Shift16M6StepDefectN14_eq_logStep_add_algebraicPart
+  constructor
+  · constructor
+    · rw [hReEq, step33Shift16M6StepDefectN14AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN14LogReLower] at hLogReLower ⊢
+      linarith [hLogReLower]
+    · rw [hReEq, step33Shift16M6StepDefectN14AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN14LogReUpper] at hLogReUpper ⊢
+      linarith [hLogReUpper]
+  · constructor
+    · rw [hImEq, step33Shift16M6StepDefectN14AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN14LogImLower] at hLogImLower ⊢
+      linarith [hLogImLower]
+    · rw [hImEq, step33Shift16M6StepDefectN14AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN14LogImUpper] at hLogImUpper ⊢
+      linarith [hLogImUpper]
+
+theorem step33_shift16_m6_step_defect_n14_component_interval :
+    (((-2 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (14 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (14 : Complex))).re <=
+        (-1 : Real) / ((10 : Real) ^ 25)) ∧
+     ((0 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (14 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (14 : Complex))).im <=
+        (1 : Real) / ((10 : Real) ^ 27))) := by
+  exact step33_shift16_m6_step_defect_n14_component_interval_of_log_step_bounds
+    step33Shift16M6StepDefectN14LogStep_re_bounds.1
+    step33Shift16M6StepDefectN14LogStep_re_bounds.2
+    step33Shift16M6StepDefectN14LogStep_im_bounds.1
+    step33Shift16M6StepDefectN14LogStep_im_bounds.2
+
+def step33Shift16M6StepDefectN15LogStep : Complex :=
+  Complex.log (step33Shift16DigammaPoint + (16 : Complex)) -
+    Complex.log (step33Shift16DigammaPoint + (15 : Complex))
+
+def step33Shift16M6StepDefectN15AlgebraicPart : Complex :=
+  let z : Complex := step33Shift16DigammaPoint + (15 : Complex)
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * (z + 1)⁻¹
+    - ((1 : Complex) / (12 : Complex)) * ((z + 1) ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * ((z + 1) ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * ((z + 1) ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * ((z + 1) ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * ((z + 1) ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * ((z + 1) ^ 12)⁻¹)) -
+  ((0 : Complex)
+    - ((1 : Complex) / (2 : Complex)) * z⁻¹
+    - ((1 : Complex) / (12 : Complex)) * (z ^ 2)⁻¹
+    + ((1 : Complex) / (120 : Complex)) * (z ^ 4)⁻¹
+    - ((1 : Complex) / (252 : Complex)) * (z ^ 6)⁻¹
+    + ((1 : Complex) / (240 : Complex)) * (z ^ 8)⁻¹
+    - ((1 : Complex) / (132 : Complex)) * (z ^ 10)⁻¹
+    + (((691 : Complex) / (32760 : Complex)) * (z ^ 12)⁻¹)) -
+  z⁻¹
+
+private def step33Shift16M6StepDefectN15LogReLower : Real :=
+  (20943168103351257280921501145 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN15LogReUpper : Real :=
+  (20943168103351257280921501146 : Real) /
+    (1000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN15LogImLower : Real :=
+  (-109658110679566882907742515340 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+private def step33Shift16M6StepDefectN15LogImUpper : Real :=
+  (-109658110679566882907742515339 : Real) /
+    (10000000000000000000000000000000000 : Real)
+
+theorem step33Shift16M6StepDefectN15LogStep_re_eq_half_log_ratio :
+    step33Shift16M6StepDefectN15LogStep.re =
+      (1 / (2 : Real)) *
+        Real.log ((3724901 : Real) / (3572101 : Real)) := by
+  rw [step33Shift16M6StepDefectN15LogStep]
+  simp [Complex.log_re]
+  change
+    Real.log ‖step33Shift16DigammaPoint + (((16 : Nat) : Complex))‖ -
+        Real.log ‖step33Shift16DigammaPoint + (((15 : Nat) : Complex))‖ =
+      (2 : Real)⁻¹ * Real.log ((3724901 : Real) / (3572101 : Real))
+  rw [step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 16,
+    step33Shift16DigammaPoint_add_nat_norm_eq_sqrt 15]
+  norm_num
+  have hNum : (0 : Real) <= 3724901 := by
+    norm_num
+  have hDen : (0 : Real) <= 3572101 := by
+    norm_num
+  have h40_ne : (40 : Real) ≠ 0 := by
+    norm_num
+  have hsNum_ne : Real.sqrt (3724901 : Real) ≠ 0 := by
+    positivity
+  have hsDen_ne : Real.sqrt (3572101 : Real) ≠ 0 := by
+    positivity
+  rw [Real.log_div hsNum_ne h40_ne,
+    Real.log_div hsDen_ne h40_ne]
+  rw [Real.log_sqrt hNum, Real.log_sqrt hDen]
+  have hratio :
+      Real.log ((3724901 : Real) / (3572101 : Real)) =
+        Real.log (3724901 : Real) - Real.log (3572101 : Real) := by
+    exact Real.log_div (by norm_num) (by norm_num)
+  rw [hratio]
+  ring
+
+theorem step33Shift16M6StepDefectN15LogStep_re_bounds :
+    step33Shift16M6StepDefectN15LogReLower <=
+        step33Shift16M6StepDefectN15LogStep.re ∧
+      step33Shift16M6StepDefectN15LogStep.re <=
+        step33Shift16M6StepDefectN15LogReUpper := by
+  let a : Real := (152800 : Real) / (3572101 : Real)
+  let S : Real :=
+    ∑ i ∈ Finset.range 26, (-a) ^ (i + 1) /
+      (((i + 1 : Nat) : Real))
+  let E : Real := |(-a)| ^ (26 + 1) / (1 - |(-a)|)
+  have ha_abs : |(-a)| < 1 := by
+    norm_num [a]
+  have hlogBound := Real.abs_log_sub_add_sum_range_le (x := -a) ha_abs 26
+  have hlogBound' : |S + Real.log (1 + a)| <= E := by
+    simpa [S, E, sub_eq_add_neg] using hlogBound
+  have hlog_ge : -S - E <= Real.log (1 + a) := by
+    have h := (abs_le.mp hlogBound').1
+    linarith
+  have hlog_le : Real.log (1 + a) <= -S + E := by
+    have h := (abs_le.mp hlogBound').2
+    linarith
+  have hratio : ((3724901 : Real) / (3572101 : Real)) = 1 + a := by
+    norm_num [a]
+  have hRe := step33Shift16M6StepDefectN15LogStep_re_eq_half_log_ratio
+  rw [hratio] at hRe
+  constructor
+  · rw [hRe]
+    have hApprox :
+        2 * step33Shift16M6StepDefectN15LogReLower <= -S - E := by
+      norm_num [step33Shift16M6StepDefectN15LogReLower, S, E, a]
+    have h2 : 2 * step33Shift16M6StepDefectN15LogReLower <=
+        Real.log (1 + a) := hApprox.trans hlog_ge
+    calc
+      step33Shift16M6StepDefectN15LogReLower =
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN15LogReLower) := by
+        ring
+      _ <= (1 / (2 : Real)) * Real.log (1 + a) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+  · rw [hRe]
+    have hApprox : -S + E <=
+        2 * step33Shift16M6StepDefectN15LogReUpper := by
+      norm_num [step33Shift16M6StepDefectN15LogReUpper, S, E, a]
+    have h2 : Real.log (1 + a) <=
+        2 * step33Shift16M6StepDefectN15LogReUpper := hlog_le.trans hApprox
+    calc
+      (1 / (2 : Real)) * Real.log (1 + a) <=
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN15LogReUpper) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+      _ = step33Shift16M6StepDefectN15LogReUpper := by
+        ring
+
+theorem step33Shift16M6StepDefectN15LogStep_im_eq_arg_sub :
+    step33Shift16M6StepDefectN15LogStep.im =
+      Complex.arg (step33Shift16DigammaPoint + (16 : Complex)) -
+        Complex.arg (step33Shift16DigammaPoint + (15 : Complex)) := by
+  rw [step33Shift16M6StepDefectN15LogStep]
+  simp [Complex.log_im]
+
+theorem step33Shift16M6StepDefectN15LogStep_im_bounds :
+    step33Shift16M6StepDefectN15LogImLower <=
+        step33Shift16M6StepDefectN15LogStep.im ∧
+      step33Shift16M6StepDefectN15LogStep.im <=
+        step33Shift16M6StepDefectN15LogImUpper := by
+  let x0 : Real := (1 : Real) / (1890 : Real)
+  let x1 : Real := (1 : Real) / (1930 : Real)
+  let S0 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x0 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E0 : Real := x0 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  let S1 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (x1 ^ (2 * i + 1) / (((2 * i + 1 : Nat) : Real)))
+  let E1 : Real := x1 ^ (2 * 9 + 1) / (((2 * 9 + 1 : Nat) : Real))
+  have h0 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x0 (by norm_num [x0]) (by norm_num [x0])
+    (by norm_num [x0]) (by norm_num [x0])
+  have h1 := step33Shift16Arctan_error_bound_of_nonneg_le_one
+    x1 (by norm_num [x1]) (by norm_num [x1])
+    (by norm_num [x1]) (by norm_num [x1])
+  have h0Lower : S0 - E0 <= Real.arctan x0 := by
+    have h := (abs_le.mp h0).1
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h0Upper : Real.arctan x0 <= S0 + E0 := by
+    have h := (abs_le.mp h0).2
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h1Lower : S1 - E1 <= Real.arctan x1 := by
+    have h := (abs_le.mp h1).1
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have h1Upper : Real.arctan x1 <= S1 + E1 := by
+    have h := (abs_le.mp h1).2
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have hIm :
+      step33Shift16M6StepDefectN15LogStep.im =
+        Real.arctan x1 - Real.arctan x0 := by
+    rw [step33Shift16M6StepDefectN15LogStep_im_eq_arg_sub]
+    change
+      Complex.arg (step33Shift16DigammaPoint + (((16 : Nat) : Complex))) -
+          Complex.arg (step33Shift16DigammaPoint + (((15 : Nat) : Complex))) =
+        Real.arctan x1 - Real.arctan x0
+    rw [step33Shift16DigammaPoint_add_nat_arg_eq_arctan 16,
+      step33Shift16DigammaPoint_add_nat_arg_eq_arctan 15]
+    norm_num [x0, x1]
+  constructor
+  · rw [hIm]
+    have hApprox :
+        step33Shift16M6StepDefectN15LogImLower <=
+          (S1 - E1) - (S0 + E0) := by
+      norm_num [step33Shift16M6StepDefectN15LogImLower, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+  · rw [hIm]
+    have hApprox :
+        (S1 + E1) - (S0 - E0) <=
+          step33Shift16M6StepDefectN15LogImUpper := by
+      norm_num [step33Shift16M6StepDefectN15LogImUpper, S0, E0, S1, E1,
+        x0, x1]
+    linarith
+
+theorem step33Shift16M6StepDefectN15_eq_logStep_add_algebraicPart :
+    Q3.digammaM6StepDefect
+        (step33Shift16DigammaPoint + (15 : Complex)) =
+      step33Shift16M6StepDefectN15LogStep +
+        step33Shift16M6StepDefectN15AlgebraicPart := by
+  simp [Q3.digammaM6StepDefect, Q3.digammaM6AsymptoticMain,
+    step33Shift16M6StepDefectN15LogStep,
+    step33Shift16M6StepDefectN15AlgebraicPart]
+  ring_nf
+
+theorem step33Shift16M6StepDefectN15AlgebraicPart_re_eq :
+    step33Shift16M6StepDefectN15AlgebraicPart.re =
+      (-1936686321760212633062418067693912509728397258890059980159127203071070633427636099852515574746488703557601929723731294959818844541823436722584557787241322029200 : Real) /
+        (92473417211902645251619338362622249212438909145388573851958990716262593737128886615676552143627954881467191476995435636199790366298071328587594502671229807135003 : Real) := by
+  norm_num [step33Shift16M6StepDefectN15AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33Shift16M6StepDefectN15AlgebraicPart_im_eq :
+    step33Shift16M6StepDefectN15AlgebraicPart.im =
+      (276558005987470512785821972031255732518361012738036757340684458281759540512028381948596791379700543783409612783408880123449594200717046188434596721906068760 : Real) /
+        (25220022875973448704987092280715158876119702494196883777806997468071616473762423622457241493716714967672870402816936991690851918081292180523889409819426311036819 : Real) := by
+  norm_num [step33Shift16M6StepDefectN15AlgebraicPart,
+    step33Shift16DigammaPoint, Complex.inv_re, Complex.inv_im,
+    Complex.normSq_apply, Complex.I_sq, Complex.I_pow_three,
+    Complex.I_pow_four, step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+  ring_nf
+  norm_num [Complex.I_sq, Complex.I_pow_three, Complex.I_pow_four,
+    step33ComplexIPowFive, step33ComplexIPowSix,
+    step33ComplexIPowSeven, step33ComplexIPowEight,
+    step33ComplexIPowNine, step33ComplexIPowTen,
+    step33ComplexIPowEleven, step33ComplexIPowTwelve]
+
+theorem step33_shift16_m6_step_defect_n15_component_interval_of_log_step_bounds
+    (hLogReLower :
+      step33Shift16M6StepDefectN15LogReLower <=
+        step33Shift16M6StepDefectN15LogStep.re)
+    (hLogReUpper :
+      step33Shift16M6StepDefectN15LogStep.re <=
+        step33Shift16M6StepDefectN15LogReUpper)
+    (hLogImLower :
+      step33Shift16M6StepDefectN15LogImLower <=
+        step33Shift16M6StepDefectN15LogStep.im)
+    (hLogImUpper :
+      step33Shift16M6StepDefectN15LogStep.im <=
+        step33Shift16M6StepDefectN15LogImUpper) :
+    (((-1 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (15 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (15 : Complex))).re <=
+        (0 : Real) / ((10 : Real) ^ 25)) ∧
+     ((0 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (15 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (15 : Complex))).im <=
+        (1 : Real) / ((10 : Real) ^ 27))) := by
+  have hReEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (15 : Complex))).re =
+        step33Shift16M6StepDefectN15LogStep.re +
+          step33Shift16M6StepDefectN15AlgebraicPart.re := by
+    simpa using congrArg Complex.re
+      step33Shift16M6StepDefectN15_eq_logStep_add_algebraicPart
+  have hImEq :
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (15 : Complex))).im =
+        step33Shift16M6StepDefectN15LogStep.im +
+          step33Shift16M6StepDefectN15AlgebraicPart.im := by
+    simpa using congrArg Complex.im
+      step33Shift16M6StepDefectN15_eq_logStep_add_algebraicPart
+  constructor
+  · constructor
+    · rw [hReEq, step33Shift16M6StepDefectN15AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN15LogReLower] at hLogReLower ⊢
+      linarith [hLogReLower]
+    · rw [hReEq, step33Shift16M6StepDefectN15AlgebraicPart_re_eq]
+      norm_num [step33Shift16M6StepDefectN15LogReUpper] at hLogReUpper ⊢
+      linarith [hLogReUpper]
+  · constructor
+    · rw [hImEq, step33Shift16M6StepDefectN15AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN15LogImLower] at hLogImLower ⊢
+      linarith [hLogImLower]
+    · rw [hImEq, step33Shift16M6StepDefectN15AlgebraicPart_im_eq]
+      norm_num [step33Shift16M6StepDefectN15LogImUpper] at hLogImUpper ⊢
+      linarith [hLogImUpper]
+
+theorem step33_shift16_m6_step_defect_n15_component_interval :
+    (((-1 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (15 : Complex))).re ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (15 : Complex))).re <=
+        (0 : Real) / ((10 : Real) ^ 25)) ∧
+     ((0 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (15 : Complex))).im ∧
+      (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + (15 : Complex))).im <=
+        (1 : Real) / ((10 : Real) ^ 27))) := by
+  exact step33_shift16_m6_step_defect_n15_component_interval_of_log_step_bounds
+    step33Shift16M6StepDefectN15LogStep_re_bounds.1
+    step33Shift16M6StepDefectN15LogStep_re_bounds.2
+    step33Shift16M6StepDefectN15LogStep_im_bounds.1
+    step33Shift16M6StepDefectN15LogStep_im_bounds.2
+
 theorem step33_shift16_digamma_m6_main_norm_of_log_add_algebraicPart_bound
     (h :
       ‖Q3.digamma step33Shift16DigammaPoint -

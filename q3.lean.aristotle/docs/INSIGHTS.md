@@ -33794,3 +33794,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   the exact source gap is still `STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP`,
   now reduced to checked intervals for `n=8,...,15` plus the separate
   shift/source input required by the existing N16 payload receiver.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6StepDefectFin16IntervalTableClosed
+
+- Added Lean-checked no-premise theorems
+  `step33_shift16_m6_step_defect_n8_component_interval` through
+  `step33_shift16_m6_step_defect_n15_component_interval`.
+- The full individual defect interval table `n=0,...,15` is now checked in
+  Lean.  The last eight intervals are:
+  `n=8 [-9,-8]/10^25, [7,8]/10^27`,
+  `n=9 [-6,-5]/10^25, [5,6]/10^27`,
+  `n=10 [-5,-4]/10^25, [3,4]/10^27`,
+  `n=11 [-3,-2]/10^25, [2,3]/10^27`,
+  `n=12 [-3,-2]/10^25, [1,2]/10^27`,
+  `n=13 [-2,-1]/10^25, [1,2]/10^27`,
+  `n=14 [-2,-1]/10^25, [0,1]/10^27`,
+  and `n=15 [-1,0]/10^25, [0,1]/10^27`.
+- Validation passed with direct Lean, targeted `q3_check`, forbidden-marker
+  scan, `git diff --check`, and the support module build.
+- Boundary: this closes the individual component interval table only.  It does
+  not yet produce `Step33Shift16M6FiniteTelescopeTermPayload`.  The exact next
+  gap is now `STEP33_M6_FIN16_PACKAGING_AND_SHIFT_SOURCE_GAP`: package the
+  `n=0,...,15` component intervals into the existing component-defect receiver,
+  prove the finite termRad sum/total constants, and supply the separate N16
+  shift/source input.

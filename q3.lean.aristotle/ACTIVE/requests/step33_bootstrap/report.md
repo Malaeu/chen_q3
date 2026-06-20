@@ -53438,3 +53438,76 @@ Remaining local inputs:
   accepted add_nat norm/arg helpers, plus the separate shift/source input
   required by the existing N16 payload receiver.
 ```
+
+## 2026-06-20 Execution update -- n=8..15 M6 step-defect intervals closed
+
+Extended the checked finite-telescope defect route through the remaining
+terms in the `Fin 16` interval table.  The new no-premise theorems are:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n8_component_interval
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n9_component_interval
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n10_component_interval
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n11_component_interval
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n12_component_interval
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n13_component_interval
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n14_component_interval
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n15_component_interval
+```
+
+Checked component intervals:
+
+| n | Re interval | Im interval | log ratio | arg ratios |
+| --- | --- | --- | --- | --- |
+| 8 | `[-9,-8]/10^25` | `[7,8]/10^27` | `log(1 + 130400/2592101)` | `1/1650`, `1/1610` |
+| 9 | `[-6,-5]/10^25` | `[5,6]/10^27` | `log(1 + 133600/2722501)` | `1/1690`, `1/1650` |
+| 10 | `[-5,-4]/10^25` | `[3,4]/10^27` | `log(1 + 136800/2856101)` | `1/1730`, `1/1690` |
+| 11 | `[-3,-2]/10^25` | `[2,3]/10^27` | `log(1 + 140000/2992901)` | `1/1770`, `1/1730` |
+| 12 | `[-3,-2]/10^25` | `[1,2]/10^27` | `log(1 + 143200/3132901)` | `1/1810`, `1/1770` |
+| 13 | `[-2,-1]/10^25` | `[1,2]/10^27` | `log(1 + 146400/3276101)` | `1/1850`, `1/1810` |
+| 14 | `[-2,-1]/10^25` | `[0,1]/10^27` | `log(1 + 149600/3422501)` | `1/1890`, `1/1850` |
+| 15 | `[-1,0]/10^25` | `[0,1]/10^27` | `log(1 + 152800/3572101)` | `1/1930`, `1/1890` |
+
+Each term uses the same proof-grade split as `n=4..7`: exact algebraic rational
+component identities plus a certified log-step rectangle from
+`Real.abs_log_sub_add_sum_range_le` and the generic arctan alternating-series
+helper through the `add_nat` norm/arg lemmas.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+```
+
+Result:
+
+```text
+Lean ok
+q3_check ok
+no forbidden markers in touched Lean file
+git diff --check clean
+module build ok
+```
+
+Boundary:
+
+```text
+This closes the individual component interval theorems for n=0,...,15.
+It still does not produce:
+  Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeTermPayload
+
+Current exact source gap:
+  STEP33_M6_FIN16_PACKAGING_AND_SHIFT_SOURCE_GAP
+
+Remaining local inputs:
+  package the n=0,...,15 component intervals into the existing
+  `component_interval_defects` receiver, prove the finite termRad sum/total
+  constants, and provide the separate shift/source input required by the
+  existing N16 payload receiver.
+```
