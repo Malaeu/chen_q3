@@ -26752,3 +26752,40 @@ identity, and only then attempt the higher Euler-Maclaurin/order-15 bridge to
 
 Boundary unchanged: this does not prove the M6 source theorem, Step33A.1-A, or
 Step33.
+
+## 2026-06-20 Step33A.1-A B4 digamma remainder prefix checked
+
+Added checked normalized B4 digamma remainder identities:
+
+```lean
+Q3.digamma_stieltjes_B4Diff_Ioi_raw
+Q3.digamma_stieltjes_B4Diff_Ioi_mainPrefix
+```
+
+The `mainPrefix` version uses the same inverse-power convention as
+`Q3.digammaM6AsymptoticMain` through the `z^-4` term:
+
+```lean
+Q3.digamma z -
+  (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+    (1 / 12 : ℂ) * (z ^ 2)⁻¹ +
+    (1 / 120 : ℂ) * (z ^ 4)⁻¹)
+=
+∫ x in Set.Ioi (0 : ℝ),
+  (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_IOI_TO_ORDER15_REMAINDER_SOURCE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP
+```
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.

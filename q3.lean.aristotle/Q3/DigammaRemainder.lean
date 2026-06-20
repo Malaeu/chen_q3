@@ -3562,6 +3562,65 @@ lemma digamma_stieltjes_identity (z : ℂ) (hz : 0 < z.re) :
             ring
     _ = -Iinf := hlim'
 
+/-- Normalized B4/power-5 Stieltjes remainder identity for digamma.  This is
+the checked bridge from the first Stieltjes identity and the raw B2Diff-to-B4
+`Ioi` tail ledger; it is not yet the M6/order-15 source theorem. -/
+lemma digamma_stieltjes_B4Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+          (1 / 120 : ℂ) * (z⁻¹) ^ 4) =
+      ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5 := by
+  let I2 : ℂ :=
+    ∫ x in Set.Ioi (0 : ℝ),
+      (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3
+  let I4 : ℂ :=
+    ∫ x in Set.Ioi (0 : ℝ),
+      (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+  have hst :
+      Q3.digamma z - Complex.log z + (1 / 2 : ℂ) * z⁻¹ = -I2 := by
+    simpa [I2] using digamma_stieltjes_identity z hz
+  have hraw :
+      I2 =
+        (1 / 12 : ℂ) * (z⁻¹) ^ 2 -
+          (1 / 120 : ℂ) * (z⁻¹) ^ 4 - I4 := by
+    have h := stieltjes_B2Diff_to_B4Diff_Ioi_raw z hz
+    rw [show I2 =
+        (1 / 6 : ℂ) * ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - 0)) -
+          ((1 / 4 : ℂ) *
+            ((-(30 : ℂ)⁻¹) * (0 - (z⁻¹) ^ 4)) + I4) by
+      simpa [I2, I4] using h]
+    ring
+  calc
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+          (1 / 120 : ℂ) * (z⁻¹) ^ 4)
+        =
+          (Q3.digamma z - Complex.log z + (1 / 2 : ℂ) * z⁻¹) +
+            (1 / 12 : ℂ) * (z⁻¹) ^ 2 -
+            (1 / 120 : ℂ) * (z⁻¹) ^ 4 := by
+            ring
+    _ = -I2 +
+            (1 / 12 : ℂ) * (z⁻¹) ^ 2 -
+            (1 / 120 : ℂ) * (z⁻¹) ^ 4 := by
+            rw [hst]
+    _ = I4 := by
+            rw [hraw]
+            ring
+
+/-- Same B4/power-5 digamma remainder identity, normalized to the inverse-power
+surface used by `digammaM6AsymptoticMain`. -/
+lemma digamma_stieltjes_B4Diff_Ioi_mainPrefix (z : ℂ) (hz : 0 < z.re) :
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z ^ 2)⁻¹ +
+          (1 / 120 : ℂ) * (z ^ 4)⁻¹) =
+      ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5 := by
+  simpa [inv_pow] using digamma_stieltjes_B4Diff_Ioi_raw z hz
+
 /-- Complex-norm form of the first Stieltjes/Euler-Maclaurin digamma
 remainder.  The real-part theorem below is a projection of this bound, while
 future high-order endpoint receivers can target the same main/error shape. -/

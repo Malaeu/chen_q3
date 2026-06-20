@@ -53985,6 +53985,55 @@ git diff --check
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B4 digamma remainder prefix checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.digamma_stieltjes_B4Diff_Ioi_raw
+Q3.digamma_stieltjes_B4Diff_Ioi_mainPrefix
+```
+
+The main-prefix theorem is now in the same inverse-power convention as
+`Q3.digammaM6AsymptoticMain`:
+
+```lean
+Q3.digamma z -
+  (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+    (1 / 12 : ℂ) * (z ^ 2)⁻¹ +
+    (1 / 120 : ℂ) * (z ^ 4)⁻¹)
+=
+∫ x in Set.Ioi (0 : ℝ),
+  (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_IOI_TO_ORDER15_REMAINDER_SOURCE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP
+```
+
+Meaning: the B4/power-5 remainder has been normalized to the digamma main
+prefix through the `z^-4` term.  The repository still lacks the checked
+higher Euler-Maclaurin/order-15 bridge from this B4 prefix to the full
+`Q3.digammaM6AsymptoticMain` and its standard source theorem
+`Q3.digammaM6IntegralRemainderBound z`.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+```
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- finite B2Diff-to-B4 identity checked
 
 Lean progress:

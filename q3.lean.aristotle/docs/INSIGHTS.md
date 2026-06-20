@@ -34078,3 +34078,21 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   remainder identity.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B4DigammaRemainderPrefixChecked
+
+- Added checked normalized B4 digamma remainder identities:
+  `Q3.digamma_stieltjes_B4Diff_Ioi_raw` and
+  `Q3.digamma_stieltjes_B4Diff_Ioi_mainPrefix`.
+- The `mainPrefix` theorem is in the same inverse-power convention as
+  `Q3.digammaM6AsymptoticMain` through the `z^-4` term:
+  `log z - (1/2) z^-1 - (1/12) (z^2)^-1 + (1/120) (z^4)^-1`.
+- Closed:
+  `STEP33_M6_B4_IOI_TO_ORDER15_REMAINDER_SOURCE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP`.
+- Meaning: the B4/power-5 remainder is now a checked digamma main-prefix
+  surface; the missing theorem is the higher Euler-Maclaurin/order-15 bridge
+  from this B4 prefix to `Q3.digammaM6IntegralRemainderBound z`.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
