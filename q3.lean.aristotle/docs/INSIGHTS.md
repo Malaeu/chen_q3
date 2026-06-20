@@ -34820,3 +34820,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this planned patch will not prove the B12 `Ioi`
   norm-to-order15 inequality, `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B12ToB14IoiRawBridgeChecked
+
+- Added checked Lean bridges in `Q3/DigammaRemainder.lean`:
+  `Q3.sum_b14_boundary_telescope`,
+  `Q3.intervalIntegrable_b14diff_div_nat`,
+  `Q3.sum_interval_integral_b14diff`,
+  `Q3.finite_stieltjes_B12Diff_to_B14Diff`,
+  `Q3.integrable_bernoulli14Diff_div_pow15`,
+  `Q3.tendsto_intervalIntegral_b14diff_div_pow15_Ioi`, and
+  `Q3.stieltjes_B12Diff_to_B14Diff_Ioi_raw`.
+- The main checked theorem proves the raw `Ioi` identity:
+  `B12/power13 Ioi = (1/12) * ((0:C)^14 - (z^-1)^14) + B14/power15 Ioi`.
+- Closed local bridge:
+  `STEP33_M6_B14_DIFF_IOI_RAW_BRIDGE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B14_DIFF_IOI_NORM_AND_BOUNDARY_CONSTANT_GAP`.
+- The next proof obligation is not another finite telescope.  It is the
+  same-budget norm estimate obtained from the raw identity: the explicit
+  boundary term plus the B14/power-15 integral must be bounded by the
+  order-15 kernel budget required by
+  `Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean`, the forbidden-hole
+  scan for `sorry|admit|exact?|axiom|unsafe`, and `git diff --check`; Lean
+  emitted warnings only.
+- Browser/Pro note: the in-app browser is connected to the open Pro/Louise
+  chat, but no advisory question was sent for this step because the local lift
+  mirrored the existing checked lower-order pattern and had no route fork.
+- Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.

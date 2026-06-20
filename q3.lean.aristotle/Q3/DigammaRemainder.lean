@@ -4374,6 +4374,22 @@ lemma sum_b12_boundary_telescope (z : ℂ) (N : ℕ) :
         ring
   simpa [a, add_comm, add_left_comm, add_assoc] using htel
 
+lemma sum_b14_boundary_telescope (z : ℂ) (N : ℕ) :
+    Finset.sum (Finset.range N)
+        (fun n => ((((n + 1 : ℂ) + z)⁻¹) ^ 14 - (((n : ℂ) + z)⁻¹) ^ 14)) =
+      (((N : ℂ) + z)⁻¹) ^ 14 - (z⁻¹) ^ 14 := by
+  classical
+  let a : ℕ → ℂ := fun n => (((n : ℂ) + z)⁻¹) ^ 14
+  have htel :
+      Finset.sum (Finset.range N) (fun n => a (n + 1) - a n) = a N - a 0 := by
+    induction N with
+    | zero =>
+        simp [a]
+    | succ N ih =>
+        rw [Finset.sum_range_succ, ih]
+        ring
+  simpa [a, add_comm, add_left_comm, add_assoc] using htel
+
 lemma intervalIntegral_inv_eq_log (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
     ∫ x in (0 : ℝ)..(N : ℝ), ((x : ℂ) + z)⁻¹ =
       Complex.log (z + (N : ℂ)) - Complex.log z := by
@@ -5204,11 +5220,64 @@ lemma intervalIntegrable_b12diff_div_nat (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
   have hiff := (intervalIntegrable_congr (μ := volume) (a := (n : ℝ)) (b := (n + 1 : ℝ))
     (f := fun x : ℝ => (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
     (g := fun x : ℝ =>
-      (((x - (n : ℝ)) ^ 12 - 6 * (x - (n : ℝ)) ^ 11 +
-          11 * (x - (n : ℝ)) ^ 10 - (33 / 2 : ℝ) * (x - (n : ℝ)) ^ 8 +
-          22 * (x - (n : ℝ)) ^ 6 - (33 / 2 : ℝ) * (x - (n : ℝ)) ^ 4 +
-          5 * (x - (n : ℝ)) ^ 2 - (691 / 2730 : ℝ) : ℝ) : ℂ) /
-        ((x : ℂ) + z) ^ 13) h_eq_uIoc)
+        (((x - (n : ℝ)) ^ 12 - 6 * (x - (n : ℝ)) ^ 11 +
+            11 * (x - (n : ℝ)) ^ 10 - (33 / 2 : ℝ) * (x - (n : ℝ)) ^ 8 +
+            22 * (x - (n : ℝ)) ^ 6 - (33 / 2 : ℝ) * (x - (n : ℝ)) ^ 4 +
+            5 * (x - (n : ℝ)) ^ 2 - (691 / 2730 : ℝ) : ℝ) : ℂ) /
+          ((x : ℂ) + z) ^ 13) h_eq_uIoc)
+  exact hiff.mpr h_int_poly
+
+lemma intervalIntegrable_b14diff_div_nat (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
+    IntervalIntegrable (fun x : ℝ => (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
+      volume (n : ℝ) (n + 1 : ℝ) := by
+  let P : ℝ → ℂ := fun x =>
+    (((x - (n : ℝ)) ^ 14 - 7 * (x - (n : ℝ)) ^ 13 +
+        (91 / 6 : ℝ) * (x - (n : ℝ)) ^ 12 -
+        (1001 / 30 : ℝ) * (x - (n : ℝ)) ^ 10 +
+        (143 / 2 : ℝ) * (x - (n : ℝ)) ^ 8 -
+        (1001 / 10 : ℝ) * (x - (n : ℝ)) ^ 6 +
+        (455 / 6 : ℝ) * (x - (n : ℝ)) ^ 4 -
+        (691 / 30 : ℝ) * (x - (n : ℝ)) ^ 2 + (7 / 6 : ℝ) : ℝ) : ℂ)
+  let G : ℝ → ℂ := fun x => P x / ((x : ℂ) + z) ^ 15
+  have h_eq :
+      EqOn
+        (fun x : ℝ => (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
+        G
+        (Set.uIoc (n : ℝ) (n + 1 : ℝ)) := by
+    intro x hx
+    have hle : (n : ℝ) ≤ (n + 1 : ℝ) := by nlinarith
+    have hxIoc : x ∈ Set.Ioc (n : ℝ) (n + 1 : ℝ) := by
+      simpa [Set.uIoc_of_le hle] using hx
+    have hxIcc : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ) :=
+      ⟨le_of_lt hxIoc.1, hxIoc.2⟩
+    have hreal := bernoulli14Diff_eq_cell_on_Icc n hxIcc
+    simp [G, P, hreal]
+  have hcont_poly :
+      ContinuousOn G (Set.uIcc (n : ℝ) (n + 1 : ℝ)) := by
+    intro x hx
+    have hle : (n : ℝ) ≤ (n + 1 : ℝ) := by nlinarith
+    have hx' : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ) := by
+      simpa [Set.uIcc_of_le hle] using hx
+    have hx0 : 0 ≤ x := by
+      have hn0 : (0 : ℝ) ≤ (n : ℝ) := by exact_mod_cast (Nat.cast_nonneg n)
+      exact le_trans hn0 hx'.1
+    have hneq : (x : ℂ) + z ≠ 0 := add_ne_zero_of_re_pos hz hx0
+    have hcont_num : ContinuousAt P x := by
+      dsimp [P]
+      fun_prop
+    have hcont_add :
+        ContinuousAt (fun x : ℝ => (x : ℂ) + z) x := by
+      simpa using (Complex.continuous_ofReal.continuousAt.add continuous_const.continuousAt)
+    have hcont_pow :
+        ContinuousAt (fun x : ℝ => ((x : ℂ) + z) ^ 15) x := hcont_add.pow 15
+    have hne : ((x : ℂ) + z) ^ 15 ≠ 0 := pow_ne_zero 15 hneq
+    simpa [G] using (hcont_num.div hcont_pow hne).continuousWithinAt
+  have h_int_poly :
+      IntervalIntegrable G volume (n : ℝ) (n + 1 : ℝ) :=
+    hcont_poly.intervalIntegrable
+  have hiff := (intervalIntegrable_congr (μ := volume) (a := (n : ℝ)) (b := (n + 1 : ℝ))
+    (f := fun x : ℝ => (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
+    (g := G) h_eq)
   exact hiff.mpr h_int_poly
 
 lemma sum_trapezoid_eq_sum (z : ℂ) (N : ℕ) :
@@ -5413,8 +5482,27 @@ lemma sum_interval_integral_b12diff (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
     intro k hk
     simpa [Nat.cast_add, Nat.cast_one] using intervalIntegrable_b12diff_div_nat z hz k
   simpa [Nat.cast_add, Nat.cast_one] using
+      (intervalIntegral.sum_integral_adjacent_intervals
+        (f := fun x : ℝ => (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
+        (a := fun k : ℕ => (k : ℝ)) (n := N) (μ := volume) hint)
+
+lemma sum_interval_integral_b14diff (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
+    Finset.sum (Finset.range N)
+        (fun n =>
+          ∫ x in (n : ℝ)..(n + 1 : ℝ),
+            (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15) =
+      ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15 := by
+  classical
+  have hint :
+      ∀ k < N,
+        IntervalIntegrable (fun x : ℝ => (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
+          volume (k : ℝ) ((k + 1 : ℕ) : ℝ) := by
+    intro k hk
+    simpa [Nat.cast_add, Nat.cast_one] using intervalIntegrable_b14diff_div_nat z hz k
+  simpa [Nat.cast_add, Nat.cast_one] using
     (intervalIntegral.sum_integral_adjacent_intervals
-      (f := fun x : ℝ => (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
+      (f := fun x : ℝ => (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
       (a := fun k : ℕ => (k : ℝ)) (n := N) (μ := volume) hint)
 
 lemma finite_stieltjes_B4Diff_to_B6Diff (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
@@ -5630,8 +5718,73 @@ lemma finite_stieltjes_B10Diff_to_B12Diff (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
           (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 := by
           rw [show Finset.sum (Finset.range N) C =
             ∫ x in (0 : ℝ)..(N : ℝ),
-              (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 by
-              simpa [C] using sum_interval_integral_b12diff z hz N]
+                (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 by
+                simpa [C] using sum_interval_integral_b12diff z hz N]
+
+lemma finite_stieltjes_B12Diff_to_B14Diff (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
+    ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 =
+      (1 / 12 : ℂ) * ((((N : ℂ) + z)⁻¹) ^ 14 - (z⁻¹) ^ 14) +
+        ∫ x in (0 : ℝ)..(N : ℝ),
+          (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15 := by
+  classical
+  let A : ℕ → ℂ := fun n =>
+    ∫ x in (n : ℝ)..(n + 1 : ℝ),
+      (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13
+  let B : ℕ → ℂ := fun n =>
+    ((((n + 1 : ℂ) + z)⁻¹) ^ 14 - (((n : ℂ) + z)⁻¹) ^ 14)
+  let C : ℕ → ℂ := fun n =>
+    ∫ x in (n : ℝ)..(n + 1 : ℝ),
+      (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15
+  have hsum_cells :
+      Finset.sum (Finset.range N) A =
+        Finset.sum (Finset.range N) (fun n => (1 / 12 : ℂ) * B n + C n) := by
+    refine Finset.sum_congr rfl ?_
+    intro n hn
+    have hcell := stieltjes_interval_B12Diff_to_B14CellDeriv z hz n
+    have hdiff := stieltjes_interval_B14CellDeriv_to_B14Diff z hz n
+    calc
+      A n =
+          (1 / 14 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+            (bernoulli14DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 14 := by
+          simpa [A] using hcell
+      _ = (1 / 14 : ℂ) *
+            ((7 / 6 : ℂ) * B n + (14 : ℂ) * C n) := by
+          rw [hdiff]
+      _ = (1 / 12 : ℂ) * B n + C n := by
+          ring
+  have hsum_split :
+      Finset.sum (Finset.range N) (fun n => (1 / 12 : ℂ) * B n + C n) =
+        (1 / 12 : ℂ) * Finset.sum (Finset.range N) B +
+          Finset.sum (Finset.range N) C := by
+    calc
+      Finset.sum (Finset.range N) (fun n => (1 / 12 : ℂ) * B n + C n)
+          = Finset.sum (Finset.range N) (fun n => (1 / 12 : ℂ) * B n) +
+              Finset.sum (Finset.range N) C := by
+              simp [Finset.sum_add_distrib]
+      _ = (1 / 12 : ℂ) * Finset.sum (Finset.range N) B +
+              Finset.sum (Finset.range N) C := by
+              rw [← Finset.mul_sum]
+  calc
+    ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13
+        = Finset.sum (Finset.range N) A := by
+          simpa [A] using (sum_interval_integral_b12diff z hz N).symm
+    _ = Finset.sum (Finset.range N) (fun n => (1 / 12 : ℂ) * B n + C n) := hsum_cells
+    _ = (1 / 12 : ℂ) * Finset.sum (Finset.range N) B +
+          Finset.sum (Finset.range N) C := hsum_split
+    _ = (1 / 12 : ℂ) * ((((N : ℂ) + z)⁻¹) ^ 14 - (z⁻¹) ^ 14) +
+          Finset.sum (Finset.range N) C := by
+          rw [show Finset.sum (Finset.range N) B =
+            ((((N : ℂ) + z)⁻¹) ^ 14 - (z⁻¹) ^ 14) by
+              simpa [B] using sum_b14_boundary_telescope z N]
+    _ = (1 / 12 : ℂ) * ((((N : ℂ) + z)⁻¹) ^ 14 - (z⁻¹) ^ 14) +
+        ∫ x in (0 : ℝ)..(N : ℝ),
+          (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15 := by
+          rw [show Finset.sum (Finset.range N) C =
+            ∫ x in (0 : ℝ)..(N : ℝ),
+              (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15 by
+              simpa [C] using sum_interval_integral_b14diff z hz N]
 
 lemma finite_sum_B2Fract_to_B4Diff (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
     Finset.sum (Finset.range N)
@@ -7800,6 +7953,50 @@ lemma integrable_bernoulli12Diff_div_pow13 (z : ℂ) (hz : 0 < z.re) :
             field_simp
   exact Integrable.mono' hkernel' hmeas hbound
 
+lemma integrable_bernoulli14Diff_div_pow15 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hkernel :
+      Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 15))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    integrable_kernel_norm_pow15 z hz
+  have hkernel' :
+      Integrable (fun x : ℝ => (512 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 15))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    hkernel.const_mul (512 : ℝ)
+  have hmeas :
+      AEStronglyMeasurable
+        (fun x : ℝ => (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hmeas : Measurable (fun x => (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15) := by
+      have hcoe : Measurable (fun x : ℝ => (x : ℂ)) := Complex.measurable_ofReal
+      have h_add : Measurable (fun x : ℝ => (x : ℂ) + z) := hcoe.add measurable_const
+      have h_pow : Measurable (fun x : ℝ => ((x : ℂ) + z) ^ 15) := h_add.pow_const 15
+      have h_num : Measurable (fun x : ℝ => (bernoulli14Diff x : ℂ)) :=
+        (Complex.measurable_ofReal.comp measurable_bernoulli14Diff)
+      exact h_num.div h_pow
+    simpa using hmeas.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15‖ ≤
+          (512 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 15) := by
+    refine Filter.Eventually.of_forall ?_
+    intro x
+    have hnorm_pow : ‖(x + z : ℂ) ^ 15‖ = ‖(x + z : ℂ)‖ ^ 15 := by
+      simp [norm_pow]
+    have hpos : 0 ≤ ‖(x : ℂ) + z‖ ^ 15 := by positivity
+    calc
+      ‖(bernoulli14Diff x : ℂ) / (x + z) ^ 15‖
+          = ‖(bernoulli14Diff x : ℂ)‖ / ‖(x + z : ℂ) ^ 15‖ := by
+            simp
+      _ = ‖(bernoulli14Diff x : ℂ)‖ / ‖(x : ℂ) + z‖ ^ 15 := by
+            simp [hnorm_pow]
+      _ ≤ (512 : ℝ) / ‖(x : ℂ) + z‖ ^ 15 := by
+            exact (div_le_div_of_nonneg_right (bernoulli14Diff_norm_le x) hpos)
+      _ = (512 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 15) := by
+            field_simp
+  exact Integrable.mono' hkernel' hmeas hbound
+
 lemma tendsto_intervalIntegral_b2diff_div_Ioi (z : ℂ) (hz : 0 < z.re) :
     Tendsto
       (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
@@ -7903,8 +8100,26 @@ lemma tendsto_intervalIntegral_b12diff_div_pow13_Ioi (z : ℂ) (hz : 0 < z.re) :
         (Set.Ioi (0 : ℝ)) volume := by
     simpa [IntegrableOn] using integrable_bernoulli12Diff_div_pow13 z hz
   simpa using
+      (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
+        (f := fun x : ℝ => (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
+        (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
+        h_int (tendsto_natCast_atTop_atTop))
+
+lemma tendsto_intervalIntegral_b14diff_div_pow15_Ioi (z : ℂ) (hz : 0 < z.re) :
+    Tendsto
+      (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
+      atTop
+      (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)) := by
+  have h_int :
+      IntegrableOn
+        (fun x : ℝ => (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
+        (Set.Ioi (0 : ℝ)) volume := by
+    simpa [IntegrableOn] using integrable_bernoulli14Diff_div_pow15 z hz
+  simpa using
     (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
-      (f := fun x : ℝ => (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
+      (f := fun x : ℝ => (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
       (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
       h_int (tendsto_natCast_atTop_atTop))
 
@@ -8303,6 +8518,68 @@ lemma stieltjes_B10Diff_to_B12Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
         (𝓝 ((-(691 / 32760 : ℂ)) * ((0 : ℂ) ^ 12 - (z⁻¹) ^ 12) +
           ∫ x in Set.Ioi (0 : ℝ),
             (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)) := by
+    exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
+  exact tendsto_nhds_unique hL hL_to_rhs
+
+lemma stieltjes_B12Diff_to_B14Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
+    ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 =
+      (1 / 12 : ℂ) * ((0 : ℂ) ^ 14 - (z⁻¹) ^ 14) +
+        ∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15 := by
+  let L : ℕ → ℂ := fun N =>
+    ∫ x in (0 : ℝ)..(N : ℝ),
+      (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13
+  let R : ℕ → ℂ := fun N =>
+    (1 / 12 : ℂ) * (((((N : ℂ) + z)⁻¹) ^ 14) - (z⁻¹) ^ 14) +
+      ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15
+  have hLR : ∀ N, L N = R N := by
+    intro N
+    simpa [L, R] using finite_stieltjes_B12Diff_to_B14Diff z hz N
+  have hL :
+      Tendsto L atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)) := by
+    simpa [L] using tendsto_intervalIntegral_b12diff_div_pow13_Ioi z hz
+  have h_inv : Tendsto (fun N : ℕ => (((N : ℂ) + z)⁻¹)) atTop (𝓝 (0 : ℂ)) :=
+    tendsto_nat_add_complex_inv z
+  have h_inv14 :
+      Tendsto (fun N : ℕ => ((((N : ℂ) + z)⁻¹) ^ 14)) atTop
+        (𝓝 ((0 : ℂ) ^ 14)) := by
+    simpa using h_inv.pow 14
+  have hB14 :
+      Tendsto
+        (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+          (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)
+        atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)) :=
+    tendsto_intervalIntegral_b14diff_div_pow15_Ioi z hz
+  have hEndpoint :
+      Tendsto
+        (fun N : ℕ =>
+          (1 / 12 : ℂ) *
+            (((((N : ℂ) + z)⁻¹) ^ 14) - (z⁻¹) ^ 14))
+        atTop
+        (𝓝 ((1 / 12 : ℂ) * ((0 : ℂ) ^ 14 - (z⁻¹) ^ 14))) := by
+    have hsub :
+        Tendsto
+          (fun N : ℕ => (((((N : ℂ) + z)⁻¹) ^ 14) - (z⁻¹) ^ 14))
+          atTop (𝓝 ((0 : ℂ) ^ 14 - (z⁻¹) ^ 14)) := by
+      exact h_inv14.sub tendsto_const_nhds
+    simpa using hsub.const_mul (1 / 12 : ℂ)
+  have hR :
+      Tendsto R atTop
+        (𝓝 ((1 / 12 : ℂ) * ((0 : ℂ) ^ 14 - (z⁻¹) ^ 14) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)) := by
+    simpa [R] using hEndpoint.add hB14
+  have hL_to_rhs :
+      Tendsto L atTop
+        (𝓝 ((1 / 12 : ℂ) * ((0 : ℂ) ^ 14 - (z⁻¹) ^ 14) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)) := by
     exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
   exact tendsto_nhds_unique hL hL_to_rhs
 

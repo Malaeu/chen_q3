@@ -27940,3 +27940,63 @@ whitespace check were clean.
 Boundary: this does not prove the B14 `Ioi` lift, the B12 `Ioi`
 norm-to-order15 inequality, `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Step33A.1-A B12-to-B14 `Ioi` raw bridge checked
+
+Latest checked local bridges:
+
+```lean
+Q3.sum_b14_boundary_telescope
+Q3.intervalIntegrable_b14diff_div_nat
+Q3.sum_interval_integral_b14diff
+Q3.finite_stieltjes_B12Diff_to_B14Diff
+Q3.integrable_bernoulli14Diff_div_pow15
+Q3.tendsto_intervalIntegral_b14diff_div_pow15_Ioi
+Q3.stieltjes_B12Diff_to_B14Diff_Ioi_raw
+```
+
+The main raw `Ioi` theorem proves:
+
+```lean
+∫ x in Set.Ioi (0 : R),
+    (bernoulli12Diff x : C) / ((x : C) + z) ^ 13 =
+  (1 / 12 : C) * ((0 : C) ^ 14 - (z^-1) ^ 14) +
+    ∫ x in Set.Ioi (0 : R),
+      (bernoulli14Diff x : C) / ((x : C) + z) ^ 15
+```
+
+Closed local bridge:
+
+```text
+STEP33_M6_B14_DIFF_IOI_RAW_BRIDGE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_DIFF_IOI_NORM_AND_BOUNDARY_CONSTANT_GAP
+```
+
+Next smallest Lean object: use the raw identity to prove the B12 `Ioi`
+norm-to-order15 inequality required by
+`Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`, accounting for the
+explicit boundary term and the B14/power-15 integral in the same norm budget.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Browser/Pro note: the in-app browser is connected to the open Pro/Louise chat,
+but no advisory question was sent for this step because the local lift followed
+the existing checked lower-order pattern.
+
+Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.

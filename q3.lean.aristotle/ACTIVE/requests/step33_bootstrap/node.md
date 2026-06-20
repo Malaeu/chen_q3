@@ -15196,3 +15196,66 @@ Boundary remains unchanged: this addendum kills only the norm-sum telescope
 ledger.  It does not prove the M6 source theorem, Step33A.1-A remains open, A
 hbox is not closed, `ActiveCenteredCoeffEntryHboxCert` is not closed, and
 Step33 is not closed.
+
+## 2026-06-20 Current EOF Addendum -- B12-to-B14 `Ioi` raw bridge checked
+
+Latest checked local bridges:
+
+```lean
+Q3.sum_b14_boundary_telescope
+Q3.intervalIntegrable_b14diff_div_nat
+Q3.sum_interval_integral_b14diff
+Q3.finite_stieltjes_B12Diff_to_B14Diff
+Q3.integrable_bernoulli14Diff_div_pow15
+Q3.tendsto_intervalIntegral_b14diff_div_pow15_Ioi
+Q3.stieltjes_B12Diff_to_B14Diff_Ioi_raw
+```
+
+Main checked raw identity:
+
+```lean
+∫ x in Set.Ioi (0 : R),
+    (bernoulli12Diff x : C) / ((x : C) + z) ^ 13 =
+  (1 / 12 : C) * ((0 : C) ^ 14 - (z^-1) ^ 14) +
+    ∫ x in Set.Ioi (0 : R),
+      (bernoulli14Diff x : C) / ((x : C) + z) ^ 15
+```
+
+Closed local bridge:
+
+```text
+STEP33_M6_B14_DIFF_IOI_RAW_BRIDGE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_DIFF_IOI_NORM_AND_BOUNDARY_CONSTANT_GAP
+```
+
+Current next theorem remains the direct z0 source theorem, but the local
+subgoal has narrowed to the B12 `Ioi` norm-to-order15 inequality obtained from
+the checked B14 raw identity plus same-budget boundary accounting:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound
+    Q3.PSDpd.Step33.step33Shift16DigammaPoint
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary remains unchanged: this proves only the raw B12-to-B14 `Ioi` bridge.
+It does not prove the B12 `Ioi` norm-to-order15 inequality,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
