@@ -55961,6 +55961,79 @@ rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## Execution Update (2026-06-20) -- B14 cell pointwise crosswalk
+
+Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean facts added:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Bernoulli14Diff_nat_add_real_eq
+Q3.PSDpd.Step33.step33Shift16Bernoulli14Diff_nat_add_one_sub_real_eq
+```
+
+Closed preparatory blocker:
+
+```text
+STEP33_M6_B14_CELL_POINTWISE_CROSSWALK_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP
+```
+
+Meaning: the forward and reflected halves of each integer cell now reduce
+pointwise from `bernoulli14Diff` to `Q3.bernoulli14 t` under the checked local
+cell condition `0 <= t <= 1`.  This removes the algebraic normalization issue
+from the next integral bridge.
+
+Computer Use / Pro status: used.  A compact route-review question was sent to
+the selected in-app Pro/Louise ChatGPT tab.  The returned advice favored the
+z0-specific cell integral bridge and warned against a generic theorem from
+only `0 < z.re`.  It is advisory only; it does not count as proof evidence.
+
+Next patch-sized theorem:
+
+```lean
+theorem step33Shift16B14KernelCellIntegral_eq_halfCellPair
+    (n : Nat) :
+    ∫ t in (0 : Real)..1,
+      Q3.bernoulli14Diff ((n : Real) + t) *
+        step33Shift16Z0KernelPow15 ((n : Real) + t)
+      =
+    ∫ t in (0 : Real)..(1 / 2 : Real),
+      Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file hole/axiom/unsafe
+scan was clean.  A local unnecessary-`simpa` warning in the same file was also
+removed by replacing it with `exact`.
+
+Boundary: this does not prove the cell-to-pair integral bridge, weighted cell
+nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
+RH.
+
 ## Execution Update (2026-06-20) -- B14 primitive derivative support
 
 Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.

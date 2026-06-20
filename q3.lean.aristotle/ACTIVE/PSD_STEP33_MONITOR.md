@@ -28562,6 +28562,79 @@ comparison, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Status -- B14 cell pointwise crosswalk checked
+
+New checked support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Bernoulli14Diff_nat_add_real_eq
+Q3.PSDpd.Step33.step33Shift16Bernoulli14Diff_nat_add_one_sub_real_eq
+```
+
+Statements:
+
+```lean
+theorem step33Shift16Bernoulli14Diff_nat_add_real_eq
+    (n : Nat) {t : Real} (ht0 : 0 <= t) (ht1 : t <= 1) :
+    Q3.bernoulli14Diff ((n : Real) + t) = Q3.bernoulli14 t
+
+theorem step33Shift16Bernoulli14Diff_nat_add_one_sub_real_eq
+    (n : Nat) {t : Real} (ht0 : 0 <= t) (ht1 : t <= 1) :
+    Q3.bernoulli14Diff ((n : Real) + 1 - t) = Q3.bernoulli14 t
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_CELL_POINTWISE_CROSSWALK_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP
+```
+
+Meaning: Lean now has the exact cell-level Bernoulli normalization needed to
+rewrite the two halves of an integer cell into the same local `bernoulli14 t`
+factor.  This prepares the integral cell-to-pair bridge, but it does not yet
+prove the interval substitution/splitting theorem, the norm/kernel crosswalk,
+or the `Set.Ioi` weighted nonnegativity premise.
+
+Computer Use / Pro status: used.  The selected in-app Pro/Louise ChatGPT tab
+was asked for a route review on `STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP`.
+The advice favored the z0-specific cell integral bridge and warned against
+generic `0 < z.re`.  This is advisory only, not proof evidence.
+
+Next patch-sized theorem:
+
+```lean
+theorem step33Shift16B14KernelCellIntegral_eq_halfCellPair
+    (n : Nat) :
+    ∫ t in (0 : Real)..1,
+      Q3.bernoulli14Diff ((n : Real) + t) *
+        step33Shift16Z0KernelPow15 ((n : Real) + t)
+      =
+    ∫ t in (0 : Real)..(1 / 2 : Real),
+      Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+was clean.
+
+Boundary: this does not prove the cell-to-pair integral bridge, weighted cell
+nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
+RH.
+
 ## 2026-06-20 Current EOF Status -- B14 half-cell pair integral checked
 
 New checked support fact:

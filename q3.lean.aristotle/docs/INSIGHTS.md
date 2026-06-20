@@ -35094,6 +35094,37 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
   RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- B14CellPointwiseCrosswalk
+
+- Target: reduce `STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP` by removing the
+  pointwise Bernoulli normalization issue before attempting the interval
+  split/substitution bridge.
+- Computer Use / Proshka was used for advisory route review.  The useful
+  route signal was: stay z0-specific for this node, do not claim a generic
+  weighted theorem from only `0 < z.re`, and target the cell integral bridge.
+- Added checked Lean facts:
+  `Q3.PSDpd.Step33.step33Shift16Bernoulli14Diff_nat_add_real_eq` and
+  `Q3.PSDpd.Step33.step33Shift16Bernoulli14Diff_nat_add_one_sub_real_eq`.
+- Meaning: for `0 <= t <= 1`, Lean rewrites both
+  `Q3.bernoulli14Diff ((n : Real) + t)` and
+  `Q3.bernoulli14Diff ((n : Real) + 1 - t)` to `Q3.bernoulli14 t`.
+- Closed preparatory gap:
+  `STEP33_M6_B14_CELL_POINTWISE_CROSSWALK_GAP`.
+- Active exact gap:
+  `STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP`.
+- Next patch-sized theorem:
+  `step33Shift16B14KernelCellIntegral_eq_halfCellPair`, identifying the
+  kernel-unit cell integral on `0..1` with the checked half-cell pair integral
+  on `0..1/2`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  and the touched Lean-file forbidden-token scan.
+- Boundary: this does not prove the cell-to-pair integral bridge, weighted
+  cell nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
+  RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- B14PrimitiveDerivative
 
 - Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by closing the

@@ -252,6 +252,28 @@ theorem step33Shift16DigammaPoint_half_cell_normSq_le_reflect
   have ht0' : 0 <= t := ht0
   nlinarith [ht0', hth, hn0]
 
+theorem step33Shift16Bernoulli14Diff_nat_add_real_eq
+    (n : Nat) {t : Real} (ht0 : 0 <= t) (ht1 : t <= 1) :
+    Q3.bernoulli14Diff ((n : Real) + t) = Q3.bernoulli14 t := by
+  have hx : ((n : Real) + t) ∈ Set.Icc (n : Real) (n + 1 : Real) := by
+    constructor <;> nlinarith [ht0, ht1]
+  have hcell := Q3.bernoulli14Diff_eq_cell_on_Icc n hx
+  rw [hcell]
+  unfold Q3.bernoulli14
+  ring_nf
+
+theorem step33Shift16Bernoulli14Diff_nat_add_one_sub_real_eq
+    (n : Nat) {t : Real} (ht0 : 0 <= t) (ht1 : t <= 1) :
+    Q3.bernoulli14Diff ((n : Real) + 1 - t) = Q3.bernoulli14 t := by
+  have h :=
+    step33Shift16Bernoulli14Diff_nat_add_real_eq n
+      (t := 1 - t) (by nlinarith [ht1]) (by nlinarith [ht0])
+  calc
+    Q3.bernoulli14Diff ((n : Real) + 1 - t)
+        = Q3.bernoulli14Diff ((n : Real) + (1 - t)) := by ring_nf
+    _ = Q3.bernoulli14 (1 - t) := h
+    _ = Q3.bernoulli14 t := Q3.bernoulli14_one_sub t
+
 def step33Shift16Z0KernelSq (x : Real) : Real :=
   (x + (129 : Real) / 4) ^ 2 + ((1 : Real) / 40) ^ 2
 
@@ -520,9 +542,8 @@ theorem step33Shift16B14HalfCellPairIntegral_nonneg (n : Nat) :
     exact (hcont_u.mul hcont_v').intervalIntegrable _ _
   have hzero_int : IntervalIntegrable (fun _ : Real => (0 : Real)) volume
       (0 : Real) (1 / 2 : Real) := by
-    simpa using
-      (intervalIntegrable_const (μ := volume) (a := (0 : Real)) (b := (1 / 2 : Real))
-        (c := (0 : Real)))
+    exact intervalIntegrable_const (μ := volume) (a := (0 : Real))
+      (b := (1 / 2 : Real)) (c := (0 : Real))
   have hpoint_nonpos :
       ∀ x ∈ Set.Icc (0 : Real) (1 / 2 : Real), u x * v' x <= 0 := by
     intro x hx

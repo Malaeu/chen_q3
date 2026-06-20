@@ -15724,6 +15724,64 @@ the half-cell rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Addendum -- B14 cell pointwise crosswalk checked
+
+Checked support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Bernoulli14Diff_nat_add_real_eq
+Q3.PSDpd.Step33.step33Shift16Bernoulli14Diff_nat_add_one_sub_real_eq
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_CELL_POINTWISE_CROSSWALK_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP
+```
+
+These theorems identify `bernoulli14Diff` on the forward and reflected halves
+of an integer cell with the local polynomial `Q3.bernoulli14 t`.  They are the
+pointwise algebraic input for the next cell-to-half-cell integral bridge.
+
+Next patch-sized theorem:
+
+```lean
+theorem step33Shift16B14KernelCellIntegral_eq_halfCellPair
+    (n : Nat) :
+    ∫ t in (0 : Real)..1,
+      Q3.bernoulli14Diff ((n : Real) + t) *
+        step33Shift16Z0KernelPow15 ((n : Real) + t)
+      =
+    ∫ t in (0 : Real)..(1 / 2 : Real),
+      Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t
+```
+
+Computer Use / Browser status: used for a Pro/Louise route review.  The advice
+preferred the z0-specific integral bridge and rejected generic `0 < z.re` as
+too weak.  Treat this only as route advice; Lean-checked local facts remain
+the proof source.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Result: Lean and `q3_check` passed; the forbidden-token scan was clean.
+
+Boundary remains unchanged: this does not prove the cell-to-pair integral
+bridge, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Current EOF Addendum -- B14 primitive derivative checked
 
 Checked new support fact:
