@@ -38,7 +38,7 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_segmented_residual_deriv_interval_payload.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v4"
+SCHEMA = "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v5"
 ROUTE_ID = "STEP33_A1_SUB0_SEGMENTED_RESIDUAL_DERIV"
 FAILURE_CODE = "STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL"
 CLOSED_FORM_FAILURE_CODE = "STEP33_A1_SUB0_CLOSED_FORM_RESIDUAL_INTERVAL_BOUNDS_MISSING"
@@ -233,6 +233,7 @@ def build_report(
             "proofGradeFullTaylorResidualBoundsPresent": False,
             "fullTaylorPolynomialDerivativeCrosswalkPresent": True,
             "fullTaylorResidualDerivativeCrosswalkPresent": True,
+            "fullTaylorDirectReceiverPresent": True,
         },
         "proofSafeClosedFields": 0,
         "outLeanWritten": False,
@@ -275,6 +276,30 @@ def build_report(
             "sub0FullTaylorResidualDerivativeCrosswalk": (
                 "primaryFiniteRow0Parent0Split100Sub0_"
                 "fullTaylor_residual_deriv_eq_closedForm"
+            ),
+            "sub0FullTaylorRawCenterCoeffAbs": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "fullTaylor_hRawCenterCoeffAbs_of_checked_shift16_m6_"
+                "main_norm_closedLogPi"
+            ),
+            "sub0FullTaylorDirectNormProofDataWrapper": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "fullTaylor_cellSlopeExactIntegralProofData_of_checked_"
+                "hRawCenterCoeffAbs_and_deriv_norm_bound"
+            ),
+            "sub0LiveProofDataWrapper": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "fullTaylor_cellSlopeExactIntegralProofData_of_checked_"
+                "hRawCenterCoeffAbs_and_residual_bounds"
+            ),
+            "sub0FullTaylorDirectValidityBridge": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "fullTaylor_direct_segment_cert_valid_of_residual_bounds"
+            ),
+            "sub0FullTaylorPreferredProofDataWrapper": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "fullTaylor_cellSlopeExactIntegralProofData_of_checked_"
+                "hRawCenterCoeffAbs_and_direct_segment_interval_cert"
             ),
             "sub0ConcreteSegmentData": (
                 "primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert"
@@ -336,6 +361,11 @@ def build_report(
                 "raw derivative minus the generated degree-15 derivative model"
             ),
             (
+                "checked full Taylor receiver: the proof-grade interval feeds "
+                "ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData "
+                "for primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert"
+            ),
+            (
                 "current-adapter closed-form bridge is checked but is not the sampled "
                 "full Taylor residual source"
             ),
@@ -346,6 +376,7 @@ def build_report(
             "not Lean proof data",
             "do not trust sampled direct-derivative overlay as proof",
             "do not spend bounds for RawCenterCoeffOnlyCert as bounds for the full Taylor candidate",
+            "the live proof-data wrapper is the full Taylor wrapper, not the center-only wrapper",
             "do not spend independent raw/poly boxes unless the residual interval itself fits",
             "do not emit generated Lean payload until all segment obligations close",
             "the spendable field is the direct same-unit residual derivative interval",
@@ -363,6 +394,7 @@ def build_report(
                 "blocked_for_current_adapter_closed_by_full_taylor_cert"
             ),
             "fullTaylorResidualCrosswalkStatus": "checked_in_lean",
+            "fullTaylorDirectReceiverStatus": "checked_in_lean",
         },
         "sourceDefinitionHashes": {
             CHECKER_FILE: file_hash(ROOT / CHECKER_FILE),
@@ -428,6 +460,7 @@ def render_md(report: dict[str, Any]) -> str:
             f"- proofGradeFullTaylorResidualBoundsPresent: `{arithmetic['proofGradeFullTaylorResidualBoundsPresent']}`",
             f"- fullTaylorPolynomialDerivativeCrosswalkPresent: `{arithmetic['fullTaylorPolynomialDerivativeCrosswalkPresent']}`",
             f"- fullTaylorResidualDerivativeCrosswalkPresent: `{arithmetic['fullTaylorResidualDerivativeCrosswalkPresent']}`",
+            f"- fullTaylorDirectReceiverPresent: `{arithmetic['fullTaylorDirectReceiverPresent']}`",
         ]
     )
     lines.extend(["", "## Rational Proof Obligations", ""])
@@ -448,15 +481,18 @@ def render_md(report: dict[str, Any]) -> str:
             f"- interpolation first danger point: `{report['sourceStatus']['interpolationFirstDangerPoint']}`",
             f"- direct overlay status: `{report['sourceStatus']['directOverlayStatus']}`",
             f"- full Taylor residual crosswalk: `{report['sourceStatus']['fullTaylorResidualCrosswalkStatus']}`",
+            f"- full Taylor direct receiver: `{report['sourceStatus']['fullTaylorDirectReceiverStatus']}`",
             "",
             "The diagnostic direct-overlay candidate now supplies a one-segment",
             "candidate whose exact rational coverage and budget arithmetic pass.",
-            "The full Taylor residual derivative crosswalk is now checked in Lean.",
+            "The full Taylor residual derivative crosswalk and direct receiver are",
+            "now checked in Lean.",
             "The candidate remains non-spendable because the proof-grade interval",
             "bound for that full Taylor residual expression is still missing; only",
             "a proof-grade `ResidualDerivativeSegmentIntervalCert.DirectValid`",
-            "witness can close the preferred receiver.  The richer `Valid` witness",
-            "remains available only when a separate raw/poly ledger is also proved.",
+            "witness for `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`",
+            "can close the preferred receiver.  The richer `Valid` witness remains",
+            "available only when a separate raw/poly ledger is also proved.",
             "",
         ]
     )

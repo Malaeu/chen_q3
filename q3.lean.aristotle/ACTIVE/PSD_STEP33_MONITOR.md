@@ -30315,3 +30315,40 @@ Boundary: the full Taylor residual crosswalk is checked, but there is still no
 proof-grade interval certificate, no generated Lean payload, no
 first-subchunk residual-derivative norm certificate, and Step33A.1-A remains
 open.
+
+## 2026-06-20 Current EOF Addendum -- full Taylor direct receiver
+
+The route-A residual target now also has a checked full Taylor receiver.  The
+next proof-grade interval certificate will feed:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds
+```
+
+This consumes `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`, not
+the minimal raw-center-only adapter.  The raw-center coefficient bound was
+retyped for the full Taylor cert:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi
+```
+
+Current generator status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v5
+status = fail_closed_missing_full_taylor_residual_interval_proof
+fullTaylorDirectReceiverPresent = true
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+Current first live gap remains:
+
+```text
+STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING
+```
+
+Boundary: receiver plumbing is checked, but no interval certificate has been
+proved and Step33A.1-A remains open.

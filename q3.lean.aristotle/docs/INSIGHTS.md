@@ -36372,3 +36372,32 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no proof-grade interval certificate, no generated Lean payload, no
   first-subchunk residual-derivative norm certificate, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- FullTaylorDirectReceiver
+
+- Ran the current blocker search pass for
+  `STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING`.
+  Local `q3_docs` search did not find an existing proof-producing interval
+  certificate for the full Taylor residual expression.  External search found
+  only generic Mathlib Taylor/Pi-bound surfaces and was not used as proof
+  evidence.
+- Added the full Taylor direct receiver surface:
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi`,
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound`,
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_norm_bound_of_direct_segment_cert`,
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds`.
+- The next payload now feeds
+  `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData`
+  for `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`, not the
+  center-only adapter.
+- Updated the segmented generator to schema
+  `q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v5`;
+  it records `fullTaylorDirectReceiverPresent = true` while keeping
+  `proofSafeClosedFields = 0` and `outLeanWritten = false`.
+- Current first live blocker remains
+  `STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING`.
+- Boundary: no proof-grade interval certificate, no generated Lean payload, no
+  first-subchunk residual-derivative norm certificate, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

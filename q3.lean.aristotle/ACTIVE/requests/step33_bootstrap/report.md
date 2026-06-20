@@ -56985,6 +56985,61 @@ rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_Center
 git diff --check
 ```
 
+## Execution Update (2026-06-20) -- full Taylor direct receiver
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk route-A residual-derivative norm
+lane.
+
+Added the checked full Taylor receiver surface in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_hRawCenterCoeffAbs_and_deriv_norm_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_norm_bound_of_direct_segment_cert
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds
+```
+
+Result: the next proof-grade interval payload now feeds
+`ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData`
+for `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`, not for the
+minimal center-only adapter.
+
+The segmented generator now emits schema
+`q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v5` with:
+
+```text
+status = fail_closed_missing_full_taylor_residual_interval_proof
+fullTaylorDirectReceiverPresent = true
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+Current exact blocker remains:
+
+```text
+STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING
+```
+
+Boundary: this closes the receiver mismatch only.  It does not prove the
+interval bound, does not make the sampled direct overlay proof-grade, does not
+emit a generated Lean payload, and does not close Step33A.1-A, Step33, Step34,
+or RH.
+
+Validation:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
 Result: dependency rebuild, Lean, `q3_check`, forbidden-token scan, and
 whitespace check passed.
 

@@ -4,7 +4,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 
 ## Summary
 
-- schema: `q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v4`
+- schema: `q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v5`
 - route: `STEP33_A1_SUB0_SEGMENTED_RESIDUAL_DERIV`
 - status: `fail_closed_missing_full_taylor_residual_interval_proof`
 - proof mode: `exact_rational_same_expression_interval`
@@ -33,6 +33,11 @@ Fail-closed skeleton.  This is not Lean proof data.
 - sub0FullTaylorCert: `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`
 - sub0FullTaylorPolynomialDerivativeCrosswalk: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel`
 - sub0FullTaylorResidualDerivativeCrosswalk: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm`
+- sub0FullTaylorRawCenterCoeffAbs: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi`
+- sub0FullTaylorDirectNormProofDataWrapper: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound`
+- sub0LiveProofDataWrapper: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds`
+- sub0FullTaylorDirectValidityBridge: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds`
+- sub0FullTaylorPreferredProofDataWrapper: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert`
 - sub0ConcreteSegmentData: `primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert`
 - sub0ClosedFormValidityBridge: `primaryFiniteRow0Parent0Split100Sub0_direct_segment_cert_valid_of_closedForm_residual_bounds`
 - sub0ClosedFormProofDataWrapper: `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_closedForm_residual_bounds`
@@ -73,6 +78,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 - proofGradeFullTaylorResidualBoundsPresent: `False`
 - fullTaylorPolynomialDerivativeCrosswalkPresent: `True`
 - fullTaylorResidualDerivativeCrosswalkPresent: `True`
+- fullTaylorDirectReceiverPresent: `True`
 
 ## Rational Proof Obligations
 
@@ -83,6 +89,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 - for every segment: -1866608532757/500000000000000000000000000000 <= residualLower (candidate passes)
 - for every segment: residualUpper <= 1866608532757/500000000000000000000000000000 (candidate passes)
 - checked full Taylor bridge: deriv residual equals the closed-form raw derivative minus the generated degree-15 derivative model
+- checked full Taylor receiver: the proof-grade interval feeds ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData for primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert
 - current-adapter closed-form bridge is checked but is not the sampled full Taylor residual source
 - optional ledger: proof-grade raw derivative enclosure per segment
 - optional ledger: proof-grade polynomial derivative enclosure per segment
@@ -99,6 +106,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 - not Lean proof data
 - do not trust sampled direct-derivative overlay as proof
 - do not spend bounds for RawCenterCoeffOnlyCert as bounds for the full Taylor candidate
+- the live proof-data wrapper is the full Taylor wrapper, not the center-only wrapper
 - do not spend independent raw/poly boxes unless the residual interval itself fits
 - do not emit generated Lean payload until all segment obligations close
 - the spendable field is the direct same-unit residual derivative interval
@@ -109,12 +117,15 @@ Fail-closed skeleton.  This is not Lean proof data.
 - interpolation first danger point: `STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL`
 - direct overlay status: `direct_derivative_overlay_seeded_missing_cell_slope_norm_proofs`
 - full Taylor residual crosswalk: `checked_in_lean`
+- full Taylor direct receiver: `checked_in_lean`
 
 The diagnostic direct-overlay candidate now supplies a one-segment
 candidate whose exact rational coverage and budget arithmetic pass.
-The full Taylor residual derivative crosswalk is now checked in Lean.
+The full Taylor residual derivative crosswalk and direct receiver are
+now checked in Lean.
 The candidate remains non-spendable because the proof-grade interval
 bound for that full Taylor residual expression is still missing; only
 a proof-grade `ResidualDerivativeSegmentIntervalCert.DirectValid`
-witness can close the preferred receiver.  The richer `Valid` witness
-remains available only when a separate raw/poly ledger is also proved.
+witness for `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`
+can close the preferred receiver.  The richer `Valid` witness remains
+available only when a separate raw/poly ledger is also proved.

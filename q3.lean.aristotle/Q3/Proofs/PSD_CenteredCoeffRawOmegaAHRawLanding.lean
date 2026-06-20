@@ -2594,6 +2594,130 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_chec
     (primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert
       data hValid)
 
+/-- The checked raw-center coefficient bound, retyped for the full Taylor
+route-A certificate.
+
+The coefficient in degree `0` agrees with the minimal raw-center adapter, but
+the rest of the certificate is the generated degree-16 Taylor candidate. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_fullTaylor_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi :
+    |Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+        11 ((3 : Real) / 10) 0 ((1 : Real) / 20) -
+      (primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.coeff 0 : Real)| <=
+        ((64509243331 : Real) / 500000000000000000000000000000) := by
+  simpa [primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert,
+    primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff] using
+    primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi
+
+/-- Full Taylor version of the first-subchunk exact-integral proof-data
+receiver.
+
+This is the route-A receiver: the residual derivative norm bound is for the
+full degree-16 Taylor certificate, not the minimal raw-center-only adapter. -/
+def primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_hRawCenterCoeffAbs_and_deriv_norm_bound
+    (hRawCenterCoeffAbs :
+      |Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+          11 ((3 : Real) / 10) 0 ((1 : Real) / 20) -
+        (primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.coeff 0 : Real)| <=
+          ((64509243331 : Real) / 500000000000000000000000000000))
+    (hResidualDerivBoundOnCell :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖deriv primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual eta‖ <=
+          ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert := by
+  let derivCert :
+      ResidualDerivativeDirectNormCert
+        primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert :=
+    { cellL := (0 : Real)
+      cellU := ((1 : Real) / 10)
+      derivSlope :=
+        ((1866608532757 : Real) / 500000000000000000000000000000) }
+  apply
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_raw_center_coeff_abs_direct_norm_cert_full_cell
+      (cert := primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert)
+      (derivCert := derivCert)
+      (sampleRadius :=
+        ((64509243331 : Real) / 500000000000000000000000000000))
+      (mesh := ((1 : Real) / 20))
+      (anchor := ((1 : Real) / 20))
+  · intro eta heta
+    simpa [derivCert] using hResidualDerivBoundOnCell eta heta
+  · rfl
+  · rfl
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert]
+  · norm_num
+  · norm_num
+  · norm_num
+  · simpa using hRawCenterCoeffAbs
+  · exact
+      primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual_differentiableOn_Icc
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert, derivCert]
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert]
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert]
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert]
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert]
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert]
+  · simpa [CenteredCoeffPayloadImport.primaryK11Ell,
+      CenteredCoeffPayloadImport.primaryK11EllRat] using
+      (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAIntegrand_integrableOn_Ioc_zero
+        ((1 : Real) / 10) 0)
+
+/-- Full Taylor exact-integral proof data after the checked raw-center source
+has been closed. -/
+def primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
+    (hResidualDerivBoundOnCell :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖deriv primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual eta‖ <=
+          ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert :=
+  primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_hRawCenterCoeffAbs_and_deriv_norm_bound
+    primaryFiniteRow0Parent0Split100Sub0_fullTaylor_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi
+    hResidualDerivBoundOnCell
+
+/-- Full Taylor direct residual-derivative norm bound extracted from a direct
+segmented residual interval certificate. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_norm_bound_of_direct_segment_cert
+    (data : ResidualDerivativeSegmentIntervalCert)
+    (hValid :
+      ResidualDerivativeSegmentIntervalCert.DirectValid
+        data
+        (fun eta : Real =>
+          deriv
+            primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual
+            eta)
+        (0 : Real) ((1 : Real) / 10)
+        ((1866608532757 : Real) /
+          500000000000000000000000000000)) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖deriv
+          primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual
+          eta‖ <=
+        ((1866608532757 : Real) /
+          500000000000000000000000000000) := by
+  simpa using
+    (ResidualDerivativeSegmentIntervalCert.DirectValid.residual_norm_le hValid)
+
+/-- Full Taylor exact-integral proof-data receiver fed by a direct segmented
+residual-derivative interval certificate. -/
+def primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert
+    (data : ResidualDerivativeSegmentIntervalCert)
+    (hValid :
+      ResidualDerivativeSegmentIntervalCert.DirectValid
+        data
+        (fun eta : Real =>
+          deriv
+            primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual
+            eta)
+        (0 : Real) ((1 : Real) / 10)
+        ((1866608532757 : Real) /
+          500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert :=
+  primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
+    (primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_norm_bound_of_direct_segment_cert
+      data hValid)
+
 /-- Concrete one-segment certificate data for the active first subchunk.
 
 The rational interval endpoints are the current sampled candidate.  This datum
@@ -2681,6 +2805,82 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_chec
   primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert
     primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert
     (primaryFiniteRow0Parent0Split100Sub0_direct_segment_cert_valid_of_closedForm_residual_bounds
+      hBounds)
+
+/-- Direct-validity bridge for the concrete one-segment certificate from the
+checked full Taylor residual derivative expression.
+
+This is the current live route-A consumer.  The remaining payload is exactly
+the proof-grade interval bound on the full Taylor residual expression. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds
+    (hBounds :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ((-94119513411 : Real) / 500000000000000000000000000000) <=
+            primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+              rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+                primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta ∧
+          primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+              rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+                primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta <=
+            ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert.DirectValid
+      (fun eta : Real =>
+        deriv primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual eta)
+      (0 : Real) ((1 : Real) / 10)
+      ((1866608532757 : Real) /
+        500000000000000000000000000000) := by
+  change
+    (ResidualDerivativeSegmentIntervalCert.single
+      (0 : Rat)
+      ((1 : Rat) / 10)
+      (0 : Rat)
+      (0 : Rat)
+      (0 : Rat)
+      (0 : Rat)
+      ((-94119513411 : Rat) / 500000000000000000000000000000)
+      ((1866608532757 : Rat) / 500000000000000000000000000000)).DirectValid
+        (fun eta : Real =>
+          deriv primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual eta)
+        (0 : Real) ((1 : Real) / 10)
+        ((1866608532757 : Real) /
+          500000000000000000000000000000)
+  apply ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds
+  · norm_num
+  · norm_num
+  · norm_num
+  · norm_num
+  · intro eta heta
+    have heta' : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10) := by
+      simpa using heta
+    have hEq :=
+      primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm
+        eta
+    have h := hBounds eta heta'
+    constructor
+    · rw [hEq]
+      simpa using h.1
+    · rw [hEq]
+      simpa using h.2
+  · norm_num
+
+/-- Full Taylor first-subchunk exact-integral proof data from a proof-grade
+interval bound on the route-A residual expression. -/
+def primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds
+    (hBounds :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ((-94119513411 : Real) / 500000000000000000000000000000) <=
+            primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+              rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+                primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta ∧
+          primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+              rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+                primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta <=
+            ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert :=
+  primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert
+    primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert
+    (primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds
       hBounds)
 
 /-- First-subchunk interpolation landing wrapper after the checked raw-center

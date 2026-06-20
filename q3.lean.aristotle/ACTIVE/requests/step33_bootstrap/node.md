@@ -17292,6 +17292,42 @@ Boundary: this closes only the full Taylor derivative/residual crosswalk.  It
 does not provide proof-grade interval bounds, emit a Lean payload, close
 Step33A.1-A, or close Step33/Step34/RH.
 
+## 2026-06-20 Current EOF Addendum -- full Taylor direct receiver
+
+The route-A receiver is now aligned with the full Taylor certificate.  Use
+these checked interfaces for the next payload:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds
+```
+
+The segmented generator now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v5
+fullTaylorDirectReceiverPresent = true
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+The only missing payload remains the proof-grade interval bound for:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta
+  - rawOmegaATaylorPolynomial 15 (1/20)
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta
+```
+
+on `Set.Icc 0 (1/10)`.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING
+```
+
 The direct-overlay candidate remains non-spendable until this proof is present.
 
 ## 2026-06-20 Current EOF Addendum -- direct residual segment receiver

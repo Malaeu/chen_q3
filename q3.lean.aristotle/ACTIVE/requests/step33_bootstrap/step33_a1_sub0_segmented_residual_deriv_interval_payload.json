@@ -14,6 +14,7 @@
       "rightEndpoint": "1/10",
       "segmentNonemptyPassedExactRational": true
     },
+    "fullTaylorDirectReceiverPresent": true,
     "fullTaylorPolynomialDerivativeCrosswalkPresent": true,
     "fullTaylorResidualDerivativeCrosswalkPresent": true,
     "proofGradeClosedFormResidualBoundsPresent": false,
@@ -47,6 +48,7 @@
     "not Lean proof data",
     "do not trust sampled direct-derivative overlay as proof",
     "do not spend bounds for RawCenterCoeffOnlyCert as bounds for the full Taylor candidate",
+    "the live proof-data wrapper is the full Taylor wrapper, not the center-only wrapper",
     "do not spend independent raw/poly boxes unless the residual interval itself fits",
     "do not emit generated Lean payload until all segment obligations close",
     "the spendable field is the direct same-unit residual derivative interval"
@@ -68,9 +70,14 @@
     "sub0DerivmodelAdapterMismatchFence": "primaryFiniteRow0Parent0Split100Sub0_derivmodel_coeff_zero_mismatch_current_adapter_coeff",
     "sub0FullTaylorCert": "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert",
     "sub0FullTaylorCoeff": "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff",
+    "sub0FullTaylorDirectNormProofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound",
+    "sub0FullTaylorDirectValidityBridge": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds",
     "sub0FullTaylorPolynomialDerivativeCrosswalk": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel",
+    "sub0FullTaylorPreferredProofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert",
+    "sub0FullTaylorRawCenterCoeffAbs": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi",
     "sub0FullTaylorResidualDerivativeCrosswalk": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm",
     "sub0LedgerProofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_segment_interval_cert",
+    "sub0LiveProofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds",
     "sub0PreferredNormWrapper": "primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert",
     "sub0PreferredProofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert"
   },
@@ -85,12 +92,13 @@
     "for every segment: -1866608532757/500000000000000000000000000000 <= residualLower (candidate passes)",
     "for every segment: residualUpper <= 1866608532757/500000000000000000000000000000 (candidate passes)",
     "checked full Taylor bridge: deriv residual equals the closed-form raw derivative minus the generated degree-15 derivative model",
+    "checked full Taylor receiver: the proof-grade interval feeds ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData for primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert",
     "current-adapter closed-form bridge is checked but is not the sampled full Taylor residual source",
     "optional ledger: proof-grade raw derivative enclosure per segment",
     "optional ledger: proof-grade polynomial derivative enclosure per segment"
   ],
   "routeId": "STEP33_A1_SUB0_SEGMENTED_RESIDUAL_DERIV",
-  "schema": "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v4",
+  "schema": "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v5",
   "segmentCount": 1,
   "segmentNonemptyPassed": true,
   "segments": [
@@ -111,7 +119,7 @@
   ],
   "sourceDefinitionHashes": {
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "3de3009753a52710",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "1575861200b41a24"
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694"
   },
   "sourceStatus": {
     "derivmodelAdapterPolynomialCrosswalkStatus": "blocked_for_current_adapter_closed_by_full_taylor_cert",
@@ -138,6 +146,7 @@
     "directOverlayExists": true,
     "directOverlayPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30.json",
     "directOverlayStatus": "direct_derivative_overlay_seeded_missing_cell_slope_norm_proofs",
+    "fullTaylorDirectReceiverStatus": "checked_in_lean",
     "fullTaylorResidualCrosswalkStatus": "checked_in_lean",
     "interpolationFirstDangerPoint": "STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL",
     "interpolationPayloadExists": true,
