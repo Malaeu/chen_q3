@@ -483,6 +483,32 @@ def step33Shift16DigammaM6Main : Complex :=
     - ((1 : Complex) / (132 : Complex)) * (z ^ 10)⁻¹
     + (((691 : Complex) / (32760 : Complex)) * (z ^ 12)⁻¹)
 
+theorem step33Shift16DigammaM6Main_eq_digammaM6AsymptoticMain :
+    step33Shift16DigammaM6Main =
+      Q3.digammaM6AsymptoticMain step33Shift16DigammaPoint := by
+  rfl
+
+theorem step33_shift16_digamma_m6_main_component_abs_of_asymptotic_main_component_abs
+    (hMainRe :
+      |(Q3.digamma step33Shift16DigammaPoint -
+          Q3.digammaM6AsymptoticMain step33Shift16DigammaPoint).re| <=
+        step33Shift16DigammaM6MainComponentRadius)
+    (hMainIm :
+      |(Q3.digamma step33Shift16DigammaPoint -
+          Q3.digammaM6AsymptoticMain step33Shift16DigammaPoint).im| <=
+        step33Shift16DigammaM6MainComponentRadius) :
+    |(Q3.digamma step33Shift16DigammaPoint -
+        step33Shift16DigammaM6Main).re| <=
+        step33Shift16DigammaM6MainComponentRadius ∧
+      |(Q3.digamma step33Shift16DigammaPoint -
+        step33Shift16DigammaM6Main).im| <=
+        step33Shift16DigammaM6MainComponentRadius := by
+  constructor
+  · simpa [step33Shift16DigammaM6Main_eq_digammaM6AsymptoticMain] using
+      hMainRe
+  · simpa [step33Shift16DigammaM6Main_eq_digammaM6AsymptoticMain] using
+      hMainIm
+
 def step33Shift16DigammaM6AlgebraicPart : Complex :=
   let z : Complex := step33Shift16DigammaPoint
   (0 : Complex)

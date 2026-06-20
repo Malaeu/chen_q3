@@ -33571,3 +33571,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   certificate into exact `.re` and `.im` component bounds after unfolding
   `digammaM6AsymptoticMain`, with rational endpoint normalization and coercions
   `Q -> R -> C`.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6AsymptoticMainComponentBridgeChecked
+
+- Added Lean-checked normalization bridge
+  `Q3.PSDpd.Step33.step33Shift16DigammaM6Main_eq_digammaM6AsymptoticMain`.
+- Added checked component adapter
+  `Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_component_abs_of_asymptotic_main_component_abs`
+  from public `Q3.digammaM6AsymptoticMain step33Shift16DigammaPoint`
+  component bounds into the local Step33 `step33Shift16DigammaM6Main`
+  component receiver.
+- Added endpoint and hRaw closed-log-pi receivers consuming the public
+  asymptotic-main component statement:
+  `primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_digamma_m6_asymptotic_main_component_abs_closedLogPi`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_digamma_m6_asymptotic_main_component_abs_closedLogPi`.
+- Validation passed with `lake build` on the support module, `lake env lean` on
+  the two downstream landing modules, `bash scripts/q3_check.sh` on all three
+  touched Lean files, a hole-marker scan, and `git diff --check`.
+- Boundary: this does not prove the no-premise series/source theorem.  It
+  removes the naming/normalization gap so a future proof-grade component source
+  can feed endpoint/hRaw directly.

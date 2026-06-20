@@ -694,6 +694,28 @@ theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_ma
       primaryFiniteRow0Parent0Split100Sub0LogPiLower_le
       primaryFiniteRow0Parent0Split100Sub0LogPi_le_upper
 
+theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_digamma_m6_asymptotic_main_component_abs_closedLogPi
+    (hMainRe :
+      |(Q3.digamma Q3.PSDpd.Step33.step33Shift16DigammaPoint -
+          Q3.digammaM6AsymptoticMain
+            Q3.PSDpd.Step33.step33Shift16DigammaPoint).re| <=
+        Q3.PSDpd.Step33.step33Shift16DigammaM6MainComponentRadius)
+    (hMainIm :
+      |(Q3.digamma Q3.PSDpd.Step33.step33Shift16DigammaPoint -
+          Q3.digammaM6AsymptoticMain
+            Q3.PSDpd.Step33.step33Shift16DigammaPoint).im| <=
+        Q3.PSDpd.Step33.step33Shift16DigammaM6MainComponentRadius) :
+    |Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+        11 ((3 : Real) / 10) 0 ((1 : Real) / 20) -
+      ((primaryFiniteRow0Parent0Split100Sub0RawCenterCoeff0 : Rat) : Real)| <=
+        ((64509243331 : Real) / 500000000000000000000000000000) := by
+  have hComp :=
+    Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_component_abs_of_asymptotic_main_component_abs
+      hMainRe hMainIm
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_main_component_abs_closedLogPi
+      hComp.1 hComp.2
+
 /-- First-subchunk `hRawCenterCoeffAbs` bridge for the live shift16/N16
 rectangular route.
 

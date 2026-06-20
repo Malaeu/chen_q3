@@ -52646,3 +52646,69 @@ Convert the existing complex rectangle certificate into exact `.re` and `.im`
 component bounds after unfolding `digammaM6AsymptoticMain`, including rational
 interval endpoint normalization and coercions Q -> R -> C.
 ```
+
+## 2026-06-20 Execution update -- M6 asymptotic-main component bridge checked
+
+Implemented the smallest Lean patch following the Proshka/Louise `CHOICE: C`
+direction, without claiming the missing no-premise series/source theorem.
+
+New checked support names:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16DigammaM6Main_eq_digammaM6AsymptoticMain
+
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_component_abs_of_asymptotic_main_component_abs
+```
+
+New checked endpoint/hRaw receivers:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_digamma_m6_asymptotic_main_component_abs_closedLogPi
+
+primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_digamma_m6_asymptotic_main_component_abs_closedLogPi
+```
+
+These receivers consume component bounds stated with the public repository
+normalization:
+
+```lean
+Q3.digamma Q3.PSDpd.Step33.step33Shift16DigammaPoint -
+  Q3.digammaM6AsymptoticMain
+    Q3.PSDpd.Step33.step33Shift16DigammaPoint
+```
+
+and route them into the existing local Step33 endpoint/hRaw component surfaces.
+
+Validation:
+
+```text
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" <touched Lean files>
+git diff --check
+```
+
+Result:
+
+```text
+support build ok
+downstream Lean ok
+q3_check ok
+no forbidden markers in touched Lean files
+git diff --check clean
+```
+
+Boundary:
+
+```text
+This is not a proof of the no-premise source theorem
+  step33_shift16_digamma_m6_component_defect_bounds_of_series.
+It closes only the naming/normalization bridge from
+  Q3.digammaM6AsymptoticMain
+to the existing Step33 endpoint/hRaw component receivers.
+```
