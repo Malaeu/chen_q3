@@ -15782,6 +15782,61 @@ bridge, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Addendum -- B14 kernel-cell bridge checked
+
+Checked support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14KernelCellIntegral_eq_halfCellPair
+Q3.PSDpd.Step33.step33Shift16B14KernelCellIntegral_nonneg
+```
+
+Closed preparatory gaps:
+
+```text
+STEP33_M6_B14_KERNEL_CELL_PAIR_BRIDGE_GAP
+STEP33_M6_B14_KERNEL_CELL_NONNEG_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_KERNEL_CELL_TO_NORM_IOI_GAP
+```
+
+The new bridge splits the parameter interval `0..1` at `1/2`, reflects the
+right half by `intervalIntegral.integral_comp_sub_left`, folds the two halves
+into `step33Shift16Z0KernelPow15Pair`, and imports
+`step33Shift16B14HalfCellPairIntegral_nonneg`.
+
+Next patch-sized theorem:
+
+```lean
+theorem step33Shift16Z0KernelPow15_eq_inv_norm_pow15 (x : Real) :
+    step33Shift16Z0KernelPow15 x =
+      1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+```
+
+After that, transport the parameterized integral back to
+`x in (n : Real)..(n + 1 : Real)` and sum over cells to obtain `hweighted`.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; forbidden-token scan and whitespace check
+were clean.
+
+Boundary remains unchanged: this does not prove norm-weighted cell
+nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
+RH.
+
 ## 2026-06-20 Current EOF Addendum -- B14 primitive derivative checked
 
 Checked new support fact:

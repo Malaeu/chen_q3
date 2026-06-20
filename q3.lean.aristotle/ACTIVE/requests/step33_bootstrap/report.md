@@ -56034,6 +56034,77 @@ nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
 RH.
 
+## Execution Update (2026-06-20) -- B14 kernel-cell bridge
+
+Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean facts added:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14KernelCellIntegral_eq_halfCellPair
+Q3.PSDpd.Step33.step33Shift16B14KernelCellIntegral_nonneg
+```
+
+Closed preparatory blockers:
+
+```text
+STEP33_M6_B14_KERNEL_CELL_PAIR_BRIDGE_GAP
+STEP33_M6_B14_KERNEL_CELL_NONNEG_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_M6_B14_KERNEL_CELL_TO_NORM_IOI_GAP
+```
+
+Meaning: the full `0..1` parameterized cell integral in the z0 scalar kernel
+normalization is now Lean-proved nonnegative.  The proof path is:
+cell pointwise crosswalk -> split at `1/2` -> reflect by
+`intervalIntegral.integral_comp_sub_left` -> combine by `integral_add` ->
+checked half-cell pair nonnegativity.
+
+Search/API status: q3_docs showed existing `integral_comp_add_right` patterns
+and no ready B14 weighted theorem.  Official Mathlib docs were used only to
+confirm `intervalIntegral` API names; local Lean validation is the proof
+evidence.
+
+Next patch-sized theorem:
+
+```lean
+theorem step33Shift16Z0KernelPow15_eq_inv_norm_pow15 (x : Real) :
+    step33Shift16Z0KernelPow15 x =
+      1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+```
+
+Then prove norm-weighted cell nonnegativity and sum cells over `Set.Ioi 0`.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+and whitespace check were clean.
+
+Boundary: this does not prove norm-weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Execution Update (2026-06-20) -- B14 primitive derivative support
 
 Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.

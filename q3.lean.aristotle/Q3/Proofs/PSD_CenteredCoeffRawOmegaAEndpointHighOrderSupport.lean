@@ -572,6 +572,96 @@ theorem step33Shift16B14HalfCellPairIntegral_nonneg (n : Nat) :
   rw [hmain_eq]
   exact h_nonneg_neg
 
+theorem step33Shift16B14KernelCellIntegral_eq_halfCellPair (n : Nat) :
+    (∫ t in (0 : Real)..1,
+      Q3.bernoulli14Diff ((n : Real) + t) *
+        step33Shift16Z0KernelPow15 ((n : Real) + t)) =
+    ∫ t in (0 : Real)..(1 / 2 : Real),
+      Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t := by
+  let A : Real → Real := fun t =>
+    Q3.bernoulli14 t * step33Shift16Z0KernelPow15 ((n : Real) + t)
+  have hcont_kernel : Continuous fun t : Real =>
+      step33Shift16Z0KernelPow15 ((n : Real) + t) := by
+    have hcont_global : Continuous step33Shift16Z0KernelPow15 := by
+      refine continuous_iff_continuousAt.mpr ?_
+      intro x
+      exact (step33Shift16Z0KernelPow15_hasDerivAt x).continuousAt
+    exact hcont_global.comp (by fun_prop)
+  have hcont_b14 : Continuous Q3.bernoulli14 := by
+    unfold Q3.bernoulli14
+    fun_prop
+  have hcont_A : Continuous A := by
+    simpa [A] using hcont_b14.mul hcont_kernel
+  have hleft_to_A :
+      (∫ t in (0 : Real)..1,
+        Q3.bernoulli14Diff ((n : Real) + t) *
+          step33Shift16Z0KernelPow15 ((n : Real) + t)) =
+        ∫ t in (0 : Real)..1, A t := by
+    refine intervalIntegral.integral_congr ?_
+    intro t ht
+    have htIcc : t ∈ Set.Icc (0 : Real) 1 := by
+      simpa using ht
+    have hb := step33Shift16Bernoulli14Diff_nat_add_real_eq n htIcc.1 htIcc.2
+    simp [A, hb]
+  have hsplit :
+      (∫ t in (0 : Real)..1, A t) =
+        (∫ t in (0 : Real)..(1 / 2 : Real), A t) +
+          ∫ t in (1 / 2 : Real)..1, A t := by
+    have h01 : IntervalIntegrable A volume (0 : Real) (1 / 2 : Real) :=
+      hcont_A.intervalIntegrable _ _
+    have h12 : IntervalIntegrable A volume (1 / 2 : Real) 1 :=
+      hcont_A.intervalIntegrable _ _
+    rw [← intervalIntegral.integral_add_adjacent_intervals h01 h12]
+  have hreflect :
+      (∫ t in (1 / 2 : Real)..1, A t) =
+        ∫ t in (0 : Real)..(1 / 2 : Real), A (1 - t) := by
+    have hcomp := intervalIntegral.integral_comp_sub_left (f := A)
+      (d := (1 : Real)) (a := (0 : Real)) (b := (1 / 2 : Real))
+    convert hcomp.symm using 1
+    ring_nf
+  have hadd :
+      (∫ t in (0 : Real)..(1 / 2 : Real), A t) +
+        (∫ t in (0 : Real)..(1 / 2 : Real), A (1 - t)) =
+          ∫ t in (0 : Real)..(1 / 2 : Real), A t + A (1 - t) := by
+    have hA : IntervalIntegrable A volume (0 : Real) (1 / 2 : Real) :=
+      hcont_A.intervalIntegrable _ _
+    have hA_reflect :
+        IntervalIntegrable (fun t : Real => A (1 - t)) volume
+          (0 : Real) (1 / 2 : Real) := by
+      exact (hcont_A.comp (by fun_prop)).intervalIntegrable _ _
+    rw [← intervalIntegral.integral_add hA hA_reflect]
+  have hpair :
+      (∫ t in (0 : Real)..(1 / 2 : Real), A t + A (1 - t)) =
+        ∫ t in (0 : Real)..(1 / 2 : Real),
+          Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t := by
+    refine intervalIntegral.integral_congr ?_
+    intro t _ht
+    have hb : Q3.bernoulli14 (1 - t) = Q3.bernoulli14 t :=
+      Q3.bernoulli14_one_sub t
+    dsimp [A, step33Shift16Z0KernelPow15Pair]
+    rw [hb]
+    ring_nf
+  calc
+    (∫ t in (0 : Real)..1,
+      Q3.bernoulli14Diff ((n : Real) + t) *
+        step33Shift16Z0KernelPow15 ((n : Real) + t))
+        = ∫ t in (0 : Real)..1, A t := hleft_to_A
+    _ = (∫ t in (0 : Real)..(1 / 2 : Real), A t) +
+          ∫ t in (1 / 2 : Real)..1, A t := hsplit
+    _ = (∫ t in (0 : Real)..(1 / 2 : Real), A t) +
+          ∫ t in (0 : Real)..(1 / 2 : Real), A (1 - t) := by
+          rw [hreflect]
+    _ = ∫ t in (0 : Real)..(1 / 2 : Real), A t + A (1 - t) := hadd
+    _ = ∫ t in (0 : Real)..(1 / 2 : Real),
+          Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t := hpair
+
+theorem step33Shift16B14KernelCellIntegral_nonneg (n : Nat) :
+    0 <= ∫ t in (0 : Real)..1,
+      Q3.bernoulli14Diff ((n : Real) + t) *
+        step33Shift16Z0KernelPow15 ((n : Real) + t) := by
+  rw [step33Shift16B14KernelCellIntegral_eq_halfCellPair n]
+  exact step33Shift16B14HalfCellPairIntegral_nonneg n
+
 theorem step33Shift16DigammaPoint_add_nat_norm_eq_sqrt (n : Nat) :
     ‖step33Shift16DigammaPoint + (n : Complex)‖ =
       Real.sqrt ((((1290 : Real) + 40 * (n : Real)) ^ 2 + 1) / 1600) := by

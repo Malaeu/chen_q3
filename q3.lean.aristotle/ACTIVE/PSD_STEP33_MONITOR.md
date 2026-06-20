@@ -28635,6 +28635,81 @@ nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
 RH.
 
+## 2026-06-20 Current EOF Status -- B14 kernel-cell bridge checked
+
+New checked support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14KernelCellIntegral_eq_halfCellPair
+Q3.PSDpd.Step33.step33Shift16B14KernelCellIntegral_nonneg
+```
+
+Statements:
+
+```lean
+theorem step33Shift16B14KernelCellIntegral_eq_halfCellPair (n : Nat) :
+    (∫ t in (0 : Real)..1,
+      Q3.bernoulli14Diff ((n : Real) + t) *
+        step33Shift16Z0KernelPow15 ((n : Real) + t)) =
+    ∫ t in (0 : Real)..(1 / 2 : Real),
+      Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t
+
+theorem step33Shift16B14KernelCellIntegral_nonneg (n : Nat) :
+    0 <= ∫ t in (0 : Real)..1,
+      Q3.bernoulli14Diff ((n : Real) + t) *
+        step33Shift16Z0KernelPow15 ((n : Real) + t)
+```
+
+Closed preparatory gaps:
+
+```text
+STEP33_M6_B14_KERNEL_CELL_PAIR_BRIDGE_GAP
+STEP33_M6_B14_KERNEL_CELL_NONNEG_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_KERNEL_CELL_TO_NORM_IOI_GAP
+```
+
+Meaning: Lean now proves the parameterized integer-cell integral is
+nonnegative in the z0 scalar kernel normalization.  The proof uses the checked
+cell pointwise crosswalk, `intervalIntegral.integral_add_adjacent_intervals`,
+`intervalIntegral.integral_comp_sub_left`, and the already checked half-cell
+pair inequality.  This still is not the `hweighted` premise because the
+remaining bridge must identify `step33Shift16Z0KernelPow15 x` with
+`1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15`, transport the
+parameterized cell integral to `x in n..n+1`, and sum cells over `Set.Ioi 0`.
+
+Local search status: q3_docs exposed existing `interval_comp_add_right`
+patterns but no ready weighted B14 theorem.  Official Mathlib interval-integral
+documentation was used only for API confirmation, not proof evidence.
+
+Next patch-sized theorem:
+
+```lean
+theorem step33Shift16Z0KernelPow15_eq_inv_norm_pow15 (x : Real) :
+    step33Shift16Z0KernelPow15 x =
+      1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+and whitespace check were clean.
+
+Boundary: this does not prove norm-weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Current EOF Status -- B14 half-cell pair integral checked
 
 New checked support fact:

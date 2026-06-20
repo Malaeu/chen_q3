@@ -35125,6 +35125,38 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
   RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- B14KernelCellBridge
+
+- Target: reduce `STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP` by proving the
+  actual parameter-cell bridge from `0..1` to the checked half-cell pair
+  integral.
+- q3_docs search found useful local `intervalIntegral.integral_comp_add_right`
+  patterns and no ready weighted B14 theorem.  Official Mathlib
+  interval-integral docs were used only to confirm API names such as
+  `integral_add_adjacent_intervals` and `integral_comp_sub_left`.
+- Added checked Lean facts:
+  `Q3.PSDpd.Step33.step33Shift16B14KernelCellIntegral_eq_halfCellPair` and
+  `Q3.PSDpd.Step33.step33Shift16B14KernelCellIntegral_nonneg`.
+- Meaning: Lean now proves
+  `0 <= ∫ t in 0..1, bernoulli14Diff (n+t) * K(n+t)` for the z0 scalar kernel
+  `K = step33Shift16Z0KernelPow15`.
+- Closed preparatory gaps:
+  `STEP33_M6_B14_KERNEL_CELL_PAIR_BRIDGE_GAP` and
+  `STEP33_M6_B14_KERNEL_CELL_NONNEG_GAP`.
+- Active exact gap:
+  `STEP33_M6_B14_KERNEL_CELL_TO_NORM_IOI_GAP`.
+- Next patch-sized theorem:
+  `step33Shift16Z0KernelPow15_eq_inv_norm_pow15`, then transport the
+  parameterized cell integral to `x in n..n+1` and sum cells to obtain
+  `hweighted`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  touched Lean-file forbidden-token scan, and `git diff --check`.
+- Boundary: this does not prove norm-weighted cell nonnegativity,
+  `hweighted`, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- B14PrimitiveDerivative
 
 - Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by closing the
