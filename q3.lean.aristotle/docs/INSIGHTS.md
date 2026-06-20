@@ -36892,3 +36892,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`, and
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeAffineZpowAtoms
+
+- Used the in-app browser/Proshka as route guidance.  It selected the analytic
+  trigamma/OmegaPrime route, but local Lean inspection showed the `ContDiff16`
+  surface is already compiled; the true live gap is `hDerivEq`.
+- Added and Lean-checked affine complex-base atom lemmas in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_ne_zero`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_hasDerivAt`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_deriv`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_neg_two_hasDerivAt`.
+- The checked atom proves the local denominator is never zero, the affine
+  derivative is `I/2`, and the first zpow derivative for
+  `base(eta,n)^(-2)` has the expected chain-rule form.
+- This does not prove the order-16 termwise identity and does not close
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`.
+- Next exact blocker:
+  `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`.

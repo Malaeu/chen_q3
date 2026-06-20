@@ -181,6 +181,28 @@ This is a checked receiver only: it removes the already closed raw-center
 input from the first-subchunk interval fallback, but the actual derivative
 lower/upper payload remains open.
 
+Current OmegaPrime order-16 analytic bridge narrowing on 2026-06-21:
+Browser/Proshka route advice selected the analytic route through the
+trigamma/OmegaPrime order-16 derivative identity.  Local inspection showed the
+`ContDiff16` surface is already compiled, so the first live blocker is not
+smoothness.  `PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean` now has
+checked atom lemmas for the affine complex series base:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_ne_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_hasDerivAt
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_deriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_neg_two_hasDerivAt
+```
+
+This is only a lower analytic layer.  It does not prove the order-16
+termwise-differentiation identity consumed by
+`Valid.of_order16_integer_budget_checked_smooth`.  The live blocker is now:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+```
+
 `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean` now proves reusable
 continuity/integrability lemmas and closed-form Taylor model integral
 evaluators.  The current generator constructors are:

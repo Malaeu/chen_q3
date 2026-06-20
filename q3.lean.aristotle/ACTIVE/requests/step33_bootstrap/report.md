@@ -59877,3 +59877,53 @@ rg -n "sorry|exact\\?|admit" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOme
 
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
+
+## 2026-06-21 Current EOF Addendum -- OmegaPrime affine zpow atoms
+
+Used the in-app browser/Proshka as route guidance.  The advice selected the
+analytic trigamma/OmegaPrime route, but local Lean evidence showed
+`omegaPrimeClosedForm_contDiff16` is already compiled.  Therefore the first
+live gap is the order-16 derivative/`tsum` identity, not `ContDiff16`.
+
+Added checked atom lemmas in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_ne_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_hasDerivAt
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_deriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_neg_two_hasDerivAt
+```
+
+What this closes:
+
+```text
+Re(base eta n) = n + 1/4 > 0, hence base eta n != 0.
+d/deta base(eta,n) = I/2.
+d/deta base(eta,n)^(-2) =
+  (-2) * base(eta,n)^(-3) * I/2.
+```
+
+What remains open:
+
+```text
+iteratedDeriv 16 omegaPrimeClosedForm eta =
+  -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta
+```
+
+This remaining theorem still needs the high-order affine-zpow formula and the
+termwise `tsum` interchange from the local trigamma series.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+```
+
+Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
+Step33/Step34/RH claim.

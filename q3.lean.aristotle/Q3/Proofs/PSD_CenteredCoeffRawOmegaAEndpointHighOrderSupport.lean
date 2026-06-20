@@ -10174,6 +10174,62 @@ theorem omegaPrimeOrder16SeriesBase_re (eta : Real) (n : Nat) :
     (omegaPrimeOrder16SeriesBase eta n).re = (n : Real) + (1 / 4 : Real) := by
   simp [omegaPrimeOrder16SeriesBase]
 
+theorem omegaPrimeOrder16SeriesBase_ne_zero (eta : Real) (n : Nat) :
+    omegaPrimeOrder16SeriesBase eta n ≠ 0 := by
+  intro hzero
+  have hre := congrArg Complex.re hzero
+  rw [omegaPrimeOrder16SeriesBase_re] at hre
+  have hn : 0 <= (n : Real) := Nat.cast_nonneg n
+  norm_num at hre
+  linarith
+
+theorem omegaPrimeOrder16SeriesBase_hasDerivAt (eta : Real) (n : Nat) :
+    HasDerivAt (fun t : Real => omegaPrimeOrder16SeriesBase t n)
+      (Complex.I * (((1 / 2 : Real) : Real) : Complex)) eta := by
+  unfold omegaPrimeOrder16SeriesBase
+  have hdiv : HasDerivAt (fun t : Real => t / 2) (1 / 2 : Real) eta := by
+    simpa [div_eq_mul_inv] using
+      (hasDerivAt_id eta).mul_const (1 / 2 : Real)
+  have hcastF :
+      HasFDerivAt
+        (fun t : Real => (((t / 2 : Real) : Real) : Complex))
+        ((Complex.ofRealCLM).comp
+          (ContinuousLinearMap.smulRight
+            (1 : Real →L[Real] Real) (1 / 2 : Real))) eta := by
+    simpa only [Function.comp_apply, Complex.ofRealCLM_apply] using
+      (Complex.ofRealCLM.hasFDerivAt.comp eta hdiv.hasFDerivAt)
+  have hcast :
+      HasDerivAt
+        (fun t : Real => (((t / 2 : Real) : Real) : Complex))
+        (((1 / 2 : Real) : Real) : Complex) eta := by
+    simpa using hcastF.hasDerivAt
+  have hI :
+      HasDerivAt
+        (fun t : Real => Complex.I * (((t / 2 : Real) : Real) : Complex))
+        (Complex.I * (((1 / 2 : Real) : Real) : Complex)) eta := by
+    exact hcast.const_mul Complex.I
+  convert
+    ((hasDerivAt_const eta ((n : Complex) + (1 / 4 : Complex))).add hI)
+      using 1
+  · ring_nf
+
+theorem omegaPrimeOrder16SeriesBase_deriv (eta : Real) (n : Nat) :
+    deriv (fun t : Real => omegaPrimeOrder16SeriesBase t n) eta =
+      Complex.I * (((1 / 2 : Real) : Real) : Complex) :=
+  (omegaPrimeOrder16SeriesBase_hasDerivAt eta n).deriv
+
+theorem omegaPrimeOrder16SeriesBase_zpow_neg_two_hasDerivAt
+    (eta : Real) (n : Nat) :
+    HasDerivAt
+      (fun t : Real => (omegaPrimeOrder16SeriesBase t n) ^ (-2 : Int))
+      (((-2 : Complex) * (omegaPrimeOrder16SeriesBase eta n) ^ (-3 : Int)) *
+        (Complex.I * (((1 / 2 : Real) : Real) : Complex))) eta := by
+  have h :=
+    (hasDerivAt_zpow (-2 : Int) (omegaPrimeOrder16SeriesBase eta n)
+      (Or.inl (omegaPrimeOrder16SeriesBase_ne_zero eta n))).comp eta
+      (omegaPrimeOrder16SeriesBase_hasDerivAt eta n)
+  simpa [Function.comp_def] using h
+
 /-- Pointwise norm majorant for one order-16 OmegaPrime series term. -/
 theorem omegaPrimeOrder16SeriesTerm_abs_le_norm_inv_pow
     (eta : Real) (n : Nat) :
