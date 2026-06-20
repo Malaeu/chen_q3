@@ -15448,6 +15448,57 @@ Boundary remains unchanged: this does not prove the weighted nonnegativity
 assumption, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Addendum -- z0 half-cell normSq order checked
+
+Checked new support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_add_nat_add_real_normSq_eq
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_half_cell_normSq_le_reflect
+```
+
+These are `z0`-specific algebraic facts for the Step33 shifted point
+`129 / 4 + I / 40`.  They prove the exact real-variable `normSq` formula and
+the half-cell ordering between `t` and `1 - t` for `0 <= t <= 1 / 2`.
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_Z0_HALF_CELL_NORMSQ_ORDER_GAP
+```
+
+Active exact gap remains:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Next patch-sized theorem should upgrade the normSq order into a paired-kernel
+antitonicity/convexity statement compatible with the already checked
+`Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half`.
+
+Computer Use / Browser status: used.  The selected in-app Browser tab is the
+open Pro/Louise ChatGPT conversation; the visible guidance supports the
+half-cell primitive plus paired-kernel route and rejects an over-general
+theorem from only `0 < z.re`.  This guidance is advisory only.
+
+Validation for this addendum:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file hole/axiom/unsafe
+scan and whitespace check were clean.
+
+Boundary remains unchanged: this does not prove the half-cell rearrangement,
+weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Current EOF Addendum -- shifted B14 primitive half-cell sign checked
 
 Checked new support facts:

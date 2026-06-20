@@ -35060,3 +35060,36 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
   RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14Z0HalfCellNormSqOrder
+
+- Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by adding the
+  first z0-specific kernel algebra needed for the half-cell pairing route.
+- Local `q3_docs` search found no ready weighted half-cell theorem; the closest
+  checked artifacts are the B14 primitive sign lemmas in `Q3.DigammaRemainder`
+  and the Step33 shifted-point norm facts in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- Computer Use / Browser was used on the open Pro/Louise ChatGPT conversation.
+  The visible advisory answer recommends the half-cell primitive sign plus
+  paired-kernel antitonicity/convexity route, and warns that a generic theorem
+  from only `0 < z.re` is too strong.  This is route guidance only, not proof
+  evidence.
+- Added checked Lean facts:
+  `Q3.PSDpd.Step33.step33Shift16DigammaPoint_add_nat_add_real_normSq_eq` and
+  `Q3.PSDpd.Step33.step33Shift16DigammaPoint_half_cell_normSq_le_reflect`.
+- Closed preparatory gap:
+  `STEP33_M6_B14_Z0_HALF_CELL_NORMSQ_ORDER_GAP`.
+- Active exact gap remains:
+  `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP`.
+- Next patch-sized theorem: prove the paired z0 kernel
+  `t |-> ‖z0 + n + t‖^-15 + ‖z0 + n + 1 - t‖^-15` is antitone/convex in the
+  half-cell form needed for integration by parts with
+  `Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  code-only scan for `sorry|admit|exact?|axiom|unsafe`, and `git diff --check`.
+- Boundary: this does not prove paired-kernel antitonicity, weighted cell
+  nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
+  RH.

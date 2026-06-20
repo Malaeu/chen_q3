@@ -27890,6 +27890,57 @@ whitespace check were clean.
 Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
 
+## 2026-06-20 Step33A.1-A shifted B14 z0 half-cell norm ordering checked
+
+Latest checked local support facts in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_add_nat_add_real_normSq_eq
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_half_cell_normSq_le_reflect
+```
+
+They prove the exact `normSq` identity for
+`step33Shift16DigammaPoint + (n + t)` and the half-cell comparison
+
+```lean
+Complex.normSq (z0 + (n + t)) <= Complex.normSq (z0 + (n + (1 - t)))
+```
+
+under `0 <= t <= 1 / 2`, in the concrete Step33 `z0 = 129 / 4 + I / 40`
+normalization.
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_Z0_HALF_CELL_NORMSQ_ORDER_GAP
+```
+
+Active exact gap remains:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Next theorem shape is still the cellwise weighted nonnegativity theorem:
+
+```lean
+theorem step33_shift16_b14diff_weighted_kernel_cell_nonneg
+    (n : Nat) :
+    0 <= ∫ x in (n : Real)..((n + 1 : Nat) : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + Q3.PSDpd.Step33.step33Shift16DigammaPoint‖ ^ 15
+```
+
+Computer Use / Browser note: the in-app Browser was used on the open
+Pro/Louise ChatGPT conversation.  The visible advisory route says the next
+mathematical bridge should use the half-cell primitive sign plus paired-kernel
+antitonicity/convexity; this is route guidance only, not proof evidence.
+
+Boundary: this does not prove paired-kernel antitonicity, the integration by
+parts/rearrangement theorem, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
 ## 2026-06-20 Step33A.1-A shifted B14 primitive half-cell sign checked
 
 Latest checked Lean facts in `Q3.DigammaRemainder`:

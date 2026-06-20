@@ -231,6 +231,25 @@ theorem step33Shift16DigammaPoint_add_nat_normSq_eq (n : Nat) :
   simp [Complex.normSq_apply, Complex.add_re, Complex.add_im]
   ring
 
+theorem step33Shift16DigammaPoint_add_nat_add_real_normSq_eq
+    (n : Nat) (t : Real) :
+    Complex.normSq (step33Shift16DigammaPoint + (((n : Real) + t) : Complex)) =
+      (((1290 : Real) + 40 * (n : Real) + 40 * t) ^ 2 + 1) / 1600 := by
+  rw [step33Shift16DigammaPoint]
+  simp [Complex.normSq_apply, Complex.add_re, Complex.add_im]
+  ring
+
+theorem step33Shift16DigammaPoint_half_cell_normSq_le_reflect
+    (n : Nat) {t : Real} (ht0 : 0 <= t) (hth : t <= 1 / 2) :
+    Complex.normSq (step33Shift16DigammaPoint + (((n : Real) + t) : Complex)) <=
+      Complex.normSq
+        (step33Shift16DigammaPoint + (((n : Real) + (1 - t)) : Complex)) := by
+  rw [step33Shift16DigammaPoint]
+  simp [Complex.normSq_apply, Complex.add_re, Complex.add_im]
+  have hn0 : (0 : Real) <= (n : Real) := Nat.cast_nonneg n
+  have ht0' : 0 <= t := ht0
+  nlinarith [ht0', hth, hn0]
+
 theorem step33Shift16DigammaPoint_add_nat_norm_eq_sqrt (n : Nat) :
     ‖step33Shift16DigammaPoint + (n : Complex)‖ =
       Real.sqrt ((((1290 : Real) + 40 * (n : Real)) ^ 2 + 1) / 1600) := by

@@ -55883,6 +55883,84 @@ Boundary: this does not prove `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## Execution Update (2026-06-20) -- z0 half-cell normSq order
+
+Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean facts added:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_add_nat_add_real_normSq_eq
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_half_cell_normSq_le_reflect
+```
+
+Meaning:
+
+```text
+For the concrete Step33 shifted point z0 = 129/4 + I/40, Lean now has the
+exact normSq formula for z0 + (n + t), and the half-cell order
+normSq(z0 + n + t) <= normSq(z0 + n + 1 - t) for 0 <= t <= 1/2.
+```
+
+Closed preparatory blocker:
+
+```text
+STEP33_M6_B14_Z0_HALF_CELL_NORMSQ_ORDER_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Next patch-sized theorem: paired-kernel antitonicity/convexity for
+
+```text
+t |-> ‖z0 + n + t‖^-15 + ‖z0 + n + 1 - t‖^-15
+```
+
+on `0 <= t <= 1/2`, then use
+`Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half` for the cellwise
+integration-by-parts/rearrangement bridge.
+
+Computer Use / Browser status:
+
+```text
+Used.  The selected in-app Browser tab is the open Pro/Louise ChatGPT
+conversation.  The visible advisory answer recommends the same half-cell
+primitive plus paired-kernel antitonicity/convexity route, and warns that a
+generic theorem from only 0 < z.re is too strong.  This is advisory only, not
+proof evidence.
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed cleanly; the touched Lean-file
+hole/axiom/unsafe scan and whitespace check were clean.
+
+Boundary: this does not prove paired-kernel antitonicity, the half-cell
+rearrangement, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Execution Update (2026-06-20) — shifted B14 primitive half-cell sign
 
 Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.
