@@ -36430,3 +36430,32 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no proof-grade interval certificate, no generated Lean payload, no
   first-subchunk residual-derivative norm certificate, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- CancellationResidualCertificateLedger
+
+- Added
+  `scripts/generate_step33_a1_sub0_cancellation_residual_interval_certificate.py`
+  as a fail-closed ledger for the route-A same-expression interval gate.
+- Generated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json`
+  and `.md` with schema
+  `q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v1`.
+- The ledger extracts all 16 exact rational coefficients from
+  `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff` and records the
+  checked consumer chain:
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm`,
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds`.
+- Current generated status is
+  `fail_closed_missing_component_taylor_remainder_bounds` with first failure
+  `STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING`.
+- This narrows the next proof-producing patch to component Taylor/remainder
+  bounds for `omega`, `omega'`, the shape, and the shape derivative, followed
+  by exact residual assembly before interval spending.
+- Validation passed for generator run and `py_compile`; no Lean files were
+  touched in this step.
+- Boundary: exact coefficient extraction is bookkeeping only.  No
+  component Taylor bound certificate, no assembled residual range proof, no
+  Lean payload, no first-subchunk residual-derivative norm certificate, no A
+  hbox, no `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

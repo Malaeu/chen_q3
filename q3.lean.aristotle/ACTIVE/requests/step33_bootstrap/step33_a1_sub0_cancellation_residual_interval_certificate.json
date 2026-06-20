@@ -1,0 +1,295 @@
+{
+  "assembledResidualCoeff": null,
+  "assembledResidualRemainderAbs": null,
+  "cell": {
+    "cellL": "0",
+    "cellU": "1/10",
+    "center": "1/20",
+    "radius": "1/20",
+    "targetLower": "-94119513411/500000000000000000000000000000",
+    "targetUpper": "1866608532757/500000000000000000000000000000",
+    "targetWidth": "245091005771/62500000000000000000000000000"
+  },
+  "componentTaylorInputsRequired": [
+    "omegaCoeff[]",
+    "omegaRemainderAbs",
+    "omegaDerivCoeff[]",
+    "omegaDerivRemainderAbs",
+    "shapeCoeff[]",
+    "shapeRemainderAbs",
+    "shapeDerivCoeff[]",
+    "shapeDerivRemainderAbs",
+    "exact product/convolution assembly before interval spending"
+  ],
+  "extractedFullTaylorPolynomialDerivCoeff": [
+    {
+      "index": 0,
+      "leanMatchIndex": "0",
+      "sourceLine": 49,
+      "value": "2814585322345983/31250000000000000"
+    },
+    {
+      "index": 1,
+      "leanMatchIndex": "1",
+      "sourceLine": 50,
+      "value": "432682670395380743/250000000000000000"
+    },
+    {
+      "index": 2,
+      "leanMatchIndex": "2",
+      "sourceLine": 51,
+      "value": "-2076189217694411487/1000000000000000000"
+    },
+    {
+      "index": 3,
+      "leanMatchIndex": "3",
+      "sourceLine": 52,
+      "value": "-155822302127901237/12500000000000000"
+    },
+    {
+      "index": 4,
+      "leanMatchIndex": "4",
+      "sourceLine": 53,
+      "value": "248352666423100477/12500000000000000"
+    },
+    {
+      "index": 5,
+      "leanMatchIndex": "5",
+      "sourceLine": 54,
+      "value": "32291651785944130749/500000000000000000"
+    },
+    {
+      "index": 6,
+      "leanMatchIndex": "6",
+      "sourceLine": 55,
+      "value": "-69999411432932463909/500000000000000000"
+    },
+    {
+      "index": 7,
+      "leanMatchIndex": "7",
+      "sourceLine": 56,
+      "value": "-34707798540256129409/125000000000000000"
+    },
+    {
+      "index": 8,
+      "leanMatchIndex": "8",
+      "sourceLine": 57,
+      "value": "836575734719049511113/1000000000000000000"
+    },
+    {
+      "index": 9,
+      "leanMatchIndex": "9",
+      "sourceLine": 58,
+      "value": "100643501888413806697/100000000000000000"
+    },
+    {
+      "index": 10,
+      "leanMatchIndex": "10",
+      "sourceLine": 59,
+      "value": "-897573400754971084771/200000000000000000"
+    },
+    {
+      "index": 11,
+      "leanMatchIndex": "11",
+      "sourceLine": 60,
+      "value": "-142205390337268351947/50000000000000000"
+    },
+    {
+      "index": 12,
+      "leanMatchIndex": "12",
+      "sourceLine": 61,
+      "value": "5554290524724778241613/250000000000000000"
+    },
+    {
+      "index": 13,
+      "leanMatchIndex": "13",
+      "sourceLine": 62,
+      "value": "916884525703826724093/250000000000000000"
+    },
+    {
+      "index": 14,
+      "leanMatchIndex": "14",
+      "sourceLine": 63,
+      "value": "-19999872807938988432933/200000000000000000"
+    },
+    {
+      "index": 15,
+      "leanMatchIndex": "_",
+      "sourceLine": 64,
+      "value": "62148786708414316877/2500000000000000"
+    }
+  ],
+  "failureCodes": [
+    "STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING",
+    "STEP33_A1_SUB0_ASSEMBLED_RESIDUAL_RANGE_PROOF_MISSING",
+    "STEP33_A1_SUB0_CANCELLATION_INTERVAL_LEAN_PAYLOAD_MISSING",
+    "STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP"
+  ],
+  "firstFailure": "STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING",
+  "leanConsumers": {
+    "directSegmentData": "primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert",
+    "directValidityBridge": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds",
+    "polynomialDerivativeCrosswalk": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel",
+    "proofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds",
+    "residualDerivativeCrosswalk": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm"
+  },
+  "proofStatus": {
+    "assembledResidualCoeffPresent": false,
+    "assembledResidualRemainderBoundPresent": false,
+    "budgetPassed": false,
+    "componentTaylorBoundsProved": false,
+    "exactCoefficientAssemblyProved": false,
+    "exactCoefficientExtractionDone": true,
+    "isLeanProofData": false,
+    "outLeanWritten": false,
+    "proofSafeClosedFields": 0,
+    "residualRangeProved": false
+  },
+  "rawTaylorCoeffDerivedFromDerivmodel": [
+    {
+      "index": 0,
+      "source": "Lean def primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff",
+      "value": "primaryFiniteRow0Parent0Split100Sub0RawCenterCoeff0"
+    },
+    {
+      "index": 1,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[0] / 1",
+      "value": "2814585322345983/31250000000000000"
+    },
+    {
+      "index": 2,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[1] / 2",
+      "value": "432682670395380743/500000000000000000"
+    },
+    {
+      "index": 3,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[2] / 3",
+      "value": "-692063072564803829/1000000000000000000"
+    },
+    {
+      "index": 4,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[3] / 4",
+      "value": "-155822302127901237/50000000000000000"
+    },
+    {
+      "index": 5,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[4] / 5",
+      "value": "248352666423100477/62500000000000000"
+    },
+    {
+      "index": 6,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[5] / 6",
+      "value": "10763883928648043583/1000000000000000000"
+    },
+    {
+      "index": 7,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[6] / 7",
+      "value": "-9999915918990351987/500000000000000000"
+    },
+    {
+      "index": 8,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[7] / 8",
+      "value": "-34707798540256129409/1000000000000000000"
+    },
+    {
+      "index": 9,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[8] / 9",
+      "value": "92952859413227723457/1000000000000000000"
+    },
+    {
+      "index": 10,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[9] / 10",
+      "value": "100643501888413806697/1000000000000000000"
+    },
+    {
+      "index": 11,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[10] / 11",
+      "value": "-81597581886815553161/200000000000000000"
+    },
+    {
+      "index": 12,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[11] / 12",
+      "value": "-47401796779089450649/200000000000000000"
+    },
+    {
+      "index": 13,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[12] / 13",
+      "value": "427253117286521403201/250000000000000000"
+    },
+    {
+      "index": 14,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[13] / 14",
+      "value": "130983503671975246299/500000000000000000"
+    },
+    {
+      "index": 15,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[14] / 15",
+      "value": "-6666624269312996144311/1000000000000000000"
+    },
+    {
+      "index": 16,
+      "source": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff[15] / 16",
+      "value": "62148786708414316877/40000000000000000"
+    }
+  ],
+  "requiredProofGradeCertificate": {
+    "kind": "interval_or_rational_same_expression_residual_bound",
+    "mayFeed": "ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds",
+    "mustNotUse": [
+      "sampled direct-derivative overlay as proof",
+      "independent raw/poly interval boxes as the proof object",
+      "RawCenterCoeffOnlyCert residual bounds for the full Taylor route"
+    ],
+    "mustProve": "for all eta in Set.Icc 0 (1/10), targetLower <= RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta <= targetUpper"
+  },
+  "routeId": "STEP33_A1_SUB0_CANCELLATION_RESIDUAL_INTERVAL",
+  "schema": "q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v1",
+  "segmentedPayload": {
+    "allSegmentsBudgetPassed": true,
+    "coveragePassed": true,
+    "exists": true,
+    "outLeanWritten": false,
+    "proofSafeClosedFields": 0,
+    "schema": "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v6",
+    "segmentCount": 1,
+    "segments": [
+      {
+        "analyticResidualBoundsProof": "missing",
+        "budgetPassesExactRational": true,
+        "cell": 0,
+        "polyLower": null,
+        "polyUpper": null,
+        "rawLower": null,
+        "rawUpper": null,
+        "residualLower": "-94119513411/500000000000000000000000000000",
+        "residualUpper": "1866608532757/500000000000000000000000000000",
+        "segmentL": "0",
+        "segmentU": "1/10",
+        "sourceProofStatus": "sampled_candidate_not_lean_proof"
+      }
+    ],
+    "status": "fail_closed_missing_cancellation_preserving_taylor_remainder_proof"
+  },
+  "sourceDefinitionHashes": {
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json": "df8cb8dff74f605e",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694"
+  },
+  "sourceDefinitionLines": {
+    "primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert": 2726,
+    "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff": 132,
+    "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert": 190,
+    "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff": 46,
+    "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff_end": 65,
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds": 2868,
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds": 2815,
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel": 201,
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm": 1912
+  },
+  "status": "fail_closed_missing_component_taylor_remainder_bounds",
+  "targetExpression": "primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 15 (1/20) primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta",
+  "targetTheorem": {
+    "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean",
+    "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval",
+    "statementAscii": "theorem primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval {eta : Real} (heta : eta in Set.Icc 0 (1/10)) : -94119513411/500000000000000000000000000000 <= targetExpression eta and targetExpression eta <= 1866608532757/500000000000000000000000000000"
+  }
+}

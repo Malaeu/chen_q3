@@ -30407,3 +30407,62 @@ Boundary: this patch only sharpens the proof contract and generated payload.
 No interval certificate was proved, no Lean payload was emitted, no
 first-subchunk residual-derivative norm certificate is closed, and Step33A.1-A
 remains open.
+
+## 2026-06-20 Current EOF Addendum -- cancellation residual certificate ledger
+
+Added a fail-closed certificate ledger generator:
+
+```text
+scripts/generate_step33_a1_sub0_cancellation_residual_interval_certificate.py
+```
+
+Generated artifacts:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.md
+```
+
+Current schema:
+
+```text
+q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v1
+```
+
+Current status:
+
+```text
+status = fail_closed_missing_component_taylor_remainder_bounds
+firstFailure = STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING
+proofSafeClosedFields = 0
+outLeanWritten = false
+exactCoefficientExtractionDone = true
+componentTaylorBoundsProved = false
+exactCoefficientAssemblyProved = false
+residualRangeProved = false
+```
+
+The ledger extracts all 16 exact derivative-model coefficients from:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+```
+
+and pins the existing checked consumers:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds
+```
+
+Current first live gap is now the proof-producing subproblem:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING
+```
+
+Boundary: coefficient extraction is bookkeeping only.  No component Taylor
+remainder certificate, no assembled residual range proof, no Lean payload, no
+first-subchunk residual-derivative norm certificate, and Step33A.1-A remains
+open.

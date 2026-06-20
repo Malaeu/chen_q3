@@ -58975,3 +58975,64 @@ primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta
 
 on `Set.Icc 0 (1/10)`, using exact coefficient assembly before any remainder
 spending.  Independent raw/poly boxes remain diagnostic only.
+
+## Execution Update (2026-06-20) -- cancellation residual certificate ledger
+
+Added the fail-closed route-A certificate ledger generator:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_cancellation_residual_interval_certificate.py
+```
+
+Generated:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.md
+```
+
+The new ledger schema is:
+
+```text
+q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v1
+```
+
+and it records:
+
+```text
+status = fail_closed_missing_component_taylor_remainder_bounds
+firstFailure = STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING
+proofSafeClosedFields = 0
+outLeanWritten = false
+exactCoefficientExtractionDone = true
+componentTaylorBoundsProved = false
+exactCoefficientAssemblyProved = false
+residualRangeProved = false
+```
+
+The generator extracted all 16 exact rational derivative-model coefficients
+from the local Lean definition
+`primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff` and cross-checked
+the active v6 segmented payload.  This is useful bookkeeping only: it does not
+prove the interval and does not emit Lean.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING
+```
+
+Next patch: build the component Taylor/remainder bound generator for
+`omega`, `omega'`, the B-spline shape, and the shape derivative, then assemble
+the residual expression before spending any interval remainder.
+
+Validation:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_cancellation_residual_interval_certificate.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_cancellation_residual_interval_certificate.py
+```
+
+Boundary: no proof-grade interval certificate, no generated Lean payload, no
+first-subchunk residual-derivative norm certificate, no A hbox, no
+`ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
