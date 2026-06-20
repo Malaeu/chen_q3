@@ -54262,6 +54262,44 @@ one-order Euler-Maclaurin lift from the checked B8/power-9 digamma prefix.
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B10 cell layer checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli10
+Q3.bernoulli10Fract
+Q3.bernoulli10Diff
+Q3.measurable_bernoulli10
+Q3.measurable_bernoulli10Fract
+Q3.measurable_bernoulli10Diff
+Q3.bernoulli10Diff_eq_on_Ioo
+Q3.bernoulli10Diff_eq_cell_on_Icc
+Q3.bernoulli10DiffCellDeriv
+Q3.bernoulli10DiffCellDeriv_left
+Q3.bernoulli10DiffCellDeriv_right
+Q3.bernoulli10DiffCellDeriv_hasDerivAt
+```
+
+This closes:
+
+```text
+STEP33_M6_B8_TO_B10_CELL_LAYER_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_TO_B10_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Meaning: use the checked B10 cell layer to prove the interval
+integration-by-parts bridge from B8/power-9 to B10 cell-derivative/power-10
+before adding the B10 boundary bridge.
+
+Boundary: this is not a proof of the B8-to-B10 Stieltjes bridge,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B6 digamma prefix checked
 
 Lean progress in `Q3.DigammaRemainder`:

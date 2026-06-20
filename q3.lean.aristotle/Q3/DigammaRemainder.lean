@@ -69,6 +69,19 @@ def bernoulli8Fract (x : ℝ) : ℝ := bernoulli8 (Int.fract x)
 /-- Repository-normalized B8 periodic kernel for the B6-to-B8 Stieltjes lift. -/
 def bernoulli8Diff (x : ℝ) : ℝ := bernoulli8Fract x
 
+/-- Bernoulli polynomial B10(t) =
+`t^10 - 5t^9 + (15/2)t^8 - 7t^6 + 5t^4 - (3/2)t^2 + 5/66`. -/
+def bernoulli10 (t : ℝ) : ℝ :=
+  t ^ 10 - 5 * t ^ 9 + (15 / 2 : ℝ) * t ^ 8 - 7 * t ^ 6 +
+    5 * t ^ 4 - (3 / 2 : ℝ) * t ^ 2 + (5 / 66 : ℝ)
+
+/-- B10 applied to the fractional part, prepared for the next one-order
+Euler-Maclaurin lift from the B8/power-9 surface. -/
+def bernoulli10Fract (x : ℝ) : ℝ := bernoulli10 (Int.fract x)
+
+/-- Repository-normalized B10 periodic kernel for the B8-to-B10 Stieltjes lift. -/
+def bernoulli10Diff (x : ℝ) : ℝ := bernoulli10Fract x
+
 /-- Bernoulli polynomial B1(t) = t - 1/2. -/
 def bernoulli1 (t : ℝ) : ℝ := t - (1 / 2 : ℝ)
 
@@ -166,6 +179,36 @@ lemma measurable_bernoulli8Fract : Measurable bernoulli8Fract := by
 @[measurability]
 lemma measurable_bernoulli8Diff : Measurable bernoulli8Diff := by
   simpa [bernoulli8Diff] using measurable_bernoulli8Fract
+
+@[measurability]
+lemma measurable_bernoulli10 : Measurable bernoulli10 := by
+  have h10 : Measurable fun t : ℝ => t ^ 10 := by
+    simpa using (measurable_id.pow_const 10)
+  have h9 : Measurable fun t : ℝ => t ^ 9 := by
+    simpa using (measurable_id.pow_const 9)
+  have h8 : Measurable fun t : ℝ => t ^ 8 := by
+    simpa using (measurable_id.pow_const 8)
+  have h6 : Measurable fun t : ℝ => t ^ 6 := by
+    simpa using (measurable_id.pow_const 6)
+  have h4 : Measurable fun t : ℝ => t ^ 4 := by
+    simpa using (measurable_id.pow_const 4)
+  have h2 : Measurable fun t : ℝ => t ^ 2 := by
+    simpa using (measurable_id.pow_const 2)
+  have hconst : Measurable fun _ : ℝ => (5 / 66 : ℝ) := measurable_const
+  simpa [bernoulli10] using
+    ((((((h10.sub (measurable_const.mul h9)).add
+      (measurable_const.mul h8)).sub
+      (measurable_const.mul h6)).add
+      (measurable_const.mul h4)).sub (measurable_const.mul h2)).add hconst)
+
+@[measurability]
+lemma measurable_bernoulli10Fract : Measurable bernoulli10Fract := by
+  have hfract : Measurable (Int.fract : ℝ → ℝ) := measurable_fract
+  simpa [bernoulli10Fract] using measurable_bernoulli10.comp hfract
+
+@[measurability]
+lemma measurable_bernoulli10Diff : Measurable bernoulli10Diff := by
+  simpa [bernoulli10Diff] using measurable_bernoulli10Fract
 
 lemma bernoulli2Fract_eq_const_sub_diff (x : ℝ) :
     bernoulli2Fract x = (6 : ℝ)⁻¹ - bernoulli2Diff x := by
@@ -610,6 +653,97 @@ lemma bernoulli8DiffCellDeriv_hasDerivAt
         56 * (x - n) ^ 6 - 168 * (x - n) ^ 5 +
           140 * (x - n) ^ 4 - 28 * (x - n) ^ 2 + (4 / 3 : ℝ) := by
     have hcell := bernoulli6Diff_eq_on_Ioo n hx
+    nlinarith [hcell]
+  simpa [hcoef] using hderiv
+
+lemma bernoulli10Diff_eq_on_Ioo (n : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ)) :
+    bernoulli10Diff x =
+      (x - n) ^ 10 - 5 * (x - n) ^ 9 +
+        (15 / 2 : ℝ) * (x - n) ^ 8 -
+        7 * (x - n) ^ 6 + 5 * (x - n) ^ 4 -
+        (3 / 2 : ℝ) * (x - n) ^ 2 + (5 / 66 : ℝ) := by
+  have hfract : Int.fract x = x - n := fract_eq_sub_nat_on_Ioo n hx
+  simp [bernoulli10Diff, bernoulli10Fract, bernoulli10, hfract, sub_eq_add_neg,
+    add_assoc]
+
+lemma bernoulli10Diff_eq_cell_on_Icc (n : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ)) :
+    bernoulli10Diff x =
+      (x - n) ^ 10 - 5 * (x - n) ^ 9 +
+        (15 / 2 : ℝ) * (x - n) ^ 8 -
+        7 * (x - n) ^ 6 + 5 * (x - n) ^ 4 -
+        (3 / 2 : ℝ) * (x - n) ^ 2 + (5 / 66 : ℝ) := by
+  by_cases hx0 : x = n
+  · subst hx0
+    simp [bernoulli10Diff, bernoulli10Fract, bernoulli10]
+  by_cases hx1 : x = n + 1
+  · subst hx1
+    norm_num [bernoulli10Diff, bernoulli10Fract, bernoulli10, Nat.cast_add, Nat.cast_one]
+  have hx' : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ) := by
+    refine ⟨?_, ?_⟩
+    · exact lt_of_le_of_ne hx.1 (Ne.symm hx0)
+    · exact lt_of_le_of_ne hx.2 hx1
+  exact bernoulli10Diff_eq_on_Ioo n hx'
+
+/-- Cell derivative of the B10 polynomial.  This is the local polynomial
+surface for the B8/power-9 to B10/power-11 Euler-Maclaurin lift. -/
+def bernoulli10DiffCellDeriv (n : ℕ) (x : ℝ) : ℝ :=
+  10 * (x - n) ^ 9 - 45 * (x - n) ^ 8 + 60 * (x - n) ^ 7 -
+    42 * (x - n) ^ 5 + 20 * (x - n) ^ 3 - 3 * (x - n)
+
+lemma bernoulli10DiffCellDeriv_left (n : ℕ) :
+    bernoulli10DiffCellDeriv n (n : ℝ) = 0 := by
+  simp [bernoulli10DiffCellDeriv]
+
+lemma bernoulli10DiffCellDeriv_right (n : ℕ) :
+    bernoulli10DiffCellDeriv n (n + 1 : ℝ) = 0 := by
+  norm_num [bernoulli10DiffCellDeriv, Nat.cast_add, Nat.cast_one]
+
+lemma bernoulli10DiffCellDeriv_hasDerivAt
+    (n : ℕ) {x : ℝ} (hx : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ)) :
+    HasDerivAt (fun y : ℝ => bernoulli10DiffCellDeriv n y)
+      (90 * bernoulli8Diff x) x := by
+  have hderiv :
+      HasDerivAt (fun y : ℝ => bernoulli10DiffCellDeriv n y)
+        (90 * (x - n) ^ 8 - 360 * (x - n) ^ 7 +
+          420 * (x - n) ^ 6 - 210 * (x - n) ^ 4 +
+          60 * (x - n) ^ 2 - 3) x := by
+    have hbase : HasDerivAt (fun y : ℝ => y - (n : ℝ)) 1 x := by
+      simpa using (hasDerivAt_id x).sub_const (n : ℝ)
+    have hnine :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 9)
+          (9 * (x - (n : ℝ)) ^ 8) x := by
+      simpa using hbase.pow 9
+    have height :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 8)
+          (8 * (x - (n : ℝ)) ^ 7) x := by
+      simpa using hbase.pow 8
+    have hseven :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 7)
+          (7 * (x - (n : ℝ)) ^ 6) x := by
+      simpa using hbase.pow 7
+    have hfive :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 5)
+          (5 * (x - (n : ℝ)) ^ 4) x := by
+      simpa using hbase.pow 5
+    have hthree :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 3)
+          (3 * (x - (n : ℝ)) ^ 2) x := by
+      simpa using hbase.pow 3
+    have hpoly :=
+      (((((hnine.const_mul (10 : ℝ)).sub (height.const_mul (45 : ℝ))).add
+        (hseven.const_mul (60 : ℝ))).sub
+        (hfive.const_mul (42 : ℝ))).add
+        (hthree.const_mul (20 : ℝ))).sub (hbase.const_mul (3 : ℝ))
+    convert hpoly using 1
+    ring
+  have hcoef :
+      90 * bernoulli8Diff x =
+        90 * (x - n) ^ 8 - 360 * (x - n) ^ 7 +
+          420 * (x - n) ^ 6 - 210 * (x - n) ^ 4 +
+          60 * (x - n) ^ 2 - 3 := by
+    have hcell := bernoulli8Diff_eq_on_Ioo n hx
     nlinarith [hcell]
   simpa [hcoef] using hderiv
 
