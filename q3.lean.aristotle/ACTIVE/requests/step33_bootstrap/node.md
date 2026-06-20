@@ -17161,3 +17161,44 @@ same-point curvature shortcut as a payload route unless a different budget
 interface is proved.
 
 Boundary: this is route death, not Step33A.1-A closure.
+
+## 2026-06-20 Current EOF Addendum -- segmented direct residual derivative lane
+
+The current live route is still the first-subchunk residual-derivative direct
+norm payload. The same-point/asymmetric curvature shortcut is killed, and the
+derivmodel triangle receiver is killed for the current candidate by exact
+budget arithmetic:
+
+```text
+STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL
+```
+
+The next proof-producing patch should target a same-unit segmented residual
+derivative certificate for `Set.Icc 0 (1/10)`, feeding:
+
+```lean
+ResidualDerivativeSegmentIntervalCert.Valid
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_segment_interval_cert
+```
+
+Spendable payload obligations:
+
+```text
+exact segment coverage/no-gap proof on [0, 1/10]
+residualDeriv eta = rawDeriv eta - polyDeriv eta on the cell
+proof-grade raw derivative enclosure per segment
+proof-grade polynomial derivative enclosure per segment
+direct same-expression residual derivative enclosure per segment
+each residual interval fits +/- 1866608532757/500000000000000000000000000000
+```
+
+Do not spend sampled direct derivative overlays or independent raw/poly boxes
+unless the generated witness proves the direct residual interval in the same
+unit accepted by `ResidualDerivativeSegmentIntervalCert.Valid`.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL
+STEP33_A1_SUB0_SEGMENT_PROOF_INPUTS_MISSING
+```

@@ -36256,3 +36256,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP`.
 - Boundary: no Step33A.1-A closure, no full 110-field payload, no A hbox,
   no `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- SegmentedResidualDerivativeCertSurface
+
+- Browser/Proshka advisory review selected a same-unit segmented residual
+  derivative certificate surface after the same-point curvature shortcut was
+  fail-closed and the current derivmodel triangle lane failed its exact budget.
+- Added Lean checker interface:
+  `ResidualDerivativeSegmentIntervalCert`,
+  `ResidualDerivativeSegmentIntervalCert.Valid`, and
+  `ResidualDerivativeSegmentIntervalCert.Valid.residual_norm_le`.
+- Added first-subchunk landing wrappers:
+  `primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_segment_cert`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_segment_interval_cert`.
+- Updated
+  `scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py`
+  for the current v22 worklist schema; it still reports
+  `STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL` and closes `0` proof-safe fields.
+- Added fail-closed skeleton
+  `scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py`.
+  It emits JSON/MD only, no Lean payload, with
+  `status = fail_closed_missing_segment_cert`.
+- Current first live blocker:
+  `STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL`, specifically
+  missing exact rational segment coverage, residual crosswalk, and direct
+  same-expression residual derivative interval bounds on `Set.Icc 0 (1/10)`.
+- Validation passed: `py_compile`, `lake build
+  Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker`, both touched
+  `lake env lean` checks, `q3_check`, hole scan for `sorry|admit|exact?`, and
+  `git diff --check`.
+- Boundary: no Step33A.1-A closure, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

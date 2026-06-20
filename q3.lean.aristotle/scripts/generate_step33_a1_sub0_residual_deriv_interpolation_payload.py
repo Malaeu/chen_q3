@@ -36,7 +36,7 @@ DEFAULT_OUT_MD = (
 )
 
 WORKLIST_SCHEMA = (
-    "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20"
+    "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v22"
 )
 OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v7"
 RAW_POLY_CANDIDATE_OVERLAY = (

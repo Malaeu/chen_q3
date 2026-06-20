@@ -30152,3 +30152,48 @@ STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
 
 Boundary: no full first-subchunk derivative payload, no A hbox, no
 `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH closure.
+
+## 2026-06-20 Current EOF Addendum -- segmented residual-derivative cert surface
+
+The direct residual-derivative norm lane now has a checked same-unit segment
+certificate surface. This is an interface for the next proof-producing
+payload, not proof data by itself.
+
+New checked Lean interfaces:
+
+```lean
+ResidualDerivativeSegmentIntervalCert
+ResidualDerivativeSegmentIntervalCert.Valid
+ResidualDerivativeSegmentIntervalCert.Valid.residual_norm_le
+primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_segment_cert
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_segment_interval_cert
+```
+
+The old interpolation/derivmodel triangle lane was rerun after syncing the
+worklist schema to v22. It remains fail-closed for the current candidate:
+
+```text
+STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL
+```
+
+The new fail-closed generator skeleton is:
+
+```text
+scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.md
+```
+
+It emits no Lean payload and closes `0` proof-safe fields until exact rational
+segment coverage, residual crosswalk, and same-expression residual derivative
+interval bounds are supplied.
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL
+STEP33_A1_SUB0_SEGMENT_PROOF_INPUTS_MISSING
+```
+
+Boundary: no first-subchunk residual-derivative norm certificate, no A hbox,
+no `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH closure.

@@ -12219,6 +12219,92 @@ theorem ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
       add_le_add (hError eta heta) (hModel eta heta)
     _ <= data.derivSlope := hBudget
 
+/-- Segment-indexed certificate surface for a same-expression residual-derivative
+interval proof.
+
+The raw and polynomial derivative fields are recorded in the certificate
+contract so the generator can keep the exact source intervals in one object,
+but the spendable proof object is the direct `residual_bounds` field.  This
+prevents the current dead route from silently spending independent raw/poly
+boxes when only the cancellation-preserving residual interval is within the
+tiny Step33A.1-A budget. -/
+structure ResidualDerivativeSegmentIntervalCert where
+  segmentCount : Nat
+  segmentCount_pos : 0 < segmentCount
+  segmentL : Fin segmentCount -> Rat
+  segmentU : Fin segmentCount -> Rat
+  rawLower : Fin segmentCount -> Rat
+  rawUpper : Fin segmentCount -> Rat
+  polyLower : Fin segmentCount -> Rat
+  polyUpper : Fin segmentCount -> Rat
+  residualLower : Fin segmentCount -> Rat
+  residualUpper : Fin segmentCount -> Rat
+
+namespace ResidualDerivativeSegmentIntervalCert
+
+/-- Validity predicate for a segmented residual-derivative certificate.
+
+`residual_bounds` is the same-unit field consumed by the checker below.  The
+raw/poly bounds and crosswalk remain explicit ledger fields for generators that
+prove the direct residual interval from a common symbolic expression. -/
+structure Valid
+    (data : ResidualDerivativeSegmentIntervalCert)
+    (rawDeriv polyDeriv residualDeriv : Real -> Real)
+    (cellL cellU derivSlope : Real) : Prop where
+  slope_nonneg : 0 <= derivSlope
+  segment_nonempty :
+    ∀ i : Fin data.segmentCount,
+      (data.segmentL i : Real) <= (data.segmentU i : Real)
+  cover :
+    ∀ eta ∈ Set.Icc cellL cellU,
+      ∃ i : Fin data.segmentCount,
+        eta ∈ Set.Icc (data.segmentL i : Real) (data.segmentU i : Real)
+  residual_crosswalk :
+    ∀ eta ∈ Set.Icc cellL cellU,
+      residualDeriv eta = rawDeriv eta - polyDeriv eta
+  raw_bounds :
+    ∀ i : Fin data.segmentCount,
+      ∀ eta ∈ Set.Icc (data.segmentL i : Real) (data.segmentU i : Real),
+        (data.rawLower i : Real) <= rawDeriv eta ∧
+          rawDeriv eta <= (data.rawUpper i : Real)
+  poly_bounds :
+    ∀ i : Fin data.segmentCount,
+      ∀ eta ∈ Set.Icc (data.segmentL i : Real) (data.segmentU i : Real),
+        (data.polyLower i : Real) <= polyDeriv eta ∧
+          polyDeriv eta <= (data.polyUpper i : Real)
+  residual_bounds :
+    ∀ i : Fin data.segmentCount,
+      ∀ eta ∈ Set.Icc (data.segmentL i : Real) (data.segmentU i : Real),
+        (data.residualLower i : Real) <= residualDeriv eta ∧
+          residualDeriv eta <= (data.residualUpper i : Real)
+  residual_budget :
+    ∀ i : Fin data.segmentCount,
+      -derivSlope <= (data.residualLower i : Real) ∧
+        (data.residualUpper i : Real) <= derivSlope
+
+namespace Valid
+
+/-- Extract the direct residual-derivative norm bound from a segmented
+same-unit interval certificate. -/
+theorem residual_norm_le
+    {data : ResidualDerivativeSegmentIntervalCert}
+    {rawDeriv polyDeriv residualDeriv : Real -> Real}
+    {cellL cellU derivSlope : Real}
+    (h :
+      data.Valid rawDeriv polyDeriv residualDeriv cellL cellU derivSlope) :
+    ∀ eta ∈ Set.Icc cellL cellU, ‖residualDeriv eta‖ <= derivSlope := by
+  intro eta heta
+  rcases h.cover eta heta with ⟨i, hi⟩
+  have hInterval := h.residual_bounds i eta hi
+  have hBudget := h.residual_budget i
+  rw [Real.norm_eq_abs]
+  exact abs_le.mpr
+    ⟨le_trans hBudget.1 hInterval.1,
+      le_trans hInterval.2 hBudget.2⟩
+
+end Valid
+end ResidualDerivativeSegmentIntervalCert
+
 /-- Derivative finite-cover data where each derivative-cell interval is proved
 from a local derivative anchor and a second-derivative/Lipschitz envelope.
 

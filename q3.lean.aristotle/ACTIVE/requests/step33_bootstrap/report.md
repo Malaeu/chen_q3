@@ -58535,3 +58535,86 @@ bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAC
 rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
 git diff --check
 ```
+
+## Execution Update (2026-06-20) -- segmented residual-derivative cert surface
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk direct residual-derivative norm
+lane.
+
+Browser/Proshka was used through the in-app browser as advisory route review
+after the same-point curvature shortcut and current derivmodel triangle lane
+were both fail-closed. The accepted proof objects are only the local Lean
+interfaces below; the browser answer is not proof evidence.
+
+Checked Lean interface added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+
+```lean
+ResidualDerivativeSegmentIntervalCert
+ResidualDerivativeSegmentIntervalCert.Valid
+ResidualDerivativeSegmentIntervalCert.Valid.residual_norm_le
+```
+
+Checked landing wrappers added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_segment_cert
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_segment_interval_cert
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+```
+
+now accepts the current v22 worklist schema and confirms the derivmodel
+triangle lane remains blocked:
+
+```text
+status = blocked_missing_exact_interpolation_inputs
+first danger point = STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL
+proofSafeClosedFields = 0
+```
+
+New fail-closed generator skeleton:
+
+```text
+scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.md
+```
+
+It records the proof obligations for an exact rational same-expression segment
+certificate and emits no Lean payload:
+
+```text
+status = fail_closed_missing_segment_cert
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL
+STEP33_A1_SUB0_SEGMENT_PROOF_INPUTS_MISSING
+```
+
+Boundary: this does not close Step33A.1-A, the first-subchunk derivative norm,
+the 110-field payload, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33,
+Step34, or RH. It only creates the checked receiver surface for the next
+proof-grade segment certificate.
+
+Validation:
+
+```bash
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```

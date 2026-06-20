@@ -445,6 +445,6 @@
     "row": 0,
     "subchunk": 0
   },
-  "worklistSchema": "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20",
+  "worklistSchema": "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v22",
   "worklistSource": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json"
 }
