@@ -54300,6 +54300,43 @@ before adding the B10 boundary bridge.
 Boundary: this is not a proof of the B8-to-B10 Stieltjes bridge,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B8-to-B10 interval bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B8Diff_to_B10CellDeriv
+```
+
+Checked interval identity:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+=
+  (1 / 10 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli10DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 10
+```
+
+This closes:
+
+```text
+STEP33_M6_B8_TO_B10_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B10_CELLDERIV_TO_B10DIFF_BOUNDARY_GAP
+```
+
+Meaning: prove the next interval boundary bridge that rewrites the B10
+cell-derivative surface through `bernoulli10Diff/(x+z)^11`, including the
+endpoint boundary term.
+
+Boundary: this is not a proof of the B10 boundary bridge,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B6 digamma prefix checked
 
 Lean progress in `Q3.DigammaRemainder`:

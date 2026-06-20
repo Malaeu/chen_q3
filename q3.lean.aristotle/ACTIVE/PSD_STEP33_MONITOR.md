@@ -26945,6 +26945,33 @@ B10 cell-derivative/power-10 surface.
 Boundary unchanged: this does not prove the B8-to-B10 Stieltjes bridge,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A B8-to-B10 interval bridge checked
+
+Added checked interval bridge:
+
+```lean
+Q3.stieltjes_interval_B8Diff_to_B10CellDeriv
+```
+
+This closes:
+
+```text
+STEP33_M6_B8_TO_B10_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B10_CELLDERIV_TO_B10DIFF_BOUNDARY_GAP
+```
+
+Meaning: use the existing B10 cell polynomial layer to prove the boundary-term
+bridge from `bernoulli10DiffCellDeriv/(x+z)^10` to
+`bernoulli10Diff/(x+z)^11`.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B8 boundary bridge checked
 
 Added checked boundary bridge:
