@@ -1652,6 +1652,68 @@ theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_o
   rw [Real.norm_eq_abs, abs_of_nonneg hNonneg]
   nlinarith [hBudgetLtPoly, hRawNonneg']
 
+/-- Same-point residual/raw-polynomial second-derivative crosswalk, reduced to
+raw-integrand second differentiability at the anchor.
+
+The first-derivative identity is already available as `cert.residual_deriv_eq`.
+This theorem proves that differentiating that identity at `0` only needs the
+raw side to have a differentiable derivative there; the polynomial derivative
+side is discharged by the checked Taylor-polynomial algebra. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero_of_raw_deriv_differentiableAt
+    (hRawDerivDifferentiableAt :
+      DifferentiableAt Real
+        (fun t : Real =>
+          deriv
+            (fun eta : Real =>
+              Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                11 ((3 : Real) / 10) 0 eta)
+            t)
+        (0 : Real)) :
+    deriv
+        (fun t : Real =>
+          deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+        (0 : Real) =
+      deriv
+          (fun t : Real =>
+            deriv
+              (fun eta : Real =>
+                Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                  11 ((3 : Real) / 10) 0 eta)
+              t)
+          (0 : Real) -
+        deriv
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.polynomial t)
+          (0 : Real) := by
+  let cert := primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert
+  let raw : Real -> Real :=
+    fun eta : Real =>
+      Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+        11 ((3 : Real) / 10) 0 eta
+  have hResidualDerivFun :
+      (fun t : Real => deriv cert.residual t) =
+        fun t : Real => deriv raw t - deriv cert.polynomial t := by
+    funext t
+    simpa [raw] using cert.residual_deriv_eq t
+  have hPolyDerivFun :
+      (fun t : Real => deriv cert.polynomial t) =
+        (fun t : Real =>
+          ∑ i : Fin (cert.degree + 1),
+            (cert.coeff i : Real) *
+              ((i.1 : Real) * (t - (cert.center : Real)) ^ (i.1 - 1))) := by
+    funext t
+    rw [cert.polynomial_deriv_eq_term_deriv_sum t]
+    refine Finset.sum_congr rfl ?_
+    intro i _hi
+    rw [cert.polynomial_term_deriv_eq i t]
+  have hPolyDerivDifferentiableAt :
+      DifferentiableAt Real (fun t : Real => deriv cert.polynomial t)
+        (0 : Real) := by
+    rw [hPolyDerivFun]
+    fun_prop
+  rw [hResidualDerivFun]
+  exact deriv_sub hRawDerivDifferentiableAt hPolyDerivDifferentiableAt
+
 /-- Preferred direct-norm version of the first-subchunk exact-integral
 proof-data receiver.
 

@@ -58113,6 +58113,52 @@ rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_Center
 git diff --check
 ```
 
+## Execution Update (2026-06-20) -- residual second-deriv crosswalk reduction
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk asymmetric anchor-curvature lane.
+
+Lean theorem added:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero_of_raw_deriv_differentiableAt
+```
+
+Proof-grade result: the same-point crosswalk
+
+```text
+residual''(0) = raw_integrand''(0) - polynomial''(0)
+```
+
+is now proved modulo one explicit raw-side hypothesis:
+
+```text
+DifferentiableAt Real (fun t => deriv raw_integrand t) 0
+```
+
+Lean uses the existing `cert.residual_deriv_eq` for the first derivative and
+proves the polynomial-derivative differentiability side from the Taylor model.
+
+Updated first gap:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
+```
+
+Route-kill still also requires:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
 ## Execution Update (2026-06-20) -- conditional residual curvature kill gate
 
 Route: PSD-pd/Q3 Step33A.1-A first-subchunk asymmetric anchor-curvature lane.

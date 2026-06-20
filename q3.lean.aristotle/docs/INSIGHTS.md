@@ -36051,6 +36051,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   scoped Lean hole scan for `sorry|admit|exact?|axiom|unsafe`; and
   `git diff --check`.
 
+## Insight (2026-06-20, Step33A.1-A) -- ResidualSecondDerivCrosswalkReduction
+
+- Added Lean theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero_of_raw_deriv_differentiableAt`.
+- This proves the same-point second-derivative crosswalk
+  `residual''(0) = raw_integrand''(0) - polynomial''(0)` assuming only raw
+  derivative differentiability at `0`.
+- The proof reuses the checked first-derivative identity
+  `cert.residual_deriv_eq`; the Taylor-polynomial derivative side is discharged
+  locally by Lean.
+- This does not prove raw second differentiability or raw nonnegativity.
+- Current first gap:
+  `STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP`.
+- Route-kill still additionally needs:
+  `STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`;
+  `bash scripts/q3_check.sh
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`;
+  scoped Lean hole scan for `sorry|admit|exact?|axiom|unsafe`; and
+  `git diff --check`.
+
 ## Insight (2026-06-20, Step33A.1-A) -- ConditionalResidualCurvatureKillGate
 
 - Used the in-app browser/Pro chat as advisory route review for the

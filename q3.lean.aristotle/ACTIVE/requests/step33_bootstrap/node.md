@@ -16883,3 +16883,33 @@ Then, if needed:
 ```text
 STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
 ```
+
+## 2026-06-20 Current EOF Addendum -- crosswalk theorem landed conditionally
+
+New Lean theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero_of_raw_deriv_differentiableAt
+```
+
+It proves the exact crosswalk
+
+```text
+residual''(0) = raw_integrand''(0) - polynomial''(0)
+```
+
+assuming only that the raw-integrand derivative is differentiable at `0`.
+Lean handles the residual first-derivative identity and the polynomial
+second-derivative side.
+
+Current first proof gap is now narrower:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
+```
+
+The conditional kill theorem still additionally needs:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```

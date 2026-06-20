@@ -29846,3 +29846,28 @@ Sibling analytic gap after the crosswalk:
 ```text
 STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
 ```
+
+## 2026-06-20 Current EOF Addendum -- crosswalk reduced to raw second differentiability
+
+Lean now proves the same-point residual/raw-polynomial second-derivative
+crosswalk under one explicit raw-side differentiability hypothesis:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero_of_raw_deriv_differentiableAt
+```
+
+This theorem uses the existing first-derivative identity
+`cert.residual_deriv_eq` and discharges the Taylor-polynomial derivative side
+inside Lean.  It does not prove raw second differentiability.
+
+Updated first analytic gap:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
+```
+
+The route-kill gate still also needs:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```
