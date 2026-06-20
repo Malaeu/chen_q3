@@ -52407,3 +52407,68 @@ Boundary remains unchanged: the source theorem
 `step33_shift16_digamma_m6_integral_remainder_bound` is still open;
 Step33A.1-A open; A hbox open; `ActiveCenteredCoeffEntryHboxCert` open;
 Step33 open.
+
+## 2026-06-20 Execution update -- z0 M6 source bridge interfaces checked
+
+Added checked conditional interfaces for the active z0 M6 source theorem:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound_of_re_pos_source
+```
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound_of_shifted_integral_remainder
+```
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound_N16_of_shifted_integral_remainder
+```
+
+Meaning:
+
+```text
+generic half-plane M6 source
+  -> active z0 M6 source
+
+shifted M6 source at z0+N
+  + shifted exact integral radius bound
+  + finite M6 step-defect sum
+  + exact z0 integral-budget comparison
+  -> active z0 M6 source
+```
+
+This preserves the exact target normalization:
+
+```lean
+Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint
+```
+
+with the right-hand side
+
+```lean
+((7 : Real) / (6 : Real)) *
+  ∫ x in Set.Ioi (0 : Real),
+    1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Result:
+
+```text
+q3_check ok
+```
+
+No `sorry`, `exact?`, `admit`, `axiom`, or `unsafe` markers were found in the
+touched Lean file, and `git diff --check` is clean.
+
+Boundary remains unchanged: this does not prove
+`step33_shift16_digamma_m6_integral_remainder_bound`; it names the exact
+local bridges by which the source can enter.  Step33A.1-A open; A hbox open;
+`ActiveCenteredCoeffEntryHboxCert` open; Step33 open.

@@ -769,6 +769,66 @@ theorem step33_digammaM6IntegralRemainderBound_of_finite_telescope
     step33Shift16DigammaPoint N step33Shift16DigammaPoint_re_pos
     shiftRad defectRad hShift hDefects hTotal
 
+theorem step33_shift16_digamma_m6_integral_remainder_bound_of_shifted_integral_remainder
+    (N : Nat) (shiftRad defectRad : Real)
+    (hShiftIntegral :
+      Q3.digammaM6IntegralRemainderBound
+        (step33Shift16DigammaPoint + (N : Complex)))
+    (hShiftRad :
+      ((7 : Real) / (6 : Real)) *
+          ∫ x in Set.Ioi (0 : Real),
+            1 / ‖(x : Complex) +
+              (step33Shift16DigammaPoint + (N : Complex))‖ ^ 15 <=
+        shiftRad)
+    (hDefects :
+      (Finset.range N).sum
+          (fun n : Nat =>
+            ‖Q3.digammaM6StepDefect
+              (step33Shift16DigammaPoint + (n : Complex))‖) <= defectRad)
+    (hTotal :
+      shiftRad + defectRad <=
+        ((7 : Real) / (6 : Real)) *
+          ∫ x in Set.Ioi (0 : Real),
+            1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15) :
+    Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint := by
+  have hShiftSource :
+      ‖Q3.digamma (step33Shift16DigammaPoint + (N : Complex)) -
+          Q3.digammaM6AsymptoticMain
+            (step33Shift16DigammaPoint + (N : Complex))‖ <=
+        ((7 : Real) / (6 : Real)) *
+          ∫ x in Set.Ioi (0 : Real),
+            1 / ‖(x : Complex) +
+              (step33Shift16DigammaPoint + (N : Complex))‖ ^ 15 := by
+    simpa [Q3.digammaM6IntegralRemainderBound] using hShiftIntegral
+  exact
+    step33_digammaM6IntegralRemainderBound_of_finite_telescope
+      N shiftRad defectRad (hShiftSource.trans hShiftRad) hDefects hTotal
+
+theorem step33_shift16_digamma_m6_integral_remainder_bound_N16_of_shifted_integral_remainder
+    (shiftRad defectRad : Real)
+    (hShiftIntegral :
+      Q3.digammaM6IntegralRemainderBound
+        (step33Shift16DigammaPoint + (16 : Complex)))
+    (hShiftRad :
+      ((7 : Real) / (6 : Real)) *
+          ∫ x in Set.Ioi (0 : Real),
+            1 / ‖(x : Complex) +
+              (step33Shift16DigammaPoint + (16 : Complex))‖ ^ 15 <=
+        shiftRad)
+    (hDefects :
+      (Finset.range 16).sum
+          (fun n : Nat =>
+            ‖Q3.digammaM6StepDefect
+              (step33Shift16DigammaPoint + (n : Complex))‖) <= defectRad)
+    (hTotal :
+      shiftRad + defectRad <=
+        ((7 : Real) / (6 : Real)) *
+          ∫ x in Set.Ioi (0 : Real),
+            1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15) :
+    Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint :=
+  step33_shift16_digamma_m6_integral_remainder_bound_of_shifted_integral_remainder
+    16 shiftRad defectRad hShiftIntegral hShiftRad hDefects hTotal
+
 theorem step33_shift16_digamma_m6_re_first_omitted_term_bound_of_finite_telescope
     (N : Nat) (shiftRad defectRad : Real)
     (hShift :
@@ -810,6 +870,11 @@ theorem step33Shift16DigammaPoint_add_nat_re_pos (N : Nat) :
   have hsum : 0 < step33Shift16DigammaPoint.re + (N : Real) := by
     linarith
   simpa using hsum
+
+theorem step33_shift16_digamma_m6_integral_remainder_bound_of_re_pos_source
+    (hSource : ∀ z : Complex, 0 < z.re -> Q3.digammaM6IntegralRemainderBound z) :
+    Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint := by
+  exact hSource step33Shift16DigammaPoint step33Shift16DigammaPoint_re_pos
 
 theorem step33_shift16_m6_shift48_integral_remainder_bound_of_re_pos_source
     (hSource : ∀ z : Complex, 0 < z.re -> Q3.digammaM6IntegralRemainderBound z) :

@@ -33484,3 +33484,21 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   consumers are now already wired directly.
 - Remaining blocker is still the source theorem
   `step33_shift16_digamma_m6_integral_remainder_bound`.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6SourceBridgeInterfacesChecked
+
+- Added Lean-checked conditional bridges for the active z0 source theorem:
+  `step33_shift16_digamma_m6_integral_remainder_bound_of_re_pos_source`,
+  `step33_shift16_digamma_m6_integral_remainder_bound_of_shifted_integral_remainder`,
+  and
+  `step33_shift16_digamma_m6_integral_remainder_bound_N16_of_shifted_integral_remainder`.
+- The first bridge consumes a future generic half-plane theorem
+  `∀ z, 0 < z.re -> Q3.digammaM6IntegralRemainderBound z`.
+- The shifted bridge consumes a shifted source theorem, finite M6 step-defect
+  sum, and an exact z0 integral-budget comparison against
+  `((7 : Real)/(6 : Real)) * ∫ x in Set.Ioi 0,
+  1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15`.
+- Validation passed with `lake env lean` and `bash scripts/q3_check.sh` on
+  `PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- This is still not the M6 source proof; it removes ambiguity about which
+  conditional inputs are acceptable without weakening the target.

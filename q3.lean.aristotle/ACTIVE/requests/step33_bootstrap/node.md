@@ -15125,3 +15125,37 @@ matching coefficient 7/6, kernel power 15, and complex norm.
 Boundary remains unchanged: the M6 source theorem is open, Step33A.1-A remains
 open, A hbox is not closed, `ActiveCenteredCoeffEntryHboxCert` is not closed,
 and Step33 is not closed.
+
+## 2026-06-20 Current EOF Addendum -- z0 source bridge interfaces checked
+
+Latest checked Step33 source-support interfaces:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound_of_re_pos_source
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound_of_shifted_integral_remainder
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound_N16_of_shifted_integral_remainder
+```
+
+Meaning:
+
+```text
+1. A future generic half-plane theorem
+   ∀ z, 0 < z.re -> Q3.digammaM6IntegralRemainderBound z
+   immediately specializes to the active z0 source theorem.
+
+2. A future shifted source theorem at z0+N, plus finite M6 step-defect sum and
+   exact z0 integral-budget comparison, immediately proves the active z0 source
+   theorem.
+```
+
+Current next theorem remains unchanged:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound
+    Q3.PSDpd.Step33.step33Shift16DigammaPoint
+```
+
+Boundary remains unchanged: these are conditional bridges only.  The M6 source
+theorem is still open, Step33A.1-A remains open, A hbox is not closed,
+`ActiveCenteredCoeffEntryHboxCert` is not closed, and Step33 is not closed.
