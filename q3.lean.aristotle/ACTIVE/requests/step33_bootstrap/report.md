@@ -55515,3 +55515,58 @@ stieltjes_interval_B12Diff_to_B14CellDeriv
 
 Boundary: this is not a proof of the B12-to-order15 source norm inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Execution update -- B12-to-B14 interval bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B12Diff_to_B14CellDeriv
+```
+
+Checked statement:
+
+```lean
+∫ x in (n : R)..(n + 1 : R),
+    (bernoulli12Diff x : C) / ((x : C) + z) ^ 13 =
+  (1 / 14 : C) * ∫ x in (n : R)..(n + 1 : R),
+    (bernoulli14DiffCellDeriv n x : C) / ((x : C) + z) ^ 14
+```
+
+This uses the checked B14 cell derivative layer and the zero endpoint data for
+`bernoulli14DiffCellDeriv`; it is the local unit-cell integration-by-parts
+bridge only.
+
+Validation:
+
+```text
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+This closes:
+
+```text
+STEP33_M6_B12_TO_B14_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B14_CELLDERIV_IOI_NORM_TO_ORDER15_BOUND_GAP
+```
+
+Smallest useful next Lean object: lift/sum the checked interval bridge to the
+`Ioi` source surface and prove the B14-cell derivative norm-to-order15 bound.
+
+Browser/Pro note: the in-app browser is connected to the open Pro/Louise chat,
+but no new advisory question was sent for this step because the local Lean
+target and proof pattern were already unambiguous. Browser output is not used
+as proof evidence.
+
+Boundary: this is not a proof of the B12 `Ioi` norm-to-order15 inequality,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.

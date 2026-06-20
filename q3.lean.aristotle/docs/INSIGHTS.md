@@ -34708,3 +34708,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this in-progress note does not prove the bridge, the B12 `Ioi`
   norm-to-order15 inequality, `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B12ToB14IntervalBridgeChecked
+
+- Added checked Lean bridge:
+  `Q3.stieltjes_interval_B12Diff_to_B14CellDeriv` in
+  `Q3/DigammaRemainder.lean`.
+- The theorem proves the unit-cell integration-by-parts identity rewriting the
+  B12/power-13 cell integral as `(1 / 14) *` the
+  B14-cell-derivative/power-14 integral.
+- Validation passed:
+  `bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean`,
+  the forbidden-hole scan for `sorry|admit|exact?|axiom|unsafe`, and
+  `git diff --check`; Lean emitted warnings only.
+- Closed local bridge:
+  `STEP33_M6_B12_TO_B14_INTERVAL_STIELTJES_BRIDGE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B14_CELLDERIV_IOI_NORM_TO_ORDER15_BOUND_GAP`.
+- Smallest useful next Lean object: lift/sum the checked unit-cell bridge to
+  the `Ioi` source surface and prove the B14-cell derivative norm-to-order15
+  bound needed by `Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`.
+- Browser/Pro note: the in-app browser is connected to the open Pro/Louise
+  chat, but no new advisory question was sent for this step because the local
+  Lean target and proof pattern were already unambiguous. Browser output is
+  not used as proof evidence.
+- Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
