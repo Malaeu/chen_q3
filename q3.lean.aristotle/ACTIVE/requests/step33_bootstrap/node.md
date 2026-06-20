@@ -16388,3 +16388,40 @@ targetGap = STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
 
 This is an address/control-plane update only.  The sampled derivative audit is
 still diagnostic and no payload field is proof-safe closed.
+
+## 2026-06-20 Current EOF Addendum -- sub0 interpolation skeleton
+
+Created fail-closed generator skeleton:
+
+```text
+scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+```
+
+Output:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.md
+```
+
+It targets the direct interpolation receiver:
+
+```lean
+ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+```
+
+and records the exact sub0 budget:
+
+```text
+interpolationError + modelBound <= 1866608532757/500000000000000000000000000000
+```
+
+Current blockers:
+
+```text
+STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+No Lean theorem is emitted, no sampled derivative JSON is trusted, and
+`proofSafeClosedFields` remains zero.

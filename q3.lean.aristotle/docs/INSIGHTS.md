@@ -35653,3 +35653,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `git diff --check` also passed.
 - Boundary: address synchronization only.  `proofSafeClosedFields = 0`; no
   Lean payload, derivative payload, A hbox, Step33, Step34, or RH is proved.
+
+## Insight (2026-06-20, Step33A.1-A) -- Sub0InterpolationPayloadSkeleton
+
+- Added fail-closed generator skeleton
+  `scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py`.
+- Generated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.{json,md}`
+  with schema `q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v1`.
+- The skeleton checks worklist v20 and the direct interpolation receiver
+  `ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`, then
+  records the exact budget
+  `interpolationError + modelBound <= 1866608532757/500000000000000000000000000000`.
+- Default status is `blocked_missing_exact_interpolation_inputs`; the named
+  gaps are `STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP` and
+  `STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP`.
+- Browser/Pro advisory chose this over an Aristotle request or anchor-envelope
+  generator.  The accepted artifact is local and fail-closed; the advisory is
+  not treated as proof evidence.
+- Validation passed:
+  `python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py`,
+  `python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py`,
+  a JSON assertion for the default blocked output, an exact-budget smoke test
+  with rational candidate inputs, forbidden-token scan, and `git diff --check`.
+- Boundary: no sampled JSON is trusted, no Lean payload is emitted,
+  `proofSafeClosedFields = 0`, and Step33/Step34/RH remain open.

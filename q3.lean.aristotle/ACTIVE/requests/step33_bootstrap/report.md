@@ -57091,6 +57091,64 @@ Boundary: worklist synchronization only.  `proofSafeClosedFields` remains zero.
 No generated Lean payload, no derivative analytic closure, no Step33 closure,
 and no RH claim.
 
+## Execution Update (2026-06-20) -- sub0 interpolation payload skeleton
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk direct interpolation payload.
+
+Created:
+
+```text
+scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.md
+```
+
+Schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v1
+```
+
+Default generated status:
+
+```text
+blocked_missing_exact_interpolation_inputs
+```
+
+The script reads worklist v20 and verifies the checked receiver address:
+
+```lean
+ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+```
+
+It records the exact budget in the local normalization:
+
+```text
+interpolationError + modelBound <= 1866608532757/500000000000000000000000000000
+```
+
+Missing proof-grade inputs:
+
+```text
+STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 JSON assertion: schema v1, default blocked status, two named gaps, proofSafeClosedFields = 0, outLeanWritten = false
+python3 exact-budget smoke test with rational candidate inputs
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.md
+git diff --check
+```
+
+Boundary: fail-closed generator skeleton only.  It does not consume sampled
+JSON as proof, does not emit Lean, does not close the derivative payload, and
+does not prove Step33, Step34, or RH.
+
 ## Execution Update (2026-06-20) -- first-subchunk checked raw-center interval fallback
 
 Route: PSD-pd/Q3 Step33A.1-A first-subchunk receiver narrowing.

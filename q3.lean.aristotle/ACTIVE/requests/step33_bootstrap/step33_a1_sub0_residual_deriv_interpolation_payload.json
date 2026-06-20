@@ -1,0 +1,57 @@
+{
+  "cell": {
+    "cellL": "0.000000000000000000E+0",
+    "cellU": "1.000000000000000000E-1",
+    "derivSlope": "1866608532757/500000000000000000000000000000",
+    "derivSlopeDecimal": "0.000000000000000003733217",
+    "set": "Set.Icc (0 : Real) ((1 : Real) / 10)"
+  },
+  "cert": "primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert",
+  "exactBudget": {
+    "lhs": null,
+    "lhsDecimal": null,
+    "margin": null,
+    "marginDecimal": null,
+    "passes": null,
+    "relation": "interpolationError + modelBound <= derivSlope",
+    "rhs": "1866608532757/500000000000000000000000000000",
+    "rhsDecimal": "0.000000000000000003733217"
+  },
+  "firstDangerPoint": "STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP",
+  "inputs": {
+    "inputStatus": "not_provided_exact_rational_bounds",
+    "interpolationError": null,
+    "interpolationErrorDecimal": null,
+    "modelBound": null,
+    "modelBoundDecimal": null
+  },
+  "meaning": "Fail-closed direct interpolation payload skeleton for the first Step33A.1-A residual-derivative cell.  This is not Lean proof data and does not emit a theorem.",
+  "missingInputs": [
+    "STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP",
+    "STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP"
+  ],
+  "outLeanWritten": false,
+  "proofSafeClosedFields": 0,
+  "receiver": {
+    "leanShape": "modelDeriv : Real -> Real, hModel : forall eta in cell, ||modelDeriv eta|| <= modelBound, hError : forall eta in cell, ||deriv cert.residual eta - modelDeriv eta|| <= interpolationError, hBudget : interpolationError + modelBound <= data.derivSlope",
+    "validReceiver": "RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound"
+  },
+  "routeGuard": [
+    "not Lean proof data",
+    "does not import or trust sampled derivative JSON",
+    "does not emit a Lean payload theorem",
+    "modelBound must be derived by exact rational interval operations",
+    "interpolationError must bound ||deriv residual - modelDeriv|| uniformly on [0, 1/10]",
+    "a positive exact budget margin is required before Lean emission is enabled"
+  ],
+  "schema": "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v1",
+  "status": "blocked_missing_exact_interpolation_inputs",
+  "target": {
+    "family": "primary_finite",
+    "parentChunk": 0,
+    "row": 0,
+    "subchunk": 0
+  },
+  "worklistSchema": "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20",
+  "worklistSource": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json"
+}
