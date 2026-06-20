@@ -35410,3 +35410,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   the touched Lean-file forbidden-token scan, and `git diff --check`.
 - Boundary: this does not prove Step33A.1-A, A hbox,
   `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A, in progress) -- RawCenterPayloadFromCheckedM6
+
+- Target:
+  `STEP33_M6_RAW_CENTER_COMPONENT_PAYLOAD_GAP`, wired at
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`.
+- Exact local receiver surface:
+  `primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_main_norm_closedLogPi`
+  and the component variant
+  `primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_main_component_abs_closedLogPi`.
+- New source now available from the previous checked patch:
+  `Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm`.
+- Local `q3_docs` search did not expose a different receiver or a broader
+  generated-payload closure theorem for this first subchunk; direct `rg` found
+  the existing hypothesis-parametrized landing wrappers in `HRawLanding`.
+- External primary-source API check was limited to mathlib complex basics /
+  component-norm orientation; it is not proof evidence.  The proof object must
+  be the local Lean check.
+- Minimal patch: add a no-hypothesis checked theorem that feeds
+  `step33_shift16_digamma_m6_main_norm` into the existing closed-`log pi`
+  `hRawCenterCoeffAbs` receiver.
+- Expected closure: first-subchunk `hRawCenterCoeffAbs` source closes.
+  Step33A.1-A, the full 110-field payload, A hbox,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, and RH remain open.
