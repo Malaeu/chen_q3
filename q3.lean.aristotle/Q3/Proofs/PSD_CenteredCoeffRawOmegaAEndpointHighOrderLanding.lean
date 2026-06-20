@@ -951,6 +951,15 @@ def primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_m6_re_fi
       (Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm_of_re_first_omitted_term_bound
         hReFirstOmitted)
 
+def primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_m6_integral_remainder_bound_closedLogPi
+    (hIntegral :
+      Q3.digammaM6IntegralRemainderBound
+        Q3.PSDpd.Step33.step33Shift16DigammaPoint) := by
+  exact
+    primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_m6_re_first_omitted_term_bound_closedLogPi
+      (Q3.PSDpd.Step33.step33_shift16_digamma_m6_re_first_omitted_term_bound_of_generic_integral_remainder
+        hIntegral)
+
 def primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_m6_finite_telescope_closedLogPi
     (N : Nat) (shiftRad defectRad : Real)
     (hShift :

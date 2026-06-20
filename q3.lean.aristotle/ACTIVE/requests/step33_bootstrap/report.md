@@ -52356,3 +52356,54 @@ only as an external shape reference; accepted proof truth remains local Lean.
 
 Boundary remains unchanged: M6 source theorem open; Step33A.1-A open; A hbox
 open; `ActiveCenteredCoeffEntryHboxCert` open; Step33 open.
+
+## 2026-06-20 Execution update -- z0 M6 integral-remainder consumers checked
+
+Added direct checked consumers for the current z0 M6 source theorem:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm_of_integral_remainder_bound
+```
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_m6_integral_remainder_bound_closedLogPi
+```
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_integral_remainder_bound_closedLogPi
+```
+
+These are adapters only.  They show that the requested source theorem
+
+```lean
+Q3.digammaM6IntegralRemainderBound
+  Q3.PSDpd.Step33.step33Shift16DigammaPoint
+```
+
+feeds the already checked endpoint and hRaw surfaces without routing through
+the shift48/high-order payload layer.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+```
+
+Result:
+
+```text
+q3_check ok
+```
+
+No `sorry`, `exact?`, `admit`, `axiom`, or `unsafe` markers were found in the
+touched Lean files, and `git diff --check` is clean.
+
+Boundary remains unchanged: the source theorem
+`step33_shift16_digamma_m6_integral_remainder_bound` is still open;
+Step33A.1-A open; A hbox open; `ActiveCenteredCoeffEntryHboxCert` open;
+Step33 open.

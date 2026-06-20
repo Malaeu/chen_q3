@@ -33466,3 +33466,21 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   six-step M6 Euler-Maclaurin/Stieltjes identity matching coefficient `7/6`,
   kernel power `15`, and the repository's complex-norm
   `Q3.digammaM6IntegralRemainderBound` definition.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6IntegralConsumersChecked
+
+- Added Lean-checked direct consumers from
+  `Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint` to the current
+  endpoint interval cert and hRaw center-coefficient surfaces.
+- Checked names:
+  `step33_shift16_digamma_m6_main_norm_of_integral_remainder_bound`,
+  `primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_m6_integral_remainder_bound_closedLogPi`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_integral_remainder_bound_closedLogPi`.
+- Validation passed with `lake env lean` on the two landing files and
+  `bash scripts/q3_check.sh` on the three touched Lean files.
+- This is not the M6 source proof.  It removes the consumer-side uncertainty:
+  once the z0 integral-remainder theorem is proved, the first endpoint/hRaw
+  consumers are now already wired directly.
+- Remaining blocker is still the source theorem
+  `step33_shift16_digamma_m6_integral_remainder_bound`.

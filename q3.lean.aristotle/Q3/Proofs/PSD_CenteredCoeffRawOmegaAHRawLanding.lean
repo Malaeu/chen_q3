@@ -184,6 +184,19 @@ theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_re
       (Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm_of_re_first_omitted_term_bound
         hReFirstOmitted)
 
+theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_integral_remainder_bound_closedLogPi
+    (hIntegral :
+      Q3.digammaM6IntegralRemainderBound
+        Q3.PSDpd.Step33.step33Shift16DigammaPoint) :
+    |Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+        11 ((3 : Real) / 10) 0 ((1 : Real) / 20) -
+      ((primaryFiniteRow0Parent0Split100Sub0RawCenterCoeff0 : Rat) : Real)| <=
+        ((64509243331 : Real) / 500000000000000000000000000000) := by
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_re_first_omitted_term_bound_closedLogPi
+      (Q3.PSDpd.Step33.step33_shift16_digamma_m6_re_first_omitted_term_bound_of_generic_integral_remainder
+        hIntegral)
+
 theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_finite_telescope_closedLogPi
     (N : Nat) (shiftRad defectRad : Real)
     (hShift :

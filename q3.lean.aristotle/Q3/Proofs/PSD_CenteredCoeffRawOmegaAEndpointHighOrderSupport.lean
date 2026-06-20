@@ -2559,6 +2559,16 @@ theorem step33_shift16_digamma_m6_main_norm_of_re_first_omitted_term_bound
     (step33_shift16_digamma_m6_expanded_asymptotic_bound_of_re_first_omitted_term_bound
       h)
 
+theorem step33_shift16_digamma_m6_main_norm_of_integral_remainder_bound
+    (hIntegral :
+      Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint) :
+    ‖Q3.digamma step33Shift16DigammaPoint -
+        step33Shift16DigammaM6Main‖ <=
+      step33Shift16DigammaM6MainComponentRadius :=
+  step33_shift16_digamma_m6_main_norm_of_re_first_omitted_term_bound
+    (step33_shift16_digamma_m6_re_first_omitted_term_bound_of_generic_integral_remainder
+      hIntegral)
+
 theorem step33_shift16_digamma_m6_center_component_abs_of_log_component_abs
     (logReCenter logImCenter logReErr logImErr centerReErr centerImErr : Real)
     (hLogRe :
