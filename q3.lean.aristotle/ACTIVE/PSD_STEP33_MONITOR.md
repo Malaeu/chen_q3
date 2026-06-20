@@ -29302,7 +29302,7 @@ git diff --check
 Boundary: address synchronization only.  `proofSafeClosedFields = 0`; no Lean
 payload, derivative payload, A hbox, Step33, Step34, or RH is proved.
 
-## 2026-06-20 Current EOF Status -- sub0 interpolation payload skeleton v2
+## 2026-06-20 Current EOF Status -- sub0 interpolation payload skeleton v3
 
 Added fail-closed generator skeleton:
 
@@ -29320,7 +29320,7 @@ ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_pay
 Schema:
 
 ```text
-q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v2
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v3
 ```
 
 Default status:
@@ -29335,6 +29335,16 @@ Lean now has the concrete first-subchunk landing wrapper:
 primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound
 ```
 
+Lean now also has the polynomial-model landing wrapper:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_polynomial_model_error_bound
+```
+
+This reduces the semantic model norm input to exact rational radius
+containment plus `sum_abs_coeff` arithmetic for
+`rawOmegaATaylorPolynomial`.
+
 The skeleton reads worklist v20, checks the first-subchunk target, records that
 sub0 landing receiver, and records the exact direct interpolation budget
 
@@ -29345,7 +29355,7 @@ interpolationError + modelBound <= 1866608532757/500000000000000000000000000000
 and names the two live gaps:
 
 ```text
-STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
 STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
 ```
 
@@ -29356,13 +29366,13 @@ python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual
 python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
 lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
 bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
-python3 JSON assertion: schema v2, default blocked status, two named gaps, proofSafeClosedFields = 0, outLeanWritten = false
+python3 JSON assertion: schema v3, default blocked status, two named gaps, proofSafeClosedFields = 0, outLeanWritten = false
 python3 exact-budget smoke test with rational candidate inputs
 rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.md
 git diff --check
 ```
 
-Boundary: checked wrapper plus generator skeleton metadata only.  It does not
-prove `modelBound`, does not prove `interpolationError`, does not read sampled
-JSON as proof, does not emit Lean payload, and keeps `proofSafeClosedFields =
-0`.
+Boundary: checked wrappers plus generator skeleton metadata only.  It does not
+prove the polynomial model arithmetic, does not prove `interpolationError`,
+does not read sampled JSON as proof, does not emit Lean payload, and keeps
+`proofSafeClosedFields = 0`.

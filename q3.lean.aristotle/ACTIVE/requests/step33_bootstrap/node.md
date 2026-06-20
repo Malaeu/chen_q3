@@ -16465,3 +16465,51 @@ remain exactly:
 STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP
 STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
 ```
+
+## 2026-06-20 Current EOF Addendum -- sub0 polynomial-model landing wrapper
+
+Added checked first-subchunk polynomial-model landing wrapper:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_polynomial_model_error_bound
+```
+
+It specializes `modelDeriv` to:
+
+```lean
+rawOmegaATaylorPolynomial modelDegree modelCenter modelCoeff
+```
+
+and reduces the model-norm input to exact rational radius/sum arithmetic:
+
+```text
+hModelRadius : forall eta in Set.Icc 0 (1/10),
+  |eta - modelCenter| <= modelRadius
+hModelSum : sum_i |modelCoeff_i| * modelRadius^i <= modelBound
+```
+
+The analytic remainder input remains:
+
+```text
+hError : forall eta in Set.Icc 0 (1/10),
+  ||deriv cert.residual eta -
+      rawOmegaATaylorPolynomial modelDegree modelCenter modelCoeff eta||
+    <= interpolationError
+```
+
+The fail-closed skeleton schema is now:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v3
+```
+
+Current proof-grade payload inputs:
+
+```text
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Boundary: checked receiver/metadata closure only.  No candidate polynomial JSON
+is proof data, no interpolation-error theorem is proved, and no Lean payload is
+emitted.

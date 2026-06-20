@@ -35708,3 +35708,36 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   scan, and `git diff --check`.
 - Boundary: receiver/metadata closure only.  No exact model/error certificate,
   no emitted Lean payload, no Step33A.1-A, Step33, Step34, or RH closure.
+
+## Insight (2026-06-20, Step33A.1-A) -- Sub0PolynomialModelLandingWrapper
+
+- Target blocker:
+  `STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP` plus
+  `STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP` for
+  `deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual`
+  on `Set.Icc 0 (1/10)`.
+- Local `q3_docs` search did not find a checked residual-derivative
+  model/error payload.  The closest local artifacts are
+  `a_side_interpolation_replacement_probe.md`, candidate overlays marked
+  non-proof, and the checked polynomial radius bound
+  `abs_rawOmegaATaylorPolynomial_le_sum_abs_coeff_mul_radius`.
+- External primary-source check: official mathlib docs for
+  `Mathlib.Analysis.Calculus.Taylor` show general Taylor infrastructure, not a
+  Q3-specific certificate source:
+  https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Calculus/Taylor.html.
+- Added checked Lean wrapper in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_polynomial_model_error_bound`.
+- The wrapper specializes `modelDeriv` to
+  `rawOmegaATaylorPolynomial modelDegree modelCenter modelCoeff` and reduces
+  the semantic model-norm input to exact rational radius containment plus
+  `sum_i |modelCoeff_i| * modelRadius^i <= modelBound`.
+- Updated the fail-closed skeleton to schema
+  `q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v3`.
+  The live payload inputs are now named more sharply:
+  `STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP` and
+  `STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP`.
+- Boundary: the polynomial model wrapper is checked, but candidate overlay
+  coefficients remain non-proof until emitted as Lean-checked arithmetic; the
+  uniform interpolation/error bound is still the analytic blocker.  No Lean
+  payload, Step33A.1-A, Step33, Step34, or RH closure is proved.

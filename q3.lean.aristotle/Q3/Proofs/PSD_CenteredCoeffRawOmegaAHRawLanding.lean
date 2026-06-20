@@ -1485,6 +1485,50 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_chec
                 500000000000000000000000000000) :=
             hBudget)
 
+/-- First-subchunk interpolation landing wrapper for a rational polynomial
+model derivative.
+
+This is the proof-producing shape needed by the next generator layer when the
+chosen `modelDeriv` is itself a rational Taylor polynomial.  The semantic
+model-norm input is reduced to the checked radius/sum-of-absolute-coefficients
+bound for `rawOmegaATaylorPolynomial`; the interpolation/error envelope for
+`deriv residual - modelDeriv` remains the real analytic payload. -/
+def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_polynomial_model_error_bound
+    (modelDegree : Nat) (modelCenter : Rat)
+    (modelCoeff : Fin (modelDegree + 1) → Rat)
+    {modelRadius modelBound interpolationError : Real}
+    (hModelRadius :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        |eta - (modelCenter : Real)| <= modelRadius)
+    (hModelSum :
+      (∑ i : Fin (modelDegree + 1),
+        |(modelCoeff i : Real)| * modelRadius ^ i.1) <= modelBound)
+    (hError :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta -
+          rawOmegaATaylorPolynomial modelDegree modelCenter modelCoeff eta‖ <=
+            interpolationError)
+    (hBudget :
+      interpolationError + modelBound <=
+        ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert := by
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound
+      (rawOmegaATaylorPolynomial modelDegree modelCenter modelCoeff)
+      (by
+        intro eta heta
+        have hPoly :
+            |rawOmegaATaylorPolynomial modelDegree modelCenter modelCoeff eta| <=
+              modelBound :=
+          le_trans
+            (abs_rawOmegaATaylorPolynomial_le_sum_abs_coeff_mul_radius
+              modelDegree modelCenter modelCoeff (hModelRadius eta heta))
+            hModelSum
+        simpa [Real.norm_eq_abs] using hPoly)
+      hError
+      hBudget
+
 end RawOmegaATaylorModelCertificate
 end RawOmegaAChunkIntegral
 end CenteredCoeffPrimeDeltaLiveRationalPayloadImport

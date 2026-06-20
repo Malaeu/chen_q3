@@ -38,7 +38,7 @@ DEFAULT_OUT_MD = (
 WORKLIST_SCHEMA = (
     "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20"
 )
-OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v2"
+OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v3"
 
 TARGET = {
     "family": "primary_finite",
@@ -56,6 +56,12 @@ SUB0_INTERPOLATION_LANDING_RECEIVER = (
     "primaryFiniteRow0Parent0Split100Sub0_"
     "cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_"
     "and_deriv_interpolation_error_bound"
+)
+SUB0_POLYNOMIAL_MODEL_LANDING_RECEIVER = (
+    "RawOmegaATaylorModelCertificate."
+    "primaryFiniteRow0Parent0Split100Sub0_"
+    "cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_"
+    "and_deriv_polynomial_model_error_bound"
 )
 
 CERT_NAME = (
@@ -169,7 +175,7 @@ def build_report(
 
     missing_inputs: list[str] = []
     if model_bound is None:
-        missing_inputs.append("STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP")
+        missing_inputs.append("STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP")
     if interpolation_error is None:
         missing_inputs.append("STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP")
     if budget_passes is False:
@@ -208,6 +214,9 @@ def build_report(
         "receiver": {
             "validReceiver": receiver,
             "sub0LandingReceiver": SUB0_INTERPOLATION_LANDING_RECEIVER,
+            "sub0PolynomialModelLandingReceiver": (
+                SUB0_POLYNOMIAL_MODEL_LANDING_RECEIVER
+            ),
             "leanShape": (
                 "modelDeriv : Real -> Real, "
                 "hModel : forall eta in cell, ||modelDeriv eta|| <= modelBound, "
@@ -223,6 +232,22 @@ def build_report(
                 "||deriv cert.residual eta - modelDeriv eta|| <= interpolationError, "
                 "hBudget : interpolationError + modelBound <= "
                 "1866608532757/500000000000000000000000000000"
+            ),
+            "polynomialModelLandingShape": (
+                "modelDegree : Nat, modelCenter : Rat, "
+                "modelCoeff : Fin (modelDegree + 1) -> Rat, "
+                "hModelRadius : forall eta in Set.Icc 0 (1/10), "
+                "|eta - modelCenter| <= modelRadius, "
+                "hModelSum : sum_i |modelCoeff_i| * modelRadius^i <= modelBound, "
+                "hError : forall eta in Set.Icc 0 (1/10), "
+                "||deriv cert.residual eta - rawOmegaATaylorPolynomial modelDegree modelCenter modelCoeff eta|| <= interpolationError, "
+                "hBudget : interpolationError + modelBound <= "
+                "1866608532757/500000000000000000000000000000"
+            ),
+            "modelBoundReduction": (
+                "For polynomial modelDeriv = rawOmegaATaylorPolynomial, "
+                "the semantic hModel input is reduced to exact rational "
+                "radius containment plus sum_abs_coeff arithmetic."
             ),
         },
         "inputs": {
@@ -255,6 +280,7 @@ def build_report(
             "does not import or trust sampled derivative JSON",
             "does not emit a Lean payload theorem",
             "sub0 landing receiver is checked separately in Lean",
+            "polynomial-model landing receiver is checked separately in Lean",
             "modelBound must be derived by exact rational interval operations",
             "interpolationError must bound ||deriv residual - modelDeriv|| uniformly on [0, 1/10]",
             "a positive exact budget margin is required before Lean emission is enabled",
@@ -275,6 +301,7 @@ def render_md(report: dict[str, Any]) -> str:
         f"- cert: `{report['cert']}`",
         f"- receiver: `{report['receiver']['validReceiver']}`",
         f"- sub0 landing receiver: `{report['receiver']['sub0LandingReceiver']}`",
+        f"- sub0 polynomial-model landing receiver: `{report['receiver']['sub0PolynomialModelLandingReceiver']}`",
         f"- cell: `{report['cell']['set']}`",
         f"- derivSlope: `{report['cell']['derivSlope']}`",
         f"- proof-safe closed fields: `{report['proofSafeClosedFields']}`",
@@ -305,6 +332,12 @@ def render_md(report: dict[str, Any]) -> str:
             "## Sub0 Landing Shape",
             "",
             f"`{report['receiver']['landingShape']}`",
+            "",
+            "## Polynomial Model Landing Shape",
+            "",
+            f"`{report['receiver']['polynomialModelLandingShape']}`",
+            "",
+            f"`{report['receiver']['modelBoundReduction']}`",
             "",
             "## Guard",
             "",

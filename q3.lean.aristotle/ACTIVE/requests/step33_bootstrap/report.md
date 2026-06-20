@@ -57320,15 +57320,15 @@ jq '.schema, .parents[0].subchunks[0].hResidualDerivNormWork.directNormCertValid
 Boundary: worklist synchronization only.  No generated Lean payload, no
 derivative analytic closure, no Step33 closure, and no RH claim.
 
-## Current EOF Status (2026-06-20) -- sub0 interpolation landing wrapper is latest
+## Previous EOF Status (2026-06-20) -- sub0 interpolation landing wrapper
 
-Latest checked Step33A.1-A local receiver:
+Checked Step33A.1-A local receiver before the polynomial-model refinement:
 
 ```lean
 primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound
 ```
 
-Latest fail-closed sub0 interpolation skeleton schema:
+Fail-closed sub0 interpolation skeleton schema at that point:
 
 ```text
 q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v2
@@ -57343,3 +57343,105 @@ STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
 
 Boundary: receiver/metadata closure only.  No exact model/error certificate,
 no emitted Lean payload, no Step33A.1-A closure, no Step33/Step34/RH claim.
+
+## Execution Update (2026-06-20) -- sub0 polynomial-model landing wrapper
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk polynomial model receiver.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.md
+```
+
+Checked Lean receiver added:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_polynomial_model_error_bound
+```
+
+It specializes `modelDeriv` to
+`rawOmegaATaylorPolynomial modelDegree modelCenter modelCoeff` and derives the
+model norm bound from the checked
+`abs_rawOmegaATaylorPolynomial_le_sum_abs_coeff_mul_radius` receiver:
+
+```text
+hModelRadius : forall eta in Set.Icc 0 (1/10),
+  |eta - modelCenter| <= modelRadius
+hModelSum : sum_i |modelCoeff_i| * modelRadius^i <= modelBound
+```
+
+The remaining analytic payload is exactly:
+
+```text
+hError : forall eta in Set.Icc 0 (1/10),
+  ||deriv cert.residual eta -
+      rawOmegaATaylorPolynomial modelDegree modelCenter modelCoeff eta||
+    <= interpolationError
+```
+
+The fail-closed generator skeleton now emits schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v3
+```
+
+Current proof-grade payload inputs:
+
+```text
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Search synthesis:
+
+```text
+q3_docs search found no checked residual-derivative model/error payload.
+The closest local artifacts are the interpolation probe, candidate overlays,
+and the existing polynomial sum-abs-coeff bound in
+PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean.
+Mathlib Taylor docs confirm only general Taylor infrastructure, not Q3 proof
+evidence.
+Therefore the smallest safe step is a checked polynomial-model landing wrapper
+plus fail-closed v3 metadata, not Lean payload emission.
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+```
+
+Boundary: checked receiver and metadata only.  It does not trust candidate
+overlay JSON as proof, does not prove interpolation/error, does not emit Lean
+payload, and does not close Step33A.1-A / Step33 / Step34 / RH.
+
+## Current EOF Status (2026-06-20) -- sub0 polynomial-model landing wrapper is latest
+
+Latest checked Step33A.1-A local receiver:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_polynomial_model_error_bound
+```
+
+Latest fail-closed sub0 interpolation skeleton schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v3
+```
+
+Still-open exact payload gaps:
+
+```text
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Boundary: receiver/metadata closure only.  No polynomial model arithmetic
+payload, no interpolation-error theorem, no emitted Lean payload, no Step33A.1-A
+closure, no Step33/Step34/RH claim.
