@@ -27889,3 +27889,54 @@ whitespace check were clean.
 
 Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Step33A.1-A B14-cell derivative to B14-diff bridge checked
+
+Latest checked local bridge:
+
+```lean
+Q3.stieltjes_interval_B14CellDeriv_to_B14Diff
+```
+
+The theorem proves the unit-cell integration-by-parts rewrite:
+
+```lean
+∫ x in (n : R)..(n + 1 : R),
+    (bernoulli14DiffCellDeriv n x : C) / ((x : C) + z) ^ 14 =
+  (7 / 6 : C) *
+      ((((n + 1 : C) + z)⁻¹) ^ 14 - (((n : C) + z)⁻¹) ^ 14) +
+    (14 : C) * ∫ x in (n : R)..(n + 1 : R),
+      (bernoulli14Diff x : C) / ((x : C) + z) ^ 15
+```
+
+Closed local bridge:
+
+```text
+STEP33_M6_B14_CELLDERIV_TO_B14DIFF_INTERVAL_BRIDGE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_DIFF_IOI_AND_BOUNDARY_NORM_TO_ORDER15_GAP
+```
+
+Next smallest Lean object: lift/sum the checked B14 cell bridge to the `Ioi`
+source surface and bound the B14/power-15 integral together with the explicit
+telescoping boundary contribution.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary: this does not prove the B14 `Ioi` lift, the B12 `Ioi`
+norm-to-order15 inequality, `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, Step33, Step34, or RH.

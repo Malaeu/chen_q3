@@ -55570,3 +55570,65 @@ as proof evidence.
 
 Boundary: this is not a proof of the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Execution update -- B14-cell derivative bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B14CellDeriv_to_B14Diff
+```
+
+Checked statement:
+
+```lean
+∫ x in (n : R)..(n + 1 : R),
+    (bernoulli14DiffCellDeriv n x : C) / ((x : C) + z) ^ 14 =
+  (7 / 6 : C) *
+      ((((n + 1 : C) + z)⁻¹) ^ 14 - (((n : C) + z)⁻¹) ^ 14) +
+    (14 : C) * ∫ x in (n : R)..(n + 1 : R),
+      (bernoulli14Diff x : C) / ((x : C) + z) ^ 15
+```
+
+This is the local unit-cell integration-by-parts bridge from the B14 cell
+derivative surface to the B14/power-15 integrand plus the explicit boundary
+term. It uses a local heartbeat bound on this theorem only because the B14
+polynomial and power-14 boundary term make typechecking heavier than the lower
+order analogues.
+
+Validation:
+
+```text
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+This closes:
+
+```text
+STEP33_M6_B14_CELLDERIV_TO_B14DIFF_INTERVAL_BRIDGE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B14_DIFF_IOI_AND_BOUNDARY_NORM_TO_ORDER15_GAP
+```
+
+Smallest useful next Lean object: sum/lift this checked cell identity to the
+`Ioi` source surface and prove the B14/power-15 norm bound plus telescoping
+boundary accounting needed to feed
+`Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`.
+
+Browser/Pro note: the in-app browser remains available for Pro/Louise
+escalation, but no new advisory question was sent for this step because the
+local theorem shape and proof route were unambiguous. Browser output is not
+used as proof evidence.
+
+Boundary: this is not a proof of the B14 `Ioi` lift, the B12 `Ioi`
+norm-to-order15 inequality, `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, Step33, Step34, or RH.

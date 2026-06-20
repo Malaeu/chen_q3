@@ -34762,3 +34762,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this planned patch will not prove the B14 `Ioi` lift, the
   B12 `Ioi` norm-to-order15 inequality,
   `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B14CellDerivToB14DiffChecked
+
+- Added checked Lean bridge:
+  `Q3.stieltjes_interval_B14CellDeriv_to_B14Diff` in
+  `Q3/DigammaRemainder.lean`.
+- The theorem proves the unit-cell integration-by-parts identity rewriting
+  `bernoulli14DiffCellDeriv / ((x : C) + z)^14` as the B14/power-15 integrand
+  plus the explicit endpoint term
+  `(7 / 6) * ((((n + 1 : C) + z)^-1)^14 - (((n : C) + z)^-1)^14)`.
+- Validation passed:
+  `bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean`, the forbidden-hole
+  scan for `sorry|admit|exact?|axiom|unsafe`, and `git diff --check`; Lean
+  emitted warnings only.
+- Implementation note: this theorem is wrapped in a local
+  `set_option maxHeartbeats 1000000 in` because B14 polynomial expansion and
+  the power-14 boundary term make typechecking heavier than the lower-order
+  bridge lemmas.
+- Closed local bridge:
+  `STEP33_M6_B14_CELLDERIV_TO_B14DIFF_INTERVAL_BRIDGE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B14_DIFF_IOI_AND_BOUNDARY_NORM_TO_ORDER15_GAP`.
+- Smallest useful next Lean object: sum/lift the checked cell identity to the
+  `Ioi` source surface and prove the B14/power-15 integral norm bound plus
+  telescoping boundary accounting needed for
+  `Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`.
+- Browser/Pro note: browser/Computer Use remains available for a real
+  Pro/Louise route fork; no advisory browser question was sent here because
+  this local theorem shape was unambiguous.
+- Boundary: this does not prove the B14 `Ioi` lift, the B12 `Ioi`
+  norm-to-order15 inequality, `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, Step33, Step34, or RH.
