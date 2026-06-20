@@ -8771,6 +8771,30 @@ lemma stieltjes_B12Diff_to_B14Diff_Ioi_cancelled (z : ℂ) (hz : 0 < z.re) :
           ∫ x in Set.Ioi (0 : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 15 := by
         simp [I14, Iconst, one_div]
 
+lemma stieltjes_B12Diff_to_shiftedB14Diff_Ioi (z : ℂ) (hz : 0 < z.re) :
+    ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 =
+      ∫ x in Set.Ioi (0 : ℝ),
+        ((bernoulli14Diff x : ℂ) - (7 / 6 : ℂ)) /
+          ((x : ℂ) + z) ^ 15 := by
+  have hcancel := stieltjes_B12Diff_to_B14Diff_Ioi_cancelled z hz
+  have hB14 := integrable_bernoulli14Diff_div_pow15 z hz
+  have hconst := integrable_inv_add_pow15 z hz
+  have hlin :
+      ∫ x in Set.Ioi (0 : ℝ),
+          ((bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15 -
+            (7 / 6 : ℂ) * ((1 : ℂ) / ((x : ℂ) + z) ^ 15)) =
+        (∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15) -
+          (7 / 6 : ℂ) *
+            ∫ x in Set.Ioi (0 : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 15 := by
+    rw [integral_sub hB14 (hconst.const_mul (7 / 6 : ℂ))]
+    simp [MeasureTheory.integral_const_mul]
+  rw [hcancel, ← hlin]
+  congr 1
+  ext x
+  ring_nf
+
 /-!
 Final real-part bound for the Stieltjes remainder.
 The proof uses the N=1 Stieltjes identity + `integral_kernel_bound`.
@@ -9250,6 +9274,18 @@ lemma digammaM6IntegralRemainderBound_of_B12Diff_norm_bound
     digammaM6IntegralRemainderBound z := by
   simpa [digammaM6IntegralRemainderBound,
     digammaM6_remainder_eq_B12Diff_Ioi z hz] using hB12
+
+lemma digammaM6IntegralRemainderBound_of_shiftedB14Diff_norm_bound
+    (z : ℂ) (hz : 0 < z.re)
+    (hShiftedB14 :
+      ‖∫ x in Set.Ioi (0 : ℝ),
+          ((bernoulli14Diff x : ℂ) - (7 / 6 : ℂ)) /
+            ((x : ℂ) + z) ^ 15‖ ≤
+        ((7 : ℝ) / (6 : ℝ)) *
+          ∫ x in Set.Ioi (0 : ℝ), 1 / ‖(x : ℂ) + z‖ ^ 15) :
+    digammaM6IntegralRemainderBound z := by
+  refine digammaM6IntegralRemainderBound_of_B12Diff_norm_bound z hz ?_
+  simpa [stieltjes_B12Diff_to_shiftedB14Diff_Ioi z hz] using hShiftedB14
 
 /-- Complex-norm form of the first Stieltjes/Euler-Maclaurin digamma
 remainder.  The real-part theorem below is a projection of this bound, while

@@ -34735,6 +34735,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
   `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14SourceBridgeChecked
+
+- Added checked Lean bridge and receiver in `Q3/DigammaRemainder.lean`:
+  `Q3.stieltjes_B12Diff_to_shiftedB14Diff_Ioi` and
+  `Q3.digammaM6IntegralRemainderBound_of_shiftedB14Diff_norm_bound`.
+- The source identity now exposes first-omitted cancellation before the norm:
+  `B12/power13 Ioi = ∫ ((B14Diff - 7/6) / (x+z)^15)`.
+- This closes:
+  `STEP33_M6_B14_FIRST_OMITTED_SOURCE_IDENTITY_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_SHIFTED_B14_IOI_NORM_BOUND_GAP`.
+- The killed route remains killed: `Q3.not_forall_bernoulli14Diff_sub_seven_six_abs_le`
+  shows the direct pointwise shifted-B14 majorant is false at `x = 1/2`, so the
+  next proof must be a cancellation/weighted integral estimate, not a
+  `norm_integral_le_of_norm_le` replay on the false pointwise bound.
+- In-app browser/Pro escalation is active for the next fork: the suggested
+  `z0` half-cell nonnegativity route uses the positive norm-weighted kernel
+  `‖(x : C) + z0‖ ^ (-15)`, while the checked receiver needs the complex-power
+  kernel `((x : C) + z0) ^ (-15)`.  Do not spend the norm-weighted lemma without
+  a checked same-target phase/complex-kernel bridge.  Pending blocker:
+  `STEP33_M6_COMPLEX_KERNEL_PHASE_MISMATCH_GAP`.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean`, forbidden-hole scan,
+  and `git diff --check`; Lean emitted warnings only.
+- Boundary: this does not prove the shifted B14 norm estimate,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- B14BoundaryCancellationBridgeChecked
 
 - Used the in-app browser/Computer Use to ask Pro/Louise about the raw

@@ -240,15 +240,22 @@ anchor_re_series_accelerated_model_tail
 
 ## 2026-06-20 M6 source theorem side route status
 
-Checked support now includes the raw and cancelled B12-to-B14 `Ioi` bridges in
-`Q3.DigammaRemainder`, but the simple shifted B14 pointwise norm route is
-formally killed.
+Checked support now includes the raw, cancelled, and single shifted-integral
+B12-to-B14 `Ioi` bridges in `Q3.DigammaRemainder`, but the simple shifted B14
+pointwise norm route is formally killed.
 
 Checked negative lemmas:
 
 ```lean
 Q3.bernoulli14Diff_sub_seven_six_abs_half
 Q3.not_forall_bernoulli14Diff_sub_seven_six_abs_le
+```
+
+Checked positive bridge/receiver:
+
+```lean
+Q3.stieltjes_B12Diff_to_shiftedB14Diff_Ioi
+Q3.digammaM6IntegralRemainderBound_of_shiftedB14Diff_norm_bound
 ```
 
 These show:
@@ -260,13 +267,23 @@ These show:
 Therefore the current M6 source theorem gate is:
 
 ```text
-STEP33_M6_B14_FIRST_OMITTED_CANCELLATION_OR_Z0_WEIGHTED_SUM_GAP
+STEP33_M6_SHIFTED_B14_IOI_NORM_BOUND_GAP
 ```
 
 Do not route this gate through a direct shifted-integrand
-`norm_integral_le_of_norm_le` proof.  The next proof object must expose the
-first-omitted cancellation in the source theorem, or prove a `z0`-special
-weighted estimate in the same order-15 kernel budget.
+`norm_integral_le_of_norm_le` proof.  The first-omitted cancellation is now
+visible in the source theorem; the remaining proof object is a same-budget
+norm estimate for that single shifted B14/power-15 `Ioi` integral.
+
+Browser/Pro escalation is currently on the phase mismatch between the suggested
+`z0` half-cell nonnegativity for the positive norm-weighted kernel
+`‖(x : C) + z0‖ ^ (-15)` and the receiver's complex-power kernel
+`((x : C) + z0) ^ (-15)`.  Until a checked bridge is available, the pending
+blocker is:
+
+```text
+STEP33_M6_COMPLEX_KERNEL_PHASE_MISMATCH_GAP
+```
 
 2026-06-07 log-pi interval facade update:
 

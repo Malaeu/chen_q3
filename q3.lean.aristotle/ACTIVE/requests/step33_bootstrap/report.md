@@ -55685,11 +55685,10 @@ git diff --check
 Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
 whitespace check were clean.
 
-Browser/Pro note: this was a real route fork, so Computer Use was attempted
-against the Pro/Louise chat URL.  The accessible Playwright browser session
-landed on ChatGPT login instead of the already-open user tab.  Earlier visible
-Pro/Louise text remains advisory only and did not provide a stable theorem
-statement usable as proof evidence.
+Browser/Pro note: this was a real route fork.  The initial standalone browser
+surface did not reach the already-open Pro/Louise chat, but the in-app browser
+surface was later connected and used for advisory route review.  Browser output
+remains advisory only and is not proof evidence.
 
 ## PRO_REVIEW_REQUEST
 
@@ -55714,3 +55713,107 @@ bound?
 
 Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Execution update -- shifted B14 source bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_B12Diff_to_shiftedB14Diff_Ioi
+Q3.digammaM6IntegralRemainderBound_of_shiftedB14Diff_norm_bound
+```
+
+Checked exact source identity:
+
+```lean
+∫ x in Set.Ioi (0 : R),
+    (bernoulli12Diff x : C) / ((x : C) + z) ^ 13 =
+  ∫ x in Set.Ioi (0 : R),
+    ((bernoulli14Diff x : C) - (7 / 6 : C)) /
+      ((x : C) + z) ^ 15
+```
+
+This uses the checked cancelled B12-to-B14 bridge plus set-integral linearity
+for the B14/power-15 and constant/power-15 integrable functions.  It exposes
+the first-omitted cancellation inside one integral before any norm is taken.
+
+The downstream receiver now says that `Q3.digammaM6IntegralRemainderBound z`
+follows from exactly this remaining norm estimate:
+
+```lean
+‖∫ x in Set.Ioi (0 : R),
+    ((bernoulli14Diff x : C) - (7 / 6 : C)) /
+      ((x : C) + z) ^ 15‖
+  <= (7 / 6 : R) *
+       ∫ x in Set.Ioi (0 : R), 1 / ‖(x : C) + z‖ ^ 15
+```
+
+Closed local bridge:
+
+```text
+STEP33_M6_B14_FIRST_OMITTED_SOURCE_IDENTITY_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_SHIFTED_B14_IOI_NORM_BOUND_GAP
+```
+
+Important: this does not resurrect the false pointwise route.  The checked
+counterexample `Q3.not_forall_bernoulli14Diff_sub_seven_six_abs_le` still kills
+the bare `norm_integral_le_of_norm_le` majorant.  The next theorem must prove a
+cancellation/weighted integral estimate for the single shifted B14 integral.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary: this does not prove the shifted B14 norm estimate,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## PRO_REVIEW_REQUEST UPDATE (2026-06-20 shifted B14 phase mismatch)
+
+Route: PSD Step33 / M6 source theorem.
+Current step: after checked shifted B14 source identity and receiver.
+Current theorem:
+`Q3.digammaM6IntegralRemainderBound_of_shiftedB14Diff_norm_bound`.
+File: `q3.lean.aristotle/Q3/DigammaRemainder.lean`.
+Lean error / blocker: the remaining target is a complex-power kernel norm bound,
+not a positive real norm-weighted scalar integral:
+
+```lean
+‖∫ x in Set.Ioi (0 : R),
+    ((bernoulli14Diff x : C) - (7 / 6 : C)) /
+      ((x : C) + z) ^ 15‖
+  <= (7 / 6 : R) *
+       ∫ x in Set.Ioi (0 : R), 1 / ‖(x : C) + z‖ ^ 15
+```
+
+The previous advisory suggestion was a `z0`-special half-cell nonnegativity
+lemma for the positive norm-weighted kernel
+`‖(x : C) + z0‖ ^ (-15)`.  That is not automatically the same object as the
+complex kernel `((x : C) + z0) ^ (-15)`, so it cannot be accepted without a
+phase/complex-kernel bridge.
+Options:
+A. Prove a direct complex-kernel shifted B14 norm estimate.
+B. Prove a theorem reducing the complex-kernel estimate to the norm-weighted
+   half-cell rearrangement, with all phase losses accounted for.
+C. Declare the half-cell norm-weighted route blocked for this receiver and
+   choose a different M6 source theorem.
+Codex recommendation: use A or B only if the exact bridge theorem is stated;
+otherwise mark the route with `STEP33_M6_COMPLEX_KERNEL_PHASE_MISMATCH_GAP`.
+Question for Louise: how does the norm-weighted half-cell nonnegativity imply
+the required complex-power kernel norm bound, or should the route fail with a
+phase-mismatch code?
+
+Status: sent to the open in-app Pro/Louise browser tab; response pending at the
+time of this local patch.

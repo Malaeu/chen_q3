@@ -27890,6 +27890,64 @@ whitespace check were clean.
 Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
 
+## 2026-06-20 Step33A.1-A shifted B14 source bridge checked
+
+Latest checked local bridge and receiver:
+
+```lean
+Q3.stieltjes_B12Diff_to_shiftedB14Diff_Ioi
+Q3.digammaM6IntegralRemainderBound_of_shiftedB14Diff_norm_bound
+```
+
+The bridge proves the exact first-omitted cancellation identity:
+
+```lean
+∫ x in Set.Ioi (0 : R),
+    (bernoulli12Diff x : C) / ((x : C) + z) ^ 13 =
+  ∫ x in Set.Ioi (0 : R),
+    ((bernoulli14Diff x : C) - (7 / 6 : C)) /
+      ((x : C) + z) ^ 15
+```
+
+The receiver reduces `Q3.digammaM6IntegralRemainderBound z` to the single
+remaining norm estimate:
+
+```lean
+‖∫ x in Set.Ioi (0 : R),
+    ((bernoulli14Diff x : C) - (7 / 6 : C)) /
+      ((x : C) + z) ^ 15‖
+  <= (7 / 6 : R) *
+       ∫ x in Set.Ioi (0 : R), 1 / ‖(x : C) + z‖ ^ 15
+```
+
+Closed local bridge:
+
+```text
+STEP33_M6_B14_FIRST_OMITTED_SOURCE_IDENTITY_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_SHIFTED_B14_IOI_NORM_BOUND_GAP
+```
+
+Important boundary: the direct pointwise route remains killed by
+`Q3.not_forall_bernoulli14Diff_sub_seven_six_abs_le`.  The next theorem must
+prove a cancellation/weighted integral norm estimate for the single shifted
+integral, not resurrect the false pointwise majorant.
+
+Browser/Pro/Louise route review is active for the next fork.  The current
+advisory question is the phase mismatch: a `z0` half-cell nonnegativity theorem
+for the positive norm-weighted kernel `‖(x : C) + z0‖ ^ (-15)` does not by
+itself prove the required complex-power kernel norm estimate for
+`((x : C) + z0) ^ (-15)`.  Do not spend the norm-weighted lemma unless a
+same-target complex-kernel bridge is stated and checked.  Pending failure code:
+`STEP33_M6_COMPLEX_KERNEL_PHASE_MISMATCH_GAP`.
+
+Boundary: this does not prove the shifted B14 norm estimate,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
 ## 2026-06-20 Step33A.1-A B14 boundary-cancellation bridge checked
 
 Browser/Pro/Louise was used as advisory route review for the raw B12-to-B14
